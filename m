@@ -2,79 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C524EB65
-	for <lists+linux-riscv@lfdr.de>; Mon, 29 Apr 2019 22:11:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67FC9EB95
+	for <lists+linux-riscv@lfdr.de>; Mon, 29 Apr 2019 22:23:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=mFdIyKGyrATvU9zPbEPbKlsIKSsGd7CqmSZ2G8ih+Ik=; b=ARInvqyYlDnHVaKsV45+0P2Lo
-	G3T4fcv/wSPhT7WUExQcFQfFckD7AjRH6UXKaqhuMu3ADrHHYzqJQHgsdtE+RZTEYRDIbgCvQvJBR
-	0u3Y8gBKanuFgA5jFTVBWKe8iEdaR1rdliDpeSZ3pDJDNfoTdnPlcCsLgQtOOIXHc1ij43prANrmG
-	UR0U7oBhbMsnS0dYolmkH8ARyWeL7XB0N8eQ0bj7UrvWolNE92TlyXcTcHt9SK+hG2IQlNSyNqrgh
-	GZOG0V9+IN6qngISScvAYxZq0H8eEZ9Bgj80xH63VXMlD2kKbIJUJEHoAcwatMHBWLNA9BEcUUwjV
-	V9tUSiILQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:To:Subject:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HLa9GzW2aNJbXGKgj2DhpUFuiPb8oWhWvvsiNm8lZyE=; b=cYZl4VSwodhbyI
+	q6pdqhDeIm4E8FKD/E6CPJtRrBi7ZMdB3dD72KwpedXvGkrIAnNJ4oeBrKPcOGCT7Hlsr82flraoI
+	gbXDjpCdb1cJpGoKfwvmLLsSetZs5TRPuf5Pn8Owk/mogwkTbZaNh4Rs5LzQepNmq9mFP/D57f+hD
+	CpputzIqKJCIg+CboVHXYzo7dz0+/PPl25j3AqmJ4zOq00FBR2Kfh6mEOD2N/fNpg/+9VezKJKcS9
+	OBgsKPQ3VQwMTmnW/NJGqCUpKqInCgfKeZz3CY2GIb0oIC9q5YukqqZdQcptzMH2EY/LQXHbQq6Yn
+	9NNZqi9uh70omcUrlO/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLCcx-0000Jd-Tk; Mon, 29 Apr 2019 20:11:51 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hLCoK-0003Pd-Nw; Mon, 29 Apr 2019 20:23:36 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLCcs-0000J3-Rc
- for linux-riscv@lists.infradead.org; Mon, 29 Apr 2019 20:11:49 +0000
-Received: by mail-pl1-x642.google.com with SMTP id n8so5584845plp.10
- for <linux-riscv@lists.infradead.org>; Mon, 29 Apr 2019 13:11:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=6YszmraZk0PIvbH3wLg7kw3GDQli+Qt1spMZezEYAP8=;
- b=Hde1DtRPRuIT/8sX45rLjipJED224JpEvnG7gwmtp4z1uwo6Uxz1c+9B7f6HA7fe9o
- dvPnFlGJZn6EImJo/qWD2VrlKqagpRb5z7tvGlyR1n7EvsDc6TkjJKQUGCfedT+l956M
- er8fnJa6LVMNLsAv8ngG0D2ef1ejHPkdNc0sT07oqDg7KWmocGnlKShjxGfLJZ083k28
- bglx+IWvMwDWVvH8xhoZ7qfHzspVtZHOiT9daAFuc4lWLr5JzsRVFxM7xske1K0ma+N9
- Y+BptlBrzZkcAl5xcwFxoq1mtclQx/1wsCPdBkbcgI0l84lbDwrSNGW4DK5KnLTZ9qbu
- hKNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=6YszmraZk0PIvbH3wLg7kw3GDQli+Qt1spMZezEYAP8=;
- b=lkWF3xFFKNhFktJAjHgFYuP7em+Mp5fpVSq7O1vrsjQIcbM4NWeFaksHPIaUDEWM5i
- 50sR+8VJ7fJ72HRyZA7wPidq11EIwgnDpswfCU1Pvh48CO+zjyjfXX0sWtgatZDSk5NU
- AqSrvoHu8HXx+u75zHWr0qBHnGIg0UCRyhonp5ulbSmE0OrLXPe1CqS6Vf9NGKV2m3IQ
- hMAtvBnfCasc1rmH3ITyo6z65Kv6N+GftosUbD7VTCBzGQDMWfcOeLNKxhSsC3yahW6M
- mSvTHadk1nllZbaDVvuR5Csjmhake+GGQcHp5Ih7s+bAQjJeqgthyGid6oMS5eYHFi5u
- h/jQ==
-X-Gm-Message-State: APjAAAXzTrqfWpRLKo34HmatXQ4nCcaZdVMTNmG02rXGY3UmYWbxwrg9
- XQexGLgS8quoKe6NGzbi0CHxcg==
-X-Google-Smtp-Source: APXvYqzhfh0ZUl8cmoBYCxOLChPzLpo0MLmmlTQLlURkrDXuO7GpeA3XqI9PqSK+o5BXSaZBcKYCjA==
-X-Received: by 2002:a17:902:b48a:: with SMTP id
- y10mr5371936plr.86.1556568704852; 
- Mon, 29 Apr 2019 13:11:44 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id h127sm49384318pgc.31.2019.04.29.13.11.43
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 29 Apr 2019 13:11:43 -0700 (PDT)
-Date: Mon, 29 Apr 2019 13:11:43 -0700 (PDT)
-X-Google-Original-Date: Mon, 29 Apr 2019 11:37:51 PDT (-0700)
-Subject: Re: [PATCH] riscv: Support non-coherency memory model
-In-Reply-To: <1555947870-23014-1-git-send-email-guoren@kernel.org>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: guoren@kernel.org
-Message-ID: <mhng-4889b94b-2734-4657-83c2-654d3677733e@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ id 1hLCoF-0003Ot-Sf
+ for linux-riscv@lists.infradead.org; Mon, 29 Apr 2019 20:23:34 +0000
+Received: from localhost (unknown [104.132.0.74])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 60703215EA;
+ Mon, 29 Apr 2019 20:23:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1556569411;
+ bh=Hs9mqgcY7lE0xSnarreUwz/n/JdsQYDY7G8ezo/Lh4w=;
+ h=In-Reply-To:References:From:Subject:To:Cc:Date:From;
+ b=ovVVQ1J/x4ait4A2Klw/YevZ9tc7N5uYDpyonmlLyc5FBPVt/PMZIuFi+KJS+G5qj
+ u0jvJ1K4qClpDHJAI/G275cHHP+eotaAbp31euomOgfatvcy7SfKM2n9/TQrQJM7iI
+ ie5ecufH2go40XyRNzVkpM+ASTY9GODmuVKZnPmA=
+MIME-Version: 1.0
+In-Reply-To: <20190411082733.3736-2-paul.walmsley@sifive.com>
+References: <20190411082733.3736-2-paul.walmsley@sifive.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH v3 1/3] clk: analogbits: add Wide-Range PLL library
+To: Paul Walmsley <paul.walmsley@sifive.com>, devicetree@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org
+Message-ID: <155656941055.168659.18136739282359756367@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.8
+Date: Mon, 29 Apr 2019 13:23:30 -0700
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_131146_908532_09398028 
-X-CRM114-Status: GOOD (  36.00  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190429_132331_969798_2D485110 
+X-CRM114-Status: GOOD (  26.47  )
+X-Spam-Score: -5.3 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -83,6 +64,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,298 +76,599 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, tech-privileged@lists.riscv.org,
- Arnd Bergmann <arnd@arndb.de>, anup.patel@wdc.com, xiaoyan_xiang@c-sky.com,
- linux-kernel@vger.kernel.org, rppt@linux.ibm.com, vincentc@andestech.com,
- guoren@kernel.org, green.hu@gmail.com, ren_guo@c-sky.com, swood@redhat.com,
- linux-riscv@lists.infradead.org, m.szyprowski@samsung.com,
- robin.murphy@arm.com, Christoph Hellwig <hch@lst.de>,
- Andrew Waterman <andrew@sifive.com>
+Cc: Paul Walmsley <paul@pwsan.com>, Wesley Terpstra <wesley@sifive.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Megan Wachs <megan@sifive.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 22 Apr 2019 08:44:30 PDT (-0700), guoren@kernel.org wrote:
-> From: Guo Ren <ren_guo@c-sky.com>
->
-> The current riscv linux implementation requires SOC system to support
-> memory coherence between all I/O devices and CPUs. But some SOC systems
-> cannot maintain the coherence and they need support cache clean/invalid
-> operations to synchronize data.
->
-> Current implementation is no problem with SiFive FU540, because FU540
-> keeps all IO devices and DMA master devices coherence with CPU. But to a
-> traditional SOC vendor, it may already have a stable non-coherency SOC
-> system, the need is simply to replace the CPU with RV CPU and rebuild
-> the whole system with IO-coherency is very expensive.
->
-> So we should make riscv linux also support non-coherency memory model.
-> Here are the two points that riscv linux needs to be modified:
->
->  - Add _PAGE_COHERENCY bit in current page table entry attributes. The bit
->    designates a coherence for this page mapping. Software set the bit to
->    tell the hardware that the region of the page's memory area must be
->    coherent with IOs devices in SOC system by PMA settings.
->    If IOs and CPU are already coherent in SOC system, CPU just ignore
->    this bit.
->
->    PTE format:
->    | XLEN-1  10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0
->          PFN      C  RSW  D   A   G   U   X   W   R   V
->                   ^
->    BIT(9): Coherence attribute bit
->           0: hardware needn't keep the page coherenct and software will
->              maintain the coherence with cache clear/invalid operations.
->           1: hardware must keep the page coherenct and software needn't
->              maintain the coherence.
->    BIT(8): Reserved for software and now it's _PAGE_SPECIAL in linux
->
->    Add a new hardware bit in PTE also need to modify Privileged
->    Architecture Supervisor-Level ISA:
->    https://github.com/riscv/riscv-isa-manual/pull/374
-
-This is a RISC-V ISA modification, which isn't really appropriate to suggest on
-the kernel mailing lists.  The right place to talk about this is at the RISC-V
-foundation, which owns the ISA -- we can't change the hardware with a patch to
-Linux :).
-
->  - Add SBI_FENCE_DMA 9 in riscv-sbi.
->    sbi_fence_dma(start, size, dir) could synchronize CPU cache data with
->    DMA device in non-coherency memory model. The third param's definition
->    is the same with linux's in include/linux/dma-direction.h:
->
->    enum dma_data_direction {
-> 	DMA_BIDIRECTIONAL = 0,
-> 	DMA_TO_DEVICE = 1,
-> 	DMA_FROM_DEVICE = 2,
-> 	DMA_NONE = 3,
->    };
->
->    The first param:start must be physical address which could be handled
->    in M-state.
->
->    Here is a pull request to the riscv-sbi-doc:
->    https://github.com/riscv/riscv-sbi-doc/pull/15
->
-> We have tested the patch on our fpga SOC system which network controller
-> connected to a non-cache-coherency interconnect in and it couldn't work
-> without the patch.
->
-> There is no side effect for FU540 whose CPU don't care _PAGE_COHERENCY
-> in PTE, but FU540's bbl also need to implement a simple sbi_fence_dma
-> by directly return. In fact, if you give a correct configuration for
-> dev_is_dma_conherent(), linux dma framework wouldn't call sbi_fence_dma
-> any more.
-
-Non-coherent fences also need to be discussed as part of a RISC-V ISA
-extension.  I know people have expressed interest, but I don't know of a
-working group that's already been set up.
-
->
-> Changelog:
->  - Use coherency instead of consistency for all to maintain term
->    consistency. (Xiang Xiaoyan)
->  - Add riscv-isa-manual modification pull request link.
->  - Correct grammatical errors.
->
-> Signed-off-by: Guo Ren <ren_guo@c-sky.com>
-> Cc: Andrew Waterman <andrew@sifive.com>
-> Cc: Anup Patel <anup.patel@wdc.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Greentime Hu <green.hu@gmail.com>
-> Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-> Cc: Mike Rapoport <rppt@linux.ibm.com>
-> Cc: Palmer Dabbelt <palmer@sifive.com>
-> Cc: Robin Murphy <robin.murphy@arm.com>
-> Cc: Scott Wood <swood@redhat.com>
-> Cc: Vincent Chen <vincentc@andestech.com>
-> Cc: Xiang Xiaoyan <xiaoyan_xiang@c-sky.com>
-> ---
->  arch/riscv/Kconfig                    |  4 ++++
->  arch/riscv/include/asm/pgtable-bits.h |  1 +
->  arch/riscv/include/asm/pgtable.h      | 11 +++++++++
->  arch/riscv/include/asm/sbi.h          | 10 ++++++++
->  arch/riscv/mm/Makefile                |  1 +
->  arch/riscv/mm/dma-mapping.c           | 44 +++++++++++++++++++++++++++++++++++
->  arch/riscv/mm/ioremap.c               |  2 +-
->  7 files changed, 72 insertions(+), 1 deletion(-)
->  create mode 100644 arch/riscv/mm/dma-mapping.c
->
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index eb56c82..f0fc503 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -16,9 +16,12 @@ config RISCV
->  	select OF
->  	select OF_EARLY_FLATTREE
->  	select OF_IRQ
-> +	select ARCH_HAS_SYNC_DMA_FOR_CPU
-> +	select ARCH_HAS_SYNC_DMA_FOR_DEVICE
->  	select ARCH_WANT_FRAME_POINTERS
->  	select CLONE_BACKWARDS
->  	select COMMON_CLK
-> +	select DMA_DIRECT_REMAP
->  	select GENERIC_CLOCKEVENTS
->  	select GENERIC_CPU_DEVICES
->  	select GENERIC_IRQ_SHOW
-> @@ -27,6 +30,7 @@ config RISCV
->  	select GENERIC_STRNCPY_FROM_USER
->  	select GENERIC_STRNLEN_USER
->  	select GENERIC_SMP_IDLE_THREAD
-> +	select GENERIC_ALLOCATOR
->  	select GENERIC_ATOMIC64 if !64BIT || !RISCV_ISA_A
->  	select HAVE_ARCH_AUDITSYSCALL
->  	select HAVE_MEMBLOCK_NODE_MAP
-> diff --git a/arch/riscv/include/asm/pgtable-bits.h b/arch/riscv/include/asm/pgtable-bits.h
-> index 470755c..104f8c0 100644
-> --- a/arch/riscv/include/asm/pgtable-bits.h
-> +++ b/arch/riscv/include/asm/pgtable-bits.h
-> @@ -31,6 +31,7 @@
->  #define _PAGE_ACCESSED  (1 << 6)    /* Set by hardware on any access */
->  #define _PAGE_DIRTY     (1 << 7)    /* Set by hardware on any write */
->  #define _PAGE_SOFT      (1 << 8)    /* Reserved for software */
-> +#define _PAGE_COHERENCY (1 << 9)    /* Coherency */
->
->  #define _PAGE_SPECIAL   _PAGE_SOFT
->  #define _PAGE_TABLE     _PAGE_PRESENT
-> diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-> index 1141364..26debb4 100644
-> --- a/arch/riscv/include/asm/pgtable.h
-> +++ b/arch/riscv/include/asm/pgtable.h
-> @@ -66,6 +66,7 @@
->
->  #define PAGE_KERNEL		__pgprot(_PAGE_KERNEL)
->  #define PAGE_KERNEL_EXEC	__pgprot(_PAGE_KERNEL | _PAGE_EXEC)
-> +#define PAGE_KERNEL_COHERENCY	__pgprot(_PAGE_KERNEL | _PAGE_COHERENCY)
->
->  extern pgd_t swapper_pg_dir[];
->
-> @@ -375,6 +376,16 @@ static inline int ptep_clear_flush_young(struct vm_area_struct *vma,
->  	return ptep_test_and_clear_young(vma, address, ptep);
->  }
->
-> +#define pgprot_noncached pgprot_noncached
-> +static inline pgprot_t pgprot_noncached(pgprot_t _prot)
-> +{
-> +	unsigned long prot = pgprot_val(_prot);
-> +
-> +	prot |= _PAGE_COHERENCY;
-> +
-> +	return __pgprot(prot);
-> +}
-> +
->  /*
->   * Encode and decode a swap entry
->   *
-> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-> index b6bb10b..b945e50 100644
-> --- a/arch/riscv/include/asm/sbi.h
-> +++ b/arch/riscv/include/asm/sbi.h
-> @@ -25,6 +25,7 @@
->  #define SBI_REMOTE_SFENCE_VMA 6
->  #define SBI_REMOTE_SFENCE_VMA_ASID 7
->  #define SBI_SHUTDOWN 8
-> +#define SBI_FENCE_DMA 9
->
->  #define SBI_CALL(which, arg0, arg1, arg2) ({			\
->  	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);	\
-> @@ -42,6 +43,8 @@
->  #define SBI_CALL_0(which) SBI_CALL(which, 0, 0, 0)
->  #define SBI_CALL_1(which, arg0) SBI_CALL(which, arg0, 0, 0)
->  #define SBI_CALL_2(which, arg0, arg1) SBI_CALL(which, arg0, arg1, 0)
-> +#define SBI_CALL_3(which, arg0, arg1, arg2) \
-> +			SBI_CALL(which, arg0, arg1, arg2)
->
->  static inline void sbi_console_putchar(int ch)
->  {
-> @@ -82,6 +85,13 @@ static inline void sbi_remote_fence_i(const unsigned long *hart_mask)
->  	SBI_CALL_1(SBI_REMOTE_FENCE_I, hart_mask);
->  }
->
-> +static inline void sbi_fence_dma(unsigned long start,
-> +			       unsigned long size,
-> +			       unsigned long dir)
-> +{
-> +	SBI_CALL_3(SBI_FENCE_DMA, start, size, dir);
-> +}
-> +
->  static inline void sbi_remote_sfence_vma(const unsigned long *hart_mask,
->  					 unsigned long start,
->  					 unsigned long size)
-> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-> index b68aac7..adc563a 100644
-> --- a/arch/riscv/mm/Makefile
-> +++ b/arch/riscv/mm/Makefile
-> @@ -9,3 +9,4 @@ obj-y += fault.o
->  obj-y += extable.o
->  obj-y += ioremap.o
->  obj-y += cacheflush.o
-> +obj-y += dma-mapping.o
-> diff --git a/arch/riscv/mm/dma-mapping.c b/arch/riscv/mm/dma-mapping.c
+Quoting Paul Walmsley (2019-04-11 01:27:32)
+> diff --git a/drivers/clk/analogbits/Kconfig b/drivers/clk/analogbits/Kconfig
 > new file mode 100644
-> index 0000000..5e1d179
+> index 000000000000..b5fd60c7f136
 > --- /dev/null
-> +++ b/arch/riscv/mm/dma-mapping.c
-> @@ -0,0 +1,44 @@
+> +++ b/drivers/clk/analogbits/Kconfig
+> @@ -0,0 +1,2 @@
+
+Add SPDX for this file?
+
+> +config CLK_ANALOGBITS_WRPLL_CLN28HPC
+> +       bool
+> diff --git a/drivers/clk/analogbits/Makefile b/drivers/clk/analogbits/Makefile
+> new file mode 100644
+> index 000000000000..bb51a3ae77a7
+> --- /dev/null
+> +++ b/drivers/clk/analogbits/Makefile
+> @@ -0,0 +1 @@
+
+Add SPDX for this file?
+
+> +obj-$(CONFIG_CLK_ANALOGBITS_WRPLL_CLN28HPC)    += wrpll-cln28hpc.o
+> diff --git a/drivers/clk/analogbits/wrpll-cln28hpc.c b/drivers/clk/analogbits/wrpll-cln28hpc.c
+> new file mode 100644
+> index 000000000000..2027872719e1
+> --- /dev/null
+> +++ b/drivers/clk/analogbits/wrpll-cln28hpc.c
+> @@ -0,0 +1,360 @@
 > +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2018-2019 SiFive, Inc.
+> + * Wesley Terpstra
+> + * Paul Walmsley
+> + *
+> + * This library supports configuration parsing and reprogramming of
+> + * the CLN28HPC variant of the Analog Bits Wide Range PLL.  The
+> + * intention is for this library to be reusable for any device that
+> + * integrates this PLL; thus the register structure and programming
+> + * details are expected to be provided by a separate IP block driver.
+> + *
+> + * The bulk of this code is primarily useful for clock configurations
+> + * that must operate at arbitrary rates, as opposed to clock configurations
+> + * that are restricted by software or manufacturer guidance to a small,
+> + * pre-determined set of performance points.
+> + *
+> + * References:
+> + * - Analog Bits "Wide Range PLL Datasheet", version 2015.10.01
+> + * - SiFive FU540-C000 Manual v1p0, Chapter 7 "Clocking and Reset"
+> + *   https://static.dev.sifive.com/FU540-C000-v1.0.pdf
+> + */
 > +
-> +#include <linux/dma-mapping.h>
+> +#include <linux/bug.h>
+> +#include <linux/err.h>
+> +#include <linux/log2.h>
+> +#include <linux/math64.h>
+> +#include <linux/clk/analogbits-wrpll-cln28hpc.h>
 > +
-> +static int __init atomic_pool_init(void)
+> +/* MIN_INPUT_FREQ: minimum input clock frequency, in Hz (Fref_min) */
+> +#define MIN_INPUT_FREQ                 7000000
+> +
+> +/* MAX_INPUT_FREQ: maximum input clock frequency, in Hz (Fref_max) */
+> +#define MAX_INPUT_FREQ                 600000000
+> +
+> +/* MIN_POST_DIVIDE_REF_FREQ: minimum post-divider reference frequency, in Hz */
+> +#define MIN_POST_DIVR_FREQ             7000000
+> +
+> +/* MAX_POST_DIVIDE_REF_FREQ: maximum post-divider reference frequency, in Hz */
+> +#define MAX_POST_DIVR_FREQ             200000000
+> +
+> +/* MIN_VCO_FREQ: minimum VCO frequency, in Hz (Fvco_min) */
+> +#define MIN_VCO_FREQ                   2400000000UL
+> +
+> +/* MAX_VCO_FREQ: maximum VCO frequency, in Hz (Fvco_max) */
+> +#define MAX_VCO_FREQ                   4800000000ULL
+> +
+> +/* MAX_DIVQ_DIVISOR: maximum output divisor.  Selected by DIVQ = 6 */
+> +#define MAX_DIVQ_DIVISOR               64
+> +
+> +/* MAX_DIVR_DIVISOR: maximum reference divisor.  Selected by DIVR = 63 */
+> +#define MAX_DIVR_DIVISOR               64
+> +
+> +/* MAX_LOCK_US: maximum PLL lock time, in microseconds (tLOCK_max) */
+> +#define MAX_LOCK_US                    70
+> +
+> +/*
+> + * ROUND_SHIFT: number of bits to shift to avoid precision loss in the rounding
+> + *              algorithm
+> + */
+> +#define ROUND_SHIFT                    20
+> +
+> +/*
+> + * Private functions
+> + */
+> +
+> +/**
+> + * __wrpll_calc_filter_range() - determine PLL loop filter bandwidth
+> + * @post_divr_freq: input clock rate after the R divider
+> + *
+> + * Select the value to be presented to the PLL RANGE input signals, based
+> + * on the input clock frequency after the post-R-divider @post_divr_freq.
+> + * This code follows the recommendations in the PLL datasheet for filter
+> + * range selection.
+> + *
+> + * Return: The RANGE value to be presented to the PLL configuration inputs,
+> + *         or -1 upon error.
+> + */
+> +static int __wrpll_calc_filter_range(unsigned long post_divr_freq)
 > +{
-> +	return dma_atomic_pool_init(GFP_KERNEL, pgprot_noncached(PAGE_KERNEL));
-> +}
-> +postcore_initcall(atomic_pool_init);
+> +       u8 range;
 > +
-> +void arch_dma_prep_coherent(struct page *page, size_t size)
+> +       if (post_divr_freq < MIN_POST_DIVR_FREQ ||
+> +           post_divr_freq > MAX_POST_DIVR_FREQ) {
+> +               WARN(1, "%s: post-divider reference freq out of range: %lu",
+> +                    __func__, post_divr_freq);
+> +               return -1;
+> +       }
+> +
+> +       if (post_divr_freq < 11000000)
+> +               range = 1;
+> +       else if (post_divr_freq < 18000000)
+> +               range = 2;
+> +       else if (post_divr_freq < 30000000)
+> +               range = 3;
+> +       else if (post_divr_freq < 50000000)
+> +               range = 4;
+> +       else if (post_divr_freq < 80000000)
+> +               range = 5;
+> +       else if (post_divr_freq < 130000000)
+> +               range = 6;
+> +       else
+> +               range = 7;
+
+Nitpick: This might be easier to read with a switch statement:
+
+	switch (post_divr_freq) {
+	case 0 ... 11000000:
+		return 1;
+	case 11000001 ... 18000000:
+		return 2;
+	case 18000001 ... 30000000:
+		return 3;
+	case 30000001 ... 50000000:
+		return 4;
+	case 50000000 ... 80000000:
+		return 5;
+	case 80000001 ... 130000000:
+		return 6;
+	}
+
+	return 7;
+
+> +
+> +       return range;
+> +}
+> +
+> +/**
+> + * __wrpll_calc_fbdiv() - return feedback fixed divide value
+> + * @c: ptr to a struct analogbits_wrpll_cfg record to read from
+> + *
+> + * The internal feedback path includes a fixed by-two divider; the
+> + * external feedback path does not.  Return the appropriate divider
+> + * value (2 or 1) depending on whether internal or external feedback
+> + * is enabled.  This code doesn't test for invalid configurations
+> + * (e.g. both or neither of WRPLL_FLAGS_*_FEEDBACK are set); it relies
+> + * on the caller to do so.
+> + *
+> + * Context: Any context.  Caller must protect the memory pointed to by
+> + *          @c from simultaneous modification.
+> + *
+> + * Return: 2 if internal feedback is enabled or 1 if external feedback
+> + *         is enabled.
+> + */
+> +static u8 __wrpll_calc_fbdiv(struct analogbits_wrpll_cfg *c)
+
+const c?
+
 > +{
-> +	memset(page_address(page), 0, size);
-> +
-> +	sbi_fence_dma(page_to_phys(page), size, DMA_BIDIRECTIONAL);
+> +       return (c->flags & WRPLL_FLAGS_INT_FEEDBACK_MASK) ? 2 : 1;
 > +}
 > +
-> +void arch_sync_dma_for_device(struct device *dev, phys_addr_t paddr,
-> +			      size_t size, enum dma_data_direction dir)
+> +/**
+> + * __wrpll_calc_divq() - determine DIVQ based on target PLL output clock rate
+> + * @target_rate: target PLL output clock rate
+> + * @vco_rate: pointer to a u64 to store the computed VCO rate into
+> + *
+> + * Determine a reasonable value for the PLL Q post-divider, based on the
+> + * target output rate @target_rate for the PLL.  Along with returning the
+> + * computed Q divider value as the return value, this function stores the
+> + * desired target VCO rate into the variable pointed to by @vco_rate.
+> + *
+> + * Context: Any context.  Caller must protect the memory pointed to by
+> + *          @vco_rate from simultaneous access or modification.
+> + *
+> + * Return: a positive integer DIVQ value to be programmed into the hardware
+> + *         upon success, or 0 upon error (since 0 is an invalid DIVQ value)
+
+Why are we doing that? Can't we return a normal error code and test for
+it being negative and then consider the number if its greater than 0 to
+be valid?
+
+> + */
+> +static u8 __wrpll_calc_divq(u32 target_rate, u64 *vco_rate)
+
+Why does target_rate need to be u32? Can it be unsigned long?
+
 > +{
-> +	switch (dir) {
-> +	case DMA_TO_DEVICE:
-> +	case DMA_FROM_DEVICE:
-> +	case DMA_BIDIRECTIONAL:
-> +		sbi_fence_dma(paddr, size, dir);
-> +		break;
-> +	default:
-> +		BUG();
-> +	}
+> +       u64 s;
+> +       u8 divq = 0;
+> +
+> +       if (!vco_rate) {
+> +               WARN_ON(1);
+> +               goto wcd_out;
+> +       }
+> +
+> +       s = div_u64(MAX_VCO_FREQ, target_rate);
+> +       if (s <= 1) {
+> +               divq = 1;
+> +               *vco_rate = MAX_VCO_FREQ;
+> +       } else if (s > MAX_DIVQ_DIVISOR) {
+> +               divq = ilog2(MAX_DIVQ_DIVISOR);
+> +               *vco_rate = MIN_VCO_FREQ;
+> +       } else {
+> +               divq = ilog2(s);
+> +               *vco_rate = target_rate << divq;
+> +       }
+> +
+> +wcd_out:
+> +       return divq;
 > +}
 > +
-> +void arch_sync_dma_for_cpu(struct device *dev, phys_addr_t paddr,
-> +			   size_t size, enum dma_data_direction dir)
+> +/**
+> + * __wrpll_update_parent_rate() - update PLL data when parent rate changes
+> + * @c: ptr to a struct analogbits_wrpll_cfg record to write PLL data to
+> + * @parent_rate: PLL input refclk rate (pre-R-divider)
+> + *
+> + * Pre-compute some data used by the PLL configuration algorithm when
+> + * the PLL's reference clock rate changes.  The intention is to avoid
+> + * computation when the parent rate remains constant - expected to be
+> + * the common case.
+> + *
+> + * Returns: 0 upon success or -1 if the reference clock rate is out of range.
+> + */
+> +static int __wrpll_update_parent_rate(struct analogbits_wrpll_cfg *c,
+> +                                     unsigned long parent_rate)
 > +{
-> +	switch (dir) {
-> +	case DMA_TO_DEVICE:
-> +	case DMA_FROM_DEVICE:
-> +	case DMA_BIDIRECTIONAL:
-> +		sbi_fence_dma(paddr, size, dir);
-> +		break;
-> +	default:
-> +		BUG();
-> +	}
+> +       u8 max_r_for_parent;
+
+Why not just unsigned long or unsigned int?
+
+> +
+> +       if (parent_rate > MAX_INPUT_FREQ || parent_rate < MIN_POST_DIVR_FREQ)
+> +               return -1;
+> +
+> +       c->parent_rate = parent_rate;
+> +       max_r_for_parent = div_u64(parent_rate, MIN_POST_DIVR_FREQ);
+> +       c->max_r = min_t(u8, MAX_DIVR_DIVISOR, max_r_for_parent);
+
+Then this min_t can be min() which is simpler to reason about.
+
+> +
+> +       /* Round up */
+> +       c->init_r = div_u64(parent_rate + MAX_POST_DIVR_FREQ - 1,
+> +                           MAX_POST_DIVR_FREQ);
+
+Don't we have DIV_ROUND_UP_ULL() for this?
+
+> +
+> +       return 0;
 > +}
-> diff --git a/arch/riscv/mm/ioremap.c b/arch/riscv/mm/ioremap.c
-> index bd2f2db..f6aaf1e 100644
-> --- a/arch/riscv/mm/ioremap.c
-> +++ b/arch/riscv/mm/ioremap.c
-> @@ -73,7 +73,7 @@ static void __iomem *__ioremap_caller(phys_addr_t addr, size_t size,
->   */
->  void __iomem *ioremap(phys_addr_t offset, unsigned long size)
->  {
-> -	return __ioremap_caller(offset, size, PAGE_KERNEL,
-> +	return __ioremap_caller(offset, size, PAGE_KERNEL_COHERENCY,
->  		__builtin_return_address(0));
->  }
->  EXPORT_SYMBOL(ioremap);
+> +
+> +/**
+> + * analogbits_wrpll_configure() - compute PLL configuration for a target rate
+> + * @c: ptr to a struct analogbits_wrpll_cfg record to write into
+> + * @target_rate: target PLL output clock rate (post-Q-divider)
+> + * @parent_rate: PLL input refclk rate (pre-R-divider)
+> + *
+> + * Given a pointer to a PLL context @c, a desired PLL target output
+> + * rate @target_rate, and a reference clock input rate @parent_rate,
+> + * compute the appropriate PLL signal configuration values.  PLL
+
+I don't know if we need to repeat the arguments and their description
+again in kernel-doc's first sentence. Maybe just "Compute the
+appropriate PLL signal configuration values and store in PLL context
+@c. PLL reprogramming is not ..."
+
+> + * reprogramming is not glitchless, so the caller should switch any
+> + * downstream logic to a different clock source or clock-gate it
+> + * before presenting these values to the PLL configuration signals.
+> + *
+> + * The caller must pass this function a pre-initialized struct
+> + * analogbits_wrpll_cfg record: either initialized to zero (with the
+> + * exception of the .name and .flags fields) or read from the PLL.
+> + *
+> + * Context: Any context.  Caller must protect the memory pointed to by @c
+> + *          from simultaneous access or modification.
+> + *
+> + * Return: 0 upon success; anything else upon failure.
+> + */
+> +int analogbits_wrpll_configure_for_rate(struct analogbits_wrpll_cfg *c,
+> +                                       u32 target_rate,
+
+Why does it need to be u32? Why not unsigned long?
+
+> +                                       unsigned long parent_rate)
+> +{
+> +       unsigned long ratio;
+> +       u64 target_vco_rate, delta, best_delta, f_pre_div, vco, vco_pre;
+> +       u32 best_f, f, post_divr_freq;
+> +       u8 fbdiv, divq, best_r, r;
+> +
+> +       if (c->flags == 0) {
+> +               WARN(1, "%s called with uninitialized PLL config", __func__);
+> +               return -1;
+
+Please return linux error codes instead of -1. -EINVAL?
+
+> +       }
+> +
+> +       /* Initialize rounding data if it hasn't been initialized already */
+> +       if (parent_rate != c->parent_rate) {
+> +               if (__wrpll_update_parent_rate(c, parent_rate)) {
+> +                       pr_err("%s: PLL input rate is out of range\n",
+> +                              __func__);
+> +                       return -1;
+> +               }
+> +       }
+> +
+> +       c->flags &= ~WRPLL_FLAGS_RESET_MASK;
+> +
+> +       /* Put the PLL into bypass if the user requests the parent clock rate */
+> +       if (target_rate == parent_rate) {
+> +               c->flags |= WRPLL_FLAGS_BYPASS_MASK;
+> +               return 0;
+> +       }
+> +       c->flags &= ~WRPLL_FLAGS_BYPASS_MASK;
+
+Nitpick: Detach this from the above if so that we can more clearly see
+the return 0 in the if statement.
+
+> +
+> +       /* Calculate the Q shift and target VCO rate */
+> +       divq = __wrpll_calc_divq(target_rate, &target_vco_rate);
+> +       if (divq == 0)
+
+It's more normal style to write this as if (!divq)
+
+> +               return -1;
+> +       c->divq = divq;
+> +
+> +       /* Precalculate the pre-Q divider target ratio */
+> +       ratio = div64_u64((target_vco_rate << ROUND_SHIFT), parent_rate);
+> +
+> +       fbdiv = __wrpll_calc_fbdiv(c);
+> +       best_r = 0;
+> +       best_f = 0;
+> +       best_delta = MAX_VCO_FREQ;
+> +
+> +       /*
+> +        * Consider all values for R which land within
+> +        * [MIN_POST_DIVR_FREQ, MAX_POST_DIVR_FREQ]; prefer smaller R
+> +        */
+> +       for (r = c->init_r; r <= c->max_r; ++r) {
+> +               /* What is the best F we can pick in this case? */
+
+Is this a TODO?
+
+> +               f_pre_div = ratio * r;
+> +               f = (f_pre_div + (1 << ROUND_SHIFT)) >> ROUND_SHIFT;
+> +               f >>= (fbdiv - 1);
+> +
+> +               post_divr_freq = div_u64(parent_rate, r);
+> +               vco_pre = fbdiv * post_divr_freq;
+> +               vco = vco_pre * f;
+> +
+> +               /* Ensure rounding didn't take us out of range */
+> +               if (vco > target_vco_rate) {
+> +                       --f;
+> +                       vco = vco_pre * f;
+> +               } else if (vco < MIN_VCO_FREQ) {
+> +                       ++f;
+> +                       vco = vco_pre * f;
+> +               }
+> +
+> +               delta = abs(target_rate - vco);
+> +               if (delta < best_delta) {
+> +                       best_delta = delta;
+> +                       best_r = r;
+> +                       best_f = f;
+> +               }
+> +       }
+> +
+> +       c->divr = best_r - 1;
+> +       c->divf = best_f - 1;
+> +
+> +       post_divr_freq = div_u64(parent_rate, best_r);
+> +
+> +       /* Pick the best PLL jitter filter */
+> +       c->range = __wrpll_calc_filter_range(post_divr_freq);
+
+This can return -1 (really should be an error code). Check the return
+value and then assign?
+
+> +
+> +       return 0;
+> +}
+> +
+> +/**
+> + * analogbits_wrpll_calc_output_rate() - calculate the PLL's target output rate
+> + * @c: ptr to a struct analogbits_wrpll_cfg record to read from
+> + * @parent_rate: PLL refclk rate
+> + *
+> + * Given a pointer to the PLL's current input configuration @c and the
+> + * PLL's input reference clock rate @parent_rate (before the R
+> + * pre-divider), calculate the PLL's output clock rate (after the Q
+> + * post-divider)
+> + *
+> + * Context: Any context.  Caller must protect the memory pointed to by @c
+> + *          from simultaneous modification.
+> + *
+> + * Return: the PLL's output clock rate, in Hz.
+> + */
+> +unsigned long analogbits_wrpll_calc_output_rate(struct analogbits_wrpll_cfg *c,
+
+Can c be const?
+
+> +                                               unsigned long parent_rate)
+> +{
+> +       u8 fbdiv;
+> +       u64 n;
+> +
+> +       WARN(c->flags & WRPLL_FLAGS_EXT_FEEDBACK_MASK,
+> +            "external feedback mode not yet supported");
+
+Should we return then?
+
+> +
+> +       fbdiv = __wrpll_calc_fbdiv(c);
+> +       n = parent_rate * fbdiv * (c->divf + 1);
+> +       n = div_u64(n, (c->divr + 1));
+
+Drop useless parenthesis?
+
+> +       n >>= c->divq;
+> +
+> +       return n;
+> +}
+> +
+> +/**
+> + * analogbits_wrpll_calc_max_lock_us() - return the time for the PLL to lock
+> + * @c: ptr to a struct analogbits_wrpll_cfg record to read from
+> + *
+> + * Return the minimum amount of time (in microseconds) that the caller
+> + * must wait after reprogramming the PLL to ensure that it is locked
+> + * to the input frequency and stable.  This is likely to depend on the DIVR
+> + * value; this is under discussion with the manufacturer.
+> + *
+> + * Return: the minimum amount of time the caller must wait for the PLL
+> + *         to lock (in microseconds)
+> + */
+> +unsigned int analogbits_wrpll_calc_max_lock_us(struct analogbits_wrpll_cfg *c)
+
+Can c be const?
+
+> +{
+> +       return MAX_LOCK_US;
+> +}
+> diff --git a/include/linux/clk/analogbits-wrpll-cln28hpc.h b/include/linux/clk/analogbits-wrpll-cln28hpc.h
+> new file mode 100644
+> index 000000000000..f8dc732086fc
+> --- /dev/null
+> +++ b/include/linux/clk/analogbits-wrpll-cln28hpc.h
+> @@ -0,0 +1,96 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (C) 2018 SiFive, Inc.
+> + * Wesley Terpstra
+> + * Paul Walmsley
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+
+We don't need this boiler plate now that we have SPDX. Please remove it.
+
+> + */
+> +
+> +#ifndef __LINUX_CLK_ANALOGBITS_WRPLL_CLN28HPC_H
+> +#define __LINUX_CLK_ANALOGBITS_WRPLL_CLN28HPC_H
+> +
+> +#include <linux/types.h>
+> +
+> +/* DIVQ_VALUES: number of valid DIVQ values */
+> +#define DIVQ_VALUES                            6
+> +
+> +/*
+> + * Bit definitions for struct analogbits_wrpll_cfg.flags
+> + *
+> + * WRPLL_FLAGS_BYPASS_FLAG: if set, the PLL is either in bypass, or should be
+> + *     programmed to enter bypass
+> + * WRPLL_FLAGS_RESET_FLAG: if set, the PLL is in reset
+> + * WRPLL_FLAGS_INT_FEEDBACK_FLAG: if set, the PLL is configured for internal
+> + *     feedback mode
+> + * WRPLL_FLAGS_EXT_FEEDBACK_FLAG: if set, the PLL is configured for external
+> + *     feedback mode (not yet supported by this driver)
+> + *
+> + * The flags WRPLL_FLAGS_INT_FEEDBACK_FLAG and WRPLL_FLAGS_EXT_FEEDBACK_FLAG are
+
+These flags aren't defined anywhere though? Instead they're shifts and
+masks below?
+
+> + * mutually exclusive.  If both bits are set, or both are zero, the struct
+> + * analogbits_wrpll_cfg record is uninitialized or corrupt.
+> + */
+> +#define WRPLL_FLAGS_BYPASS_SHIFT               0
+> +#define WRPLL_FLAGS_BYPASS_MASK                BIT(WRPLL_FLAGS_BYPASS_SHIFT)
+> +#define WRPLL_FLAGS_RESET_SHIFT                1
+> +#define WRPLL_FLAGS_RESET_MASK         BIT(WRPLL_FLAGS_RESET_SHIFT)
+> +#define WRPLL_FLAGS_INT_FEEDBACK_SHIFT 2
+> +#define WRPLL_FLAGS_INT_FEEDBACK_MASK  BIT(WRPLL_FLAGS_INT_FEEDBACK_SHIFT)
+> +#define WRPLL_FLAGS_EXT_FEEDBACK_SHIFT 3
+> +#define WRPLL_FLAGS_EXT_FEEDBACK_MASK  BIT(WRPLL_FLAGS_EXT_FEEDBACK_SHIFT)
+
+Maybe you can use FIELD_GET/FIELD_SET?
+
+> +
+> +/**
+> + * struct analogbits_wrpll_cfg - WRPLL configuration values
+> + * @divr: reference divider value (6 bits), as presented to the PLL signals
+> + * @divf: feedback divider value (9 bits), as presented to the PLL signals
+> + * @divq: output divider value (3 bits), as presented to the PLL signals
+> + * @flags: PLL configuration flags.  See above for more information
+> + * @range: PLL loop filter range.  See below for more information
+> + * @output_rate_cache: cached output rates, swept across DIVQ
+> + * @parent_rate: PLL refclk rate for which values are valid
+> + * @max_r: maximum possible R divider value, given @parent_rate
+> + * @init_r: initial R divider value to start the search from
+> + *
+> + * @divr, @divq, @divq, @range represent what the PLL expects to see
+> + * on its input signals.  Thus @divr and @divf are the actual divisors
+> + * minus one.  @divq is a power-of-two divider; for example, 1 =
+> + * divide-by-2 and 6 = divide-by-64.  0 is an invalid @divq value.
+> + *
+> + * When initially passing a struct analogbits_wrpll_cfg record, the
+> + * record should be zero-initialized with the exception of the @flags
+> + * field.  The only flag bits that need to be set are either
+> + * WRPLL_FLAGS_INT_FEEDBACK or WRPLL_FLAGS_EXT_FEEDBACK.
+> + *
+> + * Field names beginning with an underscore should be considered
+> + * private to the wrpll-cln28hpc.c code.
+
+This sentence can be removed.
+
+> + */
+> +struct analogbits_wrpll_cfg {
+> +       u8 divr;
+> +       u8 divq;
+> +       u8 range;
+> +       u8 flags;
+> +       u16 divf;
+> +/* private: */
+> +       u32 output_rate_cache[DIVQ_VALUES];
+> +       unsigned long parent_rate;
+> +       u8 max_r;
+> +       u8 init_r;
+> +};
+> +
+> +int analogbits_wrpll_configure_for_rate(struct analogbits_wrpll_cfg *c,
+> +                                       u32 target_rate,
+> +                                       unsigned long parent_rate);
+> +
+> +unsigned int analogbits_wrpll_calc_max_lock_us(struct analogbits_wrpll_cfg *c);
+> +
+> +unsigned long analogbits_wrpll_calc_output_rate(struct analogbits_wrpll_cfg *c,
+> +                                               unsigned long parent_rate);
+
+I wonder if it may be better to remove analogbits_ from all these
+exported functions. I suspect that it wouldn't conflict if it was
+prefixed with wrpll_ and it's shorter this way. Up to you.
+ 
 
 _______________________________________________
 linux-riscv mailing list
