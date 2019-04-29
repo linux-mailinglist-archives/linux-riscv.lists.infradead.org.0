@@ -2,57 +2,61 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CABBDE3A
-	for <lists+linux-riscv@lfdr.de>; Mon, 29 Apr 2019 10:45:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD3E4E659
+	for <lists+linux-riscv@lfdr.de>; Mon, 29 Apr 2019 17:27:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hOWNnns7pdsw0et+zeYIHm/4fxlH8xSOMnbGb6ub074=; b=e7ilkylY855Vn4
-	hhCBSym1OtK9y/UFtj2jvQhVxV/N5MoFku7+GwQ/n+QU/QzOaOr+RPW3qBZOGtsHud4uJgZMVWSd7
-	ge91n3oBli+ElJOLQm0+dOWSV9ozScYbfjIngo1y7taKbniS/DOLz4xNBUndMTM6qIMJJLsbJ+Miy
-	Haz4kEiCy6UDsL1bSgJM3X4pk9lqMvEbRd7ZDYlo3l9AEFZT83jSw8K+db+AsJaWtgwf0gIEb5Jdc
-	ouRGuDdsASoQBRxIwLQ97CBoQ3t1NEgfhLtMVIkRyhACYJ0jZ/zH4kS4rUhM4u5hc4iKdIjmq5CPR
-	THkRKBJqyRnCuk4njfeg==;
+	List-Owner; bh=phXq41f+7prkt8wqLqQVANeyAuflh9l8BiOOU6j3pN8=; b=qKgZzuM1JcmnVE
+	XkPSNERr9z8fPeo0NGDKfXc0SFgPZ2Bb6R2KccwVekhw6YPduONL1kyw9GyoNrHPMwnI0JEzLdT9t
+	NgTha4l+18l9MQervGFs4V8PSr4pasnjipclQDgRGqyU1vAI1CZx1/ZdyvESHi9EOhBEz/dlazxWi
+	OygReHxQl5KzaJ4xqr2yIeka8a2V2lBhSEVBDEkzaxVkdBxbtQjC1HjiSHLLuNSN/yfLm8L00/tbE
+	7hOX88EaS+rfPFlco7PQI/WqHmImvdChOzHx+P6xG+iAuF3YXKD6DwWyOY6FUGx9g0K3Go2WJmzMp
+	dG2iK7K4LUtVGyJf0AUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hL1v9-0004OH-1W; Mon, 29 Apr 2019 08:45:55 +0000
-Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
+	id 1hL8Bl-0006rr-78; Mon, 29 Apr 2019 15:27:29 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hL1v5-0004Nx-9h
- for linux-riscv@lists.infradead.org; Mon, 29 Apr 2019 08:45:53 +0000
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.2451035|-1; CH=green;
- DM=CONTINUE|CONTINUE|true|0.145498-0.00694801-0.847554; FP=0|0|0|0|0|-1|-1|-1;
- HT=e01a16368; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=4; RT=4; SR=0;
- TI=SMTPD_---.ERaVMaQ_1556527548; 
-Received: from localhost(mailfrom:han_mao@c-sky.com
- fp:SMTPD_---.ERaVMaQ_1556527548)
- by smtp.aliyun-inc.com(10.147.41.137);
- Mon, 29 Apr 2019 16:45:49 +0800
-Date: Mon, 29 Apr 2019 16:45:00 +0800
-From: Mao Han <han_mao@c-sky.com>
-To: Palmer Dabbelt <palmer@sifive.com>
-Subject: Re: [PATCH 3/3] riscv: Add support for libdw
-Message-ID: <20190429084441.GC22718@vmh-VirtualBox>
-References: <99f15d5c74727c31bf8d08b6cf948754e3e09943.1554961908.git.han_mao@c-sky.com>
- <mhng-a74d03ae-cfb4-4e42-8950-f90816975291@palmer-si-x1e>
+ id 1hL8Bh-0006rW-K3
+ for linux-riscv@lists.infradead.org; Mon, 29 Apr 2019 15:27:27 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.89)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1hL8Bg-0005bK-1n; Mon, 29 Apr 2019 17:27:24 +0200
+Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1hL8Bf-00046t-0a; Mon, 29 Apr 2019 17:27:23 +0200
+Date: Mon, 29 Apr 2019 17:27:22 +0200
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+To: Yash Shah <yash.shah@sifive.com>
+Subject: Re: [PATCH v11 0/2] PWM support for HiFive Unleashed
+Message-ID: <20190429152722.xw5bcocu2t77wb4u@pengutronix.de>
+References: <1553508779-9685-1-git-send-email-yash.shah@sifive.com>
+ <CAJ2_jOF8RsLWHkcCJzwfpeMN0+G0oqbHto=nBBnpZDNfuQMKOw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <mhng-a74d03ae-cfb4-4e42-8950-f90816975291@palmer-si-x1e>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <CAJ2_jOF8RsLWHkcCJzwfpeMN0+G0oqbHto=nBBnpZDNfuQMKOw@mail.gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_014551_919845_E63E8F02 
-X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-CacheID: sfid-20190429_082725_817677_238F9FD6 
+X-CRM114-Status: UNSURE (   8.43  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,30 +68,33 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, guoren@kernel.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mark.rutland@arm.com, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, Sachin Ghadi <sachin.ghadi@sifive.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Apr 25, 2019 at 02:11:04PM -0700, Palmer Dabbelt wrote:
-> On Thu, 11 Apr 2019 00:53:50 PDT (-0700), han_mao@c-sky.com wrote:
-> >This patch add support for DWARF register mappings and libdw registers
-> >initialization, which is used by perf callchain analyzing when
-> >--call-graph=dwarf is given.
-> 
-> Is there any way to make this the only backtracer?  It's the only one that's
-> likely to be useful on RISC-V without recompiling everything with
-> -fno-omit-frame-pointer, which has a major performance hit.
->
+On Mon, Apr 15, 2019 at 11:36:51AM +0530, Yash Shah wrote:
+> Hi,
+> =
 
-Frame pointer is the default record mode in record_callchain_opt.
-Some generic modification seems required to change this, default to
-use dwarf if riscv and show corresponding message in --help.
+> Any comments on this patch series?
+> Any more changes are needed or it looks good to be merged upstream?
 
-Thanks,
-Mao Han 
+In my eyes it would be great if Andreas Schwab was able to resolve the
+problems he pointed out in this thread.
+
+Best regards
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
 
 _______________________________________________
 linux-riscv mailing list
