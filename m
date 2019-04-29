@@ -2,93 +2,94 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93C31EB48
-	for <lists+linux-riscv@lfdr.de>; Mon, 29 Apr 2019 22:02:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CFFA5EB53
+	for <lists+linux-riscv@lfdr.de>; Mon, 29 Apr 2019 22:06:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wjyXdWb3uOOcOHDMJyJamTHMWXZ6YI7t//z8r+NjdGA=; b=XXAfyk4az8E896
-	mSLGQtYIAs8wkhXbxqt0QywSiiolRhcEuUID4uUoR+eRKpRg2mor8GUnli++SwCMwy/YsiGEhKoCB
-	ApBLD4H0ydmuRH6TdsJlrYewHAznQq3TUeZcq/CGLMI/SoMJMcnjiD8+SYf6rtm8vGXbPCKGE5o3L
-	RSsnbpL+sthM2WFtBa5sKIuOJRDxmKvJHHlUKxI5gHNhQnFChvGoSSDMIMGZjXQPVRzP1NYX6Wxue
-	WmV2mOcsTmSB5AYGBZGPza/ts8XGACsJ3rf9gx4wfnh5t0wGbLwHSCaAn+73E9id+1R6G/IRiiupy
-	TMbaBCIYI2UXJswdXMXg==;
+	List-Owner; bh=ZSxfzaKCBVbaHUMmIT+dMD3B5gjouv1trBnTZar4E2E=; b=BSAvgD/tzkgtZs
+	zyR3eRM6TuhBIVWulVM/JubA7tNORTACqfie3SP80kkXWEjexfDsWDukx4ypxeSpijU0kVnEmMq4W
+	Ea3cXThbI38SUi0I8lw+HKikL4ZbtiJlFuOkNXVG+fbl61tU+sZtw0H4sjAyfGQA/F4gPL6MT3Wfu
+	L4BVJJaY6IkOO0w0Q6V1pQPZf9Oxs7/kXS2JzrdvotmL9n+n5fOmu8MCreJHI7RoVatQP0xxQeNyq
+	9LcsyPYg25lFwo9Iq4QKJmU8BNvLIBEEH6wfuk9dY5hjzlw9EfCY/5nx74WUaUJJ3CLJNejWfiCKn
+	UIP1E+G2N7UXbeIfN6cQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLCTr-0005Lx-Vj; Mon, 29 Apr 2019 20:02:28 +0000
-Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1hLCXS-00075n-4k; Mon, 29 Apr 2019 20:06:10 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLCTn-0005L9-GH
- for linux-riscv@lists.infradead.org; Mon, 29 Apr 2019 20:02:25 +0000
-Received: by mail-it1-x144.google.com with SMTP id z4so1029867itc.3
- for <linux-riscv@lists.infradead.org>; Mon, 29 Apr 2019 13:02:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=d5+AR4ZQ6S8Je85I3GXhGfH5pQCSFdPGrCwlud052ps=;
- b=XRN9VSnXHB9YOZLhHV+j78/FmX9TQONi+10x6wv8ySgEM5Q3gC4vGptmW/bxkiWCCY
- rbcj40eh19ktqbvfBBaI7hdAi4X7nV/L6e/YdSS+D+EnzRxv2YhH95gH9aH/gutPNhO4
- RJsx+Ng3drdHuugTlgCMR2KJLCwrOUInFIlaTNKgT+fEPSEflUTe81/58oCezp2WB53J
- Tdx9M6r9uvjF5dJT3y8Nur7B6mBnp1vd2obduvs8Sw5WW76/Khxa+GnxKWThbOxThEYI
- WW9SEpLLQwn3CoVL/FBE6o4G0S4hGvPjxIUy76C2Ys9mrLSEiwClLRCuBLFDnHirvptg
- mgMQ==
+ id 1hLCXJ-00074p-Jw
+ for linux-riscv@lists.infradead.org; Mon, 29 Apr 2019 20:06:03 +0000
+Received: by mail-wm1-x341.google.com with SMTP id n25so857743wmk.4
+ for <linux-riscv@lists.infradead.org>; Mon, 29 Apr 2019 13:05:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=3bA1GjyiOqhiuVg99bZFV+UdtqoiitioJOxxTtpTJvM=;
+ b=hSNfUmq2FWt0hwGZGwRRx6ux4gGT19Z5mAXNwVuJXSN0QwcB9VBBQjDL8/gAfaXgqB
+ PRlKgIyaEV14eqq9h9L4TUyYrd5sgX0pGXQdZc909GLHZU364d3jtzd7xrRSpqa9A11b
+ D+Fs7K3AvlCcHWx8JTwPW3VZzB4DCl4bQlclAVlHOg4hc1KdEatZsLbKfVe8Z7vHPT9h
+ LEKz9P0XxBAI+WUUh4KOezOQ/PkWGLnMO4oHEX0ohv3qDcS7KWvjVKizM2Xlp9Zpd7OX
+ DZ2dAcF/7yL9BguEcP2PmPY8/G1Uz1NPA+EmHwCRlS5y9XWA4wBAg0gvQ7b2KYHtVEgX
+ L0aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=d5+AR4ZQ6S8Je85I3GXhGfH5pQCSFdPGrCwlud052ps=;
- b=Tioy9f++UHImH7DYGuiSmlapykjhhQ8lDJRPRzNwxFazgySVswjwK4A4lUX7DwNBSP
- N7f2hUfwI1oppT6ROnAQeNlyTcGw6BvSx79Qpd0kk8j+t9P/I6lUHN651SCmSdc5TIFe
- VmPGMsDqTO2IAdmIINyldX4ljPS4x6OgOGLXXDaa6HYZp5sYsLCjJ2u0RfYRZyramzpW
- +1KgPvgtXyGl1/8lzqNcjaVpbTjVrqlfFaSWSXibz625CX0/DDkJqcPQL+pCx0cE27BN
- 6L8iAXugBU2rC3wohFnA8X0eGt6BUnhBWsf9nLAKK/FhI3VPLIJf0IQDIlBokjQ1w4BK
- 94ng==
-X-Gm-Message-State: APjAAAWirmXhtVrsH1tcZ/90ILOPdV18pT9mk5oSVLpGCQgtbRSStSFR
- HXYGai2M81NiD5ZwL2wQQInoBQ==
-X-Google-Smtp-Source: APXvYqw118+txrOO593MhkfuosJ78cNcNeAwZ0b8WAls8UIMDjjD/RyZt63kf1zMwrwLeq+0e7uoZQ==
-X-Received: by 2002:a24:1f06:: with SMTP id d6mr645397itd.11.1556568142581;
- Mon, 29 Apr 2019 13:02:22 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- v25sm7723994ioh.41.2019.04.29.13.02.21
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=3bA1GjyiOqhiuVg99bZFV+UdtqoiitioJOxxTtpTJvM=;
+ b=Kbp6pmfa7sjXNed4N1oDQoy9tu3po0dYx+Dbgprg77s2Z39GeqN9/n2O8+2WfhjnTK
+ 62ksmdHYNq5GkZdDnaPpI3yRdrjlwM4QekcFfc6OM6mLV596yqiXkiYsw220X5WBmiDF
+ fyi6A+dQV4lLqd2tdaHe8fkKJyDI4JF/cv9dAFS+enUsU8DLXtDTdfkadz0L53OM2E4p
+ 0wQcUUYxFo3xy6gGAZ+9B1L4iQq5mSrLjKeYbKbJhrCht05ACkm76DNnPU4ETL49xtF1
+ 33DtgDZDTmlds0Zn7sf1Z1ZgUzfcQTGRPfx/rFoYJNU1ufmJENSvmbpxzum9aA7EbzvC
+ OKrw==
+X-Gm-Message-State: APjAAAUflqBh/uY1tCHPrm77e76LxWMhtBmkLDvuet5amvzjqiHMzo1r
+ WdCG7upIUErwxyD2oBmCPLk=
+X-Google-Smtp-Source: APXvYqxGiHSnnNJ1a/9EZhUrXaRjPVCn9qMn/skaREokKLrBVmvLfqx2RSYt4Z2utXm9gg1l+N3zKw==
+X-Received: by 2002:a1c:d7:: with SMTP id 206mr567213wma.69.1556568358168;
+ Mon, 29 Apr 2019 13:05:58 -0700 (PDT)
+Received: from gmail.com (2E8B0CD5.catv.pool.telekom.hu. [46.139.12.213])
+ by smtp.gmail.com with ESMTPSA id c63sm762243wma.29.2019.04.29.13.05.56
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 29 Apr 2019 13:02:21 -0700 (PDT)
-Date: Mon, 29 Apr 2019 13:02:21 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Anup Patel <anup@brainfault.org>
-Subject: Re: [PATCH] tty: Don't force RISCV SBI console as preferred
- console
-In-Reply-To: <CAAhSdy1nVFCwiP6vyy9i2f+S2WxLodmdwpwUKZUHYz15YfR64g@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1904291254300.7063@viisi.sifive.com>
-References: <20190425133435.56065-1-anup.patel@wdc.com>
- <9a8be7ef-e62e-2a93-9170-e3dc70dfb25f@wdc.com>
- <20190426062133.GA28529@infradead.org>
- <CAAhSdy1nVFCwiP6vyy9i2f+S2WxLodmdwpwUKZUHYz15YfR64g@mail.gmail.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ Mon, 29 Apr 2019 13:05:57 -0700 (PDT)
+Date: Mon, 29 Apr 2019 22:05:54 +0200
+From: Ingo Molnar <mingo@kernel.org>
+To: Atish Patra <atish.patra@wdc.com>
+Subject: Re: [PATCH v2 1/3] x86: Move DEBUG_TLBFLUSH option.
+Message-ID: <20190429200554.GA102486@gmail.com>
+References: <20190429195759.18330-1-atish.patra@wdc.com>
+ <20190429195759.18330-2-atish.patra@wdc.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190429195759.18330-2-atish.patra@wdc.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_130223_553167_75A9FEEC 
-X-CRM114-Status: GOOD (  15.14  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190429_130601_718351_790E9AE0 
+X-CRM114-Status: GOOD (  12.82  )
+X-Spam-Score: 2.5 (++)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 2.4 FSL_HELO_FAKE          No description available.
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (mingo.kernel.org[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,48 +101,68 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Palmer Dabbelt <palmer@sifive.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <atish.patra@wdc.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Jiri Slaby <jslaby@suse.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: "maintainer:X86 ARCHITECTURE \(32-BIT AND 64-BIT\)" <x86@kernel.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Thomas Gleixner <tglx@linutronix.de>,
+ Kees Cook <keescook@chromium.org>, linux-mm@kvack.org,
+ Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
+ Changbin Du <changbin.du@intel.com>, Ingo Molnar <mingo@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Vlastimil Babka <vbabka@suse.cz>,
+ Gary Guo <gary@garyguo.net>, "H. Peter Anvin" <hpa@zytor.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linux-riscv@lists.infradead.org,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 26 Apr 2019, Anup Patel wrote:
 
-> On Fri, Apr 26, 2019 at 11:51 AM Christoph Hellwig <hch@infradead.org> wrote:
-> >
-> > On Thu, Apr 25, 2019 at 09:41:21PM -0700, Atish Patra wrote:
-> > > Do we even need HVC_SBI console to be enabled by default? Disabling
-> > > CONFIG_HVC_RISCV_SBI seems to be fine while running in QEMU.
-> > >
-> > > If we don't need it, I suggest we should remove the config option from
-> > > defconfig in addition to this patch.
-> >
-> > I think the whole concept of the SBI console is a little dangerous.
-> > It means that for one piece of physical hardware (usually the uart)
-> > we have two entiries (the M-mode firmware and the OS) in control,
-> > which tends to rarely end well.
+* Atish Patra <atish.patra@wdc.com> wrote:
+
+> CONFIG_DEBUG_TLBFLUSH was added in 'commit 3df3212f9722 ("x86/tlb: add
+> tlb_flushall_shift knob into debugfs")' to support tlb_flushall_shift
+> knob. The knob was removed in 'commit e9f4e0a9fe27 ("x86/mm: Rip out
+> complicated, out-of-date, buggy TLB flushing")'.  However, the debug
+> option was never removed from Kconfig. It was reused in commit
+> '9824cf9753ec ("mm: vmstats: tlb flush counters")' but the commit text
+> was never updated accordingly.
+
+Please, when you mention several commits, put them into new lines to make 
+it readable, i.e.:
+
+  3df3212f9722 ("x86/tlb: add tlb_flushall_shift knob into debugfs")
+
+etc.
+
+> Update the Kconfig option description as per its current usage.
 > 
-> I think the SBI console is only useful for early SOC bringup and early
-> SOC debugging when most drivers are not available in upstream
-> kernel. It cannot (and should not) be used in production deployments.
+> Take this opprtunity to make this kconfig option a common option as it
+> touches the common vmstat code. Introduce another arch specific config
+> HAVE_ARCH_DEBUG_TLBFLUSH that can be selected to enable this config.
 
-Usually the primary use-case for an abstract console interface is for 
-desktop and server users.  Usually Linux distributions want a hardware 
-platform-specific bootloader or BIOS to specify and control the console.  
+"opprtunity"?
 
-Originally I suspect this was implemented in the SBI for semi-hosting 
-purposes, but that's no longer really applicable.
+> +config HAVE_ARCH_DEBUG_TLBFLUSH
+> +	bool
+> +	depends on DEBUG_KERNEL
+> +
+> +config DEBUG_TLBFLUSH
+> +	bool "Save tlb flush statstics to vmstat"
+> +	depends on HAVE_ARCH_DEBUG_TLBFLUSH
+> +	help
+> +
+> +	Add tlbflush statstics to vmstat. It is really helpful understand tlbflush
+> +	performance and behavior. It should be enabled only for debugging purpose
+> +	by individual architectures explicitly by selecting HAVE_ARCH_DEBUG_TLBFLUSH.
 
+"statstics"??
 
-- Paul
+Please put a spell checker into your workflow or read what you are 
+writing ...
+
+Thanks,
+
+	Ingo
 
 _______________________________________________
 linux-riscv mailing list
