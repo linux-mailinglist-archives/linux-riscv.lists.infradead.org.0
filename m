@@ -2,90 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E0FEF0D5
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Apr 2019 09:02:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47CECFE62
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Apr 2019 19:04:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iUQlr4bGjJ4doAQUxyFEFcuU5Xv3Eeg9JXIdcPz0Xuc=; b=kDQZ8PvwWJgv8d/kaiPyHpSvW
-	pHnmnC3cJWVF0dca0faObAnesOTxawUP7AonyslxZdeGtvu/cxAFkMa5R2yDeKAzNNeECinNWLqwr
-	IxvvEps6/iD4tIB9XBTLzl1QtbdjMCfR9+uIGUJS3+5/CaRY2fKk9ZbDCRSqK+iVTu7L2HxqilioC
-	hFRMOb6fYWX1SC8QVoCAs0IvEB/rABg0rXfkWKD0t0OsqWcT2dM4mQyVxKI+RyeJHwPDj07uez0RU
-	7kO6utx6JYCcHBvNxuaMAd7K/GTTI22KeHhF8FzdLqYsrlNE+Ix/opV44AR1fK5o5+4F7AMJZLNaB
-	gh8EhrkOA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RjYLb8R4s9nWcivJPClZxGpSYLb6E1E735xYzaJZLb4=; b=k9/Snm/qqQnBwi
+	Eg//23VfdqPTPiWpeBSgZSnLOwUv5JIP7O8lCOhtXMDb93Wg9c36DNQyN3x4nHA1i1mU7Vfqojeek
+	GEjd8UeP3pCeWsmHibXAmjoXrURqdnVO0z210qieXw+j1jYG/ToAc8uYzUnNPeHjG6EDQ5P0141rM
+	PflNS+D9X5gmp5sewWrUyJnV4BpR5uWOkrb/xlAYFlLgfA5EhT7h6gmmqsqgW9TTVlwWC5tNGIi1d
+	qS39dkYEuvveyPoenC8yhIeXZWw/5W/I4rTqgGvLOlMeTFeUA8oxKirbOlqWRJPvnG5WUcXDnvLI8
+	zcVi3horH+Mdy7G+Nizg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLMm8-0004Hn-9b; Tue, 30 Apr 2019 07:02:00 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hLWAs-0003ew-Av; Tue, 30 Apr 2019 17:04:10 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLMm1-0004HO-Q4
- for linux-riscv@lists.infradead.org; Tue, 30 Apr 2019 07:01:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1556607714; x=1588143714;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=8n6EaeW48PrrWrI6O68nRWKHHFqtIgZH5h/jIZE2emA=;
- b=H8iIur7wnUrCYBqI6zkziBii+v3Hc2mPjz0R0RGYdCTPZI8BI0dMGTsS
- wD7AoGXrISpGHv+/mo83wegr08ZmIo1A1mIKF5X4uamg9FluqbCJoRXTr
- oE7o7wA6LG2bA9F8tz7ORHR1uMIQOfPfdT8WKWhsHbah5Nj7pI5EFObjM
- DcOl56pwx8EVpehlKG771W7VU0qtF3xyKWE24etNzyma5lJ6G6onWceS6
- 8JBMIVLg8hlna+eQpIzgafDhVnztYvWSY8S5ZMNMgywbpj6yS7xo0gcM0
- jajG1/J8R2bJ8GQsP4jqBsu2n6Y08Zp6sLPYlw9E/z43rCWq57FOvzm1a w==;
-X-IronPort-AV: E=Sophos;i="5.60,412,1549900800"; d="scan'208";a="108865508"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 30 Apr 2019 15:01:42 +0800
-IronPort-SDR: lBgBoujcPuN40eDTqSo5eKejhgRr+AoQpiKK2NsFZyWRXoqZLs8AjqGYM2H06sUfmEYvo4Cn2+
- oW2UasjE6SfoBESvTJtDl88VFuh+I1ewBfOZgATWPS+gW5q94jQedwACqRHn1uR6M/jzR7Gbpa
- 1Ygc8hc7gCgBQUM2HoT3OY5cZwhfI3vpnEcMZqghYl+WGE9bjcOrAaIlLag32z1be08W+FFsmz
- CXowbe14eTup6L8KmTnOrvnIpFSe+i3cajWbPIfjiOHThgMtRLnqSxGpSPOfRcxp7yGGzKHOLJ
- FuaZckBmRN5x+iyKemFvZJbG
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP; 29 Apr 2019 23:38:03 -0700
-IronPort-SDR: V8FpbIILrmZlEWNywzIIeFQ6p3eKpRlWYNxEzYReZWV47Wtf3woyAd35c375i1ie32Y5Z6Qcnx
- Q1dfbi/+PngtaitPYuYIcAVPrRNhXuBHYMvZD8R6ie0fFh4jo8hJd5IlJk8QkI10eAkph3MELg
- kmi6oF4sMx6rNn1Tj5pRNWwXqHSEJEhRHUjcKhjk/JEz0ydelWS7hhkZOiOqk0R2IyFkW6HpYt
- XV4NbsSbbdewTu1FvOHFupBDCe68lDQTAMaax0CVsvI3a5w0LYtNNBB5T+31zE0GcbutkfZ8lK
- PJI=
-Received: from ind005306.ad.shared (HELO [10.86.55.35]) ([10.86.55.35])
- by uls-op-cesaip02.wdc.com with ESMTP; 30 Apr 2019 00:01:41 -0700
-Subject: Re: [PATCH v3 3/3] clk: sifive: add a driver for the SiFive FU540
- PRCI IP block
-To: Paul Walmsley <paul.walmsley@sifive.com>
-References: <20190411082733.3736-2-paul.walmsley@sifive.com>
- <20190411082733.3736-4-paul.walmsley@sifive.com>
- <256b9312-4740-e7b1-84ac-c0cc1ff4bc77@wdc.com>
- <alpine.DEB.2.21.9999.1904292258000.7063@viisi.sifive.com>
-From: Atish Patra <atish.patra@wdc.com>
-Message-ID: <67a4a4b6-e0d7-efc2-c318-a1138cddc9c7@wdc.com>
-Date: Tue, 30 Apr 2019 00:01:40 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.6.1
+ id 1hLWAh-0003Tu-3J
+ for linux-riscv@lists.infradead.org; Tue, 30 Apr 2019 17:04:00 +0000
+Received: by mail-io1-xd41.google.com with SMTP id c3so12864550iok.6
+ for <linux-riscv@lists.infradead.org>; Tue, 30 Apr 2019 10:03:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=etJ1WR4qO+3IuPfLuVdMXPbV+XDBvAU6tcECrR4xCrc=;
+ b=jv7DxdnVudtPMbDXxMEw/GM6NMPqoYoCohNeCzcb2ZSDFyhwR53p8yt5rztmB+SlAf
+ /6HkkM1OGFkTHmp6HqKcBGui9wGjTtcdnfFajTPjETmcuAIhe9NUW0xK/jTAi7NKtmHI
+ lL2AftBMEwQCtNz7CwfBTolnOwMRZxouvJvbRP9iDJKEwDZbq+agZE/edhY16NycGWzf
+ D0zkdHg9jEo/1wZ4p2aGffpsSAtgX6TsX+Vd0um8aKmDQ3T9FoNbSkve4NsttbhxTaq4
+ o5LzkTsG3l9hA0mHJxLmZ2vDRt2nqULQ71SsYLA1yapsTMA5oOJoYFdsY9wZ06I3p7yQ
+ /tDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=etJ1WR4qO+3IuPfLuVdMXPbV+XDBvAU6tcECrR4xCrc=;
+ b=LGdPogQYf/TLBD3Qbjj8Um+Aq2peozjjCEfvu0zy6AIIegw98aEibT7zLLRAmparOr
+ +rmKpvnvcVgpBwIM7ADlM5wW59XvrrfyNfrz/SzPo2+xcEvOlX9XViNqx0NqfZJmQecA
+ 42hfl0BY6bXdwwwGQ6pe5NcpH2NSZOr6+63PoKcJiST9FyNoh4vBag7SMho+v2QgTS2O
+ 8MjEB2NYF+h2Zh0vEkPtNkCFwXQ8YK58EDYl+kUOfCcHxXPREu7J+Y/Hg4qeX0hRHGD1
+ 56cTiZDnxM8AhFEan2d1lMkTcsrV+mZeP1r2qfgSjWr4Afb+msLTkgapL5JRUoBcBuTe
+ g2oQ==
+X-Gm-Message-State: APjAAAUlQiTodMz5WD3zpzF20eUeZ9qogv62Dse9CETA03mQpoUo6PVa
+ CVWCROTVro6lfyFBT+fYFnbYog==
+X-Google-Smtp-Source: APXvYqwtQ6krzDTRPbFVrDov44ozx7k+PlhNoNgKqYFMwYfxTI/Usg4vUIfk12zixNg61hOvW70aRA==
+X-Received: by 2002:a5e:9307:: with SMTP id k7mr16429275iom.155.1556643837925; 
+ Tue, 30 Apr 2019 10:03:57 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id 12sm526406itm.2.2019.04.30.10.03.57
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 30 Apr 2019 10:03:57 -0700 (PDT)
+Date: Tue, 30 Apr 2019 10:03:56 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+Subject: Re: [PATCH v2 1/3] mtd: spi-nor: add support for is25wp256
+In-Reply-To: <1556474956-27786-2-git-send-email-sagar.kadam@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1904301002170.7063@viisi.sifive.com>
+References: <1556474956-27786-1-git-send-email-sagar.kadam@sifive.com>
+ <1556474956-27786-2-git-send-email-sagar.kadam@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1904292258000.7063@viisi.sifive.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190430_000156_627204_236DFD4A 
-X-CRM114-Status: GOOD (  24.79  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190430_100359_147256_083938C2 
+X-CRM114-Status: GOOD (  17.08  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,109 +96,86 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Paul Walmsley <paul@pwsan.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Stephen Boyd <sboyd@kernel.org>, "Wesley W . Terpstra" <wesley@sifive.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Megan Wachs <megan@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>
+Cc: palmer@sifive.com, bbrezillon@kernel.org, richard@nod.at,
+ tudor.ambarus@microchip.com, linux-kernel@vger.kernel.org,
+ marek.vasut@gmail.com, linux-mtd@lists.infradead.org, paul.walmsley@sifive.com,
+ linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
+ dwmw2@infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 4/29/19 11:20 PM, Paul Walmsley wrote:
-> Hi Atish,
-> 
-> On Sat, 27 Apr 2019, Atish Patra wrote:
-> 
->> On 4/11/19 1:28 AM, Paul Walmsley wrote:
->>> Add driver code for the SiFive FU540 PRCI IP block.  This IP block
->>> handles reset and clock control for the SiFive FU540 device and
->>> implements SoC-level clock tree controls and dividers.
-> 
-> [...]
-> 
->>> +static const struct of_device_id sifive_fu540_prci_of_match[] = {
->>> +	{ .compatible = "sifive,fu540-c000-prci", },
->>
->> All the existing unleashed devices have prci clock compatible string as
->> "sifive,aloeprci0" or "sifive,ux00prci0". Should it be added to maintain
->> backward compatibility?
-> 
-> As you note, just adding the old (unreviewed) compatible string isn't
-> enough.
-> 
->> Even after adding the compatible string (just for my testing purpose), I get
->> this while booting.
->>
->> [    0.104571] sifive-fu540-prci 10000000.prci: expected only two parent
->> clocks, found 1
->> [    0.112460] sifive-fu540-prci 10000000.prci: could not register clocks: -22
->> [    0.119499] sifive-fu540-prci: probe of 10000000.prci failed with error -22
->>
->> Looking at the DT entries, your DT patch has
->>
->> +		prci: clock-controller@10000000 {
->> +			compatible = "sifive,fu540-c000-prci";
->> +			reg = <0x0 0x10000000 0x0 0x1000>;
->> +			clocks = <&hfclk>, <&rtcclk>;
->> +			#clock-cells = <1>;
->> +		};
->>
->>
->> while current DT from FSBL
->> (https://github.com/sifive/freedom-u540-c000-bootloader/blob/master/fsbl/ux00_fsbl.dts)
->>
->> prci: prci@10000000 {
->> 			compatible = "sifive,aloeprci0", "sifive,ux00prci0";
->> 			reg = <0x0 0x10000000 0x0 0x1000>;
->> 			reg-names = "control";
->> 			clocks = <&refclk>;
->> 			#clock-cells = <1>;
->> 		};
->>
->> This seems to be the cause of error. It looks like this patch needs a complete
->> different DT (your DT patch) than FSBL provides.
-> 
-> That's right.  That old data was completely out of tree and unreviewed.
-> It's part of the reason why we're going through the process of posting DT
-> data to the kernel and devicetree lists and getting that data reviewed:
-> 
-> https://lore.kernel.org/linux-riscv/20190411084242.4999-1-paul.walmsley@sifive.com/
-> 
->> This means everybody must upgrade the FSBL to use your DT patch in their
->> boards once this driver is merged. Is this okay?
-> 
-> People can continue to use the out-of-tree DT data if they want.  They'll
-> just have to continue to patch their kernels to add out-of-tree drivers,
-> as they do now.
-> 
+On Sun, 28 Apr 2019, Sagar Shrikant Kadam wrote:
 
-There were some concerns about the breaking the existing setup in the past.
-
-> Otherwise, if people want to use the upstream PRCI driver in the upstream
-> kernel, then it's necessary to use DT data that aligns with what's in the
-> upstream binding documentation.
+> Update spi_nor_id tablet for is25wp256 (32MB)device from ISSI,
+> present on HiFive Unleashed dev board (Rev: A00).
 > 
+> Set method to enable quad mode for ISSI device in flash parameters
+> table.
 
-Personally, it makes sense to me. I am okay with upgrading FSBL to 
-update the DT once the patches are in mainline. In fact, I used to do 
-that for topology patch series. This will help to add any new DT entry 
-in future as well.
+This patch was based on one originally written by Wes and/or Palmer: 
+https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
 
-However, if SiFive can share a prebuilt FSBL image for everybody to 
-upgrade, that would be very helpful.
+The right thing to do is to note this in the commit message.
 
-Regards,
-Atish
+> Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+> ---
+>  drivers/mtd/spi-nor/spi-nor.c | 10 +++++++++-
+>  include/linux/mtd/spi-nor.h   |  1 +
+>  2 files changed, 10 insertions(+), 1 deletion(-)
 > 
-> - Paul
+> diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
+> index fae1474..c5408ed 100644
+> --- a/drivers/mtd/spi-nor/spi-nor.c
+> +++ b/drivers/mtd/spi-nor/spi-nor.c
+> @@ -1834,6 +1834,10 @@ static int sr2_bit7_quad_enable(struct spi_nor *nor)
+>  			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+>  	{ "is25wp128",  INFO(0x9d7018, 0, 64 * 1024, 256,
+>  			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+> +	{ "is25wp256", INFO(0x9d7019, 0, 64 * 1024, 1024,
+> +			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
+> +			SPI_NOR_4B_OPCODES)
+> +	},
+>  
+>  	/* Macronix */
+>  	{ "mx25l512e",   INFO(0xc22010, 0, 64 * 1024,   1, SECT_4K) },
+> @@ -3650,6 +3654,10 @@ static int spi_nor_init_params(struct spi_nor *nor,
+>  		case SNOR_MFR_MACRONIX:
+>  			params->quad_enable = macronix_quad_enable;
+>  			break;
+> +		case SNOR_MFR_ISSI:
+> +			params->quad_enable = macronix_quad_enable;
+> +			break;
+> +
+>  
+>  		case SNOR_MFR_ST:
+>  		case SNOR_MFR_MICRON:
+> @@ -4127,7 +4135,7 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+>  	if (ret)
+>  		return ret;
+>  
+> -	if (nor->addr_width) {
+> +	if (nor->addr_width && JEDEC_MFR(info) != SNOR_MFR_ISSI) {
+>  		/* already configured from SFDP */
+>  	} else if (info->addr_width) {
+>  		nor->addr_width = info->addr_width;
+> diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+> index b3d360b..ff13297 100644
+> --- a/include/linux/mtd/spi-nor.h
+> +++ b/include/linux/mtd/spi-nor.h
+> @@ -19,6 +19,7 @@
+>  #define SNOR_MFR_ATMEL		CFI_MFR_ATMEL
+>  #define SNOR_MFR_GIGADEVICE	0xc8
+>  #define SNOR_MFR_INTEL		CFI_MFR_INTEL
+> +#define SNOR_MFR_ISSI		0x9d		/* ISSI */
+>  #define SNOR_MFR_ST		CFI_MFR_ST	/* ST Micro */
+>  #define SNOR_MFR_MICRON		CFI_MFR_MICRON	/* Micron */
+>  #define SNOR_MFR_MACRONIX	CFI_MFR_MACRONIX
+> -- 
+> 1.9.1
 > 
-
+> 
 
 _______________________________________________
 linux-riscv mailing list
