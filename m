@@ -2,74 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6015C116C6
-	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 11:57:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7329D11742
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 12:35:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZWy39Dh3NQcs4CsTf5bILYSHCaIFClvNaW2vOeWrts0=; b=qubHMgRk9ECwxJ
-	2vrM6WZWOlKgzPND2avEm/PVPTqPkJIfOPi/GjmiROBOy24Kb30i6D8RzAD4QDpkMuiBmmgrXjUTf
-	7IK0OPGnXgnHJbhfRFmckx2BnjhdXYKt2tD4nwL1JfR5QoDF9A+QH71iKIP1w1YU2MHVnGQ2S6Xi3
-	4+vhyWS23Z11UUwWgHxk8DJE4Buugso1JRyfokYg3g7HaxXGCtBO4y2ByNSHVVkvJ/JKX+SVSqzm4
-	e5pLGx1BI54blH9HNZ6RG48ammMhIySnIQyfG891Au9d6Ba0zTSw/8a3IiTMH5s7C8U9oFihDtlk1
-	ENCBfmW1OEy+R5nBaKvg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=KMGhlaYY59zBD9WYfQEx4+SC8yPpwuV7dGnHcOUxFM8=; b=T2r
+	tJC13J/luaG0yzPA3K3V/baAGdVnjfIfz/m0CIeItlGcCTL3GfIJJTbRnbAzRbQQCEE5BKALm4Odo
+	kn7oc6es7Zg2Sc7BEPaNkpG/yQTbvCn7wIxFJ2O35m6ZgZWCWq9toqsdyZiJ2Q+K5xIyradpLk7uU
+	fheW95FW8zwyh0J/CvewKYXw1i6FCAGnY3MWin+/t45Pv3m2MgipydzoAsfZk/z4wr1pLbqSEHsoQ
+	oUaCNvqd1RLAC+wf+h/73uND4i+jD9f0YKeXPsKoEb7RM9Y/b84zcqOHRrLPeYGyHBW5elW7PZNBw
+	0VUP4X4NVby6tYZAUEtc2cN0C+BoEqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hM8Sf-00012Y-FM; Thu, 02 May 2019 09:57:05 +0000
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41])
+	id 1hM93c-000618-61; Thu, 02 May 2019 10:35:16 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hM8SU-0000ta-Vj
- for linux-riscv@lists.infradead.org; Thu, 02 May 2019 09:56:56 +0000
-Received: by mail-vs1-xe41.google.com with SMTP id y196so990246vsc.10
- for <linux-riscv@lists.infradead.org>; Thu, 02 May 2019 02:56:54 -0700 (PDT)
+ id 1hM93Y-000603-AR
+ for linux-riscv@lists.infradead.org; Thu, 02 May 2019 10:35:14 +0000
+Received: by mail-pf1-x443.google.com with SMTP id j11so884980pff.13
+ for <linux-riscv@lists.infradead.org>; Thu, 02 May 2019 03:35:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YTKXG2BvapVjfHjBieKgNIDpAb1iozjfKpPYlJpJCFY=;
- b=dwHn/TwmEZtLalAjTJaZ3KIcPdZ9rZYVCzoASmcBLCQ2HZz+JrS8iAHfSMi03PVOlX
- jhQJRblKhXQte3p8Dps8571Kx2Pm4z1iWhEdMaUSI3abVmfoUcnOZIU7f8HmmAorvpZT
- N4ReNlAJZyVfyPyNBN0iox/p+5gU8/icOBDPUqW0CCMcy8o6sSB1m8SQHRyRAXGn63YB
- 0sQcy7iQrHetWP89TrhaBNg0n90VomGRDsDNsRjxtqAWyS8aFNdg9Gjck0mhE9McG1rN
- ah7Ik2b0DBjcwiGSizHzzAa4obeoj7CpVfh7L1vdlFvow8Id7IiUeDYh7ftUDN5RuvdO
- g89w==
+ h=from:to:cc:subject:date:message-id;
+ bh=wZru5L4BwlMPJIzUrAzcCZvzKe2NTmlwt/CFToiy7Vs=;
+ b=mX9KMI93SFhiHFZmRrSsQkw0yfoNOZT/f3xuRGJIUlEe4sgZGellOCd6jb7ZIfjpOF
+ 8ISyT58zUe1pShow8tMD1VF3snDw8geJ+PVIMjeF+do/3flqK42ioDxBE2Wlu6p5+eym
+ 19d4unsAjG54qqhfbbXfsikKv4gFLho8iMv+CaEO4tZE2GEqR4DO9xZtpJ+sh/+HC/5y
+ /pQWz0ejLdonONRlEjWq4825blVVvGfGp6UU7XXuI8kx/gRovHn6Erb+CfdPjNGWCMf/
+ NgNXUhNXwIgiBSuBre/hUSZBIX7rqdNFQWymugF9C9mXqOIIzg/UPED10GjBtc2/H9Ck
+ N8Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YTKXG2BvapVjfHjBieKgNIDpAb1iozjfKpPYlJpJCFY=;
- b=WbM05xgAaLHSBrAKbT17q+5TRGvYeRHg0ZKLhP3/OkTwp23c7nAbxcQ1XV4SMnzcVK
- m59By8HzGAldxhlSO7jWPsZnxZP6rXnf77xrt/k7m8EYw6VV++qK6EyRq8lyGNF3LJvj
- Q0R5DkZXGwXXMGK65AUaDFDls4r51WGNW7DoLpoZ0F3cdDil8Lx6j7fPfeWsJswoxc8v
- wLS4qUJxljAWoy8mKsCtiL3eU7tkXG0i3sxgkTEsGBzRDo8o3nPV28cj4RIc4BqCAeUP
- NUmYzZ070nxbpWDt4i37OuSNNqy9qgjfGpjLfr8kFuXwbTAaFBVoU5IyXpKSUr7+zYub
- vv+g==
-X-Gm-Message-State: APjAAAUOz63f7hZ8FG1lmmIjxYCVWKDY1tr7Pue7fAMMFH42olycuS+M
- J9XNE+XChxadogBEFht9pAGGYrL4LsR0A8IJ1+hOQw==
-X-Google-Smtp-Source: APXvYqzna4Ba9px66ruZmRjnBEj2xyZLRILQtXV8Oiu172P7DHpQmbk1B3YbTZWyFveVlgVkmqJjC9k4n8Us7sC2mlY=
-X-Received: by 2002:a67:7286:: with SMTP id n128mr1437892vsc.116.1556791013544; 
- Thu, 02 May 2019 02:56:53 -0700 (PDT)
-MIME-Version: 1.0
-References: <1556474956-27786-1-git-send-email-sagar.kadam@sifive.com>
- <1556474956-27786-3-git-send-email-sagar.kadam@sifive.com>
- <alpine.DEB.2.21.9999.1904301016400.7063@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1904301016400.7063@viisi.sifive.com>
-From: Sagar Kadam <sagar.kadam@sifive.com>
-Date: Thu, 2 May 2019 15:26:42 +0530
-Message-ID: <CAARK3HmzH8cNb1rTtWGwg3g8cOkGFx52v=eomZWcBkeLcx4+-Q@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] mtd: spi-nor: add support to unlock flash device.
-To: Paul Walmsley <paul.walmsley@sifive.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=wZru5L4BwlMPJIzUrAzcCZvzKe2NTmlwt/CFToiy7Vs=;
+ b=S9U0MViYnWoX9wTa4kuVgocp1qcxlhpHtbWEIw6XOi9AHFwgjXSoMKXbRzj8NlOdNR
+ kW6SXvkKmpeahNwK6cC+of6eqj84LuNMMgBskgU5MtTJMcDS8JkFaAQ5dnCRqy/bB/Ob
+ B6aD+6TAdxZajX78TguzfWwhD/uieQD1ahCy/hbVV9to8RniF9Unmsj8cBtQEDdyg4B9
+ 7L+qrJBGsNNP2Ed3s8p6T95TNkkqyYZ9sZUhhOIRugPcNXtjBndKVd6pygYY/cTSdKw1
+ BTdq86d1Z3+qGWQkKCZsP1RsnXjuy9lFLxQ2b4XNa7pyx4nk2DJiSxwjoZMSn5QMzcov
+ X9YQ==
+X-Gm-Message-State: APjAAAXkRIl4n0XQcqLy+OoxqDYyWFZsuwMSBdjZSWflYMcf9cqZPwOr
+ 41pid378jK3iRu3j4zJn2LID9kJvnlY=
+X-Google-Smtp-Source: APXvYqwhlRnOQWCW7OXs/Fj/+cKri7DVuTQHAbVswxgM3+H54vt4x285HDiFeTDUBiPVFAJHrPZ9ZA==
+X-Received: by 2002:a63:4c24:: with SMTP id z36mr1290196pga.130.1556793310922; 
+ Thu, 02 May 2019 03:35:10 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id
+ h187sm69141133pfc.52.2019.05.02.03.35.06
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Thu, 02 May 2019 03:35:09 -0700 (PDT)
+From: Yash Shah <yash.shah@sifive.com>
+To: linux-riscv@lists.infradead.org, devicetree@vger.kernel.org,
+ palmer@sifive.com
+Subject: [PATCH v2 0/2] L2 cache controller support for SiFive FU540
+Date: Thu,  2 May 2019 16:04:51 +0530
+Message-Id: <1556793293-21019-1-git-send-email-yash.shah@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190502_025655_020241_E2068D82 
-X-CRM114-Status: GOOD (  24.39  )
+X-CRM114-CacheID: sfid-20190502_033512_401106_28D354D9 
+X-CRM114-Status: GOOD (  12.09  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:e41 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -90,142 +91,51 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Palmer Dabbelt <palmer@sifive.com>, bbrezillon@kernel.org, richard@nod.at,
- tudor.ambarus@microchip.com, linux-kernel@vger.kernel.org,
- marek.vasut@gmail.com, linux-mtd@lists.infradead.org,
- linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
- dwmw2@infradead.org
+Cc: mark.rutland@arm.com, aou@eecs.berkeley.edu, linux-kernel@vger.kernel.org,
+ sachin.ghadi@sifive.com, Yash Shah <yash.shah@sifive.com>, robh+dt@kernel.org,
+ paul.walmsley@sifive.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Apr 30, 2019 at 10:49 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> On Sun, 28 Apr 2019, Sagar Shrikant Kadam wrote:
->
-> > Nor device (is25wp256 mounted on HiFive unleashed Rev A00 board) from ISSI
-> > have memory blocks guarded by block protection bits BP[0,1,2,3].
-> >
-> > Clearing block protection bits,unlocks the flash memory regions
-> > The unlock scheme is registered during nor scans.
->
-> This also looks like it's partially based on Wes or Palmer's patch from
->
-> https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
->
-> Please note that in the patch message.
-Thank you Paul for pointing this out.
-Yes,  I missed to add it to commit message and will submit a V3
-version of the patch.
+This patch series adds an L2 cache controller driver with DT documentation
+for SiFive FU540-C000.
 
-> > Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-> > ---
-> >  drivers/mtd/spi-nor/spi-nor.c | 48 ++++++++++++++++++++++++++++++++++++++++++-
-> >  include/linux/mtd/spi-nor.h   |  1 +
-> >  2 files changed, 48 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-> > index c5408ed..81c7b3e 100644
-> > --- a/drivers/mtd/spi-nor/spi-nor.c
-> > +++ b/drivers/mtd/spi-nor/spi-nor.c
-> > @@ -1461,6 +1461,46 @@ static int macronix_quad_enable(struct spi_nor *nor)
-> >  }
-> >
-> >  /**
-> > + * issi_unlock() - clear BP[0123] write-protection.
-> > + * @nor: pointer to a 'struct spi_nor'
-> > + * @ofs: offset from which to unlock memory
-> > + * @len: number of bytes to unlock
-> > + * Bits [2345] of the Status Register are BP[0123].
-> > + * ISSI chips use a different block protection scheme than other chips.
-> > + * Just disable the write-protect unilaterally.
-> > + * Return: 0 on success, -errno otherwise.
->
-> This is closer to kernel-doc format, but not quite.  Please update this to
-> align to
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/doc-guide/kernel-doc.rst#n57
->
-This is a good pointer. I will align the function description
-according to kernel-doc format.
+These two patches were initially part of the patch series:
+'L2 cache controller and EDAC support for SiFive SoCs'
+https://lkml.org/lkml/2019/4/15/320
+In order to merge L2 cache controller driver without any dependency on EDAC,
+the L2 cache controller patches are re-posted separately in this series.
 
->
-> - Paul
->
-> > + */
-> > +static int issi_unlock(struct spi_nor *nor, loff_t ofs, uint64_t len)
-> > +{
-> > +     int ret, val;
-> > +     u8 mask = SR_BP0 | SR_BP1 | SR_BP2 | SR_BP3;
-> > +
-> > +     val = read_sr(nor);
-> > +     if (val < 0)
-> > +             return val;
-> > +     if (!(val & mask))
-> > +             return 0;
-> > +
-> > +     write_enable(nor);
-> > +
-> > +     write_sr(nor, val & ~mask);
-> > +
-> > +     ret = spi_nor_wait_till_ready(nor);
-> > +     if (ret)
-> > +             return ret;
-> > +
-> > +     ret = read_sr(nor);
-> > +     if (ret > 0 && !(ret & mask)) {
-> > +             dev_info(nor->dev,
-> > +                     "ISSI Block Protection Bits cleared SR=0x%x", ret);
-> > +             return 0;
-> > +     } else {
-> > +             dev_err(nor->dev, "ISSI Block Protection Bits not cleared\n");
-> > +             return -EINVAL;
-> > +     }
-> > +}
-> > +
-> > +/**
-> >   * spansion_quad_enable() - set QE bit in Configuraiton Register.
-> >   * @nor:     pointer to a 'struct spi_nor'
-> >   *
-> > @@ -1836,7 +1876,7 @@ static int sr2_bit7_quad_enable(struct spi_nor *nor)
-> >                       SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-> >       { "is25wp256", INFO(0x9d7019, 0, 64 * 1024, 1024,
-> >                       SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-> > -                     SPI_NOR_4B_OPCODES)
-> > +                     SPI_NOR_4B_OPCODES | SPI_NOR_HAS_LOCK)
-> >       },
-> >
-> >       /* Macronix */
-> > @@ -4078,6 +4118,12 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
-> >               nor->flash_is_locked = stm_is_locked;
-> >       }
-> >
-> > +     /* NOR protection support for ISSI chips */
-> > +     if (JEDEC_MFR(info) == SNOR_MFR_ISSI ||
-> > +         info->flags & SPI_NOR_HAS_LOCK) {
-> > +             nor->flash_unlock = issi_unlock;
-> > +
-> > +     }
-> >       if (nor->flash_lock && nor->flash_unlock && nor->flash_is_locked) {
-> >               mtd->_lock = spi_nor_lock;
-> >               mtd->_unlock = spi_nor_unlock;
-> > diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
-> > index ff13297..9a7d719 100644
-> > --- a/include/linux/mtd/spi-nor.h
-> > +++ b/include/linux/mtd/spi-nor.h
-> > @@ -127,6 +127,7 @@
-> >  #define SR_BP0                       BIT(2)  /* Block protect 0 */
-> >  #define SR_BP1                       BIT(3)  /* Block protect 1 */
-> >  #define SR_BP2                       BIT(4)  /* Block protect 2 */
-> > +#define SR_BP3                       BIT(5)  /* Block protect 3 for ISSI device*/
-> >  #define SR_TB                        BIT(5)  /* Top/Bottom protect */
-> >  #define SR_SRWD                      BIT(7)  /* SR write protect */
-> >  /* Spansion/Cypress specific status bits */
-> > --
-> > 1.9.1
-> >
-> >
+The patchset is based on Linux 5.1-rc2 and tested on HiFive Unleashed
+board with additional board related patches needed for testing can be
+found at dev/yashs/L2_cache_controller branch of:
+https://github.com/yashshah7/riscv-linux.git
+
+Change history:
+v2
+- Mention the valid values for cache properties in DT documentation
+- Remove the unnecessary property 'reg-names'
+- Add "cache" to supported compatible string property
+- Remove conditional checks from debugfs functions in sifive_l2_cache.c
+
+Yash Shah (2):
+  RISC-V: Add DT documentation for SiFive L2 Cache Controller
+  RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive
+    SoCs
+
+ .../devicetree/bindings/riscv/sifive-l2-cache.txt  |  51 +++++
+ arch/riscv/mm/Makefile                             |   1 +
+ arch/riscv/mm/sifive_l2_cache.c                    | 221 +++++++++++++++++++++
+ 3 files changed, 273 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/riscv/sifive-l2-cache.txt
+ create mode 100644 arch/riscv/mm/sifive_l2_cache.c
+
+-- 
+1.9.1
+
 
 _______________________________________________
 linux-riscv mailing list
