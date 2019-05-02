@@ -2,84 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CFF712239
-	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 20:57:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F9551223D
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 20:58:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
 	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t33DcyZ6H18KmjNF/ahmTCNNyCXZgcCAgUKOieFW7Gs=; b=h7QeC9VRzsTihE
-	VNsoCWm2CxwrcbIzpghxwmN3H1+GBZRR7ui13RWQ6EWClBKhcyU8u6cV6sbPNo9RmduW7pIJMclYw
-	neuJvmPNTnU/IDGSGFegX765Pkz/lYTy4LTjL75cF7VuavBFsfvilwnoPCt9/XZ9kKran7564pP25
-	ygWsv4CCe+JoKrc7zIgyD8yrB83ubSXr2t0tuMP8qmY85DSOnHWwNY0PNjKYJCWbDX2UkqESexwZh
-	qDC5m29FK3ay+U2s4GAyUMynGhm+Fh/72wm7pK4iBrwu4bediCx9r0rSKT3Wx/eYiIVnLzenKBTOg
-	uJ9AYdhrgjF3/h3XRZAQ==;
+	List-Owner; bh=bNqzjYa85DMC1ZdRMLd46NLUZJLNMQzOXMV6/hvX+NM=; b=eeH0/WPhYQFTvt
+	vVFYiM3NvLczO00lJOGSq3G6FXNz0zKu7wSJnekLpTTZwBDRNXJCwPyOJyV95YD/dn7XGB2iXgVRS
+	cwn7cfAg6WjyQTMR3eWb5k//euq2HdsguDKk4psxMmz+Utz4nweTdsKtaw44FlxWJ7YEcu5FExZ9k
+	HaLBVYCdKBgHI3wH6UqVL5A2hYVVQfKsXBKYQGJvmRu1rzSFJrYvtY4q9pCv96XSBsA1Tjp4Gfjog
+	5O1B4LhaPsGmqspElGrhKUb36X5M1kZu174Q7fApBJsOtiK8A9GnGYF+NTxLvrFle7rTNwtetyyoq
+	3oUVMxp+r0OlWD00EEGw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMGta-0007Es-Bx; Thu, 02 May 2019 18:57:26 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hMGuQ-0007JT-1t; Thu, 02 May 2019 18:58:18 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMGtW-0007EJ-5o
- for linux-riscv@lists.infradead.org; Thu, 02 May 2019 18:57:24 +0000
-Received: by mail-pg1-x543.google.com with SMTP id h1so1480611pgs.2
- for <linux-riscv@lists.infradead.org>; Thu, 02 May 2019 11:57:21 -0700 (PDT)
+ id 1hMGuM-0007J7-MY
+ for linux-riscv@lists.infradead.org; Thu, 02 May 2019 18:58:16 +0000
+Received: by mail-pg1-x544.google.com with SMTP id e6so1476771pgc.4
+ for <linux-riscv@lists.infradead.org>; Thu, 02 May 2019 11:58:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=lM2c+tlo6jGaS6GcPDKA87rxkv7bKTgFNvNaS30BO0w=;
- b=TI91P15erL2OywYjQHKmIyJKBc6sPfbma4Qr9Fh0sTkr/TzyaepILFifwYW4g3wWaw
- JuJPUAw4UCajVjqYmP0wxQ4QClyaC1XNagHXWS8h3ToDYO6hg5yh/bnRCdy2zSZpUXIF
- +ZrwD3wVO9CmImJ6Cr65rI0qa09e2fyN1HhuaRJcY8jarKy4cgoU5rDr7ewq9l9WpxVM
- UnfLfaw/exsvG2xp7cpGC3033uhM41JUT8rpyrK/C29Hn+61Jm4tlyynwE0NkdVriH1A
- Pvav5x2WyCk2Er31bwKzupa2n2HetnuU0Cf+9naP7mL/8eBllYDQq7WXm98G685XPEDf
- cTdw==
+ :mime-version; bh=5FgSWzT6cp2rvJ1/txB98YcNdupdx1c0jgM9/LDh5nA=;
+ b=czjywQBHbF0HA0icUfD5qcGpwPG3KMZkyi3FO1PvySKIAEdrS3LBSNyBEwB/WJZkDE
+ z4GOfEWnt/T5/aTAsPev7b/4n6zxo3xHvW1hpiZDxFYiLhxaWd5v8Y7Ju5fcFrsszttJ
+ oPTqz6uy/8U0CeTBuOyFcuDmfMjW6dmDfvM6B9cm43s5hRMX/r7JP8VFj4eaX6IR8Ydi
+ RsYZnO0o8J/IgIpYifiWy1s3319OwkDHVDEYdl7nRAoCPxBKQrKepf1AOsDP82+bU0nG
+ n2eSTYzXxYfx+u0fMIMix0W+jqcjR0vv15MwD1OKqAXGvyFmYJQR6iemBYbNm+EEBdLx
+ XuBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
  :message-id:mime-version;
- bh=lM2c+tlo6jGaS6GcPDKA87rxkv7bKTgFNvNaS30BO0w=;
- b=LRShRg/OmMxHIGB8I/kacZc95cUbyaAgLBgnbQFzkvaP/3/fdlzfSssJ0n8jN++Xks
- GL/oh13Mm85lWEyzdBExxb+ve5y7i3pfOYflb8OTgQxfk/na1ASZrHdgsNekCRP6ev2A
- Y9Mnq/y4eaLMk/O1yzFaFB2LS7G3ZFp5VJAYgVaMsS7gB/1sPz7vPyG7btiX8JNxrnCv
- aXot4XTwI4YDYZwSDPfhGp2Wv6/uspqWm0f+0CRfdNxeTi5WtBxbjYGFiM7xCRYZOpJ8
- rsjjFBhem24b87kwkTxmwNfG1KlUZjmY3WgnwrV89r7rbTyzu+7CEpGAQ5aCQMwynVpc
- avKA==
-X-Gm-Message-State: APjAAAUA8Vh4+i4Towj+sXAghttwJP2StATqFzM6nMkBC7zJb5lE+XTa
- VX88Uy3caqZ8wtBm99yejbJ0zA==
-X-Google-Smtp-Source: APXvYqymPePW8yUoH5ZJ85MmB2vDe8cjepG/rf5Xz4mWP/mQIgzpZMZjapJeyzFwZOJiaQm+QroUbA==
-X-Received: by 2002:a65:608a:: with SMTP id t10mr5631142pgu.125.1556823440489; 
- Thu, 02 May 2019 11:57:20 -0700 (PDT)
+ bh=5FgSWzT6cp2rvJ1/txB98YcNdupdx1c0jgM9/LDh5nA=;
+ b=QgiqpXQZ8/+WUTYLNtWMU2APmbrUG34Zh1OwopBTq+HTgXavlBJF34UWXkAfBPnI7V
+ Rd1aonYm3XS7bz5mc1VbmBRABqdsXT2lXxXmkaMK19MwLbRdH+dTGx6z9I4YbT6AcfER
+ I7jKsS4HfKKNiJiQo005S+39GB6siJrVZwPL5LZfLTH/sK4hOWKZlB5bLbp1L05qCNhm
+ bQ67Td+kyOXdtkNurCxgm/wCOnC199cEVa5+iMfAsJEOTC0D5xPT929nIY30C3PWKzh8
+ tHqxhmMHFrTgZoSOO+/XPQUkFmm2Rl6/wyyGj5+vyC8FD85qsO7t3yITCY/sbPoVhfBM
+ 1gpQ==
+X-Gm-Message-State: APjAAAUS6LUHZhxEEHKdF2K05mru0JxTde5qtVBj+u9pJaigD8kIkskW
+ RGbtn4OP8G7SKXLXZm8hnv5TzAkaQTyoRg==
+X-Google-Smtp-Source: APXvYqxRLqzZyute+oKqyMi3R2+Lo0Yovv9sNOI08RvIWIN78cB1mkCzZthekg8/lTPfNIgyB2pVTQ==
+X-Received: by 2002:a62:7089:: with SMTP id l131mr6047867pfc.158.1556823493889; 
+ Thu, 02 May 2019 11:58:13 -0700 (PDT)
 Received: from localhost ([2601:602:9200:a1a5:e50d:c7fa:92aa:c53d])
  by smtp.googlemail.com with ESMTPSA id
- j22sm30688288pfi.139.2019.05.02.11.57.19
+ j12sm19593256pff.148.2019.05.02.11.58.12
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 02 May 2019 11:57:19 -0700 (PDT)
+ Thu, 02 May 2019 11:58:13 -0700 (PDT)
 From: Kevin Hilman <khilman@baylibre.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH v5 0/2] tty: serial: add DT bindings and serial driver for
- the SiFive FU540 UART
-In-Reply-To: <alpine.DEB.2.21.9999.1904191407310.5118@viisi.sifive.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-riscv@lists.infradead.org,
+ gregkh@linuxfoundation.org
+Subject: Re: [PATCH v5 2/2] tty: serial: add driver for the SiFive UART
+In-Reply-To: <20190413020111.23400-3-paul.walmsley@sifive.com>
 References: <20190413020111.23400-1-paul.walmsley@sifive.com>
- <7hmukmew5j.fsf@baylibre.com> <883f3d5f-9b04-1435-30d3-2b48ab7eb76d@wdc.com>
- <7h5zr9dcsi.fsf@baylibre.com> <f2bb876c-2b44-663b-ea06-d849f721fb6c@wdc.com>
- <7htvetbupi.fsf@baylibre.com>
- <alpine.DEB.2.21.9999.1904191407310.5118@viisi.sifive.com>
-Date: Thu, 02 May 2019 11:57:18 -0700
-Message-ID: <7hsgtwlm5t.fsf@baylibre.com>
+ <20190413020111.23400-3-paul.walmsley@sifive.com>
+Date: Thu, 02 May 2019 11:58:12 -0700
+Message-ID: <7hpnp0lm4b.fsf@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190502_115722_268578_3D48FE4D 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190502_115814_737693_8F2154CC 
+X-CRM114-Status: GOOD (  11.13  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -96,12 +93,10 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>,
- "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: Paul Walmsley <paul@pwsan.com>, Emil Renner Berthing <kernel@esmil.dk>,
+ Wesley Terpstra <wesley@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Julia Lawall <julia.lawall@lip6.fr>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Jiri Slaby <jslaby@suse.com>, Andreas Schwab <schwab@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
@@ -109,24 +104,43 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 Paul Walmsley <paul.walmsley@sifive.com> writes:
 
-> On Fri, 19 Apr 2019, Kevin Hilman wrote:
+> Add a serial driver for the SiFive UART, found on SiFive FU540 devices
+> (among others).
 >
->> Looks like Paul has so far only tested this with BBL + FSBL, so I think
->> I'll wait to hear from him how that setup might be different from using
->> OpenSBI + u-boot.
+> The underlying serial IP block is relatively basic, and currently does
+> not support serial break detection.  Further information on the IP
+> block can be found in the documentation and Chisel sources:
 >
-> I'd recommend testing the DT patches with BBL and the open-source FSBL.  
-> That's the traditional way of booting RISC-V Linux systems.
+>     https://static.dev.sifive.com/FU540-C000-v1.0.pdf
+>
+>     https://github.com/sifive/sifive-blocks/tree/master/src/main/scala/devices/uart
+>
+> This driver was written in collaboration with Wesley Terpstra
+> <wesley@sifive.com>.
+>
+> Tested on a SiFive HiFive Unleashed A00 board, using BBL and the open-
+> source FSBL (using a DT file based on what's targeted for mainline).
+>
+> This revision incorporates changes based on comments by Julia Lawall
+> <julia.lawall@lip6.fr>, Emil Renner Berthing <kernel@esmil.dk>, and
+> Andreas Schwab <schwab@suse.de>.  Thanks also to Andreas for testing
+> the driver with his userspace and reporting a bug with the
+> set_termios implementation.
+>
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Signed-off-by: Paul Walmsley <paul@pwsan.com>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Jiri Slaby <jslaby@suse.com>
+> Cc: Palmer Dabbelt <palmer@sifive.com>
+> Cc: Wesley Terpstra <wesley@sifive.com>
+> Cc: linux-serial@vger.kernel.org
+> Cc: linux-riscv@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: Julia Lawall <julia.lawall@lip6.fr>
+> Cc: Emil Renner Berthing <kernel@esmil.dk>
+> Cc: Andreas Schwab <schwab@suse.de>
 
-OK, but as you know, not the tradiaional way of booting most other linux
-systems.  ;)
-
-I'm working on getting RISC-V supported in kernelCI in a fully-automated
-way, and I don't currently have the time to add add support for BBL+FSBL
-to kernelCI automation tooling, so having u-boot support is the best way
-to get support in kernelCI, IMO.
-
-Kevin
+Tested-by: Kevin Hilman <khilman@baylibre.com>
 
 _______________________________________________
 linux-riscv mailing list
