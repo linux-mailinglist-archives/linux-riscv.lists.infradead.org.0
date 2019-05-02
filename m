@@ -2,56 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1659C1206A
-	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 18:42:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F018120B0
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 18:56:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:To:Subject:From:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sf5qBVTJW5hA2dRGDBMRuHe+f4Ee0pfJILAadBBQNc8=; b=OkzWADQNLThoU7
-	geBq7XLlJVhJRFnzrFJC5mR5DjpcrYptKmENKovrqKLv96Jnw7mxjASTx+qbEbHEuo3TKrGTzoSDu
-	AGiuj/d87JVQMHuPImyKx/9BqZw0/XBCCFDwsepNLx9sscfu2TwXcrmOl2zwwT3e3f6rANO6AYKiS
-	RPRXqb3iQeDuaV7h0SRkZgrR77PjgkVRsgBgqRyRhUWgyphFCnCc5iKR94uD/88jcQwrUbrlwgmwO
-	2Ko2EdOQSqzLDB0TR3EYWD+MrQ078bQpJWLxWtrcswh5ZwbtTr4BjMwpl4ZG34NeHItU9gLBEtwub
-	sdcVLTMWMks9saCzaoZQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ok34H3rxFr8VP9+smfxdfg2u4k9Jl3vo+T51eAOR39o=; b=AdFsrhCUAJV3XT0+wKjm633jF
+	8YM163T9iG3ea6yarFryU7qlTpj4KbdfeEcxARmWk8fr68wSiUFOepPogiXoD000Ps+fMMFhUmxl/
+	BUXVRJFNmDc/zDRWdeXmycQHloKVTH3hKOA4rxn2vDvwGU4BzRF6u1KjlCLDiRB6TTMXBzi39TGQz
+	KGE7v3/pbr0jwJtpvl60DFmdKc7Y1auFy3o0Txg4SVo5TPs3zdt9fEy5uw75wvA6NTrcWYnie6QSD
+	pUYp4qhRAe6S/kAfK1wN3nkdp32aiHI7qGWGLE+HYkxWnrQ/r//8PerltFyvgOiOy6fiXIe6mqzSR
+	+yuy5mv8A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMEmw-0007aC-PL; Thu, 02 May 2019 16:42:26 +0000
-Received: from foss.arm.com ([217.140.101.70])
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMEmt-0007Zc-Rp
- for linux-riscv@lists.infradead.org; Thu, 02 May 2019 16:42:25 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 30FC8A78;
- Thu,  2 May 2019 09:42:21 -0700 (PDT)
-Received: from [10.1.196.105] (eglon.cambridge.arm.com [10.1.196.105])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CB5023F5AF;
- Thu,  2 May 2019 09:42:18 -0700 (PDT)
-From: James Morse <james.morse@arm.com>
-Subject: Re: [PATCH] edac: sifive: Add EDAC platform driver for SiFive SoCs
-To: Yash Shah <yash.shah@sifive.com>
-References: <1556795761-21630-1-git-send-email-yash.shah@sifive.com>
- <1556795761-21630-2-git-send-email-yash.shah@sifive.com>
-Message-ID: <4072c812-d3bf-9ad5-2b30-6b2a5060bb55@arm.com>
-Date: Thu, 2 May 2019 17:42:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
+	id 1hMF0V-00060j-4g; Thu, 02 May 2019 16:56:27 +0000
+Received: from pegase1.c-s.fr ([93.17.236.30])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hMF0G-0005sl-L5; Thu, 02 May 2019 16:56:19 +0000
+Received: from localhost (mailhub1-int [192.168.12.234])
+ by localhost (Postfix) with ESMTP id 44w1cS5Fwsz9v0Sx;
+ Thu,  2 May 2019 18:56:08 +0200 (CEST)
+Authentication-Results: localhost; dkim=pass
+ reason="1024-bit key; insecure key"
+ header.d=c-s.fr header.i=@c-s.fr header.b=b8I7W1X+; dkim-adsp=pass;
+ dkim-atps=neutral
+X-Virus-Scanned: Debian amavisd-new at c-s.fr
+Received: from pegase1.c-s.fr ([192.168.12.234])
+ by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
+ with ESMTP id 4wFI9OSqYAkB; Thu,  2 May 2019 18:56:08 +0200 (CEST)
+Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
+ by pegase1.c-s.fr (Postfix) with ESMTP id 44w1cS3z29z9v0Sy;
+ Thu,  2 May 2019 18:56:08 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=c-s.fr; s=mail;
+ t=1556816168; bh=Q15LZ3d9bdq9dEoD9BccUn9mlT4iR41PhF1gwPGTDdo=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=b8I7W1X+eD9E6f4QICHVyiGb2O+HBaJpc4Gwg6pUFtlpNKygpjn8VED8m8xg+JkOB
+ IY+qSAZGLB4WFz+ZuAhNE6IOZlIPudaswik9x6vnbwMIKU3+fxYh/fSD0okZc5lnaA
+ cdvwJC11zLQtHCiz8Kggoo4ZlThkHqB1Sg9CxUag=
+Received: from localhost (localhost [127.0.0.1])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id 3A25B8B8FE;
+ Thu,  2 May 2019 18:56:10 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at c-s.fr
+Received: from messagerie.si.c-s.fr ([127.0.0.1])
+ by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
+ with ESMTP id RamEpSyy5iYB; Thu,  2 May 2019 18:56:10 +0200 (CEST)
+Received: from PO15451 (unknown [192.168.4.90])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id CE4878B899;
+ Thu,  2 May 2019 18:56:08 +0200 (CEST)
+Subject: Re: [PATCH 12/15] powerpc/nohash/64: switch to generic version of pte
+ allocation
+To: Mike Rapoport <rppt@linux.ibm.com>,
+ Andrew Morton <akpm@linux-foundation.org>
+References: <1556810922-20248-1-git-send-email-rppt@linux.ibm.com>
+ <1556810922-20248-13-git-send-email-rppt@linux.ibm.com>
+From: Christophe Leroy <christophe.leroy@c-s.fr>
+Message-ID: <adcb6ae6-48d9-5ba9-2732-a0ab1d96667c@c-s.fr>
+Date: Thu, 2 May 2019 18:56:07 +0200
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <1556795761-21630-2-git-send-email-yash.shah@sifive.com>
-Content-Language: en-GB
+In-Reply-To: <1556810922-20248-13-git-send-email-rppt@linux.ibm.com>
+Content-Language: fr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190502_094223_916161_931BB231 
-X-CRM114-Status: GOOD (  25.89  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190502_095618_108248_8137A965 
+X-CRM114-Status: GOOD (  15.27  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [217.140.101.70 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [93.17.236.30 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,201 +95,63 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, paulmck@linux.ibm.com, gregkh@linuxfoundation.org,
- palmer@sifive.com, linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com,
- sachin.ghadi@sifive.com, bp@alien8.de, paul.walmsley@sifive.com,
- linux-riscv@lists.infradead.org, mchehab@kernel.org, davem@davemloft.net,
- linux-edac@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Michal Hocko <mhocko@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Guo Ren <guoren@kernel.org>, linux-riscv@lists.infradead.org,
+ linux-arch@vger.kernel.org, Richard Weinberger <richard@nod.at>,
+ Helge Deller <deller@gmx.de>, x86@kernel.org,
+ Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Matt Turner <mattst88@gmail.com>,
+ Sam Creasey <sammy@sammy.net>, Arnd Bergmann <arnd@arndb.de>,
+ linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
+ linux-m68k@lists.linux-m68k.org, Greentime Hu <green.hu@gmail.com>,
+ Ley Foon Tan <lftan@altera.com>, Guan Xuetao <gxt@pku.edu.cn>,
+ linux-arm-kernel@lists.infradead.org, linux-parisc@vger.kernel.org,
+ linux-mips@vger.kernel.org, Richard Kuo <rkuo@codeaurora.org>,
+ Paul Burton <paul.burton@mips.com>, linux-hexagon@vger.kernel.org,
+ nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Yash,
-
-Sorry for the delay on the earlier version of this - I was trying to work out what happens
-when multiple edac drivers probe based on DT...
-
-
-On 02/05/2019 12:16, Yash Shah wrote:
-> The initial ver of EDAC driver supports:
-> - ECC event monitoring and reporting through the EDAC framework for SiFive
->   L2 cache controller.
-> 
-
-You probably don't want this bit preserved in the kernel log:
-{
-
-> This patch depends on patch
-> 'RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs'
-> https://lkml.org/lkml/2019/5/2/309
-
-}
-
-> The EDAC driver registers for notifier events from the L2 cache controller
-> driver (arch/riscv/mm/sifive_l2_cache.c) for L2 ECC events
-> 
-> Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> ---
-
-(if you put it here, it gets discarded when the patch is applied)
-
-Having an separately posted dependency like this is tricky, as this code can't be
-used/tested until the other bits are merged.
-
-
->  MAINTAINERS                |   6 +++
->  arch/riscv/Kconfig         |   1 +
->  drivers/edac/Kconfig       |   6 +++
->  drivers/edac/Makefile      |   1 +
->  drivers/edac/sifive_edac.c | 121 +++++++++++++++++++++++++++++++++++++++++++++
->  5 files changed, 135 insertions(+)
->  create mode 100644 drivers/edac/sifive_edac.c
-
-> diff --git a/drivers/edac/sifive_edac.c b/drivers/edac/sifive_edac.c
-> new file mode 100644
-> index 0000000..eb7a9b9
-> --- /dev/null
-> +++ b/drivers/edac/sifive_edac.c
-> @@ -0,0 +1,121 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * SiFive Platform EDAC Driver
-> + *
-> + * Copyright (C) 2018-2019 SiFive, Inc.
-> + *
-> + * This driver is partially based on octeon_edac-pc.c
-> + *
-> + */
-> +#include <linux/edac.h>
-> +#include <linux/platform_device.h>
-> +#include "edac_module.h"
-> +
-> +#define DRVNAME "sifive_edac"
-> +
-> +extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
-> +extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
-
-Ideally these would live in some header file.
-
-
-> +struct sifive_edac_priv {
-> +	struct notifier_block notifier;
-> +	struct edac_device_ctl_info *dci;
-> +};
-> +
-> +/**
-> + * EDAC error callback
-> + *
-> + * @event: non-zero if unrecoverable.
-> + */
-> +static
-> +int ecc_err_event(struct notifier_block *this, unsigned long event, void *ptr)
-> +{
-> +	const char *msg = (char *)ptr;
-> +	struct sifive_edac_priv *p;
-> +
-> +	p = container_of(this, struct sifive_edac_priv, notifier);
-> +
-> +	if (event)
-> +		edac_device_handle_ue(p->dci, 0, 0, msg);
-> +	else
-> +		edac_device_handle_ce(p->dci, 0, 0, msg);
-
-This would be easier to read if your SIFIVE_L2_ERR_TYPE_UE were exposed via some header file.
-
-
-> +
-> +	return NOTIFY_STOP;
-
-Your notifier register calls are EXPORT_SYMBOL()d, but Kconfig forbids building this as a
-module, so its not for this driver. If there is another user of this notifier-chain, won't
-NOTIFY_STOP here break it?
-
-
-> +}
-> +
-> +static int ecc_register(struct platform_device *pdev)
-> +{
-> +	struct sifive_edac_priv *p;
-> +
-> +	p = devm_kzalloc(&pdev->dev, sizeof(*p), GFP_KERNEL);
-> +	if (!p)
-> +		return -ENOMEM;
-> +
-> +	p->notifier.notifier_call = ecc_err_event;
-> +	platform_set_drvdata(pdev, p);
-> +
-> +	p->dci = edac_device_alloc_ctl_info(sizeof(*p), "sifive_ecc", 1,
-
-sizeof(*p) here is how much space in struct edac_device_ctl_info you need for private
-storage... but you never touch p->dci->pvt_info, so you aren't using it.
-
-0?
-
-
-> +					    "sifive_ecc", 1, 1, NULL, 0,
-> +					    edac_device_alloc_index());
-> +	if (IS_ERR(p->dci))
-> +		return PTR_ERR(p->dci);
-> +
-> +	p->dci->dev = &pdev->dev;
-> +	p->dci->mod_name = "Sifive ECC Manager";
-> +	p->dci->ctl_name = dev_name(&pdev->dev);
-> +	p->dci->dev_name = dev_name(&pdev->dev);
-> +
-> +	if (edac_device_add_device(p->dci)) {
-> +		dev_err(p->dci->dev, "failed to register with EDAC core\n");
-> +		goto err;
-> +	}
-> +
-> +	register_sifive_l2_error_notifier(&p->notifier);
-> +
-> +	return 0;
-> +
-> +err:
-> +	edac_device_free_ctl_info(p->dci);
-> +
-> +	return -ENXIO;
-> +}
-
-> +struct platform_device *sifive_pdev;
-
-static?
-
-
-> +static int __init sifive_edac_init(void)
-> +{
-> +	int ret;
-> +
-> +	sifive_pdev = platform_device_register_simple(DRVNAME, 0, NULL, 0);
-> +	if (IS_ERR(sifive_pdev))
-> +		return PTR_ERR(sifive_pdev);
-> +
-> +	ret = ecc_register(sifive_pdev);
-> +	if (ret)
-> +		platform_device_unregister(sifive_pdev);
-> +
-> +	return ret;
-> +}
-> +
-> +static void __exit sifive_edac_exit(void)
-> +{
-> +	ecc_unregister(sifive_pdev);
-> +	platform_device_unregister(sifive_pdev);
-> +}
-
-Looks good to me. I think this patch should go with its two dependencies, I'm not sure why
-it got split off...
-
-Reviewed-by: James Morse <james.morse@arm.com>
-
-
-Thanks,
-
-James
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+CgpMZSAwMi8wNS8yMDE5IMOgIDE3OjI4LCBNaWtlIFJhcG9wb3J0IGEgw6ljcml0wqA6Cj4gVGhl
+IDY0LWJpdCBib29rLUUgcG93ZXJwYyBpbXBsZW1lbnRzIHB0ZV9hbGxvY19vbmUoKSwKPiBwdGVf
+YWxsb2Nfb25lX2tlcm5lbCgpLCBwdGVfZnJlZV9rZXJuZWwoKSBhbmQgcHRlX2ZyZWUoKSB0aGUg
+c2FtZSB3YXkgYXMKPiB0aGUgZ2VuZXJpYyB2ZXJzaW9uLgoKV2lsbCBzb29uIGJlIGNvbnZlcnRl
+ZCB0byB0aGUgc2FtZSBhcyB0aGUgMyBvdGhlciBQUEMgc3ViYXJjaGVzLCBzZWUKaHR0cHM6Ly9w
+YXRjaHdvcmsub3psYWJzLm9yZy9wYXRjaC8xMDkxNTkwLwoKQ2hyaXN0b3BoZQoKPiAKPiBTd2l0
+Y2ggaXQgdG8gdGhlIGdlbmVyaWMgdmVyc2lvbiB0aGF0IGRvZXMgZXhhY3RseSB0aGUgc2FtZSB0
+aGluZy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNaWtlIFJhcG9wb3J0IDxycHB0QGxpbnV4LmlibS5j
+b20+Cj4gLS0tCj4gICBhcmNoL3Bvd2VycGMvaW5jbHVkZS9hc20vbm9oYXNoLzY0L3BnYWxsb2Mu
+aCB8IDM1ICsrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAy
+IGluc2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL3Bv
+d2VycGMvaW5jbHVkZS9hc20vbm9oYXNoLzY0L3BnYWxsb2MuaCBiL2FyY2gvcG93ZXJwYy9pbmNs
+dWRlL2FzbS9ub2hhc2gvNjQvcGdhbGxvYy5oCj4gaW5kZXggNjZkMDg2Zi4uYmZiNTNhMCAxMDA2
+NDQKPiAtLS0gYS9hcmNoL3Bvd2VycGMvaW5jbHVkZS9hc20vbm9oYXNoLzY0L3BnYWxsb2MuaAo+
+ICsrKyBiL2FyY2gvcG93ZXJwYy9pbmNsdWRlL2FzbS9ub2hhc2gvNjQvcGdhbGxvYy5oCj4gQEAg
+LTExLDYgKzExLDggQEAKPiAgICNpbmNsdWRlIDxsaW51eC9jcHVtYXNrLmg+Cj4gICAjaW5jbHVk
+ZSA8bGludXgvcGVyY3B1Lmg+Cj4gICAKPiArI2luY2x1ZGUgPGFzbS1nZW5lcmljL3BnYWxsb2Mu
+aD4JLyogZm9yIHB0ZV97YWxsb2MsZnJlZX1fb25lICovCj4gKwo+ICAgc3RydWN0IHZtZW1tYXBf
+YmFja2luZyB7Cj4gICAJc3RydWN0IHZtZW1tYXBfYmFja2luZyAqbGlzdDsKPiAgIAl1bnNpZ25l
+ZCBsb25nIHBoeXM7Cj4gQEAgLTkyLDM5ICs5NCw2IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCBwbWRf
+ZnJlZShzdHJ1Y3QgbW1fc3RydWN0ICptbSwgcG1kX3QgKnBtZCkKPiAgIAlrbWVtX2NhY2hlX2Zy
+ZWUoUEdUX0NBQ0hFKFBNRF9DQUNIRV9JTkRFWCksIHBtZCk7Cj4gICB9Cj4gICAKPiAtCj4gLXN0
+YXRpYyBpbmxpbmUgcHRlX3QgKnB0ZV9hbGxvY19vbmVfa2VybmVsKHN0cnVjdCBtbV9zdHJ1Y3Qg
+Km1tKQo+IC17Cj4gLQlyZXR1cm4gKHB0ZV90ICopX19nZXRfZnJlZV9wYWdlKEdGUF9LRVJORUwg
+fCBfX0dGUF9aRVJPKTsKPiAtfQo+IC0KPiAtc3RhdGljIGlubGluZSBwZ3RhYmxlX3QgcHRlX2Fs
+bG9jX29uZShzdHJ1Y3QgbW1fc3RydWN0ICptbSkKPiAtewo+IC0Jc3RydWN0IHBhZ2UgKnBhZ2U7
+Cj4gLQlwdGVfdCAqcHRlOwo+IC0KPiAtCXB0ZSA9IChwdGVfdCAqKV9fZ2V0X2ZyZWVfcGFnZShH
+RlBfS0VSTkVMIHwgX19HRlBfWkVSTyB8IF9fR0ZQX0FDQ09VTlQpOwo+IC0JaWYgKCFwdGUpCj4g
+LQkJcmV0dXJuIE5VTEw7Cj4gLQlwYWdlID0gdmlydF90b19wYWdlKHB0ZSk7Cj4gLQlpZiAoIXBn
+dGFibGVfcGFnZV9jdG9yKHBhZ2UpKSB7Cj4gLQkJX19mcmVlX3BhZ2UocGFnZSk7Cj4gLQkJcmV0
+dXJuIE5VTEw7Cj4gLQl9Cj4gLQlyZXR1cm4gcGFnZTsKPiAtfQo+IC0KPiAtc3RhdGljIGlubGlu
+ZSB2b2lkIHB0ZV9mcmVlX2tlcm5lbChzdHJ1Y3QgbW1fc3RydWN0ICptbSwgcHRlX3QgKnB0ZSkK
+PiAtewo+IC0JZnJlZV9wYWdlKCh1bnNpZ25lZCBsb25nKXB0ZSk7Cj4gLX0KPiAtCj4gLXN0YXRp
+YyBpbmxpbmUgdm9pZCBwdGVfZnJlZShzdHJ1Y3QgbW1fc3RydWN0ICptbSwgcGd0YWJsZV90IHB0
+ZXBhZ2UpCj4gLXsKPiAtCXBndGFibGVfcGFnZV9kdG9yKHB0ZXBhZ2UpOwo+IC0JX19mcmVlX3Bh
+Z2UocHRlcGFnZSk7Cj4gLX0KPiAtCj4gICBzdGF0aWMgaW5saW5lIHZvaWQgcGd0YWJsZV9mcmVl
+KHZvaWQgKnRhYmxlLCBpbnQgc2hpZnQpCj4gICB7Cj4gICAJaWYgKCFzaGlmdCkgewo+IAoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtcmlzY3Yg
+bWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yaXNjdgo=
