@@ -2,87 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 114B9110B3
-	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 02:41:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9991F11201
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 May 2019 06:02:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lLHsdHeL99Xv8lmEjaA5UZ1HGNYbiENukc+u1uYZQnc=; b=UV9qwVqqAXaosB
-	UIhUA3WbW2M7Hkdb4W1ZGPH/FWaQeB9ZC5wLy62CCka4aSEc2DcEtyc9isEstzKR7gPhOjQOJbAa5
-	Xz4/Xyrg3Q9Jt0XjNCPMcHFFvXGw+E2LTEtA2u92An8W+VvQYgalI7rOEraISohiFrzMxxJWJWolz
-	0Lrql6p5nVKJPbvPyRTwqraKEooVpX0rg0YYKB8D9InW460h7U8CCbTOdnHWsgu5Xg1LNJhoPvIr4
-	ACNrX9mvB8AyrQIAgDP3Qm61b1vJlfka9g9D1g2np3HwDCn3/JgfIM17TL2tepF4U+vOKzBdK/Rn/
-	7JIeXifiujtRmTp0+Q2Q==;
+	List-Owner; bh=cg8BrEKZET6+jUIC4ra/Vww+HMi+O3U5TeIZhD3WbB8=; b=Hm/yfhuIobvY92
+	rq/Pu4/N447eL5TOOnmbW3xfgF3CHoT70CaQwtf1kIC7gOF0mEdLE3ujY3ol7/G03ZBFrc/zMhdu+
+	gnn91NYejX3z+EDOklnSHpl5R+1yfhPvElMM3JVnoQo6YYr+lg5O/bPyvvtmuy9XNoj16GP9TWwuM
+	mpEzCatS36RLZ4gPFKLolKEcpcDDxgQzOCmvxicqMvw5fSpACzfbByuh/Pyco1J64y1sjJ7R6jpfK
+	jBu84Zd2o3AeQgQtJTQgT/n+xCcEhBpy3LN6IAgcxh7xwRW+FHaf+JNbC+zpA6olhPKHZ+CXU2ht0
+	K5qAMVYU93WV5R+6yNvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLzn4-0001nX-WF; Thu, 02 May 2019 00:41:35 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1hM2v3-0006mX-OE; Thu, 02 May 2019 04:02:01 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLzn2-0001m3-LF
- for linux-riscv@lists.infradead.org; Thu, 02 May 2019 00:41:34 +0000
-Received: by mail-oi1-f193.google.com with SMTP id l203so407917oia.3
- for <linux-riscv@lists.infradead.org>; Wed, 01 May 2019 17:41:32 -0700 (PDT)
+ id 1hM2uz-0006ld-U7
+ for linux-riscv@lists.infradead.org; Thu, 02 May 2019 04:01:59 +0000
+Received: by mail-lf1-x142.google.com with SMTP id k18so775123lfj.13
+ for <linux-riscv@lists.infradead.org>; Wed, 01 May 2019 21:01:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wFt7883PSp3sr8375jT8hC/v5fI/cu96gfKmIMdklMc=;
+ b=NL31EuKphJharQ7ownjb9GhREqWgylPR8oRdfySKPZMDjNrY2iEQE+rRHxT4ngNhdt
+ S3dsJVBIj5WOjo2zeN5xhW4Q0JGirUI/rk/HumUBXGZPyY6c/J1IBbu6PR9T1NV5Y0wo
+ oq3rJA7JQDfBlz0eBBDCFI0gPZ23MuCxEtssLK3CzJPda4c/lvmt5xJUeEVYEz/6IAfQ
+ OOx1LWqEaZ/C69l5OxSAB7ViB3GfHPgoJiLsWv49NTYer+IitWd4Skkxi65dDWAJtav6
+ B/w2l2m0I9Wxe+wHEDFd2VXNqAkEstJoKby3kTKWhlMthCaJHtP8Y62rrHurhz+U9nD4
+ F9Zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=que7/XzZjSIdcZCiQ2C0xFwZqf7GgbSdIDqky43ue24=;
- b=n5xo3Z6KW/4HspSfynquGg5rBxFhjUAQ40h80xx4Kw/tgGG9wHWIr1setoOS6a01tA
- 3vNpSBzf5JXl/wctz6UuKV60pwlhZWLIPw1akW9aE7w+lbmc6DAJls1AvF4lANYsNcaq
- hBcbmMeiY38gkyNX4F2VeBaN85UO69Sr0zUD596bbgxoI+2dzYsMixEasZ+NDzIcTmmQ
- 5H2GaqeSdyxxHsGA047r1hF67ekCYGrfNMdyuwhDe9rT4XXwO2zjfYPpgNtNmou1JzXz
- z1Zm0YT9T8eyUxvjxwuTdE5gJKFLKlXFjuFsBNfU8x0yGYXJI0iWZZxXwGkI39oXnQFf
- 8pqQ==
-X-Gm-Message-State: APjAAAWRQflWrBSiR/fqJUmVENF80IrCZqNzTZiPFppNoGPYTJ6/Uexo
- ReGlXZ8tRes/8Wf3B/BPVA==
-X-Google-Smtp-Source: APXvYqz8ZZRbI0y5MUDWv1ckT2hvi/9XcubJQbSxUnrPuqm32Tec220tSjKVsA6maV8FYwrgYjAKDQ==
-X-Received: by 2002:a54:4f02:: with SMTP id e2mr708714oiy.10.1556757691527;
- Wed, 01 May 2019 17:41:31 -0700 (PDT)
-Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id 110sm1115344otu.9.2019.05.01.17.41.30
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 01 May 2019 17:41:30 -0700 (PDT)
-Date: Wed, 1 May 2019 19:41:30 -0500
-From: Rob Herring <robh@kernel.org>
-To: Yash Shah <yash.shah@sifive.com>
-Subject: Re: [PATCH 1/2] RISC-V: Add DT documentation for SiFive L2 Cache
- Controller
-Message-ID: <20190502004130.GA20802@bogus>
-References: <1556171696-7741-1-git-send-email-yash.shah@sifive.com>
- <1556171696-7741-2-git-send-email-yash.shah@sifive.com>
- <20190425101318.GA8469@e107155-lin>
- <CAJ2_jOEBqBnorz9PcQp72Jjju9RX_P8mU=Gq+0xCCcWsBiJksw@mail.gmail.com>
- <20190426093358.GA28309@e107155-lin>
- <CAJ2_jOEoD=Njp+L+H=jG59mA-j9SnwzyNmz7ECogWmbvei_f5Q@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wFt7883PSp3sr8375jT8hC/v5fI/cu96gfKmIMdklMc=;
+ b=t384mB8vs62kZrQqCDfB0Wz69K9qgdvTZAuMTbI9z5/1avgPqcpXgK6yD3zRt4UijM
+ YySj9IaoJjbhfWbx0+HLcyqiYaR7rN7FEof77YRKSyeo925RVXxSWQtkgV3vkDW0Ud7j
+ +UkFkAakAyB376SiaRLV24F3gane42gv3owvIgduThuTqdkvvAKde+8MKPnVG827Lhwt
+ vx4Ti8GDmiGBR09WqT+dE6Qvg9JlSOS7eCTAoD82CUAz8/owVl7TAbV4pqTPJFPd+rxw
+ 41xoEL2waiFXZe0TAS+a4wz4VbY0Iv0l5dif9PsOi6KbGthm5DE3X11Kjdg8rvWzfeNg
+ hgXg==
+X-Gm-Message-State: APjAAAWIpUgAGfHQm5RUB4pTmJopYAWfHstAn4Yku4HdkX3r1DDyLrot
+ 3qjrm8auL4++Qpp/HxfNASg9mH5oVYFY4u0L8v7V3g==
+X-Google-Smtp-Source: APXvYqxzdvzK/rjINuA4zAT9PeOdoZuUwGQBTyS9ONY/hM54JNu3Te4R4w/vTFUvuR1Nv624R8L3skIAT6evE9QmbPY=
+X-Received: by 2002:a19:81d4:: with SMTP id c203mr672545lfd.160.1556769713184; 
+ Wed, 01 May 2019 21:01:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAJ2_jOEoD=Njp+L+H=jG59mA-j9SnwzyNmz7ECogWmbvei_f5Q@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <1553508779-9685-1-git-send-email-yash.shah@sifive.com>
+ <mvmbm1zueya.fsf@suse.de> <mvmpnqcsn6u.fsf@suse.de>
+In-Reply-To: <mvmpnqcsn6u.fsf@suse.de>
+From: Yash Shah <yash.shah@sifive.com>
+Date: Thu, 2 May 2019 09:31:16 +0530
+Message-ID: <CAJ2_jOFu-yCZV_A4B48_fLq7h7UA6LUWhgpxr0uuh7vhW9Q8pA@mail.gmail.com>
+Subject: Re: [PATCH v11 0/2] PWM support for HiFive Unleashed
+To: Andreas Schwab <schwab@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190501_174132_695857_5F215CAC 
-X-CRM114-Status: GOOD (  23.90  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20190501_210157_972616_B86A41FE 
+X-CRM114-Status: GOOD (  10.55  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.193 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (robherring2[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (robherring2[at]gmail.com)
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.193 listed in wl.mailspike.net]
- 0.1 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:142 listed in]
+ [list.dnswl.org]
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,130 +89,40 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- Sudeep Holla <sudeep.holla@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, Sachin Ghadi <sachin.ghadi@sifive.com>,
- aou@eecs.berkeley.edu, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org
+Cc: mark.rutland@arm.com, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, Sachin Ghadi <sachin.ghadi@sifive.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Apr 30, 2019 at 09:50:45AM +0530, Yash Shah wrote:
-> On Fri, Apr 26, 2019 at 3:04 PM Sudeep Holla <sudeep.holla@arm.com> wrote:
-> >
-> > On Fri, Apr 26, 2019 at 11:20:17AM +0530, Yash Shah wrote:
-> > > On Thu, Apr 25, 2019 at 3:43 PM Sudeep Holla <sudeep.holla@arm.com> wrote:
-> > > >
-> > > > On Thu, Apr 25, 2019 at 11:24:55AM +0530, Yash Shah wrote:
-> > > > > Add device tree bindings for SiFive FU540 L2 cache controller driver
-> > > > >
-> > > > > Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> > > > > ---
-> > > > >  .../devicetree/bindings/riscv/sifive-l2-cache.txt  | 53 ++++++++++++++++++++++
-> > > > >  1 file changed, 53 insertions(+)
-> > > > >  create mode 100644 Documentation/devicetree/bindings/riscv/sifive-l2-cache.txt
-> > > > >
-> > > > > diff --git a/Documentation/devicetree/bindings/riscv/sifive-l2-cache.txt b/Documentation/devicetree/bindings/riscv/sifive-l2-cache.txt
-> > > > > new file mode 100644
-> > > > > index 0000000..15132e2
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/devicetree/bindings/riscv/sifive-l2-cache.txt
-> > > > > @@ -0,0 +1,53 @@
-> > > > > +SiFive L2 Cache Controller
-> > > > > +--------------------------
-> > > > > +The SiFive Level 2 Cache Controller is used to provide access to fast copies
-> > > > > +of memory for masters in a Core Complex. The Level 2 Cache Controller also
-> > > > > +acts as directory-based coherency manager.
-> > > > > +
-> > > > > +Required Properties:
-> > > > > +--------------------
-> > > > > +- compatible: Should be "sifive,fu540-c000-ccache"
-> > > > > +
-> > > > > +- cache-block-size: Specifies the block size in bytes of the cache
-> > > > > +
-> > > > > +- cache-level: Should be set to 2 for a level 2 cache
-> > > > > +
-> > > > > +- cache-sets: Specifies the number of associativity sets of the cache
-> > > > > +
-> > > > > +- cache-size: Specifies the size in bytes of the cache
-> > > > > +
-> > > > > +- cache-unified: Specifies the cache is a unified cache
-> > > > > +
-> > > > > +- interrupt-parent: Must be core interrupt controller
-> > > > > +
-> > > > > +- interrupts: Must contain 3 entries (DirError, DataError and DataFail signals)
-> > > > > +
-> > > > > +- reg: Physical base address and size of L2 cache controller registers map
-> > > > > +
-> > > > > +- reg-names: Should be "control"
-> > > > > +
-> > > >
-> > > > It would be good if you mark the properties that are present in DT
-> > > > specification and those that are added for sifive,fu540-c000-ccache
-> > >
-> > > I believe there isn't any property which is added explicitly for
-> > > sifive,fu540-c000-ccache.
-> > >
-> >
-> > reg and interrupts are generally optional for normal cache and may be
-> > required for cache controller like this. DT specification[1] covers
-> > only caches and not cache controllers.
-> 
-> Are you suggesting something like this:
-> 
-> Required Properties:
-> --------------------
-> Standard Properties:
+Hi Andreas,
 
-I don't think we need this separation.
+On Wed, Mar 27, 2019 at 2:34 PM Andreas Schwab <schwab@suse.de> wrote:
+>
+> I have now found out that the ledtrig modules don't load automatically.
+> I would have expected that the linux,default-trigger entries would cause
+> the load of the corresponding ledtrig modules.
+>
+> But there is another problem, that the leds are on by default.
+> Shouldn't they be off by default?
 
-> - compatible: Should be "sifive,<chip>-ccache"
->   Supported compatible strings are:
->   "sifive,fu540-c000-ccache" and "sifive,fu740-c000-ccache"
-> 
-> - cache-block-size: Specifies the block size in bytes of the cache
-> 
-> - cache-level: Should be set to 2 for a level 2 cache
-> 
-> - cache-sets: Specifies the number of associativity sets of the cache
-> 
-> - cache-size: Specifies the size in bytes of the cache
+The PWM default output state is high (When duty cycle is 0), So I
+guess leds will remain on by default.
 
-What are the possible valid values for these? That's what's important. 
-What the properties mean are already defined in the spec.
+Are you able to test the PWM driver at your end? or you still facing
+some issues?
 
-> 
-> - cache-unified: Specifies the cache is a unified cache
-> 
-> Non-Standard Properties:
-
-I wouldn't call these non-standard.
-
-> - interrupt-parent: Must be core interrupt controller
-
-This is implied.
-
-> 
-> - interrupts: Must contain 3 entries for FU540 (DirError, DataError and
->   DataFail signals) or 4 entries for other chips (DirError, DirFail, DataError,
->   DataFail signals)
-> 
-> - reg: Physical base address and size of L2 cache controller registers map
-> 
-> - reg-names: Should be "control"
-
--names is not really needed when there is only 1 entry.
-
-> 
-> - Yash
-> >
-> > --
-> > Regards,
-> > Sudeep
-> >
-> > [1] https://github.com/devicetree-org/devicetree-specification/releases/download/v0.2/devicetree-specification-v0.2.pdf
+>
+> Andreas.
+>
+> --
+> Andreas Schwab, SUSE Labs, schwab@suse.de
+> GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
+> "And now for something completely different."
 
 _______________________________________________
 linux-riscv mailing list
