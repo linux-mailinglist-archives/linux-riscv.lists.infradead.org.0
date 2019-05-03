@@ -2,59 +2,69 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D14C12F2F
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 15:30:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D18C3131C8
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 18:04:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mp7ZOQPn6DQnziuZIm5BQGOqpCB5Zy0mSjFoe3mK8XA=; b=qZVcxqrg1QpmZRKOk6PBOZ9hr
-	Yjvpsu8LbypsqDeRD2bkOdCtP64L6a0hTEJUfj8h8snUSiWAL9v72KLbe8r0fWI7k9JXhMIJC5FIE
-	Ne05XHmmofyXQNyY7seq3yYBPw7TlEmF4xNFk1qlGdLHBSO9Akr0gdV2giqKgGg4okOk00D0Uuna1
-	WgC58NjpR+fLEVffvSoJqh2UCKHSIZ/UHB3aT1YlS00BlWztXvnJ0+3eFU9DGx6/g1/qImmyBOVkq
-	/T4/imEjdchu/GfdHpJwLPAioBkIHem3iM9dnNXTiylZv7qkS/IOBuyCU56LEbfa+NQCp4Oi+ii61
-	kcuF+NlyQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2YDXhXkHG2N+fk9a44tUvYoInVpms0Vh+8pXMj5bEno=; b=kWL6BgcCggE/1w
+	HzVIclGF4Arj7jBUoiWd5tXpwuihFyogWw3FYhLMSaWeWbBSZUiQ6zgWToHH0nwHxWMwwSE7MV1Xo
+	ZvZL5s4G5Imtx9jrBBR/wzy/cE3/dUscs7h/IzhbHVpIMop3jmuvia7vPLjKHDeqQk91jTtukoEvT
+	M6ANvtUMHgzE5vw3m2nf7RWWVc/Pl5PxoxaE23ECj8CGmicmYCUDN3ldzVoCwGyws2pcwYMFlkdbU
+	MkCgLgyR43rF+nm2vIlKtJUYgVzlICDHgVyR4CQWkelQqZEG5S9J0sCNNTWrHnXYXGurfnL8UP8P4
+	Y4hpijbA5OtM7Ypdha+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMYGj-0000eK-Ji; Fri, 03 May 2019 13:30:29 +0000
-Received: from ivanoab6.miniserver.com ([5.153.251.140]
- helo=www.kot-begemot.co.uk)
+	id 1hMafc-00011H-8m; Fri, 03 May 2019 16:04:20 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMYGW-00087a-7F; Fri, 03 May 2019 13:30:18 +0000
-Received: from [192.168.17.6] (helo=jain.kot-begemot.co.uk)
- by www.kot-begemot.co.uk with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <anton.ivanov@cambridgegreys.com>)
- id 1hMYFM-00074d-Bk; Fri, 03 May 2019 13:29:04 +0000
-Received: from jain.kot-begemot.co.uk ([192.168.3.3])
- by jain.kot-begemot.co.uk with esmtp (Exim 4.89)
- (envelope-from <anton.ivanov@cambridgegreys.com>)
- id 1hMYFF-0001a5-CV; Fri, 03 May 2019 14:29:03 +0100
-Subject: Re: [PATCH 14/15] um: switch to generic version of pte allocation
-To: Mike Rapoport <rppt@linux.ibm.com>,
- Andrew Morton <akpm@linux-foundation.org>
+ id 1hMafR-0000ne-6T; Fri, 03 May 2019 16:04:11 +0000
+Received: from guoren-Inspiron-7460 (23.83.240.247.16clouds.com
+ [23.83.240.247])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B79282075C;
+ Fri,  3 May 2019 16:03:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1556899448;
+ bh=9K26hWqGMesApQFdaAhFuNyta2kJgrhs2hDdmQ00qcY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=HpZWwg5gL0lVYH9xXr2lFjIs4Hr4EFxgLMU0fvIEmuLFdJqilQ6jQYN4Ocb6SStWw
+ iJWfiG66zAQYSvJeB8l3sHAhW93+kPdDD0sZUeypbCGK/KXfyMm98BkvfNuimDaaPM
+ OT2y75fIlpEILXIObpyUg29WsNXovSO+5g+0/f6w=
+Date: Sat, 4 May 2019 00:03:48 +0800
+From: Guo Ren <guoren@kernel.org>
+To: Mike Rapoport <rppt@linux.ibm.com>
+Subject: Re: [PATCH 05/15] csky: switch to generic version of pte allocation
+Message-ID: <20190503160348.GA9526@guoren-Inspiron-7460>
 References: <1556810922-20248-1-git-send-email-rppt@linux.ibm.com>
- <1556810922-20248-15-git-send-email-rppt@linux.ibm.com>
-From: Anton Ivanov <anton.ivanov@cambridgegreys.com>
-Message-ID: <3fddc076-1843-ee84-febb-44c8d317489f@cambridgegreys.com>
-Date: Fri, 3 May 2019 14:28:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ <1556810922-20248-6-git-send-email-rppt@linux.ibm.com>
 MIME-Version: 1.0
-In-Reply-To: <1556810922-20248-15-git-send-email-rppt@linux.ibm.com>
-Content-Language: en-US
-X-Spam-Score: -1.0
-X-Spam-Score: -1.0
-X-Clacks-Overhead: GNU Terry Pratchett
+Content-Disposition: inline
+In-Reply-To: <1556810922-20248-6-git-send-email-rppt@linux.ibm.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190503_063016_395699_5E259523 
-X-CRM114-Status: GOOD (  19.67  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190503_090409_284191_FFED4FC0 
+X-CRM114-Status: GOOD (  18.36  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,121 +77,112 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: Michal Hocko <mhocko@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- Guo Ren <guoren@kernel.org>, linux-hexagon@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, linux-mips@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>, linux-hexagon@vger.kernel.org,
  linux-riscv@lists.infradead.org, linux-arch@vger.kernel.org,
  Richard Weinberger <richard@nod.at>, Helge Deller <deller@gmx.de>,
  x86@kernel.org, Russell King <linux@armlinux.org.uk>,
  Matthew Wilcox <willy@infradead.org>,
  Geert Uytterhoeven <geert@linux-m68k.org>, Matt Turner <mattst88@gmail.com>,
  Sam Creasey <sammy@sammy.net>, Arnd Bergmann <arnd@arndb.de>,
- linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
- linux-m68k@lists.linux-m68k.org, Greentime Hu <green.hu@gmail.com>,
- Ley Foon Tan <lftan@altera.com>, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, linux-parisc@vger.kernel.org,
- linux-mips@vger.kernel.org, Richard Kuo <rkuo@codeaurora.org>,
- Paul Burton <paul.burton@mips.com>, Michael Ellerman <mpe@ellerman.id.au>,
- nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org
+ linux-um@lists.infradead.org, linux-m68k@lists.linux-m68k.org,
+ Greentime Hu <green.hu@gmail.com>, nios2-dev@lists.rocketboards.org,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-arm-kernel@lists.infradead.org,
+ linux-parisc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Richard Kuo <rkuo@codeaurora.org>, Paul Burton <paul.burton@mips.com>,
+ linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hi Mike,
 
+Acked-by: Guo Ren <ren_guo@c-sky.com>
 
-On 02/05/2019 16:28, Mike Rapoport wrote:
-> um allocates PTE pages with __get_free_page() and uses
-> GFP_KERNEL | __GFP_ZERO for the allocations.
+On Thu, May 02, 2019 at 06:28:32PM +0300, Mike Rapoport wrote:
+> The csky implementation pte_alloc_one(), pte_free_kernel() and pte_free()
+> is identical to the generic except of lack of __GFP_ACCOUNT for the user
+> PTEs allocation.
 > 
-> Switch it to the generic version that does exactly the same thing for the
-> kernel page tables and adds __GFP_ACCOUNT for the user PTEs.
+> Switch csky to use generic version of these functions.
+Ok.
+
 > 
-> The pte_free() and pte_free_kernel() versions are identical to the generic
-> ones and can be simply dropped.
+> The csky implementation of pte_alloc_one_kernel() is not replaced because
+> it does not clear the allocated page but rather sets each PTE in it to a
+> non-zero value.
+Yes, we must set each PTE to _PAGE_GLOBAL because hardware refill the
+MMU TLB entry with two PTEs and it use the result of pte0.global | pte1.global.
+If pte0 is valid and pte1 is invalid, we must set _PAGE_GLOBAL in
+invalid pte entry. Fortunately, there is no performance issue.
+
+> 
+> The pte_free_kernel() and pte_free() versions on csky are identical to the
+> generic ones and can be simply dropped.
+Ok.
+
+Best Regards
+ Guo Ren
+
 > 
 > Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 > ---
->   arch/um/include/asm/pgalloc.h | 16 ++--------------
->   arch/um/kernel/mem.c          | 22 ----------------------
->   2 files changed, 2 insertions(+), 36 deletions(-)
+>  arch/csky/include/asm/pgalloc.h | 30 +++---------------------------
+>  1 file changed, 3 insertions(+), 27 deletions(-)
 > 
-> diff --git a/arch/um/include/asm/pgalloc.h b/arch/um/include/asm/pgalloc.h
-> index 99eb568..d7b282e 100644
-> --- a/arch/um/include/asm/pgalloc.h
-> +++ b/arch/um/include/asm/pgalloc.h
-> @@ -10,6 +10,8 @@
->   
->   #include <linux/mm.h>
->   
+> diff --git a/arch/csky/include/asm/pgalloc.h b/arch/csky/include/asm/pgalloc.h
+> index d213bb4..98c571670 100644
+> --- a/arch/csky/include/asm/pgalloc.h
+> +++ b/arch/csky/include/asm/pgalloc.h
+> @@ -8,6 +8,9 @@
+>  #include <linux/mm.h>
+>  #include <linux/sched.h>
+>  
+> +#define __HAVE_ARCH_PTE_ALLOC_ONE_KERNEL
 > +#include <asm-generic/pgalloc.h>	/* for pte_{alloc,free}_one */
 > +
->   #define pmd_populate_kernel(mm, pmd, pte) \
->   	set_pmd(pmd, __pmd(_PAGE_TABLE + (unsigned long) __pa(pte)))
->   
-> @@ -25,20 +27,6 @@
->   extern pgd_t *pgd_alloc(struct mm_struct *);
->   extern void pgd_free(struct mm_struct *mm, pgd_t *pgd);
->   
-> -extern pte_t *pte_alloc_one_kernel(struct mm_struct *);
-> -extern pgtable_t pte_alloc_one(struct mm_struct *);
+>  static inline void pmd_populate_kernel(struct mm_struct *mm, pmd_t *pmd,
+>  					pte_t *pte)
+>  {
+> @@ -39,33 +42,6 @@ static inline pte_t *pte_alloc_one_kernel(struct mm_struct *mm)
+>  	return pte;
+>  }
+>  
+> -static inline struct page *pte_alloc_one(struct mm_struct *mm)
+> -{
+> -	struct page *pte;
+> -
+> -	pte = alloc_pages(GFP_KERNEL | __GFP_ZERO, 0);
+> -	if (!pte)
+> -		return NULL;
+> -
+> -	if (!pgtable_page_ctor(pte)) {
+> -		__free_page(pte);
+> -		return NULL;
+> -	}
+> -
+> -	return pte;
+> -}
 > -
 > -static inline void pte_free_kernel(struct mm_struct *mm, pte_t *pte)
 > -{
-> -	free_page((unsigned long) pte);
+> -	free_pages((unsigned long)pte, PTE_ORDER);
 > -}
 > -
 > -static inline void pte_free(struct mm_struct *mm, pgtable_t pte)
 > -{
 > -	pgtable_page_dtor(pte);
-> -	__free_page(pte);
+> -	__free_pages(pte, PTE_ORDER);
 > -}
 > -
->   #define __pte_free_tlb(tlb,pte, address)		\
->   do {							\
->   	pgtable_page_dtor(pte);				\
-> diff --git a/arch/um/kernel/mem.c b/arch/um/kernel/mem.c
-> index 99aa11b..2280374 100644
-> --- a/arch/um/kernel/mem.c
-> +++ b/arch/um/kernel/mem.c
-> @@ -215,28 +215,6 @@ void pgd_free(struct mm_struct *mm, pgd_t *pgd)
->   	free_page((unsigned long) pgd);
->   }
->   
-> -pte_t *pte_alloc_one_kernel(struct mm_struct *mm)
-> -{
-> -	pte_t *pte;
-> -
-> -	pte = (pte_t *)__get_free_page(GFP_KERNEL|__GFP_ZERO);
-> -	return pte;
-> -}
-> -
-> -pgtable_t pte_alloc_one(struct mm_struct *mm)
-> -{
-> -	struct page *pte;
-> -
-> -	pte = alloc_page(GFP_KERNEL|__GFP_ZERO);
-> -	if (!pte)
-> -		return NULL;
-> -	if (!pgtable_page_ctor(pte)) {
-> -		__free_page(pte);
-> -		return NULL;
-> -	}
-> -	return pte;
-> -}
-> -
->   #ifdef CONFIG_3_LEVEL_PGTABLES
->   pmd_t *pmd_alloc_one(struct mm_struct *mm, unsigned long address)
->   {
+>  static inline void pgd_free(struct mm_struct *mm, pgd_t *pgd)
+>  {
+>  	free_pages((unsigned long)pgd, PGD_ORDER);
+> -- 
+> 2.7.4
 > 
-
-
-Reviewed-by: Anton Ivanov <anton.ivanov@cambridgegreys.com>
-Acked-by: Anton Ivanov <anton.ivanov@cambridgegreys.com>
-
--- 
-Anton R. Ivanov
-Cambridgegreys Limited. Registered in England. Company Number 10273661
-https://www.cambridgegreys.com/
 
 _______________________________________________
 linux-riscv mailing list
