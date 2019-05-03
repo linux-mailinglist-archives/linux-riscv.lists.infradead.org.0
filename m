@@ -2,70 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE38D12472
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 00:11:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A1D512B38
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 12:05:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Subject:From:To:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a1hBiSgdAWzbpsITpXpcn+YdzTRPFYBYeNb7yN40E30=; b=co1pseOKNU4ueZ
-	WFJTMSOf1pdUjIcXb/+qcND0r6z1WBHjeFFawaEDtowt9EOZ2Cm1toHvG/UUQ3KEmaUd+cMuqud6p
-	K/m/GDqttRfvdtMgXDBSdeanhcttvrlY9lcB5YS8xWOlELSXziwrRxqgbX60NqoNye5YBNefwzicV
-	W3DOBjt7uqpNA5N0fMd7lsTsC4tEUZn2yErAJugjUDLyNvPvkBxw2deJJiMeFSbtsEkhvpqITnvnX
-	clGFz4ok/KCQmszhRnYv0AEOXpX3YaToFZxTcp8peJIWtDtWKvld2nWaNwHOlgwd7QQwN79ZI1YNd
-	0RxsAk4O7OrvfaKmA86w==;
+	List-Owner; bh=LcGUvl9nKmF5ygke9gFPge7EJKgc+5rW0VrVaxoRkWA=; b=spSfhLWh7Xra9B
+	MiTB+JcyTh+WHoI8VAIcw+W6P2QZ+H5z198e61joRCg/c1Kv5b0d0vcmhn1Yj/U43GvD4X3Cctp0I
+	Vq+yZ4CyXdcivELKVS/hn9KIe8+A1t5CDVcr5QykLNd3g5ao/V2fNWh53nzu5VVbhXHQwejvOFZoT
+	Qckyq2f5KggaDvHGN7ODai1Kr9Uy72+oXnhusgp3OaYEEmqYHSAWpMbmG4geY5fxDxB6390AOQDbN
+	zSXc2fA4btvireBK5Wl50o71/lsV89/MbmbUQ2MZMWxLKZQ/cqhG5uQfI/7b9W7Fun9pruk4teF5c
+	Vm3rQ+tf8MhcFN6koysQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMJva-00089n-Aa; Thu, 02 May 2019 22:11:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMJvW-00087p-VO
- for linux-riscv@lists.infradead.org; Thu, 02 May 2019 22:11:40 +0000
-Received: from localhost (unknown [104.132.0.70])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 92E652080C;
- Thu,  2 May 2019 22:11:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1556835098;
- bh=YE/dc/fbqSnsUBzu9pKS5Er4/+4KslyKlrQjkn6EK20=;
- h=In-Reply-To:References:To:Cc:From:Subject:Date:From;
- b=twrMDF/5I3O4hSsKWXOGEE/q2vs6/Svlyb5/LFsXPBqyyHFop4Kot60KTa18xfDyh
- XAst1BemLDx0ICPsyX6gW7u7aRdATGtFIRXWMtgMf6PzOFEBqJMQ5RjOQxvHQQs9Va
- bfQNjwUsDrTw15NUc7BTa87zy8WHakHlLkffoYVQ=
+	id 1hMV4M-0002V5-Q5; Fri, 03 May 2019 10:05:30 +0000
+Received: from foss.arm.com ([217.140.101.70])
+ by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hMV4E-0002PV-32; Fri, 03 May 2019 10:05:23 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F3CB1374;
+ Fri,  3 May 2019 03:05:16 -0700 (PDT)
+Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+ [10.72.51.249])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9CC463F557;
+ Fri,  3 May 2019 03:05:11 -0700 (PDT)
+Date: Fri, 3 May 2019 11:05:09 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Mike Rapoport <rppt@linux.ibm.com>
+Subject: Re: [PATCH 04/15] arm64: switch to generic version of pte allocation
+Message-ID: <20190503100508.GB47811@lakrids.cambridge.arm.com>
+References: <1556810922-20248-1-git-send-email-rppt@linux.ibm.com>
+ <1556810922-20248-5-git-send-email-rppt@linux.ibm.com>
 MIME-Version: 1.0
-In-Reply-To: <20190430205055.25673-3-paul.walmsley@sifive.com>
-References: <20190430205055.25673-1-paul.walmsley@sifive.com>
- <20190430205055.25673-3-paul.walmsley@sifive.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>, mturquette@baylibre.com
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v4 2/2] clk: sifive: add a driver for the SiFive FU540
- PRCI IP block
-Message-ID: <155683509781.200842.728012475637311820@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.8
-Date: Thu, 02 May 2019 15:11:37 -0700
+Content-Disposition: inline
+In-Reply-To: <1556810922-20248-5-git-send-email-rppt@linux.ibm.com>
+User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190502_151139_033600_D745F44C 
-X-CRM114-Status: UNSURE (   7.25  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190503_030522_139750_1FA97397 
+X-CRM114-Status: GOOD (  20.37  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ high trust [217.140.101.70 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,45 +62,84 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Paul Walmsley <paul@pwsan.com>, Albert Ou <aou@eecs.berkeley.edu>,
- "Wesley W . Terpstra" <wesley@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, Megan Wachs <megan@sifive.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org
+Cc: Michal Hocko <mhocko@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-mips@vger.kernel.org,
+ Guo Ren <guoren@kernel.org>, linux-hexagon@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-arch@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ Matthew Wilcox <willy@infradead.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Matt Turner <mattst88@gmail.com>,
+ Sam Creasey <sammy@sammy.net>, Arnd Bergmann <arnd@arndb.de>,
+ linux-um@lists.infradead.org, Richard Weinberger <richard@nod.at>,
+ linux-m68k@lists.linux-m68k.org, Greentime Hu <green.hu@gmail.com>,
+ nios2-dev@lists.rocketboards.org, Guan Xuetao <gxt@pku.edu.cn>,
+ linux-arm-kernel@lists.infradead.org, linux-parisc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Richard Kuo <rkuo@codeaurora.org>,
+ Paul Burton <paul.burton@mips.com>, linux-alpha@vger.kernel.org,
+ Ley Foon Tan <lftan@altera.com>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Quoting Paul Walmsley (2019-04-30 13:51:00)
-> Add driver code for the SiFive FU540 PRCI IP block.  This IP block
-> handles reset and clock control for the SiFive FU540 device and
-> implements SoC-level clock tree controls and dividers.
+Hi,
+
+On Thu, May 02, 2019 at 06:28:31PM +0300, Mike Rapoport wrote:
+> The PTE allocations in arm64 are identical to the generic ones modulo the
+> GFP flags.
 > 
-> Based on code written by Wesley Terpstra <wesley@sifive.com>:
-> https://github.com/riscv/riscv-linux/commit/999529edf517ed75b56659d456d221b2ee56bb60
+> Using the generic pte_alloc_one() functions ensures that the user page
+> tables are allocated with __GFP_ACCOUNT set.
 > 
-> Boot and PLL rate change were tested on a SiFive HiFive Unleashed
-> board.
+> The arm64 definition of PGALLOC_GFP is removed and replaced with
+> GFP_PGTABLE_USER for p[gum]d_alloc_one() and for KVM memory cache.
 > 
-> This version includes several changes requested by Stephen Boyd
-> <sboyd@kernel.org>.
+> The mappings created with create_pgd_mapping() are now using
+> GFP_PGTABLE_KERNEL.
 > 
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> Signed-off-by: Paul Walmsley <paul@pwsan.com>
-> Cc: Michael Turquette <mturquette@baylibre.com>
-> Cc: Stephen Boyd <sboyd@kernel.org>
-> Cc: Albert Ou <aou@eecs.berkeley.edu>
-> Cc: Wesley W. Terpstra <wesley@sifive.com>
-> Cc: Palmer Dabbelt <palmer@sifive.com>
-> Cc: Megan Wachs <megan@sifive.com>
-> Cc: linux-riscv@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-clk@vger.kernel.org
+> The conversion to the generic version of pte_free_kernel() removes the NULL
+> check for pte.
+> 
+> The pte_free() version on arm64 is identical to the generic one and
+> can be simply dropped.
+> 
+> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 > ---
+>  arch/arm64/include/asm/pgalloc.h | 43 ++++------------------------------------
+>  arch/arm64/mm/mmu.c              |  2 +-
+>  arch/arm64/mm/pgd.c              |  4 ++--
+>  virt/kvm/arm/mmu.c               |  2 +-
+>  4 files changed, 8 insertions(+), 43 deletions(-)
 
-Applied to clk-next
+[...]
 
+> diff --git a/arch/arm64/mm/pgd.c b/arch/arm64/mm/pgd.c
+> index 289f911..2ef1a53 100644
+> --- a/arch/arm64/mm/pgd.c
+> +++ b/arch/arm64/mm/pgd.c
+> @@ -31,9 +31,9 @@ static struct kmem_cache *pgd_cache __ro_after_init;
+>  pgd_t *pgd_alloc(struct mm_struct *mm)
+>  {
+>  	if (PGD_SIZE == PAGE_SIZE)
+> -		return (pgd_t *)__get_free_page(PGALLOC_GFP);
+> +		return (pgd_t *)__get_free_page(GFP_PGTABLE_USER);
+>  	else
+> -		return kmem_cache_alloc(pgd_cache, PGALLOC_GFP);
+> +		return kmem_cache_alloc(pgd_cache, GFP_PGTABLE_USER);
+>  }
+
+In efi_virtmap_init() we use pgd_alloc() to allocate a pgd for EFI
+runtime services, which we map with a special kernel page table.
+
+I'm not sure if accounting that is problematic, as it's allocated in a
+kernel thread off the back of an early_initcall.
+
+Just to check, Is that sound, or do we need a pgd_alloc_kernel()?
+
+Thanks,
+Mark.
 
 _______________________________________________
 linux-riscv mailing list
