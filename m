@@ -2,86 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31047133D9
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 21:05:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 711EA13401
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 21:26:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QSWNoWT17Vo8kgk+0LOCwn5Eq7JDBgp1s2zP/+huj8c=; b=eX60nTzkNqm2UI
-	cAPnM/j2sL+Xjwzq6o5MnZEs1mP6FOMr4xzVMBmdI6T3Peuxr9R82psauy+ZnJ/GFZ5DVIoGICsen
-	RCyrJV3n9k5WnSc+4mfvV/Et+XjtWDPPj0PfQOPJu6a8izHU/2ZdLhCKwmoS637MQPKT4uL+jL1/K
-	VH3tY22YANpEv7WziKC5Ac2aRuAcx7CZShIVuebme/X50Dqk3REvGJ+Q6FaViwW339u7m1/dYHLAF
-	O6dQZ81BIOn8rr2oUxgUcqjX4oMwomEIY/3fODNgjKONKBSZLJKg7zEnXDu8xSUlria1nijyjOsEb
-	w9zd3qgz7GBU/GKDI2UA==;
+	List-Owner; bh=9K9PmHcsV4EFiL5d7DO9nbnlyrbh0v6ITmuDLQeQtz4=; b=ZlFTyWeV4xXiYk
+	z0+g8EH6MWYYUY99R7Imq7zfpuxlWGXXybE7LOf6cNVSjYOFBazKp2wjtkMTX5Ykhv2Ak3X3Urwwx
+	Y4vHwmhCjXE9wI5QQqWiLaQCdFm+OptksUJN9itDvnZ9ZZc7ZBc5IhM4apHcgCkojIqdjts+YxevU
+	GMAezcgzfBUxV65FgHn8b1GS+/ie/u0e+EIfcDzwGGh6nsfD/0Zj/Ph55/m279SZIHsbFgka+Pmpg
+	n984XGEgiaThYodECpE7StzfdrUFFRHuzYCAqnE3SeuuyEZxFEFaMT+wFBAzkUgsh2lwHSVHqTr5t
+	d7mFHE1ql6VivsEGM02w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMdUi-0004Pm-5J; Fri, 03 May 2019 19:05:16 +0000
-Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1hMdol-0003eY-B7; Fri, 03 May 2019 19:25:59 +0000
+Received: from mail-it1-x141.google.com ([2607:f8b0:4864:20::141])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMdUe-0004Op-Fa
- for linux-riscv@lists.infradead.org; Fri, 03 May 2019 19:05:13 +0000
-Received: by mail-it1-x144.google.com with SMTP id i131so10871458itf.5
- for <linux-riscv@lists.infradead.org>; Fri, 03 May 2019 12:05:12 -0700 (PDT)
+ id 1hMdoi-0003dl-Dq
+ for linux-riscv@lists.infradead.org; Fri, 03 May 2019 19:25:57 +0000
+Received: by mail-it1-x141.google.com with SMTP id s3so11022736itk.1
+ for <linux-riscv@lists.infradead.org>; Fri, 03 May 2019 12:25:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=WUEvVuMZ7YPl2dVmcnur9vXgWXYbDp4Kv2NYf/KfC/E=;
- b=YyLoqA+MOSgu5Z/mdOZYresCbnsrP9MOECqAR4bgemiqd1NPH4z1kTNshqMr1wGxrO
- 1ulkumKpTQ6uWLtA2Ene+eq+HrTs1KZoMqs9xg+p39iicmy0zTCL7uVABR+WOuDZA063
- +oNPgr10wY9fURWnsMIn4Glzq/w4seTiQt6nzHUkagCRCpv7txThNbb5poKXXUtiaq0C
- amJC+5CNfkSN3LxFTXn27zjZN09O67v/k/iPmRYOidALpODycYOWZxGJ1kWkYY3q8zeE
- jHByq6IVQuw2xmMN/9K1zm6po5Ybx+hPTG4ELBhJgSBqEWzHWP+zmvqJygso2YzaXz1P
- hhwg==
+ bh=rWmEMhzliXcvOCRw3oQALFdco9XMzYzIIL0waa/gPso=;
+ b=kiSSW7aSQ9bW2r5VTe/j9kH3X7KcjLczLQh7LQZXDPHzWSJ2bRleyY4/rcvXuGGtP8
+ h0Cyh08fdlQJAzSNhL1YqT2Kxlb/ota9cE18qbPPYJx7iiGOkRnakf0J0om8ImkSUOYF
+ UiaS8qsHn/tiKdxPqd/OkpsImAVBnwBKQ93x4A94EW7b2vqPuzVuY/orAVL0Nwxi4qjS
+ /OfVwDpBI0F6eq4eBLrJpZlttYqKhnPrAQs7DmJvWzdbTj/Uih6JMX6P50NbB8i3TRtn
+ QhggAYwBHI07vJ3JPo7Vf7CDi5UEsDs2p03KvzViTNWxL1wWURERsP9JeoF6XvCAJTQH
+ 7s8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=WUEvVuMZ7YPl2dVmcnur9vXgWXYbDp4Kv2NYf/KfC/E=;
- b=A8nwxxpSNQwiZcDueadBwznEpIswYJPDj1FL+OTvbDTYaIx0X8Ft+fxvfmzh6agZfe
- rep+odCfPStSCUhuJhnX6FpBVPF2RsWQTY2L9ond8MFYfTwO2Hl3URn6VfDHto00GfAr
- mr/k+M83ahkMS0II6WImyM4jtyaZ1JxQkjnlWcNzNjPb8F62vBzqkBz00sgzYDm+jAKx
- Y1bRRsFZoCZ/y0V3abSlTy3lXN7wq/Nd+r22Deg+KvZThHSUU2K03L4sUI5b1Yk5v+jY
- 5fNeS9mr13USv/wZ60RfnnVnPJhkqJjX+i46ZWFRsXjx8/YATzp2Djwr8Ss8SA5SA3bh
- CNUQ==
-X-Gm-Message-State: APjAAAUxAt03mq7CxDDHZ43mLuxctrqSiHmTrYSpcNizdD6QdQQSvZOs
- WsKcHb4FvKuhJRPoiC6blNd8Vw==
-X-Google-Smtp-Source: APXvYqzFS3nViSd8Ml55qWBQUACdB1pGNmsO/5+y7g1p6Gt2X232FHXVSyZ7sg92TLGrQz/n1IlHPQ==
-X-Received: by 2002:a02:1146:: with SMTP id 67mr8522400jaf.10.1556910311443;
- Fri, 03 May 2019 12:05:11 -0700 (PDT)
+ bh=rWmEMhzliXcvOCRw3oQALFdco9XMzYzIIL0waa/gPso=;
+ b=ZcmAWOYq0JwRs4/jtlp0qSD5+9Ais1aFO1yJqkjKVkQIKOzpN+mTheG1O+YfE21Tgg
+ 1g/94Oowifu594Q0JcQAsyezXX7gujy1DMYL8eG5nB4Ctbb0EMOG29lDaidJuhrZfPE9
+ mmEtgWzJkM/OO2SnASoagYaOZWg9ZImEqL9aF8d1HmMRWCbmeeX7kAhKrLSMezrTkhIh
+ KoiUvUMmXDgZTO41ksHeKH1c6yxFYHTygkuxkhnvIideTtVKkyQTEq0EHUfzLhj4h+Iw
+ MIFZSexV/ORo3hZOhbmZ6rCMaD6ZSZtUj1jGQvgWCmwqTs0/0X3bkF5A7if5QzhEagjW
+ POCQ==
+X-Gm-Message-State: APjAAAWBzE5oUIfhitWSxL/hi4rRmsGSs6LJXMG1IqYIFcplcJ5scPu8
+ ugnHNX8VyJ4v+mxdoroAzOa+ig==
+X-Google-Smtp-Source: APXvYqxxG9koOb2FwS7bDsvoQXD5LW7BhJWcinIR8CpAmlMsv235RnRXDMhri4HVBO1mTbSuwEB++w==
+X-Received: by 2002:a24:6fc4:: with SMTP id x187mr8626527itb.122.1556911554423; 
+ Fri, 03 May 2019 12:25:54 -0700 (PDT)
 Received: from localhost (74-95-18-198-Albuquerque.hfc.comcastbusiness.net.
  [74.95.18.198])
- by smtp.gmail.com with ESMTPSA id d193sm1154451iog.34.2019.05.03.12.05.10
+ by smtp.gmail.com with ESMTPSA id o143sm1538223ito.18.2019.05.03.12.25.53
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 03 May 2019 12:05:10 -0700 (PDT)
-Date: Fri, 3 May 2019 12:05:09 -0700 (PDT)
+ Fri, 03 May 2019 12:25:53 -0700 (PDT)
+Date: Fri, 3 May 2019 12:25:52 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: [PATCH v5 0/2] tty: serial: add DT bindings and serial driver
- for the SiFive FU540 UART
-In-Reply-To: <7hsgtwlm5t.fsf@baylibre.com>
-Message-ID: <alpine.DEB.2.21.9999.1905031141530.4777@viisi.sifive.com>
-References: <20190413020111.23400-1-paul.walmsley@sifive.com>
- <7hmukmew5j.fsf@baylibre.com> <883f3d5f-9b04-1435-30d3-2b48ab7eb76d@wdc.com>
- <7h5zr9dcsi.fsf@baylibre.com> <f2bb876c-2b44-663b-ea06-d849f721fb6c@wdc.com>
- <7htvetbupi.fsf@baylibre.com>
- <alpine.DEB.2.21.9999.1904191407310.5118@viisi.sifive.com>
- <7hsgtwlm5t.fsf@baylibre.com>
+To: James Morse <james.morse@arm.com>
+Subject: Re: [PATCH] edac: sifive: Add EDAC platform driver for SiFive SoCs
+In-Reply-To: <4072c812-d3bf-9ad5-2b30-6b2a5060bb55@arm.com>
+Message-ID: <alpine.DEB.2.21.9999.1905031206450.4777@viisi.sifive.com>
+References: <1556795761-21630-1-git-send-email-yash.shah@sifive.com>
+ <1556795761-21630-2-git-send-email-yash.shah@sifive.com>
+ <4072c812-d3bf-9ad5-2b30-6b2a5060bb55@arm.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190503_120512_720760_8B6BBBF3 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20190503_122556_501216_A8615DA5 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:141 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -102,40 +99,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>,
- "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: aou@eecs.berkeley.edu, paulmck@linux.ibm.com, gregkh@linuxfoundation.org,
+ palmer@sifive.com, linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com,
+ sachin.ghadi@sifive.com, Yash Shah <yash.shah@sifive.com>, bp@alien8.de,
+ paul.walmsley@sifive.com, linux-riscv@lists.infradead.org, mchehab@kernel.org,
+ davem@davemloft.net, linux-edac@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 2 May 2019, Kevin Hilman wrote:
+Hi James,
 
-> Paul Walmsley <paul.walmsley@sifive.com> writes:
-> 
-> > I'd recommend testing the DT patches with BBL and the open-source FSBL.  
-> > That's the traditional way of booting RISC-V Linux systems.
-> 
-> OK, but as you know, not the tradiaional way of booting most other linux
-> systems.  ;)
-> 
-> I'm working on getting RISC-V supported in kernelCI in a fully-automated
-> way, and I don't currently have the time to add add support for BBL+FSBL
-> to kernelCI automation tooling, so having u-boot support is the best way
-> to get support in kernelCI, IMO.
+On Thu, 2 May 2019, James Morse wrote:
 
-That's great.  Please keep hacking away on RISC-V support for kernelCI.  
-My point is just that the U-boot and OpenSBI software stack you're working 
-with is not going to be useful for automatic tests of some kernel patches 
-yet.  That stack is still very new, and was written around a non-upstream 
-set of DT data.  We are in the process of posting and merging patches to 
-fix that, but it's going to take a few releases of both the kernel and 
-those other boot stack components until things are sorted out in a more 
-durable way.
+> Having an separately posted dependency like this is tricky, as this code can't be
+> used/tested until the other bits are merged.
+
+...
+
+> Looks good to me. I think this patch should go with its two dependencies, I'm not sure why
+> it got split off...
+
+The split was due to my suggestion to Yash, I think.  The motivation was 
+to decouple the L2 cache controller driver's journey upstream from the 
+EDAC driver's upstream path.  The patches will go up via separate trees, 
+so the idea was to avoid blocking the L2 cache controller driver on the 
+EDAC driver review path.
+
+Thanks for your review,
 
 
 - Paul
