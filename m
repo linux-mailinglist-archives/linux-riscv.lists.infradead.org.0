@@ -2,92 +2,96 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 711EA13401
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 May 2019 21:26:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DCDF13DB2
+	for <lists+linux-riscv@lfdr.de>; Sun,  5 May 2019 08:16:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:In-Reply-To:MIME-Version:
+	References:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9K9PmHcsV4EFiL5d7DO9nbnlyrbh0v6ITmuDLQeQtz4=; b=ZlFTyWeV4xXiYk
-	z0+g8EH6MWYYUY99R7Imq7zfpuxlWGXXybE7LOf6cNVSjYOFBazKp2wjtkMTX5Ykhv2Ak3X3Urwwx
-	Y4vHwmhCjXE9wI5QQqWiLaQCdFm+OptksUJN9itDvnZ9ZZc7ZBc5IhM4apHcgCkojIqdjts+YxevU
-	GMAezcgzfBUxV65FgHn8b1GS+/ie/u0e+EIfcDzwGGh6nsfD/0Zj/Ph55/m279SZIHsbFgka+Pmpg
-	n984XGEgiaThYodECpE7StzfdrUFFRHuzYCAqnE3SeuuyEZxFEFaMT+wFBAzkUgsh2lwHSVHqTr5t
-	d7mFHE1ql6VivsEGM02w==;
+	List-Owner; bh=dO7L7iEQBFkhP3DQMapZcQ2CTSMMDuScxmh7WaVcb8Y=; b=mAhehtG0PM+Onz
+	4JXmyf2h8OJO55MeRZixN2FtxaCAhXlXkbnLEcyNw9IRRqI31y2MB6COW/44hkWRhrw2veZXew3Zt
+	TKWlN67Pru/EGJd1Tw6W20mtikSHdl4sMmEUnWFI70r4HFPXt0WwO7/H0wnbQIv8UKq8l/WL5SwGo
+	xcdFtNCvQyidkYief90uaBF42vBOtZfdzJvsCJwUrvBkNmpitGAhiAss0Z4wKQXf1+bT18rdnMA7p
+	JlgbhckpZqrwIdWF6GvJeybGQI+1GaWbkBBodOgpMAGmE1z/0Jy681aaCvWleNivRtK235V/4qaE+
+	fMIuZl/2BjtcoBN8reag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMdol-0003eY-B7; Fri, 03 May 2019 19:25:59 +0000
-Received: from mail-it1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1hNARP-0004v9-EG; Sun, 05 May 2019 06:16:03 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMdoi-0003dl-Dq
- for linux-riscv@lists.infradead.org; Fri, 03 May 2019 19:25:57 +0000
-Received: by mail-it1-x141.google.com with SMTP id s3so11022736itk.1
- for <linux-riscv@lists.infradead.org>; Fri, 03 May 2019 12:25:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=rWmEMhzliXcvOCRw3oQALFdco9XMzYzIIL0waa/gPso=;
- b=kiSSW7aSQ9bW2r5VTe/j9kH3X7KcjLczLQh7LQZXDPHzWSJ2bRleyY4/rcvXuGGtP8
- h0Cyh08fdlQJAzSNhL1YqT2Kxlb/ota9cE18qbPPYJx7iiGOkRnakf0J0om8ImkSUOYF
- UiaS8qsHn/tiKdxPqd/OkpsImAVBnwBKQ93x4A94EW7b2vqPuzVuY/orAVL0Nwxi4qjS
- /OfVwDpBI0F6eq4eBLrJpZlttYqKhnPrAQs7DmJvWzdbTj/Uih6JMX6P50NbB8i3TRtn
- QhggAYwBHI07vJ3JPo7Vf7CDi5UEsDs2p03KvzViTNWxL1wWURERsP9JeoF6XvCAJTQH
- 7s8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=rWmEMhzliXcvOCRw3oQALFdco9XMzYzIIL0waa/gPso=;
- b=ZcmAWOYq0JwRs4/jtlp0qSD5+9Ais1aFO1yJqkjKVkQIKOzpN+mTheG1O+YfE21Tgg
- 1g/94Oowifu594Q0JcQAsyezXX7gujy1DMYL8eG5nB4Ctbb0EMOG29lDaidJuhrZfPE9
- mmEtgWzJkM/OO2SnASoagYaOZWg9ZImEqL9aF8d1HmMRWCbmeeX7kAhKrLSMezrTkhIh
- KoiUvUMmXDgZTO41ksHeKH1c6yxFYHTygkuxkhnvIideTtVKkyQTEq0EHUfzLhj4h+Iw
- MIFZSexV/ORo3hZOhbmZ6rCMaD6ZSZtUj1jGQvgWCmwqTs0/0X3bkF5A7if5QzhEagjW
- POCQ==
-X-Gm-Message-State: APjAAAWBzE5oUIfhitWSxL/hi4rRmsGSs6LJXMG1IqYIFcplcJ5scPu8
- ugnHNX8VyJ4v+mxdoroAzOa+ig==
-X-Google-Smtp-Source: APXvYqxxG9koOb2FwS7bDsvoQXD5LW7BhJWcinIR8CpAmlMsv235RnRXDMhri4HVBO1mTbSuwEB++w==
-X-Received: by 2002:a24:6fc4:: with SMTP id x187mr8626527itb.122.1556911554423; 
- Fri, 03 May 2019 12:25:54 -0700 (PDT)
-Received: from localhost (74-95-18-198-Albuquerque.hfc.comcastbusiness.net.
- [74.95.18.198])
- by smtp.gmail.com with ESMTPSA id o143sm1538223ito.18.2019.05.03.12.25.53
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 03 May 2019 12:25:53 -0700 (PDT)
-Date: Fri, 3 May 2019 12:25:52 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: James Morse <james.morse@arm.com>
-Subject: Re: [PATCH] edac: sifive: Add EDAC platform driver for SiFive SoCs
-In-Reply-To: <4072c812-d3bf-9ad5-2b30-6b2a5060bb55@arm.com>
-Message-ID: <alpine.DEB.2.21.9999.1905031206450.4777@viisi.sifive.com>
-References: <1556795761-21630-1-git-send-email-yash.shah@sifive.com>
- <1556795761-21630-2-git-send-email-yash.shah@sifive.com>
- <4072c812-d3bf-9ad5-2b30-6b2a5060bb55@arm.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1hNARA-0004l8-EA
+ for linux-riscv@lists.infradead.org; Sun, 05 May 2019 06:15:49 +0000
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x4566wGZ174863
+ for <linux-riscv@lists.infradead.org>; Sun, 5 May 2019 02:15:41 -0400
+Received: from e06smtp07.uk.ibm.com (e06smtp07.uk.ibm.com [195.75.94.103])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2s9r8x3jdg-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Sun, 05 May 2019 02:15:40 -0400
+Received: from localhost
+ by e06smtp07.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <rppt@linux.ibm.com>;
+ Sun, 5 May 2019 07:15:38 +0100
+Received: from b06cxnps3074.portsmouth.uk.ibm.com (9.149.109.194)
+ by e06smtp07.uk.ibm.com (192.168.101.137) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Sun, 5 May 2019 07:15:31 +0100
+Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
+ by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x456FUUd61079648
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sun, 5 May 2019 06:15:30 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EB15F42042;
+ Sun,  5 May 2019 06:15:29 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id BE8ED42047;
+ Sun,  5 May 2019 06:15:27 +0000 (GMT)
+Received: from rapoport-lnx (unknown [9.148.8.112])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
+ Sun,  5 May 2019 06:15:27 +0000 (GMT)
+Date: Sun, 5 May 2019 09:15:26 +0300
+From: Mike Rapoport <rppt@linux.ibm.com>
+To: Paul Burton <paul.burton@mips.com>
+Subject: Re: [PATCH 01/15] asm-generic, x86: introduce generic
+ pte_{alloc,free}_one[_kernel]
+References: <1556810922-20248-1-git-send-email-rppt@linux.ibm.com>
+ <1556810922-20248-2-git-send-email-rppt@linux.ibm.com>
+ <20190502190310.voenw3pwgpelmdgw@pburton-laptop>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190502190310.voenw3pwgpelmdgw@pburton-laptop>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TM-AS-GCONF: 00
+x-cbid: 19050506-0028-0000-0000-0000036A7624
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19050506-0029-0000-0000-00002429E811
+Message-Id: <20190505061525.GC15755@rapoport-lnx>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-05_04:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=2 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=835 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1905050056
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190503_122556_501216_A8615DA5 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190504_231548_610130_1CB4E819 
+X-CRM114-Status: GOOD (  19.39  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:141 listed in]
- [list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,38 +103,63 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, paulmck@linux.ibm.com, gregkh@linuxfoundation.org,
- palmer@sifive.com, linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com,
- sachin.ghadi@sifive.com, Yash Shah <yash.shah@sifive.com>, bp@alien8.de,
- paul.walmsley@sifive.com, linux-riscv@lists.infradead.org, mchehab@kernel.org,
- davem@davemloft.net, linux-edac@vger.kernel.org
+Cc: Michal Hocko <mhocko@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>,
+ Guo Ren <guoren@kernel.org>,
+ "linux-hexagon@vger.kernel.org" <linux-hexagon@vger.kernel.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ "x86@kernel.org" <x86@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ Matthew Wilcox <willy@infradead.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Matt Turner <mattst88@gmail.com>,
+ Sam Creasey <sammy@sammy.net>, Arnd Bergmann <arnd@arndb.de>,
+ "linux-alpha@vger.kernel.org" <linux-alpha@vger.kernel.org>,
+ "linux-um@lists.infradead.org" <linux-um@lists.infradead.org>,
+ "linux-m68k@lists.linux-m68k.org" <linux-m68k@lists.linux-m68k.org>,
+ Greentime Hu <green.hu@gmail.com>,
+ "nios2-dev@lists.rocketboards.org" <nios2-dev@lists.rocketboards.org>,
+ Guan Xuetao <gxt@pku.edu.cn>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-parisc@vger.kernel.org" <linux-parisc@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Richard Kuo <rkuo@codeaurora.org>, Richard Weinberger <richard@nod.at>,
+ Ley Foon Tan <lftan@altera.com>, Andrew Morton <akpm@linux-foundation.org>,
+ "linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi James,
+On Thu, May 02, 2019 at 07:03:11PM +0000, Paul Burton wrote:
+> Hi Mike,
+> 
+> On Thu, May 02, 2019 at 06:28:28PM +0300, Mike Rapoport wrote:
+> > +/**
+> > + * pte_free_kernel - free PTE-level user page table page
+> > + * @mm: the mm_struct of the current context
+> > + * @pte_page: the `struct page` representing the page table
+> > + */
+> > +static inline void pte_free(struct mm_struct *mm, struct page *pte_page)
+> > +{
+> > +	pgtable_page_dtor(pte_page);
+> > +	__free_page(pte_page);
+> > +}
+> 
+> Nit: the comment names the wrong function (s/pte_free_kernel/pte_free/).
 
-On Thu, 2 May 2019, James Morse wrote:
+Argh, evil copy-paste :)
+Thanks!
+ 
+> Thanks,
+>     Paul
+> 
 
-> Having an separately posted dependency like this is tricky, as this code can't be
-> used/tested until the other bits are merged.
+-- 
+Sincerely yours,
+Mike.
 
-...
-
-> Looks good to me. I think this patch should go with its two dependencies, I'm not sure why
-> it got split off...
-
-The split was due to my suggestion to Yash, I think.  The motivation was 
-to decouple the L2 cache controller driver's journey upstream from the 
-EDAC driver's upstream path.  The patches will go up via separate trees, 
-so the idea was to avoid blocking the L2 cache controller driver on the 
-EDAC driver review path.
-
-Thanks for your review,
-
-
-- Paul
 
 _______________________________________________
 linux-riscv mailing list
