@@ -2,77 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C7931496D
-	for <lists+linux-riscv@lfdr.de>; Mon,  6 May 2019 14:18:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E74D014A4B
+	for <lists+linux-riscv@lfdr.de>; Mon,  6 May 2019 14:54:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hJxNsups4ykZcmYjg1/gRps2TMxJzHdvJYBTbMfaxyo=; b=QkohSRS2eOlXbA
-	QDxIroFSsGc/b2SGFoTCGhbog/Yz1JAwP1OPoTZ65rnIzGfFcNLT0IlE1NIPBcryC3CdxK32x+vkC
-	8e593kDkbszQmAkgdb51LdhsdLF2AOzqXZAnCXjGxLDDRWuonnZ3B+kqd16oQlY0tK5wke2FGmbb5
-	7i+q+l3wVnJVuBazqadY01cgN8KAhVb7cDLRS9H3CLFewqaDIklGhL57FIdJI32fHMGorgp3ap0oB
-	xbBtI1gRb4G8IVTXTbRzL2cvcTw4BwjYLmzH+lNL9GV5LRntFwZOcA0dHJNBNFmfesTPw4ZS+uu0/
-	fBzydXKW5ye4mE1HoPbg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=F4/+8LRXKFQQ5QmtuL2x/PEq7+Rp2uQ8fk/4LJD7Ss8=; b=p2MCi1zJbuGyU+
+	KeRJCEvpp6yonm+mthhqCLKbkobvzi4nc0lm3+uHou5vujTMlmUnnYqhMnifWhXAHpkNm6uWpG7SA
+	aIm2ftg7z4NoyeJZidDikIj0B5qaEL9qPyNGZEbCRof7gs6QBcZ8x/XJpjrZDcFEVmpyU7TbkUw/b
+	wkIymVXmopSIt6efrsdxC/Rg+fLHE9ckttmwBenkOqtwc5L3BSLJa19ReJOrI3XciBPFyVLR5xZqW
+	QUUmZnrN4lAvYVmFHFXgPZnsMjEXi6mFP/d+ZVWSOKpp0qN6vFC8MiBhTUu580Yj7EoRhHcMy/oSk
+	2lUH244+SG07sVQRVlYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNcZh-0000B3-Vt; Mon, 06 May 2019 12:18:29 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1hNd8Z-0000fx-ET; Mon, 06 May 2019 12:54:31 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNcZd-0000Af-Up
- for linux-riscv@lists.infradead.org; Mon, 06 May 2019 12:18:28 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id x46CIHYN054299;
- Mon, 6 May 2019 07:18:17 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1557145097;
- bh=jJLwQd3pFIHe34zU3i/HHRq/I7L/8S7gmJI9jaq1Ak0=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=cur3fFT11+6EFknbuA+EvjsN3DZ1qZ5CEN5Tqfhw8/iOy2GwYXZGy+7eFAN5UrbaC
- n9o7eWReaHuSerzF98IYPhV1R8Um6CwK0XlBPCWkUmwAGku09ieT/6kD2rDsxR9j0o
- 8qObBJl7aX84/RK3KsOAhEWfjIOJa0Y6DyNUgTOA=
-Received: from DLEE112.ent.ti.com (dlee112.ent.ti.com [157.170.170.23])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x46CIHDL016244
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 6 May 2019 07:18:17 -0500
-Received: from DLEE114.ent.ti.com (157.170.170.25) by DLEE112.ent.ti.com
- (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Mon, 6 May
- 2019 07:18:17 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Mon, 6 May 2019 07:18:16 -0500
-Received: from [10.250.67.168] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id x46CIG0r043691;
- Mon, 6 May 2019 07:18:16 -0500
-Subject: Re: [PATCH v3 2/2] RISC-V: sifive_l2_cache: Add L2 cache controller
- driver for SiFive SoCs
-To: Yash Shah <yash.shah@sifive.com>, <linux-riscv@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <palmer@sifive.com>
-References: <1557139720-12384-1-git-send-email-yash.shah@sifive.com>
- <1557139720-12384-3-git-send-email-yash.shah@sifive.com>
-From: "Andrew F. Davis" <afd@ti.com>
-Message-ID: <d36b7a74-0d08-0143-b479-45f760c347ba@ti.com>
-Date: Mon, 6 May 2019 08:18:17 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <1557139720-12384-3-git-send-email-yash.shah@sifive.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+ id 1hNd8U-0000ec-1B
+ for linux-riscv@lists.infradead.org; Mon, 06 May 2019 12:54:29 +0000
+Received: by mail-pl1-x642.google.com with SMTP id x15so6336163pln.9
+ for <linux-riscv@lists.infradead.org>; Mon, 06 May 2019 05:54:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:subject:date:message-id;
+ bh=mCH1PNSxZO8UcLFwRskob8mKkP1s690Icm959QBwtxU=;
+ b=Pa0zYFaooyEYnq8TNhjhsXUlNZTUn09rsJ8MbLtbutJ3aBNJVK6GoB0Ieeo+ivQPKH
+ c29gKxZLq9jfmaUkDPJXGoeQHFZ+BqEepzvbmCpuhplKrHOfsUx5dtQ2hoWnuP3KSMmi
+ 3MQrQ34bAG4govn9tRpYpXMp4e+AIB/LMZZy1ddaiJJL3MkeNGe/nFKNsR+1CxPEQgz4
+ M1D8ORQk6cXBjqrBe0oduIqsMaZvCY0bSEx1GxZ4JiISvRxvYjeJnlcfs/i8rRRkSG6j
+ nlv88TJUpQauJaa04VxyQrfrXjIRfJHUolR7Wt1P1ld8gBk+MTDanS7ULH4jCR6an06c
+ GhDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=mCH1PNSxZO8UcLFwRskob8mKkP1s690Icm959QBwtxU=;
+ b=WMujcd06SHAD19axcYYU9ukQB+xJ1Zus06zxqwxNpn79dzdot0LLJS/iu5AHYFKieB
+ 42taQwmMl6/jVeU5PBjDBMqC3HaKWYvNlCrSeokXhiQ4HM7H4c9BitLpemDpt0gC1gQw
+ Iklabzk3VaBy3LQmd5rguMiO6/3YYj8UUPiZv8TVz/qiYU3HakhzFb/uEov4KlFayS1Q
+ bCf7efVYMDrLOO9+R7F/kfldXiYOFLCkUZw/HR+IoE8U+hqqp6z41y8yM1biTkMZu/zN
+ bB6Un2o2RCoJxPTNXuECBcTTpilprZDw2wMvDnIRg4Yx+lypUDkPSfyRKyXQym9tVlPQ
+ YOeQ==
+X-Gm-Message-State: APjAAAXtV8AXLQT88Gr+ZLmeE6MUrLY57GHCweFcLMQZW6ejQCq2JxrT
+ DVdRpWBg3xg83w2HABzVeWUdlQ==
+X-Google-Smtp-Source: APXvYqzA7OlsB9Sxuwz64C70xfdtuDDDGNwfRbcLFQfRJu2C+ztVPX59gkK/uUwSuBXaxJYg8WdB9g==
+X-Received: by 2002:a17:902:2dc3:: with SMTP id
+ p61mr31847462plb.308.1557147264714; 
+ Mon, 06 May 2019 05:54:24 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id p81sm18031132pfa.26.2019.05.06.05.54.20
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Mon, 06 May 2019 05:54:24 -0700 (PDT)
+From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+To: robh+dt@kernel.org, mark.rutland@arm.com, palmer@sifive.com,
+ paul.walmsley@sifive.com, sagar.kadam@sifive.com, peter@korsgaard.com,
+ andrew@lunn.ch, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v1 v1 0/3] Add dt bindings to support I2C on sifive devices
+ and a fix for polling mode i2c transfers.
+Date: Mon,  6 May 2019 18:23:57 +0530
+Message-Id: <1557147240-29551-1-git-send-email-sagar.kadam@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_051826_077000_107E3742 
-X-CRM114-Status: GOOD (  22.25  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190506_055426_117816_72B51934 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [198.47.19.142 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -81,7 +84,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,250 +95,42 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, aou@eecs.berkeley.edu, linux-kernel@vger.kernel.org,
- sachin.ghadi@sifive.com, robh+dt@kernel.org, paul.walmsley@sifive.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 5/6/19 6:48 AM, Yash Shah wrote:
-> The driver currently supports only SiFive FU540-C000 platform.
-> 
-> The initial version of L2 cache controller driver includes:
-> - Initial configuration reporting at boot up.
-> - Support for ECC related functionality.
-> 
-> Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> ---
->  arch/riscv/include/asm/sifive_l2_cache.h |  16 +++
->  arch/riscv/mm/Makefile                   |   1 +
->  arch/riscv/mm/sifive_l2_cache.c          | 175 +++++++++++++++++++++++++++++++
->  3 files changed, 192 insertions(+)
->  create mode 100644 arch/riscv/include/asm/sifive_l2_cache.h
->  create mode 100644 arch/riscv/mm/sifive_l2_cache.c
-> 
-> diff --git a/arch/riscv/include/asm/sifive_l2_cache.h b/arch/riscv/include/asm/sifive_l2_cache.h
-> new file mode 100644
-> index 0000000..04f6748
-> --- /dev/null
-> +++ b/arch/riscv/include/asm/sifive_l2_cache.h
-> @@ -0,0 +1,16 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * SiFive L2 Cache Controller header file
-> + *
-> + */
-> +
-> +#ifndef _ASM_RISCV_SIFIVE_L2_CACHE_H
-> +#define _ASM_RISCV_SIFIVE_L2_CACHE_H
-> +
-> +extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
-> +extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
-> +
-> +#define SIFIVE_L2_ERR_TYPE_CE 0
-> +#define SIFIVE_L2_ERR_TYPE_UE 1
-> +
-> +#endif /* _ASM_RISCV_SIFIVE_L2_CACHE_H */
-> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-> index eb22ab4..1523ee5 100644
-> --- a/arch/riscv/mm/Makefile
-> +++ b/arch/riscv/mm/Makefile
-> @@ -3,3 +3,4 @@ obj-y += fault.o
->  obj-y += extable.o
->  obj-y += ioremap.o
->  obj-y += cacheflush.o
-> +obj-y += sifive_l2_cache.o
-> diff --git a/arch/riscv/mm/sifive_l2_cache.c b/arch/riscv/mm/sifive_l2_cache.c
-> new file mode 100644
-> index 0000000..4eb6461
-> --- /dev/null
-> +++ b/arch/riscv/mm/sifive_l2_cache.c
-> @@ -0,0 +1,175 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * SiFive L2 cache controller Driver
-> + *
-> + * Copyright (C) 2018-2019 SiFive, Inc.
-> + *
-> + */
-> +#include <linux/debugfs.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/of_irq.h>
-> +#include <linux/of_address.h>
-> +#include <asm/sifive_l2_cache.h>
-> +
-> +#define SIFIVE_L2_DIRECCFIX_LOW 0x100
-> +#define SIFIVE_L2_DIRECCFIX_HIGH 0x104
-> +#define SIFIVE_L2_DIRECCFIX_COUNT 0x108
-> +
-> +#define SIFIVE_L2_DATECCFIX_LOW 0x140
-> +#define SIFIVE_L2_DATECCFIX_HIGH 0x144
-> +#define SIFIVE_L2_DATECCFIX_COUNT 0x148
-> +
-> +#define SIFIVE_L2_DATECCFAIL_LOW 0x160
-> +#define SIFIVE_L2_DATECCFAIL_HIGH 0x164
-> +#define SIFIVE_L2_DATECCFAIL_COUNT 0x168
-> +
-> +#define SIFIVE_L2_CONFIG 0x00
-> +#define SIFIVE_L2_WAYENABLE 0x08
-> +#define SIFIVE_L2_ECCINJECTERR 0x40
-> +
-> +#define SIFIVE_L2_MAX_ECCINTR 3
-> +
-> +static void __iomem *l2_base;
-> +static int g_irq[SIFIVE_L2_MAX_ECCINTR];
-> +
-> +enum {
-> +	DIR_CORR = 0,
-> +	DATA_CORR,
-> +	DATA_UNCORR,
-> +};
-> +
-> +#ifdef CONFIG_DEBUG_FS
-> +static struct dentry *sifive_test;
-> +
-> +static ssize_t l2_write(struct file *file, const char __user *data,
-> +			size_t count, loff_t *ppos)
-> +{
-> +	unsigned int val;
-> +
-> +	if (kstrtouint_from_user(data, count, 0, &val))
-> +		return -EINVAL;
-> +	if ((val >= 0 && val < 0xFF) || (val >= 0x10000 && val < 0x100FF))
+The patch is based on mainline v5.1 and is intended to add DT-bindings for Opencore based I2C device 
+support in FU540 SoC, available on HiFive unleashed board (Rev A00), and also provide a workaround to 
+make I2C polling mode interface work with FU540 chipsets.
 
-I'm guessing bit 16 is the enable and the lower 8 are some kind of
-region to enable the error? This is probably a bad interface, it looks
-useful for testing but doesn't provide any debugging info useful for
-running systems. Do you really want userspace to be able to do this?
+The polling mode workaround patch fixes the CPU stall issue, when-ever i2c transfer are initiated 
 
-Andrew
+This workaround checks if it's a FU540 chipset based on device tree information, and check's for open
+core's IF(interrupt flag) and TIP flags to break from the polling loop upon completion of transfer.
 
-> +		writel(val, l2_base + SIFIVE_L2_ECCINJECTERR);
-> +	else
-> +		return -EINVAL;
-> +	return count;
-> +}
-> +
-> +static const struct file_operations l2_fops = {
-> +	.owner = THIS_MODULE,
-> +	.open = simple_open,
-> +	.write = l2_write
-> +};
-> +
-> +static void setup_sifive_debug(void)
-> +{
-> +	sifive_test = debugfs_create_dir("sifive_l2_cache", NULL);
-> +
-> +	debugfs_create_file("sifive_debug_inject_error", 0200,
-> +			    sifive_test, NULL, &l2_fops);
-> +}
-> +#endif
-> +
-> +static void l2_config_read(void)
-> +{
-> +	u32 regval, val;
-> +
-> +	regval = readl(l2_base + SIFIVE_L2_CONFIG);
-> +	val = regval & 0xFF;
-> +	pr_info("L2CACHE: No. of Banks in the cache: %d\n", val);
-> +	val = (regval & 0xFF00) >> 8;
-> +	pr_info("L2CACHE: No. of ways per bank: %d\n", val);
-> +	val = (regval & 0xFF0000) >> 16;
-> +	pr_info("L2CACHE: Sets per bank: %llu\n", (uint64_t)1 << val);
-> +	val = (regval & 0xFF000000) >> 24;
-> +	pr_info("L2CACHE: Bytes per cache block: %llu\n", (uint64_t)1 << val);
-> +
-> +	regval = readl(l2_base + SIFIVE_L2_WAYENABLE);
-> +	pr_info("L2CACHE: Index of the largest way enabled: %d\n", regval);
-> +}
-> +
-> +static const struct of_device_id sifive_l2_ids[] = {
-> +	{ .compatible = "sifive,fu540-c000-ccache" },
-> +	{ /* end of table */ },
-> +};
-> +
-> +static ATOMIC_NOTIFIER_HEAD(l2_err_chain);
-> +
-> +int register_sifive_l2_error_notifier(struct notifier_block *nb)
-> +{
-> +	return atomic_notifier_chain_register(&l2_err_chain, nb);
-> +}
-> +EXPORT_SYMBOL_GPL(register_sifive_l2_error_notifier);
-> +
-> +int unregister_sifive_l2_error_notifier(struct notifier_block *nb)
-> +{
-> +	return atomic_notifier_chain_unregister(&l2_err_chain, nb);
-> +}
-> +EXPORT_SYMBOL_GPL(unregister_sifive_l2_error_notifier);
-> +
-> +static irqreturn_t l2_int_handler(int irq, void *device)
-> +{
-> +	unsigned int regval, add_h, add_l;
-> +
-> +	if (irq == g_irq[DIR_CORR]) {
-> +		add_h = readl(l2_base + SIFIVE_L2_DIRECCFIX_HIGH);
-> +		add_l = readl(l2_base + SIFIVE_L2_DIRECCFIX_LOW);
-> +		pr_err("L2CACHE: DirError @ 0x%08X.%08X\n", add_h, add_l);
-> +		regval = readl(l2_base + SIFIVE_L2_DIRECCFIX_COUNT);
-> +		atomic_notifier_call_chain(&l2_err_chain, SIFIVE_L2_ERR_TYPE_CE,
-> +					   "DirECCFix");
-> +	}
-> +	if (irq == g_irq[DATA_CORR]) {
-> +		add_h = readl(l2_base + SIFIVE_L2_DATECCFIX_HIGH);
-> +		add_l = readl(l2_base + SIFIVE_L2_DATECCFIX_LOW);
-> +		pr_err("L2CACHE: DataError @ 0x%08X.%08X\n", add_h, add_l);
-> +		regval = readl(l2_base + SIFIVE_L2_DATECCFIX_COUNT);
-> +		atomic_notifier_call_chain(&l2_err_chain, SIFIVE_L2_ERR_TYPE_CE,
-> +					   "DatECCFix");
-> +	}
-> +	if (irq == g_irq[DATA_UNCORR]) {
-> +		add_h = readl(l2_base + SIFIVE_L2_DATECCFAIL_HIGH);
-> +		add_l = readl(l2_base + SIFIVE_L2_DATECCFAIL_LOW);
-> +		pr_err("L2CACHE: DataFail @ 0x%08X.%08X\n", add_h, add_l);
-> +		regval = readl(l2_base + SIFIVE_L2_DATECCFAIL_COUNT);
-> +		atomic_notifier_call_chain(&l2_err_chain, SIFIVE_L2_ERR_TYPE_UE,
-> +					   "DatECCFail");
-> +	}
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +int __init sifive_l2_init(void)
-> +{
-> +	struct device_node *np;
-> +	struct resource res;
-> +	int i, rc;
-> +
-> +	np = of_find_matching_node(NULL, sifive_l2_ids);
-> +	if (!np)
-> +		return -ENODEV;
-> +
-> +	if (of_address_to_resource(np, 0, &res))
-> +		return -ENODEV;
-> +
-> +	l2_base = ioremap(res.start, resource_size(&res));
-> +	if (!l2_base)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < SIFIVE_L2_MAX_ECCINTR; i++) {
-> +		g_irq[i] = irq_of_parse_and_map(np, i);
-> +		rc = request_irq(g_irq[i], l2_int_handler, 0, "l2_ecc", NULL);
-> +		if (rc) {
-> +			pr_err("L2CACHE: Could not request IRQ %d\n", g_irq[i]);
-> +			return rc;
-> +		}
-> +	}
-> +
-> +	l2_config_read();
-> +
-> +#ifdef CONFIG_DEBUG_FS
-> +	setup_sifive_debug();
-> +#endif
-> +	return 0;
-> +}
-> +device_initcall(sifive_l2_init);
-> 
+To test the patch, a PMOD-AD2 sensor is connected to HiFive Unleashed board over J1 connector, and 
+appropriate device node is added into board specific device tree as per the information provided in 
+dt-bindings in Documentation/devicetree/bindings/i2c/i2c-sifive.txt.
+Without this workaround, the CPU stall's infinitely.
+
+Busybox i2c utilities used to verify workaround : i2cdetect, i2cdump, i2cset, i2cget
+
+
+Sagar Shrikant Kadam (3):
+  dt-bindings: i2c: add documentation for adding SiFive I2C driver
+  i2c-ocore: sifive: add support for i2c device on FU540-c000 SoC.
+  i2c-ocores: sifive: add polling mode workaround for FU540-C000 SoC.
+
+ .../devicetree/bindings/i2c/i2c-sifive.txt         | 29 +++++++++++++++++++
+ drivers/i2c/busses/i2c-ocores.c                    | 33 +++++++++++++++++++---
+ 2 files changed, 58 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/i2c/i2c-sifive.txt
+
+-- 
+1.9.1
+
 
 _______________________________________________
 linux-riscv mailing list
