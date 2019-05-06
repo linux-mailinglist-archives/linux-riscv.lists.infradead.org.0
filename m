@@ -2,55 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2326D14ACD
-	for <lists+linux-riscv@lfdr.de>; Mon,  6 May 2019 15:19:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E1F914AE6
+	for <lists+linux-riscv@lfdr.de>; Mon,  6 May 2019 15:29:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O0NadB6PV3rj9NSFXazU2a13ydTi7m3aGhxAmT2QdfM=; b=n3PQc71p3Araeo
-	kDIT09yQYFFlDlRl9SJ0F/HfCMY4YgpqzX+n3ofv7+Hu9UvCn8dXaJRYK95RPzXZKbRNVZFWX/B65
-	ht+IXm6NsRkL9rzs3rttw9209EuBl3Y8XwXgcjgjGH156lT/YbZ92XSpMFeI3pCbtDQdt3sbc5e1V
-	M0SZiG6fQrLu+oZBpi8++rMXRF7wvf/a0q+IsQDhAlcAkg9fOOp2jHXzmkOzlKOCl7Rraze6EpSHY
-	t6SDZ9V3WslluMNXTveok7BzwMyRjnGNp3qeHNLXgyqIZmaBIAAXDxa3i4LXQKAllbvZW15qS9m8y
-	JBo8edapQvsOLZ+yiYJA==;
+	List-Owner; bh=SXWOwHKD/VQU59ZR/FpQ1GCPGSGSr5boGnEQ8rDPGIU=; b=g8bjC1neM5pru6
+	5cHIpzQEF604FPmsT40aXRXzLE/J7XROF170tNTWi/HD4n7zJqEhYXbwVB0agtQcNjpA3S6h0KJiF
+	xFLEk7y6WQPyjC+bYQfMiDUsSkdHUsuA6E4gKzyvcqCJqngyu3uLRiH9LOiOdcpVHjue4PLgrpZVx
+	urIM4dTTSgEJ9NjD6OlrE50eVhT4lpYKz+QluPsP1pNllGmFR0yEJADqauxntNbI4shxl2jIn1Q6w
+	Ypuy887eVMY7x2SjbKJE3TeV2Gsmw59Q6exN8QI3/4ORS33rq9p0Z591Bib/KDxDCMe5PoZgjjx3b
+	U1JePbqH+rJCASqLL3eg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNdWp-0001Wz-8e; Mon, 06 May 2019 13:19:35 +0000
+	id 1hNdgS-00053r-LZ; Mon, 06 May 2019 13:29:32 +0000
 Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNdWi-0001LI-9o
- for linux-riscv@lists.infradead.org; Mon, 06 May 2019 13:19:31 +0000
+ id 1hNdgP-00053S-Bu
+ for linux-riscv@lists.infradead.org; Mon, 06 May 2019 13:29:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
  s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
  Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=/39Byr8Jz1d2Cq9RZc884MwZCtSwkYNYQBE+LN5ZoMk=; b=KonHm0ud0tHXY8V6u9Y7S9GRJ4
- caA7TK2xPZ7euRsB90vYTt67HPHd3ui/AzbKSGb439axZfxMfIjQ3VZuV7YKUxD2hbNDAuE52+aaD
- dWD4Ta0yqq9x4lNYcvgxqC/9Xh5NlWev5/szH72aMCzBxow4cX3I9YL8geSvSZEQKgOg=;
+ bh=iqK/8epn5ls+IZG0UVMrU/nhCwJXFn7xBX1PC/hdTw8=; b=Xi4GnazFzWujEyL0+B6GoxfPXw
+ yypf4DnisTvFQyII2YxI8Dq+6W1uRpKc+dxsYsBsa+Dpv2j+og2+nHKl5eyc96I8rPF6SecgNg+qv
+ dnTngDKXOw4HfSo1EdOyX4oJ89lR64yLS2wQ4mZE13dQi9ckbzmSoJ8oR4rkGq2lWWRs=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.89)
  (envelope-from <andrew@lunn.ch>)
- id 1hNdWZ-0004xc-1J; Mon, 06 May 2019 15:19:19 +0200
-Date: Mon, 6 May 2019 15:19:19 +0200
+ id 1hNdgK-00051K-MA; Mon, 06 May 2019 15:29:24 +0200
+Date: Mon, 6 May 2019 15:29:24 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-Subject: Re: [PATCH v1 v1 1/3] dt-bindings: i2c: add documentation for adding
- SiFive I2C driver
-Message-ID: <20190506131919.GC15291@lunn.ch>
+Subject: Re: [PATCH v1 v1 3/3] i2c-ocores: sifive: add polling mode
+ workaround for FU540-C000 SoC.
+Message-ID: <20190506132924.GD15291@lunn.ch>
 References: <1557147240-29551-1-git-send-email-sagar.kadam@sifive.com>
- <1557147240-29551-2-git-send-email-sagar.kadam@sifive.com>
+ <1557147240-29551-4-git-send-email-sagar.kadam@sifive.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1557147240-29551-2-git-send-email-sagar.kadam@sifive.com>
+In-Reply-To: <1557147240-29551-4-git-send-email-sagar.kadam@sifive.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_061928_744654_F947FCDA 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190506_062929_561070_3841F7D6 
+X-CRM114-Status: GOOD (  12.17  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -87,23 +86,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, May 06, 2019 at 06:23:58PM +0530, Sagar Shrikant Kadam wrote:
-> Add DT binding for OpenCore's based i2c device as found in
-> FU540 Chipset on HiFive Unleashed Platform (Rev A00).
-> 
-> The doc explains, how to add DT support for I2C devices.
-> 
-> Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-> ---
->  .../devicetree/bindings/i2c/i2c-sifive.txt         | 29 ++++++++++++++++++++++
->  1 file changed, 29 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-sifive.txt
+>  /*
+>   * 'process_lock' exists because ocores_process() and ocores_process_timeout()
+> @@ -239,8 +240,13 @@ static irqreturn_t ocores_isr(int irq, void *dev_id)
+>  	struct ocores_i2c *i2c = dev_id;
+>  	u8 stat = oc_getreg(i2c, OCI2C_STATUS);
+>  
+> -	if (!(stat & OCI2C_STAT_IF))
+> +	if (i2c->flags && SIFIVE_FLAG_POLL) {
 
-Hi Sagar
+Do you really want && here?
 
-Please extend the existing i2c-ocores.txt file, not add a new file.
+> +		if (stat & OCI2C_STAT_IF)
+> +			if (!(stat & OCI2C_STAT_BUSY))
+> +				return IRQ_NONE;
+> +	} else if (!(stat & OCI2C_STAT_IF)) {
+>  		return IRQ_NONE;
+> +	}
+>  
+>  	ocores_process(i2c, stat);
+>  
+> @@ -356,6 +362,11 @@ static void ocores_process_polling(struct ocores_i2c *i2c)
+>  		ret = ocores_isr(-1, i2c);
+>  		if (ret == IRQ_NONE)
+>  			break; /* all messages have been transferred */
+> +		else {
+> +			if (i2c->flags && SIFIVE_FLAG_POLL)
 
-       Andrew
+And here?
+
+> +				if (i2c->state == STATE_DONE)
+> +					break;
+> +		}
+>  	}
+>  }
+>  
+> @@ -406,7 +417,7 @@ static int ocores_xfer(struct i2c_adapter *adap,
+>  {
+>  	struct ocores_i2c *i2c = i2c_get_adapdata(adap);
+>  
+> -	if (i2c->flags & OCORES_FLAG_POLL)
+> +	if ((i2c->flags & OCORES_FLAG_POLL) || (i2c->flags & SIFIVE_FLAG_POLL))
+
+You can combine this
+
+if ((i2c->flags & (OCORES_FLAG_POLL | SIFIVE_FLAG_POLL))
+
+>  		return ocores_xfer_polling(adap, msgs, num);
+>  	return ocores_xfer_core(i2c, msgs, num, false);
+>  }
+> @@ -597,6 +608,7 @@ static int ocores_i2c_probe(struct platform_device *pdev)
+>  {
+>  	struct ocores_i2c *i2c;
+>  	struct ocores_i2c_platform_data *pdata;
+> +	const struct of_device_id *match;
+>  	struct resource *res;
+>  	int irq;
+>  	int ret;
+> @@ -678,13 +690,21 @@ static int ocores_i2c_probe(struct platform_device *pdev)
+>  
+>  	irq = platform_get_irq(pdev, 0);
+>  	if (irq == -ENXIO) {
+> -		i2c->flags |= OCORES_FLAG_POLL;
+> +		/*
+> +		 * Set a SIFIVE_FLAG_POLL to enable workaround for FU540
+> +		 * in polling mode interface of i2c-ocore driver.
+> +		 */
+> +		match = of_match_node(ocores_i2c_match, pdev->dev.of_node);
+> +		if (match && (long)match->data == TYPE_SIFIVE_REV0)
+> +			i2c->flags |= SIFIVE_FLAG_POLL;
+> +		else
+> +			i2c->flags |= OCORES_FLAG_POLL;
+
+Please take a look at the whole code, and consider if it is better to
+set both SIFIVE_FLAG_POLL and OCORES_FLAG_POLL. Maybe rename
+SIFIVE_FLAG_POLL to OCORES_FLAG_BROKEN_IRQ_BIT?
+
+Thanks
+	Andrew
 
 _______________________________________________
 linux-riscv mailing list
