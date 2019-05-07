@@ -2,78 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D061C16289
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 May 2019 13:02:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5BAF164DB
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 May 2019 15:45:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yrbX5qbTfos9WlmQ1EmAykffiEQp0KOQgBbvRNWAHIg=; b=PvKsjde9cAqlV5
-	wF572PVT2FyXxgE6xWLHQc553QcgDVgmpAPEx0aENNlLeap3fWvkqr5x5eP02qYgOPdahqNz5uOm5
-	MUDNap3j+tc3G+9/l7WbLlJ6v8OPrFKQTJzf7mDxbl6d3v9RHfi5gvkhfXYuu+CNjuzRKpfQ9XdEf
-	M4vMq5FqDnCESxSITbNmqt9upnLX1ouFo1uKUkE7/VMJEVY8G2KjHpOvLiFvjezmIWMuJylzLrgTh
-	m06SwEZJ4z8ZPisU8IZLk+S/orj8Tik6kHs/1Gr5VNgXH48tm0eYLR89VkoaoIgRTtTb7gpRz+UKR
-	bPwLMOhSDjblKu4C5oOw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TGuPc/dRLJzdfLevYg6N3QmooAtolJqaq6Hua+CeTBE=; b=HK0QqMkasSyheG
+	WiFBOQNl9eCUFYayGNXBXLsPUdUGIBOcz1WAosMTbhCejqc6LFd/HKwRVMGtnp4zPX0C1IuIH7yye
+	462ckz3KgcaxFL/PXQ777yUnLPfCZKqXsmaLokAGoKINfCNWCiWq7jlL8vjG5Qls3WLwQ9pes7rB6
+	oSLGkEK4ruMC6df/x7M6MicyssqnU/5nlFZaoJ400g8zl5U33nUuw73sggmglh6BNxru3KaaxoXuH
+	haYpipcuuLqh1VAhVomgIQRUPcl7T77Lnnk3bFdHdNF68oAZG2Pftzcilv7yq8WvpifFMLL2rswNe
+	povmiD42iS4GhseLzRMQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNxrr-0007pv-Qr; Tue, 07 May 2019 11:02:39 +0000
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241])
+	id 1hO0P6-0007Bc-5P; Tue, 07 May 2019 13:45:08 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNxrp-0007pH-5Z
- for linux-riscv@lists.infradead.org; Tue, 07 May 2019 11:02:38 +0000
-Received: by mail-lj1-x241.google.com with SMTP id q10so13919598ljc.6
- for <linux-riscv@lists.infradead.org>; Tue, 07 May 2019 04:02:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2EUu6Mnu44He2lWLLhgCEFkjsFkbhrlsReIpHL53zlc=;
- b=UEgMBfHkaLJK9vCowpe3BLuKl5J2UKHObPCuuSv/qaGx2Da93VxAe5Dj1SGZrQfwbY
- 8TUgGK1QUznMXwBPdOy7ZThVhp3ERP6K6FnYHQvH3l+U64+pZV9p/xQtv4cvvl3J9222
- CGI0Zs2B8BIs1XC+fYBlOeUj+9PI/FMftXubnu8RBIpZC9vYg3MwCqZkTFD2a8ZhCxVY
- 5JSRcOl36cZbnq2eMBMkuXpZDNNGMudPyH8uSnA9H18fl3cKfhaeiM4zAbYbyMKCIDMv
- XhDysh1BugLRHZwI8MHUhR+AQ7akp/rr4mrpuc/MA6KvB160hkprdSRo/Ew9qRUyqouU
- VV1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2EUu6Mnu44He2lWLLhgCEFkjsFkbhrlsReIpHL53zlc=;
- b=kw1QZf/FCdY1mRfi5H75l+XmNw/MoRXQerm5AbUPuf3/KW7inGipd2v3AErC27AV7d
- yKR47KwKFPVOcKEeNG1bZYIiJeb9KUjBg/m1k/UbkjS1MD8e/ag9cBqcGWSSF64/7ToB
- Edzo3iyhh9SpL0yegNn6IGkA3EjxRDgQHqDJzbAss6qloWUzRlrHj6UYMlXSlrLtrbDt
- TnDEommBLqBOOO/sWSrr/7Ev/Sl7pgFjyPOsMnihKqJXyNge60Fxgn/70CrWbFPb7DS2
- W71Wg5YVTlwaziccAdfHUMTvSNI967eeTsZkzacfwN+2Z8S53d2m+p2OZ4auLy5KUpZh
- NGEw==
-X-Gm-Message-State: APjAAAXXj7TX3KHF0z4W43n89FksNvy/LoJaH866Khkp7s/DOJ9jQqMQ
- zb9NVwIpGMzmJH1hod1NKRYU8NwF4LYxvlpIleFR665c0yfvJt/rBMgl8eQKSBRLVXB2mv4qGqI
- +z0D8Inp0yUIK0sXVXMXnGsMyoRfL+0afB6Hr4g==
-X-Google-Smtp-Source: APXvYqx68N5jhHa7laODn/CQo4UzVADN8Md1na029xCAPAlTBaRQwWHs89c0lpBgg+yKBskHLkfyka0YUBiDmNZdooE=
-X-Received: by 2002:a2e:9d0a:: with SMTP id t10mr1967057lji.95.1557226955058; 
- Tue, 07 May 2019 04:02:35 -0700 (PDT)
+ id 1hO0P2-0006M6-8F
+ for linux-riscv@lists.infradead.org; Tue, 07 May 2019 13:45:06 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+ by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id x47Diw8m012273;
+ Tue, 7 May 2019 08:44:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1557236698;
+ bh=E6////DJtGhtMBQIUz9ZeWa9IxXTY2D3IVy0VJeXBn0=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=SR3iR6hD6PQTcZFAHKS/lIKonY5lEBBz9JMNO/JwSCZivaqFa/AJQiXjf3Hb87o4o
+ NpV3BJK07HH0WLqSaJAYv+UQnozq1grYVP1SdREu9WZaz1J3iyFoEeA8cPcnNMeT01
+ oxrFr0d5It8Fuy+9ih+R7MNQV33neeIg8VIqvfvM=
+Received: from DFLE111.ent.ti.com (dfle111.ent.ti.com [10.64.6.32])
+ by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x47DiwGF060905
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 7 May 2019 08:44:58 -0500
+Received: from DFLE113.ent.ti.com (10.64.6.34) by DFLE111.ent.ti.com
+ (10.64.6.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Tue, 7 May
+ 2019 08:44:57 -0500
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE113.ent.ti.com
+ (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
+ Frontend Transport; Tue, 7 May 2019 08:44:57 -0500
+Received: from [10.250.67.168] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id x47DivCN106703;
+ Tue, 7 May 2019 08:44:57 -0500
+Subject: Re: [PATCH v3 2/2] RISC-V: sifive_l2_cache: Add L2 cache controller
+ driver for SiFive SoCs
+To: Yash Shah <yash.shah@sifive.com>
+References: <1557139720-12384-1-git-send-email-yash.shah@sifive.com>
+ <1557139720-12384-3-git-send-email-yash.shah@sifive.com>
+ <d36b7a74-0d08-0143-b479-45f760c347ba@ti.com>
+ <CAJ2_jOFZjTNA3Nf=zNwLT+St21Q2_TPx_XYhggU=yef6LPkLdg@mail.gmail.com>
+From: "Andrew F. Davis" <afd@ti.com>
+Message-ID: <ba1481d0-f21b-5b0d-e3d5-ecb9faf42407@ti.com>
+Date: Tue, 7 May 2019 09:44:58 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <1553508779-9685-1-git-send-email-yash.shah@sifive.com>
- <mvmbm1zueya.fsf@suse.de> <mvmpnqcsn6u.fsf@suse.de>
- <CAJ2_jOFu-yCZV_A4B48_fLq7h7UA6LUWhgpxr0uuh7vhW9Q8pA@mail.gmail.com>
- <mvmlfzisiwc.fsf@suse.de>
-In-Reply-To: <mvmlfzisiwc.fsf@suse.de>
-From: Yash Shah <yash.shah@sifive.com>
-Date: Tue, 7 May 2019 16:31:58 +0530
-Message-ID: <CAJ2_jOG2M03aLBgUOgGjWH9CUxq2aTG97eSX70=UaSbGCMMF_g@mail.gmail.com>
-Subject: Re: [PATCH v11 0/2] PWM support for HiFive Unleashed
-To: Andreas Schwab <schwab@suse.de>
+In-Reply-To: <CAJ2_jOFZjTNA3Nf=zNwLT+St21Q2_TPx_XYhggU=yef6LPkLdg@mail.gmail.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_040237_242280_8716608A 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190507_064504_524213_6280EB57 
+X-CRM114-Status: GOOD (  19.68  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:241 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [198.47.19.142 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -82,6 +82,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,61 +94,117 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
  Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- robh+dt@kernel.org, Sachin Ghadi <sachin.ghadi@sifive.com>,
- Thierry Reding <thierry.reding@gmail.com>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>, robh+dt@kernel.org,
  Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Andreas,
-On Tue, May 7, 2019 at 3:09 PM Andreas Schwab <schwab@suse.de> wrote:
->
-> On Mai 02 2019, Yash Shah <yash.shah@sifive.com> wrote:
->
-> > The PWM default output state is high (When duty cycle is 0), So I
-> > guess leds will remain on by default.
->
-> So that's the bug that needs to be fixed.
+On 5/7/19 2:48 AM, Yash Shah wrote:
+> On Mon, May 6, 2019 at 5:48 PM Andrew F. Davis <afd@ti.com> wrote:
+>>
+>> On 5/6/19 6:48 AM, Yash Shah wrote:
+>>> The driver currently supports only SiFive FU540-C000 platform.
+>>>
+>>> The initial version of L2 cache controller driver includes:
+>>> - Initial configuration reporting at boot up.
+>>> - Support for ECC related functionality.
+>>>
+>>> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+>>> ---
+>>>  arch/riscv/include/asm/sifive_l2_cache.h |  16 +++
+>>>  arch/riscv/mm/Makefile                   |   1 +
+>>>  arch/riscv/mm/sifive_l2_cache.c          | 175 +++++++++++++++++++++++++++++++
+>>>  3 files changed, 192 insertions(+)
+>>>  create mode 100644 arch/riscv/include/asm/sifive_l2_cache.h
+>>>  create mode 100644 arch/riscv/mm/sifive_l2_cache.c
+>>>
+>>> diff --git a/arch/riscv/include/asm/sifive_l2_cache.h b/arch/riscv/include/asm/sifive_l2_cache.h
+>>> new file mode 100644
+>>> index 0000000..04f6748
+>>> --- /dev/null
+>>> +++ b/arch/riscv/include/asm/sifive_l2_cache.h
+>>> @@ -0,0 +1,16 @@
+>>> +/* SPDX-License-Identifier: GPL-2.0 */
+>>> +/*
+>>> + * SiFive L2 Cache Controller header file
+>>> + *
+>>> + */
+>>> +
+>>> +#ifndef _ASM_RISCV_SIFIVE_L2_CACHE_H
+>>> +#define _ASM_RISCV_SIFIVE_L2_CACHE_H
+>>> +
+>>> +extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
+>>> +extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
+>>> +
+>>> +#define SIFIVE_L2_ERR_TYPE_CE 0
+>>> +#define SIFIVE_L2_ERR_TYPE_UE 1
+>>> +
+>>> +#endif /* _ASM_RISCV_SIFIVE_L2_CACHE_H */
+>>> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+>>> index eb22ab4..1523ee5 100644
+>>> --- a/arch/riscv/mm/Makefile
+>>> +++ b/arch/riscv/mm/Makefile
+>>> @@ -3,3 +3,4 @@ obj-y += fault.o
+>>>  obj-y += extable.o
+>>>  obj-y += ioremap.o
+>>>  obj-y += cacheflush.o
+>>> +obj-y += sifive_l2_cache.o
+>>> diff --git a/arch/riscv/mm/sifive_l2_cache.c b/arch/riscv/mm/sifive_l2_cache.c
+>>> new file mode 100644
+>>> index 0000000..4eb6461
+>>> --- /dev/null
+>>> +++ b/arch/riscv/mm/sifive_l2_cache.c
+>>> @@ -0,0 +1,175 @@
+>>> +// SPDX-License-Identifier: GPL-2.0
+>>> +/*
+>>> + * SiFive L2 cache controller Driver
+>>> + *
+>>> + * Copyright (C) 2018-2019 SiFive, Inc.
+>>> + *
+>>> + */
+> [...]
+>>> +
+>>> +#ifdef CONFIG_DEBUG_FS
+>>> +static struct dentry *sifive_test;
+>>> +
+>>> +static ssize_t l2_write(struct file *file, const char __user *data,
+>>> +                     size_t count, loff_t *ppos)
+>>> +{
+>>> +     unsigned int val;
+>>> +
+>>> +     if (kstrtouint_from_user(data, count, 0, &val))
+>>> +             return -EINVAL;
+>>> +     if ((val >= 0 && val < 0xFF) || (val >= 0x10000 && val < 0x100FF))
+>>
+>> I'm guessing bit 16 is the enable and the lower 8 are some kind of
+>> region to enable the error? This is probably a bad interface, it looks
+>> useful for testing but doesn't provide any debugging info useful for
+>> running systems. Do you really want userspace to be able to do this?
+> 
+> Bit 16 selects the type of ECC error (0=data or 1=directory error).
+> The lower 8 bits toggles (corrupt) that bit index.
+> Are you suggesting to remove this debug interface altogether or you
+> want me to improve the current interface?
+> Something like providing 2 separate debugfs files for data and
+> directory errors. And create a separate 8-bit debugfs variable to
+> select the bit index to toggle.
+> 
 
-Sorry I didn't probably get you before. I now understood the scenario.
+I was suggesting to remove the whole thing. I don't see it being all
+that useful, but it is up to you.
 
-Leds on HiFive Unleashed are wired to supply instead of ground.
-And as per ./Documentation/devicetree/bindings/leds/leds-pwm.txt, you
-need to provide additional property "active-low" in such case.
+Andrew
 
-- active-low : (optional) For PWMs where the LED is wired to supply
-rather than ground.
-
-The leds will remain off by default when you add the "active-low"
-property under the pwm-leds subnode in your DT file. So, this isn't a
-bug in the driver code.
-For DT file change, you may refer
-https://github.com/yashshah7/riscv-linux/commit/dd55057a26150e50525643a423b20e07b72617b5
-
-Can you test this at your end and confirm?
-
-- Yash
->
-> Andreas.
->
-> --
-> Andreas Schwab, SUSE Labs, schwab@suse.de
-> GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
-> "And now for something completely different."
-
--- 
-The information transmitted is intended only for the person or entity to 
-which it is addressed and may contain confidential and/or privileged 
-material. If you are not the intended recipient of this message please do 
-not read, copy, use or disclose this communication and notify the sender 
-immediately. It should be noted that any review, retransmission, 
-dissemination or other use of, or taking action or reliance upon, this 
-information by persons or entities other than the intended recipient is 
-prohibited.
+> - Yash
+> 
+>>
+>> Andrew
+>>
+> 
 
 _______________________________________________
 linux-riscv mailing list
