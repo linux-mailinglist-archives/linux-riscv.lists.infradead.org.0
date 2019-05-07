@@ -2,77 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61C3E15398
-	for <lists+linux-riscv@lfdr.de>; Mon,  6 May 2019 20:26:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D273E15DB0
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 May 2019 08:49:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=NUzXI06LFbAjHovXwX63y/tg6ia0eBA7uLV189LHywU=; b=ZgqGHFtyPa6CZDfnbqFuQDphf
-	UkAJpscdVUgSVJ4NDxWfbcR8EaXNKeR0nyoLYRj2F9JSHthFJHOkdMe4CkLBWCHOcZxmlMAsvyT2G
-	73gKlowhLpNSPtRZ7iwAK0CPlMyFeYsUBn4wrf9Iyx9drcnDPwBpqjIzvDki+D0oCLXP6jXyqy9BD
-	w4zDTYzaxUi3SJ+uSABECiAHq4NKGK357+inkIH8L5JxqLDogHDEcdGXuHCfn1QcSgC9NOmCYbr1n
-	uzSHUavHiT+MYJNxukcLyUgugD7dhvEG1UMz9hY9s3J9oaaEDwGPOzZMVnSAQjy7h/Pt/np8FzMZP
-	QEs3m9fjA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=d4OUvzwExbzUKZ8Py+4HXBa0jTLCwco2Zinhk+FTFU0=; b=aZpki48jDxsmXM
+	X//m90GWP/d1QfLBStFZKlMivwcUEGvduGG2IopABAnQjjNRRZCdNwCqwoskUFOYe09pnJuwYsgJS
+	COkBWdqZXwgefQ4swo4U4u7tDuxY9JhFhqrpNtP9k/eb798DGnsuvDXRjit9kbAYUN7OldpBZUXoe
+	WYUXYqfErvBpaY3YlZJMfb5wne+q/ckIaHbRixcXPLa6jf+rQpogjUWF7kkbxNi2EQKUSfX+MKPBB
+	TFE0k3gu0KDX2U2ccF8y+stUaY1ops1yvTKn/ZBeC7om0Ti5Mg8I5jI0Lwqwjp42YzuVBSypZaLcu
+	KXTzOLIpIRXxWpPNCh0A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNiJL-000587-If; Mon, 06 May 2019 18:25:59 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hNtuz-0008Ur-Ni; Tue, 07 May 2019 06:49:37 +0000
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNiJI-00056d-Mn
- for linux-riscv@lists.infradead.org; Mon, 06 May 2019 18:25:58 +0000
-Received: by mail-pf1-x444.google.com with SMTP id z28so7217728pfk.0
- for <linux-riscv@lists.infradead.org>; Mon, 06 May 2019 11:25:54 -0700 (PDT)
+ id 1hNtux-0008UE-5s
+ for linux-riscv@lists.infradead.org; Tue, 07 May 2019 06:49:36 +0000
+Received: by mail-lf1-x141.google.com with SMTP id d8so10934018lfb.8
+ for <linux-riscv@lists.infradead.org>; Mon, 06 May 2019 23:49:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=NXCCd9DEwpVv+CkVk+97oddxbHXiAPPbrF6iGBSrYgc=;
- b=NKrWKCiGbzmza35fOtOMvL+ftXETfh3uUcp/GkaCXcI8/XzVP8qVDBZioaj7yzgwas
- 2tQRRTKTuRAtOwQhT+kcUBv2qp2jRZVnznAovTkgFRvmAuuaShMFB+Nx1bbVUNa9A7OX
- 8BLulEh57QbYge20tVCIr34v+fwMGVGOSH1ehzMLel+zcPUV1nVeQpw7cWLe4F7TLSOw
- ++VBDFOhS3lKU6/bS8dLLIX6A8ANpsIH1DryjqnbCnoWXwVNSYR3C7RBe/CPhV/P7ncT
- Cg2Mr2IcrlFerHMT/L21aU76jEgkMtiGDQAE6F2Y4uyRJKfpkAmDpf2MCdenO33CvIPF
- KysQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uDWB+PNcjI4q/A/1DW85bUa/9Snq5OItKRPTK4tpNfU=;
+ b=mPrbLeI30J/5s8XP70Yj52evlvXJ+8D0wG4lJ7LzE0tziEfVMe35aZD1BE6WI1yyo0
+ 8+8e6vWuS+J0RC7AoQ6pQEKib60ad9mR1GiKSsQPkmmVxgqC//yQUpRJ67XKmGA6Zz1J
+ rNFUfKVDPJ6wVNWUOGOkhXSh1udaWNlpNbtFKypXPZC5HQopgW4AEQ0d3upC3QSlPDMY
+ z/dEKgODIODKyWS/Wm0VVsmRhf/9/1HhwwAKOC+5Si7DwyCjo1jcBIDLjaL+jGRCcXBQ
+ J9et5jTt1BaIodrKCBBDxDF/Tm/RSpH9ZArW5N9nNu2H8wBKejWnt9Dvq794avLVnJUa
+ NAxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=NXCCd9DEwpVv+CkVk+97oddxbHXiAPPbrF6iGBSrYgc=;
- b=hguJz9/0fYw2DzeQSTIgV53Kybz5pnGKOXSXEFMrgSaWshZp7X2kumiEcQ5JpnaJwf
- iVEG7+KFZLCgforadbmRmpSoSxlvJNRArTDMnFoW7O/Vl++fi6itxiIbFQo/ytw2vH68
- 029EPgnTWdkYy4lzcIChp/W5W/sZaRhq5OpQJAiGIfEi6c42ErLHhBhAozyfBNqFRhRJ
- ixv+Xjd/bTjQBqNtzVLXJ4VqPLLq1eB39CLECeTP58BV3RDv/8aszp+4buyYjGK4gbuK
- 9kX8/N/WyZ1a3U+/hJuoIhw1L48HDwRi0/eXmTL9m1rlD2OvVrXlaxA0IteapmwaZD6R
- NEYQ==
-X-Gm-Message-State: APjAAAXnEjWg/idsN4KF5+8pBvAB9CpXr1OsKE0U0M58Lp2TTfE+MUSs
- 0FVani3856Xtj8abFKstXJnkeg==
-X-Google-Smtp-Source: APXvYqz/rXdpBxODnklgvIEL8bDQcS0bWQdd3xgt2Ribpt+WuSOewfTAdZg7WDT5L829vlRrQKqfdA==
-X-Received: by 2002:a62:121c:: with SMTP id a28mr34935323pfj.58.1557167153191; 
- Mon, 06 May 2019 11:25:53 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id x66sm15776570pfb.78.2019.05.06.11.25.51
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 06 May 2019 11:25:52 -0700 (PDT)
-Date: Mon, 06 May 2019 11:25:52 -0700 (PDT)
-X-Google-Original-Date: Mon, 06 May 2019 11:25:42 PDT (-0700)
-Subject: Re: [PATCH 13/15] riscv: switch to generic version of pte allocation
-In-Reply-To: <1556810922-20248-14-git-send-email-rppt@linux.ibm.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: rppt@linux.ibm.com
-Message-ID: <mhng-c23d2e8b-1dc0-48db-a4cf-d6964ca650c0@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uDWB+PNcjI4q/A/1DW85bUa/9Snq5OItKRPTK4tpNfU=;
+ b=G3ywH9m0KlpNJ59tzneIE8Y41VLCAsG4S8anBJbhOWJXbGmWuFrJkHSSTdEIpLoRnr
+ HLWtwzIr98yDk0D7OXm/Lpg3uZV/SbbA2rICd/UR/UEOOqxMOKP1xld56DQzvxGFMBdu
+ LTbDwAHYUE7VkZsy92w21T1YOvdaIj1RW7maOQfpN5NCQr/YwMCQFmp+Xwlfr13zm0Bk
+ lobk2mlUcxF/PvY0Q91yy/2SEq6QujXoalCrXTZsAOYPT2vsaZ8SxsoqVXzGgfZNNQ/h
+ BWqY8myYRzgWTTO5vq0JGWhu6M/o329JMh+qY1561/TtSlWq+BaiBoe84QV9Lf/lJReZ
+ PI+A==
+X-Gm-Message-State: APjAAAV3hif5Eyqay3hS2CmPy/Gzs20gZVqO5u/o4UR2eomJyPC4ui/a
+ 2WlrQyZ5IkVTBhZTx2BXnDXGUMz5o1Y0Em1v3D+m8u8ZtWTrRhGv8wHxbNWlkS90d0Byum+egpE
+ dYSWNpCxO2LgpLMGQyKGS/e1eyykAQVaMM6Yz2Q==
+X-Google-Smtp-Source: APXvYqyfjgoxjBepkSXY0LT82aLu+Pj5tiZ6BdCvglYDPWY4vHbpWDaqXOtmKKpb03mlKKnpt8wbeK4r74iaaD2tR5A=
+X-Received: by 2002:a19:81d4:: with SMTP id c203mr1957595lfd.160.1557211771188; 
+ Mon, 06 May 2019 23:49:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <1557139720-12384-1-git-send-email-yash.shah@sifive.com>
+ <1557139720-12384-3-git-send-email-yash.shah@sifive.com>
+ <d36b7a74-0d08-0143-b479-45f760c347ba@ti.com>
+In-Reply-To: <d36b7a74-0d08-0143-b479-45f760c347ba@ti.com>
+From: Yash Shah <yash.shah@sifive.com>
+Date: Tue, 7 May 2019 12:18:54 +0530
+Message-ID: <CAJ2_jOFZjTNA3Nf=zNwLT+St21Q2_TPx_XYhggU=yef6LPkLdg@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] RISC-V: sifive_l2_cache: Add L2 cache controller
+ driver for SiFive SoCs
+To: "Andrew F. Davis" <afd@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_112556_760413_D12282B0 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20190506_234935_284794_C1DB90E9 
+X-CRM114-Status: GOOD (  17.69  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:141 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -93,92 +92,119 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mhocko@suse.com, catalin.marinas@arm.com, linux-mips@vger.kernel.org,
- guoren@kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-arch@vger.kernel.org,
- mpe@ellerman.id.au, deller@gmx.de, x86@kernel.org, linux@armlinux.org.uk,
- willy@infradead.org, rppt@linux.ibm.com, geert@linux-m68k.org,
- mattst88@gmail.com, sammy@sammy.net, Arnd Bergmann <arnd@arndb.de>,
- linux-um@lists.infradead.org, richard@nod.at, linux-m68k@lists.linux-m68k.org,
- green.hu@gmail.com, nios2-dev@lists.rocketboards.org, gxt@pku.edu.cn,
- linux-arm-kernel@lists.infradead.org, linux-parisc@vger.kernel.org,
- linux-kernel@vger.kernel.org, rkuo@codeaurora.org, paul.burton@mips.com,
- linux-alpha@vger.kernel.org, lftan@altera.com, akpm@linux-foundation.org,
- linuxppc-dev@lists.ozlabs.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Sachin Ghadi <sachin.ghadi@sifive.com>, robh+dt@kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 02 May 2019 08:28:40 PDT (-0700), rppt@linux.ibm.com wrote:
-> The only difference between the generic and RISC-V implementation of PTE
-> allocation is the usage of __GFP_RETRY_MAYFAIL for both kernel and user
-> PTEs and the absence of __GFP_ACCOUNT for the user PTEs.
+On Mon, May 6, 2019 at 5:48 PM Andrew F. Davis <afd@ti.com> wrote:
 >
-> The conversion to the generic version removes the __GFP_RETRY_MAYFAIL and
-> ensures that GFP_ACCOUNT is used for the user PTE allocations.
+> On 5/6/19 6:48 AM, Yash Shah wrote:
+> > The driver currently supports only SiFive FU540-C000 platform.
+> >
+> > The initial version of L2 cache controller driver includes:
+> > - Initial configuration reporting at boot up.
+> > - Support for ECC related functionality.
+> >
+> > Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> > ---
+> >  arch/riscv/include/asm/sifive_l2_cache.h |  16 +++
+> >  arch/riscv/mm/Makefile                   |   1 +
+> >  arch/riscv/mm/sifive_l2_cache.c          | 175 +++++++++++++++++++++++++++++++
+> >  3 files changed, 192 insertions(+)
+> >  create mode 100644 arch/riscv/include/asm/sifive_l2_cache.h
+> >  create mode 100644 arch/riscv/mm/sifive_l2_cache.c
+> >
+> > diff --git a/arch/riscv/include/asm/sifive_l2_cache.h b/arch/riscv/include/asm/sifive_l2_cache.h
+> > new file mode 100644
+> > index 0000000..04f6748
+> > --- /dev/null
+> > +++ b/arch/riscv/include/asm/sifive_l2_cache.h
+> > @@ -0,0 +1,16 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * SiFive L2 Cache Controller header file
+> > + *
+> > + */
+> > +
+> > +#ifndef _ASM_RISCV_SIFIVE_L2_CACHE_H
+> > +#define _ASM_RISCV_SIFIVE_L2_CACHE_H
+> > +
+> > +extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
+> > +extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
+> > +
+> > +#define SIFIVE_L2_ERR_TYPE_CE 0
+> > +#define SIFIVE_L2_ERR_TYPE_UE 1
+> > +
+> > +#endif /* _ASM_RISCV_SIFIVE_L2_CACHE_H */
+> > diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+> > index eb22ab4..1523ee5 100644
+> > --- a/arch/riscv/mm/Makefile
+> > +++ b/arch/riscv/mm/Makefile
+> > @@ -3,3 +3,4 @@ obj-y += fault.o
+> >  obj-y += extable.o
+> >  obj-y += ioremap.o
+> >  obj-y += cacheflush.o
+> > +obj-y += sifive_l2_cache.o
+> > diff --git a/arch/riscv/mm/sifive_l2_cache.c b/arch/riscv/mm/sifive_l2_cache.c
+> > new file mode 100644
+> > index 0000000..4eb6461
+> > --- /dev/null
+> > +++ b/arch/riscv/mm/sifive_l2_cache.c
+> > @@ -0,0 +1,175 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * SiFive L2 cache controller Driver
+> > + *
+> > + * Copyright (C) 2018-2019 SiFive, Inc.
+> > + *
+> > + */
+[...]
+> > +
+> > +#ifdef CONFIG_DEBUG_FS
+> > +static struct dentry *sifive_test;
+> > +
+> > +static ssize_t l2_write(struct file *file, const char __user *data,
+> > +                     size_t count, loff_t *ppos)
+> > +{
+> > +     unsigned int val;
+> > +
+> > +     if (kstrtouint_from_user(data, count, 0, &val))
+> > +             return -EINVAL;
+> > +     if ((val >= 0 && val < 0xFF) || (val >= 0x10000 && val < 0x100FF))
+>
+> I'm guessing bit 16 is the enable and the lower 8 are some kind of
+> region to enable the error? This is probably a bad interface, it looks
+> useful for testing but doesn't provide any debugging info useful for
+> running systems. Do you really want userspace to be able to do this?
 
-Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+Bit 16 selects the type of ECC error (0=data or 1=directory error).
+The lower 8 bits toggles (corrupt) that bit index.
+Are you suggesting to remove this debug interface altogether or you
+want me to improve the current interface?
+Something like providing 2 separate debugfs files for data and
+directory errors. And create a separate 8-bit debugfs variable to
+select the bit index to toggle.
 
-I'm assuming this is going in along with the rest of the patches, so I'm not
-going to add it to my tree.
+- Yash
 
 >
-> The pte_free() and pte_free_kernel() versions are identical to the generic
-> ones and can be simply dropped.
+> Andrew
 >
-> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
-> ---
->  arch/riscv/include/asm/pgalloc.h | 29 ++---------------------------
->  1 file changed, 2 insertions(+), 27 deletions(-)
->
-> diff --git a/arch/riscv/include/asm/pgalloc.h b/arch/riscv/include/asm/pgalloc.h
-> index 94043cf..48f28bb 100644
-> --- a/arch/riscv/include/asm/pgalloc.h
-> +++ b/arch/riscv/include/asm/pgalloc.h
-> @@ -18,6 +18,8 @@
->  #include <linux/mm.h>
->  #include <asm/tlb.h>
->
-> +#include <asm-generic/pgalloc.h>	/* for pte_{alloc,free}_one */
-> +
->  static inline void pmd_populate_kernel(struct mm_struct *mm,
->  	pmd_t *pmd, pte_t *pte)
->  {
-> @@ -82,33 +84,6 @@ static inline void pmd_free(struct mm_struct *mm, pmd_t *pmd)
->
->  #endif /* __PAGETABLE_PMD_FOLDED */
->
-> -static inline pte_t *pte_alloc_one_kernel(struct mm_struct *mm)
-> -{
-> -	return (pte_t *)__get_free_page(
-> -		GFP_KERNEL | __GFP_RETRY_MAYFAIL | __GFP_ZERO);
-> -}
-> -
-> -static inline struct page *pte_alloc_one(struct mm_struct *mm)
-> -{
-> -	struct page *pte;
-> -
-> -	pte = alloc_page(GFP_KERNEL | __GFP_RETRY_MAYFAIL | __GFP_ZERO);
-> -	if (likely(pte != NULL))
-> -		pgtable_page_ctor(pte);
-> -	return pte;
-> -}
-> -
-> -static inline void pte_free_kernel(struct mm_struct *mm, pte_t *pte)
-> -{
-> -	free_page((unsigned long)pte);
-> -}
-> -
-> -static inline void pte_free(struct mm_struct *mm, pgtable_t pte)
-> -{
-> -	pgtable_page_dtor(pte);
-> -	__free_page(pte);
-> -}
-> -
->  #define __pte_free_tlb(tlb, pte, buf)   \
->  do {                                    \
->  	pgtable_page_dtor(pte);         \
+
+-- 
+The information transmitted is intended only for the person or entity to 
+which it is addressed and may contain confidential and/or privileged 
+material. If you are not the intended recipient of this message please do 
+not read, copy, use or disclose this communication and notify the sender 
+immediately. It should be noted that any review, retransmission, 
+dissemination or other use of, or taking action or reliance upon, this 
+information by persons or entities other than the intended recipient is 
+prohibited.
 
 _______________________________________________
 linux-riscv mailing list
