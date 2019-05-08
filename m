@@ -2,86 +2,92 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19C051708C
-	for <lists+linux-riscv@lfdr.de>; Wed,  8 May 2019 07:50:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 906E8170DE
+	for <lists+linux-riscv@lfdr.de>; Wed,  8 May 2019 08:17:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5m6H+KBmls7xpUWVauIAVOv0GbMkbCWxjmFmBjTe5Bs=; b=cP4l73R3vxXTd1
-	HiaifW1Do5V8kyPBMbCuwtSejXtPe+kDUbLb6znU5VzeN8A1834aeEhGiaOnXHh+5kE/myEma6P6v
-	B1NKPf6KyGafjsFSXa7nQueHOOEaex5s8WWezAe9xIbBrF2Moo+w0XrwWw7XDiR9N71ahFxnKw5c6
-	ICwa/ZQrbpMlTpM7U9EeSkc/ZrQbPMtIR+ItATxaJcpVgMOOubFS4qHsa0lvgZTcrfHIYC3bURoG2
-	1GMBFDrxGCvrA3zjvOh5hqVwv43XysOeGubMGSdtQ8jhXKynMiuup5CTwnbO9jGbEpfA1d/piEw16
-	scKOqxKt/g48cE1p4Asw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=h8D8B9hqn49rA8VF3yq511j9zL/rC5GmHk+yDVMSmg0=; b=hEv
+	ib5lpNwGu1/4v+Od9WJqGiaqw8vlfo8WN9RW4OoxmTpq5WYSIyWPD0reBSp3nnxqeJqFUUIRe8bRo
+	9iF5XeTMmCdrUgPT1Bp8iXOVuSB/LacPO+cAZVpgXdVck6J89tDpIg7G2tCLUAY04CzMSRtx3n9s5
+	KxAunzzvdZc/c5T2pauQ6c17uyZMHPa2+dOqdWaAStk1TAlDepZ01wB282ANuFogdenq2n005c3nU
+	Fsr+5FMmQVFUC7B8H9z1+6RI4Mmvn6N9V4G+fgZkq50CSFDdQ8HquA0p43XcyktA7bNOs8CcO3PUq
+	ihgvjazzsGJqfcoPF0CUlhkrFHPSYBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hOFTA-0007SJ-9O; Wed, 08 May 2019 05:50:20 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
+	id 1hOFtW-0008Cv-8q; Wed, 08 May 2019 06:17:34 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hOFT6-0007RZ-G3
- for linux-riscv@lists.infradead.org; Wed, 08 May 2019 05:50:18 +0000
-Received: by mail-lf1-x144.google.com with SMTP id f1so813661lfl.6
- for <linux-riscv@lists.infradead.org>; Tue, 07 May 2019 22:50:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6VNO32gkOjAFDvmj3qsaBg8BBWn0BQYs6mBExH3P2Mw=;
- b=kHDOaiT0j+o+B2ZBt/yia1FDIojDnQcjSebmgLII5LR7JOWw294hu55v0nXrCpBUdL
- lArwxfnLA9ISj86HwTGPaYC5GPf3Yz3kYtAQ8pLhG19chrWtfwC9h0w1PKQxDDXtDCM2
- I3W2V7uNhr/2Kah0vK48oklVzuPcgrNUxSJJDJjU6B0GRdSPIgrhki19Ghmc7ihzs+xc
- zwhpr146/EcT4Ema9/11rBaZQz68cmJCeTnXtJYoPDd83IGaxJq5NjgABw75EBiAQgEy
- 5r/WFBCFfViaeuvG4HgbIKCcvKm9uR0U2mrQP3FruchWQmgEyI50Z83lASvgFJ6yNGMX
- ZV+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6VNO32gkOjAFDvmj3qsaBg8BBWn0BQYs6mBExH3P2Mw=;
- b=Pc7dyiVjuj8jHjaa2gmUcHQ98ik6mFqRgv4eU+KWnvSqDg2M0osRD5uh6OHwsZypFh
- z9Li3NNA6KGGdm6ZUL8Fb4MQURYYUY9n1wYSfCOoIRyrL7xtg6t34rUZNb5pTqNET4u4
- SRepdXXmt2kSJl4alMY+89Y8M4qHm0JkjD2eGsvwVnFvT7oi9102PJV50QSarve5pjpd
- 10W3YJn7TGsRaQVwrJkpc2dHkKerjkTDXrMKbU5MNFW+sieS8PcgVJgTK0LRbtrCZBHo
- gwovzHXy2v8edQHKpG5FYDy1ANpOjeKGq375ORM0Xn1Agb2moEXt6bbt3Uq/IG+fmosv
- 4X0g==
-X-Gm-Message-State: APjAAAVjEpP46JmRVl/gTUywS5hat6HDQGrYuYr0TBPUiOLDa+C+6WCZ
- m3I0FP3MBlf4HUQpME037VJJfPAWDQhLR9F9Kj/gWA==
-X-Google-Smtp-Source: APXvYqxFjNGsLoaZWXanwoQsNpAMlsMY20XLb11x/2kdZLwwRghwoGBYiufbVNzDvHDHChGZGZ+z9EalpEtsELhzzQc=
-X-Received: by 2002:ac2:5621:: with SMTP id b1mr8992780lff.27.1557294614444;
- Tue, 07 May 2019 22:50:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <1557139720-12384-1-git-send-email-yash.shah@sifive.com>
- <1557139720-12384-3-git-send-email-yash.shah@sifive.com>
- <d36b7a74-0d08-0143-b479-45f760c347ba@ti.com>
- <CAJ2_jOFZjTNA3Nf=zNwLT+St21Q2_TPx_XYhggU=yef6LPkLdg@mail.gmail.com>
- <ba1481d0-f21b-5b0d-e3d5-ecb9faf42407@ti.com>
-In-Reply-To: <ba1481d0-f21b-5b0d-e3d5-ecb9faf42407@ti.com>
-From: Yash Shah <yash.shah@sifive.com>
-Date: Wed, 8 May 2019 11:19:37 +0530
-Message-ID: <CAJ2_jOFPqgFzc_q0kq3GZY2w5KAS6wkbvBx4vZSgLXfAeanR7g@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2] RISC-V: sifive_l2_cache: Add L2 cache controller
- driver for SiFive SoCs
-To: "Andrew F. Davis" <afd@ti.com>
+ id 1hOFtT-0008Bu-FJ
+ for linux-riscv@lists.infradead.org; Wed, 08 May 2019 06:17:33 +0000
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x486Gmbt015361
+ for <linux-riscv@lists.infradead.org>; Wed, 8 May 2019 02:17:29 -0400
+Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2sbq4h6fr3-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Wed, 08 May 2019 02:17:29 -0400
+Received: from localhost
+ by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <rppt@linux.ibm.com>;
+ Wed, 8 May 2019 07:17:27 +0100
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+ by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Wed, 8 May 2019 07:17:17 +0100
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x486HGdZ56426730
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 8 May 2019 06:17:16 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C1500A405F;
+ Wed,  8 May 2019 06:17:16 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7C43EA406B;
+ Wed,  8 May 2019 06:17:13 +0000 (GMT)
+Received: from rapoport-lnx (unknown [9.148.8.112])
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
+ Wed,  8 May 2019 06:17:13 +0000 (GMT)
+Received: by rapoport-lnx (sSMTP sendmail emulation);
+ Wed, 08 May 2019 09:17:12 +0300
+From: Mike Rapoport <rppt@linux.ibm.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Subject: [PATCH v2 00/14] introduce generic pte_{alloc,free}_one[_kernel]
+Date: Wed,  8 May 2019 09:16:57 +0300
+X-Mailer: git-send-email 2.7.4
+X-TM-AS-GCONF: 00
+x-cbid: 19050806-0008-0000-0000-000002E466E7
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19050806-0009-0000-0000-00002250E6BE
+Message-Id: <1557296232-15361-1-git-send-email-rppt@linux.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-08_05:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=412 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1905080040
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_225016_567411_2ED2CC36 
-X-CRM114-Status: GOOD (  20.19  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190507_231731_637795_4F6E4EAB 
+X-CRM114-Status: GOOD (  19.69  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:144 listed in]
- [list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,114 +99,109 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- Sachin Ghadi <sachin.ghadi@sifive.com>, robh+dt@kernel.org,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: Michal Hocko <mhocko@suse.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-mips@vger.kernel.org,
+ linux-mm@kvack.org, Guo Ren <guoren@kernel.org>, linux-hexagon@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-arch@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ Matthew Wilcox <willy@infradead.org>, Mike Rapoport <rppt@linux.ibm.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Matt Turner <mattst88@gmail.com>,
+ Sam Creasey <sammy@sammy.net>, Arnd Bergmann <arnd@arndb.de>,
+ Anshuman Khandual <anshuman.khandual@arm.com>, linux-um@lists.infradead.org,
+ Richard Weinberger <richard@nod.at>, linux-m68k@lists.linux-m68k.org,
+ Greentime Hu <green.hu@gmail.com>, nios2-dev@lists.rocketboards.org,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-arm-kernel@lists.infradead.org,
+ linux-parisc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Richard Kuo <rkuo@codeaurora.org>, Paul Burton <paul.burton@mips.com>,
+ linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
+ linuxppc-dev@lists.ozlabs.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, May 7, 2019 at 7:15 PM Andrew F. Davis <afd@ti.com> wrote:
->
-> On 5/7/19 2:48 AM, Yash Shah wrote:
-> > On Mon, May 6, 2019 at 5:48 PM Andrew F. Davis <afd@ti.com> wrote:
-> >>
-> >> On 5/6/19 6:48 AM, Yash Shah wrote:
-> >>> The driver currently supports only SiFive FU540-C000 platform.
-> >>>
-> >>> The initial version of L2 cache controller driver includes:
-> >>> - Initial configuration reporting at boot up.
-> >>> - Support for ECC related functionality.
-> >>>
-> >>> Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> >>> ---
-> >>>  arch/riscv/include/asm/sifive_l2_cache.h |  16 +++
-> >>>  arch/riscv/mm/Makefile                   |   1 +
-> >>>  arch/riscv/mm/sifive_l2_cache.c          | 175 +++++++++++++++++++++++++++++++
-> >>>  3 files changed, 192 insertions(+)
-> >>>  create mode 100644 arch/riscv/include/asm/sifive_l2_cache.h
-> >>>  create mode 100644 arch/riscv/mm/sifive_l2_cache.c
-> >>>
-> >>> diff --git a/arch/riscv/include/asm/sifive_l2_cache.h b/arch/riscv/include/asm/sifive_l2_cache.h
-> >>> new file mode 100644
-> >>> index 0000000..04f6748
-> >>> --- /dev/null
-> >>> +++ b/arch/riscv/include/asm/sifive_l2_cache.h
-> >>> @@ -0,0 +1,16 @@
-> >>> +/* SPDX-License-Identifier: GPL-2.0 */
-> >>> +/*
-> >>> + * SiFive L2 Cache Controller header file
-> >>> + *
-> >>> + */
-> >>> +
-> >>> +#ifndef _ASM_RISCV_SIFIVE_L2_CACHE_H
-> >>> +#define _ASM_RISCV_SIFIVE_L2_CACHE_H
-> >>> +
-> >>> +extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
-> >>> +extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
-> >>> +
-> >>> +#define SIFIVE_L2_ERR_TYPE_CE 0
-> >>> +#define SIFIVE_L2_ERR_TYPE_UE 1
-> >>> +
-> >>> +#endif /* _ASM_RISCV_SIFIVE_L2_CACHE_H */
-> >>> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-> >>> index eb22ab4..1523ee5 100644
-> >>> --- a/arch/riscv/mm/Makefile
-> >>> +++ b/arch/riscv/mm/Makefile
-> >>> @@ -3,3 +3,4 @@ obj-y += fault.o
-> >>>  obj-y += extable.o
-> >>>  obj-y += ioremap.o
-> >>>  obj-y += cacheflush.o
-> >>> +obj-y += sifive_l2_cache.o
-> >>> diff --git a/arch/riscv/mm/sifive_l2_cache.c b/arch/riscv/mm/sifive_l2_cache.c
-> >>> new file mode 100644
-> >>> index 0000000..4eb6461
-> >>> --- /dev/null
-> >>> +++ b/arch/riscv/mm/sifive_l2_cache.c
-> >>> @@ -0,0 +1,175 @@
-> >>> +// SPDX-License-Identifier: GPL-2.0
-> >>> +/*
-> >>> + * SiFive L2 cache controller Driver
-> >>> + *
-> >>> + * Copyright (C) 2018-2019 SiFive, Inc.
-> >>> + *
-> >>> + */
-> > [...]
-> >>> +
-> >>> +#ifdef CONFIG_DEBUG_FS
-> >>> +static struct dentry *sifive_test;
-> >>> +
-> >>> +static ssize_t l2_write(struct file *file, const char __user *data,
-> >>> +                     size_t count, loff_t *ppos)
-> >>> +{
-> >>> +     unsigned int val;
-> >>> +
-> >>> +     if (kstrtouint_from_user(data, count, 0, &val))
-> >>> +             return -EINVAL;
-> >>> +     if ((val >= 0 && val < 0xFF) || (val >= 0x10000 && val < 0x100FF))
-> >>
-> >> I'm guessing bit 16 is the enable and the lower 8 are some kind of
-> >> region to enable the error? This is probably a bad interface, it looks
-> >> useful for testing but doesn't provide any debugging info useful for
-> >> running systems. Do you really want userspace to be able to do this?
-> >
-> > Bit 16 selects the type of ECC error (0=data or 1=directory error).
-> > The lower 8 bits toggles (corrupt) that bit index.
-> > Are you suggesting to remove this debug interface altogether or you
-> > want me to improve the current interface?
-> > Something like providing 2 separate debugfs files for data and
-> > directory errors. And create a separate 8-bit debugfs variable to
-> > select the bit index to toggle.
-> >
->
-> I was suggesting to remove the whole thing. I don't see it being all
-> that useful, but it is up to you.
+Hi,
 
-Thanks for the suggestion, but I will keep it as we do need it for our testing.
+Many architectures have similar, if not identical implementation of
+pte_alloc_one_kernel(), pte_alloc_one(), pte_free_kernel() and pte_free().
 
-- Yash
+A while ago Anshuman suggested to introduce a common definition of
+GFP_PGTABLE and during the discussion it was suggested to rather
+consolidate the allocators.
+
+These patches introduce generic version of PTE allocation and free and
+enable their use on several architectures.
+
+The conversion introduces some changes for some of the architectures.
+Here's the executive summary and the details are described at each patch.
+
+* Most architectures do not set __GFP_ACCOUNT for the user page tables.
+Switch to the generic functions is "spreading that goodness to all other
+architectures"
+* arm, arm64 and unicore32 used to check if the pte is not NULL before
+freeing its memory in pte_free_kernel(). It's dropped during the
+conversion as it seems superfluous.
+* x86 used to BUG_ON() is pte was not page aligned duirng
+pte_free_kernel(), the generic version simply frees the memory without any
+checks.
+
+This set only performs the straightforward conversion, the architectures
+with different logic in pte_alloc_one() and pte_alloc_one_kernel() are not
+touched, as well as architectures that have custom page table allocators.
+
+v2 changes:
+* rebase on the current upstream
+* fix copy-paste error in the description of pte_free()
+* fix changelog for MIPS to match actual changes
+* drop powerpc changes
+* add Acked/Reviewed tags
+
+[1] https://lore.kernel.org/lkml/1547619692-7946-1-git-send-email-anshuman.khandual@arm.com
+
+Mike Rapoport (14):
+  asm-generic, x86: introduce generic pte_{alloc,free}_one[_kernel]
+  alpha: switch to generic version of pte allocation
+  arm: switch to generic version of pte allocation
+  arm64: switch to generic version of pte allocation
+  csky: switch to generic version of pte allocation
+  hexagon: switch to generic version of pte allocation
+  m68k: sun3: switch to generic version of pte allocation
+  mips: switch to generic version of pte allocation
+  nds32: switch to generic version of pte allocation
+  nios2: switch to generic version of pte allocation
+  parisc: switch to generic version of pte allocation
+  riscv: switch to generic version of pte allocation
+  um: switch to generic version of pte allocation
+  unicore32: switch to generic version of pte allocation
+
+ arch/alpha/include/asm/pgalloc.h     |  40 +------------
+ arch/arm/include/asm/pgalloc.h       |  41 +++++---------
+ arch/arm/mm/mmu.c                    |   2 +-
+ arch/arm64/include/asm/pgalloc.h     |  47 +++------------
+ arch/arm64/mm/mmu.c                  |   2 +-
+ arch/arm64/mm/pgd.c                  |   9 ++-
+ arch/csky/include/asm/pgalloc.h      |  30 +---------
+ arch/hexagon/include/asm/pgalloc.h   |  34 +----------
+ arch/m68k/include/asm/sun3_pgalloc.h |  41 +-------------
+ arch/mips/include/asm/pgalloc.h      |  33 +----------
+ arch/nds32/include/asm/pgalloc.h     |  31 ++--------
+ arch/nios2/include/asm/pgalloc.h     |  37 +-----------
+ arch/parisc/include/asm/pgalloc.h    |  33 +----------
+ arch/riscv/include/asm/pgalloc.h     |  29 +---------
+ arch/um/include/asm/pgalloc.h        |  16 +-----
+ arch/um/kernel/mem.c                 |  22 -------
+ arch/unicore32/include/asm/pgalloc.h |  36 +++---------
+ arch/x86/include/asm/pgalloc.h       |  19 +------
+ arch/x86/mm/pgtable.c                |  33 +++--------
+ include/asm-generic/pgalloc.h        | 107 +++++++++++++++++++++++++++++++++--
+ virt/kvm/arm/mmu.c                   |   2 +-
+ 21 files changed, 178 insertions(+), 466 deletions(-)
+
+-- 
+2.7.4
+
 
 _______________________________________________
 linux-riscv mailing list
