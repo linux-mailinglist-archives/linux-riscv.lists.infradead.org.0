@@ -2,82 +2,65 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F421C1D0A3
-	for <lists+linux-riscv@lfdr.de>; Tue, 14 May 2019 22:29:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1C931E7A9
+	for <lists+linux-riscv@lfdr.de>; Wed, 15 May 2019 06:28:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6kmgJSk3GqKC6Cz9nP9+GRuiBkpORF1tBf7s5Amq/RE=; b=oOLto0j81jiss2
-	D+HtQ76XGeH0Wzcizy249VAXKuOiBuluijramXk7EnCr1GusdMQ45inMvC4AYnk4LuF8uwQU/9tka
-	H7ooavLvTwgLJxVKB7BgjqzocaFgNonghgCFKzqoG0w863A0W+YEgQzV3CVNhC9kr5ZmYWJKmFixM
-	+eg9sTzSQ+i16mBw2qzfetd5HFHitkdgRodB9eFep4Xl63i4iiVwfrYx5VU0QpSixNDgmKjYvRk8C
-	FC6iuZXzVRBn4CTKUef46LByrxqNFX7vpaTqnkQU3TCWduFefGSuAUgkfGwmx3CeBEB3YOF8AkiLY
-	olTm+TdGruxeuDNZHS7A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=A2zeo6UV+z1rydHccwzBguriXILER8Rweog6eBVXrBM=; b=TZp
+	W3V5pqPw98O6xDWaG/tQrbeCWEKx++6jRWxaKntwM+g/k0a1tzy9EzGvyfeU+BMYW7RAvxxpZry/0
+	XmYj6BnOr7K6Ir6lp27hB+bQA8ZXudhDSdhmRtOn5JtLlVUDUAFqO18zCzgNl0T8702RCuuuxqtCK
+	lxyq854TomGrrZkkdD9W0IkPLgHW5ftc1geoNJcQVqbX4SVgaSC+E2yVyk3LL2RG5fNgv/pFOEgMR
+	G/CoJ20e9UgithcASOtOYX2ZFHO9MPwieXZJ909cXX6jO8dI7kW1/FircbfXPG0TSS685cGYKDk2z
+	JrCiqYiQrZyM21z51jw0hvB11/F/IRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQe3K-0008DW-7S; Tue, 14 May 2019 20:29:34 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1hQlWn-0004ai-VZ; Wed, 15 May 2019 04:28:29 +0000
+Received: from conuserg-10.nifty.com ([210.131.2.77])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQe3G-0008D5-Rc
- for linux-riscv@lists.infradead.org; Tue, 14 May 2019 20:29:32 +0000
-Received: by mail-ot1-f66.google.com with SMTP id f23so109709otl.9
- for <linux-riscv@lists.infradead.org>; Tue, 14 May 2019 13:29:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=oPaY+Ss9+ep2GCkhb8u3t1B3H/GvEu2ypW66c2/qd9s=;
- b=hlJcQBJTLgE6F2tsLEKk7YY06mleb0MrlhlJ0mzoXk7eQDhII72Nlg4ZaIMjSpOjRC
- NqtRakxXsM7TIa825m4f4Y7HC8pmA+EAYPn4Xq5TZ7ztN486+B6MG28djjE+8vieCo5p
- wIuLoRHVA+zDCqW24STnZGfgCjbRNwbahXARz+Qv6UMhungPf9/no+La0gfY22J9k5rZ
- v9AhI1AinP46vwQqofBsFC+TSjLBYG0w+AdQkwmZOB273qA4VQF/4uxOrHdwPUNjRGXK
- F8Sd8UMqUaoDCy/0/W9ge3zoVu17zgd+7QxyV6CK3dBc0lL+qHNYqd1hkEYBNQMI5KFh
- X5ew==
-X-Gm-Message-State: APjAAAU1fjdkP75cJ3notSl0G5xTzJsmjVY/TO0BSr+FuoDavhRebJsz
- 9e0bGg8TtOb0ZEbg1/4OnA==
-X-Google-Smtp-Source: APXvYqzvuTeT7D9lZIqV3PwgDn5MJm1tKGPk0EO3gjy5o6D/bZ1ZmxMIWQbWUaiO3rbeleX4+VOgHQ==
-X-Received: by 2002:a9d:7354:: with SMTP id l20mr23489464otk.115.1557865770039; 
- Tue, 14 May 2019 13:29:30 -0700 (PDT)
-Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id b25sm2460790otq.65.2019.05.14.13.29.29
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 14 May 2019 13:29:29 -0700 (PDT)
-Date: Tue, 14 May 2019 15:29:28 -0500
-From: Rob Herring <robh@kernel.org>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH v2] dt-bindings: sifive: describe sifive-blocks versioning
-Message-ID: <20190514202928.GA23497@bogus>
-References: <20190513215152.26578-1-paul.walmsley@sifive.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190513215152.26578-1-paul.walmsley@sifive.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1hQlWk-0004aR-IN
+ for linux-riscv@lists.infradead.org; Wed, 15 May 2019 04:28:28 +0000
+Received: from localhost.localdomain (p14092-ipngnfx01kyoto.kyoto.ocn.ne.jp
+ [153.142.97.92]) (authenticated)
+ by conuserg-10.nifty.com with ESMTP id x4F4RRTk023688;
+ Wed, 15 May 2019 13:27:28 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-10.nifty.com x4F4RRTk023688
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1557894448;
+ bh=d7cf3ix/fLXBYCnmiBpWjAAdbjJ/zdoToHsAdljU21Y=;
+ h=From:To:Cc:Subject:Date:From;
+ b=ijSPLNUGoR3AMWOtp+aLwtzs84dlUcGxJXpH4F/wn0MI26y3Gb29inD3DopI9h9Cn
+ /1tJpAnkst09vBH0bVB8Io1PF0rmV1oiOIjdl6sJ9iPthDfklQi9cyQ2WYUBsADXep
+ V2hy7lfXg+9NryC/CZEWVopRUHSvADaOfd2iExNj/zO7yeah/S4OB9Rs2EJveG6C9q
+ lScDMn0D9jIc3uvnBUhz8rXXM2PhgrHjaI+C5i4ZPTduM2hz5cDopTnOnNzvGryGCk
+ kDdHLy0orS4SnS2kdbey2yKWJz+UP3taOo4bt2g0JNQo2KBFOWgnSA+RhwME4lxuEp
+ MIaqnbRuDAB4w==
+X-Nifty-SrcIP: [153.142.97.92]
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+To: Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ linux-riscv@lists.infradead.org
+Subject: [PATCH] riscv: drop unneeded -Wall addition
+Date: Wed, 15 May 2019 13:27:21 +0900
+Message-Id: <20190515042721.8752-1-yamada.masahiro@socionext.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190514_132930_887545_C31F155B 
-X-CRM114-Status: GOOD (  10.95  )
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20190514_212826_832916_795E1882 
+X-CRM114-Status: UNSURE (   4.82  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.66 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (robherring2[at]gmail.com)
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (robherring2[at]gmail.com)
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.66 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ no trust [210.131.2.77 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,46 +72,42 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Paul Walmsley <paul@pwsan.com>, Wesley Terpstra <wesley@sifive.com>,
- Megan Wachs <megan@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 13 May 2019 14:51:53 -0700, Paul Walmsley wrote:
-> For IP blocks that are generated from the public, open-source
-> sifive-blocks repository, describe the version numbering policy
-> that its maintainers intend to use, upon request from Rob
-> Herring <robh@kernel.org>.
-> 
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> Signed-off-by: Paul Walmsley <paul@pwsan.com>
-> Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Palmer Dabbelt <palmer@sifive.com>
-> Cc: Megan Wachs <megan@sifive.com>
-> Cc: Wesley Terpstra <wesley@sifive.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: devicetree@vger.kernel.org
-> Cc: linux-riscv@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
-> 
-> This second version updates the example URL, requested by
-> Rob Herring <robh+dt@kernel.org>.
-> 
->  .../sifive/sifive-blocks-ip-versioning.txt    | 38 +++++++++++++++++++
->  1 file changed, 38 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sifive/sifive-blocks-ip-versioning.txt
-> 
+The top level Makefile adds -Wall globally:
 
-Applied, thanks.
+  KBUILD_CFLAGS   := -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs \
 
-Rob
+For riscv, I see two "-Wall" added for compiling each object.
+
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+---
+
+ arch/riscv/Makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
+index c6342e638ef7..8f7368575bf6 100644
+--- a/arch/riscv/Makefile
++++ b/arch/riscv/Makefile
+@@ -36,8 +36,6 @@ else
+ 	KBUILD_LDFLAGS += -melf32lriscv
+ endif
+ 
+-KBUILD_CFLAGS += -Wall
+-
+ # ISA string setting
+ riscv-march-$(CONFIG_ARCH_RV32I)	:= rv32im
+ riscv-march-$(CONFIG_ARCH_RV64I)	:= rv64im
+-- 
+2.17.1
+
 
 _______________________________________________
 linux-riscv mailing list
