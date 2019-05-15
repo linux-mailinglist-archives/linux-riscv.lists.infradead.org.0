@@ -2,93 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE2CD1EA60
-	for <lists+linux-riscv@lfdr.de>; Wed, 15 May 2019 10:46:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B053B1F967
+	for <lists+linux-riscv@lfdr.de>; Wed, 15 May 2019 19:40:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:MIME-Version:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KuYWkw1AxID8amY+F5D3mUMg+d4w+FDfDgp+6fHk6GE=; b=jTnIJvq4HyGBPv
-	J49IfJzeFkIAtj9mjjVdzyes9NR8LoaXi8lFwbTI+DX730MN4Lot83Eo+7EZnL6ltl/RQXv6/6NRi
-	gYX/lIRUmFdjWF8BP713GL+DPAC2S4MmImcpVy+eRB75c1Q74wXNcxEeq2h0kMKvd3SqwqHGeBHqB
-	59soj/4N4ZT4ky7DljsHrr9FS3Wa1jihd6rTWyPn03K3ilvXteOYsRf4AlSTws1KwSx+5FyAe7C0I
-	Y2wnEB/w277l/+5oCoF9UmEEUjP6VxOAiUfOtBrn7d7y6vBSLOPWn5OkJSH+uOrniwKyWDItJCKb/
-	oUIKU0kFg956poWkZhfA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:To:From:
+	Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7xlU5nB50M6tBEKfCCpXCSkDD8OpzTvg4sKOJxpFaqk=; b=cAKBpnE+OOlgUl
+	L+OM8Bdi1VAKwh1qmjKbGs/d0ZvNipmmZkuZ/F3FVr8q6ReggtNz9/ozlrNgRGfOaC/8OSJPSVr45
+	RHOOWGDFSQl4KMrepj2bXE58v5TgCy232fuMsu8bfK1eaIAVn57SqAfWQ0AWzrZFnlW8qB9JLBPdf
+	2DNQr7suqTUZUSUGWNTpDqxYcuAkZrnjccj9A/lnY/MBS0sTHULDVSCjn6mZvwWSOOFZAJ6OhL9DQ
+	Q/h/4ssR0VfmnoYpzxdP4m0NnjlobfMT65HQHTz6+JoCGGqNjNi5gAWJHyE3ech+LTXHkCEArKIdw
+	XeX+e0B9m+6ThibJ8Caw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQpYC-0003OC-Ke; Wed, 15 May 2019 08:46:12 +0000
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+	id 1hQxsj-00037U-M1; Wed, 15 May 2019 17:39:57 +0000
+Received: from mail-pl1-f193.google.com ([209.85.214.193])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQpY8-0003ND-Sw
- for linux-riscv@lists.infradead.org; Wed, 15 May 2019 08:46:10 +0000
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x4F8hZjB076609
- for <linux-riscv@lists.infradead.org>; Wed, 15 May 2019 04:46:07 -0400
-Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2sgexv9xr7-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-riscv@lists.infradead.org>; Wed, 15 May 2019 04:46:06 -0400
-Received: from localhost
- by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <linux-riscv@lists.infradead.org> from <schwidefsky@de.ibm.com>;
- Wed, 15 May 2019 09:46:03 +0100
-Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
- by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Wed, 15 May 2019 09:45:59 +0100
-Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
- [9.149.105.59])
- by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x4F8jwVB56557678
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 15 May 2019 08:45:58 GMT
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C8998A4055;
- Wed, 15 May 2019 08:45:58 +0000 (GMT)
-Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6876CA4040;
- Wed, 15 May 2019 08:45:58 +0000 (GMT)
-Received: from mschwideX1 (unknown [9.152.212.60])
- by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Wed, 15 May 2019 08:45:58 +0000 (GMT)
-Date: Wed, 15 May 2019 10:45:57 +0200
-From: Martin Schwidefsky <schwidefsky@de.ibm.com>
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH] s390: move arch/s390/defconfig to
- arch/s390/configs/defconfig
-In-Reply-To: <20190513021116.12191-1-yamada.masahiro@socionext.com>
-References: <20190513021116.12191-1-yamada.masahiro@socionext.com>
-X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-x-cbid: 19051508-0020-0000-0000-0000033CDC18
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19051508-0021-0000-0000-0000218F9C91
-Message-Id: <20190515104557.1d5a389f@mschwideX1>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-05-15_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1810050000 definitions=main-1905150057
+ id 1hQxsf-00036p-VB
+ for linux-riscv@lists.infradead.org; Wed, 15 May 2019 17:39:55 +0000
+Received: by mail-pl1-f193.google.com with SMTP id a5so197029pls.12
+ for <linux-riscv@lists.infradead.org>; Wed, 15 May 2019 10:39:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:cc:from:to:message-id;
+ bh=OyqkAInMJ4afJyiF2nb2YB2wdpcRhAB6c/71WOYyPas=;
+ b=QiunuEV3gLmyCIag2Gix1xUCsudvthFjtjSRuulSbIxo1T0aKHMoEst6SwsMh6fMjQ
+ N/fx02+Xz5GNYIeKB8Og6wGwyappVrKZmugAUo058Ak/JJRhYvhFYehQW81I5/I4302D
+ MRMuhfT7fXABKmupHXiLQ6GDPtN6kdZ5YCjtBGkSXM3BPVTcN0dn97FUvChoL82yB5CF
+ 6q0kDuRGWmFAP1gVJ8HZHMyKHi5Fgfgi5+Um1DuqA2MZCGPu62RYpSowMEPbW0j9TNBC
+ jKfytcqd1wadqt5xAxLB1MkOK5fzKxjo19LSuvcDbzu8NSdZOliGn5vEVCOXmSmCznqK
+ vKkA==
+X-Gm-Message-State: APjAAAX5XWlI1p8QvPkOz8Xbf1vGaGZLuUAS5/BDM0cui/Yyob9UMmbu
+ zwpQa65PBj2xK1nzMljfG387rw==
+X-Google-Smtp-Source: APXvYqxw3U/LSU65RQOQnp/SYsPweUz6pC7uNamYkvPZJkQpsNN8ZvCjzx14hDJGNFqN+j/m23GEhg==
+X-Received: by 2002:a17:902:bd95:: with SMTP id
+ q21mr8947972pls.159.1557941990986; 
+ Wed, 15 May 2019 10:39:50 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id m123sm5011080pfm.39.2019.05.15.10.39.50
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 15 May 2019 10:39:50 -0700 (PDT)
+Date: Wed, 15 May 2019 10:39:50 -0700 (PDT)
+X-Google-Original-Date: Wed, 15 May 2019 10:39:46 PDT (-0700)
+Subject: [GIT PULL] RISC-V Patches for the 5.2 Merge Window, Part 1
+From: Palmer Dabbelt <palmer@sifive.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Message-ID: <mhng-d6bbd5f4-7409-4d3e-94a0-7ff0c6a71c9e@palmer-si-x1e>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190515_014608_933408_96D149B1 
-X-CRM114-Status: GOOD (  23.20  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20190515_103954_007013_0DD6F2E8 
+X-CRM114-Status: GOOD (  17.07  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.156.1 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.214.193 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.214.193 listed in wl.mailspike.net]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,74 +78,129 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
- Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>,
- linux-kernel@vger.kernel.org, Guo Ren <guoren@kernel.org>,
- Greentime Hu <green.hu@gmail.com>, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 13 May 2019 11:11:16 +0900
-Masahiro Yamada <yamada.masahiro@socionext.com> wrote:
+The following changes since commit 085b7755808aa11f78ab9377257e1dad2e6fa4bb:
 
-> As of Linux 5.1, alpha and s390 are the last architectures that
-> have defconfig in arch/*/ instead of arch/*/configs/.
-> 
->   $ find arch -name defconfig | sort
->   arch/alpha/defconfig
->   arch/arm64/configs/defconfig
->   arch/csky/configs/defconfig
->   arch/nds32/configs/defconfig
->   arch/riscv/configs/defconfig
->   arch/s390/defconfig
-> 
-> The arch/$(ARCH)/defconfig is the hard-coded default in Kconfig,
-> and I want to deprecate it after evacuating the remaining defconfig
-> into the standard location, arch/*/configs/.
-> 
-> Define KBUILD_DEFCONFIG like other architectures, and move defconfig
-> into the configs/ subdirectory.
-> 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+  Linux 5.1-rc6 (2019-04-21 10:45:57 -0700)
 
-I have added this patch to my linux/s390 tree and will push it upstream
-soon. Thanks!
+are available in the Git repository at:
 
-> ---
-> 
->  arch/s390/Makefile                | 2 ++
->  arch/s390/{ => configs}/defconfig | 0
->  2 files changed, 2 insertions(+)
->  rename arch/s390/{ => configs}/defconfig (100%)
-> 
-> diff --git a/arch/s390/Makefile b/arch/s390/Makefile
-> index df1d6a150f30..de8521fc9de5 100644
-> --- a/arch/s390/Makefile
-> +++ b/arch/s390/Makefile
-> @@ -10,6 +10,8 @@
->  # Copyright (C) 1994 by Linus Torvalds
->  #
-> 
-> +KBUILD_DEFCONFIG := defconfig
-> +
->  LD_BFD		:= elf64-s390
->  KBUILD_LDFLAGS	:= -m elf64_s390
->  KBUILD_AFLAGS_MODULE += -fPIC
-> diff --git a/arch/s390/defconfig b/arch/s390/configs/defconfig
-> similarity index 100%
-> rename from arch/s390/defconfig
-> rename to arch/s390/configs/defconfig
+  git://git.kernel.org/pub/scm/linux/kernel/git/palmer/riscv-linux.git tags/riscv-for-linus-5.2-mw0
 
+for you to fetch changes up to e23fc917f04ffac8c156fdb4ee8b56f3867fa50b:
 
--- 
-blue skies,
-   Martin.
+  RISC-V: Avoid using invalid intermediate translations (2019-05-08 15:06:18 -0700)
 
-"Reality continues to ruin my life." - Calvin.
+----------------------------------------------------------------
+RISC-V Patches for the 5.2 Merge Window, Part 1
 
+This patch set contains an assortment of RISC-V related patches that I'd
+like to target for the 5.2 merge window.  Most of the patches are
+cleanups, but there are a handful of user-visible changes:
+
+* The nosmp and nr_cpus command-line arguments are now supported, which
+  work like normal.
+* The SBI console no longer installs itself as a preferred console, we
+  rely on standard mechanisms (/chosen, command-line, hueristics)
+  instead.
+* sfence_remove_sfence_vma{,_asid} now pass their arguments along to the
+  SBI call.
+* Modules now support BUG().
+* A missing sfence.vma during boot has been added.  This bug only
+  manifests during boot.
+
+I've only tested this on QEMU again, as I didn't have time to get things
+running on the Unleashed.  The latest master from this morning merges in
+cleanly and passes the tests as well.
+
+----------------------------------------------------------------
+Anup Patel (4):
+      RISC-V: Use tabs to align macro values in asm/csr.h
+      RISC-V: Add interrupt related SCAUSE defines in asm/csr.h
+      RISC-V: Access CSRs using CSR numbers
+      tty: Don't force RISCV SBI console as preferred console
+
+Atish Patra (4):
+      RISC-V: Add RISC-V specific arch_match_cpu_phys_id
+      RISC-V: Implement nosmp commandline option.
+      RISC-V: Support nr_cpus command line option.
+      RISC-V: Fix minor checkpatch issues.
+
+Christoph Hellwig (11):
+      riscv: use asm-generic/extable.h
+      riscv: turn mm_segment_t into a struct
+      riscv: remove unreachable big endian code
+      riscv: remove CONFIG_RISCV_ISA_A
+      riscv: clear all pending interrupts when booting
+      riscv: simplify the stack pointer setup in head.S
+      riscv: cleanup the parse_dtb calling conventions
+      riscv: remove unreachable !HAVE_FUNCTION_GRAPH_RET_ADDR_PTR code
+      riscv: remove duplicate macros from ptrace.h
+      riscv: print the unexpected interrupt cause
+      riscv: call pm_power_off from machine_halt / machine_power_off
+
+Gary Guo (3):
+      riscv: move flush_icache_{all,mm} to cacheflush.c
+      riscv: move switch_mm to its own file
+      riscv: fix sbi_remote_sfence_vma{,_asid}.
+
+Guo Ren (1):
+      riscv/signal: Fixup additional syscall restarting
+
+Nick Desaulniers (1):
+      riscv: vdso: drop unnecessary cc-ldoption
+
+Palmer Dabbelt (1):
+      RISC-V: Avoid using invalid intermediate translations
+
+Vincent Chen (3):
+      riscv: support trap-based WARN()
+      riscv: Add the support for c.ebreak check in is_valid_bugaddr()
+      riscv: Support BUG() in kernel module
+
+ arch/riscv/Kconfig                   |   6 +-
+ arch/riscv/Makefile                  |   5 +-
+ arch/riscv/include/asm/Kbuild        |   1 +
+ arch/riscv/include/asm/bug.h         |  35 ++++++----
+ arch/riscv/include/asm/cacheflush.h  |   2 +-
+ arch/riscv/include/asm/csr.h         | 123 ++++++++++++++++++++++-------------
+ arch/riscv/include/asm/elf.h         |   6 --
+ arch/riscv/include/asm/futex.h       |  13 ----
+ arch/riscv/include/asm/irqflags.h    |  10 +--
+ arch/riscv/include/asm/mmu_context.h |  59 +----------------
+ arch/riscv/include/asm/ptrace.h      |  21 ++----
+ arch/riscv/include/asm/sbi.h         |  19 ++++--
+ arch/riscv/include/asm/thread_info.h |   4 +-
+ arch/riscv/include/asm/uaccess.h     |  28 +++-----
+ arch/riscv/kernel/asm-offsets.c      |   3 -
+ arch/riscv/kernel/cpu.c              |   3 +-
+ arch/riscv/kernel/entry.S            |  22 +++----
+ arch/riscv/kernel/head.S             |  33 ++++++----
+ arch/riscv/kernel/irq.c              |  19 ++----
+ arch/riscv/kernel/perf_event.c       |   4 +-
+ arch/riscv/kernel/reset.c            |  15 +++--
+ arch/riscv/kernel/setup.c            |   6 +-
+ arch/riscv/kernel/signal.c           |   6 ++
+ arch/riscv/kernel/smp.c              |  61 +++--------------
+ arch/riscv/kernel/smpboot.           |   0
+ arch/riscv/kernel/smpboot.c          |  22 ++++++-
+ arch/riscv/kernel/stacktrace.c       |  14 ++--
+ arch/riscv/kernel/traps.c            |  30 ++++++---
+ arch/riscv/kernel/vdso/Makefile      |   2 +-
+ arch/riscv/mm/Makefile               |   1 +
+ arch/riscv/mm/cacheflush.c           |  61 +++++++++++++++++
+ arch/riscv/mm/context.c              |  69 ++++++++++++++++++++
+ arch/riscv/mm/fault.c                |   6 +-
+ drivers/tty/hvc/hvc_riscv_sbi.c      |   1 -
+ 34 files changed, 390 insertions(+), 320 deletions(-)
+ create mode 100644 arch/riscv/kernel/smpboot.
+ create mode 100644 arch/riscv/mm/context.c
 
 _______________________________________________
 linux-riscv mailing list
