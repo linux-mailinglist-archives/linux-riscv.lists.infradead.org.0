@@ -2,119 +2,93 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DB6D1E84A
-	for <lists+linux-riscv@lfdr.de>; Wed, 15 May 2019 08:31:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE2CD1EA60
+	for <lists+linux-riscv@lfdr.de>; Wed, 15 May 2019 10:46:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8yRjhwCrgipAcpWFpjtBcA1h0o8vGX8DKGPTxAdKTvE=; b=iWIl7lS6xBfP0y
-	l2jZhECrXHzT60+zB+35lZndDWGzsiBkWNCU60+qL3wFhY7EdafkzhAnUqriroZSAbWNEAC5sew7A
-	QRIOptbgoicRP5SrqzO+Zpi2jmIC94k3gmyG2coMN79Ati7vbPZEJncfULhHgawfIHcmbUB0C/FSy
-	qarEs2Pxwg+4wAhi6nPWHUE9f4VObyTEjjpfpwRzxUeZl+Z/fvb9VMPCehuRVs+8U67zLqNxs4zu5
-	0PvK1X1wOmQYkr6JsM1wnXJ6OzTWS2XLesyxCHjNr/BEudLnYq9bjcqF0pB6H4Jz5+AswzGjLOX/C
-	adoVK3jJZjsVTkg5zNfw==;
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:MIME-Version:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KuYWkw1AxID8amY+F5D3mUMg+d4w+FDfDgp+6fHk6GE=; b=jTnIJvq4HyGBPv
+	J49IfJzeFkIAtj9mjjVdzyes9NR8LoaXi8lFwbTI+DX730MN4Lot83Eo+7EZnL6ltl/RQXv6/6NRi
+	gYX/lIRUmFdjWF8BP713GL+DPAC2S4MmImcpVy+eRB75c1Q74wXNcxEeq2h0kMKvd3SqwqHGeBHqB
+	59soj/4N4ZT4ky7DljsHrr9FS3Wa1jihd6rTWyPn03K3ilvXteOYsRf4AlSTws1KwSx+5FyAe7C0I
+	Y2wnEB/w277l/+5oCoF9UmEEUjP6VxOAiUfOtBrn7d7y6vBSLOPWn5OkJSH+uOrniwKyWDItJCKb/
+	oUIKU0kFg956poWkZhfA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQnRL-0001pQ-V8; Wed, 15 May 2019 06:30:59 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1hQpYC-0003OC-Ke; Wed, 15 May 2019 08:46:12 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQnRI-0001ns-SW
- for linux-riscv@lists.infradead.org; Wed, 15 May 2019 06:30:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557901857; x=1589437857;
- h=from:to:cc:subject:date:message-id:
- content-transfer-encoding:mime-version;
- bh=/3JFuvi5KaEHcItK79ajYJVZ0XA2wvkcfcSp8VyJNyY=;
- b=S2DV3Qn2CRvOPQggbA+LGMn2UCpTFad2m1LGD5WYMNkU0jZ4Ge/B34ve
- gjS6catrKv8kl+qJlXyv2FaDjnWVKihY2jjYIm7eDv45gijlr9FyqwfBv
- vksffawsC0q6sbKRfKZ24SKDOsH2wOeTJmgG5BgkLaCWYo+XfQEA0ioRb
- dbMA191CRoUSSvcJNhIQips/3xgmpYIq3o5eLlF/auMOLXVFf8/znTvu1
- 7a2an5YjRI5lmIOvJh4aR48Dtotfzbti9sBcLs+dpvlz2cwbKwHcTcxGe
- lYc/ZlIsFOZT06z5XESbIWbZZUufSpZNwDYS9AyQOY7RJzHpe12P8oTJF w==;
-X-IronPort-AV: E=Sophos;i="5.60,471,1549900800"; d="scan'208";a="108302799"
-Received: from mail-co1nam04lp2056.outbound.protection.outlook.com (HELO
- NAM04-CO1-obe.outbound.protection.outlook.com) ([104.47.45.56])
- by ob1.hgst.iphmx.com with ESMTP; 15 May 2019 14:30:42 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/3JFuvi5KaEHcItK79ajYJVZ0XA2wvkcfcSp8VyJNyY=;
- b=DcmXYaLpYyy3FfNIcKHl5Oa/7/GEYbEhCgLPxr34hysFjw0obpxCOWHpSkf7TlPfKberlXbB9Xdk84KUoAtQO11isftpfR6u5us3ZCspUlaximzyJsU3oq3+hKxiXn9q01TUYDWLKO+38kkHbptONcqKklPbeTXWzOCVBqIeg5Y=
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
- MN2PR04MB6128.namprd04.prod.outlook.com (20.178.248.89) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1878.24; Wed, 15 May 2019 06:30:40 +0000
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::5577:2af9:2b09:8171]) by MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::5577:2af9:2b09:8171%3]) with mapi id 15.20.1878.024; Wed, 15 May 2019
- 06:30:40 +0000
-From: Anup Patel <Anup.Patel@wdc.com>
-To: Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>
-Subject: [PATCH] RISC-V: defconfig: Enable NO_HZ_IDLE and HIGH_RES_TIMERS
-Thread-Topic: [PATCH] RISC-V: defconfig: Enable NO_HZ_IDLE and HIGH_RES_TIMERS
-Thread-Index: AQHVCue2HEus4pRvEEGYJRX3qv0JOw==
-Date: Wed, 15 May 2019 06:30:39 +0000
-Message-ID: <20190515063004.3466-1-anup.patel@wdc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: MAXPR01CA0079.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:49::21) To MN2PR04MB6061.namprd04.prod.outlook.com
- (2603:10b6:208:d8::15)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Anup.Patel@wdc.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-originating-ip: [129.253.179.161]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5e574d5c-3244-4b0a-f658-08d6d8fed923
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:MN2PR04MB6128; 
-x-ms-traffictypediagnostic: MN2PR04MB6128:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <MN2PR04MB612804594253EF0236B937668D090@MN2PR04MB6128.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 0038DE95A2
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(396003)(346002)(39860400002)(366004)(376002)(189003)(199004)(110136005)(5660300002)(54906003)(81156014)(66446008)(99286004)(2906002)(66066001)(14454004)(3846002)(478600001)(81166006)(6116002)(7736002)(72206003)(305945005)(316002)(73956011)(1076003)(25786009)(8676002)(66556008)(64756008)(66476007)(52116002)(66946007)(102836004)(26005)(2171002)(486006)(4326008)(44832011)(86362001)(6436002)(476003)(6506007)(386003)(71190400001)(2616005)(8936002)(71200400001)(186003)(36756003)(6512007)(256004)(68736007)(6486002)(50226002)(53936002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6128;
- H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: xhPhkc+iTrI0ZPpt4n6FCLyiS23hNPUWSgvQ8zinIdkznZjYWtrjyYJrHPTMiClokvOrhBkC7tYva7nLqomqG7lhQjPQUJTCJllaoBw4EG6ThVl2deGItOmKOn99o6vr7k4lRvZuO+8TAe1iEbbteStn6U+B+Y8lxVHgoRQidc/qz/j0iDztNUpHzxXRwlAuMeh6km56aA+WlZHRXITCZbodKt7RNhMKLVjdoZXWv7mXNWsnurm+IWQZv73fh+rADN+YbIcXsPOj6nifn+TwwMhzhPrhG+WBiqOlm5bvaXFJehQpmGj/mfUNTi6P49GNJKzqhUCbTXKpIrPvgiwdOs1NXFWOtMUIc62sQ4q0b8AlnrNsJxeeauDfSQ6JmniP1fLB1W4+ezJdWBmXENensE581XJXIJ64uHozcBw4EBg=
+ id 1hQpY8-0003ND-Sw
+ for linux-riscv@lists.infradead.org; Wed, 15 May 2019 08:46:10 +0000
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x4F8hZjB076609
+ for <linux-riscv@lists.infradead.org>; Wed, 15 May 2019 04:46:07 -0400
+Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2sgexv9xr7-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Wed, 15 May 2019 04:46:06 -0400
+Received: from localhost
+ by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <schwidefsky@de.ibm.com>;
+ Wed, 15 May 2019 09:46:03 +0100
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+ by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Wed, 15 May 2019 09:45:59 +0100
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x4F8jwVB56557678
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 15 May 2019 08:45:58 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C8998A4055;
+ Wed, 15 May 2019 08:45:58 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6876CA4040;
+ Wed, 15 May 2019 08:45:58 +0000 (GMT)
+Received: from mschwideX1 (unknown [9.152.212.60])
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Wed, 15 May 2019 08:45:58 +0000 (GMT)
+Date: Wed, 15 May 2019 10:45:57 +0200
+From: Martin Schwidefsky <schwidefsky@de.ibm.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH] s390: move arch/s390/defconfig to
+ arch/s390/configs/defconfig
+In-Reply-To: <20190513021116.12191-1-yamada.masahiro@socionext.com>
+References: <20190513021116.12191-1-yamada.masahiro@socionext.com>
+X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e574d5c-3244-4b0a-f658-08d6d8fed923
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 May 2019 06:30:39.9592 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6128
+X-TM-AS-GCONF: 00
+x-cbid: 19051508-0020-0000-0000-0000033CDC18
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19051508-0021-0000-0000-0000218F9C91
+Message-Id: <20190515104557.1d5a389f@mschwideX1>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-15_05:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1905150057
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190514_233056_961327_BD2EC42B 
-X-CRM114-Status: GOOD (  12.05  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190515_014608_933408_96D149B1 
+X-CRM114-Status: GOOD (  23.20  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.156.1 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,59 +100,74 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: linux-s390@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>,
+ linux-kernel@vger.kernel.org, Guo Ren <guoren@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, linux-riscv@lists.infradead.org,
+ Vincent Chen <deanbo422@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch enables NO_HZ_IDLE (idle dynamic ticks) and HIGH_RES_TIMERS
-(hrtimers) in RV32 and RV64 defconfigs.
+On Mon, 13 May 2019 11:11:16 +0900
+Masahiro Yamada <yamada.masahiro@socionext.com> wrote:
 
-Both of the above options are enabled by default for architectures
-such as x86, ARM, and ARM64.
+> As of Linux 5.1, alpha and s390 are the last architectures that
+> have defconfig in arch/*/ instead of arch/*/configs/.
+> 
+>   $ find arch -name defconfig | sort
+>   arch/alpha/defconfig
+>   arch/arm64/configs/defconfig
+>   arch/csky/configs/defconfig
+>   arch/nds32/configs/defconfig
+>   arch/riscv/configs/defconfig
+>   arch/s390/defconfig
+> 
+> The arch/$(ARCH)/defconfig is the hard-coded default in Kconfig,
+> and I want to deprecate it after evacuating the remaining defconfig
+> into the standard location, arch/*/configs/.
+> 
+> Define KBUILD_DEFCONFIG like other architectures, and move defconfig
+> into the configs/ subdirectory.
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 
-The idle dynamic ticks helps use save power by stopping timer ticks
-when the system is idle whereas hrtimers is a much improved timer
-subsystem compared to the old "timer wheel" based system.
+I have added this patch to my linux/s390 tree and will push it upstream
+soon. Thanks!
 
-This patch is tested on SiFive Unleashed board and QEMU Virt machine.
+> ---
+> 
+>  arch/s390/Makefile                | 2 ++
+>  arch/s390/{ => configs}/defconfig | 0
+>  2 files changed, 2 insertions(+)
+>  rename arch/s390/{ => configs}/defconfig (100%)
+> 
+> diff --git a/arch/s390/Makefile b/arch/s390/Makefile
+> index df1d6a150f30..de8521fc9de5 100644
+> --- a/arch/s390/Makefile
+> +++ b/arch/s390/Makefile
+> @@ -10,6 +10,8 @@
+>  # Copyright (C) 1994 by Linus Torvalds
+>  #
+> 
+> +KBUILD_DEFCONFIG := defconfig
+> +
+>  LD_BFD		:= elf64-s390
+>  KBUILD_LDFLAGS	:= -m elf64_s390
+>  KBUILD_AFLAGS_MODULE += -fPIC
+> diff --git a/arch/s390/defconfig b/arch/s390/configs/defconfig
+> similarity index 100%
+> rename from arch/s390/defconfig
+> rename to arch/s390/configs/defconfig
 
-Signed-off-by: Anup Patel <anup.patel@wdc.com>
----
- arch/riscv/configs/defconfig      | 2 ++
- arch/riscv/configs/rv32_defconfig | 2 ++
- 2 files changed, 4 insertions(+)
 
-diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-index 2fd3461e50ab..f254c352ec57 100644
---- a/arch/riscv/configs/defconfig
-+++ b/arch/riscv/configs/defconfig
-@@ -1,5 +1,7 @@
- CONFIG_SYSVIPC=y
- CONFIG_POSIX_MQUEUE=y
-+CONFIG_NO_HZ_IDLE=y
-+CONFIG_HIGH_RES_TIMERS=y
- CONFIG_IKCONFIG=y
- CONFIG_IKCONFIG_PROC=y
- CONFIG_CGROUPS=y
-diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
-index 1a911ed8e772..d5449ef805a3 100644
---- a/arch/riscv/configs/rv32_defconfig
-+++ b/arch/riscv/configs/rv32_defconfig
-@@ -1,5 +1,7 @@
- CONFIG_SYSVIPC=y
- CONFIG_POSIX_MQUEUE=y
-+CONFIG_NO_HZ_IDLE=y
-+CONFIG_HIGH_RES_TIMERS=y
- CONFIG_IKCONFIG=y
- CONFIG_IKCONFIG_PROC=y
- CONFIG_CGROUPS=y
 -- 
-2.17.1
+blue skies,
+   Martin.
+
+"Reality continues to ruin my life." - Calvin.
+
 
 _______________________________________________
 linux-riscv mailing list
