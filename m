@@ -2,82 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7231421050
-	for <lists+linux-riscv@lfdr.de>; Thu, 16 May 2019 23:53:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F92E210B7
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 May 2019 00:49:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GhDoAdZ2LLFeZvmnSqGEazKHErq88v66BzqDaO/PbM0=; b=HbojleAeRn5S6+
-	2np2sm6n7j4cwwh6QQvXd7ibMblITU+EI+3uESfLKlSCn+MxU/atCwR8xVtHbMeM93s5Rou5Yao6F
-	LOCeZ34mQMHqQ6H/XMuXmejOhXQfcV1HQkenHWQolxw7IWILLKLW/YmmzLvxJ0u3cVwAmL0IFZv1l
-	pMB/+x8eXFVILW9DcQri90LstqCLj3iFZOUhJ0N3ElUM9H8797F2hyjnChdN4mD6UvRzwWzy/AhuN
-	OvF5F0akfXLHWP2aWexqT1wX8Gm3uJmhHeKlcrX+tK55ZiZ8Jp/ppdA7iAVrzNanddeHDbgWxXxR2
-	19W2XUUko3ZvD4GNcTWA==;
+	List-Owner; bh=LFE0gDVEO+6epuPn3M2uHh8vcnatBFSZO5uGojemG2w=; b=BjPMyCLyUc4Xmw
+	r/sVnN+c2zvKLULOAjlJ6UzlBoL1jf2ZCk0ra9p0dcyoFylwIzj/0j89Dy2YQozcMc2t4pkSGrw9Z
+	lgKX21ngmn9/n6/sAkilXODMN6LYlziTQJe40zMaoEcS9j91CQ8WFZc20JFb95FA1sKxuUFP6Ltys
+	8JpT03B6VSUAfaKJfZQuloCdLCFLWoqOhQbf3Zu1wRjlsSFDcaqWyx44/2Rnspt6vNsD1GMdD1/wy
+	M6AHPP5O0qjGF4oHU8xgqCwJU8ACsPoip0/c60fNgg5Z7ckCWD399vd/VOohe4+kn28vuCkOYI9Kg
+	JH/7Roo+fNLXb1YtcEMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hROK0-0006A1-5Z; Thu, 16 May 2019 21:53:52 +0000
-Received: from bedivere.hansenpartnership.com ([66.63.167.143])
+	id 1hRPBR-0006sK-8O; Thu, 16 May 2019 22:49:05 +0000
+Received: from mail-qt1-f193.google.com ([209.85.160.193])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hROJx-000694-Jo
- for linux-riscv@lists.infradead.org; Thu, 16 May 2019 21:53:50 +0000
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id 89A8F8EE109;
- Thu, 16 May 2019 14:53:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
- s=20151216; t=1558043625;
- bh=jjQxK8gG30fC8ztphEl/+NchX6EWOkygL8i2PMuVq9U=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=Ej9cKsPYRiVs3hKWegxKZYbVTyWhjFJDipWtVAXw++pT/OjiGnooSR170YcM1C3Iz
- irU3Cw8B+qD/zqpfXRluw303d1dzUV6uSi3lTX61vTQE6bXvJQPFT2Tle/T2YDMksF
- mqPFgSEU19WymQeFDf8Ozh3PxPh0zTcNc03cylqg=
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id mfCEGp6lPT57; Thu, 16 May 2019 14:53:45 -0700 (PDT)
-Received: from [153.66.254.194] (unknown [50.35.68.20])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id D48728EE062;
- Thu, 16 May 2019 14:53:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
- s=20151216; t=1558043625;
- bh=jjQxK8gG30fC8ztphEl/+NchX6EWOkygL8i2PMuVq9U=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=Ej9cKsPYRiVs3hKWegxKZYbVTyWhjFJDipWtVAXw++pT/OjiGnooSR170YcM1C3Iz
- irU3Cw8B+qD/zqpfXRluw303d1dzUV6uSi3lTX61vTQE6bXvJQPFT2Tle/T2YDMksF
- mqPFgSEU19WymQeFDf8Ozh3PxPh0zTcNc03cylqg=
-Message-ID: <1558043623.29359.44.camel@HansenPartnership.com>
-Subject: Re: [GIT PULL] asm-generic: kill <asm/segment.h> and improve nommu
- generic uaccess helpers
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Linus Torvalds <torvalds@linux-foundation.org>, Arnd Bergmann
- <arnd@arndb.de>
-Date: Thu, 16 May 2019 14:53:43 -0700
-In-Reply-To: <CAHk-=wiH=vGjsW9MdWFGsgto2W+71sA4XJ7CSubpXkbpC_bGKA@mail.gmail.com>
+ id 1hRPBO-0006rb-0W
+ for linux-riscv@lists.infradead.org; Thu, 16 May 2019 22:49:03 +0000
+Received: by mail-qt1-f193.google.com with SMTP id t1so5900388qtc.12
+ for <linux-riscv@lists.infradead.org>; Thu, 16 May 2019 15:49:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+HCSHfWWQoOMU9IYPEECn6c5bcFnN/huF1hZpjyeGtc=;
+ b=fyozxbJm0HHSWbw4b+uR2nZiKmQyIYJnr93Ce7wkYmrfknjkAwM4V3mbRYUyCb/an2
+ 3Id75cJhTQxDyUSs8Pnrh0A4xA+NyuncCReHAiaWar19HEHbQst9bvphRUVTyNbRCT0M
+ JHT/GKQSGI9AD9tEQs7qAWAhwj7gbfPJu28Ef95yz02SuUkun2T/fULJlBtcwgBPyD2u
+ d4r4qEy0OL8xs9VDa2wPdMjadzwBc6SHO3XQoqhzepof+31goyHHVblVAfeN8lUkTAto
+ d/t93ZLKy0CjwmqSJPVVDLb/foOlkbV+YN6JL19+Ueyt11EUzjcHqZh1wxzokeuuMAZU
+ qvqQ==
+X-Gm-Message-State: APjAAAW5VK7H5unv8e5pYShMxO0FQ1FmQneGKb8vmbS3bVKf4a210y54
+ ZqShPh6l6WvAqWiKYSItprmmB4AtQmwR2IjyKRg=
+X-Google-Smtp-Source: APXvYqzuJv0swkCZ9YDJNYDFgYTnD0BTmGh9QBNFwePpoN3V/fGbw6KJlz3gLIuDNdfa5/lPPkxazRL9tvT8iIpUFKo=
+X-Received: by 2002:a0c:b78a:: with SMTP id l10mr21490193qve.62.1558046940896; 
+ Thu, 16 May 2019 15:49:00 -0700 (PDT)
+MIME-Version: 1.0
 References: <CAK8P3a2+RHAReOZdo8nEvqDeC1EPj83L2Ug4JuVRiUh943AuNw@mail.gmail.com>
  <CAHk-=wgiv5ftb+dq7N8cN4n2YX3VkyzeQccywn07Xu9xhOLTSw@mail.gmail.com>
  <CAK8P3a2EEuxh3uhsqauEC_vROZ7tQHhFwxgiLUnrgtpMdb3kuA@mail.gmail.com>
  <CAHk-=wiH=vGjsW9MdWFGsgto2W+71sA4XJ7CSubpXkbpC_bGKA@mail.gmail.com>
-X-Mailer: Evolution 3.26.6 
-Mime-Version: 1.0
+ <1558043623.29359.44.camel@HansenPartnership.com>
+In-Reply-To: <1558043623.29359.44.camel@HansenPartnership.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Fri, 17 May 2019 00:48:44 +0200
+Message-ID: <CAK8P3a0QsURY+QrkvBh5zS12cCLYD=ssVtus_6Q_DSnB1=1y3A@mail.gmail.com>
+Subject: Re: [GIT PULL] asm-generic: kill <asm/segment.h> and improve nommu
+ generic uaccess helpers
+To: James Bottomley <James.Bottomley@hansenpartnership.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_145349_667026_3321834E 
-X-CRM114-Status: GOOD (  13.02  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190516_154902_054978_E8A8C572 
+X-CRM114-Status: GOOD (  15.06  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [66.63.167.143 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ no trust [209.85.160.193 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (arndbergmann[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.160.193 listed in wl.mailspike.net]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- 0.1 DKIM_INVALID           DKIM or DK signature exists, but is not valid
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,56 +87,64 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: linux-arch <linux-arch@vger.kernel.org>, linux-riscv@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Christoph Hellwig <hch@lst.de>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 2019-05-16 at 13:59 -0700, Linus Torvalds wrote:
-> On Thu, May 16, 2019 at 1:34 PM Arnd Bergmann <arnd@arndb.de> wrote:
-> > 
-> > 
-> > I have reconfigured it locally now and pushed an identical tag with
-> > a
-> > new signature. Can you see if that gives you the same warning if
-> > you
-> > try to pull that?
-> 
-> No, same issue:
+On Thu, May 16, 2019 at 11:53 PM James Bottomley
+<James.Bottomley@hansenpartnership.com> wrote:
+>
+> On Thu, 2019-05-16 at 13:59 -0700, Linus Torvalds wrote:
+> > On Thu, May 16, 2019 at 1:34 PM Arnd Bergmann <arnd@arndb.de> wrote:
+> > >
+> > >
+> > > I have reconfigured it locally now and pushed an identical tag with
+> > > a
+> > > new signature. Can you see if that gives you the same warning if
+> > > you
+> > > try to pull that?
+> >
+> > No, same issue:
+>
+> The problem seems to be this:
+>
+> jejb@jarvis:~> gpg --list-keys 60AB47FFC9095227
+> pub   rsa4096 2011-10-27 [C]
+>       88AFCD206B1611957187F16B60AB47FFC9095227
+> sub   rsa4096 2011-10-27 [E]
+>
+> Your key is a "Certification key" and you have an encryption subkey but
+> no signing key at all.  Usually you either have a signing subkey or
+> your master key is both certification and signing ([CS] flags).
+> Certification keys can only be used to certify other keys, they can't
+> be used for signing, but I bet gpg is assuming that it can sign with
+> the master key even if it doesn't possess the signing flag.
 
-The problem seems to be this:
+Strangely, the copy I have on my local machine does have the 'S'
+flag. I sent it back to the server now.
 
-jejb@jarvis:~> gpg --list-keys 60AB47FFC9095227
-pub   rsa4096 2011-10-27 [C]
-      88AFCD206B1611957187F16B60AB47FFC9095227
-sub   rsa4096 2011-10-27 [E]
+> You can make your master key a signing key by doing
+>
+> gpg --expert --edit-key 60AB47FFC9095227
+>
+> Then doing
+>
+> gpg> change-usage
+>
+> and selecting "toggle sign"
+>
+> Or you could just add a signing subkey.
 
-Your key is a "Certification key" and you have an encryption subkey but
-no signing key at all.  Usually you either have a signing subkey or
-your master key is both certification and signing ([CS] flags). 
-Certification keys can only be used to certify other keys, they can't
-be used for signing, but I bet gpg is assuming that it can sign with
-the master key even if it doesn't possess the signing flag.
+I had some problems with creating a subkey, probably because of
+some misconfiguration. It seems to work now, so I created a new
+signing subkey now for future use.
 
-You can make your master key a signing key by doing
+Thanks a lot!
 
-gpg --expert --edit-key 60AB47FFC9095227
-
-Then doing
-
-gpg> change-usage
-
-and selecting "toggle sign"
-
-Or you could just add a signing subkey.
-
-In either case you'll need to save and sign the changes and then push
-to a keyserver for the rest of us to see it.
-
-James
-
+     Arnd
 
 _______________________________________________
 linux-riscv mailing list
