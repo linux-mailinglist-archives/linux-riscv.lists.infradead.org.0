@@ -2,88 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE4B421DF2
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 May 2019 21:02:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 457182207B
+	for <lists+linux-riscv@lfdr.de>; Sat, 18 May 2019 00:54:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=N2YRbQMrnc25WSHGEAJrvk9mixmhzlm1zX/7CZAbGA8=; b=N1VuKqCDqfoSbEiZVva6ngZFU
-	Tesq1pinNz+W4yQ27HZZ6F4py8gfmFeQlXQLX6aKqXRgGgFBP8OfDuaIXzHjElAf/V3QsiKKT8Ruv
-	fYd8ix/cipMI4ZFp3gNMm+kO+qPDQ2mwc2u4TIW2c5DSMlE5GYtjAQ0Lpiy0k2zrOt1/Ch88pCflJ
-	GitQR+dF3MoYjsxQLLoxW6052DQxfjBV6O1qvIkS5NOsG12I4DBpDNhP67/VqT6Sa4B0XUMU++qmd
-	XV1kRMRLLvhGsc+De0X1FbMOJ5xcZFDx4x6ZxRQ/7kDeeNiRq8q8vs3AHkYFlGZJEnGVaG9qqJ/6e
-	6GAiWY+WA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:To:From:
+	Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+W3utkVtRdCSURegvMbP8m9o1EMqm30Ufzmnmn78DAs=; b=mK7fesfoMYsy+6
+	JLDHMhbOV6l/AmZRINZslEzS8dBG7t0axXNgvkbNQdlyvGPoyauZ3VRkwC1XUhMnFBFLNAgE8PmdP
+	VI2IcxtnepEMiEfdKTz836b8dTSOMKF8n0g4hyK6SxFUEUVasMQDYdmyXjWo7/zA03SFTWgC0lP4r
+	rZ9GzmUustV4FzZARVVMaDHx2w6sOvBu72hXUm7G2bfD0ud5h3hQ/1vXXEqVRss8YIBGCJBVCGnQp
+	dLyni/NK2tQzRejenpuoBnbT5iZ95MFb6u9HPg7d1zIxdN94lBiQlQdDzEYJ2MYrRHZ3vBy+yvkQx
+	O7GJ8OJF63Sv1YrJy2kg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRi7Q-0004G7-HV; Fri, 17 May 2019 19:02:12 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1hRlkN-0004A2-HD; Fri, 17 May 2019 22:54:39 +0000
+Received: from mail-pg1-f196.google.com ([209.85.215.196])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRi7M-0004Fj-KQ
- for linux-riscv@lists.infradead.org; Fri, 17 May 2019 19:02:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1558119728; x=1589655728;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=sCHcqEnJzvTT1HQ3nCB58qYi8YhUS/CBmEQC9NnNdhw=;
- b=Qa7tU74LmdV+jtWdBv4Rr91/leensSPSh8Ua1hRIviBJWO6VQE3pxuMP
- 0bxLUvQfs5qRUi7VyqUn0JgrJSWJz6K8X2cwOro6vQ00D8rZNxtyG6XX0
- LMtl+hZ6eyC8TRb5BS3TEEKsIXjzVoBFr4HGgSj2nsiajtz1/tG5E+0TB
- cqdTrRp+Fbd2w1I8cwcdUMZebDiK5xeVvYARbRICFZ3tssUyYbuyCtH2y
- I6ca/aITFOtmSmfJSF68NZUQPDuo/5kQSwyeGuQf+Hr47z1752+1nT/Ed
- 1MzdkXvw8KociuG/FS322clAgegoFz8JtQEP8UuNfBqzQlR8M3al5duVy Q==;
-X-IronPort-AV: E=Sophos;i="5.60,481,1549900800"; d="scan'208";a="214672347"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 18 May 2019 03:01:48 +0800
-IronPort-SDR: iPqaSIUE1UL0I/Taak4z+wAGORTBXbLCKil+ngeCMpcOkjqh0GeBgitmKceTmYiUHaF1Ykk7U+
- oGelKDhl0I8O0CldtO8NFG2Bw8Nug3NFfa/6gWRU58y6Sv2wDuD97U3fI1TulqIqg+GpVsA+vV
- Z6Flw5R1sU+/19Kafo0PDYiUiMrSkIemLpQQSxN8GHRpQmPWywj61QpWTXtX2vfD9SwrvdefiZ
- 04T3vUzr4zj5Vp6C1+sd+8XYCuSd0oj39h06ww3ZZKypD43U1sYrIEWIUXGISBb4EWVgwh1Ugw
- iVx1v22lbEjdwWzzyl1wHckM
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP; 17 May 2019 11:37:19 -0700
-IronPort-SDR: Gu7q0xAdL22XcBU/yPn/+JDD88Iu4XRdgU+EV6wulb5SqSKv19ICR1lonDFOjrdpIwtlS7B9tI
- XVbnajdmVvoGWxmqt6qEXlO5rcWvN/q7Eh/y8cMV07uveDWi9O2aoxh2y1Ea284gcrHe00Sxlz
- WcyfjAXg0A9QGZOswE9zJwCdnybPxRq/TiSklrAL8tNdFnMO5VmFkC9g3bvEm5UD3oY6dHBYfw
- MNI81DExSLt8zytIpglwz2NUbY6wuyQu3JVLb2X17VvPqZC39q7e01ZIImcr2H3MHyW4viTQvk
- pwo=
-Received: from cnf000212.ad.shared (HELO [10.86.56.27]) ([10.86.56.27])
- by uls-op-cesaip02.wdc.com with ESMTP; 17 May 2019 12:01:48 -0700
-Subject: Re: [v2 PATCH] RISC-V: Add a PE/COFF compliant Image header.
-To: Paul Walmsley <paul.walmsley@sifive.com>
-References: <20190501195607.32553-1-atish.patra@wdc.com>
- <alpine.DEB.2.21.9999.1905171017510.9104@viisi.sifive.com>
-From: Atish Patra <atish.patra@wdc.com>
-Message-ID: <e71f11f1-4c48-342c-a718-de5f14de4c36@wdc.com>
-Date: Fri, 17 May 2019 12:00:22 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1905171017510.9104@viisi.sifive.com>
-Content-Language: en-US
+ id 1hRlkK-00049K-0K
+ for linux-riscv@lists.infradead.org; Fri, 17 May 2019 22:54:37 +0000
+Received: by mail-pg1-f196.google.com with SMTP id c13so3962243pgt.1
+ for <linux-riscv@lists.infradead.org>; Fri, 17 May 2019 15:54:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:cc:from:to:message-id;
+ bh=Ahm5be5NUrtm3hWZIve+b7Dd18MEVe3dLCxTom5Yo+E=;
+ b=H1ZirEWHtQWy/b4aWSPQYlELV8Xhq3fbcjw5qGsmgWlDy1v1YV4hiMMkMj9VDS81FR
+ aZ2ooBEX2Ttu5DY+D+MjZStCsfjJd4IGgcstlThqVTRORcfXgm15bPdn7CJsxW/MbifH
+ aqvkaCj70Cl0cpsHY6Z4BUdx2O1RCO5Sw6T8cjFuaaGpCQNpUkexyTRCVjv/+7/VK7AG
+ VSYGSKB/tq0Y8ZBzHTp6r6smNlaHMqFlqc8rM0tDkY2jXrrcmawYbao6uKERWj5Kjw6N
+ o+N34GcERH5Xq2ulusCbZqoh3eDaUyFfyqMB2wkd7qdQywkTAcis/N8pgwKgJm8cPCPn
+ xarA==
+X-Gm-Message-State: APjAAAXi3x05AJyR6VTSBIhsnZMmFAroJ0veU6DyPgskVD9xWJCLk9go
+ +nGfdnWFN3jk38TQoNhZLcsxVk2oX8E=
+X-Google-Smtp-Source: APXvYqyGA5aGu7mD7Gr+WhJw0g/JgPlJbonC43rGpNdAHAc/eMs5YcBYA2c6YaxOMxMuVTYwMlbWfA==
+X-Received: by 2002:a63:7989:: with SMTP id
+ u131mr51047071pgc.180.1558133674240; 
+ Fri, 17 May 2019 15:54:34 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id b16sm17757544pfd.12.2019.05.17.15.54.33
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 17 May 2019 15:54:33 -0700 (PDT)
+Date: Fri, 17 May 2019 15:54:33 -0700 (PDT)
+X-Google-Original-Date: Fri, 17 May 2019 15:53:24 PDT (-0700)
+Subject: [GIT PULL] RISC-V Patches for the 5.2 Merge Window, Part 1 v3
+From: Palmer Dabbelt <palmer@sifive.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Message-ID: <mhng-2cfcab49-74d1-4656-9913-36853a5be29d@palmer-si-x1e>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190517_120208_791625_12DAC154 
-X-CRM114-Status: GOOD (  14.31  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190517_155436_049957_90EF3BB4 
+X-CRM114-Status: GOOD (  18.33  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.215.196 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.215.196 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,58 +79,149 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
- Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Zong Li <zong@andestech.com>, "merker@debian.org" <merker@debian.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 5/17/19 10:39 AM, Paul Walmsley wrote:
-> 
-> On Wed, 1 May 2019, Atish Patra wrote:
-> 
->> Currently, last stage boot loaders such as U-Boot can accept only
->> uImage which is an unnecessary additional step in automating boot flows.
->>
->> Add a PE/COFF compliant image header that boot loaders can parse and
->> directly load kernel flat Image. The existing booting methods will continue
->> to work as it is.
-> 
-> One other thought: as I think you or someone else may have pointed out,
-> this isn't the PE/COFF header itself, but rather an ersatz DOS stub
-> header, that is apparently quite close to what some EFI bootloaders
-> require.  So from that point of view, it's probably best to just write in
-> the patch description that the idea is to add something that resembles an
-> MS-DOS stub header, and that the motivations are that:
-> 
-> 1. it resembles what ARM64 is doing, and there's not much point in
-> inventing another boot header format that's completely different
-> 
+The following changes since commit 085b7755808aa11f78ab9377257e1dad2e6fa4bb:
 
-Yup. I will add this in the next version.
+  Linux 5.1-rc6 (2019-04-21 10:45:57 -0700)
 
-> 2. it can be easily converted into an MS-DOS header that some EFI
-> bootloaders apparently require, by tweaking a few bytes at the beginning
-> 
+are available in the Git repository at:
 
-I mentioned all the required changes in the proposed header to so that 
-EFI bootloaders can load it directly. Probably, I will clarify it more 
-to avoid confusion.
+  git://git.kernel.org/pub/scm/linux/kernel/git/palmer/riscv-linux.git tags/riscv-for-linus-5.2-mw2
 
+for you to fetch changes up to 8fef9900d43feb9d5017c72840966733085e3e82:
 
-> 
-> - Paul
-> 
+  riscv: fix locking violation in page fault handler (2019-05-16 20:42:13 -0700)
 
+----------------------------------------------------------------
+RISC-V Patches for the 5.2 Merge Window, Part 1 v3
 
--- 
-Regards,
-Atish
+This patch set contains an assortment of RISC-V related patches that I'd
+like to target for the 5.2 merge window.  Most of the patches are
+cleanups, but there are a handful of user-visible changes:
+
+* The nosmp and nr_cpus command-line arguments are now supported, which
+  work like normal.
+* The SBI console no longer installs itself as a preferred console, we
+  rely on standard mechanisms (/chosen, command-line, hueristics)
+  instead.
+* sfence_remove_sfence_vma{,_asid} now pass their arguments along to the
+  SBI call.
+* Modules now support BUG().
+* A missing sfence.vma during boot has been added.  This bug only
+  manifests during boot.
+* The arch/riscv support for SiFive's L2 cache controller has been
+  merged, which should un-block the EDAC framework work.
+
+I've only tested this on QEMU again, as I didn't have time to get things
+running on the Unleashed.  The latest master from this morning merges in
+cleanly and passes the tests as well.
+
+This patch set rebased my "5.2 MW, Part 1" patch set which includes an
+erronous empty file.  It's also a rebase of my "5.2 MW, Part 2" patch
+set, in which I managed to create another file while attempting to
+remove the empty file.
+
+Sorry for all the noise!
+
+----------------------------------------------------------------
+Andreas Schwab (1):
+      riscv: fix locking violation in page fault handler
+
+Anup Patel (4):
+      RISC-V: Use tabs to align macro values in asm/csr.h
+      RISC-V: Add interrupt related SCAUSE defines in asm/csr.h
+      RISC-V: Access CSRs using CSR numbers
+      tty: Don't force RISCV SBI console as preferred console
+
+Atish Patra (4):
+      RISC-V: Add RISC-V specific arch_match_cpu_phys_id
+      RISC-V: Implement nosmp commandline option.
+      RISC-V: Support nr_cpus command line option.
+      RISC-V: Fix minor checkpatch issues.
+
+Christoph Hellwig (11):
+      riscv: use asm-generic/extable.h
+      riscv: turn mm_segment_t into a struct
+      riscv: remove unreachable big endian code
+      riscv: remove CONFIG_RISCV_ISA_A
+      riscv: clear all pending interrupts when booting
+      riscv: simplify the stack pointer setup in head.S
+      riscv: cleanup the parse_dtb calling conventions
+      riscv: remove unreachable !HAVE_FUNCTION_GRAPH_RET_ADDR_PTR code
+      riscv: remove duplicate macros from ptrace.h
+      riscv: print the unexpected interrupt cause
+      riscv: call pm_power_off from machine_halt / machine_power_off
+
+Gary Guo (3):
+      riscv: move flush_icache_{all,mm} to cacheflush.c
+      riscv: move switch_mm to its own file
+      riscv: fix sbi_remote_sfence_vma{,_asid}.
+
+Guo Ren (1):
+      riscv/signal: Fixup additional syscall restarting
+
+Nick Desaulniers (1):
+      riscv: vdso: drop unnecessary cc-ldoption
+
+Palmer Dabbelt (1):
+      RISC-V: Avoid using invalid intermediate translations
+
+Vincent Chen (3):
+      riscv: support trap-based WARN()
+      riscv: Add the support for c.ebreak check in is_valid_bugaddr()
+      riscv: Support BUG() in kernel module
+
+Yash Shah (2):
+      RISC-V: Add DT documentation for SiFive L2 Cache Controller
+      RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs
+
+ .../devicetree/bindings/riscv/sifive-l2-cache.txt  |  51 ++++++
+ arch/riscv/Kconfig                                 |   6 +-
+ arch/riscv/Makefile                                |   5 +-
+ arch/riscv/include/asm/Kbuild                      |   1 +
+ arch/riscv/include/asm/bug.h                       |  35 +++--
+ arch/riscv/include/asm/cacheflush.h                |   2 +-
+ arch/riscv/include/asm/csr.h                       | 123 +++++++++------
+ arch/riscv/include/asm/elf.h                       |   6 -
+ arch/riscv/include/asm/futex.h                     |  13 --
+ arch/riscv/include/asm/irqflags.h                  |  10 +-
+ arch/riscv/include/asm/mmu_context.h               |  59 +------
+ arch/riscv/include/asm/ptrace.h                    |  21 +--
+ arch/riscv/include/asm/sbi.h                       |  19 ++-
+ arch/riscv/include/asm/sifive_l2_cache.h           |  16 ++
+ arch/riscv/include/asm/thread_info.h               |   4 +-
+ arch/riscv/include/asm/uaccess.h                   |  28 ++--
+ arch/riscv/kernel/asm-offsets.c                    |   3 -
+ arch/riscv/kernel/cpu.c                            |   3 +-
+ arch/riscv/kernel/entry.S                          |  22 +--
+ arch/riscv/kernel/head.S                           |  33 ++--
+ arch/riscv/kernel/irq.c                            |  19 +--
+ arch/riscv/kernel/perf_event.c                     |   4 +-
+ arch/riscv/kernel/reset.c                          |  15 +-
+ arch/riscv/kernel/setup.c                          |   6 +-
+ arch/riscv/kernel/signal.c                         |   6 +
+ arch/riscv/kernel/smp.c                            |  61 ++-----
+ arch/riscv/kernel/smpboot.c                        |  22 ++-
+ arch/riscv/kernel/stacktrace.c                     |  14 +-
+ arch/riscv/kernel/traps.c                          |  30 +++-
+ arch/riscv/kernel/vdso/Makefile                    |   2 +-
+ arch/riscv/mm/Makefile                             |   2 +
+ arch/riscv/mm/cacheflush.c                         |  61 +++++++
+ arch/riscv/mm/context.c                            |  69 ++++++++
+ arch/riscv/mm/fault.c                              |   9 +-
+ arch/riscv/mm/sifive_l2_cache.c                    | 175 +++++++++++++++++++++
+ drivers/tty/hvc/hvc_riscv_sbi.c                    |   1 -
+ 36 files changed, 635 insertions(+), 321 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/riscv/sifive-l2-cache.txt
+ create mode 100644 arch/riscv/include/asm/sifive_l2_cache.h
+ create mode 100644 arch/riscv/mm/context.c
+ create mode 100644 arch/riscv/mm/sifive_l2_cache.c
 
 _______________________________________________
 linux-riscv mailing list
