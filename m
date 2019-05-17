@@ -2,87 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4DD221263
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 May 2019 05:07:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA3162158E
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 May 2019 10:44:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=Sauz5wRvL5fxzEAh550akMjWBUvVW/TQdPHev6w2aK0=; b=Ya5tQyoOu3TNeJ4XW/K7QVa8i
-	ycsJIn1T+kqONTXF7MMPghpyvl3inyCdMndtRS2Fkhh6igwHnw5PMB5k0ZHM8U7KIr6Bcy+Nk1eCc
-	qvlvM2GICBghsV5jjIFhVy7u+E4jJYvZC6ySowAUnifTPOh1xh3Ow8ClKgLcYLRsWx3y+KhI54UlB
-	JIBE4kaqfxL7dyB7KNOWI7sGY96pp83jx+1Zu43E9OdfLobcRppMXqDRXjunyCLTLLFadxSBqc1x3
-	i9FyN4mSR/43G/DDFMj2RTeqzEbHn4iEpoMAqD/ljQMD8973AHjGs8blngYVtbeKF/BS+8ea3VSfo
-	+/sWPeiZg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=QxYTilPXYCYEWR/Wv0w3pVm/FUinhZWcqxkqswm3cE4=; b=ZE9
+	Hg0rDm8A4CouHj8v0o5aTIwqgUm/VTDLZrYWtHXkJz5tU/aRTGfi4iO78lL5kyELD4alrKoJddEaQ
+	1FUlAdDDynfMdJC5mKIYuz5V1bBHECnwaVeWMpzJz+fUr1AvDRUE+mc2cTT7gCBYGG0iLEVxjRg2b
+	+3+TCfOxOeCGRpr4/uArsir1OWoSovweDMVkQ7VBFLqgY+qqRH/aBorFyv2tpAhW8h/9JTOJ2yhli
+	mUKACKvlT8xrWHnZ820vcMFNEYjrv04BlKqrfmtnE1dJCbnyAybBxbDAmcs+cfVS8BJRE94m3rFyH
+	g6fljvAaLvkIjDu6m4Hl+ZKVloAwO3Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRTDI-0002w6-RC; Fri, 17 May 2019 03:07:16 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1hRYTx-0008Pq-Do; Fri, 17 May 2019 08:44:49 +0000
+Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRTDF-0002vj-Mn
- for linux-riscv@lists.infradead.org; Fri, 17 May 2019 03:07:15 +0000
-Received: by mail-pf1-x443.google.com with SMTP id b76so2913943pfb.5
- for <linux-riscv@lists.infradead.org>; Thu, 16 May 2019 20:07:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=FZNWxHTVVazhA67ePeSz4ohY5K2eznCmCbVszKkx2ic=;
- b=DLcmwJ7nnYLQe72jJlkAUswlLL+NOQBPFn9y3+U2J4kLpsuMrsxRXrjd9aiVUuIJE2
- X3VLK5vbn3ZiG1JcjRhSpCKl+npdRGjtKBQ6osrSfcE0laytjtQfmvJMfjon6l6UjWi/
- bjqRGqA/+Wb8Ns2ysDJMuAmlBY07U8X2hDV9DPPGk8L4i0h/MVpEdTuPUccv879/2iMm
- g8CWMAjea6s4QK1OIUxL84j/NqwUJgzCgdMzqKq/X+bApDvU30p0J/uKkvoAWefMX54i
- AKB/Zke2oLMUJ+Og4U5F8a5awaDCc0E65eCbbh2HcYQx45RuIFuFRUIk8mgUOIZPJQDO
- RgvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=FZNWxHTVVazhA67ePeSz4ohY5K2eznCmCbVszKkx2ic=;
- b=hadeVqn8UP7qKNos5zKuGG3uEVf6L/szH/l0wwyoOd6JdFLtaG+k8dAaDyzg2TRfp1
- JWVyQbuCb/tZmVYbXb/vagToO4lY+cNBaPHInWcgW/VHPeg88IMQUU6JUoeIeAwL18I/
- Z9by1RoiygVpb0LXX+CB3jNNit2BLeTiCFicvfACF8lZ3FKa1U3ODS3XemA3q/BOBwKe
- Ww9l4pLC0tAmNhndwdJdbIXhWJLgyjeJQOOZRZcCoGrDIjEwlgMdSNYtNrqNLBRo+b9T
- 1WrzBHTxEdyBmIy4KEh+lo0dw8md7tl1+EvRJfM+KAGfNe64xenlalqNJFN1qzm8FMTz
- sRzg==
-X-Gm-Message-State: APjAAAW8MVTbMRXv+D36/zbvWRb0WZxpOAKYbW+5ZWJP5SS/CwuiQSOQ
- fX/Opy0PgijMnzArrDyEa7ueTHyhPnezVw==
-X-Google-Smtp-Source: APXvYqxbrbT/9Hskd59wqO3wHnRWgHNYD5k/CuNpwGHBcIvTOn4QsIlcnQzYxve7UkaQYITC5nCPlA==
-X-Received: by 2002:a62:5653:: with SMTP id k80mr57023417pfb.144.1558062429706; 
- Thu, 16 May 2019 20:07:09 -0700 (PDT)
-Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
- by smtp.gmail.com with ESMTPSA id b32sm7377740pgm.87.2019.05.16.20.07.08
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 16 May 2019 20:07:08 -0700 (PDT)
-Date: Thu, 16 May 2019 20:07:08 -0700 (PDT)
-X-Google-Original-Date: Thu, 16 May 2019 20:05:15 PDT (-0700)
-Subject: Re: [GIT PULL] RISC-V Patches for the 5.2 Merge Window, Part 1 v2
-In-Reply-To: <CAHk-=wiHtaVsbK4dZ79_h0R307Qv-Fdgdkp3SZ+F+QvzHHGrOQ@mail.gmail.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Linus Torvalds <torvalds@linux-foundation.org>
-Message-ID: <mhng-dd3bf038-f2d1-4318-af23-018200dd31af@palmer-mbp2014>
-Mime-Version: 1.0 (MHng)
+ id 1hRYTs-0008NL-7k
+ for linux-riscv@lists.infradead.org; Fri, 17 May 2019 08:44:46 +0000
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07501326|-1; CH=green;
+ DM=CONTINUE|CONTINUE|true|0.506319-0.105779-0.387902; FP=0|0|0|0|0|-1|-1|-1;
+ HT=e02c03278; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=6; RT=6; SR=0;
+ TI=SMTPD_---.EZL4FGh_1558082675; 
+Received: from localhost(mailfrom:han_mao@c-sky.com
+ fp:SMTPD_---.EZL4FGh_1558082675)
+ by smtp.aliyun-inc.com(10.147.43.230);
+ Fri, 17 May 2019 16:44:36 +0800
+From: Mao Han <han_mao@c-sky.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH V3 0/3] riscv: Add perf callchain support
+Date: Fri, 17 May 2019 16:43:01 +0800
+Message-Id: <cover.1558081981.git.han_mao@c-sky.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_200713_774152_A9C86424 
-X-CRM114-Status: GOOD (  12.85  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190517_014445_444532_1878DDDD 
+X-CRM114-Status: UNSURE (   7.93  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,36 +61,66 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@sifive.com>, Guo Ren <guoren@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, Mao Han <han_mao@c-sky.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 16 May 2019 19:17:17 PDT (-0700), Linus Torvalds wrote:
-> On Thu, May 16, 2019 at 5:27 PM Palmer Dabbelt <palmer@sifive.com> wrote:
->>
->>
->>   git://git.kernel.org/pub/scm/linux/kernel/git/palmer/riscv-linux.git tags/riscv-for-linus-5.2-mw1
->
-> Oh no no no.
->
-> You're creating a binary file from your build or something like that:
->
->>  modules.builtin.modinfo                            | Bin 0 -> 46064 bytes
->
-> which is completely unacceptable.
->
-> I have no idea what you're doing, but this kind of "random garbage in
-> git commits" is not going to fly. And the fact that you're adding
-> random files really means that you are doing something *horribly*
-> wrong.
+This patch set add perf callchain(FP/DWARF) support for RISC-V.
+It comes from the csky version callchain support with some
+slight modifications. The patchset base on Linux 5.1.
 
-Sorry, I have no idea how I missed that.  It looks like I managed to screw
-something up while trying to fix up that patch, but I'm not really sure what I
-did.  I'll try to figure out how to not screw it up next time.
+CC: Palmer Dabbelt <palmer@sifive.com>
+CC: linux-riscv <linux-riscv@lists.infradead.org>
+CC: Christoph Hellwig <hch@lst.de>
+CC: Guo Ren <guoren@kernel.org>
 
-Thanks for catching this!
+Changes since v2:
+  - fix inconsistent comment
+  - force to build kernel with -fno-omit-frame-pointer if perf
+    event is enabled
+
+Changes since v1:
+  - simplify implementation and code convention
+
+Mao Han (3):
+  riscv: Add perf callchain support
+  riscv: Add support for perf registers sampling
+  riscv: Add support for libdw
+
+ arch/riscv/Kconfig                            |   2 +
+ arch/riscv/Makefile                           |   3 +
+ arch/riscv/include/uapi/asm/perf_regs.h       |  42 ++++++++++
+ arch/riscv/kernel/Makefile                    |   4 +-
+ arch/riscv/kernel/perf_callchain.c            | 113 ++++++++++++++++++++++++++
+ arch/riscv/kernel/perf_regs.c                 |  44 ++++++++++
+ tools/arch/riscv/include/uapi/asm/perf_regs.h |  42 ++++++++++
+ tools/perf/Makefile.config                    |   6 +-
+ tools/perf/arch/riscv/Build                   |   1 +
+ tools/perf/arch/riscv/Makefile                |   3 +
+ tools/perf/arch/riscv/include/perf_regs.h     |  96 ++++++++++++++++++++++
+ tools/perf/arch/riscv/util/Build              |   2 +
+ tools/perf/arch/riscv/util/dwarf-regs.c       |  72 ++++++++++++++++
+ tools/perf/arch/riscv/util/unwind-libdw.c     |  57 +++++++++++++
+ 14 files changed, 485 insertions(+), 2 deletions(-)
+ create mode 100644 arch/riscv/include/uapi/asm/perf_regs.h
+ create mode 100644 arch/riscv/kernel/perf_callchain.c
+ create mode 100644 arch/riscv/kernel/perf_regs.c
+ create mode 100644 tools/arch/riscv/include/uapi/asm/perf_regs.h
+ create mode 100644 tools/perf/arch/riscv/Build
+ create mode 100644 tools/perf/arch/riscv/Makefile
+ create mode 100644 tools/perf/arch/riscv/include/perf_regs.h
+ create mode 100644 tools/perf/arch/riscv/util/Build
+ create mode 100644 tools/perf/arch/riscv/util/dwarf-regs.c
+ create mode 100644 tools/perf/arch/riscv/util/unwind-libdw.c
+
+-- 
+2.7.4
+
 
 _______________________________________________
 linux-riscv mailing list
