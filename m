@@ -2,51 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A6B822925
-	for <lists+linux-riscv@lfdr.de>; Sun, 19 May 2019 23:25:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADC7622AA1
+	for <lists+linux-riscv@lfdr.de>; Mon, 20 May 2019 06:20:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eWp1M6kCw25ISQPL+5nRVRG5iJ9uVrZL9jeSjRCwAro=; b=MNjg8jj5EMCPygKIQeQnSCGpN
-	9FwUd1jbUOO/SPhb3PzBK3/MrDYlN2eaa/qxHW2IcXJTM6CMv70DVWAnuGxq80ioH2ARivepeLHzX
-	p8NvqzZnv2giZtLXi0+0YSDANaU09fvkcoiysuRqDYJbMawh0fo21K/MpEUGvg1R6WKqo4PBt6zsG
-	496QV8U10/RGg5fUCsfCZ6p4ZZxLyRxnbkhxiMlm218KcV3BnND2sGaqZchU1PtapUTXQTY1yscZn
-	XWY2RXoittwhHGMVFavFio04MFkig4ZtRlKHsaWYmLCSJvKbVFtQSXj9B4imV6ngCLlfxMTb1E3ty
-	u1WFKirLQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M42Jg/xsmcHCei9VJJEyqISxnT+GhXcwUGJ/ucOIIbk=; b=D0iuPzYWb10yDD
+	xG21Zawv4+2c9SGyRkwyU5654MabYBdrflpcPzERHx1LDwmWDIwXdeAXTYVBQ2ZO5oSQODmQBf0bk
+	Lg55PVizeiKiu9JEF0HaQKzxZrM5oMpO/REJ5YOvVS8zWjFfIeNrTY6WB11zHBIzMtuiQm8OMjzNW
+	xmiLf5mt6w/8SnxFU3FHAEp6D0h1M9HacNx0aH17Ibkn30w6y6Se3LvNfJcrWp6X+dTXHJWoBB4mQ
+	8SWoTELG3Fr8GcfveCp9G5BsFKslqWBsEsF0Cw5x5yjuKSVUENWwhezFYmujSXYJn1eD9YUWyoF7n
+	DW0Z/+Gmr7Bl2zb/mt2Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hSTJO-0002l9-Cj; Sun, 19 May 2019 21:25:42 +0000
-Received: from atrey.karlin.mff.cuni.cz ([195.113.26.193])
+	id 1hSZmy-0007lA-9F; Mon, 20 May 2019 04:20:40 +0000
+Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hSTJK-0002kK-Rb
- for linux-riscv@lists.infradead.org; Sun, 19 May 2019 21:25:40 +0000
-Received: by atrey.karlin.mff.cuni.cz (Postfix, from userid 512)
- id 715DB80378; Sun, 19 May 2019 23:25:18 +0200 (CEST)
-Date: Sun, 19 May 2019 23:25:28 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH v2] clk: sifive: restrict Kconfig scope for the FU540
- PRCI driver
-Message-ID: <20190519212527.GD31403@amd>
-References: <20190513213001.23956-1-paul.walmsley@sifive.com>
+ id 1hSZmu-0007kL-NE
+ for linux-riscv@lists.infradead.org; Mon, 20 May 2019 04:20:38 +0000
+Received: by mail-vk1-xa44.google.com with SMTP id h72so3523225vkh.10
+ for <linux-riscv@lists.infradead.org>; Sun, 19 May 2019 21:20:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=k6ZY4dlYUgWC9xMv7mBWW2Rp/GiH/mIF5ibb01bxTfc=;
+ b=lkT5TGTLMDU8vkjvDn8uYnIiEn1Srn/zCq28Bk3yu05hPFzq/J9WIfb1mz/Cnl3ddv
+ 1SUJ9vdF+sPLGGg3qdcdoozj6BxD1t8bKnXJpIYaQdqFm9s8ewTI4a5Fxioq385OYrx5
+ 0B/w+2wh4wkMzgXigoUZ4YNWOae2ih6l6lL0J3Eg+aHFKYI1BbNhqg+zUtcChHcI+gCY
+ P3+ZBuoQ8WxqSUb719V21IJFT6itZqAOgUhVHuZiHfBbYfOENKusS4d2DfNk6ErmVxT3
+ 4dnSK7TYrBATk/uNDMzrgemZzr+oTrcIfN/AJCeMiCRcg/E8H6IKyNvVJLKeiMLE4d/I
+ rOlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=k6ZY4dlYUgWC9xMv7mBWW2Rp/GiH/mIF5ibb01bxTfc=;
+ b=gWTsv2qHDv8ciOkcbVtHGXcetl9BzUnSMGkuYxoUHwHe48itKMJyNIU9KrwC00s07t
+ mQaJ7NwWTWayt/miWyt34p0BIfiWPKg+NmXaYjpseCppyeg7UqGl3KiI007lqoDZiLHW
+ lmpFE5DVdwN/rCKUxMj3eU/OlPUwjaE71irenztsJ3kQkOBEJYVfvQC4bpve7B5WyNEf
+ NE6+8Zf9yGPh35QVi61GQHQ0RkdkPPbuw6S40/1665tZ0VnDLxr5vbx1D0GRZrwyZGvZ
+ dVFjnPb9QtnkMBI4glxL1BAm4qpmpcaw0n8yRd8PS3e3KIxMUCXNT+28MZZzlsDXMVqU
+ TMDA==
+X-Gm-Message-State: APjAAAUGmyXqroTPW3wIQbSzsH9+wr5xtihtTD1FB9uz0A7u9cv2y1GN
+ AfvAWYWMT/lwF7xgFtUywAOasZCwmLHpOhKmFwPN9w==
+X-Google-Smtp-Source: APXvYqy7AMlG3BgYDRhZy+4VIWVyd9wPF+kIWSEqvT5b9pFPI1+c1u6xaot/nbRBfv0yjmLCjltat2Eli5Yy4dPibj8=
+X-Received: by 2002:a1f:3dc9:: with SMTP id k192mr5787006vka.74.1558326032043; 
+ Sun, 19 May 2019 21:20:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190513213001.23956-1-paul.walmsley@sifive.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+References: <1557983320-14461-1-git-send-email-sagar.kadam@sifive.com>
+ <1557983320-14461-4-git-send-email-sagar.kadam@sifive.com>
+ <20190516130720.GE14298@lunn.ch>
+In-Reply-To: <20190516130720.GE14298@lunn.ch>
+From: Sagar Kadam <sagar.kadam@sifive.com>
+Date: Mon, 20 May 2019 09:50:21 +0530
+Message-ID: <CAARK3HkPuvsoVh=b2Kn43ubhME6vqpFLoboBM8OGOnb-d3FN8A@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] i2c-ocores: sifive: add polling mode workaround
+ for FU540-C000 SoC
+To: Andrew Lunn <andrew@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190519_142539_047237_641A765B 
-X-CRM114-Status: GOOD (  16.25  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190519_212036_761771_A94B8F3D 
+X-CRM114-Status: GOOD (  14.30  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.113.26.193 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:a44 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,94 +92,62 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Paul Walmsley <paul@pwsan.com>, sboyd@kernel.org, mturquette@baylibre.com,
- linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============6733192306771890243=="
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, peter@korsgaard.com,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, linux-i2c@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hi Andrew,
 
---===============6733192306771890243==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ZARJHfwaSJQLOEUz"
-Content-Disposition: inline
+On Thu, May 16, 2019 at 6:37 PM Andrew Lunn <andrew@lunn.ch> wrote:
+>
+> On Thu, May 16, 2019 at 10:38:40AM +0530, Sagar Shrikant Kadam wrote:
+> > The i2c-ocore driver already has a polling mode interface.But it needs
+> > a workaround for FU540 Chipset on HiFive unleashed board (RevA00).
+> > There is an erratum in FU540 chip that prevents interrupt driven i2c
+> > transfers from working, and also the I2C controller's interrupt bit
+> > cannot be cleared if set, due to this the existing i2c polling mode
+> > interface added in mainline earlier doesn't work, and CPU stall's
+> > infinitely, when-ever i2c transfer is initiated.
+> >
+> > Ref:previous polling mode support in mainline
+> >
+> >       commit 69c8c0c0efa8 ("i2c: ocores: add polling interface")
+> >
+> > The workaround / fix under OCORES_FLAG_BROKEN_IRQ is particularly for
+> > FU540-COOO SoC.
+> >
+> > Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+> > ---
+> >  drivers/i2c/busses/i2c-ocores.c | 34 ++++++++++++++++++++++++++++------
+> >  1 file changed, 28 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/i2c/busses/i2c-ocores.c b/drivers/i2c/busses/i2c-ocores.c
+> > index aee1d86..00ee45c 100644
+> > --- a/drivers/i2c/busses/i2c-ocores.c
+> > +++ b/drivers/i2c/busses/i2c-ocores.c
+> > @@ -27,6 +27,7 @@
+> >  #include <linux/jiffies.h>
+> >
+> >  #define OCORES_FLAG_POLL BIT(0)
+> > +#define OCORES_FLAG_BROKEN_IRQ BIT(2) /* Broken IRQ in HiFive Unleashed */
+>
+> Hi Sigar
+>
+> BIT(1). Don't leave a gap.
 
+I will remove the gap and update this in V4.
 
---ZARJHfwaSJQLOEUz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon 2019-05-13 14:30:04, Paul Walmsley wrote:
-> Restrict Kconfig scope for SiFive clock and reset IP block drivers
-> such that they won't appear on most configurations that are unlikely
-> to support them.  This is based on a suggestion from Pavel Machek
-> <pavel@ucw.cz>.  Ideally this should be dependent on
-> CONFIG_ARCH_SIFIVE, but since that Kconfig directive does not yet
-> exist, add dependencies on RISCV or COMPILE_TEST for now.
->=20
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> Signed-off-by: Paul Walmsley <paul@pwsan.com>
-> Reported-by: Pavel Machek <pavel@ucw.cz>
-> Cc: Michael Turquette <mturquette@baylibre.com>
-> Cc: Stephen Boyd <sboyd@kernel.org>
-
-Thanks for doing this.
-
-Acked-by: Pavel Machek <pavel@ucw.cz>
-									Pavel
-
-> ---
-> This second version incorporates non-functional changes requested
-> by Stephen Boyd <sboyd@kernel.org>.
->=20
->  drivers/clk/sifive/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/drivers/clk/sifive/Kconfig b/drivers/clk/sifive/Kconfig
-> index 8db4a3eb4782..f3b4eb9cb0f5 100644
-> --- a/drivers/clk/sifive/Kconfig
-> +++ b/drivers/clk/sifive/Kconfig
-> @@ -2,6 +2,7 @@
-> =20
->  menuconfig CLK_SIFIVE
->  	bool "SiFive SoC driver support"
-> +	depends on RISCV || COMPILE_TEST
->  	help
->  	  SoC drivers for SiFive Linux-capable SoCs.
-> =20
-
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---ZARJHfwaSJQLOEUz
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iEYEARECAAYFAlzhyccACgkQMOfwapXb+vKL9ACgxM0+9bKh/scPwPJjoynP4CP5
-Pz4An3RLsy9e7OUJOOEqqejLViJVsWKX
-=v+he
------END PGP SIGNATURE-----
-
---ZARJHfwaSJQLOEUz--
-
-
---===============6733192306771890243==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Sagar
+>
+>         Andrew
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---===============6733192306771890243==--
-
