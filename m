@@ -2,81 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B753233BD
-	for <lists+linux-riscv@lfdr.de>; Mon, 20 May 2019 14:21:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EA4F233BE
+	for <lists+linux-riscv@lfdr.de>; Mon, 20 May 2019 14:21:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ht6UxbZozuMOUlQ2JjtgV15HcyjQyUHwlkDfQYfQb2o=; b=MHVjRhr84JlMNj
-	OxEOkwMdv7iSLfXbhhGTTsv2bTqo9CySxyF8ZQto3XpaR+5VCqTNruByepkfzkm5D7MlrPqmLIvF/
-	lgZG4pUmze+7Y+nlbrQNjeb2G/5jPm3a5iiykRHa5CPVWK43k9Tz79rnif6isBs02tqm0lGHOKaYu
-	5Kal7WNryoXJ2MJ5pliSNNoOWB5+eXkYc7EVt7O40dx3GitG0gcTBA6/kVml4EmgHrvvA7ivEl/Uq
-	iDfEIi7j0zeRO3zbtJhUhXcx2I/rpbTLSqiVrMddN869SjVXKfcIxrfm+6ECSQRD4xg5zVd5WOFuI
-	PNbm9tKYnNok0k2z/ymA==;
+	List-Owner; bh=BRgh1bcz6DQoTYk5V3+a1g0yilWTXPv7hkoS3MyCIyA=; b=fVeAMgKt5Q/+Vm
+	IWH4Gh/1DhJtvviQPOZnTIXUt2m2xC0OxqYAB3sCN0TTBXlUy6YySaHfyHD6Ce+hUXwloxRtENVHe
+	AseQWLl7l9wpbZhN+rAL6R3kRMTQ2hdnOLKKWd5SG5lhdbfbs5HB03KSXsmVBu1NJxNdoGh9CQYpG
+	DvghnrKNxERKZ6ki8atKx4QgWLzfS9GZVI7ascEe/AIbnSapUj0RPCCL/4W2veULUu/nUghTVLya6
+	w7xhDi9cWO9BWwgfWyg0rqjfnG4JjJ9qnqDhSTMhb+Fy0DqPe9g12gRNJTvvww0hSRND7OxglbeXD
+	OC7EFe7BhaygIopuMcPQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hShIA-0003T5-Ly; Mon, 20 May 2019 12:21:22 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1hShIF-0003WB-78; Mon, 20 May 2019 12:21:27 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hShI6-0003RX-Qc
- for linux-riscv@lists.infradead.org; Mon, 20 May 2019 12:21:20 +0000
-Received: by mail-pf1-x442.google.com with SMTP id c6so7136786pfa.10
- for <linux-riscv@lists.infradead.org>; Mon, 20 May 2019 05:21:18 -0700 (PDT)
+ id 1hShIC-0003Ui-8F
+ for linux-riscv@lists.infradead.org; Mon, 20 May 2019 12:21:25 +0000
+Received: by mail-pf1-x444.google.com with SMTP id z28so7174084pfk.0
+ for <linux-riscv@lists.infradead.org>; Mon, 20 May 2019 05:21:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references;
- bh=bw14u18P9i//6PFBBpNeMD35DBcnBuJpaE6hMWzLBZ0=;
- b=DEW9DDW/wDzXrs3KiwiET14pKxALowECFZwPPv5wWj+6ZDqkA2+QErtIdqmxXurA7x
- 8nR8MzsJHo17x2Nn79nFOrSPNYMZN8MfSnoiJJz7TBRQjlvqsrsKGtAfWaF/Sh6oURg3
- SN1lGIPJY69X8/HNa3mT7VZTyzNnA2gT2UFjmL7Iz4iIHqkUJbaOYpYNMguMOPyicZKL
- 7x7Y68GYN4KPeBv3vRaC6o2I5RYmSqVeCIg8Lby57s/2piyKWvwTaXItSsOib9WHcoWs
- 4mJjBytXKSFnmY72ltqNJUGwGE+fqUBGqVVY9lRturZUiTBxQSkOVLGb7VLXR7n20zFD
- JAjw==
+ bh=4KK0MRvh5MgzBUDrn06tdDHg6h6KtmoqvmbKK6rVaok=;
+ b=i/P9RCiDrUaIMpMf95McN8b9avW7QYLVIOKO2jlZMWKcLY/05ZW/xSzalEe2ZC2ium
+ J+wLdgoANMLVAvwplbq/pkBi7usMO3QjlXEvjQ1Gs64ly9KvlZ2Pu3yKn0WT9pQ1InKG
+ R1rSPrKmyTWs7h7zpnUHeqFD/UGsn7zMLBkG0+sA8QG5TWQx+b/Hhc7sYBOavOW+U/5g
+ HAV8eBw9nk//Dtx3Z7BXuyrBpbg/WceaNIs1kK0+QG6MJCaEtEVuGWGx9l8EESebrOmm
+ OahLLa8h7oaqtfm3NLAs/DeCR58Cf7obmOOgqP4+fbTPnkqwyR22Fqs4fG7q30WWpok+
+ pJtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references;
- bh=bw14u18P9i//6PFBBpNeMD35DBcnBuJpaE6hMWzLBZ0=;
- b=MoA4PTjg350wxNdaDMjJRi/Gz3a/IdQFZMv//76+MBdtskU4aoe6mLKHkGE/6zct+b
- T5v4bMAt7pZIo3TpcklL7tzSeY0015MuJvAVPFFK5/cDFcBKJyiQPxk475BkoNRpbsPK
- wmteTlwl6Q0ssj3MI0czGmMBm7+2yVJzojtRh1eNaiHq6veBRkFdiOiev8Vi3DjoHNwK
- LbTUofi2MlyKY5xW/eFb62dbE8wM0+UE/uKHaU2yr6dr/hui0tdf9L3VKhHlkjQNRG7j
- 8eEPpE+kYCCGWjm7jdHX4XK2fS+7xkkkU/391r0cHHp06qF/0oNwWFSzdx86wODsmdty
- EPOw==
-X-Gm-Message-State: APjAAAVbqjgqjSU2KBxHfFx8NJ2FFLoLkU4a5SxyvXOJq9cRs+WQUIEa
- tIDxg6K0k2tZ0Vezprwz7T48aQ==
-X-Google-Smtp-Source: APXvYqzKDB1HQoyZ8U0WjJ0MSo/CQPwAF839cuWrudmxHBCb6F2wVORX+7KlKaCqim0PhCgM8AAUKQ==
-X-Received: by 2002:a65:5c41:: with SMTP id v1mr211402pgr.20.1558354878332;
- Mon, 20 May 2019 05:21:18 -0700 (PDT)
+ bh=4KK0MRvh5MgzBUDrn06tdDHg6h6KtmoqvmbKK6rVaok=;
+ b=npycCvktnkaiadxffORAHPFdjWSjZQG8J+Fkw0ue8o13kurGS/cD9sHezQN1kz3Ec3
+ TnLiskLrnO75byHs4Z4yuC3n4iSk/e0KdoplLdg7FnyQ0kmG/zx/m9Cbnvpfbse9W5fW
+ 4KU9WGeogS8S3cmUoGEF3qqhxKOl3C6jq3jmC3+v4AlWtY+5HtFV6x+jfJHroWHHisTY
+ XdJeAbDXWEwDx2Eaqg3YPwNco5jZd4T6lF7BBlOlYJeIh5Zxqips4ITQUmD9g0CzxSdK
+ vYvSc/9/GBggjvg9/+ppEYf6pYIJM1PjmfH+jTEaGpZWbu7B0wCI3qMZOQN+jzEGAJac
+ EI8Q==
+X-Gm-Message-State: APjAAAXOHWkgSjNpaCu6hTjRptDHsjfMEold/HhgBIvMQv4OOTIfEh3L
+ 65HOeOtoeRPapzz0fA+k1SHtHg==
+X-Google-Smtp-Source: APXvYqx/aDaf41fZIhhNQijCLymVj8l2tADUtw/HunCGJBDhenLRfcPSr+pEa51noxzJs7l4d1SCNQ==
+X-Received: by 2002:a63:8741:: with SMTP id i62mr74826207pge.313.1558354883537; 
+ Mon, 20 May 2019 05:21:23 -0700 (PDT)
 Received: from buildserver-90.open-silicon.com ([114.143.65.226])
  by smtp.googlemail.com with ESMTPSA id
- n27sm38137077pfb.129.2019.05.20.05.21.14
+ n27sm38137077pfb.129.2019.05.20.05.21.20
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 20 May 2019 05:21:17 -0700 (PDT)
+ Mon, 20 May 2019 05:21:23 -0700 (PDT)
 From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 To: robh+dt@kernel.org, mark.rutland@arm.com, peter@korsgaard.com,
  andrew@lunn.ch, palmer@sifive.com, paul.walmsley@sifive.com,
  sagar.kadam@sifive.com, linux-i2c@vger.kernel.org,
  devicetree@vger.kernel.org, linux-riscv@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v4 1/3] dt-bindings: i2c: extend existing opencore bindings.
-Date: Mon, 20 May 2019 17:50:15 +0530
-Message-Id: <1558354817-12034-2-git-send-email-sagar.kadam@sifive.com>
+Subject: [PATCH v4 2/3] i2c-ocores: sifive: add support for i2c device on
+ FU540-c000 SoC.
+Date: Mon, 20 May 2019 17:50:16 +0530
+Message-Id: <1558354817-12034-3-git-send-email-sagar.kadam@sifive.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1558354817-12034-1-git-send-email-sagar.kadam@sifive.com>
 References: <1558354817-12034-1-git-send-email-sagar.kadam@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190520_052118_861916_8D7D44C6 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20190520_052124_295307_5A70F4B0 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -104,48 +106,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add FU540-C000 specific device tree bindings to already
-available i2-ocores file. This device is available on
-HiFive Unleashed Rev A00 board. Move interrupt and interrupt
-parents under optional property list as these can be optional.
+Update device id table for Opencore's I2C master based re-implementation
+used in FU540-c000 chipset on HiFive Unleashed platform.
 
-The FU540-C000 SoC from sifive, has an Opencore's I2C block
-reimplementation.
-
-The DT compatibility string for this IP is present in HDL and available at.
-https://github.com/sifive/sifive-blocks/blob/master/src/main/scala/devices/i2c/I2C.scala#L73
+Device ID's include Sifive, soc-specific device for chip specific tweaks
+and sifive IP block specific device for generic programming model.
 
 Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 ---
- Documentation/devicetree/bindings/i2c/i2c-ocores.txt | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/i2c/busses/i2c-ocores.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-ocores.txt b/Documentation/devicetree/bindings/i2c/i2c-ocores.txt
-index 17bef9a..b73960e 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-ocores.txt
-+++ b/Documentation/devicetree/bindings/i2c/i2c-ocores.txt
-@@ -2,8 +2,11 @@ Device tree configuration for i2c-ocores
+diff --git a/drivers/i2c/busses/i2c-ocores.c b/drivers/i2c/busses/i2c-ocores.c
+index 4e1a077..aee1d86 100644
+--- a/drivers/i2c/busses/i2c-ocores.c
++++ b/drivers/i2c/busses/i2c-ocores.c
+@@ -85,6 +85,7 @@ struct ocores_i2c {
  
- Required properties:
- - compatible      : "opencores,i2c-ocores" or "aeroflexgaisler,i2cmst"
-+                    "sifive,fu540-c000-i2c" or "sifive,i2c0".
-+		    for Opencore based I2C IP block reimplemented in
-+		    FU540-C000 SoC.Please refer sifive-blocks-ip-versioning.txt
-+		    for additional details.
- - reg             : bus address start and address range size of device
--- interrupts      : interrupt number
- - clocks          : handle to the controller clock; see the note below.
-                     Mutually exclusive with opencores,ip-clock-frequency
- - opencores,ip-clock-frequency: frequency of the controller clock in Hz;
-@@ -12,6 +15,8 @@ Required properties:
- - #size-cells     : should be <0>
+ #define TYPE_OCORES		0
+ #define TYPE_GRLIB		1
++#define TYPE_SIFIVE_REV0	2
  
- Optional properties:
-+- interrupt-parent: handle to interrupt controller.
-+- interrupts      : interrupt number.
- - clock-frequency : frequency of bus clock in Hz; see the note below.
-                     Defaults to 100 KHz when the property is not specified
- - reg-shift       : device register offsets are shifted by this value
+ static void oc_setreg_8(struct ocores_i2c *i2c, int reg, u8 value)
+ {
+@@ -468,6 +469,14 @@ static u32 ocores_func(struct i2c_adapter *adap)
+ 		.compatible = "aeroflexgaisler,i2cmst",
+ 		.data = (void *)TYPE_GRLIB,
+ 	},
++	{
++		.compatible = "sifive,fu540-c000-i2c",
++		.data = (void *)TYPE_SIFIVE_REV0,
++	},
++	{
++		.compatible = "sifive,i2c0",
++		.data = (void *)TYPE_SIFIVE_REV0,
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, ocores_i2c_match);
 -- 
 1.9.1
 
