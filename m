@@ -2,47 +2,45 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B50524CC7
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 12:34:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 939B324CF7
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 12:39:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
 	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YMFXgEZWcDSenV6Nda4mQxqUMj+T2ZM6OWHFqDyj+qM=; b=aVtp0JiAL9o4zQ
-	lSMwFIKgEtGPPPLcuG1Kvtw30TOp+Ns5tEp6cIH1UE7cPY5h7l0ZSDcK8q8Q0fjOfNdPBTfNie9UQ
-	SxfRTnUAcITJK6MIF+teB9U14hEyKVg4Yudq2UimrPGJrZr3wtlvNZHsj8+pbjhyMxetvsC7tkUyg
-	jgQ235wolMsUuWHqNthLwkcDQx59wxA+Nmp4OciAhpw0cuhff4y+ehp7hMWVgWwLmjTE20lSYHx3b
-	RvAonlvVhn/XjPZyJ0TzeFSNglUdNqF/BIwsQEopOP/bh2tsGBvFwkxwaus4N/qU2mWnoLJ9UHT9I
-	AseL3N+dblJ3jTLXZDAQ==;
+	List-Owner; bh=MJcdSTKQyO52PXZw0su4s8af3/mh8vG0z/wy0qJEpFM=; b=knhJCRUMGw0chj
+	N2H59MnroOdD8clOt7CFJgMMJavJbsT0tncNr/Xx6kPNmh9HqvPnjzBzwL0xS/ZfCoXeCf2RXd6bE
+	IXL1yk6nZ+8o9P7iTac9oLPC3WllTOeJBLh02xmEPTkw97CKmuupYjYQWlPXWSCeAMF6ei3QGOeP9
+	xEDDrRGd36D7TcUQxc4V7jb1gPub2yVb52VQ6DAfvRZ5zFai7D0y/I03ms8Bko1PqWayVQ00aOXMG
+	vQr3TE6x9s5HVdRE/p4S4EqNgMCU/XucjA/3jJxjoCE9XGUlVVLene6ETOk57Fup/V0nIbjsVd1Jw
+	yd+bxvVlPkyAxf8cJUcQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT25q-0000Uu-V3; Tue, 21 May 2019 10:34:02 +0000
+	id 1hT2Ae-00034J-GT; Tue, 21 May 2019 10:39:00 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT25n-0000U5-Uw
- for linux-riscv@lists.infradead.org; Tue, 21 May 2019 10:34:01 +0000
+ id 1hT2Ab-000341-Ah
+ for linux-riscv@lists.infradead.org; Tue, 21 May 2019 10:38:58 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 8704EABF4;
- Tue, 21 May 2019 10:33:58 +0000 (UTC)
+ by mx1.suse.de (Postfix) with ESMTP id 1436EAD63;
+ Tue, 21 May 2019 10:38:56 +0000 (UTC)
 From: Andreas Schwab <schwab@suse.de>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 9/9] riscv: call pm_power_off from machine_halt /
- machine_power_off
-References: <20190411115623.5749-1-hch@lst.de>
- <20190411115623.5749-10-hch@lst.de>
-X-Yow: Did we bring enough BEEF JERKY?
-Date: Tue, 21 May 2019 12:33:57 +0200
-In-Reply-To: <20190411115623.5749-10-hch@lst.de> (Christoph Hellwig's message
- of "Thu, 11 Apr 2019 13:56:23 +0200")
-Message-ID: <mvmo93whzai.fsf@suse.de>
+To: Gary Guo <gary@garyguo.net>
+Subject: Re: [PATCH] riscv: move flush_icache_{all, mm} code to proper location
+References: <LO2P265MB0847855A503C55BB11A59A89D6730@LO2P265MB0847.GBRP265.PROD.OUTLOOK.COM>
+X-Yow: I would like to urinate in an OVULAR, porcelain pool --
+Date: Tue, 21 May 2019 12:38:55 +0200
+In-Reply-To: <LO2P265MB0847855A503C55BB11A59A89D6730@LO2P265MB0847.GBRP265.PROD.OUTLOOK.COM>
+ (Gary Guo's message of "Wed, 6 Mar 2019 17:00:21 +0000")
+Message-ID: <mvmk1ekhz28.fsf@suse.de>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_033400_146006_368A8990 
-X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-CacheID: sfid-20190521_033857_511375_EE66A84E 
+X-CRM114-Status: UNSURE (   8.42  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -64,30 +62,26 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Apr 11 2019, Christoph Hellwig <hch@lst.de> wrote:
-
-> Also remove the pm_power_off export - at least for now we don't have
-> any modular drivers overriding it.
-
-ERROR: "pm_power_off" [drivers/mfd/rk808.ko] undefined!
-ERROR: "pm_power_off" [drivers/mfd/max8907.ko] undefined!
-ERROR: "pm_power_off" [drivers/mfd/axp20x.ko] undefined!
-ERROR: "pm_power_off" [drivers/char/ipmi/ipmi_poweroff.ko] undefined!
-
-Andreas.
-
--- 
-Andreas Schwab, SUSE Labs, schwab@suse.de
-GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
-"And now for something completely different."
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gTcOkciAwNiAyMDE5LCBHYXJ5IEd1byA8Z2FyeUBnYXJ5Z3VvLm5ldD4gd3JvdGU6Cgo+IGRp
+ZmYgLS1naXQgYS9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL2NhY2hlZmx1c2guaCBiL2FyY2gvcmlz
+Y3YvaW5jbHVkZS9hc20vY2FjaGVmbHVzaC5oCj4gaW5kZXggOGYxMzA3NDQxM2E3Li4xZjRiYTY4
+YWI5YWEgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9jYWNoZWZsdXNoLmgK
+PiArKysgYi9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL2NhY2hlZmx1c2guaAo+IEBAIC00Nyw3ICs0
+Nyw3IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCBmbHVzaF9kY2FjaGVfcGFnZShzdHJ1Y3QgcGFnZSAq
+cGFnZSkKPiAgCj4gICNlbHNlIC8qIENPTkZJR19TTVAgKi8KPiAgCj4gLSNkZWZpbmUgZmx1c2hf
+aWNhY2hlX2FsbCgpIHNiaV9yZW1vdGVfZmVuY2VfaShOVUxMKQo+ICt2b2lkIGZsdXNoX2ljYWNo
+ZV9hbGwodm9pZCk7Cj4gIHZvaWQgZmx1c2hfaWNhY2hlX21tKHN0cnVjdCBtbV9zdHJ1Y3QgKm1t
+LCBib29sIGxvY2FsKTsKCkVSUk9SOiAiZmx1c2hfaWNhY2hlX2FsbCIgW2RyaXZlcnMvbWlzYy9s
+a2R0bS9sa2R0bS5rb10gdW5kZWZpbmVkIQoKQW5kcmVhcy4KCi0tIApBbmRyZWFzIFNjaHdhYiwg
+U1VTRSBMYWJzLCBzY2h3YWJAc3VzZS5kZQpHUEcgS2V5IGZpbmdlcnByaW50ID0gMDE5NiBCQUQ4
+IDFDRTkgMTk3MCBGNEJFICAxNzQ4IEU0RDQgODhFMyAwRUVBIEI5RDcKIkFuZCBub3cgZm9yIHNv
+bWV0aGluZyBjb21wbGV0ZWx5IGRpZmZlcmVudC4iCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlz
+Y3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
