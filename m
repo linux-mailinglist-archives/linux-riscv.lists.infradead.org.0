@@ -2,71 +2,63 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 472942513A
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 15:56:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 087C12516E
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 16:03:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qE9D5AhHUHR/U1xDfC1zGLsklDi/vdGSUaFzrU/4z2k=; b=XbkxJLEpF81F4r
-	bRbJmUYL+6Zb79qTbMdzALT2B4k3HEsY8gPZ++H0ZKzoR2empNk8ToBLk+lahwzkTUTRE9U9KydBe
-	sNqPj5hNWXBD1ByCqppM7diM5Lcawac+FZmdyrbGLWElBf/bumNPuKo1IxmGD4rlCUPgKdNUMx7GI
-	8MhieO8+I/7SVH86KV5qBTe4pDtLfDTUu1sfguVfcH22M09H++O+CyZXPgTQE7sAOnk2KHkilLIgY
-	6r9MkhNe6oRoRfjPPE0twncLrGbp/LtykKrAkbmzDulqv55NS0iCUeHSfZNv+aaFLSkDJh9Jp+++G
-	HpcwWhjZcjmcu/doiRGQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wv2snChADookf5UHPm1Uly5QVpzjL2TWbNa8AlXUOs0=; b=GZD0llomAXPsZw
+	Ajiu+F7jOM1E02HFGMChJEX8/aMAoy5S66+/mxTB/NHYtSgpdqZ95whfJ27Wa7RmM4pwn3W5W409c
+	ZIfeuE1QfRpWQ35lUBt9DEBkV6aYeVNWUnG/8o2BY9JsBE56fa/Dj6mTWQEi3uY6dWLhivun0rUot
+	u2vhFl+A/hYUs7A/UG7TugPt1Ei19Zb13OexiZ5j9jVo1KwkdHzYA6vcGAcewUL8MXUmgeZc8rVkm
+	ZGTPjpuijVdiaK5pKWfdRPCc7iztCWRFti4VSNMNlMmwWCjob3iBkEJ0wfA/6uLwpUelyZhdrxhPT
+	VxhRGT4JgnTImmm5EBgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT5Fo-0000TL-4p; Tue, 21 May 2019 13:56:32 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1hT5MC-0003Av-1u; Tue, 21 May 2019 14:03:08 +0000
+Received: from www62.your-server.de ([213.133.104.62])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT5Fl-0000Ss-9U
- for linux-riscv@lists.infradead.org; Tue, 21 May 2019 13:56:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
- s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
- Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=aUJZZRLHv52jJphrxyVf6Se7F4GlPP6o6lDgQeElm9Y=; b=lpyEW+F9YVINwDf5xsAz3Mvhmm
- oXx87QYdqdWhbuvfi8fV7EB6Rb2PXNFqTr7Tt2o2n5VxEWaS80Yar0iRI7uJMy1ekjM3rxn6kWNxa
- Zl9OePAd2sjwtbirtAcjtE2uUsm0OS5sbb9an7ripkXAAJv7jdYznefbax8bSVFSORDY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.89)
- (envelope-from <andrew@lunn.ch>)
- id 1hT5Fh-0002zr-NK; Tue, 21 May 2019 15:56:25 +0200
-Date: Tue, 21 May 2019 15:56:25 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-Subject: Re: [PATCH v6 1/3] dt-bindings: i2c: extend existing opencore
- bindings.
-Message-ID: <20190521135625.GN22024@lunn.ch>
-References: <1558445574-16471-1-git-send-email-sagar.kadam@sifive.com>
- <1558445574-16471-2-git-send-email-sagar.kadam@sifive.com>
+ id 1hT5M8-00039E-2O
+ for linux-riscv@lists.infradead.org; Tue, 21 May 2019 14:03:05 +0000
+Received: from [78.46.172.2] (helo=sslproxy05.your-server.de)
+ by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
+ id 1hT5Ly-0006DJ-9f; Tue, 21 May 2019 16:02:54 +0200
+Received: from [178.197.249.20] (helo=linux.home)
+ by sslproxy05.your-server.de with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
+ (envelope-from <daniel@iogearbox.net>)
+ id 1hT5Ly-000IeH-3T; Tue, 21 May 2019 16:02:54 +0200
+Subject: Re: [PATCH bpf] bpf, riscv: clear target register high 32-bits for
+ and/or/xor on ALU32
+To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>, ast@kernel.org, 
+ netdev@vger.kernel.org
+References: <20190521134622.18358-1-bjorn.topel@gmail.com>
+From: Daniel Borkmann <daniel@iogearbox.net>
+Message-ID: <49999b2d-f025-894a-be61-a52d13b24678@iogearbox.net>
+Date: Tue, 21 May 2019 16:02:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1558445574-16471-2-git-send-email-sagar.kadam@sifive.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+In-Reply-To: <20190521134622.18358-1-bjorn.topel@gmail.com>
+Content-Language: en-US
+X-Authenticated-Sender: daniel@iogearbox.net
+X-Virus-Scanned: Clear (ClamAV 0.100.3/25456/Tue May 21 09:56:54 2019)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_065629_479325_6785CAF1 
-X-CRM114-Status: UNSURE (   5.24  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190521_070304_107540_91D9300B 
+X-CRM114-Status: GOOD (  11.95  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [185.16.172.187 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [213.133.104.62 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,27 +70,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, peter@korsgaard.com,
- palmer@sifive.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-i2c@vger.kernel.org, paul.walmsley@sifive.com,
- linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jiong Wang <jiong.wang@netronome.com>, linux-riscv@lists.infradead.org,
+ bpf@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
->  Required properties:
-> -- compatible      : "opencores,i2c-ocores" or "aeroflexgaisler,i2cmst"
-> +- compatible      : "opencores,i2c-ocores",
-> +		    "aeroflexgaisler,i2cmst",
-> +                    "sifive,fu540-c000-i2c","sifive,i2c0".
-> +		    For Opencore based I2C IP block reimplemented in
-
-It looks like there are some tabs vs space issues here.
-
-   Andrew
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gMDUvMjEvMjAxOSAwMzo0NiBQTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToKPiBXaGVuIHVzaW5n
+IDMyLWJpdCBzdWJyZWdpc3RlcnMgKEFMVTMyKSwgdGhlIFJJU0MtViBKSVQgd291bGQgbm90IGNs
+ZWFyCj4gdGhlIGhpZ2ggMzItYml0cyBvZiB0aGUgdGFyZ2V0IHJlZ2lzdGVyIGFuZCB0aGVyZWZv
+cmUgZ2VuZXJhdGUKPiBpbmNvcnJlY3QgY29kZS4KPiAKPiBFLmcuLCBpbiB0aGUgZm9sbG93aW5n
+IGNvZGU6Cj4gCj4gICAkIGNhdCB0ZXN0LmMKPiAgIHVuc2lnbmVkIGludCBmKHVuc2lnbmVkIGxv
+bmcgbG9uZyBhLAo+ICAgCSAgICAgICB1bnNpZ25lZCBpbnQgYikKPiAgIHsKPiAgIAlyZXR1cm4g
+KHVuc2lnbmVkIGludClhICYgYjsKPiAgIH0KPiAKPiAgICQgY2xhbmctOSAtdGFyZ2V0IGJwZiAt
+TzIgLWVtaXQtbGx2bSAtUyB0ZXN0LmMgLW8gLSB8IFwKPiAgIAlsbGMtOSAtbWF0dHI9K2FsdTMy
+IC1tY3B1PXYzCj4gICAJLnRleHQKPiAgIAkuZmlsZQkidGVzdC5jIgo+ICAgCS5nbG9ibAlmCj4g
+ICAJLnAyYWxpZ24JMwo+ICAgCS50eXBlCWYsQGZ1bmN0aW9uCj4gICBmOgo+ICAgCXIwID0gcjEK
+PiAgIAl3MCAmPSB3Mgo+ICAgCWV4aXQKPiAgIC5MZnVuY19lbmQwOgo+ICAgCS5zaXplCWYsIC5M
+ZnVuY19lbmQwLWYKPiAKPiBUaGUgSklUIHdvdWxkIG5vdCBjbGVhciB0aGUgaGlnaCAzMi1iaXRz
+IG9mIHIwIGFmdGVyIHRoZQo+IGFuZC1vcGVyYXRpb24sIHdoaWNoIGluIHRoaXMgY2FzZSBtaWdo
+dCBnaXZlIGFuIGluY29ycmVjdCByZXR1cm4KPiB2YWx1ZS4KPiAKPiBBZnRlciB0aGlzIHBhdGNo
+LCB0aGF0IGlzIG5vdCB0aGUgY2FzZSwgYW5kIHRoZSB1cHBlciAzMi1iaXRzIGFyZQo+IGNsZWFy
+ZWQuCj4gCj4gUmVwb3J0ZWQtYnk6IEppb25nIFdhbmcgPGppb25nLndhbmdAbmV0cm9ub21lLmNv
+bT4KPiBGaXhlczogMjM1M2VjYzZmOTFmICgiYnBmLCByaXNjdjogYWRkIEJQRiBKSVQgZm9yIFJW
+NjRHIikKPiBTaWduZWQtb2ZmLWJ5OiBCasO2cm4gVMO2cGVsIDxiam9ybi50b3BlbEBnbWFpbC5j
+b20+CgpXYXMgdGhpcyBtaXNzZWQgYmVjYXVzZSB0ZXN0X3ZlcmlmaWVyIGRpZCBub3QgaGF2ZSB0
+ZXN0IGNvdmVyYWdlPwpJZiBzbywgY291bGQgeW91IGZvbGxvdy11cCB3aXRoIGFsdTMyIHRlc3Qg
+Y2FzZXMgZm9yIGl0LCBzbyBvdGhlcgpKSVRzIGNhbiBiZSB0cmFja2VkIGZvciB0aGVzZSBraW5k
+IG9mIGlzc3VlIGFzIHdlbGwuIFdlIHNob3VsZApwcm9iYWJseSBoYXZlIG9uZSBmb3IgZXZlcnkg
+YWx1MzIgYWx1IG9wIHRvIG1ha2Ugc3VyZSBpdCdzIG5vdApmb3Jnb3R0ZW4gYW55d2hlcmUuCgpU
+aGFua3MsCkRhbmllbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+aXNjdgo=
