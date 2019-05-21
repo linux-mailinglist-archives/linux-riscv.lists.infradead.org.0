@@ -2,88 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 057A22519E
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 16:12:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CDE1256FA
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 19:48:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=84tKT6lDARs0MYmTwL0b0wokb4g6OEogYYnwufL1i78=; b=Wyfs9BXcNL0GJU
-	UqVhPYFGILipOXheygwi7zmBcrJwavSxTbm5lHbxxekyBlQLVexiwBhEJC0U1amo3EWKTBz0rbRtc
-	N5sHEkiOckCUDyt+FBGoqhcu/X2IqHMA5wgYWyhlnJrzz9FfTKRCdZCLcz2yABiiaY0gdqbzSZAFi
-	KzxypLdjnrvqFts9ykSpH4S3aqqsr9yyYRFGSeWyw8gTF5lO2dA9YHnl8jlq5FjV50GiytlhV7abd
-	eSiHoNOSahKcwW1f3WqGOKTquiwTjYFyDxOkqB/8QmEPRrXfxcfiwqpDcxxl7NYT/txPqGAny4fsv
-	DuQvM07raLpi6ILl6ErA==;
+	List-Owner; bh=SCwibS/TdmOXC3QvKg+MkMn9mou2SI1x/N1N9Q5qTXg=; b=DDbkhzd21YIzqz
+	NoptHgIlDGoSgyFl6co1vqn9NLDFLTTxs9955SDo0+kzypclHBhShlWt+v4VGclhvxCHtzsMJbb99
+	F2qJdT9rhiV8VK1tujGU/Xnj4VrWigeORi09OE2IY7NPOxujqa+W7ly4PzQn30n61LCrW3yl7MYv8
+	yGSDTcel1KCUybGwQ/qQ2R73lqRNEjdsNZmmklupClAHvHHahDMUSrtOQUgnJSPC7iCuBKb6OIabW
+	loORkIUFfqCLTMl1/gUTnFPtmmXIkAjtXCi1WD481muLjuUyGPGdk6UQ5Vd1FdxoGKJlw/dLOxZBr
+	Xs00yIDe1xlWe6Lr/YfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT5VF-0007FS-Gk; Tue, 21 May 2019 14:12:29 +0000
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
+	id 1hT8rr-0004Wj-4o; Tue, 21 May 2019 17:48:03 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT5VB-0007ES-Pq
- for linux-riscv@lists.infradead.org; Tue, 21 May 2019 14:12:27 +0000
-Received: by mail-qt1-x843.google.com with SMTP id y22so20593076qtn.8
- for <linux-riscv@lists.infradead.org>; Tue, 21 May 2019 07:12:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=rVA8ZXa5QV70YbDkp9YT649xx7f+jYEVyeJZQPdGZGI=;
- b=KNYz8G8G4wqF9SLMz5UEP4uBbsSM4rUp4hWf01LMjBMjO2XIE07a1flfbw9ui96ly8
- 58EKW9x2wtdWP9Jf0OPZc8As/B2RAQbV16WAysvvHzT/hYgDAeEXFS6gD1PHiu2mYfr9
- NP6/my/3g03VULmDbVry/uyE6MT6RpMM9t9zzXsnvR05KUXKzg7yuSC0QJQmPiRmBer9
- JNcPgwCmd8lAHCAk8Fy+7E57SpB3Bp2mPBL46WB0IZjE4L5EUR15uFM7S525EtWCcuOW
- 2lgE14Ns+nQPOAQqiA1O9jf2LO/Jnv2QAgLnp/eKdZMo1QrqboWuj+C25IsYp/th3bWh
- mU3g==
+ id 1hT8ro-0004WS-1a
+ for linux-riscv@lists.infradead.org; Tue, 21 May 2019 17:48:01 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id d30so8941014pgm.7
+ for <linux-riscv@lists.infradead.org>; Tue, 21 May 2019 10:47:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=YNVxi/9bYbYC91YuzF5QRrNLjsllOdUHbO+1PTAwtvI=;
+ b=Lbsr7qIFU39F/oB54R++ZHZOi33mP65BaJ8w0GIr0MDiwqNfQ3sjaPI6REZGXX22x9
+ AGvZCjhNyKHjLnA4O9fmiWllr1uokxJuM1OZLjE95GK/hlRaTRKN/Crau5rWiP+Le9r0
+ zk6brLu0J5EpNN5UsPVsXL5Bgr52VD6C1c4GT388zyQ2ZJovmtmx4QX1pt7pcCgMAf5a
+ r/e8AxmabuuxDpMe0/yNVw9RJPh9i8hd1AG/H8uR5TJVbImH3293vcwH4a2iNfWBrOnD
+ NH4TF69BJgCvkTYq9jLO/vYDqbOynBE01ekfSyZZ+lYXYQ8ESvil0Qv8ZRY4x9xo9iIv
+ 1Nww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=rVA8ZXa5QV70YbDkp9YT649xx7f+jYEVyeJZQPdGZGI=;
- b=uPaJFA35qfrSSwpukmKorof3uXDzrWRbLhLY0qqNNrBUGK+uPh2vgUERiveJlVWTwh
- +imv3KKxNxMhk78NwrO6Myt2O0BWMYWtkW7sTBQPr0tLbHptTJ20Cp40W8mwWbwv1QKN
- mAWP4Y4VQ7srxwaqid8J7jBMve/YIfuV+ObOEL3CvAgL/V1m/tiCLN42M2BSLTvEd9Cb
- nySQ3twHNp0ynIhguRCkuAm/aoMMA//ObmCRRcl3xm0/i46y8aL6Fx2F0Iy4X/3hgShk
- Ympp37JYYLzt7Yoa1Kd/YleGJVaFk83AVQqRO5Ag3rcNuxBeEE8VSwhB+zJzFZu4PRKa
- Ga0A==
-X-Gm-Message-State: APjAAAW6T84hlCEDyIcbRunfpLtUQIvPoxf2MA06qnnatF1gAxyGeDAv
- KD4hVchqAda9eh+yK62FW8pTCt434ECKtzV7Kek=
-X-Google-Smtp-Source: APXvYqwHkfhO09nfqXTpuVxldFIRdO0RMLVbZeU5cizeLi02ooz5wI8k00zFMkwUb/epZfzKv3dSc4oCnb7Il6LCIF0=
-X-Received: by 2002:a0c:8931:: with SMTP id 46mr39016420qvp.3.1558447944471;
- Tue, 21 May 2019 07:12:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=YNVxi/9bYbYC91YuzF5QRrNLjsllOdUHbO+1PTAwtvI=;
+ b=NQiuzSBc+nTf/vAFH3aXXYYi5R1dUtLjuSPdVWZZmwwnx9tABOVrklj1NIpTAAkUYY
+ p83mOqxPzpw46YDqN4IvTb38E3564b9PtY3dRyDLnnr1/rNwFVYPyCeWZreXfEk7jyQA
+ PlrYMMj3qzXTjWhy5kb5+IzplzmjJEQ2a+N8LVwbjgRAyr51ueVs1vbHhFfmKJJKzWej
+ 54Fxkjx+lJpjtoDwdQu+NnfJ1E/55JzQ2bpx4ZNU+RnL3koRUYw0ooPiZkjGIDgo55IY
+ X2L7DPXPM2swp5+XpVYPoV5rfjAB8FEXiVY/V8CgVhkKZrVGUlmfjf7Hjp4ltzE45NRS
+ eg8g==
+X-Gm-Message-State: APjAAAXS/80nbwPAVODlDreDiZMDUgV0OSUgVWA6nEg3/c8kyR7gsm2M
+ SDAW0SYHD5yUMtci0/6F89lznm1HGv6TxA==
+X-Google-Smtp-Source: APXvYqzQR2/gIrcs0LhucTK1BnRfaA67qrfOLRY4NBTCTeeYQVRlcdsZLFLTgjCdkwnc96+aNLYMZg==
+X-Received: by 2002:a63:1f22:: with SMTP id f34mr22362168pgf.248.1558460877989; 
+ Tue, 21 May 2019 10:47:57 -0700 (PDT)
+Received: from localhost ([2601:602:9200:a1a5:b1ca:3800:3284:d770])
+ by smtp.googlemail.com with ESMTPSA id u3sm24143611pfn.29.2019.05.21.10.47.56
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 21 May 2019 10:47:57 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Atish Patra <atish.patra@wdc.com>, "paul.walmsley\@sifive.com"
+ <paul.walmsley@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
+ =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Subject: Re: 5.2-rc1 boot on Unleashed
+In-Reply-To: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
+References: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
+Date: Tue, 21 May 2019 10:47:56 -0700
+Message-ID: <7hlfyz7l83.fsf@baylibre.com>
 MIME-Version: 1.0
-References: <20190521134622.18358-1-bjorn.topel@gmail.com>
- <49999b2d-f025-894a-be61-a52d13b24678@iogearbox.net>
-In-Reply-To: <49999b2d-f025-894a-be61-a52d13b24678@iogearbox.net>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Tue, 21 May 2019 16:12:12 +0200
-Message-ID: <CAJ+HfNifkxKz8df7gLBuqWA6+t6awrrRK6oW6m1nAYETJD+Vfg@mail.gmail.com>
-Subject: Re: [PATCH bpf] bpf, riscv: clear target register high 32-bits for
- and/or/xor on ALU32
-To: Daniel Borkmann <daniel@iogearbox.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_071225_844396_F5022262 
-X-CRM114-Status: GOOD (  14.95  )
-X-Spam-Score: -0.1 (/)
+X-CRM114-CacheID: sfid-20190521_104800_134914_97EE628C 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:843 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:52e listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bjorn.topel[at]gmail.com)
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 FROM_EXCESS_BASE64     From: base64 encoded unnecessarily
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,43 +93,38 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Jiong Wang <jiong.wang@netronome.com>, Netdev <netdev@vger.kernel.org>,
- linux-riscv@lists.infradead.org, bpf <bpf@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVHVlLCAyMSBNYXkgMjAxOSBhdCAxNjowMiwgRGFuaWVsIEJvcmttYW5uIDxkYW5pZWxAaW9n
-ZWFyYm94Lm5ldD4gd3JvdGU6Cj4KPiBPbiAwNS8yMS8yMDE5IDAzOjQ2IFBNLCBCasO2cm4gVMO2
-cGVsIHdyb3RlOgo+ID4gV2hlbiB1c2luZyAzMi1iaXQgc3VicmVnaXN0ZXJzIChBTFUzMiksIHRo
-ZSBSSVNDLVYgSklUIHdvdWxkIG5vdCBjbGVhcgo+ID4gdGhlIGhpZ2ggMzItYml0cyBvZiB0aGUg
-dGFyZ2V0IHJlZ2lzdGVyIGFuZCB0aGVyZWZvcmUgZ2VuZXJhdGUKPiA+IGluY29ycmVjdCBjb2Rl
-Lgo+ID4KPiA+IEUuZy4sIGluIHRoZSBmb2xsb3dpbmcgY29kZToKPiA+Cj4gPiAgICQgY2F0IHRl
-c3QuYwo+ID4gICB1bnNpZ25lZCBpbnQgZih1bnNpZ25lZCBsb25nIGxvbmcgYSwKPiA+ICAgICAg
-ICAgICAgICB1bnNpZ25lZCBpbnQgYikKPiA+ICAgewo+ID4gICAgICAgcmV0dXJuICh1bnNpZ25l
-ZCBpbnQpYSAmIGI7Cj4gPiAgIH0KPiA+Cj4gPiAgICQgY2xhbmctOSAtdGFyZ2V0IGJwZiAtTzIg
-LWVtaXQtbGx2bSAtUyB0ZXN0LmMgLW8gLSB8IFwKPiA+ICAgICAgIGxsYy05IC1tYXR0cj0rYWx1
-MzIgLW1jcHU9djMKPiA+ICAgICAgIC50ZXh0Cj4gPiAgICAgICAuZmlsZSAgICJ0ZXN0LmMiCj4g
-PiAgICAgICAuZ2xvYmwgIGYKPiA+ICAgICAgIC5wMmFsaWduICAgICAgICAzCj4gPiAgICAgICAu
-dHlwZSAgIGYsQGZ1bmN0aW9uCj4gPiAgIGY6Cj4gPiAgICAgICByMCA9IHIxCj4gPiAgICAgICB3
-MCAmPSB3Mgo+ID4gICAgICAgZXhpdAo+ID4gICAuTGZ1bmNfZW5kMDoKPiA+ICAgICAgIC5zaXpl
-ICAgZiwgLkxmdW5jX2VuZDAtZgo+ID4KPiA+IFRoZSBKSVQgd291bGQgbm90IGNsZWFyIHRoZSBo
-aWdoIDMyLWJpdHMgb2YgcjAgYWZ0ZXIgdGhlCj4gPiBhbmQtb3BlcmF0aW9uLCB3aGljaCBpbiB0
-aGlzIGNhc2UgbWlnaHQgZ2l2ZSBhbiBpbmNvcnJlY3QgcmV0dXJuCj4gPiB2YWx1ZS4KPiA+Cj4g
-PiBBZnRlciB0aGlzIHBhdGNoLCB0aGF0IGlzIG5vdCB0aGUgY2FzZSwgYW5kIHRoZSB1cHBlciAz
-Mi1iaXRzIGFyZQo+ID4gY2xlYXJlZC4KPiA+Cj4gPiBSZXBvcnRlZC1ieTogSmlvbmcgV2FuZyA8
-amlvbmcud2FuZ0BuZXRyb25vbWUuY29tPgo+ID4gRml4ZXM6IDIzNTNlY2M2ZjkxZiAoImJwZiwg
-cmlzY3Y6IGFkZCBCUEYgSklUIGZvciBSVjY0RyIpCj4gPiBTaWduZWQtb2ZmLWJ5OiBCasO2cm4g
-VMO2cGVsIDxiam9ybi50b3BlbEBnbWFpbC5jb20+Cj4KPiBXYXMgdGhpcyBtaXNzZWQgYmVjYXVz
-ZSB0ZXN0X3ZlcmlmaWVyIGRpZCBub3QgaGF2ZSB0ZXN0IGNvdmVyYWdlPwoKWXVwLCBhbmQgSmlv
-bmcgbm90ZWQgaXQuCgo+IElmIHNvLCBjb3VsZCB5b3UgZm9sbG93LXVwIHdpdGggYWx1MzIgdGVz
-dCBjYXNlcyBmb3IgaXQsIHNvIG90aGVyCj4gSklUcyBjYW4gYmUgdHJhY2tlZCBmb3IgdGhlc2Ug
-a2luZCBvZiBpc3N1ZSBhcyB3ZWxsLiBXZSBzaG91bGQKPiBwcm9iYWJseSBoYXZlIG9uZSBmb3Ig
-ZXZlcnkgYWx1MzIgYWx1IG9wIHRvIG1ha2Ugc3VyZSBpdCdzIG5vdAo+IGZvcmdvdHRlbiBhbnl3
-aGVyZS4KPgoKSSdsbCBoYWNrIGEgdGVzdF92ZXJpZmllciB0ZXN0IHJpZ2h0IGF3YXkuCgpUaGFu
-a3MsCkJqw7ZybgoKCj4gVGhhbmtzLAo+IERhbmllbAoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJp
-c2N2QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yaXNjdgo=
+Atish Patra <atish.patra@wdc.com> writes:
+
+> Hi,
+>
+> 5.2-rc1 still requires some out-of-tree driver patches.
+>
+> Here is my tree (successfully tested on Unleashed.)
+> https://github.com/atishp04/linux/tree/5.2-rc1_unleashed
+>
+> Issues:
+>
+> 1. Thanks to Paul, uart & clock drivers are merged. However,
+> 	a. upstream clock drivers require DT changes
+> 	b. Those DT changes are still being reviewed.
+> 	c. FSBL need to be rebuild & updated for these DT changes.
+
+I would also add that due to DT changes required:
+
+  d. Does not work with upstream u-boot
+
+which is a blocker for fully-automated testing in kernelCI (unless
+someone wants to work on the kernelCI support for BBL+FSBL. ;)
+
+Kevin
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
