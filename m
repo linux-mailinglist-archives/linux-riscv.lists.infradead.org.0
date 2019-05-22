@@ -2,87 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46C95257F7
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 May 2019 21:01:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 74C1725CF5
+	for <lists+linux-riscv@lfdr.de>; Wed, 22 May 2019 06:42:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VzHIg93o2f2y+oMp58QM4THX6dTmh/4W6hl3s7b0ZWM=; b=VxyZuPmho1+01i
-	tCMv4tU5+Pmc9J1l7z8I19lvAl63u0rD3Ge+E5F+sjCrPz/7GSRFtOpYIpfUeyoqIkzxIj5hMVDRT
-	bLYzGaP4YohQUJ4VLn9q4fTVLvKT4nhzm2oBT+vzNFyt+9YMEr/2EzFjayWQwCFaoRdLc4QJunFCS
-	UeRU43hGWnwRwdkDdZ3SDDis5W/yOq0CoCQ5w0hz67MRiGoa8kL9u3rYby+GYTLHxHtQZ7m8+lpLj
-	GBE8BP3hrGEcOVQj8vLkTU+Xj140sIIDhEMySEWh1MaGMpjrAHQQW56neJ/qF584f5NLky7HUAMtA
-	a/WXYhzIWG2VN3nAUECA==;
+	List-Owner; bh=k4zvahZjswxxP3pIuOE25B6UO1PJdbCuywemQ/4ML1w=; b=uoWR7hSYwUmTbC
+	MYv9csbTZZU9U4eGw+mKqBnJRuD8dOUI4FLbHFP4TnhyAV+KTypVKwsnjH+KRL0TLVyFoIcEkUR6H
+	Hqd45q4Lzt8xc5coozxTUPlpFM/hCrR3Zkux2k3PpKVqXXa9GCiQeSiOf4Jc6YUgvRLfF8JxYWD9D
+	Ow8oAfX4qb9l+tHEqMV33N0wMpINIWt+9b5Ci2oGaTfsgDYalmzCUCTZiZx0bw/m+8eOcgn5srD6I
+	wOOgnXhYtwujjtA7iqc56q42bUPvVJx0ZztfhakIHv0qZtBRD9sAEF68ZIUqYBgi4TU3e5hdEX9R6
+	66KKcyp2DNm+pHrVlV2Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTA1A-00050M-QS; Tue, 21 May 2019 19:01:44 +0000
-Received: from mail-it1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1hTJ5T-00056Y-1Y; Wed, 22 May 2019 04:42:47 +0000
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTA17-0004ze-8g
- for linux-riscv@lists.infradead.org; Tue, 21 May 2019 19:01:42 +0000
-Received: by mail-it1-x131.google.com with SMTP id h11so6380821itf.5
- for <linux-riscv@lists.infradead.org>; Tue, 21 May 2019 12:01:40 -0700 (PDT)
+ id 1hTJ5Q-000566-4n
+ for linux-riscv@lists.infradead.org; Wed, 22 May 2019 04:42:46 +0000
+Received: by mail-ua1-x944.google.com with SMTP id p13so392118uaa.11
+ for <linux-riscv@lists.infradead.org>; Tue, 21 May 2019 21:42:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=+12NmtAAbFJaroPAA2lM4Iqx0/EqHN6iwK3Od+LxSqY=;
- b=X2Xgx4vZAiee18RcsPFWU6PrNbYl+0gDe7etynJiXePQV+JuiHLHV3NwBOznyDy3IO
- nDIDDwzlAMl9n/4G6mz0ZMaCHrdo78bxeZA4bMTGV5WcAzAT60z5396dHWDgusZQtnO0
- jfMwt52+vpBEKgcXMpkMf1zV8UpGmUX9OsrcwiIll+QWlzNPj73ryFqS8czXvE+9SsBq
- 6Sq+BVvDywZph0icJ9QHClQH4D9kLu7u6J/Zb6AFCZy9DoK0lOu6+XqWBCW9Mww+1sUx
- 1wrahw1u2fRs+ac7ja9kSZpshBvrE/kD+RuzMB1aSW18aCyKxOUb6zVuDNfuKJzR4u2d
- /MhQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6X2R7TeyYlINAsMB5hsTxhy4FZ9pQ1FqqKbMOZWIzE0=;
+ b=V6m9X+ZmJ3xj9dgHGZJZHdhdJRP3HzQNCQp2KLB7LW3YJNWXnFR0U0V4oGKLPZXu6h
+ uVA1efMsREJkvY6iGfFzoIjZHsCqEst7JJbvI+QBw0mi5YwfJW9HVVyxVf0RHuyXk69z
+ aMMkFByQ/S7Ec4sz6Y0x86n9CeDxZ7MWOMp26fSubdvbUuaSWWlzSq3P4z9qpvhhRz34
+ b2ZX3eONt0xN7QmU3NHongYNpgRoPTVx8ZbxbRzlj82DiTo78DSjZtDatZ1dVy4IdzMC
+ UuCnzNHtMab9jRP3wTiFdGAvVpDaUWZjNZcmR7rDzcrXc6ROBU3szF4vw70mYGmrrvg1
+ KgsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=+12NmtAAbFJaroPAA2lM4Iqx0/EqHN6iwK3Od+LxSqY=;
- b=Sh4WGjTfwqhi4IGTn7RdghSvO4ciWwjVMC36Wf3ryqHk/M+fgvKJtwRvsBmTh2LIvx
- B8a5g4hsIGejooSFGM9TmTpH/A5gdBqygNiBkKH2XfXBJt3uWwwLqmIrbVYtQDoMghtJ
- v+9rYlLCKRs7VE01LteRArl3Hd3S/2zg/U0BNHEWmF4NQqoNyxKaxmV2H7t2y3h0b9GG
- C44wjjuE0+pLQF20eXEYG5WukOt6OvnEjn6apbBPWrtz/0RqP419tMdh+UnjZYoA0+Gr
- n2pYPOVQ9p9aj2TpQ37FnCvLhxNTxK1a9NCsdmJP3rS6qovm96wKkVD/XNvi25rKqXrq
- 2P7w==
-X-Gm-Message-State: APjAAAUl/lGy8n6wYurJJopds/cz23XeyO8Fp6N3bc7B8wIM57Sk1FPO
- 1uZNn+Xrv92LsnAUVN+DSMEzEw==
-X-Google-Smtp-Source: APXvYqxL7Gz556HpzxmOWn6WIJ1XtT46LhMiKgs9kG6zAcRPMf+HSFGPzAUbbB7pzw8kD+bRYrDs4g==
-X-Received: by 2002:a24:910b:: with SMTP id i11mr5636355ite.76.1558465299744; 
- Tue, 21 May 2019 12:01:39 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- z14sm6980089ioh.48.2019.05.21.12.01.38
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 21 May 2019 12:01:39 -0700 (PDT)
-Date: Tue, 21 May 2019 12:01:37 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Wesley Terpstra <wesley@sifive.com>
-Subject: Re: [PATCH] riscv: include generic support for MSI irqdomains
-In-Reply-To: <CAMgXwTic9WWjVviEdvh2+0+LB1va--+7zJOt7C2YxsB=hu72WA@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1905211200560.24268@viisi.sifive.com>
-References: <20190520182528.10627-1-paul.walmsley@sifive.com>
- <20190521063551.GA5959@infradead.org>
- <alpine.DEB.2.21.9999.1905210110220.24268@viisi.sifive.com>
- <CAMgXwTic9WWjVviEdvh2+0+LB1va--+7zJOt7C2YxsB=hu72WA@mail.gmail.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6X2R7TeyYlINAsMB5hsTxhy4FZ9pQ1FqqKbMOZWIzE0=;
+ b=XniRhzLfxgM1Bmq6fE7/0IzLMy9Ld3DHWVxyvF1ZD6rn1UonA5a6z2nKBEFwyZZMvt
+ 4szFzkn7Nm7+laKVMt7kbXCOEA2hJisZY8HBUMHwmv8219clNchw81p4UKej9uqar2fK
+ q50ef9W1J0TEWgt1oP6/OZc9nmS8JhVX5C5IbfI2khg/aF2FZXfSf5v/VSeEvd8YK+k4
+ YH044r1l5J4+VMc6/WFvXEBQaXQCBbDXXPgDAw6hunx1lZLQtjvlvbAEPZGlWCiN8Js5
+ XH/sp2CrxEKWhf2sKm2jxslUst1yHiyEQVLj/EItBKaeU6IdVOIJwM7o6/blI+928gEe
+ MoFA==
+X-Gm-Message-State: APjAAAWyYLrGwSBcxc66FuYvRpYPoSUyYgFrumGt8ZKNmvAkxyRJJAz9
+ Gfc6gaGNBS58cgsipoNxLR0wmTH6aLCaL6VGdSvdtQ==
+X-Google-Smtp-Source: APXvYqx4gcA3u8FWbxsMDSWyJjOGkt24f0cPp/59T+gWMqIyt2Wm/DOZVwwE0CNHDAvtzZj243KNedSsdo6hxXVUMP0=
+X-Received: by 2002:a9f:2b0c:: with SMTP id p12mr35605801uaj.143.1558500162507; 
+ Tue, 21 May 2019 21:42:42 -0700 (PDT)
 MIME-Version: 1.0
+References: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
+In-Reply-To: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
+From: Sagar Kadam <sagar.kadam@sifive.com>
+Date: Wed, 22 May 2019 10:12:30 +0530
+Message-ID: <CAARK3HmewOZzv-p4JxTb-Cb2PT4qqJoxFO8mhHtz=qDq8XGS9Q@mail.gmail.com>
+Subject: Re: 5.2-rc1 boot on Unleashed
+To: Atish Patra <atish.patra@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_120141_364273_3638D05A 
-X-CRM114-Status: UNSURE (   6.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190521_214244_217014_08067BD9 
+X-CRM114-Status: GOOD (  20.74  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:131 listed in]
- [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:944 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -101,20 +89,96 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>, linux-riscv@lists.infradead.org,
- Paul Walmsley <paul@pwsan.com>, linux-kernel@vger.kernel.org
+Cc: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 21 May 2019, Wesley Terpstra wrote:
+Hi Atish,
 
-> Signed.
 
-Thanks, will repost with that and add the PCI folks also
+On Tue, May 21, 2019 at 5:03 AM Atish Patra <atish.patra@wdc.com> wrote:
+>
+> Hi,
+>
+> 5.2-rc1 still requires some out-of-tree driver patches.
+>
+> Here is my tree (successfully tested on Unleashed.)
+> https://github.com/atishp04/linux/tree/5.2-rc1_unleashed
+>
+> Issues:
+>
+> 1. Thanks to Paul, uart & clock drivers are merged. However,
+>         a. upstream clock drivers require DT changes
+>         b. Those DT changes are still being reviewed.
+>         c. FSBL need to be rebuild & updated for these DT changes.
+>
+> That's why I am still using the old out-of-tree clock drivers for now.
+>
+> @Paul, @Palmer: Can SiFive share the updated FSBL binary so that
+> everybody can use the upstream clock drivers without having to rebuild
+> FSBL by hand?
+>
+>
+> 2. We still need the following networking hack. I had to rebase the
+> patch on top of 5.2-rc1.
+> -----------------------------------------------------------------
+> commit 1cae94e4f38f (HEAD -> 5.2-rc1_unleashed, atishp04/5.2-rc1_unleashed)
+> Author: Atish Patra <atish.patra@wdc.com>
+> Date:   Fri Sep 7 10:22:27 2018 -0700
+>
+>      RISC-V: Networking fix Hack
+>
+>      It looks like that kernel driver now supports reseting the
+>      signal one additional time. As it had been  already reset
+>      twice in FSBL, PHY gets into incorrect state causing below error.
+>
+>      ----------------------------------------------------------------------
+>      macb 10090000.ethernet (unnamed net_device) (uninitialized): Could
+> not attach to PHY
+>      macb: probe of 10090000.ethernet failed with error -110
+>      ----------------------------------------------------------------------
+>
+>      This patch is just a temporary fix until we have a fix a FSBL.
+>      It is just a **HACK** and **NOT TO BE MERGED** into mainline.
+>
+>      Signed-off-by: Atish Patra <atish.patra@wdc.com>
+>
+> diff --git a/drivers/net/phy/mdio_bus.c b/drivers/net/phy/mdio_bus.c
+> index bd04fe762056..4b99b226c885 100644
+> --- a/drivers/net/phy/mdio_bus.c
+> +++ b/drivers/net/phy/mdio_bus.c
+> @@ -94,9 +94,6 @@ int mdiobus_register_device(struct mdio_device *mdiodev)
+>                  err = mdiobus_register_reset(mdiodev);
+>                  if (err)
+>                          return err;
+> -
+> -               /* Assert the reset signal */
+> -               mdio_device_reset(mdiodev, 1);
+>          }
+>
+>          mdiodev->bus->mdio_map[mdiodev->addr] = mdiodev;
+> -----------------------------------------------------------------
+>
+> Can somebody please look into this so that we can avoid this ugly hack ?
+>
+Yes, I will look into this and submit a patch for the same.
 
-- Paul
+Thanks & BR,
+Sagar Kadam
+
+> --
+> Regards,
+> Atish
+>
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
