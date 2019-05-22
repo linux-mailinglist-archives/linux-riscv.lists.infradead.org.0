@@ -2,91 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 193B025FF9
-	for <lists+linux-riscv@lfdr.de>; Wed, 22 May 2019 11:00:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 327D126034
+	for <lists+linux-riscv@lfdr.de>; Wed, 22 May 2019 11:14:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e0087am3iCaJquqHMUUK46CzdciN6TcWqQT8eHPi7ws=; b=Qzm5AUHJ7BUgK8
-	bEbDCA6BHnaahldcw7q2VxUiaJSROIB8dUkN67kJl8yLKr1M19uKQk5Cek2Cp9Ev/O305+DhQeL6x
-	NCkbAE7dPE8ISInPA9rpOdo7rUoYQBmSu/3GxhqizZS/rO2kUwLA0dwdTx4aC1g5elhIB2elYhLY+
-	6iQJ96+ZWZI6Jz/bT0GDa/STY6VMVvHvrgvuvXW1TK48ON8GK0YifCHSKH21KlzMCk8VIadOTT+8n
-	FHnhKnhcLGNzUc1vhAJzi2q0EhLJlsmlXxhUAhVMYtIYHzaSvmQrptO3wKzNNg5m6wnE1CFIn7Z/J
-	ETSFsKyhmN9J4SOVyEAg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4HEv9vvabGcG3diamN7AqMtCPNCoQYSOBQAN9ffVjIE=; b=tFuaUEojscYNtt
+	ay5Mjx6k/MYZnWHBOxKB/wA0Rxg3k7OZ+HHbDd1fXddhfMEj1vB23BzPXqf+HFksfKKMww1DJ+6aj
+	Mm2MPfQIsjRRvJlg0yslLrZBt8DyMxX4yiMIM/FZar9aj1fNgi7ModW7B0Qfnn5IV9lEIiRFTV2nZ
+	tFVj+Eaob6G0RA835nwu3LEyxTbyAUxFo/mFbV0dZMG80gHL+D6V3+rQsAoCN4NQO7Jeb+TxUt3DK
+	JWpfTXthetxfZmy1knppbMkC+RQDLzt2aJibZX4MUAbhDd2jRNxTCxB/TxW+I+u+P7qto71kVif0g
+	aBiiTCJ1jintQgyprMbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTN6z-0002wd-2u; Wed, 22 May 2019 09:00:37 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTN6v-0002vH-GO
- for linux-riscv@lists.infradead.org; Wed, 22 May 2019 09:00:34 +0000
-Received: by mail-pf1-x443.google.com with SMTP id c6so966040pfa.10
- for <linux-riscv@lists.infradead.org>; Wed, 22 May 2019 02:00:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references;
- bh=5JJ5fP/lDTAT9lV7xByh9EU/tkZg+0nZnzbUrujyoZg=;
- b=ipstSQ6Yr0YiVJDWV10kcpbrfJjjHLhMzmh0R5zJ0BRJ+/uTs2g2QHIxsuPKQ9hmH9
- a24/Bw47Q8KJcg3WmCn4r/ZnkA4KSA/RDRCDwK86wMVfQMxATbmlfsUoAx2y5MY0a20U
- 2mPSaY9jLKmzoq3FZfQgeLl1LPU6aYtrU3Woz+gPmsII1osvIn5uwfigeZvUmWTnTsqR
- yB6f578Tj/woyeCnfR8A1Af7p15Qr0nilHqC1+kVfqjdEDa31Q26qZn+Ltq0RwPJPmCo
- XcIRfUhe/VBjJ4GIz8gC+CEzshZgqS66hvdy4SIzaYNMnhhJPFE9V+n+2iuZMITLBZ6m
- Co7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references;
- bh=5JJ5fP/lDTAT9lV7xByh9EU/tkZg+0nZnzbUrujyoZg=;
- b=MCF7U5qcHG46vRx8ZYSEdZXeB5bpM6lQHrHQn5uNwprLLy5M5FRsqejRzd835EAFDX
- mwCva9kbxCFO/Ws80FKO+nYaLxQf3ABbmL1Y05qHqM3qsyVwM+qFGFQlOp8EqHSy6Xu/
- 4o/kL410K9DMo6BsfVzRAaQEw0HTPSn3o5PTrk1/gxZfoX72LT/auj0Zzv7dBCrhmipu
- ELLWuQBt2FHq7cO0VbOY3qqC0pVQQKuxFzuRiltFdKMFrV49x+hKdrKWaCD/q5mZ9XaP
- dc3IYTwegPpuG3DbzcmnsK2777zrMRX29K+/Oe30wGaf5672/IjU4OmDCrH/tp+G4zFq
- 9Zyw==
-X-Gm-Message-State: APjAAAWs218z9HT8kxB9Lo0jS58JCSKdOnSfGgJ35MXl3BCYTBOFlEGg
- aEMMdUeMI5TVkhhuA4e5ZqSFeg==
-X-Google-Smtp-Source: APXvYqyTbIoq0TYdEGaDw9+FgNSRP6qiBMs6r2PxBr8XOsu6jCNDP0zLQ8CqoSSX0f68BgiR1mmkAQ==
-X-Received: by 2002:a63:4852:: with SMTP id x18mr75552399pgk.14.1558515633088; 
- Wed, 22 May 2019 02:00:33 -0700 (PDT)
-Received: from buildserver-90.open-silicon.com ([114.143.65.226])
- by smtp.googlemail.com with ESMTPSA id z6sm42465905pfr.135.2019.05.22.02.00.29
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 22 May 2019 02:00:32 -0700 (PDT)
-From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-To: robh+dt@kernel.org, mark.rutland@arm.com, peter@korsgaard.com,
- andrew@lunn.ch, palmer@sifive.com, paul.walmsley@sifive.com,
- sagar.kadam@sifive.com, linux-i2c@vger.kernel.org,
- devicetree@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v7 3/3] i2c-ocores: sifive: add polling mode workaround for
- FU540-C000 SoC.
-Date: Wed, 22 May 2019 14:29:34 +0530
-Message-Id: <1558515574-11155-4-git-send-email-sagar.kadam@sifive.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1558515574-11155-1-git-send-email-sagar.kadam@sifive.com>
-References: <1558515574-11155-1-git-send-email-sagar.kadam@sifive.com>
+	id 1hTNK3-0006cb-5O; Wed, 22 May 2019 09:14:07 +0000
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]
+ helo=foss.arm.com)
+ by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hTNK0-0006c9-1x
+ for linux-riscv@lists.infradead.org; Wed, 22 May 2019 09:14:05 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CB9F3374;
+ Wed, 22 May 2019 02:14:02 -0700 (PDT)
+Received: from [10.1.196.105] (eglon.cambridge.arm.com [10.1.196.105])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8CF653F575;
+ Wed, 22 May 2019 02:14:00 -0700 (PDT)
+Subject: Re: [PATCH v2] edac: sifive: Add EDAC platform driver for SiFive SoCs
+To: Borislav Petkov <bp@alien8.de>
+References: <1557142026-15949-1-git-send-email-yash.shah@sifive.com>
+ <1557142026-15949-2-git-send-email-yash.shah@sifive.com>
+ <CAJ2_jOG9Ag0spbh3YCxavUE5XEAUP1pHcgCZ56Nu2u4TqfrzHQ@mail.gmail.com>
+ <20190521182132.GB7793@cz.tnic>
+From: James Morse <james.morse@arm.com>
+Message-ID: <1c7eb8ab-6f48-c41a-1d3a-a9b0f5ce8a7f@arm.com>
+Date: Wed, 22 May 2019 10:13:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190521182132.GB7793@cz.tnic>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_020033_547056_45DDEAAB 
-X-CRM114-Status: GOOD (  15.37  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190522_021404_105166_BAC0860D 
+X-CRM114-Status: GOOD (  11.36  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [217.140.101.70 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,108 +67,41 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: aou@eecs.berkeley.edu, paulmck@linux.ibm.com, gregkh@linuxfoundation.org,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ nicolas.ferre@microchip.com, Sachin Ghadi <sachin.ghadi@sifive.com>,
+ Yash Shah <yash.shah@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org, mchehab@kernel.org, davem@davemloft.net,
+ linux-edac@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The i2c-ocore driver already has a polling mode interface.But it needs
-a workaround for FU540 Chipset on HiFive unleashed board (RevA00).
-There is an erratum in FU540 chip that prevents interrupt driven i2c
-transfers from working, and also the I2C controller's interrupt bit
-cannot be cleared if set, due to this the existing i2c polling mode
-interface added in mainline earlier doesn't work, and CPU stall's
-infinitely, when-ever i2c transfer is initiated.
+Hi Boris,
 
-Ref:
-	commit dd7dbf0eb090 ("i2c: ocores: refactor setup for polling")
+On 21/05/2019 19:21, Borislav Petkov wrote:
+> On Tue, May 21, 2019 at 11:00:59AM +0530, Yash Shah wrote:
+>> The prerequisite patch (sifive_l2_cache driver) has been merged into
+>> mainline v5.2-rc1
+>> It should be OK to merge this edac driver now.
+> 
+> James?
 
-The workaround / fix under OCORES_FLAG_BROKEN_IRQ is particularly for
-FU540-COOO SoC.
+Still fine by me:
+Reviewed-by: James Morse <james.morse@arm.com>
 
-The polling function identifies a SiFive device based on the device node
-and enables the workaround.
+(...this patch already has my reviewed-by on it...)
 
-Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
----
- drivers/i2c/busses/i2c-ocores.c | 24 ++++++++++++++++++++++--
- 1 file changed, 22 insertions(+), 2 deletions(-)
+I commented that it couldn't be merged in pieces here:
+https://lore.kernel.org/lkml/4072c812-d3bf-9ad5-2b30-6b2a5060bb55@arm.com/T/#u
 
-diff --git a/drivers/i2c/busses/i2c-ocores.c b/drivers/i2c/busses/i2c-ocores.c
-index b334fa2..4117f1a 100644
---- a/drivers/i2c/busses/i2c-ocores.c
-+++ b/drivers/i2c/busses/i2c-ocores.c
-@@ -35,6 +35,7 @@ struct ocores_i2c {
- 	int iobase;
- 	u32 reg_shift;
- 	u32 reg_io_width;
-+	unsigned long flags;
- 	wait_queue_head_t wait;
- 	struct i2c_adapter adap;
- 	struct i2c_msg *msg;
-@@ -84,6 +85,8 @@ struct ocores_i2c {
- #define TYPE_GRLIB		1
- #define TYPE_SIFIVE_REV0	2
- 
-+#define OCORES_FLAG_BROKEN_IRQ BIT(1) /* Broken IRQ for FU540-C000 SoC */
-+
- static void oc_setreg_8(struct ocores_i2c *i2c, int reg, u8 value)
- {
- 	iowrite8(value, i2c->base + (reg << i2c->reg_shift));
-@@ -236,9 +239,12 @@ static irqreturn_t ocores_isr(int irq, void *dev_id)
- 	struct ocores_i2c *i2c = dev_id;
- 	u8 stat = oc_getreg(i2c, OCI2C_STATUS);
- 
--	if (!(stat & OCI2C_STAT_IF))
-+	if (i2c->flags & OCORES_FLAG_BROKEN_IRQ) {
-+		if ((stat & OCI2C_STAT_IF) && !(stat & OCI2C_STAT_BUSY))
-+			return IRQ_NONE;
-+	} else if (!(stat & OCI2C_STAT_IF)) {
- 		return IRQ_NONE;
--
-+	}
- 	ocores_process(i2c, stat);
- 
- 	return IRQ_HANDLED;
-@@ -353,6 +359,11 @@ static void ocores_process_polling(struct ocores_i2c *i2c)
- 		ret = ocores_isr(-1, i2c);
- 		if (ret == IRQ_NONE)
- 			break; /* all messages have been transferred */
-+		else {
-+			if (i2c->flags & OCORES_FLAG_BROKEN_IRQ)
-+				if (i2c->state == STATE_DONE)
-+					break;
-+		}
- 	}
- }
- 
-@@ -595,6 +606,7 @@ static int ocores_i2c_probe(struct platform_device *pdev)
- {
- 	struct ocores_i2c *i2c;
- 	struct ocores_i2c_platform_data *pdata;
-+	const struct of_device_id *match;
- 	struct resource *res;
- 	int irq;
- 	int ret;
-@@ -677,6 +689,14 @@ static int ocores_i2c_probe(struct platform_device *pdev)
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq == -ENXIO) {
- 		ocores_algorithm.master_xfer = ocores_xfer_polling;
-+
-+		/*
-+		 * Set in OCORES_FLAG_BROKEN_IRQ to enable workaround for
-+		 * FU540-C000 SoC in polling mode.
-+		 */
-+		match = of_match_node(ocores_i2c_match, pdev->dev.of_node);
-+		if (match && (long)match->data == TYPE_SIFIVE_REV0)
-+			i2c->flags |= OCORES_FLAG_BROKEN_IRQ;
- 	} else {
- 		if (irq < 0)
- 			return irq;
--- 
-1.9.1
+which is what Yash is replying to.
 
+
+Thanks,
+
+James
 
 _______________________________________________
 linux-riscv mailing list
