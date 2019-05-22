@@ -2,77 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E992E25D0D
-	for <lists+linux-riscv@lfdr.de>; Wed, 22 May 2019 06:52:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B747825D30
+	for <lists+linux-riscv@lfdr.de>; Wed, 22 May 2019 06:59:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gj4yzmunZ0RhyEqVJQXRDLD7d7uZZNfJkgkFbFSIzSE=; b=FuOpbbo7R0Tb8p
-	ehPpX0fFzbcmgOtG0yUOnGi5xA3++TjZTW5n+Zk33rkOB2auBWFlW8VlckmpOwoNtZeJHe7FGYu1i
-	U5qNbTAID5lZTb2pcbbQVqBWzTxQm0lUXW2lqGTVdHmO/aMbLiS2UHwEySoVehjJ9Abgrrm0FGkPq
-	/1cWPGEPyfVZT0B3QrpLzL6TjcSZb6jQcNn+4R3oBp+ANY1FLGcA59yym8+Sb2yI46YJR4dPX4YHM
-	4g7o58ybpGu6aph/WmSQdWuOPpuKG8BluocoS0BZLVPIycc+V8llKuESkim/aJdai36woV8y6szvB
-	buKsvxheuFpoxBoqY81A==;
+	List-Owner; bh=ffLxAPz9myxZVnM2YQGLJS2pe5A2jMzbEfdbFEUeutk=; b=lF9oQ2M28Tdkuc
+	IOm+9bIhYRSCwsgINFzACNRAoIM6P7LbVNXMs2RTQ4b5cPCRCaB6yW3F5nyNz0u9VEqe2nALzhBZz
+	l5HVKdU/HIGmT/7w/4XCRrScgSKMP5MOvWMHNe5Se1Z9aAp02h7z47Ya5ICRuJKe3csZGj4ez4uGs
+	WcGViWgNNY17ErFkIg4iDJ5LVECVoK++yQNOObL+O8w01uqWeFSVih7VVzXrrr9NnVkQTCm25lMwN
+	IQ1TtaVAsfHrF16CH53ec8fADvkDn7NBTPEQwb6ppgRoLR38arH+gXO3JqZiMVe62E5JK7m5KPW9I
+	s9Pkp6lGpd9Rx2PD6pvw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTJER-0007pM-OW; Wed, 22 May 2019 04:52:03 +0000
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
+	id 1hTJLO-0000o7-8P; Wed, 22 May 2019 04:59:14 +0000
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTJEP-0007p0-70
- for linux-riscv@lists.infradead.org; Wed, 22 May 2019 04:52:02 +0000
-Received: by mail-vs1-xe2a.google.com with SMTP id o5so623335vsq.4
- for <linux-riscv@lists.infradead.org>; Tue, 21 May 2019 21:52:00 -0700 (PDT)
+ id 1hTJLK-0000nB-4P
+ for linux-riscv@lists.infradead.org; Wed, 22 May 2019 04:59:11 +0000
+Received: by mail-ua1-x944.google.com with SMTP id r7so426805ual.2
+ for <linux-riscv@lists.infradead.org>; Tue, 21 May 2019 21:59:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zM2tRxvUf7NSwKdxRr5bB44PMs0jXxiNemDXs7iz74s=;
- b=EHT9JbHp1/Wa9RK9jVA4OK5kq2Umqvo7DXotXmfDEtVX21PiUHOUZ7autAocu1Z3DI
- 6ZRzqyXAzb53gUg4yp/9LcfDmApaECzDSf9bA/g+e11hacYU5wNPzj15Auf5iJplAEtJ
- wZeJSYFMKDpxZEjRnn6nJNQ1Slzdsq0eQQ8ufZoihNbert9VvIhORIZzgty3g3W+bE25
- T3DmsGv84wTy2AsU5rwySyDsgDziJjHHyl+mkLCG9iem3r/ql3ytMZslrTQPrdotdQ7p
- RY9dGGRkvsixSFKzdHePNcTAiXJOMlQXS6jGUd0Y6QcTaO76OQ0naSFaKcI1KonGInxP
- csKA==
+ :cc; bh=pfnQkeXApE9YhAL04oZ9pUNXjKBFEtVB3H8ZellBg+s=;
+ b=itsCJKdwgb46ITQkTRPoR292kcfck5T1rUAFHDfske/5D5WuP7F7P3FokSkTHFunNf
+ 7YQ3BXR/Xmoj2jTOP1hfkdJt1lDEmYafTUxvNuFTUleUmyq5ofyPgY6K17FZitXLDLBW
+ kj+iGHmuoeu+c5e9mdy7m0/Q22dVjzeQz6NzlsNr3bF2uX9x2lqdQJugNy9c/inxvahE
+ s9deVGS5LGzqxTmCVeVTiUYlsDogXeDmD+B0siLITPFo6hjidNKTbr/yuKGPBpmo54LS
+ E5sF5haPxlVlTjHw49x9ASoRzcJXsV2qcr4unFMySxZUMuUTc6FwsM1+q3P1NiMcd6AM
+ 6oFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zM2tRxvUf7NSwKdxRr5bB44PMs0jXxiNemDXs7iz74s=;
- b=LsQXo35gAdTXQbG2lFzR2d0jyX5gCTdbLaQ/n1MDhyrMeU62NbnfJmImG/CC/F4hRn
- d0Eid5HfBrBSTqq6YmqE/LS/qOxXlz8m1niO2DdMLJPF1QtP40Ny5FSEndTaYHGBVwlH
- reQFqbE12s5yszhv7zUduWHPpO1C9UnLna08FYGbFhsnT4ex5lH82g46gszrarMDPuAM
- WkG8k34s8SZrYjkYfU5n4fRFIUMLKm3yjbt8wqOQc9Kzjka+/36orUv7ybn1a5gUbdPe
- YNYeuKYUcuejceF9bIR01mV5ZkLrHBVTc8BzWcaa4zU8/7+qsSwycPZXtRNbXabDa1cj
- XZJA==
-X-Gm-Message-State: APjAAAWiA6HpQofBiDVnFFxkl1so7LN76QAhiE2CIA5MXGOFGbsZDPlZ
- zNpFhfG/j2ebYUS1p5XARDqg5SfxQB2bu7wHd4AM9A==
-X-Google-Smtp-Source: APXvYqzzpsKJ4iLQ7BqaYnxLEeUZsLQq9FfHMG3CB4djAfIFwCnnOLRgOAk2mwGbLwgnxYcQMlY4DKeohWMasNEvt+c=
-X-Received: by 2002:a05:6102:247:: with SMTP id
- a7mr16894374vsq.229.1558500719859; 
- Tue, 21 May 2019 21:51:59 -0700 (PDT)
+ bh=pfnQkeXApE9YhAL04oZ9pUNXjKBFEtVB3H8ZellBg+s=;
+ b=ZTqMUaG/XQNQ+gilLDRZCWR5f91o/Sh7brH1gPWdDb8s8wo/XZOXLXlpN/8xr9g8dc
+ 66Gkpgcnz7VF5pjMJdbdL52SumJxitUFCebCAKc1cXDBXGql1DS+fBW45uRikcNUSdWl
+ LTUODGS0pSezsnyCzy0jf9fhSNq5ePcZPaWmcj9w9C09fjNvRVWI5ztU3nTHGpY5gAkj
+ rlqPflDozsFQDbhccrSTwUlVKo1Sz0Dx9nVcKbJY2W6O7IxcLzQnIFIhK4INxwi6yOAY
+ 9URgPoEUaDFytNFEFxy5HNu8er8C5bLqZ4YfYgHI1g7Ic0NVbK379nQxZIIamdJGb47H
+ SKKw==
+X-Gm-Message-State: APjAAAV1j/QH1tpdZjFEm4cx9a83zgbF6cvgFtNUXveFyh6ZUklkEl0t
+ iuf+TVy7ZKcEobqCI9Qwr5AMA/mvx6jNNIWhLFwyVZWIYmF8yQ==
+X-Google-Smtp-Source: APXvYqxVjzH04GMwRGsl2rdzhYHjRj2cXzo6oi7TYlti/cF3kn9df3BQ4J7NHUBk2S9snvBN4LcYAu8LQxGMcT/lIYg=
+X-Received: by 2002:ab0:3119:: with SMTP id e25mr3548887ual.96.1558501148962; 
+ Tue, 21 May 2019 21:59:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <1558445574-16471-1-git-send-email-sagar.kadam@sifive.com>
- <1558445574-16471-2-git-send-email-sagar.kadam@sifive.com>
- <20190521135625.GN22024@lunn.ch>
-In-Reply-To: <20190521135625.GN22024@lunn.ch>
+ <1558445574-16471-4-git-send-email-sagar.kadam@sifive.com>
+ <20190521135439.GM22024@lunn.ch>
+In-Reply-To: <20190521135439.GM22024@lunn.ch>
 From: Sagar Kadam <sagar.kadam@sifive.com>
-Date: Wed, 22 May 2019 10:21:47 +0530
-Message-ID: <CAARK3HmAYjnBH6Aa_R_uKQPs5JAdBAEt1=dvPz1mLmGaKKpP9w@mail.gmail.com>
-Subject: Re: [PATCH v6 1/3] dt-bindings: i2c: extend existing opencore
- bindings.
+Date: Wed, 22 May 2019 10:28:58 +0530
+Message-ID: <CAARK3HnTkpkH9rP4oW456V6KYsCah7-gAXdjm5+3cLwJaPs6tg@mail.gmail.com>
+Subject: Re: [PATCH v6 3/3] i2c-ocores: sifive: add polling mode workaround
+ for FU540-C000 SoC.
 To: Andrew Lunn <andrew@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_215201_315368_3B268042 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190521_215910_186076_FE40DD8A 
+X-CRM114-Status: GOOD (  11.81  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:e2a listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:944 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -106,24 +104,32 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 Hi Andrew,
 
-On Tue, May 21, 2019 at 7:26 PM Andrew Lunn <andrew@lunn.ch> wrote:
+On Tue, May 21, 2019 at 7:24 PM Andrew Lunn <andrew@lunn.ch> wrote:
 >
-> >  Required properties:
-> > -- compatible      : "opencores,i2c-ocores" or "aeroflexgaisler,i2cmst"
-> > +- compatible      : "opencores,i2c-ocores",
-> > +                 "aeroflexgaisler,i2cmst",
-> > +                    "sifive,fu540-c000-i2c","sifive,i2c0".
-> > +                 For Opencore based I2C IP block reimplemented in
+> >  static void ocores_process_polling(struct ocores_i2c *i2c)
+> >  {
+> > +     const struct of_device_id *match;
+> > +
+> > +     match = of_match_node(ocores_i2c_match, i2c->adap.dev.of_node);
+> > +
+> >       while (1) {
+> >               irqreturn_t ret;
+> >               int err;
 >
-> It looks like there are some tabs vs space issues here.
+> Please keep with the idea of i2c->flags, which is set during probe.
+> Just because it was removed because it was no longer needed does not
+> stop you from putting it back again if it is needed.
+>
+I had modified the implementation, so as to keep it compatible with
+the new implementation of polling mode.
+As per your suggestion, I will keep the older method (the v5 version
+which you Reviewed earlier : https://lkml.org/lkml/2019/5/20/1261)
+ and submit a v7 for this.
 
-Ohh. It was not catched in checkpatch.pl. I will update it.
+>        Andrew
 
-Thanks,
-Sagar Kadam
-
-
->    Andrew
+Thanks & Regards,
+Sagar
 
 _______________________________________________
 linux-riscv mailing list
