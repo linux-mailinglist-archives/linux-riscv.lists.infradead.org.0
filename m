@@ -2,65 +2,70 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0671427EEB
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 15:58:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9058E28047
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 16:54:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ASxjZULDgfdW/BVYaKrGxaWGOCtqksdRi1ngXKFzldk=; b=Bx/mAzcbDCWjrd
-	9bUxgyK6uEMZ+A3Aoy0ETr7WcXADWsC27qGL4TWPjep0tQKoQJjn/Qa5RUyN+Bk0M/TXTo8Ozl8+Z
-	Pb76uwTDspgmxqSxv/FdElWV6gpYLPvngtD5967N+o8dOuPDcJvukTQTx71GLPo+kPHWz5FAq150o
-	IMaAbicJjADpTVGE7JaD+tPowP56Buh4sSLCIdrZgVpKCAWh6LfPzCKs7qiZpYkSuP4qrQ8TUUhbH
-	DXogSF7iKDu6XvTjj/aD1G7N3meHLAiK98ZM+o76y1oJ/oH5SSpK+H1Dcv3YDgj3/R0owZ7Fuf7Yk
-	nDOPQK/E2livTGfHUlUw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mUSwyBio1Kk9ivn4K4IOnlW8tngJEXE5unwcLOp1lBg=; b=T/+bsrJmq3F+gG
+	dgYnAf21ToH/w36CgCTMmcBHF+RUxVzlSsMmj1uF3ThOGHmWCB9sMvN5OUEO3ykLHhZ0DudvgYay2
+	D+bOWnzHPKaNTwYmspx3517Xnwi7Z1VdkAswG/cIKlXxLu+DFidJjYNEPCcRefIXw83Mnxrd+ds4B
+	TeR/y1uw/LnwzYYVA/RYn8M5BXQcffqGq6zMcAVrRU4amXx9YlpEjPu3H1Dw4i5ws7JR5OFdvriDf
+	b8VDUD/wrASDh6BEbj2/pywpnDe/B2gN3t8F7dK87E3zDXhAZTP/IapD0CmAn/vEFCug0idf211Ju
+	5okeCIEDcot3r8KfHIaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hToES-0004ab-7H; Thu, 23 May 2019 13:58:08 +0000
-Received: from www62.your-server.de ([213.133.104.62])
+	id 1hTp6u-0005TF-TC; Thu, 23 May 2019 14:54:24 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hToEO-0004Zy-L2
- for linux-riscv@lists.infradead.org; Thu, 23 May 2019 13:58:05 +0000
-Received: from [78.46.172.2] (helo=sslproxy05.your-server.de)
- by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
- id 1hToEL-0004D5-GO; Thu, 23 May 2019 15:58:01 +0200
-Received: from [178.197.249.12] (helo=linux.home)
- by sslproxy05.your-server.de with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
- (envelope-from <daniel@iogearbox.net>)
- id 1hToEL-000GTg-8B; Thu, 23 May 2019 15:58:01 +0200
-Subject: Re: [PATCH bpf] bpf, riscv: clear target register high 32-bits for
- and/or/xor on ALU32
-To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-References: <20190521134622.18358-1-bjorn.topel@gmail.com>
- <49999b2d-f025-894a-be61-a52d13b24678@iogearbox.net>
- <CAJ+HfNifkxKz8df7gLBuqWA6+t6awrrRK6oW6m1nAYETJD+Vfg@mail.gmail.com>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <412b2dda-7507-c291-9787-7a35a7e1bfd6@iogearbox.net>
-Date: Thu, 23 May 2019 15:58:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+ id 1hTp6r-0005Sq-BH
+ for linux-riscv@lists.infradead.org; Thu, 23 May 2019 14:54:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=QsNRmpnjYf1hJO0vJAth46QB5G5/Hx/TJi5PoeQ3ZKE=; b=gnDHUvE0zYfVe/z+pFqNNld1Lg
+ LFU1f7r1uQbzTxj5uh6S7jG65QicVcmNQ2tjUhDripR/Wdu3IwAQGSTVWu3HWfLLgf9uO6bYmgvuK
+ /vQxUPYFYvqqQ/biLuaKgrMPlE7rzUfQvNlyA+TSlR3SM/w1zgZoS05GO7HZ8t0fW+/k=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.89)
+ (envelope-from <andrew@lunn.ch>)
+ id 1hTp6n-00067V-HQ; Thu, 23 May 2019 16:54:17 +0200
+Date: Thu, 23 May 2019 16:54:17 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Yash Shah <yash.shah@sifive.com>
+Subject: Re: [PATCH 2/2] net: macb: Add support for SiFive FU540-C000
+Message-ID: <20190523145417.GD19369@lunn.ch>
+References: <1558611952-13295-1-git-send-email-yash.shah@sifive.com>
+ <1558611952-13295-3-git-send-email-yash.shah@sifive.com>
 MIME-Version: 1.0
-In-Reply-To: <CAJ+HfNifkxKz8df7gLBuqWA6+t6awrrRK6oW6m1nAYETJD+Vfg@mail.gmail.com>
-Content-Language: en-US
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.100.3/25458/Thu May 23 09:58:32 2019)
+Content-Disposition: inline
+In-Reply-To: <1558611952-13295-3-git-send-email-yash.shah@sifive.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_065804_693286_C6F33589 
-X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-CacheID: sfid-20190523_075421_540249_76CB225F 
+X-CRM114-Status: UNSURE (   5.10  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.7 (/)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [213.133.104.62 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [185.16.172.187 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,39 +77,27 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Jiong Wang <jiong.wang@netronome.com>, Netdev <netdev@vger.kernel.org>,
- linux-riscv@lists.infradead.org, bpf <bpf@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ netdev@vger.kernel.org, palmer@sifive.com, linux-kernel@vger.kernel.org,
+ nicolas.ferre@microchip.com, sachin.ghadi@sifive.com, robh+dt@kernel.org,
+ paul.walmsley@sifive.com, ynezz@true.cz, linux-riscv@lists.infradead.org,
+ davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gMDUvMjEvMjAxOSAwNDoxMiBQTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToKPiBPbiBUdWUsIDIx
-IE1heSAyMDE5IGF0IDE2OjAyLCBEYW5pZWwgQm9ya21hbm4gPGRhbmllbEBpb2dlYXJib3gubmV0
-PiB3cm90ZToKPj4gT24gMDUvMjEvMjAxOSAwMzo0NiBQTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToK
-Pj4+IFdoZW4gdXNpbmcgMzItYml0IHN1YnJlZ2lzdGVycyAoQUxVMzIpLCB0aGUgUklTQy1WIEpJ
-VCB3b3VsZCBub3QgY2xlYXIKPj4+IHRoZSBoaWdoIDMyLWJpdHMgb2YgdGhlIHRhcmdldCByZWdp
-c3RlciBhbmQgdGhlcmVmb3JlIGdlbmVyYXRlCj4+PiBpbmNvcnJlY3QgY29kZS4KPj4+Cj4+PiBF
-LmcuLCBpbiB0aGUgZm9sbG93aW5nIGNvZGU6Cj4+Pgo+Pj4gICAkIGNhdCB0ZXN0LmMKPj4+ICAg
-dW5zaWduZWQgaW50IGYodW5zaWduZWQgbG9uZyBsb25nIGEsCj4+PiAgICAgICAgICAgICAgdW5z
-aWduZWQgaW50IGIpCj4+PiAgIHsKPj4+ICAgICAgIHJldHVybiAodW5zaWduZWQgaW50KWEgJiBi
-Owo+Pj4gICB9Cj4+Pgo+Pj4gICAkIGNsYW5nLTkgLXRhcmdldCBicGYgLU8yIC1lbWl0LWxsdm0g
-LVMgdGVzdC5jIC1vIC0gfCBcCj4+PiAgICAgICBsbGMtOSAtbWF0dHI9K2FsdTMyIC1tY3B1PXYz
-Cj4+PiAgICAgICAudGV4dAo+Pj4gICAgICAgLmZpbGUgICAidGVzdC5jIgo+Pj4gICAgICAgLmds
-b2JsICBmCj4+PiAgICAgICAucDJhbGlnbiAgICAgICAgMwo+Pj4gICAgICAgLnR5cGUgICBmLEBm
-dW5jdGlvbgo+Pj4gICBmOgo+Pj4gICAgICAgcjAgPSByMQo+Pj4gICAgICAgdzAgJj0gdzIKPj4+
-ICAgICAgIGV4aXQKPj4+ICAgLkxmdW5jX2VuZDA6Cj4+PiAgICAgICAuc2l6ZSAgIGYsIC5MZnVu
-Y19lbmQwLWYKPj4+Cj4+PiBUaGUgSklUIHdvdWxkIG5vdCBjbGVhciB0aGUgaGlnaCAzMi1iaXRz
-IG9mIHIwIGFmdGVyIHRoZQo+Pj4gYW5kLW9wZXJhdGlvbiwgd2hpY2ggaW4gdGhpcyBjYXNlIG1p
-Z2h0IGdpdmUgYW4gaW5jb3JyZWN0IHJldHVybgo+Pj4gdmFsdWUuCj4+Pgo+Pj4gQWZ0ZXIgdGhp
-cyBwYXRjaCwgdGhhdCBpcyBub3QgdGhlIGNhc2UsIGFuZCB0aGUgdXBwZXIgMzItYml0cyBhcmUK
-Pj4+IGNsZWFyZWQuCj4+Pgo+Pj4gUmVwb3J0ZWQtYnk6IEppb25nIFdhbmcgPGppb25nLndhbmdA
-bmV0cm9ub21lLmNvbT4KPj4+IEZpeGVzOiAyMzUzZWNjNmY5MWYgKCJicGYsIHJpc2N2OiBhZGQg
-QlBGIEpJVCBmb3IgUlY2NEciKQo+Pj4gU2lnbmVkLW9mZi1ieTogQmrDtnJuIFTDtnBlbCA8Ympv
-cm4udG9wZWxAZ21haWwuY29tPgo+Pgo+PiBXYXMgdGhpcyBtaXNzZWQgYmVjYXVzZSB0ZXN0X3Zl
-cmlmaWVyIGRpZCBub3QgaGF2ZSB0ZXN0IGNvdmVyYWdlPwo+IAo+IFl1cCwgYW5kIEppb25nIG5v
-dGVkIGl0LgoKQXBwbGllZCwgdGhhbmtzIQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yaXNjdgo=
+> +static int fu540_macb_tx_set_rate(struct clk_hw *hw, unsigned long rate,
+> +				  unsigned long parent_rate)
+> +{
+> +	rate = fu540_macb_tx_round_rate(hw, rate, &parent_rate);
+> +	iowrite32(rate != 125000000, mgmt->reg);
+
+That looks odd. Writing the result of a comparison to a register?
+
+     Andrew
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
