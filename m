@@ -2,58 +2,65 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72AF727ED5
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 15:54:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0671427EEB
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 15:58:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=14orFNn34+DrAYmO/HCesS1dYaz+QRdMORMbNNQu8JI=; b=AQgFKJ4L95XsetyFxqNOVgCOa
-	Wxaa65jEaojBTRL15JYuv3LXgHiDFG0F0R4h5C3NTK0FNoneHnPPmTCZgOb2Sp68LdoytkKyzmXk1
-	56Nqo1uDB/HPYUwYqpKbN4RA0dbmWDcEAUsBd/5Pm7+K/AukD1sg2cp6V0Kw8K5Hj2rYbSIUgpb1Y
-	E4EDfjMdbGD6fK3QxKeECawZ92wF225PrN0P5TjxGv0qFtD5K1TfLkCR5vbJ5Mbu50NDmNBXaATJq
-	HSm5o9V8/LsJKvGPwIiELhprc8UqExUBYsiPb8wJuksz0FZY2RArWyirDh8a2wLm7c5ANMmtJhFyE
-	Fx/bK6Rsg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ASxjZULDgfdW/BVYaKrGxaWGOCtqksdRi1ngXKFzldk=; b=Bx/mAzcbDCWjrd
+	9bUxgyK6uEMZ+A3Aoy0ETr7WcXADWsC27qGL4TWPjep0tQKoQJjn/Qa5RUyN+Bk0M/TXTo8Ozl8+Z
+	Pb76uwTDspgmxqSxv/FdElWV6gpYLPvngtD5967N+o8dOuPDcJvukTQTx71GLPo+kPHWz5FAq150o
+	IMaAbicJjADpTVGE7JaD+tPowP56Buh4sSLCIdrZgVpKCAWh6LfPzCKs7qiZpYkSuP4qrQ8TUUhbH
+	DXogSF7iKDu6XvTjj/aD1G7N3meHLAiK98ZM+o76y1oJ/oH5SSpK+H1Dcv3YDgj3/R0owZ7Fuf7Yk
+	nDOPQK/E2livTGfHUlUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hToAQ-0002TW-8r; Thu, 23 May 2019 13:53:58 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hToAM-0002Sn-PU
- for linux-riscv@lists.infradead.org; Thu, 23 May 2019 13:53:56 +0000
-Received: from localhost (p54B333B6.dip0.t-ipconnect.de [84.179.51.182])
- by pokefinder.org (Postfix) with ESMTPSA id 90F8E2C0398;
- Thu, 23 May 2019 15:53:50 +0200 (CEST)
-Date: Thu, 23 May 2019 15:53:50 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: Sagar Kadam <sagar.kadam@sifive.com>
-Subject: Re: [PATCH v7 3/3] i2c-ocores: sifive: add polling mode workaround
- for FU540-C000 SoC.
-Message-ID: <20190523135350.GA4985@kunai>
-References: <1558515574-11155-1-git-send-email-sagar.kadam@sifive.com>
- <1558515574-11155-4-git-send-email-sagar.kadam@sifive.com>
- <20190522194529.GJ7281@lunn.ch>
- <CAARK3HmMVibudG2CFLBoMSAqnraXyirTL6CXYo1T_XJEuGJy7Q@mail.gmail.com>
- <20190523123435.GA15531@lunn.ch>
- <CAARK3H=BPT3aGUGiQvov5aqFRNVTSeyqJ-bNGw6uEoU7c8iiJg@mail.gmail.com>
+	id 1hToES-0004ab-7H; Thu, 23 May 2019 13:58:08 +0000
+Received: from www62.your-server.de ([213.133.104.62])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hToEO-0004Zy-L2
+ for linux-riscv@lists.infradead.org; Thu, 23 May 2019 13:58:05 +0000
+Received: from [78.46.172.2] (helo=sslproxy05.your-server.de)
+ by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
+ id 1hToEL-0004D5-GO; Thu, 23 May 2019 15:58:01 +0200
+Received: from [178.197.249.12] (helo=linux.home)
+ by sslproxy05.your-server.de with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
+ (envelope-from <daniel@iogearbox.net>)
+ id 1hToEL-000GTg-8B; Thu, 23 May 2019 15:58:01 +0200
+Subject: Re: [PATCH bpf] bpf, riscv: clear target register high 32-bits for
+ and/or/xor on ALU32
+To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+References: <20190521134622.18358-1-bjorn.topel@gmail.com>
+ <49999b2d-f025-894a-be61-a52d13b24678@iogearbox.net>
+ <CAJ+HfNifkxKz8df7gLBuqWA6+t6awrrRK6oW6m1nAYETJD+Vfg@mail.gmail.com>
+From: Daniel Borkmann <daniel@iogearbox.net>
+Message-ID: <412b2dda-7507-c291-9787-7a35a7e1bfd6@iogearbox.net>
+Date: Thu, 23 May 2019 15:58:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <CAARK3H=BPT3aGUGiQvov5aqFRNVTSeyqJ-bNGw6uEoU7c8iiJg@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <CAJ+HfNifkxKz8df7gLBuqWA6+t6awrrRK6oW6m1nAYETJD+Vfg@mail.gmail.com>
+Content-Language: en-US
+X-Authenticated-Sender: daniel@iogearbox.net
+X-Virus-Scanned: Clear (ClamAV 0.100.3/25458/Thu May 23 09:58:32 2019)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_065354_975683_5A8CD8F3 
-X-CRM114-Status: UNSURE (   5.56  )
+X-CRM114-CacheID: sfid-20190523_065804_693286_C6F33589 
+X-CRM114-Status: UNSURE (   8.00  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.0 (/)
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [88.99.104.3 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [213.133.104.62 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,67 +72,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>,
- peter@korsgaard.com, devicetree@vger.kernel.org,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Linux I2C <linux-i2c@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============2815766488441076821=="
+Cc: Jiong Wang <jiong.wang@netronome.com>, Netdev <netdev@vger.kernel.org>,
+ linux-riscv@lists.infradead.org, bpf <bpf@vger.kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
---===============2815766488441076821==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ZPt4rx8FFjLCG7dd"
-Content-Disposition: inline
-
-
---ZPt4rx8FFjLCG7dd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-
-> Ok, Great. Do we need to write to him about this patchset?
-
-Nope. Hint: You can dig in the mail archives studying older patches to
-see how things work. I do this as well because things may work
-differently per subsystem.
-
-
---ZPt4rx8FFjLCG7dd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAlzmpeYACgkQFA3kzBSg
-KbZ50xAAimynxr0PJx8ptAPr43eEclJl1OQihcsB1bfsNnwPm0VKds2AQLP2dYHC
-BISTG9B+IPj/7E9E/1D8UnmP1KQU9sYaZUS7HFnx1sSowG3Uy0ppnfhEDphLb34q
-Upt3domZHzvBwz2uDM4dI0RCUtB0wM+bGDqYp0PA9XL82KUCLdDOD4mEkwb8GrYd
-HKbij71iHnHZymVM1ESn2hp0t9dYOGw8JnPE1SXk2CxjVRJrguLKMR9AMZjhS/eJ
-ASDTDStxqRl60v6HrMYgHZEfACZcx42627191pHOp+e12aftKm3jArMyN9oWMLZM
-W5tdlvcYHk9zWtBOm9ICQLoUENdzZE0/p4xPqjCvYlWJ8a+RPKdgAYq9jQ8u32qF
-VsABTkJV3wMV+LfQxPY9lZ/8VVtfAIzxsFcCb3Z8eRFxXqXm+snIZ36Cd5MCKMXq
-iVh/VNvVCfku76W6wcHH0wZwoBacDjkv+it4bR5zVoEOXpgXuw45rzzNroNssxQ9
-ITj5IcJh1xQ3CyqxoTCNqLHbznNgdN5cG6ZXVP5P3badfY134i1C7plwLSG4EhMr
-qE6pgVZxp/cCpvAKxfq6hbz8XqKmmRDT14ENK9h3uBK2n7nwlm4MhBXpFBzSbJM6
-qe2KzVv56JSG61v1tjAFjGgVb7lsGQzlNV+eNsMXeZzZBLbM4Mk=
-=171K
------END PGP SIGNATURE-----
-
---ZPt4rx8FFjLCG7dd--
-
-
---===============2815766488441076821==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---===============2815766488441076821==--
-
+T24gMDUvMjEvMjAxOSAwNDoxMiBQTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToKPiBPbiBUdWUsIDIx
+IE1heSAyMDE5IGF0IDE2OjAyLCBEYW5pZWwgQm9ya21hbm4gPGRhbmllbEBpb2dlYXJib3gubmV0
+PiB3cm90ZToKPj4gT24gMDUvMjEvMjAxOSAwMzo0NiBQTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToK
+Pj4+IFdoZW4gdXNpbmcgMzItYml0IHN1YnJlZ2lzdGVycyAoQUxVMzIpLCB0aGUgUklTQy1WIEpJ
+VCB3b3VsZCBub3QgY2xlYXIKPj4+IHRoZSBoaWdoIDMyLWJpdHMgb2YgdGhlIHRhcmdldCByZWdp
+c3RlciBhbmQgdGhlcmVmb3JlIGdlbmVyYXRlCj4+PiBpbmNvcnJlY3QgY29kZS4KPj4+Cj4+PiBF
+LmcuLCBpbiB0aGUgZm9sbG93aW5nIGNvZGU6Cj4+Pgo+Pj4gICAkIGNhdCB0ZXN0LmMKPj4+ICAg
+dW5zaWduZWQgaW50IGYodW5zaWduZWQgbG9uZyBsb25nIGEsCj4+PiAgICAgICAgICAgICAgdW5z
+aWduZWQgaW50IGIpCj4+PiAgIHsKPj4+ICAgICAgIHJldHVybiAodW5zaWduZWQgaW50KWEgJiBi
+Owo+Pj4gICB9Cj4+Pgo+Pj4gICAkIGNsYW5nLTkgLXRhcmdldCBicGYgLU8yIC1lbWl0LWxsdm0g
+LVMgdGVzdC5jIC1vIC0gfCBcCj4+PiAgICAgICBsbGMtOSAtbWF0dHI9K2FsdTMyIC1tY3B1PXYz
+Cj4+PiAgICAgICAudGV4dAo+Pj4gICAgICAgLmZpbGUgICAidGVzdC5jIgo+Pj4gICAgICAgLmds
+b2JsICBmCj4+PiAgICAgICAucDJhbGlnbiAgICAgICAgMwo+Pj4gICAgICAgLnR5cGUgICBmLEBm
+dW5jdGlvbgo+Pj4gICBmOgo+Pj4gICAgICAgcjAgPSByMQo+Pj4gICAgICAgdzAgJj0gdzIKPj4+
+ICAgICAgIGV4aXQKPj4+ICAgLkxmdW5jX2VuZDA6Cj4+PiAgICAgICAuc2l6ZSAgIGYsIC5MZnVu
+Y19lbmQwLWYKPj4+Cj4+PiBUaGUgSklUIHdvdWxkIG5vdCBjbGVhciB0aGUgaGlnaCAzMi1iaXRz
+IG9mIHIwIGFmdGVyIHRoZQo+Pj4gYW5kLW9wZXJhdGlvbiwgd2hpY2ggaW4gdGhpcyBjYXNlIG1p
+Z2h0IGdpdmUgYW4gaW5jb3JyZWN0IHJldHVybgo+Pj4gdmFsdWUuCj4+Pgo+Pj4gQWZ0ZXIgdGhp
+cyBwYXRjaCwgdGhhdCBpcyBub3QgdGhlIGNhc2UsIGFuZCB0aGUgdXBwZXIgMzItYml0cyBhcmUK
+Pj4+IGNsZWFyZWQuCj4+Pgo+Pj4gUmVwb3J0ZWQtYnk6IEppb25nIFdhbmcgPGppb25nLndhbmdA
+bmV0cm9ub21lLmNvbT4KPj4+IEZpeGVzOiAyMzUzZWNjNmY5MWYgKCJicGYsIHJpc2N2OiBhZGQg
+QlBGIEpJVCBmb3IgUlY2NEciKQo+Pj4gU2lnbmVkLW9mZi1ieTogQmrDtnJuIFTDtnBlbCA8Ympv
+cm4udG9wZWxAZ21haWwuY29tPgo+Pgo+PiBXYXMgdGhpcyBtaXNzZWQgYmVjYXVzZSB0ZXN0X3Zl
+cmlmaWVyIGRpZCBub3QgaGF2ZSB0ZXN0IGNvdmVyYWdlPwo+IAo+IFl1cCwgYW5kIEppb25nIG5v
+dGVkIGl0LgoKQXBwbGllZCwgdGhhbmtzIQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yaXNjdgo=
