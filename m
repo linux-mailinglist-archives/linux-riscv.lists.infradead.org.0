@@ -2,76 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6EA528CBB
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 23:56:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E6AF28CC3
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 23:57:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=lf5KXEYQVQOdkEboyaK4nodDevfnjyKFS/Aebkivxi8=; b=ney
-	MFBxb6Io8M6jVPOb3YDM3BXEMDjxUEiRHUnq+WFWnbjzTMJCcaqMSwiuwAX0UExqXnwIe36FrIj2w
-	x6ETCHwDel61jfVdFwMMedDAdUwHmyw512negvWMv90EN0gROsmkpgvmE5ZpMss0V0OQKqs/lY4fV
-	PMxDLi8j3hdydIlKkXpiEV1mM7TTNWscUt9NtLfp04lRxfJU33VvAbebmH2N48du33XoXdPMPuX/y
-	KF87nYgGsUD6k3jvVwkIxbZHHICFDirJNydA1vEqL7W6BAjR25q8F9StiKD8zZsP7rbLA0ls0LhG1
-	Xzt26+qUn1fm+woave0LFKs3WQP23uQ==;
+	References:List-Owner; bh=Vh+DEtlbBBEKX3kwIsjfRJRXDw6S7/hK3GudKfXJG5U=; b=gxb
+	O2LfJ4Yd+yyLjWItQMvNCS9Lz2RzlHiQVOcEkrPHGr3ci/G1LbFWGuAfMG1HJRvWCZsFifIh8hQxr
+	zv+CrhUfKaZ449muyyHIKTsm0shATIEne+5GnfX+6t44BT07Xzi+6HNZthLSSBeRJwP/laKuncA2V
+	Zxssot9Z1T7ivjpy9tUFI/XqwHpGAis8z0/q+u+y4ak0mqGwMy3j8jU83x0SVd0jHjH9frSqKa0Tz
+	HqNDVNUtiuMUAl1YklHvtNu/3EdnZVntCpjalTjL3ydK/n4UBFtDPf/sWG0j8S6RVwmb3qmGjlyCa
+	fydqF5y0CJjOe9PfVsfgJUlVHsIeISg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTvgr-0008K5-1n; Thu, 23 May 2019 21:55:57 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1hTviX-0000Aq-6p; Thu, 23 May 2019 21:57:41 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTvgo-0008Jj-5v
- for linux-riscv@lists.infradead.org; Thu, 23 May 2019 21:55:55 +0000
-Received: by mail-pf1-x442.google.com with SMTP id v80so3995281pfa.3
- for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 14:55:53 -0700 (PDT)
+ id 1hTviU-0000AW-MN
+ for linux-riscv@lists.infradead.org; Thu, 23 May 2019 21:57:39 +0000
+Received: by mail-pf1-x443.google.com with SMTP id q17so3981253pfq.8
+ for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 14:57:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id;
- bh=PurhQGxmOt5OgX95ziE8Uz5xXLYO1YnGDYcH4NyaAV8=;
- b=KmwMdbusxLFDrj22KnPcx5BKzA583dV/GrebLLNnmUsihWE/QMWs3lTIAouKLUwaop
- LwgmVJQGVUg2aA+8mx4KJjU7bAF7LtGSr8FiMglX9PLU180cgIynnL0/9TXMA3mSW1M+
- /UmO8YBNF1bNKg2+C2Nb60imYJGTKVl+XkH4yQ6Fxqbenfjbl/IPPANZqo6DAu95G16f
- 3MfFyVw8gm66EwDQbIfgC6fEkCdxWH+Uwd6/EWrWkuO+20grvDS8y/Fis3sO7q93IPon
- ggEp6LFhzmrCxLh6InSejc0sfAGzRbxlvvT1/+7Z6b9W8sM4GU4RF8/D8lGBbGXY4321
- unfw==
+ bh=5bG8FDPCw5QDc0u1AHZFZoHnM7vNJL8HNA0ePZzdpDk=;
+ b=Fl3Pw/aWVCJMn6SdFWbo1CqRqGB0mnVIW3e7yT0Jp6ccc/IaYhJGmLRABpEpkm4chI
+ hzN1v219lL1YsQYsp8ulmY3B7xLKFqj+lHIIPnadVhUbsM1kceLOAUawiv/G4mx8sror
+ d3mgOjFFOkJjmEG08rzXgIEcVizuEjC23kgWJoheQr2kmJWyapUxyxsN55q8T5Mz3arE
+ A33k6AviekRkWiRb7uTEoj6NDqlxJYfQaEv7m5ZbfSUqcS+uRBsGdZcO7ruHsqiydTy0
+ O8ju2Wgv+gipF2XFbz6z/arhAzMKA5M30weGAWeVW/ApnJcLxzNUYkrQjkDBZ//BkRrf
+ tjHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=PurhQGxmOt5OgX95ziE8Uz5xXLYO1YnGDYcH4NyaAV8=;
- b=IwW4UJC2kA6Lc4jVH+JaM1vZqspuecUMOh/8t+lOKbZXHip4MT6gRPGKiT4zpCdJAx
- kOciGQKFB+CJCm/HMKNMf25mZoQn/DALghLCdxsfw1KETGy3pt4DSZ+XOzTkx/7+KjAl
- 8lYBesFtCj05duMGdpz1L6WQRy7d7i4A9vNYI6Ff+5F1ssALy5Z5t5uQZLoitlBLZnN3
- OhrERTUhJ1ePz7fgWeecg5a5OV+XVNwou7FVh+tqWVHzTGE6COhgDUPa+2p8Q6ZxMhkf
- Iq8GCTRCHNkNLnFhewtNRq3KRWNfhovhnNRuWpnviHN2zkbz1XSq/A5V9VuByWvsLAel
- qvLg==
-X-Gm-Message-State: APjAAAWeMBk3VoUGYKAn4BJLhmqKPyiBZiB3OMWlPpXjPeZOvFLe3ABK
- r1mVFzpMvjXgRul8yuRPI9Ganw==
-X-Google-Smtp-Source: APXvYqxfZfJf2dgCCL/DsR8P6LzvbOxJ1paNuXirPE+CZvt+G3bi+/s0Wd3kQSCpvTmI4e02K3NZLg==
-X-Received: by 2002:a63:903:: with SMTP id 3mr86725371pgj.400.1558648553134;
- Thu, 23 May 2019 14:55:53 -0700 (PDT)
+ bh=5bG8FDPCw5QDc0u1AHZFZoHnM7vNJL8HNA0ePZzdpDk=;
+ b=kZefbi9IvKQmPbyMyOtIjp9wVy+2VdaSWXWCxZoiF1e8wZCyhaL2h00OtF+FzdXFoB
+ 20pmNyvyHdepaE+mNpz2UGd+XSskJhHJtSQLbDJGdbZmkWm+7yEFq9vuDkSMcs4N0FoS
+ jTXI29bVgc6wNfYCIBIHZv8C5J7kGaqcomIwiDID/crH/fr2zZuAoiwj8o0wgLSqDu4C
+ vC31PUasG8MlcnYoIoNjkIWBhXfhWOpzirCcyulBmR08lKQNzRVTD29TPxjZ5CeAwGQT
+ hAI5ItjJ4Vfi+KjcODYZm4MMekDvxJaBcZXskXZ2ZFREcBqWO38twQM1XilsOOVyU8CA
+ d85w==
+X-Gm-Message-State: APjAAAV3JSOziirpBDF/Cptu70AMKmtGsU0dH+gu5Boi4/qwHjaCZKnc
+ 272l47dMY1W5+paAudBwKgESLQ==
+X-Google-Smtp-Source: APXvYqxPKvovRIfrtaL1O8c2k6QXUDaH/Pjn7UuZ6wkFFjX1eXQhHuYnrqOEHn9sDUqRH4JPFj1wjQ==
+X-Received: by 2002:a63:1e5b:: with SMTP id
+ p27mr100433871pgm.213.1558648658166; 
+ Thu, 23 May 2019 14:57:38 -0700 (PDT)
 Received: from nuc7.sifive.com ([12.206.222.2])
- by smtp.gmail.com with ESMTPSA id q75sm422403pfa.175.2019.05.23.14.55.51
+ by smtp.gmail.com with ESMTPSA id n37sm321966pjb.0.2019.05.23.14.57.36
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 23 May 2019 14:55:52 -0700 (PDT)
+ Thu, 23 May 2019 14:57:37 -0700 (PDT)
 From: Alan Mikhak <alan.mikhak@sifive.com>
 X-Google-Original-From: Alan Mikhak < alan.mikhak@sifive.com >
 To: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, kishon@ti.com,
  lorenzo.pieralisi@arm.com, linux-riscv@lists.infradead.org,
  palmer@sifive.com, paul.walmsley@sifive.com
-Subject: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
-Date: Thu, 23 May 2019 14:55:40 -0700
-Message-Id: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
+Subject: [PATCH v2] PCI: endpoint: Clear BAR before freeing its space
+Date: Thu, 23 May 2019 14:57:27 -0700
+Message-Id: <1558648647-14324-1-git-send-email-alan.mikhak@sifive.com>
 X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_145554_226381_336087B4 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20190523_145738_726519_46E44E1B 
+X-CRM114-Status: GOOD (  10.44  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -100,93 +101,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Always skip odd bar when skipping 64bit BARs in pci_epf_test_set_bar()
-and pci_epf_test_alloc_space().
-
-Otherwise, pci_epf_test_set_bar() will call pci_epc_set_bar() on odd loop
-index when skipping reserved 64bit BAR. Moreover, pci_epf_test_alloc_space()
-will call pci_epf_alloc_space() on bind for odd loop index when BAR is 64bit
-but leaks on subsequent unbind by not calling pci_epf_free_space().
+Associated pci_epf_bar structure is needed in pci_epc_clear_bar() but
+would be cleared in pci_epf_free_space(), if called first, and BAR
+would not get cleared.
 
 Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
-Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
 ---
- drivers/pci/endpoint/functions/pci-epf-test.c | 25 ++++++++++++-------------
- 1 file changed, 12 insertions(+), 13 deletions(-)
+ drivers/pci/endpoint/functions/pci-epf-test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-index 27806987e93b..96156a537922 100644
+index 27806987e93b..f81a219dde5b 100644
 --- a/drivers/pci/endpoint/functions/pci-epf-test.c
 +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-@@ -389,7 +389,7 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
- 
- static int pci_epf_test_set_bar(struct pci_epf *epf)
- {
--	int bar;
-+	int bar, add;
- 	int ret;
- 	struct pci_epf_bar *epf_bar;
- 	struct pci_epc *epc = epf->epc;
-@@ -400,8 +400,14 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
- 
- 	epc_features = epf_test->epc_features;
- 
--	for (bar = BAR_0; bar <= BAR_5; bar++) {
-+	for (bar = BAR_0; bar <= BAR_5; bar += add) {
+@@ -381,8 +381,8 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
  		epf_bar = &epf->bar[bar];
-+		/*
-+		 * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
-+		 * if the specific implementation required a 64-bit BAR,
-+		 * even if we only requested a 32-bit BAR.
-+		 */
-+		add = (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64) ? 2 : 1;
  
- 		if (!!(epc_features->reserved_bar & (1 << bar)))
- 			continue;
-@@ -413,13 +419,6 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
- 			if (bar == test_reg_bar)
- 				return ret;
+ 		if (epf_test->reg[bar]) {
+-			pci_epf_free_space(epf, epf_test->reg[bar], bar);
+ 			pci_epc_clear_bar(epc, epf->func_no, epf_bar);
++			pci_epf_free_space(epf, epf_test->reg[bar], bar);
  		}
--		/*
--		 * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
--		 * if the specific implementation required a 64-bit BAR,
--		 * even if we only requested a 32-bit BAR.
--		 */
--		if (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64)
--			bar++;
  	}
- 
- 	return 0;
-@@ -431,7 +430,7 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
- 	struct device *dev = &epf->dev;
- 	struct pci_epf_bar *epf_bar;
- 	void *base;
--	int bar;
-+	int bar, add;
- 	enum pci_barno test_reg_bar = epf_test->test_reg_bar;
- 	const struct pci_epc_features *epc_features;
- 
-@@ -445,8 +444,10 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
- 	}
- 	epf_test->reg[test_reg_bar] = base;
- 
--	for (bar = BAR_0; bar <= BAR_5; bar++) {
-+	for (bar = BAR_0; bar <= BAR_5; bar += add) {
- 		epf_bar = &epf->bar[bar];
-+		add = (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64) ? 2 : 1;
-+
- 		if (bar == test_reg_bar)
- 			continue;
- 
-@@ -459,8 +460,6 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
- 			dev_err(dev, "Failed to allocate space for BAR%d\n",
- 				bar);
- 		epf_test->reg[bar] = base;
--		if (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64)
--			bar++;
- 	}
- 
- 	return 0;
+ }
 -- 
 2.7.4
 
