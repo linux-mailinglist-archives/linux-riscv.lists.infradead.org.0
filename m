@@ -2,55 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DF9B27960
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 11:36:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 358AB2798C
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 11:42:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7gat//hURnKBLQ2OZWsrDj6VReLn20x9NIiQLmjvjOM=; b=WqIbVJBiQ5e399
-	0UDXEyfeRN4W73xK/4kRU9jbVrDZD71lzr26/eO0vDAFUBW59wq5nYFClS0D2TNwNgI/Nsu+iTY91
-	YlwHyrGmM3W4PDfUeHp995OwQSwc9tU4Vdes33uA1TxW8e+HMJqvwo/Vj0IZ1GNYRjwcz8fSxLRVd
-	a1Xyo0OqiwGoDSI1jvdEyCfIUTMU7OfaZax4q4Sq7aQOndt8OIdPE/dT0lPIUv02d690ztSYWgPqJ
-	oV372k0F4yvLVI5YvYWIqoasQ8WW6hI6xEFSLpnEicNAJCu6cWe3IYGZH8vLpD99qTQFm62nKuSiZ
-	tdoeXRd0ZqPXQnsnZk7g==;
+	List-Owner; bh=0pGzUTiihVqiCW1QXYBpcA9alR8stvNhSSXjvykHXw4=; b=EQXAxjQENfmiiN
+	2cYiHNz0gazpLmn6u36AKidgHJIUsEBK/ZJ/qnyznvqe2QSs/YjGetzdf++O1vWb/hcPGu4K1Yc3j
+	vtgFJUUfulSmNt6Y09TOT153ASyhjgyVqnzS/uBYjCC3SvHF7jwupl8zS+V71jldKRiVtDC33Dmrd
+	ta1wLGsi9YeKly0WJ3u0LL+n1V0AGbxz1zyaeKSOQQBCvvd4KnBk+FTyq9Dfq4R2kPa2pHA/VSVEZ
+	prMMyJD9gP1uQQ3Jy1v5mYsoUA2eMFJ2uyNHcN6VWF+9c7Bko4+++X4wM/tA9ySAMEvW07nBI0DWa
+	khyMhYnHd6YTx68JtOqA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTk95-0000eR-5b; Thu, 23 May 2019 09:36:19 +0000
-Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]
- helo=foss.arm.com)
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTk8l-0000FB-N1; Thu, 23 May 2019 09:36:02 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7B413341;
- Thu, 23 May 2019 02:35:59 -0700 (PDT)
-Received: from e107155-lin (e107155-lin.cambridge.arm.com [10.1.196.42])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 835643F718;
- Thu, 23 May 2019 02:35:55 -0700 (PDT)
-Date: Thu, 23 May 2019 10:35:49 +0100
-From: Sudeep Holla <sudeep.holla@arm.com>
+	id 1hTkEx-0002YH-N4; Thu, 23 May 2019 09:42:23 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hTkEu-0002XS-0q
+ for linux-riscv@lists.infradead.org; Thu, 23 May 2019 09:42:21 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id CE614AE20;
+ Thu, 23 May 2019 09:42:16 +0000 (UTC)
+From: Andreas Schwab <schwab@suse.de>
 To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [RFT PATCH v4 3/5] cpu-topology: Move cpu topology code to
- common code.
-Message-ID: <20190523093549.GA13560@e107155-lin>
-References: <20190428002529.14229-1-atish.patra@wdc.com>
- <20190428002529.14229-4-atish.patra@wdc.com>
+Subject: Re: 5.2-rc1 boot on Unleashed
+References: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
+ <7hlfyz7l83.fsf@baylibre.com>
+ <e95822f4-3243-5a6e-0b04-1f698a59c1e2@wdc.com>
+X-Yow: We have DIFFERENT amounts of HAIR --
+Date: Thu, 23 May 2019 11:42:15 +0200
+In-Reply-To: <e95822f4-3243-5a6e-0b04-1f698a59c1e2@wdc.com> (Atish Patra's
+ message of "Tue, 21 May 2019 11:18:21 -0700")
+Message-ID: <mvm8suxh5hk.fsf@suse.de>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190428002529.14229-4-atish.patra@wdc.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_023600_080753_E1F4A017 
-X-CRM114-Status: GOOD (  16.06  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190523_024220_214507_E233D747 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [217.140.101.70 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -64,70 +64,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, linux-riscv@lists.infradead.org,
- Morten Rasmussen <morten.rasmussen@arm.com>,
- Jeffrey Hugo <jhugo@codeaurora.org>, Andreas Schwab <schwab@suse.de>,
- Ingo Molnar <mingo@kernel.org>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Sudeep Holla <sudeep.holla@arm.com>,
- Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Jeremy Linton <jeremy.linton@arm.com>, Otto Sabart <ottosabart@seberm.com>,
- Anup Patel <anup@brainfault.org>
+Cc: Kevin Hilman <khilman@baylibre.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Apr 27, 2019 at 05:25:27PM -0700, Atish Patra wrote:
-> Both RISC-V & ARM64 are using cpu-map device tree to describe
-> their cpu topology. It's better to move the relevant code to
-> a common place instead of duplicate code.
-> 
-> Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> Tested-by: Jeffrey Hugo <jhugo@codeaurora.org>
-> ---
->  arch/arm64/include/asm/topology.h |  23 ---
->  arch/arm64/kernel/topology.c      | 303 +-----------------------------
->  drivers/base/arch_topology.c      | 298 ++++++++++++++++++++++++++++-
->  drivers/base/topology.c           |   1 +
->  include/linux/arch_topology.h     |  28 +++
->  5 files changed, 330 insertions(+), 323 deletions(-)
-> 
-> -void store_cpu_topology(unsigned int cpuid);
-[...]
+On Mai 21 2019, Atish Patra <atish.patra@wdc.com> wrote:
 
-
-> diff --git a/drivers/base/arch_topology.c b/drivers/base/arch_topology.c
-> index edfcf8d982e4..2b0758c01cee 100644
-> --- a/drivers/base/arch_topology.c
-> +++ b/drivers/base/arch_topology.c
-> @@ -6,8 +6,8 @@
->   * Written by: Juri Lelli, ARM Ltd.
->   */
+> On 5/21/19 10:48 AM, Kevin Hilman wrote:
+>> Atish Patra <atish.patra@wdc.com> writes:
+>>
+>>> Hi,
+>>>
+>>> 5.2-rc1 still requires some out-of-tree driver patches.
+>>>
+>>> Here is my tree (successfully tested on Unleashed.)
+>>> https://github.com/atishp04/linux/tree/5.2-rc1_unleashed
+>>>
+>>> Issues:
+>>>
+>>> 1. Thanks to Paul, uart & clock drivers are merged. However,
+>>> 	a. upstream clock drivers require DT changes
+>>> 	b. Those DT changes are still being reviewed.
+>>> 	c. FSBL need to be rebuild & updated for these DT changes.
+>>
+>> I would also add that due to DT changes required:
+>>
+>>    d. Does not work with upstream u-boot
+>>
 >
-> -#include <linux/acpi.h>
->  #include <linux/arch_topology.h>
-> +#include <linux/acpi.h>
+> Yeah. I guess PRCI clock DT changes may not be backward compatible with
+> U-Boot PRCI driver. Apart from FSBL update, we also need to patch U-Boot
+> PRCI clock driver now.
 
-I assume this was to avoid compilation errors, when I rebased I got
-conflict and I ordered them back alphabetically as before and hit the
-compilation error.
+Looks like it breaks the serial driver.
 
-The actual fix would be to include linux/arch_topology.h in linux/topology.h
-as you are moving contents of asm/topology.h which it includes.
+Andreas.
 
-I did the change and get it tested by kbuild. See [1]
-
-Regards,
-Sudeep
-
-[1] https://git.kernel.org/sudeep.holla/linux/h/cpu_topology
+-- 
+Andreas Schwab, SUSE Labs, schwab@suse.de
+GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
+"And now for something completely different."
 
 _______________________________________________
 linux-riscv mailing list
