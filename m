@@ -2,8 +2,8 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FF5F28E1B
-	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 01:56:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3358928E1F
+	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 01:58:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -11,68 +11,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=mrrWk7o8fghUhlhQvddCljbCq6UaLrf+FU8ULWjc3cY=; b=jIbWGUXbwh/S+J0lvZy9Au/Q2M
-	HrK3GqbwWc4vTIWqqLGlcrK5Ss9oH1bS7CHnNWrbG1PxHLdT6X63EOENeCshPpufFLoxQWotv8ijp
-	+HdOW0afKJ5J6WFk8fJpLqU7ruJVFyWBQjdAEaaIxH2svczukx+cvOL11vUkIgDOEna3Gf0gBm4yF
-	PtWrChUu3Zylb4Z8WGddZBVkx8TmffoykOb4fPBnSZvBdhbcO8tNGPT4HLUPKhZ19qFWdWKR3EnT5
-	FAwdwUE4Pov04PuXwZiYauz09UThL7Zz24zKQdr7q8MG+JudsqJdmubYSEw5aMbObWBSRHXZERY6s
-	p3aqozjA==;
+	bh=1THVg06vWSer8S0t/YtnWLEjfxGt9coutasqNbT9hc8=; b=S99A56NcNOs93WTEfmSOUZ5Dcw
+	s+qy82VzrmWchLR+Qt7+9rC8/EzDe+bFDtCjSOJtoWSjaobSnOdz7tBwppChalpY2QjWEle2301SZ
+	tGGX0144arUnG1oOYCIjkTtxKte1xU0cGz1zG3/0LcmC5jYcw1ACzHUXHsl/bHw8Vi4IpzASX7mlL
+	jcqoUNqkzJFqUQCiSsNsG+KtVWNQwmuxmxWE8HOj9sxk98HQ9+FS4DE7MVp49ktQmWuZ1+qEzdCin
+	hjCCQP8WEtIcIMfdEw2etkDmedVrvtiKk0iI+0yd3G++xV7a0ZGYCtQkC9Ss9nt2Y0bY+AyOOruDC
+	BU6qX4rQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTxZQ-0004xS-3Y; Thu, 23 May 2019 23:56:24 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1hTxb7-000595-8F; Thu, 23 May 2019 23:58:09 +0000
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTxZN-0004wL-4o
- for linux-riscv@lists.infradead.org; Thu, 23 May 2019 23:56:22 +0000
-Received: by mail-lj1-x243.google.com with SMTP id r76so1589278lja.12
- for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 16:56:19 -0700 (PDT)
+ id 1hTxb3-00058O-GA
+ for linux-riscv@lists.infradead.org; Thu, 23 May 2019 23:58:06 +0000
+Received: by mail-lj1-x241.google.com with SMTP id a10so7066312ljf.6
+ for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 16:58:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=Rwcv7ftRka+X8HiYdZS3z2oKZ4APHYrkaB4F2nbQq/A=;
- b=AnLJrehX/9SKzLuWRrRIqP+/yUIsQFZcIiCHKFCoKVjJLszzRW631gMNPPgRA8tOP1
- wrqfXWhHRRoqYvBwzWiiheJDTGkKdbcNN+ngCaynpJWye/aRivH1AzTDYkZsRNUu7XfN
- Hzogg9u4Z5W+AR7yKg7u5qHSEeRnmQkCh0b3VhGWXUmBZ+yBgXFGWM1CQrCPUYaKuyHT
- dGVRDU156ornBXx5rdkou5+WPU/hu7WGJdKQ1X81ezANzfm5ub1f9DQNvAR0T+WQUqB4
- 8w9RzQRnOTfbvcIe+5gkLnKMB7IZcjZ1IAmhe3nznq8L+Sfaz0nuOiW1V0H+zHcEx/UE
- OWkg==
+ bh=XOaG+GEFquIWc8ZqL+TFm0HU4q3YYIEJg9ZNEaLldJA=;
+ b=e+/gloxcunIS64ypJ+CKWxOR6GHBOe89ee8OezcPnTixwXbrsj4kCp/H/qB/aRRzIh
+ QByPd96mLzxgV0ur/42UdEdAgLZta9m8/n8uZwMOjeSb+TCAnc5IAjCkYySrExJSMb2d
+ 5Z95YKknKuZcNyY2ZBYmfV86byhj48xIMZADt3C/Bsyc5/tMvZzKhPLYGPDo19Yqvmjv
+ Fud3GSHNHsFt1hu/P7rIEGw5vTXg2484c7fMGi49h6KWxersG0QgNTO1cpjLK/UmrfDl
+ qsm3ycA+ZCK/MN4Cc9W533cBQNXDsSoSEJKuP2E1y+UuI6XDwek9p6GetycEEkiOPmfm
+ YvEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to;
- bh=Rwcv7ftRka+X8HiYdZS3z2oKZ4APHYrkaB4F2nbQq/A=;
- b=SCgCxTP1eHRXwYqPnUa6ImD5/rjrP1kUiGh6XhKKeQvt1WTCX/AIYpXP1FQdWCh4HJ
- DEcgYm/XAWPJ8tO9Up0mtLBwrgDSa8EtDQx7+QOhdW8Ab93tsgP7BYja9I61zY0bnrDU
- OwaBvy4pFqyLkRkhtrPaenZ//qSV73yIY+eRjpTAkIsYnI2fIHU7PllGUimAOmW0wHzk
- UKuDKL/1xgTbApCPf1XnBPj1l6sVYRldp/o369OAwsYmm3k16E9QOzEGl9L4Damcwate
- zP6sIYCzA0YxfAy35OfZ+cgAqzHbrYiDaTEhDxtQrIhhG6ifEoJDy6S5I/srkhTYTUn0
- zrqw==
-X-Gm-Message-State: APjAAAXtUfWts/EICWYkzZMbc1KUR1ujbTnoxtmR4S0w1z4q44kow5NW
- 5EmXY7UVxdnuKQ/q/B6VSiLdCfk+KE6mlF0hs6ukhw==
-X-Google-Smtp-Source: APXvYqzYv7m8kDn0KpeHZdh5ZzlR7YUak9Qm+XHYYicHUR74JCz6mwG62iVCuLEISNmZxFqT3y6cpf3pLq0Fp50gAM0=
-X-Received: by 2002:a2e:655b:: with SMTP id z88mr46764454ljb.108.1558655777580; 
- Thu, 23 May 2019 16:56:17 -0700 (PDT)
+ bh=XOaG+GEFquIWc8ZqL+TFm0HU4q3YYIEJg9ZNEaLldJA=;
+ b=dCk+BfQaKu5kiQM9vFU4eTe8y6jZHBtJC2o3UWE8F61EuGGK9TFpHZPtK8eZQh8r87
+ FucY7Q3JEr4jCG4s2+VA51QDUTJkLO+l1kjb2cFGa7Bq/aXkdNe64+NURIL+tM9QwzLZ
+ QRj1VBvtpn5jU5okameVoV8U5/WbwuWDSVZDWwXy+QR3YvVSMgz0eoXJHBuqjrxx90K5
+ +z17BFOl5A6XLEfzxEvUfXUpAW+9s9UNvs1V7Vs7BOPDtFwsyKUUZmYCyRnFe2JEaCVw
+ eWTQyLnpHmDldXkkr/3rej4LVUrwKz3NlkFxvS4n8DDalnpXipUYxDhAoifGa0mwlxXB
+ SRGg==
+X-Gm-Message-State: APjAAAViFGbIfepD+/cZ493aYwxoL87eLqKfAAo7AMbBSPf9KyvN1+k4
+ rVdxn8i9MEZEo1I4Av+eEYPi4bZzfXJO32VD9Evlow==
+X-Google-Smtp-Source: APXvYqz7QckuaSLcN3Ux3XggQtq3/yHHrcwrhdr4OBzCv7p72vzW4vje4uHz3AT/cEgJbPkLOntoCGlEE9G8OL+e5sI=
+X-Received: by 2002:a2e:874b:: with SMTP id q11mr22243701ljj.48.1558655883455; 
+ Thu, 23 May 2019 16:58:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <1558648079-13893-1-git-send-email-alan.mikhak@sifive.com>
-In-Reply-To: <1558648079-13893-1-git-send-email-alan.mikhak@sifive.com>
+References: <1558647944-13816-1-git-send-email-alan.mikhak@sifive.com>
+In-Reply-To: <1558647944-13816-1-git-send-email-alan.mikhak@sifive.com>
 From: Alan Mikhak <alan.mikhak@sifive.com>
-Date: Thu, 23 May 2019 16:56:06 -0700
-Message-ID: <CABEDWGxMXg7RAgrUL-7W6vgC0BpCj9ys+i7myjxdBgn3vn_P6Q@mail.gmail.com>
-Subject: Re: [PATCH v2] PCI: endpoint: Allocate enough space for fixed size BAR
+Date: Thu, 23 May 2019 16:57:52 -0700
+Message-ID: <CABEDWGyb3zTaiRqt7-mvrS6Dvhu0Fkhjp4nvaJ-vaJrD3n=0_Q@mail.gmail.com>
+Subject: Re: [PATCH v2] PCI: endpoint: Set endpoint controller pointer to null
 To: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, kishon@ti.com, 
  lorenzo.pieralisi@arm.com, linux-riscv@lists.infradead.org, 
  Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, gustavo.pimentel@synopsys.com,
- wen.yang99@zte.com.cn, kjlu@umn.edu
+ Bjorn Helgaas <bhelgaas@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_165621_188808_A4F54991 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20190523_165805_540087_C8412DC5 
+X-CRM114-Status: GOOD (  11.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:243 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:241 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -99,43 +98,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-+Bjorn Helgaas, +Gustavo Pimentel, +Wen Yang, +Kangjie Lu
++Bjorn Helgaas
 
-On Thu, May 23, 2019 at 2:48 PM Alan Mikhak <alan.mikhak@sifive.com> wrote:
+On Thu, May 23, 2019 at 2:46 PM Alan Mikhak <alan.mikhak@sifive.com> wrote:
 >
-> PCI endpoint test function code should honor the .bar_fixed_size parameter
-> from underlying endpoint controller drivers or results may be unexpected.
+> Set endpoint controller pointer to null in pci_epc_remove_epf()
+> to avoid -EBUSY on subsequent call to pci_epc_add_epf().
 >
-> In pci_epf_test_alloc_space(), check if BAR being used for test register
-> space is a fixed size BAR. If so, allocate the required fixed size.
+> Requires checking for null endpoint function pointer.
 >
 > Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
 > ---
->  drivers/pci/endpoint/functions/pci-epf-test.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
+>  drivers/pci/endpoint/pci-epc-core.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >
-> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-> index 27806987e93b..7d41e6684b87 100644
-> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
-> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-> @@ -434,10 +434,16 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
->         int bar;
->         enum pci_barno test_reg_bar = epf_test->test_reg_bar;
->         const struct pci_epc_features *epc_features;
-> +       size_t test_reg_size;
+> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+> index e4712a0f249c..2091508c1620 100644
+> --- a/drivers/pci/endpoint/pci-epc-core.c
+> +++ b/drivers/pci/endpoint/pci-epc-core.c
+> @@ -519,11 +519,12 @@ void pci_epc_remove_epf(struct pci_epc *epc, struct pci_epf *epf)
+>  {
+>         unsigned long flags;
 >
->         epc_features = epf_test->epc_features;
+> -       if (!epc || IS_ERR(epc))
+> +       if (!epc || IS_ERR(epc) || !epf)
+>                 return;
 >
-> -       base = pci_epf_alloc_space(epf, sizeof(struct pci_epf_test_reg),
-> +       if (epc_features->bar_fixed_size[test_reg_bar])
-> +               test_reg_size = bar_size[test_reg_bar];
-> +       else
-> +               test_reg_size = sizeof(struct pci_epf_test_reg);
-> +
-> +       base = pci_epf_alloc_space(epf, test_reg_size,
->                                    test_reg_bar, epc_features->align);
->         if (!base) {
->                 dev_err(dev, "Failed to allocated register space\n");
+>         spin_lock_irqsave(&epc->lock, flags);
+>         list_del(&epf->list);
+> +       epf->epc = NULL;
+>         spin_unlock_irqrestore(&epc->lock, flags);
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_remove_epf);
 > --
 > 2.7.4
 >
