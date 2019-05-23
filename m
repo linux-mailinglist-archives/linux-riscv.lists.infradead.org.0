@@ -2,76 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F027727C0B
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 13:46:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 55D5F27C12
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 May 2019 13:46:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=vv1p0rKB0g5PfM4ipTkg9vgfHU+tFFk2d7PjJ+kyWMQ=; b=mJC
-	aN6CR0efECnh9qzh1oWfYZKJcKyhToj5jUcadv7LsXc0hqNDATyHtkamm3DPuWYR0Gh9aiJCPQlvl
-	8+rtWeAk3S+xgSutSbmwa8fMnW0bCTYfHW+0Qe+HTfAyiLXOCv6BuRp1xBGB8uqLX1vvncdpf5Goa
-	R1gMBKk8rlNkP/tZFGhDJAauqSll09FpAHYg7T327BiBhpItZuwARq9dw7IERdhe+IcrhmRYfqsyD
-	Ejy2QwD5Cm80jP8n8yYLqjHjVdZdvBbEh6lD1y7Rl4EEruSpIeZSt1RMV2/KhWyvMR+32SEBOIYXJ
-	qqZO+KyQJC6i2HQ0kVfVotlhqvAgw0g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=pxUXgFxQZhqJei69hnTqnXJxfNse5WXbOMei4homgWw=; b=WhnqtZPkMf2XMO50FKTszM6I2S
+	0pfTxgqsWagwETbogl6bX0EKkwKwuYLWS9Q7sVZgAAil25o2dnms/Kqd3Vcqz1WYLN12IDO2sVZN3
+	BnSdWw34qa9gMM7HTlfcCw+2d1/m3/Rv7NNUWdkN6nR8X7nFG5W/aS3qfWjyY4kXGbQsDYUBg3Cz7
+	5X7lDsFP1UmZGhDtFyDSRxM5+nUj7j1aniyR/hiOuS8nelvXmS2bxNX3GT5upu96iIOrkUSYlkJYC
+	eGhK4nzfsiG4uWxDy7DSjeXb5LbbEc1+GbMUxd2doecM+oCA/bA03rkp2CgahYmXW6/hbCi6gIuE5
+	3QVq2tfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTmB2-0003VQ-Ts; Thu, 23 May 2019 11:46:28 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1hTmB7-0003Yb-Mv; Thu, 23 May 2019 11:46:33 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTmAx-0003Uw-Q5
- for linux-riscv@lists.infradead.org; Thu, 23 May 2019 11:46:25 +0000
-Received: by mail-pl1-x644.google.com with SMTP id f97so2666980plb.5
- for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 04:46:23 -0700 (PDT)
+ id 1hTmB3-0003Wt-OF
+ for linux-riscv@lists.infradead.org; Thu, 23 May 2019 11:46:31 +0000
+Received: by mail-pl1-x641.google.com with SMTP id gn7so2653142plb.10
+ for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 04:46:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=wCUem1x/ylV1bJblqN5DyUuj9iRlSTgirM+Nihz6Yc0=;
- b=kBRcan3ex7if0+/zQ6bxlRiznWrjYUd+Ho3MCpSpAJ3oI1kOro4TWWVqTr4YjeoAKQ
- m6ousfyZQWk4f6F4ysIa/GCw5se1GTJWlIALfspm0wUD1QUCHZXLy40cP8cfZ3DsG8VX
- hYFTF+SAT4gQfiK+oF7F+JIEHF0DEotkzap6a2rIfoVmGpS4dyltZJ6/WP67CY1GJjTu
- WxOBsrcRA1jE5vQMuCZnAFTY5P3MKkGvN3AiL+YK++gwzVpeaaY0fo7RzBQJoQWi2RJh
- dts2N4sCqCe/yvCxlveHNdRP/FsbOaqNx5W1AOp2mJ3BEZBZVXFTOkxn8AP5WETImJ8b
- VmkA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=L7jtC9YLwA0closzFKH5J5lT2qmKzUMNqjaIDumr77w=;
+ b=J7/qws0Qxp3NVZLnHy2qXlZRe+iDyhBpqBA9UAirr+0rrSH2reViAepFM/UquHryeC
+ kAfTHH/I2AeboDE6avThPcLAVsl+d70CrgbKZv4GCmnyhp/O9i/jUh4XNUledWpIYKa9
+ cLJR1D40KnLdmwRxxicn8hbF+jHu5jHp85TZS050DNv4WRRgUT3Qac1/3NA+d++p9U46
+ MtK7xisAUL0tNQld94DBPXeHZOma/juwPjqawte5LaeeUJMiarRZhg31h2LdPf8SxCgx
+ XHOVHNtiTM+J4TP/KWakDpvTm7KuBLCG7royYQ0lMAsmSol24XTrpoWMOTcQ4JPwC/Gd
+ 5zJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=wCUem1x/ylV1bJblqN5DyUuj9iRlSTgirM+Nihz6Yc0=;
- b=mGFmNCYUgwERKWufINlu1qYB9qaRGM0/ncmDuYjPODCzd+zWFEiDZq4hEqHF2L50Q0
- fHsS/ZndSajf5PQbhAInwpg2mv4QGIZB4byPDbM3QT4T5nv9JkGRBJX2st6qslMB+v0U
- zq1UR5R+msNmG5ewNwQCw/EkWaM0PedoaJxU0I54Rhyr/6iE0cRPCWes9iH3nSbnxdvY
- r9bHQscGOpTPkmIW1BDwDgxE6qDe27BCkpso5kgu0BJ3k2D90dXXI+EY5EXT5RRRGdya
- 99E8qj3nyt/eqsvxy2C7Awah9yo0eKhJpbMa+2+5RGa5rIgH00QVbXUuKM+NoncmcDIX
- OMHg==
-X-Gm-Message-State: APjAAAVo4JFygdWmVhJ+ct3lEQOoUDz2YEFRak8LIKoifTQDA2fGXjgC
- nJb4DFdPdY7ZiBSb6m2cRjqZ8A==
-X-Google-Smtp-Source: APXvYqxVNdT42fnzi2SZEZYBxORLSTPqXLfNElPuLBHxSdMY7xWL/p1mDc4dwYQBFNxX2+n1KhaIwg==
-X-Received: by 2002:a17:902:ab98:: with SMTP id
- f24mr95930813plr.223.1558611982802; 
- Thu, 23 May 2019 04:46:22 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=L7jtC9YLwA0closzFKH5J5lT2qmKzUMNqjaIDumr77w=;
+ b=rV8aQa1yMwCJWaCx/fHTeqT/C1XBhCcBZ6hDUzTpud8ru4g9yd8B35lR2chS4Yv1as
+ 4e+MSiHD5OgsB/VAYMFt+d55BKmYa1gPsDc4MvNvipFmNklV/5doB4lBYh52sBxfVLMM
+ cKpsGMkPd15aduMs9bt8N2J5M9Gh8MrFvP19peDKfwKHzBpCVr/28+OpBvDv9yfnIVPY
+ Tfc4Aep9y6K6JhlrP0fZfSAb1xtenYJF0ZRdn92qAvgVqLnHyOf5z3aWXEdpg4xqm0MX
+ z1YB7CSi2O1NlpVQR9w8ArCLZe5ofVEvrXlKk14gyKg0v34BbQqXhh5fWfvMYPT13z2B
+ kZAQ==
+X-Gm-Message-State: APjAAAWALwC8RwfHFxe97bma8Pd/smrR/hxRbZ0elREm5/lWpVnAj+Vr
+ uJpIOmbwoYkUoI0Ul+CyauYR3w==
+X-Google-Smtp-Source: APXvYqzYfysVuLot60OmXdN5I7JacwSrGu0ekg3Gy2uMSozgIxzrs6RFjWap2hpiFOPQOvuCvlVNqg==
+X-Received: by 2002:a17:902:1121:: with SMTP id
+ d30mr2953751pla.153.1558611989302; 
+ Thu, 23 May 2019 04:46:29 -0700 (PDT)
 Received: from buildserver-90.open-silicon.com ([114.143.65.226])
- by smtp.googlemail.com with ESMTPSA id l43sm565045pjb.7.2019.05.23.04.46.17
+ by smtp.googlemail.com with ESMTPSA id l43sm565045pjb.7.2019.05.23.04.46.24
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 23 May 2019 04:46:21 -0700 (PDT)
+ Thu, 23 May 2019 04:46:28 -0700 (PDT)
 From: Yash Shah <yash.shah@sifive.com>
 To: davem@davemloft.net, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-riscv@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH 0/2] net: macb: Add support for SiFive FU540-C000
-Date: Thu, 23 May 2019 17:15:50 +0530
-Message-Id: <1558611952-13295-1-git-send-email-yash.shah@sifive.com>
+Subject: [PATCH 1/2] net/macb: bindings doc: add sifive fu540-c000 binding
+Date: Thu, 23 May 2019 17:15:51 +0530
+Message-Id: <1558611952-13295-2-git-send-email-yash.shah@sifive.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1558611952-13295-1-git-send-email-yash.shah@sifive.com>
+References: <1558611952-13295-1-git-send-email-yash.shah@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_044623_985336_77D36617 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190523_044629_805782_88AEC392 
+X-CRM114-Status: GOOD (  11.47  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -103,31 +106,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On FU540, the management IP block is tightly coupled with the Cadence
-MACB IP block. It manages many of the boundary signals from the MACB IP
-This patchset controls the tx_clk input signal to the MACB IP. It
-switches between the local TX clock (125MHz) and PHY TX clocks. This
-is necessary to toggle between 1Gb and 100/10Mb speeds.
+Add the compatibility string documentation for SiFive FU540-C0000
+interface.
+On the FU540, this driver also needs to read and write registers in a
+management IP block that monitors or drives boundary signals for the
+GEMGXL IP block that are not directly mapped to GEMGXL registers.
+Therefore, add additional range to "reg" property for SiFive GEMGXL
+management IP registers.
 
-Future patches may add support for monitoring or controlling other IP
-boundary signals.
+Signed-off-by: Yash Shah <yash.shah@sifive.com>
+---
+ Documentation/devicetree/bindings/net/macb.txt | 3 +++
+ 1 file changed, 3 insertions(+)
 
-This patchset is mostly based on work done by
-Wesley Terpstra <wesley@sifive.com>
-
-This patchset is based on Linux v5.2-rc1 and tested on HiFive Unleashed
-board with additional board related patches needed for testing can be
-found at dev/yashs/ethernet branch of:
-https://github.com/yashshah7/riscv-linux.git
-
-Yash Shah (2):
-  net/macb: bindings doc: add sifive fu540-c000 binding
-  net: macb: Add support for SiFive FU540-C000
-
- Documentation/devicetree/bindings/net/macb.txt |   3 +
- drivers/net/ethernet/cadence/macb_main.c       | 118 +++++++++++++++++++++++++
- 2 files changed, 121 insertions(+)
-
+diff --git a/Documentation/devicetree/bindings/net/macb.txt b/Documentation/devicetree/bindings/net/macb.txt
+index 9c5e944..91a2a66 100644
+--- a/Documentation/devicetree/bindings/net/macb.txt
++++ b/Documentation/devicetree/bindings/net/macb.txt
+@@ -4,6 +4,7 @@ Required properties:
+ - compatible: Should be "cdns,[<chip>-]{macb|gem}"
+   Use "cdns,at91rm9200-emac" Atmel at91rm9200 SoC.
+   Use "cdns,at91sam9260-macb" for Atmel at91sam9 SoCs.
++  Use "cdns,fu540-macb" for SiFive FU540-C000 SoC.
+   Use "cdns,sam9x60-macb" for Microchip sam9x60 SoC.
+   Use "cdns,np4-macb" for NP4 SoC devices.
+   Use "cdns,at32ap7000-macb" for other 10/100 usage or use the generic form: "cdns,macb".
+@@ -17,6 +18,8 @@ Required properties:
+   Use "cdns,zynqmp-gem" for Zynq Ultrascale+ MPSoC.
+   Or the generic form: "cdns,emac".
+ - reg: Address and length of the register set for the device
++	For "cdns,fu540-macb", second range is required to specify the
++	address and length of the registers for GEMGXL Management block.
+ - interrupts: Should contain macb interrupt
+ - phy-mode: See ethernet.txt file in the same directory.
+ - clock-names: Tuple listing input clock names.
 -- 
 1.9.1
 
