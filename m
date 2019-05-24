@@ -2,85 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDD3629EC3
-	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 21:04:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 24C6C29ECB
+	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 21:05:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SaFo+JOfW09Enc3IDLFZhTvT77Qp40E0iYgDxG5jDBU=; b=XbgodQyDuHv0pQ
-	MHaeYRD6yzcuohKz5pAVHOSk0lAKP/0c9FOhI2d3Xztg4OFjgR3H7WZDdAUDVXDL5iAsngxwNLRpK
-	xTbORlN4+UFpqiF5q2QKEEztO8U7WZ1NW+mOj9WTc8BhcljjIozhN0cmprZvsQRkeC6d2CwiWD8/X
-	obxwGf77N0KT0q+SaMphWT0BptvU+up8n2gi1Kmce+u/EKfbPAgkMIPUv5zVKYQO0zFDIxnrOwx0U
-	dAAGotZhMLOPBApvInsPYyv0asfI8DVPiU+CHDjm5rySZ7Ur/CiFmuZdKCYzWcZiXFNazUIFjGIg+
-	fkEaH366mwvP4wdHYKIQ==;
+	List-Owner; bh=PUyugT0yS9b7iPgZyMtTeJpjSDyyuX5J7VuEYbEnxyc=; b=FBDOvaZttBPxJ+
+	C/RDcNWfuoxSHyjd7NKUMembrQddlRjM72wKwTjX563rzyOA0H0AvVNnuusmXNlHB/x4F6ppZn7Cp
+	u67OevBGme2yh0o/v0Ovo6V6RLTDP0CcCm0Vh7yk26SnMWFx++XS6EVtQaHOALwKrPo6e3UnVSlU2
+	+Efntj7W/yKNvVYMJlCHdZxh1U3zYZtHjfEfLqe8uW3FCJDSBUVkYsXh20b4v390ja3lDMN4O85II
+	rzIOfz++/M9XivqI0nQdN9OGPMv+rpECtB9etU4OnJUn8sLG/8IauA84aZSkO+ML59laSBy6IKA8A
+	kdEVOw5IdX+BLqnirj7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUFU7-0004BM-8v; Fri, 24 May 2019 19:04:07 +0000
-Received: from mail-it1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1hUFVe-0005Tm-10; Fri, 24 May 2019 19:05:42 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUFU4-0004B0-J8
- for linux-riscv@lists.infradead.org; Fri, 24 May 2019 19:04:06 +0000
-Received: by mail-it1-x141.google.com with SMTP id m141so17514039ita.3
- for <linux-riscv@lists.infradead.org>; Fri, 24 May 2019 12:04:02 -0700 (PDT)
+ id 1hUFVa-0005TC-O9
+ for linux-riscv@lists.infradead.org; Fri, 24 May 2019 19:05:40 +0000
+Received: by mail-lf1-x142.google.com with SMTP id n134so7887190lfn.11
+ for <linux-riscv@lists.infradead.org>; Fri, 24 May 2019 12:05:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=y7FSlCxqTiV+aLCWbjQJU9D9WKVJd8Msu18nAcu9DFc=;
- b=jzqotPlIAoWjYw9nwGN5Eb/pre+KCTIlEV1TSTZ/yukCjmfBAhLUCEURGP4o1zh8kO
- 4qnYmteqICiT/lnax3iYhGGiyvQrAtp9H0LILlgSUVUF86zObhje26I5Csr1CUlRCpUs
- WszM2X2rmJcniiR+IzzbcnGRc9cGm0MBynIlEWKFAdcH4nx2uGwdS7ooF2qvFO52gEc9
- 2VjCJX6WXoMWknjTgps+XU0TZZhT4YHjlk8tkBClddqycaurUZTKPsGzidC33sp84tbE
- MPUmobw1kODlpnc80a5RJzP2Mn2CP9vqpqTC1cqbbY5qcZ51/FOiidNkvHmIgFLs2ZM4
- DS1A==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IcAnH86T3sfcO/+/fzByIpUjk5KavxuA9ijhPaAlaz4=;
+ b=YWjJZ2ogxHjlGra2IM05J+QQPhsEEj2UdAth51F3bn84dK8qZS4jb5swkCY+KW1sNe
+ 6l8nSTzSrdTcP6xAIrHSfY2RQHZSTlDEezD/AMSlUeVFTQ1HJvx+ObDTpSOe0a7ELSC5
+ 4tQZQrMTwOY9b6qZbpq472xshbHFsaXsqhw+iGC9db6tqfUqCW3n41QMBGPszEwPtEsz
+ jT9RD1kR+TWX61kyAs1TumVhYdasmYmo3PQayThiOWGGiFOlaVfEDsTTTGxsaCHFtS0l
+ MMevMzmmYDsGJgPKwJ/v/ZoA4s0y4tUPshYri/emyyf+Jp8i8MgEWG1vg/EOlX/mFf+4
+ pARg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=y7FSlCxqTiV+aLCWbjQJU9D9WKVJd8Msu18nAcu9DFc=;
- b=mo+UxfSGnZCf/ULk5WvPV63G/lv71nx7zfY5a5X4dOTf/cTcQF77v9mOJ7aQsdwVDU
- YkN4EroUeM71VPIYLscTsJ40kl2ej27hdYXiASIgiNQb4IN+YR1piqCAWgAZ7p7G3hTf
- 3nhk1Vwvoza3UIQjcf488P8cTrkq7F4h8tsg+r+yTDDXrYueze4Hghc1Eo0f3jpxDT1N
- qtSAWRG67dsK3Y7QTPrrVltW5/qpYifIcVJSFniXHNCfnfU9wjsxjGOi3zZ/A7X/Jx+l
- i8vjfz2IzTYzU3aqYEZJFebCHoGtQmlSB/U1QCMXfZXFqjlMnQyWGMdYaJBF2c9c77qy
- nNlA==
-X-Gm-Message-State: APjAAAWWVJkvVoHf9oo1g/XYGfcO0IdOJDE5H6Ej/zJnQQn6u/mbZgYz
- AOdloz3CjgQEe8cM8aYruhEL1w==
-X-Google-Smtp-Source: APXvYqzmgsVPegnWTfR8/Z+M4a3NZhLy3c7dVScTI24947fSqOal+tw6sXz+yyRwBm4cieHnxdpseg==
-X-Received: by 2002:a24:874a:: with SMTP id f71mr20199551ite.142.1558724642016; 
- Fri, 24 May 2019 12:04:02 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- x20sm1120899ioa.40.2019.05.24.12.04.01
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 24 May 2019 12:04:01 -0700 (PDT)
-Date: Fri, 24 May 2019 12:04:00 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH v2] PCI: endpoint: Set endpoint controller pointer to null
-In-Reply-To: <20190524063809.GA25866@infradead.org>
-Message-ID: <alpine.DEB.2.21.9999.1905241200070.31734@viisi.sifive.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IcAnH86T3sfcO/+/fzByIpUjk5KavxuA9ijhPaAlaz4=;
+ b=mxekKJpr83sChjdxu5lgcGILlPe0p9xklagyioL2X7gP57X/Wx2JnKxbcvZHBo5Jlp
+ /HTeh5Zveht1vpUtv76vqVgbmmx9JhyMiqnCZsaOHkj08piHr2vC/c6gAz08ryG0/eW4
+ Lg8hDU2xCUEo0JWPgrE02mBou44jDCUKWH9T85wE91Oyj4XLE49y6mPMSlMJpEhiZpWI
+ tXSw4+yifiaEB5pURivHr4ZzNG+AJ4iG+Oa4kj16ehaPKiUx6pQDlkGMtl1iNsxYuk0d
+ eOfXk74Mu4Uk104EUZK1CUGz0lyeJPbJTuQ2OXCQlSfnjgd+GgbKuh7bXTzgt35RQZFf
+ xXnw==
+X-Gm-Message-State: APjAAAXvU3aLFHZF4dFXwsiE7DEHR/lKWVJZ8Q4YjRouc+CYzE6J43SF
+ oFbmpiIY6hy+zf9eOhnr/wSWTHOA1t0u/66RXmYCyg==
+X-Google-Smtp-Source: APXvYqzL98vEC+5SIhjQeT4fwK/3q+uthND66cXfJWhz/scyFl738RRZzV0mPm5Q1F8WnTHwpo8eKxxsMFWCNB/IKJM=
+X-Received: by 2002:a19:4317:: with SMTP id q23mr824079lfa.185.1558724735866; 
+ Fri, 24 May 2019 12:05:35 -0700 (PDT)
+MIME-Version: 1.0
 References: <1558647944-13816-1-git-send-email-alan.mikhak@sifive.com>
  <20190524063809.GA25866@infradead.org>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
-MIME-Version: 1.0
+ <alpine.DEB.2.21.9999.1905241200070.31734@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1905241200070.31734@viisi.sifive.com>
+From: Alan Mikhak <alan.mikhak@sifive.com>
+Date: Fri, 24 May 2019 12:05:24 -0700
+Message-ID: <CABEDWGzbg0tU8ZnEYSOrivhek82Emv3g3Y9X-jv6-svLypXbuw@mail.gmail.com>
+Subject: Re: [PATCH v2] PCI: endpoint: Set endpoint controller pointer to null
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190524_120404_695150_B321D918 
-X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-CacheID: sfid-20190524_120538_789730_5F2C1A97 
+X-CRM114-Status: UNSURE (   8.87  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:141 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:142 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -99,27 +92,31 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alan Mikhak <alan.mikhak@sifive.com>, palmer@sifive.com,
- linux-riscv@lists.infradead.org
+Cc: Christoph Hellwig <hch@infradead.org>, linux-riscv@lists.infradead.org,
+ Palmer Dabbelt <palmer@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 23 May 2019, Christoph Hellwig wrote:
+The get_maintainers.pl script also suggests linux-riscv mailing list.
 
-> [trimming recipient list]
-> 
-> 
-> How is this related to arch/riscv?
-
-This was my doing: I suggested to Alan that he copy these messages to the 
-linux-riscv mailing list.  We're seeing interest from people who want to 
-build PCIe cards based on RISC-V Linux, so I thought it might increase the 
-potential review coverage for these patches.
-
-
-- Paul
+On Fri, May 24, 2019 at 12:04 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+>
+> On Thu, 23 May 2019, Christoph Hellwig wrote:
+>
+> > [trimming recipient list]
+> >
+> >
+> > How is this related to arch/riscv?
+>
+> This was my doing: I suggested to Alan that he copy these messages to the
+> linux-riscv mailing list.  We're seeing interest from people who want to
+> build PCIe cards based on RISC-V Linux, so I thought it might increase the
+> potential review coverage for these patches.
+>
+>
+> - Paul
 
 _______________________________________________
 linux-riscv mailing list
