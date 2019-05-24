@@ -2,8 +2,8 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 191A329359
-	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 10:46:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A7C129369
+	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 10:50:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -11,72 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=WwBCAPPWS0qQbDbEvpvgtiBgJvt99/OulJ3p8hLLYlE=; b=qy4jc9Syv5Cz0GrGPGFjI3GSBQ
-	pXlvnlPA7xNu+Cge/AgJWkKZjiAPlDChVDo7CBmeDHY3hwPWGbYfyOcVtLGYkJM5JEAk9PzCzsu0s
-	OwgO1Qoso0vTevaXPeISTZptHoMftU2bXl804u+Y/FQWcJh0Z8waxsQk2Z61fP0JojFasZBmJz294
-	tBAowLfBtOetPTJ24k3LP5lvV2f1WAPfqP8jBjj5lmgMQZqxupkaUu/XIAIfThzjI1dSBlzxsb9MR
-	gGULGj0S5zGXI3TSfYXnkuwEga4jMMjlQ7rEBq4xFljvnsj+8Ws5JGnKc4EUiT84LUeeY4tQC3nED
-	UMZFa0AQ==;
+	bh=22RA2a/qPmaiY9UjZdSOrZk/iwkmaRfEIYWYRKU+qv0=; b=gyeKTEShiJkbSdybk8/iR+QaaN
+	iooOCtKccluIdX7UMFHY1Enf84dfTfslmy8flS8HpPzHL96DecUcUMANgKIjn4LFJxWgBEIFZKdrA
+	j0cQOOI0X+EplKINlNnYI0dbqUUz3AFqtaoeeADBNA0z2/5uLqYFST+y0LaFElfnFbqpKd/hEft3c
+	u4YxIYG4zP0BWNRBnDBu9p+7wr1XdKqHzdzKN+hrM9DVhT5NTZM4PX3r+wXxkQYlQTINUw+xsOrvC
+	dzQvBqOLXXfcdLnyLdVGW2eblxG/0lwLVAlD15cgjaiD/EaVrvH7PPw9qtmkawhABaECvA9Uqjnas
+	UuqI0dUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hU5q9-0007XG-Sd; Fri, 24 May 2019 08:46:13 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1hU5uF-0000Wu-1h; Fri, 24 May 2019 08:50:27 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hU5q7-0007Ws-7Y
- for linux-riscv@lists.infradead.org; Fri, 24 May 2019 08:46:12 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x4O8k6S3092885;
- Fri, 24 May 2019 03:46:06 -0500
+ id 1hU5uB-0000WO-Sh
+ for linux-riscv@lists.infradead.org; Fri, 24 May 2019 08:50:25 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+ by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id x4O8oKVl026215;
+ Fri, 24 May 2019 03:50:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1558687566;
- bh=DXFEDPWPKDOFxRB075nEECWtEkWPXsJvcN4FB3Z5q1Y=;
+ s=ti-com-17Q1; t=1558687820;
+ bh=/qvsKjjrzMOuqfE4AI6CHRCXStcPXbN8fsAEk/gLESs=;
  h=Subject:To:References:From:Date:In-Reply-To;
- b=Bfhp6HtrbU4jNqmpwALOr7PuPYMbsCKxQAY9SrbT2FRyn33xyzinHbS+fW9MZ9YYx
- woEVabr2VXFv/C4NiUl2k5nSdN1vJQHlaR/2WZbchu/o3/4R98whqTp16nuMVOj57N
- rLPDj86zqVw1fiKqm8tqzOgD8n/QDDsr/Gophvi8=
-Received: from DFLE113.ent.ti.com (dfle113.ent.ti.com [10.64.6.34])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x4O8k6Gj087569
+ b=nVJO//LY62/0eRWDhHco9r9Bn/VCALRTJ4cKK7P3GOCXtmUaVUYabTcb0j6z27Bti
+ DrlyB/6s8pbI4KERybu7FufAsgGmRlkezij6fJX1mh51ntKdt655a26rdsL725llrU
+ 7xYKGNaA7uOQFYabwoN4RWdUiuwf9jgiLeFh2mMM=
+Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
+ by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x4O8oKWS061465
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Fri, 24 May 2019 03:46:06 -0500
-Received: from DFLE105.ent.ti.com (10.64.6.26) by DFLE113.ent.ti.com
- (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
+ Fri, 24 May 2019 03:50:20 -0500
+Received: from DFLE109.ent.ti.com (10.64.6.30) by DFLE100.ent.ti.com
+ (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Fri, 24
- May 2019 03:46:05 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE105.ent.ti.com
- (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
+ May 2019 03:50:20 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE109.ent.ti.com
+ (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Fri, 24 May 2019 03:46:05 -0500
+ Frontend Transport; Fri, 24 May 2019 03:50:20 -0500
 Received: from [172.24.190.233] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id x4O8k1C2076108;
- Fri, 24 May 2019 03:46:02 -0500
-Subject: Re: [PATCH v2] PCI: endpoint: Allocate enough space for fixed size BAR
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id x4O8oHsQ020943;
+ Fri, 24 May 2019 03:50:18 -0500
+Subject: Re: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
 To: Alan Mikhak <alan.mikhak@sifive.com>, <linux-pci@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <lorenzo.pieralisi@arm.com>,
- <linux-riscv@lists.infradead.org>, Palmer Dabbelt <palmer@sifive.com>, Paul
- Walmsley <paul.walmsley@sifive.com>,
- Bjorn Helgaas <bhelgaas@google.com>, <gustavo.pimentel@synopsys.com>,
- <wen.yang99@zte.com.cn>, <kjlu@umn.edu>
-References: <1558648079-13893-1-git-send-email-alan.mikhak@sifive.com>
- <CABEDWGxMXg7RAgrUL-7W6vgC0BpCj9ys+i7myjxdBgn3vn_P6Q@mail.gmail.com>
+ <linux-riscv@lists.infradead.org>, <palmer@sifive.com>,
+ <paul.walmsley@sifive.com>
+References: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
 From: Kishon Vijay Abraham I <kishon@ti.com>
-Message-ID: <a08ce87a-d515-b1c3-a903-6777e18c87ae@ti.com>
-Date: Fri, 24 May 2019 14:14:47 +0530
+Message-ID: <5ea275c0-b502-1f3e-c94d-487f3e0292fc@ti.com>
+Date: Fri, 24 May 2019 14:19:03 +0530
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <CABEDWGxMXg7RAgrUL-7W6vgC0BpCj9ys+i7myjxdBgn3vn_P6Q@mail.gmail.com>
+In-Reply-To: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
 Content-Language: en-US
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190524_014611_350907_910B268A 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20190524_015024_004920_A3777D8D 
+X-CRM114-Status: GOOD (  18.17  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [198.47.19.141 listed in list.dnswl.org]
+ medium trust [198.47.19.142 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -103,51 +100,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hi,
 
-
-On 24/05/19 5:26 AM, Alan Mikhak wrote:
-> +Bjorn Helgaas, +Gustavo Pimentel, +Wen Yang, +Kangjie Lu
+On 24/05/19 3:25 AM, Alan Mikhak wrote:
+> Always skip odd bar when skipping 64bit BARs in pci_epf_test_set_bar()
+> and pci_epf_test_alloc_space().
 > 
-> On Thu, May 23, 2019 at 2:48 PM Alan Mikhak <alan.mikhak@sifive.com> wrote:
->>
->> PCI endpoint test function code should honor the .bar_fixed_size parameter
->> from underlying endpoint controller drivers or results may be unexpected.
->>
->> In pci_epf_test_alloc_space(), check if BAR being used for test register
->> space is a fixed size BAR. If so, allocate the required fixed size.
->>
->> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
+> Otherwise, pci_epf_test_set_bar() will call pci_epc_set_bar() on odd loop
+> index when skipping reserved 64bit BAR. Moreover, pci_epf_test_alloc_space()
+> will call pci_epf_alloc_space() on bind for odd loop index when BAR is 64bit
+> but leaks on subsequent unbind by not calling pci_epf_free_space().
+> 
+> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
+> Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
+> ---
+>  drivers/pci/endpoint/functions/pci-epf-test.c | 25 ++++++++++++-------------
+>  1 file changed, 12 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+> index 27806987e93b..96156a537922 100644
+> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
+> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+> @@ -389,7 +389,7 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
+>  
+>  static int pci_epf_test_set_bar(struct pci_epf *epf)
+>  {
+> -	int bar;
+> +	int bar, add;
+>  	int ret;
+>  	struct pci_epf_bar *epf_bar;
+>  	struct pci_epc *epc = epf->epc;
+> @@ -400,8 +400,14 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
+>  
+>  	epc_features = epf_test->epc_features;
+>  
+> -	for (bar = BAR_0; bar <= BAR_5; bar++) {
+> +	for (bar = BAR_0; bar <= BAR_5; bar += add) {
+>  		epf_bar = &epf->bar[bar];
+> +		/*
+> +		 * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
+> +		 * if the specific implementation required a 64-bit BAR,
+> +		 * even if we only requested a 32-bit BAR.
+> +		 */
 
-Acked-by: Kishon Vijay Abraham I <kishon@ti.com>
->> ---
->>  drivers/pci/endpoint/functions/pci-epf-test.c | 8 +++++++-
->>  1 file changed, 7 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
->> index 27806987e93b..7d41e6684b87 100644
->> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
->> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
->> @@ -434,10 +434,16 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
->>         int bar;
->>         enum pci_barno test_reg_bar = epf_test->test_reg_bar;
->>         const struct pci_epc_features *epc_features;
->> +       size_t test_reg_size;
->>
->>         epc_features = epf_test->epc_features;
->>
->> -       base = pci_epf_alloc_space(epf, sizeof(struct pci_epf_test_reg),
->> +       if (epc_features->bar_fixed_size[test_reg_bar])
->> +               test_reg_size = bar_size[test_reg_bar];
->> +       else
->> +               test_reg_size = sizeof(struct pci_epf_test_reg);
->> +
->> +       base = pci_epf_alloc_space(epf, test_reg_size,
->>                                    test_reg_bar, epc_features->align);
->>         if (!base) {
->>                 dev_err(dev, "Failed to allocated register space\n");
->> --
->> 2.7.4
->>
+set_bar shouldn't set PCI_BASE_ADDRESS_MEM_TYPE_64. If a platform supports only
+64-bit BAR, that should be specified in epc_features bar_fixed_64bit member.
+
+Thanks
+Kishon
 
 _______________________________________________
 linux-riscv mailing list
