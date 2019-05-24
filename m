@@ -2,74 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67D8829034
-	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 06:54:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BB9B29037
+	for <lists+linux-riscv@lfdr.de>; Fri, 24 May 2019 06:57:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kNVNjGOMoYwfIRpf524x/Uq9BAuTTDXjsSeM2alOOxM=; b=qKXuxxeYjpjSE0
-	RlTMJfo2fQs/UT9XT8S5CBuDlGqB0La98NStyly1jM7nA6TZ42OphNTf2iM968IOa+fkK5XdOO+BW
-	fvx2mb3Uku0JsSz4OO3ymRMz38IO3oSdkHogExMOEs7ue0+c234Oal4tY5jhmVpVl1uZuOKbsPgOq
-	bkKaGDAJePbfON+CoEtI3Gi1jzg/SCR59G5SQrOyRwrU9DobgomBWeqTrrMcqvPRG60QRIk2w13Y1
-	bsKZKKOE/jZZFkUzstOgcrkLtBNNhFJsOefENrTOHQiw+0iQ1l6Q6k9Qm+BjnigWgb1GTgZNkFiur
-	DymKJo3JK7uwrUELJZ3Q==;
+	List-Owner; bh=jOYf62mmyIZ12Z6XsP3SCgx/hWM5w7XhVqufuTmIG+o=; b=O4gYTTYzq0PPZ+
+	N39TqId759MBpx/MofshgVQaxK9VXqUYdFzzns9tLDTczvWIEJ5cpS2d6WeHjeVEl3+R/oEKvFV4S
+	nCvic9xuTWT+u7LH4ShWQkMBUM+1T7VUdHGPhAxJADMrqFD5kKJT6R5UD3msY1vaIJS4UJGzGUBpl
+	TAGEB37VJjg0uqSzYdmTjEfgF5uj2EFoofHp67CLbHT/aTuKX62LV2QEdTU1EAz3bc0XPmk5tDpiU
+	TXy6SdAH1Ad4Gc+RH8L4vH7PDso2SOODFKeIv5OrFYmM6k/c0k5qIRKfBCXvtc41bh/220u9ls0IZ
+	OvjGcPAF6Sfc9QEJhvzA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hU2EG-0008Sy-78; Fri, 24 May 2019 04:54:52 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1hU2GX-0001L5-7i; Fri, 24 May 2019 04:57:13 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hU2ED-0008Sa-OK
- for linux-riscv@lists.infradead.org; Fri, 24 May 2019 04:54:51 +0000
-Received: by mail-lj1-x243.google.com with SMTP id h19so1989636ljj.4
- for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 21:54:49 -0700 (PDT)
+ id 1hU2GU-0001Kg-UZ
+ for linux-riscv@lists.infradead.org; Fri, 24 May 2019 04:57:12 +0000
+Received: by mail-lf1-x142.google.com with SMTP id y13so6033735lfh.9
+ for <linux-riscv@lists.infradead.org>; Thu, 23 May 2019 21:57:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0p20JZOm8Q5zL+TRyVFEg8a2DDLhMZrB4Tuc8+bGlVs=;
- b=NdLlu5FyOM02giIhSKVTGqrQ9mhGuv6PA0VT3iSCPaW8gw95H7I7/ye4/yJQ/doBe+
- P3PKfm/STHksEBlqaXdsRxbVZhAUmKQlkVcOQJes9jBlOssmnfWcQo3sZTy1fXSXKC4x
- 3HpUTQuwdDAe2NEQRIsIBBpcDgeU8kW7pY7gWOk++jtNIDdBxy1TsJcssLIa1CSReK1f
- OwjdlzjjuVrT0rWaZc/WAKIWBOzGBgefCexjSCfUNFpNr5AcTa4H4+o1Bh546B3Mbnxh
- 51qENYczplF8E3vogRwa8U2fHQ7hK8WKdu+9/ETb86swbsAdzty14xuWE3J3kk5iF0Yf
- dl/g==
+ :cc; bh=G+qCr2MdO19dY/8onl90bo6ep9ea9k6Z+aDecmV1lDU=;
+ b=NJeg0VK+SWxhX3lS74jS+A9OVcoe/UK1VhVitVIHaQDI/w8aKHpyEeAUqNJtX5YVL+
+ N4Bp7sCjMU+Zm2+0EbHO5aOHag9ssQl0W3Wr5VuvaJgnbLEAnKiBjGy222kI85wRHCmQ
+ zFOtk7hZFD5U+deEEv6F6RO49WvqPKidKACPt1wuixwcT64OwvFGEP9oiYWEKnRHHdJg
+ /z/UDgaWFDz7+bhzzUQlOn7Ar+j/L3ymuoZ8yPTG7yJ0GVRGCKrafrBl0nmYfbjXmQy5
+ bLI40Kyo6L92zfxeNiuJEV34T7De+BjuBUwdBpqwzGwlRZxlH0135f3JQCzLOgo3CZf+
+ M+Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=0p20JZOm8Q5zL+TRyVFEg8a2DDLhMZrB4Tuc8+bGlVs=;
- b=M9y7UmnQasuUtI5tLHViPlwheAheZwVg+ldpGUK11hTfMfIhg0+0ywfn4ut0REA7In
- ZWzlmXIF8PQKJzzvoDCfQ0shm00ZocyIoJ+nawiWYlnTkHg3eq8SZg532GwZdsNuTup1
- 5mJnSYkVr3Xjaq7XXRX8D0MtaUYW2hy4r4WaE6J5+p6y9NGqeNQpEAugFYV2pdWUqtH8
- zU2mbfB07Th8yL2PTJ7WZGm9mf5FjrGnE79Bww4Fq0l3WHkm9fqmPWlfTVz9s49d36Vs
- Ld4HKdMkjYI4t95Au/wYI+gW/+FprI6yBx9ydihExyEn09Zegd+rewHXEcMgfjemFIMe
- KuMQ==
-X-Gm-Message-State: APjAAAWONf1UjdBFT6UrmhZz6bVH1UNGfVRt3lqIVzqARX/OY8XlhHiz
- 02xTRmFgC0nU2PSRPYlArcYIlz/GnJosBqcwU0ZXhQ==
-X-Google-Smtp-Source: APXvYqw+GBX6IR44aYeJSdzjL+ZaEIKJ61JkR+OOuDdlscXdQs1cdp/fSEKXTniJ9Nxq/1Q2fX0A2wBUzHx8TJZBgtM=
-X-Received: by 2002:a2e:86c2:: with SMTP id n2mr18578922ljj.23.1558673687971; 
- Thu, 23 May 2019 21:54:47 -0700 (PDT)
+ bh=G+qCr2MdO19dY/8onl90bo6ep9ea9k6Z+aDecmV1lDU=;
+ b=b1IEzwbb3lUhOyF23Ub89I+3F2dsY7FQy2dlMOY3PAXuWHGTn/S5PE6Gt+OUetKFUT
+ qktM4Bm8qJh4nSCpBHx53yAh4FX/GlfO4IIJz/o/5BKkGeVcMEIlfoK79gWErQED+u6O
+ g1+KFTB03fmJzwS16PgKETquAHCUs6JMZcDg6UD8s6nVnxxPazU7E5ESafmlgOaFITEt
+ KYuBKn6yO2YFcQyxnnwOrKkhhIRD/WsOO2ij/luPhlVdQcPEqbNWHCL4CbwH3Pv3hs5o
+ w9oG5NCgfww738jZabqq4rkDUH19bZVS4Cz6F5h7dO8MYfsZUzzQAzoZe6xs/809qTnP
+ H24w==
+X-Gm-Message-State: APjAAAW/yZB0d5KZMAc8FRQUSLR+pfcjyXQfZq3eiGBGlbPtkWH7F9g1
+ fGdy1STQb/9e/2l12w7+aKOLxryb5OtNYBbMag0zdA==
+X-Google-Smtp-Source: APXvYqwRkhSZNZodU87MNix/BTrEDGt12SfhEiNeQb7LL1hUJoV2OadkJavkiG2qnAzTw1tidLRoSrRs3E9/C+Q5K9Q=
+X-Received: by 2002:ac2:4a6e:: with SMTP id q14mr12821755lfp.46.1558673829099; 
+ Thu, 23 May 2019 21:57:09 -0700 (PDT)
 MIME-Version: 1.0
 References: <1558611952-13295-1-git-send-email-yash.shah@sifive.com>
- <20190523.092825.2184612182055559835.davem@davemloft.net>
-In-Reply-To: <20190523.092825.2184612182055559835.davem@davemloft.net>
+ <1558611952-13295-2-git-send-email-yash.shah@sifive.com>
+ <CAL_Jsq+p5PnTDgxuh9_Aw1RvTk4aTYjKxyMq7DPczLzQVv8_ew@mail.gmail.com>
+In-Reply-To: <CAL_Jsq+p5PnTDgxuh9_Aw1RvTk4aTYjKxyMq7DPczLzQVv8_ew@mail.gmail.com>
 From: Yash Shah <yash.shah@sifive.com>
-Date: Fri, 24 May 2019 10:24:11 +0530
-Message-ID: <CAJ2_jOHPbFYtLYoCD0jtpLEyDM9is9gr7sbF+yZCHyfERZc48A@mail.gmail.com>
-Subject: Re: [PATCH 0/2] net: macb: Add support for SiFive FU540-C000
-To: David Miller <davem@davemloft.net>
+Date: Fri, 24 May 2019 10:26:32 +0530
+Message-ID: <CAJ2_jOEErFdK=n7Brk5A_950vfikdFcxcRri4HXgJWqf0-zR=w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] net/macb: bindings doc: add sifive fu540-c000 binding
+To: Rob Herring <robh+dt@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_215449_794385_045C9848 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190523_215710_995928_794DD377 
+X-CRM114-Status: GOOD (  14.10  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:243 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:142 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -91,26 +91,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
- netdev@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com,
- Sachin Ghadi <sachin.ghadi@sifive.com>, robh+dt@kernel.org,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- ynezz@true.cz
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, netdev <netdev@vger.kernel.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>, linux-riscv@lists.infradead.org,
+ David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 23, 2019 at 9:58 PM David Miller <davem@davemloft.net> wrote:
+On Fri, May 24, 2019 at 2:20 AM Rob Herring <robh+dt@kernel.org> wrote:
 >
+> On Thu, May 23, 2019 at 6:46 AM Yash Shah <yash.shah@sifive.com> wrote:
+> >
+> > Add the compatibility string documentation for SiFive FU540-C0000
+> > interface.
+> > On the FU540, this driver also needs to read and write registers in a
+> > management IP block that monitors or drives boundary signals for the
+> > GEMGXL IP block that are not directly mapped to GEMGXL registers.
+> > Therefore, add additional range to "reg" property for SiFive GEMGXL
+> > management IP registers.
+> >
+> > Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> > ---
+> >  Documentation/devicetree/bindings/net/macb.txt | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/net/macb.txt b/Documentation/devicetree/bindings/net/macb.txt
+> > index 9c5e944..91a2a66 100644
+> > --- a/Documentation/devicetree/bindings/net/macb.txt
+> > +++ b/Documentation/devicetree/bindings/net/macb.txt
+> > @@ -4,6 +4,7 @@ Required properties:
+> >  - compatible: Should be "cdns,[<chip>-]{macb|gem}"
+> >    Use "cdns,at91rm9200-emac" Atmel at91rm9200 SoC.
+> >    Use "cdns,at91sam9260-macb" for Atmel at91sam9 SoCs.
+> > +  Use "cdns,fu540-macb" for SiFive FU540-C000 SoC.
 >
-> Please be consistent in your subsystem prefixes used in your Subject lines.
-> You use "net: macb:" then "net/macb:"  Really, plain "macb: " is sufficient.
+> This pattern that Atmel started isn't really correct. The vendor
+> prefix here should be sifive. 'cdns' would be appropriate for a
+> fallback.
 
-Sure, Will take care of this in the next revision of this patch.
+Ok sure. WIll change it to "sifive,fu540-macb"
+
 Thanks for your comment.
-
 - Yash
 
 _______________________________________________
