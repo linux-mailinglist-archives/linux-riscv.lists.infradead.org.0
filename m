@@ -2,65 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D10C42A550
-	for <lists+linux-riscv@lfdr.de>; Sat, 25 May 2019 18:25:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 939532A601
+	for <lists+linux-riscv@lfdr.de>; Sat, 25 May 2019 20:10:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I98+AAjXCOFsADBDoeltKzyrOz4D7vSkOUdj/y3otpc=; b=r9mTGQHM90uWww
-	txcuY/L9z8hgEk00/54cQCDSk/M9f/Le0ha/FRH5spfAKVvgcmDWpSOpgA/iq7p/9+SFwlM9QfooG
-	IxeGzhnLMw/OFNU+c2ZiygC+XLcsKBgqvlw9+Ua0COhvbPZ0MVmdXrI9U+GM997VTzbslMZcrHPxs
-	uXOE+c+6/oURLjekijnR8/P9bjvqxJJqMq6O1HeWUjEGn6NBbcINi4dXnC/EPxhyX1U+6+oCJOxUS
-	x24oun8eTh996qdsqTJOiIUGxeahC1dZxk+qZqEH9DQ3R/lR+135oVHoYkLP+UivtOHLckPIL1b2a
-	mlrRdkrkgRmJiqUlfnuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hjbSaay2z7/BBbpg0TmkxuMEUjgPNa+C8gUVkwvWmHg=; b=MHOWlzQUKg2TBD
+	inUTTvO3m024Kleh9zHxJbukoe4pYp74kAyeN+Mhm0+ZfnLLtvL1PSwAAagNGxh+/3zMDRQZYEISf
+	heICV66LywhR1EvYTBDknnfyQ+gKIfnwsC1geYhjVqLCgvR3ZpSHJtT+hDMOOKNHyjfdc2IZzapUU
+	s0tcTJckI7zU9FaW2ls6LOKj1r8ppc2qxSZ+PWXqpV4d8vBYMYoqtgZ9jbX0A912fpLqyAqBaqt3I
+	2vq9sg5zfmOdSNj+/mVme24HB44bBgEh4hd4yPHCeP3oovEnThcC7kAk68oReaVXqo+y/fwNrR931
+	+e8uuw7lRR6jlM1A4GjQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUZTh-0007n5-F0; Sat, 25 May 2019 16:25:01 +0000
-Received: from mail-it1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1hUb7A-0006z2-Km; Sat, 25 May 2019 18:09:52 +0000
+Received: from mail-it1-x130.google.com ([2607:f8b0:4864:20::130])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUZSS-00063P-Cu
- for linux-riscv@lists.infradead.org; Sat, 25 May 2019 16:23:46 +0000
-Received: by mail-it1-x141.google.com with SMTP id 9so18283132itf.4
- for <linux-riscv@lists.infradead.org>; Sat, 25 May 2019 09:23:44 -0700 (PDT)
+ id 1hUb6w-0006mu-4E
+ for linux-riscv@lists.infradead.org; Sat, 25 May 2019 18:09:45 +0000
+Received: by mail-it1-x130.google.com with SMTP id h11so18500583itf.5
+ for <linux-riscv@lists.infradead.org>; Sat, 25 May 2019 11:09:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=eDdJn4g0MINmWk3y54ApYJhJcgvIb7PoBWFOAa3eXVI=;
- b=iuaWj/1dkJwqq6lEZY/8laaZix00RSsaFzITMpdOXSz9LkyWzwnD1nApzlLF0YD1f5
- o52eYs5lwbc36aPfKHHZRlFd0jriX5QOmgzsdn7u8O6cyOytJg7ef4bVIVy44tdFnblC
- xN98X4pR9D4z+XhpnqSiWOVpsuVsT2As4yFZUVNPoi8IhZMH6J6OkVX/17XZHqIAxJFv
- cU4fz/mmDEZcPItUXsZVhAzL1TTxoj+gQYpaIpEONXEAv3vzMwOTNETImX/fkK6gr+pX
- GeSjixytzPJ13sPReVhIR6IHNVaPg+184S9zkfL+hXcZIToUYJL7XnKoRmiDunv2UWjq
- E/3w==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=/JaboHZnwBxUnzeqi4AibllsqZoMBBRJcR7OzUX7KTo=;
+ b=IQ60YP3wb1NiUfczQDEARl4dXc98AOjSH8tnQ7WxvhLP0kv9xSbH6SLGNnSEYMNRLQ
+ jr6YdVUPVF3OVOCO0pkiXB4PP4TAkmu40s/NkXEUbhXPtQ3MH8dxZ/Cl4dFCPDwHnzRM
+ prIRuxizYXcjonq8YX0pDDXLwsH6OJ6iWKAFcricTTIZYj66UtQJPTnAU76ixPoWOaZq
+ ZB9vEwA3x9r1fMDF90Tx4d7EhbgolLI1B0CZNb1nFEZQp0GKQ+3kVtFLWoevKjZB4SlF
+ yhJeRp7YOLh4RZ8SsIMxdhMoUUHO0EQW4elYMip4w29OLZhkyo6/82Y1jc1uXa8O9t0O
+ SkSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=eDdJn4g0MINmWk3y54ApYJhJcgvIb7PoBWFOAa3eXVI=;
- b=o9i7Qkuftxt+6tpGp8rKMUJu/n7z74hXtcr6VvQSbkieogwy/Q8mc1HgR4A6Hhi60l
- i/KhnzxkvHEwJTHX7tvLYX6Imb//S3f5ojN1kWc80OzvHE+PhI4P/v7MK0xAiXYYAf1L
- 3it1GjTvdyXndP/I5yweDHeT2qX80GTuSN7ZTnNsI0ysB+F92toQvYSNTmCfute0UGkC
- 9A7Q8a657RK1lrbjBXOLiz2Fp0pKhJuMbvA8gCMEBP/gBGSYul6M8Nq0kQWlNhW+zwtf
- 0/VXIsedefwbLhp3nVDWvaneqaXuTvsvk9NqwUDXI6eSms342AFLsz7i+Taly4OTVb5G
- RYiw==
-X-Gm-Message-State: APjAAAV6h5BMCneZcoagI/1GlIVz7fPd1jGq2MXE1UKRgQhVqfEb79vT
- UD8oUBhPKIlbjWWqN83400+/VaKBK9w=
-X-Google-Smtp-Source: APXvYqx4bR+YkLSXGdltdvaFZLEz/m0cys+/o+sOxollNgpOIOA66jbk3hMv2hqzURH4L2jesXfc5Q==
-X-Received: by 2002:a02:228f:: with SMTP id o137mr71514059jao.39.1558801423243; 
- Sat, 25 May 2019 09:23:43 -0700 (PDT)
-Received: from [192.168.62.194] (71-34-182-131.desm.qwest.net. [71.34.182.131])
- by smtp.gmail.com with ESMTPSA id k78sm2737751itb.10.2019.05.25.09.23.42
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 25 May 2019 09:23:42 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=/JaboHZnwBxUnzeqi4AibllsqZoMBBRJcR7OzUX7KTo=;
+ b=ostYWhNjVHNw2aFuRYEVkLljt2GEOV+uXIQV1jQHWlh4n8g3KFpCpgxSyk9v1Kiovu
+ 73g0klClDik/S33UkG0REfjBTWnIHbTwBeVPnjZH+zUKG6jAGDKmiTDyNoTIONOba+n1
+ TONi27yONigWvZCeTKZq9Xg4HyiBfUkjzlvJbE6aBxPgTA1XA5RvMaEoraPektSBidFB
+ BN0HCa8TFmgqnQsLTxj/gZ+5OJPQdjFuBgRcWSH0Ex6sxZvrhuXZKBSpr33ZtJ8wxAhe
+ Q98PmqvTCszz6kyypPS+c23jBk3VbRz3l00tPXBp/AXQu5waOUUMaFc0lBsRdVz2XEnK
+ FXpQ==
+X-Gm-Message-State: APjAAAUXek71uP4xj4A8Ea8rR/8KgWTJTv0jKDxTSqnozR1hH197eYNv
+ S5iMjE2p6eUTA6+7xBZIzBtFyQ==
+X-Google-Smtp-Source: APXvYqzvHc4gQutFUGlCUVjIl8eF8EVA69x1nY8wX8KqUyHou2jspyDrPIugJgtEJdRt8SLQ5t3bLg==
+X-Received: by 2002:a24:3304:: with SMTP id k4mr16686643itk.161.1558807767236; 
+ Sat, 25 May 2019 11:09:27 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ z21sm2353548ioz.16.2019.05.25.11.09.26
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 25 May 2019 11:09:26 -0700 (PDT)
+Date: Sat, 25 May 2019 11:09:25 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Troy Benjegerdes <troy.benjegerdes@sifive.com>
 Subject: Re: 5.2-rc1 boot on Unleashed
-From: Troy Benjegerdes <troy.benjegerdes@sifive.com>
-In-Reply-To: <MN2PR04MB606103F231BC76C345446A858D030@MN2PR04MB6061.namprd04.prod.outlook.com>
-Date: Sat, 25 May 2019 11:23:40 -0500
-Message-Id: <E5768027-0690-449C-91E7-BD9CBC78B0B2@sifive.com>
+In-Reply-To: <2818D3E3-3BDB-442B-822D-0FD221BCCA05@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1905251058100.15661@viisi.sifive.com>
 References: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
  <alpine.DEB.2.21.9999.1905220942040.20842@viisi.sifive.com>
  <db248e63-c0bc-7fd8-cf2d-d13c8f140036@wdc.com>
@@ -68,24 +70,18 @@ References: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
  <8F4FB234-FD5B-4AD6-99BD-57A40A79A024@sifive.com>
  <aac8c9b2-1b8d-e87d-88a5-f13222004a88@wdc.com>
  <2818D3E3-3BDB-442B-822D-0FD221BCCA05@sifive.com>
- <b59c5bba240ef42f90ec26f8588a444391df02c2.camel@aisec.fraunhofer.de>
- <CC10BC34-0799-45D8-980F-804170CF818B@sifive.com>
- <1b70dc1f-c45f-dc04-f3af-f4a2b463d216@wdc.com>
- <CAF5mof3_PSwpsSMnjMALpfvmOPdeAgDLa2p6jp4y+Hmas83mbw@mail.gmail.com>
- <8c02365af7f3bfbb952ba298ee588dab66f71349.camel@aisec.fraunhofer.de>
- <MN2PR04MB606103F231BC76C345446A858D030@MN2PR04MB6061.namprd04.prod.outlook.com>
-To: Anup Patel <Anup.Patel@wdc.com>
-X-Mailer: Apple Mail (2.3445.9.1)
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190525_092344_742517_5B201ACE 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20190525_110938_206608_785D80E7 
+X-CRM114-Status: GOOD (  10.36  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:141 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:130 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -107,66 +103,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "jamez@wit.com" <jamez@wit.com>, "palmer@sifive.com" <palmer@sifive.com>,
- Atish Patra <Atish.Patra@wdc.com>, "Auer,
- Lukas" <lukas.auer@aisec.fraunhofer.de>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+Cc: Anup Patel <Anup.Patel@wdc.com>, Atish Patra <atish.patra@wdc.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "jcarr@wit.com" <jcarr@wit.com>,
- "bjorn.topel@gmail.com" <bjorn.topel@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Palmer Dabbelt <palmer@sifive.com>,
+ =?ISO-8859-15?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Cgo+IE9uIE1heSAyNCwgMjAxOSwgYXQgMTA6NDkgUE0sIEFudXAgUGF0ZWwgPEFudXAuUGF0ZWxA
-d2RjLmNvbT4gd3JvdGU6Cj4gCj4gCj4gCj4+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4+
-IEZyb206IEF1ZXIsIEx1a2FzIDxsdWthcy5hdWVyQGFpc2VjLmZyYXVuaG9mZXIuZGU+Cj4+IFNl
-bnQ6IFNhdHVyZGF5LCBNYXkgMjUsIDIwMTkgMzowNSBBTQo+PiBUbzogQXRpc2ggUGF0cmEgPEF0
-aXNoLlBhdHJhQHdkYy5jb20+OyB0cm95LmJlbmplZ2VyZGVzQHNpZml2ZS5jb20KPj4gQ2M6IHBh
-dWwud2FsbXNsZXlAc2lmaXZlLmNvbTsgbGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZzsK
-Pj4gamFtZXpAd2l0LmNvbTsgcGFsbWVyQHNpZml2ZS5jb207IEFudXAgUGF0ZWwgPEFudXAuUGF0
-ZWxAd2RjLmNvbT47Cj4+IGJqb3JuLnRvcGVsQGdtYWlsLmNvbTsgamNhcnJAd2l0LmNvbQo+PiBT
-dWJqZWN0OiBSZTogNS4yLXJjMSBib290IG9uIFVubGVhc2hlZAo+PiAKPj4gT24gRnJpLCAyMDE5
-LTA1LTI0IGF0IDEzOjQ4IC0wNTAwLCBUcm95IEJlbmplZ2VyZGVzIHdyb3RlOgo+Pj4gV291bGQg
-YSByZWFzb25hYmxlIGFuc3dlciBiZSB0d28gZGV2aWNlIHRyZWVzLCBvbmUgZm9yIE0tbW9kZSBh
-bmQKPj4gYW5vdGhlciBmb3IgUy1tb2RlPwo+Pj4gCj4+PiBUaGlzIHdvdWxkIGxldCB1cyBlYXNp
-bHkga2VlcCBzeW5jZWQgd2l0aCB0aGUga2VybmVsIHZlcnNpb24KPj4+IAo+PiAKPj4gVGhhdCBt
-YWtlcyBzZW5zZSwgSSB3YXNuJ3QgYXdhcmUgb2YgdGhlIEREUiBpbml0IGRhdGEgaW4gdGhlIGRl
-dmljZSB0cmVlLiBJdCdzCj4+IGdyZWF0IHRvIHNlZSB0aGF0IHlvdSBhcmUgd29ya2luZyBvbiBh
-ZGRpbmcgc3VwcG9ydCBmb3IgdGhlIEREUiBjb250cm9sbGVyIHRvCj4+IFUtQm9vdCEKPj4gCj4+
-IFRoYXQgd291bGQgd29yaywgYnV0IHByb2JhYmx5IHRha2VzIG1vcmUgZWZmb3J0IHRvIG1haW50
-YWluIHRoYW4gaXMgbmVlZGVkLgo+PiBGb3Igc2l0dWF0aW9ucyBsaWtlIHRoaXMsIHdoZXJlIHRo
-ZSBVLUJvb3QgZGV2aWNlIHRyZWUgcmVxdWlyZXMgYSBmZXcKPj4gYWRkaXRpb25hbCBlbnRyaWVz
-IGNvbXBhcmVkIHdpdGggdGhlIGtlcm5lbCBkZXZpY2UgdHJlZSwgVS1Cb290IHByb3ZpZGVzIGEK
-Pj4gdXNlZnVsIGZ1bmN0aW9uLiBJdCBhdXRvbWF0aWNhbGx5IGluY2x1ZGVzIFtib2FyZC1kdHNd
-LXUtIGJvb3QuZHRzaSBpbiB0aGUKPj4gY29tcGlsZWQgZGV2aWNlIHRyZWUsIHdoZXJlIFtib2Fy
-ZC1kdHNdLmR0cyBpcyBzcGVjaWZpZWQgaW4gdGhlIGRlZmNvbmZpZy4gSW4KPj4gdGhpcyBjYXNl
-LCB3ZSBjYW4gZGlyZWN0bHkgdXNlIGhpZml2ZS0gdW5sZWFzaGVkLWEwMC1mdTU0MC5kdHMgZnJv
-bSB0aGUKPj4ga2VybmVsIGFuZCBhZGQgYSBoaWZpdmUtdW5sZWFzaGVkLWEwMC0gZnU1NDAtdS1i
-b290LmR0c2kgd2l0aCB0aGUgRERSCj4+IGNvbnRyb2xsZXIgZW50cmllcy4gU2luY2UgdGhleSBh
-cmUgb25seSBuZWVkZWQgaW4gbWFjaGluZSBtb2RlLCB3ZSBjYW4gdXNlCj4+IGlmZGVmcyB0byBy
-ZW1vdmUgdGhlbSBpbiBzdXBlcnZpc29yIG1vZGUgYnVpbGRzLgo+IAo+IEJhc2VkIG9uIG91ciBw
-cmV2aW91cyBkaXNjdXNzaW9uIG9uIFUtQm9vdCBtYWlsaW5nIGxpc3QsIEx1a2FzIGhhZCBzdWdn
-ZXN0Cj4gdmVyeSBuaWNlIGJvb3QtZmxvdyBmb3IgVS1Cb290IHdoaWNoIGlzIGFzIGZvbGxvd3M6
-Cj4gCj4gWlNCTCAtPiBVLUJvb3QgU1BMIChNLU1vZGUpLT5PcGVuU0JJL0JCTC0+VS1Cb290KFMt
-TW9kZSktPkxpbnV4Lgo+IAo+IFRoZSBVLUJvb3QgU1BMIGFib3ZlIHdpbGw6Cj4gMS4gUnVuIGZy
-b20gaW50ZXJuYWwgU1JBTQo+IDIuIFdpbGwgZG8gRERSIGluaXQKPiAzLiBFdGhlcm5ldCBQSFkg
-cmVzZXQgdXNpbmcgR1BJTwoKUmlnaHQgbm93IEkgYW0gYWJsZSBkbyBhbGwgb2YgdGhlIGFib3Zl
-IChhbHRob3VnaCB3aXRob3V0IGEgcHJvcGVyIEdQSU8gZHJpdmVyKSAKCldoYXQgSeKAmWQgbGlr
-ZSB0byBnZXQgd29ya2luZyBiZWZvcmUgc3VibWl0dGluZyBwYXRjaGVzIGlzIGxvYWRpbmcgQkJM
-L09wZW5TQkkgYW5kIGEgcGF5bG9hZAooZWl0aGVyIHRoZSBrZXJuZWwgZGlyZWN0bHksIG9yIFUt
-Ym9vdChTLU1vZGUpIHZpYSBURlRQLiBJIHN1c3BlY3Qgc29tZSBraW5kIG9mIGlzc3VlIHdpdGgK
-dGhlIHJpbmcgYnVmZmVyIGJlaW5nIGluIFNSQU0gYW5kL29yIGEgY2xvY2tpbmcgaW5pdCBwcm9i
-bGVtLCBhcyB0aGlzIGlzIHdoYXQgSSBnZXQ6CgpVLUJvb3QgMjAxOS4wNy1yYzItMDAyMDItZzgx
-NGJmZGE5YTYgKE1heSAyNCAyMDE5IC0gMTA6MjQ6MjYgLTA1MDApCgpDUFU6ICAgcnY2NGltYWMK
-RFJBTTogIGRyYW1faW5pdCgpIHN0YXJ0CmRyYW1faW5pdCgpIGVuZAo4IEdpQgpNTUM6ICAgCklu
-OiAgICBzZXJpYWwKT3V0OiAgIHNlcmlhbApFcnI6ICAgc2VyaWFsCk5ldDogICBldGgwOiBldGhl
-cm5ldEAxMDA5MDAwMApIaXQgYW55IGtleSB0byBzdG9wIGF1dG9ib290OiAgMCAKZXRoZXJuZXRA
-MTAwOTAwMDA6IFBIWSBwcmVzZW50IGF0IDAKZXRoZXJuZXRAMTAwOTAwMDA6IFN0YXJ0aW5nIGF1
-dG9uZWdvdGlhdGlvbi4uLgpldGhlcm5ldEAxMDA5MDAwMDogQXV0b25lZ290aWF0aW9uIGNvbXBs
-ZXRlCmV0aGVybmV0QDEwMDkwMDAwOiBsaW5rIHVwLCAxMDAwTWJwcyBmdWxsLWR1cGxleCAobHBh
-OiAweDc4MDApCkJPT1RQIGJyb2FkY2FzdCAxCmV0aGVybmV0QDEwMDkwMDAwOiBUWCB0aW1lb3V0
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgt
-cmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yaXNjdgo=
+On Fri, 24 May 2019, Troy Benjegerdes wrote:
+
+> I have no issues updating the PRCI driver DT format if we also have the 
+> rest of the DT entries needed to boot a working system
+
+Now is the time to fix the U-boot PRCI issue upstream.  Fixing that should 
+be straightforward, and should be enough to boot the system with initramfs 
+and a serial console.  The missing patch is currently blocking others from 
+using U-boot-based boot flows on Aloe.
+
+> I just have not seen an example of that other than what I have at 
+> https://github.com/sifive/HiFive_U-Boot/blob/regression/arch/riscv/dts/hifive_u540.dts
+
+I sent you a pointer to a branch a few days ago that contains the most 
+recent mainline-bound DTS data.  That should be enough to verify that the 
+basic boot works.  If you want to keep up with the ongoing development of 
+that data, the best bet is to subscribe to the linux-riscv mailing list.
+
+
+- Paul
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
