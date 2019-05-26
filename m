@@ -2,62 +2,47 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EAAE2AA04
-	for <lists+linux-riscv@lfdr.de>; Sun, 26 May 2019 15:55:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15A312AA09
+	for <lists+linux-riscv@lfdr.de>; Sun, 26 May 2019 15:56:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Oupy3zFsrdbmZBmvw/1UgoA+apWaJuWCMurQzu0qR4=; b=gRGRc0WugTjsbz
-	omOJMzlQfXhN9VTdQkJ2DonMEnlPqqJXLoHbgCwyTU4PFv++nsN43nrYutJUKt4RvTDGjnhC2LCyx
-	igK0tA97UzsG3u8eaF87M3ALBsPcH6oO7zQDryXm4QTuvyZWCUWzhTuxUWz65PlJ+CvTquvlPuO5d
-	SlirvEcPx4QbBOVzbX/WOAXLfkUppkKiasX/qlbptCc7Jm3HBYzvCMDjNT5KZPAC901wxhGUY862O
-	HUw49klB40kPAOcDkIqeVWKryOlXl19L4/VakP4iXrC6xg5Ko4+IL8ccjIRaFoM8IhYuqe3td8cuA
-	4FYx04W9I/5g55lmel0Q==;
+	List-Owner; bh=4ZBRXq+3aFqSKJ+Fl5hslOJjqe7jumwdkP9b4KrTSX0=; b=co9shWOFpEWJzC
+	WuoF+ummz9OCsTxQTLlDUay+UPZyFCECp4snSN8DbF178QpWrt5OsH7tIMbWK3yDomxfjsF/VkdiE
+	XyHDzM4Gf/ljwQENg7I84TpEHoQO7hQoTqLfnVcJfoQibo0mt6TmFuG8koicrJ2gZakQxMpCr1eUB
+	p085d0i6wikHfooFLUxRqmvlpHfU1kJcjBtPWyB3HeWqxTsH3wNlnz575/qu3dFL+FWlnRoWQgSpQ
+	jNELkz2p2XHj176nHtGVW+Zfp5so20kjHaQiykqKj3XEtqwgnfNiGO5e31WZO6RlJQs0YvSg9ODLg
+	pMWtPx1TqpznaRuoTisw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUtce-00088J-TK; Sun, 26 May 2019 13:55:36 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUtcX-00081K-4L; Sun, 26 May 2019 13:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=eym0BMHdbArtu9uPr+EyfIeUu2p0S0z5kNpGctDciqY=; b=iUlCqM9ZOdk+DHee0mmSHhi3mE
- /WFQNkWEd5NHRxym94Yq9Ul2upfYEZMaoi5+/ugGMppPAIO6F8QG63G6hnbgiqrVB1lYNceb+jiiG
- rpUYx8DFRxXc2jVHEADCibTOUtBjIAohnoJhvnWj9DhQWd/KIc4lMlOPvd6QEHBXd5bODmXsQ5gYT
- LNR2o5hZaNzxWdbwjFwPUTVs11Je+gcbIO8ILE9gco7AFGg3I67BVY3Tv4st9fz8gvxmw0gKebD98
- KciWJFSsjOgCwJevgQPGHu/8FvR0eP7kc7kryS8khJqP2DNgu2xJBv/qHaTnoUpeQ4T3rrfrjo+sd
- cuVdgyiQ==;
+	id 1hUtdE-0008VF-Ac; Sun, 26 May 2019 13:56:12 +0000
 Received: from relay9-d.mail.gandi.net ([217.70.183.199])
- by casper.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUtcT-0006TG-B9; Sun, 26 May 2019 13:55:27 +0000
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hUtd4-0008O2-El; Sun, 26 May 2019 13:56:05 +0000
 X-Originating-IP: 79.86.19.127
 Received: from alex.numericable.fr (127.19.86.79.rev.sfr.net [79.86.19.127])
  (Authenticated sender: alex@ghiti.fr)
- by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 3D31BFF805;
- Sun, 26 May 2019 13:54:47 +0000 (UTC)
+ by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 0B511FF804;
+ Sun, 26 May 2019 13:55:55 +0000 (UTC)
 From: Alexandre Ghiti <alex@ghiti.fr>
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v4 06/14] arm: Properly account for stack randomization and
- stack guard gap
-Date: Sun, 26 May 2019 09:47:38 -0400
-Message-Id: <20190526134746.9315-7-alex@ghiti.fr>
+Subject: [PATCH v4 07/14] arm: Use STACK_TOP when computing mmap base address
+Date: Sun, 26 May 2019 09:47:39 -0400
+Message-Id: <20190526134746.9315-8-alex@ghiti.fr>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190526134746.9315-1-alex@ghiti.fr>
 References: <20190526134746.9315-1-alex@ghiti.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190526_145525_397587_A6976EEE 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20190526_065603_736764_4A170F91 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.7 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-0.7 points, 5.0 required)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
@@ -90,49 +75,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This commit takes care of stack randomization and stack guard gap when
-computing mmap base address and checks if the task asked for randomization.
-This fixes the problem uncovered and not fixed for arm here:
-https://lkml.kernel.org/r/20170622200033.25714-1-riel@redhat.com
+mmap base address must be computed wrt stack top address, using TASK_SIZE
+is wrong since STACK_TOP and TASK_SIZE are not equivalent.
 
 Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
 Acked-by: Kees Cook <keescook@chromium.org>
 ---
- arch/arm/mm/mmap.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ arch/arm/mm/mmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mm/mmap.c b/arch/arm/mm/mmap.c
-index f866870db749..bff3d00bda5b 100644
+index bff3d00bda5b..0b94b674aa91 100644
 --- a/arch/arm/mm/mmap.c
 +++ b/arch/arm/mm/mmap.c
-@@ -18,8 +18,9 @@
- 	 (((pgoff)<<PAGE_SHIFT) & (SHMLBA-1)))
+@@ -19,7 +19,7 @@
  
  /* gap between mmap and stack */
--#define MIN_GAP (128*1024*1024UL)
--#define MAX_GAP ((TASK_SIZE)/6*5)
-+#define MIN_GAP		(128*1024*1024UL)
-+#define MAX_GAP		((TASK_SIZE)/6*5)
-+#define STACK_RND_MASK	(0x7ff >> (PAGE_SHIFT - 12))
+ #define MIN_GAP		(128*1024*1024UL)
+-#define MAX_GAP		((TASK_SIZE)/6*5)
++#define MAX_GAP		((STACK_TOP)/6*5)
+ #define STACK_RND_MASK	(0x7ff >> (PAGE_SHIFT - 12))
  
  static int mmap_is_legacy(struct rlimit *rlim_stack)
- {
-@@ -35,6 +36,15 @@ static int mmap_is_legacy(struct rlimit *rlim_stack)
- static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
- {
- 	unsigned long gap = rlim_stack->rlim_cur;
-+	unsigned long pad = stack_guard_gap;
-+
-+	/* Account for stack randomization if necessary */
-+	if (current->flags & PF_RANDOMIZE)
-+		pad += (STACK_RND_MASK << PAGE_SHIFT);
-+
-+	/* Values close to RLIM_INFINITY can overflow. */
-+	if (gap + pad > gap)
-+		gap += pad;
+@@ -51,7 +51,7 @@ static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
+ 	else if (gap > MAX_GAP)
+ 		gap = MAX_GAP;
  
- 	if (gap < MIN_GAP)
- 		gap = MIN_GAP;
+-	return PAGE_ALIGN(TASK_SIZE - gap - rnd);
++	return PAGE_ALIGN(STACK_TOP - gap - rnd);
+ }
+ 
+ /*
 -- 
 2.20.1
 
