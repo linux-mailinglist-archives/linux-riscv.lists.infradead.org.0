@@ -2,59 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 410D12A9D0
-	for <lists+linux-riscv@lfdr.de>; Sun, 26 May 2019 14:53:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41C382A9E7
+	for <lists+linux-riscv@lfdr.de>; Sun, 26 May 2019 15:48:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dDKyttMybXKFbMOeH89Q31P996ZmRJCNHgB80V5x5+s=; b=qn1h0bl2obymyp
-	h5padqHzus+24R19/UTtraXQHXzgUmyvi9euXGdZa1sR+lX/eYS+uOIgBQH3o2O5dOOUH8Uwl0MpX
-	WDU9WNkqshj4VzpN0pa1BuaKHpD9Chk0lKbwpiQZQ1bS00ix59RH9Yc8U1Cg5OOlZVcPtZtW23PQ7
-	qXFq8n+a3SgLSVPhEvIyLX7DUYvYgHnWz9IvLyHxTi81X0Ep115XPI8w6zUXbNVyQbI/v/jh497om
-	+WOUwg9T1u1nDSmdTee1JndtvyhYSxVUXxe7rF84MctjwtD2wK+FpIY67TuY3nCbW3YM7g5RAdwyj
-	X2gbrk6K2rfVhycPnl/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VuTjb7uGeIa4Qk5gaU2hcln//+NarFicKf7wKNUqwLM=; b=V79wrCJhNGkjDb
+	ngsHTke4ofTJivx8R0doeGdDnBrxY768OUwUcggBK80OlEPFP+I3Ivq5ODgtA8vS9MeWQZ+FRInVo
+	re23pxfmOpiMsmAA0HhDRxPNE8ebgb51nbSdCVcF2/SzwyEgTk5mDRA/rXRr2RlpwkCmd3LzmxVys
+	Tm+VVAgRlMfKxs7ng/u0udN4dFYuOjuGtjg5s6SGygz0Ydlnt5J1GlOBPiKmaAPk26bEIxhwwcZmj
+	90fZCsP/ylUdEBXhGYUc/8/gSKI8kskPWv58qy3wtQW6DUgI13uJ+GVRHQQkUz3IeMiVkUI7R2U3F
+	A+kj9try4b0isfDDG0YA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUseT-0003vc-MN; Sun, 26 May 2019 12:53:25 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1hUtVv-0003XK-Vl; Sun, 26 May 2019 13:48:39 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUseJ-0003oD-BI; Sun, 26 May 2019 12:53:17 +0000
-X-Originating-IP: 79.86.19.127
+ id 1hUtVo-0003Rr-Ek; Sun, 26 May 2019 13:48:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=yFTs4fyLad6UncTfB3veuWFviRBWYra8OYYLkHWIQ0Q=; b=AblsUcYDyZcJnIuTRlpOyGfdgE
+ y9Yj+rrO9j/4VsD71pq11iHPeimM7SIhrilTDh2V+H7aJdZhU3OBGZ6WBXAVMf5x2iSaAQIhOpPh8
+ or4wxy1bnRlrWgFyxgUWFWVcQLcafkc7doGoVq+FzVCN9jLWcYEofHKTLVdWMgJPabcdR8Vfcwd5f
+ sswVCBpyMr28RsOJu6VBtWj7Bpd/vtUgqXjEDKiRut+n9VNmqSxdp6OaV1v3PHJISvYwlrKBWMsNU
+ eaSFilfOPgJsRvRGvWX2+pde7BXk6X8sVtJjCas88xEz95ONDFrL7H2buW60/avARb+TWe/EVzk9a
+ fUR2SuQw==;
+Received: from relay11.mail.gandi.net ([217.70.178.231])
+ by casper.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hUtVk-0006GJ-FV; Sun, 26 May 2019 13:48:30 +0000
 Received: from alex.numericable.fr (127.19.86.79.rev.sfr.net [79.86.19.127])
  (Authenticated sender: alex@ghiti.fr)
- by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id 16740240006;
- Sun, 26 May 2019 12:53:09 +0000 (UTC)
+ by relay11.mail.gandi.net (Postfix) with ESMTPSA id BD6A0100006;
+ Sun, 26 May 2019 13:47:48 +0000 (UTC)
 From: Alexandre Ghiti <alex@ghiti.fr>
-To: Christoph Hellwig <hch@infradead.org>,
- Mike Kravetz <mike.kravetz@oracle.com>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will.deacon@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Thomas Gleixner <tglx@linutronix.de>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- "H . Peter Anvin" <hpa@zytor.com>, x86@kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-riscv@lists.infradead.org
-Subject: [PATCH REBASE v2 2/2] riscv: Introduce huge page support for 32/64bit
- kernel
-Date: Sun, 26 May 2019 08:50:38 -0400
-Message-Id: <20190526125038.8419-3-alex@ghiti.fr>
+To: Andrew Morton <akpm@linux-foundation.org>
+Subject: [PATCH v4 00/14] Provide generic top-down mmap layout functions
+Date: Sun, 26 May 2019 09:47:32 -0400
+Message-Id: <20190526134746.9315-1-alex@ghiti.fr>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190526125038.8419-1-alex@ghiti.fr>
-References: <20190526125038.8419-1-alex@ghiti.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190526_055315_684426_070C0832 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20190526_144828_545619_F71D80B0 
+X-CRM114-Status: GOOD (  17.15  )
 X-Spam-Score: -0.7 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
+ Content analysis details:   (-0.7 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.193 listed in list.dnswl.org]
+ low trust [217.70.178.231 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -68,191 +71,111 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Ghiti <alex@ghiti.fr>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Kees Cook <keescook@chromium.org>,
+ Alexandre Ghiti <alex@ghiti.fr>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Will Deacon <will.deacon@arm.com>,
+ Russell King <linux@armlinux.org.uk>, Ralf Baechle <ralf@linux-mips.org>,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ Paul Burton <paul.burton@mips.com>, Alexander Viro <viro@zeniv.linux.org.uk>,
+ James Hogan <jhogan@kernel.org>, linux-fsdevel@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-mips@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org,
+ Luis Chamberlain <mcgrof@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch implements both 4MB huge page support for 32bit kernel
-and 2MB/1GB huge pages support for 64bit kernel.
+This series introduces generic functions to make top-down mmap layout
+easily accessible to architectures, in particular riscv which was
+the initial goal of this series.
+The generic implementation was taken from arm64 and used successively
+by arm, mips and finally riscv.
 
-Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
----
- arch/riscv/Kconfig               |  8 ++++++
- arch/riscv/include/asm/hugetlb.h | 18 +++++++++++++
- arch/riscv/include/asm/page.h    | 10 ++++++++
- arch/riscv/include/asm/pgtable.h |  8 ++++--
- arch/riscv/mm/Makefile           |  2 ++
- arch/riscv/mm/hugetlbpage.c      | 44 ++++++++++++++++++++++++++++++++
- 6 files changed, 88 insertions(+), 2 deletions(-)
- create mode 100644 arch/riscv/include/asm/hugetlb.h
- create mode 100644 arch/riscv/mm/hugetlbpage.c
+Note that in addition the series fixes 2 issues:
+- stack randomization was taken into account even if not necessary.
+- [1] fixed an issue with mmap base which did not take into account
+  randomization but did not report it to arm and mips, so by moving
+  arm64 into a generic library, this problem is now fixed for both
+  architectures.
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index ee32c66e1af3..2818ebc717b7 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -49,6 +49,8 @@ config RISCV
- 	select ARCH_HAS_PTE_SPECIAL
- 	select ARCH_HAS_MMIOWB
- 	select HAVE_EBPF_JIT if 64BIT
-+	select ARCH_HAS_GIGANTIC_PAGE
-+	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
- 
- config MMU
- 	def_bool y
-@@ -63,6 +65,12 @@ config PAGE_OFFSET
- 	default 0xffffffff80000000 if 64BIT && MAXPHYSMEM_2GB
- 	default 0xffffffe000000000 if 64BIT && MAXPHYSMEM_128GB
- 
-+config ARCH_WANT_GENERAL_HUGETLB
-+	def_bool y
-+
-+config SYS_SUPPORTS_HUGETLBFS
-+	def_bool y
-+
- config STACKTRACE_SUPPORT
- 	def_bool y
- 
-diff --git a/arch/riscv/include/asm/hugetlb.h b/arch/riscv/include/asm/hugetlb.h
-new file mode 100644
-index 000000000000..728a5db66597
---- /dev/null
-+++ b/arch/riscv/include/asm/hugetlb.h
-@@ -0,0 +1,18 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+#ifndef _ASM_RISCV_HUGETLB_H
-+#define _ASM_RISCV_HUGETLB_H
-+
-+#include <asm-generic/hugetlb.h>
-+#include <asm/page.h>
-+
-+static inline int is_hugepage_only_range(struct mm_struct *mm,
-+					 unsigned long addr,
-+					 unsigned long len) {
-+	return 0;
-+}
-+
-+static inline void arch_clear_hugepage_flags(struct page *page)
-+{
-+}
-+
-+#endif /* _ASM_RISCV_HUGETLB_H */
-diff --git a/arch/riscv/include/asm/page.h b/arch/riscv/include/asm/page.h
-index 2a546a52f02a..4ef2936295aa 100644
---- a/arch/riscv/include/asm/page.h
-+++ b/arch/riscv/include/asm/page.h
-@@ -24,6 +24,16 @@
- #define PAGE_SIZE	(_AC(1, UL) << PAGE_SHIFT)
- #define PAGE_MASK	(~(PAGE_SIZE - 1))
- 
-+#ifdef CONFIG_64BIT
-+#define HUGE_MAX_HSTATE		2
-+#else
-+#define HUGE_MAX_HSTATE		1
-+#endif
-+#define HPAGE_SHIFT		PMD_SHIFT
-+#define HPAGE_SIZE		(_AC(1, UL) << HPAGE_SHIFT)
-+#define HPAGE_MASK              (~(HPAGE_SIZE - 1))
-+#define HUGETLB_PAGE_ORDER      (HPAGE_SHIFT - PAGE_SHIFT)
-+
- /*
-  * PAGE_OFFSET -- the first address of the first page of memory.
-  * When not using MMU this corresponds to the first free page in
-diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-index 1141364d990e..f3456fcdff92 100644
---- a/arch/riscv/include/asm/pgtable.h
-+++ b/arch/riscv/include/asm/pgtable.h
-@@ -121,7 +121,6 @@ static inline void pmd_clear(pmd_t *pmdp)
- 	set_pmd(pmdp, __pmd(0));
- }
- 
--
- static inline pgd_t pfn_pgd(unsigned long pfn, pgprot_t prot)
- {
- 	return __pgd((pfn << _PAGE_PFN_SHIFT) | pgprot_val(prot));
-@@ -258,6 +257,11 @@ static inline pte_t pte_mkspecial(pte_t pte)
- 	return __pte(pte_val(pte) | _PAGE_SPECIAL);
- }
- 
-+static inline pte_t pte_mkhuge(pte_t pte)
-+{
-+	return pte;
-+}
-+
- /* Modify page protection bits */
- static inline pte_t pte_modify(pte_t pte, pgprot_t newprot)
- {
-@@ -417,7 +421,7 @@ static inline void pgtable_cache_init(void)
- #define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
- 
- /*
-- * Task size is 0x40000000000 for RV64 or 0xb800000 for RV32.
-+ * Task size is 0x4000000000 for RV64 or 0xb800000 for RV32.
-  * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
-  */
- #ifdef CONFIG_64BIT
-diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-index 8db569141485..4ea2fe50ec63 100644
---- a/arch/riscv/mm/Makefile
-+++ b/arch/riscv/mm/Makefile
-@@ -11,3 +11,5 @@ obj-y += ioremap.o
- obj-y += cacheflush.o
- obj-y += context.o
- obj-y += sifive_l2_cache.o
-+
-+obj-$(CONFIG_HUGETLB_PAGE) += hugetlbpage.o
-diff --git a/arch/riscv/mm/hugetlbpage.c b/arch/riscv/mm/hugetlbpage.c
-new file mode 100644
-index 000000000000..0d4747e9d5b5
---- /dev/null
-+++ b/arch/riscv/mm/hugetlbpage.c
-@@ -0,0 +1,44 @@
-+// SPDX-License-Identifier: GPL-2.0
-+#include <linux/hugetlb.h>
-+#include <linux/err.h>
-+
-+int pud_huge(pud_t pud)
-+{
-+	return pud_present(pud) &&
-+		(pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
-+}
-+
-+int pmd_huge(pmd_t pmd)
-+{
-+	return pmd_present(pmd) &&
-+		(pmd_val(pmd) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
-+}
-+
-+static __init int setup_hugepagesz(char *opt)
-+{
-+	unsigned long ps = memparse(opt, &opt);
-+
-+	if (ps == HPAGE_SIZE) {
-+		hugetlb_add_hstate(HPAGE_SHIFT - PAGE_SHIFT);
-+	} else if (IS_ENABLED(CONFIG_64BIT) && ps == PUD_SIZE) {
-+		hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
-+	} else {
-+		hugetlb_bad_size();
-+		pr_err("hugepagesz: Unsupported page size %lu M\n", ps >> 20);
-+		return 0;
-+	}
-+
-+	return 1;
-+}
-+__setup("hugepagesz=", setup_hugepagesz);
-+
-+#ifdef CONFIG_CONTIG_ALLOC
-+static __init int gigantic_pages_init(void)
-+{
-+	/* With CONTIG_ALLOC, we can allocate gigantic pages at runtime */
-+	if (IS_ENABLED(CONFIG_64BIT) && !size_to_hstate(1UL << PUD_SHIFT))
-+		hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
-+	return 0;
-+}
-+arch_initcall(gigantic_pages_init);
-+#endif
+This work is an effort to factorize architecture functions to avoid
+code duplication and oversights as in [1].
+
+[1]: https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1429066.html
+
+Changes in v4:
+  - Make ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT select ARCH_HAS_ELF_RANDOMIZE
+    by default as suggested by Kees,
+  - ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT depends on MMU and defines the
+    functions needed by ARCH_HAS_ELF_RANDOMIZE => architectures that use
+    the generic mmap topdown functions cannot have ARCH_HAS_ELF_RANDOMIZE
+    selected without MMU, but I think it's ok since randomization without
+    MMU does not add much security anyway.
+  - There is no common API to determine if a process is 32b, so I came up with
+    !IS_ENABLED(CONFIG_64BIT) || is_compat_task() in [PATCH v4 12/14].
+  - Mention in the change log that x86 already takes care of not offseting mmap
+    base address if the task does not want randomization.
+  - Re-introduce a comment that should not have been removed.
+  - Add Reviewed/Acked-By from Paul, Christoph and Kees, thank you for that.
+  - I tried to minimize the changes from the commits in v3 in order to make
+    easier the review of the v4, the commits changed or added are:
+    - [PATCH v4 5/14]
+    - [PATCH v4 8/14]
+    - [PATCH v4 11/14]
+    - [PATCH v4 12/14]
+    - [PATCH v4 13/14]
+
+Changes in v3:
+  - Split into small patches to ease review as suggested by Christoph
+    Hellwig and Kees Cook
+  - Move help text of new config as a comment, as suggested by Christoph
+  - Make new config depend on MMU, as suggested by Christoph
+
+Changes in v2 as suggested by Christoph Hellwig:
+  - Preparatory patch that moves randomize_stack_top
+  - Fix duplicate config in riscv
+  - Align #if defined on next line => this gives rise to a checkpatch
+    warning. I found this pattern all around the tree, in the same proportion
+    as the previous pattern which was less pretty:
+    git grep -C 1 -n -P "^#if defined.+\|\|.*\\\\$"
+
+Alexandre Ghiti (14):
+  mm, fs: Move randomize_stack_top from fs to mm
+  arm64: Make use of is_compat_task instead of hardcoding this test
+  arm64: Consider stack randomization for mmap base only when necessary
+  arm64, mm: Move generic mmap layout functions to mm
+  arm64, mm: Make randomization selected by generic topdown mmap layout
+  arm: Properly account for stack randomization and stack guard gap
+  arm: Use STACK_TOP when computing mmap base address
+  arm: Use generic mmap top-down layout and brk randomization
+  mips: Properly account for stack randomization and stack guard gap
+  mips: Use STACK_TOP when computing mmap base address
+  mips: Adjust brk randomization offset to fit generic version
+  mips: Replace arch specific way to determine 32bit task with generic
+    version
+  mips: Use generic mmap top-down layout and brk randomization
+  riscv: Make mmap allocation top-down by default
+
+ arch/Kconfig                       |  11 +++
+ arch/arm/Kconfig                   |   2 +-
+ arch/arm/include/asm/processor.h   |   2 -
+ arch/arm/kernel/process.c          |   5 --
+ arch/arm/mm/mmap.c                 |  52 --------------
+ arch/arm64/Kconfig                 |   2 +-
+ arch/arm64/include/asm/processor.h |   2 -
+ arch/arm64/kernel/process.c        |   8 ---
+ arch/arm64/mm/mmap.c               |  72 -------------------
+ arch/mips/Kconfig                  |   2 +-
+ arch/mips/include/asm/processor.h  |   5 --
+ arch/mips/mm/mmap.c                |  84 ----------------------
+ arch/riscv/Kconfig                 |  11 +++
+ fs/binfmt_elf.c                    |  20 ------
+ include/linux/mm.h                 |   2 +
+ kernel/sysctl.c                    |   6 +-
+ mm/util.c                          | 107 ++++++++++++++++++++++++++++-
+ 17 files changed, 137 insertions(+), 256 deletions(-)
+
 -- 
 2.20.1
 
