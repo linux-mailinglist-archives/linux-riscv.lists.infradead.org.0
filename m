@@ -2,91 +2,96 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12E7D2B8BF
-	for <lists+linux-riscv@lfdr.de>; Mon, 27 May 2019 18:12:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 661722B93D
+	for <lists+linux-riscv@lfdr.de>; Mon, 27 May 2019 18:52:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=arFdBgShSrf+j75hHhVlExNJKvcqh68h1qytyINPWxQ=; b=n5HUKVUodBSiv+
-	D/r4XinwqMRBeJTyHvTWS5GdUbVxZYl+h+7+mg7TUfqVSeNpCv+LnkUjZOdp2eZUYEY6LvKV52/SU
-	prMLzQ0htFeEQHPGJVkwmLZ24FXiNWtIFxLYJks50hcEQ8me5CvzeyxZJza3fuhwPQESElyOJMAZO
-	GkVVpHJlH2LCo06UYwGPV3iwIceQm/AK+1flDfc96s7n15zma1VcrKx8BVcwKbdd/wx/PJHmvEPxa
-	2c8nBz2FNrsFk2erFa7oXV8hi8FUp20akGqGpgU5v0SK+KL4PzrT7SBAgHzOj2HrQq8zgjv4F1/pw
-	PuNnpmpxyV6PxXVInT9w==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=C+6NWnYKz068KxmhXGrxQYMiBOjGX1/0gOQ3GefpjX8=; b=Hee2/HoK+UVcd1
+	LT1KwamhyoFfuFXFrNajT7CUz9KWTERKRa+BCq6G7hcngRtnw5RtbA2P/OtKiVfD9F1cv4K9I6WEC
+	iJKoMKt7lrDK3hsEMgeSS1KtPG2kAIcqMMPXYs5euxJfyLP1j4l8ISpO1VQWMpFURyYa+1RZZOltw
+	fkaQ/5oUNuvGF8tjnIsXO68wDYFdcbadok0exXgrdD/iAgR67dkWtV3XQxhn/zKrWS+DRh3NLU/i/
+	hbeVeVjJu9ds8O090Ozy2eLpKpvFjPM/1HrINlEkQtCLr5uggeRgRD09Iu6gW8EwLU81Ceq04UOb3
+	BvPF+ty8GCjp4jdmgpmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVIF2-0006tZ-6Z; Mon, 27 May 2019 16:12:52 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1hVIqu-0007HR-Sm; Mon, 27 May 2019 16:52:00 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVIEx-0006ss-Rp
- for linux-riscv@lists.infradead.org; Mon, 27 May 2019 16:12:49 +0000
-Received: by mail-wm1-x344.google.com with SMTP id v19so284255wmh.0
- for <linux-riscv@lists.infradead.org>; Mon, 27 May 2019 09:12:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:references:date:in-reply-to:message-id
- :user-agent:mime-version;
- bh=5mEyxNiTxG7QHCldnzuLItg2WJUiLZE71Nb5mEMikHM=;
- b=Qdfu7lKbLkMVRKD6Gk7EDaRAOh0aHQeWqxjDWZvknbEkiHbKsi7MUieqe1q8sGforH
- it5X5CBTkk6qo5HNbES2BPpxyemCI6jyrLk3xnUgbwWjJoh/Ow0M4+2IUTCZAGqEAbQg
- D0qw0M8yy/tOMTfXLx4t+bVdXWkasDV0e1OK68nTpcw+pdg9fQzg8WsSX9LDU1q4YbYp
- XGdy2qR8AMJSV8pK7CtZCuNJ4/EuRlo04Ka/dr8MNMdo1w/xpqZtNZjyObGnL/bJnBku
- wRBWl2UF2uz7+wSaRjYdJPxBfPcfgsTQ1KJJ5tL5gE/AyiKI7Ifo582sH7jV988+ie2c
- xTIw==
+ id 1hVIqr-0007H0-Kn
+ for linux-riscv@lists.infradead.org; Mon, 27 May 2019 16:51:59 +0000
+Received: by mail-io1-xd44.google.com with SMTP id u13so4976775iop.0
+ for <linux-riscv@lists.infradead.org>; Mon, 27 May 2019 09:51:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=A0j4Lj9k4yUxsOyuSL3CJCbveCxlbBOnFdns0aQv/bs=;
+ b=GpL0eahGZ5Xjb4rz7du0V0sN4rtWwg9HZ2Dq0ZNk13QYMj5pzhD1DbGvA3hAQc7uxR
+ G86StLmrcI8Bz91dMCwMkhUuzoIeq5NL4YNFMNc9Hucqo99m7n4gShp2mdKLqjnAZNoa
+ NmIlrIRionHsXHszCdzXg8brDUtARWumLoF2zaYkBUXYNICad/w/hEQpBoeX3knJUXTz
+ Bp2NYsQzCRwQiJfLdih220L+Auiyhfo/vtf3YL3LIMBf1fFZPewFtB/jXb3PM9lS91oL
+ BbBKn9N9lcMX2NWuA+5HGgQLcRdlq/9W6qWvgOzkvqlOPLPSps6bcRliOW6bwUH80sU0
+ gAvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
- :message-id:user-agent:mime-version;
- bh=5mEyxNiTxG7QHCldnzuLItg2WJUiLZE71Nb5mEMikHM=;
- b=H8rk9xZpbnyurRShJKSx4QB8x2JEQcE1iO0BS9e45212BhlgIkjt16MV/Mc+gw0HIJ
- Q5V+WMjzhR4E35HJ8WC/H74j1TbKA4BR5OF/bcRBaP4d6zCuD1xY/NeXOIjVQa7S8TJA
- BGE79ZS+s3nYb7pZOpzNtKAKFWMpLCzNC6aBCSLrqXI/llurM98SDpMqM6wvSwAdTJdB
- pnRGHdqgnNsiYASvs6pi3VdtMRVe3MfrUPpsGC0ntoLlwI3mAhAMR5pZOMk0UazyMnnf
- LtSmvENEkO0bqcDi4vsWaNUES0MDHprLQQcMf1YPk4ToPBsC8vPF5FM76GDHkBswWAOE
- WgqA==
-X-Gm-Message-State: APjAAAWpfNru9Ntc4klnI/S5cGVsxcQEfIdw5b3t6FNIANVxibArdRun
- CeVJSJoaWNXVM/og1zQH9yZwR1yUvkKVTw==
-X-Google-Smtp-Source: APXvYqxdhEw7utvMO4VRArF33KJ19jG5BwvZVlrj9QcVk6+kzn3PBObGHvAKrpcEoNeAF24NJ1LU5g==
-X-Received: by 2002:a05:600c:228c:: with SMTP id
- 12mr14844150wmf.91.1558973565870; 
- Mon, 27 May 2019 09:12:45 -0700 (PDT)
-Received: from localhost (lmontsouris-657-1-212-31.w90-63.abo.wanadoo.fr.
- [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id j123sm21766217wmb.32.2019.05.27.09.12.45
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=A0j4Lj9k4yUxsOyuSL3CJCbveCxlbBOnFdns0aQv/bs=;
+ b=n/MfI4Szy0uV1i+5Z6yckYW3teeMMbQJGqIJhybTVKGAicsQl3yypFwPmI1ySq9scX
+ EnVdd5AUXwbKjcdQdSNwSPizI9/gOOzGBGYHxorLch6sbPVYUAcnS5+8Aqehs8UcoDj0
+ EmBkovlbCRd/agdk+yDX0+G1b+WWbxJVJBm6nRkmD4gRWVw/IvohIaAYs0bhuPFUJF/0
+ Tx/SsHcJse54HLuIE+2+30tfG1IQ04sfUFdHtaOFu6g7nwZynMnUlqCyXw/L+nZGYTIw
+ Dqlz3pFDsNcGJGq2Lp0MsVxma5b3Hpcn4KGdC9VrUAU6NVzuxldPzUWGcQLI/idydxQf
+ N9wg==
+X-Gm-Message-State: APjAAAUVbULWAzARCTO7I0Y6v6pKlNj1OpCGG29LnKl0fhKgU5awOFmg
+ XxWeWrLAqONMqS9gMKwPOQfDtg==
+X-Google-Smtp-Source: APXvYqzNBsApelwZ+uqlzA2FI4wTZ3z/e2QTMop6qxHmiyY/13M5c+YXD+uZTquKRSgW3ZBRF2FIvw==
+X-Received: by 2002:a6b:f719:: with SMTP id k25mr520692iog.129.1558975915660; 
+ Mon, 27 May 2019 09:51:55 -0700 (PDT)
+Received: from [192.168.62.194] (71-34-182-131.desm.qwest.net. [71.34.182.131])
+ by smtp.gmail.com with ESMTPSA id 74sm19544itk.3.2019.05.27.09.51.54
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 27 May 2019 09:12:45 -0700 (PDT)
-From: Loys Ollivier <lollivier@baylibre.com>
-To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH v5 0/2] tty: serial: add DT bindings and serial driver for
- the SiFive FU540 UART
-References: <20190413020111.23400-1-paul.walmsley@sifive.com>
- <7hmukmew5j.fsf@baylibre.com>
- <883f3d5f-9b04-1435-30d3-2b48ab7eb76d@wdc.com>
-Date: Mon, 27 May 2019 18:12:43 +0200
-In-Reply-To: <883f3d5f-9b04-1435-30d3-2b48ab7eb76d@wdc.com> (Atish Patra's
- message of "Thu, 18 Apr 2019 18:04:34 -0700")
-Message-ID: <86sgszq3k4.fsf@baylibre.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
-MIME-Version: 1.0
+ Mon, 27 May 2019 09:51:55 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+Subject: Re: 5.2-rc1 boot on Unleashed
+From: Troy Benjegerdes <troy.benjegerdes@sifive.com>
+In-Reply-To: <mvmh89gdr4y.fsf@suse.de>
+Date: Mon, 27 May 2019 11:51:53 -0500
+Message-Id: <FD4D0F7A-2005-4CE1-BF18-2C20C83EAD82@sifive.com>
+References: <5c1ffb76-b18a-dbae-d3ad-f3d2cd41ee44@wdc.com>
+ <alpine.DEB.2.21.9999.1905220942040.20842@viisi.sifive.com>
+ <db248e63-c0bc-7fd8-cf2d-d13c8f140036@wdc.com>
+ <alpine.DEB.2.21.9999.1905221334460.23235@viisi.sifive.com>
+ <8F4FB234-FD5B-4AD6-99BD-57A40A79A024@sifive.com>
+ <aac8c9b2-1b8d-e87d-88a5-f13222004a88@wdc.com>
+ <2818D3E3-3BDB-442B-822D-0FD221BCCA05@sifive.com>
+ <alpine.DEB.2.21.9999.1905251058100.15661@viisi.sifive.com>
+ <AC197BDD-8A15-421E-9F99-ADFE50360982@sifive.com> <mvmh89gdr4y.fsf@suse.de>
+To: Andreas Schwab <schwab@suse.de>
+X-Mailer: Apple Mail (2.3445.9.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190527_091247_962422_F63A9D8F 
-X-CRM114-Status: GOOD (  17.68  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190527_095157_745817_8079BF63 
+X-CRM114-Status: GOOD (  12.73  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,71 +103,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Kevin Hilman <khilman@baylibre.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+Cc: Palmer Dabbelt <palmer@sifive.com>,
+ =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>, Atish Patra <atish.patra@wdc.com>,
+ Yash Shah <yash.shah@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu 18 Apr 2019 at 18:04, Atish Patra <atish.patra@wdc.com> wrote:
-
-> On 4/18/19 4:22 PM, Kevin Hilman wrote:
->> Hi Paul,
->>
->> Paul Walmsley <paul.walmsley@sifive.com> writes:
->>
->>> This series adds a serial driver, with console support, for the
->>> UART IP block present on the SiFive FU540 SoC.  The programming
->>> model is straightforward, but unique.
->>>
->>> Boot-tested on a SiFive FU540 HiFive-U board, using BBL and the
->>> open-source FSBL (with appropriate patches to the DT data).
->>>
->>> This fifth version fixes a bug in the set_termios handler,
->>> found by Andreas Schwab <schwab@suse.de>.
->>>
->>> The patches in this series can also be found, with the PRCI patches,
->>> DT patches, and DT prerequisite patch, at:
->>>
->>> https://github.com/sifive/riscv-linux/tree/dev/paulw/serial-v5.1-rc4
->>
->> I tried this branch, and it doesn't boot on my unleashed board.
->>
->> Here's the boot log when I pass the DT built from your branch via
->> u-boot: https://termbin.com/rfp3.
->>
->
-> Unfortunately, that won't work. The current DT modifications by OpenSBI.
->
-> 1. Change hart status to "masked" from "okay".
-> 2. M-mode interrupt masking in PLIC node.
-> 3. Add a chosen node for serial access in U-Boot.
->
-> You can ignore 3 for your use case. However, if you pass a dtb built from source
-> code, that will have hart0 enabled and M-mode interrupts enabled in DT.
-
-Atish,
-I'm trying to get the kernel boot with the current linux kernel DT from
-Paul's patch series [0].
-
-Could you point me to some documentation on 2. ?
-Or do you know of a way to disable M-mode interrupts from U-boot ?
-
-[0]: https://lore.kernel.org/patchwork/project/lkml/list/?series=390077
-
-Thanks,
-Loys
-
->
-> Not sure if we should do these DT modifications in U-Boot as well.
->
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+Cgo+IE9uIE1heSAyNywgMjAxOSwgYXQgNzoyMSBBTSwgQW5kcmVhcyBTY2h3YWIgPHNjaHdhYkBz
+dXNlLmRlPiB3cm90ZToKPiAKPiBPbiBNYWkgMjUgMjAxOSwgVHJveSBCZW5qZWdlcmRlcyA8dHJv
+eS5iZW5qZWdlcmRlc0BzaWZpdmUuY29tPiB3cm90ZToKPiAKPj4gU28gdGhpcyB3b3VsZCBiZSB0
+aGUgdGltZSB0byBhZ3JlZSBvbiB3aGF0IHRoZSBnZW1neGwvZXRoZXJuZXQgZW50cmllcyAKPj4g
+c2hvdWxkIGxvb2sgbGlrZSwgYW5kIGFsbCBvZiB0aGlzIGNhbiBnZXQgdW5ibG9ja2VkLiBXaGF0
+IEkgaGF2ZSBub3cgdGhhdAo+PiBJIGtub3cgd29ya3MgKHdpdGggdGhlIGxlZ2FjeSB1LWJvb3Qp
+IGlzIHRoaXM6Cj4+IAo+PiAgICAgICAgICAgICAgICBMNTE6IGNhZGVuY2UtZ2VtZ3hsLW1nbXRA
+MTAwYTAwMDAgewo+PiAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAic2lmaXZl
+LGNhZGVuY2VnZW1neGxtZ210MCI7Cj4+ICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPDB4
+MCAweDEwMGEwMDAwIDB4MCAweDEwMDA+Owo+PiAgICAgICAgICAgICAgICAgICAgICAgIHJlZy1u
+YW1lcyA9ICJjb250cm9sIjsKPj4gICAgICAgICAgICAgICAgICAgICAgICAjY2xvY2stY2VsbHMg
+PSA8MD47Cj4+ICAgICAgICAgICAgICAgIH07Cj4+ICAgICAgICAgICAgICAgIEw1MjogZXRoZXJu
+ZXRAMTAwOTAwMDAgewo+PiAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAiY2Ru
+cyxtYWNiIjsKPj4gICAgICAgICAgICAgICAgICAgICAgICBpbnRlcnJ1cHQtcGFyZW50ID0gPCZM
+ND47Cj4+ICAgICAgICAgICAgICAgICAgICAgICAgaW50ZXJydXB0cyA9IDw1Mz47Cj4+ICAgICAg
+ICAgICAgICAgICAgICAgICAgcmVnID0gPDB4MCAweDEwMDkwMDAwIDB4MCAweDIwMDA+Owo+PiAg
+ICAgICAgICAgICAgICAgICAgICAgIHJlZy1uYW1lcyA9ICJjb250cm9sIjsKPj4gCj4+ICAgICAg
+ICAgICAgICAgICAgICAgICAgbG9jYWwtbWFjLWFkZHJlc3MgPSBbMDAgMDAgMDAgMDAgMDAgMDBd
+Owo+PiAgICAgICAgICAgICAgICAgICAgICAgIHBoeS1tb2RlID0gImdtaWkiOwo+PiAgICAgICAg
+ICAgICAgICAgICAgICAgIGNsb2NrLW5hbWVzID0gInBjbGsiLCAiaGNsayIsICJ0eF9jbGsiOwo+
+PiAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmcHJjaSAxPiwgPCZwcmNpIDE+LCA8
+Jkw1MT47Cj4gCj4gVGhhdCBjYW4ndCBiZSByaWdodCwgPCZwcmNpIDE+IGlzIENMS19ERFJQTEwu
+Cj4gCj4gQW5kcmVhcy4KPiAKCk9rYXkgdGhhdCBpcyBkZWZpbml0ZWx5IHdyb25nIHRoZW4gKGZv
+ciB0aGUgbmV3IFBSQ0kgY29kZSkKCkkgaGF2ZSBhIFdJUCBjb21taXQgb2YgdGhlIG5ldyBEVFMg
+Zm9ybWF0KHMpIGluIHRoZSBsZWdhY3kgVS1ib290IHRyZWUsCmluIHdoaWNoIGV2ZXJ5dGhpbmcg
+YXBwZWFycyB0byB3b3JrLCBhbmQgc2hvdWxkIGF0IGxlYXN0IGJlIHN1ZmZpY2llbnQKZm9yIHRl
+bXBvcmFyeSB1c2UgdG8gZWFzZSBkZXZlbG9wbWVudCBvZiBvdGhlciBjb21wb25lbnRzIChTQkks
+IFMtbW9kZQpVYm9vdCwga2VybmVsKSwgZXRjLgoKVGhlIHBhdGNoIGZvciB0aGUgRFRTIGNoYW5n
+ZXMgaXMgYXQKaHR0cHM6Ly9naXRodWIuY29tL3RtYWdpay9IaUZpdmVfVS1Cb290L2NvbW1pdC8z
+MmIwMGU3NGU5MDhkYzcyZTg1ZjJmNjYzMWMzMzJhZDNkYTYxOWEwCgpJ4oCZdmUgdHJpZWQgYm90
+aCBiYWNrcG9ydGluZyB0aGUgUFJDSSBkcml2ZXIgdG8gbGludXggNC4xOSwgYXMgd2VsbCBhcyBQ
+YXVs4oCZcyA1LjEgdGVzdAprZXJuZWwsIGhvd2V2ZXIgbmVpdGhlciBvZiB0aGVtIHN1Y2Nlc3Nm
+dWxseSBib290IGluIHRoZSBmbG93IEkgYW0gdXNpbmcuCgoKPiAtLSAKPiBBbmRyZWFzIFNjaHdh
+YiwgU1VTRSBMYWJzLCBzY2h3YWJAc3VzZS5kZQo+IEdQRyBLZXkgZmluZ2VycHJpbnQgPSAwMTk2
+IEJBRDggMUNFOSAxOTcwIEY0QkUgIDE3NDggRTRENCA4OEUzIDBFRUEgQjlENwo+ICJBbmQgbm93
+IGZvciBzb21ldGhpbmcgY29tcGxldGVseSBkaWZmZXJlbnQuIgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdAps
+aW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcmlzY3YK
