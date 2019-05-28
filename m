@@ -2,47 +2,48 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1FF22C4C0
-	for <lists+linux-riscv@lfdr.de>; Tue, 28 May 2019 12:49:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EFE72C861
+	for <lists+linux-riscv@lfdr.de>; Tue, 28 May 2019 16:12:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UpGcgsA22uUpdCtR/ULrFjeVb2wJIky4xevWZI4r/Oc=; b=mD7dcK5FSUEYRl
-	iko1M8e6M6PH53P7JjqK5Ifb+cp3L1d7MqxPWKMJVjlBSouK9dRBgbl8xngUMDnhqS17aNLUdGRQi
-	e0DtJLOv3l8LP1D6ZZoJDF2I+1jtbeodXrHowBtv3WPVRx1BgPWznHl+ntyzJGR8sxDTig550FiPh
-	V/TKakNBOn/LXi5qSrM5cY50tXzYaVfevkxMDPe+LHgcNloZGHodBmJPSp6VMB3YBAcbsL31vjuby
-	Pnqt5kxISO3V0/bmLwdwI0w8YI64RPDMXXC68HhGyQC5f9ef/Okx5yH9JTEclqZmAyl/eYiUC5X07
-	yZvquB0veH1VTKZbR/rA==;
+	List-Owner; bh=RrSCusdv3ZgSgFqatObuBZLm3mH3rUMNdtwinUBnCdo=; b=H2+RPHNo82wc/w
+	/YQTZZaR3WnyZW2lTtvjmotm2if115VguFAaThs36X9DBs1902b/cope56eF8YRjenCQISViv0JaW
+	Rq7raYSawKmjxwb4oyalaY13rrTIO7XpLYyhq9M1PpT+cXU/5OLz/GMHyywMWzfK33gs/Yqx2TOOG
+	NZW5ZbDX8eitKV5zE9q5Rc1kwhzrp1WOs094votUDRjAyHi+F/qWdcCp2cstUaR+RHOPr26tdw36s
+	3HrFUYgvMgxhv9QLt1Q4RnrqTDeH9eq+fk6bEUh3kqnpAu0eO6TdWghO4rabTR2AhYmD/UGpGqMCh
+	CkcP+rIyXusUGUbNFquQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVZfi-0003uv-B5; Tue, 28 May 2019 10:49:34 +0000
-Received: from foss.arm.com ([217.140.101.70])
+	id 1hVcqQ-0007BR-7M; Tue, 28 May 2019 14:12:50 +0000
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]
+ helo=foss.arm.com)
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVZff-0003uE-9z
- for linux-riscv@lists.infradead.org; Tue, 28 May 2019 10:49:32 +0000
+ id 1hVcqG-00074f-1S; Tue, 28 May 2019 14:12:41 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9DCCF15AD;
- Tue, 28 May 2019 03:49:30 -0700 (PDT)
-Received: from e113632-lin.cambridge.arm.com (e113632-lin.cambridge.arm.com
- [10.1.194.37])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 840293F59C;
- Tue, 28 May 2019 03:49:29 -0700 (PDT)
-From: Valentin Schneider <valentin.schneider@arm.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND 5/7] RISC-V: entry: Remove unneeded need_resched() loop
-Date: Tue, 28 May 2019 11:48:46 +0100
-Message-Id: <20190528104848.13160-6-valentin.schneider@arm.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190528104848.13160-1-valentin.schneider@arm.com>
-References: <20190528104848.13160-1-valentin.schneider@arm.com>
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2D36780D;
+ Tue, 28 May 2019 07:12:39 -0700 (PDT)
+Received: from arrakis.emea.arm.com (arrakis.cambridge.arm.com [10.1.196.78])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
+ C10193F5AF; Tue, 28 May 2019 07:12:35 -0700 (PDT)
+Date: Tue, 28 May 2019 15:12:33 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH 4/5] kconfig: make arch/*/configs/defconfig the default
+ of KBUILD_DEFCONFIG
+Message-ID: <20190528141232.GC32006@arrakis.emea.arm.com>
+References: <20190527143725.12542-1-yamada.masahiro@socionext.com>
+ <20190527143725.12542-4-yamada.masahiro@socionext.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190527143725.12542-4-yamada.masahiro@socionext.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190528_034931_346944_AC9DE257 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190528_071240_089255_5678ACDA 
+X-CRM114-Status: GOOD (  10.88  )
 X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.0 points)
@@ -63,46 +64,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>,
- Albert Ou <aou@eecs.berkeley.edu>
+Cc: linux-s390@vger.kernel.org, Paul Walmsley <paul@pwsan.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Vincent Chen <deanbo422@gmail.com>,
+ linux-kbuild@vger.kernel.org, Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org,
+ Firoz Khan <firoz.khan@linaro.org>, Greentime Hu <green.hu@gmail.com>,
+ linux-alpha@vger.kernel.org, Martin Schwidefsky <schwidefsky@de.ibm.com>,
+ Guo Ren <guoren@kernel.org>, Matt Turner <mattst88@gmail.com>,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Richard Henderson <rth@twiddle.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Since the enabling and disabling of IRQs within preempt_schedule_irq()
-is contained in a need_resched() loop, we don't need the outer arch
-code loop.
+On Mon, May 27, 2019 at 11:37:24PM +0900, Masahiro Yamada wrote:
+> diff --git a/arch/arm64/Makefile b/arch/arm64/Makefile
+> index b025304bde46..970c41a30ed3 100644
+> --- a/arch/arm64/Makefile
+> +++ b/arch/arm64/Makefile
+> @@ -30,8 +30,6 @@ LDFLAGS_vmlinux	+= --fix-cortex-a53-843419
+>    endif
+>  endif
+>  
+> -KBUILD_DEFCONFIG := defconfig
+> -
+>  # Check for binutils support for specific extensions
+>  lseinstr := $(call as-instr,.arch_extension lse,-DCONFIG_AS_LSE=1)
 
-Signed-off-by: Valentin Schneider <valentin.schneider@arm.com>
-Cc: Palmer Dabbelt <palmer@sifive.com>
-Cc: Albert Ou <aou@eecs.berkeley.edu>
-Cc: linux-riscv@lists.infradead.org
----
- arch/riscv/kernel/entry.S | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+For arm64:
 
-diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
-index 1c1ecc238cfa..d0b1b9660283 100644
---- a/arch/riscv/kernel/entry.S
-+++ b/arch/riscv/kernel/entry.S
-@@ -258,12 +258,11 @@ restore_all:
- resume_kernel:
- 	REG_L s0, TASK_TI_PREEMPT_COUNT(tp)
- 	bnez s0, restore_all
--need_resched:
- 	REG_L s0, TASK_TI_FLAGS(tp)
- 	andi s0, s0, _TIF_NEED_RESCHED
- 	beqz s0, restore_all
- 	call preempt_schedule_irq
--	j need_resched
-+	j restore_all
- #endif
- 
- work_pending:
--- 
-2.20.1
-
+Acked-by: Catalin Marinas <catalin.marinas@arm.com>
 
 _______________________________________________
 linux-riscv mailing list
