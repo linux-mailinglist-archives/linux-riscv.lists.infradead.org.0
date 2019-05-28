@@ -2,123 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9500E2BDFC
-	for <lists+linux-riscv@lfdr.de>; Tue, 28 May 2019 05:54:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BCC772C161
+	for <lists+linux-riscv@lfdr.de>; Tue, 28 May 2019 10:33:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aPhe1oNAIOVQ8KMFU5gvvqQqPtfRwCGoKfQPHsl7hJc=; b=ep+W3uIJH4jZNj
-	3KU6lWC4VzN92oWmkahkA3SlboJ+Si+NR/Q6u1qf0WDe1tZcl6dkGPlKtpNTilq834Aif2fvQNLwZ
-	qsEH4vz2vhnp47O3CAmyHf0Q3/0R+EqVg2BMo9uiWaIrYiBGun7YRgcwpQmMM1dSqaxpPY2czJuFJ
-	UBNH4UU3Zl8pmgZx4hN81M8NQ1+GF1RZI2im47eqWvR+bSsGsR6sv0dhRroQbsH+YBKcGbdIUQzsf
-	/6laBqHIlKOUHBgXIUudPSO4xzmuD4YFKX2VwGwGVeCQSNfdZwpg9qVwAYHhgJAc9X3T7nSYWtXMI
-	SQgl6bN0lBaXJ69rYUZw==;
+	List-Owner; bh=pdzlPi3vKtKR/3S44Um1ek4lr/2OlcKZ6/NiqxzSR9o=; b=Dc1fHzCklg0u/u
+	ts3MsJgrx0LIzUboO5z1261SsES8DVZBcayY0G4wJkWH2VskQhFpcu4kueL0IYgt688Ark9alM2tU
+	dht9Xjxeo6tydGuWBvdzkvtytp5ymCAyRSTLVQh9BKg5EqAW3PTvHB99YezSOjLpIVOm/1iD2PIZt
+	pE8Y1JoWYVpXFR+GwpxwqHLV/3I1p0R56tvBeUf7wB61vAXUV1ZW6GvIk/VxD0FxkfiZh4DMAv9w/
+	Wiqz8+a2BAuYCqD0oGIp2NxVINDKUzmn9w/U5CAWBjyTgnaqk/RWHZiIFqkmNFdRRE/1Nw1GB0IQW
+	gbclZafS92uJXZUYFnTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVTBn-0002Eh-1P; Tue, 28 May 2019 03:54:15 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1hVXXW-0007S0-Uh; Tue, 28 May 2019 08:32:58 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVTBh-0002Dw-Mx
- for linux-riscv@lists.infradead.org; Tue, 28 May 2019 03:54:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1559015649; x=1590551649;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=WZXJM/Sy8xNIOM0Uw35IItL0HZv2qIwC5OK6omvQ5XA=;
- b=DcHxpfV4/NPqKrt2ulxuynJePNH9JSW/JeiI/cvn0s610V6ZLu4O0cVt
- QpjJeXXvSfgdbEkZuxUUp7Glv1Ek8QdvdilQGchU3qsZxyW0vo747j3Fm
- SmINDbxEbu33GBMUvLQwQBqBV35bT3EJOcZQwS4ifZpmmAt6L0fbBfE9U
- wg2fmAAP3m319y3zyef1mX4DX1ZMssfsk7lG1WV1yAy1DZMU67D9siaAz
- LUW7GgNQ33Zjv5MYEGvYFStWiTuxF9j/r3eS7uYoojXMNsZnz8xpajM//
- 7cX/M2H7LlHlejAzoCSynYCvRGmiL3hDL1VvcsuehKhJb2LpqtewREoGz g==;
-X-IronPort-AV: E=Sophos;i="5.60,520,1549900800"; d="scan'208";a="109190114"
-Received: from mail-by2nam05lp2059.outbound.protection.outlook.com (HELO
- NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.59])
- by ob1.hgst.iphmx.com with ESMTP; 28 May 2019 11:54:05 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WZXJM/Sy8xNIOM0Uw35IItL0HZv2qIwC5OK6omvQ5XA=;
- b=PUZrvfE3c65Up9acfPImzMH0dfPS9Gq0loiobsx7Pio9QuL28O3Rabgi7F5Y54f017wuYaW9h1HC4dl4IVVqjLdbXG2tUxJF3vhDYtxGPKnHAXu41gs5vCxGZz5+Mc06e4W9toNr1U0dMYRBGQE/LEcJkFgg/afgQpwPUaDof7w=
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
- MN2PR04MB5824.namprd04.prod.outlook.com (20.179.21.87) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1922.18; Tue, 28 May 2019 03:54:02 +0000
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::98ab:5e60:9c5c:4e0e]) by MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::98ab:5e60:9c5c:4e0e%7]) with mapi id 15.20.1922.021; Tue, 28 May 2019
- 03:54:02 +0000
-From: Anup Patel <Anup.Patel@wdc.com>
-To: Troy Benjegerdes <troy.benjegerdes@sifive.com>, Karsten Merker
- <merker@debian.org>
-Subject: RE: [v4 PATCH] RISC-V: Add an Image header that boot loader can parse.
-Thread-Topic: [v4 PATCH] RISC-V: Add an Image header that boot loader can
- parse.
-Thread-Index: AQHVEefPx78xcsUKv0KnMjJBKgt9jaZ/DuaAgACA6ICAABe4gIAARRCg
-Date: Tue, 28 May 2019 03:54:02 +0000
-Message-ID: <MN2PR04MB60610CF4829D5251A112CF9C8D1E0@MN2PR04MB6061.namprd04.prod.outlook.com>
-References: <20190524041814.7497-1-atish.patra@wdc.com>
- <CAKv+Gu9U56b50TrfriBfRFed_1aoXg2Y624tu7v5m2y+6DVq5w@mail.gmail.com>
- <20190527221619.fkxtzk4jpeyfoptf@excalibur.cnev.de>
- <3178D175-18AD-47D0-8D51-CB2900DFA572@sifive.com>
-In-Reply-To: <3178D175-18AD-47D0-8D51-CB2900DFA572@sifive.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Anup.Patel@wdc.com; 
-x-originating-ip: [45.116.123.171]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7c45abe6-1f28-4301-c8d6-08d6e3201f81
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:MN2PR04MB5824; 
-x-ms-traffictypediagnostic: MN2PR04MB5824:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <MN2PR04MB582418499E89424E0E7C961B8D1E0@MN2PR04MB5824.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 00514A2FE6
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(396003)(376002)(366004)(136003)(346002)(39860400002)(199004)(189003)(13464003)(99286004)(486006)(14454004)(7696005)(8936002)(25786009)(76176011)(6506007)(53546011)(229853002)(4326008)(102836004)(476003)(81166006)(26005)(8676002)(446003)(86362001)(81156014)(11346002)(2906002)(186003)(14444005)(74316002)(6116002)(33656002)(256004)(305945005)(52536014)(561944003)(6436002)(66556008)(66946007)(66446008)(76116006)(66476007)(64756008)(73956011)(9686003)(53936002)(6246003)(55016002)(54906003)(110136005)(72206003)(68736007)(316002)(66066001)(3846002)(5660300002)(7416002)(7736002)(71200400001)(478600001)(71190400001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5824;
- H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: sCSUxaWhQfakXOYwTXgudTniwf1nvGv2zsWSci+IazUWGxdJ23BJ5QkmXQP1MSeRUk4zw189cU7wRATUJytD+DuUCwn91KDptSMJA6OO0V/F/coSsJvzZr+z8P8xrBVJnH1htSqmyWYQE6bSzlAFV9j1VPc6Xv2sRDVqPOUUjm9eLBdgow815ADKhdoIrpcS/bxHZgy7GiprU2Nv70odOzh81SrQYSSTEXdJ3mLnYDAWZViAdYHwRrzkB+OqEkCRbSN8HeAqx8xr+7b1z4w1AEa+B/rGxLbgfNrpf1W1/2QAOc3fWIL2QHzKCFlQcSGCtDjfzfPbkdgGbNjQEhlEDrJcHU8+9o6oKtMDLtLLOBo3Kl9UnbfBvoqRC9nXCqoFmbAKG7KJx+LP6WHTm3jSzRG+mPthI0iyNlJccWGDTBM=
+ id 1hVXXT-0007RX-He
+ for linux-riscv@lists.infradead.org; Tue, 28 May 2019 08:32:57 +0000
+Received: by mail-pg1-x531.google.com with SMTP id f25so10527441pgv.10
+ for <linux-riscv@lists.infradead.org>; Tue, 28 May 2019 01:32:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=r7RtTX0GvNXmCocyF2J/4LAIgY3UxyXekfP4HELOf8A=;
+ b=HVju5Bmc1pMd7q2Sd6k3DfcdwywXzZ7TW27/F2uLoBjTP/wOVlHfOYToq9uGQT9Ab3
+ 4h6hQ9DnWMqP4Ks9YYv5gFpqvJrZ03DRs5PZUL/ZrO3XKtqpguo4eHtWDgeAPAxVMAN3
+ mQmQEP/Or6ZlNhLbxcKdcoAAoOBmQde5VO9yw6/R4sIDJTyQGlgzBnGN0rCpc1iR4qiY
+ RfI8sFSvSTWgs238qFSq1Y6SsNbFk7NidZv3cViPIDEsaInGx4JklniYGs+AhJnqCmLo
+ Xq3S4o5N+kGWl2uMsRSPGSCzn6RJpdkWcBGHRs13LJFHN2EB0UXEh7IJ/EOmG4mBO53s
+ YpbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=r7RtTX0GvNXmCocyF2J/4LAIgY3UxyXekfP4HELOf8A=;
+ b=PexlHIyQOFvA2vI9rcKxXfuIFdd0L6V1/ub9WouBfH9/zszGZGteHIdxdvlAJcts35
+ 2/Lk0HqYJ2W0QUGEu8L1X0ZQ0Rg1/6PkpjvtgPSeYeLHtnXX2vniR65SZ6icsvCcvBvs
+ dEU/svZpPWeb2P/14muYzbsc1iGhTADbnlMVaZEN/8ZWvx8izo4gIZCN/gcc+Gs2XE5O
+ 3GMjkG86kIMwKw90U3bdesN20K5h20+qr9v6USxNcUreMK0de2thXVcn541ADec/M6Hp
+ Co4MvMceJIN9glQX6Z4cwOiwniEvQP/wZcuGT+OX78CYclZIkIfHoys1J77sfjZN90Qd
+ 9XNA==
+X-Gm-Message-State: APjAAAWrmkvCQznSWxcmiIDnBiTnT00D5IMrbsEJeldePfwwpHJNGivJ
+ sg3UwnqrlbHk47+dhk/+x2yVAbGnAm8=
+X-Google-Smtp-Source: APXvYqxTh8XLKukgj/UVjOwbqueD7BSfmJKsHnytZ+syTMYapV/s5WDqwOCxL7utcmhI//fSDu9B2g==
+X-Received: by 2002:a17:90a:5d15:: with SMTP id
+ s21mr3992710pji.125.1559032373900; 
+ Tue, 28 May 2019 01:32:53 -0700 (PDT)
+Received: from localhost ([76.14.6.29])
+ by smtp.gmail.com with ESMTPSA id a12sm11926252pgq.0.2019.05.28.01.32.52
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 28 May 2019 01:32:52 -0700 (PDT)
+Date: Tue, 28 May 2019 01:32:51 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: Testing the recent RISC-V DT patchsets
+In-Reply-To: <alpine.DEB.2.21.9999.1904221705170.18377@viisi.sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1905280105110.20842@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1904221705170.18377@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7c45abe6-1f28-4301-c8d6-08d6e3201f81
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 May 2019 03:54:02.4752 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Anup.Patel@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5824
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190527_205409_816263_6606ED3C 
-X-CRM114-Status: GOOD (  35.82  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190528_013255_728765_19AB53FF 
+X-CRM114-Status: GOOD (  14.23  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:531 listed in]
+ [list.dnswl.org]
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -130,133 +97,192 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Jonathan Corbet <corbet@lwn.net>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Zong Li <zong@andestech.com>, Atish Patra <Atish.Patra@wdc.com>,
- Palmer Dabbelt <palmer@sifive.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- Nick Kossifidis <mick@ics.forth.gr>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "marek.vasut@gmail.com" <marek.vasut@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: lollivier@baylibre.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogVHJveSBCZW5qZWdlcmRl
-cyA8dHJveS5iZW5qZWdlcmRlc0BzaWZpdmUuY29tPg0KPiBTZW50OiBUdWVzZGF5LCBNYXkgMjgs
-IDIwMTkgNToxMSBBTQ0KPiBUbzogS2Fyc3RlbiBNZXJrZXIgPG1lcmtlckBkZWJpYW4ub3JnPg0K
-PiBDYzogQXJkIEJpZXNoZXV2ZWwgPGFyZC5iaWVzaGV1dmVsQGxpbmFyby5vcmc+OyBBbGJlcnQg
-T3UNCj4gPGFvdUBlZWNzLmJlcmtlbGV5LmVkdT47IEpvbmF0aGFuIENvcmJldCA8Y29yYmV0QGx3
-bi5uZXQ+OyBBbnVwIFBhdGVsDQo+IDxBbnVwLlBhdGVsQHdkYy5jb20+OyBab25nIExpIDx6b25n
-QGFuZGVzdGVjaC5jb20+OyBBdGlzaCBQYXRyYQ0KPiA8QXRpc2guUGF0cmFAd2RjLmNvbT47IE5p
-Y2sgS29zc2lmaWRpcyA8bWlja0BpY3MuZm9ydGguZ3I+OyBQYWxtZXIgRGFiYmVsdA0KPiA8cGFs
-bWVyQHNpZml2ZS5jb20+OyBwYXVsLndhbG1zbGV5QHNpZml2ZS5jb207IGxpbnV4LQ0KPiByaXNj
-dkBsaXN0cy5pbmZyYWRlYWQub3JnOyBtYXJlay52YXN1dEBnbWFpbC5jb20NCj4gU3ViamVjdDog
-UmU6IFt2NCBQQVRDSF0gUklTQy1WOiBBZGQgYW4gSW1hZ2UgaGVhZGVyIHRoYXQgYm9vdCBsb2Fk
-ZXIgY2FuDQo+IHBhcnNlLg0KPiANCj4gDQo+IA0KPiA+IE9uIE1heSAyNywgMjAxOSwgYXQgNTox
-NiBQTSwgS2Fyc3RlbiBNZXJrZXIgPG1lcmtlckBkZWJpYW4ub3JnPg0KPiB3cm90ZToNCj4gPg0K
-PiA+IE9uIE1vbiwgTWF5IDI3LCAyMDE5IGF0IDA0OjM0OjU3UE0gKzAyMDAsIEFyZCBCaWVzaGV1
-dmVsIHdyb3RlOg0KPiA+PiBPbiBGcmksIDI0IE1heSAyMDE5IGF0IDA2OjE4LCBBdGlzaCBQYXRy
-YSA8YXRpc2gucGF0cmFAd2RjLmNvbT4gd3JvdGU6DQo+ID4+PiBDdXJyZW50bHksIHRoZSBsYXN0
-IHN0YWdlIGJvb3QgbG9hZGVycyBzdWNoIGFzIFUtQm9vdCBjYW4gYWNjZXB0DQo+ID4+PiBvbmx5
-IHVJbWFnZSB3aGljaCBpcyBhbiB1bm5lY2Vzc2FyeSBhZGRpdGlvbmFsIHN0ZXAgaW4gYXV0b21h
-dGluZw0KPiA+Pj4gYm9vdCBwcm9jZXNzLg0KPiA+Pj4NCj4gPj4+IEFkZCBhbiBpbWFnZSBoZWFk
-ZXIgdGhhdCBib290IGxvYWRlciB1bmRlcnN0YW5kcyBhbmQgYm9vdCBMaW51eCBmcm9tDQo+ID4+
-PiBmbGF0IEltYWdlIGRpcmVjdGx5Lg0KPiA+Pj4NCj4gPj4+IFRoaXMgaGVhZGVyIGlzIGJhc2Vk
-IG9uIEFSTTY0IGJvb3QgaW1hZ2UgaGVhZGVyIGFuZCBwcm92aWRlcyBhbg0KPiA+Pj4gb3Bwb3J0
-dW5pdHkgdG8gY29tYmluZSBib3RoIEFSTTY0ICYgUklTQy1WIGltYWdlIGhlYWRlcnMgaW4gZnV0
-dXJlLg0KPiA+Pj4NCj4gPj4+IEFsc28gbWFrZSBzdXJlIHRoYXQgUEUvQ09GRiBoZWFkZXIgY2Fu
-IGNvLWV4aXN0IGluIHRoZSBzYW1lIGltYWdlIHNvDQo+ID4+PiB0aGF0IEVGSSBzdHViIGNhbiBi
-ZSBzdXBwb3J0ZWQgZm9yIFJJU0MtViBpbiBmdXR1cmUuIEVGSQ0KPiA+Pj4gc3BlY2lmaWNhdGlv
-biBuZWVkcyBQRS9DT0ZGIGltYWdlIGhlYWRlciBpbiB0aGUgYmVnaW5uaW5nIG9mIHRoZQ0KPiA+
-Pj4ga2VybmVsIGltYWdlIGluIG9yZGVyIHRvIGxvYWQgaXQgYXMgYW4gRUZJIGFwcGxpY2F0aW9u
-LiBJbiBvcmRlciB0bw0KPiA+Pj4gc3VwcG9ydCBFRkkgc3R1YiwgY29kZTAgc2hvdWxkIGJlIHJl
-cGxhY2VkIHdpdGggIk1aIiBtYWdpYyBzdHJpbmcNCj4gPj4+IGFuZCByZXM0KGF0IG9mZnNldCAw
-eDNjKSBzaG91bGQgcG9pbnQgdG8gdGhlIHJlc3Qgb2YgdGhlIFBFL0NPRkYNCj4gPj4+IGhlYWRl
-ciAod2hpY2ggd2lsbCBiZSBhZGRlZCBkdXJpbmcgRUZJIHN1cHBvcnQpLg0KPiA+IFsuLi5dDQo+
-ID4+PiBEb2N1bWVudGF0aW9uL3Jpc2N2L2Jvb3QtaW1hZ2UtaGVhZGVyLnR4dCB8IDUwDQo+ICsr
-KysrKysrKysrKysrKysrKw0KPiA+Pj4gYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9pbWFnZS5oICAg
-ICAgICAgICAgfCA2NCArKysrKysrKysrKysrKysrKysrKysrKw0KPiA+Pj4gYXJjaC9yaXNjdi9r
-ZXJuZWwvaGVhZC5TICAgICAgICAgICAgICAgICAgfCAzMiArKysrKysrKysrKysNCj4gPj4+IDMg
-ZmlsZXMgY2hhbmdlZCwgMTQ2IGluc2VydGlvbnMoKykNCj4gPj4+IGNyZWF0ZSBtb2RlIDEwMDY0
-NCBEb2N1bWVudGF0aW9uL3Jpc2N2L2Jvb3QtaW1hZ2UtaGVhZGVyLnR4dA0KPiA+Pj4gY3JlYXRl
-IG1vZGUgMTAwNjQ0IGFyY2gvcmlzY3YvaW5jbHVkZS9hc20vaW1hZ2UuaA0KPiA+Pj4NCj4gPj4+
-IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3Jpc2N2L2Jvb3QtaW1hZ2UtaGVhZGVyLnR4dA0K
-PiA+Pj4gYi9Eb2N1bWVudGF0aW9uL3Jpc2N2L2Jvb3QtaW1hZ2UtaGVhZGVyLnR4dA0KPiA+Pj4g
-bmV3IGZpbGUgbW9kZSAxMDA2NDQNCj4gPj4+IGluZGV4IDAwMDAwMDAwMDAwMC4uNjhhYmMyMzUz
-Y2VjDQo+ID4+PiAtLS0gL2Rldi9udWxsDQo+ID4+PiArKysgYi9Eb2N1bWVudGF0aW9uL3Jpc2N2
-L2Jvb3QtaW1hZ2UtaGVhZGVyLnR4dA0KPiA+Pj4gQEAgLTAsMCArMSw1MCBAQA0KPiA+Pj4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCb290IGltYWdlIGhlYWRlciBpbiBSSVNDLVYg
-TGludXgNCj4gPj4+ICsNCj4gPj4+ICsgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09DQo+ID4+PiArDQo+ID4+PiArQXV0aG9yOiBBdGlzaCBQYXRyYSA8YXRpc2gu
-cGF0cmFAd2RjLmNvbT4gRGF0ZSAgOiAyMCBNYXkgMjAxOQ0KPiA+Pj4gKw0KPiA+Pj4gK1RoaXMg
-ZG9jdW1lbnQgb25seSBkZXNjcmliZXMgdGhlIGJvb3QgaW1hZ2UgaGVhZGVyIGRldGFpbHMgZm9y
-IFJJU0MtVg0KPiBMaW51eC4NCj4gPj4+ICtUaGUgY29tcGxldGUgYm9vdGluZyBndWlkZSB3aWxs
-IGJlIGF2YWlsYWJsZSBhdA0KPiBEb2N1bWVudGF0aW9uL3Jpc2N2L2Jvb3RpbmcudHh0Lg0KPiA+
-Pj4gKw0KPiA+Pj4gK1RoZSBmb2xsb3dpbmcgNjQtYnl0ZSBoZWFkZXIgaXMgcHJlc2VudCBpbiBk
-ZWNvbXByZXNzZWQgTGludXgga2VybmVsDQo+IGltYWdlLg0KPiA+Pj4gKw0KPiA+Pj4gKyAgICAg
-ICB1MzIgY29kZTA7ICAgICAgICAgICAgICAgIC8qIEV4ZWN1dGFibGUgY29kZSAqLw0KPiA+Pj4g
-KyAgICAgICB1MzIgY29kZTE7ICAgICAgICAgICAgICAgIC8qIEV4ZWN1dGFibGUgY29kZSAqLw0K
-PiA+Pg0KPiA+PiBBcG9sb2dpZXMgZm9yIG5vdCBtZW50aW9uaW5nIHRoaXMgaW4gbXkgcHJldmlv
-dXMgcmVwbHksIGJ1dCBnaXZlbg0KPiA+PiB0aGF0IHlvdSBhbHJlYWR5IGtub3cgdGhhdCB5b3Ug
-d2lsbCBuZWVkIHRvIHB1dCB0aGUgbWFnaWMgc3RyaW5nIE1aDQo+ID4+IGF0IG9mZnNldCAweDAs
-IGl0IG1ha2VzIG1vcmUgc2Vuc2UgdG8gbm90IHB1dCBhbnkgY29kZSB0aGVyZSBhdCBhbGwsDQo+
-ID4+IGJ1dCBlZHVjYXRlIHRoZSBib290bG9hZGVyIHRoYXQgdGhlIGZpcnN0IGV4ZWN1dGFibGUg
-aW5zdHJ1Y3Rpb24gaXMNCj4gPj4gYXQgb2Zmc2V0IDB4MjAsIGFuZCBwdXQgdGhlIHNwYXJlIGZp
-ZWxkcyByaWdodCBhZnRlciBpdCBpbiBjYXNlIHlvdQ0KPiA+PiBldmVyIG5lZWQgbW9yZSB0aGFu
-IDIgc2xvdHMuIChPbiBhcm02NCwgd2Ugd2VyZSBsdWNreSB0byBiZSBhYmxlIHRvDQo+ID4+IGZp
-bmQgYW4gb3Bjb2RlIHRoYXQgaGFwcGVuZWQgdG8gY29udGFpbiB0aGUgTVogYml0IHBhdHRlcm4g
-YW5kIGFjdA0KPiA+PiBhbG1vc3QgbGlrZSBhIE5PUCwgYnV0IGl0IHNlZW1zIHNpbGx5IHRvIHJl
-bHkgb24gdGhhdCBmb3IgUklTQy1WIGFzDQo+ID4+IHdlbGwpDQo+ID4+DQo+ID4+IFNvIHNvbWV0
-aGluZyBsaWtlDQo+ID4+DQo+ID4+IHUxNiBwZV9yZXMxOyAgLyogTVogZm9yIEVGSSBib290YWJs
-ZSBpbWFnZXMsIGRvbid0IGNhcmUgb3RoZXJ3aXNlICovDQo+ID4+IHU4IG1hZ2ljWzZdOyAgICAv
-KiAiUklTQ1ZcMCINCj4gPj4NCj4gPj4gdTY0IHRleHRfb2Zmc2V0OyAgICAgICAgICAvKiBJbWFn
-ZSBsb2FkIG9mZnNldCwgbGl0dGxlIGVuZGlhbiAqLw0KPiA+PiB1NjQgaW1hZ2Vfc2l6ZTsgICAg
-ICAgICAgIC8qIEVmZmVjdGl2ZSBJbWFnZSBzaXplLCBsaXR0bGUgZW5kaWFuICovDQo+ID4+IHU2
-NCBmbGFnczsgICAgICAgICAgICAgICAgLyoga2VybmVsIGZsYWdzLCBsaXR0bGUgZW5kaWFuICov
-DQo+ID4+DQo+ID4+IHUzMiBjb2RlMDsgICAgICAgICAgICAgICAgLyogRXhlY3V0YWJsZSBjb2Rl
-ICovDQo+ID4+IHUzMiBjb2RlMTsgICAgICAgICAgICAgICAgLyogRXhlY3V0YWJsZSBjb2RlICov
-DQo+ID4+DQo+ID4+IHU2NCByZXNlcnZlZFsyXTsgICAgIC8qIHJlc2VydmVkIGZvciBmdXR1cmUg
-dXNlICovDQo+ID4+DQo+ID4+IHUzMiB2ZXJzaW9uOyAgICAgICAgICAgICAgLyogVmVyc2lvbiBv
-ZiB0aGlzIGhlYWRlciAqLw0KPiA+PiB1MzIgcGVfcmVzMjsgICAgICAgICAgICAgICAgIC8qIFJl
-c2VydmVkIGZvciBQRSBDT0ZGIG9mZnNldCAqLw0KPiA+DQo+ID4gSGVsbG8sDQo+ID4NCj4gPiB3
-b3VsZG4ndCB0aGF0IGltbWVkaWF0ZWx5IGJyZWFrIGV4aXN0aW5nIHN5c3RlbXMgKGluY2x1ZGlu
-ZyBxZW11IHdoZW4NCj4gPiBsb2FkaW5nIGtlcm5lbHMgd2l0aCB0aGUgIi1rZXJuZWwiIG9wdGlv
-bikgdGhhdCByZWx5IG9uIHRoZSBmYWN0IHRoYXQNCj4gPiB0aGUga2VybmVsIGVudHJ5IHBvaW50
-IGlzIGFsd2F5cyBhdCB0aGUga2VybmVsIGxvYWQgYWRkcmVzcz8gIFRoZQ0KPiA+IEFSTTY0IGhl
-YWRlciBhbmQgQXRpc2gncyBvcmlnaW5hbCBSSVNDLVYgcHJvcG9zYWwgYmFzZWQgb24gdGhlIEFS
-TTY0DQo+ID4gaGVhZGVyIGtlZXAgdGhlIHByb3BlcnR5IHRoYXQganVtcGluZyB0byB0aGUga2Vy
-bmVsIGxvYWQgYWRkcmVzcw0KPiA+IGFsd2F5cyB3b3JrcywgcmVnYXJkbGVzcyBvZiB3aGF0IHRo
-ZSBwYXJ0aWN1bGFyIGhlYWRlciBsb29rcyBsaWtlIGFuZA0KPiA+IHdoaWNoIHBvdGVudGlhbCBm
-dXR1cmUgZXh0ZW5zaW9ucyBpdCBpbmNsdWRlcywgYnV0IHRoZSBwcm9wb3NlZCBjaGFuZ2UNCj4g
-PiBhYm92ZSB3b3VsZG4ndCBkbyB0aGF0Lg0KPiA+DQo+ID4gQWx0aG91Z2ggSSBhZ3JlZSB0aGF0
-IGhhdmluZyB0byBpbnRlZ3JhdGUgdGhlICJNWiIgc3RyaW5nIGFzIGFuDQo+ID4gaW5zdHJ1Y3Rp
-b24gaXNuJ3QgcGFydGljdWxhcmx5IG5pY2UsIEkgZG9uJ3QgdGhpbmsgdGhhdCB0aGlzIGlzIGEN
-Cj4gPiBzdWZmaWNpZW50IGp1c3RpZmljYXRpb24gZm9yIGJyZWFraW5nIGNvbXBhdGliaWxpdHkg
-d2l0aCBwcmlvciBrZXJuZWwNCj4gPiByZWxlYXNlcyBhbmQvb3IgZXhpc3RpbmcgYm9vdCBmaXJt
-d2FyZS4gIE9uIFJJU0MtViwgdGhlICJNWiIgc3RyaW5nIGlzDQo+ID4gYSBjb21wcmVzc2VkIGxv
-YWQgaW1tZWRpYXRlIHRvIHgyMC9zNCwgaS5lLiBhbiBpbnN0cnVjdGlvbiB0aGF0IHNob3VsZA0K
-PiA+IGJlICJoYXJtbGVzcyIgYXMgZmFyIGFzIHRoZSBrZXJuZWwgYm9vdCBmbG93IGlzIGNvbmNl
-cm5lZCBhcyB0aGUNCj4gPiB4MjAvczQgcmVnaXN0ZXIgQUZBSUsgZG9lc24ndCBjb250YWluIGFu
-eSBpbmZvcm1hdGlvbiB0aGF0IHRoZSBrZXJuZWwNCj4gPiB3b3VsZCB1c2UuDQo+ID4NCj4gPiBS
-ZWdhcmRzLA0KPiA+IEthcnN0ZW4NCj4gPg0KPiANCj4gWWVzLCB0aGF0IHdvdWxkIGJyZWFrIGV4
-aXN0aW5nIHN5c3RlbXMuIEJlc2lkZXMsIHRoZSBxZW11IC1rZXJuZWwgb3B0aW9uDQo+IHVzZXMg
-dGhlIHZtbGludXggZWxmIGZpbGUsIGFuZCBJIHRoaW5rIGEgYmV0dGVyIHNvbHV0aW9uIGlzIG1h
-a2Ug4oCYbG9hZGVsZuKAmSB3b3JrLA0KPiBhbmQgaW5jbHVkZSBhIHNlY29uZCBtZXRob2QgZm9y
-IEVGSS4NCj4gDQo+ICh1bmZvcnR1bmF0ZWx5LCBJIGhhZCB0byBkcm9wIHNvbWUgbGlzdHMgYXMg
-SeKAmW0gaGF2aW5nIHRyb3VibGUgc2VuZGluZyB0bw0KPiB0aGVtIHZpYSBnbWFpbCwgc28gdGhl
-IENDIGxpc3Qgb24gbXkgcmVzcG9uc2UgaGFzIGJlZW4gbGltaXRlZCkNCg0KTm9wZXMsIGl0IHdv
-cmtzIHBlcmZlY3RseSBmaW5lIG9uIFFFTVUgUklTQy1WLg0KDQpKdXN0IGxpa2UgQVJNNjQsIHdl
-IGFyZSBsdWNreSBmb3IgUklTQy1WIGFzIHdlbGwuIFRoZSAiTVoiIHN0cmluZyBpcyBhDQpoYXJt
-bGVzcyBsb2FkIGluc3RydWN0aW9uIGluIFJJU0MtViBzbyB3ZSBkb24ndCBuZWVkIGFueSBjaGFu
-Z2VzIGluIFFFTVUuDQoNCldlIHNob3VsZCBoYXZlICJNWiIgc3RyaW5nIGluIEltYWdlIGhlYWRl
-ciBvbmx5IHdoZW4gTGludXggUklTQy1WIGtlcm5lbA0KaGFzIEVGSSBzdXBwb3J0IGVuYWJsZWQg
-KGp1c3QgbGlrZSBMaW51eCBBUk02NCBrZXJuZWwpIHNvIHRoYXQgYm9vdGxvYWRlcg0KdHJ5aW5n
-IHRvIGJvb3QgTGludXggUklTQy1WIGtlcm5lbCBhcyBFRkkgYXBwbGljYXRpb24gd2lsbCBjZXJ0
-YWlubHkgZmFpbA0Kd2hlbiBFRkkgc3VwcG9ydCBpcyBkaXNhYmxlZC9ub3QtYXZhaWxhYmxlIGlu
-IExpbnV4IFJJU0MtViBrZXJuZWwuDQoNClJlZ2FyZHMsDQpBbnVwDQpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QK
-bGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
+
+An update for those testing RISC-V patches: here's a new branch of 
+riscv-pk/bbl that doesn't try to read or modify the DT data at all, which 
+should be useful until U-Boot settles down.  This new riscv-pk version 
+should be easier to use than the previous version for those testing 
+upstream-bound kernel DT data on SiFive hardware:
+
+   https://github.com/sifive/riscv-pk/tree/dev/paulw/configurable-machine-data-methods-v1
+
+To build a BBL that doesn't touch the DT data, use the 
+"--with-config-method=hifive_unleashed" switch for the "configure" script.  
+As before, this version of riscv-pk can take a DTB that can be passed 
+along to the kernel.  But this time the path to the DTB can be specified 
+on the "configure" script command line.
+
+Below is an example of how to configure it.  (The directory structure 
+should be familiar to those using the v1_0 tag of freedom-u-sdk, with the 
+kernel source in ./linux, riscv-pk source in ./riscv-pk, and build trees 
+in work/{linux,riscv-pk}.)
+
+   cd work/riscv-pk
+   CC=/opt/rv64gc-mmu-linux-8.2.0/bin/riscv64-unknown-linux-gnu-gcc ../../riscv-pk/configure \
+                --host=riscv64-unknown-linux-gnu \
+                --with-payload=../../work/linux/vmlinux-stripped \
+                --with-config-method=hifive_unleashed \
+                --enable-dtb \
+                --with-dtb-path=../../work/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dtb
+  
+
+Here is an Linux kernel branch with updated DT data that can be booted 
+with the above bootloader:
+
+   https://github.com/sifive/riscv-linux/tree/dev/paulw/dts-v5.2-rc1-experimental
+
+A sample boot log follows, using a 'defconfig' build from that branch.  
+
+
+- Paul
+
+
+iFive FSBL:       2019-04-22-1081db9
+Using FSBL DTB
+HiFive-U serial #: 0000002d
+Loading boot payload................................
+
+bbl loader
+Relocated DTB from 0000000080007040 to 0000000083200000
+
+[    0.000000] OF: fdt: Ignoring memory range 0x80000000 - 0x80200000
+[    0.000000] Linux version 5.2.0-rc1-00006-ge4a86563f655 (paulw@viisi) (gcc version 8.2.0 (GCC)) #65 SMP Mon May 27 23:36:33 PDT 2019
+[    0.000000] earlycon: sifive0 at MMIO 0x0000000010010000 (options '')
+[    0.000000] printk: bootconsole [sifive0] enabled
+[    0.000000] printk: debug: ignoring loglevel setting.
+[    0.000000] initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   DMA32    [mem 0x0000000080200000-0x00000000ffffffff]
+[    0.000000]   Normal   [mem 0x0000000100000000-0x000000027fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080200000-0x000000027fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080200000-0x000000027fffffff]
+[    0.000000] On node 0 totalpages: 2096640
+[    0.000000]   DMA32 zone: 7161 pages used for memmap
+[    0.000000]   DMA32 zone: 0 pages reserved
+[    0.000000]   DMA32 zone: 523776 pages, LIFO batch:63
+[    0.000000]   Normal zone: 21504 pages used for memmap
+[    0.000000]   Normal zone: 1572864 pages, LIFO batch:63
+[    0.000000] software IO TLB: mapped [mem 0xfbfff000-0xfffff000] (64MB)
+[    0.000000] CPU with hartid=0 is not available
+[    0.000000] CPU with hartid=0 is not available
+[    0.000000] elf_hwcap is 0x112d
+[    0.000000] percpu: Embedded 17 pages/cpu s30184 r8192 d31256 u69632
+[    0.000000] pcpu-alloc: s30184 r8192 d31256 u69632 alloc=17*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2067975
+[    0.000000] Kernel command line: earlycon=sifive,0x10010000 console=ttySIF0,115200 ignore_loglevel debug root=/dev/ram0
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes)
+[    0.000000] Sorting __ex_table...
+[    0.000000] Memory: 8178620K/8386560K available (5806K kernel code, 395K rwdata, 1851K rodata, 5853K init, 806K bss, 207940K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=4.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 0, nr_irqs: 0, preallocated irqs: 0
+[    0.000000] plic: mapped 53 interrupts with 4 handlers for 9 contexts.
+[    0.000000] riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [3]
+[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x1d854df40, max_idle_ns: 3526361616960 ns
+[    0.000006] sched_clock: 64 bits at 1000kHz, resolution 1000ns, wraps every 2199023255500ns
+[    0.008456] Console: colour dummy device 80x25
+[    0.012813] Calibrating delay loop (skipped), value calculated using timer frequency.. 2.00 BogoMIPS (lpj=4000)
+[    0.022841] pid_max: default: 32768 minimum: 301
+[    0.027939] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes)
+[    0.034634] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes)
+[    0.042315] *** VALIDATE proc ***
+[    0.045010] *** VALIDATE cgroup1 ***
+[    0.048462] *** VALIDATE cgroup2 ***
+[    0.053000] rcu: Hierarchical SRCU implementation.
+[    0.057473] smp: Bringing up secondary CPUs ...
+[    0.063256] smp: Brought up 1 node, 4 CPUs
+[    0.068186] devtmpfs: initialized
+[    0.072404] random: get_random_u32 called from bucket_table_alloc.isra.10+0x4e/0x15e with crng_init=0
+[    0.081020] random: get_random_bytes called from setup_net+0x3a/0x1b8 with crng_init=0
+[    0.088974] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.098480] futex hash table entries: 1024 (order: 4, 65536 bytes)
+[    0.105299] NET: Registered protocol family 16
+[    0.109683] random: get_random_bytes called from kcmp_cookies_init+0x1c/0x4a with crng_init=0
+[    0.129984] vgaarb: loaded
+[    0.132159] SCSI subsystem initialized
+[    0.135927] libata version 3.00 loaded.
+[    0.139630] usbcore: registered new interface driver usbfs
+[    0.144998] usbcore: registered new interface driver hub
+[    0.150360] usbcore: registered new device driver usb
+[    0.156037] clocksource: Switched to clocksource riscv_clocksource
+[    0.167530] NET: Registered protocol family 2
+[    0.171747] tcp_listen_portaddr_hash hash table entries: 4096 (order: 5, 163840 bytes)
+[    0.179576] TCP established hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.188249] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes)
+[    0.201277] TCP: Hash tables configured (established 65536 bind 65536)
+[    0.207506] UDP hash table entries: 4096 (order: 6, 393216 bytes)
+[    0.214439] UDP-Lite hash table entries: 4096 (order: 6, 393216 bytes)
+[    0.221731] NET: Registered protocol family 1
+[    0.225830] RPC: Registered named UNIX socket transport module.
+[    0.231226] RPC: Registered udp transport module.
+[    0.235906] RPC: Registered tcp transport module.
+[    0.240593] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.247018] PCI: CLS 0 bytes, default 64
+[    0.665279] workingset: timestamp_bits=62 max_order=21 bucket_order=0
+[    0.680212] NFS: Registering the id_resolver key type
+[    0.684561] Key type id_resolver registered
+[    0.688653] Key type id_legacy registered
+[    0.692654] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.699720] NET: Registered protocol family 38
+[    0.703819] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 254)
+[    0.711145] io scheduler mq-deadline registered
+[    0.715653] io scheduler kyber registered
+[    0.757094] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.763685] 10010000.serial: ttySIF0 at MMIO 0x10010000 (irq = 4, base_baud = 0) is a SiFive UART v0
+[    0.772072] printk: console [ttySIF0] enabled
+[    0.772072] printk: console [ttySIF0] enabled
+[    0.780723] printk: bootconsole [sifive0] disabled
+[    0.780723] printk: bootconsole [sifive0] disabled
+[    0.790539] 10011000.serial: ttySIF1 at MMIO 0x10011000 (irq = 1, base_baud = 0) is a SiFive UART v0
+[    0.799641] [drm] radeon kernel modesetting enabled.
+[    0.813383] loop: module loaded
+[    0.816227] libphy: Fixed MDIO Bus: probed
+[    0.820345] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[    0.825645] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    0.831647] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.838065] ehci-pci: EHCI PCI platform driver
+[    0.842520] ehci-platform: EHCI generic platform driver
+[    0.847757] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    0.853865] ohci-pci: OHCI PCI platform driver
+[    0.858329] ohci-platform: OHCI generic platform driver
+[    0.863771] usbcore: registered new interface driver uas
+[    0.868853] usbcore: registered new interface driver usb-storage
+[    0.874961] mousedev: PS/2 mouse device common for all mice
+[    0.880734] usbcore: registered new interface driver usbhid
+[    0.885901] usbhid: USB HID core driver
+[    0.890586] NET: Registered protocol family 10
+[    0.895181] Segment Routing with IPv6
+[    0.898160] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    0.904576] NET: Registered protocol family 17
+[    0.908487] Key type dns_resolver registered
+[    0.913352] Warning: unable to open an initial console.
+[    0.933780] Freeing unused kernel memory: 5852K
+[    0.937543] This architecture does not have kernel memory protection.
+[    0.943960] Run /init as init process
+[    1.531025] random: dd: uninitialized urandom read (512 bytes read)
+[   16.657284] random: dropbear: uninitialized urandom read (32 bytes read)
+[   16.669210] _warn_unseeded_randomness: 11 callbacks suppressed
+[   16.669230] random: get_random_bytes called from tcp_fastopen_init_key_once+0x40/0x58 with crng_init=0
+[   16.686212] random: get_random_bytes called from load_elf_binary+0x7c0/0xca4 with crng_init=0
+
+Welcome to Buildroot
+buildroot login: 
+
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
