@@ -2,113 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05EAA2CFA5
-	for <lists+linux-riscv@lfdr.de>; Tue, 28 May 2019 21:40:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 872CD2D4B0
+	for <lists+linux-riscv@lfdr.de>; Wed, 29 May 2019 06:26:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/VOg/CRwLE3XdryCMj41Z6k9hUjT3f+rQEZGjAM7qrQ=; b=FuJoJdd9PP06nl
-	krFWpQYNubF38WiUsWpVfx/++1XhCYswFWKrrE8bjsLz2Ovdwkq1iaxptEUHLaWu7gf9zyIAoarZh
-	jO7KSV2jkF31Ttks6L0hmjtJmCi2XAxw58+og7KBa5E7UyTXMq1il0tnf6xENz70J3BD86Hbp83xI
-	Ltp6pTM8wXrQZynoeBeX0G4SCOBRX3wK57Lf7QVwv8VJPDHLzkAKnPiThRC1lEDKyeAzQtct7wz0d
-	inUdbIZPOXq0GwjTU9zGbm+BzxMeE5BLYAdgblbn74qjxbvr+Roj7P1OOfXN4PgHneltLCp+50ZRY
-	yG373VVXqwwTtPZRJV8Q==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=e0087am3iCaJquqHMUUK46CzdciN6TcWqQT8eHPi7ws=; b=DF9gUMahmgn4bU
+	CQxxT1hMD0/v7T0xjVc+S7fP0VV3WCW/bGba8lfbpU2nFUNsF1tNNg9XE6NFCbmsQQffz4vHaPySJ
+	rBDfvgESG0PH7rsQLSn9D5GYBt6gsy/TJURJSoibgaNcFDbeh4FgVTWPW2D9aFqQF04pd8k1vWtR/
+	QvD/e8R8I1Pcz9DAL4bXJo+i3Lhxt5nmcc1/QSPu85RWJ7n9/pJ6gSe14LogwPvoovVFicgrAMpdS
+	AgBS9DC3qxKBnwhTB+NEcFhmIahiJIf0aPUpdNUS4yiVd/x4B5sArV6xVyqnEbAeuSG2LNpj7ryFb
+	0vREI2AI0XokFjbdgY5g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVhx0-0008HW-26; Tue, 28 May 2019 19:39:58 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1hVqAm-0005SA-Lr; Wed, 29 May 2019 04:26:44 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVhww-0008Gp-1m
- for linux-riscv@lists.infradead.org; Tue, 28 May 2019 19:39:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1559072395; x=1590608395;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=pDm+yZFIujJ7QTWmqI58E0O5KhL8o5L1P7FmsIb+nYo=;
- b=Y0c8iekg5Sh3Vk3sSzWOwOLYOmqGvgwt9RYbRgvTwy3ba2YQaReWrl1K
- Dt2Sc1VpKFwAICbQkmTMPObWSlnbVlFhFW1uuEweJA+6S1ZpBnsZauQSh
- ZYkdknr9rC34tIGtKIcgTbeEh9j7rysDjpdt0EUM3HTFIxOzXA2+ucmYu
- xmdfQMlD9I8Q4IFCyewbHfUVR+irYOzDWWW/XiYSXAEF4H1Lo7nQBJLcR
- K5Gh6Alimoj7SOW2OVXfLAvagSgYyjy0TqcHCRfpjvucAGE+ZWLJUKNwj
- FrOhCBDA0HxaOUmk5gsFi6mkJEiNMzSzjuA0EH1+M6d9nylw+J7l64XE7 g==;
-X-IronPort-AV: E=Sophos;i="5.60,524,1549900800"; d="scan'208";a="110501281"
-Received: from mail-bn3nam01lp2051.outbound.protection.outlook.com (HELO
- NAM01-BN3-obe.outbound.protection.outlook.com) ([104.47.33.51])
- by ob1.hgst.iphmx.com with ESMTP; 29 May 2019 03:39:51 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=W67Qir3BIAsf/NdGF83FfMN8+DPqyn4zD+vfmNA2cOc=;
- b=nbJeuwocRZDs4Siq2bs5ysk1L52rHQmQpPaiOFhGHoh6fIvLASb5J73WK9gYqvTOEDV00ztf/F6gkPTEpi2KpJ/dLVjGMP2kijhfwUHw3OuXh0ASzd+GO2BQwBOaSMjYLRL9W6brxuKveY7Mi3KLeIbMuy4tbe/3g8ruvYHy0b8=
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com (52.135.214.142) by
- BYAPR04MB6101.namprd04.prod.outlook.com (20.178.234.93) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1943.16; Tue, 28 May 2019 19:39:48 +0000
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::ce8:bf96:aaf8:d2b0]) by BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::ce8:bf96:aaf8:d2b0%4]) with mapi id 15.20.1922.021; Tue, 28 May 2019
- 19:39:48 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: Palmer Dabbelt <palmer@sifive.com>, "anup@brainfault.org"
- <anup@brainfault.org>, Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH] RISC-V: defconfig: Enable NO_HZ_IDLE and HIGH_RES_TIMERS
-Thread-Topic: [PATCH] RISC-V: defconfig: Enable NO_HZ_IDLE and HIGH_RES_TIMERS
-Thread-Index: AQHVCue2HEus4pRvEEGYJRX3qv0JO6Zzr7wAgA01ZYCAAB9GgA==
-Date: Tue, 28 May 2019 19:39:48 +0000
-Message-ID: <D5957468-5A82-46FA-9D12-A35CF59C7DED@wdc.com>
-References: <mhng-2b0ca072-2d6d-4422-96a2-2a4254255cc6@palmer-si-x1e>
-In-Reply-To: <mhng-2b0ca072-2d6d-4422-96a2-2a4254255cc6@palmer-si-x1e>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [2607:fb90:9e4d:a2f5:7c7d:af93:6799:77fe]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: d3d3fb38-b60b-42d0-67da-08d6e3a43ed2
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB6101; 
-x-ms-traffictypediagnostic: BYAPR04MB6101:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB610173B68036EC99F4E032A0FA1E0@BYAPR04MB6101.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5797;
-x-forefront-prvs: 00514A2FE6
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(396003)(346002)(366004)(39860400002)(376002)(189003)(199004)(53754006)(68736007)(36756003)(7736002)(305945005)(76116006)(91956017)(82746002)(256004)(4326008)(6246003)(46003)(54906003)(2501003)(66946007)(66476007)(66556008)(33656002)(6486002)(25786009)(53936002)(73956011)(110136005)(64756008)(66446008)(186003)(476003)(229853002)(446003)(2616005)(486006)(11346002)(81166006)(316002)(53546011)(102836004)(72206003)(83716004)(478600001)(81156014)(86362001)(76176011)(71190400001)(14454004)(5660300002)(8676002)(6116002)(2906002)(71200400001)(6436002)(6512007)(99286004)(6506007)(8936002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB6101;
- H:BYAPR04MB3782.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: /LUGS4mxWdKS+kChM5P8Xl/etz/qCq3fWYReMI2IJsx1K/tEqLec/bUnB754tzRQySAHt/WzaKB8mzZ/rE1hgnPPbi9izd5yhIkAUHfCcZwP4oB5RUoeptlc437Orfx1pqXgpzrcyFmIAs85WUWcXHhvgCBVdudZoUlCiNN+L/K8/9kKX9pN1EKJ1VQ5bc3cYjFjs7HpIWeLgSXdQUxv696WByKZ5ELRNLiAMzXPo+tnFWUJ4KHXFEizSVERZECm7sBA7OEx09TAXVQNYqK8q8mcaK5vpCqEF6Jn5SRLs0xM6JW/eJoks4v8q16zHlLKfp73jAQpmdgAbS+oOrRj0L0Y5BdMB/rHpoWf88kYRLkI2+5tK7BaM1sO1yKxSuYtbZDJcMTUd4t3a3gxfhqD5xSOocUFa3nR4lY2RkXrm9U=
-Content-ID: <E4BBE119699369469910373B8DD1AFC8@sharedspace.onmicrosoft.com>
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d3d3fb38-b60b-42d0-67da-08d6e3a43ed2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 May 2019 19:39:48.6112 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Atish.Patra@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6101
+ id 1hVqAk-0005Rr-12
+ for linux-riscv@lists.infradead.org; Wed, 29 May 2019 04:26:43 +0000
+Received: by mail-pg1-x542.google.com with SMTP id d30so544046pgm.7
+ for <linux-riscv@lists.infradead.org>; Tue, 28 May 2019 21:26:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:subject:date:message-id;
+ bh=5JJ5fP/lDTAT9lV7xByh9EU/tkZg+0nZnzbUrujyoZg=;
+ b=kTq5oKCOvb2JCjaJ13ybujn6O92eJItL/ZZRxZzq2f9s59vvAI5lkJSqmOB3CjQ0qD
+ 9u8MEgtx6tPOCi9fXdf0/Y4JGYAYxJ+IPb9C78+I2QwQOi0yGpa5pvWqLZ/FORR/RyY6
+ 63x5WeSHMoeExX+r6oIGbbIUmVsY9BdH3zSIsm5nO+9MEAncg1hT+CvrebHklrUYoIKm
+ sP2GcxXbyzLkJdGqbOS1TJjrqYtqBNNC6VZPF3ELlMPG1sGxRnHdv4BYVn3rGPs3x+jf
+ YW/3iMocgkhTd1hkEHr8Xky56S8fE1llF5tbygiELsel0yI2uN497rAQW8dpWZm8ACgI
+ 4kWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=5JJ5fP/lDTAT9lV7xByh9EU/tkZg+0nZnzbUrujyoZg=;
+ b=HbBECywCJhx9CxGJ/1CbLoE+uKwmBcw3ab809IopeeB+Ug2Yr7ngnB1sNlIFff159b
+ OcCUS4TcdeIp1PTLogc7ybOYRwqUwhbb227uz6oK4MBGdw2gT0StUSSuIzjXHBzOWLYJ
+ s7t4ApjPK/pLkTkAhKEWXlCUHJcNhrXNLCfDoiYUyJGO8Ae3LpnhsgAeica3Qbwltdg/
+ IS828OQSiEvE6vkbXzjFg0qStw2ocMX+JE1SRGU2CPXGd5nUYe8rO3e0DSQrPwjltfhP
+ tlQ/Afl++g0Zwo1CYt1S+qSUX4HlBgYxnlbXWGWbWywsD5EoxMaqtUdr/wOY7kpuzeXs
+ PUnw==
+X-Gm-Message-State: APjAAAXXVa1Ey2O4YIc92jYGrH5HrqnI7/lCmd0qEBGwacZYDzjyh1BF
+ O9DxbdF7tyDeFX347zCQ09CdJw==
+X-Google-Smtp-Source: APXvYqz8+KopayMYqNIAnYzjwkQi92y0EfTJXP+WbfUiu3G6DyTGAMkJzIynLIfakB8aLVEH3oY7WA==
+X-Received: by 2002:a65:56cc:: with SMTP id w12mr3084328pgs.415.1559104000681; 
+ Tue, 28 May 2019 21:26:40 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id 128sm9217350pff.16.2019.05.28.21.26.36
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 28 May 2019 21:26:39 -0700 (PDT)
+From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+To: robh+dt@kernel.org, mark.rutland@arm.com, peter@korsgaard.com,
+ andrew@lunn.ch, palmer@sifive.com, paul.walmsley@sifive.com,
+ sagar.kadam@sifive.com, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v8 3/3] i2c-ocores: sifive: add polling mode workaround for
+ FU540-C000 SoC.
+Date: Wed, 29 May 2019 09:56:18 +0530
+Message-Id: <1559103978-13852-1-git-send-email-sagar.kadam@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190528_123954_210556_1A0482A3 
-X-CRM114-Status: GOOD (  16.28  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190528_212642_128916_7C088EBB 
+X-CRM114-Status: GOOD (  15.07  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -127,84 +95,108 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-> On 5/28/19 10:47 AM, Palmer Dabbelt wrote:
->> On Mon, 20 May 2019 01:05:22 PDT (-0700), anup@brainfault.org wrote:
->>> On Wed, May 15, 2019 at 12:00 PM Anup Patel <Anup.Patel@wdc.com> wrote:
->>> 
->>> This patch enables NO_HZ_IDLE (idle dynamic ticks) and HIGH_RES_TIMERS
->>> (hrtimers) in RV32 and RV64 defconfigs.
->>> 
->>> Both of the above options are enabled by default for architectures
->>> such as x86, ARM, and ARM64.
->>> 
->>> The idle dynamic ticks helps use save power by stopping timer ticks
->>> when the system is idle whereas hrtimers is a much improved timer
->>> subsystem compared to the old "timer wheel" based system.
->>> 
->>> This patch is tested on SiFive Unleashed board and QEMU Virt machine.
->>> 
->>> Signed-off-by: Anup Patel <anup.patel@wdc.com>
->>> ---
->>>  arch/riscv/configs/defconfig      | 2 ++
->>>  arch/riscv/configs/rv32_defconfig | 2 ++
->>>  2 files changed, 4 insertions(+)
->>> 
->>> diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
->>> index 2fd3461e50ab..f254c352ec57 100644
->>> --- a/arch/riscv/configs/defconfig
->>> +++ b/arch/riscv/configs/defconfig
->>> @@ -1,5 +1,7 @@
->>>  CONFIG_SYSVIPC=y
->>>  CONFIG_POSIX_MQUEUE=y
->>> +CONFIG_NO_HZ_IDLE=y
->>> +CONFIG_HIGH_RES_TIMERS=y
->>>  CONFIG_IKCONFIG=y
->>>  CONFIG_IKCONFIG_PROC=y
->>>  CONFIG_CGROUPS=y
->>> diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
->>> index 1a911ed8e772..d5449ef805a3 100644
->>> --- a/arch/riscv/configs/rv32_defconfig
->>> +++ b/arch/riscv/configs/rv32_defconfig
->>> @@ -1,5 +1,7 @@
->>>  CONFIG_SYSVIPC=y
->>>  CONFIG_POSIX_MQUEUE=y
->>> +CONFIG_NO_HZ_IDLE=y
->>> +CONFIG_HIGH_RES_TIMERS=y
->>>  CONFIG_IKCONFIG=y
->>>  CONFIG_IKCONFIG_PROC=y
->>>  CONFIG_CGROUPS=y
->>> --
->>> 2.17.1
->> 
->> Hi All,
->> 
->> Any comments on this one?
->> 
->> @Palmer, It would be nice to have this in Linux-5.2
-> My only issue here is testing: IIRC last time we tried this it ended up causing
-> trouble.  
+The i2c-ocore driver already has a polling mode interface.But it needs
+a workaround for FU540 Chipset on HiFive unleashed board (RevA00).
+There is an erratum in FU540 chip that prevents interrupt driven i2c
+transfers from working, and also the I2C controller's interrupt bit
+cannot be cleared if set, due to this the existing i2c polling mode
+interface added in mainline earlier doesn't work, and CPU stall's
+infinitely, when-ever i2c transfer is initiated.
 
-Are you talking about the trouble with CONFIG_NO_HZ_IDLE we were seeing last year or something else ?
+Ref:
+	commit dd7dbf0eb090 ("i2c: ocores: refactor setup for polling")
 
-CONFIG_NO_HZ_IDLE was well tested and fixed last year.
+The workaround / fix under OCORES_FLAG_BROKEN_IRQ is particularly for
+FU540-COOO SoC.
 
-I'm in the process of switching to Yocto right now for my tests, so
-> it'll be a bit slow.
+The polling function identifies a SiFive device based on the device node
+and enables the workaround.
 
+Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+---
+ drivers/i2c/busses/i2c-ocores.c | 24 ++++++++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/i2c/busses/i2c-ocores.c b/drivers/i2c/busses/i2c-ocores.c
+index b334fa2..4117f1a 100644
+--- a/drivers/i2c/busses/i2c-ocores.c
++++ b/drivers/i2c/busses/i2c-ocores.c
+@@ -35,6 +35,7 @@ struct ocores_i2c {
+ 	int iobase;
+ 	u32 reg_shift;
+ 	u32 reg_io_width;
++	unsigned long flags;
+ 	wait_queue_head_t wait;
+ 	struct i2c_adapter adap;
+ 	struct i2c_msg *msg;
+@@ -84,6 +85,8 @@ struct ocores_i2c {
+ #define TYPE_GRLIB		1
+ #define TYPE_SIFIVE_REV0	2
+ 
++#define OCORES_FLAG_BROKEN_IRQ BIT(1) /* Broken IRQ for FU540-C000 SoC */
++
+ static void oc_setreg_8(struct ocores_i2c *i2c, int reg, u8 value)
+ {
+ 	iowrite8(value, i2c->base + (reg << i2c->reg_shift));
+@@ -236,9 +239,12 @@ static irqreturn_t ocores_isr(int irq, void *dev_id)
+ 	struct ocores_i2c *i2c = dev_id;
+ 	u8 stat = oc_getreg(i2c, OCI2C_STATUS);
+ 
+-	if (!(stat & OCI2C_STAT_IF))
++	if (i2c->flags & OCORES_FLAG_BROKEN_IRQ) {
++		if ((stat & OCI2C_STAT_IF) && !(stat & OCI2C_STAT_BUSY))
++			return IRQ_NONE;
++	} else if (!(stat & OCI2C_STAT_IF)) {
+ 		return IRQ_NONE;
+-
++	}
+ 	ocores_process(i2c, stat);
+ 
+ 	return IRQ_HANDLED;
+@@ -353,6 +359,11 @@ static void ocores_process_polling(struct ocores_i2c *i2c)
+ 		ret = ocores_isr(-1, i2c);
+ 		if (ret == IRQ_NONE)
+ 			break; /* all messages have been transferred */
++		else {
++			if (i2c->flags & OCORES_FLAG_BROKEN_IRQ)
++				if (i2c->state == STATE_DONE)
++					break;
++		}
+ 	}
+ }
+ 
+@@ -595,6 +606,7 @@ static int ocores_i2c_probe(struct platform_device *pdev)
+ {
+ 	struct ocores_i2c *i2c;
+ 	struct ocores_i2c_platform_data *pdata;
++	const struct of_device_id *match;
+ 	struct resource *res;
+ 	int irq;
+ 	int ret;
+@@ -677,6 +689,14 @@ static int ocores_i2c_probe(struct platform_device *pdev)
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq == -ENXIO) {
+ 		ocores_algorithm.master_xfer = ocores_xfer_polling;
++
++		/*
++		 * Set in OCORES_FLAG_BROKEN_IRQ to enable workaround for
++		 * FU540-C000 SoC in polling mode.
++		 */
++		match = of_match_node(ocores_i2c_match, pdev->dev.of_node);
++		if (match && (long)match->data == TYPE_SIFIVE_REV0)
++			i2c->flags |= OCORES_FLAG_BROKEN_IRQ;
+ 	} else {
+ 		if (irq < 0)
+ 			return irq;
 -- 
-Regards,
-Atish
+1.9.1
+
 
 _______________________________________________
 linux-riscv mailing list
