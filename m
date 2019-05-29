@@ -2,77 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78A212E5F2
-	for <lists+linux-riscv@lfdr.de>; Wed, 29 May 2019 22:16:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08FC32E72A
+	for <lists+linux-riscv@lfdr.de>; Wed, 29 May 2019 23:14:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0w6CD2gfWQ1UELVLG0/RICT6LlUFN1Zo+xXtdzkSudI=; b=CwvxYnozOzk77A
-	zhc4zBulyBCJpEHkJkirHXEkJ1jNk3gEwSjFWq8Frmb0B3ZGBceScuFpjyPyNehn6pGWv3fwyxxJX
-	8pqM61iavWu6ahSkSZh7hAQ5jcu9j/8l5wXikJMuRmAOLo/6dYRSbX0wKGNe6FAKWnl/i8MzpXy2K
-	IrAnCTjzqZksq/Tf8D468/q76qN1JqEKCustl8/BxOe4GTjdxtCzfEdivnRR2wY73WaLGn+yKJwny
-	DTWLYpfIOTVvCRtDOryDvCxjkxlfYsfCvolIM1upPEpls+zycvmWQQpZt52wzj180H/wb8Gr12K6Z
-	454n62go5WEgA5q+wc5Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yC4Sxs4JGsEl2XTu3CR2sp77IVCrjcUNl3phWAx9Ovk=; b=i28Au/D7bJxW1D
+	p5eqAYT7W/b7n35QcL0C2B3HAvTRaPIkEiqz7r0szorcmCxMvYjMahoDuAu/tX1l3uxx43HJGvlEu
+	MYFvwKg8fUJ60oyHOTRnfmedPFrybCbXJ+6gvfJUwXnXWgenqonjyJP3sI2wYB2g67ZfuGqfBkynI
+	jfH7DucUz9Nfmtd2oQ4CpsHjSqEyvLHmCMpbOstJKK2K0yvHH50QtIPQyIXiJA2r0YNBL22NIUXem
+	JpX32UofxqaPjkMD0QCW698A7uM1qYDuY7idTz/73I7kH0hSeW8g8F9F755qa5U2thIBOK72qZWVq
+	PuyMwHmwU5QnyuBiGi7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hW4zl-0001uy-8y; Wed, 29 May 2019 20:16:21 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1hW5u7-0005jK-9f; Wed, 29 May 2019 21:14:35 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW4zc-0001nG-HY
- for linux-riscv@lists.infradead.org; Wed, 29 May 2019 20:16:13 +0000
-Received: by mail-pg1-x542.google.com with SMTP id 20so544661pgr.4
- for <linux-riscv@lists.infradead.org>; Wed, 29 May 2019 13:16:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=byH71jcEnWiZocWjFrPDlTMOE7pd8EPRHoYGyukaY04=;
- b=bwKrSUcAFY5li8JHROxevBRkVdZvfftmbN2jvX4D8l/n4Q/b0ePv+zprqpG2KluSLn
- rSYJBFUhtygfnfgM4xMNPYR/Vp/NGpVKFovwEIHmtk8emThGP6iRNZH+rg7exn2dW3QV
- qTeu7YoFimL+W4CSITeRLNxas0G8YpYTWwbHw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=byH71jcEnWiZocWjFrPDlTMOE7pd8EPRHoYGyukaY04=;
- b=VWH3UaRkANG9W/lOrQ8J8o0eWbPXrDzOwaOTAQ+uZUqM0JT9+asgrq4MXVcW+2GxAC
- u5RJpt4NwijrOFMydkOzgySe77aSVES1+7a7THYIqYbTdwUgEkoNy1TVoFeBdnbbuhNw
- H47nRguZ/qhIlxpCovGtbQcaxV8ofLfEpI3PMJYIWcEhdN0mrDhYK0siXJD1/80a7ADo
- FzWLaFhTSdiSBsj0WUG9CIzffvYjaDPhPwU1lUsCKbLaGTWQCzgaoCa4G+m89g4uYRK0
- clsLxkTS8BVH1Q34U3sbtIERDq71mHgKk0qrAt/O1gphlIud2wwug7tOyB6kw3XYCjmW
- vCfA==
-X-Gm-Message-State: APjAAAX+oRSnHC6Yu2kInTy2U8a98aJutXUjGFnIZpSVrlM4FYpWK+BU
- zshZiMkRmaeMtmSvJgURCnuBIQ==
-X-Google-Smtp-Source: APXvYqwOtLbXvQF12v2iQzcTzlTPHXYwr/VbPiH/+9zX0lzSfnaAmA5ZoEnSGfNESsFHQ7AnnjhQoA==
-X-Received: by 2002:a63:f44b:: with SMTP id
- p11mr139393871pgk.225.1559160971649; 
- Wed, 29 May 2019 13:16:11 -0700 (PDT)
-Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
- by smtp.gmail.com with ESMTPSA id u6sm227693pgm.22.2019.05.29.13.16.10
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 29 May 2019 13:16:10 -0700 (PDT)
-Date: Wed, 29 May 2019 13:16:09 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Alexandre Ghiti <alex@ghiti.fr>
-Subject: Re: [PATCH v4 00/14] Provide generic top-down mmap layout functions
-Message-ID: <201905291313.1E6BD2DFB@keescook>
-References: <20190526134746.9315-1-alex@ghiti.fr>
+ id 1hW5u4-0005iA-2x; Wed, 29 May 2019 21:14:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1559164506; x=1590700506;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=cwAgfUHqeRqoUhGOkggkpMSiQ/tus4AQpYKjVxtRBd4=;
+ b=ITAIXJpRcF4bkf/h3qZjvGaPk3nr0wYmvnk7rOwkZr+OtbBYrhvod8dj
+ MYZYWqvjVOXTSPhAUo8h9rDYc28kA5P+ffw35kDrkoPL5g4i+3K/ab8VX
+ Ric9EQc1244I8IZb34Wc0cqVFpban/X7LPndGAqnbLDrIJnlU1QS9xEb3
+ yJsflmArJUFldIyM2WbAojqf+GW7bKMy6yK/pcMCzaaK319eaWjK0dbKe
+ FiF2y2yKMLz07e2nL8RxI9JvrMTg5eytDvmsbIrpyRGqRzr+4P8LZW4VC
+ MjurOT1d4uhkPFl838h7RrOLTLCSG9NiZy18dVHmDq5CuSx2MrM6/MuUf g==;
+X-IronPort-AV: E=Sophos;i="5.60,527,1549900800"; d="scan'208";a="208905628"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 30 May 2019 05:15:03 +0800
+IronPort-SDR: ONANkAw9jx9QT91EWRH+hf4s75zzZq0rQNhtQpmb8DZAvR1yM7cgxwBfn5TSe6wzY/bmzwOhi9
+ PBmkajjZAMz4QfSpxn4JcP5d3Z+5p/+GiefMfaB032lhWCVjZaajbCH3322W+8YOGJmf/VhPBp
+ WaWrx4SKl9B0MgIN67iPdqoW1TEo+FSGywlMUdw0VP7fGP399odcKBJL64ShqwTOVAlAZWDtX2
+ gdjNIBPaU2nb7JVYGyDohe8sN5RiEgt/96Ya9qGQyD2Qe9vTUHyrcZXsiL6fkOEOTiwEHfNZ3d
+ YfpzBxo7RTY0D4irb0vRUzxO
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+ by uls-op-cesaep01.wdc.com with ESMTP; 29 May 2019 13:49:40 -0700
+IronPort-SDR: YC8bCUR58DTIbPJfzX0+z9k0MY7/SOZnQyrrSDZ737cU8+bizRT9YHJDuxjCS1KH/ry3jFwTmD
+ uNr9h1DDTdMUkiPPmHOrJy/QdOeFJHltaBX0Gc7Ie/wRqmW+dUOguVt0r4URXJ4R7IQZPcD6lO
+ /lowRQnQLUBmlA4nqyocjdSFjkBraOJ0NNdpuY5VOzWRJzfosDlorV5LefgjsegQzNKmQES/mu
+ zZ2JndFjicoBEQgdzfMNjMQv+tdndkNo46b0+LEEwT52AxYx5duwofoBhBRz+KHRpQdgr3KcUB
+ IyM=
+Received: from jedi-01.sdcorp.global.sandisk.com (HELO
+ jedi-01.int.fusionio.com) ([10.11.143.218])
+ by uls-op-cesaip02.wdc.com with ESMTP; 29 May 2019 14:14:30 -0700
+From: Atish Patra <atish.patra@wdc.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v6 0/7] Unify CPU topology across ARM & RISC-V 
+Date: Wed, 29 May 2019 14:13:33 -0700
+Message-Id: <20190529211340.17087-1-atish.patra@wdc.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190526134746.9315-1-alex@ghiti.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_131612_613588_AD586749 
-X-CRM114-Status: GOOD (  12.43  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190529_141432_186961_96411504 
+X-CRM114-Status: GOOD (  17.85  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [68.232.143.124 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -82,7 +79,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,43 +90,123 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>,
- Catalin Marinas <catalin.marinas@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, Russell King <linux@armlinux.org.uk>,
- Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
- linux-mm@kvack.org, Paul Burton <paul.burton@mips.com>,
- linux-riscv@lists.infradead.org, Alexander Viro <viro@zeniv.linux.org.uk>,
- James Hogan <jhogan@kernel.org>, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>, linux-mips@vger.kernel.org,
- Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org,
- Luis Chamberlain <mcgrof@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>, Atish Patra <atish.patra@wdc.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ linux-riscv@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
+ Anup Patel <anup@brainfault.org>, Russell King <linux@armlinux.org.uk>,
+ Morten Rasmussen <morten.rasmussen@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, Rob Herring <robh+dt@kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-arm-kernel@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jeremy Linton <jeremy.linton@arm.com>, Otto Sabart <ottosabart@seberm.com>,
+ Sudeep Holla <sudeep.holla@arm.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, May 26, 2019 at 09:47:32AM -0400, Alexandre Ghiti wrote:
-> This series introduces generic functions to make top-down mmap layout
-> easily accessible to architectures, in particular riscv which was
-> the initial goal of this series.
-> The generic implementation was taken from arm64 and used successively
-> by arm, mips and finally riscv.
+The cpu-map DT entry in ARM can describe the CPU topology in much better
+way compared to other existing approaches. RISC-V can easily adopt this
+binding to represent its own CPU topology. Thus, both cpu-map DT
+binding and topology parsing code can be moved to a common location so
+that RISC-V or any other architecture can leverage that.
 
-As I've mentioned before, I think this is really great. Making this
-common has long been on my TODO list. Thank you for the work! (I've sent
-separate review emails for individual patches where my ack wasn't
-already present...)
+The relevant discussion regarding unifying cpu topology can be found in
+[1].
 
->   - There is no common API to determine if a process is 32b, so I came up with
->     !IS_ENABLED(CONFIG_64BIT) || is_compat_task() in [PATCH v4 12/14].
+arch_topology seems to be a perfect place to move the common code. I
+have not introduced any significant functional changes in the moved code.
+The only downside in this approach is that the capacity code will be
+executed for RISC-V as well. But, it will exit immediately after not
+able to find the appropriate DT node. If the overhead is considered too
+much, we can always compile out capacity related functions under a
+different config for the architectures that do not support them.
 
-Do we need a common helper for this idiom? (Note that I don't think it's
-worth blocking the series for this.)
+There was an opportunity to unify topology data structure for ARM32 done
+by patch 3/4. But, I refrained from making any other changes as I am not
+very well versed with original intention for some functions that
+are present in arch_topology.c. I hope this patch series can be served
+as a baseline for such changes in the future.
 
--Kees
+The patches have been tested for RISC-V and compile tested for ARM64,
+ARM32 & x86.
 
--- 
-Kees Cook
+The socket change[2] is also now part of this series.
+
+[1] https://lkml.org/lkml/2018/11/6/19
+[2] https://lkml.org/lkml/2018/11/7/918
+
+QEMU changes for RISC-V topology are available at
+
+https://github.com/atishp04/qemu/tree/riscv_topology_dt
+
+HiFive Unleashed DT with topology node is available here.
+https://github.com/atishp04/opensbi/tree/HiFive_unleashed_topology
+
+It can be verified with OpenSBI with following additional compile time
+option.
+
+FW_PAYLOAD_FDT="unleashed_topology.dtb"
+
+Changes from v5->v6
+1. Added two more patches from Sudeep about maintainership of arch_topology.c
+   and Kconfig update. 
+2. Added Tested-by & Reviewed-by
+3. Fixed a nit (reordering of variables)
+
+Changes from v4-v5
+1. Removed the arch_topology.h header inclusion from topology.c and arch_topology.c
+file. Added it in linux/topology.h.
+2. core_id is set to -1 upon reset. Otherwise, ARM topology store function does not
+work.
+
+Changes from v3->v4
+1. Get rid of ARM32 specific information in topology structure.
+2. Remove redundant functions from ARM32 and use common code instead. 
+
+Changes from v2->v3
+1. Cover letter update with experiment DT for topology changes.
+2. Added the patch for [2].
+
+Changes from v1->v2
+1. ARM32 can now use the common code as well.
+
+Atish Patra (4):
+dt-binding: cpu-topology: Move cpu-map to a common binding.
+cpu-topology: Move cpu topology code to common code.
+arm: Use common cpu_topology structure and functions.
+RISC-V: Parse cpu topology during boot.
+
+Sudeep Holla (3):
+Documentation: DT: arm: add support for sockets defining package
+boundaries
+base: arch_topology: update Kconfig help description
+MAINTAINERS: Add an entry for generic architecture topology
+
+.../topology.txt => cpu/cpu-topology.txt}     | 134 ++++++--
+MAINTAINERS                                   |   7 +
+arch/arm/include/asm/topology.h               |  20 --
+arch/arm/kernel/topology.c                    |  60 +---
+arch/arm64/include/asm/topology.h             |  23 --
+arch/arm64/kernel/topology.c                  | 303 +-----------------
+arch/riscv/Kconfig                            |   1 +
+arch/riscv/kernel/smpboot.c                   |   3 +
+drivers/base/Kconfig                          |   2 +-
+drivers/base/arch_topology.c                  | 298 +++++++++++++++++
+include/linux/arch_topology.h                 |  26 ++
+include/linux/topology.h                      |   1 +
+12 files changed, 452 insertions(+), 426 deletions(-)
+rename Documentation/devicetree/bindings/{arm/topology.txt => cpu/cpu-topology.txt} (66%)
+
+--
+2.21.0
+
 
 _______________________________________________
 linux-riscv mailing list
