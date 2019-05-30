@@ -2,51 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C39922F790
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 08:49:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FE1A2F79C
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 08:55:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0K3aBnSXUE9KsJniEeUxmi4dd5X3qNcOcwNOv33T7IE=; b=iWxoX2Hz6IOPPV
-	n//1khimw0pnpyvVLm8GHxsDBzUOnUCmvbHDZ9DECHh67FE2/hLhkmoQl1zUftY6pcYRujbMAinZr
-	he1F0XhG47uWTrjoEiAykuWdKPNlom2tix921pdeXfn8hcNV6y1h1GmnrL59doYv8DKMBIcU8IG5/
-	AyG9GSNThacx7X33wNf/bpze9jLRTGnypL1Ss9Ojzpgw7N8afmO4qPJMa17h/HnDakuW9DWeu752n
-	bbUZ1xhwOW3fQ2UuxbjvubdJSm99g6izxA0SgaoIx4s2rZHohwQhBr2Klp8SsqijVUH5SeKYSRCpv
-	P3s9cQF28n2tkagp40FA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UR3zgtPDHpJ15GCUd5O1nYpY31QlVfFNwi25YzVrUBI=; b=nRO+OPuZgiG8jg
+	2v7lS0Q6r8uPJhV1B5Q/pvjYYTvSSfqY2pY2BVWcDu3NUzh76pQ+pySbHdkht77y050qjmXyLt6KE
+	wNtdcQcaHh6///7hhNwuRROgvNa3lGM0WiXGspR2E42ZyMK5esJCsVQ+Nbf+iUODluEbMFeuUy7Uv
+	lp0XKdIQNKZC+ybAFmGEZGKYYy6GavCyN5x9VYgvVj4Wi+lqrwUebQrStlJIgL4MDb/aQ6/o8VeDQ
+	WEJDlN5RUhQtYhWdWYutbJ8fU4r6m+SonkpLuFyGhtoUu1VonIXE42sbwrzr5MrqNY4fd/C4so47k
+	l1jbPtWLXRcrQRDjetkg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWEsa-00065X-IN; Thu, 30 May 2019 06:49:36 +0000
+	id 1hWExi-00081A-T1; Thu, 30 May 2019 06:54:54 +0000
 Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
  helo=ATCSQR.andestech.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWEsU-00062h-T7
- for linux-riscv@lists.infradead.org; Thu, 30 May 2019 06:49:32 +0000
+ id 1hWExf-00080A-8M
+ for linux-riscv@lists.infradead.org; Thu, 30 May 2019 06:54:52 +0000
 Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x4U6hfbK060234;
- Thu, 30 May 2019 14:43:41 +0800 (GMT-8)
+ by ATCSQR.andestech.com with ESMTP id x4U6n038060958;
+ Thu, 30 May 2019 14:49:00 +0800 (GMT-8)
  (envelope-from nickhu@andestech.com)
-Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
+Received: from andestech.com (10.0.15.65) by ATCPCS16.andestech.com
  (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Thu, 30 May 2019
- 14:49:15 +0800
+ 14:54:35 +0800
+Date: Thu, 30 May 2019 14:54:36 +0800
 From: Nick Hu <nickhu@andestech.com>
-To: <greentime@andestech.com>, <palmer@sifive.com>, <albert@sifive.com>,
- <linux-riscv@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <hch@infradead.org>
-Subject: [PATCH v2] riscv: Fix udelay in RV32.
-Date: Thu, 30 May 2019 14:49:10 +0800
-Message-ID: <67a14915b99ee5d933ef9e7e056fc6e1935e775e.1559198255.git.nickhu@andestech.com>
-X-Mailer: git-send-email 2.7.4
+To: Greentime Ying-Han =?utf-8?B?SHUo6IOh6Iux5ryiKQ==?=
+ <greentime@andestech.com>, "palmer@sifive.com" <palmer@sifive.com>,
+ "albert@sifive.com" <albert@sifive.com>, "linux-riscv@lists.infradead.org"
+ <linux-riscv@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "hch@infradead.org" <hch@infradead.org>
+Subject: Re: [PATCH v2] riscv: Fix udelay in RV32.
+Message-ID: <20190530065436.GA15137@andestech.com>
+References: <67a14915b99ee5d933ef9e7e056fc6e1935e775e.1559198255.git.nickhu@andestech.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <67a14915b99ee5d933ef9e7e056fc6e1935e775e.1559198255.git.nickhu@andestech.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-Originating-IP: [10.0.15.65]
 X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x4U6hfbK060234
+X-MAIL: ATCSQR.andestech.com x4U6n038060958
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_234931_202297_F488E7A4 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190529_235451_553020_BAD6481E 
+X-CRM114-Status: GOOD (  10.86  )
 X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.4 points)
@@ -68,40 +72,31 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: green.hu@gmail.com, Nick Hu <nickhu@andestech.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "green.hu@gmail.com" <green.hu@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-In RV32, udelay would delay the wrong cycle. When it shifts right
-"UDELAY_SHITFT" bits, it either delays 0 cycle or 1 cycle. It only works
-correctly in RV64. Because the 'ucycles' always needs to be 64 bits
-variable.
-
-Signed-off-by: Nick Hu <nickhu@andestech.com>
----
- arch/riscv/lib/delay.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/riscv/lib/delay.c b/arch/riscv/lib/delay.c
-index dce8ae24c6d3..ee6853c1e341 100644
---- a/arch/riscv/lib/delay.c
-+++ b/arch/riscv/lib/delay.c
-@@ -88,7 +88,7 @@ EXPORT_SYMBOL(__delay);
- 
- void udelay(unsigned long usecs)
- {
--	unsigned long ucycles = usecs * lpj_fine * UDELAY_MULT;
-+	u64 ucycles = (u64)usecs * lpj_fine * UDELAY_MULT;
- 
- 	if (unlikely(usecs > MAX_UDELAY_US)) {
- 		__delay((u64)usecs * riscv_timebase / 1000000ULL);
--- 
-2.17.0
-
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gVGh1LCBNYXkgMzAsIDIwMTkgYXQgMDI6NDk6MTBQTSArMDgwMCwgTmljayBDaHVuLU1pbmcg
+SHUo6IOh5bO76YqYKSB3cm90ZToKPiBJbiBSVjMyLCB1ZGVsYXkgd291bGQgZGVsYXkgdGhlIHdy
+b25nIGN5Y2xlLiBXaGVuIGl0IHNoaWZ0cyByaWdodAo+ICJVREVMQVlfU0hJVEZUIiBiaXRzLCBp
+dCBlaXRoZXIgZGVsYXlzIDAgY3ljbGUgb3IgMSBjeWNsZS4gSXQgb25seSB3b3Jrcwo+IGNvcnJl
+Y3RseSBpbiBSVjY0LiBCZWNhdXNlIHRoZSAndWN5Y2xlcycgYWx3YXlzIG5lZWRzIHRvIGJlIDY0
+IGJpdHMKPiB2YXJpYWJsZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBOaWNrIEh1IDxuaWNraHVAYW5k
+ZXN0ZWNoLmNvbT4KPiAtLS0KPiAgYXJjaC9yaXNjdi9saWIvZGVsYXkuYyB8IDIgKy0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdp
+dCBhL2FyY2gvcmlzY3YvbGliL2RlbGF5LmMgYi9hcmNoL3Jpc2N2L2xpYi9kZWxheS5jCj4gaW5k
+ZXggZGNlOGFlMjRjNmQzLi5lZTY4NTNjMWUzNDEgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9yaXNjdi9s
+aWIvZGVsYXkuYwo+ICsrKyBiL2FyY2gvcmlzY3YvbGliL2RlbGF5LmMKPiBAQCAtODgsNyArODgs
+NyBAQCBFWFBPUlRfU1lNQk9MKF9fZGVsYXkpOwo+ICAKPiAgdm9pZCB1ZGVsYXkodW5zaWduZWQg
+bG9uZyB1c2VjcykKPiAgewo+IC0JdW5zaWduZWQgbG9uZyB1Y3ljbGVzID0gdXNlY3MgKiBscGpf
+ZmluZSAqIFVERUxBWV9NVUxUOwo+ICsJdTY0IHVjeWNsZXMgPSAodTY0KXVzZWNzICogbHBqX2Zp
+bmUgKiBVREVMQVlfTVVMVDsKPiAgCj4gIAlpZiAodW5saWtlbHkodXNlY3MgPiBNQVhfVURFTEFZ
+X1VTKSkgewo+ICAJCV9fZGVsYXkoKHU2NCl1c2VjcyAqIHJpc2N2X3RpbWViYXNlIC8gMTAwMDAw
+MFVMTCk7Cj4gLS0gCj4gMi4xNy4wCj4KCkhpIEFsbCwgSSBmb3Jnb3QgdG8gYWRkICJSZXZpZXdl
+ZC1ieTogUGFsbWVyIERhYmJlbHQgPHBhbG1lckBzaWZpdmUuY29tPiIuCkkgd2lsbCBzZW5kIGFu
+b3RoZXIgcGF0Y2guCgpTb3JyeS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1yaXNjdkBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcmlzY3YK
