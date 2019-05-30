@@ -2,75 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3558D30420
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 23:43:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AA74304CB
+	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 00:29:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/7rudYTbfXfbSWYY9SqM/YsGaPtNa6h+3TVkDKkgFy4=; b=LqT1U8/Krs3nOP
-	Mg/N7nW+g77bFFLWTnaVv18GguAPuxhLqvXW6XFiJ24IvhNZRoXlnLivVzKNTfLx27/oOlBKIwcj1
-	576YDKMbxr+SD666VJHamMoc8DpDMeeWk6WJ5qtcsbjlF3jnuN3d34j4USFpwEcFIhhbnQPbkl2mX
-	9EwWKqRY3YrNP2chMpB1qWMZbhHuBqM+LSktFMHNe1DZz8b02n3EkZu+NZ4XGIgO74wrWvj1Y+nRo
-	zXat7A6AQVydk5WoDplrVAfy2droECmgXrSwr6yxfGR/Uj1QgjReWJxsUF7MDZEM6NV55qiBU+xHf
-	5d7SRZc2COizibFBgRCg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YqAmLb9sseJMGLaZFysZeRzBFqIDAYtOuy/SgewsgNg=; b=KMQzTGrRQYbquq
+	esIxXPRAZ72wRzqr/uAQt/LnOHO99ngMLlzyTrHwb0XHMnsnH0lCoq7kPmaKm/cxLlVmzQf0FxmUL
+	kuOuPqu56UV2/Wsohlg0cLO+we3Dm9LMTMaq239EDKO4dG2HW77gDMRIjIZOD/7/pviyIGqNxtG4C
+	g89xlVxFgHvzbxwhRJ9DnGaOBCApm/cjOU5njreuUeRvKGh/TrZx3hb/EjV6xXY2BUQmOCH54ofpq
+	LFwvHGRBIAu0yYCNqCa/MWzF1d+BmDQIERTXtYFiRLKgXwE4fKPEnTr/DPZ44X1QzrIz1UBGrfm3/
+	je5tQRNZLrjQ0hC3y2Lw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWSpX-0001Od-Ex; Thu, 30 May 2019 21:43:23 +0000
-Received: from pandora.armlinux.org.uk
- ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
+	id 1hWTYL-0006KS-Co; Thu, 30 May 2019 22:29:41 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWSpU-0001OG-8j; Thu, 30 May 2019 21:43:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cMVlGTvXkUveUITBldNsm2wqtZ0vfwdSAKndguUBaOQ=; b=DLH2JYbeHwq/YpEbWMtT0JGBL
- spO2pEc/2hmPltlibpNfKJ2Ih/2Rm4G0phN5i2XSKks3aWtbDZz/GjR3JOGCj0DN/EFFNJYoQcgdY
- KCaXkwyYwGjN4/dPWIvnF995pitZOxwUX3cRQdPGcd08tJMbDelcgzPTaceo+3xiEu6bQ9l0KxDmW
- A6ERMXUYjHd+RHWZrpMMqsX0zPrTCj1eb0FZ12RnJMUJ3c1CbH3/iBVkW/k/nJ87VxzdpYmPFA/Bj
- w8HefDp2VNcdyksBGBu0eg9AnsJHYltB0rlhwyOs9x/BKnj7EROswpX3bRDMtwawd5XTsxhzCT215
- 893fQ6/Cw==;
-Received: from shell.armlinux.org.uk
- ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:56076)
- by pandora.armlinux.org.uk with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <linux@armlinux.org.uk>)
- id 1hWSpD-0005E4-3f; Thu, 30 May 2019 22:43:03 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.89)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1hWSp5-0005jk-2U; Thu, 30 May 2019 22:42:55 +0100
-Date: Thu, 30 May 2019 22:42:54 +0100
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-To: Morten Rasmussen <morten.rasmussen@arm.com>
-Subject: Re: [PATCH v6 1/7] Documentation: DT: arm: add support for sockets
- defining package boundaries
-Message-ID: <20190530214254.tuxsnyv52a2fyhck@shell.armlinux.org.uk>
-References: <20190529211340.17087-1-atish.patra@wdc.com>
- <20190529211340.17087-2-atish.patra@wdc.com>
- <49f41e62-5354-a674-d95f-5f63851a0ca6@ti.com>
- <20190530115103.GA10919@e105550-lin.cambridge.arm.com>
+ id 1hWTYH-0006Jq-9i
+ for linux-riscv@lists.infradead.org; Thu, 30 May 2019 22:29:38 +0000
+Received: by mail-pf1-x443.google.com with SMTP id j2so4848593pfe.6
+ for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 15:29:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XFIS/ATJWf8i+rx5RZgt8pFQOptsz9ozO1zSHeC1TwM=;
+ b=jrtHBOj3ok1f/xowAmtE0Z0q/wl92RhCPkKm0zNzy3xyEh9KoBDXCQwtq+ffNwM/k0
+ xoJfQDV6ndJ/UBTJuyqMXa+z0K6MM5T3+N/+z1g+DGaU46uWvI1oiRcDvOEOMVgVc4KM
+ gg7XKnvGxbS9Gn8P9wYQeQnQ/t7kgrMlHgKyeFze4N91ZU5k8y2eLRCuvzHVSE5uqcqa
+ o/i2fe+DLMrj7Z7iCtjRRi/q3L9YCgPNXe+necSyZ3DHkoo7NXRPgzpzit3YBFbzPmxD
+ fB4WvBLELDFtrpCjuv08DBKQoJNaqjAYVwuH1DD0atxRgZlM1ze5Wq/3HKJ1blmcTpOx
+ H40w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XFIS/ATJWf8i+rx5RZgt8pFQOptsz9ozO1zSHeC1TwM=;
+ b=MSmLziZLnLGa2Kzjp8ok/h8Id2jFpM4hUYevkIv/+7e3oao4mMOVzQjH3OI26anxWz
+ 5p3NHliSx6CcuZuuTIbEvoCCoQWjqOqKIlBx5dY8Gyt55FrOI7KqQQSY4Zdr3yR66zmO
+ ISWQBj3zfsqYh5p50SFFDWiRgPjxWmNtHYpT++P3FHNr6smEn3tW37Vs+2wlwdLS3AA6
+ RCMyqsl4OIngJAecJwJJHY17Ku9jsku2n5epLLPiRRBGDhp0JoIBOvVccvdmXd+aElo6
+ c19+lMYiDtyGmcx8u9/oY+4zjFnXJYWSnI2wQStaPrlQkpkxRl9EYPDtUy+jE17bOxkl
+ 1wcA==
+X-Gm-Message-State: APjAAAUFFh/G63YeGhj7GbiNehzLPvNgte2zPMWroEEPviyUmN5L1u0i
+ TL6h0pPprd2qbRYKVIIUW2Eqa5qP
+X-Google-Smtp-Source: APXvYqw2EYd2FcvKbUNMNOciWItMzYs8P3TF+IEhZUZ3ULjwC7KuQfnSofumg0Xp/zG+s8Wy4IAb2g==
+X-Received: by 2002:a62:7a8e:: with SMTP id v136mr5940404pfc.208.1559255375149; 
+ Thu, 30 May 2019 15:29:35 -0700 (PDT)
+Received: from kaby.cs.washington.edu ([2607:4000:200:15:61cb:56f1:2c08:844e])
+ by smtp.gmail.com with ESMTPSA id
+ a5sm2310568pjo.29.2019.05.30.15.29.34
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 30 May 2019 15:29:34 -0700 (PDT)
+From: Luke Nelson <luke.r.nels@gmail.com>
+To: 
+Subject: [PATCH bpf v2] bpf,
+ riscv: clear high 32 bits for ALU32 add/sub/neg/lsh/rsh/arsh
+Date: Thu, 30 May 2019 15:29:22 -0700
+Message-Id: <20190530222922.4269-1-luke.r.nels@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190530115103.GA10919@e105550-lin.cambridge.arm.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_144320_459454_A4294916 
-X-CRM114-Status: GOOD (  16.40  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190530_152937_364984_2907D84D 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [2001:4d48:ad52:3201:214:fdff:fe10:1be6 listed in]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (luke.r.nels[at]gmail.com)
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -89,69 +98,115 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, Atish Patra <atish.patra@wdc.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
- Rob Herring <robh@kernel.org>, Anup Patel <anup@brainfault.org>,
- devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
- Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Jeremy Linton <jeremy.linton@arm.com>, "Andrew F. Davis" <afd@ti.com>,
- Otto Sabart <ottosabart@seberm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ bpf@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
+ Luke Nelson <luke.r.nels@gmail.com>,
+ =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
+ Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 30, 2019 at 12:51:03PM +0100, Morten Rasmussen wrote:
-> On Wed, May 29, 2019 at 07:39:17PM -0400, Andrew F. Davis wrote:
-> > On 5/29/19 5:13 PM, Atish Patra wrote:
-> > >From: Sudeep Holla <sudeep.holla@arm.com>
-> > >
-> > >The current ARM DT topology description provides the operating system
-> > >with a topological view of the system that is based on leaf nodes
-> > >representing either cores or threads (in an SMT system) and a
-> > >hierarchical set of cluster nodes that creates a hierarchical topology
-> > >view of how those cores and threads are grouped.
-> > >
-> > >However this hierarchical representation of clusters does not allow to
-> > >describe what topology level actually represents the physical package or
-> > >the socket boundary, which is a key piece of information to be used by
-> > >an operating system to optimize resource allocation and scheduling.
-> > >
-> > 
-> > Are physical package descriptions really needed? What does "socket" imply
-> > that a higher layer "cluster" node grouping does not? It doesn't imply a
-> > different NUMA distance and the definition of "socket" is already not well
-> > defined, is a dual chiplet processor not just a fancy dual "socket" or are
-> > dual "sockets" on a server board "slotket" card, will we need new names for
-> > those too..
-> 
-> Socket (or package) just implies what you suggest, a grouping of CPUs
-> based on the physical socket (or package). Some resources might be
-> associated with packages and more importantly socket information is
-> exposed to user-space. At the moment clusters are being exposed to
-> user-space as sockets which is less than ideal for some topologies.
+In BPF, 32-bit ALU operations should zero-extend their results into
+the 64-bit registers.
 
-Please point out a 32-bit ARM system that has multiple "socket"s.
+The current BPF JIT on RISC-V emits incorrect instructions that perform
+sign extension only (e.g., addw, subw) on 32-bit add, sub, lsh, rsh,
+arsh, and neg. This behavior diverges from the interpreter and JITs
+for other architectures.
 
-As far as I'm aware, all 32-bit systems do not have socketed CPUs
-(modern ARM CPUs are part of a larger SoC), and the CPUs are always
-in one package.
+This patch fixes the bugs by performing zero extension on the destination
+register of 32-bit ALU operations.
 
-Even the test systems I've seen do not have socketed CPUs.
+Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+Cc: Xi Wang <xi.wang@gmail.com>
+Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
+---
+The original patch is
+https://lkml.org/lkml/2019/5/30/1370
 
+This version is rebased against the bpf tree.
+---
+ arch/riscv/net/bpf_jit_comp.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
+index e5c8d675bd6e..426d5c33ea90 100644
+--- a/arch/riscv/net/bpf_jit_comp.c
++++ b/arch/riscv/net/bpf_jit_comp.c
+@@ -751,10 +751,14 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU | BPF_ADD | BPF_X:
+ 	case BPF_ALU64 | BPF_ADD | BPF_X:
+ 		emit(is64 ? rv_add(rd, rd, rs) : rv_addw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_SUB | BPF_X:
+ 	case BPF_ALU64 | BPF_SUB | BPF_X:
+ 		emit(is64 ? rv_sub(rd, rd, rs) : rv_subw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_AND | BPF_X:
+ 	case BPF_ALU64 | BPF_AND | BPF_X:
+@@ -795,14 +799,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU | BPF_LSH | BPF_X:
+ 	case BPF_ALU64 | BPF_LSH | BPF_X:
+ 		emit(is64 ? rv_sll(rd, rd, rs) : rv_sllw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_RSH | BPF_X:
+ 	case BPF_ALU64 | BPF_RSH | BPF_X:
+ 		emit(is64 ? rv_srl(rd, rd, rs) : rv_srlw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_ARSH | BPF_X:
+ 	case BPF_ALU64 | BPF_ARSH | BPF_X:
+ 		emit(is64 ? rv_sra(rd, rd, rs) : rv_sraw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 
+ 	/* dst = -dst */
+@@ -810,6 +820,8 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU64 | BPF_NEG:
+ 		emit(is64 ? rv_sub(rd, RV_REG_ZERO, rd) :
+ 		     rv_subw(rd, RV_REG_ZERO, rd), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 
+ 	/* dst = BSWAP##imm(dst) */
+@@ -964,14 +976,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU | BPF_LSH | BPF_K:
+ 	case BPF_ALU64 | BPF_LSH | BPF_K:
+ 		emit(is64 ? rv_slli(rd, rd, imm) : rv_slliw(rd, rd, imm), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_RSH | BPF_K:
+ 	case BPF_ALU64 | BPF_RSH | BPF_K:
+ 		emit(is64 ? rv_srli(rd, rd, imm) : rv_srliw(rd, rd, imm), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_ARSH | BPF_K:
+ 	case BPF_ALU64 | BPF_ARSH | BPF_K:
+ 		emit(is64 ? rv_srai(rd, rd, imm) : rv_sraiw(rd, rd, imm), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 
+ 	/* JUMP off */
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+2.19.1
+
 
 _______________________________________________
 linux-riscv mailing list
