@@ -2,52 +2,49 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D83D42FC09
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 15:13:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 563EC3001C
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 18:22:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dTRMgfFVk+glSgw8b9L/0H7GfPsBtO9z9Up/LV4G/H0=; b=S03sxHoAHRpkH8
-	bFc7r4sF1hPwJOfJG3nrsvbl8bSiWnTRU7urJ1qzW+F7Te9WpOtnaDhYIfFuaJXOcL5wb3AnNGWBu
-	87l0bSY5hx2493uJFV1zRrIn5iic9rz1UNKiGDbpM2WSuTrHPmpWl4LVbD9lltyy/9cR9yhiD9/ma
-	gC7p2HalxcIguc4owcxmCVocoTZkZnbbv2iSPZqCxHjR1Lhpivt4jiZxV049/6xiq1/XwbJbugzR3
-	mtiGLembZYkTpRhUr0yf+YGKIzqg3iSDbim4x3a/1OHHs+rkKaLI8ryew6XgwFKqP4VdRc9xeeMRJ
-	glS8kCBq69mLruxT672g==;
+	List-Owner; bh=srA1pRIkGayaigVZMEn8L3PWJVUIQLu7m2gGDrFDT3g=; b=RSef+gMd87F13h
+	jWKp00BQj9sXlLAU1KiU8hN3lxmEnEjcDORdZEGmEBRnZouIlHY0dBSuK0FGFNpZy1oc79+jWKWg1
+	FwGV6NEdDgl613s+j1k1fnYMyUV+bPKxJgDOx6kdvceuHFHuEu98frBklv1EV2eSYz+ydgkbqysq8
+	20buUhAalh0bq9FLqcfr/1hJsq6DxqgyzjvfrqA+Q30JnBmdplUcjsTOgXPU/1wdVoD0v43+hLX2l
+	j3G+K0Xeg4gAtEm09xV4bixvLnPKLeJS3zyAxUhq+G75yBiJK8EYo1VXEJaAemf2DMZdQDoipQ6hA
+	T8xkSSeKkF+LzFH0+9ww==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWKrb-0001qG-1j; Thu, 30 May 2019 13:12:59 +0000
-Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]
- helo=foss.arm.com)
+	id 1hWNp4-0003rj-Hz; Thu, 30 May 2019 16:22:34 +0000
+Received: from foss.arm.com ([217.140.101.70])
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWKrS-0001jZ-8X; Thu, 30 May 2019 13:12:51 +0000
+ id 1hWNp1-0003qm-2s
+ for linux-riscv@lists.infradead.org; Thu, 30 May 2019 16:22:32 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0E194A78;
- Thu, 30 May 2019 06:12:48 -0700 (PDT)
-Received: from e105550-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.72.51.249])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C29753F59C;
- Thu, 30 May 2019 06:12:43 -0700 (PDT)
-Date: Thu, 30 May 2019 14:12:41 +0100
-From: Morten Rasmussen <morten.rasmussen@arm.com>
-To: "Andrew F. Davis" <afd@ti.com>
-Subject: Re: [PATCH v6 1/7] Documentation: DT: arm: add support for sockets
- defining package boundaries
-Message-ID: <20190530131241.GB10919@e105550-lin.cambridge.arm.com>
-References: <20190529211340.17087-1-atish.patra@wdc.com>
- <20190529211340.17087-2-atish.patra@wdc.com>
- <49f41e62-5354-a674-d95f-5f63851a0ca6@ti.com>
- <20190530115103.GA10919@e105550-lin.cambridge.arm.com>
- <70639181-09d1-4644-f062-b19e06db7471@ti.com>
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 13CAF341;
+ Thu, 30 May 2019 09:22:28 -0700 (PDT)
+Received: from redmoon (e121166-lin.cambridge.arm.com [10.1.196.255])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 23AA43F5AF;
+ Thu, 30 May 2019 09:22:26 -0700 (PDT)
+Date: Thu, 30 May 2019 17:22:23 +0100
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Alan Mikhak <alan.mikhak@sifive.com>
+Subject: Re: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
+Message-ID: <20190530162223.GG13993@redmoon>
+References: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
+ <CABEDWGzHkt4p_byEihOAs9g97t450h9-Z0Qu2b2-O1pxCNPX+A@mail.gmail.com>
+ <baa68439-f703-a453-34a2-24387bb9112d@ti.com>
+ <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <70639181-09d1-4644-f062-b19e06db7471@ti.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_061250_313796_DBC854D3 
-X-CRM114-Status: GOOD (  24.84  )
+X-CRM114-CacheID: sfid-20190530_092231_139587_BFF35347 
+X-CRM114-Status: GOOD (  24.32  )
 X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.0 points)
@@ -68,99 +65,100 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, Atish Patra <atish.patra@wdc.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
- Rob Herring <robh@kernel.org>, Anup Patel <anup@brainfault.org>,
- Russell King <linux@armlinux.org.uk>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Rob Herring <robh+dt@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Jeremy Linton <jeremy.linton@arm.com>, Otto Sabart <ottosabart@seberm.com>,
- Sudeep Holla <sudeep.holla@arm.com>, "David S. Miller" <davem@davemloft.net>
+Cc: linux-pci@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>, kjlu@umn.edu,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-riscv@lists.infradead.org, gustavo.pimentel@synopsys.com,
+ wen.yang99@zte.com.cn
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 30, 2019 at 08:56:03AM -0400, Andrew F. Davis wrote:
-> On 5/30/19 7:51 AM, Morten Rasmussen wrote:
-> >On Wed, May 29, 2019 at 07:39:17PM -0400, Andrew F. Davis wrote:
-> >>On 5/29/19 5:13 PM, Atish Patra wrote:
-> >>>From: Sudeep Holla <sudeep.holla@arm.com>
-> >>>
-> >>>The current ARM DT topology description provides the operating system
-> >>>with a topological view of the system that is based on leaf nodes
-> >>>representing either cores or threads (in an SMT system) and a
-> >>>hierarchical set of cluster nodes that creates a hierarchical topology
-> >>>view of how those cores and threads are grouped.
-> >>>
-> >>>However this hierarchical representation of clusters does not allow to
-> >>>describe what topology level actually represents the physical package or
-> >>>the socket boundary, which is a key piece of information to be used by
-> >>>an operating system to optimize resource allocation and scheduling.
-> >>>
-> >>
-> >>Are physical package descriptions really needed? What does "socket" imply
-> >>that a higher layer "cluster" node grouping does not? It doesn't imply a
-> >>different NUMA distance and the definition of "socket" is already not well
-> >>defined, is a dual chiplet processor not just a fancy dual "socket" or are
-> >>dual "sockets" on a server board "slotket" card, will we need new names for
-> >>those too..
-> >
-> >Socket (or package) just implies what you suggest, a grouping of CPUs
-> >based on the physical socket (or package). Some resources might be
-> >associated with packages and more importantly socket information is
-> >exposed to user-space. At the moment clusters are being exposed to
-> >user-space as sockets which is less than ideal for some topologies.
-> >
+On Fri, May 24, 2019 at 11:50:41AM -0700, Alan Mikhak wrote:
+> Hi Kishon,
 > 
-> I see the benefit of reporting the physical layout and packaging information
-> to user-space for tracking reasons, but from software perspective this
-> doesn't matter, and the resource partitioning should be described elsewhere
-> (NUMA nodes being the go to example).
+> Yes. This change is still applicable even when the platform specifies
+> that it only supports 64-bit BARs by setting the bar_fixed_64bit
+> member of epc_features.
+> 
+> The issue being fixed is this: If the 'continue' statement is executed
+> within the loop, the loop index 'bar' needs to advanced by two, not
+> one, when the BAR is 64-bit. Otherwise the next loop iteration will be
+> on an odd BAR which doesn't exist.
+> 
+> The PCI_BASE_ADDRESS_MEM_TYPE_64 flag in epf_bar->flag reflects the
+> value set by the platform in the bar_fixed_64bit member of
+> epc_features.
+> 
+> This patch moves the checking of  PCI_BASE_ADDRESS_MEM_TYPE_64 in
+> epf_bar->flags to before the 'continue' statement to advance the 'bar'
+> loop index accordingly. The comment you see about 'pci_epc_set_bar()'
+> preceding the moved code is the original comment and was also moved
+> along with the code.
 
-That would make defining a NUMA node mandatory even for non-NUMA
-systems?
+@Kishon, I would need your ACK to merge this patch.
 
-> >At the moment user-space is only told about hw threads, cores, and
-> >sockets. In the very near future it is going to be told about dies too
-> >(look for Len Brown's multi-die patch set).
+Thanks,
+Lorenzo
+
+> Regards,
+> Alan Mikhak
+> 
+> On Fri, May 24, 2019 at 1:51 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
 > >
-> 
-> Seems my hypothetical case is already in the works :(
-
-Indeed. IIUC, the reasoning behind it is related to actual multi-die
-x86 packages and some rapl stuff being per-die or per-core.
-
-> 
-> >I don't see how we can provide correct information to user-space based
-> >on the current information in DT. I'm not convinced it was a good idea
-> >to expose this information to user-space to begin with but that is
-> >another discussion.
+> > Hi,
 > >
-> 
-> Fair enough, it's a little late now to un-expose this info to userspace so
-> we should at least present it correctly. My worry was this getting out of
-> hand with layering, for instance what happens when we need to add die nodes
-> in-between cluster and socket?
-
-If we want the die mask to be correct for arm/arm64/riscv we need die
-information from somewhere. I'm not in favour of adding more topology
-layers to the user-space visible topology description, but others might
-have a valid reason and if it is exposed I would prefer if we try to
-expose the right information.
-
-Btw, for packages, we already have that information in ACPI/PPTT so it
-would be nice if we could have that for DT based systems too.
-
-Morten
+> > On 24/05/19 5:25 AM, Alan Mikhak wrote:
+> > > +Bjorn Helgaas, +Gustavo Pimentel, +Wen Yang, +Kangjie Lu
+> > >
+> > > On Thu, May 23, 2019 at 2:55 PM Alan Mikhak <alan.mikhak@sifive.com> wrote:
+> > >>
+> > >> Always skip odd bar when skipping 64bit BARs in pci_epf_test_set_bar()
+> > >> and pci_epf_test_alloc_space().
+> > >>
+> > >> Otherwise, pci_epf_test_set_bar() will call pci_epc_set_bar() on odd loop
+> > >> index when skipping reserved 64bit BAR. Moreover, pci_epf_test_alloc_space()
+> > >> will call pci_epf_alloc_space() on bind for odd loop index when BAR is 64bit
+> > >> but leaks on subsequent unbind by not calling pci_epf_free_space().
+> > >>
+> > >> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
+> > >> Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
+> > >> ---
+> > >>  drivers/pci/endpoint/functions/pci-epf-test.c | 25 ++++++++++++-------------
+> > >>  1 file changed, 12 insertions(+), 13 deletions(-)
+> > >>
+> > >> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+> > >> index 27806987e93b..96156a537922 100644
+> > >> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
+> > >> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+> > >> @@ -389,7 +389,7 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
+> > >>
+> > >>  static int pci_epf_test_set_bar(struct pci_epf *epf)
+> > >>  {
+> > >> -       int bar;
+> > >> +       int bar, add;
+> > >>         int ret;
+> > >>         struct pci_epf_bar *epf_bar;
+> > >>         struct pci_epc *epc = epf->epc;
+> > >> @@ -400,8 +400,14 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
+> > >>
+> > >>         epc_features = epf_test->epc_features;
+> > >>
+> > >> -       for (bar = BAR_0; bar <= BAR_5; bar++) {
+> > >> +       for (bar = BAR_0; bar <= BAR_5; bar += add) {
+> > >>                 epf_bar = &epf->bar[bar];
+> > >> +               /*
+> > >> +                * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
+> > >> +                * if the specific implementation required a 64-bit BAR,
+> > >> +                * even if we only requested a 32-bit BAR.
+> > >> +                */
+> >
+> > set_bar shouldn't set PCI_BASE_ADDRESS_MEM_TYPE_64. If a platform supports only
+> > 64-bit BAR, that should be specified in epc_features bar_fixed_64bit member.
+> >
+> > Thanks
+> > Kishon
 
 _______________________________________________
 linux-riscv mailing list
