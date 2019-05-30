@@ -2,79 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D73FB30158
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 19:56:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8437830294
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 21:08:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+R/pz1odV3fd02mqCRCppeLpzvu5jJXcZCLCXagx1eQ=; b=O3FTYcvyDebyO+
-	vWWPF4J6mT8cRby8xVB7hgMkdXNtQ4lcknCBMETkOxa8x8Zqq4AcH/SGeqyFQ2qhDC5BN/o5AeSy6
-	4qeNmT/Z3WoPpxo+J2OcMQgD1AtEh6usH8mZ+3qt7mBXv4+zdd/HKOS1g4/gXhTXyl6kajXQZ+JAT
-	5bs/7ED3dwC8DmHedTKmqNbo1Pdy/sxDkD9R6F6wgIj94WV/7v/bdoDBwqhQY3isQ+aRLMpON/zzG
-	Tw89SBpx+H2XIX5vjPpLFsTgJiGhxUte+eav5Ws5dRQTT/lq77+3qo57fPkSJunWP4rDqPpn+Tm+s
-	PJB5Thc7QT7mh5KTD8LQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PNLgC85HPDLRFRso9e3YTFASSawkQdKA7xPm+JPbyXg=; b=seqYSbTetm7Jyq
+	9p9x+o9+s6ibwrHvG494+1SwVP2VOmql/iDLdN3EEBbtzM3eGK/WtCT33o4w51Qs2mYbDlwakQwmI
+	gZ6knMHu0IRG8V3pfSskdFgd8ODDlUe/TkRV9GcfdIRqrdg2YMgh+MH52BuA8vzCoVLYl7jcxQDBu
+	1EILqKw4vGjbMOSX+mnY3xgjv7VxKYKnejix7y8gHaDuwnnYG4rX4j79ohh708/yuzzfCHTtGB9An
+	5/JA7Jhm5MetHmET02tunzmXrcMCtk8YOcn/qCcYkEID4D/xWxW98I4HvMS3maN4JHOuEZOATde/h
+	Kt5RZgccED7ApUZc//tw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWPHx-0002sh-JX; Thu, 30 May 2019 17:56:29 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
+	id 1hWQPT-0000eM-Ud; Thu, 30 May 2019 19:08:19 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWPHt-0002rh-PD
- for linux-riscv@lists.infradead.org; Thu, 30 May 2019 17:56:27 +0000
-Received: by mail-lf1-x144.google.com with SMTP id l26so5703259lfh.13
- for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 10:56:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Kznmoz7C+qs9+fS1R4x2KVGpxZXkzNDQtpMYN/bgS0w=;
- b=JT/fEl27W7OW7rJcwHTFEDIgpayKw/JcKZrccKW+R06f8yFn9Sfmqh1Y1+4eFFmINj
- APEMuKyil8NOFpMdzz9O3cIulvqjkdaZ2tOVr4o7IKRKHWjlMU10TWN403QDqTiF8GE+
- YMUDO7iGJIUsV3W1TTBlJHn341cr9XU4HEjMADWS4Hwpvt+DlNAxnMEGK68wm14STPK3
- V6OlCCKBbjh8qEkuB8VASZ4IEKTRT8ja3iIGVWU1VQ5qEJm8cjXWDNruPlhZRD2G2JfP
- wqXec1kI3sSfJPSkEVYF+NXpHw36TbeTGAPmx4rdsXx16WXyPtJjTNzE5VZuZKQPqe0F
- k/FA==
+ id 1hWQPQ-0000dg-3r
+ for linux-riscv@lists.infradead.org; Thu, 30 May 2019 19:08:17 +0000
+Received: by mail-pf1-x441.google.com with SMTP id r22so4538551pfh.9
+ for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 12:08:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Aw1+sSYubK2kKTOgJMDkRGNmYcY/5tKHyrYGQqz2ZTA=;
+ b=nLT9x3U8ygNPGsLe8NupTDwL4qRw/wJoLtkJo4u0VKNY3v9PwehT9s7PvINtSL1Fr9
+ Y0zpNr5QxSXK6ECOHsA6BHFHengti/s8GVotb1wtmw04jP+wbRDnog8CGl7+BPCtpCpy
+ rPDlXC6uAHWTqmaaYuxT/YbkELVIxEAB8nSMn0i0PoHql24c3esGeMK8LW8cKlRi5LEv
+ /k8WNoyzjlpFX7B7wXOU7nEpZ4wzmQ/+YOO8ANPoJRhcwVNHUWx6le+XNBVhB/jZ/rp8
+ 1u8Grduyq7q3syrhcSImKA8Sxr4GTQFKMtYx7loWUsOI0+O/QdZRDNQY45g6uzvoCnkB
+ vUTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Kznmoz7C+qs9+fS1R4x2KVGpxZXkzNDQtpMYN/bgS0w=;
- b=o6WtSmHx9TKgDFh5qhXKn36GNNQg+fwgtqM7U3QlEssq6m/2w5FHG5NMLUKKWemLOv
- l2oGgpJbLF0sQHHeTpsu8/MmgmS71ns3gZqsLCukO0rOsg5oZUhO2+2X07z3yxskI67W
- wya1fXGUOWBUqU2eMXY7ofIV6wHcx57f2bX6Kj+M2HZKvEC2VrrtZLqDkeV2P79nMcf6
- 1s1OF2uZXJ50Lm3lUCmcZAgGfuUkFshXp2jLYP2xM0PhfKPvdqqNMXWI0/NY2KlBTaAj
- MMbPnkkz/A6ZsXSb6nKiavh3pBY2Eiz20+si0Kzy14rXXPCgVEAUJTs+XWL3pwCbyjUi
- ac3Q==
-X-Gm-Message-State: APjAAAX4G6teiidlt0micHfOMP6cwB7atu5+A9PgbgkITXYUJyw7lK65
- ccTB4SyuVfIpc1FkdR6dnjbBe9GaJSU8V8iyNOiOPQ==
-X-Google-Smtp-Source: APXvYqyQiWOytOWvETmZ/lX6mjAxJtO7J/9HNjyUp8rLndIVDE+TYfD/IMExAYni2I/+EKIHlCwpa/JO2Z2EXi0B4Gc=
-X-Received: by 2002:ac2:4c84:: with SMTP id d4mr2829996lfl.1.1559238981944;
- Thu, 30 May 2019 10:56:21 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Aw1+sSYubK2kKTOgJMDkRGNmYcY/5tKHyrYGQqz2ZTA=;
+ b=MYNWikyyzXtNbxd2kIfFaRpRWslUZ1Fjj9uddMAL78bktYtpeHLHTV2A2PFO4XRxU8
+ +fqHLnjdX1OjfXzrvO2gkP0bE38yyJjqOAzpzwwRESnWt/Wlyl47uEgyRoD00Bl5ddKB
+ SHNvelX7FSTngt2bQy/LFP9dIB4fDiv9LpixdPze5iaZvW4EiMHYgiqQ7FoIpZK0qIMl
+ eijD2aUFLQaWwjPpzVsq+jNLa+Wn5f37kAIArhcAqbltXfOKYswqvD8GPtcMpSfBPIv2
+ o8IL2K2awJn8/fgl21kVm6zMxXzCW5aMU3atycfvx49EvAgUvp1/0AyilXLO8lym9n44
+ L9gQ==
+X-Gm-Message-State: APjAAAXunRbVia6wJ6LitcV+VDoxyNTlR8MJxgQ9rQBhc1NJtgLiAm2L
+ xm1OIjyCvn5jajq0SwFBirI=
+X-Google-Smtp-Source: APXvYqzSZhkQQcByjfuiX46oTYnBxfrMioBh7hahe5g9syL49KzcKXNe8X+WlpMhgB0TBdXGbfVYdQ==
+X-Received: by 2002:a17:90a:2ec9:: with SMTP id
+ h9mr5284774pjs.130.1559243295138; 
+ Thu, 30 May 2019 12:08:15 -0700 (PDT)
+Received: from kaby.cs.washington.edu ([2607:4000:200:15:61cb:56f1:2c08:844e])
+ by smtp.gmail.com with ESMTPSA id
+ a8sm3927617pfk.14.2019.05.30.12.08.09
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 30 May 2019 12:08:09 -0700 (PDT)
+From: Luke Nelson <luke.r.nels@gmail.com>
+To: 
+Subject: [PATCH 1/2] bpf, riscv: fix bugs in JIT for 32-bit ALU operations
+Date: Thu, 30 May 2019 12:07:59 -0700
+Message-Id: <20190530190800.7633-1-luke.r.nels@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-References: <1558650258-15050-1-git-send-email-alan.mikhak@sifive.com>
- <305100E33629484CBB767107E4246BBB0A6FAFFD@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxsQ9NXrN7W_8HVrXQBb9HiBd+d1dNfv+cXmoBpXQnLwA@mail.gmail.com>
- <305100E33629484CBB767107E4246BBB0A6FC308@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxL-WYz1BY7yXJ6eKULgVtKeo67XhgHZjvtm5Ka5foKiA@mail.gmail.com>
- <192e3a19-8b69-dfaf-aa5c-45c7087548cc@ti.com>
-In-Reply-To: <192e3a19-8b69-dfaf-aa5c-45c7087548cc@ti.com>
-From: Alan Mikhak <alan.mikhak@sifive.com>
-Date: Thu, 30 May 2019 10:56:10 -0700
-Message-ID: <CABEDWGxLeD-K8PjkD5hPSTFGJKs2hxEaAVO+nE5eC9Nx2yw=ig@mail.gmail.com>
-Subject: Re: [PATCH] PCI: endpoint: Add DMA to Linux PCI EP Framework
-To: Kishon Vijay Abraham I <kishon@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_105625_966490_85D02C25 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20190530_120816_184213_2297E4EC 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:144 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (luke.r.nels[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -94,121 +98,127 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "arnd@arndb.de" <arnd@arndb.de>, "jingoohan1@gmail.com" <jingoohan1@gmail.com>,
- Gustavo Pimentel <Gustavo.Pimentel@synopsys.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, "kjlu@umn.edu" <kjlu@umn.edu>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "wen.yang99@zte.com.cn" <wen.yang99@zte.com.cn>
+Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ bpf@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
+ Luke Nelson <luke.r.nels@gmail.com>,
+ =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
+ Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, May 29, 2019 at 10:48 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->
-> +Vinod Koul
->
-> Hi,
->
-> >>> On Fri, May 24, 2019 at 1:59 AM Gustavo Pimentel
-> >>> <Gustavo.Pimentel@synopsys.com> wrote:
-> >>>>
-> >>>> Hi Alan,
-> >>>>
-> >>>> This patch implementation is very HW implementation dependent and
-> >>>> requires the DMA to exposed through PCIe BARs, which aren't always the
-> >>>> case. Besides, you are defining some control bits on
-> >>>> include/linux/pci-epc.h that may not have any meaning to other types of
-> >>>> DMA.
-> >>>>
-> >>>> I don't think this was what Kishon had in mind when he developed the
-> >>>> pcitest, but let see what Kishon was to say about it.
-> >>>>
-> >>>> I've developed a DMA driver for DWC PCI using Linux Kernel DMAengine API
-> >>>> and which I submitted some days ago.
-> >>>> By having a DMA driver which implemented using DMAengine API, means the
-> >>>> pcitest can use the DMAengine client API, which will be completely
-> >>>> generic to any other DMA implementation.
->
-> right, my initial thought process was to use only dmaengine APIs in
-> pci-epf-test so that the system DMA or DMA within the PCIe controller can be
-> used transparently. But can we register DMA within the PCIe controller to the
-> DMA subsystem? AFAIK only system DMA should register with the DMA subsystem.
-> (ADMA in SDHCI doesn't use dmaengine). Vinod Koul can confirm.
->
-> If DMA within the PCIe controller cannot be registered in DMA subsystem, we
-> should use something like what Alan has done in this patch with dma_read ops.
-> The dma_read ops implementation in the EP controller can either use dmaengine
-> APIs or use the DMA within the PCIe controller.
->
-> I'll review the patch separately.
->
-> Thanks
-> Kishon
+In BPF, 32-bit ALU operations should zero-extend their results into
+the 64-bit registers.  The current BPF JIT on RISC-V emits incorrect
+instructions that perform either sign extension only (e.g., addw/subw)
+or no extension on 32-bit add, sub, and, or, xor, lsh, rsh, arsh,
+and neg.  This behavior diverges from the interpreter and JITs for
+other architectures.
 
-Hi Kishon,
+This patch fixes the bugs by performing zero extension on the destination
+register of 32-bit ALU operations.
 
-I have some improvements in mind for a v2 patch in response to
-feedback from Gustavo Pimentel that the current implementation is HW
-specific. I hesitate from submitting a v2 patch because it seems best
-to seek comment on possible directions this may be taking.
+Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+Cc: Xi Wang <xi.wang@gmail.com>
+Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
+---
+ arch/riscv/net/bpf_jit_comp.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-One alternative is to wait for or modify test functions in
-pci-epf-test.c to call DMAengine client APIs, if possible. I imagine
-pci-epf-test.c test functions would still allocate the necessary local
-buffer on the endpoint side for the same canned tests for everyone to
-use. They would prepare the buffer in the existing manner by filling
-it with random bytes and calculate CRC in the case of a write test.
-However, they would then initiate DMA operations by using DMAengine
-client APIs in a generic way instead of calling memcpy_toio() and
-memcpy_fromio(). They would post-process the buffer in the existing
-manner such as the checking for CRC in the case of a read test.
-Finally, they would release the resources and report results back to
-the user of pcitest across the PCIe bus through the existing methods.
+diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
+index 80b12aa5e10d..426d5c33ea90 100644
+--- a/arch/riscv/net/bpf_jit_comp.c
++++ b/arch/riscv/net/bpf_jit_comp.c
+@@ -751,22 +751,32 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU | BPF_ADD | BPF_X:
+ 	case BPF_ALU64 | BPF_ADD | BPF_X:
+ 		emit(is64 ? rv_add(rd, rd, rs) : rv_addw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_SUB | BPF_X:
+ 	case BPF_ALU64 | BPF_SUB | BPF_X:
+ 		emit(is64 ? rv_sub(rd, rd, rs) : rv_subw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_AND | BPF_X:
+ 	case BPF_ALU64 | BPF_AND | BPF_X:
+ 		emit(rv_and(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_OR | BPF_X:
+ 	case BPF_ALU64 | BPF_OR | BPF_X:
+ 		emit(rv_or(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_XOR | BPF_X:
+ 	case BPF_ALU64 | BPF_XOR | BPF_X:
+ 		emit(rv_xor(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_MUL | BPF_X:
+ 	case BPF_ALU64 | BPF_MUL | BPF_X:
+@@ -789,14 +799,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU | BPF_LSH | BPF_X:
+ 	case BPF_ALU64 | BPF_LSH | BPF_X:
+ 		emit(is64 ? rv_sll(rd, rd, rs) : rv_sllw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_RSH | BPF_X:
+ 	case BPF_ALU64 | BPF_RSH | BPF_X:
+ 		emit(is64 ? rv_srl(rd, rd, rs) : rv_srlw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_ARSH | BPF_X:
+ 	case BPF_ALU64 | BPF_ARSH | BPF_X:
+ 		emit(is64 ? rv_sra(rd, rd, rs) : rv_sraw(rd, rd, rs), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 
+ 	/* dst = -dst */
+@@ -804,6 +820,8 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU64 | BPF_NEG:
+ 		emit(is64 ? rv_sub(rd, RV_REG_ZERO, rd) :
+ 		     rv_subw(rd, RV_REG_ZERO, rd), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 
+ 	/* dst = BSWAP##imm(dst) */
+@@ -958,14 +976,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_ALU | BPF_LSH | BPF_K:
+ 	case BPF_ALU64 | BPF_LSH | BPF_K:
+ 		emit(is64 ? rv_slli(rd, rd, imm) : rv_slliw(rd, rd, imm), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_RSH | BPF_K:
+ 	case BPF_ALU64 | BPF_RSH | BPF_K:
+ 		emit(is64 ? rv_srli(rd, rd, imm) : rv_srliw(rd, rd, imm), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 	case BPF_ALU | BPF_ARSH | BPF_K:
+ 	case BPF_ALU64 | BPF_ARSH | BPF_K:
+ 		emit(is64 ? rv_srai(rd, rd, imm) : rv_sraiw(rd, rd, imm), ctx);
++		if (!is64)
++			emit_zext_32(rd, ctx);
+ 		break;
+ 
+ 	/* JUMP off */
+-- 
+2.19.1
 
-Another alternative I have in mind for v2 is to change the struct
-pci_epc_dma that this patch added to pci-epc.h from the following:
-
-struct pci_epc_dma {
-        u32     control;
-        u32     size;
-        u64     sar;
-        u64     dar;
-};
-
-to something similar to the following:
-
-struct pci_epc_dma {
-        size_t  size;
-        void *buffer;
-        int flags;
-};
-
-The 'flags' field can be a bit field or separate boolean values to
-specify such things as linked-list mode vs single-block, etc.
-Associated #defines would be removed from pci-epc.h to be replaced if
-needed with something generic. The 'size' field specifies the size of
-DMA transfer that can fit in the buffer.
-
-That way the dma test functions in pci-epf-test.c can simply kmalloc
-and prepare a local buffer on the endpoint side for the DMA transfer
-and pass its pointer down the stack using the 'buffer' field to lower
-layers. This would allow different PCIe controller drivers to
-implement DMA or not according to their needs. Each implementer can
-decide to use DMAengine client API, which would be preferable, or
-directly read or write to DMA hardware registers to suit their needs.
-
-I would appreciate feedback and comment on such choices as part of this review.
-
-Regards,
-Alan Mikhak
 
 _______________________________________________
 linux-riscv mailing list
