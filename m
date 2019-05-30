@@ -2,87 +2,59 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3C8930397
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 22:53:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 972253039F
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 22:55:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lu4L3L7c4mBeipcj1ZkK3cqES4KYYTtelmy5SZz70fA=; b=fSGCJivzYvNfiK
-	i9WykhzJbH5ilxRKboV1nzT07+m9zKMeVGlpq6O5Hb7BtlaoGy1qtk2mIvLfXzrlOarfB6qQPJGpp
-	hJtfQD7IjBG4nlYPF9QJJNxYSCLqmOhokIKe5uBFywVLBbkxVEd8tkwsOgpzhuBxnA8I2AtmABxpY
-	D5Rrv8Y3f8wyyaTWyfUYXRzNncg3l2NJhJ/VyXi3tIzitQ2Fvf54j+zlnRvtMoJIztYUcxkn+6HW1
-	X87UDnYjxf6XDjbyDBILaPdM6xcoIVFLild9JFRtVZFLxSexUrL4b6iZwy3vDutXiAQ/pSukZrWKg
-	t2/kYe7rN7Fg2Oybmadw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=tYfeBo6+mHL5xE8qJvF0K2InFwTBuX8a187Cmlg+VnI=; b=gKSuD8Ltqupt+Dn6NJD0h03Li
+	WHhaSAULlWHDIJpDMHeY1hdmLC+DXRzAJWQJIeXLXtDkQc0ny3IJ8QnU7O8w6xK3BXqSTdHBNyTUn
+	GqUGduxPRlXDOQ9637Ly01tyimRY+rsAzTka52V3HQN6SeLueHsEPKST0ZNyEcS1M2zXsyR68a7aT
+	0dArC5EBYTci7eea5iyFSDJ+9pWGA6xbvTzZVUj5hyk1CmVvNg0orxYqzniy/DUGhWQcYCrgiRWX4
+	LdZIvqB8+gq77Dg3c/QLB4ukXau0O0byQXn0Vksr+6I8yYDPlKZq4W/emzaqzobaCFl5A+19dAX+Z
+	YB5r942sQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWS3A-0000hE-QD; Thu, 30 May 2019 20:53:24 +0000
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWS36-0000gC-1P
- for linux-riscv@lists.infradead.org; Thu, 30 May 2019 20:53:22 +0000
-Received: by mail-qk1-x744.google.com with SMTP id t64so4877575qkh.1
- for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 13:53:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=z9CARR2sdyz0TzlZx5C1Y/HG1L1GZ/YQxjW8n3dkDtY=;
- b=O9b/bK8EMj6Z/Aes6GvEEWWgQoaqgWaPkCaZ7cbWL42OrKuP7jCn08XnPqAmy2p306
- 8zhO25gwMO64WxuBI2gHUQlS/hvtoy5Caw3oUFl2PIjzGa0bYZkNqSLyaIzi2b1TeyUj
- FF37jgA4vO32nO0WZtIk8qPAYjFw6a6a31YkeqEMWj6cA75nwjX6K+fNkXOSWkeNm8gG
- IDAzymM/tDnhTeMvFQclwaOUNj9WlNGj9jdXrDTHK6nOYN4rb37VYFg2BOXyFCdWVDEX
- 3VX2YfBwDDiSgLEeBrbXF0Aaery1wJ4oqbzlGKl7kczZOsWjWFvMpf9Wln7u02PN41Hv
- SoUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=z9CARR2sdyz0TzlZx5C1Y/HG1L1GZ/YQxjW8n3dkDtY=;
- b=jlqbkYun4hP+jBQ3viXCju25T1IrNnGMPPcVD0fGdPf0IJyP8t7snknfUsYDlf3bUa
- /adlT/Jvv8Z1/sGfGH6bwq00UA+qVNhU9faJzmeeEPlj16L24TL7WEmlAvI8X9FAEA4v
- H5/j2mOcC5zPmvGPMXjqsy1dKHSQQQSsvxrPM/JexzPvrvoZhxxLhFbPtKjKpMr4tS7g
- ujmYRLjnd/Uwy6Ib3lZB9r7RDDx5lHRKTQCgEnF6qzIMeI6kEBzj2EKH+m0zj+57Cwmv
- 2h5aWV4PUpvCNr8TEPmLJkqL7C152y7aDcSBf92n9bIAHYR7mSYqDi49UhRFGjQynbwo
- FUlQ==
-X-Gm-Message-State: APjAAAVEMaQYQYwI1RT8vM3HsoVimPior4HSNXmA2pTzXuF9s4xq3iX8
- n6RscEFGr0s6UVbXbZtdZQZ3IXNMRsl0dR2Andk=
-X-Google-Smtp-Source: APXvYqwWhPLets6g5KL70GsN0a/SBVH9vdVhMDcuBw1NjRTLVGKTPlYj7q6szJQZYwKJTGwxrKqHl3zy1Vgg7W+OTbs=
-X-Received: by 2002:a05:620a:12f8:: with SMTP id
- f24mr5129490qkl.202.1559249597898; 
- Thu, 30 May 2019 13:53:17 -0700 (PDT)
+	id 1hWS56-0002AR-Nr; Thu, 30 May 2019 20:55:24 +0000
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]
+ helo=foss.arm.com)
+ by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hWS4w-00022q-8i; Thu, 30 May 2019 20:55:15 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BF11C341;
+ Thu, 30 May 2019 13:55:11 -0700 (PDT)
+Received: from [192.168.100.220] (usa-sjc-mx-foss1.foss.arm.com
+ [217.140.101.70])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 193FB3F690;
+ Thu, 30 May 2019 13:55:10 -0700 (PDT)
+Subject: Re: [PATCH v6 2/7] dt-binding: cpu-topology: Move cpu-map to a common
+ binding.
+To: Atish Patra <atish.patra@wdc.com>, linux-kernel@vger.kernel.org
+References: <20190529211340.17087-1-atish.patra@wdc.com>
+ <20190529211340.17087-3-atish.patra@wdc.com>
+From: Jeremy Linton <jeremy.linton@arm.com>
+Message-ID: <0515d803-0da5-dcbe-3d3e-bb786b320d8b@arm.com>
+Date: Thu, 30 May 2019 15:55:09 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190530190800.7633-1-luke.r.nels@gmail.com>
-In-Reply-To: <20190530190800.7633-1-luke.r.nels@gmail.com>
-From: Song Liu <liu.song.a23@gmail.com>
-Date: Thu, 30 May 2019 13:53:06 -0700
-Message-ID: <CAPhsuW4kMBSjpATqHrEhTmuqje=XZNGOrMyNur8f6K0RNQP=yw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] bpf, riscv: fix bugs in JIT for 32-bit ALU operations
-To: Luke Nelson <luke.r.nels@gmail.com>
+In-Reply-To: <20190529211340.17087-3-atish.patra@wdc.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_135320_106511_69EF1A4D 
-X-CRM114-Status: GOOD (  15.30  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190530_135514_321771_D2F03E65 
+X-CRM114-Status: GOOD (  29.49  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:744 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [217.140.101.70 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (liu.song.a23[at]gmail.com)
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (liu.song.a23[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,148 +66,201 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- bpf <bpf@vger.kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
- Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
- open list <linux-kernel@vger.kernel.org>, Networking <netdev@vger.kernel.org>,
- Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
- Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ linux-riscv@lists.infradead.org, Morten Rasmussen <morten.rasmussen@arm.com>,
+ Rob Herring <robh@kernel.org>, Anup Patel <anup@brainfault.org>,
+ Russell King <linux@armlinux.org.uk>, Ingo Molnar <mingo@kernel.org>,
+ devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
+ Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Otto Sabart <ottosabart@seberm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 30, 2019 at 12:09 PM Luke Nelson <luke.r.nels@gmail.com> wrote:
->
-> In BPF, 32-bit ALU operations should zero-extend their results into
-> the 64-bit registers.  The current BPF JIT on RISC-V emits incorrect
-> instructions that perform either sign extension only (e.g., addw/subw)
-> or no extension on 32-bit add, sub, and, or, xor, lsh, rsh, arsh,
-> and neg.  This behavior diverges from the interpreter and JITs for
-> other architectures.
->
-> This patch fixes the bugs by performing zero extension on the destination
-> register of 32-bit ALU operations.
->
-> Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
-> Cc: Xi Wang <xi.wang@gmail.com>
-> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
+Hi,
 
-This is a little messy. How about we introduce some helper function
-like:
-
-/* please find a better name... */
-emit_32_or_64(bool is64, const u32 insn_32, const u32 inst_64, struct
-rv_jit_context *ctx)
-{
-       if (is64)
-            emit(insn_64, ctx);
-       else {
-            emit(insn_32, ctx);
-           rd = xxxx;
-           emit_zext_32(rd, ctx);
-       }
-}
-
-Thanks,
-Song
-
+On 5/29/19 4:13 PM, Atish Patra wrote:
+> cpu-map binding can be used to described cpu topology for both
+> RISC-V & ARM. It makes more sense to move the binding to document
+> to a common place.
+> 
+> The relevant discussion can be found here.
+> https://lkml.org/lkml/2018/11/6/19
+> 
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > ---
->  arch/riscv/net/bpf_jit_comp.c | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->
-> diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
-> index 80b12aa5e10d..426d5c33ea90 100644
-> --- a/arch/riscv/net/bpf_jit_comp.c
-> +++ b/arch/riscv/net/bpf_jit_comp.c
-> @@ -751,22 +751,32 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
->         case BPF_ALU | BPF_ADD | BPF_X:
->         case BPF_ALU64 | BPF_ADD | BPF_X:
->                 emit(is64 ? rv_add(rd, rd, rs) : rv_addw(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_SUB | BPF_X:
->         case BPF_ALU64 | BPF_SUB | BPF_X:
->                 emit(is64 ? rv_sub(rd, rd, rs) : rv_subw(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_AND | BPF_X:
->         case BPF_ALU64 | BPF_AND | BPF_X:
->                 emit(rv_and(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_OR | BPF_X:
->         case BPF_ALU64 | BPF_OR | BPF_X:
->                 emit(rv_or(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_XOR | BPF_X:
->         case BPF_ALU64 | BPF_XOR | BPF_X:
->                 emit(rv_xor(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_MUL | BPF_X:
->         case BPF_ALU64 | BPF_MUL | BPF_X:
-> @@ -789,14 +799,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
->         case BPF_ALU | BPF_LSH | BPF_X:
->         case BPF_ALU64 | BPF_LSH | BPF_X:
->                 emit(is64 ? rv_sll(rd, rd, rs) : rv_sllw(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_RSH | BPF_X:
->         case BPF_ALU64 | BPF_RSH | BPF_X:
->                 emit(is64 ? rv_srl(rd, rd, rs) : rv_srlw(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_ARSH | BPF_X:
->         case BPF_ALU64 | BPF_ARSH | BPF_X:
->                 emit(is64 ? rv_sra(rd, rd, rs) : rv_sraw(rd, rd, rs), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->
->         /* dst = -dst */
-> @@ -804,6 +820,8 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
->         case BPF_ALU64 | BPF_NEG:
->                 emit(is64 ? rv_sub(rd, RV_REG_ZERO, rd) :
->                      rv_subw(rd, RV_REG_ZERO, rd), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->
->         /* dst = BSWAP##imm(dst) */
-> @@ -958,14 +976,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
->         case BPF_ALU | BPF_LSH | BPF_K:
->         case BPF_ALU64 | BPF_LSH | BPF_K:
->                 emit(is64 ? rv_slli(rd, rd, imm) : rv_slliw(rd, rd, imm), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_RSH | BPF_K:
->         case BPF_ALU64 | BPF_RSH | BPF_K:
->                 emit(is64 ? rv_srli(rd, rd, imm) : rv_srliw(rd, rd, imm), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->         case BPF_ALU | BPF_ARSH | BPF_K:
->         case BPF_ALU64 | BPF_ARSH | BPF_K:
->                 emit(is64 ? rv_srai(rd, rd, imm) : rv_sraiw(rd, rd, imm), ctx);
-> +               if (!is64)
-> +                       emit_zext_32(rd, ctx);
->                 break;
->
->         /* JUMP off */
-> --
-> 2.19.1
->
+>   .../topology.txt => cpu/cpu-topology.txt}     | 82 +++++++++++++++----
+>   1 file changed, 66 insertions(+), 16 deletions(-)
+>   rename Documentation/devicetree/bindings/{arm/topology.txt => cpu/cpu-topology.txt} (86%)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/topology.txt b/Documentation/devicetree/bindings/cpu/cpu-topology.txt
+> similarity index 86%
+> rename from Documentation/devicetree/bindings/arm/topology.txt
+> rename to Documentation/devicetree/bindings/cpu/cpu-topology.txt
+> index 3b8febb46dad..069addccab14 100644
+> --- a/Documentation/devicetree/bindings/arm/topology.txt
+> +++ b/Documentation/devicetree/bindings/cpu/cpu-topology.txt
+> @@ -1,12 +1,12 @@
+>   ===========================================
+> -ARM topology binding description
+> +CPU topology binding description
+>   ===========================================
+>   
+>   ===========================================
+>   1 - Introduction
+>   ===========================================
+>   
+> -In an ARM system, the hierarchy of CPUs is defined through three entities that
+> +In a SMP system, the hierarchy of CPUs is defined through three entities that
+>   are used to describe the layout of physical CPUs in the system:
+>   
+>   - socket
+> @@ -14,9 +14,6 @@ are used to describe the layout of physical CPUs in the system:
+>   - core
+>   - thread
+>   
+> -The cpu nodes (bindings defined in [1]) represent the devices that
+> -correspond to physical CPUs and are to be mapped to the hierarchy levels.
+> -
+>   The bottom hierarchy level sits at core or thread level depending on whether
+>   symmetric multi-threading (SMT) is supported or not.
+>   
+> @@ -25,33 +22,31 @@ threads existing in the system and map to the hierarchy level "thread" above.
+>   In systems where SMT is not supported "cpu" nodes represent all cores present
+>   in the system and map to the hierarchy level "core" above.
+>   
+> -ARM topology bindings allow one to associate cpu nodes with hierarchical groups
+> +CPU topology bindings allow one to associate cpu nodes with hierarchical groups
+>   corresponding to the system hierarchy; syntactically they are defined as device
+>   tree nodes.
+>   
+> -The remainder of this document provides the topology bindings for ARM, based
+> -on the Devicetree Specification, available from:
+> +Currently, only ARM/RISC-V intend to use this cpu topology binding but it may be
+> +used for any other architecture as well.
+>   
+> -https://www.devicetree.org/specifications/
+> +The cpu nodes, as per bindings defined in [4], represent the devices that
+> +correspond to physical CPUs and are to be mapped to the hierarchy levels.
+>   
+> -If not stated otherwise, whenever a reference to a cpu node phandle is made its
+> -value must point to a cpu node compliant with the cpu node bindings as
+> -documented in [1].
+>   A topology description containing phandles to cpu nodes that are not compliant
+> -with bindings standardized in [1] is therefore considered invalid.
+> +with bindings standardized in [4] is therefore considered invalid.
+>   
+>   ===========================================
+>   2 - cpu-map node
+>   ===========================================
+>   
+> -The ARM CPU topology is defined within the cpu-map node, which is a direct
+> +The ARM/RISC-V CPU topology is defined within the cpu-map node, which is a direct
+>   child of the cpus node and provides a container where the actual topology
+>   nodes are listed.
+>   
+>   - cpu-map node
+>   
+> -	Usage: Optional - On ARM SMP systems provide CPUs topology to the OS.
+> -			  ARM uniprocessor systems do not require a topology
+> +	Usage: Optional - On SMP systems provide CPUs topology to the OS.
+> +			  Uniprocessor systems do not require a topology
+>   			  description and therefore should not define a
+>   			  cpu-map node.
+>   
+> @@ -494,8 +489,63 @@ cpus {
+>   	};
+>   };
+>   
+> +Example 3: HiFive Unleashed (RISC-V 64 bit, 4 core system)
+> +
+> +{
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +	compatible = "sifive,fu540g", "sifive,fu500";
+> +	model = "sifive,hifive-unleashed-a00";
+> +
+> +	...
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		cpu-map {
+> +			cluster0 {
+> +				core0 {
+> +					cpu = <&CPU1>;
+> +				};
+> +				core1 {
+> +					cpu = <&CPU2>;
+> +				};
+> +				core2 {
+> +					cpu0 = <&CPU2>;
+> +				};
+> +				core3 {
+> +					cpu0 = <&CPU3>;
+> +				};
+> +			};
+> +		};
+
+
+<nit picking>
+
+While socket is optional, its probably a good idea to include the node 
+in the example even if the result is the same. That is because at least 
+on arm64 the DT clusters=sockets decision had performance implications 
+for larger systems.
+
+Assuring the socket information is correct is helpful by itself to avoid 
+having to explain why a single socket machine is displaying some other 
+value in lscpu.
+
+
+
+> +
+> +		CPU1: cpu@1 {
+> +			device_type = "cpu";
+> +			compatible = "sifive,rocket0", "riscv";
+> +			reg = <0x1>;
+> +		}
+> +
+> +		CPU2: cpu@2 {
+> +			device_type = "cpu";
+> +			compatible = "sifive,rocket0", "riscv";
+> +			reg = <0x2>;
+> +		}
+> +		CPU3: cpu@3 {
+> +			device_type = "cpu";
+> +			compatible = "sifive,rocket0", "riscv";
+> +			reg = <0x3>;
+> +		}
+> +		CPU4: cpu@4 {
+> +			device_type = "cpu";
+> +			compatible = "sifive,rocket0", "riscv";
+> +			reg = <0x4>;
+> +		}
+> +	}
+> +};
+>   ===============================================================================
+>   [1] ARM Linux kernel documentation
+>       Documentation/devicetree/bindings/arm/cpus.yaml
+>   [2] Devicetree NUMA binding description
+>       Documentation/devicetree/bindings/numa.txt
+> +[3] RISC-V Linux kernel documentation
+> +    Documentation/devicetree/bindings/riscv/cpus.txt
+> +[4] https://www.devicetree.org/specifications/
+> 
+
 
 _______________________________________________
 linux-riscv mailing list
