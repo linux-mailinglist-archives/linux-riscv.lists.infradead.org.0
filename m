@@ -2,56 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DE94303E7
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 23:12:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3558D30420
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 23:43:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gaRsjH+yCzp+Yf5y0KvVhe/0l2NRaop+4tz9/ID+K+k=; b=uj4WlNEMHd0kNennyrNufngn3
-	OLvMNjjOl98ovMGkyS38LvRX1UgC3pA4ZxbsnaLdvAahNRv1PSrNCrIDwPr2EJScf0JUM1FK2+BiB
-	+h4H0PPzJhbpEGMx5NdjEAvqjBX4XMShdPcRuIUh9AmK4TtERHu26bfcUv4pxMNMWLDQnjioBDQvl
-	Bnp7rRmPquzLYAo6mj59NM4TX33LlprgHVe9P1YyuoZj+hON8PQv1ZqjZjXEF5vY1arevjqz0tKj9
-	2HS9V563B5i2ZnABcm9UNnVQRounFR/Bz1l4JLiVh2uPutFC81x/4X/74vzsKi2F5kmPcVdUWRwqX
-	C8XYm0Qng==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/7rudYTbfXfbSWYY9SqM/YsGaPtNa6h+3TVkDKkgFy4=; b=LqT1U8/Krs3nOP
+	Mg/N7nW+g77bFFLWTnaVv18GguAPuxhLqvXW6XFiJ24IvhNZRoXlnLivVzKNTfLx27/oOlBKIwcj1
+	576YDKMbxr+SD666VJHamMoc8DpDMeeWk6WJ5qtcsbjlF3jnuN3d34j4USFpwEcFIhhbnQPbkl2mX
+	9EwWKqRY3YrNP2chMpB1qWMZbhHuBqM+LSktFMHNe1DZz8b02n3EkZu+NZ4XGIgO74wrWvj1Y+nRo
+	zXat7A6AQVydk5WoDplrVAfy2droECmgXrSwr6yxfGR/Uj1QgjReWJxsUF7MDZEM6NV55qiBU+xHf
+	5d7SRZc2COizibFBgRCg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWSLe-00072j-NI; Thu, 30 May 2019 21:12:30 +0000
-Received: from foss.arm.com ([217.140.101.70])
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWSLV-0006w3-7V; Thu, 30 May 2019 21:12:22 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9C8B0341;
- Thu, 30 May 2019 14:12:20 -0700 (PDT)
-Received: from [192.168.100.220] (usa-sjc-mx-foss1.foss.arm.com
- [217.140.101.70])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 210CC3F690;
- Thu, 30 May 2019 14:12:19 -0700 (PDT)
-Subject: Re: [PATCH v6 0/7] Unify CPU topology across ARM & RISC-V
-To: Atish Patra <atish.patra@wdc.com>, linux-kernel@vger.kernel.org
+	id 1hWSpX-0001Od-Ex; Thu, 30 May 2019 21:43:23 +0000
+Received: from pandora.armlinux.org.uk
+ ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hWSpU-0001OG-8j; Thu, 30 May 2019 21:43:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=cMVlGTvXkUveUITBldNsm2wqtZ0vfwdSAKndguUBaOQ=; b=DLH2JYbeHwq/YpEbWMtT0JGBL
+ spO2pEc/2hmPltlibpNfKJ2Ih/2Rm4G0phN5i2XSKks3aWtbDZz/GjR3JOGCj0DN/EFFNJYoQcgdY
+ KCaXkwyYwGjN4/dPWIvnF995pitZOxwUX3cRQdPGcd08tJMbDelcgzPTaceo+3xiEu6bQ9l0KxDmW
+ A6ERMXUYjHd+RHWZrpMMqsX0zPrTCj1eb0FZ12RnJMUJ3c1CbH3/iBVkW/k/nJ87VxzdpYmPFA/Bj
+ w8HefDp2VNcdyksBGBu0eg9AnsJHYltB0rlhwyOs9x/BKnj7EROswpX3bRDMtwawd5XTsxhzCT215
+ 893fQ6/Cw==;
+Received: from shell.armlinux.org.uk
+ ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:56076)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1hWSpD-0005E4-3f; Thu, 30 May 2019 22:43:03 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.89)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1hWSp5-0005jk-2U; Thu, 30 May 2019 22:42:55 +0100
+Date: Thu, 30 May 2019 22:42:54 +0100
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Morten Rasmussen <morten.rasmussen@arm.com>
+Subject: Re: [PATCH v6 1/7] Documentation: DT: arm: add support for sockets
+ defining package boundaries
+Message-ID: <20190530214254.tuxsnyv52a2fyhck@shell.armlinux.org.uk>
 References: <20190529211340.17087-1-atish.patra@wdc.com>
-From: Jeremy Linton <jeremy.linton@arm.com>
-Message-ID: <1b61e699-79c7-bbfd-c7ed-d51d321ae7ef@arm.com>
-Date: Thu, 30 May 2019 16:12:18 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ <20190529211340.17087-2-atish.patra@wdc.com>
+ <49f41e62-5354-a674-d95f-5f63851a0ca6@ti.com>
+ <20190530115103.GA10919@e105550-lin.cambridge.arm.com>
 MIME-Version: 1.0
-In-Reply-To: <20190529211340.17087-1-atish.patra@wdc.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190530115103.GA10919@e105550-lin.cambridge.arm.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_141221_282854_19BF1FCD 
-X-CRM114-Status: GOOD (  30.12  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190530_144320_459454_A4294916 
+X-CRM114-Status: GOOD (  16.40  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [217.140.101.70 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [2001:4d48:ad52:3201:214:fdff:fe10:1be6 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,136 +94,64 @@ Cc: Mark Rutland <mark.rutland@arm.com>,
  "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
  Catalin Marinas <catalin.marinas@arm.com>,
  Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>,
+ Will Deacon <will.deacon@arm.com>, Atish Patra <atish.patra@wdc.com>,
  Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Morten Rasmussen <morten.rasmussen@arm.com>,
- Anup Patel <anup@brainfault.org>, Russell King <linux@armlinux.org.uk>,
- Ingo Molnar <mingo@kernel.org>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Rob Herring <robh+dt@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-riscv@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
+ Rob Herring <robh@kernel.org>, Anup Patel <anup@brainfault.org>,
+ devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
+ Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Jeremy Linton <jeremy.linton@arm.com>, "Andrew F. Davis" <afd@ti.com>,
  Otto Sabart <ottosabart@seberm.com>, Sudeep Holla <sudeep.holla@arm.com>,
  "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
+On Thu, May 30, 2019 at 12:51:03PM +0100, Morten Rasmussen wrote:
+> On Wed, May 29, 2019 at 07:39:17PM -0400, Andrew F. Davis wrote:
+> > On 5/29/19 5:13 PM, Atish Patra wrote:
+> > >From: Sudeep Holla <sudeep.holla@arm.com>
+> > >
+> > >The current ARM DT topology description provides the operating system
+> > >with a topological view of the system that is based on leaf nodes
+> > >representing either cores or threads (in an SMT system) and a
+> > >hierarchical set of cluster nodes that creates a hierarchical topology
+> > >view of how those cores and threads are grouped.
+> > >
+> > >However this hierarchical representation of clusters does not allow to
+> > >describe what topology level actually represents the physical package or
+> > >the socket boundary, which is a key piece of information to be used by
+> > >an operating system to optimize resource allocation and scheduling.
+> > >
+> > 
+> > Are physical package descriptions really needed? What does "socket" imply
+> > that a higher layer "cluster" node grouping does not? It doesn't imply a
+> > different NUMA distance and the definition of "socket" is already not well
+> > defined, is a dual chiplet processor not just a fancy dual "socket" or are
+> > dual "sockets" on a server board "slotket" card, will we need new names for
+> > those too..
+> 
+> Socket (or package) just implies what you suggest, a grouping of CPUs
+> based on the physical socket (or package). Some resources might be
+> associated with packages and more importantly socket information is
+> exposed to user-space. At the moment clusters are being exposed to
+> user-space as sockets which is less than ideal for some topologies.
 
-On 5/29/19 4:13 PM, Atish Patra wrote:
-> The cpu-map DT entry in ARM can describe the CPU topology in much better
-> way compared to other existing approaches. RISC-V can easily adopt this
-> binding to represent its own CPU topology. Thus, both cpu-map DT
-> binding and topology parsing code can be moved to a common location so
-> that RISC-V or any other architecture can leverage that.
-> 
-> The relevant discussion regarding unifying cpu topology can be found in
-> [1].
-> 
-> arch_topology seems to be a perfect place to move the common code. I
-> have not introduced any significant functional changes in the moved code.
-> The only downside in this approach is that the capacity code will be
-> executed for RISC-V as well. But, it will exit immediately after not
-> able to find the appropriate DT node. If the overhead is considered too
-> much, we can always compile out capacity related functions under a
-> different config for the architectures that do not support them.
-> 
-> There was an opportunity to unify topology data structure for ARM32 done
-> by patch 3/4. But, I refrained from making any other changes as I am not
-> very well versed with original intention for some functions that
-> are present in arch_topology.c. I hope this patch series can be served
-> as a baseline for such changes in the future.
-> 
-> The patches have been tested for RISC-V and compile tested for ARM64,
-> ARM32 & x86.
->
+Please point out a 32-bit ARM system that has multiple "socket"s.
 
-I applied these to 5.2rc2, along with my PPTT/MT change and verified the 
-system & scheduler topology/etc on DAWN and ThunderX2 using ACPI on 
-arm64. They appear to be working correctly.
+As far as I'm aware, all 32-bit systems do not have socketed CPUs
+(modern ARM CPUs are part of a larger SoC), and the CPUs are always
+in one package.
 
-so for the series,
-Tested-by: Jeremy Linton <jeremy.linton@arm.com>
+Even the test systems I've seen do not have socketed CPUs.
 
-The code itself looks fine to me as well:
-
-Reviewed-by: Jeremy Linton <jeremy.linton@arm.com>
-
-Thanks!
-
-> The socket change[2] is also now part of this series.
-> 
-> [1] https://lkml.org/lkml/2018/11/6/19
-> [2] https://lkml.org/lkml/2018/11/7/918
-> 
-> QEMU changes for RISC-V topology are available at
-> 
-> https://github.com/atishp04/qemu/tree/riscv_topology_dt
-> 
-> HiFive Unleashed DT with topology node is available here.
-> https://github.com/atishp04/opensbi/tree/HiFive_unleashed_topology
-> 
-> It can be verified with OpenSBI with following additional compile time
-> option.
-> 
-> FW_PAYLOAD_FDT="unleashed_topology.dtb"
-> 
-> Changes from v5->v6
-> 1. Added two more patches from Sudeep about maintainership of arch_topology.c
->     and Kconfig update.
-> 2. Added Tested-by & Reviewed-by
-> 3. Fixed a nit (reordering of variables)
-> 
-> Changes from v4-v5
-> 1. Removed the arch_topology.h header inclusion from topology.c and arch_topology.c
-> file. Added it in linux/topology.h.
-> 2. core_id is set to -1 upon reset. Otherwise, ARM topology store function does not
-> work.
-> 
-> Changes from v3->v4
-> 1. Get rid of ARM32 specific information in topology structure.
-> 2. Remove redundant functions from ARM32 and use common code instead.
-> 
-> Changes from v2->v3
-> 1. Cover letter update with experiment DT for topology changes.
-> 2. Added the patch for [2].
-> 
-> Changes from v1->v2
-> 1. ARM32 can now use the common code as well.
-> 
-> Atish Patra (4):
-> dt-binding: cpu-topology: Move cpu-map to a common binding.
-> cpu-topology: Move cpu topology code to common code.
-> arm: Use common cpu_topology structure and functions.
-> RISC-V: Parse cpu topology during boot.
-> 
-> Sudeep Holla (3):
-> Documentation: DT: arm: add support for sockets defining package
-> boundaries
-> base: arch_topology: update Kconfig help description
-> MAINTAINERS: Add an entry for generic architecture topology
-> 
-> .../topology.txt => cpu/cpu-topology.txt}     | 134 ++++++--
-> MAINTAINERS                                   |   7 +
-> arch/arm/include/asm/topology.h               |  20 --
-> arch/arm/kernel/topology.c                    |  60 +---
-> arch/arm64/include/asm/topology.h             |  23 --
-> arch/arm64/kernel/topology.c                  | 303 +-----------------
-> arch/riscv/Kconfig                            |   1 +
-> arch/riscv/kernel/smpboot.c                   |   3 +
-> drivers/base/Kconfig                          |   2 +-
-> drivers/base/arch_topology.c                  | 298 +++++++++++++++++
-> include/linux/arch_topology.h                 |  26 ++
-> include/linux/topology.h                      |   1 +
-> 12 files changed, 452 insertions(+), 426 deletions(-)
-> rename Documentation/devicetree/bindings/{arm/topology.txt => cpu/cpu-topology.txt} (66%)
-> 
-> --
-> 2.21.0
-> 
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
 
 _______________________________________________
 linux-riscv mailing list
