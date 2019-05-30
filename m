@@ -2,71 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8437830294
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 21:08:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A201830295
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 May 2019 21:08:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PNLgC85HPDLRFRso9e3YTFASSawkQdKA7xPm+JPbyXg=; b=seqYSbTetm7Jyq
-	9p9x+o9+s6ibwrHvG494+1SwVP2VOmql/iDLdN3EEBbtzM3eGK/WtCT33o4w51Qs2mYbDlwakQwmI
-	gZ6knMHu0IRG8V3pfSskdFgd8ODDlUe/TkRV9GcfdIRqrdg2YMgh+MH52BuA8vzCoVLYl7jcxQDBu
-	1EILqKw4vGjbMOSX+mnY3xgjv7VxKYKnejix7y8gHaDuwnnYG4rX4j79ohh708/yuzzfCHTtGB9An
-	5/JA7Jhm5MetHmET02tunzmXrcMCtk8YOcn/qCcYkEID4D/xWxW98I4HvMS3maN4JHOuEZOATde/h
-	Kt5RZgccED7ApUZc//tw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zng3FHHgDbmMlJx6ax1ZeAgvhU/1x66xweS9wG4gx00=; b=TXd2W2y9Cx8pS1
+	t2uIiVvrdg92iCozVL7+0D8LIWWFOKdd3yK3ucVCZ/ASxuBOwmW1C+/k40z/kkv6qJBR9FlfdwXW7
+	d99ragEKOLOM0bW7QFGieLHaZKrSFYlpPJpoSxtXn1eaLXX0LuIujyz4SJmRtIliGOytIsJiax9xj
+	0m+x0AutL4Na7/ABXiJ7L2KH5wKVzEiVq80Y7b93BsClzEegpj57WT5wSiiKwiIktKhLNky+RzG5P
+	4Hh/gYbW+C7V2peapZ6WBSMFQMRfae7MVDyrjFxp2/1A1MBsUUqkBdnmZ/r1/6R3N557izkRBRfD3
+	y46HV9z7dQ5fA5v+D+RA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWQPT-0000eM-Ud; Thu, 30 May 2019 19:08:19 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1hWQPY-0000gu-Jm; Thu, 30 May 2019 19:08:24 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWQPQ-0000dg-3r
- for linux-riscv@lists.infradead.org; Thu, 30 May 2019 19:08:17 +0000
-Received: by mail-pf1-x441.google.com with SMTP id r22so4538551pfh.9
- for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 12:08:15 -0700 (PDT)
+ id 1hWQPU-0000f3-QQ
+ for linux-riscv@lists.infradead.org; Thu, 30 May 2019 19:08:22 +0000
+Received: by mail-pf1-x442.google.com with SMTP id c14so2140184pfi.1
+ for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 12:08:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Aw1+sSYubK2kKTOgJMDkRGNmYcY/5tKHyrYGQqz2ZTA=;
- b=nLT9x3U8ygNPGsLe8NupTDwL4qRw/wJoLtkJo4u0VKNY3v9PwehT9s7PvINtSL1Fr9
- Y0zpNr5QxSXK6ECOHsA6BHFHengti/s8GVotb1wtmw04jP+wbRDnog8CGl7+BPCtpCpy
- rPDlXC6uAHWTqmaaYuxT/YbkELVIxEAB8nSMn0i0PoHql24c3esGeMK8LW8cKlRi5LEv
- /k8WNoyzjlpFX7B7wXOU7nEpZ4wzmQ/+YOO8ANPoJRhcwVNHUWx6le+XNBVhB/jZ/rp8
- 1u8Grduyq7q3syrhcSImKA8Sxr4GTQFKMtYx7loWUsOI0+O/QdZRDNQY45g6uzvoCnkB
- vUTQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=7H9dDYfkG5aoCexFiQp3mrYF6mxJsKXlL4736u8wxiY=;
+ b=fZcXJqowIrB3tNk9j2Vs6zQMB9vhzOEhXiXoNOT3C2SZUI/keXl5CUnUzXEOmdSdM5
+ w0m8w4++FRlx5nmKHK+bxr5j4dQ1EyWaji8MJy8dKDfUl8eRWdKqTHJF+z3qw0Uuwa7y
+ +NbvRl8AteuHJDxgBDqv0Zf6NPBNpNTkiZsLXP2k5JvcBuAIEhXrVRuBbQ/F0RyvCI8m
+ l6VmoKO/75H1hmPw7JgQ1D/eaTBD+HQrL1veyMvOgi0dNM70EPDRwjlxZtK/chMvzYvR
+ b0E0jLCRFaga/bnV3BCHwDCKF5M+XHO7AhVYOpH+/n7qiSgMMKXYKhDESgGA5iDqp8H2
+ goNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Aw1+sSYubK2kKTOgJMDkRGNmYcY/5tKHyrYGQqz2ZTA=;
- b=MYNWikyyzXtNbxd2kIfFaRpRWslUZ1Fjj9uddMAL78bktYtpeHLHTV2A2PFO4XRxU8
- +fqHLnjdX1OjfXzrvO2gkP0bE38yyJjqOAzpzwwRESnWt/Wlyl47uEgyRoD00Bl5ddKB
- SHNvelX7FSTngt2bQy/LFP9dIB4fDiv9LpixdPze5iaZvW4EiMHYgiqQ7FoIpZK0qIMl
- eijD2aUFLQaWwjPpzVsq+jNLa+Wn5f37kAIArhcAqbltXfOKYswqvD8GPtcMpSfBPIv2
- o8IL2K2awJn8/fgl21kVm6zMxXzCW5aMU3atycfvx49EvAgUvp1/0AyilXLO8lym9n44
- L9gQ==
-X-Gm-Message-State: APjAAAXunRbVia6wJ6LitcV+VDoxyNTlR8MJxgQ9rQBhc1NJtgLiAm2L
- xm1OIjyCvn5jajq0SwFBirI=
-X-Google-Smtp-Source: APXvYqzSZhkQQcByjfuiX46oTYnBxfrMioBh7hahe5g9syL49KzcKXNe8X+WlpMhgB0TBdXGbfVYdQ==
-X-Received: by 2002:a17:90a:2ec9:: with SMTP id
- h9mr5284774pjs.130.1559243295138; 
- Thu, 30 May 2019 12:08:15 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=7H9dDYfkG5aoCexFiQp3mrYF6mxJsKXlL4736u8wxiY=;
+ b=acWpCpBEbewLL80eW4kcE2/Bi0t6/1wQ8VbicfMMJNDhSTSZDhVuTXY/pTdAGI3g0Q
+ k0fkwknXZRWip3M7tm6rLYKKeErTJN75adrPubQ878F8j5veAFcnYZms0bmyhjxpMJHO
+ vd1a6veTzH9QjCyidutF7vmvaL9ZD8ewfCLoAD5WCEttrwgBXQ2PzwDEO++WyNO/Pxk/
+ Ei6fzLb/kvBNpIxHfXqJSBSNEAzkc9zFB4bfefv0BGhKjLYjCb/vlzNqfIOhEyi3CzHf
+ 9yW67bik+KqTwWSoOJkinGbPYXt1JF+t38omX6sDiG06jIC18fAMHlizoSqCgtsxN/iY
+ nezw==
+X-Gm-Message-State: APjAAAVRuytZjrGCbJs/R/f1LsxpdxMVX6r+oGOPNOyCtkwXuYJQ+EY6
+ MqKR/glmt8tRSWJmmS+Xypg=
+X-Google-Smtp-Source: APXvYqzw9JIF9TxBbFnD1DrZeGTUNq7drJnRoJjCnUUex5bRISoa/9IXRlVtRwwyYFDC9m7+TUscDg==
+X-Received: by 2002:a62:e718:: with SMTP id s24mr5189745pfh.247.1559243300157; 
+ Thu, 30 May 2019 12:08:20 -0700 (PDT)
 Received: from kaby.cs.washington.edu ([2607:4000:200:15:61cb:56f1:2c08:844e])
  by smtp.gmail.com with ESMTPSA id
- a8sm3927617pfk.14.2019.05.30.12.08.09
+ a8sm3927617pfk.14.2019.05.30.12.08.16
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 30 May 2019 12:08:09 -0700 (PDT)
+ Thu, 30 May 2019 12:08:17 -0700 (PDT)
 From: Luke Nelson <luke.r.nels@gmail.com>
 To: 
-Subject: [PATCH 1/2] bpf, riscv: fix bugs in JIT for 32-bit ALU operations
-Date: Thu, 30 May 2019 12:07:59 -0700
-Message-Id: <20190530190800.7633-1-luke.r.nels@gmail.com>
+Subject: [PATCH 2/2] bpf: test_bpf: add tests for upper bits of 32-bit
+ operations
+Date: Thu, 30 May 2019 12:08:00 -0700
+Message-Id: <20190530190800.7633-2-luke.r.nels@gmail.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190530190800.7633-1-luke.r.nels@gmail.com>
+References: <20190530190800.7633-1-luke.r.nels@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_120816_184213_2297E4EC 
-X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-CacheID: sfid-20190530_120820_859903_BB888DE5 
+X-CRM114-Status: UNSURE (   9.75  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -74,7 +76,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -111,111 +113,271 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-In BPF, 32-bit ALU operations should zero-extend their results into
-the 64-bit registers.  The current BPF JIT on RISC-V emits incorrect
-instructions that perform either sign extension only (e.g., addw/subw)
-or no extension on 32-bit add, sub, and, or, xor, lsh, rsh, arsh,
-and neg.  This behavior diverges from the interpreter and JITs for
-other architectures.
+This commit introduces tests that validate the upper 32 bits
+of the result of 32-bit BPF ALU operations.
 
-This patch fixes the bugs by performing zero extension on the destination
-register of 32-bit ALU operations.
+The existing tests for 32-bit operations do not check the upper 32
+bits of results because the exit instruction truncates the result.
+These tests perform a 32-bit ALU operation followed by a right shift.
+These tests can catch subtle bugs in the extension behavior of JITed
+instructions, including several bugs in the RISC-V BPF JIT, fixed in
+another patch.
 
-Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+The added tests pass the JIT and interpreter on x86, as well as the
+JIT and interpreter of RISC-V once the zero extension bugs were fixed.
+
 Cc: Xi Wang <xi.wang@gmail.com>
 Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
 ---
- arch/riscv/net/bpf_jit_comp.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ lib/test_bpf.c | 164 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 164 insertions(+)
 
-diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
-index 80b12aa5e10d..426d5c33ea90 100644
---- a/arch/riscv/net/bpf_jit_comp.c
-+++ b/arch/riscv/net/bpf_jit_comp.c
-@@ -751,22 +751,32 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
- 	case BPF_ALU | BPF_ADD | BPF_X:
- 	case BPF_ALU64 | BPF_ADD | BPF_X:
- 		emit(is64 ? rv_add(rd, rd, rs) : rv_addw(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_SUB | BPF_X:
- 	case BPF_ALU64 | BPF_SUB | BPF_X:
- 		emit(is64 ? rv_sub(rd, rd, rs) : rv_subw(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_AND | BPF_X:
- 	case BPF_ALU64 | BPF_AND | BPF_X:
- 		emit(rv_and(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_OR | BPF_X:
- 	case BPF_ALU64 | BPF_OR | BPF_X:
- 		emit(rv_or(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_XOR | BPF_X:
- 	case BPF_ALU64 | BPF_XOR | BPF_X:
- 		emit(rv_xor(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_MUL | BPF_X:
- 	case BPF_ALU64 | BPF_MUL | BPF_X:
-@@ -789,14 +799,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
- 	case BPF_ALU | BPF_LSH | BPF_X:
- 	case BPF_ALU64 | BPF_LSH | BPF_X:
- 		emit(is64 ? rv_sll(rd, rd, rs) : rv_sllw(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_RSH | BPF_X:
- 	case BPF_ALU64 | BPF_RSH | BPF_X:
- 		emit(is64 ? rv_srl(rd, rd, rs) : rv_srlw(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_ARSH | BPF_X:
- 	case BPF_ALU64 | BPF_ARSH | BPF_X:
- 		emit(is64 ? rv_sra(rd, rd, rs) : rv_sraw(rd, rd, rs), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 
- 	/* dst = -dst */
-@@ -804,6 +820,8 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
- 	case BPF_ALU64 | BPF_NEG:
- 		emit(is64 ? rv_sub(rd, RV_REG_ZERO, rd) :
- 		     rv_subw(rd, RV_REG_ZERO, rd), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 
- 	/* dst = BSWAP##imm(dst) */
-@@ -958,14 +976,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
- 	case BPF_ALU | BPF_LSH | BPF_K:
- 	case BPF_ALU64 | BPF_LSH | BPF_K:
- 		emit(is64 ? rv_slli(rd, rd, imm) : rv_slliw(rd, rd, imm), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_RSH | BPF_K:
- 	case BPF_ALU64 | BPF_RSH | BPF_K:
- 		emit(is64 ? rv_srli(rd, rd, imm) : rv_srliw(rd, rd, imm), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 	case BPF_ALU | BPF_ARSH | BPF_K:
- 	case BPF_ALU64 | BPF_ARSH | BPF_K:
- 		emit(is64 ? rv_srai(rd, rd, imm) : rv_sraiw(rd, rd, imm), ctx);
-+		if (!is64)
-+			emit_zext_32(rd, ctx);
- 		break;
- 
- 	/* JUMP off */
+diff --git a/lib/test_bpf.c b/lib/test_bpf.c
+index 0845f635f404..4580dc0220f1 100644
+--- a/lib/test_bpf.c
++++ b/lib/test_bpf.c
+@@ -2461,6 +2461,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 1 } },
+ 	},
++	{
++		"ALU_ADD_X: (1 + 4294967294) >> 32 + 4294967294 = 4294967294",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 1U),
++			BPF_ALU32_IMM(BPF_MOV, R1, 4294967294U),
++			BPF_ALU32_REG(BPF_ADD, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_REG(BPF_ADD, R0, R1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 4294967294U } },
++	},
+ 	{
+ 		"ALU64_ADD_X: 1 + 2 = 3",
+ 		.u.insns_int = {
+@@ -2812,6 +2826,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 1 } },
+ 	},
++	{
++		"ALU_SUB_X: (4294967295 - 1) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 4294967295U),
++			BPF_ALU32_IMM(BPF_MOV, R1, 1U),
++			BPF_ALU32_REG(BPF_SUB, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_REG(BPF_ADD, R0, R1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_SUB_X: 3 - 1 = 2",
+ 		.u.insns_int = {
+@@ -3391,6 +3419,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 0xffffffff } },
+ 	},
++	{
++		"ALU_AND_X: (-1 & -1) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, -1UL),
++			BPF_LD_IMM64(R1, -1UL),
++			BPF_ALU32_REG(BPF_AND, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1U),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_AND_X: 3 & 2 = 2",
+ 		.u.insns_int = {
+@@ -3533,6 +3575,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 0xffffffff } },
+ 	},
++	{
++		"ALU_OR_X: (0 & -1) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 0),
++			BPF_LD_IMM64(R1, -1UL),
++			BPF_ALU32_REG(BPF_OR, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1U),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_OR_X: 1 | 2 = 3",
+ 		.u.insns_int = {
+@@ -3675,6 +3731,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 0xfffffffe } },
+ 	},
++	{
++		"ALU_XOR_X: (0 ^ -1) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 0),
++			BPF_LD_IMM64(R1, -1UL),
++			BPF_ALU32_REG(BPF_XOR, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1U),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_XOR_X: 5 ^ 6 = 3",
+ 		.u.insns_int = {
+@@ -3817,6 +3887,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 0x80000000 } },
+ 	},
++	{
++		"ALU_LSH_X: (1 << 31) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 1),
++			BPF_ALU32_IMM(BPF_MOV, R1, 31),
++			BPF_ALU32_REG(BPF_LSH, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_LSH_X: 1 << 1 = 2",
+ 		.u.insns_int = {
+@@ -3842,6 +3926,19 @@ static struct bpf_test tests[] = {
+ 		{ { 0, 0x80000000 } },
+ 	},
+ 	/* BPF_ALU | BPF_LSH | BPF_K */
++	{
++		"ALU_LSH_K: (1 << 31) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 1),
++			BPF_ALU32_IMM(BPF_LSH, R0, 31),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU_LSH_K: 1 << 1 = 2",
+ 		.u.insns_int = {
+@@ -3911,6 +4008,20 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 1 } },
+ 	},
++	{
++		"ALU_RSH_X: (0x80000000 >> 0) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 0x80000000),
++			BPF_ALU32_IMM(BPF_MOV, R1, 0),
++			BPF_ALU32_REG(BPF_RSH, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_RSH_X: 2 >> 1 = 1",
+ 		.u.insns_int = {
+@@ -3936,6 +4047,19 @@ static struct bpf_test tests[] = {
+ 		{ { 0, 1 } },
+ 	},
+ 	/* BPF_ALU | BPF_RSH | BPF_K */
++	{
++		"ALU_RSH_K: (0x80000000 >> 0) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 0x80000000),
++			BPF_ALU32_IMM(BPF_RSH, R0, 0),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU_RSH_K: 2 >> 1 = 1",
+ 		.u.insns_int = {
+@@ -3993,7 +4117,34 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 0xffff00ff } },
+ 	},
++	{
++		"ALU_ARSH_X: (0x80000000 >> 0) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 0x80000000),
++			BPF_ALU32_IMM(BPF_MOV, R1, 0),
++			BPF_ALU32_REG(BPF_ARSH, R0, R1),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	/* BPF_ALU | BPF_ARSH | BPF_K */
++	{
++		"ALU_ARSH_K: (0x80000000 >> 0) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_LD_IMM64(R0, 0x80000000),
++			BPF_ALU32_IMM(BPF_ARSH, R0, 0),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU32_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU_ARSH_K: 0xff00ff0000000000 >> 40 = 0xffffffffffff00ff",
+ 		.u.insns_int = {
+@@ -4028,6 +4179,19 @@ static struct bpf_test tests[] = {
+ 		{ },
+ 		{ { 0, 3 } },
+ 	},
++	{
++		"ALU_NEG: -(1) >> 32 + 1 = 1",
++		.u.insns_int = {
++			BPF_ALU32_IMM(BPF_MOV, R0, 1),
++			BPF_ALU32_IMM(BPF_NEG, R0, 0),
++			BPF_ALU64_IMM(BPF_RSH, R0, 32),
++			BPF_ALU64_IMM(BPF_ADD, R0, 1),
++			BPF_EXIT_INSN(),
++		},
++		INTERNAL,
++		{ },
++		{ { 0, 1 } },
++	},
+ 	{
+ 		"ALU64_NEG: -(3) = -3",
+ 		.u.insns_int = {
 -- 
 2.19.1
 
