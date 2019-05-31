@@ -2,71 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 608393162B
-	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 22:35:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 942C13163F
+	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 22:40:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
 	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=2XSinaCKMcjX2q9+w5in+ckmdFc6FyLCmKq5k9FBEIE=; b=R2fOnaN6k0y6J+BhdB3vsvyxU
-	J/kw9jX3Oo/IjjGS6L5Zx4AznIiY5eQhqiPMC7meN1t4BAdno9g2NqhqsujStGfSsDyCmf0Ji+6mw
-	cJoSKzV4pHkpNnw9FJhFRX5M+VYZREyw88YnmnvX5HU1akuxwYM7zxjblw3vsSMGbVUHkDR0RbSU/
-	NFbL0w1I3Kb5NtZ01DDvnSZG7fN0yL08IGeQWKi9wbEIsK9U1tNT5jK3yIREXsfIyo2secMwsxhdj
-	Il9l6RiJA0v7/lZSHI5iqlU7CaNSp4FRU2xXSzxaAMXfc6G7Vx0EZMlN/+Pot76BbNYEfkvrfnsE7
-	6kt20EGGg==;
+	 bh=JvJUfXHV4mjGpNJB4BNtPD7VPu3j+6BUKK9Pk5hZK5g=; b=JBECQwwmsk5czuBr5BY7jk/IU
+	XQKQF7KT04ctLK7mPXuUhP+ltjD2NtqyBX3tbt1focGgjfccAuoASsszscYDMWwqIG7trOZ1Ahf64
+	SNKBM/+8GsjnfEnlltp/V2ZanfLEw3OqYfmcujj7z+ScPMslrCnmWz0Rf13qbidm9acNdplr0CTsB
+	AdBfE9HmziaSFLI1mPoIyNMRGnsYbzvW3HkKYsydbeJgxnqHxyUASi8q3h6qQueNo3q9WtmUFgF+Y
+	D2/A9lU2par4AzED+H92cIdNctTijxPoaWh51cSnhyasGmCBEwXxcozS5tV5MLautaNFk/6Qv+1zV
+	7e1mw7XWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWoFh-0002mj-2r; Fri, 31 May 2019 20:35:49 +0000
+	id 1hWoKO-0004Y6-Ad; Fri, 31 May 2019 20:40:40 +0000
 Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWoFd-0002lK-9H
- for linux-riscv@lists.infradead.org; Fri, 31 May 2019 20:35:46 +0000
-Received: by mail-pg1-x541.google.com with SMTP id f25so4643928pgv.10
- for <linux-riscv@lists.infradead.org>; Fri, 31 May 2019 13:35:42 -0700 (PDT)
+ id 1hWoKL-0004Xk-89
+ for linux-riscv@lists.infradead.org; Fri, 31 May 2019 20:40:38 +0000
+Received: by mail-pg1-x541.google.com with SMTP id w34so4635667pga.12
+ for <linux-riscv@lists.infradead.org>; Fri, 31 May 2019 13:40:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=bkHPoc5lC5mW7wR1FrM44fNwP3Z1d5MLik27r7NZcj4=;
- b=bt2atdtE4k6OMppdFqAhmK/USH9XSeZWrsrRZq6i50JOXfbnxCoW50vFJGVRI7gDXD
- hzYHx23O3lK6EyC7T+pr+vU9GR5eASj5urGbI1YeN8qNBo9fOM2RJkcIZFkr/axPGzYE
- RMiViv869M/Y8ipTA+gg8M5NY1vennR5o2EE0bwC72cL8pE1KDJ6sL9UZTYVqvB7zRQ2
- kZpYqTkg1rvIEEILOBUEySytnpd0c+JCZnkIjZl4O4Mv2wIrVWNj+0Vspdn4OrJXlsRn
- HawvmZKVF4CFWyZwN+HeViDSEDfgiSf8bItEzJQMBfBok5UjSepb5mt49w2685BwUIhc
- bTnA==
+ bh=L9DdyCtjUjmQm6BTqIghH9AyiE8Bj0FZDxV/U7xA1V0=;
+ b=m+sB14YoMKD0En6Ta1jguYQojAS5qLFbQotT+YNGILgTJGeqwJGD4s/f/rbm2iH7fu
+ uL/Puewkgm9o8a+YhgF4KSzecl0+KRcZ5bFpnn6R0gBxZ05SMmCvyVXtqA+3kLUKngOo
+ O9AiG/tILOp2WJEGwSRJ3n56HGnMhkUyurCCUlj7H9LaLrx7icNhelYOl337LGrD7dq6
+ 5MRFjT0pqpaEsSicSzRDqdDiv07JC0R2M9vcWKR+wim16AUTL3NRgr9wipNWpbKpIWmF
+ r8mszFJ8lwToWogOXRC4Tg5M0PnLSLrmlPxfRC2m1Szk15lbD7qTLEqrsQquM4QKf1PE
+ Ar0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=bkHPoc5lC5mW7wR1FrM44fNwP3Z1d5MLik27r7NZcj4=;
- b=pB1WbrD+MBXOUimmaxTE3Pdy09pq4mCdxJHNtMhPFltIRsBREDsMPxBrP9lNEgfDzz
- 7wqRvBhx0e8WUc//dI4CxngHrNsyfyKqHwRRmZwfefahGA4KObq2gpZCH91U/T6p6Ys4
- timyCpv54Zc+g0J0j3RE++Nt0W19Q3FiN21RyKQLXEyW3PxVLyZK+qeVUEvUHIr7dm37
- CMbK/WT8gOxxdzIkCeLU9bRB/3DXtqc1p6cJdDgZmzZYKV4npdhZJMG5VbbJ9X9rHXrd
- Mpdn/enM3EBwphbzi412o3t2l4KTNj3c3gFt4w6v+HtsyQOykYCxLoL5yuvjZFwdoDeO
- yT/A==
-X-Gm-Message-State: APjAAAVEPOjG5GUsRR0JvqJrKmk5eFd77O+WQgFK6W/9Na2xbR808Gt/
- hdXGvKajJ3RH8Mx7cgMO7T9qlw==
-X-Google-Smtp-Source: APXvYqwkwhkqir+dMhYXAG70FpSw4GwU+es7vuPNj1W5tYEbhjZ2VubCjYq4QiP6LRydAmYkVQvEew==
-X-Received: by 2002:aa7:90ce:: with SMTP id k14mr12487802pfk.239.1559334942443; 
- Fri, 31 May 2019 13:35:42 -0700 (PDT)
+ bh=L9DdyCtjUjmQm6BTqIghH9AyiE8Bj0FZDxV/U7xA1V0=;
+ b=Xp6sdJPws+bo4/gDZb8TBseNbZHPRKomyNdcv7LDO0SjFeYfOqcEhfvEQav0m0wsSk
+ lmYN73vuY1a2+ZnqlmB7eP3b/b6Daavni4u+pinqfjrjxvGJbIB3CqSW/M4MsEImXkW7
+ 1okaAnaiXxceBgQ1nTDLJrFfnAgV+wnIYYQrX/q2xBOvS8SWU0hBzgCiYNTMHpiHbXqe
+ sEwsUXxJl7YvAzS6L4r1PyknGCwmivgKUC5zcc4FbIQD6ItIUME/ZEfFqjRnXruELcRs
+ cuPmo21H+kFOi0JYL6fkDW/hojHsGCdVCFRilfYV0nTmdTGyNi0sSfO6eDGVIXvnjOUq
+ fSAQ==
+X-Gm-Message-State: APjAAAVh9S0X8owJdRFnLjA4qf6/xPsLBcFU2c+iA0qFS1dnWaUSihyV
+ 5aHLcVFV45wT2xf5Tl3471Fz8g==
+X-Google-Smtp-Source: APXvYqz4SQR8SyNvYw/RbVYq9J75OHRdEl+vxzGoZ1hj8lWeH/sIaNdK7fANnH7Zay6JrXmUtrIdGA==
+X-Received: by 2002:a63:2ace:: with SMTP id
+ q197mr11342665pgq.102.1559335236450; 
+ Fri, 31 May 2019 13:40:36 -0700 (PDT)
 Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id d2sm5841218pfh.115.2019.05.31.13.35.40
+ by smtp.gmail.com with ESMTPSA id s27sm18341537pfd.18.2019.05.31.13.40.35
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 31 May 2019 13:35:41 -0700 (PDT)
-Date: Fri, 31 May 2019 13:35:41 -0700 (PDT)
-X-Google-Original-Date: Fri, 31 May 2019 13:31:53 PDT (-0700)
-Subject: Re: [PATCH] RISC-V: defconfig: Enable NO_HZ_IDLE and HIGH_RES_TIMERS
-In-Reply-To: <mvm8supd718.fsf@suse.de>
+ Fri, 31 May 2019 13:40:35 -0700 (PDT)
+Date: Fri, 31 May 2019 13:40:35 -0700 (PDT)
+X-Google-Original-Date: Fri, 31 May 2019 13:39:54 PDT (-0700)
+Subject: Re: [PATCH bpf v2] bpf,
+ riscv: clear high 32 bits for ALU32 add/sub/neg/lsh/rsh/arsh
+In-Reply-To: <20190530222922.4269-1-luke.r.nels@gmail.com>
 From: Palmer Dabbelt <palmer@sifive.com>
-To: schwab@suse.de
-Message-ID: <mhng-faba08ec-69a7-43b1-b2d7-c2e996751506@palmer-si-x1c4>
+To: luke.r.nels@gmail.com
+Message-ID: <mhng-b4ce883e-9ec7-4098-9acc-18eb140f93e0@palmer-si-x1c4>
 Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190531_133545_389313_F45898A3 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190531_134037_291175_529A961E 
+X-CRM114-Status: GOOD (  16.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -95,27 +96,115 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, anup@brainfault.org, Anup.Patel@wdc.com,
- linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
- Atish Patra <Atish.Patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org
+Cc: songliubraving@fb.com, aou@eecs.berkeley.edu, bpf@vger.kernel.org,
+ daniel@iogearbox.net, bjorn.topel@gmail.com, ast@kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, yhs@fb.com,
+ linux-riscv@lists.infradead.org, kafai@fb.com, xi.wang@gmail.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 29 May 2019 01:00:35 PDT (-0700), schwab@suse.de wrote:
-> On Mai 28 2019, Palmer Dabbelt <palmer@sifive.com> wrote:
+On Thu, 30 May 2019 15:29:22 PDT (-0700), luke.r.nels@gmail.com wrote:
+> In BPF, 32-bit ALU operations should zero-extend their results into
+> the 64-bit registers.
 >
->> My only issue here is testing: IIRC last time we tried this it ended up causing
->> trouble.
+> The current BPF JIT on RISC-V emits incorrect instructions that perform
+> sign extension only (e.g., addw, subw) on 32-bit add, sub, lsh, rsh,
+> arsh, and neg. This behavior diverges from the interpreter and JITs
+> for other architectures.
 >
-> I've been running kernels with these settings since the beginning, and
-> never seen any trouble.
-
-OK, I'm happy with it.
+> This patch fixes the bugs by performing zero extension on the destination
+> register of 32-bit ALU operations.
+>
+> Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+> Cc: Xi Wang <xi.wang@gmail.com>
+> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
 
 Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+
+Thanks!  I'm assuming this is going in through a BPF tree and not the RISC-V
+tree, but LMK if that's not the case.
+
+> ---
+> The original patch is
+> https://lkml.org/lkml/2019/5/30/1370
+>
+> This version is rebased against the bpf tree.
+> ---
+>  arch/riscv/net/bpf_jit_comp.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>
+> diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
+> index e5c8d675bd6e..426d5c33ea90 100644
+> --- a/arch/riscv/net/bpf_jit_comp.c
+> +++ b/arch/riscv/net/bpf_jit_comp.c
+> @@ -751,10 +751,14 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+>  	case BPF_ALU | BPF_ADD | BPF_X:
+>  	case BPF_ALU64 | BPF_ADD | BPF_X:
+>  		emit(is64 ? rv_add(rd, rd, rs) : rv_addw(rd, rd, rs), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>  	case BPF_ALU | BPF_SUB | BPF_X:
+>  	case BPF_ALU64 | BPF_SUB | BPF_X:
+>  		emit(is64 ? rv_sub(rd, rd, rs) : rv_subw(rd, rd, rs), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>  	case BPF_ALU | BPF_AND | BPF_X:
+>  	case BPF_ALU64 | BPF_AND | BPF_X:
+> @@ -795,14 +799,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+>  	case BPF_ALU | BPF_LSH | BPF_X:
+>  	case BPF_ALU64 | BPF_LSH | BPF_X:
+>  		emit(is64 ? rv_sll(rd, rd, rs) : rv_sllw(rd, rd, rs), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>  	case BPF_ALU | BPF_RSH | BPF_X:
+>  	case BPF_ALU64 | BPF_RSH | BPF_X:
+>  		emit(is64 ? rv_srl(rd, rd, rs) : rv_srlw(rd, rd, rs), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>  	case BPF_ALU | BPF_ARSH | BPF_X:
+>  	case BPF_ALU64 | BPF_ARSH | BPF_X:
+>  		emit(is64 ? rv_sra(rd, rd, rs) : rv_sraw(rd, rd, rs), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>
+>  	/* dst = -dst */
+> @@ -810,6 +820,8 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+>  	case BPF_ALU64 | BPF_NEG:
+>  		emit(is64 ? rv_sub(rd, RV_REG_ZERO, rd) :
+>  		     rv_subw(rd, RV_REG_ZERO, rd), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>
+>  	/* dst = BSWAP##imm(dst) */
+> @@ -964,14 +976,20 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+>  	case BPF_ALU | BPF_LSH | BPF_K:
+>  	case BPF_ALU64 | BPF_LSH | BPF_K:
+>  		emit(is64 ? rv_slli(rd, rd, imm) : rv_slliw(rd, rd, imm), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>  	case BPF_ALU | BPF_RSH | BPF_K:
+>  	case BPF_ALU64 | BPF_RSH | BPF_K:
+>  		emit(is64 ? rv_srli(rd, rd, imm) : rv_srliw(rd, rd, imm), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>  	case BPF_ALU | BPF_ARSH | BPF_K:
+>  	case BPF_ALU64 | BPF_ARSH | BPF_K:
+>  		emit(is64 ? rv_srai(rd, rd, imm) : rv_sraiw(rd, rd, imm), ctx);
+> +		if (!is64)
+> +			emit_zext_32(rd, ctx);
+>  		break;
+>
+>  	/* JUMP off */
 
 _______________________________________________
 linux-riscv mailing list
