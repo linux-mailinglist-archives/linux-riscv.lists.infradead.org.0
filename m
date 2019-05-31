@@ -2,79 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E99E31482
-	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 20:17:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CF01314B6
+	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 20:30:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dj6uXaBNmf33r2GLRIIZHMuZu87yYrN/zgVjx/XJoHY=; b=c8jFAnUhTnse4E
-	MTR/TxFn7HgXhV00/OpdffoVYGnErmzFLvNof/JdTbr0sL76D+IcdwuxGLOLDPYkkr6c9+0prtX+d
-	5eu390HcE65tpsHHVNf+UEPxaHexw8CivhPsHbBVxhsQzfvM6A9mn2NUC9tKjuR7zgaPvfR+cejMe
-	Y0r/x78+McaMDcYzYNUBjAQirkP52c6YOOJdWeTfdnEfjvl0TXGiRXOErpm8Tlz2c7a4hDXniE58A
-	jsbT3N799xxVjHpSxO61OJYDGEnI4HUU8SDdc2uebzcIcZFtlz9IaxzRyQzkBv6z2izS0CyBmtG77
-	yZFc5nFyRXT8zwpevWGg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=niHLo6bmIsl8OAS3XJ/oLdmUB+Cg4NXJWaoWDRlSgJU=; b=SyFc75EJHEl3TF
+	D6eCdnqVKl2gzHOKb6ix8ZbBtQmbXgaXo50DqmraI637zm41XLqAcTdUcwTMXaoPZBNzF79Tm79vz
+	ZA851wT+TUAqPREmUzYyTTCZX49jwSlapAYZEhaq2uuO5SzafNxFDztaRmM7M9so9d4/gKHyCKqy4
+	110Hju+pnkU5sAKO9tcb+cDalqh3+6fKRpN9PkByeCr8o0V9gjll0mNFeiUYf9+4z+PcZ0IGbIZt6
+	Y953AhAu77CGZkqoLUJpuS/oTE202zzeNzDGoeSZ1gw2gnurvt7Y0144UvxxweHXXYFRyKxA2BJ8I
+	29p5e6yc2zUk0AlwR2tQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWm5P-0008Be-Fo; Fri, 31 May 2019 18:17:03 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1hWmIe-00047S-H5; Fri, 31 May 2019 18:30:44 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWm5M-0008Aw-0Q
- for linux-riscv@lists.infradead.org; Fri, 31 May 2019 18:17:01 +0000
-Received: by mail-lj1-x243.google.com with SMTP id o13so10496121lji.5
- for <linux-riscv@lists.infradead.org>; Fri, 31 May 2019 11:16:59 -0700 (PDT)
+ id 1hWmIb-00046u-E0
+ for linux-riscv@lists.infradead.org; Fri, 31 May 2019 18:30:42 +0000
+Received: by mail-pl1-x644.google.com with SMTP id e7so3855994pln.4
+ for <linux-riscv@lists.infradead.org>; Fri, 31 May 2019 11:30:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mMKtgmWbW8xYAGhBwAG4c8b4zuI5g6VzqZjp1pMjfUg=;
- b=TSgZ8KSuC8Uh58feLuA2QmX3LpgiOCKvOAfRY8zwRYZZsWEog8DDbJslbbYif12yFl
- 9QxkArhnQZY7+fOQo4Tk7jI6vHsOtddSAbU/CiK4w9329KysTnC1NMLUI3PJLpkKoYBd
- vHlK890XEuNv6cYqTLxqksKmYyl9sTMpSMmy3HAlGhPDq+C9s8cVpkezs8LcrrbvnQNu
- /zS3BaFkKBxPF1Q3rn6mOjMyMFSX2mxYbhgEew3wRsL2GOScavdE+SbI9WTP1c/X3Gof
- 4VLgMOU7ffGPB+HUW115BIIw9JvtIpssUl6Q2lLuWT7c5CrtiJHS5cM2PQdMJWbb1Jz8
- e2pg==
+ h=from:to:subject:date:message-id;
+ bh=O+j3K6zXE5IFccZ8hsChRKn58QJIrP/3QjqkpXaSicE=;
+ b=SWslyCxAFsWjWsrlNYIrP9FrVWDVXzVrheDU9AOZXEQd80tjpHW8Wak8RYA6fPRKHB
+ Sg44lM5zV9HMrV0jxxVClT4RP6UlYdVW8fnKV5sYoOK+Bayco5Ye8ukpOfvM/rM57A7z
+ EMRoLE6YPRT0b3fSODS6osICMQ542+LDIbmEvTP0ovuPb8s5nNKHSnZnTGYzBwnLgxSA
+ +WNMMvFvfdd9YYbMQwkM4IS/j5hqEVKYRvnIvV27Nu3Qruvp2M44eQ3gsO7fBYkYDF9Q
+ m2M0U9nhZpL3YYjbc+sO6GDlvw+k1gIEWQ3NdWMmADAM/RbCpdlZ+FYMjaAq3/NsF/Bc
+ 9PPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mMKtgmWbW8xYAGhBwAG4c8b4zuI5g6VzqZjp1pMjfUg=;
- b=D1DRdhEaV+HaeUYjtUzCC04Ma/R4Y8lB/FHoZqomLJntDRor13mIhgWoAVoDgJoU6s
- Emx4uUYbfu8i8+x/jqKbp3m41/bJbcEOcefZWhNVmAvOZs8jAgDCiwGHbsZBoXJ0gGTz
- tFE/uyFQSvxAmwASsBkOrGAfcyM10oDntv292YGFP3f7Ptc5Y2Y8LzDi2O9doMEvoKoM
- PZ1lL2dCGnemrUH0hxiMCnRCHXxWwdeW6iaKg2QXZZfQDJrU6gHwyr3LpHrscG7Xj/OB
- RGuDxw378yyRPjOL9Qh48RzRCFVSm/mDqw8oaGhuMaierzGoMyo3Wa1JdcmGWdjkcasK
- 5DWg==
-X-Gm-Message-State: APjAAAUxUkjx8+q8mOqAnURlQodlqBSbjGsyV/6PlvcPtP6PgkUyjt80
- IIl8Rt5uW/WfpuvDg888TCOmz7RoMZEELwYTnhRadA==
-X-Google-Smtp-Source: APXvYqxtHw0FLL/5LL6+uKZaUo8UTHEM9pyFRWVXtoz6RHQ9WnvCDZHxV3XOVaoKoFIbWWrVdMOLUlR3ZRO8fhjVXzQ=
-X-Received: by 2002:a2e:80d5:: with SMTP id r21mr6619039ljg.43.1559326617481; 
- Fri, 31 May 2019 11:16:57 -0700 (PDT)
-MIME-Version: 1.0
-References: <1558650258-15050-1-git-send-email-alan.mikhak@sifive.com>
- <305100E33629484CBB767107E4246BBB0A6FAFFD@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxsQ9NXrN7W_8HVrXQBb9HiBd+d1dNfv+cXmoBpXQnLwA@mail.gmail.com>
- <305100E33629484CBB767107E4246BBB0A6FC308@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxL-WYz1BY7yXJ6eKULgVtKeo67XhgHZjvtm5Ka5foKiA@mail.gmail.com>
- <192e3a19-8b69-dfaf-aa5c-45c7087548cc@ti.com>
- <CABEDWGxLeD-K8PjkD5hPSTFGJKs2hxEaAVO+nE5eC9Nx2yw=ig@mail.gmail.com>
- <75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com>
-In-Reply-To: <75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com>
-From: Alan Mikhak <alan.mikhak@sifive.com>
-Date: Fri, 31 May 2019 11:16:46 -0700
-Message-ID: <CABEDWGxBxmiKjoPUSUaUBXUhKkUTXVX0U9ooRou8tcWJojb52g@mail.gmail.com>
-Subject: Re: [PATCH] PCI: endpoint: Add DMA to Linux PCI EP Framework
-To: Kishon Vijay Abraham I <kishon@ti.com>
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=O+j3K6zXE5IFccZ8hsChRKn58QJIrP/3QjqkpXaSicE=;
+ b=ctnjCSujjy5pL1MYWePiSh77TbZLjXyr+mzEEBr74v6LPIVo3UJ3qAgA5lFG2Y9UPe
+ hZvrruYSE/OraFQ8qjvA5HkrHLxEJOr/aowjc572W2MKr7k/nyYffLaelgyfeUHEeyk9
+ qTL2pYLwcq+YtS49lBW2S/2ve5IWwoyvZEm9OyAT5IBMdvIAYkfiUG+bvS2PbiBJ7ksJ
+ Tnb1WFJWG3ODDPWiW3azBskdIaOhtuYRnU9bOjEshQUYvTIEc5nT0UOHeRP9taQoFEvt
+ qX1iiO5wVMs/KEl6SWy5yJELV3tunMOlhv1oib0URtntzkoA06+oUO2Fh3Tp0x/mx6IH
+ TT2A==
+X-Gm-Message-State: APjAAAWBTZYYpq8SiovXZxRDFRjUtC/VlkVo4+10clG/i3+dFcaAtaUm
+ BmAVSf46kEjKryuFs/4nD8gmIA==
+X-Google-Smtp-Source: APXvYqx+kbS+qlhl2y5SToTHB7pOFTvniSKiYfiMThhCx/x/F5GEOcBhNwt9XZcYZxTjq6+OXirZeQ==
+X-Received: by 2002:a17:902:9b85:: with SMTP id
+ y5mr11191979plp.313.1559327439860; 
+ Fri, 31 May 2019 11:30:39 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id 85sm10039511pgb.52.2019.05.31.11.30.34
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Fri, 31 May 2019 11:30:37 -0700 (PDT)
+From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+To: robh+dt@kernel.org, mark.rutland@arm.com, peter@korsgaard.com,
+ andrew@lunn.ch, palmer@sifive.com, paul.walmsley@sifive.com,
+ sagar.kadam@sifive.com, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH REPOST v8 0/3] Extend dt bindings to support I2C on sifive
+ devices and a fix broken IRQ in polling mode.
+Date: Sat,  1 Jun 2019 00:00:20 +0530
+Message-Id: <1559327423-13001-1-git-send-email-sagar.kadam@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190531_111700_201647_3A569B71 
-X-CRM114-Status: GOOD (  26.02  )
+X-CRM114-CacheID: sfid-20190531_113041_610551_080C062C 
+X-CRM114-Status: GOOD (  11.28  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:243 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -96,134 +96,86 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "arnd@arndb.de" <arnd@arndb.de>, "jingoohan1@gmail.com" <jingoohan1@gmail.com>,
- Gustavo Pimentel <Gustavo.Pimentel@synopsys.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, "kjlu@umn.edu" <kjlu@umn.edu>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "wen.yang99@zte.com.cn" <wen.yang99@zte.com.cn>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 30, 2019 at 10:08 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> Hi Alan,
-> >
-> > Hi Kishon,
-> >
-> > I have some improvements in mind for a v2 patch in response to
-> > feedback from Gustavo Pimentel that the current implementation is HW
-> > specific. I hesitate from submitting a v2 patch because it seems best
-> > to seek comment on possible directions this may be taking.
-> >
-> > One alternative is to wait for or modify test functions in
-> > pci-epf-test.c to call DMAengine client APIs, if possible. I imagine
-> > pci-epf-test.c test functions would still allocate the necessary local
-> > buffer on the endpoint side for the same canned tests for everyone to
-> > use. They would prepare the buffer in the existing manner by filling
-> > it with random bytes and calculate CRC in the case of a write test.
-> > However, they would then initiate DMA operations by using DMAengine
-> > client APIs in a generic way instead of calling memcpy_toio() and
-> > memcpy_fromio(). They would post-process the buffer in the existing
->
-> No, you can't remove memcpy_toio/memcpy_fromio APIs. There could be platforms
-> without system DMA or they could have system DMA but without MEMCOPY channels
-> or without DMA in their PCI controller.
+The patch is based on mainline v5.2-rc1 and extends DT-bindings for Opencore based I2C IP block reimplemented
+in FU540 SoC, available on HiFive unleashed board (Rev A00), and also provides a workaround for broken IRQ
+which affects the already available I2C polling mode interface in mainline, for FU540-C000 chipsets.
 
-I agree. I wouldn't remove memcpy_toio/fromio. That is the reason this
-patch introduces the '-d' flag for pcitest to communicate that user
-intent across the PCIe bus to pci-epf-test so the endpoint can
-initiate the transfer using either memcpy_toio/fromio or DMA.
+The polling mode workaround patch fixes the CPU stall issue, when-ever i2c transfer are initiated.
 
-> > manner such as the checking for CRC in the case of a read test.
-> > Finally, they would release the resources and report results back to
-> > the user of pcitest across the PCIe bus through the existing methods.
-> >
-> > Another alternative I have in mind for v2 is to change the struct
-> > pci_epc_dma that this patch added to pci-epc.h from the following:
-> >
-> > struct pci_epc_dma {
-> >         u32     control;
-> >         u32     size;
-> >         u64     sar;
-> >         u64     dar;
-> > };
-> >
-> > to something similar to the following:
-> >
-> > struct pci_epc_dma {
-> >         size_t  size;
-> >         void *buffer;
-> >         int flags;
-> > };
-> >
-> > The 'flags' field can be a bit field or separate boolean values to
-> > specify such things as linked-list mode vs single-block, etc.
-> > Associated #defines would be removed from pci-epc.h to be replaced if
-> > needed with something generic. The 'size' field specifies the size of
-> > DMA transfer that can fit in the buffer.
->
-> I still have to look closer into your DMA patch but linked-list mode or single
-> block mode shouldn't be an user select-able option but should be determined by
-> the size of transfer.
+This workaround checks if it's a FU540 chipset based on device tree information, and check's for open
+core's IF(interrupt flag) and BUSY flags to break from the polling loop upon completion of transfer.
 
-Please consider the following when taking a closer look at this patch.
+To test the patch, a PMOD-AD2 sensor is connected to HiFive Unleashed board over J1 connector, and
+appropriate device node is added into board specific device tree as per the information provided in
+dt-bindings in Documentation/devicetree/bindings/i2c/i2c-ocores.txt.
+Without this workaround, the CPU stall's infinitely.
 
-In my specific use case, I need to verify that any valid block size,
-including a one byte transfer, can be transferred across the PCIe bus
-by memcpy_toio/fromio() or by DMA either as a single block or as
-linked-list. That is why, instead of deciding based on transfer size,
-this patch introduces the '-L' flag for pcitest to communicate the
-user intent across the PCIe bus to pci-epf-test so the endpoint can
-initiate the DMA transfer using a single block or in linked-list mode.
+Busybox i2c utilities used to verify workaround : i2cdetect, i2cdump, i2cset, i2cget
 
-When user issues 'pcitest -r' to perform a read buffer test,
-pci-epf-test calls pci_epf_test_write() which uses memcpy_toio(). As
-before, a read from the user point of view is a write from the
-endpoint point of view.
-When user issues 'pcitest -r -d', pci-epf-test calls a new function
-pci_epf_test_write_dma() to initiate a single block DMA transfer.
-When user issues 'pcitest -r -d -L', pci-epf-test calls a new function
-pci_epf_test_write_dma_list() to initiate a linked-list DMA transfer.
 
-The '-d' and '-L' flags also apply to the '-w' flag when the user
-performs a write buffer test. The user can specify any valid transfer
-size for any of the above examples using the '-s' flag as before.
+Patch History:
+V7<->V8:
+-Incorporated review comments for cosmetic changes like: space, comma and period(.)
 
-> > That way the dma test functions in pci-epf-test.c can simply kmalloc
-> > and prepare a local buffer on the endpoint side for the DMA transfer
-> > and pass its pointer down the stack using the 'buffer' field to lower
-> > layers. This would allow different PCIe controller drivers to
-> > implement DMA or not according to their needs. Each implementer can
-> > decide to use DMAengine client API, which would be preferable, or
-> > directly read or write to DMA hardware registers to suit their needs.
->
-> yes, that would be my preferred method as well. In fact I had implemented
-> pci_epf_tx() in [1], as a way for pci-epf-test to pass buffer address to
-> endpoint controller driver. I had also implemented helpers for platforms using
-> system DMA (i.e uses DMAengine).
->
-> Thanks
-> Kishon
->
-> [1] ->
-> http://git.ti.com/cgit/cgit.cgi/ti-linux-kernel/ti-linux-kernel.git/tree/drivers/pci/endpoint/pci-epf-core.c?h=ti-linux-4.19.y
-> >
-> > I would appreciate feedback and comment on such choices as part of this review.
+V6<->V7:
+-Rectified space and tab issue in dt bindings strings.
+-Implemented workaround based on i2c->flags, as per review comment on v6.
 
-Thanks for all your comments and providing the link to your
-implementation of pci_epf_tx() in [1] above. It clarifies a lot and
-provides a very useful reference.
+V5<->V6:
+-Incorporated suggestions on v5 patch as follows:
+-Reformatted compatibility strings in dt doc with one valid combination on each line.
+-Removed interrupt-parents from optional property list. 
+-With rebase to v5.2-rc1, the v5 variant of polling workaround PATCH becomes in-compatible.
+ Till kernel v5.1 the polling mode was enabled based on i2c->flags, wherease in kernel v5.2-rc1 polling mode is set as
+ master transfer algorithim at probe time itself, and i2c->flags checks are removed.
+-Modified v5 to check for SiFive device type in polling function and include the workaround/fix for broken IRQ.
 
-Regards,
-Alan Mikhak
+v4<->V5:
+-Removed un-necessary checks of OCORES_FLAG_BROKEN_IRQ.
+
+V3<->V4:
+-Incorporated suggestions on v3 patch as follows:
+-OCORES_FLAG_BROKEN_IRQ BIT position rectified.
+-Updated BORKEN_IRQ flag checks such that if sifive device (Fu540-C000) is identified,then use polling mode as IRQ is broken.
+
+V2<->V3:
+-Incorporated review comments on v2 patch as follows:
+-Rectified compatibility string sequence with the most specific one at the first (dt bindings). 
+-Moved interrupts and interrupt-parent under optional property list (dt-bindings).
+-Updated reference to sifive-blocks-ip-versioning.txt and URL to IP repository used (dt-bindings).
+-Removed example for i2c0 device node from binding doc (dt-bindings).
+-Included sifive,i2c0 device under compatibility table in i2c-ocores driver (i2c-ocores).
+-Updated polling mode hooks for SoC specific fix to handle broken IRQ (i2c-ocores).
+
+
+V1<->V2:
+-Incorporate review comments from Andrew
+-Extend dt bindings into i2c-ocores.txt instead of adding new file
+-Rename SIFIVE_FLAG_POLL to OCORES_FLAG_BROKEN_IRQ
+
+V1:
+-Update dt bindings for sifive i2c devices
+-Fix broken IRQ affecting i2c polling mode interface.
+
+
+Sagar Shrikant Kadam (3):
+  dt-bindings: i2c: extend existing opencore bindings.
+  i2c-ocores: sifive: add support for i2c device on FU540-c000 SoC.
+  i2c-ocores: sifive: add polling mode workaround for FU540-C000 SoC.
+
+ .../devicetree/bindings/i2c/i2c-ocores.txt         |  9 ++++--
+ drivers/i2c/busses/i2c-ocores.c                    | 33 ++++++++++++++++++++--
+ 2 files changed, 38 insertions(+), 4 deletions(-)
+
+-- 
+1.9.1
+
 
 _______________________________________________
 linux-riscv mailing list
