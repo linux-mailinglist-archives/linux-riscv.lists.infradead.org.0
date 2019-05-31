@@ -2,87 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB960307D6
-	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 06:37:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 139E2307E1
+	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 06:50:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8tuQI39QZLxBJmoGrb9A0z7CjDHI0GPWQSHkQphZAjw=; b=rriBwkxvJSWV77
-	0kwfK9rzkJDu19HuYYIqIM2LLJ8PS1K0iLDD615m6QkuzFCoDQa2ucqUwKKihtKNTdMbiQ5mDYN1b
-	UqadsVHVNlmq9P1wOkFmj/jzO+cRZU+vbuyo+2guqoVi+1oSldbZ7ImX7STASbuoXncPD5xI1SAHx
-	aDJmxeYM+/uvLdWsac6XK0QjJsppQQQSWrKmZGB0ltBXC9EbXFYbkHD/o8ax5Af9mWZWAT1GZVejj
-	VX+Z7vum7y0rKQWCoRWbwDlKTpzoR1Exx4a1zOyw9to1LrdHSbVrq6mPwMiW96zFr/5XwPpt9XUR+
-	nBcyPB/AWvdGO59SLK2A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jB5BUIRsm+mEVdfSLDOtx/wLgWhkQBWOtS1/ZvtJU04=; b=V0IORqDyiT9X6toIE5HI8uZEs
+	Iv5y7UFegwp5qzmFHVdsIJtxB3+lhZoC8voaAbgEGlKC1AHRfUFCiDU57kltPvYRWwG31+cTIeFa0
+	kMCPasPxlhfMj/xUNrTWQ4bDjOpjHzeo9Vb434Z/crBJL3cYJr/JflpKhSaQ1ZHZfcZxx6YfXBiMB
+	lPj1uD3rlwTKuoJt+17zWHFqFyjoQj2NLLSbccM8oh1909RNoD8kOZpiPKbafIQzQNyWgpPFOK2fC
+	OcJXq9jlLRn4Qq4bw2CzaSKv1KVLyeWSQFd+HfZgtnTGzOSLbx0CtqtucAERyKVk40cZRtqhh7h0K
+	FsVtKR6SA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWZIC-0003zP-Ew; Fri, 31 May 2019 04:37:24 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1hWZUe-0008M4-Ia; Fri, 31 May 2019 04:50:16 +0000
+Received: from relay11.mail.gandi.net ([217.70.178.231])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWZI8-0003yw-IX
- for linux-riscv@lists.infradead.org; Fri, 31 May 2019 04:37:22 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id x4V4b9V1008149;
- Thu, 30 May 2019 23:37:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1559277429;
- bh=WmWlIV0MNd4gzmwUDi38bv+85fSO0B2C0fC2Y7XqFgQ=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=VZQtV7CVk40P+SqfrjetVBWMBXU6OixEQsfU3qmxzTwLFEfnjJXVl3K7F9KUyetYy
- 4khN71oykyO2SuPwRhDNeTTtQbtuI/l//WYiQ+Mc2ZVetGdPd8ehUQmegEEL6GqeXk
- tzGn2V0573j25PmVruYlQHiByUK3kC7S7E5KazOI=
-Received: from DLEE100.ent.ti.com (dlee100.ent.ti.com [157.170.170.30])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x4V4b9Ja019839
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 30 May 2019 23:37:09 -0500
-Received: from DLEE103.ent.ti.com (157.170.170.33) by DLEE100.ent.ti.com
- (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Thu, 30
- May 2019 23:37:09 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE103.ent.ti.com
- (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Thu, 30 May 2019 23:37:09 -0500
-Received: from [172.24.190.233] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id x4V4b4So084582;
- Thu, 30 May 2019 23:37:06 -0500
-Subject: Re: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
-To: Alan Mikhak <alan.mikhak@sifive.com>
-References: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
- <CABEDWGzHkt4p_byEihOAs9g97t450h9-Z0Qu2b2-O1pxCNPX+A@mail.gmail.com>
- <baa68439-f703-a453-34a2-24387bb9112d@ti.com>
- <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Message-ID: <96365941-512b-dfb2-05b7-0780e8961f6c@ti.com>
-Date: Fri, 31 May 2019 10:05:45 +0530
+ id 1hWZUU-00075H-Rv; Fri, 31 May 2019 04:50:09 +0000
+Received: from [192.168.0.12] (127.19.86.79.rev.sfr.net [79.86.19.127])
+ (Authenticated sender: alex@ghiti.fr)
+ by relay11.mail.gandi.net (Postfix) with ESMTPSA id 18921100004;
+ Fri, 31 May 2019 04:49:29 +0000 (UTC)
+Subject: Re: [PATCH v4 08/14] arm: Use generic mmap top-down layout and brk
+ randomization
+To: Kees Cook <keescook@chromium.org>
+References: <20190526134746.9315-1-alex@ghiti.fr>
+ <20190526134746.9315-9-alex@ghiti.fr> <201905291222.595685C3F0@keescook>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <b8c0c2e4-4d58-1d6e-5458-f0af3eb86d7c@ghiti.fr>
+Date: Fri, 31 May 2019 00:49:29 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+In-Reply-To: <201905291222.595685C3F0@keescook>
+Content-Language: sv-FI
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_213720_714157_D4D59739 
-X-CRM114-Status: GOOD (  22.66  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190530_215007_218508_995A0736 
+X-CRM114-Status: GOOD (  18.52  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [198.47.23.249 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.178.231 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,107 +62,190 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: lorenzo.pieralisi@arm.com, linux-pci@vger.kernel.org,
- Palmer Dabbelt <palmer@sifive.com>, kjlu@umn.edu, linux-kernel@vger.kernel.org,
- Paul Walmsley <paul.walmsley@sifive.com>, Bjorn Helgaas <bhelgaas@google.com>,
- linux-riscv@lists.infradead.org, gustavo.pimentel@synopsys.com,
- wen.yang99@zte.com.cn
-Content-Type: text/plain; charset="us-ascii"
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ Catalin Marinas <catalin.marinas@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>, Russell King <linux@armlinux.org.uk>,
+ Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
+ linux-mm@kvack.org, Paul Burton <paul.burton@mips.com>,
+ linux-riscv@lists.infradead.org, Alexander Viro <viro@zeniv.linux.org.uk>,
+ James Hogan <jhogan@kernel.org>, linux-fsdevel@vger.kernel.org,
+ Andrew Morton <akpm@linux-foundation.org>, linux-mips@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org,
+ Luis Chamberlain <mcgrof@kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Alan,
-
-On 25/05/19 12:20 AM, Alan Mikhak wrote:
-> Hi Kishon,
-> 
-> Yes. This change is still applicable even when the platform specifies
-> that it only supports 64-bit BARs by setting the bar_fixed_64bit
-> member of epc_features.
-> 
-> The issue being fixed is this: If the 'continue' statement is executed
-> within the loop, the loop index 'bar' needs to advanced by two, not
-> one, when the BAR is 64-bit. Otherwise the next loop iteration will be
-> on an odd BAR which doesn't exist.
-
-IIUC you are fixing the case where the BAR is "reserved" (specified in
-epc_features) and is also a 64-bit BAR?
-
-If 2 consecutive BARs are marked as reserved in reserved_bar of epc_features,
-the result should be the same right?
-
-Thanks
-Kishon
-
-> 
-> The PCI_BASE_ADDRESS_MEM_TYPE_64 flag in epf_bar->flag reflects the
-> value set by the platform in the bar_fixed_64bit member of
-> epc_features.
-> 
-> This patch moves the checking of  PCI_BASE_ADDRESS_MEM_TYPE_64 in
-> epf_bar->flags to before the 'continue' statement to advance the 'bar'
-> loop index accordingly. The comment you see about 'pci_epc_set_bar()'
-> preceding the moved code is the original comment and was also moved
-> along with the code.
-> 
-> Regards,
-> Alan Mikhak
-> 
-> On Fri, May 24, 2019 at 1:51 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+On 5/29/19 3:26 PM, Kees Cook wrote:
+> On Sun, May 26, 2019 at 09:47:40AM -0400, Alexandre Ghiti wrote:
+>> arm uses a top-down mmap layout by default that exactly fits the generic
+>> functions, so get rid of arch specific code and use the generic version
+>> by selecting ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT.
+>> As ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT selects ARCH_HAS_ELF_RANDOMIZE,
+>> use the generic version of arch_randomize_brk since it also fits.
+>> Note that this commit also removes the possibility for arm to have elf
+>> randomization and no MMU: without MMU, the security added by randomization
+>> is worth nothing.
 >>
->> Hi,
+>> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+> Acked-by: Kees Cook <keescook@chromium.org>
+>
+> It may be worth noting that STACK_RND_MASK is safe to remove here
+> because it matches the default that now exists in mm/util.c.
+
+
+Yes, thanks for pointing that.
+
+
+Thanks,
+
+
+Alex
+
+
+>
+> -Kees
+>
+>> ---
+>>   arch/arm/Kconfig                 |  2 +-
+>>   arch/arm/include/asm/processor.h |  2 --
+>>   arch/arm/kernel/process.c        |  5 ---
+>>   arch/arm/mm/mmap.c               | 62 --------------------------------
+>>   4 files changed, 1 insertion(+), 70 deletions(-)
 >>
->> On 24/05/19 5:25 AM, Alan Mikhak wrote:
->>> +Bjorn Helgaas, +Gustavo Pimentel, +Wen Yang, +Kangjie Lu
->>>
->>> On Thu, May 23, 2019 at 2:55 PM Alan Mikhak <alan.mikhak@sifive.com> wrote:
->>>>
->>>> Always skip odd bar when skipping 64bit BARs in pci_epf_test_set_bar()
->>>> and pci_epf_test_alloc_space().
->>>>
->>>> Otherwise, pci_epf_test_set_bar() will call pci_epc_set_bar() on odd loop
->>>> index when skipping reserved 64bit BAR. Moreover, pci_epf_test_alloc_space()
->>>> will call pci_epf_alloc_space() on bind for odd loop index when BAR is 64bit
->>>> but leaks on subsequent unbind by not calling pci_epf_free_space().
->>>>
->>>> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
->>>> Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
->>>> ---
->>>>  drivers/pci/endpoint/functions/pci-epf-test.c | 25 ++++++++++++-------------
->>>>  1 file changed, 12 insertions(+), 13 deletions(-)
->>>>
->>>> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
->>>> index 27806987e93b..96156a537922 100644
->>>> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
->>>> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
->>>> @@ -389,7 +389,7 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
->>>>
->>>>  static int pci_epf_test_set_bar(struct pci_epf *epf)
->>>>  {
->>>> -       int bar;
->>>> +       int bar, add;
->>>>         int ret;
->>>>         struct pci_epf_bar *epf_bar;
->>>>         struct pci_epc *epc = epf->epc;
->>>> @@ -400,8 +400,14 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
->>>>
->>>>         epc_features = epf_test->epc_features;
->>>>
->>>> -       for (bar = BAR_0; bar <= BAR_5; bar++) {
->>>> +       for (bar = BAR_0; bar <= BAR_5; bar += add) {
->>>>                 epf_bar = &epf->bar[bar];
->>>> +               /*
->>>> +                * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
->>>> +                * if the specific implementation required a 64-bit BAR,
->>>> +                * even if we only requested a 32-bit BAR.
->>>> +                */
+>> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+>> index 8869742a85df..27687a8c9fb5 100644
+>> --- a/arch/arm/Kconfig
+>> +++ b/arch/arm/Kconfig
+>> @@ -6,7 +6,6 @@ config ARM
+>>   	select ARCH_CLOCKSOURCE_DATA
+>>   	select ARCH_HAS_DEBUG_VIRTUAL if MMU
+>>   	select ARCH_HAS_DEVMEM_IS_ALLOWED
+>> -	select ARCH_HAS_ELF_RANDOMIZE
+>>   	select ARCH_HAS_FORTIFY_SOURCE
+>>   	select ARCH_HAS_KEEPINITRD
+>>   	select ARCH_HAS_KCOV
+>> @@ -29,6 +28,7 @@ config ARM
+>>   	select ARCH_SUPPORTS_ATOMIC_RMW
+>>   	select ARCH_USE_BUILTIN_BSWAP
+>>   	select ARCH_USE_CMPXCHG_LOCKREF
+>> +	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
+>>   	select ARCH_WANT_IPC_PARSE_VERSION
+>>   	select BUILDTIME_EXTABLE_SORT if MMU
+>>   	select CLONE_BACKWARDS
+>> diff --git a/arch/arm/include/asm/processor.h b/arch/arm/include/asm/processor.h
+>> index 5d06f75ffad4..95b7688341c5 100644
+>> --- a/arch/arm/include/asm/processor.h
+>> +++ b/arch/arm/include/asm/processor.h
+>> @@ -143,8 +143,6 @@ static inline void prefetchw(const void *ptr)
+>>   #endif
+>>   #endif
+>>   
+>> -#define HAVE_ARCH_PICK_MMAP_LAYOUT
+>> -
+>>   #endif
+>>   
+>>   #endif /* __ASM_ARM_PROCESSOR_H */
+>> diff --git a/arch/arm/kernel/process.c b/arch/arm/kernel/process.c
+>> index 72cc0862a30e..19a765db5f7f 100644
+>> --- a/arch/arm/kernel/process.c
+>> +++ b/arch/arm/kernel/process.c
+>> @@ -322,11 +322,6 @@ unsigned long get_wchan(struct task_struct *p)
+>>   	return 0;
+>>   }
+>>   
+>> -unsigned long arch_randomize_brk(struct mm_struct *mm)
+>> -{
+>> -	return randomize_page(mm->brk, 0x02000000);
+>> -}
+>> -
+>>   #ifdef CONFIG_MMU
+>>   #ifdef CONFIG_KUSER_HELPERS
+>>   /*
+>> diff --git a/arch/arm/mm/mmap.c b/arch/arm/mm/mmap.c
+>> index 0b94b674aa91..b8d912ac9e61 100644
+>> --- a/arch/arm/mm/mmap.c
+>> +++ b/arch/arm/mm/mmap.c
+>> @@ -17,43 +17,6 @@
+>>   	((((addr)+SHMLBA-1)&~(SHMLBA-1)) +	\
+>>   	 (((pgoff)<<PAGE_SHIFT) & (SHMLBA-1)))
+>>   
+>> -/* gap between mmap and stack */
+>> -#define MIN_GAP		(128*1024*1024UL)
+>> -#define MAX_GAP		((STACK_TOP)/6*5)
+>> -#define STACK_RND_MASK	(0x7ff >> (PAGE_SHIFT - 12))
+>> -
+>> -static int mmap_is_legacy(struct rlimit *rlim_stack)
+>> -{
+>> -	if (current->personality & ADDR_COMPAT_LAYOUT)
+>> -		return 1;
+>> -
+>> -	if (rlim_stack->rlim_cur == RLIM_INFINITY)
+>> -		return 1;
+>> -
+>> -	return sysctl_legacy_va_layout;
+>> -}
+>> -
+>> -static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
+>> -{
+>> -	unsigned long gap = rlim_stack->rlim_cur;
+>> -	unsigned long pad = stack_guard_gap;
+>> -
+>> -	/* Account for stack randomization if necessary */
+>> -	if (current->flags & PF_RANDOMIZE)
+>> -		pad += (STACK_RND_MASK << PAGE_SHIFT);
+>> -
+>> -	/* Values close to RLIM_INFINITY can overflow. */
+>> -	if (gap + pad > gap)
+>> -		gap += pad;
+>> -
+>> -	if (gap < MIN_GAP)
+>> -		gap = MIN_GAP;
+>> -	else if (gap > MAX_GAP)
+>> -		gap = MAX_GAP;
+>> -
+>> -	return PAGE_ALIGN(STACK_TOP - gap - rnd);
+>> -}
+>> -
+>>   /*
+>>    * We need to ensure that shared mappings are correctly aligned to
+>>    * avoid aliasing issues with VIPT caches.  We need to ensure that
+>> @@ -181,31 +144,6 @@ arch_get_unmapped_area_topdown(struct file *filp, const unsigned long addr0,
+>>   	return addr;
+>>   }
+>>   
+>> -unsigned long arch_mmap_rnd(void)
+>> -{
+>> -	unsigned long rnd;
+>> -
+>> -	rnd = get_random_long() & ((1UL << mmap_rnd_bits) - 1);
+>> -
+>> -	return rnd << PAGE_SHIFT;
+>> -}
+>> -
+>> -void arch_pick_mmap_layout(struct mm_struct *mm, struct rlimit *rlim_stack)
+>> -{
+>> -	unsigned long random_factor = 0UL;
+>> -
+>> -	if (current->flags & PF_RANDOMIZE)
+>> -		random_factor = arch_mmap_rnd();
+>> -
+>> -	if (mmap_is_legacy(rlim_stack)) {
+>> -		mm->mmap_base = TASK_UNMAPPED_BASE + random_factor;
+>> -		mm->get_unmapped_area = arch_get_unmapped_area;
+>> -	} else {
+>> -		mm->mmap_base = mmap_base(random_factor, rlim_stack);
+>> -		mm->get_unmapped_area = arch_get_unmapped_area_topdown;
+>> -	}
+>> -}
+>> -
+>>   /*
+>>    * You really shouldn't be using read() or write() on /dev/mem.  This
+>>    * might go away in the future.
+>> -- 
+>> 2.20.1
 >>
->> set_bar shouldn't set PCI_BASE_ADDRESS_MEM_TYPE_64. If a platform supports only
->> 64-bit BAR, that should be specified in epc_features bar_fixed_64bit member.
->>
->> Thanks
->> Kishon
 
 _______________________________________________
 linux-riscv mailing list
