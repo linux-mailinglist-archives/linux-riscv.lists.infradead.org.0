@@ -2,81 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01CF730532
-	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 01:09:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB960307D6
+	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 06:37:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W9vGJvus8c0n0bDVQvXggox9ac3QpmnXG1vR8fnBVcg=; b=UJPJOoqrVZ6/Px
-	WYKGGr6O88luWr/Aj2KtasWPRUPp2RuGJ3NygKopt7/KKvV/MxxZIII4kSNdXVFbg7yfRO/XLNTwX
-	YhNW0kutK/3UVT/l1fTgUddQs8j6bPTdKGoRxz2d2/Jvnq7/zln3DUeWmQtXb/J3Hh6T9+iwnoUWE
-	0YnkH6aAF2rM7BTfhxFooz+FY+ezp2Pyrmt0yU//X/M6+d5u87xEsKS5oMWTXwWHbqBP//Ex/l4eA
-	CDv/oaGpiC1WMdCfFrkpxea/99FPB8VTh+svS/pkNBOJcjdARlwoawf0Lw7x957lTtBqA61SI98Cr
-	8Mwkv7vGZ77XE42j4bcw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8tuQI39QZLxBJmoGrb9A0z7CjDHI0GPWQSHkQphZAjw=; b=rriBwkxvJSWV77
+	0kwfK9rzkJDu19HuYYIqIM2LLJ8PS1K0iLDD615m6QkuzFCoDQa2ucqUwKKihtKNTdMbiQ5mDYN1b
+	UqadsVHVNlmq9P1wOkFmj/jzO+cRZU+vbuyo+2guqoVi+1oSldbZ7ImX7STASbuoXncPD5xI1SAHx
+	aDJmxeYM+/uvLdWsac6XK0QjJsppQQQSWrKmZGB0ltBXC9EbXFYbkHD/o8ax5Af9mWZWAT1GZVejj
+	VX+Z7vum7y0rKQWCoRWbwDlKTpzoR1Exx4a1zOyw9to1LrdHSbVrq6mPwMiW96zFr/5XwPpt9XUR+
+	nBcyPB/AWvdGO59SLK2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWUAY-0003JI-VO; Thu, 30 May 2019 23:09:10 +0000
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
+	id 1hWZIC-0003zP-Ew; Fri, 31 May 2019 04:37:24 +0000
+Received: from lelv0142.ext.ti.com ([198.47.23.249])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWUAW-0003Iy-3p
- for linux-riscv@lists.infradead.org; Thu, 30 May 2019 23:09:09 +0000
-Received: by mail-qt1-x844.google.com with SMTP id s57so9165226qte.8
- for <linux-riscv@lists.infradead.org>; Thu, 30 May 2019 16:09:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VsGWlAAgXK7ARM0UyCo1z+ObHcix8UI0v15itzMgAgs=;
- b=OP3KBdTFagUgJH07lGdWtzWlXEIRmW2U56cmovOgXBoCWumZLktpU5y6IEwJep4noD
- U1mNS/rrQL4V3ZKKtG3lKLP18iojhV9hc5EXXBXVmMXrpiVgohcdh1m2sS3KuWGrdKsV
- ly3u3pY95ODCqNObNVYBVbEjtufjCyzyt1e1VCXxNxEqa8OhbJ+YdjLaBIHlz9BhmbdR
- l7HgU4DMoqN4O4UWKvOnp61cWufcexJfYr2BPov0jGL+siqpM4UeYNYTneMQ1GHkQr2v
- hD5QzYHheW5Z4QloEuiic/TzpFXpKBPqCrd8i4cfkZdTeXAn9rFl9GvQSv0cBBtKg7dh
- kYZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VsGWlAAgXK7ARM0UyCo1z+ObHcix8UI0v15itzMgAgs=;
- b=VaJOcJqexCeMiqCLqHx26CSHDKfJdHCwRKxHKJDQu9SLhcZTdNtSspm007x26y622l
- bDJTqMrGXQ25xbQLQGkzFH0NMvSclz2+xoKLb1ajkb5zG8fRAqyhTYbrpONEW9SJJNRa
- 9oLfQCS0z53NpjUcHgWNix1hAUoyf8DTegveLT1KV88mNwlNR3aEQSgSEVqd+IOeT1Gn
- RQSa1lgbI5o1X1A+e/LAmjlso6kD6Czz6bvLFaybo+8C/Eu4isyRHC2PKpZOKLTghWGX
- wG9dRhacDp6qYEkxCSO4aZMzLKIsYtGByF8eciwKF2v7W3kUDWzRectc9J86XMbezXTa
- bdKw==
-X-Gm-Message-State: APjAAAWSA/wWhhCNMU4DEf+XveQobX3kJipIeuPNMCkyC4pV4GwrmZ0E
- +lC1lkfSNOCMtD7weUJGM5aseTM3H64AoI17WUY=
-X-Google-Smtp-Source: APXvYqzbxFTeCMTO5x7GXFdrK925AyO/6B7goB3FrwXjSEPa+C7nAEKycPdEZA43M+BGTqaQKk8e4+HWr2f/NQVzA0w=
-X-Received: by 2002:a0c:986e:: with SMTP id e43mr5917589qvd.78.1559257747089; 
- Thu, 30 May 2019 16:09:07 -0700 (PDT)
+ id 1hWZI8-0003yw-IX
+ for linux-riscv@lists.infradead.org; Fri, 31 May 2019 04:37:22 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+ by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id x4V4b9V1008149;
+ Thu, 30 May 2019 23:37:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1559277429;
+ bh=WmWlIV0MNd4gzmwUDi38bv+85fSO0B2C0fC2Y7XqFgQ=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=VZQtV7CVk40P+SqfrjetVBWMBXU6OixEQsfU3qmxzTwLFEfnjJXVl3K7F9KUyetYy
+ 4khN71oykyO2SuPwRhDNeTTtQbtuI/l//WYiQ+Mc2ZVetGdPd8ehUQmegEEL6GqeXk
+ tzGn2V0573j25PmVruYlQHiByUK3kC7S7E5KazOI=
+Received: from DLEE100.ent.ti.com (dlee100.ent.ti.com [157.170.170.30])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x4V4b9Ja019839
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 30 May 2019 23:37:09 -0500
+Received: from DLEE103.ent.ti.com (157.170.170.33) by DLEE100.ent.ti.com
+ (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Thu, 30
+ May 2019 23:37:09 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE103.ent.ti.com
+ (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
+ Frontend Transport; Thu, 30 May 2019 23:37:09 -0500
+Received: from [172.24.190.233] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id x4V4b4So084582;
+ Thu, 30 May 2019 23:37:06 -0500
+Subject: Re: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
+To: Alan Mikhak <alan.mikhak@sifive.com>
+References: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
+ <CABEDWGzHkt4p_byEihOAs9g97t450h9-Z0Qu2b2-O1pxCNPX+A@mail.gmail.com>
+ <baa68439-f703-a453-34a2-24387bb9112d@ti.com>
+ <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Message-ID: <96365941-512b-dfb2-05b7-0780e8961f6c@ti.com>
+Date: Fri, 31 May 2019 10:05:45 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190530190800.7633-1-luke.r.nels@gmail.com>
- <CAPhsuW4kMBSjpATqHrEhTmuqje=XZNGOrMyNur8f6K0RNQP=yw@mail.gmail.com>
- <CAB-e3NSidgz8gLRTL796A0DyRVePPjVDpSC6=gSA4hH8q6VqvQ@mail.gmail.com>
-In-Reply-To: <CAB-e3NSidgz8gLRTL796A0DyRVePPjVDpSC6=gSA4hH8q6VqvQ@mail.gmail.com>
-From: Song Liu <liu.song.a23@gmail.com>
-Date: Thu, 30 May 2019 16:08:55 -0700
-Message-ID: <CAPhsuW7rOzyJTac7d9PPHeWW39Hu5pV6Mk0xJr8jyr0HH=-W2A@mail.gmail.com>
-Subject: Re: [PATCH 1/2] bpf, riscv: fix bugs in JIT for 32-bit ALU operations
-To: Luke Nelson <luke.r.nels@gmail.com>
+In-Reply-To: <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190530_160908_154577_F82C0108 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190530_213720_714157_D4D59739 
+X-CRM114-Status: GOOD (  22.66  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:844 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [198.47.23.249 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (liu.song.a23[at]gmail.com)
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (liu.song.a23[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -85,6 +82,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,45 +94,107 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- bpf <bpf@vger.kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
- Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
- open list <linux-kernel@vger.kernel.org>, Networking <netdev@vger.kernel.org>,
- Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
- Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
+Cc: lorenzo.pieralisi@arm.com, linux-pci@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, kjlu@umn.edu, linux-kernel@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-riscv@lists.infradead.org, gustavo.pimentel@synopsys.com,
+ wen.yang99@zte.com.cn
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 30, 2019 at 3:34 PM Luke Nelson <luke.r.nels@gmail.com> wrote:
->
-> On Thu, May 30, 2019 at 1:53 PM Song Liu <liu.song.a23@gmail.com> wrote:
-> >
-> > This is a little messy. How about we introduce some helper function
-> > like:
-> >
-> > /* please find a better name... */
-> > emit_32_or_64(bool is64, const u32 insn_32, const u32 inst_64, struct
-> > rv_jit_context *ctx)
-> > {
-> >        if (is64)
-> >             emit(insn_64, ctx);
-> >        else {
-> >             emit(insn_32, ctx);
-> >            rd = xxxx;
-> >            emit_zext_32(rd, ctx);
-> >        }
-> > }
->
-> This same check is used throughout the file, maybe clean it up in a
-> separate patch?
+Hi Alan,
 
-Yes, let's do follow up patch.
+On 25/05/19 12:20 AM, Alan Mikhak wrote:
+> Hi Kishon,
+> 
+> Yes. This change is still applicable even when the platform specifies
+> that it only supports 64-bit BARs by setting the bar_fixed_64bit
+> member of epc_features.
+> 
+> The issue being fixed is this: If the 'continue' statement is executed
+> within the loop, the loop index 'bar' needs to advanced by two, not
+> one, when the BAR is 64-bit. Otherwise the next loop iteration will be
+> on an odd BAR which doesn't exist.
 
-Thanks,
-Song
+IIUC you are fixing the case where the BAR is "reserved" (specified in
+epc_features) and is also a 64-bit BAR?
+
+If 2 consecutive BARs are marked as reserved in reserved_bar of epc_features,
+the result should be the same right?
+
+Thanks
+Kishon
+
+> 
+> The PCI_BASE_ADDRESS_MEM_TYPE_64 flag in epf_bar->flag reflects the
+> value set by the platform in the bar_fixed_64bit member of
+> epc_features.
+> 
+> This patch moves the checking of  PCI_BASE_ADDRESS_MEM_TYPE_64 in
+> epf_bar->flags to before the 'continue' statement to advance the 'bar'
+> loop index accordingly. The comment you see about 'pci_epc_set_bar()'
+> preceding the moved code is the original comment and was also moved
+> along with the code.
+> 
+> Regards,
+> Alan Mikhak
+> 
+> On Fri, May 24, 2019 at 1:51 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+>>
+>> Hi,
+>>
+>> On 24/05/19 5:25 AM, Alan Mikhak wrote:
+>>> +Bjorn Helgaas, +Gustavo Pimentel, +Wen Yang, +Kangjie Lu
+>>>
+>>> On Thu, May 23, 2019 at 2:55 PM Alan Mikhak <alan.mikhak@sifive.com> wrote:
+>>>>
+>>>> Always skip odd bar when skipping 64bit BARs in pci_epf_test_set_bar()
+>>>> and pci_epf_test_alloc_space().
+>>>>
+>>>> Otherwise, pci_epf_test_set_bar() will call pci_epc_set_bar() on odd loop
+>>>> index when skipping reserved 64bit BAR. Moreover, pci_epf_test_alloc_space()
+>>>> will call pci_epf_alloc_space() on bind for odd loop index when BAR is 64bit
+>>>> but leaks on subsequent unbind by not calling pci_epf_free_space().
+>>>>
+>>>> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
+>>>> Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
+>>>> ---
+>>>>  drivers/pci/endpoint/functions/pci-epf-test.c | 25 ++++++++++++-------------
+>>>>  1 file changed, 12 insertions(+), 13 deletions(-)
+>>>>
+>>>> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+>>>> index 27806987e93b..96156a537922 100644
+>>>> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
+>>>> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+>>>> @@ -389,7 +389,7 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
+>>>>
+>>>>  static int pci_epf_test_set_bar(struct pci_epf *epf)
+>>>>  {
+>>>> -       int bar;
+>>>> +       int bar, add;
+>>>>         int ret;
+>>>>         struct pci_epf_bar *epf_bar;
+>>>>         struct pci_epc *epc = epf->epc;
+>>>> @@ -400,8 +400,14 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
+>>>>
+>>>>         epc_features = epf_test->epc_features;
+>>>>
+>>>> -       for (bar = BAR_0; bar <= BAR_5; bar++) {
+>>>> +       for (bar = BAR_0; bar <= BAR_5; bar += add) {
+>>>>                 epf_bar = &epf->bar[bar];
+>>>> +               /*
+>>>> +                * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
+>>>> +                * if the specific implementation required a 64-bit BAR,
+>>>> +                * even if we only requested a 32-bit BAR.
+>>>> +                */
+>>
+>> set_bar shouldn't set PCI_BASE_ADDRESS_MEM_TYPE_64. If a platform supports only
+>> 64-bit BAR, that should be specified in epc_features bar_fixed_64bit member.
+>>
+>> Thanks
+>> Kishon
 
 _______________________________________________
 linux-riscv mailing list
