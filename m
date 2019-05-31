@@ -2,61 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70E3330C18
-	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 11:54:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ABAEC31315
+	for <lists+linux-riscv@lfdr.de>; Fri, 31 May 2019 18:53:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yas00SVzI7h3mJyboXCBWOWah1j6XeVTUvAAxCDVq20=; b=AZHtrepKsTpagt
-	Z2X2VdZDuU6+uZhUzCaCts62urUIrBPovh2mVfiot4id1Nsv5C+VJiBkavJK7LeAQq1MPIKDdbalM
-	t+ZH0BRJ/BcEJnY6Ltl/d96QbCogndtR7ootbmIX3eL2VYXQMNQ6iB7MqwDFH3sCfKnL2zwrd5QGL
-	MZpfhGGfYCA2OHX4n69Pd1irvrV5j5caqgDN4yZ8mMSNX8hJkf19CC3VREj27TL8cMhSa0edvEBoS
-	JfwBlLUycTbng4x5H+jVWCGwtISG/N3qd7VAqXqOTVMYd8xkCHeqNZarTWyZaODR1JDymyPTGRpYN
-	VZ3M8BZXADHKZvB7BciQ==;
+	List-Owner; bh=FZEY2q4OjdfeTd1H0zayIks4wknKB0KKQBtB+JM+58w=; b=rmMKklDIaRahQz
+	bjaMzoePaAZAkP48e3ZSTGu3a9VX/sYoX3uhAUCjpsTPjsS3bLt6+77eJLBx1J0H2FnEbn72/kDSG
+	+jsISTUctixuccSH0hwqpfJttrEYRls8F98+a5cyyX6lgGxYB02uxUN9AkKbJIZ2lL+Ewlf63kZHe
+	IM80VOkithxCZzHnt3DlRYEhLnRwRjBQScmhoEQr8P3Kz7z4I46lvjvYHvClCVFr/VjD/pQshoiH1
+	a6tKRx5pkCiqUO33GdP/XZGXu+oDpUYE6M7SdFv16wNwcF58Fhv5m9qHmRJYTP663pPZ6g6ekl2V/
+	1xoy3rrHwsXz4AcrHGyA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWeFQ-0000yd-CC; Fri, 31 May 2019 09:54:52 +0000
-Received: from foss.arm.com ([217.140.101.70])
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWeFG-0000rK-De; Fri, 31 May 2019 09:54:43 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CFAB5341;
- Fri, 31 May 2019 02:54:34 -0700 (PDT)
-Received: from e105550-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.72.51.249])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8F9353F59C;
- Fri, 31 May 2019 02:54:30 -0700 (PDT)
-Date: Fri, 31 May 2019 10:54:28 +0100
-From: Morten Rasmussen <morten.rasmussen@arm.com>
-To: Sudeep Holla <sudeep.holla@arm.com>
-Subject: Re: [PATCH v6 1/7] Documentation: DT: arm: add support for sockets
- defining package boundaries
-Message-ID: <20190531095428.GC10919@e105550-lin.cambridge.arm.com>
-References: <20190529211340.17087-1-atish.patra@wdc.com>
- <20190529211340.17087-2-atish.patra@wdc.com>
- <49f41e62-5354-a674-d95f-5f63851a0ca6@ti.com>
- <20190530115103.GA10919@e105550-lin.cambridge.arm.com>
- <20190530214254.tuxsnyv52a2fyhck@shell.armlinux.org.uk>
- <20190531093743.GB18292@e107155-lin>
+	id 1hWklu-0003cj-36; Fri, 31 May 2019 16:52:50 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hWklp-0003bH-4C
+ for linux-riscv@lists.infradead.org; Fri, 31 May 2019 16:52:46 +0000
+Received: by mail-lj1-x244.google.com with SMTP id e13so10227317ljl.11
+ for <linux-riscv@lists.infradead.org>; Fri, 31 May 2019 09:52:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=v6H5MAo72kBrswxB03BJ2HpgepSBZLZhL5ogd8zupLU=;
+ b=OG1KV6FZLFhvOSN7fp5zLXlrz323yy7uJi4Is23x/8ff/t7fSs6pfOXJAFwM3v/wC6
+ b9K7GkitQpHZawyKE3kZzpHbUuUtubBxLFGtKQ2iRJuiB3CI/MtfFoiCW29iMCQ8dHlN
+ QW4ksaLmQ68g1benk9nLF3YHPQ85XFEH5RDoUn+xKSZoOZtOcUIY2YJIT/2lrQR9EcJX
+ bNwq2XPMP9F+dNHBk8DrarZ3IP1HCvYQ4wsw6VYNZrPGenSK8cfmfLXlkbFLnLqByxJP
+ OENBIcoFg7Xni3OlGtxAWkC4nxDOrxtqSZecSg+B09IXvXCPXiIzA7QrmluirCajIzO0
+ LhkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=v6H5MAo72kBrswxB03BJ2HpgepSBZLZhL5ogd8zupLU=;
+ b=lKsQLMxCX5mNWmWKVDDghsw21DNbVPxlEo1tVCToh8v65AD1EkTnYhkxfxPEssBtSO
+ Yf4MILhl+de7/9oFEdupyfu1QdZYiLw06KtM0DTHIhMCBxJdYtFraWYAS5GncLzq9Elt
+ o5J/k+vyY0/zfWkF9KbEg9JuoWFzuKYvQefJxxAIfj/FsdqT+bnXKs2nPp/1s2kaHkSu
+ 5sX9PY8vKf0mQj/bCy4pM9/Zn16T0qsZ3H/6nXZP3VA/iNdB7tHhMdq5U5P3kpWh46kz
+ BFROird095d++aVim1kLlGctByUsmLwvxJ6Xi5phNCDT0o8R7dCtD5N0v8CTmMchd1AB
+ r+kg==
+X-Gm-Message-State: APjAAAU/F58Zwq/pKU1HWi5DUQrSrFKiVyrElSdX/a54dSJjBsoUDix+
+ h31RDkUSsXA7/NvyX/Fqlk5pBH+O2jdvlFPPgSNs7A==
+X-Google-Smtp-Source: APXvYqx+7FWVD3TK8yBjAqQZMlMkuV+lN5tCxVL10+M37w8cNW4yMIcMcmxP3Kt1PI37oQbyVpTXf/64SZ+48DwdR9o=
+X-Received: by 2002:a2e:864e:: with SMTP id i14mr6485594ljj.141.1559321562622; 
+ Fri, 31 May 2019 09:52:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190531093743.GB18292@e107155-lin>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
+ <CABEDWGzHkt4p_byEihOAs9g97t450h9-Z0Qu2b2-O1pxCNPX+A@mail.gmail.com>
+ <baa68439-f703-a453-34a2-24387bb9112d@ti.com>
+ <CABEDWGyJpfX=DzBgXAGwu29rEwmY3s_P9QPC0eJOJ3KBysRWtA@mail.gmail.com>
+ <96365941-512b-dfb2-05b7-0780e8961f6c@ti.com>
+In-Reply-To: <96365941-512b-dfb2-05b7-0780e8961f6c@ti.com>
+From: Alan Mikhak <alan.mikhak@sifive.com>
+Date: Fri, 31 May 2019 09:52:31 -0700
+Message-ID: <CABEDWGyQHh=8fmZFAK6acecDSF_-pfpa9NCZOQ--WDhZiZPihw@mail.gmail.com>
+Subject: Re: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
+To: Kishon Vijay Abraham I <kishon@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190531_025442_479242_2F2CC7CA 
-X-CRM114-Status: GOOD (  23.00  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190531_095245_225777_4F516524 
+X-CRM114-Status: GOOD (  15.67  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [217.140.101.70 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:244 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,90 +93,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, Atish Patra <atish.patra@wdc.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
- Rob Herring <robh@kernel.org>, Anup Patel <anup@brainfault.org>,
- Russell King - ARM Linux admin <linux@armlinux.org.uk>,
- devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
- Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Jeremy Linton <jeremy.linton@arm.com>, "Andrew F. Davis" <afd@ti.com>,
- Otto Sabart <ottosabart@seberm.com>, "David S. Miller" <davem@davemloft.net>
+Cc: lorenzo.pieralisi@arm.com, linux-pci@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, kjlu@umn.edu, linux-kernel@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-riscv@lists.infradead.org,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>, wen.yang99@zte.com.cn
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, May 31, 2019 at 10:37:43AM +0100, Sudeep Holla wrote:
-> On Thu, May 30, 2019 at 10:42:54PM +0100, Russell King - ARM Linux admin wrote:
-> > On Thu, May 30, 2019 at 12:51:03PM +0100, Morten Rasmussen wrote:
-> > > On Wed, May 29, 2019 at 07:39:17PM -0400, Andrew F. Davis wrote:
-> > > > On 5/29/19 5:13 PM, Atish Patra wrote:
-> > > > >From: Sudeep Holla <sudeep.holla@arm.com>
-> > > > >
-> > > > >The current ARM DT topology description provides the operating system
-> > > > >with a topological view of the system that is based on leaf nodes
-> > > > >representing either cores or threads (in an SMT system) and a
-> > > > >hierarchical set of cluster nodes that creates a hierarchical topology
-> > > > >view of how those cores and threads are grouped.
-> > > > >
-> > > > >However this hierarchical representation of clusters does not allow to
-> > > > >describe what topology level actually represents the physical package or
-> > > > >the socket boundary, which is a key piece of information to be used by
-> > > > >an operating system to optimize resource allocation and scheduling.
-> > > > >
-> > > >
-> > > > Are physical package descriptions really needed? What does "socket" imply
-> > > > that a higher layer "cluster" node grouping does not? It doesn't imply a
-> > > > different NUMA distance and the definition of "socket" is already not well
-> > > > defined, is a dual chiplet processor not just a fancy dual "socket" or are
-> > > > dual "sockets" on a server board "slotket" card, will we need new names for
-> > > > those too..
-> > >
-> > > Socket (or package) just implies what you suggest, a grouping of CPUs
-> > > based on the physical socket (or package). Some resources might be
-> > > associated with packages and more importantly socket information is
-> > > exposed to user-space. At the moment clusters are being exposed to
-> > > user-space as sockets which is less than ideal for some topologies.
+On Thu, May 30, 2019 at 9:37 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+>
+> Hi Alan,
+>
+> On 25/05/19 12:20 AM, Alan Mikhak wrote:
+> > Hi Kishon,
 > >
-> > Please point out a 32-bit ARM system that has multiple "socket"s.
+> > Yes. This change is still applicable even when the platform specifies
+> > that it only supports 64-bit BARs by setting the bar_fixed_64bit
+> > member of epc_features.
 > >
-> > As far as I'm aware, all 32-bit systems do not have socketed CPUs
-> > (modern ARM CPUs are part of a larger SoC), and the CPUs are always
-> > in one package.
-> >
-> > Even the test systems I've seen do not have socketed CPUs.
-> >
-> 
-> As far as we know, there's none. So we simply have to assume all
-> those systems are single socket(IOW all CPUs reside inside a single
-> SoC package) system.
+> > The issue being fixed is this: If the 'continue' statement is executed
+> > within the loop, the loop index 'bar' needs to advanced by two, not
+> > one, when the BAR is 64-bit. Otherwise the next loop iteration will be
+> > on an odd BAR which doesn't exist.
+>
+> IIUC you are fixing the case where the BAR is "reserved" (specified in
+> epc_features) and is also a 64-bit BAR?
 
-Right, but we don't make that assumption. Clusters are reported as
-sockets/packages for arm, just like they are for arm64. My comment above
-applied to what can be described using DT, not what systems actually
-exists. We need to be able describe packages for architecture where we
-can't make assumptions.
+Correct. If BAR0 is specified in epc_features as reserved and also
+64-bit, the loop would skip BAR0 by executing the 'continue'
+statement. In this scenario, BAR1 doesn't exist since the 64-bit BAR0
+spans the two 32-bit BAR0 and BAR1. The loop index 'bar' would be
+advanced by 2 in this case so on the next iteration the loop would
+process BAR2.
 
-arm example (ARM TC2):
-root@morras01-tc2:~# lstopo
-Machine (985MB)
-  Package L#0
-    Core L#0 + PU L#0 (P#0)
-    Core L#1 + PU L#1 (P#1)
-  Package L#1
-    Core L#2 + PU L#2 (P#2)
-    Core L#3 + PU L#3 (P#3)
-    Core L#4 + PU L#4 (P#4)
+> If 2 consecutive BARs are marked as reserved in reserved_bar of epc_features,
+> the result should be the same right?
 
-Morten
+If both BAR0 and BAR2 are reserved and also 64-bit, the loop would
+check BAR0 on its first iteration and skip BAR0 and BAR1, check BAR2
+on its second iteration and skip BAR2 and BAR3, then check BAR4 on its
+third iteration. If BAR4 is also 64-bit and reserved, the loop would
+skip BAR4 and BAR5 and that would be the final iteration of the loop.
+
+Regards,
+Alan
 
 _______________________________________________
 linux-riscv mailing list
