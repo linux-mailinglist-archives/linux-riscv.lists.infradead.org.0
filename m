@@ -2,74 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 191463229B
-	for <lists+linux-riscv@lfdr.de>; Sun,  2 Jun 2019 10:03:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C5273229E
+	for <lists+linux-riscv@lfdr.de>; Sun,  2 Jun 2019 10:05:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NiXWsaCYS/ds5WByT/Y6oKcFBoUOFeDflX9REXZxoPo=; b=qjvuN9s7ZcMtr0
-	uRs+l2s/WO2ki2qe/nqn13wzQmEHpSjLVvrJk9vtr3J1nt/22paA2ZtmJqRjTwLPktWYPPIOGjGb2
-	MRoKbd6Toam3Bq/Rk+4Gwv7Efb99kypsqNK1bjysLzlaod4owHYNmvfDEl6q/XECo+YNY72AEbxEZ
-	27Y8EaMWTZGkRSiya6nXIZxPXMLeQCKWV95GF5TlKE9bJt/fMf8mIpREvO8JOxd46tO/fPIDgjrtp
-	Rx1d0IhZ73kar4sy5ABsfgjhbbGwGuswzPM/pu+RJRHC8H6EgH22+Ed6+p6TO5Lw7dRcICoLvjB5i
-	RNS77qNMVu/y6apTcinw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=os7b5c6j9xKAlHQROKYqFGmebmUEnoHz/S9py+pVKK4=; b=qSPy8QxhYYSRwV
+	u6qiMWtn0JFuCA/RfntWkIvCFl9/xTZGu3TNTCSca1Aa/c8lr3IMQzUIWXG+PAVghQUGbtbW8lyoR
+	U2pxCAYtDSbA+thoAc5vhu+FABCZGX997LX+zk3EamrlQ8xlRsQwG1bHIWwrnSgMIEM5kSVQhwigO
+	zoM3gfbV03C8f1/xi6o3JWUKqRfB710DAc1oZRuL1IN+joFnEfPpgudMAD097upIeRyWoPF607ykc
+	BfaWRdeZozNgoufv03pfpQuoxhSwOaL5m6ZkY+ZjDrMaMjB/wrqurqJr0RfjIOxomL3AtuWRCz32x
+	/EFhAPl1PO2VeI48Y1eQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXLSH-0003ew-Kn; Sun, 02 Jun 2019 08:03:01 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1hXLUL-0004Vg-2P; Sun, 02 Jun 2019 08:05:09 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXLSD-0003d0-Ok
- for linux-riscv@lists.infradead.org; Sun, 02 Jun 2019 08:02:59 +0000
-Received: by mail-wm1-x342.google.com with SMTP id f10so8522686wmb.1
- for <linux-riscv@lists.infradead.org>; Sun, 02 Jun 2019 01:02:57 -0700 (PDT)
+ id 1hXLUH-00040a-3g
+ for linux-riscv@lists.infradead.org; Sun, 02 Jun 2019 08:05:06 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id e16so941015wrn.1
+ for <linux-riscv@lists.infradead.org>; Sun, 02 Jun 2019 01:05:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=lVmMBuEiI1TSAqk1FfU1U7RUZqQknARWWYl0UzTN3/Y=;
- b=czEV6VfJGHSdQrrv7KfOsGVl0G73ngWzwio3YKfOAcumfIM9TrV/w4Z7BC7b8o6mF/
- GewBgTlEEmUNOHIMMOhCJBAbL6rONe/U4BY7S1Y2ictwYrJeZ4iozJLwqqdDA5aI2li9
- krAhN5NgTTXufkDh5VOLGZOSqkhUgCBL5yixxmhL2OEc8ml2fD19C+Bf88n65vy1ZkmY
- qD4jv5We3XUwTJlXTVyNGzZqAsQXMmTkhInBAKEuYkjv1d8r+0+0uKG26Q6CqpysV2Cd
- 2+OiwNORhGauyvRBrw58tYvb3o9Cm71w8TaLhMnaWKhmqgYaDimAcGFb43XvNb53hKVK
- Gwuw==
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RfBHDW1JUK0JUXgOE+kdqfunwUHLMQw5E4XKM+X0x50=;
+ b=Tyvn3lJ+Hn+6mfQzesJkf9ymB8lp12DhLOzE57pnw0t2HwmzHbekPVBhV9ktjkQOUu
+ 6n1/TKoj0feWHdTLe19UJF5vuQpznNybUIch1N7ay9dq2PlleX0vI6soQs+pcv+c3mbH
+ QBqUT0tFP0JGOtyZkmoN2T7nChlW57EOUbNQpW+qZezONAtq4Qa33ThOJYBqKVLEwMeP
+ S1ji36QbPE3eDuFmgYBcCFULKxjLK0t96h4zrbqtZccyWnxznyI0PzXLMyPfSYdjHSXS
+ Qr3zuZir2LJ3g1RdGQyXnSdv50f9xUbKjZVdqOP/aYtbNb5DvVIsMUbSq9TTlWrmWYv+
+ 9eSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=lVmMBuEiI1TSAqk1FfU1U7RUZqQknARWWYl0UzTN3/Y=;
- b=fK2k05iSULRo07A53PEzkXFhuZDuCa5Ap5sKtlH0yTR6e03jvUF9UpP1IG408Lj6qL
- ABLDv/Yt7Lmh7VdEfwxsVc3CNClo/y5Qok4IpxdfiJTA+ir1uBER1ElBHGJhFlMX8oec
- gRa4QFs7oaJdgbPsxcN3gUpPG60U2NlSmWFptUyYoSamlcFvuLhhJVhfMwOOHAh0lUfi
- VuHInzZiOAVGKtJxMlbooPgwlHj2pROZ2vRCOTWZ+wwKeFyCvUnzvLHszURNEs0BOjwE
- OzOMCgM7UMnqMHW+O1QWD0wSyjfV3tZmx5kvb4B6B42Rv6YuRq+r4lyYQaGDLX0vTFwp
- kZDQ==
-X-Gm-Message-State: APjAAAU96/JuyxSXnY2zksGHoUn6G3K19t8f4Hji25IDUEnIJK24idL0
- fk7unNULilFkWUH7L1M2+faz8A==
-X-Google-Smtp-Source: APXvYqyqRK0MO1SgJM+vCDNFXLFtqxjAsoNIptEUPqNrNKCiXiOIpOuGAH27qr3kIa093dNVUbbOdw==
-X-Received: by 2002:a1c:5546:: with SMTP id j67mr10910514wmb.80.1559462576132; 
- Sun, 02 Jun 2019 01:02:56 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RfBHDW1JUK0JUXgOE+kdqfunwUHLMQw5E4XKM+X0x50=;
+ b=Rb8NYr1dNnHLeNUIDI8pZDEj9k5XYXtYCZQnPTEDTo7Xv0Z+v1K4qUVy+Y5yEjz8go
+ f/dXmR2Kv7NrAhboa4q+BUC4waTZwuqOvungEArWUTrF5lF2t8dsH9bO5IDne4tFeSw+
+ ypV+J6B1XnzvzqSJ/IyDMH0KndGVYET8lSfVpSnPJVWDEVo6GtRrQ2QzG41MVokUT0NG
+ QRxs5UckzsMBP0sdIWz5lvIZBJmT2d24Vg838Sp/rd62gZ5iv4uQ+XISGAkMv9ImdQjb
+ QdSyAXU5ZhK+75b/8/5iBky8fTsuBSPD/c9wO/IyDrlGNpljHFimmRt0ySnqvOcfna+0
+ +uDg==
+X-Gm-Message-State: APjAAAWyPZ6ch+XgiREUr99jx4hLJDO+44SbmF+IgV0/VJ0SbcVJiynD
+ Sx0Dqf4asYqdFYp9jfJKXNM4GOopZSY=
+X-Google-Smtp-Source: APXvYqxPpKahl3szXCf32RQ/nitSGGXreypRU0zl7fD72sSc5cnJlU+IQClL5gRggbEud+D4POIfwQ==
+X-Received: by 2002:adf:f350:: with SMTP id e16mr4228612wrp.128.1559462703469; 
+ Sun, 02 Jun 2019 01:05:03 -0700 (PDT)
 Received: from viisi.fritz.box (217-76-161-89.static.highway.a1.net.
  [217.76.161.89])
- by smtp.gmail.com with ESMTPSA id t6sm22208264wmt.34.2019.06.02.01.02.54
+ by smtp.gmail.com with ESMTPSA id l190sm10186301wml.16.2019.06.02.01.05.02
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 02 Jun 2019 01:02:55 -0700 (PDT)
+ Sun, 02 Jun 2019 01:05:02 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 To: linux-kernel@vger.kernel.org,
 	linux-riscv@lists.infradead.org
-Subject: [PATCH 1/5] arch: riscv: add support for building DTB files from DT
- source data
-Date: Sun,  2 Jun 2019 01:02:47 -0700
-Message-Id: <20190602080251.31372-2-paul.walmsley@sifive.com>
+Subject: [PATCH v3 0/5] arch: riscv: add board and SoC DT file support
+Date: Sun,  2 Jun 2019 01:04:55 -0700
+Message-Id: <20190602080500.31700-1-paul.walmsley@sifive.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190602080251.31372-1-paul.walmsley@sifive.com>
-References: <20190602080251.31372-1-paul.walmsley@sifive.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190602_010257_801178_35A576BA 
-X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-CacheID: sfid-20190602_010505_198541_C7327E1B 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -77,7 +74,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:42e listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -99,36 +96,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Paul Walmsley <paul@pwsan.com>, Palmer Dabbelt <palmer@sifive.com>,
- Albert Ou <aou@eecs.berkeley.edu>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Similar to ARM64, add support for building DTB files from DT source
-data for RISC-V boards.
+Add support for building flattened DT files from DT source files under
+arch/riscv/boot/dts.  Follow existing kernel precedent from other SoC
+architectures.  Start our board support by adding initial support for
+the SiFive FU540 SoC and the first development board that uses it, the
+SiFive HiFive Unleashed A00.
 
-This patch starts with the infrastructure needed for SiFive boards.
-Boards from other vendors would add support here in a similar form.
+This third version of the patch set adds I2C data for the chip,
+incorporates all remaining changes that riscv-pk was making
+automatically, and addresses a comment from Rob Herring
+<robh@kernel.org>.
 
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-Signed-off-by: Paul Walmsley <paul@pwsan.com>
-Cc: Palmer Dabbelt <palmer@sifive.com>
-Cc: Albert Ou <aou@eecs.berkeley.edu>
----
- arch/riscv/boot/dts/Makefile | 2 ++
- 1 file changed, 2 insertions(+)
+Boot-tested on v5.2-rc1 on a HiFive Unleashed A00 board, using the
+BBL and open-source FSBL, with modifications to pass in the DTB
+file generated by these patches.
+
+This patch series can be found, along with the PRCI patch set
+and the DT macro prerequisite patch, at:
+
+https://github.com/sifive/riscv-linux/tree/dev/paulw/dts-v5.2-rc1
+
+
+- Paul
+
+
+Paul Walmsley (5):
+  arch: riscv: add support for building DTB files from DT source data
+  dt-bindings: riscv: sifive: add YAML documentation for the SiFive
+    FU540
+  dt-bindings: riscv: convert cpu binding to json-schema
+  riscv: dts: add initial support for the SiFive FU540-C000 SoC
+  riscv: dts: add initial board data for the SiFive HiFive Unleashed
+
+ .../devicetree/bindings/riscv/cpus.yaml       | 168 ++++++++++++++
+ .../devicetree/bindings/riscv/sifive.yaml     |  25 ++
+ MAINTAINERS                                   |   9 +
+ arch/riscv/boot/dts/Makefile                  |   2 +
+ arch/riscv/boot/dts/sifive/Makefile           |   2 +
+ arch/riscv/boot/dts/sifive/fu540-c000.dtsi    | 215 ++++++++++++++++++
+ .../boot/dts/sifive/hifive-unleashed-a00.dts  |  67 ++++++
+ 7 files changed, 488 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/riscv/cpus.yaml
+ create mode 100644 Documentation/devicetree/bindings/riscv/sifive.yaml
  create mode 100644 arch/riscv/boot/dts/Makefile
+ create mode 100644 arch/riscv/boot/dts/sifive/Makefile
+ create mode 100644 arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+ create mode 100644 arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
 
-diff --git a/arch/riscv/boot/dts/Makefile b/arch/riscv/boot/dts/Makefile
-new file mode 100644
-index 000000000000..dcc3ada78455
---- /dev/null
-+++ b/arch/riscv/boot/dts/Makefile
-@@ -0,0 +1,2 @@
-+# SPDX-License-Identifier: GPL-2.0
-+subdir-y += sifive
 -- 
 2.20.1
 
