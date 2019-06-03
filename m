@@ -2,88 +2,56 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4265F329BE
-	for <lists+linux-riscv@lfdr.de>; Mon,  3 Jun 2019 09:36:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 84D4232AEC
+	for <lists+linux-riscv@lfdr.de>; Mon,  3 Jun 2019 10:34:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=F7qD4vohh+lHtUXQrKsZE+kOkxM17DUs42AXN/dKvcc=; b=YCmqaAIbouni0wdtdWqW7KtVmB
-	YpgiwZ+NncUtctNyicDuPRFbF31WXs6GRtKFmu/179iapXS8/BL4PhOYnlf6zdCRMfOfsTUDnD4Ak
-	0iNdA9O0RRyUdZmoUX+7hsAJGabfPLDA7FL3u895kP8z38j5RJJKFV+6UKB7ang6AfCSXyZaDV3Ug
-	slkrzInbOuyGGCfjVBoGz5/mz7FWPTLsf07mM86kJRxoqMAndiyvhNTCMZWg0X25oqN2dRZaERncV
-	2PQ3Ract42OAT5BPUHHUa4/tIfF9rR4uGvtvEDTIVW9GasHLM/5CVn6KObk+eXy2ZuIrXJUWE1tAL
-	+48Z2CvQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Mbc+LbT2OTb8HsZgoOT1AF+D1T9bBARUyqV+VyE33ec=; b=sJQBP49aD0YC7/
+	yWfHfYOMcOu5ZiPXM8Tzy+VCCgJz6H9kFHE3jHZkItaoEsfCYWMY2yPiTJJWeAJLf+UV+OXA7rpoS
+	0mT5RO353Snji9FvdnagWqrMT3HI2TgjWUsEVga6rbd8yLbq14p6ozmlCBphuGFw60H//Cr8vNCkZ
+	SEE958C8HZIKjsQiXKIuKFx1DSyA+gweuBAdnARW06wg5WvvKoX3vPW5/XgerAc6dnE1A36xwEZOx
+	N6MDpAlriLPuqULWJzl/DXiNUi5A4JYDd+Ekownn//gKdu6nU8/xVonBubXF8VDnn4kErWKNwZ5s6
+	j/fnzmD6UqB5lbx40qRg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXhVo-0005Vi-Fl; Mon, 03 Jun 2019 07:36:08 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1hXiQS-0007LP-Ou; Mon, 03 Jun 2019 08:34:40 +0000
+Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXhVl-0005VP-Am
- for linux-riscv@lists.infradead.org; Mon, 03 Jun 2019 07:36:06 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id x537a2wt062770;
- Mon, 3 Jun 2019 02:36:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1559547362;
- bh=J/ejpkPe6HKf7RmhY8bOeErC2DlZumaIg+UR1lXhtrg=;
- h=Subject:To:References:From:Date:In-Reply-To;
- b=REdUpDc6JQ2yzTCS2CoagRIqkJuDG7NJ1KQjv6UXMvbdyicw2uvmLD/KYE+ZYEt9x
- cPuMIy4BhvuQAPCpjU9hMOMCBBtrkST/zZLPRk8LAzYnLci87NirUQnMy2AAeeXQzq
- iy0t1BYGp+EbotwZqiRgLj6h/WjOfPcHOqtSZpa0=
-Received: from DFLE106.ent.ti.com (dfle106.ent.ti.com [10.64.6.27])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x537a2Nk041255
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 3 Jun 2019 02:36:02 -0500
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE106.ent.ti.com
- (10.64.6.27) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Mon, 3 Jun
- 2019 02:36:01 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Mon, 3 Jun 2019 02:36:01 -0500
-Received: from [172.24.190.233] (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id x537ZxEm099881;
- Mon, 3 Jun 2019 02:35:59 -0500
-Subject: Re: [PATCH v2] PCI: endpoint: Skip odd BAR when skipping 64bit BAR
-To: Alan Mikhak <alan.mikhak@sifive.com>, <linux-pci@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <lorenzo.pieralisi@arm.com>,
- <linux-riscv@lists.infradead.org>, <palmer@sifive.com>,
- <paul.walmsley@sifive.com>
-References: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Message-ID: <00db2302-3260-1cca-5a65-2280881cfc7a@ti.com>
-Date: Mon, 3 Jun 2019 13:04:38 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ id 1hXiQP-0007Jp-6x
+ for linux-riscv@lists.infradead.org; Mon, 03 Jun 2019 08:34:39 +0000
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07457966|-1; CH=green;
+ DM=CONTINUE|CONTINUE|true|0.308558-0.00702582-0.684416; FP=0|0|0|0|0|-1|-1|-1;
+ HT=e01l01425; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=2; RT=2; SR=0;
+ TI=SMTPD_---.EgonVnk_1559550871; 
+Received: from localhost(mailfrom:han_mao@c-sky.com
+ fp:SMTPD_---.EgonVnk_1559550871)
+ by smtp.aliyun-inc.com(10.147.40.26); Mon, 03 Jun 2019 16:34:31 +0800
+Date: Mon, 3 Jun 2019 16:33:27 +0800
+From: Mao Han <han_mao@c-sky.com>
+To: linux-kernel@vger.kernel.org
+Subject: Re: [PATCH V3 0/3] riscv: Add perf callchain support
+Message-ID: <20190603083327.GA3101@vmh-VirtualBox>
+References: <cover.1558081981.git.han_mao@c-sky.com>
 MIME-Version: 1.0
-In-Reply-To: <1558648540-14239-1-git-send-email-alan.mikhak@sifive.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Disposition: inline
+In-Reply-To: <cover.1558081981.git.han_mao@c-sky.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190603_003605_454115_3BD05466 
-X-CRM114-Status: GOOD (  19.84  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190603_013437_419193_3B2F087E 
+X-CRM114-Status: GOOD (  12.52  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [198.47.23.249 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,104 +63,70 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Cc: linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
-
-On 24/05/19 3:25 AM, Alan Mikhak wrote:
-> Always skip odd bar when skipping 64bit BARs in pci_epf_test_set_bar()
-> and pci_epf_test_alloc_space().
+PING?
+On Fri, May 17, 2019 at 04:43:01PM +0800, Mao Han wrote:
+> This patch set add perf callchain(FP/DWARF) support for RISC-V.
+> It comes from the csky version callchain support with some
+> slight modifications. The patchset base on Linux 5.1.
 > 
-> Otherwise, pci_epf_test_set_bar() will call pci_epc_set_bar() on odd loop
-> index when skipping reserved 64bit BAR. Moreover, pci_epf_test_alloc_space()
-> will call pci_epf_alloc_space() on bind for odd loop index when BAR is 64bit
-> but leaks on subsequent unbind by not calling pci_epf_free_space().
+> CC: Palmer Dabbelt <palmer@sifive.com>
+> CC: linux-riscv <linux-riscv@lists.infradead.org>
+> CC: Christoph Hellwig <hch@lst.de>
+> CC: Guo Ren <guoren@kernel.org>
 > 
-> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
-> Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
-
-Acked-by: Kishon Vijay Abraham I <kishon@ti.com>
-> ---
->  drivers/pci/endpoint/functions/pci-epf-test.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
+> Changes since v2:
+>   - fix inconsistent comment
+>   - force to build kernel with -fno-omit-frame-pointer if perf
+>     event is enabled
 > 
-> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-> index 27806987e93b..96156a537922 100644
-> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
-> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-> @@ -389,7 +389,7 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
->  
->  static int pci_epf_test_set_bar(struct pci_epf *epf)
->  {
-> -	int bar;
-> +	int bar, add;
->  	int ret;
->  	struct pci_epf_bar *epf_bar;
->  	struct pci_epc *epc = epf->epc;
-> @@ -400,8 +400,14 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
->  
->  	epc_features = epf_test->epc_features;
->  
-> -	for (bar = BAR_0; bar <= BAR_5; bar++) {
-> +	for (bar = BAR_0; bar <= BAR_5; bar += add) {
->  		epf_bar = &epf->bar[bar];
-> +		/*
-> +		 * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
-> +		 * if the specific implementation required a 64-bit BAR,
-> +		 * even if we only requested a 32-bit BAR.
-> +		 */
-> +		add = (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64) ? 2 : 1;
->  
->  		if (!!(epc_features->reserved_bar & (1 << bar)))
->  			continue;
-> @@ -413,13 +419,6 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
->  			if (bar == test_reg_bar)
->  				return ret;
->  		}
-> -		/*
-> -		 * pci_epc_set_bar() sets PCI_BASE_ADDRESS_MEM_TYPE_64
-> -		 * if the specific implementation required a 64-bit BAR,
-> -		 * even if we only requested a 32-bit BAR.
-> -		 */
-> -		if (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64)
-> -			bar++;
->  	}
->  
->  	return 0;
-> @@ -431,7 +430,7 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
->  	struct device *dev = &epf->dev;
->  	struct pci_epf_bar *epf_bar;
->  	void *base;
-> -	int bar;
-> +	int bar, add;
->  	enum pci_barno test_reg_bar = epf_test->test_reg_bar;
->  	const struct pci_epc_features *epc_features;
->  
-> @@ -445,8 +444,10 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
->  	}
->  	epf_test->reg[test_reg_bar] = base;
->  
-> -	for (bar = BAR_0; bar <= BAR_5; bar++) {
-> +	for (bar = BAR_0; bar <= BAR_5; bar += add) {
->  		epf_bar = &epf->bar[bar];
-> +		add = (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64) ? 2 : 1;
-> +
->  		if (bar == test_reg_bar)
->  			continue;
->  
-> @@ -459,8 +460,6 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
->  			dev_err(dev, "Failed to allocate space for BAR%d\n",
->  				bar);
->  		epf_test->reg[bar] = base;
-> -		if (epf_bar->flags & PCI_BASE_ADDRESS_MEM_TYPE_64)
-> -			bar++;
->  	}
->  
->  	return 0;
+> Changes since v1:
+>   - simplify implementation and code convention
 > 
+> Mao Han (3):
+>   riscv: Add perf callchain support
+>   riscv: Add support for perf registers sampling
+>   riscv: Add support for libdw
+> 
+>  arch/riscv/Kconfig                            |   2 +
+>  arch/riscv/Makefile                           |   3 +
+>  arch/riscv/include/uapi/asm/perf_regs.h       |  42 ++++++++++
+>  arch/riscv/kernel/Makefile                    |   4 +-
+>  arch/riscv/kernel/perf_callchain.c            | 113 ++++++++++++++++++++++++++
+>  arch/riscv/kernel/perf_regs.c                 |  44 ++++++++++
+>  tools/arch/riscv/include/uapi/asm/perf_regs.h |  42 ++++++++++
+>  tools/perf/Makefile.config                    |   6 +-
+>  tools/perf/arch/riscv/Build                   |   1 +
+>  tools/perf/arch/riscv/Makefile                |   3 +
+>  tools/perf/arch/riscv/include/perf_regs.h     |  96 ++++++++++++++++++++++
+>  tools/perf/arch/riscv/util/Build              |   2 +
+>  tools/perf/arch/riscv/util/dwarf-regs.c       |  72 ++++++++++++++++
+>  tools/perf/arch/riscv/util/unwind-libdw.c     |  57 +++++++++++++
+>  14 files changed, 485 insertions(+), 2 deletions(-)
+>  create mode 100644 arch/riscv/include/uapi/asm/perf_regs.h
+>  create mode 100644 arch/riscv/kernel/perf_callchain.c
+>  create mode 100644 arch/riscv/kernel/perf_regs.c
+>  create mode 100644 tools/arch/riscv/include/uapi/asm/perf_regs.h
+>  create mode 100644 tools/perf/arch/riscv/Build
+>  create mode 100644 tools/perf/arch/riscv/Makefile
+>  create mode 100644 tools/perf/arch/riscv/include/perf_regs.h
+>  create mode 100644 tools/perf/arch/riscv/util/Build
+>  create mode 100644 tools/perf/arch/riscv/util/dwarf-regs.c
+>  create mode 100644 tools/perf/arch/riscv/util/unwind-libdw.c
+> 
+> -- 
+> 2.7.4
+> 
+> 
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
