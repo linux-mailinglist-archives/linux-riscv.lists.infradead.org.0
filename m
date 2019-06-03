@@ -2,91 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D020336FC
-	for <lists+linux-riscv@lfdr.de>; Mon,  3 Jun 2019 19:42:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91E25338F5
+	for <lists+linux-riscv@lfdr.de>; Mon,  3 Jun 2019 21:18:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3UhOL0QILRmkDVFUW/Lm8msYkNmo7JD8QoCCWTxF/oE=; b=q5iyZlQwBFB2JX
-	7W/8boQYny53RDmSgauZa/xDUx16/1U4OCySZNz6+lpuMZg5V15lo59jdIo5zo3aUh14YN9b7RB5B
-	J8ZeKoS5HeBuUwPuWLf5ax0duq/6lyyDT5923ar/3jVxbsBDGeMphv4+POwcjjowB7/udOo19aOiK
-	gjEYHJc5DJuB1aZQHDTXrE0aeeJdpd2uMKi3TAFHX5ssUDadZyqly9lnjJNK1rN6iW1Lq0dQP4dT2
-	aiQwgfOV7yxxw1J9xFrQNndXtmJnqTUCvclfCr9zdlPhREvI2MukbBDqRa2gaDqhvCV3idF33dLCI
-	xbM9UIS+slAJplE6AS/A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=NllA0eiZysouHiIx4/M/RgOf6LRuBChcrz9nktm+dvY=; b=rw9NcWFvxdz1t1Bhr3gdr/Cz7
+	7bLvSkhCxCjf2wxp51hrE9/p+K2M7lE0TSIHrug/XXRY+CorznFvDc9pK8c4IEnooPspZwPp4GsA5
+	a32yV7mCQopS7O+ptsK5uA2ad301ZD9S1z5jW2QeGQvxGhbVI+j2kZVqo1D8Dlg6THzdO8Kq/CR+0
+	scdWA/CIF6NKZzhqzD8Og/D7xeRjcPVYR1yjLQHRHafE2JvR+DFGiRjpVOMGCDJsKvgJve96oJ2qG
+	p634TqAVzIPXbNcrNy/2RTu0mAIv9X8i/hIzAhUs98n38yOSBEXtpAvraHXzEXvJPJ9HDmtgOSkns
+	RdtVgAbnw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXqyy-0008Uk-0v; Mon, 03 Jun 2019 17:42:52 +0000
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
+	id 1hXsSv-0008JT-HG; Mon, 03 Jun 2019 19:17:53 +0000
+Received: from mail-pl1-f195.google.com ([209.85.214.195])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXqyu-0008U1-I7
- for linux-riscv@lists.infradead.org; Mon, 03 Jun 2019 17:42:49 +0000
-Received: by mail-lj1-x242.google.com with SMTP id 16so3473621ljv.10
- for <linux-riscv@lists.infradead.org>; Mon, 03 Jun 2019 10:42:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BS0Zh3jyjSb17eotilocZwY1GzUHeKUqjyq+4Kft1pQ=;
- b=NLVEIvLReVVSzUzdDGbor2dZ8ubeUlpmhNjUd82WAFgUKIBO7BoTaJIz44rPbkJPrM
- JJz4js2fDKmejIAwjlAnvQUcKyHnNvReqS52dXsAbD52WeR9RocU/fFCzu8ITS9tQb+D
- sjdkFNrjpp4ImFYc4Kuo0V3DKMhlkSDsj4aV0PqjKBhap8WtjQEFx4oGPrufWt9qZt13
- IDkqSzV1VP9Tf7KZJTXe3BxwI+so/wNAIi1UwJ/LM5p+TAe/TOZwfJ7kqtY5LqqbxW1q
- FsUPRQuHOQNPJr0m9+/rAnq/VlACSBwzANEDY+HFEiaFoP6z/PllCBlxwNNdkyJvoWe+
- 4odQ==
+ id 1hXsSq-0008J8-2H
+ for linux-riscv@lists.infradead.org; Mon, 03 Jun 2019 19:17:51 +0000
+Received: by mail-pl1-f195.google.com with SMTP id cl9so2239369plb.10
+ for <linux-riscv@lists.infradead.org>; Mon, 03 Jun 2019 12:17:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BS0Zh3jyjSb17eotilocZwY1GzUHeKUqjyq+4Kft1pQ=;
- b=eZqCjuXlPMvI67bc8UiO8S2Qwk+xzw5rdI0cj8Bg1GTKGcPNsBDm7kdzuDGbugqeu7
- z6xX+Yys9xGRAKdvNXFbKXsmDyR3yEsRUTjAVSgMG3MkWKLr+ZixTCmpK+n8i3RdmcHQ
- ZXLN7sNFMqrQvJ+M4ziXYyo0+eHsbCAGd2+UEsOZNVNmLp4v5zSYfwxQE/kUwWCtOaPm
- 8EGI240Onm1MjshJM8RVaVCwIR4C6VSwQ2X5/rHlg74I9HPDmsq4e2EfPdzw8kG/Dqn9
- IHMCmp9AKlYwY1w1IJB2YKMBhrDOhebJPsLU6En9z12kr+5uMl+6TegZdz1x2Oqjs8br
- BSxQ==
-X-Gm-Message-State: APjAAAUzkLVnqkB9004P/bXL8w4tWVK+Ok5QS+zOGmhPmF/tLQtvvWfx
- mwSBgG6p0fjlbhAsuQ8sicA/bO6NAlNkhUQktKcE4w==
-X-Google-Smtp-Source: APXvYqy7436P4CRHoCyJ2XXuGEbIzmE7qmlHxfIe0H476OtQDIN20Vza1a6fj3+LTeOrwhyyTraNzBYtaxJteM56H8U=
-X-Received: by 2002:a2e:8587:: with SMTP id b7mr14668645lji.101.1559583766018; 
- Mon, 03 Jun 2019 10:42:46 -0700 (PDT)
-MIME-Version: 1.0
-References: <1558650258-15050-1-git-send-email-alan.mikhak@sifive.com>
- <305100E33629484CBB767107E4246BBB0A6FAFFD@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxsQ9NXrN7W_8HVrXQBb9HiBd+d1dNfv+cXmoBpXQnLwA@mail.gmail.com>
- <305100E33629484CBB767107E4246BBB0A6FC308@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxL-WYz1BY7yXJ6eKULgVtKeo67XhgHZjvtm5Ka5foKiA@mail.gmail.com>
- <192e3a19-8b69-dfaf-aa5c-45c7087548cc@ti.com>
- <CABEDWGxLeD-K8PjkD5hPSTFGJKs2hxEaAVO+nE5eC9Nx2yw=ig@mail.gmail.com>
- <75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com>
- <CABEDWGxBxmiKjoPUSUaUBXUhKkUTXVX0U9ooRou8tcWJojb52g@mail.gmail.com>
- <6e692ff6-e64f-e651-c8ae-34d0034ad7b9@ti.com>
-In-Reply-To: <6e692ff6-e64f-e651-c8ae-34d0034ad7b9@ti.com>
-From: Alan Mikhak <alan.mikhak@sifive.com>
-Date: Mon, 3 Jun 2019 10:42:34 -0700
-Message-ID: <CABEDWGx2N66L=27JY6Ywbfny78UaxENkxBTqxU37PfuQO-ZMZw@mail.gmail.com>
-Subject: Re: [PATCH] PCI: endpoint: Add DMA to Linux PCI EP Framework
-To: Kishon Vijay Abraham I <kishon@ti.com>
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=wggfGMSZfZ9XoneYZHdwSwE4VJv0AhhzQyhYEQIfECQ=;
+ b=HeFQbM1Ze75KQ8YI/bNp7ADCN5N1mblGGIxJVaSFnBdBo5GYyf/MEKWMq5OKoZRz+D
+ XVOBKl9o/x6IivTY35oHtqR4KELB6xDexz9PDmLXoGeMArmXcndV6o2F51j3tvTXi7O5
+ sMB1sQu2ir5xPBpqBqJab7KWyh96L44fbX8Nx9w3Q3A9bsAHzZKrCp6+bGcgJBbOGY0Y
+ fomOIBzS6CTxGsAXSBrobYO3tEcUxxjv0iks1fDe+xD8CqHWZtMMQfSXja/jwqqsn6Tn
+ 1SqGtijE4wF3DL+iyvDBtNDCSljP+MCEg6RF6K4enoIzgXAzMZJN7kNCtvMyUC8LHJVo
+ IEIg==
+X-Gm-Message-State: APjAAAVaTOE0WWjlUgQWhgWOebtzRIcwvihG1AbYDseYcspiMS5Wc50H
+ 3PDnvmBNnr8C4GPd2gBkxOXLBQ==
+X-Google-Smtp-Source: APXvYqzo2+tR+4k9WHiovgfKMw1/WJPNVuPmvSeWJ1uUNoJGf6XOK6wp1HbrJCKeAG61/kQ6/OuO+A==
+X-Received: by 2002:a17:902:b713:: with SMTP id
+ d19mr32298672pls.123.1559589464562; 
+ Mon, 03 Jun 2019 12:17:44 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id b128sm9554599pfa.165.2019.06.03.12.17.42
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 03 Jun 2019 12:17:43 -0700 (PDT)
+Date: Mon, 03 Jun 2019 12:17:43 -0700 (PDT)
+X-Google-Original-Date: Mon, 03 Jun 2019 12:17:31 PDT (-0700)
+Subject: Re: [U-Boot] Distro bootcmd: Re: 5.2-rc1 boot on Unleashed
+In-Reply-To: <20190603170257.GF7705@bill-the-cat>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: trini@konsulko.com
+Message-ID: <mhng-8c636590-653b-4675-a4a3-94d2f2950ea0@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190603_104248_605161_FDE0D5B8 
-X-CRM114-Status: GOOD (  17.33  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190603_121748_105388_0C08D1AA 
+X-CRM114-Status: GOOD (  21.02  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:242 listed in]
- [list.dnswl.org]
+ no trust [209.85.214.195 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.214.195 listed in wl.mailspike.net]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,62 +82,67 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "arnd@arndb.de" <arnd@arndb.de>, "jingoohan1@gmail.com" <jingoohan1@gmail.com>,
- Gustavo Pimentel <Gustavo.Pimentel@synopsys.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, "kjlu@umn.edu" <kjlu@umn.edu>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "wen.yang99@zte.com.cn" <wen.yang99@zte.com.cn>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Dany Nativel <dany.nativel@sifive.com>, schwab@suse.de, U-Boot@lists.denx.de, Björn Töpel <bjorn.topel@gmail.com>, Troy Benjegerdes <troy.benjegerdes@sifive.com>, linux-riscv@lists.infradead.org, merker@debian.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Jun 2, 2019 at 9:43 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> Hi Alan,
-> On 31/05/19 11:46 PM, Alan Mikhak wrote:
-> > On Thu, May 30, 2019 at 10:08 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> >> Hi Alan,
-> >>> Hi Kishon,
-> >>
-> >> I still have to look closer into your DMA patch but linked-list mode or single
-> >> block mode shouldn't be an user select-able option but should be determined by
-> >> the size of transfer.
-> >
-> > Please consider the following when taking a closer look at this patch.
->
-> After seeing comments from Vinod and Arnd, it looks like the better way of
-> adding DMA support would be to register DMA within PCI endpoint controller to
-> DMA subsystem (as dmaengine) and use only dmaengine APIs in pci_epf_test.
-
-Thanks Kishon. That makes it clear where these pieces should go.
-
-> > In my specific use case, I need to verify that any valid block size,
-> > including a one byte transfer, can be transferred across the PCIe bus
-> > by memcpy_toio/fromio() or by DMA either as a single block or as
-> > linked-list. That is why, instead of deciding based on transfer size,
-> > this patch introduces the '-L' flag for pcitest to communicate the
-> > user intent across the PCIe bus to pci-epf-test so the endpoint can
-> > initiate the DMA transfer using a single block or in linked-list mode.
-> The -L option seems to select an internal DMA configuration which might be
-> specific to one implementation. As Gustavo already pointed, we should have only
-> generic options in pcitest. This would no longer be applicable when we move to
-> dmaengine.
-
-Single-block DMA seemed as generic as linked-list DMA and
-memcpy_toio/fromio. It remains unclear how else to communicate that
-intent to pci_epf_test each time I invoke pcitest.
-
-Regards,
-Alan
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gTW9uLCAwMyBKdW4gMjAxOSAxMDowMjo1NyBQRFQgKC0wNzAwKSwgdHJpbmlAa29uc3Vsa28u
+Y29tIHdyb3RlOgo+IE9uIE1vbiwgSnVuIDAzLCAyMDE5IGF0IDA5OjQ0OjI4QU0gLTA1MDAsIFRy
+b3kgQmVuamVnZXJkZXMgd3JvdGU6Cj4+IAo+PiAKPj4gPiBPbiBKdW4gMywgMjAxOSwgYXQgNTo0
+OSBBTSwgQW5kcmVhcyBTY2h3YWIgPHNjaHdhYkBzdXNlLmRlPiB3cm90ZToKPj4gPiAKPj4gPiBP
+biBNYWkgMjkgMjAxOSwgS2Fyc3RlbiBNZXJrZXIgPG1lcmtlckBkZWJpYW4ub3JnPiB3cm90ZToK
+Pj4gPiAKPj4gPj4gTWFpbmxpbmUgVS1Cb290IGFscmVhZHkgdXNlcyB0aGUgZGlzdHJvIGJvb3Rj
+bWQgZW52aXJvbm1lbnQgZm9yCj4+ID4+IHRoZSBxZW11ICJ2aXJ0IiBtYWNoaW5lIGFuZCBpdCB3
+b3JrcyB3ZWxsLgo+PiA+IAo+PiA+IFRoZSBkaXN0cm9fYm9vdGNtZCBkb2Vzbid0IHdvcmsgZm9y
+IHRoZSBzaWZpdmUgcGxhdGZvcm0geWV0IGJlY2F1c2UgaXQKPj4gPiBkb2Vzbid0IHNldCB0aGUg
+Y29ycmVjdCBNQUMgYWRkcmVzcyBmb3IgYm9vdGluZy4KPj4gPiAKPj4gPiBBbmRyZWFzLgo+PiA+
+IAo+PiAKPj4gQmVmb3JlIHdlIGdvIGFuIHVzZSBkaXN0cm9fYm9vdGNtZCBhbmQgZHJhZyBpbiBh
+IGJ1bmNoIG9mIGxlZ2FjeSBzdHVmZiAKPj4gd2UgcmVhbGx5IHNob3VsZCBub3QgYmUgdXNpbmcs
+IGNhbiB3ZSBtYWtlIHNvbWUga2luZCBvZiBlZmZvcnQgdG8gZGVjaWRlCj4+IHdoYXQgdGhlIGRl
+c2lnbiBnb2FscyBhbmQgYm9vdCBmbG93IHNob3VsZCBsb29rIGxpa2UgaW5zdGVhZCB1c2luZyB0
+aGUgCj4+IGRlZmF1bHQgbGVnYWN5IGJlaGF2aW9yIG9mIGEgYnVuY2ggb2YgaGFyZCB0byByZWFk
+IGFuZCBtYWludGFpbiBDUFAKPj4gbWFjcm9zPwo+Cj4gSSBmZWVsIGxpa2UgeW91J3JlIGNhbGxp
+bmcgIndoYXQgZXZlcnlvbmUgYWdyZWVkIG9uIGFuZCB1c2VzIHRvZGF5Igo+IGxlZ2FjeSBqdXN0
+IGJlY2F1c2UgaXQgYWxyZWFkeSBleGlzdHMuICBJdCBpcyBhIGJpdCBjb21wbGV4IGJlY2F1c2UK
+PiBkZXZpY2VzIGFyZSBzbyBjb21wbGV4LCByYXRoZXIgdGhhbiBpdCBoYXZpbmcgdG8gc3VwcG9y
+dCBvbmUtb2ZmCj4gc2l0dWF0aW9ucyBvciBzaW1pbGFyIHRoaW5ncyBwZW9wbGUgdXN1YWxseSBj
+YWxsICJsZWdhY3kiLgoKVGhlIGdvYWwgaW4gUklTQy1WIGxhbmQgaXMgdG8gYXZvaWQgaW52ZW50
+aW5nIG91ciBvd24gc3R1ZmYsIHBhcnRpY3VsYXJseSB3aGVuCnRoZXJlJ3MgYW4gYWdyZWVkIHVw
+b24gd2F5IG9mIGRvaW5nIHRoaW5ncy4gIEFzIGZhciBhcyBJIGNhbiB0ZWxsIHRoZSB1c2Vycwoo
+aWUsIGRpc3Ryb3MpIGFsbCB3YW50IHRoaXMgZGlzdHJvX2Jvb3RjbWQgc3R1ZmYgYmVjYXVzZSBp
+dCdzIHdoYXQgYWxyZWFkeQp3b3JrcyBpbiBBUk0gbGFuZC4gIFdoaWxlIEknbSBub3QgcmVhbGx5
+IGEgYm9vdGxvYWRlciBndXksIHRoZSBnZW5lcmFsCmFyZ3VtZW50cyBpbiBmYXZvciBvZiBkaXN0
+cm9fYm9vdGNtZCBhcHBhZXIgdG8gYmUgIndlIHRyaWVkIGl0IHNvbWUgb3RoZXIgd2F5cwphbmQg
+dGhhdCB3YXMgYSBtZXNzLCBidXQgdGhpcyB3YXkgd29ya3MiLiAgVGhhdCBpcyBhIHJlYWxseSBz
+dHJvbmcgYXJndW1lbnQgdG8KbWUuCgo+PiBUaGUgZmlyc3QgdGhpbmcgSSBub3RpY2UgaXMgdGhh
+dCB0aGUgZGVmYXVsdCBkaGNwIHRhcmdldCBpcyDigJhib290LnNjci51aW1n4oCZLgo+PiAKPj4g
+V2hhdCBnb29kIGRvZXMgaXQgZG8gbGludXggZGlzdHJvcyBvbiBSaXNjViB0byBrZWVwIHVzaW5n
+IHRoZSBvbGQgYm9vdAo+PiBzY3JpcHQgZm9ybWF0LCByYXRoZXIgdGhhbiBqdXN0IGxvYWQgYSB0
+ZXh0IGZpbGUgYW5kIHVzZSDigJhlbnYgaW1wb3J04oCZPyBJcyB0aGVyZQo+PiBzb21lIGJlbmVm
+aXQgdG8gdGhpcz8gRG8gd2UgZ2FpbiBzb21ldGhpbmcgZnJvbSB0aGUgLnNjciBmb3JtYXQsIGxp
+a2UKPj4gbWF5YmUgY3J5cHRvZ3JhcGhpYyBzaWduYXR1cmUgc3VwcG9ydD8KPgo+IFdyaXRpbmcg
+dGhpbmdzIG91dCBpbiBzY3JpcHQgZm9ybWF0IGVuZHMgdXAgYmVpbmcgbW9yZSBuYXR1cmFsIChh
+bmQKPiBlYXNpZXIgdG8gdW5kZXJzdGFuZCkgdGhhbiB3cml0aW5nIHRoaW5ncyBvdXQgaW4gZW52
+aXJvbm1lbnQgZm9ybWF0Lgo+IFRoaXMgaXMgd2h5IHdoaWxlIEkgd2lzaCB0aGUgInVFbnYudHh0
+IiBob29rIGhhZCBiZWNvbWUgbW9yZSBwb3B1bGFyIGFuZAo+IHdpZGVseSB1c2VkLCBhdCB0aGlz
+IHBvaW50IEkgYWxzbyB1bmRlcnN0YW5kIHdoeSBpdCB3YXNuJ3QuICBEb2luZwo+IGE9Zm9vCj4g
+Yj1iYXIKPiBjPWJhego+IG1hZ2ljX25hbWU9ZG8gdGhpcztkbyB0aGF0Cj4KPiBXYXMgbm90IGVh
+c2llciBub3IgbW9yZSB1bmRlcnN0YW5kYWJsZSB0aGFuOgo+IHNldGVudiBhIGZvbwo+IHNldGVu
+diBiIGJhcgo+IHNldGVudiBjIGJhego+IGRvIHRoaXM7IGRvIHRoYXQKPgo+PiBIb3cgZG8gd2Ug
+d2FudCB0byBzdXBwb3J0IHNlY3VyZSBib290IGludG8gRGViaWFuLCBGZWRvcmEsIGFuZCBTdXNl
+LAo+PiBhbmQgZG9lcyBkaXN0cm9fYm9vdGNtZCBoYXZlIGEgd2F5IHRvIGRvIHRoaXMsIG9yIGNh
+biB3ZSBjb21lIHVwIHdpdGgKPj4gc29tZSBpbXByb3ZlbWVudCB0aGF0IGRvZXNu4oCZdCBkZXBl
+bmQgb24gdHJ5aW5nIHRvIGRvIGFsbCB0aGUgd29yayBpbgo+PiBDUFAgbWFjcm9zIGFuZCBVLWJv
+b3QgcnVudGltZSBzY3JpcHRzPwo+Cj4gSSB0aGluayB0aGUgZ2VuZXJhbCBhbnN3ZXIgYWJvdXQg
+InNlY3VyZSBib290IiBpcyB0aGF0IGRpc3Ryb3Mgd2FudAo+ICJVRUZJIHNlY3VyZSBib290Ii4g
+IEFuZCBJIHdhbnQgdG8gbWFrZSBzdXJlIHRoYXQncyBkb25lIGluIHN1Y2ggYSB3YXkKPiB0aGF0
+IHRoaW5ncyBsaWtlIHVzZXItb3duZWQgc2VjdXJlIGJvb3QgYXJlbid0IGFueSBtb3JlIGRpZmZp
+Y3VsdCB0aGFuCj4gdmVuZG9yIHNlY3VyZWQgYm9vdC4gIEl0IHNlZW1zIGxpa2UgbWFraW5nIHVz
+ZSBvZiBleGlzdGluZyBzZWN1cmUgYm9vdAo+IG1lY2hhbmlzbXMgaGFzIHNldCBhc2lkZSBhcywg
+d2VsbCwgSSBkb24ndCB3YW50IHRvIHRocm93IHNuYXJrIGFyb3VuZAo+IG15c2VsZiwgc28gSSds
+bCByZWZyYWluIGZyb20gc3BlY3VsYXRpbmcuCj4KPiAtLSAKPiBUb20KCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlz
+dApsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcmlzY3YK
