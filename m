@@ -2,72 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39A8535556
-	for <lists+linux-riscv@lfdr.de>; Wed,  5 Jun 2019 04:38:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FBB9360B7
+	for <lists+linux-riscv@lfdr.de>; Wed,  5 Jun 2019 18:01:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DuxbbTYjgur/pBnOV13p6oHwNCN3Swsg1apzknnggCU=; b=U2so5lBzgQjMTk
-	/+OqDfW3k+9zcSevFgi74TZSCa0n8AJltoWEj1+IDFI94A+RW/xt115+SY19SNZ57vYjPg+QgzK9G
-	4fAZsZHrGpdUboZIz+Fs+XaSF4Ex/H8CFaxM5IHV5W0gYpku6xWs+VLG3zPP0tsNn9DTqkZbFviK1
-	68pkN6asj9mOGNPIImmxTEfCjSPdaOS2RTRWHgVM13LJD4+QrqYwcMiJyqyOzX9usH3LswCRs0LNY
-	dbF5cB0sirrFp3gpb1Vc2+giENNVtM7iYsEvL4kkv8c/+I6yV5mb8JkRMjZbmDsYR2tKd6M5oWhT4
-	ivqT4qefSRKD//U5rwmA==;
+	List-Owner; bh=MGGL73tOYFGsQRZ1HNPkjnk1s7jeprMNgLcO3PR3XZ4=; b=uCbUkiI39A+KCD
+	UFZJAlpox7LUw3PAqxvuDajdfC3x3O899ULBfHMaNVgw2Z4t5wFSkD0vSw6wcb2Z8HVG4SrgpUljb
+	Af9DHwLNypzySwzROavaGAz4l4/lybOJIO5jfRIvqgxDciinTgwAJog+mZ0hdbe5Ru1HgbaFYnv2l
+	IMFaGtArZugtU5yo3yZ/jGAdN9fAEz8Fv8JhnCiPPwpOIJQOWiKRGWf7wW1qZxTBdQUGO4IVKKDWH
+	HEkSInDNwS6oJ1RSuy51x9W97y9IV/WIWVB1LqiPMeS9hu+1vZaheV/lxVSdH9bclEDvvkrYyrcid
+	ghyW1RT5T1QokcX8mp/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYLop-000713-V1; Wed, 05 Jun 2019 02:38:27 +0000
-Received: from conssluserg-06.nifty.com ([210.131.2.91])
+	id 1hYYLO-0007Zz-Sy; Wed, 05 Jun 2019 16:00:54 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYLol-00070N-Fw; Wed, 05 Jun 2019 02:38:25 +0000
-Received: from mail-vs1-f45.google.com (mail-vs1-f45.google.com
- [209.85.217.45]) (authenticated)
- by conssluserg-06.nifty.com with ESMTP id x552bwNi015623;
- Wed, 5 Jun 2019 11:37:59 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-06.nifty.com x552bwNi015623
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1559702279;
- bh=rlXG4KafJ48SszDXPb9veQ1mChqnZopGbbSbM2AtzLc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=reRoC3LCODW2GBXW/hPCv4S/B7CVl9c+nRtJ4VY8VY6hzI24tWZrUHkGNWz420Nxm
- kA5XCPbqM+OcfHVU2VJwzQuuBHYJqAn1wVeQ72k4q/3g1jhzo46RQXCg/ukFh2Dox7
- LR1uj6rky7CyY6u4WR0us9bTjJZgclXEUPQxSVVG70hHPG2k8nOGylY2MysCZiL0iG
- YqMskldpLSmjYFpHCr5Tkh2Ifh48QY8xmg7TBMBkEF8jxDxwwerKaY9jc0GYh1EpfR
- eGmZCZ4253i7cIrBZj1Z1utua3uwfrvPlahSg5FCD/jXViNq2pL+e8DeNYjaabxd3l
- fbTOkdui/IHVw==
-X-Nifty-SrcIP: [209.85.217.45]
-Received: by mail-vs1-f45.google.com with SMTP id m8so5755063vsj.0;
- Tue, 04 Jun 2019 19:37:59 -0700 (PDT)
-X-Gm-Message-State: APjAAAUYCVA6O4dpOYSorFgX7eqTu6HmtAOxc6aUc3iYk/gpDmYAeoNt
- WrSEWJvYGCb8IRDkD4y6E1oxaMdwaXpaaJOXS6g=
-X-Google-Smtp-Source: APXvYqzyi/PN7usug5PnObKBoqJxKJtYCUFINZdd71aBKnjEu2CMU8+EOU/sdcKVYceeBvsBUi01Xqmwcp/M7j6Sefg=
-X-Received: by 2002:a67:f495:: with SMTP id o21mr3047792vsn.54.1559702278042; 
- Tue, 04 Jun 2019 19:37:58 -0700 (PDT)
+ id 1hYYLF-0007Sn-7O
+ for linux-riscv@lists.infradead.org; Wed, 05 Jun 2019 16:00:47 +0000
+Received: by mail-pg1-x541.google.com with SMTP id 20so12637251pgr.4
+ for <linux-riscv@lists.infradead.org>; Wed, 05 Jun 2019 09:00:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=UKzg+DCRQdvZVV0IXkzVXeynq1ptXUJceOTdTsX6Gl4=;
+ b=fp3HzWJAxjvdFoCskFMW0CsmQbIUx9erbqizUvfclUhHxGf+Erb+WctD9tdHvPc110
+ JcTZ1Jrj3cEXaY3oRw+lKZAxo2afB9jZNL425d6yl/xh2Q4coGKZe1nlURSRV5tNZ6i6
+ 6icO1zrReJmPy7Du5sTkxfslAWn6noDKs/PrMyNUtOVkwOJpkPIQe3dijIExYyfN/ZCu
+ i1wSJCUH6EXOHXB1+broOTrpsq0NDHU6pZXot1zH/+qGeGZeHWd8wJmfmHx5m8lSJFZ8
+ aT+E7HnrfPIakIqleI4JD6nj+pq/wnrl7M07QdrRxCNeapcqe4RkT702f9AqOz1d2G6Y
+ RanQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=UKzg+DCRQdvZVV0IXkzVXeynq1ptXUJceOTdTsX6Gl4=;
+ b=YVMgaA0gR/jVV0jcbhRba/rl1Epp9Hr3hD2KLErmpGAPsiuX57YA4r+bfFPXjmklSH
+ MpA6+hiHjncbNAncQGJMnOJq9h9FM44LH07T5j92iaIkEny5ekF4z6VXPOohNA4IdtJX
+ S6bJurZCQJolFSCtfFYF64B8y64C2mv6Roa+ZULKJ8FkWUVpl46eNmJvaXLzT5QBSlV1
+ Q1HyU1NGftgMLmr4jIFjxgFcxDHGI8SxNnTNPvKwSLce/lv0LthFvx8lftGsHBCXNMJm
+ r26EWTkXGcvvEatK2TinpV5gbUQ4Vxs3KR6HoEFgbspPkOmKWPpERqHvh0THKtgY4bys
+ RY8Q==
+X-Gm-Message-State: APjAAAUOFVQlEOUBIg04fzIspp7p+oW79x5hEEbelAj+9yCxMvEPTJ66
+ B1bTngp/8DOVuF7Hc+G/+/hoJA==
+X-Google-Smtp-Source: APXvYqzi9Aq/IOPhUaYi+lh6Xpc7UtaCrRzBvBPL1qB9kcuXVFYBuo3Q0o7uDyHQkyOEJiRLQ5MIlA==
+X-Received: by 2002:a63:5457:: with SMTP id e23mr5607600pgm.307.1559750444418; 
+ Wed, 05 Jun 2019 09:00:44 -0700 (PDT)
+Received: from localhost ([2601:602:9200:a1a5:b195:645b:2f67:9ebb])
+ by smtp.googlemail.com with ESMTPSA id a12sm21837874pgq.0.2019.06.05.09.00.43
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 05 Jun 2019 09:00:43 -0700 (PDT)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Atish Patra <atish.patra@wdc.com>, linux-kernel@vger.kernel.org
+Subject: Re: [v3 PATCH] RISC-V: Add a PE/COFF compliant Image header.
+In-Reply-To: <20190523183516.583-1-atish.patra@wdc.com>
+References: <20190523183516.583-1-atish.patra@wdc.com>
+Date: Wed, 05 Jun 2019 09:00:42 -0700
+Message-ID: <7hef48ggyd.fsf@baylibre.com>
 MIME-Version: 1.0
-References: <20190604101409.2078-1-yamada.masahiro@socionext.com>
-In-Reply-To: <20190604101409.2078-1-yamada.masahiro@socionext.com>
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Date: Wed, 5 Jun 2019 11:37:21 +0900
-X-Gmail-Original-Message-ID: <CAK7LNAQ50Lnz+1hjHg2PK_h7DyfNkY7D1XGL5_VPDe5xLgx2Kw@mail.gmail.com>
-Message-ID: <CAK7LNAQ50Lnz+1hjHg2PK_h7DyfNkY7D1XGL5_VPDe5xLgx2Kw@mail.gmail.com>
-Subject: Re: [PATCH 00/15] kbuild: refactor headers_install and support
- compile-test of UAPI headers
-To: Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190604_193823_762405_BCB950DD 
-X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-CacheID: sfid-20190605_090045_266631_D9CDFB8C 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 1.0 (+)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [210.131.2.91 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -82,69 +91,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>,
- "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Palmer Dabbelt <palmer@sifive.com>, Heiko Carstens <heiko.carstens@de.ibm.com>,
- Alexei Starovoitov <ast@kernel.org>, David Howells <dhowells@redhat.com>,
- Paul Mackerras <paulus@samba.org>, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
- linux-s390 <linux-s390@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
- Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Yonghong Song <yhs@fb.com>,
- arcml <linux-snps-arc@lists.infradead.org>, Albert Ou <aou@eecs.berkeley.edu>,
- Vasily Gorbik <gor@linux.ibm.com>, Jani Nikula <jani.nikula@intel.com>,
- Greentime Hu <green.hu@gmail.com>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Michal Marek <michal.lkml@markovi.net>, linux-parisc@vger.kernel.org,
- Vineet Gupta <vgupta@synopsys.com>, Randy Dunlap <rdunlap@infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Networking <netdev@vger.kernel.org>, bpf@vger.kernel.org,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, Martin KaFai Lau <kafai@fb.com>
+Cc: mark.rutland@arm.com, Jonathan Corbet <corbet@lwn.net>,
+ Albert Ou <aou@eecs.berkeley.edu>, linux-doc@vger.kernel.org,
+ catalin.marinas@arm.com, Anup Patel <Anup.Patel@wdc.com>, will.deacon@arm.com,
+ Zong Li <zong@andestech.com>, Atish Patra <atish.patra@wdc.com>,
+ Palmer Dabbelt <palmer@sifive.com>, trini@konsulko.com,
+ paul.walmsley@sifive.com, Nick Kossifidis <mick@ics.forth.gr>,
+ linux-riscv@lists.infradead.org, marek.vasut@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jun 4, 2019 at 7:15 PM Masahiro Yamada
-<yamada.masahiro@socionext.com> wrote:
+Atish Patra <atish.patra@wdc.com> writes:
+
+> Currently, last stage boot loaders such as U-Boot can accept only
+> uImage which is an unnecessary additional step in automating boot flows.
 >
+> Add a PE/COFF compliant image header that boot loaders can parse and
+> directly load kernel flat Image. The existing booting methods will continue
+> to work as it is.
 >
-> Multiple people have suggested to compile-test UAPI headers.
+> Another goal of this header is to support EFI stub for RISC-V in future.
+> EFI specification needs PE/COFF image header in the beginning of the kernel
+> image in order to load it as an EFI application. In order to support
+> EFI stub, code0 should be replaced with "MZ" magic string and res5(at
+> offset 0x3c) should point to the rest of the PE/COFF header (which will
+> be added during EFI support).
 >
-> Currently, Kbuild provides simple sanity checks by headers_check
-> but they are not enough to catch bugs.
+> This patch is based on ARM64 boot image header and provides an opprtunity
+> to combine both ARM64 & RISC-V image headers.
 >
-> The most recent patch I know is David Howells' work:
-> https://patchwork.kernel.org/patch/10590203/
+> Tested on both QEMU and HiFive Unleashed using OpenSBI + U-Boot + Linux.
 >
-> I agree that we need better tests for UAPI headers,
-> but I want to integrate it in a clean way.
->
-> The idea that has been in my mind is to compile each header
-> to make sure the selfcontainedness.
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
 
+Tested booti support on HiFive Unleashed using OpenSBI + U-Boot (master
+branch) + Linux.
 
-For convenience, I pushed this series at
-
-git://git.kernel.org/pub/scm/linux/kernel/git/masahiroy/linux-kbuild.git
-uapi-header-test-v1
-
-(13/15 was replaced with v2)
-
-
-If you want to test it quickly, please check-out it, then
-
-  $ make -j8 allmodconfig usr/
-
-(As I noted in the commit log, you need to use
-a compiler that provides <stdlib.h>, <sys/time.h>, etc.)
-
-
--- 
-Best Regards
-Masahiro Yamada
+Tested-by: Kevin Hilman <khilman@baylibre.com>
 
 _______________________________________________
 linux-riscv mailing list
