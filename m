@@ -2,72 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B18C362EB
-	for <lists+linux-riscv@lfdr.de>; Wed,  5 Jun 2019 19:46:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DECE8362FD
+	for <lists+linux-riscv@lfdr.de>; Wed,  5 Jun 2019 19:50:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dxj8H1UfEEbfZ/S9q1XQTWghBoTASdbKcA8gfXnF3mc=; b=bw2ovctHP6YQR7
-	F/6ycSywl9O26qaVPxs3b6hntJOdwUPxrsl/4YINaXkldvuwa41uq+Ys2b/YOi3EGLu0LbdjcyfVa
-	P3hDfVxnDID95+a7ef7BgfEaJlLY5ba6Ip1o5SPux3NL+heM2SI9J1nigHvX3ArK5TdRCWnWo15tu
-	1DyXYQjqY5lhileXMmpyoan5ZuY8YJXib001A9zRpbxwmiAxjSEqI4qCteH6yUK856W67LoPnXrpA
-	b1WVTTNt8LbkWCdLWJtJlIBetMZwdZQdL9T1+IT8FY3qnLAZDjmY88MnMl0vh7PhX1ZslbHSqIxKX
-	ccBb5d2liMH5jA7fRE8w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QFuioYwKxqsnBp8S6CcSIhDZ0ZCqfitfAbx9AS/XmFY=; b=CMFI+xaM9YT7NG
+	JSS+ZtyXwXw6A3OMyw5pFoyM7iUhqZS70aT95XvTXarJ2qufD5UvgxyfL5jxFcZcsE7yObCQ3lkya
+	FyKZU1EuX1rylHuTSHYh6nVsvNIYOy+Xh9pCRotw+k4b/73S5J73+ljRgdeqfTf4WtaI9WiGfqmhb
+	9dtyjj8H5ZRgvK/eYTWCgufYQ0Ek0M1HhZgxiIBySiK8mhYFNqhTPk3St+u+RAumN37gtB0eCLqPk
+	C4TC+THxXID+KP4GADYYKBkRHr5+ZSxdka7ZvZhXt1DLTnXoVL7P/z3G2U9iJwNHsJxXr5pVcqXr+
+	rgBZNw7HEtwfLAkwlQZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYZzQ-0005Mb-Lz; Wed, 05 Jun 2019 17:46:20 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1hYa3l-0006tx-1i; Wed, 05 Jun 2019 17:50:49 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYZzN-0005LS-1q
- for linux-riscv@lists.infradead.org; Wed, 05 Jun 2019 17:46:18 +0000
-Received: by mail-pf1-x433.google.com with SMTP id c85so6471195pfc.1
- for <linux-riscv@lists.infradead.org>; Wed, 05 Jun 2019 10:46:10 -0700 (PDT)
+ id 1hYa3h-0006tH-N8
+ for linux-riscv@lists.infradead.org; Wed, 05 Jun 2019 17:50:47 +0000
+Received: by mail-pg1-x543.google.com with SMTP id f25so12794394pgv.10
+ for <linux-riscv@lists.infradead.org>; Wed, 05 Jun 2019 10:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=mdjnarB+nUXz7hnRyqlS2w/7X0NaH7xvH9rt61WhNEo=;
- b=DkgsWaf5ewgbwf/bhecR7Rlzf6+bbU/HCSGByz46RTTeljIuZgxfGrTodm2URXsetz
- zYc8Igeto3YdkLx+b2ImfPB9az8pby31RZ4PzJ+65G0xUDv1orMqZhlHjjxu+tbRYEsl
- V3oDPtEn4kppz3G1ccPtcREEO19sNdRiw2Fx9zkZP69V/gPMTnXX1oyu7SBNJL8EGqmr
- xEZ5HsFSy7ThZs9E86eAK1GRltaZcazaWgfYQTbmViawm5CCU9I/bE039nd4VfrZ4+vR
- 4TonpnDtToAjc0p3pVpbjana5UawaEYHmvXq5hvGHZEQNm/n86b3zr1H9Kt/wwGVwYCk
- Dh6w==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BKkTOGYV6rc7HowFTZvE8K9UA+VQIzhyINAMJ9kdHbs=;
+ b=A58mg5KvGYwm+JBY3RSS+1AD82Y6/IErsmfVz+hwmDnRrfIcKyTkZXJ+n5GC4KOSxx
+ 58ShR5prsog+E6KZmvxbfUojKwQCR9kzcfcZDj110/L2LQSbzSWQcYsqK92VDr0TasCY
+ sN/YvM9py6T9rgBWWfRWDBDxoULa3vUO7HgSLBD9p+QxvlG903CtNAe2wI4TuqFff0w3
+ UBBKzgvjjXxVlFAmnwUw4OYrddRtTxSLhBaQEdxH0jipTizDEJJOx2xqSYN7U8pQY/6X
+ 3bY6psXdI6sEZl3yCKIExSP2me3Ym9b+R1hiyh8ghrAOuy7i9DrGYdp/BljCRUL5jGqG
+ RssQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=mdjnarB+nUXz7hnRyqlS2w/7X0NaH7xvH9rt61WhNEo=;
- b=aeCB9AYKf2i6taH1lDriU0xz+/TAW72dRoy3Rh2f/BnDYhAM0sAzPwrJvCtvZ3gGBl
- vx+QUkwAGx9FGPmNaIDa8OPI8g3HyQNmA9zgpxyPX+rvtd4qtg2BTWn73gnsJ0WblaGf
- XPLyk2Zr8G7cXZtEkn9XP439h1UWNZmwrnc05+pQ3MxPQWbbKLjnTqTSuSxGrgdvsZdc
- kPNYo53lnvvg6Nq6ZXEV/beYJoOR89x5CUen8+9Bli9mmZvWrS6m3y1JRhQRWTsZyTGJ
- puQ4UNPylc61WMIGnjrGKVyE8pzMZ4SYtZDCXqZvNf+zJg2kpvfUNQSpRg8Ru4+pjuuh
- P1gg==
-X-Gm-Message-State: APjAAAW8iWXsvfoTKtduptICmaQU7e4yA+wWAYzA8ZsKeR2shaGXqg+v
- 91d187hGjMyZ2WLSRfdiY8g8jA==
-X-Google-Smtp-Source: APXvYqw8SKXZxXfsqJkxBQv5IYJ1v6uVYYSyGSHw1/ni2fuuBT7oUs6WpH34VbtII796X3z4xjM9nQ==
-X-Received: by 2002:aa7:860a:: with SMTP id p10mr48871257pfn.214.1559756769781; 
- Wed, 05 Jun 2019 10:46:09 -0700 (PDT)
-Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
- [71.197.186.152])
- by smtp.googlemail.com with ESMTPSA id r77sm26803689pgr.93.2019.06.05.10.46.08
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BKkTOGYV6rc7HowFTZvE8K9UA+VQIzhyINAMJ9kdHbs=;
+ b=sxM+Y3yC1lxa6zgrpVQnxvwkq8tHZQoFT02DtlHzkU00IUT0mnRtBxuFUZVWtgzXQH
+ 06UD34OLrX/NTz40lgNDEwuWexctz1fqgIuG1H2+i46y5bery79Vzx7YEiVqsLxAwIMe
+ 5kirIQhFOQiClwGgNky6+0eid8Vvnr8GgzKbyOdYBMru40OoPJbGnU391jG3PHDcSZAV
+ dV2llT2brDHkOPx2ifBer5qvbON6Asp11+Id79P/ypHH/fboZc0hN83TYoJfQxLqW2nY
+ eIH8jhZJKW6zV0FiuUtOAz9oR2Q8eP3t1545In+UejMaGyEzFmELpjS6Thk+rAqn47Gt
+ 1MLA==
+X-Gm-Message-State: APjAAAVELb8B+5FPqAmxwIoc/98YGQP3r2Dh6C+WkPwFajwxcbrqjUH2
+ xE6qrHl7SHmwnFlQHflhn54UxezN7hw=
+X-Google-Smtp-Source: APXvYqzGIXQYJbJ/EW9Im5FYNNE63sdg510YUZvGCK/jMI7JQvTrBWq/YpqXuCCeNqPGEqB/0tbO6g==
+X-Received: by 2002:a65:5004:: with SMTP id f4mr6334708pgo.268.1559757044629; 
+ Wed, 05 Jun 2019 10:50:44 -0700 (PDT)
+Received: from localhost ([2601:602:9200:a1a5:da9d:67ff:fec6:ee6b])
+ by smtp.gmail.com with ESMTPSA id d7sm12013736pfq.0.2019.06.05.10.50.43
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 05 Jun 2019 10:46:08 -0700 (PDT)
+ Wed, 05 Jun 2019 10:50:44 -0700 (PDT)
 From: Kevin Hilman <khilman@baylibre.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- Atish Patra <atish.patra@wdc.com>
-Subject: Re: Patches for v5.2-rc and v5.3 merge window
-In-Reply-To: <alpine.DEB.2.21.9999.1905201019010.15580@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1905201019010.15580@viisi.sifive.com>
-Date: Wed, 05 Jun 2019 10:46:08 -0700
-Message-ID: <7hr288exi7.fsf@baylibre.com>
+To: linux-riscv@lists.infradead.org,
+	Palmer Dabbelt <palmer@sifive.com>
+Subject: [PATCH] RISC-V: defconfig: enable clocks, serial console
+Date: Wed,  5 Jun 2019 10:50:42 -0700
+Message-Id: <20190605175042.13719-1-khilman@baylibre.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190605_104617_097448_3A23931A 
-X-CRM114-Status: UNSURE (   6.96  )
+X-CRM114-CacheID: sfid-20190605_105045_761389_3B63C3A7 
+X-CRM114-Status: UNSURE (   6.78  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -75,7 +74,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:433 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -93,27 +92,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: palmer@sifive.com, linux-kernel@vger.kernel.org
+Cc: Atish Patra <atish.patra@wdc.com>, Loys Ollivier <lollivier@baylibre.com>,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Paul Walmsley <paul.walmsley@sifive.com> writes:
+Enable PRCI clock driver and serial console by default, so the default
+upstream defconfig is bootable to a serial console.
 
-> Palmer has asked me to collect patches for the v5.2-rc releases and v5.3 
-> merge window, so I'll be doing so.  This is just a heads-up so no one is 
-> surprised to see 'patch queued' responses from me.
+Signed-off-by: Kevin Hilman <khilman@baylibre.com>
+---
+ arch/riscv/configs/defconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Speaking of v5.2-rc, any chance your DT series will make it for v5.2?
-I'm hoping to have upstream v5.2 ready for testing in kernelCI, and
-that's one of the last missing pieces.  I just tested it on v5.2-rc3 and
-it's working great with mainline u-boot.
+diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+index 2fd3461e50ab..4f02967e55de 100644
+--- a/arch/riscv/configs/defconfig
++++ b/arch/riscv/configs/defconfig
+@@ -49,6 +49,8 @@ CONFIG_SERIAL_8250=y
+ CONFIG_SERIAL_8250_CONSOLE=y
+ CONFIG_SERIAL_OF_PLATFORM=y
+ CONFIG_SERIAL_EARLYCON_RISCV_SBI=y
++CONFIG_SERIAL_SIFIVE=y
++CONFIG_SERIAL_SIFIVE_CONSOLE=y
+ CONFIG_HVC_RISCV_SBI=y
+ # CONFIG_PTP_1588_CLOCK is not set
+ CONFIG_DRM=y
+@@ -64,6 +66,8 @@ CONFIG_USB_OHCI_HCD_PLATFORM=y
+ CONFIG_USB_STORAGE=y
+ CONFIG_USB_UAS=y
+ CONFIG_VIRTIO_MMIO=y
++CONFIG_CLK_SIFIVE=y
++CONFIG_CLK_SIFIVE_FU540_PRCI=y
+ CONFIG_SIFIVE_PLIC=y
+ CONFIG_EXT4_FS=y
+ CONFIG_EXT4_FS_POSIX_ACL=y
+-- 
+2.21.0
 
-The other one is the default defconfig, which I'll submit a patch for
-shortly.
-
-Kevin
 
 _______________________________________________
 linux-riscv mailing list
