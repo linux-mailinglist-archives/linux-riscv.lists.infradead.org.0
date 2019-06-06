@@ -2,76 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BC6337D42
-	for <lists+linux-riscv@lfdr.de>; Thu,  6 Jun 2019 21:32:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9906838117
+	for <lists+linux-riscv@lfdr.de>; Fri,  7 Jun 2019 00:42:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H4fa9QSNjpH2Xl60Mb/kOhQGEjNfV3XAzbDd26PVaA4=; b=g2EA3sNnmrd3kR
-	HDrOjEDvGLz219xH6Wo0nrAKXoB/CngOmByTO/46R6KW0zA4dcx6Q+QON+dYl5MMMfQoakmM2pvYU
-	bOOfHJJQ4vLHLNTAF1DL3x0iHHLcFXPnqRNmjrz+mr2lZEp060dJSgjOvrXOUn8i3yarI+kxfz2HP
-	UWeTwRpo7SbiMjcPXkUexPcBYUUoxF9K02FPgsy+cSDbQcL7SZHRJXLEbetXRwrM+6TpISp49AIMt
-	62d/lNBnp+6CBimAkua0gJp63OJ8Wu5FYaXfpre6ScMUBrphgnK9Av+mWV71iPZ9HMfP3R+7p54x4
-	DCdfERjws+mTb0u94e9A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=H+Dxhrk1bgPRq1ZMxdyGe+mMveRjbUeBD7o228mTvd4=; b=fOVOsEnXmGFdw4IGxIpihtPFx
+	YI7ZdLleHKY5M7Vv7xEg1yOxM6r1DANLSXcT07lsb2Rkg514Cc4O5K3nEv2PzsQLcTz2bOxTgthKO
+	fZB4EAKKIdI41UcaFHEs0yvRy2lN+hJAOu46DPwC+ch0s3W66lIauXvq0h2ubvQ9M9OU2kDG+/n5J
+	nhUtquRnjia4JmBpdm1bzl/AGKvq2uL816qQqA8G1RS7TnO+Xsy+Ukzl1NwKHW409Ug5+sYxP12LN
+	AHiZ86rhUBAYl03dntgKlfOYLZ57cGCC2eDGmqKh6bmzGqCeNaJY+b8BVPTj2xyr05DiC2vp14VTu
+	5NtCSX2Mw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYy7Q-0004hj-Mj; Thu, 06 Jun 2019 19:32:12 +0000
-Received: from mail-out.m-online.net ([212.18.0.9])
+	id 1hZ15h-00074U-JE; Thu, 06 Jun 2019 22:42:37 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYy7M-0004gr-GD
- for linux-riscv@lists.infradead.org; Thu, 06 Jun 2019 19:32:10 +0000
-Received: from frontend01.mail.m-online.net (unknown [192.168.8.182])
- by mail-out.m-online.net (Postfix) with ESMTP id 45KbQB6Vflz1rGhn;
- Thu,  6 Jun 2019 21:32:02 +0200 (CEST)
-Received: from localhost (dynscan1.mnet-online.de [192.168.6.70])
- by mail.m-online.net (Postfix) with ESMTP id 45KbQB5ZB2z1rBHD;
- Thu,  6 Jun 2019 21:32:02 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at mnet-online.de
-Received: from mail.mnet-online.de ([192.168.8.182])
- by localhost (dynscan1.mail.m-online.net [192.168.6.70]) (amavisd-new,
- port 10024)
- with ESMTP id Get6cdg5GTJE; Thu,  6 Jun 2019 21:32:01 +0200 (CEST)
-X-Auth-Info: wsLBElmpFEcCcJ6QVDMufRpEZQC5tFsi61TyY8+ncdmH3bKTG/HRIv08aWCl0Q99
-Received: from igel.home (ppp-46-244-173-53.dynamic.mnet-online.de
- [46.244.173.53])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.mnet-online.de (Postfix) with ESMTPSA;
- Thu,  6 Jun 2019 21:32:01 +0200 (CEST)
-Received: by igel.home (Postfix, from userid 1000)
- id 1ABFB2C1E61; Thu,  6 Jun 2019 21:32:01 +0200 (CEST)
-From: Andreas Schwab <schwab@linux-m68k.org>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH] RISC-V: Break load reservations during switch_to
-References: <20190605231735.26581-1-palmer@sifive.com>
- <20190606090518.GB1369@infradead.org>
-X-Yow: LOOK!!  Sullen American teens wearing MADRAS shorts and
- ``Flock of Seagulls'' HAIRCUTS!
-Date: Thu, 06 Jun 2019 21:32:01 +0200
-In-Reply-To: <20190606090518.GB1369@infradead.org> (Christoph Hellwig's
- message of "Thu, 6 Jun 2019 02:05:18 -0700")
-Message-ID: <87ftom4ij2.fsf@igel.home>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ id 1hZ14r-0006pq-KX; Thu, 06 Jun 2019 22:41:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1559860906; x=1591396906;
+ h=subject:to:cc:references:from:message-id:date:
+ mime-version:in-reply-to:content-transfer-encoding;
+ bh=aN1U0SzatJZ+k6JDjyIC57LaLcrTtGLXNgsVroMrL3U=;
+ b=Pxt5P8BxLAFxvvgsm7BcuCykrYlqK6L5x17v2IEZGupS+GCitWF4nxlP
+ PLxY/GgwES9PzNRk7WXBWQ+PkP3m/Rm4Cwf1rS5R7VWJrW/J2gn/zdZP3
+ bNmKoq75hvhIb7ua8Ef6YHH5pLcGXbGws4kDygOL6LEeBnCF5YpBGe43u
+ uml9qRdvOOqnymunRyAvHSIC2DNqUT111INnWBsxtMjfGKTB4hlcfmACJ
+ ZFSQjTV9P3xe4jvCCDmzsdk10O7Ur8XXDXRL+ogvcPug/oroQMWEqMVKd
+ Y1J6P3GCySgP9OFhCYT8R3xVGb1yLkGxBextG6LU/ppcm3yGEZRmZ699/ A==;
+X-IronPort-AV: E=Sophos;i="5.63,560,1557158400"; d="scan'208";a="109984456"
+Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 07 Jun 2019 06:41:43 +0800
+IronPort-SDR: HMpB6gNfxQ1UwLonX7SacyrMe+to26l2duuTSwvumYKYnB1SDrzbbcCSDLud/hNJe6agi7aQwW
+ fUaBOK34DulOklhO0A1UbOVF5RBWnZp3wBXyjwGKVoJVs6T7eGAl8tJSDa0UBtR+ROADHEq4gl
+ jcNsO2KtxJl+TG2jlWZZ0i63YAIiBGhuHlMO7taWDVLo0dWaH3rwHLVl0VPbhY8CirJJcIW9t/
+ UIrofSuzZ245O5+YKYxIn0pQL1a5kQYWb5YfxtFVfma84UNycBjqOAwJVF4iYQqLTB8ggxkFEn
+ gNn/gD8xl1Ud4h7UHssAMmfG
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep02.wdc.com with ESMTP; 06 Jun 2019 15:19:01 -0700
+IronPort-SDR: wNpNjfSTgkTZUQNnwG6O1GwZ9QPYKwbA5biuQmArf8xxHju2RVf/BN1hH3FO+9QFmFDwycXWMg
+ 0MUwQuBqPyZAIyaA+xhSc91wpmXcAFvVpq+7p/8HkzrMQAVH+nIGrS5wN/UQEzpniTUFXRBeio
+ hNkAi99HGw7LLpcOSlkMy0iqUFd/d8oMaXPeUpOjdmqn3GeCInii/VEE9Oivy8KTkwBcCLfdJ9
+ 3WnFAYOKErVpB7xbSMi2H9u6OoVftFN/NHrl+vLmI5ZCD+4bS6D5qVnyTbDuhL1S/rwMnbyiJe
+ BF0=
+Received: from r6220.sdcorp.global.sandisk.com (HELO [192.168.1.6])
+ ([10.196.157.143])
+ by uls-op-cesaip01.wdc.com with ESMTP; 06 Jun 2019 15:41:43 -0700
+Subject: Re: [v3 PATCH] RISC-V: Add a PE/COFF compliant Image header.
+To: Mark Rutland <mark.rutland@arm.com>
+References: <20190523183516.583-1-atish.patra@wdc.com>
+ <20190605162630.GE30925@lakrids.cambridge.arm.com>
+From: Atish Patra <atish.patra@wdc.com>
+Message-ID: <f48ddf4c-9934-2b96-7e2f-216571b83a67@wdc.com>
+Date: Thu, 6 Jun 2019 15:41:38 -0700
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
+ Gecko/20100101 Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <20190605162630.GE30925@lakrids.cambridge.arm.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190606_123208_693837_E52C0568 
-X-CRM114-Status: GOOD (  12.88  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20190606_154145_864493_19F5140F 
+X-CRM114-Status: GOOD (  26.76  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [212.18.0.9 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.29
 Precedence: list
 List-Id: <linux-riscv.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
@@ -81,43 +95,186 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: me@carlosedp.com, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, joel@sing.id.au,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- marco@decred.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Jonathan Corbet <corbet@lwn.net>, Albert Ou <aou@eecs.berkeley.edu>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ Anup Patel <Anup.Patel@wdc.com>, "will.deacon@arm.com" <will.deacon@arm.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Zong Li <zong@andestech.com>, "marek.vasut@gmail.com" <marek.vasut@gmail.com>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ Nick Kossifidis <mick@ics.forth.gr>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "trini@konsulko.com" <trini@konsulko.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Jun 06 2019, Christoph Hellwig <hch@infradead.org> wrote:
+On 6/5/19 9:26 AM, Mark Rutland wrote:
+> On Thu, May 23, 2019 at 11:35:16AM -0700, Atish Patra wrote:
+>> Currently, last stage boot loaders such as U-Boot can accept only
+>> uImage which is an unnecessary additional step in automating boot flows.
+>>
+>> Add a PE/COFF compliant image header that boot loaders can parse and
+>> directly load kernel flat Image. The existing booting methods will continue
+>> to work as it is.
+>>
+>> Another goal of this header is to support EFI stub for RISC-V in future.
+>> EFI specification needs PE/COFF image header in the beginning of the kernel
+>> image in order to load it as an EFI application. In order to support
+>> EFI stub, code0 should be replaced with "MZ" magic string and res5(at
+>> offset 0x3c) should point to the rest of the PE/COFF header (which will
+>> be added during EFI support).
+>>
+>> This patch is based on ARM64 boot image header and provides an opprtunity
+>> to combine both ARM64 & RISC-V image headers.
+>>
+>> Tested on both QEMU and HiFive Unleashed using OpenSBI + U-Boot + Linux.
+>>
+>> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+>>
+>> ---
+>> I have not sent out corresponding U-Boot patch as all the changes are
+>> compatible with current u-boot support. Once, the kernel header format
+>> is agreed upon, I will update the U-Boot patch.
+>>
+>> Changes from v2->v3
+>> 1. Modified reserved fields to define a header version.
+>> 2. Added header documentation.
+>>
+>> Changes from v1-v2:
+>> 1. Added additional reserved elements to make it fully PE compatible.
+>> ---
+>>   Documentation/riscv/boot-image-header.txt | 50 ++++++++++++++++++
+>>   arch/riscv/include/asm/image.h            | 64 +++++++++++++++++++++++
+>>   arch/riscv/kernel/head.S                  | 32 ++++++++++++
+>>   3 files changed, 146 insertions(+)
+>>   create mode 100644 Documentation/riscv/boot-image-header.txt
+>>   create mode 100644 arch/riscv/include/asm/image.h
+>>
+>> diff --git a/Documentation/riscv/boot-image-header.txt b/Documentation/riscv/boot-image-header.txt
+>> new file mode 100644
+>> index 000000000000..68abc2353cec
+>> --- /dev/null
+>> +++ b/Documentation/riscv/boot-image-header.txt
+>> @@ -0,0 +1,50 @@
+>> +				Boot image header in RISC-V Linux
+>> +			=============================================
+>> +
+>> +Author: Atish Patra <atish.patra@wdc.com>
+>> +Date  : 20 May 2019
+>> +
+>> +This document only describes the boot image header details for RISC-V Linux.
+>> +The complete booting guide will be available at Documentation/riscv/booting.txt.
+>> +
+>> +The following 64-byte header is present in decompressed Linux kernel image.
+>> +
+>> +	u32 code0;		  /* Executable code */
+>> +	u32 code1; 		  /* Executable code */
+>> +	u64 text_offset;	  /* Image load offset, little endian */
+>> +	u64 image_size;		  /* Effective Image size, little endian */
+>> +	u64 flags;		  /* kernel flags, little endian */
+>> +	u32 version;		  /* Version of this header */
+>> +	u32 res1  = 0;		  /* Reserved */
+>> +	u64 res2  = 0;    	  /* Reserved */
+>> +	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
+>> +	u32 res3;		  /* Reserved for additional RISC-V specific header */
+>> +	u32 res4;		  /* Reserved for PE COFF offset */
+>> +
+>> +This header format is compliant with PE/COFF header and largely inspired from
+>> +ARM64 header. Thus, both ARM64 & RISC-V header can be combined into one common
+>> +header in future.
+>> +
+>> +Notes:
+>> +- This header can also be reused to support EFI stub for RISC-V in future. EFI
+>> +  specification needs PE/COFF image header in the beginning of the kernel image
+>> +  in order to load it as an EFI application. In order to support EFI stub,
+>> +  code0 should be replaced with "MZ" magic string and res5(at offset 0x3c) should
+>> +  point to the rest of the PE/COFF header.
+>> +
+>> +- version field indicate header version number.
+>> +  	Bits 0:15  - Minor version
+>> +	Bits 16:31 - Major version
+>> +
+>> +  This preserves compatibility across newer and older version of the header.
+>> +  The current version is defined as 0.1.
+>> +
+>> +- res3 is reserved for offset to any other additional fields. This makes the
+>> +  header extendible in future. One example would be to accommodate ISA
+>> +  extension for RISC-V in future. For current version, it is set to be zero.
+>> +
+>> +- In current header, the flag field has only one field.
+>> +	Bit 0: Kernel endianness. 1 if BE, 0 if LE.
+>> +
+>> +- Image size is mandatory for boot loader to load kernel image. Booting will
+>> +  fail otherwise.
+>> diff --git a/arch/riscv/include/asm/image.h b/arch/riscv/include/asm/image.h
+>> new file mode 100644
+>> index 000000000000..61c9f20d2f19
+>> --- /dev/null
+>> +++ b/arch/riscv/include/asm/image.h
+>> @@ -0,0 +1,64 @@
+>> +/* SPDX-License-Identifier: GPL-2.0 */
+>> +
+>> +#ifndef __ASM_IMAGE_H
+>> +#define __ASM_IMAGE_H
+>> +
+>> +#define RISCV_IMAGE_MAGIC	"RISCV"
+>> +
+>> +
+>> +#define RISCV_IMAGE_FLAG_BE_SHIFT	0
+>> +#define RISCV_IMAGE_FLAG_BE_MASK	0x1
+>> +
+>> +#define RISCV_IMAGE_FLAG_LE		0
+>> +#define RISCV_IMAGE_FLAG_BE		1
+>> +
+>> +
+>> +#ifdef CONFIG_CPU_BIG_ENDIAN
+>> +#define __HEAD_FLAG_BE		RISCV_IMAGE_FLAG_BE
+>> +#else
+>> +#define __HEAD_FLAG_BE		RISCV_IMAGE_FLAG_LE
+>> +#endif
+>> +
+>> +#define __HEAD_FLAG(field)	(__HEAD_FLAG_##field << \
+>> +				RISCV_IMAGE_FLAG_##field##_SHIFT)
+>> +
+>> +#define __HEAD_FLAGS		(__HEAD_FLAG(BE))
+> 
+> If you have a CONFIG_CPU_BIG_ENDIAN kernel, this will not be
+> little-endian, nor will other fields in your header (e.g. the image
+> size), so I would recommend dropping this for now.
+> 
 
-> On Wed, Jun 05, 2019 at 04:17:35PM -0700, Palmer Dabbelt wrote:
->>  	REG_S ra,  TASK_THREAD_RA_RA(a3)
->> +	/*
->> +	 * The Linux ABI allows programs to depend on load reservations being
->> +	 * broken on context switches, but the ISA doesn't require that the
->> +	 * hardware ever breaks a load reservation.  The only way to break a
->> +	 * load reservation is with a store conditional, so we emit one here.
->> +	 * Since nothing ever takes a load reservation on TASK_THREAD_RA_RA we
->> +	 * know this will always fail, but just to be on the safe side this
->> +	 * writes the same value that was unconditionally written by the
->> +	 * previous instruction.
->> +	 */
->> +#if (TASK_THREAD_RA_RA != 0)
->
-> I don't think this check works as intended.  TASK_THREAD_RA_RA is a
-> parameterized macro,
+Correct. Thanks for pointing that out.
 
-Is it?  Just because it is used before an open paren doesn't mean that
-the macro takes a parameter.
+> To manage that for the image_size field you'll probably need to play the
+> same linker trick games we play on arm64.
+> 
+> It's probably worth having:
+> 
+> #ifdef CONFIG_CPU_BIG_ENDIAN
+> #error conversion of header fields to LE not yet implemented
+> #endif
+> 
 
-Andreas.
+Sure. I will update the patch.
+
+
+Regards,
+Atish
+
+> ... to catch that later.
+> 
+> Thanks,
+> Mark,
+> 
+
 
 -- 
-Andreas Schwab, schwab@linux-m68k.org
-GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
-"And now for something completely different."
+Regards,
+Atish
 
 _______________________________________________
 linux-riscv mailing list
