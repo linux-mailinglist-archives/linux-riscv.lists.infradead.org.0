@@ -2,63 +2,65 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE2E438407
+	by mail.lfdr.de (Postfix) with ESMTPS id DAC2038408
 	for <lists+linux-riscv@lfdr.de>; Fri,  7 Jun 2019 08:01:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ig85M470duwSDvq61yjfDIu0WeW2RCMUPG8vHhi7ukw=; b=Iz6Abnig+EohLh
-	3qZd6TNTLGZR15rAixEP284LxWSWjcDWFuI9CrkykVyDR5pV1mbzhiDE4JHduXRoHi1YzupEQxhe8
-	/gGGKTuOEDAVgX4OkpPl1jnTxsRuBfWGqx2FdejIYK87yUfVmx4cVj3bY/p11Id1TWDeXJAT52xSo
-	JwzysWoKiW6fjzCuKCxiN1er647P7n+MZ7bbXK7SRAV+9JajdwVXP+b/FXUsqe2f2cVUXZevmZ16I
-	NyvSHzmH28RFaVwDokikc2+tnhgEjs/WWLS/mYEUc92YK4n1OP6qp5zPatFNknb+a/z5RE+XC4lZE
-	R7HszoCBjF/8BZFgV/Dg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZGitSMXNRZhy+LHvP8ThbrEDtvaCL3qhyUD2QC44l30=; b=Fy7QXGjnSJYem4
+	FOedVwEhOUrPMepHlGP9PRUozRd6vdqbPBTkAygFYD3iePvigPZzuXTzjNLo6i3tlcBcbrXQUyMi3
+	R5lC5U/Kel9L97LXu0vWg9/DD/A/KzaXLTmup+wlZJ4aWxYWmP1CAbnFb5Ahkv5P/jjWzMjluiPWQ
+	+AGuNKBjNC5SmaOwppbc+A4G3faq5EzYgFqL3Kx7hk/kr64Z1lrizzkmQcBYAaxD4fVIlZVqXYBQ0
+	0uK5jpwQ1M9JtDbnT/GjI6RbMPiRJqx1ivtp43pPkbdMCHJjYThSm/66AiG2U6hf8LIKf9cJH/Jt8
+	8Ry27bcGoel6k5OFJEoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZ7wV-0001Pr-1f; Fri, 07 Jun 2019 06:01:35 +0000
+	id 1hZ7wY-0001Qe-DR; Fri, 07 Jun 2019 06:01:38 +0000
 Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZ7wQ-0001OB-SR
- for linux-riscv@lists.infradead.org; Fri, 07 Jun 2019 06:01:32 +0000
+ id 1hZ7wS-0001PO-H2
+ for linux-riscv@lists.infradead.org; Fri, 07 Jun 2019 06:01:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1559887290; x=1591423290;
- h=from:to:cc:subject:date:message-id:
- content-transfer-encoding:mime-version;
- bh=F55XFh+0L2QVaK0P9ne3JsQL6JQK5dEWWxxIHPMXMP4=;
- b=QAtnJmb3pQKvd1KYIZlctfIokqViQb31tLehQWkswzZR+SKpQwocveLE
- dVm4gZtWTuxUkC/wZ11zgCPRPG4Nr0k8XoqxpPdJyYstxqaFcynyR+5O/
- nktuWw3gig9EmkvezFfNj99olFEbUBagr796+qAQF5olCb/1rxqfn9VYd
- aCB0VxadaweJ5TkWu+wwjJBqC/Ngq0Q3zEFC65ZaG/KUJQbUkZ+XRDT0S
- pvY5+G2X9g11TI8bGyN3kq9xZz4ljtaqMJO4IRz32RhuTLvNb6LY8Cvuq
- xhZSEM7IfwbKMNkJYZvDBNsU6gCMHaGnTqD0rOnr9SGl8Zvykt7o27vID Q==;
-X-IronPort-AV: E=Sophos;i="5.63,562,1557158400"; d="scan'208";a="216314725"
-Received: from mail-by2nam05lp2058.outbound.protection.outlook.com (HELO
- NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.58])
- by ob1.hgst.iphmx.com with ESMTP; 07 Jun 2019 14:01:25 +0800
+ t=1559887292; x=1591423292;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=ad9OzhObcTVEjpq5II81XSqfa/NVOOqA0VlDrpha9k4=;
+ b=efF1jVgLKyQUbBOMR7wsulxduD64PDnaco98y7u6i1ISbTZ7sRo9gH4K
+ ZIBpmyI/EiElOlSJcX3Rkvp2wGX3AKDRLODEuLM7E99Q7b/0sUulVPj0W
+ EtFADvRNjm2NVv3hDIa9Ebbtf197LTCPIp+06Qbk5AV7QUPkp+XeZNNLE
+ WaRmkk6BcZRC7o3vqPI0eR/ZV2kz9Yvg5l0F4U24f8yVmgBzjG8JJ2QIM
+ fkgQvX4JB8qDisspZyOf929XJR9lFqi7nJcpI5ErHT867Lw8K8ppsyQGY
+ C2HMSJNAOpi3NqTOBGfUuaKCKyI2QUm46Hk9RZh1obYgCzOnWFskBdiJt g==;
+X-IronPort-AV: E=Sophos;i="5.63,562,1557158400"; d="scan'208";a="216314733"
+Received: from mail-sn1nam01lp2053.outbound.protection.outlook.com (HELO
+ NAM01-SN1-obe.outbound.protection.outlook.com) ([104.47.32.53])
+ by ob1.hgst.iphmx.com with ESMTP; 07 Jun 2019 14:01:31 +0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F55XFh+0L2QVaK0P9ne3JsQL6JQK5dEWWxxIHPMXMP4=;
- b=CjfhZxKUB9rKNudLXoG0I6GK8jEr7avvMs3fqu3Q+dWSxoe/sxKsBzwVR5sAY7weNDyNzpJLfdNEfJ6rTR7FyYjVfU/zCXbrV4jwqaZMewrtQMvBlS1d51ebCjqpYtJVZxnzjXkvCjO54t3f92X25BJWbRCctgxhuyOJNxXY1TA=
+ bh=ad9OzhObcTVEjpq5II81XSqfa/NVOOqA0VlDrpha9k4=;
+ b=SVQR3yUghs0LnAkJkZZwTOLgN3kjQ+dBGP/jAvHyKWzkHcz4rWk1dEyMfWESmG4JqStw7rLeGIScIXNf0Q0CG2uqwXTli10gCP7WjiusuQFh1IhPO0G71Bst/n1Dbz/UJmJfxR+UqyjGPBsGCPyNv4GUewuYrndyhOCzFEUxYN8=
 Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
  MN2PR04MB5920.namprd04.prod.outlook.com (20.179.21.161) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1965.14; Fri, 7 Jun 2019 06:01:24 +0000
+ 15.20.1965.14; Fri, 7 Jun 2019 06:01:29 +0000
 Received: from MN2PR04MB6061.namprd04.prod.outlook.com
  ([fe80::98ab:5e60:9c5c:4e0e]) by MN2PR04MB6061.namprd04.prod.outlook.com
  ([fe80::98ab:5e60:9c5c:4e0e%7]) with mapi id 15.20.1943.026; Fri, 7 Jun 2019
- 06:01:24 +0000
+ 06:01:29 +0000
 From: Anup Patel <Anup.Patel@wdc.com>
 To: Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>
-Subject: [PATCH v5 0/2] Two-stagged initial page table setup
-Thread-Topic: [PATCH v5 0/2] Two-stagged initial page table setup
-Thread-Index: AQHVHPZv/4z6R2LBokaKhvaK1uY0gg==
-Date: Fri, 7 Jun 2019 06:01:24 +0000
-Message-ID: <20190607060049.29257-1-anup.patel@wdc.com>
+Subject: [PATCH v5 1/2] RISC-V: Fix memory reservation in setup_bootmem()
+Thread-Topic: [PATCH v5 1/2] RISC-V: Fix memory reservation in setup_bootmem()
+Thread-Index: AQHVHPZypc49rHUlikqL/+SNUsZZag==
+Date: Fri, 7 Jun 2019 06:01:29 +0000
+Message-ID: <20190607060049.29257-2-anup.patel@wdc.com>
+References: <20190607060049.29257-1-anup.patel@wdc.com>
+In-Reply-To: <20190607060049.29257-1-anup.patel@wdc.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -72,35 +74,35 @@ x-ms-exchange-messagesentrepresentingtype: 1
 x-mailer: git-send-email 2.17.1
 x-originating-ip: [129.253.179.161]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 782186a4-33f9-4b70-4c3b-08d6eb0d921c
+x-ms-office365-filtering-correlation-id: af326713-9a46-49c9-108d-08d6eb0d9524
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
  SRVR:MN2PR04MB5920; 
 x-ms-traffictypediagnostic: MN2PR04MB5920:
 wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <MN2PR04MB59209CF918D57FE29A73DD868D100@MN2PR04MB5920.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-microsoft-antispam-prvs: <MN2PR04MB5920C58C1DB035AF48D8CE728D100@MN2PR04MB5920.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2582;
 x-forefront-prvs: 0061C35778
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(346002)(376002)(39860400002)(396003)(136003)(189003)(199004)(68736007)(256004)(6512007)(54906003)(2906002)(386003)(81156014)(71200400001)(52116002)(81166006)(110136005)(72206003)(476003)(26005)(2616005)(53936002)(8936002)(8676002)(99286004)(7736002)(4326008)(2171002)(305945005)(6506007)(102836004)(50226002)(71190400001)(14454004)(186003)(25786009)(478600001)(486006)(6436002)(86362001)(6116002)(3846002)(6486002)(66476007)(64756008)(66446008)(66556008)(66946007)(73956011)(1076003)(316002)(66066001)(44832011)(5660300002)(36756003);
+ SFS:(10019020)(366004)(346002)(376002)(39860400002)(396003)(136003)(189003)(199004)(68736007)(256004)(6512007)(54906003)(2906002)(386003)(81156014)(71200400001)(52116002)(81166006)(76176011)(110136005)(72206003)(476003)(26005)(2616005)(53936002)(8936002)(8676002)(99286004)(7736002)(4326008)(2171002)(305945005)(6506007)(102836004)(50226002)(71190400001)(14454004)(186003)(25786009)(478600001)(486006)(6436002)(86362001)(6116002)(3846002)(6486002)(66476007)(64756008)(66446008)(66556008)(66946007)(73956011)(1076003)(446003)(316002)(66066001)(11346002)(44832011)(5660300002)(36756003);
  DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5920;
  H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: jUdzOvHf8gZUpu8RjyiXIcYmYgvaPthoMvtLEs/QmSo/pQOjDXQ5CBfxW0SH7ImEWyP9I+rL3O1kLsGhYMEHyHJw/NPlIT7BaavD7E1RAvfytY7n3/b/uFELKFIsSaphLfMslaidu4r31tA4PuF+ZcCII006jF2ytVHb9QOnW8WRE7c93TxUyx0AmkOr+w0C3FHzb92kni0/lPr4I425HAfZLqN+nuVWCGh2UTJdpdVt8tJy5bLLcb5pTpJ1rLfjppZIrhtFVq7smTq2FZDqrYiUI6ozc02jvL8EfcQPeqq3uNB3v0BfvNzXibXfgvWkkixRVG1eeC96HvZxurRT9opm+l8bT8mdeHNR2ZcRgW/zU/hXlfqZGDoAqBO3fr0g7CtlQjFsGB8p7wXm+ZBtihFNWuOIzy5qSd7voMdZsCs=
+x-microsoft-antispam-message-info: UTBchpBzC8+vg93h3DiRc9NUEbqKHA1gt9qb09KphLBGciKQhfomiMa5wFWTZiS1+ku5EE3gWV9y5ohCb2gwQCtvT5hltgDtHsQ6Zwq2M7bw3nbahNOTXJbfXNXuAQtY62/9VaS3oT5Lt+GaMSR2aNZ83gcJelRJf3sHn9KRiasdDT8IBgktOAPAvBVDUjPhMhf14jp8wQX2slCrjD9avXOpBr3byZ+rNAnDRhSBSfUQCVRmpqPsebkeL+EsQibeo/nDO2+cWfbwq6cAuYifUxzGvlOue5u92td/5coA4QejrBveyEDXodCPcUezNY8c44L88egC+kcuC81pHOU1HyAq8uTlqsL7+By2bc121BSALXKBXAnz6qf9lOzXMHITsG9beoAtNmiVaMtfxR+2ij6jEvdsyBqFD6MeDF9ZFr0=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 782186a4-33f9-4b70-4c3b-08d6eb0d921c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jun 2019 06:01:24.2851 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: af326713-9a46-49c9-108d-08d6eb0d9524
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jun 2019 06:01:29.3641 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
 X-MS-Exchange-CrossTenant-userprincipalname: Anup.Patel@wdc.com
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5920
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190606_230131_040472_B65DCD9A 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20190606_230132_676194_94571CD8 
+X-CRM114-Status: GOOD (  17.65  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -138,55 +140,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patchset implements two-stagged initial page table setup using fixmap
-to avoid mapping non-existent RAM and also reduce high_memory consumed by
-initial page tables.
+Currently, the setup_bootmem() reserves memory from RAM start to the
+kernel end. This prevents us from exploring ways to use the RAM below
+(or before) the kernel start hence this patch updates setup_bootmem()
+to only reserve memory from the kernel start to the kernel end.
 
-The patchset is based on Linux-5.2-rc3 and tested on SiFive Unleashed board
-and QEMU virt machine.
+Suggested-by: Mike Rapoport <rppt@linux.ibm.com>
+Signed-off-by: Anup Patel <anup.patel@wdc.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+---
+ arch/riscv/mm/init.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-These patches can be found in riscv_setup_vm_v5 branch of
-https//github.com/avpatel/linux.git
-
-Changes since v4:
-- Added dtb_early_va which points to DTB for early parsing
-
-Changes since v3:
-- Changed patch series subject.
-- Dropped PATCH1 because it's already merged
-- Dropped PATCH3 because trampoline page table handles a corner case
-  for 32bit systems where load address range overlaps kernel virtual
-  address range
-- Revamped PATCH for 4K aligned booting into two-stagged initial page
-  table setup
-
-Changes since v2:
-- Dropped PATCH2 because we have separate fix for Linux-5.1-rcX
-- Moved PATCH5 to PATCH2
-- Moved PATCH4 to PATCH3
-- The "Booting kernel from any 4KB aligned address" is now PATCH4
-
-Changes since v1:
-- Add kconfig option BOOT_PAGE_ALIGNED to enable 4KB aligned booting
-- Improved initial page table setup code to select best/biggest
-  possible mapping size based on load address alignment
-- Added PATCH4 to remove redundant trampoline page table
-- Added PATCH5 to fix memory reservation in setup_bootmem()
-
-Anup Patel (2):
-  RISC-V: Fix memory reservation in setup_bootmem()
-  RISC-V: Setup initial page tables in two stages
-
- arch/riscv/include/asm/fixmap.h     |   5 +
- arch/riscv/include/asm/pgtable-64.h |   5 +
- arch/riscv/include/asm/pgtable.h    |   8 +
- arch/riscv/kernel/head.S            |  17 +-
- arch/riscv/kernel/setup.c           |   6 +-
- arch/riscv/mm/init.c                | 331 ++++++++++++++++++++++------
- 6 files changed, 292 insertions(+), 80 deletions(-)
-
---
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index 8bf6f9c2d48c..1879501bd156 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -29,6 +29,8 @@ unsigned long empty_zero_page[PAGE_SIZE / sizeof(unsigned long)]
+ 							__page_aligned_bss;
+ EXPORT_SYMBOL(empty_zero_page);
+ 
++extern char _start[];
++
+ static void __init zone_sizes_init(void)
+ {
+ 	unsigned long max_zone_pfns[MAX_NR_ZONES] = { 0, };
+@@ -103,18 +105,14 @@ void __init setup_bootmem(void)
+ {
+ 	struct memblock_region *reg;
+ 	phys_addr_t mem_size = 0;
++	phys_addr_t vmlinux_end = __pa(&_end);
++	phys_addr_t vmlinux_start = __pa(&_start);
+ 
+ 	/* Find the memory region containing the kernel */
+ 	for_each_memblock(memory, reg) {
+-		phys_addr_t vmlinux_end = __pa(_end);
+ 		phys_addr_t end = reg->base + reg->size;
+ 
+ 		if (reg->base <= vmlinux_end && vmlinux_end <= end) {
+-			/*
+-			 * Reserve from the start of the region to the end of
+-			 * the kernel
+-			 */
+-			memblock_reserve(reg->base, vmlinux_end - reg->base);
+ 			mem_size = min(reg->size, (phys_addr_t)-PAGE_OFFSET);
+ 
+ 			/*
+@@ -128,6 +126,9 @@ void __init setup_bootmem(void)
+ 	}
+ 	BUG_ON(mem_size == 0);
+ 
++	/* Reserve from the start of the kernel to the end of the kernel */
++	memblock_reserve(vmlinux_start, vmlinux_end - vmlinux_start);
++
+ 	set_max_mapnr(PFN_DOWN(mem_size));
+ 	max_low_pfn = PFN_DOWN(memblock_end_of_DRAM());
+ 
+@@ -205,7 +206,6 @@ void __set_fixmap(enum fixed_addresses idx, phys_addr_t phys, pgprot_t prot)
+ 
+ asmlinkage void __init setup_vm(void)
+ {
+-	extern char _start;
+ 	uintptr_t i;
+ 	uintptr_t pa = (uintptr_t) &_start;
+ 	pgprot_t prot = __pgprot(pgprot_val(PAGE_KERNEL) | _PAGE_EXEC);
+-- 
 2.17.1
+
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
