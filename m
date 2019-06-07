@@ -2,86 +2,112 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A415383B8
-	for <lists+linux-riscv@lfdr.de>; Fri,  7 Jun 2019 07:24:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE2E438407
+	for <lists+linux-riscv@lfdr.de>; Fri,  7 Jun 2019 08:01:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S4dYywUQMt3Zt/Oso7NR32ZaVNbbJ697SsxOwNu3Zpw=; b=NPAkkzqglcFT0u
-	kiKfEJRBmMyhg7S+bpPi2YJcgcLq1BbQpUc8dG17de86z8xtlsfYdbYRSHRIBMjIaSEURL3gw5OPW
-	004crauqptjyHHC6YtGONu49kePRnrDNjBAhA8rNgyJwK1sGl6sS7QhxAdS+tcrKaa+y7rw8/Mkuq
-	IiWxaWp0G3XUNsNq4BDlbqJMesObUSpkFaW4197RKwL7aQh5NVpLEz4eeurVuqoB04FyOeMhh747J
-	X9Z7zZjbaNpS8llxHtYJxGfAgWMMuljxantU4Y5SXnQmFfiFJqzD5Y5HuppYPwPWAlX48YZ4uV/QD
-	SfcWhLoed5QrX3RHplhQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ig85M470duwSDvq61yjfDIu0WeW2RCMUPG8vHhi7ukw=; b=Iz6Abnig+EohLh
+	3qZd6TNTLGZR15rAixEP284LxWSWjcDWFuI9CrkykVyDR5pV1mbzhiDE4JHduXRoHi1YzupEQxhe8
+	/gGGKTuOEDAVgX4OkpPl1jnTxsRuBfWGqx2FdejIYK87yUfVmx4cVj3bY/p11Id1TWDeXJAT52xSo
+	JwzysWoKiW6fjzCuKCxiN1er647P7n+MZ7bbXK7SRAV+9JajdwVXP+b/FXUsqe2f2cVUXZevmZ16I
+	NyvSHzmH28RFaVwDokikc2+tnhgEjs/WWLS/mYEUc92YK4n1OP6qp5zPatFNknb+a/z5RE+XC4lZE
+	R7HszoCBjF/8BZFgV/Dg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZ7Mm-0006iZ-FO; Fri, 07 Jun 2019 05:24:40 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1hZ7wV-0001Pr-1f; Fri, 07 Jun 2019 06:01:35 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZ7Mj-0006hs-1w
- for linux-riscv@lists.infradead.org; Fri, 07 Jun 2019 05:24:38 +0000
-Received: by mail-pl1-x641.google.com with SMTP id g9so361233plm.6
- for <linux-riscv@lists.infradead.org>; Thu, 06 Jun 2019 22:24:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=wqe6kl8DbEpNzk+gxBdngVVPGBYURaHyfgLLC4qaii0=;
- b=Z8ebDry0731Ww7qRvJu1pqbm3GJ+szf2+j7eytajaqJtwAmW3D6btMQIC9TE6+64jo
- O+/0zIVJSEEkB0+07WKzaru0XazGerN1yQ9YckR5JZUneUhZIFdtEbAnT7tC7DvMpJKJ
- rpQFIFw6hao9QHiivNPi/3R/tftDhjPcTDJ1N7wOsNPKGhUmguPFRRG9J1gM/spcEeXV
- qIZEhuP55biu4fwH99gVGj7NKohBhWO26CnMlm8NVHmCypHSY+A9TCeJylTpXyV6YY6X
- IJ8lwnD03PZ7c65ptZXQcHsUXprO4wtMuHRCQcZBRQ8U7A10xh2EIzznYo7A9WKotKJr
- sD5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=wqe6kl8DbEpNzk+gxBdngVVPGBYURaHyfgLLC4qaii0=;
- b=aiLMCuGR535+OgazRSNOe7sDvGKlVt8RT4RpWA/bo8DKOZb7OqWeKuQxLS35hpZbe9
- HfWvJf51Wj/wf6EFxUGSpk7OtwAyQXNopxNcjMZyiKYhwLc+WV6VNwcNM9tSPMi5Ku/d
- R9I1zrf1hJQkSiVZXbp40RiymoeUbn5VG64NC48QBwDvWRsnluySVLfASWE21WbOBsMN
- 4eBpaU0hiEN1QVePFwm4f8DxhTZ6Q7FDM8VwxxDmgKRWngW0t+nNd847jts6z6l0DzBz
- ub5n3FExWmdEMGQxVa4CbQA6SBDHmX5r5ebMzgcnmh9O2CFCWubzg61grI/VJdHCs8Oi
- flhA==
-X-Gm-Message-State: APjAAAVPWQ8ZiV9+ldlb9SMyIRBzMY8FZRP6lemVe+Q4jTuHboH+Nwqu
- +l99PHBk56dEYQPvs6PTyIrpXQ==
-X-Google-Smtp-Source: APXvYqzQFNiED7FnxJJgBrM9ljjzZaPd8GsA5Es9uz10QhQqODIm1yA+jRKiFrpyJIhkn2S/CAFDyQ==
-X-Received: by 2002:a17:902:9a84:: with SMTP id
- w4mr54404661plp.241.1559885076185; 
- Thu, 06 Jun 2019 22:24:36 -0700 (PDT)
-Received: from localhost ([14.141.105.52])
- by smtp.gmail.com with ESMTPSA id t187sm881078pfb.64.2019.06.06.22.24.35
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 06 Jun 2019 22:24:35 -0700 (PDT)
-Date: Thu, 6 Jun 2019 22:24:33 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Kevin Hilman <khilman@baylibre.com>, devicetree@vger.kernel.org, 
- robh@kernel.org, mark.rutland@arm.com
-Subject: Re: Patches for v5.2-rc and v5.3 merge window
-In-Reply-To: <7hr288exi7.fsf@baylibre.com>
-Message-ID: <alpine.DEB.2.21.9999.1906062219490.28147@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1905201019010.15580@viisi.sifive.com>
- <7hr288exi7.fsf@baylibre.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1hZ7wQ-0001OB-SR
+ for linux-riscv@lists.infradead.org; Fri, 07 Jun 2019 06:01:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1559887290; x=1591423290;
+ h=from:to:cc:subject:date:message-id:
+ content-transfer-encoding:mime-version;
+ bh=F55XFh+0L2QVaK0P9ne3JsQL6JQK5dEWWxxIHPMXMP4=;
+ b=QAtnJmb3pQKvd1KYIZlctfIokqViQb31tLehQWkswzZR+SKpQwocveLE
+ dVm4gZtWTuxUkC/wZ11zgCPRPG4Nr0k8XoqxpPdJyYstxqaFcynyR+5O/
+ nktuWw3gig9EmkvezFfNj99olFEbUBagr796+qAQF5olCb/1rxqfn9VYd
+ aCB0VxadaweJ5TkWu+wwjJBqC/Ngq0Q3zEFC65ZaG/KUJQbUkZ+XRDT0S
+ pvY5+G2X9g11TI8bGyN3kq9xZz4ljtaqMJO4IRz32RhuTLvNb6LY8Cvuq
+ xhZSEM7IfwbKMNkJYZvDBNsU6gCMHaGnTqD0rOnr9SGl8Zvykt7o27vID Q==;
+X-IronPort-AV: E=Sophos;i="5.63,562,1557158400"; d="scan'208";a="216314725"
+Received: from mail-by2nam05lp2058.outbound.protection.outlook.com (HELO
+ NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.58])
+ by ob1.hgst.iphmx.com with ESMTP; 07 Jun 2019 14:01:25 +0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F55XFh+0L2QVaK0P9ne3JsQL6JQK5dEWWxxIHPMXMP4=;
+ b=CjfhZxKUB9rKNudLXoG0I6GK8jEr7avvMs3fqu3Q+dWSxoe/sxKsBzwVR5sAY7weNDyNzpJLfdNEfJ6rTR7FyYjVfU/zCXbrV4jwqaZMewrtQMvBlS1d51ebCjqpYtJVZxnzjXkvCjO54t3f92X25BJWbRCctgxhuyOJNxXY1TA=
+Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
+ MN2PR04MB5920.namprd04.prod.outlook.com (20.179.21.161) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.1965.14; Fri, 7 Jun 2019 06:01:24 +0000
+Received: from MN2PR04MB6061.namprd04.prod.outlook.com
+ ([fe80::98ab:5e60:9c5c:4e0e]) by MN2PR04MB6061.namprd04.prod.outlook.com
+ ([fe80::98ab:5e60:9c5c:4e0e%7]) with mapi id 15.20.1943.026; Fri, 7 Jun 2019
+ 06:01:24 +0000
+From: Anup Patel <Anup.Patel@wdc.com>
+To: Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>
+Subject: [PATCH v5 0/2] Two-stagged initial page table setup
+Thread-Topic: [PATCH v5 0/2] Two-stagged initial page table setup
+Thread-Index: AQHVHPZv/4z6R2LBokaKhvaK1uY0gg==
+Date: Fri, 7 Jun 2019 06:01:24 +0000
+Message-ID: <20190607060049.29257-1-anup.patel@wdc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: BYAPR07CA0099.namprd07.prod.outlook.com
+ (2603:10b6:a03:12b::40) To MN2PR04MB6061.namprd04.prod.outlook.com
+ (2603:10b6:208:d8::15)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Anup.Patel@wdc.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.17.1
+x-originating-ip: [129.253.179.161]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 782186a4-33f9-4b70-4c3b-08d6eb0d921c
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
+ SRVR:MN2PR04MB5920; 
+x-ms-traffictypediagnostic: MN2PR04MB5920:
+wdcipoutbound: EOP-TRUE
+x-microsoft-antispam-prvs: <MN2PR04MB59209CF918D57FE29A73DD868D100@MN2PR04MB5920.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5236;
+x-forefront-prvs: 0061C35778
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(366004)(346002)(376002)(39860400002)(396003)(136003)(189003)(199004)(68736007)(256004)(6512007)(54906003)(2906002)(386003)(81156014)(71200400001)(52116002)(81166006)(110136005)(72206003)(476003)(26005)(2616005)(53936002)(8936002)(8676002)(99286004)(7736002)(4326008)(2171002)(305945005)(6506007)(102836004)(50226002)(71190400001)(14454004)(186003)(25786009)(478600001)(486006)(6436002)(86362001)(6116002)(3846002)(6486002)(66476007)(64756008)(66446008)(66556008)(66946007)(73956011)(1076003)(316002)(66066001)(44832011)(5660300002)(36756003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5920;
+ H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: jUdzOvHf8gZUpu8RjyiXIcYmYgvaPthoMvtLEs/QmSo/pQOjDXQ5CBfxW0SH7ImEWyP9I+rL3O1kLsGhYMEHyHJw/NPlIT7BaavD7E1RAvfytY7n3/b/uFELKFIsSaphLfMslaidu4r31tA4PuF+ZcCII006jF2ytVHb9QOnW8WRE7c93TxUyx0AmkOr+w0C3FHzb92kni0/lPr4I425HAfZLqN+nuVWCGh2UTJdpdVt8tJy5bLLcb5pTpJ1rLfjppZIrhtFVq7smTq2FZDqrYiUI6ozc02jvL8EfcQPeqq3uNB3v0BfvNzXibXfgvWkkixRVG1eeC96HvZxurRT9opm+l8bT8mdeHNR2ZcRgW/zU/hXlfqZGDoAqBO3fr0g7CtlQjFsGB8p7wXm+ZBtihFNWuOIzy5qSd7voMdZsCs=
 MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 782186a4-33f9-4b70-4c3b-08d6eb0d921c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jun 2019 06:01:24.2851 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Anup.Patel@wdc.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5920
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190606_222437_107597_AA9F042F 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 1.3 (+)
+X-CRM114-CacheID: sfid-20190606_230131_040472_B65DCD9A 
+X-CRM114-Status: GOOD (  13.22  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
- [list.dnswl.org]
- 1.5 RCVD_IN_SORBS_WEB      RBL: SORBS: sender is an abusable web server
- [14.141.105.52 listed in dnsbl.sorbs.net]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [68.232.141.245 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -102,45 +128,65 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>, linux-riscv@lists.infradead.org,
- palmer@sifive.com, linux-kernel@vger.kernel.org
+Cc: Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Mike Rapoport <rppt@linux.ibm.com>, Christoph Hellwig <hch@infradead.org>,
+ Atish Patra <Atish.Patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-+ Rob, devicetree@, Mark
+This patchset implements two-stagged initial page table setup using fixmap
+to avoid mapping non-existent RAM and also reduce high_memory consumed by
+initial page tables.
 
-On Wed, 5 Jun 2019, Kevin Hilman wrote:
+The patchset is based on Linux-5.2-rc3 and tested on SiFive Unleashed board
+and QEMU virt machine.
 
-> Paul Walmsley <paul.walmsley@sifive.com> writes:
-> 
-> > Palmer has asked me to collect patches for the v5.2-rc releases and v5.3 
-> > merge window, so I'll be doing so.  This is just a heads-up so no one is 
-> > surprised to see 'patch queued' responses from me.
-> 
-> Speaking of v5.2-rc, any chance your DT series will make it for v5.2?
+These patches can be found in riscv_setup_vm_v5 branch of
+https//github.com/avpatel/linux.git
 
-Ideally it would be nice to get acks from the DT folks first for:
+Changes since v4:
+- Added dtb_early_va which points to DTB for early parsing
 
-https://lore.kernel.org/linux-riscv/20190602080500.31700-3-paul.walmsley@sifive.com/T/#u
+Changes since v3:
+- Changed patch series subject.
+- Dropped PATCH1 because it's already merged
+- Dropped PATCH3 because trampoline page table handles a corner case
+  for 32bit systems where load address range overlaps kernel virtual
+  address range
+- Revamped PATCH for 4K aligned booting into two-stagged initial page
+  table setup
 
-https://lore.kernel.org/linux-riscv/20190602080500.31700-4-paul.walmsley@sifive.com/T/#u
+Changes since v2:
+- Dropped PATCH2 because we have separate fix for Linux-5.1-rcX
+- Moved PATCH5 to PATCH2
+- Moved PATCH4 to PATCH3
+- The "Booting kernel from any 4KB aligned address" is now PATCH4
 
-If those come soon, I'd be fine with submitting them for v5.2-rc.  But if 
-that stretches much further into the v5.2-rc series, it seems best to 
-schedule it for v5.3.
+Changes since v1:
+- Add kconfig option BOOT_PAGE_ALIGNED to enable 4KB aligned booting
+- Improved initial page table setup code to select best/biggest
+  possible mapping size based on load address alignment
+- Added PATCH4 to remove redundant trampoline page table
+- Added PATCH5 to fix memory reservation in setup_bootmem()
 
+Anup Patel (2):
+  RISC-V: Fix memory reservation in setup_bootmem()
+  RISC-V: Setup initial page tables in two stages
 
-> I'm hoping to have upstream v5.2 ready for testing in kernelCI, and
-> that's one of the last missing pieces.  I just tested it on v5.2-rc3 and
-> it's working great with mainline u-boot.
+ arch/riscv/include/asm/fixmap.h     |   5 +
+ arch/riscv/include/asm/pgtable-64.h |   5 +
+ arch/riscv/include/asm/pgtable.h    |   8 +
+ arch/riscv/kernel/head.S            |  17 +-
+ arch/riscv/kernel/setup.c           |   6 +-
+ arch/riscv/mm/init.c                | 331 ++++++++++++++++++++++------
+ 6 files changed, 292 insertions(+), 80 deletions(-)
 
-OK, great.  Thanks again for your testing help.
-
-
-- Paul
-
+--
+2.17.1
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
