@@ -2,95 +2,37 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0D573A481
-	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 11:27:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB9533A573
+	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 14:29:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:In-Reply-To:MIME-Version:
-	References:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kS0nEr9hZM+5BxcoYzO+dxZP8d/8L06eLgR6tv12vlE=; b=UnHg5Rz8zOLqIJ
-	cIxxHcR/oYOTFFQlGIXg9m8ke7wf0F2DmEWeHuIcMMRAq/o8DXLHk1gWGWM/8uRyU3agdq9SOR7M7
-	kc7qPbQWwwA9IDrFIzc70WJa/NXl7R++h5zVH013DXfhWZUlw/ArSVLADz5iXHFmsdWDPMBmkKNzX
-	yCp2h0TVJfsIHJyB4q76tYCD5Cgx1xBiZM0ezV3eArRV7q9FFshWRapAeyZ9ETGt8tPuv4M0aCzrJ
-	yYJOW2xpALNK5xpI0cBV2UKGQYDeIQ8KFUhFD3I9d8Fz6Ev4t5l7jY5qE0pcu16OgpEKi84gwxKUb
-	cUXYfv0WL2c6vKP6vYvA==;
+	List-Owner; bh=uBReffpFbUbOvmLpSh4dG+8xiV9JbDoOsYRaAl6Mw2E=; b=ErqWco7zz7FTn9
+	dOYL/iZnp8Wed7wQycfjkSDsRMp7twdK2dgeOMo/M0PVpeOeKbYa9yjMSaJIZh2c/HtPfZE11AKvU
+	6aG9XfjlDkvcR8CIp3U6QF8dxvhlmKMe1hWL4U1jnFISM9ZXGULTF7GkPYxz972wfk4JRxM8onoPR
+	2kaRGXacW0iyX/sn/8k7mvW4pNWzbcJfS52+gJjLRb0WUfMtM1gSdz633VLlLgJRbQ4ADU5DkKmYr
+	Qo9FkSVrsNRgSfxuqWU77hC9vQRAT9gWwCbvzz+7zw0QXDdymoyoF05fW+HTwIXAqvKk7kYlYPVnl
+	Lro6+l4JxeFguGQWSvag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZu7F-0006La-4S; Sun, 09 Jun 2019 09:27:53 +0000
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZu7C-0006Ky-Fr
- for linux-riscv@lists.infradead.org; Sun, 09 Jun 2019 09:27:51 +0000
-Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x599QoaD146571
- for <linux-riscv@lists.infradead.org>; Sun, 9 Jun 2019 05:27:49 -0400
-Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2t0tbyqg1h-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-riscv@lists.infradead.org>; Sun, 09 Jun 2019 05:27:49 -0400
-Received: from localhost
- by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <linux-riscv@lists.infradead.org> from <heiko.carstens@de.ibm.com>;
- Sun, 9 Jun 2019 10:27:46 +0100
-Received: from b06avi18878370.portsmouth.uk.ibm.com (9.149.26.194)
- by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Sun, 9 Jun 2019 10:27:41 +0100
-Received: from d06av25.portsmouth.uk.ibm.com (d06av25.portsmouth.uk.ibm.com
- [9.149.105.61])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id x599ReFd35979690
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sun, 9 Jun 2019 09:27:40 GMT
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7404011C04A;
- Sun,  9 Jun 2019 09:27:40 +0000 (GMT)
-Received: from d06av25.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C4A7B11C050;
- Sun,  9 Jun 2019 09:27:39 +0000 (GMT)
-Received: from osiris (unknown [9.145.173.81])
- by d06av25.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
- Sun,  9 Jun 2019 09:27:39 +0000 (GMT)
-Date: Sun, 9 Jun 2019 11:27:38 +0200
-From: Heiko Carstens <heiko.carstens@de.ibm.com>
-To: Markus Heiser <markus.heiser@darmarit.de>
+	id 1hZwxM-0002kJ-33; Sun, 09 Jun 2019 12:29:52 +0000
+Received: from 179.176.115.133.dynamic.adsl.gvt.net.br ([179.176.115.133]
+ helo=recife.lan)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1hZwxI-0002Wx-RD; Sun, 09 Jun 2019 12:29:49 +0000
+Date: Sun, 9 Jun 2019 09:29:40 -0300
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+To: Heiko Carstens <heiko.carstens@de.ibm.com>
 Subject: Re: [PATCH v3 00/33] Convert files to ReST - part 1
+Message-ID: <20190609092940.5e34e3b0@recife.lan>
+In-Reply-To: <20190609091642.GA3705@osiris>
 References: <cover.1560045490.git.mchehab+samsung@kernel.org>
  <20190609091642.GA3705@osiris>
- <56cd597a-9db8-b6ea-eed1-51d3bdf0e6e0@darmarit.de>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <56cd597a-9db8-b6ea-eed1-51d3bdf0e6e0@darmarit.de>
-X-TM-AS-GCONF: 00
-x-cbid: 19060909-0008-0000-0000-000002F1A5FB
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19060909-0009-0000-0000-0000225E99D8
-Message-Id: <20190609092738.GB3705@osiris>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-06-09_02:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=988 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1810050000 definitions=main-1906090070
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190609_022750_641982_933E1B53 
-X-CRM114-Status: GOOD (  15.70  )
-X-Spam-Score: -0.7 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.156.1 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,11 +45,11 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Alexei Starovoitov <ast@kernel.org>, bpf@vger.kernel.org,
- Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
- netdev@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>,
+ bpf@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
+ Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- linux-kernel@vger.kernel.org, Mauro Carvalho Chehab <mchehab@infradead.org>,
+ linux-kernel@vger.kernel.org, Alexei Starovoitov <ast@kernel.org>,
  Greentime Hu <green.hu@gmail.com>,
  Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Yonghong Song <yhs@fb.com>,
  linux-riscv@lists.infradead.org, Vincent Chen <deanbo422@gmail.com>,
@@ -117,18 +59,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Jun 09, 2019 at 11:22:36AM +0200, Markus Heiser wrote:
-> 
-> Am 09.06.19 um 11:16 schrieb Heiko Carstens:
-> >Will there be a web page (e.g. kernel.org), which contains always the
-> >latest upstream version?
-> 
-> You are looking for the HTML docs on kernel.org?
-> 
->   https://www.kernel.org/doc/html/latest/
+Em Sun, 9 Jun 2019 11:16:43 +0200
+Heiko Carstens <heiko.carstens@de.ibm.com> escreveu:
 
-Yes, thanks!
+> On Sat, Jun 08, 2019 at 11:26:50PM -0300, Mauro Carvalho Chehab wrote:
+> > This is the first part of a series I wrote sometime ago where I manually
+> > convert lots of files to be properly parsed by Sphinx as ReST files.
+> > 
+> > As it touches on lot of stuff, this series is based on today's docs-next
+> > + linux-next, at tag next-20190607.
+> > 
+> > I have right now about 85 patches with this undergoing work. That's
+> > because I opted to do ~1 patch per converted directory.
+> > 
+> > That sounds too much to be send on a single round. So, I'm opting to split
+> > it on 3 parts. Those patches should probably be good to be merged
+> > either by subsystem maintainers or via the docs tree.
+> > 
+> > I opted to mark new files not included yet to the main index.rst (directly or
+> > indirectly ) with the :orphan: tag, in order to avoid adding warnings to the
+> > build system. This should be removed after we find a "home" for all
+> > the converted files within the new document tree arrangement.
+> > 
+> > Both this series and  the next parts are on my devel git tree,
+> > at:
+> > 
+> > 	https://git.linuxtv.org/mchehab/experimental.git/log/?h=convert_rst_renames_v4
+> > 
+> > The final output in html (after all patches I currently have, including 
+> > the upcoming series) can be seen at:
+> > 
+> > 	https://www.infradead.org/~mchehab/rst_conversion/  
+> 
+> Will there be a web page (e.g. kernel.org), which contains always the
+> latest upstream version?
 
+Yes:
+
+	https://www.kernel.org/doc/html/latest/
+
+I guess this one is based on Linus tree.
+
+Jon also maintains a version at:
+
+	https://static.lwn.net/kerneldoc/
+
+I guess that one is based on docs-next branch from the Docs tree.
+
+Btw, if you want to build it for yourself, you could use:
+
+	make htmldocs
+
+If your system doesn't have all dependencies, it will give the
+hints about how to install them.
+
+> 
+> >   docs: Debugging390.txt: convert table to ascii artwork
+> >   docs: s390: convert docs to ReST and rename to *.rst
+> >   s390: include/asm/debug.h add kerneldoc markups  
+> 
+> I can pick these up for s390. Or do you want to send the whole series
+> in one go upstream?
+
+Yeah, feel free to pick them via the s390 tree.
+
+Regards,
+Mauro
+
+Thanks,
+Mauro
+
+
+Thanks,
+Mauro
 
 _______________________________________________
 linux-riscv mailing list
