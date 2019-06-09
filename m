@@ -2,39 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A225B3A2E0
-	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 04:27:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE30F3A3F9
+	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 07:50:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rQh3s6jMctH3+0gK6SI6gY8sP5q+Y0Cca1/DeR8V/vQ=; b=pqPPXjpqb3MqDW
-	87nSZr47luJraIsw5yesQbLVsM+QraJag2OKUgfHWcVPn8zUL+HNJ7q3+YT8NxxDpBgmigs4RIQwT
-	JfwZWiMzJyYu1tO82QGgkLpGP9zGZlux3Mb1QKwObnEJCuRxyGnAX2yeALnYU0NLgHIX3xytI2exb
-	5JHv9Ab9f2FCBv3TaIH4lw731ZxGZ+V+AwmA9YEqIeIJ8Xk3qDGsNWebU0KS3fpIYPmntZYgX653e
-	XTqBOyu1qKgySCkl/swyVcFrOtUhKDX4ch+xgZ9XuBkjIVV+a3soviYwAB3IJvimPAQ5bINlshNfa
-	w16HV7sdZnr+Zpm6DWVA==;
+	List-Owner; bh=wUEB48+G02MOKwzjHjw9E0IOQ1BN+CPyGxM7f7EwUrU=; b=sprpa5EoHl5bIV
+	FhI+Lh6GB0ks3/Zekulbc05eEhbDqczo7qigUyyb1b2OBtUZWWUDH8XLueQxEqcZgyfNb7TfOBcHj
+	NYJqtqi0etUVkcDGWcDCVbB/hW6nTYBSE45OkwJ+oIpCTPAbdi1xqwg+UeG9P+YNommD7JVg/RcUo
+	B9xhgYsqNEjsqX4NAOFLx4bz6AogT7iDcrmAAfcVYgmE/aTQa/ySWelOjmQBooF+IWRSJ6YVQRBHx
+	47GaWrTC4RM/R8fp+VmoNJ1uddpUkAP1A5KvxGWgAcGcnVudBB9ZuXtY5uujeVhDXIiNHbxvFucJ6
+	PQe/xBeAHoaXYI8UF5Uw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZnYg-0001uF-0k; Sun, 09 Jun 2019 02:27:46 +0000
-Received: from 179.176.115.133.dynamic.adsl.gvt.net.br ([179.176.115.133]
- helo=bombadil.infradead.org)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hZnYS-0001n1-FB; Sun, 09 Jun 2019 02:27:32 +0000
-Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
- (envelope-from <mchehab@bombadil.infradead.org>)
- id 1hZnYL-0000K2-Fa; Sat, 08 Jun 2019 23:27:25 -0300
-From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Subject: [PATCH v3 24/33] docs: riscv: convert docs to ReST and rename to *.rst
-Date: Sat,  8 Jun 2019 23:27:14 -0300
-Message-Id: <55623342910f7ef470a3c49a3d42cfb23fb12e76.1560045490.git.mchehab+samsung@kernel.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <cover.1560045490.git.mchehab+samsung@kernel.org>
-References: <cover.1560045490.git.mchehab+samsung@kernel.org>
+	id 1hZqin-0004Bv-9a; Sun, 09 Jun 2019 05:50:25 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hZqij-0004B9-Da
+ for linux-riscv@lists.infradead.org; Sun, 09 Jun 2019 05:50:22 +0000
+Received: by mail-pg1-x543.google.com with SMTP id l19so681602pgh.9
+ for <linux-riscv@lists.infradead.org>; Sat, 08 Jun 2019 22:50:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=g5g0galx8RyvOsGO1iYuup0nP37+YQK2f5/z3KYX1Es=;
+ b=j/5W+Sr8ZHhSAf244dwdVTBvj2tr7+iZOWOKMMfzhIdFRqi7/u2TWYwP2epGcXpNlW
+ I/pwIxHeXTA7MG4TUk0ufCyZSyIIQCyjiYyrHyWYIDcTZHo1r+jsI0EBt7hr3FN0zF6I
+ 9aQi/LIdQB7E6GlEfpTnYulqzgptG5UTsd45QMT4YAbNIlHdVNnESvsPdRQyDQdtMXPS
+ jPux964RM50+CXs/BZwcQ7pdwuI3t2VFovovnu6vLXDKg5CDrROdsbaULSS6ohRCdHuV
+ S0Iv21sLf6xxu5Yv8dwERodWihPDBsIc7gff7PUgGOY1ooe1vEiFAqb/Yrg666boUpoB
+ aieA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=g5g0galx8RyvOsGO1iYuup0nP37+YQK2f5/z3KYX1Es=;
+ b=JxgSwBnfSHZ+1OPx8D/JlbqIK4CQ96Afr0eh6U0v6S2n/rEUCRl+fd9i6Iina05In/
+ /9fD39nwsMytpWCj7CUOBsrj7pSe9aNo8b+9jRIWTZPRncUU0UOhyGtlTF4P+m+lRY0p
+ Vx2qRvnHoGge0KEFiA2hIvMQUPK1PEHpRXww9n+pAdPKuPJb8sPxrEAR+zlruKbnWLMc
+ ndLDTjPkU5nr0PlFAimG6jRwfOtTbquJd44ErJS9Td4nKlPoQhWusS4JZJePg4465+LZ
+ g9ElW9DSlwT+1UrJO/oDR9KMHb0eA1RVdrc8ag4UY8OFAOxScx0MctpP4gRY+bQpVPbK
+ kN0g==
+X-Gm-Message-State: APjAAAW3XEPGrdbe7wrjLiFF2Qlpb2kGG0GW4tlOzwRPg/Mt7mCeh0k9
+ VaJHETZH0Spyn+1NRsMo9HBSFA==
+X-Google-Smtp-Source: APXvYqxz5Y4VKifbCFKug9kpochpBP/0jxW+Ow0eYUlsETgxmERQpqyTgihHK+7isHFvK+mEGd1Mhw==
+X-Received: by 2002:a62:15c3:: with SMTP id 186mr3310072pfv.141.1560059419499; 
+ Sat, 08 Jun 2019 22:50:19 -0700 (PDT)
+Received: from localhost ([202.131.137.2])
+ by smtp.gmail.com with ESMTPSA id y13sm8257212pfb.143.2019.06.08.22.50.18
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 08 Jun 2019 22:50:18 -0700 (PDT)
+Date: Sat, 8 Jun 2019 22:50:14 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Palmer Dabbelt <palmer@sifive.com>
+Subject: Re: [PATCH v3 1/5] arch: riscv: add support for building DTB files
+ from DT source data
+In-Reply-To: <mhng-802d67ce-9f78-4ebc-9981-a27e5e4e40df@palmer-si-x1e>
+Message-ID: <alpine.DEB.2.21.9999.1906082245300.720@viisi.sifive.com>
+References: <mhng-802d67ce-9f78-4ebc-9981-a27e5e4e40df@palmer-si-x1e>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190608_225021_521445_6E245D3A 
+X-CRM114-Status: GOOD (  14.01  )
+X-Spam-Score: -0.2 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.2 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,236 +97,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Jonathan Corbet <corbet@lwn.net>,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@infradead.org>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, lollivier@baylibre.com, paul@pwsan.com,
+ linux-kernel@vger.kernel.org, aou@eecs.berkeley.edu
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The conversion here is trivial:
- - Adjust the document title's markup
- - Do some whitespace alignment;
- - mark literal blocks;
- - Use ReST way to markup indented lists.
+On Sat, 8 Jun 2019, Palmer Dabbelt wrote:
 
-At its new index.rst, let's add a :orphan: while this is not linked to
-the main index.rst file, in order to avoid build warnings.
+> On Thu, 06 Jun 2019 22:12:05 PDT (-0700), Paul Walmsley wrote:
+> > On Tue, 4 Jun 2019, Loys Ollivier wrote:
+> > 
+> > > Always build it ?
+> > > Any particular reason to drop ARCH_SIFIVE ?
+> > 
+> > Palmer had some reservations about it, so I dropped it for now.  But then
+> > as I was thinking about it, I remembered that I also had some reservations
+> > about it, years ago: that everyone should use CONFIG_SOC_* for this,
+> > rather than CONFIG_ARCH.  CONFIG_ARCH_* seems better reserved for
+> > CPU architectures.
+> 
+> The SOC stuff will, of course, be vendor specific.  In this idealized world
+> SiFive's SOC support has nothing to do with RISC-V, but of course all of
+> SiFive's SOCs are RISC-V based so the separation is a bit of pedantry.  That
+> said, in this case I think getting the name right does make it slightly easier
+> to espouse this "one kernel can run on all RISC-V systems" philosophy.
+> Balancing the SiFive and RISC-V stuff can be a bit tricky, which is why I am
+> sometimes a bit pedantic about these sorts of things.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
----
- Documentation/riscv/index.rst            | 17 ++++
- Documentation/riscv/{pmu.txt => pmu.rst} | 98 +++++++++++++-----------
- 2 files changed, 69 insertions(+), 46 deletions(-)
- create mode 100644 Documentation/riscv/index.rst
- rename Documentation/riscv/{pmu.txt => pmu.rst} (77%)
+Once there are SoC variants that have different CPU cores, but with the 
+remaining chip integration the same, I think it would make sense to move 
+the CONFIG_SOC_ stuff out from ARM, RISC-V, etc., into something that's 
+not CPU architecture-specific.  But for the time being, that seems 
+premature.  Might as well have it be driven by an actual use-case.
 
-diff --git a/Documentation/riscv/index.rst b/Documentation/riscv/index.rst
-new file mode 100644
-index 000000000000..c4b906d9b5a7
---- /dev/null
-+++ b/Documentation/riscv/index.rst
-@@ -0,0 +1,17 @@
-+:orphan:
-+
-+===================
-+RISC-V architecture
-+===================
-+
-+.. toctree::
-+    :maxdepth: 1
-+
-+    pmu
-+
-+.. only::  subproject and html
-+
-+   Indices
-+   =======
-+
-+   * :ref:`genindex`
-diff --git a/Documentation/riscv/pmu.txt b/Documentation/riscv/pmu.rst
-similarity index 77%
-rename from Documentation/riscv/pmu.txt
-rename to Documentation/riscv/pmu.rst
-index b29f03a6d82f..acb216b99c26 100644
---- a/Documentation/riscv/pmu.txt
-+++ b/Documentation/riscv/pmu.rst
-@@ -1,5 +1,7 @@
-+===================================
- Supporting PMUs on RISC-V platforms
--==========================================
-+===================================
-+
- Alan Kao <alankao@andestech.com>, Mar 2018
- 
- Introduction
-@@ -77,13 +79,13 @@ Note that some features can be done in this stage as well:
- (2) privilege level setting (user space only, kernel space only, both);
- (3) destructor setting.  Normally it is sufficient to apply *riscv_destroy_event*;
- (4) tweaks for non-sampling events, which will be utilized by functions such as
--*perf_adjust_period*, usually something like the follows:
-+    *perf_adjust_period*, usually something like the follows::
- 
--if (!is_sampling_event(event)) {
--        hwc->sample_period = x86_pmu.max_period;
--        hwc->last_period = hwc->sample_period;
--        local64_set(&hwc->period_left, hwc->sample_period);
--}
-+      if (!is_sampling_event(event)) {
-+              hwc->sample_period = x86_pmu.max_period;
-+              hwc->last_period = hwc->sample_period;
-+              local64_set(&hwc->period_left, hwc->sample_period);
-+      }
- 
- In the case of *riscv_base_pmu*, only (3) is provided for now.
- 
-@@ -94,10 +96,10 @@ In the case of *riscv_base_pmu*, only (3) is provided for now.
- 3.1. Interrupt Initialization
- 
- This often occurs at the beginning of the *event_init* method. In common
--practice, this should be a code segment like
-+practice, this should be a code segment like::
- 
--int x86_reserve_hardware(void)
--{
-+  int x86_reserve_hardware(void)
-+  {
-         int err = 0;
- 
-         if (!atomic_inc_not_zero(&pmc_refcount)) {
-@@ -114,7 +116,7 @@ int x86_reserve_hardware(void)
-         }
- 
-         return err;
--}
-+  }
- 
- And the magic is in *reserve_pmc_hardware*, which usually does atomic
- operations to make implemented IRQ accessible from some global function pointer.
-@@ -128,28 +130,28 @@ which will be introduced in the next section.)
- 
- 3.2. IRQ Structure
- 
--Basically, a IRQ runs the following pseudo code:
-+Basically, a IRQ runs the following pseudo code::
- 
--for each hardware counter that triggered this overflow
-+  for each hardware counter that triggered this overflow
- 
--    get the event of this counter
-+      get the event of this counter
- 
--    // following two steps are defined as *read()*,
--    // check the section Reading/Writing Counters for details.
--    count the delta value since previous interrupt
--    update the event->count (# event occurs) by adding delta, and
--               event->hw.period_left by subtracting delta
-+      // following two steps are defined as *read()*,
-+      // check the section Reading/Writing Counters for details.
-+      count the delta value since previous interrupt
-+      update the event->count (# event occurs) by adding delta, and
-+                 event->hw.period_left by subtracting delta
- 
--    if the event overflows
--        sample data
--        set the counter appropriately for the next overflow
-+      if the event overflows
-+          sample data
-+          set the counter appropriately for the next overflow
- 
--        if the event overflows again
--            too frequently, throttle this event
--        fi
--    fi
-+          if the event overflows again
-+              too frequently, throttle this event
-+          fi
-+      fi
- 
--end for
-+  end for
- 
- However as of this writing, none of the RISC-V implementations have designed an
- interrupt for perf, so the details are to be completed in the future.
-@@ -195,23 +197,26 @@ A normal flow of these state transitions are as follows:
-   At this stage, a general event is bound to a physical counter, if any.
-   The state changes to PERF_HES_STOPPED and PERF_HES_UPTODATE, because it is now
-   stopped, and the (software) event count does not need updating.
--** *start* is then called, and the counter is enabled.
--   With flag PERF_EF_RELOAD, it writes an appropriate value to the counter (check
--   previous section for detail).
--   Nothing is written if the flag does not contain PERF_EF_RELOAD.
--   The state now is reset to none, because it is neither stopped nor updated
--   (the counting already started)
-+
-+  - *start* is then called, and the counter is enabled.
-+    With flag PERF_EF_RELOAD, it writes an appropriate value to the counter (check
-+    previous section for detail).
-+    Nothing is written if the flag does not contain PERF_EF_RELOAD.
-+    The state now is reset to none, because it is neither stopped nor updated
-+    (the counting already started)
-+
- * When being context-switched out, *del* is called.  It then checks out all the
-   events in the PMU and calls *stop* to update their counts.
--** *stop* is called by *del*
--   and the perf core with flag PERF_EF_UPDATE, and it often shares the same
--   subroutine as *read* with the same logic.
--   The state changes to PERF_HES_STOPPED and PERF_HES_UPTODATE, again.
- 
--** Life cycle of these two pairs: *add* and *del* are called repeatedly as
--  tasks switch in-and-out; *start* and *stop* is also called when the perf core
--  needs a quick stop-and-start, for instance, when the interrupt period is being
--  adjusted.
-+  - *stop* is called by *del*
-+    and the perf core with flag PERF_EF_UPDATE, and it often shares the same
-+    subroutine as *read* with the same logic.
-+    The state changes to PERF_HES_STOPPED and PERF_HES_UPTODATE, again.
-+
-+  - Life cycle of these two pairs: *add* and *del* are called repeatedly as
-+    tasks switch in-and-out; *start* and *stop* is also called when the perf core
-+    needs a quick stop-and-start, for instance, when the interrupt period is being
-+    adjusted.
- 
- Current implementation is sufficient for now and can be easily extended to
- features in the future.
-@@ -225,25 +230,26 @@ A. Related Structures
-   Both structures are designed to be read-only.
- 
-   *struct pmu* defines some function pointer interfaces, and most of them take
--*struct perf_event* as a main argument, dealing with perf events according to
--perf's internal state machine (check kernel/events/core.c for details).
-+  *struct perf_event* as a main argument, dealing with perf events according to
-+  perf's internal state machine (check kernel/events/core.c for details).
- 
-   *struct riscv_pmu* defines PMU-specific parameters.  The naming follows the
--convention of all other architectures.
-+  convention of all other architectures.
- 
- * struct perf_event: include/linux/perf_event.h
- * struct hw_perf_event
- 
-   The generic structure that represents perf events, and the hardware-related
--details.
-+  details.
- 
- * struct riscv_hw_events: arch/riscv/include/asm/perf_event.h
- 
-   The structure that holds the status of events, has two fixed members:
--the number of events and the array of the events.
-+  the number of events and the array of the events.
- 
- References
- ----------
- 
- [1] https://github.com/riscv/riscv-linux/pull/124
-+
- [2] https://groups.google.com/a/groups.riscv.org/forum/#!topic/sw-dev/f19TmCNP6yA
--- 
-2.21.0
 
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
