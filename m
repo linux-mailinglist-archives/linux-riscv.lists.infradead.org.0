@@ -2,81 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE30F3A3F9
-	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 07:50:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F123D3A403
+	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 08:18:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wUEB48+G02MOKwzjHjw9E0IOQ1BN+CPyGxM7f7EwUrU=; b=sprpa5EoHl5bIV
-	FhI+Lh6GB0ks3/Zekulbc05eEhbDqczo7qigUyyb1b2OBtUZWWUDH8XLueQxEqcZgyfNb7TfOBcHj
-	NYJqtqi0etUVkcDGWcDCVbB/hW6nTYBSE45OkwJ+oIpCTPAbdi1xqwg+UeG9P+YNommD7JVg/RcUo
-	B9xhgYsqNEjsqX4NAOFLx4bz6AogT7iDcrmAAfcVYgmE/aTQa/ySWelOjmQBooF+IWRSJ6YVQRBHx
-	47GaWrTC4RM/R8fp+VmoNJ1uddpUkAP1A5KvxGWgAcGcnVudBB9ZuXtY5uujeVhDXIiNHbxvFucJ6
-	PQe/xBeAHoaXYI8UF5Uw==;
+	List-Owner; bh=vAFC0G8tGk8INQB16DtG7ftuqq5Z5iu/HxsycJ5AcVE=; b=O53R0/kcV4gAW9
+	dG8yY3St8yC7AuBk9RNzLg4GVnRcHm6kEaabrNLXC2rLwEOsV0V5P+RhnVMTW9P0FbNlqshlvOyLU
+	476cgAsm3oxvU54MeJR5WE+0cMCwcGXztGLDHwxiCqIh6OOpkecPlREmzQFMbQkoZJZjlVnwr35Nx
+	fOTpeOBguxglFjIoYAY4mT6L2AqBHcjY83ANffLU6xm7iyzAFjVEYRUNZeUG/Ih9dp01yhu8wcr9E
+	tcKJPJRHyxLw49LxFb3kBtZe7TLLE6nbTNQH+ll3+aDmXkbukDpDR3Ncj3ILhgbkPoj2ibi1x6L6X
+	Cx4q05x+03vvNgAmgRlw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZqin-0004Bv-9a; Sun, 09 Jun 2019 05:50:25 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hZrA0-0003nN-71; Sun, 09 Jun 2019 06:18:32 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZqij-0004B9-Da
- for linux-riscv@lists.infradead.org; Sun, 09 Jun 2019 05:50:22 +0000
-Received: by mail-pg1-x543.google.com with SMTP id l19so681602pgh.9
- for <linux-riscv@lists.infradead.org>; Sat, 08 Jun 2019 22:50:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=g5g0galx8RyvOsGO1iYuup0nP37+YQK2f5/z3KYX1Es=;
- b=j/5W+Sr8ZHhSAf244dwdVTBvj2tr7+iZOWOKMMfzhIdFRqi7/u2TWYwP2epGcXpNlW
- I/pwIxHeXTA7MG4TUk0ufCyZSyIIQCyjiYyrHyWYIDcTZHo1r+jsI0EBt7hr3FN0zF6I
- 9aQi/LIdQB7E6GlEfpTnYulqzgptG5UTsd45QMT4YAbNIlHdVNnESvsPdRQyDQdtMXPS
- jPux964RM50+CXs/BZwcQ7pdwuI3t2VFovovnu6vLXDKg5CDrROdsbaULSS6ohRCdHuV
- S0Iv21sLf6xxu5Yv8dwERodWihPDBsIc7gff7PUgGOY1ooe1vEiFAqb/Yrg666boUpoB
- aieA==
+ id 1hZr9w-0003mI-4Y
+ for linux-riscv@lists.infradead.org; Sun, 09 Jun 2019 06:18:30 +0000
+Received: by mail-lj1-x243.google.com with SMTP id 131so5099385ljf.4
+ for <linux-riscv@lists.infradead.org>; Sat, 08 Jun 2019 23:18:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=7Vo5eaKQWCMq7v7z2ph7sxEFSNuB5Lf75LyEjuFRQsU=;
+ b=gbeklqhv5CVhh907QpjsEgaQqjswCM1044mz4/7WNlhZg6tywR07JjbEinmhaPFc79
+ p21Nhu7NcWjGThV8grm4UdhkGlFDzkToOqmGRquLjJDndricciBQIFu7VG2IUy8eId/g
+ xASjqXHd+XMDy+twqrE4jMu4ZTE5xzD5cEFuFnle5HrN/NB6H8bA+PAJe5kt4FbK0qDR
+ dHiJkXpNYFv7Pf3yHzfuw2chVHkO9gVL9bT1BgWX4avTIIVTQinbfmTgB4Xm+MGQDffP
+ 3g9hpVK2eK2OkuMlMT5It2urrbG8hBhvH95tNSbCmgv82S4odc5wGq9HzDXZqBXf85Ql
+ ZlJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=g5g0galx8RyvOsGO1iYuup0nP37+YQK2f5/z3KYX1Es=;
- b=JxgSwBnfSHZ+1OPx8D/JlbqIK4CQ96Afr0eh6U0v6S2n/rEUCRl+fd9i6Iina05In/
- /9fD39nwsMytpWCj7CUOBsrj7pSe9aNo8b+9jRIWTZPRncUU0UOhyGtlTF4P+m+lRY0p
- Vx2qRvnHoGge0KEFiA2hIvMQUPK1PEHpRXww9n+pAdPKuPJb8sPxrEAR+zlruKbnWLMc
- ndLDTjPkU5nr0PlFAimG6jRwfOtTbquJd44ErJS9Td4nKlPoQhWusS4JZJePg4465+LZ
- g9ElW9DSlwT+1UrJO/oDR9KMHb0eA1RVdrc8ag4UY8OFAOxScx0MctpP4gRY+bQpVPbK
- kN0g==
-X-Gm-Message-State: APjAAAW3XEPGrdbe7wrjLiFF2Qlpb2kGG0GW4tlOzwRPg/Mt7mCeh0k9
- VaJHETZH0Spyn+1NRsMo9HBSFA==
-X-Google-Smtp-Source: APXvYqxz5Y4VKifbCFKug9kpochpBP/0jxW+Ow0eYUlsETgxmERQpqyTgihHK+7isHFvK+mEGd1Mhw==
-X-Received: by 2002:a62:15c3:: with SMTP id 186mr3310072pfv.141.1560059419499; 
- Sat, 08 Jun 2019 22:50:19 -0700 (PDT)
-Received: from localhost ([202.131.137.2])
- by smtp.gmail.com with ESMTPSA id y13sm8257212pfb.143.2019.06.08.22.50.18
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 08 Jun 2019 22:50:18 -0700 (PDT)
-Date: Sat, 8 Jun 2019 22:50:14 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Palmer Dabbelt <palmer@sifive.com>
-Subject: Re: [PATCH v3 1/5] arch: riscv: add support for building DTB files
- from DT source data
-In-Reply-To: <mhng-802d67ce-9f78-4ebc-9981-a27e5e4e40df@palmer-si-x1e>
-Message-ID: <alpine.DEB.2.21.9999.1906082245300.720@viisi.sifive.com>
-References: <mhng-802d67ce-9f78-4ebc-9981-a27e5e4e40df@palmer-si-x1e>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=7Vo5eaKQWCMq7v7z2ph7sxEFSNuB5Lf75LyEjuFRQsU=;
+ b=sh5q3lWBjNp/CHraLw+Jb8HT2jJ1rHRPJXOSW2UvUYEcf2WXZVPI9Ys8k1MrnIM0VJ
+ UgVUSGZJrySWT9bZsbcTDMFC1E9UTPWd0wRxq+SbofYjR6k6kSZ8//gFABLoK1dBePKE
+ 9tJpL9uVrxKlBJEqk+qrqvwt1ORDQiyEgEcRJCocHwLIAtRHWzV7anyBn2WQPu5f2NNx
+ S3jNXkTFL8I3X8NPd71oB0HzzUMI8UFkZ3yhAF5Te1hh/E+KuRKClj5VcLO3hZYcgbmv
+ B3JhxbUtqOowFsF0vR3qgwYWqihM0iMhBhFLhBUVv2sx4nAnB+yraEi2oqwREliPoS9g
+ U6ww==
+X-Gm-Message-State: APjAAAU0xNjFXRhAjWK0eqnLxHLlRleRMRhrICv0D4uUoXgReusBLiid
+ gLkywzwAwvgD+QLdgJQ5QoQ=
+X-Google-Smtp-Source: APXvYqye6JnuBAsP0g3mvLnlp32I7Us4WHTg9hj/ifomjyySkFiDqstvspKK7uMtV+n3dxSibLa+mw==
+X-Received: by 2002:a2e:6e0e:: with SMTP id j14mr4075717ljc.85.1560061102240; 
+ Sat, 08 Jun 2019 23:18:22 -0700 (PDT)
+Received: from flare (t35.niisi.ras.ru. [193.232.173.35])
+ by smtp.gmail.com with ESMTPSA id q13sm1296215lfk.65.2019.06.08.23.18.20
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 08 Jun 2019 23:18:21 -0700 (PDT)
+Date: Sun, 9 Jun 2019 09:18:19 +0300
+From: Antony Pavlov <antonynpavlov@gmail.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH v3 5/5] riscv: dts: add initial board data for the
+ SiFive HiFive Unleashed
+Message-Id: <20190609091819.2d1a97c90c0b44aa9120d373@gmail.com>
+In-Reply-To: <20190602080500.31700-6-paul.walmsley@sifive.com>
+References: <20190602080500.31700-1-paul.walmsley@sifive.com>
+ <20190602080500.31700-6-paul.walmsley@sifive.com>
+X-Mailer: Sylpheed 3.7.0 (GTK+ 2.24.32; i686-pc-linux-gnu)
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190608_225021_521445_6E245D3A 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20190608_231828_193663_B96DD0DD 
+X-CRM114-Status: GOOD (  17.10  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
- [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (antonynpavlov[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -86,6 +85,9 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:243 listed in]
+ [list.dnswl.org]
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,43 +99,153 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, lollivier@baylibre.com, paul@pwsan.com,
- linux-kernel@vger.kernel.org, aou@eecs.berkeley.edu
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Paul Walmsley <paul@pwsan.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, 8 Jun 2019, Palmer Dabbelt wrote:
+On Sun,  2 Jun 2019 01:05:00 -0700
+Paul Walmsley <paul.walmsley@sifive.com> wrote:
 
-> On Thu, 06 Jun 2019 22:12:05 PDT (-0700), Paul Walmsley wrote:
-> > On Tue, 4 Jun 2019, Loys Ollivier wrote:
-> > 
-> > > Always build it ?
-> > > Any particular reason to drop ARCH_SIFIVE ?
-> > 
-> > Palmer had some reservations about it, so I dropped it for now.  But then
-> > as I was thinking about it, I remembered that I also had some reservations
-> > about it, years ago: that everyone should use CONFIG_SOC_* for this,
-> > rather than CONFIG_ARCH.  CONFIG_ARCH_* seems better reserved for
-> > CPU architectures.
-> 
-> The SOC stuff will, of course, be vendor specific.  In this idealized world
-> SiFive's SOC support has nothing to do with RISC-V, but of course all of
-> SiFive's SOCs are RISC-V based so the separation is a bit of pedantry.  That
-> said, in this case I think getting the name right does make it slightly easier
-> to espouse this "one kernel can run on all RISC-V systems" philosophy.
-> Balancing the SiFive and RISC-V stuff can be a bit tricky, which is why I am
-> sometimes a bit pedantic about these sorts of things.
+Hi!
 
-Once there are SoC variants that have different CPU cores, but with the 
-remaining chip integration the same, I think it would make sense to move 
-the CONFIG_SOC_ stuff out from ARM, RISC-V, etc., into something that's 
-not CPU architecture-specific.  But for the time being, that seems 
-premature.  Might as well have it be driven by an actual use-case.
+> Add initial board data for the SiFive HiFive Unleashed A00.
+> =
+
+> Currently the data populated in this DT file describes the board
+> DRAM configuration and the external clock sources that supply the
+> PRCI.
+> =
+
+> This third version incorporates changes based on more comments from
+> Rob Herring <robh+dt@kernel.org>.
+> =
+
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Signed-off-by: Paul Walmsley <paul@pwsan.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: Palmer Dabbelt <palmer@sifive.com>
+> Cc: Albert Ou <aou@eecs.berkeley.edu>
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-riscv@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> ---
+>  arch/riscv/boot/dts/sifive/Makefile           |  2 +
+>  .../boot/dts/sifive/hifive-unleashed-a00.dts  | 67 +++++++++++++++++++
+>  2 files changed, 69 insertions(+)
+>  create mode 100644 arch/riscv/boot/dts/sifive/Makefile
+>  create mode 100644 arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+> =
+
+> diff --git a/arch/riscv/boot/dts/sifive/Makefile b/arch/riscv/boot/dts/si=
+five/Makefile
+> new file mode 100644
+> index 000000000000..baaeef9efdcb
+> --- /dev/null
+> +++ b/arch/riscv/boot/dts/sifive/Makefile
+> @@ -0,0 +1,2 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +dtb-y +=3D hifive-unleashed-a00.dtb
+> diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/r=
+iscv/boot/dts/sifive/hifive-unleashed-a00.dts
+> new file mode 100644
+> index 000000000000..1de4ea1577d5
+> --- /dev/null
+> +++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+> @@ -0,0 +1,67 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/* Copyright (c) 2018-2019 SiFive, Inc */
+> +
+> +/dts-v1/;
+> +
+> +#include "fu540-c000.dtsi"
+
+You already have "/dts-v1/;" in the fu540-c000.dtsi file.
+
+You can omit it in the hifive-unleashed-a00.dts file.
+
+> +/* Clock frequency (in Hz) of the PCB crystal for rtcclk */
+> +#define RTCCLK_FREQ		1000000
+> +
+> +/ {
+> +	#address-cells =3D <2>;
+> +	#size-cells =3D <2>;
+> +	model =3D "SiFive HiFive Unleashed A00";
+> +	compatible =3D "sifive,hifive-unleashed-a00", "sifive,fu540-c000";
+> +
+> +	chosen {
+> +	};
+> +
+> +	cpus {
+> +		timebase-frequency =3D <RTCCLK_FREQ>;
+> +	};
+> +
+> +	memory@80000000 {
+> +		device_type =3D "memory";
+> +		reg =3D <0x0 0x80000000 0x2 0x00000000>;
+> +	};
+> +
+> +	soc {
+> +	};
+> +
+> +	hfclk: hfclk {
+> +		#clock-cells =3D <0>;
+> +		compatible =3D "fixed-clock";
+> +		clock-frequency =3D <33333333>;
+> +		clock-output-names =3D "hfclk";
+> +	};
+> +
+> +	rtcclk: rtcclk {
+> +		#clock-cells =3D <0>;
+> +		compatible =3D "fixed-clock";
+> +		clock-frequency =3D <RTCCLK_FREQ>;
+> +		clock-output-names =3D "rtcclk";
+> +	};
+> +};
+> +
+> +&qspi0 {
+> +	flash@0 {
+> +		compatible =3D "issi,is25wp256", "jedec,spi-nor";
+> +		reg =3D <0>;
+> +		spi-max-frequency =3D <50000000>;
+> +		m25p,fast-read;
+> +		spi-tx-bus-width =3D <4>;
+> +		spi-rx-bus-width =3D <4>;
+> +	};
+> +};
+> +
+> +&qspi2 {
+> +	status =3D "okay";
+> +	mmc@0 {
+> +		compatible =3D "mmc-spi-slot";
+> +		reg =3D <0>;
+> +		spi-max-frequency =3D <20000000>;
+> +		voltage-ranges =3D <3300 3300>;
+> +		disable-wp;
+> +	};
+> +};
+> -- =
+
+> 2.20.1
+> =
+
+> =
+
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 
-- Paul
+-- =
+
+Best regards,
+=A0 Antony Pavlov
 
 _______________________________________________
 linux-riscv mailing list
