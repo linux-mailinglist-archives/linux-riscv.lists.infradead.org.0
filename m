@@ -2,75 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F9E63A0F2
-	for <lists+linux-riscv@lfdr.de>; Sat,  8 Jun 2019 19:57:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AF4863A2D1
+	for <lists+linux-riscv@lfdr.de>; Sun,  9 Jun 2019 03:49:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=JuL1ffipo3zEFh8VwmOX1oKdfsN6mZbyV0wWIlVZJ5A=; b=JKTz/+UFVuN+5ja2sCyfJhF+f
-	1G+wKG/tsZ0+L4Q+tEQBT5m5Z99lTBg+o4p1fhphAtKEonE1XqcSx4mA5Apxzr2HtVaZlceL+jYea
-	53+8kZFtHiJvg8iqKXg9E4tTne9BAX36KmLBlWQ7gi2m12SmwWs2TmjVYeIzQn7m7uQRHXEvMgxeK
-	XlgripyKypsJJeaEwdSIWez6FD2FW/HOsvfnhfAJsencbOEDhOm0veOxHLUeRSG7gxyiYKfg+MANb
-	J2wMqvYVQpXb3y1tXvUCph5OcLDAHrCBm1bTgE9ZugglAB/0X/M7HAuVfBrrNDIzULfi/39QLJrjS
-	sg1x1eEZQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=flGVBseg6Naif5Rq/VyEPIAdyvIvMZ2mNVgb4w0mm5E=; b=gMyvc9BLdLr7wK
+	IuzO6xCYIlZ1Ow3Ba/gO37FNQ3WOJeFBPTtKB9xLHwRyOt5PnchZPObdVM9ceOyo7UzAGVH7iSW0a
+	WXNhQJh2+0Wp4RW6EdW+oj85/hgAjBccWsYwLFNSwMCh5pfvjrjFIfRR9MbHiUqeDB1KdjinFZlsf
+	0Z0zvbfI4Fr7DysoyHiPGKAYjkx28ahmBtgX2FGh6w/RDtYUoD/mCuTFSjpam5P3Svhfp4tUZTeTS
+	NBMLGyYGv9wo6z9AEkYzy+QjhKvMNjfUY2SK4QaqLWD6BA2j7YE7J4wBZ62XooSkl12ZTNm1tjDzH
+	47PGZHJJ8q04NHxc1QRA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZfaF-0002yb-Iu; Sat, 08 Jun 2019 17:56:51 +0000
-Received: from mail-pg1-f194.google.com ([209.85.215.194])
+	id 1hZmxY-0006eh-2g; Sun, 09 Jun 2019 01:49:24 +0000
+Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZfaC-0002yD-OU
- for linux-riscv@lists.infradead.org; Sat, 08 Jun 2019 17:56:50 +0000
-Received: by mail-pg1-f194.google.com with SMTP id f25so2814900pgv.10
- for <linux-riscv@lists.infradead.org>; Sat, 08 Jun 2019 10:56:48 -0700 (PDT)
+ id 1hZmxV-0006dv-4L
+ for linux-riscv@lists.infradead.org; Sun, 09 Jun 2019 01:49:22 +0000
+Received: by mail-it1-x144.google.com with SMTP id m138so6721337ita.4
+ for <linux-riscv@lists.infradead.org>; Sat, 08 Jun 2019 18:49:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=gezvdrCCB1eFoVy4rTrBVmFiPugXcg77UnQ5Qbf7MCs=;
+ b=huqAGmgRp/IMJ6IItXSuWcUGce0kAPYhAgld1VYkhBCxbq9jYWtGHv0VVxR4mtjtFj
+ Pje56U+SCbwv7t17169G02j548woO0ZfGQhzG3gFA0ctipdR407PB1HbX595NdmtloBP
+ uU1Cf+ilslY90HYbeyGdAFvZfdfgU+NjJ+99xeriSV0dZbLcnlRLfvmyGV+2unAaes07
+ BGle8Q+qJmtuEsXdFbTUSGMxqIAYI82nXg6cVxO/EGEeX7NoPvzmyYIMUzILYCqz0bVR
+ j2jncswh1KptTGcPwlSwss4HqKSKGUTXZ6jIUaYz6uajNDzHlisY5tHYugVJBid2NlWQ
+ 6EUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=iyAgZ7LPNrjAJ5HMh1hGYwXJ8qs3w42dLho45Ew1g/g=;
- b=bIUNMGO5JkU7K1w4YCYGyulG+l4u404CKLH5pNOwYhWjm+MwR2hfCiKMclAr6oSIPd
- Fx3JwA9prxuLsorzMDItzIrZ9mpFUnZ6Xw2hyBc6r3arkQKatSygop6jPEVxjkFUeX2w
- 2LGIK7QX56qhlxLz/QM4xYgNhzPinszvQ8ju9akegHzxyX0vdhSokJ/IIcRud+V3ndVs
- 4Hx/KS4jOy1SSK88LsLzFv73waz0ZVBEbK6s7ktHenFfhmbWtVUhDojU/fojblylyAuJ
- TVwDiAwcki+QSoFRNIbs1/V02FhP6nbf2sAv4ST4NFTMQ0raV6o+UGLWHIRetOR3GYQ1
- yQ9Q==
-X-Gm-Message-State: APjAAAWO/EcWheuVVttne2/6zkMmiSafpUKb127FwbAW/L0Iv1ZShzJF
- xgi9/pAs1O5F/uKekcjUc/qvjw==
-X-Google-Smtp-Source: APXvYqxUP4Kmv8FJwbiZts6nQLQw4BBk0vluayMvRAl8Cod+/UWEDIOm2zQpFKVrMo0x1jmMHUb1PQ==
-X-Received: by 2002:a63:e10d:: with SMTP id z13mr8254805pgh.116.1560016606841; 
- Sat, 08 Jun 2019 10:56:46 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id s12sm5453255pjp.10.2019.06.08.10.56.46
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=gezvdrCCB1eFoVy4rTrBVmFiPugXcg77UnQ5Qbf7MCs=;
+ b=tvGgLxmF5+FTCqc//D3EEGFAkJqlE+x3yOA1Id058ID4BeSS3RVDv+J6vzSiDvcdBL
+ QV7rr5YxL0OxW/anmxxcC/JCYePAUVZDCA+YcreEDvjzSUCxUK6hFODSooev0/G/8OkR
+ JJRTCtBCwwzMA1aVCtaLjNDbWiIpXEY26ThGlvuWNoehzMRaqYseY37i19TFkgYI36Ju
+ lP/pDLkVEIya83Yfl+v8Vyp2AXQOC5XaR68v83AC0AV5MI3JTFO1KkuryNeWJpextV/z
+ jt+rKqVDD1T0N1iVzR/ZSTY4P1lgZi3pFOw35KxG+C+ZVV5VZCNguL/bz8mYF5Ed8pnp
+ Zl/A==
+X-Gm-Message-State: APjAAAUKTGmYBzH+OlLYVyaRv9OoDqukyP5t6CBYNcBpBoqz983U9U9R
+ Z1UDKUDo1FwtGgzXLei5XndNVQ==
+X-Google-Smtp-Source: APXvYqzhnLgdvut8Sw31mC+3id4EyC0GRJRfrCSBlSx1/cpNZwMxjofbGkBFHK4zP7Mf+HeG3Pnhfg==
+X-Received: by 2002:a24:dc05:: with SMTP id q5mr9924544itg.123.1560044957125; 
+ Sat, 08 Jun 2019 18:49:17 -0700 (PDT)
+Received: from localhost (219.sub-174-221-130.myvzw.com. [174.221.130.219])
+ by smtp.gmail.com with ESMTPSA id j9sm2929924itk.23.2019.06.08.18.49.14
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 08 Jun 2019 10:56:46 -0700 (PDT)
-Date: Sat, 08 Jun 2019 10:56:46 -0700 (PDT)
-X-Google-Original-Date: Sat, 08 Jun 2019 10:42:17 PDT (-0700)
-Subject: Re: [PATCH v3 1/5] arch: riscv: add support for building DTB files
- from DT source data
-In-Reply-To: <alpine.DEB.2.21.9999.1906062208280.28147@viisi.sifive.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Message-ID: <mhng-802d67ce-9f78-4ebc-9981-a27e5e4e40df@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ Sat, 08 Jun 2019 18:49:16 -0700 (PDT)
+Date: Sat, 8 Jun 2019 18:49:09 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Kevin Hilman <khilman@baylibre.com>
+Subject: Re: [PATCH] RISC-V: defconfig: enable clocks, serial console
+In-Reply-To: <20190605175042.13719-1-khilman@baylibre.com>
+Message-ID: <alpine.DEB.2.21.9999.1906081848410.720@viisi.sifive.com>
+References: <20190605175042.13719-1-khilman@baylibre.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190608_105648_798040_C9AAFF63 
-X-CRM114-Status: GOOD (  15.58  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190608_184921_237732_F8CA23B3 
+X-CRM114-Status: UNSURE (   7.01  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.194 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.194 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ [list.dnswl.org]
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,53 +97,25 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, lollivier@baylibre.com, paul@pwsan.com,
- linux-kernel@vger.kernel.org, aou@eecs.berkeley.edu
+Cc: Loys Ollivier <lollivier@baylibre.com>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
+ Atish Patra <atish.patra@wdc.com>, linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 06 Jun 2019 22:12:05 PDT (-0700), Paul Walmsley wrote:
-> On Tue, 4 Jun 2019, Loys Ollivier wrote:
->
->> Always build it ?
->> Any particular reason to drop ARCH_SIFIVE ?
->
-> Palmer had some reservations about it, so I dropped it for now.  But then
-> as I was thinking about it, I remembered that I also had some reservations
-> about it, years ago: that everyone should use CONFIG_SOC_* for this,
-> rather than CONFIG_ARCH.  CONFIG_ARCH_* seems better reserved for
-> CPU architectures.
+On Wed, 5 Jun 2019, Kevin Hilman wrote:
 
-Specifically my worry is that "ARCH_SIFIVE" makes it sound like we're adding
-SiFive-specific architecture features, and we've been trying really hard to
-make sure that the various bits of core software avoid boing vendor specific.
-We've had suggestions of adding vendor-specific instructions to the Linux port
-with those instructions being conditionally compiled under ARCH_$VENDOR, but
-I'd rejected that under the "no vendor-specific stuff" argument.  As such it
-doesn't seem fair to go add in an ARCH_SIFIVE for our vendor-specific stuff.
+> Enable PRCI clock driver and serial console by default, so the default
+> upstream defconfig is bootable to a serial console.
+> 
+> Signed-off-by: Kevin Hilman <khilman@baylibre.com>
 
-The SOC stuff will, of course, be vendor specific.  In this idealized world
-SiFive's SOC support has nothing to do with RISC-V, but of course all of
-SiFive's SOCs are RISC-V based so the separation is a bit of pedantry.  That
-said, in this case I think getting the name right does make it slightly easier
-to espouse this "one kernel can run on all RISC-V systems" philosophy.
-Balancing the SiFive and RISC-V stuff can be a bit tricky, which is why I am
-sometimes a bit pedantic about these sorts of things.
+Thanks, queued for v5.2-rc with Christoph's Reviewed-by:.
 
-> If you agree, would you like to send a followup series, based on the DT
-> patches, to make the SiFive DT file builds depend on CONFIG_SOC_* instead?
 
-I'd be happy with something like that.  We'd also talked about this selecting
-all the SiFive platform drivers.  It should, of course, be possible to select
-multiple SOC vendors in a single kernel -- we don't have any other real
-hardware right now, but maybe some sort of "CONFIG_SOC_RISCV_VIRT" would be a
-good proof of concept?
-
-> Thanks for the comment,
->
-> - Paul
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
