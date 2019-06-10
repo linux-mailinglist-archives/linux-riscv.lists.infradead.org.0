@@ -2,33 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D25B3BE7E
-	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:24:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E21BB3BE86
+	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:24:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NgOxNA4sUOf5uADECxELsNoHuSGGMVLiMBKWX03Rx8Q=; b=jZVXg8+XKNF0/+
-	3r2WvEim3ZOt5548eXAOt7GlkQVUypQ6/o7U34BbUgX6XWhQwAwniFCth1FpePM0wKf/5Vcc+H4mo
-	bRty3O7y0HNyK3qOgJdT4jcKn+QU66Vd0VIO/QKet/F+UtOpNbwqSoL0YTsmhDzBjEGs3FONvNJTN
-	OpTNSgOw1bBhL16jFTk2lQj9Cn4JWVe+xfYPVF3ybE2bJujx1dfiu6zWFIqNbhkwaNvLp0pCYJNpj
-	/iepjccIkwb9dsRfl822HLFlx3M52Qw2B5WcQrBfunK0ujBUr0LAAvfVbxCknroKaBmpaPG7AV26w
-	6+pg8aqIBGlupy0/Rw5Q==;
+	List-Owner; bh=bZYZ7qaP0OFTCWtc2i9SAc6XrJVHyZE1yqUOpqNKXxI=; b=gOz4ZdFv+vjuB4
+	l1xtgMM3ewXrk8q5CWTH4tOif3XGj/iZ+ohYMLD/Hkd+sMGLAahH9s77mfNK2yWVNCxrkqbAvLXDI
+	E8w+sYbDB3jRBW2DlsDGTUkW8xM3PzCRMSJzIlEKweVWmlP2mTPwBjQ+L8wGw/XRrcfkSroRLLOHC
+	wd0LGPo2Dz07Ov17HFv5u2wa6GiYqXrFptujJrG4X8S3+XgGR+PPgD6JWa/B+p1EoTjua7FiFLaV4
+	A9XYXvMHQsg2ot0DVDn1W6mmuheLbEUN9l/WeFTKlMXGLWQLDLV5nAKM5kl7e/8c0luS/nrFCYIEA
+	3KTMkozq2o3aMlzqStWg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haRmB-0003t3-9r; Mon, 10 Jun 2019 21:24:23 +0000
+	id 1haRmW-0004D5-TR; Mon, 10 Jun 2019 21:24:44 +0000
 Received: from 089144193064.atnat0002.highway.a1.net ([89.144.193.64]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1haRif-0000eX-46; Mon, 10 Jun 2019 21:20:45 +0000
+ id 1haRih-0000h3-Np; Mon, 10 Jun 2019 21:20:48 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Greg Ungerer <gerg@linux-m68k.org>
-Subject: [PATCH 10/15] binfmt_flat: make support for old format binaries
- optional
-Date: Mon, 10 Jun 2019 23:20:10 +0200
-Message-Id: <20190610212015.9157-11-hch@lst.de>
+Subject: [PATCH 11/15] binfmt_flat: provide an asm-generic/flat.h
+Date: Mon, 10 Jun 2019 23:20:11 +0200
+Message-Id: <20190610212015.9157-12-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190610212015.9157-1-hch@lst.de>
 References: <20190610212015.9157-1-hch@lst.de>
@@ -54,115 +53,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-No need to carry the extra code around, given that systems using flat
-binaries are generally very resource constrained.
+This file implements the flat get/put reloc helpers for architectures
+that do not need to overload the relocs by simply using get_user/put_user.
+
+Note that many nommu architectures currently use {get,put}_unaligned, which
+looks a little bogus and should probably later be switched over to this
+version as well.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- fs/Kconfig.binfmt |  7 +++++++
- fs/binfmt_flat.c  | 29 +++++++++++++++++++++--------
- 2 files changed, 28 insertions(+), 8 deletions(-)
+ arch/arm/include/asm/Kbuild                   |  1 +
+ arch/m68k/include/asm/flat.h                  | 21 +------------------
+ .../asm => include/asm-generic}/flat.h        | 12 ++++-------
+ 3 files changed, 6 insertions(+), 28 deletions(-)
+ rename {arch/arm/include/asm => include/asm-generic}/flat.h (73%)
 
-diff --git a/fs/Kconfig.binfmt b/fs/Kconfig.binfmt
-index 286b425b30b9..62dc4f577ba1 100644
---- a/fs/Kconfig.binfmt
-+++ b/fs/Kconfig.binfmt
-@@ -106,6 +106,13 @@ config BINFMT_FLAT_ARGVP_ENVP_ON_STACK
- config BINFMT_FLAT_OLD_ALWAYS_RAM
- 	bool
+diff --git a/arch/arm/include/asm/Kbuild b/arch/arm/include/asm/Kbuild
+index a8f149ab45b8..6b2dc15b6dff 100644
+--- a/arch/arm/include/asm/Kbuild
++++ b/arch/arm/include/asm/Kbuild
+@@ -5,6 +5,7 @@ generic-y += early_ioremap.h
+ generic-y += emergency-restart.h
+ generic-y += exec.h
+ generic-y += extable.h
++generic-y += flat.h
+ generic-y += irq_regs.h
+ generic-y += kdebug.h
+ generic-y += local.h
+diff --git a/arch/m68k/include/asm/flat.h b/arch/m68k/include/asm/flat.h
+index d7102fcd43eb..46379e08cdd6 100644
+--- a/arch/m68k/include/asm/flat.h
++++ b/arch/m68k/include/asm/flat.h
+@@ -6,26 +6,7 @@
+ #ifndef __M68KNOMMU_FLAT_H__
+ #define __M68KNOMMU_FLAT_H__
  
-+config BINFMT_FLAT_OLD
-+	bool "Enable support for very old legacy flat binaries"
-+	depends on BINFMT_FLAT
-+	help
-+	  Support decade old uClinux FLAT format binaries.  Unless you know
-+	  you have some of those say N here.
-+
- config BINFMT_ZFLAT
- 	bool "Enable ZFLAT support"
- 	depends on BINFMT_FLAT
-diff --git a/fs/binfmt_flat.c b/fs/binfmt_flat.c
-index 6c1848dee724..ed7d969593d2 100644
---- a/fs/binfmt_flat.c
-+++ b/fs/binfmt_flat.c
-@@ -374,6 +374,7 @@ calc_reloc(unsigned long r, struct lib_info *p, int curid, int internalp)
- 
- /****************************************************************************/
- 
-+#ifdef CONFIG_BINFMT_FLAT_OLD
- static void old_reloc(unsigned long rl)
- {
- 	static const char *segment[] = { "TEXT", "DATA", "BSS", "*UNKNOWN*" };
-@@ -411,6 +412,7 @@ static void old_reloc(unsigned long rl)
- 
- 	pr_debug("Relocation became %lx\n", val);
- }
-+#endif /* CONFIG_BINFMT_FLAT_OLD */
- 
- /****************************************************************************/
- 
-@@ -461,6 +463,7 @@ static int load_flat_file(struct linux_binprm *bprm,
- 	if (flags & FLAT_FLAG_KTRACE)
- 		pr_info("Loading file: %s\n", bprm->filename);
- 
-+#ifdef CONFIG_BINFMT_FLAT_OLD
- 	if (rev != FLAT_VERSION && rev != OLD_FLAT_VERSION) {
- 		pr_err("bad flat file version 0x%x (supported 0x%lx and 0x%lx)\n",
- 		       rev, FLAT_VERSION, OLD_FLAT_VERSION);
-@@ -476,6 +479,22 @@ static int load_flat_file(struct linux_binprm *bprm,
- 		goto err;
- 	}
- 
-+	/*
-+	 * fix up the flags for the older format,  there were all kinds
-+	 * of endian hacks,  this only works for the simple cases
-+	 */
-+	if (IS_ENABLED(CONFIG_BINFMT_FLAT_OLD_ALWAYS_RAM) &&
-+	    rev == OLD_FLAT_VERSION)
-+		flags = FLAT_FLAG_RAM;
-+#else /* CONFIG_BINFMT_FLAT_OLD */
-+	if (rev != FLAT_VERSION) {
-+		pr_err("bad flat file version 0x%x (supported 0x%lx)\n",
-+		       rev, FLAT_VERSION);
-+		ret = -ENOEXEC;
-+		goto err;
-+	}
-+#endif /* !CONFIG_BINFMT_FLAT_OLD */
-+
- 	/*
- 	 * Make sure the header params are sane.
- 	 * 28 bits (256 MB) is way more than reasonable in this case.
-@@ -487,14 +506,6 @@ static int load_flat_file(struct linux_binprm *bprm,
- 		goto err;
- 	}
- 
--	/*
--	 * fix up the flags for the older format,  there were all kinds
--	 * of endian hacks,  this only works for the simple cases
--	 */
--	if (IS_ENABLED(CONFIG_BINFMT_FLAT_OLD_ALWAYS_RAM) &&
--	    rev == OLD_FLAT_VERSION)
--		flags = FLAT_FLAG_RAM;
+-#include <linux/uaccess.h>
 -
- #ifndef CONFIG_BINFMT_ZFLAT
- 	if (flags & (FLAT_FLAG_GZIP|FLAT_FLAG_GZDATA)) {
- 		pr_err("Support for ZFLAT executables is not enabled.\n");
-@@ -833,6 +844,7 @@ static int load_flat_file(struct linux_binprm *bprm,
- 					goto err;
- 			}
- 		}
-+#ifdef CONFIG_BINFMT_FLAT_OLD
- 	} else {
- 		for (i = 0; i < relocs; i++) {
- 			__be32 relval;
-@@ -840,6 +852,7 @@ static int load_flat_file(struct linux_binprm *bprm,
- 				return -EFAULT;
- 			old_reloc(ntohl(relval));
- 		}
-+#endif /* CONFIG_BINFMT_FLAT_OLD */
- 	}
+-static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
+-					u32 *addr, u32 *persistent)
+-{
+-#ifdef CONFIG_CPU_HAS_NO_UNALIGNED
+-	return copy_from_user(addr, rp, 4) ? -EFAULT : 0;
+-#else
+-	return get_user(*addr, rp);
+-#endif
+-}
+-
+-static inline int flat_put_addr_at_rp(u32 __user *rp, u32 addr, u32 rel)
+-{
+-#ifdef CONFIG_CPU_HAS_NO_UNALIGNED
+-	return copy_to_user(rp, &addr, 4) ? -EFAULT : 0;
+-#else
+-	return put_user(addr, rp);
+-#endif
+-}
++#include <asm-generic/flat.h>
  
- 	flush_icache_range(start_code, end_code);
+ #define FLAT_PLAT_INIT(regs) \
+ 	do { \
+diff --git a/arch/arm/include/asm/flat.h b/include/asm-generic/flat.h
+similarity index 73%
+rename from arch/arm/include/asm/flat.h
+rename to include/asm-generic/flat.h
+index bbc27901446f..fcd2b45c0735 100644
+--- a/arch/arm/include/asm/flat.h
++++ b/include/asm-generic/flat.h
+@@ -1,15 +1,11 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+-/*
+- * arch/arm/include/asm/flat.h -- uClinux flat-format executables
+- */
+-
+-#ifndef __ARM_FLAT_H__
+-#define __ARM_FLAT_H__
++#ifndef _ASM_GENERIC_FLAT_H
++#define _ASM_GENERIC_FLAT_H
+ 
+ #include <linux/uaccess.h>
+ 
+ static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
+-					u32 *addr, u32 *persistent)
++		u32 *addr, u32 *persistent)
+ {
+ #ifndef CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS
+ 	return copy_from_user(addr, rp, 4) ? -EFAULT : 0;
+@@ -27,4 +23,4 @@ static inline int flat_put_addr_at_rp(u32 __user *rp, u32 addr, u32 rel)
+ #endif
+ }
+ 
+-#endif /* __ARM_FLAT_H__ */
++#endif /* _ASM_GENERIC_FLAT_H */
 -- 
 2.20.1
 
