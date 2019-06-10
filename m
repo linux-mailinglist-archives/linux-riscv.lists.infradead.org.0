@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 633353BF42
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 00:16:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 078173BF43
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 00:16:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dQ4pTM6Ujk9CE4ZQrzGUfNt17wwoQQS0vIf48PgFTXM=; b=KgU0+QKQPUDShB
-	/X7w1Z+gQCozOhpdj8XyvtrS3m35kKGgVe/uviBB3HmKCuE3tynPP/gNAQO/sCZx+0uSLNjyDuWDi
-	VSx0FQbJ4RrpFDERp+Ywx8c/zty2QKukX3QPqZozs4oSwQU5jyBbJaiROsdIJcffu8IvO+PLFbMMh
-	bYFcHNktz9b2L7+nilSFE0CbC3qqo+eKsnCT6e0M8ZXCK0X9GOETJZUHGqWI8H9bvnlqdBOsv3LVj
-	ba6ZvmE67OpobDCZvxag+kDiNTgh5vzPPrnFC7SpD+vlHS6vFVKFwlsiNtaCZLhDGOgxgNJq+OiJR
-	/azvbcSi0WAXXzy//HWQ==;
+	List-Owner; bh=7l3mtBt7v/riZSK4U6oY7e2x58dlfU3ZfA+EDbyQyKs=; b=OkTU0Au/sUh6UM
+	ptbFx/bibTbAaRNf3ewWPZMFtjAsaXy+CeTsZpaL42CpZY1LY4+QgUoD+4M7t3XrfL/Wyb83jcdbY
+	IQkNKbwlXoIw/zoBHXQaKRecQGZRJUC4duhxarrvGQoM6ZN5gHMEIUHfChDuAaVa44lv1vP2oxKJQ
+	HhNvcNaoAQ9LMVWRWkId8wJIm6InkkMP/eUt48eK0T3f6pbyO1q0wm4rnzPxmKsP3tW/Ix4VWZUjN
+	0KOg857bfImHByVZhn1tUu25nzkdu3bG7PU2iZO8R3B1VsdDOdJsyNr9W7klS+6nHef+tYnBgYhed
+	ksERGQx379mDsPYhFTow==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haSab-0002me-8H; Mon, 10 Jun 2019 22:16:29 +0000
+	id 1haSae-0002qK-LR; Mon, 10 Jun 2019 22:16:32 +0000
 Received: from 089144193064.atnat0002.highway.a1.net ([89.144.193.64]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1haSaY-0002kY-B7; Mon, 10 Jun 2019 22:16:26 +0000
+ id 1haSaa-0002mM-Ql; Mon, 10 Jun 2019 22:16:29 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>
-Subject: [PATCH 01/17] mm: provide a print_vma_addr stub for !CONFIG_MMU
-Date: Tue, 11 Jun 2019 00:16:05 +0200
-Message-Id: <20190610221621.10938-2-hch@lst.de>
+Subject: [PATCH 02/17] mm: stub out all of swapops.h for !CONFIG_MMU
+Date: Tue, 11 Jun 2019 00:16:06 +0200
+Message-Id: <20190610221621.10938-3-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190610221621.10938-1-hch@lst.de>
 References: <20190610221621.10938-1-hch@lst.de>
@@ -51,29 +51,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+The whole header file deals with swap entries and PTEs, none of which
+can exist for nommu builds.
+
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- include/linux/mm.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ include/linux/swapops.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/include/linux/mm.h b/include/linux/mm.h
-index dd0b5f4e1e45..69843ee0c5f8 100644
---- a/include/linux/mm.h
-+++ b/include/linux/mm.h
-@@ -2756,7 +2756,13 @@ extern int randomize_va_space;
+diff --git a/include/linux/swapops.h b/include/linux/swapops.h
+index 4d961668e5fc..b02922556846 100644
+--- a/include/linux/swapops.h
++++ b/include/linux/swapops.h
+@@ -6,6 +6,8 @@
+ #include <linux/bug.h>
+ #include <linux/mm_types.h>
+ 
++#ifdef CONFIG_MMU
++
+ /*
+  * swapcache pages are stored in the swapper_space radix tree.  We want to
+  * get good packing density in that tree, so the index should be dense in
+@@ -50,13 +52,11 @@ static inline pgoff_t swp_offset(swp_entry_t entry)
+ 	return entry.val & SWP_OFFSET_MASK;
+ }
+ 
+-#ifdef CONFIG_MMU
+ /* check whether a pte points to a swap entry */
+ static inline int is_swap_pte(pte_t pte)
+ {
+ 	return !pte_none(pte) && !pte_present(pte);
+ }
+-#endif
+ 
+ /*
+  * Convert the arch-dependent pte representation of a swp_entry_t into an
+@@ -375,4 +375,5 @@ static inline int non_swap_entry(swp_entry_t entry)
+ }
  #endif
  
- const char * arch_vma_name(struct vm_area_struct *vma);
-+#ifdef CONFIG_MMU
- void print_vma_addr(char *prefix, unsigned long rip);
-+#else
-+static inline void print_vma_addr(char *prefix, unsigned long rip)
-+{
-+}
-+#endif
- 
- void *sparse_buffer_alloc(unsigned long size);
- struct page *sparse_mem_map_populate(unsigned long pnum, int nid,
++#endif /* CONFIG_MMU */
+ #endif /* _LINUX_SWAPOPS_H */
 -- 
 2.20.1
 
