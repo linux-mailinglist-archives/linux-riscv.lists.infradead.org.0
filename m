@@ -2,33 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6BD93BF4C
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 00:16:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86E893BF4D
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 00:16:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=909hzdUrDT0SCrlThET9w15Mq3GAjNX3BQFoZfOX/0M=; b=XQQTPMckigNXZq
-	vqoQPPUHpYukkdpMPwpNIlPdDEOG6kTakePuQFI/xk8eOPYoCPxrcW5Y6pZF/p4FjUaxaLX0IFGlq
-	Uq4owxqNSwxt1QZgZLUgkMoDXbG7t/X/aMFdr+2Jv9bTL9t792BmRAtAopTNGkkWjZ42ziC5gRhpM
-	TptUSHmjC8aIuTwGxwHgyHbIavBcmcvUW0EUXtMuZTQ/cpbpaCsY75mnZLcUDM3TfqxeXedj92ZMl
-	THjCdA4imMUSr8Mx5maTCn1zLVNsFUa8SE16bsZSNh10wCMYzimQht0AA14G+4zlAJFuT7s90gShI
-	eTra8O8HkCt5HdffxtpQ==;
+	List-Owner; bh=ONEC2oa5rSOxqzoXoQI/4LGOBnemP8GJLpYK13D5FwA=; b=tQV6u4/MW03r7h
+	RCJi6ctNwAZ+ycHDsdhrTM8CxGJLhJSUyZboLYbIgHOmbGeIILY//nnj1z+BJVtocltrgxOUfYtPZ
+	MZCTKUb1YShNlyUTk36NFyizShxqqWcDYsZ3zZmmn2fDd0JSWF69x3HHm1oo7DmKQu1qH324L2pW7
+	apROGrsBr3VBZqFMJlQMpYchFU58a88+kDZGktSNWlf+9K6miXKmNk4c7Ku4iINVcU5p2gkuPT+gC
+	fNrJ67xTyVc01aIqEVtBlWFqvxgOrzbHPd+JsQ8opH/Qs/hGTpSR7C/B/YRshDP+Plu6dmWXRwLJ2
+	Z1ngF5pUFlf8gNVpzaIA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haSaq-0003DT-64; Mon, 10 Jun 2019 22:16:44 +0000
+	id 1haSau-0003KN-42; Mon, 10 Jun 2019 22:16:48 +0000
 Received: from 089144193064.atnat0002.highway.a1.net ([89.144.193.64]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1haSal-000319-AM; Mon, 10 Jun 2019 22:16:39 +0000
+ id 1haSan-00039t-W3; Mon, 10 Jun 2019 22:16:42 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>
-Subject: [PATCH 06/17] riscv: clear the instruction cache and all registers
- when booting
-Date: Tue, 11 Jun 2019 00:16:10 +0200
-Message-Id: <20190610221621.10938-7-hch@lst.de>
+Subject: [PATCH 07/17] riscv: refactor the IPI code
+Date: Tue, 11 Jun 2019 00:16:11 +0200
+Message-Id: <20190610221621.10938-8-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190610221621.10938-1-hch@lst.de>
 References: <20190610221621.10938-1-hch@lst.de>
@@ -52,125 +51,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-When we get booted we want a clear slate without any leaks from previous
-supervisors or the firmware.  Flush the instruction cache and then clear
-all registers to known good values.  This is really important for the
-upcoming nommu support that runs on M-mode, but can't really harm when
-running in S-mode either.  Vaguely based on the concepts from opensbi.
+This prepare for adding native non-SBI IPI code.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/riscv/kernel/head.S | 83 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 83 insertions(+)
+ arch/riscv/kernel/smp.c | 55 +++++++++++++++++++++++------------------
+ 1 file changed, 31 insertions(+), 24 deletions(-)
 
-diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-index 4e46f31072da..5681179183d4 100644
---- a/arch/riscv/kernel/head.S
-+++ b/arch/riscv/kernel/head.S
-@@ -11,6 +11,7 @@
- #include <asm/thread_info.h>
- #include <asm/page.h>
- #include <asm/csr.h>
-+#include <asm/hwcap.h>
+diff --git a/arch/riscv/kernel/smp.c b/arch/riscv/kernel/smp.c
+index b2537ffa855c..91164204496c 100644
+--- a/arch/riscv/kernel/smp.c
++++ b/arch/riscv/kernel/smp.c
+@@ -89,13 +89,38 @@ static void ipi_stop(void)
+ 		wait_for_interrupt();
+ }
  
- __INIT
- ENTRY(_start)
-@@ -18,6 +19,12 @@ ENTRY(_start)
- 	csrw CSR_SIE, zero
- 	csrw CSR_SIP, zero
++static void send_ipi_mask(const struct cpumask *mask, enum ipi_message_type op)
++{
++	int cpuid, hartid;
++	struct cpumask hartid_mask;
++
++	cpumask_clear(&hartid_mask);
++	mb();
++	for_each_cpu(cpuid, mask) {
++		set_bit(op, &ipi_data[cpuid].bits);
++		hartid = cpuid_to_hartid_map(cpuid);
++		cpumask_set_cpu(hartid, &hartid_mask);
++	}
++	mb();
++	sbi_send_ipi(cpumask_bits(&hartid_mask));
++}
++
++static void send_ipi_single(int cpu, enum ipi_message_type op)
++{
++	send_ipi_mask(cpumask_of(cpu), op);
++}
++
++static inline void clear_ipi(void)
++{
++	csr_clear(CSR_SIP, SIE_SSIE);
++}
++
+ void riscv_software_interrupt(void)
+ {
+ 	unsigned long *pending_ipis = &ipi_data[smp_processor_id()].bits;
+ 	unsigned long *stats = ipi_data[smp_processor_id()].stats;
  
-+	/* flush the instruction cache */
-+	fence.i
-+
-+	/* Reset all registers except ra, a0,a1 */
-+	call reset_regs
-+
- 	/* Load the global pointer */
- .option push
- .option norelax
-@@ -160,6 +167,82 @@ relocate:
- 	j .Lsecondary_park
- END(_start)
+-	/* Clear pending IPI */
+-	csr_clear(CSR_SIP, SIE_SSIE);
++	clear_ipi();
  
-+ENTRY(reset_regs)
-+	li	sp, 0
-+	li	gp, 0
-+	li	tp, 0
-+	li	t0, 0
-+	li	t1, 0
-+	li	t2, 0
-+	li	s0, 0
-+	li	s1, 0
-+	li	a2, 0
-+	li	a3, 0
-+	li	a4, 0
-+	li	a5, 0
-+	li	a6, 0
-+	li	a7, 0
-+	li	s2, 0
-+	li	s3, 0
-+	li	s4, 0
-+	li	s5, 0
-+	li	s6, 0
-+	li	s7, 0
-+	li	s8, 0
-+	li	s9, 0
-+	li	s10, 0
-+	li	s11, 0
-+	li	t3, 0
-+	li	t4, 0
-+	li	t5, 0
-+	li	t6, 0
-+	csrw	sscratch, 0
-+
-+#ifdef CONFIG_FPU
-+	csrr	t0, misa
-+	andi	t0, t0, (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D)
-+	bnez	t0, .Lreset_regs_done
-+
-+	li	t1, SR_FS
-+	csrs	sstatus, t1
-+	fmv.s.x	f0, zero
-+	fmv.s.x	f1, zero
-+	fmv.s.x	f2, zero
-+	fmv.s.x	f3, zero
-+	fmv.s.x	f4, zero
-+	fmv.s.x	f5, zero
-+	fmv.s.x	f6, zero
-+	fmv.s.x	f7, zero
-+	fmv.s.x	f8, zero
-+	fmv.s.x	f9, zero
-+	fmv.s.x	f10, zero
-+	fmv.s.x	f11, zero
-+	fmv.s.x	f12, zero
-+	fmv.s.x	f13, zero
-+	fmv.s.x	f14, zero
-+	fmv.s.x	f15, zero
-+	fmv.s.x	f16, zero
-+	fmv.s.x	f17, zero
-+	fmv.s.x	f18, zero
-+	fmv.s.x	f19, zero
-+	fmv.s.x	f20, zero
-+	fmv.s.x	f21, zero
-+	fmv.s.x	f22, zero
-+	fmv.s.x	f23, zero
-+	fmv.s.x	f24, zero
-+	fmv.s.x	f25, zero
-+	fmv.s.x	f26, zero
-+	fmv.s.x	f27, zero
-+	fmv.s.x	f28, zero
-+	fmv.s.x	f29, zero
-+	fmv.s.x	f30, zero
-+	fmv.s.x	f31, zero
-+	csrw	fcsr, 0
-+#endif /* CONFIG_FPU */
-+.Lreset_regs_done:
-+	ret
-+END(reset_regs)
-+
- __PAGE_ALIGNED_BSS
- 	/* Empty zero page */
- 	.balign PAGE_SIZE
+ 	while (true) {
+ 		unsigned long ops;
+@@ -129,23 +154,6 @@ void riscv_software_interrupt(void)
+ 	}
+ }
+ 
+-static void
+-send_ipi_message(const struct cpumask *to_whom, enum ipi_message_type operation)
+-{
+-	int cpuid, hartid;
+-	struct cpumask hartid_mask;
+-
+-	cpumask_clear(&hartid_mask);
+-	mb();
+-	for_each_cpu(cpuid, to_whom) {
+-		set_bit(operation, &ipi_data[cpuid].bits);
+-		hartid = cpuid_to_hartid_map(cpuid);
+-		cpumask_set_cpu(hartid, &hartid_mask);
+-	}
+-	mb();
+-	sbi_send_ipi(cpumask_bits(&hartid_mask));
+-}
+-
+ static const char * const ipi_names[] = {
+ 	[IPI_RESCHEDULE]	= "Rescheduling interrupts",
+ 	[IPI_CALL_FUNC]		= "Function call interrupts",
+@@ -167,12 +175,12 @@ void show_ipi_stats(struct seq_file *p, int prec)
+ 
+ void arch_send_call_function_ipi_mask(struct cpumask *mask)
+ {
+-	send_ipi_message(mask, IPI_CALL_FUNC);
++	send_ipi_mask(mask, IPI_CALL_FUNC);
+ }
+ 
+ void arch_send_call_function_single_ipi(int cpu)
+ {
+-	send_ipi_message(cpumask_of(cpu), IPI_CALL_FUNC);
++	send_ipi_single(cpu, IPI_CALL_FUNC);
+ }
+ 
+ void smp_send_stop(void)
+@@ -187,7 +195,7 @@ void smp_send_stop(void)
+ 
+ 		if (system_state <= SYSTEM_RUNNING)
+ 			pr_crit("SMP: stopping secondary CPUs\n");
+-		send_ipi_message(&mask, IPI_CPU_STOP);
++		send_ipi_mask(&mask, IPI_CPU_STOP);
+ 	}
+ 
+ 	/* Wait up to one second for other CPUs to stop */
+@@ -202,6 +210,5 @@ void smp_send_stop(void)
+ 
+ void smp_send_reschedule(int cpu)
+ {
+-	send_ipi_message(cpumask_of(cpu), IPI_RESCHEDULE);
++	send_ipi_single(cpu, IPI_RESCHEDULE);
+ }
+-
 -- 
 2.20.1
 
