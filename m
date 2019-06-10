@@ -2,33 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA52A3BE8B
-	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:25:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CB203BE91
+	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:25:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gZUqOz7nrXU4CDxLbkVsuJMJEjXMbdeOs8ngiFLbmow=; b=SZwLhgm22olwkl
-	ml/tvgtg7RlYjxe8jVE+oKMLDIqAzCfFJMeXBfyColt8Yl0t16nFnXl7nBEEqdFk4/0RUhWRPuZVL
-	CosvCX/g0n31atfASSAfMVM6NN//n+Ly4Kpe0QnDoc3gTFoO47EgeXy6/c8CgLAGPVspUJWjaTJs2
-	2IJ8fmnrcanYEve46TuLeAWg9wEuJfJpFybL8JIo4LpSqA5zYNG0wnLnhn8jQCrrNxt8Das3BataA
-	H1bxdVuv8A/dWbNl/ciHWrxV4Dh1SPPXEKnC5eeIR7JCCXfh4JsvK9RdZV/aOWuGylt35uTJuA3Cs
-	6ZMj+de3FcB9SAp0tLDw==;
+	List-Owner; bh=mcgqSBTtraRgGj4bBEaEVFV6+JCc7iVxVbgWInh3hU0=; b=Rcs1pt+qPt1fQf
+	z8FVQH+Gvhj0i2Gn/2T9VFuJt3ni+tzbNpWGq+dN565qt+cUPexA47qDElxYeC4LW8zinVhuIMJtG
+	DJvxQswzUw/lVAIL3KW0Ne5T5BhoRdCycORDhuroIS1K0hn5Oy7Tsv7Myn1DD1h4Gl82GaxLG0DY0
+	EGQsc6vvA/qTk73MJvE+4UNriO9ZHjCbzSKIPOq4lDS7WMx3QUgJX8x+sE8NDqLg9vmWgcdMSSodR
+	PLUrDPUvrjjl7OVr1585FpI6Kr4LLNE6XLfGhveuxZAQkkCCximzz4iRPJQCK7nHgWUsxpO/Vnuh7
+	JEufBashc2PmfTIgNujQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haRnE-0005zZ-P1; Mon, 10 Jun 2019 21:25:28 +0000
+	id 1haRna-0006Pm-2Q; Mon, 10 Jun 2019 21:25:50 +0000
 Received: from 089144193064.atnat0002.highway.a1.net ([89.144.193.64]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1haRin-0000mW-9m; Mon, 10 Jun 2019 21:20:53 +0000
+ id 1haRip-0000p9-Vm; Mon, 10 Jun 2019 21:20:56 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Greg Ungerer <gerg@linux-m68k.org>
-Subject: [PATCH 13/15] binfmt_flat: move the MAX_SHARED_LIBS definition to
- binfmt_flat.c
-Date: Mon, 10 Jun 2019 23:20:13 +0200
-Message-Id: <20190610212015.9157-14-hch@lst.de>
+Subject: [PATCH 14/15] binfmt_flat: don't offset the data start
+Date: Mon, 10 Jun 2019 23:20:14 +0200
+Message-Id: <20190610212015.9157-15-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190610212015.9157-1-hch@lst.de>
 References: <20190610212015.9157-1-hch@lst.de>
@@ -54,49 +53,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-MAX_SHARED_LIBS is an implementation detail of the kernel loader,
-and should be kept away from the file format definition.
+Ever since the initial commit of the binfmt_flat shared library
+support back in the bitkeeper days we've offset the actual in-memory
+.data start by one field per possible shared library, or 1 in case
+shared library support isn't enabled.  I can't find anything in the
+loader that actually makes use of it, nor was it present before
+shared library support it.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- fs/binfmt_flat.c     | 6 ++++++
- include/linux/flat.h | 6 ------
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ fs/binfmt_flat.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
 diff --git a/fs/binfmt_flat.c b/fs/binfmt_flat.c
-index 114ea225c5a5..2c7f32d5435f 100644
+index 2c7f32d5435f..e1ccc9f14150 100644
 --- a/fs/binfmt_flat.c
 +++ b/fs/binfmt_flat.c
-@@ -68,6 +68,12 @@
- #define RELOC_FAILED 0xff00ff01		/* Relocation incorrect somewhere */
- #define UNLOADED_LIB 0x7ff000ff		/* Placeholder for unused library */
+@@ -572,7 +572,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 			goto err;
+ 		}
  
-+#ifdef CONFIG_BINFMT_SHARED_FLAT
-+#define	MAX_SHARED_LIBS			(4)
-+#else
-+#define	MAX_SHARED_LIBS			(1)
-+#endif
-+
- struct lib_info {
- 	struct {
- 		unsigned long start_code;		/* Start of text segment */
-diff --git a/include/linux/flat.h b/include/linux/flat.h
-index 59e892d5fadb..a2232f1bd41b 100644
---- a/include/linux/flat.h
-+++ b/include/linux/flat.h
-@@ -12,12 +12,6 @@
+-		len = data_len + extra + MAX_SHARED_LIBS * sizeof(unsigned long);
++		len = data_len + extra;
+ 		len = PAGE_ALIGN(len);
+ 		realdatastart = vm_mmap(NULL, 0, len,
+ 			PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE, 0);
+@@ -586,9 +586,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 			vm_munmap(textpos, text_len);
+ 			goto err;
+ 		}
+-		datapos = ALIGN(realdatastart +
+-				MAX_SHARED_LIBS * sizeof(unsigned long),
+-				FLAT_DATA_ALIGN);
++		datapos = ALIGN(realdatastart, FLAT_DATA_ALIGN);
  
- #define	FLAT_VERSION			0x00000004L
+ 		pr_debug("Allocated data+bss+stack (%u bytes): %lx\n",
+ 			 data_len + bss_len + stack_len, datapos);
+@@ -618,7 +616,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 		memp_size = len;
+ 	} else {
  
--#ifdef CONFIG_BINFMT_SHARED_FLAT
--#define	MAX_SHARED_LIBS			(4)
--#else
--#define	MAX_SHARED_LIBS			(1)
--#endif
--
- /*
-  * To make everything easier to port and manage cross platform
-  * development,  all fields are in network byte order.
+-		len = text_len + data_len + extra + MAX_SHARED_LIBS * sizeof(u32);
++		len = text_len + data_len + extra;
+ 		len = PAGE_ALIGN(len);
+ 		textpos = vm_mmap(NULL, 0, len,
+ 			PROT_READ | PROT_EXEC | PROT_WRITE, MAP_PRIVATE, 0);
+@@ -633,9 +631,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 		}
+ 
+ 		realdatastart = textpos + ntohl(hdr->data_start);
+-		datapos = ALIGN(realdatastart +
+-				MAX_SHARED_LIBS * sizeof(u32),
+-				FLAT_DATA_ALIGN);
++		datapos = ALIGN(realdatastart, FLAT_DATA_ALIGN);
+ 
+ 		reloc = (__be32 __user *)
+ 			(datapos + (ntohl(hdr->reloc_start) - text_len));
+@@ -652,8 +648,9 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 					 (text_len + full_data
+ 						  - sizeof(struct flat_hdr)),
+ 					 0);
+-			memmove((void *) datapos, (void *) realdatastart,
+-					full_data);
++			if (datapos != realdatastart)
++				memmove((void *)datapos, (void *)realdatastart,
++						full_data);
+ #else
+ 			/*
+ 			 * This is used on MMU systems mainly for testing.
+@@ -709,8 +706,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 		if (IS_ERR_VALUE(result)) {
+ 			ret = result;
+ 			pr_err("Unable to read code+data+bss, errno %d\n", ret);
+-			vm_munmap(textpos, text_len + data_len + extra +
+-				MAX_SHARED_LIBS * sizeof(u32));
++			vm_munmap(textpos, text_len + data_len + extra);
+ 			goto err;
+ 		}
+ 	}
 -- 
 2.20.1
 
