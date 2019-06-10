@@ -2,33 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3956D3BE74
-	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:22:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 411A73BE76
+	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:23:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zKVh74BaGaYXunzYtPodjXTwW/M6F2Y65lC2rTHZ0Ak=; b=YxXDaR2+g6bv4x
-	fsskQnDnM4j8lQE4HHf+liTluy7mBSXlzz/g8lIPu1za1EI+tcfUNwNFImaSesxtPpdC7OMu3LH3t
-	BuDxjrVMeDXiyZiI55xgfD4Pxa2uOgx6CKHhLj9lpZqs31oZovd9BOU1KC9/dqeatshZfr3CKJdjD
-	+gsFy/Sztw7ROMhNnN2jIq7wlzgnSFJDLXOmDNvGsVA5fjux1V1k3/sGDa3Y2ebXPSSjjm36yjjN7
-	mHkx9onze3acmC7B/tXLdQ/j2mzGSME8Uxnb7rZgUtHIFWmSOUSgia+cj68pGuX9XRVXZ7jkdonMs
-	1J+c3upnD6Rkg8C7MtAw==;
+	List-Owner; bh=eBxGya5mPezWXEIagT0p/fqAOQjhr3Bq2TQHcIR4J+s=; b=nVU1ZddElrxk9O
+	cJUfQgV2tndJopfG1sleONz9Rvuue8UKK9/gXrM5tJo8GjsJIj/jB31dw37fMpRwg38O1+MlihUvz
+	IMVUl1TQx/NLNARN96sGu3zBFg/3IyzU+Q6h1bd2SWrIikWJEdAuuaTLxI9q1xwCqju9eNjfWuNfA
+	Q8t13OQX+i+9C3xzACmtRIhkLsuUcniz/WrSZj9Bqh4mV8LivzAjDtDHCguTU6/YHAFVrAn7Ju7mD
+	Tr07Gop8BLRt3WH4d7Rsd/dqLm2CGwHs51w67TtqFKIAoTKZmrFAHWPxXjOysB5OUsHlXDsCmaIy8
+	SQbXrzhvm98XoqSV7TGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haRkS-0002Jy-Q6; Mon, 10 Jun 2019 21:22:36 +0000
+	id 1haRkq-0002eN-5P; Mon, 10 Jun 2019 21:23:00 +0000
 Received: from 089144193064.atnat0002.highway.a1.net ([89.144.193.64]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1haRiR-0000SJ-AZ; Mon, 10 Jun 2019 21:20:31 +0000
+ id 1haRiU-0000Ur-3A; Mon, 10 Jun 2019 21:20:34 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Greg Ungerer <gerg@linux-m68k.org>
-Subject: [PATCH 05/15] binfmt_flat: replace flat_argvp_envp_on_stack with a
- Kconfig variable
-Date: Mon, 10 Jun 2019 23:20:05 +0200
-Message-Id: <20190610212015.9157-6-hch@lst.de>
+Subject: [PATCH 06/15] binfmt_flat: remove the uapi <linux/flat.h> header
+Date: Mon, 10 Jun 2019 23:20:06 +0200
+Message-Id: <20190610212015.9157-7-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190610212015.9157-1-hch@lst.de>
 References: <20190610212015.9157-1-hch@lst.de>
@@ -54,184 +53,163 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This will eventually allow us to kill the need for an <asm/flat.h> for
-many cases.
+The split between the two flat.h files is completely arbitrary, and the
+uapi version even contains CONFIG_ ifdefs that can't work in userspace.
+The only userspace program known to use the header is elf2flt, and it
+ships with its own version of the combined header.
+
+Use the chance to move the <asm/flat.h> inclusion out of this file, as it
+is in no way needed for the format defintion, but just for the binfmt
+implementation.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/arm/Kconfig                   | 1 +
- arch/arm/include/asm/flat.h        | 2 --
- arch/c6x/include/asm/flat.h        | 1 -
- arch/h8300/Kconfig                 | 1 +
- arch/h8300/include/asm/flat.h      | 2 --
- arch/m68k/Kconfig                  | 1 +
- arch/m68k/include/asm/flat.h       | 1 -
- arch/microblaze/include/asm/flat.h | 2 --
- arch/sh/include/asm/flat.h         | 1 -
- arch/xtensa/include/asm/flat.h     | 1 -
- fs/Kconfig.binfmt                  | 3 +++
- fs/binfmt_flat.c                   | 5 +++--
- 12 files changed, 9 insertions(+), 12 deletions(-)
+ fs/binfmt_flat.c          |  1 +
+ include/linux/flat.h      | 45 ++++++++++++++++++++++++++---
+ include/uapi/linux/flat.h | 59 ---------------------------------------
+ 3 files changed, 42 insertions(+), 63 deletions(-)
+ delete mode 100644 include/uapi/linux/flat.h
 
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 8869742a85df..b1b48c0bde76 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -30,6 +30,7 @@ config ARM
- 	select ARCH_USE_BUILTIN_BSWAP
- 	select ARCH_USE_CMPXCHG_LOCKREF
- 	select ARCH_WANT_IPC_PARSE_VERSION
-+	select BINFMT_FLAT_ARGVP_ENVP_ON_STACK
- 	select BUILDTIME_EXTABLE_SORT if MMU
- 	select CLONE_BACKWARDS
- 	select CPU_PM if SUSPEND || CPU_IDLE
-diff --git a/arch/arm/include/asm/flat.h b/arch/arm/include/asm/flat.h
-index acf162111ee2..bbc27901446f 100644
---- a/arch/arm/include/asm/flat.h
-+++ b/arch/arm/include/asm/flat.h
-@@ -8,8 +8,6 @@
- 
- #include <linux/uaccess.h>
- 
--#define	flat_argvp_envp_on_stack()		1
--
- static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
- 					u32 *addr, u32 *persistent)
- {
-diff --git a/arch/c6x/include/asm/flat.h b/arch/c6x/include/asm/flat.h
-index 353e4d06e8c0..2d57a9204d21 100644
---- a/arch/c6x/include/asm/flat.h
-+++ b/arch/c6x/include/asm/flat.h
-@@ -4,7 +4,6 @@
- 
- #include <asm/unaligned.h>
- 
--#define flat_argvp_envp_on_stack()			0
- static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
- 					u32 *addr, u32 *persistent)
- {
-diff --git a/arch/h8300/Kconfig b/arch/h8300/Kconfig
-index d30e8727b02d..7457f190caaa 100644
---- a/arch/h8300/Kconfig
-+++ b/arch/h8300/Kconfig
-@@ -2,6 +2,7 @@
- config H8300
-         def_bool y
- 	select ARCH_32BIT_OFF_T
-+	select BINFMT_FLAT_ARGVP_ENVP_ON_STACK
- 	select BINFMT_FLAT_OLD_ALWAYS_RAM
- 	select GENERIC_ATOMIC64
- 	select HAVE_UID16
-diff --git a/arch/h8300/include/asm/flat.h b/arch/h8300/include/asm/flat.h
-index 14cc928d5478..4683146f0e9e 100644
---- a/arch/h8300/include/asm/flat.h
-+++ b/arch/h8300/include/asm/flat.h
-@@ -8,8 +8,6 @@
- 
- #include <asm/unaligned.h>
- 
--#define	flat_argvp_envp_on_stack()		1
--
- /*
-  * on the H8 a couple of the relocations have an instruction in the
-  * top byte.  As there can only be 24bits of address space,  we just
-diff --git a/arch/m68k/Kconfig b/arch/m68k/Kconfig
-index 218e037ef901..fd69ee5ad6ab 100644
---- a/arch/m68k/Kconfig
-+++ b/arch/m68k/Kconfig
-@@ -7,6 +7,7 @@ config M68K
- 	select ARCH_MIGHT_HAVE_PC_PARPORT if ISA
- 	select ARCH_NO_COHERENT_DMA_MMAP if !MMU
- 	select ARCH_NO_PREEMPT if !COLDFIRE
-+	select BINFMT_FLAT_ARGVP_ENVP_ON_STACK
- 	select HAVE_IDE
- 	select HAVE_AOUT if MMU
- 	select HAVE_DEBUG_BUGVERBOSE
-diff --git a/arch/m68k/include/asm/flat.h b/arch/m68k/include/asm/flat.h
-index 7b1fb5c2809e..d7102fcd43eb 100644
---- a/arch/m68k/include/asm/flat.h
-+++ b/arch/m68k/include/asm/flat.h
-@@ -8,7 +8,6 @@
- 
- #include <linux/uaccess.h>
- 
--#define	flat_argvp_envp_on_stack()		1
- static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
- 					u32 *addr, u32 *persistent)
- {
-diff --git a/arch/microblaze/include/asm/flat.h b/arch/microblaze/include/asm/flat.h
-index 1cd8d7f4cf12..9e3d8e01d294 100644
---- a/arch/microblaze/include/asm/flat.h
-+++ b/arch/microblaze/include/asm/flat.h
-@@ -13,8 +13,6 @@
- 
- #include <asm/unaligned.h>
- 
--#define	flat_argvp_envp_on_stack()	0
--
- /*
-  * Microblaze works a little differently from other arches, because
-  * of the MICROBLAZE_64 reloc type. Here, a 32 bit address is split
-diff --git a/arch/sh/include/asm/flat.h b/arch/sh/include/asm/flat.h
-index 015678d7b771..1002343dd84a 100644
---- a/arch/sh/include/asm/flat.h
-+++ b/arch/sh/include/asm/flat.h
-@@ -11,7 +11,6 @@
- 
- #include <asm/unaligned.h>
- 
--#define	flat_argvp_envp_on_stack()		0
- static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
- 					u32 *addr, u32 *persistent)
- {
-diff --git a/arch/xtensa/include/asm/flat.h b/arch/xtensa/include/asm/flat.h
-index b215c1e66958..3d357371b28b 100644
---- a/arch/xtensa/include/asm/flat.h
-+++ b/arch/xtensa/include/asm/flat.h
-@@ -4,7 +4,6 @@
- 
- #include <asm/unaligned.h>
- 
--#define flat_argvp_envp_on_stack()			0
- static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
- 					u32 *addr, u32 *persistent)
- {
-diff --git a/fs/Kconfig.binfmt b/fs/Kconfig.binfmt
-index 5658e12ad944..82f7d7f234f3 100644
---- a/fs/Kconfig.binfmt
-+++ b/fs/Kconfig.binfmt
-@@ -97,6 +97,9 @@ config BINFMT_FLAT
- 	help
- 	  Support uClinux FLAT format binaries.
- 
-+config BINFMT_FLAT_ARGVP_ENVP_ON_STACK
-+	bool
-+
- config BINFMT_FLAT_OLD_ALWAYS_RAM
- 	bool
- 
 diff --git a/fs/binfmt_flat.c b/fs/binfmt_flat.c
-index 18d82fd5f57c..c09651087eda 100644
+index c09651087eda..6ae0f9af3fc9 100644
 --- a/fs/binfmt_flat.c
 +++ b/fs/binfmt_flat.c
-@@ -124,14 +124,15 @@ static int create_flat_tables(struct linux_binprm *bprm, unsigned long arg_start
+@@ -42,6 +42,7 @@
+ #include <asm/unaligned.h>
+ #include <asm/cacheflush.h>
+ #include <asm/page.h>
++#include <asm/flat.h>
  
- 	sp -= bprm->envc + 1;
- 	sp -= bprm->argc + 1;
--	sp -= flat_argvp_envp_on_stack() ? 2 : 0;
-+	if (IS_ENABLED(CONFIG_BINFMT_FLAT_ARGVP_ENVP_ON_STACK))
-+		sp -= 2; /* argvp + envp */
- 	sp -= 1;  /* &argc */
+ #ifndef flat_get_relocate_addr
+ #define flat_get_relocate_addr(rel)	(rel)
+diff --git a/include/linux/flat.h b/include/linux/flat.h
+index 569b67d64d5c..21d901ba191b 100644
+--- a/include/linux/flat.h
++++ b/include/linux/flat.h
+@@ -10,8 +10,47 @@
+ #ifndef _LINUX_FLAT_H
+ #define _LINUX_FLAT_H
  
- 	current->mm->start_stack = (unsigned long)sp & -FLAT_STACK_ALIGN;
- 	sp = (unsigned long __user *)current->mm->start_stack;
+-#include <uapi/linux/flat.h>
+-#include <asm/flat.h>
++#define	FLAT_VERSION			0x00000004L
++
++#ifdef CONFIG_BINFMT_SHARED_FLAT
++#define	MAX_SHARED_LIBS			(4)
++#else
++#define	MAX_SHARED_LIBS			(1)
++#endif
++
++/*
++ * To make everything easier to port and manage cross platform
++ * development,  all fields are in network byte order.
++ */
++
++struct flat_hdr {
++	char magic[4];
++	unsigned long rev;          /* version (as above) */
++	unsigned long entry;        /* Offset of first executable instruction
++	                               with text segment from beginning of file */
++	unsigned long data_start;   /* Offset of data segment from beginning of
++	                               file */
++	unsigned long data_end;     /* Offset of end of data segment
++	                               from beginning of file */
++	unsigned long bss_end;      /* Offset of end of bss segment from beginning
++	                               of file */
++
++	/* (It is assumed that data_end through bss_end forms the bss segment.) */
++
++	unsigned long stack_size;   /* Size of stack, in bytes */
++	unsigned long reloc_start;  /* Offset of relocation records from
++	                               beginning of file */
++	unsigned long reloc_count;  /* Number of relocation records */
++	unsigned long flags;
++	unsigned long build_date;   /* When the program/library was built */
++	unsigned long filler[5];    /* Reservered, set to zero */
++};
++
++#define FLAT_FLAG_RAM    0x0001 /* load program entirely into RAM */
++#define FLAT_FLAG_GOTPIC 0x0002 /* program is PIC with GOT */
++#define FLAT_FLAG_GZIP   0x0004 /* all but the header is compressed */
++#define FLAT_FLAG_GZDATA 0x0008 /* only data/relocs are compressed (for XIP) */
++#define FLAT_FLAG_KTRACE 0x0010 /* output useful kernel trace for debugging */
  
- 	__put_user(bprm->argc, sp++);
--	if (flat_argvp_envp_on_stack()) {
-+	if (IS_ENABLED(CONFIG_BINFMT_FLAT_ARGVP_ENVP_ON_STACK)) {
- 		unsigned long argv, envp;
- 		argv = (unsigned long)(sp + 2);
- 		envp = (unsigned long)(sp + 2 + bprm->argc + 1);
+ /*
+  * While it would be nice to keep this header clean,  users of older
+@@ -22,8 +61,6 @@
+  *        with the format above,  except to fix bugs with old format support.
+  */
+ 
+-#include <asm/byteorder.h>
+-
+ #define	OLD_FLAT_VERSION			0x00000002L
+ #define OLD_FLAT_RELOC_TYPE_TEXT	0
+ #define OLD_FLAT_RELOC_TYPE_DATA	1
+diff --git a/include/uapi/linux/flat.h b/include/uapi/linux/flat.h
+deleted file mode 100644
+index 27e595e44fb7..000000000000
+--- a/include/uapi/linux/flat.h
++++ /dev/null
+@@ -1,59 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
+-/*
+- * Copyright (C) 2002-2003  David McCullough <davidm@snapgear.com>
+- * Copyright (C) 1998       Kenneth Albanowski <kjahds@kjahds.com>
+- *                          The Silver Hammer Group, Ltd.
+- *
+- * This file provides the definitions and structures needed to
+- * support uClinux flat-format executables.
+- */
+-
+-#ifndef _UAPI_LINUX_FLAT_H
+-#define _UAPI_LINUX_FLAT_H
+-
+-
+-#define	FLAT_VERSION			0x00000004L
+-
+-#ifdef CONFIG_BINFMT_SHARED_FLAT
+-#define	MAX_SHARED_LIBS			(4)
+-#else
+-#define	MAX_SHARED_LIBS			(1)
+-#endif
+-
+-/*
+- * To make everything easier to port and manage cross platform
+- * development,  all fields are in network byte order.
+- */
+-
+-struct flat_hdr {
+-	char magic[4];
+-	unsigned long rev;          /* version (as above) */
+-	unsigned long entry;        /* Offset of first executable instruction
+-	                               with text segment from beginning of file */
+-	unsigned long data_start;   /* Offset of data segment from beginning of
+-	                               file */
+-	unsigned long data_end;     /* Offset of end of data segment
+-	                               from beginning of file */
+-	unsigned long bss_end;      /* Offset of end of bss segment from beginning
+-	                               of file */
+-
+-	/* (It is assumed that data_end through bss_end forms the bss segment.) */
+-
+-	unsigned long stack_size;   /* Size of stack, in bytes */
+-	unsigned long reloc_start;  /* Offset of relocation records from
+-	                               beginning of file */
+-	unsigned long reloc_count;  /* Number of relocation records */
+-	unsigned long flags;       
+-	unsigned long build_date;   /* When the program/library was built */
+-	unsigned long filler[5];    /* Reservered, set to zero */
+-};
+-
+-#define FLAT_FLAG_RAM    0x0001 /* load program entirely into RAM */
+-#define FLAT_FLAG_GOTPIC 0x0002 /* program is PIC with GOT */
+-#define FLAT_FLAG_GZIP   0x0004 /* all but the header is compressed */
+-#define FLAT_FLAG_GZDATA 0x0008 /* only data/relocs are compressed (for XIP) */
+-#define FLAT_FLAG_KTRACE 0x0010 /* output useful kernel trace for debugging */
+-
+-
+-
+-#endif /* _UAPI_LINUX_FLAT_H */
 -- 
 2.20.1
 
