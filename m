@@ -2,32 +2,33 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E24F63BE7C
-	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:24:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D25B3BE7E
+	for <lists+linux-riscv@lfdr.de>; Mon, 10 Jun 2019 23:24:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T3eezDxIWnh/WU1KMgiYosbZMDEtI33+lpUClTA4N3Q=; b=PeVYZ8E7l4UK7/
-	2ophsUXkywiFkTJ+JSedv8v9oFOQTOMj2eyY17lmrQCkH7FinG42aNwG/yJyWkeqR/be8UVOHdmeQ
-	v8NTq0ZhusVPejs+zB6JeU7QXzF40zAp6D09+mD0/sWIHrinRqEzdKJomXzc49xrqn3/dJHH7eZMr
-	elEpDClqjTO24TSWOZtAvs7lfWX+3HmSzWNk1ligHjJxARIyYyitnzdJStUcw+HGe6b60GR+HZUE+
-	Kh/Ti8eeaMgac/3ryVq5hITGhZSz+H9544GdmlsJjUhhPVKc/5yC7ltzwsjeh+s4zcBZs/ICqflYc
-	bTyVzpJ4R1PoTwMpiPag==;
+	List-Owner; bh=NgOxNA4sUOf5uADECxELsNoHuSGGMVLiMBKWX03Rx8Q=; b=jZVXg8+XKNF0/+
+	3r2WvEim3ZOt5548eXAOt7GlkQVUypQ6/o7U34BbUgX6XWhQwAwniFCth1FpePM0wKf/5Vcc+H4mo
+	bRty3O7y0HNyK3qOgJdT4jcKn+QU66Vd0VIO/QKet/F+UtOpNbwqSoL0YTsmhDzBjEGs3FONvNJTN
+	OpTNSgOw1bBhL16jFTk2lQj9Cn4JWVe+xfYPVF3ybE2bJujx1dfiu6zWFIqNbhkwaNvLp0pCYJNpj
+	/iepjccIkwb9dsRfl822HLFlx3M52Qw2B5WcQrBfunK0ujBUr0LAAvfVbxCknroKaBmpaPG7AV26w
+	6+pg8aqIBGlupy0/Rw5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haRlp-0003ZX-7p; Mon, 10 Jun 2019 21:24:01 +0000
+	id 1haRmB-0003t3-9r; Mon, 10 Jun 2019 21:24:23 +0000
 Received: from 089144193064.atnat0002.highway.a1.net ([89.144.193.64]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1haRic-0000bq-Co; Mon, 10 Jun 2019 21:20:42 +0000
+ id 1haRif-0000eX-46; Mon, 10 Jun 2019 21:20:45 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Greg Ungerer <gerg@linux-m68k.org>
-Subject: [PATCH 09/15] binfmt_flat: add a ARCH_HAS_BINFMT_FLAT option
-Date: Mon, 10 Jun 2019 23:20:09 +0200
-Message-Id: <20190610212015.9157-10-hch@lst.de>
+Subject: [PATCH 10/15] binfmt_flat: make support for old format binaries
+ optional
+Date: Mon, 10 Jun 2019 23:20:10 +0200
+Message-Id: <20190610212015.9157-11-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190610212015.9157-1-hch@lst.de>
 References: <20190610212015.9157-1-hch@lst.de>
@@ -53,123 +54,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Allow architectures to opt into ARCH_HAS_BINFMT_FLAT support instead of
-assuming that all nommu ports support the format.
+No need to carry the extra code around, given that systems using flat
+binaries are generally very resource constrained.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/arm/Kconfig        | 1 +
- arch/c6x/Kconfig        | 1 +
- arch/h8300/Kconfig      | 1 +
- arch/m68k/Kconfig       | 1 +
- arch/microblaze/Kconfig | 1 +
- arch/sh/Kconfig         | 1 +
- arch/xtensa/Kconfig     | 1 +
- fs/Kconfig.binfmt       | 5 ++++-
- 8 files changed, 11 insertions(+), 1 deletion(-)
+ fs/Kconfig.binfmt |  7 +++++++
+ fs/binfmt_flat.c  | 29 +++++++++++++++++++++--------
+ 2 files changed, 28 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index b1b48c0bde76..695a26c68064 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -4,6 +4,7 @@ config ARM
- 	default y
- 	select ARCH_32BIT_OFF_T
- 	select ARCH_CLOCKSOURCE_DATA
-+	select ARCH_HAS_BINFMT_FLAT
- 	select ARCH_HAS_DEBUG_VIRTUAL if MMU
- 	select ARCH_HAS_DEVMEM_IS_ALLOWED
- 	select ARCH_HAS_ELF_RANDOMIZE
-diff --git a/arch/c6x/Kconfig b/arch/c6x/Kconfig
-index eeb0471268a0..78dfe186d708 100644
---- a/arch/c6x/Kconfig
-+++ b/arch/c6x/Kconfig
-@@ -7,6 +7,7 @@
- config C6X
- 	def_bool y
- 	select ARCH_32BIT_OFF_T
-+	select ARCH_HAS_BINFMT_FLAT
- 	select ARCH_HAS_SYNC_DMA_FOR_CPU
- 	select ARCH_HAS_SYNC_DMA_FOR_DEVICE
- 	select CLKDEV_LOOKUP
-diff --git a/arch/h8300/Kconfig b/arch/h8300/Kconfig
-index 7457f190caaa..ec800e9d5aad 100644
---- a/arch/h8300/Kconfig
-+++ b/arch/h8300/Kconfig
-@@ -2,6 +2,7 @@
- config H8300
-         def_bool y
- 	select ARCH_32BIT_OFF_T
-+	select ARCH_HAS_BINFMT_FLAT
- 	select BINFMT_FLAT_ARGVP_ENVP_ON_STACK
- 	select BINFMT_FLAT_OLD_ALWAYS_RAM
- 	select GENERIC_ATOMIC64
-diff --git a/arch/m68k/Kconfig b/arch/m68k/Kconfig
-index fd69ee5ad6ab..c0c43c624afa 100644
---- a/arch/m68k/Kconfig
-+++ b/arch/m68k/Kconfig
-@@ -3,6 +3,7 @@ config M68K
- 	bool
- 	default y
- 	select ARCH_32BIT_OFF_T
-+	select ARCH_HAS_BINFMT_FLAT
- 	select ARCH_HAS_SYNC_DMA_FOR_DEVICE if HAS_DMA
- 	select ARCH_MIGHT_HAVE_PC_PARPORT if ISA
- 	select ARCH_NO_COHERENT_DMA_MMAP if !MMU
-diff --git a/arch/microblaze/Kconfig b/arch/microblaze/Kconfig
-index f11433daab4a..d411de05b628 100644
---- a/arch/microblaze/Kconfig
-+++ b/arch/microblaze/Kconfig
-@@ -3,6 +3,7 @@ config MICROBLAZE
- 	def_bool y
- 	select ARCH_32BIT_OFF_T
- 	select ARCH_NO_SWAP
-+	select ARCH_HAS_BINFMT_FLAT if !MMU
- 	select ARCH_HAS_DMA_COHERENT_TO_PFN if MMU
- 	select ARCH_HAS_GCOV_PROFILE_ALL
- 	select ARCH_HAS_SYNC_DMA_FOR_CPU
-diff --git a/arch/sh/Kconfig b/arch/sh/Kconfig
-index b77f512bb176..df3e6215b78c 100644
---- a/arch/sh/Kconfig
-+++ b/arch/sh/Kconfig
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- config SUPERH
- 	def_bool y
-+	select ARCH_HAS_BINFMT_FLAT if !MMU
- 	select ARCH_HAS_PTE_SPECIAL
- 	select ARCH_HAS_TICK_BROADCAST if GENERIC_CLOCKEVENTS_BROADCAST
- 	select ARCH_MIGHT_HAVE_PC_PARPORT
-diff --git a/arch/xtensa/Kconfig b/arch/xtensa/Kconfig
-index 6ec1b75eabc5..ebc135bda921 100644
---- a/arch/xtensa/Kconfig
-+++ b/arch/xtensa/Kconfig
-@@ -2,6 +2,7 @@
- config XTENSA
- 	def_bool y
- 	select ARCH_32BIT_OFF_T
-+	select ARCH_HAS_BINFMT_FLAT if !MMU
- 	select ARCH_HAS_SYNC_DMA_FOR_CPU
- 	select ARCH_HAS_SYNC_DMA_FOR_DEVICE
- 	select ARCH_NO_COHERENT_DMA_MMAP if !MMU
 diff --git a/fs/Kconfig.binfmt b/fs/Kconfig.binfmt
-index 82f7d7f234f3..286b425b30b9 100644
+index 286b425b30b9..62dc4f577ba1 100644
 --- a/fs/Kconfig.binfmt
 +++ b/fs/Kconfig.binfmt
-@@ -91,9 +91,12 @@ config BINFMT_SCRIPT
+@@ -106,6 +106,13 @@ config BINFMT_FLAT_ARGVP_ENVP_ON_STACK
+ config BINFMT_FLAT_OLD_ALWAYS_RAM
+ 	bool
  
- 	  Most systems will not boot if you say M or N here.  If unsure, say Y.
- 
-+config ARCH_HAS_BINFMT_FLAT
-+	bool
++config BINFMT_FLAT_OLD
++	bool "Enable support for very old legacy flat binaries"
++	depends on BINFMT_FLAT
++	help
++	  Support decade old uClinux FLAT format binaries.  Unless you know
++	  you have some of those say N here.
 +
- config BINFMT_FLAT
- 	bool "Kernel support for flat binaries"
--	depends on !MMU || ARM || M68K
-+	depends on ARCH_HAS_BINFMT_FLAT
- 	help
- 	  Support uClinux FLAT format binaries.
+ config BINFMT_ZFLAT
+ 	bool "Enable ZFLAT support"
+ 	depends on BINFMT_FLAT
+diff --git a/fs/binfmt_flat.c b/fs/binfmt_flat.c
+index 6c1848dee724..ed7d969593d2 100644
+--- a/fs/binfmt_flat.c
++++ b/fs/binfmt_flat.c
+@@ -374,6 +374,7 @@ calc_reloc(unsigned long r, struct lib_info *p, int curid, int internalp)
  
+ /****************************************************************************/
+ 
++#ifdef CONFIG_BINFMT_FLAT_OLD
+ static void old_reloc(unsigned long rl)
+ {
+ 	static const char *segment[] = { "TEXT", "DATA", "BSS", "*UNKNOWN*" };
+@@ -411,6 +412,7 @@ static void old_reloc(unsigned long rl)
+ 
+ 	pr_debug("Relocation became %lx\n", val);
+ }
++#endif /* CONFIG_BINFMT_FLAT_OLD */
+ 
+ /****************************************************************************/
+ 
+@@ -461,6 +463,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 	if (flags & FLAT_FLAG_KTRACE)
+ 		pr_info("Loading file: %s\n", bprm->filename);
+ 
++#ifdef CONFIG_BINFMT_FLAT_OLD
+ 	if (rev != FLAT_VERSION && rev != OLD_FLAT_VERSION) {
+ 		pr_err("bad flat file version 0x%x (supported 0x%lx and 0x%lx)\n",
+ 		       rev, FLAT_VERSION, OLD_FLAT_VERSION);
+@@ -476,6 +479,22 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 		goto err;
+ 	}
+ 
++	/*
++	 * fix up the flags for the older format,  there were all kinds
++	 * of endian hacks,  this only works for the simple cases
++	 */
++	if (IS_ENABLED(CONFIG_BINFMT_FLAT_OLD_ALWAYS_RAM) &&
++	    rev == OLD_FLAT_VERSION)
++		flags = FLAT_FLAG_RAM;
++#else /* CONFIG_BINFMT_FLAT_OLD */
++	if (rev != FLAT_VERSION) {
++		pr_err("bad flat file version 0x%x (supported 0x%lx)\n",
++		       rev, FLAT_VERSION);
++		ret = -ENOEXEC;
++		goto err;
++	}
++#endif /* !CONFIG_BINFMT_FLAT_OLD */
++
+ 	/*
+ 	 * Make sure the header params are sane.
+ 	 * 28 bits (256 MB) is way more than reasonable in this case.
+@@ -487,14 +506,6 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 		goto err;
+ 	}
+ 
+-	/*
+-	 * fix up the flags for the older format,  there were all kinds
+-	 * of endian hacks,  this only works for the simple cases
+-	 */
+-	if (IS_ENABLED(CONFIG_BINFMT_FLAT_OLD_ALWAYS_RAM) &&
+-	    rev == OLD_FLAT_VERSION)
+-		flags = FLAT_FLAG_RAM;
+-
+ #ifndef CONFIG_BINFMT_ZFLAT
+ 	if (flags & (FLAT_FLAG_GZIP|FLAT_FLAG_GZDATA)) {
+ 		pr_err("Support for ZFLAT executables is not enabled.\n");
+@@ -833,6 +844,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 					goto err;
+ 			}
+ 		}
++#ifdef CONFIG_BINFMT_FLAT_OLD
+ 	} else {
+ 		for (i = 0; i < relocs; i++) {
+ 			__be32 relval;
+@@ -840,6 +852,7 @@ static int load_flat_file(struct linux_binprm *bprm,
+ 				return -EFAULT;
+ 			old_reloc(ntohl(relval));
+ 		}
++#endif /* CONFIG_BINFMT_FLAT_OLD */
+ 	}
+ 
+ 	flush_icache_range(start_code, end_code);
 -- 
 2.20.1
 
