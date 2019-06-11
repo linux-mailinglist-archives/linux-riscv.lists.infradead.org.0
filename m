@@ -2,54 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B31993CE5B
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 16:19:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9379D3CEB3
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 16:29:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HxTNP7DzcBpdDpTvOaWKAtRU12HpzgA7wuTttmcvCUQ=; b=YeyJPpyQhS+MWn
-	EcrRx9uQKo+KmbaPoqkayOvE5Gw5WUZ9ec86BBTEocb+4OwLjoY8aj1UySGO8hYssf5uygw72//4Q
-	PmZ/qSd1THdjgH/Nip76r+UB7AZD4gElMmgjaQCQ6/SC3RryqxVXghvlDC16crLsjUUbmF6mxi3e9
-	+HFIn6Ye0DDcSPeLOZ1fz0xTW1PBihsMI7c+CDzftmm/38WEFPJRyGu7ks5m+QgYkbI535Aa73vHS
-	5mwdgynXO0Ark/7pSqqoeOrGQUPExyC8OpjpRiFU55c+ddRO2WigiqgyfmDdysH54mo+bIGjdQ0SE
-	itHjR1wGMpYLXTxoPnfA==;
+	List-Owner; bh=GE+L8K+fdQtcl13rbAdR8cD8s3ctmgga89K5eeUNQaI=; b=Xnapp4nwjmmf3g
+	8kyMNPaCs/TKTRdF5MZ3bPTMKy5RBUYmeOjBDiIadPqK/XF4wS8+4/EkjhtP058OY1i08H0wG7Cpj
+	H1nf1HGwjgu8lg4aDIaa8vNBN8A0Pc7ON0YpG3Cl2IoPUTengq4Pecfmxi5rH7S9+wZTqN9jNXFmU
+	nYc20paOjC3kmYue3wVXCFjElv/n0D8LOMcEABX80h+hMAsz6VK5MPIXeYXzQLLAx14GE3HD6nSUI
+	hZRkfVQvvgMfPd/ObfIUBS/cBDgnaDY7ox6I+A8FgifjjNd97EhTwHYhwV921yik0ZoQprWsupG32
+	bWCl2H3SDQYWaIHa6ahg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hahcI-0001BQ-Fp; Tue, 11 Jun 2019 14:19:14 +0000
-Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
+	id 1hahm6-00059t-BZ; Tue, 11 Jun 2019 14:29:22 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hahcE-0001B7-Qs
- for linux-riscv@lists.infradead.org; Tue, 11 Jun 2019 14:19:12 +0000
-Received: by newverein.lst.de (Postfix, from userid 2407)
- id 3E91868B02; Tue, 11 Jun 2019 16:18:42 +0200 (CEST)
-Date: Tue, 11 Jun 2019 16:18:41 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Vladimir Murzin <vladimir.murzin@arm.com>
-Subject: Re: [PATCH 02/17] mm: stub out all of swapops.h for !CONFIG_MMU
-Message-ID: <20190611141841.GA29151@lst.de>
-References: <20190610221621.10938-1-hch@lst.de>
- <20190610221621.10938-3-hch@lst.de>
- <516c8def-22db-027c-873d-a943454e33af@arm.com>
+ id 1hahlx-00058b-Na
+ for linux-riscv@lists.infradead.org; Tue, 11 Jun 2019 14:29:15 +0000
+Received: by mail-ed1-x544.google.com with SMTP id p26so16378455edr.2
+ for <linux-riscv@lists.infradead.org>; Tue, 11 Jun 2019 07:29:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=EcfTiCsffQkaI+Cy4Vw69CL5IwRZfczcRgXiPSVSIEU=;
+ b=XIxL3vanV/BoGlCosN7UlsPccmg8Ri4Z8jWnddxaVhRqyTSA97xSsXt4jxSXSMip0O
+ HpFjrqn/vPjrVZMT+GeJYFnV9HKUuOHcxOOmIXtwvxxVEptP5nNbKMHcw25Zwbpt5xDk
+ O298v3Df7onxgjfwyNZNwkBvKJi1f4y7FYoa0hEYG65ZtOyDeMsOfaKSZO+JsanpC834
+ S2zaSeOhqvsaAfk0Jujd0TFA+Xl9+PKsQ7dWYUFQtH6acylZeup5URZAeMT6WhYZ3HwX
+ kiZI3rRCQsNnIm8DqX7+/EL9zhGJPvTFhsGeDF07K2fy8wWla6yffNDEYa6lSQQxTU92
+ 5DWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=EcfTiCsffQkaI+Cy4Vw69CL5IwRZfczcRgXiPSVSIEU=;
+ b=beB/G6XDKIGfnIEkmuLjCEAAiD00ie5cPE1dBKFQZFgDTM10zYBiOeHx03Pb1cZDcl
+ xWraavOv8tvfo63lT83wBed357SeRTXAEZxTn+dHc8RT86QGjnmg1wa07+MjxWR/aGoe
+ XPffe6XAOSsOPN7eI3/HUhj47xvcVPzAM4w/iaBR/oD9NcvMznqlVX9HP2QOxFwjJX09
+ rUyEyf7i+bVOFqj2Yy6AProq+LYlXiTbRqQDICPLb/SIvIsgFgLj0eBXQEgfNYjGbyKS
+ idJuEPuGbqwXZZON9yIsPaZ9rdMJ1mW186VXgLGEQ5bDzFaYv4bOTDcJb/2QWXGh80JK
+ cbjA==
+X-Gm-Message-State: APjAAAUV+9ahgzmYuYJpckBs9XRvqq9cT+fxOGW1jHX8/JBZiHfK66gc
+ 4+QLsho3lVrf4vdV/3hGPXqq7g==
+X-Google-Smtp-Source: APXvYqxbHgB3hqxZayzzwYf//1JUbrAUHjHKk5IFJ5cxpjXezsvGZFi9XeOdup4uWumqb5EpI3IoQA==
+X-Received: by 2002:a17:906:e203:: with SMTP id
+ gf3mr45163746ejb.210.1560263352423; 
+ Tue, 11 Jun 2019 07:29:12 -0700 (PDT)
+Received: from localhost (mpp-cp1-natpool-1-037.ethz.ch. [82.130.71.37])
+ by smtp.gmail.com with ESMTPSA id s11sm1250132ejo.51.2019.06.11.07.29.11
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 11 Jun 2019 07:29:11 -0700 (PDT)
+Date: Tue, 11 Jun 2019 07:29:10 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Nick Hu <nickhu@andestech.com>
+Subject: Re: [PATCH v3] riscv: Fix udelay in RV32.
+In-Reply-To: <67bfbb11e64273427b125528a4e2bc83b5efe70b.1559199430.git.nickhu@andestech.com>
+Message-ID: <alpine.DEB.2.21.9999.1906110729030.16050@viisi.sifive.com>
+References: <67bfbb11e64273427b125528a4e2bc83b5efe70b.1559199430.git.nickhu@andestech.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <516c8def-22db-027c-873d-a943454e33af@arm.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190611_071911_023584_64C13489 
-X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-CacheID: sfid-20190611_072914_042976_AC991BF6 
+X-CRM114-Status: UNSURE (   6.26  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:544 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,65 +98,30 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, uclinux-dev@uclinux.org,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- linux-mm@kvack.org, linux-riscv@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: greentime@andestech.com, palmer@sifive.com, linux-kernel@vger.kernel.org,
+ hch@infradead.org, green.hu@gmail.com, albert@sifive.com,
+ linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVHVlLCBKdW4gMTEsIDIwMTkgYXQgMTE6MTU6NDRBTSArMDEwMCwgVmxhZGltaXIgTXVyemlu
-IHdyb3RlOgo+IE9uIDYvMTAvMTkgMTE6MTYgUE0sIENocmlzdG9waCBIZWxsd2lnIHdyb3RlOgo+
-ID4gVGhlIHdob2xlIGhlYWRlciBmaWxlIGRlYWxzIHdpdGggc3dhcCBlbnRyaWVzIGFuZCBQVEVz
-LCBub25lIG9mIHdoaWNoCj4gPiBjYW4gZXhpc3QgZm9yIG5vbW11IGJ1aWxkcy4KPiAKPiBBbHRo
-b3VnaCBJIGFncmVlIHdpdGggdGhlIHBhdGNoLCBJJ20gd29uZGVyaW5nIGhvdyB5b3UgZ2V0IGlu
-dG8gaXQ/CgpXaXRob3V0IHRoYXQgdGhlIFJJU0MtViBub21tdSBibG93cyB1cCBsaWtlIHRoaXM6
-CgoKSW4gZmlsZSBpbmNsdWRlZCBmcm9tIG1tL3Ztc2Nhbi5jOjU4OgouL2luY2x1ZGUvbGludXgv
-c3dhcG9wcy5oOiBJbiBmdW5jdGlvbiDigJhwdGVfdG9fc3dwX2VudHJ54oCZOgouL2luY2x1ZGUv
-bGludXgvc3dhcG9wcy5oOjcxOjE1OiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YgZnVu
-Y3Rpb24g4oCYX19wdGVfdG9fc3dwX2VudHJ54oCZOyBkaWQgeW91IG1lYW4g4oCYcHRlX3RvX3N3
-cF9lbnRyeeKAmT8gWy1XZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24tZGVjbGFyYXRpb25dCiAgYXJj
-aF9lbnRyeSA9IF9fcHRlX3RvX3N3cF9lbnRyeShwdGUpOwogICAgICAgICAgICAgICBefn5+fn5+
-fn5+fn5+fn5+fn4KICAgICAgICAgICAgICAgcHRlX3RvX3N3cF9lbnRyeQouL2luY2x1ZGUvbGlu
-dXgvc3dhcG9wcy5oOjcxOjEzOiBlcnJvcjogaW5jb21wYXRpYmxlIHR5cGVzIHdoZW4gYXNzaWdu
-aW5nIHRvIHR5cGUg4oCYc3dwX2VudHJ5X3TigJkge2FrYSDigJhzdHJ1Y3QgPGFub255bW91cz7i
-gJl9IGZyb20gdHlwZSDigJhpbnTigJkKICBhcmNoX2VudHJ5ID0gX19wdGVfdG9fc3dwX2VudHJ5
-KHB0ZSk7CiAgICAgICAgICAgICBeCi4vaW5jbHVkZS9saW51eC9zd2Fwb3BzLmg6NzI6MTk6IGVy
-cm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhfX3N3cF90eXBl4oCZOyBk
-aWQgeW91IG1lYW4g4oCYc3dwX3R5cGXigJk/IFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRl
-Y2xhcmF0aW9uXQogIHJldHVybiBzd3BfZW50cnkoX19zd3BfdHlwZShhcmNoX2VudHJ5KSwgX19z
-d3Bfb2Zmc2V0KGFyY2hfZW50cnkpKTsKICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn4KICAg
-ICAgICAgICAgICAgICAgIHN3cF90eXBlCi4vaW5jbHVkZS9saW51eC9zd2Fwb3BzLmg6NzI6NDM6
-IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhfX3N3cF9vZmZzZXTi
-gJk7IGRpZCB5b3UgbWVhbiDigJhzd3Bfb2Zmc2V04oCZPyBbLVdlcnJvcj1pbXBsaWNpdC1mdW5j
-dGlvbi1kZWNsYXJhdGlvbl0KICByZXR1cm4gc3dwX2VudHJ5KF9fc3dwX3R5cGUoYXJjaF9lbnRy
-eSksIF9fc3dwX29mZnNldChhcmNoX2VudHJ5KSk7CiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn4KICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHN3cF9vZmZzZXQKLi9pbmNsdWRlL2xpbnV4L3N3YXBvcHMuaDogSW4g
-ZnVuY3Rpb24g4oCYc3dwX2VudHJ5X3RvX3B0ZeKAmToKLi9pbmNsdWRlL2xpbnV4L3N3YXBvcHMu
-aDo4MzoxNTogZXJyb3I6IGltcGxpY2l0IGRlY2xhcmF0aW9uIG9mIGZ1bmN0aW9uIOKAmF9fc3dw
-X2VudHJ54oCZOyBkaWQgeW91IG1lYW4g4oCYc3dwX2VudHJ54oCZPyBbLVdlcnJvcj1pbXBsaWNp
-dC1mdW5jdGlvbi1kZWNsYXJhdGlvbl0KICBhcmNoX2VudHJ5ID0gX19zd3BfZW50cnkoc3dwX3R5
-cGUoZW50cnkpLCBzd3Bfb2Zmc2V0KGVudHJ5KSk7CiAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+
-CiAgICAgICAgICAgICAgIHN3cF9lbnRyeQouL2luY2x1ZGUvbGludXgvc3dhcG9wcy5oOjgzOjEz
-OiBlcnJvcjogaW5jb21wYXRpYmxlIHR5cGVzIHdoZW4gYXNzaWduaW5nIHRvIHR5cGUg4oCYc3dw
-X2VudHJ5X3TigJkge2FrYSDigJhzdHJ1Y3QgPGFub255bW91cz7igJl9IGZyb20gdHlwZSDigJhp
-bnTigJkKICBhcmNoX2VudHJ5ID0gX19zd3BfZW50cnkoc3dwX3R5cGUoZW50cnkpLCBzd3Bfb2Zm
-c2V0KGVudHJ5KSk7CiAgICAgICAgICAgICBeCi4vaW5jbHVkZS9saW51eC9zd2Fwb3BzLmg6ODQ6
-OTogZXJyb3I6IGltcGxpY2l0IGRlY2xhcmF0aW9uIG9mIGZ1bmN0aW9uIOKAmF9fc3dwX2VudHJ5
-X3RvX3B0ZeKAmTsgZGlkIHlvdSBtZWFuIOKAmHN3cF9lbnRyeV90b19wdGXigJk/IFstV2Vycm9y
-PWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQogIHJldHVybiBfX3N3cF9lbnRyeV90b19w
-dGUoYXJjaF9lbnRyeSk7CiAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fgogICAgICAgICBzd3Bf
-ZW50cnlfdG9fcHRlCi4vaW5jbHVkZS9saW51eC9zd2Fwb3BzLmg6ODQ6OTogZXJyb3I6IGluY29t
-cGF0aWJsZSB0eXBlcyB3aGVuIHJldHVybmluZyB0eXBlIOKAmGludOKAmSBidXQg4oCYcHRlX3Ti
-gJkge2FrYSDigJhzdHJ1Y3QgPGFub255bW91cz7igJl9IHdhcyBleHBlY3RlZAogIHJldHVybiBf
-X3N3cF9lbnRyeV90b19wdGUoYXJjaF9lbnRyeSk7CiAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fgpjYzE6IHNvbWUgd2FybmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMK
-bWFrZVsxXTogKioqIFtzY3JpcHRzL01ha2VmaWxlLmJ1aWxkOjI3ODogbW0vdm1zY2FuLm9dIEVy
-cm9yIDEKbWFrZTogKioqIFtNYWtlZmlsZToxMDcxOiBtbV0gRXJyb3IgMgptYWtlOiAqKiogV2Fp
-dGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yaXNjdgo=
+On Thu, 30 May 2019, Nick Hu wrote:
+
+> In RV32, udelay would delay the wrong cycle. When it shifts right
+> "UDELAY_SHITFT" bits, it either delays 0 cycle or 1 cycle. It only works
+> correctly in RV64. Because the 'ucycles' always needs to be 64 bits
+> variable.
+> 
+> Signed-off-by: Nick Hu <nickhu@andestech.com>
+> Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+
+Thanks, queued for v5.2-rc.
+
+
+- Paul
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
