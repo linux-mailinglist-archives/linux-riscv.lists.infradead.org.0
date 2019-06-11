@@ -2,57 +2,53 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF9C03C481
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 08:51:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AC0A3C53E
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 09:37:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mqTuYe2akUcuEZpuAb0ErweDPFdNc067/StnEEvBEc4=; b=i5U8PIE8XlhgU11OO48g0F1KW
-	jQ8Z5bE1/6YSsUBV6mhi2bBTTSyufa/ZX4N6HiLW/8n0PGyMSTq1LY3QYxSBMu9RqdKghPPQK2XRx
-	bEPj/fK///w1DRbfwJoaPtYj8S3kaLoxmWnv6ZF6W9LVN2OHLNuHCILLiHGnU+xptnaYN/nJxnvKZ
-	R1DGH9Fy3Zs9tYNPkSRVIfyw5RAr09wPXxBADc1KkocSrObFwEIxriF0VWWwXe9i/liKdUOUn3mI3
-	DnOtYkAJ417bpIlwSqxBaYcTvizKn1oaCLC3+Dsn/A396yVX4STRcVyMDtCqgDlrusT3D2eSTVf4z
-	DN37W8rqQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JAQlNYR8ZbpllHuBrwtHvliSx4OC0kEb6LR1sFQnoG4=; b=QbMonL9gKnkSKA
+	myfBT7OoYMu/WKvHSE7osiC+2KyA1ue87530cLiks3CGxVoYva5m73COqCW0c/DJmwEk+1B6+5Ex1
+	OievhOd1igfzffp7jdLGa11hpXUrVlQmWl20p8ThlTbzy5p+zZHXO0YEUsx7ranCGHnkH/jJzXWjK
+	sUnsT+0WbFP4/4dr8fRVaMmAIcAhI0+gL8XBcAijqqg572gkcnX4AEPqwnnAwRGcWjNNsRf9dVEkE
+	4aj8sxpI+Uq8khrnG70W0OY5N7Bp9h8m5WSCHJxu2cwuCRVMUJ01Vxw6y1wKNnbbRw1FuSuKGMf+S
+	F7mfKfnjcQ+HQxg4r4mA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haact-0003wC-OI; Tue, 11 Jun 2019 06:51:23 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1habLg-0006Qt-6m; Tue, 11 Jun 2019 07:37:40 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1haacd-0003mD-F5; Tue, 11 Jun 2019 06:51:08 +0000
-Received: from [10.44.0.22] (unknown [103.48.210.53])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0C20920896;
- Tue, 11 Jun 2019 06:51:04 +0000 (UTC)
-Subject: Re: binfmt_flat cleanups and RISC-V support
-To: Christoph Hellwig <hch@lst.de>
+ id 1habLL-0006FW-Ne; Tue, 11 Jun 2019 07:37:21 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id ADA6868B02; Tue, 11 Jun 2019 09:36:48 +0200 (CEST)
+Date: Tue, 11 Jun 2019 09:36:48 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Greg Ungerer <gerg@linux-m68k.org>
+Subject: Re: [PATCH 04/15] binfmt_flat: remove flat_old_ram_flag
+Message-ID: <20190611073648.GA21522@lst.de>
 References: <20190610212015.9157-1-hch@lst.de>
-From: Greg Ungerer <gerg@linux-m68k.org>
-Message-ID: <6e5fb7db-1d6f-7d49-553c-edc18f14f641@linux-m68k.org>
-Date: Tue, 11 Jun 2019 16:51:02 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ <20190610212015.9157-5-hch@lst.de>
+ <b1ce6fc6-343c-7686-b4f4-35a305dc2adb@linux-m68k.org>
 MIME-Version: 1.0
-In-Reply-To: <20190610212015.9157-1-hch@lst.de>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <b1ce6fc6-343c-7686-b4f4-35a305dc2adb@linux-m68k.org>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190610_235107_523031_80060661 
-X-CRM114-Status: GOOD (  10.32  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190611_003719_924001_CAC1EC2B 
+X-CRM114-Status: GOOD (  10.18  )
+X-Spam-Score: 2.5 (++)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
  2.5 SUSPICIOUS_RECIPS      Similar addresses in recipient list
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,30 +64,47 @@ Cc: uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
  Michal Simek <monstr@monstr.eu>, linux-c6x-dev@linux-c6x.org,
  linux-sh@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-m68k@lists.linux-m68k.org, linux-riscv@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+ Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Christoph,
+On Tue, Jun 11, 2019 at 04:04:39PM +1000, Greg Ungerer wrote:
+>> index c0e4535dc1ec..18d82fd5f57c 100644
+>> --- a/fs/binfmt_flat.c
+>> +++ b/fs/binfmt_flat.c
+>> @@ -488,7 +488,8 @@ static int load_flat_file(struct linux_binprm *bprm,
+>>   	 * fix up the flags for the older format,  there were all kinds
+>>   	 * of endian hacks,  this only works for the simple cases
+>>   	 */
+>> -	if (rev == OLD_FLAT_VERSION && flat_old_ram_flag(flags))
+>> +	if (IS_ENABLED(CONFIG_BINFMT_FLAT_OLD_ALWAYS_RAM) &&
+>> +	    rev == OLD_FLAT_VERSION)
+>
+> The flags are from the binary file header here, so this is going to lose
+> that check for most platforms (except h8300 where it would always have
+> been true).
 
-On 11/6/19 7:20 am, Christoph Hellwig wrote:
-> below is a larger stash of cleanups for the binfmt_misc code,
-> preparing for the last patch that now trivially adds RISC-V
-> support, which will be used for the RISC-V nommu series I am
-> about to post.
+Indeed.  The old code is:
 
-Whole series looks pretty good. Just the one comment I made.
+	if (rev == OLD_FLAT_VERSION && flat_old_ram_flag(flags))
+		flags = FLAT_FLAG_RAM;
 
-I normally take these through the m68knommu git tree,
-if you have no problem with that I'll push it in there.
-It will hit linux-next from there.
+which for !h8300 evaluates to:
 
-Thanks
-Greg
+	if (rev == OLD_FLAT_VERSION && flags)
+		flags = FLAT_FLAG_RAM;
 
+so basically if any flag was set it was turned into FLAT_FLAG_RAM.
+Was that really intentional?  I guess even if it wasn't the is no
+point in changing this historic behavior now.
 
+So I guess what we could do it something like:
+
+	if (rev == OLD_FLAT_VERSION &&
+	    (flags || IS_ENABLED(CONFIG_BINFMT_FLAT_OLD_ALWAYS_RAM)))
+		flags = FLAT_FLAG_RAM;
 
 _______________________________________________
 linux-riscv mailing list
