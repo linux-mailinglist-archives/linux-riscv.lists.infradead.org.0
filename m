@@ -2,51 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C7E43C81A
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 12:08:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 295943C825
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 12:08:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NVrKBlyUrRRCM4y7nutg1IIV0y3nw2k7wNDJtenhDMk=; b=GxFPRRSB29GYoX
-	jWpuhRmDsgwZenE0HG9aJf6dD/8d5LNnEuiJ63L6sD9QiPXfmlIFIqDIXo1vBhT5gEjw+kQaNImFo
-	nmawYPW0FqOx9qcdV06AvdXG+ZuNWkOW4P7W/imfGLJW3nWTwY8zg2yI4ZP0mPozbP8ToTsj8yLJJ
-	tJU4urUwwYfpeeebu3j/TgYeCCPoFcAfq9lKJKZDCVYWcKk4ZNpHyidseANsPkeFETCKOVHQtFNVs
-	FAx99kBDpmR2YDXSHbXAGOlIhGaZpMKyzkO37gsygShLRfvFVKZg98bqQd0gbotqZkCWrwIeNO3zS
-	QYrTMdnA3L3OYtE8ABeg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Zt8t+p4g53IZzlqDapZcJVDLv3lB2ShfeMp6g3etqVg=; b=LcAJc7SH5ChMqn
+	C9vNMhh90we5fc92XJCuAwmehl6ryCfPfUUtrWIAZ40oyQXakOPPJbFNairCPuWYLCjv62wBuoi4q
+	R5nbt0pi/71O4BTrBsKmbWPRdl+iS9vTmFKabcfXkGgTb2LExDNSnENDyZALVqRlsPLcJJBYWbKlU
+	bUsqUtwW9FvTxWI2Zp6Pp+JVrnBJh9xOyt4MI2kQFZEGWi6fCMbkS1eAZ0DVL9t5DLWqylklGgAy0
+	zjmaYwez2igXijcmRXdFgfqAOaAhCE2BZJiv239bZDz0pjG+AsDl2Ywj5neXKQ2DxFebupf0B78dO
+	ETZZS5K4kB325mahJoPA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hadhJ-0003a5-Qi; Tue, 11 Jun 2019 10:08:10 +0000
+	id 1hadhi-0003uh-CQ; Tue, 11 Jun 2019 10:08:34 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
- id 1hadgy-0003G1-5S
- for linux-riscv@lists.infradead.org; Tue, 11 Jun 2019 10:07:50 +0000
+ id 1hadhN-0003fL-Ot; Tue, 11 Jun 2019 10:08:14 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A7D65337;
- Tue, 11 Jun 2019 03:07:47 -0700 (PDT)
-Received: from redmoon (unknown [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0681F3F557;
- Tue, 11 Jun 2019 03:09:28 -0700 (PDT)
-Date: Tue, 11 Jun 2019 11:07:42 +0100
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Alan Mikhak <alan.mikhak@sifive.com>
-Subject: Re: [PATCH v2] PCI: endpoint: Set endpoint controller pointer to null
-Message-ID: <20190611100742.GA29976@redmoon>
-References: <1558647944-13816-1-git-send-email-alan.mikhak@sifive.com>
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 66884337;
+ Tue, 11 Jun 2019 03:08:13 -0700 (PDT)
+Received: from [10.1.29.141] (e121487-lin.cambridge.arm.com [10.1.29.141])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5692A3F557;
+ Tue, 11 Jun 2019 03:09:54 -0700 (PDT)
+Subject: Re: binfmt_flat cleanups and RISC-V support
+To: Christoph Hellwig <hch@lst.de>
+References: <20190610212015.9157-1-hch@lst.de>
+ <4f000219-4baf-b03e-9003-26482640d3de@arm.com>
+ <20190611081117.GA22110@lst.de>
+From: Vladimir Murzin <vladimir.murzin@arm.com>
+Message-ID: <d41f1077-936f-ce5b-2121-5a5ade521a98@arm.com>
+Date: Tue, 11 Jun 2019 11:08:10 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1558647944-13816-1-git-send-email-alan.mikhak@sifive.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20190611081117.GA22110@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190611_030748_272461_792A8E54 
-X-CRM114-Status: GOOD (  12.32  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190611_030813_858870_CF452D73 
+X-CRM114-Status: GOOD (  10.99  )
+X-Spam-Score: 2.5 (++)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 2.5 SUSPICIOUS_RECIPS      Similar addresses in recipient list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -60,49 +63,29 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, palmer@sifive.com, linux-kernel@vger.kernel.org,
- kishon@ti.com, paul.walmsley@sifive.com, linux-riscv@lists.infradead.org
+Cc: uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
+ Michal Simek <monstr@monstr.eu>, linux-c6x-dev@linux-c6x.org,
+ linux-sh@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-m68k@lists.linux-m68k.org, linux-riscv@lists.infradead.org,
+ Greg Ungerer <gerg@linux-m68k.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 23, 2019 at 02:45:44PM -0700, Alan Mikhak wrote:
-> Set endpoint controller pointer to null in pci_epc_remove_epf()
-> to avoid -EBUSY on subsequent call to pci_epc_add_epf().
+On 6/11/19 9:11 AM, Christoph Hellwig wrote:
+> On Tue, Jun 11, 2019 at 09:05:45AM +0100, Vladimir Murzin wrote:
+>> I'm wondering if you have a branch with these changes so I can give
+>> it a try on ARM NOMMU platforms?
 > 
-> Requires checking for null endpoint function pointer.
 > 
-> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
-> ---
->  drivers/pci/endpoint/pci-epc-core.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-
-Applied to pci/endpoint for v5.3, thanks.
-
-Lorenzo
-
-> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-> index e4712a0f249c..2091508c1620 100644
-> --- a/drivers/pci/endpoint/pci-epc-core.c
-> +++ b/drivers/pci/endpoint/pci-epc-core.c
-> @@ -519,11 +519,12 @@ void pci_epc_remove_epf(struct pci_epc *epc, struct pci_epf *epf)
->  {
->  	unsigned long flags;
->  
-> -	if (!epc || IS_ERR(epc))
-> +	if (!epc || IS_ERR(epc) || !epf)
->  		return;
->  
->  	spin_lock_irqsave(&epc->lock, flags);
->  	list_del(&epf->list);
-> +	epf->epc = NULL;
->  	spin_unlock_irqrestore(&epc->lock, flags);
->  }
->  EXPORT_SYMBOL_GPL(pci_epc_remove_epf);
-> -- 
-> 2.7.4
+>     git://git.infradead.org/users/hch/riscv.git riscv-flat
 > 
+
+Thanks! I gave it a go and provided my tags for relevant patches.
+
+Cheers
+Vladimir
 
 _______________________________________________
 linux-riscv mailing list
