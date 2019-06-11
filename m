@@ -2,47 +2,47 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A5603C7ED
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 12:00:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 223923C801
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Jun 2019 12:02:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1I5ucdPRQFN/avdzbBtir+1rHYWo8FQwzwXInxXFigg=; b=sE6238Xru9yOUr
-	d830WiZVSHeF2aIgD5178Tr7rCjuYKw0RshF4gifBTX9phXkcP+qNTVZGajVIly9pcLvsCV6kCf/9
-	iPN9F65Lxof578zGoTKadjXdrcj8WvICWCyXakjhNpUnk++Net83xlX7hU7og2NpTaEPt4FpBtthL
-	igEmcHGw2xUPYeyN2p/9pHbyT3dLTKcuZHU9RMFgHtUorvBK1v1vD4Wt1N7Hk5WtOPGpGutVMCpfC
-	pVPb8RjIOpQ7GX27OFB7zqZHHhzbKze45EQyRWFiRfOduwXpdxkcfZE29rkLVBQaBWdnsNDVJ0ggD
-	RDymaBpWSJ+7KZoFJnRw==;
+	List-Owner; bh=kTYV5W7OaGCe9x3YQxfhYW+ZyXLPKdQlY+Kxx2GaQBY=; b=HhtwiQtqDlOKu/
+	vX1f7uZ8BwALdRp7s7tM1A+9Jrcgazez8K2Pv3LVftbh27BqV6yM5VRQWLAoIIuyYLu3DKEjzMmOU
+	7Y7W5dr2K6evTn4axqN0BksV+e6maP54yoILwmRRCU0wHsneauFUeHNUFboJJ6j0Povw3rnJzKsl/
+	YED0vFoRh3w1FmoQ1mgx4fsyqzhc4uWN/++qIUYuis35boNpB4e5t6CX0q9HXzQuPJ/lN+AFCAshv
+	0D36LfHOksRA1VwesBLwe6wgFTqZgQWlQLfOCX4vnVQX8K7tJp3Y1+JTQH4qIeP0I9ksWeoGtFe7A
+	AJ56myauJleNmZv3dy5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hadZf-0007tZ-64; Tue, 11 Jun 2019 10:00:15 +0000
+	id 1hadbR-0000d5-VF; Tue, 11 Jun 2019 10:02:06 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
- id 1hadZH-0006XR-HL; Tue, 11 Jun 2019 09:59:52 +0000
+ id 1hadbD-0000Se-CL; Tue, 11 Jun 2019 10:01:52 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 25EB4337;
- Tue, 11 Jun 2019 02:59:51 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DA8BF337;
+ Tue, 11 Jun 2019 03:01:50 -0700 (PDT)
 Received: from [10.1.29.141] (e121487-lin.cambridge.arm.com [10.1.29.141])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 18C923F73C;
- Tue, 11 Jun 2019 03:01:31 -0700 (PDT)
-Subject: Re: [PATCH 09/15] binfmt_flat: add a ARCH_HAS_BINFMT_FLAT option
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C929B3F73C;
+ Tue, 11 Jun 2019 03:03:31 -0700 (PDT)
+Subject: Re: [PATCH 11/15] binfmt_flat: provide an asm-generic/flat.h
 To: Christoph Hellwig <hch@lst.de>, Greg Ungerer <gerg@linux-m68k.org>
 References: <20190610212015.9157-1-hch@lst.de>
- <20190610212015.9157-10-hch@lst.de>
+ <20190610212015.9157-12-hch@lst.de>
 From: Vladimir Murzin <vladimir.murzin@arm.com>
-Message-ID: <416fd8cc-6721-ff40-d90e-6755e490fd61@arm.com>
-Date: Tue, 11 Jun 2019 10:59:48 +0100
+Message-ID: <e6a00ae6-3359-0f20-138c-4469df598c3e@arm.com>
+Date: Tue, 11 Jun 2019 11:01:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190610212015.9157-10-hch@lst.de>
+In-Reply-To: <20190610212015.9157-12-hch@lst.de>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190611_025951_664897_8B612DD4 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20190611_030151_515953_90055779 
+X-CRM114-Status: GOOD (  17.07  )
 X-Spam-Score: 2.5 (++)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (2.5 points)
@@ -73,130 +73,102 @@ Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On 6/10/19 10:20 PM, Christoph Hellwig wrote:
-> Allow architectures to opt into ARCH_HAS_BINFMT_FLAT support instead of
-> assuming that all nommu ports support the format.
+> This file implements the flat get/put reloc helpers for architectures
+> that do not need to overload the relocs by simply using get_user/put_user.
+> 
+> Note that many nommu architectures currently use {get,put}_unaligned, which
+> looks a little bogus and should probably later be switched over to this
+> version as well.
 > 
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > ---
->  arch/arm/Kconfig        | 1 +
->  arch/c6x/Kconfig        | 1 +
->  arch/h8300/Kconfig      | 1 +
->  arch/m68k/Kconfig       | 1 +
->  arch/microblaze/Kconfig | 1 +
->  arch/sh/Kconfig         | 1 +
->  arch/xtensa/Kconfig     | 1 +
->  fs/Kconfig.binfmt       | 5 ++++-
->  8 files changed, 11 insertions(+), 1 deletion(-)
+>  arch/arm/include/asm/Kbuild                   |  1 +
+>  arch/m68k/include/asm/flat.h                  | 21 +------------------
+>  .../asm => include/asm-generic}/flat.h        | 12 ++++-------
+>  3 files changed, 6 insertions(+), 28 deletions(-)
+>  rename {arch/arm/include/asm => include/asm-generic}/flat.h (73%)
 
-
-For ARM bits:
+FWIW:
 
 Reviewed-by: Vladimir Murzin <vladimir.murzin@arm.com>
 
-
 > 
-> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-> index b1b48c0bde76..695a26c68064 100644
-> --- a/arch/arm/Kconfig
-> +++ b/arch/arm/Kconfig
-> @@ -4,6 +4,7 @@ config ARM
->  	default y
->  	select ARCH_32BIT_OFF_T
->  	select ARCH_CLOCKSOURCE_DATA
-> +	select ARCH_HAS_BINFMT_FLAT
->  	select ARCH_HAS_DEBUG_VIRTUAL if MMU
->  	select ARCH_HAS_DEVMEM_IS_ALLOWED
->  	select ARCH_HAS_ELF_RANDOMIZE
-> diff --git a/arch/c6x/Kconfig b/arch/c6x/Kconfig
-> index eeb0471268a0..78dfe186d708 100644
-> --- a/arch/c6x/Kconfig
-> +++ b/arch/c6x/Kconfig
-> @@ -7,6 +7,7 @@
->  config C6X
->  	def_bool y
->  	select ARCH_32BIT_OFF_T
-> +	select ARCH_HAS_BINFMT_FLAT
->  	select ARCH_HAS_SYNC_DMA_FOR_CPU
->  	select ARCH_HAS_SYNC_DMA_FOR_DEVICE
->  	select CLKDEV_LOOKUP
-> diff --git a/arch/h8300/Kconfig b/arch/h8300/Kconfig
-> index 7457f190caaa..ec800e9d5aad 100644
-> --- a/arch/h8300/Kconfig
-> +++ b/arch/h8300/Kconfig
-> @@ -2,6 +2,7 @@
->  config H8300
->          def_bool y
->  	select ARCH_32BIT_OFF_T
-> +	select ARCH_HAS_BINFMT_FLAT
->  	select BINFMT_FLAT_ARGVP_ENVP_ON_STACK
->  	select BINFMT_FLAT_OLD_ALWAYS_RAM
->  	select GENERIC_ATOMIC64
-> diff --git a/arch/m68k/Kconfig b/arch/m68k/Kconfig
-> index fd69ee5ad6ab..c0c43c624afa 100644
-> --- a/arch/m68k/Kconfig
-> +++ b/arch/m68k/Kconfig
-> @@ -3,6 +3,7 @@ config M68K
->  	bool
->  	default y
->  	select ARCH_32BIT_OFF_T
-> +	select ARCH_HAS_BINFMT_FLAT
->  	select ARCH_HAS_SYNC_DMA_FOR_DEVICE if HAS_DMA
->  	select ARCH_MIGHT_HAVE_PC_PARPORT if ISA
->  	select ARCH_NO_COHERENT_DMA_MMAP if !MMU
-> diff --git a/arch/microblaze/Kconfig b/arch/microblaze/Kconfig
-> index f11433daab4a..d411de05b628 100644
-> --- a/arch/microblaze/Kconfig
-> +++ b/arch/microblaze/Kconfig
-> @@ -3,6 +3,7 @@ config MICROBLAZE
->  	def_bool y
->  	select ARCH_32BIT_OFF_T
->  	select ARCH_NO_SWAP
-> +	select ARCH_HAS_BINFMT_FLAT if !MMU
->  	select ARCH_HAS_DMA_COHERENT_TO_PFN if MMU
->  	select ARCH_HAS_GCOV_PROFILE_ALL
->  	select ARCH_HAS_SYNC_DMA_FOR_CPU
-> diff --git a/arch/sh/Kconfig b/arch/sh/Kconfig
-> index b77f512bb176..df3e6215b78c 100644
-> --- a/arch/sh/Kconfig
-> +++ b/arch/sh/Kconfig
-> @@ -1,6 +1,7 @@
->  # SPDX-License-Identifier: GPL-2.0
->  config SUPERH
->  	def_bool y
-> +	select ARCH_HAS_BINFMT_FLAT if !MMU
->  	select ARCH_HAS_PTE_SPECIAL
->  	select ARCH_HAS_TICK_BROADCAST if GENERIC_CLOCKEVENTS_BROADCAST
->  	select ARCH_MIGHT_HAVE_PC_PARPORT
-> diff --git a/arch/xtensa/Kconfig b/arch/xtensa/Kconfig
-> index 6ec1b75eabc5..ebc135bda921 100644
-> --- a/arch/xtensa/Kconfig
-> +++ b/arch/xtensa/Kconfig
-> @@ -2,6 +2,7 @@
->  config XTENSA
->  	def_bool y
->  	select ARCH_32BIT_OFF_T
-> +	select ARCH_HAS_BINFMT_FLAT if !MMU
->  	select ARCH_HAS_SYNC_DMA_FOR_CPU
->  	select ARCH_HAS_SYNC_DMA_FOR_DEVICE
->  	select ARCH_NO_COHERENT_DMA_MMAP if !MMU
-> diff --git a/fs/Kconfig.binfmt b/fs/Kconfig.binfmt
-> index 82f7d7f234f3..286b425b30b9 100644
-> --- a/fs/Kconfig.binfmt
-> +++ b/fs/Kconfig.binfmt
-> @@ -91,9 +91,12 @@ config BINFMT_SCRIPT
+> diff --git a/arch/arm/include/asm/Kbuild b/arch/arm/include/asm/Kbuild
+> index a8f149ab45b8..6b2dc15b6dff 100644
+> --- a/arch/arm/include/asm/Kbuild
+> +++ b/arch/arm/include/asm/Kbuild
+> @@ -5,6 +5,7 @@ generic-y += early_ioremap.h
+>  generic-y += emergency-restart.h
+>  generic-y += exec.h
+>  generic-y += extable.h
+> +generic-y += flat.h
+>  generic-y += irq_regs.h
+>  generic-y += kdebug.h
+>  generic-y += local.h
+> diff --git a/arch/m68k/include/asm/flat.h b/arch/m68k/include/asm/flat.h
+> index d7102fcd43eb..46379e08cdd6 100644
+> --- a/arch/m68k/include/asm/flat.h
+> +++ b/arch/m68k/include/asm/flat.h
+> @@ -6,26 +6,7 @@
+>  #ifndef __M68KNOMMU_FLAT_H__
+>  #define __M68KNOMMU_FLAT_H__
 >  
->  	  Most systems will not boot if you say M or N here.  If unsure, say Y.
+> -#include <linux/uaccess.h>
+> -
+> -static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
+> -					u32 *addr, u32 *persistent)
+> -{
+> -#ifdef CONFIG_CPU_HAS_NO_UNALIGNED
+> -	return copy_from_user(addr, rp, 4) ? -EFAULT : 0;
+> -#else
+> -	return get_user(*addr, rp);
+> -#endif
+> -}
+> -
+> -static inline int flat_put_addr_at_rp(u32 __user *rp, u32 addr, u32 rel)
+> -{
+> -#ifdef CONFIG_CPU_HAS_NO_UNALIGNED
+> -	return copy_to_user(rp, &addr, 4) ? -EFAULT : 0;
+> -#else
+> -	return put_user(addr, rp);
+> -#endif
+> -}
+> +#include <asm-generic/flat.h>
 >  
-> +config ARCH_HAS_BINFMT_FLAT
-> +	bool
-> +
->  config BINFMT_FLAT
->  	bool "Kernel support for flat binaries"
-> -	depends on !MMU || ARM || M68K
-> +	depends on ARCH_HAS_BINFMT_FLAT
->  	help
->  	  Support uClinux FLAT format binaries.
+>  #define FLAT_PLAT_INIT(regs) \
+>  	do { \
+> diff --git a/arch/arm/include/asm/flat.h b/include/asm-generic/flat.h
+> similarity index 73%
+> rename from arch/arm/include/asm/flat.h
+> rename to include/asm-generic/flat.h
+> index bbc27901446f..fcd2b45c0735 100644
+> --- a/arch/arm/include/asm/flat.h
+> +++ b/include/asm-generic/flat.h
+> @@ -1,15 +1,11 @@
+>  /* SPDX-License-Identifier: GPL-2.0 */
+> -/*
+> - * arch/arm/include/asm/flat.h -- uClinux flat-format executables
+> - */
+> -
+> -#ifndef __ARM_FLAT_H__
+> -#define __ARM_FLAT_H__
+> +#ifndef _ASM_GENERIC_FLAT_H
+> +#define _ASM_GENERIC_FLAT_H
 >  
+>  #include <linux/uaccess.h>
+>  
+>  static inline int flat_get_addr_from_rp(u32 __user *rp, u32 relval, u32 flags,
+> -					u32 *addr, u32 *persistent)
+> +		u32 *addr, u32 *persistent)
+>  {
+>  #ifndef CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS
+>  	return copy_from_user(addr, rp, 4) ? -EFAULT : 0;
+> @@ -27,4 +23,4 @@ static inline int flat_put_addr_at_rp(u32 __user *rp, u32 addr, u32 rel)
+>  #endif
+>  }
+>  
+> -#endif /* __ARM_FLAT_H__ */
+> +#endif /* _ASM_GENERIC_FLAT_H */
 > 
 
 
