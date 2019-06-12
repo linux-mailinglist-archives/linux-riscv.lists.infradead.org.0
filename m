@@ -2,85 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD3D841864
-	for <lists+linux-riscv@lfdr.de>; Wed, 12 Jun 2019 00:50:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1870D422EE
+	for <lists+linux-riscv@lfdr.de>; Wed, 12 Jun 2019 12:49:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v8+YhQfpdFrukjjK2Xhlc6jyXESAT1j0TeNHcwqRlqA=; b=Ht+2hLxyPCTIPQ
-	NiD7sxwLJc5WmoO5V/d9ON75167OFZCXcNFDTSudVU+QLivW19vha5rlL6GrqFUqzSqxNgf98GI/3
-	vvdrBbcfR8wH3uT/Luwgye1bD/liRypDwaYx1vOuoPFf02nh0pMl0MNKBA2n/1MWcTmuUFYRtCHWZ
-	VxlRkje/+USgGldOfgdMgOxUl/hAKk/SdiKvYgvFMlhqwjWK+wIvfalcu7zzwewhG7FPvLVMYWuiU
-	+tSGaVXCXLzjGrbBp9SGDs0iv8FB0BfYJSRuB1WaPLl9hCRD+RS9eHOJSish3/9y0eekaRP1f3XKM
-	f/z2AqzOalLXl4TlMJ7A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=2IE7cLxBwQ87pCYVIpeMTQonrWiw6IUHA+tR+13RQEM=; b=gxX
+	op6TeupcZpXO6Emgc4P0BEzmvW+xps5VWpJ4fUIBXbW27fnMi2V5FHE+7v5MBXqxu6TMULwsRsil8
+	ypK3ayyfydWv0Ch8bgCWcIzM3UGmhcxeQMV41fVlypQWuJVkhOzds4XfXe5GSlGpJZLmVDuS2lq8N
+	/t595kmgJ0oEDnk7HmTUPlRWYz51/IiSC1H36FANZ7YNVjUBq/K7PckjHHd5dxEfoQroV1JHcX9pS
+	ghJQhoviDrKfDTVnl4QK7sa2mM13/aHGTq7Q15OPod2TXj/d9MUYOXWkftdfzy2NMKsm/bDumOFeI
+	Yhl9gBs0OfuQ9mM0I+u9TxXTjLBM7pQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hapae-0000Fl-LG; Tue, 11 Jun 2019 22:50:04 +0000
-Received: from mail-it1-f195.google.com ([209.85.166.195])
+	id 1hb0oO-0000ZQ-Kx; Wed, 12 Jun 2019 10:49:00 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hapaX-0000AM-Aa
- for linux-riscv@lists.infradead.org; Tue, 11 Jun 2019 22:50:00 +0000
-Received: by mail-it1-f195.google.com with SMTP id i21so7721460ita.5
- for <linux-riscv@lists.infradead.org>; Tue, 11 Jun 2019 15:49:57 -0700 (PDT)
+ id 1hb0oK-0000YA-B8
+ for linux-riscv@lists.infradead.org; Wed, 12 Jun 2019 10:48:57 +0000
+Received: by mail-pl1-x641.google.com with SMTP id bh12so6485381plb.4
+ for <linux-riscv@lists.infradead.org>; Wed, 12 Jun 2019 03:48:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=6OgmzXKxvgHJ1sM8mE9nEpUkTFx5pfDiK3sCa407yTI=;
+ b=jlVfevWxi9+GHeQZP8m+0MbI5NR4vR+IREfTBAOj2OboeNZDVA4nxenqfLYyOKDq5F
+ JeoDtJu+hrSbOEFMQjWeesrzt5vBQ2csZv990giHqN3wpTPlHjduFKCLaGqEo8UCvTq8
+ QQ7BxZbf+VXSquO1Xf9dh7nIJOAfiqSIi9DLfs9NGZ9D4/hJqRJxu8m6c/wLj/vF9XKD
+ 5VUC8mr+iHQw6992UHBtbED8NAPFiGe1jSC42MO1sNDuIvzZXfvXGpCxvWzUQCditt4i
+ iHCfvWNV63siJnF4yzudfhPzyY2Uzssec2ZOvS8HmBmgQLTZN1VVUPsYlZv9FnG1IhnS
+ EImw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=/NnSGwbKcnY/7Q2s2Gevcsyo7XJDO9FOrJ4WUpJ1HFQ=;
- b=OeBOmNLRe1U+kqUP9BmyoXMQAJKNGhwVn9QbYqmXNZ+0LkivvUXkTcis/yrRormp0n
- YvI5NoxupdVX6WHPgGxDl8oJ8To1fBnwMJWN/pcrZU7ixqZ2swjNDsCK87z9DUTMnbKi
- m70RBGJM41SPlDDfBAOVKe69j5LXndLA3hgVy0oVz4tHEWLSNMTamqZL8V+rx9hjTVIv
- rUOFIdEdr9LIi7wTPNtxzztp6Q6LONvhqxkLwWwcQpFugKBqOm4LpwknUi4wobRXRPpR
- f7d4GzgfGmKLcUgRgd+ZBQw2K7aPfmfrdnaq1oj8K/uKcze8mLMhh3ZD2l+aU64KWt8t
- BZzQ==
-X-Gm-Message-State: APjAAAWj/B0kFSEJFK7fIwIc9o0a0S+J1dh7qC9AF1PR97bJTZ08iQFY
- iBF4nzgTxHFGeJTIHukSkA==
-X-Google-Smtp-Source: APXvYqwdY0VqgKIy7eeWPn3ZJv3AdjkyxMqbBpgjo8QSwtv2zrOmnzCLT/FHfPAZdx/fsmc5KbbIEQ==
-X-Received: by 2002:a02:c6a9:: with SMTP id o9mr17897923jan.90.1560293396229; 
- Tue, 11 Jun 2019 15:49:56 -0700 (PDT)
-Received: from localhost (ip-174-149-252-64.englco.spcsdns.net.
- [174.149.252.64])
- by smtp.gmail.com with ESMTPSA id o145sm572109itc.24.2019.06.11.15.49.54
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 11 Jun 2019 15:49:55 -0700 (PDT)
-Date: Tue, 11 Jun 2019 16:49:52 -0600
-From: Rob Herring <robh@kernel.org>
-To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-Subject: Re: [PATCH REPOST v8 1/3] dt-bindings: i2c: extend existing opencore
- bindings.
-Message-ID: <20190611224952.GA17031@bogus>
-References: <1559369475-15374-1-git-send-email-sagar.kadam@sifive.com>
- <1559369475-15374-2-git-send-email-sagar.kadam@sifive.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1559369475-15374-2-git-send-email-sagar.kadam@sifive.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=6OgmzXKxvgHJ1sM8mE9nEpUkTFx5pfDiK3sCa407yTI=;
+ b=Q/lYxsk7Jhf2CS98s/O8Kayk1D2bYuMRYt2y0tKgft+rbfJ325sT8+Ei7US03tBWe9
+ N8/fqfk4u+2mCkyNNegEoSJkwimtA3T/bGaFe6F2vSiQvNPCW/5j6tPHFsgKsmsnlEt8
+ DGdemmxafngNC3BpJ+LAWYpHYLAa4Yvx+MgTVcpELjClQtICiYgyOB4tVC2vlbkzDgLD
+ hRFoAmVBDP9YzKjCdLqPM9ji2U8gRfhYAov0DuWy7+1VgeG+YUssVUNpsrdF3YnszO8c
+ o7gLk9S/TGExq0UpV8Z+SLw5m9GyglJyxYO/gwX0/E/c9renOqV8CirXoHfWGq5hoFk3
+ 1Y+A==
+X-Gm-Message-State: APjAAAW2YIi5g1XYUaqEJ5g3ok7+NCYYQGq4MwRUGijSQ26Qx8yZ1yDY
+ WBAhF3hvXga95UVmlk4+Nl3QHQ==
+X-Google-Smtp-Source: APXvYqyRNQn4HyUUaAoD5W3dTl5pCJH+6plRQxAR5F5uu/22Q/Cjtya5G0BA+cILNrTl2XlFiIPJDw==
+X-Received: by 2002:a17:902:a513:: with SMTP id
+ s19mr27330778plq.25.1560336535093; 
+ Wed, 12 Jun 2019 03:48:55 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id y22sm12241561pfm.70.2019.06.12.03.48.50
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Wed, 12 Jun 2019 03:48:54 -0700 (PDT)
+From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+To: marek.vasut@gmail.com, tudor.ambarus@microchip.com, dwmw2@infradead.org,
+ computersforpeace@gmail.com, miquel.raynal@bootlin.com, richard@nod.at,
+ vigneshr@ti.com, linux-mtd@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org
+Subject: [PATCH v5 0/3] mtd: spi-nor: add support for is25wp256 spi-nor flash
+Date: Wed, 12 Jun 2019 16:17:53 +0530
+Message-Id: <1560336476-31763-1-git-send-email-sagar.kadam@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190611_154957_379530_010285DA 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.8 (/)
+X-CRM114-CacheID: sfid-20190612_034856_394282_15F4033C 
+X-CRM114-Status: GOOD (  11.11  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.8 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.166.195 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (robherring2[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (robherring2[at]gmail.com)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.166.195 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,36 +94,78 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, andrew@lunn.ch, peter@korsgaard.com,
- devicetree@vger.kernel.org, palmer@sifive.com, linux-kernel@vger.kernel.org,
- robh+dt@kernel.org, sagar.kadam@sifive.com, paul.walmsley@sifive.com,
- linux-riscv@lists.infradead.org, linux-i2c@vger.kernel.org
+Cc: wesley@sifive.com, palmer@sifive.com,
+ Sagar Shrikant Kadam <sagar.kadam@sifive.com>, aou@eecs.berkeley.edu,
+ paul.walmsley@sifive.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat,  1 Jun 2019 11:41:13 +0530, Sagar Shrikant Kadam wrote:
-> Reformatted compatibility strings to one valid combination on
-> each line.
-> Add FU540-C000 specific device tree bindings to already available
-> i2-ocores file. This device is available on
-> HiFive Unleashed Rev A00 board. Move interrupt under optional
-> property list as this can be optional.
-> 
-> The FU540-C000 SoC from sifive, has an Opencore's I2C block
-> reimplementation.
-> 
-> The DT compatibility string for this IP is present in HDL and available at.
-> https://github.com/sifive/sifive-blocks/blob/master/src/main/scala/devices/i2c/I2C.scala#L73
-> 
-> Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-> ---
->  Documentation/devicetree/bindings/i2c/i2c-ocores.txt | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
-> 
+The patch set is tested on HiFive Unleashed A00 board and is based on mainline
+kernel v5.2-rc1. Its intended to add support for 32 MB spi-nor flash
+mounted on the board. Memory Device supports 4/32/ and 64 KB sectors size.
+The device id table is updated accordingly.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Flash parameter table for ISSI device is set to use macronix_quad_enable
+procedure to set the QE (quad-enable) bit of Status register.
+
+A unilaterlay block unlocking scheme is added in patch 2.
+
+These patches are based on original work done by Wesley Terpstra and/or Palmer Dabbelt:
+https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
+
+Erase/Read/Write operations are verified on HiFive Unleashed board using  mtd and flash utils (v1.5.2):
+1. mtd_debug  	:Options available are : erase/read/write.
+2. flashcp	:Single utility that erases flash, writes a file to flash and verifies the data back.
+3. flash_unlock: Unlock flash memory blocks.Arguments: are offset and number of blocks.
+3. flash_lock: 	 Lock flash memory blocks. Arguments: are offset and number of blocks. 
+
+Unlock scheme clears the protection bits of all blocks in the Status register.
+
+Lock scheme:
+A basic implementation based on stm_lock scheme and is validated for different number of blocks passed
+to flash_lock. ISSI devices have Top/Bottom area selection in "function register" which is OTP memory.
+ 
+
+Revision history:
+
+V4<->V5:
+-Rebased to linux version v5.2-rc1.
+-Updated heading of this cover letter with sub-system, instead of just plain "add support for is25wp256..."
+
+V3<->V4:
+-Extracted comman code and renamed few stm functions so that it can be reused for issi lock implementation.
+-Added function's to read and write FR register, for selecting Top/Bottom area.
+
+V2<->V3:
+-Rebased patch to mainline v5.1 from earlier v5.1-rc5.
+-Updated commit messages, and cover letter with reference to git URL and author information.
+-Deferred flash_lock mechanism and can go as separate patch. 
+
+V1<-> V2:
+-Incorporated changes suggested by reviewers regarding patch/cover letter versioning, references of patch.
+-Updated cover letter with description for flash operations verified with these changes.
+-Add support for unlocking is25xxxxxx device.
+-Add support for locking is25xxxxxx device.
+
+v1:
+-Add support for is25wp256 device.
+
+
+Sagar Shrikant Kadam (3):
+  mtd: spi-nor: add support for is25wp256
+  mtd: spi-nor: add support to unlock flash device
+  mtd: spi-nor: add locking support for is25xxxxx device
+
+ drivers/mtd/spi-nor/spi-nor.c | 348 +++++++++++++++++++++++++++++++++++-------
+ include/linux/mtd/spi-nor.h   |   7 +
+ 2 files changed, 304 insertions(+), 51 deletions(-)
+
+-- 
+1.9.1
+
 
 _______________________________________________
 linux-riscv mailing list
