@@ -2,35 +2,36 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDF7943339
-	for <lists+linux-riscv@lfdr.de>; Thu, 13 Jun 2019 09:17:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25F324334B
+	for <lists+linux-riscv@lfdr.de>; Thu, 13 Jun 2019 09:25:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DoqrtfgxxoaFftBu9agZ9qyTjo/Py0LCvBn2wnE7ri8=; b=Z+dvzhxex6uiAt
-	6ryyFiOQBZZsYnh5i+osQ7UaUVOxP0sleuM5dfSmgiT0sfGjeCuke5leseb7UQBjC2s5DqjmQICeP
-	Z2yowxAEEo1ef2kttnZR6CC/0A8F4jK/X25ME4O2JIVz26TiE5E3uoZTzbUPBK1kqLDP8znFvlQQj
-	WEENSWEI9H4fsIY5TDBYiBt4UlowVKOYYbe54s1m3xEnTk8DEzr7L2D1LJkKsU0dtm1Mf6wl4ffXe
-	fvyBixzFTV5pNTSYe2K8Kfha1NWvB14kWjZx1SrZHQw5KbW0XqsfucwlRkkJQeN8Gx2//5BTq5/nI
-	qYbMimS6faQkiHsnerWg==;
+	List-Owner; bh=rnbwqFkGB9twEnDkxWttbMxPEDxvj4SS/bd9kuzkGtU=; b=B91B/sv8rEuuJB
+	VFZfIoqiD35Wf9pxA73esC1igV8sT7tMmkCwTaD1qHVLFWrR5Q24m6IoS9rJzXhDNj2T1gQXAO+BI
+	R8TA4tH+0tWhJdSnjTu20y9eTYNU3bHSLKF6+O6Nl3XJRoQhgM6cz8E4MGIbhtR9Qh/JS+qk9wVqM
+	N5KvhkSGPGqLgJzBOSrfvHIr21QMrNgDKaP3zVGxTAeaGC9e4jcfk4TGJrYca4H/Wggsm2cwrQRwB
+	02z05s/VtwxQ05xEC2U9iIwT/TD+51KzBaQ9DbMBKpYeiFh+x0tbwFYdT2Q3WAufmYpc5Fgi5K9jy
+	4J2oLQtIQKMV19UPw68A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hbJys-0004IN-IJ; Thu, 13 Jun 2019 07:17:06 +0000
-Received: from mpp-cp1-natpool-1-013.ethz.ch ([82.130.71.13] helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hbJs1-0004Zl-6O; Thu, 13 Jun 2019 07:10:02 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: Greg Ungerer <gerg@linux-m68k.org>
-Subject: [PATCH 17/17] riscv: add binfmt_flat support
-Date: Thu, 13 Jun 2019 09:09:03 +0200
-Message-Id: <20190613070903.17214-18-hch@lst.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190613070903.17214-1-hch@lst.de>
-References: <20190613070903.17214-1-hch@lst.de>
+	id 1hbK6r-0001uZ-N3; Thu, 13 Jun 2019 07:25:21 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
+ Linux)) id 1hbK6o-0001uE-Re; Thu, 13 Jun 2019 07:25:18 +0000
+Date: Thu, 13 Jun 2019 00:25:18 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH] MAINTAINERS: change the arch/riscv git tree to the new
+ shared tree
+Message-ID: <20190613072518.GA1327@infradead.org>
+References: <20190613070721.8341-1-paul.walmsley@sifive.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190613070721.8341-1-paul.walmsley@sifive.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,51 +43,23 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
- Michal Simek <monstr@monstr.eu>, linux-c6x-dev@linux-c6x.org,
- linux-sh@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-m68k@lists.linux-m68k.org, linux-riscv@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, palmer@sifive.com,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Just use the generic definitions.
+On Thu, Jun 13, 2019 at 12:07:21AM -0700, Paul Walmsley wrote:
+> Palmer, with Konstantin's gracious help, set up a shared kernel.org
+> git tree for arch/riscv patches going forward.  Change the MAINTAINERS
+> file accordingly.
+> 
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: Palmer Dabbelt <palmer@sifive.com>
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- arch/riscv/Kconfig            | 1 +
- arch/riscv/include/asm/Kbuild | 1 +
- 2 files changed, 2 insertions(+)
-
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 0c4b12205632..2c19baa8d6c3 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -17,6 +17,7 @@ config RISCV
- 	select OF
- 	select OF_EARLY_FLATTREE
- 	select OF_IRQ
-+	select ARCH_HAS_BINFMT_FLAT
- 	select ARCH_WANT_FRAME_POINTERS
- 	select CLONE_BACKWARDS
- 	select COMMON_CLK
-diff --git a/arch/riscv/include/asm/Kbuild b/arch/riscv/include/asm/Kbuild
-index 5ee646619cc3..1efaeddf1e4b 100644
---- a/arch/riscv/include/asm/Kbuild
-+++ b/arch/riscv/include/asm/Kbuild
-@@ -5,6 +5,7 @@ generic-y += compat.h
- generic-y += device.h
- generic-y += div64.h
- generic-y += extable.h
-+generic-y += flat.h
- generic-y += dma.h
- generic-y += dma-contiguous.h
- generic-y += dma-mapping.h
--- 
-2.20.1
-
+Should you be added to the maintainers?  Is Albert still around, as
+I see a lot of people Ccing him, but never getting an answer?
 
 _______________________________________________
 linux-riscv mailing list
