@@ -2,32 +2,31 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48ABF43322
-	for <lists+linux-riscv@lfdr.de>; Thu, 13 Jun 2019 09:13:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09BA743324
+	for <lists+linux-riscv@lfdr.de>; Thu, 13 Jun 2019 09:13:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KM0kky1VELRzyiZNG7Lkhe2Yx1+VpGHkHwz6C63bSPQ=; b=XzO+v/LqUNDJjt
-	Hv8wj9dsIDf6g2gQW/fATlOoMRQVrGBcj6beHFcx9TdMU01gqD2loPSGp3QQUZOe+eBkwmJj2p6LY
-	x6nCex4TUt1e+u5HpLBpKcfia6O8NqLIA5nBJbbJqk8ciywcEr3thsfPsxGcln0WSsLkmPCwze0Vq
-	wsP5JBeE9NwBGOHBuEsUuN4oKzJWcZHe9FBrMwfMJ0oZFDfgleU+Zc5stlruZmJIQMzGnaJr3DHvj
-	2S1jMehR0xGoogOR/u10Vm51fEIF6Af/Zwde3dYMhw48Y5+cGXxnbq193HY1lwMlT0n5p3pt3di0/
-	WqoW7g3R0LFDn2O487EA==;
+	List-Owner; bh=bvCAJ3v2t+1+L+fNub2leLbpj7pUO/h3qEvOwZjPsPU=; b=E2OQk/iGSe1+XJ
+	xhiR1E7aO87+NX4Vc5HjMzX3okkD9dnDqKzKKlNU37K6bQUuEOfsD8QIw6i9mRpYk591hV+grarrC
+	us/h3954oC7QEBNG9yR1Nbrh4pB3m/ARdmkfb17dFqOtrq02JRYSCnbHEOOYfv+wvHPcUptPm3LXb
+	cdugiSEQL53rPdMxSJ7JXpFFFKdew/c3QUuaECb8Y9V0XEQRSHYkNmBMxPcMi1U2Jp3rNIBPatEyA
+	KHW4lU7F6w7jIxjbK8KSJUwSY3jct23qBSMf5dANM8OkJVDQxGXFy5QrgZdyBz2gZUf/R+QZ3LEaV
+	hJfwZEcy66yJic7ql1fQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hbJuv-00084j-1W; Thu, 13 Jun 2019 07:13:01 +0000
+	id 1hbJvF-0008NS-RF; Thu, 13 Jun 2019 07:13:21 +0000
 Received: from mpp-cp1-natpool-1-013.ethz.ch ([82.130.71.13] helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hbJrV-0004H5-1L; Thu, 13 Jun 2019 07:09:29 +0000
+ id 1hbJrY-0004IX-0J; Thu, 13 Jun 2019 07:09:34 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Greg Ungerer <gerg@linux-m68k.org>
-Subject: [PATCH 07/17] binfmt_flat: remove the unused OLD_FLAT_FLAG_RAM
- definition
-Date: Thu, 13 Jun 2019 09:08:53 +0200
-Message-Id: <20190613070903.17214-8-hch@lst.de>
+Subject: [PATCH 08/17] binfmt_flat: consolidate two version of flat_v2_reloc_t
+Date: Thu, 13 Jun 2019 09:08:54 +0200
+Message-Id: <20190613070903.17214-9-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190613070903.17214-1-hch@lst.de>
 References: <20190613070903.17214-1-hch@lst.de>
@@ -53,28 +52,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Two branches of the ifdef maze actually have the same content, so merge
+them.
+
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- include/linux/flat.h | 3 ---
- 1 file changed, 3 deletions(-)
+ include/linux/flat.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/include/linux/flat.h b/include/linux/flat.h
-index 21d901ba191b..2b7cda6e9c1b 100644
+index 2b7cda6e9c1b..19c586b74b99 100644
 --- a/include/linux/flat.h
 +++ b/include/linux/flat.h
-@@ -72,15 +72,12 @@ typedef union {
- # if defined(mc68000) && !defined(CONFIG_COLDFIRE)
+@@ -69,15 +69,13 @@ struct flat_hdr {
+ typedef union {
+ 	unsigned long	value;
+ 	struct {
+-# if defined(mc68000) && !defined(CONFIG_COLDFIRE)
++#if defined(__LITTLE_ENDIAN_BITFIELD) || \
++    (defined(mc68000) && !defined(CONFIG_COLDFIRE))
  		signed long offset : 30;
  		unsigned long type : 2;
--#   	define OLD_FLAT_FLAG_RAM    0x1 /* load program entirely into RAM */
  # elif defined(__BIG_ENDIAN_BITFIELD)
  		unsigned long type : 2;
  		signed long offset : 30;
--#   	define OLD_FLAT_FLAG_RAM    0x1 /* load program entirely into RAM */
- # elif defined(__LITTLE_ENDIAN_BITFIELD)
- 		signed long offset : 30;
- 		unsigned long type : 2;
--#   	define OLD_FLAT_FLAG_RAM    0x1 /* load program entirely into RAM */
+-# elif defined(__LITTLE_ENDIAN_BITFIELD)
+-		signed long offset : 30;
+-		unsigned long type : 2;
  # else
  #   	error "Unknown bitfield order for flat files."
  # endif
