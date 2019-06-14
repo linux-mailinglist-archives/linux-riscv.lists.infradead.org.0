@@ -2,54 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B099946ABB
-	for <lists+linux-riscv@lfdr.de>; Fri, 14 Jun 2019 22:39:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 227ED46B67
+	for <lists+linux-riscv@lfdr.de>; Fri, 14 Jun 2019 22:58:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pbe++pGCKO/r6jk9zpxujzKIN7hR0GPPlqDRo8xKgv8=; b=TCUHbeMog7KBnw
-	mBeFIHtJ0VJss6d3I72z2isdY/9gKixtTUdY2Xt0fRr/nHb4bQIpBg3gxK5rExLqeAEvG+MZMpzCi
-	6LGBG9ltiXjMwKLW9U3yua1TTacLvEWeOz0au2h4wzz4NVpx6iZL/N2vffyEDArqrdxdJhYR5gU3u
-	U+ev1UkISCVP1Rq2x64Di2X+El4ioycTW6crncb3+KFDCz/GaFmwbin/BXyZSB2QNUyEy56M5+kYQ
-	VjcaV3hY7bgH1yAFO7DJtEGGH6bNxzAbgc4fXMFMuxPZ4D03zSwz0SoeAxvoxkisix0kwcxu8hWiG
-	y14O6qFx2Rj/+SvjXvKA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4mZALxQm83OKJ0Ol/eJcb0sDyyOeSuUfa8/15JSAwI8=; b=KluDnnhhNZ4kme3oqv1iz40Q0
+	wzoXR/NzVaSIn3o8gmvAzgK1r3jGwONU1TzVoT2P1NgAQd0E4d7FfZ6CycK4RTIzemp3NHupR0/D2
+	OxMPFq8TS2kaSipTFtDzWdVpINBGoAd38Rsp7fmXZ5F72eq4z3pab5rNXvioOEMlFYdE+SOC5rz8X
+	qc1XLLjoDJmodwckzU5rjGftmlNezhMeSzUHvJXkirrvtSgEr33EcFeOEyhtfcM/QuDrnlcYPCoCL
+	mguN0KiQ6BRtJkBnP0tAgmJd5OtW7piix19pW9fVJERkc/Gi0AV6CRfmmXJ2TwigiStIv/CaqZOJh
+	x9n1yutpA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hbsyF-0005PN-Mw; Fri, 14 Jun 2019 20:38:47 +0000
-Received: from ms.lwn.net ([45.79.88.28])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hbswE-0003p2-QD
- for linux-riscv@lists.infradead.org; Fri, 14 Jun 2019 20:36:44 +0000
-Received: from lwn.net (localhost [127.0.0.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ms.lwn.net (Postfix) with ESMTPSA id 0E0D8128A;
- Fri, 14 Jun 2019 20:36:42 +0000 (UTC)
-Date: Fri, 14 Jun 2019 14:36:40 -0600
-From: Jonathan Corbet <corbet@lwn.net>
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Re: [PATCH v4 00/28] Convert files to ReST - part 1
-Message-ID: <20190614143640.40ee353a@lwn.net>
-In-Reply-To: <cover.1560361364.git.mchehab+samsung@kernel.org>
-References: <cover.1560361364.git.mchehab+samsung@kernel.org>
-Organization: LWN.net
+	id 1hbtHa-0001NO-9a; Fri, 14 Jun 2019 20:58:46 +0000
+Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1hbtHW-0001N4-Pv
+ for linux-riscv@lists.infradead.org; Fri, 14 Jun 2019 20:58:44 +0000
+Received: from localhost (p5486CF81.dip0.t-ipconnect.de [84.134.207.129])
+ by pokefinder.org (Postfix) with ESMTPSA id 0F1022CF690;
+ Fri, 14 Jun 2019 22:58:42 +0200 (CEST)
+Date: Fri, 14 Jun 2019 22:58:41 +0200
+From: Wolfram Sang <wsa@the-dreams.de>
+To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+Subject: Re: [PATCH REPOST v8 1/3] dt-bindings: i2c: extend existing opencore
+ bindings.
+Message-ID: <20190614205841.GC17899@ninjato>
+References: <1559369475-15374-1-git-send-email-sagar.kadam@sifive.com>
+ <1559369475-15374-2-git-send-email-sagar.kadam@sifive.com>
 MIME-Version: 1.0
+In-Reply-To: <1559369475-15374-2-git-send-email-sagar.kadam@sifive.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190614_133642_908324_926B186F 
-X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-CacheID: sfid-20190614_135842_988091_8E033B67 
+X-CRM114-Status: UNSURE (   6.41  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [45.79.88.28 listed in list.dnswl.org]
+ no trust [88.99.104.3 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,44 +61,80 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- bpf@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Mauro Carvalho Chehab <mchehab@infradead.org>,
- Greentime Hu <green.hu@gmail.com>, netdev@vger.kernel.org,
- Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Martin KaFai Lau <kafai@fb.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mark.rutland@arm.com, andrew@lunn.ch, peter@korsgaard.com,
+ devicetree@vger.kernel.org, palmer@sifive.com, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, linux-i2c@vger.kernel.org, paul.walmsley@sifive.com,
+ linux-riscv@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2747620042515007102=="
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 12 Jun 2019 14:52:36 -0300
-Mauro Carvalho Chehab <mchehab+samsung@kernel.org> wrote:
 
-> This is mostly a rebase of the /33 series v3 I sent, on the top of the latest
-> linux-next  (next-20190612).
-> 
-> Changes from v3:
-> 
-> - dropped cpufreq conversion - documents are too outdated;
-> - infiniband patch is not here anymore - as it should be merged via RDMA;
-> - s390 patches were already merged;
-> - Dropped Geert as Maintainer from fb/framebuffer.rst, as per his request;
-> - Did a minor editorial change at popwerpc/cxl.rst per Andrew Donellan
->   request;
-> - Added acks/reviews;
-> - trivial rebase fixups.
+--===============2747620042515007102==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="QRj9sO5tAVLaXnSD"
+Content-Disposition: inline
 
-So I had to pull docs-next forward to -rc4, but then I was able to apply
-this set except for parts 5, 6, 14, 18, and 19.  Some progress made, but
-this is somewhat painful work...
 
-jon
+--QRj9sO5tAVLaXnSD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Jun 01, 2019 at 11:41:13AM +0530, Sagar Shrikant Kadam wrote:
+> Reformatted compatibility strings to one valid combination on
+> each line.
+> Add FU540-C000 specific device tree bindings to already available
+> i2-ocores file. This device is available on
+> HiFive Unleashed Rev A00 board. Move interrupt under optional
+> property list as this can be optional.
+>=20
+> The FU540-C000 SoC from sifive, has an Opencore's I2C block
+> reimplementation.
+>=20
+> The DT compatibility string for this IP is present in HDL and available a=
+t.
+> https://github.com/sifive/sifive-blocks/blob/master/src/main/scala/device=
+s/i2c/I2C.scala#L73
+>=20
+> Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+
+Applied to for-next, thanks!
+
+
+--QRj9sO5tAVLaXnSD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl0ECoAACgkQFA3kzBSg
+Kbao1Q/7Bww4MUaBPH3+ZywBjlJ45ehCw3ulD5lfN/Avf0GJLLlm2qGIm/BSe9/x
+V80NkEuQC1ythfVxiq+edDN+Wy5yFtsKLhkjbKzgwYTsoMBx0AbHTjXujIGo03+t
+iIg2/9I/Arq+u/5g+HCDk0/4asDMVMBJVa3bniKbClWfuJ7ggWH/UbmOGXfelX7I
+HpaokQT/+D8sdtibkIdt4/rgvos/3h8NC4h2CTFywsBu+A62xwiMGpORJ1yWubto
+xfr6uu6Rme7if+pyvu5Oxy/FV+UJshX6+6qSI/wvJnrQx1gh/GcKr6Pz7OLk9Pvw
+BNgMy5MCLRfMCUUScrCZgjFiGFkZ4vrebE2sJ1+DW7gGPnDrsSatN0oxpn/r4Abn
+OI4HsSjxtFZWcBz54prvGIzXYc+9bJcACgyeJRPVEDdvVGZDX3Mg5teIgbJbt9iD
+CHp8DMgfdThiIr1cYn9ORF2miTXCaWs735qjM/8QckH4Bfd6cfoDIn5KDjo/1Th5
+E6aQBheFFaq85DV74R/sdXXbpRQhrVBj/Cz3SgXhgj66ooHtdVBpNdXeSDon54XG
+5v+LQrcexKmF0NlEFlyqeaajxnaB0kJQnXBzz1iqeg5Tkk/Gho70zFFUYhw4OFUM
+F4hXCxq7vwHamFM6W68gMEcY0vPh/QqpNNYiSjWoEKn+PR3ZTt0=
+=fkzZ
+-----END PGP SIGNATURE-----
+
+--QRj9sO5tAVLaXnSD--
+
+
+--===============2747620042515007102==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
+
+--===============2747620042515007102==--
+
