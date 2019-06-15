@@ -2,80 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9682D46EA0
-	for <lists+linux-riscv@lfdr.de>; Sat, 15 Jun 2019 08:48:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D826B47086
+	for <lists+linux-riscv@lfdr.de>; Sat, 15 Jun 2019 16:47:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=QZfTy8PmITIvaQgkgBK621wlTLAeyFSlTTksvqO/bsg=; b=FGJ
-	15xnmWaMG0ZJn/WaHw2jKYQmmJStnv6NfejMoJ/DLq2VQH1YQ7gxxiXfhw+yTN0gLtBbmlwHaIrEA
-	uvt5WOHOVLgmA387KWRP8OngdKq9XZ/Ng7H6h3I+Cj9DVV/XIk2QWm/MZZcZ7cByI1XCnA46BV3SE
-	ivvWwbZ9IW673fovp5fqjZp8ptcetRMJnl/5mAJzvZFWPclaL3lClEVe4/GGItX5MaNdO8pDn+SNg
-	fIWkp1wUmMw352c57xBqTAYsjfEs56WsWhaR2tsuAEuxF3nmi6ivhMB03OpCAIdgZZbrghguWlxp2
-	oqjeNpFCtd2RE0slo+4y+Z994Tr9MhA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=rkGMKiM3VRMqp+bAkSJoqgwsn4YynZV2+BpA5vsMOwY=; b=R9Zb8t0dyC6ejGknE9YURV++J
+	tFfPbg1Lhqanqr95PDt9rxpG6/EcYxwilc8K+6VLD3Wl+XMqwyIJIxaQDo/LMDEbum6FUVzu2yDk4
+	MkVRMAeBRb9OASDvrd9KeOjDmx8lgrtu12h3Ys0uShOqJySuKR4J6uUv25etgx99ou4I6Vjp7dGQW
+	gdmBVGSajrj8jQFVRrWa1O6Dzl5cEaOJ2f/kL1ZHTTf9mi5PLr2SRxZHyCNlKncohASaKuSWiiWiX
+	O+gx1HmhzcCFK09BgV4L8c/PiQQcwzx5VPrWqDrMhzV46Z4ue3sZM2nXGNn6mu+Ly1QXgIaVmXaOP
+	uRul046yw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hc2TW-0005Oc-B9; Sat, 15 Jun 2019 06:47:42 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1hc9xw-0007S3-6e; Sat, 15 Jun 2019 14:47:36 +0000
+Received: from mail-ed1-f66.google.com ([209.85.208.66])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hc2TS-0005OH-RD
- for linux-riscv@lists.infradead.org; Sat, 15 Jun 2019 06:47:40 +0000
-Received: by mail-wm1-x344.google.com with SMTP id f17so1738069wme.2
- for <linux-riscv@lists.infradead.org>; Fri, 14 Jun 2019 23:47:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:from:date:message-id:subject:to;
- bh=Tqto8TpzrKiSf87J1N565C2uBRF7PRYsjWDcH9XDq5o=;
- b=DT4oBDpi66bsGV8XNToIoDaQNj3L99uacGd3HPYf8qC+4bR6e9BRYyRhXn9kNLwGoc
- iPkRyK3bZ/rfN8li22uN805J/9MS2MxkhmgBy2f8B+5WzCAwldhmxu0jNdLlRlirLU8z
- yPGxDsj/q4YjGeElK1kbq8VildASUlHESrQBHOVfWhrS5FdMePF3gaI4XttXTBjiJxSt
- pCNLaNQSJT0uBe8XWbSS6tBi3hiTsE365GLGY00sO7hFS8aRIpW23Lp+fTPSp8r9oyH7
- x4t7KMlDpmtGS5KO7c33p16gn/Bt0xBUzJ8UzI2NCHFcTLLqayNfuRQSlPfwBfvqZ+YF
- wtLw==
+ id 1hc9xr-0007RK-4F
+ for linux-riscv@lists.infradead.org; Sat, 15 Jun 2019 14:47:32 +0000
+Received: by mail-ed1-f66.google.com with SMTP id z25so8179143edq.9
+ for <linux-riscv@lists.infradead.org>; Sat, 15 Jun 2019 07:47:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=Tqto8TpzrKiSf87J1N565C2uBRF7PRYsjWDcH9XDq5o=;
- b=Rh7zfb1FzWrTR6hG67+bk2NPLvqrZIK1oJ1pInXYuARUYr6+1ubNfTXM5EUIVkpbYe
- XwgX1cC8x3oEntYdITS4bOch6oGcHB9nwVExNAbSUllrh9kY8TlrZtk+lMYHhBEXgnFw
- TAcYVWscWD4aFXXd5HMh13tV3jDaUhi/tI0/GV/z5aJhqubtbckDxL0FJ+b+1zcgT3di
- 49MHh2M6fk/4GWulz51EhhKk/ZP1z7UkbeSc0dMy5D22E4rd/gkFCgnZCRfw4mqlQHUJ
- nX6LZwRYZIu/8DMnJGlJXinnspPWASlg4UdVc5gTO200wiwgNOKuJyD5djZge6z6yE2v
- kPrg==
-X-Gm-Message-State: APjAAAWdEu+0r+8GRFfqpq05Sl9RzEdm4OzP/xGi9d4QrMQcX+42IT9c
- KBsgbIgO4cw/xKsnVXGny54jp/k2VIdXSqIIklpxxGwh6/8=
-X-Google-Smtp-Source: APXvYqyes2wNKQxm4PmmPAgh9nDDVJXfeVA1WN8PUBcGfMIehD5WoBHJ9grixAhQUTgaf6mutydVKhzRPxTLo3G0WPw=
-X-Received: by 2002:a7b:c933:: with SMTP id h19mr10990470wml.52.1560581257448; 
- Fri, 14 Jun 2019 23:47:37 -0700 (PDT)
-MIME-Version: 1.0
-From: ShihPo Hung <shihpo.hung@sifive.com>
-Date: Sat, 15 Jun 2019 14:47:24 +0800
-Message-ID: <CALoQrwfqpaTQ=9F7CrLHKo-fJ7oEt45g3tiFG3E5jyAr5zT2Zw@mail.gmail.com>
-Subject: [PATCH] riscv: mm: synchronize MMU after pte change
-To: linux-riscv@lists.infradead.org
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=P6MfxoMR5HxITUtSbXDSCXq1KKx5HwLDb+RtNfB7+Q0=;
+ b=Z0iOxCE9SGZn6CKAZqWc2DyzMDaPrVT6TPhnio6r8KqS4j2APk77J+S1WEz1Cm7Yes
+ mOifBwuhUihHonniFEP4gVj1ACukcJUKYqO383OerglKbx4oH+2sG72eJMPZ6o1yCEHJ
+ PNx21fEmv3lP3BXtSfNu3Fa/C+nY70u5uGMX8QNnKu0WznB0tx5tEB4UD5eFquTQsLbh
+ HEgKYpdOI0iqs21cllg64d37H4ERBzOIhWKlrUvlTFt+BXtqR6QN5YcJeyVFwSnYD7xp
+ ZX21sy9mmKUHevlMk27l9290/UrXboTQMlnfXRUmeBHkdKIuJ8f6EHDD1pQqE4YKwoNj
+ GTQg==
+X-Gm-Message-State: APjAAAXqO1vIi4bQ5Y1QKR1F5JfrmTXUP0plm9j96RiASXz450CGNMf5
+ mt3Xx+D0VXSaMn48LrVvumlqvw==
+X-Google-Smtp-Source: APXvYqx60nftjqTZ6Cn/Y/FV4B7vkGtlOBnMaXADaTwJawTvTGPVGe8oDnHKlkHwDjh/pgyxGjx1hg==
+X-Received: by 2002:a17:906:2605:: with SMTP id
+ h5mr60226354ejc.178.1560610046527; 
+ Sat, 15 Jun 2019 07:47:26 -0700 (PDT)
+Received: from localhost
+ (134.217.90.212.static.wline.lns.sme.cust.swisscom.ch. [212.90.217.134])
+ by smtp.gmail.com with ESMTPSA id e33sm1941896eda.83.2019.06.15.07.47.24
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 15 Jun 2019 07:47:24 -0700 (PDT)
+Date: Sat, 15 Jun 2019 07:47:24 -0700 (PDT)
+X-Google-Original-Date: Sat, 15 Jun 2019 07:11:48 PDT (-0700)
+Subject: Re: [PATCH] MAINTAINERS: change the arch/riscv git tree to the new
+ shared tree
+In-Reply-To: <20190613070721.8341-1-paul.walmsley@sifive.com>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Message-ID: <mhng-94da1779-349d-4019-92b9-e16a9c1d2890@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190614_234738_881034_626856F2 
-X-CRM114-Status: UNSURE (   6.90  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190615_074731_170720_6B75075E 
+X-CRM114-Status: GOOD (  11.64  )
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ no trust [209.85.208.66 listed in list.dnswl.org]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,49 +81,38 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Because RISC-V compliant implementations can cache invalid entries in TLB,
-an SFENCE.VMA is necessary after changes to the page table.
-This patch adds an SFENCE.vma for the vmalloc_fault path.
+On Thu, 13 Jun 2019 00:07:21 PDT (-0700), Paul Walmsley wrote:
+> Palmer, with Konstantin's gracious help, set up a shared kernel.org
+> git tree for arch/riscv patches going forward.  Change the MAINTAINERS
+> file accordingly.
+>
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: Palmer Dabbelt <palmer@sifive.com>
+> ---
+>  MAINTAINERS | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 57f496cff999..290359a46bbe 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -13476,7 +13476,7 @@ RISC-V ARCHITECTURE
+>  M:	Palmer Dabbelt <palmer@sifive.com>
+>  M:	Albert Ou <aou@eecs.berkeley.edu>
+>  L:	linux-riscv@lists.infradead.org
+> -T:	git git://git.kernel.org/pub/scm/linux/kernel/git/palmer/riscv-linux.git
+> +T:	git git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
+>  S:	Supported
+>  F:	arch/riscv/
+>  K:	riscv
 
-Signed-off-by: ShihPo Hung <shihpo.hung@sifive.com>
-Cc: Palmer Dabbelt <palmer@sifive.com>
-Cc: Albert Ou <aou@eecs.berkeley.edu>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: linux-riscv@lists.infradead.org
-
----
- arch/riscv/mm/fault.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/riscv/mm/fault.c b/arch/riscv/mm/fault.c
-index 88401d5..3d8fa95 100644
---- a/arch/riscv/mm/fault.c
-+++ b/arch/riscv/mm/fault.c
-@@ -29,6 +29,7 @@
-
- #include <asm/pgalloc.h>
- #include <asm/ptrace.h>
-+#include <asm/tlbflush.h>
-
- /*
-  * This routine handles page faults.  It determines the address and the
-@@ -281,6 +282,9 @@ asmlinkage void do_page_fault(struct pt_regs *regs)
-        pte_k = pte_offset_kernel(pmd_k, addr);
-        if (!pte_present(*pte_k))
-            goto no_context;
-+
-+       local_flush_tlb_page(addr);
-+
-        return;
-    }
- }
---
-2.7.4
+Reiewed-by: Palmer Dabbelt <palmer@sifive.com>
 
 _______________________________________________
 linux-riscv mailing list
