@@ -2,74 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D826B47086
-	for <lists+linux-riscv@lfdr.de>; Sat, 15 Jun 2019 16:47:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A40E847485
+	for <lists+linux-riscv@lfdr.de>; Sun, 16 Jun 2019 14:45:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=rkGMKiM3VRMqp+bAkSJoqgwsn4YynZV2+BpA5vsMOwY=; b=R9Zb8t0dyC6ejGknE9YURV++J
-	tFfPbg1Lhqanqr95PDt9rxpG6/EcYxwilc8K+6VLD3Wl+XMqwyIJIxaQDo/LMDEbum6FUVzu2yDk4
-	MkVRMAeBRb9OASDvrd9KeOjDmx8lgrtu12h3Ys0uShOqJySuKR4J6uUv25etgx99ou4I6Vjp7dGQW
-	gdmBVGSajrj8jQFVRrWa1O6Dzl5cEaOJ2f/kL1ZHTTf9mi5PLr2SRxZHyCNlKncohASaKuSWiiWiX
-	O+gx1HmhzcCFK09BgV4L8c/PiQQcwzx5VPrWqDrMhzV46Z4ue3sZM2nXGNn6mu+Ly1QXgIaVmXaOP
-	uRul046yw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:References:To:Subject:From:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DkTZ/BCNM1j2hFA5xXMLw8sNn6RfgORekjYORUKPylc=; b=cF0JoV+2WqGLhO
+	j4z0bhiDtvsoBjLUi8ROVjhXKoQDC3OCSjEEeqY/noqwbjBWOoCQRWHA/ZSqJOSZULuC+Hrkuue0v
+	0JvijPb696GC2z8lhNv6WmevFgR+6edmQ/IOkgvdkOOwpD4L8prjpfmRwluH6J2Uv0aS2ewhFjGjY
+	D3PQ2kokLWQ85nvGwz3Succv4PeTM36lFN4kLBi7UigezRGmJRF8c7w/YJkgzkmPGTknk3XRffJ0x
+	KGdFk7jZKJ7LmJfGKlIOCdZuxXsyDAC9QwpyJ/QYszUPPjSWzine4im4ezYXYiBVtEmWGFldqkVzH
+	/4qNgxKA7HVaSSFFbucw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hc9xw-0007S3-6e; Sat, 15 Jun 2019 14:47:36 +0000
-Received: from mail-ed1-f66.google.com ([209.85.208.66])
+	id 1hcUWr-0006Of-N8; Sun, 16 Jun 2019 12:45:01 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hc9xr-0007RK-4F
- for linux-riscv@lists.infradead.org; Sat, 15 Jun 2019 14:47:32 +0000
-Received: by mail-ed1-f66.google.com with SMTP id z25so8179143edq.9
- for <linux-riscv@lists.infradead.org>; Sat, 15 Jun 2019 07:47:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=P6MfxoMR5HxITUtSbXDSCXq1KKx5HwLDb+RtNfB7+Q0=;
- b=Z0iOxCE9SGZn6CKAZqWc2DyzMDaPrVT6TPhnio6r8KqS4j2APk77J+S1WEz1Cm7Yes
- mOifBwuhUihHonniFEP4gVj1ACukcJUKYqO383OerglKbx4oH+2sG72eJMPZ6o1yCEHJ
- PNx21fEmv3lP3BXtSfNu3Fa/C+nY70u5uGMX8QNnKu0WznB0tx5tEB4UD5eFquTQsLbh
- HEgKYpdOI0iqs21cllg64d37H4ERBzOIhWKlrUvlTFt+BXtqR6QN5YcJeyVFwSnYD7xp
- ZX21sy9mmKUHevlMk27l9290/UrXboTQMlnfXRUmeBHkdKIuJ8f6EHDD1pQqE4YKwoNj
- GTQg==
-X-Gm-Message-State: APjAAAXqO1vIi4bQ5Y1QKR1F5JfrmTXUP0plm9j96RiASXz450CGNMf5
- mt3Xx+D0VXSaMn48LrVvumlqvw==
-X-Google-Smtp-Source: APXvYqx60nftjqTZ6Cn/Y/FV4B7vkGtlOBnMaXADaTwJawTvTGPVGe8oDnHKlkHwDjh/pgyxGjx1hg==
-X-Received: by 2002:a17:906:2605:: with SMTP id
- h5mr60226354ejc.178.1560610046527; 
- Sat, 15 Jun 2019 07:47:26 -0700 (PDT)
-Received: from localhost
- (134.217.90.212.static.wline.lns.sme.cust.swisscom.ch. [212.90.217.134])
- by smtp.gmail.com with ESMTPSA id e33sm1941896eda.83.2019.06.15.07.47.24
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 15 Jun 2019 07:47:24 -0700 (PDT)
-Date: Sat, 15 Jun 2019 07:47:24 -0700 (PDT)
-X-Google-Original-Date: Sat, 15 Jun 2019 07:11:48 PDT (-0700)
-Subject: Re: [PATCH] MAINTAINERS: change the arch/riscv git tree to the new
- shared tree
-In-Reply-To: <20190613070721.8341-1-paul.walmsley@sifive.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Message-ID: <mhng-94da1779-349d-4019-92b9-e16a9c1d2890@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ id 1hcUWU-0005fh-Bw; Sun, 16 Jun 2019 12:44:39 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x5GCiLhA033414;
+ Sun, 16 Jun 2019 07:44:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1560689061;
+ bh=19H8228T7JxbHupQvwDqhQcBwn5pS/mQpYoEWhiFVCA=;
+ h=From:Subject:To:CC:References:Date:In-Reply-To;
+ b=fBMNN+Jl7jtZzcNJVVeNu23O1SMLIJURY6HkAxnEugTApS0+Qf+8w4dTVl5udZW9I
+ WWkTepki3mCK0/KTL9D7KhWO8mofjFaG6vluM3At9EHCZ7FJ1MK85p8JAtYTO45Vc8
+ JIsly0gmjIo/3EETy2UfYgeE/p0YT3PapwEPfhDE=
+Received: from DFLE102.ent.ti.com (dfle102.ent.ti.com [10.64.6.23])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x5GCiL4U024120
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Sun, 16 Jun 2019 07:44:21 -0500
+Received: from DFLE109.ent.ti.com (10.64.6.30) by DFLE102.ent.ti.com
+ (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Sun, 16
+ Jun 2019 07:44:20 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE109.ent.ti.com
+ (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
+ Frontend Transport; Sun, 16 Jun 2019 07:44:20 -0500
+Received: from [10.250.133.146] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id x5GCiGQW130920;
+ Sun, 16 Jun 2019 07:44:17 -0500
+From: Vignesh Raghavendra <vigneshr@ti.com>
+Subject: Re: [PATCH v5 1/3] mtd: spi-nor: add support for is25wp256
+To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>, <marek.vasut@gmail.com>,
+ <tudor.ambarus@microchip.com>, <dwmw2@infradead.org>,
+ <computersforpeace@gmail.com>, <miquel.raynal@bootlin.com>,
+ <richard@nod.at>, <linux-mtd@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-riscv@lists.infradead.org>
+References: <1560336476-31763-1-git-send-email-sagar.kadam@sifive.com>
+ <1560336476-31763-2-git-send-email-sagar.kadam@sifive.com>
+Message-ID: <325855d0-00f9-df8a-ea57-c140d39dd6ef@ti.com>
+Date: Sun, 16 Jun 2019 18:14:16 +0530
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
+MIME-Version: 1.0
+In-Reply-To: <1560336476-31763-2-git-send-email-sagar.kadam@sifive.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190615_074731_170720_6B75075E 
-X-CRM114-Status: GOOD (  11.64  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190616_054438_560510_6B987EF5 
+X-CRM114-Status: GOOD (  11.68  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.208.66 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [198.47.19.141 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,38 +95,47 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: wesley@sifive.com, palmer@sifive.com, aou@eecs.berkeley.edu,
+ paul.walmsley@sifive.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 13 Jun 2019 00:07:21 PDT (-0700), Paul Walmsley wrote:
-> Palmer, with Konstantin's gracious help, set up a shared kernel.org
-> git tree for arch/riscv patches going forward.  Change the MAINTAINERS
-> file accordingly.
->
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt <palmer@sifive.com>
-> ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 57f496cff999..290359a46bbe 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -13476,7 +13476,7 @@ RISC-V ARCHITECTURE
->  M:	Palmer Dabbelt <palmer@sifive.com>
->  M:	Albert Ou <aou@eecs.berkeley.edu>
->  L:	linux-riscv@lists.infradead.org
-> -T:	git git://git.kernel.org/pub/scm/linux/kernel/git/palmer/riscv-linux.git
-> +T:	git git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
->  S:	Supported
->  F:	arch/riscv/
->  K:	riscv
+Hi,
 
-Reiewed-by: Palmer Dabbelt <palmer@sifive.com>
+On 12-Jun-19 4:17 PM, Sagar Shrikant Kadam wrote:
+[...]
+
+> @@ -4129,7 +4137,7 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+>  	if (ret)
+>  		return ret;
+>  
+> -	if (nor->addr_width) {
+> +	if (nor->addr_width && JEDEC_MFR(info) != SNOR_MFR_ISSI) {
+>  		/* already configured from SFDP */
+
+Hmm, why would you want to ignore addr_width that's read from SFDP table?
+
+Regards
+Vignesh
+
+
+>  	} else if (info->addr_width) {
+>  		nor->addr_width = info->addr_width;
+> diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+> index b3d360b..ff13297 100644
+> --- a/include/linux/mtd/spi-nor.h
+> +++ b/include/linux/mtd/spi-nor.h
+> @@ -19,6 +19,7 @@
+>  #define SNOR_MFR_ATMEL		CFI_MFR_ATMEL
+>  #define SNOR_MFR_GIGADEVICE	0xc8
+>  #define SNOR_MFR_INTEL		CFI_MFR_INTEL
+> +#define SNOR_MFR_ISSI		0x9d		/* ISSI */
+>  #define SNOR_MFR_ST		CFI_MFR_ST	/* ST Micro */
+>  #define SNOR_MFR_MICRON		CFI_MFR_MICRON	/* Micron */
+>  #define SNOR_MFR_MACRONIX	CFI_MFR_MACRONIX
+> 
 
 _______________________________________________
 linux-riscv mailing list
