@@ -2,80 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E99A4790E
-	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 06:20:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CAA3947914
+	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 06:22:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=9Ljb6iep4+AYXUwW7ONPJkVNeMbZ2aiBgKpJ2YPr38g=; b=uxiIiTn29rsAnzT1JuTswqgsp6
-	qp6UqfGEu5zsAIzGHpzWV51eIotqaAb25lXD7U5Ea3YEGQilyK0ygeDTxwoeBktbURu8nDoV/76jc
-	t2BZY3ciD/Ob35k5HDJUbCaW52yd2s89XJMR0BsxovXcrOfXnVj7Z1v2aTqYauePC3Gvx0di+FKA+
-	zkH4+rWGH5ow+HcH5OByyeueiPKTMfvUCc/RRYZ3IiLSxxx2kMURO9fuSv576Z1ACXt8a8zbwVM8d
-	4Z1r/TpS0rqtZqRDpe3UVj6qMEZ6vaTKde9HhjlQYjrOaSxBOQqONE94LVyos6RTC/NWLFufI9jOV
-	ijO9i7Lw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Tu701x4f+h2UjhLIWs3bRoGXHJVDYMdn6zQXyC5hQ34=; b=j4N/flAbRlptnV
+	1KVru3L+0jJPwrCopB6WpJbwGWYc9iN0Ao0+q+yqM6Pv22Im5+q82A9teyykVy4nYhfif7xuc90zj
+	hwxBe0KVSg0lUctaD9VXzSeE/jPkshZPha5r1t7oklzu1d1mJLFmXXnFRfBk64PhdrhqcWMGkrYIS
+	ZGMEUdGYjkhPpUB0FoGAad8xTaGeI39lZBqVq0mPKeWtjn9g0K5caMKBh0V8uq4AWuSkYYQ9PKZFd
+	HHlNW64coNxyWH9cNgkPdn1fJ8dnfedTwUrNwlFZELlTGKOjjLGIo/EIR8KraabzU8BlMd0zb0Vut
+	ftZnMftNQr0wXMyyjGXw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hcj7u-0006A4-45; Mon, 17 Jun 2019 04:20:14 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1hcjA4-0006Kx-GA; Mon, 17 Jun 2019 04:22:28 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hcj7p-0005hb-93
- for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 04:20:10 +0000
-Received: by mail-pg1-x541.google.com with SMTP id f25so5006674pgv.10
- for <linux-riscv@lists.infradead.org>; Sun, 16 Jun 2019 21:20:09 -0700 (PDT)
+ id 1hcjA1-0006KR-AB
+ for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 04:22:26 +0000
+Received: by mail-wm1-x341.google.com with SMTP id f17so4984509wme.2
+ for <linux-riscv@lists.infradead.org>; Sun, 16 Jun 2019 21:22:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=Ec/UpODc9r5+2RePz6D6XSdMlQPi90OIEBIIDO0tK2I=;
- b=mLvVkiFuigLRIC7VosUAIvmTn08lAbB3Q1zCayC9MeZhSG7szGzwRAuizG0rQ/1KLC
- 2lfnME52ApVK1Y+y/JVJUCQ77DsL43PBvqS+P2ZdzcZshjfBss0Rfi0qGafWyb6wmk+G
- pcOel19q6KHQt23YBmQt/nMWMl/VxbY+QmEPeEZiGTmuFTNctgiw/FfEImXZl1C5/Hmu
- C4PYmBqV1TQknSkSHjQP9V9LYDgFHJ3LOkzHYxX2aKiE11C19uP6X9qSDkZu4keITJe2
- S3NIRJZbwW3wNualxf4yW+aI+YBUbhLXEbR0wgW4HfQA8UAcwXdg+PAVm7a/+7wmmbI9
- a1UA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=l6hXSjeB4+WIPsk7dmb+VEl2oqT732lm//gUK7LuBXM=;
+ b=RJORM4WZpvpTy8B7LJiMzfieOsaO/bI+8+/TZ8K2NPNdp1RpLVK1pExH0NyYtltYIY
+ xSz4apJayL2ffK78TO+eesL02OkwTZMqIkEhaSVA0VIUVacurqlgG+ohmxWE+fEpnfs/
+ ApyiAvHwe6de7ePNDSUGlf4VAT1LA6iPi5os5xHOJN42U3TEsxyaBJveBPqeNCLzYH7c
+ p+h6hDJ9b08xkt4mQp+7htVXZv5s3obfVtRstSaNOAeZ/Eu2ahyH0opi3aVyUFaiAqZn
+ 1GdQDq7nWIQqXG81Y1xHEaFRke8AcelyJSexViHEyAi9iyPQs/e5KE3eO7o03O5BrcBe
+ ytjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=Ec/UpODc9r5+2RePz6D6XSdMlQPi90OIEBIIDO0tK2I=;
- b=tUjEVY7T5Mf9GxhHLITtdR2BjLHjxHBGWVmdBXsdfr+x0VV1BYoN8Jfh86hVchYdyj
- i2ITomsjy713kN8+zMvV5q82bEBdJOjEE+bz/c3C1EiaK8LOBSnf9Iq55lqLlj80Lhdv
- DuTItri3eRUo8PFhBdYeCYkNA2JlDkdyVgmOYHdJI2uhKRvdMxzy8eG7kHqpDIKbJFoo
- QpONLAcWfObDO0SO62VDOm+60PszSdIKzc2RKQZqmZdiQuaBgceutjeSyIc6Ive36ayw
- cXoI+/DpjGVVzNRqiillAvM6ty9Wx7TG042yKQS4SPxv20KvqCJ9BamJleyoEy+4TVJs
- ZNLg==
-X-Gm-Message-State: APjAAAUSQ3KgVSdipQLcCm2E56T0uTgKrSMUiyUghfN8FTqJ5u/mIrlD
- N7+sB6lDlGGWsXvYvZbL6HiluQ==
-X-Google-Smtp-Source: APXvYqwU8z5Q+ue2+v4sr/3zFE1FlWiEqlDhqzkhuqGshXnTneyGzTLnpUlNLfIwJ/ifFvwdE1Qksg==
-X-Received: by 2002:a17:90a:ba94:: with SMTP id
- t20mr25072783pjr.116.1560745208228; 
- Sun, 16 Jun 2019 21:20:08 -0700 (PDT)
-Received: from buildserver-90.open-silicon.com ([114.143.65.226])
- by smtp.googlemail.com with ESMTPSA id
- e184sm14485615pfa.169.2019.06.16.21.20.02
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sun, 16 Jun 2019 21:20:07 -0700 (PDT)
-From: Yash Shah <yash.shah@sifive.com>
-To: davem@davemloft.net, devicetree@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org
-Subject: [PATCH v2 2/2] macb: Add support for SiFive FU540-C000
-Date: Mon, 17 Jun 2019 09:49:27 +0530
-Message-Id: <1560745167-9866-3-git-send-email-yash.shah@sifive.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1560745167-9866-1-git-send-email-yash.shah@sifive.com>
-References: <1560745167-9866-1-git-send-email-yash.shah@sifive.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=l6hXSjeB4+WIPsk7dmb+VEl2oqT732lm//gUK7LuBXM=;
+ b=SPbbe3UNLpnXATRVDVBs2KqIR5hL0LFwK0CdLoX1OWG86mRZ4Sb3DQTQo5bHzAuKqk
+ mp3awZBWcEvuX1kAHHxQ+z7+CXfg6UYyeeD9+5bXlf+QBTkcPlP00CZjq9w5Ybe6NgUT
+ AOIdOTEyntuPK34UM978VP4KHfxaUot+uzMFVpriIdX3xE4NJfrixFUitSaaWwYzBytp
+ 7c5DbABBYiOgiCYYHaaYZP8yHB1I0WawCDTSyO7dN6HYhtmu17k9p0SL+wbqBedtNM1E
+ hCCqWOQ++iQjFZ3bFbiZeCy9AigEkWJq2QrtCQIM/22wKAd5jjwbpYCGz/EYXhPTGJaK
+ tFxw==
+X-Gm-Message-State: APjAAAUcwRcaEYVXXLaXYpIBxGhGUXxV/YSsAG4MCd5aXf894x7JGCIo
+ /e8HNgpmzh6g1bLHMuk6V66ngeqDuVKn5YbB1P+FOkDm
+X-Google-Smtp-Source: APXvYqyuiMw0LO3g50xi/le6o3a6CorqdNpWQi2IKKbjAKF/jNiSWwPZeQmC6PjRnUuCYkHrNUGkbKZe2wALQ+ZoZ+E=
+X-Received: by 2002:a1c:b604:: with SMTP id g4mr17360568wmf.111.1560745340761; 
+ Sun, 16 Jun 2019 21:22:20 -0700 (PDT)
+MIME-Version: 1.0
+References: <CALoQrwfqpaTQ=9F7CrLHKo-fJ7oEt45g3tiFG3E5jyAr5zT2Zw@mail.gmail.com>
+ <mhng-29050ee2-db7c-4091-a9b4-503447fd25fc@palmer-si-x1e>
+In-Reply-To: <mhng-29050ee2-db7c-4091-a9b4-503447fd25fc@palmer-si-x1e>
+From: ShihPo Hung <shihpo.hung@sifive.com>
+Date: Mon, 17 Jun 2019 12:22:09 +0800
+Message-ID: <CALoQrwcP=KP2gupb0wyzZKByDZYtDNV4Jb=tcXAvXZNq81N5Pg@mail.gmail.com>
+Subject: Re: [PATCH] riscv: mm: synchronize MMU after pte change
+To: Palmer Dabbelt <palmer@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190616_212009_370186_3789B8D4 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20190616_212225_358750_65D65384 
+X-CRM114-Status: GOOD (  16.43  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -97,221 +90,63 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, aou@eecs.berkeley.edu, palmer@sifive.com,
- nicolas.ferre@microchip.com, sachin.ghadi@sifive.com,
- Yash Shah <yash.shah@sifive.com>, robh+dt@kernel.org, paul.walmsley@sifive.com,
- ynezz@true.cz
-MIME-Version: 1.0
+Cc: linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The management IP block is tightly coupled with the Cadence MACB IP
-block on the FU540, and manages many of the boundary signals from the
-MACB IP. This patch only controls the tx_clk input signal to the MACB
-IP. Future patches may add support for monitoring or controlling other
-IP boundary signals.
+On Mon, Jun 17, 2019 at 10:40 AM Palmer Dabbelt <palmer@sifive.com> wrote:
+>
+> On Fri, 14 Jun 2019 23:47:24 PDT (-0700), shihpo.hung@sifive.com wrote:
+> > Because RISC-V compliant implementations can cache invalid entries in TLB,
+> > an SFENCE.VMA is necessary after changes to the page table.
+> > This patch adds an SFENCE.vma for the vmalloc_fault path.
+> >
+> > Signed-off-by: ShihPo Hung <shihpo.hung@sifive.com>
+> > Cc: Palmer Dabbelt <palmer@sifive.com>
+> > Cc: Albert Ou <aou@eecs.berkeley.edu>
+> > Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> > Cc: linux-riscv@lists.infradead.org
+> >
+> > ---
+> >  arch/riscv/mm/fault.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >
+> > diff --git a/arch/riscv/mm/fault.c b/arch/riscv/mm/fault.c
+> > index 88401d5..3d8fa95 100644
+> > --- a/arch/riscv/mm/fault.c
+> > +++ b/arch/riscv/mm/fault.c
+> > @@ -29,6 +29,7 @@
+> >
+> >  #include <asm/pgalloc.h>
+> >  #include <asm/ptrace.h>
+> > +#include <asm/tlbflush.h>
+> >
+> >  /*
+> >   * This routine handles page faults.  It determines the address and the
+> > @@ -281,6 +282,9 @@ asmlinkage void do_page_fault(struct pt_regs *regs)
+> >         pte_k = pte_offset_kernel(pmd_k, addr);
+> >         if (!pte_present(*pte_k))
+> >             goto no_context;
+> > +
+> > +       local_flush_tlb_page(addr);
+> > +
+> >         return;
+> >     }
+> >  }
+>
+> This needs a comment.  The rationale is essentially the same as
+> update_mmu_cache().  In this case I don't think we want to directly call
+> update_mmu_cache(), as if we ever decide that the eager fence over there is
+> worse for performance (ie, on an implementation that doesn't cache invalid
+> entries) we could drop that fence but we'll still need this one as I don't see
+> anything that fixes suprious faults for the vmalloc region.
+>
+> This should also CC stable.
 
-Signed-off-by: Yash Shah <yash.shah@sifive.com>
----
- drivers/net/ethernet/cadence/Kconfig     |   6 ++
- drivers/net/ethernet/cadence/macb_main.c | 129 +++++++++++++++++++++++++++++++
- 2 files changed, 135 insertions(+)
-
-diff --git a/drivers/net/ethernet/cadence/Kconfig b/drivers/net/ethernet/cadence/Kconfig
-index b998401..d478fae 100644
---- a/drivers/net/ethernet/cadence/Kconfig
-+++ b/drivers/net/ethernet/cadence/Kconfig
-@@ -48,4 +48,10 @@ config MACB_PCI
- 	  To compile this driver as a module, choose M here: the module
- 	  will be called macb_pci.
- 
-+config MACB_SIFIVE_FU540
-+	bool "Cadence MACB/GEM support for SiFive FU540 SoC"
-+	depends on MACB && GPIO_SIFIVE
-+	help
-+	  Enable the Cadence MACB/GEM support for SiFive FU540 SoC.
-+
- endif # NET_VENDOR_CADENCE
-diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
-index c049410..275b5e8 100644
---- a/drivers/net/ethernet/cadence/macb_main.c
-+++ b/drivers/net/ethernet/cadence/macb_main.c
-@@ -10,6 +10,7 @@
- 
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- #include <linux/clk.h>
-+#include <linux/clk-provider.h>
- #include <linux/crc32.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
-@@ -40,6 +41,15 @@
- #include <linux/pm_runtime.h>
- #include "macb.h"
- 
-+/* This structure is only used for MACB on SiFive FU540 devices */
-+struct sifive_fu540_macb_mgmt {
-+	void __iomem *reg;
-+	unsigned long rate;
-+	struct clk_hw hw;
-+};
-+
-+static struct sifive_fu540_macb_mgmt *mgmt;
-+
- #define MACB_RX_BUFFER_SIZE	128
- #define RX_BUFFER_MULTIPLE	64  /* bytes */
- 
-@@ -3903,6 +3913,116 @@ static int at91ether_init(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static unsigned long fu540_macb_tx_recalc_rate(struct clk_hw *hw,
-+					       unsigned long parent_rate)
-+{
-+	return mgmt->rate;
-+}
-+
-+static long fu540_macb_tx_round_rate(struct clk_hw *hw, unsigned long rate,
-+				     unsigned long *parent_rate)
-+{
-+	if (WARN_ON(rate < 2500000))
-+		return 2500000;
-+	else if (rate == 2500000)
-+		return 2500000;
-+	else if (WARN_ON(rate < 13750000))
-+		return 2500000;
-+	else if (WARN_ON(rate < 25000000))
-+		return 25000000;
-+	else if (rate == 25000000)
-+		return 25000000;
-+	else if (WARN_ON(rate < 75000000))
-+		return 25000000;
-+	else if (WARN_ON(rate < 125000000))
-+		return 125000000;
-+	else if (rate == 125000000)
-+		return 125000000;
-+
-+	WARN_ON(rate > 125000000);
-+
-+	return 125000000;
-+}
-+
-+static int fu540_macb_tx_set_rate(struct clk_hw *hw, unsigned long rate,
-+				  unsigned long parent_rate)
-+{
-+	rate = fu540_macb_tx_round_rate(hw, rate, &parent_rate);
-+	if (rate != 125000000)
-+		iowrite32(1, mgmt->reg);
-+	else
-+		iowrite32(0, mgmt->reg);
-+	mgmt->rate = rate;
-+
-+	return 0;
-+}
-+
-+static const struct clk_ops fu540_c000_ops = {
-+	.recalc_rate = fu540_macb_tx_recalc_rate,
-+	.round_rate = fu540_macb_tx_round_rate,
-+	.set_rate = fu540_macb_tx_set_rate,
-+};
-+
-+static int fu540_c000_clk_init(struct platform_device *pdev, struct clk **pclk,
-+			       struct clk **hclk, struct clk **tx_clk,
-+			       struct clk **rx_clk, struct clk **tsu_clk)
-+{
-+	struct clk_init_data init;
-+	int err = 0;
-+
-+	err = macb_clk_init(pdev, pclk, hclk, tx_clk, rx_clk, tsu_clk);
-+	if (err)
-+		return err;
-+
-+	mgmt = devm_kzalloc(&pdev->dev, sizeof(*mgmt), GFP_KERNEL);
-+	if (!mgmt)
-+		return -ENOMEM;
-+
-+	init.name = "sifive-gemgxl-mgmt";
-+	init.ops = &fu540_c000_ops;
-+	init.flags = 0;
-+	init.num_parents = 0;
-+
-+	mgmt->rate = 0;
-+	mgmt->hw.init = &init;
-+
-+	*tx_clk = clk_register(NULL, &mgmt->hw);
-+	if (IS_ERR(*tx_clk))
-+		return PTR_ERR(*tx_clk);
-+
-+	err = clk_prepare_enable(*tx_clk);
-+	if (err)
-+		dev_err(&pdev->dev, "failed to enable tx_clk (%u)\n", err);
-+	else
-+		dev_info(&pdev->dev, "Registered clk switch '%s'\n", init.name);
-+
-+	return 0;
-+}
-+
-+static int fu540_c000_init(struct platform_device *pdev)
-+{
-+	struct resource *res;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-+	if (!res)
-+		return -ENODEV;
-+
-+	mgmt->reg = ioremap(res->start, resource_size(res));
-+	if (!mgmt->reg)
-+		return -ENOMEM;
-+
-+	return macb_init(pdev);
-+}
-+
-+static const struct macb_config fu540_c000_config = {
-+	.caps = MACB_CAPS_GIGABIT_MODE_AVAILABLE | MACB_CAPS_JUMBO |
-+		MACB_CAPS_GEM_HAS_PTP,
-+	.dma_burst_length = 16,
-+	.clk_init = fu540_c000_clk_init,
-+	.init = fu540_c000_init,
-+	.jumbo_max_len = 10240,
-+};
-+
- static const struct macb_config at91sam9260_config = {
- 	.caps = MACB_CAPS_USRIO_HAS_CLKEN | MACB_CAPS_USRIO_DEFAULT_IS_MII_GMII,
- 	.clk_init = macb_clk_init,
-@@ -3992,6 +4112,9 @@ static int at91ether_init(struct platform_device *pdev)
- 	{ .compatible = "cdns,emac", .data = &emac_config },
- 	{ .compatible = "cdns,zynqmp-gem", .data = &zynqmp_config},
- 	{ .compatible = "cdns,zynq-gem", .data = &zynq_config },
-+#ifdef CONFIG_MACB_SIFIVE_FU540
-+	{ .compatible = "sifive,fu540-macb", .data = &fu540_c000_config },
-+#endif
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, macb_dt_ids);
-@@ -4199,6 +4322,9 @@ static int macb_probe(struct platform_device *pdev)
- 
- err_disable_clocks:
- 	clk_disable_unprepare(tx_clk);
-+#ifdef CONFIG_MACB_SIFIVE_FU540
-+	clk_unregister(tx_clk);
-+#endif
- 	clk_disable_unprepare(hclk);
- 	clk_disable_unprepare(pclk);
- 	clk_disable_unprepare(rx_clk);
-@@ -4233,6 +4359,9 @@ static int macb_remove(struct platform_device *pdev)
- 		pm_runtime_dont_use_autosuspend(&pdev->dev);
- 		if (!pm_runtime_suspended(&pdev->dev)) {
- 			clk_disable_unprepare(bp->tx_clk);
-+#ifdef CONFIG_MACB_SIFIVE_FU540
-+			clk_unregister(bp->tx_clk);
-+#endif
- 			clk_disable_unprepare(bp->hclk);
- 			clk_disable_unprepare(bp->pclk);
- 			clk_disable_unprepare(bp->rx_clk);
--- 
-1.9.1
-
+Thanks, I will send v2 that adds a comment as update_mmu_cache() does
+and CC stable.
 
 _______________________________________________
 linux-riscv mailing list
