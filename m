@@ -2,74 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7ABCC48796
-	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 17:40:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EE48487F6
+	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 17:54:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=daP3qvCi6wsPbW5Ve6VQ1jfUSIKUM0x2Ixv6Zqe0wUY=; b=LtomkLeATX0JmP
-	2xAaejO9sXMEhWAOx/8BNxq97WzjZTuVHAJp9FVJatVb7EcdG3iyWumRJxmufvOnybeXXphZyTQWV
-	frokLpso8vwagd7/23MeMEt7l07MVvFD3NrrOWW/HOb7dyB+rM4vNiTNvVUI3KcDKTnQBKtzdbdP3
-	zQGGZw/INjNmezO7OAe3VUFgk8AwEbYYPz9/TuuLsSOZ04WL2QJx0zyLPcracLnE+stFlw1k8oGGP
-	RtJ3BngliDsW3JmKt+JImxXDu6BNBgHaVl3cFfTinBic89E+bXZ8x+euCGT2MucunAZsxF8oUXss3
-	1G+i/5+NkUK74xsdEgTQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DD8QdUGVgYnQ93XVA3QFnMbjZ6TicqQdw6e+3oU14xI=; b=B0JsKj9axXWSJa
+	LyJAQ8SJ8Iz3xyTwHaF/iEGkNWkyIZe17/ovNsxzuWC1Ih4BQAVRrYhVv2fl3Rp6oxHUdvMHTbMcm
+	vvUHujQPip1+JtJfMskfKSHH+ARyDI+7RmsWP0feFQacptJ+WOiKgjagrdj/KYMrNishuBhoeffXC
+	hDK3VvINQzmIc66UclioMJ1NwX59b1SYp1xUjYlTirVR7byboF+IOKP6t5CLckXRPN+yykRTdECmp
+	GAbveASTMC98yjZxE7zmpezRc88y9QhruKF52MBMbOmqDOlWgIpT02JL2/86/uL/DaFrugDiEk2Fr
+	kBtqLsLgG0ohicxMJv+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hctkM-0001Ij-G9; Mon, 17 Jun 2019 15:40:38 +0000
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
+	id 1hctxs-0000Im-VA; Mon, 17 Jun 2019 15:54:36 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hctjz-000113-Re
- for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 15:40:20 +0000
-Received: by mail-ua1-x943.google.com with SMTP id f20so3661797ual.0
- for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 08:40:15 -0700 (PDT)
+ id 1hctxp-0000Hx-Go
+ for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 15:54:34 +0000
+Received: by mail-ed1-x544.google.com with SMTP id i11so16909321edq.0
+ for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 08:54:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+xHCh/5/rajrFwBWcxrYmQ2rJ/d9uDBLferqy5gsc5o=;
- b=iNjxUkk6tKL7h6GWxxpTadhgfrjy1TgdbpkEPYvg7MY3UCHkHrHKVVBONZzW2DJsEl
- PJeI7wx8pSQBvfDtvV4HFTfxw4CWQaDaOrLLrDFGbJdSMV5KFzpqtYE/B+X30PUMXxC8
- D2ZAkv11pMF7tFbT8OyYfRdc1HnL51qEfe+k/LE37uxWrWFoO6zluyjaOjmarrwb4Lr0
- M0zwGvulTwtpjlCdgF0cmoOiX26RFl1h/FgeDm985WZoQCKIIxAdqXhBmSWY+B5wu7t3
- c+BCjr8pBnq9sHU41D96E/3t2YKceWbrK163rl59O/mU6PSzISc384X2FidLxQ8DprF1
- +eyQ==
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=jV2fDJB1zhXMMMVqBq/8vXLMU9+s4P/AYpC16uvGS84=;
+ b=YuxppzVpxWjvgD7CQFa65TY2bCaxtM0JMcUuzRKkgHgT/8D4S59j6Oqhf/u44x7pg0
+ SowGT29iwxZyW14Rfac78gCP7sS6gISMriYhIAYJGSZlvi77MF1IzoVGhv/x5lTa4nOz
+ lcmrY6o0Lt7Li2Coi6VzXf4Rqwxg0adWSTzTFeOnmNy2wmqtDuOdoWKzxMH1hDnnJuCF
+ /WPTj/wWWXQu3xJ5z5WJbQUm75mGr90OFkAPkWSRNi3q85elB1t0aJw7j3LGt8zkDjyo
+ hogKo5k06xVWXdIb5KrxRbx+ZcQn5GAaQf193B8Ak3B9O1V+/iSCcV7TYZqPQKzkmdgU
+ Dyxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+xHCh/5/rajrFwBWcxrYmQ2rJ/d9uDBLferqy5gsc5o=;
- b=s7Be1u5KOLxSKQlKJ2U0sfOQFXaz6b+NrjktKSR+mmG5NON4m4ktJX5k6ir9i+nEgG
- EoDBeNti/C4g4vpDiyBrRd86whIjY6/+JKiF/33fOiKJt6cLL5T3ITPal6JDoNmETlr/
- olZEjLcd0uU32KvWCI6pM+kWF/yYAxnWWxo7Gy2TuJgAL1996wOc8z3ntuUZITUDCs+j
- X3dKZSdbjtUBotlNtfsCT3H96xE/VIueEhP0+keBM4+gNyDenJC7hySKZwTkAvsgqph3
- DT73zam3DRZ1olTysmkJV1ELUI7rdKuj8igmFga1i5VpDGrNH4Of2ai9VljwvJ5SNMuV
- SpHg==
-X-Gm-Message-State: APjAAAW+LAdydpOjwbHLEqJ1CrrCDiNhyF50HsnEIBm7Ya4iDgeZZ2Tc
- hlflw0hwc9v1AjdVV59tnd5Xvrwoyv4OaCuIqendhA==
-X-Google-Smtp-Source: APXvYqwcs6MIyZsucbjzRDDsDgKyPNBaK5l7jkhpkBXUGYaRrgzJjV8YqNDp7nbsnUgIo3NsZ+/PB4mrET6IlwpvVeI=
-X-Received: by 2002:ab0:30c7:: with SMTP id c7mr7769825uam.143.1560786014401; 
- Mon, 17 Jun 2019 08:40:14 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=jV2fDJB1zhXMMMVqBq/8vXLMU9+s4P/AYpC16uvGS84=;
+ b=pbg0JY9U2AWa/LOQ/lqrlx0+ybcuUhkYPwFYDxf3j4QyfA4am/170bV9owLq3EQUA8
+ E/4dQWdMWJbGtjpGXerhIyemrZ8IRidshVagQpDVynpa8F8U0VhjDtM8iU9XwU1u5KjM
+ ap2saX5bGvpDmfi8Mvblpz01R3LnNpkGvBY42CC/hceg7dgmv6c0AS8nwm5eaBziF6XG
+ 5877Fr//lsEmZoSyRlbKmNgJpIN5+Mcs0g5N1lo92BUWjwK+ODt/4PJXFlKZtj7Uq639
+ UDF5DTnn0GRBLC+RXShdOi+vUk3VzSJe1A564NfRIiaqlBEmI/HOMQiGMpSD2Jqo0Z/4
+ oSjA==
+X-Gm-Message-State: APjAAAWILuJYWGFXkTU2K8/j5uhaHoZ1Q/Cepox9y1BLZ1eJIBxwz4Jw
+ O21kZ0gPHz5V2Ur0Z8GcUQn3nQ==
+X-Google-Smtp-Source: APXvYqwkkzzQLh5Z3U9OcJIPb6Q6NL3JOaCnMfSdWkTBEdV3Tucxf1iPAKZ/7FaGkE+pBLCyQPcMBA==
+X-Received: by 2002:a17:906:c459:: with SMTP id
+ ck25mr52234185ejb.32.1560786872016; 
+ Mon, 17 Jun 2019 08:54:32 -0700 (PDT)
+Received: from localhost ([81.92.102.43])
+ by smtp.gmail.com with ESMTPSA id i1sm2239790ejb.80.2019.06.17.08.54.31
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 17 Jun 2019 08:54:31 -0700 (PDT)
+Date: Mon, 17 Jun 2019 08:54:30 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Subject: [GIT PULL] RISC-V patches for v5.2-rc6
+Message-ID: <alpine.DEB.2.21.9999.1906170846340.30717@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <1560336476-31763-1-git-send-email-sagar.kadam@sifive.com>
- <1560336476-31763-3-git-send-email-sagar.kadam@sifive.com>
- <70732c8e-111f-7c46-9e93-11894d944a1d@ti.com>
-In-Reply-To: <70732c8e-111f-7c46-9e93-11894d944a1d@ti.com>
-From: Sagar Kadam <sagar.kadam@sifive.com>
-Date: Mon, 17 Jun 2019 21:10:02 +0530
-Message-ID: <CAARK3HmFg=v+cMGAykPPpwxDGaSKk5k+Gz4fSHQPQmg-rCjPhQ@mail.gmail.com>
-Subject: Re: [PATCH v5 2/3] mtd: spi-nor: add support to unlock flash device
-To: Vignesh Raghavendra <vigneshr@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190617_084016_727357_65DE6C32 
-X-CRM114-Status: GOOD (  22.16  )
+X-CRM114-CacheID: sfid-20190617_085433_617944_E3FD9038 
+X-CRM114-Status: GOOD (  13.87  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:943 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -91,162 +94,88 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, tudor.ambarus@microchip.com,
- Wesley Terpstra <wesley@sifive.com>, richard@nod.at,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- marek.vasut@gmail.com, linux-mtd@lists.infradead.org,
- Paul Walmsley <paul.walmsley@sifive.com>, miquel.raynal@bootlin.com,
- linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
- dwmw2@infradead.org
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hello Vignesh,
+Linus,
 
-On Sun, Jun 16, 2019 at 6:35 PM Vignesh Raghavendra <vigneshr@ti.com> wrote:
->
->
->
-> On 12-Jun-19 4:17 PM, Sagar Shrikant Kadam wrote:
-> > Nor device (is25wp256 mounted on HiFive unleashed Rev A00 board) from ISSI
-> > have memory blocks guarded by block protection bits BP[0,1,2,3].
-> >
-> > Clearing block protection bits,unlocks the flash memory regions
-> > The unlock scheme is registered during nor scans.
-> >
-> > Based on code developed by Wesley Terpstra <wesley@sifive.com>
-> > and/or Palmer Dabbelt <palmer@sifive.com>.
-> > https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
-> >
-> > Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-> > ---
-> >  drivers/mtd/spi-nor/spi-nor.c | 51 ++++++++++++++++++++++++++++++++++++++++++-
-> >  include/linux/mtd/spi-nor.h   |  1 +
-> >  2 files changed, 51 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-> > index 2d5a925..b7c6261 100644
-> > --- a/drivers/mtd/spi-nor/spi-nor.c
-> > +++ b/drivers/mtd/spi-nor/spi-nor.c
-> > @@ -1461,6 +1461,49 @@ static int macronix_quad_enable(struct spi_nor *nor)
-> >  }
-> >
-> >  /**
-> > + * issi_unlock() - clear BP[0123] write-protection.
-> > + * @nor: pointer to a 'struct spi_nor'.
-> > + * @ofs: offset from which to unlock memory.
-> > + * @len: number of bytes to unlock.
-> > + *
-> > + * Bits [2345] of the Status Register are BP[0123].
-> > + * ISSI chips use a different block protection scheme than other chips.
-> > + * Just disable the write-protect unilaterally.
-> > + *
-> > + * Return: 0 on success, -errno otherwise.
-> > + */
-> > +static int issi_unlock(struct spi_nor *nor, loff_t ofs, uint64_t len)
-> > +{
-> > +     int ret, val;
-> > +     u8 mask = SR_BP0 | SR_BP1 | SR_BP2 | SR_BP3;
-> > +
-> > +     val = read_sr(nor);
-> > +     if (val < 0)
-> > +             return val;
-> > +     if (!(val & mask))
-> > +             return 0;
-> > +
-> > +     write_enable(nor);
-> > +
-> > +     write_sr(nor, val & ~mask);
-> > +
-> > +     ret = spi_nor_wait_till_ready(nor);
-> > +     if (ret)
-> > +             return ret;
-> > +
-> > +     ret = read_sr(nor);
-> > +     if (ret > 0 && !(ret & mask)) {
-> > +             dev_info(nor->dev,
-> > +                     "ISSI Block Protection Bits cleared SR=0x%x", ret);
-> > +             ret = 0;
-> > +     } else {
-> > +             dev_err(nor->dev, "ISSI Block Protection Bits not cleared\n");
-> > +             ret = -EINVAL;
-> > +     }
-> > +     return ret;
-> > +}
-> > +
-> > +/**
-> >   * spansion_quad_enable() - set QE bit in Configuraiton Register.
-> >   * @nor:     pointer to a 'struct spi_nor'
-> >   *
-> > @@ -1836,7 +1879,7 @@ static int sr2_bit7_quad_enable(struct spi_nor *nor)
-> >                       SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-> >       { "is25wp256", INFO(0x9d7019, 0, 64 * 1024, 1024,
-> >                       SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-> > -                     SPI_NOR_4B_OPCODES)
-> > +                     SPI_NOR_4B_OPCODES | SPI_NOR_HAS_LOCK)
-> >       },
-> >
-> >       /* Macronix */
-> > @@ -4080,6 +4123,12 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
-> >               nor->flash_is_locked = stm_is_locked;
-> >       }
-> >
-> > +     /* NOR protection support for ISSI chips */
-> > +     if (JEDEC_MFR(info) == SNOR_MFR_ISSI ||
-> > +         info->flags & SPI_NOR_HAS_LOCK) {
->
-> This should be:
->
->         if (JEDEC_MFR(info) == SNOR_MFR_ISSI &&
->             info->flags & SPI_NOR_HAS_LOCK) {
->
-> Otherwise you would end up overriding nor->flash_unlock function for
-> other vendors too, right?
->
-Yes, right. I will submit a v6 for this.
+The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
 
-> > +             nor->flash_unlock = issi_unlock;
-> > +
->
-> No need for blank line here.
-> Please run ./scripts/checkpatch.pl --strict on all patches and address
-> all the issues reported by it.
->
->
-Ok. The plain checkpatch.pl run didn't catch this.
-I will fix this and provide a v6 for this.
->
-> > +     }
-> >       if (nor->flash_lock && nor->flash_unlock && nor->flash_is_locked) {
-> >               mtd->_lock = spi_nor_lock;
-> >               mtd->_unlock = spi_nor_unlock;
-> > diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
-> > index ff13297..9a7d719 100644
-> > --- a/include/linux/mtd/spi-nor.h
-> > +++ b/include/linux/mtd/spi-nor.h
-> > @@ -127,6 +127,7 @@
-> >  #define SR_BP0                       BIT(2)  /* Block protect 0 */
-> >  #define SR_BP1                       BIT(3)  /* Block protect 1 */
-> >  #define SR_BP2                       BIT(4)  /* Block protect 2 */
-> > +#define SR_BP3                       BIT(5)  /* Block protect 3 for ISSI device*/
->
-> No need to mention ISSI here. I am sure there are devices from other
-> vendors with BP3
->
-Ok, I will drop this in V6 and submit.
+  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
 
-> >  #define SR_TB                        BIT(5)  /* Top/Bottom protect */
-> >  #define SR_SRWD                      BIT(7)  /* SR write protect */
-> >  /* Spansion/Cypress specific status bits */
-> >
->
-> Regards
-> Vignesh
+are available in the Git repository at:
 
-Thanks & BR,
-Sagar Kadam
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv-for-v5.2/fixes-rc6
+
+for you to fetch changes up to 259931fd3b96e4386b361b7f80c1d89b266234c8:
+
+  riscv: remove unused barrier defines (2019-06-17 07:09:43 -0700)
+
+----------------------------------------------------------------
+RISC-V patches for v5.2-rc6
+
+This tag contains fixes, defconfig, and DT data changes for the v5.2-rc
+series.  The fixes are relatively straightforward:
+
+- Addition of a TLB fence in the vmalloc_fault path, so the CPU doesn't
+  enter an infinite page fault loop;
+- Readdition of the pm_power_off export, so device drivers that
+  reassign it can now be built as modules;
+- A udelay() fix for RV32, fixing a miscomputation of the delay time;
+- Removal of deprecated smp_mb__*() barriers.
+
+The tag also adds initial DT data infrastructure for arch/riscv, along
+with initial data for the SiFive FU540-C000 SoC and the corresponding
+HiFive Unleashed board.
+
+We also update the RV64 defconfig to include some core drivers for the
+FU540 in the build.
+
+----------------------------------------------------------------
+Andreas Schwab (1):
+      riscv: export pm_power_off again
+
+Kevin Hilman (1):
+      RISC-V: defconfig: enable clocks, serial console
+
+Nick Hu (1):
+      riscv: Fix udelay in RV32.
+
+Paul Walmsley (5):
+      arch: riscv: add support for building DTB files from DT source data
+      dt-bindings: riscv: sifive: add YAML documentation for the SiFive FU540
+      dt-bindings: riscv: convert cpu binding to json-schema
+      riscv: dts: add initial support for the SiFive FU540-C000 SoC
+      riscv: dts: add initial board data for the SiFive HiFive Unleashed
+
+Rolf Eike Beer (1):
+      riscv: remove unused barrier defines
+
+ShihPo Hung (1):
+      riscv: mm: synchronize MMU after pte change
+
+ Documentation/devicetree/bindings/riscv/cpus.yaml  | 168 ++++++++++++++++
+ .../devicetree/bindings/riscv/sifive.yaml          |  25 +++
+ MAINTAINERS                                        |   9 +
+ arch/riscv/boot/dts/Makefile                       |   2 +
+ arch/riscv/boot/dts/sifive/Makefile                |   2 +
+ arch/riscv/boot/dts/sifive/fu540-c000.dtsi         | 215 +++++++++++++++++++++
+ .../riscv/boot/dts/sifive/hifive-unleashed-a00.dts |  65 +++++++
+ arch/riscv/configs/defconfig                       |   4 +
+ arch/riscv/include/asm/bitops.h                    |   5 -
+ arch/riscv/kernel/reset.c                          |   1 +
+ arch/riscv/lib/delay.c                             |   2 +-
+ arch/riscv/mm/fault.c                              |  13 ++
+ 12 files changed, 505 insertions(+), 6 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/riscv/cpus.yaml
+ create mode 100644 Documentation/devicetree/bindings/riscv/sifive.yaml
+ create mode 100644 arch/riscv/boot/dts/Makefile
+ create mode 100644 arch/riscv/boot/dts/sifive/Makefile
+ create mode 100644 arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+ create mode 100644 arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
 
 _______________________________________________
 linux-riscv mailing list
