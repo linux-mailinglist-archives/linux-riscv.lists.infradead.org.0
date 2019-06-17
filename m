@@ -2,80 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EE48487F6
-	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 17:54:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 525184881B
+	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 17:59:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DD8QdUGVgYnQ93XVA3QFnMbjZ6TicqQdw6e+3oU14xI=; b=B0JsKj9axXWSJa
-	LyJAQ8SJ8Iz3xyTwHaF/iEGkNWkyIZe17/ovNsxzuWC1Ih4BQAVRrYhVv2fl3Rp6oxHUdvMHTbMcm
-	vvUHujQPip1+JtJfMskfKSHH+ARyDI+7RmsWP0feFQacptJ+WOiKgjagrdj/KYMrNishuBhoeffXC
-	hDK3VvINQzmIc66UclioMJ1NwX59b1SYp1xUjYlTirVR7byboF+IOKP6t5CLckXRPN+yykRTdECmp
-	GAbveASTMC98yjZxE7zmpezRc88y9QhruKF52MBMbOmqDOlWgIpT02JL2/86/uL/DaFrugDiEk2Fr
-	kBtqLsLgG0ohicxMJv+g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QquqH4ZeJ3o5Kg2avQ/Lw4MwhsSVgL8e+y+b2//frtw=; b=oMIeZyIyHRK+fm
+	ncj/BBCO6erd7iZ9PFKAGLymZaHfUlD5eB1e+SBiaNpJeKmWSZ4n5G18wuyf+SHHZdi/NPdPhOQbE
+	gDmx0pEaAYR1+uoNaTbB+OdCXD3PkXkUpXO+uKwva4I9vIeCrfjQG4JNfu8yoBWH4dcQntsUqRceB
+	S008jFE9+GR1pD8sXiB+6MZowxwh03TXapym4R/96XuOa9GQMF53d002oiGlJpPase1WD2OyOTaqf
+	ojHpL22VGWXk1xZJ45FNitk2J1h1shYKfxgvHkkSzW/R5tGqGlOQALj5YiGldQN6qzmbmE6syCl+t
+	/+f/ga209Hs5CkiakprA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hctxs-0000Im-VA; Mon, 17 Jun 2019 15:54:36 +0000
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
+	id 1hcu24-0002Du-RV; Mon, 17 Jun 2019 15:58:56 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hctxp-0000Hx-Go
- for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 15:54:34 +0000
-Received: by mail-ed1-x544.google.com with SMTP id i11so16909321edq.0
- for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 08:54:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:message-id:user-agent:mime-version;
- bh=jV2fDJB1zhXMMMVqBq/8vXLMU9+s4P/AYpC16uvGS84=;
- b=YuxppzVpxWjvgD7CQFa65TY2bCaxtM0JMcUuzRKkgHgT/8D4S59j6Oqhf/u44x7pg0
- SowGT29iwxZyW14Rfac78gCP7sS6gISMriYhIAYJGSZlvi77MF1IzoVGhv/x5lTa4nOz
- lcmrY6o0Lt7Li2Coi6VzXf4Rqwxg0adWSTzTFeOnmNy2wmqtDuOdoWKzxMH1hDnnJuCF
- /WPTj/wWWXQu3xJ5z5WJbQUm75mGr90OFkAPkWSRNi3q85elB1t0aJw7j3LGt8zkDjyo
- hogKo5k06xVWXdIb5KrxRbx+ZcQn5GAaQf193B8Ak3B9O1V+/iSCcV7TYZqPQKzkmdgU
- Dyxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
- :mime-version;
- bh=jV2fDJB1zhXMMMVqBq/8vXLMU9+s4P/AYpC16uvGS84=;
- b=pbg0JY9U2AWa/LOQ/lqrlx0+ybcuUhkYPwFYDxf3j4QyfA4am/170bV9owLq3EQUA8
- E/4dQWdMWJbGtjpGXerhIyemrZ8IRidshVagQpDVynpa8F8U0VhjDtM8iU9XwU1u5KjM
- ap2saX5bGvpDmfi8Mvblpz01R3LnNpkGvBY42CC/hceg7dgmv6c0AS8nwm5eaBziF6XG
- 5877Fr//lsEmZoSyRlbKmNgJpIN5+Mcs0g5N1lo92BUWjwK+ODt/4PJXFlKZtj7Uq639
- UDF5DTnn0GRBLC+RXShdOi+vUk3VzSJe1A564NfRIiaqlBEmI/HOMQiGMpSD2Jqo0Z/4
- oSjA==
-X-Gm-Message-State: APjAAAWILuJYWGFXkTU2K8/j5uhaHoZ1Q/Cepox9y1BLZ1eJIBxwz4Jw
- O21kZ0gPHz5V2Ur0Z8GcUQn3nQ==
-X-Google-Smtp-Source: APXvYqwkkzzQLh5Z3U9OcJIPb6Q6NL3JOaCnMfSdWkTBEdV3Tucxf1iPAKZ/7FaGkE+pBLCyQPcMBA==
-X-Received: by 2002:a17:906:c459:: with SMTP id
- ck25mr52234185ejb.32.1560786872016; 
- Mon, 17 Jun 2019 08:54:32 -0700 (PDT)
-Received: from localhost ([81.92.102.43])
- by smtp.gmail.com with ESMTPSA id i1sm2239790ejb.80.2019.06.17.08.54.31
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 17 Jun 2019 08:54:31 -0700 (PDT)
-Date: Mon, 17 Jun 2019 08:54:30 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Linus Torvalds <torvalds@linux-foundation.org>
-Subject: [GIT PULL] RISC-V patches for v5.2-rc6
-Message-ID: <alpine.DEB.2.21.9999.1906170846340.30717@viisi.sifive.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1hcu1q-00024y-GM
+ for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 15:58:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=IJWr5dvuEA2F3trxOKqiOmWoXJ+15Kb0YLvHJBxpplE=; b=LvOiZnTpFrjs6uHKxqq3mdymv7
+ 203Y30f019Kur5cTvYiDKsFifpqIu2TOMP5+ruyvIh+iZOaKApXym45HQ1MYEtzOQ4JJ114RuJy97
+ 2bw3K23vS/LNdJ90HcxCsK+H9sihBk6mWKBO7/XTqMPv5Q03tAYpArEc2NY6mgbfyFn8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.89)
+ (envelope-from <andrew@lunn.ch>)
+ id 1hcu1i-0001Kh-CK; Mon, 17 Jun 2019 17:58:34 +0200
+Date: Mon, 17 Jun 2019 17:58:34 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Yash Shah <yash.shah@sifive.com>
+Subject: Re: [PATCH v2 2/2] macb: Add support for SiFive FU540-C000
+Message-ID: <20190617155834.GK25211@lunn.ch>
+References: <1560745167-9866-1-git-send-email-yash.shah@sifive.com>
+ <1560745167-9866-3-git-send-email-yash.shah@sifive.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1560745167-9866-3-git-send-email-yash.shah@sifive.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190617_085433_617944_E3FD9038 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20190617_085842_720810_0718F439 
+X-CRM114-Status: GOOD (  18.92  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:544 listed in]
- [list.dnswl.org]
+ no trust [185.16.172.187 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -94,88 +76,230 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ netdev@vger.kernel.org, palmer@sifive.com, ynezz@true.cz,
+ linux-kernel@vger.kernel.org, nicolas.ferre@microchip.com,
+ sachin.ghadi@sifive.com, robh+dt@kernel.org, paul.walmsley@sifive.com,
+ linux-riscv@lists.infradead.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Linus,
+On Mon, Jun 17, 2019 at 09:49:27AM +0530, Yash Shah wrote:
+> The management IP block is tightly coupled with the Cadence MACB IP
+> block on the FU540, and manages many of the boundary signals from the
+> MACB IP. This patch only controls the tx_clk input signal to the MACB
+> IP. Future patches may add support for monitoring or controlling other
+> IP boundary signals.
+> 
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> ---
+>  drivers/net/ethernet/cadence/Kconfig     |   6 ++
+>  drivers/net/ethernet/cadence/macb_main.c | 129 +++++++++++++++++++++++++++++++
+>  2 files changed, 135 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/cadence/Kconfig b/drivers/net/ethernet/cadence/Kconfig
+> index b998401..d478fae 100644
+> --- a/drivers/net/ethernet/cadence/Kconfig
+> +++ b/drivers/net/ethernet/cadence/Kconfig
+> @@ -48,4 +48,10 @@ config MACB_PCI
+>  	  To compile this driver as a module, choose M here: the module
+>  	  will be called macb_pci.
+>  
+> +config MACB_SIFIVE_FU540
+> +	bool "Cadence MACB/GEM support for SiFive FU540 SoC"
+> +	depends on MACB && GPIO_SIFIVE
+> +	help
+> +	  Enable the Cadence MACB/GEM support for SiFive FU540 SoC.
+> +
+>  endif # NET_VENDOR_CADENCE
+> diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+> index c049410..275b5e8 100644
+> --- a/drivers/net/ethernet/cadence/macb_main.c
+> +++ b/drivers/net/ethernet/cadence/macb_main.c
+> @@ -10,6 +10,7 @@
+>  
+>  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+>  #include <linux/clk.h>
+> +#include <linux/clk-provider.h>
+>  #include <linux/crc32.h>
+>  #include <linux/module.h>
+>  #include <linux/moduleparam.h>
+> @@ -40,6 +41,15 @@
+>  #include <linux/pm_runtime.h>
+>  #include "macb.h"
+>  
+> +/* This structure is only used for MACB on SiFive FU540 devices */
+> +struct sifive_fu540_macb_mgmt {
+> +	void __iomem *reg;
+> +	unsigned long rate;
+> +	struct clk_hw hw;
+> +};
+> +
+> +static struct sifive_fu540_macb_mgmt *mgmt;
+> +
+>  #define MACB_RX_BUFFER_SIZE	128
+>  #define RX_BUFFER_MULTIPLE	64  /* bytes */
+>  
+> @@ -3903,6 +3913,116 @@ static int at91ether_init(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +static unsigned long fu540_macb_tx_recalc_rate(struct clk_hw *hw,
+> +					       unsigned long parent_rate)
+> +{
+> +	return mgmt->rate;
+> +}
+> +
+> +static long fu540_macb_tx_round_rate(struct clk_hw *hw, unsigned long rate,
+> +				     unsigned long *parent_rate)
+> +{
+> +	if (WARN_ON(rate < 2500000))
+> +		return 2500000;
+> +	else if (rate == 2500000)
+> +		return 2500000;
+> +	else if (WARN_ON(rate < 13750000))
+> +		return 2500000;
+> +	else if (WARN_ON(rate < 25000000))
+> +		return 25000000;
+> +	else if (rate == 25000000)
+> +		return 25000000;
+> +	else if (WARN_ON(rate < 75000000))
+> +		return 25000000;
+> +	else if (WARN_ON(rate < 125000000))
+> +		return 125000000;
+> +	else if (rate == 125000000)
+> +		return 125000000;
+> +
+> +	WARN_ON(rate > 125000000);
+> +
+> +	return 125000000;
+> +}
+> +
+> +static int fu540_macb_tx_set_rate(struct clk_hw *hw, unsigned long rate,
+> +				  unsigned long parent_rate)
+> +{
+> +	rate = fu540_macb_tx_round_rate(hw, rate, &parent_rate);
+> +	if (rate != 125000000)
+> +		iowrite32(1, mgmt->reg);
+> +	else
+> +		iowrite32(0, mgmt->reg);
+> +	mgmt->rate = rate;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct clk_ops fu540_c000_ops = {
+> +	.recalc_rate = fu540_macb_tx_recalc_rate,
+> +	.round_rate = fu540_macb_tx_round_rate,
+> +	.set_rate = fu540_macb_tx_set_rate,
+> +};
+> +
+> +static int fu540_c000_clk_init(struct platform_device *pdev, struct clk **pclk,
+> +			       struct clk **hclk, struct clk **tx_clk,
+> +			       struct clk **rx_clk, struct clk **tsu_clk)
+> +{
+> +	struct clk_init_data init;
+> +	int err = 0;
+> +
+> +	err = macb_clk_init(pdev, pclk, hclk, tx_clk, rx_clk, tsu_clk);
+> +	if (err)
+> +		return err;
+> +
+> +	mgmt = devm_kzalloc(&pdev->dev, sizeof(*mgmt), GFP_KERNEL);
+> +	if (!mgmt)
+> +		return -ENOMEM;
+> +
+> +	init.name = "sifive-gemgxl-mgmt";
+> +	init.ops = &fu540_c000_ops;
+> +	init.flags = 0;
+> +	init.num_parents = 0;
+> +
+> +	mgmt->rate = 0;
+> +	mgmt->hw.init = &init;
+> +
+> +	*tx_clk = clk_register(NULL, &mgmt->hw);
+> +	if (IS_ERR(*tx_clk))
+> +		return PTR_ERR(*tx_clk);
+> +
+> +	err = clk_prepare_enable(*tx_clk);
+> +	if (err)
+> +		dev_err(&pdev->dev, "failed to enable tx_clk (%u)\n", err);
+> +	else
+> +		dev_info(&pdev->dev, "Registered clk switch '%s'\n", init.name);
+> +
+> +	return 0;
+> +}
+> +
+> +static int fu540_c000_init(struct platform_device *pdev)
+> +{
+> +	struct resource *res;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+> +	if (!res)
+> +		return -ENODEV;
+> +
+> +	mgmt->reg = ioremap(res->start, resource_size(res));
+> +	if (!mgmt->reg)
+> +		return -ENOMEM;
+> +
+> +	return macb_init(pdev);
+> +}
+> +
+> +static const struct macb_config fu540_c000_config = {
+> +	.caps = MACB_CAPS_GIGABIT_MODE_AVAILABLE | MACB_CAPS_JUMBO |
+> +		MACB_CAPS_GEM_HAS_PTP,
+> +	.dma_burst_length = 16,
+> +	.clk_init = fu540_c000_clk_init,
+> +	.init = fu540_c000_init,
+> +	.jumbo_max_len = 10240,
+> +};
+> +
+>  static const struct macb_config at91sam9260_config = {
+>  	.caps = MACB_CAPS_USRIO_HAS_CLKEN | MACB_CAPS_USRIO_DEFAULT_IS_MII_GMII,
+>  	.clk_init = macb_clk_init,
+> @@ -3992,6 +4112,9 @@ static int at91ether_init(struct platform_device *pdev)
+>  	{ .compatible = "cdns,emac", .data = &emac_config },
+>  	{ .compatible = "cdns,zynqmp-gem", .data = &zynqmp_config},
+>  	{ .compatible = "cdns,zynq-gem", .data = &zynq_config },
+> +#ifdef CONFIG_MACB_SIFIVE_FU540
+> +	{ .compatible = "sifive,fu540-macb", .data = &fu540_c000_config },
+> +#endif
 
-The following changes since commit a188339ca5a396acc588e5851ed7e19f66b0ebd9:
+This #ifdef should not be needed.
 
-  Linux 5.2-rc1 (2019-05-19 15:47:09 -0700)
+>  	{ /* sentinel */ }
+>  };
+>  MODULE_DEVICE_TABLE(of, macb_dt_ids);
+> @@ -4199,6 +4322,9 @@ static int macb_probe(struct platform_device *pdev)
+>  
+>  err_disable_clocks:
+>  	clk_disable_unprepare(tx_clk);
+> +#ifdef CONFIG_MACB_SIFIVE_FU540
+> +	clk_unregister(tx_clk);
+> +#endif
 
-are available in the Git repository at:
+So long as tx_clk is NULL, you can call clk_unregister(). So please
+remove the #ifdef.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv-for-v5.2/fixes-rc6
 
-for you to fetch changes up to 259931fd3b96e4386b361b7f80c1d89b266234c8:
+>  	clk_disable_unprepare(hclk);
+>  	clk_disable_unprepare(pclk);
+>  	clk_disable_unprepare(rx_clk);
+> @@ -4233,6 +4359,9 @@ static int macb_remove(struct platform_device *pdev)
+>  		pm_runtime_dont_use_autosuspend(&pdev->dev);
+>  		if (!pm_runtime_suspended(&pdev->dev)) {
+>  			clk_disable_unprepare(bp->tx_clk);
+> +#ifdef CONFIG_MACB_SIFIVE_FU540
+> +			clk_unregister(bp->tx_clk);
+> +#endif
 
-  riscv: remove unused barrier defines (2019-06-17 07:09:43 -0700)
+Same here.
 
-----------------------------------------------------------------
-RISC-V patches for v5.2-rc6
+In general try to avoid #ifdef in C code.
 
-This tag contains fixes, defconfig, and DT data changes for the v5.2-rc
-series.  The fixes are relatively straightforward:
-
-- Addition of a TLB fence in the vmalloc_fault path, so the CPU doesn't
-  enter an infinite page fault loop;
-- Readdition of the pm_power_off export, so device drivers that
-  reassign it can now be built as modules;
-- A udelay() fix for RV32, fixing a miscomputation of the delay time;
-- Removal of deprecated smp_mb__*() barriers.
-
-The tag also adds initial DT data infrastructure for arch/riscv, along
-with initial data for the SiFive FU540-C000 SoC and the corresponding
-HiFive Unleashed board.
-
-We also update the RV64 defconfig to include some core drivers for the
-FU540 in the build.
-
-----------------------------------------------------------------
-Andreas Schwab (1):
-      riscv: export pm_power_off again
-
-Kevin Hilman (1):
-      RISC-V: defconfig: enable clocks, serial console
-
-Nick Hu (1):
-      riscv: Fix udelay in RV32.
-
-Paul Walmsley (5):
-      arch: riscv: add support for building DTB files from DT source data
-      dt-bindings: riscv: sifive: add YAML documentation for the SiFive FU540
-      dt-bindings: riscv: convert cpu binding to json-schema
-      riscv: dts: add initial support for the SiFive FU540-C000 SoC
-      riscv: dts: add initial board data for the SiFive HiFive Unleashed
-
-Rolf Eike Beer (1):
-      riscv: remove unused barrier defines
-
-ShihPo Hung (1):
-      riscv: mm: synchronize MMU after pte change
-
- Documentation/devicetree/bindings/riscv/cpus.yaml  | 168 ++++++++++++++++
- .../devicetree/bindings/riscv/sifive.yaml          |  25 +++
- MAINTAINERS                                        |   9 +
- arch/riscv/boot/dts/Makefile                       |   2 +
- arch/riscv/boot/dts/sifive/Makefile                |   2 +
- arch/riscv/boot/dts/sifive/fu540-c000.dtsi         | 215 +++++++++++++++++++++
- .../riscv/boot/dts/sifive/hifive-unleashed-a00.dts |  65 +++++++
- arch/riscv/configs/defconfig                       |   4 +
- arch/riscv/include/asm/bitops.h                    |   5 -
- arch/riscv/kernel/reset.c                          |   1 +
- arch/riscv/lib/delay.c                             |   2 +-
- arch/riscv/mm/fault.c                              |  13 ++
- 12 files changed, 505 insertions(+), 6 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/riscv/cpus.yaml
- create mode 100644 Documentation/devicetree/bindings/riscv/sifive.yaml
- create mode 100644 arch/riscv/boot/dts/Makefile
- create mode 100644 arch/riscv/boot/dts/sifive/Makefile
- create mode 100644 arch/riscv/boot/dts/sifive/fu540-c000.dtsi
- create mode 100644 arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+   Andrew
 
 _______________________________________________
 linux-riscv mailing list
