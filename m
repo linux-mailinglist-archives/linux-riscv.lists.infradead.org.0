@@ -2,78 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE4FE483F9
-	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 15:31:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B4884840F
+	for <lists+linux-riscv@lfdr.de>; Mon, 17 Jun 2019 15:34:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OZqsj9snfvMIDyzZvpGJTN8KwFSn3lVm/TDNQACkppU=; b=OZ8zlDMOT8zMXTmujMzT7rIav
-	mcQe4iZ79BimuBoJCPnt6L7DvOQH1Oid5QbOAgl5XbNgnhNW+iPqm1hvWG43f7dvp8aNx0GNs5Nod
-	CqYElfpKPsZDFA535EvitJIs0FfRGOwOCjN0c5pysmOtM2xhd0nnQZz7j5uGLkZwc+Mz7KM4ne0Jc
-	bS/TSX9XO5gXSk/Zv1h6dVF4unl/Tp8xoTMyWBvuzrodBE9lWolzPdG+IssWKC32ugS5Ah8rk38Ua
-	AEYCjsCNNYAa81N2eXj/vmVqtGAXO/nhn0k2l9Ox7VtSHzXscqs6X5d7b33PLf2y8EUMoh7h+peil
-	3bHdQOOIg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0/hKDExrTDJr6iUbA3ZtTjUiODDjLpGYcruaqwVpzUk=; b=Lnln4nfqb6C1vf
+	rUwK6mslzNJkB84HCfXKYUuoIX+LbmAwr+ftgyDm9G9uI3IqyulqmVMo3RepX9W+ZbQ5D8VV877b1
+	CTKctpmG26QhMdPhrFhjLu29yKQbQzj1Co/l+iLsH/l/PXQnqEMStZJJWKusDDVNrkzPavPG2GETe
+	MOntihqYCD7xJKpWgm73knZLDpWe5C8zzWu8kGHlgNVPeLjYaXABia+zuxMajse752fZeOuifsxX6
+	F465JpZzNZ2NsWyrr7y+gAmB4Jvkc4akmtLhQlLv0OzuH6Wya2+POQdbTG5fJgYSKx0cnK7xoCkv9
+	mXAvUwAKPrWS3YSv5FSA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hcrjB-0002jS-IW; Mon, 17 Jun 2019 13:31:17 +0000
+	id 1hcrmD-00031Z-KN; Mon, 17 Jun 2019 13:34:25 +0000
 Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hcrj9-0002j3-4d
- for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 13:31:16 +0000
-Received: by mail-ed1-x541.google.com with SMTP id d4so16162039edr.13
- for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 06:31:14 -0700 (PDT)
+ id 1hcrmA-00031I-Dk
+ for linux-riscv@lists.infradead.org; Mon, 17 Jun 2019 13:34:23 +0000
+Received: by mail-ed1-x541.google.com with SMTP id i11so16249193edq.0
+ for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 06:34:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=iglT04FcipTQZ9R1tL/JwrAUXSvZoEF8j6evl1x/Nbw=;
- b=Dob6PcycwADLVyjBw2X3Y1D0nn58KYyDmxO72Maix1lCjKRyuifKMWWJonI8tIlSkH
- vAJnn1O9DjiJfgbsF+aPG8XNZM/bGgi9JxDYKQokBGzW0MEAqPfCwOT/DLyhp8qUIbAn
- H029he9fGLLeHDUBnpsysGKFo0q+Vz60SsOEWh32YD/Teudh5InYovGZeDL6W62ZPYZz
- AJZwfjO/x3Sv96UrvrXTNysomgEjJLE9Z5mZpCtjBG51BfBmXpkKnm2UiXSYM08sKozM
- 4fiTGbN28luuqq8XTWUhtfckT82uE2jbS0d24lHGOp99tN6Ti+KcTgjajeNFVAE8DAyq
- B1KA==
+ bh=29y3Mgtng5aMUJDC4H0qMm2rRqZ9I4Tab60HsoifBKE=;
+ b=iiyPz4/urirl6pn41b6+fYYB4+HK+KjFEVg+rcP96Niej9XW8ggbYknVlA9nvjw/Gq
+ W7Z/jsyCEdY45CVamvC1Q6gxfEeq8JDC4Zq6lzp9F1M503d5Aid5+MRdLwD7zLnIyAKO
+ rhDSU2dBRxFdkviYOder9e1WQXNAC50lAOEcpVn1jDupmrA0xzSGzCzvpFPTQrF80GSl
+ UjVVWckuZmLKWAzg4m2y2GSk3bjEUPfIbkh/sWL2u1QeyYSgq54P4KlbH2tg9pTdiupx
+ zA5byZAsAicdngREVaKYV7V7FJr7gEnuBhiY4pzJsvvwsS1vtloGd0P9DlM7g3219Hgc
+ aDMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=iglT04FcipTQZ9R1tL/JwrAUXSvZoEF8j6evl1x/Nbw=;
- b=E5xM8V6fqG4eHT796Oj7L5RXW/esfM93RzyHN3iYnOCxPIyfmp1R4+XNsyFbh4Omvl
- ynmX++pnTCYIx+acvXZny2qSJ3sFReKjGyXp1dxFWRlSZykaaocBffPvc9MkeojK3L00
- JSR1x39fZuPHMQTP0kFyDxyFkF8AqB/fhXaIAz7feO4/MUqBKQokbldxu+/bolguE5CE
- UE337VmfkjLId1crqG6XcPkNahx+ETLrK2fh7cjdphc3RUoJSWssM0PeJ1XU9BVqUBbe
- wxrd1zaseVcp3nJXrDp1hFEJENTGr6XOPchfbliG/O/haR7XP6HXsMYRdOeLozza5rnh
- 3+eQ==
-X-Gm-Message-State: APjAAAXm3/tmYIyoHPu+p9YJ96wcoau/UJh5zhuHSvJO5JjoHLUMVg2+
- yqmWD4mcyUxne0HVIwq5xEAJQQ==
-X-Google-Smtp-Source: APXvYqw79dPHvyxsf5mZq0pY6zad6SdFISOeob5pZiNfxzm9w9Ka+tH+zRlNTgEaFBi+McaBz4N46g==
-X-Received: by 2002:a50:92e1:: with SMTP id l30mr26073223eda.141.1560778273479; 
- Mon, 17 Jun 2019 06:31:13 -0700 (PDT)
+ bh=29y3Mgtng5aMUJDC4H0qMm2rRqZ9I4Tab60HsoifBKE=;
+ b=hcGw5OGr4ClBiVF7VqMMU7jQdciUqePdYilR3o7qshtMK3QXoTB5JczE5nI0lMYS+4
+ LT64kSNtN9QKexDegkIQEhni76EnDU9AtC9ry78WtItUNHPLxEwAIXoseAog3z6uFFNP
+ u2O4fGtof+PshyuUBLEpVO+wJ+UsjWR0SI63cltkAw3dA0e8Zpfmj3w0d+Rh/WspTBFD
+ EOrOjL9Vrrde/BxvfZAcL6mBGkHMu8U5YRq7fIia75G8H6GXfua9NkY+E3KBgZYx1NwA
+ kpsgo9G1yaSfx9pH66yt3s4vqLqmJ5IJvuxEYbb+DalVkDRRnbKK+b/tjlKeS7dYb6AU
+ 0nEQ==
+X-Gm-Message-State: APjAAAXL0rqN4OJVMZUkOi6aGCgu4q46frHYX/AVnHQ7YoH9ga/5aGe3
+ /2ba+A2b+bHRgtLPny1cGcGH8Q==
+X-Google-Smtp-Source: APXvYqx3hw2/cUXjwgExW3X/oUc8Z8K5NIiFF2dS+eLdGSmH21KhxUE5NC7CCNvDNSXVIxx5wAtf7w==
+X-Received: by 2002:a50:9f81:: with SMTP id c1mr22631151edf.140.1560778461271; 
+ Mon, 17 Jun 2019 06:34:21 -0700 (PDT)
 Received: from localhost ([81.92.102.43])
- by smtp.gmail.com with ESMTPSA id o7sm2141917ejj.88.2019.06.17.06.31.12
+ by smtp.gmail.com with ESMTPSA id q11sm3719648edd.51.2019.06.17.06.34.20
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 17 Jun 2019 06:31:12 -0700 (PDT)
-Date: Mon, 17 Jun 2019 06:31:12 -0700 (PDT)
+ Mon, 17 Jun 2019 06:34:20 -0700 (PDT)
+Date: Mon, 17 Jun 2019 06:34:20 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Troy Benjegerdes <troy.benjegerdes@sifive.com>
+To: Andreas Schwab <schwab@suse.de>
 Subject: Re: Working device tree for the HifiveU
-In-Reply-To: <62E04A53-803C-44AD-AAFC-EAD7D6BFE289@sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1906170626460.32654@viisi.sifive.com>
+In-Reply-To: <mvmzhmg49z2.fsf@suse.de>
+Message-ID: <alpine.DEB.2.21.9999.1906170633110.32654@viisi.sifive.com>
 References: <mvmlfy05xjm.fsf@suse.de>
  <alpine.DEB.2.21.9999.1906170347460.19994@viisi.sifive.com>
  <mvm8su05rqc.fsf@suse.de>
  <alpine.DEB.2.21.9999.1906170546100.4549@viisi.sifive.com>
  <mvm4l4o5qdd.fsf@suse.de>
- <62E04A53-803C-44AD-AAFC-EAD7D6BFE289@sifive.com>
+ <alpine.DEB.2.21.9999.1906170625480.32654@viisi.sifive.com>
+ <mvmzhmg49z2.fsf@suse.de>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-732196312-1560778272=:32654"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190617_063115_184221_A5902EB2 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20190617_063422_475938_14B70C75 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -102,81 +103,33 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Andreas Schwab <schwab@suse.de>, Yash Shah <yash.shah@sifive.com>,
- linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Mon, 17 Jun 2019, Andreas Schwab wrote:
 
---8323329-732196312-1560778272=:32654
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+> On Jun 17 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
+> 
+> > We can't add the Ethernet data yet, since it hasn't been approved by the 
+> > DT maintainers.  But of course you can always add it yourself to your own 
+> > kernel branch, along with the driver.
+> 
+> Which driver?
 
-On Mon, 17 Jun 2019, Troy Benjegerdes wrote:
+This one:
 
-> > On Jun 17, 2019, at 7:49 AM, Andreas Schwab <schwab@suse.de> wrote:
-> >=20
-> > On Jun 17 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> >=20
-> >> On Mon, 17 Jun 2019, Andreas Schwab wrote:
-> >>=20
-> >>> On Jun 17 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> >>>=20
-> >>>> On Mon, 17 Jun 2019, Andreas Schwab wrote:
-> >>>>=20
-> >>>>> What is the correct device tree for the HifiveU that works both wit=
-h
-> >>>>> 5.2+ and U-Boot?
-> >>>>=20
-> >>>> U-Boot should follow the kernel's DT data:
-> >>>>=20
-> >>>> http://git.denx.de/?p=3Du-boot.git;a=3Dblob;f=3Ddoc/device-tree-bind=
-ings/README;h=3D2ea3439a170236bd912930991ad70ee7289dcd29;hb=3DHEAD
-> >>>>=20
-> >>>> Thus the upstream-bound data is currently here:
-> >>>>=20
-> >>>> https://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git/log/=
-?h=3Dfixes
-> >>>=20
-> >>> That is completely useless.
-> >>=20
-> >> If you have specific questions or comments, I or someone else would be=
-=20
-> >> happy to try to help you out.  Otherwise, there's not much that we can=
- do.
-> >=20
-> > It doesn't even have ethernet, so how can it be of any use?
-> >=20
-> > Andreas.
-> >=20
->=20
-> Could we please include Yash=E2=80=99s macb patches (and
-> associated device tree changes) in the =E2=80=98fixes=E2=80=99 branch on=
-=20
-> https://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
+https://lore.kernel.org/linux-riscv/1560745167-9866-3-git-send-email-yash.shah@sifive.com/T/#u
 
-Yash's DT binding need to be approved by the DT maintainers first.  And=20
-ideally, his MACB driver change needs to be merged first by the networking=
-=20
-maintainers.
-
-Once that happens, we'll be able to add Ethernet support to the upstream=20
-FU540 and HiFive Unleashed device tree data files.
+Note that Yash is planning to post a v3 with the CONFIG_MACB_SIFIVE_FU540 
+conditional removed.
 
 
 - Paul
---8323329-732196312-1560778272=:32654
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---8323329-732196312-1560778272=:32654--
-
