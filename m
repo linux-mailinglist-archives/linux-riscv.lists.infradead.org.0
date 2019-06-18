@@ -2,76 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C73B497DE
-	for <lists+linux-riscv@lfdr.de>; Tue, 18 Jun 2019 05:55:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E2AE5497EA
+	for <lists+linux-riscv@lfdr.de>; Tue, 18 Jun 2019 06:04:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1s7h7rKs3WnaFXrSBz4whaDxiAnpSvspRz1ObOB04Wk=; b=C5tuH473LNQEi2
-	GOOFEcHvPJyoXk/GiXagqK7p8PCsZXoi5HqJbHSE/ns9gKy0NDFwKx/DkGS+ta3X4HmgOjCcJrys0
-	ksOEPbpNdIzlU8gfkU5nwcTjz5Q7fAz34KG4082XdVGI6pK4N9jHM7u6DVYyZrVuCdSaqE6Iy0cNQ
-	meUROijJSee21WNlXkNed25U32kUOJ2RzN+TV+JoCd2ZSRN98Gw1RwRItV8xmWw3Tdj7mLyxy9+0Q
-	F3h5kOcbHVLQhX/q+8jzO2FDGjKwOmINAYXdPlKwJXH1aEeNkozjD3iQoHQ87GwKJR73HLI8swXkr
-	PR13l5hlE2m37osLpJUg==;
+	List-Owner; bh=78oQhNrksJs/C+L6scVt+YDzFijM+1fXkcKJpwVt46c=; b=ol0Q6GtNUqDpai
+	+1llLmkvC5iZcwevAjdBVCXFPc8MtNfUy1Uj4gMgVfr2Jim7zubhwe6GEdpLLW+PqycVnmF+3RUOQ
+	5uINuJwsoyLpJpybdJ70/MhAHJ3Pa+Y56RgwO8Kb955O6/XPt1eRtT9u11sQCkcFA24j28a9U/byS
+	DnENxGeswDa0oSRIDYPsRGiGhEcNrUyZyFxPv9jjLZSsyeCh7aqwtrQfdH9Esb1y6l6YaayGTAeP0
+	A2R4/Frfus6tSz4URnjGqhvoCF0pvfwq6TK3YVVSDGFfNBfUM+NulppPRk2VLLyr51rmBzRcz9aKP
+	VPVODRhNFfhGLmEIJUPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hd5Dk-0005q0-3c; Tue, 18 Jun 2019 03:55:44 +0000
-Received: from mail-ua1-x942.google.com ([2607:f8b0:4864:20::942])
+	id 1hd5MS-0000FJ-UQ; Tue, 18 Jun 2019 04:04:44 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hd5Dg-0005pB-KO
- for linux-riscv@lists.infradead.org; Tue, 18 Jun 2019 03:55:41 +0000
-Received: by mail-ua1-x942.google.com with SMTP id r7so4475419ual.2
- for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 20:55:40 -0700 (PDT)
+ id 1hd5MP-0000Eq-51
+ for linux-riscv@lists.infradead.org; Tue, 18 Jun 2019 04:04:42 +0000
+Received: by mail-lj1-x244.google.com with SMTP id 131so11577468ljf.4
+ for <linux-riscv@lists.infradead.org>; Mon, 17 Jun 2019 21:04:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hbfLnulmtVwAqcwjBVQHbsEOQQi7C7z9WxtDTCZnrSI=;
- b=Re+YlSEGCfJ1SB3VhHEwCwAT+I6ygr7MjUUslXWdDU+dVyBdMjbbUUINT+gn0f95Gt
- gg9fFMRoUhdyB6aOwVFzTZ3x9HpJzIfrsQQmJYlKO1ckg+tr2CWBpsvsicjNlcfcOZPh
- Jjo2Ollxxgw1eq8cCXM6IblE9BTSEwKlx+gLpDFZZml6K9kj5sixbtZvglbkm5NeO1FJ
- pn3L7N/EWqLXNXzMgN2GKO0YoOCHfJV7awJALwiImDvE42Anq00vY7lL2mf79V5hV7EE
- WHb1h4xgcSiq4zEuMJvXyznw1cgR1HYOomy/E98TBj9AOe7bTOU1woffrfzuLkYRRzhz
- SzBg==
+ :cc; bh=sJLmkVwnPans9/iuFpcwnbTM7EUsIIBXDTl8TGQaxjk=;
+ b=fNNVvfjLstujPCDm6U22v9kUb8V+ystPZzxjPsEpjTbMtRt6UZtFM3QfkWDyzAQMIW
+ E6KfxvJkYCAiMigfxeNfkJbvlgJdvzEEfyDNXcSQ4hGpsd9Yv0PN3VCeG9Syybma3zAA
+ YweVCf2jDX7KE7OToEgZ3Hm86et1Zzc1wT1rS2GKgDnXDs7wUV3rbSDjUKshW4DDBFiv
+ WiW8rczljYaGap+qcx/bFr34QWpznmS62Lv9HHybuJDuuqKHqJD4Khp833m98/pUJhJR
+ z/Wi3GOSjsiZFAWusKz/vCsNsKbGzD11ktzwf/VoHCT35CeFpX/vlTnPTD2hFmBTUNJt
+ WypA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hbfLnulmtVwAqcwjBVQHbsEOQQi7C7z9WxtDTCZnrSI=;
- b=naMi3Zpb6/9WaAFYxdqhUB7y3SYk9/ar9fsT5A8420HO1/9J8y1I1F/ejfPKqdZPxu
- B+EB7P5dYQ1WupIKwxc3fYJDPxANtCpVjvJcSFoD+COHi/Rhx4Wc8ACIIh6946MguG3d
- HGo25li3Byhf+7+cN7G80NcDteBUYpnainNCWzUe87CQLdHx1ZOtDdgrXOFHrqWXM4Ec
- ErdRIvvEfh8yiVHXNhvzy8DzUxWCaFraFTrgiclQSe54aI7f552KXkEc7+1m245xHhvZ
- Elbko2C6q/PBM7uB/nyQ0QBtbaaPPlume/2Q8GrC5humUQWRXJZogIoYNZh2NuLsBiOQ
- FPaw==
-X-Gm-Message-State: APjAAAWFYYjdNXNz6UlUAIMeIpp/T+8Ez3duelX0ZsyNGQIoMKuTwfYv
- 57/KC5N57HoK0q/BRFB+Noxu7HGGoABey7lDP83plQ==
-X-Google-Smtp-Source: APXvYqy1BIINnP7iB/p/G3CX4qFC0WhpHRsPDZZFp+sb3Ovjpawek1cuOI5hDkFHe03zqioI/wdd62UnpITKNKUex9w=
-X-Received: by 2002:a67:c84:: with SMTP id 126mr54621301vsm.178.1560830139405; 
- Mon, 17 Jun 2019 20:55:39 -0700 (PDT)
+ bh=sJLmkVwnPans9/iuFpcwnbTM7EUsIIBXDTl8TGQaxjk=;
+ b=Nh1OnXCtWrIOF0y/vaL7iX6Voyozu0Rj8GZSW7WYbVN5m/MA0fe0xDMjLxclXKQJWw
+ rxsrI0qnmtBGnAnhp2Q2PPhvwol0ZBI046GYyHul60dudG4BZlZGN2PAKMaIAaXuxyHP
+ JU58rwKGGBFk67QcMEMxwpXqihDxGGOWawWYS2w9dYMy72KtCYlSbfEOy6Hg+8wd/wCx
+ vtq/uUhMj2dx0FSKs5kf356pjUraqfYvCS6tX1uabIbdSvh+CDZf03BKRwqmPlMPvIPZ
+ m2tBs4k1PYlqNFILA3kLnj+a0gv8KWrVqLZZi0073VmsGcvMGoTggyCfs87B5pXQXpZO
+ ccZQ==
+X-Gm-Message-State: APjAAAVL+rozd463CJErfmPPxQreWDs/jbu5KZzDLgiE07rPThGCiukk
+ zDexI+FkP4oItpa3GbFlzpjiGGJTC+HQDStECdV6Aw==
+X-Google-Smtp-Source: APXvYqzHxAVSyFWFoE5KWadzgd5NrlnSBkdcYDfnoz898BtjOkb8yWEu0/Ss3PN8knMcABE84pxCcZt3rdAD2rwB66w=
+X-Received: by 2002:a2e:b047:: with SMTP id d7mr13909677ljl.8.1560830679001;
+ Mon, 17 Jun 2019 21:04:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <1560336476-31763-1-git-send-email-sagar.kadam@sifive.com>
- <1560336476-31763-3-git-send-email-sagar.kadam@sifive.com>
- <70732c8e-111f-7c46-9e93-11894d944a1d@ti.com>
- <CAARK3HmFg=v+cMGAykPPpwxDGaSKk5k+Gz4fSHQPQmg-rCjPhQ@mail.gmail.com>
- <547e251d87e307fa4d1e31dfc61b496c152f0905.camel@perches.com>
-In-Reply-To: <547e251d87e307fa4d1e31dfc61b496c152f0905.camel@perches.com>
-From: Sagar Kadam <sagar.kadam@sifive.com>
-Date: Tue, 18 Jun 2019 09:25:27 +0530
-Message-ID: <CAARK3H=4QjWr3D7GpNbw9YbFm9C+t5CDcMU=o6_O7rb1ofHuMA@mail.gmail.com>
-Subject: Re: [PATCH v5 2/3] mtd: spi-nor: add support to unlock flash device
-To: Joe Perches <joe@perches.com>
+References: <1560745167-9866-1-git-send-email-yash.shah@sifive.com>
+ <1560745167-9866-3-git-send-email-yash.shah@sifive.com>
+ <20190617155834.GK25211@lunn.ch>
+In-Reply-To: <20190617155834.GK25211@lunn.ch>
+From: Yash Shah <yash.shah@sifive.com>
+Date: Tue, 18 Jun 2019 09:34:02 +0530
+Message-ID: <CAJ2_jOEm1+HFewpvq6fdoHaTtghpnxkkz9LWTz3-xWJAtYp8-g@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] macb: Add support for SiFive FU540-C000
+To: Andrew Lunn <andrew@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190617_205540_679904_2D179072 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20190617_210441_214962_9402A047 
+X-CRM114-Status: GOOD (  12.21  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:942 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:244 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -93,57 +91,70 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, Vignesh Raghavendra <vigneshr@ti.com>,
- tudor.ambarus@microchip.com, Wesley Terpstra <wesley@sifive.com>,
- richard@nod.at, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, marek.vasut@gmail.com,
- linux-mtd@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>,
- miquel.raynal@bootlin.com, linux-riscv@lists.infradead.org,
- computersforpeace@gmail.com, dwmw2@infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, netdev <netdev@vger.kernel.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>, linux-kernel@vger.kernel.org,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>, Rob Herring <robh+dt@kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hello Joe,
+On Mon, Jun 17, 2019 at 9:28 PM Andrew Lunn <andrew@lunn.ch> wrote:
+>
+> On Mon, Jun 17, 2019 at 09:49:27AM +0530, Yash Shah wrote:
+...
+> >  static const struct macb_config at91sam9260_config = {
+> >       .caps = MACB_CAPS_USRIO_HAS_CLKEN | MACB_CAPS_USRIO_DEFAULT_IS_MII_GMII,
+> >       .clk_init = macb_clk_init,
+> > @@ -3992,6 +4112,9 @@ static int at91ether_init(struct platform_device *pdev)
+> >       { .compatible = "cdns,emac", .data = &emac_config },
+> >       { .compatible = "cdns,zynqmp-gem", .data = &zynqmp_config},
+> >       { .compatible = "cdns,zynq-gem", .data = &zynq_config },
+> > +#ifdef CONFIG_MACB_SIFIVE_FU540
+> > +     { .compatible = "sifive,fu540-macb", .data = &fu540_c000_config },
+> > +#endif
+>
+> This #ifdef should not be needed.
+>
+> >       { /* sentinel */ }
+> >  };
+> >  MODULE_DEVICE_TABLE(of, macb_dt_ids);
+> > @@ -4199,6 +4322,9 @@ static int macb_probe(struct platform_device *pdev)
+> >
+> >  err_disable_clocks:
+> >       clk_disable_unprepare(tx_clk);
+> > +#ifdef CONFIG_MACB_SIFIVE_FU540
+> > +     clk_unregister(tx_clk);
+> > +#endif
+>
+> So long as tx_clk is NULL, you can call clk_unregister(). So please
+> remove the #ifdef.
+>
+>
+> >       clk_disable_unprepare(hclk);
+> >       clk_disable_unprepare(pclk);
+> >       clk_disable_unprepare(rx_clk);
+> > @@ -4233,6 +4359,9 @@ static int macb_remove(struct platform_device *pdev)
+> >               pm_runtime_dont_use_autosuspend(&pdev->dev);
+> >               if (!pm_runtime_suspended(&pdev->dev)) {
+> >                       clk_disable_unprepare(bp->tx_clk);
+> > +#ifdef CONFIG_MACB_SIFIVE_FU540
+> > +                     clk_unregister(bp->tx_clk);
+> > +#endif
+>
+> Same here.
+>
+> In general try to avoid #ifdef in C code.
 
-Thanks for reviewing the patch.
+Will remove all the #ifdef in v3.
+Thanks for your comments.
 
-On Tue, Jun 18, 2019 at 5:55 AM Joe Perches <joe@perches.com> wrote:
->
-> On Mon, 2019-06-17 at 21:10 +0530, Sagar Kadam wrote:
-> > On Sun, Jun 16, 2019 at 6:35 PM Vignesh Raghavendra <vigneshr@ti.com> wrote:
-> []
-> > > > +static int issi_unlock(struct spi_nor *nor, loff_t ofs, uint64_t len)
-> > > > +{
-> []
-> > > > +     if (ret > 0 && !(ret & mask)) {
-> > > > +             dev_info(nor->dev,
-> > > > +                     "ISSI Block Protection Bits cleared SR=0x%x", ret);
->
-> Please use '\n' terminations on formats
->
-I will include this in v6.
-
-> > > > +             ret = 0;
-> > > > +     } else {
-> > > > +             dev_err(nor->dev, "ISSI Block Protection Bits not cleared\n");
->
-> like this one
->
-> > > > +             ret = -EINVAL;
-> > > > +     }
-> > > > +     return ret;
-> > > > +}
-> > > > +
-> > > > +/**
-> > > >   * spansion_quad_enable() - set QE bit in Configuraiton Register.
->
-> s/Configuraiton/Configuration/
->
->
-Thanks & BR,
-Sagar Kadam
+- Yash
 
 _______________________________________________
 linux-riscv mailing list
