@@ -2,71 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38AAC49A7E
-	for <lists+linux-riscv@lfdr.de>; Tue, 18 Jun 2019 09:24:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D98A949B98
+	for <lists+linux-riscv@lfdr.de>; Tue, 18 Jun 2019 09:58:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=9OH7Gz1+IDeHVkpZtyX2Do6i5Dd2SKhi+GPXF0vem6Q=; b=MVzPIcP875gYcRKSVgTql4dbQ
-	DoO6GxhbFupjZs0E0ttsYhgnEb/zlHhpQ6C5X+LDkLKMdbqQJX/zEx4XVZsVMn6JdOiqbKem4uikH
-	lk9196QBo0ScIIlz2rKJZcrXIuBUFGTPEshEq6hPbTNy7ttkWGYjBFfKXp3myH0xSIuUVT9nZ8/Ws
-	uaeLGs3nksUl16dMqAsyePKpA7nBEwKUCO/1OizWO8TUrPzgKg84scoadUkZv71g08MbXubSUUmi3
-	1NtoLbpwMiq7r2XdJzjrymkucHjHwtj+LPD+N/2Ia5idt25xKbAkU4ah5HN6v9PQjDAtk2n3P+3PX
-	kkLJH0Z1A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=hiwUcszZVg+PzbGbDimzYbEY2SbKd17aPVayazbajag=; b=cbp
+	X9THtaJR/iFP5SOjlZVn+JjDCMHJ36rhvyBsYN64ZuyfFXX2RHlOIFg3DNz0un1itQ7vohk5tOTrC
+	/8qgkdYE1FMsLyno7PxzuFWtFPNpp5j74xsur9QP+T3lEtDKgZ6fqQkdmrz+iT6VMW3+P7HDBkjXW
+	QMdJs0rvQzlMKFCR/4mhzRgnTnPzpUABfaYG5mW/vfg+luwSTNbyPsw5qUs8PCzk4tnlP2KTJ01IL
+	PfuzxA6GNDLvC0QTUtRiWASa4i+cPV2eGs145mDXHgK1cWPg33Uc/jHhnfylpv7k4Fr9fMJO/ExhE
+	LwU3NqAk/esojZnank40TI/O07TGzrA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hd8TY-00021E-RC; Tue, 18 Jun 2019 07:24:16 +0000
-Received: from mail-io1-f67.google.com ([209.85.166.67])
+	id 1hd90v-0004Ua-ME; Tue, 18 Jun 2019 07:58:45 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hd8TL-0001qj-Qy
- for linux-riscv@lists.infradead.org; Tue, 18 Jun 2019 07:24:06 +0000
-Received: by mail-io1-f67.google.com with SMTP id u19so27387281ior.9
- for <linux-riscv@lists.infradead.org>; Tue, 18 Jun 2019 00:24:03 -0700 (PDT)
+ id 1hd90o-0004PZ-TK
+ for linux-riscv@lists.infradead.org; Tue, 18 Jun 2019 07:58:41 +0000
+Received: by mail-pg1-x544.google.com with SMTP id v9so7209486pgr.13
+ for <linux-riscv@lists.infradead.org>; Tue, 18 Jun 2019 00:58:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=bxoc5/YWGBSJZWeOJnUb4ABn8p6gJT0nStCBWSa2eA4=;
+ b=ngLBMMPw8YFffR+8THORT8LivSqIKXuvMWgEh1bCZb5ASHThP8ifiVQ6GzM9xKwr5k
+ gJKt8WKUo1+ReF+bXeawLiDxNZoizIU1MlzklfUyZexrj5DvjcyB5Gkt6SLITCqfq0w+
+ iYyrOFndZb3g2KH23GJOQZGa18+JsA9VHIuNdATXs3tvaU7IZPXAIe8fUQ6A0bJaEgFU
+ 35LQbWYuNSZPjQ2RRXnbbkMypJ/63njJCnm2RhsAvKZroy1QRGs4E10wH8TnGiaQdh71
+ NO9mO/MrvrowbLlz4zm3GCQlI6qpZ662yWwA+iIljNm3AnMLpImXOzep1Sov08WO+Y7f
+ HK2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=0+t93s+Stg4MMxxGEbnWigFHRXFZAr6q4M1dHdlc/yk=;
- b=BcT6N7Gs0EqZ++aiQ9njRhWJfAHIQXu17p7wah+xrJKok/WfO7P8Vk5YKg15noW36E
- lLg2xmdUPWh040/8gFBg+F3Adwms2cGCnmroTv8iJE4TT72d3RymJzsz5Z2JMhzyJF5J
- 0/BkiB/E9uznm1td/Eza+cY45YqAhCrpfkgJFTe5DKan6u5XNvs0+OldEVVjaLa052AK
- 1vykkvLmEKnesNzLy8WYHfwPf5Tp3c5KxxYrYpWYepLKWY1IkMJ2LZIdVWZWaLRJ8VQO
- zkvN20ocTyJ5uEHMxy15mZXXaktk2KRRws6wLPOnR6ACQyZyP2jXFpF2GiVF4Eexl6Tf
- 2SuA==
-X-Gm-Message-State: APjAAAUnnxacHq0HLfLtUJe6wdN7BMn9YWUmUQ3nvmTncdoL79G+20/R
- 8p+PzaDnvu/AdlZPQOHnpNWlfzUqCV6L3Q==
-X-Google-Smtp-Source: APXvYqzB5/mmEXm6SqNRyFZbrWrTKluzqv1QMKWeYCajJdpLO5wc2ZHmkNMwrbxl8sLxwNpBqUmUpQ==
-X-Received: by 2002:a6b:d809:: with SMTP id y9mr6741950iob.301.1560842642278; 
- Tue, 18 Jun 2019 00:24:02 -0700 (PDT)
-Received: from localhost (210-61-29-234.HINET-IP.hinet.net. [210.61.29.234])
- by smtp.gmail.com with ESMTPSA id c10sm16865291ioh.58.2019.06.18.00.24.00
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 18 Jun 2019 00:24:01 -0700 (PDT)
-Date: Tue, 18 Jun 2019 00:24:01 -0700 (PDT)
-X-Google-Original-Date: Tue, 18 Jun 2019 00:20:25 PDT (-0700)
-Subject: Re: [PATCH v3] RISC-V: Break load reservations during switch_to
-In-Reply-To: <alpine.DEB.2.21.9999.1906170609430.32654@viisi.sifive.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Message-ID: <mhng-6e86484c-5f3e-4b3b-b320-ad6fbcb82366@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=bxoc5/YWGBSJZWeOJnUb4ABn8p6gJT0nStCBWSa2eA4=;
+ b=hqSmq4FDZ1TDlGzynud0BqGXV1alpwVKz1Oh0Xg+Wol4TIsa7Xg4fj0eQ5gIzXJh4K
+ cE5bbvQ6KWpDPIt0m8aYLfDPzAXgoyKsL7FYEH7Gg7ZLVShj+qda4+7UjpnMHP4WfrTj
+ EWL60i1KvNwUmpcbxUsMTng4iFnRqkoA4JjkZHd0UTX0Pxrj28aIS4Wj9FrR+TzkhVfA
+ x0UVNDbU+f0TRobqSCf8PWEjAi2hRbDvwHPWHfPy6Yl5usFazi4UG8PfaxQxTeTjuxKF
+ +kcWaAL2JoZHDoqDgJM51bAUKWCHvVCrStq4HkIoFq2f1oAWtuxg9WpeZbV4HQGEOMfJ
+ DKFg==
+X-Gm-Message-State: APjAAAXhyzsdAL1mYzKc+tQUw36JHUp1ZeTfLQmdFvirNDNzhKYONBg6
+ ZIPb2VscKBw2IucRBmzhScBoGA==
+X-Google-Smtp-Source: APXvYqz/EVWywUMWL2SlfXAU0IwdSy+Z2HHT9wFgROaskaDuM2vV5C7vCPyzsyqhoQhb1O8tRVNfLw==
+X-Received: by 2002:a63:a044:: with SMTP id u4mr1461003pgn.316.1560844717487; 
+ Tue, 18 Jun 2019 00:58:37 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id b23sm15780499pfi.6.2019.06.18.00.58.32
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 18 Jun 2019 00:58:36 -0700 (PDT)
+From: Yash Shah <yash.shah@sifive.com>
+To: davem@davemloft.net, devicetree@vger.kernel.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org
+Subject: [PATCH v3 0/2] Add macb support for SiFive FU540-C000
+Date: Tue, 18 Jun 2019 13:26:06 +0530
+Message-Id: <1560844568-4746-1-git-send-email-yash.shah@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190618_002403_914826_207A3F1F 
-X-CRM114-Status: GOOD (  13.04  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190618_005839_043236_69C26C02 
+X-CRM114-Status: GOOD (  11.08  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.166.67 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,64 +91,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>
+Cc: mark.rutland@arm.com, aou@eecs.berkeley.edu, palmer@sifive.com,
+ nicolas.ferre@microchip.com, sachin.ghadi@sifive.com,
+ Yash Shah <yash.shah@sifive.com>, robh+dt@kernel.org, paul.walmsley@sifive.com,
+ ynezz@true.cz
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 17 Jun 2019 06:12:57 PDT (-0700), Paul Walmsley wrote:
-> Hi Palmer,
->
-> On Sun, 16 Jun 2019, Palmer Dabbelt wrote:
->
->> The comment describes why in detail.  This was found because QEMU never
->> gives up load reservations, the issue is unlikely to manifest on real
->> hardware.
->>
->> Thanks to Carlos Eduardo for finding the bug!
->>
->> Reviewed-by: Christoph Hellwig <hch@lst.de>
->> Signed-off-by: Palmer Dabbelt <palmer@sifive.com>
->
-> This breaks the rv32_defconfig build:
->
->   AS      arch/riscv/kernel/entry.o
-> arch/riscv/kernel/entry.S: Assembler messages:
-> arch/riscv/kernel/entry.S:343: Error: unrecognized opcode `sc.d x0,ra,0(a3)'
-> make[1]: *** [scripts/Makefile.build:369: arch/riscv/kernel/entry.o] Error 1
->
->> ---
->> Changes since v2 <20190607222222.15300-1-palmer@sifive.com>:
->>
->> * REG_SC has the arguments the right way around.
->>
->> Changes since v1 <20190605231735.26581-1-palmer@sifive.com>:
->>
->> * REG_SC is now defined as a helper macro, for any code that wants to SC
->>   a register-sized value.
->> * The explicit #ifdef to check that TASK_THREAD_RA_RA is 0 has been
->>   removed.  Instead we rely on the assembler to catch non-zero SC
->>   offsets.  I've tested this does actually work.
->>
->>  arch/riscv/include/asm/asm.h |  1 +
->>  arch/riscv/kernel/entry.S    | 11 +++++++++++
->>  2 files changed, 12 insertions(+)
->>
->> diff --git a/arch/riscv/include/asm/asm.h b/arch/riscv/include/asm/asm.h
->> index 5ad4cb622bed..946b671f996c 100644
->> --- a/arch/riscv/include/asm/asm.h
->> +++ b/arch/riscv/include/asm/asm.h
->> @@ -30,6 +30,7 @@
->>
->>  #define REG_L		__REG_SEL(ld, lw)
->>  #define REG_S		__REG_SEL(sd, sw)
->> +#define REG_SC		__REG_SEL(sc.w, sc.d)
->
-> I guess this should be __REG_SEL(sc.d, sc.w) ?
+On FU540, the management IP block is tightly coupled with the Cadence
+MACB IP block. It manages many of the boundary signals from the MACB IP
+This patchset controls the tx_clk input signal to the MACB IP. It
+switches between the local TX clock (125MHz) and PHY TX clocks. This
+is necessary to toggle between 1Gb and 100/10Mb speeds.
 
-Sorry about that, I forget to actually include the fixup in the patch.  There's
-also some debate about the comment's correctness, so I'll submit a v4.
+Future patches may add support for monitoring or controlling other IP
+boundary signals.
+
+This patchset is mostly based on work done by
+Wesley Terpstra <wesley@sifive.com>
+
+This patchset is based on Linux v5.2-rc1 and tested on HiFive Unleashed
+board with additional board related patches needed for testing can be
+found at dev/yashs/ethernet_v3 branch of:
+https://github.com/yashshah7/riscv-linux.git
+
+Change History:
+V3:
+- Revert "MACB_SIFIVE_FU540" config changes in Kconfig and driver code.
+  The driver does not depend on SiFive GPIO driver.
+
+V2:
+- Change compatible string from "cdns,fu540-macb" to "sifive,fu540-macb"
+- Add "MACB_SIFIVE_FU540" in Kconfig to support SiFive FU540 in macb
+  driver. This is needed because on FU540, the macb driver depends on
+  SiFive GPIO driver.
+- Avoid writing the result of a comparison to a register.
+- Fix the issue of probe fail on reloading the module reported by:
+  Andreas Schwab <schwab@suse.de>
+
+Yash Shah (2):
+  macb: bindings doc: add sifive fu540-c000 binding
+  macb: Add support for SiFive FU540-C000
+
+ Documentation/devicetree/bindings/net/macb.txt |   3 +
+ drivers/net/ethernet/cadence/macb_main.c       | 123 +++++++++++++++++++++++++
+ 2 files changed, 126 insertions(+)
+
+-- 
+1.9.1
+
 
 _______________________________________________
 linux-riscv mailing list
