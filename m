@@ -2,84 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 262F74E089
-	for <lists+linux-riscv@lfdr.de>; Fri, 21 Jun 2019 08:35:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80B314E283
+	for <lists+linux-riscv@lfdr.de>; Fri, 21 Jun 2019 11:02:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=r2xFfDmgoYcbAxsyZBui4wmL2U9YK+YERqRh6RZ8AIA=; b=ipQ
-	rhLMDaxlwb5pwUECkKpsL7Y1UeWkX7JdEKkO9pIj9LtUxLfsxruAx5z56vgEophv4ne4dcdwnafEP
-	JoKfOIDCm1nOwiEU852HgaC9bxPjuLrAZ5g1XM5rYFDFDy+e1OtCvGJ2yvzkRcEv/KpdKIA7Dev3Y
-	E7fZ9ab0NQ2XUdKtPsrmuXUgoKiqEJjx8HJzJl0KTDpt0LCPDW6+W+0xupYtjZEK11DjqbGRmg6rJ
-	IjyKilN0zcq/bMna3XWtLb2vIxv0s1QSyoneIZWBE75KDtdAAzAjcHu15T8JoTAyDZkKNsAL/B8CS
-	9rrYB4eTYGZ7LOrv8QxaqM9zd1KVReA==;
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=k5agwxMx4FsL2fBJ+RZhBM1MigtUq75KCDjvdDRMmNg=; b=ejzaZm8SLcAYJ4
+	/5Ny7hsW+DW1RVZA/xUaApgTwU20l3uAC5zx6rngH5d8f02u7VRgam2bv0e+uvUvHatsfESGrKRi7
+	pCdBt7X5zsVJ0+m3GxaOIMpBR6yxhJ6Gzz9KUW81WYrUgee4y450f9gVgXUgwa3p0mdmSUFAyrQoD
+	x9+fL2qCNpsWiDyOXv1C7rsnCvgjBKGWF+C+zZc5Ed01PygzZJbQMrobgPC9WtGewxv6aAxIUNpMo
+	Y9x6q6mHVEIEidMICh83/e9jxjaO6SrHV+qUFK29wa6XqoFb8SR5bY03TRG8aGnt4njfvkhOFMmwQ
+	MwhBnC3SnaXieHShlVPA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1heD8e-0005SZ-LA; Fri, 21 Jun 2019 06:35:08 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1heFQS-0002sw-Oe; Fri, 21 Jun 2019 09:01:41 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1heD8U-0005Ru-W7
- for linux-riscv@lists.infradead.org; Fri, 21 Jun 2019 06:35:00 +0000
-Received: by mail-ed1-x530.google.com with SMTP id i11so8489322edq.0
- for <linux-riscv@lists.infradead.org>; Thu, 20 Jun 2019 23:34:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=AJwOFT336pRewwqTK3hiA6FdgUJgh5KXqADy/U9ogLs=;
- b=kmzOwQgh2QIt+p67Z/QaPDUDmseqkbMCuJEZEcBDUcvXHozNQN0Mt8fU0lLCqOwhwh
- k5ONbf56jmZYGgzjhPRein34f/3ljy6felp5esNULTNQBNwWVgpYldeQ9co4edso2/NB
- tdWiae8haLGHshbEF0olcm8MRoVnDDw9sg+KThhDhUBtIKiEPVeL6m1XMgUqaz94Oaqj
- f/XNpyeWNoslEZ8KlLPkpxjQqnQrPw7gzEM57UxsJYnBvvUWFwhJCdg5SphNZmXUeENg
- N4kDjhZJZ0anOt8nZGizd3LJH8fobbtBalGAO3U8RIVdp63O8NPF8MUXy+8TWQE/u+Ss
- tffw==
+ id 1heFQO-0002sP-EQ
+ for linux-riscv@lists.infradead.org; Fri, 21 Jun 2019 09:01:37 +0000
+Received: by mail-wr1-x444.google.com with SMTP id m3so5800635wrv.2
+ for <linux-riscv@lists.infradead.org>; Fri, 21 Jun 2019 02:01:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PhJ5lM9SlnKYa02k5MazR2be+0vjCQ5zI7j0EPBUS+8=;
+ b=O+sP4P2dWSo99F+WM+aneeiKuNCkGrHe0jBV/hU1Wk+iZFjbunHTPxPqH5idH8e8EJ
+ HDbIrEdt+maab64kQ+MXFytkNwk0t7QJxiXrpMXe4YyDS5+FOUeiH2NFPqHKTd4ZI/X+
+ KhkJHMUD4JBbhLUNqpjzSOR+6iEjHZAbgkOg/NxfBaBC6GbGYVcFTz2FFHlEXeqkZtKh
+ WGCwa30qut6W2U0M5dhJzttoIJQcKNRwHn5UMpGxA/fQ1Kp2Eqiuz8HyKnj08ZIUM+HF
+ dJKz/LliHBOw4iz8Y13dCH1V2yMgHecTVxviU0bPYTLgKb/T5AuXb9ZGQ6jYQN5n/DRs
+ 4phw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=AJwOFT336pRewwqTK3hiA6FdgUJgh5KXqADy/U9ogLs=;
- b=BP2+N7UzIIN4wv9Tj/UOQIByaqyuQMpokNZqcImEq0QY5nlQIfH9Ad0qFNpjsKwWYj
- rf6Ze2uHgAMgtU36LLeu60tRMC0JZMQgmFFdeiMWFYKZKa9CTVoGYMP9hEtebKe5dAEx
- +1erkX2CHUUTkHC3OAd/aXr31EPGuK11zu+4oY4wvoGwZbsF80CTHO3sAKIFxJxfxtFA
- 9hRGLGmaRMg89z4TemT60AtBFizEC/ruxceREcFKfyAhIizTICAba/P5VvJRFCbfJojc
- tN/W+0khZeUxaCuhuYpE5WU3nALB5KeKAbPNBNFOLdgtKcIo1Zaidj8Q8l1CjRyxzAji
- 7YlQ==
-X-Gm-Message-State: APjAAAUm3NJuyyyYXVUeMv6kXG5GNguEX8+eAbMLPGpCP2QViTSHrIBN
- Q64fZIGFAyGVsxqtfm1vvJi/VKGN83rrctuoLwdWGIkp
-X-Google-Smtp-Source: APXvYqwA6PfdTFcuhi1YgCs9J1MFKalMA4hmSphVNAdHrIxdxBisYKB6pJqP0ByYNjzQUJjMoRE3aQHdmwVHL9b5hvs=
-X-Received: by 2002:a17:906:4f8f:: with SMTP id
- o15mr15191714eju.129.1561098897370; 
- Thu, 20 Jun 2019 23:34:57 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PhJ5lM9SlnKYa02k5MazR2be+0vjCQ5zI7j0EPBUS+8=;
+ b=k3QITj90kD8R81TdTRfpsybQeu21CY7jalc/07Y9H5wXX00IAl+M+7twlpSOM3DgMC
+ l87GRe8bzyJydQsnyJNPJvtbLkHaOa0lo9upKMIw1Dfqlc0ZTcdvaZsWCp3PCjiVBQot
+ wu8V5M1PvdHMSr0OfhnEZ0mUNFvL9cFxz8dbs4hW6PAkczpwAGaWKxxTx0S/3OVz30J9
+ ea+CBGYLP4Lj8d4HvwNGHHe2RxSdVaccXF8Ie4pk73Pi6OEJGK00+PE1+czMWCD5BIxE
+ /GVtUyTWwYkb7UqVzQD/Bg7FgSgNnWygZpuMhTDHQ5XFuGXbqvduK1sl3gcizYTngJT9
+ APew==
+X-Gm-Message-State: APjAAAVMZmOBJ1wA3ByECC+xcN+sZA0Lwe/QNo3Imj69atU/j1cfr2hE
+ CUDaq37Fm1GnJ6s+sXVp4J8gxkkti741z4Z+VbJTYA==
+X-Google-Smtp-Source: APXvYqxOi1lX0UaV5+3I6iUfGLV2BrlPD7WGGLosyqcwBAr5aiHi9gL+td/S/5IwQmge5WwTR7sXISD2kIFnl5hxOX0=
+X-Received: by 2002:a5d:5448:: with SMTP id w8mr62546020wrv.180.1561107693128; 
+ Fri, 21 Jun 2019 02:01:33 -0700 (PDT)
 MIME-Version: 1.0
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 21 Jun 2019 14:34:46 +0800
-Message-ID: <CAEUhbmVqB+WpsZYbwLj4ZAAL1aESbNO_6roHdq=EfxgjDbcRTg@mail.gmail.com>
-Subject: sifive-fu540-prci.h license (included from fu540-c000.dtsi)
-To: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>, 
- Paul Walmsley <paul.walmsley@sifive.com>
+References: <1561097422-25130-1-git-send-email-yash.shah@sifive.com>
+ <1561097422-25130-2-git-send-email-yash.shah@sifive.com>
+In-Reply-To: <1561097422-25130-2-git-send-email-yash.shah@sifive.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 21 Jun 2019 14:31:22 +0530
+Message-ID: <CAAhSdy2zHozRnwAU6-+U+BE-5h5uNE67D_0TXHJnrHMi53gMog@mail.gmail.com>
+Subject: Re: [PATCH] riscv: dts: Add DT node for SiFive FU540 Ethernet
+ controller driver
+To: Yash Shah <yash.shah@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190620_233459_107644_6156F21C 
-X-CRM114-Status: UNSURE (   3.74  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190621_020136_518076_B8345F52 
+X-CRM114-Status: GOOD (  12.08  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:530 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bmeng.cn[at]gmail.com)
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,26 +88,75 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ sachin.ghadi@sifive.com, Rob Herring <robh+dt@kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
+On Fri, Jun 21, 2019 at 11:40 AM Yash Shah <yash.shah@sifive.com> wrote:
+>
+> DT node for SiFive FU540-C000 GEMGXL Ethernet controller driver added
+>
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> ---
+>  arch/riscv/boot/dts/sifive/fu540-c000.dtsi | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+>
+> diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+> index 4e8fbde..584e737 100644
+> --- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+> +++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+> @@ -225,5 +225,25 @@
+>                         #address-cells = <1>;
+>                         #size-cells = <0>;
+>                 };
+> +               eth0: ethernet@10090000 {
+> +                       compatible = "sifive,fu540-macb";
+> +                       interrupt-parent = <&plic0>;
+> +                       interrupts = <53>;
+> +                       reg = <0x0 0x10090000 0x0 0x2000
+> +                              0x0 0x100a0000 0x0 0x1000>;
+> +                       reg-names = "control";
+> +                       local-mac-address = [00 00 00 00 00 00];
+> +                       phy-mode = "gmii";
+> +                       phy-handle = <&phy1>;
+> +                       clock-names = "pclk", "hclk";
+> +                       clocks = <&prci PRCI_CLK_GEMGXLPLL>,
+> +                                <&prci PRCI_CLK_GEMGXLPLL>;
+> +                       #address-cells = <1>;
+> +                       #size-cells = <0>;
 
-I see fu540-c000.dtsi is dual licensed under GPL-2.0 OR MIT. But there
-is one file inclusion:
+Have status = "disabled"; here and have
+status = "okay" in board DTS file.
 
-#include <dt-bindings/clock/sifive-fu540-prci.h>
+General convention for any SOC device with external
+connection (e.g. ethernet, SPI, SDHC, SATA, PCI, etc)
+is:
 
-This sifive-fu540-prci.h is only licensed under GPL-2.0.
+1. Define only device DT node in SOC DTSi file with
+status = "disabled"
+2. Enable device in Board DTS file with
+status = "okay"
+3. Define PHY or external PIN connection details
+in Board DTS file
 
-I think this prevents anyone that has GPL contamination concerns from using it.
+> +                       phy1: ethernet-phy@0 {
+> +                               reg = <0>;
+> +                       };
 
-Would you please consider making sifive-fu540-prci.h dual licensed as well?
+The PHY DT node should be in Board DTS file.
+
+Of course, same comments apply to SPI DT nodes as well
+but I missed reviewing those DT nodes. You can send separate
+DT patch to re-organize SPI DT nodes.
 
 Regards,
-Bin
+Anup
 
 _______________________________________________
 linux-riscv mailing list
