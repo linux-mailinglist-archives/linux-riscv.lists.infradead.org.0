@@ -2,75 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 754534E5D3
-	for <lists+linux-riscv@lfdr.de>; Fri, 21 Jun 2019 12:23:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BE524E5E5
+	for <lists+linux-riscv@lfdr.de>; Fri, 21 Jun 2019 12:29:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5CW2EFP4cUMoR5XssD/PAIa8ut2ajVKXcVoXYKLU2zk=; b=TiYFgNSh5iKFjF
-	BfLXTFBl7Qj/aRCAzw3nnxdt+x/sa0eTCbn47G8Kwg52fV+Lr8hCI3ucNuarLJLodY5AWL/sc++mM
-	TF7CXVlm+LrxgUczHxMnVtZydfAWxxxXzpf6YIb1UlZ/EuE3QRziDdRPJ9IKdOjkbJnk2fsnme4PA
-	R2fvjobesg919GQujHiGMK+2eHBrzoAcJY3+6vH6kTAQ4nKbTkQObrW0KVNxrQtvGN3kknf0+9q7B
-	1gRwC9MQ0cuzrdCmlSLmJq4e34YS6NQ77SdAnsqaDP62HGczyEXDW+6u93ErnqCqGe/993AMli42q
-	nXcuTQBzsQeVW+RdQhmA==;
+	List-Owner; bh=URO72gdHGz83aIbG2MKsYongnw4SrGYTgDKI9PU/Q0o=; b=oeK2ns9mG2unXS
+	p092486FUpwL+V/OTpYivjC1uWXbWjXG/ARCYhQcGGffTiSiZ2zIWYQXu8PmHrnq1D+f39x6rYo11
+	r0wmvL7tWEZaObuplImGiHRl3wE/4VqEzhk0sRFG1Udary2Shjfu+6pjoh2oJ9BvrtbVls31ZWAHG
+	SzfpD+hsWo+x/yeEdb2OFtFpwfr5Y7hdKCbF028UNGeNLuGQSE0pMH2HY+F5Kt1d8p0ynv+c4e9G7
+	eABcv6QQJ15eXmRsXSk49p+tOAEoyiqsQTw39c+YJXBkr6V9oKNASpOahNQh32gs2C9pqWyBfqNWL
+	sQ9R1knpi0eQgIF5kDGw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1heGhV-0003G6-O6; Fri, 21 Jun 2019 10:23:21 +0000
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
+	id 1heGnO-0006MV-P2; Fri, 21 Jun 2019 10:29:26 +0000
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1heGKs-0001r0-GL
- for linux-riscv@lists.infradead.org; Fri, 21 Jun 2019 10:00:00 +0000
-Received: by mail-lf1-x142.google.com with SMTP id p24so4599258lfo.6
- for <linux-riscv@lists.infradead.org>; Fri, 21 Jun 2019 02:59:57 -0700 (PDT)
+ id 1heGn1-000699-UR
+ for linux-riscv@lists.infradead.org; Fri, 21 Jun 2019 10:29:05 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id v6so3512637vsq.4
+ for <linux-riscv@lists.infradead.org>; Fri, 21 Jun 2019 03:29:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=97030ehdzrNq8foq07+AWlHk1qrrPe5jsC3Gs0TUlzM=;
- b=HVP6sfaP9Gc2v9i5Jjb8nzD8V6DHQyvjJiS4s0FEPn47BcAFqzpye5nAY7ylHt5pKF
- LvmU5+g67BbcvhGBPiJP3Ff4UIrRJSEgC/sv9ePTwhltpbmaXhQfgGjfwAkaXu1QkKps
- yZYBpzw5RAIMJ1yZvkikCYw7YRkR+g5qJm82SMVIa+frJXh76qD9japXT2/dQrnWMoEB
- nlrA/FhwXjnJn8MKpOOX15Ix1Yzf19VGV+rs3wVUqSdi7//UKJBEytIkmxVmPReVzn9p
- ApMOZn+Yp3652PGvQrz7phLyT0vTGenI1AuXrRsae8IMbmBhidNTTYm98nzaVHt9eL25
- rFfw==
+ :cc; bh=ENYQKCQSfeszZWYCN2yKfX/JBpyCK1CYVFLjD6oifQ0=;
+ b=etN7QHE7JyTa4lpmcwrjRdg6TnTrZT71qn5QpWXhPeGHVs5LbKB7on5lmX86ologtL
+ 7XbiDc7JUkNc4+BQeGqzuFBGbVVr8ocD+vYfvpGft4Mc7w356kUy3V65LZHBdflyDdks
+ pBnwhTO5D9DEj5J/u+iqjckNNj7Rc97GntY5i1S4zc6On50LZARTYCXQk/LRR36V2BlE
+ SMgPRFHAm5TPfEKUQGV8T+s/54ZNmcHw0scr7/QgnsXjtHxX88yXLRu4TMT87r/wBFOJ
+ mvAG7S8pio6EeqFl3vC68qkeAUBhNY/8eY1lWfcVTJ2jGeTtOnlK9TON7Lasld8xB/6K
+ HjEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=97030ehdzrNq8foq07+AWlHk1qrrPe5jsC3Gs0TUlzM=;
- b=ELJ64H4s1grLNnxQBSwGUptlJAp06njQUp+H2TCnMZ2DPFiaqu0I6Njf7FnXxUaib8
- pI3Ak3SKcSp8g1zTM3+kYvix0MbVQK1ODRoKTFv/RCKqczmUed99cZ3P6klb5LANbI18
- 5ZH4R5ECtTeZThvnOYhq08XzZ8bIRQr52sZfUAyWhaEvhjEKXg9W4mkF3lw6jtSWWfXA
- AjITnz4qeGRUNv7hxhXwfHQLJpBB6/p/YrU0PgsN6zt0Fnj3oogJOHjL7LKg+7bdbZNC
- cxXsvIrcsgoXFMrhMmhDO62VSgVNB5p22T4Umf3724+tqhQOi3krkf41djKsQc+0b3W1
- 3yGg==
-X-Gm-Message-State: APjAAAXiywdqrSjH8wtticGJbEFyly9ldBCpEvGT97Itw5P8AawEI4ok
- Mwl4OmWbuKsWo/Hhgz/vjrbaKLEWN7QyLcJQoFZeTQ==
-X-Google-Smtp-Source: APXvYqwakQoUYvkQWF0oN/90aJTMVyVOxBQx5u/5NG+eG198vhWKO1eioYF/oNR7gcqsOGkPnn05VWv2jTHPm/NjjoU=
-X-Received: by 2002:a19:5046:: with SMTP id z6mr20312857lfj.185.1561111196510; 
- Fri, 21 Jun 2019 02:59:56 -0700 (PDT)
+ bh=ENYQKCQSfeszZWYCN2yKfX/JBpyCK1CYVFLjD6oifQ0=;
+ b=P11zjHwgGUAsHUn4jL6kAYZjPmglQnv5f2CUD9U5XMfFvazX1g7EXaTcyXafK5x3Fq
+ 6T3xC2kYbS0qO829L/kxwvL/Efrg/TChalzkXIjcpepWITZZDEjbdGWY/oBaakJ+raf8
+ /2rygLmLdPAaJwavSFRVapVuVXGpsjpWLYRNFSPdW8aU12/vuiRLSs0q3a8g75PVoDoR
+ XAFiznVXDJAMsSB26M3WqFEXMRxJrMv2Pippjjz8Y33qO8bcP80bhw5uTkXFJ8NCWpXr
+ VFSXRwvIHO6sSBCwX7WspqmPL/64NMT2sQyW/B8K8du8GP+So6u8wgAM57lr9u73F29J
+ FVSw==
+X-Gm-Message-State: APjAAAVPZb65/PjcdWIACQD76Duahd9VE7K348aBwgMxcahhsdkEalqO
+ J0k4MFkufLOV7EAdwOgpRaFu+8WJpVTloX/cxJX/Eg==
+X-Google-Smtp-Source: APXvYqyXXbRJwvoUm1/ZU9MgYql7iUjK+l3n4H+mOYUP5gGfjYQ9PO1P5xFbBOShDCcwOuvRyoqJmEPbMxH/uNId6ZQ=
+X-Received: by 2002:a67:7346:: with SMTP id o67mr50970360vsc.92.1561112942493; 
+ Fri, 21 Jun 2019 03:29:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <1561097422-25130-1-git-send-email-yash.shah@sifive.com>
- <1561097422-25130-2-git-send-email-yash.shah@sifive.com>
- <CAAhSdy2zHozRnwAU6-+U+BE-5h5uNE67D_0TXHJnrHMi53gMog@mail.gmail.com>
-In-Reply-To: <CAAhSdy2zHozRnwAU6-+U+BE-5h5uNE67D_0TXHJnrHMi53gMog@mail.gmail.com>
-From: Yash Shah <yash.shah@sifive.com>
-Date: Fri, 21 Jun 2019 15:29:20 +0530
-Message-ID: <CAJ2_jOGWFaw6G6vjbfz9rwa3jceL0kmykM4B3zLhu0V+qBVZvw@mail.gmail.com>
-Subject: Re: [PATCH] riscv: dts: Add DT node for SiFive FU540 Ethernet
- controller driver
-To: Anup Patel <anup@brainfault.org>
+References: <1560336476-31763-1-git-send-email-sagar.kadam@sifive.com>
+ <1560336476-31763-2-git-send-email-sagar.kadam@sifive.com>
+ <325855d0-00f9-df8a-ea57-c140d39dd6ef@ti.com>
+ <CAARK3H=O=h1VDgOMxs_0ThcisrH=2tzpW5pQqt0O9oYs=MFFVw@mail.gmail.com>
+ <93b9c5fd-8f59-96d7-5e40-2b9d540965dd@ti.com>
+In-Reply-To: <93b9c5fd-8f59-96d7-5e40-2b9d540965dd@ti.com>
+From: Sagar Kadam <sagar.kadam@sifive.com>
+Date: Fri, 21 Jun 2019 15:58:50 +0530
+Message-ID: <CAARK3H=CmxSG2srUaoxN1HF6W7CVKtpATrf89n6kuht2Paqp8A@mail.gmail.com>
+Subject: Re: [PATCH v5 1/3] mtd: spi-nor: add support for is25wp256
+To: Vignesh Raghavendra <vigneshr@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190621_025958_751138_12AB2C67 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20190621_032903_983683_BC38F4BA 
+X-CRM114-Status: GOOD (  19.64  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:142 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:e42 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -92,86 +93,111 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Sachin Ghadi <sachin.ghadi@sifive.com>, Rob Herring <robh+dt@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: aou@eecs.berkeley.edu, tudor.ambarus@microchip.com,
+ Wesley Terpstra <wesley@sifive.com>, richard@nod.at,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ marek.vasut@gmail.com, linux-mtd@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, miquel.raynal@bootlin.com,
+ linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
+ dwmw2@infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Jun 21, 2019 at 2:31 PM Anup Patel <anup@brainfault.org> wrote:
+Hello Vignesh,
+
+On Fri, Jun 21, 2019 at 11:33 AM Vignesh Raghavendra <vigneshr@ti.com> wrote:
 >
-> On Fri, Jun 21, 2019 at 11:40 AM Yash Shah <yash.shah@sifive.com> wrote:
+> Hi,
+>
+> On 17/06/19 8:48 PM, Sagar Kadam wrote:
+> > Hello Vignesh,
 > >
-> > DT node for SiFive FU540-C000 GEMGXL Ethernet controller driver added
+> > Thanks for your review comments.
 > >
-> > Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> > ---
-> >  arch/riscv/boot/dts/sifive/fu540-c000.dtsi | 20 ++++++++++++++++++++
-> >  1 file changed, 20 insertions(+)
+> > On Sun, Jun 16, 2019 at 6:14 PM Vignesh Raghavendra <vigneshr@ti.com> wrote:
+> >>
+> >> Hi,
+> >>
+> >> On 12-Jun-19 4:17 PM, Sagar Shrikant Kadam wrote:
+> >> [...]
+> >>
+> >>> @@ -4129,7 +4137,7 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+> >>>       if (ret)
+> >>>               return ret;
+> >>>
+> >>> -     if (nor->addr_width) {
+> >>> +     if (nor->addr_width && JEDEC_MFR(info) != SNOR_MFR_ISSI) {
+> >>>               /* already configured from SFDP */
+> >>
+> >> Hmm, why would you want to ignore addr_width that's read from SFDP table?
 > >
-> > diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> > index 4e8fbde..584e737 100644
-> > --- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> > +++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> > @@ -225,5 +225,25 @@
-> >                         #address-cells = <1>;
-> >                         #size-cells = <0>;
-> >                 };
-> > +               eth0: ethernet@10090000 {
-> > +                       compatible = "sifive,fu540-macb";
-> > +                       interrupt-parent = <&plic0>;
-> > +                       interrupts = <53>;
-> > +                       reg = <0x0 0x10090000 0x0 0x2000
-> > +                              0x0 0x100a0000 0x0 0x1000>;
-> > +                       reg-names = "control";
-> > +                       local-mac-address = [00 00 00 00 00 00];
-> > +                       phy-mode = "gmii";
-> > +                       phy-handle = <&phy1>;
-> > +                       clock-names = "pclk", "hclk";
-> > +                       clocks = <&prci PRCI_CLK_GEMGXLPLL>,
-> > +                                <&prci PRCI_CLK_GEMGXLPLL>;
-> > +                       #address-cells = <1>;
-> > +                       #size-cells = <0>;
+> > The SFDP table for ISSI device considered here, has addr_width set to
+> > 3 byte, and the flash considered
+> > here is 32MB. With 3 byte address width we won't be able to access
+> > flash memories higher address range.
 >
-> Have status = "disabled"; here and have
-> status = "okay" in board DTS file.
+> Is it specific to a particular ISSI part as indicated here[1]? If so,
+> please submit solution agreed there i.e. use spi_nor_fixups callback
 >
-> General convention for any SOC device with external
-> connection (e.g. ethernet, SPI, SDHC, SATA, PCI, etc)
-> is:
+> [1]https://patchwork.ozlabs.org/patch/1056049/
 >
-> 1. Define only device DT node in SOC DTSi file with
-> status = "disabled"
-> 2. Enable device in Board DTS file with
-> status = "okay"
-> 3. Define PHY or external PIN connection details
-> in Board DTS file
->
-> > +                       phy1: ethernet-phy@0 {
-> > +                               reg = <0>;
-> > +                       };
->
-> The PHY DT node should be in Board DTS file.
 
-Will move all PHY related nodes in board DTS file.
+Thanks for sharing the link.
+From what I understand here, it seems that "Address Bytes" of SFDP
+table for the device under
+consideration (is25lp256) supports 3 byte only Addressing mode
+(DWORD1[18:17] = 0b00.
+where as that of ISSI device (is25LP/WP 256Mb/512/Mb/1Gb) support 3 or
+4 byte Addressing mode DWORD1[18:17] = 0b01.
 
+> > Hence I have ignored the addr width from SFDP.  I have verified that
+> > with 3 byte address width, the
+> > flascp util fails while verifying the written data.  Please let me
+> > know your views on this?
+> >
+> If this affects multiple ISSI parts then:
+> Instead of checking for mfr code, look for SNOR_F_4B_OPCODES flag in
+> flash_info struct of the device and let it take precedence over SFDP in
+> case size is over 16MB
 >
-> Of course, same comments apply to SPI DT nodes as well
-> but I missed reviewing those DT nodes. You can send separate
-> DT patch to re-organize SPI DT nodes.
 
-Sure, will send a separate patch for SPI DT nodes as well.
-Thanks for your comments.
+So as per your suggestion I think second approach is a better one.
+I will send this in V6.
 
-- Yash
+Thanks & Regards,
+Sagar
 
+> Regards
+> Vignesh
 >
-> Regards,
-> Anup
+> > BR,
+> > Sagar Kadam
+> >
+> >> Regards
+> >> Vignesh
+> >>
+> >>
+> >>>       } else if (info->addr_width) {
+> >>>               nor->addr_width = info->addr_width;
+> >>> diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+> >>> index b3d360b..ff13297 100644
+> >>> --- a/include/linux/mtd/spi-nor.h
+> >>> +++ b/include/linux/mtd/spi-nor.h
+> >>> @@ -19,6 +19,7 @@
+> >>>  #define SNOR_MFR_ATMEL               CFI_MFR_ATMEL
+> >>>  #define SNOR_MFR_GIGADEVICE  0xc8
+> >>>  #define SNOR_MFR_INTEL               CFI_MFR_INTEL
+> >>> +#define SNOR_MFR_ISSI                0x9d            /* ISSI */
+> >>>  #define SNOR_MFR_ST          CFI_MFR_ST      /* ST Micro */
+> >>>  #define SNOR_MFR_MICRON              CFI_MFR_MICRON  /* Micron */
+> >>>  #define SNOR_MFR_MACRONIX    CFI_MFR_MACRONIX
+> >>>
+>
+> --
+> Regards
+> Vignesh
 
 _______________________________________________
 linux-riscv mailing list
