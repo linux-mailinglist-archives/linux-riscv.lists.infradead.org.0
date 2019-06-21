@@ -2,77 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3649F4DED1
-	for <lists+linux-riscv@lfdr.de>; Fri, 21 Jun 2019 03:50:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C6614DF7F
+	for <lists+linux-riscv@lfdr.de>; Fri, 21 Jun 2019 06:08:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=mNN5t9fgAgKFAQaRU1KttoW/ARrLETTa/57IMqniTV8=; b=HIPxneQc0qnfa+xhw8qh/iwhe
-	sDvpkEFRZLJjO2mffsyXESFisfR7q+aLhE2Oxi5mF2q1Ct5u/UQm9tjUjvFwEf0t+zu4XKk9LXEMO
-	QKN4SlW+Refg67qq2L18RnM91Xd631iQZh3GdKCw4/n5hmpmUO9TBq8AJ+5DApu8i8tb6isrus/C5
-	sdRBNXWW73hRWy5zM43rfX+bjwoHjZRO6TYWbma6yJLhQpzx8yRaGoOn+mql+ucRqhYThz2Lpdwzi
-	LtjlzQjBdRw1n/PbTFUc35+ngUmHFviI551ycGde1ih853OC3Icdqauv1bBVwDx9pxZLDjMXtyqK4
-	4ejdcdb9Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6k1MllBe3CEbVhEXwSavE8e18HIvYnyS33RzeR73nP8=; b=eXjNoa+bPV1wDs
+	KJVgnuNRp0sHTZEFo2En4IQlSfX9e0QRuB9/TF5cHJEsaIaZKIE55Hfzl/U0mWC2QYrSDSg0PTR0P
+	ZLCLPWX8tGvvYCaSvIsPSUWfOIrOlbgFTS8Uo0frz5pgpNlXcUVWrpFAHue6AzN4BoeweWLXnAAQ7
+	XkJ/Xd3wF37Iqpk5Iq8NlLyu3bI/DjsVs6UYo7YzLUehol/rAH0eFV1VZilPrZbcVnSwNg1Vw+tTu
+	ZB9X7jOQFNLMWJU+MukexAyF9UMlKPZTLx/c6i3XHAJ7jKlT9Y1CsyLlQqtR8wmU4qzbKD1hFOmPW
+	3oNBPGVbPXynYOLDzbFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1he8hP-0006lG-2t; Fri, 21 Jun 2019 01:50:43 +0000
-Received: from mail-pf1-f196.google.com ([209.85.210.196])
+	id 1heAqF-0006oo-65; Fri, 21 Jun 2019 04:07:59 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1he8hK-0006k5-O7
- for linux-riscv@lists.infradead.org; Fri, 21 Jun 2019 01:50:40 +0000
-Received: by mail-pf1-f196.google.com with SMTP id p184so2692294pfp.7
- for <linux-riscv@lists.infradead.org>; Thu, 20 Jun 2019 18:50:34 -0700 (PDT)
+ id 1heAqB-0006oL-TC
+ for linux-riscv@lists.infradead.org; Fri, 21 Jun 2019 04:07:57 +0000
+Received: by mail-wr1-x443.google.com with SMTP id n4so5030279wrw.13
+ for <linux-riscv@lists.infradead.org>; Thu, 20 Jun 2019 21:07:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=l2qJZeX5x3cKGQw0vTTuaqutXh5bsa0FkF9NdW7kUBY=;
+ b=mjgqzGt+wVp/satKRCHmZUpKgSeGyInSJNxLH3k63ifB/b4YwRIl8G01sT5VHFFUD/
+ mqToMa+bBGbsqjo5py89BogBlgilYhuVde2lbTzbsa/TTuCDANLf5/knRg/sF1NCu8zY
+ DmDqWLRT+oJH253taX06Pu/CgXvipqr8k51tpUiH5MIhM8U6ADKo4tD3QshtyAwlkiVG
+ LOULJY+JQwwWrIaPejTI4oMSC2nzYPt8SJ36b6I/uwZub8+N5sFTsJy6McECrD45YwLJ
+ VPbVyWMqo5kEDBYcD/DUjlVdF5/ADmwThVp7zU3ToyA2DHmWvUGFRyq3f6PZcTeRV5Z4
+ zEKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=j5EwuhwdKeX+aMQ1HhFBPq9OFCfHqk3KViLFexG5B9E=;
- b=b2K3tEd8UICjhHLp38mjUWCNIYruVwfcY5M4QAIjalKQ4BEuPAIbJgW70o4W5GZABi
- Rawom6IdT8tnDwwE+pWTDdpDI7mwofjLc/P1myKp2Z8UfkC6JVvKQeFHabXcENrvi8SA
- ulsMR/UemhJyQz0JXjGVIHxCBSE29Ob4j8trL0BhoVA8ktOdD52mhEH7q8COUS0SIYXi
- /UYj/u/YPMebMWSaO4qF+8nb4bLcRj7gJBB2FsR53TjpwI0IO4InnNX20L4MtYqpwnO7
- gy+0+aPrZWIqZnrPQWlguK67J0N+hw5XFcceVdwjnUrWbwIEE6LlMQ/8RnnV/OIr0Zmy
- OvAg==
-X-Gm-Message-State: APjAAAUjKJTZNZv7ycxx5DCSf8F1SyK9/9jg96UzizlMElwIbCATEbFz
- euZn/jAkfwc/LZgpaZc2oub+gmxu4r1IAw==
-X-Google-Smtp-Source: APXvYqz7taZv4NZMlPtAvodeU7r1q7k5R6++mRN+Pt4d3ymudWUR1cbBXbtQFmIcoBHVIqS85x5ApQ==
-X-Received: by 2002:a17:90a:8c0c:: with SMTP id
- a12mr2983319pjo.67.1561081832818; 
- Thu, 20 Jun 2019 18:50:32 -0700 (PDT)
-Received: from localhost (amx-tls3.starhub.net.sg. [203.116.164.13])
- by smtp.gmail.com with ESMTPSA id h11sm694257pfn.170.2019.06.20.18.50.30
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 20 Jun 2019 18:50:31 -0700 (PDT)
-Date: Thu, 20 Jun 2019 18:50:31 -0700 (PDT)
-X-Google-Original-Date: Thu, 20 Jun 2019 18:50:24 PDT (-0700)
-Subject: Re: [PATCH v2] RISC-V: Break load reservations during switch_to
-In-Reply-To: <20190619073600.GA29918@lakrids.cambridge.arm.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: mark.rutland@arm.com
-Message-ID: <mhng-c41d9776-2f3e-4a49-8be9-78f9fd55cfda@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=l2qJZeX5x3cKGQw0vTTuaqutXh5bsa0FkF9NdW7kUBY=;
+ b=K8sISBwDPkj0B1O7JCvcDOzplM0ytep5j3A5t1b6NAd6QppY9R79Wwq0D8JH1lX9E7
+ 0SnB4h5y0oW8ud7kWLSgEXqqMog2vFbooGaOK4h0ALaKepXJxypEKfJrdy6hmdcRJB0h
+ grd7xilxqcIg6/q3ydUpJkWRUtBFFQTYAxDpBRq3b1506tV50w6TjCbJvmGWJe2wd7xY
+ qGUWQvxloyGb7/srHmmLwqQ7dG4Kkt8BnSWNZYYnBmscM9Vvth5emjuq9L0HCkcOdjxb
+ nvl/Bo8icH+uug14NIHIVPHsSpBMH/g7+U8iAAz+ux61zxbV+6XWsogRKw2gooDuAGRX
+ Ixvg==
+X-Gm-Message-State: APjAAAVBKekxV3L1RAQPU2qeecKytA8PSeOd1R9aIvrEiNGvZ5TmKvnE
+ qqXLC0YmbS3JufgIYDQcIT9H40+WEwxhJU4stJOWVQ==
+X-Google-Smtp-Source: APXvYqxQbqCtj46iBRW/rPMZKaEXYz9Gg8gZcOj06ZDJbDVyT3XIQXtgsSygjnVgmynZ4pqppp1SZsUSOQvjNQkgMAI=
+X-Received: by 2002:adf:afe8:: with SMTP id y40mr14570674wrd.328.1561090074071; 
+ Thu, 20 Jun 2019 21:07:54 -0700 (PDT)
+MIME-Version: 1.0
+References: <338f944c74c7540f71c27f30f5b46405b8440de3.camel@wdc.com>
+ <c4a72786b3bee65ca2d5971e42cb22edf6cf7fce.camel@wdc.com>
+ <CAAhSdy2-2tQ_ToRqBcB=q6Z5biZMvfQ9ok7hW508KjJM9fMNJQ@mail.gmail.com>
+ <d66f7e401e27bcc486e6cf94eab3fd2ad9c0be30.camel@wdc.com>
+ <CAEn-LTq2bhbz3hJfU1Gcr1d_e=Om24S6=2f1PW0BWn7aXwPgHw@mail.gmail.com>
+In-Reply-To: <CAEn-LTq2bhbz3hJfU1Gcr1d_e=Om24S6=2f1PW0BWn7aXwPgHw@mail.gmail.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 21 Jun 2019 09:37:42 +0530
+Message-ID: <CAAhSdy2CW_G28D41n1q_xR29tCJomOiPHXp2L18tB4h9Z357JA@mail.gmail.com>
+Subject: Re: HiFive Unleashed DT problem with 5.3-rc1 upstream kernel
+To: David Abdurachmanov <david.abdurachmanov@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190620_185038_788165_06B92F39 
-X-CRM114-Status: GOOD (  23.78  )
-X-Spam-Score: 3.8 (+++)
+X-CRM114-CacheID: sfid-20190620_210756_043284_25DB4586 
+X-CRM114-Status: GOOD (  30.21  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (3.8 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 3.6 RCVD_IN_SBL_CSS        RBL: Received via a relay in Spamhaus SBL-CSS
- [203.116.164.13 listed in zen.spamhaus.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.196 listed in wl.mailspike.net]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.196 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,93 +90,173 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: me@carlosedp.com, linux-kernel@vger.kernel.org, joel@sing.id.au,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- marco@decred.org
+Cc: Rick Chen <rickchen36@gmail.com>, Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "mafm@debian.org" <mafm@debian.org>,
+ "abner.chang@hpe.com" <abner.chang@hpe.com>,
+ "khilman@baylibre.com" <khilman@baylibre.com>,
+ "mark.corbin@embecosm.com" <mark.corbin@embecosm.com>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "rjones@redhat.com" <rjones@redhat.com>, Anup Patel <Anup.Patel@wdc.com>,
+ Atish Patra <Atish.Patra@wdc.com>,
+ "yash.shah@sifive.com" <yash.shah@sifive.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "lukas.auer@aisec.fraunhofer.de" <lukas.auer@aisec.fraunhofer.de>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "wxjstz@126.com" <wxjstz@126.com>,
+ "schwab@linux-m68k.org" <schwab@linux-m68k.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Bin Meng <bmeng.cn@gmail.com>, "hch@lst.de" <hch@lst.de>,
+ "merker@debian.org" <merker@debian.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 19 Jun 2019 00:36:01 PDT (-0700), mark.rutland@arm.com wrote:
-> On Fri, Jun 07, 2019 at 03:22:22PM -0700, Palmer Dabbelt wrote:
->> The comment describes why in detail.  This was found because QEMU never
->> gives up load reservations, the issue is unlikely to manifest on real
->> hardware.
->>
->> Thanks to Carlos Eduardo for finding the bug!
+On Fri, Jun 21, 2019 at 12:10 AM David Abdurachmanov
+<david.abdurachmanov@gmail.com> wrote:
 >
->> @@ -330,6 +330,17 @@ ENTRY(__switch_to)
->>  	add   a3, a0, a4
->>  	add   a4, a1, a4
->>  	REG_S ra,  TASK_THREAD_RA_RA(a3)
->> +	/*
->> +	 * The Linux ABI allows programs to depend on load reservations being
->> +	 * broken on context switches, but the ISA doesn't require that the
->> +	 * hardware ever breaks a load reservation.  The only way to break a
->> +	 * load reservation is with a store conditional, so we emit one here.
->> +	 * Since nothing ever takes a load reservation on TASK_THREAD_RA_RA we
->> +	 * know this will always fail, but just to be on the safe side this
->> +	 * writes the same value that was unconditionally written by the
->> +	 * previous instruction.
->> +	 */
+> On Thu, Jun 20, 2019 at 8:58 PM Atish Patra <Atish.Patra@wdc.com> wrote:
+> >
+> > On Thu, 2019-06-20 at 08:50 +0530, Anup Patel wrote:
+> > > On Thu, Jun 20, 2019 at 1:36 AM Atish Patra <Atish.Patra@wdc.com>
+> > > wrote:
+> > > > On Wed, 2019-06-19 at 13:02 -0700, Atish Patra wrote:
+> > > > > Hi All,
+> > > > >
+> > > > > We have been waiting for upstream kernel to boot on HiFive
+> > > > > Unleashed
+> > > > > for some time. Finally, all the required drivers will be
+> > > > > available in
+> > > > > 5.3-rc1 as Yash[1] & Paul's[2] patches are queued for merging.
+> > > > > Yay!!
+> > > > >
+> > > > > However, the DT/drivers in kernel are not backward compatible
+> > > > > with
+> > > > > the
+> > > > > DT provided by FSBL. That means, everybody need to upgrade to the
+> > > > > new
+> > > > > DT if they want to use upstream kernel. Here are some possible
+> > > > > approaches to allow a smooth transition.
+> > > > >
+> > > > > 1. Embedd the DT in OpenSBI directly and build it by default for
+> > > > > unleashed platform. (discussed in OpenSBI mailing list [3])
+> > > > >
+> > > > > Pros: No change in anybody's build system as long as they use
+> > > > > latest
+> > > > > OpenSBI.
+> > > > >
+> > > > > Cons: This sets a bad precedent for future platforms as OpenSBI
+> > > > > should
+> > > > > not be the place to keep/maintain device tress.
+> > > > >
+> > > > > It will also break non-Linux OS that have not upgraded their DT
+> > > > > to
+> > > > > match with kernel.
+> > > > >
+> > > > > 2. Link the updated DTB maintained by kernel using
+> > > > > FW_PAYLOAD_FDT_PATH
+> > > > > in OpenSBI.
+> > > > >
+> > > > > Pros: DT is maintained by kernel and OpenSBI just use the already
+> > > > > built
+> > > > > DTB.
+> > > > >
+> > > > > Cons: Creates a dependancy on Linux build system.
+> > > > > All Linux distro maintainers now have to update their build
+> > > > > script to
+> > > > > add that option and all documentation need to be updated.
+> > > > >
+> > > > > 3. Update FSBL:
+> > > > >
+> > > > > Pros: Cleanest approach.
+> > > > >
+> > > > > Cons: Everybody has to upgrade the FSBL which is not a simple ask
+> > > > > for
+> > > > > everyone. There is no FSBL binary available publicly as well. So
+> > > > > everybody has to build FSBL first.
+> > > > >
+> > > > > Any other possible solutions?
+> > > > >
+> > > > > Till now, 2 seems to be the preferred choice for now. Approach 3
+> > > > > is
+> > > > > also okay for longer term solution (given that FSBL binary and
+> > > > > instructions are available timely). But approach 2 requires extra
+> > > > > work
+> > > > > on distro maintainers. That's why we want to get an agreement
+> > > > > with
+> > > > > them
+> > > > > before recommonding any specific approach to anybody in the
+> > > > > community.
+> > > > >
+> > > > > Thoughts ?
+> > > > >
+> > > >
+> > > > Argh. I messed up the subject line first time.
+> > > > Sorry for the noise.
+> > >
+> > > I have 4th option which is even cleaner that 3rd option
+> > >
+> > > 4. U-Boot_SPL/Coreboot replace FSBL
+> > > The U-Boot_SPL/Coreboot will replace FSBL and load OpenSBI
+> > > FW_DYNAMIC, Platform DTB, and U-Boot_S_mode from boot
+> > > device (MMC/Flash). We can update OpenSBI FW_DYNAMIC,
+> > > Platform DTB, or U-Boot_S_mode separately anytime without
+> > > updating other images.
+> > >
+> > > Pros: Better than option 3
+> > >
+> > > Cons: None that I can think of.
+> > >
+> > > IMHO, it's right time replace FSBL with U-Boot_SPL/Coreboot
+> > > once and for all.
+> >
+> > +Lukas, + Xiang
+> >
+> > I completely agree that replacing FSBL with U-Boot SPL/coreboot is the
+> > best possible solution. However, the implementation of either one is
+> > not available upstream. Please correct me if I am wrong.
+> >
+> > So we need an intermediate solution until that happens. It seems that
+> > approach 2 is okay with majority. We have not heard anything from
+> > Fedora/debian folks though.
+> >
 >
-> I suspect that you need to do the same as 32-bit ARM, and clear this in
-> your exception return path, rather than in __switch_to, since handlers
-> for interrupts and other exceptions could leave a dangling reservation.
+> Here is my opinion from Fedora camp.
 >
-> For ARM, the architecture permits a store-exclusive to succeed even if
-> the address differed from the load-exclusive. I don't know if the same
-> applies here, but regardless I believe the case above applies if an IRQ
-> is taken from kernel context, since the handler can manipulate the same
-> variable as the interrupted code.
+> The preferred option would be U-Boot SPL for already mentioned
+> reason:
+> "... for the reason of using the same bootloader technology stack."
+>
+> We already ship U-Boot SPL binaries for a high number of AArch64
+> and ARMv7 boards. Ideally we don't want to depend on external DTBs
+> stored in /boot (like it's done in Fedora ARMv7). The default DTB should
+> be built into the firmware (FSBL-style), but there might be an option
+> to pass external one for development/debugging reasons (i.e. override
+> the default one in firmware).
+>
+> For me firmware (incl. DTB) is part of hardware.
+>
+> SiFive Unleashed is a development board with a test chip, and it ships
+> in a low volumes thus right now I would just rebuild FSBL with new DTB
+> and provide instructions how to flash it.
 
-RISC-V has the same constraint: an LR can cause the subsequent SC on any
-address to succeed.  When writing the patch I thought they had to have matching
-addresses, v4 should have a correct comment (assuming I've managed to send it,
-I'm on my third continent this week so I'm a bit out of it).
+Here's the link to U-Boot patches:
+https://patchwork.ozlabs.org/cover/1119206/
 
-I'd considered breaking reservations on trap entry, but decided it wasn't
-necessary.  I hadn't considered doing this on trap exit, but I don't see a
-difference so I might be missing something.  The case that I see as an issue is
-when a trap comes in the middle of an LR/SC sequence, which boils down to three
-cases:
+These patches update U-Boot documentation as well.
 
-* The trap handler doesn't contend with the LR/SC sequence in any way, in which
-  case it's fine for the sequence to succeed.
-* The trap handler contends by doing its own LR/SC sequence.  Since the trap
-  handler must execute completely before returning control back the parent, we
-  know the SC in the trap handler will execute.  Thus there is no way the SC in
-  the parent can pair with the LR in the trap handler.  This applies even when
-  traps are nested.
-* The trap handler contends by performing a regular store to the same address
-  as the LR that was interrupted.  In this case the SC must fail, and while I
-  assumed that the store would cause that failure the ISA manual doesn't appear
-  to require that behavior -- it does allow the SC to always fail in that case,
-  but it doesn't mandate it always fails (which is how I got confused).
+If the above patches make it to U-Boot-2019.07 then we will have
+U-Boot-2019.07, OpenSBI v0.4, and Linux-5.3 work unmodified
+with Ethernet available in both U-Boot and Linux.
 
-Assuming the ISA manual is correct in not specifying that stores within an
-LR/SC sequence break the load reservations, then I think we do need to break
-load reservations on all traps.  I'll go check with the ISA people, but now
-that I've noticed it this does seem somewhat reasonable -- essentially it lets
-LR just take a line exclusively, SC to succeed only on already exclusively held
-lines, and doesn't impose any extra constraints on regular memory operations.
+Of course, we will also need Atish's image header patch and Yash's
+ethernet DT node patch merged in Linux-5.3 as well.
 
-I don't see any reason that breaking reservations on entry as opposed to exit
-would be incorrect.  I feel like doing this on entry is a better bet, as we're
-already doing a bunch of stores there so I don't need to bring an additional
-cache line in for writing.  These lines would be on the kernel stack so it's
-unlikely anyone else has them for writing anyway, so maybe it just doesn't
-matter.  The only issue I can think of here is that there might be something
-tricky for implementations to handle WRT the regular store -> store conditional
-forwarding, as that's a pattern that is unlikely to manifest on regular code
-but is now in a high performance path.  The regular load -> store conditional
-may be easier to handle, and since this is done on the kernel stack it's
-unlikely that upgrading a line for writing would be an expensive operation
-anyway.
+We are quite close in having all upstream components working on
+SiFive Unleashed board except FSBL.
 
-LMK if I'm missing something, otherwise I'll spin another version of the patch
-to break reservations on trap entry.
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
