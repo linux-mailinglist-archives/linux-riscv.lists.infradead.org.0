@@ -2,76 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBA6C4F37B
-	for <lists+linux-riscv@lfdr.de>; Sat, 22 Jun 2019 06:14:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 412DF4F3D2
+	for <lists+linux-riscv@lfdr.de>; Sat, 22 Jun 2019 07:14:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tfDiRl1sr4I5BQ5UO6tbe5QWy2D4Vc68qIcCyRXfTfk=; b=pnRqxaDZADBbpz
-	l/mSQGc9QTrpXDldoJDfg1BbFCocXogJSzivtPQvd4NQmgJqR8OF6+hls3XWz+6cjcNnpIVqI/Soy
-	o2SLC5ToKYi/miwVfytrjpsFo7xcp6OqJ0olZmXkevLsHiEnyD+zO9g0zVxH5yvJ2EUH5DpLczy/O
-	XSIKGPtBKRWuF1n46ljDSIx2ebaqNL0kY5pPWTPy6iG5MYI6Fno1xpN7irYox0i2ceTtPlFxBUn23
-	2W2OmO8nqhc/aBBDo0ud4/BC3WKXso+s9nRuWgrlHfPP255r1ssDxBbXv9YGx74Z2U8Oc2S2yLvz9
-	LdiV2ip9QB9oLnZtTVCQ==;
+	List-Owner; bh=aME8q346r7rCSFd0i//vhVAf13b9zC/wnTPzLLMZ3R4=; b=LGi17MXHjfBOrx
+	uRMzFse2JVpVRtw6RxV6aN/VTlnh6+8PLhUDCFS72qJinyXdVM+tXK0K1d6TNwgXYVtC/Phu8Qh/E
+	lEoEySgk1rCTQ0gl44ddUETqGgiMQD+sWQDmHn3IMww2HJjN5TGu9G7J3Lchoh3iBMDb/JmEP5Yh/
+	NN4Iq/sfLRi/Tz45+c0Qoi3lt6MkYxC/PL91uEXLmA/REDIGWjhAtbe/3ZkwhwTyvr2cEGa9JPSbE
+	Lj4K5CecMha8A4AqHii46hemubfuNHOPV4zixnSEeQuNzVVy3SDWZuK98q5ckrVU7QVTdXZUQaD7U
+	5gCB71Jez1hUWvfmekxQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1heXPs-0004JK-Gs; Sat, 22 Jun 2019 04:14:16 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1heYLd-0004mH-BT; Sat, 22 Jun 2019 05:13:57 +0000
+Received: from conssluserg-01.nifty.com ([210.131.2.80])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1heXPp-0004IS-3f
- for linux-riscv@lists.infradead.org; Sat, 22 Jun 2019 04:14:14 +0000
-Received: by mail-wr1-x444.google.com with SMTP id n9so8412000wru.0
- for <linux-riscv@lists.infradead.org>; Fri, 21 Jun 2019 21:14:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UnNxgzz45jXanekL0G0iIwxvOLwF76KDyFR4BupDUBg=;
- b=DlB6oG9VvsR/BRBZyLkN0QQkvG07sO3eJyod1fWS76wH/Nf6Zijqk/4rKrboH9aoCR
- G1d+knbtufM28yqt/GYYFu4qEU0JsCmEPgTMV7W356ufFI2/G/xKexgOv8fG+9baXvN5
- 6bdblZ/bBKtztU58TxVfw7aMaSxN+9Tg/rSuwEvkG4tkqYE6BAqyZjN8r8L/wrscBvmF
- Kez0b3Ghd4SYlU0YX70osvFUAMVm9Fd9k0XUGkdWwYmyXBewi9CHE+7j6rwSZrKNJSNo
- 8Plt41Zx/TSsXGmBtiQlo+f9tDDnB7EUUDBtzdnD/rs5uekSljtr7TmSKfTIHbnU6nJD
- KPFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=UnNxgzz45jXanekL0G0iIwxvOLwF76KDyFR4BupDUBg=;
- b=CqkALdUmnUvc8RsFkt4bjp3mJzrycAIZLnMs6EfOnuSrWer3Xb+Bk5OF9bMFjZ+xIw
- iyWWapjEv1CeJ06P3xWGsd0Epwto9hoHTHG037orswIeAB8B57PMNyN8+XKVXvd27RY8
- DjZJYno7ihmaup4RbF03dJRdKoM+q9hZRpbG4S1GJV1bC3mA19KkimTjsUqAxIq8CpGN
- jTPN9DJ9pSO1w93MHXNLnZsx29vxO2Y3IflglhFLf38ixrm7JjXQa73qkzihBdZU7shK
- wO2TDUQ+basGQjBMUr4X3lWAqu0vSjqCvkAI9gSlqe+4r8JKeCF8BHBYUwt5nh5j7wvr
- 9vIw==
-X-Gm-Message-State: APjAAAUfXRsLwY4J/yh3vJZywK2Xa46ofH8KtPZHIp1nHNKi079UZKF3
- SJvfiJNtKG2ZweLgOVcI/qLsy6yWDe33jiI6qPBmlw==
-X-Google-Smtp-Source: APXvYqy0qSomvM2VPYwdsUAVUeJBcXv6du3aogDq0+nUAilpRabqDlQDj48Qg/rdCcKjlnkDYzPn4J3C99rC7PZysAM=
-X-Received: by 2002:a5d:5448:: with SMTP id w8mr65875480wrv.180.1561176846303; 
- Fri, 21 Jun 2019 21:14:06 -0700 (PDT)
+ id 1heYLZ-0004ll-D7
+ for linux-riscv@lists.infradead.org; Sat, 22 Jun 2019 05:13:55 +0000
+Received: from mail-vk1-f171.google.com (mail-vk1-f171.google.com
+ [209.85.221.171]) (authenticated)
+ by conssluserg-01.nifty.com with ESMTP id x5M5DDw1001317
+ for <linux-riscv@lists.infradead.org>; Sat, 22 Jun 2019 14:13:14 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-01.nifty.com x5M5DDw1001317
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1561180394;
+ bh=KdIj9gfPTr+KrZ1sDxUOA4m0IeC48LHZH0YQxYceD7E=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=vNXZk1hsI4XAgvzZbNpj3eEkuhbxR+xJUJgEQAfDLHUrThJBuGHZnQCO5vbNRFhY9
+ O6JJNTD2AoilsIhPpmAPLB1s4tU2y4wbYNdFvz73Ofj6mHBYw5ZRKRChdKtWhGqZDi
+ iBqeIGPFn9ldiGUmjSY9CUglghoeCgD3qPumjrBDSZNEKfDG9ZU7ueOhebEc+fo969
+ TgZY6+nM4I2xd4ajLhqTRGukFPJdLyN8D1rO1s1h9MYefCsRGBHweTxXGMXf846gEd
+ yNByTY3dWBt06CrMLnC6+MAxZ8qT1YpkX/lPVr2HSHKo/3ucD9voLty7ne2cwWjDPH
+ Jx7qcb82+RPrQ==
+X-Nifty-SrcIP: [209.85.221.171]
+Received: by mail-vk1-f171.google.com with SMTP id s16so1742956vke.7
+ for <linux-riscv@lists.infradead.org>; Fri, 21 Jun 2019 22:13:14 -0700 (PDT)
+X-Gm-Message-State: APjAAAUy82AqGb8eTN+ltkFU49V9UzY19DNd+1LeYeU31QJ6Sh2KeXRS
+ eguGNO9kGQwtIq78SGD1K4RpgmCtRc+FPl4IRL0=
+X-Google-Smtp-Source: APXvYqzPInWk1IBu1alc9KP2LKnKvdXwjA7lll6wtO8cUk3YyTmS0WJGwLrcgnJ/Z+EOnHvGr4hhymNP3eUnWblqKus=
+X-Received: by 2002:a1f:aad2:: with SMTP id t201mr11091589vke.74.1561180393149; 
+ Fri, 21 Jun 2019 22:13:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190607060049.29257-1-anup.patel@wdc.com>
-In-Reply-To: <20190607060049.29257-1-anup.patel@wdc.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Sat, 22 Jun 2019 09:43:54 +0530
-Message-ID: <CAAhSdy16-6RfHop3iRJkdKxUm3KBXn6MF+v8jp3zH0VxYnNE_w@mail.gmail.com>
-Subject: Re: [PATCH v5 0/2] Two-stagged initial page table setup
-To: Anup Patel <Anup.Patel@wdc.com>
+References: <20190604101409.2078-1-yamada.masahiro@socionext.com>
+ <20190604101409.2078-16-yamada.masahiro@socionext.com>
+ <CAK8P3a08f25WYP5r57JHPcZWieS2+07=_qTphLosS4M2w8F0Zw@mail.gmail.com>
+In-Reply-To: <CAK8P3a08f25WYP5r57JHPcZWieS2+07=_qTphLosS4M2w8F0Zw@mail.gmail.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Date: Sat, 22 Jun 2019 14:12:37 +0900
+X-Gmail-Original-Message-ID: <CAK7LNATt8BSrMfrOVjZ_SbA0awsh4CvRhu6TF3gYYynirpviWw@mail.gmail.com>
+Message-ID: <CAK7LNATt8BSrMfrOVjZ_SbA0awsh4CvRhu6TF3gYYynirpviWw@mail.gmail.com>
+Subject: Re: [PATCH 15/15] kbuild: compile test UAPI headers to ensure they
+ are self-contained
+To: Arnd Bergmann <arnd@arndb.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190621_211413_289935_2E6141F6 
-X-CRM114-Status: GOOD (  12.43  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190621_221353_691229_2EAE0A30 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ no trust [210.131.2.80 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -86,76 +85,41 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Christoph Hellwig <hch@infradead.org>,
- Atish Patra <Atish.Patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Song Liu <songliubraving@fb.com>, Michal Marek <michal.lkml@markovi.net>,
+ bpf@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
+ Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
+ Jani Nikula <jani.nikula@intel.com>, Networking <netdev@vger.kernel.org>,
+ Randy Dunlap <rdunlap@infradead.org>, Alexei Starovoitov <ast@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ David Howells <dhowells@redhat.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>, Yonghong Song <yhs@fb.com>,
+ linux-riscv@lists.infradead.org, Sam Ravnborg <sam@ravnborg.org>,
+ Martin KaFai Lau <kafai@fb.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Jun 7, 2019 at 11:31 AM Anup Patel <Anup.Patel@wdc.com> wrote:
->
-> This patchset implements two-stagged initial page table setup using fixmap
-> to avoid mapping non-existent RAM and also reduce high_memory consumed by
-> initial page tables.
->
-> The patchset is based on Linux-5.2-rc3 and tested on SiFive Unleashed board
-> and QEMU virt machine.
->
-> These patches can be found in riscv_setup_vm_v5 branch of
-> https//github.com/avpatel/linux.git
->
-> Changes since v4:
-> - Added dtb_early_va which points to DTB for early parsing
->
-> Changes since v3:
-> - Changed patch series subject.
-> - Dropped PATCH1 because it's already merged
-> - Dropped PATCH3 because trampoline page table handles a corner case
->   for 32bit systems where load address range overlaps kernel virtual
->   address range
-> - Revamped PATCH for 4K aligned booting into two-stagged initial page
->   table setup
->
-> Changes since v2:
-> - Dropped PATCH2 because we have separate fix for Linux-5.1-rcX
-> - Moved PATCH5 to PATCH2
-> - Moved PATCH4 to PATCH3
-> - The "Booting kernel from any 4KB aligned address" is now PATCH4
->
-> Changes since v1:
-> - Add kconfig option BOOT_PAGE_ALIGNED to enable 4KB aligned booting
-> - Improved initial page table setup code to select best/biggest
->   possible mapping size based on load address alignment
-> - Added PATCH4 to remove redundant trampoline page table
-> - Added PATCH5 to fix memory reservation in setup_bootmem()
->
-> Anup Patel (2):
->   RISC-V: Fix memory reservation in setup_bootmem()
->   RISC-V: Setup initial page tables in two stages
->
->  arch/riscv/include/asm/fixmap.h     |   5 +
->  arch/riscv/include/asm/pgtable-64.h |   5 +
->  arch/riscv/include/asm/pgtable.h    |   8 +
->  arch/riscv/kernel/head.S            |  17 +-
->  arch/riscv/kernel/setup.c           |   6 +-
->  arch/riscv/mm/init.c                | 331 ++++++++++++++++++++++------
->  6 files changed, 292 insertions(+), 80 deletions(-)
->
-> --
-> 2.17.1
-
-Hi All,
-
-Any comments on this series?
-
-Regards,
-Anup
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gU2F0LCBKdW4gMjIsIDIwMTkgYXQgNDowNSBBTSBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRi
+LmRlPiB3cm90ZToKPgo+IE9uIFR1ZSwgSnVuIDQsIDIwMTkgYXQgMTI6MTYgUE0gTWFzYWhpcm8g
+WWFtYWRhCj4gPHlhbWFkYS5tYXNhaGlyb0Bzb2Npb25leHQuY29tPiB3cm90ZToKPgo+ID4gLS0t
+IGEvTWFrZWZpbGUKPiA+ICsrKyBiL01ha2VmaWxlCj4gPiBAQCAtMTM2Myw3ICsxMzYzLDcgQEAg
+Q0xFQU5fRElSUyAgKz0gJChNT0RWRVJESVIpIGluY2x1ZGUva3N5bQo+ID4gIENMRUFOX0ZJTEVT
+ICs9IG1vZHVsZXMuYnVpbHRpbi5tb2RpbmZvCj4gPgo+ID4gICMgRGlyZWN0b3JpZXMgJiBmaWxl
+cyByZW1vdmVkIHdpdGggJ21ha2UgbXJwcm9wZXInCj4gPiAtTVJQUk9QRVJfRElSUyAgKz0gaW5j
+bHVkZS9jb25maWcgdXNyL2luY2x1ZGUgaW5jbHVkZS9nZW5lcmF0ZWQgICAgICAgICAgXAo+ID4g
+K01SUFJPUEVSX0RJUlMgICs9IGluY2x1ZGUvY29uZmlnIGluY2x1ZGUvZ2VuZXJhdGVkICAgICAg
+ICAgIFwKPiA+ICAgICAgICAgICAgICAgICAgIGFyY2gvJChTUkNBUkNIKS9pbmNsdWRlL2dlbmVy
+YXRlZCAudG1wX29iamRpZmYKPiA+ICBNUlBST1BFUl9GSUxFUyArPSAuY29uZmlnIC5jb25maWcu
+b2xkIC52ZXJzaW9uIFwKPiA+ICAgICAgICAgICAgICAgICAgIE1vZHVsZS5zeW12ZXJzIHRhZ3Mg
+VEFHUyBjc2NvcGUqIEdQQVRIIEdUQUdTIEdSVEFHUyBHU1lNUyBcCj4KPiBUaGlzIGNoYW5nZSBz
+ZWVtcyB0byBoYXZlIGNhdXNlZCBhIG1pbm9yIHJlZ3Jlc3Npb246Cj4KPiAkIG1ha2UgY2xlYW4g
+OyBtYWtlIGNsZWFuCj4gZmluZDog4oCYKuKAmTogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeQoK
+SG1tLCBJIGNhbm5vdCByZXByb2R1Y2UgdGhpcy4KCkkgY2hlY2tlZCB0aGUgbGF0ZXN0IGxpbnV4
+LW5leHQuCgoKbWFzYWhpcm9AZ3JvdmVyOn4vcmVmL2xpbnV4LW5leHQkIGdpdCBkZXNjcmliZQpu
+ZXh0LTIwMTkwNjIxCm1hc2FoaXJvQGdyb3Zlcjp+L3JlZi9saW51eC1uZXh0JCBtYWtlIGNsZWFu
+OyBtYWtlIGNsZWFuCm1hc2FoaXJvQGdyb3Zlcjp+L3JlZi9saW51eC1uZXh0JAoKCgoKCj4gQW55
+IGlkZWE/Cj4KPiAgICAgICBBcm5kCgoKCi0tIApCZXN0IFJlZ2FyZHMKTWFzYWhpcm8gWWFtYWRh
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1y
+aXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
