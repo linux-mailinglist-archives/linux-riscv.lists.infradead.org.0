@@ -2,52 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8ECFB5022D
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 08:24:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C2855023E
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 08:25:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:From:To:
 	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gVpFF7dnlQdcsd8hfypY0xp1CoAIVTGUUF0WBaM9/dg=; b=rMVDJtZZLZkCUO
-	6BD0yfHrYiS1ushqEIpsfP/wP2vo1uFJsZeZdq/BOl7VQ1TOYIyKHVQgLTK96HzJRg7nN0j8Tn7fN
-	c67uK/GyTtHzmS7RBWhUlVJS+J8Iezrh0r+OQQ13pLQSoEhZm+p2ljT2iCs3M5jcc1signXQdjf0a
-	lS27PVnravk0GwInrdv+cJbLoCADwyOcHU8vyQYaMezRXhSa+CbvCwTBa5fMRBJEnYMSGMDx30yJh
-	5dg9H0jONsTmmdLHqpoFfAWDU4wLNbOWU3ayfuqv7UvCB8SYeJBx9A6Nz5SYiunsX78fMBHWNuZd2
-	DOIz+s7OcBygGnQLTzWA==;
+	List-Owner; bh=ORPqcXVhfTKupdxf8cqzghRiynRkgOYoLDKAdBNH90o=; b=TQqA3f3dOIntiZ
+	ZqBd96dC7PNyEVoR0K8925fbjRqo+plFmTh0wG+xDHfVWTlpzOa8u0vXGIu3YcB/Tb//ZDeRr26mA
+	gn5DnuWADTJssh/Qxph00b2CQP0dTJ4IZU8umwmabON6yGqi3lEvzw5cpa6miez1YDX/xRuGg3IYg
+	0hPudmE2450EfGuDp/lkv6sdkQDFBfPtM9fh3TQXdzo+ynhVC/ye0B6/5xOudLl+PvlxDXHWNBL1K
+	ImCrV0G11CAyatzG1XpRGVuN8dTJ3dW2cucomZH2ZlEhs17MZ9/zkFHaofyMcy+QpNvbXBs6Wxl8p
+	YM55ic8d7qkl+rrL4LQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfIP6-00039x-64; Mon, 24 Jun 2019 06:24:36 +0000
+	id 1hfIQL-0004gO-Ky; Mon, 24 Jun 2019 06:25:54 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfIP2-00039P-6M
- for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 06:24:33 +0000
+ id 1hfIQF-0004fR-Mx
+ for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 06:25:49 +0000
 Received: from localhost (unknown [116.247.127.123])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D428E20820;
- Mon, 24 Jun 2019 06:24:29 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B14DC21655;
+ Mon, 24 Jun 2019 06:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561357470;
- bh=BOFXezWhOS+WzaNklVHEMMYx/6J008OlC40gQpbDaY0=;
+ s=default; t=1561357547;
+ bh=U2OnTu5Pqo6U7vuk+TJ/sa1sv7KyRA5heOMHaaChH0Q=;
  h=Subject:To:Cc:From:Date:From;
- b=wLRQZTdg02GNsmEC4rcT7cZ5hHZtS5AyGti0TZHXKUSedGMsHYcblZvhRLQaticWX
- q6DAB1mB7/ebIth2twpk/lZxhD+1sIsvj2D4tu+3YNPATOtdjbDujZkWgJ6ihWQrUg
- 2pfW/7rKDpIAHdPmsACWxJb5sdi/30BFcJ6gQuOE=
+ b=qWxKavgyk3fuwomQ2QMQO6S0hNHNr1bkUF/1gLmoun+7X/m9k1IVHeGXDgg9nlHm5
+ CurLFr7WjmFsudR9GygF3eAyj7Ptk4b0Fa5I2CSIc0Gb9wtFPoKpgO4D6M6VNrh/tg
+ u0nNYyy4ZDuhwalL+4TEHcf7iG89CURwkn07iJUM=
 Subject: Patch "riscv: mm: synchronize MMU after pte change" has been added to
- the 4.19-stable tree
+ the 5.1-stable tree
 To: aou@eecs.berkeley.edu, gregkh@linuxfoundation.org,
  linux-riscv@lists.infradead.org, palmer@sifive.com, paul.walmsley@sifive.com,
  shihpo.hung@sifive.com
 From: <gregkh@linuxfoundation.org>
-Date: Sun, 23 Jun 2019 22:35:24 +0200
-Message-ID: <15613221241676@kroah.com>
+Date: Sun, 23 Jun 2019 22:35:26 +0200
+Message-ID: <15613221268152@kroah.com>
 MIME-Version: 1.0
 X-stable: commit
 X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190623_232432_258654_BAF05471 
+X-CRM114-CacheID: sfid-20190623_232547_783157_F18A731F 
 X-CRM114-Status: GOOD (  10.09  )
 X-Spam-Score: -1.4 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -86,12 +86,12 @@ This is a note to let you know that I've just added the patch titled
 
     riscv: mm: synchronize MMU after pte change
 
-to the 4.19-stable tree which can be found at:
+to the 5.1-stable tree which can be found at:
     http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
 The filename of the patch is:
      riscv-mm-synchronize-mmu-after-pte-change.patch
-and it can be found in the queue-4.19 subdirectory.
+and it can be found in the queue-5.1 subdirectory.
 
 If you, or anyone else, feels it should not be added to the stable tree,
 please let <stable@vger.kernel.org> know about it.
@@ -158,7 +158,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 Patches currently in stable-queue which might be from shihpo.hung@sifive.com are
 
-queue-4.19/riscv-mm-synchronize-mmu-after-pte-change.patch
+queue-5.1/riscv-mm-synchronize-mmu-after-pte-change.patch
 
 _______________________________________________
 linux-riscv mailing list
