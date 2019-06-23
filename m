@@ -2,95 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 704634FA90
-	for <lists+linux-riscv@lfdr.de>; Sun, 23 Jun 2019 09:05:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD1084FCB3
+	for <lists+linux-riscv@lfdr.de>; Sun, 23 Jun 2019 18:36:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Jko/Ys6ejcrY0JyVfeW5RhdIWiaS+zrOu286ok+zCMU=; b=sbw5Dci6kll+dSnrHsM3W0ZeP
-	Ieos5qoDU2bxUQhOQndqQvmCND/2mKb9ziBb4c/ZL42NGOZ/JSbABVu0zV53tZNJ8b06K35aC2Y5X
-	udliblNrqV5OiKFBrLIGUFv1PCKd+COjFE+0TRTJW0nIxm6hmDZv3NfNmahHVKyQR31Vb3QYQT/Mv
-	tEmRQMmXOZrPkpq5muDJfF0vnK3LLdbEadbDUnAB12I+QZoDTs0QCoj7MekUOenOvjiZIeZ/Be75u
-	nW4mT2QxuqxTCEDbqYt4ebVQiAPBJ+y8fXNvg2aWhA+HW3kRzri/LrqssvzsIiAHuL+NtQh6aW9dS
-	64vERx1DQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3bRhP1dq6c0qY7l6uJ6AEVftYKKUv00JiZTUqznz07Q=; b=tMJIZ6jZnDesXB
+	aU95nXDlzMwkYgHEpPZ3F1/DRGWHrgyWqXiZ3MQ3NcMMM30zv2YORmklirmQIFpAdEpXQx3txGa2A
+	J5XqvWsZDtz5zJdvmndSuA582OdAc26+VYZSBXr5Bi5h/RjZK1uFjyL3qWbnAArtTkxaJ8jY+qnie
+	pS40DCPEUY2/GFxYaKow8Xw2gkxDG+3M5jhxOlgW93e+dZ3dHLqquKBOe5sEExXd+C+1rsmGqweuV
+	R/vXTs372nWOfHzC+Gm6mMhX6B0478TVnVy6Xhr5BoUtJYjeCnJhWVjuJrUhVdA5VhEzSg9QfTu4C
+	wzaGwCSK3v86tJyWK0Lg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hewYO-00019H-E2; Sun, 23 Jun 2019 07:04:44 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1hf5Td-0007yk-Gg; Sun, 23 Jun 2019 16:36:25 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hewYJ-00018U-C2
- for linux-riscv@lists.infradead.org; Sun, 23 Jun 2019 07:04:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1561273479; x=1592809479;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=/aAI0t7SceW7uN7ZHFC+JZPULVDAEYWGqO6WQts3cPk=;
- b=Lpg/06mdMwGrdpDH+tCE90SNwz9juvyjp3OEoAUAopUa09gyEVcbouza
- Hsrs6H7rs/JBxUuF5Q+I1hknRZUWJr8R44glRvcubustrqfM2QCCnhean
- tn7eLckwl5RtdDAqMQqzfio/cwFJ5XtgaMfRc6jNasvXvsvrSUCeP4nUO
- 2U2ZyNRpxUKJ5b/cZyCzPoPcCWJy6+myi4+LzIInwQOn7k7h9MkqxQAr5
- 8GJVkfL+XhmlHyRqYGQxxcnyclcKtKnd8T3vMYIaqq7CGQIiw9Yb4E6Tv
- XRAXd/BmxDMtGXZnbr3l3npvIXZIK8pRSzrxqAFPejSQqCTV+yfHLvmsn g==;
-X-IronPort-AV: E=Sophos;i="5.63,407,1557158400"; d="scan'208";a="112495869"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 23 Jun 2019 15:04:31 +0800
-IronPort-SDR: DxzD7VhxeNx/ZYfgXVpp6f5xWNMjY/DicXqjF84vrjJ/wREtwW2hqhRes6Xa4jw97VEFRBohiK
- gn96bTthC4+ajq8XmmP4p+2UcwhOahpBtpE51IedCaLeTvcfeqJ1p/PkCQEaL3bxIv7gLicO92
- F6JI29b2hMKZbyMOGNGvuU+So4rvDzleBLE3Wl9fOXJpIeEYhB2SKKAqxbE/H8bzLInJOLTg4O
- exQsDhJwwCAup3KxQZGNQJF+u4D7nrBFSqHsc4fhJhOZzPNGJN9UX+g3GR9fQc+08yv7xGaloG
- DTSIypPr1hSoiY7mDW2voaNx
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP; 23 Jun 2019 00:03:45 -0700
-IronPort-SDR: DxxiGAzKwK72J6F0YPI8XyUpqJTgv4mSmHAO5J/ATvgIPhjzcl2oVQxda3RF837bGJOxqpc0Nm
- GG3M8NCgj4Fxl3/F1i2kJDS28i9no3RNsWjS8j4IlSgEPEgJ5QQnMzU7T1WdBs1Bz567jnattr
- Crb+LKfgWO/05RFiR5T7Qxvp9Y4GX2zFUATRJDxxgiHchVJTEaFqP4R8RSFDuPKXgNfLeyHkPl
- MbEvE5xcwnaf8/T4OyJDH/dGCE9iGyFxZ6z9j4zUcRiGUX4NDAk+3Q1lmBuVigDaOn3wtyu5VA
- u1U=
-Received: from usa003128.ad.shared (HELO [10.225.97.206]) ([10.225.97.206])
- by uls-op-cesaip02.wdc.com with ESMTP; 23 Jun 2019 00:04:30 -0700
-Subject: Re: [PATCH v2] riscv: dts: Add DT node for SiFive FU540 Ethernet
- controller driver
-To: Troy Benjegerdes <troy.benjegerdes@sifive.com>
-References: <1561114429-29612-1-git-send-email-yash.shah@sifive.com>
- <1561114429-29612-2-git-send-email-yash.shah@sifive.com>
- <18c7992607dd1fed062bd295ac0738a759eff078.camel@wdc.com>
- <CAF5mof3QB8C7VjOyEvCsf9NEDkJhV3cBO5sBD+8z-GrWrnrAyg@mail.gmail.com>
- <3f91c8032e113a19dcec10ca71b017af1427ef7e.camel@wdc.com>
- <43da99709709d2a480b78f25356cda9255205372.camel@wdc.com>
- <A3E7D245-ABFA-4D81-87D6-3F6983AA3A93@sifive.com>
- <54493821-0155-4826-B165-B75FBB329D1A@sifive.com>
-From: Atish Patra <atish.patra@wdc.com>
-Message-ID: <da45c3aa-d8c1-137c-d0f8-2ba5641293bf@wdc.com>
-Date: Sun, 23 Jun 2019 00:04:29 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.7.2
+ id 1hf5T4-0006qF-BZ; Sun, 23 Jun 2019 16:35:51 +0000
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com
+ [209.85.128.42])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A3D1B206BA;
+ Sun, 23 Jun 2019 16:35:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561307748;
+ bh=f4wzwRqVtnbeGMbGLTUq9DbopFJOpD4awTGdr8HMu0c=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=FvLpsGf+BdJj6v3kZ/Rdc9A5wgVQ7uAClrDn+60p2iYf0uXBs5fkA6nuATTUz7iIL
+ BuigSQMfDdK77Wag9pj7y7H2OcKDhynDnz11DXuUfbQajtjuDWauL+fzwqZSVuVpZp
+ 96TU36uUbvTsuQCXV/iae25nGQIaG0Q4YvBL4SDw=
+Received: by mail-wm1-f42.google.com with SMTP id g135so10518145wme.4;
+ Sun, 23 Jun 2019 09:35:48 -0700 (PDT)
+X-Gm-Message-State: APjAAAVkPWoW1N8BWYKzXFQ44r3hZEPjnWJA+psX65ZZkOPmW53n7kJJ
+ y9qbJIx9yqllX6PSql/J2JNvKUW+dXXdM6r+t/A=
+X-Google-Smtp-Source: APXvYqytV0iot533SQYILeur1ABvpdvSmQ61FQnlhf7mWoX4c7AKw6SIGZCm/OWATKrhGhf7ydEFv29PmbNlV0vRGhM=
+X-Received: by 2002:a7b:cd84:: with SMTP id y4mr12259887wmj.79.1561307747231; 
+ Sun, 23 Jun 2019 09:35:47 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <54493821-0155-4826-B165-B75FBB329D1A@sifive.com>
-Content-Language: en-US
+References: <20190321163623.20219-1-julien.grall@arm.com>
+ <20190321163623.20219-12-julien.grall@arm.com>
+ <0dfe120b-066a-2ac8-13bc-3f5a29e2caa3@arm.com>
+ <CAJF2gTTXHHgDboaexdHA284y6kNZVSjLis5-Q2rDnXCxr4RSmA@mail.gmail.com>
+ <c871a5ae-914f-a8bb-9474-1dcfec5d45bf@arm.com>
+ <CAJF2gTStSR7Jmu7=HaO5Wxz=Zn8A5-RD8ktori3oKEhM9vozAA@mail.gmail.com>
+ <20190621141606.GF18954@arrakis.emea.arm.com>
+In-Reply-To: <20190621141606.GF18954@arrakis.emea.arm.com>
+From: Guo Ren <guoren@kernel.org>
+Date: Mon, 24 Jun 2019 00:35:35 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTTVUToRkRtxTmtWDotMGXy5YQCpL1h_2neTBuN3e6oz1w@mail.gmail.com>
+Message-ID: <CAJF2gTTVUToRkRtxTmtWDotMGXy5YQCpL1h_2neTBuN3e6oz1w@mail.gmail.com>
+Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
+ separate file
+To: Catalin Marinas <catalin.marinas@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190623_000439_695886_5460B57D 
-X-CRM114-Status: GOOD (  24.04  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190623_093550_431445_976A327A 
+X-CRM114-Status: GOOD (  24.24  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,120 +89,99 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "sachin.ghadi@sifive.com" <sachin.ghadi@sifive.com>,
- "yash.shah@sifive.com" <yash.shah@sifive.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: julien.thierry@arm.com, aou@eecs.berkeley.edu, james.morse@arm.com,
+ suzuki.poulose@arm.com, Marc Zyngier <marc.zyngier@arm.com>,
+ Anup Patel <anup.Patel@wdc.com>, Will Deacon <will.deacon@arm.com>,
+ linux-kernel@vger.kernel.org, rppt@linux.ibm.com, hch@infradead.org,
+ Atish Patra <Atish.Patra@wdc.com>, Julien Grall <julien.grall@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, gary@garyguo.net, paul.walmsley@sifive.com,
+ christoffer.dall@arm.com, linux-riscv@lists.infradead.org,
+ kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gNi8yMS8xOSA2OjU3IFBNLCBUcm95IEJlbmplZ2VyZGVzIHdyb3RlOgo+IAo+IAo+PiBPbiBK
-dW4gMjEsIDIwMTksIGF0IDc6MzMgUE0sIFRyb3kgQmVuamVnZXJkZXMgPHRyb3kuYmVuamVnZXJk
-ZXNAc2lmaXZlLmNvbT4gd3JvdGU6Cj4+Cj4+Cj4+Cj4+PiBPbiBKdW4gMjEsIDIwMTksIGF0IDQ6
-NTkgUE0sIEF0aXNoIFBhdHJhIDxBdGlzaC5QYXRyYUB3ZGMuY29tPiB3cm90ZToKPj4+Cj4+PiBP
-biBGcmksIDIwMTktMDYtMjEgYXQgMTQ6NDYgLTA3MDAsIEF0aXNoIFBhdHJhIHdyb3RlOgo+Pj4+
-IE9uIEZyaSwgMjAxOS0wNi0yMSBhdCAxNDoxOCAtMDUwMCwgVHJveSBCZW5qZWdlcmRlcyB3cm90
-ZToKPj4+Pj4gQ2FuIHlvdSBwb3N0IHRoZSBmc2JsIGFuZCBvdGhlciBpbWFnZXMgeW91IHVzZWQg
-dG8gYm9vdC90ZXN0IHRoaXM/Cj4+Pj4+Cj4+Pj4KPj4+Cj4+PiBSZXNlbmRpbmcgaXQgd2l0aG91
-dCB0aGUgYXR0YWNobWVudC4gT2J2aW91c2x5LCB0aGUgbWFpbCBkaWQgbm90IGdvCj4+PiB0aHJv
-dWdoIHdpdGggdGhlIGJpbmFyeSBibG9iIGF0dGFjaGVkIDooIDooLiBNeSBiYWQuCj4+Pgo+Pj4g
-TGV0IG1lIGtub3cgaWYgeW91IHN0aWxsIHdhbnQgbWUgdG8gc2hhcmUgdGhlIGJpbmFyeSB3aXRo
-IHlvdS4gSSB3aWxsCj4+PiBwcm9iYWJseSBzaGFyZSBpdCB2aWEgc29tZSBvdGhlciBtZXRob2Qu
-Cj4+Cj4+IFRoZSBibCBjYW1lIHRocm91Z2ggYXMgaXQgd2FzIHNlbnQgZGlyZWN0IHRvIG1lLCBh
-bmQgSSBjYW4gZGVhbCB3aXRoCj4+IHRoZSB0ZnRwIGNvbmZpZyBtYW51YWxseS4gSSBoYXZlIGEg
-a2VybmVsIGltYWdlLCBidXQgbm90IHRoZSBib290LnNjci51aW1nCj4+IHRoYXQgaXQgbG9va3Mg
-bGlrZSB5b3UgYXJlIHVzaW5nLiBJcyB0aGF0IGZyb20gWW9jdG8/Cj4gCj4gSSBnb3QgY29uc29s
-ZSBvdXRwdXQsIGFmdGVyIGV4dHJhY3RpbmcgdGhlIGJvb3Qgc2NyaXB0IGZyb20geW9jdG8uCj4g
-CgpHbGFkIGl0IHdvcmtlZCBmb3IgeW91Lgo+IFRoZSBpbXBvcnRhbnQgcGFydCBzZWVtcyB0byBi
-ZSBjYWxsaW5nCj4g4oCYYm9vdG0gJGtlcm5lbF9hZGRyX3IgLSAkZmR0X2FkZHJfcuKAmQo+IAo+
-IFdoaWNoIG1heWJlIGxlYWRzIGludG8gYSBkaXNjdXNzaW9uIG9mIHdoYXQgY2FuIHdlIGRvIHRv
-IGF0Cj4gbGVhc3Qgb3V0cHV0IHNvbWUgc29ydCBvZiB1c2VmdWwgZGVidWcgaW5mb3JtYXRpb24g
-aWYgdGhlIGRldmljZQo+IHRyZWUgaXMgbm90IGZvdW5kIG9yIGludmFsaWQ/Cj4gCkF0IGxlYXN0
-IHNlcmlhbCAmIGNsb2NrIG5lZWRzIHRvIGJlIGNvcnJlY3QgZm9yIHVhcnQgdG8gd29yayBzbyB0
-aGF0IAp1c2VmdWwgZGVidWcgaW5mb3JtYXRpb24gY2FuIGJlIGRpc3BsYXllZC4KCj4gSeKAmWQg
-YWxzbyBsaWtlIHRvIHByb3Bvc2UgdGhhdCBvbiBSaXNjViwgd2UgdXNlIHRoZSBjaG9zZW4gbm9k
-ZQo+IGZvciBrZXJuZWwgY29tbWFuZCBsaW5lCmFuZCBpbml0cmQgbG9jYXRpb24gKGxpa2UgcWVt
-dSBkb2VzKSwgYW5kCj4gaW4gdS1ib290LCBkZWZhdWx0IHRvIGFsd2F5cyBwYXNzaW5nIHRoZSBk
-ZXZpY2UgdHJlZSBmcm9tIGJvb3RtCj4gYW5kIG90aGVyIGNvbW1hbmRzIChsaWtlIGJvb3RlbGYp
-Cj4gCgpJZiBJIHVuZGVyc3RhbmQgeW91IGNvcnJlY3RseSwgeW91IHdhbnQgYSBrZXJuZWwgY29t
-bWFuZCBsaW5lIHdpdGggZml4ZWQgCmluaXRyZCBsb2NhdGlvbiBzZXQgaW4gY2hvc2VuIG5vZGUg
-dGhhdCBVLUJvb3QgY2FuIHBhc3Mgb24gdG8ga2VybmVsID8KCklmIHRoYXQncyB0aGUgY2FzZSwg
-dGhhdCdzIG5vdCBmZWFzaWJsZSBhcyBldmVyeWJvZHkncyBrZXJuZWwgY29tbWFuZCAKbGluZSBt
-YXkgbm90IGJlIHNhbWUgYW5kIHdpbGwgcHJvYmFibHkgb3ZlcnJpZGUgaXQgdXNpbmcgQ09ORklH
-X0NNRExJTkUuCgpTbyBJIGRvbid0IHNlZSB0aGUgcG9pbnQgaW50IHNldHRpbmcgYSBmaXhlZCBv
-bmUuIFdoYXQncyB0aGUgYWR2YW50YWdlIAppbiBkb2luZyB0aGF0ID8KCj4+Cj4+Pgo+Pj4+IEkg
-aGF2ZSBub3QgY2hhbmdlZCBmc2JsLiBJdCdzIHRoZSBkZWZhdWx0IG9uZSBjYW1lIHdpdGggdGhl
-IGJvYXJkLgo+Pj4+IEhlcmUgYXJlIHRoZSBoZWFkcyBvZiBPcGVuU0JJICsgVS1Cb290ICsgTGlu
-dXggcmVwby4KPj4+Pgo+Pj4+IE9wZW5TQkk6IGNkMmRmZGM4NzBlZCAobWFzdGVyKQo+Pj4+IFUt
-Ym9vdDogNzdmNmUyZGQwNTUxICsgQW51cCdzIHBhdGNoIHNlcmllcyAodjQpCj4+Pj4gaHR0cHM6
-Ly9naXRodWIuY29tL2F0aXNocDA0L3UtYm9vdC90cmVlL3VubGVhc2hlZF93b3JraW5nCj4+Pj4K
-Pj4+PiBMaW51eDogYmVkM2MwZDg0ZTdlICsgWWFzaCdzIE1hY2IgU2VyaWVzICsgdGhpcyBwYXRj
-aAo+Pj4+IGh0dHBzOi8vZ2l0aHViLmNvbS9hdGlzaHAwNC9saW51eC90cmVlLzUuMi1yYzYtcHJl
-Cj4+Pj4KPj4+PiBJIGhhdmUgYWxzbyBhdHRhY2hlZCB0aGUgT3BlblNCSSArIFUtYm9vdCBiaW5h
-cnkgYXMgd2VsbC4gQnV0IHRoaXMgaXMKPj4+PiBwcmUtY29uZmlndXJlZCB3aXRoIG15IHRmdHBi
-b290IHNlcnZlci4gWW91IG5lZWQgdG8gY2hhbmdlIHRoYXQuCj4+Pj4KPj4+Pj4gSSBrZWVwIHJ1
-bm5pbmcgaW50byB2YXJpb3VzIGZhaWx1cmVzIHdoZW4gSSBidWlsZCBmcm9tIHNvdXJjZSBhbmQg
-SQo+Pj4+PiB3YW50IHRvIHJ1bGUgb3V0IHBvdGVudGlhbCBoYXJkd2FyZSBpc3N1ZXMgcmVsYXRl
-ZCB0byBjbG9jayBhbmQvb3IKPj4+Pj4gZGRyIGluaXRpYWxpemF0aW9uCj4+Pj4+Cj4+Pj4+IE9u
-IEZyaSwgSnVuIDIxLCAyMDE5LCAyOjE0IFBNIEF0aXNoIFBhdHJhIDxBdGlzaC5QYXRyYUB3ZGMu
-Y29tPgo+Pj4+PiB3cm90ZToKPj4+Pj4+IE9uIEZyaSwgMjAxOS0wNi0yMSBhdCAxNjoyMyArMDUz
-MCwgWWFzaCBTaGFoIHdyb3RlOgo+Pj4+Pj4+IERUIG5vZGUgZm9yIFNpRml2ZSBGVTU0MC1DMDAw
-IEdFTUdYTCBFdGhlcm5ldCBjb250cm9sbGVyIGRyaXZlcgo+Pj4+Pj4gYWRkZWQKPj4+Pj4+PiBT
-aWduZWQtb2ZmLWJ5OiBZYXNoIFNoYWggPHlhc2guc2hhaEBzaWZpdmUuY29tPgo+Pj4+Pj4+IC0t
-LQo+Pj4+Pj4+IGFyY2gvcmlzY3YvYm9vdC9kdHMvc2lmaXZlL2Z1NTQwLWMwMDAuZHRzaSAgICAg
-ICAgICB8IDE2Cj4+Pj4+Pj4gKysrKysrKysrKysrKysrKwo+Pj4+Pj4+IGFyY2gvcmlzY3YvYm9v
-dC9kdHMvc2lmaXZlL2hpZml2ZS11bmxlYXNoZWQtYTAwLmR0cyB8ICA5Cj4+Pj4+PiArKysrKysr
-KysKPj4+Pj4+PiAyIGZpbGVzIGNoYW5nZWQsIDI1IGluc2VydGlvbnMoKykKPj4+Pj4+Pgo+Pj4+
-Pj4+IGRpZmYgLS1naXQgYS9hcmNoL3Jpc2N2L2Jvb3QvZHRzL3NpZml2ZS9mdTU0MC1jMDAwLmR0
-c2kKPj4+Pj4+PiBiL2FyY2gvcmlzY3YvYm9vdC9kdHMvc2lmaXZlL2Z1NTQwLWMwMDAuZHRzaQo+
-Pj4+Pj4+IGluZGV4IDRlOGZiZGUuLmM1M2I0ZWEgMTAwNjQ0Cj4+Pj4+Pj4gLS0tIGEvYXJjaC9y
-aXNjdi9ib290L2R0cy9zaWZpdmUvZnU1NDAtYzAwMC5kdHNpCj4+Pj4+Pj4gKysrIGIvYXJjaC9y
-aXNjdi9ib290L2R0cy9zaWZpdmUvZnU1NDAtYzAwMC5kdHNpCj4+Pj4+Pj4gQEAgLTIyNSw1ICsy
-MjUsMjEgQEAKPj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwx
-PjsKPj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgICAjc2l6ZS1jZWxscyA9IDwwPjsKPj4+Pj4+
-PiAgICAgICAgICAgICAgfTsKPj4+Pj4+PiArICAgICAgICAgICAgIGV0aDA6IGV0aGVybmV0QDEw
-MDkwMDAwIHsKPj4+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJzaWZp
-dmUsZnU1NDAtbWFjYiI7Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIGludGVycnVwdC1w
-YXJlbnQgPSA8JnBsaWMwPjsKPj4+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgaW50ZXJydXB0
-cyA9IDw1Mz47Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDwweDAgMHgxMDA5
-MDAwMCAweDAgMHgyMDAwCj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDAg
-MHgxMDBhMDAwMCAweDAgMHgxMDAwPjsKPj4+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgcmVn
-LW5hbWVzID0gImNvbnRyb2wiOwo+Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBzdGF0dXMg
-PSAiZGlzYWJsZWQiOwo+Pj4+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBsb2NhbC1tYWMtYWRk
-cmVzcyA9IFswMCAwMCAwMCAwMCAwMCAwMF07Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAgICAg
-IGNsb2NrLW5hbWVzID0gInBjbGsiLCAiaGNsayI7Cj4+Pj4+Pj4gKyAgICAgICAgICAgICAgICAg
-ICAgIGNsb2NrcyA9IDwmcHJjaSBQUkNJX0NMS19HRU1HWExQTEw+LAo+Pj4+Pj4+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICA8JnByY2kgUFJDSV9DTEtfR0VNR1hMUExMPjsKPj4+Pj4+
-PiArICAgICAgICAgICAgICAgICAgICAgI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+Pj4+Pj4gKyAg
-ICAgICAgICAgICAgICAgICAgICNzaXplLWNlbGxzID0gPDA+Owo+Pj4+Pj4+ICsgICAgICAgICAg
-ICAgfTsKPj4+Pj4+PiArCj4+Pj4+Pj4gICAgICB9Owo+Pj4+Pj4+IH07Cj4+Pj4+Pj4gZGlmZiAt
-LWdpdCBhL2FyY2gvcmlzY3YvYm9vdC9kdHMvc2lmaXZlL2hpZml2ZS11bmxlYXNoZWQtCj4+Pj4+
-Pj4gYTAwLmR0cwo+Pj4+Pj4+IGIvYXJjaC9yaXNjdi9ib290L2R0cy9zaWZpdmUvaGlmaXZlLXVu
-bGVhc2hlZC1hMDAuZHRzCj4+Pj4+Pj4gaW5kZXggNGRhODg3MC4uZDc4M2JmMiAxMDA2NDQKPj4+
-Pj4+PiAtLS0gYS9hcmNoL3Jpc2N2L2Jvb3QvZHRzL3NpZml2ZS9oaWZpdmUtdW5sZWFzaGVkLWEw
-MC5kdHMKPj4+Pj4+PiArKysgYi9hcmNoL3Jpc2N2L2Jvb3QvZHRzL3NpZml2ZS9oaWZpdmUtdW5s
-ZWFzaGVkLWEwMC5kdHMKPj4+Pj4+PiBAQCAtNjMsMyArNjMsMTIgQEAKPj4+Pj4+PiAgICAgICAg
-ICAgICAgZGlzYWJsZS13cDsKPj4+Pj4+PiAgICAgIH07Cj4+Pj4+Pj4gfTsKPj4+Pj4+PiArCj4+
-Pj4+Pj4gKyZldGgwIHsKPj4+Pj4+PiArICAgICBzdGF0dXMgPSAib2theSI7Cj4+Pj4+Pj4gKyAg
-ICAgcGh5LW1vZGUgPSAiZ21paSI7Cj4+Pj4+Pj4gKyAgICAgcGh5LWhhbmRsZSA9IDwmcGh5MT47
-Cj4+Pj4+Pj4gKyAgICAgcGh5MTogZXRoZXJuZXQtcGh5QDAgewo+Pj4+Pj4+ICsgICAgICAgICAg
-ICAgcmVnID0gPDA+Owo+Pj4+Pj4+ICsgICAgIH07Cj4+Pj4+Pj4gK307Cj4+Pj4+Pgo+Pj4+Pj4g
-VGhhbmtzLiBJIGFtIGFibGUgdG8gYm9vdCBVbmxlYXNoZWQgd2l0aCBuZXR3b3JraW5nIGVuYWJs
-ZWQgd2l0aAo+Pj4+Pj4gdGhpcwo+Pj4+Pj4gcGF0Y2guCj4+Pj4+Pgo+Pj4+Pj4gRldJVywKPj4+
-Pj4+IFRlc3RlZC1ieTogQXRpc2ggUGF0cmEgPGF0aXNoLnBhdHJhQHdkYy5jb20+Cj4+Pj4+Pgo+
-Pj4+Pj4gUmVnYXJkcywKPj4+Pj4+IEF0aXNoCj4+Pj4+PiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4+Pj4gbGludXgtcmlzY3YgbWFpbGluZyBsaXN0
-Cj4+Pj4+PiBsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCj4+Pj4+PiBodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cj4+Cj4gCj4gCgoK
-LS0gClJlZ2FyZHMsCkF0aXNoCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJpc2N2Cg==
+Thx Catalin,
+
+On Fri, Jun 21, 2019 at 10:16 PM Catalin Marinas
+<catalin.marinas@arm.com> wrote:
+>
+> On Wed, Jun 19, 2019 at 07:51:03PM +0800, Guo Ren wrote:
+> > On Wed, Jun 19, 2019 at 4:54 PM Julien Grall <julien.grall@arm.com> wrote:
+> > > On 6/19/19 9:07 AM, Guo Ren wrote:
+> > > > Move arm asid allocator code in a generic one is a agood idea, I've
+> > > > made a patchset for C-SKY and test is on processing, See:
+> > > > https://lore.kernel.org/linux-csky/1560930553-26502-1-git-send-email-guoren@kernel.org/
+> > > >
+> > > > If you plan to seperate it into generic one, I could co-work with you.
+> > >
+> > > Was the ASID allocator work out of box on C-Sky?
+> >
+> > Almost done, but one question:
+> > arm64 remove the code in switch_mm:
+> >   cpumask_clear_cpu(cpu, mm_cpumask(prev));
+> >   cpumask_set_cpu(cpu, mm_cpumask(next));
+> >
+> > Why? Although arm64 cache operations could affect all harts with CTC
+> > method of interconnect, I think we should keep these code for
+> > primitive integrity in linux. Because cpu_bitmap is in mm_struct
+> > instead of mm->context.
+>
+> We didn't have a use for this in the arm64 code, so no point in
+> maintaining the mm_cpumask. On some arm32 systems (ARMv6) with no
+> hardware broadcast of some TLB/cache operations, we use it to track
+> where the task has run to issue IPI for TLB invalidation or some
+> deferred I-cache invalidation.
+The operation of set/clear mm_cpumask was removed in arm64 compared to
+arm32. It seems no side effect on current arm64 system, but from
+software meaning it's wrong.
+I think we should keep mm_cpumask just like arm32.
+
+>
+> (there was also a potential optimisation on arm64 to avoid broadcast
+> TLBI if the task only ran on a single CPU but Will found that was rarely
+> the case on an SMP system because of rebalancing happening during
+> execve(), ending up with two bits set in the mm_cpumask)
+>
+> The way you use it on csky is different from how it is done on arm. It
+> seems to clear the mask for the scheduled out (prev) task but this
+> wouldn't work on arm(64) since the TLB still contains prev entries
+> tagged with the scheduled out ASID. Whether it matters, I guess it
+> depends on the specifics of your hardware.
+Sorry for the mistake quote, what I mean is what is done in arm32:
+clear all bits of mm->cpu_mask in new_context(), and set back one by
+one. Here is my patch:
+https://lore.kernel.org/linux-csky/CAJF2gTQ0xQtQY1t-g9FgWaxfDXppMkFooCQzTFy7+ouwUfyA6w@mail.gmail.com/T/#m2ed464d2dfb45ac6f5547fb3936adf2da456cb65
+
+>
+> While the algorithm may seem fairly generic, the semantics have a few
+> corner cases specific to each architecture. See [1] for a description of
+> the semantics we need on arm64 (CnP is a feature where the hardware
+> threads of the same core can share the TLB; the original algorithm
+> violated the requirements when this feature was enabled).
+C-SKY SMP is only one hart per core, but here is a patch [1] with my
+thought on SMT duplicate tlb flush:
+[1] https://lore.kernel.org/linux-csky/1561305869-18872-1-git-send-email-guoren@kernel.org/T/#u
+
+For TLA+ model, I still need some learning before I could talk with you.
+
+>
+> BTW, if you find the algorithm fairly straightforward ;), see this
+> bug-fix which took a formal model to identify: a8ffaaa060b8 ("arm64:
+> asid: Do not replace active_asids if already 0").
+I think it's one fo the cases that other archs also could get benefit
+from arm's asid allocator code.
+Btw, Is this detected by arm's aisd allocator TLA+ model ? Or a real
+bug report ?
+
+--
+Best Regards
+ Guo Ren
+
+ML: https://lore.kernel.org/linux-csky/
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
