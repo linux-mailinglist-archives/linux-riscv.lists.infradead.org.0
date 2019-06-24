@@ -2,67 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73FCD50914
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 12:40:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D4AD509B9
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 13:24:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P9/lSpL5YrplHYiUO9ybeyjNloHJazWgBRG5XU+OCHU=; b=YsplF5XHNVLW7z
-	gUv+qmdn0f/qUmfDEVoMXCkMFtdz+bx9WJCV9RWyPl9QGgk8HlAtXqgXl+osKsRHD+Ji/E3Q5Piuv
-	GcEMi6p/Xt/z9b8YvG4EOflyQBYLVT4U3B6p1MWeaZRB71C6gb3UkdUvKldXxlg5uy559WWlOWAB0
-	LjfNGI8pfaaBNe0ikQV0fIr/9ImcqzAEmxtyn4TowbnFw+Wu7Vosx0JNJWuUnM8Kwa3bzXqi1vXSe
-	w37tEMoqxKjjtmIcCqomL9nUmnxtzHua5JTA3KJSsWlrZFi2eKLHVPwjqkFHK23xfXXN/AcnChQN/
-	NGsFmzq+0mOD4Rm6h07w==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=rUjWsOH9jigeey9LBZkg62Rh+cZiJm09PCXtiyZIY/8=; b=njF
+	sV/8bMQvbGeY6y5TbpvbL0w6w5213PvfER5tTTc3C+1NFmSQyCi+3WwMy9ArDoH7NmtcyOOUdV+f3
+	lhALQd1dGno2Dfd2/tv1cnha+QOOAJeizWtJHW9QJSjesAvlrh1jJ4ctiGtpwK3gWp4frOESADPNf
+	SULe0jrNF3jgX1Tot7/jwOP5UuXxnvq4zfaxfbKpoRy/S2sIy5cpVjw9Ze4axR3d16bTgFzAuYU7a
+	evWsNyht3kP831VvGvk4Q5cOooQkbZ7fvuZiYtrFQeQohQ25YGYnpcCBRRso4M7VgsaxQylpmVQhT
+	R3bkBn5USmi/ZXmqyjbA1ksyTS+31vg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfMOv-0003gu-9J; Mon, 24 Jun 2019 10:40:41 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1hfN5O-0003X9-6u; Mon, 24 Jun 2019 11:24:34 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfMOU-0003U7-DO; Mon, 24 Jun 2019 10:40:16 +0000
-Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 95F05208E4;
- Mon, 24 Jun 2019 10:40:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561372814;
- bh=HxUEH3z4leC4dJ5SSdD+Hrod9xxZtdkXEJIvmvfkDls=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=p4PZ9wV2TnMIZpxRJidZl+RtPVe+FUZBi7moRglIiodLBtKwmf1oEV4xqb5V+mh/L
- Ugv88bzt/3W9tu/LDyR9Ve1JBjk3ghhMOMhvuEYNmO1szy9MNLn7zjJIf9MKdbIT/h
- Y4mOVdujWbYLgUJb5+1Frs1BuqhFX3eWJC3Rsdvc=
-Date: Mon, 24 Jun 2019 11:40:07 +0100
-From: Will Deacon <will@kernel.org>
-To: Guo Ren <guoren@kernel.org>
-Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
- separate file
-Message-ID: <20190624104006.lvm32nahemaqklxc@willie-the-truck>
-References: <20190321163623.20219-1-julien.grall@arm.com>
- <20190321163623.20219-12-julien.grall@arm.com>
- <0dfe120b-066a-2ac8-13bc-3f5a29e2caa3@arm.com>
- <CAJF2gTTXHHgDboaexdHA284y6kNZVSjLis5-Q2rDnXCxr4RSmA@mail.gmail.com>
- <c871a5ae-914f-a8bb-9474-1dcfec5d45bf@arm.com>
- <20190619091219.GB7767@fuggles.cambridge.arm.com>
- <CAJF2gTTmFq3yYa9UrdZRAFwJgC=KmKTe2_NFy_UZBUQovqQJPg@mail.gmail.com>
- <20190619123939.GF7767@fuggles.cambridge.arm.com>
- <CAJF2gTSiiiewTLwVAXvPLO7rTSUw1rg8VtFLzANdP2S2EEbTjg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAJF2gTSiiiewTLwVAXvPLO7rTSUw1rg8VtFLzANdP2S2EEbTjg@mail.gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
+ id 1hfN5J-0003RM-7g
+ for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 11:24:31 +0000
+Received: by mail-pf1-x442.google.com with SMTP id j2so7331648pfe.6
+ for <linux-riscv@lists.infradead.org>; Mon, 24 Jun 2019 04:24:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=cPO95tQ02ItJUXKI0dlIoUOx9gg/Y99XsbDXMsh4yyo=;
+ b=JPNxft3APis+w63JZCUevjDC4FQtwDYcNWMo5bWBOLjBiw7leJlkdff0ToQiDXNy2f
+ eT1qyEHIOFYlUtBmnICfl7Zj0PoedCNri3AuuzCCnTGCUbEuEbj0JbIug0kQyGBFpVJ5
+ rB3WESNwo3RlmIwwBJnJGiLlzTfYcKWoW4ih19orBUKAa8r+BoiDPTYueKGYmcu1ivb3
+ 5mKHWuYgG7+5Rd03JpM/cjyHTsPrrQw+Q6ZfhC6geHyGgDIasIhWCKikRNPLmuGBNfwh
+ XQ5F9jl+vPPyoOst6mRAMO1qlj/AASwLG3jdugDZfjqkZIjvsxjAtkgHqpESO75owI1e
+ WWyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=cPO95tQ02ItJUXKI0dlIoUOx9gg/Y99XsbDXMsh4yyo=;
+ b=GOKsjR/RIlxMg0Dz7v1QXEDifvMTVeBM4O++raBWnpIGSp/JYZ+IA7e47P3KpUQ4uS
+ 6zinorz2Uj7vvbkLQ1zkzcf9oIwX90uI7jgXIzIyeAEiqTFXomKjoHIqngMmiKa/Bwpm
+ /KCtN2N65Tvyx6HCbrhol4tsvbh99WZxvevOxvsf7bAuvPH0gsTYnd17bqmaafVVRXlT
+ RNQSCFIqmn6vKoKCbacLc5e3XgjKyECwC5iUf1grFIccty1cJPQjKtl16Dp4b6Qi81F6
+ 7tETwPhjCnU+5B278YduiR1fIROxGifjKR66gOKr9wyJMVGUSDcFNEaD3tMppA8uYlZF
+ L6xw==
+X-Gm-Message-State: APjAAAXcGzT1Tasjk8sdfkTwp1eGa2xHG6nWwLH9Vq8X7EZSjvw0w5gX
+ F1GLhBsuqQKgWlpJRR8TtAvNlA==
+X-Google-Smtp-Source: APXvYqxMZQ4aLs+DdHurIPQVyUtL6Vwf4JhyCVXzEEUkRFr418zSvSkIzfy4Hf9658l7TWn9tUBPlg==
+X-Received: by 2002:a17:90a:2488:: with SMTP id
+ i8mr23689463pje.123.1561375467383; 
+ Mon, 24 Jun 2019 04:24:27 -0700 (PDT)
+Received: from buildserver-90.open-silicon.com ([114.143.65.226])
+ by smtp.googlemail.com with ESMTPSA id b24sm10635119pfd.98.2019.06.24.04.24.22
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Mon, 24 Jun 2019 04:24:26 -0700 (PDT)
+From: Yash Shah <yash.shah@sifive.com>
+To: robh+dt@kernel.org, paul.walmsley@sifive.com, devicetree@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] riscv: dts: Re-organize SPI DT nodes
+Date: Mon, 24 Jun 2019 16:54:13 +0530
+Message-Id: <1561375453-3135-1-git-send-email-yash.shah@sifive.com>
+X-Mailer: git-send-email 1.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_034014_496526_599133E8 
-X-CRM114-Status: GOOD (  28.64  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190624_042429_340347_93D514B0 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -72,7 +82,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,111 +93,68 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Julien Grall <julien.grall@arm.com>, aou@eecs.berkeley.edu,
- Arnd Bergmann <arnd@arndb.de>, suzuki.poulose@arm.com,
- Marc Zyngier <marc.zyngier@arm.com>, catalin.marinas@arm.com,
- julien.thierry@arm.com, Will Deacon <will.deacon@arm.com>,
- linux-kernel@vger.kernel.org, rppt@linux.ibm.com, hch@infradead.org,
- Atish.Patra@wdc.com, Anup Patel <anup.Patel@wdc.com>, james.morse@arm.com,
- gary@garyguo.net, Palmer Dabbelt <palmer@sifive.com>, christoffer.dall@arm.com,
- paul.walmsley@sifive.com, linux-riscv@lists.infradead.org,
- kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, sachin.ghadi@sifive.com,
+ Yash Shah <yash.shah@sifive.com>, palmer@sifive.com, aou@eecs.berkeley.edu
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Jun 20, 2019 at 05:33:03PM +0800, Guo Ren wrote:
-> On Wed, Jun 19, 2019 at 8:39 PM Will Deacon <will.deacon@arm.com> wrote:
-> >
-> > On Wed, Jun 19, 2019 at 08:18:04PM +0800, Guo Ren wrote:
-> > > On Wed, Jun 19, 2019 at 5:12 PM Will Deacon <will.deacon@arm.com> wrote:
-> > > > This is one place where I'd actually prefer not to go down the route of
-> > > > making the code generic. Context-switching and low-level TLB management
-> > > > is deeply architecture-specific and I worry that by trying to make this
-> > > > code common, we run the real risk of introducing subtle bugs on some
-> > > > architecture every time it is changed.
-> > > "Add generic asid code" and "move arm's into generic" are two things.
-> > > We could do
-> > > first and let architecture's maintainer to choose.
-> >
-> > If I understand the proposal being discussed, it involves basing that
-> > generic ASID allocation code around the arm64 implementation which I don't
-> > necessarily think is a good starting point.
-> ...
-> >
-> > > > Furthermore, the algorithm we use
-> > > > on arm64 is designed to scale to large systems using DVM and may well be
-> > > > too complex and/or sub-optimal for architectures with different system
-> > > > topologies or TLB invalidation mechanisms.
-> > > It's just a asid algorithm not very complex and there is a callback
-> > > for architecture to define their
-> > > own local hart tlb flush. Seems it has nothing with DVM or tlb
-> > > broadcast mechanism.
-> >
-> > I'm pleased that you think the algorithm is not very complex, but I'm also
-> > worried that you might not have fully understood some of its finer details.
-> I understand your concern about my less understanding of asid
-> technology. Here is
-> my short-description of arm64 asid allocator: (If you find anything
-> wrong, please
-> correct me directly, thx :)
+As per the General convention, define only device DT node in SOC DTSi
+file with status = "disabled" and enable device in Board DTS file with
+status = "okay"
 
-The complexity mainly comes from the fact that this thing runs concurrently
-with itself without synchronization on the fast-path. Coupled with the
-need to use the same ASID for all threads of a task, you end up in fiddly
-situations where rollover can occur on one CPU whilst another CPU is trying
-to schedule a thread of a task that already has threads running in
-userspace.
+Reported-by: Anup Patel <anup@brainfault.org>
+Signed-off-by: Yash Shah <yash.shah@sifive.com>
+---
+ arch/riscv/boot/dts/sifive/fu540-c000.dtsi          | 3 +++
+ arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts | 1 +
+ 2 files changed, 4 insertions(+)
 
-However, it's architecture-specific whether or not you care about that
-scenario.
+diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+index 4e8fbde..270f6e8 100644
+--- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
++++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+@@ -203,6 +203,7 @@
+ 			interrupt-parent = <&plic0>;
+ 			interrupts = <51>;
+ 			clocks = <&prci PRCI_CLK_TLCLK>;
++			status = "disabled";
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 		};
+@@ -213,6 +214,7 @@
+ 			interrupt-parent = <&plic0>;
+ 			interrupts = <52>;
+ 			clocks = <&prci PRCI_CLK_TLCLK>;
++			status = "disabled";
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 		};
+@@ -222,6 +224,7 @@
+ 			interrupt-parent = <&plic0>;
+ 			interrupts = <6>;
+ 			clocks = <&prci PRCI_CLK_TLCLK>;
++			status = "disabled";
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 		};
+diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+index 4da8870..73e2af6 100644
+--- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
++++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+@@ -43,6 +43,7 @@
+ };
+ 
+ &qspi0 {
++	status = "okay";
+ 	flash@0 {
+ 		compatible = "issi,is25wp256", "jedec,spi-nor";
+ 		reg = <0>;
+-- 
+1.9.1
 
-> > The reason I mention DVM and TLB broadcasting is because, depending on
-> > the mechanisms in your architecture relating to those, it may be strictly
-> > required that all concurrently running threads of a process have the same
-> > ASID at any given point in time, or it may be that you really don't care.
-> >
-> > If you don't care, then the arm64 allocator is over-engineered and likely
-> > inefficient for your system. If you do care, then it's worth considering
-> > whether a lock is sufficient around the allocator if you don't expect high
-> > core counts. Another possibility is that you end up using only one ASID and
-> > invalidating the local TLB on every context switch. Yet another design
-> > would be to manage per-cpu ASID pools.
-> I'll keep my system use the same ASID for SMP + IOMMU :P
-
-You will want a separate allocator for that:
-
-https://lkml.kernel.org/r/20190610184714.6786-2-jean-philippe.brucker@arm.com
-
-> Yes, there are two styles of asid allocator: per-cpu ASID (MIPS) or
-> same ASID (ARM).
-> If the CPU couldn't support cache/tlb coherency maintian in hardware,
-> it should use
-> per-cpu ASID style because IPI is expensive and per-cpu ASID style
-> need more software
-> mechanism to improve performance (eg: delay cache flush). From software view the
-> same ASID is clearer and easier to build bigger system with more TLB caches.
-> 
-> I think the same ASID style is a more sensible choice for modern
-> processor and let it be
-> one of generic is reasonable.
-
-I'm not sure I agree. x86, for example, is better off using a different
-algorithm for allocating its PCIDs.
-
-> > So rather than blindly copying the arm64 code, I suggest sitting down and
-> > designing something that fits to your architecture instead. You may end up
-> > with something that is both simpler and more efficient.
-> In fact, riscv folks have discussed a lot about arm's asid allocator
-> and I learned
-> a lot from the discussion:
-> https://lore.kernel.org/linux-riscv/20190327100201.32220-1-anup.patel@wdc.com/
-
-If you require all threads of the same process to have the same ASID, then
-that patch looks broken to me.
-
-Will
 
 _______________________________________________
 linux-riscv mailing list
