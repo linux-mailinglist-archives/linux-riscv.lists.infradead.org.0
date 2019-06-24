@@ -2,84 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BCF8518ED
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 18:46:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 26BC851D0B
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 23:23:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:In-reply-to:
-	Message-ID:Subject:To:From:References:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yiF6kS9zKvK0JqhqhF58IBIizDoO45FP1Bbvc/XdleI=; b=SW+SZMQ5dQ8KGM
-	utfYlhI8QBVER6pwfQQh/G58/pUsplIbhMhfz+TNBW88Ck0ggSwS/8inm3ULiRfRylA+JpM9l1bu4
-	E5mtiF5NphlmvwMtbvdpGpGaptGSnZh9FKehLi3136REtILmmwme45v+8yWhrCi1u1LJFFqomi1Zk
-	yFvpeeJrxCpsYMLmq0TbzqLv7G00HtYnxSSts669qEFQc7CMsYdZH34hqMd3EOtEAc0Jp2o433ZMI
-	g05jYfelpLK2jnPTHUdhL5fGc9toC2CRUPYL4+1oUmu6OiD5FZwTfIcXOIhF/5xQhZsj4+GO9qxg2
-	eKXnWIIOuayEAF+Hyyjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=smgC9VckS0Iv0Si8M7RQdaDscw15RCsoohEpJDlVGB4=; b=Nxd6wZAj7tDjj0
+	4sygWWfShbwyzxyXaJncFECt9W/x8j7HGgVcdyod4W8JvJw/yY/79lQw5slGzbUKcbfE1gdBBgPEO
+	6syry9T2U9t0JAno86jRs8mEz6Og1RR+vwSB3eK4d8KvTX7MfhAQa8XTV41SYguvzDQetVCM8bE/9
+	rInZgxfg4gIXWxiUU7GY/X6Map8YLAfJqyFNvAHYmGQ1eVFtv0ri+0EGs3JwMBk4U1YYTYnlllPYc
+	gfDcNcECuii1ht1//h7R1TVR+HWvWA5tNd7gKNMUbWsq9Kb9iYFkdqg99sp0f4BbRPh1OOd3qAy1M
+	FrgAUAUcwla+9Qnd6/xw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfS6L-0004nw-8v; Mon, 24 Jun 2019 16:45:53 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1hfWRE-00073p-FJ; Mon, 24 Jun 2019 21:23:44 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfS6G-0004nV-Tk
- for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 16:45:50 +0000
-Received: by mail-wm1-x343.google.com with SMTP id 207so53133wma.1
- for <linux-riscv@lists.infradead.org>; Mon, 24 Jun 2019 09:45:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=netronome-com.20150623.gappssmtp.com; s=20150623;
- h=references:user-agent:from:to:cc:subject:message-id:in-reply-to
- :date:mime-version;
- bh=DzGlPYsIYshbD5peGKifO8l46y0lKsTTIsT4YjNzT5E=;
- b=d6bKmA1qg0uC0Ie/B+rKeOICs7HZyVW8m4zo5CufVyG8tVEYsVvxLbE/SN124rH9p3
- 06yUcEvuoj+0PcroXaMiWv8HRvVCQeLqaMGAjw8YiGZA+5OdDouYUSYBBjcOtnTezmpB
- mSev/yoU1rb28ZElCOVgrod/eoj6MrAaSrfoqh6HliP3cARmrjnP7lmUG96MesS3+Ku0
- J5V5MSG5H8SsQIMgau0YDGSiMF5J1gZFIuklMrMYbGDIDGDq/l78UhoMTq3J/cwJ4v7X
- mPdQecNR4EHgr/JIOVaSbkfVdT2FxX1qxupmrqOEyO1iKOT+/uX5o+xyqn6TbPQHpqBd
- X2TQ==
+ id 1hfWRB-00073T-Gz
+ for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 21:23:42 +0000
+Received: by mail-io1-xd44.google.com with SMTP id e5so326052iok.4
+ for <linux-riscv@lists.infradead.org>; Mon, 24 Jun 2019 14:23:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=fs+nly2CqDJY2F03DH2S4onxLharejPukjuN2a0s++k=;
+ b=DHSaqTwlJv7AurjXB+C8yOpKCNMewWdCZE4JcB8h/68BVRArdlHcI3Z0CrqS2lOl4N
+ cEuIUQ92NhpHODPahLAAAbPLC3F3VIDggVp/hnDP8ARZc8HllIYg2VTXTIHSFZeVOA6P
+ EHoCDwGc1moMGzaIOzYrQ/0AYMsFdMmCbS6F3sPuj2bmiaic+wYjH8WB6ENupkdcmDon
+ mNZU3TxmidJOwPzPrNs1hURzJ14pEcIuPh/sfV77/TmJDAjSe7zU8C8/g9gsUadaVYyg
+ 4AvvVKmYbh9EXCCQNrv+YfL0FQGqaZJqjFHbPLVNXefr5LJA00rvZIKPg1D6wFA2qH07
+ S3pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :message-id:in-reply-to:date:mime-version;
- bh=DzGlPYsIYshbD5peGKifO8l46y0lKsTTIsT4YjNzT5E=;
- b=EiCjjSfoysDwVBe8X1x9q4IbkMtKL/0X94TFbohODg21oroKTtPWD1m2CguuJoleN3
- sHSe11AVpNmf5F56nuekPRxVQ5C09HGHPEMl1IgADQK0yXfhVarP3rHJp2MUDRMIj1Uy
- yLrCtjs6U1knUv9RRzJMl7YK/slrMTJTJdhZO4FDzD57KU7lqWcrT9j3toT2IC+Ev7Vk
- sBXTrW6I90dmdDZmYZ8cjUBbexDdjcRfDVINL/6ulgHTE2gCPh38VGCrkUL0TsgNmluH
- ReS5nGKsQWQmvJdsFGKTjARjGtbck/kkmlQ0koa/PfP+LGW+SuxtqeTpFPfMmg6lBcHO
- 3E5w==
-X-Gm-Message-State: APjAAAWKoHd+Q903ZH9xEJI5E5ArRhczoCA0vUi2UEDXMS0vTWmRLpkq
- z84sw2F9rjNrVJUFYiUqMjG56g==
-X-Google-Smtp-Source: APXvYqzCOhY6pbib85YShe2BKk3kBMiCErh/riJuTO+Y3VGhfakrMQj54c4JSjzoIeVurBCR7ItggQ==
-X-Received: by 2002:a1c:4d6:: with SMTP id 205mr15402634wme.148.1561394746919; 
- Mon, 24 Jun 2019 09:45:46 -0700 (PDT)
-Received: from LAPTOP-V3S7NLPL ([217.38.71.146])
- by smtp.gmail.com with ESMTPSA id 15sm21315wmk.34.2019.06.24.09.45.46
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 24 Jun 2019 09:45:46 -0700 (PDT)
-References: <20190621225938.27030-1-lukenels@cs.washington.edu>
-User-agent: mu4e 0.9.18; emacs 25.2.2
-From: Jiong Wang <jiong.wang@netronome.com>
-To: Luke Nelson <lukenels@cs.washington.edu>
-Subject: Re: [RFC PATCH bpf-next] RV32G eBPF JIT
-Message-ID: <87h88f9bm3.fsf@netronome.com>
-In-reply-to: <20190621225938.27030-1-lukenels@cs.washington.edu>
-Date: Mon, 24 Jun 2019 17:45:45 +0100
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=fs+nly2CqDJY2F03DH2S4onxLharejPukjuN2a0s++k=;
+ b=GWRpYTo8JPSQcgBSwotkaPk/WaX/05KJiFWOiRRza+JLO7WT2oBqQmKxjsk3X7RKK3
+ pF+BU+78mBuDZs45GqebgwGwz93X6HhQ/dj8GbFUhjGWoAMccoyCa2vgB6Mw6vBn6VsJ
+ YsL1wKsHIv7VuZclCgkkV5pM1DXbGS1lk3N8sTNB1Myf0o6n5GM+Q7LcXJQVPvCYS7db
+ 8T/HBecVgTGqVJNp2scY4OaMd2bN+g/Sx2oBwftvKR4ZuPODbGVcacWkHjDbxmyBkHKt
+ rr0m2m0bWZQPx5+lnGRE/+vwfrYo66SJm72bgM/GX4vVp83/E+kBIOwrDOZb6ROh6yMG
+ hnaw==
+X-Gm-Message-State: APjAAAVgrFJTyBhwHUKEdYY/0E6+AD/L99JeHuJqsjupikq0tSzvz4SC
+ FQBjHJBoND/HUbDcq4ErJKeB+A==
+X-Google-Smtp-Source: APXvYqxgSwaipvyNNYGbOgoKTx3/dcZraYFCAkDEUKEpgskncaj/x86AyejV/paA8RMTb+D5/LZPNw==
+X-Received: by 2002:a5e:8209:: with SMTP id l9mr18130595iom.303.1561411420072; 
+ Mon, 24 Jun 2019 14:23:40 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ p25sm14832445iol.48.2019.06.24.14.23.39
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 24 Jun 2019 14:23:39 -0700 (PDT)
+Date: Mon, 24 Jun 2019 14:23:39 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Yash Shah <yash.shah@sifive.com>
+Subject: Re: [PATCH] riscv: dts: Re-organize SPI DT nodes
+In-Reply-To: <1561375453-3135-1-git-send-email-yash.shah@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1906241421550.22820@viisi.sifive.com>
+References: <1561375453-3135-1-git-send-email-yash.shah@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_094549_008730_BA03046A 
-X-CRM114-Status: GOOD (  16.32  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190624_142341_598042_5BB047AF 
+X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -92,99 +98,29 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- bpf@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
- Luke Nelson <luke.r.nels@gmail.com>,
- =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
- Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
- Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ palmer@sifive.com, linux-kernel@vger.kernel.org, sachin.ghadi@sifive.com,
+ robh+dt@kernel.org, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Mon, 24 Jun 2019, Yash Shah wrote:
 
-Luke Nelson writes:
+> As per the General convention, define only device DT node in SOC DTSi
+> file with status = "disabled" and enable device in Board DTS file with
+> status = "okay"
+> 
+> Reported-by: Anup Patel <anup@brainfault.org>
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
 
-> From: Luke Nelson <luke.r.nels@gmail.com>
->
-> This is an eBPF JIT for RV32G, adapted from the JIT for RV64G.
-> Any feedback would be greatly appreciated.
->
-> It passes 359 out of 378 tests in test_bpf.ko. The failing tests are
-> features that are not supported right now:
->   - ALU64 DIV/MOD:
->       These require loops to emulate on 32-bit hardware,
->       and are not supported on other 32-bit JITs like
->       ARM32.
->   - BPF_XADD | BPF_DW:
->       RV32G does not have atomic instructions for operating
->       on double words. This is similar to ARM32.
->   - Tail calls:
->       I'm working on adding support for these now, but couldn't
->       find any test cases that use them. What's the best way
->       of testing tail call code?
->   - Far branches
->       These are not supported in RV64G either.
->
-> There are two main changes required for this to work compared to the
-> RV64 JIT.
->
-> First, eBPF registers are 64-bit, while RV32G registers are 32-bit.
-> I take an approach similar to ARM32: most BPF registers map directly to
-> 2 RISC-V registers, while some reside in stack scratch space and must
-> be saved / restored when used.
->
-> Second, many 64-bit ALU operations do not trivially map to 32-bit
-> operations. Operations that move bits between high and low words, such
-> as ADD, LSH, MUL, and others must emulate the 64-bit behavior in terms
-> of 32-bit instructions.
->
-> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
-> Cc: Xi Wang <xi.wang@gmail.com>
-> ---
->  arch/riscv/Kconfig              |    2 +-
->  arch/riscv/net/Makefile         |    7 +-
->  arch/riscv/net/bpf_jit_comp32.c | 1460 +++++++++++++++++++++++++++++++
->  3 files changed, 1467 insertions(+), 2 deletions(-)
->  create mode 100644 arch/riscv/net/bpf_jit_comp32.c
->
-<snip>
-> +static void rv32_bpf_put_reg32(const s8 *reg, const s8 *src,
-> +			       struct rv_jit_context *ctx)
-> +{
-> +	if (is_stacked(reg[1])) {
-> +		emit(rv_sw(RV_REG_FP, reg[1], src[1]), ctx);
-> +		emit(rv_sw(RV_REG_FP, reg[0], RV_REG_ZERO), ctx);
-> +	} else {
-> +		emit(rv_addi(reg[0], RV_REG_ZERO, 0), ctx);
-> +	}
-> +}
-> +
+This is a good start, but should also cover the other I/O devices in the 
+chip DT file.  The mandatory internal devices, like the PRCI and PLIC, can 
+stay the way they are.
 
-Looks to me 32-bit optimization is not enabled.
 
-If you define bpf_jit_needs_zext to return true
-
-  bool bpf_jit_needs_zext(void)
-  {
-        return true;
-  }
-
-Then you don't need to zero high 32-bit when writing 32-bit sub-register
-and you just need to implement the explicit zero extension insn which is a
-special variant of BPF_MOV. This can save quite a few instructions. RV64
-and arches like arm has implemented this, please search
-"aux->verifier_zext".
-
-And there is a doc for this optimization:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/Documentation/bpf/bpf_design_QA.rst#n168
-
-Regards,
-Jiong
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
