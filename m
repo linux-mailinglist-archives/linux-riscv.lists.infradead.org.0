@@ -2,86 +2,65 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCA5E505D5
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 11:34:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B28B4506D5
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 12:05:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tlg1BRT7ToPa1UUPqwBmuxRukFboEsecb3wQs6cr35k=; b=skqpOeEG64vqSq
-	XqvKL1ZBwvXIKl4czdytJH2tj65IjSdebKltfCf01CTMXP4S0XMs9yUex4MEPEpDSLAJezlv7ePwI
-	HbllmGZChKWTy7UKPqxkiD+iRwK0ewx1jJcOsPKCRQlmfpktrSZWquYVs6xL4EDQPggTeKrtTXBos
-	6oRtZw5brjkAdNjezPXigZt2vm11+bykyihN9kMTTXQXypdy0drH8ri37hCVB2s0v/Tu3xOLGcUuk
-	bdIUr2MQxS6fYl3oC0hM660P/XQsUPvupRHdsKxmtfiSMkuD1dV4qF7s3fylP9ksz/gd3wLiVyd15
-	QtZkEhNp62ELNleCGA5g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=p8Ynvg+j1jzuN4nrtSmHgbw2spk5qvfEJS11t2NPfZQ=; b=pxPxfmahfT6x9v
+	Si8q89d4TN1UCJB53G3DXBUjOAHibp1UP2gYeaiQk8iU4H7wIjMe8RTaV5Sztfk7rFQ6SCk4Wp1sM
+	+9Ywqno3BzrkvqxIs7NSBUbfMbSz17VkKPTsaS1Se7zlIXJHFwuJBo8C+EVrtxG4Pvgj+sRgAkcqI
+	RiZn+8XXm3ygy3A956vcathgpOdawdlR/CFqjBhFJndrPAJortkuL0cQt7RsO0MWehTUQA2cQ0LVX
+	LT2hbJoRmLT2C8Zb0olbOdDo3dkWWM79jw7OjxIrj8T2jt3uAJYpXVKA0OaG2nZOgYlf09cLpE6T7
+	bYvdsC28DEnYKU7D8nRg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfLMz-0002wD-Hk; Mon, 24 Jun 2019 09:34:37 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1hfLr3-0006Ou-EF; Mon, 24 Jun 2019 10:05:41 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfLMj-0002m4-QT; Mon, 24 Jun 2019 09:34:23 +0000
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x5O9Y9ak098240;
- Mon, 24 Jun 2019 04:34:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1561368849;
- bh=mZ05HE4nNKGrw4LOWrgL5V2CUEn9P3ayZHfTAB4+wKg=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=QHvgV1VBid3yfvAYfkInvcvUzsu7+ZRODUTEaCTWTngaBlgtIRSxJ4L4nju1mhQEf
- J0LicU6Jfmcy3XPGwTxj7vYA/MVdsC1vgwGI2NaFN+npupaECPNAPXZPF9SRq/FemX
- geZKyuh82gRY3fAARCadThvUr45hnPEHAEjwXy18=
-Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
- by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x5O9Y9pu040023
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 24 Jun 2019 04:34:09 -0500
-Received: from DFLE105.ent.ti.com (10.64.6.26) by DFLE103.ent.ti.com
- (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Mon, 24
- Jun 2019 04:34:08 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE105.ent.ti.com
- (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Mon, 24 Jun 2019 04:34:08 -0500
-Received: from [172.24.190.89] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id x5O9Y4V9106204;
- Mon, 24 Jun 2019 04:34:05 -0500
-Subject: Re: [PATCH v5 1/3] mtd: spi-nor: add support for is25wp256
-To: Sagar Kadam <sagar.kadam@sifive.com>
-References: <1560336476-31763-1-git-send-email-sagar.kadam@sifive.com>
- <1560336476-31763-2-git-send-email-sagar.kadam@sifive.com>
- <325855d0-00f9-df8a-ea57-c140d39dd6ef@ti.com>
- <CAARK3H=O=h1VDgOMxs_0ThcisrH=2tzpW5pQqt0O9oYs=MFFVw@mail.gmail.com>
- <93b9c5fd-8f59-96d7-5e40-2b9d540965dd@ti.com>
- <CAARK3H=CmxSG2srUaoxN1HF6W7CVKtpATrf89n6kuht2Paqp8A@mail.gmail.com>
-From: Vignesh Raghavendra <vigneshr@ti.com>
-Message-ID: <3fe68154-5d1e-a395-4c53-d8e806b2cc6d@ti.com>
-Date: Mon, 24 Jun 2019 15:04:49 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+ id 1hfLqy-0006NH-Lx
+ for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 10:05:38 +0000
+Received: from localhost (f4.8f.5177.ip4.static.sl-reverse.com
+ [119.81.143.244])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id D01F121473;
+ Mon, 24 Jun 2019 10:05:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1561370736;
+ bh=tsibFGeCM9kozJlvLSct5i3Ff8kYIeVStbM5u+Zsugk=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=2e/ypiZo03yVTnrT69Z5asUZiwkwXZKhsm15dLWTQ0+ONYQuKLqVDct7985HTPm7b
+ SMY27DoEdRFbmEHIM/N6QZx2xnoMA9U3IDQLh66cGHKb3jFBz89mf4EK728Xz+yA+m
+ S8FsjPQsQy3p4magk17fvgtN6Xe4wBK2pVSiL2Gg=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH 4.19 72/90] riscv: mm: synchronize MMU after pte change
+Date: Mon, 24 Jun 2019 17:57:02 +0800
+Message-Id: <20190624092318.729317368@linuxfoundation.org>
+X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190624092313.788773607@linuxfoundation.org>
+References: <20190624092313.788773607@linuxfoundation.org>
+User-Agent: quilt/0.66
 MIME-Version: 1.0
-In-Reply-To: <CAARK3H=CmxSG2srUaoxN1HF6W7CVKtpATrf89n6kuht2Paqp8A@mail.gmail.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_023421_967838_7080684E 
-X-CRM114-Status: GOOD (  16.69  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190624_030536_751362_EDEAE53D 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [198.47.19.141 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -95,93 +74,70 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, tudor.ambarus@microchip.com,
- Wesley Terpstra <wesley@sifive.com>, richard@nod.at,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- marek.vasut@gmail.com, linux-mtd@lists.infradead.org,
- Paul Walmsley <paul.walmsley@sifive.com>, miquel.raynal@bootlin.com,
- linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
- dwmw2@infradead.org
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Palmer Dabbelt <palmer@sifive.com>, stable@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ ShihPo Hung <shihpo.hung@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
+From: ShihPo Hung <shihpo.hung@sifive.com>
 
-On 21/06/19 3:58 PM, Sagar Kadam wrote:
-> Hello Vignesh,
-> 
-> On Fri, Jun 21, 2019 at 11:33 AM Vignesh Raghavendra <vigneshr@ti.com> wrote:
->>
->> Hi,
->>
->> On 17/06/19 8:48 PM, Sagar Kadam wrote:
->>> Hello Vignesh,
->>>
->>> Thanks for your review comments.
->>>
->>> On Sun, Jun 16, 2019 at 6:14 PM Vignesh Raghavendra <vigneshr@ti.com> wrote:
->>>>
->>>> Hi,
->>>>
->>>> On 12-Jun-19 4:17 PM, Sagar Shrikant Kadam wrote:
->>>> [...]
->>>>
->>>>> @@ -4129,7 +4137,7 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
->>>>>       if (ret)
->>>>>               return ret;
->>>>>
->>>>> -     if (nor->addr_width) {
->>>>> +     if (nor->addr_width && JEDEC_MFR(info) != SNOR_MFR_ISSI) {
->>>>>               /* already configured from SFDP */
->>>>
->>>> Hmm, why would you want to ignore addr_width that's read from SFDP table?
->>>
->>> The SFDP table for ISSI device considered here, has addr_width set to
->>> 3 byte, and the flash considered
->>> here is 32MB. With 3 byte address width we won't be able to access
->>> flash memories higher address range.
->>
->> Is it specific to a particular ISSI part as indicated here[1]? If so,
->> please submit solution agreed there i.e. use spi_nor_fixups callback
->>
->> [1]https://patchwork.ozlabs.org/patch/1056049/
->>
-> 
-> Thanks for sharing the link.
-> From what I understand here, it seems that "Address Bytes" of SFDP
-> table for the device under
-> consideration (is25lp256) supports 3 byte only Addressing mode
-> (DWORD1[18:17] = 0b00.
-> where as that of ISSI device (is25LP/WP 256Mb/512/Mb/1Gb) support 3 or
-> 4 byte Addressing mode DWORD1[18:17] = 0b01.
-> 
+commit bf587caae305ae3b4393077fb22c98478ee55755 upstream.
 
-Okay, so that SFDP table entry is correct. SPI NOR framework should
-using 4 byte addressing if WORD1[18:17] = 0b01. Could you see if below 
-diff helps:
+Because RISC-V compliant implementations can cache invalid entries
+in TLB, an SFENCE.VMA is necessary after changes to the page table.
+This patch adds an SFENCE.vma for the vmalloc_fault path.
 
---->8---
-diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-index c0a8837c0575..ebf32aebe5e9 100644
---- a/drivers/mtd/spi-nor/spi-nor.c
-+++ b/drivers/mtd/spi-nor/spi-nor.c
-@@ -2808,6 +2808,7 @@ static int spi_nor_parse_bfpt(struct spi_nor *nor,
-                break;
+Signed-off-by: ShihPo Hung <shihpo.hung@sifive.com>
+[paul.walmsley@sifive.com: reversed tab->whitespace conversion,
+ wrapped comment lines]
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Palmer Dabbelt <palmer@sifive.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-riscv@lists.infradead.org
+Cc: stable@vger.kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+---
+ arch/riscv/mm/fault.c |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+--- a/arch/riscv/mm/fault.c
++++ b/arch/riscv/mm/fault.c
+@@ -29,6 +29,7 @@
  
-        case BFPT_DWORD1_ADDRESS_BYTES_4_ONLY:
-+       case BFPT_DWORD1_ADDRESS_BYTES_3_OR_4:
-                nor->addr_width = 4;
-                break;
+ #include <asm/pgalloc.h>
+ #include <asm/ptrace.h>
++#include <asm/tlbflush.h>
  
+ /*
+  * This routine handles page faults.  It determines the address and the
+@@ -281,6 +282,18 @@ vmalloc_fault:
+ 		pte_k = pte_offset_kernel(pmd_k, addr);
+ 		if (!pte_present(*pte_k))
+ 			goto no_context;
++
++		/*
++		 * The kernel assumes that TLBs don't cache invalid
++		 * entries, but in RISC-V, SFENCE.VMA specifies an
++		 * ordering constraint, not a cache flush; it is
++		 * necessary even after writing invalid entries.
++		 * Relying on flush_tlb_fix_spurious_fault would
++		 * suffice, but the extra traps reduce
++		 * performance. So, eagerly SFENCE.VMA.
++		 */
++		local_flush_tlb_page(addr);
++
+ 		return;
+ 	}
+ }
 
 
-
-
--- 
-Regards
-Vignesh
 
 _______________________________________________
 linux-riscv mailing list
