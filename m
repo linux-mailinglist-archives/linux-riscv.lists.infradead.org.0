@@ -2,53 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3742150BC7
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 15:20:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3CB1550FB2
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 17:07:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nQtvmnSDgFpuMx7V2E11gWWjYc41eFvT7RDb5uoMEF4=; b=BUYO96VtCH4aJh
-	/mrkfT7I+PZdLclIEDYuYmeRX+k26YJLPxFzdwp83fKyR3qJtBz+tJfvOJjLrf0biQRhBSTMxk5ce
-	H1hdyTsL0Q5GFqaOecwNoUFbhhqN6xU3PPTu+zDh+oI+RpkLDzLcWLzRkoMagmpTaErVmKC8EXqpX
-	2K9nJtPh1ETX2o/BFMWUuUtPUxf+8ZyUl1hRaOHylpfAULpRuhIMvn0g0ccG1GYHtugj3MTxNVPTt
-	QBjQlnPR1b4Ye4OMhXjKz7Te7pWWQEKvPj4CXunuZESmXpDAdyB3KVEpckeaWg5UQ4eunrfmXgRSc
-	OK+/0OOOA/4NDNIJ+uYg==;
+	List-Owner; bh=aFzMgL18RyiCkkHUTBTirD4PzwXrZcyGArNLkMjmC0A=; b=iDo79M3h1zt6jQ
+	eov6V1iGZRvjFnZ37YOo50aj2CflBzQYGkLl+txuQ4nrl+DWcc+Nx37khKeFCfDozZi1mgrkChoXz
+	OTbsIVZ+uJAVGnvEAJVcZEMGci9XuVOF0NpWiTAm8eDJWmKS9UDhRroJFkYaU9ml9UlLywOPTI1gS
+	BH4yy0fRvxY9xNzIcv/MfL2sDjajujEWprkeR/ThJq1gbBnk55xoS8tLLDNxezYWNiIxsVWuME2dT
+	pDLxdBkCAZxUatxm6UsKA7mSvu1qXVNG9Vkr9incJMTK/xI49kAblfjSkOn284mBicH/gaS8DqXRc
+	ug8vhoapdNsm3AGim8yA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfOth-0005V7-G6; Mon, 24 Jun 2019 13:20:37 +0000
-Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfOqJ-0002D3-Ms
- for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 13:17:09 +0000
-Received: by newverein.lst.de (Postfix, from userid 2407)
- id D879268AFE; Mon, 24 Jun 2019 15:16:33 +0200 (CEST)
-Date: Mon, 24 Jun 2019 15:16:33 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Vladimir Murzin <vladimir.murzin@arm.com>
-Subject: Re: RISC-V nommu support v2
-Message-ID: <20190624131633.GB10746@lst.de>
-References: <20190624054311.30256-1-hch@lst.de>
- <28e3d823-7b78-fa2b-5ca7-79f0c62f9ecb@arm.com> <20190624115428.GA9538@lst.de>
- <d4fd824d-03ff-e8ab-b19f-9e5ef5c22449@arm.com>
+	id 1hfQZ7-00042o-3T; Mon, 24 Jun 2019 15:07:29 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1hfQYo-0003sH-9a; Mon, 24 Jun 2019 15:07:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CDAD3344;
+ Mon, 24 Jun 2019 08:07:07 -0700 (PDT)
+Received: from e107155-lin (e107155-lin.cambridge.arm.com [10.1.196.42])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B07D13F71E;
+ Mon, 24 Jun 2019 08:07:04 -0700 (PDT)
+Date: Mon, 24 Jun 2019 16:06:58 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Russell King <linux@armlinux.org.uk>
+Subject: Re: [PATCH v7 4/7] arm: Use common cpu_topology structure and
+ functions.
+Message-ID: <20190624150658.GA1623@e107155-lin>
+References: <20190617185920.29581-1-atish.patra@wdc.com>
+ <20190617185920.29581-5-atish.patra@wdc.com>
+ <20190619121057.GE1360@e107155-lin>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d4fd824d-03ff-e8ab-b19f-9e5ef5c22449@arm.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <20190619121057.GE1360@e107155-lin>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_061708_212810_6812CFA0 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190624_080710_381582_8C08B844 
+X-CRM114-Status: GOOD (  19.03  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -61,35 +62,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>, Richard Fontana <rfontana@redhat.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ linux-riscv@lists.infradead.org, Morten Rasmussen <morten.rasmussen@arm.com>,
+ Anup Patel <anup@brainfault.org>, Ingo Molnar <mingo@kernel.org>,
+ devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
+ Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Atish Patra <atish.patra@wdc.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Otto Sabart <ottosabart@seberm.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Jun 24, 2019 at 02:08:50PM +0100, Vladimir Murzin wrote:
-> True, yet my observation was that elf2flt utility assumes that address
-> space cannot exceed 32-bit (for header and absolute relocations). So,
-> from my limited point of view straightforward way to guarantee that would
-> be to build incoming elf in 32-bit mode (it is why I mentioned COMPAT/ILP32).
-> 
-> Also one of your patches expressed somewhat related idea
-> 
-> "binfmt_flat isn't the right binary format for huge executables to
-> start with"
-> 
-> Since you said there is no support for compat/ilp32, probably I'm missing some
-> toolchain magic?
+On Wed, Jun 19, 2019 at 01:10:57PM +0100, Sudeep Holla wrote:
+> Hi Russell,
+>
+> On Mon, Jun 17, 2019 at 11:59:17AM -0700, Atish Patra wrote:
+> > Currently, ARM32 and ARM64 uses different data structures to represent
+> > their cpu topologies. Since, we are moving the ARM64 topology to common
+> > code to be used by other architectures, we can reuse that for ARM32 as
+> > well.
+> >
+> > Take this opprtunity to remove the redundant functions from ARM32 and
+> > reuse the common code instead.
+> >
+> > To: Russell King <linux@armlinux.org.uk>
+> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> > Tested-by: Sudeep Holla <sudeep.holla@arm.com> (on TC2)
+> > Reviewed-by : Sudeep Holla <sudeep.holla@arm.com>
+> >
+> > ---
+> > Hi Russell,
+> > Can we get a ACK for this patch ? We are hoping that the entire
+> > series can be merged at one go.
+>
+> It would be nice to get this in for v5.3 as it's almost there.
+> Are you fine with these changes ?
+>
 
-There is no magic except for the tiny elf2flt patch, which for
-now is just in the buildroot repo pointed to in the cover letter
-(and which I plan to upstream once the kernel support has landed
-in Linus' tree).  We only support 32-bit code and data address spaces,
-but we otherwise use the normal RISC-V ABI, that is 64-bit longs and
-pointers.
+Do you have any objections with this patch ? We plan to merge through
+RISC-V tree, please let us know. It has been acked-by all the other
+maintainers.
+
+--
+Regards,
+Sudeep
 
 _______________________________________________
 linux-riscv mailing list
