@@ -2,86 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D4AD509B9
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 13:24:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FAAA50A10
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Jun 2019 13:47:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=rUjWsOH9jigeey9LBZkg62Rh+cZiJm09PCXtiyZIY/8=; b=njF
-	sV/8bMQvbGeY6y5TbpvbL0w6w5213PvfER5tTTc3C+1NFmSQyCi+3WwMy9ArDoH7NmtcyOOUdV+f3
-	lhALQd1dGno2Dfd2/tv1cnha+QOOAJeizWtJHW9QJSjesAvlrh1jJ4ctiGtpwK3gWp4frOESADPNf
-	SULe0jrNF3jgX1Tot7/jwOP5UuXxnvq4zfaxfbKpoRy/S2sIy5cpVjw9Ze4axR3d16bTgFzAuYU7a
-	evWsNyht3kP831VvGvk4Q5cOooQkbZ7fvuZiYtrFQeQohQ25YGYnpcCBRRso4M7VgsaxQylpmVQhT
-	R3bkBn5USmi/ZXmqyjbA1ksyTS+31vg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ygnhVPUV2hkeSKj3BOZ847VFae7x26F6O4bUD5RvLcA=; b=pKNojIY83lTXxa
+	UpkPFYn3Bn2CbwfNPClT/aiE0KRhQfjyscA+hEqB2YPJ48NiNZzccuCDsfeL/xKrCWrCwFj6oW+bf
+	xlVqRaYUN2F1WTiqPs4KPYWMRJvOTSXNCENclw+Bj6l36X6He5qvHk59enyNYswEvoc82JfKoNYvm
+	BOXs7nYsI6uYTp5oTjnp+MpjZBME3Vahu9JNLy8YZBDFK3OrQn6QQ8mZ30/+nTJNnyNGTAZSe7r/W
+	KHxowrJWk8KV8F9XFn1PwZlXsGdsmp2UskfSF45YmF3FFNIhiIxFUogakYldsd5nHBaxJMg4HJgBw
+	M2pD5oMSYxbd3kGkgWZQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfN5O-0003X9-6u; Mon, 24 Jun 2019 11:24:34 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfN5J-0003RM-7g
- for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 11:24:31 +0000
-Received: by mail-pf1-x442.google.com with SMTP id j2so7331648pfe.6
- for <linux-riscv@lists.infradead.org>; Mon, 24 Jun 2019 04:24:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=cPO95tQ02ItJUXKI0dlIoUOx9gg/Y99XsbDXMsh4yyo=;
- b=JPNxft3APis+w63JZCUevjDC4FQtwDYcNWMo5bWBOLjBiw7leJlkdff0ToQiDXNy2f
- eT1qyEHIOFYlUtBmnICfl7Zj0PoedCNri3AuuzCCnTGCUbEuEbj0JbIug0kQyGBFpVJ5
- rB3WESNwo3RlmIwwBJnJGiLlzTfYcKWoW4ih19orBUKAa8r+BoiDPTYueKGYmcu1ivb3
- 5mKHWuYgG7+5Rd03JpM/cjyHTsPrrQw+Q6ZfhC6geHyGgDIasIhWCKikRNPLmuGBNfwh
- XQ5F9jl+vPPyoOst6mRAMO1qlj/AASwLG3jdugDZfjqkZIjvsxjAtkgHqpESO75owI1e
- WWyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=cPO95tQ02ItJUXKI0dlIoUOx9gg/Y99XsbDXMsh4yyo=;
- b=GOKsjR/RIlxMg0Dz7v1QXEDifvMTVeBM4O++raBWnpIGSp/JYZ+IA7e47P3KpUQ4uS
- 6zinorz2Uj7vvbkLQ1zkzcf9oIwX90uI7jgXIzIyeAEiqTFXomKjoHIqngMmiKa/Bwpm
- /KCtN2N65Tvyx6HCbrhol4tsvbh99WZxvevOxvsf7bAuvPH0gsTYnd17bqmaafVVRXlT
- RNQSCFIqmn6vKoKCbacLc5e3XgjKyECwC5iUf1grFIccty1cJPQjKtl16Dp4b6Qi81F6
- 7tETwPhjCnU+5B278YduiR1fIROxGifjKR66gOKr9wyJMVGUSDcFNEaD3tMppA8uYlZF
- L6xw==
-X-Gm-Message-State: APjAAAXcGzT1Tasjk8sdfkTwp1eGa2xHG6nWwLH9Vq8X7EZSjvw0w5gX
- F1GLhBsuqQKgWlpJRR8TtAvNlA==
-X-Google-Smtp-Source: APXvYqxMZQ4aLs+DdHurIPQVyUtL6Vwf4JhyCVXzEEUkRFr418zSvSkIzfy4Hf9658l7TWn9tUBPlg==
-X-Received: by 2002:a17:90a:2488:: with SMTP id
- i8mr23689463pje.123.1561375467383; 
- Mon, 24 Jun 2019 04:24:27 -0700 (PDT)
-Received: from buildserver-90.open-silicon.com ([114.143.65.226])
- by smtp.googlemail.com with ESMTPSA id b24sm10635119pfd.98.2019.06.24.04.24.22
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 24 Jun 2019 04:24:26 -0700 (PDT)
-From: Yash Shah <yash.shah@sifive.com>
-To: robh+dt@kernel.org, paul.walmsley@sifive.com, devicetree@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] riscv: dts: Re-organize SPI DT nodes
-Date: Mon, 24 Jun 2019 16:54:13 +0530
-Message-Id: <1561375453-3135-1-git-send-email-yash.shah@sifive.com>
-X-Mailer: git-send-email 1.9.1
+	id 1hfNRM-0004n2-Mj; Mon, 24 Jun 2019 11:47:16 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1hfNRJ-0004lz-8z
+ for linux-riscv@lists.infradead.org; Mon, 24 Jun 2019 11:47:14 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id EDE242B;
+ Mon, 24 Jun 2019 04:47:10 -0700 (PDT)
+Received: from [10.1.32.158] (unknown [10.1.32.158])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7606B3F718;
+ Mon, 24 Jun 2019 04:47:09 -0700 (PDT)
+Subject: Re: RISC-V nommu support v2
+To: Christoph Hellwig <hch@lst.de>, Palmer Dabbelt <palmer@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
+References: <20190624054311.30256-1-hch@lst.de>
+From: Vladimir Murzin <vladimir.murzin@arm.com>
+Message-ID: <28e3d823-7b78-fa2b-5ca7-79f0c62f9ecb@arm.com>
+Date: Mon, 24 Jun 2019 12:47:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <20190624054311.30256-1-hch@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_042429_340347_93D514B0 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190624_044713_361851_7BD61D54 
+X-CRM114-Status: GOOD (  16.13  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,68 +62,62 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, sachin.ghadi@sifive.com,
- Yash Shah <yash.shah@sifive.com>, palmer@sifive.com, aou@eecs.berkeley.edu
-MIME-Version: 1.0
+Cc: linux-mm@kvack.org, Damien Le Moal <damien.lemoal@wdc.com>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-As per the General convention, define only device DT node in SOC DTSi
-file with status = "disabled" and enable device in Board DTS file with
-status = "okay"
+Hi,
 
-Reported-by: Anup Patel <anup@brainfault.org>
-Signed-off-by: Yash Shah <yash.shah@sifive.com>
----
- arch/riscv/boot/dts/sifive/fu540-c000.dtsi          | 3 +++
- arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts | 1 +
- 2 files changed, 4 insertions(+)
+On 6/24/19 6:42 AM, Christoph Hellwig wrote:
+> Hi all,
+> 
+> below is a series to support nommu mode on RISC-V.  For now this series
+> just works under qemu with the qemu-virt platform, but Damien has also
+> been able to get kernel based on this tree with additional driver hacks
+> to work on the Kendryte KD210, but that will take a while to cleanup
+> an upstream.
+> 
+> To be useful this series also require the RISC-V binfmt_flat support,
+> which I've sent out separately.
+> 
+> A branch that includes this series and the binfmt_flat support is
+> available here:
+> 
+>     git://git.infradead.org/users/hch/riscv.git riscv-nommu.2
+> 
+> Gitweb:
+> 
+>     http://git.infradead.org/users/hch/riscv.git/shortlog/refs/heads/riscv-nommu.2
+> 
+> I've also pushed out a builtroot branch that can build a RISC-V nommu
+> root filesystem here:
+> 
+>    git://git.infradead.org/users/hch/buildroot.git riscv-nommu.2
+> 
+> Gitweb:
+> 
+>    http://git.infradead.org/users/hch/buildroot.git/shortlog/refs/heads/riscv-nommu.2
+> 
+> Changes since v1:
+>  - fixes so that a kernel with this series still work on builds with an
+>    IOMMU
+>  - small clint cleanups
+>  - the binfmt_flat base and buildroot now don't put arguments on the stack
+> 
+> 
 
-diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-index 4e8fbde..270f6e8 100644
---- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-+++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-@@ -203,6 +203,7 @@
- 			interrupt-parent = <&plic0>;
- 			interrupts = <51>;
- 			clocks = <&prci PRCI_CLK_TLCLK>;
-+			status = "disabled";
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 		};
-@@ -213,6 +214,7 @@
- 			interrupt-parent = <&plic0>;
- 			interrupts = <52>;
- 			clocks = <&prci PRCI_CLK_TLCLK>;
-+			status = "disabled";
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 		};
-@@ -222,6 +224,7 @@
- 			interrupt-parent = <&plic0>;
- 			interrupts = <6>;
- 			clocks = <&prci PRCI_CLK_TLCLK>;
-+			status = "disabled";
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 		};
-diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-index 4da8870..73e2af6 100644
---- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-+++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-@@ -43,6 +43,7 @@
- };
- 
- &qspi0 {
-+	status = "okay";
- 	flash@0 {
- 		compatible = "issi,is25wp256", "jedec,spi-nor";
- 		reg = <0>;
--- 
-1.9.1
+Since you are using binfmt_flat which is kind of 32-bit only I was expecting to see
+CONFIG_COMPAT (or something similar to that, like ILP32) enabled, yet I could not
+find it.
 
+I do not know much about RISC-V architecture, so it is why I'm wondering how you deal
+with that?
+
+Cheers
+Vladimir
 
 _______________________________________________
 linux-riscv mailing list
