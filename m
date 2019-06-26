@@ -2,82 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2ED557298
-	for <lists+linux-riscv@lfdr.de>; Wed, 26 Jun 2019 22:28:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 993365733F
+	for <lists+linux-riscv@lfdr.de>; Wed, 26 Jun 2019 23:01:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kzkqOrnlI1H4/Yl/gb/Brf77r7SFnJU1EYVuWTWqaQg=; b=FIcza+y3phh0iw
-	hsykUKVufInvuUCdGyQPI5ebKln7GcJyZQvMnYP65x11AR1SZxtMZF1ztsTQvPrDsjF7epTi/y7aa
-	aHFa1EyVQFmJU6F4DJkmazE1xjqe2aHS3PCrQYHN3B9c4xlCgMMhpjUgXympiiWlxzm0rjiByUCZr
-	X5Oo+MXRhkp6nyvtt9a5XfOXI47iSfkBnNvAgypw3aaAnP4juWMoPOGfM5FEJk3rn9H7tXe1LgZjO
-	RZdjtN7CU/n3Urwt7fTLv0jWubIgeT6nV9d7rVphLXZ+jBOwHx74kjEU7CeOoxv+xRi+X5BRhubkw
-	MJKl2/ai3qBpmMcQrnNQ==;
+	List-Owner; bh=qiZczkXmQtkmvL4IDNvM7nuX+WDbGYoFecRtwvmrWVw=; b=OKVKDtsAufmCvp
+	CPdLd/215i0FD1ZioBVSyj0DBP/3cIxfhnPZ7P2vdJZnf8BkzOEOIWrmMla/yNF5J+GEaapt9sOy8
+	UKOikZg6kiu5i0/9gX/KBXghfLV9gALZMoh1VUn2oCygRe+2itud9rwZMpPIxEy7Mi2S/Aw3KBiWT
+	6b1KxQm+cUuymx7n4lstGXQQKikOsMgWTLUfUnkUTItzLSDoI317Ibu+cZL+2H6rMkmfAVOIrcnCJ
+	rX4huvNu/zX5tB4IUy1AvF2RWdSfLa9H2V+sHNgmB+jMcD+llW9Qqeo2YJpqRxgGGpApMiOhxVsY6
+	6tQnzfsWaG/kxrMk+tGw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgEWO-0006nL-6D; Wed, 26 Jun 2019 20:28:00 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1hgF2q-0004JI-BH; Wed, 26 Jun 2019 21:01:32 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgEWI-0006n1-GB
- for linux-riscv@lists.infradead.org; Wed, 26 Jun 2019 20:27:55 +0000
-Received: by mail-io1-xd41.google.com with SMTP id s7so4994732iob.11
- for <linux-riscv@lists.infradead.org>; Wed, 26 Jun 2019 13:27:54 -0700 (PDT)
+ id 1hgF2l-0004Ip-CR
+ for linux-riscv@lists.infradead.org; Wed, 26 Jun 2019 21:01:28 +0000
+Received: by mail-io1-xd42.google.com with SMTP id k20so8145028ios.10
+ for <linux-riscv@lists.infradead.org>; Wed, 26 Jun 2019 14:01:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=LgZeRxC6RQ5LdUYNQeMc+ciFdAiQ/Cfk+AzdfLEuWwo=;
- b=OXD8lcNDuVCQF0Os+37dJnhbEhLTPkAGYKnH2K/rTQrBwx0dYPUkpleQC7RAMj5qH6
- 6Dvz4/TPGz9pp5LOtdWnDvwImdz3fv9wNsqK+8NfJ+K1Okp0MVweKvPjncv+11qG35Dm
- BXRbMdJxBUt/hIHhj1grg3+gaw7k29crfND37pkXQU0IPETEtomREiM2IA+VVYv4VWFY
- APcbKHDu2R72a9mxEZbn/0tUBP2BL9dZ2R0eHgDCK6tO7Ib6/eHON231w1wYainB/xg9
- xE/LV3MMhKT7qxgfmFSLdVrbWz6A98kF5ZXDqnlZdKlO7+iVTJh3VnjWjnr9hGWe39Fd
- 8YNw==
+ bh=PtByYI9t5DpYVWm2H7GeEhPtk58KGByxBL002Rq++Nc=;
+ b=XYNuR30T2ykXXMBZUWk7+kaY55TQJBy/Rx9mq1LrtlauSuY+nyJZ26jGoCSpbkfuur
+ nNIdMfn9ibJViTMYN5LUqvvZUJglVXOYUUDXonx8WoDIeudxDCHhzH5tyQ/hdxQ5pQNF
+ PzPWNQwzkIZktsTcU2hxcG8Biu/fJiki6ZfsHcPy6ogs9EdGZzjWHKBPJmKXjcOTa3OM
+ LoA8Lby6vONaglUTGTL77UUWdyI5+7+6Gb1fhg68jwo0Dkbqn3CeIMsIa8TKAp3qwlIj
+ CWMYJ31J5Jda9fDtjvzcn5JFUyHgQpfWLf0xjinGpC5aRTw0W6tzIZ7CXiZI8Wx85Xm+
+ jcNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=LgZeRxC6RQ5LdUYNQeMc+ciFdAiQ/Cfk+AzdfLEuWwo=;
- b=pSr1ulqluTJ5zI9bAf+NKS7g8Llmp0p0EKoBr5AXbpJcWNgCSeZhv5zAEPjZL72lr9
- 5ih/zDjAW0Zy8i7h21+mnWLX1rUBwcLx0fhZzHtMR/F7rTpybmajhNK+/Al+0t76geD2
- r1/ZKgfCqsuPw5m7eseDgbbRX2jcrZ1ApOJwkJfdva9vvrfCj0H/0WQJPhbUw8PIyvlU
- J/gIseJcfqHAzU9/nGR/p2TrUs6vHY+gSpFp4RJiXB+ScgUmM533D5QmQ4pV9IATIpkJ
- G3txEx0a7fjHUR/ORbE/nyq/Oj2eBpiIdjzD6D9WSSjMPEWW1LXRD1lvmX384OBPtWxv
- dOlg==
-X-Gm-Message-State: APjAAAV2s7QdUJHFuzIH+ObQ+JoKdOPiSTiq8grDQnjaX6pSmVYa7Prj
- ejXBGUOSr2cPZROkkHY8ygefQw==
-X-Google-Smtp-Source: APXvYqwBABOk5P1lcHFrctT0fUSSr2Hv6vbQhbqcJSD5Q+1tQOnna356evEV+6djyREOBX4lf3JYkg==
-X-Received: by 2002:a02:ce92:: with SMTP id y18mr7192147jaq.40.1561580873575; 
- Wed, 26 Jun 2019 13:27:53 -0700 (PDT)
+ bh=PtByYI9t5DpYVWm2H7GeEhPtk58KGByxBL002Rq++Nc=;
+ b=e59WYocDTH9vBroMi7RsnnkRhXzXAqHv9bHu9mrJtwfbOW/HJYsqfrX7l6+J8gyFmI
+ Pzdz/u8UTNbPL2gjRqYvUFwLm+NVh5FD+MLIRJHVpE9+R4vkDNzuM3cKxzTVb0oBgH+F
+ wQESKo/+dLCYO58COlqbpG+FotYQEL+WCRXmEjxWW2nSpfFVt0seMR8tnrAm8OXxJmfb
+ OQ7RpQl61DVZAQCqCLOEBV8/6jUFVrnaIOCWlu4U+1Pgj6vZFwq3myO63SHJulCTuILn
+ 8+66XimkxAe3CcHa25U605z5lqh/BbfuwJeVfPQbRuAHgp5g8aP+IIYXgORhRQ/CqT1L
+ Emug==
+X-Gm-Message-State: APjAAAWXRr/k82IQ3lalcSyRC6XY2VyBMqVT5fAjONZh0/V3okmLoFAw
+ 21QSz7bzddbx1bbOIBJ/jeLmyQ==
+X-Google-Smtp-Source: APXvYqyaC/Rknevvr0RNsSk494GNIwNMoZEzEKFydW08aOjnIS+l9ESG3JKcMXLHukEsIAy5/kV9Ng==
+X-Received: by 2002:a5d:87c6:: with SMTP id q6mr223932ios.115.1561582886347;
+ Wed, 26 Jun 2019 14:01:26 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- h19sm16188iol.65.2019.06.26.13.27.52
+ d17sm206248iom.28.2019.06.26.14.01.24
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 26 Jun 2019 13:27:52 -0700 (PDT)
-Date: Wed, 26 Jun 2019 13:27:51 -0700 (PDT)
+ Wed, 26 Jun 2019 14:01:25 -0700 (PDT)
+Date: Wed, 26 Jun 2019 14:01:23 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Rob Herring <robh@kernel.org>
 Subject: Re: [PATCH] dt-bindings: riscv: resolve 'make dt_binding_check'
  warnings
-In-Reply-To: <CAL_JsqJs6MtvmuyAknsUxQymbmoV=G+=JfS1PQj9kNHV7fjC9g@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1906261325290.23534@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1906261325290.23534@viisi.sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1906261358440.23534@viisi.sifive.com>
 References: <alpine.DEB.2.21.9999.1906260829030.21507@viisi.sifive.com>
  <CAL_JsqJs6MtvmuyAknsUxQymbmoV=G+=JfS1PQj9kNHV7fjC9g@mail.gmail.com>
+ <alpine.DEB.2.21.9999.1906261325290.23534@viisi.sifive.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190626_132754_543707_6A84F7FA 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20190626_140127_488023_5E294F51 
+X-CRM114-Status: GOOD (  15.65  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -106,66 +107,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 26 Jun 2019, Rob Herring wrote:
+On Wed, 26 Jun 2019, Paul Walmsley wrote:
 
-> On Wed, Jun 26, 2019 at 9:30 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> >
-> > Rob pointed out that one of the examples in the RISC-V 'cpus' YAML schema
-> > results in warnings from 'make dt_binding_check'.  Fix these.
-> >
-> > While here, make the whitespace in the second example consistent with the
-> > first example.
-> >
-> > Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> > Cc: Rob Herring <robh@kernel.org>
-> > ---
-> >  .../devicetree/bindings/riscv/cpus.yaml       | 26 ++++++++++---------
-> >  1 file changed, 14 insertions(+), 12 deletions(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > index 27f02ec4bb45..f97a4ecd7b91 100644
-> > --- a/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > +++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > @@ -152,17 +152,19 @@ examples:
-> >    - |
-> >      // Example 2: Spike ISA Simulator with 1 Hart
-> >      cpus {
-> > -            cpu@0 {
-> > -                    device_type = "cpu";
-> > -                    reg = <0>;
-> > -                    compatible = "riscv";
-> > -                    riscv,isa = "rv64imafdc";
-> > -                    mmu-type = "riscv,sv48";
-> > -                    interrupt-controller {
-> > -                            #interrupt-cells = <1>;
-> > -                            interrupt-controller;
-> > -                            compatible = "riscv,cpu-intc";
-> > -                    };
-> > -            };
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +        cpu@0 {
+> On Wed, 26 Jun 2019, Rob Herring wrote:
 > 
-> This only works because you removed 'cpus' and therefore none of this
-> schema is applied.
-
-I'm not following you - could you point out where "cpus" was removed?
-
-> > +                device_type = "cpu";
-> > +                reg = <0>;
-> > +                compatible = "riscv";
+> > On Wed, Jun 26, 2019 at 9:30 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+> > >
+> > > Rob pointed out that one of the examples in the RISC-V 'cpus' YAML schema
+> > > results in warnings from 'make dt_binding_check'.  Fix these.
+> > >
+> > > While here, make the whitespace in the second example consistent with the
+> > > first example.
+> > >
+> > > Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> > > Cc: Rob Herring <robh@kernel.org>
+> > > ---
+> > >  .../devicetree/bindings/riscv/cpus.yaml       | 26 ++++++++++---------
+> > >  1 file changed, 14 insertions(+), 12 deletions(-)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
+> > > index 27f02ec4bb45..f97a4ecd7b91 100644
+> > > --- a/Documentation/devicetree/bindings/riscv/cpus.yaml
+> > > +++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
+> > > @@ -152,17 +152,19 @@ examples:
+> > >    - |
+> > >      // Example 2: Spike ISA Simulator with 1 Hart
+> > >      cpus {
+> > > -            cpu@0 {
+> > > -                    device_type = "cpu";
+> > > -                    reg = <0>;
+> > > -                    compatible = "riscv";
+> > > -                    riscv,isa = "rv64imafdc";
+> > > -                    mmu-type = "riscv,sv48";
+> > > -                    interrupt-controller {
+> > > -                            #interrupt-cells = <1>;
+> > > -                            interrupt-controller;
+> > > -                            compatible = "riscv,cpu-intc";
+> > > -                    };
+> > > -            };
+> > > +        #address-cells = <1>;
+> > > +        #size-cells = <0>;
+> > > +        cpu@0 {
+> > 
+> > This only works because you removed 'cpus' and therefore none of this
+> > schema is applied.
 > 
-> According to the schema, this is wrong. It should have 2 strings. Or
-> the schema needs to allow this case, but 'riscv' is too vague to be
-> very useful.
+> I'm not following you - could you point out where "cpus" was removed?
 
-OK, I'll come up with something for Spike.
+If it helps, this patch is simply to fix the dtc warnings that you 
+mentioned in your post on devicetree-spec@.  Without this patch, with 
+"make dtbs_check", the following warnings are generated:
 
-> Also, I noticed that there's still a riscv/cpus.txt. That should be
-> removed and replaced with this file. Looks like the hart description
-> at least should be copied over (into top-level 'description').
+  DTC     Documentation/devicetree/bindings/riscv/cpus.example.dtb
+Documentation/devicetree/bindings/riscv/cpus.example.dts:75.25-35: Warning (reg_format): /example-1/cpus/cpu@0:reg: property has invalid length (4 bytes) (#address-cells == 2, #size-cells == 1)
+Documentation/devicetree/bindings/riscv/cpus.example.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/riscv/cpus.example.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/riscv/cpus.example.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/riscv/cpus.example.dts:73.23-84.19: Warning (avoid_default_addr_size): /example-1/cpus/cpu@0: Relying on default #address-cells value
+Documentation/devicetree/bindings/riscv/cpus.example.dts:73.23-84.19: Warning (avoid_default_addr_size): /example-1/cpus/cpu@0: Relying on default #size-cells value
 
-OK, will do that when I hear back from you.  
+When the patch is applied, dtc doesn't report any of these warnings.
+
+Let me know if I'm missing something obvious.
 
 
 - Paul
