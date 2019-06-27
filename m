@@ -2,85 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B810457C83
-	for <lists+linux-riscv@lfdr.de>; Thu, 27 Jun 2019 08:53:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 973FB57C7B
+	for <lists+linux-riscv@lfdr.de>; Thu, 27 Jun 2019 08:52:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CdBmcKTg8wujS+Cu4PIYtUw/PdcdswRUQwzYGTceuv8=; b=U5t8iKGrmM7AE/
-	EfE6Ma457XLCigRnK5vEG2tl17bOLrVo4yRk7lPONFSr4RREYeR9DoPBjcHkWYzhL62kO69N7ELPb
-	kidSDNrxX7duMVICMXpPUAh13nj/O8KkdcZhNPjvejh3vC/Yb/3apvXVJuOfR1Ah9pmm+EltlbH2m
-	7rFEsy3XxxXPrpHy5+sBdgkduK+pLrRTIB6fv1ohUfLTnSHqD9N+Mbhe4qqxXzsDvUe9MB4/dViLi
-	TlXExB7YUVqgPBper7UTrA7H1dC9utPa+iZnGErDha+r9R9wiDvpyc4YoW3lc7q2MvQe+tCIFlwQZ
-	m6m3/9Ra/ar3delZCKAg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=diLEWYjgvHxv5jFWWQ6uB+xx+3CUIBB5ZgsaJK23k6w=; b=e/K
+	2A8De1JbjKFUC+BS+jH1qwijNNj4YE+WA4Thybh076MEQgCvGalU0fw0OJ0mhbP/Ko3SaotHghm2H
+	lLnRLlBeYxvkfm4e6i0jM+p08BHcUoFsPzW1OwO3wBJ8Ww1eGn7MCOQMOzP7Q08JP7qLFzmwnfU/R
+	jJnN+o/7pllZ8m2W9eceWkipfwysbgP+xt49qJpcFKGIclHEc3YAyYtpwLDcihvaDIgjlIIe0ZN8Z
+	efw4zxq6BLC2qCcjWCGcqW2DBW4Bl5hJ6WRkSbfDAw79TGrWJeTRdGle0E8YDefpsYrG4k9qYGf1f
+	WwngbjDdHFw6x3xa5cZ2nO2AT7qvUHw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgOHR-0008F6-VF; Thu, 27 Jun 2019 06:53:14 +0000
+	id 1hgOG8-0006z3-UU; Thu, 27 Jun 2019 06:51:52 +0000
 Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgO8n-0006KM-EK
- for linux-riscv@bombadil.infradead.org; Thu, 27 Jun 2019 06:44:17 +0000
+ id 1hgO8b-0006KM-8W; Thu, 27 Jun 2019 06:44:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=DZ4Gzv9fZhFyx9vfZpzs5+LNYjJ019BQrBcaIo26GVM=; b=NrSJTT/5SU+122nClxl5kyA8By
- t5KE06V2vuML/h5BnTWAfd6HNInq4/M3oNNJzltTH5LxTnQ305huXkf25b737RNoggS4WJKXuZtfL
- Bv3+1K/hbJbA7sMu0PxawIgRsQqIIreguTH4RhszQ7pGKAIBncieHKUDDW/zdWXUJ+jt9anKv8/Vq
- Q28gIHbTkgQWL3R8935TTJP5XVUrIOJ+OZzDlQaL9cKZwX0ohvEPnNytbpG7AQa2Xx5mml7qivVcW
- rNpkHsDiaTQS75QBnpoURDiIP6adJwlQ7jmvDHtOhl0JyQL1FHDpPq1GIa5xmSZKEOCFHuePcUSpy
- 9fAGOXzQ==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=merlin.20170209; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=t/tKte8+f+WnIerV46Kqk5V4Cu5goyQEz8X3TPyTH+k=; b=YmGTxxoN9UbpxZaK0IJIRp/Bk
+ syPXhkVtX+ul8X987R6Q2eLdhZ9XRF06x594dp+A74aVZdwKAkR91accZ2pcbtmhmTYxwjoN9sueD
+ G0zwBZWAlpKhbW43sq6dTpytNsieafBkZVq+OBd0uYZtDZCFDp/I6z7O8gMwAxWcwTZLwr+mn+Nez
+ eq2hS6Vps456GJvlF2oyG5MiTskjB0VapBGkozAkTErhCD5kzGScUxVAhMrFAToKqNbMW3NqYNKbD
+ 5qds3DGZrTV4lE0X88FzVhgxdHbJ1+TZ17Mh6miLcs/wIMyI8dX6kE3U4RTCucN0Y7u69Cm2ijkhE
+ eRzg9kH/g==;
+Received: from conuserg-08.nifty.com ([210.131.2.75])
  by merlin.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgIQM-0004Bg-TH
- for linux-riscv@lists.infradead.org; Thu, 27 Jun 2019 00:38:03 +0000
-Received: from sasha-vm.mshome.net (unknown [107.242.116.147])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D42BE2187F;
- Thu, 27 Jun 2019 00:37:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561595881;
- bh=ukyT0zWO949yq54aqPCDMCmxrnUPIEiL8DdNMkXKvSk=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=y1A0+Y/ld+SeWEylhkeaRE23tMv5+M6d5RkiRihhOB9rf2X8WUT59s1gj5W4HWCz8
- Jt0PZWtnDUmsB2Cptj92nqF6ZrZBc2O96MnNaVlJUzdjd+LXmKhzizjMeYXKhQxEW6
- WVh49DbCHgT+KrXTAEZ/WS/QyJCDpAHHQL3Bg0W8=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 34/60] riscv: Fix udelay in RV32.
-Date: Wed, 26 Jun 2019 20:35:49 -0400
-Message-Id: <20190627003616.20767-34-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190627003616.20767-1-sashal@kernel.org>
-References: <20190627003616.20767-1-sashal@kernel.org>
-MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+ id 1hgJW2-0005W4-Ma; Thu, 27 Jun 2019 01:47:59 +0000
+Received: from grover.flets-west.jp (softbank126125154139.bbtec.net
+ [126.125.154.139]) (authenticated)
+ by conuserg-08.nifty.com with ESMTP id x5R1kN0v032702;
+ Thu, 27 Jun 2019 10:46:23 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-08.nifty.com x5R1kN0v032702
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1561599984;
+ bh=t/tKte8+f+WnIerV46Kqk5V4Cu5goyQEz8X3TPyTH+k=;
+ h=From:To:Cc:Subject:Date:From;
+ b=x56ew+Nf/mRL+Y9auCSqcIA7wXTn2ja3HVYzHe0zb/E43gJ8Lggs/PguNK3OCZjgp
+ uEyvbCO2H1dT/DpTwUE6DbmQRbC6vOSL5OITz+s0Bb0odvn6gylTlEcXpF8asnjeml
+ 88aMR4WR5z+A0KqVY3or1TMOqNYfDZk2Ex4sSzWca/5b84o36B0eGUd3VL7kWJzm2Z
+ ht4QKpX3nwgoUQtDo9jLHs9EQ7Dgcaxi1GdZoFz3rV7s0Tp5VvQMZ+OUmUdUW+ge61
+ tE78teOBqyznZ79jc3oTqjv6+zpNpU51id+uwMW/3dc8GBkGo5Jz2XIAR4PoONDPEu
+ JgLgECL33cJbg==
+X-Nifty-SrcIP: [126.125.154.139]
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+To: linux-kbuild@vger.kernel.org
+Subject: [PATCH v2 0/4] Compile-test UAPI and kernel headers
+Date: Thu, 27 Jun 2019 10:46:13 +0900
+Message-Id: <20190627014617.600-1-yamada.masahiro@socionext.com>
+X-Mailer: git-send-email 2.17.1
 X-Spam-Note: CRM114 invocation failed
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [210.131.2.75 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,47 +83,75 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-riscv@lists.infradead.org,
- Palmer Dabbelt <palmer@sifive.com>, Nick Hu <nickhu@andestech.com>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Song Liu <songliubraving@fb.com>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>, linux-doc@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>,
+ linux-riscv@lists.infradead.org, Sam Ravnborg <sam@ravnborg.org>,
+ Kees Cook <keescook@chromium.org>, xdp-newbies@vger.kernel.org,
+ Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
+ Anton Vorontsov <anton@enomsg.org>, John Fastabend <john.fastabend@gmail.com>,
+ Yonghong Song <yhs@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Michal Marek <michal.lkml@markovi.net>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Tony Luck <tony.luck@intel.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>, Colin Cross <ccross@android.com>,
+ bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Nick Hu <nickhu@andestech.com>
 
-[ Upstream commit d0e1f2110a5eeb6e410b2dd37d98bc5b30da7bc7 ]
+1/4: reworked v2.
 
-In RV32, udelay would delay the wrong cycle. When it shifts right
-"UDELAY_SHIFT" bits, it either delays 0 cycle or 1 cycle. It only works
-correctly in RV64. Because the 'ucycles' always needs to be 64 bits
-variable.
+2/4: fix a flaw I noticed when I was working on this series
 
-Signed-off-by: Nick Hu <nickhu@andestech.com>
-Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
-[paul.walmsley@sifive.com: fixed minor spelling error]
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/riscv/lib/delay.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+3/4: maybe useful for 4/4 and in some other places
 
-diff --git a/arch/riscv/lib/delay.c b/arch/riscv/lib/delay.c
-index dce8ae24c6d3..ee6853c1e341 100644
---- a/arch/riscv/lib/delay.c
-+++ b/arch/riscv/lib/delay.c
-@@ -88,7 +88,7 @@ EXPORT_SYMBOL(__delay);
- 
- void udelay(unsigned long usecs)
- {
--	unsigned long ucycles = usecs * lpj_fine * UDELAY_MULT;
-+	u64 ucycles = (u64)usecs * lpj_fine * UDELAY_MULT;
- 
- 	if (unlikely(usecs > MAX_UDELAY_US)) {
- 		__delay((u64)usecs * riscv_timebase / 1000000ULL);
+4/4: v2. compile as many headers as possible.
+
+
+Changes in v2:
+ - Add CONFIG_CPU_{BIG,LITTLE}_ENDIAN guard to avoid build error
+ - Use 'header-test-' instead of 'no-header-test'
+ - Avoid weird 'find' warning when cleaning
+  - New patch
+  - New patch
+  - Add everything to test coverage, and exclude broken ones
+  - Rename 'Makefile' to 'Kbuild'
+  - Add CONFIG_KERNEL_HEADER_TEST option
+
+Masahiro Yamada (4):
+  kbuild: compile-test UAPI headers to ensure they are self-contained
+  kbuild: do not create wrappers for header-test-y
+  kbuild: support header-test-pattern-y
+  kbuild: compile-test kernel headers to ensure they are self-contained
+
+ .gitignore                         |    1 -
+ Documentation/dontdiff             |    1 -
+ Documentation/kbuild/makefiles.txt |   13 +-
+ Makefile                           |    4 +-
+ include/Kbuild                     | 1134 ++++++++++++++++++++++++++++
+ init/Kconfig                       |   22 +
+ scripts/Makefile.build             |   10 +-
+ scripts/Makefile.lib               |   12 +-
+ scripts/cc-system-headers.sh       |    8 +
+ usr/.gitignore                     |    1 -
+ usr/Makefile                       |    2 +
+ usr/include/.gitignore             |    3 +
+ usr/include/Makefile               |  133 ++++
+ 13 files changed, 1331 insertions(+), 13 deletions(-)
+ create mode 100644 include/Kbuild
+ create mode 100755 scripts/cc-system-headers.sh
+ create mode 100644 usr/include/.gitignore
+ create mode 100644 usr/include/Makefile
+
 -- 
-2.20.1
+2.17.1
 
 
 _______________________________________________
