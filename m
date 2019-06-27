@@ -2,78 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5EAD58044
-	for <lists+linux-riscv@lfdr.de>; Thu, 27 Jun 2019 12:27:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EC55581B3
+	for <lists+linux-riscv@lfdr.de>; Thu, 27 Jun 2019 13:37:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JEH7tC1+ZZzjIwF9HraeD4Yjk4o9Rbss5eUL/1jL6N0=; b=jI9gIgAtY4OMqd
-	tMVVw04Xe8Vqb+2Y6zDcTxUThWEX9ru3nSEtjsNInDGnCJPj5vj+/uhTko/Rr7Dh+lxRhnAIdXU0b
-	7yO0rACiFrb9bLw9t3a9Tdnj4wjizt7fimx1CUQpM++zAFf9EBHOqCTquQ0i04Jj9KkUwiriuSGou
-	biV8oD63ZNY6mZcIihhczcgNIHt6HepdlSosD6Drf7aBVyceyLwGVGeHsxJeLCxZN62P0O3kfv7Rw
-	rcyro5U4h8OaCpg0kh7XwLkEMsCmBe9Sx6sFvMTaSJdf15hbPVyeulst6+gf3fqZOBs0T5sxA/cRH
-	8EWSzY7YT8o2gTAtSFDA==;
+	List-Owner; bh=1z+g4OhuhnwGRTUOXpszHxJGcjFqwXM/v8ZpadGGNBw=; b=um/vyLzMymBMwo
+	S/GL4lDcCJICfj4QwZeB+IWQePyNovMKSHgzLwSi83QSxG5+qanXdTKLGL4W3bLKw3y5ngUvCLCI6
+	SNis5PXGvzAEn+oJRmTGLvs6Lp/ZH8MYHuP48mpP98kEwR7IYcXb/EfbgHryWexBeWbEVKUFjZlNE
+	0N2BUxmaNIriExOq1+uI71QAEnsAHhVm9cpJyOgTR4903+pAkLIW7oLwwZRZ1xmB26DRMJYSRBBt5
+	UxNPsvnfJaCmEiMMBeST2/YD4IHiJBthAltnSFMxXz4TCh9oqmpw+XaRoYysme7WBex0pVVPTVvxa
+	vY3N1lAVQBy7mQJ/QJ6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgRd2-00042O-RR; Thu, 27 Jun 2019 10:27:45 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1hgSiT-0007kU-GE; Thu, 27 Jun 2019 11:37:25 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgRcN-0003kb-Rl; Thu, 27 Jun 2019 10:27:05 +0000
-Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F00C420828;
- Thu, 27 Jun 2019 10:26:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561631223;
- bh=+aboWwW7RRRk1C/RYk5UOWQp4PDh2UA+to5qKLSsG5A=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ufNNsQ7PR/cG5oM3QhBjje8hgBKvThE0uaI9H9xM3+okTUjOvbrBIYQPnqnHbRbNy
- 0t+KK8xaWhxO0Sb25thuG7jRqSWjh7gyuw+7eiQuFz4Jnys7TskYd/ZdNopyXT4nnP
- fsmY0hf/CSX8CAYEu4OwsGjutyiF0uZfK+cHA1lY=
-Date: Thu, 27 Jun 2019 11:26:57 +0100
-From: Will Deacon <will@kernel.org>
-To: "qi.fuli@fujitsu.com" <qi.fuli@fujitsu.com>
-Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
- separate file
-Message-ID: <20190627102656.elizqwby4sw4vi5j@willie-the-truck>
-References: <20190321163623.20219-1-julien.grall@arm.com>
- <20190321163623.20219-12-julien.grall@arm.com>
- <0dfe120b-066a-2ac8-13bc-3f5a29e2caa3@arm.com>
- <CAJF2gTTXHHgDboaexdHA284y6kNZVSjLis5-Q2rDnXCxr4RSmA@mail.gmail.com>
- <c871a5ae-914f-a8bb-9474-1dcfec5d45bf@arm.com>
- <CAJF2gTStSR7Jmu7=HaO5Wxz=Zn8A5-RD8ktori3oKEhM9vozAA@mail.gmail.com>
- <20190621141606.GF18954@arrakis.emea.arm.com>
- <CAJF2gTTVUToRkRtxTmtWDotMGXy5YQCpL1h_2neTBuN3e6oz1w@mail.gmail.com>
- <20190624102209.ngwtosgr5fvp3ler@willie-the-truck>
- <c5be6baa-91aa-c178-6698-c83d4d82a217@jp.fujitsu.com>
+ id 1hgShr-0007XF-3e; Thu, 27 Jun 2019 11:36:48 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2019 04:36:45 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,423,1557212400"; d="scan'208";a="183430789"
+Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.150])
+ by fmsmga001.fm.intel.com with ESMTP; 27 Jun 2019 04:36:37 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>,
+ linux-kbuild@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] Compile-test UAPI and kernel headers
+In-Reply-To: <20190627014617.600-1-yamada.masahiro@socionext.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20190627014617.600-1-yamada.masahiro@socionext.com>
+Date: Thu, 27 Jun 2019 14:39:24 +0300
+Message-ID: <87y31np89f.fsf@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <c5be6baa-91aa-c178-6698-c83d4d82a217@jp.fujitsu.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190627_032703_995987_78997B50 
-X-CRM114-Status: GOOD (  20.38  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190627_043647_279375_A4B9B21E 
+X-CRM114-Status: GOOD (  17.54  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ high trust [134.134.136.24 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,81 +64,95 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "suzuki.poulose@arm.com" <suzuki.poulose@arm.com>,
- Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>,
- "julien.thierry@arm.com" <julien.thierry@arm.com>,
- Will Deacon <will.deacon@arm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
- "hch@infradead.org" <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Julien Grall <julien.grall@arm.com>, Anup Patel <anup.Patel@wdc.com>,
- Guo Ren <guoren@kernel.org>, "gary@garyguo.net" <gary@garyguo.net>,
- Palmer Dabbelt <palmer@sifive.com>,
- "christoffer.dall@arm.com" <christoffer.dall@arm.com>,
- "james.morse@arm.com" <james.morse@arm.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Song Liu <songliubraving@fb.com>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>, linux-doc@vger.kernel.org,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>,
+ linux-riscv@lists.infradead.org, Sam Ravnborg <sam@ravnborg.org>,
+ Kees Cook <keescook@chromium.org>, xdp-newbies@vger.kernel.org,
+ Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
+ Anton Vorontsov <anton@enomsg.org>, John Fastabend <john.fastabend@gmail.com>,
+ Yonghong Song <yhs@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Michal Marek <michal.lkml@markovi.net>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Tony Luck <tony.luck@intel.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>, Colin Cross <ccross@android.com>,
+ bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Jun 27, 2019 at 09:41:42AM +0000, qi.fuli@fujitsu.com wrote:
-> 
-> On 6/24/19 7:22 PM, Will Deacon wrote:
-> > On Mon, Jun 24, 2019 at 12:35:35AM +0800, Guo Ren wrote:
-> >> On Fri, Jun 21, 2019 at 10:16 PM Catalin Marinas
-> >> <catalin.marinas@arm.com> wrote:
-> >>> On Wed, Jun 19, 2019 at 07:51:03PM +0800, Guo Ren wrote:
-> >>>> On Wed, Jun 19, 2019 at 4:54 PM Julien Grall <julien.grall@arm.com> wrote:
-> >>>>> On 6/19/19 9:07 AM, Guo Ren wrote:
-> >>>>>> Move arm asid allocator code in a generic one is a agood idea, I've
-> >>>>>> made a patchset for C-SKY and test is on processing, See:
-> >>>>>> https://lore.kernel.org/linux-csky/1560930553-26502-1-git-send-email-guoren@kernel.org/
-> >>>>>>
-> >>>>>> If you plan to seperate it into generic one, I could co-work with you.
-> >>>>> Was the ASID allocator work out of box on C-Sky?
-> >>>> Almost done, but one question:
-> >>>> arm64 remove the code in switch_mm:
-> >>>>    cpumask_clear_cpu(cpu, mm_cpumask(prev));
-> >>>>    cpumask_set_cpu(cpu, mm_cpumask(next));
-> >>>>
-> >>>> Why? Although arm64 cache operations could affect all harts with CTC
-> >>>> method of interconnect, I think we should keep these code for
-> >>>> primitive integrity in linux. Because cpu_bitmap is in mm_struct
-> >>>> instead of mm->context.
-> >>> We didn't have a use for this in the arm64 code, so no point in
-> >>> maintaining the mm_cpumask. On some arm32 systems (ARMv6) with no
-> >>> hardware broadcast of some TLB/cache operations, we use it to track
-> >>> where the task has run to issue IPI for TLB invalidation or some
-> >>> deferred I-cache invalidation.
-> >> The operation of set/clear mm_cpumask was removed in arm64 compared to
-> >> arm32. It seems no side effect on current arm64 system, but from
-> >> software meaning it's wrong.
-> >> I think we should keep mm_cpumask just like arm32.
-> > It was a while ago now, but I remember the atomic update of the mm_cpumask
-> > being quite expensive when I was profiling this stuff, so I removed it
-> > because we don't need it for arm64 (at least, it doesn't allow us to
-> > optimise our shootdowns in practice).
-> 
-> I think mm_cpumask can be used for filtering the cpus that there are TBL 
-> entries on.
+On Thu, 27 Jun 2019, Masahiro Yamada <yamada.masahiro@socionext.com> wrote:
+> 1/4: reworked v2.
+>
+> 2/4: fix a flaw I noticed when I was working on this series
+>
+> 3/4: maybe useful for 4/4 and in some other places
+>
+> 4/4: v2. compile as many headers as possible.
+>
+>
+> Changes in v2:
+>  - Add CONFIG_CPU_{BIG,LITTLE}_ENDIAN guard to avoid build error
+>  - Use 'header-test-' instead of 'no-header-test'
+>  - Avoid weird 'find' warning when cleaning
+>   - New patch
+>   - New patch
+>   - Add everything to test coverage, and exclude broken ones
+>   - Rename 'Makefile' to 'Kbuild'
+>   - Add CONFIG_KERNEL_HEADER_TEST option
+>
+> Masahiro Yamada (4):
+>   kbuild: compile-test UAPI headers to ensure they are self-contained
+>   kbuild: do not create wrappers for header-test-y
+>   kbuild: support header-test-pattern-y
+>   kbuild: compile-test kernel headers to ensure they are self-contained
 
-I'm aware that you want to use IPIs for broadcasting TLB invalidation
-but that is only tangentially related to this thread, which is about the
-current ASID algorithm and the need to update mm_cpumask today.
+[responding here because I didn't receive the actual patch]
 
-Please don't conflate the two threads; I already made my position reasonably
-clear:
+This looks like it's doing what it's supposed to, but I ran into a bunch
+of build fails with CONFIG_OF=n. Sent a fix to one [1], but stopped at
+the next. Looks like you'll have to exclude more. And I'm pretty sure
+we'll uncover more configurations where this will fail.
 
-https://lore.kernel.org/linux-arm-kernel/20190617170328.GJ30800@fuggles.cambridge.arm.com/
+But I do applaud the goal, and I'm committed to making all include/drm
+headers self-contained. I wouldn't block this based on the issues, it's
+pretty much the only way to expose them and get them fixed/excluded, and
+it's behind a config knob after all.
 
-I will follow-up with another reply there.
+With the caveat that I didn't finish the build, but OTOH tested the
+rainy day scenario and had the patch find issues it's meant to find:
 
-Will
+Tested-by: Jani Nikula <jani.nikula@intel.com>
+
+
+[1] http://patchwork.freedesktop.org/patch/msgid/20190627110103.7539-1-jani.nikula@intel.com
+
+>
+>  .gitignore                         |    1 -
+>  Documentation/dontdiff             |    1 -
+>  Documentation/kbuild/makefiles.txt |   13 +-
+>  Makefile                           |    4 +-
+>  include/Kbuild                     | 1134 ++++++++++++++++++++++++++++
+>  init/Kconfig                       |   22 +
+>  scripts/Makefile.build             |   10 +-
+>  scripts/Makefile.lib               |   12 +-
+>  scripts/cc-system-headers.sh       |    8 +
+>  usr/.gitignore                     |    1 -
+>  usr/Makefile                       |    2 +
+>  usr/include/.gitignore             |    3 +
+>  usr/include/Makefile               |  133 ++++
+>  13 files changed, 1331 insertions(+), 13 deletions(-)
+>  create mode 100644 include/Kbuild
+>  create mode 100755 scripts/cc-system-headers.sh
+>  create mode 100644 usr/include/.gitignore
+>  create mode 100644 usr/include/Makefile
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 linux-riscv mailing list
