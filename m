@@ -2,105 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1E9057B61
-	for <lists+linux-riscv@lfdr.de>; Thu, 27 Jun 2019 07:27:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13C0B57C68
+	for <lists+linux-riscv@lfdr.de>; Thu, 27 Jun 2019 08:47:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7SSPCiotHo3vqOpprexx1q+GyWRZWq7U7IOer8OLkXA=; b=DulHx/X+dos7GCZXwVRjbdHeC
-	U5ljGCd9jLmeNKzAAvLouhKl485BKQNXsBT5i3r9LbSBcAafrbiSxRpYovPdV7biVN+BYucocH1G5
-	XCwTH/Q8P8jp0j1I7cIqxO7fwrNJ8LLQ1ldrTYMLLsh6TXvNvx2eIgLREIgEFY7LSsuPHeO/dZ1Cc
-	2mIlNSA68qSSyAETRpKZV8+MQDAqA6/wFQjAX85vHe+zp1O21NcOL4KcNpOY4vcOIR0po484p/fLl
-	RMaMhSy5mImNd87yXC+HGUtd8s1kdZvsjUf2e8BKdYaz42JF8rkNpc8li7wbNweQ8rRxTpTlVuqLs
-	CLcWOj7vw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IkEn6ugotI9Hd6eDRmaAdv8IAIJO8Y3EMKUSFUPI+YA=; b=uKQkOjoowaA+8C
+	31e3rtTBhgDy4b36FK+t1J6f6L3Or8RjLvVbguoyoM5ZTrxOX0sBkydfd9+ETZDYbZ9yD44cHmOgI
+	/VRWlScegj2ApJdpYROE5GM0XsDvQq/JXHyk6snGkyshDVOfEFORPdXcbGUXuAsLzFCvaV8Q+Xr6h
+	YX7yCCyoQZeflpqPLFPSqFnEkkiENPPk7W7Pq24jU8vfvaG2OlrHFHbHiaLefkUJmBfq5ETTaKF5/
+	DWp0EAW16aoqn9ip7Y1ZcJlCdScgXMjbslD4HBAOQ84XLerLyDcR5LqqYkGvXh2JBxGislfs3/LKN
+	VypDgApPQ+bb7wl9ZFGQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgMwE-0007BH-0r; Thu, 27 Jun 2019 05:27:14 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1hgOCB-0002KM-Qs; Thu, 27 Jun 2019 06:47:47 +0000
+Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgMpi-0006ep-HX; Thu, 27 Jun 2019 05:20:30 +0000
+ id 1hgO8E-0006KM-4Y; Thu, 27 Jun 2019 06:43:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=UNLyOsV3OGMw6xlUhvSGjqaekUuyTSupeV2vLHx35Xc=; b=FeIJdkYbOOgkVj5dB/Fom4Td4r
- rX3qEOcqKi5jRt+nUFMOkXjrEOb7wV53nAmxP8hGXfWNY9+cp/nubZvZ1ob9IiOIqh2WI7AvWp8mG
- eDJkZ+0UndOOdS2KjPcBthCT4OVyZ5m8bn4s5NMHPq/BFoJjNK/kNyuOuTKDiQsrhlnY9/dOFsQ7X
- 2VBezca9eDMBhLGh7BUIhJW9DhVYE8hU/BRRHc1cn3pvwVqGgzXmXQUH2RXOsSE54dfyYpx8pgaBp
- LyKo6J/Wr8zVzfp2YuVgFonu0L0/kkLvchOj41Rm0890MOC1tT3nFU8SjAhogvMV2/AGYHhTNkDrG
- /h4P8I+g==;
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
- by casper.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgK0Q-0002Y3-J0; Thu, 27 Jun 2019 02:19:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1561601961; x=1593137961;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=Tfwp7gFaZ6qND8kZaF7KWkT1wyf1zxCP1c9dIpITNvc=;
- b=ofXrSGA2cDs/mrb95EkpIHTAM+W/LKW7hY9jflaM7FcXIHPBWRJDmAU0
- UUvKV/yL5bfda4KYYeNjFDidFfYR/coEb66G+pG7c/NMZScOw6PiA6sti
- POhmdJwVzzcfyzP4w9UhYRxYH+Wl+1LNTZDpADvjNx1B9JEKmAGEINJ/G
- L0Vko7FzkyuwoJNzSF7FVc+bw2BGnFp+kRkVk/NPcXv3sBef0zaJD0WJW
- oEGbBBNcEEMJxyLPFZDkYpogL9+dUL7eOtOSln+yrmfbMfyShvBywqiHB
- dm3T8Y3nWHbFQGHk/0817AKqQmEF4a4htGg888W3XwDYqJuztkUW7pCX/ w==;
-X-IronPort-AV: E=Sophos;i="5.63,422,1557158400"; d="scan'208";a="211454252"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 27 Jun 2019 10:20:09 +0800
-IronPort-SDR: 1+Ew/4+sXLSS51N8u7BooKieY4X+jkbs409ph5WvfkvTPe4kykDlpI+3N64Kq8xcaY1YybRQsu
- DO52WUbpv/b5kCU4mrA52KzsKVnjyGXRqsKNBVO9+42/jYutlIjqvTHl0OMQ+rX/Hidstw3D2v
- kX1xYyJ+5Mhhyrbwmou4v3eAsoTek9buCiCWuzrQJ3w9phW0ytNt8U5/v9LSEOJyNveIbPSTkh
- bb9kceiPuH9bbSOuKnZ6+uuF4kuTlr1JVKJPccsQAFRLH9QKIs4fAPVAXll5GOUd8qIwIJt7tR
- VfXxAs2bnojDKsG0Vz92gaFL
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP; 26 Jun 2019 19:17:52 -0700
-IronPort-SDR: ciLexNHCv6HL8MZuckFUeBuAAqxAHwDwL0T3akazDuuvQlT+UmUai8SZlQcgLlMo31DzQYCy9C
- hUmWFABApl4vhwrHwwwNgApIeFL7zgMAQsNfesmsMzYlcHY/bExk7+MCe6LFtwJP5mf9NcCS5I
- yosY85vqe7YCnHakfyQMwyQjzZEz/2iJf1D2qk2ScLEpepDs50z5eYX5Yas7bf4/E5rwInY8df
- VA2fHixn7pD+aJT3u6PzOm755RWHxstUQ+JkAIqkjoIGczFDwhyJa85Jy2zwmAziFv0/Njm1rR
- +rY=
-Received: from usa005100.ad.shared (HELO [10.225.99.96]) ([10.225.99.96])
- by uls-op-cesaip01.wdc.com with ESMTP; 26 Jun 2019 19:18:37 -0700
-Subject: Re: [PATCH v7 1/7] Documentation: DT: arm: add support for sockets
- defining package boundaries
-To: Paul Walmsley <paul.walmsley@sifive.com>,
- Sudeep Holla <sudeep.holla@arm.com>
-References: <20190617185920.29581-1-atish.patra@wdc.com>
- <20190617185920.29581-2-atish.patra@wdc.com>
- <alpine.DEB.2.21.9999.1906261724000.23534@viisi.sifive.com>
-From: Atish Patra <atish.patra@wdc.com>
-Message-ID: <873a80f0-e704-dd7e-4db9-b159b23847fc@wdc.com>
-Date: Wed, 26 Jun 2019 19:18:36 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.7.2
+ d=infradead.org; s=merlin.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
+ Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=hUceC5AeeaszlwO9PeBwDuTy7hRVRhzHLJ1xX0slEKk=; b=c6nSaZaH1057hcDVEFiQifBjG
+ 3rNI6YLg7OK2xAlvKoo9FtuXDsRnyQmclZ/OJkfsfF4KwJVdzmJ/XFHdOvdR5RDDVL3LSAtJQK8Mn
+ ovZKSqGPXFE9xHR2eOkm2IT3mm/6ZB489q2gp3M0lGdnDwNmjtErfEgrjKsBeFbQLaSdRHTOmvOdo
+ DIqyNQoW71vTSIklMPDO6YOQnmAt2f/K29Mws/eV9LuRamWqmOHnIiRn94199s2Un0p4yRzoIkDgI
+ Wc066BUnxJvvESGrrwzFq6tby4zQfKL1sb95mj7aThaNL6fpbRVsUUEG58JIRuQHDswyXa+z7Ooni
+ 1fgqIF+4Q==;
+Received: from conssluserg-04.nifty.com ([210.131.2.83])
+ by merlin.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hgKr7-0006HF-5Y; Thu, 27 Jun 2019 03:13:50 +0000
+Received: from mail-vk1-f173.google.com (mail-vk1-f173.google.com
+ [209.85.221.173]) (authenticated)
+ by conssluserg-04.nifty.com with ESMTP id x5R3D6Nq018382;
+ Thu, 27 Jun 2019 12:13:07 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-04.nifty.com x5R3D6Nq018382
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1561605187;
+ bh=hUceC5AeeaszlwO9PeBwDuTy7hRVRhzHLJ1xX0slEKk=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=2Cyt6p7moE3aTxtO9LVZTLf8Js+TX6msHAzEQc2U3RWhpCafH3zcwX7L6dncx8NZj
+ ockSog0czJt3lhCqCbLzNffVlAwojPSytljO9BO73VA05KUuFrmauuPIzOxtzCJyCS
+ I5epEv29rqm491WP8MAtiIhEnlmhgxnbyjF+1EaPXAMrOVW0Tp8sy5BrWQ7xi5cIMS
+ +la8c2fFA7Qz6Gsxgjb0dJKJI56ggjDPZDYsmLm17g/FfJteYLT0I79YEcy9pHsNwi
+ 0ZC+277O1XILPZP/vHnTygUbl9mom+Th9NKjBPsENXkyrtFEoxj3NwJvDj2HSBB8DY
+ 94rFlEoEYBGdQ==
+X-Nifty-SrcIP: [209.85.221.173]
+Received: by mail-vk1-f173.google.com with SMTP id y130so204168vkc.0;
+ Wed, 26 Jun 2019 20:13:07 -0700 (PDT)
+X-Gm-Message-State: APjAAAWnZIHDThqgcdgzQ1nwMUaVMY4gUPF4Q1sVrfeo0czcI+T1CgtG
+ V90w+vUmHVWilECAq/QhMGtTQj1KtWALI962BHM=
+X-Google-Smtp-Source: APXvYqyrO6AGMiLTE/NsWodSgUDnExRC/7L2ZBLMise97w6CNCIJwXhqUDD88sfQ76DyLQRs9XeF+xyViB4ZUlsc7PQ=
+X-Received: by 2002:a1f:4107:: with SMTP id o7mr526475vka.34.1561605185809;
+ Wed, 26 Jun 2019 20:13:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1906261724000.23534@viisi.sifive.com>
-Content-Language: en-US
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190627_031922_970578_DF0047A9 
-X-CRM114-Status: GOOD (  23.57  )
-X-Spam-Score: -2.5 (--)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-2.5 points, 5.0 required)
+References: <20190627014617.600-1-yamada.masahiro@socionext.com>
+In-Reply-To: <20190627014617.600-1-yamada.masahiro@socionext.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Date: Thu, 27 Jun 2019 12:12:30 +0900
+X-Gmail-Original-Message-ID: <CAK7LNARr7mDaDdh0NxUjYHJCz7Gd9-gFdryWtT224U8KpJ9p3w@mail.gmail.com>
+Message-ID: <CAK7LNARr7mDaDdh0NxUjYHJCz7Gd9-gFdryWtT224U8KpJ9p3w@mail.gmail.com>
+Subject: Re: [PATCH v2 0/4] Compile-test UAPI and kernel headers
+To: Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>
+X-Spam-Note: CRM114 invocation failed
+X-Spam-Score: 1.0 (+)
+X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [210.131.2.83 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,92 +93,93 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, Richard Fontana <rfontana@redhat.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Morten Rasmussen <morten.rasmussen@arm.com>, Rob Herring <robh@kernel.org>,
- Anup Patel <anup@brainfault.org>, Russell King <linux@armlinux.org.uk>,
- Ingo Molnar <mingo@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Albert Ou <aou@eecs.berkeley.edu>, Rob Herring <robh+dt@kernel.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Otto Sabart <ottosabart@seberm.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Song Liu <songliubraving@fb.com>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>,
+ "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-riscv@lists.infradead.org, Sam Ravnborg <sam@ravnborg.org>,
+ Kees Cook <keescook@chromium.org>, xdp-newbies@vger.kernel.org,
+ Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
+ Anton Vorontsov <anton@enomsg.org>, John Fastabend <john.fastabend@gmail.com>,
+ Yonghong Song <yhs@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Michal Marek <michal.lkml@markovi.net>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Tony Luck <tony.luck@intel.com>, Networking <netdev@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Martin KaFai Lau <kafai@fb.com>, Colin Cross <ccross@android.com>,
+ bpf@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 6/26/19 5:31 PM, Paul Walmsley wrote:
-> Hi Sudeep, Atish,
-> 
-> On Mon, 17 Jun 2019, Atish Patra wrote:
-> 
->> From: Sudeep Holla <sudeep.holla@arm.com>
->>
->> The current ARM DT topology description provides the operating system
->> with a topological view of the system that is based on leaf nodes
->> representing either cores or threads (in an SMT system) and a
->> hierarchical set of cluster nodes that creates a hierarchical topology
->> view of how those cores and threads are grouped.
->>
->> However this hierarchical representation of clusters does not allow to
->> describe what topology level actually represents the physical package or
->> the socket boundary, which is a key piece of information to be used by
->> an operating system to optimize resource allocation and scheduling.
->>
->> Lets add a new "socket" node type in the cpu-map node to describe the
->> same.
->>
->> Signed-off-by: Sudeep Holla <sudeep.holla@arm.com>
->> Reviewed-by: Rob Herring <robh@kernel.org>
-> 
-> This one doesn't apply cleanly here on top of v5.2-rc2, Linus's master
-> branch, and next-20190626.  The reject file is below.  Am I missing
-> a patch?
-> 
+On Thu, Jun 27, 2019 at 10:49 AM Masahiro Yamada
+<yamada.masahiro@socionext.com> wrote:
+>
+>
+> 1/4: reworked v2.
+>
+> 2/4: fix a flaw I noticed when I was working on this series
+>
+> 3/4: maybe useful for 4/4 and in some other places
+>
+> 4/4: v2. compile as many headers as possible.
+>
 
-That's weird. I could apply the patch from any git tree (github or 
-git.kernel.org) but not from mail or patchworks.
 
-git log doesn't show any recent modifications of that file. I am trying 
-to figure out what's wrong.
-> 
-> - Paul
-> 
-> --- Documentation/devicetree/bindings/arm/topology.txt
-> +++ Documentation/devicetree/bindings/arm/topology.txt
-> @@ -185,13 +206,15 @@ Bindings for cluster/cpu/thread nodes are defined as follows:
->   4 - Example dts
->   ===========================================
->   
-> -Example 1 (ARM 64-bit, 16-cpu system, two clusters of clusters):
-> +Example 1 (ARM 64-bit, 16-cpu system, two clusters of clusters in a single
-> +physical socket):
->   
->   cpus {
->   	#size-cells = <0>;
->   	#address-cells = <2>;
->   
->   	cpu-map {
-> +		socket0 {
->   			cluster0 {
->   				cluster0 {
->   					core0 {
-> 
+If you want to test this series,
+please check:
+
+git://git.kernel.org/pub/scm/linux/kernel/git/masahiroy/linux-kbuild.git
+ header-test-v2
+
+
+> Changes in v2:
+>  - Add CONFIG_CPU_{BIG,LITTLE}_ENDIAN guard to avoid build error
+>  - Use 'header-test-' instead of 'no-header-test'
+>  - Avoid weird 'find' warning when cleaning
+>   - New patch
+>   - New patch
+>   - Add everything to test coverage, and exclude broken ones
+>   - Rename 'Makefile' to 'Kbuild'
+>   - Add CONFIG_KERNEL_HEADER_TEST option
+>
+> Masahiro Yamada (4):
+>   kbuild: compile-test UAPI headers to ensure they are self-contained
+>   kbuild: do not create wrappers for header-test-y
+>   kbuild: support header-test-pattern-y
+>   kbuild: compile-test kernel headers to ensure they are self-contained
+>
+>  .gitignore                         |    1 -
+>  Documentation/dontdiff             |    1 -
+>  Documentation/kbuild/makefiles.txt |   13 +-
+>  Makefile                           |    4 +-
+>  include/Kbuild                     | 1134 ++++++++++++++++++++++++++++
+>  init/Kconfig                       |   22 +
+>  scripts/Makefile.build             |   10 +-
+>  scripts/Makefile.lib               |   12 +-
+>  scripts/cc-system-headers.sh       |    8 +
+>  usr/.gitignore                     |    1 -
+>  usr/Makefile                       |    2 +
+>  usr/include/.gitignore             |    3 +
+>  usr/include/Makefile               |  133 ++++
+>  13 files changed, 1331 insertions(+), 13 deletions(-)
+>  create mode 100644 include/Kbuild
+>  create mode 100755 scripts/cc-system-headers.sh
+>  create mode 100644 usr/include/.gitignore
+>  create mode 100644 usr/include/Makefile
+>
+> --
+> 2.17.1
+>
 
 
 -- 
-Regards,
-Atish
+Best Regards
+Masahiro Yamada
 
 _______________________________________________
 linux-riscv mailing list
