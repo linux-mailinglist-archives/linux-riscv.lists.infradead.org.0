@@ -2,84 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B26C55A115
-	for <lists+linux-riscv@lfdr.de>; Fri, 28 Jun 2019 18:37:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2A325A2A4
+	for <lists+linux-riscv@lfdr.de>; Fri, 28 Jun 2019 19:41:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cugC1VLeDN9CVnjfrivjDOzwJxjqPF/Qd2PZZyfyicQ=; b=BVo7Dzkq5l5VVShe3UGdwetEc
-	jgXVp2rWP/hXWwXeK5kpvnr28Dp0GnYphcehtjl8BnnGGcVCxuJgFH2vo5V91l8ZCxj1NwqrD/Cs/
-	BiJx7jHEAxFOwNHdhmT/s8m6ytpvb5iIL8UNlb/J/i3UaU75bK4zegULRoOhJSmtmK5/J1e/u1oby
-	TnJgXOCk7b1mL47D/u01fFoxeEMgVZ7qpjWM7kzHTofeuYQ28RZfsc0Tggo6wbxfO5QMmHy4ZjJbK
-	jWnm3vQyEeSVnidVCPv4VD9GlPdLuwGPNyjcdg3DJFRRfzK4KLDBQnBxSupw3hUq3Svu3qRyLD9WX
-	nMd1diQVA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=V/DuPnm2AHdrBTql4mFk4si4//q2gZUCAZf6ej2dgj4=; b=dJI4Z6FVvqOetb
+	rhQhJUU8vxiqFmLY9+RWPNubBSb+qSmEmd3ncd1vsIsJJv9+qfVOGqvZa6VeBJ9yxAcXxleUf6eyy
+	pfZN4OFA7Qd0LG1IFy8C1jmh+BqK9TuF9UkhcFEXI8eaQSYSL6XqEiTmPZEvRWp2WHEKhmoMTnm6l
+	o749tEcaZmE/tBp6qaa+Z2qZbN+R5KIbKI7RT6nMqonWDl2T+/3oHPz6rVOeidJm1YAccsRrrtlsU
+	WZXTkr1TgjQRFPRo/DRClPAv4vo/mZOk0w9KyJZIT19Ja33fi3HEoJ4w1fXqWN4+DboGSVynWxdA4
+	YcOIgvLH1a9V6jgCOcTA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgtsE-0004rP-Ns; Fri, 28 Jun 2019 16:37:18 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1hgusT-0004Aj-Ia; Fri, 28 Jun 2019 17:41:37 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgtsB-0004qU-Lw
- for linux-riscv@lists.infradead.org; Fri, 28 Jun 2019 16:37:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1561739887; x=1593275887;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=db7Orwu5Rlutfa6PAdjI+6aa+OUGxvhoykOatgCpUZc=;
- b=HlQWwjre+E0ujBqgfv+Dcm/ao245z0S4ScfCT7mK6/DiXOqLiyHa3yXC
- mcsQJmNgvqy/gzO3B15WIFHCI7kWUohmLBh9mvePNgpKz9/NxpgR1s6Rw
- oBBag6nFUCA7RB1+bLR+RuILrBwmPzhiP1ipbTKxCcCYeWMWSytxpJA0c
- Ubf6v2E4SgIjJzUQKIKvOml8uDh0h2poxd1n0lsg/kbpFdUKPL8baKvFD
- II5TUh23lF8DNVxa6EDmcKsmoqOqJC95OK0/Q1CvuLbZM9fz5BHHxOht2
- DDesN7SSbYJkP+lfx+KQIn/zhOAVRjBqbo0E9UjGyKEsp45v3aanvUnry Q==;
-X-IronPort-AV: E=Sophos;i="5.63,428,1557158400"; d="scan'208";a="211621810"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 29 Jun 2019 00:38:04 +0800
-IronPort-SDR: 4lzmlY6x1HMHkJwnuGgpaZiAb5wawy+QiAtXs9rj34JVvFvT/1oEgCDX57PJoVubqV0U8iXswz
- AUcA4JmtWEON8+T9nZg4yQm0hLWGcAO6gVSHUTjeKfWT8AehlogDznROfvI5Um/cYQf/paUX0p
- NNMQ5uouuN/o4ZgFlYPBqIkktrp8IT9cYy4RAezPSBubDE8tfLERfEmhUpF53QZaYZp/eMoXI+
- BlD7AkPD/51zLQ2L4FnzmM++aNVIhO6fQTvVG9N+se3fg/qE8pQMxFkaFRr9wISUbbTdLqMQ+2
- d0tb80+A55EsxCloBg7bS28t
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP; 28 Jun 2019 09:36:19 -0700
-IronPort-SDR: zdGYV+32eoQxixNUhCnJQ/Jkykro8Xn/bw1cwETlQY+5R3YMoipyYF4pLZ5CWan9ZZ0xuUmf5t
- qvKj/D5Xi+512cbwiuTqO5mohj37tvnm5Q8WbAz256vDOi8FBrC8hKBw0/ASDs36/cS507X714
- B1WZ3E0J+7heFw+4mlijGA+unvPLtch5XoffCFGHJp/V5LcFy128Z+Bvr3M6xq1TJelIhbrWlS
- 8IxpFhuQToMKTnJZ/q4EUpRepTkzQcTuSwfsj5XNdrAL3LHwYZtNSNttKp1nm31PaOsn8UjxPa
- mPk=
-Received: from usa002665.ad.shared (HELO [10.225.100.130]) ([10.225.100.130])
- by uls-op-cesaip02.wdc.com with ESMTP; 28 Jun 2019 09:37:14 -0700
-Subject: Re: [PATCH v3 3/3] RISC-V: Update tlb flush counters
-To: Paul Walmsley <paul.walmsley@sifive.com>
-References: <20190429212750.26165-1-atish.patra@wdc.com>
- <20190429212750.26165-4-atish.patra@wdc.com>
- <alpine.DEB.2.21.9999.1906272243530.3867@viisi.sifive.com>
-From: Atish Patra <atish.patra@wdc.com>
-Message-ID: <d79430e8-20c0-d9b1-c72c-6d116f9e03db@wdc.com>
-Date: Fri, 28 Jun 2019 09:37:12 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.7.2
+ id 1hgusO-00049Y-UT
+ for linux-riscv@lists.infradead.org; Fri, 28 Jun 2019 17:41:35 +0000
+Received: by mail-io1-xd44.google.com with SMTP id j6so14237273ioa.5
+ for <linux-riscv@lists.infradead.org>; Fri, 28 Jun 2019 10:41:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cs.washington.edu; s=goo201206;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uqJ6r1Mjakiqpd0ZD9iGpyAkpv+xSUcUqESly9SnS30=;
+ b=lOFXls3FkwUg97CyPjvyXgrcjW6i3Y09TjD9O1sKjz+4VVLO0kGXwLk7Lh5Ks/8aAW
+ JijWwpKYFieazAh57d6dT1oO3AO01TZnC7WoBmE1OSNdS8W3PrRrtsH2CbmHSwhjVWw+
+ zeSbiFOvp9Kpu25n4n1vGhIUhGVzJdYcNha8A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uqJ6r1Mjakiqpd0ZD9iGpyAkpv+xSUcUqESly9SnS30=;
+ b=tAoG95uqNXDGTIHR4cOUY5I5M/O1ZfxSazZRk904i43HitQs/2rhSQ5iu6QcC68Dmc
+ j3iVCJ4cwujUp4vAmbdVnKuMv4Z5sG2UyajkXxgRi+SbX466k7KPssKslnrDth5+0eMR
+ 7N5fBLfNgZP2btBVYDGAixGqEeGGDZFfSqg2al2gs/5H91BZE/vgxoPw20HJDxm8kF3g
+ cTYD1hBA6AMrARAqvvNj3d8JNTXkxddw8T9iFKWMW9ErzHDNDEJDtO2GNZ8rMMT1kZy8
+ DUKmuYM9DDiPqvDJ+Kq6B72zCiG5g1dbtS6JWCHfdwhFHmlfOyvX7zvCEIcXbTZpypxS
+ lqYw==
+X-Gm-Message-State: APjAAAW7m3PSFPpRAWx/HhtHq0b3HBWWuzshzCjDALp9tTyMteMGoynC
+ r4Tw/tDglehVOTr5T2mo44Smw2+iI0twIjk9CeJxyQ==
+X-Google-Smtp-Source: APXvYqwcltk4JmdpNvtJF1qrqeEE0+mFopXztg8enMwMB7rkn3G9Vg90wC0+Jkas2dqkKaCJf2/GoPK0tBQW9eKSXf8=
+X-Received: by 2002:a6b:f90f:: with SMTP id j15mr12016235iog.43.1561743689556; 
+ Fri, 28 Jun 2019 10:41:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1906272243530.3867@viisi.sifive.com>
-Content-Language: en-US
+References: <20190626231257.14495-1-lukenels@cs.washington.edu>
+ <87y31nuspw.fsf@netronome.com>
+In-Reply-To: <87y31nuspw.fsf@netronome.com>
+From: Luke Nelson <lukenels@cs.washington.edu>
+Date: Fri, 28 Jun 2019 10:41:18 -0700
+Message-ID: <CADasFoAqjZVnMFGZNgQMhXsBC78vbb-u1PPv_aZx3fMXeHBXKg@mail.gmail.com>
+Subject: Re: [PATCH v2 bpf-next] RV32G eBPF JIT
+To: Jiong Wang <jiong.wang@netronome.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190628_093715_749039_B6FE779A 
-X-CRM114-Status: GOOD (  13.79  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190628_104133_010656_206E90D5 
+X-CRM114-Status: UNSURE (   6.33  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -96,44 +87,31 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "maintainer:X86 ARCHITECTURE 32-BIT AND 64-BIT" <x86@kernel.org>,
- Albert Ou <aou@eecs.berkeley.edu>, Kees Cook <keescook@chromium.org>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>, Anup Patel <anup@brainfault.org>,
- Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Christoph Hellwig <hch@infradead.org>, Changbin Du <changbin.du@intel.com>,
- Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
- Luc Van Oostenryck <luc.vanoostenryck@gmail.com>, Gary Guo <gary@garyguo.net>,
- "H. Peter Anvin" <hpa@zytor.com>, Thomas Gleixner <tglx@linutronix.de>,
- Andrew Morton <akpm@linux-foundation.org>, Vlastimil Babka <vbabka@suse.cz>
+Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ bpf <bpf@vger.kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Luke Nelson <luke.r.nels@gmail.com>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
+ Yonghong Song <yhs@fb.com>, linux-riscv@lists.infradead.org,
+ Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 6/27/19 10:47 PM, Paul Walmsley wrote:
-> On Mon, 29 Apr 2019, Atish Patra wrote:
-> 
->> The TLB flush counters under vmstat seems to be very helpful while
->> debugging TLB flush performance in RISC-V.
->>
->> Update the counters in every TLB flush methods respectively.
->>
->> Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> 
-> This one doesn't apply any longer.  Care to update and repost?
-> 
-> 
-> - Paul
-> 
+On Thu, Jun 27, 2019 at 5:18 AM Jiong Wang <jiong.wang@netronome.com> wrote:
+>
+> #define BPF_ZEXT_REG(DST)
+>         ((struct bpf_insn) {
+>                  .code  = BPF_ALU | BPF_MOV | BPF_X
+>
+> So it can't be BPF_ALU64. It is safe to remove this chunk of code.
+>
 
-Yeah. The baseline patch (Gary's patch) was not accepted. I will rebase 
-it on top of master and resend.
+Thanks! I'll fix this in the next revision.
 
--- 
-Regards,
-Atish
+- Luke
 
 _______________________________________________
 linux-riscv mailing list
