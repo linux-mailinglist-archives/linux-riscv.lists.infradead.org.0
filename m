@@ -2,75 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 003B35B92C
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jul 2019 12:41:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8FD25C0DF
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jul 2019 18:07:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=zC3n/wM7qKKlaZBz10Nvk6KjmrGPhVb/cO1bEaJxBBA=; b=Uxs
-	dO07xyVfsTuXdbjuxtBKkHC8ydW4zOLfY/fI8r7I63RqDzXzHYFWlN8b1GEu0QCHB20Mz+pemEBEI
-	ot+ANfHJM2SUVrhcDa+91oVpieveM9lb+nAQlHshA73eJF+NKdNqvJgoWknXBFGbHHeKqZ/tXl6Sm
-	WOK9+CcKdr42/mEd3611jRIn9zlmIQ29hIotb5ZujYdGhSToe9JIwdvBbMn4I2wGCygx+4bRBBHXf
-	Eslg9LxfBZ2t7b5lUqyxc+V8ao1bJmUoYmfXncVyEhCojPH4vSIizkOal4i8laKg4PSTzfX6wueo9
-	geJe6K3LTMLaxeIBt3WNJiCC8v2NxzQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GKExDUZtNkjJCFLMYcoBnM2ihULbbDfAc+G8jhGcuW4=; b=TeWY5ujlcsP+1f
+	Ex3TRpTUv7jlAxC5H367esGAeBrHUhgz2nB4rswViKT5xb/zrN/atc1hKzR2Jb2xxkkwHS8/wpJuI
+	xNJWKyGEU266m1JYPQ5Y3w9YJuMURb2peQfNH3xhfOkwEz7c4gDon0NH9ObO2xdFqsB+1//Uvu0k+
+	4n26vLEvMm0RwR77S4xOcofuYMUo/7uMikhr/8vwl6HDr3L6NoCgFBwJNPABGxzVGa7PaRQdCm1D+
+	yJ++WTzZUz2fbLIU0D4jXRmfaPowgrE5rCqoUljG+Lo6XmUxMsB8klwLC7aLiTHNy+eSt+7fGd+fZ
+	Jr0lnHANBt/3saELt0/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hhtk1-0004Kr-6x; Mon, 01 Jul 2019 10:40:57 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1hhypR-0003vH-7u; Mon, 01 Jul 2019 16:06:53 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hhtjx-0004K9-UZ
- for linux-riscv@lists.infradead.org; Mon, 01 Jul 2019 10:40:55 +0000
-Received: by mail-pg1-x541.google.com with SMTP id i8so2647247pgm.13
- for <linux-riscv@lists.infradead.org>; Mon, 01 Jul 2019 03:40:52 -0700 (PDT)
+ id 1hhypN-0003uU-Jz
+ for linux-riscv@lists.infradead.org; Mon, 01 Jul 2019 16:06:51 +0000
+Received: by mail-io1-xd44.google.com with SMTP id n5so30013216ioc.7
+ for <linux-riscv@lists.infradead.org>; Mon, 01 Jul 2019 09:06:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=J9c7HLFHB/6MQXAk9nbKdUnuKhx+YpHKq1KxJgKxyP8=;
- b=Bs9P3wHB2+j7xXbfUlkbZGeesB4uPleYuRpo/LZxWgX7auhEjYET5rsTqxsrsgHDvz
- Ak9ruswEkL+P/ohuhQ6IQrrdeMmgKs38Di6rb7bpxGdg24zaIsayOFSHsx0aP4/HYqua
- +KodY6PunVNqp8+GtnzrqFoc9TXb8Pkw31QPVKcjpcUzt+eqE623oc82A3pWGT7jtuhi
- dlO+aJ8AoTQADZHRmQeX9tNGrn3qB5TMeS1ih4Lf1/CzOR6vtDZ763oRUjvxStmXph7Z
- BT2uXEa9AeDxh7BBebcOV6wDWPWhyttKxVmgPlP0OyyrhwnoDxvh77Gj0rDyUl2zOgtD
- rypg==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=InMcyXa5sXJAd1Yjv5DDfuzVwc5hmtVlJVQ+GIywkco=;
+ b=WIoPLVVTn8rSwrT7ABjLNYG0wnLKvjvHo/dgBVVxfPuv4EIDyAoUU4BrI/z8rbNtT0
+ 1O/xrCDhePoSl25Bh596TdgHrewYOtV0sM+w40g2+/HSGL1jnwyOhHBf53s+EhRXSntm
+ zx45xkUd6WYP4VH+pHG9Dir4+Np7m0pZ3zkA7Ijt5/8LT4dQDBCaaU1oiEiE9sY1vJz6
+ lyD/aMqrltDZztxu++zv6qBse7xclDClJznxjBs29GzmeDJ5rMwk9u/cFjASR0ERP4j2
+ bC3Lo/DSmP2hKf+FFVwYjsGudzNzPlOcdHWOF9C6w6sx+n+S7AFqDv8dveTz78H8MmX1
+ 7Qow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=J9c7HLFHB/6MQXAk9nbKdUnuKhx+YpHKq1KxJgKxyP8=;
- b=C5FT/PV4yJfYX3il+t0GtXGqf72bg0XEZpv6xPl4Qy1yVstIaurtPwFqEGIWQffJzN
- TgA2FLd3IiDu1tFFPCfFB8lYCBfw9ldnD4ityM3HTVSRg7p8Y9qsAlrkwB1DJY05suQR
- cZLwcyY5T1UqTR1SAOP1uwwYhdx9s3f/5Jo4DEiY1oYGnPC2EOLyRNOjlea5QC1eadDv
- faufw5qSaqzLeZkHkDFZCZKqOGdOSZzhp5BbNpASnDWfiQuItcpbhJNUhT1IS4MH1ZCL
- b8RnbjjmNvdFO7ll2np2NLmVnjMpkz4oQ9NDYsrjTcVbK49G6LwRGTqMPxZssaFZBqEh
- +zzw==
-X-Gm-Message-State: APjAAAX1lRUyRGs+sGXJvnpzVRlIo+135vRGrm0/1xHwqEJFDFRcQXEl
- GX62NGFCXNJXy2PPiYGqaNckUb2JytA=
-X-Google-Smtp-Source: APXvYqxRbbkcM3EC4AAooXtro5KK4p2N7RlMCFLz7OVdz7IN7Z9Yh+tGOL9jDwil84AW7t3NWSN6bA==
-X-Received: by 2002:a17:90a:d814:: with SMTP id
- a20mr30532666pjv.48.1561977652141; 
- Mon, 01 Jul 2019 03:40:52 -0700 (PDT)
-Received: from buildserver-90.open-silicon.com ([114.143.65.226])
- by smtp.googlemail.com with ESMTPSA id g62sm10410755pje.11.2019.07.01.03.40.48
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 01 Jul 2019 03:40:51 -0700 (PDT)
-From: Yash Shah <yash.shah@sifive.com>
-To: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- paul.walmsley@sifive.com
-Subject: [PATCH v2] riscv: ccache: Remove unused variable
-Date: Mon,  1 Jul 2019 16:10:30 +0530
-Message-Id: <1561977630-32309-1-git-send-email-yash.shah@sifive.com>
-X-Mailer: git-send-email 1.9.1
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=InMcyXa5sXJAd1Yjv5DDfuzVwc5hmtVlJVQ+GIywkco=;
+ b=sWfUsSPxreQEKlX+9PiU/Zt32HF+QGl2PmGGARjbwN48o9tq8D4OThgzVDa6Ab4MeE
+ 2g9BrvBtdvV1h3R+aEU7eUI4K2wBlKsz169nq5hcK4gwkJbfiqoTkgqa4pWVE+HTx9pl
+ Vb7uTLbn17ZxOjXWMdXXMVsgMmsND6DlqlAcZL9MzhGxQ5urXYOc38EmpDxDiawRmYi5
+ r00MbGsSVSb34X80DquH6eBLcvN1Qzm+NVymMwAzO3CqIUABBd5fNbLBkyuuUMmefria
+ tkxZ1GvuTzlwEILOEvxQLFMPtg5gxHm8UKVeDrAUlkxUmmaacXMpHLouVNFcWsfnWkm8
+ RNnw==
+X-Gm-Message-State: APjAAAXoaPvKxu82mU/cYkMTTgLA7QwJEA81UUiXknH49ANYlkqM0N9d
+ cAVZf7Rafg8H0nKZkGuZgZV8Gw==
+X-Google-Smtp-Source: APXvYqxL4h8vZQ2+vG0HtnQ8dyFs6puOwncIF/3RmDP3OfBIMby5YcRiUgft36tp862ZyI0igX9kng==
+X-Received: by 2002:a02:a38d:: with SMTP id y13mr13211858jak.68.1561997205559; 
+ Mon, 01 Jul 2019 09:06:45 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ o7sm10000521ioo.81.2019.07.01.09.06.44
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 01 Jul 2019 09:06:45 -0700 (PDT)
+Date: Mon, 1 Jul 2019 09:06:44 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: RISC-V nommu support v2
+In-Reply-To: <20190701065654.GA21117@lst.de>
+Message-ID: <alpine.DEB.2.21.9999.1907010904320.3867@viisi.sifive.com>
+References: <20190624054311.30256-1-hch@lst.de> <20190701065654.GA21117@lst.de>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190701_034054_047531_77BECE62 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20190701_090649_700010_8B212799 
+X-CRM114-Status: GOOD (  17.34  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -92,67 +97,75 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: sachin.ghadi@sifive.com, Yash Shah <yash.shah@sifive.com>,
- palmer@sifive.com, aou@eecs.berkeley.edu
-MIME-Version: 1.0
+Cc: linux-mm@kvack.org, Damien Le Moal <damien.lemoal@wdc.com>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Reading the count register clears the interrupt signal. Currently, the
-count registers are read into 'regval' variable but the variable is
-never used. Therefore remove it. V2 of this patch add comments to
-justify the readl calls without checking the return value.
+Hi Christoph,
 
-Signed-off-by: Yash Shah <yash.shah@sifive.com>
----
- arch/riscv/mm/sifive_l2_cache.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+Probably best to feed the mm patches to Andrew.  For the RISC-V patches, 
+am running a bit behind this merge window.  Combined with the end of the 
+week holidays in the US, I doubt I'll make it to to the nommu series for 
+v5.3.
 
-diff --git a/arch/riscv/mm/sifive_l2_cache.c b/arch/riscv/mm/sifive_l2_cache.c
-index 4eb6461..2e637ad 100644
---- a/arch/riscv/mm/sifive_l2_cache.c
-+++ b/arch/riscv/mm/sifive_l2_cache.c
-@@ -109,13 +109,14 @@ int unregister_sifive_l2_error_notifier(struct notifier_block *nb)
- 
- static irqreturn_t l2_int_handler(int irq, void *device)
- {
--	unsigned int regval, add_h, add_l;
-+	unsigned int add_h, add_l;
- 
- 	if (irq == g_irq[DIR_CORR]) {
- 		add_h = readl(l2_base + SIFIVE_L2_DIRECCFIX_HIGH);
- 		add_l = readl(l2_base + SIFIVE_L2_DIRECCFIX_LOW);
- 		pr_err("L2CACHE: DirError @ 0x%08X.%08X\n", add_h, add_l);
--		regval = readl(l2_base + SIFIVE_L2_DIRECCFIX_COUNT);
-+		/* Reading this register clears the DirError interrupt sig */
-+		readl(l2_base + SIFIVE_L2_DIRECCFIX_COUNT);
- 		atomic_notifier_call_chain(&l2_err_chain, SIFIVE_L2_ERR_TYPE_CE,
- 					   "DirECCFix");
- 	}
-@@ -123,7 +124,8 @@ static irqreturn_t l2_int_handler(int irq, void *device)
- 		add_h = readl(l2_base + SIFIVE_L2_DATECCFIX_HIGH);
- 		add_l = readl(l2_base + SIFIVE_L2_DATECCFIX_LOW);
- 		pr_err("L2CACHE: DataError @ 0x%08X.%08X\n", add_h, add_l);
--		regval = readl(l2_base + SIFIVE_L2_DATECCFIX_COUNT);
-+		/* Reading this register clears the DataError interrupt sig */
-+		readl(l2_base + SIFIVE_L2_DATECCFIX_COUNT);
- 		atomic_notifier_call_chain(&l2_err_chain, SIFIVE_L2_ERR_TYPE_CE,
- 					   "DatECCFix");
- 	}
-@@ -131,7 +133,8 @@ static irqreturn_t l2_int_handler(int irq, void *device)
- 		add_h = readl(l2_base + SIFIVE_L2_DATECCFAIL_HIGH);
- 		add_l = readl(l2_base + SIFIVE_L2_DATECCFAIL_LOW);
- 		pr_err("L2CACHE: DataFail @ 0x%08X.%08X\n", add_h, add_l);
--		regval = readl(l2_base + SIFIVE_L2_DATECCFAIL_COUNT);
-+		/* Reading this register clears the DataFail interrupt sig */
-+		readl(l2_base + SIFIVE_L2_DATECCFAIL_COUNT);
- 		atomic_notifier_call_chain(&l2_err_chain, SIFIVE_L2_ERR_TYPE_UE,
- 					   "DatECCFail");
- 	}
--- 
-1.9.1
+
+- Paul
+
+On Mon, 1 Jul 2019, Christoph Hellwig wrote:
+
+> Palmer, Paul,
+> 
+> any comments?  Let me know if you think it is too late for 5.3
+> for the full series, then I can at least feed the mm bits to
+> Andrew.
+> 
+> On Mon, Jun 24, 2019 at 07:42:54AM +0200, Christoph Hellwig wrote:
+> > Hi all,
+> > 
+> > below is a series to support nommu mode on RISC-V.  For now this series
+> > just works under qemu with the qemu-virt platform, but Damien has also
+> > been able to get kernel based on this tree with additional driver hacks
+> > to work on the Kendryte KD210, but that will take a while to cleanup
+> > an upstream.
+> > 
+> > To be useful this series also require the RISC-V binfmt_flat support,
+> > which I've sent out separately.
+> > 
+> > A branch that includes this series and the binfmt_flat support is
+> > available here:
+> > 
+> >     git://git.infradead.org/users/hch/riscv.git riscv-nommu.2
+> > 
+> > Gitweb:
+> > 
+> >     http://git.infradead.org/users/hch/riscv.git/shortlog/refs/heads/riscv-nommu.2
+> > 
+> > I've also pushed out a builtroot branch that can build a RISC-V nommu
+> > root filesystem here:
+> > 
+> >    git://git.infradead.org/users/hch/buildroot.git riscv-nommu.2
+> > 
+> > Gitweb:
+> > 
+> >    http://git.infradead.org/users/hch/buildroot.git/shortlog/refs/heads/riscv-nommu.2
+> > 
+> > Changes since v1:
+> >  - fixes so that a kernel with this series still work on builds with an
+> >    IOMMU
+> >  - small clint cleanups
+> >  - the binfmt_flat base and buildroot now don't put arguments on the stack
+> > 
+> > _______________________________________________
+> > linux-riscv mailing list
+> > linux-riscv@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-riscv
+> ---end quoted text---
+> 
+
 
 
 _______________________________________________
