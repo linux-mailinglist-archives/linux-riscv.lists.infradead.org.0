@@ -2,110 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D19395C33D
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jul 2019 20:52:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CDC945C340
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jul 2019 20:52:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wx6ztAr0MtitVShIa8qnWmA5R4Bfeg8DTyFfGM6h9ng=; b=BGlsaeYBiZgxZF
-	UN6zQMyoyFOQnsBMz5DBRU/2fEM2GzgBMsKXOD/Kdzdet3iNK/+fnoLqznDivD4R237k4v+GKqRJj
-	K8OqZKsVSRXEDhNQnzB734GYAv6oXdREwPRN8juvbeTIuE6Dft1snaa4RUCETkmT2+HNuH7glP5Cp
-	shLsKN2K5HxIP8P+VfqgpVU7XOqt3g7R0UM2E2LO61YPLFu5nhRQ1C5mAozdgA3SLmq9MB05AvNQp
-	4tPwyykLheT21w8d/fGDaDYqVEPS4uIQ8LTH8JHkcwauNGWxAfQcwwhY21WjQn2ImPHHFLtTuK+Fv
-	vox74aAQAlN1QfS48Jiw==;
+	List-Owner; bh=hlMzVSAMBj1uuz/VpBqENYpPjOvh9NCUM4jj66l1ryY=; b=c7Udua/nAcDobQ
+	+pWx646skAVcREoMiUwkhKpPuB6sLB/XY7N7qCbhZo601C9WssoXjRiADtuC+uqoZNuemwFhmqwer
+	DrrybChxCvKihXoilSwDj7klQfw1GBhZK+NqK3OBScByt4FRQo8q/lx1JeAiTATONQKjP2s+H2c0T
+	l/S4JYQwv0q3Bj/z2eWRvtbNDWDqIncNkYMJ91bGRlcEtsg2MWfQKtdVD4tCZ0M34JSi2TeKQUNh+
+	5YQa0Pt9LQfj7uOQqSf3K1RYJQj1gpmmF/P4AZpv4LueCWHl2iuxNjeNiyN0E8U9AKKli3Yha1vAy
+	uOi8LINSPy+w/+h7BLQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hi1PL-0002HO-7E; Mon, 01 Jul 2019 18:52:07 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1hi1Pl-0002f7-Kl; Mon, 01 Jul 2019 18:52:33 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hi1P2-000268-Ga; Mon, 01 Jul 2019 18:51:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1562007108; x=1593543108;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=wsFMrpFkypitlxZTPfuvrvWi2NGHfqSRrPvaLJ+D9eg=;
- b=ON7loX7CtTuhSUPxiT0o0eZ388SfRGjn0cR7T94lvmAADizE8VMAD1pL
- n6+0CB76ac+Q9C+y5X/HWFNZgAZDgJjWbdw3yQrfUrx9KWGeUbcd2xd5E
- JYO1InOwXSyfDpFySJCedEuw9fB9vr8Dnql11IwF18LbMoFmFWvt7PNHa
- 74MGPKkDBOaKjozRaRFOlFAT/t/2pSnNQfoAExHs7EbA2P1Nlq70BduXS
- VHDQ8uv4Aiq8MCnaW9ph88SVhE9ShjLWfnjpinPbaq6gZtt6WsZpWwiJ5
- HNzNtfOj1HMIwA/EGfpCxEpXQRTNxTOZKKQCFslYvBUSkUVJWboiIAeBR g==;
-X-IronPort-AV: E=Sophos;i="5.63,440,1557158400"; d="scan'208";a="113181740"
-Received: from mail-dm3nam05lp2056.outbound.protection.outlook.com (HELO
- NAM05-DM3-obe.outbound.protection.outlook.com) ([104.47.49.56])
- by ob1.hgst.iphmx.com with ESMTP; 02 Jul 2019 02:51:44 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wsFMrpFkypitlxZTPfuvrvWi2NGHfqSRrPvaLJ+D9eg=;
- b=RfqzLov5NarLkM8BxjVMolrawSzZ7kxcMuH4T2bEZWPiciRW50zB0SlovdIj0CESN6p6JBqw6h40OWfHNQH7MSu6XR6bV6Nuo37FzXTdbd9x8C0FrhJgcR2lVkqg/HS5Kvc6x0muW1IX7d5d3ASy83QbIGjKMqqq2s0e06xF1Z0=
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com (52.135.214.142) by
- BYAPR04MB5573.namprd04.prod.outlook.com (20.178.232.160) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2032.18; Mon, 1 Jul 2019 18:51:43 +0000
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::65e3:6069:d7d5:90a2]) by BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::65e3:6069:d7d5:90a2%5]) with mapi id 15.20.2032.019; Mon, 1 Jul 2019
- 18:51:43 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
-Subject: Re: [PATCH v8 0/7] Unify CPU topology across ARM & RISC-V
-Thread-Topic: [PATCH v8 0/7] Unify CPU topology across ARM & RISC-V
-Thread-Index: AQHVLSJGz+hI7exIqkGm7p6W+lzWB6a2H8CAgAACBYA=
-Date: Mon, 1 Jul 2019 18:51:42 +0000
-Message-ID: <5f31cb3c576bdbd89665614582af66d04ece8f29.camel@wdc.com>
-References: <20190627195302.28300-1-atish.patra@wdc.com>
- <alpine.DEB.2.21.9999.1907011143520.3867@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1907011143520.3867@viisi.sifive.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 13061295-fae4-4586-376b-08d6fe5528e2
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB5573; 
-x-ms-traffictypediagnostic: BYAPR04MB5573:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB55733C91F6FA52B2049E51D1FAF90@BYAPR04MB5573.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2331;
-x-forefront-prvs: 00851CA28B
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(39860400002)(396003)(136003)(346002)(366004)(189003)(199004)(73956011)(99286004)(53936002)(76116006)(476003)(229853002)(66066001)(486006)(316002)(71190400001)(256004)(71200400001)(81156014)(66946007)(6512007)(4326008)(36756003)(6506007)(446003)(66556008)(11346002)(6916009)(66476007)(54906003)(14454004)(7736002)(26005)(2501003)(66446008)(118296001)(68736007)(2351001)(2616005)(64756008)(478600001)(6246003)(72206003)(186003)(8936002)(5640700003)(558084003)(2906002)(305945005)(7416002)(76176011)(102836004)(6436002)(6116002)(3846002)(6486002)(86362001)(81166006)(8676002)(25786009)(5660300002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5573;
- H:BYAPR04MB3782.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: IF9yspacXgspoXBZOzePbf2cN0MuQl7fXZl5Jtw8FqSwpsLOjcIpk+GqwhGBqkNTCJrFcPv25KNNuBwQHOhrcfuRKS/z2yz5jr7IdakI4L8EmH0E/TRoZ+PThfdzNqrmilooHS4vFSjEeEVh/dol9E2vtXuAFmJOi6LxcUpuKJt3mh5skEXZ5ifOKIPh0rbe/C/lhO7ALP4+k2qQeIRh8Tbmw9cEX44LIEhkXB6XFm4ze+HKYVnXfdkUqkmKTwR2OdSCzLWXAeVrIrQYJxaBA8372tH3lOjphjDHF14637IzEb5STCFGQ8e/BYM4t/0Jsip3uFSO+jPXCW3kXPExjUMtG/XtUS8BsGQPj6VzUrBUVp/902X5i6aGbw5L7dhpo8GiWUUH2vVRwUKKjsgPd3RNjf4vAES0gO9W1qgQs4c=
-Content-ID: <D7966FEDC0A0FA4DAA6BF6422A399875@namprd04.prod.outlook.com>
+ id 1hi1P7-00028g-Mq
+ for linux-riscv@lists.infradead.org; Mon, 01 Jul 2019 18:51:55 +0000
+Received: by mail-io1-xd44.google.com with SMTP id u13so31250413iop.0
+ for <linux-riscv@lists.infradead.org>; Mon, 01 Jul 2019 11:51:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=DYrhizvtIbWqHkjv2BkSfsRwmy8RzQ5cYYvDtrQv3lo=;
+ b=KZy85/4tTSnfbHIjMO+VoX0+BzXfz2fZQXO03A8+ppgNGdVN1iiRyi0w65nxrfVUZl
+ LepUYO6VLS+jWb4ZEZIP29HDqaCzsslQpNBhXbiOlIoxgSn2uuIl4ssVV9xuCXFt8tUT
+ TL+Z5XhuSUaJjo0+lMAckhVGAYw8uHtOm4kXAp4cKTJsd9jeJqnnFl8VS6x5iUdwAk4o
+ bvnvtEKAJCVVT91seyxUHFcUgBIhvWFC6h1heJaNnYcHpP3SG2SKIXfdKgofJ/rKSkPj
+ aYy7DtYis+jalc6jZkzq+JsJ81egv/yIQivLKN+bVoPVv6YsKV8EOVJwFQr95bRlUiwD
+ dPAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=DYrhizvtIbWqHkjv2BkSfsRwmy8RzQ5cYYvDtrQv3lo=;
+ b=gxpVpKH8Gt2ls++uLCknC/HXy4Sxw7Q3I+QH8Qbp0d1A8H8Qrfp1ItjTPzdRivgp1l
+ zj8oLnT4aaBMZx0bYCqIq6BRfWKVo3ZtbUuKnH4pOin31nNcHLAuuiBNpRB42e5WyAg4
+ +AVilDqlK8e5857FcU4OPdN8D55IaYoCsbDbdPX4/JMv9dji2QMA0rYe2gt5pEhK3sGG
+ 5zh3eYtZaJs9hqQWQZQD7Tng19wVzHQSAvBEFq53Xop0bSQtKKSrFUISb6XPXwelECxM
+ +DoaqkmM9hYScwW5Ow4OcTMrhDzCSi7w2PenDDoWQIoV0iDRCaBfweNXT4RseNBH79jR
+ JL8A==
+X-Gm-Message-State: APjAAAU5eQJxPP1CIonDGbjOX9iURtz7afqONUBvh1nsz8wT0/OD7uCf
+ 9o4JyrYe1rbauX/XL7qbb1Dc+g==
+X-Google-Smtp-Source: APXvYqx8evMbqCB5mcUZCJSlJkUvQvODT7P9GsKOEHqnl7p98ygfjhRMioyAwvw2nWgeKnX/BBIurQ==
+X-Received: by 2002:a02:cb96:: with SMTP id u22mr30802401jap.118.1562007111969; 
+ Mon, 01 Jul 2019 11:51:51 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ r5sm9977978iom.42.2019.07.01.11.51.51
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 01 Jul 2019 11:51:51 -0700 (PDT)
+Date: Mon, 1 Jul 2019 11:51:50 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Palmer Dabbelt <palmer@sifive.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>
+Subject: Re: [PATCH v3 1/2] x86, arm64: Move ARCH_WANT_HUGE_PMD_SHARE config
+ in arch/Kconfig
+In-Reply-To: <20190701175900.4034-2-alex@ghiti.fr>
+Message-ID: <alpine.DEB.2.21.9999.1907011146550.3867@viisi.sifive.com>
+References: <20190701175900.4034-1-alex@ghiti.fr>
+ <20190701175900.4034-2-alex@ghiti.fr>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 13061295-fae4-4586-376b-08d6fe5528e2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2019 18:51:42.8544 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Atish.Patra@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5573
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190701_115148_672898_5ED17DBE 
-X-CRM114-Status: GOOD (  12.25  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190701_115153_839234_19C678D8 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -126,52 +101,41 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "rafael@kernel.org" <rafael@kernel.org>,
- "peterz@infradead.org" <peterz@infradead.org>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "will.deacon@arm.com" <will.deacon@arm.com>,
- "mchehab+samsung@kernel.org" <mchehab+samsung@kernel.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "will@kernel.org" <will@kernel.org>, "mingo@kernel.org" <mingo@kernel.org>,
- "anup@brainfault.org" <anup@brainfault.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "morten.rasmussen@arm.com" <morten.rasmussen@arm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "johan@kernel.org" <johan@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "jeremy.linton@arm.com" <jeremy.linton@arm.com>,
- "ottosabart@seberm.com" <ottosabart@seberm.com>,
- "sudeep.holla@arm.com" <sudeep.holla@arm.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, "H . Peter Anvin" <hpa@zytor.com>,
+ Alexandre Ghiti <alex@ghiti.fr>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Will Deacon <will.deacon@arm.com>,
+ x86@kernel.org, linux-kernel@vger.kernel.org,
+ Christoph Hellwig <hch@infradead.org>, Ingo Molnar <mingo@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Hanjun Guo <guohanjun@huawei.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-riscv@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Mike Kravetz <mike.kravetz@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 2019-07-01 at 11:44 -0700, Paul Walmsley wrote:
-> Hi Atish
-> 
-> Looks like patches 1, 6, and 7 are missing your Signed-off-by:.  Can
-> I add 
-> those?
-> 
-Sure. 
+Catalin, Palmer,
 
-Is it a common practice to add "Signed-off-by:" the sender even if the
-sender has not touched the patch at all?
+On Mon, 1 Jul 2019, Alexandre Ghiti wrote:
 
-Regards,
-Atish
+> ARCH_WANT_HUGE_PMD_SHARE config was declared in both architectures:
+> move this declaration in arch/Kconfig and make those architectures
+> select it.
 > 
-> - Paul
+> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+
+Since the change from v2 to v3 was minor (the removal of the "config 
+ARCH_WANT_HUGE_PMD_SHARE" line from the arm64 port), I'm planning to 
+apply your Reviewed-by:s and acks from 
+
+https://lore.kernel.org/linux-riscv/20190603172723.GH63283@arrakis.emea.arm.com/
+
+https://lore.kernel.org/linux-riscv/mhng-4d1d4acb-f65f-4ed4-bc86-85a14b7c3e16@palmer-si-x1e/
+
+If there's any objection, please let me know as soon as possible.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
