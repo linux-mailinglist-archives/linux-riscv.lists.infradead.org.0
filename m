@@ -2,123 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 430B75C4F7
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jul 2019 23:26:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29D0D5C698
+	for <lists+linux-riscv@lfdr.de>; Tue,  2 Jul 2019 03:28:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y0HzSmw2vE6u0ATMuEd/nr9ByXdu6fCq2iJMCtnkBW4=; b=cm6QWHwyFuYcU6
-	1FMWXlJnBAmTWi0neQkhblt3WH28oA+CP0+15Mk54r/13LpZhsAma3HClLD6mrF9DTbpqZQdgDYky
-	NCFbmCKNTH5w5f40CJVZsSd2cRQxAkI9AOGxk70Hv1zUI+5EwJiiVflchYEgzwS272rI+ETVX33aV
-	BZ1S6FJbAKQSMxZEyVBYe/8FwgIjVQ0Xay7IW0ruK/q/PkPOexkngFxzDDDxAuUZmDCr1dhGnAtqP
-	/0qNJUjheJOrzr8QIrLLrCaw35bfwbuSTvFN4UNosSOhUrlFe0F5TQY7upqvpQQSxl10fw4f/vQbA
-	oUnXJ4sCLStCjIdXpGTg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=jQGju/3P1MfeHr+dPkezeLB0MXVCntlz7tJOpYPbDNo=; b=SgB8bFiF8LGx+AXV5jsp5wnHsM
+	am0p9L9YVhQ2V9QwG5eehJYVenlcvk3MtAn1K3Py1qBZcFJNKrdEbdVEig+i6xWTig9ZmuiaymLtM
+	iKawUyrubKcRZqa/dYrvD1AJOMKP6ktadjw6F1tEOzOO0yVPcqpNIxzKsBMOECEQSFU+g977RVjN2
+	EhZzVg7CBT0NUHogeuUEuTSkZAlGHb95ZNCXFGIachg9QbbiKPiG0OKcc+WfXnd9odB6sRvqczfVf
+	I/b+hXRkw6Mb3orCep05066+CVfPyDIahZi3OiBUGbGu7F+bb+rvuHZyc6niWMytP7SNkNiFVoItQ
+	K2SAIkPQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hi3og-0000hC-0e; Mon, 01 Jul 2019 21:26:26 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hi7aj-0000ca-6H; Tue, 02 Jul 2019 01:28:17 +0000
+Received: from szxga07-in.huawei.com ([45.249.212.35] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hi3od-0000gO-3g
- for linux-riscv@lists.infradead.org; Mon, 01 Jul 2019 21:26:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1562016383; x=1593552383;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=3V/LpFRVnfBTIRTA/E6S6Opbxs7T1rbBrBsb20bpQxg=;
- b=TF7h6bU7MEloYizjoZRZ5NkwZ6YRMHp+6P0jolej/Yxm6MiscB+rWA4a
- AOvmlZgj0Mqg9CmhPbkuNjr2aE15mD4kecSu/zFAELK+3WqRPk1U/Qu3o
- 64cVtb99AGd/OOJfM+7ge1PeWnykTdT1AdLhcI1yYko09D6UbJ5ApVTGD
- tTSWGScu2e4vqwOe+ERDhqM6C/dzI8YdJElfATj9zbHeef0f4A4GICVfD
- 8WKEO2Hkt+BaPSfScLiunlUMHanbS84sZ2uGS0EEykuwty0mDOEODXZ3t
- lQiEpjZPJMc1DBpU8ilX63qmz/XpErI2Jpr/yDgYURCRToZTFj6cxLSY5 A==;
-X-IronPort-AV: E=Sophos;i="5.63,440,1557158400"; d="scan'208";a="113613833"
-Received: from mail-by2nam03lp2055.outbound.protection.outlook.com (HELO
- NAM03-BY2-obe.outbound.protection.outlook.com) ([104.47.42.55])
- by ob1.hgst.iphmx.com with ESMTP; 02 Jul 2019 05:26:19 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3V/LpFRVnfBTIRTA/E6S6Opbxs7T1rbBrBsb20bpQxg=;
- b=ghtlyfY3MWv6VUkokwb/p/GbYrO9IVX+/jweAoRAjxboEDG2ln0PXrCPomrE3K3KkzudoSs/6AuTQIHXFSswdtvE1+FsdhxspDHn1vg1tkzO+Xy5HOsdBxMiQdGijZBt95vU68tF2und04RP+B2airn66rxDOaUcolsOqf23HJw=
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com (52.135.214.142) by
- BYAPR04MB4664.namprd04.prod.outlook.com (52.135.240.15) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2032.20; Mon, 1 Jul 2019 21:26:18 +0000
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::65e3:6069:d7d5:90a2]) by BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::65e3:6069:d7d5:90a2%5]) with mapi id 15.20.2032.019; Mon, 1 Jul 2019
- 21:26:18 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "hch@lst.de" <hch@lst.de>, "paul.walmsley@sifive.com"
- <paul.walmsley@sifive.com>, "palmer@sifive.com" <palmer@sifive.com>
-Subject: Re: [PATCH 16/17] riscv: clear the instruction cache and all
- registers when booting
-Thread-Topic: [PATCH 16/17] riscv: clear the instruction cache and all
- registers when booting
-Thread-Index: AQHVKk/eafb73EoeVUKcVAZHOtIduKa2UpyA
-Date: Mon, 1 Jul 2019 21:26:18 +0000
-Message-ID: <78919862d11f6d56446f8fffd8a1a8c601ea5c32.camel@wdc.com>
-References: <20190624054311.30256-1-hch@lst.de>
- <20190624054311.30256-17-hch@lst.de>
-In-Reply-To: <20190624054311.30256-17-hch@lst.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.45.61]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 52bd3de9-56d7-489f-bfcc-08d6fe6ac148
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB4664; 
-x-ms-traffictypediagnostic: BYAPR04MB4664:
-x-microsoft-antispam-prvs: <BYAPR04MB46647A09F1EECF00129DC8C9FAF90@BYAPR04MB4664.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1265;
-x-forefront-prvs: 00851CA28B
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(366004)(376002)(136003)(396003)(39860400002)(189003)(199004)(118296001)(25786009)(71190400001)(71200400001)(476003)(486006)(2501003)(99286004)(2616005)(6506007)(76176011)(26005)(256004)(14444005)(6116002)(3846002)(478600001)(446003)(186003)(102836004)(72206003)(36756003)(11346002)(6436002)(76116006)(6486002)(2201001)(2906002)(53936002)(14454004)(229853002)(6512007)(5660300002)(316002)(66066001)(66946007)(54906003)(66476007)(66446008)(66556008)(64756008)(73956011)(68736007)(110136005)(6246003)(8676002)(81166006)(81156014)(86362001)(8936002)(305945005)(7736002)(4326008);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4664;
- H:BYAPR04MB3782.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: KslD34yP5hwFESqyOJ0iBtBjfXD0dQncTKQ4fD9kcR4kfgsHcs0HH/ZJMUc/DBZMrb/qUSDtBXj5YhB+HF00PBwPCn3v1rrcIRCUnozxVzKzyUDEGm5Y4pIXzQrpw2fN1+90KJvWVbxJIZfV1eLGItrC4CTC5F97GoQFQjYVMBIxiLQvrBECE3RrbPbTcxQ57KUz0sOoXQwjnB8ZthVQgUl+CqN6I5YyJKZYDgGbibnWPBGlgW0UkybCx+7D5HN7xfl02U7jE30IonlZYGqctOX/2d3CW/My4cVSpsBlxGNnSD7Yu3O+dqiXvxG2XNIg9KE5K0vqsYqvoOGqr533dwVox15t2qLKhk7nnlOztphOJxv8mR+cbuoDY+ky10eT39evfR5j4Yv1+kdmezF7MDIO8yuMeW2Qz9lT0moh8O4=
-Content-ID: <3F95E20170DB634F896CA2BAF2589A70@namprd04.prod.outlook.com>
+ id 1hi7aP-0000SG-S7; Tue, 02 Jul 2019 01:27:59 +0000
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 7196994F70EEB513B376;
+ Tue,  2 Jul 2019 09:27:48 +0800 (CST)
+Received: from [127.0.0.1] (10.177.223.23) by DGGEMS403-HUB.china.huawei.com
+ (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Tue, 2 Jul 2019
+ 09:27:47 +0800
+Subject: Re: [PATCH v3 1/2] x86, arm64: Move ARCH_WANT_HUGE_PMD_SHARE config
+ in arch/Kconfig
+To: Alexandre Ghiti <alex@ghiti.fr>, Christoph Hellwig <hch@infradead.org>,
+ Mike Kravetz <mike.kravetz@oracle.com>, Catalin Marinas
+ <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Palmer Dabbelt
+ <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>, Thomas Gleixner
+ <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>, Borislav Petkov
+ <bp@alien8.de>, "H . Peter Anvin" <hpa@zytor.com>, <x86@kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-riscv@lists.infradead.org>
+References: <20190701175900.4034-1-alex@ghiti.fr>
+ <20190701175900.4034-2-alex@ghiti.fr>
+From: Hanjun Guo <guohanjun@huawei.com>
+Message-ID: <18144cc2-f552-b2cc-c41a-47c754de2b0d@huawei.com>
+Date: Tue, 2 Jul 2019 09:27:24 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.5.0
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 52bd3de9-56d7-489f-bfcc-08d6fe6ac148
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2019 21:26:18.0563 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Atish.Patra@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4664
+In-Reply-To: <20190701175900.4034-2-alex@ghiti.fr>
+Content-Language: en-US
+X-Originating-IP: [10.177.223.23]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190701_142623_316973_BDB02080 
-X-CRM114-Status: GOOD (  20.18  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190701_182758_151381_72464501 
+X-CRM114-Status: GOOD (  12.51  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [45.249.212.35 listed in list.dnswl.org]
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,151 +74,63 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-mm@kvack.org" <linux-mm@kvack.org>,
- Damien Le Moal <Damien.LeMoal@wdc.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 2019-06-24 at 07:43 +0200, Christoph Hellwig wrote:
-> When we get booted we want a clear slate without any leaks from
-> previous
-> supervisors or the firmware.  Flush the instruction cache and then
-> clear
-> all registers to known good values.  This is really important for the
-> upcoming nommu support that runs on M-mode, but can't really harm
-> when
-> running in S-mode either.
-
-That means it should be done for S-mode as well. Right ?
-I see the reset code is enabled only for M-mode only.
-
->   Vaguely based on the concepts from opensbi.
+On 2019/7/2 1:58, Alexandre Ghiti wrote:
+> ARCH_WANT_HUGE_PMD_SHARE config was declared in both architectures:
+> move this declaration in arch/Kconfig and make those architectures
+> select it.
 > 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
 > ---
->  arch/riscv/kernel/head.S | 85
-> ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 85 insertions(+)
+>  arch/Kconfig       | 3 +++
+>  arch/arm64/Kconfig | 4 +---
+>  arch/x86/Kconfig   | 4 +---
+>  3 files changed, 5 insertions(+), 6 deletions(-)
 > 
-> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-> index a4c170e41a34..74feb17737b4 100644
-> --- a/arch/riscv/kernel/head.S
-> +++ b/arch/riscv/kernel/head.S
-> @@ -11,6 +11,7 @@
->  #include <asm/thread_info.h>
->  #include <asm/page.h>
->  #include <asm/csr.h>
-> +#include <asm/hwcap.h>
+> diff --git a/arch/Kconfig b/arch/Kconfig
+> index c47b328eada0..d2f212dc8e72 100644
+> --- a/arch/Kconfig
+> +++ b/arch/Kconfig
+> @@ -577,6 +577,9 @@ config HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
+>  config HAVE_ARCH_HUGE_VMAP
+>  	bool
 >  
->  __INIT
->  ENTRY(_start)
-> @@ -19,6 +20,12 @@ ENTRY(_start)
->  	csrw CSR_XIP, zero
+> +config ARCH_WANT_HUGE_PMD_SHARE
+> +	bool
+> +
+>  config HAVE_ARCH_SOFT_DIRTY
+>  	bool
 >  
->  #ifdef CONFIG_M_MODE
-> +	/* flush the instruction cache */
-> +	fence.i
-> +
-> +	/* Reset all registers except ra, a0, a1 */
-> +	call reset_regs
-> +
->  	/*
->  	 * The hartid in a0 is expected later on, and we have no
-> firmware
->  	 * to hand it to us.
-> @@ -168,6 +175,84 @@ relocate:
->  	j .Lsecondary_park
->  END(_start)
+> diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+> index 697ea0510729..c862575decd3 100644
+> --- a/arch/arm64/Kconfig
+> +++ b/arch/arm64/Kconfig
+> @@ -71,6 +71,7 @@ config ARM64
+>  	select ARCH_SUPPORTS_NUMA_BALANCING
+>  	select ARCH_WANT_COMPAT_IPC_PARSE_VERSION if COMPAT
+>  	select ARCH_WANT_FRAME_POINTERS
+> +	select ARCH_WANT_HUGE_PMD_SHARE if ARM64_4K_PAGES || (ARM64_16K_PAGES && !ARM64_VA_BITS_36)
+>  	select ARCH_HAS_UBSAN_SANITIZE_ALL
+>  	select ARM_AMBA
+>  	select ARM_ARCH_TIMER
+> @@ -901,9 +902,6 @@ config HW_PERF_EVENTS
+>  config SYS_SUPPORTS_HUGETLBFS
+>  	def_bool y
 >  
-> +#ifdef CONFIG_M_MODE
-> +ENTRY(reset_regs)
-> +	li	sp, 0
-> +	li	gp, 0
-> +	li	tp, 0
-> +	li	t0, 0
-> +	li	t1, 0
-> +	li	t2, 0
-> +	li	s0, 0
-> +	li	s1, 0
-> +	li	a2, 0
-> +	li	a3, 0
-> +	li	a4, 0
-> +	li	a5, 0
-> +	li	a6, 0
-> +	li	a7, 0
-> +	li	s2, 0
-> +	li	s3, 0
-> +	li	s4, 0
-> +	li	s5, 0
-> +	li	s6, 0
-> +	li	s7, 0
-> +	li	s8, 0
-> +	li	s9, 0
-> +	li	s10, 0
-> +	li	s11, 0
-> +	li	t3, 0
-> +	li	t4, 0
-> +	li	t5, 0
-> +	li	t6, 0
-> +	csrw	sscratch, 0
-> +
-> +#ifdef CONFIG_FPU
-> +	csrr	t0, misa
-> +	andi	t0, t0, (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D)
-> +	bnez	t0, .Lreset_regs_done
-> +
-> +	li	t1, SR_FS
-> +	csrs	sstatus, t1
-> +	fmv.s.x	f0, zero
-> +	fmv.s.x	f1, zero
-> +	fmv.s.x	f2, zero
-> +	fmv.s.x	f3, zero
-> +	fmv.s.x	f4, zero
-> +	fmv.s.x	f5, zero
-> +	fmv.s.x	f6, zero
-> +	fmv.s.x	f7, zero
-> +	fmv.s.x	f8, zero
-> +	fmv.s.x	f9, zero
-> +	fmv.s.x	f10, zero
-> +	fmv.s.x	f11, zero
-> +	fmv.s.x	f12, zero
-> +	fmv.s.x	f13, zero
-> +	fmv.s.x	f14, zero
-> +	fmv.s.x	f15, zero
-> +	fmv.s.x	f16, zero
-> +	fmv.s.x	f17, zero
-> +	fmv.s.x	f18, zero
-> +	fmv.s.x	f19, zero
-> +	fmv.s.x	f20, zero
-> +	fmv.s.x	f21, zero
-> +	fmv.s.x	f22, zero
-> +	fmv.s.x	f23, zero
-> +	fmv.s.x	f24, zero
-> +	fmv.s.x	f25, zero
-> +	fmv.s.x	f26, zero
-> +	fmv.s.x	f27, zero
-> +	fmv.s.x	f28, zero
-> +	fmv.s.x	f29, zero
-> +	fmv.s.x	f30, zero
-> +	fmv.s.x	f31, zero
-> +	csrw	fcsr, 0
-> +#endif /* CONFIG_FPU */
-> +.Lreset_regs_done:
-> +	ret
-> +END(reset_regs)
-> +#endif /* CONFIG_M_MODE */
-> +
->  __PAGE_ALIGNED_BSS
->  	/* Empty zero page */
->  	.balign PAGE_SIZE
+> -config ARCH_WANT_HUGE_PMD_SHARE
+> -	def_bool y if ARM64_4K_PAGES || (ARM64_16K_PAGES && !ARM64_VA_BITS_36)
+> -
 
--- 
-Regards,
-Atish
+Reviewed-by: Hanjun Guo <guohanjun@huawei.com>
+
+Thanks
+Hanjun
+
+
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
