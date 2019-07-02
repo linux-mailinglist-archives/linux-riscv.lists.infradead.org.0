@@ -2,76 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D6F55D64E
-	for <lists+linux-riscv@lfdr.de>; Tue,  2 Jul 2019 20:40:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E35025D652
+	for <lists+linux-riscv@lfdr.de>; Tue,  2 Jul 2019 20:40:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=sHd9tZ/C/GkG6CrKWUvuNHqwunt1CaGgHVf7UCtVKME=; b=D7q
-	HCdfYLcn3wO21pw1c+546osUoLtM/mvpYNzS6kYwQg1yPvtFcqqMgySJA+n5E2FJrw+JP+oFdz7Rq
-	YvhM/FhcO+It/IYktCYSF2kH4/TPcOenX+gFqIhxuWbZs52dxZFphmnqJRIWlb+wi+pphPx4+8Edy
-	jEB++MViPKrNB6qroS9dJyOWI/4DxHw9JaskuyBbtRNe9vsLd0Eu7lac7JFQPwjMdd4vTkJR36mGg
-	pAViz5FwaYF1NzKC61222yDQpmM3O15QsYCJ9SCa23FMLKPrzbd1Gry6ZtZ3+FtDs3s1nhCCJOpRf
-	zg7jDmn/JEylRg4MiIZVT8iiFjK9AmQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=36PUPNbl6dmFkd/7RyDbcxbNWvVwr4TdoDzVyD2liRw=; b=nFu2XViuy5Hl4+jbBu08moHpOV
+	1zIyplykU3R3LhvLqSFRWGC5e9j624L0XF9qLQMGw/IJ4n+5HqgFOFEc2WiO05MZYbasCafbzQlpS
+	vFGRfi22Dv+F2uWIUTJYim/QJnCyUmUzhEsFIRtpsAZu8AaXZSIEIgJLRYncFTVw6DguEUp4IDgnG
+	c823jMr5PMeBtVM+8Y+yCri1pya8kufQxCNlCMHUwmbKMsN2kcDCpclriazkc0+vV8SbgTcphsM5a
+	PU/PRt+WeZ6KLB8FHYpKJkrC3Q5sir8bHNXcqgI0NJi/m6ESR52kTYlzK/ldeo9Dtf3LrUh/jMU/0
+	HQVsu7fA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hiNhW-0003nK-Ew; Tue, 02 Jul 2019 18:40:22 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hiNhq-0004IG-Ge; Tue, 02 Jul 2019 18:40:42 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hiNhH-0002xJ-1C
- for linux-riscv@lists.infradead.org; Tue, 02 Jul 2019 18:40:08 +0000
-Received: by mail-pg1-x544.google.com with SMTP id i18so3439695pgl.11
- for <linux-riscv@lists.infradead.org>; Tue, 02 Jul 2019 11:40:05 -0700 (PDT)
+ id 1hiNhQ-0003g9-5Z
+ for linux-riscv@lists.infradead.org; Tue, 02 Jul 2019 18:40:18 +0000
+Received: by mail-pf1-x444.google.com with SMTP id r1so8681705pfq.12
+ for <linux-riscv@lists.infradead.org>; Tue, 02 Jul 2019 11:40:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=hG1JsQUy046szRFDOIEOc0GrqgtZ4N9C6eAqGmFMcZg=;
- b=M/zho78zeJOQugBcdoK7P7W4WUEDOlNbsVIincCdzc7egd5SueogZzrbLrF9qFqxIf
- zUuXIONh6LZN8s6e87uNdUj2AJp2KzRUirGiAl1Y7YW3J5ZPIa/KgyvZtGTuB0Hr6LbA
- +vmf1fMprr5qs2SgZf1NbEMO+7lbfI9GIMLESzki905WvFh1ELaBYDQZxGM5a1rdM/T9
- ztveeivAxZt0qeBazc9JAWkCR8zh77uqMArfEwhtdwvqe+EFAxEVuQeWNUqLTDAXIPtT
- sOA5EdfthaVkfPc5v5AeIvevLh5/s5A4R1IxC0wnZTfkeiPGL+o+Rmk/CG6JcqZCBPwE
- ZPqQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=Y+CmxvfTHNmkdcHZerrxb2wPdBc38Gq6FdKZioHxbqE=;
+ b=kP2+RMySSYi0s9bLP+JPIjdlGB7GP0IyPMEzIP3Nw8BtM33CdAP+p6Xn577lTaKdlp
+ V+w3kPeb5i+UGKJakJaQOQVeum5kY/mqq6YHOduVMyUHDmWPutdGc233cDaOEIVLqvfP
+ 7rqMmNJlpWAzrndk+vQFCzTnq/8RJ1BWWLOR6qdg5VOAK7H//4nxXEYWAzm8ya9l2TxX
+ HC2zk1EAPyr93XGjNK/kAyFGXQYgubDB5b6TZ5Z3U1fXC/ygMrr6LgOA0DoIrxaw0NmS
+ eU9yK8CmXKmxzJ26PaclixrkwaWWf8W0UdGbk3wJXKRICVUR2zQqDB2OwmCXDVkGQ/ip
+ XvDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=hG1JsQUy046szRFDOIEOc0GrqgtZ4N9C6eAqGmFMcZg=;
- b=EVFkpXmhsnB46HR6U66FCpUnxiJ96qX7G4BqF/B8PqyaFLlvCWFYZGBlKSMRnS9Zb4
- uLr0RO/KnksoW4U1HllS9qVEiZSIuyYVEMNAjkJTA76TKYFzjGBkbIj+onCcvwaIAmIt
- kDqICyMIOYwbEPdqeYw0KBl4SKksrQiGrK8xi5qYoHwZR/QExdXIS/EJAbzBwiVRNdIk
- GApwFc06+87r2wKQEvfEC24TfJGVj+IWCo9l0G+EM5Ys+TKCyiSVabKOMRuAexr9sOLW
- /5fPtUWXFSNEqCnmt3NUq4v4oqkAHZPJ8fPITdf00b9V5x0Iu/74s7OUQ05ZQjjq92rK
- 2dJQ==
-X-Gm-Message-State: APjAAAUNfwpxCfb1dIZENqLR0yKSivM/4fqSVtj449frgLMYjAH6GjrO
- Yb7DDeGwzSlXkfBna7EwnaANog==
-X-Google-Smtp-Source: APXvYqzsMlaSyc7pZIJYDjprnLyGQKCrS/C/7bgqbvBj63BhfUiyhW4J4JPtfydDsSsZis7KAagqgA==
-X-Received: by 2002:a63:1e0b:: with SMTP id e11mr9709204pge.402.1562092804922; 
- Tue, 02 Jul 2019 11:40:04 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=Y+CmxvfTHNmkdcHZerrxb2wPdBc38Gq6FdKZioHxbqE=;
+ b=Gm6pdY0ty0+NekAup0Ky4Ad3WjuVO4OSLjuDKGiSVs03SlTwwjEfWkexHj+/qlSPLF
+ jvULmLLkNSmjfZ7JU9q8HuGiSI39taQrQQoFIFOUVmHRAOptFGULK2oP2trDO4FggiyB
+ Ho/OLKzkIsz6OFoMFVlKFFBgySjT+HqeFLaePH3iojSPKJKcujjwWzSPeCn8DaDjK4kE
+ sholjNq03c72RrrmXqxyIWKS5kRb7W5k/4vUHVZHR99PPS0mOezgP9ARdiWET1vHr5bE
+ 9Z5adPiS8oVLCRshXoI063c5nzKRL6Qt9Dcx3OvEJc93GICVdx5z43QODOywY5aqVXHe
+ lYuQ==
+X-Gm-Message-State: APjAAAVrYZ6Um2Xd4Y+EGFLPCiXqfa29XRP9U+5tOLzAC5rCBvgy1NVD
+ nxnrEuaP4eZ2N87XJ1hXLer/aA==
+X-Google-Smtp-Source: APXvYqwGMFL+2bJhWMoeLMIUPikC9EIj+4FMNu3+vEguV2Ru2oTeOyZJqNVCOTuD3VLHeGb+B2sKMg==
+X-Received: by 2002:a63:dc50:: with SMTP id f16mr32511540pgj.447.1562092811827; 
+ Tue, 02 Jul 2019 11:40:11 -0700 (PDT)
 Received: from buildserver-90.open-silicon.com ([114.143.65.226])
  by smtp.googlemail.com with ESMTPSA id
- e10sm15065327pfi.173.2019.07.02.11.40.00
+ e10sm15065327pfi.173.2019.07.02.11.40.07
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 02 Jul 2019 11:40:04 -0700 (PDT)
+ Tue, 02 Jul 2019 11:40:11 -0700 (PDT)
 From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 To: marek.vasut@gmail.com, tudor.ambarus@microchip.com, dwmw2@infradead.org,
  computersforpeace@gmail.com, miquel.raynal@bootlin.com, richard@nod.at,
  vigneshr@ti.com
-Subject: [PATCH v7 0/4] mtd: spi-nor: add support for is25wp256 spi-nor flash
-Date: Wed,  3 Jul 2019 00:09:01 +0530
-Message-Id: <1562092745-11541-1-git-send-email-sagar.kadam@sifive.com>
+Subject: [PATCH v7 1/4] mtd: spi-nor: add support for is25wp256
+Date: Wed,  3 Jul 2019 00:09:02 +0530
+Message-Id: <1562092745-11541-2-git-send-email-sagar.kadam@sifive.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1562092745-11541-1-git-send-email-sagar.kadam@sifive.com>
+References: <1562092745-11541-1-git-send-email-sagar.kadam@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190702_114007_085228_ECCE3399 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20190702_114016_226684_F55B64B6 
+X-CRM114-Status: GOOD (  12.02  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -102,87 +106,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The patch series adds support for 32MiB spi-nor is25wp256 present on HiFive
-Unleashed A00 board. The flash device gets BFPT_DWORD1_ADDRESS_BYTES_3_ONLY
-from BFPT table for address width, whereas the flash can support 4 byte
-address width, so the address width is configured by using the post bfpt
-fixup hook as done for is25lp256 device in
-commit cf580a924005 ("mtd: spi-nor: fix nor->addr_width when its value
-configured from SFDP does not match the actual width") queued in
-spi-nor/next branch [1].
+Update spi_nor_id table for is25wp256 (32MB) device from ISSI,
+present on HiFive Unleashed dev board (Rev: A00).
 
-Patches 1 and 3 are based on original work done by Wesley Terpstra and/or
-Palmer Dabbelt:
+Set method to enable quad mode for ISSI device in flash parameters
+table.
+
+Based on code originally written by Wesley Terpstra <wesley@sifive.com>
+and/or Palmer Dabbelt <palmer@sifive.com>
 https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
 
-Erase/Read/Write operations are verified on HiFive Unleashed board using  mtd and
-flash utils (v1.5.2):
-1. mtd_debug  	: Options available are : erase/read/write.
-2. flashcp	: Single utility that erases flash, writes a file to flash and verifies the data back.
-3. flash_unlock : Unlock flash memory blocks. Arguments: are offset and number of blocks.
-3. flash_lock   : Lock flash memory blocks. Arguments: are offset and number of blocks. 
+Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+---
+ drivers/mtd/spi-nor/spi-nor.c | 9 ++++++++-
+ include/linux/mtd/spi-nor.h   | 1 +
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-The Unlock scheme clears the protection bits of all blocks in the Status register.
-
-Lock scheme:
-A basic implementation based on the stm_lock scheme and is validated for a different
-number of blocks passed to flash_lock. ISSI devices have top/bottom area selection
-in function register which is OTP memory. so we are not updating the OTP section
-of function register.
-
-The changes along are available under branch v5.2-rc1-mtd-spi-nor/next at:
-https://github.com/sagsifive/riscv-linux-hifive 
+diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
+index e3a28c0..971f0f3 100644
+--- a/drivers/mtd/spi-nor/spi-nor.c
++++ b/drivers/mtd/spi-nor/spi-nor.c
+@@ -1857,7 +1857,10 @@ static int sr2_bit7_quad_enable(struct spi_nor *nor)
+ 			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ 	{ "is25wp128",  INFO(0x9d7018, 0, 64 * 1024, 256,
+ 			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+-
++	{ "is25wp256", INFO(0x9d7019, 0, 64 * 1024, 1024,
++			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
++			SPI_NOR_4B_OPCODES)
++	},
+ 	/* Macronix */
+ 	{ "mx25l512e",   INFO(0xc22010, 0, 64 * 1024,   1, SECT_4K) },
+ 	{ "mx25l2005a",  INFO(0xc22012, 0, 64 * 1024,   4, SECT_4K) },
+@@ -3687,6 +3690,10 @@ static int spi_nor_init_params(struct spi_nor *nor,
+ 		case SNOR_MFR_ST:
+ 		case SNOR_MFR_MICRON:
+ 			break;
++		case SNOR_MFR_ISSI:
++			params->quad_enable = macronix_quad_enable;
++			break;
++
  
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git/log/?h=spi-nor/next
-
-Revision history:
-V6<->V7:
--Incorporated review comments from Vignesh.
--Used post bfpt fixup hook as suggested by Vignesh.
--Introduce SPI_NOR_HAS_BP3 to identify whether the flash has 4th bit protect bit.
--Prefix generic flash access functions with spi_nor_xxxx.
-
-V5<->V6:
--Incorporated review comments from Vignesh.
--Set addr width based on device size and if SPI_NOR_4B_OPCODES is set.
--Added 4th block protect identifier (SPI_NOR_HAS_BP3) to flash_info structure 
--Changed flash_info: flag from u16 to u32 to accommodate SPI_NOR_HAS_BP3
--Prefix newly added function with spi_nor_xxx.
--Dropped write_fr function, as updating OTP bit's present in function register doesn't seem to be a good idea.
--Set lock/unlock schemes based on whether the ISSI device has locking support and  BP3 bit present.
-
-V4<->V5:
--Rebased to linux version v5.2-rc1.
--Updated heading of this cover letter with sub-system, instead of just plain "add support for is25wp256..."
-
-V3<->V4:
--Extracted comman code and renamed few stm functions so that it can be reused for issi lock implementation.
--Added function's to read and write FR register, for selecting Top/Bottom area.
-
-V2<->V3:
--Rebased patch to mainline v5.1 from earlier v5.1-rc5.
--Updated commit messages, and cover letter with reference to git URL and author information.
--Deferred flash_lock mechanism and can go as separate patch. 
-
-V1<-> V2:
--Incorporated changes suggested by reviewers regarding patch/cover letter versioning, references of patch.
--Updated cover letter with description for flash operations verified with these changes.
--Add support for unlocking is25xxxxxx device.
--Add support for locking is25xxxxxx device.
-
-v1:
--Add support for is25wp256 device.
-
-Sagar Shrikant Kadam (4):
-  mtd: spi-nor: add support for is25wp256
-  mtd: spi-nor: fix nor->addr_width for is25wp256
-  mtd: spi-nor: add support to unlock the flash device
-  mtd: spi-nor: add locking support for is25wp256 device
-
- drivers/mtd/spi-nor/spi-nor.c | 343 +++++++++++++++++++++++++++++++++++-------
- include/linux/mtd/spi-nor.h   |   8 +
- 2 files changed, 300 insertions(+), 51 deletions(-)
-
+ 		default:
+ 			/* Kept only for backward compatibility purpose. */
+diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+index b3d360b..b0e42b3 100644
+--- a/include/linux/mtd/spi-nor.h
++++ b/include/linux/mtd/spi-nor.h
+@@ -21,6 +21,7 @@
+ #define SNOR_MFR_INTEL		CFI_MFR_INTEL
+ #define SNOR_MFR_ST		CFI_MFR_ST	/* ST Micro */
+ #define SNOR_MFR_MICRON		CFI_MFR_MICRON	/* Micron */
++#define SNOR_MFR_ISSI		0x9d		/* ISSI */
+ #define SNOR_MFR_MACRONIX	CFI_MFR_MACRONIX
+ #define SNOR_MFR_SPANSION	CFI_MFR_AMD
+ #define SNOR_MFR_SST		CFI_MFR_SST
 -- 
 1.9.1
 
