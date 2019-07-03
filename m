@@ -2,35 +2,53 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 042805E3C3
-	for <lists+linux-riscv@lfdr.de>; Wed,  3 Jul 2019 14:24:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 264D25E4C5
+	for <lists+linux-riscv@lfdr.de>; Wed,  3 Jul 2019 15:02:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VNkRToRXwq0KKbhpYxWta8peUZiGxV2kXb/Jc4ZzvfI=; b=iItr8e6yf1CCOt
-	ydJH3YOnnizXoFwNwzs1dKfLKEsq+8Dkkp3r766UbWF09YdA9SQTROWXjfydTwJsd2QdnxDCsQxui
-	dCfoLONC+RwGzYw0IJFvUyH4JhLIPB3xwQky0eayi/AkxTFRdFOmwgX+PvV8oKhILqq7IIMFJLImX
-	g8AGt9dT5tE8wkojZe8H+5SO46CH+paaqQ0d3gLvZ4JgBLh07uFUpvtuwWbIDqpHdJOdEepc33uf+
-	vA2mrTpBCp9up92l9168BUkt7xqfo2P4yTEKQKmTQuEBW2wYnnNLthjhMCFpL2Vp4hVy75xZVx2q6
-	rXU1FkGXN2LmlDptpLTQ==;
+	List-Owner; bh=raI2INsXbEUu+84Vshtumkf6S5kop0mbl76Typ7eOh8=; b=TaUycN2vTnGQCk
+	35UmOzeqXvr4arvNCV813po0wnnUeuSplwdMqrIj62gKcxkiKD01iHU+XEJTiBZ3AzIhCgOIq6VVS
+	71zPLb5sKezoj7dssgiQj4M703elVpfS066GXazwlUTEK+7phGVtyW8NOFmGUE+B9KkqcT+T/0Lqs
+	cxnCa6I0skzyRPP0p1J5I1OSdYlBM43I7MnGBGEpkrIM0PstDxIiRhfjGbH7YGBSA2a7sG5f36xYu
+	ivobgFyIRryZhs1SVvlwiWwzdw/vy5eioRfKnZVZZN2rBbL3ougC9EP/pNvR2XnHeXb3xtsUE/FAK
+	xlwCUIaTYGT9/ozB5Yrw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hieJ1-0002Ny-CJ; Wed, 03 Jul 2019 12:24:11 +0000
-Received: from [12.46.110.2] (helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hieIq-0002G1-4b; Wed, 03 Jul 2019 12:24:00 +0000
+	id 1hietr-0007Sf-1q; Wed, 03 Jul 2019 13:02:15 +0000
+Received: from verein.lst.de ([213.95.11.211])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hiesy-0006qL-2c
+ for linux-riscv@lists.infradead.org; Wed, 03 Jul 2019 13:01:22 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 82EEA68B05; Wed,  3 Jul 2019 15:01:16 +0200 (CEST)
+Date: Wed, 3 Jul 2019 15:01:16 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH 3/3] mm: stub out all of swapops.h for !CONFIG_MMU
-Date: Wed,  3 Jul 2019 05:23:59 -0700
-Message-Id: <20190703122359.18200-4-hch@lst.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190703122359.18200-1-hch@lst.de>
-References: <20190703122359.18200-1-hch@lst.de>
+To: Palmer Dabbelt <palmer@sifive.com>
+Subject: Re: [PATCH] riscv: remove free_initrd_mem
+Message-ID: <20190703130116.GA8513@lst.de>
+References: <20190520063326.26083-1-hch@lst.de>
+ <mhng-37ed4bee-df0a-4dc3-adbb-a6bf98952241@palmer-si-x1c4>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <mhng-37ed4bee-df0a-4dc3-adbb-a6bf98952241@palmer-si-x1c4>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190703_060120_512135_2BAB7B75 
+X-CRM114-Status: UNSURE (   4.01  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,63 +60,14 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, linux-mm@kvack.org,
- linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- Arnd Bergmann <arnd@arndb.de>
+Cc: linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The whole header file deals with swap entries and PTEs, none of which
-can exist for nommu builds.  The current nommu ports have lots of
-stubs to allow the inline functions in swapops.h to compile, but
-as none of this functionality is actually used there is no point
-in even providing it.  This way we don't have to provide the stubs
-for the upcoming RISC-V nommu port, and can eventually remove it
-from the existing ports.
-
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- include/linux/swapops.h | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/include/linux/swapops.h b/include/linux/swapops.h
-index 4d961668e5fc..b02922556846 100644
---- a/include/linux/swapops.h
-+++ b/include/linux/swapops.h
-@@ -6,6 +6,8 @@
- #include <linux/bug.h>
- #include <linux/mm_types.h>
- 
-+#ifdef CONFIG_MMU
-+
- /*
-  * swapcache pages are stored in the swapper_space radix tree.  We want to
-  * get good packing density in that tree, so the index should be dense in
-@@ -50,13 +52,11 @@ static inline pgoff_t swp_offset(swp_entry_t entry)
- 	return entry.val & SWP_OFFSET_MASK;
- }
- 
--#ifdef CONFIG_MMU
- /* check whether a pte points to a swap entry */
- static inline int is_swap_pte(pte_t pte)
- {
- 	return !pte_none(pte) && !pte_present(pte);
- }
--#endif
- 
- /*
-  * Convert the arch-dependent pte representation of a swp_entry_t into an
-@@ -375,4 +375,5 @@ static inline int non_swap_entry(swp_entry_t entry)
- }
- #endif
- 
-+#endif /* CONFIG_MMU */
- #endif /* _LINUX_SWAPOPS_H */
--- 
-2.20.1
-
+Paul, are you going to pick this one up?
 
 _______________________________________________
 linux-riscv mailing list
