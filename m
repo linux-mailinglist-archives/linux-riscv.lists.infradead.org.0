@@ -2,31 +2,31 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFCB25E3C2
-	for <lists+linux-riscv@lfdr.de>; Wed,  3 Jul 2019 14:24:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F13E05E3C0
+	for <lists+linux-riscv@lfdr.de>; Wed,  3 Jul 2019 14:24:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nFr08bmbc5GW8cWhBLmJ9pSJ4/kZSCLsolNYk7Szs6o=; b=kz6Y4OJcHWIYii
-	P/C0rtbsmXXmkXUVv2wL663AzcX9knzD6ryEWXs3ZLabUuV7gn6qVPGs21Mpcw1gac9+JQJLcWQfp
-	WtseAERZtBn1U6SLYv54JTw532DApQF7twNJVNv704IY/mZNXGFCcZdhiho0a4lLgDzowKQXinR+S
-	nunN4SbaQRw/6njvy1k6XL/Q0iRTcyUJEHK7A69YFWxiDfxKHVmNEoI+HuT/Oi7BGOxUj9nFr96KY
-	fWFs/Ung2Ijniqatae/GSSWVs77HW7PP5FWAcoTjtSdsoULfaS7PV3O4lSriwSF7Co/l1N+WcttxM
-	80EcxD3Vs6EYVOUBF2ag==;
+	List-Owner; bh=JXBAJRs3RuTW2j94dzq+n5cP2dd3jb3BIrzD8biW700=; b=s0wDM5RA2WtACe
+	T6L54ppAWXJ5+EQ5P9guu/x+Aj88/aY2UgP4JqWWfzFuy6P67G1oSxas6ajTa3o2V1+d58fgPlK4X
+	5SHth+Wx1DEUbAqL7+s9KtGxuZsRIsPYPLg36HcMzxlXp7fldBArl87hR0AEx2K/pL6DydPZxDMy6
+	WD2+AIML9aZC0VgblXztFT0Op5qVPiWetLnkbIDpn58apNjDpcVHH3sG5/5C4b/jiqjtv5vrDNYNz
+	6Sp0Ch4Z7AVlLgmZRbyljKgb7sj4QhREO5VnbusNsfNY06B4i4R2ZM0GbGbr65Nsk6mq2/AZkxsW9
+	HknkU/OcvUUdMaRuWbIQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hieIz-0002Kt-0b; Wed, 03 Jul 2019 12:24:09 +0000
+	id 1hieIw-0002HU-HO; Wed, 03 Jul 2019 12:24:06 +0000
 Received: from [12.46.110.2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hieIp-0002Fp-Lr; Wed, 03 Jul 2019 12:23:59 +0000
+ id 1hieIp-0002Fv-TN; Wed, 03 Jul 2019 12:23:59 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH 1/3] mm: fix the MAP_UNINITIALIZED flag
-Date: Wed,  3 Jul 2019 05:23:57 -0700
-Message-Id: <20190703122359.18200-2-hch@lst.de>
+Subject: [PATCH 2/3] mm: provide a print_vma_addr stub for !CONFIG_MMU
+Date: Wed,  3 Jul 2019 05:23:58 -0700
+Message-Id: <20190703122359.18200-3-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190703122359.18200-1-hch@lst.de>
 References: <20190703122359.18200-1-hch@lst.de>
@@ -50,74 +50,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-We can't expose UAPI symbols differently based on CONFIG_ symbols, as
-userspace won't have them available.  Instead always define the flag,
-but only respect it based on the config option.
-
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Vladimir Murzin <vladimir.murzin@arm.com>
 ---
- arch/xtensa/include/uapi/asm/mman.h    | 6 +-----
- include/uapi/asm-generic/mman-common.h | 8 +++-----
- mm/nommu.c                             | 4 +++-
- 3 files changed, 7 insertions(+), 11 deletions(-)
+ include/linux/mm.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/xtensa/include/uapi/asm/mman.h b/arch/xtensa/include/uapi/asm/mman.h
-index be726062412b..ebbb48842190 100644
---- a/arch/xtensa/include/uapi/asm/mman.h
-+++ b/arch/xtensa/include/uapi/asm/mman.h
-@@ -56,12 +56,8 @@
- #define MAP_STACK	0x40000		/* give out an address that is best suited for process/thread stacks */
- #define MAP_HUGETLB	0x80000		/* create a huge page mapping */
- #define MAP_FIXED_NOREPLACE 0x100000	/* MAP_FIXED which doesn't unmap underlying mapping */
--#ifdef CONFIG_MMAP_ALLOW_UNINITIALIZED
--# define MAP_UNINITIALIZED 0x4000000	/* For anonymous mmap, memory could be
-+#define MAP_UNINITIALIZED 0x4000000	/* For anonymous mmap, memory could be
- 					 * uninitialized */
--#else
--# define MAP_UNINITIALIZED 0x0		/* Don't support this flag */
--#endif
+diff --git a/include/linux/mm.h b/include/linux/mm.h
+index dd0b5f4e1e45..69843ee0c5f8 100644
+--- a/include/linux/mm.h
++++ b/include/linux/mm.h
+@@ -2756,7 +2756,13 @@ extern int randomize_va_space;
+ #endif
  
- /*
-  * Flags for msync
-diff --git a/include/uapi/asm-generic/mman-common.h b/include/uapi/asm-generic/mman-common.h
-index abd238d0f7a4..cb556b430e71 100644
---- a/include/uapi/asm-generic/mman-common.h
-+++ b/include/uapi/asm-generic/mman-common.h
-@@ -19,15 +19,13 @@
- #define MAP_TYPE	0x0f		/* Mask for type of mapping */
- #define MAP_FIXED	0x10		/* Interpret addr exactly */
- #define MAP_ANONYMOUS	0x20		/* don't use a file */
--#ifdef CONFIG_MMAP_ALLOW_UNINITIALIZED
--# define MAP_UNINITIALIZED 0x4000000	/* For anonymous mmap, memory could be uninitialized */
--#else
--# define MAP_UNINITIALIZED 0x0		/* Don't support this flag */
--#endif
+ const char * arch_vma_name(struct vm_area_struct *vma);
++#ifdef CONFIG_MMU
+ void print_vma_addr(char *prefix, unsigned long rip);
++#else
++static inline void print_vma_addr(char *prefix, unsigned long rip)
++{
++}
++#endif
  
- /* 0x0100 - 0x80000 flags are defined in asm-generic/mman.h */
- #define MAP_FIXED_NOREPLACE	0x100000	/* MAP_FIXED which doesn't unmap underlying mapping */
- 
-+#define MAP_UNINITIALIZED 0x4000000	/* For anonymous mmap, memory could be
-+					 * uninitialized */
-+
- /*
-  * Flags for mlock
-  */
-diff --git a/mm/nommu.c b/mm/nommu.c
-index d8c02fbe03b5..ec75a0dffd4f 100644
---- a/mm/nommu.c
-+++ b/mm/nommu.c
-@@ -1349,7 +1349,9 @@ unsigned long do_mmap(struct file *file,
- 	add_nommu_region(region);
- 
- 	/* clear anonymous mappings that don't ask for uninitialized data */
--	if (!vma->vm_file && !(flags & MAP_UNINITIALIZED))
-+	if (!vma->vm_file &&
-+	    (!IS_ENABLED(CONFIG_MMAP_ALLOW_UNINITIALIZED) ||
-+	     !(flags & MAP_UNINITIALIZED)))
- 		memset((void *)region->vm_start, 0,
- 		       region->vm_end - region->vm_start);
- 
+ void *sparse_buffer_alloc(unsigned long size);
+ struct page *sparse_mem_map_populate(unsigned long pnum, int nid,
 -- 
 2.20.1
 
