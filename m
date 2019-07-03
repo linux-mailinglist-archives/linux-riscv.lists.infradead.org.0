@@ -2,74 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B8665D9D5
+	by mail.lfdr.de (Postfix) with ESMTPS id 590535D9D7
 	for <lists+linux-riscv@lfdr.de>; Wed,  3 Jul 2019 02:55:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VHOMkoIV2PSi6t9eifufvInRl2vUZNM+zlo0Bj2LIeg=; b=Gt8Jsmx9oXLn60
-	MQb9j9vs0ZfmuzzP1kYSInU8gXYIynB7EWFrGlBjdOZNomwvYT8hb0ZqhKz6YU01P8fvtvEsmgaH3
-	8jWFZQYGQTs22Ok2UWqpXn6lDLHsOSzr+GWj4CJXPrs8pAy6qMh5BX7e3Yv6ELIWFtJo+kl03NAmd
-	eVf2jyKEsfETnqFVowW2Lzlj+6YquLiMBpvKvMRn+vaVHgCp/8vwEnCHppklwfwYG/BlEPthlnzs+
-	9jUUr8acItuBWR1aj46npyUDm5eesMz5AmQY69VghcfuhElOjiDcj0JsypJFqlr8Fo7IPRBxOno0z
-	9X9Bca/B19J4CugHGK/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NE8Y1RzxBvpZZkahMmW2AKwGZc/3j2BYXZC679v9V6s=; b=pGRkB7G7f+kyZf
+	VX1FqllgJ30SjKVD8BKwmAQmx38t+nB9gVWkQ4wBLoQ9cWOcz+20Eegs+iBwxDJ4m3cXmrE9Z14GI
+	Y43+9zqaQMDp6NRirnAN6/BoKHT8AeZfHD0ChHc39K2ou1NjCjaaH6XKwc/EaHRPOJ0mnCDZ/rRCu
+	GFVw6HXKOTRwva38TcOVEegb/vdAEH4NvGjf+sztdm2mgB8DBtb5G7crvlwPipIOd3cILgIzEp8SP
+	i8+JUyXQ1Jy+hEYdPzAxNHb+xxr/06JHM+9ZGJRNt7r9ec0FlZKINA3AdXzv2vTpOJuTpIhpKlZ4B
+	t0yYiksmPFaZQ2iz5GSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hiTXx-0001vV-Eg; Wed, 03 Jul 2019 00:54:53 +0000
+	id 1hiTY0-0001wQ-0B; Wed, 03 Jul 2019 00:54:56 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hiTXo-0001tJ-Bv
- for linux-riscv@lists.infradead.org; Wed, 03 Jul 2019 00:54:50 +0000
+ id 1hiTXu-0001tJ-Im
+ for linux-riscv@lists.infradead.org; Wed, 03 Jul 2019 00:54:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1562115285; x=1593651285;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=fVT1Neu72Cl7Ti24Xfa8jpNhBvPMuWv91mK1LHqkCSA=;
- b=h9qHwL+88zJ+tXUj9R+RdQrudQwg49l+MDenCQO9pF6L9M7/NGgf9I3+
- aOiabeggKsd6qAK0oD1a04eozLg1yAz8cmYWaDHWJ8Nj6JF/F5jDM5PFB
- qHlGFw6IP6b+z95/BYvCxRw1+wkGtO43Of8UVraRE0LW6qMN1cY9LHSA6
- P63zZBEYFZNZuL8qSQQDY2m6AsRnYSHOQxoewwIHUCn0T8DbMb0gvmAuB
- SnofztBjf2sUx4IlZwZAhG2dI1b8JsKlUee+YNCzTqs8iZGG+qjocMNvU
- cySojIHi6VBbpIHNypLm4/JLpnJBhk99cnvL8Uo5a/OvTgNdnkHbUZwaF Q==;
-IronPort-SDR: wSQV5reQyOsOnAs0Ifi9NM4TN80/01CCwsa2lcudZPJ79iOzdXFHXXJszLzr32x4oBviNxU3R8
- R2DWFMzOWDy3biSkfJ6TpDSyldoVkJleCod4yIGcCT/M2ln0MTlJislm0mKQZyEPYk6Diuy1Xi
- SXwIdqswYsvAEEWYFnNENrf3M9+H7mw4nme5cfMAgfb4viEkuY2DcLd7GMabukTyP31A0YD4yR
- 0dWknlgLJ5EpMkgXIP7xryqalje+pHUzZTDc9fc3ajO55Ams1y9xAoSAsCvAGaWtKjiNxBxP5Y
- Aoo=
-X-IronPort-AV: E=Sophos;i="5.63,445,1557158400"; d="scan'208";a="116940450"
+ t=1562115291; x=1593651291;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=eC3388U7gS1n3ruZjbzbm4lmFXg2heaDobqQD9WiAWA=;
+ b=VJzPVWEDxn0rs2pd9NqlzJdfZ+1CZlj5hZTteRj0FvR8LDsdDa3G9dow
+ pKLTL9pK2L+LX5rqCgB4xUJGWlzleyQb7Jsce5vF20jLao5mPoYNJvUlo
+ NcV4GsJ3QU1+s/bk1pkZrMePADGLvqFMNHpOpvbUzrCDjZVHnI4pXDC5Y
+ +s9sLt/OPfS5HRw7moOvx/psZ1PWxCrBfg8OKc5p43LA+dHLUGzq1nBYu
+ SOwATCEAEP3xRWOSVAm5ovMVBHEHUXYRjTgedLNIwPQgab+UM16vxhPXi
+ cAXxe07lFkF3sM3donHjJyc2e3HZDUpOQLW9cvvjogbS2RpxJrDPXmt9Z Q==;
+IronPort-SDR: Qt8AD4SbO8vZQaBJXgsqe/qetwUYfl8hjvt+Te6sB5B2HPyxqFTLmBCX2pwtTvG4pwWYinN2ob
+ 1dpFKTVoc/iBbfYFtnFLtfIYADYXNmy4SqT944EEVp/FzD+FkGECdK754stKPtLWa4tMnoSyRe
+ yJNQppZXvqlJNz0GN2dr8hytQnd0NVe+V9KeWIsH6hg1olN6CrcmZTS2TWzrpidnrDXdQXOZ0H
+ BMr43moET/CRKUcVkncghYJtq93zukULhTvlORZtOcHqZNsr/Wml/GRaG/2A8tsWMpTHiljOZg
+ G4M=
+X-IronPort-AV: E=Sophos;i="5.63,445,1557158400"; d="scan'208";a="116940451"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
  by ob1.hgst.iphmx.com with ESMTP; 03 Jul 2019 08:54:41 +0800
-IronPort-SDR: /2ftvYA2TV/HkgmZTTmkUyPO9Z/fy8sKUPWZJrHz5DMvf0B0JUdEWY416E6xhNUGyqBaPVoC1L
- oqFw5DmDzP8/WpyrmJK2Ti5w04CbSg4YMUPz++ykwlkVI6vK4Byg0PE8OPo3VkEtWImswwgzCQ
- AZDtECUqr1GTFLx3yYURgkMljciAmOwaAkZmcVTDxdwhwQuz5dIRKgenn7jFA4TuKrlAdZ6bKJ
- ogUP/wMptVdDiZobhgb6w7tCxF6iLoP/Nsf2NAj4G7BBsi96WhCsGLYvyXRY+hb6+NcIik+w9w
- jTknYDcE39p/ODZWLZbvng0l
+IronPort-SDR: Nslcd0P1/s0h53PbLHAID5jBM5KKcWFUivcZp3FzwJyqk6u4lSdEiPraORW7ytP2u6WEvk/qSw
+ 96+EsaDk4qBypS7xLPScsLOarW9SFkXDZYB78eSUfde0E4UoJejAgemD8jNkM9W70L0F7dRTkL
+ B/EGuem9atYd0abKQpmgLHgY5f/B6HCblg5SAHidRApLHeHwK/nybgJs7btsqq8IM/yfAwIR+P
+ eaRuz2njNTr1eVCDwCtIVoLjYHaoXzfdU3tPp68JHHT+Sy0hugCGBMz1tKLHQtzXNtdBYdvppj
+ sqI3rGFBr+cRsf71GNC6pcmp
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep02.wdc.com with ESMTP; 02 Jul 2019 17:53:41 -0700
-IronPort-SDR: 3uwdGreIxlVjC6rLHAVUNPxCvYFm12JW++t5byZuYThYEKpHQy1rvPmQ3xRuq3bHiMuNnv4Hq7
- 63wzCLqFIFApUyBBAcjPM74IesbGPjKYsPFPpuufziviVGB/UkXWgcGM2tZsqTjMkIhvf4D+UQ
- QojHazb4wUUMSjboC3ARtuE89wBtlKhK6Jx8R0Q4qcn4UNQJe3cHoKaHzdb/G2Cyi68fnwbElo
- tp+WtZHcEEzeowOCXxYJUduMa2yzOo5GB0CBsspNsy7AprVueWfrW2IeIt7UG4W4ouF7OhCsgw
- AVk=
+IronPort-SDR: Dz0M+IAo+4wEj1xOA9OuK1TY7/bzSPMnj56ySQqqLHxHvhJqyk+qM7mAVnJVSzpTgtWXeJGXeT
+ VR7FIVmdIBGVqnmB3xCVDmmWT+OjqX3n1v3Hd9XToK4l5EmqTrcu7eRpU7PQkGXRpqGEg0eCBV
+ NwsGHI9DjzM+VRiXDScIaGRIIPUIqG5/OYkSby1iHa9my/PtofrTcTDnMAHzWfBXA2HLzqtPWT
+ ReqvW0u8MFrhAYRboKlwLjqEB0pcnS80OdRU0TCPHKmKJktCldw8RVSryG1VikQdZBmsEH7sLg
+ vxg=
 Received: from risc6-mainframe.sdcorp.global.sandisk.com (HELO
  risc6-mainframe.int.fusionio.com) ([10.196.157.140])
  by uls-op-cesaip01.wdc.com with ESMTP; 02 Jul 2019 17:54:41 -0700
 From: Alistair Francis <alistair.francis@wdc.com>
 To: linux-riscv@lists.infradead.org,
 	arnd@arndb.de
-Subject: [PATCH RESEND 0/2] RISC-V: Handle the siginfo_t offset problem
-Date: Tue,  2 Jul 2019 17:52:00 -0700
-Message-Id: <20190703005202.7578-1-alistair.francis@wdc.com>
+Subject: [PATCH RESEND 1/2] uapi/asm-generic: Allow defining a custom
+ __SIGINFO struct
+Date: Tue,  2 Jul 2019 17:52:01 -0700
+Message-Id: <20190703005202.7578-2-alistair.francis@wdc.com>
 X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190703005202.7578-1-alistair.francis@wdc.com>
+References: <20190703005202.7578-1-alistair.francis@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190702_175448_785255_FBABE20C 
-X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-CacheID: sfid-20190702_175450_738686_0204B7DF 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -105,29 +108,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Resending the the correct linux-riscv address.
+Allow defining a custom __SIGINFO struct. This allows architectures to
+apply their own padding and allignment requirements to the struct. This
+is similar to the __ARCH_SI_ATTRIBUTES #define that already exists, but
+applies to the __SIGINFO struct instead of the siginfo_t struct.
 
-In the RISC-V 32-bit glibc port [1] the siginfo_t struct in the kernel
-doesn't line up with the struct in glibc. In glibc world the _sifields
-union is 8 byte alligned (although I can't figure out why) while in the
-kernel wordl the _sifields union is 4 bytes alligned. This results in
-information being lost in the waitid syscall.
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+---
+ include/uapi/asm-generic/siginfo.h | 32 ++++++++++++++++--------------
+ 1 file changed, 17 insertions(+), 15 deletions(-)
 
-This doesn't seem to be a great fix, but it is somewhat similar to what
-x32 does (which has 64-bit time_t like RV32) and I can't figure out why
-the two allignments are different.
-
-1: https://github.com/alistair23/glibc/commits/alistair/rv32.next
-
-Alistair Francis (2):
-  uapi/asm-generic: Allow defining a custom __SIGINFO struct
-  riscv/include/uapi: Define a custom __SIGINFO struct for RV32
-
- arch/riscv/include/uapi/asm/siginfo.h | 32 +++++++++++++++++++++++++++
- include/uapi/asm-generic/siginfo.h    | 32 ++++++++++++++-------------
- 2 files changed, 49 insertions(+), 15 deletions(-)
- create mode 100644 arch/riscv/include/uapi/asm/siginfo.h
-
+diff --git a/include/uapi/asm-generic/siginfo.h b/include/uapi/asm-generic/siginfo.h
+index cb3d6c267181..09b0a1abac14 100644
+--- a/include/uapi/asm-generic/siginfo.h
++++ b/include/uapi/asm-generic/siginfo.h
+@@ -108,23 +108,25 @@ union __sifields {
+ 	} _sigsys;
+ };
+ 
+-#ifndef __ARCH_HAS_SWAPPED_SIGINFO
+-#define __SIGINFO 			\
+-struct {				\
+-	int si_signo;			\
+-	int si_errno;			\
+-	int si_code;			\
+-	union __sifields _sifields;	\
++#ifndef __SIGINFO
++# ifndef __ARCH_HAS_SWAPPED_SIGINFO
++# define __SIGINFO 						\
++struct {							\
++	int si_signo;						\
++	int si_errno;						\
++	int si_code;						\
++	union __sifields _sifields __ARCH_SI_ATTRIBUTES;	\
+ }
+-#else
+-#define __SIGINFO 			\
+-struct {				\
+-	int si_signo;			\
+-	int si_code;			\
+-	int si_errno;			\
+-	union __sifields _sifields;	\
++# else
++# define __SIGINFO 						\
++struct {							\
++	int si_signo;						\
++	int si_code;						\
++	int si_errno;						\
++	union __sifields _sifields __ARCH_SI_ATTRIBUTES;	\
+ }
+-#endif /* __ARCH_HAS_SWAPPED_SIGINFO */
++# endif /* __ARCH_HAS_SWAPPED_SIGINFO */
++#endif /* __SIGINFO */
+ 
+ typedef struct siginfo {
+ 	union {
 -- 
 2.22.0
 
