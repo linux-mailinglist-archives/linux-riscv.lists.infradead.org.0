@@ -2,82 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8636D5EBCA
-	for <lists+linux-riscv@lfdr.de>; Wed,  3 Jul 2019 20:44:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8182F5EF50
+	for <lists+linux-riscv@lfdr.de>; Thu,  4 Jul 2019 00:58:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=79CjsaHnH6ED/3o8PMViiK0tQAXw36nO9CR+Eui9OoU=; b=qvwfO/UdN/PXDV
-	yKtKlQvTae4cBU+WNOacfEn8yFbjSJT8O44yKY+KCQx6d/KuxZzcs3ojihWvpx1u3OAGifFBo633R
-	XaHvM9sSTsrzFAfrgMxfSWbUc3lLrPMNa4EBL/GO8iFB4PVJ457++tRqvC2zZ7wcw1EJfbjZX0yBr
-	lLejivrvCPpC8x7NPDQjmPgpfFt/vrC1p8tNJkNML4OxjQQQEFnlxkcd3B2gMuWTg0w/ZuYywsbax
-	gO8xSzXB/iKlTALW9qzRaYhKGqTOmpPIMjB7+e95qvw4EiIvnO6mf6sPsvV7Gy3WhbwEj7/PU7RfZ
-	18fcWvujMYdFV4SYWcpA==;
+	List-Owner; bh=whM8p0qrHX2BHMeSDAjBIzhH5nzyGgWk71hqff13Tkg=; b=ajLg4SmF62eLt+
+	rqduEG1oFbwNkX+ykGqLc4lqbI2wB6EMFP6CdRUfMi6FUajY0BhAsvAzW5jQETDuRmo3YSJ2r4WtQ
+	PE4q0ymYBckNfmAJKrWTwMEZ69Pgx5li4z8MVuCjmOEKUtsQVFMGygYIixPLKWNEn0zPg5E6RYukK
+	w0vn6MWttvGWe6ZMuL/zC2SjartNaLT1TsPSetD0RFJ9tAATVST6Gqc8BKw0WdMNj4Hy+tFSPViHQ
+	2JD3/mNjqm/KstTcm44ij07vl8zBW/5kiAF2t7wdlVAGz7X9Mi/sGZ+HBHqA2B4Iy+xPzb8e+Z1mh
+	9H1REOFsF5VmCxnIwF0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hikER-0006Ox-4t; Wed, 03 Jul 2019 18:43:51 +0000
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143])
+	id 1hioCG-0005OZ-J9; Wed, 03 Jul 2019 22:57:52 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hikEM-0006OM-E0
- for linux-riscv@lists.infradead.org; Wed, 03 Jul 2019 18:43:47 +0000
-Received: by mail-lf1-x143.google.com with SMTP id p197so2516325lfa.2
- for <linux-riscv@lists.infradead.org>; Wed, 03 Jul 2019 11:43:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9+1ik/vvOveRHv6gC+vDCsa/NHe6vb//8HQCEW5cYfo=;
- b=ON3AqXpT0V7isG9+j7JZBvuqy4Kap3GDnft3GXOvwOEvAH4TZZ/Eo4sp5enHq9mcK1
- xYgaHeZ1s5Z12So406hFfrw+DQcBIj8VhduCBb+4Bkx7My8FsU2wmNHWiJN/osCBKthw
- 6x7O2b/tkLQ8KRvUw/iD9Gp8gShZQpqQsJo+ImQIq6YbleUsyiIPTuSvRtfpr4YBy7hb
- 53v6O6RmJAc3h5GslmR5dSdLqf+gQzuw0VYvoEVyV06CBPoF52GEPnG6mfXEZLLa3+jQ
- RsaW/o6aLqQxidSpWMECeGAf4cDvDxHnGQiwHouPN8us1AZ6Kf19a+81ruAuMXfLWOh0
- T7AQ==
+ id 1hioBu-0005Ck-Fe
+ for linux-riscv@lists.infradead.org; Wed, 03 Jul 2019 22:57:32 +0000
+Received: by mail-io1-xd43.google.com with SMTP id u13so4468243iop.0
+ for <linux-riscv@lists.infradead.org>; Wed, 03 Jul 2019 15:57:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=uJUFOB1+pEjI3tqctrrTDNSdgarQtW2/vrE2Xz2pZ+I=;
+ b=mlmuaMzWXwGNHTh1m9kPgfFo2Tw4pDtMkFdH4Q8+iwU6WOvBBv+g+2gbbLw3KWFaqb
+ 7FLAJSeHJgfzvHDK607Tlpd1IPoKX4mLRsWOcFka5tUNQoVMczZpTuh4/w9bFwzUXmPy
+ UuCtSXoCq+HxS1tFFUH0y6rS8oD7aTWevTQPPr6ajTGvc9FGNDQrr3XF7LflhJeAMWGe
+ SAmyBrF5/20cB6m7c25cdcrCzB28DIl9S1l7bCcUpCLgUd8bNVkX+R1x2h/BvXuYjhMZ
+ YAUMvPh7JwSlOBjQVaVRhrOUuJHYb9xQ1QCSO3s9QqsWqosKNro4zaqPQrztFo4bJFQk
+ bflw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9+1ik/vvOveRHv6gC+vDCsa/NHe6vb//8HQCEW5cYfo=;
- b=cyddhvfMZUAR+b6ZLLk/NsKhbyEVZcOkS32+IqMjkCktIe6zARm2h+y91Go2LPZrE7
- cJkpnI0JMa+kI0dhtNcYY9P96hhmdapGlJxjLxhE5/H9GdCfJrMr5166sjwYQCs2Horr
- jr5e3ury5XT2/h7vYIlhJrrZB69gWNeQImaaGxwU0hxXA+sHzJeCwUpDn906hqH5vo2e
- nDB7HwHYzyX3eWFqrqWGTiohn5mwzAJTBxGTExbx71vblIDi2i/sjdOb0TVDXmvE1Cg5
- OxRp1aEbwExGH68QTTK/wlE/WxfGWXU0n2OUQ/dCpX9svAAUltjiKpk6LCnTB4DpkEIc
- 8+WA==
-X-Gm-Message-State: APjAAAWFi6b0DtBRyLkq9rwSGas3CxQck1vd71njcP0qzGD/aT7p4ph/
- sLvi6nXmaM2J/f79HB9u9gl7EHbbsl18AMjq35U=
-X-Google-Smtp-Source: APXvYqzajfNogCiazIdQFJmJhPWwHxWc+Z5wwmTmzYBOWXkIYTk3INMO8TqgM5RbVH5cV1J3m23oX2p+tF/cALTXTXQ=
-X-Received: by 2002:a05:6512:29a:: with SMTP id
- j26mr363525lfp.44.1562179423948; 
- Wed, 03 Jul 2019 11:43:43 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=uJUFOB1+pEjI3tqctrrTDNSdgarQtW2/vrE2Xz2pZ+I=;
+ b=oOPgwhtWsvyHShFQfXNBgfSrih+bVtOIpDH6Phpati7IIQ+vwNbPsQEXkqtfVrOuOj
+ nkPksapyTPGhPq60aG80AIFyjW78mK1KVc0VV+jYyiL9HNq3IuNuvmJs6+uQiAO/QIim
+ CEJTRX2bDQl6B/aLtIbWgIywG4A4xdxF2COqdbKF0jXvshJeWD2TfOElgRKkvhOXFX7n
+ R1OplVkh6+UQbWbPa7oW7IuJKv+hxjZMhPPaWOi54p8zZKz8AY5YRTrL8I55eoV/MKUT
+ 2Cr9FkftfkNq8m+nJCImKx5CA+Bcs7WynRUlVvMB0YR0fgKF5rhMIyuDczEq48bLgkjP
+ Aa5A==
+X-Gm-Message-State: APjAAAV+fQ94+v7EtxTBzNOl5osvfLyUABXsH64J5Tq70/aDylDaDGUR
+ 1z7HORgL0LPY7eCFZSDAsqfF8w==
+X-Google-Smtp-Source: APXvYqyCZRuDgBNhLr4vL06qazVYpkUtLUhcx0drufzzinnuyuFvTR6JEyWtD29EbtSghjg4j3uMvQ==
+X-Received: by 2002:a5e:9747:: with SMTP id h7mr1968603ioq.299.1562194647999; 
+ Wed, 03 Jul 2019 15:57:27 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ a7sm3741904iok.19.2019.07.03.15.57.27
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 03 Jul 2019 15:57:27 -0700 (PDT)
+Date: Wed, 3 Jul 2019 15:57:26 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Alexandre Ghiti <alex@ghiti.fr>
+Subject: Re: [PATCH v3 0/2] Hugetlbfs support for riscv
+In-Reply-To: <20190701175900.4034-1-alex@ghiti.fr>
+Message-ID: <alpine.DEB.2.21.9999.1907031344330.10620@viisi.sifive.com>
+References: <20190701175900.4034-1-alex@ghiti.fr>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <20190703005202.7578-1-alistair.francis@wdc.com>
- <mvmk1czh9y6.fsf@suse.de>
-In-Reply-To: <mvmk1czh9y6.fsf@suse.de>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 3 Jul 2019 11:40:39 -0700
-Message-ID: <CAKmqyKPn9GBg=n1j-ZpEdCN4Qfi5qfNtEVgpgF8rYRpof4eNDA@mail.gmail.com>
-Subject: Re: [PATCH RESEND 0/2] RISC-V: Handle the siginfo_t offset problem
-To: Andreas Schwab <schwab@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190703_114346_495926_71C30459 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190703_155730_525670_BD05E592 
+X-CRM114-Status: GOOD (  16.36  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:143 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (alistair23[at]gmail.com)
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (alistair23[at]gmail.com)
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -97,35 +98,89 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org,
- Alistair Francis <alistair.francis@wdc.com>, linux-kernel@vger.kernel.org,
- Arnd Bergmann <arnd@arndb.de>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, "H . Peter Anvin" <hpa@zytor.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>, x86@kernel.org,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ Hanjun Guo <guohanjun@huawei.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Mike Kravetz <mike.kravetz@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Jul 3, 2019 at 12:08 AM Andreas Schwab <schwab@suse.de> wrote:
->
-> On Jul 02 2019, Alistair Francis <alistair.francis@wdc.com> wrote:
->
-> > In the RISC-V 32-bit glibc port [1] the siginfo_t struct in the kernel
-> > doesn't line up with the struct in glibc. In glibc world the _sifields
-> > union is 8 byte alligned (although I can't figure out why)
->
-> Try ptype/o in gdb.
+Hi Alex,
 
-That's a useful tip, I'll be sure to use that next time.
+Thanks for writing and testing these patches, and thanks for your patience 
+waiting for reviews and testing.
 
-Alistair
+On Mon, 1 Jul 2019, Alexandre Ghiti wrote:
 
->
-> Andreas.
->
-> --
-> Andreas Schwab, SUSE Labs, schwab@suse.de
-> GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
-> "And now for something completely different."
+> This series introduces hugetlbfs support for both riscv 32/64. Riscv32           
+> is architecturally limited to huge pages of size 4MB whereas riscv64 has         
+> 2MB/1G huge pages support. Transparent huge page support is not                  
+> implemented here, I will submit another series later.                            
+>                                                                                  
+
+[ ... ]
+
+> This series was validated using libhugetlbfs testsuite ported to riscv64         
+> without linker script support.                                                   
+> (https://github.com/AlexGhiti/libhugetlbfs.git, branch dev/alex/riscv).          
+>                                                                                  
+> - libhugetlbfs testsuite on riscv64/2M:                                          
+>   - brk_near_huge triggers an assert in malloc.c, does not on x86.               
+
+I was able to reproduce the 2MB megapages test results on rv64 QEMU.  On a 
+HiFive Unleashed, though, a few more tests fail:
+
+- icache_hygiene fails ("icache unclean")
+
+  # LD_LIBRARY_PATH=obj64 ./tests/obj64/icache-hygiene
+  Starting testcase "./tests/obj64/icache-hygiene", pid 732
+  SIGILL at 0x15559fff80 (sig_expected=0x15559fff80)
+  SIGILL at 0x1555dfff80 (sig_expected=0x1555dfff80)
+  SIGILL at 0x15561fff80 (sig_expected=0x15561fff80)
+  SIGILL at 0x15565fff80 (sig_expected=0x15565fff80)
+  SIGILL at 0x15569fff80 (sig_expected=0x15569fff80)
+  SIGILL at 0x1556dfff80 (sig_expected=(nil))
+  FAIL   SIGILL somewhere unexpected
+  #
+
+- One of the heapshrink tests fails ("Heap did not shrink")
+
+  # LD_PRELOAD="obj64/libhugetlbfs_privutils.so obj64/libhugetlbfs.so tests/obj64/libheapshrink.so" HUGETLB_MORECORE_SHRINK=yes HUGETLB_MORECORE=yes tests/obj64/heapshrink
+  Starting testcase "tests/obj64/heapshrink", pid 753
+  FAIL    Heap did not shrink
+  #
+
+Some of these may be related to the top-down mmap work, but there might be 
+more work to do on actual hardware.
+
+> - libhugetlbfs testsuite on riscv64/1G:                                          
+>   - brk_near_huge triggers an assert in malloc.c, does not on x86.               
+>   - mmap-gettest, mmap-cow: testsuite passes the number of default free          
+>     pages as parameters and then fails for 1G which is not the default.          
+>     Otherwise succeeds when given the right number of pages.                     
+>   - map_high_truncate_2 fails on x86 too: 0x60000000 is not 1G aligned           
+>     and fails at line 694 of fs/hugetlbfs/inode.c.                               
+>   - heapshrink on 1G fails on x86 too, not investigated.                         
+>   - counters.sh on 1G fails on x86 too: alloc_surplus_huge_page returns          
+>     NULL in case of gigantic pages.                                              
+>   - icache-hygiene succeeds after patch #3 of this series which lowers           
+>     the base address of mmap.                                                    
+>   - fallocate_stress.sh on 1G never ends, on x86 too, not investigated.          
+
+I can reproduce some of these here on QEMU.  But for reasons that are 
+unclear to me, 1G gigapages aren't working on the HiFive Unleashed here.
+
+In any case, these patches are clearly a good start, so I've queued 
+them for v5.3.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
