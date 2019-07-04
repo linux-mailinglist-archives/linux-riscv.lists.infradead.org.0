@@ -2,74 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B3815F64A
-	for <lists+linux-riscv@lfdr.de>; Thu,  4 Jul 2019 12:05:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EC905F73E
+	for <lists+linux-riscv@lfdr.de>; Thu,  4 Jul 2019 13:35:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fJVNeTEyuRQM3BUzJVOm+0nN3oA0dYkXDKR/oGrsa+8=; b=PaOLpREVwro1rh
-	tCYOProCcRc3Dd9SromwpXSdSXiQ/hCLZNoWrv23OvO1VhMrR/Rnb6YDeYewEdHuN6G6KZVEI9sc7
-	nhfOrJqoOdga2UNoS71/PcowEEHwy35thEu21eCHBI6xp4UmwNVlyoVnGleZQUqnFwBMj9WMsDZ6I
-	XIyUq0k3jRO9GHXo8YZv53Oh0hJhatB+6MGRnpntA+xvgpJNcCIlPX2LM6a2wRv0LipXsGCA8KJAd
-	YZh59bMBV1EMOPKCY/5ICJ2By+G37Bswuc1cruRaDkcFOWP/Vggfm7DWt2+9mtT84PT9GI5k+BeHK
-	n8oqtGVqEncNM+nuOk3g==;
+	List-Owner; bh=gKGyf29bF48jKhtf8whlzXhsLttJ8bFeh9kYYp4IXMc=; b=OG2eyUFjdTPDfW
+	MsLVogf+F5teNUpzudZ3hs9Ay7ipaA2m0p2eNr/LJK2VtTkqUHbcCKjGx9+SQZq/Ocnw2y7RplZ8J
+	FO1vKGJG6tASYH99VElEFVw6fI0rFQNEk/XVHjySTfwOnbRaEuK3Vpj4VmcXBMJ8KM7fLXdLKCHQa
+	3K7H178g0pjn/L7FAcqfbwQ+6egrXMRBfl6HHiyGEtJY+Vp5f9/5pKgTtdF9M5eD7/9pOSMVlIneL
+	tJSggoh/vNcRmqBVX+Ijt74tBFXQJIbsfZDnFI8fCAaNEZluuUg1vB4w3yUiEth/PH8FecIkVvADi
+	/mY0WnWxqkbKq1AXc41Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hiycX-0004bf-Ei; Thu, 04 Jul 2019 10:05:41 +0000
+	id 1hj01Z-0003sc-9H; Thu, 04 Jul 2019 11:35:37 +0000
 Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hiycT-0004ax-Ak
- for linux-riscv@lists.infradead.org; Thu, 04 Jul 2019 10:05:38 +0000
-Received: by mail-io1-xd41.google.com with SMTP id h6so11744080ioh.3
- for <linux-riscv@lists.infradead.org>; Thu, 04 Jul 2019 03:05:37 -0700 (PDT)
+ id 1hj01P-0003rN-J6
+ for linux-riscv@lists.infradead.org; Thu, 04 Jul 2019 11:35:30 +0000
+Received: by mail-io1-xd41.google.com with SMTP id u19so12160164ior.9
+ for <linux-riscv@lists.infradead.org>; Thu, 04 Jul 2019 04:35:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=krsHjn9hhUUgOCG6JlKxY/1xOMPVr2m8LyxFmEgeRxM=;
- b=EsM+JT0MSnDEohwIk0zGab4nJRLUOadnVyFwZHmLMW4SjneRTyYxPtAcwrMgAxr8x7
- j+Qa+m4LhCtLVRhSY2LBCno+Ro5Nrv0qVhtNytYVyp5pAYqoXptLa+ieRzSMR+gibj0+
- CeR8Lj3YRwX6xzoc5SdSfDXOkImimH5hYulTuBIULtZJOcQm3AR//3Dx2sU5iymnQfNR
- EPr2CwTTXVAA50qMC2RMLJYaEr0udjRAHY/fQs5D6yT3pgyJncbxxg+STfrTsQG9QCDV
- YCWIfU831YRDgg+grt03ZGhYQZcjhcdFPCZ6jvGM+i0JTBHiTXf+mlB6a4Tdy9yYRJt+
- haMg==
+ bh=3Jp4ssk/tg2iD8nW0ro2U7UKtJbPzstlWX8tfroZV5Q=;
+ b=LtQddHxOwEM7iJpSljY6j4pPGJF2FOg4bbny538Cm89igIF6rP1CaCJh0lw9pagf4z
+ r9PhETn5XbnST8Pd2jVKIJN++Q7a0Ioqbp0zLw/2RUXVMw2NWZxsVTt5LuQ9QjGiM8te
+ Hci78N0siChPeIwHb2rGX7jWup+bvLk5qhM7TBcLViacr4HP+Qi6jNc97GHTfq+qDyuB
+ xQBg5K1UOk9L0N9SnpUm0nEo2KBOiDqO8Cr7TBx3TiKpCWV6BeYD2D85rfFtMvHuvtNZ
+ db2nO8Oc/CaDMG9I06sfJHT2fAaYlITMARosY1goa4ozJAG2/sizqb/XVAW9mOlxNui2
+ POQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=krsHjn9hhUUgOCG6JlKxY/1xOMPVr2m8LyxFmEgeRxM=;
- b=WBJ/bZ6kXMKe3VhiAlR3XPHWl41LluhFQhC7crUIGYLwI7rAwxy3g0AZ36oqcK0U41
- hX6xhBCCTYfHUnj5b4NQ4qmGzbLvO3ojZ1F+2czjjSKX8t8luRm6XRDfGUWLKp7tnWXi
- wCWcUJO97D5fB7Iz9KB5WkWlPN3bTD8q+hhDbTZynduxfx6hm/gT4nfSwpIkIhuwuuzB
- htwYkkPFpM0ICEAK+4XUQFwSlp4xvDnFTeCQ4qDq1R86+qL4cFp2aye0Aq/++sGE8rzA
- 8JPvQKTFhYsX+Iqod4j1mPDqAL+FvLKNPrfwBSOgUBROAkWzsZRaYMOriKwU//ndzyDv
- i1tg==
-X-Gm-Message-State: APjAAAXGQMwp2RuNTMhxlR5t81JaeDDBlmDo4yQ8z3eKqT/2HxCLwZPv
- Ms4l+FZg/Z7evhB51k9Qv+y75Jp8/rM=
-X-Google-Smtp-Source: APXvYqy+Vw0ijCA9nUuvRgEtpZuy2PgvgfbfyYaQUmWc/vxvlVfF6B+Obh6CGc8Gifw0epaDFsRiEw==
-X-Received: by 2002:a5d:9d97:: with SMTP id 23mr3527890ion.204.1562234736616; 
- Thu, 04 Jul 2019 03:05:36 -0700 (PDT)
+ bh=3Jp4ssk/tg2iD8nW0ro2U7UKtJbPzstlWX8tfroZV5Q=;
+ b=J2gS/2XBJDi9AarN9DkhV0FAHgsI/n3tSxl2kxWXL24l+C6v3B6jw97rmObIFwC9GA
+ IkmeZKIkBWe51WLnBMCxVZ+/cNhjuPGAsYzZgQHUvdpNt9HpvVoQ01GCqfQsnBJQCvmg
+ ynxITVZ7WJXKJTKKtMOdEYoyemxr97u70fa0h/iX+1JSYdlCrzc9UDY5M7b8+2CroUPW
+ 1J2IPEN6my1pTcHYUT9A9pO6EnFDJFO8LMJQ10yAhcVuKy1UAtB78UoNbhacmVvYuNvU
+ 5szZn3Y7LAqiw+J8XG1IVLlhD8p+4U0bGApQLRGQQr7g/ShfscwexdrPn8w2aUnEqo9/
+ wXmQ==
+X-Gm-Message-State: APjAAAU5l4asH9r9yk31yVObs2nnaHqY7obLpaxmhmEdCFWME5E+pE9z
+ CAcfkx296TxVG7VCY/LHKcVZ5w==
+X-Google-Smtp-Source: APXvYqynvovPh8WYFyY8sEb0/88FT+bBN0Il6kgEz6q0BL4v6jisjzQGkuUtgxSYQzDmiQeF+0rmbg==
+X-Received: by 2002:a6b:dd17:: with SMTP id f23mr4103381ioc.213.1562240124009; 
+ Thu, 04 Jul 2019 04:35:24 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- m25sm4267985ion.35.2019.07.04.03.05.35
+ i3sm3931703ion.9.2019.07.04.04.35.23
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 04 Jul 2019 03:05:35 -0700 (PDT)
-Date: Thu, 4 Jul 2019 03:05:35 -0700 (PDT)
+ Thu, 04 Jul 2019 04:35:23 -0700 (PDT)
+Date: Thu, 4 Jul 2019 04:35:23 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Palmer Dabbelt <palmer@sifive.com>
-Subject: Re: [PATCH] MAINTAINERS: Add Paul as a RISC-V maintainer
-In-Reply-To: <20190628002753.5573-1-palmer@sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1907040304580.10620@viisi.sifive.com>
-References: <20190628002753.5573-1-palmer@sifive.com>
+To: Alexandre Ghiti <alex@ghiti.fr>
+Subject: Re: [PATCH v3 0/2] Hugetlbfs support for riscv
+In-Reply-To: <c06441fd-0022-8fb9-36b0-2f5d956c3ed5@ghiti.fr>
+Message-ID: <alpine.DEB.2.21.9999.1907040429170.24872@viisi.sifive.com>
+References: <20190701175900.4034-1-alex@ghiti.fr>
+ <alpine.DEB.2.21.9999.1907031344330.10620@viisi.sifive.com>
+ <c06441fd-0022-8fb9-36b0-2f5d956c3ed5@ghiti.fr>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190704_030537_371667_788C2A35 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190704_043527_880631_04E09C8A 
+X-CRM114-Status: GOOD (  16.40  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -99,22 +100,83 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Hanjun Guo <guohanjun@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Catalin Marinas <catalin.marinas@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Will Deacon <will.deacon@arm.com>, x86@kernel.org,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
+ Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+ "H . Peter Anvin" <hpa@zytor.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Mike Kravetz <mike.kravetz@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 27 Jun 2019, Palmer Dabbelt wrote:
+On Thu, 4 Jul 2019, Alexandre Ghiti wrote:
 
-> The RISC-V port has grown significantly over the past year.  Paul's been
-> helping out for a while ago.  We agreed in person that he'd take over
-> collecting the patches and submitting the PRs, but it looks like I
-> forgot to make it official.
+> On 7/4/19 12:57 AM, Paul Walmsley wrote:
+> > On Mon, 1 Jul 2019, Alexandre Ghiti wrote:
+> > 
+> > > - libhugetlbfs testsuite on riscv64/2M:
+> > >    - brk_near_huge triggers an assert in malloc.c, does not on x86.
+> > I was able to reproduce the 2MB megapages test results on rv64 QEMU.  On a
+> > HiFive Unleashed, though, a few more tests fail:
+
+[ ... ]
+
+> > - One of the heapshrink tests fails ("Heap did not shrink")
+> > 
+> >    # LD_PRELOAD="obj64/libhugetlbfs_privutils.so obj64/libhugetlbfs.so
+> > tests/obj64/libheapshrink.so" HUGETLB_MORECORE_SHRINK=yes
+> > HUGETLB_MORECORE=yes tests/obj64/heapshrink
+> >    Starting testcase "tests/obj64/heapshrink", pid 753
+> >    FAIL    Heap did not shrink
+> >    #
+> > 
+> > Some of these may be related to the top-down mmap work, but there might be
+> > more work to do on actual hardware.
 > 
-> Signed-off-by: Palmer Dabbelt <palmer@sifive.com>
+> 
+> I don't think this is related to top-down mmap layout, this test only 
+> mmaps a huge page. It might be interesting to see more verbose messages 
+> adding HUGETLB_VERBOSE=99 when launching the test.
 
-Thanks, queued for v5.3 through the RISC-V tree.
+Here is the HUGETLB_VERBOSE=99 output from the above heapshrink test on an 
+FU540:
+
+libhugetlbfs [(none):86]: INFO: Found pagesize 2048 kB
+libhugetlbfs [(none):86]: INFO: Parsed kernel version: [5] . [2] . [0]  [pre-release: 6]
+libhugetlbfs [(none):86]: INFO: Feature private_reservations is present in this kernel
+libhugetlbfs [(none):86]: INFO: Feature noreserve_safe is present in this kernel
+libhugetlbfs [(none):86]: INFO: Feature map_hugetlb is present in this kernel
+libhugetlbfs [(none):86]: INFO: Kernel has MAP_PRIVATE reservations.  Disabling heap prefaulting.
+libhugetlbfs [(none):86]: INFO: Kernel supports MAP_HUGETLB
+libhugetlbfs [(none):86]: INFO: HUGETLB_SHARE=0, sharing disabled
+libhugetlbfs [(none):86]: INFO: HUGETLB_NO_RESERVE=no, reservations enabled
+libhugetlbfs [(none):86]: INFO: No segments were appropriate for remapping
+libhugetlbfs [(none):86]: INFO: setup_morecore(): heapaddr = 0x2aaac00000
+libhugetlbfs [(none):86]: INFO: hugetlbfs_morecore(1052672) = ...
+libhugetlbfs [(none):86]: INFO: heapbase = 0x2aaac00000, heaptop = 0x2aaac00000, mapsize = 0, delta=1052672
+libhugetlbfs [(none):86]: INFO: Attempting to map 2097152 bytes
+libhugetlbfs [(none):86]: INFO: ... = 0x2aaac00000
+libhugetlbfs [(none):86]: INFO: hugetlbfs_morecore(0) = ...
+libhugetlbfs [(none):86]: INFO: heapbase = 0x2aaac00000, heaptop = 0x2aaad01000, mapsize = 200000, delta=-1044480
+libhugetlbfs [(none):86]: INFO: ... = 0x2aaad01000
+Starting testcase "tests/obj64/heapshrink", pid 86
+libhugetlbfs [(none):86]: INFO: hugetlbfs_morecore(33558528) = ...
+libhugetlbfs [(none):86]: INFO: heapbase = 0x2aaac00000, heaptop = 0x2aaad01000, mapsize = 200000, delta=32514048
+libhugetlbfs [(none):86]: INFO: Attempting to map 33554432 bytes
+libhugetlbfs [(none):86]: INFO: ... = 0x2aaad01000
+FAIL    Heap did not shrink
+
+
+This is with this hugepage configuration:
+
+# /usr/local/bin/hugeadm --pool-list
+      Size  Minimum  Current  Maximum  Default
+   2097152       64       64       64        *
+#
 
 
 - Paul
