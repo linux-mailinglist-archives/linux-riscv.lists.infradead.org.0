@@ -2,75 +2,69 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BB0B61BAF
-	for <lists+linux-riscv@lfdr.de>; Mon,  8 Jul 2019 10:27:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9892061EC2
+	for <lists+linux-riscv@lfdr.de>; Mon,  8 Jul 2019 14:49:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=WTvloNKp0fztIhZHZUL8DHLzAV6eE1nxmRF3gAScLT4=; b=fSbNnrynCBkW/BL3yTCB38TP7
-	YMqXqmtFrr58G0RGHlv36G7XhjF8svRwj3BZKDFyiweINM02sqykChdsbg5WKkmwwcVXUN+txOZR9
-	ku+mDY6mUtmoQCK7uTN3Lp7msDkK65342qNlW+/RFjhR72ywW4wBJFJ4u2mxtVW3Ku2c/fup+mvUs
-	IgCZRDGGFHJmVOzR1AlNMxqZqViRWlHhTUsNE6T7VSSVn6nr4RpS8G6luSj/+oFr1E2IJTAEqaVGn
-	TuLCv1Px2HvUqEtVie+mZ8f7trrSZtZ5b/Gyq48d/1ZIj8LYKbDO0BVXgQZ94gAgMdJG3Yi6/hDMP
-	T611r9f/g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Tz0hVp7mzCyw/c9Sdso1LwkvAeVNv22IsIHrXbY1iPs=; b=pvX+OpTI8uEP9C
+	3nK6sIzrAArB+H8awAjkLfym3yvN1GyN8CuxvdkBBjniO1pxs72mvGtvASoBykm+88ckVFeA29M3j
+	pwrALJOcmfZJpTaKZkOORNQG2g/UjRir9uFAC5GXUBV4oXMMxzhNP5WR8nunsbuZ1+IGy271BkHoC
+	+Oj4ac+NYgzfqyLclpmQLrI3DO8uL/wGWZLEiTIAGVU0cKP3iOXYPYDNzxY/Zqbsn8yzXYyoZgzqd
+	tMkt9ttPUjCZ7QBcJiGvmTACcVfHTdDb6smhz0/2eO5Ild9OZmG4WTnGygm0/kDzVXvMQHl6smxRt
+	lhPU3xQAtL2DLT2r2SiA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hkOyz-0002XU-Ob; Mon, 08 Jul 2019 08:26:45 +0000
-Received: from mail-lj1-f193.google.com ([209.85.208.193])
+	id 1hkT4t-0000GQ-3B; Mon, 08 Jul 2019 12:49:07 +0000
+Received: from mout.kundenserver.de ([217.72.192.74])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hkOyu-0002Wk-Qh
- for linux-riscv@lists.infradead.org; Mon, 08 Jul 2019 08:26:42 +0000
-Received: by mail-lj1-f193.google.com with SMTP id d24so5875507ljg.8
- for <linux-riscv@lists.infradead.org>; Mon, 08 Jul 2019 01:26:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=H9Jhir71IPIyzQGq+vtRBmdG8XRrnz6d01HWPy/tDXY=;
- b=jG4h6M2OTP+Jf5mjdfHGSQFfETaq1pkX4cHOMg5K18m2ViDU5gP2XnAZ/ESd6g/Y7N
- djzcmrwFhQkVBS584fhuFHplfBxO8yDUTla6hrNUF5CYqm2me8BY3IEdLjQOHgiiJRzP
- eLpy8h2IlCSXkr4fgOGeLLzFrFH8iQ7884/obhQBdJzGkYMTl5L2weGnnvdCuLAdoZrS
- 9BHHm3QpyfMxhLn0GfPo7AgviD8XdDVCCCIXywAZczko7RywhvuJ+tlamlYNLDWlTqPl
- pYtUijjpoLT+QrYnDrZrxPXcchZEU7dd0gXAXI77N+A6J/UgggL0awZBXZyqUU2fb/Zs
- dj2w==
-X-Gm-Message-State: APjAAAVbyDYNxPXLp77Ffy7gdRGeEhFLdyoeAwzcBwndQ0/JMz//Mpvb
- iOy9nbp/CVDtCa9Wb/PkIrhJaQ==
-X-Google-Smtp-Source: APXvYqxXI/Ygue1Ac50jCKVSmx6Cuo5Nc2NT6pzqbq/Iw8sN98mexSHmndyMkZYR9vs57B/cyO2EhQ==
-X-Received: by 2002:a2e:80c8:: with SMTP id r8mr9586901ljg.168.1562574394354; 
- Mon, 08 Jul 2019 01:26:34 -0700 (PDT)
-Received: from localhost ([134.17.27.127])
- by smtp.gmail.com with ESMTPSA id b27sm1558817ljb.11.2019.07.08.01.26.33
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 08 Jul 2019 01:26:33 -0700 (PDT)
-Date: Mon, 08 Jul 2019 01:26:33 -0700 (PDT)
-X-Google-Original-Date: Mon, 08 Jul 2019 01:23:27 PDT (-0700)
-Subject: Re: [PATCH 16/17] riscv: clear the instruction cache and all
- registers when booting
-In-Reply-To: <78919862d11f6d56446f8fffd8a1a8c601ea5c32.camel@wdc.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Atish Patra <Atish.Patra@wdc.com>
-Message-ID: <mhng-3f43f4b8-473d-429d-9a09-12d3542e33bc@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ id 1hkT4o-0000Fm-PI
+ for linux-riscv@lists.infradead.org; Mon, 08 Jul 2019 12:49:04 +0000
+Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
+ (mreue108 [212.227.15.145]) with ESMTPA (Nemesis) id
+ 1MrhHm-1iGSIj2jCe-00nh6M; Mon, 08 Jul 2019 14:48:45 +0200
+From: Arnd Bergmann <arnd@arndb.de>
+To: Nicolas Ferre <nicolas.ferre@microchip.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
+Subject: [PATCH] [net-next] macb: fix build warning for !CONFIG_OF
+Date: Mon,  8 Jul 2019 14:48:23 +0200
+Message-Id: <20190708124840.3616530-1-arnd@arndb.de>
+X-Mailer: git-send-email 2.20.0
+MIME-Version: 1.0
+X-Provags-ID: V03:K1:X+taGt58qrgWMOLWMf4Bvf333mJptyDHQK7HA/HpVPPyZF7xrMQ
+ tjuy5Qx2f3YuT6ZgYHZJn8eFFjPfNQxAnOzZsHk4xaUaqhWqqHwItVDRjyDGRp7qiQFmkyi
+ sgP3yzk7u0HzZ6I4I2LDVxXSbZnM7plMQR/LNRJ5djXPcQc0D7G++x/PlOagPjcPDVJW6HL
+ +7Ksk5XLkP5+Xco33sUIQ==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0186pYpNvdU=:TDOWwKRi0pGg6Giz7TyYjK
+ oqGpJyjCwnbUFBXq/8lJW9MEOOzaskgFqY4pT8U7iWfGCER4waEjiVORkYV1ajdA8U6pN2ZFl
+ 1qtZD+TOweWKTKCb4B9rttD3Y4aRx51uE32Vl8EsRHdBR9mcAUu8xo+Hs8BV0NGsfqmyBN0uD
+ TjtoLDmatHiZqgW78tZBjebWmOFCIpZtOJngEExmInL7Oe+sLi6dHwO+d3pHB4TEIZxyMo+jn
+ 27EJld3BGiJzm39XYRjKT6kMtLrS6zg2KYAEj30J/uKNvvnvNeZ/H7oVJArvVSiUaAsvih4mr
+ YWbN9+3rFqf+jgv4ikHAybdMI4bNYNVddWiID+9k14A0Fvg4o/XMuLQBIT5YjtQH6ayWDtsVN
+ NOAFfAB0zL4DwgM19+3L6o3s6vGf1058VwQOtP+anwDrrCzgcHUrzUhhJokh41ETsFOwW5DGw
+ SaFn6nJ0conYI/jHon06vYrByVVvgBD8M6nNqJxlmUjK1/VIrkA1YvPEJtxCNTY178Jvy6uZj
+ 5pUkQ86dj7xH1tYTtvUsxikUC/pnq2ymCMcZm4wB34fJ6fp0TWWmFsZAkbzMMfhX/s5BeD313
+ GgoJ8+1MJSQzRwxn6R2JHypu9snUDib01QBrsrHUp6BnhkTaoun6KexWptJsmZRhChJ8pprgK
+ ySiUz3Iwpbg5zVGn4loe3oKUiwo5SmA5Po8RLaXQ3VQb7adhpoOOGdrAISWzYVNAEmETlu0xG
+ kfDOKtx023fLuH2GyHsJewYgoWvGZBL87jB9Vw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190708_012640_860543_14F4B5E6 
-X-CRM114-Status: GOOD (  15.92  )
-X-Spam-Score: 1.6 (+)
+X-CRM114-CacheID: sfid-20190708_054903_117595_B88A3022 
+X-CRM114-Status: GOOD (  10.87  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.6 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.208.193 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.208.193 listed in wl.mailspike.net]
+ no trust [217.72.192.74 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 1.3 PDS_NO_HELO_DNS        High profile HELO but no A record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,156 +76,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, linux-kernel@vger.kernel.org,
- linux-mm@kvack.org, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>
+Cc: Arnd Bergmann <arnd@arndb.de>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Yash Shah <yash.shah@sifive.com>,
+ Harini Katakam <harini.katakam@xilinx.com>, linux-riscv@lists.infradead.org,
+ Claudiu Beznea <claudiu.beznea@microchip.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 01 Jul 2019 14:26:18 PDT (-0700), Atish Patra wrote:
-> On Mon, 2019-06-24 at 07:43 +0200, Christoph Hellwig wrote:
->> When we get booted we want a clear slate without any leaks from
->> previous
->> supervisors or the firmware.  Flush the instruction cache and then
->> clear
->> all registers to known good values.  This is really important for the
->> upcoming nommu support that runs on M-mode, but can't really harm
->> when
->> running in S-mode either.
-> 
-> That means it should be done for S-mode as well. Right ?
-> I see the reset code is enabled only for M-mode only.
-> 
->>   Vaguely based on the concepts from opensbi.
->> 
->> Signed-off-by: Christoph Hellwig <hch@lst.de>
->> ---
->>  arch/riscv/kernel/head.S | 85
->> ++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 85 insertions(+)
->> 
->> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
->> index a4c170e41a34..74feb17737b4 100644
->> --- a/arch/riscv/kernel/head.S
->> +++ b/arch/riscv/kernel/head.S
->> @@ -11,6 +11,7 @@
->>  #include <asm/thread_info.h>
->>  #include <asm/page.h>
->>  #include <asm/csr.h>
->> +#include <asm/hwcap.h>
->>  
->>  __INIT
->>  ENTRY(_start)
->> @@ -19,6 +20,12 @@ ENTRY(_start)
->>  	csrw CSR_XIP, zero
->>  
->>  #ifdef CONFIG_M_MODE
->> +	/* flush the instruction cache */
->> +	fence.i
->> +
->> +	/* Reset all registers except ra, a0, a1 */
->> +	call reset_regs
->> +
->>  	/*
->>  	 * The hartid in a0 is expected later on, and we have no
->> firmware
->>  	 * to hand it to us.
->> @@ -168,6 +175,84 @@ relocate:
->>  	j .Lsecondary_park
->>  END(_start)
->>  
->> +#ifdef CONFIG_M_MODE
->> +ENTRY(reset_regs)
->> +	li	sp, 0
->> +	li	gp, 0
->> +	li	tp, 0
->> +	li	t0, 0
->> +	li	t1, 0
->> +	li	t2, 0
->> +	li	s0, 0
->> +	li	s1, 0
->> +	li	a2, 0
->> +	li	a3, 0
->> +	li	a4, 0
->> +	li	a5, 0
->> +	li	a6, 0
->> +	li	a7, 0
->> +	li	s2, 0
->> +	li	s3, 0
->> +	li	s4, 0
->> +	li	s5, 0
->> +	li	s6, 0
->> +	li	s7, 0
->> +	li	s8, 0
->> +	li	s9, 0
->> +	li	s10, 0
->> +	li	s11, 0
->> +	li	t3, 0
->> +	li	t4, 0
->> +	li	t5, 0
->> +	li	t6, 0
->> +	csrw	sscratch, 0
->> +
->> +#ifdef CONFIG_FPU
->> +	csrr	t0, misa
->> +	andi	t0, t0, (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D)
->> +	bnez	t0, .Lreset_regs_done
->> +
->> +	li	t1, SR_FS
->> +	csrs	sstatus, t1
+When CONFIG_OF is disabled, we get a harmless warning about the
+newly added variable:
 
-You need to check that the write stuck and branch around the FP instructions.
-Specifically, CONFIG_FPU means there may be an FPU, not there's definately an
-FPU.  You should also turn the FPU back off after zeroing the state.
+drivers/net/ethernet/cadence/macb_main.c:48:39: error: 'mgmt' defined but not used [-Werror=unused-variable]
+ static struct sifive_fu540_macb_mgmt *mgmt;
 
->> +	fmv.s.x	f0, zero
->> +	fmv.s.x	f1, zero
->> +	fmv.s.x	f2, zero
->> +	fmv.s.x	f3, zero
->> +	fmv.s.x	f4, zero
->> +	fmv.s.x	f5, zero
->> +	fmv.s.x	f6, zero
->> +	fmv.s.x	f7, zero
->> +	fmv.s.x	f8, zero
->> +	fmv.s.x	f9, zero
->> +	fmv.s.x	f10, zero
->> +	fmv.s.x	f11, zero
->> +	fmv.s.x	f12, zero
->> +	fmv.s.x	f13, zero
->> +	fmv.s.x	f14, zero
->> +	fmv.s.x	f15, zero
->> +	fmv.s.x	f16, zero
->> +	fmv.s.x	f17, zero
->> +	fmv.s.x	f18, zero
->> +	fmv.s.x	f19, zero
->> +	fmv.s.x	f20, zero
->> +	fmv.s.x	f21, zero
->> +	fmv.s.x	f22, zero
->> +	fmv.s.x	f23, zero
->> +	fmv.s.x	f24, zero
->> +	fmv.s.x	f25, zero
->> +	fmv.s.x	f26, zero
->> +	fmv.s.x	f27, zero
->> +	fmv.s.x	f28, zero
->> +	fmv.s.x	f29, zero
->> +	fmv.s.x	f30, zero
->> +	fmv.s.x	f31, zero
->> +	csrw	fcsr, 0
->> +#endif /* CONFIG_FPU */
->> +.Lreset_regs_done:
->> +	ret
->> +END(reset_regs)
->> +#endif /* CONFIG_M_MODE */
->> +
->>  __PAGE_ALIGNED_BSS
->>  	/* Empty zero page */
->>  	.balign PAGE_SIZE
-> 
-> -- 
-> Regards,
-> Atish
+Move the variable closer to its use inside of the #ifdef.
+
+Fixes: c218ad559020 ("macb: Add support for SiFive FU540-C000")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/net/ethernet/cadence/macb_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+index a27d32f69de9..5ca17e62dc3e 100644
+--- a/drivers/net/ethernet/cadence/macb_main.c
++++ b/drivers/net/ethernet/cadence/macb_main.c
+@@ -45,8 +45,6 @@ struct sifive_fu540_macb_mgmt {
+ 	struct clk_hw hw;
+ };
+ 
+-static struct sifive_fu540_macb_mgmt *mgmt;
+-
+ #define MACB_RX_BUFFER_SIZE	128
+ #define RX_BUFFER_MULTIPLE	64  /* bytes */
+ 
+@@ -3628,6 +3626,8 @@ static int macb_init(struct platform_device *pdev)
+ /* max number of receive buffers */
+ #define AT91ETHER_MAX_RX_DESCR	9
+ 
++static struct sifive_fu540_macb_mgmt *mgmt;
++
+ /* Initialize and start the Receiver and Transmit subsystems */
+ static int at91ether_start(struct net_device *dev)
+ {
+-- 
+2.20.0
+
 
 _______________________________________________
 linux-riscv mailing list
