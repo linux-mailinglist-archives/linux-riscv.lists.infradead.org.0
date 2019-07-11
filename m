@@ -2,83 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FAD265F59
-	for <lists+linux-riscv@lfdr.de>; Thu, 11 Jul 2019 20:09:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AC7866019
+	for <lists+linux-riscv@lfdr.de>; Thu, 11 Jul 2019 21:42:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X14yq5KTbHV8BZ+YBPhKmRGiyJRxpVwOk5QSE2dLb8E=; b=UFyehGSbxQYVDI
-	TMVXrcXYHarQo1t2zDlDzPWwm3eI3C+DZ+IzMpf7YfWovx4wzXmHlFG35yPt8Y20zZNej6nd7BUr4
-	wsHPEu+QkTp4VLH6+Y8ys9miD0OXTrrs/w+PiOQ1dWS8Yi8Iz+0zc45dhpblUyIHa86EvBqqSkXJK
-	gg/N+Ku3rL5Dd093TmGCnbhF4/wDz2YUSZMluOBQtBpFDl/73dzisdvb2d1vK9pWPgX3H6t9CVoAW
-	OKTCQzPp8kbsky8e+0h7Krms/KfnjXTCNWT8fZJ0IGugv7YQUW+eT9Y+jx0vKbaC3IVR9ZgUj4Utu
-	mI7pB8i4t+fBs5YZC1zg==;
+	List-Owner; bh=e45aIYEbupg42Vjo37aUXM0w/JcdsT/3vY/WZqSvRK0=; b=aIXNvCBE4uf1gK
+	bTzrKKYr+0DizWY1r1bJcPK0mRRJrLFs8Zmomqurkv1k807zqeekzu+7t7cSkgHYVXl8MDqgNxW2U
+	kK4ou2SvPu0+q/NHigB5v6mNMEOmnhLOjUvhzMp7d24FZ8NY0hfIqZcyIu41ygZ7lLsv2ddEFMyN4
+	/ILl/vT7/FP2qW9SAT6jUipIJm01C18ZfiqGOpf01iIwwgo8j49xPm09kfKR2H4bzTzxeqQKtPbZp
+	op9zcsXdg1IFE/tz4j3KY+AjoZjSnLnkOSA63MnlxTzkdmlTUYneOfV53ypK8YlK7kN2NfogrwU1y
+	VG8h9QRw+FbWcFN/h+pw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hldVH-0003ce-KH; Thu, 11 Jul 2019 18:09:11 +0000
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
+	id 1hlexf-0004EU-EC; Thu, 11 Jul 2019 19:42:35 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hldVC-0003by-0W
- for linux-riscv@lists.infradead.org; Thu, 11 Jul 2019 18:09:08 +0000
-Received: by mail-lj1-x244.google.com with SMTP id t28so6716558lje.9
- for <linux-riscv@lists.infradead.org>; Thu, 11 Jul 2019 11:09:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ORSK7hrVpr4bYzzw0/gUGtg9vUuOQ0n4iwS740ZT3Yc=;
- b=dMIDOVMSnU2LjS9j22H7KtwQ3UWDt23hyWr8HWJd5lyZ5NHmI4uUikZIThmvO5Jgbi
- LymLiryMUiSxckVYp6lBjWKL71XXwrU3S2F2bJryk+VzihNwe7iEI0m+NQj7y1ZXh2Zf
- rj8b7OZpAIwNRMJ7Cb2enHyw7v14d+V+x3HoQ1ipLSMhvin/m2IJfQs2+59DbncrylSQ
- EUK81lNHcVZ3mfwXJw7+aOf2USw5ein1HziKBH/Ui7Jvk7Zz4uB+j0hHJVtUnnJvUaNW
- nxTS4ncX0ZqqZ0MyamcYm9OxlshEdnzX8mxlkzuE7i8+8HY+W0mhh9+4iLMi34Uj8aIK
- 3s0Q==
+ id 1hlexb-0004D9-10
+ for linux-riscv@lists.infradead.org; Thu, 11 Jul 2019 19:42:33 +0000
+Received: by mail-io1-xd44.google.com with SMTP id u19so15125734ior.9
+ for <linux-riscv@lists.infradead.org>; Thu, 11 Jul 2019 12:42:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=MI4SXHOymT8P6kYfmh+Hx3e+cJoJ4h+bDPlaBCRc/oM=;
+ b=QuWLHoVCrWD3y/0qNjoNEA2upf7ky0hnfkeX9Ac1qgCCN+ZBPgeH0bKgbDTSwhv2PT
+ X9z1+3zGVntknKfTqUFWf+Hd07MCYNvFJyfe+mgX2fyoWF3u5vBWxh4BlTQTtlBrmq5l
+ UyY3ARWGphmEiEtwg3h7lwgMyQ3FvqfEv08Ud332qxWgBnW0K/QgbaO+SZ3f5nFlBHKb
+ g9Vu0T9xbCkvCp4QdXCPXvS8vQTkuK8Gb8G2xsAHvfdsQ+nMJPjVIUpTXp6CR3BY8D4R
+ ckGGxC3dPmQeTqxH8JPNMK10XY3WcjuZqX3NVpvHBUMwaNOhttMxNPLSZMZerqXV5Jz9
+ sHlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ORSK7hrVpr4bYzzw0/gUGtg9vUuOQ0n4iwS740ZT3Yc=;
- b=TwckqHxcwAZxW/1o0k0Hk45g9FezL02420b86V+6tbD2wF+uDOPBXIBilei4QOmsLn
- FF8ip/Dmse9oxG01VnaHIPZyPj5/U9rp6UL0r6nr9OPfLbkOgXKJYUtS5mtwNE0FgAfG
- LghYFL0yDfatkDmk9bkArWhdtfx+P3xJErI3wKThlIX8mjFszE2EJKks1QMhAQ3Hvyjy
- RhwoenGe7ETSHfuCPWT/UgzT02BQeCbwNPeF4PtvucbbMvEu4jdJTdIZoJuMHkO65IdN
- xtVVBw6lo42QLi3lQs0sVlqcLO1OrfwH88QOuL+3cU6ExNLmhXORMGryzEhlyShRq7mS
- WwfA==
-X-Gm-Message-State: APjAAAVBNDPxpv+RFI7mS6Id7SeQNXzylFQimai+ea20GjMRCu2CFROQ
- QOhq2ms6akabINBFG5ckuH/PuIrqqx0mcw87r1VBl3KduJU=
-X-Google-Smtp-Source: APXvYqxlS0qyE9PGpmfT0byhvGKCbT3MWotmpYnYB/Tw0T2v/hcWiqcSuM91cQYi+b/qoWFsJjFZ3uYPDyysHUDZffE=
-X-Received: by 2002:a2e:9188:: with SMTP id f8mr3347332ljg.33.1562868543486;
- Thu, 11 Jul 2019 11:09:03 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=MI4SXHOymT8P6kYfmh+Hx3e+cJoJ4h+bDPlaBCRc/oM=;
+ b=EGyPmr9eS+upslWZyrfoG6ic8rXotiuxOoHq8aR7+FhSTgqbaKmO3uCwpX4HIMtDhW
+ VOWIz7CAexAoFwuUZxVfFd4V/lKlYhddDq6896DlQXX0YirqKtfPneJF98nUi79AQNIJ
+ I74GLQ13+SEGhSXjlgZd3d6IIdE7JAagupAhNO5Ld2Bjl1DfBgq+avHsM8IyYpqmAgtS
+ wQUFZ/pOLzdhX98HoTS/X9S2uJAkLFPULROuZf2NTRmH9g6qLrJnk8yBcaO8BPhotS5v
+ rGT82ImOKuaowV/mdCUQopa7ZfPb7mw209MUcWd//UndamAZ99gxQXXqyZjOogrekZfk
+ pHig==
+X-Gm-Message-State: APjAAAVJjw7kXQ4FwOr/5JdiQ85z3+syNFVHy7hI0ikTjPCR/1RCxvG1
+ qy62ZyZqVkslh47b5vhXbxRHJQ==
+X-Google-Smtp-Source: APXvYqyDvsY/AXHMOZ73B35scDK+tFyHuzlcUCFoHbVxI1bgQiG6SaWl4AkrszQZdiJyTz/K88ATmA==
+X-Received: by 2002:a5d:9ec4:: with SMTP id a4mr6007973ioe.125.1562874147497; 
+ Thu, 11 Jul 2019 12:42:27 -0700 (PDT)
+Received: from localhost (67-0-62-24.albq.qwest.net. [67.0.62.24])
+ by smtp.gmail.com with ESMTPSA id m20sm6806256ioh.4.2019.07.11.12.42.26
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 11 Jul 2019 12:42:26 -0700 (PDT)
+Date: Thu, 11 Jul 2019 12:42:25 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Atish Patra <Atish.Patra@wdc.com>
+Subject: Re: [PATCH v4] RISC-V: Add an Image header that boot loader can parse.
+In-Reply-To: <c0bdc25bc3aee9eee8bf9ebe561900b88df0540b.camel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1907111237520.8586@viisi.sifive.com>
+References: <20190606230800.19932-1-atish.patra@wdc.com>
+ <alpine.DEB.2.21.9999.1906281207290.3867@viisi.sifive.com>
+ <c0bdc25bc3aee9eee8bf9ebe561900b88df0540b.camel@wdc.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <20190228223257.6189-1-alistair.francis@wdc.com>
- <056edacd-a998-277c-f0de-1aac256165a2@arm.com>
- <CAKmqyKP8nwkxyJ+gi2PMj6pgNVvMnWwdjdgXVYz+vAJFmhR1dQ@mail.gmail.com>
- <dd0af314-0f0b-8c10-2c68-a2cbd1bb0f03@arm.com>
-In-Reply-To: <dd0af314-0f0b-8c10-2c68-a2cbd1bb0f03@arm.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 11 Jul 2019 11:05:50 -0700
-Message-ID: <CAKmqyKOham9pKgy2rXECE6fntZAV_PBgY61rkMh+weeQstuv6A@mail.gmail.com>
-Subject: Re: [PATCH] Revert "of/device: Really only set bus DMA mask when
- appropriate"
-To: Robin Murphy <robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_110906_097035_9952F19F 
-X-CRM114-Status: GOOD (  25.38  )
-X-Spam-Score: 1.3 (+)
+X-CRM114-CacheID: sfid-20190711_124231_109291_5410E58E 
+X-CRM114-Status: GOOD (  30.62  )
+X-Spam-Score: 1.1 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
+ Content analysis details:   (1.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:244 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (alistair23[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (alistair23[at]gmail.com)
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -98,461 +99,291 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "trini@konsulko.com" <trini@konsulko.com>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "corbet@lwn.net" <corbet@lwn.net>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "will.deacon@arm.com" <will.deacon@arm.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>
+ "marek.vasut@gmail.com" <marek.vasut@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>, "khilman@baylibre.com" <khilman@baylibre.com>,
+ "mick@ics.forth.gr" <mick@ics.forth.gr>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "merker@debian.org" <merker@debian.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
- On Thu, Jul 11, 2019 at 4:01 AM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> Hi Alistair,
->
-> On 10/07/2019 23:27, Alistair Francis wrote:
-> > On Thu, Feb 28, 2019 at 2:42 PM Robin Murphy <robin.murphy@arm.com> wrote:
-> >>
-> >> On 2019-02-28 10:33 pm, Alistair Francis wrote:
-> >>> This reverts commit 6778be4e520959659b27a441c06a84c9cb009085.
-> >>>
-> >>> Reverting the commit fixes these error messages and an non-functioning
-> >>> USB bus when attaching a USB to PCIe card to a RISC-V board:
-> >>>       xhci_hcd 0000:03:00.0: Host took too long to start, waited 16000 microseconds.
-> >>>       xhci_hcd 0000:03:00.0: startup error -19
-> >>>       xhci_hcd 0000:03:00.0: USB bus 2 deregistered
-> >>>       xhci_hcd 0000:03:00.0: WARNING: Host System Error
-> >>>       xhci_hcd 0000:03:00.0: remove, state 1
-> >>>
-> >>> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
-> >>> ---
-> >>> I'm not sure if this is the correct fix, it's possible something else is
-> >>> wrong, but I wanted to get some feedback.
-> >>
-> >> Given that the bug which this revert would reintroduce cripples DMA on
-> >> just about every 64-bit DT system, probably not. Can you clarify what
-> >> your DT looks like, and turn on the debug output for of_dma_get_range()
-> >> to see what it says?
-> >
-> > Hey Robin,
-> >
-> > We were just talking about this today and somebody pointed out that I
-> > never replied to you. I'm sorry, I must have missed your email.
->
-> No worries - ISTR that shortly after asking I managed to find a
-> breadcrumb trail to a DT somewhere on Github which satisfied my curiosity.
->
-> I would agree with Paul's diagnosis, i.e. all evidence suggests that the
-> host bridge is constrained to passing 32-bit addresses to the rest of
-> the system. Thus the superficial problem is that you don't have the
+On Fri, 28 Jun 2019, Atish Patra wrote:
 
-Yes, that is my understanding as well. The PCIe controller is based on
-the Xilinx one which also has the same problem. So both are limited to
-32-bit addresses only.
-
-> relevant "dma-ranges" to describe that, but upon fixing that you'll
-> immediately find the latent bigger problem that all the relevant parsing
-> is fundamentally incompatible with the way we currently stuff the host
-> controller node into of_dma_configure(). I'm working on that right now,
-> although it's proving tricky to find a balance between "too hacky" and
-> "massively intrusive"...
-
-Ah ok. So I think I'm going to keep this hack patch in my local tree
-as it let's me use a USB -> PCIe bridge. Then when you have a solution
-to the of_dma_configure() problem I will look at setting a correct
-dma-ranges value in the DT and I can test it then. If you remember can
-you CC me on your patches? I can help test them then.
-
-Thanks for the help Robin.
-
-Alistair
-
->
-> Robin.
->
-> > To answer the question the DT looks like this:
-> >
-> > / {
-> >          soc {
-> >                  pcie: pcie@2030000000 {
-> >                          #address-cells = <0x3>;
-> >                          #interrupt-cells = <0x1>;
-> >                          #size-cells = <0x2>;
-> >                          compatible = "microsemi,ms-pf-axi-pcie-host";
-> >                          device_type = "pci";
-> >                          bus-range = <0x01 0x7f>;
-> >                          interrupt-map = <0 0 0 1 &ms_pcie_intc 0 0 0 0
-> > 2 &ms_pcie_intc 1 0 0 0 3 &ms_pcie_intc 2 0 0 0 4 &ms_pcie_intc 3>;
-> >                          interrupt-map-mask = <0 0 0 7>;
-> >                          interrupt-parent = <&plic0>;
-> >                          interrupts = <32>;
-> >                          ranges = <0x3000000 0x0 0x40000000 0x0
-> > 0x40000000 0x0 0x20000000>;
-> >                          reg = <0x20 0x30000000 0x0 0x4000000 0x20 0x0
-> > 0x0 0x100000>;
-> >                          reg-names = "control", "apb";
-> >                          ms_pcie_intc: interrupt-controller {
-> >                                  #address-cells = <0>;
-> >                                  #interrupt-cells = <1>;
-> >                                  interrupt-controller;
-> >                          };
-> >                  };
-> >          };
-> > };
-> >
-> > and this is what the debug output looks like:
-> >
+> On Fri, 2019-06-28 at 12:09 -0700, Paul Walmsley wrote:
+> > On Thu, 6 Jun 2019, Atish Patra wrote:
+> > 
+> > > Currently, the last stage boot loaders such as U-Boot can accept
+> > > only
+> > > uImage which is an unnecessary additional step in automating boot
+> > > process.
+> > > 
+> > > Add an image header that boot loader understands and boot Linux
+> > > from
+> > > flat Image directly.
+> > 
 > > ...
-> > [    0.071003] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.071049] microsemi-pcie 2030000000.pcie: device is not dma coherent
-> > [    0.071084] microsemi-pcie 2030000000.pcie: device is not behind an iommu
-> > [    0.071924] microsemi-pcie 2030000000.pcie: host bridge
-> > /soc/pcie@2030000000 ranges:
-> > [    0.071990] microsemi-pcie 2030000000.pcie: Parsing ranges property...
-> > [    0.072007] microsemi-pcie 2030000000.pcie:   MEM
-> > 0x40000000..0x5fffffff -> 0x40000000
-> > [    0.072160] microsemi-pcie 2030000000.pcie: PCI host bridge to bus 0000:00
-> > [    0.072201] pci_bus 0000:00: root bus resource [bus 01-7f]
-> > [    0.072237] pci_bus 0000:00: root bus resource [mem 0x40000000-0x5fffffff]
-> > [    0.072272] pci_bus 0000:00: scanning bus
-> > [    0.072307] pci 0000:00:00.0: [11aa:1556] type 01 class 0x060400
-> > [    0.072376] pci 0000:00:00.0: reg 0x10: [mem 0x00000000-0x7fffffff
-> > 64bit pref]
-> > [    0.072520] pci 0000:00:00.0: supports D1 D2
-> > [    0.072555] pci 0000:00:00.0: PME# supported from D0 D1 D2 D3hot D3cold
-> > [    0.072592] pci 0000:00:00.0: PME# disabled
-> > [    0.073250] pci_bus 0000:00: fixups for bus
-> > [    0.073261] pci 0000:00:00.0: scanning [bus 00-00] behind bridge, pass 0
-> > [    0.073270] pci 0000:00:00.0: bridge configuration invalid ([bus
-> > 00-00]), reconfiguring
-> > [    0.073338] pci 0000:00:00.0: scanning [bus 00-00] behind bridge, pass 1
-> > [    0.073423] pci_bus 0000:01: scanning bus
-> > [    0.073764] pci 0000:01:00.0: [11f8:8561] type 01 class 0x060400
-> > [    0.074549] pci 0000:01:00.0: enabling Extended Tags
-> > [    0.077512] pci 0000:01:00.0: PME# supported from D0 D3hot D3cold
-> > [    0.077571] pci 0000:01:00.0: PME# disabled
-> > [    0.077842] pci 0000:01:00.0: 16.000 Gb/s available PCIe bandwidth,
-> > limited by 5 GT/s x4 link at 0000:00:00.0 (capable of 126.016 Gb/s
-> > with 8 GT/s x16 link)
-> > [    0.090347] pci_bus 0000:01: fixups for bus
-> > [    0.090367] pci 0000:01:00.0: scanning [bus 00-00] behind bridge, pass 0
-> > [    0.090375] pci 0000:01:00.0: bridge configuration invalid ([bus
-> > 00-00]), reconfiguring
-> > [    0.090522] pci 0000:01:00.0: scanning [bus 00-00] behind bridge, pass 1
-> > [    0.090992] pci_bus 0000:02: scanning bus
-> > [    0.091134] pci 0000:02:00.0: [11f8:8561] type 01 class 0x060400
-> > [    0.091883] pci 0000:02:00.0: enabling Extended Tags
-> > [    0.095138] pci 0000:02:00.0: PME# supported from D0 D3hot D3cold
-> > [    0.095198] pci 0000:02:00.0: PME# disabled
-> > [    0.095724] pci 0000:02:01.0: [11f8:8561] type 01 class 0x060400
-> > [    0.097486] pci 0000:02:01.0: enabling Extended Tags
-> > [    0.099562] pci 0000:02:01.0: PME# supported from D0 D3hot D3cold
-> > [    0.099622] pci 0000:02:01.0: PME# disabled
-> > [    0.101335] pci 0000:02:02.0: [11f8:8561] type 01 class 0x060400
-> > [    0.103141] pci 0000:02:02.0: enabling Extended Tags
-> > [    0.105219] pci 0000:02:02.0: PME# supported from D0 D3hot D3cold
-> > [    0.105278] pci 0000:02:02.0: PME# disabled
-> > [    0.106874] pci 0000:02:03.0: [11f8:8561] type 01 class 0x060400
-> > [    0.107626] pci 0000:02:03.0: enabling Extended Tags
-> > [    0.110896] pci 0000:02:03.0: PME# supported from D0 D3hot D3cold
-> > [    0.110955] pci 0000:02:03.0: PME# disabled
-> > [    0.112929] pci_bus 0000:02: fixups for bus
-> > [    0.112950] pci 0000:02:00.0: scanning [bus 00-00] behind bridge, pass 0
-> > [    0.112958] pci 0000:02:00.0: bridge configuration invalid ([bus
-> > 00-00]), reconfiguring
-> > [    0.113089] pci 0000:02:01.0: scanning [bus 00-00] behind bridge, pass 0
-> > [    0.113097] pci 0000:02:01.0: bridge configuration invalid ([bus
-> > 00-00]), reconfiguring
-> > [    0.113225] pci 0000:02:02.0: scanning [bus 00-00] behind bridge, pass 0
-> > [    0.113233] pci 0000:02:02.0: bridge configuration invalid ([bus
-> > 00-00]), reconfiguring
-> > [    0.113360] pci 0000:02:03.0: scanning [bus 00-00] behind bridge, pass 0
-> > [    0.113368] pci 0000:02:03.0: bridge configuration invalid ([bus
-> > 00-00]), reconfiguring
-> > [    0.113496] pci 0000:02:00.0: scanning [bus 00-00] behind bridge, pass 1
-> > [    0.114790] pci_bus 0000:03: scanning bus
-> > [    0.114964] pci 0000:03:00.0: [1106:3483] type 00 class 0x0c0330
-> > [    0.115247] pci 0000:03:00.0: reg 0x10: [mem 0x00000000-0x00000fff 64bit]
-> > [    0.117139] pci 0000:03:00.0: PME# supported from D0 D1 D2 D3hot D3cold
-> > [    0.117198] pci 0000:03:00.0: PME# disabled
-> > [    0.130432] pci_bus 0000:03: fixups for bus
-> > [    0.130441] pci_bus 0000:03: bus scan returning with max=03
-> > [    0.130451] pci_bus 0000:03: busn_res: [bus 03-7f] end is updated to 03
-> > [    0.130551] pci 0000:02:01.0: scanning [bus 00-00] behind bridge, pass 1
-> > [    0.131022] pci_bus 0000:04: scanning bus
-> > [    0.131155] pci 0000:04:00.0: [1002:677b] type 00 class 0x030000
-> > [    0.132409] pci 0000:04:00.0: reg 0x10: [mem 0x00000000-0x0fffffff
-> > 64bit pref]
-> > [    0.132581] pci 0000:04:00.0: reg 0x18: [mem 0x00000000-0x0001ffff 64bit]
-> > [    0.132681] pci 0000:04:00.0: reg 0x20: [io  0x0000-0x00ff]
-> > [    0.132855] pci 0000:04:00.0: reg 0x30: [mem 0x00000000-0x0001ffff pref]
-> > [    0.132968] pci 0000:04:00.0: enabling Extended Tags
-> > [    0.134750] pci 0000:04:00.0: supports D1 D2
-> > [    0.135109] pci 0000:04:00.0: 8.000 Gb/s available PCIe bandwidth,
-> > limited by 2.5 GT/s x4 link at 0000:02:01.0 (capable of 32.000 Gb/s
-> > with 2.5 GT/s x16 link)
-> > [    0.135381] pci 0000:04:00.0: vgaarb: VGA device added:
-> > decodes=io+mem,owns=none,locks=none
-> > [    0.136308] pci 0000:04:00.1: [1002:aa98] type 00 class 0x040300
-> > [    0.136630] pci 0000:04:00.1: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
-> > [    0.138228] pci 0000:04:00.1: enabling Extended Tags
-> > [    0.138806] pci 0000:04:00.1: supports D1 D2
-> > [    0.141489] pci_bus 0000:04: fixups for bus
-> > [    0.141497] pci_bus 0000:04: bus scan returning with max=04
-> > [    0.141507] pci_bus 0000:04: busn_res: [bus 04-7f] end is updated to 04
-> > [    0.141606] pci 0000:02:02.0: scanning [bus 00-00] behind bridge, pass 1
-> > [    0.142599] pci_bus 0000:05: scanning bus
-> > [    0.143101] pci_bus 0000:05: fixups for bus
-> > [    0.143108] pci_bus 0000:05: bus scan returning with max=05
-> > [    0.143117] pci_bus 0000:05: busn_res: [bus 05-7f] end is updated to 05
-> > [    0.143217] pci 0000:02:03.0: scanning [bus 00-00] behind bridge, pass 1
-> > [    0.144234] pci_bus 0000:06: scanning bus
-> > [    0.144383] pci 0000:06:00.0: [1b4b:9125] type 00 class 0x010601
-> > [    0.144823] pci 0000:06:00.0: reg 0x10: [io  0x8000-0x8007]
-> > [    0.144954] pci 0000:06:00.0: reg 0x14: [io  0x8040-0x8043]
-> > [    0.145093] pci 0000:06:00.0: reg 0x18: [io  0x8100-0x8107]
-> > [    0.145222] pci 0000:06:00.0: reg 0x1c: [io  0x8140-0x8143]
-> > [    0.146140] pci 0000:06:00.0: reg 0x20: [io  0x800000-0x80000f]
-> > [    0.146270] pci 0000:06:00.0: reg 0x24: [mem 0x00900000-0x009007ff]
-> > [    0.146398] pci 0000:06:00.0: reg 0x30: [mem 0xd0000000-0xd000ffff pref]
-> > [    0.148053] pci 0000:06:00.0: PME# supported from D3hot
-> > [    0.148112] pci 0000:06:00.0: PME# disabled
-> > [    0.150640] pci_bus 0000:06: fixups for bus
-> > [    0.150649] pci_bus 0000:06: bus scan returning with max=06
-> > [    0.150658] pci_bus 0000:06: busn_res: [bus 06-7f] end is updated to 06
-> > [    0.150744] pci_bus 0000:02: bus scan returning with max=06
-> > [    0.150753] pci_bus 0000:02: busn_res: [bus 02-7f] end is updated to 06
-> > [    0.150844] pci_bus 0000:01: bus scan returning with max=06
-> > [    0.150853] pci_bus 0000:01: busn_res: [bus 01-7f] end is updated to 06
-> > [    0.150891] pci_bus 0000:00: bus scan returning with max=06
-> > [    0.150905] pci 0000:02:00.0: bridge window [io  0x1000-0x0fff] to
-> > [bus 03] add_size 1000
-> > [    0.150968] pci 0000:02:00.0: bridge window [mem
-> > 0x00100000-0x000fffff 64bit pref] to [bus 03] add_size 200000
-> > add_align 100000
-> > [    0.151032] pci 0000:02:00.0: bridge window [mem
-> > 0x00100000-0x001fffff] to [bus 03] add_size 100000 add_align 100000
-> > [    0.151098] pci 0000:02:01.0: bridge window [mem
-> > 0x00100000-0x001fffff] to [bus 04] add_size 100000 add_align 100000
-> > [    0.151159] pci 0000:02:02.0: bridge window [io  0x1000-0x0fff] to
-> > [bus 05] add_size 1000
-> > [    0.151221] pci 0000:02:02.0: bridge window [mem
-> > 0x00100000-0x000fffff 64bit pref] to [bus 05] add_size 200000
-> > add_align 100000
-> > [    0.151283] pci 0000:02:02.0: bridge window [mem
-> > 0x00100000-0x000fffff] to [bus 05] add_size 200000 add_align 100000
-> > [    0.151348] pci 0000:02:03.0: bridge window [mem
-> > 0x00100000-0x000fffff 64bit pref] to [bus 06] add_size 200000
-> > add_align 100000
-> > [    0.151412] pci 0000:02:03.0: bridge window [mem
-> > 0x00100000-0x001fffff] to [bus 06] add_size 100000 add_align 100000
-> > [    0.151475] pci 0000:01:00.0: bridge window [io  0x1000-0x2fff] to
-> > [bus 02-06] add_size 2000
-> > [    0.151541] pci 0000:01:00.0: bridge window [mem
-> > 0x00100000-0x004fffff] to [bus 02-06] add_size 500000 add_align 100000
-> > [    0.151603] pci 0000:00:00.0: bridge window [io  0x1000-0x2fff] to
-> > [bus 01-06] add_size 2000
-> > [    0.151666] pci 0000:00:00.0: bridge window [mem
-> > 0x00100000-0x004fffff] to [bus 01-06] add_size 500000 add_align 100000
-> > [    0.151736] pci 0000:00:00.0: BAR 0: no space for [mem size
-> > 0x80000000 64bit pref]
-> > [    0.151794] pci 0000:00:00.0: BAR 0: failed to assign [mem size
-> > 0x80000000 64bit pref]
-> > [    0.151855] pci 0000:00:00.0: BAR 9: assigned [mem
-> > 0x40000000-0x57ffffff 64bit pref]
-> > [    0.151913] pci 0000:00:00.0: BAR 8: assigned [mem 0x58000000-0x588fffff]
-> > [    0.151949] pci 0000:00:00.0: BAR 7: no space for [io  size 0x4000]
-> > [    0.151985] pci 0000:00:00.0: BAR 7: failed to assign [io  size 0x4000]
-> > [    0.152026] pci 0000:00:00.0: BAR 0: no space for [mem size
-> > 0x80000000 64bit pref]
-> > [    0.152083] pci 0000:00:00.0: BAR 0: failed to assign [mem size
-> > 0x80000000 64bit pref]
-> > [    0.152142] pci 0000:00:00.0: BAR 9: assigned [mem
-> > 0x40000000-0x57ffffff 64bit pref]
-> > [    0.152200] pci 0000:00:00.0: BAR 8: assigned [mem 0x58000000-0x583fffff]
-> > [    0.152237] pci 0000:00:00.0: BAR 7: no space for [io  size 0x2000]
-> > [    0.152272] pci 0000:00:00.0: BAR 7: failed to assign [io  size 0x2000]
-> > [    0.152311] pci 0000:00:00.0: BAR 8: reassigned [mem
-> > 0x58000000-0x588fffff] (expanded by 0x500000)
-> > [    0.152375] pci 0000:01:00.0: BAR 9: assigned [mem
-> > 0x40000000-0x57ffffff 64bit pref]
-> > [    0.152433] pci 0000:01:00.0: BAR 8: assigned [mem 0x58000000-0x588fffff]
-> > [    0.152469] pci 0000:01:00.0: BAR 7: no space for [io  size 0x4000]
-> > [    0.152505] pci 0000:01:00.0: BAR 7: failed to assign [io  size 0x4000]
-> > [    0.152543] pci 0000:01:00.0: BAR 7: no space for [io  size 0x2000]
-> > [    0.152578] pci 0000:01:00.0: BAR 7: failed to assign [io  size 0x2000]
-> > [    0.152638] pci 0000:02:01.0: BAR 9: assigned [mem
-> > 0x40000000-0x4fffffff 64bit pref]
-> > [    0.152697] pci 0000:02:00.0: BAR 8: assigned [mem 0x58000000-0x581fffff]
-> > [    0.152735] pci 0000:02:00.0: BAR 9: assigned [mem
-> > 0x50000000-0x501fffff 64bit pref]
-> > [    0.152793] pci 0000:02:01.0: BAR 8: assigned [mem 0x58200000-0x583fffff]
-> > [    0.152830] pci 0000:02:02.0: BAR 8: assigned [mem 0x58400000-0x585fffff]
-> > [    0.152867] pci 0000:02:02.0: BAR 9: assigned [mem
-> > 0x50200000-0x503fffff 64bit pref]
-> > [    0.152925] pci 0000:02:03.0: BAR 8: assigned [mem 0x58600000-0x587fffff]
-> > [    0.152963] pci 0000:02:03.0: BAR 9: assigned [mem
-> > 0x50400000-0x505fffff 64bit pref]
-> > [    0.153020] pci 0000:02:00.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153056] pci 0000:02:00.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153092] pci 0000:02:01.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153128] pci 0000:02:01.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153164] pci 0000:02:02.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153199] pci 0000:02:02.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153235] pci 0000:02:03.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153270] pci 0000:02:03.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153315] pci 0000:02:01.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153350] pci 0000:02:01.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153386] pci 0000:02:03.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153422] pci 0000:02:03.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153458] pci 0000:02:02.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153493] pci 0000:02:02.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153530] pci 0000:02:00.0: BAR 7: no space for [io  size 0x1000]
-> > [    0.153565] pci 0000:02:00.0: BAR 7: failed to assign [io  size 0x1000]
-> > [    0.153606] pci 0000:03:00.0: BAR 0: assigned [mem
-> > 0x58000000-0x58000fff 64bit]
-> > [    0.153766] pci 0000:02:00.0: PCI bridge to [bus 03]
-> > [    0.153852] pci 0000:02:00.0:   bridge window [mem 0x58000000-0x581fffff]
-> > [    0.153967] pci 0000:02:00.0:   bridge window [mem
-> > 0x50000000-0x501fffff 64bit pref]
-> > [    0.154163] pci 0000:04:00.0: BAR 0: assigned [mem
-> > 0x40000000-0x4fffffff 64bit pref]
-> > [    0.154327] pci 0000:04:00.0: BAR 2: assigned [mem
-> > 0x58200000-0x5821ffff 64bit]
-> > [    0.154653] pci 0000:04:00.0: BAR 6: assigned [mem
-> > 0x58220000-0x5823ffff pref]
-> > [    0.154712] pci 0000:04:00.1: BAR 0: assigned [mem
-> > 0x58240000-0x58243fff 64bit]
-> > [    0.154861] pci 0000:04:00.0: BAR 4: no space for [io  size 0x0100]
-> > [    0.154896] pci 0000:04:00.0: BAR 4: failed to assign [io  size 0x0100]
-> > [    0.154933] pci 0000:02:01.0: PCI bridge to [bus 04]
-> > [    0.155016] pci 0000:02:01.0:   bridge window [mem 0x58200000-0x583fffff]
-> > [    0.155131] pci 0000:02:01.0:   bridge window [mem
-> > 0x40000000-0x4fffffff 64bit pref]
-> > [    0.155333] pci 0000:02:02.0: PCI bridge to [bus 05]
-> > [    0.155418] pci 0000:02:02.0:   bridge window [mem 0x58400000-0x585fffff]
-> > [    0.155532] pci 0000:02:02.0:   bridge window [mem
-> > 0x50200000-0x503fffff 64bit pref]
-> > [    0.155726] pci 0000:06:00.0: BAR 6: assigned [mem
-> > 0x58600000-0x5860ffff pref]
-> > [    0.155784] pci 0000:06:00.0: BAR 5: assigned [mem 0x58610000-0x586107ff]
-> > [    0.155847] pci 0000:06:00.0: BAR 4: no space for [io  size 0x0010]
-> > [    0.155883] pci 0000:06:00.0: BAR 4: failed to assign [io  size 0x0010]
-> > [    0.155919] pci 0000:06:00.0: BAR 0: no space for [io  size 0x0008]
-> > [    0.155954] pci 0000:06:00.0: BAR 0: failed to assign [io  size 0x0008]
-> > [    0.155990] pci 0000:06:00.0: BAR 2: no space for [io  size 0x0008]
-> > [    0.156025] pci 0000:06:00.0: BAR 2: failed to assign [io  size 0x0008]
-> > [    0.156061] pci 0000:06:00.0: BAR 1: no space for [io  size 0x0004]
-> > [    0.156096] pci 0000:06:00.0: BAR 1: failed to assign [io  size 0x0004]
-> > [    0.156132] pci 0000:06:00.0: BAR 3: no space for [io  size 0x0004]
-> > [    0.156167] pci 0000:06:00.0: BAR 3: failed to assign [io  size 0x0004]
-> > [    0.156203] pci 0000:02:03.0: PCI bridge to [bus 06]
-> > [    0.156284] pci 0000:02:03.0:   bridge window [mem 0x58600000-0x587fffff]
-> > [    0.156402] pci 0000:02:03.0:   bridge window [mem
-> > 0x50400000-0x505fffff 64bit pref]
-> > [    0.156594] pci 0000:01:00.0: PCI bridge to [bus 02-06]
-> > [    0.156671] pci 0000:01:00.0:   bridge window [mem 0x58000000-0x588fffff]
-> > [    0.156796] pci 0000:01:00.0:   bridge window [mem
-> > 0x40000000-0x57ffffff 64bit pref]
-> > [    0.157000] pci 0000:00:00.0: PCI bridge to [bus 01-06]
-> > [    0.157038] pci 0000:00:00.0:   bridge window [mem 0x58000000-0x588fffff]
-> > [    0.157075] pci 0000:00:00.0:   bridge window [mem
-> > 0x40000000-0x57ffffff 64bit pref]
-> > [    0.157169] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.157208] pcieport 0000:00:00.0: device is not dma coherent
-> > [    0.157242] pcieport 0000:00:00.0: device is not behind an iommu
-> > [    0.157339] pcieport 0000:00:00.0: assign IRQ: got 8
-> > [    0.157354] pcieport 0000:00:00.0: enabling device (0000 -> 0002)
-> > [    0.157403] pcieport 0000:00:00.0: enabling bus mastering
-> > [    0.157866] pcieport 0000:00:00.0: AER: enabled with IRQ 9
-> > [    0.158050] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.158091] pcieport 0000:01:00.0: device is not dma coherent
-> > [    0.158125] pcieport 0000:01:00.0: device is not behind an iommu
-> > [    0.158178] pcieport 0000:01:00.0: assign IRQ: got 0
-> > [    0.158224] pcieport 0000:01:00.0: enabling device (0000 -> 0002)
-> > [    0.158431] pcieport 0000:01:00.0: enabling bus mastering
-> > [    0.160263] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.160304] pcieport 0000:02:00.0: device is not dma coherent
-> > [    0.160338] pcieport 0000:02:00.0: device is not behind an iommu
-> > [    0.160405] pcieport 0000:02:00.0: assign IRQ: got 0
-> > [    0.160453] pcieport 0000:02:00.0: enabling device (0000 -> 0002)
-> > [    0.160754] pcieport 0000:02:00.0: enabling bus mastering
-> > [    0.163911] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.163952] pcieport 0000:02:01.0: device is not dma coherent
-> > [    0.163986] pcieport 0000:02:01.0: device is not behind an iommu
-> > [    0.164039] pcieport 0000:02:01.0: assign IRQ: got 0
-> > [    0.164088] pcieport 0000:02:01.0: enabling device (0000 -> 0002)
-> > [    0.164371] pcieport 0000:02:01.0: enabling bus mastering
-> > [    0.166345] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.166386] pcieport 0000:02:02.0: device is not dma coherent
-> > [    0.166420] pcieport 0000:02:02.0: device is not behind an iommu
-> > [    0.166473] pcieport 0000:02:02.0: assign IRQ: got 0
-> > [    0.166534] pcieport 0000:02:02.0: enabling device (0000 -> 0002)
-> > [    0.167751] pcieport 0000:02:02.0: enabling bus mastering
-> > [    0.169982] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    0.170024] pcieport 0000:02:03.0: device is not dma coherent
-> > [    0.170058] pcieport 0000:02:03.0: device is not behind an iommu
-> > [    0.170113] pcieport 0000:02:03.0: assign IRQ: got 0
-> > [    0.170161] pcieport 0000:02:03.0: enabling device (0000 -> 0002)
-> > [    0.170446] pcieport 0000:02:03.0: enabling bus mastering
-> > [    0.173626] pci 0000:03:00.0: enabling device (0000 -> 0002)
-> >
-> > ...
-> >
-> > [    4.342236] OF: no dma-ranges found for node(/soc/pcie@2030000000)
-> > [    4.348329] xhci_hcd 0000:03:00.0: device is not dma coherent
-> > [    4.354058] xhci_hcd 0000:03:00.0: device is not behind an iommu
-> > [    4.360090] xhci_hcd 0000:03:00.0: assign IRQ: got 0
-> > [    4.360227] xhci_hcd 0000:03:00.0: enabling bus mastering
-> > [    4.360248] xhci_hcd 0000:03:00.0: xHCI Host Controller
-> > [    4.365281] xhci_hcd 0000:03:00.0: new USB bus registered, assigned
-> > bus number 1
-> > [    4.373282] xhci_hcd 0000:03:00.0: hcc params 0x002841eb hci
-> > version 0x100 quirks 0x0000000000000090
-> > [    4.381811] xhci_hcd 0000:03:00.0: enabling Mem-Wr-Inval
-> > [    4.382614] hub 1-0:1.0: USB hub found
-> > [    4.385637] hub 1-0:1.0: 1 port detected
-> > [    4.393190] xhci_hcd 0000:03:00.0: xHCI Host Controller
-> > [    4.398137] xhci_hcd 0000:03:00.0: new USB bus registered, assigned
-> > bus number 2
-> > [    4.405507] xhci_hcd 0000:03:00.0: Host supports USB 3.0 SuperSpeed
-> > [    4.411777] xhci_hcd 0000:03:00.0: WARNING: Host System Error
-> > [    4.417527] usb usb2: We don't know the algorithms for LPM for this
-> > host, disabling LPM.
-> > [    4.425983] hub 2-0:1.0: USB hub found
-> > [    4.429311] hub 2-0:1.0: 4 ports detected
-> > ...
-> >
-> > Alistair
-> >
-> >
-> >
-> >>
-> >> Robin.
-> >>
-> >>> drivers/of/device.c | 4 +---
-> >>>    1 file changed, 1 insertion(+), 3 deletions(-)
-> >>>
-> >>> diff --git a/drivers/of/device.c b/drivers/of/device.c
-> >>> index 3717f2a20d0d..8299f8055da7 100644
-> >>> --- a/drivers/of/device.c
-> >>> +++ b/drivers/of/device.c
-> >>> @@ -149,11 +149,9 @@ int of_dma_configure(struct device *dev, struct device_node *np, bool force_dma)
-> >>>         * set by the driver.
-> >>>         */
-> >>>        mask = DMA_BIT_MASK(ilog2(dma_addr + size - 1) + 1);
-> >>> +     dev->bus_dma_mask = mask;
-> >>>        dev->coherent_dma_mask &= mask;
-> >>>        *dev->dma_mask &= mask;
-> >>> -     /* ...but only set bus mask if we found valid dma-ranges earlier */
-> >>> -     if (!ret)
-> >>> -             dev->bus_dma_mask = mask;
-> >>>
-> >>>        coherent = of_dma_is_coherent(np);
-> >>>        dev_dbg(dev, "device is%sdma coherent\n",
-> >>>
+> > 
+> > 
+> > > +#if __riscv_xlen == 64
+> > > +	/* Image load offset(2MB) from start of RAM */
+> > > +	.dword 0x200000
+> > > +#else
+> > > +	/* Image load offset(4MB) from start of RAM */
+> > > +	.dword 0x400000
+> > > +#endif
+> > 
+> > Is there a rationale behind these load offset values?
+> > 
+> 
+> 2MB/4MB alignment requirement is mandatory for current RISC-V kernel.
+> Anup had a patch that tried to remove that but not accepted yet.
+> 
+> https://patchwork.kernel.org/patch/10868465/
+
+Thanks for doing this work; this should really help.  Patch queued with a 
+few minor tweaks to the documentation file and to the comments.  (Updated 
+patch below)
+
+Not sure if this will make it for v5.3-rc1.  If not, we'll try to get it 
+in as soon as possible afterwards.
+
+Something else to think about: we'll probably want some flag bits soon to 
+identify whether the kernel binary is a 32-bit, 64-bit, or 128-bit binary.  
+If two bits are used, and 64-bit is defined as 00, then it should be 
+backwards compatible.  I would hope that this could be something that we'd 
+be able to coordinate with the ARM64 folks also; otherwise we may need to 
+start using that res3 field.
+
+
+- Paul
+
+From: Atish Patra <atish.patra@wdc.com>
+Date: Thu, 6 Jun 2019 16:08:00 -0700
+Subject: [PATCH] RISC-V: Add an Image header that boot loader can parse.
+
+Currently, the last stage boot loaders such as U-Boot can accept only
+uImage which is an unnecessary additional step in automating boot
+process.
+
+Add an image header that boot loader understands and boot Linux from
+flat Image directly.
+
+This header is based on ARM64 boot image header and provides an
+opportunity to combine both ARM64 & RISC-V image headers in future.
+
+Also make sure that PE/COFF header can co-exist in the same image so
+that EFI stub can be supported for RISC-V in future. EFI specification
+needs PE/COFF image header in the beginning of the kernel image in order
+to load it as an EFI application. In order to support EFI stub, code0
+should be replaced with "MZ" magic string and res4(at offset 0x3c)
+should point to the rest of the PE/COFF header (which will be added
+during EFI support).
+
+Tested on both QEMU and HiFive Unleashed using OpenSBI + U-Boot + Linux.
+
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+Reviewed-by: Karsten Merker <merker@debian.org>
+Tested-by: Karsten Merker <merker@debian.org> (QEMU+OpenSBI+U-Boot)
+Tested-by: Kevin Hilman <khilman@baylibre.com> (OpenSBI + U-Boot + Linux)
+[paul.walmsley@sifive.com: fixed whitespace in boot-image-header.txt;
+ converted structure comment to kernel-doc format and added some detail]
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+---
+ Documentation/riscv/boot-image-header.txt | 50 +++++++++++++++++
+ arch/riscv/include/asm/image.h            | 65 +++++++++++++++++++++++
+ arch/riscv/kernel/head.S                  | 32 +++++++++++
+ 3 files changed, 147 insertions(+)
+ create mode 100644 Documentation/riscv/boot-image-header.txt
+ create mode 100644 arch/riscv/include/asm/image.h
+
+diff --git a/Documentation/riscv/boot-image-header.txt b/Documentation/riscv/boot-image-header.txt
+new file mode 100644
+index 000000000000..1b73fea23b39
+--- /dev/null
++++ b/Documentation/riscv/boot-image-header.txt
+@@ -0,0 +1,50 @@
++				Boot image header in RISC-V Linux
++			=============================================
++
++Author: Atish Patra <atish.patra@wdc.com>
++Date  : 20 May 2019
++
++This document only describes the boot image header details for RISC-V Linux.
++The complete booting guide will be available at Documentation/riscv/booting.txt.
++
++The following 64-byte header is present in decompressed Linux kernel image.
++
++	u32 code0;		  /* Executable code */
++	u32 code1; 		  /* Executable code */
++	u64 text_offset;	  /* Image load offset, little endian */
++	u64 image_size;		  /* Effective Image size, little endian */
++	u64 flags;		  /* kernel flags, little endian */
++	u32 version;		  /* Version of this header */
++	u32 res1  = 0;		  /* Reserved */
++	u64 res2  = 0;    	  /* Reserved */
++	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
++	u32 res3;		  /* Reserved for additional RISC-V specific header */
++	u32 res4;		  /* Reserved for PE COFF offset */
++
++This header format is compliant with PE/COFF header and largely inspired from
++ARM64 header. Thus, both ARM64 & RISC-V header can be combined into one common
++header in future.
++
++Notes:
++- This header can also be reused to support EFI stub for RISC-V in future. EFI
++  specification needs PE/COFF image header in the beginning of the kernel image
++  in order to load it as an EFI application. In order to support EFI stub,
++  code0 should be replaced with "MZ" magic string and res5(at offset 0x3c) should
++  point to the rest of the PE/COFF header.
++
++- version field indicate header version number.
++	Bits 0:15  - Minor version
++	Bits 16:31 - Major version
++
++  This preserves compatibility across newer and older version of the header.
++  The current version is defined as 0.1.
++
++- res3 is reserved for offset to any other additional fields. This makes the
++  header extendible in future. One example would be to accommodate ISA
++  extension for RISC-V in future. For current version, it is set to be zero.
++
++- In current header, the flag field has only one field.
++	Bit 0: Kernel endianness. 1 if BE, 0 if LE.
++
++- Image size is mandatory for boot loader to load kernel image. Booting will
++  fail otherwise.
+diff --git a/arch/riscv/include/asm/image.h b/arch/riscv/include/asm/image.h
+new file mode 100644
+index 000000000000..ef28e106f247
+--- /dev/null
++++ b/arch/riscv/include/asm/image.h
+@@ -0,0 +1,65 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++#ifndef __ASM_IMAGE_H
++#define __ASM_IMAGE_H
++
++#define RISCV_IMAGE_MAGIC	"RISCV"
++
++#define RISCV_IMAGE_FLAG_BE_SHIFT	0
++#define RISCV_IMAGE_FLAG_BE_MASK	0x1
++
++#define RISCV_IMAGE_FLAG_LE		0
++#define RISCV_IMAGE_FLAG_BE		1
++
++#ifdef CONFIG_CPU_BIG_ENDIAN
++#error conversion of header fields to LE not yet implemented
++#else
++#define __HEAD_FLAG_BE		RISCV_IMAGE_FLAG_LE
++#endif
++
++#define __HEAD_FLAG(field)	(__HEAD_FLAG_##field << \
++				RISCV_IMAGE_FLAG_##field##_SHIFT)
++
++#define __HEAD_FLAGS		(__HEAD_FLAG(BE))
++
++#define RISCV_HEADER_VERSION_MAJOR 0
++#define RISCV_HEADER_VERSION_MINOR 1
++
++#define RISCV_HEADER_VERSION (RISCV_HEADER_VERSION_MAJOR << 16 | \
++			      RISCV_HEADER_VERSION_MINOR)
++
++#ifndef __ASSEMBLY__
++/**
++ * struct riscv_image_header - riscv kernel image header
++ * @code0:		Executable code
++ * @code1:		Executable code
++ * @text_offset:	Image load offset (little endian)
++ * @image_size:		Effective Image size (little endian)
++ * @flags:		kernel flags (little endian)
++ * @version:		version
++ * @res1:		reserved
++ * @res2:		reserved
++ * @magic:		Magic number
++ * @res3:		reserved (will be used for additional RISC-V specific
++ *			header)
++ * @res4:		reserved (will be used for PE COFF offset)
++ *
++ * The intention is for this header format to be shared between multiple
++ * architectures to avoid a proliferation of image header formats.
++ */
++
++struct riscv_image_header {
++	u32 code0;
++	u32 code1;
++	u64 text_offset;
++	u64 image_size;
++	u64 flags;
++	u32 version;
++	u32 res1;
++	u64 res2;
++	u64 magic;
++	u32 res3;
++	u32 res4;
++};
++#endif /* __ASSEMBLY__ */
++#endif /* __ASM_IMAGE_H */
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index e368106f2228..0f1ba17e476f 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -11,9 +11,41 @@
+ #include <asm/thread_info.h>
+ #include <asm/page.h>
+ #include <asm/csr.h>
++#include <asm/image.h>
+ 
+ __INIT
+ ENTRY(_start)
++	/*
++	 * Image header expected by Linux boot-loaders. The image header data
++	 * structure is described in asm/image.h.
++	 * Do not modify it without modifying the structure and all bootloaders
++	 * that expects this header format!!
++	 */
++	/* jump to start kernel */
++	j _start_kernel
++	/* reserved */
++	.word 0
++	.balign 8
++#if __riscv_xlen == 64
++	/* Image load offset(2MB) from start of RAM */
++	.dword 0x200000
++#else
++	/* Image load offset(4MB) from start of RAM */
++	.dword 0x400000
++#endif
++	/* Effective size of kernel image */
++	.dword _end - _start
++	.dword __HEAD_FLAGS
++	.word RISCV_HEADER_VERSION
++	.word 0
++	.dword 0
++	.asciz RISCV_IMAGE_MAGIC
++	.word 0
++	.balign 4
++	.word 0
++
++.global _start_kernel
++_start_kernel:
+ 	/* Mask all interrupts */
+ 	csrw CSR_SIE, zero
+ 	csrw CSR_SIP, zero
+-- 
+2.20.1
+
 
 _______________________________________________
 linux-riscv mailing list
