@@ -2,128 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C9B866157
-	for <lists+linux-riscv@lfdr.de>; Thu, 11 Jul 2019 23:43:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09C6066460
+	for <lists+linux-riscv@lfdr.de>; Fri, 12 Jul 2019 04:24:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0+2HwvRhmKdm40Xb8ZkDbe+zz8tYDFQRmPLK4/TDPYc=; b=gnmBxGXdCJuVPp
-	ZlhZM1pGUp3pwi6SFDUO9UL0Ox3PVHI3QONu1fPFhDqmguU+YgMV+bOVoAc+ix4onijpNgL6Y37u1
-	prWTZ5t0NgEGk/KdxAP/ahaU9X6oPD18AIAFDrVbM5fgaU9jKM+Pqc7bImvAdDJ2zzwOeJPPAZHBc
-	oDfK/m/sMnSBieFJDfna6UhfehaxyVUsn5WVQn9G51XbTQw3B0L4SMkbYNgbFXT/G44w0qjyKOluL
-	IYzXvw390qoeoZPTf8eNp7i3TK1OGjfg3tQ2Rn9WROKOKDEeP8Ykj8a/DD3r6wMv9JBoAMEddQyET
-	srKEi9L53WjQrE6Rc2CA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cnayef7FaObpNGFunXFWnj0u02RBXnkKqYJsuAp8njk=; b=fUPj4SI497O7gK
+	81WpLvd6UtzqShVRg4PFGFwfoMgJYF0mgvEGf6Zzdu42k93OVsSwNHqZdkO2NRU39SQH2Rs9NJK9M
+	upYLk+e1s2CaTcb94hi92N+GDY52vHHokTZFzainVvk5xwPZvz8xBlFvXUAz7+PtOh9W+0LnBWk+a
+	fyZg95sFjzFMKaw97a8BMRxTZln/f5yX/vZSFFQkHMVWtmOGSSNGgDjRymj/9BW0TRRyE3cLG9z/X
+	smPRe8oIbh2BXaI16ttXTkuzBThKq51gYtCXjFKxgcV7ekQTTDrGdZvmxOXNqh9EvpmxTGdJCyZdx
+	j8wiDuAu6Ha5rqt0zOiA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlgq6-0001ON-QP; Thu, 11 Jul 2019 21:42:54 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hllES-0001Kp-Bw; Fri, 12 Jul 2019 02:24:20 +0000
+Received: from out30-42.freemail.mail.aliyun.com ([115.124.30.42])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlgpo-0001Fc-Ky; Thu, 11 Jul 2019 21:42:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1562881357; x=1594417357;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=M00l1l0lFxVKXWLI+4Qexg4AirZJdmYDGg6GplVD7VY=;
- b=ROstKDtiJEUoYTLXzfjoOlkk/0s/0v1OO2jNuiqqBNpVOk1+jtFa5xKT
- /07J1R9UUCeG4mkgHrf1fWj+tEq6sZ0WcNVtPz+TiBNuSVF4sqpEEd+rP
- +4xy9mq5zWHKifeEiyS4U9y5RpbFg1c1YS1nDqId/K398tqVq+OjvvOez
- ACAJn8DLPPI6aheDEKRNrpzSxIMzj8agixqh3E9tDmNY4Do5Rwwni3Xbt
- zaoQTs+paNyiGt82M+1VPCyD7GiKAim2Y45saqiauE7eHUL60dbT+ESoU
- 8KqC+CfHjopsDPnhRpb7d02RuaiPWDp910+gxodXB244zW3/IQSS1dkH3 Q==;
-IronPort-SDR: cI/2Qq1ViNj0kP9EWszeBxOoNkMWMqOzfw6oYJdpSZKnCrj6go0pnVfr0QghKf12GK2gwaCFsf
- KtpY1vz7tOmsTFnLPUW4dbuxTydZdt8VraFADid5ds/F+j2Y8+BnceAA/57xnihi3wQvFELndR
- f0DYBNmo1KCHmSxwlXDxPEq66GWXGPd3PdsiNOkkhFJTCqQc0+erUICH9pyIFLvQdyfSobdKvO
- OLqP4KyoxbhEi9TRmpQiI18s0nJAgXUF8Hv7GDytrupn3VxsnisCcp3jbdJ0wtxppJrR64POCj
- mqI=
-X-IronPort-AV: E=Sophos;i="5.63,480,1557158400"; d="scan'208";a="114439784"
-Received: from mail-sn1nam02lp2056.outbound.protection.outlook.com (HELO
- NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.56])
- by ob1.hgst.iphmx.com with ESMTP; 12 Jul 2019 05:42:32 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M00l1l0lFxVKXWLI+4Qexg4AirZJdmYDGg6GplVD7VY=;
- b=Cn1NUKreLHqZPtdYcHEbgbjc20Dgs4SnzrYVVDDEE25Tp2vidw0JamtXRm9O0wpfatPX/xi4+1xGoR8m9uv5a6GNcUwZkKj/p+e23gpbbTHmhSBcE6Xe3QvmRfGVM51Ywsa5Y5x8Uc38fmiCtG9I8KgRTRc/MqbN7afGu9NWXQI=
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com (52.135.214.142) by
- BYAPR04MB4853.namprd04.prod.outlook.com (52.135.232.154) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2052.18; Thu, 11 Jul 2019 21:42:31 +0000
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::b9e8:b587:dda2:4824]) by BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::b9e8:b587:dda2:4824%3]) with mapi id 15.20.2052.020; Thu, 11 Jul 2019
- 21:42:31 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
-Subject: Re: [PATCH v4] RISC-V: Add an Image header that boot loader can parse.
-Thread-Topic: [PATCH v4] RISC-V: Add an Image header that boot loader can
- parse.
-Thread-Index: AQHVHLzHT4YK2HktEU6wLZ3FpbqNK6axkG0AgAAJ9ICAFG2sgIAAIY0A
-Date: Thu, 11 Jul 2019 21:42:30 +0000
-Message-ID: <51ee23f3eae621829723f3ba020149732e660b83.camel@wdc.com>
-References: <20190606230800.19932-1-atish.patra@wdc.com>
- <alpine.DEB.2.21.9999.1906281207290.3867@viisi.sifive.com>
- <c0bdc25bc3aee9eee8bf9ebe561900b88df0540b.camel@wdc.com>
- <alpine.DEB.2.21.9999.1907111237520.8586@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1907111237520.8586@viisi.sifive.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: cbefd1da-cdf8-47a0-24e6-08d70648ad5c
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB4853; 
-x-ms-traffictypediagnostic: BYAPR04MB4853:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <BYAPR04MB4853EAEF12CF43DDEED57896FAF30@BYAPR04MB4853.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 0095BCF226
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(396003)(366004)(376002)(346002)(39860400002)(189003)(199004)(486006)(71200400001)(8676002)(26005)(36756003)(7736002)(6436002)(81156014)(6512007)(476003)(53936002)(2616005)(2906002)(8936002)(6246003)(54906003)(76176011)(446003)(11346002)(5640700003)(66066001)(316002)(7416002)(6486002)(99286004)(478600001)(305945005)(2351001)(229853002)(81166006)(14444005)(53546011)(6506007)(186003)(102836004)(14454004)(256004)(6116002)(6916009)(86362001)(71190400001)(4326008)(68736007)(2501003)(66946007)(966005)(6306002)(76116006)(66446008)(66556008)(66476007)(64756008)(25786009)(118296001)(3846002)(5660300002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4853;
- H:BYAPR04MB3782.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: SZOrtETmt0lkuKQDELWJVXfWlYZ6mmHgDS3r5ZisNo1DLTBmy0/jjinjnMoIUrQgKfipG3e43fjoWsjtk0F0z87xRinXNffv92Kl+Z9J8YcEGUL4c9g0w4H/wc9lze4YkEGYBNXWtscnetgyMyoWduSXoVdd9YLLsNSme4XQxwdsFGkdnWnUVCpEvAYi2BBYDMEFWGXCbmozxQcegKVw+nSeneUd73t+U4BUGhQ/lg/DxNgy3YYUHhemsIRAIlWSthWd7vNzptpspNzRIMAlSrWeYLT5LF9gQa2jwXYmY3mI66nTNAFmt99O+vWvIvc7wxBgVFYSqPiqCnjRkpaAHdIEIrxJiBtphR+ts1evus18geWibauKX7XpULiooH6Ds0OUA0e9i23rele6C56meE6EpL9l3Fv+mgfH+yWs2ZM=
-Content-ID: <EA27221172D9894BA083FA29F941E8A0@namprd04.prod.outlook.com>
+ id 1hllAn-0007RH-15; Fri, 12 Jul 2019 02:20:39 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R591e4; CH=green; DM=||false|;
+ FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04420; MF=alex.shi@linux.alibaba.com; NM=1;
+ PH=DS; RN=18; SR=0; TI=SMTPD_---0TWfIdRd_1562898026; 
+Received: from localhost(mailfrom:alex.shi@linux.alibaba.com
+ fp:SMTPD_---0TWfIdRd_1562898026) by smtp.aliyun-inc.com(127.0.0.1);
+ Fri, 12 Jul 2019 10:20:27 +0800
+From: Alex Shi <alex.shi@linux.alibaba.com>
+To: linux-doc@vger.kernel.org,
+	Jonathan Corbet <corbet@lwn.net>
+Subject: [PATCH 01/12] Documentation: move architectures together
+Date: Fri, 12 Jul 2019 10:20:07 +0800
+Message-Id: <20190712022018.27989-1-alex.shi@linux.alibaba.com>
+X-Mailer: git-send-email 2.19.1.856.g8858448bb
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cbefd1da-cdf8-47a0-24e6-08d70648ad5c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jul 2019 21:42:30.9844 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Atish.Patra@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4853
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_144236_828814_84AC51CF 
-X-CRM114-Status: GOOD (  38.86  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190711_192033_742350_A07E758A 
+X-CRM114-Status: UNSURE (   2.36  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.5 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 2.5 SUSPICIOUS_RECIPS      Similar addresses in recipient list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [115.124.30.42 listed in list.dnswl.org]
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,341 +67,1151 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "trini@konsulko.com" <trini@konsulko.com>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "corbet@lwn.net" <corbet@lwn.net>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "will.deacon@arm.com" <will.deacon@arm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "marek.vasut@gmail.com" <marek.vasut@gmail.com>,
- Anup Patel <Anup.Patel@wdc.com>, "khilman@baylibre.com" <khilman@baylibre.com>,
- "mick@ics.forth.gr" <mick@ics.forth.gr>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "merker@debian.org" <merker@debian.org>
+Cc: linux-s390@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-ia64@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-parisc@vger.kernel.org,
+ linux-sh@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ kvm@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Alex Shi <alex.shi@linux.alibaba.com>, linuxppc-dev@lists.ozlabs.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 2019-07-11 at 12:42 -0700, Paul Walmsley wrote:
-> On Fri, 28 Jun 2019, Atish Patra wrote:
-> 
-> > On Fri, 2019-06-28 at 12:09 -0700, Paul Walmsley wrote:
-> > > On Thu, 6 Jun 2019, Atish Patra wrote:
-> > > 
-> > > > Currently, the last stage boot loaders such as U-Boot can
-> > > > accept
-> > > > only
-> > > > uImage which is an unnecessary additional step in automating
-> > > > boot
-> > > > process.
-> > > > 
-> > > > Add an image header that boot loader understands and boot Linux
-> > > > from
-> > > > flat Image directly.
-> > > 
-> > > ...
-> > > 
-> > > 
-> > > > +#if __riscv_xlen == 64
-> > > > +	/* Image load offset(2MB) from start of RAM */
-> > > > +	.dword 0x200000
-> > > > +#else
-> > > > +	/* Image load offset(4MB) from start of RAM */
-> > > > +	.dword 0x400000
-> > > > +#endif
-> > > 
-> > > Is there a rationale behind these load offset values?
-> > > 
-> > 
-> > 2MB/4MB alignment requirement is mandatory for current RISC-V
-> > kernel.
-> > Anup had a patch that tried to remove that but not accepted yet.
-> > 
-> > https://patchwork.kernel.org/patch/10868465/
-> 
-> Thanks for doing this work; this should really help.  Patch queued
-> with a 
-> few minor tweaks to the documentation file and to the
-> comments.  (Updated 
-> patch below)
-> 
+There are many different archs in Documentation/ dir, it's better to
+move them together in 'Documentation/arch' which follows from kernel source.
 
-Thank you!
+Signed-off-by: Alex Shi <alex.shi@linux.alibaba.com>
+Cc: Jonathan Corbet <corbet@lwn.net>
+Cc: linux-doc@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-stm32@st-md-mailman.stormreply.com
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-riscv@lists.infradead.org
+Cc: linux-omap@vger.kernel.org
+Cc: linux-fbdev@vger.kernel.org
+Cc: linux-samsung-soc@vger.kernel.org
+Cc: linux-ia64@vger.kernel.org
+Cc: linux-mips@vger.kernel.org
+Cc: linux-parisc@vger.kernel.org
+Cc: linux-scsi@vger.kernel.org
+Cc: linux-s390@vger.kernel.org
+Cc: kvm@vger.kernel.org
+Cc: linux-sh@vger.kernel.org
+---
+ Documentation/{ => arch}/arm/Booting                             | 0
+ Documentation/{ => arch}/arm/IXP4xx                              | 0
+ Documentation/{ => arch}/arm/Interrupts                          | 0
+ Documentation/{ => arch}/arm/Marvell/README                      | 0
+ Documentation/{ => arch}/arm/Microchip/README                    | 0
+ Documentation/{ => arch}/arm/Netwinder                           | 0
+ Documentation/{ => arch}/arm/OMAP/DSS                            | 0
+ Documentation/{ => arch}/arm/OMAP/README                         | 0
+ Documentation/{ => arch}/arm/OMAP/omap_pm                        | 0
+ Documentation/{ => arch}/arm/Porting                             | 0
+ Documentation/{ => arch}/arm/README                              | 0
+ Documentation/{ => arch}/arm/SA1100/ADSBitsy                     | 0
+ Documentation/{ => arch}/arm/SA1100/Assabet                      | 0
+ Documentation/{ => arch}/arm/SA1100/Brutus                       | 0
+ Documentation/{ => arch}/arm/SA1100/CERF                         | 0
+ Documentation/{ => arch}/arm/SA1100/FreeBird                     | 0
+ Documentation/{ => arch}/arm/SA1100/GraphicsClient               | 0
+ Documentation/{ => arch}/arm/SA1100/GraphicsMaster               | 0
+ Documentation/{ => arch}/arm/SA1100/HUW_WEBPANEL                 | 0
+ Documentation/{ => arch}/arm/SA1100/Itsy                         | 0
+ Documentation/{ => arch}/arm/SA1100/LART                         | 0
+ Documentation/{ => arch}/arm/SA1100/PLEB                         | 0
+ Documentation/{ => arch}/arm/SA1100/Pangolin                     | 0
+ Documentation/{ => arch}/arm/SA1100/Tifon                        | 0
+ Documentation/{ => arch}/arm/SA1100/Yopy                         | 0
+ Documentation/{ => arch}/arm/SA1100/empeg                        | 0
+ Documentation/{ => arch}/arm/SA1100/nanoEngine                   | 0
+ Documentation/{ => arch}/arm/SA1100/serial_UART                  | 0
+ Documentation/{ => arch}/arm/SH-Mobile/.gitignore                | 0
+ Documentation/{ => arch}/arm/SPEAr/overview.txt                  | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/CPUfreq.txt         | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/EB2410ITX.txt       | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/GPIO.txt            | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/H1940.txt           | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/NAND.txt            | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/Overview.txt        | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2412.txt         | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2413.txt         | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/SMDK2440.txt        | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/Suspend.txt         | 0
+ Documentation/{ => arch}/arm/Samsung-S3C24XX/USB-Host.txt        | 0
+ Documentation/{ => arch}/arm/Samsung/Bootloader-interface.txt    | 0
+ Documentation/{ => arch}/arm/Samsung/GPIO.txt                    | 0
+ Documentation/{ => arch}/arm/Samsung/Overview.txt                | 0
+ Documentation/{ => arch}/arm/Samsung/clksrc-change-registers.awk | 0
+ Documentation/{ => arch}/arm/Setup                               | 0
+ Documentation/{ => arch}/arm/VFP/release-notes.txt               | 0
+ Documentation/{ => arch}/arm/cluster-pm-race-avoidance.txt       | 0
+ Documentation/{ => arch}/arm/firmware.txt                        | 0
+ Documentation/{ => arch}/arm/kernel_mode_neon.txt                | 0
+ Documentation/{ => arch}/arm/kernel_user_helpers.txt             | 0
+ Documentation/{ => arch}/arm/keystone/Overview.txt               | 0
+ Documentation/{ => arch}/arm/keystone/knav-qmss.txt              | 0
+ Documentation/{ => arch}/arm/mem_alignment                       | 0
+ Documentation/{ => arch}/arm/memory.txt                          | 0
+ Documentation/{ => arch}/arm/nwfpe/NOTES                         | 0
+ Documentation/{ => arch}/arm/nwfpe/README                        | 0
+ Documentation/{ => arch}/arm/nwfpe/README.FPE                    | 0
+ Documentation/{ => arch}/arm/nwfpe/TODO                          | 0
+ Documentation/{ => arch}/arm/pxa/mfp.txt                         | 0
+ Documentation/{ => arch}/arm/sti/overview.txt                    | 0
+ Documentation/{ => arch}/arm/sti/stih407-overview.txt            | 0
+ Documentation/{ => arch}/arm/sti/stih415-overview.txt            | 0
+ Documentation/{ => arch}/arm/sti/stih416-overview.txt            | 0
+ Documentation/{ => arch}/arm/sti/stih418-overview.txt            | 0
+ Documentation/{ => arch}/arm/stm32/overview.rst                  | 0
+ Documentation/{ => arch}/arm/stm32/stm32f429-overview.rst        | 0
+ Documentation/{ => arch}/arm/stm32/stm32f746-overview.rst        | 0
+ Documentation/{ => arch}/arm/stm32/stm32f769-overview.rst        | 0
+ Documentation/{ => arch}/arm/stm32/stm32h743-overview.rst        | 0
+ Documentation/{ => arch}/arm/stm32/stm32mp157-overview.rst       | 0
+ Documentation/{ => arch}/arm/sunxi/README                        | 0
+ Documentation/{ => arch}/arm/sunxi/clocks.txt                    | 0
+ Documentation/{ => arch}/arm/swp_emulation                       | 0
+ Documentation/{ => arch}/arm/tcm.txt                             | 0
+ Documentation/{ => arch}/arm/uefi.txt                            | 0
+ Documentation/{ => arch}/arm/vlocks.txt                          | 0
+ Documentation/{ => arch}/arm64/acpi_object_usage.rst             | 0
+ Documentation/{ => arch}/arm64/arm-acpi.rst                      | 0
+ Documentation/{ => arch}/arm64/booting.rst                       | 0
+ Documentation/{ => arch}/arm64/cpu-feature-registers.rst         | 0
+ Documentation/{ => arch}/arm64/elf_hwcaps.rst                    | 0
+ Documentation/{ => arch}/arm64/hugetlbpage.rst                   | 0
+ Documentation/{ => arch}/arm64/index.rst                         | 0
+ Documentation/{ => arch}/arm64/legacy_instructions.rst           | 0
+ Documentation/{ => arch}/arm64/memory.rst                        | 0
+ Documentation/{ => arch}/arm64/perf.txt                          | 0
+ Documentation/{ => arch}/arm64/pointer-authentication.rst        | 0
+ Documentation/{ => arch}/arm64/silicon-errata.rst                | 0
+ Documentation/{ => arch}/arm64/sve.rst                           | 0
+ Documentation/{ => arch}/arm64/tagged-pointers.rst               | 0
+ Documentation/{ => arch}/ia64/IRQ-redir.txt                      | 0
+ Documentation/{ => arch}/ia64/README                             | 0
+ Documentation/{ => arch}/ia64/aliasing.txt                       | 0
+ Documentation/{ => arch}/ia64/efirtc.txt                         | 0
+ Documentation/{ => arch}/ia64/err_inject.txt                     | 0
+ Documentation/{ => arch}/ia64/fsys.txt                           | 0
+ Documentation/{ => arch}/ia64/mca.txt                            | 0
+ Documentation/{ => arch}/ia64/serial.txt                         | 0
+ Documentation/{ => arch}/ia64/xen.txt                            | 0
+ Documentation/{ => arch}/m68k/README.buddha                      | 0
+ Documentation/{ => arch}/m68k/kernel-options.txt                 | 0
+ Documentation/{ => arch}/mips/AU1xxx_IDE.README                  | 0
+ Documentation/{ => arch}/nios2/README                            | 0
+ Documentation/{ => arch}/parisc/debugging                        | 0
+ Documentation/{ => arch}/parisc/registers                        | 0
+ Documentation/{ => arch}/powerpc/DAWR-POWER9.txt                 | 0
+ Documentation/{ => arch}/powerpc/bootwrapper.txt                 | 0
+ Documentation/{ => arch}/powerpc/cpu_families.txt                | 0
+ Documentation/{ => arch}/powerpc/cpu_features.txt                | 0
+ Documentation/{ => arch}/powerpc/cxl.txt                         | 0
+ Documentation/{ => arch}/powerpc/cxlflash.txt                    | 0
+ Documentation/{ => arch}/powerpc/dscr.txt                        | 0
+ Documentation/{ => arch}/powerpc/eeh-pci-error-recovery.txt      | 0
+ Documentation/{ => arch}/powerpc/firmware-assisted-dump.txt      | 0
+ Documentation/{ => arch}/powerpc/hvcs.txt                        | 0
+ Documentation/{ => arch}/powerpc/isa-versions.rst                | 0
+ Documentation/{ => arch}/powerpc/mpc52xx.txt                     | 0
+ Documentation/{ => arch}/powerpc/pci_iov_resource_on_powernv.txt | 0
+ Documentation/{ => arch}/powerpc/pmu-ebb.txt                     | 0
+ Documentation/{ => arch}/powerpc/ptrace.txt                      | 0
+ Documentation/{ => arch}/powerpc/qe_firmware.txt                 | 0
+ Documentation/{ => arch}/powerpc/syscall64-abi.txt               | 0
+ Documentation/{ => arch}/powerpc/transactional_memory.txt        | 0
+ Documentation/{ => arch}/riscv/index.rst                         | 0
+ Documentation/{ => arch}/riscv/pmu.rst                           | 0
+ Documentation/{ => arch}/s390/3270.ChangeLog                     | 0
+ Documentation/{ => arch}/s390/3270.rst                           | 0
+ Documentation/{ => arch}/s390/cds.rst                            | 0
+ Documentation/{ => arch}/s390/common_io.rst                      | 0
+ Documentation/{ => arch}/s390/config3270.sh                      | 0
+ Documentation/{ => arch}/s390/dasd.rst                           | 0
+ Documentation/{ => arch}/s390/debugging390.rst                   | 0
+ Documentation/{ => arch}/s390/driver-model.rst                   | 0
+ Documentation/{ => arch}/s390/index.rst                          | 0
+ Documentation/{ => arch}/s390/monreader.rst                      | 0
+ Documentation/{ => arch}/s390/qeth.rst                           | 0
+ Documentation/{ => arch}/s390/s390dbf.rst                        | 0
+ Documentation/{ => arch}/s390/text_files.rst                     | 0
+ Documentation/{ => arch}/s390/vfio-ap.rst                        | 0
+ Documentation/{ => arch}/s390/vfio-ccw.rst                       | 0
+ Documentation/{ => arch}/s390/zfcpdump.rst                       | 0
+ Documentation/{ => arch}/sh/conf.py                              | 0
+ Documentation/{ => arch}/sh/index.rst                            | 0
+ Documentation/{ => arch}/sh/new-machine.txt                      | 0
+ Documentation/{ => arch}/sh/register-banks.txt                   | 0
+ Documentation/{ => arch}/sparc/adi.rst                           | 0
+ Documentation/{ => arch}/sparc/console.rst                       | 0
+ Documentation/{ => arch}/sparc/index.rst                         | 0
+ Documentation/{ => arch}/sparc/oradax/dax-hv-api.txt             | 0
+ Documentation/{ => arch}/sparc/oradax/oracle-dax.rst             | 0
+ Documentation/{ => arch}/x86/amd-memory-encryption.rst           | 0
+ Documentation/{ => arch}/x86/boot.rst                            | 0
+ Documentation/{ => arch}/x86/conf.py                             | 0
+ Documentation/{ => arch}/x86/earlyprintk.rst                     | 0
+ Documentation/{ => arch}/x86/entry_64.rst                        | 0
+ Documentation/{ => arch}/x86/exception-tables.rst                | 0
+ Documentation/{ => arch}/x86/i386/IO-APIC.rst                    | 0
+ Documentation/{ => arch}/x86/i386/index.rst                      | 0
+ Documentation/{ => arch}/x86/index.rst                           | 0
+ Documentation/{ => arch}/x86/intel_mpx.rst                       | 0
+ Documentation/{ => arch}/x86/kernel-stacks.rst                   | 0
+ Documentation/{ => arch}/x86/mds.rst                             | 0
+ Documentation/{ => arch}/x86/microcode.rst                       | 0
+ Documentation/{ => arch}/x86/mtrr.rst                            | 0
+ Documentation/{ => arch}/x86/orc-unwinder.rst                    | 0
+ Documentation/{ => arch}/x86/pat.rst                             | 0
+ Documentation/{ => arch}/x86/pti.rst                             | 0
+ Documentation/{ => arch}/x86/resctrl_ui.rst                      | 0
+ Documentation/{ => arch}/x86/tlb.rst                             | 0
+ Documentation/{ => arch}/x86/topology.rst                        | 0
+ Documentation/{ => arch}/x86/usb-legacy-support.rst              | 0
+ Documentation/{ => arch}/x86/x86_64/5level-paging.rst            | 0
+ Documentation/{ => arch}/x86/x86_64/boot-options.rst             | 0
+ Documentation/{ => arch}/x86/x86_64/cpu-hotplug-spec.rst         | 0
+ Documentation/{ => arch}/x86/x86_64/fake-numa-for-cpusets.rst    | 0
+ Documentation/{ => arch}/x86/x86_64/index.rst                    | 0
+ Documentation/{ => arch}/x86/x86_64/machinecheck.rst             | 0
+ Documentation/{ => arch}/x86/x86_64/mm.rst                       | 0
+ Documentation/{ => arch}/x86/x86_64/uefi.rst                     | 0
+ Documentation/{ => arch}/x86/zero-page.rst                       | 0
+ Documentation/{ => arch}/xtensa/atomctl.txt                      | 0
+ Documentation/{ => arch}/xtensa/booting.txt                      | 0
+ Documentation/{ => arch}/xtensa/mmu.txt                          | 0
+ 184 files changed, 0 insertions(+), 0 deletions(-)
+ rename Documentation/{ => arch}/arm/Booting (100%)
+ rename Documentation/{ => arch}/arm/IXP4xx (100%)
+ rename Documentation/{ => arch}/arm/Interrupts (100%)
+ rename Documentation/{ => arch}/arm/Marvell/README (100%)
+ rename Documentation/{ => arch}/arm/Microchip/README (100%)
+ rename Documentation/{ => arch}/arm/Netwinder (100%)
+ rename Documentation/{ => arch}/arm/OMAP/DSS (100%)
+ rename Documentation/{ => arch}/arm/OMAP/README (100%)
+ rename Documentation/{ => arch}/arm/OMAP/omap_pm (100%)
+ rename Documentation/{ => arch}/arm/Porting (100%)
+ rename Documentation/{ => arch}/arm/README (100%)
+ rename Documentation/{ => arch}/arm/SA1100/ADSBitsy (100%)
+ rename Documentation/{ => arch}/arm/SA1100/Assabet (100%)
+ rename Documentation/{ => arch}/arm/SA1100/Brutus (100%)
+ rename Documentation/{ => arch}/arm/SA1100/CERF (100%)
+ rename Documentation/{ => arch}/arm/SA1100/FreeBird (100%)
+ rename Documentation/{ => arch}/arm/SA1100/GraphicsClient (100%)
+ rename Documentation/{ => arch}/arm/SA1100/GraphicsMaster (100%)
+ rename Documentation/{ => arch}/arm/SA1100/HUW_WEBPANEL (100%)
+ rename Documentation/{ => arch}/arm/SA1100/Itsy (100%)
+ rename Documentation/{ => arch}/arm/SA1100/LART (100%)
+ rename Documentation/{ => arch}/arm/SA1100/PLEB (100%)
+ rename Documentation/{ => arch}/arm/SA1100/Pangolin (100%)
+ rename Documentation/{ => arch}/arm/SA1100/Tifon (100%)
+ rename Documentation/{ => arch}/arm/SA1100/Yopy (100%)
+ rename Documentation/{ => arch}/arm/SA1100/empeg (100%)
+ rename Documentation/{ => arch}/arm/SA1100/nanoEngine (100%)
+ rename Documentation/{ => arch}/arm/SA1100/serial_UART (100%)
+ rename Documentation/{ => arch}/arm/SH-Mobile/.gitignore (100%)
+ rename Documentation/{ => arch}/arm/SPEAr/overview.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/CPUfreq.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/EB2410ITX.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/GPIO.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/H1940.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/NAND.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/Overview.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2412.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2413.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/SMDK2440.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/Suspend.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung-S3C24XX/USB-Host.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung/Bootloader-interface.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung/GPIO.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung/Overview.txt (100%)
+ rename Documentation/{ => arch}/arm/Samsung/clksrc-change-registers.awk (100%)
+ rename Documentation/{ => arch}/arm/Setup (100%)
+ rename Documentation/{ => arch}/arm/VFP/release-notes.txt (100%)
+ rename Documentation/{ => arch}/arm/cluster-pm-race-avoidance.txt (100%)
+ rename Documentation/{ => arch}/arm/firmware.txt (100%)
+ rename Documentation/{ => arch}/arm/kernel_mode_neon.txt (100%)
+ rename Documentation/{ => arch}/arm/kernel_user_helpers.txt (100%)
+ rename Documentation/{ => arch}/arm/keystone/Overview.txt (100%)
+ rename Documentation/{ => arch}/arm/keystone/knav-qmss.txt (100%)
+ rename Documentation/{ => arch}/arm/mem_alignment (100%)
+ rename Documentation/{ => arch}/arm/memory.txt (100%)
+ rename Documentation/{ => arch}/arm/nwfpe/NOTES (100%)
+ rename Documentation/{ => arch}/arm/nwfpe/README (100%)
+ rename Documentation/{ => arch}/arm/nwfpe/README.FPE (100%)
+ rename Documentation/{ => arch}/arm/nwfpe/TODO (100%)
+ rename Documentation/{ => arch}/arm/pxa/mfp.txt (100%)
+ rename Documentation/{ => arch}/arm/sti/overview.txt (100%)
+ rename Documentation/{ => arch}/arm/sti/stih407-overview.txt (100%)
+ rename Documentation/{ => arch}/arm/sti/stih415-overview.txt (100%)
+ rename Documentation/{ => arch}/arm/sti/stih416-overview.txt (100%)
+ rename Documentation/{ => arch}/arm/sti/stih418-overview.txt (100%)
+ rename Documentation/{ => arch}/arm/stm32/overview.rst (100%)
+ rename Documentation/{ => arch}/arm/stm32/stm32f429-overview.rst (100%)
+ rename Documentation/{ => arch}/arm/stm32/stm32f746-overview.rst (100%)
+ rename Documentation/{ => arch}/arm/stm32/stm32f769-overview.rst (100%)
+ rename Documentation/{ => arch}/arm/stm32/stm32h743-overview.rst (100%)
+ rename Documentation/{ => arch}/arm/stm32/stm32mp157-overview.rst (100%)
+ rename Documentation/{ => arch}/arm/sunxi/README (100%)
+ rename Documentation/{ => arch}/arm/sunxi/clocks.txt (100%)
+ rename Documentation/{ => arch}/arm/swp_emulation (100%)
+ rename Documentation/{ => arch}/arm/tcm.txt (100%)
+ rename Documentation/{ => arch}/arm/uefi.txt (100%)
+ rename Documentation/{ => arch}/arm/vlocks.txt (100%)
+ rename Documentation/{ => arch}/arm64/acpi_object_usage.rst (100%)
+ rename Documentation/{ => arch}/arm64/arm-acpi.rst (100%)
+ rename Documentation/{ => arch}/arm64/booting.rst (100%)
+ rename Documentation/{ => arch}/arm64/cpu-feature-registers.rst (100%)
+ rename Documentation/{ => arch}/arm64/elf_hwcaps.rst (100%)
+ rename Documentation/{ => arch}/arm64/hugetlbpage.rst (100%)
+ rename Documentation/{ => arch}/arm64/index.rst (100%)
+ rename Documentation/{ => arch}/arm64/legacy_instructions.rst (100%)
+ rename Documentation/{ => arch}/arm64/memory.rst (100%)
+ rename Documentation/{ => arch}/arm64/perf.txt (100%)
+ rename Documentation/{ => arch}/arm64/pointer-authentication.rst (100%)
+ rename Documentation/{ => arch}/arm64/silicon-errata.rst (100%)
+ rename Documentation/{ => arch}/arm64/sve.rst (100%)
+ rename Documentation/{ => arch}/arm64/tagged-pointers.rst (100%)
+ rename Documentation/{ => arch}/ia64/IRQ-redir.txt (100%)
+ rename Documentation/{ => arch}/ia64/README (100%)
+ rename Documentation/{ => arch}/ia64/aliasing.txt (100%)
+ rename Documentation/{ => arch}/ia64/efirtc.txt (100%)
+ rename Documentation/{ => arch}/ia64/err_inject.txt (100%)
+ rename Documentation/{ => arch}/ia64/fsys.txt (100%)
+ rename Documentation/{ => arch}/ia64/mca.txt (100%)
+ rename Documentation/{ => arch}/ia64/serial.txt (100%)
+ rename Documentation/{ => arch}/ia64/xen.txt (100%)
+ rename Documentation/{ => arch}/m68k/README.buddha (100%)
+ rename Documentation/{ => arch}/m68k/kernel-options.txt (100%)
+ rename Documentation/{ => arch}/mips/AU1xxx_IDE.README (100%)
+ rename Documentation/{ => arch}/nios2/README (100%)
+ rename Documentation/{ => arch}/parisc/debugging (100%)
+ rename Documentation/{ => arch}/parisc/registers (100%)
+ rename Documentation/{ => arch}/powerpc/DAWR-POWER9.txt (100%)
+ rename Documentation/{ => arch}/powerpc/bootwrapper.txt (100%)
+ rename Documentation/{ => arch}/powerpc/cpu_families.txt (100%)
+ rename Documentation/{ => arch}/powerpc/cpu_features.txt (100%)
+ rename Documentation/{ => arch}/powerpc/cxl.txt (100%)
+ rename Documentation/{ => arch}/powerpc/cxlflash.txt (100%)
+ rename Documentation/{ => arch}/powerpc/dscr.txt (100%)
+ rename Documentation/{ => arch}/powerpc/eeh-pci-error-recovery.txt (100%)
+ rename Documentation/{ => arch}/powerpc/firmware-assisted-dump.txt (100%)
+ rename Documentation/{ => arch}/powerpc/hvcs.txt (100%)
+ rename Documentation/{ => arch}/powerpc/isa-versions.rst (100%)
+ rename Documentation/{ => arch}/powerpc/mpc52xx.txt (100%)
+ rename Documentation/{ => arch}/powerpc/pci_iov_resource_on_powernv.txt (100%)
+ rename Documentation/{ => arch}/powerpc/pmu-ebb.txt (100%)
+ rename Documentation/{ => arch}/powerpc/ptrace.txt (100%)
+ rename Documentation/{ => arch}/powerpc/qe_firmware.txt (100%)
+ rename Documentation/{ => arch}/powerpc/syscall64-abi.txt (100%)
+ rename Documentation/{ => arch}/powerpc/transactional_memory.txt (100%)
+ rename Documentation/{ => arch}/riscv/index.rst (100%)
+ rename Documentation/{ => arch}/riscv/pmu.rst (100%)
+ rename Documentation/{ => arch}/s390/3270.ChangeLog (100%)
+ rename Documentation/{ => arch}/s390/3270.rst (100%)
+ rename Documentation/{ => arch}/s390/cds.rst (100%)
+ rename Documentation/{ => arch}/s390/common_io.rst (100%)
+ rename Documentation/{ => arch}/s390/config3270.sh (100%)
+ rename Documentation/{ => arch}/s390/dasd.rst (100%)
+ rename Documentation/{ => arch}/s390/debugging390.rst (100%)
+ rename Documentation/{ => arch}/s390/driver-model.rst (100%)
+ rename Documentation/{ => arch}/s390/index.rst (100%)
+ rename Documentation/{ => arch}/s390/monreader.rst (100%)
+ rename Documentation/{ => arch}/s390/qeth.rst (100%)
+ rename Documentation/{ => arch}/s390/s390dbf.rst (100%)
+ rename Documentation/{ => arch}/s390/text_files.rst (100%)
+ rename Documentation/{ => arch}/s390/vfio-ap.rst (100%)
+ rename Documentation/{ => arch}/s390/vfio-ccw.rst (100%)
+ rename Documentation/{ => arch}/s390/zfcpdump.rst (100%)
+ rename Documentation/{ => arch}/sh/conf.py (100%)
+ rename Documentation/{ => arch}/sh/index.rst (100%)
+ rename Documentation/{ => arch}/sh/new-machine.txt (100%)
+ rename Documentation/{ => arch}/sh/register-banks.txt (100%)
+ rename Documentation/{ => arch}/sparc/adi.rst (100%)
+ rename Documentation/{ => arch}/sparc/console.rst (100%)
+ rename Documentation/{ => arch}/sparc/index.rst (100%)
+ rename Documentation/{ => arch}/sparc/oradax/dax-hv-api.txt (100%)
+ rename Documentation/{ => arch}/sparc/oradax/oracle-dax.rst (100%)
+ rename Documentation/{ => arch}/x86/amd-memory-encryption.rst (100%)
+ rename Documentation/{ => arch}/x86/boot.rst (100%)
+ rename Documentation/{ => arch}/x86/conf.py (100%)
+ rename Documentation/{ => arch}/x86/earlyprintk.rst (100%)
+ rename Documentation/{ => arch}/x86/entry_64.rst (100%)
+ rename Documentation/{ => arch}/x86/exception-tables.rst (100%)
+ rename Documentation/{ => arch}/x86/i386/IO-APIC.rst (100%)
+ rename Documentation/{ => arch}/x86/i386/index.rst (100%)
+ rename Documentation/{ => arch}/x86/index.rst (100%)
+ rename Documentation/{ => arch}/x86/intel_mpx.rst (100%)
+ rename Documentation/{ => arch}/x86/kernel-stacks.rst (100%)
+ rename Documentation/{ => arch}/x86/mds.rst (100%)
+ rename Documentation/{ => arch}/x86/microcode.rst (100%)
+ rename Documentation/{ => arch}/x86/mtrr.rst (100%)
+ rename Documentation/{ => arch}/x86/orc-unwinder.rst (100%)
+ rename Documentation/{ => arch}/x86/pat.rst (100%)
+ rename Documentation/{ => arch}/x86/pti.rst (100%)
+ rename Documentation/{ => arch}/x86/resctrl_ui.rst (100%)
+ rename Documentation/{ => arch}/x86/tlb.rst (100%)
+ rename Documentation/{ => arch}/x86/topology.rst (100%)
+ rename Documentation/{ => arch}/x86/usb-legacy-support.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/5level-paging.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/boot-options.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/cpu-hotplug-spec.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/fake-numa-for-cpusets.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/index.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/machinecheck.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/mm.rst (100%)
+ rename Documentation/{ => arch}/x86/x86_64/uefi.rst (100%)
+ rename Documentation/{ => arch}/x86/zero-page.rst (100%)
+ rename Documentation/{ => arch}/xtensa/atomctl.txt (100%)
+ rename Documentation/{ => arch}/xtensa/booting.txt (100%)
+ rename Documentation/{ => arch}/xtensa/mmu.txt (100%)
 
-> Not sure if this will make it for v5.3-rc1.  If not, we'll try to get
-> it 
-> in as soon as possible afterwards.
-> 
-> Something else to think about: we'll probably want some flag bits
-> soon to 
-> identify whether the kernel binary is a 32-bit, 64-bit, or 128-bit
-> binary.  
-> If two bits are used, and 64-bit is defined as 00, then it should be 
-> backwards compatible.  I would hope that this could be something that
-> we'd 
-> be able to coordinate with the ARM64 folks also;
-
-Sure. We can always any bits from 4-64 (reserved in ARM header). That
-will still allow the ARM64/RISC-V headers to merge in future if ARM
-maintainers are interested. 
-
->  otherwise we may need to 
-> start using that res3 field.
-> 
-> 
-> - Paul
-> 
-> From: Atish Patra <atish.patra@wdc.com>
-> Date: Thu, 6 Jun 2019 16:08:00 -0700
-> Subject: [PATCH] RISC-V: Add an Image header that boot loader can
-> parse.
-> 
-> Currently, the last stage boot loaders such as U-Boot can accept only
-> uImage which is an unnecessary additional step in automating boot
-> process.
-> 
-> Add an image header that boot loader understands and boot Linux from
-> flat Image directly.
-> 
-> This header is based on ARM64 boot image header and provides an
-> opportunity to combine both ARM64 & RISC-V image headers in future.
-> 
-> Also make sure that PE/COFF header can co-exist in the same image so
-> that EFI stub can be supported for RISC-V in future. EFI
-> specification
-> needs PE/COFF image header in the beginning of the kernel image in
-> order
-> to load it as an EFI application. In order to support EFI stub, code0
-> should be replaced with "MZ" magic string and res4(at offset 0x3c)
-> should point to the rest of the PE/COFF header (which will be added
-> during EFI support).
-> 
-> Tested on both QEMU and HiFive Unleashed using OpenSBI + U-Boot +
-> Linux.
-> 
-> Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> Reviewed-by: Karsten Merker <merker@debian.org>
-> Tested-by: Karsten Merker <merker@debian.org> (QEMU+OpenSBI+U-Boot)
-> Tested-by: Kevin Hilman <khilman@baylibre.com> (OpenSBI + U-Boot +
-> Linux)
-> [paul.walmsley@sifive.com: fixed whitespace in boot-image-header.txt;
->  converted structure comment to kernel-doc format and added some
-> detail]
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> ---
->  Documentation/riscv/boot-image-header.txt | 50 +++++++++++++++++
->  arch/riscv/include/asm/image.h            | 65
-> +++++++++++++++++++++++
->  arch/riscv/kernel/head.S                  | 32 +++++++++++
->  3 files changed, 147 insertions(+)
->  create mode 100644 Documentation/riscv/boot-image-header.txt
->  create mode 100644 arch/riscv/include/asm/image.h
-> 
-> diff --git a/Documentation/riscv/boot-image-header.txt
-> b/Documentation/riscv/boot-image-header.txt
-> new file mode 100644
-> index 000000000000..1b73fea23b39
-> --- /dev/null
-> +++ b/Documentation/riscv/boot-image-header.txt
-> @@ -0,0 +1,50 @@
-> +				Boot image header in RISC-V Linux
-> +			=============================================
-> +
-> +Author: Atish Patra <atish.patra@wdc.com>
-> +Date  : 20 May 2019
-> +
-> +This document only describes the boot image header details for RISC-
-> V Linux.
-> +The complete booting guide will be available at
-> Documentation/riscv/booting.txt.
-> +
-> +The following 64-byte header is present in decompressed Linux kernel
-> image.
-> +
-> +	u32 code0;		  /* Executable code */
-> +	u32 code1; 		  /* Executable code */
-> +	u64 text_offset;	  /* Image load offset, little endian */
-> +	u64 image_size;		  /* Effective Image size, little
-> endian */
-> +	u64 flags;		  /* kernel flags, little endian */
-> +	u32 version;		  /* Version of this header */
-> +	u32 res1  = 0;		  /* Reserved */
-> +	u64 res2  = 0;    	  /* Reserved */
-> +	u64 magic = 0x5643534952; /* Magic number, little endian,
-> "RISCV" */
-> +	u32 res3;		  /* Reserved for additional RISC-V specific
-> header */
-> +	u32 res4;		  /* Reserved for PE COFF offset */
-> +
-> +This header format is compliant with PE/COFF header and largely
-> inspired from
-> +ARM64 header. Thus, both ARM64 & RISC-V header can be combined into
-> one common
-> +header in future.
-> +
-> +Notes:
-> +- This header can also be reused to support EFI stub for RISC-V in
-> future. EFI
-> +  specification needs PE/COFF image header in the beginning of the
-> kernel image
-> +  in order to load it as an EFI application. In order to support EFI
-> stub,
-> +  code0 should be replaced with "MZ" magic string and res5(at offset
-> 0x3c) should
-> +  point to the rest of the PE/COFF header.
-> +
-> +- version field indicate header version number.
-> +	Bits 0:15  - Minor version
-> +	Bits 16:31 - Major version
-> +
-> +  This preserves compatibility across newer and older version of the
-> header.
-> +  The current version is defined as 0.1.
-> +
-> +- res3 is reserved for offset to any other additional fields. This
-> makes the
-> +  header extendible in future. One example would be to accommodate
-> ISA
-> +  extension for RISC-V in future. For current version, it is set to
-> be zero.
-> +
-> +- In current header, the flag field has only one field.
-> +	Bit 0: Kernel endianness. 1 if BE, 0 if LE.
-> +
-> +- Image size is mandatory for boot loader to load kernel image.
-> Booting will
-> +  fail otherwise.
-> diff --git a/arch/riscv/include/asm/image.h
-> b/arch/riscv/include/asm/image.h
-> new file mode 100644
-> index 000000000000..ef28e106f247
-> --- /dev/null
-> +++ b/arch/riscv/include/asm/image.h
-> @@ -0,0 +1,65 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +
-> +#ifndef __ASM_IMAGE_H
-> +#define __ASM_IMAGE_H
-> +
-> +#define RISCV_IMAGE_MAGIC	"RISCV"
-> +
-> +#define RISCV_IMAGE_FLAG_BE_SHIFT	0
-> +#define RISCV_IMAGE_FLAG_BE_MASK	0x1
-> +
-> +#define RISCV_IMAGE_FLAG_LE		0
-> +#define RISCV_IMAGE_FLAG_BE		1
-> +
-> +#ifdef CONFIG_CPU_BIG_ENDIAN
-> +#error conversion of header fields to LE not yet implemented
-> +#else
-> +#define __HEAD_FLAG_BE		RISCV_IMAGE_FLAG_LE
-> +#endif
-> +
-> +#define __HEAD_FLAG(field)	(__HEAD_FLAG_##field << \
-> +				RISCV_IMAGE_FLAG_##field##_SHIFT)
-> +
-> +#define __HEAD_FLAGS		(__HEAD_FLAG(BE))
-> +
-> +#define RISCV_HEADER_VERSION_MAJOR 0
-> +#define RISCV_HEADER_VERSION_MINOR 1
-> +
-> +#define RISCV_HEADER_VERSION (RISCV_HEADER_VERSION_MAJOR << 16 | \
-> +			      RISCV_HEADER_VERSION_MINOR)
-> +
-> +#ifndef __ASSEMBLY__
-> +/**
-> + * struct riscv_image_header - riscv kernel image header
-> + * @code0:		Executable code
-> + * @code1:		Executable code
-> + * @text_offset:	Image load offset (little endian)
-> + * @image_size:		Effective Image size (little endian)
-> + * @flags:		kernel flags (little endian)
-> + * @version:		version
-> + * @res1:		reserved
-> + * @res2:		reserved
-> + * @magic:		Magic number
-> + * @res3:		reserved (will be used for additional RISC-V
-> specific
-> + *			header)
-> + * @res4:		reserved (will be used for PE COFF offset)
-> + *
-> + * The intention is for this header format to be shared between
-> multiple
-> + * architectures to avoid a proliferation of image header formats.
-> + */
-> +
-> +struct riscv_image_header {
-> +	u32 code0;
-> +	u32 code1;
-> +	u64 text_offset;
-> +	u64 image_size;
-> +	u64 flags;
-> +	u32 version;
-> +	u32 res1;
-> +	u64 res2;
-> +	u64 magic;
-> +	u32 res3;
-> +	u32 res4;
-> +};
-> +#endif /* __ASSEMBLY__ */
-> +#endif /* __ASM_IMAGE_H */
-> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-> index e368106f2228..0f1ba17e476f 100644
-> --- a/arch/riscv/kernel/head.S
-> +++ b/arch/riscv/kernel/head.S
-> @@ -11,9 +11,41 @@
->  #include <asm/thread_info.h>
->  #include <asm/page.h>
->  #include <asm/csr.h>
-> +#include <asm/image.h>
->  
->  __INIT
->  ENTRY(_start)
-> +	/*
-> +	 * Image header expected by Linux boot-loaders. The image
-> header data
-> +	 * structure is described in asm/image.h.
-> +	 * Do not modify it without modifying the structure and all
-> bootloaders
-> +	 * that expects this header format!!
-> +	 */
-> +	/* jump to start kernel */
-> +	j _start_kernel
-> +	/* reserved */
-> +	.word 0
-> +	.balign 8
-> +#if __riscv_xlen == 64
-> +	/* Image load offset(2MB) from start of RAM */
-> +	.dword 0x200000
-> +#else
-> +	/* Image load offset(4MB) from start of RAM */
-> +	.dword 0x400000
-> +#endif
-> +	/* Effective size of kernel image */
-> +	.dword _end - _start
-> +	.dword __HEAD_FLAGS
-> +	.word RISCV_HEADER_VERSION
-> +	.word 0
-> +	.dword 0
-> +	.asciz RISCV_IMAGE_MAGIC
-> +	.word 0
-> +	.balign 4
-> +	.word 0
-> +
-> +.global _start_kernel
-> +_start_kernel:
->  	/* Mask all interrupts */
->  	csrw CSR_SIE, zero
->  	csrw CSR_SIP, zero
-
+diff --git a/Documentation/arm/Booting b/Documentation/arch/arm/Booting
+similarity index 100%
+rename from Documentation/arm/Booting
+rename to Documentation/arch/arm/Booting
+diff --git a/Documentation/arm/IXP4xx b/Documentation/arch/arm/IXP4xx
+similarity index 100%
+rename from Documentation/arm/IXP4xx
+rename to Documentation/arch/arm/IXP4xx
+diff --git a/Documentation/arm/Interrupts b/Documentation/arch/arm/Interrupts
+similarity index 100%
+rename from Documentation/arm/Interrupts
+rename to Documentation/arch/arm/Interrupts
+diff --git a/Documentation/arm/Marvell/README b/Documentation/arch/arm/Marvell/README
+similarity index 100%
+rename from Documentation/arm/Marvell/README
+rename to Documentation/arch/arm/Marvell/README
+diff --git a/Documentation/arm/Microchip/README b/Documentation/arch/arm/Microchip/README
+similarity index 100%
+rename from Documentation/arm/Microchip/README
+rename to Documentation/arch/arm/Microchip/README
+diff --git a/Documentation/arm/Netwinder b/Documentation/arch/arm/Netwinder
+similarity index 100%
+rename from Documentation/arm/Netwinder
+rename to Documentation/arch/arm/Netwinder
+diff --git a/Documentation/arm/OMAP/DSS b/Documentation/arch/arm/OMAP/DSS
+similarity index 100%
+rename from Documentation/arm/OMAP/DSS
+rename to Documentation/arch/arm/OMAP/DSS
+diff --git a/Documentation/arm/OMAP/README b/Documentation/arch/arm/OMAP/README
+similarity index 100%
+rename from Documentation/arm/OMAP/README
+rename to Documentation/arch/arm/OMAP/README
+diff --git a/Documentation/arm/OMAP/omap_pm b/Documentation/arch/arm/OMAP/omap_pm
+similarity index 100%
+rename from Documentation/arm/OMAP/omap_pm
+rename to Documentation/arch/arm/OMAP/omap_pm
+diff --git a/Documentation/arm/Porting b/Documentation/arch/arm/Porting
+similarity index 100%
+rename from Documentation/arm/Porting
+rename to Documentation/arch/arm/Porting
+diff --git a/Documentation/arm/README b/Documentation/arch/arm/README
+similarity index 100%
+rename from Documentation/arm/README
+rename to Documentation/arch/arm/README
+diff --git a/Documentation/arm/SA1100/ADSBitsy b/Documentation/arch/arm/SA1100/ADSBitsy
+similarity index 100%
+rename from Documentation/arm/SA1100/ADSBitsy
+rename to Documentation/arch/arm/SA1100/ADSBitsy
+diff --git a/Documentation/arm/SA1100/Assabet b/Documentation/arch/arm/SA1100/Assabet
+similarity index 100%
+rename from Documentation/arm/SA1100/Assabet
+rename to Documentation/arch/arm/SA1100/Assabet
+diff --git a/Documentation/arm/SA1100/Brutus b/Documentation/arch/arm/SA1100/Brutus
+similarity index 100%
+rename from Documentation/arm/SA1100/Brutus
+rename to Documentation/arch/arm/SA1100/Brutus
+diff --git a/Documentation/arm/SA1100/CERF b/Documentation/arch/arm/SA1100/CERF
+similarity index 100%
+rename from Documentation/arm/SA1100/CERF
+rename to Documentation/arch/arm/SA1100/CERF
+diff --git a/Documentation/arm/SA1100/FreeBird b/Documentation/arch/arm/SA1100/FreeBird
+similarity index 100%
+rename from Documentation/arm/SA1100/FreeBird
+rename to Documentation/arch/arm/SA1100/FreeBird
+diff --git a/Documentation/arm/SA1100/GraphicsClient b/Documentation/arch/arm/SA1100/GraphicsClient
+similarity index 100%
+rename from Documentation/arm/SA1100/GraphicsClient
+rename to Documentation/arch/arm/SA1100/GraphicsClient
+diff --git a/Documentation/arm/SA1100/GraphicsMaster b/Documentation/arch/arm/SA1100/GraphicsMaster
+similarity index 100%
+rename from Documentation/arm/SA1100/GraphicsMaster
+rename to Documentation/arch/arm/SA1100/GraphicsMaster
+diff --git a/Documentation/arm/SA1100/HUW_WEBPANEL b/Documentation/arch/arm/SA1100/HUW_WEBPANEL
+similarity index 100%
+rename from Documentation/arm/SA1100/HUW_WEBPANEL
+rename to Documentation/arch/arm/SA1100/HUW_WEBPANEL
+diff --git a/Documentation/arm/SA1100/Itsy b/Documentation/arch/arm/SA1100/Itsy
+similarity index 100%
+rename from Documentation/arm/SA1100/Itsy
+rename to Documentation/arch/arm/SA1100/Itsy
+diff --git a/Documentation/arm/SA1100/LART b/Documentation/arch/arm/SA1100/LART
+similarity index 100%
+rename from Documentation/arm/SA1100/LART
+rename to Documentation/arch/arm/SA1100/LART
+diff --git a/Documentation/arm/SA1100/PLEB b/Documentation/arch/arm/SA1100/PLEB
+similarity index 100%
+rename from Documentation/arm/SA1100/PLEB
+rename to Documentation/arch/arm/SA1100/PLEB
+diff --git a/Documentation/arm/SA1100/Pangolin b/Documentation/arch/arm/SA1100/Pangolin
+similarity index 100%
+rename from Documentation/arm/SA1100/Pangolin
+rename to Documentation/arch/arm/SA1100/Pangolin
+diff --git a/Documentation/arm/SA1100/Tifon b/Documentation/arch/arm/SA1100/Tifon
+similarity index 100%
+rename from Documentation/arm/SA1100/Tifon
+rename to Documentation/arch/arm/SA1100/Tifon
+diff --git a/Documentation/arm/SA1100/Yopy b/Documentation/arch/arm/SA1100/Yopy
+similarity index 100%
+rename from Documentation/arm/SA1100/Yopy
+rename to Documentation/arch/arm/SA1100/Yopy
+diff --git a/Documentation/arm/SA1100/empeg b/Documentation/arch/arm/SA1100/empeg
+similarity index 100%
+rename from Documentation/arm/SA1100/empeg
+rename to Documentation/arch/arm/SA1100/empeg
+diff --git a/Documentation/arm/SA1100/nanoEngine b/Documentation/arch/arm/SA1100/nanoEngine
+similarity index 100%
+rename from Documentation/arm/SA1100/nanoEngine
+rename to Documentation/arch/arm/SA1100/nanoEngine
+diff --git a/Documentation/arm/SA1100/serial_UART b/Documentation/arch/arm/SA1100/serial_UART
+similarity index 100%
+rename from Documentation/arm/SA1100/serial_UART
+rename to Documentation/arch/arm/SA1100/serial_UART
+diff --git a/Documentation/arm/SH-Mobile/.gitignore b/Documentation/arch/arm/SH-Mobile/.gitignore
+similarity index 100%
+rename from Documentation/arm/SH-Mobile/.gitignore
+rename to Documentation/arch/arm/SH-Mobile/.gitignore
+diff --git a/Documentation/arm/SPEAr/overview.txt b/Documentation/arch/arm/SPEAr/overview.txt
+similarity index 100%
+rename from Documentation/arm/SPEAr/overview.txt
+rename to Documentation/arch/arm/SPEAr/overview.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/CPUfreq.txt b/Documentation/arch/arm/Samsung-S3C24XX/CPUfreq.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/CPUfreq.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/CPUfreq.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/EB2410ITX.txt b/Documentation/arch/arm/Samsung-S3C24XX/EB2410ITX.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/EB2410ITX.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/EB2410ITX.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/GPIO.txt b/Documentation/arch/arm/Samsung-S3C24XX/GPIO.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/GPIO.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/GPIO.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/H1940.txt b/Documentation/arch/arm/Samsung-S3C24XX/H1940.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/H1940.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/H1940.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/NAND.txt b/Documentation/arch/arm/Samsung-S3C24XX/NAND.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/NAND.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/NAND.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/Overview.txt b/Documentation/arch/arm/Samsung-S3C24XX/Overview.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/Overview.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/Overview.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/S3C2412.txt b/Documentation/arch/arm/Samsung-S3C24XX/S3C2412.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/S3C2412.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/S3C2412.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/S3C2413.txt b/Documentation/arch/arm/Samsung-S3C24XX/S3C2413.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/S3C2413.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/S3C2413.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/SMDK2440.txt b/Documentation/arch/arm/Samsung-S3C24XX/SMDK2440.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/SMDK2440.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/SMDK2440.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/Suspend.txt b/Documentation/arch/arm/Samsung-S3C24XX/Suspend.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/Suspend.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/Suspend.txt
+diff --git a/Documentation/arm/Samsung-S3C24XX/USB-Host.txt b/Documentation/arch/arm/Samsung-S3C24XX/USB-Host.txt
+similarity index 100%
+rename from Documentation/arm/Samsung-S3C24XX/USB-Host.txt
+rename to Documentation/arch/arm/Samsung-S3C24XX/USB-Host.txt
+diff --git a/Documentation/arm/Samsung/Bootloader-interface.txt b/Documentation/arch/arm/Samsung/Bootloader-interface.txt
+similarity index 100%
+rename from Documentation/arm/Samsung/Bootloader-interface.txt
+rename to Documentation/arch/arm/Samsung/Bootloader-interface.txt
+diff --git a/Documentation/arm/Samsung/GPIO.txt b/Documentation/arch/arm/Samsung/GPIO.txt
+similarity index 100%
+rename from Documentation/arm/Samsung/GPIO.txt
+rename to Documentation/arch/arm/Samsung/GPIO.txt
+diff --git a/Documentation/arm/Samsung/Overview.txt b/Documentation/arch/arm/Samsung/Overview.txt
+similarity index 100%
+rename from Documentation/arm/Samsung/Overview.txt
+rename to Documentation/arch/arm/Samsung/Overview.txt
+diff --git a/Documentation/arm/Samsung/clksrc-change-registers.awk b/Documentation/arch/arm/Samsung/clksrc-change-registers.awk
+similarity index 100%
+rename from Documentation/arm/Samsung/clksrc-change-registers.awk
+rename to Documentation/arch/arm/Samsung/clksrc-change-registers.awk
+diff --git a/Documentation/arm/Setup b/Documentation/arch/arm/Setup
+similarity index 100%
+rename from Documentation/arm/Setup
+rename to Documentation/arch/arm/Setup
+diff --git a/Documentation/arm/VFP/release-notes.txt b/Documentation/arch/arm/VFP/release-notes.txt
+similarity index 100%
+rename from Documentation/arm/VFP/release-notes.txt
+rename to Documentation/arch/arm/VFP/release-notes.txt
+diff --git a/Documentation/arm/cluster-pm-race-avoidance.txt b/Documentation/arch/arm/cluster-pm-race-avoidance.txt
+similarity index 100%
+rename from Documentation/arm/cluster-pm-race-avoidance.txt
+rename to Documentation/arch/arm/cluster-pm-race-avoidance.txt
+diff --git a/Documentation/arm/firmware.txt b/Documentation/arch/arm/firmware.txt
+similarity index 100%
+rename from Documentation/arm/firmware.txt
+rename to Documentation/arch/arm/firmware.txt
+diff --git a/Documentation/arm/kernel_mode_neon.txt b/Documentation/arch/arm/kernel_mode_neon.txt
+similarity index 100%
+rename from Documentation/arm/kernel_mode_neon.txt
+rename to Documentation/arch/arm/kernel_mode_neon.txt
+diff --git a/Documentation/arm/kernel_user_helpers.txt b/Documentation/arch/arm/kernel_user_helpers.txt
+similarity index 100%
+rename from Documentation/arm/kernel_user_helpers.txt
+rename to Documentation/arch/arm/kernel_user_helpers.txt
+diff --git a/Documentation/arm/keystone/Overview.txt b/Documentation/arch/arm/keystone/Overview.txt
+similarity index 100%
+rename from Documentation/arm/keystone/Overview.txt
+rename to Documentation/arch/arm/keystone/Overview.txt
+diff --git a/Documentation/arm/keystone/knav-qmss.txt b/Documentation/arch/arm/keystone/knav-qmss.txt
+similarity index 100%
+rename from Documentation/arm/keystone/knav-qmss.txt
+rename to Documentation/arch/arm/keystone/knav-qmss.txt
+diff --git a/Documentation/arm/mem_alignment b/Documentation/arch/arm/mem_alignment
+similarity index 100%
+rename from Documentation/arm/mem_alignment
+rename to Documentation/arch/arm/mem_alignment
+diff --git a/Documentation/arm/memory.txt b/Documentation/arch/arm/memory.txt
+similarity index 100%
+rename from Documentation/arm/memory.txt
+rename to Documentation/arch/arm/memory.txt
+diff --git a/Documentation/arm/nwfpe/NOTES b/Documentation/arch/arm/nwfpe/NOTES
+similarity index 100%
+rename from Documentation/arm/nwfpe/NOTES
+rename to Documentation/arch/arm/nwfpe/NOTES
+diff --git a/Documentation/arm/nwfpe/README b/Documentation/arch/arm/nwfpe/README
+similarity index 100%
+rename from Documentation/arm/nwfpe/README
+rename to Documentation/arch/arm/nwfpe/README
+diff --git a/Documentation/arm/nwfpe/README.FPE b/Documentation/arch/arm/nwfpe/README.FPE
+similarity index 100%
+rename from Documentation/arm/nwfpe/README.FPE
+rename to Documentation/arch/arm/nwfpe/README.FPE
+diff --git a/Documentation/arm/nwfpe/TODO b/Documentation/arch/arm/nwfpe/TODO
+similarity index 100%
+rename from Documentation/arm/nwfpe/TODO
+rename to Documentation/arch/arm/nwfpe/TODO
+diff --git a/Documentation/arm/pxa/mfp.txt b/Documentation/arch/arm/pxa/mfp.txt
+similarity index 100%
+rename from Documentation/arm/pxa/mfp.txt
+rename to Documentation/arch/arm/pxa/mfp.txt
+diff --git a/Documentation/arm/sti/overview.txt b/Documentation/arch/arm/sti/overview.txt
+similarity index 100%
+rename from Documentation/arm/sti/overview.txt
+rename to Documentation/arch/arm/sti/overview.txt
+diff --git a/Documentation/arm/sti/stih407-overview.txt b/Documentation/arch/arm/sti/stih407-overview.txt
+similarity index 100%
+rename from Documentation/arm/sti/stih407-overview.txt
+rename to Documentation/arch/arm/sti/stih407-overview.txt
+diff --git a/Documentation/arm/sti/stih415-overview.txt b/Documentation/arch/arm/sti/stih415-overview.txt
+similarity index 100%
+rename from Documentation/arm/sti/stih415-overview.txt
+rename to Documentation/arch/arm/sti/stih415-overview.txt
+diff --git a/Documentation/arm/sti/stih416-overview.txt b/Documentation/arch/arm/sti/stih416-overview.txt
+similarity index 100%
+rename from Documentation/arm/sti/stih416-overview.txt
+rename to Documentation/arch/arm/sti/stih416-overview.txt
+diff --git a/Documentation/arm/sti/stih418-overview.txt b/Documentation/arch/arm/sti/stih418-overview.txt
+similarity index 100%
+rename from Documentation/arm/sti/stih418-overview.txt
+rename to Documentation/arch/arm/sti/stih418-overview.txt
+diff --git a/Documentation/arm/stm32/overview.rst b/Documentation/arch/arm/stm32/overview.rst
+similarity index 100%
+rename from Documentation/arm/stm32/overview.rst
+rename to Documentation/arch/arm/stm32/overview.rst
+diff --git a/Documentation/arm/stm32/stm32f429-overview.rst b/Documentation/arch/arm/stm32/stm32f429-overview.rst
+similarity index 100%
+rename from Documentation/arm/stm32/stm32f429-overview.rst
+rename to Documentation/arch/arm/stm32/stm32f429-overview.rst
+diff --git a/Documentation/arm/stm32/stm32f746-overview.rst b/Documentation/arch/arm/stm32/stm32f746-overview.rst
+similarity index 100%
+rename from Documentation/arm/stm32/stm32f746-overview.rst
+rename to Documentation/arch/arm/stm32/stm32f746-overview.rst
+diff --git a/Documentation/arm/stm32/stm32f769-overview.rst b/Documentation/arch/arm/stm32/stm32f769-overview.rst
+similarity index 100%
+rename from Documentation/arm/stm32/stm32f769-overview.rst
+rename to Documentation/arch/arm/stm32/stm32f769-overview.rst
+diff --git a/Documentation/arm/stm32/stm32h743-overview.rst b/Documentation/arch/arm/stm32/stm32h743-overview.rst
+similarity index 100%
+rename from Documentation/arm/stm32/stm32h743-overview.rst
+rename to Documentation/arch/arm/stm32/stm32h743-overview.rst
+diff --git a/Documentation/arm/stm32/stm32mp157-overview.rst b/Documentation/arch/arm/stm32/stm32mp157-overview.rst
+similarity index 100%
+rename from Documentation/arm/stm32/stm32mp157-overview.rst
+rename to Documentation/arch/arm/stm32/stm32mp157-overview.rst
+diff --git a/Documentation/arm/sunxi/README b/Documentation/arch/arm/sunxi/README
+similarity index 100%
+rename from Documentation/arm/sunxi/README
+rename to Documentation/arch/arm/sunxi/README
+diff --git a/Documentation/arm/sunxi/clocks.txt b/Documentation/arch/arm/sunxi/clocks.txt
+similarity index 100%
+rename from Documentation/arm/sunxi/clocks.txt
+rename to Documentation/arch/arm/sunxi/clocks.txt
+diff --git a/Documentation/arm/swp_emulation b/Documentation/arch/arm/swp_emulation
+similarity index 100%
+rename from Documentation/arm/swp_emulation
+rename to Documentation/arch/arm/swp_emulation
+diff --git a/Documentation/arm/tcm.txt b/Documentation/arch/arm/tcm.txt
+similarity index 100%
+rename from Documentation/arm/tcm.txt
+rename to Documentation/arch/arm/tcm.txt
+diff --git a/Documentation/arm/uefi.txt b/Documentation/arch/arm/uefi.txt
+similarity index 100%
+rename from Documentation/arm/uefi.txt
+rename to Documentation/arch/arm/uefi.txt
+diff --git a/Documentation/arm/vlocks.txt b/Documentation/arch/arm/vlocks.txt
+similarity index 100%
+rename from Documentation/arm/vlocks.txt
+rename to Documentation/arch/arm/vlocks.txt
+diff --git a/Documentation/arm64/acpi_object_usage.rst b/Documentation/arch/arm64/acpi_object_usage.rst
+similarity index 100%
+rename from Documentation/arm64/acpi_object_usage.rst
+rename to Documentation/arch/arm64/acpi_object_usage.rst
+diff --git a/Documentation/arm64/arm-acpi.rst b/Documentation/arch/arm64/arm-acpi.rst
+similarity index 100%
+rename from Documentation/arm64/arm-acpi.rst
+rename to Documentation/arch/arm64/arm-acpi.rst
+diff --git a/Documentation/arm64/booting.rst b/Documentation/arch/arm64/booting.rst
+similarity index 100%
+rename from Documentation/arm64/booting.rst
+rename to Documentation/arch/arm64/booting.rst
+diff --git a/Documentation/arm64/cpu-feature-registers.rst b/Documentation/arch/arm64/cpu-feature-registers.rst
+similarity index 100%
+rename from Documentation/arm64/cpu-feature-registers.rst
+rename to Documentation/arch/arm64/cpu-feature-registers.rst
+diff --git a/Documentation/arm64/elf_hwcaps.rst b/Documentation/arch/arm64/elf_hwcaps.rst
+similarity index 100%
+rename from Documentation/arm64/elf_hwcaps.rst
+rename to Documentation/arch/arm64/elf_hwcaps.rst
+diff --git a/Documentation/arm64/hugetlbpage.rst b/Documentation/arch/arm64/hugetlbpage.rst
+similarity index 100%
+rename from Documentation/arm64/hugetlbpage.rst
+rename to Documentation/arch/arm64/hugetlbpage.rst
+diff --git a/Documentation/arm64/index.rst b/Documentation/arch/arm64/index.rst
+similarity index 100%
+rename from Documentation/arm64/index.rst
+rename to Documentation/arch/arm64/index.rst
+diff --git a/Documentation/arm64/legacy_instructions.rst b/Documentation/arch/arm64/legacy_instructions.rst
+similarity index 100%
+rename from Documentation/arm64/legacy_instructions.rst
+rename to Documentation/arch/arm64/legacy_instructions.rst
+diff --git a/Documentation/arm64/memory.rst b/Documentation/arch/arm64/memory.rst
+similarity index 100%
+rename from Documentation/arm64/memory.rst
+rename to Documentation/arch/arm64/memory.rst
+diff --git a/Documentation/arm64/perf.txt b/Documentation/arch/arm64/perf.txt
+similarity index 100%
+rename from Documentation/arm64/perf.txt
+rename to Documentation/arch/arm64/perf.txt
+diff --git a/Documentation/arm64/pointer-authentication.rst b/Documentation/arch/arm64/pointer-authentication.rst
+similarity index 100%
+rename from Documentation/arm64/pointer-authentication.rst
+rename to Documentation/arch/arm64/pointer-authentication.rst
+diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arch/arm64/silicon-errata.rst
+similarity index 100%
+rename from Documentation/arm64/silicon-errata.rst
+rename to Documentation/arch/arm64/silicon-errata.rst
+diff --git a/Documentation/arm64/sve.rst b/Documentation/arch/arm64/sve.rst
+similarity index 100%
+rename from Documentation/arm64/sve.rst
+rename to Documentation/arch/arm64/sve.rst
+diff --git a/Documentation/arm64/tagged-pointers.rst b/Documentation/arch/arm64/tagged-pointers.rst
+similarity index 100%
+rename from Documentation/arm64/tagged-pointers.rst
+rename to Documentation/arch/arm64/tagged-pointers.rst
+diff --git a/Documentation/ia64/IRQ-redir.txt b/Documentation/arch/ia64/IRQ-redir.txt
+similarity index 100%
+rename from Documentation/ia64/IRQ-redir.txt
+rename to Documentation/arch/ia64/IRQ-redir.txt
+diff --git a/Documentation/ia64/README b/Documentation/arch/ia64/README
+similarity index 100%
+rename from Documentation/ia64/README
+rename to Documentation/arch/ia64/README
+diff --git a/Documentation/ia64/aliasing.txt b/Documentation/arch/ia64/aliasing.txt
+similarity index 100%
+rename from Documentation/ia64/aliasing.txt
+rename to Documentation/arch/ia64/aliasing.txt
+diff --git a/Documentation/ia64/efirtc.txt b/Documentation/arch/ia64/efirtc.txt
+similarity index 100%
+rename from Documentation/ia64/efirtc.txt
+rename to Documentation/arch/ia64/efirtc.txt
+diff --git a/Documentation/ia64/err_inject.txt b/Documentation/arch/ia64/err_inject.txt
+similarity index 100%
+rename from Documentation/ia64/err_inject.txt
+rename to Documentation/arch/ia64/err_inject.txt
+diff --git a/Documentation/ia64/fsys.txt b/Documentation/arch/ia64/fsys.txt
+similarity index 100%
+rename from Documentation/ia64/fsys.txt
+rename to Documentation/arch/ia64/fsys.txt
+diff --git a/Documentation/ia64/mca.txt b/Documentation/arch/ia64/mca.txt
+similarity index 100%
+rename from Documentation/ia64/mca.txt
+rename to Documentation/arch/ia64/mca.txt
+diff --git a/Documentation/ia64/serial.txt b/Documentation/arch/ia64/serial.txt
+similarity index 100%
+rename from Documentation/ia64/serial.txt
+rename to Documentation/arch/ia64/serial.txt
+diff --git a/Documentation/ia64/xen.txt b/Documentation/arch/ia64/xen.txt
+similarity index 100%
+rename from Documentation/ia64/xen.txt
+rename to Documentation/arch/ia64/xen.txt
+diff --git a/Documentation/m68k/README.buddha b/Documentation/arch/m68k/README.buddha
+similarity index 100%
+rename from Documentation/m68k/README.buddha
+rename to Documentation/arch/m68k/README.buddha
+diff --git a/Documentation/m68k/kernel-options.txt b/Documentation/arch/m68k/kernel-options.txt
+similarity index 100%
+rename from Documentation/m68k/kernel-options.txt
+rename to Documentation/arch/m68k/kernel-options.txt
+diff --git a/Documentation/mips/AU1xxx_IDE.README b/Documentation/arch/mips/AU1xxx_IDE.README
+similarity index 100%
+rename from Documentation/mips/AU1xxx_IDE.README
+rename to Documentation/arch/mips/AU1xxx_IDE.README
+diff --git a/Documentation/nios2/README b/Documentation/arch/nios2/README
+similarity index 100%
+rename from Documentation/nios2/README
+rename to Documentation/arch/nios2/README
+diff --git a/Documentation/parisc/debugging b/Documentation/arch/parisc/debugging
+similarity index 100%
+rename from Documentation/parisc/debugging
+rename to Documentation/arch/parisc/debugging
+diff --git a/Documentation/parisc/registers b/Documentation/arch/parisc/registers
+similarity index 100%
+rename from Documentation/parisc/registers
+rename to Documentation/arch/parisc/registers
+diff --git a/Documentation/powerpc/DAWR-POWER9.txt b/Documentation/arch/powerpc/DAWR-POWER9.txt
+similarity index 100%
+rename from Documentation/powerpc/DAWR-POWER9.txt
+rename to Documentation/arch/powerpc/DAWR-POWER9.txt
+diff --git a/Documentation/powerpc/bootwrapper.txt b/Documentation/arch/powerpc/bootwrapper.txt
+similarity index 100%
+rename from Documentation/powerpc/bootwrapper.txt
+rename to Documentation/arch/powerpc/bootwrapper.txt
+diff --git a/Documentation/powerpc/cpu_families.txt b/Documentation/arch/powerpc/cpu_families.txt
+similarity index 100%
+rename from Documentation/powerpc/cpu_families.txt
+rename to Documentation/arch/powerpc/cpu_families.txt
+diff --git a/Documentation/powerpc/cpu_features.txt b/Documentation/arch/powerpc/cpu_features.txt
+similarity index 100%
+rename from Documentation/powerpc/cpu_features.txt
+rename to Documentation/arch/powerpc/cpu_features.txt
+diff --git a/Documentation/powerpc/cxl.txt b/Documentation/arch/powerpc/cxl.txt
+similarity index 100%
+rename from Documentation/powerpc/cxl.txt
+rename to Documentation/arch/powerpc/cxl.txt
+diff --git a/Documentation/powerpc/cxlflash.txt b/Documentation/arch/powerpc/cxlflash.txt
+similarity index 100%
+rename from Documentation/powerpc/cxlflash.txt
+rename to Documentation/arch/powerpc/cxlflash.txt
+diff --git a/Documentation/powerpc/dscr.txt b/Documentation/arch/powerpc/dscr.txt
+similarity index 100%
+rename from Documentation/powerpc/dscr.txt
+rename to Documentation/arch/powerpc/dscr.txt
+diff --git a/Documentation/powerpc/eeh-pci-error-recovery.txt b/Documentation/arch/powerpc/eeh-pci-error-recovery.txt
+similarity index 100%
+rename from Documentation/powerpc/eeh-pci-error-recovery.txt
+rename to Documentation/arch/powerpc/eeh-pci-error-recovery.txt
+diff --git a/Documentation/powerpc/firmware-assisted-dump.txt b/Documentation/arch/powerpc/firmware-assisted-dump.txt
+similarity index 100%
+rename from Documentation/powerpc/firmware-assisted-dump.txt
+rename to Documentation/arch/powerpc/firmware-assisted-dump.txt
+diff --git a/Documentation/powerpc/hvcs.txt b/Documentation/arch/powerpc/hvcs.txt
+similarity index 100%
+rename from Documentation/powerpc/hvcs.txt
+rename to Documentation/arch/powerpc/hvcs.txt
+diff --git a/Documentation/powerpc/isa-versions.rst b/Documentation/arch/powerpc/isa-versions.rst
+similarity index 100%
+rename from Documentation/powerpc/isa-versions.rst
+rename to Documentation/arch/powerpc/isa-versions.rst
+diff --git a/Documentation/powerpc/mpc52xx.txt b/Documentation/arch/powerpc/mpc52xx.txt
+similarity index 100%
+rename from Documentation/powerpc/mpc52xx.txt
+rename to Documentation/arch/powerpc/mpc52xx.txt
+diff --git a/Documentation/powerpc/pci_iov_resource_on_powernv.txt b/Documentation/arch/powerpc/pci_iov_resource_on_powernv.txt
+similarity index 100%
+rename from Documentation/powerpc/pci_iov_resource_on_powernv.txt
+rename to Documentation/arch/powerpc/pci_iov_resource_on_powernv.txt
+diff --git a/Documentation/powerpc/pmu-ebb.txt b/Documentation/arch/powerpc/pmu-ebb.txt
+similarity index 100%
+rename from Documentation/powerpc/pmu-ebb.txt
+rename to Documentation/arch/powerpc/pmu-ebb.txt
+diff --git a/Documentation/powerpc/ptrace.txt b/Documentation/arch/powerpc/ptrace.txt
+similarity index 100%
+rename from Documentation/powerpc/ptrace.txt
+rename to Documentation/arch/powerpc/ptrace.txt
+diff --git a/Documentation/powerpc/qe_firmware.txt b/Documentation/arch/powerpc/qe_firmware.txt
+similarity index 100%
+rename from Documentation/powerpc/qe_firmware.txt
+rename to Documentation/arch/powerpc/qe_firmware.txt
+diff --git a/Documentation/powerpc/syscall64-abi.txt b/Documentation/arch/powerpc/syscall64-abi.txt
+similarity index 100%
+rename from Documentation/powerpc/syscall64-abi.txt
+rename to Documentation/arch/powerpc/syscall64-abi.txt
+diff --git a/Documentation/powerpc/transactional_memory.txt b/Documentation/arch/powerpc/transactional_memory.txt
+similarity index 100%
+rename from Documentation/powerpc/transactional_memory.txt
+rename to Documentation/arch/powerpc/transactional_memory.txt
+diff --git a/Documentation/riscv/index.rst b/Documentation/arch/riscv/index.rst
+similarity index 100%
+rename from Documentation/riscv/index.rst
+rename to Documentation/arch/riscv/index.rst
+diff --git a/Documentation/riscv/pmu.rst b/Documentation/arch/riscv/pmu.rst
+similarity index 100%
+rename from Documentation/riscv/pmu.rst
+rename to Documentation/arch/riscv/pmu.rst
+diff --git a/Documentation/s390/3270.ChangeLog b/Documentation/arch/s390/3270.ChangeLog
+similarity index 100%
+rename from Documentation/s390/3270.ChangeLog
+rename to Documentation/arch/s390/3270.ChangeLog
+diff --git a/Documentation/s390/3270.rst b/Documentation/arch/s390/3270.rst
+similarity index 100%
+rename from Documentation/s390/3270.rst
+rename to Documentation/arch/s390/3270.rst
+diff --git a/Documentation/s390/cds.rst b/Documentation/arch/s390/cds.rst
+similarity index 100%
+rename from Documentation/s390/cds.rst
+rename to Documentation/arch/s390/cds.rst
+diff --git a/Documentation/s390/common_io.rst b/Documentation/arch/s390/common_io.rst
+similarity index 100%
+rename from Documentation/s390/common_io.rst
+rename to Documentation/arch/s390/common_io.rst
+diff --git a/Documentation/s390/config3270.sh b/Documentation/arch/s390/config3270.sh
+similarity index 100%
+rename from Documentation/s390/config3270.sh
+rename to Documentation/arch/s390/config3270.sh
+diff --git a/Documentation/s390/dasd.rst b/Documentation/arch/s390/dasd.rst
+similarity index 100%
+rename from Documentation/s390/dasd.rst
+rename to Documentation/arch/s390/dasd.rst
+diff --git a/Documentation/s390/debugging390.rst b/Documentation/arch/s390/debugging390.rst
+similarity index 100%
+rename from Documentation/s390/debugging390.rst
+rename to Documentation/arch/s390/debugging390.rst
+diff --git a/Documentation/s390/driver-model.rst b/Documentation/arch/s390/driver-model.rst
+similarity index 100%
+rename from Documentation/s390/driver-model.rst
+rename to Documentation/arch/s390/driver-model.rst
+diff --git a/Documentation/s390/index.rst b/Documentation/arch/s390/index.rst
+similarity index 100%
+rename from Documentation/s390/index.rst
+rename to Documentation/arch/s390/index.rst
+diff --git a/Documentation/s390/monreader.rst b/Documentation/arch/s390/monreader.rst
+similarity index 100%
+rename from Documentation/s390/monreader.rst
+rename to Documentation/arch/s390/monreader.rst
+diff --git a/Documentation/s390/qeth.rst b/Documentation/arch/s390/qeth.rst
+similarity index 100%
+rename from Documentation/s390/qeth.rst
+rename to Documentation/arch/s390/qeth.rst
+diff --git a/Documentation/s390/s390dbf.rst b/Documentation/arch/s390/s390dbf.rst
+similarity index 100%
+rename from Documentation/s390/s390dbf.rst
+rename to Documentation/arch/s390/s390dbf.rst
+diff --git a/Documentation/s390/text_files.rst b/Documentation/arch/s390/text_files.rst
+similarity index 100%
+rename from Documentation/s390/text_files.rst
+rename to Documentation/arch/s390/text_files.rst
+diff --git a/Documentation/s390/vfio-ap.rst b/Documentation/arch/s390/vfio-ap.rst
+similarity index 100%
+rename from Documentation/s390/vfio-ap.rst
+rename to Documentation/arch/s390/vfio-ap.rst
+diff --git a/Documentation/s390/vfio-ccw.rst b/Documentation/arch/s390/vfio-ccw.rst
+similarity index 100%
+rename from Documentation/s390/vfio-ccw.rst
+rename to Documentation/arch/s390/vfio-ccw.rst
+diff --git a/Documentation/s390/zfcpdump.rst b/Documentation/arch/s390/zfcpdump.rst
+similarity index 100%
+rename from Documentation/s390/zfcpdump.rst
+rename to Documentation/arch/s390/zfcpdump.rst
+diff --git a/Documentation/sh/conf.py b/Documentation/arch/sh/conf.py
+similarity index 100%
+rename from Documentation/sh/conf.py
+rename to Documentation/arch/sh/conf.py
+diff --git a/Documentation/sh/index.rst b/Documentation/arch/sh/index.rst
+similarity index 100%
+rename from Documentation/sh/index.rst
+rename to Documentation/arch/sh/index.rst
+diff --git a/Documentation/sh/new-machine.txt b/Documentation/arch/sh/new-machine.txt
+similarity index 100%
+rename from Documentation/sh/new-machine.txt
+rename to Documentation/arch/sh/new-machine.txt
+diff --git a/Documentation/sh/register-banks.txt b/Documentation/arch/sh/register-banks.txt
+similarity index 100%
+rename from Documentation/sh/register-banks.txt
+rename to Documentation/arch/sh/register-banks.txt
+diff --git a/Documentation/sparc/adi.rst b/Documentation/arch/sparc/adi.rst
+similarity index 100%
+rename from Documentation/sparc/adi.rst
+rename to Documentation/arch/sparc/adi.rst
+diff --git a/Documentation/sparc/console.rst b/Documentation/arch/sparc/console.rst
+similarity index 100%
+rename from Documentation/sparc/console.rst
+rename to Documentation/arch/sparc/console.rst
+diff --git a/Documentation/sparc/index.rst b/Documentation/arch/sparc/index.rst
+similarity index 100%
+rename from Documentation/sparc/index.rst
+rename to Documentation/arch/sparc/index.rst
+diff --git a/Documentation/sparc/oradax/dax-hv-api.txt b/Documentation/arch/sparc/oradax/dax-hv-api.txt
+similarity index 100%
+rename from Documentation/sparc/oradax/dax-hv-api.txt
+rename to Documentation/arch/sparc/oradax/dax-hv-api.txt
+diff --git a/Documentation/sparc/oradax/oracle-dax.rst b/Documentation/arch/sparc/oradax/oracle-dax.rst
+similarity index 100%
+rename from Documentation/sparc/oradax/oracle-dax.rst
+rename to Documentation/arch/sparc/oradax/oracle-dax.rst
+diff --git a/Documentation/x86/amd-memory-encryption.rst b/Documentation/arch/x86/amd-memory-encryption.rst
+similarity index 100%
+rename from Documentation/x86/amd-memory-encryption.rst
+rename to Documentation/arch/x86/amd-memory-encryption.rst
+diff --git a/Documentation/x86/boot.rst b/Documentation/arch/x86/boot.rst
+similarity index 100%
+rename from Documentation/x86/boot.rst
+rename to Documentation/arch/x86/boot.rst
+diff --git a/Documentation/x86/conf.py b/Documentation/arch/x86/conf.py
+similarity index 100%
+rename from Documentation/x86/conf.py
+rename to Documentation/arch/x86/conf.py
+diff --git a/Documentation/x86/earlyprintk.rst b/Documentation/arch/x86/earlyprintk.rst
+similarity index 100%
+rename from Documentation/x86/earlyprintk.rst
+rename to Documentation/arch/x86/earlyprintk.rst
+diff --git a/Documentation/x86/entry_64.rst b/Documentation/arch/x86/entry_64.rst
+similarity index 100%
+rename from Documentation/x86/entry_64.rst
+rename to Documentation/arch/x86/entry_64.rst
+diff --git a/Documentation/x86/exception-tables.rst b/Documentation/arch/x86/exception-tables.rst
+similarity index 100%
+rename from Documentation/x86/exception-tables.rst
+rename to Documentation/arch/x86/exception-tables.rst
+diff --git a/Documentation/x86/i386/IO-APIC.rst b/Documentation/arch/x86/i386/IO-APIC.rst
+similarity index 100%
+rename from Documentation/x86/i386/IO-APIC.rst
+rename to Documentation/arch/x86/i386/IO-APIC.rst
+diff --git a/Documentation/x86/i386/index.rst b/Documentation/arch/x86/i386/index.rst
+similarity index 100%
+rename from Documentation/x86/i386/index.rst
+rename to Documentation/arch/x86/i386/index.rst
+diff --git a/Documentation/x86/index.rst b/Documentation/arch/x86/index.rst
+similarity index 100%
+rename from Documentation/x86/index.rst
+rename to Documentation/arch/x86/index.rst
+diff --git a/Documentation/x86/intel_mpx.rst b/Documentation/arch/x86/intel_mpx.rst
+similarity index 100%
+rename from Documentation/x86/intel_mpx.rst
+rename to Documentation/arch/x86/intel_mpx.rst
+diff --git a/Documentation/x86/kernel-stacks.rst b/Documentation/arch/x86/kernel-stacks.rst
+similarity index 100%
+rename from Documentation/x86/kernel-stacks.rst
+rename to Documentation/arch/x86/kernel-stacks.rst
+diff --git a/Documentation/x86/mds.rst b/Documentation/arch/x86/mds.rst
+similarity index 100%
+rename from Documentation/x86/mds.rst
+rename to Documentation/arch/x86/mds.rst
+diff --git a/Documentation/x86/microcode.rst b/Documentation/arch/x86/microcode.rst
+similarity index 100%
+rename from Documentation/x86/microcode.rst
+rename to Documentation/arch/x86/microcode.rst
+diff --git a/Documentation/x86/mtrr.rst b/Documentation/arch/x86/mtrr.rst
+similarity index 100%
+rename from Documentation/x86/mtrr.rst
+rename to Documentation/arch/x86/mtrr.rst
+diff --git a/Documentation/x86/orc-unwinder.rst b/Documentation/arch/x86/orc-unwinder.rst
+similarity index 100%
+rename from Documentation/x86/orc-unwinder.rst
+rename to Documentation/arch/x86/orc-unwinder.rst
+diff --git a/Documentation/x86/pat.rst b/Documentation/arch/x86/pat.rst
+similarity index 100%
+rename from Documentation/x86/pat.rst
+rename to Documentation/arch/x86/pat.rst
+diff --git a/Documentation/x86/pti.rst b/Documentation/arch/x86/pti.rst
+similarity index 100%
+rename from Documentation/x86/pti.rst
+rename to Documentation/arch/x86/pti.rst
+diff --git a/Documentation/x86/resctrl_ui.rst b/Documentation/arch/x86/resctrl_ui.rst
+similarity index 100%
+rename from Documentation/x86/resctrl_ui.rst
+rename to Documentation/arch/x86/resctrl_ui.rst
+diff --git a/Documentation/x86/tlb.rst b/Documentation/arch/x86/tlb.rst
+similarity index 100%
+rename from Documentation/x86/tlb.rst
+rename to Documentation/arch/x86/tlb.rst
+diff --git a/Documentation/x86/topology.rst b/Documentation/arch/x86/topology.rst
+similarity index 100%
+rename from Documentation/x86/topology.rst
+rename to Documentation/arch/x86/topology.rst
+diff --git a/Documentation/x86/usb-legacy-support.rst b/Documentation/arch/x86/usb-legacy-support.rst
+similarity index 100%
+rename from Documentation/x86/usb-legacy-support.rst
+rename to Documentation/arch/x86/usb-legacy-support.rst
+diff --git a/Documentation/x86/x86_64/5level-paging.rst b/Documentation/arch/x86/x86_64/5level-paging.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/5level-paging.rst
+rename to Documentation/arch/x86/x86_64/5level-paging.rst
+diff --git a/Documentation/x86/x86_64/boot-options.rst b/Documentation/arch/x86/x86_64/boot-options.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/boot-options.rst
+rename to Documentation/arch/x86/x86_64/boot-options.rst
+diff --git a/Documentation/x86/x86_64/cpu-hotplug-spec.rst b/Documentation/arch/x86/x86_64/cpu-hotplug-spec.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/cpu-hotplug-spec.rst
+rename to Documentation/arch/x86/x86_64/cpu-hotplug-spec.rst
+diff --git a/Documentation/x86/x86_64/fake-numa-for-cpusets.rst b/Documentation/arch/x86/x86_64/fake-numa-for-cpusets.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/fake-numa-for-cpusets.rst
+rename to Documentation/arch/x86/x86_64/fake-numa-for-cpusets.rst
+diff --git a/Documentation/x86/x86_64/index.rst b/Documentation/arch/x86/x86_64/index.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/index.rst
+rename to Documentation/arch/x86/x86_64/index.rst
+diff --git a/Documentation/x86/x86_64/machinecheck.rst b/Documentation/arch/x86/x86_64/machinecheck.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/machinecheck.rst
+rename to Documentation/arch/x86/x86_64/machinecheck.rst
+diff --git a/Documentation/x86/x86_64/mm.rst b/Documentation/arch/x86/x86_64/mm.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/mm.rst
+rename to Documentation/arch/x86/x86_64/mm.rst
+diff --git a/Documentation/x86/x86_64/uefi.rst b/Documentation/arch/x86/x86_64/uefi.rst
+similarity index 100%
+rename from Documentation/x86/x86_64/uefi.rst
+rename to Documentation/arch/x86/x86_64/uefi.rst
+diff --git a/Documentation/x86/zero-page.rst b/Documentation/arch/x86/zero-page.rst
+similarity index 100%
+rename from Documentation/x86/zero-page.rst
+rename to Documentation/arch/x86/zero-page.rst
+diff --git a/Documentation/xtensa/atomctl.txt b/Documentation/arch/xtensa/atomctl.txt
+similarity index 100%
+rename from Documentation/xtensa/atomctl.txt
+rename to Documentation/arch/xtensa/atomctl.txt
+diff --git a/Documentation/xtensa/booting.txt b/Documentation/arch/xtensa/booting.txt
+similarity index 100%
+rename from Documentation/xtensa/booting.txt
+rename to Documentation/arch/xtensa/booting.txt
+diff --git a/Documentation/xtensa/mmu.txt b/Documentation/arch/xtensa/mmu.txt
+similarity index 100%
+rename from Documentation/xtensa/mmu.txt
+rename to Documentation/arch/xtensa/mmu.txt
 -- 
-Regards,
-Atish
+2.19.1.856.g8858448bb
+
+
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
