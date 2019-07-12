@@ -2,56 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09C6066460
-	for <lists+linux-riscv@lfdr.de>; Fri, 12 Jul 2019 04:24:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BDC766463
+	for <lists+linux-riscv@lfdr.de>; Fri, 12 Jul 2019 04:24:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cnayef7FaObpNGFunXFWnj0u02RBXnkKqYJsuAp8njk=; b=fUPj4SI497O7gK
-	81WpLvd6UtzqShVRg4PFGFwfoMgJYF0mgvEGf6Zzdu42k93OVsSwNHqZdkO2NRU39SQH2Rs9NJK9M
-	upYLk+e1s2CaTcb94hi92N+GDY52vHHokTZFzainVvk5xwPZvz8xBlFvXUAz7+PtOh9W+0LnBWk+a
-	fyZg95sFjzFMKaw97a8BMRxTZln/f5yX/vZSFFQkHMVWtmOGSSNGgDjRymj/9BW0TRRyE3cLG9z/X
-	smPRe8oIbh2BXaI16ttXTkuzBThKq51gYtCXjFKxgcV7ekQTTDrGdZvmxOXNqh9EvpmxTGdJCyZdx
-	j8wiDuAu6Ha5rqt0zOiA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+ejrc6S4gqIfSFsfZCJF3Yv5n1YRMse0SBDQK9nXzOg=; b=kjbZwKPMLndroe
+	h6PDNTJk2JLXAbcVgYdt/J+CTsOksMHoRfF5oY+H2oq9QVj4crub3jPARdBlxzlvDNu9Sl/XpZ+1E
+	xahGvhZJjq4ayR8ZpshDORQJX+pdBHOat/3Q8pxIFi6gJE5fGGogew95OZmOv5XqPKl3AOnbLEKSR
+	s+KDJ/mCc+7xKEAp4Ik5Gzhzr5FxUymAI2V41jTctBnJk9bv+OI4ugP3NdR2XfNJk1/c+8tZFRHG5
+	rL2M51qtcynUIoVo7FuGtsxWB+gD8HUGKTve8lZoGcQc+O1ZEj7C7rHcVTLnRDi9H82rfDUhZQXru
+	7eDH/65mbLXnJL+PtQwQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hllES-0001Kp-Bw; Fri, 12 Jul 2019 02:24:20 +0000
-Received: from out30-42.freemail.mail.aliyun.com ([115.124.30.42])
+	id 1hllEv-0001hg-LQ; Fri, 12 Jul 2019 02:24:49 +0000
+Received: from out30-54.freemail.mail.aliyun.com ([115.124.30.54])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hllAn-0007RH-15; Fri, 12 Jul 2019 02:20:39 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R591e4; CH=green; DM=||false|;
- FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04420; MF=alex.shi@linux.alibaba.com; NM=1;
- PH=DS; RN=18; SR=0; TI=SMTPD_---0TWfIdRd_1562898026; 
+ id 1hllAo-0007RU-3X; Fri, 12 Jul 2019 02:20:38 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R151e4; CH=green; DM=||false|;
+ FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04395; MF=alex.shi@linux.alibaba.com; NM=1;
+ PH=DS; RN=23; SR=0; TI=SMTPD_---0TWfTwyQ_1562898030; 
 Received: from localhost(mailfrom:alex.shi@linux.alibaba.com
- fp:SMTPD_---0TWfIdRd_1562898026) by smtp.aliyun-inc.com(127.0.0.1);
- Fri, 12 Jul 2019 10:20:27 +0800
+ fp:SMTPD_---0TWfTwyQ_1562898030) by smtp.aliyun-inc.com(127.0.0.1);
+ Fri, 12 Jul 2019 10:20:30 +0800
 From: Alex Shi <alex.shi@linux.alibaba.com>
 To: linux-doc@vger.kernel.org,
 	Jonathan Corbet <corbet@lwn.net>
-Subject: [PATCH 01/12] Documentation: move architectures together
-Date: Fri, 12 Jul 2019 10:20:07 +0800
-Message-Id: <20190712022018.27989-1-alex.shi@linux.alibaba.com>
+Subject: [PATCH 02/12] Documentation/arm: repointer docs to
+ Documentation/arch/arm
+Date: Fri, 12 Jul 2019 10:20:08 +0800
+Message-Id: <20190712022018.27989-2-alex.shi@linux.alibaba.com>
 X-Mailer: git-send-email 2.19.1.856.g8858448bb
+In-Reply-To: <20190712022018.27989-1-alex.shi@linux.alibaba.com>
+References: <20190712022018.27989-1-alex.shi@linux.alibaba.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_192033_742350_A07E758A 
-X-CRM114-Status: UNSURE (   2.36  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.5 (-----)
+X-CRM114-CacheID: sfid-20190711_192034_495864_F22B2902 
+X-CRM114-Status: GOOD (  18.56  )
+X-Spam-Score: -8.0 (--------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.5 points)
+ Content analysis details:   (-8.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [115.124.30.54 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 2.5 SUSPICIOUS_RECIPS      Similar addresses in recipient list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
  white-list
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [115.124.30.42 listed in list.dnswl.org]
  -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
  Match
  0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
@@ -71,1148 +72,474 @@ Cc: linux-s390@vger.kernel.org, linux-fbdev@vger.kernel.org,
  linux-omap@vger.kernel.org, linux-ia64@vger.kernel.org,
  linux-scsi@vger.kernel.org, linux-parisc@vger.kernel.org,
  linux-sh@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- kvm@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-mips@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ Kukjin Kim <kgene@kernel.org>, kvm@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-riscv@lists.infradead.org,
  Alex Shi <alex.shi@linux.alibaba.com>, linuxppc-dev@lists.ozlabs.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
+ linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-There are many different archs in Documentation/ dir, it's better to
-move them together in 'Documentation/arch' which follows from kernel source.
-
-Signed-off-by: Alex Shi <alex.shi@linux.alibaba.com>
-Cc: Jonathan Corbet <corbet@lwn.net>
-Cc: linux-doc@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-stm32@st-md-mailman.stormreply.com
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linuxppc-dev@lists.ozlabs.org
-Cc: linux-riscv@lists.infradead.org
-Cc: linux-omap@vger.kernel.org
-Cc: linux-fbdev@vger.kernel.org
-Cc: linux-samsung-soc@vger.kernel.org
-Cc: linux-ia64@vger.kernel.org
-Cc: linux-mips@vger.kernel.org
-Cc: linux-parisc@vger.kernel.org
-Cc: linux-scsi@vger.kernel.org
-Cc: linux-s390@vger.kernel.org
-Cc: kvm@vger.kernel.org
-Cc: linux-sh@vger.kernel.org
----
- Documentation/{ => arch}/arm/Booting                             | 0
- Documentation/{ => arch}/arm/IXP4xx                              | 0
- Documentation/{ => arch}/arm/Interrupts                          | 0
- Documentation/{ => arch}/arm/Marvell/README                      | 0
- Documentation/{ => arch}/arm/Microchip/README                    | 0
- Documentation/{ => arch}/arm/Netwinder                           | 0
- Documentation/{ => arch}/arm/OMAP/DSS                            | 0
- Documentation/{ => arch}/arm/OMAP/README                         | 0
- Documentation/{ => arch}/arm/OMAP/omap_pm                        | 0
- Documentation/{ => arch}/arm/Porting                             | 0
- Documentation/{ => arch}/arm/README                              | 0
- Documentation/{ => arch}/arm/SA1100/ADSBitsy                     | 0
- Documentation/{ => arch}/arm/SA1100/Assabet                      | 0
- Documentation/{ => arch}/arm/SA1100/Brutus                       | 0
- Documentation/{ => arch}/arm/SA1100/CERF                         | 0
- Documentation/{ => arch}/arm/SA1100/FreeBird                     | 0
- Documentation/{ => arch}/arm/SA1100/GraphicsClient               | 0
- Documentation/{ => arch}/arm/SA1100/GraphicsMaster               | 0
- Documentation/{ => arch}/arm/SA1100/HUW_WEBPANEL                 | 0
- Documentation/{ => arch}/arm/SA1100/Itsy                         | 0
- Documentation/{ => arch}/arm/SA1100/LART                         | 0
- Documentation/{ => arch}/arm/SA1100/PLEB                         | 0
- Documentation/{ => arch}/arm/SA1100/Pangolin                     | 0
- Documentation/{ => arch}/arm/SA1100/Tifon                        | 0
- Documentation/{ => arch}/arm/SA1100/Yopy                         | 0
- Documentation/{ => arch}/arm/SA1100/empeg                        | 0
- Documentation/{ => arch}/arm/SA1100/nanoEngine                   | 0
- Documentation/{ => arch}/arm/SA1100/serial_UART                  | 0
- Documentation/{ => arch}/arm/SH-Mobile/.gitignore                | 0
- Documentation/{ => arch}/arm/SPEAr/overview.txt                  | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/CPUfreq.txt         | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/EB2410ITX.txt       | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/GPIO.txt            | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/H1940.txt           | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/NAND.txt            | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/Overview.txt        | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2412.txt         | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2413.txt         | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/SMDK2440.txt        | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/Suspend.txt         | 0
- Documentation/{ => arch}/arm/Samsung-S3C24XX/USB-Host.txt        | 0
- Documentation/{ => arch}/arm/Samsung/Bootloader-interface.txt    | 0
- Documentation/{ => arch}/arm/Samsung/GPIO.txt                    | 0
- Documentation/{ => arch}/arm/Samsung/Overview.txt                | 0
- Documentation/{ => arch}/arm/Samsung/clksrc-change-registers.awk | 0
- Documentation/{ => arch}/arm/Setup                               | 0
- Documentation/{ => arch}/arm/VFP/release-notes.txt               | 0
- Documentation/{ => arch}/arm/cluster-pm-race-avoidance.txt       | 0
- Documentation/{ => arch}/arm/firmware.txt                        | 0
- Documentation/{ => arch}/arm/kernel_mode_neon.txt                | 0
- Documentation/{ => arch}/arm/kernel_user_helpers.txt             | 0
- Documentation/{ => arch}/arm/keystone/Overview.txt               | 0
- Documentation/{ => arch}/arm/keystone/knav-qmss.txt              | 0
- Documentation/{ => arch}/arm/mem_alignment                       | 0
- Documentation/{ => arch}/arm/memory.txt                          | 0
- Documentation/{ => arch}/arm/nwfpe/NOTES                         | 0
- Documentation/{ => arch}/arm/nwfpe/README                        | 0
- Documentation/{ => arch}/arm/nwfpe/README.FPE                    | 0
- Documentation/{ => arch}/arm/nwfpe/TODO                          | 0
- Documentation/{ => arch}/arm/pxa/mfp.txt                         | 0
- Documentation/{ => arch}/arm/sti/overview.txt                    | 0
- Documentation/{ => arch}/arm/sti/stih407-overview.txt            | 0
- Documentation/{ => arch}/arm/sti/stih415-overview.txt            | 0
- Documentation/{ => arch}/arm/sti/stih416-overview.txt            | 0
- Documentation/{ => arch}/arm/sti/stih418-overview.txt            | 0
- Documentation/{ => arch}/arm/stm32/overview.rst                  | 0
- Documentation/{ => arch}/arm/stm32/stm32f429-overview.rst        | 0
- Documentation/{ => arch}/arm/stm32/stm32f746-overview.rst        | 0
- Documentation/{ => arch}/arm/stm32/stm32f769-overview.rst        | 0
- Documentation/{ => arch}/arm/stm32/stm32h743-overview.rst        | 0
- Documentation/{ => arch}/arm/stm32/stm32mp157-overview.rst       | 0
- Documentation/{ => arch}/arm/sunxi/README                        | 0
- Documentation/{ => arch}/arm/sunxi/clocks.txt                    | 0
- Documentation/{ => arch}/arm/swp_emulation                       | 0
- Documentation/{ => arch}/arm/tcm.txt                             | 0
- Documentation/{ => arch}/arm/uefi.txt                            | 0
- Documentation/{ => arch}/arm/vlocks.txt                          | 0
- Documentation/{ => arch}/arm64/acpi_object_usage.rst             | 0
- Documentation/{ => arch}/arm64/arm-acpi.rst                      | 0
- Documentation/{ => arch}/arm64/booting.rst                       | 0
- Documentation/{ => arch}/arm64/cpu-feature-registers.rst         | 0
- Documentation/{ => arch}/arm64/elf_hwcaps.rst                    | 0
- Documentation/{ => arch}/arm64/hugetlbpage.rst                   | 0
- Documentation/{ => arch}/arm64/index.rst                         | 0
- Documentation/{ => arch}/arm64/legacy_instructions.rst           | 0
- Documentation/{ => arch}/arm64/memory.rst                        | 0
- Documentation/{ => arch}/arm64/perf.txt                          | 0
- Documentation/{ => arch}/arm64/pointer-authentication.rst        | 0
- Documentation/{ => arch}/arm64/silicon-errata.rst                | 0
- Documentation/{ => arch}/arm64/sve.rst                           | 0
- Documentation/{ => arch}/arm64/tagged-pointers.rst               | 0
- Documentation/{ => arch}/ia64/IRQ-redir.txt                      | 0
- Documentation/{ => arch}/ia64/README                             | 0
- Documentation/{ => arch}/ia64/aliasing.txt                       | 0
- Documentation/{ => arch}/ia64/efirtc.txt                         | 0
- Documentation/{ => arch}/ia64/err_inject.txt                     | 0
- Documentation/{ => arch}/ia64/fsys.txt                           | 0
- Documentation/{ => arch}/ia64/mca.txt                            | 0
- Documentation/{ => arch}/ia64/serial.txt                         | 0
- Documentation/{ => arch}/ia64/xen.txt                            | 0
- Documentation/{ => arch}/m68k/README.buddha                      | 0
- Documentation/{ => arch}/m68k/kernel-options.txt                 | 0
- Documentation/{ => arch}/mips/AU1xxx_IDE.README                  | 0
- Documentation/{ => arch}/nios2/README                            | 0
- Documentation/{ => arch}/parisc/debugging                        | 0
- Documentation/{ => arch}/parisc/registers                        | 0
- Documentation/{ => arch}/powerpc/DAWR-POWER9.txt                 | 0
- Documentation/{ => arch}/powerpc/bootwrapper.txt                 | 0
- Documentation/{ => arch}/powerpc/cpu_families.txt                | 0
- Documentation/{ => arch}/powerpc/cpu_features.txt                | 0
- Documentation/{ => arch}/powerpc/cxl.txt                         | 0
- Documentation/{ => arch}/powerpc/cxlflash.txt                    | 0
- Documentation/{ => arch}/powerpc/dscr.txt                        | 0
- Documentation/{ => arch}/powerpc/eeh-pci-error-recovery.txt      | 0
- Documentation/{ => arch}/powerpc/firmware-assisted-dump.txt      | 0
- Documentation/{ => arch}/powerpc/hvcs.txt                        | 0
- Documentation/{ => arch}/powerpc/isa-versions.rst                | 0
- Documentation/{ => arch}/powerpc/mpc52xx.txt                     | 0
- Documentation/{ => arch}/powerpc/pci_iov_resource_on_powernv.txt | 0
- Documentation/{ => arch}/powerpc/pmu-ebb.txt                     | 0
- Documentation/{ => arch}/powerpc/ptrace.txt                      | 0
- Documentation/{ => arch}/powerpc/qe_firmware.txt                 | 0
- Documentation/{ => arch}/powerpc/syscall64-abi.txt               | 0
- Documentation/{ => arch}/powerpc/transactional_memory.txt        | 0
- Documentation/{ => arch}/riscv/index.rst                         | 0
- Documentation/{ => arch}/riscv/pmu.rst                           | 0
- Documentation/{ => arch}/s390/3270.ChangeLog                     | 0
- Documentation/{ => arch}/s390/3270.rst                           | 0
- Documentation/{ => arch}/s390/cds.rst                            | 0
- Documentation/{ => arch}/s390/common_io.rst                      | 0
- Documentation/{ => arch}/s390/config3270.sh                      | 0
- Documentation/{ => arch}/s390/dasd.rst                           | 0
- Documentation/{ => arch}/s390/debugging390.rst                   | 0
- Documentation/{ => arch}/s390/driver-model.rst                   | 0
- Documentation/{ => arch}/s390/index.rst                          | 0
- Documentation/{ => arch}/s390/monreader.rst                      | 0
- Documentation/{ => arch}/s390/qeth.rst                           | 0
- Documentation/{ => arch}/s390/s390dbf.rst                        | 0
- Documentation/{ => arch}/s390/text_files.rst                     | 0
- Documentation/{ => arch}/s390/vfio-ap.rst                        | 0
- Documentation/{ => arch}/s390/vfio-ccw.rst                       | 0
- Documentation/{ => arch}/s390/zfcpdump.rst                       | 0
- Documentation/{ => arch}/sh/conf.py                              | 0
- Documentation/{ => arch}/sh/index.rst                            | 0
- Documentation/{ => arch}/sh/new-machine.txt                      | 0
- Documentation/{ => arch}/sh/register-banks.txt                   | 0
- Documentation/{ => arch}/sparc/adi.rst                           | 0
- Documentation/{ => arch}/sparc/console.rst                       | 0
- Documentation/{ => arch}/sparc/index.rst                         | 0
- Documentation/{ => arch}/sparc/oradax/dax-hv-api.txt             | 0
- Documentation/{ => arch}/sparc/oradax/oracle-dax.rst             | 0
- Documentation/{ => arch}/x86/amd-memory-encryption.rst           | 0
- Documentation/{ => arch}/x86/boot.rst                            | 0
- Documentation/{ => arch}/x86/conf.py                             | 0
- Documentation/{ => arch}/x86/earlyprintk.rst                     | 0
- Documentation/{ => arch}/x86/entry_64.rst                        | 0
- Documentation/{ => arch}/x86/exception-tables.rst                | 0
- Documentation/{ => arch}/x86/i386/IO-APIC.rst                    | 0
- Documentation/{ => arch}/x86/i386/index.rst                      | 0
- Documentation/{ => arch}/x86/index.rst                           | 0
- Documentation/{ => arch}/x86/intel_mpx.rst                       | 0
- Documentation/{ => arch}/x86/kernel-stacks.rst                   | 0
- Documentation/{ => arch}/x86/mds.rst                             | 0
- Documentation/{ => arch}/x86/microcode.rst                       | 0
- Documentation/{ => arch}/x86/mtrr.rst                            | 0
- Documentation/{ => arch}/x86/orc-unwinder.rst                    | 0
- Documentation/{ => arch}/x86/pat.rst                             | 0
- Documentation/{ => arch}/x86/pti.rst                             | 0
- Documentation/{ => arch}/x86/resctrl_ui.rst                      | 0
- Documentation/{ => arch}/x86/tlb.rst                             | 0
- Documentation/{ => arch}/x86/topology.rst                        | 0
- Documentation/{ => arch}/x86/usb-legacy-support.rst              | 0
- Documentation/{ => arch}/x86/x86_64/5level-paging.rst            | 0
- Documentation/{ => arch}/x86/x86_64/boot-options.rst             | 0
- Documentation/{ => arch}/x86/x86_64/cpu-hotplug-spec.rst         | 0
- Documentation/{ => arch}/x86/x86_64/fake-numa-for-cpusets.rst    | 0
- Documentation/{ => arch}/x86/x86_64/index.rst                    | 0
- Documentation/{ => arch}/x86/x86_64/machinecheck.rst             | 0
- Documentation/{ => arch}/x86/x86_64/mm.rst                       | 0
- Documentation/{ => arch}/x86/x86_64/uefi.rst                     | 0
- Documentation/{ => arch}/x86/zero-page.rst                       | 0
- Documentation/{ => arch}/xtensa/atomctl.txt                      | 0
- Documentation/{ => arch}/xtensa/booting.txt                      | 0
- Documentation/{ => arch}/xtensa/mmu.txt                          | 0
- 184 files changed, 0 insertions(+), 0 deletions(-)
- rename Documentation/{ => arch}/arm/Booting (100%)
- rename Documentation/{ => arch}/arm/IXP4xx (100%)
- rename Documentation/{ => arch}/arm/Interrupts (100%)
- rename Documentation/{ => arch}/arm/Marvell/README (100%)
- rename Documentation/{ => arch}/arm/Microchip/README (100%)
- rename Documentation/{ => arch}/arm/Netwinder (100%)
- rename Documentation/{ => arch}/arm/OMAP/DSS (100%)
- rename Documentation/{ => arch}/arm/OMAP/README (100%)
- rename Documentation/{ => arch}/arm/OMAP/omap_pm (100%)
- rename Documentation/{ => arch}/arm/Porting (100%)
- rename Documentation/{ => arch}/arm/README (100%)
- rename Documentation/{ => arch}/arm/SA1100/ADSBitsy (100%)
- rename Documentation/{ => arch}/arm/SA1100/Assabet (100%)
- rename Documentation/{ => arch}/arm/SA1100/Brutus (100%)
- rename Documentation/{ => arch}/arm/SA1100/CERF (100%)
- rename Documentation/{ => arch}/arm/SA1100/FreeBird (100%)
- rename Documentation/{ => arch}/arm/SA1100/GraphicsClient (100%)
- rename Documentation/{ => arch}/arm/SA1100/GraphicsMaster (100%)
- rename Documentation/{ => arch}/arm/SA1100/HUW_WEBPANEL (100%)
- rename Documentation/{ => arch}/arm/SA1100/Itsy (100%)
- rename Documentation/{ => arch}/arm/SA1100/LART (100%)
- rename Documentation/{ => arch}/arm/SA1100/PLEB (100%)
- rename Documentation/{ => arch}/arm/SA1100/Pangolin (100%)
- rename Documentation/{ => arch}/arm/SA1100/Tifon (100%)
- rename Documentation/{ => arch}/arm/SA1100/Yopy (100%)
- rename Documentation/{ => arch}/arm/SA1100/empeg (100%)
- rename Documentation/{ => arch}/arm/SA1100/nanoEngine (100%)
- rename Documentation/{ => arch}/arm/SA1100/serial_UART (100%)
- rename Documentation/{ => arch}/arm/SH-Mobile/.gitignore (100%)
- rename Documentation/{ => arch}/arm/SPEAr/overview.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/CPUfreq.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/EB2410ITX.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/GPIO.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/H1940.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/NAND.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/Overview.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2412.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/S3C2413.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/SMDK2440.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/Suspend.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung-S3C24XX/USB-Host.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung/Bootloader-interface.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung/GPIO.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung/Overview.txt (100%)
- rename Documentation/{ => arch}/arm/Samsung/clksrc-change-registers.awk (100%)
- rename Documentation/{ => arch}/arm/Setup (100%)
- rename Documentation/{ => arch}/arm/VFP/release-notes.txt (100%)
- rename Documentation/{ => arch}/arm/cluster-pm-race-avoidance.txt (100%)
- rename Documentation/{ => arch}/arm/firmware.txt (100%)
- rename Documentation/{ => arch}/arm/kernel_mode_neon.txt (100%)
- rename Documentation/{ => arch}/arm/kernel_user_helpers.txt (100%)
- rename Documentation/{ => arch}/arm/keystone/Overview.txt (100%)
- rename Documentation/{ => arch}/arm/keystone/knav-qmss.txt (100%)
- rename Documentation/{ => arch}/arm/mem_alignment (100%)
- rename Documentation/{ => arch}/arm/memory.txt (100%)
- rename Documentation/{ => arch}/arm/nwfpe/NOTES (100%)
- rename Documentation/{ => arch}/arm/nwfpe/README (100%)
- rename Documentation/{ => arch}/arm/nwfpe/README.FPE (100%)
- rename Documentation/{ => arch}/arm/nwfpe/TODO (100%)
- rename Documentation/{ => arch}/arm/pxa/mfp.txt (100%)
- rename Documentation/{ => arch}/arm/sti/overview.txt (100%)
- rename Documentation/{ => arch}/arm/sti/stih407-overview.txt (100%)
- rename Documentation/{ => arch}/arm/sti/stih415-overview.txt (100%)
- rename Documentation/{ => arch}/arm/sti/stih416-overview.txt (100%)
- rename Documentation/{ => arch}/arm/sti/stih418-overview.txt (100%)
- rename Documentation/{ => arch}/arm/stm32/overview.rst (100%)
- rename Documentation/{ => arch}/arm/stm32/stm32f429-overview.rst (100%)
- rename Documentation/{ => arch}/arm/stm32/stm32f746-overview.rst (100%)
- rename Documentation/{ => arch}/arm/stm32/stm32f769-overview.rst (100%)
- rename Documentation/{ => arch}/arm/stm32/stm32h743-overview.rst (100%)
- rename Documentation/{ => arch}/arm/stm32/stm32mp157-overview.rst (100%)
- rename Documentation/{ => arch}/arm/sunxi/README (100%)
- rename Documentation/{ => arch}/arm/sunxi/clocks.txt (100%)
- rename Documentation/{ => arch}/arm/swp_emulation (100%)
- rename Documentation/{ => arch}/arm/tcm.txt (100%)
- rename Documentation/{ => arch}/arm/uefi.txt (100%)
- rename Documentation/{ => arch}/arm/vlocks.txt (100%)
- rename Documentation/{ => arch}/arm64/acpi_object_usage.rst (100%)
- rename Documentation/{ => arch}/arm64/arm-acpi.rst (100%)
- rename Documentation/{ => arch}/arm64/booting.rst (100%)
- rename Documentation/{ => arch}/arm64/cpu-feature-registers.rst (100%)
- rename Documentation/{ => arch}/arm64/elf_hwcaps.rst (100%)
- rename Documentation/{ => arch}/arm64/hugetlbpage.rst (100%)
- rename Documentation/{ => arch}/arm64/index.rst (100%)
- rename Documentation/{ => arch}/arm64/legacy_instructions.rst (100%)
- rename Documentation/{ => arch}/arm64/memory.rst (100%)
- rename Documentation/{ => arch}/arm64/perf.txt (100%)
- rename Documentation/{ => arch}/arm64/pointer-authentication.rst (100%)
- rename Documentation/{ => arch}/arm64/silicon-errata.rst (100%)
- rename Documentation/{ => arch}/arm64/sve.rst (100%)
- rename Documentation/{ => arch}/arm64/tagged-pointers.rst (100%)
- rename Documentation/{ => arch}/ia64/IRQ-redir.txt (100%)
- rename Documentation/{ => arch}/ia64/README (100%)
- rename Documentation/{ => arch}/ia64/aliasing.txt (100%)
- rename Documentation/{ => arch}/ia64/efirtc.txt (100%)
- rename Documentation/{ => arch}/ia64/err_inject.txt (100%)
- rename Documentation/{ => arch}/ia64/fsys.txt (100%)
- rename Documentation/{ => arch}/ia64/mca.txt (100%)
- rename Documentation/{ => arch}/ia64/serial.txt (100%)
- rename Documentation/{ => arch}/ia64/xen.txt (100%)
- rename Documentation/{ => arch}/m68k/README.buddha (100%)
- rename Documentation/{ => arch}/m68k/kernel-options.txt (100%)
- rename Documentation/{ => arch}/mips/AU1xxx_IDE.README (100%)
- rename Documentation/{ => arch}/nios2/README (100%)
- rename Documentation/{ => arch}/parisc/debugging (100%)
- rename Documentation/{ => arch}/parisc/registers (100%)
- rename Documentation/{ => arch}/powerpc/DAWR-POWER9.txt (100%)
- rename Documentation/{ => arch}/powerpc/bootwrapper.txt (100%)
- rename Documentation/{ => arch}/powerpc/cpu_families.txt (100%)
- rename Documentation/{ => arch}/powerpc/cpu_features.txt (100%)
- rename Documentation/{ => arch}/powerpc/cxl.txt (100%)
- rename Documentation/{ => arch}/powerpc/cxlflash.txt (100%)
- rename Documentation/{ => arch}/powerpc/dscr.txt (100%)
- rename Documentation/{ => arch}/powerpc/eeh-pci-error-recovery.txt (100%)
- rename Documentation/{ => arch}/powerpc/firmware-assisted-dump.txt (100%)
- rename Documentation/{ => arch}/powerpc/hvcs.txt (100%)
- rename Documentation/{ => arch}/powerpc/isa-versions.rst (100%)
- rename Documentation/{ => arch}/powerpc/mpc52xx.txt (100%)
- rename Documentation/{ => arch}/powerpc/pci_iov_resource_on_powernv.txt (100%)
- rename Documentation/{ => arch}/powerpc/pmu-ebb.txt (100%)
- rename Documentation/{ => arch}/powerpc/ptrace.txt (100%)
- rename Documentation/{ => arch}/powerpc/qe_firmware.txt (100%)
- rename Documentation/{ => arch}/powerpc/syscall64-abi.txt (100%)
- rename Documentation/{ => arch}/powerpc/transactional_memory.txt (100%)
- rename Documentation/{ => arch}/riscv/index.rst (100%)
- rename Documentation/{ => arch}/riscv/pmu.rst (100%)
- rename Documentation/{ => arch}/s390/3270.ChangeLog (100%)
- rename Documentation/{ => arch}/s390/3270.rst (100%)
- rename Documentation/{ => arch}/s390/cds.rst (100%)
- rename Documentation/{ => arch}/s390/common_io.rst (100%)
- rename Documentation/{ => arch}/s390/config3270.sh (100%)
- rename Documentation/{ => arch}/s390/dasd.rst (100%)
- rename Documentation/{ => arch}/s390/debugging390.rst (100%)
- rename Documentation/{ => arch}/s390/driver-model.rst (100%)
- rename Documentation/{ => arch}/s390/index.rst (100%)
- rename Documentation/{ => arch}/s390/monreader.rst (100%)
- rename Documentation/{ => arch}/s390/qeth.rst (100%)
- rename Documentation/{ => arch}/s390/s390dbf.rst (100%)
- rename Documentation/{ => arch}/s390/text_files.rst (100%)
- rename Documentation/{ => arch}/s390/vfio-ap.rst (100%)
- rename Documentation/{ => arch}/s390/vfio-ccw.rst (100%)
- rename Documentation/{ => arch}/s390/zfcpdump.rst (100%)
- rename Documentation/{ => arch}/sh/conf.py (100%)
- rename Documentation/{ => arch}/sh/index.rst (100%)
- rename Documentation/{ => arch}/sh/new-machine.txt (100%)
- rename Documentation/{ => arch}/sh/register-banks.txt (100%)
- rename Documentation/{ => arch}/sparc/adi.rst (100%)
- rename Documentation/{ => arch}/sparc/console.rst (100%)
- rename Documentation/{ => arch}/sparc/index.rst (100%)
- rename Documentation/{ => arch}/sparc/oradax/dax-hv-api.txt (100%)
- rename Documentation/{ => arch}/sparc/oradax/oracle-dax.rst (100%)
- rename Documentation/{ => arch}/x86/amd-memory-encryption.rst (100%)
- rename Documentation/{ => arch}/x86/boot.rst (100%)
- rename Documentation/{ => arch}/x86/conf.py (100%)
- rename Documentation/{ => arch}/x86/earlyprintk.rst (100%)
- rename Documentation/{ => arch}/x86/entry_64.rst (100%)
- rename Documentation/{ => arch}/x86/exception-tables.rst (100%)
- rename Documentation/{ => arch}/x86/i386/IO-APIC.rst (100%)
- rename Documentation/{ => arch}/x86/i386/index.rst (100%)
- rename Documentation/{ => arch}/x86/index.rst (100%)
- rename Documentation/{ => arch}/x86/intel_mpx.rst (100%)
- rename Documentation/{ => arch}/x86/kernel-stacks.rst (100%)
- rename Documentation/{ => arch}/x86/mds.rst (100%)
- rename Documentation/{ => arch}/x86/microcode.rst (100%)
- rename Documentation/{ => arch}/x86/mtrr.rst (100%)
- rename Documentation/{ => arch}/x86/orc-unwinder.rst (100%)
- rename Documentation/{ => arch}/x86/pat.rst (100%)
- rename Documentation/{ => arch}/x86/pti.rst (100%)
- rename Documentation/{ => arch}/x86/resctrl_ui.rst (100%)
- rename Documentation/{ => arch}/x86/tlb.rst (100%)
- rename Documentation/{ => arch}/x86/topology.rst (100%)
- rename Documentation/{ => arch}/x86/usb-legacy-support.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/5level-paging.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/boot-options.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/cpu-hotplug-spec.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/fake-numa-for-cpusets.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/index.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/machinecheck.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/mm.rst (100%)
- rename Documentation/{ => arch}/x86/x86_64/uefi.rst (100%)
- rename Documentation/{ => arch}/x86/zero-page.rst (100%)
- rename Documentation/{ => arch}/xtensa/atomctl.txt (100%)
- rename Documentation/{ => arch}/xtensa/booting.txt (100%)
- rename Documentation/{ => arch}/xtensa/mmu.txt (100%)
-
-diff --git a/Documentation/arm/Booting b/Documentation/arch/arm/Booting
-similarity index 100%
-rename from Documentation/arm/Booting
-rename to Documentation/arch/arm/Booting
-diff --git a/Documentation/arm/IXP4xx b/Documentation/arch/arm/IXP4xx
-similarity index 100%
-rename from Documentation/arm/IXP4xx
-rename to Documentation/arch/arm/IXP4xx
-diff --git a/Documentation/arm/Interrupts b/Documentation/arch/arm/Interrupts
-similarity index 100%
-rename from Documentation/arm/Interrupts
-rename to Documentation/arch/arm/Interrupts
-diff --git a/Documentation/arm/Marvell/README b/Documentation/arch/arm/Marvell/README
-similarity index 100%
-rename from Documentation/arm/Marvell/README
-rename to Documentation/arch/arm/Marvell/README
-diff --git a/Documentation/arm/Microchip/README b/Documentation/arch/arm/Microchip/README
-similarity index 100%
-rename from Documentation/arm/Microchip/README
-rename to Documentation/arch/arm/Microchip/README
-diff --git a/Documentation/arm/Netwinder b/Documentation/arch/arm/Netwinder
-similarity index 100%
-rename from Documentation/arm/Netwinder
-rename to Documentation/arch/arm/Netwinder
-diff --git a/Documentation/arm/OMAP/DSS b/Documentation/arch/arm/OMAP/DSS
-similarity index 100%
-rename from Documentation/arm/OMAP/DSS
-rename to Documentation/arch/arm/OMAP/DSS
-diff --git a/Documentation/arm/OMAP/README b/Documentation/arch/arm/OMAP/README
-similarity index 100%
-rename from Documentation/arm/OMAP/README
-rename to Documentation/arch/arm/OMAP/README
-diff --git a/Documentation/arm/OMAP/omap_pm b/Documentation/arch/arm/OMAP/omap_pm
-similarity index 100%
-rename from Documentation/arm/OMAP/omap_pm
-rename to Documentation/arch/arm/OMAP/omap_pm
-diff --git a/Documentation/arm/Porting b/Documentation/arch/arm/Porting
-similarity index 100%
-rename from Documentation/arm/Porting
-rename to Documentation/arch/arm/Porting
-diff --git a/Documentation/arm/README b/Documentation/arch/arm/README
-similarity index 100%
-rename from Documentation/arm/README
-rename to Documentation/arch/arm/README
-diff --git a/Documentation/arm/SA1100/ADSBitsy b/Documentation/arch/arm/SA1100/ADSBitsy
-similarity index 100%
-rename from Documentation/arm/SA1100/ADSBitsy
-rename to Documentation/arch/arm/SA1100/ADSBitsy
-diff --git a/Documentation/arm/SA1100/Assabet b/Documentation/arch/arm/SA1100/Assabet
-similarity index 100%
-rename from Documentation/arm/SA1100/Assabet
-rename to Documentation/arch/arm/SA1100/Assabet
-diff --git a/Documentation/arm/SA1100/Brutus b/Documentation/arch/arm/SA1100/Brutus
-similarity index 100%
-rename from Documentation/arm/SA1100/Brutus
-rename to Documentation/arch/arm/SA1100/Brutus
-diff --git a/Documentation/arm/SA1100/CERF b/Documentation/arch/arm/SA1100/CERF
-similarity index 100%
-rename from Documentation/arm/SA1100/CERF
-rename to Documentation/arch/arm/SA1100/CERF
-diff --git a/Documentation/arm/SA1100/FreeBird b/Documentation/arch/arm/SA1100/FreeBird
-similarity index 100%
-rename from Documentation/arm/SA1100/FreeBird
-rename to Documentation/arch/arm/SA1100/FreeBird
-diff --git a/Documentation/arm/SA1100/GraphicsClient b/Documentation/arch/arm/SA1100/GraphicsClient
-similarity index 100%
-rename from Documentation/arm/SA1100/GraphicsClient
-rename to Documentation/arch/arm/SA1100/GraphicsClient
-diff --git a/Documentation/arm/SA1100/GraphicsMaster b/Documentation/arch/arm/SA1100/GraphicsMaster
-similarity index 100%
-rename from Documentation/arm/SA1100/GraphicsMaster
-rename to Documentation/arch/arm/SA1100/GraphicsMaster
-diff --git a/Documentation/arm/SA1100/HUW_WEBPANEL b/Documentation/arch/arm/SA1100/HUW_WEBPANEL
-similarity index 100%
-rename from Documentation/arm/SA1100/HUW_WEBPANEL
-rename to Documentation/arch/arm/SA1100/HUW_WEBPANEL
-diff --git a/Documentation/arm/SA1100/Itsy b/Documentation/arch/arm/SA1100/Itsy
-similarity index 100%
-rename from Documentation/arm/SA1100/Itsy
-rename to Documentation/arch/arm/SA1100/Itsy
-diff --git a/Documentation/arm/SA1100/LART b/Documentation/arch/arm/SA1100/LART
-similarity index 100%
-rename from Documentation/arm/SA1100/LART
-rename to Documentation/arch/arm/SA1100/LART
-diff --git a/Documentation/arm/SA1100/PLEB b/Documentation/arch/arm/SA1100/PLEB
-similarity index 100%
-rename from Documentation/arm/SA1100/PLEB
-rename to Documentation/arch/arm/SA1100/PLEB
-diff --git a/Documentation/arm/SA1100/Pangolin b/Documentation/arch/arm/SA1100/Pangolin
-similarity index 100%
-rename from Documentation/arm/SA1100/Pangolin
-rename to Documentation/arch/arm/SA1100/Pangolin
-diff --git a/Documentation/arm/SA1100/Tifon b/Documentation/arch/arm/SA1100/Tifon
-similarity index 100%
-rename from Documentation/arm/SA1100/Tifon
-rename to Documentation/arch/arm/SA1100/Tifon
-diff --git a/Documentation/arm/SA1100/Yopy b/Documentation/arch/arm/SA1100/Yopy
-similarity index 100%
-rename from Documentation/arm/SA1100/Yopy
-rename to Documentation/arch/arm/SA1100/Yopy
-diff --git a/Documentation/arm/SA1100/empeg b/Documentation/arch/arm/SA1100/empeg
-similarity index 100%
-rename from Documentation/arm/SA1100/empeg
-rename to Documentation/arch/arm/SA1100/empeg
-diff --git a/Documentation/arm/SA1100/nanoEngine b/Documentation/arch/arm/SA1100/nanoEngine
-similarity index 100%
-rename from Documentation/arm/SA1100/nanoEngine
-rename to Documentation/arch/arm/SA1100/nanoEngine
-diff --git a/Documentation/arm/SA1100/serial_UART b/Documentation/arch/arm/SA1100/serial_UART
-similarity index 100%
-rename from Documentation/arm/SA1100/serial_UART
-rename to Documentation/arch/arm/SA1100/serial_UART
-diff --git a/Documentation/arm/SH-Mobile/.gitignore b/Documentation/arch/arm/SH-Mobile/.gitignore
-similarity index 100%
-rename from Documentation/arm/SH-Mobile/.gitignore
-rename to Documentation/arch/arm/SH-Mobile/.gitignore
-diff --git a/Documentation/arm/SPEAr/overview.txt b/Documentation/arch/arm/SPEAr/overview.txt
-similarity index 100%
-rename from Documentation/arm/SPEAr/overview.txt
-rename to Documentation/arch/arm/SPEAr/overview.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/CPUfreq.txt b/Documentation/arch/arm/Samsung-S3C24XX/CPUfreq.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/CPUfreq.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/CPUfreq.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/EB2410ITX.txt b/Documentation/arch/arm/Samsung-S3C24XX/EB2410ITX.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/EB2410ITX.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/EB2410ITX.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/GPIO.txt b/Documentation/arch/arm/Samsung-S3C24XX/GPIO.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/GPIO.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/GPIO.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/H1940.txt b/Documentation/arch/arm/Samsung-S3C24XX/H1940.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/H1940.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/H1940.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/NAND.txt b/Documentation/arch/arm/Samsung-S3C24XX/NAND.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/NAND.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/NAND.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/Overview.txt b/Documentation/arch/arm/Samsung-S3C24XX/Overview.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/Overview.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/Overview.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/S3C2412.txt b/Documentation/arch/arm/Samsung-S3C24XX/S3C2412.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/S3C2412.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/S3C2412.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/S3C2413.txt b/Documentation/arch/arm/Samsung-S3C24XX/S3C2413.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/S3C2413.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/S3C2413.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/SMDK2440.txt b/Documentation/arch/arm/Samsung-S3C24XX/SMDK2440.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/SMDK2440.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/SMDK2440.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/Suspend.txt b/Documentation/arch/arm/Samsung-S3C24XX/Suspend.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/Suspend.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/Suspend.txt
-diff --git a/Documentation/arm/Samsung-S3C24XX/USB-Host.txt b/Documentation/arch/arm/Samsung-S3C24XX/USB-Host.txt
-similarity index 100%
-rename from Documentation/arm/Samsung-S3C24XX/USB-Host.txt
-rename to Documentation/arch/arm/Samsung-S3C24XX/USB-Host.txt
-diff --git a/Documentation/arm/Samsung/Bootloader-interface.txt b/Documentation/arch/arm/Samsung/Bootloader-interface.txt
-similarity index 100%
-rename from Documentation/arm/Samsung/Bootloader-interface.txt
-rename to Documentation/arch/arm/Samsung/Bootloader-interface.txt
-diff --git a/Documentation/arm/Samsung/GPIO.txt b/Documentation/arch/arm/Samsung/GPIO.txt
-similarity index 100%
-rename from Documentation/arm/Samsung/GPIO.txt
-rename to Documentation/arch/arm/Samsung/GPIO.txt
-diff --git a/Documentation/arm/Samsung/Overview.txt b/Documentation/arch/arm/Samsung/Overview.txt
-similarity index 100%
-rename from Documentation/arm/Samsung/Overview.txt
-rename to Documentation/arch/arm/Samsung/Overview.txt
-diff --git a/Documentation/arm/Samsung/clksrc-change-registers.awk b/Documentation/arch/arm/Samsung/clksrc-change-registers.awk
-similarity index 100%
-rename from Documentation/arm/Samsung/clksrc-change-registers.awk
-rename to Documentation/arch/arm/Samsung/clksrc-change-registers.awk
-diff --git a/Documentation/arm/Setup b/Documentation/arch/arm/Setup
-similarity index 100%
-rename from Documentation/arm/Setup
-rename to Documentation/arch/arm/Setup
-diff --git a/Documentation/arm/VFP/release-notes.txt b/Documentation/arch/arm/VFP/release-notes.txt
-similarity index 100%
-rename from Documentation/arm/VFP/release-notes.txt
-rename to Documentation/arch/arm/VFP/release-notes.txt
-diff --git a/Documentation/arm/cluster-pm-race-avoidance.txt b/Documentation/arch/arm/cluster-pm-race-avoidance.txt
-similarity index 100%
-rename from Documentation/arm/cluster-pm-race-avoidance.txt
-rename to Documentation/arch/arm/cluster-pm-race-avoidance.txt
-diff --git a/Documentation/arm/firmware.txt b/Documentation/arch/arm/firmware.txt
-similarity index 100%
-rename from Documentation/arm/firmware.txt
-rename to Documentation/arch/arm/firmware.txt
-diff --git a/Documentation/arm/kernel_mode_neon.txt b/Documentation/arch/arm/kernel_mode_neon.txt
-similarity index 100%
-rename from Documentation/arm/kernel_mode_neon.txt
-rename to Documentation/arch/arm/kernel_mode_neon.txt
-diff --git a/Documentation/arm/kernel_user_helpers.txt b/Documentation/arch/arm/kernel_user_helpers.txt
-similarity index 100%
-rename from Documentation/arm/kernel_user_helpers.txt
-rename to Documentation/arch/arm/kernel_user_helpers.txt
-diff --git a/Documentation/arm/keystone/Overview.txt b/Documentation/arch/arm/keystone/Overview.txt
-similarity index 100%
-rename from Documentation/arm/keystone/Overview.txt
-rename to Documentation/arch/arm/keystone/Overview.txt
-diff --git a/Documentation/arm/keystone/knav-qmss.txt b/Documentation/arch/arm/keystone/knav-qmss.txt
-similarity index 100%
-rename from Documentation/arm/keystone/knav-qmss.txt
-rename to Documentation/arch/arm/keystone/knav-qmss.txt
-diff --git a/Documentation/arm/mem_alignment b/Documentation/arch/arm/mem_alignment
-similarity index 100%
-rename from Documentation/arm/mem_alignment
-rename to Documentation/arch/arm/mem_alignment
-diff --git a/Documentation/arm/memory.txt b/Documentation/arch/arm/memory.txt
-similarity index 100%
-rename from Documentation/arm/memory.txt
-rename to Documentation/arch/arm/memory.txt
-diff --git a/Documentation/arm/nwfpe/NOTES b/Documentation/arch/arm/nwfpe/NOTES
-similarity index 100%
-rename from Documentation/arm/nwfpe/NOTES
-rename to Documentation/arch/arm/nwfpe/NOTES
-diff --git a/Documentation/arm/nwfpe/README b/Documentation/arch/arm/nwfpe/README
-similarity index 100%
-rename from Documentation/arm/nwfpe/README
-rename to Documentation/arch/arm/nwfpe/README
-diff --git a/Documentation/arm/nwfpe/README.FPE b/Documentation/arch/arm/nwfpe/README.FPE
-similarity index 100%
-rename from Documentation/arm/nwfpe/README.FPE
-rename to Documentation/arch/arm/nwfpe/README.FPE
-diff --git a/Documentation/arm/nwfpe/TODO b/Documentation/arch/arm/nwfpe/TODO
-similarity index 100%
-rename from Documentation/arm/nwfpe/TODO
-rename to Documentation/arch/arm/nwfpe/TODO
-diff --git a/Documentation/arm/pxa/mfp.txt b/Documentation/arch/arm/pxa/mfp.txt
-similarity index 100%
-rename from Documentation/arm/pxa/mfp.txt
-rename to Documentation/arch/arm/pxa/mfp.txt
-diff --git a/Documentation/arm/sti/overview.txt b/Documentation/arch/arm/sti/overview.txt
-similarity index 100%
-rename from Documentation/arm/sti/overview.txt
-rename to Documentation/arch/arm/sti/overview.txt
-diff --git a/Documentation/arm/sti/stih407-overview.txt b/Documentation/arch/arm/sti/stih407-overview.txt
-similarity index 100%
-rename from Documentation/arm/sti/stih407-overview.txt
-rename to Documentation/arch/arm/sti/stih407-overview.txt
-diff --git a/Documentation/arm/sti/stih415-overview.txt b/Documentation/arch/arm/sti/stih415-overview.txt
-similarity index 100%
-rename from Documentation/arm/sti/stih415-overview.txt
-rename to Documentation/arch/arm/sti/stih415-overview.txt
-diff --git a/Documentation/arm/sti/stih416-overview.txt b/Documentation/arch/arm/sti/stih416-overview.txt
-similarity index 100%
-rename from Documentation/arm/sti/stih416-overview.txt
-rename to Documentation/arch/arm/sti/stih416-overview.txt
-diff --git a/Documentation/arm/sti/stih418-overview.txt b/Documentation/arch/arm/sti/stih418-overview.txt
-similarity index 100%
-rename from Documentation/arm/sti/stih418-overview.txt
-rename to Documentation/arch/arm/sti/stih418-overview.txt
-diff --git a/Documentation/arm/stm32/overview.rst b/Documentation/arch/arm/stm32/overview.rst
-similarity index 100%
-rename from Documentation/arm/stm32/overview.rst
-rename to Documentation/arch/arm/stm32/overview.rst
-diff --git a/Documentation/arm/stm32/stm32f429-overview.rst b/Documentation/arch/arm/stm32/stm32f429-overview.rst
-similarity index 100%
-rename from Documentation/arm/stm32/stm32f429-overview.rst
-rename to Documentation/arch/arm/stm32/stm32f429-overview.rst
-diff --git a/Documentation/arm/stm32/stm32f746-overview.rst b/Documentation/arch/arm/stm32/stm32f746-overview.rst
-similarity index 100%
-rename from Documentation/arm/stm32/stm32f746-overview.rst
-rename to Documentation/arch/arm/stm32/stm32f746-overview.rst
-diff --git a/Documentation/arm/stm32/stm32f769-overview.rst b/Documentation/arch/arm/stm32/stm32f769-overview.rst
-similarity index 100%
-rename from Documentation/arm/stm32/stm32f769-overview.rst
-rename to Documentation/arch/arm/stm32/stm32f769-overview.rst
-diff --git a/Documentation/arm/stm32/stm32h743-overview.rst b/Documentation/arch/arm/stm32/stm32h743-overview.rst
-similarity index 100%
-rename from Documentation/arm/stm32/stm32h743-overview.rst
-rename to Documentation/arch/arm/stm32/stm32h743-overview.rst
-diff --git a/Documentation/arm/stm32/stm32mp157-overview.rst b/Documentation/arch/arm/stm32/stm32mp157-overview.rst
-similarity index 100%
-rename from Documentation/arm/stm32/stm32mp157-overview.rst
-rename to Documentation/arch/arm/stm32/stm32mp157-overview.rst
-diff --git a/Documentation/arm/sunxi/README b/Documentation/arch/arm/sunxi/README
-similarity index 100%
-rename from Documentation/arm/sunxi/README
-rename to Documentation/arch/arm/sunxi/README
-diff --git a/Documentation/arm/sunxi/clocks.txt b/Documentation/arch/arm/sunxi/clocks.txt
-similarity index 100%
-rename from Documentation/arm/sunxi/clocks.txt
-rename to Documentation/arch/arm/sunxi/clocks.txt
-diff --git a/Documentation/arm/swp_emulation b/Documentation/arch/arm/swp_emulation
-similarity index 100%
-rename from Documentation/arm/swp_emulation
-rename to Documentation/arch/arm/swp_emulation
-diff --git a/Documentation/arm/tcm.txt b/Documentation/arch/arm/tcm.txt
-similarity index 100%
-rename from Documentation/arm/tcm.txt
-rename to Documentation/arch/arm/tcm.txt
-diff --git a/Documentation/arm/uefi.txt b/Documentation/arch/arm/uefi.txt
-similarity index 100%
-rename from Documentation/arm/uefi.txt
-rename to Documentation/arch/arm/uefi.txt
-diff --git a/Documentation/arm/vlocks.txt b/Documentation/arch/arm/vlocks.txt
-similarity index 100%
-rename from Documentation/arm/vlocks.txt
-rename to Documentation/arch/arm/vlocks.txt
-diff --git a/Documentation/arm64/acpi_object_usage.rst b/Documentation/arch/arm64/acpi_object_usage.rst
-similarity index 100%
-rename from Documentation/arm64/acpi_object_usage.rst
-rename to Documentation/arch/arm64/acpi_object_usage.rst
-diff --git a/Documentation/arm64/arm-acpi.rst b/Documentation/arch/arm64/arm-acpi.rst
-similarity index 100%
-rename from Documentation/arm64/arm-acpi.rst
-rename to Documentation/arch/arm64/arm-acpi.rst
-diff --git a/Documentation/arm64/booting.rst b/Documentation/arch/arm64/booting.rst
-similarity index 100%
-rename from Documentation/arm64/booting.rst
-rename to Documentation/arch/arm64/booting.rst
-diff --git a/Documentation/arm64/cpu-feature-registers.rst b/Documentation/arch/arm64/cpu-feature-registers.rst
-similarity index 100%
-rename from Documentation/arm64/cpu-feature-registers.rst
-rename to Documentation/arch/arm64/cpu-feature-registers.rst
-diff --git a/Documentation/arm64/elf_hwcaps.rst b/Documentation/arch/arm64/elf_hwcaps.rst
-similarity index 100%
-rename from Documentation/arm64/elf_hwcaps.rst
-rename to Documentation/arch/arm64/elf_hwcaps.rst
-diff --git a/Documentation/arm64/hugetlbpage.rst b/Documentation/arch/arm64/hugetlbpage.rst
-similarity index 100%
-rename from Documentation/arm64/hugetlbpage.rst
-rename to Documentation/arch/arm64/hugetlbpage.rst
-diff --git a/Documentation/arm64/index.rst b/Documentation/arch/arm64/index.rst
-similarity index 100%
-rename from Documentation/arm64/index.rst
-rename to Documentation/arch/arm64/index.rst
-diff --git a/Documentation/arm64/legacy_instructions.rst b/Documentation/arch/arm64/legacy_instructions.rst
-similarity index 100%
-rename from Documentation/arm64/legacy_instructions.rst
-rename to Documentation/arch/arm64/legacy_instructions.rst
-diff --git a/Documentation/arm64/memory.rst b/Documentation/arch/arm64/memory.rst
-similarity index 100%
-rename from Documentation/arm64/memory.rst
-rename to Documentation/arch/arm64/memory.rst
-diff --git a/Documentation/arm64/perf.txt b/Documentation/arch/arm64/perf.txt
-similarity index 100%
-rename from Documentation/arm64/perf.txt
-rename to Documentation/arch/arm64/perf.txt
-diff --git a/Documentation/arm64/pointer-authentication.rst b/Documentation/arch/arm64/pointer-authentication.rst
-similarity index 100%
-rename from Documentation/arm64/pointer-authentication.rst
-rename to Documentation/arch/arm64/pointer-authentication.rst
-diff --git a/Documentation/arm64/silicon-errata.rst b/Documentation/arch/arm64/silicon-errata.rst
-similarity index 100%
-rename from Documentation/arm64/silicon-errata.rst
-rename to Documentation/arch/arm64/silicon-errata.rst
-diff --git a/Documentation/arm64/sve.rst b/Documentation/arch/arm64/sve.rst
-similarity index 100%
-rename from Documentation/arm64/sve.rst
-rename to Documentation/arch/arm64/sve.rst
-diff --git a/Documentation/arm64/tagged-pointers.rst b/Documentation/arch/arm64/tagged-pointers.rst
-similarity index 100%
-rename from Documentation/arm64/tagged-pointers.rst
-rename to Documentation/arch/arm64/tagged-pointers.rst
-diff --git a/Documentation/ia64/IRQ-redir.txt b/Documentation/arch/ia64/IRQ-redir.txt
-similarity index 100%
-rename from Documentation/ia64/IRQ-redir.txt
-rename to Documentation/arch/ia64/IRQ-redir.txt
-diff --git a/Documentation/ia64/README b/Documentation/arch/ia64/README
-similarity index 100%
-rename from Documentation/ia64/README
-rename to Documentation/arch/ia64/README
-diff --git a/Documentation/ia64/aliasing.txt b/Documentation/arch/ia64/aliasing.txt
-similarity index 100%
-rename from Documentation/ia64/aliasing.txt
-rename to Documentation/arch/ia64/aliasing.txt
-diff --git a/Documentation/ia64/efirtc.txt b/Documentation/arch/ia64/efirtc.txt
-similarity index 100%
-rename from Documentation/ia64/efirtc.txt
-rename to Documentation/arch/ia64/efirtc.txt
-diff --git a/Documentation/ia64/err_inject.txt b/Documentation/arch/ia64/err_inject.txt
-similarity index 100%
-rename from Documentation/ia64/err_inject.txt
-rename to Documentation/arch/ia64/err_inject.txt
-diff --git a/Documentation/ia64/fsys.txt b/Documentation/arch/ia64/fsys.txt
-similarity index 100%
-rename from Documentation/ia64/fsys.txt
-rename to Documentation/arch/ia64/fsys.txt
-diff --git a/Documentation/ia64/mca.txt b/Documentation/arch/ia64/mca.txt
-similarity index 100%
-rename from Documentation/ia64/mca.txt
-rename to Documentation/arch/ia64/mca.txt
-diff --git a/Documentation/ia64/serial.txt b/Documentation/arch/ia64/serial.txt
-similarity index 100%
-rename from Documentation/ia64/serial.txt
-rename to Documentation/arch/ia64/serial.txt
-diff --git a/Documentation/ia64/xen.txt b/Documentation/arch/ia64/xen.txt
-similarity index 100%
-rename from Documentation/ia64/xen.txt
-rename to Documentation/arch/ia64/xen.txt
-diff --git a/Documentation/m68k/README.buddha b/Documentation/arch/m68k/README.buddha
-similarity index 100%
-rename from Documentation/m68k/README.buddha
-rename to Documentation/arch/m68k/README.buddha
-diff --git a/Documentation/m68k/kernel-options.txt b/Documentation/arch/m68k/kernel-options.txt
-similarity index 100%
-rename from Documentation/m68k/kernel-options.txt
-rename to Documentation/arch/m68k/kernel-options.txt
-diff --git a/Documentation/mips/AU1xxx_IDE.README b/Documentation/arch/mips/AU1xxx_IDE.README
-similarity index 100%
-rename from Documentation/mips/AU1xxx_IDE.README
-rename to Documentation/arch/mips/AU1xxx_IDE.README
-diff --git a/Documentation/nios2/README b/Documentation/arch/nios2/README
-similarity index 100%
-rename from Documentation/nios2/README
-rename to Documentation/arch/nios2/README
-diff --git a/Documentation/parisc/debugging b/Documentation/arch/parisc/debugging
-similarity index 100%
-rename from Documentation/parisc/debugging
-rename to Documentation/arch/parisc/debugging
-diff --git a/Documentation/parisc/registers b/Documentation/arch/parisc/registers
-similarity index 100%
-rename from Documentation/parisc/registers
-rename to Documentation/arch/parisc/registers
-diff --git a/Documentation/powerpc/DAWR-POWER9.txt b/Documentation/arch/powerpc/DAWR-POWER9.txt
-similarity index 100%
-rename from Documentation/powerpc/DAWR-POWER9.txt
-rename to Documentation/arch/powerpc/DAWR-POWER9.txt
-diff --git a/Documentation/powerpc/bootwrapper.txt b/Documentation/arch/powerpc/bootwrapper.txt
-similarity index 100%
-rename from Documentation/powerpc/bootwrapper.txt
-rename to Documentation/arch/powerpc/bootwrapper.txt
-diff --git a/Documentation/powerpc/cpu_families.txt b/Documentation/arch/powerpc/cpu_families.txt
-similarity index 100%
-rename from Documentation/powerpc/cpu_families.txt
-rename to Documentation/arch/powerpc/cpu_families.txt
-diff --git a/Documentation/powerpc/cpu_features.txt b/Documentation/arch/powerpc/cpu_features.txt
-similarity index 100%
-rename from Documentation/powerpc/cpu_features.txt
-rename to Documentation/arch/powerpc/cpu_features.txt
-diff --git a/Documentation/powerpc/cxl.txt b/Documentation/arch/powerpc/cxl.txt
-similarity index 100%
-rename from Documentation/powerpc/cxl.txt
-rename to Documentation/arch/powerpc/cxl.txt
-diff --git a/Documentation/powerpc/cxlflash.txt b/Documentation/arch/powerpc/cxlflash.txt
-similarity index 100%
-rename from Documentation/powerpc/cxlflash.txt
-rename to Documentation/arch/powerpc/cxlflash.txt
-diff --git a/Documentation/powerpc/dscr.txt b/Documentation/arch/powerpc/dscr.txt
-similarity index 100%
-rename from Documentation/powerpc/dscr.txt
-rename to Documentation/arch/powerpc/dscr.txt
-diff --git a/Documentation/powerpc/eeh-pci-error-recovery.txt b/Documentation/arch/powerpc/eeh-pci-error-recovery.txt
-similarity index 100%
-rename from Documentation/powerpc/eeh-pci-error-recovery.txt
-rename to Documentation/arch/powerpc/eeh-pci-error-recovery.txt
-diff --git a/Documentation/powerpc/firmware-assisted-dump.txt b/Documentation/arch/powerpc/firmware-assisted-dump.txt
-similarity index 100%
-rename from Documentation/powerpc/firmware-assisted-dump.txt
-rename to Documentation/arch/powerpc/firmware-assisted-dump.txt
-diff --git a/Documentation/powerpc/hvcs.txt b/Documentation/arch/powerpc/hvcs.txt
-similarity index 100%
-rename from Documentation/powerpc/hvcs.txt
-rename to Documentation/arch/powerpc/hvcs.txt
-diff --git a/Documentation/powerpc/isa-versions.rst b/Documentation/arch/powerpc/isa-versions.rst
-similarity index 100%
-rename from Documentation/powerpc/isa-versions.rst
-rename to Documentation/arch/powerpc/isa-versions.rst
-diff --git a/Documentation/powerpc/mpc52xx.txt b/Documentation/arch/powerpc/mpc52xx.txt
-similarity index 100%
-rename from Documentation/powerpc/mpc52xx.txt
-rename to Documentation/arch/powerpc/mpc52xx.txt
-diff --git a/Documentation/powerpc/pci_iov_resource_on_powernv.txt b/Documentation/arch/powerpc/pci_iov_resource_on_powernv.txt
-similarity index 100%
-rename from Documentation/powerpc/pci_iov_resource_on_powernv.txt
-rename to Documentation/arch/powerpc/pci_iov_resource_on_powernv.txt
-diff --git a/Documentation/powerpc/pmu-ebb.txt b/Documentation/arch/powerpc/pmu-ebb.txt
-similarity index 100%
-rename from Documentation/powerpc/pmu-ebb.txt
-rename to Documentation/arch/powerpc/pmu-ebb.txt
-diff --git a/Documentation/powerpc/ptrace.txt b/Documentation/arch/powerpc/ptrace.txt
-similarity index 100%
-rename from Documentation/powerpc/ptrace.txt
-rename to Documentation/arch/powerpc/ptrace.txt
-diff --git a/Documentation/powerpc/qe_firmware.txt b/Documentation/arch/powerpc/qe_firmware.txt
-similarity index 100%
-rename from Documentation/powerpc/qe_firmware.txt
-rename to Documentation/arch/powerpc/qe_firmware.txt
-diff --git a/Documentation/powerpc/syscall64-abi.txt b/Documentation/arch/powerpc/syscall64-abi.txt
-similarity index 100%
-rename from Documentation/powerpc/syscall64-abi.txt
-rename to Documentation/arch/powerpc/syscall64-abi.txt
-diff --git a/Documentation/powerpc/transactional_memory.txt b/Documentation/arch/powerpc/transactional_memory.txt
-similarity index 100%
-rename from Documentation/powerpc/transactional_memory.txt
-rename to Documentation/arch/powerpc/transactional_memory.txt
-diff --git a/Documentation/riscv/index.rst b/Documentation/arch/riscv/index.rst
-similarity index 100%
-rename from Documentation/riscv/index.rst
-rename to Documentation/arch/riscv/index.rst
-diff --git a/Documentation/riscv/pmu.rst b/Documentation/arch/riscv/pmu.rst
-similarity index 100%
-rename from Documentation/riscv/pmu.rst
-rename to Documentation/arch/riscv/pmu.rst
-diff --git a/Documentation/s390/3270.ChangeLog b/Documentation/arch/s390/3270.ChangeLog
-similarity index 100%
-rename from Documentation/s390/3270.ChangeLog
-rename to Documentation/arch/s390/3270.ChangeLog
-diff --git a/Documentation/s390/3270.rst b/Documentation/arch/s390/3270.rst
-similarity index 100%
-rename from Documentation/s390/3270.rst
-rename to Documentation/arch/s390/3270.rst
-diff --git a/Documentation/s390/cds.rst b/Documentation/arch/s390/cds.rst
-similarity index 100%
-rename from Documentation/s390/cds.rst
-rename to Documentation/arch/s390/cds.rst
-diff --git a/Documentation/s390/common_io.rst b/Documentation/arch/s390/common_io.rst
-similarity index 100%
-rename from Documentation/s390/common_io.rst
-rename to Documentation/arch/s390/common_io.rst
-diff --git a/Documentation/s390/config3270.sh b/Documentation/arch/s390/config3270.sh
-similarity index 100%
-rename from Documentation/s390/config3270.sh
-rename to Documentation/arch/s390/config3270.sh
-diff --git a/Documentation/s390/dasd.rst b/Documentation/arch/s390/dasd.rst
-similarity index 100%
-rename from Documentation/s390/dasd.rst
-rename to Documentation/arch/s390/dasd.rst
-diff --git a/Documentation/s390/debugging390.rst b/Documentation/arch/s390/debugging390.rst
-similarity index 100%
-rename from Documentation/s390/debugging390.rst
-rename to Documentation/arch/s390/debugging390.rst
-diff --git a/Documentation/s390/driver-model.rst b/Documentation/arch/s390/driver-model.rst
-similarity index 100%
-rename from Documentation/s390/driver-model.rst
-rename to Documentation/arch/s390/driver-model.rst
-diff --git a/Documentation/s390/index.rst b/Documentation/arch/s390/index.rst
-similarity index 100%
-rename from Documentation/s390/index.rst
-rename to Documentation/arch/s390/index.rst
-diff --git a/Documentation/s390/monreader.rst b/Documentation/arch/s390/monreader.rst
-similarity index 100%
-rename from Documentation/s390/monreader.rst
-rename to Documentation/arch/s390/monreader.rst
-diff --git a/Documentation/s390/qeth.rst b/Documentation/arch/s390/qeth.rst
-similarity index 100%
-rename from Documentation/s390/qeth.rst
-rename to Documentation/arch/s390/qeth.rst
-diff --git a/Documentation/s390/s390dbf.rst b/Documentation/arch/s390/s390dbf.rst
-similarity index 100%
-rename from Documentation/s390/s390dbf.rst
-rename to Documentation/arch/s390/s390dbf.rst
-diff --git a/Documentation/s390/text_files.rst b/Documentation/arch/s390/text_files.rst
-similarity index 100%
-rename from Documentation/s390/text_files.rst
-rename to Documentation/arch/s390/text_files.rst
-diff --git a/Documentation/s390/vfio-ap.rst b/Documentation/arch/s390/vfio-ap.rst
-similarity index 100%
-rename from Documentation/s390/vfio-ap.rst
-rename to Documentation/arch/s390/vfio-ap.rst
-diff --git a/Documentation/s390/vfio-ccw.rst b/Documentation/arch/s390/vfio-ccw.rst
-similarity index 100%
-rename from Documentation/s390/vfio-ccw.rst
-rename to Documentation/arch/s390/vfio-ccw.rst
-diff --git a/Documentation/s390/zfcpdump.rst b/Documentation/arch/s390/zfcpdump.rst
-similarity index 100%
-rename from Documentation/s390/zfcpdump.rst
-rename to Documentation/arch/s390/zfcpdump.rst
-diff --git a/Documentation/sh/conf.py b/Documentation/arch/sh/conf.py
-similarity index 100%
-rename from Documentation/sh/conf.py
-rename to Documentation/arch/sh/conf.py
-diff --git a/Documentation/sh/index.rst b/Documentation/arch/sh/index.rst
-similarity index 100%
-rename from Documentation/sh/index.rst
-rename to Documentation/arch/sh/index.rst
-diff --git a/Documentation/sh/new-machine.txt b/Documentation/arch/sh/new-machine.txt
-similarity index 100%
-rename from Documentation/sh/new-machine.txt
-rename to Documentation/arch/sh/new-machine.txt
-diff --git a/Documentation/sh/register-banks.txt b/Documentation/arch/sh/register-banks.txt
-similarity index 100%
-rename from Documentation/sh/register-banks.txt
-rename to Documentation/arch/sh/register-banks.txt
-diff --git a/Documentation/sparc/adi.rst b/Documentation/arch/sparc/adi.rst
-similarity index 100%
-rename from Documentation/sparc/adi.rst
-rename to Documentation/arch/sparc/adi.rst
-diff --git a/Documentation/sparc/console.rst b/Documentation/arch/sparc/console.rst
-similarity index 100%
-rename from Documentation/sparc/console.rst
-rename to Documentation/arch/sparc/console.rst
-diff --git a/Documentation/sparc/index.rst b/Documentation/arch/sparc/index.rst
-similarity index 100%
-rename from Documentation/sparc/index.rst
-rename to Documentation/arch/sparc/index.rst
-diff --git a/Documentation/sparc/oradax/dax-hv-api.txt b/Documentation/arch/sparc/oradax/dax-hv-api.txt
-similarity index 100%
-rename from Documentation/sparc/oradax/dax-hv-api.txt
-rename to Documentation/arch/sparc/oradax/dax-hv-api.txt
-diff --git a/Documentation/sparc/oradax/oracle-dax.rst b/Documentation/arch/sparc/oradax/oracle-dax.rst
-similarity index 100%
-rename from Documentation/sparc/oradax/oracle-dax.rst
-rename to Documentation/arch/sparc/oradax/oracle-dax.rst
-diff --git a/Documentation/x86/amd-memory-encryption.rst b/Documentation/arch/x86/amd-memory-encryption.rst
-similarity index 100%
-rename from Documentation/x86/amd-memory-encryption.rst
-rename to Documentation/arch/x86/amd-memory-encryption.rst
-diff --git a/Documentation/x86/boot.rst b/Documentation/arch/x86/boot.rst
-similarity index 100%
-rename from Documentation/x86/boot.rst
-rename to Documentation/arch/x86/boot.rst
-diff --git a/Documentation/x86/conf.py b/Documentation/arch/x86/conf.py
-similarity index 100%
-rename from Documentation/x86/conf.py
-rename to Documentation/arch/x86/conf.py
-diff --git a/Documentation/x86/earlyprintk.rst b/Documentation/arch/x86/earlyprintk.rst
-similarity index 100%
-rename from Documentation/x86/earlyprintk.rst
-rename to Documentation/arch/x86/earlyprintk.rst
-diff --git a/Documentation/x86/entry_64.rst b/Documentation/arch/x86/entry_64.rst
-similarity index 100%
-rename from Documentation/x86/entry_64.rst
-rename to Documentation/arch/x86/entry_64.rst
-diff --git a/Documentation/x86/exception-tables.rst b/Documentation/arch/x86/exception-tables.rst
-similarity index 100%
-rename from Documentation/x86/exception-tables.rst
-rename to Documentation/arch/x86/exception-tables.rst
-diff --git a/Documentation/x86/i386/IO-APIC.rst b/Documentation/arch/x86/i386/IO-APIC.rst
-similarity index 100%
-rename from Documentation/x86/i386/IO-APIC.rst
-rename to Documentation/arch/x86/i386/IO-APIC.rst
-diff --git a/Documentation/x86/i386/index.rst b/Documentation/arch/x86/i386/index.rst
-similarity index 100%
-rename from Documentation/x86/i386/index.rst
-rename to Documentation/arch/x86/i386/index.rst
-diff --git a/Documentation/x86/index.rst b/Documentation/arch/x86/index.rst
-similarity index 100%
-rename from Documentation/x86/index.rst
-rename to Documentation/arch/x86/index.rst
-diff --git a/Documentation/x86/intel_mpx.rst b/Documentation/arch/x86/intel_mpx.rst
-similarity index 100%
-rename from Documentation/x86/intel_mpx.rst
-rename to Documentation/arch/x86/intel_mpx.rst
-diff --git a/Documentation/x86/kernel-stacks.rst b/Documentation/arch/x86/kernel-stacks.rst
-similarity index 100%
-rename from Documentation/x86/kernel-stacks.rst
-rename to Documentation/arch/x86/kernel-stacks.rst
-diff --git a/Documentation/x86/mds.rst b/Documentation/arch/x86/mds.rst
-similarity index 100%
-rename from Documentation/x86/mds.rst
-rename to Documentation/arch/x86/mds.rst
-diff --git a/Documentation/x86/microcode.rst b/Documentation/arch/x86/microcode.rst
-similarity index 100%
-rename from Documentation/x86/microcode.rst
-rename to Documentation/arch/x86/microcode.rst
-diff --git a/Documentation/x86/mtrr.rst b/Documentation/arch/x86/mtrr.rst
-similarity index 100%
-rename from Documentation/x86/mtrr.rst
-rename to Documentation/arch/x86/mtrr.rst
-diff --git a/Documentation/x86/orc-unwinder.rst b/Documentation/arch/x86/orc-unwinder.rst
-similarity index 100%
-rename from Documentation/x86/orc-unwinder.rst
-rename to Documentation/arch/x86/orc-unwinder.rst
-diff --git a/Documentation/x86/pat.rst b/Documentation/arch/x86/pat.rst
-similarity index 100%
-rename from Documentation/x86/pat.rst
-rename to Documentation/arch/x86/pat.rst
-diff --git a/Documentation/x86/pti.rst b/Documentation/arch/x86/pti.rst
-similarity index 100%
-rename from Documentation/x86/pti.rst
-rename to Documentation/arch/x86/pti.rst
-diff --git a/Documentation/x86/resctrl_ui.rst b/Documentation/arch/x86/resctrl_ui.rst
-similarity index 100%
-rename from Documentation/x86/resctrl_ui.rst
-rename to Documentation/arch/x86/resctrl_ui.rst
-diff --git a/Documentation/x86/tlb.rst b/Documentation/arch/x86/tlb.rst
-similarity index 100%
-rename from Documentation/x86/tlb.rst
-rename to Documentation/arch/x86/tlb.rst
-diff --git a/Documentation/x86/topology.rst b/Documentation/arch/x86/topology.rst
-similarity index 100%
-rename from Documentation/x86/topology.rst
-rename to Documentation/arch/x86/topology.rst
-diff --git a/Documentation/x86/usb-legacy-support.rst b/Documentation/arch/x86/usb-legacy-support.rst
-similarity index 100%
-rename from Documentation/x86/usb-legacy-support.rst
-rename to Documentation/arch/x86/usb-legacy-support.rst
-diff --git a/Documentation/x86/x86_64/5level-paging.rst b/Documentation/arch/x86/x86_64/5level-paging.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/5level-paging.rst
-rename to Documentation/arch/x86/x86_64/5level-paging.rst
-diff --git a/Documentation/x86/x86_64/boot-options.rst b/Documentation/arch/x86/x86_64/boot-options.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/boot-options.rst
-rename to Documentation/arch/x86/x86_64/boot-options.rst
-diff --git a/Documentation/x86/x86_64/cpu-hotplug-spec.rst b/Documentation/arch/x86/x86_64/cpu-hotplug-spec.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/cpu-hotplug-spec.rst
-rename to Documentation/arch/x86/x86_64/cpu-hotplug-spec.rst
-diff --git a/Documentation/x86/x86_64/fake-numa-for-cpusets.rst b/Documentation/arch/x86/x86_64/fake-numa-for-cpusets.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/fake-numa-for-cpusets.rst
-rename to Documentation/arch/x86/x86_64/fake-numa-for-cpusets.rst
-diff --git a/Documentation/x86/x86_64/index.rst b/Documentation/arch/x86/x86_64/index.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/index.rst
-rename to Documentation/arch/x86/x86_64/index.rst
-diff --git a/Documentation/x86/x86_64/machinecheck.rst b/Documentation/arch/x86/x86_64/machinecheck.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/machinecheck.rst
-rename to Documentation/arch/x86/x86_64/machinecheck.rst
-diff --git a/Documentation/x86/x86_64/mm.rst b/Documentation/arch/x86/x86_64/mm.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/mm.rst
-rename to Documentation/arch/x86/x86_64/mm.rst
-diff --git a/Documentation/x86/x86_64/uefi.rst b/Documentation/arch/x86/x86_64/uefi.rst
-similarity index 100%
-rename from Documentation/x86/x86_64/uefi.rst
-rename to Documentation/arch/x86/x86_64/uefi.rst
-diff --git a/Documentation/x86/zero-page.rst b/Documentation/arch/x86/zero-page.rst
-similarity index 100%
-rename from Documentation/x86/zero-page.rst
-rename to Documentation/arch/x86/zero-page.rst
-diff --git a/Documentation/xtensa/atomctl.txt b/Documentation/arch/xtensa/atomctl.txt
-similarity index 100%
-rename from Documentation/xtensa/atomctl.txt
-rename to Documentation/arch/xtensa/atomctl.txt
-diff --git a/Documentation/xtensa/booting.txt b/Documentation/arch/xtensa/booting.txt
-similarity index 100%
-rename from Documentation/xtensa/booting.txt
-rename to Documentation/arch/xtensa/booting.txt
-diff --git a/Documentation/xtensa/mmu.txt b/Documentation/arch/xtensa/mmu.txt
-similarity index 100%
-rename from Documentation/xtensa/mmu.txt
-rename to Documentation/arch/xtensa/mmu.txt
--- 
-2.19.1.856.g8858448bb
-
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+U2luY2Ugd2UgbW92ZSAnYXJtL2FybTY0JyBkb2NzIHRvIERvY3VtZW50YXRpb24vYXJjaC97YXJt
+LGFybTY0fSBkaXIsCnJlZGlyZWN0IHRoZSBkb2MgcG9pbnRlciB0byB0aGVtLgoKU2lnbmVkLW9m
+Zi1ieTogQWxleCBTaGkgPGFsZXguc2hpQGxpbnV4LmFsaWJhYmEuY29tPgpDYzogSm9uYXRoYW4g
+Q29yYmV0IDxjb3JiZXRAbHduLm5ldD4KQ2M6IEt1a2ppbiBLaW0gPGtnZW5lQGtlcm5lbC5vcmc+
+CkNjOiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+CkNjOiBsaW51eC1kb2NA
+dmdlci5rZXJuZWwub3JnCkNjOiBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnCkNjOiBsaW51
+eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXNhbXN1bmctc29jQHZn
+ZXIua2VybmVsLm9yZwpDYzogbGludXgtY3J5cHRvQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgt
+aW5wdXRAdmdlci5rZXJuZWwub3JnCkNjOiBsaW51eC1zZXJpYWxAdmdlci5rZXJuZWwub3JnCi0t
+LQogRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nLVMzQzI0WFgvR1BJTy50eHQgICAgfCAg
+MiArLQogLi4uL2FyY2gvYXJtL1NhbXN1bmctUzNDMjRYWC9PdmVydmlldy50eHQgICAgICAgICAg
+fCAgNiArKystLS0KIERvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy9HUElPLnR4dCAgICAg
+ICAgICAgIHwgIDIgKy0KIERvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy9PdmVydmlldy50
+eHQgICAgICAgIHwgIDQgKystLQogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Fy
+bS94ZW4udHh0ICAgICAgfCAgMiArLQogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jvb3Rpbmct
+d2l0aG91dC1vZi50eHQgICAgfCAgNCArKy0tCiBEb2N1bWVudGF0aW9uL3RyYW5zbGF0aW9ucy96
+aF9DTi9hcm0vQm9vdGluZyAgICAgICB8ICA0ICsrLS0KIC4uLi90cmFuc2xhdGlvbnMvemhfQ04v
+YXJtL2tlcm5lbF91c2VyX2hlbHBlcnMudHh0IHwgIDQgKystLQogTUFJTlRBSU5FUlMgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgNiArKystLS0KIGFyY2gvYXJtL0tj
+b25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJt
+L2NvbW1vbi9tY3BtX2VudHJ5LmMgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gv
+YXJtL2NvbW1vbi9tY3BtX2hlYWQuUyAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFy
+Y2gvYXJtL2NvbW1vbi92bG9jay5TICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0K
+IGFyY2gvYXJtL2luY2x1ZGUvYXNtL3NldHVwLmggICAgICAgICAgICAgICAgICAgICAgIHwgIDIg
+Ky0KIGFyY2gvYXJtL2luY2x1ZGUvdWFwaS9hc20vc2V0dXAuaCAgICAgICAgICAgICAgICAgIHwg
+IDIgKy0KIGFyY2gvYXJtL2tlcm5lbC9lbnRyeS1hcm12LlMgICAgICAgICAgICAgICAgICAgICAg
+IHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtZXh5bm9zL2NvbW1vbi5oICAgICAgICAgICAgICAgICAg
+ICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtaXhwNHh4L0tjb25maWcgICAgICAgICAgICAgICAg
+ICAgICAgIHwgMTQgKysrKysrKy0tLS0tLS0KIGFyY2gvYXJtL21hY2gtczNjMjR4eC9wbS5jICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtc3RpL0tjb25maWcg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21tL0tjb25maWcgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDQgKystLQogYXJjaC9hcm0vcGxhdC1zYW1z
+dW5nL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgfCAgNiArKystLS0KIGFyY2gvYXJtL3Rv
+b2xzL21hY2gtdHlwZXMgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJt
+NjQvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gv
+YXJtNjQva2VybmVsL2t1c2VyMzIuUyAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFy
+Y2gvbWlwcy9ibWlwcy9zZXR1cC5jICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0K
+IGRyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNpcGhlci5jICAgICAgICAgIHwgIDIg
+Ky0KIGRyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNvcmUuYyAgICAgICAgICAgIHwg
+IDIgKy0KIGRyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWhhc2guYyAgICAgICAgICAg
+IHwgIDIgKy0KIGRyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLmggICAgICAgICAgICAg
+ICAgIHwgIDIgKy0KIGRyaXZlcnMvaW5wdXQvdG91Y2hzY3JlZW4vc3VuNGktdHMuYyAgICAgICAg
+ICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvdHR5L3NlcmlhbC9LY29uZmlnICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwgIDIgKy0KIDMyIGZpbGVzIGNoYW5nZWQsIDQ5IGluc2VydGlvbnMoKyksIDQ5
+IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3Vu
+Zy1TM0MyNFhYL0dQSU8udHh0IGIvRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nLVMzQzI0
+WFgvR1BJTy50eHQKaW5kZXggZThmOTE4Yjk2MTIzLi41NDJhOTVjZDgyZTcgMTAwNjQ0Ci0tLSBh
+L0RvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy1TM0MyNFhYL0dQSU8udHh0CisrKyBiL0Rv
+Y3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy1TM0MyNFhYL0dQSU8udHh0CkBAIC0xMiw3ICsx
+Miw3IEBAIEludHJvZHVjdGlvbgogICBvZiB0aGUgczNjMjQxMCBHUElPIHN5c3RlbSwgcGxlYXNl
+IHJlYWQgdGhlIFNhbXN1bmcgcHJvdmlkZWQKICAgZGF0YS1zaGVldC91c2VycyBtYW51YWwgdG8g
+ZmluZCBvdXQgdGhlIGNvbXBsZXRlIGxpc3QuCiAKLSAgU2VlIERvY3VtZW50YXRpb24vYXJtL1Nh
+bXN1bmcvR1BJTy50eHQgZm9yIHRoZSBjb3JlIGltcGxlbWVudGF0aW9uLgorICBTZWUgRG9jdW1l
+bnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL0dQSU8udHh0IGZvciB0aGUgY29yZSBpbXBsZW1lbnRh
+dGlvbi4KIAogCiBHUElPTElCCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2FyY2gvYXJtL1Nh
+bXN1bmctUzNDMjRYWC9PdmVydmlldy50eHQgYi9Eb2N1bWVudGF0aW9uL2FyY2gvYXJtL1NhbXN1
+bmctUzNDMjRYWC9PdmVydmlldy50eHQKaW5kZXggMDBkM2MzMTQxZTIxLi44ZDg0YTFjNjIxNmQg
+MTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy1TM0MyNFhYL092ZXJ2
+aWV3LnR4dAorKysgYi9Eb2N1bWVudGF0aW9uL2FyY2gvYXJtL1NhbXN1bmctUzNDMjRYWC9PdmVy
+dmlldy50eHQKQEAgLTE4Miw3ICsxODIsNyBAQCBOQU5ECiAgIGNvbnRyb2xsZXIuIElmIHRoZXJl
+IGFyZSBhbnkgcHJvYmxlbXMgdGhlIGxhdGVzdCBsaW51eC1tdGQKICAgY29kZSBjYW4gYmUgZm91
+bmQgZnJvbSBodHRwOi8vd3d3LmxpbnV4LW10ZC5pbmZyYWRlYWQub3JnLwogCi0gIEZvciBtb3Jl
+IGluZm9ybWF0aW9uIHNlZSBEb2N1bWVudGF0aW9uL2FybS9TYW1zdW5nLVMzQzI0WFgvTkFORC50
+eHQKKyAgRm9yIG1vcmUgaW5mb3JtYXRpb24gc2VlIERvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ft
+c3VuZy1TM0MyNFhYL05BTkQudHh0CiAKIAogU0QvTU1DCkBAIC0yMjEsOCArMjIxLDggQEAgR1BJ
+TwogICBBcyBvZiB2Mi42LjM0LCB0aGUgbW92ZSB0b3dhcmRzIHVzaW5nIGdwaW9saWIgc3VwcG9y
+dCBpcyBhbG1vc3QKICAgY29tcGxldGUsIGFuZCB2ZXJ5IGxpdHRsZSBvZiB0aGUgb2xkIGNhbGxz
+IGFyZSBsZWZ0LgogCi0gIFNlZSBEb2N1bWVudGF0aW9uL2FybS9TYW1zdW5nLVMzQzI0WFgvR1BJ
+Ty50eHQgZm9yIHRoZSBTM0MyNFhYIHNwZWNpZmljCi0gIHN1cHBvcnQgYW5kIERvY3VtZW50YXRp
+b24vYXJtL1NhbXN1bmcvR1BJTy50eHQgZm9yIHRoZSBjb3JlIFNhbXN1bmcKKyAgU2VlIERvY3Vt
+ZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy1TM0MyNFhYL0dQSU8udHh0IGZvciB0aGUgUzNDMjRY
+WCBzcGVjaWZpYworICBzdXBwb3J0IGFuZCBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL1NhbXN1bmcv
+R1BJTy50eHQgZm9yIHRoZSBjb3JlIFNhbXN1bmcKICAgaW1wbGVtZW50YXRpb24uCiAKIApkaWZm
+IC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL0dQSU8udHh0IGIvRG9jdW1l
+bnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL0dQSU8udHh0CmluZGV4IDc5NWFkZmQ4ODA4MS4uZTY5
+MzYwM2YzOGFmIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2FyY2gvYXJtL1NhbXN1bmcvR1BJ
+Ty50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL0dQSU8udHh0CkBAIC0x
+MSw3ICsxMSw3IEBAIHNwZWNpZmljIGNhbGxzIHByb3ZpZGVkIGFsb25nc2lkZSB0aGUgZHJpdmVy
+cy9ncGlvIGNvcmUuCiBTM0MyNFhYIChMZWdhY3kpCiAtLS0tLS0tLS0tLS0tLS0tCiAKLVNlZSBE
+b2N1bWVudGF0aW9uL2FybS9TYW1zdW5nLVMzQzI0WFgvR1BJTy50eHQgZm9yIG1vcmUgaW5mb3Jt
+YXRpb24KK1NlZSBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL1NhbXN1bmctUzNDMjRYWC9HUElPLnR4
+dCBmb3IgbW9yZSBpbmZvcm1hdGlvbgogYWJvdXQgdGhlc2UgZGV2aWNlcy4gVGhlaXIgaW1wbGVt
+ZW50YXRpb24gaGFzIGJlZW4gYnJvdWdodCBpbnRvIGxpbmUKIHdpdGggdGhlIGNvcmUgc2Ftc3Vu
+ZyBpbXBsZW1lbnRhdGlvbiBkZXNjcmliZWQgaW4gdGhpcyBkb2N1bWVudC4KIApkaWZmIC0tZ2l0
+IGEvRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL092ZXJ2aWV3LnR4dCBiL0RvY3VtZW50
+YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy9PdmVydmlldy50eHQKaW5kZXggOGY3MzA5YmFkNDYwLi45
+MzA5MTA1NGEyMTUgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vYXJjaC9hcm0vU2Ftc3VuZy9P
+dmVydmlldy50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL092ZXJ2aWV3
+LnR4dApAQCAtMTEsNyArMTEsNyBAQCBJbnRyb2R1Y3Rpb24KIAogICBUaGUgY3VycmVudGx5IHN1
+cHBvcnRlZCBTb0NzIGFyZToKIAotICAtIFMzQzI0WFg6IFNlZSBEb2N1bWVudGF0aW9uL2FybS9T
+YW1zdW5nLVMzQzI0WFgvT3ZlcnZpZXcudHh0IGZvciBmdWxsIGxpc3QKKyAgLSBTM0MyNFhYOiBT
+ZWUgRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nLVMzQzI0WFgvT3ZlcnZpZXcudHh0IGZv
+ciBmdWxsIGxpc3QKICAgLSBTM0M2NFhYOiBTM0M2NDAwIGFuZCBTM0M2NDEwCiAgIC0gUzVQQzEx
+MCAvIFM1UFYyMTAKIApAQCAtMjIsNyArMjIsNyBAQCBTM0MyNFhYIFN5c3RlbXMKICAgVGhlcmUg
+aXMgc3RpbGwgZG9jdW1lbnRhdGlvbiBpbiBEb2N1bW5ldGF0aW9uL2FybS9TYW1zdW5nLVMzQzI0
+WFgvIHdoaWNoCiAgIGRlYWxzIHdpdGggdGhlIGFyY2hpdGVjdHVyZSBhbmQgZHJpdmVycyBzcGVj
+aWZpYyB0byB0aGVzZSBkZXZpY2VzLgogCi0gIFNlZSBEb2N1bWVudGF0aW9uL2FybS9TYW1zdW5n
+LVMzQzI0WFgvT3ZlcnZpZXcudHh0IGZvciBtb3JlIGluZm9ybWF0aW9uCisgIFNlZSBEb2N1bWVu
+dGF0aW9uL2FyY2gvYXJtL1NhbXN1bmctUzNDMjRYWC9PdmVydmlldy50eHQgZm9yIG1vcmUgaW5m
+b3JtYXRpb24KICAgb24gdGhlIGltcGxlbWVudGF0aW9uIGRldGFpbHMgYW5kIHNwZWNpZmljIHN1
+cHBvcnQuCiAKIApkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2FybS94ZW4udHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS94ZW4u
+dHh0CmluZGV4IGM5YjkzMjE0MzRlYS4uMjUzM2NkNGY1ZDc5IDEwMDY0NAotLS0gYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3hlbi50eHQKKysrIGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS94ZW4udHh0CkBAIC01NCw3ICs1NCw3IEBAIGh5cGVy
+dmlzb3IgewogfTsKIAogVGhlIGZvcm1hdCBhbmQgbWVhbmluZyBvZiB0aGUgInhlbix1ZWZpLSoi
+IHBhcmFtZXRlcnMgYXJlIHNpbWlsYXIgdG8gdGhvc2UgaW4KLURvY3VtZW50YXRpb24vYXJtL3Vl
+ZmkudHh0LCB3aGljaCBhcmUgcHJvdmlkZWQgYnkgdGhlIHJlZ3VsYXIgVUVGSSBzdHViLiBIb3dl
+dmVyCitEb2N1bWVudGF0aW9uL2FyY2gvYXJtL3VlZmkudHh0LCB3aGljaCBhcmUgcHJvdmlkZWQg
+YnkgdGhlIHJlZ3VsYXIgVUVGSSBzdHViLiBIb3dldmVyCiB0aGV5IGRpZmZlciBiZWNhdXNlIHRo
+ZXkgYXJlIHByb3ZpZGVkIGJ5IHRoZSBYZW4gaHlwZXJ2aXNvciwgdG9nZXRoZXIgd2l0aCBhIHNl
+dAogb2YgVUVGSSBydW50aW1lIHNlcnZpY2VzIGltcGxlbWVudGVkIHZpYSBoeXBlcmNhbGxzLCBz
+ZWUKIGh0dHA6Ly94ZW5iaXRzLnhlbi5vcmcvZG9jcy91bnN0YWJsZS9oeXBlcmNhbGwveDg2XzY0
+L2luY2x1ZGUscHVibGljLHBsYXRmb3JtLmguaHRtbC4KZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9ib290aW5nLXdpdGhvdXQtb2YudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2Jvb3Rpbmctd2l0aG91dC1vZi50eHQKaW5kZXggNjBmODY0MGYyYjJmLi41OGQ2MDZm
+Y2E3ZWIgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9ib290aW5nLXdpdGhv
+dXQtb2YudHh0CisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9ib290aW5nLXdpdGhvdXQt
+b2YudHh0CkBAIC0xNjAsNyArMTYwLDcgQEAgaXQgd2l0aCBzcGVjaWFsIGNhc2VzLgogICAgb2Yg
+dGhlIGtlcm5lbCBpbWFnZS4gVGhhdCBlbnRyeSBwb2ludCBzdXBwb3J0cyB0d28gY2FsbGluZwog
+ICAgY29udmVudGlvbnMuICBBIHN1bW1hcnkgb2YgdGhlIGludGVyZmFjZSBpcyBkZXNjcmliZWQg
+aGVyZS4gIEEgZnVsbAogICAgZGVzY3JpcHRpb24gb2YgdGhlIGJvb3QgcmVxdWlyZW1lbnRzIGlz
+IGRvY3VtZW50ZWQgaW4KLSAgIERvY3VtZW50YXRpb24vYXJtL0Jvb3RpbmcKKyAgIERvY3VtZW50
+YXRpb24vYXJjaC9hcm0vQm9vdGluZwogCiAgICAgICAgIGEpIEFUQUdTIGludGVyZmFjZS4gIE1p
+bmltYWwgaW5mb3JtYXRpb24gaXMgcGFzc2VkIGZyb20gZmlybXdhcmUKICAgICAgICAgdG8gdGhl
+IGtlcm5lbCB3aXRoIGEgdGFnZ2VkIGxpc3Qgb2YgcHJlZGVmaW5lZCBwYXJhbWV0ZXJzLgpAQCAt
+MTc0LDcgKzE3NCw3IEBAIGl0IHdpdGggc3BlY2lhbCBjYXNlcy4KICAgICAgICAgYikgRW50cnkg
+d2l0aCBhIGZsYXR0ZW5lZCBkZXZpY2UtdHJlZSBibG9jay4gIEZpcm13YXJlIGxvYWRzIHRoZQog
+ICAgICAgICBwaHlzaWNhbCBhZGRyZXNzIG9mIHRoZSBmbGF0dGVuZWQgZGV2aWNlIHRyZWUgYmxv
+Y2sgKGR0YikgaW50byByMiwKICAgICAgICAgcjEgaXMgbm90IHVzZWQsIGJ1dCBpdCBpcyBjb25z
+aWRlcmVkIGdvb2QgcHJhY3RpY2UgdG8gdXNlIGEgdmFsaWQKLSAgICAgICAgbWFjaGluZSBudW1i
+ZXIgYXMgZGVzY3JpYmVkIGluIERvY3VtZW50YXRpb24vYXJtL0Jvb3RpbmcuCisJbWFjaGluZSBu
+dW1iZXIgYXMgZGVzY3JpYmVkIGluIERvY3VtZW50YXRpb24vYXJjaC9hcm0vQm9vdGluZy4KIAog
+ICAgICAgICAgICAgICAgIHIwIDogMAogCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3RyYW5z
+bGF0aW9ucy96aF9DTi9hcm0vQm9vdGluZyBiL0RvY3VtZW50YXRpb24vdHJhbnNsYXRpb25zL3po
+X0NOL2FybS9Cb290aW5nCmluZGV4IDFmZTg2NmY4MjE4Zi4uOGJjYWQyNTA5OWIzIDEwMDY0NAot
+LS0gYS9Eb2N1bWVudGF0aW9uL3RyYW5zbGF0aW9ucy96aF9DTi9hcm0vQm9vdGluZworKysgYi9E
+b2N1bWVudGF0aW9uL3RyYW5zbGF0aW9ucy96aF9DTi9hcm0vQm9vdGluZwpAQCAtMSw0ICsxLDQg
+QEAKLUNoaW5lc2UgdHJhbnNsYXRlZCB2ZXJzaW9uIG9mIERvY3VtZW50YXRpb24vYXJtL0Jvb3Rp
+bmcKK0NoaW5lc2UgdHJhbnNsYXRlZCB2ZXJzaW9uIG9mIERvY3VtZW50YXRpb24vYXJjaC9hcm0v
+Qm9vdGluZwogCiBJZiB5b3UgaGF2ZSBhbnkgY29tbWVudCBvciB1cGRhdGUgdG8gdGhlIGNvbnRl
+bnQsIHBsZWFzZSBjb250YWN0IHRoZQogb3JpZ2luYWwgZG9jdW1lbnQgbWFpbnRhaW5lciBkaXJl
+Y3RseS4gIEhvd2V2ZXIsIGlmIHlvdSBoYXZlIGEgcHJvYmxlbQpAQCAtOSw3ICs5LDcgQEAgb3Ig
+aWYgdGhlcmUgaXMgYSBwcm9ibGVtIHdpdGggdGhlIHRyYW5zbGF0aW9uLgogTWFpbnRhaW5lcjog
+UnVzc2VsbCBLaW5nIDxsaW51eEBhcm0ubGludXgub3JnLnVrPgogQ2hpbmVzZSBtYWludGFpbmVy
+OiBGdSBXZWkgPHRla2thbWFubmluamFAZ21haWwuY29tPgogLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCi1Eb2N1bWVu
+dGF0aW9uL2FybS9Cb290aW5nIOeahOS4reaWh+e/u+ivkQorRG9jdW1lbnRhdGlvbi9hcmNoL2Fy
+bS9Cb290aW5nIOeahOS4reaWh+e/u+ivkQogCiDlpoLmnpzmg7Por4TorrrmiJbmm7TmlrDmnKzm
+lofnmoTlhoXlrrnvvIzor7fnm7TmjqXogZTns7vljp/mlofmoaPnmoTnu7TmiqTogIXjgILlpoLm
+npzkvaDkvb/nlKjoi7HmlocKIOS6pOa1geacieWbsOmavueahOivne+8jOS5n+WPr+S7peWQkeS4
+reaWh+eJiOe7tOaKpOiAheaxguWKqeOAguWmguaenOacrOe/u+ivkeabtOaWsOS4jeWPiuaXtuaI
+luiAhee/uwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi90cmFuc2xhdGlvbnMvemhfQ04vYXJt
+L2tlcm5lbF91c2VyX2hlbHBlcnMudHh0IGIvRG9jdW1lbnRhdGlvbi90cmFuc2xhdGlvbnMvemhf
+Q04vYXJtL2tlcm5lbF91c2VyX2hlbHBlcnMudHh0CmluZGV4IGNkN2ZjOGYzNGNmOS4uZWQ3MDgz
+ZTdlNDNkIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL3RyYW5zbGF0aW9ucy96aF9DTi9hcm0v
+a2VybmVsX3VzZXJfaGVscGVycy50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi90cmFuc2xhdGlvbnMv
+emhfQ04vYXJtL2tlcm5lbF91c2VyX2hlbHBlcnMudHh0CkBAIC0xLDQgKzEsNCBAQAotQ2hpbmVz
+ZSB0cmFuc2xhdGVkIHZlcnNpb24gb2YgRG9jdW1lbnRhdGlvbi9hcm0va2VybmVsX3VzZXJfaGVs
+cGVycy50eHQKK0NoaW5lc2UgdHJhbnNsYXRlZCB2ZXJzaW9uIG9mIERvY3VtZW50YXRpb24vYXJj
+aC9hcm0va2VybmVsX3VzZXJfaGVscGVycy50eHQKIAogSWYgeW91IGhhdmUgYW55IGNvbW1lbnQg
+b3IgdXBkYXRlIHRvIHRoZSBjb250ZW50LCBwbGVhc2UgY29udGFjdCB0aGUKIG9yaWdpbmFsIGRv
+Y3VtZW50IG1haW50YWluZXIgZGlyZWN0bHkuICBIb3dldmVyLCBpZiB5b3UgaGF2ZSBhIHByb2Js
+ZW0KQEAgLTEwLDcgKzEwLDcgQEAgTWFpbnRhaW5lcjogTmljb2xhcyBQaXRyZSA8bmljb2xhcy5w
+aXRyZUBsaW5hcm8ub3JnPgogCQlEYXZlIE1hcnRpbiA8ZGF2ZS5tYXJ0aW5AbGluYXJvLm9yZz4K
+IENoaW5lc2UgbWFpbnRhaW5lcjogRnUgV2VpIDx0ZWtrYW1hbm5pbmphQGdtYWlsLmNvbT4KIC0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLQotRG9jdW1lbnRhdGlvbi9hcm0va2VybmVsX3VzZXJfaGVscGVycy50eHQg55qE
+5Lit5paH57+76K+RCitEb2N1bWVudGF0aW9uL2FyY2gvYXJtL2tlcm5lbF91c2VyX2hlbHBlcnMu
+dHh0IOeahOS4reaWh+e/u+ivkQogCiDlpoLmnpzmg7Por4TorrrmiJbmm7TmlrDmnKzmlofnmoTl
+hoXlrrnvvIzor7fnm7TmjqXogZTns7vljp/mlofmoaPnmoTnu7TmiqTogIXjgILlpoLmnpzkvaDk
+vb/nlKjoi7HmlocKIOS6pOa1geacieWbsOmavueahOivne+8jOS5n+WPr+S7peWQkeS4reaWh+eJ
+iOe7tOaKpOiAheaxguWKqeOAguWmguaenOacrOe/u+ivkeabtOaWsOS4jeWPiuaXtuaIluiAhee/
+uwpkaWZmIC0tZ2l0IGEvTUFJTlRBSU5FUlMgYi9NQUlOVEFJTkVSUwppbmRleCA0M2NhOTQ4NTY5
+NDQuLmMyMWQ1NDY0Yzg2ZiAxMDA2NDQKLS0tIGEvTUFJTlRBSU5FUlMKKysrIGIvTUFJTlRBSU5F
+UlMKQEAgLTIxOTIsNyArMjE5Miw3IEBAIEY6CWRyaXZlcnMvKi8qczNjNjR4eCoKIEY6CWRyaXZl
+cnMvKi8qczVwdjIxMCoKIEY6CWRyaXZlcnMvbWVtb3J5L3NhbXN1bmcvKgogRjoJZHJpdmVycy9z
+b2Mvc2Ftc3VuZy8qCi1GOglEb2N1bWVudGF0aW9uL2FybS9TYW1zdW5nLworRjoJRG9jdW1lbnRh
+dGlvbi9hcmNoL2FybS9TYW1zdW5nLwogRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL2FybS9zYW1zdW5nLwogRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Ny
+YW0vc2Ftc3VuZy1zcmFtLnR4dAogRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L3Bvd2VyL3BkLXNhbXN1bmcudHh0CkBAIC0yNTY5LDcgKzI1NjksNyBAQCBUOglnaXQgZ2l0Oi8v
+Z2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2FybTY0L2xpbnV4LmdpdAog
+UzoJTWFpbnRhaW5lZAogRjoJYXJjaC9hcm02NC8KIFg6CWFyY2gvYXJtNjQvYm9vdC9kdHMvCi1G
+OglEb2N1bWVudGF0aW9uL2FybTY0LworRjoJRG9jdW1lbnRhdGlvbi9hcmNoL2FybTY0LwogCiBB
+UzM2NDVBIExFRCBGTEFTSCBDT05UUk9MTEVSIERSSVZFUgogTToJU2FrYXJpIEFpbHVzIDxzYWth
+cmkuYWlsdXNAaWtpLmZpPgpAQCAtMTE0NzAsNyArMTE0NzAsNyBAQCBMOglsaW51eC1vbWFwQHZn
+ZXIua2VybmVsLm9yZwogTDoJbGludXgtZmJkZXZAdmdlci5rZXJuZWwub3JnCiBTOglPcnBoYW4K
+IEY6CWRyaXZlcnMvdmlkZW8vZmJkZXYvb21hcDIvCi1GOglEb2N1bWVudGF0aW9uL2FybS9PTUFQ
+L0RTUworRjoJRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9PTUFQL0RTUwogCiBPTUFQIEZSQU1FQlVG
+RkVSIFNVUFBPUlQKIEw6CWxpbnV4LWZiZGV2QHZnZXIua2VybmVsLm9yZwpkaWZmIC0tZ2l0IGEv
+YXJjaC9hcm0vS2NvbmZpZyBiL2FyY2gvYXJtL0tjb25maWcKaW5kZXggYWQwMGUxN2Q2OTg4Li4x
+YjI3NmRkYTgzN2QgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL0tjb25maWcKKysrIGIvYXJjaC9hcm0v
+S2NvbmZpZwpAQCAtMjE0Niw3ICsyMTQ2LDcgQEAgY29uZmlnIFZGUAogCSAgU2F5IFkgdG8gaW5j
+bHVkZSBWRlAgc3VwcG9ydCBjb2RlIGluIHRoZSBrZXJuZWwuIFRoaXMgaXMgbmVlZGVkCiAJICBp
+ZiB5b3VyIGhhcmR3YXJlIGluY2x1ZGVzIGEgVkZQIHVuaXQuCiAKLQkgIFBsZWFzZSBzZWUgPGZp
+bGU6RG9jdW1lbnRhdGlvbi9hcm0vVkZQL3JlbGVhc2Utbm90ZXMudHh0PiBmb3IKKwkgIFBsZWFz
+ZSBzZWUgPGZpbGU6RG9jdW1lbnRhdGlvbi9hcmNoL2FybS9WRlAvcmVsZWFzZS1ub3Rlcy50eHQ+
+IGZvcgogCSAgcmVsZWFzZSBub3RlcyBhbmQgYWRkaXRpb25hbCBzdGF0dXMgaW5mb3JtYXRpb24u
+CiAKIAkgIFNheSBOIGlmIHlvdXIgdGFyZ2V0IGRvZXMgbm90IGhhdmUgVkZQIGhhcmR3YXJlLgpk
+aWZmIC0tZ2l0IGEvYXJjaC9hcm0vY29tbW9uL21jcG1fZW50cnkuYyBiL2FyY2gvYXJtL2NvbW1v
+bi9tY3BtX2VudHJ5LmMKaW5kZXggZTI0YWQ2MDg5MWIyLi4wZWQ3ZDE5ZTBmYmUgMTAwNjQ0Ci0t
+LSBhL2FyY2gvYXJtL2NvbW1vbi9tY3BtX2VudHJ5LmMKKysrIGIvYXJjaC9hcm0vY29tbW9uL21j
+cG1fZW50cnkuYwpAQCAtMjEsNyArMjEsNyBAQAogLyoKICAqIFRoZSBwdWJsaWMgQVBJIGZvciB0
+aGlzIGNvZGUgaXMgZG9jdW1lbnRlZCBpbiBhcmNoL2FybS9pbmNsdWRlL2FzbS9tY3BtLmguCiAg
+KiBGb3IgYSBjb21wcmVoZW5zaXZlIGRlc2NyaXB0aW9uIG9mIHRoZSBtYWluIGFsZ29yaXRobSB1
+c2VkIGhlcmUsIHBsZWFzZQotICogc2VlIERvY3VtZW50YXRpb24vYXJtL2NsdXN0ZXItcG0tcmFj
+ZS1hdm9pZGFuY2UudHh0LgorICogc2VlIERvY3VtZW50YXRpb24vYXJjaC9hcm0vY2x1c3Rlci1w
+bS1yYWNlLWF2b2lkYW5jZS50eHQuCiAgKi8KIAogc3RydWN0IHN5bmNfc3RydWN0IG1jcG1fc3lu
+YzsKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2NvbW1vbi9tY3BtX2hlYWQuUyBiL2FyY2gvYXJtL2Nv
+bW1vbi9tY3BtX2hlYWQuUwppbmRleCBkNWJkNzVkZDU3NmQuLmM3MDcxMzE0YWQ3NiAxMDA2NDQK
+LS0tIGEvYXJjaC9hcm0vY29tbW9uL21jcG1faGVhZC5TCisrKyBiL2FyY2gvYXJtL2NvbW1vbi9t
+Y3BtX2hlYWQuUwpAQCAtNSw3ICs1LDcgQEAKICAqIENyZWF0ZWQgYnk6ICBOaWNvbGFzIFBpdHJl
+LCBNYXJjaCAyMDEyCiAgKiBDb3B5cmlnaHQ6ICAgKEMpIDIwMTItMjAxMyAgTGluYXJvIExpbWl0
+ZWQKICAqCi0gKiBSZWZlciB0byBEb2N1bWVudGF0aW9uL2FybS9jbHVzdGVyLXBtLXJhY2UtYXZv
+aWRhbmNlLnR4dAorICogUmVmZXIgdG8gRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9jbHVzdGVyLXBt
+LXJhY2UtYXZvaWRhbmNlLnR4dAogICogZm9yIGRldGFpbHMgb2YgdGhlIHN5bmNocm9uaXNhdGlv
+biBhbGdvcml0aG1zIHVzZWQgaGVyZS4KICAqLwogCmRpZmYgLS1naXQgYS9hcmNoL2FybS9jb21t
+b24vdmxvY2suUyBiL2FyY2gvYXJtL2NvbW1vbi92bG9jay5TCmluZGV4IDk2NzVjYzE1ZDBjNC4u
+Y2ZiNmRiMjA1M2Y3IDEwMDY0NAotLS0gYS9hcmNoL2FybS9jb21tb24vdmxvY2suUworKysgYi9h
+cmNoL2FybS9jb21tb24vdmxvY2suUwpAQCAtNiw3ICs2LDcgQEAKICAqIENvcHlyaWdodDoJKEMp
+IDIwMTItMjAxMyAgTGluYXJvIExpbWl0ZWQKICAqCiAgKiBUaGlzIGFsZ29yaXRobSBpcyBkZXNj
+cmliZWQgaW4gbW9yZSBkZXRhaWwgaW4KLSAqIERvY3VtZW50YXRpb24vYXJtL3Zsb2Nrcy50eHQu
+CisgKiBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL3Zsb2Nrcy50eHQuCiAgKi8KIAogI2luY2x1ZGUg
+PGxpbnV4L2xpbmthZ2UuaD4KZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2luY2x1ZGUvYXNtL3NldHVw
+LmggYi9hcmNoL2FybS9pbmNsdWRlL2FzbS9zZXR1cC5oCmluZGV4IDc3ZTU1ODJjMjI1OS4uNDgz
+ZjlmMjkxNzBhIDEwMDY0NAotLS0gYS9hcmNoL2FybS9pbmNsdWRlL2FzbS9zZXR1cC5oCisrKyBi
+L2FyY2gvYXJtL2luY2x1ZGUvYXNtL3NldHVwLmgKQEAgLTUsNyArNSw3IEBACiAgKiAgQ29weXJp
+Z2h0IChDKSAxOTk3LTE5OTkgUnVzc2VsbCBLaW5nCiAgKgogICogIFN0cnVjdHVyZSBwYXNzZWQg
+dG8ga2VybmVsIHRvIHRlbGwgaXQgYWJvdXQgdGhlCi0gKiAgaGFyZHdhcmUgaXQncyBydW5uaW5n
+IG9uLiAgU2VlIERvY3VtZW50YXRpb24vYXJtL1NldHVwCisgKiAgaGFyZHdhcmUgaXQncyBydW5u
+aW5nIG9uLiAgU2VlIERvY3VtZW50YXRpb24vYXJjaC9hcm0vU2V0dXAKICAqICBmb3IgbW9yZSBp
+bmZvLgogICovCiAjaWZuZGVmIF9fQVNNQVJNX1NFVFVQX0gKZGlmZiAtLWdpdCBhL2FyY2gvYXJt
+L2luY2x1ZGUvdWFwaS9hc20vc2V0dXAuaCBiL2FyY2gvYXJtL2luY2x1ZGUvdWFwaS9hc20vc2V0
+dXAuaAppbmRleCA2YjMzNWE5ZmY4YzguLjM2OTFhYzJhMDBiOSAxMDA2NDQKLS0tIGEvYXJjaC9h
+cm0vaW5jbHVkZS91YXBpL2FzbS9zZXR1cC5oCisrKyBiL2FyY2gvYXJtL2luY2x1ZGUvdWFwaS9h
+c20vc2V0dXAuaApAQCAtOSw3ICs5LDcgQEAKICAqIHB1Ymxpc2hlZCBieSB0aGUgRnJlZSBTb2Z0
+d2FyZSBGb3VuZGF0aW9uLgogICoKICAqICBTdHJ1Y3R1cmUgcGFzc2VkIHRvIGtlcm5lbCB0byB0
+ZWxsIGl0IGFib3V0IHRoZQotICogIGhhcmR3YXJlIGl0J3MgcnVubmluZyBvbi4gIFNlZSBEb2N1
+bWVudGF0aW9uL2FybS9TZXR1cAorICogIGhhcmR3YXJlIGl0J3MgcnVubmluZyBvbi4gIFNlZSBE
+b2N1bWVudGF0aW9uL2FyY2gvYXJtL1NldHVwCiAgKiAgZm9yIG1vcmUgaW5mby4KICAqLwogI2lm
+bmRlZiBfVUFQSV9fQVNNQVJNX1NFVFVQX0gKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2tlcm5lbC9l
+bnRyeS1hcm12LlMgYi9hcmNoL2FybS9rZXJuZWwvZW50cnktYXJtdi5TCmluZGV4IDBiOGNmZGQ2
+MGI5MC4uOTI5ZjYzMzI0MzhlIDEwMDY0NAotLS0gYS9hcmNoL2FybS9rZXJuZWwvZW50cnktYXJt
+di5TCisrKyBiL2FyY2gvYXJtL2tlcm5lbC9lbnRyeS1hcm12LlMKQEAgLTgyNiw3ICs4MjYsNyBA
+QCBFTkRQUk9DKF9fc3dpdGNoX3RvKQogICogZXhpc3Rpbmcgb25lcy4gIFRoaXMgbWVjaGFuaXNt
+IHNob3VsZCBiZSB1c2VkIG9ubHkgZm9yIHRoaW5ncyB0aGF0IGFyZQogICogcmVhbGx5IHNtYWxs
+IGFuZCBqdXN0aWZpZWQsIGFuZCBub3QgYmUgYWJ1c2VkIGZyZWVseS4KICAqCi0gKiBTZWUgRG9j
+dW1lbnRhdGlvbi9hcm0va2VybmVsX3VzZXJfaGVscGVycy50eHQgZm9yIGZvcm1hbCBkZWZpbml0
+aW9ucy4KKyAqIFNlZSBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL2tlcm5lbF91c2VyX2hlbHBlcnMu
+dHh0IGZvciBmb3JtYWwgZGVmaW5pdGlvbnMuCiAgKi8KICBUSFVNQigJLmFybQkpCiAKZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtL21hY2gtZXh5bm9zL2NvbW1vbi5oIGIvYXJjaC9hcm0vbWFjaC1leHlu
+b3MvY29tbW9uLmgKaW5kZXggYzkzMzU2YThkNjYyLi5jZDA4NzhjNTYxNGYgMTAwNjQ0Ci0tLSBh
+L2FyY2gvYXJtL21hY2gtZXh5bm9zL2NvbW1vbi5oCisrKyBiL2FyY2gvYXJtL21hY2gtZXh5bm9z
+L2NvbW1vbi5oCkBAIC0xMDYsNyArMTA2LDcgQEAgdm9pZCBleHlub3NfZmlybXdhcmVfaW5pdCh2
+b2lkKTsKICNkZWZpbmUgQzJfU1RBVEUJKDEgPDwgMykKIC8qCiAgKiBNYWdpYyB2YWx1ZXMgZm9y
+IGJvb3Rsb2FkZXIgaW5kaWNhdGluZyBjaG9zZW4gbG93IHBvd2VyIG1vZGUuCi0gKiBTZWUgYWxz
+byBEb2N1bWVudGF0aW9uL2FybS9TYW1zdW5nL0Jvb3Rsb2FkZXItaW50ZXJmYWNlLnR4dAorICog
+U2VlIGFsc28gRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nL0Jvb3Rsb2FkZXItaW50ZXJm
+YWNlLnR4dAogICovCiAjZGVmaW5lIEVYWU5PU19TTEVFUF9NQUdJQwkweDAwMDAwYmFkCiAjZGVm
+aW5lIEVYWU5PU19BRlRSX01BR0lDCTB4ZmNiYTBkMTAKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21h
+Y2gtaXhwNHh4L0tjb25maWcgYi9hcmNoL2FybS9tYWNoLWl4cDR4eC9LY29uZmlnCmluZGV4IGZj
+NTM3OGIwMGYzZC4uZGQ5YzgwMDlkZmZkIDEwMDY0NAotLS0gYS9hcmNoL2FybS9tYWNoLWl4cDR4
+eC9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtaXhwNHh4L0tjb25maWcKQEAgLTMzLDcgKzMz
+LDcgQEAgY29uZmlnIE1BQ0hfQVZJTEEKIAloZWxwCiAJICBTYXkgJ1knIGhlcmUgaWYgeW91IHdh
+bnQgeW91ciBrZXJuZWwgdG8gc3VwcG9ydCB0aGUgR2F0ZXdvcmtzCiAJICBBdmlsYSBOZXR3b3Jr
+IFBsYXRmb3JtLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiBvbiB0aGlzIHBsYXRmb3JtLAotCSAgc2Vl
+IDxmaWxlOkRvY3VtZW50YXRpb24vYXJtL0lYUDR4eD4uCisJICBzZWUgPGZpbGU6RG9jdW1lbnRh
+dGlvbi9hcmNoL2FybS9JWFA0eHg+LgogCiBjb25maWcgTUFDSF9MT0ZUCiAgICAgYm9vbCAiTG9m
+dCIKQEAgLTQ5LDcgKzQ5LDcgQEAgY29uZmlnIEFSQ0hfQURJX0NPWU9URQogCWhlbHAKIAkgIFNh
+eSAnWScgaGVyZSBpZiB5b3Ugd2FudCB5b3VyIGtlcm5lbCB0byBzdXBwb3J0IHRoZSBBREkgCiAJ
+ICBFbmdpbmVlcmluZyBDb3lvdGUgR2F0ZXdheSBSZWZlcmVuY2UgUGxhdGZvcm0uIEZvciBtb3Jl
+Ci0JICBpbmZvcm1hdGlvbiBvbiB0aGlzIHBsYXRmb3JtLCBzZWUgPGZpbGU6RG9jdW1lbnRhdGlv
+bi9hcm0vSVhQNHh4Pi4KKwkgIGluZm9ybWF0aW9uIG9uIHRoaXMgcGxhdGZvcm0sIHNlZSA8Zmls
+ZTpEb2N1bWVudGF0aW9uL2FyY2gvYXJtL0lYUDR4eD4uCiAKIGNvbmZpZyBNQUNIX0dBVEVXQVk3
+MDAxCiAJYm9vbCAiR2F0ZXdheSA3MDAxIgpAQCAtNzIsMjEgKzcyLDIxIEBAIGNvbmZpZyBBUkNI
+X0lYRFA0MjUKIAloZWxwCiAJICBTYXkgJ1knIGhlcmUgaWYgeW91IHdhbnQgeW91ciBrZXJuZWwg
+dG8gc3VwcG9ydCBJbnRlbCdzIAogCSAgSVhEUDQyNSBEZXZlbG9wbWVudCBQbGF0Zm9ybSAoQWxz
+byBrbm93biBhcyBSaWNoZmllbGQpLiAgCi0JICBGb3IgbW9yZSBpbmZvcm1hdGlvbiBvbiB0aGlz
+IHBsYXRmb3JtLCBzZWUgPGZpbGU6RG9jdW1lbnRhdGlvbi9hcm0vSVhQNHh4Pi4KKwkgIEZvciBt
+b3JlIGluZm9ybWF0aW9uIG9uIHRoaXMgcGxhdGZvcm0sIHNlZSA8ZmlsZTpEb2N1bWVudGF0aW9u
+L2FyY2gvYXJtL0lYUDR4eD4uCiAKIGNvbmZpZyBNQUNIX0lYRFBHNDI1CiAJYm9vbCAiSVhEUEc0
+MjUiCiAJaGVscAogCSAgU2F5ICdZJyBoZXJlIGlmIHlvdSB3YW50IHlvdXIga2VybmVsIHRvIHN1
+cHBvcnQgSW50ZWwncwogCSAgSVhEUEc0MjUgRGV2ZWxvcG1lbnQgUGxhdGZvcm0gKEFsc28ga25v
+d24gYXMgTW9udGFqYWRlKS4KLQkgIEZvciBtb3JlIGluZm9ybWF0aW9uIG9uIHRoaXMgcGxhdGZv
+cm0sIHNlZSA8ZmlsZTpEb2N1bWVudGF0aW9uL2FybS9JWFA0eHg+LgorCSAgRm9yIG1vcmUgaW5m
+b3JtYXRpb24gb24gdGhpcyBwbGF0Zm9ybSwgc2VlIDxmaWxlOkRvY3VtZW50YXRpb24vYXJjaC9h
+cm0vSVhQNHh4Pi4KIAogY29uZmlnIE1BQ0hfSVhEUDQ2NQogCWJvb2wgIklYRFA0NjUiCiAJaGVs
+cAogCSAgU2F5ICdZJyBoZXJlIGlmIHlvdSB3YW50IHlvdXIga2VybmVsIHRvIHN1cHBvcnQgSW50
+ZWwncwogCSAgSVhEUDQ2NSBEZXZlbG9wbWVudCBQbGF0Zm9ybSAoQWxzbyBrbm93biBhcyBCTVAp
+LgotCSAgRm9yIG1vcmUgaW5mb3JtYXRpb24gb24gdGhpcyBwbGF0Zm9ybSwgc2VlIDxmaWxlOkRv
+Y3VtZW50YXRpb24vYXJtL0lYUDR4eD4uCisJICBGb3IgbW9yZSBpbmZvcm1hdGlvbiBvbiB0aGlz
+IHBsYXRmb3JtLCBzZWUgPGZpbGU6RG9jdW1lbnRhdGlvbi9hcmNoL2FybS9JWFA0eHg+LgogCiBj
+b25maWcgTUFDSF9HT1JBTU9fTUxSCiAJYm9vbCAiR09SQU1PIE11bHRpIExpbmsgUm91dGVyIgpA
+QCAtOTksNyArOTksNyBAQCBjb25maWcgTUFDSF9LSVhSUDQzNQogCWhlbHAKIAkgIFNheSAnWScg
+aGVyZSBpZiB5b3Ugd2FudCB5b3VyIGtlcm5lbCB0byBzdXBwb3J0IEludGVsJ3MKIAkgIEtJWFJQ
+NDM1IFJlZmVyZW5jZSBQbGF0Zm9ybS4KLQkgIEZvciBtb3JlIGluZm9ybWF0aW9uIG9uIHRoaXMg
+cGxhdGZvcm0sIHNlZSA8ZmlsZTpEb2N1bWVudGF0aW9uL2FybS9JWFA0eHg+LgorCSAgRm9yIG1v
+cmUgaW5mb3JtYXRpb24gb24gdGhpcyBwbGF0Zm9ybSwgc2VlIDxmaWxlOkRvY3VtZW50YXRpb24v
+YXJjaC9hcm0vSVhQNHh4Pi4KIAogIwogIyBJWENEUDExMDAgaXMgdGhlIGV4YWN0IHNhbWUgSFcg
+YXMgSVhEUDQyNSwgYnV0IHdpdGggYSBkaWZmZXJlbnQgbWFjaGluZSAKQEAgLTExNiw3ICsxMTYs
+NyBAQCBjb25maWcgQVJDSF9QUlBNQzExMDAKIAloZWxwCiAJICBTYXkgJ1knIGhlcmUgaWYgeW91
+IHdhbnQgeW91ciBrZXJuZWwgdG8gc3VwcG9ydCB0aGUgTW90b3JvbGEKIAkgIFByUENNMTEwMCBQ
+cm9jZXNzb3IgTWV6YW5pbmUgTW9kdWxlLiBGb3IgbW9yZSBpbmZvcm1hdGlvbiBvbgotCSAgdGhp
+cyBwbGF0Zm9ybSwgc2VlIDxmaWxlOkRvY3VtZW50YXRpb24vYXJtL0lYUDR4eD4uCisJICB0aGlz
+IHBsYXRmb3JtLCBzZWUgPGZpbGU6RG9jdW1lbnRhdGlvbi9hcmNoL2FybS9JWFA0eHg+LgogCiBj
+b25maWcgTUFDSF9OQVMxMDBECiAJYm9vbApkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1zM2My
+NHh4L3BtLmMgYi9hcmNoL2FybS9tYWNoLXMzYzI0eHgvcG0uYwppbmRleCBhZGNiOTA2NDU0NjAu
+LmZmNjA1Yzc3Nzk3NiAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC1zM2MyNHh4L3BtLmMKKysr
+IGIvYXJjaC9hcm0vbWFjaC1zM2MyNHh4L3BtLmMKQEAgLTUsNyArNSw3IEBACiAvLwogLy8gUzND
+MjRYWCBQb3dlciBNYW5hZ2VyIChTdXNwZW5kLVRvLVJBTSkgc3VwcG9ydAogLy8KLS8vIFNlZSBE
+b2N1bWVudGF0aW9uL2FybS9TYW1zdW5nLVMzQzI0WFgvU3VzcGVuZC50eHQgZm9yIG1vcmUgaW5m
+b3JtYXRpb24KKy8vIFNlZSBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL1NhbXN1bmctUzNDMjRYWC9T
+dXNwZW5kLnR4dCBmb3IgbW9yZSBpbmZvcm1hdGlvbgogLy8KIC8vIFBhcnRzIGJhc2VkIG9uIGFy
+Y2gvYXJtL21hY2gtcHhhL3BtLmMKIC8vCmRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXN0aS9L
+Y29uZmlnIGIvYXJjaC9hcm0vbWFjaC1zdGkvS2NvbmZpZwppbmRleCBiMmQ0NWNmMTBhM2MuLmIz
+ODQyYzk3MWQzMSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC1zdGkvS2NvbmZpZworKysgYi9h
+cmNoL2FybS9tYWNoLXN0aS9LY29uZmlnCkBAIC0yMSw3ICsyMSw3IEBAIG1lbnVjb25maWcgQVJD
+SF9TVEkKIAloZWxwCiAJICBJbmNsdWRlIHN1cHBvcnQgZm9yIFNUTWljcm9lbGVjdHJvbmljcycg
+U1RpSDQxNS80MTYsIFNUaUg0MDcvMTAgYW5kCiAJICBTVGlINDE4IGZhbWlseSBTb0NzIHVzaW5n
+IHRoZSBEZXZpY2UgVHJlZSBmb3IgZGlzY292ZXJ5LiAgTW9yZQotCSAgaW5mb3JtYXRpb24gY2Fu
+IGJlIGZvdW5kIGluIERvY3VtZW50YXRpb24vYXJtL3N0aS8gYW5kCisJICBpbmZvcm1hdGlvbiBj
+YW4gYmUgZm91bmQgaW4gRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9zdGkvIGFuZAogCSAgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlLgogCiBpZiBBUkNIX1NUSQpkaWZmIC0tZ2l0IGEvYXJjaC9hcm0v
+bW0vS2NvbmZpZyBiL2FyY2gvYXJtL21tL0tjb25maWcKaW5kZXggY2M3OTgxMTVhYTliLi4zZWY4
+MmYyMjg5NDcgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21tL0tjb25maWcKKysrIGIvYXJjaC9hcm0v
+bW0vS2NvbmZpZwpAQCAtNzA5LDcgKzcwOSw3IEBAIGNvbmZpZyBBUk1fVklSVF9FWFQKIAkgIGFz
+c2lzdGFuY2UuCiAKIAkgIEEgY29tcGxpYW50IGJvb3Rsb2FkZXIgaXMgcmVxdWlyZWQgaW4gb3Jk
+ZXIgdG8gbWFrZSBtYXhpbXVtCi0JICB1c2Ugb2YgdGhpcyBmZWF0dXJlLiAgUmVmZXIgdG8gRG9j
+dW1lbnRhdGlvbi9hcm0vQm9vdGluZyBmb3IKKwkgIHVzZSBvZiB0aGlzIGZlYXR1cmUuICBSZWZl
+ciB0byBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL0Jvb3RpbmcgZm9yCiAJICBkZXRhaWxzLgogCiBj
+b25maWcgU1dQX0VNVUxBVEUKQEAgLTg3NSw3ICs4NzUsNyBAQCBjb25maWcgS1VTRVJfSEVMUEVS
+UwogCSAgdGhlIENQVSB0eXBlIGZpdHRlZCB0byB0aGUgc3lzdGVtLiAgVGhpcyBwZXJtaXRzIGJp
+bmFyaWVzIHRvIGJlCiAJICBydW4gb24gQVJNdjQgdGhyb3VnaCB0byBBUk12NyB3aXRob3V0IG1v
+ZGlmaWNhdGlvbi4KIAotCSAgU2VlIERvY3VtZW50YXRpb24vYXJtL2tlcm5lbF91c2VyX2hlbHBl
+cnMudHh0IGZvciBkZXRhaWxzLgorCSAgU2VlIERvY3VtZW50YXRpb24vYXJjaC9hcm0va2VybmVs
+X3VzZXJfaGVscGVycy50eHQgZm9yIGRldGFpbHMuCiAKIAkgIEhvd2V2ZXIsIHRoZSBmaXhlZCBh
+ZGRyZXNzIG5hdHVyZSBvZiB0aGVzZSBoZWxwZXJzIGNhbiBiZSB1c2VkCiAJICBieSBST1AgKHJl
+dHVybiBvcmllbnRhdGVkIHByb2dyYW1taW5nKSBhdXRob3JzIHdoZW4gY3JlYXRpbmcKZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtL3BsYXQtc2Ftc3VuZy9LY29uZmlnIGIvYXJjaC9hcm0vcGxhdC1zYW1z
+dW5nL0tjb25maWcKaW5kZXggNTNkYTU3ZmJhMzljLi4xN2IxOGYyZTRiODAgMTAwNjQ0Ci0tLSBh
+L2FyY2gvYXJtL3BsYXQtc2Ftc3VuZy9LY29uZmlnCisrKyBiL2FyY2gvYXJtL3BsYXQtc2Ftc3Vu
+Zy9LY29uZmlnCkBAIC0yNDMsNyArMjQzLDcgQEAgY29uZmlnIFNBTVNVTkdfUE1fREVCVUcKIAlk
+ZXBlbmRzIG9uIERFQlVHX0VYWU5PU19VQVJUIHx8IERFQlVHX1MzQzI0WFhfVUFSVCB8fCBERUJV
+R19TM0MyNDEwX1VBUlQKIAloZWxwCiAJICBTYXkgWSBoZXJlIGlmIHlvdSB3YW50IHZlcmJvc2Ug
+ZGVidWdnaW5nIGZyb20gdGhlIFBNIFN1c3BlbmQgYW5kCi0JICBSZXN1bWUgY29kZS4gU2VlIDxm
+aWxlOkRvY3VtZW50YXRpb24vYXJtL1NhbXN1bmctUzNDMjRYWC9TdXNwZW5kLnR4dD4KKwkgIFJl
+c3VtZSBjb2RlLiBTZWUgPGZpbGU6RG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nLVMzQzI0
+WFgvU3VzcGVuZC50eHQ+CiAJICBmb3IgbW9yZSBpbmZvcm1hdGlvbi4KIAogY29uZmlnIFMzQ19Q
+TV9ERUJVR19MRURfU01ESwpAQCAtMjY4LDcgKzI2OCw3IEBAIGNvbmZpZyBTQU1TVU5HX1BNX0NI
+RUNLCiAJICBOb3RlLCB0aGlzIGNhbiB0YWtlIHNldmVyYWwgc2Vjb25kcyBkZXBlbmRpbmcgb24g
+bWVtb3J5IHNpemUKIAkgIGFuZCBDUFUgc3BlZWQuCiAKLQkgIFNlZSA8ZmlsZTpEb2N1bWVudGF0
+aW9uL2FybS9TYW1zdW5nLVMzQzI0WFgvU3VzcGVuZC50eHQ+CisJICBTZWUgPGZpbGU6RG9jdW1l
+bnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nLVMzQzI0WFgvU3VzcGVuZC50eHQ+CiAKIGNvbmZpZyBT
+QU1TVU5HX1BNX0NIRUNLX0NIVU5LU0laRQogCWludCAiUzNDMjQxMCBQTSBTdXNwZW5kIENSQyBD
+aHVua3NpemUgKEtpQikiCkBAIC0yODAsNyArMjgwLDcgQEAgY29uZmlnIFNBTVNVTkdfUE1fQ0hF
+Q0tfQ0hVTktTSVpFCiAJICB0aGUgQ1JDIGRhdGEgYmxvY2sgd2lsbCB0YWtlIG1vcmUgbWVtb3J5
+LCBidXQgd2lsbCBpZGVudGlmeSBhbnkKIAkgIGZhdWx0cyB3aXRoIGJldHRlciBwcmVjaXNpb24u
+CiAKLQkgIFNlZSA8ZmlsZTpEb2N1bWVudGF0aW9uL2FybS9TYW1zdW5nLVMzQzI0WFgvU3VzcGVu
+ZC50eHQ+CisJICBTZWUgPGZpbGU6RG9jdW1lbnRhdGlvbi9hcmNoL2FybS9TYW1zdW5nLVMzQzI0
+WFgvU3VzcGVuZC50eHQ+CiAKIGNvbmZpZyBTQU1TVU5HX1dBS0VNQVNLCiAJYm9vbApkaWZmIC0t
+Z2l0IGEvYXJjaC9hcm0vdG9vbHMvbWFjaC10eXBlcyBiL2FyY2gvYXJtL3Rvb2xzL21hY2gtdHlw
+ZXMKaW5kZXggNGVhYzk0YzFlYjZmLi44NGYxOWUwYjEzNGIgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJt
+L3Rvb2xzL21hY2gtdHlwZXMKKysrIGIvYXJjaC9hcm0vdG9vbHMvbWFjaC10eXBlcwpAQCAtNyw3
+ICs3LDcgQEAKICMgICBodHRwOi8vd3d3LmFybS5saW51eC5vcmcudWsvZGV2ZWxvcGVyL21hY2hp
+bmVzL2Rvd25sb2FkLnBocAogIwogIyBQbGVhc2UgZG8gbm90IHNlbmQgcGF0Y2hlcyB0byB0aGlz
+IGZpbGU7IGl0IGlzIGF1dG9tYXRpY2FsbHkgZ2VuZXJhdGVkIQotIyBUbyBhZGQgYW4gZW50cnkg
+aW50byB0aGlzIGRhdGFiYXNlLCBwbGVhc2Ugc2VlIERvY3VtZW50YXRpb24vYXJtL1JFQURNRSwK
+KyMgVG8gYWRkIGFuIGVudHJ5IGludG8gdGhpcyBkYXRhYmFzZSwgcGxlYXNlIHNlZSBEb2N1bWVu
+dGF0aW9uL2FyY2gvYXJtL1JFQURNRSwKICMgb3IgdmlzaXQ6CiAjCiAjICAgaHR0cDovL3d3dy5h
+cm0ubGludXgub3JnLnVrL2RldmVsb3Blci9tYWNoaW5lcy8/YWN0aW9uPW5ldwpkaWZmIC0tZ2l0
+IGEvYXJjaC9hcm02NC9LY29uZmlnIGIvYXJjaC9hcm02NC9LY29uZmlnCmluZGV4IGMwODVhZWM5
+NDU5Yi4uNjhkM2EzYWYxMTJmIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L0tjb25maWcKKysrIGIv
+YXJjaC9hcm02NC9LY29uZmlnCkBAIC0xMTQ0LDcgKzExNDQsNyBAQCBjb25maWcgS1VTRVJfSEVM
+UEVSUwogCSAgdGhlIHN5c3RlbS4gVGhpcyBwZXJtaXRzIGJpbmFyaWVzIHRvIGJlIHJ1biBvbiBB
+Uk12NCB0aHJvdWdoCiAJICB0byBBUk12OCB3aXRob3V0IG1vZGlmaWNhdGlvbi4KIAotCSAgU2Vl
+IERvY3VtZW50YXRpb24vYXJtL2tlcm5lbF91c2VyX2hlbHBlcnMudHh0IGZvciBkZXRhaWxzLgor
+CSAgU2VlIERvY3VtZW50YXRpb24vYXJjaC9hcm0va2VybmVsX3VzZXJfaGVscGVycy50eHQgZm9y
+IGRldGFpbHMuCiAKIAkgIEhvd2V2ZXIsIHRoZSBmaXhlZCBhZGRyZXNzIG5hdHVyZSBvZiB0aGVz
+ZSBoZWxwZXJzIGNhbiBiZSB1c2VkCiAJICBieSBST1AgKHJldHVybiBvcmllbnRhdGVkIHByb2dy
+YW1taW5nKSBhdXRob3JzIHdoZW4gY3JlYXRpbmcKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQva2Vy
+bmVsL2t1c2VyMzIuUyBiL2FyY2gvYXJtNjQva2VybmVsL2t1c2VyMzIuUwppbmRleCA0OTgyNWU5
+ZTQyMWUuLmU4MjhhMTU3NzE2NiAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9rZXJuZWwva3VzZXIz
+Mi5TCisrKyBiL2FyY2gvYXJtNjQva2VybmVsL2t1c2VyMzIuUwpAQCAtMTAsNyArMTAsNyBAQAog
+ICogYWFyY2gzMl9zZXR1cF9hZGRpdGlvbmFsX3BhZ2VzKCkgYW5kIGFyZSBwcm92aWRlZCBmb3Ig
+Y29tcGF0aWJpbGl0eQogICogcmVhc29ucyB3aXRoIDMyIGJpdCAoYWFyY2gzMikgYXBwbGljYXRp
+b25zIHRoYXQgbmVlZCB0aGVtLgogICoKLSAqIFNlZSBEb2N1bWVudGF0aW9uL2FybS9rZXJuZWxf
+dXNlcl9oZWxwZXJzLnR4dCBmb3IgZm9ybWFsIGRlZmluaXRpb25zLgorICogU2VlIERvY3VtZW50
+YXRpb24vYXJjaC9hcm0va2VybmVsX3VzZXJfaGVscGVycy50eHQgZm9yIGZvcm1hbCBkZWZpbml0
+aW9ucy4KICAqLwogCiAjaW5jbHVkZSA8YXNtL3VuaXN0ZC5oPgpkaWZmIC0tZ2l0IGEvYXJjaC9t
+aXBzL2JtaXBzL3NldHVwLmMgYi9hcmNoL21pcHMvYm1pcHMvc2V0dXAuYwppbmRleCAxNzM4YTA2
+Mzk2ZjkuLmNmNmE1ZDUwY2YzNiAxMDA2NDQKLS0tIGEvYXJjaC9taXBzL2JtaXBzL3NldHVwLmMK
+KysrIGIvYXJjaC9taXBzL2JtaXBzL3NldHVwLmMKQEAgLTE2Miw3ICsxNjIsNyBAQCB2b2lkIF9f
+aW5pdCBwbGF0X21lbV9zZXR1cCh2b2lkKQogCWlvcG9ydF9yZXNvdXJjZS5zdGFydCA9IDA7CiAJ
+aW9wb3J0X3Jlc291cmNlLmVuZCA9IH4wOwogCi0JLyogaW50ZW5kZWQgdG8gc29tZXdoYXQgcmVz
+ZW1ibGUgQVJNOyBzZWUgRG9jdW1lbnRhdGlvbi9hcm0vQm9vdGluZyAqLworCS8qIGludGVuZGVk
+IHRvIHNvbWV3aGF0IHJlc2VtYmxlIEFSTTsgc2VlIERvY3VtZW50YXRpb24vYXJjaC9hcm0vQm9v
+dGluZyAqLwogCWlmIChmd19hcmcwID09IDAgJiYgZndfYXJnMSA9PSAweGZmZmZmZmZmKQogCQlk
+dGIgPSBwaHlzX3RvX3ZpcnQoZndfYXJnMik7CiAJZWxzZSBpZiAoZndfcGFzc2VkX2R0YikgLyog
+VUhJIGludGVyZmFjZSBvciBhcHBlbmRlZCBkdGIgKi8KZGlmZiAtLWdpdCBhL2RyaXZlcnMvY3J5
+cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNpcGhlci5jIGIvZHJpdmVycy9jcnlwdG8vc3VueGktc3Mv
+c3VuNGktc3MtY2lwaGVyLmMKaW5kZXggNGFiMTRkNThlODViLi4zMzNjMmM4M2Q1MmIgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNpcGhlci5jCisrKyBiL2Ry
+aXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNpcGhlci5jCkBAIC04LDcgKzgsNyBAQAog
+ICoga2V5c2l6ZSBpbiBDQkMgYW5kIEVDQiBtb2RlLgogICogQWRkIHN1cHBvcnQgYWxzbyBmb3Ig
+REVTIGFuZCAzREVTIGluIENCQyBhbmQgRUNCIG1vZGUuCiAgKgotICogWW91IGNvdWxkIGZpbmQg
+dGhlIGRhdGFzaGVldCBpbiBEb2N1bWVudGF0aW9uL2FybS9zdW54aS9SRUFETUUKKyAqIFlvdSBj
+b3VsZCBmaW5kIHRoZSBkYXRhc2hlZXQgaW4gRG9jdW1lbnRhdGlvbi9hcmNoL2FybS9zdW54aS9S
+RUFETUUKICAqLwogI2luY2x1ZGUgInN1bjRpLXNzLmgiCiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Y3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNvcmUuYyBiL2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNz
+L3N1bjRpLXNzLWNvcmUuYwppbmRleCBjZGNkYTdmMDU5YzguLmYwYWYxODQ3YjYzMiAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9jcnlwdG8vc3VueGktc3Mvc3VuNGktc3MtY29yZS5jCisrKyBiL2RyaXZl
+cnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWNvcmUuYwpAQCAtNiw3ICs2LDcgQEAKICAqCiAg
+KiBDb3JlIGZpbGUgd2hpY2ggcmVnaXN0ZXJzIGNyeXB0byBhbGdvcml0aG1zIHN1cHBvcnRlZCBi
+eSB0aGUgU1MuCiAgKgotICogWW91IGNvdWxkIGZpbmQgYSBsaW5rIGZvciB0aGUgZGF0YXNoZWV0
+IGluIERvY3VtZW50YXRpb24vYXJtL3N1bnhpL1JFQURNRQorICogWW91IGNvdWxkIGZpbmQgYSBs
+aW5rIGZvciB0aGUgZGF0YXNoZWV0IGluIERvY3VtZW50YXRpb24vYXJjaC9hcm0vc3VueGkvUkVB
+RE1FCiAgKi8KICNpbmNsdWRlIDxsaW51eC9jbGsuaD4KICNpbmNsdWRlIDxsaW51eC9jcnlwdG8u
+aD4KZGlmZiAtLWdpdCBhL2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWhhc2guYyBi
+L2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWhhc2guYwppbmRleCBkMmI2ZDg5YWFk
+MjguLjkzYzI0M2FhZjY2ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9jcnlwdG8vc3VueGktc3Mvc3Vu
+NGktc3MtaGFzaC5jCisrKyBiL2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLWhhc2gu
+YwpAQCAtNiw3ICs2LDcgQEAKICAqCiAgKiBUaGlzIGZpbGUgYWRkIHN1cHBvcnQgZm9yIE1ENSBh
+bmQgU0hBMS4KICAqCi0gKiBZb3UgY291bGQgZmluZCB0aGUgZGF0YXNoZWV0IGluIERvY3VtZW50
+YXRpb24vYXJtL3N1bnhpL1JFQURNRQorICogWW91IGNvdWxkIGZpbmQgdGhlIGRhdGFzaGVldCBp
+biBEb2N1bWVudGF0aW9uL2FyY2gvYXJtL3N1bnhpL1JFQURNRQogICovCiAjaW5jbHVkZSAic3Vu
+NGktc3MuaCIKICNpbmNsdWRlIDxsaW51eC9zY2F0dGVybGlzdC5oPgpkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9jcnlwdG8vc3VueGktc3Mvc3VuNGktc3MuaCBiL2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNz
+L3N1bjRpLXNzLmgKaW5kZXggNjhiODJkMWE2MzAzLi4wZmMwZjk1ODBkMGMgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvY3J5cHRvL3N1bnhpLXNzL3N1bjRpLXNzLmgKKysrIGIvZHJpdmVycy9jcnlwdG8v
+c3VueGktc3Mvc3VuNGktc3MuaApAQCAtOCw3ICs4LDcgQEAKICAqIFN1cHBvcnQgTUQ1IGFuZCBT
+SEExIGhhc2ggYWxnb3JpdGhtcy4KICAqIFN1cHBvcnQgREVTIGFuZCAzREVTCiAgKgotICogWW91
+IGNvdWxkIGZpbmQgdGhlIGRhdGFzaGVldCBpbiBEb2N1bWVudGF0aW9uL2FybS9zdW54aS9SRUFE
+TUUKKyAqIFlvdSBjb3VsZCBmaW5kIHRoZSBkYXRhc2hlZXQgaW4gRG9jdW1lbnRhdGlvbi9hcmNo
+L2FybS9zdW54aS9SRUFETUUKICAqLwogCiAjaW5jbHVkZSA8bGludXgvY2xrLmg+CmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2lucHV0L3RvdWNoc2NyZWVuL3N1bjRpLXRzLmMgYi9kcml2ZXJzL2lucHV0
+L3RvdWNoc2NyZWVuL3N1bjRpLXRzLmMKaW5kZXggOTJmNmUxYWUyM2EyLi4zYTAxNzY2YTI1OWIg
+MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvaW5wdXQvdG91Y2hzY3JlZW4vc3VuNGktdHMuYworKysgYi9k
+cml2ZXJzL2lucHV0L3RvdWNoc2NyZWVuL3N1bjRpLXRzLmMKQEAgLTIyLDcgKzIyLDcgQEAKICAq
+IGluIHRoZSBrZXJuZWwpLiBTbyB0aGlzIGRyaXZlciBvZmZlcnMgc3RyYWlnaHQgZm9yd2FyZCwg
+cmVsaWFibGUgc2luZ2xlCiAgKiB0b3VjaCBmdW5jdGlvbmFsaXR5IG9ubHkuCiAgKgotICogcy5h
+LiBBMjAgVXNlciBNYW51YWwgIjEuMTUgVFAiIChEb2N1bWVudGF0aW9uL2FybS9zdW54aS9SRUFE
+TUUpCisgKiBzLmEuIEEyMCBVc2VyIE1hbnVhbCAiMS4xNSBUUCIgKERvY3VtZW50YXRpb24vYXJj
+aC9hcm0vc3VueGkvUkVBRE1FKQogICogKGxvb2tzIGxpa2UgdGhlIGRlc2NyaXB0aW9uIGluIHRo
+ZSBBMjAgVXNlciBNYW51YWwgdjEuMyBpcyBiZXR0ZXIKICAqIHRoYW4gdGhlIG9uZSBpbiB0aGUg
+QTEwIFVzZXIgTWFudWFsIHYuMS41KQogICovCmRpZmYgLS1naXQgYS9kcml2ZXJzL3R0eS9zZXJp
+YWwvS2NvbmZpZyBiL2RyaXZlcnMvdHR5L3NlcmlhbC9LY29uZmlnCmluZGV4IDBkMzEyNTFlMDRj
+Yy4uZDYzNzZkMzgwNzlmIDEwMDY0NAotLS0gYS9kcml2ZXJzL3R0eS9zZXJpYWwvS2NvbmZpZwor
+KysgYi9kcml2ZXJzL3R0eS9zZXJpYWwvS2NvbmZpZwpAQCAtNTE0LDcgKzUxNCw3IEBAIGNvbmZp
+ZyBTRVJJQUxfU0ExMTAwCiAJaGVscAogCSAgSWYgeW91IGhhdmUgYSBtYWNoaW5lIGJhc2VkIG9u
+IGEgU0ExMTAwL1NBMTExMCBTdHJvbmdBUk0oUikgQ1BVIHlvdQogCSAgY2FuIGVuYWJsZSBpdHMg
+b25ib2FyZCBzZXJpYWwgcG9ydCBieSBlbmFibGluZyB0aGlzIG9wdGlvbi4KLQkgIFBsZWFzZSBy
+ZWFkIDxmaWxlOkRvY3VtZW50YXRpb24vYXJtL1NBMTEwMC9zZXJpYWxfVUFSVD4gZm9yIGZ1cnRo
+ZXIKKwkgIFBsZWFzZSByZWFkIDxmaWxlOkRvY3VtZW50YXRpb24vYXJjaC9hcm0vU0ExMTAwL3Nl
+cmlhbF9VQVJUPiBmb3IgZnVydGhlcgogCSAgaW5mby4KIAogY29uZmlnIFNFUklBTF9TQTExMDBf
+Q09OU09MRQotLSAKMi4xOS4xLjg1Ni5nODg1ODQ0OGJiCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4
+LXJpc2N2QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yaXNjdgo=
