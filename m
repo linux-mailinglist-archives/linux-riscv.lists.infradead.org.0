@@ -2,83 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C9E568834
-	for <lists+linux-riscv@lfdr.de>; Mon, 15 Jul 2019 13:31:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A7E1688E3
+	for <lists+linux-riscv@lfdr.de>; Mon, 15 Jul 2019 14:29:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4BoQpNRdGMS5udrEcRcnajHi3d2gmjdQ6syjBak74r4=; b=tqcIZF9pfPi+K1
-	IkMgQLYgHCu7pHKK796b386daW4WCEbXBeblzAdIx1psEG34gBnP8ZKeycGZ0mQHvdixNUVYbEFIr
-	MD2kmCpB2h2vns08Hx9Ep/ydc9gmXjQRFwchFVpHSr2nP/LMF1psptUP7G/xe9n/yNdP+XZQl++p1
-	rpL7cSd6D8ELlnoDr+TxW8Q8P5uxowARSeMgi2p4En5+tJMBX4FgUTPC541KJOshWe7mpZJsUWYDJ
-	YF6oelUFBOIlxEAaceFhPptXSqqZDvUVE0UHISPyAp+1/3NH5bj5ZKVqCX8x2FakuHA+PgG1UPUUF
-	yKBHmc6xEeasy064WgHw==;
+	List-Owner; bh=GBcUjI1VBmEVU96H6l502N9egGSj7kqTvHYO4j7NuoY=; b=fi645mKUUl1PRa
+	oPLRbm/zpAojfEPfYhKf1bt/1u7BTx3MUSj2PdVm2yOF6ioChpuAUvWsdOhVTkZnQpEJam7mmzbQh
+	UXsp+nK5k+O6g8ZBfkPUiAi6WkbOIfUHSzFFuWCthsO+JQPuMkCevub2a+0xwZfqTxGhqKGkOpWLv
+	wR/m9aVBBAKBRb+9Zd5s1KFxsrw9mirlKI+Pk+9DYwsShcP9JYSgXWm3isMSw8Hpz/lMl9XejOiwd
+	U/hGIkijU6uF5b9HHfRQvZ8WT3zjUPcMoVsWNsQ9vzGwMl1ngSqDwkxR00N6s6YC71CA3JSGvmyhd
+	zp0h4uwGZOYSP6NcVPjw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hmzCV-0002Bp-V2; Mon, 15 Jul 2019 11:31:23 +0000
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
+	id 1hn06s-0005lc-Le; Mon, 15 Jul 2019 12:29:38 +0000
+Received: from conssluserg-02.nifty.com ([210.131.2.81])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hmzCS-0002Ar-Eb
- for linux-riscv@lists.infradead.org; Mon, 15 Jul 2019 11:31:22 +0000
-Received: by mail-ua1-x943.google.com with SMTP id o2so6592131uae.10
- for <linux-riscv@lists.infradead.org>; Mon, 15 Jul 2019 04:31:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8XU8jKhBVJIGwCUR6YALgDf3CzV2y2cp7RAEeInAmf8=;
- b=IPuTYW4kgjiPJCyH1ulOxymE3bGfWfAPxbnGMMdbmXgssWbpw0MKDtY2U7jTXveIbD
- h3cxipr1WYPFB3gqwLBvVEUrIqUtwX4RHgnKJandIPsbDfadTa4jeydkybajjZ9r1i48
- F6jgvAAQGwrK5PsDDfGllISYJ+b1ElTIDkZKLYiTzA9iXle/autkWZ6fY/kbLzk89XgR
- rVrB7OmeRRk/T8akIfk+3Qu8D62jjB/4JOLLpsg5TfHVwoIRAJZxxtb5o7iF6n7EgWcf
- MXVqSD0AklbE3z/ZWXs+IAnGxZVTVLiazXoYHlCkK5qdTfSCPMqmtsxwXcY6RrIyEb0Z
- CiFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8XU8jKhBVJIGwCUR6YALgDf3CzV2y2cp7RAEeInAmf8=;
- b=dvHlX6dLJmER929qW4JbYulHmVyQof02XHL9bgx+L7cCzxtd2fUstVr5JReEl0vlJ+
- lwdRZ6FrY+9ZRCa/SdDTAzyMtWYh8/7/V+0MFrFNuubOfdtNkailSVswLmguNMrJPnns
- wnBYg6WT29VJSsJDFtvrxDOptJns6w2JvI8YDIDTOa18NqHXWaLu/oM1CqTTALaO6iWQ
- 2KdasGJaPUWDRsxRQkM3NZzqy7h5H1PR+tCsuLHcAhAGeAPXNH7r/IpF2rBNu0zuBIhm
- nQimxfJRObAkIJc+MDPcbP0hYrYD1/iAzJAfuQTCZGoRwn5sBjdbq7ILO6zGgxVsQiLZ
- eXgw==
-X-Gm-Message-State: APjAAAUOLOR6rPpqlN2mqxFSEp8oTXyMawpl4AwpxhxK2m3lMDUbWqkW
- RZYq+VqdyN/gDP5N4Qyvbppc+gq3OY2MEeWkRhX54w==
-X-Google-Smtp-Source: APXvYqz8kX/FHtA/R6g5rZlZruok/jN5jkOYLlQ0oreU3tYwXOubKKFkfzEoS8mZB9/JdupuUl3LMxao7rM9cewVF2I=
-X-Received: by 2002:ab0:30c7:: with SMTP id c7mr15963841uam.143.1563190278200; 
- Mon, 15 Jul 2019 04:31:18 -0700 (PDT)
+ id 1hn06o-0005kM-O4
+ for linux-riscv@lists.infradead.org; Mon, 15 Jul 2019 12:29:36 +0000
+Received: from mail-ua1-f54.google.com (mail-ua1-f54.google.com
+ [209.85.222.54]) (authenticated)
+ by conssluserg-02.nifty.com with ESMTP id x6FCT6eK018127
+ for <linux-riscv@lists.infradead.org>; Mon, 15 Jul 2019 21:29:07 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-02.nifty.com x6FCT6eK018127
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1563193747;
+ bh=yAufAdrjbVZeLo2XKE8YwT7x8b4qwlGxGHKZaKC8OiE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=epIJpluQMn/A5uXoItj+a9fCiitzzHgVapQnSQ6gXwMCNTUr6gLM4wYLAi6UDqz9v
+ DBqoYqnORzcTAvzrctniOj+rX4rK5gAs5njV3NOPo7xEBbJo9IwdolOvZF62FG1xH7
+ ocS8lNTxYbiZOPrcX0hL7SfezLKSHfU+1qQg1RQXhIkGDzTXI9T06SI7xYciSOfUlr
+ TE0YU7P4guaBMWWsOV7jUzQF83dfpXHQkLcEjVJ+UnhhUKoisHb7suMi8WyW3iD9D9
+ QQP7Lljui+D5R68E6Gusped9NvK8ObE72zgHjetsP40KfJKm81x0Pigc7hOtJU1pJc
+ T18TBJKP7taLg==
+X-Nifty-SrcIP: [209.85.222.54]
+Received: by mail-ua1-f54.google.com with SMTP id 8so6636371uaz.11
+ for <linux-riscv@lists.infradead.org>; Mon, 15 Jul 2019 05:29:07 -0700 (PDT)
+X-Gm-Message-State: APjAAAW5fNPLtTkXrPuHCB1m1GSk5s5vfRzS4QYrxsuXyRSZP8zLY4wP
+ 78Kcvz2p0vKg1/aZJyCsX/0W8AIaFwsKNVWBkYc=
+X-Google-Smtp-Source: APXvYqxzkyUT0iZjK1QVWY25ZVaKJaxxn64RERk2SmEwo7a1tSGZWRyJCpcrJqjGgLDWFGhIeN/hfzmCIPLb2QQGnI4=
+X-Received: by 2002:ab0:70d9:: with SMTP id r25mr400188ual.109.1563193746045; 
+ Mon, 15 Jul 2019 05:29:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <1562092745-11541-1-git-send-email-sagar.kadam@sifive.com>
- <CAARK3HkMz3AdcVyrteGmqczCaMDTYS1h9uALspm75RFE9c6jFQ@mail.gmail.com>
- <14025233-db7d-2307-5367-d41ed24f371d@microchip.com>
-In-Reply-To: <14025233-db7d-2307-5367-d41ed24f371d@microchip.com>
-From: Sagar Kadam <sagar.kadam@sifive.com>
-Date: Mon, 15 Jul 2019 17:01:06 +0530
-Message-ID: <CAARK3H=TJNABphR_WZEQ-6ZTkr4ugEJhyutdXE_JZiLS-EU67g@mail.gmail.com>
-Subject: Re: [PATCH v7 0/4] mtd: spi-nor: add support for is25wp256 spi-nor
- flash
-To: Tudor.Ambarus@microchip.com
+References: <1562664759-16009-1-git-send-email-info@metux.net>
+ <1562664759-16009-4-git-send-email-info@metux.net>
+In-Reply-To: <1562664759-16009-4-git-send-email-info@metux.net>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Date: Mon, 15 Jul 2019 21:28:30 +0900
+X-Gmail-Original-Message-ID: <CAK7LNAR1N-bwVWm0LXky2-d2GfvRuRrEWeo5CGm3Z2Lp_s0WEw@mail.gmail.com>
+Message-ID: <CAK7LNAR1N-bwVWm0LXky2-d2GfvRuRrEWeo5CGm3Z2Lp_s0WEw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] debian: add generic rule file
+To: "Enrico Weigelt, metux IT consult" <info@metux.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_043120_507563_246E82DB 
-X-CRM114-Status: GOOD (  12.10  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190715_052935_016661_97333BEC 
+X-CRM114-Status: GOOD (  17.22  )
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:943 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ no trust [210.131.2.81 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [210.131.2.81 listed in wl.mailspike.net]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -92,44 +84,114 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Vignesh Raghavendra <vigneshr@ti.com>,
- richard@nod.at, Palmer Dabbelt <palmer@sifive.com>,
+Cc: Michal Marek <michal.lkml@markovi.net>,
+ Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- marek.vasut@gmail.com, linux-mtd@lists.infradead.org,
- Paul Walmsley <paul.walmsley@sifive.com>, miquel.raynal@bootlin.com,
- linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
- dwmw2@infradead.org
+ Joe Perches <joe@perches.com>,
+ clang-built-linux <clang-built-linux@googlegroups.com>,
+ Robo Bot <apw@canonical.com>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Tudor,
+On Tue, Jul 9, 2019 at 6:33 PM Enrico Weigelt, metux IT consult
+<info@metux.net> wrote:
+>
+> Adding a generic debian rule file, so we can build the directly
+> via usual Debian package build tools (eg. git-buildpackage,
+> dck-buildpackage, etc). It expects the .config file already
+> placed in the source tree.
+>
+> The rule file contains a rule for creating debian/control and
+> other metadata - this is done similar to the 'deb-pkg' make rule,
+> scripts/packaging/mkdebian.
 
-On Mon, Jul 15, 2019 at 4:35 PM <Tudor.Ambarus@microchip.com> wrote:
->
->
->
-> On 07/15/2019 01:45 PM, Sagar Kadam wrote:
-> > Hi All,
-> >
-> > Any comments on this series?
-> >
->
-> Hi, Sagar,
->
-> I was OOO the last 2 weeks and previously I was busy with other spi-nor patches.
-> The series is in my queue, I'll review it. You can check the status of a mtd
-> patch by looking in https://patchwork.ozlabs.org/project/linux-mtd/list/
->
-> Cheers,
-> ta
+I saw a similar patch submission before, and negative feedback about it.
 
-Thank you for queuing it for review and sharing the link.
-I will follow-up on patchwork.
+Debian maintains its own debian/rules, and it is fine.
+I do not like to check-in the one in the kernel tree.
 
-BR,
-Sagar Kadam
+
+
+> Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+> ---
+>  .gitignore   |  1 +
+>  MAINTAINERS  |  6 ++++++
+>  debian/rules | 27 +++++++++++++++++++++++++++
+>  3 files changed, 34 insertions(+)
+>  create mode 100755 debian/rules
+>
+> diff --git a/.gitignore b/.gitignore
+> index 7587ef56..01d742c 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -69,6 +69,7 @@ modules.builtin
+>  # Debian directory (make deb-pkg)
+>  #
+>  /debian/
+> +!/debian/rules
+>
+>  #
+>  # Snap directory (make snap-pkg)
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 558acf2..56e034c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -4516,6 +4516,12 @@ F:       include/uapi/linux/dccp.h
+>  F:     include/linux/tfrc.h
+>  F:     net/dccp/
+>
+> +DEBIAN PACKAGING FILES
+> +M:     Enrico Weigelt <info@metux.net>
+> +L:     linux-kbuild@vger.kernel.org
+> +S:     Maintained
+> +F:     debian/
+> +
+>  DECnet NETWORK LAYER
+>  W:     http://linux-decnet.sourceforge.net
+>  L:     linux-decnet-user@lists.sourceforge.net
+> diff --git a/debian/rules b/debian/rules
+> new file mode 100755
+> index 0000000..c2f0319
+> --- /dev/null
+> +++ b/debian/rules
+> @@ -0,0 +1,27 @@
+> +#!/usr/bin/make -f
+> +# SPDX-License-Identifier: GPL-2.0
+> +
+> +export MAKE
+> +export KERNELARCH           = $(shell $(MAKE) kernelarch)
+> +export KERNELRELEASE        = $(shell $(MAKE) kernelrelease)
+> +export KBUILD_DEBARCH       = $(shell dpkg-architecture -qDEB_HOST_ARCH)
+> +export KBUILD_BUILD_VERSION = $(shell $(MAKE) kernellocalversion)
+> +export KDEB_RULES           = debian/rules.auto
+> +export KDEB_SOURCENAME      = linux-source
+> +export ARCH                 = $(KERNELARCH)
+> +
+> +debian/control debian/changelong debian/arch debian/copyright:
+> +debian/control:
+> +       ./scripts/package/mkdebian
+> +
+> +build: debian/control
+> +       $(MAKE) KERNELRELEASE=$(KERNELRELEASE) ARCH=$(KERNELARCH) KBUILD_BUILD_VERSION=$(KBUILD_BUILD_VERSION) KBUILD_SRC=
+> +
+> +binary-arch:   debian/control
+> +       $(MAKE) KERNELRELEASE=$(KERNELRELEASE) ARCH=$(KERNELARCH) KBUILD_BUILD_VERSION=$(KBUILD_BUILD_VERSION) KBUILD_SRC= intdeb-pkg
+> +
+> +clean:
+> +       rm -rf debian/*tmp debian/files debian/changelog debian/control debian/copyright debian/rules.auto debian/arch
+> +       $(MAKE) clean
+> +
+> +binary: binary-arch
+> --
+> 1.9.1
+>
+
+
+-- 
+Best Regards
+Masahiro Yamada
 
 _______________________________________________
 linux-riscv mailing list
