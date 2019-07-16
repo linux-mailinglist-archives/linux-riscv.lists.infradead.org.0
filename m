@@ -2,72 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 549246A8D0
-	for <lists+linux-riscv@lfdr.de>; Tue, 16 Jul 2019 14:35:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 050706AAEA
+	for <lists+linux-riscv@lfdr.de>; Tue, 16 Jul 2019 16:51:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E50UojnAIcVoCouWbsQ9bzeyB/Na3eQGZ1Syn03LN1c=; b=HB+H2dsqK5XbM1
-	MHW8/V/3SGDJmQbMQIFFcKpNfNSGiW/LqMCoeMSIdPQusGqy9vT8DjiBzbvrUrWG0UywIGGgvPfft
-	Vg7/dJzjXNk19669WW0V3qG3abJJIv/OqiTJ/kOZh2KjygvbjwIowhAXRePFU66Ck7WGy6v77u9XB
-	NdG5tngZdUks8VBagVctikpJ9dqqCSiLCPItKiByBgAPkmoT1QNKbqP6Gg47tSlA+B18un/V0ir68
-	hmJeIxJlLR45pae760J1JalwEb9thUzSphfM+nRXtnazfrgQCvZdT4GGhl2Pq1WZTTLiOZ8Nden49
-	oHQoG+OFA6ko1es4CfDg==;
+	List-Owner; bh=u5N2YGh8ChA+1wvR9vwdKFu/16ZLJHAQQdUqZub3EUU=; b=Kkmyk3BuxUtAaO
+	bqLWJ/0SDq9IzdCv/CUTkkBw6p0uJiUg4S63cNOPOx85vAdZ5H/f+abjuYQHQpGKPB4qltrqavsjg
+	+Z693IKprC3OSQJoa0w7/xqsRqv6hEq+LhnFMUoCu5fTpnegbvkY1NXlc6E/FGILE6eLZ0/oKyOyR
+	70f6+9g7KMgVQyvG0aCTW/fen+RPzd55cWEHSvwPiI4mEn0it2w4fsrNJMVXiSJ1+zQfm0kPUL4ov
+	Tmi1JIC7lWYIIJa0/DkHNnt3DtY/ebjo/3Ax5HVAuNe02hRklFqM+ZVIUGGJq499jGdXB+n5TMGmY
+	KYnU145rgz+BAuvUHscQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnMfN-0004a8-Nz; Tue, 16 Jul 2019 12:34:45 +0000
-Received: from outgoing-auth-1.mit.edu ([18.9.28.11] helo=outgoing.mit.edu)
+	id 1hnOnq-0001On-5c; Tue, 16 Jul 2019 14:51:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnMfI-0004ZV-FT
- for linux-riscv@lists.infradead.org; Tue, 16 Jul 2019 12:34:42 +0000
-Received: from callcc.thunk.org (guestnat-104-133-0-99.corp.google.com
- [104.133.0.99] (may be forged)) (authenticated bits=0)
- (User authenticated as tytso@ATHENA.MIT.EDU)
- by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id x6GCYWYd026006
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 16 Jul 2019 08:34:33 -0400
-Received: by callcc.thunk.org (Postfix, from userid 15806)
- id EBB74420054; Tue, 16 Jul 2019 08:34:31 -0400 (EDT)
-Date: Tue, 16 Jul 2019 08:34:31 -0400
-From: "Theodore Y. Ts'o" <tytso@mit.edu>
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 4/4] debian: add generic rule file
-Message-ID: <20190716123431.GB2999@mit.edu>
-Mail-Followup-To: "Theodore Y. Ts'o" <tytso@mit.edu>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- "Enrico Weigelt, metux IT consult" <lkml@metux.net>,
- "Enrico Weigelt, metux IT consult" <info@metux.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Michal Marek <michal.lkml@markovi.net>,
- Robo Bot <apw@canonical.com>, Joe Perches <joe@perches.com>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
- linux-riscv@lists.infradead.org,
- clang-built-linux <clang-built-linux@googlegroups.com>
-References: <1562664759-16009-1-git-send-email-info@metux.net>
- <1562664759-16009-4-git-send-email-info@metux.net>
- <CAK7LNAR1N-bwVWm0LXky2-d2GfvRuRrEWeo5CGm3Z2Lp_s0WEw@mail.gmail.com>
- <5af9db32-2cf5-10ba-261c-e08852d0814f@metux.net>
- <20190715191245.GD3068@mit.edu>
- <CAK7LNASps6JBAvtJshjMbqMk8QaSrMaH8pm-wHsEySTRJzu0Kw@mail.gmail.com>
+ id 1hnOnV-0000r5-Ss; Tue, 16 Jul 2019 14:51:19 +0000
+Received: from mail-oi1-f177.google.com (mail-oi1-f177.google.com
+ [209.85.167.177])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3E474217D9;
+ Tue, 16 Jul 2019 14:51:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1563288677;
+ bh=sonO2Wj/dB2WVkbnigGOIptZBiYzU9g2oAVvNNhm8N0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=cJpVGUzwvpQrBfw5VxnjM7fZDMqN8buukyY5uNJV0ilBSNzK8xmxbSP8KeFgOPVGk
+ CdhPYLcquPdpNPv9IfGMnbk93gK1YgS3rEW3NEieCmVZ/yyatbJnN9K/XZrO4tC0sv
+ vpJ81lt0Z15VjbKndmSpPGS7eGfx6pNckGHuM6H8=
+Received: by mail-oi1-f177.google.com with SMTP id v186so15770621oie.5;
+ Tue, 16 Jul 2019 07:51:17 -0700 (PDT)
+X-Gm-Message-State: APjAAAUJl55r17JvxzhZvYmAxeDrKfXajStTg9HH1bmY8UC+hEOs4Cr+
+ nlo/4frMW7LVg3pHwN9GWPkiLuS/kzn4JTZ/d5o=
+X-Google-Smtp-Source: APXvYqznotTEvyaymhJh/wAMu0w2H5gcuDv5j22SZvycyNMyxsk7XBmOnJ7QXnjodYkrV1FF1kduEHzUtbpafqpVCNU=
+X-Received: by 2002:aca:1b0c:: with SMTP id b12mr2605814oib.123.1563288676578; 
+ Tue, 16 Jul 2019 07:51:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAK7LNASps6JBAvtJshjMbqMk8QaSrMaH8pm-wHsEySTRJzu0Kw@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20190712022018.27989-1-alex.shi@linux.alibaba.com>
+ <20190712022018.27989-2-alex.shi@linux.alibaba.com>
+In-Reply-To: <20190712022018.27989-2-alex.shi@linux.alibaba.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Tue, 16 Jul 2019 16:51:05 +0200
+X-Gmail-Original-Message-ID: <CAJKOXPcnMM=h9-MW4qg4OTxaY5eBQ=4tH=Gbd3tSuckFvSOPcw@mail.gmail.com>
+Message-ID: <CAJKOXPcnMM=h9-MW4qg4OTxaY5eBQ=4tH=Gbd3tSuckFvSOPcw@mail.gmail.com>
+Subject: Re: [PATCH 02/12] Documentation/arm: repointer docs to
+ Documentation/arch/arm
+To: Alex Shi <alex.shi@linux.alibaba.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190716_053440_687813_81A87598 
-X-CRM114-Status: GOOD (  11.18  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190716_075117_953341_D5701120 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.7 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-2.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [18.9.28.11 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 2.5 SUSPICIOUS_RECIPS      Similar addresses in recipient list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,67 +86,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Michal Marek <michal.lkml@markovi.net>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Joe Perches <joe@perches.com>, "Enrico Weigelt,
- metux IT consult" <lkml@metux.net>,
- clang-built-linux <clang-built-linux@googlegroups.com>,
- Robo Bot <apw@canonical.com>, linux-riscv@lists.infradead.org, "Enrico Weigelt,
- metux IT consult" <info@metux.net>
+Cc: linux-s390@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ linux-ia64@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-parisc@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ linux-sh@vger.kernel.org, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
+ linux-serial@vger.kernel.org, Kukjin Kim <kgene@kernel.org>,
+ linux-crypto@vger.kernel.org, kvm@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-omap@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jul 16, 2019 at 05:58:49PM +0900, Masahiro Yamada wrote:
-> I want debian/ to be kept as a drop-in directory
-> for packagers, without replacing the upstream debian/rules.
-> 
-> If a check-in source file is modified in anyway,
-> scripts/setlocalversion would set -dirty flag,
-> which I want to avoid.
+On Fri, 12 Jul 2019 at 04:20, Alex Shi <alex.shi@linux.alibaba.com> wrote:
+>
+> Since we move 'arm/arm64' docs to Documentation/arch/{arm,arm64} dir,
+> redirect the doc pointer to them.
+>
+> Signed-off-by: Alex Shi <alex.shi@linux.alibaba.com>
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: linux-doc@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-samsung-soc@vger.kernel.org
+> Cc: linux-crypto@vger.kernel.org
+> Cc: linux-input@vger.kernel.org
+> Cc: linux-serial@vger.kernel.org
+> ---
+>  Documentation/arch/arm/Samsung-S3C24XX/GPIO.txt    |  2 +-
+>  .../arch/arm/Samsung-S3C24XX/Overview.txt          |  6 +++---
+>  Documentation/arch/arm/Samsung/GPIO.txt            |  2 +-
+>  Documentation/arch/arm/Samsung/Overview.txt        |  4 ++--
+>  Documentation/devicetree/bindings/arm/xen.txt      |  2 +-
+>  Documentation/devicetree/booting-without-of.txt    |  4 ++--
+>  Documentation/translations/zh_CN/arm/Booting       |  4 ++--
+>  .../translations/zh_CN/arm/kernel_user_helpers.txt |  4 ++--
+>  MAINTAINERS                                        |  6 +++---
 
-In practice, that's not going to be a problem for most distributions.
-The traditional way Debian-derived systems have done builds is
-completely outside of git.  So there will be a linux_5.2.orig.tar.gz
-and a linux_5.2-1.debian.tar.xz.  dpkg_source -x will first unpackage
-the orig.tar.gz, and then the debian.tar.xz, and if the second
-overwrites the first, it's no big deal.
+I assume it will go through doc tree, so for Samsung:
+Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-More modern Debian package maintainer workflows may be using git, but
-in that case, all of the "Debianizations" are reflected in a separate
-branch.  So it's not going to set the -dirty flag.
-
-There will be potential merge conflicts between Enrico's proposed
-"upstream default debian/rules" file and the Debian/Ubuntu
-debian/rules file on their distro branch.  However, I don't think
-that's a big issue, for two reasons.
-
-First, once it's checked in, I expect changes to the default
-debian/rules file will be relatively rare.  Secondly, it's easy enough
-to use gitattributes and defining a custom merge driver so that a
-distribution can configure things so that they always use the version
-of debian/rules from their branch, so the merge conflict resolution
-can be set up to always do the right thing.
-
-There are certainly other upstreams which ship their own debian/
-directories.  E2fsprogs is one such example, but in that case I'm
-cheating because I'm both the Debian package maintainer as well as the
-upstream maintainer.  :-)   However, it's never been an issue for Ubuntu
-when they choose to ship their own customized debian/rules file.
-
-> debian/rules is a hook for packagers to do their jobs in downstream.
-> "We kindly committed a generic one for you" sounds weird to me.
-
-It is weird, and it's not common for upstream packages (which are not
-native Debian packages) to ship their own debian directory.  But it
-certainly does happen, and it won't cause any problems in actual
-practice.
-
-Regards,
-
-					- Ted
+Best regards,
+Krzysztof
 
 _______________________________________________
 linux-riscv mailing list
