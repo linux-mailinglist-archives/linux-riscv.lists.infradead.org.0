@@ -2,82 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E19A96B2A5
-	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jul 2019 02:06:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47B5E6B8EA
+	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jul 2019 11:08:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yu+64EgKZ0xCuIpinW3vmYSFTjrSSIqr1lP8Zzm5t4I=; b=m+zCU/YHLD+gTS
-	CKsonkAJGk/1YAMNLoBdpnFP/eDqTWQQjnqBEUZsmG2xQGUBbuTpxJMyXD2pE88Skzm6xyWOwMLlZ
-	YCGiG/TBFll2cnQ5IVCotzHykJgaap4xgEpBF7LJZ3jik6JuEyOvZR8uFM2k+kOeVFMndV6IkdwJa
-	0thcBPbaHC0ypoQiEI1+C6MXrjl6dn9dnujFNq2iTUGrAVo5qd7VkcFy6GxmAdrpwjZpe3e70xFcY
-	8MPBncsx3XtSO2Ch+ym7u/E32KP0XCakUgbBIyCZwhkLGr41kcyjPvepHb4m0xb5kt+V/vF8KVKOB
-	sCGTTJfjhxxYweOLLPeQ==;
+	List-Owner; bh=ay8tWqkCx1LxcwoHbBsLUUtlF+qJaV95HLooC/mJIP4=; b=n3wcZNAr74kGs8
+	0sl7cbKOfVk1Rwjne7cH4jpWq99KpmM4lfd2gTH2cea34FN3CO6Ty1F/7L+1N3AgkyUzK63TLzJP+
+	WBZ9T9ZKXHlx7qkj4qKou7hXVJDWrA6C+3HbVTK53rNosMUAd66RMvIuArGqQwsgvD+UG9i5fGS6p
+	bhdrZs1yfMWTsCuXUG704QNize+pRGWKUeng8jreUPzBCT8FeiZ+Y5b1Mu6EFivsVedqR4STNY5zZ
+	Xor+30vr3WaY10A1kGux/zPWT2xj5ydX/T1/TNzuBoDlKDYDwfss2zlorn4Ei0HLU4UcFrO3mfgvT
+	0IqdzGEnBigD58zWbgZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnXSa-0006bj-8J; Wed, 17 Jul 2019 00:06:16 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1hnfv7-00076q-K5; Wed, 17 Jul 2019 09:08:17 +0000
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnXSU-0006bE-MY
- for linux-riscv@lists.infradead.org; Wed, 17 Jul 2019 00:06:12 +0000
-Received: by mail-lj1-x243.google.com with SMTP id h10so21755431ljg.0
- for <linux-riscv@lists.infradead.org>; Tue, 16 Jul 2019 17:06:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1hnfv1-00075X-Lp
+ for linux-riscv@lists.infradead.org; Wed, 17 Jul 2019 09:08:13 +0000
+Received: by mail-lf1-x143.google.com with SMTP id c9so15846217lfh.4
+ for <linux-riscv@lists.infradead.org>; Wed, 17 Jul 2019 02:08:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UWTBDLfiOb7SnMw+N5GrAnIvY64tlXzQQdEdF/klawQ=;
- b=Y4ryglVJki1UmhEc9yquaMBLVlfvGa8LpjpLNuH/Mo0i/2hfTSvRE3LciZGI1uwSNs
- dXK0SyNQYwrhrZQqhnNSluMsrCXDUr1aXp3fQM/devAD77pINnGDqh//AnQDCY9gdQU8
- aA+TmVOdclNE7j2lGm79SGVvaxQCAojvI2UNOQTlwlqkXPzoXXaLuxVrFBNJ12vh/IY2
- hZpNQ6ndyv1NvXDtf/x/ERy3Cu1X45OZ1fc7G9UUYZkRPFYQuDgWIsWd4p0SsTY5vJrh
- PvcL4jAlgJNtkfROgv9Ag5w0G7J5QI+J8n9wu5kSJBeLOlVR2BVR4L1KmUmieMMIqh1j
- rxdQ==
+ :cc; bh=k7UdXNTU/Lcm5T+73Mu9Lk3fJTqZdL2ygB2hxg/bvs0=;
+ b=ARPF8ysRS2qme660bnfPo9Sf6dUPUtYkSPR39gw+zuIoL7NZtNifRCF1SXDGFunevB
+ uB8IuWYM1iKac8uIBfwlUQMiC8nlsO8DxhVUztZfWDxGTVv0AP3VA2gNewP/19w1a1LW
+ +DLcKtE6254Ku0JHNY1kGsvrzSV9XAaFc8P93ruj/1XfqkiXTeiLARokVfXAhvHNhUAp
+ oU/deRwXfo0vLuXt+HfYNfQX609LSRr1XRlJKA2ojTpGANWQaz3QzdMP8uvHrMD7iW8j
+ FKIENDnCF1zDqRZvKhZ/RJljDTl2EmbDSDS67+xcSz06fthg9HXQPPGsqQ0bzxxY3PqD
+ Ki/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=UWTBDLfiOb7SnMw+N5GrAnIvY64tlXzQQdEdF/klawQ=;
- b=izqvuTcl/Nbrb3Vy6DwkUlcVbopUruIGSR34B09CW5WMGY0FsF7eTasTHNCf/+aeRo
- stG0NHIcDnI1Q3xSSm9yipoPNifNO7MeWRmGt/OAYiSlkgRo6b2UeDlLV562fQk7GciN
- 6kuBFrJJGLQRZK7sSfx3Lx/ErWYYVPv4zbbMMaedpNsSprnsc40t/F6/aHjLG3VLE6RW
- /X0kYk5kwblOxrEKKud4Q7XtGTyuM6WwJLuuZkBv/OkpJdHyxECdI3xyn3ojeSEwo71q
- OQV0B8DKwVqDdMDLX8Bt55hDavOxWME2Hruf7xvX0OXi1Snl6UYAKhYFUXy0tbWp2Ccv
- jusw==
-X-Gm-Message-State: APjAAAVhNMkoYBt1r1jUvoT+JopEIc4/Y+N93OCzCg3VD36uAMEGKOMr
- 3/ulnpWcniPFQ+8C2CeSSaIPax9rUHdUzYBW0Lc=
-X-Google-Smtp-Source: APXvYqxkBXVHeEGtHHCDP05ZT176lupNUH/6sG/syt+yImLexbxuHAheccjAZUPQY7Av1RxxLt7aWN/RqLZEeIJpXHQ=
-X-Received: by 2002:a2e:9158:: with SMTP id q24mr19318497ljg.119.1563321968194; 
- Tue, 16 Jul 2019 17:06:08 -0700 (PDT)
+ bh=k7UdXNTU/Lcm5T+73Mu9Lk3fJTqZdL2ygB2hxg/bvs0=;
+ b=qhAiijedVeqHzKAk2Z1hxXiu856O1ccoKUMHpG5ByAim8TABW5obEuylXlSGsiaRrC
+ bBFVVYew5VZNUkVdxLwLHYNONveWcRXtJbo2fbSFv27HTwQGRTNgV4KRv9VW8QJl7kNR
+ w21BEquk4iVqz5YsFwRkxMjFlmrC3HzqSi58HsZUCBMLNrGv2akAAHehtJ1pMzwRwWGJ
+ 4zI2acP6Ypo0xQE3GWMOvmgvT7fnKCG72zOiX2fgm3LtUloLO1ULRnyzvUudJwRLfeOs
+ ijzQTSwmw/DeQFHGJJp8RpmtC36vYyXlqfIthLXQylZG0YC58rYTKpFyDgHaL9za3sdb
+ mvUA==
+X-Gm-Message-State: APjAAAWzcl56LnyU7WMue0KNk4RPjip7bhKw/Dq3csm5UV1ELaI8x+ee
+ aaBg+rtoV4FnkBdKovTnOSVZkruhA+AiDX30nHM5yQ==
+X-Google-Smtp-Source: APXvYqyUa5Y6gp/AOOmOhWXG0woHIHFHQ/pw+MgFTpkHnca8dVBQpSXO7UwrMm763Jwm92ZWv/5Cb/402QneMPo+DUs=
+X-Received: by 2002:ac2:4644:: with SMTP id s4mr17067571lfo.158.1563354489475; 
+ Wed, 17 Jul 2019 02:08:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190703005202.7578-1-alistair.francis@wdc.com>
- <mvmk1czh9y6.fsf@suse.de>
- <CAKmqyKPn9GBg=n1j-ZpEdCN4Qfi5qfNtEVgpgF8rYRpof4eNDA@mail.gmail.com>
- <mvmpnmqfepx.fsf@suse.de>
- <CAK8P3a2NmdoHzFGKrzw4CBYDOBtZHDQCGsWE_L0UbG+w0bGWkA@mail.gmail.com>
-In-Reply-To: <CAK8P3a2NmdoHzFGKrzw4CBYDOBtZHDQCGsWE_L0UbG+w0bGWkA@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 16 Jul 2019 17:02:50 -0700
-Message-ID: <CAKmqyKPvqBZeL-R3no59XXieGo8qspoyEDYCWD3WR=ni-PRz3w@mail.gmail.com>
-Subject: Re: [PATCH RESEND 0/2] RISC-V: Handle the siginfo_t offset problem
-To: Arnd Bergmann <arnd@arndb.de>
+References: <1558611952-13295-1-git-send-email-yash.shah@sifive.com>
+ <1558611952-13295-2-git-send-email-yash.shah@sifive.com>
+ <CAL_Jsq+p5PnTDgxuh9_Aw1RvTk4aTYjKxyMq7DPczLzQVv8_ew@mail.gmail.com>
+ <b0c60ec9-2f57-c3f5-c3b4-ee83a5ec4c45@microchip.com>
+In-Reply-To: <b0c60ec9-2f57-c3f5-c3b4-ee83a5ec4c45@microchip.com>
+From: Yash Shah <yash.shah@sifive.com>
+Date: Wed, 17 Jul 2019 14:37:33 +0530
+Message-ID: <CAJ2_jOFEVZQat0Yprg4hem4jRrqkB72FKSeQj4p8P5KA-+rgww@mail.gmail.com>
+Subject: Re: [PATCH 1/2] net/macb: bindings doc: add sifive fu540-c000 binding
+To: Nicolas Ferre <Nicolas.Ferre@microchip.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190716_170610_766506_EC6C8616 
-X-CRM114-Status: GOOD (  20.65  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190717_020811_743941_151A7A58 
+X-CRM114-Status: GOOD (  21.30  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:243 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:143 listed in]
  [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (alistair23[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (alistair23[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -97,133 +92,98 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Andreas Schwab <schwab@suse.de>, linux-riscv@lists.infradead.org,
- Alistair Francis <alistair.francis@wdc.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, netdev <netdev@vger.kernel.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>, Rob Herring <robh+dt@kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ =?UTF-8?Q?Petr_=C5=A0tetiar?= <ynezz@true.cz>, linux-riscv@lists.infradead.org,
+ David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Jul 4, 2019 at 2:19 AM Arnd Bergmann <arnd@arndb.de> wrote:
+On Mon, Jun 24, 2019 at 9:08 PM <Nicolas.Ferre@microchip.com> wrote:
 >
-> On Thu, Jul 4, 2019 at 9:20 AM Andreas Schwab <schwab@suse.de> wrote:
+> On 23/05/2019 at 22:50, Rob Herring wrote:
+> > On Thu, May 23, 2019 at 6:46 AM Yash Shah <yash.shah@sifive.com> wrote:
+> >>
+> >> Add the compatibility string documentation for SiFive FU540-C0000
+> >> interface.
+> >> On the FU540, this driver also needs to read and write registers in a
+> >> management IP block that monitors or drives boundary signals for the
+> >> GEMGXL IP block that are not directly mapped to GEMGXL registers.
+> >> Therefore, add additional range to "reg" property for SiFive GEMGXL
+> >> management IP registers.
+> >>
+> >> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> >> ---
+> >>   Documentation/devicetree/bindings/net/macb.txt | 3 +++
+> >>   1 file changed, 3 insertions(+)
+> >>
+> >> diff --git a/Documentation/devicetree/bindings/net/macb.txt b/Documentation/devicetree/bindings/net/macb.txt
+> >> index 9c5e944..91a2a66 100644
+> >> --- a/Documentation/devicetree/bindings/net/macb.txt
+> >> +++ b/Documentation/devicetree/bindings/net/macb.txt
+> >> @@ -4,6 +4,7 @@ Required properties:
+> >>   - compatible: Should be "cdns,[<chip>-]{macb|gem}"
+> >>     Use "cdns,at91rm9200-emac" Atmel at91rm9200 SoC.
+> >>     Use "cdns,at91sam9260-macb" for Atmel at91sam9 SoCs.
+> >> +  Use "cdns,fu540-macb" for SiFive FU540-C000 SoC.
 > >
-> > On Jul 03 2019, Alistair Francis <alistair23@gmail.com> wrote:
+> > This pattern that Atmel started isn't really correct. The vendor
+> > prefix here should be sifive. 'cdns' would be appropriate for a
+> > fallback.
+>
+> Ok, we missed this for the sam9x60 SoC that we added recently then.
+>
+> Anyway a little too late, coming back to this machine, and talking to
+> Yash, isn't "sifive,fu540-c000-macb" more specific and a better match
+> for being future proof? I would advice for the most specific possible
+> with other compatible strings on the same line in the DT, like:
+>
+> "sifive,fu540-c000-macb", "sifive,fu540-macb"
+>
+
+Yes, I agree that "sifive,fu540-c000-macb" is a better match.
+
+> Moreover, is it really a "macb" or a "gem" type of interface from
+> Cadence? Not a big deal, but just to discuss the topic to the bone...
+
+I believe it should be "gem". I will plan to submit the patch for
+these changes. Thanks for pointing it out.
+
+- Yash
+
+>
+> Note that I'm fine if you consider that what you have in net-next new is
+> correct.
+>
+> Regards,
+>    Nicolas
+>
+> >>     Use "cdns,sam9x60-macb" for Microchip sam9x60 SoC.
+> >>     Use "cdns,np4-macb" for NP4 SoC devices.
+> >>     Use "cdns,at32ap7000-macb" for other 10/100 usage or use the generic form: "cdns,macb".
+> >> @@ -17,6 +18,8 @@ Required properties:
+> >>     Use "cdns,zynqmp-gem" for Zynq Ultrascale+ MPSoC.
+> >>     Or the generic form: "cdns,emac".
+> >>   - reg: Address and length of the register set for the device
+> >> +       For "cdns,fu540-macb", second range is required to specify the
+> >> +       address and length of the registers for GEMGXL Management block.
+> >>   - interrupts: Should contain macb interrupt
+> >>   - phy-mode: See ethernet.txt file in the same directory.
+> >>   - clock-names: Tuple listing input clock names.
+> >> --
+> >> 1.9.1
+> >>
 > >
-> > > On Wed, Jul 3, 2019 at 12:08 AM Andreas Schwab <schwab@suse.de> wrote:
-> > >>
-> > >> On Jul 02 2019, Alistair Francis <alistair.francis@wdc.com> wrote:
-> > >>
-> > >> > In the RISC-V 32-bit glibc port [1] the siginfo_t struct in the kernel
-> > >> > doesn't line up with the struct in glibc. In glibc world the _sifields
-> > >> > union is 8 byte alligned (although I can't figure out why)
-> > >>
-> > >> Try ptype/o in gdb.
-> > >
-> > > That's a useful tip, I'll be sure to use that next time.
-> >
-> > It was a serious note.  If the structs don't line up then there is a
-> > mismatch in types that cannot be solved by adding spurious padding.  You
-> > need to fix the types instead.
 >
-> Would it be an option to align all the basic typedefs (off_t, time_t,
-> clock_t, ...)
-> between glibc and kernel then, and just use the existing
-> sysdeps/unix/sysv/linux/generic/bits/typesizes.h after all to avoid
-> surprises like this?
 >
-> As of v2 the functional difference is
->
-> -#define __INO_T_TYPE        __ULONGWORD_TYPE
-> +#define __INO_T_TYPE    __UQUAD_TYPE
->  #define __INO64_T_TYPE        __UQUAD_TYPE
->  #define __MODE_T_TYPE        __U32_TYPE
-> -#define __NLINK_T_TYPE        __U32_TYPE
-> -#define __OFF_T_TYPE        __SLONGWORD_TYPE
-> +#define __NLINK_T_TYPE    __UQUAD_TYPE
-> +#define __OFF_T_TYPE    __SQUAD_TYPE
->  #define __OFF64_T_TYPE        __SQUAD_TYPE
-> -#define __RLIM_T_TYPE        __ULONGWORD_TYPE
-> +#define __RLIM_T_TYPE      __UQUAD_TYPE
->  #define __RLIM64_T_TYPE        __UQUAD_TYPE
-> -#define    __BLKCNT_T_TYPE        __SLONGWORD_TYPE
-> +#define __BLKCNT_T_TYPE    __SQUAD_TYPE
->  #define    __BLKCNT64_T_TYPE    __SQUAD_TYPE
-> -#define    __FSBLKCNT_T_TYPE    __ULONGWORD_TYPE
-> +#define __FSBLKCNT_T_TYPE  __UQUAD_TYPE
->  #define    __FSBLKCNT64_T_TYPE    __UQUAD_TYPE
-> -#define    __FSFILCNT_T_TYPE    __ULONGWORD_TYPE
-> +#define __FSFILCNT_T_TYPE  __UQUAD_TYPE
->  #define    __FSFILCNT64_T_TYPE    __UQUAD_TYPE
-> -#define    __FSWORD_T_TYPE        __SWORD_TYPE
-> +#define __FSWORD_T_TYPE   __SQUAD_TYPE
-> -#define __CLOCK_T_TYPE        __SLONGWORD_TYPE
-> -#define __TIME_T_TYPE        __SLONGWORD_TYPE
-> +#define __CLOCK_T_TYPE     __SQUAD_TYPE
-> +#define __TIME_T_TYPE      __SQUAD_TYPE
->  #define __USECONDS_T_TYPE    __U32_TYPE
-> -#define __SUSECONDS_T_TYPE    __SLONGWORD_TYPE
-> +#define __SUSECONDS_T_TYPE __SQUAD_TYPE
-> -#define __BLKSIZE_T_TYPE    __S32_TYPE
-> +#define __BLKSIZE_T_TYPE   __SQUAD_TYPE
->  #define __FSID_T_TYPE        struct { int __val[2]; }
->  #define __SSIZE_T_TYPE        __SWORD_TYPE
-> -#define __SYSCALL_SLONG_TYPE    __SLONGWORD_TYPE
-> -#define __SYSCALL_ULONG_TYPE    __ULONGWORD_TYPE
-> -#define __CPU_MASK_TYPE     __ULONGWORD_TYPE
-> +#define __SYSCALL_SLONG_TYPE __SQUAD_TYPE
-> +#define __SYSCALL_ULONG_TYPE __UQUAD_TYPE
-> +#define __CPU_MASK_TYPE    __UQUAD_TYPE
->
-> -#ifdef __LP64__
->  # define __RLIM_T_MATCHES_RLIM64_T    1
-> -#else
-> -# define __RLIM_T_MATCHES_RLIM64_T    0
-> -#endif
->
-> +#define __ASSUME_TIME64_SYSCALLS 1
-> +#define __ASSUME_RLIM64_SYSCALLS 1
->
-> Since the sysdeps/unix/sysv/linux/generic/bits/typesizes.h definitions
-> generally match the kernel, anything diverging from that has the potential
-> of breaking it, so the difference should probably be kept to the absolute
-> minimum.
->
-> I think these ones are wrong and will cause bugs similar to the clock_t
-> issue if they are used with kernel interfaces:
-> __NLINK_T_TYPE, __FSWORD_T_TYPE, __CLOCK_T_TYPE,
-> __BLKSIZE_T_TYPE, __SYSCALL_ULONG_TYPE,
-> __SYSCALL_SLONG_TYPE, __CPU_MASK_TYPE
->
-> These are fine as long as they are only used in user space and to
-> wrap kernel syscalls, but I think most of them can end up being
-> passed to the kernel, so it seems safer not to have rv32 diverge
-> without a good reason.
->
-> The remaining ones (__INO_T_TYPE, __OFF_T_TYPE, __BLKCNT_T_TYPE,
-> __FSBLKCNT_T_TYPE, __FSFILCNT_T_TYPE, __TIME_T_TYPE) all
-> follow the pattern where the kernel has an old 32-bit type and a new
-> 64-bit type, but the kernel tries not to expose the 32-bit interfaces
-> to user space on new architectures and only provide the 64-bit
-> replacements, but there are a couple of interfaces that never got
-> replaced, typically in driver and file system ioctls.
->
-> Since glibc already has code to deal with the 64-bit types and that
-> is well tested, it would seem safer to me to just #undef the old
-> types completely rather than defining them to 64-bit, which would
-> make them incompatible with the kernel's types.
-
-#undef-ing these results in build failures unfortunately, it seems
-like they are required.
-
-I'm sending a v3 RFC to the glibc list right now. We can continue the
-discussion there.
-
-Alistair
-
->
->        Arnd
+> --
+> Nicolas Ferre
 
 _______________________________________________
 linux-riscv mailing list
