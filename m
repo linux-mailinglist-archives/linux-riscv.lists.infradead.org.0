@@ -2,74 +2,92 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03D916BEF2
-	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jul 2019 17:23:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 493FE6C17F
+	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jul 2019 21:30:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U9V/l1GUV36JxT0wOiqRbkSM3rqFpEufQAsCw4YxaOI=; b=WvL70RsUkc14+3
-	Sdz+TgW3v/0erDh9rNgRqwAyh1vux92oo9WbjnXRN6/jtOnInnXkonsNlaPzua3AETU3NlRMHmAfN
-	TE4jlrHJq/gnrx4La/wEpGVhHzNwGOXOUUDakupPsO1BSoc8m0MGUqOafbsGQFh9FSkwtZvG5EQhy
-	G/5N++HNbt/lHg3JKgn56sd98+kEDHXtt8hhncddzZulBDRQs9NGejTglOdCwV+RGmSHD+uDbw5Gp
-	AziVv79CEtc6bFwr6rDF4hyKTfP/LDSEcb5QV3MxzNO/m5ISorKR5X8lyIp+AD2DpW08SvmghkjOO
-	y/2b/vTgoxPnUH17pXiQ==;
+	List-Owner; bh=mlVThbwlLSOGEIxPWeRYP+YaKPGMDHEkAuKVAhm0XNw=; b=qrKVGHGLvMDXDv
+	6aWB8b1ZjVnxFSHes72+lLd8ZasHHHchFknt2yZGWrQdyonup+d8e2IH/iIvuw8ymwBe8VQ4PBQXH
+	TGubhBgEFVu/7/PbolLMj8usMj73IOGRvCxTTY8btkUqeheyN/QMwwpea1J+fwlgAYmBOa99rW9rO
+	5QNld7OuZaGVp7YOUod+s3HCJDxNs/Q0NOsEnpmBic8gFf6I2R2wnweUNcXAzFufjVBniSyvXszGH
+	0uWRMVDWYH700YOUNmqm1zXtZ6J1hWG7Cj4eW49/LNugYKDEvKqWobw2/I9rDkMTHBbVQcT5r1F8p
+	id9khWRAfeFuoBLupULw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnlmR-0000FS-6g; Wed, 17 Jul 2019 15:23:43 +0000
-Received: from outgoing-auth-1.mit.edu ([18.9.28.11] helo=outgoing.mit.edu)
+	id 1hnpd3-0005H1-Ve; Wed, 17 Jul 2019 19:30:17 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnlmM-0000Eh-6C
- for linux-riscv@lists.infradead.org; Wed, 17 Jul 2019 15:23:40 +0000
-Received: from callcc.thunk.org (guestnat-104-133-0-99.corp.google.com
- [104.133.0.99] (may be forged)) (authenticated bits=0)
- (User authenticated as tytso@ATHENA.MIT.EDU)
- by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id x6HFNQK1019058
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 17 Jul 2019 11:23:27 -0400
-Received: by callcc.thunk.org (Postfix, from userid 15806)
- id 5AE86420054; Wed, 17 Jul 2019 11:23:26 -0400 (EDT)
-Date: Wed, 17 Jul 2019 11:23:26 -0400
-From: "Theodore Y. Ts'o" <tytso@mit.edu>
-To: "Enrico Weigelt, metux IT consult" <lkml@metux.net>
-Subject: Re: [PATCH 4/4] debian: add generic rule file
-Message-ID: <20190717152326.GC31412@mit.edu>
-Mail-Followup-To: "Theodore Y. Ts'o" <tytso@mit.edu>,
- "Enrico Weigelt, metux IT consult" <lkml@metux.net>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- "Enrico Weigelt, metux IT consult" <info@metux.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Michal Marek <michal.lkml@markovi.net>,
- Robo Bot <apw@canonical.com>, Joe Perches <joe@perches.com>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
- linux-riscv@lists.infradead.org,
- clang-built-linux <clang-built-linux@googlegroups.com>
-References: <1562664759-16009-1-git-send-email-info@metux.net>
- <1562664759-16009-4-git-send-email-info@metux.net>
- <CAK7LNAR1N-bwVWm0LXky2-d2GfvRuRrEWeo5CGm3Z2Lp_s0WEw@mail.gmail.com>
- <5af9db32-2cf5-10ba-261c-e08852d0814f@metux.net>
- <20190715191245.GD3068@mit.edu>
- <CAK7LNASps6JBAvtJshjMbqMk8QaSrMaH8pm-wHsEySTRJzu0Kw@mail.gmail.com>
- <20190716123431.GB2999@mit.edu>
- <77f82ca2-f89b-e8e2-507a-c37bce1343a5@metux.net>
+ id 1hnpcz-0005G9-0L
+ for linux-riscv@lists.infradead.org; Wed, 17 Jul 2019 19:30:14 +0000
+Received: by mail-io1-xd42.google.com with SMTP id f4so47615544ioh.6
+ for <linux-riscv@lists.infradead.org>; Wed, 17 Jul 2019 12:30:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=m+aYfYk3qqQFGYyIVUXqsjPB9Z++/CqoIZvcXZFm3io=;
+ b=NJcT4ReHcQvNMVZLMGPaZHK9eIDuuQdneBHhUpijosU4l0tZrd8F1G6YEvtqk2ueyi
+ ab1b1YjwcBKcTGWxeivJOOfmix6JaiRG0BR9tHga+fndXXM0hr+gs4SyrTWDVjI5fVGO
+ gghtcNGqRteT6wrHv4pRZLL+6qVEHLLDHbnV7njAfX4NdhGXmRAI1fqW5JYPRGRWDP0j
+ JARewp2Favgi9oXSi9PW9R61lRbyPMIvrMt+NZ+VbLzOVodM/REUULreUB03nEjs+Re5
+ 8YIfejH0GL6sMcGo0GH4RrAnp7lwelNfWuMTgP/cEASY1Ecqq6iNP9z6EJNJMghFmDzH
+ TPsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=m+aYfYk3qqQFGYyIVUXqsjPB9Z++/CqoIZvcXZFm3io=;
+ b=WTPvjyvi/f73eQEJ91rkxts0TFczvGAk2n7kBU7Jb+nYi3WrR+jKT0Ka0+Kc2tFCMh
+ SBe7MMolkTlYN/j9F9U4PEZ/dMOV4y1EQ3Mu/2nzPHTDmfhz3s3TWDqZnE/D9cU20kGn
+ BgoY9sD9SAjCPT8KQDotUiXjVmobn/NQwXylZfr66wO6lwt7YF8JIzJLBLuC39gojWIG
+ DlwVfOSGKYJvEqUUHMP8phqM1P17dPzJn4q5ELHnTGEx78EbuwSqxmJ9XvIs2TX3KMW8
+ 1QSDMvral/cAbbDsoEsHXRZ634KAGaCwyLQpZ5clrFW5rG/elkQQ+xmvQJCICjpwbWH2
+ BC7g==
+X-Gm-Message-State: APjAAAVqdj32nQs/8vUKKa5e/nOU84F2AoLFcKHHJ4KRc7eiBfPmoDLw
+ 2vOBVNZUEt4wMGoWbZwQklGW9g==
+X-Google-Smtp-Source: APXvYqzwcmx1BCDmjWpt1tOLywaYXaCeovXL+ydA1c7dOKNeaGYAADnZWQbu/jN5GlJF+0Dyzy9HYA==
+X-Received: by 2002:a02:8816:: with SMTP id r22mr43623986jai.60.1563391811445; 
+ Wed, 17 Jul 2019 12:30:11 -0700 (PDT)
+Received: from localhost (67-0-62-24.albq.qwest.net. [67.0.62.24])
+ by smtp.gmail.com with ESMTPSA id l2sm17528673ioh.20.2019.07.17.12.30.10
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 17 Jul 2019 12:30:10 -0700 (PDT)
+Date: Wed, 17 Jul 2019 12:30:10 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Yash Shah <yash.shah@sifive.com>
+Subject: Re: [PATCH] riscv: dts: Add DT node for SiFive FU540 Ethernet
+ controller driver
+In-Reply-To: <1561097422-25130-2-git-send-email-yash.shah@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1907171228560.22190@viisi.sifive.com>
+References: <1561097422-25130-1-git-send-email-yash.shah@sifive.com>
+ <1561097422-25130-2-git-send-email-yash.shah@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <77f82ca2-f89b-e8e2-507a-c37bce1343a5@metux.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190717_082338_639746_1B87EE81 
-X-CRM114-Status: GOOD (  10.76  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190717_123013_111059_050AE0B0 
+X-CRM114-Status: UNSURE (   5.85  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [18.9.28.11 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,46 +99,30 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Michal Marek <michal.lkml@markovi.net>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- clang-built-linux <clang-built-linux@googlegroups.com>,
- Robo Bot <apw@canonical.com>, Joe Perches <joe@perches.com>,
- linux-riscv@lists.infradead.org, "Enrico Weigelt,
- metux IT consult" <info@metux.net>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ palmer@sifive.com, linux-kernel@vger.kernel.org, sachin.ghadi@sifive.com,
+ robh+dt@kernel.org, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Jul 17, 2019 at 04:16:39PM +0200, Enrico Weigelt, metux IT consult wrote:
+On Fri, 21 Jun 2019, Yash Shah wrote:
+
+> DT node for SiFive FU540-C000 GEMGXL Ethernet controller driver added
 > 
-> > In practice, that's not going to be a problem for most distributions.
-> > The traditional way Debian-derived systems have done builds is
-> > completely outside of git.  So there will be a linux_5.2.orig.tar.gz
-> > and a linux_5.2-1.debian.tar.xz.  dpkg_source -x will first unpackage
-> > the orig.tar.gz, and then the debian.tar.xz, and if the second
-> > overwrites the first, it's no big deal.
-> 
-> ACK. IIRC they already filter out debian/ directories when generating
-> upstream tarballs - other upstreams already provide their debian/
-> stuff, too.
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
 
-Well, no, actually they don't.  That's because as much as possible
-they want the upstream tarball to be bit-for-bit identical to the one
-published on the official upstream distribution site.  That allows
-them to include the detached PGP signature from the upstream
-maintainer, if one is provided.
+Dropping this one until it's updated to align with whatever you pick for 
+the new driver DT compatible string, per
 
-If there are files in the upstream debian/ directory that they don't
-need, they can delete in the distro's debian/rules file.  Ideally, so
-we shouldn't include files in the Linux kernel's debian/ directory
-willy-nilly.  But the debian/rules file will *always* be present, and
-so it will be overwritten by the <package>_<ver>.debian.tar.xz file,
-and so it's no big deal.
+https://lore.kernel.org/linux-riscv/1558611952-13295-1-git-send-email-yash.shah@sifive.com/T/#me298e16b2feeb481116cca61b94e014433cf2977
 
-					- Ted
+Please send an updated DT patch at your earliest convenience so we can get 
+it into the v5.3-rc series.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
