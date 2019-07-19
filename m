@@ -2,78 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB3756D6D1
-	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jul 2019 00:27:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B980D6D9C0
+	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jul 2019 05:58:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2saO2o0niMrBvOvAV1KwRSUwgFmPRsUVlRauukvp2qQ=; b=aJ0vPNMrXQV4li
-	kIE94bUBGehkJVLPqKuuVd++eRdGl3JBGjUyhiYHjLLQy/HF+OpW1GKGKWxXUarQJzvAXJUwytgNV
-	GfVz33i9RwQ/Ixzlwv1KDlzjANGHISC02LcyN2RxWHXS5Ff5iJy+yp7a9+0Z08V87s+nv0/ro7Bs4
-	1d/ZiOL/3GYxtc8y36aD3pZZXRel5A9obyxZezYKCnXqW0zzriLvVD+z+GvFNgMXMPXA68b63k4Ks
-	osmjlGVGsbA7a0u93fsVaCoVDNR4yYZVq1nLncw+GJJYHEzcnXvAPYeao+28UFWzfixndJmuqOYMs
-	H99vID3uOZl9Rmz+dqVg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xjJCV9EgDog/Tc1FC1EvfwyNbjEh44rckyfjPux4wEg=; b=sdEb/KzbwZJ8y8
+	rdhDEcom++6YHDcHQyhQo+EbqCgZDTsLXeyYqLdybNAblk4TxUzzBzkR/e+iVluQciaoTL5Aa3Rzy
+	sXgy4Q04EA9W4tXamkwoyKqNL2UpsmICGs0WUeifvDALmEz7ZjjMF6nOflBsnU8kD+gpM4VBYkVGq
+	nfe+yQzasLtm2rVkKmUhBFLqhTXKnUAgS9LOPdYwIPcBELUD6scm4blmUEBppUEgM9ryaAoab/wMi
+	IbE/YV43i7PKcokCjYxGJSHYH2cqlVOx7GDC/yUnVVw/U9KNxLErIOnN1Fqu56BQjHgGCaxFZ7Rxr
+	ofICdMlN7G1X1L31129Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hoEs9-0006cj-03; Thu, 18 Jul 2019 22:27:33 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1hoK1y-0004Ue-9s; Fri, 19 Jul 2019 03:58:02 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hoEs3-0006cH-SF
- for linux-riscv@lists.infradead.org; Thu, 18 Jul 2019 22:27:29 +0000
-Received: by mail-io1-xd41.google.com with SMTP id e20so24005216iob.9
- for <linux-riscv@lists.infradead.org>; Thu, 18 Jul 2019 15:27:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:message-id:user-agent:mime-version;
- bh=/Nlsaz5MlWmeG7OKcfAd5EyR46Qw5/w4N5D2o/Xi5j8=;
- b=S2OJTrzZNoGv5Oe95478I33bsvRX3JhcvnGALVidpZsmcTGK7KRJc0EDSlqlS4L4XA
- 0STBB7lVgcwjS/IJSIpaTAgsMJnKFFMooSAji1SDqJfCwsZ/f8u/vDaB4UocHIDdSTH1
- XKm5HvoVMCi1p5S0NGTQWcZCnpZH7a1YeTvkvdFiKe4szmrxwWlNeyUi1kTax0/HFPEM
- irdA7TC4I480cdukehKRLpNoHfzK/SsYlSnepp4W0TipFZowgpq/XEsK9gcipqh3RU4I
- EAIZy1rv4IuAp2RGvqEmTiTAwoPuYEUOPEvWt0KOLEUH5St9R+4BVVV04coqkRHolTwa
- 9KAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
- :mime-version;
- bh=/Nlsaz5MlWmeG7OKcfAd5EyR46Qw5/w4N5D2o/Xi5j8=;
- b=BmpPblwRC6pyxWhWZpiTJgn14AQXVDIo1TP9QQ12IWGAzVJqi3jNSysxoqx7Rv8NJ1
- QAIPakzPlqHkTFtrOTxOiZ817bPgeDYFlPz/WsQj3TApZv23JkGyuvr3x8tG3bMN6lGQ
- hZD8gEiofNnmSw2CTc0xeCXKH2mwVQ2Lrc+0EJ09xdjlXxd61o5BxhtF9cSpKMuxLKNk
- oNt8vddOLoYUWyV69GVfR7h6zKVfU99aaul7RQNIEAmblmcq0cHRRruHMI07E+f8PoxJ
- TIF4MsRhak3shKp49r2ZldYlRB9rW0okO+q+U1odO7jotSspo2Rx4AwyO/y5uRuaGHnD
- vzOA==
-X-Gm-Message-State: APjAAAWlpg0IghVeaAgbfGxpSVNZSFjn73CHPwXIMzE3y4X+fkEdujgd
- pm21n7QXh9I3hUxYwuSmFcFUVbpXv0o=
-X-Google-Smtp-Source: APXvYqxYmBc5hPbEHd8dKBbXsXLhJPs3Zt6OYV7PpRmuLIRO9YvaCy8DLBta9gqpmIwjP84gIIx/Dw==
-X-Received: by 2002:a6b:6b02:: with SMTP id g2mr40561759ioc.13.1563488845967; 
- Thu, 18 Jul 2019 15:27:25 -0700 (PDT)
-Received: from localhost (67-0-62-24.albq.qwest.net. [67.0.62.24])
- by smtp.gmail.com with ESMTPSA id f17sm26051739ioc.2.2019.07.18.15.27.25
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 18 Jul 2019 15:27:25 -0700 (PDT)
-Date: Thu, 18 Jul 2019 15:27:24 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: linux-riscv@lists.infradead.org
-Subject: [PATCH v2] riscv: include generic support for MSI irqdomains
-Message-ID: <alpine.DEB.2.21.9999.1907181525540.20168@viisi.sifive.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1hoK1v-0004UF-AP
+ for linux-riscv@lists.infradead.org; Fri, 19 Jul 2019 03:58:00 +0000
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 338052184E;
+ Fri, 19 Jul 2019 03:57:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1563508679;
+ bh=uQA2gpES8zyRLAP8LaB1TaiMSzsmJOa2FGTLM7RHEWo=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=v4s27w0JehJYlpiAOyHEXAIGV6lXqKm2psD5QD3hxqFMPMsZ+ZbR41Q0bYEMo9xAB
+ rqYc5xpLeVLLNl8CHyPmx8T95DAhndabCtvptvjbdAnvgthFX9pe9xrUv5UR2kV/+N
+ FSmHFWCyvNESfF2z+JvkDqFj6pEeVZT7KJ7kpOqU=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.2 030/171] tools: PCI: Fix broken pcitest compilation
+Date: Thu, 18 Jul 2019 23:54:21 -0400
+Message-Id: <20190719035643.14300-30-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190719035643.14300-1-sashal@kernel.org>
+References: <20190719035643.14300-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190718_152727_927011_C07EB709 
-X-CRM114-Status: UNSURE (   7.42  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190718_205759_383917_3E7E2E28 
+X-CRM114-Status: GOOD (  11.97  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -83,6 +67,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,44 +79,67 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org,
+ Alan Mikhak <alan.mikhak@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Wesley Terpstra <wesley@sifive.com>
+From: Alan Mikhak <alan.mikhak@sifive.com>
 
-Some RISC-V systems include PCIe host controllers that support PCIe
-message-signaled interrupts.  For this to work on Linux, we need to
-enable PCI_MSI_IRQ_DOMAIN and define struct msi_alloc_info.  Support
-for the latter is enabled by including the architecture-generic msi.h
-include.
+[ Upstream commit 8a5e0af240e07dd3d4897eb8ff52aab757da7fab ]
 
-Signed-off-by: Wesley Terpstra <wesley@sifive.com>
-[paul.walmsley@sifive.com: split initial patch into one arch/riscv
- patch and one drivers/pci patch]
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+pcitest is currently broken due to the following compiler error
+and related warning. Fix by changing the run_test() function
+signature to return an integer result.
+
+pcitest.c: In function run_test:
+pcitest.c:143:9: warning: return with a value, in function
+returning void
+  return (ret < 0) ? ret : 1 - ret; /* return 0 if test succeeded */
+
+pcitest.c: In function main:
+pcitest.c:232:9: error: void value not ignored as it ought to be
+  return run_test(test);
+
+Fixes: fef31ecaaf2c ("tools: PCI: Fix compilation warnings")
+Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
+Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
-Planned for v5.3-rc.
+ tools/pci/pcitest.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
- arch/riscv/include/asm/Kbuild | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/riscv/include/asm/Kbuild b/arch/riscv/include/asm/Kbuild
-index 3d019e062c6f..b0a9fa34be5a 100644
---- a/arch/riscv/include/asm/Kbuild
-+++ b/arch/riscv/include/asm/Kbuild
-@@ -20,6 +20,7 @@ generic-y += kvm_para.h
- generic-y += local.h
- generic-y += local64.h
- generic-y += mm-arch-hooks.h
-+generic-y += msi.h
- generic-y += percpu.h
- generic-y += preempt.h
- generic-y += sections.h
+diff --git a/tools/pci/pcitest.c b/tools/pci/pcitest.c
+index cb7a47dfd8b6..49ddfa6f5a8c 100644
+--- a/tools/pci/pcitest.c
++++ b/tools/pci/pcitest.c
+@@ -36,15 +36,15 @@ struct pci_test {
+ 	unsigned long	size;
+ };
+ 
+-static void run_test(struct pci_test *test)
++static int run_test(struct pci_test *test)
+ {
+-	long ret;
++	int ret = -EINVAL;
+ 	int fd;
+ 
+ 	fd = open(test->device, O_RDWR);
+ 	if (fd < 0) {
+ 		perror("can't open PCI Endpoint Test device");
+-		return;
++		return -ENODEV;
+ 	}
+ 
+ 	if (test->barnum >= 0 && test->barnum <= 5) {
 -- 
-2.22.0
+2.20.1
+
 
 _______________________________________________
 linux-riscv mailing list
