@@ -2,73 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC4EA70A42
-	for <lists+linux-riscv@lfdr.de>; Mon, 22 Jul 2019 22:02:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E3CBE70BEE
+	for <lists+linux-riscv@lfdr.de>; Mon, 22 Jul 2019 23:46:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K6n4gdKb8CmDv0XkVcq36JGxIQFglzaXuMZu+/ZFD/o=; b=R+NwonyOsikjiu
-	rGQKLAItGb1bUfnY0pZa4ETJaiUhQkn4XMMNCSku6VRABvsLnzcHsDvHd8zxnt9VYhL+pFKhxb4M/
-	oI5TiFEw9UEs4uucZH3SHubmqUsKUEp+gNRsGrx7pfpVWi/86R2g/i6Tva1QlPm3pCMOgz6oB0DoN
-	ijMJNed69U6OCUJ3eBlkPkvmI+LmCku6RRdxaZieJQYdCvk1P4I2JbSMCE4K8fRWFwOU1SckG1uTz
-	02i+XpHWHI21EYPemo9TqrDIMlVv9caRZnQ6Vky9wTOlyazlTn7N+a8ywoYaZd8puxhtd937mGytn
-	YSEduGVermdmKD0EYB0Q==;
+	List-Owner; bh=kr5Wh8Ys7rrSmDz7k9gowro/7rYlVWZYmRtz70lRDUE=; b=YNqDrbeAHRiqPK
+	mevTJPPST4/ytFEhFWqXAS9Q7zn9gvYBAZmQV98GZZF6Vjw3hUoijkl/qDHfSGH/nyBnNd9nYHWC5
+	SCwj70SkjJyRPTjKN7fNubG0aNC8k7N78zdcaLOvxH+pzSWRd5R2NaeQep4+2DoO4JxIUseVddklx
+	P/R4TVdP/W6Lyj9QdHPWZNa9Fq9O5NVidGbkYwSsv7D3BdJm6G/t00TVqafWiIW+xI0NYPluT84AH
+	XJERiG7GYkQ6XM7EXo9NQO5E4qUPoBmmMgWJYJ0i3QQfNsS4b+hCbpXuxkMweX2WsA8c1AmCJ7Wsv
+	vORX76XSfAw5d6+ayg6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpeVh-0001HK-CE; Mon, 22 Jul 2019 20:02:13 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1hpg8j-0003JA-3g; Mon, 22 Jul 2019 21:46:37 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpeVd-0001H1-Oo
- for linux-riscv@lists.infradead.org; Mon, 22 Jul 2019 20:02:11 +0000
-Received: by mail-io1-xd41.google.com with SMTP id s7so76637418iob.11
- for <linux-riscv@lists.infradead.org>; Mon, 22 Jul 2019 13:02:09 -0700 (PDT)
+ id 1hpg8d-0003Ie-JH
+ for linux-riscv@lists.infradead.org; Mon, 22 Jul 2019 21:46:33 +0000
+Received: by mail-io1-xd44.google.com with SMTP id g20so77340938ioc.12
+ for <linux-riscv@lists.infradead.org>; Mon, 22 Jul 2019 14:46:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=7KHxh1QD/oXTDWc3Ol8Je8VksYYJh9G9PLns3mcwbuo=;
- b=bTR8i8zUllpMoZ40e03tB7gNhfdJCmmPPAe3V3S37KemxLp2Pfxvdg6aqvRR3nOCMy
- HJUD6xok/NPrliUcSvpBk5vw9NErK3Sgck4dkOw5uYesjEvb0gHvhsbP2cK1sr4pp5Cz
- oVd9jSLisJxIT7CfnmqtAdZwZDq2f6Swd2q3xGrPkPfYRkIoWaPJ5i28Klj54ARyZFTH
- ciWWyOR6+9PFVmVxngR1A312ewaEpkO9R7ubfD1Y6Ulr6DiDalliFyWtv1Ab1hlVpOWK
- zZCh82ajNKWjL+YqFRpoPFhpfupq2020UWCY+v9nviowDi4pL+x/sHuOQdmywjW+ViEY
- zz2g==
+ bh=VWIZBvI5lCbidvXKY6O84lqCZ2AjaGY2QVwWc2bhom0=;
+ b=QRxolnZMSRjr7BTm00Z8wwbzzUyOLZZvVERqLil5ipazTc2XhnIF6C70R84dF+etKK
+ WpObHA4zIcJv8+m05XstTbyF6sBH1EGDTFBnPfsk6yOxc+A+b+xply+hM1A5RzrT6HuM
+ ROpw+KdsvciRm3w1quQySFv3XIOP7tbwz4KFM/jO2etmZxVfPAwmNwqV/sHgdZ4lVw8X
+ 0ucGKbgZRWgL5ixPf9JnKL7ngRO65i1fCFJI/CSQUr12AdIakOCqkGfZg29b/es/N/N0
+ aIHkJHZxbOYMPazFYdIeLMsmd2ecRQ5bVatC05ATHZI3daEtEXkF5QO2W7Nsv7frreB1
+ 0NsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=7KHxh1QD/oXTDWc3Ol8Je8VksYYJh9G9PLns3mcwbuo=;
- b=uaqORkvNrAV1VK8m4iUhrYlMyux3OSq8atTJgwlTOPUqlRD/HkXDAYmV2zlNW0A2WW
- /wO9G/FHdIZYwfRFGPNJj/jqD6ThxdRHmECWoCY/G2NzO+3WIyil1ZrXHoxpKLEvpE1f
- EB1MUiiAAvTZsyP4GWnpLkPWe+nSw1HvqUbJerjze/ogXeyWTSnKTjz64xCze4WZGtA9
- cN/unNrDX7mJdd5g/jdsSenzfcnLRSTACiwn2SFee73QF8AxahM842P3b27MpVz9LmRu
- 2PGOjWtJOjoav5dz9ckEJzmwH4u5yJG7TMA8tAOsDqJAi9ni3dWltTjHOWU4ush7a1A7
- 7j5A==
-X-Gm-Message-State: APjAAAW1zZ/ZqlTFbEu7CuNmk70ankqRhNVDjiJ9D5YhIH/aCeo8zBxH
- 0B0QqTxfG4kle9JMhKg5SoB7xw==
-X-Google-Smtp-Source: APXvYqxyOswcj7g0LDvyDOV3fbWCFcNrYA4iTJciHHWKaqUGvlZ1qgSVQwNjOcAJl5e0SpvoVdMXaQ==
-X-Received: by 2002:a02:bca:: with SMTP id 193mr35203345jad.46.1563825729108; 
- Mon, 22 Jul 2019 13:02:09 -0700 (PDT)
+ bh=VWIZBvI5lCbidvXKY6O84lqCZ2AjaGY2QVwWc2bhom0=;
+ b=ga3tZKmSuuRcgdExuPD3Mf2FD0bqZQ4hF7PFdQunDjSmymxYR8Vp1qb0IgDxyg6yEp
+ Fo+gJW58rHKIu5tii0nnQ5VDKj5HAK/5oc+CL98R1UhuvSvn6GnNvObIinsJzGvpdSe1
+ 6m1niSElDCLB/SpYn9qwbSqWlPYrSN9/lJ3DPnjdMaEiP8HFCmNvtBn+floHKVlC0/Ja
+ u9PYxLJ03qE9sXvfGO9X0pMM+X9kpAMZckpo90XdpmxAO04faFVLE+PkhDf3SRZmFWWo
+ SAT64sHTvtRrGWltoFt4OesngFjJSJ65ZrKDwMxsgnSG5Szez/NipB8riWbVtPxhuVYY
+ CUTg==
+X-Gm-Message-State: APjAAAWCpY4DPHzS4Pc0ygadVq9dzefUgdU3111GYSK+HeS/2Z8ww4+3
+ HG/isT8vGqOgE+mGR6FMhu7yTA==
+X-Google-Smtp-Source: APXvYqyd2dW888lhV8CkKjbqoz2NLahTQzYkKlmc3wSjVe+iOryGMbi075TFpJ6Xc0oCjN8Cgg19Lg==
+X-Received: by 2002:a02:1607:: with SMTP id a7mr73356673jaa.123.1563831990677; 
+ Mon, 22 Jul 2019 14:46:30 -0700 (PDT)
 Received: from localhost (67-0-62-24.albq.qwest.net. [67.0.62.24])
- by smtp.gmail.com with ESMTPSA id b8sm33365705ioj.16.2019.07.22.13.02.08
+ by smtp.gmail.com with ESMTPSA id x13sm30725719ioj.18.2019.07.22.14.46.29
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 22 Jul 2019 13:02:08 -0700 (PDT)
-Date: Mon, 22 Jul 2019 13:02:07 -0700 (PDT)
+ Mon, 22 Jul 2019 14:46:29 -0700 (PDT)
+Date: Mon, 22 Jul 2019 14:46:28 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Yash Shah <yash.shah@sifive.com>
 Subject: Re: [PATCH 2/3] macb: Update compatibility string for SiFive
  FU540-C000
 In-Reply-To: <1563534631-15897-2-git-send-email-yash.shah@sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1907221301490.5793@viisi.sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1907221446090.5793@viisi.sifive.com>
 References: <1563534631-15897-1-git-send-email-yash.shah@sifive.com>
  <1563534631-15897-2-git-send-email-yash.shah@sifive.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_130209_810213_4C3341AF 
+X-CRM114-CacheID: sfid-20190722_144631_695262_10D2BDF7 
 X-CRM114-Status: UNSURE (   5.75  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
@@ -77,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -116,7 +116,8 @@ On Fri, 19 Jul 2019, Yash Shah wrote:
 > 
 > Signed-off-by: Yash Shah <yash.shah@sifive.com>
 
-Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
+Tested-by: Paul Walmsley <paul.walmsley@sifive.com>
+
 
 - Paul
 
