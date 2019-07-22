@@ -2,72 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99FC970A3A
-	for <lists+linux-riscv@lfdr.de>; Mon, 22 Jul 2019 22:00:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BC4EA70A42
+	for <lists+linux-riscv@lfdr.de>; Mon, 22 Jul 2019 22:02:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+XehiEkvhFfe50e0LISZ2MK5v3HSuCZpV93LV3xoxfY=; b=Nss48LL0yxj+4H
-	HY/0w/Nota1HUw3DlSD+Celi9XAZ8g9UrkL3abvdEXHUgBzasBKK2Qd78Ty+Vnrg7o1NGuYdBooba
-	Thu5Qg3cOlv8ERArY86PbIgsOubrx/juGKVA03DZaBk7NfDCNckmuakcxNXk1UrQWXao3LWydYpk5
-	4Y5uy0fAlI1Lfnc+uK3p93IYT640t1WPlbs21L9ApBejyN1rg2oosFAweS7bU/GXUYIhpOaMm24lP
-	y6p+qsAjRdGXkCto34YVXY+bndMthqzXSRad09JkCYcyfNLzoDXCJprKwEmRJZqNAggYiHA7yp77a
-	pYP4Wzsci26eISWUOtLw==;
+	List-Owner; bh=K6n4gdKb8CmDv0XkVcq36JGxIQFglzaXuMZu+/ZFD/o=; b=R+NwonyOsikjiu
+	rGQKLAItGb1bUfnY0pZa4ETJaiUhQkn4XMMNCSku6VRABvsLnzcHsDvHd8zxnt9VYhL+pFKhxb4M/
+	oI5TiFEw9UEs4uucZH3SHubmqUsKUEp+gNRsGrx7pfpVWi/86R2g/i6Tva1QlPm3pCMOgz6oB0DoN
+	ijMJNed69U6OCUJ3eBlkPkvmI+LmCku6RRdxaZieJQYdCvk1P4I2JbSMCE4K8fRWFwOU1SckG1uTz
+	02i+XpHWHI21EYPemo9TqrDIMlVv9caRZnQ6Vky9wTOlyazlTn7N+a8ywoYaZd8puxhtd937mGytn
+	YSEduGVermdmKD0EYB0Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpeTR-0008MX-Ls; Mon, 22 Jul 2019 19:59:54 +0000
+	id 1hpeVh-0001HK-CE; Mon, 22 Jul 2019 20:02:13 +0000
 Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpeTM-0008M4-4p
- for linux-riscv@lists.infradead.org; Mon, 22 Jul 2019 19:59:49 +0000
-Received: by mail-io1-xd41.google.com with SMTP id h6so76685731iom.7
- for <linux-riscv@lists.infradead.org>; Mon, 22 Jul 2019 12:59:47 -0700 (PDT)
+ id 1hpeVd-0001H1-Oo
+ for linux-riscv@lists.infradead.org; Mon, 22 Jul 2019 20:02:11 +0000
+Received: by mail-io1-xd41.google.com with SMTP id s7so76637418iob.11
+ for <linux-riscv@lists.infradead.org>; Mon, 22 Jul 2019 13:02:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=/OH/wTTBC4X8SVdlUJnb/Ot3whBKsHxdPt8gk14iyRI=;
- b=IJ79AYkgljjvskCTjQpSnN1VcH07Jaf0C4IA1a0choaa0aexD+z3BEclu3qrc9dm3n
- lBK21ZNYuMibEYuUgygq+2qS2ESPxBGKUwXvVigWSpRh9CwNlh/ZUXg/MmPBdBUR6ATS
- YBi5nY2XkwV5ILZWw6+gXVamBXBWc7oqg1/guzrXAmEDgJgrn/KAyHYEd1jIUJ7RWN3s
- uWLy87j5aKFkEkCNP7wNl61lZeUBVV7FlRWlRE/C0p1pHbYXu1oqr8iyYY/GrvFZMAUx
- IvaNafhhR7IsprcZ8ibKROvteizgzd7sF6M2zQzbCOghqLdEORkE8voLl1fPRzEn0Eq3
- oqmA==
+ bh=7KHxh1QD/oXTDWc3Ol8Je8VksYYJh9G9PLns3mcwbuo=;
+ b=bTR8i8zUllpMoZ40e03tB7gNhfdJCmmPPAe3V3S37KemxLp2Pfxvdg6aqvRR3nOCMy
+ HJUD6xok/NPrliUcSvpBk5vw9NErK3Sgck4dkOw5uYesjEvb0gHvhsbP2cK1sr4pp5Cz
+ oVd9jSLisJxIT7CfnmqtAdZwZDq2f6Swd2q3xGrPkPfYRkIoWaPJ5i28Klj54ARyZFTH
+ ciWWyOR6+9PFVmVxngR1A312ewaEpkO9R7ubfD1Y6Ulr6DiDalliFyWtv1Ab1hlVpOWK
+ zZCh82ajNKWjL+YqFRpoPFhpfupq2020UWCY+v9nviowDi4pL+x/sHuOQdmywjW+ViEY
+ zz2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=/OH/wTTBC4X8SVdlUJnb/Ot3whBKsHxdPt8gk14iyRI=;
- b=Fq/GjRqXxpRVXdsAQFZiX8EUyn1JT0CJzMIiSB54cYx8P5zMKmrJ2/+pYqkdyUMuJt
- 2dW9P9Bdtw2GvcOFuO5Gn1iLL4VDgPaNK07sVDBNiOpkvuulhzSLUzuzyxERvbjl/nqf
- UlbWbTSDPZzjMf77Hl0e74k3hvRkeysRHLa+aWislRo8eyWVZknSP6K1reUe+XcKpev2
- dzVHa2iiF6Ry7k4SghVKhpFRi5pPvUVMuMY4qrw+Jii7yvO03nvgNETgdlFGn3gQI3EG
- Me+klM/VV243+VMRihKU0Q2k1266rY/+Qln6QkNICqEcRmaNJpirB+YaYLFfpb2ctiIB
- +oYA==
-X-Gm-Message-State: APjAAAVjCbMkTyBlwKonPkPCAkkpDv869d2vADpCId1T4el+1PSbES2K
- A9b+biiLcJh/TcgatvaTGNHi0Q==
-X-Google-Smtp-Source: APXvYqzscqmldHBLHAIijDkbQwm+paiGghQKVRTUe6alP23cCGUxgKPjiGuPPJhasKI7fp5io+M8rg==
-X-Received: by 2002:a6b:8f47:: with SMTP id r68mr69303919iod.204.1563825587225; 
- Mon, 22 Jul 2019 12:59:47 -0700 (PDT)
+ bh=7KHxh1QD/oXTDWc3Ol8Je8VksYYJh9G9PLns3mcwbuo=;
+ b=uaqORkvNrAV1VK8m4iUhrYlMyux3OSq8atTJgwlTOPUqlRD/HkXDAYmV2zlNW0A2WW
+ /wO9G/FHdIZYwfRFGPNJj/jqD6ThxdRHmECWoCY/G2NzO+3WIyil1ZrXHoxpKLEvpE1f
+ EB1MUiiAAvTZsyP4GWnpLkPWe+nSw1HvqUbJerjze/ogXeyWTSnKTjz64xCze4WZGtA9
+ cN/unNrDX7mJdd5g/jdsSenzfcnLRSTACiwn2SFee73QF8AxahM842P3b27MpVz9LmRu
+ 2PGOjWtJOjoav5dz9ckEJzmwH4u5yJG7TMA8tAOsDqJAi9ni3dWltTjHOWU4ush7a1A7
+ 7j5A==
+X-Gm-Message-State: APjAAAW1zZ/ZqlTFbEu7CuNmk70ankqRhNVDjiJ9D5YhIH/aCeo8zBxH
+ 0B0QqTxfG4kle9JMhKg5SoB7xw==
+X-Google-Smtp-Source: APXvYqxyOswcj7g0LDvyDOV3fbWCFcNrYA4iTJciHHWKaqUGvlZ1qgSVQwNjOcAJl5e0SpvoVdMXaQ==
+X-Received: by 2002:a02:bca:: with SMTP id 193mr35203345jad.46.1563825729108; 
+ Mon, 22 Jul 2019 13:02:09 -0700 (PDT)
 Received: from localhost (67-0-62-24.albq.qwest.net. [67.0.62.24])
- by smtp.gmail.com with ESMTPSA id m20sm39336195ioh.4.2019.07.22.12.59.46
+ by smtp.gmail.com with ESMTPSA id b8sm33365705ioj.16.2019.07.22.13.02.08
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 22 Jul 2019 12:59:46 -0700 (PDT)
-Date: Mon, 22 Jul 2019 12:59:45 -0700 (PDT)
+ Mon, 22 Jul 2019 13:02:08 -0700 (PDT)
+Date: Mon, 22 Jul 2019 13:02:07 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Yash Shah <yash.shah@sifive.com>
-Subject: Re: [PATCH 1/3] macb: bindings doc: update sifive fu540-c000 binding
-In-Reply-To: <1563534631-15897-1-git-send-email-yash.shah@sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1907221259300.5793@viisi.sifive.com>
+Subject: Re: [PATCH 2/3] macb: Update compatibility string for SiFive
+ FU540-C000
+In-Reply-To: <1563534631-15897-2-git-send-email-yash.shah@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1907221301490.5793@viisi.sifive.com>
 References: <1563534631-15897-1-git-send-email-yash.shah@sifive.com>
+ <1563534631-15897-2-git-send-email-yash.shah@sifive.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_125948_192701_A1FE8175 
-X-CRM114-Status: UNSURE (   5.41  )
+X-CRM114-CacheID: sfid-20190722_130209_810213_4C3341AF 
+X-CRM114-Status: UNSURE (   5.75  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -108,9 +110,9 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Fri, 19 Jul 2019, Yash Shah wrote:
 
-> As per the discussion with Nicolas Ferre, rename the compatible property
-> to a more appropriate and specific string.
-> LINK: https://lkml.org/lkml/2019/7/17/200
+> Update the compatibility string for SiFive FU540-C000 as per the new
+> string updated in the binding doc.
+> Reference: https://lkml.org/lkml/2019/7/17/200
 > 
 > Signed-off-by: Yash Shah <yash.shah@sifive.com>
 
