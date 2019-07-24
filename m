@@ -2,81 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61ECF734B0
-	for <lists+linux-riscv@lfdr.de>; Wed, 24 Jul 2019 19:12:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A62EE73512
+	for <lists+linux-riscv@lfdr.de>; Wed, 24 Jul 2019 19:18:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E9nBuvFw6tV9CjxES9bDMHjxWTpPiJfI1V1Fav8dpzw=; b=JbOr/klYxYlR9x
-	jhIGc68GzSLV7to+sdh7O2kwCTGuedRwoLMya3k4wcb7BopHxjiXyxjfMMaC8EUb4Yo6C3bXvc0NX
-	KGG72Pzp5NuAfSnnny6+J5vIRn1NjXVdK+6x1I93cympUGjSVp1U17QRN+jk05ijmTr5Zc6LhNdaO
-	IBPtw/kGBIDuBbCH6OoUHOMVrKNiLB+777Cz7raIF3ViW+2dBvN1pbHl8tto0alA1KWruvW/m4W8c
-	cgl9jgNczJkiJRfDicNGzQea/It1FuK0tkspz/U5HlxOySzS+38n8tuUpK6IBl2R5bagiLfs4ghRI
-	LCiCVily2HN1QA5wmuVQ==;
+	List-Owner; bh=LopCSp1g5m3CcG/XRn9ROzidaXhMMdtl2PdPe5Rh3rY=; b=BOH1sy6+qAXZlX
+	aifCfCxGQ55PcsZgAsuHcwsqnWh1Rg8L9yvI0PJZjfjQ3316I/9SUijWqUIQAZuMBdl4RSf16YoPY
+	+fyI6u97GNzSOtKU9s+2JmNHOEdmpmIdqRyxEdQeRFdqi1cAOOLz2rx8ja3Q0ufb40oteu3vBc9/f
+	FFyQ+i5FOjMGr6BHP6AY7DPnkZJH11tsdORZRwg9+n6HH1WOdbvqIraqhHtEo3rAhV++3W+NJGpoQ
+	vTkviOO8H+SBVGTzvhUC+Kz7CrKQGVUdvjS34+1aSm29FtLynpd4fu8qkx2cC6aX4w9/gde9i+Dtd
+	saS9WhYzJ3/W5b8F/yYA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqKns-0005NT-M8; Wed, 24 Jul 2019 17:11:48 +0000
-Received: from mail-pl1-f194.google.com ([209.85.214.194])
+	id 1hqKuW-0006Ab-7G; Wed, 24 Jul 2019 17:18:40 +0000
+Received: from mail-pf1-f196.google.com ([209.85.210.196])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqKnX-0005BP-LV; Wed, 24 Jul 2019 17:11:28 +0000
-Received: by mail-pl1-f194.google.com with SMTP id k8so22261419plt.3;
- Wed, 24 Jul 2019 10:11:26 -0700 (PDT)
+ id 1hqKsm-0002Uz-Du; Wed, 24 Jul 2019 17:16:55 +0000
+Received: by mail-pf1-f196.google.com with SMTP id u14so21291752pfn.2;
+ Wed, 24 Jul 2019 10:16:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ITF8T/T4IRmGXwtRff4SYZQW9zAOexuz5C2yXEWqdiw=;
- b=FPWb9H92BtSELvERavsb0wcIkW0GN7R34s+zep29X/w6uQCSQnF57FoMemDaZdj83n
- ciTlay1Id9ssbJcROQOlQHD2AWlhbRVteOcc2Ns7y1HHQKF8B9qQNl5hhx8J9SO3HI03
- SXXjPZ0hQJqAkFsGYHlSW3Am107w89seAZaxbyR+0WX8L91lkP5EKOlvfO3R5OMScV2D
- Kz6MqQ+4tFMeETLS+7QxIl71m8ZTdnaA4d2peYtqBWr9M3ZXPDnWkJu0oAyvC3bXUU/7
- KoDE3paLADdtoVWma12+IfHYeRw6pRe23KAtdinbx+v1G2/hb78CQm4hPba7llKgJm/Y
- sQ7A==
-X-Gm-Message-State: APjAAAXhpUNwukcUQbW6VLjI4+WUeUujf1+vaVcqqClzyGPoe38wl6hn
- W5FHIVnI0bqeFFkTEnjAfLLwyKb0
-X-Google-Smtp-Source: APXvYqwoAqWJaD8G9kpqywHtKCy/l+Vyxr3KKHtKTaJVbqukgpdEilFdeN9cgx3TW9bJG3WUBlH/LA==
-X-Received: by 2002:a17:902:7488:: with SMTP id
- h8mr12079513pll.168.1563988285727; 
- Wed, 24 Jul 2019 10:11:25 -0700 (PDT)
+ bh=156P/sv9kl3W4lzShHBiZ6Cb3GP3B3vD0ubCKwHKThU=;
+ b=VJTzeZ8jTKPVuWkMvogUfWOBC9IhP3FXTw5tOdVgTdsRm4KgjuoMu4Jn/kSTILHxT7
+ OLnbaUdDsfUryNMVUAeICsym44pZRlnmxJT0XPEWLK/ajVI4VMNfZtJkKHBrOjLuM5i/
+ v5PtcGa44JwGI13lmKZFXGYSvlYHjgsdvLUNXK69+7v3VqEWuq+z+UjmhQM1kpSoXQlo
+ 8FEUZa1dTzFaPC+Mvw/HHeNh0cB6MGOI/9ApM395eVG7nSHz5ToQuFKQsPf/FRhwbwp/
+ fwx36yU5+a7xT/Kpms8Zhumurlurxwq4ViuoCJ3Ppo2TxZgD/DZzLzCA5L44nqPegz2d
+ q80g==
+X-Gm-Message-State: APjAAAVRLlkQq9m6y6WhVKpKaUEMKMnbzv29orI68cWmVR6bev9lTazx
+ guHtqt9rVFUQtrYpQzaab6V5IhzA
+X-Google-Smtp-Source: APXvYqwTVGKd3fvTa9LEjWhqIcTFIJiIjYs9TLAcnxEPWXeforQowmcaSvI2CRLGqprBSYmGXcozlQ==
+X-Received: by 2002:a17:90a:8a91:: with SMTP id
+ x17mr89006769pjn.95.1563988610289; 
+ Wed, 24 Jul 2019 10:16:50 -0700 (PDT)
 Received: from 42.do-not-panic.com (42.do-not-panic.com. [157.230.128.187])
- by smtp.gmail.com with ESMTPSA id h16sm51887353pfo.34.2019.07.24.10.11.24
+ by smtp.gmail.com with ESMTPSA id n140sm49450927pfd.132.2019.07.24.10.16.49
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 24 Jul 2019 10:11:24 -0700 (PDT)
+ Wed, 24 Jul 2019 10:16:49 -0700 (PDT)
 Received: by 42.do-not-panic.com (Postfix, from userid 1000)
- id BEECC402A1; Wed, 24 Jul 2019 17:11:23 +0000 (UTC)
-Date: Wed, 24 Jul 2019 17:11:23 +0000
+ id ADB7B402A1; Wed, 24 Jul 2019 17:16:48 +0000 (UTC)
+Date: Wed, 24 Jul 2019 17:16:48 +0000
 From: Luis Chamberlain <mcgrof@kernel.org>
 To: Alexandre Ghiti <alex@ghiti.fr>
-Subject: Re: [PATCH REBASE v4 05/14] arm64, mm: Make randomization selected
- by generic topdown mmap layout
-Message-ID: <20190724171123.GV19023@42.do-not-panic.com>
+Subject: Re: [PATCH REBASE v4 12/14] mips: Replace arch specific way to
+ determine 32bit task with generic version
+Message-ID: <20190724171648.GW19023@42.do-not-panic.com>
 References: <20190724055850.6232-1-alex@ghiti.fr>
- <20190724055850.6232-6-alex@ghiti.fr>
+ <20190724055850.6232-13-alex@ghiti.fr>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190724055850.6232-6-alex@ghiti.fr>
+In-Reply-To: <20190724055850.6232-13-alex@ghiti.fr>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190724_101127_708520_6202E948 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20190724_101652_621308_90B577AE 
+X-CRM114-Status: GOOD (  17.12  )
 X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.214.194 listed in list.dnswl.org]
+ no trust [209.85.210.196 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.196 listed in wl.mailspike.net]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (mcgrof[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.214.194 listed in wl.mailspike.net]
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
@@ -105,36 +105,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Jul 24, 2019 at 01:58:41AM -0400, Alexandre Ghiti wrote:
-> diff --git a/mm/util.c b/mm/util.c
-> index 0781e5575cb3..16f1e56e2996 100644
-> --- a/mm/util.c
-> +++ b/mm/util.c
-> @@ -321,7 +321,15 @@ unsigned long randomize_stack_top(unsigned long stack_top)
->  }
+On Wed, Jul 24, 2019 at 01:58:48AM -0400, Alexandre Ghiti wrote:
+> Mips uses TASK_IS_32BIT_ADDR to determine if a task is 32bit, but
+> this define is mips specific and other arches do not have it: instead,
+> use !IS_ENABLED(CONFIG_64BIT) || is_compat_task() condition.
+> 
+> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+> Reviewed-by: Kees Cook <keescook@chromium.org>
+> ---
+>  arch/mips/mm/mmap.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/mips/mm/mmap.c b/arch/mips/mm/mmap.c
+> index faa5aa615389..d4eafbb82789 100644
+> --- a/arch/mips/mm/mmap.c
+> +++ b/arch/mips/mm/mmap.c
+> @@ -17,6 +17,7 @@
+>  #include <linux/sched/signal.h>
+>  #include <linux/sched/mm.h>
+>  #include <linux/sizes.h>
+> +#include <linux/compat.h>
 >  
->  #ifdef CONFIG_ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT
-> -#ifdef CONFIG_ARCH_HAS_ELF_RANDOMIZE
-> +unsigned long arch_randomize_brk(struct mm_struct *mm)
-> +{
-> +	/* Is the current task 32bit ? */
+>  unsigned long shm_align_mask = PAGE_SIZE - 1;	/* Sane caches */
+>  EXPORT_SYMBOL(shm_align_mask);
+> @@ -191,7 +192,7 @@ static inline unsigned long brk_rnd(void)
+>  
+>  	rnd = rnd << PAGE_SHIFT;
+>  	/* 32MB for 32bit, 1GB for 64bit */
+> -	if (TASK_IS_32BIT_ADDR)
 > +	if (!IS_ENABLED(CONFIG_64BIT) || is_compat_task())
-> +		return randomize_page(mm->brk, SZ_32M);
-> +
-> +	return randomize_page(mm->brk, SZ_1G);
-> +}
-> +
->  unsigned long arch_mmap_rnd(void)
->  {
->  	unsigned long rnd;
-> @@ -335,7 +343,6 @@ unsigned long arch_mmap_rnd(void)
->  
->  	return rnd << PAGE_SHIFT;
->  }
+>  		rnd = rnd & SZ_32M;
+>  	else
+>  		rnd = rnd & SZ_1G;
+> -- 
 
-So arch_randomize_brk is no longer ifdef'd around
-CONFIG_ARCH_HAS_ELF_RANDOMIZE either and yet the header
-still has it. Is that intentional?
+Since there are at least two users why not just create an inline for
+this which describes what we are looking for and remove the comments?
 
   Luis
 
