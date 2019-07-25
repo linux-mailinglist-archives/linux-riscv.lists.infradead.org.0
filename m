@@ -2,47 +2,47 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C4C874715
-	for <lists+linux-riscv@lfdr.de>; Thu, 25 Jul 2019 08:22:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 132A674719
+	for <lists+linux-riscv@lfdr.de>; Thu, 25 Jul 2019 08:22:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OBvMZJtw8qUHvh1QVE9g8kUDTuZ71mnq/CeX+8CiCSk=; b=U/BuZsUA2Gael5jBg1JTOPOiJ
-	m+GGlSw3RRrR2KDhjSBPEgaLceqsxPMK/yGPlZnQaEwzd5cMafFd4ROH+SHAt3LPNca8ENC4KKxjY
-	c+472bCqMH4tBkUwjgYvbN/3RECju5GZFSy6DnbB6ujbru9J/e87JX6TETzNSehlMsglsSFLn9EJg
-	WcBjKg0j0C7afMIs97e/pVbMQjuyze8wwRQ3a0tSnhkdmJZHtXbICOY5Bt5YqKFy7cI9xOe7x+VBM
-	BwNAkBc78ZZQGh2924MpTh4fWbZgN3+8ZRQ0Xs5q7Xj+r1VdIw/RLbNTwDwo3gayjqRMHGPQfiy2U
-	fIZB1QkrA==;
+	 bh=zrP2cf9RkaV8i+/OgbE6jMlvFf+0t5NwmGFLQk45hTA=; b=kYQa/YUJGhgnxJBd9mbVJvVil
+	8UIeasyidACcIclh9JpKvPbdPoD7j8fub0AlxSVAu/nAcyPC0RWzLWtnY69DQWpNvnrK/y5wPE1h2
+	PrBabvfh7NMrWMXWtMztpDBIXRREWh+FilfwNcBFiL2UcQVkL1lLtYHHLOEtwzR3AFh/L2NjXZPGP
+	/C/3RvXalLzU3v91GKtlXJrEAE0tJ8boy4zD/6zMezFHYGAR/WBURWDiWoB0WAy4lgaNMZynfUPJD
+	vCm4Y0xlfrC2FlvrH0/azqPMpvoja6jwG/0Aq5S9oJGZdCkyWpmvEHH9RO+VcYxGmA8WNYHocuhfF
+	3Wp6d3aNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqX8v-0004zH-Ku; Thu, 25 Jul 2019 06:22:21 +0000
+	id 1hqX9F-0005Hq-LJ; Thu, 25 Jul 2019 06:22:41 +0000
 Received: from relay4-d.mail.gandi.net ([217.70.183.196])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqX8R-0004c5-Bq; Thu, 25 Jul 2019 06:21:52 +0000
+ id 1hqX8l-0004tE-EW; Thu, 25 Jul 2019 06:22:13 +0000
 X-Originating-IP: 81.250.144.103
 Received: from [10.30.1.20] (lneuilly-657-1-5-103.w81-250.abo.wanadoo.fr
  [81.250.144.103]) (Authenticated sender: alex@ghiti.fr)
- by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 9BA7EE0008;
- Thu, 25 Jul 2019 06:21:46 +0000 (UTC)
-Subject: Re: [EXTERNAL][PATCH REBASE v4 00/14] Provide generic top-down mmap
- layout functions
-To: Paul Burton <paul.burton@mips.com>
+ by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 5DDD5E000E;
+ Thu, 25 Jul 2019 06:22:06 +0000 (UTC)
+Subject: Re: [PATCH REBASE v4 11/14] mips: Adjust brk randomization offset to
+ fit generic version
+To: Andrew Morton <akpm@linux-foundation.org>
 References: <20190724055850.6232-1-alex@ghiti.fr>
- <20190724201819.6bhvyugquhfrldfa@pburton-laptop>
+ <20190724055850.6232-12-alex@ghiti.fr>
 From: Alexandre Ghiti <alex@ghiti.fr>
-Message-ID: <9019120e-fc69-22a3-6733-cba27f8eab4c@ghiti.fr>
-Date: Thu, 25 Jul 2019 08:21:46 +0200
+Message-ID: <1ba4061a-c026-3b9e-cd91-3ed3a26fce1b@ghiti.fr>
+Date: Thu, 25 Jul 2019 08:22:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190724201819.6bhvyugquhfrldfa@pburton-laptop>
+In-Reply-To: <20190724055850.6232-12-alex@ghiti.fr>
 Content-Language: fr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190724_232151_624935_57215EEF 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20190724_232211_907108_7034DE7D 
+X-CRM114-Status: GOOD (  19.65  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
@@ -66,59 +66,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Cc: Albert Ou <aou@eecs.berkeley.edu>, Kees Cook <keescook@chromium.org>,
  Catalin Marinas <catalin.marinas@arm.com>, Palmer Dabbelt <palmer@sifive.com>,
  Will Deacon <will.deacon@arm.com>, Russell King <linux@armlinux.org.uk>,
- Ralf Baechle <ralf@linux-mips.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- Luis Chamberlain <mcgrof@kernel.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
+ linux-mm@kvack.org, Paul Burton <paul.burton@mips.com>,
  Alexander Viro <viro@zeniv.linux.org.uk>, James Hogan <jhogan@kernel.org>,
- "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- "linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>,
- Christoph Hellwig <hch@lst.de>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+ linux-fsdevel@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-mips@vger.kernel.org, Christoph Hellwig <hch@lst.de>,
+ linux-arm-kernel@lists.infradead.org, Luis Chamberlain <mcgrof@kernel.org>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
-On 7/24/19 10:18 PM, Paul Burton wrote:
-> Hi Alexandre,
->
-> On Wed, Jul 24, 2019 at 01:58:36AM -0400, Alexandre Ghiti wrote:
->> Hi Andrew,
->>
->> This is simply a rebase on top of next-20190719, where I added various
->> Acked/Reviewed-by from Kees and Catalin and a note on commit 08/14 suggested
->> by Kees regarding the removal of STACK_RND_MASK that is safe doing.
->>
->> I would have appreciated a feedback from a mips maintainer but failed to get
->> it: can you consider this series for inclusion anyway ? Mips parts have been
->> reviewed-by Kees.
-> Whilst skimming email on vacation I hadn't spotted how extensive the
-> changes in v4 were after acking v3... In any case, for patches 11-13:
->
->      Acked-by: Paul Burton <paul.burton@mips.com>
-
-
-Great, thanks Paul ! I have just noticed there is an error in patch 11/14,
-but without much incidence since it gets fixed in patch 13/14. I'll see with
-Andrew if he wants a new version or not.
-
-
-Thanks for your time,
-
-
-Alex
-
-
->
-> Thanks,
->      Paul
->
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gNy8yNC8xOSA3OjU4IEFNLCBBbGV4YW5kcmUgR2hpdGkgd3JvdGU6Cj4gVGhpcyBjb21taXQg
+c2ltcGx5IGJ1bXBzIHVwIHRvIDMyTUIgYW5kIDFHQiB0aGUgcmFuZG9tIG9mZnNldAo+IG9mIGJy
+aywgY29tcGFyZWQgdG8gOE1CIGFuZCAyNTZNQiwgZm9yIDMyYml0IGFuZCA2NGJpdCByZXNwZWN0
+aXZlbHkuCj4KPiBTdWdnZXN0ZWQtYnk6IEtlZXMgQ29vayA8a2Vlc2Nvb2tAY2hyb21pdW0ub3Jn
+Pgo+IFNpZ25lZC1vZmYtYnk6IEFsZXhhbmRyZSBHaGl0aSA8YWxleEBnaGl0aS5mcj4KPiBSZXZp
+ZXdlZC1ieTogS2VlcyBDb29rIDxrZWVzY29va0BjaHJvbWl1bS5vcmc+Cj4gLS0tCj4gICBhcmNo
+L21pcHMvbW0vbW1hcC5jIHwgNyArKysrLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRp
+b25zKCspLCAzIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvbWlwcy9tbS9tbWFw
+LmMgYi9hcmNoL21pcHMvbW0vbW1hcC5jCj4gaW5kZXggYTdlODRiMmU3MWQ3Li5mYWE1YWE2MTUz
+ODkgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9taXBzL21tL21tYXAuYwo+ICsrKyBiL2FyY2gvbWlwcy9t
+bS9tbWFwLmMKPiBAQCAtMTYsNiArMTYsNyBAQAo+ICAgI2luY2x1ZGUgPGxpbnV4L3JhbmRvbS5o
+Pgo+ICAgI2luY2x1ZGUgPGxpbnV4L3NjaGVkL3NpZ25hbC5oPgo+ICAgI2luY2x1ZGUgPGxpbnV4
+L3NjaGVkL21tLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9zaXplcy5oPgo+ICAgCj4gICB1bnNpZ25l
+ZCBsb25nIHNobV9hbGlnbl9tYXNrID0gUEFHRV9TSVpFIC0gMTsJLyogU2FuZSBjYWNoZXMgKi8K
+PiAgIEVYUE9SVF9TWU1CT0woc2htX2FsaWduX21hc2spOwo+IEBAIC0xODksMTEgKzE5MCwxMSBA
+QCBzdGF0aWMgaW5saW5lIHVuc2lnbmVkIGxvbmcgYnJrX3JuZCh2b2lkKQo+ICAgCXVuc2lnbmVk
+IGxvbmcgcm5kID0gZ2V0X3JhbmRvbV9sb25nKCk7Cj4gICAKPiAgIAlybmQgPSBybmQgPDwgUEFH
+RV9TSElGVDsKPiAtCS8qIDhNQiBmb3IgMzJiaXQsIDI1Nk1CIGZvciA2NGJpdCAqLwo+ICsJLyog
+MzJNQiBmb3IgMzJiaXQsIDFHQiBmb3IgNjRiaXQgKi8KPiAgIAlpZiAoVEFTS19JU18zMkJJVF9B
+RERSKQo+IC0JCXJuZCA9IHJuZCAmIDB4N2ZmZmZmdWw7Cj4gKwkJcm5kID0gcm5kICYgU1pfMzJN
+Owo+ICAgCWVsc2UKPiAtCQlybmQgPSBybmQgJiAweGZmZmZmZmZ1bDsKPiArCQlybmQgPSBybmQg
+JiBTWl8xRzsKPiAgIAo+ICAgCXJldHVybiBybmQ7Cj4gICB9CgpIaSBBbmRyZXcsCgpJIGhhdmUg
+anVzdCBub3RpY2VkIHRoYXQgdGhpcyBwYXRjaCBpcyB3cm9uZywgZG8geW91IHdhbnQgbWUgdG8g
+c2VuZAphbm90aGVyIHZlcnNpb24gb2YgdGhlIGVudGlyZSBzZXJpZXMgb3IgaXMgdGhlIGZvbGxv
+d2luZyBkaWZmIGVub3VnaCA/ClRoaXMgbWlzdGFrZSBnZXRzIGZpeGVkIGFueXdheSBpbiBwYXRj
+aCAxMy8xNCB3aGVuIGl0IGdldHMgbWVyZ2VkIHdpdGggdGhlCmdlbmVyaWMgdmVyc2lvbi4KClNv
+cnJ5IGFib3V0IHRoYXQsCgpUaGFua3MsCgpBbGV4CgpkaWZmIC0tZ2l0IGEvYXJjaC9taXBzL21t
+L21tYXAuYyBiL2FyY2gvbWlwcy9tbS9tbWFwLmMKaW5kZXggYTdlODRiMmU3MWQ3Li5mZjZhYjg3
+ZTljNTYgMTAwNjQ0Ci0tLSBhL2FyY2gvbWlwcy9tbS9tbWFwLmMKKysrIGIvYXJjaC9taXBzL21t
+L21tYXAuYwpAQCAtMTYsNiArMTYsNyBAQAogwqAjaW5jbHVkZSA8bGludXgvcmFuZG9tLmg+CiDC
+oCNpbmNsdWRlIDxsaW51eC9zY2hlZC9zaWduYWwuaD4KIMKgI2luY2x1ZGUgPGxpbnV4L3NjaGVk
+L21tLmg+CisjaW5jbHVkZSA8bGludXgvc2l6ZXMuaD4KCiDCoHVuc2lnbmVkIGxvbmcgc2htX2Fs
+aWduX21hc2sgPSBQQUdFX1NJWkUgLSAxO8KgIC8qIFNhbmUgY2FjaGVzICovCiDCoEVYUE9SVF9T
+WU1CT0woc2htX2FsaWduX21hc2spOwpAQCAtMTg5LDExICsxOTAsMTEgQEAgc3RhdGljIGlubGlu
+ZSB1bnNpZ25lZCBsb25nIGJya19ybmQodm9pZCkKIMKgwqDCoMKgwqDCoMKgIHVuc2lnbmVkIGxv
+bmcgcm5kID0gZ2V0X3JhbmRvbV9sb25nKCk7CgogwqDCoMKgwqDCoMKgwqAgcm5kID0gcm5kIDw8
+IFBBR0VfU0hJRlQ7Ci3CoMKgwqDCoMKgwqAgLyogOE1CIGZvciAzMmJpdCwgMjU2TUIgZm9yIDY0
+Yml0ICovCivCoMKgwqDCoMKgwqAgLyogMzJNQiBmb3IgMzJiaXQsIDFHQiBmb3IgNjRiaXQgKi8K
+IMKgwqDCoMKgwqDCoMKgIGlmIChUQVNLX0lTXzMyQklUX0FERFIpCi3CoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHJuZCA9IHJuZCAmIDB4N2ZmZmZmdWw7CivCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIHJuZCA9IHJuZCAmIChTWl8zMk0gLSAxKTsKIMKgwqDCoMKgwqDCoMKgIGVsc2UK
+LcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcm5kID0gcm5kICYgMHhmZmZmZmZmdWw7CivC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJuZCA9IHJuZCAmIChTWl8xRyAtIDEpOwoKIMKg
+wqDCoMKgwqDCoMKgIHJldHVybiBybmQ7CiDCoH0KCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1y
+aXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcmlzY3YK
