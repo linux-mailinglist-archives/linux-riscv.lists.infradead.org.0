@@ -2,74 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89289772FB
-	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 22:47:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65B557730D
+	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 22:56:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=scPu4zy9kmv+KCjqerQdNiP4qfvp7HlgehwxYLkipMQ=; b=Phhm7i/Y+B1dDM
-	riBVHp6PeGx8GmEKQLYJSPrnjWEOp0u6pYaMFWOjvP/JbmEbVZIw9oRJJ63TUyiaDTINi9Sx5v6wM
-	hNWnqgN3p/b0haoElGhEyu9h30puF1Nmdyj0hNbMd+n+OdI0K7WA2Lr8GiK40pjy8P0wFe8wj/ntx
-	2AjtJtKOQp4lqQ17LGqu7pPZw5vGQcmvUkI8qcduBGCaYhQq/DT7gpSYCrkJtg4aea3dlaWST1pV7
-	Iv4/auWrDzc7ggd4D4fNXA1UYgGZ3kBneOLksG5pwOKjMbMt7JUaWKhxHx8ZppvzMyVmVzKY11zOt
-	QWEv5dlNQ5zbLJxVsQrA==;
+	List-Owner; bh=UlkGY9cSL7OZV1JbP1fGZg/nzJ9eIbJY3+dDd4G3EW4=; b=T1k1sx0guUSI5c
+	UrUGnWcFQ+rS7j5XOrUPwU35t0NSLA/XMj+ZSqVnQyXquvrerNt6DlUGTLuRiLqs2DHMr/Y+Z6RUb
+	/E64zLPMRuUXg6bSuwDcJM89qHlnUDUIGKtoMp84btfyx1jfXraXSPzFglolXUot5xak9ee3Nqd4r
+	+wXF+tM+wtkEbcoF8UOjdWpUFRZHyZHbqz1scLMvmDzYr9Ene96sBFp+uB+SfkWBlsdcAaiqf/C7s
+	9BIzLCWyGeU31Pzt3X9HL0VpiTbyrCD3tPQcsydGBW7x93k7/q3YJbRsyvfbM5d4IffSjAA9aInpn
+	PAYsoFXQhARkpKZzD2CA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr77t-0003WV-UC; Fri, 26 Jul 2019 20:47:42 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1hr7GA-00082O-0I; Fri, 26 Jul 2019 20:56:14 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hr77o-0003WB-KY
- for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 20:47:38 +0000
-Received: by mail-io1-xd41.google.com with SMTP id g20so107469145ioc.12
- for <linux-riscv@lists.infradead.org>; Fri, 26 Jul 2019 13:47:35 -0700 (PDT)
+ id 1hr7G6-00080U-AU
+ for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 20:56:11 +0000
+Received: by mail-io1-xd44.google.com with SMTP id q22so107492205iog.4
+ for <linux-riscv@lists.infradead.org>; Fri, 26 Jul 2019 13:56:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=mMbJIOT9Mkj81+DURpJRyWnAKm1UiE5G4DSpvnaTnlQ=;
- b=iQLhlbEBRwr8KtEYt5QkUcHsN7g9ET/3bTou7gUrL0NufVWuLo3Lc3Y4p7zfHTOiPE
- 9qF21HURQiSY3zUkjVj3mLUtscZQdl0SISNvcDw3E2xQ0sdZT3a8q++f1llCEySh1QNx
- Zqvas98bNAxVX217PC4OnCEI9gxYh/7Sq143WfGc87TEShzOG3D/WQP8w61o0R7H+HQh
- tpkD2ZTGdX5ev7S3dVHQXZHq7zCZZ56Q2K/x7RN8vw3Nmrtd9HEMBgiP3OXMm7btq9fE
- yPFe2pDXAszV+q70PEI1DSXKl0pGvqT0MBL/YXcdkdm2oJBMpIfLgs+UNcjSuedXCCeu
- SXKQ==
+ bh=G6aDD/GD+kvdk612rfOXYa0fz0XwDpj5Lf+HHPLV2pE=;
+ b=K/qPJAaj3Z8y8FVZ5XbVN1aSvyEsVXhmMWRQWBADXEWQcg1tqYf7IFML/8BubJLH3J
+ Ghmux6TwEU5FUK6ZIbChZ+OXlvJONw8Vo/IMDTk/U4P5C8XrU0ileTNjjkUXRSKhPTo+
+ O8qDBCARxsZQ+Du522IvgSolVDop4HI90FEyeJbEoMY1JTrZg3oTO9/PixW7auI1dgiM
+ scvowKq/rkA8ZpnbrBjYzx3jDsjy1OGp0wxKC4+M2fyeJZVbYSDq+VybagCDELYW1TOe
+ BuJptbCtgMvmW7JB4qyuUp81AK+HtqFNX/mY/z7DumSYn1wREXlHL3xOpwtC0bQai47d
+ kNPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=mMbJIOT9Mkj81+DURpJRyWnAKm1UiE5G4DSpvnaTnlQ=;
- b=BClYEHLk+6KZfiXD0QLtyr1mRS+UOXIgClC3Febp/hB2yDqkzNvEqmQHlJul68fP0P
- jvFRRqvJZoVcCU+9w+9rvvHvyewQ2hWH/UxXTEVCHBeN1PQ7oqoWsboRc0upJjRoCt1k
- PNTl1nU78cOpy7gNZOY+2nSoxnVR81TWiAu84uR7rLl+ZpUy1m7XVkqUrbFjCqa7N10c
- 6UtGFwokvgqdubJ0P1ooI/igij9VgCxKLwGYdtMTqKclP7HCK4WrQshrdcF/Y6lHPxY0
- wu17HCkNVm7uRvS5V5fLzjAobJF7gpjXQCc2HJSI9VPRzWHE+j324sKOQs8DPoGG9DpY
- Piog==
-X-Gm-Message-State: APjAAAX03yekvB6LS76HS9A+Kxo2GRfKvxnG1qLpgWbpfwcJzy+IqrYP
- B1Cb4xi70gWCIUjfQjJ/BkEcMw==
-X-Google-Smtp-Source: APXvYqwKKrDjZKa5SshdtHfZGTqeOjqpdefuxyMAWSHZe6JrF8fIyDi3vcyrwB53xGMYGrzjC2LFvA==
-X-Received: by 2002:a05:6638:517:: with SMTP id
- i23mr24654424jar.71.1564174055390; 
- Fri, 26 Jul 2019 13:47:35 -0700 (PDT)
+ bh=G6aDD/GD+kvdk612rfOXYa0fz0XwDpj5Lf+HHPLV2pE=;
+ b=Dp1xZdLkih02+6JZHh4YMFw1ubLFG0HOyosfoAQ9lSMqWW9QyaErFKnCG466xzMmms
+ oJiDO5DXXpTfssLcIjAGlsdZ+xuNZ4PjY7CMxKs3SRrZqyKjn9V8qDd/KBK1qFYv7zOw
+ l3UqU6MzlqjLfPZLuoeEOmhfqbgsZBA/jfQ5rNk8KBH6hv5/iFef6BGdzFhlDGUztDqk
+ KDVdcrKNIuD9V7EmhAFOnXDfBzvRDjBnJmvr4DAvFtwCOheMDGkUA4cSvE2CqhJ1t2aQ
+ 3viQZCQYdd/m0vuD2tPw59Gqf8+zir3ws8mW4U9qAil3mAYDmGDhtc2OivjDU0yFhNVV
+ gGuQ==
+X-Gm-Message-State: APjAAAUUcteN7+MF1k+Z8tqvXRXCdIV0zl7P7cmCYNfUeMcv1AM3QwE8
+ 9m9x7U5ocGM5SzdTao/Kw5MZjg==
+X-Google-Smtp-Source: APXvYqxvy9zWYI4Uw+gXM/d3bwjM8f/ZAAfYwvNmt0CtQtGvWox+Z8mIehOzitQ6K7v8DCeDwIIadg==
+X-Received: by 2002:a02:8816:: with SMTP id r22mr25863672jai.60.1564174569381; 
+ Fri, 26 Jul 2019 13:56:09 -0700 (PDT)
 Received: from localhost (67-0-24-96.albq.qwest.net. [67.0.24.96])
- by smtp.gmail.com with ESMTPSA id l11sm39320915ioj.32.2019.07.26.13.47.34
+ by smtp.gmail.com with ESMTPSA id b8sm44104247ioj.16.2019.07.26.13.56.08
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 26 Jul 2019 13:47:34 -0700 (PDT)
-Date: Fri, 26 Jul 2019 13:47:33 -0700 (PDT)
+ Fri, 26 Jul 2019 13:56:08 -0700 (PDT)
+Date: Fri, 26 Jul 2019 13:56:07 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH 3/4] RISC-V: Support case insensitive ISA string parsing.
-In-Reply-To: <20190726194638.8068-3-atish.patra@wdc.com>
-Message-ID: <alpine.DEB.2.21.9999.1907261346560.26670@viisi.sifive.com>
-References: <20190726194638.8068-1-atish.patra@wdc.com>
- <20190726194638.8068-3-atish.patra@wdc.com>
+To: Wang Xiayang <xywang.sjtu@sjtu.edu.cn>
+Subject: Re: [PATCH] pwm: avoid disabling clk twice
+In-Reply-To: <20190726043549.18034-1-xywang.sjtu@sjtu.edu.cn>
+Message-ID: <alpine.DEB.2.21.9999.1907261353330.14300@viisi.sifive.com>
+References: <20190726043549.18034-1-xywang.sjtu@sjtu.edu.cn>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_134736_738898_ACC649E0 
-X-CRM114-Status: UNSURE (   6.14  )
+X-CRM114-CacheID: sfid-20190726_135610_372192_B2DA8701 
+X-CRM114-Status: UNSURE (   7.13  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -77,7 +75,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -99,29 +97,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup.patel@wdc.com>, Alan Kao <alankao@andestech.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org,
- Johan Hovold <johan@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
- Palmer Dabbelt <palmer@sifive.com>, linux-riscv@lists.infradead.org,
- Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>
+Cc: linux-riscv@lists.infradead.org, palmer@sifive.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 26 Jul 2019, Atish Patra wrote:
+On Fri, 26 Jul 2019, Wang Xiayang wrote:
 
-> As per riscv specification, ISA naming strings are
-> case insensitive. However, currently only lower case
-> strings are parsed during cpu procfs.
+> Similar to commit 63fd4b94b948 ("serial: imx: fix error handling
+> in console_setup"), as ddata->clk has been explicitly disabled two
+> lines above, it should avoid being disabled for the second time.
+> clk_unprepare() suits here better.
 > 
-> Support parsing of upper case letters as well.
-> 
-> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> Signed-off-by: Wang Xiayang <xywang.sjtu@sjtu.edu.cn>
 
-Is there a use case that's driving this, or can we just say, "use 
-lowercase letters" and leave it at that?
+The patch looks reasonable, but it needs to be sent to other people and 
+mailing lists.
+
+Running "scripts/get_maintainer.pl -f drivers/pwm/pwm-sifive.c" shows:
+
+Thierry Reding <thierry.reding@gmail.com> (maintainer:PWM SUBSYSTEM)
+Palmer Dabbelt <palmer@sifive.com> (supporter:SIFIVE DRIVERS)
+Paul Walmsley <paul.walmsley@sifive.com> (supporter:SIFIVE DRIVERS)
+linux-pwm@vger.kernel.org (open list:PWM SUBSYSTEM)
+linux-riscv@lists.infradead.org (open list:SIFIVE DRIVERS)
+linux-kernel@vger.kernel.org (open list)
+
+Thus Thierry will ultimately be the one responsible for merging this, and 
+linux-pwm@ needs to be cc'ed as well.
 
 
 - Paul
