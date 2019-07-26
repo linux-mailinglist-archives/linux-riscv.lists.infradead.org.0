@@ -2,38 +2,94 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E96D7731F
-	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 23:02:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD7B2773F0
+	for <lists+linux-riscv@lfdr.de>; Sat, 27 Jul 2019 00:21:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Y18G1VDqi0KxvdmqI/oJm/dQeXjsq9QvVJtOOQQAGA=; b=iYe3ZfJOtZAr3D
-	9nzl98HIGaLZ9UHv6XpCtw63b3xl3qexENRh+oJFuUCbz4u/x3J5XOErWpzrg7/DsZ5Nzgx/1muce
-	ntMjzFekIBpuI6TY8X4k7FeYu9ydTr+YJnc62Fa9t9fniIjrhWO7dMTZMXa0DEwBdxrIqEc9QA8Hv
-	AubJ2pY1Lz5o/YlKansa+DQXn/MyeYAYMoozPknT2NW8I4I26pxRUw7Zk47Ms1a3+0VZQc16NpvBK
-	83BWsNuWN6qtSYYUNy6ja8HWMWa4RTZG6Z+dGq86UQOcos8jYARoxTQBof+sfyi+j2rUgcl93/FKp
-	eoAycB6L29Yy27BlLaWA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=o2dxsv3O0DZ7FgNLwDwWVbth2hRMsY7c5CC1vnVlKUo=; b=NRi6u5I0MocfjcUW8nFsqn+mG
+	NCViuff3ccPbxB5vwtDHOAYLKC55Dw/8gefKq/1FCjJQNpjC4XKe8RmTJ6cnbs+MyTw6SiIFSxo8w
+	d4VVPpopyalRMNL/KyHsX0ZkYbBzeHciccqHli1ryqRO0QQFnywTVMXP0MLHkhncUBjb2bhs/E/Q4
+	3wyMoJwEKimUNNiPe8gVaiIKI0h8eUQx6FAp/2IUmvDQTbR7YArgobBoF+qWh371AekXCIDRqTl+t
+	XMzboEot5+5l6d730HSrX0ISvSQL44N3WtCu4nrpWAqrHzPkfzarM25cBxFLzYjyyUuqmI8l/iU60
+	craOs7Egw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr7Lm-0006IQ-J2; Fri, 26 Jul 2019 21:02:02 +0000
-Received: from [179.95.31.157] (helo=bombadil.infradead.org)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hr7Lj-0006ID-PJ; Fri, 26 Jul 2019 21:01:59 +0000
-Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
- (envelope-from <mchehab@bombadil.infradead.org>)
- id 1hr7Lh-0005HC-06; Fri, 26 Jul 2019 18:01:57 -0300
-From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Subject: [PATCH] docs: riscv: convert boot-image-header.txt to ReST
-Date: Fri, 26 Jul 2019 18:01:55 -0300
-Message-Id: <1eaeb3fbb74de55af0b3f6d93ab40776dcbbb5c8.1564174903.git.mchehab+samsung@kernel.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <57eaa99a-d644-7b79-7177-a45d3ef1e71a@wdc.com>
-References: <57eaa99a-d644-7b79-7177-a45d3ef1e71a@wdc.com>
+	id 1hr8aA-0005aq-61; Fri, 26 Jul 2019 22:20:58 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hr8a6-0005a6-9d
+ for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 22:20:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1564179655; x=1595715655;
+ h=subject:to:cc:references:from:message-id:date:
+ mime-version:in-reply-to:content-transfer-encoding;
+ bh=2Pp7soz5T65+2MFGSxtLJF8/y1h3Zy8XLJbl/hXcT98=;
+ b=I7L/iwUU9Vh91q99LoxMhs326cH+PTJNzbytq9HP1FOxAb/psIbgH1CD
+ qsrVtdS8WYlo179FimsIGiMAu4a2DELzThGlIRYf2Z5iqVc2GAz7C/FlO
+ vSpNJ/TGfGWQ9oJaN+3BoDRBelXdTxHVstgr2rltR53WsE0R+3WZYyKzL
+ VgOF/rwl2N1SgotQY2axpXEvkVp4o4sQ7VpgJE8NWux+pLr6ZZmEImTlj
+ NHV3mPk5Mpugx456ogQfjG/WdgzxKl/b1EqgeJ4AEaJZgt3vbLxPoI3Ar
+ iHOf0+EhWgmuk2giPW9UJINRXc18wL+0HS0sMgdc9m2JZPsEEUPCweIOh Q==;
+IronPort-SDR: whdlgktyc2IJ2YXmL++owbJHDg//SueMdo76/en8eQI6aFrNLZ5RYWTEZmznVaCr8FZBEuXbhX
+ o6a0kJk9xReKFt4bVwctjOJ7QIZcSVcz3YbXxKDaIylUkWp4pFbLfrAqDANIOtmZvTbSyK3Bm2
+ fXK00AzjcEgmR1B0j0mdVxWBe6FY/SZLsFPc2X9mC56c+pLFQXMnfO0z/ciB95sGI+LbwQLMNx
+ 3H4pLV3YJThrkCVdyC/4qfv3sQUuJZVzZ3PNXfDPnNqfwTHOhoY5G0YjS0xaAbFkxbgDgEdqd0
+ xh0=
+X-IronPort-AV: E=Sophos;i="5.64,312,1559491200"; d="scan'208";a="114246583"
+Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 27 Jul 2019 06:20:52 +0800
+IronPort-SDR: 1qUBU7pqGQCBzH5UWhVv2coC/5nxJLOUHprNn600ktwvEzjBWIUMlHzbfxxvP43yFXBRvYYnLc
+ q56KfSbP7QxCZHi1tqGI+qveqgu0mzZ/RRyGrHOyUleK8FRCNpxtydF0je/nHCA39gH53/QVVA
+ mmr3pUbQkiSjQHxsl4ALCJo0rPHAt5Z8lEDnuBJnZuagTFLzvuvSQ010i1+mht4uN0hN29rpQJ
+ XAygg19ht56363TOgo9hz6veG7Qfve7rxSKI9lGaF5xMmYlmZpVEeBHlz4pp9Zk0VkHY1A0XFK
+ ee9QjBTtnA31Abv4BX1vjwq5
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep02.wdc.com with ESMTP; 26 Jul 2019 15:19:00 -0700
+IronPort-SDR: DTvqt9Mfx3sEEJcaEIx2FzJIgmQZ2mIv8hWErAdPzRFMdP8MEQzAeRV/QyvsCeRPRd2OXjP7h1
+ R5ZcVL7wgYNM/8gkkzOacIbRzpp/FRBnOST3Ily25tSBf7loEKaXkgRK7T23DqAwMooO0TxvoO
+ xrb6+4c0kBv5ZzD9Uv4ZSosSoW8ld/+z3IlmYo2nc57WLNikT60H/TKXaM/9x701mObj1g1bgA
+ nNwGP5ZN4ut/H4GcPqBuphfvr2IjI2GJsS9+xBio/aHuG804X+YShuM6HmLZALhiSQgEklZGG2
+ yw0=
+Received: from unknown (HELO [10.225.104.231]) ([10.225.104.231])
+ by uls-op-cesaip01.wdc.com with ESMTP; 26 Jul 2019 15:20:51 -0700
+Subject: Re: [PATCH 3/4] RISC-V: Support case insensitive ISA string parsing.
+To: Paul Walmsley <paul.walmsley@sifive.com>
+References: <20190726194638.8068-1-atish.patra@wdc.com>
+ <20190726194638.8068-3-atish.patra@wdc.com>
+ <alpine.DEB.2.21.9999.1907261346560.26670@viisi.sifive.com>
+From: Atish Patra <atish.patra@wdc.com>
+Message-ID: <a8a6be2c-2dcb-fe58-2c32-e3baa357819c@wdc.com>
+Date: Fri, 26 Jul 2019 15:20:47 -0700
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
+ Gecko/20100101 Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <alpine.DEB.2.21.9999.1907261346560.26670@viisi.sifive.com>
+Content-Language: en-US
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190726_152054_377034_4924EA91 
+X-CRM114-Status: GOOD (  11.60  )
+X-Spam-Score: -2.5 (--)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-2.5 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.42 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,128 +101,50 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Jonathan Corbet <corbet@lwn.net>,
- Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, Mauro Carvalho Chehab <mchehab@infradead.org>,
- Atish Patra <atish.patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Karsten Merker <merker@debian.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Anup Patel <Anup.Patel@wdc.com>, Alan Kao <alankao@andestech.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Johan Hovold <johan@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Convert this small file to ReST format by:
-   - Using a proper markup for the document title;
-   - marking a code block as such;
-   - use tags for Author and date;
-   - use tables for bit map fields.
+On 7/26/19 1:47 PM, Paul Walmsley wrote:
+> On Fri, 26 Jul 2019, Atish Patra wrote:
+> 
+>> As per riscv specification, ISA naming strings are
+>> case insensitive. However, currently only lower case
+>> strings are parsed during cpu procfs.
+>>
+>> Support parsing of upper case letters as well.
+>>
+>> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> 
+> Is there a use case that's driving this, or 
 
-While here, fix a broken reference for a document with is
-planned but is not here yet.
+Currently, we use all lower case isa string in kvmtool. But somebody can 
+have uppercase letters in future as spec allows it.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
----
- ...image-header.txt => boot-image-header.rst} | 39 ++++++++++++-------
- Documentation/riscv/index.rst                 |  1 +
- 2 files changed, 26 insertions(+), 14 deletions(-)
- rename Documentation/riscv/{boot-image-header.txt => boot-image-header.rst} (72%)
 
-diff --git a/Documentation/riscv/boot-image-header.txt b/Documentation/riscv/boot-image-header.rst
-similarity index 72%
-rename from Documentation/riscv/boot-image-header.txt
-rename to Documentation/riscv/boot-image-header.rst
-index 1b73fea23b39..43e9bd0731d5 100644
---- a/Documentation/riscv/boot-image-header.txt
-+++ b/Documentation/riscv/boot-image-header.rst
-@@ -1,22 +1,25 @@
--				Boot image header in RISC-V Linux
--			=============================================
-+=================================
-+Boot image header in RISC-V Linux
-+=================================
- 
--Author: Atish Patra <atish.patra@wdc.com>
--Date  : 20 May 2019
-+:Author: Atish Patra <atish.patra@wdc.com>
-+:Date:   20 May 2019
- 
- This document only describes the boot image header details for RISC-V Linux.
--The complete booting guide will be available at Documentation/riscv/booting.txt.
- 
--The following 64-byte header is present in decompressed Linux kernel image.
-+TODO:
-+  Write a complete booting guide.
-+
-+The following 64-byte header is present in decompressed Linux kernel image::
- 
- 	u32 code0;		  /* Executable code */
--	u32 code1; 		  /* Executable code */
-+	u32 code1;		  /* Executable code */
- 	u64 text_offset;	  /* Image load offset, little endian */
- 	u64 image_size;		  /* Effective Image size, little endian */
- 	u64 flags;		  /* kernel flags, little endian */
- 	u32 version;		  /* Version of this header */
--	u32 res1  = 0;		  /* Reserved */
--	u64 res2  = 0;    	  /* Reserved */
-+	u32 res1 = 0;		  /* Reserved */
-+	u64 res2 = 0;		  /* Reserved */
- 	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
- 	u32 res3;		  /* Reserved for additional RISC-V specific header */
- 	u32 res4;		  /* Reserved for PE COFF offset */
-@@ -25,16 +28,21 @@ This header format is compliant with PE/COFF header and largely inspired from
- ARM64 header. Thus, both ARM64 & RISC-V header can be combined into one common
- header in future.
- 
--Notes:
-+Notes
-+=====
-+
- - This header can also be reused to support EFI stub for RISC-V in future. EFI
-   specification needs PE/COFF image header in the beginning of the kernel image
-   in order to load it as an EFI application. In order to support EFI stub,
-   code0 should be replaced with "MZ" magic string and res5(at offset 0x3c) should
-   point to the rest of the PE/COFF header.
- 
--- version field indicate header version number.
--	Bits 0:15  - Minor version
--	Bits 16:31 - Major version
-+- version field indicate header version number
-+
-+	==========  =============
-+	Bits 0:15   Minor version
-+	Bits 16:31  Major version
-+	==========  =============
- 
-   This preserves compatibility across newer and older version of the header.
-   The current version is defined as 0.1.
-@@ -44,7 +52,10 @@ Notes:
-   extension for RISC-V in future. For current version, it is set to be zero.
- 
- - In current header, the flag field has only one field.
--	Bit 0: Kernel endianness. 1 if BE, 0 if LE.
-+
-+	=====  ====================================
-+	Bit 0  Kernel endianness. 1 if BE, 0 if LE.
-+	=====  ====================================
- 
- - Image size is mandatory for boot loader to load kernel image. Booting will
-   fail otherwise.
-diff --git a/Documentation/riscv/index.rst b/Documentation/riscv/index.rst
-index e3ca0922a8c2..215fd3c1f2d5 100644
---- a/Documentation/riscv/index.rst
-+++ b/Documentation/riscv/index.rst
-@@ -5,6 +5,7 @@ RISC-V architecture
- .. toctree::
-     :maxdepth: 1
- 
-+    boot-image-header
-     pmu
- 
- .. only::  subproject and html
+can we just say, "use
+> lowercase letters" and leave it at that?
+> 
+
+In that case, it will not comply with RISC-V spec. Is that okay ?
+
+> 
+> - Paul
+> 
+
+
 -- 
-2.21.0
-
+Regards,
+Atish
 
 _______________________________________________
 linux-riscv mailing list
