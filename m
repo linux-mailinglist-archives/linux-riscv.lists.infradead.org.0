@@ -2,82 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D22BF7725D
-	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 21:47:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A933B7727B
+	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 22:01:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RYlBT7RC95bn/NhgiWb5VIr4eTTo53zCRVWmnTU17YE=; b=oEl/S3IPXbUR/8
-	u0WOOZeW/PaUxWlm4qahVLYgRHEE7q+7G+XRWawHUqILYf3qsNyk9Jd8Dbg2HyUVJAY0NutPK/Ied
-	JdS1O0iVriVwGOdYALN4lWX0h+RM+hOo4U73yD4cBdjQ/qnGD+rAmgybc7rA5GjtTQkt/Hc1N6nNJ
-	Ib5BfP11qSXF/sT7GpKz2WyPLPEHANBgrrZ7hkMjfpJmQf32LxtwkljXRsF5zsG1qVLCVrtWVg4Ko
-	hM/rImwZ+nOoKkIRS8dAxt0NUkFGzv8T6xJfQz72Vdzl3Wgh82EulC9QAQNyBD/q09s4YCbhE3xZ0
-	TpoFIJjF3la9bmg+ZqjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1FjCxyNsLJDTORNbA2urtk6psDblmxs5RLCKSkKX49g=; b=iz0GA/IvriQ7kO
+	F4GEr7DY0QyXb5JehD9juwNodNFc0ZKllw6nxRmQ1uAIXCYGTHrY2ugGmxDRfmCqhNLE5AIHxW450
+	iPLUUOyWPH/+LB02Y9cxCpOC2zYdpdHEtGTg3vAmH6Isw4cNOv9PFfi5EXAzH/efJuMt+D6mfVBed
+	Hi6pZeJtnCRSJeUfG5rhRFdaH7ORD05t11QCItsc1MEJh3T/DA2Bck9TJMUKmjZ0EZomGd+0tJnrE
+	DnQwZmn8cBW/rJhInKi+mcx1W32abkUwXeBmI68Yfhh1t8vD1gEv41bSxO7mtF1XGDBr7JG9JJFW4
+	46s1b3183V/n/Qayrefg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr6BC-00029M-RI; Fri, 26 Jul 2019 19:47:02 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hr6Od-00075T-GE; Fri, 26 Jul 2019 20:00:55 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hr6B6-00021u-LL
- for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 19:46:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564170417; x=1595706417;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=4G/AiivRvt04iQqbVTDPT9b5v5TEP81JdiptpePFLX8=;
- b=QPztT1CpXETguBuN8/3qDlvxJGXuTvRZYrhdVmHRTNm3qJmau8DlO8sF
- FSuXBJCBOaejx6vhLgk41vyATvvVOEVG3SGRUGw1+nd59sAGTX8SzKR8Q
- z/SscCfIvpIYwVf9D5/hzpLz3djt1UJYWQdy/Tjk6rl8dsJQk9f6C/c4X
- y61NsnSVmOcm+7SJfg8gYVODo5gS2eksTr0yABBOQpcqNph9Fl6ksXa9T
- 4PdjqBm32zzkkX40bqRVu/l0Elb2rF17RYYJSjcemL4iox8NzdQ/3viHd
- 1UpcD4/3SPBuZqvspLo5T4wiX1VVjPHtxYVxWVxiK9i+QBHSIUxC+ezqc g==;
-IronPort-SDR: ac8LtnTN9uoIOa7CxCKnOQuTCn2sg5Ux6Ez8VjOWrJAlmWjnozONaJf8ihDZrLH8CkY8o9C8Yd
- V2VpRez9hFy4XTpZpUd9HiZo029u2ppKLRk8x2heYpX0sFGvG6Ea9OMqWJvNtBUilIpS+hPx4O
- t5PdUADtGAbqWJXHtk4ezIOttVEp6kaHdNH/yHF+XGs3oy5zzUID+erEE3P2i07tR3025Hn3j0
- ePt7hBKjO9hQndTVEudGuLvwpvKZz/YJiodtQj27JNfF56i24af/St4G+YZjdDnZTXE2Drf8jM
- YrQ=
-X-IronPort-AV: E=Sophos;i="5.64,312,1559491200"; d="scan'208";a="115831170"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 27 Jul 2019 03:46:49 +0800
-IronPort-SDR: NqWIBem3/+GD9lBaDonHEN7VaK3Go8FigEJpjSzzV9mhLVV1tAKDwA1b5idzdj8+yzYx/mfjHY
- 6HiSEU0P9KfyB3rTtuVI3Rof19eeESI8T3kxg9rH5n/TUBbIwdDejuUpDMBN4nqfjfFwe8SrnM
- B6qzMWKzR/vbDNbkqXO9oNGXolU4VW2X4N90seVUSU+qpuNzj89ShMXsFLp9fMQZ6JC/GZh8fR
- bLYgDdhIlte+xH5esPwcRHdUkkgou6WIYeHNwmlnyA6NIrSbj0GBhrN9vs337K24NtocKkEBLI
- sCkUIB4B9r0L+ngqu/CcS0TY
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP; 26 Jul 2019 12:44:57 -0700
-IronPort-SDR: J+Ohxn5O071I/GlSvFKCslQ9U8iEOicbnZ4EcP2qBdVSymXxULqZFXIfnOnMBQFvrfRo8ZHBlm
- fFpNFzKwqBNbM0XfVEW+YRpM+1MQbVg4/t+Xwxpji2jecPcLABfxtsEcO8eILswds3CPKKERls
- R1MTIVpFz5P7/9+zl0AvLs+6yKfvCYsW4I7XaCjhX01og23X+/jlzsOfLnB6mLSnGdWs5F69Cv
- t0gCfuOsBiMP1ZYMyIfhHFZKG2FE5t3hOTvud6Dlgv4xYVIKMTx5bEfe9N4nm0/YTE60F4sS2n
- gco=
-Received: from jedi-01.sdcorp.global.sandisk.com (HELO
- jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 26 Jul 2019 12:46:48 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] RISC-V: Fix unsupported isa string info.
-Date: Fri, 26 Jul 2019 12:46:38 -0700
-Message-Id: <20190726194638.8068-4-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190726194638.8068-1-atish.patra@wdc.com>
-References: <20190726194638.8068-1-atish.patra@wdc.com>
+ id 1hr6Oa-00074l-3r
+ for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 20:00:53 +0000
+Received: by mail-io1-xd44.google.com with SMTP id q22so107202181iog.4
+ for <linux-riscv@lists.infradead.org>; Fri, 26 Jul 2019 13:00:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=sVh8r6qxozU0X539bGpCLYaNgAX3Xb97PwurXbHz33U=;
+ b=ZUrDcHay4oGNKA9iwZucPi17ifpM3TRnKUVdM9LgifBV9gptxZmhT0itpa6kwHdnsT
+ KkdpicK7OnEtsf0dcJD0D72zl/5tAOgF3RzBdqAz2gHJ54OxmAI+Z6J4NKFe7YUe9PjW
+ SLIECT3F9mbczwi8uGQ1Tp3jYMqXHrEzmKoKimf4SV//tQ6uE2xBVtebJX7xDfqCwXFw
+ hwkwo9JG6alyS34AVzOWlef16JWgcL1M542Odh9q+wSM0X3lb24iQw77Wu3xg4/Ddrax
+ BiHLcrJ8fOinJ8DdVsyEL0uu2dkhqnjxXGF+LIIJtMTlhDh9Q26ebPyjTr41PGiOaTIO
+ om3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=sVh8r6qxozU0X539bGpCLYaNgAX3Xb97PwurXbHz33U=;
+ b=bfI9ehBvESLaDHajJou467LaKz8VWTG9+enY3MG2IxrJImVlyY9R5OSS7SrR2ZB00R
+ oO8bnCQgcKqdxgl7qhw9OJdiU+tm+zMZ8LBaNSBSQDwteWZr/KNJu9goZ+dTymLTdYRk
+ wX93BbWb+atPPkyrXDt+sDfGroFr3gKMgLfKQN0Sx5VOl5s0VoqQrgMq+azMutjs0fBo
+ zMpWThnfbNLTPGYMi8uXC6UyWKle9lqQGU5YUVsqXW3SYxQtbL4cRPcrzMeUjlc90d53
+ wJbT96mb/epK/EXlhxzNsS/vkiFpxsMJHiuSdrKqXqqxpbasAPFpSSMF/GaQWWMtaDWN
+ exeg==
+X-Gm-Message-State: APjAAAXRf/XAvywxx56+l/SWbnwVVmcZpYQbD6vRvzf8N0cdO9yJbSaq
+ QPULMOyHhjAk3qZEF8KfHYZsE2I95WE=
+X-Google-Smtp-Source: APXvYqxqbTRydPk/GCxaDMMoixs5NtZCXarNxQefJxhOMoH3Vo4aDAI15K3eWrugoCEa6BR6Uv+ETQ==
+X-Received: by 2002:a02:1c0a:: with SMTP id c10mr102301637jac.69.1564171250993; 
+ Fri, 26 Jul 2019 13:00:50 -0700 (PDT)
+Received: from localhost (67-0-24-96.albq.qwest.net. [67.0.24.96])
+ by smtp.gmail.com with ESMTPSA id x22sm39848516iob.84.2019.07.26.13.00.50
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 26 Jul 2019 13:00:50 -0700 (PDT)
+Date: Fri, 26 Jul 2019 13:00:49 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: linux-riscv@lists.infradead.org
+Subject: [PATCH] riscv: kbuild: add virtual memory system selection
+Message-ID: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_124656_793503_0A459C2E 
-X-CRM114-Status: GOOD (  19.79  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190726_130052_165261_E654E441 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -98,135 +94,118 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup.patel@wdc.com>, Alan Kao <alankao@andestech.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Johan Hovold <johan@kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Allison Randal <allison@lohutok.net>
+Cc: linux-kernel@vger.kernel.org, Alexandre Ghiti <alex@ghiti.fr>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Currently, kernel prints a info warning if any of the extensions
-from "mafdcsu" is missing in device tree. This is not entirely
-correct as Linux can boot with "f or d" extensions if kernel is
-configured accordingly. Moreover, it will continue to print the
-info string for future extensions such as hypervisor as well which
-is misleading. /proc/cpuinfo also doesn't print any other extensions
-except "mafdcsu".
 
-Make sure that info log is only printed only if kernel is configured
-to have any mandatory extensions but device tree doesn't describe it.
-All the extensions present in device tree and follow the order
-described in the RISC-V specification (except 'S') are printed via
-/proc/cpuinfo always.
+The RISC-V specifications currently define three virtual memory
+translation systems: Sv32, Sv39, and Sv48.  Sv32 is currently specific
+to 32-bit systems; Sv39 and Sv48 are currently specific to 64-bit
+systems.  The current kernel only supports Sv32 and Sv39, but we'd
+like to start preparing for Sv48.  As an initial step, allow the
+virtual memory translation system to be selected via kbuild, and stop
+the build if an option is selected that the kernel doen't currently
+support.
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
+This patch currently has no functional impact.
+
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>
 ---
- arch/riscv/kernel/cpu.c | 47 ++++++++++++++++++++++++++++++++---------
- 1 file changed, 37 insertions(+), 10 deletions(-)
+ arch/riscv/Kconfig                  | 43 +++++++++++++++++++++++++++++
+ arch/riscv/include/asm/pgtable-32.h |  4 +++
+ arch/riscv/include/asm/pgtable-64.h |  4 +++
+ 3 files changed, 51 insertions(+)
 
-diff --git a/arch/riscv/kernel/cpu.c b/arch/riscv/kernel/cpu.c
-index 185143478830..3d050440364c 100644
---- a/arch/riscv/kernel/cpu.c
-+++ b/arch/riscv/kernel/cpu.c
-@@ -8,6 +8,7 @@
- #include <linux/ctype.h>
- #include <linux/of.h>
- #include <asm/smp.h>
-+#include <asm/hwcap.h>
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 59a4727ecd6c..8ef64fe2c2b3 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -155,6 +155,49 @@ config MODULE_SECTIONS
+ 	bool
+ 	select HAVE_MOD_ARCH_SPECIFIC
  
- /*
-  * Returns the hart ID of the given device tree node, or -ENODEV if the node
-@@ -47,11 +48,14 @@ int riscv_of_processor_hartid(struct device_node *node)
++choice
++	prompt "Virtual Memory System"
++	default RISCV_VM_SV32 if 32BIT
++	default RISCV_VM_SV39 if 64BIT
++	help
++	  The RISC-V Instruction Set Manual Volume II: Privileged
++	  Architecture defines several different "virtual memory
++	  systems" which specify virtual and physical address formats
++	  and the structure of page table entries.  This determines
++	  the amount of virtual address space present and how it is
++	  translated into physical addresses.
++
++	config RISCV_VM_SV32
++	        depends on 32BIT
++		bool "RISC-V Sv32"
++		help
++		  The Sv32 virtual memory system is a page-based
++		  address and page table format for RV32 systems.
++		  It specifies a translation between 32-bit virtual
++		  addresses and 33-bit physical addresses, via a
++		  two-stage page table layout.
++	config RISCV_VM_SV39
++		depends on 64BIT
++		bool "RISC-V Sv39"
++		help
++		  The Sv39 virtual memory system is a page-based
++		  address and page table format for RV64 systems.
++		  It specifies a translation between 39-bit virtual
++		  addresses and 40-bit physical addresses, via a
++		  three-stage page table layout.
++	config RISCV_VM_SV48
++		depends on 64BIT
++		bool "RISC-V Sv48"
++		help
++		  The Sv48 virtual memory system is a page-based
++		  address and page table format for RV64 systems.
++		  It specifies a translation between 48-bit virtual
++		  addresses and 49-bit physical addresses, via a
++		  four-stage page table layout.
++
++endchoice
++
++
+ choice
+ 	prompt "Maximum Physical Memory"
+ 	default MAXPHYSMEM_2GB if 32BIT
+diff --git a/arch/riscv/include/asm/pgtable-32.h b/arch/riscv/include/asm/pgtable-32.h
+index b0ab66e5fdb1..86d41a04735b 100644
+--- a/arch/riscv/include/asm/pgtable-32.h
++++ b/arch/riscv/include/asm/pgtable-32.h
+@@ -6,6 +6,10 @@
+ #ifndef _ASM_RISCV_PGTABLE_32_H
+ #define _ASM_RISCV_PGTABLE_32_H
  
- #ifdef CONFIG_PROC_FS
- 
--static void print_isa(struct seq_file *f, const char *orig_isa)
-+static void print_isa(struct seq_file *f, const char *orig_isa,
-+		      unsigned long cpuid)
- {
--	static const char *ext = "mafdcsu";
-+	static const char *mandatory_ext = "mafdcsu";
- 	const char *isa = orig_isa;
- 	const char *e;
-+	char unsupported_isa[26] = {0};
-+	int index = 0;
- 
- 	/*
- 	 * Linux doesn't support rv32e or rv128i, and we only support booting
-@@ -71,27 +75,50 @@ static void print_isa(struct seq_file *f, const char *orig_isa)
- 	isa += 5;
- 
- 	/*
--	 * Check the rest of the ISA string for valid extensions, printing those
--	 * we find.  RISC-V ISA strings define an order, so we only print the
-+	 * RISC-V ISA strings define an order, so we only print all the
- 	 * extension bits when they're in order. Hide the supervisor (S)
- 	 * extension from userspace as it's not accessible from there.
-+	 * Throw a warning only if any mandatory extensions are not available
-+	 * and kernel is configured to have that mandatory extensions.
- 	 */
--	for (e = ext; *e != '\0'; ++e) {
--		if (tolower(isa[0]) == e[0]) {
-+	for (e = mandatory_ext; *e != '\0'; ++e) {
-+		if (tolower(isa[0]) != e[0]) {
-+#if defined(CONFIG_ISA_RISCV_C)
-+			if (tolower(isa[0] == 'c'))
-+				continue;
++#if !defined(CONFIG_RISCV_VM_SV32)
++#error Only Sv32 supported
 +#endif
-+#if defined(CONFIG_FP)
-+			if ((tolower(isa[0]) == 'f') || tolower(isa[0] == 'd'))
-+				continue;
-+#endif
-+			unsupported_isa[index] = e[0];
-+			index++;
-+		}
-+		if (isa[0] != '\0') {
-+			/* Only write if part of isa string */
- 			if (tolower(isa[0] != 's'))
- 				seq_write(f, isa, 1);
--
- 			isa++;
- 		}
- 	}
-+	if (isa[0] != '\0') {
-+		/* Add remainging isa strings */
-+		for (e = isa; *e != '\0'; ++e) {
-+#if !defined(CONFIG_VIRTUALIZATION)
-+			if ((tolower(e[0]) != 'h'))
-+#endif
-+				seq_write(f, e, 1);
-+		}
-+	}
- 	seq_puts(f, "\n");
++
+ #include <asm-generic/pgtable-nopmd.h>
+ #include <linux/const.h>
  
- 	/*
- 	 * If we were given an unsupported ISA in the device tree then print
- 	 * a bit of info describing what went wrong.
- 	 */
--	if (isa[0] != '\0')
--		pr_info("unsupported ISA \"%s\" in device tree\n", orig_isa);
-+	if (unsupported_isa[0])
-+		pr_info("unsupported ISA extensions \"%s\" in device tree for cpu [%ld]\n",
-+			unsupported_isa, cpuid);
- }
+diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
+index 74630989006d..86935595115d 100644
+--- a/arch/riscv/include/asm/pgtable-64.h
++++ b/arch/riscv/include/asm/pgtable-64.h
+@@ -6,6 +6,10 @@
+ #ifndef _ASM_RISCV_PGTABLE_64_H
+ #define _ASM_RISCV_PGTABLE_64_H
  
- static void print_mmu(struct seq_file *f, const char *mmu_type)
-@@ -135,7 +162,7 @@ static int c_show(struct seq_file *m, void *v)
- 	seq_printf(m, "processor\t: %lu\n", cpu_id);
- 	seq_printf(m, "hart\t\t: %lu\n", cpuid_to_hartid_map(cpu_id));
- 	if (!of_property_read_string(node, "riscv,isa", &isa))
--		print_isa(m, isa);
-+		print_isa(m, isa, cpu_id);
- 	if (!of_property_read_string(node, "mmu-type", &mmu))
- 		print_mmu(m, mmu);
- 	if (!of_property_read_string(node, "compatible", &compat)
++#if !defined(CONFIG_RISCV_VM_SV39)
++#error Only Sv39 supported for now
++#endif
++
+ #include <linux/const.h>
+ 
+ #define PGDIR_SHIFT     30
 -- 
-2.21.0
+2.22.0
 
 
 _______________________________________________
