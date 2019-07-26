@@ -2,73 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A969077260
-	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 21:47:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D591F7725E
+	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 21:47:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NsfKPTfwge7jhJN091T3vnUhr559l8VME9gyZgMbzmA=; b=kDWduHE+aZtwww
-	iFJdTj3oOsAdof1blK5VOPFSzQ3onAK5K+SVMG5gwt9lyS8F4gb1VM8RjGpW/J0NCrYdvQE/WyDBD
-	rD6B5PsMAluavw8RBFC6b47+zc2Lita+gRtvJOQqQk2S87Fus7ZXY+NEFGhYbYfCHWZy5MXNYnicf
-	3gKhau+B2tJ6iFDj08UsBsNdXfcdvhNM+6fqVLCoiYt9r3pbXqlU5gQG7lz/Qh8SNHr6GNjHHHBgy
-	DwiHd03v+ksuvs8Lb2uj4zdCNLFrNdRzLHTPXRUWB0iO+KSPpOsN7YtF1lsNtYT06f1gQhq1SN47/
-	NCtLJArHyUf1TdyPLwYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AyaprUm3LqnKUtZOsXQL6NiMe1kmrzDS/Bm9O1gcUU0=; b=TYoe3Bsp5ApRsX
+	gDHVHx9olWwkGHoetHB3dc17++j0pZSoGu2h7qHlhccDD2yd1DLBthNJxsa84CCOcID/ra1m+bj2D
+	vnZJjdqcf8NCIQksf7rZxnr61hUVhZ/HXkI3rznDqwaKpShkBypJiWj0cOqTzYOC7qMW78RHpiIEC
+	08Br9eb2VYX7ebzzOAv9JNaWVvo2C8mjN6YCQDKH/7Rsbtm3KnRz8OawbCzZrUNZCo0k4tvYXwOOf
+	aGhMYxlZfTDUZrRGGqVhaG0ROkFH54CiAXJ7VxVOd4z6O9xq0zUqKx33QTWpgm+UnXVkhlVgnrhoz
+	/fDtU/mNP1zzNjKvwLtg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr6B6-00022P-UY; Fri, 26 Jul 2019 19:46:56 +0000
+	id 1hr6BA-00026a-TW; Fri, 26 Jul 2019 19:47:00 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hr6B3-00021G-Lh
- for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 19:46:55 +0000
+ id 1hr6B5-00021G-4I
+ for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 19:46:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564170414; x=1595706414;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=w14oJ81u6w2W34wdULaaio4UuiCV/eOoDOsEOvwCQng=;
- b=IAOxudBk/xHMi3rQmXuQv3ocXKMe7vmnkpgCvCUEeBwRUttSUB9VvDTK
- SlnuIao8zQBrHsVQW4fIfC+dZojWkHb1k8q/AkpTAmgHU/ceD3a593bi8
- nmpAFE6LzwjkrWeY1Fnz7arX/DENop8/RygkAcEU8F7ZfwQMWrCE5SAEe
- xGR5yzcW8w+gy8E0hDd19iVcEDxt12f3prLcCglWrY1mLElNKXk23RtMS
- 61kDScVG0/NFAR16vILFHqfFOFuBd4OueJp08U1Ea7DwOjg4dEzNwG1JF
- QwT+eG7FbL/QmIYeKg1Sr1gGmy/Aag2Q1sUvxzD9E6mhjJk912xs2Y4xD g==;
-IronPort-SDR: 0vSizvsf25w5Qw5a+9weFXWkmxBXteFQSiTTWtS45/R5ZDKnvxRrSyJXRw6PAqo8MJDVMfV5jl
- pBhpiD7YV55v6abLv8VqVLMdrv21A2zX8pEQeTHg7yZsX9bStCNWy7DLAEsfzJjIZRH+z6Vs9N
- V4OxJ9qWflW8DP9UlJrZzfd+c7DDPaCXVtIrbERirg1DIVOapJJmWEC6pd5OYgsPKJbr5y+UQ2
- m4qgxpUCjJb2xeS86J89tWC6MMK5ecJTyZcMPhwobNhY2cwq2Fp1gAb4k3KVRHPME/iFV4kQ+U
- SNU=
-X-IronPort-AV: E=Sophos;i="5.64,312,1559491200"; d="scan'208";a="115831167"
+ t=1564170415; x=1595706415;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=hokvHxTUgVK45jR+2fi50ThrUw3wJd/1zf9QL7Bw3Kw=;
+ b=d2O8cPd9h+ixSvS0lCN4iihcoXGyOcM3Ev4KVFpD0AJC6SNzT07RpEkf
+ KgUlO7ermbDs6DFYBeO+wBeuvBuBJgpI2rlN2GX7EeXCpZNKH3a2N5aZv
+ fSMt0RS2V/Mf/BjbzhUho3iWd5UfOhL63A97Vf1LvdUAxnols47R46iAn
+ JTFhKafq4XkW11ArPckvwCiVuFGWUnhrAA6Kvt+V0vYdIhJ31v7H3BFmG
+ b6mlDmtA39/sHZfbe6u1PwAQ7Na9zf3g/5osyA2GoxkA2zpertZcxEMi1
+ 0f7xsTEsy6mpD/dpCc3z+GfzGp+SKAAJCBdBNv2TUgtNtrtPrl635IXJt A==;
+IronPort-SDR: K5H6l0OzOONKp3Gjn4JYOeddNMwws6jkOySopvpovh3KmsL2VfjqFrhhEbPV66Scg8in2ZLoFw
+ E5Uu0Nw15dlZfl53n7HelC3S8pNjFk9J1CLDm+LcxNb1raq+fD/d5xG5PR/vhlYQR/9bvWNfP5
+ FxMYgiEHAzrHODDizHIxsWhLGG5rCQkdd9DIJftn5gKXxf7TB85F+vcoQsgsuUMKe+yST+u16F
+ flXkCBb4W2NonDf9L3FBmTt9Lw8tHSkGfkoEj6MzedaKSbDrvduCYEGC2jOANjfMCJsnf+ldAw
+ gBk=
+X-IronPort-AV: E=Sophos;i="5.64,312,1559491200"; d="scan'208";a="115831168"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
  by ob1.hgst.iphmx.com with ESMTP; 27 Jul 2019 03:46:48 +0800
-IronPort-SDR: InJpmhimfKxGYRwgSMB7vaic6X6qExt6jU34PnxwWUoPBnurruMYFrJjQYdLYeD7blDblN7DsJ
- k3AK65sO/tEogUF0aFABvcTyLmDmhAQNPCdmERFGgKQUVflWEko34r+zM3lZLIsSnasoqmxXIP
- 33lXz/EomJ18kDFsYDuE13q+9kaVcFr3Q/q3FcMonHNEg8xeSJ3yV08OXQNj6mXK3CPP7NNprs
- Oqzgje03zwIkc58fEzXtEno1LzUVHXKCkiOqUQcQVb0W1VWrtOlS5OuHBtWR0246Dd1WaTMWIj
- 0TV3m2vHwpW66ut3Q63IMW5J
+IronPort-SDR: Vqh0Bm0X+CwINSMkMrx6sNrmFNj0ZnZJU/cTK8COGkMiSexrfjyhScSh+e8yaEeu05IshJuQor
+ pFst0hMzGstg4taGbkW0aZLv578wLDc514iNT988hIASYn23O8EnIMD/2o6SnixI7k0nkTX6uE
+ YiDck28Feus9AMcwPonZ9QXmIk7hO43SByG7lD15k7c1GgCHXew9zST+XtIuWRf+0bQI7ie/if
+ 1WaWA0a7W/zglFvLvBGGlGyWGtfA7axB6hA9BR/p/yqghS5IdW3lWkCzbl9pqQzg12OjuWBnkb
+ vT3V+nM+lltAYUImSXmShAbG
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep02.wdc.com with ESMTP; 26 Jul 2019 12:44:56 -0700
-IronPort-SDR: HAtODe7BtpcPlbhxcQtN84PgABdtn9KVeCxDnDLg0eCJzExb2XsvQ+7vVs7bSESg9dXpMWBa7v
- 8XA2Ccy4KEmkY7BHg5bYkxTdAX0FkephrCa6PP1UoVXT4/fKtHSJTmeFpQn1+qrodgxo9wmLRk
- m8h5HvbIhxFC/mq717nZ4gy7VA6Uek6OF5BZCQAoLgpZWwjfjK4ncq45/t4bNtMengEBHY6iLH
- iXN07HIQkdQndP8Vpuup8bVgg5HSai1M/AntD3QQWM/462VId0g4hSqGApN8ZT0mnUvkRote2j
- uvc=
+IronPort-SDR: 9iMwrXBU5LvFTWyA+niCgR2Co2erNZr114as8cLaEkSoetsTrmHnNDs4WIz8+HxDKaoUQAU4JI
+ sJob0TmRZdRycFnETTgmhlmYaK+o1vb4GVAH+XjhlRU+0qy6myp0aV1biVLLC/GJ9WgYVkHZM3
+ RmvBMjWxxgRbeASeOj77r6fz8Tb4kP5mlQ864x/dsW5um5AsJyTiBnnzonE33V44zdOWkuzJLk
+ RBqvkfSAFQsTAKDKboBxGzbOdwnPxhugKeumV2kWQX+5bHoqd8Qv0cMMGU2gBDaN8iph2/MbQG
+ QG4=
 Received: from jedi-01.sdcorp.global.sandisk.com (HELO
  jedi-01.int.fusionio.com) ([10.11.143.218])
  by uls-op-cesaip01.wdc.com with ESMTP; 26 Jul 2019 12:46:47 -0700
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 1/4] RISC-V: Remove per cpu clocksource
-Date: Fri, 26 Jul 2019 12:46:35 -0700
-Message-Id: <20190726194638.8068-1-atish.patra@wdc.com>
+Subject: [PATCH 2/4] RISC-V: Add riscv_isa reprensenting ISA features common
+ across CPUs
+Date: Fri, 26 Jul 2019 12:46:36 -0700
+Message-Id: <20190726194638.8068-2-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190726194638.8068-1-atish.patra@wdc.com>
+References: <20190726194638.8068-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_124653_747027_DA69A74F 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20190726_124655_202197_12B52E15 
+X-CRM114-Status: GOOD (  13.66  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -96,10 +99,10 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup.patel@wdc.com>, Alan Kao <alankao@andestech.com>,
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Alan Kao <alankao@andestech.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, Johan Hovold <johan@kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Atish Patra <atish.patra@wdc.com>, Anup Patel <anup.patel@wdc.com>,
  Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
  linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
  Allison Randal <allison@lohutok.net>
@@ -108,45 +111,152 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-There is only one clocksource in RISC-V. The boot cpu initializes
-that clocksource. No need to keep a percpu data structure.
+From: Anup Patel <anup.patel@wdc.com>
 
+This patch adds riscv_isa integer to represent ISA features common
+across all CPUs. The riscv_isa is not same as elf_hwcap because
+elf_hwcap will only have ISA features relevant for user-space apps
+whereas riscv_isa will have ISA features relevant to both kernel
+and user-space apps.
+
+One of the use case is KVM hypervisor where riscv_isa will be used
+to do following operations:
+
+1. Check whether hypervisor extension is available
+2. Find ISA features that need to be virtualized (e.g. floating
+   point support, vector extension, etc.)
+
+Signed-off-by: Anup Patel <anup.patel@wdc.com>
 Signed-off-by: Atish Patra <atish.patra@wdc.com>
 ---
- drivers/clocksource/timer-riscv.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ arch/riscv/include/asm/hwcap.h | 25 ++++++++++++++++++++++
+ arch/riscv/kernel/cpufeature.c | 39 +++++++++++++++++++++++++++++++---
+ 2 files changed, 61 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clocksource/timer-riscv.c b/drivers/clocksource/timer-riscv.c
-index 5e6038fbf115..09e031176bc6 100644
---- a/drivers/clocksource/timer-riscv.c
-+++ b/drivers/clocksource/timer-riscv.c
-@@ -55,7 +55,7 @@ static u64 riscv_sched_clock(void)
- 	return get_cycles64();
- }
+diff --git a/arch/riscv/include/asm/hwcap.h b/arch/riscv/include/asm/hwcap.h
+index 7ecb7c6a57b1..e069f60ad5d2 100644
+--- a/arch/riscv/include/asm/hwcap.h
++++ b/arch/riscv/include/asm/hwcap.h
+@@ -22,5 +22,30 @@ enum {
+ };
  
--static DEFINE_PER_CPU(struct clocksource, riscv_clocksource) = {
-+static struct clocksource riscv_clocksource = {
- 	.name		= "riscv_clocksource",
- 	.rating		= 300,
- 	.mask		= CLOCKSOURCE_MASK(64),
-@@ -92,7 +92,6 @@ void riscv_timer_interrupt(void)
- static int __init riscv_timer_init_dt(struct device_node *n)
+ extern unsigned long elf_hwcap;
++
++#define RISCV_ISA_EXT_A		(1UL << ('A' - 'A'))
++#define RISCV_ISA_EXT_a		RISCV_ISA_EXT_A
++#define RISCV_ISA_EXT_C		(1UL << ('C' - 'A'))
++#define RISCV_ISA_EXT_c		RISCV_ISA_EXT_C
++#define RISCV_ISA_EXT_D		(1UL << ('D' - 'A'))
++#define RISCV_ISA_EXT_d		RISCV_ISA_EXT_D
++#define RISCV_ISA_EXT_F		(1UL << ('F' - 'A'))
++#define RISCV_ISA_EXT_f		RISCV_ISA_EXT_F
++#define RISCV_ISA_EXT_H		(1UL << ('H' - 'A'))
++#define RISCV_ISA_EXT_h		RISCV_ISA_EXT_H
++#define RISCV_ISA_EXT_I		(1UL << ('I' - 'A'))
++#define RISCV_ISA_EXT_i		RISCV_ISA_EXT_I
++#define RISCV_ISA_EXT_M		(1UL << ('M' - 'A'))
++#define RISCV_ISA_EXT_m		RISCV_ISA_EXT_M
++#define RISCV_ISA_EXT_S		(1UL << ('S' - 'A'))
++#define RISCV_ISA_EXT_s		RISCV_ISA_EXT_S
++#define RISCV_ISA_EXT_U		(1UL << ('U' - 'A'))
++#define RISCV_ISA_EXT_u		RISCV_ISA_EXT_U
++
++extern unsigned long riscv_isa;
++
++#define riscv_isa_extension_available(ext_char)	\
++		(riscv_isa & RISCV_ISA_EXT_##ext_char)
++
+ #endif
+ #endif
+diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
+index b1ade9a49347..d76c806b4fc9 100644
+--- a/arch/riscv/kernel/cpufeature.c
++++ b/arch/riscv/kernel/cpufeature.c
+@@ -12,6 +12,7 @@
+ #include <asm/smp.h>
+ 
+ unsigned long elf_hwcap __read_mostly;
++unsigned long riscv_isa __read_mostly;
+ #ifdef CONFIG_FPU
+ bool has_fpu __read_mostly;
+ #endif
+@@ -20,7 +21,8 @@ void riscv_fill_hwcap(void)
  {
- 	int cpuid, hartid, error;
--	struct clocksource *cs;
+ 	struct device_node *node;
+ 	const char *isa;
+-	size_t i;
++	char print_str[BITS_PER_LONG+1];
++	size_t i, j, isa_len;
+ 	static unsigned long isa2hwcap[256] = {0};
  
- 	hartid = riscv_of_processor_hartid(n);
- 	if (hartid < 0) {
-@@ -112,8 +111,7 @@ static int __init riscv_timer_init_dt(struct device_node *n)
+ 	isa2hwcap['i'] = isa2hwcap['I'] = COMPAT_HWCAP_ISA_I;
+@@ -31,9 +33,11 @@ void riscv_fill_hwcap(void)
+ 	isa2hwcap['c'] = isa2hwcap['C'] = COMPAT_HWCAP_ISA_C;
  
- 	pr_info("%s: Registering clocksource cpuid [%d] hartid [%d]\n",
- 	       __func__, cpuid, hartid);
--	cs = per_cpu_ptr(&riscv_clocksource, cpuid);
--	error = clocksource_register_hz(cs, riscv_timebase);
-+	error = clocksource_register_hz(&riscv_clocksource, riscv_timebase);
- 	if (error) {
- 		pr_err("RISCV timer register failed [%d] for cpu = [%d]\n",
- 		       error, cpuid);
+ 	elf_hwcap = 0;
++	riscv_isa = 0;
+ 
+ 	for_each_of_cpu_node(node) {
+ 		unsigned long this_hwcap = 0;
++		unsigned long this_isa = 0;
+ 
+ 		if (riscv_of_processor_hartid(node) < 0)
+ 			continue;
+@@ -43,8 +47,22 @@ void riscv_fill_hwcap(void)
+ 			continue;
+ 		}
+ 
+-		for (i = 0; i < strlen(isa); ++i)
++		i = 0;
++		isa_len = strlen(isa);
++#if defined(CONFIG_32BIT)
++		if (strncasecmp(isa, "rv32", 4) != 0)
++			i += 4;
++#elif defined(CONFIG_64BIT)
++		if (strncasecmp(isa, "rv64", 4) != 0)
++			i += 4;
++#endif
++		for (; i < isa_len; ++i) {
+ 			this_hwcap |= isa2hwcap[(unsigned char)(isa[i])];
++			if ('a' <= isa[i] && isa[i] <= 'z')
++				this_isa |= (1UL << (isa[i] - 'a'));
++			if ('A' <= isa[i] && isa[i] <= 'Z')
++				this_isa |= (1UL << (isa[i] - 'A'));
++		}
+ 
+ 		/*
+ 		 * All "okay" hart should have same isa. Set HWCAP based on
+@@ -55,6 +73,11 @@ void riscv_fill_hwcap(void)
+ 			elf_hwcap &= this_hwcap;
+ 		else
+ 			elf_hwcap = this_hwcap;
++
++		if (riscv_isa)
++			riscv_isa &= this_isa;
++		else
++			riscv_isa = this_isa;
+ 	}
+ 
+ 	/* We don't support systems with F but without D, so mask those out
+@@ -64,7 +87,17 @@ void riscv_fill_hwcap(void)
+ 		elf_hwcap &= ~COMPAT_HWCAP_ISA_F;
+ 	}
+ 
+-	pr_info("elf_hwcap is 0x%lx\n", elf_hwcap);
++	memset(print_str, 0, sizeof(print_str));
++	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
++		if (riscv_isa & (1UL << i))
++			print_str[j++] = (char)('A' + i);
++	pr_info("riscv: ISA extensions %s\n", print_str);
++
++	memset(print_str, 0, sizeof(print_str));
++	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
++		if (elf_hwcap & (1UL << i))
++			print_str[j++] = (char)('A' + i);
++	pr_info("riscv: ELF capabilities %s\n", print_str);
+ 
+ #ifdef CONFIG_FPU
+ 	if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
 -- 
 2.21.0
 
