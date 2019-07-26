@@ -2,90 +2,38 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65B557730D
-	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 22:56:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E96D7731F
+	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 23:02:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UlkGY9cSL7OZV1JbP1fGZg/nzJ9eIbJY3+dDd4G3EW4=; b=T1k1sx0guUSI5c
-	UrUGnWcFQ+rS7j5XOrUPwU35t0NSLA/XMj+ZSqVnQyXquvrerNt6DlUGTLuRiLqs2DHMr/Y+Z6RUb
-	/E64zLPMRuUXg6bSuwDcJM89qHlnUDUIGKtoMp84btfyx1jfXraXSPzFglolXUot5xak9ee3Nqd4r
-	+wXF+tM+wtkEbcoF8UOjdWpUFRZHyZHbqz1scLMvmDzYr9Ene96sBFp+uB+SfkWBlsdcAaiqf/C7s
-	9BIzLCWyGeU31Pzt3X9HL0VpiTbyrCD3tPQcsydGBW7x93k7/q3YJbRsyvfbM5d4IffSjAA9aInpn
-	PAYsoFXQhARkpKZzD2CA==;
+	List-Owner; bh=8Y18G1VDqi0KxvdmqI/oJm/dQeXjsq9QvVJtOOQQAGA=; b=iYe3ZfJOtZAr3D
+	9nzl98HIGaLZ9UHv6XpCtw63b3xl3qexENRh+oJFuUCbz4u/x3J5XOErWpzrg7/DsZ5Nzgx/1muce
+	ntMjzFekIBpuI6TY8X4k7FeYu9ydTr+YJnc62Fa9t9fniIjrhWO7dMTZMXa0DEwBdxrIqEc9QA8Hv
+	AubJ2pY1Lz5o/YlKansa+DQXn/MyeYAYMoozPknT2NW8I4I26pxRUw7Zk47Ms1a3+0VZQc16NpvBK
+	83BWsNuWN6qtSYYUNy6ja8HWMWa4RTZG6Z+dGq86UQOcos8jYARoxTQBof+sfyi+j2rUgcl93/FKp
+	eoAycB6L29Yy27BlLaWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr7GA-00082O-0I; Fri, 26 Jul 2019 20:56:14 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hr7G6-00080U-AU
- for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 20:56:11 +0000
-Received: by mail-io1-xd44.google.com with SMTP id q22so107492205iog.4
- for <linux-riscv@lists.infradead.org>; Fri, 26 Jul 2019 13:56:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=G6aDD/GD+kvdk612rfOXYa0fz0XwDpj5Lf+HHPLV2pE=;
- b=K/qPJAaj3Z8y8FVZ5XbVN1aSvyEsVXhmMWRQWBADXEWQcg1tqYf7IFML/8BubJLH3J
- Ghmux6TwEU5FUK6ZIbChZ+OXlvJONw8Vo/IMDTk/U4P5C8XrU0ileTNjjkUXRSKhPTo+
- O8qDBCARxsZQ+Du522IvgSolVDop4HI90FEyeJbEoMY1JTrZg3oTO9/PixW7auI1dgiM
- scvowKq/rkA8ZpnbrBjYzx3jDsjy1OGp0wxKC4+M2fyeJZVbYSDq+VybagCDELYW1TOe
- BuJptbCtgMvmW7JB4qyuUp81AK+HtqFNX/mY/z7DumSYn1wREXlHL3xOpwtC0bQai47d
- kNPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=G6aDD/GD+kvdk612rfOXYa0fz0XwDpj5Lf+HHPLV2pE=;
- b=Dp1xZdLkih02+6JZHh4YMFw1ubLFG0HOyosfoAQ9lSMqWW9QyaErFKnCG466xzMmms
- oJiDO5DXXpTfssLcIjAGlsdZ+xuNZ4PjY7CMxKs3SRrZqyKjn9V8qDd/KBK1qFYv7zOw
- l3UqU6MzlqjLfPZLuoeEOmhfqbgsZBA/jfQ5rNk8KBH6hv5/iFef6BGdzFhlDGUztDqk
- KDVdcrKNIuD9V7EmhAFOnXDfBzvRDjBnJmvr4DAvFtwCOheMDGkUA4cSvE2CqhJ1t2aQ
- 3viQZCQYdd/m0vuD2tPw59Gqf8+zir3ws8mW4U9qAil3mAYDmGDhtc2OivjDU0yFhNVV
- gGuQ==
-X-Gm-Message-State: APjAAAUUcteN7+MF1k+Z8tqvXRXCdIV0zl7P7cmCYNfUeMcv1AM3QwE8
- 9m9x7U5ocGM5SzdTao/Kw5MZjg==
-X-Google-Smtp-Source: APXvYqxvy9zWYI4Uw+gXM/d3bwjM8f/ZAAfYwvNmt0CtQtGvWox+Z8mIehOzitQ6K7v8DCeDwIIadg==
-X-Received: by 2002:a02:8816:: with SMTP id r22mr25863672jai.60.1564174569381; 
- Fri, 26 Jul 2019 13:56:09 -0700 (PDT)
-Received: from localhost (67-0-24-96.albq.qwest.net. [67.0.24.96])
- by smtp.gmail.com with ESMTPSA id b8sm44104247ioj.16.2019.07.26.13.56.08
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 26 Jul 2019 13:56:08 -0700 (PDT)
-Date: Fri, 26 Jul 2019 13:56:07 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Wang Xiayang <xywang.sjtu@sjtu.edu.cn>
-Subject: Re: [PATCH] pwm: avoid disabling clk twice
-In-Reply-To: <20190726043549.18034-1-xywang.sjtu@sjtu.edu.cn>
-Message-ID: <alpine.DEB.2.21.9999.1907261353330.14300@viisi.sifive.com>
-References: <20190726043549.18034-1-xywang.sjtu@sjtu.edu.cn>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+	id 1hr7Lm-0006IQ-J2; Fri, 26 Jul 2019 21:02:02 +0000
+Received: from [179.95.31.157] (helo=bombadil.infradead.org)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1hr7Lj-0006ID-PJ; Fri, 26 Jul 2019 21:01:59 +0000
+Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
+ (envelope-from <mchehab@bombadil.infradead.org>)
+ id 1hr7Lh-0005HC-06; Fri, 26 Jul 2019 18:01:57 -0300
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Subject: [PATCH] docs: riscv: convert boot-image-header.txt to ReST
+Date: Fri, 26 Jul 2019 18:01:55 -0300
+Message-Id: <1eaeb3fbb74de55af0b3f6d93ab40776dcbbb5c8.1564174903.git.mchehab+samsung@kernel.org>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <57eaa99a-d644-7b79-7177-a45d3ef1e71a@wdc.com>
+References: <57eaa99a-d644-7b79-7177-a45d3ef1e71a@wdc.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_135610_372192_B2DA8701 
-X-CRM114-Status: UNSURE (   7.13  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,38 +45,128 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, palmer@sifive.com
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Jonathan Corbet <corbet@lwn.net>,
+ Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel@vger.kernel.org, Mauro Carvalho Chehab <mchehab@infradead.org>,
+ Atish Patra <atish.patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ linux-riscv@lists.infradead.org, Karsten Merker <merker@debian.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 26 Jul 2019, Wang Xiayang wrote:
+Convert this small file to ReST format by:
+   - Using a proper markup for the document title;
+   - marking a code block as such;
+   - use tags for Author and date;
+   - use tables for bit map fields.
 
-> Similar to commit 63fd4b94b948 ("serial: imx: fix error handling
-> in console_setup"), as ddata->clk has been explicitly disabled two
-> lines above, it should avoid being disabled for the second time.
-> clk_unprepare() suits here better.
-> 
-> Signed-off-by: Wang Xiayang <xywang.sjtu@sjtu.edu.cn>
+While here, fix a broken reference for a document with is
+planned but is not here yet.
 
-The patch looks reasonable, but it needs to be sent to other people and 
-mailing lists.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+---
+ ...image-header.txt => boot-image-header.rst} | 39 ++++++++++++-------
+ Documentation/riscv/index.rst                 |  1 +
+ 2 files changed, 26 insertions(+), 14 deletions(-)
+ rename Documentation/riscv/{boot-image-header.txt => boot-image-header.rst} (72%)
 
-Running "scripts/get_maintainer.pl -f drivers/pwm/pwm-sifive.c" shows:
+diff --git a/Documentation/riscv/boot-image-header.txt b/Documentation/riscv/boot-image-header.rst
+similarity index 72%
+rename from Documentation/riscv/boot-image-header.txt
+rename to Documentation/riscv/boot-image-header.rst
+index 1b73fea23b39..43e9bd0731d5 100644
+--- a/Documentation/riscv/boot-image-header.txt
++++ b/Documentation/riscv/boot-image-header.rst
+@@ -1,22 +1,25 @@
+-				Boot image header in RISC-V Linux
+-			=============================================
++=================================
++Boot image header in RISC-V Linux
++=================================
+ 
+-Author: Atish Patra <atish.patra@wdc.com>
+-Date  : 20 May 2019
++:Author: Atish Patra <atish.patra@wdc.com>
++:Date:   20 May 2019
+ 
+ This document only describes the boot image header details for RISC-V Linux.
+-The complete booting guide will be available at Documentation/riscv/booting.txt.
+ 
+-The following 64-byte header is present in decompressed Linux kernel image.
++TODO:
++  Write a complete booting guide.
++
++The following 64-byte header is present in decompressed Linux kernel image::
+ 
+ 	u32 code0;		  /* Executable code */
+-	u32 code1; 		  /* Executable code */
++	u32 code1;		  /* Executable code */
+ 	u64 text_offset;	  /* Image load offset, little endian */
+ 	u64 image_size;		  /* Effective Image size, little endian */
+ 	u64 flags;		  /* kernel flags, little endian */
+ 	u32 version;		  /* Version of this header */
+-	u32 res1  = 0;		  /* Reserved */
+-	u64 res2  = 0;    	  /* Reserved */
++	u32 res1 = 0;		  /* Reserved */
++	u64 res2 = 0;		  /* Reserved */
+ 	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
+ 	u32 res3;		  /* Reserved for additional RISC-V specific header */
+ 	u32 res4;		  /* Reserved for PE COFF offset */
+@@ -25,16 +28,21 @@ This header format is compliant with PE/COFF header and largely inspired from
+ ARM64 header. Thus, both ARM64 & RISC-V header can be combined into one common
+ header in future.
+ 
+-Notes:
++Notes
++=====
++
+ - This header can also be reused to support EFI stub for RISC-V in future. EFI
+   specification needs PE/COFF image header in the beginning of the kernel image
+   in order to load it as an EFI application. In order to support EFI stub,
+   code0 should be replaced with "MZ" magic string and res5(at offset 0x3c) should
+   point to the rest of the PE/COFF header.
+ 
+-- version field indicate header version number.
+-	Bits 0:15  - Minor version
+-	Bits 16:31 - Major version
++- version field indicate header version number
++
++	==========  =============
++	Bits 0:15   Minor version
++	Bits 16:31  Major version
++	==========  =============
+ 
+   This preserves compatibility across newer and older version of the header.
+   The current version is defined as 0.1.
+@@ -44,7 +52,10 @@ Notes:
+   extension for RISC-V in future. For current version, it is set to be zero.
+ 
+ - In current header, the flag field has only one field.
+-	Bit 0: Kernel endianness. 1 if BE, 0 if LE.
++
++	=====  ====================================
++	Bit 0  Kernel endianness. 1 if BE, 0 if LE.
++	=====  ====================================
+ 
+ - Image size is mandatory for boot loader to load kernel image. Booting will
+   fail otherwise.
+diff --git a/Documentation/riscv/index.rst b/Documentation/riscv/index.rst
+index e3ca0922a8c2..215fd3c1f2d5 100644
+--- a/Documentation/riscv/index.rst
++++ b/Documentation/riscv/index.rst
+@@ -5,6 +5,7 @@ RISC-V architecture
+ .. toctree::
+     :maxdepth: 1
+ 
++    boot-image-header
+     pmu
+ 
+ .. only::  subproject and html
+-- 
+2.21.0
 
-Thierry Reding <thierry.reding@gmail.com> (maintainer:PWM SUBSYSTEM)
-Palmer Dabbelt <palmer@sifive.com> (supporter:SIFIVE DRIVERS)
-Paul Walmsley <paul.walmsley@sifive.com> (supporter:SIFIVE DRIVERS)
-linux-pwm@vger.kernel.org (open list:PWM SUBSYSTEM)
-linux-riscv@lists.infradead.org (open list:SIFIVE DRIVERS)
-linux-kernel@vger.kernel.org (open list)
-
-Thus Thierry will ultimately be the one responsible for merging this, and 
-linux-pwm@ needs to be cc'ed as well.
-
-
-- Paul
 
 _______________________________________________
 linux-riscv mailing list
