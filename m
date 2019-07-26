@@ -2,57 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D009B764DA
-	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 13:49:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A969077260
+	for <lists+linux-riscv@lfdr.de>; Fri, 26 Jul 2019 21:47:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Sd4oc/67d8Uz/UL43injzz3+CRQCQ/s9EdTc7ZWZRCs=; b=eEzbiFh1rrStSIDKSx+bVaDR3
-	J3IF/Rx4+EA+sMEg6n50bnBgJH9IdG5hl2A0sqmpmDhapQx6pQ/36tcHRpW97ABUzEyG9eMmQRWhX
-	dHDA21/eoHCHX5J0W/4ZFkGbQ8bTsFl9Ow3JxLe9evxxk9Vo9izPaA/S34dYYDLgn7XRy9C8CWGqD
-	3RsIvC6/hxnPkpXy7e6Tqous3+fpjExbvJ3W9qD1TX6zrdUcZXyZvFPzQcT7iG6RTOziiiA3QJkGp
-	OtW3667ZJX2pOn8s89QeeqL76SBh79cQXE2GH8ay40c1HA+p6jZ+eOhqhiXpXVeM2GRSawphjSXhc
-	hOclSSXxQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NsfKPTfwge7jhJN091T3vnUhr559l8VME9gyZgMbzmA=; b=kDWduHE+aZtwww
+	iFJdTj3oOsAdof1blK5VOPFSzQ3onAK5K+SVMG5gwt9lyS8F4gb1VM8RjGpW/J0NCrYdvQE/WyDBD
+	rD6B5PsMAluavw8RBFC6b47+zc2Lita+gRtvJOQqQk2S87Fus7ZXY+NEFGhYbYfCHWZy5MXNYnicf
+	3gKhau+B2tJ6iFDj08UsBsNdXfcdvhNM+6fqVLCoiYt9r3pbXqlU5gQG7lz/Qh8SNHr6GNjHHHBgy
+	DwiHd03v+ksuvs8Lb2uj4zdCNLFrNdRzLHTPXRUWB0iO+KSPpOsN7YtF1lsNtYT06f1gQhq1SN47/
+	NCtLJArHyUf1TdyPLwYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqyiT-00040u-Ro; Fri, 26 Jul 2019 11:48:53 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1hr6B6-00022P-UY; Fri, 26 Jul 2019 19:46:56 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqyi8-0003nY-71; Fri, 26 Jul 2019 11:48:34 +0000
-X-Originating-IP: 81.250.144.103
-Received: from [10.30.1.20] (lneuilly-657-1-5-103.w81-250.abo.wanadoo.fr
- [81.250.144.103]) (Authenticated sender: alex@ghiti.fr)
- by relay8-d.mail.gandi.net (Postfix) with ESMTPSA id 3CAE81BF207;
- Fri, 26 Jul 2019 11:48:08 +0000 (UTC)
-Subject: Re: [PATCH REBASE v4 14/14] riscv: Make mmap allocation top-down by
- default
-To: Paul Walmsley <paul.walmsley@sifive.com>
-References: <20190724055850.6232-1-alex@ghiti.fr>
- <20190724055850.6232-15-alex@ghiti.fr>
- <alpine.DEB.2.21.9999.1907251655310.32766@viisi.sifive.com>
-From: Alexandre Ghiti <alex@ghiti.fr>
-Message-ID: <6b2b45a5-0ac4-db73-8f50-ab182a0cb621@ghiti.fr>
-Date: Fri, 26 Jul 2019 13:48:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ id 1hr6B3-00021G-Lh
+ for linux-riscv@lists.infradead.org; Fri, 26 Jul 2019 19:46:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1564170414; x=1595706414;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=w14oJ81u6w2W34wdULaaio4UuiCV/eOoDOsEOvwCQng=;
+ b=IAOxudBk/xHMi3rQmXuQv3ocXKMe7vmnkpgCvCUEeBwRUttSUB9VvDTK
+ SlnuIao8zQBrHsVQW4fIfC+dZojWkHb1k8q/AkpTAmgHU/ceD3a593bi8
+ nmpAFE6LzwjkrWeY1Fnz7arX/DENop8/RygkAcEU8F7ZfwQMWrCE5SAEe
+ xGR5yzcW8w+gy8E0hDd19iVcEDxt12f3prLcCglWrY1mLElNKXk23RtMS
+ 61kDScVG0/NFAR16vILFHqfFOFuBd4OueJp08U1Ea7DwOjg4dEzNwG1JF
+ QwT+eG7FbL/QmIYeKg1Sr1gGmy/Aag2Q1sUvxzD9E6mhjJk912xs2Y4xD g==;
+IronPort-SDR: 0vSizvsf25w5Qw5a+9weFXWkmxBXteFQSiTTWtS45/R5ZDKnvxRrSyJXRw6PAqo8MJDVMfV5jl
+ pBhpiD7YV55v6abLv8VqVLMdrv21A2zX8pEQeTHg7yZsX9bStCNWy7DLAEsfzJjIZRH+z6Vs9N
+ V4OxJ9qWflW8DP9UlJrZzfd+c7DDPaCXVtIrbERirg1DIVOapJJmWEC6pd5OYgsPKJbr5y+UQ2
+ m4qgxpUCjJb2xeS86J89tWC6MMK5ecJTyZcMPhwobNhY2cwq2Fp1gAb4k3KVRHPME/iFV4kQ+U
+ SNU=
+X-IronPort-AV: E=Sophos;i="5.64,312,1559491200"; d="scan'208";a="115831167"
+Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 27 Jul 2019 03:46:48 +0800
+IronPort-SDR: InJpmhimfKxGYRwgSMB7vaic6X6qExt6jU34PnxwWUoPBnurruMYFrJjQYdLYeD7blDblN7DsJ
+ k3AK65sO/tEogUF0aFABvcTyLmDmhAQNPCdmERFGgKQUVflWEko34r+zM3lZLIsSnasoqmxXIP
+ 33lXz/EomJ18kDFsYDuE13q+9kaVcFr3Q/q3FcMonHNEg8xeSJ3yV08OXQNj6mXK3CPP7NNprs
+ Oqzgje03zwIkc58fEzXtEno1LzUVHXKCkiOqUQcQVb0W1VWrtOlS5OuHBtWR0246Dd1WaTMWIj
+ 0TV3m2vHwpW66ut3Q63IMW5J
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep02.wdc.com with ESMTP; 26 Jul 2019 12:44:56 -0700
+IronPort-SDR: HAtODe7BtpcPlbhxcQtN84PgABdtn9KVeCxDnDLg0eCJzExb2XsvQ+7vVs7bSESg9dXpMWBa7v
+ 8XA2Ccy4KEmkY7BHg5bYkxTdAX0FkephrCa6PP1UoVXT4/fKtHSJTmeFpQn1+qrodgxo9wmLRk
+ m8h5HvbIhxFC/mq717nZ4gy7VA6Uek6OF5BZCQAoLgpZWwjfjK4ncq45/t4bNtMengEBHY6iLH
+ iXN07HIQkdQndP8Vpuup8bVgg5HSai1M/AntD3QQWM/462VId0g4hSqGApN8ZT0mnUvkRote2j
+ uvc=
+Received: from jedi-01.sdcorp.global.sandisk.com (HELO
+ jedi-01.int.fusionio.com) ([10.11.143.218])
+ by uls-op-cesaip01.wdc.com with ESMTP; 26 Jul 2019 12:46:47 -0700
+From: Atish Patra <atish.patra@wdc.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH 1/4] RISC-V: Remove per cpu clocksource
+Date: Fri, 26 Jul 2019 12:46:35 -0700
+Message-Id: <20190726194638.8068-1-atish.patra@wdc.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1907251655310.32766@viisi.sifive.com>
-Content-Language: fr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_044832_564133_5B03736B 
-X-CRM114-Status: GOOD (  20.49  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20190726_124653_747027_DA69A74F 
+X-CRM114-Status: GOOD (  11.21  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.201 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,153 +96,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Kees Cook <keescook@chromium.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Daniel Cashman <dcashman@google.com>, Palmer Dabbelt <palmer@sifive.com>,
- Will Deacon <will.deacon@arm.com>, Russell King <linux@armlinux.org.uk>,
- Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
- linux-mm@kvack.org, Paul Burton <paul.burton@mips.com>,
- linux-riscv@lists.infradead.org, Alexander Viro <viro@zeniv.linux.org.uk>,
- James Hogan <jhogan@kernel.org>, linux-fsdevel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>, linux-mips@vger.kernel.org,
- Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org,
- Luis Chamberlain <mcgrof@kernel.org>
+Cc: Anup Patel <anup.patel@wdc.com>, Alan Kao <alankao@andestech.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Johan Hovold <johan@kernel.org>,
+ Atish Patra <atish.patra@wdc.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
+ Allison Randal <allison@lohutok.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 7/26/19 2:20 AM, Paul Walmsley wrote:
-> Hi Alexandre,
->
-> I have a few questions about this patch.  Sorry to be dense here ...
->
-> On Wed, 24 Jul 2019, Alexandre Ghiti wrote:
->
->> In order to avoid wasting user address space by using bottom-up mmap
->> allocation scheme, prefer top-down scheme when possible.
->>
->> Before:
->> root@qemuriscv64:~# cat /proc/self/maps
->> 00010000-00016000 r-xp 00000000 fe:00 6389       /bin/cat.coreutils
->> 00016000-00017000 r--p 00005000 fe:00 6389       /bin/cat.coreutils
->> 00017000-00018000 rw-p 00006000 fe:00 6389       /bin/cat.coreutils
->> 00018000-00039000 rw-p 00000000 00:00 0          [heap]
->> 1555556000-155556d000 r-xp 00000000 fe:00 7193   /lib/ld-2.28.so
->> 155556d000-155556e000 r--p 00016000 fe:00 7193   /lib/ld-2.28.so
->> 155556e000-155556f000 rw-p 00017000 fe:00 7193   /lib/ld-2.28.so
->> 155556f000-1555570000 rw-p 00000000 00:00 0
->> 1555570000-1555572000 r-xp 00000000 00:00 0      [vdso]
->> 1555574000-1555576000 rw-p 00000000 00:00 0
->> 1555576000-1555674000 r-xp 00000000 fe:00 7187   /lib/libc-2.28.so
->> 1555674000-1555678000 r--p 000fd000 fe:00 7187   /lib/libc-2.28.so
->> 1555678000-155567a000 rw-p 00101000 fe:00 7187   /lib/libc-2.28.so
->> 155567a000-15556a0000 rw-p 00000000 00:00 0
->> 3fffb90000-3fffbb1000 rw-p 00000000 00:00 0      [stack]
->>
->> After:
->> root@qemuriscv64:~# cat /proc/self/maps
->> 00010000-00016000 r-xp 00000000 fe:00 6389       /bin/cat.coreutils
->> 00016000-00017000 r--p 00005000 fe:00 6389       /bin/cat.coreutils
->> 00017000-00018000 rw-p 00006000 fe:00 6389       /bin/cat.coreutils
->> 2de81000-2dea2000 rw-p 00000000 00:00 0          [heap]
->> 3ff7eb6000-3ff7ed8000 rw-p 00000000 00:00 0
->> 3ff7ed8000-3ff7fd6000 r-xp 00000000 fe:00 7187   /lib/libc-2.28.so
->> 3ff7fd6000-3ff7fda000 r--p 000fd000 fe:00 7187   /lib/libc-2.28.so
->> 3ff7fda000-3ff7fdc000 rw-p 00101000 fe:00 7187   /lib/libc-2.28.so
->> 3ff7fdc000-3ff7fe2000 rw-p 00000000 00:00 0
->> 3ff7fe4000-3ff7fe6000 r-xp 00000000 00:00 0      [vdso]
->> 3ff7fe6000-3ff7ffd000 r-xp 00000000 fe:00 7193   /lib/ld-2.28.so
->> 3ff7ffd000-3ff7ffe000 r--p 00016000 fe:00 7193   /lib/ld-2.28.so
->> 3ff7ffe000-3ff7fff000 rw-p 00017000 fe:00 7193   /lib/ld-2.28.so
->> 3ff7fff000-3ff8000000 rw-p 00000000 00:00 0
->> 3fff888000-3fff8a9000 rw-p 00000000 00:00 0      [stack]
->>
->> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
->> Reviewed-by: Christoph Hellwig <hch@lst.de>
->> Reviewed-by: Kees Cook <keescook@chromium.org>
->> ---
->>   arch/riscv/Kconfig | 11 +++++++++++
->>   1 file changed, 11 insertions(+)
->>
->> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
->> index 59a4727ecd6c..6a63973873fd 100644
->> --- a/arch/riscv/Kconfig
->> +++ b/arch/riscv/Kconfig
->> @@ -54,6 +54,17 @@ config RISCV
->>   	select EDAC_SUPPORT
->>   	select ARCH_HAS_GIGANTIC_PAGE
->>   	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
->> +	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
->> +	select HAVE_ARCH_MMAP_RND_BITS
->> +
->> +config ARCH_MMAP_RND_BITS_MIN
->> +	default 18
-> Could you help me understand the rationale behind this constant?
+There is only one clocksource in RISC-V. The boot cpu initializes
+that clocksource. No need to keep a percpu data structure.
 
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+---
+ drivers/clocksource/timer-riscv.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-Indeed, I took that from arm64 code and I did not think enough about it: 
-that's
-great you spotted this because that's a way too large value for 32 bits 
-as it would,
-at minimum, make mmap random offset go up to 1GB (18 + 12), which is a 
-big hole for
-this small address space :)
+diff --git a/drivers/clocksource/timer-riscv.c b/drivers/clocksource/timer-riscv.c
+index 5e6038fbf115..09e031176bc6 100644
+--- a/drivers/clocksource/timer-riscv.c
++++ b/drivers/clocksource/timer-riscv.c
+@@ -55,7 +55,7 @@ static u64 riscv_sched_clock(void)
+ 	return get_cycles64();
+ }
+ 
+-static DEFINE_PER_CPU(struct clocksource, riscv_clocksource) = {
++static struct clocksource riscv_clocksource = {
+ 	.name		= "riscv_clocksource",
+ 	.rating		= 300,
+ 	.mask		= CLOCKSOURCE_MASK(64),
+@@ -92,7 +92,6 @@ void riscv_timer_interrupt(void)
+ static int __init riscv_timer_init_dt(struct device_node *n)
+ {
+ 	int cpuid, hartid, error;
+-	struct clocksource *cs;
+ 
+ 	hartid = riscv_of_processor_hartid(n);
+ 	if (hartid < 0) {
+@@ -112,8 +111,7 @@ static int __init riscv_timer_init_dt(struct device_node *n)
+ 
+ 	pr_info("%s: Registering clocksource cpuid [%d] hartid [%d]\n",
+ 	       __func__, cpuid, hartid);
+-	cs = per_cpu_ptr(&riscv_clocksource, cpuid);
+-	error = clocksource_register_hz(cs, riscv_timebase);
++	error = clocksource_register_hz(&riscv_clocksource, riscv_timebase);
+ 	if (error) {
+ 		pr_err("RISCV timer register failed [%d] for cpu = [%d]\n",
+ 		       error, cpuid);
+-- 
+2.21.0
 
-arm and mips propose 8 as default value for 32bits systems which is 1MB 
-offset at minimum.
-
-
->
->> +
->> +# max bits determined by the following formula:
->> +#  VA_BITS - PAGE_SHIFT - 3
-> I realize that these lines are probably copied from arch/arm64/Kconfig.
-> But the rationale behind the "- 3" is not immediately obvious.  This
-> apparently originates from commit 8f0d3aa9de57 ("arm64: mm: support
-> ARCH_MMAP_RND_BITS"). Can you provide any additional context here?
-
-
-The formula comes from commit d07e22597d1d ("mm: mmap: add new /proc tunable
-for mmap_base ASLR"), where the author states that "generally a 3-4 bits 
-less than the
-number of bits in the user-space accessible virtual address space 
-[allows to] give the greatest
-flexibility without generating an invalid mmap_base address".
-
-In practice, that limits the mmap random offset to at maximum 1/8 (for - 
-3) of the total address space.
-
-
->
->> +config ARCH_MMAP_RND_BITS_MAX
->> +	default 33 if 64BIT # SV48 based
-> The rationale here is clear for Sv48, per the above formula:
->
->     (48 - 12 - 3) = 33
->
->> +	default 18
-> However, here it is less clear to me.  For Sv39, shouldn't this be
->
->     (39 - 12 - 3) = 24
->
-> ?  And what about Sv32?
-
-
-You're right. Is there a way to distinguish between sv39 and sv48 here ?
-
-Thanks Paul,
-
-Alex
-
->   
->
-> - Paul
->
-> _______________________________________________
-> linux-riscv mailing list
-> linux-riscv@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
