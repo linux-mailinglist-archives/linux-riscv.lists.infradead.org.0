@@ -2,66 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09A3077FA0
-	for <lists+linux-riscv@lfdr.de>; Sun, 28 Jul 2019 15:38:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E5A277FA6
+	for <lists+linux-riscv@lfdr.de>; Sun, 28 Jul 2019 15:40:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WPinoiVgUV7Ibi4jom6mUbiyP/bbYNecUn91hyCuHZQ=; b=pHxpxcaAFLBzQc
-	iKSTv6lABwWBljDwzeVFFdB7y48mVIna1G4YKJTRJaRPo2875bb0j+wC0nVMVG/oVPua8wFW8XQ8O
-	H+ncUmDnCZdP2FjRD87f1NbRDrdv4+mFFxDU8W49ZEAHk5tVe3PHAkEZL54n2ZsXPWmRBEFUcDONO
-	DADHA4xA9cx6uyLCa5ESeOzlU1VUaZKfGbJLfO8/wPg858AsL8XRqrf4XCuUgHx3D90cnsVp3Qg2q
-	BeRCMXMskHIH1VK2eageF3uQchz0LmXGIXSW7OpWPIT3QiQCVCgAOncFOd6WiTcOJRGbPeehicH+D
-	sj6DTVQoXOijlkkuRmUA==;
+	List-Owner; bh=pxrd2CgzAyPeqm2YzRtLvyInjkJGoXgcmL8xP7+yy7o=; b=sovf5/DQ75c/7d
+	KitzoXM5Yf0sYxCiDHYANBRYvUI6/xqF0PaHwe2Cly0U801GercIA16WZotXX11j/mepEbXDUeu5K
+	zBq6uTO7LKmsnN9DhIY9EWg0yj8MX2VosddSH7V/B4AOSwhI5Is7y3RpLx+U/npAnwHS2VN2SPR2k
+	x+ZDObHLlgt1AV72z9ZgEroD0KfxNd3Mxy/GPleXYFEJV/4PlDo+aCa7ZFJBopgO2hDmWEKiIL0WN
+	MOL5ULMzT6zf4+1sA6qU0doDgI/fGZcP6QAtv9UStQXPAkBpY5r4KfvTE9L3NF9EuweKyJIh1RJxj
+	V8GDbUDeZwlY2tObDUug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hrjNp-0002Gn-08; Sun, 28 Jul 2019 13:38:41 +0000
+	id 1hrjPu-0003ry-Mq; Sun, 28 Jul 2019 13:40:50 +0000
 Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hrjNl-0002GU-NI
- for linux-riscv@lists.infradead.org; Sun, 28 Jul 2019 13:38:39 +0000
-Received: by mail-ed1-x543.google.com with SMTP id k21so57068568edq.3
- for <linux-riscv@lists.infradead.org>; Sun, 28 Jul 2019 06:38:37 -0700 (PDT)
+ id 1hrjPl-0003lh-Tz
+ for linux-riscv@lists.infradead.org; Sun, 28 Jul 2019 13:40:43 +0000
+Received: by mail-ed1-x543.google.com with SMTP id w13so57087060eds.4
+ for <linux-riscv@lists.infradead.org>; Sun, 28 Jul 2019 06:40:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hy+mRQ+QZ9gGOKuMHdwHfkZBAGMRoDJYYoYSH6U8K7A=;
- b=Swl6CXvxlH7T2DPcTnYcdtPuLwjp1jS/fDPuuVE/laBJ+s8PYOLdZglXMZpo67fYxV
- Ll9W7uWM5Li2hT8noe7HHL1mJntUkro2fHHOkSwC+m1BmQ1Fmrw5cie3x79EYSGQ+qEW
- dDSUKFvyU7RQyyDmurzRgnF8B1hfYL/1RobTTgQxBaa5n/MXI4ZF4yMYq7crzJMhZqiX
- 3V6GD3TrrIiqj4vh/O7j3WZfuJhnILDSXKOC68GWc2AqIKIokBi8C9XNSrdKdFLJkZIk
- tEVwtn390QhvG41kVuGNnusTPYkExko+27RGIUanjkwcZo+6ToZnx3n4ZgoiL/2EpvII
- qkKQ==
+ :cc; bh=/N4pBS+wzG7+cVkEEmHSw6pNTtAYb7dDfOSm3I7p1oM=;
+ b=qSckxRVkUtkrI3T63z01gTkOz1QXroD736U0Lu0+7KoWAl2iJMO9Qp29pATJ7/e2Bj
+ 1UffHHo/J8QJaKujQ6rDOlgKsfeIbLilO2+thQShb3Yolf8+xHnAp8F/V97tKvL7BCm0
+ tnSPXAG6zoAiMaFeJaFZtlBl5++4/WQF/TkSoV9ov8aVWLjR2cM6MndqCqZCQIYlra8u
+ 4kswHPvcZRUyCx7JgkawhgHr6QDMgE4NA9r9j70cR7BIgGseXfl37qxKUTk5MRgPP84U
+ 4gQDgNDJun5NSKvSInJh+8IztC+VmHfT2mMdvJXewdbsH91WslW8BrlVRhyX13NYDgF7
+ OROA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hy+mRQ+QZ9gGOKuMHdwHfkZBAGMRoDJYYoYSH6U8K7A=;
- b=QCeyGR+ycpxCQe3I7R4+GUVLggj61AaGFEHtSSOxjeRucsci/2a5o36VtA5DQ332TZ
- JvbUobwqhLZqhUVga+XwfwC+lV57jd2C/fPVkCPsDNAs2w7uyBogDSx8xRi0LyxFYj6W
- xeG0Gyp1Y/rTiiFsHO7rhi0mPjOuaPrCyK9Fywssh8Tbq5Vnr9jdODn2VS2QCjQ6iALa
- KpcnlAMsfqdDQxXeYEnDJQAlTUCXQNHxr+mPohhkD0KynlvUvCZe4YRIwsurMSToesil
- H0Ebu4wVpkm4ex03DA4TibG8xhVKBen5kgvdQhFzfHoB18WiGM7lKGiaVF15KnPr2shS
- K/jQ==
-X-Gm-Message-State: APjAAAXoA64+bNrqAdcJ+rKnzyQO+A9nsadZ7qUrOj+7RDaqpVEu/VXc
- UIqRWFSt9Ncx+X/tqIiZOB3SJ9qp8IADDgmAFFc=
-X-Google-Smtp-Source: APXvYqzJFhA4yfR/AhsQy7gz2M1fgFG9KBciwTB/MXLVkyXYEFdwGDN6sQjCRmCociC7RVSJJcTt/NzLrgI1xepJ8DY=
-X-Received: by 2002:a17:906:81cb:: with SMTP id
- e11mr79541973ejx.37.1564321116352; 
- Sun, 28 Jul 2019 06:38:36 -0700 (PDT)
+ bh=/N4pBS+wzG7+cVkEEmHSw6pNTtAYb7dDfOSm3I7p1oM=;
+ b=n6rNeyRGUG9+FoHNGUm4Z8n4NjTQeuP/4yjfPhbnPzf107fEIY+fbsC05ZkfgWmlUh
+ Pznx5uTEl/BaO1SCLNbNIRfsw+wotqKdtLFEdl0iOJfm9DDBYjxp8yRQkbfBMF9fHdFo
+ utEz4zOFpgCTeBNkDlJYahyCiL1t1oQ3U0SjgHmwXme/RKBz0bpMOjBZcivKnH9fObTp
+ yZ51iyU2qWlaqrpQxjYAzhiEtNYnK/Eio7+FZ6dPj7b2ZcuK/HMNs2Rw+PXa3uzeESA3
+ ijekqBCRXxqZIO6GM5G+UDzzclK7bk3q94m6oKyEmJ6ISYSrDOcdglFNU1jHjNXxl82Y
+ 0Z9A==
+X-Gm-Message-State: APjAAAXl9xarysKIKUdm4gj5wczFVVsf1Bqdld8NK4kiSrF588H6tFhy
+ pEK4EWnfzqKkW9dLWUtBdQtYbOP0Du2PwB/VPMY=
+X-Google-Smtp-Source: APXvYqxrdx60nP74vKeV9PJU/NlokFcEKb4pT2kFy7UFBCuBn92G77ltXyW197yRIj65YGGATN7XscVngZvnAYQGATg=
+X-Received: by 2002:a17:906:a481:: with SMTP id
+ m1mr56063760ejz.87.1564321240719; 
+ Sun, 28 Jul 2019 06:40:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1907251429420.32766@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1907251429420.32766@viisi.sifive.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sun, 28 Jul 2019 21:38:25 +0800
-Message-ID: <CAEUhbmUh0rJzFUoA05En9osy+Vv9AP0yOr-bs1goqk7+6SCv2g@mail.gmail.com>
-Subject: Re: [PATCH] riscv: kbuild: add virtual memory system selection
+Date: Sun, 28 Jul 2019 21:40:29 +0800
+Message-ID: <CAEUhbmVHjy86js51u-VP=X8h4xg19kBjKkGRu+C2T2pUwQz6Qw@mail.gmail.com>
+Subject: Re: [PATCH] riscv: dts: fu540-c000: drop "timebase-frequency"
 To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190728_063837_788610_A1869B3E 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20190728_064041_975468_3FEC73D4 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -92,129 +93,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Alexandre Ghiti <alex@ghiti.fr>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ devicetree <devicetree@vger.kernel.org>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Jul 27, 2019 at 4:00 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+On Fri, Jul 26, 2019 at 5:31 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
 >
 >
-> The RISC-V specifications currently define three virtual memory
-> translation systems: Sv32, Sv39, and Sv48.  Sv32 is currently specific
-> to 32-bit systems; Sv39 and Sv48 are currently specific to 64-bit
-> systems.  The current kernel only supports Sv32 and Sv39, but we'd
-> like to start preparing for Sv48.  As an initial step, allow the
-> virtual memory translation system to be selected via kbuild, and stop
-> the build if an option is selected that the kernel doen't currently
-> support.
->
-> This patch currently has no functional impact.
+> On FU540-based systems, the "timebase-frequency" (RTCCLK) is sourced
+> from an external crystal located on the PCB.  Thus the
+> timebase-frequency DT property should be defined by the board that
+> uses the SoC, not the SoC itself.  Drop the superfluous
+> timebase-frequency property from the SoC DT data.  (It's already
+> present in the board DT data.)
 >
 > Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Alexandre Ghiti <alex@ghiti.fr>
 > ---
->  arch/riscv/Kconfig                  | 43 +++++++++++++++++++++++++++++
->  arch/riscv/include/asm/pgtable-32.h |  4 +++
->  arch/riscv/include/asm/pgtable-64.h |  4 +++
->  3 files changed, 51 insertions(+)
+>  arch/riscv/boot/dts/sifive/fu540-c000.dtsi | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 59a4727ecd6c..8ef64fe2c2b3 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -155,6 +155,49 @@ config MODULE_SECTIONS
->         bool
->         select HAVE_MOD_ARCH_SPECIFIC
->
-> +choice
-> +       prompt "Virtual Memory System"
-> +       default RISCV_VM_SV32 if 32BIT
-> +       default RISCV_VM_SV39 if 64BIT
-> +       help
-> +         The RISC-V Instruction Set Manual Volume II: Privileged
-> +         Architecture defines several different "virtual memory
-> +         systems" which specify virtual and physical address formats
-> +         and the structure of page table entries.  This determines
-> +         the amount of virtual address space present and how it is
-> +         translated into physical addresses.
-> +
-> +       config RISCV_VM_SV32
-> +               depends on 32BIT
-> +               bool "RISC-V Sv32"
-> +               help
-> +                 The Sv32 virtual memory system is a page-based
-> +                 address and page table format for RV32 systems.
-> +                 It specifies a translation between 32-bit virtual
-> +                 addresses and 33-bit physical addresses, via a
-> +                 two-stage page table layout.
-> +       config RISCV_VM_SV39
-> +               depends on 64BIT
-> +               bool "RISC-V Sv39"
-> +               help
-> +                 The Sv39 virtual memory system is a page-based
-> +                 address and page table format for RV64 systems.
-> +                 It specifies a translation between 39-bit virtual
-> +                 addresses and 40-bit physical addresses, via a
 
-The spec does not mention 40-bit physical addresses, but 56-bit.
-
-> +                 three-stage page table layout.
-> +       config RISCV_VM_SV48
-> +               depends on 64BIT
-> +               bool "RISC-V Sv48"
-> +               help
-> +                 The Sv48 virtual memory system is a page-based
-> +                 address and page table format for RV64 systems.
-> +                 It specifies a translation between 48-bit virtual
-> +                 addresses and 49-bit physical addresses, via a
-
-ditto.
-
-> +                 four-stage page table layout.
-> +
-> +endchoice
-> +
-> +
->  choice
->         prompt "Maximum Physical Memory"
->         default MAXPHYSMEM_2GB if 32BIT
-> diff --git a/arch/riscv/include/asm/pgtable-32.h b/arch/riscv/include/asm/pgtable-32.h
-> index b0ab66e5fdb1..86d41a04735b 100644
-> --- a/arch/riscv/include/asm/pgtable-32.h
-> +++ b/arch/riscv/include/asm/pgtable-32.h
-> @@ -6,6 +6,10 @@
->  #ifndef _ASM_RISCV_PGTABLE_32_H
->  #define _ASM_RISCV_PGTABLE_32_H
->
-> +#if !defined(CONFIG_RISCV_VM_SV32)
-> +#error Only Sv32 supported
-> +#endif
-> +
->  #include <asm-generic/pgtable-nopmd.h>
->  #include <linux/const.h>
->
-> diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
-> index 74630989006d..86935595115d 100644
-> --- a/arch/riscv/include/asm/pgtable-64.h
-> +++ b/arch/riscv/include/asm/pgtable-64.h
-> @@ -6,6 +6,10 @@
->  #ifndef _ASM_RISCV_PGTABLE_64_H
->  #define _ASM_RISCV_PGTABLE_64_H
->
-> +#if !defined(CONFIG_RISCV_VM_SV39)
-> +#error Only Sv39 supported for now
-> +#endif
-> +
->  #include <linux/const.h>
->
->  #define PGDIR_SHIFT     30
-> --
-
-Regards,
-Bin
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 
 _______________________________________________
 linux-riscv mailing list
