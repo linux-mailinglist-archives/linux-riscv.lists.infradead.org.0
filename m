@@ -2,73 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43C5777FA9
-	for <lists+linux-riscv@lfdr.de>; Sun, 28 Jul 2019 15:42:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4038D77FAC
+	for <lists+linux-riscv@lfdr.de>; Sun, 28 Jul 2019 15:45:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p8epLDWPi6N3yqv83K9IgxDjKGS8SZQUMTnTIjQ/Fl4=; b=RvUIxCB0pf1bbF
-	G7O0vm/DNeLIYI5P9z1qmydjZwLoTn17SvVYIuHdol79OOFoziOSCs4QIsJyGK8NaimPtf1d3ridI
-	zfJJl+45djzV0zb72dmf5v80LZliZLUWhnuKPwaNdFhZtf5rWchAG0o8xs4V6FEcHA1Af9ilwufUj
-	/v4ogBoGtmgDp6Y87Uu+CqJy7sZAKL/pEN6J3oErQYXx8CPMzuDZygJiwjWRZXPB04ZSy+Z546K2m
-	CoisNBdB21GlNqfQXSc7zewHSh6bjqgnYKsQH0JtRyn0q5cOG+eafeVO67chgnlVL3AtXwAjSUWjw
-	94jmCF5Pj5z5drQV0BAw==;
+	List-Owner; bh=scpMrzgis/xb2T7EdmGIV8r73ETgDFCWCRTx2zqSKxA=; b=FIDZwTTHJyYTE+
+	A8KohqHPBJEypv1Ra0B8PXqB3LgpwNNSACdnngB1igAskCWVCgEZeXBd/LSqPuCUWDfhf1bxv08Nd
+	uhPUESsJENXL772pGqV8jpkFXNONN1a+oLuS0QyTyBrZiDCFKUE8NuwECtsdP+zNDXwOMt1mopzAF
+	mtS3L5nVlPbpzITKZZFO7Ghkxjep0Q4TREG0lfrwAQQdiX244UdlXxYULpeJAyVk6kNH6gXCpljm5
+	XXKkRrbiRkpOKzcMrs5rd05wJyCyJyThSvzM3P57g97cqA8CQ7TFVUqCc8eTj+fNQgDr67dIYmuHP
+	nuhfNKgAqFif68RR5JzQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hrjR5-00041t-JT; Sun, 28 Jul 2019 13:42:03 +0000
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
+	id 1hrjUX-0005Lk-PW; Sun, 28 Jul 2019 13:45:37 +0000
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hrjR2-00041X-OT
- for linux-riscv@lists.infradead.org; Sun, 28 Jul 2019 13:42:01 +0000
-Received: by mail-ed1-x544.google.com with SMTP id p15so57020833eds.8
- for <linux-riscv@lists.infradead.org>; Sun, 28 Jul 2019 06:42:00 -0700 (PDT)
+ id 1hrjUT-0005LK-2B
+ for linux-riscv@lists.infradead.org; Sun, 28 Jul 2019 13:45:34 +0000
+Received: by mail-ed1-x543.google.com with SMTP id w13so57092399eds.4
+ for <linux-riscv@lists.infradead.org>; Sun, 28 Jul 2019 06:45:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yTBwHNHT3KHAp/UaTaH4Up3YEwsrhkbymBNCkcdraJ4=;
- b=UQWUwAU/aLkzrRJuq7lz6WfmkRCRPcRIkelqPKRkPBmQvdcVxlDWInaTr16xiYUOTh
- LaIL6njzffcFYPhbX3vBZ31RhD8oEUnYxYzGm6URgF9ybzNE3wjQD+Q91qr4QpoP89x/
- 7AZ+mKc/2Z03uFx+5PK5F7JsddDDwG8851Ro9yV3keN1CYuu0p24wRy19pNYk0P6i2YX
- l/zE2saf2xRu5aXu/3I3UG3IZKFaKpY44+0qACOrLx5/D1k08/toiQG0I7wjC4ntV3n0
- mXhsVFqhR+jOLJT3+Q5iz0xFOVDJeqJPDwbI+s2WDPn2gxr6HeePvKoF/ToqjaZSBtLa
- M8eg==
+ :cc; bh=2zp7VZgo7gRFXS38Tm1zr34TgnjCWRWdIBcQSP1RHuo=;
+ b=sgfNebPeC/Q743cR44AI97kFXhFTzrd62akNIUz49b6KNl/WXGYYOeqSdxmh0X/GLa
+ wM7T/wlg00lDg53ul8meQswE8zZnKUu0hMo3oTpdWMYCP7iTZQzrIWGJ1Lu7DxyfShXZ
+ YJlZZD4ykunOFsEEGbmIvy54JnV8LFHgDVkAZJP0/JbjZXZpPi1crfosPIVkfR1cDvoR
+ rlcpZdVTrADupOvaVtzIVOp+etlcKxs7HCE5WrP+Z8qJOHP67GnD/xQlnqYxD1esHmTT
+ tKrYjefQkQNt8bWTBZQD+YYfpx9YyLJ41T+qv5F3cHXqADjYuxZ/nNIyxWSJ9r1FX0tX
+ xO8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yTBwHNHT3KHAp/UaTaH4Up3YEwsrhkbymBNCkcdraJ4=;
- b=s6r8LVJIZum5WEL6JmHec3zriJgk8zM23MV4MIlf4a2RzwekkBHyJNJmIL61lbXqZC
- U90P0y0Bni+5mdsP+W+2oF/RdwCVMRNKSSwm1TsK8dNzL3NbNz/a79nWHy3wwgUf//dZ
- iM6T0QmZoDWxXwcpU544/oG35pb4Zb6/j2dyVSDVwlOqbgq0lvVbKhjhy1gYn/Lr5P9i
- 7O8tGKpQQPtWr3F5GXN5xqUSJiSdPa/bOo917ebCpiw1h1B2x6izy3VXZ6BR0C5TM+SH
- bwlkiCZ1AffI47D5ZrBkjii0aD79uSqKUKbfw3cBnrjVHVNsldR3c1wR2N+CG1McsN17
- IEKA==
-X-Gm-Message-State: APjAAAU+E3c1MUwNFf8euTfwHj/qxykvt9K46qfyrjeG8IgilnqCzPrf
- 7KxLRu3XU++78tWq0WfU/YoHJx81/YxIEoTqnTU=
-X-Google-Smtp-Source: APXvYqzBKvd0Qybj93U8jK8asK800I/u667umXFP0VgBlCHZHI45yVtwQGVyY3X1SFkkAX087eMxDRfleptdKbmxNjo=
-X-Received: by 2002:a50:94e6:: with SMTP id t35mr91612893eda.137.1564321319323; 
- Sun, 28 Jul 2019 06:41:59 -0700 (PDT)
+ bh=2zp7VZgo7gRFXS38Tm1zr34TgnjCWRWdIBcQSP1RHuo=;
+ b=de6ykPpNtSIw7FGavczjwI3buugIED1VhIhwztsulqM4tLwzP4c58T0BFQ2TWqlTt8
+ Gj/w0PY7dguTP5ndD8DxonEvt8TJb8ql5QqLEg8f52u3akgYN5VIwByOu5CiivSsrozS
+ rUZpdk2DxcN+IM6312jqXaX+qivt1us3p3HwuWXotHR6yUc5YJ96IXV7BpHGzXbKIUde
+ mwTLSrFb/Qx1kR2cvUUhuSjVDw37f3lT2vsYRJGe95IDQg0/A+jum33mIAmjZpaTFb3X
+ LkwveCMqB4JHUhNQhH+GyVmEhZ6avpJbrht26oksZIa93w2M5bDXCRxp61cvjOv5cDZp
+ KEag==
+X-Gm-Message-State: APjAAAU5J0wyDevf+hfeNiWpLQ0CirTteNCDJEGo6v0RO94A1vNkOxlT
+ v/b4iARsFbmBIPkbsV/u698SaxcIl596QTZXFn4=
+X-Google-Smtp-Source: APXvYqxZF5BQ5WWg803jI2sv2cFegFLpIDrN1WzdSX6Eb/wxCph/GHviMtFAJZwBBLp1CqEsXEX6fsVsEoCdCzQylno=
+X-Received: by 2002:a50:ad0c:: with SMTP id y12mr89789151edc.25.1564321531714; 
+ Sun, 28 Jul 2019 06:45:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <alpine.DEB.2.21.9999.1907251426450.32766@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1907251426450.32766@viisi.sifive.com>
+References: <1562298766-25066-1-git-send-email-bmeng.cn@gmail.com>
+ <MN2PR04MB60611BD1B89E3D76ABFBE94A8DF50@MN2PR04MB6061.namprd04.prod.outlook.com>
+ <CAEUhbmWdLoRU1QGVZtwmymtYyQw43UMR8WDB17rJRmvXGbuBTg@mail.gmail.com>
+ <20190722081157.rojxwc6qrsplpduo@salmiak>
+ <CAEUhbmWLuFKdM0UhAvp2hjrDwYc5yxX91pZKOt9DHmb_oV-mJA@mail.gmail.com>
+In-Reply-To: <CAEUhbmWLuFKdM0UhAvp2hjrDwYc5yxX91pZKOt9DHmb_oV-mJA@mail.gmail.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sun, 28 Jul 2019 21:41:48 +0800
-Message-ID: <CAEUhbmX1vJbm9NNU-5OkSaWDRN0pK0=1D6ZLXHD45PNAqDu6gw@mail.gmail.com>
-Subject: Re: [PATCH v2] pci: Kconfig: select PCI_MSI_IRQ_DOMAIN by default on
- RISC-V
-To: Paul Walmsley <paul.walmsley@sifive.com>
+Date: Sun, 28 Jul 2019 21:45:20 +0800
+Message-ID: <CAEUhbmWJe=wk9VV9dRAmVYUPVTogW6q9ULwm1xFxi5iLJOdSBw@mail.gmail.com>
+Subject: Re: [PATCH] riscv: dts: fu540-c000: Add "status" property to cpu node
+To: Mark Rutland <mark.rutland@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190728_064200_791528_2B6BB904 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20190728_064533_132764_F13DB431 
+X-CRM114-Status: GOOD (  16.76  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:544 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:543 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -92,45 +95,78 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci <linux-pci@vger.kernel.org>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, wesley@sifive.com
+Cc: devicetree <devicetree@vger.kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
+ Anup Patel <Anup.Patel@wdc.com>, Yash Shah <yash.shah@sifive.com>,
+ Rob Herring <robh+dt@kernel.org>, Palmer Dabbelt <palmer@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Jul 26, 2019 at 5:28 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+On Mon, Jul 22, 2019 at 9:35 PM Bin Meng <bmeng.cn@gmail.com> wrote:
 >
-> From: Wesley Terpstra <wesley@sifive.com>
+> Hi Mark,
 >
-> This is part of adding support for RISC-V systems with PCIe host
-> controllers that support message-signaled interrupts.
+> On Mon, Jul 22, 2019 at 4:18 PM Mark Rutland <mark.rutland@arm.com> wrote:
+> >
+> > On Fri, Jul 05, 2019 at 01:11:01PM +0800, Bin Meng wrote:
+> > > On Fri, Jul 5, 2019 at 11:59 AM Anup Patel <Anup.Patel@wdc.com> wrote:
+> > > >
+> > > >
+> > > >
+> > > > > -----Original Message-----
+> > > > > From: linux-riscv <linux-riscv-bounces@lists.infradead.org> On Behalf Of Bin
+> > > > > Meng
+> > > > > Sent: Friday, July 5, 2019 9:23 AM
+> > > > > To: linux-riscv <linux-riscv@lists.infradead.org>; devicetree
+> > > > > <devicetree@vger.kernel.org>; Rob Herring <robh+dt@kernel.org>; Mark
+> > > > > Rutland <mark.rutland@arm.com>; Albert Ou <aou@eecs.berkeley.edu>;
+> > > > > Paul Walmsley <paul.walmsley@sifive.com>; Palmer Dabbelt
+> > > > > <palmer@sifive.com>; Yash Shah <yash.shah@sifive.com>
+> > > > > Subject: [PATCH] riscv: dts: fu540-c000: Add "status" property to cpu node
+> > > > >
+> > > > > Per device tree spec, the "status" property property shall be present for
+> > > > > nodes representing CPUs in a SMP configuration. This property is currently
+> > > > > missing in cpu 1/2/3/4 node in the fu540-c000.dtsi.
+> > > >
+> > > > We don't need explicit "status = okay" for SOC internal devices
+> > > > (such as PLIC, INTC, etc) which are always enabled by default.
+> > > >
+> > >
+> > > Yes, that's fine because those device bindings do not require them.
+> > >
+> > > > Absence of "status" DT prop is treated as enabled by default.
+> > > >
+> > >
+> > > But per current device tree spec, "status" in cpu node is mandatory.
+> > > (spec uses "shall"). Missing it is a spec violation.
+> >
+> > I think this is a spec bug (or at least misleading wording in the spec).
+> >
+> > IEEE 1275 says (for status as a generic property):
+> >
+> >   The absence of this property menas that the operational status is unknown or
+> >   okay.
 >
-> Signed-off-by: Wesley Terpstra <wesley@sifive.com>
-> [paul.walmsley@sifive.com: wrote patch description; split this
->  patch from the arch/riscv patch]
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> ---
->  drivers/pci/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Yes, I checked IEEE 1275 doc, and it indeed says like you mentioned.
 >
-> diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
-> index 2ab92409210a..beb3408a0272 100644
-> --- a/drivers/pci/Kconfig
-> +++ b/drivers/pci/Kconfig
-> @@ -52,7 +52,7 @@ config PCI_MSI
->            If you don't know what to do here, say Y.
+> However, it says "unknown" _or_ "okay", yet provides a definite value.
 >
->  config PCI_MSI_IRQ_DOMAIN
-> -       def_bool ARC || ARM || ARM64 || X86
-> +       def_bool ARC || ARM || ARM64 || X86 || RISCV
->         depends on PCI_MSI
->         select GENERIC_MSI_IRQ_DOMAIN
+> >
+> > ... and I think it's fine to treat that the same as an explicit "okay" here, as
+> > we do generically in Linux.
 >
-> --
+> So what Linux does is a defacto interpretation?
+>
+> If everyone agrees this is a device tree spec bug, I will submit the
+> patch to devicetree spec then.
 
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Any comments from the device tree folks? thanks!
+
+Regards,
+Bin
 
 _______________________________________________
 linux-riscv mailing list
