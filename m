@@ -2,70 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B25A7A7E6
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 14:14:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 640397A7FE
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 14:16:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QY8Vj4pPpnNKZarnfIX3yBlzIm/CmXAFZHeunV31K8k=; b=F2v3uaq6tBfb3X
-	zCoHwhgsdWwEm3hWnFOhcqP/v9X4fOj5kkJ+cKWsSpaGUjT1941JpqOxm1cwndSuPr1P+4B4af7AJ
-	g+SEyQLuYuvVQhQEZpbxUmP9KIMn7rsMt3TP8vk2bwMGgOOXFwMA/RwsJUDO8LMixHhfWjGMTrswH
-	K5HZq6N3cMAnPFEzryy3Tn7YA8/TWMqfN38/+PuiLcxOzu+ngwSQWRUSqbKfHnzXf61KK2Hd6frE4
-	51UagdZz5V+3lgPZ4NKfbIy4T2VYKahcsa1vEpfpw0Fga7k8n75bV1Ihf+5bm1ehSaSXJhNtkMoZs
-	V2l5O5/2qhZM5yiscdQA==;
+	List-Owner; bh=7C9WtOpcxhitFqLaxDcd0/HUeJ5jszbLVAxTelbStkM=; b=NJ0q7XerHEfDMb
+	wDObhUBQZy99phvls42O+HZa25iyQt8VeBPToFN6a9a21HDI3Lo26TFqyAx3U2EHctED7eCNUeETt
+	j9YKnP+QJl2yJdi12iztoefx6kPLZ0PvztMzurk1CzlHQQRlswmTusIOIS21S7ZHoXwtnSqDBl3fT
+	1+t18j3wLN5jrqxXE0IZ4zrdJNvoQIX/V8qjXosnruVsSlP18G35ZXaYI1Lp/1n0owho/t6ylZnC4
+	FiQys+86Mgzlx70tl8ZcfeguG870jhx8K5kEHIwEVEKBfSulLxSzMIhWTKc7XZtXCQMT4EadB7Frm
+	KP3wtykArdy2nAbwTssw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsR1K-0004YY-TF; Tue, 30 Jul 2019 12:14:22 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1hsR3S-0006pu-7G; Tue, 30 Jul 2019 12:16:34 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsR1H-0004Xi-4f
- for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 12:14:20 +0000
-Received: by mail-wm1-x341.google.com with SMTP id h19so45183195wme.0
- for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 05:14:17 -0700 (PDT)
+ id 1hsR3N-0006pK-Ou
+ for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 12:16:31 +0000
+Received: by mail-wm1-x343.google.com with SMTP id a15so56938343wmj.5
+ for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 05:16:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nif3qHLVmcvrPjGpxqbZt9/vydbdek0IMR2qJ1UdOfY=;
- b=rYNoj1tSzf0sttrAZdSs0XsVpgLJYwh2JBmIkgCKdff9t45iEMVp+2cHfJrM/VHequ
- RbRBhTt/0cXeZKmlYao/z751WpX18xessLddOkzDYTEFnAWXW6Yxse55jAyRcZnxY/tt
- rJ5tpyDfKCTA8aqaFnZfcwrpxIrSm+Ws2Mu80jZqcAg2UyfC++kD+iiZAtQYDHUbB3uQ
- Gxn2RTDO3tb9g6OZrrmou3hHxY7gQYhQgSlZViGnC0PN2i7eyno/QKb0uL0z0R5MwRAy
- 2bfe9WjPvpOblgbSgsYrp++rsj4vBiJAyu8Xblwumon2NV+xuhsRExoLICKISZhnynUl
- uy+Q==
+ :cc; bh=iCWEmw5uxTuTJM5Fn9CAHniCyIMMG4EL6XrLjBjgqU8=;
+ b=RcEyHgsukWeHJWoW0g1tULEyN+REkaDBS0hPbWb+PVgj21FsAiJFooBKPafQGCQT4k
+ Oe7x3r0UWoYUkKuGQXtHOsZC7ZrYeQsDJQPhCtdqZvkYgnxuNy6VcVzzXe8ww7se6Gc0
+ M9g+GzB9ptSlWbp4AsgoGzauTqZB2tLn6pneb3x2VfvezxPKSRD5ctSTCYZI6F7nNg5Q
+ kTom1CS4D1/Ew4fjK0ZO9TSBUj9psnOiA1fMRYFpHn0E32yFj3GO0qLecTJ0lRrfMzWF
+ jcbyhSInAQWXs8cU/NADw+cye/IMLF+AO67Op9zOMIRAFOVr8/ty82by4n/ajOEjRfIN
+ h8Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nif3qHLVmcvrPjGpxqbZt9/vydbdek0IMR2qJ1UdOfY=;
- b=BZVHMG/QUhu7km2OmV1f8lZxGjxI+9y9Wv3DaH1AYdn/cM+bWCerITrc4nHo5gnFeL
- EJ3xh8uhG5ezdA/tYZLWbu78JBB9IZb7Ph9fz9ooSGHxf1o5rVqhKbkAJpdQx7maTilk
- 6ylJhF2q+e1PaFTUsvgwlPPwkA9W3k3lAdRyLcmuODuR9aboOb8p7YLQRn5VKheMCJ3q
- h2Ke/FijR0de0Sv6ormBiPOCsWzARuPiN45HEeoTUYEPZOifFsag71yaq4Cv1D9JeRYc
- m/yPiZQyrVMOduhzBmNUPNXD9VKNAi7XatDzjZ0/zvzSz9Zeecxi9v+vxgilWuM+sKau
- LmIQ==
-X-Gm-Message-State: APjAAAXo0SZlN/QH9eXdWV9iF6/YKHy+wCcol5OFF5MI/44rlXMCbQM6
- xV0D7VH0CquBDQDCC7AtNWhKn8/p28S6UNL55Rg=
-X-Google-Smtp-Source: APXvYqxBKE8FkPVrEqaGT/BokRytjmgYIEjMXXYbPz3pe96ONQT3DpM8Y+BsFeCrC+LD4o8MLveCcLyT0fkIChqWiqA=
-X-Received: by 2002:a05:600c:254b:: with SMTP id
- e11mr97987106wma.171.1564488855824; 
- Tue, 30 Jul 2019 05:14:15 -0700 (PDT)
+ bh=iCWEmw5uxTuTJM5Fn9CAHniCyIMMG4EL6XrLjBjgqU8=;
+ b=R7j/a6NsmLHrA1lJ8gJFfFscYEjRoeIOF5p54LiYqsPt4dQF3VIm6UztHHuaZmwo7c
+ hdl77jdFidBNa24G9DDqFEbcy0vVSOVVRvypxieC5toDlBpxR1NMxQVlIMc+2ke7CyDn
+ ofhTdw3kp3CCRu7iiMOb5GKugNS7ONNIiaFNZSsu+hEqrnfUGCx42QmuE2uvJP9x2i1z
+ jYQS9Ow+wRoLRN3Oh7QRxw8VROjLCVXP8fiBzR1p9n7XNcGIS0gUFzyayCknEHCmmV+5
+ VXiVUcFow+oxtyi18mdiDQpT57efF+u1BrzPu4xS818OyANhbBW/aVM5M4qo1bH+/2Op
+ 1plw==
+X-Gm-Message-State: APjAAAU0gwbi3TnXsIkwORMCMf1mNM8IY3b3hZ7CIiHz/VzwVwKrRfCB
+ iKNecR1zvCz9TqcaePkoKZWkKw6825YHU98mv+0=
+X-Google-Smtp-Source: APXvYqwoLi8AAqz+99Z48jcpAPghzt+IGo83CFyDdCeXa8lkuZwKmiu9/wvRi+usFvnPUs5v/7GdZ2sspfW5V98qygc=
+X-Received: by 2002:a1c:cfc5:: with SMTP id f188mr96400937wmg.24.1564488988047; 
+ Tue, 30 Jul 2019 05:16:28 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190729115544.17895-1-anup.patel@wdc.com>
- <20190729115544.17895-12-anup.patel@wdc.com>
- <6ebde80e-e8a9-6b7b-52ea-656b9a9e5e5b@redhat.com>
-In-Reply-To: <6ebde80e-e8a9-6b7b-52ea-656b9a9e5e5b@redhat.com>
+ <20190729115544.17895-7-anup.patel@wdc.com>
+ <3caa5b31-f5ed-98cd-2bdf-88d8cb837919@redhat.com>
+ <536673cd-3b84-4e56-6042-de73a536653f@redhat.com>
+ <CAAhSdy2jo6N4c9-_-hj=81mXjHjP8mvZy_8jOdRZELCyU9Y8Aw@mail.gmail.com>
+ <9f84c328-c5ad-b3cc-df0f-05f113476341@redhat.com>
+In-Reply-To: <9f84c328-c5ad-b3cc-df0f-05f113476341@redhat.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Tue, 30 Jul 2019 17:44:03 +0530
-Message-ID: <CAAhSdy09Uhkg=-m213SeR92M1PRx1ZtE-fTLT=nNvg_0HY2YnA@mail.gmail.com>
-Subject: Re: [RFC PATCH 11/16] RISC-V: KVM: Implement stage2 page table
- programming
+Date: Tue, 30 Jul 2019 17:46:16 +0530
+Message-ID: <CAAhSdy0O=q3Sfd=xDw5CwiYoGVRy1DtrXsykZsdRUf9OJAsa3Q@mail.gmail.com>
+Subject: Re: [RFC PATCH 06/16] RISC-V: KVM: Implement
+ KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
 To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_051419_184243_5C272BBA 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20190730_051630_381541_4ADD1135 
+X-CRM114-Status: UNSURE (   9.99  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -73,7 +75,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -105,30 +107,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jul 30, 2019 at 2:30 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+On Tue, Jul 30, 2019 at 5:40 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 >
-> On 29/07/19 13:57, Anup Patel wrote:
-> > This patch implements all required functions for programming
-> > the stage2 page table for each Guest/VM.
+> On 30/07/19 14:08, Anup Patel wrote:
+> >> Still, I would prefer all the VS CSRs to be accessible via the get/set
+> >> reg ioctls.
+> > We had implemented VS CSRs access to user-space but then we
+> > removed it to keep this series simple and easy to review. We thought
+> > of adding it later when we deal with Guest/VM migration.
 > >
-> > At high-level, the flow of stage2 related functions is similar
-> > from KVM ARM/ARM64 implementation but the stage2 page table
-> > format is quite different for KVM RISC-V.
+> > Do you want it to be added as part of this series ?
 >
-> FWIW I very much prefer KVM x86's recursive implementation of the MMU to
-> the hardcoding of pgd/pmd/pte.  I am not asking you to rewrite it, but
-> I'll mention it because I noticed that you do not support 48-bit guest
-> physical addresses.
+> Yes, please.  It's not enough code to deserve a separate patch, and it
+> is useful for debugging.
 
-Yes, I also prefer recursive page table programming. In fact, the first
-hypervisor we ported for RISC-V was Xvisor and over there have
-recursive page table programming for both stage1 and stage2.
+Sure, I will add it in v2 series.
 
-BTW, 48bit VA and guest physical address is already defined in
-latest RISC-V spec. It's just that there is not HW (or QEMU) implementation
-as of now for 4-level page table.
-
-I will certainly add this to our TODO list.
+We have skipped Guest FP ONE_REG interface with same rationale.
+We should add that as well. Agree ?
 
 Regards,
 Anup
