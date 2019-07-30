@@ -2,94 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C6567A008
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 06:27:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 201977A04E
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 07:27:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MLTEVP4DOlsuAUR+vGyhAzKG+PEKOyf5WLwkKxbhtiY=; b=JypFu7dlj+CumZpL1dxBCuROJ
-	BgKItZqhg0lonw+8xdamLF7YgXdaEwTITDFxi2Fap0tP2Xbunz/LP5YuX0hphrOTz3rGwLokDGjpi
-	eBz4ZQh85H7fV831EvwMDJY9ucSTKzcmU9vjRCJdCYNT822W8MNCFp8cAJA888ZwWTPhM6HWbnjSB
-	X99XgXyOsjo015Hg87dpblvCdpaTGPqg+oBgNh1+f+rQ7Ae/RhsNuUO0kJO6L2gXuXcNIvXAjxdU9
-	YoG8Dw4UYmuG425a+MUjPsLwjKbwboQ/3wojBDWRLh5iTQkfcBidOFJ+J/vGPfYOOc6+CUsjIaCJ0
-	tHoRFC9sQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yIkYMf4w4+1sQ4Xhz7Ud8aupbhxNvHNh2uglKyuzH/0=; b=KHekmVfU9vCUT0
+	ZVojxk9H/OdkqMKpZRl8O/H4dq2HmVzE+pIOYIundaiAQRKMhnTna99RlzQH5MPc41GnCMJ3f8eQW
+	Z7ksQxMY0Jwdg0Emw97sWgwvcLeN21VltlEYe2UQqURp+VXT3bvMniNuGayNEsQz3GDqlrIE9hKQ5
+	5wPaWmgrSOfzctnwS7WyRTLkZnytTZdx9jDzv6XLYtUWSEgN9QngS5clsQ1ADFuU+Yy0VEDK0L9eF
+	O5bJoKF+grh/kCnkFWPQv5lxjz3Pj0vgrWCa1yLOsVz3Ly/pIleEbRPzFnT/woO5SIpWFAYuIOOYv
+	jmVuyz7CAa0x1mh8rVlg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsJjm-0005Jo-9H; Tue, 30 Jul 2019 04:27:46 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hsKez-0005Yx-SR; Tue, 30 Jul 2019 05:26:53 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsJji-0005J4-Re
- for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 04:27:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564460863; x=1595996863;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=K5Jiu05QHL4Y9rhJjdIPe6ief17f/gVCnK1Ev+xph0k=;
- b=ANQz3Xa878m16rr/ahu7gWNJ9uQZHoRMrnSiUegoBxwsDJ2c6gKT5Fe4
- cWINj2IFGO0NZ63YdhEUMwZuw5jV/iaDkxZVnsGc+3Sk4CzvcJBQSlVi3
- jXOygF4J96BfPmdtIeYToNfpJgyxSqd3Hmm3B4rDXOvBnQfyGk/vWbJc6
- lzT6xmgzvEsOEIzAzQQtI2NS/gElbaZUfmB4oPufeylgX6Qod5L6vTkJx
- wrwTxLrPFm/AIGoq9iDmg8wPT9pEkmrXGX1gYcKWGa2cO5JCRl9JKk1ud
- vrIIzaRT02jKn3Mh8yGqXw3oWes8dBlNwpDKu0uzcr0kB4IJh08i57EJY Q==;
-IronPort-SDR: 93SgIgzKfJoGVH0Ri8Td8yT7xt6GqNmsfTYvA8UafAgRvpXADbmj8QMKhTxtqXRoPyrsJNJDdP
- ACXTtJYXMqWoua3k+8+gPaaiq7X6zwNF+dlDNNztOyMQeaMlXXoWcjVsksnFQMsAzIHF5AK3M/
- Nbh2ijVJz/y/2nrv1TvceaJdo41wgKXaJHYfXXY/iSuWcE8meEw6uTIhWC8Esjkz+1yuJ9eoyN
- Q4pU+eut//D8k9ehhk4caeFPN55wngx69RweltHFfunjeJ9L06Jsk978zSouILq5MlBeNY2tFk
- wAE=
-X-IronPort-AV: E=Sophos;i="5.64,325,1559491200"; d="scan'208";a="116044230"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 30 Jul 2019 12:27:39 +0800
-IronPort-SDR: PhUshZ/cv/PCPRCfJ5/CWhISDYqtvGZMj7Ofib00I4NJ2ZyMN7jSWfMWoakOScJ0bApkhjLm5P
- zVjgn/Gyt9RlLZrmYtTkZt0wumSsbn7ABYgC1q98ZpCC4xoMWq61eoZ6j4M9IWmvIhinDAaJ+k
- WGii6dD+KFPSt8HxP8RKfonpabKXdSVgxKU1mBDBr6GcA/DyGfGwYr1LbqkSmhKxGo+OTuoPxq
- ETnE0N8uRVf0t/zr4GjFyhc60kuGjFmQZVciwniiZA3KTuL4XmHyLcCNAfzWQt4etjb1nhdrQu
- zG3jktPbpjoR//GpFECrIXyG
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP; 29 Jul 2019 21:25:42 -0700
-IronPort-SDR: f/5JBFw+hs1hoT2dt6RwE3W5beAlg41ri0PiLf7t5/2ZN1kye1hKzLyTqfGgoTN0VvJd4RqyvH
- 5rRqr0DGwA+P388e+yZjSgTrDqeN04PInPWrx7cZSyRshYIVnyEpEfMI2R7NSVv+yHaAtHjtbg
- SuvIBWRpz6/fQMJXlg1RdTtnGgNMRUzJyauB+qUzAGaHnO1bDrtfiwgXs2eUUGCGuYFQckW1NK
- /yJX7mp5Yhl7Uh8G9TwlYth9YwYjMvhJa92S1gMGUY7sUuZyLS/M7YGLto0Qm0xD6URcgl1Icl
- 8Bs=
-Received: from unknown (HELO [10.225.104.231]) ([10.225.104.231])
- by uls-op-cesaip01.wdc.com with ESMTP; 29 Jul 2019 21:27:39 -0700
-Subject: Re: Random memory corruption with v5.2
-To: David Abdurachmanov <david.abdurachmanov@gmail.com>,
- Andreas Schwab <schwab@suse.de>
-References: <mvm8sshcdwc.fsf@suse.de>
- <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
-From: Atish Patra <atish.patra@wdc.com>
-Message-ID: <34577dc8-bf12-9a31-5884-999cb4c88b85@wdc.com>
-Date: Mon, 29 Jul 2019 21:27:38 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.8.0
+ id 1hsKev-0005YD-0t
+ for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 05:26:50 +0000
+Received: by mail-wm1-x344.google.com with SMTP id v15so55815830wml.0
+ for <linux-riscv@lists.infradead.org>; Mon, 29 Jul 2019 22:26:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=47K6Qgo5QbrZVacaid1WG9JiEbdXdWfBJ5xwgMh492Q=;
+ b=y2smEzLUhjWfJzia8TXdaSlDHyftOWzuH910O0PkAhV1T6cHiL6c6wLlk8CxkgNnU0
+ CNwqtZsdVpRwMEbeXWYMlwX4m1NfMzmFn6GBQHJ6CzUFo3C69Tr5JOS0xCvt8Ze3HNGC
+ TckHauXiV7jipXhyCxjA3RPxJCMB+MZz3nGc67U/l8hmsOQAUtl9Tcq+7tjBDWIYOuF+
+ EYWGQLwgoYd32dqpj0MjQitNehY3lKlRWC3tQiCmiH5hSrEvYb/kHkhXoaBR7KbnB8Qv
+ 4aImkrmH/Oa0pcwxkJpzyoxP0n/5MHwqp1lrlT0U46nf+oHTCHpu0YTYMS6ii62EJGZP
+ fX9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=47K6Qgo5QbrZVacaid1WG9JiEbdXdWfBJ5xwgMh492Q=;
+ b=kT07XavIB8+dCirQBeDQH4gOevmpRaWi2vPlavylueSzIEyYtjgizsiSwvjXsxpIfg
+ r8rPeNRlqoD+jaeYZivhcPoTMrGLfkCosyA74lsSSAS95EBkkVRveRh9uAPfPcmmjIVV
+ LSlA8y3JdWMdb1bAoX1WZkGVVlKy+wBn6gY9/hdFWDe1N2uYzl8zGBr8/UXWTSXj+ofr
+ NnjMsHCYnsaRkDxRmvk0xBgiI7pIKAyh4YQrrEyfrSxiXTcMQKOyuEnycye+lS+ZVEbS
+ 8EPO0EaSE/8iccRXiB344sXi1PNgPtv97yTgsYfgeeps+HSM1xQLZR9c0sTh1DCVJbUB
+ Pdjg==
+X-Gm-Message-State: APjAAAU+WVM11WRwNhioLq3VMQZvOK2tOV/sQeElM31jYHPNjxXBbufW
+ 9RU3HIWbTiczkZJumCYnIA4Uhq/J91GrZnOMrCQ=
+X-Google-Smtp-Source: APXvYqy9JqFCYGeBYIGRwK0STC3uyqMmE3umCULOglzUZYV5R/oHxsaevcpDD0VVoIXgi5fdeCDD/6ktHdvpucpNCOA=
+X-Received: by 2002:a1c:cfc5:: with SMTP id f188mr94263067wmg.24.1564464405064; 
+ Mon, 29 Jul 2019 22:26:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
-Content-Language: en-US
+References: <20190729115544.17895-1-anup.patel@wdc.com>
+ <72e9f668-f496-3fca-a1a8-a3c3122a3fd9@redhat.com>
+In-Reply-To: <72e9f668-f496-3fca-a1a8-a3c3122a3fd9@redhat.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 30 Jul 2019 10:56:33 +0530
+Message-ID: <CAAhSdy3Z6d2phRGo20eNWfa4onFwFtsOUPM+OCD465y0tvQ5wg@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/16] KVM RISC-V Support
+To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190729_212742_958564_CA07DE1E 
-X-CRM114-Status: GOOD (  16.13  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190729_222649_117756_5579E01B 
+X-CRM114-Status: GOOD (  13.94  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,71 +87,73 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 7/29/19 3:58 PM, David Abdurachmanov wrote:
-> On Mon, Jul 29, 2019 at 1:51 PM Andreas Schwab <schwab@suse.de> wrote:
->>
->> Since switching to 5.2 kernels I'm seeing random crashes and
->> misbehaviors on the HiFive, for example while building gcc or glibc.
->> Perhaps missing TLB flushes?
-> 
-> Do you have some examples of crashes?
-> 
-> I am running 5.2-rc7 on a large number QEMU instances for builders,
-> and I see some strange behavior, but I haven't noticed any issues
-> on the board using OpenEmbedded build with the final 5.2 yet.
-> 
+On Tue, Jul 30, 2019 at 3:17 AM Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 29/07/19 13:56, Anup Patel wrote:
+> > This series adds initial KVM RISC-V support. Currently, we are able to boot
+> > RISC-V 64bit Linux Guests with multiple VCPUs.
+> >
+> > Few key aspects of KVM RISC-V added by this series are:
+> > 1. Minimal possible KVM world-switch which touches only GPRs and few CSRs.
+> > 2. Full Guest/VM switch is done via vcpu_get/vcpu_put infrastructure.
+> > 3. KVM ONE_REG interface for VCPU register access from user-space.
+> > 4. PLIC emulation is done in user-space. In-kernel PLIC emulation, will
+> >    be added in future.
+> > 5. Timer and IPI emuation is done in-kernel.
+> > 6. MMU notifiers supported.
+> > 7. FP lazy save/restore supported.
+> > 8. SBI v0.1 emulation for KVM Guest available.
+> >
+> > More feature additions and enhancments will follow after this series and
+> > eventually KVM RISC-V will be at-par with other architectures.
+>
+> This looks clean and it shouldn't take long to have it merged.  Please
+> sort out the MAINTAINERS additions.  It would also be nice if
+> tools/testing/selftests/kvm/ worked with RISC-V from the beginning;
+> there have been recent ARM and s390 ports that you can take some
+> inspiration from.
 
-Looking at the timestamps, these seems to be different crashes in 
-different instances. Is there any particular workload you were running 
-or just happens randomly if you run long enough ?
+Thanks Paolo.
 
-If you have complete dmesg and/or vmlinux that will help as well.
+We will certainly include a patch in v2 series for MAINTAINERS entry.
 
-> [17983.074847] Unable to handle kernel paging request at virtual
-> address 0fffffdff5e14700
-> [17983.085132] Oops [#1]
-> 
-> [133953.710130] kernel BUG at include/linux/mm.h:1023!
-> [133953.718204] Kernel BUG [#1]
-> 
-> [165770.567652] Unable to handle kernel NULL pointer dereference at
-> virtual address 0000000000000010
-> 
-> [148578.912479] kernel BUG at lib/list_debug.c:51!
-> [148578.917701] Kernel BUG [#1]
-> 
-> [163756.869949] EXT4-fs (vda2): pa 00000000e9971722: logic 512, phys.
-> 2558464, len 512
-> [163756.889549] EXT4-fs error (device vda2):
-> ext4_mb_release_inode_pa:3837: group 78, free 0, pa_free 149
-> [163757.757600] EXT4-fs (vda2): pa 0000000066b479c3: logic 32, phys.
-> 2558368, len 96
-> 
-> sbi_trap_error: hart1: misaligned store handler failed (error -10)
-> sbi_trap_error: hart1: mcause=0x0000000000000006 mtval=0x00000000000002c3
-> sbi_trap_error: hart1: mepc=0xffffffe0009dc1f4 mstatus=0x0000000000000802
-> sbi_trap_error: hart1: ra=0xffffffe0009dc1ee sp=0xffffffe1f3c17be0
-> 
-> [178876.406122] Unable to handle kernel paging request at virtual
-> address 0000000000012a28
-> [178876.423941] Oops [#1]
-> 
-> _______________________________________________
-> linux-riscv mailing list
-> linux-riscv@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-riscv
-> 
+We referred existing implementation of KVM ARM/ARM64, KVM powerpc
+and KVM mips when we started KVM RISC-V port.
 
+Here's a brief TODO list which we want to immediately work upon after this
+series:
+1. Handle trap from unpriv access in SBI v0.1 emulation
+2. In-kernel PLIC emulation
+3. SBI v0.2 emulation in-kernel
+4. SBI v0.2 hart hotplug emulation in-kernel
+5. ..... and so on .....
 
--- 
+We will include above TODO list in v2 series cover letter as well.
+
+Apart from above, we also have a more exhaustive TODO list based on study
+of other KVM ports which we want to discuss at upcoming LPC 2019.
+
+We were thinking to keep KVM RISC-V disabled by default (i.e. keep it
+experimental) until we have validated it on some FPGA or real HW. For now,
+users can explicitly enable it and play-around on QEMU emulation. I hope
+this is fine with most people ?
+
 Regards,
-Atish
+Anup
 
 _______________________________________________
 linux-riscv mailing list
