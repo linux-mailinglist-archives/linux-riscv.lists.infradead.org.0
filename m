@@ -2,44 +2,44 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5727E7A102
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 08:05:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CE647A109
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 08:06:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M8VQmVFleowUBRgfi8Kdv1BDEX8Pxk+69b7+pC4hALU=; b=O381c8a4l7LN6B
-	XlmxJGff97UFsZaSW8tx2Y4rWyQp4oxlX5BaHBjJqcXuBLkN/sDmIDyvxTVpGTIlVjGKoczP+ZEuC
-	IZ2WJ+IkibWgOfic+axkndSgt+xI3goJnIzGGFD8wNm7FQmJpnkI2CfwVNma9vFz4Re9i0OWhFXkp
-	OO06lybPg1nSVR/qRzUwEJ+q8xJiulCBJ3aRwoRHaszjG4tPqXANLEQ4iWSttV3W1BZsWRLfpJMNf
-	zu22qP5GuVnsWhU9vOjxUfWle4/zOx780iTotsMgoO2yp6+o/4JNl4OekmW/8IcNiE95BWgWbXvCb
-	8WADf4yDzqP3490xwtHg==;
+	List-Owner; bh=2iGHG1H8iTH9kbWbdQzZ+PbGgMLZKCPO6RvT+6fL8Is=; b=H62aym4qqiYA8B
+	al4ODLx9FlUZJXHc7HIcQjYGCVhtsQ+f8YGokug4w+pDLepnLJ9eh4PEgUhjDtETGIvPwXBCsf12j
+	UHzky+6yzw8/v+FHVjpJTsRvNQk5jR91kMVCYKmDuLIYka+oSD9rc0fYSusFznxGkH7kIdUESryWA
+	H6TNKai22+rxgfpcA6KUy45qTpxjrzaaiun2X/fRf680h6uqraKJLyfgH6ndBTAGJB4ZkkF8tcs7z
+	8RWt2xc5haslmFZMob4XQZSUdouMdfDuds70IBS8uzQ/paBqwFefjDUWlfjls9bAUt42GzMxjwUQi
+	0t/JDbHLUoxW0myWX++w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsLFp-0000T8-6U; Tue, 30 Jul 2019 06:04:57 +0000
+	id 1hsLGl-0001yB-LB; Tue, 30 Jul 2019 06:05:55 +0000
 Received: from relay4-d.mail.gandi.net ([217.70.183.196])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsLFX-0000Gr-0q; Tue, 30 Jul 2019 06:04:40 +0000
+ id 1hsLGT-0001mT-U1; Tue, 30 Jul 2019 06:05:39 +0000
 X-Originating-IP: 79.86.19.127
 Received: from alex.numericable.fr (127.19.86.79.rev.sfr.net [79.86.19.127])
  (Authenticated sender: alex@ghiti.fr)
- by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 94A64E0005;
- Tue, 30 Jul 2019 06:04:26 +0000 (UTC)
+ by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 148D9E0005;
+ Tue, 30 Jul 2019 06:05:31 +0000 (UTC)
 From: Alexandre Ghiti <alex@ghiti.fr>
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v5 12/14] mips: Replace arch specific way to determine 32bit
- task with generic version
-Date: Tue, 30 Jul 2019 01:51:11 -0400
-Message-Id: <20190730055113.23635-13-alex@ghiti.fr>
+Subject: [PATCH v5 13/14] mips: Use generic mmap top-down layout and brk
+ randomization
+Date: Tue, 30 Jul 2019 01:51:12 -0400
+Message-Id: <20190730055113.23635-14-alex@ghiti.fr>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190730055113.23635-1-alex@ghiti.fr>
 References: <20190730055113.23635-1-alex@ghiti.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190729_230439_217579_40019776 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20190729_230538_285268_2EA2F825 
+X-CRM114-Status: GOOD (  15.70  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
@@ -75,39 +75,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Mips uses TASK_IS_32BIT_ADDR to determine if a task is 32bit, but
-this define is mips specific and other arches do not have it: instead,
-use !IS_ENABLED(CONFIG_64BIT) || is_compat_task() condition.
+mips uses a top-down layout by default that exactly fits the generic
+functions, so get rid of arch specific code and use the generic version
+by selecting ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT.
+As ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT selects ARCH_HAS_ELF_RANDOMIZE,
+use the generic version of arch_randomize_brk since it also fits.
+Note that this commit also removes the possibility for mips to have elf
+randomization and no MMU: without MMU, the security added by randomization
+is worth nothing.
 
 Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
 Acked-by: Paul Burton <paul.burton@mips.com>
 Reviewed-by: Kees Cook <keescook@chromium.org>
 Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
 ---
- arch/mips/mm/mmap.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/mips/Kconfig                 |  2 +-
+ arch/mips/include/asm/processor.h |  5 --
+ arch/mips/mm/mmap.c               | 96 -------------------------------
+ 3 files changed, 1 insertion(+), 102 deletions(-)
 
+diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
+index d50fafd7bf3a..4e85d7d2cf1a 100644
+--- a/arch/mips/Kconfig
++++ b/arch/mips/Kconfig
+@@ -5,7 +5,6 @@ config MIPS
+ 	select ARCH_32BIT_OFF_T if !64BIT
+ 	select ARCH_BINFMT_ELF_STATE if MIPS_FP_SUPPORT
+ 	select ARCH_CLOCKSOURCE_DATA
+-	select ARCH_HAS_ELF_RANDOMIZE
+ 	select ARCH_HAS_TICK_BROADCAST if GENERIC_CLOCKEVENTS_BROADCAST
+ 	select ARCH_HAS_UBSAN_SANITIZE_ALL
+ 	select ARCH_SUPPORTS_UPROBES
+@@ -13,6 +12,7 @@ config MIPS
+ 	select ARCH_USE_CMPXCHG_LOCKREF if 64BIT
+ 	select ARCH_USE_QUEUED_RWLOCKS
+ 	select ARCH_USE_QUEUED_SPINLOCKS
++	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
+ 	select ARCH_WANT_IPC_PARSE_VERSION
+ 	select BUILDTIME_EXTABLE_SORT
+ 	select CLONE_BACKWARDS
+diff --git a/arch/mips/include/asm/processor.h b/arch/mips/include/asm/processor.h
+index aca909bd7841..fba18d4a9190 100644
+--- a/arch/mips/include/asm/processor.h
++++ b/arch/mips/include/asm/processor.h
+@@ -29,11 +29,6 @@
+ 
+ extern unsigned int vced_count, vcei_count;
+ 
+-/*
+- * MIPS does have an arch_pick_mmap_layout()
+- */
+-#define HAVE_ARCH_PICK_MMAP_LAYOUT 1
+-
+ #ifdef CONFIG_32BIT
+ #ifdef CONFIG_KVM_GUEST
+ /* User space process size is limited to 1GB in KVM Guest Mode */
 diff --git a/arch/mips/mm/mmap.c b/arch/mips/mm/mmap.c
-index ff6ab87e9c56..d5106c26ac6a 100644
+index d5106c26ac6a..00fe90c6db3e 100644
 --- a/arch/mips/mm/mmap.c
 +++ b/arch/mips/mm/mmap.c
-@@ -17,6 +17,7 @@
+@@ -16,49 +16,10 @@
+ #include <linux/random.h>
  #include <linux/sched/signal.h>
  #include <linux/sched/mm.h>
- #include <linux/sizes.h>
-+#include <linux/compat.h>
+-#include <linux/sizes.h>
+-#include <linux/compat.h>
  
  unsigned long shm_align_mask = PAGE_SIZE - 1;	/* Sane caches */
  EXPORT_SYMBOL(shm_align_mask);
-@@ -191,7 +192,7 @@ static inline unsigned long brk_rnd(void)
  
- 	rnd = rnd << PAGE_SHIFT;
- 	/* 32MB for 32bit, 1GB for 64bit */
+-/* gap between mmap and stack */
+-#define MIN_GAP		(128*1024*1024UL)
+-#define MAX_GAP		((STACK_TOP)/6*5)
+-#define STACK_RND_MASK	(0x7ff >> (PAGE_SHIFT - 12))
+-
+-static int mmap_is_legacy(struct rlimit *rlim_stack)
+-{
+-	if (current->personality & ADDR_COMPAT_LAYOUT)
+-		return 1;
+-
+-	if (rlim_stack->rlim_cur == RLIM_INFINITY)
+-		return 1;
+-
+-	return sysctl_legacy_va_layout;
+-}
+-
+-static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
+-{
+-	unsigned long gap = rlim_stack->rlim_cur;
+-	unsigned long pad = stack_guard_gap;
+-
+-	/* Account for stack randomization if necessary */
+-	if (current->flags & PF_RANDOMIZE)
+-		pad += (STACK_RND_MASK << PAGE_SHIFT);
+-
+-	/* Values close to RLIM_INFINITY can overflow. */
+-	if (gap + pad > gap)
+-		gap += pad;
+-
+-	if (gap < MIN_GAP)
+-		gap = MIN_GAP;
+-	else if (gap > MAX_GAP)
+-		gap = MAX_GAP;
+-
+-	return PAGE_ALIGN(STACK_TOP - gap - rnd);
+-}
+-
+ #define COLOUR_ALIGN(addr, pgoff)				\
+ 	((((addr) + shm_align_mask) & ~shm_align_mask) +	\
+ 	 (((pgoff) << PAGE_SHIFT) & shm_align_mask))
+@@ -156,63 +117,6 @@ unsigned long arch_get_unmapped_area_topdown(struct file *filp,
+ 			addr0, len, pgoff, flags, DOWN);
+ }
+ 
+-unsigned long arch_mmap_rnd(void)
+-{
+-	unsigned long rnd;
+-
+-#ifdef CONFIG_COMPAT
 -	if (TASK_IS_32BIT_ADDR)
-+	if (!IS_ENABLED(CONFIG_64BIT) || is_compat_task())
- 		rnd = rnd & (SZ_32M - 1);
- 	else
- 		rnd = rnd & (SZ_1G - 1);
+-		rnd = get_random_long() & ((1UL << mmap_rnd_compat_bits) - 1);
+-	else
+-#endif /* CONFIG_COMPAT */
+-		rnd = get_random_long() & ((1UL << mmap_rnd_bits) - 1);
+-
+-	return rnd << PAGE_SHIFT;
+-}
+-
+-void arch_pick_mmap_layout(struct mm_struct *mm, struct rlimit *rlim_stack)
+-{
+-	unsigned long random_factor = 0UL;
+-
+-	if (current->flags & PF_RANDOMIZE)
+-		random_factor = arch_mmap_rnd();
+-
+-	if (mmap_is_legacy(rlim_stack)) {
+-		mm->mmap_base = TASK_UNMAPPED_BASE + random_factor;
+-		mm->get_unmapped_area = arch_get_unmapped_area;
+-	} else {
+-		mm->mmap_base = mmap_base(random_factor, rlim_stack);
+-		mm->get_unmapped_area = arch_get_unmapped_area_topdown;
+-	}
+-}
+-
+-static inline unsigned long brk_rnd(void)
+-{
+-	unsigned long rnd = get_random_long();
+-
+-	rnd = rnd << PAGE_SHIFT;
+-	/* 32MB for 32bit, 1GB for 64bit */
+-	if (!IS_ENABLED(CONFIG_64BIT) || is_compat_task())
+-		rnd = rnd & (SZ_32M - 1);
+-	else
+-		rnd = rnd & (SZ_1G - 1);
+-
+-	return rnd;
+-}
+-
+-unsigned long arch_randomize_brk(struct mm_struct *mm)
+-{
+-	unsigned long base = mm->brk;
+-	unsigned long ret;
+-
+-	ret = PAGE_ALIGN(base + brk_rnd());
+-
+-	if (ret < mm->brk)
+-		return mm->brk;
+-
+-	return ret;
+-}
+-
+ bool __virt_addr_valid(const volatile void *kaddr)
+ {
+ 	unsigned long vaddr = (unsigned long)kaddr;
 -- 
 2.20.1
 
