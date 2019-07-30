@@ -2,75 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE0B67A706
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 13:33:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16BFD7A73B
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 13:46:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P78avomqr/uKuk5SYQWN+ab+tAzjPrWSw+d0THyqxYo=; b=UMGTa/QjAZVTxH
-	KgRephrUZLXKvpvLfUCI+L9QpYzUpom4szqKOeWGIMkILcZHqCf37YePmTESQID2ILx02rrqoBl7L
-	1bWh/r5iXcIgH1kfzIqUI96UxmsFkGkCti9S+SHb+wNhFpd+kf3pWNeSmlucAxk7sw2JDtxsmU4Ao
-	ttVJwR3DnkXh5uWS0tusfw9cQfvEavqK2PaDGDp8A/6nXKnni74WP+WNiKTqF4Mxr+VNB0Cs2Mohd
-	1mwQHJUR0zYvf5E87SiBW4sJ0PjGqEhT/S5tu6btzZzX1wAY/JeDweA9QfPkCAfX8HLc4cmqPJNEj
-	IVSnsqUlyvqmc0L5J2Bw==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BFQpg9fvn6VBK1LVh22gJa9F6qWMbDjHLr90zKfkJfQ=; b=YwzIgRnCOQN9Tt
+	/t0GKjUSpgSVcp3p0BwPPiTvs6AMw/VvSIrz4vdPMKmR7yLYEYq3PjuVPj1w3ItwMy10OYRKwxOJe
+	x4VIkNrs2HN87us85gZsHGra/yp48lzpGpsSkZcBTtEAxF8p0uhCd+PKxpoD4BjrcSVlPMackJBTT
+	kVVxlwK8xMnexUCZpnQoV8hIOvJCUJK5n5jSw4XVCmYEaOWW04KbzyKSQ3o9EJ1/OxyiMzFiOeoSj
+	4W/rkefihm/G1VPM03e4Aql1CYKRj3pqni4l7lIeBFhHaiD51piJuo1qPTj0Mtj8icUIVsJ6oHSIQ
+	c/NRYvKD7zlMywj7DE8A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsQNZ-00015b-8t; Tue, 30 Jul 2019 11:33:17 +0000
-Received: from mail-wm1-f65.google.com ([209.85.128.65])
+	id 1hsQaN-0001U0-60; Tue, 30 Jul 2019 11:46:31 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsQNV-000147-PB
- for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 11:33:15 +0000
-Received: by mail-wm1-f65.google.com with SMTP id v15so56829283wml.0
- for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 04:33:11 -0700 (PDT)
+ id 1hsQZy-0001GM-Tp
+ for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 11:46:08 +0000
+Received: by mail-wr1-x442.google.com with SMTP id 31so65449583wrm.1
+ for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 04:46:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=DSo219uBBQuUIUjoxpKujZtQ/5w8YP4pzpQJT3D8aBA=;
+ b=gbw6CwkeXhENGj0Eco2ek5ibwxV16dRDV7am21QurDDO6eOhOkVzbupEo0vU5bjnX8
+ wooptB/qSlORBPn6AJO9d6w6OTdp8aKbkrTjrp8IMloxRKPXN2yYh47vKeAN/CFaSZYc
+ Wv4D9akzJgzNvlbW6kCYgSG5YfrJLKMHeK5qJ5Os6kkfd8HRUesS8DW3VJif/ZhFLgVa
+ ISCTcC/JSf8tTK7eXzEfjoBsWfG2JmxjnSA0s37YubJ9mISX5km8dbVKEIjFQRlWhxxD
+ c/GVRcN0F/txPzvFKgC/LRk0YOagBkFUvHIj1KabmrGucdZCwu0ckNAkGrLyj6NzYnMs
+ 9YXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=UPB+O1cCb7Wq2RKCoVQnzfZBI5pS9MKq+7qoNAVhJ6s=;
- b=ikBupbZEwa80b3yMIVqt9PVCicoJ5Ru9+3vi/h5gRLb7Ci2ATfQ8ZiMCKjNxr2zD5M
- POr/3fn/ZW9YuRS7KT0wzY7b8I94O+FmCT3P1Pc9Knr7lHNHWYsSpPmSIOKAig0PXoyX
- WaXF8dtI2SXBjY/rH3o8VIWeOZnWD1NfacmxSH0UDyW4OsDblt0ZNM9e/h0WdCEtBHcN
- UJYF2ERved6scZRCTHhjYdY0sVm3K7W1l/VhFVEnMF+4Q5IjUgrHpgWEaVCr3CZN0HCz
- 3fWHEkNushU/avxuLa9F+o8gy2ZgbvDLktsgt7Zb58BORITSrwvt3OchM4cTmWLosARt
- FRDQ==
-X-Gm-Message-State: APjAAAU+Rxsn8/zrsXqOLhfB0EbJEYmkhpg4NnHIfTA+RgiC0PM3HWZK
- b0HLvkomYMk41yqxOWU6U6Axjg==
-X-Google-Smtp-Source: APXvYqwZbQfaWi8ZX3vZiY1Jont5uSIg4Z3fLMXkr7rwafZ4q9S6fJyyXi6HPOxn4HmB3Yz8Zlp4bw==
-X-Received: by 2002:a7b:c144:: with SMTP id z4mr109313020wmi.50.1564486390353; 
- Tue, 30 Jul 2019 04:33:10 -0700 (PDT)
-Received: from [192.168.10.150] ([93.56.166.5])
- by smtp.gmail.com with ESMTPSA id j10sm111237085wrd.26.2019.07.30.04.33.08
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Jul 2019 04:33:09 -0700 (PDT)
-Subject: Re: [RFC PATCH 00/16] KVM RISC-V Support
-To: Anup Patel <anup@brainfault.org>
-References: <20190729115544.17895-1-anup.patel@wdc.com>
- <72e9f668-f496-3fca-a1a8-a3c3122a3fd9@redhat.com>
- <CAAhSdy3Z6d2phRGo20eNWfa4onFwFtsOUPM+OCD465y0tvQ5wg@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <965cffdb-86e2-b422-9c23-345c7100fd88@redhat.com>
-Date: Tue, 30 Jul 2019 13:33:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DSo219uBBQuUIUjoxpKujZtQ/5w8YP4pzpQJT3D8aBA=;
+ b=bSg5mACkvyw0Ijl70tYkGKLS8bFRNfhttBM9mD5ycaQzjkYfnXVop2uDulBa+JPL+L
+ foHFGJvoWYtjUHy8FA1JTwV9EqKLHNg9Itp4AX6V52GTW3adxqHtTYmAIisiGR7W/DWJ
+ tirozl0PnAXfHkCyQUWUdO4Wo1PPWpyq5hVAgrPiXVumMivAzqp+GRBLR1VjVIM6cL31
+ YSDreU8lbsiC8UupOhLI5REEyBiUfsvbtfPWHqAZ2ia7vUFb52IUxaBvqu+I1Ouyh2po
+ Xezr6e1F9rJmrVF5+tQYWaD4Z0FYer7bWpaqatxjdwCjZdbnbQ+Nh0/yL4XMMcBYnFQF
+ h1rw==
+X-Gm-Message-State: APjAAAWMpjlGGJR/Rl241CoCW6N/W2QI8bf89VoIGxbdW+Cum7joA5Sk
+ f7vywtZ6QuFMU8bin36g9qR4wB5KFMdgVNdqNuc=
+X-Google-Smtp-Source: APXvYqxcNGyAMDSQUqXUF4ibEZV0Hg0QLhoWESRbxN2cYy12N9UTrjz1RoeAXOIYGCVQ4YlqG0W4pvPRidpxQg32B0Y=
+X-Received: by 2002:a5d:6284:: with SMTP id k4mr94957352wru.179.1564487165402; 
+ Tue, 30 Jul 2019 04:46:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAAhSdy3Z6d2phRGo20eNWfa4onFwFtsOUPM+OCD465y0tvQ5wg@mail.gmail.com>
-Content-Language: en-US
+References: <20190729115544.17895-1-anup.patel@wdc.com>
+ <20190729115544.17895-5-anup.patel@wdc.com>
+ <ade614ae-fcfe-35f2-0519-1df71d035bcd@redhat.com>
+ <2de10efc-56f8-ff47-ed69-7e471a099c80@redhat.com>
+In-Reply-To: <2de10efc-56f8-ff47-ed69-7e471a099c80@redhat.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 30 Jul 2019 17:15:53 +0530
+Message-ID: <CAAhSdy0OH9h-R=2NxhhPs6jmFPNgZVSwFtCjtJrf++htu82ifA@mail.gmail.com>
+Subject: Re: [RFC PATCH 04/16] RISC-V: KVM: Implement VCPU create, init and
+ destroy functions
+To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_043313_815644_A8B9968D 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20190730_044606_978543_5DBBCE2C 
+X-CRM114-Status: GOOD (  12.15  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.128.65 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,35 +104,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 30/07/19 07:26, Anup Patel wrote:
-> Here's a brief TODO list which we want to immediately work upon after this
-> series:
-> 1. Handle trap from unpriv access in SBI v0.1 emulation
-> 2. In-kernel PLIC emulation
-> 3. SBI v0.2 emulation in-kernel
-> 4. SBI v0.2 hart hotplug emulation in-kernel
-> 5. ..... and so on .....
-> 
-> We will include above TODO list in v2 series cover letter as well.
+On Tue, Jul 30, 2019 at 3:46 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 30/07/19 10:48, Paolo Bonzini wrote:
+> > On 29/07/19 13:56, Anup Patel wrote:
+> >> +    cntx->hstatus |= HSTATUS_SP2V;
+> >> +    cntx->hstatus |= HSTATUS_SP2P;
+> > IIUC, cntx->hstatus's SP2P bit contains the guest's sstatus.SPP bit?
+>
+> Nevermind, that was also a bit confused.  The guest's sstatus.SPP is in
+> vsstatus.  The pseudocode for V-mode switch is
+>
+> SRET:
+>   V = hstatus.SPV (1)
+>   MODE = sstatus.SPP
+>   hstatus.SPV = hstatus.SP2V
+>   sstatus.SPP = hstatus.SP2P
+>   hstatus.SP2V = 0
+>   hstatus.SP2P = 0
+>   ...
+>
+> trap:
+>   hstatus.SP2V = hstatus.SPV
+>   hstatus.SP2P = sstatus.SPP
+>   hstatus.SPV = V (1)
+>   sstatus.SPP = MODE
+>   V = 0
+>   MODE = 1
+>
 
-I guess I gave you a bunch of extra items in today's more thorough
-review. :)
+Yes, this kind of pseudo-code are not explicitly specified in the
+RISC-V spec. The RISC-V formal model is supposed to cover
+this kind of detailed HW state transition.
 
-BTW, since IPIs are handled in the SBI I wouldn't bother with in-kernel
-PLIC emulation unless you can demonstrate performance improvements (for
-example due to irqfd).  In fact, it may be more interesting to add
-plumbing for userspace handling of selected SBI calls (in addition to
-get/putchar, sbi_system_reset and sbi_hart_down look like good
-candidates in SBI v0.2).
+> so:
+>
+> 1) indeed we need SP2V=SPV=1 when entering guest mode
+>
+> 2) sstatus.SPP contains the guest mode
+>
+> 3) SP2P doesn't really matter for KVM since it never goes to VS-mode
+> from an interrupt handler, so if my reasoning is correct I'd leave it
+> clear, but I guess it's up to you whether to set it or not.
 
-> We were thinking to keep KVM RISC-V disabled by default (i.e. keep it
-> experimental) until we have validated it on some FPGA or real HW. For now,
-> users can explicitly enable it and play-around on QEMU emulation. I hope
-> this is fine with most people ?
+Yes, SP2P does not matter but we set it to 1 here so that from Guest
+perspective it seems we were in S-mode previously.
 
-That's certainly okay with me.
-
-Paolo
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
