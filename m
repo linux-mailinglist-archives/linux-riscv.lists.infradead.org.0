@@ -2,68 +2,68 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D98E27A4B4
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 11:39:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D68037A5D7
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 12:17:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:References:To:From:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rrew0PK3WTwZEs/r+dfOzuXStW+I3eTMo03DBRDjUVo=; b=ib7C1hgAilJV1J
-	RtkanGgAai4TwRnU2af3LPuz03R+/wfTJh/Ur0erRIorfN7iFQsAWAmEW4Zqrpql9Kd2etXVT0J/x
-	Ezs4b3l6ZsK7dGEww46LtLQ37tiR5MptqFt/vZ1JE5XObDdyEcewL7/O1bj+VuP+Uka/SqkBdCIew
-	tJ/hKzh0ftkgfIlgXvjSqmkaefWflknfNTFTQcNhNrqMZCKdB07ceODduCyvD8LVrCuKJGcQF2wwm
-	EMzusQUNNe+rHaLruOSsYBQKNEH3QDSGf9thQkcosQ3Tvak+Bk+NeObGQfF2eXeEBFG1UPkRwEKIb
-	CUxtavptfWtdqy3+TFUw==;
+	List-Owner; bh=ssVY5ZGlpGGkiS29FCNldA4FnCSTwk48SzNB2tILnLg=; b=T+ZMrTm01UQAiW
+	hfnwJ4B+ErK6823Zj9lJ7JO04n18VGVEG/sK8Zo40PVXYHi/z6aq60hrNB5IAWEmxyWWaClL4I0hs
+	oLT08YPygM896S87HfHYThRoDwPRFB5udFH27cJtqXyknGTJK2h7z5Uq+3r1FV8cH+KJb+IwLxp11
+	wHyiUnARXrlX3kTP4an1PHq6awUvzW7BsfDKoUNqYMl6qfvAukTjCRgVj2kFLEeFiyVEVXdaH8tkD
+	jgZvu8oUas+Pa9MYd1sr+hwGUmoAxYCltD64jtiXK29bjpB4Qo2mfFlMzNvVOk97Gl0a5js3pnE16
+	I8E6Al4VxbjpQZVZATcA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsOau-00014o-Qa; Tue, 30 Jul 2019 09:38:56 +0000
+	id 1hsPBw-0005DG-J8; Tue, 30 Jul 2019 10:17:12 +0000
 Received: from mail-wr1-f65.google.com ([209.85.221.65])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsOY1-0007Fb-SZ
- for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 09:35:59 +0000
-Received: by mail-wr1-f65.google.com with SMTP id n4so65060182wrs.3
- for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 02:35:57 -0700 (PDT)
+ id 1hsPBm-0005C1-BZ
+ for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 10:17:04 +0000
+Received: by mail-wr1-f65.google.com with SMTP id n4so65199893wrs.3
+ for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 03:17:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LfBe8BIZguRGaVcqxBIUd21ri7wgmIbA7EXh3G0N3Hw=;
- b=PsFb/QDSoWBHcHFjp7/LHXBJQNcrqRJ5XjCz2Zs9jucU69jfz0pBbA7Sn7o+EzcAXu
- nSSy6CBsI7ubKSTcqDFkQIcOoUJJwkAjaWpsJhaKHn3uOU6aRcmZ8FdXaVTBV+Jm1W60
- fHNXXJBmbZBqKvX2o9cjbkyirKJNC7DkJbyslhGmexhpsSqrnpVr+BZEJaSiftepWNL7
- MaGuOk9oAvCOhSNRSuymqvMogwiuRYlzMZkejOw0Vff6LpbPhSCStnF8Dx96rnnkQfNy
- gFKwNh9SymJlv9T2eF/MgOaTtps0SpGsC+zANxin2ePGuh0lZBSNqD4B2Ea8yI5HKV1B
- wfXQ==
-X-Gm-Message-State: APjAAAUpDwloH2utPHw8T1aVrBRmwYxTV5l/ocGbQDxXTkCAkoc1gQmZ
- Si4F/pa31R5JrAuis1wengVoeg==
-X-Google-Smtp-Source: APXvYqwq3Hft9cpeFWfJQOdIrZK1BvEf6TQWeB6zhzE98jxFZtCFfEZfO6QPRJKZp8CB+tTOovDs0w==
-X-Received: by 2002:a5d:4f01:: with SMTP id c1mr45610035wru.43.1564479356485; 
- Tue, 30 Jul 2019 02:35:56 -0700 (PDT)
+ bh=0BfXKRiEVxvU8bBbaJFcml0F4XwqkulSy5LoM8k5vnU=;
+ b=mzkdxURrCMy3iZw3UG4Vaa2B0q/hRsLAjDOloWDsHz2eMftljz/srftBwS2kg3RBpb
+ yOOMleoqf3ktj9rIa3GU5vER9R5wnvHaZEaw1Fs4FoEGAAlAD16L5mvtcJ8Kix+oH6xK
+ q4QK4oi1TamjKBgqxP/GcAqtzuoAPeJZ5Mkau+3WWHwq+pXDmi3Xcwv1MDJmvZFbmcFX
+ Lbw3+jvQOTS+pVRjdhJM/qXU1W+ApTQvXt0hEqJbdNYT6HcUqV8Nm8dNCLh/yzA8PVce
+ TE8/M3HGlmg76UykH5pMtw1Y1euCf9633+96rxFg8OWhULCBjpgGgTBho3qjKl76oiTl
+ wEIg==
+X-Gm-Message-State: APjAAAWXjAXoulQYDOxaM1YDQa0ytwGNVB1Ywq3THwJE+EQx2NKttXFw
+ y2y4H7JuHpdMMVzc/CVMBSt4eg==
+X-Google-Smtp-Source: APXvYqy6/dowCLGeT9RriCZ015qAZZF2PPTjzlMgI9dPdoZanSSBKVmGsIjx7EURe6YAtK3Npnanuw==
+X-Received: by 2002:a5d:4041:: with SMTP id w1mr115756381wrp.199.1564481819511; 
+ Tue, 30 Jul 2019 03:16:59 -0700 (PDT)
 Received: from [192.168.10.150] ([93.56.166.5])
- by smtp.gmail.com with ESMTPSA id v204sm67712311wma.20.2019.07.30.02.35.55
+ by smtp.gmail.com with ESMTPSA id s15sm46966792wrw.21.2019.07.30.03.16.58
  (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Jul 2019 02:35:55 -0700 (PDT)
-Subject: Re: [RFC PATCH 06/16] RISC-V: KVM: Implement
- KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
+ Tue, 30 Jul 2019 03:16:58 -0700 (PDT)
+Subject: Re: [RFC PATCH 04/16] RISC-V: KVM: Implement VCPU create, init and
+ destroy functions
 From: Paolo Bonzini <pbonzini@redhat.com>
 To: Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>, Radim K <rkrcmar@redhat.com>
 References: <20190729115544.17895-1-anup.patel@wdc.com>
- <20190729115544.17895-7-anup.patel@wdc.com>
- <3caa5b31-f5ed-98cd-2bdf-88d8cb837919@redhat.com>
-Message-ID: <536673cd-3b84-4e56-6042-de73a536653f@redhat.com>
-Date: Tue, 30 Jul 2019 11:35:54 +0200
+ <20190729115544.17895-5-anup.patel@wdc.com>
+ <ade614ae-fcfe-35f2-0519-1df71d035bcd@redhat.com>
+Message-ID: <2de10efc-56f8-ff47-ed69-7e471a099c80@redhat.com>
+Date: Tue, 30 Jul 2019 12:16:57 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <3caa5b31-f5ed-98cd-2bdf-88d8cb837919@redhat.com>
+In-Reply-To: <ade614ae-fcfe-35f2-0519-1df71d035bcd@redhat.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_023558_153588_EBB8C083 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20190730_031702_789266_3705A1CC 
+X-CRM114-Status: GOOD (  12.98  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -97,21 +97,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 30/07/19 10:43, Paolo Bonzini wrote:
+On 30/07/19 10:48, Paolo Bonzini wrote:
 > On 29/07/19 13:56, Anup Patel wrote:
->> The PC register represents program counter whereas the MODE
->> register represent VCPU privilege mode (i.e. S/U-mode).
->>
-> Is there any reason to include this pseudo-register instead of allowing
-> SSTATUS access directly in this patch (and perhaps also SEPC)?
+>> +	cntx->hstatus |= HSTATUS_SP2V;
+>> +	cntx->hstatus |= HSTATUS_SP2P;
+> IIUC, cntx->hstatus's SP2P bit contains the guest's sstatus.SPP bit?
 
-Nevermind, I was confused - the current MODE is indeed not accessible as
-a "real" CSR in RISC-V.
+Nevermind, that was also a bit confused.  The guest's sstatus.SPP is in
+vsstatus.  The pseudocode for V-mode switch is
 
-Still, I would prefer all the VS CSRs to be accessible via the get/set
-reg ioctls.
+SRET:
+  V = hstatus.SPV (1)
+  MODE = sstatus.SPP
+  hstatus.SPV = hstatus.SP2V
+  sstatus.SPP = hstatus.SP2P
+  hstatus.SP2V = 0
+  hstatus.SP2P = 0
+  ...
+
+trap:
+  hstatus.SP2V = hstatus.SPV
+  hstatus.SP2P = sstatus.SPP
+  hstatus.SPV = V (1)
+  sstatus.SPP = MODE
+  V = 0
+  MODE = 1
+
+so:
+
+1) indeed we need SP2V=SPV=1 when entering guest mode
+
+2) sstatus.SPP contains the guest mode
+
+3) SP2P doesn't really matter for KVM since it never goes to VS-mode
+from an interrupt handler, so if my reasoning is correct I'd leave it
+clear, but I guess it's up to you whether to set it or not.
 
 Paolo
+
+> I suggest adding a comment here, and again providing a ONE_REG interface
+> to sstatus so that the ABI is final before RISC-V KVM is merged.
+> 
+> What happens if the guest executes SRET?  Is that EXC_SYSCALL in hedeleg?
+> 
+> (BTW the name of SP2V and SP2P is horrible, I think HPV/HPP or HSPV/HSPP
+> would have been clearer, but that's not your fault).
+
 
 _______________________________________________
 linux-riscv mailing list
