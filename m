@@ -2,52 +2,53 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCF617A0B6
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 07:53:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40F927A0C4
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 07:54:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MFeHNZMoZjixnDOWoKxVYRRRGpHb/1f2G1/RRew5zQM=; b=JjxFGGMA1Z9U7P
-	tdT+8EuDIgOEQaG0ElehJDvmD/AfHnXDMVbHbFYIfwJFgcKuo0wuW0yMGiFPyDN5AXh1IpIR7ihQ2
-	m9xYc2g/3EmG2YJm0rLRlseY6SMXRhXhwBJ3ZXvmlJJTky8MWZy1ztqjm2KqRFkr8RQ9IG9iWSO1c
-	bqBPai7Dx6q2fz7mxtkDbdv+barwe8RlP98CeFXTV7R1PPzXi5CK1QPCLWe6S7MWVWx7eIv7nq/Ch
-	helEzFlVSd1pPOxmUGGEQ/yayq9Ui7ku9qCJ2kXvMIvpIxm1j9xBWweK0WHyKcdfei163ysiP5A1g
-	mZuWsKuiW+/oTiQa1vvA==;
+	List-Owner; bh=XvBMyaivihLFeazOtLmmxHwYD9XJ+DB5mcv5IAEUGeQ=; b=ryOJf+nu1f/kxu
+	Gl6eOBnzIr9GD2qo1014MTMYoRyID+2fphROLVmYB4IihksQrYhGt/4yxWo/SPLst084CRtZmKQ1x
+	Whz79F81fcknC/C4N7aZ0AA2j1v2yTHBLSOCMv6YXot0vCq2ha8ImQA+VzY2paPJ/kaYweYEFxjWq
+	AKtJPF82NMnS54N9zPLYDqQiiPVgVkbCXDK/IobKOxm3arPIk29/o9zm7dU7IoKKcN5gFq8Z0daGT
+	GgcT1Eo9x3sr8LiXC8l6MFbanNwkS8lYwv5rx+xwR2PyzsfofvRKZ6Sf4ND9W5boLm7fjyeFCrTR6
+	rhAPHcofGtQrn2Han6kw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsL4H-0001a0-2N; Tue, 30 Jul 2019 05:53:01 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1hsL5M-0001wy-Vt; Tue, 30 Jul 2019 05:54:09 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsL3t-0001K3-OA; Tue, 30 Jul 2019 05:52:39 +0000
+ id 1hsL52-0001kS-FG; Tue, 30 Jul 2019 05:53:50 +0000
 X-Originating-IP: 79.86.19.127
 Received: from alex.numericable.fr (127.19.86.79.rev.sfr.net [79.86.19.127])
  (Authenticated sender: alex@ghiti.fr)
- by relay8-d.mail.gandi.net (Postfix) with ESMTPSA id C4A9E1BF20E;
- Tue, 30 Jul 2019 05:52:31 +0000 (UTC)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 8A9D220002;
+ Tue, 30 Jul 2019 05:53:36 +0000 (UTC)
 From: Alexandre Ghiti <alex@ghiti.fr>
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v5 01/14] mm, fs: Move randomize_stack_top from fs to mm
-Date: Tue, 30 Jul 2019 01:51:00 -0400
-Message-Id: <20190730055113.23635-2-alex@ghiti.fr>
+Subject: [PATCH v5 02/14] arm64: Make use of is_compat_task instead of
+ hardcoding this test
+Date: Tue, 30 Jul 2019 01:51:01 -0400
+Message-Id: <20190730055113.23635-3-alex@ghiti.fr>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190730055113.23635-1-alex@ghiti.fr>
 References: <20190730055113.23635-1-alex@ghiti.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190729_225238_097752_7C784486 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20190729_225348_663184_94C95CC2 
+X-CRM114-Status: GOOD (  10.55  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.201 listed in list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.183.200 listed in list.dnswl.org]
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,103 +75,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This preparatory commit moves this function so that further introduction
-of generic topdown mmap layout is contained only in mm/util.c.
+Each architecture has its own way to determine if a task is a compat task,
+by using is_compat_task in arch_mmap_rnd, it allows more genericity and
+then it prepares its moving to mm/.
 
 Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+Acked-by: Catalin Marinas <catalin.marinas@arm.com>
 Acked-by: Kees Cook <keescook@chromium.org>
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
 ---
- fs/binfmt_elf.c    | 20 --------------------
- include/linux/mm.h |  2 ++
- mm/util.c          | 22 ++++++++++++++++++++++
- 3 files changed, 24 insertions(+), 20 deletions(-)
+ arch/arm64/mm/mmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/fs/binfmt_elf.c b/fs/binfmt_elf.c
-index d4e11b2e04f6..cec3b4146440 100644
---- a/fs/binfmt_elf.c
-+++ b/fs/binfmt_elf.c
-@@ -670,26 +670,6 @@ static unsigned long load_elf_interp(struct elfhdr *interp_elf_ex,
-  * libraries.  There is no binary dependent code anywhere else.
-  */
+diff --git a/arch/arm64/mm/mmap.c b/arch/arm64/mm/mmap.c
+index b050641b5139..bb0140afed66 100644
+--- a/arch/arm64/mm/mmap.c
++++ b/arch/arm64/mm/mmap.c
+@@ -43,7 +43,7 @@ unsigned long arch_mmap_rnd(void)
+ 	unsigned long rnd;
  
--#ifndef STACK_RND_MASK
--#define STACK_RND_MASK (0x7ff >> (PAGE_SHIFT - 12))	/* 8MB of VA */
--#endif
--
--static unsigned long randomize_stack_top(unsigned long stack_top)
--{
--	unsigned long random_variable = 0;
--
--	if (current->flags & PF_RANDOMIZE) {
--		random_variable = get_random_long();
--		random_variable &= STACK_RND_MASK;
--		random_variable <<= PAGE_SHIFT;
--	}
--#ifdef CONFIG_STACK_GROWSUP
--	return PAGE_ALIGN(stack_top) + random_variable;
--#else
--	return PAGE_ALIGN(stack_top) - random_variable;
--#endif
--}
--
- static int load_elf_binary(struct linux_binprm *bprm)
- {
- 	struct file *interpreter = NULL; /* to shut gcc up */
-diff --git a/include/linux/mm.h b/include/linux/mm.h
-index 0334ca97c584..ae0e5d241eb8 100644
---- a/include/linux/mm.h
-+++ b/include/linux/mm.h
-@@ -2351,6 +2351,8 @@ extern int install_special_mapping(struct mm_struct *mm,
- 				   unsigned long addr, unsigned long len,
- 				   unsigned long flags, struct page **pages);
- 
-+unsigned long randomize_stack_top(unsigned long stack_top);
-+
- extern unsigned long get_unmapped_area(struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
- 
- extern unsigned long mmap_region(struct file *file, unsigned long addr,
-diff --git a/mm/util.c b/mm/util.c
-index e6351a80f248..15a4fb0f5473 100644
---- a/mm/util.c
-+++ b/mm/util.c
-@@ -16,6 +16,8 @@
- #include <linux/hugetlb.h>
- #include <linux/vmalloc.h>
- #include <linux/userfaultfd_k.h>
-+#include <linux/elf.h>
-+#include <linux/random.h>
- 
- #include <linux/uaccess.h>
- 
-@@ -293,6 +295,26 @@ int vma_is_stack_for_current(struct vm_area_struct *vma)
- 	return (vma->vm_start <= KSTK_ESP(t) && vma->vm_end >= KSTK_ESP(t));
- }
- 
-+#ifndef STACK_RND_MASK
-+#define STACK_RND_MASK (0x7ff >> (PAGE_SHIFT - 12))     /* 8MB of VA */
-+#endif
-+
-+unsigned long randomize_stack_top(unsigned long stack_top)
-+{
-+	unsigned long random_variable = 0;
-+
-+	if (current->flags & PF_RANDOMIZE) {
-+		random_variable = get_random_long();
-+		random_variable &= STACK_RND_MASK;
-+		random_variable <<= PAGE_SHIFT;
-+	}
-+#ifdef CONFIG_STACK_GROWSUP
-+	return PAGE_ALIGN(stack_top) + random_variable;
-+#else
-+	return PAGE_ALIGN(stack_top) - random_variable;
-+#endif
-+}
-+
- #if defined(CONFIG_MMU) && !defined(HAVE_ARCH_PICK_MMAP_LAYOUT)
- void arch_pick_mmap_layout(struct mm_struct *mm, struct rlimit *rlim_stack)
- {
+ #ifdef CONFIG_COMPAT
+-	if (test_thread_flag(TIF_32BIT))
++	if (is_compat_task())
+ 		rnd = get_random_long() & ((1UL << mmap_rnd_compat_bits) - 1);
+ 	else
+ #endif
 -- 
 2.20.1
 
