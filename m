@@ -2,69 +2,70 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7391F7A767
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 14:00:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BF617A7BB
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 14:09:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NB7GB+D7k6kf5i6K/6dvkZJ419osgrwQe1QwTtMCtB4=; b=sofCnF/XrETLDY
-	fPR75p5R4/LgLRQoKqZVLMZ+fxrOwTyGEGD9lYPX3IzzUmNu5UqptOHNYInhOWUgEKUajUsgn4wHH
-	1S0xgjMyk657ReZzJOwG5OXzDHo4TinX5IE+HrNH09F58lZwFU21PnKZ+2IH35FuUoHkqo8lKHAtq
-	yokg1HHaUeZv6MIM59aYKNBlRCl/36Lv5vIFs9P2jNI0pOnAtcnMaogJUV7rvmfcUM60L8UaytXR4
-	s2vMtXSeni0cHvlPxPrrz8LfI3Vvm/S1zs2AorFoRanMHRqXKgkw6RYl6OXzrTXUHj/vv+22gDTch
-	bCnRggdlFAaB6h01IjLw==;
+	List-Owner; bh=o0uQZUONjMB8AXFlURc5b5I40qfrA4CZN9zRJZfOqd4=; b=timmVGJpm8CCEf
+	BPsUhJiuCoVZe+/POJrNN2PIVf9Fzr1xZ/ZGsBAprcU2CLFcpY9Bh3ztuOQknHIYtHGg1CXUD+OlW
+	sGEm6XCpBr+plsft8Rsbwucpx3JvRvvDmV+E+qlGfc0pt5RPmyh6+MDirqot3S/PYK7/MK5SNYkGy
+	ReqhMHai3CgMVMH2WKXj0UfBqg904eDCNzOZy4OarnejWiIiyw2N8KXdLCTnrjVWwZg6SjWsHzvOh
+	TV/m/WxhXLn/yp77Xlurt1G+Q7Xv5NrODPB2PqIbdKC7tIhkdo4YG+Tn631Krjap5Y0stnLRHZaqC
+	3/4k3ISOMPB2N6N4Whmg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsQny-0007zl-FZ; Tue, 30 Jul 2019 12:00:34 +0000
+	id 1hsQwF-0001z3-Jh; Tue, 30 Jul 2019 12:09:07 +0000
 Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsQnp-0007yJ-67
- for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 12:00:26 +0000
-Received: by mail-wr1-x444.google.com with SMTP id x1so15560673wrr.9
- for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 05:00:23 -0700 (PDT)
+ id 1hsQwD-0001yi-5Z
+ for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 12:09:06 +0000
+Received: by mail-wr1-x444.google.com with SMTP id f9so65477638wre.12
+ for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 05:09:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=n/JJxoSHKvaru38fIGlmwaHlnuxMxh6jpy0Kuq5lmmE=;
- b=Sl72/4E2kqtDZ2CQIMMfomIbhFZDZDSCqUCB+R4H7uJSODB8IQnLn5GgZEZ5fShul4
- b8zn3xuhCVjR16uUHRlBKI+jKBAUgRYXeMtoFwC8z+gIlDJZVWCP3jM504guxcVTvzLP
- fYQwNm74kcCX4M7eMly/p7M+P9RiJW9QBkMOutLsLrApJDeWgjwJ/iDNbb/gZufDTAGU
- rNoKlvBwDliEOVi3jOqIklKVRYOQVQTzoGeOwWLK6zKLI7UKqD991GvjbFAD09/D1HXg
- ONKN2qH0FVKuNIRfa8SpTV62TzfkoXcJhFg6zQjdpI/jBmCaPoInWqiPyYf+LGwBSfyW
- ug6A==
+ :cc; bh=NEXRKVgiAewSzMHKuc4kYp85srZxayAyjwnb+cltz/A=;
+ b=hk/KqKIGVmzsttbZR/gwF2OK0U4nrpMkMwgRfr4Suo1MJW2IsOPukKgv1lmqoSVUg0
+ NBSR/3ku96WkmFUeRHx/6fqdNY7BtJP9EegEJVfs9eQkmvAITRarqhgmAJhPrrrTFwtK
+ /NYeHp4JADVMdK6Z5mZH+maD5ERJmoTMxpKWubgggtX482hx5c1a8qUXN4ztkebaAXg5
+ 5CnI4ELBh+DDI08aHsI6B3hNBiuGKudfjO10f7xXoGTtPSHG3Hvq87Qao7/eUZESPJ9k
+ UcWs5FBuqtax0X+W+DgUz2Xdw9l11bk1qBXgPXxW+q0MIdDYe4uoZ9W2FPiCToTeK7v1
+ yeIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=n/JJxoSHKvaru38fIGlmwaHlnuxMxh6jpy0Kuq5lmmE=;
- b=UIVq5y30SPP16RjEYwwhYXL2c9o9uT3zMsXNHT17qHlhm3NvyO1JpyhOG/JyAFclwT
- FtLRNAMtFb8P0yb1mke/Y+GzO0cRG6pT38Cv89641p7/BgBCkhes0KP21k/XFEboiuMU
- 2O/09ihX6x9WXhbtmZ0nF8HYhfVnDFDl1HiFauvajktZmSEc601+5VFtzbPZqo0clMDA
- YRf1+t5rHmkVS29eeChNasamziAuMNa/oMWUPSWFPT2UHM/z114jC3p0h9QBb2sSE9sN
- dM6+uPeiwxQOqNYUqqLwjy+r+1hbPerJYvnX5sLlhY5ro7SLHmUbBNE6Vc7+2XSZ0Iwe
- Payg==
-X-Gm-Message-State: APjAAAVjdbF2YmjpsT92OO1vjqK9egRi+N0t9DeL0t6tTRq2zSAgrxRH
- 0q4G3M/8nq5U9UHz/PSGYcVQBguOkW+QFYhbcg0wPuVgvmPmJA==
-X-Google-Smtp-Source: APXvYqwdGj8tn+Lc+jdWqVTEGuaT6OEVtpsGQreyIcF1DxNxjXt75IZwoWbIPt3vCU8A0lK4eiedRhBfqabA/jYv85k=
-X-Received: by 2002:a5d:6b11:: with SMTP id v17mr50383530wrw.323.1564488022522; 
- Tue, 30 Jul 2019 05:00:22 -0700 (PDT)
+ bh=NEXRKVgiAewSzMHKuc4kYp85srZxayAyjwnb+cltz/A=;
+ b=hAWHeDLTUlqapLkI4AfX07KAmb8jBesMzFEvKoRt05Lu34mBwJuBDTzbDyOm89f9n3
+ GOW0FjWKGoGC22I6v0kADa6SXXNUwGZjzCy2itaq4z9xG0cZ8m5x+yeIB0mkChG+pbZx
+ c5sNVbzKPa0843R6cFVOUJHx2j0iP/Ce5O05rgQt9x5UdVG+C6rxM191tctcVDMRVTkM
+ 5F6UM66GY835UGepNq5YG0T1+912UvhlHr4oqlewtDbnmV2Wusik9hF3SFojNuyYkxAn
+ Fza+LCLwL3M2ud5jbOi/FiR9n60uQwm8kRUSQnwDxGDWXi7REgX358VXnunUd3e2sbEo
+ d+ww==
+X-Gm-Message-State: APjAAAW2wj+GlOj9WDEmJDBmJkEKjwmMEdk8bKPk5GcgeD5PvAKslCLj
+ zPUuK4AZL9JRgvDsAsWdAtB/SZj6gSiWWNi/+cljLii5Oag=
+X-Google-Smtp-Source: APXvYqy9j4zSHu4dp1+U/CdhnB7i3Hnbv00SVhZJbG6jzJT/h0YFIWOh4Y833SEXLrNLULQLDFdnZOtStWSu9W/tgKA=
+X-Received: by 2002:a5d:6b11:: with SMTP id v17mr50422046wrw.323.1564488543296; 
+ Tue, 30 Jul 2019 05:09:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190729115544.17895-1-anup.patel@wdc.com>
- <20190729115544.17895-6-anup.patel@wdc.com>
- <9f9d09e5-49bc-f8e3-cfe1-bd5221e3b683@redhat.com>
-In-Reply-To: <9f9d09e5-49bc-f8e3-cfe1-bd5221e3b683@redhat.com>
+ <20190729115544.17895-7-anup.patel@wdc.com>
+ <3caa5b31-f5ed-98cd-2bdf-88d8cb837919@redhat.com>
+ <536673cd-3b84-4e56-6042-de73a536653f@redhat.com>
+In-Reply-To: <536673cd-3b84-4e56-6042-de73a536653f@redhat.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Tue, 30 Jul 2019 17:30:10 +0530
-Message-ID: <CAAhSdy3JZVEEnPnssALaxvCsyznF=rt=7-d5J_OgQEJv6cPhxQ@mail.gmail.com>
-Subject: Re: [RFC PATCH 05/16] RISC-V: KVM: Implement VCPU interrupts and
- requests handling
+Date: Tue, 30 Jul 2019 17:38:51 +0530
+Message-ID: <CAAhSdy2jo6N4c9-_-hj=81mXjHjP8mvZy_8jOdRZELCyU9Y8Aw@mail.gmail.com>
+Subject: Re: [RFC PATCH 06/16] RISC-V: KVM: Implement
+ KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
 To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_050025_238776_4A0735A9 
-X-CRM114-Status: GOOD (  20.14  )
+X-CRM114-CacheID: sfid-20190730_050905_264598_E1F4F43C 
+X-CRM114-Status: GOOD (  11.20  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -103,130 +104,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jul 30, 2019 at 4:47 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+On Tue, Jul 30, 2019 at 3:05 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 >
-> First, something that is not clear to me: how do you deal with a guest
-> writing 1 to VSIP.SSIP?  I think that could lead to lost interrupts if
-> you have the following sequence
+> On 30/07/19 10:43, Paolo Bonzini wrote:
+> > On 29/07/19 13:56, Anup Patel wrote:
+> >> The PC register represents program counter whereas the MODE
+> >> register represent VCPU privilege mode (i.e. S/U-mode).
+> >>
+> > Is there any reason to include this pseudo-register instead of allowing
+> > SSTATUS access directly in this patch (and perhaps also SEPC)?
 >
-> 1) guest writes 1 to VSIP.SSIP
+> Nevermind, I was confused - the current MODE is indeed not accessible as
+> a "real" CSR in RISC-V.
+
+Yes, you got it right.
+
 >
-> 2) guest leaves VS-mode
->
-> 3) host syncs VSIP
->
-> 4) user mode triggers interrupt
->
-> 5) host reenters guest
->
-> 6) host moves irqs_pending to VSIP and clears VSIP.SSIP in the process
+> Still, I would prefer all the VS CSRs to be accessible via the get/set
+> reg ioctls.
 
-This reasoning also apply to M-mode firmware (OpenSBI) providing timer
-and IPI services to HS-mode software. We had some discussion around
-it in a different context.
-(Refer, https://github.com/riscv/opensbi/issues/128)
+We had implemented VS CSRs access to user-space but then we
+removed it to keep this series simple and easy to review. We thought
+of adding it later when we deal with Guest/VM migration.
 
-The thing is SIP CSR is supposed to be read-only for any S-mode SW. This
-means HS-mode/VS-mode SW modifications to SIP CSR should have no
-effect.
-
-For HS-mode, only certain bits are writable from M-mode such as SSIP
-and in-future even this will go away when we have specialized HW to
-trigger S-mode IPIs without going through M-mode firmware.
-
-For VS-mode, only HS-mode controls the pending bits writes to VSIP CSR.
-
-If above is honored correctly by HW then the use-case you mentioned above
-is not possible because Guest writing 1 to SIP.SSIP will be ignored.
-
-It is possible that we have buggy HW which does allow Guest write to SIP
-CSR bits then our current approach is to just overwrite VSIP whenver it
-is different from irq_pending bits before entering Guest.
-
-Do you still an issue here?
+Do you want it to be added as part of this series ?
 
 Regards,
 Anup
-
->
-> Perhaps irqs_pending needs to be split in two fields, irqs_pending and
-> irqs_pending_mask, and then you can do this:
->
-> /*
->  * irqs_pending and irqs_pending_mask have multiple-producer/single-
->  * consumer semantics; therefore bits can be set in the mask without
->  * a lock, but clearing the bits requires vcpu_lock.  Furthermore,
->  * consumers should never write to irqs_pending, and should not
->  * use bits of irqs_pending that weren't 1 in the mask.
->  */
->
-> int kvm_riscv_vcpu_set_interrupt(struct kvm_vcpu *vcpu, unsigned int irq)
-> {
->         ...
->         set_bit(irq, &vcpu->arch.irqs_pending);
->         smp_mb__before_atomic();
->         set_bit(irq, &vcpu->arch.irqs_pending_mask);
->         kvm_vcpu_kick(vcpu);
-> }
->
-> int kvm_riscv_vcpu_unset_interrupt(struct kvm_vcpu *vcpu, unsigned int irq)
-> {
->         ...
->         clear_bit(irq, &vcpu->arch.irqs_pending);
->         smp_mb__before_atomic();
->         set_bit(irq, &vcpu->arch.irqs_pending_mask);
-> }
->
-> static void kvm_riscv_reset_vcpu(struct kvm_vcpu *vcpu)
-> {
->         ...
->         WRITE_ONCE(vcpu->arch.irqs_pending_mask, 0);
-> }
->
-> and kvm_riscv_vcpu_flush_interrupts can leave aside VSIP bits that
-> aren't in vcpu->arch.irqs_pending_mask:
->
->         if (atomic_read(&vcpu->arch.irqs_pending_mask)) {
->                 u32 mask, val;
->
->                 mask = xchg_acquire(&vcpu->arch.irqs_pending_mask, 0);
->                 val = READ_ONCE(vcpu->arch.irqs_pending) & mask;
->
->                 vcpu->arch.guest_csr.vsip &= ~mask;
->                 vcpu->arch.guest_csr.vsip |= val;
->                 csr_write(CSR_VSIP, vsip);
->         }
->
-> Also, the getter of CSR_VSIP should call
-> kvm_riscv_vcpu_flush_interrupts, while the setter should clear
-> irqs_pending_mask.
->
-> On 29/07/19 13:56, Anup Patel wrote:
-> > +     kvm_make_request(KVM_REQ_IRQ_PENDING, vcpu);
-> > +     kvm_vcpu_kick(vcpu);
->
-> The request is not needed as long as kvm_riscv_vcpu_flush_interrupts is
-> called *after* smp_store_mb(vcpu->mode, IN_GUEST_MODE) in
-> kvm_arch_vcpu_ioctl_run.  This is the "request-less vCPU kick" pattern
-> in Documentation/virtual/kvm/vcpu-requests.rst.  The smp_store_mb then
-> orders the write of IN_GUEST_MODE before the read of irqs_pending (or
-> irqs_pending_mask in my proposal above); in the producers, there is a
-> dual memory barrier in kvm_vcpu_exiting_guest_mode(), ordering the write
-> of irqs_pending(_mask) before the read of vcpu->mode.
->
-> Similar to other VS* CSRs, I'd rather have a ONE_REG interface for VSIE
-> and VSIP from the beginning as well.  Note that the VSIP setter would
-> clear irqs_pending_mask, while the getter would call
-> kvm_riscv_vcpu_flush_interrupts before reading.  It's up to userspace to
-> ensure that no interrupt injections happen between the calls to the
-> getter and the setter.
->
-> Paolo
->
-> > +             csr_write(CSR_VSIP, vcpu->arch.irqs_pending);
-> > +             vcpu->arch.guest_csr.vsip = vcpu->arch.irqs_pending;
-> > +     }
->
 
 _______________________________________________
 linux-riscv mailing list
