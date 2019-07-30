@@ -2,56 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE7327A17F
-	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 08:56:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB4497A18A
+	for <lists+linux-riscv@lfdr.de>; Tue, 30 Jul 2019 09:00:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vIK1+8HNfVgVG7s929o4xOX65pU1XcFvEwrsC8nSrBY=; b=b8fEECD/ycURIf
-	zQatwK5Q04+SNeeyGSq5bbdNQ1ec8X9VcpH8q8VZysYNcJatfcZOIvMst8roLtSARl48erhwvnRmn
-	BrHpA5ETHUst5d1K1d+a1Ndrkx5kQEKoXuy35iqH4ePQOKNT5agPfI5nZVVhaAlHctlnY5+7ULCmb
-	1dnG7mnU9Ri601VZL5aEObPI5oqnUfY415U0+19/MJfahHUAeIGwp02oib/S6qFpMNQd9CU9jDh2+
-	ESWmt6XrJtnCwuiogUQHmDRml4+9ZiXH0dmocycfGgf01sA9OdqLoTd5UHjJDgN/ACJmrZSktae22
-	y5Y6cCVR9HH7DB+pGMkw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=BIME8N5zIUnAaMdBGHEcYYndvF5+fUokkLPBgYmtaxI=; b=KsPe5r4kQNESMLhAx2WLBn6MN
+	nyT1gwwVv6huNXxxBMQWcT64UQg1gAsq/ZCoSNJLUS6oDg5hYVmbgKURwy9YsOiL94NuJZmWBNO7K
+	laYLcQ3nFAVzAzltQjEmEoEvvH+ZNXEfDctqHo49hsX4C3MAgzKJOJLiNjiJROsjps/e1NBcZKOcF
+	w4BvNIF9zluXNpOX5PV/MXUEU18LpuO/Xgj09vjgW3u1xVI1i4IigswpYkqN9gMVyec9hCIevo0Si
+	pSFFr8oRHd7pKHkKKeIe8+2tw7HohRKliv3EbDaHaOnjzaJp0ymZlAAy7rU7p5Rd9Kfq1DCgclCvb
+	E62ySyB2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsM3t-0003LJ-Er; Tue, 30 Jul 2019 06:56:41 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1hsM7d-0004te-LR; Tue, 30 Jul 2019 07:00:33 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsM3p-0003L2-U2
- for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 06:56:39 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 9D253AB9B;
- Tue, 30 Jul 2019 06:56:36 +0000 (UTC)
-From: Andreas Schwab <schwab@suse.de>
-To: David Abdurachmanov <david.abdurachmanov@gmail.com>
-Subject: Re: Random memory corruption with v5.2
-References: <mvm8sshcdwc.fsf@suse.de>
- <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
-X-Yow: Were these parsnips CORRECTLY MARINATED in TACO SAUCE?
-Date: Tue, 30 Jul 2019 08:56:36 +0200
-In-Reply-To: <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
- (David Abdurachmanov's message of "Tue, 30 Jul 2019 01:58:04 +0300")
-Message-ID: <mvm1ry8au3f.fsf@suse.de>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2.90 (gnu/linux)
+ id 1hsM7Q-0004sk-Sb
+ for linux-riscv@lists.infradead.org; Tue, 30 Jul 2019 07:00:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1564470021; x=1596006021;
+ h=subject:to:cc:references:from:message-id:date:
+ mime-version:in-reply-to:content-transfer-encoding;
+ bh=6yX5wo1SMWNdvTLLZ4kGJt2N9VK/hrcTYoYK9A/+LG0=;
+ b=T8PoeqMPPdnKArzFg1ridG7taDWGyPH9EiRiZttt3SYpnkk26aIRNCtE
+ sPnRDyockT4PZlgTke9lMo4dC5iffG2Qk53z+tfi+o2zt9cYKWQJo1LOs
+ 5klEqamrvrGw4A1Yp0WpMTdTPUpH7gnv+QWKVydw3Aib75+b8idLnhejY
+ l6UrGK2+w8y1Y03Oi9mtTbWzDgOSjWPINHubmjz4MF7Ez7jRI63dJ+xMK
+ e5Syjy9RtLe2Kl6Brip/MH5gGAHJ4dHf/criWrGOw8EofFQ+TMFfFC2tx
+ CBV1ZvH4VGXS1IUMiPYOpeban/Eh0zu2t1Kt6lfSrtW0YtwLteYa6zSWJ w==;
+IronPort-SDR: 4PewJxRsJ8lEbjnzhnJPsHDEYHiTKhoK3X13Rru+kKNEL+EtYkKHN8pDya1SG3uup6Gy9yBWUd
+ U39zB79nub0zDriYLrRYa2xOJV5IU5QPQaOWC2xfyl0yrvQoa3BH18JcJ7LD97EZAdBnXUmJs6
+ 1hfCZ1u6VdIPDfqdxAz+sOFtH/Foxw8IyVR3KQ4S6HNKmOhoP+ustn5P9hk9WhinkcSxmXjI4k
+ Y8rrSLjVz8Ka/J0Wp+naKfbdAvv2xxCugJO+g3KBOD8eInPvOXTn860dj4JLuTcl+AUod3IeWg
+ 83M=
+X-IronPort-AV: E=Sophos;i="5.64,325,1559491200"; d="scan'208";a="115475459"
+Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 30 Jul 2019 15:00:17 +0800
+IronPort-SDR: qgJfKkeL1/RmTEaR11Rx7QxItusWbdBkQKqhglQZ95QAkbrzz870YBINjVmSwq95Ll0PgQ8QwX
+ PxoCAcbG5vj5d1PLZYBZOO5XpySGoAfIIHLIqj53FTD6mqBK4GC7skrOpsB4XFe//hjycXa/6B
+ pWJKg3CHXZVB7MaAAvZmRrFUMjy842kJZvj0tFtO0K54MU+EHWwJ3KAboogJqcsIORXukkz0nS
+ pHof+VxA93XJDXerC97rYhgwzn61YnGnQWw7pM4DCv+hFBqR5g8OaXV8HFT2VPoNuPs4EQQSDR
+ AG7Y3UHTjPe/cqYmcNPoLgjP
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep01.wdc.com with ESMTP; 29 Jul 2019 23:58:20 -0700
+IronPort-SDR: PCZNYufBvpE+xMfNsmNx/TlpTDwjyYVkZ4LeoaSFcTvmUrDclh9vepYujrd287BTmiIXHyFXpE
+ H6Ff+uC+5bOpDPx7+TzSF+LmE85iKM7xEHaitIoCAqKGwNPrvMiyD2YFvyXyUSLiIzCKyM1HJU
+ cE60SHu5w4JUL7ne/ZpqwyqVc37bNuM/Ba5fo8CVnLgDiYzsZLk1h/pK8gjIVnnRbAwm67UT/1
+ ds4vVY+wFANqtZOJCkKS4VJ95y2fx4ACxcqAknOYi3LHM7PSBDYqH3u99x3HWGa7TJvyDWr/zk
+ Wfw=
+Received: from unknown (HELO [10.225.104.231]) ([10.225.104.231])
+ by uls-op-cesaip01.wdc.com with ESMTP; 30 Jul 2019 00:00:16 -0700
+Subject: Re: [RFC PATCH 13/16] RISC-V: KVM: Add timer functionality
+To: Andreas Schwab <schwab@suse.de>
+References: <20190729115544.17895-1-anup.patel@wdc.com>
+ <20190729115544.17895-14-anup.patel@wdc.com> <mvmpnlsc39p.fsf@suse.de>
+ <d26a4582fad27d0f475cf8bca4d3e6c49987d37d.camel@wdc.com>
+ <mvma7cwaubk.fsf@suse.de>
+From: Atish Patra <atish.patra@wdc.com>
+Message-ID: <ce9e762d-5b70-0092-d21c-3d9be8fa2a69@wdc.com>
+Date: Tue, 30 Jul 2019 00:00:15 -0700
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
+ Gecko/20100101 Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <mvma7cwaubk.fsf@suse.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190729_235638_117865_83743F66 
-X-CRM114-Status: UNSURE (   7.45  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190730_000021_215894_642704F7 
+X-CRM114-Status: GOOD (  11.95  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ medium trust [216.71.153.144 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,48 +102,48 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "daniel.lezcano@linaro.org" <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "rkrcmar@redhat.com" <rkrcmar@redhat.com>,
+ "anup@brainfault.org" <anup@brainfault.org>, Anup Patel <Anup.Patel@wdc.com>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "hch@infradead.org" <hch@infradead.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "tglx@linutronix.de" <tglx@linutronix.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Jul 30 2019, David Abdurachmanov <david.abdurachmanov@gmail.com> wrote:
-
-> On Mon, Jul 29, 2019 at 1:51 PM Andreas Schwab <schwab@suse.de> wrote:
+On 7/29/19 11:51 PM, Andreas Schwab wrote:
+> On Jul 29 2019, Atish Patra <Atish.Patra@wdc.com> wrote:
+> 
+>> Strange. We never saw this error.
+> 
+> It is part of CONFIG_KERNEL_HEADER_TEST.  Everyone developing a driver
+> should enable it.
+> 
+>> #include <linux/types.h>
 >>
->> Since switching to 5.2 kernels I'm seeing random crashes and
->> misbehaviors on the HiFive, for example while building gcc or glibc.
->> Perhaps missing TLB flushes?
->
-> Do you have some examples of crashes?
+>> Can you try it at your end and confirm please ?
+> 
+> Confirmed.
+> 
 
-While building glibc:
+Thanks. I will update the patch in v2.
 
-an_ES.UTF-8...realloc(): invalid pointer
-/bin/sh: line 1:  7841 Aborted                 (core dumped) I18NPATH=. GCONV_PATH=/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/iconvdata LC_ALL=C /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/elf/ld-linux-riscv64-lp64d.so.1 --library-path /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/math:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/elf:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/dlfcn:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nss:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nis:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/rt:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/resolv:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/mathvec:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/support:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nptl /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/locale/localedef $flags --alias-file=../intl/locale.alias -i locales/$input -f charmaps/$charset --prefix=/home/abuild/rpmbuild/BUILDROOT/glibc-2.29-0.riscv64 $locale
-make[2]: *** [Makefile:422: install-archive-an_ES.UTF-8/UTF-8] Error 134
+> Andreas.
+> 
 
-While building gcc:
-
-../../gcc/ada/exp_aggr.adb: In function 'Exp_Aggr.Expand_N_Aggregate':
-../../gcc/ada/exp_aggr.adb:5311:21: warning: 'Csiz' may be used uninitialized in this function [-Wmaybe-uninitialized]
-../../gcc/ada/exp_aggr.adb:5220:10: note: 'Csiz' was declared here
-+===========================GNAT BUG DETECTED==============================+
-| 10.0.0 20190727 (experimental) [trunk revision 273844] (riscv64-suse-linux) |
-| Storage_Error stack overflow or erroneous memory access                  |
-| Error detected at output.ads:39:8                                        |
-realloc(): invalid pointer
-
-raised PROGRAM_ERROR : unhandled signal
-make[3]: *** [../../gcc/ada/gcc-interface/Make-lang.in:140: ada/exp_ch3.o] Error 1
-
-Andreas.
 
 -- 
-Andreas Schwab, SUSE Labs, schwab@suse.de
-GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
-"And now for something completely different."
+Regards,
+Atish
 
 _______________________________________________
 linux-riscv mailing list
