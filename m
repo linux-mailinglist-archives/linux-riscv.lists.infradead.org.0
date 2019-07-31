@@ -2,47 +2,47 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDE8C7BAC1
-	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 09:33:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 42AC97BAC5
+	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 09:36:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
 	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DdsG6fxxCNlxNcvVSrVNVxbnzcrS1caOpIQjxVWsepY=; b=cnuqToGxw2r9dE
-	vfrT0udoK5tesWQ7ZRI4q7n4r/FN72MUObT9SJt50XSvxpNaC1Xcf2mH2EvyIiDfmCq+uIAFU07Hy
-	q+VosdcpRfAPeeQm4j7t8ai25iKYs5acZeppo1a8+f4pGhjBoBJ+JDrk5uB5NrjwTAPslZCGufF6Q
-	HgRlDRwPRzOqbfff1FK3u37hb6ofVPB5KXnMculGsOuxL2Lz0F5mOrQy9ownXilJ3+qc5gq5IMnsh
-	eLtfrXI6PIo0+eINSs4MyFwjupkvpor+e2m73FBdeYYb96S+PPsD0gEV0sSZavjuK9mJkgMXYpYVs
-	eu3oZH0soRubRAGc0HJA==;
+	List-Owner; bh=8Um7B+QzzHJqYy7uWPhepVAMekt0JcX6msp1MbOgM4g=; b=LmibgIVNpQxZ00
+	pSM8ulkLJRju7a7wvEeotzYmK02PuWSGU14uZ/OsO62CoQGpyU8lTm+sAFi4a7KO7FQabB3VBxZjL
+	VSH3UtNByHpPU015ukZlGs+KzAy6HGb6sy1LQcgb9Gtf7g+6oNvN27eqQmylntne882oEMK4d1/gV
+	KNhxo8Es9RaiU7i5OZXtrOnHo/IJo8TLRBhCvULx45O6poSZdke/q150DPfWnvlsO4ncYQr4vBCOs
+	hYNJnf5H1pqx1oko5tnKItWE3hL799ywlOIvaEevWfFXqy0q7U8E88L8reVm0UGPppuRKibdm34KI
+	MZvwUQpwHI5CZjv9zbWg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsj6s-00048P-Dr; Wed, 31 Jul 2019 07:33:18 +0000
+	id 1hsj9n-0005Rj-PF; Wed, 31 Jul 2019 07:36:19 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsj6p-000484-55
- for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 07:33:16 +0000
+ id 1hsj9k-0005RM-P8
+ for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 07:36:18 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 8C90CAE52;
- Wed, 31 Jul 2019 07:33:13 +0000 (UTC)
+ by mx1.suse.de (Postfix) with ESMTP id 7F9C6AD35;
+ Wed, 31 Jul 2019 07:36:15 +0000 (UTC)
 From: Andreas Schwab <schwab@suse.de>
-To: Paul Walmsley <paul.walmsley@sifive.com>
+To: Atish Patra <Atish.Patra@wdc.com>
 Subject: Re: 5.3-rc2: Found incompatible CPU
 References: <mvm4l33adof.fsf@suse.de>
- <alpine.DEB.2.21.9999.1907301502240.4874@viisi.sifive.com>
-X-Yow: I'm in a twist contest!!  I'm in a bathtub!  It's on Mars!!  I'm in
- tip-top condition!
-Date: Wed, 31 Jul 2019 09:33:13 +0200
-In-Reply-To: <alpine.DEB.2.21.9999.1907301502240.4874@viisi.sifive.com> (Paul
- Walmsley's message of "Tue, 30 Jul 2019 15:09:56 -0700 (PDT)")
-Message-ID: <mvmwofy8xqe.fsf@suse.de>
+ <37DB11CB-89AE-42C3-8DA2-7A65F6338A4B@wdc.com>
+X-Yow: I'm having a RELIGIOUS EXPERIENCE..  and I don't take any DRUGS
+Date: Wed, 31 Jul 2019 09:36:15 +0200
+In-Reply-To: <37DB11CB-89AE-42C3-8DA2-7A65F6338A4B@wdc.com> (Atish Patra's
+ message of "Wed, 31 Jul 2019 06:48:08 +0000")
+Message-ID: <mvmsgqm8xlc.fsf@suse.de>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2.90 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_003315_343256_4D11711E 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20190731_003616_962702_409AC886 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -63,40 +63,26 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Jul 30 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
-
-> On Tue, 30 Jul 2019, Andreas Schwab wrote:
->
->> Trying to boot 5.3-rc2 on the HiFive I'm getting "Found incompatible
->> CPU" for each cpu, which means that of_device_is_compatible(node,
->> "riscv") is failing.  Any idea?
->
-> Here, v5.3-rc2 boots cleanly with upstream DT data, using BBL.
->
-> I've noticed problems in the past with some bootloader configurations when 
-> the DT data is loaded too close to the kernel.  When the kernel is 
-> uncompressed, some or all of the DT data can be overwritten, which can 
-> cause mysterious DT parsing problems.
-
-Using the latest openSBI (which moved the FDT further away) didn't help.
-A fully modular kernel isn't that big anyway.  And the fact that the
-cpus are found in the first place tells me that the FDT is intact in
-general.
-
-Andreas.
-
--- 
-Andreas Schwab, SUSE Labs, schwab@suse.de
-GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
-"And now for something completely different."
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gSnVsIDMxIDIwMTksIEF0aXNoIFBhdHJhIDxBdGlzaC5QYXRyYUB3ZGMuY29tPiB3cm90ZToK
+Cj4g77u/T24gNy8zMC8xOSwgNTo1MSBBTSwgImxpbnV4LXJpc2N2IG9uIGJlaGFsZiBvZiBBbmRy
+ZWFzIFNjaHdhYiIgPGxpbnV4LXJpc2N2LWJvdW5jZXNAbGlzdHMuaW5mcmFkZWFkLm9yZyBvbiBi
+ZWhhbGYgb2Ygc2Nod2FiQHN1c2UuZGU+IHdyb3RlOgo+Cj4gICAgIFRyeWluZyB0byBib290IDUu
+My1yYzIgb24gdGhlIEhpRml2ZSBJJ20gZ2V0dGluZyAiRm91bmQgaW5jb21wYXRpYmxlCj4gICAg
+IENQVSIgZm9yIGVhY2ggY3B1LCB3aGljaCBtZWFucyB0aGF0IG9mX2RldmljZV9pc19jb21wYXRp
+YmxlKG5vZGUsCj4gICAgICJyaXNjdiIpIGlzIGZhaWxpbmcuICBBbnkgaWRlYT8KPiAgICAgCj4g
+UHJvYmFibHkgd3JvbmcgRFQgPyBJZiB5b3UgYXJlIHVzaW5nIE9wZW5TQkksIHlvdSBuZWVkIHRv
+IHBvaW50IHRvIHRoZSBjb3JyZWN0IERUIGJ1aWx0IGJ5IGtlcm5lbCBieSB1c2luZyBGV19QQVlM
+T0FEX0ZEVF9QQVRILgoKSSBkb24ndCBzZWUgYW55IGRpZmZlcmVuY2UgYmV0d2VlbiB0aGUgNS4y
+IGFuZCA1LjMgRFRzLgoKQW5kcmVhcy4KCi0tIApBbmRyZWFzIFNjaHdhYiwgU1VTRSBMYWJzLCBz
+Y2h3YWJAc3VzZS5kZQpHUEcgS2V5IGZpbmdlcnByaW50ID0gMDE5NiBCQUQ4IDFDRTkgMTk3MCBG
+NEJFICAxNzQ4IEU0RDQgODhFMyAwRUVBIEI5RDcKIkFuZCBub3cgZm9yIHNvbWV0aGluZyBjb21w
+bGV0ZWx5IGRpZmZlcmVudC4iCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJpc2N2Cg==
