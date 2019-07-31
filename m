@@ -2,75 +2,124 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F8B07B790
-	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 03:24:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B96557B7DE
+	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 03:56:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u8euLNMn3DHQaQfGC8EcKvX6YefFsM2tGrSbi3QhqHs=; b=UOZIZda8bnsVsN
-	P44+zcB4l/yj160d2rQB9U6VtcwVKa+dRzbNZqyOMMGNIs/8N2RkSoq79kW9qPrwh90dXMWc6/wQS
-	hyAhRjCFcZX33EaKSpeY3/pI9Xoi6Xk/1/Mz4tR00VU6Bw9G+vTbpWPlQbxYoqtOZKz4zNpnaCysJ
-	5+Nzu1K437qM2727NS45MbdUJ2NRJaS/3kbl5WXgR3dPe3CyBX1b3SaxNAPgsX/eD9uyqAiENSEDl
-	CGpICIcqZQKqLtdxQM4KKOCOfPhkhwPpooKKIvWx3z/N8o2r+uI5iOIYI73NJj0NYknCX9gXIH9xZ
-	5MW2zvjnnoYZf1m/3r+Q==;
+	List-Owner; bh=5au1DWdvj/N0VvnzZrDqeG0qUM/bjOAAPXP4T6BSEok=; b=mtY3PSWWK+UN6P
+	iwvJI3//078wxXd/YFSLAG/LUYrL+/MhvhMFOUUov/1AWp8fTX4WWi2RHb9GzS9daoEVMdbAMo0wX
+	Z8BjbdxAP1207LYmgh6A11M0XMKqmQkGDUXo6zelwSl5feJZfk59mtMMWv76qbteKnIsYhPiOP5cy
+	ut9aECxhclUs+6yfB8LA1iC4TIlvDyAJQcqpAuosBczB6x+/hMPUw75Sc5PpiQuso+F94+s7Y20RV
+	KxVxu3nMvlOAnP0QDi23B4Sjqw+x33gFpkqiNjyWTntonidV/IJGVTKtEjUL8B17bEWSS7wXrI4bP
+	ei7x0eCle/AxjQJYQOsA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsdML-0007z7-Jt; Wed, 31 Jul 2019 01:24:53 +0000
+	id 1hsdqW-0004Oq-VB; Wed, 31 Jul 2019 01:56:04 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsdMD-0007mr-Hl
- for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 01:24:48 +0000
+ id 1hsdqU-0004OR-1N
+ for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 01:56:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564536285; x=1596072285;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=vmXuHR7SC+aN09FeHOdioG1YLL/XU2JJ+5WuI+zCHk8=;
- b=SfxmmP5V0s5yTQ0qaOXtFKTNnTic2ZqLQjWGRu//JLD9v28cFqrSSQor
- kaIdUxeJETZSP+15qrybbGyCEbeVXkPz0//LOAmW3XYjfOudGCDjHheOh
- 62VeUcwXfw1R/1aGmoNaa+prZvpdD1lOGgKue1Fy2/DAs+TkChK88sYRQ
- j/VCnr6VJFTPL57OBuj29OoRFFcCLyPsZpkxCVBQ+qkLcgsJp/2tJ28Kv
- nZXXzMiI4bTVokckJvlLEV5GI97fnsPVYbwLXLNUqZCHcssRsS0dl8Q12
- T3dLtglvYUkvhdDvSuNsrvNLZ7J5rKeZhPX2AwSSVqBvdUMZnb6kzfRN6 g==;
-IronPort-SDR: 7Mxho65xPoY77OxhUwGjWkZUS7E8oZfhKo6Kg86z20CaaOvaReJ29EHyujE61kMXvrw/cONmzQ
- cdcegmlQz/79bEsUjBBkQBXJKy6r2m3aqjZyB8JmDxSrPhiEnJVjLhzd8/MPz5je7XuHtACOvs
- qEF2fjXi73QZvGODduze4N0qohe0wwvckpoKcacWabJlsJkCY+Im5taAFwRwEc4XKE/4h/CXD5
- ViRZDxZCgaCVkbD3Tqg57fZE6ugCnCG0F5Drrp/fCzr+4UN178LjPSgddYCFB2t7AhHDMcxnKk
- Ilw=
-X-IronPort-AV: E=Sophos;i="5.64,328,1559491200"; d="scan'208";a="119218140"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 31 Jul 2019 09:24:38 +0800
-IronPort-SDR: MBY1xm5PpuQ4Vr5VTqvvzOKcpspxUbLqK+kjuOmPUGcQX5P+WZP07NlGHuae+baXdFSdK/tCl6
- r7/qKzCGQAirl9VJKDen0Dl1LaZzyRYycPgM2lYr6c0AyELpRJyy7O8UTQzvR+Y9PIp3YsNT81
- yTBSt86o2h5JifDRd2XrBm+IwRnAlF/it5U2AJ7Ci/ZYGx7CT2OUTarft1ABG7wYO57qoB+KQe
- vneYt0+EoiOEgJ+2L5tXjqXUILc1M7PohrQXDby2TtC7vq8kfrfH9LUIMwnxQgNhvfccfsCiTz
- DRhzRu8GAzyXN9s7uHK63Wz9
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP; 30 Jul 2019 18:22:39 -0700
-IronPort-SDR: 54+vnEozrIPP/nGlxcV+NuLLZU4AoXI0bIuVPynL3QuKqnp94GO5rpklzJg4DTr8I6zGhqFLWA
- s1C7Da89ocDa2IAbOOQ3jgYUnykvwd3LzNd0V+BkgTZzUWpTEMqbUHLKpBUCxiib818L/vev0j
- wbVbx4ymaAW+A5LC0e/aj0ba/NOFHW84E9vjETkBd5411ZeP8Yiiw3CeeF8i29a9ZQVFwodlz/
- +K0/YuGGe4kngYCmTUa2VRURvS1FWjQoJ3ZcmhQl0Gq6bhwAh2v0ypiE6FOwm7P+ZdODR6Zyx3
- uAE=
-Received: from jedi-01.sdcorp.global.sandisk.com (HELO
- jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip02.wdc.com with ESMTP; 30 Jul 2019 18:24:38 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 5/5] dt-bindings: Update the isa string description
-Date: Tue, 30 Jul 2019 18:24:18 -0700
-Message-Id: <20190731012418.24565-6-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190731012418.24565-1-atish.patra@wdc.com>
-References: <20190731012418.24565-1-atish.patra@wdc.com>
+ t=1564538163; x=1596074163;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=EzIkLL33VfiaDDUjvmHCkM+3WyciIBxzfLE+FrI2JX4=;
+ b=fOC4WjNAb16N3r+aEmVsskHPGDyunb6lUIj462NcdqWsaIbzk7UPhV7i
+ AhCSstxI6so+7/dZ6ZAmI/dYX81BB4h/E+x8IKZNIwI9B6TQmdcjb8ls9
+ zv/YxrFatAbYnjAf3BPzHLRsXMsAbzoFHuXyjIFsz+r88bQpDmAnuvP4X
+ VLYTsQ/I5l2rXTU6eF2zG6cKXI7uWd7JJl++89sut7o6Dvx2YFwJueEi3
+ 2PVMjDSK0M0YAHtfUJ2NosZSt5xgv2OghyMVn1Jj5fM9XIYn5kqxNOviC
+ eIymaNzeqQODyKAN8LEQS/ojcshyizmKsnKt2mS2sIJ9FuLn4UB5n5fPe Q==;
+IronPort-SDR: 5N9bK50D871o+QHmPZCmTRj5VRV4GjVXnn+LZdnbqtND7tliUEEfhSBdeXaXbUFYKnU+iUyOTd
+ fG9fBwOInGATVbFFVrXK6ot+ZNlN+Pu1ErQ8t6wo4wW/wqra/1hsr2HEmFo8b0fnvH/nUlSdtd
+ CbyM6bZPMvuInPLcB5iJK+GB/NmXeiUzvrmJs3VqFC2pq/lf5JXM459IzO9otEqQCDpkVHti+H
+ tAfZf28HDD/NE8DmOz2JQAVQz+EMuPEDwWr3y7zP/hR+RZhV7P2qFVhaG5ABhx294UO+lCFRED
+ Oow=
+X-IronPort-AV: E=Sophos;i="5.64,328,1559491200"; d="scan'208";a="119220292"
+Received: from mail-by2nam05lp2055.outbound.protection.outlook.com (HELO
+ NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.55])
+ by ob1.hgst.iphmx.com with ESMTP; 31 Jul 2019 09:56:02 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Uio0qAt1waLd5VdTbxaaawoBZF06vXoRu3l5aXqQiLzKkNBaZGcW8+gS8Ci0FT87P12yi3GnR85cPeHW+HZtVgrTyTIqxQiRXr1by/tzv6MRcH8SQ9bG6/1Be/D0mLlENa7lEiDPtkvvvsQLAlU0ta3NnIEJIUpdGr1sFTUma86oVAJPZ1shisWSKJI5bIecGG7LrOJAlLc9+zdrOhVHbOoE9tKsERXUBOxeY0bjvMTELEfZ2iYeApZQBRucW2wT3pfn7/7p5GTy+PE5nw4RaFchxLP8IIhu6jSQZTQWPupeGMw1QYU4SkjLSnmijx/pPbe/ipzp3yMUgWDNWQOFbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EzIkLL33VfiaDDUjvmHCkM+3WyciIBxzfLE+FrI2JX4=;
+ b=iVxOWkAYWb62vRgnj03mYg3l0/fO2BPKY46A8jELo5sOk/DrXCT9i3D92DpR2JNezC5Ows+riyiGeIhVYt/5+37U70jcvM2coX6vDPp5cWv4TsWmuhNNIBb3T1TYCMmGj+SWzc5pYi/Fy7IBzAWSZR8OkzqyAhbBcqV7MlZsWnSEJhLguGrn5RZZ75nDjMhxv2qlw9qv+fuIRt+Hz2/fbwiqvOEvRfLy0EZ/Z7tMUVJEY0vLQugB733ZZwNrhZgsjRp5SEyQ9L9eXw1Z7gEd3VZEJUywSoHHaDomDbGQXJ/d59/3yEqqFf8mWKfMQ+d8+B2XubLx181liGWmwbdcYw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=wdc.com;dmarc=pass action=none header.from=wdc.com;dkim=pass
+ header.d=wdc.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EzIkLL33VfiaDDUjvmHCkM+3WyciIBxzfLE+FrI2JX4=;
+ b=k/LjvsRiKrWv4YVOvVckmsmyiRjzQiOd+yGWgNWxVtgX1UEruFEWiF9TL6t9Qz3TMnQXFk/t2cjybsHiAhZuMoKBvC5QEeXYbWG7zljKSJhB8dEYkVeYoIvzMrh4S8oqblNLbM50uT5FVlM7TdhGDk566GUPiWMgsNhG2OOQYiM=
+Received: from BYAPR04MB3782.namprd04.prod.outlook.com (52.135.214.142) by
+ BYAPR04MB4598.namprd04.prod.outlook.com (52.135.238.75) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2094.14; Wed, 31 Jul 2019 01:55:59 +0000
+Received: from BYAPR04MB3782.namprd04.prod.outlook.com
+ ([fe80::ac9a:967e:70a5:e926]) by BYAPR04MB3782.namprd04.prod.outlook.com
+ ([fe80::ac9a:967e:70a5:e926%7]) with mapi id 15.20.2115.005; Wed, 31 Jul 2019
+ 01:55:59 +0000
+From: Atish Patra <Atish.Patra@wdc.com>
+To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "rkrcmar@redhat.com" <rkrcmar@redhat.com>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "palmer@sifive.com" <palmer@sifive.com>, Anup Patel
+ <Anup.Patel@wdc.com>
+Subject: Re: [RFC PATCH 13/16] RISC-V: KVM: Add timer functionality
+Thread-Topic: [RFC PATCH 13/16] RISC-V: KVM: Add timer functionality
+Thread-Index: AQHVRgTUPAB7n90qAEyqoYXnGhI7+KbjB0QAgADy5IA=
+Date: Wed, 31 Jul 2019 01:55:59 +0000
+Message-ID: <7fe9e845c33e49e4c215e12b1ee1b5ed86a95bc1.camel@wdc.com>
+References: <20190729115544.17895-1-anup.patel@wdc.com>
+ <20190729115544.17895-14-anup.patel@wdc.com>
+ <abedb067-b91f-8821-9bce-d27f6c4efdee@redhat.com>
+In-Reply-To: <abedb067-b91f-8821-9bce-d27f6c4efdee@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Atish.Patra@wdc.com; 
+x-originating-ip: [199.255.44.250]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3f3e1aa5-aacd-4351-0986-08d7155a3c37
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
+ SRVR:BYAPR04MB4598; 
+x-ms-traffictypediagnostic: BYAPR04MB4598:
+x-ms-exchange-purlcount: 2
+x-microsoft-antispam-prvs: <BYAPR04MB45982766F9391E322B792EE7FADF0@BYAPR04MB4598.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 011579F31F
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(346002)(396003)(136003)(366004)(376002)(39860400002)(189003)(199004)(446003)(229853002)(110136005)(76176011)(476003)(11346002)(54906003)(2201001)(2616005)(71200400001)(316002)(8676002)(81156014)(7416002)(256004)(8936002)(7736002)(966005)(486006)(81166006)(6506007)(14454004)(66066001)(305945005)(53546011)(68736007)(5660300002)(6246003)(26005)(478600001)(71190400001)(3846002)(6116002)(6636002)(25786009)(6306002)(66946007)(53936002)(6512007)(118296001)(102836004)(186003)(86362001)(66476007)(4326008)(2501003)(36756003)(6486002)(2906002)(66446008)(64756008)(99286004)(76116006)(6436002)(66556008);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4598;
+ H:BYAPR04MB3782.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: KBPg7aI1bItGwl35cvKVqoMbhvKSUDM9bqd8SXYB8fKJ+RHQD78/XUBqDY6ZyOAO5CJOfemG888MXplGdWxJ2+uy8RuXRz9jDPeK2csKuAWSFmceE828Du/GdlQ4RwD9XPwBtR0LFFrRPJF1KVdowvXkyQB4SX3peouFXT6ftg/1rDhiSL3tCKwPn1BRCZAYoQXGjiuu/sWrXO22oEpsmPPckQUBF805s74vwAHhM3ulPAuIIRJ0tDpAwLmLTSRtABou3BxMN3jscrzXzUdpABz+zo2hVSxj57n+lijF5X19vhdbbieP0LJyGkg99udfFiRcpomRPNx1bp0jL6QGqiH3m60DB+pJwAG4OqRFnqFaVTP/DuZFJJgJIxCLE2mRt8oE/vD1D82qU6ChfxopGkI6JgoaizV3G2iLcB2smOQ=
+Content-ID: <13B323065899E54CB3E7D3A54271A60D@namprd04.prod.outlook.com>
 MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f3e1aa5-aacd-4351-0986-08d7155a3c37
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jul 2019 01:55:59.6574 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Atish.Patra@wdc.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4598
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_182445_706988_E86673FB 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20190730_185602_274532_36B1F82F 
+X-CRM114-Status: GOOD (  15.23  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -98,55 +147,72 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Alexios Zavras <alexios.zavras@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Anup Patel <anup.patel@wdc.com>, Johan Hovold <johan@kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Rob Herring <robh+dt@kernel.org>,
- Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Enrico Weigelt <info@metux.net>,
- Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "anup@brainfault.org" <anup@brainfault.org>,
+ "daniel.lezcano@linaro.org" <daniel.lezcano@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "hch@infradead.org" <hch@infradead.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "tglx@linutronix.de" <tglx@linutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The yaml documentation description of isa strings section doesn't
-specify anything about the case sensitiveness of the isa strings.
-The RISC-V specification clearly specifies it to be case insensitive.
-However, Linux kernel supports only lower case isa strings.
+On Tue, 2019-07-30 at 13:26 +0200, Paolo Bonzini wrote:
+> On 29/07/19 13:57, Anup Patel wrote:
+> > +	if (delta_ns > VCPU_TIMER_PROGRAM_THRESHOLD_NS) {
+> > +		hrtimer_start(&t->hrt, ktime_add_ns(ktime_get(),
+> > delta_ns),
+> 
+> I think the guest would prefer if you saved the time before enabling
+> interrupts on the host, and use that here instead of ktime_get().
+> Otherwise the timer could be delayed arbitrarily by host interrupts.
+> 
+> (Because the RISC-V SBI timer is relative only---which is
+> unfortunate---
 
-Update the yaml documentation accordingly to avoid any confusion.
+Just to clarify: RISC-V SBI timer call passes absolute time.
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- Documentation/devicetree/bindings/riscv/cpus.yaml | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+https://elixir.bootlin.com/linux/v5.3-rc2/source/drivers/clocksource/timer-riscv.c#L32
 
-diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
-index c899111aa5e3..e22a2b7ebafa 100644
---- a/Documentation/devicetree/bindings/riscv/cpus.yaml
-+++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
-@@ -46,10 +46,14 @@ properties:
-           - rv64imafdc
-     description:
-       Identifies the specific RISC-V instruction set architecture
--      supported by the hart.  These are documented in the RISC-V
-+      supported by the hart. These are documented in the RISC-V
-       User-Level ISA document, available from
-       https://riscv.org/specifications/
- 
-+      Linux kernel only supports lower case isa strings. Thus,
-+      isa strings must be specified in lower case in device tree
-+      as well.
-+
-   timebase-frequency:
-     type: integer
-     minimum: 1
--- 
-2.21.0
+That's why we compute a delta between absolute time passed via SBI and
+current time. hrtimer is programmed to trigger only after the delta
+time from now.
 
+
+> guests will already pay a latency price due to the extra
+> cost of the SBI call compared to a bare metal implementation. 
+
+Yes. There are ongoing discussions to remove this SBI call completely. 
+Hopefully, that will happen before any real hardware with
+virtualization support shows up :).
+
+>  Sooner or
+> later you may want to implement something like x86's heuristic to
+> advance the timer deadline by a few hundred nanoseconds; perhaps add
+> a
+> TODO now).
+> 
+
+I am not aware of this approach. I will take a look. Thanks.
+
+Regards,
+Atish
+> Paolo
+> 
+> > +				HRTIMER_MODE_ABS);
+> > +		t->is_set = true;
+> > +	} else
+> > +		kvm_riscv_vcpu_set_interrupt(vcpu, IRQ_S_TIMER);
+> > +
+> 
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
