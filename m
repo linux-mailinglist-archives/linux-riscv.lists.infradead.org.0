@@ -2,82 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E0007B87A
-	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 06:23:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 306A27B8E7
+	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 06:52:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SapkiV4uxCcTxF5bL72QSMbztHAH2aJ0UdyQz5pICYM=; b=WHUnpiOobcZ4Ia
-	dYTyCw1kPz7JMjXKbHN7SrdCJxH7NDVrK+UwI6VKCZGUMIl9d0KBY4SgP3kMNBXzbIZFRoU8OnFm3
-	2+9VjTTtUAe16G5QUEBlatn7NMkqJv2TueVk5RdHJwF6WDBtvmcU3F/dz/TVJX8CtHPsPHBTJWbeL
-	+r5WTDE7kG0SD9IQlwr5ysRRc0yjzlX35iRJWLvU3LP1K63GPYGHyhGag8VYWGjbx0gpaG8gpAp1+
-	ngsNA9eJopSqqwqLRzpNJhJbUSUXrOm1FjcqcnRJWu6xgqeLGsBXhR/0JpbHNxH++hwpleU+D1rHo
-	K0KXUOYdNZ+w4gttmyVQ==;
+	List-Owner; bh=6KpLs4IWx29/V8mBI12zOPQ0x1zBDdcZ+j+3xAVhNiE=; b=FwytAIhdT4ewTH
+	b2DFm0AJsOhFgVfxkgGPJmojaw9n/y6pP3jqCzRQrvc0/9nMVlZVMcNDeIlSh/XZuam0B7j2Kp6j2
+	HmpvL0PrZWU3h4EP/i0Axpp/5JraMGfF5Igf+fCFk2OqcVlG4mzPTDo4XiEzvZB5JviI7Qs7IKwd5
+	kNl6F51W3MFWy25TrmRgPiM7T2GdBcAe1aByM78/D0u1cq5osdKk+kWjVPFilX+ypRzT2EfB4JBWw
+	Pi/oqwXmPvYfsUtTYpxaghMzbGj3rtLbjtSg0J8qQRHiZ8dB5a+RvYhPyq4BP2rL5ZOw0NB3Vo5WO
+	16hEP3clldxiPLqW1OVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsg99-0004JY-K5; Wed, 31 Jul 2019 04:23:27 +0000
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
+	id 1hsgau-0005vW-Gv; Wed, 31 Jul 2019 04:52:08 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsg95-0004J3-1i
- for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 04:23:24 +0000
-Received: by mail-ot1-x341.google.com with SMTP id z23so40406009ote.13
- for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 21:23:20 -0700 (PDT)
+ id 1hsgaq-0005v6-Sm
+ for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 04:52:06 +0000
+Received: by mail-ot1-x342.google.com with SMTP id s20so3328332otp.4
+ for <linux-riscv@lists.infradead.org>; Tue, 30 Jul 2019 21:52:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=tm6ntfcYmNHUpIkveTc5p4r6569ul1qIUEH4oxRjwA4=;
- b=glzUp8gAgo6Q9+gjT5xKBMG30uah/MGW3tgERppjauRxj/tmhas8EEff6tCjk6x9Oo
- y4yyZpqHDXgaIfsG4COlY9nVCd1boATU3DBufsqEy40c28G9vJaAsDkpn0KK+No1GvNH
- qTG5qAKnhCkwiGa6BBEERHNzSbb8ZEClpQLptBPI8pxEXmmih6Jd7qqCXTXelHmSSfV2
- PngzgOomffODrlcUHKczYix6KxGwDAzWrQ7M739Hp0U6FwXuxSj2Nn1VdFfspfag6XCs
- AcALx/y+P3AngYVbf2fVaNiAQbx4faQhsUnrcqe6vRdyXlKg9OCXPZM1AWyOudTLoarK
- KXPQ==
+ bh=xIj00IIxzXm35iWcbJEEMjex/0c7NldacFp3fkJRa7A=;
+ b=lnQz8Id5tT7vpViGceKAZWJgiylaDdwMd6Ah4vJWFKirI3VN60C6xnujVSxldwpb9F
+ 44eZBlATamxo+MJWsMO4oEU7HThWc44+Gj2GoGn6SwJVSd7/l3j7QzZJdXCaCvaGGkre
+ GDV4049M8sCt381STog0f3sKV/mtgVRzkyZB4ME3XVJG+op+9jvUBe5GNdmY/CJooFBo
+ rqdFI8CgyNrFpnmoDrgICBxUPHbRGSJmuMuZHu0NAH+ddU+kKw3GwM+ToqedTGG9q3da
+ +s0mq6vQd2sPmDFu/+TCOjGFJsslIvDbmIVLFLNloKd7BqNyNZ4wfUXfEFOXPjzB31Fb
+ W8Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=tm6ntfcYmNHUpIkveTc5p4r6569ul1qIUEH4oxRjwA4=;
- b=fhKyM7mh9IYgDt8E4r8HUg4D4GtpggnHXZNVDA/hGgfJTXOcvaC8ywdvxBb+dgdbyo
- hJ7blDeZ3yESTHs/v+rX7mhFkuBBL99YB1MazCp/Vg1atiX3urIv72GMnnu/vgVqVyW9
- LsCda08Hy5nUBG92AJjBeFxux8ubcz2rZgzTrpbT05b3ZahX2mxCFGflgBQ51is82j1H
- Na3KzRYxIGg1S/Dut1XDjmtfec+UjJf/PIB+M7Pvq8eJ56Wx4igMZjIFM0tk6pzuyYcx
- fMrwWQJvxCI1ykv/zIAmFTs+9lKplxSnQzObW7N1HX6jvYV1fdPMPNieM+qDr4uAbzOm
- iUXg==
-X-Gm-Message-State: APjAAAVBhZ1IBtCy+4AL9KgTUZINrn5z7sIgPWWbIqhjGCn7VoxPOqju
- iXN4Z7QNEx4232KvUacuRUFoWQ==
-X-Google-Smtp-Source: APXvYqyrmqRX0TMTUvKRI9kn2OfHhiN/A4ouvjYOKSZwB7DvlVq/p3PsehROt3mdsdg2QXOYNxFx/w==
-X-Received: by 2002:a05:6830:2119:: with SMTP id
- i25mr9479782otc.282.1564547000208; 
- Tue, 30 Jul 2019 21:23:20 -0700 (PDT)
+ bh=xIj00IIxzXm35iWcbJEEMjex/0c7NldacFp3fkJRa7A=;
+ b=mILksu+yCDiN0g9wmVZRgC5RxTEefQuuqDGASDwY+MOhtgyRpeBuLmfWCBZa4CTNdm
+ Nf5Jrvm/W/BK2FxQ8UwGswmC+OvcesGvkMQxByokaviFFC7IDuIAmjqQQVoz8fjZ04sF
+ hFs8oaLGisGTbY2P3d3wRCYgW70Q4MRARoXK+cJhMRJSGIyP9WAg3ggM1qRr76+nZF8Q
+ 8aDtfm9JHOTyIiAzvs+CqpLMnGxwYORhcpdd04hHNkEUKpWzpt9mtAHkH8B3KMXJxxKd
+ kSjRKOonBlda+TmYp2nzhyNTgnbnGbhiN3bMt6bOFYhuEPRKha8ZX9A7bFgVGOy76HOU
+ tU6A==
+X-Gm-Message-State: APjAAAWyAa6m7ieATnMd2spPgENZE+nqhxaAhwgfhe9z1EiXCVUSu+c9
+ sADSIEqLT8YZdlq+ZtL+cfwafg==
+X-Google-Smtp-Source: APXvYqzKMTKiwt+rmGNMruM+QyuU6sXYvuZ4/b2mUCdPKj/rrkKLhMbecmRKy4JuUPBQ65iIM+zx1g==
+X-Received: by 2002:a05:6830:1146:: with SMTP id
+ x6mr89587321otq.86.1564548723780; 
+ Tue, 30 Jul 2019 21:52:03 -0700 (PDT)
 Received: from localhost ([2600:100e:b005:6ca0:a8bb:e820:e6d3:8809])
- by smtp.gmail.com with ESMTPSA id v203sm25607331oie.5.2019.07.30.21.23.19
+ by smtp.gmail.com with ESMTPSA id 20sm14543522oth.43.2019.07.30.21.52.02
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 30 Jul 2019 21:23:19 -0700 (PDT)
-Date: Tue, 30 Jul 2019 21:23:18 -0700 (PDT)
+ Tue, 30 Jul 2019 21:52:03 -0700 (PDT)
+Date: Tue, 30 Jul 2019 21:52:01 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Atish Patra <atish.patra@wdc.com>, Anup Patel <anup.patel@wdc.com>
-Subject: Re: [PATCH v2 2/5] RISC-V: Add riscv_isa reprensenting ISA features
- common across CPUs
-In-Reply-To: <20190731012418.24565-3-atish.patra@wdc.com>
-Message-ID: <alpine.DEB.2.21.9999.1907302117420.15340@viisi.sifive.com>
+To: Atish Patra <atish.patra@wdc.com>
+Subject: Re: [PATCH v2 5/5] dt-bindings: Update the isa string description
+In-Reply-To: <20190731012418.24565-6-atish.patra@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1907302124010.15340@viisi.sifive.com>
 References: <20190731012418.24565-1-atish.patra@wdc.com>
- <20190731012418.24565-3-atish.patra@wdc.com>
+ <20190731012418.24565-6-atish.patra@wdc.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_212323_158311_66ECBB43 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20190730_215204_937973_D27B37FA 
+X-CRM114-Status: GOOD (  16.90  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:341 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -100,13 +99,14 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>,
+ Anup Patel <anup.patel@wdc.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org,
- Johan Hovold <johan@kernel.org>, Alexios Zavras <alexios.zavras@intel.com>,
- Rob Herring <robh+dt@kernel.org>, Palmer Dabbelt <palmer@sifive.com>,
- linux-riscv@lists.infradead.org, Enrico Weigelt <info@metux.net>,
- Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>
+ Rob Herring <robh+dt@kernel.org>, Johan Hovold <johan@kernel.org>,
+ Alexios Zavras <alexios.zavras@intel.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-riscv@lists.infradead.org,
+ Enrico Weigelt <info@metux.net>, Thomas Gleixner <tglx@linutronix.de>,
+ Allison Randal <allison@lohutok.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
@@ -114,103 +114,67 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Tue, 30 Jul 2019, Atish Patra wrote:
 
-> From: Anup Patel <anup.patel@wdc.com>
+> The yaml documentation description of isa strings section doesn't
+> specify anything about the case sensitiveness of the isa strings.
+> The RISC-V specification clearly specifies it to be case insensitive.
+> However, Linux kernel supports only lower case isa strings.
+
+The DT binding documentation specifies an interface.  As such the binding 
+isn't determined by any particular piece of software.  So justifying the 
+binding update by referring to what the Linux kernel currently supports 
+isn't that relevant.  If you still really believe that software should be 
+required to handle mixed-case DT ISA strings, the right answer would be to 
+change the software, as your original patches proposed.  The way you've 
+written this patch description, it sounds like you still don't agree with 
+the conclusion that a strictly lowercase string is a good approach.
+
+If I've misunderstood your intent here, and you do think that specifying 
+an all lowercase string is sufficient, then instead of the patch 
+description above, how about something like:
+
+"Since the RISC-V specification states that ISA description strings are 
+case-insensitive, there's no functional difference between mixed-case, 
+upper-case, and lower-case ISA strings.  Thus, to simplify parsing, 
+specify that the letters present of riscv,isa must be all lowercase."
+
+That way it's clear that, per the RISC-V specification, there's no 
+functional difference associated with case.
+
+However, if what you're saying is that you still don't like this outcome, 
+let me know and I'll write the patch myself.  That way you don't have to 
+have your name associated with a change that you don't believe in.
+
+> Update the yaml documentation accordingly to avoid any confusion.
 > 
-> This patch adds riscv_isa integer to represent ISA features common
-> across all CPUs. The riscv_isa is not same as elf_hwcap because
-> elf_hwcap will only have ISA features relevant for user-space apps
-> whereas riscv_isa will have ISA features relevant to both kernel
-> and user-space apps.
-> 
-> One of the use case is KVM hypervisor where riscv_isa will be used
-> to do following operations:
-> 
-> 1. Check whether hypervisor extension is available
-> 2. Find ISA features that need to be virtualized (e.g. floating
->    point support, vector extension, etc.)
-> 
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > ---
->  arch/riscv/include/asm/hwcap.h | 25 +++++++++++++++++++++
->  arch/riscv/kernel/cpufeature.c | 41 +++++++++++++++++++++++++++++++---
->  2 files changed, 63 insertions(+), 3 deletions(-)
+>  Documentation/devicetree/bindings/riscv/cpus.yaml | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 > 
-> diff --git a/arch/riscv/include/asm/hwcap.h b/arch/riscv/include/asm/hwcap.h
-> index 7ecb7c6a57b1..e069f60ad5d2 100644
-> --- a/arch/riscv/include/asm/hwcap.h
-> +++ b/arch/riscv/include/asm/hwcap.h
-> @@ -22,5 +22,30 @@ enum {
->  };
+> diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
+> index c899111aa5e3..e22a2b7ebafa 100644
+> --- a/Documentation/devicetree/bindings/riscv/cpus.yaml
+> +++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
+> @@ -46,10 +46,14 @@ properties:
+>            - rv64imafdc
+>      description:
+>        Identifies the specific RISC-V instruction set architecture
+> -      supported by the hart.  These are documented in the RISC-V
+> +      supported by the hart. These are documented in the RISC-V
+>        User-Level ISA document, available from
+>        https://riscv.org/specifications/
 >  
->  extern unsigned long elf_hwcap;
+> +      Linux kernel only supports lower case isa strings. Thus,
+
+In the past, the DT maintainers have pushed back against explicitly 
+mentioning the Linux kernel in binding documentation, since the DT 
+bindings define an interface that's independent of the underlying software 
+implementation.  How about just stating something like "Letters in the 
+riscv,isa string must be all lowercase" ?
+
+> +      isa strings must be specified in lower case in device tree
+> +      as well.
 > +
-> +#define RISCV_ISA_EXT_A		(1UL << ('A' - 'A'))
-
-Are these uppercase variants still needed if we define the ISA string to 
-be all lowercase, per our recent discussion?
-
-> +#define RISCV_ISA_EXT_a		RISCV_ISA_EXT_A
-> +#define RISCV_ISA_EXT_C		(1UL << ('C' - 'A'))
-> +#define RISCV_ISA_EXT_c		RISCV_ISA_EXT_C
-> +#define RISCV_ISA_EXT_D		(1UL << ('D' - 'A'))
-> +#define RISCV_ISA_EXT_d		RISCV_ISA_EXT_D
-> +#define RISCV_ISA_EXT_F		(1UL << ('F' - 'A'))
-> +#define RISCV_ISA_EXT_f		RISCV_ISA_EXT_F
-> +#define RISCV_ISA_EXT_H		(1UL << ('H' - 'A'))
-> +#define RISCV_ISA_EXT_h		RISCV_ISA_EXT_H
-> +#define RISCV_ISA_EXT_I		(1UL << ('I' - 'A'))
-> +#define RISCV_ISA_EXT_i		RISCV_ISA_EXT_I
-> +#define RISCV_ISA_EXT_M		(1UL << ('M' - 'A'))
-> +#define RISCV_ISA_EXT_m		RISCV_ISA_EXT_M
-> +#define RISCV_ISA_EXT_S		(1UL << ('S' - 'A'))
-> +#define RISCV_ISA_EXT_s		RISCV_ISA_EXT_S
-> +#define RISCV_ISA_EXT_U		(1UL << ('U' - 'A'))
-> +#define RISCV_ISA_EXT_u		RISCV_ISA_EXT_U
-> +
-> +extern unsigned long riscv_isa;
-> +
-> +#define riscv_isa_extension_available(ext_char)	\
-> +		(riscv_isa & RISCV_ISA_EXT_##ext_char)
-> +
->  #endif
->  #endif
-> diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
-> index b1ade9a49347..177529d48d87 100644
-> --- a/arch/riscv/kernel/cpufeature.c
-> +++ b/arch/riscv/kernel/cpufeature.c
-
-[ ... ]
-
-> @@ -43,8 +49,22 @@ void riscv_fill_hwcap(void)
->  			continue;
->  		}
->  
-> -		for (i = 0; i < strlen(isa); ++i)
-> +		i = 0;
-> +		isa_len = strlen(isa);
-> +#if defined(CONFIG_32BIT)
-> +		if (strncasecmp(isa, "rv32", 4) != 0)
-
-strcmp()?
-
-> +			i += 4;
-> +#elif defined(CONFIG_64BIT)
-> +		if (strncasecmp(isa, "rv64", 4) != 0)
-
-And again here?
-
-> +			i += 4;
-> +#endif
-> +		for (; i < isa_len; ++i) {
->  			this_hwcap |= isa2hwcap[(unsigned char)(isa[i])];
-> +			if ('a' <= isa[i] && isa[i] <= 'z')
-> +				this_isa |= (1UL << (isa[i] - 'a'));
-> +			if ('A' <= isa[i] && isa[i] <= 'Z')
-> +				this_isa |= (1UL << (isa[i] - 'A'));
-
-Are these uppercase variants still needed?
-
 
 - Paul
 
