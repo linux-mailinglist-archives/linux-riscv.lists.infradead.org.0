@@ -2,81 +2,56 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE7ED7BAA9
-	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 09:24:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DDE8C7BAC1
+	for <lists+linux-riscv@lfdr.de>; Wed, 31 Jul 2019 09:33:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EguuovnH+8/7Qp1k8oK0mRrOc37daeH96kz4YVJu0xU=; b=CcIycWalHcUnky
-	nDwDTM3EGsfJ45RaU2y8FMFiBKgk4lvSsH7eCQXxR8J4aP74JBcRvCGxY7fL8gjz4L58t5yUaScQP
-	zS7BqGJoutHRiGBcItdlk/oZEMc302LzhRAjhHM2SYtxHwSJy7+HlcReywKR+5bTqE4zGV7lnZVj4
-	MaSYaHo3csX2v5AUY95OD3zTnf0hQld33A8xTZIGD0BpR1CpK21IIcFxkTrY/eik20b47TYtQNRiU
-	E6Idn9WHw7tvEz6fJjOfyiVTTrk4f3hN4svvwrDdi9cAVz+PIPLeKzO3MdXTHraWyuanXKUIEkEUI
-	BFqTYp8NoQjtMmiUadag==;
+	List-Owner; bh=DdsG6fxxCNlxNcvVSrVNVxbnzcrS1caOpIQjxVWsepY=; b=cnuqToGxw2r9dE
+	vfrT0udoK5tesWQ7ZRI4q7n4r/FN72MUObT9SJt50XSvxpNaC1Xcf2mH2EvyIiDfmCq+uIAFU07Hy
+	q+VosdcpRfAPeeQm4j7t8ai25iKYs5acZeppo1a8+f4pGhjBoBJ+JDrk5uB5NrjwTAPslZCGufF6Q
+	HgRlDRwPRzOqbfff1FK3u37hb6ofVPB5KXnMculGsOuxL2Lz0F5mOrQy9ownXilJ3+qc5gq5IMnsh
+	eLtfrXI6PIo0+eINSs4MyFwjupkvpor+e2m73FBdeYYb96S+PPsD0gEV0sSZavjuK9mJkgMXYpYVs
+	eu3oZH0soRubRAGc0HJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsiy3-0000Zm-SJ; Wed, 31 Jul 2019 07:24:12 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1hsj6s-00048P-Dr; Wed, 31 Jul 2019 07:33:18 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsixz-0000Yh-Fv
- for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 07:24:09 +0000
-Received: by mail-wr1-x444.google.com with SMTP id p13so68416985wru.10
- for <linux-riscv@lists.infradead.org>; Wed, 31 Jul 2019 00:24:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2evDZYZurYJQbFSuSciK2TUoh0fXPuEDQACEld/aYOg=;
- b=A75tXU1odVHd2oqqipCCjQrkrK+gkBSiyV5g3p2eGuJLxhvTDMB7LZfPS25FJ6rxLw
- K1sYCoBGplsoVDFyP5m/AaR0wQqHdkVoqTeF5PUjJzkpUev3f1V8KC+teaciof3/4q9J
- eC2eHJreipGNgoQzyt5J7mNVbNZCfLP+l45JPeHfTCHIsJyOyOuys8lmOCwU1BqwwhpL
- 1fZdUQY4APgMTlNqWvRv+FmO+1ElL6PQjEj3xbRidCfT3XQ43w+eP9KrFFE6NATFJmKF
- VhZCjgGmvz7G05AZ5fqiXLZyzHQrs45lgMF7sx7oy69fRDwtk9wFLndZeVUDw5JU6+CK
- bIoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2evDZYZurYJQbFSuSciK2TUoh0fXPuEDQACEld/aYOg=;
- b=qwwSPPsCBhK0SMmla6GtswfN2+/h61VxBdC5y1+A5P6T6/XwjmnkNmum3HhrbO6nT6
- hoe7Wzf5+qF7QU4Ws3TZKWaNI/14wUDlRJUMQAOBFYX1rEi4m6JXdkW0SC+V6vXKzU89
- hg/argDSDHDTO/uUpNffsaG4ltz9GwmRsg6sZjUDXHLZBGVw91Bbf00A0oHcEW7uhl/x
- fC0XLeCfQVQA/smCzr3GCC2W8EiIXlqDLr7jaBM47JKahmwgQSPvXYmPm19ZKiFAInyR
- AolhyNN1a9WDK1ocd5hcOd4b+f2KFk77T13N/diUR8hVJr1FmLTir1A2uKK12zMqbXgN
- Xdkw==
-X-Gm-Message-State: APjAAAWloDWpeslE+hqjC6ajYbc6kze664R9aCivbhVXYILE0LLcSJOw
- E95CUu8rc9onsUD8O7hYqUZbg+4XZfS/ImWyadc=
-X-Google-Smtp-Source: APXvYqwuN6IBm0tVgx0DbJMkVlA5+z7xdtFRwEmr06AoaLDh/qCzFrlo7pERQF4wqinABZXnPNRDN2ZbRxDtrHkTMz4=
-X-Received: by 2002:a5d:5448:: with SMTP id w8mr131770724wrv.180.1564557845356; 
- Wed, 31 Jul 2019 00:24:05 -0700 (PDT)
+ id 1hsj6p-000484-55
+ for linux-riscv@lists.infradead.org; Wed, 31 Jul 2019 07:33:16 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 8C90CAE52;
+ Wed, 31 Jul 2019 07:33:13 +0000 (UTC)
+From: Andreas Schwab <schwab@suse.de>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: 5.3-rc2: Found incompatible CPU
+References: <mvm4l33adof.fsf@suse.de>
+ <alpine.DEB.2.21.9999.1907301502240.4874@viisi.sifive.com>
+X-Yow: I'm in a twist contest!!  I'm in a bathtub!  It's on Mars!!  I'm in
+ tip-top condition!
+Date: Wed, 31 Jul 2019 09:33:13 +0200
+In-Reply-To: <alpine.DEB.2.21.9999.1907301502240.4874@viisi.sifive.com> (Paul
+ Walmsley's message of "Tue, 30 Jul 2019 15:09:56 -0700 (PDT)")
+Message-ID: <mvmwofy8xqe.fsf@suse.de>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2.90 (gnu/linux)
 MIME-Version: 1.0
-References: <20190729115544.17895-1-anup.patel@wdc.com>
- <20190729115544.17895-9-anup.patel@wdc.com>
- <05d41219-6c0c-8851-dab6-24f9c76aed57@redhat.com>
-In-Reply-To: <05d41219-6c0c-8851-dab6-24f9c76aed57@redhat.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Wed, 31 Jul 2019 12:53:54 +0530
-Message-ID: <CAAhSdy2ZiYYbg0oaNW_bnbdaHw+up9Ah0faoE5T+qr=-CTA3pw@mail.gmail.com>
-Subject: Re: [RFC PATCH 08/16] RISC-V: KVM: Handle MMIO exits for VCPU
-To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_002407_535074_AFC30638 
-X-CRM114-Status: GOOD (  11.19  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190731_003315_343256_4D11711E 
+X-CRM114-Status: GOOD (  11.11  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,107 +63,38 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jul 30, 2019 at 4:50 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+On Jul 30 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
+
+> On Tue, 30 Jul 2019, Andreas Schwab wrote:
 >
-> On 29/07/19 13:57, Anup Patel wrote:
-> > +static ulong get_insn(struct kvm_vcpu *vcpu)
-> > +{
-> > +     ulong __sepc = vcpu->arch.guest_context.sepc;
-> > +     ulong __hstatus, __sstatus, __vsstatus;
-> > +#ifdef CONFIG_RISCV_ISA_C
-> > +     ulong rvc_mask = 3, tmp;
-> > +#endif
-> > +     ulong flags, val;
-> > +
-> > +     local_irq_save(flags);
-> > +
-> > +     __vsstatus = csr_read(CSR_VSSTATUS);
-> > +     __sstatus = csr_read(CSR_SSTATUS);
-> > +     __hstatus = csr_read(CSR_HSTATUS);
-> > +
-> > +     csr_write(CSR_VSSTATUS, __vsstatus | SR_MXR);
-> > +     csr_write(CSR_SSTATUS, vcpu->arch.guest_context.sstatus | SR_MXR);
-> > +     csr_write(CSR_HSTATUS, vcpu->arch.guest_context.hstatus | HSTATUS_SPRV);
-> > +
-> > +#ifndef CONFIG_RISCV_ISA_C
-> > +     asm ("\n"
-> > +#ifdef CONFIG_64BIT
-> > +             STR(LWU) " %[insn], (%[addr])\n"
-> > +#else
-> > +             STR(LW) " %[insn], (%[addr])\n"
-> > +#endif
-> > +             : [insn] "=&r" (val) : [addr] "r" (__sepc));
-> > +#else
-> > +     asm ("and %[tmp], %[addr], 2\n"
-> > +             "bnez %[tmp], 1f\n"
-> > +#ifdef CONFIG_64BIT
-> > +             STR(LWU) " %[insn], (%[addr])\n"
-> > +#else
-> > +             STR(LW) " %[insn], (%[addr])\n"
-> > +#endif
-> > +             "and %[tmp], %[insn], %[rvc_mask]\n"
-> > +             "beq %[tmp], %[rvc_mask], 2f\n"
-> > +             "sll %[insn], %[insn], %[xlen_minus_16]\n"
-> > +             "srl %[insn], %[insn], %[xlen_minus_16]\n"
-> > +             "j 2f\n"
-> > +             "1:\n"
-> > +             "lhu %[insn], (%[addr])\n"
-> > +             "and %[tmp], %[insn], %[rvc_mask]\n"
-> > +             "bne %[tmp], %[rvc_mask], 2f\n"
-> > +             "lhu %[tmp], 2(%[addr])\n"
-> > +             "sll %[tmp], %[tmp], 16\n"
-> > +             "add %[insn], %[insn], %[tmp]\n"
-> > +             "2:"
-> > +     : [vsstatus] "+&r" (__vsstatus), [insn] "=&r" (val),
-> > +       [tmp] "=&r" (tmp)
-> > +     : [addr] "r" (__sepc), [rvc_mask] "r" (rvc_mask),
-> > +       [xlen_minus_16] "i" (__riscv_xlen - 16));
-> > +#endif
-> > +
-> > +     csr_write(CSR_HSTATUS, __hstatus);
-> > +     csr_write(CSR_SSTATUS, __sstatus);
-> > +     csr_write(CSR_VSSTATUS, __vsstatus);
-> > +
-> > +     local_irq_restore(flags);
-> > +
-> > +     return val;
-> > +}
-> > +
+>> Trying to boot 5.3-rc2 on the HiFive I'm getting "Found incompatible
+>> CPU" for each cpu, which means that of_device_is_compatible(node,
+>> "riscv") is failing.  Any idea?
 >
-> This also needs fixups for exceptions, because the guest can race
-> against the host and modify its page tables concurrently with the
-> vmexit.  (How effective this is, of course, depends on how the TLB is
-> implemented in hardware, but you need to do the safe thing anyway).
+> Here, v5.3-rc2 boots cleanly with upstream DT data, using BBL.
+>
+> I've noticed problems in the past with some bootloader configurations when 
+> the DT data is loaded too close to the kernel.  When the kernel is 
+> uncompressed, some or all of the DT data can be overwritten, which can 
+> cause mysterious DT parsing problems.
 
-For Guest with single VCPU, we won't see any issue but we might
-get an exception for Guest with multiple VCPUs. We have added this
-in our TODO list.
+Using the latest openSBI (which moved the FDT further away) didn't help.
+A fully modular kernel isn't that big anyway.  And the fact that the
+cpus are found in the first place tells me that the FDT is intact in
+general.
 
-In this context, I have proposed to have separate CSR holding trapped
-instruction value so that we don't need to use unpriv load/store for figuring
-out trapped instruction.
+Andreas.
 
-Refer, https://github.com/riscv/riscv-isa-manual/issues/394
-
-The above Github issue and missing time delta CSR will be last
-two unaddressed Github issues from RISC-V spec perspective.
-
-Regards,
-Anup
+-- 
+Andreas Schwab, SUSE Labs, schwab@suse.de
+GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
+"And now for something completely different."
 
 _______________________________________________
 linux-riscv mailing list
