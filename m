@@ -2,79 +2,69 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 043457D818
-	for <lists+linux-riscv@lfdr.de>; Thu,  1 Aug 2019 10:56:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D8E017DF74
+	for <lists+linux-riscv@lfdr.de>; Thu,  1 Aug 2019 17:51:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8r9I/U6Lr5RW+kPy6QOm7/d7lFTteVIHChBnxDRdrUI=; b=OwpjE5xYpVFumK
-	k1NJLLNJv7GJVA7X7JBpTdpp1EReeLBB4yAtLiBkPH88lfqN7mRrhn/Ua4z01bKxGVzB1yaa+UYrr
-	vS5JTGJc+nTieV5sMyoZcsihfqqoRy+cnF9ilMAinEX/HPlM9UGXaE8NbT+cyiq0VbPLPtLMIAv84
-	NnuyAYte3MTJyn7l7c+g1MSCWjNea/NahTjaBkifi6mcFYjvh7nF8y2CLEsZxkYILcXvHu0EOD0hr
-	kh9r4bfXErIR8Cz2s6U1uDbE/eVSTwNJEErIPc82mnSkdgGtx1i+CZHo86NrElX8I4z7jy4GCodjH
-	QCcAzUOJ4vdIbXqxgOaw==;
+	List-Owner; bh=9RoIqgpZ16YlHrGg//pxKR/Mp/Ylsi+03HqoNt16tMg=; b=k73jkJSC8KLeCH
+	Mcx9KfGO2/wgdjQmbixbB4SVELrL9KaI4GUGdAQiaxDYFJZWWuGLJac1v4AJmP/ImUPnTtuCcmuRX
+	uqRP9dYEhfg3Uu5VHKbbUTvJPxPcfVG6LzhE73aFC1FoRw0cbTu6/fbv0t5P19UfdUlhubub58glC
+	yjAIfXq3n93CLYQR4P8kp7bn8ic+G7UlnvEfWyD43w5zunpIIthm0UibPlr4eDqZX/ZN2RHVp7uLc
+	cHM3EP8YOoAnvToodLrOLPpBvW6gQp1kwyElq2IUj/7cLwGRArhInVT5EIJWbpcPHkAWOdb1CtLC+
+	7gYLJY3jJFfghQC1BMwA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1ht6sv-0004Gn-HK; Thu, 01 Aug 2019 08:56:29 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1htDLz-0006jI-El; Thu, 01 Aug 2019 15:50:55 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1ht6sr-00045j-Pm
- for linux-riscv@lists.infradead.org; Thu, 01 Aug 2019 08:56:27 +0000
-Received: by mail-ed1-x541.google.com with SMTP id e3so68424196edr.10
- for <linux-riscv@lists.infradead.org>; Thu, 01 Aug 2019 01:56:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PBTnLCvDSjUrM5VA6hRLwxeWErZVATZCYstiolhIwfY=;
- b=NoLb0vr03SaJFiFBi/AvOZ0tOGsl2F71+ULfqAHJQdNz1s6+g8ouEys8/MJETlTZEN
- srka9oQ1P7WPq65ngL0VmuS1fNb5kjPDXdTqtz1GLjJMS6YGrv8HmUFKH7WkNZDzAAcx
- 0eTb6+UXViDSIC+/jTCaQe4v72rH4sd7pZy1SNaAFmftnAdoChzd8/Mj09Idt0i2cYu2
- cCYjF0UNolnQqV22RklzJJemUVinGgMLueDcFA2ZgJtgWaImKjmbkQst3rMS3KA0Q+th
- J7VvC6MqN6JDp1NFQpRDE9XMj9zktpMPZFpIdWoT6n0eymISZrqf0/Z088JDdIonV2pf
- 1B5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PBTnLCvDSjUrM5VA6hRLwxeWErZVATZCYstiolhIwfY=;
- b=Dz6JcY4ws+vyFpc2rSmVohmq8fuFY/bHqoX1/2KltjK8BoIh8PgLi3/h7mbW9C5xVy
- 0JBOZ88H3qP6UpG0zGAX/aYZNOUHQHzbeRE4qqLkIg7ctgEc990qa4jgVpuji3Kkdz8s
- QWkkJYsNXEn+P4hcFvE6NPZlbplnqTuGyoBH91Pa88bIZZ45tclfyqhBz0fN4aYi40hF
- LXuVZF9tUv6dNV6OQ6YwuVkZcLBGIoaqjs603DnlK8X3KlJbvsK18fItOxTVrA0aOZlU
- cflivCp6ITJ+9S2QdLX49z9i26Bhp7/X6RIHLpxzGJLT69juT6uSlBlng1T1MMgRNxvL
- KISg==
-X-Gm-Message-State: APjAAAWng0BqWbhSiUVvv3H0DvKPRrPPBSKsGRUmxlmpinfP3uAXviSV
- Q9jYvAzS3SdJXu7k4P+iU7Mn0U7REQ5BaIn8jLcFgEQ0
-X-Google-Smtp-Source: APXvYqySdIHX4t/XbVlFWPNMolBJN2yEroFtRV93xbfuz+4fTUGkuwwYkvNVJyZRFJG0EvIVMvbqsZIvTd3ouVg5yO4=
-X-Received: by 2002:a17:906:fc5:: with SMTP id
- c5mr56482594ejk.129.1564649783883; 
- Thu, 01 Aug 2019 01:56:23 -0700 (PDT)
+ id 1htDLv-0006ij-KQ
+ for linux-riscv@lists.infradead.org; Thu, 01 Aug 2019 15:50:53 +0000
+Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com
+ [209.85.160.175])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1E0CA2171F
+ for <linux-riscv@lists.infradead.org>; Thu,  1 Aug 2019 15:50:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1564674651;
+ bh=mo2HdMSRCqt3TFJkQl9d7X3tKGeVpM+cbgnJbsSOiBU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=NXLsozSYOIx9rgmDZGvJH1orQh3Sih5ok+LDLGRki2c9GNYyHcBujEiSfTrb4L0hE
+ Kq/zLCt7vLGKd95Jmjf+KBCOpxM7BmwGOZi5zcqTEOBKLZXpvIR9vZWaZOFuOFOAp4
+ nKbypj4GdUDLiW2dD2yPDj6ZdsQV8WJLxPGE3UsA=
+Received: by mail-qt1-f175.google.com with SMTP id y26so70723925qto.4
+ for <linux-riscv@lists.infradead.org>; Thu, 01 Aug 2019 08:50:51 -0700 (PDT)
+X-Gm-Message-State: APjAAAXIrR0aIsUgvjD/AdUzOL9ftFSK3OVVRXyQ0rEMGLLyu8nuZFgm
+ rb5Q4syqgFc/wO8bg0lusY7/5SHrbPbOYoIxug==
+X-Google-Smtp-Source: APXvYqzqIDIJzp/P5UH50rteyQO1siPBt2WuomDxMcjKRkIu8XCHmururywkdwwVKhn5raiJ1jaTSLRgDcGehkVoih0=
+X-Received: by 2002:a0c:acef:: with SMTP id n44mr94852273qvc.39.1564674650265; 
+ Thu, 01 Aug 2019 08:50:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
- <CAEUhbmUh0rJzFUoA05En9osy+Vv9AP0yOr-bs1goqk7+6SCv2g@mail.gmail.com>
- <alpine.DEB.2.21.9999.1907301218560.3486@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1907301218560.3486@viisi.sifive.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Thu, 1 Aug 2019 16:56:12 +0800
-Message-ID: <CAEUhbmU8u-Z1At+U3KMk1OnQm8+NJnFiQGhu2f=xkOHYMkrPCA@mail.gmail.com>
-Subject: Re: [PATCH] riscv: kbuild: add virtual memory system selection
-To: Paul Walmsley <paul.walmsley@sifive.com>
+References: <20190801005843.10343-1-atish.patra@wdc.com>
+ <20190801005843.10343-6-atish.patra@wdc.com>
+In-Reply-To: <20190801005843.10343-6-atish.patra@wdc.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 1 Aug 2019 09:50:37 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLqxN1+fvrdD24Ho6s7gB+pGy-0sZaL-jJqkYZ2yC4JEA@mail.gmail.com>
+Message-ID: <CAL_JsqLqxN1+fvrdD24Ho6s7gB+pGy-0sZaL-jJqkYZ2yC4JEA@mail.gmail.com>
+Subject: Re: [PATCH v3 5/5] dt-bindings: Update the riscv,
+ isa string description
+To: Atish Patra <atish.patra@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_015625_836751_9F86354E 
-X-CRM114-Status: GOOD (  20.41  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190801_085051_706892_54F309BD 
+X-CRM114-Status: GOOD (  15.49  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:541 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bmeng.cn[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -83,6 +73,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,138 +85,64 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Alexandre Ghiti <alex@ghiti.fr>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Anup Patel <anup.patel@wdc.com>, Yangtao Li <tiny.windzz@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Johan Hovold <johan@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@sifive.com>, Gary Guo <gary@garyguo.net>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ Enrico Weigelt <info@metux.net>, Thomas Gleixner <tglx@linutronix.de>,
+ Allison Randal <allison@lohutok.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Aug 1, 2019 at 3:37 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+On Wed, Jul 31, 2019 at 6:58 PM Atish Patra <atish.patra@wdc.com> wrote:
 >
-> On Sun, 28 Jul 2019, Bin Meng wrote:
+> Since the RISC-V specification states that ISA description strings are
+> case-insensitive, there's no functional difference between mixed-case,
+> upper-case, and lower-case ISA strings. Thus, to simplify parsing,
+> specify that the letters present in "riscv,isa" must be all lowercase.
 >
-> > The spec does not mention 40-bit physical addresses, but 56-bit.
->
-> Thanks, agreed.  Updated patch below
->
->
-> - Paul
->
-> From: Paul Walmsley <paul.walmsley@sifive.com>
-> Date: Fri, 26 Jul 2019 10:21:11 -0700
-> Subject: [PATCH v2] riscv: kbuild: add virtual memory system selection
->
-> The RISC-V specifications currently define three virtual memory
-> translation systems: Sv32, Sv39, and Sv48.  Sv32 is currently specific
-> to 32-bit systems; Sv39 and Sv48 are currently specific to 64-bit
-> systems.  The current kernel only supports Sv32 and Sv39, but we'd
-> like to start preparing for Sv48.  As an initial step, allow the
-> virtual memory translation system to be selected via kbuild, and stop
-> the build if an option is selected that the kernel doen't currently
-> support.
->
-> This second version of the patch fixes some errors in the Kconfig
-> description text, found by Bin Meng <bmeng.cn@gmail.com>.
->
-> This patch currently has no functional impact.
->
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Alexandre Ghiti <alex@ghiti.fr>
-> Cc: Bin Meng <bmeng.cn@gmail.com>
+> Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > ---
->  arch/riscv/Kconfig                  | 43 +++++++++++++++++++++++++++++
->  arch/riscv/include/asm/pgtable-32.h |  4 +++
->  arch/riscv/include/asm/pgtable-64.h |  4 +++
->  3 files changed, 51 insertions(+)
+>  Documentation/devicetree/bindings/riscv/cpus.yaml | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 >
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 59a4727ecd6c..f5e76e25a91e 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -155,6 +155,49 @@ config MODULE_SECTIONS
->         bool
->         select HAVE_MOD_ARCH_SPECIFIC
+> diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
+> index c899111aa5e3..4f0acb00185a 100644
+> --- a/Documentation/devicetree/bindings/riscv/cpus.yaml
+> +++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
+> @@ -46,10 +46,12 @@ properties:
+>            - rv64imafdc
+>      description:
+>        Identifies the specific RISC-V instruction set architecture
+> -      supported by the hart.  These are documented in the RISC-V
+> +      supported by the hart. These are documented in the RISC-V
+>        User-Level ISA document, available from
+>        https://riscv.org/specifications/
 >
-> +choice
-> +       prompt "Virtual Memory System"
-> +       default RISCV_VM_SV32 if 32BIT
-> +       default RISCV_VM_SV39 if 64BIT
-> +       help
-> +         The RISC-V Instruction Set Manual Volume II: Privileged
-> +         Architecture defines several different "virtual memory
-> +         systems" which specify virtual and physical address formats
-> +         and the structure of page table entries.  This determines
-> +         the amount of virtual address space present and how it is
-> +         translated into physical addresses.
+> +      Letters in the riscv,isa string must be all lowercase.
 > +
-> +       config RISCV_VM_SV32
-> +               depends on 32BIT
-> +               bool "RISC-V Sv32"
-> +               help
-> +                 The Sv32 virtual memory system is a page-based
-> +                 address and page table format for RV32 systems.
-> +                 It specifies a translation between 32-bit virtual
-> +                 addresses and 33-bit physical addresses, via a
-> +                 two-stage page table layout.
-> +       config RISCV_VM_SV39
-> +               depends on 64BIT
-> +               bool "RISC-V Sv39"
-> +               help
-> +                 The Sv39 virtual memory system is a page-based
-> +                 address and page table format for RV64 systems.
-> +                 It specifies a translation between 39-bit virtual
-> +                 addresses and 56-bit physical addresses, via a
-> +                 three-stage page table layout.
-> +       config RISCV_VM_SV48
-> +               depends on 64BIT
-> +               bool "RISC-V Sv48"
-> +               help
-> +                 The Sv48 virtual memory system is a page-based
-> +                 address and page table format for RV64 systems.
-> +                 It specifies a translation between 48-bit virtual
-> +                 addresses and 56-bit physical addresses, via a
-> +                 four-stage page table layout.
-> +
-> +endchoice
-> +
-> +
->  choice
->         prompt "Maximum Physical Memory"
->         default MAXPHYSMEM_2GB if 32BIT
-> diff --git a/arch/riscv/include/asm/pgtable-32.h b/arch/riscv/include/asm/pgtable-32.h
-> index b0ab66e5fdb1..86d41a04735b 100644
-> --- a/arch/riscv/include/asm/pgtable-32.h
-> +++ b/arch/riscv/include/asm/pgtable-32.h
-> @@ -6,6 +6,10 @@
->  #ifndef _ASM_RISCV_PGTABLE_32_H
->  #define _ASM_RISCV_PGTABLE_32_H
->
-> +#if !defined(CONFIG_RISCV_VM_SV32)
-> +#error Only Sv32 supported
-> +#endif
-> +
->  #include <asm-generic/pgtable-nopmd.h>
->  #include <linux/const.h>
->
-> diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
-> index 74630989006d..86935595115d 100644
-> --- a/arch/riscv/include/asm/pgtable-64.h
-> +++ b/arch/riscv/include/asm/pgtable-64.h
-> @@ -6,6 +6,10 @@
->  #ifndef _ASM_RISCV_PGTABLE_64_H
->  #define _ASM_RISCV_PGTABLE_64_H
->
-> +#if !defined(CONFIG_RISCV_VM_SV39)
-> +#error Only Sv39 supported for now
-> +#endif
-> +
->  #include <linux/const.h>
->
->  #define PGDIR_SHIFT     30
-> --
 
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+The schemas are case sensitive this looks pretty pointless without the
+context of the commit msg. Can you prefix with 'While the
+specification is case insensitive, "
+
+For some background, FDT generally always has been case sensitive too
+(dtc won't merge/override nodes/properties with differing case). It's
+really only some older true OF systems that were case insensitive. The
+kernel had a mixture of case sensitive and insensitive comparisons
+somewhat depending on the arch and whether of_prop_cmp/of_node_cmp or
+str*cmp functions were used. There's been a lot of clean-up and now
+most comparisons are case sensitive with only Sparc having some
+deviation.
+
+Rob
 
 _______________________________________________
 linux-riscv mailing list
