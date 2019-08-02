@@ -2,130 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B3B37E62C
-	for <lists+linux-riscv@lfdr.de>; Fri,  2 Aug 2019 01:07:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 724EA7E7B2
+	for <lists+linux-riscv@lfdr.de>; Fri,  2 Aug 2019 04:00:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4TeP0GxwZ64SRCdBGpX5h0DD+M0IaSNkGa2TEjldFfc=; b=shyd2IC0ntQ4ZY
-	cejMWu8YhoiVdi6DPqGli8x8u8ckzkro3opBGF1Eox27FfQ0lbWVZoeJdBcyv122WhjEfr4ywpGBS
-	XiGh6HUqp1HapBUrYAE6DJm1uA5GoBseRTGh2z9ILfliRs/hFyQG9d8KmzG0+q5mZbIneFVk30BeT
-	KLhVG7luou5cOn4A534rAJpBI2ozU/eDcu059FyAC4UO+KwK8Y9gjM8hIlF43dqHAqUrxXIMh6vOi
-	CBRANqaAW0YI6XesQdd3xCABPdpKzEqiVQoqn3dDvHeUbpAO5WWGa7kvgKekwxb9D48HkVtMF+mo+
-	CBR74ckUcGRQFDjDOlqw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=hyTV3TqSxShrORj4NTCIVEO9+qQI0mfiM2QODG7sQvU=; b=RmBJnLjqLbsdN6
+	7zVVdaK3BRFHaY4bvNWgpKpp5Gh4Cee2QyzahCzwOFAeSPNxiZwQ3d1J6q+pf/yXc621EONbfE60d
+	Ke4AyvNORRXaSwQonzBcSVhtDQEw8xo68e0lvUOW+wsQXrQz0Ep1p8JeP9rBAotiWZPL4c6LMypFJ
+	P0RN7u8ma2xsUPv65BRMFy6gltTCezxuoeeetJgi0GsXmjJ156IcA/oUmwF35a96dSKtXwIYBUp1g
+	CdWUL+c/niFH/vypcN/SHYYrbJ48EYkf/ic2olnA8Iwch/JfzILVV1tDTjQ1KJQoffQCq9HVl3T3O
+	iCucg3ijpD3n7MUFmq8Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htKAm-0003KV-0l; Thu, 01 Aug 2019 23:07:48 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1htMrg-0003pp-TJ; Fri, 02 Aug 2019 02:00:16 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htKAi-0003Jh-AO
- for linux-riscv@lists.infradead.org; Thu, 01 Aug 2019 23:07:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564700864; x=1596236864;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=JkDeCuNZLDQxMhX+hkEOeAeXDWX8KAfgeLMkHiH4v54=;
- b=bcRdATMZYqXQ0zIB2kARApTtCBrslEClUeXGvDNg2JHUCTBtB5HZsY0c
- I3FSVAjjbMvvEc36OUuVrd3pc3eOZ/eDn5Rrcz9YPHwKx+TQFGjkIL42S
- KGm5vVrHyJAdxtYZ15CNApyb89tMCvQlaAgr7/XH3N//qGjNrI/P6pukt
- G3rVvPmO4TdEAUxdINVMHTtTyf3tlckc82mZPe3Bluz6pcKX2m4r7Hcvr
- Om6cHqU9hjLEiVlDhBqatNA0VnaF5mjOIlmFSx+0UMiLVErkoMx8w39/A
- JaooOgl2/uGiMV8utTxEL5FkXaEGnexAUPwz1HA18wuA2Zm6ykDjHEf81 w==;
-IronPort-SDR: i37UlXkPCCzX8PMoX/hOdykA4IurLYiqp2iLRYZqbHH9i53ZQ9eCgQDjbPNvYPE1RhVwVsfaiI
- M/bE8Ohz4H093zNKz+TKdyr6mCxSbxDabFRiaSxBQkIE6Hftu9EEr3s6BvF8ieAYNZSUWn4o2l
- cW93K4yRfFW2B/wsxWv2CqLIxr7717WAw+TsMBBZpqwqp0YE3Ytx0RmhRx5ZEm6nYewIvTX+8d
- qt2ke3A83fLJGNKQ1PTd9PTTNN6IqbqPluRqbVQD8+7ZbT23YteB53Jjk3OR6CmCj6jPm0DVSs
- IzQ=
-X-IronPort-AV: E=Sophos;i="5.64,336,1559491200"; d="scan'208";a="114750636"
-Received: from mail-co1nam05lp2055.outbound.protection.outlook.com (HELO
- NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.55])
- by ob1.hgst.iphmx.com with ESMTP; 02 Aug 2019 07:07:38 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UL7FSxvw4DVddt43JXXkk8E5ZMQ3ynyGh0vXD9CelO6orbb/bK/jbGjZS16SwhzfvjmcjSGhtW6ymUfTxf9xD52GHXvLnImAXImqlOmJIpN6KxBfbAsWFynGB7cIWhPGQ0cwo1UFYtGCc9caX3gVHy2mNHdv5h2Zb8gT47BQ4j3xRF4QjIJlC0uuMLl9FcFgm0uT/vZSnrPNS1Lj50ZVljJay+Sxz+x/Ps4FLlwFlq0DJnDsSYp20milMO5IWtegZHUSx8rf6iARw30XctslXRpDnxEjkFysknAO62d3gQY6NS0zmFrpzOVP0L3v1lQr0Rj+qSMaw/8Ta7dVdkyr2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JkDeCuNZLDQxMhX+hkEOeAeXDWX8KAfgeLMkHiH4v54=;
- b=BaVyd+FXpWahj0lFfx0qnb3woMRe6AqYI3p4oUtXRgKUgGS+41cn39j2MkMyaDY5wpsfVrUKt/jzomnESWRWcX//OqBLMCjV7B5fscj+8x9G6f8NA5J9ivmBneWjfxzMpcUp1CG2A7ZwKSKP7rxKpEluBmTB2i5LIg5ZNVsQNhfAl/mn5B+P8vVb7yiZyvWhvBlxPa9jP8/WJzTTZ36f42cin/LBM4JBQzsaUTTOhWDrpn00mnsuLESy5CuKutFXR3IipIDvDsyi9fo4KJt8ofqhEnc/FBLtRm1lOl69jAcSZrzFqtOs2g2Y8vkBq63ZXxqJbKwVv3ZgRvFO+lZ24w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=wdc.com;dmarc=pass action=none header.from=wdc.com;dkim=pass
- header.d=wdc.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JkDeCuNZLDQxMhX+hkEOeAeXDWX8KAfgeLMkHiH4v54=;
- b=HXJdQK/rh3+XgdDw7Va/DHEKVJP6KqnuADIlso951Y4trIDD762MymwrbhgTtwtFik6pu8s70vl1JZJEvVllTsuDAFIIK55LOQrCV8VOFCRlWVtAyCLgtDkPu9jpPLY9GGE3cV3ZAYVuIsnAa9A1UelccPB+sWkdf+6gWWeh8XM=
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com (52.135.214.142) by
- BYAPR04MB4901.namprd04.prod.outlook.com (52.135.232.206) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2115.15; Thu, 1 Aug 2019 23:07:36 +0000
-Received: from BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::ac9a:967e:70a5:e926]) by BYAPR04MB3782.namprd04.prod.outlook.com
- ([fe80::ac9a:967e:70a5:e926%7]) with mapi id 15.20.2115.005; Thu, 1 Aug 2019
- 23:07:36 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "robh+dt@kernel.org" <robh+dt@kernel.org>
-Subject: Re: [PATCH v3 5/5] dt-bindings: Update the riscv,isa string
- description
-Thread-Topic: [PATCH v3 5/5] dt-bindings: Update the riscv,isa string
- description
-Thread-Index: AQHVSAREeMdpzzXGsU+2Z9vvOg2BbKbmcbCAgAB6FQA=
-Date: Thu, 1 Aug 2019 23:07:36 +0000
-Message-ID: <40ec671a2ef7204ad890b2ca43ec92d6981d6344.camel@wdc.com>
-References: <20190801005843.10343-1-atish.patra@wdc.com>
- <20190801005843.10343-6-atish.patra@wdc.com>
- <CAL_JsqLqxN1+fvrdD24Ho6s7gB+pGy-0sZaL-jJqkYZ2yC4JEA@mail.gmail.com>
-In-Reply-To: <CAL_JsqLqxN1+fvrdD24Ho6s7gB+pGy-0sZaL-jJqkYZ2yC4JEA@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 63615853-7c76-4652-2a7b-08d716d50acb
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB4901; 
-x-ms-traffictypediagnostic: BYAPR04MB4901:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <BYAPR04MB490134D5D79906C90306F9B0FADE0@BYAPR04MB4901.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:439;
-x-forefront-prvs: 01165471DB
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(366004)(396003)(39860400002)(346002)(376002)(136003)(189003)(199004)(81166006)(478600001)(25786009)(53546011)(66574012)(71200400001)(6506007)(6306002)(71190400001)(7736002)(6486002)(6436002)(14454004)(8676002)(81156014)(102836004)(76176011)(256004)(99286004)(316002)(26005)(8936002)(14444005)(229853002)(6512007)(6246003)(186003)(36756003)(76116006)(64756008)(66066001)(2906002)(66946007)(66476007)(305945005)(486006)(86362001)(54906003)(68736007)(11346002)(966005)(66556008)(476003)(446003)(6116002)(3846002)(53936002)(4326008)(118296001)(2616005)(5660300002)(66446008)(7416002)(142933001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4901;
- H:BYAPR04MB3782.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 5PeyMbYMGFIComLkvM2fjgkFjjR3KF28EcS9f42xTFDlCuT54x2mMtCludK9uhTRu6jgPvrSB8JIzQfnxSDzIzQsfpHofxclYU4f/Zk7xlMZ685eMUELPZi66LND8ky70RzjaCNhSmkOkb3g6TDV+NaRnwgYCR60yqo439qWtkMVnFbDtRGQqtkAX9NjatIyMhlGGwt8otldBACwXo3QYY/SyENUDjqXyFhSg4Z+QZEVoD4c3hYfH15S9UJr2Bk/nLtRh/0GZOjmVwU+sj2nwFIlOmSCn/+XKPVAKo/mbwxQcxlt4QvbfqSLBg3RZNIbVLICr54F+dUbnWW7Te+7YPNSEdfEEoltJopOlA6XGjZV3Vex95/FHGZH9vgS2uZITxHLeCmy7hvkwyOWKDq6YevZpN33WkMJJIWq5G0+QvQ=
-Content-ID: <A06B902F88D8304FB2DF845FCCEB3719@namprd04.prod.outlook.com>
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 63615853-7c76-4652-2a7b-08d716d50acb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Aug 2019 23:07:36.0686 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Atish.Patra@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4901
+ id 1htMrc-0003pB-6s
+ for linux-riscv@lists.infradead.org; Fri, 02 Aug 2019 02:00:13 +0000
+Received: by mail-pf1-x443.google.com with SMTP id q10so35109668pff.9
+ for <linux-riscv@lists.infradead.org>; Thu, 01 Aug 2019 19:00:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:subject:in-reply-to:cc:from:to:message-id;
+ bh=7GBNg6vL09GNURcleLzNmolu72mMGFPlsiWTKf2bx+s=;
+ b=cuixmb4SiMeac3rEzAATdycewFAJy/gRjA0wGDVBSDLND7vg2wFP5MGXCNFeVwbW3z
+ 8wUpIjzyK3JM9TtGK41gLUcsJngElgcVXyXqy3rZpkvYMBpxLmH8KnUslTCWuiMXmZ0n
+ PUu4dL3R1lg2vZ66lEaLKY2VrHx+B1XF7k1793vbaMhadV6kKHDltN0Gs5eillJXa/wx
+ pLe/F0GOtf9/ku29eqKC+11PQBKjvO6uJCjX9vwy/a5oSo7A75VrVway+U4aP5kzCkra
+ +D3FzbR49XK3FEC1V7wY4Ovsi97usDGXU3LexkUGBd9F6tNxo0TjtKkyhcHxM9vKDr4h
+ flSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id;
+ bh=7GBNg6vL09GNURcleLzNmolu72mMGFPlsiWTKf2bx+s=;
+ b=gVMlKS38hly2qAy7/i6jElZ+XWgxAJQM6Dv9PXk18ULnIMAIbxPaQIIOfW0qFtv8iM
+ vgTYqP5aPvpaZE6MfWgFkiCM02TXPp1icBoyOA2Rr0Wk7yFxRm5Mak6OBQqMTpjPiXVh
+ 5RYRasvvU6jyk5+W2q3YnH5roDBtsvB92TSgNvdr4x3JqkiwOyL3hWrlc0Q4B/DIBGxV
+ AxRVc5NykoXEczjWlYT1FlowjNpIL2y8E7DsKXcMHlK/5XLBVfuKC6LbuXPHdNpWudwB
+ kVoOlw/5buuWlhyRtY9DgbxKyflPEWDyf8d8rsQdQ6mq1RnSmoJpFW1b9KaC6Icq2k6x
+ EEyg==
+X-Gm-Message-State: APjAAAUsGPguIqqM6wNTwX8ZJkmt9UtUvutGD9LTdjgTaEhMKaVDv8nd
+ 5C9Wh6bpqLBoDtMvyERwGvpCdw==
+X-Google-Smtp-Source: APXvYqzVjYXxM06N8Xpjv4colv8Vr0BbqkoyEA2Q+euvqw2Trhs80pMNGNo9ZCqfpjZ0Q2lyjzMzUA==
+X-Received: by 2002:a63:ed50:: with SMTP id m16mr65421895pgk.209.1564711208035; 
+ Thu, 01 Aug 2019 19:00:08 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id h11sm74925748pfn.120.2019.08.01.19.00.06
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 01 Aug 2019 19:00:07 -0700 (PDT)
+Date: Thu, 01 Aug 2019 19:00:07 -0700 (PDT)
+X-Google-Original-Date: Thu, 01 Aug 2019 19:00:01 PDT (-0700)
+Subject: Re: Random memory corruption with v5.2
+In-Reply-To: <mvmwofw68ji.fsf@suse.de>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: schwab@suse.de
+Message-ID: <mhng-780916c8-0f2d-4487-b55c-2b1236e8778b@palmer-si-x1c4>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_160744_403402_0E7AD4E9 
-X-CRM114-Status: GOOD (  21.05  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190801_190012_310513_FDE0181E 
+X-CRM114-Status: GOOD (  19.17  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -146,87 +91,140 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "daniel.lezcano@linaro.org" <daniel.lezcano@linaro.org>,
- "tiny.windzz@gmail.com" <tiny.windzz@gmail.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "johan@kernel.org" <johan@kernel.org>, Anup Patel <Anup.Patel@wdc.com>,
- "gary@garyguo.net" <gary@garyguo.net>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>, "info@metux.net" <info@metux.net>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "allison@lohutok.net" <allison@lohutok.net>
+Cc: linux-riscv@lists.infradead.org,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ opensbi@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 2019-08-01 at 09:50 -0600, Rob Herring wrote:
-> On Wed, Jul 31, 2019 at 6:58 PM Atish Patra <atish.patra@wdc.com>
-> wrote:
-> > Since the RISC-V specification states that ISA description strings
-> > are
-> > case-insensitive, there's no functional difference between mixed-
-> > case,
-> > upper-case, and lower-case ISA strings. Thus, to simplify parsing,
-> > specify that the letters present in "riscv,isa" must be all
-> > lowercase.
-> > 
-> > Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
-> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> > ---
-> >  Documentation/devicetree/bindings/riscv/cpus.yaml | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > b/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > index c899111aa5e3..4f0acb00185a 100644
-> > --- a/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > +++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
-> > @@ -46,10 +46,12 @@ properties:
-> >            - rv64imafdc
-> >      description:
-> >        Identifies the specific RISC-V instruction set architecture
-> > -      supported by the hart.  These are documented in the RISC-V
-> > +      supported by the hart. These are documented in the RISC-V
-> >        User-Level ISA document, available from
-> >        https://riscv.org/specifications/
-> > 
-> > +      Letters in the riscv,isa string must be all lowercase.
-> > +
-> 
-> The schemas are case sensitive this looks pretty pointless without
-> the
-> context of the commit msg. Can you prefix with 'While the
-> specification is case insensitive, "
-> 
+On Thu, 01 Aug 2019 11:32:33 PDT (-0700), schwab@suse.de wrote:
+> On Jul 30 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
+>
+>> On Tue, 30 Jul 2019, Andreas Schwab wrote:
+>>
+>>> On Jul 30 2019, David Abdurachmanov <david.abdurachmanov@gmail.com> wrote:
+>>>
+>>> > On Mon, Jul 29, 2019 at 1:51 PM Andreas Schwab <schwab@suse.de> wrote:
+>>> >>
+>>> >> Since switching to 5.2 kernels I'm seeing random crashes and
+>>> >> misbehaviors on the HiFive, for example while building gcc or glibc.
+>>> >> Perhaps missing TLB flushes?
+>>> >
+>>> > Do you have some examples of crashes?
+>>>
+>>> While building glibc:
+>>>
+>>> an_ES.UTF-8...realloc(): invalid pointer
+>>> /bin/sh: line 1:  7841 Aborted                 (core dumped) I18NPATH=. GCONV_PATH=/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/iconvdata LC_ALL=C /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/elf/ld-linux-riscv64-lp64d.so.1 --library-path /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/math:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/elf:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/dlfcn:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nss:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nis:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/rt:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/resolv:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/mathvec:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/support:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nptl /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/locale/localedef $flags --alias-file=../intl/locale.alias -i locales/$input -f charmaps/$charset --prefix=/home/abuild/rpmbuild/BUILDROOT/glibc-2.29-0.riscv64
+>
+>>> make[2]: *** [Makefile:422: install-archive-an_ES.UTF-8/UTF-8] Error 134
+>>>
+>>> While building gcc:
+>>>
+>>> ../../gcc/ada/exp_aggr.adb: In function 'Exp_Aggr.Expand_N_Aggregate':
+>>> ../../gcc/ada/exp_aggr.adb:5311:21: warning: 'Csiz' may be used uninitialized in this function [-Wmaybe-uninitialized]
+>>> ../../gcc/ada/exp_aggr.adb:5220:10: note: 'Csiz' was declared here
+>>> +===========================GNAT BUG DETECTED==============================+
+>>> | 10.0.0 20190727 (experimental) [trunk revision 273844] (riscv64-suse-linux) |
+>>> | Storage_Error stack overflow or erroneous memory access                  |
+>>> | Error detected at output.ads:39:8                                        |
+>>> realloc(): invalid pointer
+>>
+>> I personally haven't seen these issues; but then again, I haven't done any
+>> glibc or gcc builds on v5.2.  Will take a closer look.
+>
+> I think there is some fundamental problem with SBI_REMOTE_SFENCE_VMA or
+> the kernel interface to it.
+>
+> For exmaple, flush_tlb_page is defined as:
+>
+> #define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, 0)
+>
+> But the third argument of flush_tlb_range is supposed to be the end
+> address, so this should actually be:
+>
+> #define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, (addr) + PAGE_SIZE)
+>
+> Alas, that doesn't fix the crashes.
 
-Sure. How about this ?
+This line of reasoning smells like it'd find the issue: BBL just flushes the
+entire TLB every time, but IIRC OpenSBI respects the ranges.  It looks like
 
-"While the above isa strings in ISA specification are case insensitive,
-letters in the riscv,isa string must be all lowercase to simplify
-parsing."
+    Fixes: 90cb4917b584 ("lib: Implement sfence.vma correctly.")
 
+is what introduced the new behavior in OpenSBI, which may have triggered a lot
+of latent bugs in Linux.  If you have an easy way to compile OpenSBI, does
+something like
 
-> For some background, FDT generally always has been case sensitive too
-> (dtc won't merge/override nodes/properties with differing case). It's
-> really only some older true OF systems that were case insensitive.
-> The
-> kernel had a mixture of case sensitive and insensitive comparisons
-> somewhat depending on the arch and whether of_prop_cmp/of_node_cmp or
-> str*cmp functions were used. There's been a lot of clean-up and now
-> most comparisons are case sensitive with only Sparc having some
-> deviation.
-> 
-> Rob
+    $ git diff | cat
+    diff --git a/lib/sbi/sbi_tlb.c b/lib/sbi/sbi_tlb.c
+    index cffda52d66ab..007266b1f970 100644
+    --- a/lib/sbi/sbi_tlb.c
+    +++ b/lib/sbi/sbi_tlb.c
+    @@ -133,50 +133,12 @@ static void sbi_tlb_flush_all(void)
+    
+     static void sbi_tlb_fifo_sfence_vma(struct sbi_tlb_info *tinfo)
+     {
+    -       unsigned long start = tinfo->start;
+    -       unsigned long size  = tinfo->size;
+    -       unsigned long i;
+    -
+    -       if ((start == 0 && size == 0) || (size == SBI_TLB_FLUSH_ALL)) {
+    -               sbi_tlb_flush_all();
+    -               return;
+    -       }
+    -
+    -       for (i = 0; i < size; i += PAGE_SIZE) {
+    -               __asm__ __volatile__("sfence.vma %0"
+    -                                    :
+    -                                    : "r"(start + i)
+    -                                    : "memory");
+    -       }
+    +       sbi_tlb_flush_all();
+     }
+    
+     static void sbi_tlb_fifo_sfence_vma_asid(struct sbi_tlb_info *tinfo)
+     {
+    -       unsigned long start = tinfo->start;
+    -       unsigned long size  = tinfo->size;
+    -       unsigned long asid  = tinfo->asid;
+    -       unsigned long i;
+    -
+    -       if (start == 0 && size == 0) {
+    -               sbi_tlb_flush_all();
+    -               return;
+    -       }
+    -
+    -       /* Flush entire MM context for a given ASID */
+    -       if (size == SBI_TLB_FLUSH_ALL) {
+    -               __asm__ __volatile__("sfence.vma x0, %0"
+    -                                    :
+    -                                    : "r"(asid)
+    -                                    : "memory");
+    -               return;
+    -       }
+    -
+    -       for (i = 0; i < size; i += PAGE_SIZE) {
+    -               __asm__ __volatile__("sfence.vma %0, %1"
+    -                                    :
+    -                                    : "r"(start + i), "r"(asid)
+    -                                    : "memory");
+    -       }
+    +       sbi_tlb_flush_all();
+     }
+    
+     void sbi_tlb_fifo_process(struct sbi_scratch *scratch, u32 event)
 
--- 
-Regards,
-Atish
+cause the issue to go away?  If so, then I'd bet we need to scour Linux for
+broken TLB flushing, as given the one you found is pretty obvious I'd bet
+there's a lot more...
+
+>
+> Andreas.
+
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
