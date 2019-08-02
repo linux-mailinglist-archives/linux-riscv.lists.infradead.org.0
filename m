@@ -2,78 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 048007E7C0
-	for <lists+linux-riscv@lfdr.de>; Fri,  2 Aug 2019 04:15:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCB6D7EAE1
+	for <lists+linux-riscv@lfdr.de>; Fri,  2 Aug 2019 06:00:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LQ636zgZVHWxVAi0eLNRhoevw94UiCysfdYbR2uySUo=; b=BxGQwaosepVnkN
-	ttPB7aOsA9K4AFfEFCb8bEwEBJ0YKYLFXzIghsRmYi3nH0qmqh1eOqRrXA77ZBm/CFeiAaRfBL5QP
-	X72oAaxXCccESedtJ09CDjMA3pW6eZgo0W6hZmnTkdlOodwe0ukTl1Z+SxCvglj6Yp9rAqj3xE9QJ
-	av2HGTlmYzhxYnjNZ4ALgm7GwE281CEbayQ76x+pLCNPJ+hkmmTGpPiACJMYyfFB2EE7Hq5FqjN8k
-	fdokTrM4HvVFW376LvIw7hqBQ3hFjxjVmOiWxzHF8ZGEsve5g8uQ94Ii5KTDDvmkYczIRlG80Qzr2
-	ujD7+SbEkmZo9RFJ+XgA==;
+	List-Owner; bh=5E5+ecHdYt4vHJP0NpQvqsWRR57i9/sspGJ6icUvFBg=; b=ACG7ptiHUiwwR6
+	HO9e1khJg1BU7OPGk/dF6BKSA3Dg7H5lUHVSZZn4avbDCRJLKny3icUgreiK7TklDgCFBNSRxMOPP
+	lw1AKDKzJNkLo1/VPdJDjVulzvCu57VrzjW/5KSNVWgFLQbTCHsas4Be6ImnVtVDFP74Uh+TsW9V6
+	jODNACS3J+K9DjKtSr0ZpghMu3cczBmG1axQ35we3SBhHP8YqkVnWYc8NZCUgK9JbROk3YcODWw89
+	kZVA3uDQWO07/m+elM9YlJyRHlBVwiKxJp40vfQKOVwPQQDszPgPLswDqtOMGrx3kLVcAz9jkDybH
+	C4K+6z5RazReVAu8pB/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htN6f-0007lb-EU; Fri, 02 Aug 2019 02:15:45 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1htOjo-0006Z9-Hu; Fri, 02 Aug 2019 04:00:16 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htN6a-0007ki-VH
- for linux-riscv@lists.infradead.org; Fri, 02 Aug 2019 02:15:42 +0000
-Received: by mail-wr1-x442.google.com with SMTP id r1so75494871wrl.7
- for <linux-riscv@lists.infradead.org>; Thu, 01 Aug 2019 19:15:40 -0700 (PDT)
+ id 1htOjl-0006Yh-8g
+ for linux-riscv@lists.infradead.org; Fri, 02 Aug 2019 04:00:14 +0000
+Received: by mail-wm1-x342.google.com with SMTP id g67so60867199wme.1
+ for <linux-riscv@lists.infradead.org>; Thu, 01 Aug 2019 21:00:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=/75YpogZ7MavM1rM5AwCI4fwCcwz0rXx/M91/3Zlk4w=;
- b=dkfm3YUWpIbKcmnDtOBnwc5tJm4Q/9z1ESvx9FnBhj68sSauXIhFEa3StTpyTQeMD9
- 5uwuhfCAgo3H9EET+EiQINbSeT98V9CZjgvlmsyEgx1m32FIQSh62sIZNANW0NWDCLSw
- 0m1aRb1HCKPASUmrTlnkC7y6ICBgTfxZFzbPsUmOt6GR7K7E/f2v9L3lilmWSQmRsl6N
- KGEMerFnfS5GF22Dtv4K28p2nww+1NyCDd2jawhylvRXc2EaRBUH+mPYyWyKrGXGerS0
- lrbOtoEXN/is0G0zUU/l6ERrg1Zr2/z7QJfruQqqGnr/QNLsoQZQZOYV+t1TgfeBzkQn
- g2Pw==
+ :cc; bh=I/Kfc6ZbOZnKoxJL7rV1rbyTQYfEjNQbR94dlPzKkok=;
+ b=RJKKjy4lH/3bgMCwOjm1J18wa06vOSJLnIfHMmvULIy2YSHW3G15WM/m7+XeVtQwTr
+ UtiihTcbvICV40K4Nt5x73lPEsV6pBUGS2RPKA5G47fKyoSSsc05AlAuvBSyjU7yAX3Z
+ UoEhsAOtv282G86OCYcLO5YN8helw4/uL1qOeUEBiTmpuinXLeVN3veX4kAGMwHIkC65
+ EKZaEk2RjAR5n1/oURiPuFkOL29Vt+pAgswdD0zpyPv3xy2fYhEiWrtIozD6TCcfhHcV
+ OMLP1cmi5mf327NBxa+CEE9sTtQnunCR/GUerMu62fmDkaROt4YIFVsA2qWBl2CNKsLY
+ 7Dvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=/75YpogZ7MavM1rM5AwCI4fwCcwz0rXx/M91/3Zlk4w=;
- b=H+LAI3ZjYfbRtNC4vweFcSe21PAvKVurs/HYkl52uNuj4xlAvwMWymxKrcZk8HjvxM
- k4veANbDhApMSi90Xr4v6saOKjGzW7FAQj9OjwpaiQwvjRLyx5I54Ys44BL/Vg4VnDie
- yi+AweUZxJ23dstsa0qI38WF0KAz9cNnP+IwQ6K8Kn3MSi+TJZm5UtfelLQpf+7lQdDY
- y4cPfNP8ev7JkVmZRbsPGGaOu57tYPFiIoybeh6Y4+8EP7az/0v4HT2l5oCYOWrjACIc
- 9Wo+FaFJ7HSd1IgCw2XfSnbjljTigUngV2/XSS2Rl1RTPKD5mp8xx1kSBH8DpNu4ar4G
- bs1Q==
-X-Gm-Message-State: APjAAAVi2Zo32FistQ258e15PV9itz4XxsgJnlmnO73jhf0R1Pgi3PNE
- 6P9E7BEDe+zAe7j2iDioJpF+VQ8m6p8k+f+dObk=
-X-Google-Smtp-Source: APXvYqyyoyWJ7ZhC7D/LbbQRKxQeIkWUHjdQzvCoUtAuJHjio2QmUYXSO9VgrmM6UkPjx0HbvLKuNAtx48Wj76rWJBc=
-X-Received: by 2002:a5d:6b11:: with SMTP id v17mr65936769wrw.323.1564712138571; 
- Thu, 01 Aug 2019 19:15:38 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=I/Kfc6ZbOZnKoxJL7rV1rbyTQYfEjNQbR94dlPzKkok=;
+ b=kn8TXLwsBErcn94WVvrnw1o4dpsL289egb49o/pfSV0X2leUmxf/YDzk5QzFgcWquR
+ JB/G94D91rAxlzf4SCSPOGR5NnXn3InfKj7SUV32EpIkulyYd8VzyuTJEkinxRyCMLp0
+ uY2yLwLS5EzPG3qBfka3jqR/pixeQxn8QWBOfve1DB1QuwnvKSAu50XpPrKvbspFRrJM
+ V8ZySiyJqHCyad51HEwMhJOI5aGdIVKA4OZbxjHT7n86CUWw4OyyhyRzluNms4MOk+VW
+ xlLLD/VcezaLJH9mep/ElnTEmQ5B70zAAk+P8OpM+8VfRCqFIkhxEpnrbk9lTjVvh3/Y
+ TSnA==
+X-Gm-Message-State: APjAAAW7YWni8x7bmrUdfoebuWkB5QOLYp7rjEwsEITVwV7D9po8sJNM
+ PqueKa5TRmR9iRbTOsulpZE90Uj1asn0KRYhU+baVQ==
+X-Google-Smtp-Source: APXvYqyGKKA06Ook1nC1Ms5baz5sFRFDqfDRQkOGCbnR8q7MWD+Cy/I3+JJpDuoiot2nNz8c8O4OOUXtH5DkcbO6xGI=
+X-Received: by 2002:a1c:cfc5:: with SMTP id f188mr1649160wmg.24.1564718409992; 
+ Thu, 01 Aug 2019 21:00:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <mvm8sshcdwc.fsf@suse.de>
- <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
- <mvm1ry8au3f.fsf@suse.de>
- <alpine.DEB.2.21.9999.1907301709510.4874@viisi.sifive.com>
- <mvmwofw68ji.fsf@suse.de>
-In-Reply-To: <mvmwofw68ji.fsf@suse.de>
+References: <20190729115544.17895-1-anup.patel@wdc.com>
+ <20190729115544.17895-6-anup.patel@wdc.com>
+ <9f9d09e5-49bc-f8e3-cfe1-bd5221e3b683@redhat.com>
+ <CAAhSdy3JZVEEnPnssALaxvCsyznF=rt=7-d5J_OgQEJv6cPhxQ@mail.gmail.com>
+ <66c4e468-7a69-31e7-778b-228908f0e737@redhat.com>
+ <CAAhSdy3b-o6y1fsYi1iQcCN=9ZuC98TLCqjHCYAzOCx+N+_89w@mail.gmail.com>
+ <828f01a9-2f11-34b6-7753-dc8fa7aa0d18@redhat.com>
+ <CAAhSdy19_dEL7e_sEFYi-hXvhVerm_cr3BdZ-TRw0aTTL-O9ZQ@mail.gmail.com>
+ <816c70e7-0ea3-1dde-510e-f1d5c6a02dd5@redhat.com>
+In-Reply-To: <816c70e7-0ea3-1dde-510e-f1d5c6a02dd5@redhat.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 2 Aug 2019 07:45:27 +0530
-Message-ID: <CAAhSdy0ZPk1So_ieahn5dVaye1WajRmwkYHhSox4FcvuOuZchw@mail.gmail.com>
-Subject: Re: Random memory corruption with v5.2
-To: Andreas Schwab <schwab@suse.de>
+Date: Fri, 2 Aug 2019 09:29:59 +0530
+Message-ID: <CAAhSdy0Er92SCPSyYj-59PAwXvZkgfWbJQwr_qQKGXp3s43xqA@mail.gmail.com>
+Subject: Re: [RFC PATCH 05/16] RISC-V: KVM: Implement VCPU interrupts and
+ requests handling
+To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_191541_149944_467218C3 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20190801_210013_368999_D47C4F2F 
+X-CRM114-Status: GOOD (  21.98  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -91,68 +95,98 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- David Abdurachmanov <david.abdurachmanov@gmail.com>,
- OpenSBI <opensbi@lists.infradead.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Aug 2, 2019 at 12:02 AM Andreas Schwab <schwab@suse.de> wrote:
+On Tue, Jul 30, 2019 at 7:38 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 >
-> On Jul 30 2019, Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> > On Tue, 30 Jul 2019, Andreas Schwab wrote:
+> On 30/07/19 15:35, Anup Patel wrote:
+> > On Tue, Jul 30, 2019 at 6:48 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+> >>
+> >> On 30/07/19 14:45, Anup Patel wrote:
+> >>> Here's some text from RISC-V spec regarding SIP CSR:
+> >>> "software interrupt-pending (SSIP) bit in the sip register. A pending
+> >>> supervisor-level software interrupt can be cleared by writing 0 to the SSIP bit
+> >>> in sip. Supervisor-level software interrupts are disabled when the SSIE bit in
+> >>> the sie register is clear."
+> >>>
+> >>> Without RISC-V hypervisor extension, the SIP is essentially a restricted
+> >>> view of MIP CSR. Also as-per above, S-mode SW can only write 0 to SSIP
+> >>> bit in SIP CSR whereas it can only be set by M-mode SW or some HW
+> >>> mechanism (such as S-mode CLINT).
+> >>
+> >> But that's not what the spec says.  It just says (just before the
+> >> sentence you quoted):
+> >>
+> >>    A supervisor-level software interrupt is triggered on the current
+> >>    hart by writing 1 to its supervisor software interrupt-pending (SSIP)
+> >>    bit in the sip register.
 > >
-> >> On Jul 30 2019, David Abdurachmanov <david.abdurachmanov@gmail.com> wrote:
-> >>
-> >> > On Mon, Jul 29, 2019 at 1:51 PM Andreas Schwab <schwab@suse.de> wrote:
-> >> >>
-> >> >> Since switching to 5.2 kernels I'm seeing random crashes and
-> >> >> misbehaviors on the HiFive, for example while building gcc or glibc.
-> >> >> Perhaps missing TLB flushes?
-> >> >
-> >> > Do you have some examples of crashes?
-> >>
-> >> While building glibc:
-> >>
-> >> an_ES.UTF-8...realloc(): invalid pointer
-> >> /bin/sh: line 1:  7841 Aborted                 (core dumped) I18NPATH=. GCONV_PATH=/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/iconvdata LC_ALL=C /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/elf/ld-linux-riscv64-lp64d.so.1 --library-path /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/math:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/elf:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/dlfcn:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nss:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nis:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/rt:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/resolv:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/mathvec:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/support:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nptl /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/locale/localedef $flags --alias-file=../intl/locale.alias -i locales/$input -f charmaps/$charset --prefix=/home/abuild/rpmbuild/BUILDROOT/glibc-2.29-0.riscv64 $locale
-> >> make[2]: *** [Makefile:422: install-archive-an_ES.UTF-8/UTF-8] Error 134
-> >>
-> >> While building gcc:
-> >>
-> >> ../../gcc/ada/exp_aggr.adb: In function 'Exp_Aggr.Expand_N_Aggregate':
-> >> ../../gcc/ada/exp_aggr.adb:5311:21: warning: 'Csiz' may be used uninitialized in this function [-Wmaybe-uninitialized]
-> >> ../../gcc/ada/exp_aggr.adb:5220:10: note: 'Csiz' was declared here
-> >> +===========================GNAT BUG DETECTED==============================+
-> >> | 10.0.0 20190727 (experimental) [trunk revision 273844] (riscv64-suse-linux) |
-> >> | Storage_Error stack overflow or erroneous memory access                  |
-> >> | Error detected at output.ads:39:8                                        |
-> >> realloc(): invalid pointer
+> > Unfortunately, this statement does not state who is allowed to write 1
+> > in SIP.SSIP bit.
+>
+> If it doesn't state who is allowed to write 1, whoever has access to sip
+> can.
+>
+> > I quoted MIP CSR documentation to highlight the fact that only M-mode
+> > SW can set SSIP bit.
 > >
-> > I personally haven't seen these issues; but then again, I haven't done any
-> > glibc or gcc builds on v5.2.  Will take a closer look.
+> > In fact, I had same understanding as you have regarding SSIP bit
+> > until we had MSIP issue in OpenSBI.
+> > (https://github.com/riscv/opensbi/issues/128)
+> >
+> >> and it's not written anywhere that S-mode SW cannot write 1.  In fact
+> >> that text is even under sip, not under mip, so IMO there's no doubt that
+> >> S-mode SW _can_ write 1, and the hypervisor must operate accordingly.
+> >
+> > Without hypervisor support, SIP CSR is nothing but a restricted view of
+> > MIP CSR thats why MIP CSR documentation applies here.
 >
-> I think there is some fundamental problem with SBI_REMOTE_SFENCE_VMA or
-> the kernel interface to it.
+> But the privileged spec says mip.MSIP is read-only, it cannot be cleared
+> (as in the above OpenSBI issue).  So mip.MSIP and sip.SSIP are already
+> different in that respect, and I don't see how the spec says that S-mode
+> SW cannot set sip.SSIP.
 >
-> For exmaple, flush_tlb_page is defined as:
+> (As an aside, why would M-mode even bother using sip and not mip to
+> write 1 to SSIP?).
 >
-> #define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, 0)
+> > I think this discussion deserves a Github issue on RISC-V ISA manual.
 >
-> But the third argument of flush_tlb_range is supposed to be the end
-> address, so this should actually be:
+> Perhaps, but I think it makes more sense this way.  The question remains
+> of why M-mode is not allowed to write to MSIP/MEIP/MTIP.  My guess is
+> that then MSIP/MEIP/MTIP are simply a read-only view of an external pin,
+> so it simplifies hardware a tiny bit by forcing acks to go through the
+> MMIO registers.
 >
-> #define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, (addr) + PAGE_SIZE)
+> > If my interpretation is incorrect then it would be really strange that
+> > HART in S-mode SW can inject IPI to itself by writing 1 to SIP.SSIP bit.
+>
+> Well, it can be useful, for example Windows does it when interrupt
+> handlers want to schedule some work to happen out of interrupt context.
+>  Going through SBI would be unpleasant if it causes an HS-mode trap.
 
-Instead of this can you try -1UL as the size:
-#define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, -1UL)
+Another way of artificially injecting interrupt would be using interrupt
+controller, where Windows can just write to some pending register of
+interrupt controller.
 
-If above works for you then there is some issue with range of virtual
-memory we flush.
+I have raised a new Github issue on GitHub for clarity on this. You can
+add your comments to this issue as well.
+https://github.com/riscv/riscv-isa-manual/issues/425
+
+Also, I have raised a proposal to support mechanism for external entity
+(such as PLICv2 with virtualization support) to inject virtual interrupts.
+https://github.com/riscv/riscv-isa-manual/issues/429
 
 Regards,
 Anup
