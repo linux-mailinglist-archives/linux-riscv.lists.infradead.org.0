@@ -2,93 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDA2280463
-	for <lists+linux-riscv@lfdr.de>; Sat,  3 Aug 2019 06:27:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F42D806BB
+	for <lists+linux-riscv@lfdr.de>; Sat,  3 Aug 2019 16:22:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fQzrvHU5sp1Gkbwy8PNbJ7YS9F5tWAYL7vrjT1b/mh8=; b=b6HHc+ryXdBFrt
-	EdMe/ZIelkrEOPzWA8T6uI8ZhiLnmg9pKODX5/zZto0SbSCeEQF5TT3V+Ci3NRHX7Xo2wUmZ5DzC4
-	kOHdkiu80IJq0KiGA72EBIyJroaii3AKgkz/w6wRdB0M/Vse8qWmJDD9lUiIbQKtBgQDqK8fzLnhm
-	810K0/3yp8tSic4fG4mD3KhplKIJd6M55JJ8b36iNdw9pmMa/57fNzHxInIk6Z0DUQYKsM4ohMj3Y
-	X7jTQCLoNLhHivd8mMPpfol4KdBjgBDstDthV1NS9hpzKcPQANY5kGipbY5Y9lfsBT2ut7Gi05F6m
-	KX+Q8eS+z7voWEUdJxmQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xvP+lJ45/6EC/fEiAjnfCer4jDRI+GC7j/GQyJv9HsQ=; b=ElUSE9cyOm2eP1
+	wcimeC5vAppoUWVS6xrkW4bNOexvuYutC93jvh68VwmJtFdWRwmv23UwQGwEs6ZHbxfFL9cRuNvUl
+	I7x15muFY3wHExdi855S6ocJunGphLmAvJ4ptVgH4NuUbGO9eZm988iLSY+qMlBdzuVilXa7vscwe
+	9/y3UgfrEQOXmeyHaQn3DyUqcgTK7IlY1LJMMA9pcXmEXwD/Y7Bio3q2X9fNXalNefSuJfkWPzjF/
+	1+S6IQ7egJWLsULDslhJkRzHy51Hox0bSB+Q7prkqB5NkktoNqQyaTwQs2vYWRTF5hKNhw2ergJq2
+	eBS28PohN+X97fXCEplw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htldt-0001qy-H0; Sat, 03 Aug 2019 04:27:41 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1htuvY-00057C-TB; Sat, 03 Aug 2019 14:22:32 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htldk-0001hP-7x
- for linux-riscv@lists.infradead.org; Sat, 03 Aug 2019 04:27:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564806452; x=1596342452;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=x5a25h+13vDU6pS3SVLBNKrcj2J81NhRyjpTNiIo8ng=;
- b=n7LMGrT6AzHz0bNJyLt9M6C1kOcTRvYFfohtb75N24jlC80mBG4raHAa
- bFbOzeJ11RAvSGGJef3TVgVOqrhyGFRazYkKMSKlEdHm/BSlMQAoPLhbT
- fNfenRLF8KVL3HrfAh3HUzcTTpAxl55GdOWw0FB2qIVlyMkHkLXHofa+X
- DBhHiqS6cCj1Mb7yfdTJVirSZcAAz1JG+EyVAfdVt1oLitkVvA+XWXV5s
- MHkhdkOAmxnQaG1Kkaj+I+3gkMlWoIVptiSu/w0AZIWkt5qzWp/pqlqFw
- EOVvHBN3f2KJnvCtQg15/vBxHvoU6ZmHLLHzkejjjdv7yzDE23iUQHHFX A==;
-IronPort-SDR: RdFo0fLdG2Rgbj9XMhEySGL+9jUY9Fw9o2bSE89w/PGw3vI5FqTkovwh3gPlt07CqzPaxeDxYK
- 1Gr76qmFUjReeSdaPMEaCbBs5KsKWSnhSb/9Lqt7NeaffBxGdQczvaQYuQMLGeLhjnS6uRMoZh
- XKFMiylLoJ5klQwREZxXAhwzsSz18VZxeEkkdBdPx0rindWtSVlw2KV+LpkL5x5Y5P0E7wVuJV
- G10csj/47CQ6EIxKOkCero0xofr6W3q5Qm4oh/V+4QRa/dlJWZXs/I6SJHGPkM7JeuzdFqrLX6
- CGQ=
-X-IronPort-AV: E=Sophos;i="5.64,340,1559491200"; d="scan'208";a="119512924"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 03 Aug 2019 12:27:25 +0800
-IronPort-SDR: 9vqWEsOZ4rgtsAomjNgU1ThQjL0Yuq83pdESd+0+K1feLctLbpAJRg5kyXkfa7sonGB63IIgND
- 9bvzFRaYWwRWs9DXTH2YvjqamB6Smk5XhJqHpr5RFQCRYc8khssFtaBty2Wx7iB51JDttXvTmT
- 08KiU73iG42Gwxf7Z2E1LFl3henBj/lf3N1n4epQpV7+LJQFY68pq7bCZLoyOtv57yVezC/hny
- bpbB0pdNJNYMFShgUoIDYMv2sjWWFIlQF29i1ojUKV5quorN+2LIxhIXO0MAPR1vxlPbEQ1iIN
- LcernKV6/XLxMCb4+4G5LGbk
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2019 21:25:20 -0700
-IronPort-SDR: 0v4e9VHYa72MRX66Fef5d0jSyMrlTHPpXWIRs86/yPfZHpcHR22X3GhlOA2OzfKa7o4apHV5GZ
- wh6i7v062Z6qNPcbSF1wz/WFVnSyWd1y/Q44BJ+ADtYivKFhIYgxm3TIsG6y+THA4P/gMiBOYu
- K+Nkh7TiXbvHW72yXTZfEJ98o1xSCZgB3eQfLAinXTS+0JcWtWvOAN3XJNO/jvaJEp6sL6In1d
- w+BHo1w2MxlqO8tJt1tfwagiT6Yq1HJLSgswIx4QTMOPB3qY7ZXiz8tzSmzG1KjjkVUImkeob8
- +3A=
-Received: from jedi-01.sdcorp.global.sandisk.com (HELO
- jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 02 Aug 2019 21:27:26 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 4/4] dt-bindings: Update the riscv,isa string description
-Date: Fri,  2 Aug 2019 21:27:23 -0700
-Message-Id: <20190803042723.7163-5-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190803042723.7163-1-atish.patra@wdc.com>
-References: <20190803042723.7163-1-atish.patra@wdc.com>
+ id 1htuvT-00056t-S7
+ for linux-riscv@lists.infradead.org; Sat, 03 Aug 2019 14:22:29 +0000
+Received: by mail-io1-xd41.google.com with SMTP id q22so38768882iog.4
+ for <linux-riscv@lists.infradead.org>; Sat, 03 Aug 2019 07:22:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=+SFySWHmm4UbfytF/hIo7gNQJRXwrgC9uVAmtCspVNk=;
+ b=MWNahO31L4f/fjhIguRqPGLj3CcevEAS+JmBUiYNJSbWsfzos/g4vEz4RU/+MWqwsW
+ 1u8aZ5Iy04L2wkDGSIyYNxs8aebr6RugGvwGQslWwp9VWiXKuQAM2ZCoa/JXRfJBlRG2
+ hIHpCc2OKt/+oyPoMHhCeP51lxrhgoYEqo4CzK3lNieSpxYrbRYXgh1X6lfrdjVBC2wK
+ awzgLSbWmkP1g3Sp5wdOWjsFtSRzAQLsY2TOCBllGzi2GfNrKZW7ytbGGQJwYFDgBvNf
+ yZYOoncN5IexND8mqdAoP66/SliWb2wKF7YGOpxVxVhwnD42Ly2d5yYRyLXUUeFNMmHH
+ PwbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=+SFySWHmm4UbfytF/hIo7gNQJRXwrgC9uVAmtCspVNk=;
+ b=YoTm3SS5JSBGk1mE5Z57H/4Li1cmU8tGgVRmcXUAvc7KR1QdMJFshqymUXJX88iVcy
+ w+2hEO8SJxdLBtFbVUN1AqTILDtA5GPjfHJCC9h21c81fxH9bNFDMtmuFD1D2EDygkiH
+ Cz1amS1jqLj1Xg19KDwMkGo+BVflKbfQ7a6EwgIKkd4JbExWb4xnrz5kFbO+i6F9qJ79
+ 6b5H7mFYoREhv7jY/FepVO/4tbXLeEN6ZsUYWC80qA7C1WuNvfSTyMPQNtdoBrUrimcQ
+ 9+QBEW9H17uXZziRn+bPdL5EadSPNLw1d4BGi2z2qqZnSAgea46j0hqHyM2zPHqCLPg8
+ PHrQ==
+X-Gm-Message-State: APjAAAVfBdHV4wDHnzwA8/KdH+SeoUIJ2eWhhKxx1HVRC6uHPCF8byRi
+ pLK9/MC0vSyVPW0HQax5a8Fzsg==
+X-Google-Smtp-Source: APXvYqyq0xQ7FCCAQais7Dvc2x+AXN/25pbNDPArr3AzFzS/SJM4W2dzNvaJgBUdHKdad/5AfUC+Tw==
+X-Received: by 2002:a02:230a:: with SMTP id u10mr63091978jau.117.1564842146406; 
+ Sat, 03 Aug 2019 07:22:26 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ v10sm74104437iob.43.2019.08.03.07.22.25
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 03 Aug 2019 07:22:25 -0700 (PDT)
+Date: Sat, 3 Aug 2019 07:22:25 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] RISC-V updates for v5.3-rc3
+Message-ID: <alpine.DEB.2.21.9999.1908030720490.3783@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190802_212732_502589_2384DC73 
-X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-CacheID: sfid-20190803_072227_940549_9ACB8ECF 
+X-CRM114-Status: UNSURE (   8.18  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,49 +95,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Alan Kao <alankao@andestech.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Anup Patel <anup.patel@wdc.com>, Johan Hovold <johan@kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Rob Herring <robh+dt@kernel.org>,
- Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Enrico Weigelt <info@metux.net>,
- Thomas Gleixner <tglx@linutronix.de>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Since the RISC-V specification states that ISA description strings are
-case-insensitive, there's no functional difference between mixed-case,
-upper-case, and lower-case ISA strings. Thus, to simplify parsing,
-specify that the letters present in "riscv,isa" must be all lowercase.
+Linus,
 
-Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- Documentation/devicetree/bindings/riscv/cpus.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+The following changes since commit 609488bc979f99f805f34e9a32c1e3b71179d10b:
 
-diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
-index c899111aa5e3..9d3fe6aada2b 100644
---- a/Documentation/devicetree/bindings/riscv/cpus.yaml
-+++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
-@@ -50,6 +50,10 @@ properties:
-       User-Level ISA document, available from
-       https://riscv.org/specifications/
- 
-+      While the isa strings in ISA specification are case
-+      insensitive, letters in the riscv,isa string must be all
-+      lowercase to simplify parsing.
-+
-   timebase-frequency:
-     type: integer
-     minimum: 1
--- 
-2.21.0
+  Linux 5.3-rc2 (2019-07-28 12:47:02 -0700)
 
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.3-rc3
+
+for you to fetch changes up to b7edabfe843805b7ab8a91396b0782042a289308:
+
+  riscv: defconfig: align RV64 defconfig to the output of "make savedefconfig" (2019-07-31 12:26:10 -0700)
+
+----------------------------------------------------------------
+RISC-V updates for v5.3-rc3
+
+Three minor RISC-V-related changes for v5.3-rc3:
+
+- Add build ID to VDSO builds to avoid a double-free in perf when
+  libelf isn't used
+
+- Align the RV64 defconfig to the output of "make savedefconfig" so
+  subsequent defconfig patches don't get out of hand
+
+- Drop a superfluous DT property from the FU540 SoC DT data (since it
+  must be already set in board data that includes it)
+
+----------------------------------------------------------------
+Mao Han (1):
+      riscv: Fix perf record without libelf support
+
+Paul Walmsley (2):
+      riscv: dts: fu540-c000: drop "timebase-frequency"
+      riscv: defconfig: align RV64 defconfig to the output of "make savedefconfig"
+
+ arch/riscv/boot/dts/sifive/fu540-c000.dtsi |  1 -
+ arch/riscv/configs/defconfig               | 10 +++++-----
+ arch/riscv/kernel/vdso/Makefile            |  2 +-
+ 3 files changed, 6 insertions(+), 7 deletions(-)
 
 _______________________________________________
 linux-riscv mailing list
