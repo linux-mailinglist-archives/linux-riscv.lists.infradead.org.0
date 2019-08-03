@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA5C680462
+	by mail.lfdr.de (Postfix) with ESMTPS id BDA2280463
 	for <lists+linux-riscv@lfdr.de>; Sat,  3 Aug 2019 06:27:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -10,68 +10,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cw7TyT5PvlbB0joS/sPw0euaiUDnEmIVllIqIFtSgQY=; b=GRPobJHIrhCDp3
-	AQnzBtVoq5rc3KuXLGx+vyZvmRoX7T5BRVcpC7ZKhLZvKbKQDujqmv2DKYmGskAoyGfyFO8CRkUPH
-	kb3rD8QQ/HQRq3kO0OszYQ8uzAZ209XEWzZYoQWZPgdguHM+yAjqU8IiDM+1CBEyKNbwznaRsMt6I
-	LudZSo5VUdfwyJU5+nPMRs4/l1Y9hzxro9veN25zyyF6d8LCp006luApby5gIy+dBzHeTJnl/jd7U
-	IBQLWm25tFGVR4JzbPokkS2H87VS6KIvRhSHn8Zhd7OdW4uropMTALY+FwUvggegTSuLYzFNZLrt2
-	cNMrXPAaNennWDoXp/fw==;
+	List-Owner; bh=fQzrvHU5sp1Gkbwy8PNbJ7YS9F5tWAYL7vrjT1b/mh8=; b=b6HHc+ryXdBFrt
+	EdMe/ZIelkrEOPzWA8T6uI8ZhiLnmg9pKODX5/zZto0SbSCeEQF5TT3V+Ci3NRHX7Xo2wUmZ5DzC4
+	kOHdkiu80IJq0KiGA72EBIyJroaii3AKgkz/w6wRdB0M/Vse8qWmJDD9lUiIbQKtBgQDqK8fzLnhm
+	810K0/3yp8tSic4fG4mD3KhplKIJd6M55JJ8b36iNdw9pmMa/57fNzHxInIk6Z0DUQYKsM4ohMj3Y
+	X7jTQCLoNLhHivd8mMPpfol4KdBjgBDstDthV1NS9hpzKcPQANY5kGipbY5Y9lfsBT2ut7Gi05F6m
+	KX+Q8eS+z7voWEUdJxmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htldq-0001mk-VY; Sat, 03 Aug 2019 04:27:38 +0000
+	id 1htldt-0001qy-H0; Sat, 03 Aug 2019 04:27:41 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htldj-0001fT-QH
+ id 1htldk-0001hP-7x
  for linux-riscv@lists.infradead.org; Sat, 03 Aug 2019 04:27:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
  t=1564806452; x=1596342452;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=+zY9hAEVm58gSXJfAJQWINzIbb639f01AsOcw7UEO4w=;
- b=MUGBtgqR8NGjDHUD733mKMsn9LEbWgCQkRvje4okC/MZ98hGL6Jr0UIk
- ndKjD3+wpNDfkhOmm+D0VPKhrZNVJmUEqmexsaXiv4s8ZFjWzNvj2bR0+
- c0hBn7wqU+Ng0Erzzqdi0aLhX57SKuOB2cfJXDCnoc92Q32yECwqZXJu4
- AIJVna+kibegYyE3HvAOhmlkNpTJanG9Gg4pazdDIJ05zwsJWcqroHzRT
- dyxe0X4uviYwBq3vJ8QiBuuabl03cFPeLKvlnSlgJEP+01Q2094d9f367
- c3FOTHQDmfOXuQJkHO05h0ezU8XrDci4IhWhenhQWw0cG5OQ5aifhTMR7 g==;
-IronPort-SDR: SBUY8ST9OdjH3J8fYFWkZQpXF2MxDkPKriiPVixEFLiOgOOoxyRqq9GWZNS3nEKcegk49DGVs5
- MxTRvIxV4+ZXAlbaSyfi3w+hq8Qbvk+FZyyJI64wJRRMz4JV4hLoXFKCv4XxmmsgS58Zcg8TmR
- 34IiReplVC/vAV+zkq9xr33noMaBm6lxULvRqenHY7GwlVMxwJmQiBeQRA++je9QmUrWm7q7bz
- RknGBsAMlWNygYWg4JKgYmMArxFgWckoiA8f8mJrmJVsx30/nBQJ5L0/tpWwNsSu2yi0JyaQjA
- uOQ=
-X-IronPort-AV: E=Sophos;i="5.64,340,1559491200"; d="scan'208";a="119512920"
+ bh=x5a25h+13vDU6pS3SVLBNKrcj2J81NhRyjpTNiIo8ng=;
+ b=n7LMGrT6AzHz0bNJyLt9M6C1kOcTRvYFfohtb75N24jlC80mBG4raHAa
+ bFbOzeJ11RAvSGGJef3TVgVOqrhyGFRazYkKMSKlEdHm/BSlMQAoPLhbT
+ fNfenRLF8KVL3HrfAh3HUzcTTpAxl55GdOWw0FB2qIVlyMkHkLXHofa+X
+ DBhHiqS6cCj1Mb7yfdTJVirSZcAAz1JG+EyVAfdVt1oLitkVvA+XWXV5s
+ MHkhdkOAmxnQaG1Kkaj+I+3gkMlWoIVptiSu/w0AZIWkt5qzWp/pqlqFw
+ EOVvHBN3f2KJnvCtQg15/vBxHvoU6ZmHLLHzkejjjdv7yzDE23iUQHHFX A==;
+IronPort-SDR: RdFo0fLdG2Rgbj9XMhEySGL+9jUY9Fw9o2bSE89w/PGw3vI5FqTkovwh3gPlt07CqzPaxeDxYK
+ 1Gr76qmFUjReeSdaPMEaCbBs5KsKWSnhSb/9Lqt7NeaffBxGdQczvaQYuQMLGeLhjnS6uRMoZh
+ XKFMiylLoJ5klQwREZxXAhwzsSz18VZxeEkkdBdPx0rindWtSVlw2KV+LpkL5x5Y5P0E7wVuJV
+ G10csj/47CQ6EIxKOkCero0xofr6W3q5Qm4oh/V+4QRa/dlJWZXs/I6SJHGPkM7JeuzdFqrLX6
+ CGQ=
+X-IronPort-AV: E=Sophos;i="5.64,340,1559491200"; d="scan'208";a="119512924"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 03 Aug 2019 12:27:24 +0800
-IronPort-SDR: owakjrzaWiRIR4OtX7q4AxfSsQ0LQYYB4OwkBOgI8Cl05SwstP70MSSbaS1bBICCkxOLuUKQ/r
- aX5e20o34ztCDKuzxr+WFDQMIQvgUbYHBrq1XnKec1UQBYQfT1oFtECn4WKG7VfdahfjZi/i5O
- q8hlGxYOYBo0C6IydpErBfAO/biH6Yi53Vq6jA30CLxLiTeehBLKZKRWCTDzfvZG2vUlKM7wGQ
- xhFAc4HBb0H4PSeHNPacwH6lTZBw9Vue9i3TLxn8OkL5nqg4XQxRSxtP6jrUGrsbSEyAYSYWg5
- MKl+hV55AqqzS41b2KL5OHVU
+ by ob1.hgst.iphmx.com with ESMTP; 03 Aug 2019 12:27:25 +0800
+IronPort-SDR: 9vqWEsOZ4rgtsAomjNgU1ThQjL0Yuq83pdESd+0+K1feLctLbpAJRg5kyXkfa7sonGB63IIgND
+ 9bvzFRaYWwRWs9DXTH2YvjqamB6Smk5XhJqHpr5RFQCRYc8khssFtaBty2Wx7iB51JDttXvTmT
+ 08KiU73iG42Gwxf7Z2E1LFl3henBj/lf3N1n4epQpV7+LJQFY68pq7bCZLoyOtv57yVezC/hny
+ bpbB0pdNJNYMFShgUoIDYMv2sjWWFIlQF29i1ojUKV5quorN+2LIxhIXO0MAPR1vxlPbEQ1iIN
+ LcernKV6/XLxMCb4+4G5LGbk
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2019 21:25:19 -0700
-IronPort-SDR: BEzUoDjKcLbUflMTZsDVbQM5dyaFux48KbdktLJp5GqtOdK5Dmd/+ONG2Nykk/p2xlQ2RaxExI
- WheLT/5rb81h3kSc84lsBtx6sy5eWTTdbpA4V9CpaYnrvgNUlyl3NKkhg3y2DlTjlE0onnvoWh
- eCDJUnJ7MErujte6/WSV4iiKXzBpeFM0eNnJ0DjGTsCdegr8OlF/V0GOYWUIE7+R9P3SKysLLg
- scNfP+FPFqz+v5DuItQkmXWFgNuvupNklyZyRTeNtRzfxel/TojI4BUri4kWrog55VuS8KPqsu
- aoQ=
+ 02 Aug 2019 21:25:20 -0700
+IronPort-SDR: 0v4e9VHYa72MRX66Fef5d0jSyMrlTHPpXWIRs86/yPfZHpcHR22X3GhlOA2OzfKa7o4apHV5GZ
+ wh6i7v062Z6qNPcbSF1wz/WFVnSyWd1y/Q44BJ+ADtYivKFhIYgxm3TIsG6y+THA4P/gMiBOYu
+ K+Nkh7TiXbvHW72yXTZfEJ98o1xSCZgB3eQfLAinXTS+0JcWtWvOAN3XJNO/jvaJEp6sL6In1d
+ w+BHo1w2MxlqO8tJt1tfwagiT6Yq1HJLSgswIx4QTMOPB3qY7ZXiz8tzSmzG1KjjkVUImkeob8
+ +3A=
 Received: from jedi-01.sdcorp.global.sandisk.com (HELO
  jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 02 Aug 2019 21:27:25 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 02 Aug 2019 21:27:26 -0700
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 3/4] RISC-V: Fix unsupported isa string info.
-Date: Fri,  2 Aug 2019 21:27:22 -0700
-Message-Id: <20190803042723.7163-4-atish.patra@wdc.com>
+Subject: [PATCH v4 4/4] dt-bindings: Update the riscv,isa string description
+Date: Fri,  2 Aug 2019 21:27:23 -0700
+Message-Id: <20190803042723.7163-5-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190803042723.7163-1-atish.patra@wdc.com>
 References: <20190803042723.7163-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190802_212732_108163_B3126C20 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20190802_212732_502589_2384DC73 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -113,121 +114,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Currently, kernel prints a info warning if any of the extensions
-from "mafdcsu" is missing in device tree. This is not entirely
-correct as Linux can boot with "f or d" extensions if kernel is
-configured accordingly. Moreover, it will continue to print the
-info string for future extensions such as hypervisor as well which
-is misleading. /proc/cpuinfo also doesn't print any other extensions
-except "mafdcsu".
+Since the RISC-V specification states that ISA description strings are
+case-insensitive, there's no functional difference between mixed-case,
+upper-case, and lower-case ISA strings. Thus, to simplify parsing,
+specify that the letters present in "riscv,isa" must be all lowercase.
 
-Make sure that info log is only printed only if kernel is configured
-to have any mandatory extensions but device tree doesn't describe it.
-All the extensions present in device tree and follow the order
-described in the RISC-V specification (except 'S') are printed via
-/proc/cpuinfo always.
-
+Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
 Signed-off-by: Atish Patra <atish.patra@wdc.com>
 ---
- arch/riscv/kernel/cpu.c | 47 ++++++++++++++++++++++++++++++++---------
- 1 file changed, 37 insertions(+), 10 deletions(-)
+ Documentation/devicetree/bindings/riscv/cpus.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/riscv/kernel/cpu.c b/arch/riscv/kernel/cpu.c
-index 7da3c6a93abd..9b1d4550fbe6 100644
---- a/arch/riscv/kernel/cpu.c
-+++ b/arch/riscv/kernel/cpu.c
-@@ -7,6 +7,7 @@
- #include <linux/seq_file.h>
- #include <linux/of.h>
- #include <asm/smp.h>
-+#include <asm/hwcap.h>
+diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
+index c899111aa5e3..9d3fe6aada2b 100644
+--- a/Documentation/devicetree/bindings/riscv/cpus.yaml
++++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
+@@ -50,6 +50,10 @@ properties:
+       User-Level ISA document, available from
+       https://riscv.org/specifications/
  
- /*
-  * Returns the hart ID of the given device tree node, or -ENODEV if the node
-@@ -46,11 +47,14 @@ int riscv_of_processor_hartid(struct device_node *node)
- 
- #ifdef CONFIG_PROC_FS
- 
--static void print_isa(struct seq_file *f, const char *orig_isa)
-+static void print_isa(struct seq_file *f, const char *orig_isa,
-+		      unsigned long cpuid)
- {
--	static const char *ext = "mafdcsu";
-+	static const char *mandatory_ext = "mafdcsu";
- 	const char *isa = orig_isa;
- 	const char *e;
-+	char unsupported_isa[26] = {0};
-+	int index = 0;
- 
- 	/*
- 	 * Linux doesn't support rv32e or rv128i, and we only support booting
-@@ -70,27 +74,50 @@ static void print_isa(struct seq_file *f, const char *orig_isa)
- 	isa += 5;
- 
- 	/*
--	 * Check the rest of the ISA string for valid extensions, printing those
--	 * we find.  RISC-V ISA strings define an order, so we only print the
-+	 * RISC-V ISA strings define an order, so we only print all the
- 	 * extension bits when they're in order. Hide the supervisor (S)
- 	 * extension from userspace as it's not accessible from there.
-+	 * Throw a warning only if any mandatory extensions are not available
-+	 * and kernel is configured to have that mandatory extensions.
- 	 */
--	for (e = ext; *e != '\0'; ++e) {
--		if (isa[0] == e[0]) {
-+	for (e = mandatory_ext; *e != '\0'; ++e) {
-+		if (isa[0] != e[0]) {
-+#if defined(CONFIG_ISA_RISCV_C)
-+			if (isa[0] == 'c')
-+				continue;
-+#endif
-+#if defined(CONFIG_FP)
-+			if ((isa[0] == 'f') || (isa[0] == 'd'))
-+				continue;
-+#endif
-+			unsupported_isa[index] = e[0];
-+			index++;
-+		}
-+		/* Only write if part of isa string */
-+		if (isa[0] != '\0') {
- 			if (isa[0] != 's')
- 				seq_write(f, isa, 1);
--
- 			isa++;
- 		}
- 	}
-+	if (isa[0] != '\0') {
-+		/* Add remainging isa strings */
-+		for (e = isa; *e != '\0'; ++e) {
-+#if !defined(CONFIG_VIRTUALIZATION)
-+			if (e[0] != 'h')
-+#endif
-+				seq_write(f, e, 1);
-+		}
-+	}
- 	seq_puts(f, "\n");
- 
- 	/*
- 	 * If we were given an unsupported ISA in the device tree then print
- 	 * a bit of info describing what went wrong.
- 	 */
--	if (isa[0] != '\0')
--		pr_info("unsupported ISA \"%s\" in device tree\n", orig_isa);
-+	if (unsupported_isa[0])
-+		pr_info("unsupported ISA extensions \"%s\" in device tree for cpu [%ld]\n",
-+			unsupported_isa, cpuid);
- }
- 
- static void print_mmu(struct seq_file *f, const char *mmu_type)
-@@ -134,7 +161,7 @@ static int c_show(struct seq_file *m, void *v)
- 	seq_printf(m, "processor\t: %lu\n", cpu_id);
- 	seq_printf(m, "hart\t\t: %lu\n", cpuid_to_hartid_map(cpu_id));
- 	if (!of_property_read_string(node, "riscv,isa", &isa))
--		print_isa(m, isa);
-+		print_isa(m, isa, cpu_id);
- 	if (!of_property_read_string(node, "mmu-type", &mmu))
- 		print_mmu(m, mmu);
- 	if (!of_property_read_string(node, "compatible", &compat)
++      While the isa strings in ISA specification are case
++      insensitive, letters in the riscv,isa string must be all
++      lowercase to simplify parsing.
++
+   timebase-frequency:
+     type: integer
+     minimum: 1
 -- 
 2.21.0
 
