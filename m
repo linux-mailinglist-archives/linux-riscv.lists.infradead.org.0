@@ -2,75 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF20F80464
+	by mail.lfdr.de (Postfix) with ESMTPS id C203F80466
 	for <lists+linux-riscv@lfdr.de>; Sat,  3 Aug 2019 06:27:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=e0UJJoZtWGTkIj4t7OAZ8OmF+wvJfoQPgQcPbDVdw30=; b=sBsy8oToBli72A
-	7kKGpZOKCvPOGAIL3BpsUaXfAlCKRrYwrHP9nxZwcWhbXF4HbJl9ZJ4zd+MpaQzFvi8plXt/IPUau
-	1yijt89JnKSdPik5RZRnrZI/IxaSuG0u8Nhb3DjBiE+xNiLK7OpCefnrVqRGrzUYSyXmTS7eXHUHj
-	KamsCpsnXQDKAdhw+lbSkPkpD3di9ny5CB6CqVd0fHsSUjKybWC4J0vU4+XrBtfaLhBNIxBkdWesm
-	2mdLDRb6+zOXFIvM+sfFyjTa58iM9Br/pLX05yqCUS2OokrNKJAZJ+v9X9SzDFCv4vaNsXC4jbHvi
-	zqPQTZwe+IrcslwO8dhQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NsfKPTfwge7jhJN091T3vnUhr559l8VME9gyZgMbzmA=; b=bgK0tWfukylZcl
+	nQ8rORb8nXB1DiCLtzYgGHTF6mFv8m88ua3HDtakgh/FUsq5TjGOr7UTK9mdXf927zCraXXsXWTwK
+	VoXnpEQ7tzsqVSGq2zz3b9c9kCUNpyMGH0tQjDKc+9UP3/iAHwNTzmSqchWM+zvMnGjh9y7uTp6fz
+	SNbAk4lIQib/v8489fCPJR5G1B/mkN5QjeGXyOlM3+7qgqoQKCUYErnrp+h21ZqQVsJtBA3NiHSSW
+	N1wCvZkrIhL8GlOpqYfKGqZ3OW0EhJploTIvfkxDAknV6uVZA/x0/kOToFzRW/xwYLvIoU4Kbb3Cr
+	j+EppLZgyPLVePtk8NiA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htldl-0001hD-0Y; Sat, 03 Aug 2019 04:27:33 +0000
+	id 1htldn-0001iN-5U; Sat, 03 Aug 2019 04:27:35 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htldg-0001fT-Gb
- for linux-riscv@lists.infradead.org; Sat, 03 Aug 2019 04:27:30 +0000
+ id 1htldi-0001fT-8k
+ for linux-riscv@lists.infradead.org; Sat, 03 Aug 2019 04:27:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1564806448; x=1596342448;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=WGA9LNHmgoVjWNUYeIrs9rW619vN81TklxixEztnNLM=;
- b=rXa9ARSRxuCi+w/hjEa49xhc9W0Hy3EM1WlQrXye6iumrZ894O3lax7A
- SFtTowY2uODa/yYla0B+D/f3/wtSwu/alcZas1Ts8SvcasIyS6uHFQ74a
- JhVkC1i9VBJdzJXaIJ7EX6cijfXrfdfFxHXvSCnNHyuninAFFLNtpAmqJ
- v83p4pSZfVwmhpjraS6dUrKRHqrQA7YwMWxs16YDpG4dRUUreoqsTGa5c
- sO+8bliMppl3Iz1HCyqgK8meGK4yVSyYIseagTm9OF+QgRFD3zHOIoDNW
- six2NjjVIVUvL10uHKStP1UciyKOVMoJl1nlMEfFQSlBbwKm4x9wLhnG3 w==;
-IronPort-SDR: evaBsyGyw/O2lTVxWLqyJIwQzC0WrYwqmNzmZN5qYMFFFBjSi4g3sF1voNAjpC5KlsHqwrfnMn
- dfz3hqqgRiJMykdR4ihcEJ140+SqjxCDfvib1HdOSirwE6Ee8T8JXwZXiM4ytGl9N2GevmDmD0
- l5yi0DCu3OTIuV9mUhd022CUrlXNccN4vkkH+r+GNjSh+CPzWgE4/WN5fN9H6LlHj9IszMD0h8
- eAKv10BLCYzNW5toGZygt47gZNbAx+ySs+EeKzHkfolfM8WfMWpvXGQr480czq4t7xq5QSIGD1
- xdA=
-X-IronPort-AV: E=Sophos;i="5.64,340,1559491200"; d="scan'208";a="119512909"
+ t=1564806450; x=1596342450;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=w14oJ81u6w2W34wdULaaio4UuiCV/eOoDOsEOvwCQng=;
+ b=PlE2sf3Onri3M0uYEpDd67Ul0A9zNGJ0j3HiJOUiKKwBmVtqk9Fe8Iga
+ UD+mz+hCGGqR9pxWYugyomFFkwc6Io3/Uir5wYCnj03CtmEvwo3LYZ12Z
+ pVKhAdacos43LdC9KcBnAyjrLQN0NvCCRBQRUzTU7OKFbi8Jf0pwolIjA
+ MiUHXbvO7kBAkfXZcJq1CIKqAliB26OAuDB1h4U36jORFtouHO1FDb8NW
+ oaz9cH0g3ITeodUymmT0lG41zb0B/GjWjqRzdDmAEX7ayEMBhFHuJ75tT
+ Jf/9z/BmFXpShZhAAobCL01avbRHJTb9NvrjDNFpyber3arpO3SeFSHrF g==;
+IronPort-SDR: 5QbQH0w0sP/h1TOfSQch/vCzR7dhp0Tey/jUtSWv7Hco1VNHSw+3Sa9EPmPJC7zv624yjLWzXG
+ UJvxym9G+c6wLVbW/dfCagcZ4DJkkc6KS815lnbvnT4xAkd62CebK3Q4i78WfmR/d1MKn0Gxxy
+ C7oQnN9wX4LPhEhJRPbYDveoVvPa7qDLtymaQPpXCMTknLWrnMYPlSMd6qhG/BdSdN6crg54WZ
+ iG6shPZIJyCyda1gJ7Wq+QBB+RuIf/l6FOX+w3qjaoiQGi7LOCVY2DDHcPV65vUjs7SEXA5uL2
+ MJM=
+X-IronPort-AV: E=Sophos;i="5.64,340,1559491200"; d="scan'208";a="119512912"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 03 Aug 2019 12:27:23 +0800
-IronPort-SDR: WxZqloPFOOHAhjN2p48JengQCz5LaA9TiqrNt+6fthhDyf+pkZ8bmIUDxCua7J9tKHlWOg1BAt
- 7v727KJH5F+nqUeDIP63ffEiLHQ6estPfNW/q7Z9XSLTjlJidxRouUXZUOGDp6pEQbN5KFbLot
- bxtz11ifWUhDnqGKC7FJ49XWlwTOQaH37Sgp2xe3Cy2K4xdTCu3K0WMG2sOAmQYy/oGIM8c9qL
- vfLh2t3DMfkEOE8MpIf6t+02iezWfc3Z2SFzSw9ZaTBP5AEeT3YHb9ziC2qTNHs68bp+sLud0F
- cooOUmIs0+vi0PrVvSGsmmMe
+ by ob1.hgst.iphmx.com with ESMTP; 03 Aug 2019 12:27:24 +0800
+IronPort-SDR: JCy8O7VsZNFsUNrj6vhWm/lUshiYakx9dbvzPfKYq63H07ro/bDWMWjO4oeL3+SpjBF1zAP7T2
+ qvmY63m5PhVskHYMkCQ+J/MpmzrOCfmGXnrOMhb9UypvPCo8syQDNTxEalC5lAzTJ1P7CdvRMK
+ XmTERXhDDPL8JECZTFmCxxRAA2CqzlMCpzjfVr0/14XLjmyzwo7oCRBqKfUER8jXHRFllg0ePX
+ kaLCL7W/WUYUPNr4Vxx4jTx6uSCOsLZwoEfcGMiT1zpeful0bahQ7GbJGbCWrLDl5oo0sc5YZh
+ UDJj3A0xrFm4xbimxMYUfWd/
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Aug 2019 21:25:18 -0700
-IronPort-SDR: QXW8xcKK5nFNUmRNgUr/m0wldyNbVndOvpTNiNeTvE0moFFjOp9Ub+Ee/L6VfiNmNggTMwmJ8r
- CAnVg8TA3d6xkLB09DKJSy1uEesSSnvhvMVmIxH4+RdqkiOB1A12LwDgeehVptgUm67QfvOSmh
- uNnwGrUbMFPuhFp7iLEIkXNCZjxNhxNYDZbefXEnjJNCSxZgt0FZrY7M/JLZle4OChfDFUyFN0
- Uso741IWCnJefG04G+bZP47adDLO8zj/3CseWcC6JAXEea+X1u485icJhcOasvBTR2/PQmBeGM
- ilw=
+ 02 Aug 2019 21:25:19 -0700
+IronPort-SDR: EV3f/F8qxlIo9igWSYgtFHn6XxX3ySMuuexxzaM4Yu0/BwkXYIf0EXQa8FJRTxMZ69F3KbJ2G5
+ CMXdctZnNrCIGAk1KMNOfxGra4Hg7xLqElkQLojhEil4USPW8gvAKAqypu3gvmQz3Owq4v4YB/
+ 9JFJqui0O20wOwyVGJEY2SX1LA2DqI7wB/rNrs49TlslpT6qzjwAoek7bgLHYSq+2sI1qTkAvM
+ l/9gSfipVdVCVkLcNjLVVHF9TGlbKqwJJO6RPYxguiovwlAnqfJt837WDOOVu3ncs62uVG0qpa
+ JbI=
 Received: from jedi-01.sdcorp.global.sandisk.com (HELO
  jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 02 Aug 2019 21:27:24 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 02 Aug 2019 21:27:25 -0700
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v4 0/4] Miscellaneous fixes 
-Date: Fri,  2 Aug 2019 21:27:19 -0700
-Message-Id: <20190803042723.7163-1-atish.patra@wdc.com>
+Subject: [PATCH v4 1/4] RISC-V: Remove per cpu clocksource
+Date: Fri,  2 Aug 2019 21:27:20 -0700
+Message-Id: <20190803042723.7163-2-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190803042723.7163-1-atish.patra@wdc.com>
+References: <20190803042723.7163-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190802_212728_667678_2CC0F699 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190802_212730_422351_13509977 
+X-CRM114-Status: GOOD (  10.65  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -112,42 +113,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch series have some unrelated fixes related
-to clocksource, dt-bindings and isa strings.
+There is only one clocksource in RISC-V. The boot cpu initializes
+that clocksource. No need to keep a percpu data structure.
 
-I combined them into series as most of them are
-prerequisite for kvm patch series.
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+---
+ drivers/clocksource/timer-riscv.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-Changes from v3->v4:
-1. Removed export module patch.
-2. Updated dt binding description.
-
-Changes from v2->v3:
-1. Updated commit text of dt binding patch.
-2. Removed couple of remaining uppercase usage.
-
-Changes from v1->v2:
-
-1. Dropped the case-insensitive support patch and added a dt-bindings
-   update patch.
-2. Added a export symbol patch.
-
-Anup Patel (1):
-RISC-V: Add riscv_isa reprensenting ISA features common across CPUs
-
-Atish Patra (3):
-RISC-V: Remove per cpu clocksource
-RISC-V: Fix unsupported isa string info.
-dt-bindings: Update the riscv,isa string description
-
-.../devicetree/bindings/riscv/cpus.yaml       |  4 ++
-arch/riscv/include/asm/hwcap.h                | 16 +++++++
-arch/riscv/kernel/cpu.c                       | 47 +++++++++++++++----
-arch/riscv/kernel/cpufeature.c                | 39 +++++++++++++--
-drivers/clocksource/timer-riscv.c             |  6 +--
-5 files changed, 95 insertions(+), 17 deletions(-)
-
---
+diff --git a/drivers/clocksource/timer-riscv.c b/drivers/clocksource/timer-riscv.c
+index 5e6038fbf115..09e031176bc6 100644
+--- a/drivers/clocksource/timer-riscv.c
++++ b/drivers/clocksource/timer-riscv.c
+@@ -55,7 +55,7 @@ static u64 riscv_sched_clock(void)
+ 	return get_cycles64();
+ }
+ 
+-static DEFINE_PER_CPU(struct clocksource, riscv_clocksource) = {
++static struct clocksource riscv_clocksource = {
+ 	.name		= "riscv_clocksource",
+ 	.rating		= 300,
+ 	.mask		= CLOCKSOURCE_MASK(64),
+@@ -92,7 +92,6 @@ void riscv_timer_interrupt(void)
+ static int __init riscv_timer_init_dt(struct device_node *n)
+ {
+ 	int cpuid, hartid, error;
+-	struct clocksource *cs;
+ 
+ 	hartid = riscv_of_processor_hartid(n);
+ 	if (hartid < 0) {
+@@ -112,8 +111,7 @@ static int __init riscv_timer_init_dt(struct device_node *n)
+ 
+ 	pr_info("%s: Registering clocksource cpuid [%d] hartid [%d]\n",
+ 	       __func__, cpuid, hartid);
+-	cs = per_cpu_ptr(&riscv_clocksource, cpuid);
+-	error = clocksource_register_hz(cs, riscv_timebase);
++	error = clocksource_register_hz(&riscv_clocksource, riscv_timebase);
+ 	if (error) {
+ 		pr_err("RISCV timer register failed [%d] for cpu = [%d]\n",
+ 		       error, cpuid);
+-- 
 2.21.0
 
 
