@@ -2,80 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E297E812C5
-	for <lists+linux-riscv@lfdr.de>; Mon,  5 Aug 2019 09:10:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08AD6812CD
+	for <lists+linux-riscv@lfdr.de>; Mon,  5 Aug 2019 09:12:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JEth7zSxhIpXmlr6KAjeudDzpJMNJFAx+9gWzscAS8s=; b=AsacKNZQDu2juT
-	acCNzXicpHW8KW5udnSEYVEIE1bEUNlRJR/dXGS27/h2mNU1nyqmm45VIForx4bzWNFFdYz3yXBAM
-	G+yocTdagzhCSQjFG4/83mun1lupUGlLqC/5CVzF8T6NAEg0TPeYWz5ey5h0xvpe/L+tvM0BAxMKy
-	bGziup821jwtPhSYSL5ItqEXs45MRj0W0YpZCdtFpFrmbE6xIfwpIncuwnebEfyS1AuHrhAQ/4ibd
-	mfcwBoH7Q1joUwHkd72pdS3NWzuH6qgTuXiMuLVmXhBPBRSp1LphjGloyu4mxhtOQvchiyjI27zuM
-	kLx5ZDYciX9RWLXxuZ0Q==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Kd601BROc7wBHUQzXV/L6OV87G7M8Rx6VmENviEzcJo=; b=SBg6kl8BrmGpo0
+	GkfNZkNj93yo6J39K+KMn3FkNo12hHZxVFEfYYfAY2lScZJTa4DJG3mJfRc/AFhVHs/Ss1DZ+lGLh
+	tAyYeA7A3RzGVytIkI4/2ncUd8hjGP6vfLFU5OyndK33w5/HLFCKS+4QEQAP9K0lNtpjkWR1JklRx
+	LV0MJL3yXwPe8LMI6maLbq0pLBkA2kdwg/CzWRCFlxP1U34PmGvzdALDdCtJawE4X1rPQS2IOR9t3
+	RUDfvu/F1AVP2ro0TUOdmgsVpwy203ZdyF4qPxVRwhgPRvVSEWrixJ8rIah8zxM8USeUO55K99ry1
+	PqIjIPbJagciSjGRHpHQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huX8j-0002mW-IT; Mon, 05 Aug 2019 07:10:41 +0000
-Received: from mail-wr1-f65.google.com ([209.85.221.65])
+	id 1huXAL-0002sU-56; Mon, 05 Aug 2019 07:12:21 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huX8d-0002mA-Lz
- for linux-riscv@lists.infradead.org; Mon, 05 Aug 2019 07:10:37 +0000
-Received: by mail-wr1-f65.google.com with SMTP id n9so83352368wru.0
- for <linux-riscv@lists.infradead.org>; Mon, 05 Aug 2019 00:10:34 -0700 (PDT)
+ id 1huXAH-0002rv-OX
+ for linux-riscv@lists.infradead.org; Mon, 05 Aug 2019 07:12:18 +0000
+Received: by mail-wm1-x342.google.com with SMTP id a15so73613826wmj.5
+ for <linux-riscv@lists.infradead.org>; Mon, 05 Aug 2019 00:12:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RbR9NwuvYbRC7roIhZ22yTnxvDklbtSaOkHnRd59pwA=;
+ b=fkloISZ+Sy0hPMWNbFKzEh/r7BhtZqP4GA9lIr/AitoV+f7H+Fa7NB134TAcewDaga
+ io6DQRB5IDIoD4C8l3IdKPdVydc3xBbfQTQKNK4pvGQOtEOV7NPS9kLb/ycbLIYQ4ixj
+ S+BY0o8SGrF7PrawJsDGnZJA1XjoraSGN7GwBv63aKNlTAXgwRHD16mxFdujm2jDq5nE
+ pnxdBIoxB7WYlD0IEyZQsOy0CB7mD1+BhBc4wxNsSVMAYDlxkDIhcx21gpviKA6DUGzT
+ DGcGMFNArITF0bDZIC0/1AZ5lXMhi51gYZ8uNmpGsK/l2c/0V6EZBuSAK5qpuKlGM5Sl
+ 4C7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ZevUiv8uwSdDDjAx9KzB+mkgl2A2MlBAMqJYEcYxJb4=;
- b=KoBW6wNNYE3nA/0SYNiQWv2J7W0SqwZuFxAxrZEtPyWu/+ukbXbBEKr9XYfrdaVs7M
- Vj1oDAhbiIvyOz+rXS1D9qHd+QEIF8D6qI0rx+IkSFScyVAmtUz20VQB0MBJIPc0B0Pu
- fEsL6CwPBqUnjj25hTRslGcp7wyUuKORpajrmiJcjKZnOr6w3zDQHgCe95SDOZgjnbcm
- HQR7qe1iKUvN56SorpV6IUUgkbiOkl5le0ziNaOGVOzDAda930f3Ce1ypJmn2TREgvGG
- a+L0/Z1I+p/p3AXC9QnabtUA5roeqnVeQp1kPWZOdsPeVNpN71b+1v3C8qmbCJu77O+l
- I4iA==
-X-Gm-Message-State: APjAAAVti06YK97umwdejMg+p5HBudfZUPyrUuyDFtVmY3Y9JnxIV4sL
- rM1TxUfoJejcnqXUqE2MZ7ouuw==
-X-Google-Smtp-Source: APXvYqz4JZD0IeqwiFL5mBQ4rS9FPy4QrJF8r1CcIFwbr3gterh7TeHwGfJ0MlgqppwBX5w6DpgFdg==
-X-Received: by 2002:a05:6000:42:: with SMTP id
- k2mr38385884wrx.80.1564989033079; 
- Mon, 05 Aug 2019 00:10:33 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:4013:e920:9388:c3ff?
- ([2001:b07:6468:f312:4013:e920:9388:c3ff])
- by smtp.gmail.com with ESMTPSA id t185sm74525739wma.11.2019.08.05.00.10.31
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 05 Aug 2019 00:10:32 -0700 (PDT)
-Subject: Re: [RFC PATCH v2 07/19] RISC-V: KVM: Implement
- KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
-To: Anup Patel <anup@brainfault.org>
-References: <20190802074620.115029-1-anup.patel@wdc.com>
- <20190802074620.115029-8-anup.patel@wdc.com>
- <03f60f3a-bb50-9210-8352-da16cca322b9@redhat.com>
- <CAAhSdy3hdWfUCUEK-idoTzgB2hKeAd3FzsHEH1DK_BTC_KGdJw@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <eb964565-10e1-bd44-c37c-774bf2f58049@redhat.com>
-Date: Mon, 5 Aug 2019 09:10:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RbR9NwuvYbRC7roIhZ22yTnxvDklbtSaOkHnRd59pwA=;
+ b=o4lClfo1XsXxg5gwbbPnq+i0kVWBqB1xjVMMRxqtjKUiRbQ9Nn7gB24bjCg1ZD48+Y
+ R+RYhwZJMlhkF+WKr53faNQhIe+gknc0N7b0nSCZFiVmroLhos4pPG7gu08WMKnvcQf4
+ R8cvhGrHGkPgckZ4xVQrFspqCSlJrItWclcqe3s1nA6XfwCWBj50SSCLnmkLPBsl9Vb1
+ fp9STYiU84R9SDCN9V0w2FCf0MWm5S+01vizKCQa2gNPeIWgp1ICaH4Im+S6e5/STfB9
+ 7JUd3Cbw6ertfpYCMnMPsblBSjmC1h6qJFJV0tYZCOxmov6yqa5KKhvlBvS0BIdEWIcD
+ fYog==
+X-Gm-Message-State: APjAAAV2DyUREY+/nQ4GD+xS89wgJ0EC7TYixrZw8UgU9gHQAMAy7ZiB
+ +WOj/6EW8FeEmM6dpR8ezmtS6fJqaf0xNGmZY8JNKg==
+X-Google-Smtp-Source: APXvYqxEZZ7R692/L4v5lwezCh25EnrYJqzhpkuE8O4sIMjCiDsF/mYrMWwoKnFFt8t13omA8PT+Bmmhx3XjiZllRlI=
+X-Received: by 2002:a1c:cfc5:: with SMTP id f188mr15608477wmg.24.1564989135533; 
+ Mon, 05 Aug 2019 00:12:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAAhSdy3hdWfUCUEK-idoTzgB2hKeAd3FzsHEH1DK_BTC_KGdJw@mail.gmail.com>
-Content-Language: en-US
+References: <20190802074620.115029-1-anup.patel@wdc.com>
+ <20190802074620.115029-11-anup.patel@wdc.com>
+ <5b966171-4d11-237d-5a43-dc881efb7d0a@redhat.com>
+In-Reply-To: <5b966171-4d11-237d-5a43-dc881efb7d0a@redhat.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Mon, 5 Aug 2019 12:42:03 +0530
+Message-ID: <CAAhSdy0BVqagYTTnaG2hwsxxM51ZZ2QpJbZtQ21v__8UaXCOWA@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 10/19] RISC-V: KVM: Handle WFI exits for VCPU
+To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190805_001035_720911_8AFA3E04 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20190805_001217_800034_7852F722 
+X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.221.65 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,69 +103,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 05/08/19 08:55, Anup Patel wrote:
-> On Fri, Aug 2, 2019 at 2:33 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
->>
->> On 02/08/19 09:47, Anup Patel wrote:
->>> +     if (reg_num == KVM_REG_RISCV_CSR_REG(sip))
->>> +             kvm_riscv_vcpu_flush_interrupts(vcpu, false);
->>
->> Not updating the vsip CSR here can cause an interrupt to be lost, if the
->> next call to kvm_riscv_vcpu_flush_interrupts finds a zero mask.
-> 
-> Thanks for catching this issue. I will address it in v3.
-> 
-> If we think more on similar lines then we also need to handle the case
-> where Guest VCPU had pending interrupts and we suddenly stopped it
-> for Guest migration. In this case, we would eventually use SET_ONE_REG
-> ioctl on destination Host which should set vsip_shadow instead of vsip so
-> that we force update HW after resuming Guest VCPU on destination host.
+On Fri, Aug 2, 2019 at 2:33 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 02/08/19 09:47, Anup Patel wrote:
+> > +             if (!kvm_riscv_vcpu_has_interrupt(vcpu)) {
+>
+> This can be kvm_arch_vcpu_runnable instead, since kvm_vcpu_block will
+> check it anyway before sleeping.
 
-I think it's simpler than that.
+I think we can skip this check here because kvm_vcpu_block() is
+checking it anyway. Agree ??
 
-vcpu->vsip_shadow is just the current value of CSR_VSIP so that you do
-not need to update it unconditionally on every vmentry.  That is,
-kvm_vcpu_arch_load should do
-
-	csr_write(CSR_VSIP, vcpu->arch.guest_csr.vsip);
-	vcpu->vsip_shadow = vcpu->arch.guest_csr.vsip;
-
-while every other write can go through kvm_riscv_update_vsip.  But
-vsip_shadow is completely disconnected from SET_ONE_REG; SET_ONE_REG can
-just write vcpu->arch.guest_csr.vsip and clear irqs_pending_mask, the
-next entry will write CSR_VSIP and vsip_shadow if needed.
-
-In fact, instead of placing it in kvm_vcpu, vsip_shadow could be a
-percpu variable; on hardware_enable you write 0 to both vsip_shadow and
-CSR_VSIP, and then kvm_arch_vcpu_load does not have to touch CSR_VSIP at
-all (only kvm_riscv_vcpu_flush_interrupts).  I think this makes the
-purpose of vsip_shadow even clearer, so I highly suggest doing that.
-
->> You could add a new field vcpu->vsip_shadow that is updated every time
->> CSR_VSIP is written (including kvm_arch_vcpu_load) with a function like
->>
->> void kvm_riscv_update_vsip(struct kvm_vcpu *vcpu)
->> {
->>         if (vcpu->vsip_shadow != vcpu->arch.guest_csr.vsip) {
->>                 csr_write(CSR_VSIP, vcpu->arch.guest_csr.vsip);
->>                 vcpu->vsip_shadow = vcpu->arch.guest_csr.vsip;
->>         }
->> }
->>
->> And just call this unconditionally from kvm_vcpu_ioctl_run.  The cost is
->> just a memory load per VS-mode entry, it should hardly be measurable.
-> 
-> I think we can do this at start of kvm_riscv_vcpu_flush_interrupts() as well.
-
-Did you mean at the end?  (That is, after modifying
-vcpu->arch.guest_csr.vsip based on mask and val).  With the above switch
-to percpu, the only write of CSR_VSIP and vsip_shadow should be in
-kvm_riscv_vcpu_flush_interrupts, which in turn is only called from
-kvm_vcpu_ioctl_run.
-
-Thanks,
-
-Paolo
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
