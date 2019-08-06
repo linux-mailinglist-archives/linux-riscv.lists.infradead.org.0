@@ -2,78 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F9E7834B7
-	for <lists+linux-riscv@lfdr.de>; Tue,  6 Aug 2019 17:08:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7644683841
+	for <lists+linux-riscv@lfdr.de>; Tue,  6 Aug 2019 19:53:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=v02+E0md/1LT+EyKvKuIeWNP8Z/JExmULrCsBhfk1Iw=; b=HAMHSJApoaPa7ugitmMp1y5Jn
-	8tILpMGpAZY8AcldVCkiipU+kPrNGWnPIZ96eoK0YbwMIMJF0QkImeLfwTcnYpB1VGB6FUM0ZePI2
-	/6szN9pQ9/vKY1oVEzwhiETj1wocExcEJ5uYcoQrOBEE0fo1rcsDB+04KksGDTgzx3zErrPtPbXit
-	dG/GtfRr0HYd5IzAJzjmFMgYFk8fYVNIdKLmHIGy5Ie4uNhu9YsAr3ivl1iFRYlhVRcGpSxFxy83r
-	FjYD0nDNNHbUgjSQcMyyx2nQ6KfHsOpflIm8HdjZ8fUpSzx14vvdLLbsyLoR+LQ7UGyolgaup42nu
-	73AbsRlfg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2dc0SHNxIldcOV3CFUS6gCqRbAV6OayBe1PjqndOEJ0=; b=j4jjIETi4VKTKs
+	xSHypQTdoVF3h4ZzHqio3jSvyTX2csspSNCwpyn1FtbPXcBokReHNumfX7tyZBtijrbcTccqyJyZA
+	/6jm7HNy0fagvooDTHvxilljEvIPfZLES/d1mE9ZN9z9pe5iP8rVgTrZ8fYnhlZIrwaJns4Kbi4ZG
+	wZa7Z4UCeyew9hXprH6t/6bk14GVDvMQMKHaklyDymjRvZqPs1a23g3RrgdXlo02BNuZL1lPTKapc
+	kRB/NU2JVIbOU1GIxGJ630E60L5xXjTRpD1uCvwwfAY9LhG981ToPxqvZBGvvFmVhSMKdiK7fqtLv
+	Yw4qD5u4xlgLu8C29P4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hv14b-0001Mh-Fg; Tue, 06 Aug 2019 15:08:25 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hv3e9-00032K-RJ; Tue, 06 Aug 2019 17:53:17 +0000
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hv14W-0001MO-Re
- for linux-riscv@lists.infradead.org; Tue, 06 Aug 2019 15:08:22 +0000
-Received: by mail-pl1-x642.google.com with SMTP id c14so37912276plo.0
- for <linux-riscv@lists.infradead.org>; Tue, 06 Aug 2019 08:08:20 -0700 (PDT)
+ id 1hv3e7-00031z-0a
+ for linux-riscv@lists.infradead.org; Tue, 06 Aug 2019 17:53:16 +0000
+Received: by mail-ot1-x341.google.com with SMTP id l15so94650675otn.9
+ for <linux-riscv@lists.infradead.org>; Tue, 06 Aug 2019 10:53:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=PpwqwIAicGqHb7e//+lXvoj8D07vNrmAz5KDhiqy1v8=;
- b=MLoies78Uvmkv/Hdd7Dn4Lv90wwTYKdDmeFKDl2Kzr8qPCFUudO1QL6Ojb5pijUq3A
- sW9NzKeXD0UluaT6AelWIreUiXLvBQXDVaoJvCcofUYqnUrMk5idC4YzIapYkr9ipUQm
- QMxYFYxlQFOTWjovCVr7i2zzBuhJsF+yMjOYPg/ZbZY5Ex7q3ARpYGF/GRp75xo+0qdt
- pMsMJMwJOCT2Hy4PXwsRSzX4nKROv86VH1TQbqWfh1ez4An5LzduTp3YIpKkG46qH4o8
- eixlYPFeK6onqQuOkscGuoXkZNtBkRNExEcfXGV2cat/+AhDc61zP8ULVapiLgbtVH2T
- KDxA==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=Vidl/iliYyM68CgUWKBvBBZXppJjyGynlsyQn0zL3dU=;
+ b=I6eRro/i9b5l7UEkPd5CFMM6sE/m4+ty7HmtFxtk4DET7OdwI+vvGL5k2jUAoHw8gM
+ SVzWxV162RQwHTegKmfEWNIR9y4OZdPVGADYduSDqf2dBmpZ/W3r4VqYxTwBXTO9LW9l
+ 39LeYAS7yqNAubFXX7L5HAhp4Q1KJP36+QmpA76eHaXYET/2YhYoD5Qy2CCnjAR3AnGs
+ TA4hG3S9eeXnVuhQ8Af1hs6E88x6afISJuHDVQaQw76ewbiPXYg52VndcpHWvk6Nw0dX
+ Gzi/nJM7Jk5cOSqq44zqG1RySglVC1DDNYXw76iqR1BlOS4xozQ0DvPSHbnHzCyhJbHr
+ 90cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=PpwqwIAicGqHb7e//+lXvoj8D07vNrmAz5KDhiqy1v8=;
- b=UigMINxotPKmRtBPXxXKROiT9C6DiSeimrVJIs1kNOFDZ6erI9xnNyJ5Eg4q4xk396
- iuUagE9qvtX9gXWSLmF6aB82DiKVw6A9ur2/q/mt25Uv2t/Qy8ik/IOIByjz82GUtkky
- H1jXmmfu7oi7sAx908cYt4QaYdaLHxftAXvWMC75OkTNUlSeM2wlU6gZUw8/rER3vRrL
- bN3rFzK+1skeU8fxpa2hSKAe5o+CoZa0Xrpydg5QP8bs/f4k5lWQTk7hEtJrvClueNIz
- 3frIhXtLVYxYTILo2kOHtxChAKH3mcjm0SrWqFUTkTCKhTqR42ilMGeqUZ5oHLgSYOKo
- T/KA==
-X-Gm-Message-State: APjAAAUENzg7QDEupMatU93AUnOC38nxkb/VPNVe8RvX0iLDzY4KndM+
- N4jOGvLVToOTpOfjAEyQVndv4w==
-X-Google-Smtp-Source: APXvYqyHC9tyAhoIzybofid7zk5n7ZGpKSeyHjL/Q61apmSCy0LT3X8wN8rk0EYLqfPHV939uAC4xA==
-X-Received: by 2002:a17:902:e30f:: with SMTP id
- cg15mr3732213plb.46.1565104099733; 
- Tue, 06 Aug 2019 08:08:19 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id q69sm24063814pjb.0.2019.08.06.08.08.18
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=Vidl/iliYyM68CgUWKBvBBZXppJjyGynlsyQn0zL3dU=;
+ b=laQqxHQzWpc0/ntHko1ZFhUg7hghQhJOMLWAvfxCeubkYZUF76JnQDAukd+Km3GHyl
+ F0Dz/YgAoE0RrUpRoCKuqGPu6xZMcauUGiazJxyK9NypplnGNVOrD8eaVPlhZS6AbTC/
+ ZwUk+rySzzWnjoN1WlYKonH0u2WrS7Ulx23c8LWs35dytaZ3RtUEfJsEwNKfS8Iwb6pg
+ hhYS7CVK+Dxg6lEo4hKbyRIf9+ZN1vOLmGXPfpD+sWxyUK+XnqRykaCsippXrunMKCks
+ 2vuCEiijQ2L0Agx7ohaiZ8cXj+hLEVv2hZ7jL+n/kGyUKMT5vTBhqWsmV63pWG5ZVOKq
+ Zvbg==
+X-Gm-Message-State: APjAAAXF2dAggrJqvxwjXcQFR/ZWb4Jq0O8d2I1qk+jvljnoYhAAtqRG
+ tOLuni05TBwLpIniZJrCZfyVVw==
+X-Google-Smtp-Source: APXvYqxii8Gup+YkcjZUXoNSg9trWA/r/DHmUTx1K1KeHy/IKb3PXSnw4Vs44XzqJoKBOYujCBkYSg==
+X-Received: by 2002:a5e:a70b:: with SMTP id b11mr39589iod.286.1565113993921;
+ Tue, 06 Aug 2019 10:53:13 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ t133sm124248306iof.21.2019.08.06.10.53.13
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 08:08:18 -0700 (PDT)
-Date: Tue, 06 Aug 2019 08:08:18 -0700 (PDT)
-X-Google-Original-Date: Tue, 06 Aug 2019 08:08:05 PDT (-0700)
+ Tue, 06 Aug 2019 10:53:13 -0700 (PDT)
+Date: Tue, 6 Aug 2019 10:53:12 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Palmer Dabbelt <palmer@sifive.com>
 Subject: Re: About __udivdi3
-In-Reply-To: <20190806083135.GA12410@infradead.org>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Christoph Hellwig <hch@infradead.org>
-Message-ID: <mhng-206638da-813f-4beb-bb68-ec2ff8fe0730@palmer-si-x1c4>
-Mime-Version: 1.0 (MHng)
+In-Reply-To: <mhng-206638da-813f-4beb-bb68-ec2ff8fe0730@palmer-si-x1c4>
+Message-ID: <alpine.DEB.2.21.9999.1908061051570.13971@viisi.sifive.com>
+References: <mhng-206638da-813f-4beb-bb68-ec2ff8fe0730@palmer-si-x1c4>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190806_080820_926634_F9754264 
-X-CRM114-Status: GOOD (  18.22  )
+X-CRM114-CacheID: sfid-20190806_105315_068824_F7A44438 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -96,105 +99,39 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: tesheng@andestech.com, dslin1010@gmail.com, alankao@andestech.com,
- rick@andestech.com, kclin@andestech.com,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- Jim Wilson <jimw@sifive.com>
+ rick@andestech.com, Christoph Hellwig <hch@infradead.org>, kclin@andestech.com,
+ linux-riscv@lists.infradead.org, Jim Wilson <jimw@sifive.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 06 Aug 2019 01:31:35 PDT (-0700), Christoph Hellwig wrote:
-> On Mon, Aug 05, 2019 at 08:01:27PM -0700, Jim Wilson wrote:
->> On Mon, Aug 5, 2019 at 7:13 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->> > > > It seems __udivdi3 only supports 64-bit platform.
->> > > > Do you have any comments? Thanks.
->> >
->> > It sounds like you're describing a potential issue with gcc, rather than
->> > the kernel.  If that's so, then the gcc mailing list(s) would be a better
->> > place to discuss this:  https://gcc.gnu.org/lists.html
->>
->> The kernel doesn't link with libgcc.a.  It has its own copy of udivdi3
->> when needed.
->
-> Linus still maintains his stance to not support 64 by 64-bit divisions
-> on 32-bit platforms, and thus Linux does not support it.  You can do
-> 64 by 32-bit divisions using the awkward do_div macros, but that's it.
->
-> This is supposed to apply to all 32-bit platforms, not just RISC-V.
+(privately)
 
-Yep.  I think the best bet is to just drop it, with something like this:
+On Tue, 6 Aug 2019, Palmer Dabbelt wrote:
 
-    commit f7f2185e0e3e60a8b77fb519a98b752242ade235
-    gpg: Signature made Tue 06 Aug 2019 08:06:30 AM PDT
-    gpg:                using RSA key 00CE76D1834960DFCE886DF8EF4CA1502CCBAB41
-    gpg:                issuer "palmer@dabbelt.com"
-    gpg: Good signature from "Palmer Dabbelt <palmer@dabbelt.com>" [ultimate]
-    gpg:                 aka "Palmer Dabbelt <palmer@sifive.com>" [ultimate]
-    Author: Palmer Dabbelt <palmer@sifive.com>
-    Date:   Tue Aug 6 08:03:59 2019 -0700
-    
-        RISC-V: Remove udivdi3
-    
-        This should never have landed in the first place: it was added as part
-        of 64-bit divide support for 32-bit systems, but the kernel doesn't
-        allow this sort of division.  I must have forgotten to remove it.
-    
-        This patch removes the support.  Since this routine only worked on
-        64-bit platforms but was only built on 32-bit platforms, it's
-        essentially just nonsense anyway.
-    
-        Signed-off-by: Palmer Dabbelt <palmer@sifive.com>
-    
-    diff --git a/arch/riscv/lib/Makefile b/arch/riscv/lib/Makefile
-    index 8e364ebf37de..267feaa10f6a 100644
-    --- a/arch/riscv/lib/Makefile
-    +++ b/arch/riscv/lib/Makefile
-    @@ -5,5 +5,3 @@ lib-y	+= memset.o
-     lib-y	+= uaccess.o
-    
-     lib-$(CONFIG_64BIT) += tishift.o
-    -
-    -lib-$(CONFIG_32BIT) += udivdi3.o
-    diff --git a/arch/riscv/lib/udivdi3.S b/arch/riscv/lib/udivdi3.S
-    deleted file mode 100644
-    index 3f07476a91a9..000000000000
-    --- a/arch/riscv/lib/udivdi3.S
-    +++ /dev/null
-    @@ -1,32 +0,0 @@
-    -/* SPDX-License-Identifier: GPL-2.0-only */
-    -/*
-    - * Copyright (C) 2016-2017 Free Software Foundation, Inc.
-    - */
-    -
-    -#include <linux/linkage.h>
-    -
-    -ENTRY(__udivdi3)
-    -	mv	a2, a1
-    -	mv	a1, a0
-    -	li	a0, -1
-    -	beqz	a2, .L5
-    -	li	a3, 1
-    -	bgeu	a2, a1, .L2
-    -.L1:
-    -	blez	a2, .L2
-    -	slli	a2, a2, 1
-    -	slli	a3, a3, 1
-    -	bgtu	a1, a2, .L1
-    -.L2:
-    -	li	a0, 0
-    -.L3:
-    -	bltu	a1, a2, .L4
-    -	sub	a1, a1, a2
-    -	or	a0, a0, a3
-    -.L4:
-    -	srli	a3, a3, 1
-    -	srli	a2, a2, 1
-    -	bnez	a3, .L3
-    -.L5:
-    -	ret
-    -ENDPROC(__udivdi3)
-    
+> Yep.  I think the best bet is to just drop it, with something like this:
+> 
+>    commit f7f2185e0e3e60a8b77fb519a98b752242ade235
+>    gpg: Signature made Tue 06 Aug 2019 08:06:30 AM PDT
+>    gpg:                using RSA key 00CE76D1834960DFCE886DF8EF4CA1502CCBAB41
+>    gpg:                issuer "palmer@dabbelt.com"
+>    gpg: Good signature from "Palmer Dabbelt <palmer@dabbelt.com>" [ultimate]
+>    gpg:                 aka "Palmer Dabbelt <palmer@sifive.com>" [ultimate]
+>    Author: Palmer Dabbelt <palmer@sifive.com>
+>    Date:   Tue Aug 6 08:03:59 2019 -0700
+>           RISC-V: Remove udivdi3
+>           This should never have landed in the first place: it was added as
+> part
+>        of 64-bit divide support for 32-bit systems, but the kernel doesn't
+>        allow this sort of division.  I must have forgotten to remove it.
+
+Just FYI, you probably already know this, but this patch was mangled on 
+the list.  I'll reformat it and queue it up, but figured you probably 
+would want to know if you didn't already.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
