@@ -2,30 +2,30 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D15DE82BE0
-	for <lists+linux-riscv@lfdr.de>; Tue,  6 Aug 2019 08:41:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF95682D0A
+	for <lists+linux-riscv@lfdr.de>; Tue,  6 Aug 2019 09:44:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
 	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LSVo+l2wqNaLP0SXGJChYYW1J1d4Z8cnl2RoZEDmyN4=; b=QpfJSvJ3jRx1C5
-	aHHdvS2Thfng4eRn/X4vzDjUNf6NA9ZFO1uzWnqNXP+XmFYQwZaNjCl6pWTd4V3qi1ujCq4DF3Hdl
-	xPkm1Wl9D8N2Y54qGYPaurX3au8vSCp5a+7zqQbpq09tSft1t9jfbhF9gNg4KtLj2DAddAkxnRgFU
-	f9NoLcBsTS1ozGa2QKeD05/p4GAcDIJo2iShIL5gPlj8u86K4E/JRvuAQ8bdZypZTA/OnREBTwROY
-	jj0+NkAH8nQb71QUCy5KdaY+zW50mNewnTnxchjL6bkVCx76r2zYgL6IWosxOLLc94NC7Uwt91XAH
-	6p2Bcwh07dxtNSA/BtbQ==;
+	List-Owner; bh=Vx96n8+Y78J2BJ/AeG4D/Wk6tUYtTBrg1kNaEE2n6ko=; b=Adc4dDn28kVlWm
+	6JJWGvFkVNB/co69XP1nHIIhqjUg+HZUuVKPSq84tCMEu1o1kpujUFj9ceM5063zuUX5kFMeX/eLc
+	A0wRBfGzGEHVjRmcy+yVJKpUSW4e41Zd4j5MuBvqlaOSUIdrbXD+v0IAg11LeOYeeG804sbBnc7lV
+	XT/LiC+Mv/HkgzokmgT6KGtLvIAn/06JwBBK8C9ehkgka9prPWDiFh/7R504UDXdmJ3HuLGisQIMS
+	wUuzFlTkLUpIiUHSrQXYfhmPg7HxkDqojxvtS8ZIPZfAdZdSePhWc3GSRtBmCOY0FAyxkc0K/rNvD
+	15uGgvk0SIzCwywGpOOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hutAJ-0000At-Ox; Tue, 06 Aug 2019 06:41:47 +0000
+	id 1huu8f-0002pB-Lq; Tue, 06 Aug 2019 07:44:09 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hutA7-0008PF-HG; Tue, 06 Aug 2019 06:41:37 +0000
+ id 1huu8R-0002g1-7T; Tue, 06 Aug 2019 07:43:56 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 2564EB0B6;
- Tue,  6 Aug 2019 06:41:34 +0000 (UTC)
+ by mx1.suse.de (Postfix) with ESMTP id CCD65ACB7;
+ Tue,  6 Aug 2019 07:43:51 +0000 (UTC)
 From: Andreas Schwab <schwab@suse.de>
 To: Atish Patra <Atish.Patra@wdc.com>
 Subject: Re: Random memory corruption with v5.2
@@ -37,19 +37,16 @@ References: <mvm8sshcdwc.fsf@suse.de>
  <CAAhSdy0ZPk1So_ieahn5dVaye1WajRmwkYHhSox4FcvuOuZchw@mail.gmail.com>
  <mvmmugn4sd4.fsf@suse.de> <mvmimrb4r5q.fsf@suse.de>
  <45823bccd515273e08bd2e0c634b0b207e60db9c.camel@wdc.com>
-X-Yow: Don't worry, nobody really LISTENS to lectures in MOSCOW, either!
- ..  FRENCH, HISTORY, ADVANCED CALCULUS, COMPUTER PROGRAMMING,
- BLACK STUDIES, SOCIOBIOLOGY!..  Are there any QUESTIONS??
-Date: Tue, 06 Aug 2019 08:41:33 +0200
+X-Yow: Civilization is fun!  Anyway, it keeps me busy!!
+Date: Tue, 06 Aug 2019 09:43:51 +0200
 In-Reply-To: <45823bccd515273e08bd2e0c634b0b207e60db9c.camel@wdc.com> (Atish
  Patra's message of "Mon, 5 Aug 2019 22:34:53 +0000")
-Message-ID: <mvm1rxy4wyq.fsf@suse.de>
+Message-ID: <mvmsgqe3fig.fsf@suse.de>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2.90 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190805_234135_789803_F87F883F 
-X-CRM114-Status: UNSURE (   6.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190806_004355_463654_2DDC808C 
+X-CRM114-Status: GOOD (  13.91  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -82,10 +79,45 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Aug 05 2019, Atish Patra <Atish.Patra@wdc.com> wrote:
 
-> It takes more than hour to finish the full install-locales on unleashe
-> board which makes it bit difficult to try out possible fixes.
+> On Mon, 2019-08-05 at 16:34 +0200, Andreas Schwab wrote:
+>> But this does help:
+>> 
+>> --- a/arch/riscv/include/asm/tlbflush.h
+>> +++ b/arch/riscv/include/asm/tlbflush.h
+>> @@ -49,7 +49,7 @@ static inline void remote_sfence_vma(struct cpumask
+>> *cmask, unsigned long start,
+>>  
+>>  	cpumask_clear(&hmask);
+>>  	riscv_cpuid_to_hartid_mask(cmask, &hmask);
+>> -	sbi_remote_sfence_vma(hmask.bits, start, size);
+>> +	sbi_remote_sfence_vma(hmask.bits, 0, -1);
+>>  }
+>>  
+>>  #define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
+>> 
+>
+> I am also able to reprduce the issue while doing a install-locales.
+> Here is the temporary fix that seems to solve the issue.
+>
+> diff --git a/arch/riscv/include/asm/tlbflush.h
+> b/arch/riscv/include/asm/tlbflush.h
+> index 687dd19735a7..29b2bd7c9923 100644
+> --- a/arch/riscv/include/asm/tlbflush.h
+> +++ b/arch/riscv/include/asm/tlbflush.h
+> @@ -55,7 +55,7 @@ static inline void remote_sfence_vma(struct cpumask
+> *cmask, unsigned long start,
+>  #define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
+>  #define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, 0)
+>  #define flush_tlb_range(vma, start, end) \
+> -       remote_sfence_vma(mm_cpumask((vma)->vm_mm), start, (end) -
+> (start))
+> +       remote_sfence_vma(mm_cpumask((vma)->vm_mm), 0, -1)
+>  #define flush_tlb_mm(mm) \
+>         remote_sfence_vma(mm_cpumask(mm), 0, -1)
+>
+> Can you please verify at your end?
 
-When it fails it usually fails pretty fast.  Did you run it in parallel?
+This is equivalent to my patch since all other uses already pass 0,-1.
 
 Andreas.
 
