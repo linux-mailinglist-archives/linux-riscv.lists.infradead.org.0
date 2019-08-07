@@ -2,77 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B43CF850F1
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 18:20:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 887008513E
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 18:42:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=aoIlUJfvhvhSKYb6+CbU/AsbIqROD/yReO6KU/JQGmM=; b=PKK6GgzU8CtwdMjoV4PyDV/A3
-	Y2UZfI7v6vIOJdAFUnaGJ3Qq6ciGUEc3745tWMy79k2X1mWMt+GFavy9y6G3fUPyej6QXbaeC4jgT
-	8XScmWObvVN59pDVnHbLo7tLzH+kTF48KpawaBQNaYY9lGbv9scloTfPsD/7EoK8uBq/slKnYZf/r
-	WbockZdwrmMum1y0PzKKj7xgLWo1GaQuoHetjAkV9oFC8uJSdIQ2xaCd3UOMYclzs1uv/O1lpj4OX
-	dL2GZVIUsjBndd6+8MvXBbm2pBZId5BBLAjT1URzfLc+bmv8IebESurCf9NV24FJWAaa8SBO/S2YW
-	IpEwHz9oQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LVcoqW8+pc6YPEW/PsWnJNP+KOjk+xg8CuSrecvELRw=; b=iTAjAbq8ymaVWE
+	y1q3lD5rq0zZ0e/iR7M/bDjx0E0R3+CdAlE09XZNn9FbaafZdDrcVw0w8DHTPVuOFDEnCIAaZ/7MN
+	TwfEf3sQ0MOPfbZme21DwwO0Xd24rsX5XadWHr1qIDMBPbrsCzwCY7TLU52Mgo73RsuH/+QM5nb5a
+	VzRDfZrRwGOh/mcNhD0wQ6Kkw04OfmxjGoDj5SjeoqeaYTI4fSjgEEMF957GAImaWWzamIgmPDeDk
+	qWjfOkSUTOYbkRUNhLhNueClSU1+1KnNLqDK6xM60esDi7LwEdyD0gouAqLozx+Xw2NhYBGRuHeN1
+	iMKWLqfevktbTOH+xBbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvOfo-00062B-Pv; Wed, 07 Aug 2019 16:20:24 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1hvP1N-0005ez-9R; Wed, 07 Aug 2019 16:42:41 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvOfj-0005y9-4B
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 16:20:20 +0000
-Received: by mail-pl1-x643.google.com with SMTP id m9so41393487pls.8
- for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 09:20:18 -0700 (PDT)
+ id 1hvP1B-0005Tm-6P
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 16:42:30 +0000
+Received: by mail-ot1-x343.google.com with SMTP id l15so49626021oth.7
+ for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 09:42:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=zdXpc4sHpuyR/XCLCaxASYs6IQPhe894MvifJxuUKDY=;
- b=bpH/06BnzUA9+ZqA6qzS/B4qU+dimFzNTr0RlRGc0Fq5Yjf8acu9/+WDDP8WEknq/1
- 7d8FDcvJxbWPzS9GkQJxNtL9hZGohCKzlYwAZ6PABsqGCJtOsIhkzzEjx8IqVoSBMj1s
- Iq7b1szOAHm4fqKd/MQBGj0vymGMzBQwYJECL66NjsHIo2sutCc+yeYAcyR7OOCzVaPR
- BW20IA1YX/K/ZokGqK+Y2AF6L8fpj4PyQBsNa1OoNEpKDi0E/cOV+/BhZ+i2LSbp9xd4
- RhfXZ/ZAKiwJBUaj1ZHqRGyiwXS+6YfGLioEg1fgRAypDF5N2KAMILLu8zDMiKoKfWnC
- 7w8g==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=OgPFf4sieXg6FSqMl/7z/egdCX4CBj1LSh4wy9vZMd0=;
+ b=JmLeqOSpk6X4jyeXqVA19M/C3q/EQo3ixua/k4pXgGjJwizYMK6DOHHGeTu2QRx/pi
+ Ro6gORNTivgGAzBqKHMOi6pxTU6w9aBJvqX9Fb5Gld/zqQwBjnBNtdJLJLnJ52YmH3h7
+ 3iMK1Jc5RYXTOjx4i6Sio2583eBQKPfXxxjPxdrEvbSa/sHg4qqiDQOHPqcz1oP0BYmg
+ FE3H1oEzL/VB6Aw0e6BRldwbFwDDMlhOYKZfdZhp3xQkRsxDQesVNcoAM4MsHJo6QJvo
+ CCQOw2mSAvxoEsAG0/vXJqzqrT6cEzp/+RPkNaviB0duB+yaeTDzaoLHoInsr3WUDZnR
+ dmyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=zdXpc4sHpuyR/XCLCaxASYs6IQPhe894MvifJxuUKDY=;
- b=PIEopPG2mRYiXpCvxollvjS0zwUoMWYwDHhxnDOxKlpAK7uFk5PGARnPW0hA3ch6Rm
- EWpEgWcwjmIcaLN6P4IhyZnhOBUFy13tiuvm/5pE2xh1UahsqEwDtufrDAlTXNue5g5i
- Ljog4jE6P6a48Q6eVHD1xts0gqFz90/klwuqnEeNEAFuKeYQF3EhjNfON73yhmS33ekv
- /l319+No3FzJN/g6gX5GHfBW/0gN61z8V/fRezYJjPWyyTYnDGCqCyCFFcx3SGDr65Jh
- 7WBtFMBhHG18zPqzA9M7CSkmNT5JfziiDO0xrPRTlq++HN+4MS59a7lxpiwUJkTR5G/F
- uhkw==
-X-Gm-Message-State: APjAAAWGunXHf/ERGfaxsYUbdOaGqgmYg027QPnlUfWn+j3K0eySJjuL
- rDXmUvupInAN2OwP0yBYTw0c2w==
-X-Google-Smtp-Source: APXvYqyw1rQHbTCAjQdygvE0aT61eyJ0znZpiutYEO6zwfEI6liF+OCkSgzHqrTYT1bXmMChnjd6Kw==
-X-Received: by 2002:a62:f202:: with SMTP id m2mr10528831pfh.6.1565194818021;
- Wed, 07 Aug 2019 09:20:18 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id g66sm90024297pfb.44.2019.08.07.09.20.16
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=OgPFf4sieXg6FSqMl/7z/egdCX4CBj1LSh4wy9vZMd0=;
+ b=DKzOJ8W51gASVuYWlByaOivjR+IADVa7dE3T2XYD1biXdwMFCJYnUAJG13Vu/66ggg
+ KIbf5T5fcjiW66WnJGsEeFGvjH6nE2k486HYGvsyJWW92QDKs4zT/wFf0dc8G5ft8gFf
+ jvjZDqAMhLZV1nE7yV/XP4oYbo5UBJVjTnlTBsx1hxkFn9Yn0KdfWDdCNTnJSCx7ResO
+ +RcRsiocowet7raz4dKSnpST95RvqPyn6BQG1v3Oj0FDMIElHpn3fuYR583rSFt115KV
+ Wr0eHuqNbs1tR9nljf5vusI6rEUceu/qErgkt4laXlcm09975ubpgKiAgmCJkFMr+WZj
+ tAOw==
+X-Gm-Message-State: APjAAAUq7fDmXAvz1MpN3Te9cjij9rgW/vyLCgz2rflr6l/DawJS0jn3
+ 14xplGzzI+9yjcO/hPFHUH1WKg==
+X-Google-Smtp-Source: APXvYqwm/dtouaS2YDkg4nuZf7fonnO8dwiBe2IToY4UY/xI3nlngfUW1dUQIVzDV+FS9qhrZgGcjA==
+X-Received: by 2002:a5e:9314:: with SMTP id k20mr10575140iom.235.1565196148444; 
+ Wed, 07 Aug 2019 09:42:28 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ n26sm66735984ioc.74.2019.08.07.09.42.27
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 07 Aug 2019 09:20:17 -0700 (PDT)
-Date: Wed, 07 Aug 2019 09:20:17 -0700 (PDT)
-X-Google-Original-Date: Wed, 07 Aug 2019 09:13:52 PDT (-0700)
+ Wed, 07 Aug 2019 09:42:28 -0700 (PDT)
+Date: Wed, 7 Aug 2019 09:42:27 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Alexandre Ghiti <alex@ghiti.fr>
 Subject: Re: [PATCH] riscv: kbuild: add virtual memory system selection
-In-Reply-To: <20190807151229.GA16432@infradead.org>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Christoph Hellwig <hch@infradead.org>
-Message-ID: <mhng-5bc65289-4805-46a0-aa16-404b2be270fd@palmer-si-x1c4>
-Mime-Version: 1.0 (MHng)
+In-Reply-To: <c331e389-5f33-634a-f62f-e48251ca4cfe@ghiti.fr>
+Message-ID: <alpine.DEB.2.21.9999.1908070940110.13971@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
+ <20190802084453.GA1410@infradead.org>
+ <alpine.DEB.2.21.9999.1908061648220.13971@viisi.sifive.com>
+ <20190807054246.GB1398@infradead.org>
+ <c331e389-5f33-634a-f62f-e48251ca4cfe@ghiti.fr>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_092019_204697_255B908A 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20190807_094229_420207_CCE7F03C 
+X-CRM114-Status: UNSURE (   7.07  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -95,25 +103,27 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: Christoph Hellwig <hch@infradead.org>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, alex@ghiti.fr,
- Paul Walmsley <paul.walmsley@sifive.com>
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 07 Aug 2019 08:12:30 PDT (-0700), Christoph Hellwig wrote:
-> On Wed, Aug 07, 2019 at 09:04:40AM +0200, Alexandre Ghiti wrote:
->> I took a look at how x86 deals with 5-level page table: it allows to handle
->> 5-level and 4-level at runtime by folding the last page table level (cf
->> Documentation/x86/x86_64/5level-paging.rst). So we might want to be able to
->> do the same and deal with that at runtime.
->
-> Yes, following the X86_5LEVEL model is the right thing.
+On Wed, 7 Aug 2019, Alexandre Ghiti wrote:
 
-I poked around a bit with this last night, but our paging implemention is super
-ugly so it'd be better to clean all that up first.  No idea when I'll have time
-to do so...
+> And FYI my series and your patch are already in linux-next.
+
+Yes, I agree with Christoph that it would be preferable not to break 
+randconfig/allyesconfig.  So if you don't mind, could you respin the 
+RISC-V patch to drop the Sv48 portion, and simply assume Sv39 for RV64 as 
+we do for the rest of the RISC-V kernel code?  We can always add Sv48 
+back in later.
+
+If you agree, then once you do that, I'll ask Andrew to drop the RISC-V 
+Kbuild patch that he's carrying.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
