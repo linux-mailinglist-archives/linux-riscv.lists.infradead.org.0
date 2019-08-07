@@ -2,79 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49826850B3
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 18:09:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A766850C8
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 18:13:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UDiKZf4woLncR7FWfb7TCdfk+gpK0uyFbIvU33l8Nho=; b=qtBjHkmfQ7EcAc
-	6Z694X27/Te5zvDPQL564jsiU54/QW9EO0XdVGaExw3hv0stvBwGjXFgpG0wQagyK8rWuZLvP35dK
-	7yry97w1NZ4lAYFDeZ4/ycpwPA2dH9pmYaiDV9X/+Bv3Bg5mjnA58oS9N12+QFtIjZlIZgKFRaF5j
-	fgU5dwdk/uk7XynmMVqspNEtjFq0qupsbgdH9wAcDbMICtSiABG1w8PxX+UnA7Y5LDGhjoqOzI8vq
-	owCEDU96aGBDDTsfpLW7ysAX3kKXZ1caWddOk0V2U3kiXGqfSyb6OO/ESdHuEIKKq5DM3K3TzfFkP
-	xUXjtO6U0Un8U5AmZFgQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=veEwLtHppxxhi1AeBuAWUZJ2wOJg6rs1EbFt286jMcM=; b=R5aHH8EpEkWcfRmB/L0H/Dm3Zc
+	cd1PwH8A9D2DIAjcJNDS05dbzjjMey1qAyGNCOKzIX+9/kSao2UEIEf1vSgXyhOyI5j0sGV+HvEal
+	XXcXW1gzNoIogoItrt9Vcb1YJcJ1Shq5opZjyDk1ru07q4cM9waW8PvJWBcFzEuWCloh4tW/r7sOH
+	ai+3jo9JUBKQVUn7xCkXliWCFMwgmKdsHKJ/NmgGUdn2gwMaSmmt890bmPnrvZwRyrWdhv0vbTwa4
+	+UEQlMxTYwRYyIdb/d9fI3meMa+ox0XOXe5Ehac1knkB0jQ5XDuD0i9vOLGQaLvrxhUBJeBK2+cRV
+	9vmi3RMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvOVM-00070C-Pw; Wed, 07 Aug 2019 16:09:36 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1hvOZR-0000pz-B0; Wed, 07 Aug 2019 16:13:49 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvOVJ-0006zc-CS
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 16:09:34 +0000
-Received: by mail-ed1-x541.google.com with SMTP id r12so52083486edo.5
- for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 09:09:32 -0700 (PDT)
+ id 1hvOZO-0000p5-06
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 16:13:47 +0000
+Received: by mail-pl1-x643.google.com with SMTP id k8so41532181plt.3
+ for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 09:13:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uEKUzuSIOieOKjgCuQCVY/x844cR0AoJi6/Z5OUDMIM=;
- b=LrPZOuz0HGqD4Kwir2POvEwG6Wm0AYsJo4q/liBzsYnRbsOdoUdZ9+gGSWwWpT2dV9
- Hbl7OOlJ98rVNEE2jQtsZfjJ266Hx0c7DRyTVp/z1LnwpiDTkzl3VCgOKIHf1X9cmA6H
- DooTlSvwHmBFutN18ahdm1ZvExphu8yk5hV//jVQhFqj3J+8W8BZcMpcP5c7mki0fW2U
- 3xj2OCtmljTANhsMXZsyQrhvfE8ntW7gd+z3flw4he6awCorNwagOQVmP5wS0nF6jK1N
- UyfCGLPbksv1oPZ///GJbyEYiIiWDV9Pa1LUpRnWRGcfz+oc3Scgz9lhS0zEF0P9rVqp
- sktA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=9+XnFxrbKnwmwfUUFWf6AnoL73X81odkVu4GG6vHh/A=;
+ b=cNuljisiTxyMoRpKbeMwF1S9SIq6RtEhIILG0hoDi1vHXKFwByQWLrUxbRO9gn/4ks
+ jsyUyQuc0o+tKA1+1T3diEmoTTEBlyF+YG+rx2G7wXtvw4QoZcqzKWRxgknpiCPSnoHM
+ i5+ADA3dlxIyGBw6ZigFHCOT7Cf3tB63bfc/e+o2UVI0++yY4aCGAxPqO9t+1vR0R0d2
+ UmgV6aWu//ZTm6yAlbE91Z8BmKnc/r7XHne4FA9LC0Ar0jO8gk3At6QG67kaMONTkkeP
+ upq4+5XmsCkEiSe1igUnl16g/qc7egF6zUHCMHoF60JnCQ/Byyue9kOIqyis/a9zWGsZ
+ Zjfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uEKUzuSIOieOKjgCuQCVY/x844cR0AoJi6/Z5OUDMIM=;
- b=nRjLMZ0Q9NbXjk63DCVMujqFKgQ52bOSq+ccYMOwji15+qr3h1YxiuGhSfJ75F1nb+
- GJzlkH2WbT75D0r8Ib4SnsMjQrDsfkXISyllzWiotncqxMgMAYUo/9YQcO0eSUDFKbzj
- 2TIl8gyi58k6riPb/353ZfeDTYaIHdx5ysPTZ6VxZ0pSWoQbzSt6l5slmfBb4nP62oVf
- NEBX3qZMyQUNb/KmlH+HxU9MPvikcvA55o4dcoKvo9dDJl2N3sNRl15iAWEBUZ1cZXhl
- zXwze9mmCxMALUQrarsCzIrVt39sFHqW0c+rDip8NHduKboOcHvc6ytgefLYScn+D7cB
- tMyw==
-X-Gm-Message-State: APjAAAVxcG2VtQTdhbGBhHFWp4Jet96E8CT5zxlqKCC1GFCcB9qP95bV
- c3a9kChROyrv9O2E5pZAXuH943/3zO5/kvglxt0=
-X-Google-Smtp-Source: APXvYqxsctDkgkH0yl5HSxpdoNZDgP83W0rZCf4zRbEbirUbD90BGlEEpt5u/ZXqsSMuPkzEVHcqKK3Q5CaBBdXLoXQ=
-X-Received: by 2002:a17:906:fc5:: with SMTP id
- c5mr9143221ejk.129.1565194171359; 
- Wed, 07 Aug 2019 09:09:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <mvmr25z4toj.fsf@suse.de> <20190806204939.GA19596@infradead.org>
- <alpine.DEB.2.21.9999.1908061703100.13971@viisi.sifive.com>
- <CAEUhbmXz9EzjJvc4BQ46CGfSe-qyB0W7MEDZvABCpo5aLzXf3w@mail.gmail.com>
- <alpine.DEB.2.21.9999.1908061838260.13971@viisi.sifive.com>
- <20190807054019.GA1398@infradead.org>
- <CAEUhbmURQxPtmU78__OqOnQhzyVHpihxgzLtkOk1K0dDNprZYw@mail.gmail.com>
- <alpine.DEB.2.21.9999.1908070842400.13971@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1908070842400.13971@viisi.sifive.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=9+XnFxrbKnwmwfUUFWf6AnoL73X81odkVu4GG6vHh/A=;
+ b=S2gk12JBcRWHBV60dJ1olf2LNEL02YoJZMvEEnU2ge5xNsVDpS6Q5sIMtQksWJoP9Y
+ zqCWjddTAoIXFe6AKXFhDlSLd4WW4IyHONieTcl0hSWpA0++Gjr2ezqQy5bxwWkuqp+z
+ VqU3VHsS0E0XzgDLRlM6LRC7zFiLoVvHTcMiG9HLX6OUt0roUEvqcx4KQ1OTPDmOcfIr
+ RrdmjXaf+O3qI0TOJfeuMrnfpBKOcHHZl2ycru9jJfBBZ0973uCcyinuVXhVj3l99JDh
+ zho7G8w4YAD9ja3S89kN4PMI67ReHLMiaOy1Q/oq/xXPXUiZ0ZfOkUkbXxabjBgZr6AA
+ 6koQ==
+X-Gm-Message-State: APjAAAVkDj02gPoB2+9HCAHZLPqTay5oNFKjsznSunhE6/Elu/jcg2Fr
+ Aelora14GkJ8klA8hBMgdvs=
+X-Google-Smtp-Source: APXvYqzBA3uxA+zRTXVSzdBfRe3Ka9/bQig0VTnz8oRTEfPsKXRmG/iJPj5ldF/8nZ7nJpHz18jejw==
+X-Received: by 2002:a17:90a:dac3:: with SMTP id g3mr681382pjx.45.1565194425368; 
+ Wed, 07 Aug 2019 09:13:45 -0700 (PDT)
+Received: from localhost.localdomain (unknown-224-80.windriver.com.
+ [147.11.224.80])
+ by smtp.gmail.com with ESMTPSA id t9sm100808650pgj.89.2019.08.07.09.13.44
+ (version=TLS1 cipher=AES128-SHA bits=128/128);
+ Wed, 07 Aug 2019 09:13:44 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Thu, 8 Aug 2019 00:09:20 +0800
-Message-ID: <CAEUhbmVKjt7rabtx+E4vki7faT2+Vzt=vC4HuQvWbxdRnoup9g@mail.gmail.com>
-Subject: Re: [PATCH] Use CSR numbers instead of names
-To: Paul Walmsley <paul.walmsley@sifive.com>
+To: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org
+Subject: [PATCH v3] riscv: Using CSR numbers to access CSRs
+Date: Wed,  7 Aug 2019 09:13:38 -0700
+Message-Id: <1565194418-9672-1-git-send-email-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 1.7.1
+In-Reply-To: <1565184656-4282-1-git-send-email-bmeng.cn@gmail.com>
+References: <1565184656-4282-1-git-send-email-bmeng.cn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_090933_451459_CD5B2040 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20190807_091346_040888_1924E8D8 
+X-CRM114-Status: GOOD (  14.10  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:541 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (bmeng.cn[at]gmail.com)
@@ -98,52 +100,208 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>, Andreas Schwab <schwab@suse.de>,
- linux-riscv <linux-riscv@lists.infradead.org>, linux-kernel@lists.kernel.org
+Cc: Andreas Schwab <schwab@suse.de>, Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Aug 7, 2019 at 11:47 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> On Wed, 7 Aug 2019, Bin Meng wrote:
->
-> > On Wed, Aug 7, 2019 at 1:40 PM Christoph Hellwig <hch@infradead.org> wrote:
-> > >
-> > > On Tue, Aug 06, 2019 at 06:39:59PM -0700, Paul Walmsley wrote:
-> > > > >
-> > > > > I have already sent a similar patch (with more places fixed) on Jul 11.
-> > > > > https://patchwork.kernel.org/patch/11039421/
-> > > >
-> > > > Christoph's patch predates yours.
-> > > >
-> > > > If all looks well with your patch, I'll update it to remove the overlap
-> > > > and queue it after his.
-> > >
-> > > The one from Bin looks most comprehensive, so maybe go with that, plus
-> > > the hunk from Andreas for the instance that was only recently introduced.
-> >
-> > Thanks Christoph.
-> >
-> > I've included your SoB and Andreas's into my v2 patch which added the
-> > changes of arch/riscv/mm/init.c that was recently changed.
-> > https://patchwork.kernel.org/patch/11082147/
->
-> Best not to add others' Signed-off-by:s unless they explicitly offer them.
-> Adding a Signed-off-by: for the kernel denotes that that person has
-> accepted the Developer's Statement of Origin here:
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst#n431
->
-> Could you please either convert those into Co-developed-by: lines or ask
-> Christoph and Andreas for explicit Signed-off-by:s, Acked-by:s, or
-> Reviewed-by:s ?
+Since commit a3182c91ef4e ("RISC-V: Access CSRs using CSR numbers"),
+we should prefer accessing CSRs using their CSR numbers, but there
+are several leftovers like sstatus / sptbr we missed.
 
-OK, I will remove these SoB tags.
+Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+Reviewed-by: Anup Patel <anup@brainfault.org>
 
-Regards,
-Bin
+---
+
+Changes in v3:
+- remove the SoB tag per request
+
+Changes in v2:
+- add SoB tag of Christoph Hellwig and Andreas Schwab
+- change CSR_SATP in mm/init.c that was recently changed after v1 patch
+
+ arch/riscv/kernel/entry.S |  6 +++---
+ arch/riscv/kernel/fpu.S   |  8 ++++----
+ arch/riscv/kernel/head.S  |  2 +-
+ arch/riscv/lib/uaccess.S  | 12 ++++++------
+ arch/riscv/mm/context.c   |  7 +------
+ arch/riscv/mm/init.c      |  2 +-
+ 6 files changed, 16 insertions(+), 21 deletions(-)
+
+diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
+index bc7a56e..74ccfd4 100644
+--- a/arch/riscv/kernel/entry.S
++++ b/arch/riscv/kernel/entry.S
+@@ -167,7 +167,7 @@ ENTRY(handle_exception)
+ 	tail do_IRQ
+ 1:
+ 	/* Exceptions run with interrupts enabled */
+-	csrs sstatus, SR_SIE
++	csrs CSR_SSTATUS, SR_SIE
+ 
+ 	/* Handle syscalls */
+ 	li t0, EXC_SYSCALL
+@@ -222,7 +222,7 @@ ret_from_syscall:
+ 
+ ret_from_exception:
+ 	REG_L s0, PT_SSTATUS(sp)
+-	csrc sstatus, SR_SIE
++	csrc CSR_SSTATUS, SR_SIE
+ 	andi s0, s0, SR_SPP
+ 	bnez s0, resume_kernel
+ 
+@@ -265,7 +265,7 @@ work_pending:
+ 	bnez s1, work_resched
+ work_notifysig:
+ 	/* Handle pending signals and notify-resume requests */
+-	csrs sstatus, SR_SIE /* Enable interrupts for do_notify_resume() */
++	csrs CSR_SSTATUS, SR_SIE /* Enable interrupts for do_notify_resume() */
+ 	move a0, sp /* pt_regs */
+ 	move a1, s0 /* current_thread_info->flags */
+ 	tail do_notify_resume
+diff --git a/arch/riscv/kernel/fpu.S b/arch/riscv/kernel/fpu.S
+index 1defb06..631d315 100644
+--- a/arch/riscv/kernel/fpu.S
++++ b/arch/riscv/kernel/fpu.S
+@@ -23,7 +23,7 @@ ENTRY(__fstate_save)
+ 	li  a2,  TASK_THREAD_F0
+ 	add a0, a0, a2
+ 	li t1, SR_FS
+-	csrs sstatus, t1
++	csrs CSR_SSTATUS, t1
+ 	frcsr t0
+ 	fsd f0,  TASK_THREAD_F0_F0(a0)
+ 	fsd f1,  TASK_THREAD_F1_F0(a0)
+@@ -58,7 +58,7 @@ ENTRY(__fstate_save)
+ 	fsd f30, TASK_THREAD_F30_F0(a0)
+ 	fsd f31, TASK_THREAD_F31_F0(a0)
+ 	sw t0, TASK_THREAD_FCSR_F0(a0)
+-	csrc sstatus, t1
++	csrc CSR_SSTATUS, t1
+ 	ret
+ ENDPROC(__fstate_save)
+ 
+@@ -67,7 +67,7 @@ ENTRY(__fstate_restore)
+ 	add a0, a0, a2
+ 	li t1, SR_FS
+ 	lw t0, TASK_THREAD_FCSR_F0(a0)
+-	csrs sstatus, t1
++	csrs CSR_SSTATUS, t1
+ 	fld f0,  TASK_THREAD_F0_F0(a0)
+ 	fld f1,  TASK_THREAD_F1_F0(a0)
+ 	fld f2,  TASK_THREAD_F2_F0(a0)
+@@ -101,6 +101,6 @@ ENTRY(__fstate_restore)
+ 	fld f30, TASK_THREAD_F30_F0(a0)
+ 	fld f31, TASK_THREAD_F31_F0(a0)
+ 	fscsr t0
+-	csrc sstatus, t1
++	csrc CSR_SSTATUS, t1
+ 	ret
+ ENDPROC(__fstate_restore)
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index 0f1ba17..86049ae 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -61,7 +61,7 @@ _start_kernel:
+ 	 * floating point in kernel space
+ 	 */
+ 	li t0, SR_FS
+-	csrc sstatus, t0
++	csrc CSR_SSTATUS, t0
+ 
+ 	/* Pick one hart to run the main boot sequence */
+ 	la a3, hart_lottery
+diff --git a/arch/riscv/lib/uaccess.S b/arch/riscv/lib/uaccess.S
+index 399e6f0..ed2696c 100644
+--- a/arch/riscv/lib/uaccess.S
++++ b/arch/riscv/lib/uaccess.S
+@@ -18,7 +18,7 @@ ENTRY(__asm_copy_from_user)
+ 
+ 	/* Enable access to user memory */
+ 	li t6, SR_SUM
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 
+ 	add a3, a1, a2
+ 	/* Use word-oriented copy only if low-order bits match */
+@@ -47,7 +47,7 @@ ENTRY(__asm_copy_from_user)
+ 
+ 3:
+ 	/* Disable access to user memory */
+-	csrc sstatus, t6
++	csrc CSR_SSTATUS, t6
+ 	li a0, 0
+ 	ret
+ 4: /* Edge case: unalignment */
+@@ -72,7 +72,7 @@ ENTRY(__clear_user)
+ 
+ 	/* Enable access to user memory */
+ 	li t6, SR_SUM
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 
+ 	add a3, a0, a1
+ 	addi t0, a0, SZREG-1
+@@ -94,7 +94,7 @@ ENTRY(__clear_user)
+ 
+ 3:
+ 	/* Disable access to user memory */
+-	csrc sstatus, t6
++	csrc CSR_SSTATUS, t6
+ 	li a0, 0
+ 	ret
+ 4: /* Edge case: unalignment */
+@@ -114,11 +114,11 @@ ENDPROC(__clear_user)
+ 	/* Fixup code for __copy_user(10) and __clear_user(11) */
+ 10:
+ 	/* Disable access to user memory */
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 	mv a0, a2
+ 	ret
+ 11:
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 	mv a0, a1
+ 	ret
+ 	.previous
+diff --git a/arch/riscv/mm/context.c b/arch/riscv/mm/context.c
+index 89ceb3c..beeb5d7 100644
+--- a/arch/riscv/mm/context.c
++++ b/arch/riscv/mm/context.c
+@@ -57,12 +57,7 @@ void switch_mm(struct mm_struct *prev, struct mm_struct *next,
+ 	cpumask_clear_cpu(cpu, mm_cpumask(prev));
+ 	cpumask_set_cpu(cpu, mm_cpumask(next));
+ 
+-	/*
+-	 * Use the old spbtr name instead of using the current satp
+-	 * name to support binutils 2.29 which doesn't know about the
+-	 * privileged ISA 1.10 yet.
+-	 */
+-	csr_write(sptbr, virt_to_pfn(next->pgd) | SATP_MODE);
++	csr_write(CSR_SATP, virt_to_pfn(next->pgd) | SATP_MODE);
+ 	local_flush_tlb_all();
+ 
+ 	flush_icache_deferred(next);
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index 42bf939..238fc41 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -435,7 +435,7 @@ static void __init setup_vm_final(void)
+ 	clear_fixmap(FIX_PMD);
+ 
+ 	/* Move to swapper page table */
+-	csr_write(sptbr, PFN_DOWN(__pa(swapper_pg_dir)) | SATP_MODE);
++	csr_write(CSR_SATP, PFN_DOWN(__pa(swapper_pg_dir)) | SATP_MODE);
+ 	local_flush_tlb_all();
+ }
+ 
+-- 
+2.7.4
+
 
 _______________________________________________
 linux-riscv mailing list
