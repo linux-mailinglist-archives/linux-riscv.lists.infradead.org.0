@@ -2,38 +2,39 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB77684F86
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 17:12:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3305184F93
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 17:13:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uw0v1l0VJHXPHI9IuX8U5R8fFOPLNYGmphCpDBVCdRI=; b=NVYMLGjk03k31W
-	fd3+8TBVPIvQxmRZ4/T/0IUiHGjIBK9vYcZ7BznzSJVXuQQyLz7ci9rBoUWtULfDHRKx0EAqEnMfM
-	OwIkYuk4ST5K6k4SJszAAVmDVViaOBtyanKOe8KlUPaofkTo8Efl2p4Q9hKoMJwFbEnY3mODsXmub
-	OnXBYOR2nrcPlJBFOuFvNfmog7vr1fsrWjJcc0oc8mq34HgMa3JO4eN1sTiUsa+V0dt2Luy5DS+QS
-	AHloK22bQiYYvwkH7t07OZGt2mtIw63gy9MX8UjfB0iYuDyFZeS4FIUJPkwfU2q2lKi2WeM5DOaj3
-	RV8188i5VKNGhPSzU3uw==;
+	List-Owner; bh=wI9vn7FeX8VJMynhT2fyFfYdPA4/E9hNxlUA2YwO8HI=; b=XmWhGAbmohh6pq
+	LbXF9+OD495Y8b/mVzK9R1n78ZIBxamsL91oShz7WaWs9H7l0g7arRQ8NXZMbT4YpHoNiizf58qHk
+	DPNBJeX460hGCkNaEzrxdVMET/piQwqjVBEvQB8c1PEUpgnPro9+YK7w9srCKApmTMaptG7+G7X7B
+	giFLbWrE2nqVOkt7XhsHsaEShCTfRKG49ybyXGe1kQwTlRyCVJ+zPdPDxXKNzbGem4P4CPStqtn0M
+	fZdKZUcNwkI7YT6DnNt3oP/Ftv9jNOnkcvgq5kVqUQSCKnw3T9bCOfTNkn8ViX1a2HI62qZKXf+Jr
+	AvwmZq4X3t/UPtnBetBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvNcB-0004ba-GF; Wed, 07 Aug 2019 15:12:35 +0000
+	id 1hvNcs-0004hk-NK; Wed, 07 Aug 2019 15:13:18 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1hvNc6-0004bD-1i; Wed, 07 Aug 2019 15:12:30 +0000
-Date: Wed, 7 Aug 2019 08:12:30 -0700
+ Linux)) id 1hvNcq-0004hR-82; Wed, 07 Aug 2019 15:13:16 +0000
+Date: Wed, 7 Aug 2019 08:13:16 -0700
 From: Christoph Hellwig <hch@infradead.org>
-To: Alexandre Ghiti <alex@ghiti.fr>
-Subject: Re: [PATCH] riscv: kbuild: add virtual memory system selection
-Message-ID: <20190807151229.GA16432@infradead.org>
-References: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
- <20190802084453.GA1410@infradead.org>
- <alpine.DEB.2.21.9999.1908061648220.13971@viisi.sifive.com>
- <20190807054246.GB1398@infradead.org>
- <c331e389-5f33-634a-f62f-e48251ca4cfe@ghiti.fr>
+To: Bin Meng <bmeng.cn@gmail.com>
+Subject: Re: [PATCH] Use CSR numbers instead of names
+Message-ID: <20190807151316.GB16432@infradead.org>
+References: <mvmr25z4toj.fsf@suse.de> <20190806204939.GA19596@infradead.org>
+ <alpine.DEB.2.21.9999.1908061703100.13971@viisi.sifive.com>
+ <CAEUhbmXz9EzjJvc4BQ46CGfSe-qyB0W7MEDZvABCpo5aLzXf3w@mail.gmail.com>
+ <alpine.DEB.2.21.9999.1908061838260.13971@viisi.sifive.com>
+ <20190807054019.GA1398@infradead.org>
+ <CAEUhbmURQxPtmU78__OqOnQhzyVHpihxgzLtkOk1K0dDNprZYw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <c331e389-5f33-634a-f62f-e48251ca4cfe@ghiti.fr>
+In-Reply-To: <CAEUhbmURQxPtmU78__OqOnQhzyVHpihxgzLtkOk1K0dDNprZYw@mail.gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -46,20 +47,22 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Christoph Hellwig <hch@infradead.org>, Andreas Schwab <schwab@suse.de>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-kernel@lists.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Aug 07, 2019 at 09:04:40AM +0200, Alexandre Ghiti wrote:
-> I took a look at how x86 deals with 5-level page table: it allows to handle
-> 5-level and 4-level at runtime by folding the last page table level (cf
-> Documentation/x86/x86_64/5level-paging.rst). So we might want to be able to
-> do the same and deal with that at runtime.
+On Wed, Aug 07, 2019 at 09:34:03PM +0800, Bin Meng wrote:
+> I've included your SoB and Andreas's into my v2 patch which added the
+> changes of arch/riscv/mm/init.c that was recently changed.
+> https://patchwork.kernel.org/patch/11082147/
 
-Yes, following the X86_5LEVEL model is the right thing.
+I don;t think you need mine at all, as you did the same change
+independently.  And maybe well just keep the hunk from Andreas separate
+to keep it simple.
 
 _______________________________________________
 linux-riscv mailing list
