@@ -2,34 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40238844C8
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 08:49:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75D14844CA
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 08:49:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wKIFQHFC558BHqdl/yE3bHsc0R+/D2cD3qlyunO+Awk=; b=uQjFSusVZ5Afpr
-	qm6SRaZ7LdJhabyOHoWAtYWWLtlFpotpPvkxPJxXwcjYUmwx8Pe5Hh6toTR9QyXnH8jO6KXoMZvSz
-	r+/8kWf0hRJof3TW2a5hMvOf6h8IPdus1J3FA+A0qNX4l0S7km25+zIQ8q9796yFE+JpQMyx0V3I1
-	uhGXcOsa+jlXZT+Ha+HXBazmeEylLgDgCNHTjDC2Jsp2CWeiWv6sw66rXvqCf9kp95pWO93wXwANl
-	iYPr54iFhVOJlZkcQ6x8uR658sAcDyKgzLopR2vEo/C256FLWkANKeIRR5iaDGCj5hlDm9DQHEqBy
-	HPEwmrNI+sxGe070Vg4Q==;
+	List-Owner; bh=VjasSr6WklCRCumMeKjxivVBfe8Fu7cL1O0PnR7DDHU=; b=cT1G8Tx1w5LKmE
+	vKDl1Lz0uw8Qd+JUd9TQSMeDf2TnYLY7adB7cthf9knNvsK7ifX3btY/2QfNYhz31YQjm2KPG3FjG
+	KwVVNPAi+TmXiHZYU1FGjxDJySHrQNvHau3L2tzGsy4dRNsjhFreVKwtvoqtZDLycnlfPMtaMkk1Z
+	uK6O+jHo7u5VV3GFuMPnyDJp9JoA9UEteaq6D6Cs6nHp+QnLpYFC8g8x2T+XViQIqkYECHSy9kdQd
+	44jMA6Qw4+5gfHsodI0dKWfu3oUdcWPFMh8ItorysA8c07EH8cWWMfBFs8oGc0/aeA9xcfBxuWXVk
+	RlQ8zMHEewep6CMxByaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvFkp-0001tb-A9; Wed, 07 Aug 2019 06:48:59 +0000
+	id 1hvFl3-0001xe-9O; Wed, 07 Aug 2019 06:49:13 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1hvFkn-0001tR-8b; Wed, 07 Aug 2019 06:48:57 +0000
-Date: Tue, 6 Aug 2019 23:48:57 -0700
+ Linux)) id 1hvFl1-0001xQ-N6; Wed, 07 Aug 2019 06:49:11 +0000
+Date: Tue, 6 Aug 2019 23:49:11 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH] riscv: delay: use do_div() instead of __udivdi3()
-Message-ID: <20190807064857.GA6942@infradead.org>
-References: <alpine.DEB.2.21.9999.1908061906240.25231@viisi.sifive.com>
+Subject: Re: [PATCH] riscv: kbuild: drop CONFIG_RISCV_ISA_C
+Message-ID: <20190807064911.GB6942@infradead.org>
+References: <alpine.DEB.2.21.9999.1908061929230.19468@viisi.sifive.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1908061906240.25231@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1908061929230.19468@viisi.sifive.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -42,37 +42,22 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: atish.patra@wdc.com, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-> diff --git a/arch/riscv/lib/delay.c b/arch/riscv/lib/delay.c
-> index 87ff89e88f2c..8c686934e0f6 100644
-> --- a/arch/riscv/lib/delay.c
-> +++ b/arch/riscv/lib/delay.c
-> @@ -81,9 +81,14 @@ EXPORT_SYMBOL(__delay);
->  void udelay(unsigned long usecs)
->  {
->  	u64 ucycles = (u64)usecs * lpj_fine * UDELAY_MULT;
-> +	u64 n;
-> +	u32 rem;
->  
->  	if (unlikely(usecs > MAX_UDELAY_US)) {
-> -		__delay((u64)usecs * riscv_timebase / 1000000ULL);
-> +		n = (u64)usecs * riscv_timebase;
-> +		rem = do_div(n, 1000000);
-> +
-> +		__delay(n);
->  		return;
+On Tue, Aug 06, 2019 at 07:30:24PM -0700, Paul Walmsley wrote:
+> 
+> The baseline ISA support requirement for the RISC-V Linux kernel
+> mandates compressed instructions, so it doesn't make sense for
+> compressed instruction support to be configurable.
 
-A few comments on the variable usage:
+Looks good,
 
-I think you really want a variable of type u64 that contains the usecs
-value instead of casting it three times.
-
-n and rem can be easily declared inside the branch.
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 linux-riscv mailing list
