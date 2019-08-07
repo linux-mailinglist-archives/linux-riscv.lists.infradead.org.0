@@ -2,74 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 181A88500F
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 17:38:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38B3E85020
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 17:41:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=wD2yE6ZC2VzvLl7fbT3mDKOwi7J3tRoRInmshUdKii0=; b=HEZep3P7FsnhluETlgEV08hpc
-	4RIp4WMySKdRm/WxSvKGx/Gfou6aLzF++r2I8U3HOa6Ae5paok94eHx0koGKnLLblboT7Qnh6rh6b
-	zz/HeVIeBgEG7O4M4Bd8ZdvXWB+yN24gFrqe+5ItXXsPQ9ZFK0FmnRHAkitkr4lAaMhlCXrsalnoe
-	S3TzhgiZgGGfI59B71BOKd1l4MXdD55YZdqGHkNK8SnjnRx0KI16BeuneWC0rjM56rbw3uLqzXW9o
-	KsUZh7ZsFED7YRNUmpz8g5w1kpKhtPwdnEpKSbxMSbWWEeMB+KxNzNBcDu0zdHiNJMn45qbN678FB
-	VQd9fLX5g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wN3ZuyQ1raO0X6gC6F4Afu2JGb34YDbhE39KZ7np/eU=; b=Q24F15pGWbh5BU
+	kdtPZRrgQeLz07u4cDT5MSJJDj+SloFxLgis9EpFFic+CxArWsshy2YEuYoD/fBVvXvaOBX5raCPG
+	MwQwiILfT3i0rqsz4IzGJ8Bcs2AH6HIv3qS23BV8vKtPNjwyOtgI/ZhEtA27E6XonJs/PM2K0DQ1r
+	olGbG6BnfK3Do3bmMmwLyqxOmtus30YR7UQWfyYSHy3KY8ayupXA2XkSM/q0jKdGllFwKbScNSUnu
+	8WbiPCdwwKd68wqVnju4ZosxvxmkcYfPQ3Dc8vY+PxBHG21jz23vFNTrnxWvLnbMAOBXELk2P6UiH
+	MknwIqJZjcPViU5jfUMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvO0g-0007Qj-RU; Wed, 07 Aug 2019 15:37:54 +0000
-Received: from mail-pl1-f193.google.com ([209.85.214.193])
+	id 1hvO3k-0000d6-UJ; Wed, 07 Aug 2019 15:41:05 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvO0d-0007Of-8X
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 15:37:52 +0000
-Received: by mail-pl1-f193.google.com with SMTP id b7so41433942pls.6
- for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 08:37:50 -0700 (PDT)
+ id 1hvO3h-0000cc-Au
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 15:41:02 +0000
+Received: by mail-ot1-x344.google.com with SMTP id n5so106138182otk.1
+ for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 08:41:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=HAXloeaOD6Dgz0TeHmNMEkOukZ7q9iclSHb8TPMnnoM=;
+ b=MpR6TPeY9ksExXbV1M0WZ4jh4/JwJ9vWGRF9Q289lrNZt6ApwrI38CI+eNBR2DkMNa
+ Z7kScwuTmiRNYxUCmrhHLisuDE7Jq6jOB6Uy5ZU+gWd24CE2XuQKs/7HOsVWT5q4QYua
+ 0uVXOCj7D12af1thKryyrhhJNQYJeGuHuo6mHxA3Em5MvzfobH7So0FWtWQRRIAv9cpK
+ SKGbb+p6Gx21xSqHvNDTgXbWQ6wLvI8lAggwhl53uqM/EKM/49TBSh42hrAepJq0swFZ
+ IrsJjSxAGrDjL7077HKRQ9LC6pgVFEbioMkeUxrVjzA6YqVgZD5u3o5nUM0Nz6aGTkLd
+ KPNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=SbXighRqPCoPZWVDEmqUD9WiXHWD2WoHQaBKm2NnUQ0=;
- b=CU0yLaxK5JAnjWZQe7xKHarHTR3GsU6il30cl8BN4LmQE0Z2KTrmu3JhNh1nX2OWTk
- UNROPVyohzArI2zt3qWb1/RlGQD6fx2HyXDkDGBMjUHEBT0lNY8Ufh/m2nX5hV4bHiFJ
- E+S5UtvWewZsaTK/otLX6tq1j6DDPwZrW4g1d17UfYVHnMHHXBD1stQKVGY3jYPeXtnn
- q85bUMctqxa9A6uc6uxZQGwwVRD1fTY7GUF/hflJYWEQPuGXr0VXfplJqFs6hh9wm5rL
- HCA9F6ZP00MSX0hq6Bi1f289B8AF8iaFrV1NuQ8uSIanu2ZBug6IiZ2lQMbVeGqAh06j
- EkVQ==
-X-Gm-Message-State: APjAAAVjwUg3zHRSUB9nTmlJgA0MQJQJUQQun7Ug0z2kAxjsfP0kQdX1
- MTlpiopC5sJ3Af3gIDSJSiTFjQ==
-X-Google-Smtp-Source: APXvYqwOxmLrwq/hmTiDm7ZkSCDmAQCrO2shh8IxFFNkXHW4/5EiApdsriHIksWl6eUkZz6HIzP15g==
-X-Received: by 2002:a17:90a:5288:: with SMTP id w8mr512178pjh.61.1565192269545; 
- Wed, 07 Aug 2019 08:37:49 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id 125sm127468985pfg.23.2019.08.07.08.37.48
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=HAXloeaOD6Dgz0TeHmNMEkOukZ7q9iclSHb8TPMnnoM=;
+ b=EPLPWINcH4ySX4bH/AOY23VAOcL57n4H22hbdgnUTMDffx9WpOlFQv632iUNy1/PId
+ mCmTlSzrQ7xbyTUAw3LkPUkf1ZQyMe3qse1ho5B0BsCypmji8RXAEWXuHTEvfVpxbpnY
+ T+7znSDB43hQTIeRfd00/N/vzE/q167w3UjizzD17u7jBl8xahhjmJIb8MAoMNH/i4NW
+ tWpwGrRbGu5pcLUT+qegS+Od4gxYWKCJ2xFzh2Lm5oOkXNPRhkV1b4VtK/iPevKprngx
+ UXM0BDU4pMBrqoKBOlEUTALJI/TiMv2zitcB35bTW77mWsG20mhj/H0RTPaw7ishV8be
+ ppHw==
+X-Gm-Message-State: APjAAAU9/r3lkZoHVQTIkvFAQ5RwlhnKe5Hgoi5bN7UcmvravLBgZ4l7
+ Phyo+t077S+DDS43Vk6W9/OZiSnRZsE=
+X-Google-Smtp-Source: APXvYqwyIB1L+QiELH/YNHUY/Gf3N1VW1Uv2dDPLw4xrbndDgaWQH9vQgWS83jDCgfoU7TiFL406Bw==
+X-Received: by 2002:a5e:8e0d:: with SMTP id a13mr3602621ion.28.1565192459955; 
+ Wed, 07 Aug 2019 08:40:59 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ a1sm68914330ioo.5.2019.08.07.08.40.59
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 07 Aug 2019 08:37:48 -0700 (PDT)
-Date: Wed, 07 Aug 2019 08:37:48 -0700 (PDT)
-X-Google-Original-Date: Wed, 07 Aug 2019 08:21:35 PDT (-0700)
-Subject: Re: [PATCH v3 3/5] RISC-V: Fix unsupported isa string info.
-In-Reply-To: <alpine.DEB.2.21.9999.1908061818360.13971@viisi.sifive.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Message-ID: <mhng-6a70927a-4b6a-452f-910c-0639d5f47dff@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ Wed, 07 Aug 2019 08:40:59 -0700 (PDT)
+Date: Wed, 7 Aug 2019 08:40:58 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/misc
+In-Reply-To: <20190807152438.GA16495@lst.de>
+Message-ID: <alpine.DEB.2.21.9999.1908070832500.13971@viisi.sifive.com>
+References: <20190807151009.31971-1-hch@lst.de>
+ <20190807152215.GA26690@kroah.com> <20190807152438.GA16495@lst.de>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_083751_325003_2B28C8F5 
-X-CRM114-Status: GOOD (  16.80  )
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20190807_084101_432929_09511DE9 
+X-CRM114-Status: GOOD (  14.96  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.214.193 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.214.193 listed in wl.mailspike.net]
+ no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,60 +98,44 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
- tiny.windzz@gmail.com, Greg KH <gregkh@linuxfoundation.org>,
- daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org, johan@kernel.org,
- Atish Patra <Atish.Patra@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
- robh+dt@kernel.org, gary@garyguo.net, tglx@linutronix.de, info@metux.net,
- linux-riscv@lists.infradead.org, allison@lohutok.net
+Cc: arnd@arndb.de, Greg KH <gregkh@linuxfoundation.org>, palmer@sifive.com,
+ linux-kernel@vger.kernel.org, james.morse@arm.com,
+ linux-riscv@lists.infradead.org, mchehab@kernel.org,
+ linux-edac@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 06 Aug 2019 18:26:08 PDT (-0700), Paul Walmsley wrote:
-> On Wed, 7 Aug 2019, Atish Patra wrote:
->
->> On Tue, 2019-08-06 at 16:27 -0700, Paul Walmsley wrote:
->>
->> > Seems like the "su" should be dropped from mandatory_ext.  What do you
->> > think?
->> >
->>
->> Yup. As DT binding only mention imafdc, mandatory extensions should
->> contain only that and just consider "su" extensions are considered as
->> implicit as we are running Linux.
->
-> Discussing this with Andrew and Palmer, it looks like "su" is currently
-> non-compliant.  Section 22.6 of the user-level specification states that
-> the "s" character indicates that a longer standard supervisor extension
-> name will follow.  So far I don't think any of these have been defined.
->
->> Do you think QEMU DT should be updated to reflect that ?
->
-> Yes.
+On Wed, 7 Aug 2019, Christoph Hellwig wrote:
 
-https://lists.nongnu.org/archive/html/qemu-riscv/2019-08/msg00141.html
+> On Wed, Aug 07, 2019 at 05:22:15PM +0200, Greg KH wrote:
+> > > Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
+> > > Signed-off-by: Christoph Hellwig <hch@lst.de>
+> > > ---
+> > >  arch/riscv/mm/Makefile                            | 1 -
+> > >  drivers/misc/Makefile                             | 1 +
+> > >  {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c | 0
+> > >  3 files changed, 1 insertion(+), 1 deletion(-)
+> > >  rename {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c (100%)
+> > 
+> > Why isn't this in drivers/edac/ ?
+> > why is this a misc driver?  Seems like it should sit next to the edac
+> > stuff.
+> 
+> No idea.  EDAC maintainers, would you object to taking what is 
+> currently in arch/riscv/mm//sifive_l2_cache.c to drivers/edac/ ?
 
->
->> > There's no Kconfig option by this name, and we're requiring
->> > compressed
->>
->> Sorry. This was a typo. It should have been CONFIG_RISCV_ISA_C.
->>
->> > instruction support as part of the RISC-V Linux baseline.  Could you
->> > share the rationale behind this?
->>
->> I think I added this check at the config file. Looking at the Kconfig,
->> RISCV_ISA_C is always enabled. So we can drop this.
->
-> OK great.  Do you want to resend an updated patch, or would you like me to
-> fix it up here?
->
-> I'll also send a patch to drop CONFIG_RISCV_ISA_C.
->
->
-> - Paul
+If this driver is moved out of arch/riscv/mm, it should ideally go into 
+some sort of common L2 cache controller driver directory, along 
+with other L2 cache controller drivers like arch/arm/mm/*l2c*. 
+
+Like many L2 cache controllers, this controller also supports cache 
+flushing operations and SoC-specific way operations.  We just don't use 
+those on RISC-V - yet.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
