@@ -2,83 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E47DD841C2
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 03:45:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54E3184216
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 04:07:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zsgT4u2G/K8jHygaYiu9QWV/3pmTA5UN98I2izxRxyw=; b=IXu8Ibzhv9UNJ2
-	4yOg1FSa9ZLB1SrUmRDprJva6BWXzd8eBSfUSB7YKdVFcEQ4tAgrMLITNhoZI5wR/oenFmlWrDZNJ
-	gJ7kjcNU/p8crypj/ABNcpqD5009FwwiggG71fxfuIFv3Mcf2zrAJhBWBdzFBhBlHb20Zn+pyqkOB
-	d6iB1yEeCuEkrrKeN/UR8BZ5cWY16pZPlC97fXsPetrtlKaesLAW/nyiR4vhx0FWlfJQvjk+vAdh6
-	yCnjs7YUlYvBhbksTJNkO4CK7u8NxxiVrsKb0IQ20WSE00k4zYokN3aOaAc1mXik6OmdzZPRBEyTE
-	O4qKp6U05xVP3KoPhAFA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ptXeCsNg2v2Vc9Y+h07wJwWFocTK3bkj9S5RN2M0mXE=; b=i9Rt1ZKuE8wDNe
+	ayA+m47tf8h0c0ZBFrqMQ52HWdBF6F5IXqeD6uVgLC/gQdonnOFg52Tu9yHBAmpt1HSxPcSfiK0vO
+	6yYGfxtb8IS2vTUmMmvcMTDt3ygHDduOuYR87McVJ7kWLM61FUAjzHxyYokVzESNpsJzI1SXBXpbZ
+	WTnz2t5HyAJStdDw1uMZ+c76X6A1BDpfwN7wCA40X7kKwDIoS2LoZ62RN7twd2u6vXs/deaJ1H+MD
+	THZkAUOH7isV5L9IlQ3AcqlahzJqEAhiwJrx2M2km2OYSVOL+VQOn04B2q+fdhv4tvR216Kc8KZkr
+	FqYbPFNQlpFgIuzje1WQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvB1R-0001rX-1Y; Wed, 07 Aug 2019 01:45:49 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1hvBM6-0001Wn-VL; Wed, 07 Aug 2019 02:07:10 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvAvq-0001WL-95
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 01:40:04 +0000
-Received: by mail-ot1-x344.google.com with SMTP id o101so97928235ota.8
- for <linux-riscv@lists.infradead.org>; Tue, 06 Aug 2019 18:40:01 -0700 (PDT)
+ id 1hvBM4-0001WU-90
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 02:07:09 +0000
+Received: by mail-ot1-x342.google.com with SMTP id x21so4819198otq.12
+ for <linux-riscv@lists.infradead.org>; Tue, 06 Aug 2019 19:07:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=+BbqTZzUYCXMA6CgIO9BAbP3CaJ+a0Glz0dGsY78Wh0=;
- b=OMLpnngWTPu/fj1kYfTHrHsoS0g9BYhxiIKmZUA94HnYACgacD6nqU2lCGMUd70WHU
- JS9Ghnko3A5qIEkTuCt9iccpgyV9CthvGrQC0Y8FlGsPlT+G4oW5nNJiP1vTd2Kqnrbb
- fIF6kNx+AlCwIcTOt5bNHXIK8OjEnxeYdOrfRFeEJZlsn6msm9zTCSnYALqqN7FR99an
- gDz5yBn5zApwxHucp0qS+eDSCxBLPux6yjSkj7lIKbR6xdGn8xE7wKOPIi6TevuHxkon
- zRSFUQMg+BMSTHKV7NTDN/Jlat9N5TAIQwkJF93arXvQF1LDrY+IXMsY29xxKMq9dH82
- j8sQ==
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=MuFa6tZ7vFSe1LOVI7ekbYPMVwhBLKkDTybz3Yw3r44=;
+ b=JC4fDjkU965cDljrf9f9H+35WfdDcOLRBf4d4ck2STxWjiyn613K80IfbXIV3yjt8F
+ TaxsxQSVs/4+2cFoiO+YzykT21aoLXLSG3wELNAjtQAbQqwTVS6vp8AZpXutrzNEtHs2
+ 03mhxA0YfSdoqbgMZdbgIGx/odmQ/pVngBPraMDIe2T8BLV5G/b2yzLMgkELXP4+AXmA
+ fstCg3FK/zG6HxmSpCXsLx0aDbBr0a4c0CUgL7QlbAVN+Lpdg4RpMokPM66xLHO9o9V0
+ 3tkCHFklHn3oMNZz3aI/azdbQ/aY+d3txBL9HIzwxyqlEEpCPhJP1ZGIdLenH6lvgwI2
+ b4qQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=+BbqTZzUYCXMA6CgIO9BAbP3CaJ+a0Glz0dGsY78Wh0=;
- b=dUiwEnLXDiwbQXzMGXa6PKazKQqD4hpqhIBjfraC1ibFrQpD60S9e9hadZN7EECU0A
- nxlRaCW5v1Jtnu/hMx1atTW2beUQjvYQ0mueBovdb+qRgpsIEtZC9eWXPQtf6YVlGwUk
- vYAR7f66OQo7FewwGDkiD12RSWdVDyoVFw8Ak+7QyBTvurT0hAW90ufyh73Quxx5DeWq
- BfqhmT3yAVUW3haCtt2Hgj7a9skvBoeoZdSFgaBbr73gdrUczDOaSEKiO474wWrBIO9+
- cBVyCKn7FI+kuYPM2PndREJeJvsyOw5FHkWGc7yjSTbmLU2TPqpr8uNvahazhceassyP
- F7gw==
-X-Gm-Message-State: APjAAAUw0mvgs9fuD6O1pb3lDy8M4R8XJesfEgwrukN0Tm0XYG1GfSKJ
- ztwbBA5u4djxRZusTA41cfyYvw==
-X-Google-Smtp-Source: APXvYqz2vj6Pgsy6F84tE3aQDlNEnC9+RQ4ii05ruDyt4SAk47H8ID+zF34jKKHl9DI4QEsykUwmJQ==
-X-Received: by 2002:a05:6602:24d2:: with SMTP id
- h18mr1201975ioe.221.1565142000988; 
- Tue, 06 Aug 2019 18:40:00 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=MuFa6tZ7vFSe1LOVI7ekbYPMVwhBLKkDTybz3Yw3r44=;
+ b=pYJUWRrnu5SJdUfZsNQsd+KpasmFRwhj/iIiOAihrUP8Zz5HaYsl2XkIXoeYlsne2w
+ wqvzpcYV+pfi7+KUc97/N5TUJP1H79o4iBXcZARWFWYW3JQitbhPDcWvgSDBqJo6+Pub
+ rfnYr4FVi1o7YqPWsVeAEPJrJrqJ4vBTb22o+03JHbdluaFKJEyCwjQ/TcBvH7qoNQZz
+ dxcn2AvPET3LjQheYDQdch7hh5LDamoZIpO4RsfiLHGlKtsNk5jVa/xuEjnxvlAWXM9f
+ nheq2ckEtqRuwOpxOq7fOGYtnDMmEdpJUXYqwKKKQfK6FCAFOMi3TUZkK5tsN6kyO/4j
+ BOdQ==
+X-Gm-Message-State: APjAAAXJWQGT/y9UlRXahHYwD6SnaIudwVwlS22fHqah2a+aXvxr7ouA
+ Y/ne2kJEofyfQi+i2UhyuuugBDf1iuw=
+X-Google-Smtp-Source: APXvYqyRjgjRUfPtCrkI5GZQR86YZZs4UWw3xYp+cV8dbhHh18X0tcLi4UP7kagxmb+VJst8/pQJ1A==
+X-Received: by 2002:a02:1441:: with SMTP id 62mr7791725jag.21.1565143627162;
+ Tue, 06 Aug 2019 19:07:07 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- e12sm2092729iob.66.2019.08.06.18.40.00
+ h18sm69825603iob.80.2019.08.06.19.07.06
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 18:40:00 -0700 (PDT)
-Date: Tue, 6 Aug 2019 18:39:59 -0700 (PDT)
+ Tue, 06 Aug 2019 19:07:06 -0700 (PDT)
+Date: Tue, 6 Aug 2019 19:07:06 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH] Use CSR numbers instead of names
-In-Reply-To: <CAEUhbmXz9EzjJvc4BQ46CGfSe-qyB0W7MEDZvABCpo5aLzXf3w@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1908061838260.13971@viisi.sifive.com>
-References: <mvmr25z4toj.fsf@suse.de> <20190806204939.GA19596@infradead.org>
- <alpine.DEB.2.21.9999.1908061703100.13971@viisi.sifive.com>
- <CAEUhbmXz9EzjJvc4BQ46CGfSe-qyB0W7MEDZvABCpo5aLzXf3w@mail.gmail.com>
+To: linux-riscv@lists.infradead.org
+Subject: [PATCH] riscv: delay: use do_div() instead of __udivdi3()
+Message-ID: <alpine.DEB.2.21.9999.1908061906240.25231@viisi.sifive.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190806_184002_445185_B5F9B28C 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20190806_190708_346715_7CAE043C 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -100,37 +95,45 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@infradead.org>, Andreas Schwab <schwab@suse.de>,
- linux-riscv <linux-riscv@lists.infradead.org>, linux-kernel@lists.kernel.org
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 7 Aug 2019, Bin Meng wrote:
 
-> On Wed, Aug 7, 2019 at 8:04 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> >
-> > On Tue, 6 Aug 2019, Christoph Hellwig wrote:
-> >
-> > > Looks good.  I've been trying to get the same patch in for about two
-> > > month now, maybe this one has more luck..
-> >
-> > Thanks for your patience.  If you have patches from one of your earlier
-> > series that you think should go in as fixes, it's helpful for us if you
-> > split them out from patches that are intended for the regular merge
-> > window.
-> 
-> I have already sent a similar patch (with more places fixed) on Jul 11.
-> https://patchwork.kernel.org/patch/11039421/
+In preparation for removing __udivdi3() from the RISC-V
+architecture-specific files, convert its one user to use do_div().
+This avoids breaking the RV32 build after __udivdi3() is removed.
 
-Christoph's patch predates yours.
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+---
+ arch/riscv/lib/delay.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-If all looks well with your patch, I'll update it to remove the overlap 
-and queue it after his.
+diff --git a/arch/riscv/lib/delay.c b/arch/riscv/lib/delay.c
+index 87ff89e88f2c..8c686934e0f6 100644
+--- a/arch/riscv/lib/delay.c
++++ b/arch/riscv/lib/delay.c
+@@ -81,9 +81,14 @@ EXPORT_SYMBOL(__delay);
+ void udelay(unsigned long usecs)
+ {
+ 	u64 ucycles = (u64)usecs * lpj_fine * UDELAY_MULT;
++	u64 n;
++	u32 rem;
+ 
+ 	if (unlikely(usecs > MAX_UDELAY_US)) {
+-		__delay((u64)usecs * riscv_timebase / 1000000ULL);
++		n = (u64)usecs * riscv_timebase;
++		rem = do_div(n, 1000000);
++
++		__delay(n);
+ 		return;
+ 	}
+ 
+-- 
+2.22.0
 
-
-- Paul
 
 _______________________________________________
 linux-riscv mailing list
