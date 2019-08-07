@@ -2,131 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C984484B9B
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 14:30:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 974F384D08
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 15:31:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SJgJbreDT82EwW+BclT83RFkKGK5OrESVM3bAsX7Vis=; b=u+oLozNLnwycLE
-	m7gQIm24V1VvpF2mCg6q3AAu+xqL6KC4+SUTUL6b1lZ5vBTPYH8kElW4V8xkVugh5UlWuIPyAzfcj
-	7OqWdzPdOwG2RVCzTwS8TOPh2GM/PEtqbGXWFoccBTAkjqwr58zxous+CB6w3R2XqbqKmUDHkLEPk
-	lkpriwFxS1K3c5R9XOATB3BMvjSb6GnhndLlpH2neitYq2gWARGiMxu6cJU5bLRQXF3ETr6K/Ei6e
-	+KkXfDTlBs8+wcNRmRBbxFJDJ5mEoBl3ULmg7vmoTuRcLQvZVQbepO00EelfBx5xbqKSbqPocGa8s
-	o7ziVQbAn4KQ8Ywa8SDA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=1CqDer4WNRV9NifasB2h4fGtqn4CEkVoxqVOhznk9gE=; b=B3tCRe8yH09O5whAErdJkt1qf/
+	BjDUOFsqDXZBeCw7W+KZ0sqB6pSdcZkC1C9jXZBZhKpB/TtyUZ87Jg732qL+MgHl+1hBJtIOBFLf2
+	Qj317NpWv7t2QPG+l2e1sY6TQJu1vsDj2VWTVmZsAXjBHirmOlt0CIxaChL20aLkEvprrXwf/h+Lh
+	Db2NIHJx6RU1NDd7wRE3aXmSY48iXSAuD6N8h9YJGCl4CkRk3UPa3nyZ271tR3iZBLx7NaOC0SJvE
+	gRyPaHMTY9t6sYE9UYcQ8DtexbgD1FH1gdpELWwRYCiuzaGeclAz5TaGqCkyaS6NYOIi8P51OGcef
+	WFwoBQOg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvL4o-0005xv-K8; Wed, 07 Aug 2019 12:29:58 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1hvM21-00081X-7G; Wed, 07 Aug 2019 13:31:09 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvL4k-0005wK-Fe
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 12:29:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1565180995; x=1596716995;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=3u1NszC443yEKj5kaDpg2i3t+suoljz7XNZs0nlfAag=;
- b=D1f2EKmMCmIVOPyUY5vQmCFNn66gnzM7dwWerDMFZlrtyQHQeF3YS5wU
- ZIKcEMxxv6JtAQ3s9y7pSe6NhnAqAZrWEKbuzlEQNcjk2twUKnwzlxFAH
- rC1URNkRgjJ1n0ao9TbVQyLaEiAvlmf+W+tuJUJmMzmTKEkbSq+EM4Mf2
- fooinjHGlKcO9pDyixUKq8P4moZxM7BiTJsx6XtTmn7gbFPx787H9EGI1
- +IfHIsN20BbI+ySze5A9Qp+7x5qnulmMMR0Tw49qgVHhT6dwsbYiqSHfb
- O0/w7M61egvWn+TzqGyuox2VJ+Fk3AdfA+pOVcnOIVv8P0LeZxXhZhrko w==;
-IronPort-SDR: 6jWG/DruVC8keScpcRoNEpgxL8jXlCFvDnXO7qlCH+l9Q6l7Gk0A/NRH8chvhDsSgwRmu97UA6
- F5rt6qLDlnak2QI8X66FrTgay/jsXDaftuW5Di7ObNnE/Qpzwh+qP8IBnopvjPO0oS5DOSSNyn
- RAyqpmeKaV2NSoL9RnLZeJRrMOWfM6ym/2LUk7Zgp8KB5sGCCnY82eyXxf4EODS7OoCtqykN5a
- q4Sl9DsFISUkpUHeS86YSdMEX0RB7EVwRyabczIbjK6rvazwlLSYvutfHJ82k2GMtSnBkdHVoh
- mk8=
-X-IronPort-AV: E=Sophos;i="5.64,357,1559491200"; d="scan'208";a="116203187"
-Received: from mail-sn1nam02lp2058.outbound.protection.outlook.com (HELO
- NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.58])
- by ob1.hgst.iphmx.com with ESMTP; 07 Aug 2019 20:29:53 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=izNpJimn0RrDFSvOkBjCHhVBs2aqQ7RPfk+3V1+KJseEd+ZSnsGE3jPtCy30tHeW6ho4jnI3PxNS/uiz3MSTWRU/2cx/bUNHNx104BYWfwceiG8nhgGNRG3hdSvkXEiUzJFvPz+EzqGOOXSAyLKGKMI5hO3iol19f2q2L1LytkpJgBkG+I9juEgMEVTo5vM9YGTrwXuJiNt6+MfWtCOKxN3zGQdSDaB6MgDDiMjLA/eaB/5uSmcL/fN8S77Sfwmb7PB1uQRynefPl1ymJ07uDsxug/i8JWGn8o4uEXmTn940bOd7iyv/JucG3kOPy+8ATdc9SdA7B9RAC8jHcSZyQA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q4AivMRpN9KjzXaQF132a4bIMlE2/Ke/b29pplIreMw=;
- b=jzjnGOoZRYlwP7R20Lj9pam9duXMzIhfeyRfKCN+kWMGWSYFiBV1/1sFXz+0GNDlND9SQKbfeFg50rPg5cHZCPKfnzplzaW3GhbIICU+aYIxxo809WU9Wj1ipsFmAdVdYILKnmk8USS/OXOdart3r8vxYj0adQEISfzJYaCRvx+PoE431UtKTdq+8V2K5W1y92xc9Y7i6ZHot5/3rtUrfGxNWdzhjD/T1XoSR00QLM+mycqKdgPVSYZWpEahShnVgFOFr2vnhKohccYsaC2REHwOq7L7BZv9SraIGsOmtVWi09kUuTrzeGlHCIdKBrqakYGXY6Ia6wXLPpa7BwqvTQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=wdc.com;dmarc=pass action=none header.from=wdc.com;dkim=pass
- header.d=wdc.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q4AivMRpN9KjzXaQF132a4bIMlE2/Ke/b29pplIreMw=;
- b=DMyQx4L+0NL20rqABqPviYeSH+1qk/9bNbfpr0ydkEX7/scb+jQunv4IhBOtqu0pu4jxjPYlWfRVSsDM/X1nNCJUqTG8yvMr0Uhix7pzV6V79cbyRd0TnSzurquaEXrFjFKl+udDi1i2THPp2iriKH5+CZxXuyOltQ3+vBY30pQ=
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
- MN2PR04MB6736.namprd04.prod.outlook.com (10.141.117.145) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2136.17; Wed, 7 Aug 2019 12:29:51 +0000
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::a815:e61a:b4aa:60c8]) by MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::a815:e61a:b4aa:60c8%7]) with mapi id 15.20.2157.015; Wed, 7 Aug 2019
- 12:29:51 +0000
-From: Anup Patel <Anup.Patel@wdc.com>
-To: Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley
- <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>, Radim K
- <rkrcmar@redhat.com>
-Subject: [PATCH v4 20/20] RISC-V: KVM: Add MAINTAINERS entry
-Thread-Topic: [PATCH v4 20/20] RISC-V: KVM: Add MAINTAINERS entry
-Thread-Index: AQHVTRvPZ34CmfY7TUCMCviohgK7+A==
-Date: Wed, 7 Aug 2019 12:29:51 +0000
-Message-ID: <20190807122726.81544-21-anup.patel@wdc.com>
-References: <20190807122726.81544-1-anup.patel@wdc.com>
-In-Reply-To: <20190807122726.81544-1-anup.patel@wdc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: PN1PR01CA0097.INDPRD01.PROD.OUTLOOK.COM (2603:1096:c00::13)
- To MN2PR04MB6061.namprd04.prod.outlook.com
- (2603:10b6:208:d8::15)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Anup.Patel@wdc.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.17.1
-x-originating-ip: [49.207.52.255]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 40629482-913a-43e5-cf72-08d71b32f1a6
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:MN2PR04MB6736; 
-x-ms-traffictypediagnostic: MN2PR04MB6736:
-x-microsoft-antispam-prvs: <MN2PR04MB67362B73540E71E52F4570858DD40@MN2PR04MB6736.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:2201;
-x-forefront-prvs: 01221E3973
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(366004)(136003)(376002)(346002)(39860400002)(199004)(189003)(386003)(4744005)(1076003)(3846002)(446003)(86362001)(186003)(26005)(11346002)(76176011)(52116002)(36756003)(54906003)(6506007)(102836004)(55236004)(2616005)(478600001)(44832011)(66066001)(110136005)(7416002)(476003)(486006)(8676002)(6436002)(6486002)(6512007)(4326008)(81166006)(81156014)(316002)(66476007)(66556008)(305945005)(68736007)(2906002)(53936002)(25786009)(256004)(5660300002)(14454004)(50226002)(7736002)(71190400001)(99286004)(66446008)(6116002)(64756008)(8936002)(71200400001)(66946007)(14444005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6736;
- H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: vHPRieX2mRrvpoEXlIwBP41msTJhevTZQWbkzFz1yoKxn5Jup4s5YzuTkT9reY0kyElCsLhCNR4ZBpUvGnHbWu82G8SzzK6gOrmY8+yaHLYYBg4ZyCfZEAtOQka8nX+oecq7pTKpbvw2L8ZCNDWJThie/wZc9zp5fJsLZ/dzhDI4cl24HibFa5px6cxGYAvlSAOv3xqUDoABUAsjm6BwPtTh7BV7RsJl7NCrkdCoqo76qojALll3pMpMLM8wryTo9w1SPFDeb7PBRUFRB54xBNExFJHaTXaGlgc/VtWhNy41JOwafIsCDEk/GKyENoEJ/49Gv4DUJIxyrDy0DDhC3INV50lz6F6kashSdTTCNfHJSWd1W+9DP29Hro6CPmp++eYGzbrt1TndjI0/51d1aAX4pO0RCSSDusLzOFgK4ME=
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 40629482-913a-43e5-cf72-08d71b32f1a6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Aug 2019 12:29:51.8187 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KRmjRcxd3597cRt3BbqzCxceJX/Yv6WcawRLd+M1rXf+Uz3z+7g7JZGFFS3fXp+yDwjCwgua2tAilzCuKlSwMg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6736
+ id 1hvM1x-00080b-Lb
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 13:31:07 +0000
+Received: by mail-pl1-x644.google.com with SMTP id a93so40793368pla.7
+ for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 06:31:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=e1qgTbhZ3ilsUFJdPMIsnkWUy0Sq5muknSgMZN/FEUs=;
+ b=n0NkoRumuiNGa89NyRsLYLINlG24HJgySkd6Jq0w/YYGjFBPtrepN1XIih5CYhpOiJ
+ lckztJkDgtNQROigUO0sDRt1/BoW2ZTizewLDeO4XwkZTJc92mMLcrXMwqB9BeNbElpR
+ 6I5MmjFwLXhcSr32dLkmep5Wy1qRw55yQEq96UcgkLFKkxXCVqjO2Lx3ZEPMLfjmAhkF
+ QYle0rXftZyEKRl0S4zZI+x5faFbO3/vpzvRPzAPmK7M+XY+beqO5+D2dirqJ6gkvXyf
+ QKWE+k399+XYkAdjdmseQrCFbqSX8VYP4NAYMRrEDqhB/uE2Ue9SZAUicZy0II8G3Sgb
+ 2iMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=e1qgTbhZ3ilsUFJdPMIsnkWUy0Sq5muknSgMZN/FEUs=;
+ b=dWt9sq2Vmg/LrKPSJdZ8ZuH7XE3IqyuIY5bXJGWi2XcxHAdBOrUcBGUI8so1Oc7zlW
+ lW4RQSbyYn1d612KyFKUfgpe9g/3bCUv01dZq1LEB2xCSJVGCmjM55TNGpbXoUPV7Vdw
+ YLaJyq72DqcfTJPr+VeXyXCK/jIxslnTZU2+mswYYKYw24SlIzcj0uiOwPgG/pO6/O13
+ 8qMKL1ram1nOwtKdUnrmABA/p5+C87GEehBA7N0C4O70L6/kuYTU6Uv5GzyyVjVpH4Cl
+ CvJfDXQU6x5W0tFv4ivwILOgADj6IitCdxA/ognpKipV9rhDbgmjtpKTauH1DnuAre25
+ Jltw==
+X-Gm-Message-State: APjAAAWRftA176s2TTKREYMnfKFVQyYWEr0QNj5XarOYStFiRlV1pCJ/
+ NRmZimhgQ2YYonus5LQjyOfh6enq
+X-Google-Smtp-Source: APXvYqzRcSxU7bCc8aTKDsA9pItoBJnbVvlv6UoQ9Jcu5JZx/glDXhTuzwbYvv/lBWzlf4P3tuKiEQ==
+X-Received: by 2002:aa7:8108:: with SMTP id b8mr9501158pfi.197.1565184665086; 
+ Wed, 07 Aug 2019 06:31:05 -0700 (PDT)
+Received: from localhost.localdomain (unknown-224-80.windriver.com.
+ [147.11.224.80])
+ by smtp.gmail.com with ESMTPSA id f7sm88423063pfd.43.2019.08.07.06.31.03
+ (version=TLS1 cipher=AES128-SHA bits=128/128);
+ Wed, 07 Aug 2019 06:31:04 -0700 (PDT)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org
+Subject: [PATCH v2] riscv: Using CSR numbers to access CSRs
+Date: Wed,  7 Aug 2019 06:30:56 -0700
+Message-Id: <1565184656-4282-1-git-send-email-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 1.7.1
+In-Reply-To: <1562831376-21255-1-git-send-email-bmeng.cn@gmail.com>
+References: <1562831376-21255-1-git-send-email-bmeng.cn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_052955_300545_06AC80B9 
-X-CRM114-Status: GOOD (  11.82  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190807_063105_738438_92E2658F 
+X-CRM114-Status: GOOD (  13.54  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bmeng.cn[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -147,53 +100,206 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Anup Patel <anup@brainfault.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: Andreas Schwab <schwab@suse.de>, Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add myself as maintainer for KVM RISC-V as Atish as designated reviewer.
+Since commit a3182c91ef4e ("RISC-V: Access CSRs using CSR numbers"),
+we should prefer accessing CSRs using their CSR numbers, but there
+are several leftovers like sstatus / sptbr we missed.
 
-For time being, we use my GitHub repo as KVM RISC-V gitrepo. We will
-update this once we have common KVM RISC-V gitrepo under kernel.org.
+Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+Reviewed-by: Anup Patel <anup@brainfault.org>
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
-Signed-off-by: Anup Patel <anup.patel@wdc.com>
 ---
- MAINTAINERS | 10 ++++++++++
- 1 file changed, 10 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a2c343ee3b2c..a2923ba8908a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8869,6 +8869,16 @@ F:	arch/powerpc/include/asm/kvm*
- F:	arch/powerpc/kvm/
- F:	arch/powerpc/kernel/kvm*
+Changes in v2:
+- add SoB tag of Christoph Hellwig and Andreas Schwab
+- change CSR_SATP in mm/init.c that was recently changed after v1 patch
+
+ arch/riscv/kernel/entry.S |  6 +++---
+ arch/riscv/kernel/fpu.S   |  8 ++++----
+ arch/riscv/kernel/head.S  |  2 +-
+ arch/riscv/lib/uaccess.S  | 12 ++++++------
+ arch/riscv/mm/context.c   |  7 +------
+ arch/riscv/mm/init.c      |  2 +-
+ 6 files changed, 16 insertions(+), 21 deletions(-)
+
+diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
+index bc7a56e..74ccfd4 100644
+--- a/arch/riscv/kernel/entry.S
++++ b/arch/riscv/kernel/entry.S
+@@ -167,7 +167,7 @@ ENTRY(handle_exception)
+ 	tail do_IRQ
+ 1:
+ 	/* Exceptions run with interrupts enabled */
+-	csrs sstatus, SR_SIE
++	csrs CSR_SSTATUS, SR_SIE
  
-+KERNEL VIRTUAL MACHINE FOR RISC-V (KVM/riscv)
-+M:	Anup Patel <anup.patel@wdc.com>
-+R:	Atish Patra <atish.patra@wdc.com>
-+L:	linux-riscv@lists.infradead.org
-+T:	git git://github.com/avpatel/linux.git
-+S:	Maintained
-+F:	arch/riscv/include/uapi/asm/kvm*
-+F:	arch/riscv/include/asm/kvm*
-+F:	arch/riscv/kvm/
-+
- KERNEL VIRTUAL MACHINE for s390 (KVM/s390)
- M:	Christian Borntraeger <borntraeger@de.ibm.com>
- M:	Janosch Frank <frankja@linux.ibm.com>
+ 	/* Handle syscalls */
+ 	li t0, EXC_SYSCALL
+@@ -222,7 +222,7 @@ ret_from_syscall:
+ 
+ ret_from_exception:
+ 	REG_L s0, PT_SSTATUS(sp)
+-	csrc sstatus, SR_SIE
++	csrc CSR_SSTATUS, SR_SIE
+ 	andi s0, s0, SR_SPP
+ 	bnez s0, resume_kernel
+ 
+@@ -265,7 +265,7 @@ work_pending:
+ 	bnez s1, work_resched
+ work_notifysig:
+ 	/* Handle pending signals and notify-resume requests */
+-	csrs sstatus, SR_SIE /* Enable interrupts for do_notify_resume() */
++	csrs CSR_SSTATUS, SR_SIE /* Enable interrupts for do_notify_resume() */
+ 	move a0, sp /* pt_regs */
+ 	move a1, s0 /* current_thread_info->flags */
+ 	tail do_notify_resume
+diff --git a/arch/riscv/kernel/fpu.S b/arch/riscv/kernel/fpu.S
+index 1defb06..631d315 100644
+--- a/arch/riscv/kernel/fpu.S
++++ b/arch/riscv/kernel/fpu.S
+@@ -23,7 +23,7 @@ ENTRY(__fstate_save)
+ 	li  a2,  TASK_THREAD_F0
+ 	add a0, a0, a2
+ 	li t1, SR_FS
+-	csrs sstatus, t1
++	csrs CSR_SSTATUS, t1
+ 	frcsr t0
+ 	fsd f0,  TASK_THREAD_F0_F0(a0)
+ 	fsd f1,  TASK_THREAD_F1_F0(a0)
+@@ -58,7 +58,7 @@ ENTRY(__fstate_save)
+ 	fsd f30, TASK_THREAD_F30_F0(a0)
+ 	fsd f31, TASK_THREAD_F31_F0(a0)
+ 	sw t0, TASK_THREAD_FCSR_F0(a0)
+-	csrc sstatus, t1
++	csrc CSR_SSTATUS, t1
+ 	ret
+ ENDPROC(__fstate_save)
+ 
+@@ -67,7 +67,7 @@ ENTRY(__fstate_restore)
+ 	add a0, a0, a2
+ 	li t1, SR_FS
+ 	lw t0, TASK_THREAD_FCSR_F0(a0)
+-	csrs sstatus, t1
++	csrs CSR_SSTATUS, t1
+ 	fld f0,  TASK_THREAD_F0_F0(a0)
+ 	fld f1,  TASK_THREAD_F1_F0(a0)
+ 	fld f2,  TASK_THREAD_F2_F0(a0)
+@@ -101,6 +101,6 @@ ENTRY(__fstate_restore)
+ 	fld f30, TASK_THREAD_F30_F0(a0)
+ 	fld f31, TASK_THREAD_F31_F0(a0)
+ 	fscsr t0
+-	csrc sstatus, t1
++	csrc CSR_SSTATUS, t1
+ 	ret
+ ENDPROC(__fstate_restore)
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index 0f1ba17..86049ae 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -61,7 +61,7 @@ _start_kernel:
+ 	 * floating point in kernel space
+ 	 */
+ 	li t0, SR_FS
+-	csrc sstatus, t0
++	csrc CSR_SSTATUS, t0
+ 
+ 	/* Pick one hart to run the main boot sequence */
+ 	la a3, hart_lottery
+diff --git a/arch/riscv/lib/uaccess.S b/arch/riscv/lib/uaccess.S
+index 399e6f0..ed2696c 100644
+--- a/arch/riscv/lib/uaccess.S
++++ b/arch/riscv/lib/uaccess.S
+@@ -18,7 +18,7 @@ ENTRY(__asm_copy_from_user)
+ 
+ 	/* Enable access to user memory */
+ 	li t6, SR_SUM
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 
+ 	add a3, a1, a2
+ 	/* Use word-oriented copy only if low-order bits match */
+@@ -47,7 +47,7 @@ ENTRY(__asm_copy_from_user)
+ 
+ 3:
+ 	/* Disable access to user memory */
+-	csrc sstatus, t6
++	csrc CSR_SSTATUS, t6
+ 	li a0, 0
+ 	ret
+ 4: /* Edge case: unalignment */
+@@ -72,7 +72,7 @@ ENTRY(__clear_user)
+ 
+ 	/* Enable access to user memory */
+ 	li t6, SR_SUM
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 
+ 	add a3, a0, a1
+ 	addi t0, a0, SZREG-1
+@@ -94,7 +94,7 @@ ENTRY(__clear_user)
+ 
+ 3:
+ 	/* Disable access to user memory */
+-	csrc sstatus, t6
++	csrc CSR_SSTATUS, t6
+ 	li a0, 0
+ 	ret
+ 4: /* Edge case: unalignment */
+@@ -114,11 +114,11 @@ ENDPROC(__clear_user)
+ 	/* Fixup code for __copy_user(10) and __clear_user(11) */
+ 10:
+ 	/* Disable access to user memory */
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 	mv a0, a2
+ 	ret
+ 11:
+-	csrs sstatus, t6
++	csrs CSR_SSTATUS, t6
+ 	mv a0, a1
+ 	ret
+ 	.previous
+diff --git a/arch/riscv/mm/context.c b/arch/riscv/mm/context.c
+index 89ceb3c..beeb5d7 100644
+--- a/arch/riscv/mm/context.c
++++ b/arch/riscv/mm/context.c
+@@ -57,12 +57,7 @@ void switch_mm(struct mm_struct *prev, struct mm_struct *next,
+ 	cpumask_clear_cpu(cpu, mm_cpumask(prev));
+ 	cpumask_set_cpu(cpu, mm_cpumask(next));
+ 
+-	/*
+-	 * Use the old spbtr name instead of using the current satp
+-	 * name to support binutils 2.29 which doesn't know about the
+-	 * privileged ISA 1.10 yet.
+-	 */
+-	csr_write(sptbr, virt_to_pfn(next->pgd) | SATP_MODE);
++	csr_write(CSR_SATP, virt_to_pfn(next->pgd) | SATP_MODE);
+ 	local_flush_tlb_all();
+ 
+ 	flush_icache_deferred(next);
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index 42bf939..238fc41 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -435,7 +435,7 @@ static void __init setup_vm_final(void)
+ 	clear_fixmap(FIX_PMD);
+ 
+ 	/* Move to swapper page table */
+-	csr_write(sptbr, PFN_DOWN(__pa(swapper_pg_dir)) | SATP_MODE);
++	csr_write(CSR_SATP, PFN_DOWN(__pa(swapper_pg_dir)) | SATP_MODE);
+ 	local_flush_tlb_all();
+ }
+ 
 -- 
-2.17.1
+2.7.4
 
 
 _______________________________________________
