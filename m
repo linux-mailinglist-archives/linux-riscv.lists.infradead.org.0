@@ -2,72 +2,65 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B966E8451F
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 09:05:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 97F5784591
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 09:20:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wTGN/0FYpDrWnMQz3Ish0rllM9f8eupKu7buHJCupxg=; b=mYSQIbAgOoKKEprJZCmjYC6jf
-	/86Z/wUJqVvuSgpWczyXw/M1A5KTlD6b5T4tYHeVqQ4YNIItJTNXiylAx6WqrBi5LVKDcUXJWDlvZ
-	r56Nvnqd6stZM0jEzE9VcBc2721svCkOWVbPUuc1/65kpgh1AjSXHYO6heIhsoVXr9odz/t8uUnOj
-	zlfEbI4M7PO0EYlEjYsgklB5QTEEgusuRlMAey9G0/IwPUAPq4BP2xVOIjT+rf8wrk1kz1aqMVnRG
-	Op/Eax6FVbh/NluNjtZL1cDu+bt4o/N3uzfiDNRGpWhnhb6Qy3Kkr0gydJ/JdThysjW2ShpR9jF1U
-	87h5DE7mA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aHVfqjkhauYHvEPVxV7KasOHrPUyGYoLSh0AZ3B+5qA=; b=SXLocmJ1+HjlOf
+	IuTDwbcBQLObH79kDGlxDrXtW7/1MoXb2vjIyTAvs+BvNyutbn7jwn56YgKNFqU4ELKtbspvNIpiS
+	2ahxRVdo38W9thj5o9/ZljyzQ1g2c+CiRq0Gju+SZpxhFFjdemGlqGvzUInv9gMA8qZP4zapUH9iF
+	gsnEuSMw7Omz5xWktx+32IKsAIeWcUb6fz6TFjFCh7ZNydf+J6Xwyl75m7GuYCd+YbcuUhsmyTgGf
+	RCvRn6clCH5RfDUcp9SgJBI6ON9vnBjvyee9Y86GwS3OezTV+VLRlMudOcoC4gONXzgkNKxxZlpXS
+	tl9XINKFMhX/DeLFYczA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvG0m-0007ez-7r; Wed, 07 Aug 2019 07:05:28 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1hvGFC-0004WT-2I; Wed, 07 Aug 2019 07:20:22 +0000
+Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
+ helo=ATCSQR.andestech.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvG0h-0007et-Aj
- for linux-riscv@bombadil.infradead.org; Wed, 07 Aug 2019 07:05:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=4mDLaL3DkuB2WbR0e1ggrWcP4UbYYCWhGEa9qaDpcG4=; b=c1G6MPbjtu7P7Up+XxEgIZDwnr
- EVKRGuGN5gTBJ2eByhuvzISnu0o50tvvkNNu2hlz4ebsJE7jtQfgJafafVmP3CasWJJmbhx4NKSgc
- lXtvyHrJsFzZCvlgI/CdaJnUdTu/2BRdfWixI1u/eF+RehvMgQfjuEEbQlIdLf0NXCOgMqYvdlbnu
- sgEsl9LaWueX3wGnRPlhKUPEu/xiTtnJ7IVS80JWZu7srdp58VhmbDoCHEEU6wJFsnyGGKOsa2puY
- Kp+O3q0f+qCjPvXtkHuSGocfMii7H7C+8J5mUNa5SbfK2SwexMIz02fOcnjHYT20oawq5mmnq+8l2
- jNm2veBw==;
-Received: from relay12.mail.gandi.net ([217.70.178.232])
- by merlin.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvG0e-0003iu-EB
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 07:05:21 +0000
-Received: from [10.30.1.20] (lneuilly-657-1-5-103.w81-250.abo.wanadoo.fr
- [81.250.144.103]) (Authenticated sender: alex@ghiti.fr)
- by relay12.mail.gandi.net (Postfix) with ESMTPSA id 7F6B9200006;
- Wed,  7 Aug 2019 07:04:40 +0000 (UTC)
-Subject: Re: [PATCH] riscv: kbuild: add virtual memory system selection
-To: Christoph Hellwig <hch@infradead.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
-References: <alpine.DEB.2.21.9999.1907261259420.26670@viisi.sifive.com>
- <20190802084453.GA1410@infradead.org>
- <alpine.DEB.2.21.9999.1908061648220.13971@viisi.sifive.com>
- <20190807054246.GB1398@infradead.org>
-From: Alexandre Ghiti <alex@ghiti.fr>
-Message-ID: <c331e389-5f33-634a-f62f-e48251ca4cfe@ghiti.fr>
-Date: Wed, 7 Aug 2019 09:04:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ id 1hvGF8-0004VR-28
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 07:20:19 +0000
+Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
+ by ATCSQR.andestech.com with ESMTP id x7778Nlw027022;
+ Wed, 7 Aug 2019 15:08:23 +0800 (GMT-8)
+ (envelope-from nickhu@andestech.com)
+Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
+ (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Wed, 7 Aug 2019
+ 15:19:21 +0800
+From: Nick Hu <nickhu@andestech.com>
+To: <alankao@andestech.com>, <paul.walmsley@sifive.com>, <palmer@sifive.com>, 
+ <aou@eecs.berkeley.edu>, <green.hu@gmail.com>, <deanbo422@gmail.com>,
+ <tglx@linutronix.de>, <linux-riscv@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <aryabinin@virtuozzo.com>,
+ <glider@google.com>, <dvyukov@google.com>, <Anup.Patel@wdc.com>,
+ <gregkh@linuxfoundation.org>, <alexios.zavras@intel.com>,
+ <atish.patra@wdc.com>, <zong@andestech.com>, <kasan-dev@googlegroups.com>
+Subject: [PATCH 0/2] KASAN support for RISC-V
+Date: Wed, 7 Aug 2019 15:19:13 +0800
+Message-ID: <cover.1565161957.git.nickhu@andestech.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <20190807054246.GB1398@infradead.org>
-Content-Language: fr
-X-Spam-Note: CRM114 invocation failed
-X-Spam-Score: -0.7 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
- Content analysis details:   (-0.7 points)
+X-Originating-IP: [10.0.15.65]
+X-DNSRBL: 
+X-MAIL: ATCSQR.andestech.com x7778Nlw027022
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190807_002018_366168_03AE212F 
+X-CRM114-Status: UNSURE (   6.35  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.4 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.4 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.178.232 listed in list.dnswl.org]
+ 0.0 TVD_RCVD_IP            Message was received from an IP address
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
+ dynamic-looking rDNS
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,65 +72,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Nick Hu <nickhu@andestech.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 8/7/19 7:42 AM, Christoph Hellwig wrote:
-> On Tue, Aug 06, 2019 at 05:02:03PM -0700, Paul Walmsley wrote:
->> The rationale is to encourage others to start laying the groundwork for
->> future Sv48 support.  The immediate trigger for it was Alex's mmap
->> randomization support patch series, which needs to set some Kconfig
->> options differently depending on the selection of Sv32/39/48.
-> Writing a formal todo list is much better encouragement than adding
-> dead code.  Th latter has a tendency of lingering around forever and
-> actually hurting people.
->
->>> but actively harmful, which is even worse.
->> Reflecting on this assertion, the only case that I could come up with is
->> that randconfig or allyesconfig build testing could fail.  Is this the
->> case that you're thinking of, or is there a different one?  If that's the
->> one, I do agree that it would be best to avoid this case, and it looks
->> like there's no obvious way to work around that issue.
-> randconfig or just a user thinking bigger is better and picking it.
->
->>> Even if we assume we want to implement Sv48 eventually (which seems
->>> to be a bit off), we need to make this a runtime choice and not a
->>> compile time one to not balloon the number of configs that distributions
->>> (and kernel developers) need to support.
->> The expectation is that kernels that support multiple virtual memory
->> system modes at runtime will probably incur either a performance or a
->> memory layout penalty for doing so.  So performance-sensitive embedded
->> applications will select only the model that they use, while distribution
->> kernels will likely take the performance hit for broader single-kernel
->> support.
-> Even if we want to support Sv39 only or Sv39+Sv39 the choice in the
-> patch doesn't make any sense.  So better do the whole thing when its
-> ready than doing false "groundwork".
+KASAN is an important runtime memory debugging feature
+in linux kernel which can detect use-after-free and out-of-
+bounds problems.
 
+There are two patches in this letter:
+1. Porting the memmove string operation.
+2. Porting the feature KASAN.
 
-I took a look at how x86 deals with 5-level page table: it allows to handle
-5-level and 4-level at runtime by folding the last page table level (cf
-Documentation/x86/x86_64/5level-paging.rst). So we might want to be able to
-do the same and deal with that at runtime.
+Nick Hu (2):
+  riscv: Add memmove string operation.
+  riscv: Add KASAN support
 
-Regarding my series about mmap, x86 does not care about the width of the
-the address space and sets values of ARCH_MMAP_RND_BITS_MIN/MAX based
-on 32bit or 64bit (but then does not respect the magic formula as in arm64).
+ arch/riscv/Kconfig                  |    2 +
+ arch/riscv/include/asm/kasan.h      |   26 +++++++++
+ arch/riscv/include/asm/pgtable-64.h |    5 ++
+ arch/riscv/include/asm/string.h     |   10 ++++
+ arch/riscv/kernel/head.S            |    3 +
+ arch/riscv/kernel/riscv_ksyms.c     |    4 ++
+ arch/riscv/kernel/setup.c           |    9 +++
+ arch/riscv/kernel/vmlinux.lds.S     |    1 +
+ arch/riscv/lib/Makefile             |    1 +
+ arch/riscv/lib/memcpy.S             |    5 +-
+ arch/riscv/lib/memmove.S            |   64 ++++++++++++++++++++++
+ arch/riscv/lib/memset.S             |    5 +-
+ arch/riscv/mm/Makefile              |    6 ++
+ arch/riscv/mm/kasan_init.c          |  102 +++++++++++++++++++++++++++++++++++
+ 14 files changed, 239 insertions(+), 4 deletions(-)
+ create mode 100644 arch/riscv/include/asm/kasan.h
+ create mode 100644 arch/riscv/lib/memmove.S
+ create mode 100644 arch/riscv/mm/kasan_init.c
 
-And FYI my series and your patch are already in linux-next.
-
-Thanks,
-
-Alex
-
-
-> _______________________________________________
-> linux-riscv mailing list
-> linux-riscv@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
