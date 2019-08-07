@@ -2,81 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38B3E85020
-	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 17:41:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E9F128503B
+	for <lists+linux-riscv@lfdr.de>; Wed,  7 Aug 2019 17:47:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wN3ZuyQ1raO0X6gC6F4Afu2JGb34YDbhE39KZ7np/eU=; b=Q24F15pGWbh5BU
-	kdtPZRrgQeLz07u4cDT5MSJJDj+SloFxLgis9EpFFic+CxArWsshy2YEuYoD/fBVvXvaOBX5raCPG
-	MwQwiILfT3i0rqsz4IzGJ8Bcs2AH6HIv3qS23BV8vKtPNjwyOtgI/ZhEtA27E6XonJs/PM2K0DQ1r
-	olGbG6BnfK3Do3bmMmwLyqxOmtus30YR7UQWfyYSHy3KY8ayupXA2XkSM/q0jKdGllFwKbScNSUnu
-	8WbiPCdwwKd68wqVnju4ZosxvxmkcYfPQ3Dc8vY+PxBHG21jz23vFNTrnxWvLnbMAOBXELk2P6UiH
-	MknwIqJZjcPViU5jfUMA==;
+	List-Owner; bh=UGfmVMPQXs0MiqafRyCqiSZafopA/H9T7EkxhXMF6pw=; b=UjmPJLluU4U40p
+	a6W4F2598if2dxDAfk+W5yOGAuf8gHtfGUxWOgxxyaaj9vaLytmGBwD0d0jYjq0v1b+0ZZ4ess78U
+	ztxOSWvnGZ+karpgLni0U02x23082W+/BR5nWZaypM4YyHcpddsCrqRNj8ww9dK82l3eUp8h2sZaI
+	r5CiqYoyhBorWnGNV3Rpa1HgYK9Zqo1otLM4xl4KK44fQ7MA1hRIv5Ql6L9+MIBYGsV6g6UcT1Os9
+	zODd/t0CyyyjQqpE0746sj+v9Es6Pl9lPzpq0Say8XSuYtbkMJwJBaOB8lNcFAi1/gr8yunsFZjOk
+	agQ1Gh1fdvcL77G8kK1g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvO3k-0000d6-UJ; Wed, 07 Aug 2019 15:41:05 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1hvOAG-0002rH-Fz; Wed, 07 Aug 2019 15:47:48 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvO3h-0000cc-Au
- for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 15:41:02 +0000
-Received: by mail-ot1-x344.google.com with SMTP id n5so106138182otk.1
- for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 08:41:00 -0700 (PDT)
+ id 1hvOAC-0002qu-Hv
+ for linux-riscv@lists.infradead.org; Wed, 07 Aug 2019 15:47:46 +0000
+Received: by mail-ot1-x343.google.com with SMTP id j19so29477580otq.2
+ for <linux-riscv@lists.infradead.org>; Wed, 07 Aug 2019 08:47:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=HAXloeaOD6Dgz0TeHmNMEkOukZ7q9iclSHb8TPMnnoM=;
- b=MpR6TPeY9ksExXbV1M0WZ4jh4/JwJ9vWGRF9Q289lrNZt6ApwrI38CI+eNBR2DkMNa
- Z7kScwuTmiRNYxUCmrhHLisuDE7Jq6jOB6Uy5ZU+gWd24CE2XuQKs/7HOsVWT5q4QYua
- 0uVXOCj7D12af1thKryyrhhJNQYJeGuHuo6mHxA3Em5MvzfobH7So0FWtWQRRIAv9cpK
- SKGbb+p6Gx21xSqHvNDTgXbWQ6wLvI8lAggwhl53uqM/EKM/49TBSh42hrAepJq0swFZ
- IrsJjSxAGrDjL7077HKRQ9LC6pgVFEbioMkeUxrVjzA6YqVgZD5u3o5nUM0Nz6aGTkLd
- KPNA==
+ bh=xzguxg3e6FgOb+F/eaFCQZePginNBmhZZuD4tHytb2I=;
+ b=cHPIz5ryjVmGv+VFgBf1npA/oIGv4hxz82Ime5SNT5QfoaoQpk6foI6+P/5iJgTiuF
+ zJrnfHEbXka8IBcj1RUUzLR3WuqDR+CBVw4Y5VdsdtNFVS1X7aGNwDUMEdWSuhZ+2Rrg
+ h8qkYJ7aiMREKPnWKTi9+lco25APZmI1YCX/8i8eGvKT791lNWmjCWWGwuCj/1reJBZL
+ 4GJ8VdY+sdJpbznWJqls7dgCJ19dNk3OjGTVBGIvohvH/wIWLNRYCdQPV3VrkJqWAeDm
+ jQHhLZVXRS+G3dnvhL9ERJLrZ9H+UN46WUD5lMJE9Us22dhtTo0K/QXeiIElDr/AW6Zv
+ 5XCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=HAXloeaOD6Dgz0TeHmNMEkOukZ7q9iclSHb8TPMnnoM=;
- b=EPLPWINcH4ySX4bH/AOY23VAOcL57n4H22hbdgnUTMDffx9WpOlFQv632iUNy1/PId
- mCmTlSzrQ7xbyTUAw3LkPUkf1ZQyMe3qse1ho5B0BsCypmji8RXAEWXuHTEvfVpxbpnY
- T+7znSDB43hQTIeRfd00/N/vzE/q167w3UjizzD17u7jBl8xahhjmJIb8MAoMNH/i4NW
- tWpwGrRbGu5pcLUT+qegS+Od4gxYWKCJ2xFzh2Lm5oOkXNPRhkV1b4VtK/iPevKprngx
- UXM0BDU4pMBrqoKBOlEUTALJI/TiMv2zitcB35bTW77mWsG20mhj/H0RTPaw7ishV8be
- ppHw==
-X-Gm-Message-State: APjAAAU9/r3lkZoHVQTIkvFAQ5RwlhnKe5Hgoi5bN7UcmvravLBgZ4l7
- Phyo+t077S+DDS43Vk6W9/OZiSnRZsE=
-X-Google-Smtp-Source: APXvYqwyIB1L+QiELH/YNHUY/Gf3N1VW1Uv2dDPLw4xrbndDgaWQH9vQgWS83jDCgfoU7TiFL406Bw==
-X-Received: by 2002:a5e:8e0d:: with SMTP id a13mr3602621ion.28.1565192459955; 
- Wed, 07 Aug 2019 08:40:59 -0700 (PDT)
+ bh=xzguxg3e6FgOb+F/eaFCQZePginNBmhZZuD4tHytb2I=;
+ b=acAcz4yK2/BipE8TzgN7V81nnytGLkKFBqC3ejoDtdS6q9DclpFkch1x2hr7y39pAi
+ nlcT8T0+IVGZ7yNR7AEJtNObw5hZwvE/3Xwah/OIS8ZaAJ/2ZlPAo4W+lIJk9I5yeUi+
+ fEfbnQISAOHWyKFxfI/46m7JdpHWN3JpP9fvp5aPA+iTERAh2vL+kblZaHG7QWzbUkje
+ T7cELSd0KWdYRqerysNXfOVP1vyQFW772KqzsnPNTivEVyKfG0SQctWwgObxwHq+Ztoz
+ dHL771TelQJFSaUH0lmn0Qyr+JLAS2RFHalBx1SG1GbFUmq1YYDNrNobN+hiWwW9J6Lz
+ 8LPA==
+X-Gm-Message-State: APjAAAWYIvNrQI3a96RMY5IyrwW2lj3gSr4I4ByjL7eF4FYHGH5ZnpUt
+ vEGCxf0btS6tXI0v8xSkQ94ffw==
+X-Google-Smtp-Source: APXvYqwB3p8QlLKaAumTewDu7nmGXL088id5EDhO8qw5GnYhbyPs/cQM9727r4tvwboXMKijwn3paA==
+X-Received: by 2002:a6b:dc08:: with SMTP id s8mr9787847ioc.209.1565192862466; 
+ Wed, 07 Aug 2019 08:47:42 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- a1sm68914330ioo.5.2019.08.07.08.40.59
+ q13sm80911777ioh.36.2019.08.07.08.47.41
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 07 Aug 2019 08:40:59 -0700 (PDT)
-Date: Wed, 7 Aug 2019 08:40:58 -0700 (PDT)
+ Wed, 07 Aug 2019 08:47:42 -0700 (PDT)
+Date: Wed, 7 Aug 2019 08:47:41 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/misc
-In-Reply-To: <20190807152438.GA16495@lst.de>
-Message-ID: <alpine.DEB.2.21.9999.1908070832500.13971@viisi.sifive.com>
-References: <20190807151009.31971-1-hch@lst.de>
- <20190807152215.GA26690@kroah.com> <20190807152438.GA16495@lst.de>
+To: Bin Meng <bmeng.cn@gmail.com>
+Subject: Re: [PATCH] Use CSR numbers instead of names
+In-Reply-To: <CAEUhbmURQxPtmU78__OqOnQhzyVHpihxgzLtkOk1K0dDNprZYw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.9999.1908070842400.13971@viisi.sifive.com>
+References: <mvmr25z4toj.fsf@suse.de> <20190806204939.GA19596@infradead.org>
+ <alpine.DEB.2.21.9999.1908061703100.13971@viisi.sifive.com>
+ <CAEUhbmXz9EzjJvc4BQ46CGfSe-qyB0W7MEDZvABCpo5aLzXf3w@mail.gmail.com>
+ <alpine.DEB.2.21.9999.1908061838260.13971@viisi.sifive.com>
+ <20190807054019.GA1398@infradead.org>
+ <CAEUhbmURQxPtmU78__OqOnQhzyVHpihxgzLtkOk1K0dDNprZYw@mail.gmail.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_084101_432929_09511DE9 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20190807_084744_603439_17C9C9B3 
+X-CRM114-Status: GOOD (  14.26  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -98,41 +102,45 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: arnd@arndb.de, Greg KH <gregkh@linuxfoundation.org>, palmer@sifive.com,
- linux-kernel@vger.kernel.org, james.morse@arm.com,
- linux-riscv@lists.infradead.org, mchehab@kernel.org,
- linux-edac@vger.kernel.org
+Cc: Christoph Hellwig <hch@infradead.org>, Andreas Schwab <schwab@suse.de>,
+ linux-riscv <linux-riscv@lists.infradead.org>, linux-kernel@lists.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 7 Aug 2019, Christoph Hellwig wrote:
+On Wed, 7 Aug 2019, Bin Meng wrote:
 
-> On Wed, Aug 07, 2019 at 05:22:15PM +0200, Greg KH wrote:
-> > > Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
-> > > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> > > ---
-> > >  arch/riscv/mm/Makefile                            | 1 -
-> > >  drivers/misc/Makefile                             | 1 +
-> > >  {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c | 0
-> > >  3 files changed, 1 insertion(+), 1 deletion(-)
-> > >  rename {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c (100%)
-> > 
-> > Why isn't this in drivers/edac/ ?
-> > why is this a misc driver?  Seems like it should sit next to the edac
-> > stuff.
+> On Wed, Aug 7, 2019 at 1:40 PM Christoph Hellwig <hch@infradead.org> wrote:
+> >
+> > On Tue, Aug 06, 2019 at 06:39:59PM -0700, Paul Walmsley wrote:
+> > > >
+> > > > I have already sent a similar patch (with more places fixed) on Jul 11.
+> > > > https://patchwork.kernel.org/patch/11039421/
+> > >
+> > > Christoph's patch predates yours.
+> > >
+> > > If all looks well with your patch, I'll update it to remove the overlap
+> > > and queue it after his.
+> >
+> > The one from Bin looks most comprehensive, so maybe go with that, plus
+> > the hunk from Andreas for the instance that was only recently introduced.
 > 
-> No idea.  EDAC maintainers, would you object to taking what is 
-> currently in arch/riscv/mm//sifive_l2_cache.c to drivers/edac/ ?
+> Thanks Christoph.
+> 
+> I've included your SoB and Andreas's into my v2 patch which added the
+> changes of arch/riscv/mm/init.c that was recently changed.
+> https://patchwork.kernel.org/patch/11082147/
 
-If this driver is moved out of arch/riscv/mm, it should ideally go into 
-some sort of common L2 cache controller driver directory, along 
-with other L2 cache controller drivers like arch/arm/mm/*l2c*. 
+Best not to add others' Signed-off-by:s unless they explicitly offer them. 
+Adding a Signed-off-by: for the kernel denotes that that person has 
+accepted the Developer's Statement of Origin here:
 
-Like many L2 cache controllers, this controller also supports cache 
-flushing operations and SoC-specific way operations.  We just don't use 
-those on RISC-V - yet.
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst#n431
+
+Could you please either convert those into Co-developed-by: lines or ask 
+Christoph and Andreas for explicit Signed-off-by:s, Acked-by:s, or 
+Reviewed-by:s ?
 
 
 - Paul
