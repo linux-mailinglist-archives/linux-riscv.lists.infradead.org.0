@@ -2,85 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6742D85E08
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 11:17:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D8A0585E19
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 11:20:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mfNsZ7FzhgtZD6rkcrFJtABmJi5QiPYlF5XDthyzgGA=; b=I5SiAB/6jjwyT5sh2nzo4ky0S
-	C9b/oCQLf+Vpp8Zxw4a8Sj661e3TKET5eRNweFwnyK43CfOeoDQdQSCpk+l+fRy9KRM+EgNxB4Pxk
-	rwU85R4DSlKO6psJGh95bcZvvOOXCbTEuy3gg5Pi+7hdFANNhPtftIw1pvaHF1zCzcKEqJkZoggmU
-	1QnbjpqaajgS/9Ik+UT10y8qfsqaGQ1sYkQR5SfQco5XhYYe0Bkf23m26aoqNRUlMqco3Xx4DAgg3
-	zTR+DnzyjWI5OItC0pFIPjYw1muMLUF18nV5K07BIj3kzl9AviMAMiSPy9Gafe4X6ZKmIeyxT+W5V
-	iy+aR9GCg==;
+	 bh=TXw1l26hxDdP4lO5PdYQjSz5byQ9CpHw4iX+aWSvph0=; b=mrq4QtavpRhJ9SBRxdg9bLflu
+	smzDkZQRVNgmhIKfFmTQuKj0xbS84Ue3Z50JoiIWcNo0Jttcp+DXWSWoz64me8kbYjx0KRRqYC80o
+	aq2CGhF5UZoJiRT6h4AK2UaDO9t8odb40MflmTAamdKUolETEBWUVq8yDIInocLYzmrKfSwvQbeVa
+	O9t5ihb0BgN4yf9LLQkRDz3+9tC76se7RtdRnzorJLep+3Jw8UDUEwb1bn/Ig7W1ov6EgYOAS0PIm
+	VhPT0J+ZeyC0WH2X+Q2+FCPjCnqzsHbpRM8GpQ7/zafWiChBOY4f02Ew/X1d6EEzZsV+kWo2Iu4a8
+	WTUAg5XnA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hveYO-0006U1-So; Thu, 08 Aug 2019 09:17:49 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
+	id 1hveau-00006C-1Y; Thu, 08 Aug 2019 09:20:24 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hveX0-0005q8-DI
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 09:16:25 +0000
-Received: by mail-lf1-x144.google.com with SMTP id b29so59033936lfq.1
- for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 02:16:20 -0700 (PDT)
+ id 1hveah-0008N8-Hn
+ for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 09:20:13 +0000
+Received: by mail-lj1-x243.google.com with SMTP id p17so88230090ljg.1
+ for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 02:20:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=M0Lkp7TI/1lX0PjPf1h84OWxjj1q7OPrwwtMkQUMB80=;
- b=Z1XISyDmNMrKzhH5jpoXRm+UDpftCfPHsXSHiMp386hpt6qzA47mI+MZCjhh8/Zeyw
- jokbLjILXaPIhi16o8/c61dqditvR/MIYHeLbkQyQnW1HIi9UnftiHokpg6qK507fm7J
- Af4qYSS1b0OGvvXKHezXLIVBZAA22zNmMLXIgrCO7kd7HL9v99JBKOfmG2a8I4SKpTHT
- bYqs+AyT4ajWAbpBYl2QGZEPQO6YYKHDcpVDFpxR617xywNAkq8MTsHvEe09qcGQm0N/
- Q2SBZWzsoeIcTUgNNHs8jSQHhyhyqyNLDF5nH869msJXyFVwIVvvUIWwVSw8UZZBa3BW
- /xHw==
+ bh=OCitiiIQARt2srQdTEp8HHKk2MswJS9hy+qm/HN3L5Q=;
+ b=eGiX9Khh6PGwyt3vEDZS5i+7Ttn3dev6cKijGsAKu98PEo2SOHWYpChGzAR8G6rqiH
+ jzgQRh6WatLMuo4AbNf4LAJr20oUT+cZdU/1CJnSqTguKc+Ybw4jmkdw0OadBReXodeF
+ ebkbMHm8MDy0PwD/pEvqEAPbq07rO3qstGtOj2YxInvoyEp2nXA39FzVCr7+4l19jsYI
+ 3s9hm6A/4KWKEqwiGw05Tvffpb0A0mj+ayAeSD24M3N45J6I7gHbT2TjJqBsaCxM8sqn
+ rQPLBU1qx5jTkktaKHQLtADroikDfkHoEs6q4//nMMWQlm8Px3F2v3VdsnP0ZIgPpvGb
+ 4l2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=M0Lkp7TI/1lX0PjPf1h84OWxjj1q7OPrwwtMkQUMB80=;
- b=NHSbrVlhXSKmtyGIaqSaxbFmQEr+C1mZGmED+9TVJk5b0X92amV6F6StwUHEBd/WlN
- zigQfjVp9wXCc2fYqloo0w+vwvC4ujhvY8SZWMBgAi6UO7fwFSId5gxWle0e2Vr3XiGp
- 05iuKt+tWk1ls7RI0impRnpBNpXeVTIqY/z5iulASYgGlv/Lzjv6HpawWtv7pn/GdAj/
- Cc1ocExorIxpVmBmSAZDzaiaFRbD3i4DIO1b4VgSaxQs1uyN+VRlK6W+FKaY0lstF67n
- 3EFlqoRYsbm2oPvYHDs0qXbGqRIbchOfUdbZW9lpTdL1gk5gEn5f8VBLzb4wrZFeIbfA
- jD5g==
-X-Gm-Message-State: APjAAAVEj0TzUguGLIpBxcBA8LQFdSfhQuqxiElHaGnX29rr2PuA22Vh
- jZnI97/NSL8xpFFWyh2BOjwLjA==
-X-Google-Smtp-Source: APXvYqwAZY8WXCeiGX2n+XECYEd8x3LcF9hNec57wPu9uZBuLdOygGHP8AmFYhQOUjDhlaSnPEqcXw==
-X-Received: by 2002:a19:c711:: with SMTP id x17mr8605646lff.147.1565255778647; 
- Thu, 08 Aug 2019 02:16:18 -0700 (PDT)
+ bh=OCitiiIQARt2srQdTEp8HHKk2MswJS9hy+qm/HN3L5Q=;
+ b=lPfrVN/4fno918wdSjK+bKTLPMbBj3ztv4fMDPlBQlIqVRgNOoZX3kiiqxqO3eXG/x
+ EQGxYMwE1J+DAs6vbVPcjc64A98SKIozRmIx9C1Ve1BdU5k0I/krDUsnPVcOaFnKNjY6
+ fX17yD8Jqu+6jcK47o8EEFzJ/hqRfwXKDUZG9aRHs6b20ph70WeSqAipb/FI9v2B9jjH
+ fsbovd0VRGReaf/71vFWxpSzyp28KtKbZr2CaJ9wy2pV7ijxniP/58dp1Ay2EBJDvoQ/
+ KXiCQ9vkLfVnmEVavHQEpL+kwjgGhq5FEvNaH2JWjFrjel4TnrDHTocKfYEmI6T/I95s
+ FDdw==
+X-Gm-Message-State: APjAAAX8/1CdjI/Htw+dhpJ1Hgt+11aTWdNzqjQfUxgUoqChk/wsTe9s
+ OqYd7n8IwDZ7bmhF66wUamdg3A==
+X-Google-Smtp-Source: APXvYqwAgmAyvFxsvAFzBlQwmsh/xeHT2UOBWqRNNJ6VrtKLtOr+7Myij8Z/3eE0oJPU4/4mQFntnQ==
+X-Received: by 2002:a2e:9685:: with SMTP id q5mr6063276lji.227.1565256009622; 
+ Thu, 08 Aug 2019 02:20:09 -0700 (PDT)
 Received: from ?IPv6:2a00:1fa0:8c7:ada9:25b2:24d8:3973:eb87?
  ([2a00:1fa0:8c7:ada9:25b2:24d8:3973:eb87])
- by smtp.gmail.com with ESMTPSA id f23sm406561lfc.25.2019.08.08.02.16.16
+ by smtp.gmail.com with ESMTPSA id u27sm17024138lfn.87.2019.08.08.02.20.07
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 08 Aug 2019 02:16:17 -0700 (PDT)
-Subject: Re: [PATCH v6 09/14] mips: Properly account for stack randomization
- and stack guard gap
+ Thu, 08 Aug 2019 02:20:08 -0700 (PDT)
+Subject: Re: [PATCH v6 11/14] mips: Adjust brk randomization offset to fit
+ generic version
 To: Alexandre Ghiti <alex@ghiti.fr>, Andrew Morton <akpm@linux-foundation.org>
 References: <20190808061756.19712-1-alex@ghiti.fr>
- <20190808061756.19712-10-alex@ghiti.fr>
+ <20190808061756.19712-12-alex@ghiti.fr>
 From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Message-ID: <bd67507e-8a5b-34b5-1a33-5500bbb724b2@cogentembedded.com>
-Date: Thu, 8 Aug 2019 12:16:04 +0300
+Message-ID: <68ec5cf6-6ba3-68ab-aa01-668b701c642f@cogentembedded.com>
+Date: Thu, 8 Aug 2019 12:19:56 +0300
 User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190808061756.19712-10-alex@ghiti.fr>
+In-Reply-To: <20190808061756.19712-12-alex@ghiti.fr>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_021622_992319_89892B0B 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20190808_022011_825709_6486E2F7 
+X-CRM114-Status: GOOD (  15.46  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:144 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:243 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -117,61 +117,41 @@ Hello!
 
 On 08.08.2019 9:17, Alexandre Ghiti wrote:
 
-> This commit takes care of stack randomization and stack guard gap when
-> computing mmap base address and checks if the task asked for randomization.
+> This commit simply bumps up to 32MB and 1GB the random offset
+> of brk, compared to 8MB and 256MB, for 32bit and 64bit respectively.
 > 
-> This fixes the problem uncovered and not fixed for arm here:
-> https://lkml.kernel.org/r/20170622200033.25714-1-riel@redhat.com
-> 
+> Suggested-by: Kees Cook <keescook@chromium.org>
 > Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
-> Acked-by: Kees Cook <keescook@chromium.org>
 > Acked-by: Paul Burton <paul.burton@mips.com>
+> Reviewed-by: Kees Cook <keescook@chromium.org>
 > Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
 > ---
->   arch/mips/mm/mmap.c | 14 ++++++++++++--
->   1 file changed, 12 insertions(+), 2 deletions(-)
+>   arch/mips/mm/mmap.c | 7 ++++---
+>   1 file changed, 4 insertions(+), 3 deletions(-)
 > 
 > diff --git a/arch/mips/mm/mmap.c b/arch/mips/mm/mmap.c
-> index d79f2b432318..f5c778113384 100644
+> index a7e84b2e71d7..ff6ab87e9c56 100644
 > --- a/arch/mips/mm/mmap.c
 > +++ b/arch/mips/mm/mmap.c
-> @@ -21,8 +21,9 @@ unsigned long shm_align_mask = PAGE_SIZE - 1;	/* Sane caches */
->   EXPORT_SYMBOL(shm_align_mask);
+[...]
+> @@ -189,11 +190,11 @@ static inline unsigned long brk_rnd(void)
+>   	unsigned long rnd = get_random_long();
 >   
->   /* gap between mmap and stack */
-> -#define MIN_GAP (128*1024*1024UL)
-> -#define MAX_GAP ((TASK_SIZE)/6*5)
-> +#define MIN_GAP		(128*1024*1024UL)
-> +#define MAX_GAP		((TASK_SIZE)/6*5)
+>   	rnd = rnd << PAGE_SHIFT;
+> -	/* 8MB for 32bit, 256MB for 64bit */
+> +	/* 32MB for 32bit, 1GB for 64bit */
+>   	if (TASK_IS_32BIT_ADDR)
+> -		rnd = rnd & 0x7ffffful;
+> +		rnd = rnd & (SZ_32M - 1);
+>   	else
+> -		rnd = rnd & 0xffffffful;
+> +		rnd = rnd & (SZ_1G - 1);
 
-    Could add spaces around *, while touching this anyway? And parens
-around TASK_SIZE shouldn't be needed...
+    Why not make these 'rnd &= SZ_* - 1', while at it anyways?
 
-> +#define STACK_RND_MASK	(0x7ff >> (PAGE_SHIFT - 12))
->   
->   static int mmap_is_legacy(struct rlimit *rlim_stack)
->   {
-> @@ -38,6 +39,15 @@ static int mmap_is_legacy(struct rlimit *rlim_stack)
->   static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
->   {
->   	unsigned long gap = rlim_stack->rlim_cur;
-> +	unsigned long pad = stack_guard_gap;
-> +
-> +	/* Account for stack randomization if necessary */
-> +	if (current->flags & PF_RANDOMIZE)
-> +		pad += (STACK_RND_MASK << PAGE_SHIFT);
+[...]
 
-    Parens not needed here.
-
-> +
-> +	/* Values close to RLIM_INFINITY can overflow. */
-> +	if (gap + pad > gap)
-> +		gap += pad;
->   
->   	if (gap < MIN_GAP)
->   		gap = MIN_GAP;
-> 
-
+MBR, Sergei
 
 _______________________________________________
 linux-riscv mailing list
