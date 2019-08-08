@@ -2,85 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41EB586CFA
-	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 00:13:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37FBC86D11
+	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 00:22:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6MzNTaXXci4psPF0p1PHzwNpyB0x4fY3geIOwqFo95k=; b=OVoHgKXUbiTVaI
-	jCANV93SKRjfFyCFGSQYAzzpAXya1ln/8wq68RgdmTg1WzhKc6DRdP3hcOEho+UuaBTM5yJ+5Br7W
-	tiULlKr+7z1efdbu0w7A3dOz21wWeW/yDlV+h2tSLaaOo2xRpdm66gINBRelrIUjm85mmyCMaNFMp
-	9Rsl6FjztUJlcKffEzei/sQI3oPpQZedSgkZQeiJ/C9z6CWRm+1o0sIKd8u750UAWxr6OpzSzrgAb
-	aX2iwSW6A15my5YcFoQmBhE4Tp6ji6hKzkH+Hn1pOVEd90UPoEXe+0i6UmaRgOxK83YRiMgIDNwM3
-	5glfL/TowdJvCZyn/gNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=El0F3jseGr6iLJAFJoLqf8NZ0UOGBnw4o3vLxJaatHA=; b=QYYVKmd9KksAwf
+	dnQiHVMlTE7jmq+kz8yePcMNknx+/M4crDfZnPuO0n+7ssngOLkdmGtFra/YmJzsYQEdio/9qSyK5
+	MBGyzdKUCRcfJ8uJ5Jtk6suMXvMQBmBo5gINpb+mBvsgzQww1KL/IPKymq8JHMMYgYt9hJpEB4fJN
+	mAGaf4xDynC8QAIO8yiYFRX0dt8sGbSYTUChN9y3nD999cHWtz0a63ks2Yd/3k5VJr9I/MgCTHVrr
+	AhFSze6NwRKeYaVkEXUVnVrJUZReEOLeNv3/GBk3WJMRQ4AZm5EtNMQt4SYNXPjn+S34NreQ+J5gg
+	u5BId5yaO5Li/YE39yvw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvqer-0001xM-8G; Thu, 08 Aug 2019 22:13:17 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1hvqnK-0005ST-Pk; Thu, 08 Aug 2019 22:22:02 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvqeo-0001wr-H4
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 22:13:15 +0000
-Received: by mail-ot1-x343.google.com with SMTP id z17so6555969otk.13
- for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 15:13:13 -0700 (PDT)
+ id 1hvqnI-0005S8-9f
+ for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 22:22:01 +0000
+Received: by mail-ot1-x342.google.com with SMTP id b7so74844134otl.11
+ for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 15:22:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=QAveB2MW5aJCL42pdrRo0A2p3FoeHwf0+C7PsDEtr8A=;
- b=BYh3CXmpTdLhzlZKIWTS8wOiE1OOGf9hls2ts3bYz7IveQviKpWWqIgibdewQlI/V0
- bnjk37YFfE6sgM8hrsj1fuNTcN44llGXOqtbclPgC6p1fVnUUAd8ALIcpBm+ZjLWnwfi
- +ER3HzavOE3pgbXBU+FsmTQRfpeI78xD3Ppwl/MyXIBZtjmYfOOL6XyaBXGot7zZHq2K
- GP2NsSb/pb6jBVogIgEhzwOFp5bl1GPq502b3f+b4e3lNQxiSH0BAOt/Z0bLNls5hQmG
- UxceZu66FYwoLYmp6J+3+/qh1D5I11XIzY0q8b+YtWdiZBmgm7xellduUI32H4JiGWbB
- 17MA==
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=eS96mV6ducJS5h+iACNl+AvdrHOnsDHfqSig0ry4nFQ=;
+ b=mqW3TeB+6HPnsUv6nkJeAjTeAtV2nKYBQGPQqDw0F30cwdgnsA4N6MWal7oMeaGZxY
+ s0HmYCwADnnEg1XomUKNqGVLWxfiROIvozuWNEoOtDFLAx1VBh/f2kDgURg5n/Zz/enK
+ 2WC/O02+5pDIFu2M8naeWv/arRoKarrSqDrewAXq6Xsv4unSwaKVWmLtJ0SwtHQVgdU+
+ FO+amaW/cJZ8EKXvZlEOQrA5ZTru0ABUSWJzFDRMe8mtFtxefmZ0MmD2OHU9nWq3hcqW
+ dGqyZDiUy0CpBUbY29w+NtgDV1SF3QD3U/HbXFng5/WPL+fI2OFWsW8bEIbbkaOeVYQH
+ oK8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=QAveB2MW5aJCL42pdrRo0A2p3FoeHwf0+C7PsDEtr8A=;
- b=G0pM5kKeF5zXU+q/B4ZjZxe5Q6WmUBPNDFtqPfDu5QDObjEc8jg+sTEAGbJf4gFvsz
- L0fOWGGpeVIgDGc4dF2QHCWlM/z8u2gP3Evg7foC+aDVu/ca5y4c5BvEF296qvIM6CdZ
- Y3QG3d31VJbiSwp6I5bed3OCqwxRUROlqFZTXR1QbClFBUmIixwLcYN68BNcGtXYVqIT
- H9VWwS1fd2rOSo9zNlpFu8YvaABnDudXOBQqMrX/9izDC42C+INpJEPw1tcpFogwMOjH
- hzYcsmXer8rYTcaC+C+Qn/fWfsIvRSYdOiRjdJa4eKAM9ndj/kPFN1b6NTAvrfdGdcBo
- CJqw==
-X-Gm-Message-State: APjAAAXgz87QefYUr3EPMurQYGs4l2VoNoYLDdHBcOUKLshZfB44mwym
- 33AqsjMDEnz4P2m/lO/H3jPjJebMZhc=
-X-Google-Smtp-Source: APXvYqw6s/RyB6V5j4rVM86HvbsgecZHQYSNieyQsEmT4pWYa+NHHnA6N9MkEh+XkeHSxuIzd+PxoA==
-X-Received: by 2002:a5d:9acf:: with SMTP id x15mr16478208ion.190.1565302393249; 
- Thu, 08 Aug 2019 15:13:13 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=eS96mV6ducJS5h+iACNl+AvdrHOnsDHfqSig0ry4nFQ=;
+ b=LSuAozHtMcFeRjbZYtZih1kpvI/TcJHm6ASnz4xapQeMq84Jfi9RhZZsqrhNMeIUNq
+ PaujrPtzWxnHA5myyMV5oCRQvUeOLTEpUfNv6Wk5kB41GytkGDPLBMd9Wfib4Av/i9PZ
+ /hkdm5QZ70opfrtewvZT+vUN9kf0JCt+ziw0vU/0kFMsJ7RW6AynYQSz7Lh67t29iAyn
+ 20e7qztcq6Xc6V2TvyMiAznxe4fJf10BTMcvDVtc8KCIYdYTNlIbantJk3hk07jwn+IX
+ ylAuBZSjYUkrtKUjbjxSqE1n4QvrhyICy9Uef6rlW/kSVa9eMbwwG2fjBt6tod89dpx+
+ uoxw==
+X-Gm-Message-State: APjAAAVslNFAgwcAtLXhgEXzK/LjxdlgVGQNkPmGz50J+AvtO+jOvquh
+ lUluJPRW67V0wvOY2y6MSewx3w==
+X-Google-Smtp-Source: APXvYqw9Fj3WTqn5BsMbmHDqBC6jwokH42iENqYuTEz+CcsFMrOe5X3lwXB5WVEr+mFc7iv6Kx33qQ==
+X-Received: by 2002:a02:ab99:: with SMTP id t25mr18777108jan.113.1565302919353; 
+ Thu, 08 Aug 2019 15:21:59 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- h19sm63989093iol.65.2019.08.08.15.13.11
+ k3sm10702979ioq.18.2019.08.08.15.21.58
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 08 Aug 2019 15:13:12 -0700 (PDT)
-Date: Thu, 8 Aug 2019 15:13:11 -0700 (PDT)
+ Thu, 08 Aug 2019 15:21:58 -0700 (PDT)
+Date: Thu, 8 Aug 2019 15:21:58 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v2] pci: Kconfig: select PCI_MSI_IRQ_DOMAIN by default
- on RISC-V
-In-Reply-To: <20190808214728.GC7302@google.com>
-Message-ID: <alpine.DEB.2.21.9999.1908081512200.6414@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1907251426450.32766@viisi.sifive.com>
- <20190808195546.GA7302@google.com>
- <alpine.DEB.2.21.9999.1908081349210.6414@viisi.sifive.com>
- <20190808214728.GC7302@google.com>
+To: devicetree@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com
+Subject: [PATCH] dt-bindings: riscv: remove obsolete cpus.txt
+Message-ID: <alpine.DEB.2.21.9999.1908081520100.6414@viisi.sifive.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_151314_627055_C30938C2 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190808_152200_372954_C8997A3A 
+X-CRM114-Status: GOOD (  13.55  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -102,28 +94,222 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, Wesley Terpstra <wesley@sifive.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 8 Aug 2019, Bjorn Helgaas wrote:
 
-> Indeed, sorry I missed it.  I generally work based on -rc1, and it
-> looks like 251a44888183 was merged after -rc1.
-> 
-> Since we're after the merge window, the default target would be v5.4,
-> but I see some post-rc1 pull requests from you, so if you need this in
-> v5.3, let me know.
-> 
-> I applied your patch to pci/msi for v5.4 for now.
+Remove the now-obsolete riscv/cpus.txt DT binding document, since we
+are using YAML binding documentation instead.
 
-v5.4 is fine - thanks.
+While doing so, transfer the explanatory text about 'harts' (with some
+edits) into the YAML file, at Rob's request.
 
+Link: https://lore.kernel.org/linux-riscv/CAL_JsqJs6MtvmuyAknsUxQymbmoV=G+=JfS1PQj9kNHV7fjC9g@mail.gmail.com/
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/riscv/cpus.txt        | 162 ------------------
+ .../devicetree/bindings/riscv/cpus.yaml       |  12 ++
+ 2 files changed, 12 insertions(+), 162 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/riscv/cpus.txt
 
-- Paul
+diff --git a/Documentation/devicetree/bindings/riscv/cpus.txt b/Documentation/devicetree/bindings/riscv/cpus.txt
+deleted file mode 100644
+index adf7b7af5dc3..000000000000
+--- a/Documentation/devicetree/bindings/riscv/cpus.txt
++++ /dev/null
+@@ -1,162 +0,0 @@
+-===================
+-RISC-V CPU Bindings
+-===================
+-
+-The device tree allows to describe the layout of CPUs in a system through
+-the "cpus" node, which in turn contains a number of subnodes (ie "cpu")
+-defining properties for every cpu.
+-
+-Bindings for CPU nodes follow the Devicetree Specification, available from:
+-
+-https://www.devicetree.org/specifications/
+-
+-with updates for 32-bit and 64-bit RISC-V systems provided in this document.
+-
+-===========
+-Terminology
+-===========
+-
+-This document uses some terminology common to the RISC-V community that is not
+-widely used, the definitions of which are listed here:
+-
+-* hart: A hardware execution context, which contains all the state mandated by
+-  the RISC-V ISA: a PC and some registers.  This terminology is designed to
+-  disambiguate software's view of execution contexts from any particular
+-  microarchitectural implementation strategy.  For example, my Intel laptop is
+-  described as having one socket with two cores, each of which has two hyper
+-  threads.  Therefore this system has four harts.
+-
+-=====================================
+-cpus and cpu node bindings definition
+-=====================================
+-
+-The RISC-V architecture, in accordance with the Devicetree Specification,
+-requires the cpus and cpu nodes to be present and contain the properties
+-described below.
+-
+-- cpus node
+-
+-        Description: Container of cpu nodes
+-
+-        The node name must be "cpus".
+-
+-        A cpus node must define the following properties:
+-
+-        - #address-cells
+-                Usage: required
+-                Value type: <u32>
+-                Definition: must be set to 1
+-        - #size-cells
+-                Usage: required
+-                Value type: <u32>
+-                Definition: must be set to 0
+-
+-- cpu node
+-
+-        Description: Describes a hart context
+-
+-        PROPERTIES
+-
+-        - device_type
+-                Usage: required
+-                Value type: <string>
+-                Definition: must be "cpu"
+-        - reg
+-                Usage: required
+-                Value type: <u32>
+-                Definition: The hart ID of this CPU node
+-        - compatible:
+-                Usage: required
+-                Value type: <stringlist>
+-                Definition: must contain "riscv", may contain one of
+-                            "sifive,rocket0"
+-        - mmu-type:
+-                Usage: optional
+-                Value type: <string>
+-                Definition: Specifies the CPU's MMU type.  Possible values are
+-                            "riscv,sv32"
+-                            "riscv,sv39"
+-                            "riscv,sv48"
+-        - riscv,isa:
+-                Usage: required
+-                Value type: <string>
+-                Definition: Contains the RISC-V ISA string of this hart.  These
+-                            ISA strings are defined by the RISC-V ISA manual.
+-
+-Example: SiFive Freedom U540G Development Kit
+----------------------------------------------
+-
+-This system contains two harts: a hart marked as disabled that's used for
+-low-level system tasks and should be ignored by Linux, and a second hart that
+-Linux is allowed to run on.
+-
+-        cpus {
+-                #address-cells = <1>;
+-                #size-cells = <0>;
+-                timebase-frequency = <1000000>;
+-                cpu@0 {
+-                        clock-frequency = <1600000000>;
+-                        compatible = "sifive,rocket0", "riscv";
+-                        device_type = "cpu";
+-                        i-cache-block-size = <64>;
+-                        i-cache-sets = <128>;
+-                        i-cache-size = <16384>;
+-                        next-level-cache = <&L15 &L0>;
+-                        reg = <0>;
+-                        riscv,isa = "rv64imac";
+-                        status = "disabled";
+-                        L10: interrupt-controller {
+-                                #interrupt-cells = <1>;
+-                                compatible = "riscv,cpu-intc";
+-                                interrupt-controller;
+-                        };
+-                };
+-                cpu@1 {
+-                        clock-frequency = <1600000000>;
+-                        compatible = "sifive,rocket0", "riscv";
+-                        d-cache-block-size = <64>;
+-                        d-cache-sets = <64>;
+-                        d-cache-size = <32768>;
+-                        d-tlb-sets = <1>;
+-                        d-tlb-size = <32>;
+-                        device_type = "cpu";
+-                        i-cache-block-size = <64>;
+-                        i-cache-sets = <64>;
+-                        i-cache-size = <32768>;
+-                        i-tlb-sets = <1>;
+-                        i-tlb-size = <32>;
+-                        mmu-type = "riscv,sv39";
+-                        next-level-cache = <&L15 &L0>;
+-                        reg = <1>;
+-                        riscv,isa = "rv64imafdc";
+-                        status = "okay";
+-                        tlb-split;
+-                        L13: interrupt-controller {
+-                                #interrupt-cells = <1>;
+-                                compatible = "riscv,cpu-intc";
+-                                interrupt-controller;
+-                        };
+-                };
+-        };
+-
+-Example: Spike ISA Simulator with 1 Hart
+-----------------------------------------
+-
+-This device tree matches the Spike ISA golden model as run with `spike -p1`.
+-
+-        cpus {
+-                cpu@0 {
+-                        device_type = "cpu";
+-                        reg = <0x00000000>;
+-                        status = "okay";
+-                        compatible = "riscv";
+-                        riscv,isa = "rv64imafdc";
+-                        mmu-type = "riscv,sv48";
+-                        clock-frequency = <0x3b9aca00>;
+-                        interrupt-controller {
+-                                #interrupt-cells = <0x00000001>;
+-                                interrupt-controller;
+-                                compatible = "riscv,cpu-intc";
+-                        }
+-                }
+-        }
+diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
+index c899111aa5e3..5963af8c0c11 100644
+--- a/Documentation/devicetree/bindings/riscv/cpus.yaml
++++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
+@@ -10,6 +10,18 @@ maintainers:
+   - Paul Walmsley <paul.walmsley@sifive.com>
+   - Palmer Dabbelt <palmer@sifive.com>
+ 
++description: |
++  This document uses some terminology common to the RISC-V community
++  that is not widely used, the definitions of which are listed here:
++
++  hart: A hardware execution context, which contains all the state
++  mandated by the RISC-V ISA: a PC and some registers.  This
++  terminology is designed to disambiguate software's view of execution
++  contexts from any particular microarchitectural implementation
++  strategy.  For example, an Intel laptop containing one socket with
++  two cores, each of which has two hyperthreads, could be described as
++  having four harts.
++
+ properties:
+   compatible:
+     items:
+-- 
+2.22.0
+
 
 _______________________________________________
 linux-riscv mailing list
