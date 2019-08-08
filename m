@@ -2,43 +2,44 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09A8885A6D
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 08:19:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C72685A7C
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 08:20:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MFeHNZMoZjixnDOWoKxVYRRRGpHb/1f2G1/RRew5zQM=; b=L0ZIqwD2ZiMAY8
-	24etoVzH5aog2W/tAykrIuijAsuvT81Ftlt/qn7xKv3qOlJgDjZmsQSEaU2RVC7hqtH16eoELW5YY
-	TbrwkcylvrmWoS1VkUf+xV/hVwG5oh/KVjHnyM6vbcT49mxQr7wnvQ5o1agytUFIFGuwjYL0ggrxU
-	FUOWqNBs6Do47EH8Edf8OjayxkWR6WWehhT2AujGApDlNYXfC5Q7SHLUkkEsTsPofKfRnEy1l2fOJ
-	5J7yAT0Lv6/RXSacCSKxacJdGxjqU/sx0kYl/EJ8886em0uWXUDd7sj34DXyFu+yhnAXa4Unx7Zp3
-	oY1tHgJosJ4phb0tH75Q==;
+	List-Owner; bh=XvBMyaivihLFeazOtLmmxHwYD9XJ+DB5mcv5IAEUGeQ=; b=ax5UmwrKc18FqZ
+	xBcIr5Xdi3AaV+WN74doWpVUE3F2tbYsiCpS8GUvL0Hm3qvxgyfUkYmDrVg9S60A+hsil2ZJr4TtC
+	VrG2i7y350e7aea1qIk43G4n//g2RXCeEK6vcDpXHa5t966mIYfr/wX/6IUkYClK2xL7EzrYTEmzP
+	Pu5+Xg+n2qYdOcvS/H+YsaUheZdKNaBw85093OxoZLCW0u+HFJO+q9KfklI0v54+rUtSDSn9Ib4Ty
+	OK71yJj69CGUz+ZpdIIt9B0FI3DsmPq4NUabMEnUBI/z4rHw3GemMFZdqJiR3T4svUxyTK7zw8W3S
+	C7GSHK0KPwQGhs9270/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvbm0-0003tA-OK; Thu, 08 Aug 2019 06:19:40 +0000
+	id 1hvbmx-0005Pl-UQ; Thu, 08 Aug 2019 06:20:40 +0000
 Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvblf-0003gw-NC; Thu, 08 Aug 2019 06:19:22 +0000
+ id 1hvbmf-0005D8-8S; Thu, 08 Aug 2019 06:20:22 +0000
 X-Originating-IP: 79.86.19.127
 Received: from alex.numericable.fr (127.19.86.79.rev.sfr.net [79.86.19.127])
  (Authenticated sender: alex@ghiti.fr)
- by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 3FDAC20003;
- Thu,  8 Aug 2019 06:19:07 +0000 (UTC)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 50D2420008;
+ Thu,  8 Aug 2019 06:20:14 +0000 (UTC)
 From: Alexandre Ghiti <alex@ghiti.fr>
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v6 01/14] mm, fs: Move randomize_stack_top from fs to mm
-Date: Thu,  8 Aug 2019 02:17:43 -0400
-Message-Id: <20190808061756.19712-2-alex@ghiti.fr>
+Subject: [PATCH v6 02/14] arm64: Make use of is_compat_task instead of
+ hardcoding this test
+Date: Thu,  8 Aug 2019 02:17:44 -0400
+Message-Id: <20190808061756.19712-3-alex@ghiti.fr>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190808061756.19712-1-alex@ghiti.fr>
 References: <20190808061756.19712-1-alex@ghiti.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_231920_065288_782996F9 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20190807_232021_450144_50EB84E0 
+X-CRM114-Status: GOOD (  10.37  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
@@ -74,103 +75,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This preparatory commit moves this function so that further introduction
-of generic topdown mmap layout is contained only in mm/util.c.
+Each architecture has its own way to determine if a task is a compat task,
+by using is_compat_task in arch_mmap_rnd, it allows more genericity and
+then it prepares its moving to mm/.
 
 Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+Acked-by: Catalin Marinas <catalin.marinas@arm.com>
 Acked-by: Kees Cook <keescook@chromium.org>
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
 ---
- fs/binfmt_elf.c    | 20 --------------------
- include/linux/mm.h |  2 ++
- mm/util.c          | 22 ++++++++++++++++++++++
- 3 files changed, 24 insertions(+), 20 deletions(-)
+ arch/arm64/mm/mmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/fs/binfmt_elf.c b/fs/binfmt_elf.c
-index d4e11b2e04f6..cec3b4146440 100644
---- a/fs/binfmt_elf.c
-+++ b/fs/binfmt_elf.c
-@@ -670,26 +670,6 @@ static unsigned long load_elf_interp(struct elfhdr *interp_elf_ex,
-  * libraries.  There is no binary dependent code anywhere else.
-  */
+diff --git a/arch/arm64/mm/mmap.c b/arch/arm64/mm/mmap.c
+index b050641b5139..bb0140afed66 100644
+--- a/arch/arm64/mm/mmap.c
++++ b/arch/arm64/mm/mmap.c
+@@ -43,7 +43,7 @@ unsigned long arch_mmap_rnd(void)
+ 	unsigned long rnd;
  
--#ifndef STACK_RND_MASK
--#define STACK_RND_MASK (0x7ff >> (PAGE_SHIFT - 12))	/* 8MB of VA */
--#endif
--
--static unsigned long randomize_stack_top(unsigned long stack_top)
--{
--	unsigned long random_variable = 0;
--
--	if (current->flags & PF_RANDOMIZE) {
--		random_variable = get_random_long();
--		random_variable &= STACK_RND_MASK;
--		random_variable <<= PAGE_SHIFT;
--	}
--#ifdef CONFIG_STACK_GROWSUP
--	return PAGE_ALIGN(stack_top) + random_variable;
--#else
--	return PAGE_ALIGN(stack_top) - random_variable;
--#endif
--}
--
- static int load_elf_binary(struct linux_binprm *bprm)
- {
- 	struct file *interpreter = NULL; /* to shut gcc up */
-diff --git a/include/linux/mm.h b/include/linux/mm.h
-index 0334ca97c584..ae0e5d241eb8 100644
---- a/include/linux/mm.h
-+++ b/include/linux/mm.h
-@@ -2351,6 +2351,8 @@ extern int install_special_mapping(struct mm_struct *mm,
- 				   unsigned long addr, unsigned long len,
- 				   unsigned long flags, struct page **pages);
- 
-+unsigned long randomize_stack_top(unsigned long stack_top);
-+
- extern unsigned long get_unmapped_area(struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
- 
- extern unsigned long mmap_region(struct file *file, unsigned long addr,
-diff --git a/mm/util.c b/mm/util.c
-index e6351a80f248..15a4fb0f5473 100644
---- a/mm/util.c
-+++ b/mm/util.c
-@@ -16,6 +16,8 @@
- #include <linux/hugetlb.h>
- #include <linux/vmalloc.h>
- #include <linux/userfaultfd_k.h>
-+#include <linux/elf.h>
-+#include <linux/random.h>
- 
- #include <linux/uaccess.h>
- 
-@@ -293,6 +295,26 @@ int vma_is_stack_for_current(struct vm_area_struct *vma)
- 	return (vma->vm_start <= KSTK_ESP(t) && vma->vm_end >= KSTK_ESP(t));
- }
- 
-+#ifndef STACK_RND_MASK
-+#define STACK_RND_MASK (0x7ff >> (PAGE_SHIFT - 12))     /* 8MB of VA */
-+#endif
-+
-+unsigned long randomize_stack_top(unsigned long stack_top)
-+{
-+	unsigned long random_variable = 0;
-+
-+	if (current->flags & PF_RANDOMIZE) {
-+		random_variable = get_random_long();
-+		random_variable &= STACK_RND_MASK;
-+		random_variable <<= PAGE_SHIFT;
-+	}
-+#ifdef CONFIG_STACK_GROWSUP
-+	return PAGE_ALIGN(stack_top) + random_variable;
-+#else
-+	return PAGE_ALIGN(stack_top) - random_variable;
-+#endif
-+}
-+
- #if defined(CONFIG_MMU) && !defined(HAVE_ARCH_PICK_MMAP_LAYOUT)
- void arch_pick_mmap_layout(struct mm_struct *mm, struct rlimit *rlim_stack)
- {
+ #ifdef CONFIG_COMPAT
+-	if (test_thread_flag(TIF_32BIT))
++	if (is_compat_task())
+ 		rnd = get_random_long() & ((1UL << mmap_rnd_compat_bits) - 1);
+ 	else
+ #endif
 -- 
 2.20.1
 
