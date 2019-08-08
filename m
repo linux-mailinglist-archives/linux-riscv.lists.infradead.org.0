@@ -2,77 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19A3485C78
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 10:07:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EF0685D87
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 10:55:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H1Nb6Pw/0JLkenz4BqD1jmWIMk5GSc9ZcpE5q2uBCGA=; b=djnTjEwr2qmM2c
-	9Jb0bOGyVWRJ/Yzkby84PMTUhKxZhgGNjBn25rB1UIRisZKYDSizoouXlB/ed55qpzGB+ZnRtRwzQ
-	TqbbumGuVIFb/YYoDq8vdaOhUowdjAxiSpYal35oNVQtxWJXCFYP0FU2+v6xA0ka7qJk87NvHTZYD
-	/BfpjanZBESdNFrDrDGb9/dN/F62+CSPZuGAS2dFyu+GIGuknpRLeb7VRIp3yZ3Y4432dwf2ZHc/m
-	xXVM7RE61eqf0ECyu/Ob6A8vH+AIxweMSgYadmpl/OwIs3Vu3V3e1KsJ71V5JwG3JpZRIa0EzS6h9
-	7CLf9PjChy0kRkO93zpA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sBHpr6rHjB1fg1LR0OcgobPQ2X3JEGdjFx7D/kSW/0k=; b=K4rVilSSsfGpLV
+	9ZaB2e5Ntv9ukO0I2qe9z7oyB3BDXAyrsgyIvGx1oUQJDHoEx3Eau4ppZnduWHwWYcBXp4zaPbaCW
+	OF8jlLiWd30zCB60StWVBUn9Njs8rdK4dG/qC07LK6ic/5luMieDXFRhWqjTNdK/7jXLbsxT/vVS+
+	+++kmliYnyQk6RuhHOn8akYV5iUmLXN2Ki20RLzFP3PempnL9Wh6mpzA7z1QyaG5X1/v1YhVNGl9W
+	nNosItKjDm/buJJ0HaQH/QM5esFdQK+Zt6nUn+wnhPAEYwOt4Ftk6FC1PxPsHlbwkwXbXn8EY8twg
+	PeFTFk1vlOauO8cT2+UQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvdSe-0000n4-5a; Thu, 08 Aug 2019 08:07:48 +0000
-Received: from mail-qt1-f196.google.com ([209.85.160.196])
+	id 1hveD3-00056u-3J; Thu, 08 Aug 2019 08:55:45 +0000
+Received: from mail-wm1-f68.google.com ([209.85.128.68])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvdSa-0000mB-BV
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 08:07:45 +0000
-Received: by mail-qt1-f196.google.com with SMTP id d17so12299004qtj.8
- for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 01:07:43 -0700 (PDT)
+ id 1hveC6-00037A-8L
+ for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 08:54:48 +0000
+Received: by mail-wm1-f68.google.com with SMTP id f72so1558121wmf.5
+ for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 01:54:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zpfTTWIVTM8a0np0YvcvEQ5LKGlmAj7NsTRFbsCvaus=;
- b=hNn3GJHBtx6jyIWQBF8wuyjjRkhVzn1Nn9Uh3aJvvG+SYFJbqhBv81q5Twz2MPXVZ9
- pJDWb3a4BHYo7ggsvZBqnPe9XlCt4G4xf7ZBtUviTATw4Ez6rgMEL20o3HOsC4575jHT
- KAonN3Z4DBKSgIWWa5fINd6aQARb0j5XsEJMhiJfGmjG5e1BZKLvTv1KTtgbEzsUxJUt
- FDptrInfVz5FwjgckuZjktpF1Ok3l3FZ/mRzpsGKfV/dRwVLJ3pO7hqvL1I6SxE7ptIl
- /rVIf7EXllCWqm76B0FCaz81bYS/k/pW0/iE3CR4u6N+B38Bh8WHNTCq/szfK9ca7gee
- qkZA==
-X-Gm-Message-State: APjAAAUtHU2miida5xGJBSXT0CBUfoW/rCY4rUX6CY/gj04VzhAgciQH
- luCE0ouJPPzJU4e+HuaYgZaeyEt6tWSwPdHf4yg=
-X-Google-Smtp-Source: APXvYqwZZW9N6HttLUMOUHu8OVQ7m6alCwA745gemlJdjpV2mFtSjU3BCMjNtw+/B8K/8fMOgXq8xsaod0+xpp8WY4U=
-X-Received: by 2002:ac8:6684:: with SMTP id d4mr6915506qtp.204.1565251662202; 
- Thu, 08 Aug 2019 01:07:42 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JAn+ykN3unM/kToCkFC1Tvb8JYP1HBbyyihRZZ3yBqQ=;
+ b=f7iy1wfeqxODQwOYcEOWzZZYYWUfN7Ak6ZzWNoXsQraxEM1UR40KqdwO/PL45M1ejK
+ 6pB7WP0zKwfQwyxtKKyBEwsfCn87t9q/djHF5daVmAbC+t4fPFzXrouvLnpDPqxFnvkU
+ N/pzUqugzDlgfs1UkiB7qH0iTUdf4KWL9ZrlD5RClUS333NcRlG/xuleI1aBjPUNOqgF
+ WfpLA1DK8E4Y1SWIUv+2BaS2AbjV093uQljQim5UjODN60ychWtb3oHuk3vfLY1QGQYV
+ Pp1n5ajhAZmURT6CRIomwPdooXWauaAcgblsEh0gfNc9kmg/ou9UDkQrA8BikO9i7XIS
+ pOtg==
+X-Gm-Message-State: APjAAAW6q2UhgHRlfS/mE0tNvnrue0g34oORXoe33x1ZdUUp8IVUkGCC
+ vA5zTnfEVTePjLfTxoDH/TbN3A==
+X-Google-Smtp-Source: APXvYqy+/8dJb7VrhwMfhRjrQU4n2YvttWFHTmu72C0vK873zAhbFw4cxB+jQKcpkaP1SGPLf1vp5w==
+X-Received: by 2002:a1c:2314:: with SMTP id j20mr3050248wmj.152.1565254484135; 
+ Thu, 08 Aug 2019 01:54:44 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:b42d:b492:69df:ed61?
+ ([2001:b07:6468:f312:b42d:b492:69df:ed61])
+ by smtp.gmail.com with ESMTPSA id j9sm105900449wrn.81.2019.08.08.01.54.42
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Thu, 08 Aug 2019 01:54:43 -0700 (PDT)
+Subject: Re: [PATCH v4 00/20] KVM RISC-V Support
+To: Paul Walmsley <paul.walmsley@sifive.com>
+References: <20190807122726.81544-1-anup.patel@wdc.com>
+ <4a991aa3-154a-40b2-a37d-9ee4a4c7a2ca@redhat.com>
+ <alpine.DEB.2.21.9999.1908071606560.13971@viisi.sifive.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <df0638d9-e2f4-30f5-5400-9078bf9d1f99@redhat.com>
+Date: Thu, 8 Aug 2019 10:54:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20190807151009.31971-1-hch@lst.de>
- <20190807152215.GA26690@kroah.com> <20190807152438.GA16495@lst.de>
- <alpine.DEB.2.21.9999.1908070832500.13971@viisi.sifive.com>
- <20190808075029.GB30308@lst.de>
-In-Reply-To: <20190808075029.GB30308@lst.de>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Thu, 8 Aug 2019 10:07:26 +0200
-Message-ID: <CAK8P3a1nwTjt7gbL7bCa11-smQ0c6o-6QUL0vLZnZxzT_aa4-g@mail.gmail.com>
-Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/misc
-To: Christoph Hellwig <hch@lst.de>
+In-Reply-To: <alpine.DEB.2.21.9999.1908071606560.13971@viisi.sifive.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_010744_400463_9DC96F9F 
-X-CRM114-Status: GOOD (  20.69  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190808_015446_341255_E0ACEB2C 
+X-CRM114-Status: GOOD (  12.93  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.160.196 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.160.196 listed in wl.mailspike.net]
+ no trust [209.85.128.68 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.128.68 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (arndbergmann[at]gmail.com)
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,61 +86,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greg KH <gregkh@linuxfoundation.org>, Palmer Dabbelt <palmer@sifive.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- James Morse <james.morse@arm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-edac@vger.kernel.org
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <anup@brainfault.org>, Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Aug 8, 2019 at 9:50 AM Christoph Hellwig <hch@lst.de> wrote:
-> On Wed, Aug 07, 2019 at 08:40:58AM -0700, Paul Walmsley wrote:
-> > On Wed, 7 Aug 2019, Christoph Hellwig wrote:
-> > > On Wed, Aug 07, 2019 at 05:22:15PM +0200, Greg KH wrote:
-> > > > > Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
-> > > > > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> > > > > ---
-> > > > >  arch/riscv/mm/Makefile                            | 1 -
-> > > > >  drivers/misc/Makefile                             | 1 +
-> > > > >  {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c | 0
-> > > > >  3 files changed, 1 insertion(+), 1 deletion(-)
-> > > > >  rename {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c (100%)
-> > > >
-> > > > Why isn't this in drivers/edac/ ?
-> > > > why is this a misc driver?  Seems like it should sit next to the edac
-> > > > stuff.
-> > >
-> > > No idea.  EDAC maintainers, would you object to taking what is
-> > > currently in arch/riscv/mm//sifive_l2_cache.c to drivers/edac/ ?
-> >
-> > If this driver is moved out of arch/riscv/mm, it should ideally go into
-> > some sort of common L2 cache controller driver directory, along
-> > with other L2 cache controller drivers like arch/arm/mm/*l2c*.
-> >
-> > Like many L2 cache controllers, this controller also supports cache
-> > flushing operations and SoC-specific way operations.  We just don't use
-> > those on RISC-V - yet.
->
-> Well, another reason to not have it under arch/riscv/ as it is a SOC
-> specific driver, which we all have somewhere else, just like arm64
-> and new arm ports do.  And especially not unconditionally built.
+On 08/08/19 01:15, Paul Walmsley wrote:
+> On Wed, 7 Aug 2019, Paolo Bonzini wrote:
+> 
+>> On 07/08/19 14:27, Anup Patel wrote:
+>>> This series adds initial KVM RISC-V support. Currently, we are able to boot
+>>> RISC-V 64bit Linux Guests with multiple VCPUs.
+>>
+>> Looks good to me!  Still need an Acked-by from arch/riscv folks if I
+>> have to merge it, otherwise they can take care of the initial merge.
+> 
+> Since almost all of the patches touch arch/riscv files, we'll plan to 
+> merge them through the RISC-V tree.  Care to ack patch one, and send tags 
+> for any other patches as you think might be appropriate?
 
-soc specific drivers that don't have their own subsystem can
-go into drivers/soc/$VENDOR/.
+Patch 1, 3-20:
 
-For this driver, I would also think that the edac subsystem is the
-best fit. Right now, the driver is split in two halves: there
-is drivers/edac/sifive_edac.c and arch/riscv/mm/sifive_l2_cache.c,
-with neither of those working without the other.
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Moving both into a single file would seem to allow simplifying
-it as a proper 'platform_driver', which the drivers/edac side today
-is not (it just registers a platform device in its module_init call).
+In your 5.4 pull requests, it's best if you add a note that all RISC-V
+KVM patches were acked and reviewed by me.  I'll also include a shoutout
+about RISC-V KVM in my own pull request.
 
-      Arnd
+However, for Linux releases after 5.4 I would rather get pull requests
+for arch/riscv/kvm from Anup and Atish without involving the RISC-V
+tree.  Of course, they or I will ask for your ack, or for a topic
+branch, on the occasion that something touches files outside their
+maintainership area.  This is how things are already being handled for
+ARM, POWER and s390 and it allows me to handle conflicts in common KVM
+files before they reach Linus; these are more common than conflicts in
+arch files.  If you have further questions on git and maintenance
+workflows, just ask!
+
+Paolo
 
 _______________________________________________
 linux-riscv mailing list
