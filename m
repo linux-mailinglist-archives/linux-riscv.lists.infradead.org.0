@@ -2,78 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 508AC86705
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 18:25:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13F5186AF5
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 21:56:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rkYBAayGEsEPx5OWEKME7YkXJGXIId7TMEGI2zSH1EE=; b=DLsqXZ4qcxWPyE
-	cgFuZwEUuBZB/dvxZopCkEAKBQeEd4Uj30OuLUqMUJy1Q9TdFcm4jt7xo8uAm8+dHYKYkQ31Qd15d
-	DehiJV/FKZAW6Qwhx8T3LSnzdfuBriHAYixLXjo3B3jrf/lcf8JxBTm/PGuIiwp0cQFqOI9IOxWF9
-	1N6+zTqUpnsKCQF4o+nwDcQopdHEufXL+C8iIRBJWs56V4G4DQuKUAl9rO8L+bsb0Il2kEuTOhhKz
-	tfGFXrTfPM3rvmaglNiOPFRlYgfpCupBFsUFdO24TXHm2ILi0ZbleHesRLTd9bquTHORQPaj5T3dm
-	NYkYvJo6dEW8xbF0Jevw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PSfbk08Asi2zK6k/Y72ao5cMzTR9nvz4BvhFV2EG7BU=; b=JYaOstO9ZKzyNB
+	dGZozcQESGxYQLeS9HPq2m4V5IlXZYpsnPlEhC+hCRn+/15JcfhujpRjcvhqmuwzU4vuw6sbWMheM
+	CLtp6rEnlmmozFj/XTqO12FyHP/jTMgkfqlkEhbZiu8nvd0mcd6bG/qKyxZS2ddYWVhGZLNpKxCAL
+	bVWn8009pdmNvnef+0J2aNL7p7Y2yXgOU+hGeRwh9uHcgqCTHEXARaGImIfcisGAT7wkIAg/njg2K
+	54qaW7UcPBqbMBC0X+NYsqGTNVmGoIf0Ix/W9x87X0MbIkJs9xoui771Vj2F7Vv5MNpFWdpGaGHdd
+	VH9f77pjgXC/NGdXtCUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvlEK-0002qX-GI; Thu, 08 Aug 2019 16:25:32 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1hvoVr-00071D-ET; Thu, 08 Aug 2019 19:55:51 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvlEG-0002pG-Iz
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 16:25:29 +0000
-Received: by mail-ot1-x344.google.com with SMTP id s20so55427527otp.4
- for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 09:25:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:message-id:user-agent:mime-version;
- bh=Sh9FQDMasmY5vtQdSiQoK5tO+xz0p3eGu1ZERt15qJc=;
- b=htp++ycSv4CkfO5k4hhbR1c5pz+jcLYDMM9onORrmnPqr2zXHtSMUdHfSpaejVGxm6
- 1iUtb8fy+qUbYNbYlj4vc4ysrm12p8atovPDzumyNBfwmL6LWMFILpb55bYTZd4nUAvM
- kk7mR+F2CxE1MNxH6mciDwgla8tKM1V4azlME9VN88ToYJjE74MGZ60BAsb20aoL5zQM
- WDpNA4qBvSgWOn6/X1Y0n+vuEzqbDFi+onk59s1lf0DSiH2R1Qqerulz2Qi89a8ZFzYG
- Uw+qEJNsTPTaL9AXDJ+2PAwpnN2Lh89SLPog8RVL1ilqI9Ax2mmK1C3YSNRdtozOp+39
- A+rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
- :mime-version;
- bh=Sh9FQDMasmY5vtQdSiQoK5tO+xz0p3eGu1ZERt15qJc=;
- b=rx1OSTzM1cGHeX+gUTzqTNnRaytcTQC89UixqkJv4FAq6c1jEQENxLqXC5Oy3F0Wvb
- giXmBWkheTLkH8SuH060+NTNC+UzZyYoG2V8jQtJ24NAid0mNrlmL9hS0x/IGXoWjpkQ
- LtvFt+xT6cNg5NNundM8pFypN7JY3sMVk+fuIp2hlpXA192D6x5TeYFpDLGf4H6WdRGT
- dPUtgSvbqIcvz6W3OiE2Js5bHWnCoyq2PTgQzD9iz0G6wuVG/RBbZ2ShsaF0ZbhaLg11
- m5WHHMuZLg55zCatUnGt8PyBuOlIHBgA2WuyLVaawlEraoR/Bk28I3shV1GX+5okSqyl
- fD+Q==
-X-Gm-Message-State: APjAAAVwI1wtNXQRjAWlUAx5BFVjEqQGZVPmWOnacG9gETw6BPE8Cbjm
- h3deGMTFiwiA0RBA9XdNFT9w8MYfvrQ=
-X-Google-Smtp-Source: APXvYqytWnigO89QXdNbJ/WyY0oBdo7zxtKLAlx2YBEnBuVEX31JdfD5sKmrXhp2sBu9PWy+U0ezPg==
-X-Received: by 2002:a5d:9690:: with SMTP id m16mr15546380ion.180.1565281527716; 
- Thu, 08 Aug 2019 09:25:27 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- x1sm2315281ioa.85.2019.08.08.09.25.27
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 08 Aug 2019 09:25:27 -0700 (PDT)
-Date: Thu, 8 Aug 2019 09:25:26 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: linux-riscv@lists.infradead.org
-Subject: [PATCH] riscv: fix flush_tlb_range() end address for flush_tlb_page()
-Message-ID: <alpine.DEB.2.21.9999.1908080923320.31070@viisi.sifive.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1hvoVo-00070q-BJ
+ for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 19:55:49 +0000
+Received: from localhost (unknown [150.199.191.185])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BFF27214C6;
+ Thu,  8 Aug 2019 19:55:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565294148;
+ bh=SOl9abd2o/Qj2dBjH8ebZDl44aPBVBw4i1AVCjPY/nM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=bcSQCIe8/dBRIW/bkZwTbBcOfWJ4jURkIhZlfAMVQPFrM5ExqBnMoMiU+OZP22HmH
+ qtNCe2+K6MFBvvpcNJEji2ZB4Sedflcze8rLCZwt8trL2tmqUQ7s/NOAENdW8FKmls
+ tkkXDZVEmglLE30DV31AOWoNN5GLRLau9OtaXi+g=
+Date: Thu, 8 Aug 2019 14:55:46 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH v2] pci: Kconfig: select PCI_MSI_IRQ_DOMAIN by default on
+ RISC-V
+Message-ID: <20190808195546.GA7302@google.com>
+References: <alpine.DEB.2.21.9999.1907251426450.32766@viisi.sifive.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.9999.1907251426450.32766@viisi.sifive.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_092528_647261_C91783BA 
-X-CRM114-Status: GOOD (  10.45  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190808_125548_410661_7280F172 
+X-CRM114-Status: GOOD (  16.81  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -83,6 +65,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,58 +77,71 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: schwab@suse.de, linux-kernel@vger.kernel.org
+Cc: linux-pci@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Wesley Terpstra <wesley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hi Paul, Wesley,
 
-The RISC-V kernel implementation of flush_tlb_page() when CONFIG_SMP
-is set is wrong.  It passes zero to flush_tlb_range() as the final
-address to flush, but it should be at least 'addr'.
+On Thu, Jul 25, 2019 at 02:28:07PM -0700, Paul Walmsley wrote:
+> From: Wesley Terpstra <wesley@sifive.com>
+> 
+> This is part of adding support for RISC-V systems with PCIe host 
+> controllers that support message-signaled interrupts.
+> 
+> Signed-off-by: Wesley Terpstra <wesley@sifive.com>
+> [paul.walmsley@sifive.com: wrote patch description; split this
+>  patch from the arch/riscv patch]
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> ---
+>  drivers/pci/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
+> index 2ab92409210a..beb3408a0272 100644
+> --- a/drivers/pci/Kconfig
+> +++ b/drivers/pci/Kconfig
+> @@ -52,7 +52,7 @@ config PCI_MSI
+>  	   If you don't know what to do here, say Y.
+>  
+>  config PCI_MSI_IRQ_DOMAIN
+> -	def_bool ARC || ARM || ARM64 || X86
+> +	def_bool ARC || ARM || ARM64 || X86 || RISCV
 
-Some other Linux architecture ports use the beginning address to
-flush, plus PAGE_SIZE, as the final address to flush.  This might
-flush slightly more than what's needed, but it seems unlikely that
-being more clever would improve anything.  So let's just take that
-implementation for now.
+The other arches listed here either supply their own include/asm/msi.h
+or generate it:
 
-While here, convert the macro into a static inline function, primarily
-to avoid unintentional multiple evaluations of 'addr'.
+  $ ls arch/*/include/asm/msi.h
+  arch/x86/include/asm/msi.h
 
-Reported-by: Andreas Schwab <schwab@suse.de>
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
----
- arch/riscv/include/asm/tlbflush.h | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+  $ grep msi.h arch/*/include/asm/Kbuild
+  arch/arc/include/asm/Kbuild:generic-y += msi.h
+  arch/arm64/include/asm/Kbuild:generic-y += msi.h
+  arch/arm/include/asm/Kbuild:generic-y += msi.h
+  arch/mips/include/asm/Kbuild:generic-y += msi.h
+  arch/powerpc/include/asm/Kbuild:generic-y += msi.h
+  arch/sparc/include/asm/Kbuild:generic-y += msi.h
 
-diff --git a/arch/riscv/include/asm/tlbflush.h b/arch/riscv/include/asm/tlbflush.h
-index 687dd19735a7..b5e64dc19b9e 100644
---- a/arch/riscv/include/asm/tlbflush.h
-+++ b/arch/riscv/include/asm/tlbflush.h
-@@ -53,10 +53,16 @@ static inline void remote_sfence_vma(struct cpumask *cmask, unsigned long start,
- }
- 
- #define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
--#define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, 0)
-+
- #define flush_tlb_range(vma, start, end) \
- 	remote_sfence_vma(mm_cpumask((vma)->vm_mm), start, (end) - (start))
--#define flush_tlb_mm(mm) \
-+
-+static inline void flush_tlb_page(struct vm_area_struct *vma,
-+				  unsigned long addr) {
-+	flush_tlb_range(vma, addr, addr + PAGE_SIZE);
-+}
-+
-+#define flush_tlb_mm(mm)				\
- 	remote_sfence_vma(mm_cpumask(mm), 0, -1)
- 
- #endif /* CONFIG_SMP */
--- 
-2.22.0
+For example, see
 
+  f8430eae9f1b ("PCI/MSI: Enable PCI_MSI_IRQ_DOMAIN support for ARC")
+  be091d468a0a ("arm64: PCI/MSI: Use asm-generic/msi.h")
+  0ab089c2548c ("ARM: Add msi.h to Kbuild")
+
+I didn't look into the details of msi.h generation, but I assume
+RISC-V needs to do something similar?  If so, I think that should be
+part of this patch to avoid issues.
+
+If CONFIG_GENERIC_MSI_IRQ_DOMAIN is defined, include/linux/msi.h
+#includes <asm/msi.h> and I don't see where that would come from.
+
+>  	depends on PCI_MSI
+>  	select GENERIC_MSI_IRQ_DOMAIN
+
+Bjorn
 
 _______________________________________________
 linux-riscv mailing list
