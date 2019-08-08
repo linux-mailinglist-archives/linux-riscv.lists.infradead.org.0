@@ -2,53 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A93EC85C05
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 09:50:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C857E85C4B
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 10:00:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WZ+a+ykKCYSyOOmdmayWL6ewbKrpft7URTBw5Ua7L0g=; b=rz6BZj2igTvUIv
-	ej+dmoJK4fu3SwS1uBKkFqXnRDK0t+fQvQpRvH8YsgS9U3PuQGBsG5RIbgB80GRYlIyWvMgurczTQ
-	9Uh2Ea3ny8U9mLzT7McACk4vj9XWYb/5/g7G16V1ddfY2WgrGozwWmFPjQWo4967Xa+GNxGu4VSA5
-	eXvG7v/q0SFLrwaQ4H6qQD34mBgR+WpLXsFPToaInI9LkTz4yL4okkbtjl+IZdvaC9nFF+Gzcc2tx
-	Uw3nTKaNeWrQZgeT30Vu4VX8yA5dU6rqsApBDDE2I11rz1G7BYJeGsgf5P5MVPKUSn9GsSIvTBMEv
-	HYRqd8UI1qVQKUM/iHFg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=pzrwsnRS5T3BkIaOTgZ8IOZHsbkcwRtb+eRZ01eYwQE=; b=cAH
+	Ffm69zuk9r3DyMLRvdWCVBYLDx2HRq5NmYfL48JPeAb0CukpcXWisudast9kG3D+Fyysq0LJL5E+n
+	qzr/CjFxTsNsClupTV0/Y4fCgzAcruyECQjQY9X8735M98c7SYENtOkxWkCMnIaVrgJUYGzFOpqDg
+	K7zkO1cmkVmXCgxAdzM6jmVerunXYpPPY09ZnqqUF3hBKGszAWX+GwbWV8UKkV2ZcERNvS9YeX1eL
+	aGkf8eI0AEM7gB/iSDpwHGLfVFRR4En5Sw/xxSLoIwlnoVEb4uGChPRIScamakMltOcfE+9WQoh4u
+	YUtvVIU+30zS+lrpu0UZz6PjO5yQEAQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvdC2-0002Iq-Hl; Thu, 08 Aug 2019 07:50:38 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1hvdLd-0006ib-SI; Thu, 08 Aug 2019 08:00:34 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvdBx-0002IK-1P
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 07:50:34 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 32BFA68B02; Thu,  8 Aug 2019 09:50:30 +0200 (CEST)
-Date: Thu, 8 Aug 2019 09:50:29 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/misc
-Message-ID: <20190808075029.GB30308@lst.de>
-References: <20190807151009.31971-1-hch@lst.de>
- <20190807152215.GA26690@kroah.com> <20190807152438.GA16495@lst.de>
- <alpine.DEB.2.21.9999.1908070832500.13971@viisi.sifive.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1908070832500.13971@viisi.sifive.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+ id 1hvdL8-0005KH-VX
+ for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 08:00:05 +0000
+Received: by mail-pg1-x543.google.com with SMTP id o13so43611770pgp.12
+ for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 01:00:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=Mj0NlYSUurL6xj8Jw3i+0MeK0CDZOCR1M77+F9BwytE=;
+ b=ZmFoFiuFuEhRJV21WykRlWUovgwSUqqTFjQJtAVC3DZs9ENOnjbPjAb/yiWK8PreJ8
+ c2mnbTcpUBkOX5yrPYDjGZT1Atk+5/zgQaUFCvL7xOTjHJaUQ9YcfwQOu3g3oSiZW+AM
+ 9m5gSVyyGv6FgsMCoj8O0sMg0tUx/sRahn1yQpLFeilUzMGBBsP3NwtpnfxYKO2UEj4v
+ H0MkwgSVoHQh77whMNTwaSX+OVH8ZSwQ0rCGvmMl2mIMVJTdv0caL7Dq6hTVDTkSf9Wa
+ Rkq+pjCFxwGS8VABoAYUgIea2CilG2bMTvG9f0NFLJlA0sybY7IR89paSM0ySD0Qp4Yr
+ vT4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=Mj0NlYSUurL6xj8Jw3i+0MeK0CDZOCR1M77+F9BwytE=;
+ b=NXfGfC3dhbI3/X6MELd4JGACoIwmVGzahaoNgIcB5xJFiU7avIHKM0v4Cbis1mDKRl
+ RFaU8NaeGxHh2Jm8umqbxigF5aVVqTzZLhY5h4PtaNk38r9kIIzM9/bai7+yTGMbSUOl
+ Er79K/wPvhjkzeWGbBiHnB+512opr3mA8o5rkddLDgr99rnPYE73QZTtAJJy9AIjqzb+
+ f67Vtb8kNc5QX6GwMX/pTFY0eNR0Rfg1yHHt7asK4G7bUJc/IFtTHz893VY+4++0unCN
+ r6cE2I5MKuyRMA9vaRxcjXRlalawvcV0Ip35S2riMUTvbSW0PCdfWlOGVJ7xcqBe8yHi
+ FU9w==
+X-Gm-Message-State: APjAAAUhtWkgFajOF4h2KKFFEmsx3/PJjaGudV6LEU3t4KDkjvNZNwzb
+ 9OuR9Sbvvg+fSEMfSnYx0fegDw==
+X-Google-Smtp-Source: APXvYqxzsjhUdbzOD9DNeF+PAk9GYhVZrZl1qUjHVEGtASrf1qnduOun6cNSSC0pt796s6zLw6HNjQ==
+X-Received: by 2002:a17:90b:8e:: with SMTP id
+ bb14mr2717479pjb.19.1565251201455; 
+ Thu, 08 Aug 2019 01:00:01 -0700 (PDT)
+Received: from localhost.localdomain (220-132-236-182.HINET-IP.hinet.net.
+ [220.132.236.182])
+ by smtp.gmail.com with ESMTPSA id t8sm107697374pfq.31.2019.08.08.00.59.59
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Thu, 08 Aug 2019 01:00:01 -0700 (PDT)
+From: Vincent Chen <vincent.chen@sifive.com>
+To: paul.walmsley@sifive.com,
+	palmer@sifive.com,
+	aou@eecs.berkeley.edu
+Subject: [PATCH 0/2] riscv: Correct the initialized flow of FP and
+ __fstate_clean()
+Date: Thu,  8 Aug 2019 15:58:39 +0800
+Message-Id: <1565251121-28490-1-git-send-email-vincent.chen@sifive.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_005033_236923_FB7D5F4F 
-X-CRM114-Status: GOOD (  15.90  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190808_010003_114666_D94C4AD7 
+X-CRM114-Status: UNSURE (   7.51  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,46 +96,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: arnd@arndb.de, Greg KH <gregkh@linuxfoundation.org>, palmer@sifive.com,
- linux-kernel@vger.kernel.org, james.morse@arm.com,
- linux-riscv@lists.infradead.org, mchehab@kernel.org,
- Christoph Hellwig <hch@lst.de>, linux-edac@vger.kernel.org
+Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Aug 07, 2019 at 08:40:58AM -0700, Paul Walmsley wrote:
-> On Wed, 7 Aug 2019, Christoph Hellwig wrote:
-> 
-> > On Wed, Aug 07, 2019 at 05:22:15PM +0200, Greg KH wrote:
-> > > > Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
-> > > > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> > > > ---
-> > > >  arch/riscv/mm/Makefile                            | 1 -
-> > > >  drivers/misc/Makefile                             | 1 +
-> > > >  {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c | 0
-> > > >  3 files changed, 1 insertion(+), 1 deletion(-)
-> > > >  rename {arch/riscv/mm => drivers/misc}/sifive_l2_cache.c (100%)
-> > > 
-> > > Why isn't this in drivers/edac/ ?
-> > > why is this a misc driver?  Seems like it should sit next to the edac
-> > > stuff.
-> > 
-> > No idea.  EDAC maintainers, would you object to taking what is 
-> > currently in arch/riscv/mm//sifive_l2_cache.c to drivers/edac/ ?
-> 
-> If this driver is moved out of arch/riscv/mm, it should ideally go into 
-> some sort of common L2 cache controller driver directory, along 
-> with other L2 cache controller drivers like arch/arm/mm/*l2c*. 
-> 
-> Like many L2 cache controllers, this controller also supports cache 
-> flushing operations and SoC-specific way operations.  We just don't use 
-> those on RISC-V - yet.
+The following two reasons cause FP registers are sometimes not
+initialized before starting the user program.
+1. Currently, the FP context is initialized in flush_thread() function
+   and we expect these initial values to be restored to FP register when
+   doing FP context switch. However, the FP context switch only occurs in
+   switch_to function. Hence, if this process does not be scheduled out
+   and scheduled in before entering the user space, the FP registers
+   have no chance to initialize.
+2. In flush_thread(), the state of reg->sstatus.FS inherits from the
+   parent. Hence, the state of reg->sstatus.FS may be dirty. If this
+   process is scheduled out during flush_thread() and initializing the
+   FP register, the fstate_save() in switch_to will corrupt the FP context
+   which has been initialized until flush_thread().
+In addition, the __fstate_clean() function cannot correctly set the state
+of sstatus.FS to SR_FS_CLEAN. These problems will be solved in this patch
+set.
 
-Well, another reason to not have it under arch/riscv/ as it is a SOC
-specific driver, which we all have somewhere else, just like arm64
-and new arm ports do.  And especially not unconditionally built.
+
+Vincent Chen (2):
+  riscv: Correct the initialized flow of FP register
+  riscv: Make __fstate_clean() can work correctly.
+
+ arch/riscv/include/asm/switch_to.h |  8 +++++++-
+ arch/riscv/kernel/process.c        | 13 +++++++++++--
+ 2 files changed, 18 insertions(+), 3 deletions(-)
+
+-- 
+2.7.4
+
 
 _______________________________________________
 linux-riscv mailing list
