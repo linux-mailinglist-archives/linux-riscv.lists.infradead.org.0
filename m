@@ -2,51 +2,51 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD91785ACA
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 08:30:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C15F85AD5
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 08:31:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ishiTfqVxoPWGQROO0iLznvD147HSbfeVcZ1b1iwT3s=; b=DwyuT1/MkgVEdf
-	6s6xyYq7hnLFfGUJibTDaYqLIaT64pi6VHgS+jC6n/0bGCNnu/hiwAvlTl9I12mnxKoyG8bU4WV5I
-	4b8UuCRuWtTnfiwOF+p+FetDpy/NGGkNHrYl5Zx89wChW0SNXvBaTcQoCLIDlY6wwoB/nM2p9bOpu
-	XqVFUHJhr/iWOgeYJWrlItp4GyuLCI/d6dgYmoadn65HNahNviwXvBG78ARPvngnl6YAzUlYKfodI
-	nNGyzjQvANC3Uzpd77E1mO7C7PZJvQ6R5xUGY9sVeRSpsIqnEAhgZasUv+GOTK4xYFebAg2FogfhX
-	grNqN2j38/7CCPhBk/Xw==;
+	List-Owner; bh=M8VQmVFleowUBRgfi8Kdv1BDEX8Pxk+69b7+pC4hALU=; b=R9HoBvKbc0vf2i
+	uELaMjjPgOhYJbuyFjQeP7MlLKY0F3HHTaeq3lxFHZw9HnOysakwDQWwes/2QaT4EQWa8fbZloBjm
+	wHq2JhNyQiicU16nnt80prG8rOEPWEQKePa7GJywKVZt64Wo7C413Hx00bVZEvhxDE/F5GYaLS4FB
+	LKkFhiCNAbHT31A3ybiMxhQXzQOtvjPhbmgd0XWUdGCuSBg/afHoHZSVojGQRq7Ue96vdeHzmpeye
+	DegwTQchksxfgxW1dbRKF3IYbPj4SUw5qwGN8XKeHQ5YxQOuY/N6B1p5aLGfGCImMBto92RkyhCCD
+	6nxQViWEQUENWM2vskUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvbwR-0003us-56; Thu, 08 Aug 2019 06:30:27 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1hvbxf-0004IU-2P; Thu, 08 Aug 2019 06:31:43 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvbw8-0003Vy-Rs; Thu, 08 Aug 2019 06:30:11 +0000
+ id 1hvbxL-00045I-3b; Thu, 08 Aug 2019 06:31:24 +0000
 X-Originating-IP: 79.86.19.127
 Received: from alex.numericable.fr (127.19.86.79.rev.sfr.net [79.86.19.127])
  (Authenticated sender: alex@ghiti.fr)
- by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 42BAFE000B;
- Thu,  8 Aug 2019 06:30:01 +0000 (UTC)
+ by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 60503FF802;
+ Thu,  8 Aug 2019 06:31:07 +0000 (UTC)
 From: Alexandre Ghiti <alex@ghiti.fr>
 To: Andrew Morton <akpm@linux-foundation.org>
-Subject: [PATCH v6 11/14] mips: Adjust brk randomization offset to fit generic
- version
-Date: Thu,  8 Aug 2019 02:17:53 -0400
-Message-Id: <20190808061756.19712-12-alex@ghiti.fr>
+Subject: [PATCH v6 12/14] mips: Replace arch specific way to determine 32bit
+ task with generic version
+Date: Thu,  8 Aug 2019 02:17:54 -0400
+Message-Id: <20190808061756.19712-13-alex@ghiti.fr>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190808061756.19712-1-alex@ghiti.fr>
 References: <20190808061756.19712-1-alex@ghiti.fr>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_233009_052886_3336CE2A 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20190807_233123_314864_23630E03 
+X-CRM114-Status: GOOD (  11.60  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.196 listed in list.dnswl.org]
+ low trust [217.70.183.199 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -75,45 +75,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This commit simply bumps up to 32MB and 1GB the random offset
-of brk, compared to 8MB and 256MB, for 32bit and 64bit respectively.
+Mips uses TASK_IS_32BIT_ADDR to determine if a task is 32bit, but
+this define is mips specific and other arches do not have it: instead,
+use !IS_ENABLED(CONFIG_64BIT) || is_compat_task() condition.
 
-Suggested-by: Kees Cook <keescook@chromium.org>
 Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
 Acked-by: Paul Burton <paul.burton@mips.com>
 Reviewed-by: Kees Cook <keescook@chromium.org>
 Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
 ---
- arch/mips/mm/mmap.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ arch/mips/mm/mmap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/mips/mm/mmap.c b/arch/mips/mm/mmap.c
-index a7e84b2e71d7..ff6ab87e9c56 100644
+index ff6ab87e9c56..d5106c26ac6a 100644
 --- a/arch/mips/mm/mmap.c
 +++ b/arch/mips/mm/mmap.c
-@@ -16,6 +16,7 @@
- #include <linux/random.h>
+@@ -17,6 +17,7 @@
  #include <linux/sched/signal.h>
  #include <linux/sched/mm.h>
-+#include <linux/sizes.h>
+ #include <linux/sizes.h>
++#include <linux/compat.h>
  
  unsigned long shm_align_mask = PAGE_SIZE - 1;	/* Sane caches */
  EXPORT_SYMBOL(shm_align_mask);
-@@ -189,11 +190,11 @@ static inline unsigned long brk_rnd(void)
- 	unsigned long rnd = get_random_long();
+@@ -191,7 +192,7 @@ static inline unsigned long brk_rnd(void)
  
  	rnd = rnd << PAGE_SHIFT;
--	/* 8MB for 32bit, 256MB for 64bit */
-+	/* 32MB for 32bit, 1GB for 64bit */
- 	if (TASK_IS_32BIT_ADDR)
--		rnd = rnd & 0x7ffffful;
-+		rnd = rnd & (SZ_32M - 1);
+ 	/* 32MB for 32bit, 1GB for 64bit */
+-	if (TASK_IS_32BIT_ADDR)
++	if (!IS_ENABLED(CONFIG_64BIT) || is_compat_task())
+ 		rnd = rnd & (SZ_32M - 1);
  	else
--		rnd = rnd & 0xffffffful;
-+		rnd = rnd & (SZ_1G - 1);
- 
- 	return rnd;
- }
+ 		rnd = rnd & (SZ_1G - 1);
 -- 
 2.20.1
 
