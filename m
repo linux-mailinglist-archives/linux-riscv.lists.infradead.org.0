@@ -2,79 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EF0685D87
-	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 10:55:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6742D85E08
+	for <lists+linux-riscv@lfdr.de>; Thu,  8 Aug 2019 11:17:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sBHpr6rHjB1fg1LR0OcgobPQ2X3JEGdjFx7D/kSW/0k=; b=K4rVilSSsfGpLV
-	9ZaB2e5Ntv9ukO0I2qe9z7oyB3BDXAyrsgyIvGx1oUQJDHoEx3Eau4ppZnduWHwWYcBXp4zaPbaCW
-	OF8jlLiWd30zCB60StWVBUn9Njs8rdK4dG/qC07LK6ic/5luMieDXFRhWqjTNdK/7jXLbsxT/vVS+
-	+++kmliYnyQk6RuhHOn8akYV5iUmLXN2Ki20RLzFP3PempnL9Wh6mpzA7z1QyaG5X1/v1YhVNGl9W
-	nNosItKjDm/buJJ0HaQH/QM5esFdQK+Zt6nUn+wnhPAEYwOt4Ftk6FC1PxPsHlbwkwXbXn8EY8twg
-	PeFTFk1vlOauO8cT2+UQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=mfNsZ7FzhgtZD6rkcrFJtABmJi5QiPYlF5XDthyzgGA=; b=I5SiAB/6jjwyT5sh2nzo4ky0S
+	C9b/oCQLf+Vpp8Zxw4a8Sj661e3TKET5eRNweFwnyK43CfOeoDQdQSCpk+l+fRy9KRM+EgNxB4Pxk
+	rwU85R4DSlKO6psJGh95bcZvvOOXCbTEuy3gg5Pi+7hdFANNhPtftIw1pvaHF1zCzcKEqJkZoggmU
+	1QnbjpqaajgS/9Ik+UT10y8qfsqaGQ1sYkQR5SfQco5XhYYe0Bkf23m26aoqNRUlMqco3Xx4DAgg3
+	zTR+DnzyjWI5OItC0pFIPjYw1muMLUF18nV5K07BIj3kzl9AviMAMiSPy9Gafe4X6ZKmIeyxT+W5V
+	iy+aR9GCg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hveD3-00056u-3J; Thu, 08 Aug 2019 08:55:45 +0000
-Received: from mail-wm1-f68.google.com ([209.85.128.68])
+	id 1hveYO-0006U1-So; Thu, 08 Aug 2019 09:17:49 +0000
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hveC6-00037A-8L
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 08:54:48 +0000
-Received: by mail-wm1-f68.google.com with SMTP id f72so1558121wmf.5
- for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 01:54:45 -0700 (PDT)
+ id 1hveX0-0005q8-DI
+ for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 09:16:25 +0000
+Received: by mail-lf1-x144.google.com with SMTP id b29so59033936lfq.1
+ for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 02:16:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=M0Lkp7TI/1lX0PjPf1h84OWxjj1q7OPrwwtMkQUMB80=;
+ b=Z1XISyDmNMrKzhH5jpoXRm+UDpftCfPHsXSHiMp386hpt6qzA47mI+MZCjhh8/Zeyw
+ jokbLjILXaPIhi16o8/c61dqditvR/MIYHeLbkQyQnW1HIi9UnftiHokpg6qK507fm7J
+ Af4qYSS1b0OGvvXKHezXLIVBZAA22zNmMLXIgrCO7kd7HL9v99JBKOfmG2a8I4SKpTHT
+ bYqs+AyT4ajWAbpBYl2QGZEPQO6YYKHDcpVDFpxR617xywNAkq8MTsHvEe09qcGQm0N/
+ Q2SBZWzsoeIcTUgNNHs8jSQHhyhyqyNLDF5nH869msJXyFVwIVvvUIWwVSw8UZZBa3BW
+ /xHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=JAn+ykN3unM/kToCkFC1Tvb8JYP1HBbyyihRZZ3yBqQ=;
- b=f7iy1wfeqxODQwOYcEOWzZZYYWUfN7Ak6ZzWNoXsQraxEM1UR40KqdwO/PL45M1ejK
- 6pB7WP0zKwfQwyxtKKyBEwsfCn87t9q/djHF5daVmAbC+t4fPFzXrouvLnpDPqxFnvkU
- N/pzUqugzDlgfs1UkiB7qH0iTUdf4KWL9ZrlD5RClUS333NcRlG/xuleI1aBjPUNOqgF
- WfpLA1DK8E4Y1SWIUv+2BaS2AbjV093uQljQim5UjODN60ychWtb3oHuk3vfLY1QGQYV
- Pp1n5ajhAZmURT6CRIomwPdooXWauaAcgblsEh0gfNc9kmg/ou9UDkQrA8BikO9i7XIS
- pOtg==
-X-Gm-Message-State: APjAAAW6q2UhgHRlfS/mE0tNvnrue0g34oORXoe33x1ZdUUp8IVUkGCC
- vA5zTnfEVTePjLfTxoDH/TbN3A==
-X-Google-Smtp-Source: APXvYqy+/8dJb7VrhwMfhRjrQU4n2YvttWFHTmu72C0vK873zAhbFw4cxB+jQKcpkaP1SGPLf1vp5w==
-X-Received: by 2002:a1c:2314:: with SMTP id j20mr3050248wmj.152.1565254484135; 
- Thu, 08 Aug 2019 01:54:44 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:b42d:b492:69df:ed61?
- ([2001:b07:6468:f312:b42d:b492:69df:ed61])
- by smtp.gmail.com with ESMTPSA id j9sm105900449wrn.81.2019.08.08.01.54.42
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 08 Aug 2019 01:54:43 -0700 (PDT)
-Subject: Re: [PATCH v4 00/20] KVM RISC-V Support
-To: Paul Walmsley <paul.walmsley@sifive.com>
-References: <20190807122726.81544-1-anup.patel@wdc.com>
- <4a991aa3-154a-40b2-a37d-9ee4a4c7a2ca@redhat.com>
- <alpine.DEB.2.21.9999.1908071606560.13971@viisi.sifive.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <df0638d9-e2f4-30f5-5400-9078bf9d1f99@redhat.com>
-Date: Thu, 8 Aug 2019 10:54:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ bh=M0Lkp7TI/1lX0PjPf1h84OWxjj1q7OPrwwtMkQUMB80=;
+ b=NHSbrVlhXSKmtyGIaqSaxbFmQEr+C1mZGmED+9TVJk5b0X92amV6F6StwUHEBd/WlN
+ zigQfjVp9wXCc2fYqloo0w+vwvC4ujhvY8SZWMBgAi6UO7fwFSId5gxWle0e2Vr3XiGp
+ 05iuKt+tWk1ls7RI0impRnpBNpXeVTIqY/z5iulASYgGlv/Lzjv6HpawWtv7pn/GdAj/
+ Cc1ocExorIxpVmBmSAZDzaiaFRbD3i4DIO1b4VgSaxQs1uyN+VRlK6W+FKaY0lstF67n
+ 3EFlqoRYsbm2oPvYHDs0qXbGqRIbchOfUdbZW9lpTdL1gk5gEn5f8VBLzb4wrZFeIbfA
+ jD5g==
+X-Gm-Message-State: APjAAAVEj0TzUguGLIpBxcBA8LQFdSfhQuqxiElHaGnX29rr2PuA22Vh
+ jZnI97/NSL8xpFFWyh2BOjwLjA==
+X-Google-Smtp-Source: APXvYqwAZY8WXCeiGX2n+XECYEd8x3LcF9hNec57wPu9uZBuLdOygGHP8AmFYhQOUjDhlaSnPEqcXw==
+X-Received: by 2002:a19:c711:: with SMTP id x17mr8605646lff.147.1565255778647; 
+ Thu, 08 Aug 2019 02:16:18 -0700 (PDT)
+Received: from ?IPv6:2a00:1fa0:8c7:ada9:25b2:24d8:3973:eb87?
+ ([2a00:1fa0:8c7:ada9:25b2:24d8:3973:eb87])
+ by smtp.gmail.com with ESMTPSA id f23sm406561lfc.25.2019.08.08.02.16.16
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 08 Aug 2019 02:16:17 -0700 (PDT)
+Subject: Re: [PATCH v6 09/14] mips: Properly account for stack randomization
+ and stack guard gap
+To: Alexandre Ghiti <alex@ghiti.fr>, Andrew Morton <akpm@linux-foundation.org>
+References: <20190808061756.19712-1-alex@ghiti.fr>
+ <20190808061756.19712-10-alex@ghiti.fr>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Message-ID: <bd67507e-8a5b-34b5-1a33-5500bbb724b2@cogentembedded.com>
+Date: Thu, 8 Aug 2019 12:16:04 +0300
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1908071606560.13971@viisi.sifive.com>
+In-Reply-To: <20190808061756.19712-10-alex@ghiti.fr>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_015446_341255_E0ACEB2C 
-X-CRM114-Status: GOOD (  12.93  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190808_021622_992319_89892B0B 
+X-CRM114-Status: GOOD (  16.99  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.128.68 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.128.68 listed in wl.mailspike.net]
+ no trust [2a00:1450:4864:20:0:0:0:144 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,54 +98,80 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
- Anup Patel <anup@brainfault.org>, Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Kees Cook <keescook@chromium.org>,
+ linux-mm@kvack.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Will Deacon <will.deacon@arm.com>,
+ Russell King <linux@armlinux.org.uk>, Ralf Baechle <ralf@linux-mips.org>,
+ linux-kernel@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ Luis Chamberlain <mcgrof@kernel.org>, Paul Burton <paul.burton@mips.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, James Hogan <jhogan@kernel.org>,
+ linux-riscv@lists.infradead.org, linux-mips@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, linux-arm-kernel@lists.infradead.org,
+ Alexander Viro <viro@zeniv.linux.org.uk>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 08/08/19 01:15, Paul Walmsley wrote:
-> On Wed, 7 Aug 2019, Paolo Bonzini wrote:
+Hello!
+
+On 08.08.2019 9:17, Alexandre Ghiti wrote:
+
+> This commit takes care of stack randomization and stack guard gap when
+> computing mmap base address and checks if the task asked for randomization.
 > 
->> On 07/08/19 14:27, Anup Patel wrote:
->>> This series adds initial KVM RISC-V support. Currently, we are able to boot
->>> RISC-V 64bit Linux Guests with multiple VCPUs.
->>
->> Looks good to me!  Still need an Acked-by from arch/riscv folks if I
->> have to merge it, otherwise they can take care of the initial merge.
+> This fixes the problem uncovered and not fixed for arm here:
+> https://lkml.kernel.org/r/20170622200033.25714-1-riel@redhat.com
 > 
-> Since almost all of the patches touch arch/riscv files, we'll plan to 
-> merge them through the RISC-V tree.  Care to ack patch one, and send tags 
-> for any other patches as you think might be appropriate?
+> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+> Acked-by: Kees Cook <keescook@chromium.org>
+> Acked-by: Paul Burton <paul.burton@mips.com>
+> Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
+> ---
+>   arch/mips/mm/mmap.c | 14 ++++++++++++--
+>   1 file changed, 12 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/mips/mm/mmap.c b/arch/mips/mm/mmap.c
+> index d79f2b432318..f5c778113384 100644
+> --- a/arch/mips/mm/mmap.c
+> +++ b/arch/mips/mm/mmap.c
+> @@ -21,8 +21,9 @@ unsigned long shm_align_mask = PAGE_SIZE - 1;	/* Sane caches */
+>   EXPORT_SYMBOL(shm_align_mask);
+>   
+>   /* gap between mmap and stack */
+> -#define MIN_GAP (128*1024*1024UL)
+> -#define MAX_GAP ((TASK_SIZE)/6*5)
+> +#define MIN_GAP		(128*1024*1024UL)
+> +#define MAX_GAP		((TASK_SIZE)/6*5)
 
-Patch 1, 3-20:
+    Could add spaces around *, while touching this anyway? And parens
+around TASK_SIZE shouldn't be needed...
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+> +#define STACK_RND_MASK	(0x7ff >> (PAGE_SHIFT - 12))
+>   
+>   static int mmap_is_legacy(struct rlimit *rlim_stack)
+>   {
+> @@ -38,6 +39,15 @@ static int mmap_is_legacy(struct rlimit *rlim_stack)
+>   static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
+>   {
+>   	unsigned long gap = rlim_stack->rlim_cur;
+> +	unsigned long pad = stack_guard_gap;
+> +
+> +	/* Account for stack randomization if necessary */
+> +	if (current->flags & PF_RANDOMIZE)
+> +		pad += (STACK_RND_MASK << PAGE_SHIFT);
 
-In your 5.4 pull requests, it's best if you add a note that all RISC-V
-KVM patches were acked and reviewed by me.  I'll also include a shoutout
-about RISC-V KVM in my own pull request.
+    Parens not needed here.
 
-However, for Linux releases after 5.4 I would rather get pull requests
-for arch/riscv/kvm from Anup and Atish without involving the RISC-V
-tree.  Of course, they or I will ask for your ack, or for a topic
-branch, on the occasion that something touches files outside their
-maintainership area.  This is how things are already being handled for
-ARM, POWER and s390 and it allows me to handle conflicts in common KVM
-files before they reach Linus; these are more common than conflicts in
-arch files.  If you have further questions on git and maintenance
-workflows, just ask!
+> +
+> +	/* Values close to RLIM_INFINITY can overflow. */
+> +	if (gap + pad > gap)
+> +		gap += pad;
+>   
+>   	if (gap < MIN_GAP)
+>   		gap = MIN_GAP;
+> 
 
-Paolo
 
 _______________________________________________
 linux-riscv mailing list
