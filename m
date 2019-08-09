@@ -2,81 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA64086DD9
-	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 01:22:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F002986F69
+	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 03:36:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1qA6mZMwxrYBU1MjAMn9rJO5b9HGbUGqQlkQSwa0Y6c=; b=KafX3XLw/NN52k
-	vAaEAiZPXN3hQ+6crQs6Zj+p4jDGJEdj1aD5eCTSc69w3sjNRHY+OtJ8Qs6/EU6EsXHqGhJVy2fQS
-	sLoIbjV1GtGzO1ioQGzBDtcp9koOqkBI8JAnb0xS1dtW4gwCfZyePJjafbRS/n5RiTxoun/eD+v1N
-	qWO71vyg/k8RFsNeeVsCkVazHbgqwhMwDAHaVRgnYG7PbCpZrsVNkYZYsol1cckj75do19qAAYlrm
-	xGoF4j5EOeHeMeotf4UCG5r8i0H8LcFnJgDQy/SSadyhcMUIgYHlpqOx4hLm0Niu+Z0eWplQ+BvxT
-	h+Hzqrxq2wpHunV3/wsQ==;
+	List-Owner; bh=CSf36jXXDjN4s48ox5cfFUOLbGdArSoCtdofcrwgo+w=; b=bmEOioP9LGlH5i
+	k90zG0zQMBj6YyJUCe12okgEypJzam8u6pbgcsz2yuI9pX9t2+Nlh5RULiZLnGGClnvmSfKd8N75F
+	JxU3ZEibvk9i5CSynXz1n3ljQ2Mazhy3FQ6VdpKSkwhqCWl0oGz8MsaSNelwqtbRgI+Ab4N0q4vt+
+	b0kE7z7xv9NmE55Rd5TsY/89YjBimZX6qn248uUCeL4aiNs17fAGoYDHpRh2PH0gBdhzWo27WkLwQ
+	hTAPc1WZHuczQHS6U0GTGOsAE9yUSvxiPxSLfZaOXpNFRsWAGqO9bFQg3+2J1o2ToUnBNkt6doXDs
+	VABt2iPFciCG106zNKrA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvrjs-0007dG-70; Thu, 08 Aug 2019 23:22:32 +0000
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
+	id 1hvtoq-00033S-En; Fri, 09 Aug 2019 01:35:48 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvrjo-0007cp-V8
- for linux-riscv@lists.infradead.org; Thu, 08 Aug 2019 23:22:29 +0000
-Received: by mail-ot1-x342.google.com with SMTP id x21so32307085otq.12
- for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 16:22:26 -0700 (PDT)
+ id 1hvtok-00032O-OD
+ for linux-riscv@lists.infradead.org; Fri, 09 Aug 2019 01:35:43 +0000
+Received: by mail-ot1-x344.google.com with SMTP id z17so8134075otk.13
+ for <linux-riscv@lists.infradead.org>; Thu, 08 Aug 2019 18:35:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=yo53A10QsIF3XF0Bf4xyGS53E9kiosKFbv27vH/Lz18=;
- b=RGMUuN+uZ56NjxAK0C1mhv22NA08OkeaIhz2c2SqFGjp32NDWIxsl1BjVWBIrWGqqy
- eVmXcq22KWyOpWhm8k2bCOvSoKwKOCddp9/L433MsZSOdHiA1KcaLzbKQWE8UqkysaEh
- SEqOtcPo9la96yRagHcyqAGJjZogTq1HWq9pU4R2t8tmFB7LafGUzJv5e4oB1LMgPJlF
- ZAAyWvjq/UlbTHYTvit/Zqv79CnZDf6/VNxXNacQxO8bE+itlqaCUaXXTh3+kDRjIojX
- zWsLG/5vX+RxVD+DOf8SeLLDB07ehTYMA5ZM1zgJWI0E2qQLoBaVtTZXcSheSjOpml+W
- 3+/g==
+ bh=oT9+0FRk0XTKJRYl2Q4sGfwT0uvjls0OapEyGavcfH0=;
+ b=bTgJPRLs2KrCeHGbSsBv9KpIvMO4o+oQxiwzpIwFpWL81l/u3yEfGm+OY2bjOE74R0
+ 9yYJw3nQi+IWuSeNzJUo1TO+upgefj8sw6thmlg87ONcHJ3BejfoutIAglkH2W1wIIzm
+ 41roYeNsXFspvh63xyi/HLeMW1uplON18rcefr8C4qTXVAdZ4fVmBYwo7wcmbvU7vJ1N
+ vp2AVdy+3DnZW7iP3rOXxmt/us1b4gnH40TgQVxUcai+W8og/9GcqaEgP48JE/ttGIst
+ PBl1Nr3HEwTHZ++nPN65TvwKesqbXB1Bgw3u07ro5xdvOsdOgWIEOrkOGNsEP3Z63dR/
+ OAEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=yo53A10QsIF3XF0Bf4xyGS53E9kiosKFbv27vH/Lz18=;
- b=PUaM45ndoZaqGSvW7U9bRi1XJFnOFK/P02tC26HU6goMbeDeCSu1sG+9DfBEeiXA8d
- u5kQajOkvfRxM7cHV7xRNc9l28XuLP5Uo1lOXFx96KIv7MebKPEP8QMNaXAoWDDS1r03
- 7aJ179qoaTXY/wqoZmpwcz0fzi1faDRJtrt+RBo6uTuxWtVEyqtUbInaytm31rJPuWSH
- lWZSrnAlWf+cJ010mJiXVmxKO40Es6AMmI+TX3uv201oU6dcl/beiRn4NjZH6y+PUwC9
- +HZzVukT1z2UysLvDjcQj4KtrWtrRaYruE2wzUKawHIxZZTNkIEKKoXzAp62iBxmVfjZ
- y07w==
-X-Gm-Message-State: APjAAAW0GEI1JlXvGPwTRkiMzBQ+ZNp+oQHniiMdqiZOgLQq5VzMy5WP
- P+/EZemC+toSQIjpPcsEZ/xWew==
-X-Google-Smtp-Source: APXvYqyut0MaAojt4oQBMYDbrqnOQe3cs7lpeIX8YsgToxuKXyji9/ZByGtjbWQ9UVGGda0uKixR0Q==
-X-Received: by 2002:a6b:6516:: with SMTP id z22mr17741943iob.7.1565306545766; 
- Thu, 08 Aug 2019 16:22:25 -0700 (PDT)
+ bh=oT9+0FRk0XTKJRYl2Q4sGfwT0uvjls0OapEyGavcfH0=;
+ b=GWHekNo6ya+WqEqZEf7h6W4AiDwRf3sEwIcpjXjsFvsVyMymUVUTdDN5+VzO8yzhT3
+ 5u/jFtV2ThUSb+URr+YzcFi46Awc/L84iin1LQign2FgYnc4s2HtEQK+hbNdd5NizpEM
+ uhnBNy7qUDwBuT+t8wZnEt+9ynJk+3Bik73E9aMfWSKkyi0fEa6H3qtL4NgIkiNarvBS
+ yTZakLYF6KYloZg7TBXnqYG4o7wX/uwpfGbNpQs7SXynoYveixYgTBNKr+VaP2yhNTRL
+ Sxzp/4d/w3SSz0Mz2Gu5KyPUt+O3yt6LBi03kas/lFQf8RUcjne7YzrPtDLmwAUgenpu
+ h/nQ==
+X-Gm-Message-State: APjAAAVurJovdybjD09q1aRHZCVyfsN5Tgo0H17OhrPO08rjLsQJje49
+ ZllzSsySuDsHGdusIhk4OWAOTY8pEgY=
+X-Google-Smtp-Source: APXvYqz6ICJH3+/BdftjNoVT6B/6SpEFAG0akxiwAjeOkWh6cvUY64FsLO+6gp/jqLLJBXFNGB3+Kw==
+X-Received: by 2002:a6b:641a:: with SMTP id t26mr18476138iog.3.1565314539454; 
+ Thu, 08 Aug 2019 18:35:39 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- i4sm118719877iog.31.2019.08.08.16.22.25
+ z6sm2274953ioi.8.2019.08.08.18.35.38
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 08 Aug 2019 16:22:25 -0700 (PDT)
-Date: Thu, 8 Aug 2019 16:22:24 -0700 (PDT)
+ Thu, 08 Aug 2019 18:35:38 -0700 (PDT)
+Date: Thu, 8 Aug 2019 18:35:38 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: akpm@linux-foundation.org
-Subject: Re: + riscv-kbuild-add-virtual-memory-system-selection.patch added
- to -mm tree
-In-Reply-To: <20190731215335.XZNjD%akpm@linux-foundation.org>
-Message-ID: <alpine.DEB.2.21.9999.1908081620450.21111@viisi.sifive.com>
-References: <20190731215335.XZNjD%akpm@linux-foundation.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v4 00/20] KVM RISC-V Support
+In-Reply-To: <df0638d9-e2f4-30f5-5400-9078bf9d1f99@redhat.com>
+Message-ID: <alpine.DEB.2.21.9999.1908081824500.21111@viisi.sifive.com>
+References: <20190807122726.81544-1-anup.patel@wdc.com>
+ <4a991aa3-154a-40b2-a37d-9ee4a4c7a2ca@redhat.com>
+ <alpine.DEB.2.21.9999.1908071606560.13971@viisi.sifive.com>
+ <df0638d9-e2f4-30f5-5400-9078bf9d1f99@redhat.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_162229_014821_371B9286 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20190808_183542_802676_3DFCA16E 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -98,32 +101,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, bmeng.cn@gmail.com,
- mm-commits@vger.kernel.org, linux-kernel@vger.kernel.org, alex@ghiti.fr
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <anup@brainfault.org>, Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Andrew,
+On Thu, 8 Aug 2019, Paolo Bonzini wrote:
 
-On Wed, 31 Jul 2019, akpm@linux-foundation.org wrote:
+> However, for Linux releases after 5.4 I would rather get pull requests 
+> for arch/riscv/kvm from Anup and Atish without involving the RISC-V 
+> tree.  Of course, they or I will ask for your ack, or for a topic 
+> branch, on the occasion that something touches files outside their 
+> maintainership area.  This is how things are already being handled for 
+> ARM, POWER and s390 and it allows me to handle conflicts in common KVM 
+> files before they reach Linus; these are more common than conflicts in 
+> arch files. If you have further questions on git and maintenance 
+> workflows, just ask!
 
-> The patch titled
->      Subject: riscv: kbuild: add virtual memory system selection
-> has been added to the -mm tree.  Its filename is
->      riscv-kbuild-add-virtual-memory-system-selection.patch
-> 
-> This patch should soon appear at
->     http://ozlabs.org/~akpm/mmots/broken-out/riscv-kbuild-add-virtual-memory-system-selection.patch
-> and later at
->     http://ozlabs.org/~akpm/mmotm/broken-out/riscv-kbuild-add-virtual-memory-system-selection.patch
+In principle, that's fine with me, as long as the arch/riscv maintainers 
+and mailing lists are kept in the loop.  We already do something similar 
+to this for the RISC-V BPF JIT.  However, I'd like this to be explicitly 
+documented in the MAINTAINERS file, as it is for BPF.  It looks like it 
+isn't for ARM, POWER, or S390, either looking at MAINTAINERS or 
+spot-checking scripts/get_maintainer.pl:
 
-Could you please drop this patch from -mm when you have the opportunity?  
-Based on some feedback from Christoph Hellwig that this patch would break 
-randconfig, I've decided to abandon this patch for the moment.
+$ scripts/get_maintainer.pl -f arch/s390/kvm/interrupt.c 
+Christian Borntraeger <borntraeger@de.ibm.com> (supporter:KERNEL VIRTUAL MACHINE for s390 (KVM/s390))
+Janosch Frank <frankja@linux.ibm.com> (supporter:KERNEL VIRTUAL MACHINE for s390 (KVM/s390))
+David Hildenbrand <david@redhat.com> (reviewer:KERNEL VIRTUAL MACHINE for s390 (KVM/s390))
+Cornelia Huck <cohuck@redhat.com> (reviewer:KERNEL VIRTUAL MACHINE for s390 (KVM/s390))
+Heiko Carstens <heiko.carstens@de.ibm.com> (supporter:S390)
+Vasily Gorbik <gor@linux.ibm.com> (supporter:S390)
+linux-s390@vger.kernel.org (open list:KERNEL VIRTUAL MACHINE for s390 (KVM/s390))
+linux-kernel@vger.kernel.org (open list)
+$
 
-thanks
+Would you be willing to send a MAINTAINERS patch to formalize this 
+practice?
 
 
 - Paul
