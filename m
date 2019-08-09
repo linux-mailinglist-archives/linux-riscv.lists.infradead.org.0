@@ -2,82 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4912A87B16
-	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 15:25:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 530F587C91
+	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 16:24:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BM0/Y1cLQrSyfth+ITBzyX/Sb2L81j2WqwPc/8PsfP8=; b=J885k8CGaeQgd9
-	DzEkvGhDqf/FaDgY/Kmqr2azxXA38zB7z54uxBZHkA+i9V+bI9a+lOO93QtXfWdU2VaLvL4wuDgAp
-	sRDrXiTVk2ljkoENCh7ZmjvGfuBg/IQs/SC3rz641oGcVSeSCINn2dQ6hLbzTvJYxY/VVJSVu2BxO
-	ZUNGq+hjHrwrJQfxGymrG8b8tXtRFEDFbSKSjmK+bqL7ePamCvLiZHY9X4D7RwrlN/OS2j3dNqRK9
-	whHJX/i/oiOknAjevjB1XA5ssKyTMZMH16X8qbbaX0CZyRoGjDfxM+uQ4hIf/3B6Ly9QKvzI+JWNq
-	LQy17yxJrz7jul0yX+rg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/jB26VcP3qZyedMLL8MExpO44HvIgOlemcHhfAfpPho=; b=Dssr6YtS7V+8HW
+	y28aUMwN4ltRz9BvGBvQF2QnfgOp4Y1SJjAebeuG4XFFDdXuAdiCt8759OSK/6teK3zqvpJ1RRxSq
+	5pbQghcZYM7RIf3NMeOoeEs8laer9lkKz+0QNHPq5PE7VaPDbrfD5wTfhXcsaKZAQDYwgzswStwLB
+	yLNVkmEzgV2Qfimi+me3C0n1k0Q3iAKrRO0r10+5HBvvBkaaehbD7NLysxMf+A7ABQfFWciCu5Lv2
+	M11uombkeeG6g+PWBWu2frXikz+y3iltXqc+0Lt0Fww8FOmWPv18G1Y5h3fLI4sqJp2ir9GWrDrhr
+	H8xuMVhyxFk7uMqSzkeA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hw4tA-0002lG-Ry; Fri, 09 Aug 2019 13:25:00 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1hw5oH-0005YO-J1; Fri, 09 Aug 2019 14:24:01 +0000
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hw4t7-0002kP-MM
- for linux-riscv@lists.infradead.org; Fri, 09 Aug 2019 13:24:58 +0000
-Received: by mail-wm1-x344.google.com with SMTP id p74so5716959wme.4
- for <linux-riscv@lists.infradead.org>; Fri, 09 Aug 2019 06:24:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=ILDppnCmjlOfgJgJ2qNB5ceciycNxLir06qMezCpixc=;
- b=eZT+w59UUZFyL2cCRDMRHbuHDIC4RKWJEJrzCdA8oNEb6thqLiNew7cw7jfP0Phi7J
- f+FMHqlAI16KHYSE0ibaSbNqX+dizyMIqiEEEwVV3QIwtMbLv02nJ5CQvVYuUxBXR/VF
- 0l8m7qMLUqGDNtWlKpHhxIRJJCdztftGKS301K7JgJ9CsKj+RKbbSLvjJbF6EvypPIlT
- HsPE+Gv/ODbYaM22lNsT33zTECWqnV3KUF3jwZLDkWtami3ij+fUi6/LQnR9Ht9Jh4VY
- 781LpF4t7NA2AHAViDrw8v0kl+ezWbfaOn0hkp/rN6EGmJL4j/dHpKgmfceU6/hl+c7n
- e7ug==
+ id 1hw5oE-0005XN-NC
+ for linux-riscv@lists.infradead.org; Fri, 09 Aug 2019 14:24:00 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id 190so65536342vsf.9
+ for <linux-riscv@lists.infradead.org>; Fri, 09 Aug 2019 07:23:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=T7R0g53oVtt0hxxPewtlUubukC0ZyQYO8NJIzmT0oCc=;
+ b=CY0rWQRdZgm3Ad62s5QrVWqWafZ2c4deK+wY2x9OydvIryPzFGXumM3IxKlB1H0pUY
+ uKqxFClA0jt3i9qT3hyv3Vqd7MJ8YS+AxXll30XRDO7b4emBw3tyAnSGATWwko9X+htn
+ C32Z8FBOcLKTgKp5ypcuGXxV43Uhm9TjyQrbB++wr4dtXfWVnUk47P2Du1/IGOjj/UH9
+ KVXRdeS473BuCucIRIFrGiWV4O04/U19xCUkb9zsd4nlevhIXNcwEHEMhZtwxculYkU1
+ a1rIqeiQ456hygBSV3CBkLVci5EqUiJ46r/SQ0idsmLEKV6Q0+BP9Y2ME9uYnFP/KPkT
+ UKwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=ILDppnCmjlOfgJgJ2qNB5ceciycNxLir06qMezCpixc=;
- b=X5pFAf7M/ivhrNz5sT8q35joBafzWSWL1yF0ws0oQKFSK2jVJgbdqy4djdSZ7Dnk2G
- Jmtg7P0SQfYw4MzNL9Td/TsvDuDx3xBs3rtLrDNysG3DU7J6vJ9NxF9pPrQ3wK8q9QWf
- 6V5UO/mg/ITDHVvFYOYn4suh8wLK47jdlgPUv/K7FSePPDCH5f2OcEyL1iIgt80hQsav
- 49/dsV48zkqEdzR4Thn0mRzWvEwx4X2DLY9eRypbFe8UZfHhBCuwB09+c7WSlnKzLbZd
- iTMb3vnlIN17aN53uW6N4OBSA4iH5i4Igy9bxPHaL9PFoRg+UaVGO+9M9BrKbMyzIM6Z
- AGgg==
-X-Gm-Message-State: APjAAAVnfn6kty4booFkMPYEPodmF9mXGYXyx0j375dCxS0fy6UwbGgq
- gaK55mRmc9QaqDEbgPdYr+4=
-X-Google-Smtp-Source: APXvYqyoIq7cQyCyqyaTH2fo4y1zxmmZ+SxcwfcCyTtt3q94bYPWzefG8vVhK4GVKNwWCIJEWnX5Vw==
-X-Received: by 2002:a1c:ab06:: with SMTP id u6mr10757190wme.125.1565357095875; 
- Fri, 09 Aug 2019 06:24:55 -0700 (PDT)
-Received: from localhost ([197.211.57.145])
- by smtp.gmail.com with ESMTPSA id a2sm4863912wmj.9.2019.08.09.06.24.50
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 09 Aug 2019 06:24:55 -0700 (PDT)
-Date: Fri, 9 Aug 2019 14:23:49 +0100
-From: Sheriff Esseson <sheriffesseson@gmail.com>
-To: skhan@linuxfoundation.org
-Subject: [PATCH v2] Documentation: virt: Fix broken reference to virt tree's
- index
-Message-ID: <20190809132349.GA15460@localhost>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=T7R0g53oVtt0hxxPewtlUubukC0ZyQYO8NJIzmT0oCc=;
+ b=p33q33zd1dlTnjw/6+AqoW9Sp+4qS7mq0vVLVq5vOODfBomFImM5q3jO7Y3eaRuYC9
+ kC4tjobVPuJnJ/jLtZe0bh58P0QJjCagqPdMBXceC93r7quUB5CdNP4MQuAJCwFgR3gg
+ ZNTJy60ZlnxJTwm0GxlGd9VU5+hXrZF7HAkxMP3w28cIVKv5XK7rpmRWaHMBAw6lwj98
+ DfbXM5C6pcgIF2aNjWuAWL5E+8i17I+sebXuLf7S/9NUnwa9FPK0iWHqyDNJt7fg5Frl
+ l/npSJGf7+p+5UUfL64/NsGE+H1EhI/f4FjQnvx8bQzV3KR/FuJYSn3qXuFvThBzvgBo
+ 5mcQ==
+X-Gm-Message-State: APjAAAViH0iCYXliEc4Nk9uKCsRQwmuRc778qqsRMkUS2wdKVVs9wtGg
+ 50y7oNliIkOmP8ZDMCbcvncAbfnor4sIpKUbmXRGjQ==
+X-Google-Smtp-Source: APXvYqzZs94CLTPNtEOYUE3fPG/Fo1fnQN3kFLmROvw+v8aNS7cQMk9CTW2FiPWDlpzolz9aC8Su/VC/9T/aUP4Giyk=
+X-Received: by 2002:a67:2d08:: with SMTP id t8mr3880063vst.178.1565360636286; 
+ Fri, 09 Aug 2019 07:23:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.12.1 (2019-06-15)
+References: <1562092745-11541-1-git-send-email-sagar.kadam@sifive.com>
+ <1562092745-11541-5-git-send-email-sagar.kadam@sifive.com>
+ <f3a1617e-0478-63ea-ab76-feaab7ac1e9b@ti.com>
+In-Reply-To: <f3a1617e-0478-63ea-ab76-feaab7ac1e9b@ti.com>
+From: Sagar Kadam <sagar.kadam@sifive.com>
+Date: Fri, 9 Aug 2019 19:53:45 +0530
+Message-ID: <CAARK3HkRgchmPZRpHfHj69OMUn=K7Zp-az5YYtBOW_jdASgYyw@mail.gmail.com>
+Subject: Re: [PATCH v7 4/4] mtd: spi-nor: add locking support for is25wp256
+ device
+To: Vignesh Raghavendra <vigneshr@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190809_062457_734628_F0EBB48C 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20190809_072358_816689_D86AEC8B 
+X-CRM114-Status: GOOD (  20.82  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:e42 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sheriffesseson[at]gmail.com)
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -96,52 +92,151 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- "open list:BPF \(Safe dynamic programs and tools\)" <bpf@vger.kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
- "open list:BPF \(Safe dynamic programs and tools\)" <netdev@vger.kernel.org>,
- Palmer Dabbelt <palmer@sifive.com>,
- "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>, open list <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Yonghong Song <yhs@fb.com>,
- "open list:RISC-V ARCHITECTURE" <linux-riscv@lists.infradead.org>,
- linux-kernel-mentees@lists.linuxfoundation.org,
- Martin KaFai Lau <kafai@fb.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, tudor.ambarus@microchip.com,
+ richard@nod.at, Palmer Dabbelt <palmer@sifive.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ marek.vasut@gmail.com, linux-mtd@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, miquel.raynal@bootlin.com,
+ linux-riscv@lists.infradead.org, computersforpeace@gmail.com,
+ dwmw2@infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Fix broken reference to virt/index.rst.
+Hello Vignesh,
 
-Fixes: 2f5947dfcaec ("Documentation: move Documentation/virtual to
-Documentation/virt")
+On Fri, Aug 9, 2019 at 4:57 PM Vignesh Raghavendra <vigneshr@ti.com> wrote:
+>
+> Hi Sagar,
+>
+> On 03/07/19 12:09 AM, Sagar Shrikant Kadam wrote:
+> [...]> +static int issi_lock(struct spi_nor *nor, loff_t ofs, uint64_t len)
+> > +{
+> > +     int status_old, status_new, blk_prot;
+> > +     u8 mask;
+> > +     u8 shift;
+> > +     u8 pow, ret, func_reg;
+> > +     bool use_top;
+> > +     loff_t lock_len;
+> > +
+> > +     if (nor->flags & SNOR_F_HAS_BP3)
+> > +             mask = SR_BP3 | SR_BP2 | SR_BP1 | SR_BP0;
+> > +     else
+> > +             mask = SR_BP2 | SR_BP1 | SR_BP0;
+> > +
+> > +     shift = ffs(mask) - 1;
+> > +
+> > +     status_old = read_sr(nor);
+> > +
+> > +     /* if status reg is Write protected don't update bit protection */
+> > +     if (status_old & SR_SRWD) {
+> > +             dev_err(nor->dev,
+> > +                     "SR is write protected, can't update BP bits...\n");
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     ret = spi_nor_select_zone(nor, ofs, len, status_old, &use_top, 1);
+> > +     if (!ret)
+> > +             /* Older protected blocks include the new requested block's */
+> > +             return 0;
+> > +     else if (ret < 0)
+> > +             return ret;
+> > +
+> > +     func_reg = spi_nor_read_fr(nor);
+>
+Thank you for reviewing the patch.
+> Sorry, I don't understand where func_reg is used? Since TBS OTP, how
+> does issi_lock() code comprehend that TBS bit value in OTP register and
+> use_top returned by spi_nor_select_zone() are matching before we go
+> ahead and program status register.
+>
+In my earlier version of this patch, you had suggested an approach to skip
+updating the TBS OTP bits as ones written that cannot be changed.
+Actually, func_reg was used to update the OTP section, sorry I missed
+removing the func_reg reference here as per your suggestion.
+I will update a new version of this patch which will not modify the OTP
+region and will return with an error when locking the requested region by
+the user is not possible.
 
-Signed-off-by: Sheriff Esseson <sheriffesseson@gmail.com>
----
+> We should reject locking request if top-bottom calculation does not
+> match OTP bit. Where is that done?
+>
+> Regards
+> Vignesh
+>
 
-Changes in v2:
-	- Fix patch description. 
-
- Documentation/index.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Documentation/index.rst b/Documentation/index.rst
-index 2df5a3da563c..5205430305d5 100644
---- a/Documentation/index.rst
-+++ b/Documentation/index.rst
-@@ -115,7 +115,7 @@ needed).
-    target/index
-    timers/index
-    watchdog/index
--   virtual/index
-+   virt/index
-    input/index
-    hwmon/index
-    gpu/index
--- 
-2.17.1
-
+Thanks & BR,
+Sagar
+> > +     /* lock_len: length of region that should end up locked */
+> > +     if (use_top)
+> > +             lock_len = nor->mtd.size - ofs;
+> > +     else
+> > +             lock_len = ofs + len;
+> > +
+> > +     pow = order_base_2(lock_len);
+> > +     blk_prot = mask & (((pow + 1) & 0xf) << shift);
+> > +     if (lock_len <= 0) {
+> > +             dev_err(nor->dev, "invalid Length to protect");
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     status_new = status_old | blk_prot;
+> > +     if (status_old == status_new)
+> > +             return 0;
+> > +
+> > +     return write_sr_and_check(nor, status_new, mask);
+> > +}
+> > +
+> > +/**
+> >   * issi_unlock() - clear BP[0123] write-protection.
+> >   * @nor: pointer to a 'struct spi_nor'.
+> >   * @ofs: offset from which to unlock memory.
+> > @@ -4171,6 +4338,7 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+> >       if (JEDEC_MFR(info) == SNOR_MFR_ISSI &&
+> >           info->flags & SPI_NOR_HAS_LOCK &&
+> >           info->flags & SPI_NOR_HAS_BP3) {
+> > +             nor->flash_lock = issi_lock;
+> >               nor->flash_unlock = issi_unlock;
+> >       }
+> >
+> > @@ -4194,6 +4362,8 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+> >               nor->flags |= SNOR_F_NO_OP_CHIP_ERASE;
+> >       if (info->flags & USE_CLSR)
+> >               nor->flags |= SNOR_F_USE_CLSR;
+> > +     if (info->flags & SPI_NOR_HAS_BP3)
+> > +             nor->flags |= SNOR_F_HAS_BP3;
+> >
+> >       if (info->flags & SPI_NOR_NO_ERASE)
+> >               mtd->flags |= MTD_NO_ERASE;
+> > diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
+> > index f6fa70f..26dbf48 100644
+> > --- a/include/linux/mtd/spi-nor.h
+> > +++ b/include/linux/mtd/spi-nor.h
+> > @@ -40,6 +40,8 @@
+> >  #define SPINOR_OP_RDSR               0x05    /* Read status register */
+> >  #define SPINOR_OP_WRSR               0x01    /* Write status register 1 byte */
+> >  #define SPINOR_OP_RDSR2              0x3f    /* Read status register 2 */
+> > +#define SPINOR_OP_RDFR               0x48    /* Read Function register */
+> > +#define SPINOR_OP_WRFR               0x42    /* Write Function register 1 byte */
+> >  #define SPINOR_OP_WRSR2              0x3e    /* Write status register 2 */
+> >  #define SPINOR_OP_READ               0x03    /* Read data bytes (low frequency) */
+> >  #define SPINOR_OP_READ_FAST  0x0b    /* Read data bytes (high frequency) */
+> > @@ -139,6 +141,9 @@
+> >  /* Enhanced Volatile Configuration Register bits */
+> >  #define EVCR_QUAD_EN_MICRON  BIT(7)  /* Micron Quad I/O */
+> >
+> > +/*Function register bit */
+> > +#define FR_TB                        BIT(1)  /*ISSI: Top/Bottom protect */
+> > +
+> >  /* Flag Status Register bits */
+> >  #define FSR_READY            BIT(7)  /* Device status, 0 = Busy, 1 = Ready */
+> >  #define FSR_E_ERR            BIT(5)  /* Erase operation status */
+> >
+>
+> --
+> Regards
+> Vignesh
 
 _______________________________________________
 linux-riscv mailing list
