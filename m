@@ -2,78 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 664B788E96
-	for <lists+linux-riscv@lfdr.de>; Sat, 10 Aug 2019 23:52:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6227C88ED9
+	for <lists+linux-riscv@lfdr.de>; Sun, 11 Aug 2019 01:40:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DjhPcpihp190cpXb1Da+LKgPNhzmB/EckzmjsrwGpEM=; b=TM2kWUX1Aq6xBH
-	eKTr47uoiMkHed2UkC/2NnSMdAxrC7PCQRHW1QzjkU43CzKJHBQUQCCp5lRYrmX4q0QlIPFVXDBWY
-	FUtLO3YLRvAH8sGzCrp54E5IWs2+9Es4hGrN5Fy5KCYgIMySR8pLWtG/CNtZIANqla5XxCdbAydSC
-	8YWL49ITzvpRSl8Oky9wZsi65QDdYVDSVOqgbyQvTDHuXN4DP82EaHFilgGyNJ07nesGLtE6Z4nCI
-	HhmyoB8g89BrCh9JEZr/IGqi/6UPJOWaX6ja+mhzpn5+AGMcJTyL2EZ2zRgWDlWG2jXg22kGGneyp
-	nms/qSeRPj05suJrAj7A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:
+	References:In-Reply-To:From:Subject:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=C9nEdHGl++OMyRYxoMKAKgYSElEF4AMoNJzswavowrs=; b=XY3e0R+NUgTQzh
+	1EPKr5oGpcLDAhpIuClbLHX6xyKh1ReHU/OyjzkDJu9kQopOjiWVMBboMJbiy1vdU6epcqcUSpN+O
+	80KueJeDWcpKVTXtPbl2NuYZSAD42fwFjOgztTFMFNxfREiGnOD8AVVLbmb/81aD/NGCe0bjYq0wT
+	u/UeVcB8OmJN0XI+aKGpE5QeMBUFe7J6ysCk1JJygLgd6yBA1QOECdg6YmBb3ykEq1pYQ0wgd7dYN
+	PYHSewYqEeP5UvIf9GO1PEyu49pedWYGkPLBCAHkJzaBqrhaSwfyW9zRTU63d7QBWXDnyTidPHFz6
+	dHt4R3GMXKqsls/jlS9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hwZHP-0002c6-6u; Sat, 10 Aug 2019 21:52:03 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1hway4-0000XN-Mp; Sat, 10 Aug 2019 23:40:12 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hwZHL-0002bh-23
- for linux-riscv@lists.infradead.org; Sat, 10 Aug 2019 21:52:01 +0000
-Received: by mail-ot1-x343.google.com with SMTP id q20so145959677otl.0
- for <linux-riscv@lists.infradead.org>; Sat, 10 Aug 2019 14:51:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:message-id:user-agent:mime-version;
- bh=BXzhJMcP8sUrbiDUCA84lEyIOcPFyZ1BvR0HhIB3IoA=;
- b=SMl+5KtTl/n9Ap142CBKocbUdrfTmsY30zKYh4Z6ioty7GXFoGlJTXcPy3/Of7D4FT
- xN67MbSWu9WhaedfinFmyl4/RuFsB6yxKlY/fL4YV3mVDtvxfv5dC4fBnI3wqDZz1LDY
- mAH6LQ6NJBDHkSCmO78vQ6VB6dqHBP/6/LZcsKrkrHTFiL5YnSSgqGmEhP8lFu5XRs5d
- ZABK7t1fRYaEZ0PlIfSYY4QYDY0jxLxL08Kjkx039Rwii1pfSzsXDyeyJG02qIbXVZ4D
- kXzJ+A3qM0JZZIvwbco4Ew0uA4KD1+bHgh2vOVRTBiPoLZ4uJYsfUhl9uuSoSLw+qoGd
- ypgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
- :mime-version;
- bh=BXzhJMcP8sUrbiDUCA84lEyIOcPFyZ1BvR0HhIB3IoA=;
- b=mGsLfzWN7HWaqQULpUHHtJpVz/a+7JTkrp5eXIEdEnmbFTv4uXMRfr568Yy307enDh
- 6FSm3jeatxNtdRfCRlUqSMvYWP8jJfmSHkrcHYIeeT5RpkU/W4Q4Qtna9kA/w0jrOO6S
- omcaT12o3Pw3mr2cuaAu/D9KMaZvXICxGeYfBjvBX0Fkr8bKymhkrirFfbbOVVbc5zKH
- yrQTi76iTbz9qezxJnjbTZfjVrn/2eLFseQIycO28dsh/OFQuengMCIhqeqtBUzRwUL5
- 6eNyVUP7Q5du+Pm+lTGat8FWN9UzWwSmKCcD2j6iNmjbwL1R45OEF0qZ2weFbTGnMueH
- gLrg==
-X-Gm-Message-State: APjAAAUS7zVYwX9SW1T3tOAZMC0kvcSqlo40FgCAwLhHzUYJ+Y6UPPl9
- FOX3uIOkW950gZKEVwHCpxst8F+jEjk=
-X-Google-Smtp-Source: APXvYqw975ALnEQ7gqJUAF1qVfME8rEeVeTWqcDdVogCmy40Ah4etxLC0gnFpyhMM3OYNIzP/TPLnw==
-X-Received: by 2002:a02:c9d8:: with SMTP id c24mr8346028jap.38.1565473917462; 
- Sat, 10 Aug 2019 14:51:57 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- k6sm8386344iob.11.2019.08.10.14.51.56
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 10 Aug 2019 14:51:57 -0700 (PDT)
-Date: Sat, 10 Aug 2019 14:51:56 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: torvalds@linux-foundation.org
-Subject: [GIT PULL] RISC-V updates for v5.3-rc4
-Message-ID: <alpine.DEB.2.21.9999.1908101451050.22177@viisi.sifive.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
-MIME-Version: 1.0
+ id 1hway0-0000Qi-Kq
+ for linux-riscv@lists.infradead.org; Sat, 10 Aug 2019 23:40:10 +0000
+Subject: Re: [GIT PULL] RISC-V updates for v5.3-rc4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565480407;
+ bh=vUFMdRRpUdRJSchw/Wj85gfdOIYjjm83fQJbpux6Z2Y=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=prTOolgF/V83Eal61PASI8MfgrSAuLD0G5QIK+CJujrAZxyjbUgbcHD5yYBP0CVlE
+ kUNUFbYaS//ba3NEoRlVNtuPzxowGYFbyVHnN911zWdCJF4ODstjGpUXigNPdHLTmf
+ 43JKtNaLKxB7hL6R9X73W5gM/XVFwZdIW11kgZ7g=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <alpine.DEB.2.21.9999.1908101451050.22177@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1908101451050.22177@viisi.sifive.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <alpine.DEB.2.21.9999.1908101451050.22177@viisi.sifive.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
+ tags/riscv/for-v5.3-rc4
+X-PR-Tracked-Commit-Id: b390e0bfd2996f1215231395f4e25a4c011eeaf9
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 296d05cb0d3c9f4648e31abb8ce404ac6915d66c
+Message-Id: <156548040730.7293.15246531905901951311.pr-tracker-bot@kernel.org>
+Date: Sat, 10 Aug 2019 23:40:07 +0000
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190810_145159_113277_0A79CDB4 
-X-CRM114-Status: GOOD (  10.41  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190810_164008_710794_7A1FD4FE 
+X-CRM114-Status: UNSURE (   1.01  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -83,6 +65,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,65 +77,26 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-riscv@lists.infradead.org, torvalds@linux-foundation.org,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Linus,
+The pull request you sent on Sat, 10 Aug 2019 14:51:56 -0700 (PDT):
 
-The following changes since commit e21a712a9685488f5ce80495b37b9fdbe96c230d:
+> git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.3-rc4
 
-  Linux 5.3-rc3 (2019-08-04 18:40:12 -0700)
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/296d05cb0d3c9f4648e31abb8ce404ac6915d66c
 
-are available in the Git repository at:
+Thank you!
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.3-rc4
-
-for you to fetch changes up to b390e0bfd2996f1215231395f4e25a4c011eeaf9:
-
-  dt-bindings: riscv: fix the schema compatible string for the HiFive Unleashed board (2019-08-08 16:05:38 -0700)
-
-----------------------------------------------------------------
-RISC-V updates for v5.3-rc4
-
-A few minor RISC-V updates for v5.3-rc4:
-
-- Remove __udivdi3() from the 32-bit Linux port, converting the only
-  upstream user to use do_div(), per Linux policy
-
-- Convert the RISC-V standard clocksource away from per-cpu data structures,
-  since only one is used by Linux, even on a multi-CPU system
-
-- A set of DT binding updates that remove an obsolete text binding in
-  favor of a YAML binding, fix a bogus compatible string in the schema
-    (thus fixing a "make dtbs_check" warning), and clarifies the future
-      values expected in one of the RISC-V CPU properties
-
-----------------------------------------------------------------
-Atish Patra (2):
-      RISC-V: Remove per cpu clocksource
-      dt-bindings: Update the riscv,isa string description
-
-Palmer Dabbelt (1):
-      RISC-V: Remove udivdi3
-
-Paul Walmsley (3):
-      riscv: delay: use do_div() instead of __udivdi3()
-      dt-bindings: riscv: remove obsolete cpus.txt
-      dt-bindings: riscv: fix the schema compatible string for the HiFive Unleashed board
-
- Documentation/devicetree/bindings/riscv/cpus.txt   | 162 ---------------------
- Documentation/devicetree/bindings/riscv/cpus.yaml  |  16 ++
- .../devicetree/bindings/riscv/sifive.yaml          |   2 +-
- arch/riscv/lib/Makefile                            |   2 -
- arch/riscv/lib/delay.c                             |   6 +-
- arch/riscv/lib/udivdi3.S                           |  32 ----
- drivers/clocksource/timer-riscv.c                  |   6 +-
- 7 files changed, 24 insertions(+), 202 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/riscv/cpus.txt
- delete mode 100644 arch/riscv/lib/udivdi3.S
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 
 _______________________________________________
 linux-riscv mailing list
