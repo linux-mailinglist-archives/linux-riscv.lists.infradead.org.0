@@ -2,74 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 132458831B
-	for <lists+linux-riscv@lfdr.de>; Fri,  9 Aug 2019 21:04:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54DEF8878A
+	for <lists+linux-riscv@lfdr.de>; Sat, 10 Aug 2019 03:43:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+nDCLLydIf5PXquTVCUQeSY8qGTzkcZpGNYLLQ2EIHc=; b=uo4Q3iDsg+lX2P
-	jv+tEClcOKz074pvj58FBeUeV4kAzf3WPvMkQZKJ/RygEmgs+q+XzKCj3q5MUL926ieN+NgmoLVye
-	nnai/F13Bh9ALT0dtkmAa70vIwEdGoEMtwgTsq+cfT95Cint/D28Jsv9ZEdU/PBxLx1bGOldXWdIL
-	1B0DYErc7Tc/6rfX8/uwVlnTqOvNrWbBrr4P6BQNdAffjvZnDjQ2cHCEgNGExxKhskHr11eB86vVi
-	psRbmolIzEsAg+rNfKqVZlsa4iBTLEIeRH1QAA04P4wY+XEHLZKaDgVyWTGcH+QYrXSk2BwL9NZhl
-	FkGao/zgr546MJXU3hRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=v/teo+HOLyUliakCHIXowGtE+d53oBPbM9MoO9vazp8=; b=d9fLOpmBwwUs+N
+	EAUbmZEA0FAR0DPx9PZT4rxkP8VExR9JJExsyiJCqlwq6l2Xb2xWNeQvfRxVoGNQUmJDszgTogdb5
+	boJNKqGU4bIGpNmyhjv2Y0SZB3wXpTvA8fZMihlh7yUkA0lpaly073+M450znOLnO1024MrIY/wVT
+	q9LHLjz3VDOM2zMBmU2E6k3IA+dueoXSwnx+kAztgYwNM6WzVW2SjVTllNU7wU2diwBjOwP8914Zf
+	p8BWpSH/nGTnVcuPakkSMeQ1tj456R5d0GtxQUvGHkQrNGTpq/IMYviP18LwyWFL0Ty/PA+u/I0f4
+	1v8f7igv6jlFVrEH1djQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hwAB2-0000RX-JY; Fri, 09 Aug 2019 19:03:48 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hwGPg-0007Ko-M6; Sat, 10 Aug 2019 01:43:20 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hwAAz-0000R1-Gg
- for linux-riscv@lists.infradead.org; Fri, 09 Aug 2019 19:03:46 +0000
-Received: from guinness.priv.deltatee.com ([172.16.1.162])
- by ale.deltatee.com with esmtp (Exim 4.89)
- (envelope-from <logang@deltatee.com>)
- id 1hwAAm-0003Rn-Q1; Fri, 09 Aug 2019 13:03:33 -0600
-To: Greentime Hu <green.hu@gmail.com>
-References: <20190109203911.7887-1-logang@deltatee.com>
- <20190109203911.7887-3-logang@deltatee.com>
- <CAEbi=3d0RNVKbDUwRL-o70O12XBV7q6n_UT-pLqFoh9omYJZKQ@mail.gmail.com>
- <c4298fdd-6fd6-fa7f-73f7-5ff016788e49@deltatee.com>
- <CAEbi=3cn4+7zk2DU1iRa45CDwTsJYfkAV8jXHf-S7Jz63eYy-A@mail.gmail.com>
- <CAEbi=3eZcgWevpX9VO9ohgxVDFVprk_t52Xbs3-TdtZ+js3NVA@mail.gmail.com>
- <0926a261-520e-4c40-f926-ddd40bb8ce44@deltatee.com>
- <CAEbi=3ebNM-t_vA4OA7KCvQUF08o6VmL1j=kMojVnYsYsN_fBw@mail.gmail.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <e2603558-7b2c-2e5f-e28c-f01782dc4e66@deltatee.com>
-Date: Fri, 9 Aug 2019 13:03:30 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1hwGPd-0007KT-7n
+ for linux-riscv@lists.infradead.org; Sat, 10 Aug 2019 01:43:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1565401398; x=1596937398;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ceojetfl5xNGShX/CCMjHmrFo8vU8SDmwPMikCGqbgM=;
+ b=J4on+x1UhEoRfbQCBn669X6VwQooRwyYWtl0QtlQ4JoDl0w3SWZI4Z8O
+ TFtou8COPrzLi+UgTndUKncHr9vPv71rnJ/eIzCTq8ZblXnCfJOaW2/HB
+ sqj9iVNJbjoW85NplVh3NdC4UU5mU4BXmjz7iTfonIZsmxhdhqUDhIsPU
+ BzojG0uphDQr2K3uB1LPec3sw/cNuMrd6Chmo5whinc1e5q+VxDJud1gq
+ kh8zpihBLBpDjYiydadouhV1wEuByhHzoBgaodQMvBNqq91YIiB2+1XjB
+ w22Jx2kBsKYEhv5ZaRKcoRTB9OFKiDYw08p2FpzwZyl7WFphXSYO5hsYX A==;
+IronPort-SDR: qAhPSZ7pN1LRupi7zN2l+fYB5MR5u0wnDghx6hlb2A5sJZHlMlQW2EPamfg/4zsfqqXHJcqbxx
+ 6KcozpKpfysf//qpCC+DsCN+4wfahAZzhanCLL+XmarEFpoq4uYOCnHm7kJ9AdC6qdijL1B/nK
+ y3BNAS/ijvR32+grFXqPzUSEWME2TjI4nMbDh1E6ogjx79ndzTvbWZVTN1NHQpnm5S0dCaz9/c
+ NLxntsurwdTWiaQwKuqmlNP9W7Y06khUZYu4Y8w9asjs3GVhoWjOFSSliTkpjwuxKUHcY5EQ1F
+ oqw=
+X-IronPort-AV: E=Sophos;i="5.64,367,1559491200"; d="scan'208";a="120142157"
+Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 10 Aug 2019 09:43:11 +0800
+IronPort-SDR: 3wY3H2G0vw1HoKPdmyyO+AE+8NX+xSWwfp+ME8Ixjl08IDWh4CKkOohBylRnfn87n2UOmvvLk6
+ zthTg9/3op2chThNj5ctc1oeqoKKGwmNsymGY3LLNMEPEnVBP3rKvFe4ctwd6A8+e2Zk45i3Ce
+ depJUmSSawjInUzHcct9sVOxS/RRaJ3gV1yMLuOqunhcOiVUBisycd3+L/caQLqgVc7Sj+dbAT
+ v4KZjwPU+X7lga+2BuLBhx1dJYD9y50ivQn6D8cjPoZQxfDy4MxF2QBmxsppH3jyKOE6BWlOkn
+ ejPLC3ua6n3HTnTJ9uOK3HYB
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+ by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2019 18:40:52 -0700
+IronPort-SDR: 5cO7xlMPnvqQEdneKaDfxVLumwgrPiNAymBKl7/ACH5XG2lPhxIzijuIs4b7a0bV3rgy0faDcB
+ ebce1EgaxSH8raP3yBgpez9GcF0InYakqHxD/VnIKsghZ0zhQb1Iy8k3difYzr8N0o9J73R+Hj
+ Xf8buN3qZImFqAxYfjldxM5/zUq/R8JpefLbstNZoTZv4Y1bsxC8urlyZjaG5wnlRDW7F5aLiP
+ sMl2s/DI9qwPBxifEOubuhQ17pRYq+yEeDa9/b/prcOdTS6FQCK0zJknAIJehYGbtMe8TlYS6U
+ Vaw=
+Received: from jedi-01.sdcorp.global.sandisk.com (HELO
+ jedi-01.int.fusionio.com) ([10.11.143.218])
+ by uls-op-cesaip02.wdc.com with ESMTP; 09 Aug 2019 18:43:10 -0700
+From: Atish Patra <atish.patra@wdc.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] RISC-V: Issue a local tlb flush if possible.
+Date: Fri,  9 Aug 2019 18:43:09 -0700
+Message-Id: <20190810014309.20838-1-atish.patra@wdc.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <CAEbi=3ebNM-t_vA4OA7KCvQUF08o6VmL1j=kMojVnYsYsN_fBw@mail.gmail.com>
-Content-Language: en-CA
-X-SA-Exim-Connect-IP: 172.16.1.162
-X-SA-Exim-Rcpt-To: hch@lst.de, michaeljclark@mac.com,
- linux-riscv@lists.infradead.org, olof@lixom.net, zong@andestech.com,
- sbates@raithlin.com, linux-kernel@vger.kernel.org, palmer@sifive.com,
- andrew@sifive.com, aou@eecs.berkeley.edu, robh@kernel.org,
- paul.walmsley@sifive.com, greentime.hu@sifive.com, green.hu@gmail.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v4 2/2] RISC-V: Implement sparsemem
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190809_120345_626451_AFF7B729 
-X-CRM114-Status: GOOD (  18.71  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190809_184317_400676_BA58D79D 
+X-CRM114-Status: GOOD (  10.45  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.153.141 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,82 +97,87 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
- Andrew Waterman <andrew@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Stephen Bates <sbates@raithlin.com>, Zong Li <zong@andestech.com>,
- paul.walmsley@sifive.com, Olof Johansson <olof@lixom.net>,
- greentime.hu@sifive.com, linux-riscv@lists.infradead.org,
- Michael Clark <michaeljclark@mac.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Palmer Dabbelt <palmer@sifive.com>, Atish Patra <atish.patra@wdc.com>,
+ Anup Patel <anup.patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org, Allison Randal <allison@lohutok.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-CgpPbiAyMDE5LTA4LTA5IDExOjAxIGEubS4sIEdyZWVudGltZSBIdSB3cm90ZToKPiBIaSBMb2dh
-biwKPiAKPiBMb2dhbiBHdW50aG9ycGUgPGxvZ2FuZ0BkZWx0YXRlZS5jb20+IOaWvCAyMDE55bm0
-OOaciDnml6Ug6YCx5LqUIOS4i+WNiDExOjQ35a+r6YGT77yaCj4+Cj4+Cj4+Cj4+IE9uIDIwMTkt
-MDgtMDggMTA6MjMgcC5tLiwgR3JlZW50aW1lIEh1IHdyb3RlOgo+Pj4gZGlmZiAtLWdpdCBhL2Fy
-Y2gvcmlzY3YvS2NvbmZpZyBiL2FyY2gvcmlzY3YvS2NvbmZpZwo+Pj4gaW5kZXggM2YxMmIwNjlh
-ZjFkLi4yMDhiM2UxNGNjZDggMTAwNjQ0Cj4+PiAtLS0gYS9hcmNoL3Jpc2N2L0tjb25maWcKPj4+
-ICsrKyBiL2FyY2gvcmlzY3YvS2NvbmZpZwo+Pj4gQEAgLTExNiw3ICsxMTYsOCBAQCBjb25maWcg
-UEdUQUJMRV9MRVZFTFMKPj4+ICAgICAgICAgZGVmYXVsdCAyCj4+Pgo+Pj4gIGNvbmZpZyBIQVZF
-X0FSQ0hfUEZOX1ZBTElECj4+PiAtICAgICAgIGRlZl9ib29sIHkKPj4+ICsgICAgICAgYm9vbAo+
-Pj4gKyAgICAgICBkZWZhdWx0ICFTUEFSU0VNRU1fVk1FTU1BUAo+Pj4KPj4+ICBtZW51ICJQbGF0
-Zm9ybSB0eXBlIgo+Pj4KPj4+IGRpZmYgLS1naXQgYS9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3Bh
-Z2UuaCBiL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vcGFnZS5oCj4+PiBpbmRleCA4ZGRiNmM3ZmVk
-YWMuLjY5OTFmN2E1YTRhNyAxMDA2NDQKPj4+IC0tLSBhL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20v
-cGFnZS5oCj4+PiArKysgYi9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3BhZ2UuaAo+Pj4gQEAgLTkz
-LDE2ICs5MywyMCBAQCBleHRlcm4gdW5zaWduZWQgbG9uZyBtaW5fbG93X3BmbjsKPj4+ICAjZGVm
-aW5lIHZpcnRfdG9fcGZuKHZhZGRyKSAgICAgKHBoeXNfdG9fcGZuKF9fcGEodmFkZHIpKSkKPj4+
-ICAjZGVmaW5lIHBmbl90b192aXJ0KHBmbikgICAgICAgKF9fdmEocGZuX3RvX3BoeXMocGZuKSkp
-Cj4+Pgo+Pj4gKyNpZiAhZGVmaW5lZChDT05GSUdfU1BBUlNFTUVNX1ZNRU1NQVApCj4+PiArI2Rl
-ZmluZSBwZm5fdmFsaWQocGZuKSBcCj4+PiArICAgICAgICgoKHBmbikgPj0gcGZuX2Jhc2UpICYm
-ICgoKHBmbiktcGZuX2Jhc2UpIDwgbWF4X21hcG5yKSkKPj4+ICAjZGVmaW5lIHZpcnRfdG9fcGFn
-ZSh2YWRkcikgICAgKHBmbl90b19wYWdlKHZpcnRfdG9fcGZuKHZhZGRyKSkpCj4+PiAgI2RlZmlu
-ZSBwYWdlX3RvX3ZpcnQocGFnZSkgICAgIChwZm5fdG9fdmlydChwYWdlX3RvX3BmbihwYWdlKSkp
-Cj4+PiArI2Vsc2UKPj4+ICsjZGVmaW5lIHZpcnRfdG9fcGFnZSh2YWRkcikgICAgKChzdHJ1Y3Qg
-cGFnZSAqKSgoKCh1NjQpdmFkZHIgLQo+Pj4gdmFfcGFfb2Zmc2V0KSAvIFBBR0VfU0laRSkgKiBz
-aXplb2Yoc3RydWN0IHBhZ2UpICsgVk1FTU1BUF9TVEFSVCkpCj4+PiArI2RlZmluZSBwYWdlX3Rv
-X3ZpcnQocGcpICAgICAgICgodm9pZCAqKSgoKCgodTY0KXBnIC0gVk1FTU1BUF9TVEFSVCkgLwo+
-Pj4gc2l6ZW9mKHN0cnVjdCBwYWdlKSkgKiBQQUdFX1NJWkUpICsgdmFfcGFfb2Zmc2V0KSkKPj4+
-ICsjZW5kaWYKPj4KPj4gVGhpcyBkb2Vzbid0IG1ha2Ugc2Vuc2UgdG8gbWUgYXQgYWxsLiBJdCBz
-aG91bGQgYWx3YXlzIHVzZSBwZm5fdG9fcGFnZSgpCj4+IGZvciB2aXJ0X3RvX3BhZ2UoKSBhbmQg
-dGhlIGdlbmVyaWMgcGZuX3RvX3BhZ2UoKS9wYWdlX3RvX3BmbigpCj4+IGltcGxlbWVudGF0aW9u
-cyBlc3NlbnRpYWxseSBhbHJlYWR5IGRvIHdoYXQgeW91IGFyZSBkb2luZyBpbiBhIGNsZWFuZXIK
-Pj4gd2F5LiBTbyBJJ2QgYmUgcmVhbGx5IHN1cnByaXNlZCBpZiB0aGlzIGRvZXMgYW55dGhpbmcg
-YXQgYWxsLgo+Pgo+IAo+IFRoYW5rIHlvdSBmb3IgcG9pbnQgbWUgb3V0IHRoYXQuIEkganVzdCBj
-aGVja2VkIHRoZSBnZW5lcmljCj4gaW1wbGVtZW50YXRpb24gYW5kIEkgc2hvdWxkIHVzZSB0aGF0
-IG9uZS4KPiBTb3JyeSBJIGRpZG4ndCBjaGVjayB0aGUgZ2VuZXJpYyBvbmUgYW5kIGp1c3QgaW1w
-bGVtZW50IGl0IGFnYWluLgo+IEkgdGhpbmsgdGhlIG9ubHkgcGF0Y2ggd2UgbmVlZCBpcyB0aGUg
-Zmlyc3QgcGFydCB0byB1c2UgZ2VuZXJpYwo+IHBmbl92YWxpZCgpLiBJIGp1c3QgdGVzdGVkIGl0
-IGFuZCB5ZXMgaXQgY2FuIGJvb3Qgc3VjY2Vzc2Z1bGx5IGluIGR0cwo+IHdpdGggaG9sZS4KPiAK
-PiBJdCB3aWxsIGZhaWwgaW4gdGhpcyBjaGVjayAoKHBmbiktcGZuX2Jhc2UpIDwgbWF4X21hcG5y
-LgoKU291bmRzIHRvIG1lIGxpa2UgbWF4X21hcG5yIGlzIG5vdCBzZXQgY29ycmVjdGx5LiBTZWUg
-dGhlIGNvZGUgaW4Kc2V0dXBfYm9vdG1lbSgpLiBTZWVtcyBsaWtlICdtZW1fc2l6ZScgc2hvdWxk
-IGJlIHNldCB0byB0aGUgbGFyZ2VzdAptZW1vcnkgYmxvY2ssIG5vdCBqdXN0IHRoZSBvbmUgdGhh
-dCBjb250YWlucyB0aGUga2VybmVsLi4uCgoKPiBkaWZmIC0tZ2l0IGEvYXJjaC9yaXNjdi9LY29u
-ZmlnIGIvYXJjaC9yaXNjdi9LY29uZmlnCj4gaW5kZXggM2YxMmIwNjlhZjFkLi4yMDhiM2UxNGNj
-ZDggMTAwNjQ0Cj4gLS0tIGEvYXJjaC9yaXNjdi9LY29uZmlnCj4gKysrIGIvYXJjaC9yaXNjdi9L
-Y29uZmlnCj4gQEAgLTExNiw3ICsxMTYsOCBAQCBjb25maWcgUEdUQUJMRV9MRVZFTFMKPiAgICAg
-ICAgIGRlZmF1bHQgMgo+IAo+ICBjb25maWcgSEFWRV9BUkNIX1BGTl9WQUxJRAo+IC0gICAgICAg
-ZGVmX2Jvb2wgeQo+ICsgICAgICAgYm9vbAo+ICsgICAgICAgZGVmYXVsdCAhU1BBUlNFTUVNX1ZN
-RU1NQVAKPiAKPiAgbWVudSAiUGxhdGZvcm0gdHlwZSIKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9y
-aXNjdi9pbmNsdWRlL2FzbS9wYWdlLmggYi9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3BhZ2UuaAo+
-IGluZGV4IDhkZGI2YzdmZWRhYy4uODBkMjhmYTFlMmViIDEwMDY0NAo+IC0tLSBhL2FyY2gvcmlz
-Y3YvaW5jbHVkZS9hc20vcGFnZS5oCj4gKysrIGIvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9wYWdl
-LmgKPiBAQCAtMTAwLDggKzEwMCwxMCBAQCBleHRlcm4gdW5zaWduZWQgbG9uZyBtaW5fbG93X3Bm
-bjsKPiAgI2RlZmluZSBwYWdlX3RvX2J1cyhwYWdlKSAgICAgIChwYWdlX3RvX3BoeXMocGFnZSkp
-Cj4gICNkZWZpbmUgcGh5c190b19wYWdlKHBhZGRyKSAgICAocGZuX3RvX3BhZ2UocGh5c190b19w
-Zm4ocGFkZHIpKSkKPiAKPiArI2lmICFkZWZpbmVkKENPTkZJR19TUEFSU0VNRU1fVk1FTU1BUCkK
-PiAgI2RlZmluZSBwZm5fdmFsaWQocGZuKSBcCj4gICAgICAgICAoKChwZm4pID49IHBmbl9iYXNl
-KSAmJiAoKChwZm4pLXBmbl9iYXNlKSA8IG1heF9tYXBucikpCj4gKyNlbmRpZgo+IAo+ICAjZGVm
-aW5lIEFSQ0hfUEZOX09GRlNFVCAgICAgICAgICAgICAgICAocGZuX2Jhc2UpCgoKVGhpcyBwYXRj
-aCBzdGlsbCBtYWtlcyBubyBzZW5zZS4gSSdtIG5vdCBzdXJlIHdoeSB3ZSBoYXZlIGFuIGFyY2gK
-c3BlY2lmaWMgcGZuX3ZhbGlkKCkgYmVjYXVzZSBpdCdzIHZlcnkgc2ltaWxhciB0byB0aGUgZ2Vu
-ZXJpYyBvbmUuIEJ1dApteSBndWVzcyBpcyB0aGVyZSdzIGEgcmVhc29uIGZvciBpdCBhbmQgaXQn
-cyBub3QgZG9pbmcgd2hhdCBpdCBpcwpzdXBwb3NlZCB3aGVuIHlvdSByZW1vdmUgaXQgZm9yIHRo
-ZSBzcGFyc2VtZW0gY2FzZS4KCkxvZ2FuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJpc2N2Cg==
+In RISC-V, tlb flush happens via SBI which is expensive.
+If the target cpumask contains a local hartid, some cost
+can be saved by issuing a local tlb flush as we do that
+in OpenSBI anyways.
+
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+---
+ arch/riscv/include/asm/tlbflush.h | 33 +++++++++++++++++++++++++++----
+ 1 file changed, 29 insertions(+), 4 deletions(-)
+
+diff --git a/arch/riscv/include/asm/tlbflush.h b/arch/riscv/include/asm/tlbflush.h
+index 687dd19735a7..b32ba4fa5888 100644
+--- a/arch/riscv/include/asm/tlbflush.h
++++ b/arch/riscv/include/asm/tlbflush.h
+@@ -8,6 +8,7 @@
+ #define _ASM_RISCV_TLBFLUSH_H
+ 
+ #include <linux/mm_types.h>
++#include <linux/sched.h>
+ #include <asm/smp.h>
+ 
+ /*
+@@ -46,14 +47,38 @@ static inline void remote_sfence_vma(struct cpumask *cmask, unsigned long start,
+ 				     unsigned long size)
+ {
+ 	struct cpumask hmask;
++	struct cpumask tmask;
++	int cpuid = smp_processor_id();
+ 
+ 	cpumask_clear(&hmask);
+-	riscv_cpuid_to_hartid_mask(cmask, &hmask);
+-	sbi_remote_sfence_vma(hmask.bits, start, size);
++	cpumask_clear(&tmask);
++
++	if (cmask)
++		cpumask_copy(&tmask, cmask);
++	else
++		cpumask_copy(&tmask, cpu_online_mask);
++
++	if (cpumask_test_cpu(cpuid, &tmask)) {
++		/* Save trap cost by issuing a local tlb flush here */
++		if ((start == 0 && size == -1) || (size > PAGE_SIZE))
++			local_flush_tlb_all();
++		else if (size == PAGE_SIZE)
++			local_flush_tlb_page(start);
++		cpumask_clear_cpu(cpuid, &tmask);
++	} else if (cpumask_empty(&tmask)) {
++		/* cpumask is empty. So just do a local flush */
++		local_flush_tlb_all();
++		return;
++	}
++
++	if (!cpumask_empty(&tmask)) {
++		riscv_cpuid_to_hartid_mask(&tmask, &hmask);
++		sbi_remote_sfence_vma(hmask.bits, start, size);
++	}
+ }
+ 
+-#define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
+-#define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, 0)
++#define flush_tlb_all() remote_sfence_vma(NULL, 0, -1)
++#define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, (addr) + PAGE_SIZE)
+ #define flush_tlb_range(vma, start, end) \
+ 	remote_sfence_vma(mm_cpumask((vma)->vm_mm), start, (end) - (start))
+ #define flush_tlb_mm(mm) \
+-- 
+2.21.0
+
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
