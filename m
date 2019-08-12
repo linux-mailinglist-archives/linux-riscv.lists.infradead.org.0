@@ -2,36 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2E2F8A1D8
-	for <lists+linux-riscv@lfdr.de>; Mon, 12 Aug 2019 17:03:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34FD28A1DB
+	for <lists+linux-riscv@lfdr.de>; Mon, 12 Aug 2019 17:05:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XodlDprNiF0w1AT/SOPStIUcI2CKShZyJD+JVPNzqUU=; b=OjDIQD332/L5n9
-	nSqeT+8/aTHP30noTEAWXMWYWicbliJ/hLuMOGt18VnVI0tNQ09u2SCInzKU86kVlRT3sga0yV2kZ
-	KcZSCGz4nDBZlb6Xn+TOzBz8kfI8E2l2/5vGgrf+fFrUTVcHoIhnJeRrHoN1PA8Pt5c+37xudUBto
-	w+GHjVYS+FEZfVFAgRmtR/k2+jb178VXaPdzle3//9gxpg9WX5xyy1Mt0HIghDN1OCqRFvSJn5Kxq
-	+wqJ4ZzFYi2NuCzomkG72EX2uM6Mp8D33QxVC1SeeNp0HegbtpgTqWBySAUih/0VTqs+pSCKymjNr
-	64YERbuDGvAlEC/jSi+w==;
+	List-Owner; bh=DXtuBWIpH2QlnSL+Kf4hKqPEPTGPL4vBjptafg2o19o=; b=rBZf9FD6rEv/Dr
+	jwfIDnGBzPpBZvk3vEuHIRdOleY4f6X3czjoQDA4hAEhgLOZuVAg7ldTCXjCfJkUxVhojy+RjdmO2
+	tFX1aYA0To/KwKqJaZMV7I9/8Bu6H0d2qNaR4hgF7cl3jJ9dWGFKU8wABaTdkUifjlb2QVdWfXiex
+	ycZYLuW+7LWZMBZwl0T2X5gDjO2HrJbiim4MtXZvlOTECOQnvPaWPcHE4yl+k/rnRG1HjCcNzg34A
+	uLfnwQS6yoZxjLJcFShZxieb53aH/3yb8hvr3EzkKFc/5YYGeABK7NsNaxbozFcEe8M5js5Jf/eD1
+	SQgsDWephXm55MyS6FrA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxBrW-0006Oa-FA; Mon, 12 Aug 2019 15:03:54 +0000
+	id 1hxBsY-0006ev-UR; Mon, 12 Aug 2019 15:04:59 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1hxBrQ-0006NF-Tz; Mon, 12 Aug 2019 15:03:48 +0000
-Date: Mon, 12 Aug 2019 08:03:48 -0700
+ Linux)) id 1hxBsN-0006Xf-19; Mon, 12 Aug 2019 15:04:47 +0000
+Date: Mon, 12 Aug 2019 08:04:46 -0700
 From: Christoph Hellwig <hch@infradead.org>
-To: Charles Papon <charles.papon.90@gmail.com>
-Subject: Re: [PATCH] riscv: kbuild: drop CONFIG_RISCV_ISA_C
-Message-ID: <20190812150348.GH26897@infradead.org>
-References: <alpine.DEB.2.21.9999.1908061929230.19468@viisi.sifive.com>
- <CAEUhbmVTM2OUnX-gnBZw5oqU+1MwdYkErrOnA3NGJKh5gxULng@mail.gmail.com>
- <CAMabmMJ3beMcs38Boe11qcsQvqY+9u=2OqA0vCSKdL=n-cK9GQ@mail.gmail.com>
+To: Nick Hu <nickhu@andestech.com>
+Subject: Re: [PATCH 1/2] riscv: Add memmove string operation.
+Message-ID: <20190812150446.GI26897@infradead.org>
+References: <cover.1565161957.git.nickhu@andestech.com>
+ <a6c24ce01dc40da10d58fdd30bc3e1316035c832.1565161957.git.nickhu@andestech.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAMabmMJ3beMcs38Boe11qcsQvqY+9u=2OqA0vCSKdL=n-cK9GQ@mail.gmail.com>
+In-Reply-To: <a6c24ce01dc40da10d58fdd30bc3e1316035c832.1565161957.git.nickhu@andestech.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -44,25 +43,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>,
- linux-riscv <linux-riscv@lists.infradead.org>, Bin Meng <bmeng.cn@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: aou@eecs.berkeley.edu, alankao@andestech.com, atish.patra@wdc.com,
+ gregkh@linuxfoundation.org, palmer@sifive.com, linux-kernel@vger.kernel.org,
+ kasan-dev@googlegroups.com, zong@andestech.com, alexios.zavras@intel.com,
+ Anup.Patel@wdc.com, glider@google.com, green.hu@gmail.com,
+ paul.walmsley@sifive.com, aryabinin@virtuozzo.com, tglx@linutronix.de,
+ deanbo422@gmail.com, linux-riscv@lists.infradead.org, dvyukov@google.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Aug 08, 2019 at 02:18:53PM +0200, Charles Papon wrote:
-> Please do not drop it.
+On Wed, Aug 07, 2019 at 03:19:14PM +0800, Nick Hu wrote:
+> There are some features which need this string operation for compilation,
+> like KASAN. So the purpose of this porting is for the features like KASAN
+> which cannot be compiled without it.
 > 
-> Compressed instruction extension has some specific overhead in small
-> RISC-V FPGA softcore, especialy in the ones which can't implement the
-> register file read in a asynchronous manner because of the FPGA
-> technology.
-> What are reasons to enforce RVC ?
+> KASAN's string operations would replace the original string operations and
+> call for the architecture defined string operations. Since we don't have
+> this in current kernel, this patch provides the implementation.
+> 
+> This porting refers to the 'arch/nds32/lib/memmove.S'.
 
-Because it it the unix platform baseline as stated in the patch.
+This looks sensible to me, although my stringop asm is rather rusty,
+so just an ack and not a real review-by:
+
+Acked-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 linux-riscv mailing list
