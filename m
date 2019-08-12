@@ -2,88 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B5668A781
-	for <lists+linux-riscv@lfdr.de>; Mon, 12 Aug 2019 21:49:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 552078A868
+	for <lists+linux-riscv@lfdr.de>; Mon, 12 Aug 2019 22:32:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yrbF5+UKNAhsfLiBKyD3ktrqnDYFFH8wtNGP9K59aTQ=; b=ajv7mgAI7qizcBFN6EwKdiRKm
-	pXTpGoBMBsjTO19sa55ybpJaJZvYEFrPfpSUgQ3P/AQQLQkHdYjqJ8dWBwPmJI4I5uwX2xavqbYAs
-	QstiH86eu+TQWftKQNLU52cBw8GvtF4bvQEzxS6bJGLfCEty+LpUv0r8ZCIu4v1s95ghuxk1RGc/W
-	arT4gNUEPn9NqTAweIdPAA+ZljgPzN7vj1Fap3mRM+NdlBA9jfFeawM6UmyAOL0225IaBAMwLQkIL
-	1/bl//9x/L1OUkJPxXZrhHdCtewrUoFxfSwsR6acgTL8zACwvSiQ5XHdyIuYUIi/qz9w4JhmkNert
-	PQ4dYjDlQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=Gl0c1mB3hWNsNSFsatLuRqGIernxqda6p+a1v++53vs=; b=tuv
+	kVs5daqBtcJ6c9aQyiOGeB5hmEuA/76gxSBeiKCFxuBLdJMd4yWpEt7fiuKy81jY1D4Py3tCgiku4
+	9/yhhf7T3HoZ8ler/GGYn98RxaIGqWitLCLU1cYhJ4tFRfUHIW94ZuEHWU6Nglj5qDewiyuzVmDWg
+	cB5Ziqqh22TlyxtKd9s5ELFeX33e002zw2iGnNGfmuq/kY0G3tnd+9NhLQkzxnE5MXq38EHANIt7r
+	aATWh57Yo+8f83O6OT41yTElsjcCsOhDco6jvuR5gLHbjc1PmYw/YCfjZ2OJEmEYVwX/B8651JRxm
+	ZmRAiwjTwqObVygk92I1NpP+Ih/ZzIw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxGJf-0001HU-EA; Mon, 12 Aug 2019 19:49:15 +0000
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
+	id 1hxGzn-0000uh-Sv; Mon, 12 Aug 2019 20:32:48 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxGJZ-0001H9-Lp
- for linux-riscv@lists.infradead.org; Mon, 12 Aug 2019 19:49:10 +0000
-Received: by mail-qt1-x844.google.com with SMTP id x4so6047648qts.5
- for <linux-riscv@lists.infradead.org>; Mon, 12 Aug 2019 12:49:09 -0700 (PDT)
+ id 1hxGzj-0000uO-Ni
+ for linux-riscv@lists.infradead.org; Mon, 12 Aug 2019 20:32:45 +0000
+Received: by mail-ot1-x342.google.com with SMTP id b7so113731271otl.11
+ for <linux-riscv@lists.infradead.org>; Mon, 12 Aug 2019 13:32:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bluespec-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=UV8CKdboAmk/VxMPvqRcAfLPhy32LDZ4SxfI8+jq9eA=;
- b=jltM4Ar/lpuGu7lyFR8pJwgeA74SyhzojO+40mYneDCJsl94QUPrx70p61RHEz6xmu
- vxkRFSG8yB7Urm7pDINv5eITQYdhi20v2JKnVgLly8r+4TngIEXqgfyJWjjSMtT9mBQt
- gUCHl9Xmv24ePdraDYLmy1ht3MgFF7ACGEWY0cz6IJuxACbJ6YYWtRlW1EWgEI7xjhTQ
- YdjyYRXfgrXbypaFlvxwk/W2pesE3Uc5mymbJ0gXtvHWJZwSGwFXuIwJa6uYu+k9fRYM
- 4wacfQuGkmQNOA5D6T6KTCi+hPh1pS6fcmEI0l8+cpFJNfBoCux0WwPHe0DCajgkek9P
- Zrag==
+ d=carlosedp-com.20150623.gappssmtp.com; s=20150623;
+ h=sender:mime-version:from:date:message-id:subject:to;
+ bh=ga7ZU2buVwoY9BwmzKpUUPnBVcgMTiJLCKLd/fAqQ7w=;
+ b=y8rcvQ8+yHvHVOI1xFARV3rykIHSvyf5VaeqeHUR3GvSQc827NZzcgE5+gec2hRTqK
+ EPbtzwzDw1xZuE/lIBOrCFYDZjwcew1Fj9DluDE37KXDtUBh0vJqd4JJH+gR7nZOk2aX
+ W7hyVpfQOy3WiMjsfbmnraIc5Ig3akyOA1wzFGjeake/OWqyDmjz4fYk+FHvp41wC65y
+ A6ffMm21S83kGeUeNcH600r56TAfkbnuJkQ+Fe6Z2giEnR5cDok7tjwil39r/9YSdakw
+ 9Sh9ABPClU6K7k8ik5rrbwjYSKQ9vZGqzI8GuZMqWNuacpiI2BSW7gVoYxFSB4+uhxPJ
+ gUZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=UV8CKdboAmk/VxMPvqRcAfLPhy32LDZ4SxfI8+jq9eA=;
- b=QWQNb/uTcxIYT6q8Itnrluvr37tVMse/lJfl/eTI9T8ZNK8TA8vx8QCK25dUbQhAjK
- /eG2QYrIY68l7XWhju+6RufeRn3rwbEXWNFQ4kUsqXPO1ZLxfHAQzQm5bTEc2CQ/8qoF
- ODtlED6H7HNkpYc7uKD3g6Uku1o1Gp56+xSLw8K2bJccl3svhEAJUtTCX1E6t3Z5qECz
- ND1ZC46g9mvJTn+pF1OriMGV7T6qpSuXYBStzZxBPVG/8/3+jbKNFFaKxPBQ9CIzNEp2
- RaY4vx/gQpw6JQWNSLcT47pa0SKadHSkhfa4+0HTB7Tx8txk7034KM82MCPmsg+9ilS3
- OwXA==
-X-Gm-Message-State: APjAAAVOWXswYKuWH1OI8HbHx23w/5B5BPZqnzqmpzkfB5BZeSiQ9JMo
- 8gfEv/QC/fe6QVz3sT38z/odH2fnzw==
-X-Google-Smtp-Source: APXvYqwt1wY0kFXUf2SJJ0SNo1VLt4PBkuZhW7TlkhaF569W0Da1qsUMXXhslmo12N/U1uTW9SVUGg==
-X-Received: by 2002:ac8:30f3:: with SMTP id w48mr29811591qta.216.1565639348315; 
- Mon, 12 Aug 2019 12:49:08 -0700 (PDT)
-Received: from [10.7.11.6] ([194.59.251.156])
- by smtp.gmail.com with ESMTPSA id k21sm7850588qki.50.2019.08.12.12.49.06
+ h=x-gm-message-state:sender:mime-version:from:date:message-id:subject
+ :to; bh=ga7ZU2buVwoY9BwmzKpUUPnBVcgMTiJLCKLd/fAqQ7w=;
+ b=RKHyBz3szLRxWYj0SSOwnArHZyNyd5IK2hP9tHP9ANIYL1scTK92qKh+HyJr9nvMLa
+ m1f5rgvHPyCod6rzyWO7UVJZcx6SpVPrIuecdySqpwhYJMrAtgi39Yf5n7yKbN4jxi+Z
+ Kp5y/bPbHJBUJ1PFQlXtgXXbSUgunzoxcHePEwggV7VK3R+8Hxn+zBzuENWng4g6qZjp
+ QeXpp6+RkV6pqQrG310y37X//bnqF1gfoAe1jD4Wg2iTreO8o9Ws4TTUe1Xz6ZZ+TAIN
+ Ssyg2L70DBS+1g0UwAWgJGqTP7zRliKLHEvmnt2+w1RjYvATRbJayonvysipV5DPfTSt
+ GWiQ==
+X-Gm-Message-State: APjAAAUoQIceZ4M/D2K4aEEUrk1EDE+zVNqtc1qHohF2pposA/irdqev
+ DHTGK2g+QFGbmJUffa3FZ7S5Hi4FHSQ=
+X-Google-Smtp-Source: APXvYqxj99PyaHt35jUXn7wVjazyqHktGdLRG7c7AmRGwbN/RA59vL2n8e7LOFgqwFS3HTBECkcsIw==
+X-Received: by 2002:a9d:4004:: with SMTP id m4mr815840ote.146.1565641962632;
+ Mon, 12 Aug 2019 13:32:42 -0700 (PDT)
+Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com.
+ [209.85.210.48])
+ by smtp.gmail.com with ESMTPSA id p2sm35232435otl.59.2019.08.12.13.32.41
+ for <linux-riscv@lists.infradead.org>
  (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 12 Aug 2019 12:49:07 -0700 (PDT)
-Subject: Re: [PATCH] riscv: kbuild: drop CONFIG_RISCV_ISA_C
-To: Christoph Hellwig <hch@infradead.org>,
- Charles Papon <charles.papon.90@gmail.com>
-References: <alpine.DEB.2.21.9999.1908061929230.19468@viisi.sifive.com>
- <CAEUhbmVTM2OUnX-gnBZw5oqU+1MwdYkErrOnA3NGJKh5gxULng@mail.gmail.com>
- <CAMabmMJ3beMcs38Boe11qcsQvqY+9u=2OqA0vCSKdL=n-cK9GQ@mail.gmail.com>
- <20190812150348.GH26897@infradead.org>
-From: Darius Rad <darius@bluespec.com>
-Message-ID: <5a931461-c6a8-6d2d-4f73-103a10b26f0e@bluespec.com>
-Date: Mon, 12 Aug 2019 15:49:06 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ Mon, 12 Aug 2019 13:32:41 -0700 (PDT)
+Received: by mail-ot1-f48.google.com with SMTP id n5so164081046otk.1
+ for <linux-riscv@lists.infradead.org>; Mon, 12 Aug 2019 13:32:41 -0700 (PDT)
+X-Received: by 2002:a05:6830:1bf4:: with SMTP id
+ k20mr17818831otb.79.1565641961474; 
+ Mon, 12 Aug 2019 13:32:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190812150348.GH26897@infradead.org>
-Content-Language: en-US
+From: Carlos Eduardo de Paula <me@carlosedp.com>
+Date: Mon, 12 Aug 2019 17:32:30 -0300
+X-Gmail-Original-Message-ID: <CADnnUqcp_7yN4WK2uXberCV_uwjPSj0PxpiXg6kp71--QGPJaA@mail.gmail.com>
+Message-ID: <CADnnUqcp_7yN4WK2uXberCV_uwjPSj0PxpiXg6kp71--QGPJaA@mail.gmail.com>
+Subject: Changing SiFive Unleashed core clock rate on 5.x kernel
+To: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190812_124909_779260_C42CA59E 
-X-CRM114-Status: GOOD (  11.41  )
-X-Spam-Score: 0.7 (/)
+X-CRM114-CacheID: sfid-20190812_133243_776186_9B8A3965 
+X-CRM114-Status: UNSURE (   5.30  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.7 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:844 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
- 0.7 SPF_NEUTRAL            SPF: sender does not match SPF record (neutral)
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -99,30 +96,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>,
- linux-riscv <linux-riscv@lists.infradead.org>, Bin Meng <bmeng.cn@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 8/12/19 11:03 AM, Christoph Hellwig wrote:
-> On Thu, Aug 08, 2019 at 02:18:53PM +0200, Charles Papon wrote:
->> Please do not drop it.
->>
->> Compressed instruction extension has some specific overhead in small
->> RISC-V FPGA softcore, especialy in the ones which can't implement the
->> register file read in a asynchronous manner because of the FPGA
->> technology.
->> What are reasons to enforce RVC ?
-> 
-> Because it it the unix platform baseline as stated in the patch.
-> 
+Back in 4.x kernel, we could set the board clock rate by echoing like:
 
-The same argument could be made for an FPU or MMU, yet there are options 
-to disable those.
+echo 1450000000 > /sys/devices/platform/soc/10000000.prci/rate
+
+Now with Kernel 5.x and with the board DTB, what's the correct way to
+set this clock rate? I tried changing RTCCLK_FREQ from 1000000 to
+1450000 but I got some clock skew during use.
+
+Is there anywhere else this need to be set?
+
+Thanks
+
+
+-- 
+________________________________________
+Carlos Eduardo de Paula
+me@carlosedp.com
+http://carlosedp.com
+http://twitter.com/carlosedp
+Linkedin
+________________________________________
 
 _______________________________________________
 linux-riscv mailing list
