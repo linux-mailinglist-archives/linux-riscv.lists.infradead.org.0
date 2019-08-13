@@ -2,84 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 408B48BEFC
-	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 18:52:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 829868BFD3
+	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 19:44:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vb+QbBGMwVrLzRltm+P0i0bqV0klVB0lujhhNr9+DdI=; b=m+m/sdet4dJ+y1
-	tJOOquWHf7tvZkKIqDhVIxhkuxw2iNZlX3jRv7YxLSyj6pSpA4Wsn5KLCZbify9SH8EYPUczaHyPN
-	DK2vLUc9SYNJahSknjILJYEUybQISlaE5ahKyXNS4i3lvJ+k/RjmKCW3rpFS2yRBkvM47DJG3+EUT
-	yplvxBXmzcslScfe8JEnF6+d3NpfeZKtd3+pFPpNsDAC1E1+1cQMe1T6uNBUBwhMSrR4PQQi6AqX2
-	/E0PEQfAFwObNnbF/suxeZyA/dQscBzDaS3aLWXEoXFPfRgoJWcAsl/arJuaN2ECIzJdHmuBJzRre
-	lxzknVYh9iK0sa2FnlFw==;
+	List-Owner; bh=I+5PVPyC0SzQmppnOl5dTQa0hEpEI5wj2/U01QcnKvQ=; b=iKeJNsMIPhU2Bj
+	Q0AJjbswhDIj5yxKpNvJThE36lnMOLC3/PCOxC9ykNoYKjq6CQAvL7HMncBvncZvqoIqNzF/7HvtZ
+	m12tBbc9Xk9NDo8iFjbefpw9fma6Pvg+wUC0mq25L37p93g9/KXmQ0pN5dX+E8aoWzmz/15YuOfX9
+	8bDq7drhMmmZt4JUUHnX7Ex/72qKYu7+2GexDS8yElHzpYFo7PFSBx8HlJefyCbqsWPHXW7AM633W
+	vE0tHXM8csD/mC7EwM67V3YX5HVPKrpeNYOpCaNUNN9w3UNOOQUnLMYPbd8qzGL1qd2hjNoauc4Ap
+	z87Z3OVtoKj5nhdBaXuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxa1j-0004lA-Sw; Tue, 13 Aug 2019 16:52:03 +0000
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
+	id 1hxaq8-0001Lb-RR; Tue, 13 Aug 2019 17:44:08 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxa1f-0004kS-P1
- for linux-riscv@lists.infradead.org; Tue, 13 Aug 2019 16:52:01 +0000
-Received: by mail-ot1-x342.google.com with SMTP id b1so6975557otp.6
- for <linux-riscv@lists.infradead.org>; Tue, 13 Aug 2019 09:51:59 -0700 (PDT)
+ id 1hxaq4-0001L8-Qz
+ for linux-riscv@lists.infradead.org; Tue, 13 Aug 2019 17:44:06 +0000
+Received: by mail-ot1-x343.google.com with SMTP id g17so24785380otl.2
+ for <linux-riscv@lists.infradead.org>; Tue, 13 Aug 2019 10:44:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=uC6dDZKAip16b+mn3qV8AFtyarHS2Wtjrk4sIs9wXF4=;
- b=XgpQDDJMv+/ruzPLaeBUwtQGSgQA4L3nxrBQ917gPpnuR6cUFXgim3kBcEa/w5jutY
- 1I9/+H2KPKPtxKPxy/8FlBxrLF+MmPmdZbuhYc8EDkrwdyqA6hVQoM95f8HcbpUpb1Qx
- hZTvovsZfKBhDBxViQTvA8wfBcIFktwAJqiyuK92QW91ND+gAjrkFS95swU6Mb77+JJT
- dWsfs+8qZJV00w+zYAJRBgLNShd42ftbjk5b5cCzZ2Wio/qFC7MchhHVkiLc0/4EM54U
- 4yszi7PJ41btEdlzVWQp+FYSYj7QgFW35VAqKh4gbuBkIL4TFcY3xDlkKtl0imc5VzCp
- WJbA==
+ bh=e//tFyHxvVn4RxWw0GV+f727CP/Uza8Mg4HOvjD9WwM=;
+ b=NfTsfbgV5WGpTvlyy9A2mUGXaPdLqooU2lc+4m1FQdAHncqrJoJ61g1Z/JBUHlUuFo
+ +dA4vaoxJ7F+AQcVHAKmchrxWvSscoyuSUif6QJ0ONNejw3dWzOxsSa1qEqhuwI5pEdz
+ u/uBFATnFPuT5dIsF6QYDaDvDP6kZJffd6sQqhyDTwHgzxET4apWFXmw8w1hjDkuZi7s
+ ilIa0b46bfzxj+OcIFG+xqhYhiVnO8tIJjLYRY+CjN4z2RiC2V97fHg2bEaBh/2/7P7h
+ 3B+qDE8umFimLohSegAxkrj35As+rRFinFw7yZgAYV6yEdkBpPQPPWoQFXtlvOhaZkYu
+ GVFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=uC6dDZKAip16b+mn3qV8AFtyarHS2Wtjrk4sIs9wXF4=;
- b=jPutUTEM+sxgiyAHmLjvPq4JBV3jFgzyM7GIPjPLPaiPKQVqegqlvx9LSILURpHFJt
- CD3I9oWLDV50MPVrCEiHBIe2jhJQBXaHodkRaJGgZL28gXzoNoUdu/ANoyZ3IRn/OYCK
- 243GlXRf/kkY+QpvqSOgCg5gzm1UvBYp+j0IJotPB3MMPMS0mek3cZ/caY7VcC0S4mA3
- VRmswrGY+VSAWtWozr+po9vIhIHfb0YqYvFlLUW4pV1hv9a2oX/MGZHOiCCDounZlFB1
- 0jZmZQ3cF+f323zn/CyeT0uspBMqKbrZi1M3wTY4PBxAasFo1sYIPYLHFVosC8lsEAvc
- 9uxw==
-X-Gm-Message-State: APjAAAXAwJ5gkMK3DcWSVd+3vjnusUHzvHO2Z0pod2OQLDH6LggbchaK
- l/cHkvMnV03ThGjk6rCUR/J59A==
-X-Google-Smtp-Source: APXvYqwPHBJM6jvKxBo1VW6csfTWhlFi+l+kj3B6joswy7ZnX59kuzbPWX+o7X/YHb6OhVNwnoh/Yw==
-X-Received: by 2002:a5d:9747:: with SMTP id c7mr8146194ioo.244.1565715118854; 
- Tue, 13 Aug 2019 09:51:58 -0700 (PDT)
+ bh=e//tFyHxvVn4RxWw0GV+f727CP/Uza8Mg4HOvjD9WwM=;
+ b=LaHzK7Dhh/XACPLJgl8zwCZbfu4ZZZJQlROQQnReKlOTr4OTYdSihvlw2OcKz/IfnE
+ YlQnoPMRoyWbQFkoNsjeHb9FqlRRBWcCHklNnxywCWDVBbfwgLSYP/CAPrsEgr1VbKPn
+ dGhEEKVvBeZ5Da5oAARQWchHs/JijHbCtvlg0trUYfiEhVzjoGHQK3+Hieqn9A/6nNL+
+ 9r3+F/9OGV5yueqo2/SlqnbSQthS6f6mJrJuvJTw03RnvaEE68V9zyl07y8TRQBbNT+O
+ wtmw4TmGjdlsFotCsN8Aol4BEap6pA4qU6i2zErfXsP+rXLC+mv/DUVVFukApnAoDzaJ
+ PJVA==
+X-Gm-Message-State: APjAAAWtd450hvJnyze0ZlTntossGtBQz+XDa9FQB6X86k7gmR46a4St
+ pDgAsZw1t+bOUlDTUCHE2CSV3A==
+X-Google-Smtp-Source: APXvYqycnXJThie+s/45ClHCc8Nm2hhnBi6KBWzn8Vazilpo9gUuJDafqhZi+w14fYjO2RKqUobGyA==
+X-Received: by 2002:a02:cb51:: with SMTP id k17mr9208388jap.4.1565718243824;
+ Tue, 13 Aug 2019 10:44:03 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- e26sm85862802iod.10.2019.08.13.09.51.58
+ s3sm88083226iob.49.2019.08.13.10.44.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Aug 2019 09:51:58 -0700 (PDT)
-Date: Tue, 13 Aug 2019 09:51:56 -0700 (PDT)
+ Tue, 13 Aug 2019 10:44:03 -0700 (PDT)
+Date: Tue, 13 Aug 2019 10:44:02 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 02/15] riscv: use CSR_SATP instead of the legacy sptbr
- name in switch_mm
-In-Reply-To: <20190813164257.GA10019@lst.de>
-Message-ID: <alpine.DEB.2.21.9999.1908130951250.30024@viisi.sifive.com>
+To: tglx@linutronix.de, jason@lakedaemon.net, maz@kernel.org
+Subject: Re: [PATCH 01/15] irqchip/sifive-plic: set max threshold for ignored
+ handlers
+In-Reply-To: <20190813154747.24256-2-hch@lst.de>
+Message-ID: <alpine.DEB.2.21.9999.1908131032260.30024@viisi.sifive.com>
 References: <20190813154747.24256-1-hch@lst.de>
- <20190813154747.24256-3-hch@lst.de>
- <alpine.DEB.2.21.9999.1908130935310.30024@viisi.sifive.com>
- <20190813164257.GA10019@lst.de>
+ <20190813154747.24256-2-hch@lst.de>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_095159_816867_516F540C 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20190813_104404_943018_670327CD 
+X-CRM114-Status: GOOD (  16.98  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -101,40 +99,80 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>, Damien Le Moal <damien.lemoal@wdc.com>,
- Palmer Dabbelt <palmer@sifive.com>, linux-riscv@lists.infradead.org,
+Cc: Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Christoph Hellwig <hch@lst.de>, linux-riscv@lists.infradead.org,
  linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Thomas, Jason, Marc,
+
 On Tue, 13 Aug 2019, Christoph Hellwig wrote:
 
-> On Tue, Aug 13, 2019 at 09:36:23AM -0700, Paul Walmsley wrote:
-> > On Tue, 13 Aug 2019, Christoph Hellwig wrote:
-> > 
-> > > Switch to our own constant for the satp register instead of using
-> > > the old name from a legacy version of the privileged spec.
-> > > 
-> > > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> > > Reviewed-by: Atish Patra <atish.patra@wdc.com>
-> > 
-> > Didn't you want us to replace this with Bin Meng's patch?
-> > 
-> > https://lore.kernel.org/linux-riscv/20190807151316.GB16432@infradead.org/
-> > 
-> > If so, probably best just to drop this one and state a dependency.
+> When running in M-mode we still the S-mode plic handlers in the DT.
+> Ignore them by setting the maximum threshold.
 > 
-> Either way is fine with me.  But until you have a branch with
-> either one applied I'm going to keep resending my patch, as random
-> dependencies on uncommitted patches don't work.
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
 
-If you're going to resend a patch, it's better to resend the other one 
-that you've explicitly endorsed in favor of your own.
+If you're happy with this, could one of you ack it so we can merge it 
+with the rest of this series through the RISC-V tree?
 
+thanks
 
 - Paul
+
+> ---
+>  drivers/irqchip/irq-sifive-plic.c | 12 ++++++++++--
+>  1 file changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+> index cf755964f2f8..c72c036aea76 100644
+> --- a/drivers/irqchip/irq-sifive-plic.c
+> +++ b/drivers/irqchip/irq-sifive-plic.c
+> @@ -244,6 +244,7 @@ static int __init plic_init(struct device_node *node,
+>  		struct plic_handler *handler;
+>  		irq_hw_number_t hwirq;
+>  		int cpu, hartid;
+> +		u32 threshold = 0;
+>  
+>  		if (of_irq_parse_one(node, i, &parent)) {
+>  			pr_err("failed to parse parent for context %d.\n", i);
+> @@ -266,10 +267,16 @@ static int __init plic_init(struct device_node *node,
+>  			continue;
+>  		}
+>  
+> +		/*
+> +		 * When running in M-mode we need to ignore the S-mode handler.
+> +		 * Here we assume it always comes later, but that might be a
+> +		 * little fragile.
+> +		 */
+>  		handler = per_cpu_ptr(&plic_handlers, cpu);
+>  		if (handler->present) {
+>  			pr_warn("handler already present for context %d.\n", i);
+> -			continue;
+> +			threshold = 0xffffffff;
+> +			goto done;
+>  		}
+>  
+>  		handler->present = true;
+> @@ -279,8 +286,9 @@ static int __init plic_init(struct device_node *node,
+>  		handler->enable_base =
+>  			plic_regs + ENABLE_BASE + i * ENABLE_PER_HART;
+>  
+> +done:
+>  		/* priority must be > threshold to trigger an interrupt */
+> -		writel(0, handler->hart_base + CONTEXT_THRESHOLD);
+> +		writel(threshold, handler->hart_base + CONTEXT_THRESHOLD);
+>  		for (hwirq = 1; hwirq <= nr_irqs; hwirq++)
+>  			plic_toggle(handler, hwirq, 0);
+>  		nr_handlers++;
+> -- 
+> 2.20.1
+> 
+> 
+
 
 _______________________________________________
 linux-riscv mailing list
