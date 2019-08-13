@@ -2,8 +2,8 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E51CB8B8BC
-	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 14:41:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B01A18B8C5
+	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 14:41:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,71 +11,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=R/Cs3BNaK/9qClCdP4A4u716vKutpl0NNhtMpRvJHxo=; b=OA2m7WXbqs7XfMoL8P1w4RQBFe
-	NNkvE7s8PxwWMtoDU45qisGIsqFhKBNYodqgJhR+Pp+uOgOkGSmgRd0vbpYmz5Hiy5UCOmdatYRfm
-	vuFRATsjtiSOy46/4OiH7CwCbnV1wP9PAldZgytCbKUOEGcbav4O39xr9LDxF/lQBrjQ3j2ClmuJn
-	c5bCIAxCluJKYqJKPzdr/hZFKwb6gBCWuYFwZaBsfBG4ivZ5aF2yHipALqiPvCnbYHPbSFjEcDYGO
-	V1/rG3YGbOxl1NjBzx2la1HbM98kjQKeY98dpbmH2rgl8ajTNNFLBqbzt15t2D2OQkLRC5WCZ5e15
-	RXUQzpYQ==;
+	bh=7CMNhM87Wjuf4iT9c0wyOrjxpNzwpYWC/+Cs/slaiz0=; b=Onkf2BulsEd6vozY48A507lg/W
+	x95DCQB3cPQc7MaL+hK7FV0ZgSH2ZkSG6dmngiU23H17CrK+dsloNVMvguwDW54izesswMi2gHtPV
+	fTPjqgUTfriIqw1XRS0yfLzBJKkzcywDcFXieFmPq2Y4yRzIrNblX7V2qCEfv/TqZPvTV2k/sAeoS
+	qUMOF4X7crvu/2JepgD6XS/QA8v5h/aJA1a0yXTL0C+ST180Ifyg/IR7JAbU1DKijp2d8cJZSoVvQ
+	EtzhEqAXO9J1DyZ3+Am1XtTyXO5ZztBpfEj+H1b5F9UKn5IBy8Tk5BbMoIqmw3WBJ4PQwQdnDLROt
+	gfQnbFvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxW6j-0002fd-AH; Tue, 13 Aug 2019 12:40:57 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1hxW78-0003Bc-1Q; Tue, 13 Aug 2019 12:41:22 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxW6I-0002B0-Vr
- for linux-riscv@lists.infradead.org; Tue, 13 Aug 2019 12:40:32 +0000
-Received: by mail-pf1-x443.google.com with SMTP id o70so6207314pfg.5
- for <linux-riscv@lists.infradead.org>; Tue, 13 Aug 2019 05:40:30 -0700 (PDT)
+ id 1hxW6P-0002KA-Px
+ for linux-riscv@lists.infradead.org; Tue, 13 Aug 2019 12:40:41 +0000
+Received: by mail-pl1-x641.google.com with SMTP id i2so49278600plt.1
+ for <linux-riscv@lists.infradead.org>; Tue, 13 Aug 2019 05:40:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=DzNi+RYLzS7cSoFg3QeO081QMsDPMsr4nbFVCqNdpOU=;
- b=GPOVDj34QoeqxOPABel7oG1Ha6tkpTjAKY1Y5q/P1KAEOFvi/4r7eF0KlT7GxL8qUU
- TT5mKGgKaIhLxxdmBPqQw6wGbURZ2v/RTWNUOJJqp5ZiFTKu+eKFFR5FoFVsrTireI6l
- 4ZGasRBUfcnEN2N2BQhnkwm2b/mI+e6aZI1WoRh7wCS6UhAn/ZSDYt1dldb34gsPM36B
- oDGyibHGf0eNTp3cbb1MF5A1gw4/c1lrd7zaHlRyex11ALAU2OlO31LYJK8aakMUq4RD
- lrJvSuqWaGLtTcupFOHKgOAslKnOPlkeLZuOtF3yres2AzloFYmEmyeOU6TiUy2p2oHc
- jEMA==
+ bh=CsNRmWqktBrPnRr/q3CbDiX2bXuIAHPY6s9E7w9Y9xg=;
+ b=auouH/vQnwtjs15xaVH8ZfSpfqmNi5JDJ3VH5G8Q+duuBPhyJ32ZW8rWPqFvytOwwh
+ pHmgCVtAruwTf+D5JVHSjPBFioWXsUmvBYeayy/2oQbOW++1cgJoIJkYpXhMZsGvQLU7
+ GHdC55GpDNQFTNlvW5I9RyVBFcTlPwGPIfag4pPhmPSyKByp7koQobkNX1CymNwAuW/J
+ sVUfOBDyq0rgm+KmyaZoG3+VXMPpkkZ23zEq9Qesks31KHiKhifxbDOMYxsjlz5pLsmN
+ AxqHvyIHpDboFiUHVSXCXyZFjYritPam77HOK83v0bYXYyqx7ue+J2Y2xkViBq1yksPi
+ j/ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=DzNi+RYLzS7cSoFg3QeO081QMsDPMsr4nbFVCqNdpOU=;
- b=YvjOf8BraS33elprVrH3Hvp6kMeRR5sdGyJKt6qhPJDmw3xxMcgz0PyIbf3nqRw10K
- l5s2KlOQtW63F8iOcTzZkOfYegaflSPf9WWSt3Uk0y3mq08FxzMbzLT8nnYxoTLuVjMH
- IWUw4i7vDbifTWFaUhN4g2bv++yNYXMTIK2sq3ANSAU/T6v3DEfizfnXFLBo5Lq+Rkaz
- olHlMVEP/A+R0lM+HzbnmCrzH/1coLKHBik6s65l62HJ5mEOxIBCpFWxK97HuUVPR3Zh
- Y3CK97brK4Qr4T/+Aow+UCEx9u0nou1js6uyQi+16zymrp7aPA4NAbyiBirxVQo4DxE4
- J3EQ==
-X-Gm-Message-State: APjAAAUuvwkf/O8l4pG+dgfRnx9JdChyZXTxG//etVR1HleZ9FyRknRB
- Skgkro2EZuavjpo9R9jQqayJ3g==
-X-Google-Smtp-Source: APXvYqz5oRzULFqCuYucnOnNkq7YqxJAMseEiOpICA/J6UzoGY0ukNh/JtZVmJLekvWF3sH4WMoZ8w==
-X-Received: by 2002:aa7:9e0a:: with SMTP id y10mr16916831pfq.93.1565700030489; 
- Tue, 13 Aug 2019 05:40:30 -0700 (PDT)
+ bh=CsNRmWqktBrPnRr/q3CbDiX2bXuIAHPY6s9E7w9Y9xg=;
+ b=THfnNZ0cdsXFBXa5wMFG4XKVeGkwjoXSlyMJqI7EcY2aT1bUaEr5rSdYz+cTcp02JU
+ uxQCdROhDDblJ7zPnv5zqJXaI0X8accN7bvLryj07+/PMYNBvNF4cjwCMNX+W7zo4P1O
+ 5rqPK2P9+3Z6x8WNFuveTgKK8AIT46nkeTyuya/PM9n4gRfFngY81ewYHl0l6gCo7yO0
+ wjWHlR5XQDBHa+mOG+m1j1rHfpNQ6ZP9muWtNo2DFdIwikQowhm3Jaz1A0SOreJxjkwd
+ Dm0gBGaKQP7nOrARdu5cVV9LCvwEJ4IXd195ZPiVFHeXWiPluUgA9vtLYe0Ve8ewzgHR
+ CJYw==
+X-Gm-Message-State: APjAAAVaoLF+DjxQJA2BLw6/gfUH6rJj6BMiQTCZtMkj+kFzK2brid/2
+ jmGbu9sltLQaZngnD+QrtIQO/Q==
+X-Google-Smtp-Source: APXvYqz0Y+zyMGNShM06lKxH0wSqqHQAmBdGxgplxHpWBxcjWBiRsJo4Bc51yxUqQlDavYwASSykiw==
+X-Received: by 2002:a17:902:968d:: with SMTP id
+ n13mr37888498plp.257.1565700037117; 
+ Tue, 13 Aug 2019 05:40:37 -0700 (PDT)
 Received: from buildserver-90.open-silicon.com ([114.143.65.226])
  by smtp.googlemail.com with ESMTPSA id
- v145sm14758467pfc.31.2019.08.13.05.40.26
+ v145sm14758467pfc.31.2019.08.13.05.40.32
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 13 Aug 2019 05:40:30 -0700 (PDT)
+ Tue, 13 Aug 2019 05:40:36 -0700 (PDT)
 From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 To: marek.vasut@gmail.com, tudor.ambarus@microchip.com, dwmw2@infradead.org,
  computersforpeace@gmail.com, miquel.raynal@bootlin.com, richard@nod.at,
  vigneshr@ti.com
-Subject: [PATCH v8 3/4] mtd: spi-nor: add support to unlock the flash device
-Date: Tue, 13 Aug 2019 18:08:14 +0530
-Message-Id: <1565699895-4770-4-git-send-email-sagar.kadam@sifive.com>
+Subject: [PATCH v8 4/4] mtd: spi-nor: add locking support for is25wp256 device
+Date: Tue, 13 Aug 2019 18:08:15 +0530
+Message-Id: <1565699895-4770-5-git-send-email-sagar.kadam@sifive.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1565699895-4770-1-git-send-email-sagar.kadam@sifive.com>
 References: <1565699895-4770-1-git-send-email-sagar.kadam@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_054031_117488_D3492205 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20190813_054037_895169_582D3185 
+X-CRM114-Status: GOOD (  24.47  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -106,159 +107,417 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Nor device (is25wp256 mounted on HiFive unleashed Rev A00 board) from ISSI
-have memory blocks guarded by block protection bits BP[0,1,2,3].
-Add an identifier within the flash info structure to indicate that a
-particular flash device has the fourth block protect bit (SPI_NOR_HAS_BP3).
+Implement a locking scheme for ISSI devices based on the stm_lock scheme.
+The is25wp256  device has 4 bits for selecting the range of blocks to
+be locked/protected from erase/write operations and function register
+gives feasibility to select the top / bottom area for protection.
+Added opcode to read and write function registers.
 
-Increase size of flash_info flags from u16 to u32 to avoid flag overflow
-due SPI_NOR_HAS_BP3.
-Clear block protection bits unlocks the flash memory regions.
+The current implementation enables block protection as per the table
+defined in the datasheet for the is25wp256 device having erase size of
+0x1000. ISSI and stm devices differ in terms of TBS (top/bottom area
+protection) bits. In case of issi this bit is in Function register and
+is OTP memory, so once FR bits are programmed cannot be modified.
 
-Based on code developed by Wesley Terpstra <wesley@sifive.com>
-and/or Palmer Dabbelt <palmer@sifive.com>.
-https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
-
-spell correction: "Configuration" in spansion_quad_enable function
-description.
+Some common code from stm_lock/unlock implementation is extracted so that
+it can be re-used for issi devices. The locking scheme has been tested on
+HiFive Unleashed board Rev A00  having is25wp256 flash memory.
 
 Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 ---
- drivers/mtd/spi-nor/spi-nor.c | 72 ++++++++++++++++++++++++++++++++++++++++---
- include/linux/mtd/spi-nor.h   |  2 ++
- 2 files changed, 70 insertions(+), 4 deletions(-)
+ drivers/mtd/spi-nor/spi-nor.c | 265 ++++++++++++++++++++++++++++++++++--------
+ include/linux/mtd/spi-nor.h   |   5 +
+ 2 files changed, 222 insertions(+), 48 deletions(-)
 
 diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
-index cb40b1b..24c1c11 100644
+index 24c1c11..247454a 100644
 --- a/drivers/mtd/spi-nor/spi-nor.c
 +++ b/drivers/mtd/spi-nor/spi-nor.c
-@@ -250,7 +250,7 @@ struct flash_info {
- 	u16		page_size;
- 	u16		addr_width;
+@@ -295,6 +295,29 @@ struct flash_info {
  
--	u16		flags;
-+	u32		flags;
- #define SECT_4K			BIT(0)	/* SPINOR_OP_BE_4K works uniformly */
- #define SPI_NOR_NO_ERASE	BIT(1)	/* No erase command needed */
- #define SST_WRITE		BIT(2)	/* use SST byte programming */
-@@ -279,6 +279,13 @@ struct flash_info {
- #define SPI_NOR_SKIP_SFDP	BIT(13)	/* Skip parsing of SFDP tables */
- #define USE_CLSR		BIT(14)	/* use CLSR command */
- #define SPI_NOR_OCTAL_READ	BIT(15)	/* Flash supports Octal Read */
-+#define SPI_NOR_HAS_BP3		BIT(16)	/*
-+					 * Flash SR has block protect bits
-+					 * for lock/unlock purpose, few support
-+					 * BP0-BP2 while few support BP0-BP3.
-+					 * This flag identifies devices that
-+					 * support BP3 bit.
-+					 */
+ #define JEDEC_MFR(info)	((info)->id[0])
  
- 	/* Part specific fixup hooks. */
- 	const struct spi_nor_fixups *fixups;
-@@ -1461,7 +1468,55 @@ static int macronix_quad_enable(struct spi_nor *nor)
++/**
++ * spi_nor_read_fr() - read function register
++ * @nor: pointer to a 'struct spi_nor'.
++ *
++ * ISSI devices have top/bottom area protection bits selection into function
++ * reg. The bits in FR are OTP. So once it's written, it cannot be changed.
++ *
++ * Return: Value in function register or negative if error.
++ */
++static int spi_nor_read_fr(struct spi_nor *nor)
++{
++	int ret;
++	u8 val;
++
++	ret = nor->read_reg(nor, SPINOR_OP_RDFR, &val, 1);
++	if (ret < 0) {
++		pr_err("error %d reading FR\n", ret);
++		return ret;
++	}
++
++	return val;
++}
++
+ /*
+  * Read the status register, returning its value in the location
+  * Return the status register value.
+@@ -1095,10 +1118,18 @@ static void stm_get_locked_range(struct spi_nor *nor, u8 sr, loff_t *ofs,
+ 				 uint64_t *len)
+ {
+ 	struct mtd_info *mtd = &nor->mtd;
+-	u8 mask = SR_BP2 | SR_BP1 | SR_BP0;
+-	int shift = ffs(mask) - 1;
++	u8 mask = 0;
++	u8 fr = 0;
++	int shift = 0;
+ 	int pow;
+ 
++	if (nor->flags & SNOR_F_HAS_BP3)
++		mask = SR_BP3 | SR_BP2 | SR_BP1 | SR_BP0;
++	else
++		mask = SR_BP2 | SR_BP1 | SR_BP0;
++
++	shift = ffs(mask) - 1;
++
+ 	if (!(sr & mask)) {
+ 		/* No protection */
+ 		*ofs = 0;
+@@ -1106,10 +1137,19 @@ static void stm_get_locked_range(struct spi_nor *nor, u8 sr, loff_t *ofs,
+ 	} else {
+ 		pow = ((sr & mask) ^ mask) >> shift;
+ 		*len = mtd->size >> pow;
+-		if (nor->flags & SNOR_F_HAS_SR_TB && sr & SR_TB)
+-			*ofs = 0;
+-		else
+-			*ofs = mtd->size - *len;
++		/* ISSI device's have top/bottom select bit in func reg */
++		if (JEDEC_MFR(nor->info) == SNOR_MFR_ISSI) {
++			fr = spi_nor_read_fr(nor);
++			if (nor->flags & SNOR_F_HAS_SR_TB && fr & FR_TB)
++				*ofs = 0;
++			else
++				*ofs = mtd->size - *len;
++		} else {
++			if (nor->flags & SNOR_F_HAS_SR_TB && sr & SR_TB)
++				*ofs = 0;
++			else
++				*ofs = mtd->size - *len;
++		}
+ 	}
+ }
+ 
+@@ -1136,18 +1176,108 @@ static int stm_check_lock_status_sr(struct spi_nor *nor, loff_t ofs, uint64_t le
+ 		return (ofs >= lock_offs + lock_len) || (ofs + len <= lock_offs);
+ }
+ 
+-static int stm_is_locked_sr(struct spi_nor *nor, loff_t ofs, uint64_t len,
+-			    u8 sr)
++/*
++ * check if memory region is locked
++ *
++ * Returns false if region is locked 0 otherwise.
++ */
++static int spi_nor_is_locked_sr(struct spi_nor *nor, loff_t ofs, uint64_t len,
++				u8 sr)
+ {
+ 	return stm_check_lock_status_sr(nor, ofs, len, sr, true);
+ }
+ 
+-static int stm_is_unlocked_sr(struct spi_nor *nor, loff_t ofs, uint64_t len,
+-			      u8 sr)
++/*
++ * check if memory region is unlocked
++ *
++ * Returns false if region is locked 0 otherwise.
++ */
++static int spi_nor_is_unlocked_sr(struct spi_nor *nor, loff_t ofs, uint64_t len,
++				  u8 sr)
+ {
+ 	return stm_check_lock_status_sr(nor, ofs, len, sr, false);
+ }
+ 
++/**
++ * spi_nor_select_zone() - Select top area or bottom area to lock/unlock
++ * @nor: pointer to a 'struct spi_nor'.
++ * @ofs: offset from which to lock memory.
++ * @len: number of bytes to unlock.
++ * @sr: status register
++ * @tb: pointer to top/bottom bool used in caller function
++ * @op: zone selection is for lock/unlock operation. 1: lock 0:unlock
++ *
++ * Select the top area / bottom area pattern to protect memory blocks.
++ *
++ * Returns negative on errors, 0 on success.
++ */
++static int spi_nor_select_zone(struct spi_nor *nor, loff_t ofs, uint64_t len,
++			       u8 sr, bool *tb, bool op)
++{
++	int retval;
++	bool can_be_top = true, can_be_bottom = nor->flags & SNOR_F_HAS_SR_TB;
++
++	if (op) {
++		/* Select for lock zone operation */
++
++		/*
++		 * If nothing in our range is unlocked, we don't need
++		 * to do anything.
++		 */
++		if (spi_nor_is_locked_sr(nor, ofs, len, sr))
++			return 0;
++
++		/*
++		 * If anything below us is unlocked, we can't use 'bottom'
++		 * protection.
++		 */
++		if (!spi_nor_is_locked_sr(nor, 0, ofs, sr))
++			can_be_bottom = false;
++
++		/*
++		 * If anything above us is unlocked, we can't use 'top'
++		 * protection.
++		 */
++		if (!spi_nor_is_locked_sr(nor, ofs + len,
++					  nor->mtd.size - (ofs + len), sr))
++			can_be_top = false;
++	} else {
++		/* Select unlock zone */
++
++		/*
++		 * If nothing in our range is locked, we don't need to
++		 * do anything.
++		 */
++		if (spi_nor_is_unlocked_sr(nor, ofs, len, sr))
++			return 0;
++
++		/*
++		 * If anything below us is locked, we can't use 'top'
++		 * protection
++		 */
++		if (!spi_nor_is_unlocked_sr(nor, 0, ofs, sr))
++			can_be_top = false;
++
++		/*
++		 * If anything above us is locked, we can't use 'bottom'
++		 * protection
++		 */
++		if (!spi_nor_is_unlocked_sr(nor, ofs + len,
++					    nor->mtd.size - (ofs + len), sr))
++			can_be_bottom = false;
++	}
++
++	if (!can_be_bottom && !can_be_top) {
++		retval = -EINVAL;
++	} else {
++		/* Prefer top, if both are valid */
++		*tb = can_be_top;
++		retval = 1;
++	}
++
++	return retval;
++}
++
+ /*
+  * Lock a region of the flash. Compatible with ST Micro and similar flash.
+  * Supports the block protection bits BP{0,1,2} in the status register
+@@ -1185,33 +1315,20 @@ static int stm_lock(struct spi_nor *nor, loff_t ofs, uint64_t len)
+ 	struct mtd_info *mtd = &nor->mtd;
+ 	int status_old, status_new;
+ 	u8 mask = SR_BP2 | SR_BP1 | SR_BP0;
+-	u8 shift = ffs(mask) - 1, pow, val;
++	u8 shift = ffs(mask) - 1, pow, val, ret;
+ 	loff_t lock_len;
+-	bool can_be_top = true, can_be_bottom = nor->flags & SNOR_F_HAS_SR_TB;
+ 	bool use_top;
+ 
+ 	status_old = read_sr(nor);
+ 	if (status_old < 0)
+ 		return status_old;
+ 
+-	/* If nothing in our range is unlocked, we don't need to do anything */
+-	if (stm_is_locked_sr(nor, ofs, len, status_old))
++	ret = spi_nor_select_zone(nor, ofs, len, status_old, &use_top, 1);
++	if (!ret)
+ 		return 0;
++	else if (ret < 0)
++		return ret;
+ 
+-	/* If anything below us is unlocked, we can't use 'bottom' protection */
+-	if (!stm_is_locked_sr(nor, 0, ofs, status_old))
+-		can_be_bottom = false;
+-
+-	/* If anything above us is unlocked, we can't use 'top' protection */
+-	if (!stm_is_locked_sr(nor, ofs + len, mtd->size - (ofs + len),
+-				status_old))
+-		can_be_top = false;
+-
+-	if (!can_be_bottom && !can_be_top)
+-		return -EINVAL;
+-
+-	/* Prefer top, if both are valid */
+-	use_top = can_be_top;
+ 
+ 	/* lock_len: length of region that should end up locked */
+ 	if (use_top)
+@@ -1265,33 +1382,19 @@ static int stm_unlock(struct spi_nor *nor, loff_t ofs, uint64_t len)
+ 	struct mtd_info *mtd = &nor->mtd;
+ 	int status_old, status_new;
+ 	u8 mask = SR_BP2 | SR_BP1 | SR_BP0;
+-	u8 shift = ffs(mask) - 1, pow, val;
+ 	loff_t lock_len;
+-	bool can_be_top = true, can_be_bottom = nor->flags & SNOR_F_HAS_SR_TB;
++	u8 shift = ffs(mask) - 1, pow, val, ret;
+ 	bool use_top;
+ 
+ 	status_old = read_sr(nor);
+ 	if (status_old < 0)
+ 		return status_old;
+ 
+-	/* If nothing in our range is locked, we don't need to do anything */
+-	if (stm_is_unlocked_sr(nor, ofs, len, status_old))
++	ret = spi_nor_select_zone(nor, ofs, len, status_old, &use_top, 0);
++	if (!ret)
+ 		return 0;
+-
+-	/* If anything below us is locked, we can't use 'top' protection */
+-	if (!stm_is_unlocked_sr(nor, 0, ofs, status_old))
+-		can_be_top = false;
+-
+-	/* If anything above us is locked, we can't use 'bottom' protection */
+-	if (!stm_is_unlocked_sr(nor, ofs + len, mtd->size - (ofs + len),
+-				status_old))
+-		can_be_bottom = false;
+-
+-	if (!can_be_bottom && !can_be_top)
+-		return -EINVAL;
+-
+-	/* Prefer top, if both are valid */
+-	use_top = can_be_top;
++	else if (ret < 0)
++		return ret;
+ 
+ 	/* lock_len: length of region that should remain locked */
+ 	if (use_top)
+@@ -1353,7 +1456,7 @@ static int stm_is_locked(struct spi_nor *nor, loff_t ofs, uint64_t len)
+ 	if (status < 0)
+ 		return status;
+ 
+-	return stm_is_locked_sr(nor, ofs, len, status);
++	return spi_nor_is_locked_sr(nor, ofs, len, status);
+ }
+ 
+ static int spi_nor_lock(struct mtd_info *mtd, loff_t ofs, uint64_t len)
+@@ -1468,6 +1571,69 @@ static int macronix_quad_enable(struct spi_nor *nor)
  }
  
  /**
-- * spansion_quad_enable() - set QE bit in Configuraiton Register.
-+ * issi_unlock() - clear BP[0123] write-protection.
++ * issi_lock() - set BP[0123] write-protection.
 + * @nor: pointer to a 'struct spi_nor'.
-+ * @ofs: offset from which to unlock memory.
++ * @ofs: offset from which to lock memory.
 + * @len: number of bytes to unlock.
 + *
-+ * Bits [2345] of the Status Register are BP[0123].
-+ * ISSI chips use a different block protection scheme than other chips.
-+ * Just disable the write-protect unilaterally.
++ * Lock a region of the flash.Implementation is based on stm_lock
++ * Supports the block protection bits BP{0,1,2,3} in status register
 + *
 + * Return: 0 on success, -errno otherwise.
 + */
-+static int issi_unlock(struct spi_nor *nor, loff_t ofs, uint64_t len)
++static int issi_lock(struct spi_nor *nor, loff_t ofs, uint64_t len)
 +{
-+	int ret, val;
++	int status_old, status_new, blk_prot;
 +	u8 mask;
++	u8 shift;
++	u8 pow, ret;
++	bool use_top;
++	loff_t lock_len;
 +
 +	if (nor->flags & SNOR_F_HAS_BP3)
 +		mask = SR_BP3 | SR_BP2 | SR_BP1 | SR_BP0;
 +	else
 +		mask = SR_BP2 | SR_BP1 | SR_BP0;
 +
-+	val = read_sr(nor);
-+	if (val < 0)
-+		return val;
-+	if (!(val & mask))
++	shift = ffs(mask) - 1;
++
++	status_old = read_sr(nor);
++
++	/* if status reg is Write protected don't update bit protection */
++	if (status_old & SR_SRWD) {
++		dev_err(nor->dev,
++			"SR is write protected, can't update BP bits...\n");
++		return -EINVAL;
++	}
++
++	ret = spi_nor_select_zone(nor, ofs, len, status_old, &use_top, 1);
++	if (!ret)
++		/* Older protected blocks include the new requested block's */
 +		return 0;
-+
-+	write_enable(nor);
-+
-+	write_sr(nor, val & ~mask);
-+
-+	ret = spi_nor_wait_till_ready(nor);
-+	if (ret)
++	else if (ret < 0)
 +		return ret;
 +
-+	ret = read_sr(nor);
-+	if (ret > 0 && !(ret & mask)) {
-+		dev_info(nor->dev, "ISSI block protect bits cleared SR: 0x%x\n",
-+			 ret);
-+		ret = 0;
-+	} else {
-+		dev_err(nor->dev, "ISSI block protect bits not cleared\n");
-+		ret = -EINVAL;
++	/* lock_len: length of region that should end up locked */
++	if (use_top)
++		lock_len = nor->mtd.size - ofs;
++	else
++		lock_len = ofs + len;
++
++	pow = order_base_2(lock_len);
++	blk_prot = mask & (((pow + 1) & 0xf) << shift);
++	if (lock_len <= 0) {
++		dev_err(nor->dev, "invalid Length to protect");
++		return -EINVAL;
 +	}
-+	return ret;
++
++	status_new = status_old | blk_prot;
++	if (status_old == status_new)
++		return 0;
++
++	return write_sr_and_check(nor, status_new, mask);
 +}
 +
 +/**
-+ * spansion_quad_enable() - set QE bit in Configuration Register.
-  * @nor:	pointer to a 'struct spi_nor'
-  *
-  * Set the Quad Enable (QE) bit in the Configuration Register.
-@@ -1948,8 +2003,10 @@ static int spi_nor_spansion_clear_sr_bp(struct spi_nor *nor)
- 			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
- 	{ "is25wp256", INFO(0x9d7019, 0, 64 * 1024, 1024,
- 			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_4B_OPCODES)
--			.fixups = &is25lp256_fixups },
-+			SPI_NOR_4B_OPCODES | SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB |
-+			SPI_NOR_HAS_BP3)
-+			.fixups = &is25lp256_fixups
-+	},
- 	/* Macronix */
- 	{ "mx25l512e",   INFO(0xc22010, 0, 64 * 1024,   1, SECT_4K) },
- 	{ "mx25l2005a",  INFO(0xc22012, 0, 64 * 1024,   4, SECT_4K) },
-@@ -4207,6 +4264,13 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
- 		nor->flash_is_locked = stm_is_locked;
+  * issi_unlock() - clear BP[0123] write-protection.
+  * @nor: pointer to a 'struct spi_nor'.
+  * @ofs: offset from which to unlock memory.
+@@ -4268,6 +4434,7 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+ 	if (JEDEC_MFR(info) == SNOR_MFR_ISSI &&
+ 	    info->flags & SPI_NOR_HAS_LOCK &&
+ 	    info->flags & SPI_NOR_HAS_BP3) {
++		nor->flash_lock = issi_lock;
+ 		nor->flash_unlock = issi_unlock;
  	}
  
-+	/* NOR protection support for ISSI chips */
-+	if (JEDEC_MFR(info) == SNOR_MFR_ISSI &&
-+	    info->flags & SPI_NOR_HAS_LOCK &&
-+	    info->flags & SPI_NOR_HAS_BP3) {
-+		nor->flash_unlock = issi_unlock;
-+	}
-+
- 	if (nor->flash_lock && nor->flash_unlock && nor->flash_is_locked) {
- 		mtd->_lock = spi_nor_lock;
- 		mtd->_unlock = spi_nor_unlock;
+@@ -4291,6 +4458,8 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+ 		nor->flags |= SNOR_F_NO_OP_CHIP_ERASE;
+ 	if (info->flags & USE_CLSR)
+ 		nor->flags |= SNOR_F_USE_CLSR;
++	if (info->flags & SPI_NOR_HAS_BP3)
++		nor->flags |= SNOR_F_HAS_BP3;
+ 
+ 	if (info->flags & SPI_NOR_NO_ERASE)
+ 		mtd->flags |= MTD_NO_ERASE;
 diff --git a/include/linux/mtd/spi-nor.h b/include/linux/mtd/spi-nor.h
-index 5d6583e..4f92dbb 100644
+index 4f92dbb..f5d09f7 100644
 --- a/include/linux/mtd/spi-nor.h
 +++ b/include/linux/mtd/spi-nor.h
-@@ -127,6 +127,7 @@
- #define SR_BP0			BIT(2)	/* Block protect 0 */
- #define SR_BP1			BIT(3)	/* Block protect 1 */
- #define SR_BP2			BIT(4)	/* Block protect 2 */
-+#define SR_BP3			BIT(5)	/* Block protect 3 */
- #define SR_TB			BIT(5)	/* Top/Bottom protect */
- #define SR_SRWD			BIT(7)	/* SR write protect */
- /* Spansion/Cypress specific status bits */
-@@ -244,6 +245,7 @@ enum spi_nor_option_flags {
- 	SNOR_F_BROKEN_RESET	= BIT(6),
- 	SNOR_F_4B_OPCODES	= BIT(7),
- 	SNOR_F_HAS_4BAIT	= BIT(8),
-+	SNOR_F_HAS_BP3		= BIT(9),
- };
+@@ -40,6 +40,8 @@
+ #define SPINOR_OP_RDSR		0x05	/* Read status register */
+ #define SPINOR_OP_WRSR		0x01	/* Write status register 1 byte */
+ #define SPINOR_OP_RDSR2		0x3f	/* Read status register 2 */
++#define SPINOR_OP_RDFR		0x48	/* Read Function register */
++#define SPINOR_OP_WRFR		0x42	/* Write Function register 1 byte */
+ #define SPINOR_OP_WRSR2		0x3e	/* Write status register 2 */
+ #define SPINOR_OP_READ		0x03	/* Read data bytes (low frequency) */
+ #define SPINOR_OP_READ_FAST	0x0b	/* Read data bytes (high frequency) */
+@@ -139,6 +141,9 @@
+ /* Enhanced Volatile Configuration Register bits */
+ #define EVCR_QUAD_EN_MICRON	BIT(7)	/* Micron Quad I/O */
  
- /**
++/*Function register bit */
++#define FR_TB			BIT(1)	/*ISSI: Top/Bottom protect */
++
+ /* Flag Status Register bits */
+ #define FSR_READY		BIT(7)	/* Device status, 0 = Busy, 1 = Ready */
+ #define FSR_E_ERR		BIT(5)	/* Erase operation status */
 -- 
 1.9.1
 
