@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 695568BD97
-	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 17:48:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BFBE8BD98
+	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 17:48:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kJd8P2OjQRNEUKQrXZ6qXONxjZJ8pu5USysh6K0zbok=; b=RMnY0JFHodKtbr
-	LZ+iVulYPzlOwi3t0n79+ljjzVLcnCSJY83F2bH3QZ1aDaT02NXHbq/SxUe40pVxmJ3zgpDPMtq2F
-	h0EiBtEQQIK85B1ArKOrcuQoJg3oHshy70FUQJQbdxDm4i3oZZdmb5hg5S2wyTBaIXEv+d6kzGgSu
-	Dv5I5r6ePQajCJxWZPsoR7DvthwElUfT3FB71rPM5RkEV3v7TEITbRAJXeLCWitQSDH8rBwyc7vEt
-	sWZFVniniJl7DqAferzCOeiFDmZEjpXcmw+KAVpZGqV8VTfLx4A6wgZ/AH45cKdr/sGU3J8rEQKAW
-	kbHjHA4hPwqZAAK6OtQA==;
+	List-Owner; bh=GYDX2f/KzWpM75Us5pTPD1fgjOSLhQ2z1QRrMjyGito=; b=rDgz3cax9M2sSM
+	kmg57yDBp/ONSu1unppcazrP9+klOpnxr8+SLZvjWTxHOBkBWliJRFdQ0nxJOcSnJqxjG1OemrgmT
+	1yKXZYm1IMyZEhteczYamgBn/fpOF5z9yASXS1xnHmY9HX++s3QU/2qwOAaew3jVxNOJlTZp2oGZ9
+	Ax5QyTgT8X7FMPpLsSQ6FsaFP1OxKg4QWf7zCYxkekRBJPS2bWljy+q1p9+gUGZb7QjDVWE8nefHg
+	XPVht2qiWNn0c07ysXVF5Z3JHvBcTeAts8c2GAtypI0JYPMyAUzE7Zn+7GKkK0ZSE3Uk+o29y17tC
+	27wqR079Ujf3D9YG/k7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxZ24-0005Df-TT; Tue, 13 Aug 2019 15:48:21 +0000
+	id 1hxZ27-0005IP-Ou; Tue, 13 Aug 2019 15:48:23 +0000
 Received: from [2001:4bb8:180:1ec3:c70:4a89:bc61:2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hxZ1y-00056s-1s; Tue, 13 Aug 2019 15:48:14 +0000
+ id 1hxZ20-0005AQ-PT; Tue, 13 Aug 2019 15:48:17 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>
-Subject: [PATCH 09/15] riscv: implement remote sfence.i natively for M-mode
-Date: Tue, 13 Aug 2019 17:47:41 +0200
-Message-Id: <20190813154747.24256-10-hch@lst.de>
+Subject: [PATCH 10/15] riscv: poison SBI calls for M-mode
+Date: Tue, 13 Aug 2019 17:47:42 +0200
+Message-Id: <20190813154747.24256-11-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190813154747.24256-1-hch@lst.de>
 References: <20190813154747.24256-1-hch@lst.de>
@@ -50,78 +50,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The RISC-V ISA only supports flushing the instruction cache for the local
-CPU core.  For normal S-mode Linux remote flushing is offloaded to
-machine mode using ecalls, but for M-mode Linux we'll have to do it
-ourselves.  Use the same implementation as all the existing open source
-SBI implementations by just doing an IPI to all remote cores to execute
-th sfence.i instruction on every live core.
+There is no SBI when we run in M-mode, so fail the compile for any code
+trying to use SBI calls.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/riscv/mm/cacheflush.c | 31 +++++++++++++++++++++++++++----
- 1 file changed, 27 insertions(+), 4 deletions(-)
+ arch/riscv/include/asm/sbi.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/arch/riscv/mm/cacheflush.c b/arch/riscv/mm/cacheflush.c
-index 9ebcff8ba263..10875ea1065e 100644
---- a/arch/riscv/mm/cacheflush.c
-+++ b/arch/riscv/mm/cacheflush.c
-@@ -10,10 +10,35 @@
+diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+index 21134b3ef404..1e17f07eadaf 100644
+--- a/arch/riscv/include/asm/sbi.h
++++ b/arch/riscv/include/asm/sbi.h
+@@ -8,6 +8,7 @@
  
- #include <asm/sbi.h>
+ #include <linux/types.h>
  
-+#ifdef CONFIG_M_MODE
-+static void ipi_remote_fence_i(void *info)
-+{
-+	return local_flush_icache_all();
-+}
-+
-+void flush_icache_all(void)
-+{
-+	on_each_cpu(ipi_remote_fence_i, NULL, 1);
-+}
-+
-+static void flush_icache_cpumask(const cpumask_t *mask)
-+{
-+	on_each_cpu_mask(mask, ipi_remote_fence_i, NULL, 1);
-+}
-+#else /* CONFIG_M_MODE */
- void flush_icache_all(void)
- {
- 	sbi_remote_fence_i(NULL);
++#ifndef CONFIG_M_MODE
+ #define SBI_SET_TIMER 0
+ #define SBI_CONSOLE_PUTCHAR 1
+ #define SBI_CONSOLE_GETCHAR 2
+@@ -94,4 +95,5 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+ 	SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
  }
-+static void flush_icache_cpumask(const cpumask_t *mask)
-+{
-+	cpumask_t hmask;
-+
-+	cpumask_clear(&hmask);
-+	riscv_cpuid_to_hartid_mask(mask, &hmask);
-+	sbi_remote_fence_i(hmask.bits);
-+}
+ 
+-#endif
 +#endif /* CONFIG_M_MODE */
- 
- /*
-  * Performs an icache flush for the given MM context.  RISC-V has no direct
-@@ -28,7 +53,7 @@ void flush_icache_all(void)
- void flush_icache_mm(struct mm_struct *mm, bool local)
- {
- 	unsigned int cpu;
--	cpumask_t others, hmask, *mask;
-+	cpumask_t others, *mask;
- 
- 	preempt_disable();
- 
-@@ -47,9 +72,7 @@ void flush_icache_mm(struct mm_struct *mm, bool local)
- 	cpumask_andnot(&others, mm_cpumask(mm), cpumask_of(cpu));
- 	local |= cpumask_empty(&others);
- 	if (mm != current->active_mm || !local) {
--		cpumask_clear(&hmask);
--		riscv_cpuid_to_hartid_mask(&others, &hmask);
--		sbi_remote_fence_i(hmask.bits);
-+		flush_icache_cpumask(&others);
- 	} else {
- 		/*
- 		 * It's assumed that at least one strongly ordered operation is
++#endif /* _ASM_RISCV_SBI_H */
 -- 
 2.20.1
 
