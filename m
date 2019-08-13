@@ -2,33 +2,33 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 329898BD85
-	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 17:48:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61E488BD89
+	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 17:48:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FtG7gjMhx4onJM7hABJOzwF0OI4SWgS52v00Uh/f3xc=; b=cH/48x+fqbg3GU
-	Nz15zxibEGxUCOvB4jgFCkq1G3kq7EuDyjoSsbMLfPmBVacQjK6ex+3I+qRzP/tKT50c59c/xwf57
-	fs4ZeY1P3oZM/UphKDNfUrFPllmsXgLqSsjEL83vOAmBxF5MS3HqRCfc15BTy8zaNIpctxeoFnTXV
-	HJHWFVXdpgiWzMt0EwAUdjf6T+aKuqKWzTCZqSQib7O99PR37chnlOfm9Lcs35Zdpl9MOgq41GJ1k
-	6bHr2ZSF80pRTsxxhPyGpTONHcO1E6mPsirzsBx5kCnUnnC7p/agxJgcSmuNicupzf8IMckD9EPob
-	pdkM3Jh/7Rk39sxc8/wg==;
+	List-Owner; bh=kaZgPgThWwSa2dYdL1nWb6n5460aheLN4FYF9GWfZNw=; b=XZS1ryn+1V47B/
+	+UjiRwFpijCpXrbPi/+5GIPmwMc0R3C+vEr1wUTUzw2zA844YMAqWSl4jA9XQQLyNJLtSlhdsPnan
+	auykQnYVb4ldHVn24mp/zbg+3X+HZOvkRwEiPDeAnorQR++O3bCgFWVF6+h3Xa88DuJbIqA3EjYFt
+	Z+DrSVIfCWqUHQFa4SQdOPOMQTGumZAF3NTz57qgMhnu8oGrdfqEhpDJQtlHtprBZcgKQSThbyYZ5
+	2UKi5ibkwsNm1U45g/T9T6uT+vh6Z/7cqlNc3qVN1PY+0ukYN7wPtZ4N6P/0VV61MCKYk25oNUXJu
+	venhzgwZSGkBufEa0s1A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxZ1e-0004jL-U7; Tue, 13 Aug 2019 15:47:55 +0000
+	id 1hxZ1i-0004nG-Sb; Tue, 13 Aug 2019 15:47:58 +0000
 Received: from [2001:4bb8:180:1ec3:c70:4a89:bc61:2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hxZ1c-0004i8-3Q; Tue, 13 Aug 2019 15:47:52 +0000
+ id 1hxZ1e-0004ix-Lx; Tue, 13 Aug 2019 15:47:55 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>
-Subject: [PATCH 01/15] irqchip/sifive-plic: set max threshold for ignored
- handlers
-Date: Tue, 13 Aug 2019 17:47:33 +0200
-Message-Id: <20190813154747.24256-2-hch@lst.de>
+Subject: [PATCH 02/15] riscv: use CSR_SATP instead of the legacy sptbr name in
+ switch_mm
+Date: Tue, 13 Aug 2019 17:47:34 +0200
+Message-Id: <20190813154747.24256-3-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190813154747.24256-1-hch@lst.de>
 References: <20190813154747.24256-1-hch@lst.de>
@@ -44,62 +44,40 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Cc: Atish Patra <atish.patra@wdc.com>, Damien Le Moal <damien.lemoal@wdc.com>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-When running in M-mode we still the S-mode plic handlers in the DT.
-Ignore them by setting the maximum threshold.
+Switch to our own constant for the satp register instead of using
+the old name from a legacy version of the privileged spec.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
 ---
- drivers/irqchip/irq-sifive-plic.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ arch/riscv/mm/context.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index cf755964f2f8..c72c036aea76 100644
---- a/drivers/irqchip/irq-sifive-plic.c
-+++ b/drivers/irqchip/irq-sifive-plic.c
-@@ -244,6 +244,7 @@ static int __init plic_init(struct device_node *node,
- 		struct plic_handler *handler;
- 		irq_hw_number_t hwirq;
- 		int cpu, hartid;
-+		u32 threshold = 0;
+diff --git a/arch/riscv/mm/context.c b/arch/riscv/mm/context.c
+index 89ceb3cbe218..beeb5d7f92ea 100644
+--- a/arch/riscv/mm/context.c
++++ b/arch/riscv/mm/context.c
+@@ -57,12 +57,7 @@ void switch_mm(struct mm_struct *prev, struct mm_struct *next,
+ 	cpumask_clear_cpu(cpu, mm_cpumask(prev));
+ 	cpumask_set_cpu(cpu, mm_cpumask(next));
  
- 		if (of_irq_parse_one(node, i, &parent)) {
- 			pr_err("failed to parse parent for context %d.\n", i);
-@@ -266,10 +267,16 @@ static int __init plic_init(struct device_node *node,
- 			continue;
- 		}
+-	/*
+-	 * Use the old spbtr name instead of using the current satp
+-	 * name to support binutils 2.29 which doesn't know about the
+-	 * privileged ISA 1.10 yet.
+-	 */
+-	csr_write(sptbr, virt_to_pfn(next->pgd) | SATP_MODE);
++	csr_write(CSR_SATP, virt_to_pfn(next->pgd) | SATP_MODE);
+ 	local_flush_tlb_all();
  
-+		/*
-+		 * When running in M-mode we need to ignore the S-mode handler.
-+		 * Here we assume it always comes later, but that might be a
-+		 * little fragile.
-+		 */
- 		handler = per_cpu_ptr(&plic_handlers, cpu);
- 		if (handler->present) {
- 			pr_warn("handler already present for context %d.\n", i);
--			continue;
-+			threshold = 0xffffffff;
-+			goto done;
- 		}
- 
- 		handler->present = true;
-@@ -279,8 +286,9 @@ static int __init plic_init(struct device_node *node,
- 		handler->enable_base =
- 			plic_regs + ENABLE_BASE + i * ENABLE_PER_HART;
- 
-+done:
- 		/* priority must be > threshold to trigger an interrupt */
--		writel(0, handler->hart_base + CONTEXT_THRESHOLD);
-+		writel(threshold, handler->hart_base + CONTEXT_THRESHOLD);
- 		for (hwirq = 1; hwirq <= nr_irqs; hwirq++)
- 			plic_toggle(handler, hwirq, 0);
- 		nr_handlers++;
+ 	flush_icache_deferred(next);
 -- 
 2.20.1
 
