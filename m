@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E8EC8BD8D
-	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 17:48:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57B138BD8F
+	for <lists+linux-riscv@lfdr.de>; Tue, 13 Aug 2019 17:48:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PGB2BOvoyPYItTQ8aATkuQqCAS0WKlle6HN40cI1e+8=; b=loee7fuBJl/uE7
-	+ZbRxrtRKol2ErhvwZyzxw26cRQjCyGUFrRzaJXzbhkBdHg5F7boe6oH8B1/adOoNC+rE3KLjnr/T
-	vrarfatPVzZigEzYDZTekEd5RBSXwvN6SGOEO6rn+h0gYd7pfYc93tsfLnwWHU+psPBPHLLAjoAzQ
-	l5bSl3xxvhz7g/1ERKrKGwjBnS2/VzPTxj8agp7PIeCB/XAn8w22fXg5M88ZRrj7F/aNWgOsZ4dbd
-	cAM18XAi8AWHKyxKkwtWksZCz4SAfkRFoS7dUyVodFaIDV1zMilq3nm8NGzjqLRcRdsE5qJe6wRlp
-	2uxDMKGsqIIf0stSu3mA==;
+	List-Owner; bh=c6QDje75i9SYfwb0qwCuJHAG5xtpW6sUyStyW6gA0/Y=; b=HTJ7O597itAx+W
+	cf/SsgZex301oQqqxJIWOR6Z+AYCImdhdb9BCqdVpoWP+6i+8Fh1OGca3V4F4YSzDlFsLBkA4xh/q
+	FokAUkQOzLexybYiFazTJH8+S9MhRcV4+AXS6AMzDxiqCe0cuhbnspwNjqr4KBX8kD6n96D5l4306
+	1M7b+t3aEIKglZEAv6enwnetINAKdUePZXLfQs/xfXB4B8xPYv+OTgyleLbOkT47PfZyiTjuEpSKX
+	4AhKuEIvMachWdN8Z7HR3C4/2jCIQ39PXTE4Zk3cCfP8c7uQ8IC/4EoyITZl0NJt5LJNe4/7QgIkj
+	Ndmd24BtKK4Ry7G1gKZQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxZ1v-000525-AU; Tue, 13 Aug 2019 15:48:11 +0000
+	id 1hxZ1y-00055i-2f; Tue, 13 Aug 2019 15:48:14 +0000
 Received: from [2001:4bb8:180:1ec3:c70:4a89:bc61:2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hxZ1p-0004xF-WD; Tue, 13 Aug 2019 15:48:06 +0000
+ id 1hxZ1s-0004zn-L0; Tue, 13 Aug 2019 15:48:09 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>
-Subject: [PATCH 06/15] riscv: provide a flat entry loader
-Date: Tue, 13 Aug 2019 17:47:38 +0200
-Message-Id: <20190813154747.24256-7-hch@lst.de>
+Subject: [PATCH 07/15] riscv: read the hart ID from mhartid on boot
+Date: Tue, 13 Aug 2019 17:47:39 +0200
+Message-Id: <20190813154747.24256-8-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190813154747.24256-1-hch@lst.de>
 References: <20190813154747.24256-1-hch@lst.de>
@@ -43,112 +43,57 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Cc: Atish Patra <atish.patra@wdc.com>, Damien Le Moal <Damien.LeMoal@wdc.com>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This allows just loading the kernel at a pre-set address without
-qemu going bonkers trying to map the ELF file.
+From: Damien Le Moal <Damien.LeMoal@wdc.com>
 
+When in M-Mode, we can use the mhartid CSR to get the ID of the running
+HART. Doing so, direct M-Mode boot without firmware is possible.
+
+Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
 ---
- arch/riscv/Makefile        | 13 +++++++++----
- arch/riscv/boot/Makefile   |  7 ++++++-
- arch/riscv/boot/loader.S   |  8 ++++++++
- arch/riscv/boot/loader.lds | 14 ++++++++++++++
- 4 files changed, 37 insertions(+), 5 deletions(-)
- create mode 100644 arch/riscv/boot/loader.S
- create mode 100644 arch/riscv/boot/loader.lds
+ arch/riscv/include/asm/csr.h | 1 +
+ arch/riscv/kernel/head.S     | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index 7a117be8297c..aa9e377400e2 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -80,13 +80,18 @@ PHONY += vdso_install
- vdso_install:
- 	$(Q)$(MAKE) $(build)=arch/riscv/kernel/vdso $@
+diff --git a/arch/riscv/include/asm/csr.h b/arch/riscv/include/asm/csr.h
+index 53d7ce74b447..64f8fe84b88f 100644
+--- a/arch/riscv/include/asm/csr.h
++++ b/arch/riscv/include/asm/csr.h
+@@ -81,6 +81,7 @@
+ #define SIE_SEIE		(_AC(0x1, UL) << IRQ_S_EXT)
  
--all: Image.gz
-+ifeq ($(CONFIG_M_MODE),y)
-+KBUILD_IMAGE := $(boot)/loader
-+else
-+KBUILD_IMAGE := $(boot)/Image.gz
-+endif
-+BOOT_TARGETS := Image Image.gz loader
+ /* symbolic CSR names: */
++#define CSR_MHARTID		0xf14
+ #define CSR_MSTATUS		0x300
+ #define CSR_MIE			0x304
+ #define CSR_MTVEC		0x305
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index bb96bb7b95d2..275c2ab1e990 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -50,6 +50,14 @@ _start_kernel:
+ 	csrw CSR_XIE, zero
+ 	csrw CSR_XIP, zero
  
--Image: vmlinux
--	$(Q)$(MAKE) $(build)=$(boot) $(boot)/$@
-+all:	$(notdir $(KBUILD_IMAGE))
- 
--Image.%: Image
-+$(BOOT_TARGETS): vmlinux
- 	$(Q)$(MAKE) $(build)=$(boot) $(boot)/$@
-+	@$(kecho) '  Kernel: $(boot)/$@ is ready'
- 
- zinstall install:
- 	$(Q)$(MAKE) $(build)=$(boot) $@
-diff --git a/arch/riscv/boot/Makefile b/arch/riscv/boot/Makefile
-index 0990a9fdbe5d..32d2addeddba 100644
---- a/arch/riscv/boot/Makefile
-+++ b/arch/riscv/boot/Makefile
-@@ -16,7 +16,7 @@
- 
- OBJCOPYFLAGS_Image :=-O binary -R .note -R .note.gnu.build-id -R .comment -S
- 
--targets := Image
-+targets := Image loader
- 
- $(obj)/Image: vmlinux FORCE
- 	$(call if_changed,objcopy)
-@@ -24,6 +24,11 @@ $(obj)/Image: vmlinux FORCE
- $(obj)/Image.gz: $(obj)/Image FORCE
- 	$(call if_changed,gzip)
- 
-+loader.o: $(src)/loader.S $(obj)/Image
++#ifdef CONFIG_M_MODE
++	/*
++	 * The hartid in a0 is expected later on, and we have no firmware
++	 * to hand it to us.
++	 */
++	csrr a0, CSR_MHARTID
++#endif
 +
-+$(obj)/loader: $(obj)/loader.o $(obj)/Image FORCE
-+	$(Q)$(LD) -T $(src)/loader.lds -o $@ $(obj)/loader.o
-+
- install:
- 	$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
- 	$(obj)/Image System.map "$(INSTALL_PATH)"
-diff --git a/arch/riscv/boot/loader.S b/arch/riscv/boot/loader.S
-new file mode 100644
-index 000000000000..5586e2610dbb
---- /dev/null
-+++ b/arch/riscv/boot/loader.S
-@@ -0,0 +1,8 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+	.align 4
-+	.section .payload, "ax", %progbits
-+	.globl _start
-+_start:
-+	.incbin "arch/riscv/boot/Image"
-+
-diff --git a/arch/riscv/boot/loader.lds b/arch/riscv/boot/loader.lds
-new file mode 100644
-index 000000000000..da9efd57bf44
---- /dev/null
-+++ b/arch/riscv/boot/loader.lds
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+
-+OUTPUT_ARCH(riscv)
-+ENTRY(_start)
-+
-+SECTIONS
-+{
-+	. = 0x80000000;
-+
-+	.payload : {
-+		*(.payload)
-+		. = ALIGN(8);
-+	}
-+}
+ 	/* Load the global pointer */
+ .option push
+ .option norelax
 -- 
 2.20.1
 
