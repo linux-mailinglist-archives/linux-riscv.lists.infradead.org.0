@@ -2,75 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 600858C4D5
+	by mail.lfdr.de (Postfix) with ESMTPS id 771D98C4D6
 	for <lists+linux-riscv@lfdr.de>; Wed, 14 Aug 2019 01:36:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HL4gg9GrBQ8kNVocSjeZJEU8xZaUPosI5vrWdsl7b/M=; b=qSAPXkikcIQExj
-	bFw0GnWgawnkVg4FnXvVmdzTaJ9hN/DUI2UfROscsgIgg7ObDug5I2HvCg0p8q8w/Kgl3Y7dRbJ2O
-	qzgSxhjSTWwncNsBr3RrGAQb3GNcX+plG33VzHhBdgzL0fWlSzlF25b5tTFgllxBVJoodmr445IJp
-	KRMh4TmE56ptzGBe0WRWjGlwgjKypatqP3TkM5Ct6W8A+EyK8chJAWFGsP+R6dkn5uPnHzGQ0BKxy
-	J6B6bk+JKM2IyeZY5RjEpNgY451t+UYMmtfyrLijUeD+629ubQYMr5qlFpD93RGxBU0X6AGyHNSQi
-	NQxL8cz+U2Oq95Hh8HiQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y1/5Nb0tdZXVZC64DHNiBwZwXK+OVAXkHj76a/mwa3Q=; b=AoUhZxDMHglKxZ
+	JeBOhr6mQRWRWtvnxroSoYDpGThUIvG7jlg03WaKXPozRWjpppJFIUjemxjP9APufWzuxfyYxbkKb
+	mn/ld/cLdGOyJ4GfdOuckd8IiG3NtzSVx6PkQYOPSp3MfkxiTtrqQckjvGqw7lUVXWMkct1r2tJlW
+	suZTnkAJEKesi1W0Ag+rJVxmRb9BuUDoJ7MwZtyutqhcKFGUtv1LSAJbLKEQzxSG2M/duX1Zk3usE
+	7upuc1+zkm27CUcm+Kd/FzGJCxJkOhIZfovtL7TSBioDwkgy71kpXQGmo6nug5AvOlKHwyWVLxOVi
+	7eLTQr0166hxO+/Qqw5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxgL5-0007Op-TW; Tue, 13 Aug 2019 23:36:27 +0000
+	id 1hxgL9-0007PN-48; Tue, 13 Aug 2019 23:36:31 +0000
 Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxgL1-0007Na-9B
- for linux-riscv@lists.infradead.org; Tue, 13 Aug 2019 23:36:24 +0000
+ id 1hxgL2-0007Na-Rn
+ for linux-riscv@lists.infradead.org; Tue, 13 Aug 2019 23:36:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1565739384; x=1597275384;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=hJ0wcybIy8p5lozhUIdtK566sZh2c4A4f6FV+GFHlHc=;
- b=J+ntUTYYls3HZz/c9DLerqigQrdRzxCHOy/F0b6/R+ifomN8KispCKKF
- JMtETfnSInTFUBodzHaGmlY8QYkln0mnrobyUpbbNZ+LnmueWf8wKw461
- whjXnYJ2+elJVQN68NMjemGsuv3lVErfVkPGN3iPyxm6aiGZBt4W4MNQo
- Ctfy+hwh9R4W+j1xt6b54/MUxnob7Ezha5tpTwyGYlDlHtso3HoAcPr4k
- KbpvrescekDST90epzxAgpXuEARA/LZXVNgC80hPQBSe6F9lsCg7Lq0qi
- 6heeWyTt25fJQZ/huM/TFmsi6vkeXB18jIis76WYfG9PVBF2jCjtbkvwD Q==;
-IronPort-SDR: wfJJS0MAEr1g2yt4NOt2jYQJzAjCLrVD3iiLAncI+S3clck6q2zGoXQG3YAq9j8wXButjSthMO
- JUjZ74F6F1WJPBkSC2bZxMHfpDcNaxOGMOgpAtTySb80fu6s+TSab2v4GBsoidh2vi6CCTfiCn
- yxH58+Y0pSWjmhajyi/QYGdjoQK7/phBN1Dv0k70xAt6zWrRSy1chsETTdOIA+Gys39BZ9agnI
- ZWKv13/DrPgULh6cOyHSn6dC7Z0vf9G+VaKqsmI6lj5yQlmkK1iL+Bf/nbL1BxJpH5HJhCLPnR
- Z7A=
-X-IronPort-AV: E=Sophos;i="5.64,382,1559491200"; d="scan'208";a="116720845"
+ t=1565739386; x=1597275386;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=Hs97oi1bXDwsAKNjlRuuADCZCDyWXPRBIwJFAwfMXmw=;
+ b=b9Tb7LEKqTB+cg5tb3q26MnNSP97OJmP+vMdy4zv+zLi3yUGXSeJ73qg
+ e3mmd3xzG36CR8JM0lo2Q5tkhqMoR4yFJZT8uwDczOU3q7GhV2CORENSE
+ pPl48Wd85tu0FaI4ybbOMEI9bfM0jOZDv1JfSy5QnoNH4t8REaWC9z8i8
+ ZekB7XFQcyxd7GOPS3Nn74T1BnZb1iWPdlICVfRuHJWhOym+iwhJqaE5Q
+ 3RCcqsFv/RVWmc+FkUk5DROMXCyxYiiUKWeGEqZQUIJsYZzwEfO5KDgGW
+ ktWfg09etpFs39UcT2iE4Xml+2yuDmjqNrfkJ5F2ro80PELd7W1GiPfMS g==;
+IronPort-SDR: OjmbyYPYMtSxuNQAhTq+YR1a4ZmPSepQKvJppiVtFC2rjq3wHfo97EmWJ/JqDwkSVCkP9IuhYI
+ Y0wNxKF2FvQ+Si+vY6YQU1YnUszKnaS9oudENqipR8PtV/+l8W+wnkUdz7JzINL6o5n5Y4RPUv
+ 8pYuV7K1fcqBjGJGMaT1wagc56pDFHXiLs/yoefIzCRjLvavJIXVbSIDtcoBrLWW6ZalC1Ct9Q
+ K3xRJkWbQeutTG8ti0NiAAGGf9+AYfovev8EGuAxqJ9A2RoqiZokwNk8tasn4HSO/ql1guvq2c
+ oMM=
+X-IronPort-AV: E=Sophos;i="5.64,382,1559491200"; d="scan'208";a="116720846"
 Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
  ([199.255.45.14])
  by ob1.hgst.iphmx.com with ESMTP; 14 Aug 2019 07:36:19 +0800
-IronPort-SDR: mJvHKLl/Mg4lKKIcEe7u+F1NUcZziOllJNXmwkiB5l+IHWZREiIV57Y9vQWKffBL07nuMe2NzB
- SIZhiw9gh+StGVTuCdHds9zd93yDWLsYA54qqFF07gqAhxBpJ/zGoA/LO47voGDP/pLwXQ5FNP
- KB864VNkTKohQl2b7e0+2TwArvwQOkjWJ4hGn03+O/MnVjCiO90kSX69AOrctIogtQU24aaQzk
- QVWXKRyPQE/4bbLc+6z+oXda1AsZJYwjHtgpSR5QsShNEeUQ+OZIFpOKzIjP4jWXK/rkakkVvC
- gxHsfX9XXh/1HqEwRkhr3qyk
+IronPort-SDR: Fk4BRoMwJFMWcYNdvVwTApn6/6eCJ9Psl2ffTBUIU6tVGwY7Y+LecumRZqKCd2e37MIcwW/5R/
+ 4OMtm0p757Pjh5yneBpjkmb+HD/33rR639GNXgy6ALGPm17szU13TRne8Bp8zAW9JSvvcpfNle
+ HGQi9OHy2kOGf4RNMpRsCwDnUhrdRvjC/84nrMXozvw/Qa1WbBr39cth4jfk5C94VzV8RGFRrH
+ /3P31btHauO9iCoEatHbZH1el4cWxZn8ei3JwBP5u6iS+na24DNIY5W07vnrMzWde4kNSqOlas
+ zh6dFtJa7KNs0SMqVrIPusB5
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  13 Aug 2019 16:33:53 -0700
-IronPort-SDR: ynWM70NmSGSvm/NBmL4NJAHKIplLilDhmM0Icvg9oUo2nD7XK7CY1V7Xtlq1hKhgdt7gMKOcVo
- xwyOruqZ1/sWh9jdqv942QJsZgxOpMb9Fy2ECnCJKchmDbNBVLpHZ8op+Exa3K7WAyMIKRBnR5
- rq/hh5QY4tcCW5zefAvYI2F4KLsxfbGXM0CD7Te0dYo4/AZhZ2fkiQEOINbdEndJ3qhudjQy8H
- 2beb3ouwLSBCofBJtZN9spTyo2PkQHkd6AUOD501Mv/xVpRseLZGM4a+eA1lobG0HZZwLUPTGI
- ssY=
+IronPort-SDR: q4Durlzmo8hA1bu/t7Y4lpef2eadOlWFzAB0fDsP6ScLa6+o+Vd+rmyWPm/Rp6/PZmeH8B+hSm
+ 4Y/DMk8kspCtWOjCIBp2ePxOm2/iUzIyxg5sZe+TZArOGLTrVPYIFLffTpAPQ9BKJ1TqYjaR15
+ 1R8lRrWsl1AMpNLJnaeJGurfP0Fe7clKvYo8T//oFSmbmEBOVc+3twFBejBAchJG84kMXq5DAE
+ UYnT+f1ANMpPAQ9myL06jLYosOpYfXsv+BlE/0kpP6KTgxQ2FhZRVxPJBTACmW+HputN8zDPip
+ sn8=
 Received: from risc6-mainframe.sdcorp.global.sandisk.com (HELO
  risc6-mainframe.int.fusionio.com) ([10.196.157.58])
  by uls-op-cesaip02.wdc.com with ESMTP; 13 Aug 2019 16:36:19 -0700
 From: Alistair Francis <alistair.francis@wdc.com>
 To: linux-kernel@vger.kernel.org,
 	linux-riscv@lists.infradead.org
-Subject: [PATCH 1/2] riscv: rv32_defconfig: Update the defconfig
-Date: Tue, 13 Aug 2019 16:32:29 -0700
-Message-Id: <20190813233230.21804-1-alistair.francis@wdc.com>
+Subject: [PATCH 2/2] riscv: defconfig: Update the defconfig
+Date: Tue, 13 Aug 2019 16:32:30 -0700
+Message-Id: <20190813233230.21804-2-alistair.francis@wdc.com>
 X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190813233230.21804-1-alistair.francis@wdc.com>
+References: <20190813233230.21804-1-alistair.francis@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_163623_474928_4F3BF13A 
-X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-CacheID: sfid-20190813_163625_010184_32BFD006 
+X-CRM114-Status: UNSURE (   8.16  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -105,37 +107,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Update the rv32_defconfig:
- - Add 'CONFIG_DEVTMPFS_MOUNT=y' to match the RISC-V defconfig
+Update the defconfig:
  - Add CONFIG_HW_RANDOM=y and CONFIG_HW_RANDOM_VIRTIO=y to enable
    VirtIORNG when running on QEMU
 
 Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- arch/riscv/configs/rv32_defconfig | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/riscv/configs/defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
-index d5449ef805a3..7da93e494445 100644
---- a/arch/riscv/configs/rv32_defconfig
-+++ b/arch/riscv/configs/rv32_defconfig
-@@ -34,6 +34,7 @@ CONFIG_PCIEPORTBUS=y
- CONFIG_PCI_HOST_GENERIC=y
- CONFIG_PCIE_XILINX=y
- CONFIG_DEVTMPFS=y
-+CONFIG_DEVTMPFS_MOUNT=y
- CONFIG_BLK_DEV_LOOP=y
- CONFIG_VIRTIO_BLK=y
- CONFIG_BLK_DEV_SD=y
-@@ -53,6 +54,8 @@ CONFIG_SERIAL_8250_CONSOLE=y
+diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+index 93205c0bf71d..3efff552a261 100644
+--- a/arch/riscv/configs/defconfig
++++ b/arch/riscv/configs/defconfig
+@@ -54,6 +54,8 @@ CONFIG_SERIAL_8250_CONSOLE=y
  CONFIG_SERIAL_OF_PLATFORM=y
  CONFIG_SERIAL_EARLYCON_RISCV_SBI=y
  CONFIG_HVC_RISCV_SBI=y
 +CONFIG_HW_RANDOM=y
 +CONFIG_HW_RANDOM_VIRTIO=y
+ CONFIG_SPI=y
+ CONFIG_SPI_SIFIVE=y
  # CONFIG_PTP_1588_CLOCK is not set
- CONFIG_DRM=y
- CONFIG_DRM_RADEON=y
 -- 
 2.22.0
 
