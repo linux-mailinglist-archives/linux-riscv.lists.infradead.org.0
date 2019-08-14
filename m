@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E3A58CE4D
+	by mail.lfdr.de (Postfix) with ESMTPS id 65D9D8CE4C
 	for <lists+linux-riscv@lfdr.de>; Wed, 14 Aug 2019 10:24:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -11,64 +11,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=op08/G9b27Gp3hFF6bo/y9wujmIHCoHnhNNDJFNtqG8=; b=U24ysNTFdbt5UO4tltOwuSxDKm
-	K/aaUUL9aotlJlubOSNR8XMhZV33eO4v8urV60DbNckWRY0ROOdxlFyYLg+M6lktee7BzMeOYMFmD
-	Ocvv+BG9V7kBhfCU8F8KdNzErxpZxCJk5/goQDJZKjE9wCycyClG1vUbSaLNTONhPLSKRbzZ9HQzF
-	DDolwE5QHgXTBmDNpFZeKVkuR5+QD7XMzDBaRIfp65CGR6KbWSAWeLII2FHcgJtKAbv3fXfnfrnfX
-	WR8hnZjnH5hs1R265fnD1DZNz2pwwwwwGhvzn57ADEXTr2lao8aM/gqBy0QkxRyLupTQv+eilR6eB
-	h1gqGbPQ==;
+	bh=l7bhotr7q30O8KhytzjP9nlFqFLgYXV4CuPcqpZB0+4=; b=NrvEOJCd2+ZWpld/TBASQZkNVL
+	NLlXiPkVH+vWNoO2QkWElf68qhM5KdaD1OhOA+dTbK3Y+nuWli3PrAjDS7xL0gah+zMk/mXKjj57J
+	IA/W2HDC6ZVizvvw6k2RyU1UpZ6my63qW7nuKqsb5ydzI4z+dAjmc5YsLtGXghUvxsXjnt91dFwyF
+	ojP5+zarvu56lY28xvrttPvTfJHp9QGHVkmL7DVxWxXf/zdj4RNCRLYdMKWicZSBbXA7G6veEWKYa
+	dR3izKuafsy8n/3sjqPL8I4qRC0ffoMKu/E92IMEddwPzvcBb8iPap1qh8c8DI+5CXCV47orzFa/N
+	s2NYhmYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxoZg-0002KG-1C; Wed, 14 Aug 2019 08:24:04 +0000
+	id 1hxoZj-0002ML-2B; Wed, 14 Aug 2019 08:24:07 +0000
 Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxoZb-0002Hh-Pm
- for linux-riscv@lists.infradead.org; Wed, 14 Aug 2019 08:24:01 +0000
-Received: by mail-pg1-x541.google.com with SMTP id i18so52714362pgl.11
- for <linux-riscv@lists.infradead.org>; Wed, 14 Aug 2019 01:23:59 -0700 (PDT)
+ id 1hxoZd-0002Ig-B1
+ for linux-riscv@lists.infradead.org; Wed, 14 Aug 2019 08:24:02 +0000
+Received: by mail-pg1-x541.google.com with SMTP id l21so52701895pgm.3
+ for <linux-riscv@lists.infradead.org>; Wed, 14 Aug 2019 01:24:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=355/fM8G6OID12UiIjtTxx4G3WOw7wrHVjqcAOVdVjM=;
- b=ZfvFzV82vpyyn+70V/08TU9H+meQN6zQkx8KP1zphiFbhxeeSxdBYZf8SGiM2El89/
- VaGw1EczgJ2KWru4TAyQEKsc6cCufq6NsaqtrZAkXM10TrzDPzz2TxDee6VQI+sRB99/
- 1Rp5NtJyscgRoFzyuFG+ujdvNWzsKUyXGQlWT5FyX/L31Yu4Zj3g/4UyObiOlVkijRen
- lCragje8ySbRcq/IRtDGeEiWQ+c1A2QEspRdnzkB5iyrqx5MBV6JXnR+8/zWbaQt0r0R
- 2ROiYSEovMAVEYGeYf69soEIq5t5rorhMUenmWnDQjyRHcvzW2HAkW4zNPXzMTRz96B6
- HhPw==
+ bh=LKUTmfxWju3JH0UYdXaX0ZmxM1v34X/CQR0cjWXAdV0=;
+ b=aprA4MX8fFP42+7Kfj2VmM2auYXDJcnW8YzO6vnSgXZD4MuPEx8PnT719qHFqIr/8n
+ QmbZ0QuY/hdaPVLq5Qw9zGc+lgBmz54nZxOVLVk/a6ciHKcZKGRIPSumxAOoQa+lFXMg
+ Z4uMvEByYuk/s/C8PNQittEjIb+K5+DyAfQ6cEBZ/zDoQd5MGztJ4aOzq10agMJA7UiN
+ FDqQTgG0lMxnF4XDCJNHNKvx7sAok8gbO5bys2VzvMgT+AmDci9oOg+AHhe05JKeg2zn
+ 0209fn6vu9pR/FoCbx1lMxKN4l+zwrkJSq8FNq7tY10dmn+tm2v/q4XkIMFQCz5Jcn91
+ Xm5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=355/fM8G6OID12UiIjtTxx4G3WOw7wrHVjqcAOVdVjM=;
- b=nJzXMolW1LWK73l538A3FlhtBoJAJMV+xPLmT3VLF3DTm0BaVsAsi80m6x9txItViM
- I4z3wUUndmwBjJ3Ra2KZZDvUT/+88ujdHTsABUOEfFoNmuN6ePvPkK5xtofaOUlSmghk
- 4SG6QBfxb8bdCSwjv4ngMBugPTkaeE172KtyaLFba6p0oRfHBtHJzAvrVkmeExVs8fDU
- OaFi4+X7vqfz8UpTXnk9gRU0sb51RyZkeyWCuvDYcwMVDL1/JPGKe04Lv++fHO7o+Nvo
- 2Zh2VCh3srPmTA2R1zXVfxlFIVZ0Sb55izx8omD4ZI0KMpiNZin9JPQrsGJW20wDbL32
- 3JeA==
-X-Gm-Message-State: APjAAAVFe9fCfS0WrrdxtkKBlFYJzYbRNROGgWI95uCIU5TXEP1WnvSo
- nlPbOrcejcD4Ka34QynRlGUIkg==
-X-Google-Smtp-Source: APXvYqywRx18R0hMG2RnROTtsgpH40TUafc/j8X3By4v7TBusOlcABsMHZE9qz0KUcqdzr7Mh5i54w==
-X-Received: by 2002:a63:61cd:: with SMTP id
- v196mr38524614pgb.263.1565771039143; 
- Wed, 14 Aug 2019 01:23:59 -0700 (PDT)
+ bh=LKUTmfxWju3JH0UYdXaX0ZmxM1v34X/CQR0cjWXAdV0=;
+ b=OPKmSDQQ0bp3Z61Uc9uPE8AmX4zQQVymoLenPl2ENshfoj65LBpJA+Xjdc0AaH7kXY
+ Aq9N65P0afGvqF7tl91/+BqEShsPmepeb8/k88vfK0I016RQMQvOSoJgezHRG7lgdhBO
+ HBmzCpLYsu73FoCx3l/BBTuyGtu3olaHg2Du3a1nws2tu2p9ETHe5ySFKwFc7V4Py5Bk
+ /uhuZ33Rca7cH17oBp4j2sQHONxIUYWwEwRiBBO/pQRDXNyvSgKqgFj7EyPwMk1aQHZl
+ XoT/GY2ETq9zaEBcKcsHJGb44oweLk5J3MzUII9SozomCbWvLRMFRc6dmkb3oGkh40b2
+ DiNw==
+X-Gm-Message-State: APjAAAXlTvGtR1h23rf0Dm2bQhJLPXMrROvY8jqnPwwyi924rNKGQLd4
+ cH76oMFodXZeQ7TD4ZLVkMgO+Q==
+X-Google-Smtp-Source: APXvYqyF7XbbwdZczu0+BTGt6EYKJY4ia695LRy4XRq7P8Im2pJg5qZNWSLmNfYr09pro/ZO5lhd3A==
+X-Received: by 2002:a17:90a:ad86:: with SMTP id
+ s6mr4822761pjq.42.1565771040942; 
+ Wed, 14 Aug 2019 01:24:00 -0700 (PDT)
 Received: from localhost.localdomain (220-132-236-182.HINET-IP.hinet.net.
  [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id f205sm12359152pfa.161.2019.08.14.01.23.57
+ by smtp.gmail.com with ESMTPSA id f205sm12359152pfa.161.2019.08.14.01.23.59
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 14 Aug 2019 01:23:58 -0700 (PDT)
+ Wed, 14 Aug 2019 01:24:00 -0700 (PDT)
 From: Vincent Chen <vincent.chen@sifive.com>
 To: Paul Walmsley <paul.walmsley@sifive.com>,
  Palmer Dabbelt <palmer@sifive.com>
-Subject: [PATCH v2 1/2] riscv: Correct the initialized flow of FP register
-Date: Wed, 14 Aug 2019 16:23:52 +0800
-Message-Id: <1565771033-1831-2-git-send-email-vincent.chen@sifive.com>
+Subject: [PATCH v2 2/2] riscv: Make __fstate_clean() work correctly.
+Date: Wed, 14 Aug 2019 16:23:53 +0800
+Message-Id: <1565771033-1831-3-git-send-email-vincent.chen@sifive.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1565771033-1831-1-git-send-email-vincent.chen@sifive.com>
 References: <1565771033-1831-1-git-send-email-vincent.chen@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190814_012359_858674_6C718DC0 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20190814_012401_417731_60054EF1 
+X-CRM114-Status: GOOD (  10.83  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -98,93 +98,39 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org, linux-stable <stable@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-  The following two reasons cause FP registers are sometimes not
-initialized before starting the user program.
-1. Currently, the FP context is initialized in flush_thread() function
-   and we expect these initial values to be restored to FP register when
-   doing FP context switch. However, the FP context switch only occurs in
-   switch_to function. Hence, if this process does not be scheduled out
-   and scheduled in before entering the user space, the FP registers
-   have no chance to initialize.
-2. In flush_thread(), the state of reg->sstatus.FS inherits from the
-   parent. Hence, the state of reg->sstatus.FS may be dirty. If this
-   process is scheduled out during flush_thread() and initializing the
-   FP register, the fstate_save() in switch_to will corrupt the FP context
-   which has been initialized until flush_thread().
+Make the __fstate_clean() function correctly set the
+state of sstatus.FS in pt_regs to SR_FS_CLEAN.
 
-  To solve the 1st case, the initialization of the FP register will be
-completed in start_thread(). It makes sure all FP registers are initialized
-before starting the user program. For the 2nd case, the state of
-reg->sstatus.FS in start_thread will be set to SR_FS_OFF to prevent this
-process from corrupting FP context in doing context save. The FP state is
-set to SR_FS_INITIAL in start_trhead().
-
+Fixes: 7db91e5 ("RISC-V: Task implementation")
+Cc: linux-stable <stable@vger.kernel.org>
 Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
 Reviewed-by: Anup Patel <anup@brainfault.org>
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 ---
- arch/riscv/include/asm/switch_to.h |  6 ++++++
- arch/riscv/kernel/process.c        | 11 +++++++++--
- 2 files changed, 15 insertions(+), 2 deletions(-)
+ arch/riscv/include/asm/switch_to.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/riscv/include/asm/switch_to.h b/arch/riscv/include/asm/switch_to.h
-index 853b65e..0575b8a 100644
+index 0575b8a..0aa5b94 100644
 --- a/arch/riscv/include/asm/switch_to.h
 +++ b/arch/riscv/include/asm/switch_to.h
-@@ -19,6 +19,12 @@ static inline void __fstate_clean(struct pt_regs *regs)
- 	regs->sstatus |= (regs->sstatus & ~(SR_FS)) | SR_FS_CLEAN;
+@@ -16,7 +16,7 @@ extern void __fstate_restore(struct task_struct *restore_from);
+ 
+ static inline void __fstate_clean(struct pt_regs *regs)
+ {
+-	regs->sstatus |= (regs->sstatus & ~(SR_FS)) | SR_FS_CLEAN;
++	regs->sstatus = (regs->sstatus & ~SR_FS) | SR_FS_CLEAN;
  }
  
-+static inline void fstate_off(struct task_struct *task,
-+			       struct pt_regs *regs)
-+{
-+	regs->sstatus = (regs->sstatus & ~SR_FS) | SR_FS_OFF;
-+}
-+
- static inline void fstate_save(struct task_struct *task,
- 			       struct pt_regs *regs)
- {
-diff --git a/arch/riscv/kernel/process.c b/arch/riscv/kernel/process.c
-index f23794b..fb3a082 100644
---- a/arch/riscv/kernel/process.c
-+++ b/arch/riscv/kernel/process.c
-@@ -64,8 +64,14 @@ void start_thread(struct pt_regs *regs, unsigned long pc,
- 	unsigned long sp)
- {
- 	regs->sstatus = SR_SPIE;
--	if (has_fpu)
-+	if (has_fpu) {
- 		regs->sstatus |= SR_FS_INITIAL;
-+		/*
-+		 * Restore the initial value to the FP register
-+		 * before starting the user program.
-+		 */
-+		fstate_restore(current, regs);
-+	}
- 	regs->sepc = pc;
- 	regs->sp = sp;
- 	set_fs(USER_DS);
-@@ -75,10 +81,11 @@ void flush_thread(void)
- {
- #ifdef CONFIG_FPU
- 	/*
--	 * Reset FPU context
-+	 * Reset FPU state and context
- 	 *	frm: round to nearest, ties to even (IEEE default)
- 	 *	fflags: accrued exceptions cleared
- 	 */
-+	fstate_off(current, task_pt_regs(current));
- 	memset(&current->thread.fstate, 0, sizeof(current->thread.fstate));
- #endif
- }
+ static inline void fstate_off(struct task_struct *task,
 -- 
 2.7.4
 
