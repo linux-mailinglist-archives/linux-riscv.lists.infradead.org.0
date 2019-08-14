@@ -2,90 +2,58 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65D9D8CE4C
-	for <lists+linux-riscv@lfdr.de>; Wed, 14 Aug 2019 10:24:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC0688CF03
+	for <lists+linux-riscv@lfdr.de>; Wed, 14 Aug 2019 11:07:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=l7bhotr7q30O8KhytzjP9nlFqFLgYXV4CuPcqpZB0+4=; b=NrvEOJCd2+ZWpld/TBASQZkNVL
-	NLlXiPkVH+vWNoO2QkWElf68qhM5KdaD1OhOA+dTbK3Y+nuWli3PrAjDS7xL0gah+zMk/mXKjj57J
-	IA/W2HDC6ZVizvvw6k2RyU1UpZ6my63qW7nuKqsb5ydzI4z+dAjmc5YsLtGXghUvxsXjnt91dFwyF
-	ojP5+zarvu56lY28xvrttPvTfJHp9QGHVkmL7DVxWxXf/zdj4RNCRLYdMKWicZSBbXA7G6veEWKYa
-	dR3izKuafsy8n/3sjqPL8I4qRC0ffoMKu/E92IMEddwPzvcBb8iPap1qh8c8DI+5CXCV47orzFa/N
-	s2NYhmYw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DlDoLQSRM2PZL6/fdYntlsV1M9oesM2WbYO6PxGYMVI=; b=krezM2WriymbSw
+	vmQ2nqudUfnUJto1u+MM47poZTjFeyDG58454xRwrKZkvBUA5xxrNJMjvDqyDLwvM8L1rvD9joHhw
+	wcYNc98GjmbZCQj9e/Xmykgc9zy2a+co3AvCWP7NgfixG4dVCb4yzt+2plxvbsjtDfrefoePFecka
+	JPAdSdbJsTudJ/7eMbeudbfn/ENTpqfKdaUNrDEu7GTFWhiA62iAnXbrLenL2ItQKTBYWDL+8jrtu
+	RtblzrRiMrVOlm/wwPU/zsy3kU4N4RmibgEs0oi4tkIUHrwru/M7D8SRRKJ/OkQ7RJiLTGqAPlCKY
+	k5g1MYgsridaZBJmuNqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxoZj-0002ML-2B; Wed, 14 Aug 2019 08:24:07 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxoZd-0002Ig-B1
- for linux-riscv@lists.infradead.org; Wed, 14 Aug 2019 08:24:02 +0000
-Received: by mail-pg1-x541.google.com with SMTP id l21so52701895pgm.3
- for <linux-riscv@lists.infradead.org>; Wed, 14 Aug 2019 01:24:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=LKUTmfxWju3JH0UYdXaX0ZmxM1v34X/CQR0cjWXAdV0=;
- b=aprA4MX8fFP42+7Kfj2VmM2auYXDJcnW8YzO6vnSgXZD4MuPEx8PnT719qHFqIr/8n
- QmbZ0QuY/hdaPVLq5Qw9zGc+lgBmz54nZxOVLVk/a6ciHKcZKGRIPSumxAOoQa+lFXMg
- Z4uMvEByYuk/s/C8PNQittEjIb+K5+DyAfQ6cEBZ/zDoQd5MGztJ4aOzq10agMJA7UiN
- FDqQTgG0lMxnF4XDCJNHNKvx7sAok8gbO5bys2VzvMgT+AmDci9oOg+AHhe05JKeg2zn
- 0209fn6vu9pR/FoCbx1lMxKN4l+zwrkJSq8FNq7tY10dmn+tm2v/q4XkIMFQCz5Jcn91
- Xm5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=LKUTmfxWju3JH0UYdXaX0ZmxM1v34X/CQR0cjWXAdV0=;
- b=OPKmSDQQ0bp3Z61Uc9uPE8AmX4zQQVymoLenPl2ENshfoj65LBpJA+Xjdc0AaH7kXY
- Aq9N65P0afGvqF7tl91/+BqEShsPmepeb8/k88vfK0I016RQMQvOSoJgezHRG7lgdhBO
- HBmzCpLYsu73FoCx3l/BBTuyGtu3olaHg2Du3a1nws2tu2p9ETHe5ySFKwFc7V4Py5Bk
- /uhuZ33Rca7cH17oBp4j2sQHONxIUYWwEwRiBBO/pQRDXNyvSgKqgFj7EyPwMk1aQHZl
- XoT/GY2ETq9zaEBcKcsHJGb44oweLk5J3MzUII9SozomCbWvLRMFRc6dmkb3oGkh40b2
- DiNw==
-X-Gm-Message-State: APjAAAXlTvGtR1h23rf0Dm2bQhJLPXMrROvY8jqnPwwyi924rNKGQLd4
- cH76oMFodXZeQ7TD4ZLVkMgO+Q==
-X-Google-Smtp-Source: APXvYqyF7XbbwdZczu0+BTGt6EYKJY4ia695LRy4XRq7P8Im2pJg5qZNWSLmNfYr09pro/ZO5lhd3A==
-X-Received: by 2002:a17:90a:ad86:: with SMTP id
- s6mr4822761pjq.42.1565771040942; 
- Wed, 14 Aug 2019 01:24:00 -0700 (PDT)
-Received: from localhost.localdomain (220-132-236-182.HINET-IP.hinet.net.
- [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id f205sm12359152pfa.161.2019.08.14.01.23.59
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 14 Aug 2019 01:24:00 -0700 (PDT)
-From: Vincent Chen <vincent.chen@sifive.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmer@sifive.com>
-Subject: [PATCH v2 2/2] riscv: Make __fstate_clean() work correctly.
-Date: Wed, 14 Aug 2019 16:23:53 +0800
-Message-Id: <1565771033-1831-3-git-send-email-vincent.chen@sifive.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1565771033-1831-1-git-send-email-vincent.chen@sifive.com>
-References: <1565771033-1831-1-git-send-email-vincent.chen@sifive.com>
+	id 1hxpFA-00031W-4h; Wed, 14 Aug 2019 09:06:56 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1hxpF5-00030z-1N
+ for linux-riscv@lists.infradead.org; Wed, 14 Aug 2019 09:06:52 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 006C3344;
+ Wed, 14 Aug 2019 02:06:50 -0700 (PDT)
+Received: from big-swifty.misterjones.org (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8F9173F694;
+ Wed, 14 Aug 2019 02:06:46 -0700 (PDT)
+Date: Wed, 14 Aug 2019 10:06:41 +0100
+Message-ID: <864l2knmji.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH 01/15] irqchip/sifive-plic: set max threshold for ignored
+ handlers
+In-Reply-To: <alpine.DEB.2.21.9999.1908131032260.30024@viisi.sifive.com>
+References: <20190813154747.24256-1-hch@lst.de>
+ <20190813154747.24256-2-hch@lst.de>
+ <alpine.DEB.2.21.9999.1908131032260.30024@viisi.sifive.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/26
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+Organization: Approximate
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190814_012401_417731_60054EF1 
-X-CRM114-Status: GOOD (  10.83  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190814_020651_127891_7DA20E49 
+X-CRM114-Status: GOOD (  11.22  )
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,43 +65,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-stable <stable@vger.kernel.org>
-MIME-Version: 1.0
+Cc: Damien Le Moal <damien.lemoal@wdc.com>, jason@lakedaemon.net,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, tglx@linutronix.de,
+ linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Make the __fstate_clean() function correctly set the
-state of sstatus.FS in pt_regs to SR_FS_CLEAN.
+On Tue, 13 Aug 2019 18:44:02 +0100,
+Paul Walmsley <paul.walmsley@sifive.com> wrote:
 
-Fixes: 7db91e5 ("RISC-V: Task implementation")
-Cc: linux-stable <stable@vger.kernel.org>
-Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-Reviewed-by: Anup Patel <anup@brainfault.org>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+Hi Paul,
 
----
- arch/riscv/include/asm/switch_to.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Thomas, Jason, Marc,
+> 
+> On Tue, 13 Aug 2019, Christoph Hellwig wrote:
+> 
+> > When running in M-mode we still the S-mode plic handlers in the DT.
 
-diff --git a/arch/riscv/include/asm/switch_to.h b/arch/riscv/include/asm/switch_to.h
-index 0575b8a..0aa5b94 100644
---- a/arch/riscv/include/asm/switch_to.h
-+++ b/arch/riscv/include/asm/switch_to.h
-@@ -16,7 +16,7 @@ extern void __fstate_restore(struct task_struct *restore_from);
- 
- static inline void __fstate_clean(struct pt_regs *regs)
- {
--	regs->sstatus |= (regs->sstatus & ~(SR_FS)) | SR_FS_CLEAN;
-+	regs->sstatus = (regs->sstatus & ~SR_FS) | SR_FS_CLEAN;
- }
- 
- static inline void fstate_off(struct task_struct *task,
+                           ^^^^ missing word?
+
+> > Ignore them by setting the maximum threshold.
+> > 
+> > Signed-off-by: Christoph Hellwig <hch@lst.de>
+> 
+> If you're happy with this, could one of you ack it so we can merge it 
+> with the rest of this series through the RISC-V tree?
+
+Sure, no problem.
+
+Acked-by: Marc Zyngier <maz@kernel.org>
+
+Thanks,
+
+	M.
+
 -- 
-2.7.4
-
+Jazz is not dead, it just smells funny.
 
 _______________________________________________
 linux-riscv mailing list
