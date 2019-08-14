@@ -2,62 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23EF48C9E1
-	for <lists+linux-riscv@lfdr.de>; Wed, 14 Aug 2019 05:29:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 885218C9F4
+	for <lists+linux-riscv@lfdr.de>; Wed, 14 Aug 2019 05:52:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pEAYwPTycKbwWbx9PgkVxmW3kAf8tz0vrQlH8xiVoy0=; b=UzkdRJ3fVFck4E
-	LvLqAO+u0NNlGBUXQQchk6TEcFXX3rrZz6bCIPR2Ra2t5eSvA35+zK+wo0iTzhk93FiG0a71//8qT
-	KsQZ6jSuBIjI42iW63JEaB9Jzk+X8QVUkI8rrqBT3FBZNRpqvtwqYnoieRd1dD2iyX8loCgNpPZiv
-	9Nb1he++7ri20FKOi7gUSXfZu+QIWnJsMntwjOu1o1WF93tdVJfG/Sy4mqrA5vM7jB4U49L3w/ytV
-	8xF9AuoxlDgxvRPL9YvPy3iKC8DABbDVMz/DzHhxnmeDdHoMKX/3CJTfbidofacGOTI31YJMBQ3d1
-	xf2IiB5bs3RAJd6gMA0Q==;
+	List-Owner; bh=0yAir+gMWxZzp1rKdBjOKEkdtDbau8e1s/o5tt1FPn8=; b=gP/Ztk1ewkpFdi
+	R2lY0pmyUZ8jmn3xIs38XdD1ESwd9CcBaa+5R6ml7ZR6Yt8OiD+UIClWl1T5pCMFY5UKZ9ZfxuKuf
+	fv0ztM98mXDAtVDnWWEqUpAUwf3jMLSW9ZBpbi/KEaXjY447Yx7dpByrY4JGsuJVJt2sbwsV1Lx3Z
+	eFpEK2bXazBc1YjB3L3kV3bL2vmIGieSKNI4WdsAFE+REg20et8ZSEVXfHf5c5ICbCYVxT+RhGRs5
+	wgdfXzup1gVTch/MSDMJQ9zoHjijni5ByqCGb55vUBcOlowLbuCIr9WMDEm0+R7Wp60+81BA9C1jP
+	VKFR5S5Z2dKOuqPYFNng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxjyC-0005F5-S8; Wed, 14 Aug 2019 03:29:05 +0000
-Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
- helo=ATCSQR.andestech.com)
+	id 1hxkKe-0003HU-Hk; Wed, 14 Aug 2019 03:52:16 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxjy4-0005EJ-Ks
- for linux-riscv@lists.infradead.org; Wed, 14 Aug 2019 03:28:58 +0000
-Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x7E3G38F041472;
- Wed, 14 Aug 2019 11:16:03 +0800 (GMT-8)
- (envelope-from nickhu@andestech.com)
-Received: from andestech.com (10.0.15.65) by ATCPCS16.andestech.com
- (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Wed, 14 Aug 2019
- 11:27:32 +0800
-Date: Wed, 14 Aug 2019 11:27:33 +0800
-From: Nick Hu <nickhu@andestech.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH 1/2] riscv: Add memmove string operation.
-Message-ID: <20190814032732.GA8989@andestech.com>
-References: <mhng-ba92c635-7087-4783-baa5-2a111e0e2710@palmer-si-x1e>
- <alpine.DEB.2.21.9999.1908131921180.19217@viisi.sifive.com>
+ id 1hxkKb-0003GU-7U
+ for linux-riscv@lists.infradead.org; Wed, 14 Aug 2019 03:52:14 +0000
+Received: by mail-wr1-x443.google.com with SMTP id c3so1433293wrd.7
+ for <linux-riscv@lists.infradead.org>; Tue, 13 Aug 2019 20:52:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=++nUJKgOGfOdCIF5m2zpPrP5+AC7n3dwa/EWdf1OwMc=;
+ b=HFCBcW46Up/t7+Wpl1cQtJ2Z0MWWKq6hkQvKXb3ym5uKoaplfmgQwory4qEbWfO4jw
+ tk4sWyGPPvxTFuwmNH0szfExit3F3tjHFyEC17hzd/O+B26qqXulmiGX4YwMuKHgHizU
+ 8TgYxnzBNDEmjCDzCQh4mAmIHvEmxajyieBp+Q3VHuVWOUchIrYDojdBEU5R7S+xICm2
+ J5V2EQAPVtzexPzWD9BnIpG5lPctZMUORM4Avsyg6roeqpB1C8xkvivNLmXQmGdckM87
+ PwnQyfM05C3qbnxKCnsyx57TASNa2KqJY4CbFeyk5lrZMRDLbodZIOcFwe0hZQsw2HiQ
+ c/PQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=++nUJKgOGfOdCIF5m2zpPrP5+AC7n3dwa/EWdf1OwMc=;
+ b=tF96nyzWqqJmBYugtV3Bw49d/MRh51tqzsRVcYdemAliQrS34oFRf/fFIgNqPWbBkP
+ 4Y0SEd7T/oJThPTqYVp52vRXX1YIttKYiBdMYqkqh/aW58j6IimvK5Svgem1kVuhxvp+
+ hqheRaSCWecaIdl/TqcI2CekVHaD7dKcfFWR8m3dwVkE1l3pQvPpxcf8UsfhBF3oKxDQ
+ VsSJm8viF32AqfBrry1gWqUvG9TvqhHV61XK22muuImdntvEvcyeZx4t1iXxP3ittCZh
+ EA27yu3sws/GKck1XPM8D34IMmBcfWexR7/bMKa6TpLOWtX4JPgknqLh5+ZOb2OMrYUl
+ 9kkw==
+X-Gm-Message-State: APjAAAULw7lCKo6dSiLgkOdWOsV0X1lNe6UWohQc46xbWTQVhsj5r98T
+ CCgC8SVoH0L0wjWIGHx4Py8oM1SacERS2wl4/0VWGw==
+X-Google-Smtp-Source: APXvYqyKhu6lwNRBKi6qoG6yfgcV2346iuvFcAyShI7YY1Od8sKPmm/Nn1gLTd8DaJxE6ZEhmmIXoQqWi/pM+l6tNl0=
+X-Received: by 2002:adf:f641:: with SMTP id x1mr6622878wrp.179.1565754728415; 
+ Tue, 13 Aug 2019 20:52:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1908131921180.19217@viisi.sifive.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Originating-IP: [10.0.15.65]
-X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x7E3G38F041472
+References: <1565251121-28490-1-git-send-email-vincent.chen@sifive.com>
+ <1565251121-28490-2-git-send-email-vincent.chen@sifive.com>
+ <CAAhSdy0BNN4G270WJ+OqrFAv3-z9o2iE+QDHHo-FY0fqh5wGqg@mail.gmail.com>
+ <alpine.DEB.2.21.9999.1908080846220.21111@viisi.sifive.com>
+ <CABvJ_xgHVT4QKAxRPdLQp3Q5bTmjQ5QfTo6R49Z0Qwatuc_b+A@mail.gmail.com>
+In-Reply-To: <CABvJ_xgHVT4QKAxRPdLQp3Q5bTmjQ5QfTo6R49Z0Qwatuc_b+A@mail.gmail.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Wed, 14 Aug 2019 09:21:57 +0530
+Message-ID: <CAAhSdy0mOspKF7Z7H9MsbdrYYF3M_XGfm+F-dAt2wZSW_90PFg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] riscv: Correct the initialized flow of FP register
+To: Vincent Chen <vincent.chen@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_202856_943948_C1352FFD 
-X-CRM114-Status: GOOD (  18.80  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20190813_205213_296939_730C2926 
+X-CRM114-Status: GOOD (  12.56  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 TVD_RCVD_IP            Message was received from an IP address
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
- dynamic-looking rDNS
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,78 +90,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: =?utf-8?B?6Zui6IG3Wm9uZyBab25nLVhpYW4gTGko5p2O5a6X5oayKQ==?=
- <zong@andestech.com>, "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- Alan Quey-Liang =?utf-8?B?S2FvKOmrmOmtgeiJryk=?= <alankao@andestech.com>,
- Atish Patra <Atish.Patra@wdc.com>, Greg KH <gregkh@linuxfoundation.org>,
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
  Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>,
- Christoph Hellwig <hch@infradead.org>,
- "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
- Anup Patel <Anup.Patel@wdc.com>, "glider@google.com" <glider@google.com>,
- "green.hu@gmail.com" <green.hu@gmail.com>,
- "aryabinin@virtuozzo.com" <aryabinin@virtuozzo.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "deanbo422@gmail.com" <deanbo422@gmail.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "dvyukov@google.com" <dvyukov@google.com>
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Aug 14, 2019 at 10:22:15AM +0800, Paul Walmsley wrote:
-> On Tue, 13 Aug 2019, Palmer Dabbelt wrote:
-> 
-> > On Mon, 12 Aug 2019 08:04:46 PDT (-0700), Christoph Hellwig wrote:
-> > > On Wed, Aug 07, 2019 at 03:19:14PM +0800, Nick Hu wrote:
-> > > > There are some features which need this string operation for compilation,
-> > > > like KASAN. So the purpose of this porting is for the features like KASAN
-> > > > which cannot be compiled without it.
-> > > > 
-> > > > KASAN's string operations would replace the original string operations and
-> > > > call for the architecture defined string operations. Since we don't have
-> > > > this in current kernel, this patch provides the implementation.
-> > > > 
-> > > > This porting refers to the 'arch/nds32/lib/memmove.S'.
-> > > 
-> > > This looks sensible to me, although my stringop asm is rather rusty,
-> > > so just an ack and not a real review-by:
-> > > 
-> > > Acked-by: Christoph Hellwig <hch@lst.de>
-> > 
-> > FWIW, we just write this in C everywhere else and rely on the compiler to
-> > unroll the loops.  I always prefer C to assembly when possible, so I'd prefer
-> > if we just adopt the string code from newlib.  We have a RISC-V-specific
-> > memcpy in there, but just use the generic memmove.
-> > 
-> > Maybe the best bet here would be to adopt the newlib memcpy/memmove as generic
-> > Linux functions?  They're both in C so they should be fine, and they both look
-> > faster than what's in lib/string.c.  Then everyone would benefit and we don't
-> > need this tricky RISC-V assembly.  Also, from the look of it the newlib code
-> > is faster because the inner loop is unrolled.
-> 
-> There's a generic memmove implementation in the kernel already:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/string.h#n362
-> 
-> Nick, could you tell us more about why the generic memmove() isn't 
-> suitable?
-> 
-> 
-> - Paul
+On Wed, Aug 14, 2019 at 7:15 AM Vincent Chen <vincent.chen@sifive.com> wrote:
+>
+> On Thu, Aug 8, 2019 at 11:50 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+> >
+> > On Thu, 8 Aug 2019, Anup Patel wrote:
+> >
+> > > On Thu, Aug 8, 2019 at 1:30 PM Vincent Chen <vincent.chen@sifive.com> wrote:
+> > > >
+> > > > +static inline void fstate_off(struct task_struct *task,
+> > > > +                              struct pt_regs *regs)
+> > > > +{
+> > > > +       regs->sstatus = (regs->sstatus & ~(SR_FS)) | SR_FS_OFF;
+> > >
+> > > The SR_FS_OFF is 0x0 so no need for ORing it.
+> >
+> > That one looks OK to me, since it makes it more obvious to humans what's
+> > happening here - reviewers won't need to know that "off" is 0x0.  The
+> > compiler should drop it internally, so it won't affect the generated
+> > code.
+> >
+> Thanks for Paul's comment
+> My thought is the same as Paul.
+>
+>
+> > > Apart from above minor comment, looks good to me.
+> > >
+> > > Reviewed-by: Anup Patel <anup@brainfault.org>
+> >
+> > Will add your Reviewed-by: tag - let us know if you want me to drop it or
+> > caveat it.
+> >
+> >
+> > - Paul
+>
+> Dear Anup,
+> I suppose you can accept our thought about using the SR_FS_OFF flag
+> because I didn't receive any reply from you.
+> Thanks for your review and comments.
 
-Hi Paul,
+No problem, go ahead without dropping SR_FS_OFF flag.
 
-KASAN has its own string operations(memcpy/memmove/memset) because it needs to
-hook some code to check memory region. It would undefined the original string
-operations and called the string operations with the prefix '__'. But the
-generic string operations didn't declare with the prefix. Other archs with
-KASAN support like arm64 and xtensa all have their own string operations and
-defined with the prefix.
+You can include my Reviewed-by.
 
-Nick
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
