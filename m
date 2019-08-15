@@ -2,83 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3FAD8F5D5
-	for <lists+linux-riscv@lfdr.de>; Thu, 15 Aug 2019 22:37:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C264D8F602
+	for <lists+linux-riscv@lfdr.de>; Thu, 15 Aug 2019 22:52:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JZTUQLwhtuHnkSU0UuskhktqOiDJtLEUenYZdpcNOKA=; b=SqenFIH54mK+Y6
-	i0YhL+0FYYmcdEsCvyBboy1gVJ6L8CzDb7PwcYbrwrNMQMxGCTVM75ggfPJ/U+JKH6sv7YoNSwVdC
-	VVs0SHLYH3UkhnrUniYgFc8cx5C1UnzvCfnq0Th35jaUWneVKp4Cd3HhNDRIpo6bnY39ULBkKtar4
-	JV9EdaYXlayZxLcrUDRo4QhfN0fHi+EP/BT3xuk+2NDgixYtDhDKTd5zgOXMCu25WC7xfHEhAl011
-	B1FqWPDlM6xY8efhPKBCXveR4cEDiDMevt/br4E5/GAy6PNHrYXePO2g+W1qlXgrVAEBPB0xnS4kC
-	9/Mr47XTsNZU92QAA+7A==;
+	List-Owner; bh=zf4nsRWTQwHsCAZldx4xg+nfPnXIG/dgsepTBKS//aw=; b=Rjo+xrnvVPrMz5
+	W+fqi8J6vUziqkKsE8J04QaiWee6It63tl+fYYOZigp0aIz+HXMH7lADWZu9zICP19Yy3axZJULoi
+	h+BR1vZmcj7fAOBObWGC3kUOThWYGaK7HapI37urmwKFEAIDBZ0VKJkUWqI2oRmEktWCr/JZY+1SX
+	sStkduKS7mrzkx8150qXVcMn0vpAsjREdcR0RUMmBZjJ4cg2i+z3msIC8BGNUXulsoGG7IQLtpYoY
+	m+K0K8cqsxqJiYH8uqW2Rhqi2e0Q6RRLO46JwdLS9vD/4F0rSF71w997G50mHRJb6+6xecF33era1
+	RvZ0FCAC9foPhGl6MUxA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyMUj-0005zI-QH; Thu, 15 Aug 2019 20:37:13 +0000
+	id 1hyMjr-0002TM-5v; Thu, 15 Aug 2019 20:52:51 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyMUe-0005yK-QI
- for linux-riscv@lists.infradead.org; Thu, 15 Aug 2019 20:37:11 +0000
+ id 1hyMjl-0002GF-Qq
+ for linux-riscv@lists.infradead.org; Thu, 15 Aug 2019 20:52:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1565901429; x=1597437429;
+ t=1565902366; x=1597438366;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=O+MzaVa3dUEUP3AwnyiPb55qAsw5XchBeqI8a9bshRg=;
- b=p0gtI+nTCcizPrI+eBKKJnRXho5xfNKhsZ9mdm7kWuK2uqer1IAIDQYf
- FbjPboxcxOhxOI8WNJq9DocP38eNSJ/5qsXzsjiSLqRxZMBNP5PJErKWN
- YgZjjAcbRykENIFE1EaZi/Z5gJ0sfcLZE6BfldCItXz/1e+SEMUF1CVrn
- 7NxYjD5fpwbcHb6V8S8CdZQdq82irpuRvoFi3Qy+l0sNokG4+vSsIM7Ve
- jWKtV3bK7jTzIYeS6DRIw6Ho0o7gatD3qg/EWAoBQaolvyI0wDl2W2Gzu
- Ut8Y/nTimVJCLPBHnr/Pfjsq9t1phOUa8fcYt7HhIPnI8TmgFAaC+FKxo w==;
-IronPort-SDR: gkxHrAO5dYNII5CtAkwSGc2X9ax57zqSuJvXzJ0A+8u0ST/AH9jsoJtW7hwYP2A68Ou/B75Ggd
- muTfxremkifNk712UjhMhaIcNuMIF5v1XQlar4VWpCVwm+O2pY8E92sQVrduI1mKwAvNHCIlvN
- UKVit8L+A7T1rAD/0gJy9xFykv8w757vOVyybvkKdIsDX4CYuWhD6CNi5S9iGFawdCK+thMiGY
- OXyPl1pfP2RJa3sNM6mhzdrEl3X13erM9J/VncYE8DKMyGjk6GHYr4UEeI9niJtKAF8lFoakHC
- xIE=
-X-IronPort-AV: E=Sophos;i="5.64,389,1559491200"; d="scan'208";a="120536498"
-Received: from mail-sn1nam04lp2056.outbound.protection.outlook.com (HELO
- NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.56])
- by ob1.hgst.iphmx.com with ESMTP; 16 Aug 2019 04:37:07 +0800
+ bh=8se7hYgMAFALYw7S0G1SF2X+GC0ILIKEQTqZyETdzYU=;
+ b=TB1QzysofZhkGELzmG7eEEJjdzfM56XsgpKInTPOcfWnnWU9vq/yMv2C
+ UNS0yWKwgHNArf+L0K+8u3pdLIDpCoVrM3eD0h7MvogK5l5i4N6Qv+EJZ
+ Nvw8g2uYtpff7QwiMHTTEAfts8q+wKLX7lELXzD53qjjjagsSQRA/qETP
+ P/9SrukINmhUKEiZZ/BUpejnV60G9xN9rapMhfgvnllhRyZhlLcn5aFKM
+ 8n7dmLYOX7mF6kgUPz6lA08kd9yAgQ5BUsgQNsQRrnAXHcxWXyrii5rHn
+ /nihXkPQW9gwboqW3f7mD2zedFRUwwnv28NqQp2Hr6AmZUP2w4RLaPZwW w==;
+IronPort-SDR: FWY++dhnNkWOuhCnpo4DQMefhPAwS4tuVsTZJmVVLRVb8ZEvq+bNYui5x7FJRdyt4yc1XHQJQF
+ jJm7dP9Lnw8QCpR4cp3JeHSRmWLgOgO55482DS3kzrx8hlFR6nTRFbtHIyL5HVyZUZGv1jfW/s
+ dw+aznG+tIEUcHMxjGBYL7Nm3rWvFke2iVgKMS9NxCZFlDbMm3/zfOUPqGjWX8cW6IFzJJZBnj
+ nYgxdZ+N8/CwUypmob/XlP7D4GcfOnWXg5RNKv0a9QuMTc3ETh9wPlWZCwOqGQgspS18DXc5Re
+ YKo=
+X-IronPort-AV: E=Sophos;i="5.64,389,1559491200"; d="scan'208";a="120537235"
+Received: from mail-by2nam05lp2052.outbound.protection.outlook.com (HELO
+ NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.52])
+ by ob1.hgst.iphmx.com with ESMTP; 16 Aug 2019 04:52:46 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cjh0iNvGkDjTFbFecyvOij8rd6YgQgxXJMnDOfHvCpOg7rP1iFL4NCnPIQq+CgBzirm4UmkbystWefxm9eB7VPgQVoUfclkXHuhi/IWFAS9jRH7ZrIIDuUPvrOlgMCaZnHXDEu/XOyO9BfPTacsjC6TiEqswNrKdu+4Iat3rUEQgX9YbPO8rT2zzxWeOG+I4YxxiGwx0yyHqPsvK2okMKONHPbrS9AkLpiB4pIQcTmTss0nNt8w6Ny/SdVJHW5ADNm9iX8/s0w+usYCl/z8E59lrSlgpkq3hrnuQQvUvxEuU3bW6VQm5fyS3IHVqSL34pDi/JJa1at7FYHEPaNOYMQ==
+ b=gpTGZhFucK9isaVQX9Xk9MU5RGTeBAEE7/7G+kfYQZUHSDlfxVuByE0UN5XuA6Tf6mYYO3/8XBC1wGZ4+9HcYI9+sHeqobzuMbanCtlpzLldvF/U9ujV2BM/YTBD4tcd7gCKVWIHpH7Y7pTBhKmkjVuI8bvzm7BnyuFV4uc6MZkdjogz/AC/0nfs+D5W7Qoi9i5Bd8qWk3HkS2y9a7KltIgd88anBJ9Wvm2bf5Go7SpUsCoKaaPw7DGroPMkYyrKsfZk0fecSrUfoiHzVBA+gKRkZlHpx8/uiF5atOMkRN5RfDos0U7ct8RJTCeldpurtIjLjLGBf88v5MLJOsvikw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O+MzaVa3dUEUP3AwnyiPb55qAsw5XchBeqI8a9bshRg=;
- b=XuB5beYfsNjzG4XQpCq2Chiy2OFaMZCzppNhM8fTZhfZ6qHgiPaVY7zjWvBMWzXBbU+HTiA9Ajvi62kcghiTVCdodyPDuL0wCz91hXYjfQo8pXxFnV1MnzymB4Iln/BxRGF06lSy9Mqi25N0ccbxijrX26mBElrDRnfy5+RaFxlKU8OAB6oiPno4QMciSp5DSjUbhnONlU/eINzulV8hhTywt6F2U1Yb2Shw0gUJJcFt0sR2oPfLI10XaobwVTz4tBs7cWUOay8CtKdnHoxhdRVUfjtkBhD02ALG72rbdbh4KbVZzurvImuuT425Q35AH0hFbaAZY54IRkeI0DkVfQ==
+ bh=8se7hYgMAFALYw7S0G1SF2X+GC0ILIKEQTqZyETdzYU=;
+ b=MVBX9EFK4dm98pQk3gRp1UXRGXmIF6gLcSXJDwFb9JlX0vmZkMw7VRwJco04eT5oCi96oF1WaPgdrC4t3i1NCwJ/UjtwHY/eGACsCoD8C24fJJtLjawKHnpf0HijM7Jmwo2PFn0nS8yP5vqKIUl6lvH/0AQ5P3tFhOkZ43m78ZaQPZlc9bWECk/VCg17BwM3sQwJJr/roVhix2N6309/d0OrLN0mHI3jAx/sKeXoSoS398+pTcrnisCm7uJufE2wHumSYpkJtzNJmIsd0KaQ1bds3sPtb7Ra5BVzY+nyhv4r3hnhKdQxamlc0z0UXWHqv8ISI0FB4Siz0IAJpnuqWA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O+MzaVa3dUEUP3AwnyiPb55qAsw5XchBeqI8a9bshRg=;
- b=YDYl/kqljC1PQGdCfN2FPJdPaAxj0mUe2CSminWXlKCvOKr72HhN8xKCMjuIHdKSK/VYuGrwAilSnL6Jx6I/w4jeGSXaME+w5NlFP+2LUYGWi+BZrhYZ8NH2NXuUe7uHO0EqIQot7Du0zH3akFea2/lN129w0/AOB2hvlp/kUHY=
+ bh=8se7hYgMAFALYw7S0G1SF2X+GC0ILIKEQTqZyETdzYU=;
+ b=z/e1JWJ7mML6slTrYSoPzzDfVGwGSFSgAV7vZVW7YZszerSFmVlMQ/xiTgLLdZdZKjozGMr8DnkrsAn3h0K8F0AMSmT/LdFtG6rqirYPz1f56yX/CQWRuQ/hxqYXcyA6R1DXqEUkUwc/GpIycmp0e+phnFtg8X/UvrEQzqsrAcg=
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB5478.namprd04.prod.outlook.com (20.178.197.203) with Microsoft SMTP
+ BYAPR04MB5878.namprd04.prod.outlook.com (20.179.59.88) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.16; Thu, 15 Aug 2019 20:37:05 +0000
+ 15.20.2157.20; Thu, 15 Aug 2019 20:52:44 +0000
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::d89b:cb55:d563:79e9]) by BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::d89b:cb55:d563:79e9%6]) with mapi id 15.20.2157.022; Thu, 15 Aug 2019
- 20:37:04 +0000
+ 20:52:44 +0000
 From: Atish Patra <Atish.Patra@wdc.com>
-To: "hch@infradead.org" <hch@infradead.org>
-Subject: Re: [PATCH] RISC-V: Issue a local tlb flush if possible.
-Thread-Topic: [PATCH] RISC-V: Issue a local tlb flush if possible.
-Thread-Index: AQHVTxz5XkoGRRVrekixM0/zCIcSeKb3ngaAgACcGwCAAO7ygIADixaA
-Date: Thu, 15 Aug 2019 20:37:04 +0000
-Message-ID: <3f55d5878044129a3cbb72b13b712e9a1c218dc7.camel@wdc.com>
-References: <20190810014309.20838-1-atish.patra@wdc.com>
- <20190812145631.GC26897@infradead.org>
- <f58814e156b918531f058acfac944abef34f5fb1.camel@wdc.com>
- <20190813143027.GA31668@infradead.org>
-In-Reply-To: <20190813143027.GA31668@infradead.org>
+To: "david.abdurachmanov@gmail.com" <david.abdurachmanov@gmail.com>,
+ "schwab@suse.de" <schwab@suse.de>
+Subject: Re: Random memory corruption with v5.2
+Thread-Topic: Random memory corruption with v5.2
+Thread-Index: AQHVRfuSsQxPefvVWkuKVI3774eLbabiNjEAgACFxKKAGg7XAA==
+Date: Thu, 15 Aug 2019 20:52:43 +0000
+Message-ID: <a47ede7577580987feb279d9879a994786a65d1a.camel@wdc.com>
+References: <mvm8sshcdwc.fsf@suse.de>
+ <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
+ <mvm1ry8au3f.fsf@suse.de>
+In-Reply-To: <mvm1ry8au3f.fsf@suse.de>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -87,37 +87,38 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Atish.Patra@wdc.com; 
 x-originating-ip: [199.255.44.250]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: b4336747-6038-4a49-ea27-08d721c0557d
+x-ms-office365-filtering-correlation-id: 7f86a049-4c91-410a-7d36-08d721c2856a
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB5478; 
-x-ms-traffictypediagnostic: BYAPR04MB5478:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB54788A8CD828EBA435C0695DFAAC0@BYAPR04MB5478.namprd04.prod.outlook.com>
+ SRVR:BYAPR04MB5878; 
+x-ms-traffictypediagnostic: BYAPR04MB5878:
+x-ms-exchange-purlcount: 2
+x-microsoft-antispam-prvs: <BYAPR04MB58788A88D8CE25BAB8B49B86FAAC0@BYAPR04MB5878.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-forefront-prvs: 01304918F3
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(366004)(396003)(136003)(346002)(39860400002)(189003)(199004)(7736002)(6512007)(71200400001)(476003)(66556008)(66946007)(305945005)(2906002)(316002)(186003)(86362001)(66446008)(76116006)(99286004)(229853002)(446003)(11346002)(53936002)(66476007)(2616005)(71190400001)(5640700003)(2351001)(118296001)(64756008)(6486002)(6436002)(81166006)(66066001)(6506007)(81156014)(14454004)(36756003)(486006)(5660300002)(256004)(478600001)(1730700003)(4326008)(26005)(6246003)(3846002)(8936002)(2501003)(6116002)(54906003)(25786009)(102836004)(6916009)(76176011)(8676002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5478;
+ SFS:(10019020)(4636009)(136003)(396003)(39860400002)(366004)(376002)(346002)(199004)(189003)(966005)(14444005)(256004)(71200400001)(25786009)(71190400001)(86362001)(6306002)(229853002)(6436002)(53546011)(6506007)(316002)(5660300002)(478600001)(110136005)(186003)(14454004)(6512007)(76116006)(66946007)(102836004)(66476007)(66556008)(64756008)(66446008)(6486002)(8936002)(26005)(8676002)(81156014)(81166006)(2906002)(36756003)(76176011)(3846002)(4326008)(66066001)(6116002)(118296001)(6246003)(53936002)(305945005)(7736002)(2501003)(2616005)(11346002)(99286004)(486006)(446003)(476003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5878;
  H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
+ PTR:InfoNoRecords; A:1; MX:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: SAYV6uu07GIc23VnkwZR8otX4ntpFrYKhIoxG7aKGOe0ZWjs/SgoVpJTbeKAHyr3jv6XpxcZpB0JZ9ubVDiPCK3sdorxor2vaUw+x1UhaIzpO03KyV9Upz4QWpA2ge3eE72Z6f0TddmsP0lMMqXCChtbF6KP88RA6yhYCe4O0RKhdOOIc99fYz0zqPwf6Pn/Tst6CstP8md8gTP6vyoxX2xhy0Ck5GzbfhA+e90Sd0myIxwf8SedF+7q2d9Er9I5d/0XqvO5hz2lmBxs3PKDzSTgfZeULTFqMMWUGIUOqe5kkfqnOVs0Oiz5FKhpFn/VvWc/CEigoxYLB3CdE2AWLRwgot+Lg7UsZRTPCBi8b+Ef9kCJ3jles2KrrZnrMl7yprwxFSDl0SVANDfSHKxyEh7AeuH+WTI7srlp3aFBilA=
-Content-ID: <9E58DB51E878DB49B49FA5E3D5869C2E@namprd04.prod.outlook.com>
+x-microsoft-antispam-message-info: PAXCZh/8QnIwO+ctV0R4y4T7m7ncUnf+dyI4v14LLFbl7xh4mhtYvf/oTBMJKkkAUT7zua9w45N0e4Ry5jamQmLcZZNzNZcRWvHUPS0R/DTqCoF6+vIHNH+i45uOCR/Imy8a0jLIJURl+3TJ1UWDbf+ZCPugj4Y+mpz94cp3WdwLU7go7Lf9Rkfl/YDCss+h6F9CS6WndY/Hd04T+8NkXZCyBcAEN8KaX2oFDytFM0eV5jYzi1Wq7NjynmRECQqwSfYvCmB0b7euX5ajFAheMP16Ax85JEdHVOyQyoY924HPtcsL6ijiJruGorQsKbM8a5Ki6i897E038Y7QH0HFiTO7BPzgLl2jO1IUmrxsAstfW8+DRdsOyefC2tidvH6XJeNF1/j9fS2kHXZ9zvbejcI0WzMai0ag5Kte6N6mEJ0=
+x-ms-exchange-transport-forked: True
+Content-ID: <E29ADB5549C2964AB8427CBE0314A0EC@namprd04.prod.outlook.com>
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b4336747-6038-4a49-ea27-08d721c0557d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Aug 2019 20:37:04.5688 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7f86a049-4c91-410a-7d36-08d721c2856a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Aug 2019 20:52:44.0535 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cP9q6IQJA/kKaWi/JbCpjgxVlYJgJkKwW11o/HJeqXfAZ75Fh5hei5It9hg8GD1NFyVWszr+5eOohDwmNbpVqw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5478
+X-MS-Exchange-CrossTenant-userprincipalname: YRQ9v9KV8DMsObz8EEqNaMUeI7lw8oqa1JjIFUr/a/JUzgPSnZnLe2ObWfyX1IzfW9h1vwimPIn/e7c3W19ZGA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5878
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190815_133708_970677_23CEB9E7 
-X-CRM114-Status: GOOD (  21.23  )
+X-CRM114-CacheID: sfid-20190815_135246_012397_760AA56C 
+X-CRM114-Status: GOOD (  15.36  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -145,87 +146,103 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "allison@lohutok.net" <allison@lohutok.net>
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 2019-08-13 at 07:30 -0700, hch@infradead.org wrote:
-> On Tue, Aug 13, 2019 at 12:15:15AM +0000, Atish Patra wrote:
-> > I thought if it recieves an empty cpumask, then it should at least
-> > do a
-> > local flush is the expected behavior. Are you saying that we should
-> > just skip all and return ? 
+On Tue, 2019-07-30 at 08:56 +0200, Andreas Schwab wrote:
+> On Jul 30 2019, David Abdurachmanov <david.abdurachmanov@gmail.com>
+> wrote:
 > 
-> How could we ever receive an empty cpu mask?  I think it could only
-> be empty without the current cpu.  At least that is my reading of
-> the callers and a few other implementations.
-> 
-
-We get ton of them. Here is the stack dump.
-
-[   16.735814] [<ffffffe000035498>] walk_stackframe+0x0/0xa0^M
-298436 [   16.819037] [<ffffffe0000355f8>] show_stack+0x2a/0x34^M
-298437 [   16.899648] [<ffffffe00067b54c>] dump_stack+0x62/0x7c^M
-298438 [   16.977402] [<ffffffe0000ef6f6>] tlb_flush_mmu+0x14a/0x150^M
-298439 [   17.054197] [<ffffffe0000ef7a4>] tlb_finish_mmu+0x42/0x72^M
-298440 [   17.129986] [<ffffffe0000ede7c>] exit_mmap+0x8e/0xfa^M
-298441 [   17.203669] [<ffffffe000037d54>] mmput.part.3+0x1a/0xc4^M
-298442 [   17.275985] [<ffffffe000037e1e>] mmput+0x20/0x28^M
-298443 [   17.345248] [<ffffffe0001143c2>] flush_old_exec+0x418/0x5f8^M
-298444 [   17.415370] [<ffffffe000158408>]
-load_elf_binary+0x262/0xc84^M
-298445 [   17.483641] [<ffffffe000114614>]
-search_binary_handler.part.7+0x72/0x172^M
-298446 [   17.552078] [<ffffffe000114bb2>]
-__do_execve_file+0x40c/0x56a^M
-298447 [   17.617932] [<ffffffe00011503e>] sys_execve+0x26/0x32^M
-298448 [   17.682164] [<ffffffe00003437e>] ret_from_syscall+0x0/0xe^M
-
-It looks like it is in the path of clearing the old traces of already
-run script or program.  I am not sure if the cpumask supposed to be
-empty in this path.
-
-Probably we should just issue tlb flush all for all CPUs instead of
-just the local CPU.
-
-> > > 	if (!cpumask || cpumask_test_cpu(cpu, cpumask) {
-> > > 		if ((start == 0 && size == -1) || size > PAGE_SIZE)
-> > > 			local_flush_tlb_all();
-> > > 		else if (size == PAGE_SIZE)
-> > > 			local_flush_tlb_page(start);
-> > > 		cpumask_clear_cpu(cpuid, cpumask);
+> > On Mon, Jul 29, 2019 at 1:51 PM Andreas Schwab <schwab@suse.de>
+> > wrote:
+> > > Since switching to 5.2 kernels I'm seeing random crashes and
+> > > misbehaviors on the HiFive, for example while building gcc or
+> > > glibc.
+> > > Perhaps missing TLB flushes?
 > > 
-> > This will modify the original cpumask which is not correct. clear
-> > part
-> > has to be done on hmask to avoid a copy.
+> > Do you have some examples of crashes?
 > 
-> Indeed.  But looking at the x86 tlbflush implementation it seems like
-> we
-> could use cpumask_any_but() to avoid having to modify the passed in
-> cpumask.
+> While building glibc:
+> 
+> an_ES.UTF-8...realloc(): invalid pointer
+> /bin/sh: line 1:  7841 Aborted                 (core dumped)
+> I18NPATH=. GCONV_PATH=/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/iconvdata LC_ALL=C /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/elf/ld-linux-riscv64-lp64d.so.1 --library-path
+> /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/math:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/elf:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/dlfcn:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/nss:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/nis:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/rt:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/resolv:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/mathvec:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
+> base/support:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nptl
+> /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/locale/localedef
+> $flags --alias-file=../intl/locale.alias -i locales/$input -f
+> charmaps/$charset --prefix=/home/abuild/rpmbuild/BUILDROOT/glibc-
+> 2.29-0.riscv64 $locale
+> make[2]: *** [Makefile:422: install-archive-an_ES.UTF-8/UTF-8] Error
+> 134
+> 
+> While building gcc:
+> 
+> ../../gcc/ada/exp_aggr.adb: In function
+> 'Exp_Aggr.Expand_N_Aggregate':
+> ../../gcc/ada/exp_aggr.adb:5311:21: warning: 'Csiz' may be used
+> uninitialized in this function [-Wmaybe-uninitialized]
+> ../../gcc/ada/exp_aggr.adb:5220:10: note: 'Csiz' was declared here
+> +===========================GNAT BUG
+> DETECTED==============================+
+> > 10.0.0 20190727 (experimental) [trunk revision 273844] (riscv64-
+> > suse-linux) |
+> > Storage_Error stack overflow or erroneous memory
+> > access                  |
+> > Error detected at
+> > output.ads:39:8                                        |
+> realloc(): invalid pointer
+> 
+> raised PROGRAM_ERROR : unhandled signal
+> make[3]: *** [../../gcc/ada/gcc-interface/Make-lang.in:140:
+> ada/exp_ch3.o] Error 1
+> 
+> Andreas.
+> 
 
-Looking at the x86 code, it uses cpumask_any_but to just test if there
-any other cpu present apart from the current one.
+Can you give it a try with following patch in OpenSBI & Kernel ?
 
-If yes, it calls smp_call_function_many which ignores the current cpu
-and execute tlb flush code on all other cpus.
+Linux kernel:
+http://lists.infradead.org/pipermail/linux-riscv/2019-August/005889.html
 
-For RISC-V, it has to still send the cpumask containing local cpu and
-M-mode software may do a local tlb flush the tlbs again for no reason.
+OpenSBI:
+http://lists.infradead.org/pipermail/opensbi/2019-August/000386.html
+
+In my testing, I no longer the stress-ng error or glibc local install
+issue if I use following command.
+
+sudo make -j8 localedata/install-locale-files
+DESTDIR=/home/atish/glibc/build/install
+
+
+I still see segmentation fault if I use a archieve locale install
+command.
+
+sudo make -j8 localedata/install-locales
+DESTDIR=/home/atish/glibc/build/install
+
+But the error dump doesn't contain remap() error. Just a segmentation
+fault which may be due to userspace or just different version of old
+tlbflush problem.
 
 
 Regards,
 Atish
+
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
