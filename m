@@ -2,78 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90E8F8E286
-	for <lists+linux-riscv@lfdr.de>; Thu, 15 Aug 2019 03:53:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54CB28E2EA
+	for <lists+linux-riscv@lfdr.de>; Thu, 15 Aug 2019 04:54:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=1ZrvJA9CxcuKX5SYF8VRpl6JXSSxzPl/H1ACX1pZPs4=; b=BKECjVzn8ccNC/GU6Wh8QcCVf
-	1oe+kvxWDqNxWrhwfZMm7d1CcpyS6I5jq3SxjIrh5BWdNKFvNLTRxQtikVMpZUmAHBVoAvgVwbbmV
-	hlvYSqIh4X2jTe4UeGcQCAJ6c3kmDNFpqQpvoaex8EwoAVSDnTieDEzBrXz/fNJhT+1cBBF0GJ6Q0
-	YLU165qd/jN4kCC0hdZmWsUTkehczV/KwL9ISb+6m65sjU0DkO598tpvTINppo8/jAKxocaMlIf7R
-	3kAOou+AHYAfEFLLbpA6+ttlCJvfrQGmC900qSXzVuaJSselFntldwb/YKf6rf+a+c1XirsaCyKCx
-	gWSARCFQQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sk0hmZm6MB04syzITIKrtJmebZp0bx8SBOup2UNCors=; b=GZ0QwA8MO4UifA
+	RYWUbKhzmOArM84PDNzkHc5G0DcW7O71de40Jn/GFJqzol9Ugl4z4x26g02WK5avs7XrQunIyzz5F
+	2e34Sq2xkNKiYKGSdev0WoznjYltCb3n867Ka+YWKtQfjCi6qY6hjjKvb/8yjScvzVG3AgZ5qghwZ
+	BdVMhOEiMIIGQ3GYlhbGaa1MN+cQAqEYHKFVq7mPo0uyMzdHlTE+Xrf2L8lz+lXN75TdCE729J5fz
+	BytOLaH/4HmrFLguZSfN6GgImvyyEzNj/WXN0KlrGaH19RGOOpBQEoBqwPcD5IklnmDn+iZYTfSgP
+	/W7IOejlAJ/YOWC53Q+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hy4x5-0000Ce-Es; Thu, 15 Aug 2019 01:53:19 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hy5tm-0008CS-Ga; Thu, 15 Aug 2019 02:53:58 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hy4x0-0000CN-C2
- for linux-riscv@lists.infradead.org; Thu, 15 Aug 2019 01:53:15 +0000
-Received: by mail-pg1-x544.google.com with SMTP id n4so577308pgv.2
- for <linux-riscv@lists.infradead.org>; Wed, 14 Aug 2019 18:53:12 -0700 (PDT)
+ id 1hy5tg-0008Bc-W3
+ for linux-riscv@lists.infradead.org; Thu, 15 Aug 2019 02:53:54 +0000
+Received: by mail-ot1-x342.google.com with SMTP id j7so2933350ota.9
+ for <linux-riscv@lists.infradead.org>; Wed, 14 Aug 2019 19:53:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=B+urqSWm85wzvKtnrzAL/ED40jwSYxyNjNBdxhrRvuU=;
- b=k0n8568wNHHsx6zXvAubvU8j+UJLpdwV3DXPjhBjHWiytO90eILwvNbmMyhHXPvvFh
- OmQRZw4zukae4HtVxY8cxBgO55bggVvef2Bmci6q+mRJn7GGHoWlhcA85DFwziG6hSom
- jd9nTZqqPAiI2dNUWoyDdDWXoRt+M5UuLrLedkgh9vJ7/NCAaPE7PVaUNQhQ07CXhWPX
- OXBnh7s9ZiG+CFkFPzUd+zlaKrTTtmkLznfpe1kjOGy5yuNKyXCvus0rU0aNddN2Rdgn
- 1HpqOysxM8ZTMBz3CBELPSDLWAXHgfRsU0oggWry1iThcBbfLvZASjqxukZoZsF5IOBJ
- zg/g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hdb0nH13oEr6nRIXzGT4/+HAUBVeTsgqLpq+7aKP03Y=;
+ b=WAY8orSqrakMS/XtmJpC2hS3YEV9zeu+kWvcto/2HdUAbGMKfH8/Ea81r2vzPlglB0
+ HVVTUM/mMunfKiuGsu9W/C7CcdEUhiMiOv3aGIvO7VjNz5HeeRFDI5JGhxHjcapluMeS
+ SbMADSrANmNhcedz/64VntyqWFL1nKrRHTEmY5BNQxA1GappLw1sVV9zjBefCn8s9uqd
+ E/WC0mhGDjAxQ9LhVXY1k50D9/urECCnfGgHb6/EoDnj4nzrNueTPQQCg7z0Ao2kuScv
+ REFKuuRP7jdohRgqAm8hgg2+biS+kdVEr+idLx/TvaYe6LxPr2+eBde1SClOh6Z/37k0
+ z2Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=B+urqSWm85wzvKtnrzAL/ED40jwSYxyNjNBdxhrRvuU=;
- b=pH+JdrNNyAOc21RwhHllNUiQWCgihAyTTLc9Gq5blFWblRsmErVbS+CQBYEkWD/GDe
- 9o5fJzU/a8Jk2j5miLbGBdLTINRtNbzV1Ke3Kquvr3hgOXNDNz3zTDuGhGpHl2FEwu6O
- tO1agYFYJWgBm8fvm7dO492gwiZ4Lubhkt6knCdoBsE6L1251S9Xc7PLJuVuC1nODypJ
- I7z1KWgDJxcw4ArDTK5wd9dVqQzX3YznCIepQnrKMVBvF/F1Y/ywbfbcmE3bbL4heFdS
- cdrnrDQgTvh5SaU+GpubDw1/zDOPIiokF44UuaglYPolHNqyPJw83xbPgtaSNcmYFfa0
- MuWw==
-X-Gm-Message-State: APjAAAV9X1tcN7SXVtCg0x9QVN7x4xcZ+vUK1LvYiXe8Wo3tI5lRIrsl
- v3L/ew84kXSTwaW9xcafTvDtRA==
-X-Google-Smtp-Source: APXvYqweNZweFB0WkL9RkgxC0FIbRYfV4E4lwj7UZo12deQWJbuFOYlGUuOtHlqdw3Q2kaXl0/yDgw==
-X-Received: by 2002:a62:76d5:: with SMTP id r204mr2959889pfc.252.1565833992329; 
- Wed, 14 Aug 2019 18:53:12 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id 64sm1187819pfe.128.2019.08.14.18.53.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Aug 2019 18:53:11 -0700 (PDT)
-Date: Wed, 14 Aug 2019 18:53:11 -0700 (PDT)
-X-Google-Original-Date: Wed, 14 Aug 2019 18:49:57 PDT (-0700)
-Subject: Re: [PATCH v2 2/2] riscv: Make __fstate_clean() work correctly.
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hdb0nH13oEr6nRIXzGT4/+HAUBVeTsgqLpq+7aKP03Y=;
+ b=EmBjtCnxVOs/VU4OuZ6wSZ44qGQCN2/5Ryp0OxhJ/a+zGPgY4SygGZul7/G2F/qlnF
+ yC6kt/uMbGq3ws3WlRr6l1U7wcqLH4BQrhWZ3brQwLaR3wFh5UU5sTon0EYFTocR3mXq
+ 7grxq0vGEDnIaqAcAOMN995SJNQqMrNYMpUSiU118eJlpwt3Hri5omCWvRqE3k5Nq129
+ 8QyfK4PKSt2p0wIbyabN3xi5HnZm+Vv+LTMxUG16Bi59voi5e0b1upTw627jolwpmTh2
+ jwF4hi0wGWdAQiV/1zcPKLZjy+hlfQiBJKx9Sc1shYBAg0Z+x18pagH9+CXsvQq0QMfe
+ +8ig==
+X-Gm-Message-State: APjAAAWqTYrZ91xW/LUPp81DdIf353pab+/BO/xXdMX7Z+mIpHH3I/wV
+ YOiyozY2zJMD3fA/P94ZESsSjib5dFfWB7wloI6QPKBJC+I=
+X-Google-Smtp-Source: APXvYqw/iFDJnYcGgE5J8uAV0NYHZbpRwRf5evy2jBuuR9WT/cCD4jA2QAF4eEWu/w6jnSFkqwKZMlEFZHtBtq+Tgho=
+X-Received: by 2002:a05:6602:219a:: with SMTP id
+ b26mr2811877iob.55.1565837628423; 
+ Wed, 14 Aug 2019 19:53:48 -0700 (PDT)
+MIME-Version: 1.0
+References: <alpine.DEB.2.21.9999.1908141328440.18249@viisi.sifive.com>
+ <mhng-4eded486-d381-4822-abc5-4023bf7ba591@palmer-si-x1c4>
+ <87mugbv1ch.fsf@igel.home>
 In-Reply-To: <87mugbv1ch.fsf@igel.home>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: schwab@linux-m68k.org
-Message-ID: <mhng-cde08804-6424-4966-84cb-359f3ae393fa@palmer-si-x1c4>
-Mime-Version: 1.0 (MHng)
+From: Vincent Chen <vincent.chen@sifive.com>
+Date: Thu, 15 Aug 2019 10:53:37 +0800
+Message-ID: <CABvJ_xgfuXzO0-vDB6LYggNchjP=vUvnreLEYuV=w=eb+bhVXw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] riscv: Make __fstate_clean() work correctly.
+To: Andreas Schwab <schwab@linux-m68k.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190814_185314_422389_323B03A7 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190814_195353_061409_CC3A8A9B 
+X-CRM114-Status: GOOD (  13.33  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -95,43 +92,55 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 14 Aug 2019 15:17:18 PDT (-0700), schwab@linux-m68k.org wrote:
+On Thu, Aug 15, 2019 at 6:17 AM Andreas Schwab <schwab@linux-m68k.org> wrote:
+>
 > On Aug 14 2019, Palmer Dabbelt <palmer@sifive.com> wrote:
 >
->> On Wed, 14 Aug 2019 13:32:50 PDT (-0700), Paul Walmsley wrote:
->>> On Wed, 14 Aug 2019, Vincent Chen wrote:
->>>
->>>> Make the __fstate_clean() function correctly set the
->>>> state of sstatus.FS in pt_regs to SR_FS_CLEAN.
->>>>
->>>> Fixes: 7db91e5 ("RISC-V: Task implementation")
->>>> Cc: linux-stable <stable@vger.kernel.org>
->>>> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
->>>> Reviewed-by: Anup Patel <anup@brainfault.org>
->>>> Reviewed-by: Christoph Hellwig <hch@lst.de>
->>>
->>> Thanks, I extended the "Fixes" commit ID to 12 digits, as is the usual
->>> practice here, and have queued the following for v5.3-rc.
->>
->> For reference, something like "git config core.abbrev=12" (or whatever you
->> write to get this in your .gitconfig)
->>
->>    https://github.com/palmer-dabbelt/home/blob/master/.gitconfig.in#L23
->>
->> causes git to do the right thing.
+> > On Wed, 14 Aug 2019 13:32:50 PDT (-0700), Paul Walmsley wrote:
+> >> On Wed, 14 Aug 2019, Vincent Chen wrote:
+> >>
+> >>> Make the __fstate_clean() function correctly set the
+> >>> state of sstatus.FS in pt_regs to SR_FS_CLEAN.
+> >>>
+> >>> Fixes: 7db91e5 ("RISC-V: Task implementation")
+> >>> Cc: linux-stable <stable@vger.kernel.org>
+> >>> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> >>> Reviewed-by: Anup Patel <anup@brainfault.org>
+> >>> Reviewed-by: Christoph Hellwig <hch@lst.de>
+> >>
+> >> Thanks, I extended the "Fixes" commit ID to 12 digits, as is the usual
+> >> practice here, and have queued the following for v5.3-rc.
+> >
+Thank Paul for correcting my mistake.
+
+> > For reference, something like "git config core.abbrev=12" (or whatever you
+> > write to get this in your .gitconfig)
+> >
+> >    https://github.com/palmer-dabbelt/home/blob/master/.gitconfig.in#L23
+> >
+> > causes git to do the right thing.
 >
 > Actually, the right setting is core.abbrev=auto (or leaving it unset).
 > It lets git chose the appropriate length depending on the repository
 > contents.  For the linux repository it will chose 13 right now.
+>
+> Andreas.
+>
+Thanks to Palmer and Andreas for sharing this useful information.
 
-Awesome, thanks!  I've updated my config :)
+> --
+> Andreas Schwab, schwab@linux-m68k.org
+> GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
+> "And now for something completely different."
 
 _______________________________________________
 linux-riscv mailing list
