@@ -2,83 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FD2F904C9
-	for <lists+linux-riscv@lfdr.de>; Fri, 16 Aug 2019 17:38:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D0EAB9068A
+	for <lists+linux-riscv@lfdr.de>; Fri, 16 Aug 2019 19:14:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ErIkIVNRz4E10gUGxP1BhP7waTgK1gRY4GMvz68N6HM=; b=jlg0rAy3Al6nhi
-	3II9gqaXcZOMEweKKQeTpIetYRQmgJcv6Qh1y6PV1SuMfcR5X2xCoQgXr01WG7Eiw1rJX0SIl3pim
-	9XFQwuGGkGAnjN+XystaXtzBXWyO6/uX1VkqKBjBxAPH9xqysz6hPqPSTiRYzKih4pNPEE9OYspMM
-	ucsjN/CKKStB6Chas4MblvEs88F5YTUlDfUJoBP/NEcZvHhDujdQLIInMbsr1cAqFckW/PX4egy08
-	N5iR2UUc5bXO81Z55m3YZ8ZF943WZJB2ptkegIY4jLnFm+9z4/cajPcD51GY55Tzgf+79zEQRg8n/
-	Bd46Rt80pFnj1uQG1yjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=od85NtLOdatiaqdapSPDWxPlW5M1VvV7V6wuwC3WfH8=; b=PvDC9HQ5bZHE8R
+	+G4OeeqLP416brANo3ygJfanjoIMemVT7dvmMMJIkaeoZuRt2H+pkIg2sloqbe67nHgEJeYXumrlo
+	eVA5lIFG9H/5+EhnDg6F9iHglsGOlTXUajrd9EewlyDeyLTvq1349gmKr9RfbJfFTetePG9RjfxjE
+	+47yRQvLPmw6AhTtURYWg4G6kbLPDv4rEY/LEx+UVgagoCklgwAvNt1aO7Yu0P/caJ/hep5o50iDQ
+	qtRxyks1lYS16Kt8bPovoaVdawuHBYamixBWHeNTKk097tPK4I3jbzItSzVhzlGcZZzpUj/ubT/gp
+	as41M8jhexsIUC8X5XFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyeJB-0005k2-Pz; Fri, 16 Aug 2019 15:38:30 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1hyfnk-0002lG-Ut; Fri, 16 Aug 2019 17:14:08 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyeJ6-0005jf-S9
- for linux-riscv@lists.infradead.org; Fri, 16 Aug 2019 15:38:26 +0000
-Received: by mail-pl1-x643.google.com with SMTP id g4so2607264plo.3
- for <linux-riscv@lists.infradead.org>; Fri, 16 Aug 2019 08:38:24 -0700 (PDT)
+ id 1hyfni-0002kW-2E
+ for linux-riscv@lists.infradead.org; Fri, 16 Aug 2019 17:14:07 +0000
+Received: by mail-io1-xd42.google.com with SMTP id s21so7622696ioa.1
+ for <linux-riscv@lists.infradead.org>; Fri, 16 Aug 2019 10:14:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=1sjtI0Iasc0HZVRi0SPLAcsd+qujzzhESwIxzJI4vj0=;
- b=JdRsopIgAgXXvs01ToAV3LVOgnCPelAtx06m9UaAhWx+BtiE2JaCmbP3F+DiLmwHm6
- gR7UCp8YRuOpz2ubkuHL4MPK+EA1/EvS/wFXWsSVwu+CcEJulneUAZvH1ebk/0x1aA8k
- K+0VWw22kfdXio24s0vUG5mbFCNFi0k7QcZn9BfyY8fm/4mnCBw7xosHu5SVQPB66Hlp
- dDkkRL063kTnv4ZMeXdALo4E9qPaE6BZG3YsibCMGYtYQCLbcHby3E8T+fGuvC286sT0
- cwbgpnl5+v32x3n3HrbQU6A+WH8GavRm9FmEWkvucMjcysvsTwWsLo1IaojwupdcDr4W
- TKGw==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=P1RIaHOqGWyyl0LvEugaw544sTC25Cpr3BLhnNSKbO4=;
+ b=G7B+K2WjY9RlUlzaAnqOuGPgUjdTR9RckXKzQpOT2brfVUdN+XfRKMj4LIqCeKcMwY
+ 5wL7YHYsWryoT9OLwEE/42kvdCggJOgiDaQulrteM7ZK21nW8dbEuSOpz0NXVyHrcrbf
+ 1vdxpfe58WRpNdCzs7vgJfnCA8bgUR0V+X5CMnFGvMz5mgaif2gYTpOSNSOb9XfkVkdB
+ KDShek+ojIQ4Hf34NrJy6/c2ZMJKe5mzh1UVDpMBXf3ZdyHZepAeLMt2U28K3eUmrXtl
+ jeBSpwP/0W9vxEtB/531QhxJc0vcVO4ioFfZ+3Kv4uZaUO0yv28yFEXlPBMhKu85DmC/
+ C7tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=1sjtI0Iasc0HZVRi0SPLAcsd+qujzzhESwIxzJI4vj0=;
- b=SvlbJ0o4qOuiDfmUByUOy4TJ8EqheGfM4HvJu0kTdSY1+uRx8WtKFi67bISf4OqYtP
- uEwtBj8OtLFbe7/DePqzkOVLy8pQSi5MnJzKj+r7XWrd081jc3kX6KfEIby4jAy0XxpQ
- jW56zQDe+JwhoDd6NIqHR9GOB/8PFRQyWLgEGsBeXgO6hBvItymWZfbIyRkZI8QqYJ/2
- 9jzOLlmtE2BzJLq0tfKE9zWG+ZQFK/acXtr3n7SEUKsEm6pamYR/B9jWuoyH4RGeQgxY
- Io14OZGio7T3C2EMviIOF2x0NN2io4hrxy/TcqoQkbL+J7iSST1gtQ0EbpVweZ0Jupf5
- BM6w==
-X-Gm-Message-State: APjAAAU7oZwyu4PyDEou1agGFY3yM/r82kAwb8iDjI2sdzNCq9pYBc21
- 4guQokMmkliwLj7htHDm3iYUbdEDgd8=
-X-Google-Smtp-Source: APXvYqxoJGg+T+OyaZ/08gLEKOw7pPMXSSQ8uoWAjHtI3FQoBz27j56LZkxtv0eDeB0dr3Ta/lO2Uw==
-X-Received: by 2002:a17:902:a60f:: with SMTP id
- u15mr9832800plq.201.1565969903553; 
- Fri, 16 Aug 2019 08:38:23 -0700 (PDT)
-Received: from [172.20.2.243] (64-71-28-72.static.wiline.com. [64.71.28.72])
- by smtp.gmail.com with ESMTPSA id y194sm7025035pfg.116.2019.08.16.08.38.22
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 16 Aug 2019 08:38:23 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Subject: Re: Random memory corruption with v5.2
-From: Troy Benjegerdes <troy.benjegerdes@sifive.com>
-In-Reply-To: <f2e56dc61e9c385a1d19270b016650f0684ab72f.camel@wdc.com>
-Date: Fri, 16 Aug 2019 08:38:22 -0700
-Message-Id: <1A8DBF41-4A10-4835-90AB-6529CAF8AA27@sifive.com>
-References: <mvm8sshcdwc.fsf@suse.de>
- <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
- <mvm1ry8au3f.fsf@suse.de>
- <a47ede7577580987feb279d9879a994786a65d1a.camel@wdc.com>
- <f2e56dc61e9c385a1d19270b016650f0684ab72f.camel@wdc.com>
-To: Atish Patra <Atish.Patra@wdc.com>
-X-Mailer: Apple Mail (2.3445.9.1)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=P1RIaHOqGWyyl0LvEugaw544sTC25Cpr3BLhnNSKbO4=;
+ b=SQCrUMVk1DBVftFkmQmnzHCIsca6eZP4xM6cgBrpzwOLevQiLR3BEgJCy3IcubVX41
+ jug3gTiFIRJoFbcJ4sY+OfaImKCgtWYXoEq4xmCIM19aQApQ01b2AtJk7EkID3SZ6e+z
+ vHxxPXLv4J+hlCmeNxkWqrWdxvHRYNUveWOPzim8xN5bx00w3WFp3kKadomCyoZYq63v
+ ZE+yYBNgOwyLdEg+d4otI0NBhjQDG97YQUFgKD+Ir8oSgDwxkMkg8yp9K8lwmgY9v5Y7
+ EvjmRZFqCQs9et8N0JOt8eBkURF+zlOdH0hmQP27Gbnax2mrQYYx+7AL4KN+0JqzF/8h
+ Ytyg==
+X-Gm-Message-State: APjAAAVszGk8Jz2AfaOZ8u4N6W0BO8bdudb9mKnBXNwG1wk5jOX1G/0Z
+ A9F+BcHHpdn2M6FsnoEn7c8VYQ==
+X-Google-Smtp-Source: APXvYqyGU90OasXL2SfKiCVDJt51GDcakg9jaNR01R5cy/jXwPzDEB4rhvbBPTJ/NuD7LZkKPqAbTA==
+X-Received: by 2002:a5e:df06:: with SMTP id f6mr3225296ioq.93.1565975642550;
+ Fri, 16 Aug 2019 10:14:02 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ w6sm5716237iob.29.2019.08.16.10.14.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Aug 2019 10:14:01 -0700 (PDT)
+Date: Fri, 16 Aug 2019 10:14:01 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Mao Han <han_mao@c-sky.com>
+Subject: Re: [PATCH V3 0/3] riscv: Add perf callchain support
+In-Reply-To: <cover.1558081981.git.han_mao@c-sky.com>
+Message-ID: <alpine.DEB.2.21.9999.1908161008450.18249@viisi.sifive.com>
+References: <cover.1558081981.git.han_mao@c-sky.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190816_083824_918593_AAE8BA7D 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20190816_101406_170179_6F3396FE 
+X-CRM114-Status: GOOD (  11.80  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -100,127 +97,91 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "schwab@suse.de" <schwab@suse.de>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "david.abdurachmanov@gmail.com" <david.abdurachmanov@gmail.com>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@sifive.com>, Guo Ren <guoren@kernel.org>,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hello Mao Han,
+
+On Fri, 17 May 2019, Mao Han wrote:
+
+> This patch set add perf callchain(FP/DWARF) support for RISC-V.
+> It comes from the csky version callchain support with some
+> slight modifications. The patchset base on Linux 5.1.
+> 
+> CC: Palmer Dabbelt <palmer@sifive.com>
+> CC: linux-riscv <linux-riscv@lists.infradead.org>
+> CC: Christoph Hellwig <hch@lst.de>
+> CC: Guo Ren <guoren@kernel.org>
+
+I tried these patches on v5.3-rc4, both on the HiFive Unleashed board 
+with a Debian-based rootfs and QEMU rv64 with a Fedora-based rootfs.  For 
+QEMU, I used defconfig, and for the HiFive Unleashed, I added a few more 
+Kconfig directives; and on both, I enabled CONFIG_PERF_EVENTS.  I built 
+the perf tools from the kernel tree.
+
+Upon running "/root/bin/perf record -e cpu-clock --call-graph fp 
+/bin/ls", I see the backtraces below.  The first is on the HiFive 
+Unleashed, the second is on QEMU.  
+
+Could you take a look and tell me if you see similar issues?  And if not, 
+could you please walk me through your process for testing these patches on 
+rv64, so I can reproduce it here?
 
 
-> On Aug 15, 2019, at 10:22 PM, Atish Patra <Atish.Patra@wdc.com> wrote:
-> 
-> On Thu, 2019-08-15 at 13:52 -0700, Atish Patra wrote:
->> On Tue, 2019-07-30 at 08:56 +0200, Andreas Schwab wrote:
->>> On Jul 30 2019, David Abdurachmanov <david.abdurachmanov@gmail.com>
->>> wrote:
->>> 
->>>> On Mon, Jul 29, 2019 at 1:51 PM Andreas Schwab <schwab@suse.de>
->>>> wrote:
->>>>> Since switching to 5.2 kernels I'm seeing random crashes and
->>>>> misbehaviors on the HiFive, for example while building gcc or
->>>>> glibc.
->>>>> Perhaps missing TLB flushes?
->>>> 
->>>> Do you have some examples of crashes?
->>> 
->>> While building glibc:
->>> 
->>> an_ES.UTF-8...realloc(): invalid pointer
->>> /bin/sh: line 1:  7841 Aborted                 (core dumped)
->>> I18NPATH=. GCONV_PATH=/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/iconvdata LC_ALL=C /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/elf/ld-linux-riscv64-lp64d.so.1 --library-path
->>> /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/math:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/elf:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/dlfcn:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/nss:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/nis:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/rt:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/resolv:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/mathvec:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-
->>> base/support:/home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/nptl
->>> /home/abuild/rpmbuild/BUILD/glibc-2.29/cc-base/locale/localedef
->>> $flags --alias-file=../intl/locale.alias -i locales/$input -f
->>> charmaps/$charset --prefix=/home/abuild/rpmbuild/BUILDROOT/glibc-
->>> 2.29-0.riscv64 $locale
->>> make[2]: *** [Makefile:422: install-archive-an_ES.UTF-8/UTF-8]
->>> Error
->>> 134
->>> 
->>> While building gcc:
->>> 
->>> ../../gcc/ada/exp_aggr.adb: In function
->>> 'Exp_Aggr.Expand_N_Aggregate':
->>> ../../gcc/ada/exp_aggr.adb:5311:21: warning: 'Csiz' may be used
->>> uninitialized in this function [-Wmaybe-uninitialized]
->>> ../../gcc/ada/exp_aggr.adb:5220:10: note: 'Csiz' was declared here
->>> +===========================GNAT BUG
->>> DETECTED==============================+
->>>> 10.0.0 20190727 (experimental) [trunk revision 273844] (riscv64-
->>>> suse-linux) |
->>>> Storage_Error stack overflow or erroneous memory
->>>> access                  |
->>>> Error detected at
->>>> output.ads:39:8                                        |
->>> realloc(): invalid pointer
->>> 
->>> raised PROGRAM_ERROR : unhandled signal
->>> make[3]: *** [../../gcc/ada/gcc-interface/Make-lang.in:140:
->>> ada/exp_ch3.o] Error 1
->>> 
->>> Andreas.
->>> 
->> 
->> Can you give it a try with following patch in OpenSBI & Kernel ?
->> 
->> Linux kernel:
->> http://lists.infradead.org/pipermail/linux-riscv/2019-August/005889.html
->> 
->> OpenSBI:
->> http://lists.infradead.org/pipermail/opensbi/2019-August/000386.html
->> 
->> In my testing, I no longer the stress-ng error or glibc local install
->> issue if I use following command.
->> 
->> sudo make -j8 localedata/install-locale-files
->> DESTDIR=/home/atish/glibc/build/install
->> 
->> 
->> I still see segmentation fault if I use a archieve locale install
->> command.
->> 
->> sudo make -j8 localedata/install-locales
->> DESTDIR=/home/atish/glibc/build/install
->> 
-> 
-> I am also able to run above archive locale install command successfully
-> multiple times after removing the corrupted locale-archive files
-> present in install path. 
-> 
-> Let me know if it works for you as well. 
-> 
-> I am now running stress-ng & parallel glibc locale install together to
-> fully stress the system.
-> 
-> Regards,
-> Atish
->> But the error dump doesn't contain remap() error. Just a segmentation
->> fault which may be due to userspace or just different version of old
->> tlbflush problem.
->> 
->> 
->> Regards,
->> Atish
->> 
-> 
-> 
+thanks,
 
-Is this with stock linux-5.2.8 release, with no additional patches, or is there something we need to look at backporting?
+- Paul
+
+
+# /root/bin/perf record -e cpu-clock --call-graph fp /bin/ls
+[  213.258888] Unable to handle kernel paging request at virtual address ffffffd2d979000c
+[  213.266025] Oops [#1]
+[  213.268278] Modules linked in:
+[  213.271323] CPU: 2 PID: 165 Comm: ls Not tainted 5.3.0-rc4-00006-g2615b94055fc #164
+[  213.278961] sepc: ffffffe0005bde76 ra : ffffffe0005bde84 sp : ffffffe1f609d870
+[  213.286166]  gp : ffffffe000dbe6c0 tp : ffffffe1f60fa600 t0 : 0000000000046000
+[  213.293372]  t1 : 0000000000000002 t2 : 0000002aaaac4890 s0 : ffffffe1f609d8b0
+[  213.300579]  s1 : ffffffe1f609d8d8 a0 : 0000000000000004 a1 : 0000000000000000
+[  213.307785]  a2 : 10ef8552d9790004 a3 : 0000000000000018 a4 : 0000000000000018
+[  213.314991]  a5 : 0000000000000003 a6 : 0000000000000001 a7 : ffffffe1f7b685e0
+[  213.322198]  s2 : 10ef8552d9790014 s3 : 0000003fffffffff s4 : 0000000000001ff8
+[  213.329404]  s5 : b7e9595db7f9e15f s6 : ffffffe000dbe128 s7 : ffffffe1f8d6f820
+[  213.336610]  s8 : 00000031a394a3e8 s9 : ffffffe000656150 s10: 0000000200000120
+[  213.343816]  s11: 0000002aaaabc938 t3 : ffffffe1f7b685c0 t4 : 0000000000000001
+[  213.351021]  t5 : 0000000000000008 t6 : 0000000000000000
+[  213.356319] sstatus: 0000000200000100 sbadaddr: ffffffd2d979000c scause: 000000000000000d
+[  213.364482] ---[ end trace f325867b8e0786aa ]---
+[  213.369083] Kernel panic - not syncing: Fatal exception in interrupt
+[  213.375421] SMP: stopping secondary CPUs
+[  213.379336] ---[ end Kernel panic - not syncing: Fatal exception in interrupt ]---
+
+
+# /root/bin/perf record -e cpu-clock --call-graph fp /bin/ls
+[ 3465.349655] Unable to handle kernel paging request at virtual address d9bfd43b47718688
+[ 3465.352356] Oops [#1]
+[ 3465.353375] Modules linked in:
+[ 3465.354496] CPU: 0 PID: 9501 Comm: ls Not tainted 5.3.0-rc4-00004-g3bfea1b43363 #165
+[ 3465.355904] sepc: ffffffe000039a0a ra : ffffffe000039a18 sp : ffffffe078c5b5e0
+[ 3465.361041]  gp : ffffffe000837760 tp : ffffffe078d88940 t0 : 0000000000046000
+[ 3465.366104]  t1 : 0000000000000002 t2 : 000000004387194a s0 : ffffffe078c5b620
+[ 3465.366839]  s1 : ffffffe078c5b648 a0 : 0000000000000004 a1 : 0000000000000000
+[ 3465.369101]  a2 : d9bfd43b47718680 a3 : 0000000000000690 a4 : 0000000000000018
+[ 3465.370949]  a5 : 0000000000000003 a6 : 0000000000000001 a7 : ffffffe0743b16d0
+[ 3465.371650]  s2 : d9bfd43b47718690 s3 : 0000003fffffffff s4 : 0000000000001ff8
+[ 3465.372658]  s5 : e85970cf9e9fbbc8 s6 : ffffffe0008371c8 s7 : ffffffe07a1527a0
+[ 3465.373570]  s8 : 00000326c7b3d418 s9 : ffffffe0000d3326 s10: 0000000000000120
+[ 3465.377102]  s11: ffffffe078cb4880 t3 : ffffffe0743b16c0 t4 : 0000000000000001
+[ 3465.378125]  t5 : 0000000000000008 t6 : ffffffe078c5bd60
+[ 3465.380603] sstatus: 0000000000000100 sbadaddr: d9bfd43b47718688 scause: 000000000000000d
+[ 3465.382872] ---[ end trace f0ff9969d564eb82 ]---
+[ 3465.383998] Kernel panic - not syncing: Fatal exception in interrupt
+[ 3465.385812] SMP: stopping secondary CPUs
+[ 3465.394408] ---[ end Kernel panic - not syncing: Fatal exception in interrupt ]---
 
 
 _______________________________________________
