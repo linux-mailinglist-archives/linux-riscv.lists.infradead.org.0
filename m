@@ -2,127 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64F109082A
-	for <lists+linux-riscv@lfdr.de>; Fri, 16 Aug 2019 21:22:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10FEB908F4
+	for <lists+linux-riscv@lfdr.de>; Fri, 16 Aug 2019 21:51:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GVzEIWDNTxMz35TKVpvv5Rhzd/4oJ3Bx4ei6Kk4B0oA=; b=ln32NlqVziutMD
-	4FBWL4VzUii6q9FUmsaSaEToQhf1H5o8HlenHceAM27n9VvnarnX2TNHBjIMR3r6CIjh5JiEAuGKo
-	CPy72GSWvOV8DTmkGx0uUTpO4jxUBY55yLo1mwWq/AvNNOXzUZKReUd657gXBknM9yx1/x66kYvgV
-	YPY3Jf+HwdzqK6il+kd94H4bULzEPNcyaZNtOUMtZLo6bOY+jK0C+HYBqE9lLj0g0NHuwPfW17jmL
-	/iX/twkA7a/7pP9vWRO04HLsDlP6jfRqWimZSkg/hc+qgAPKRUzd38pv8b/AHkS70qBt//+0twJT+
-	GsIx9qIOaW1UyDALpFSg==;
+	List-Owner; bh=OMpttDeCgRsKnj4L5hU2eq6viqHZqGnVgCdev+g0ON0=; b=hgWbLSaVN1hUV3
+	dtcUXzsFu3oJ6wT/8qQTUiS8/+Knuy9EKJqnkG6p2I4lxYGD5rRagQbDE1d4LlYuv7gGXQvz58id/
+	OE9BJ+ZpGmIx8O9+vyt7kANYggCiEB/IU97wT6d3xpld5Py46QMfKc1YpjqdnLRJHtXF0y6sDnnsS
+	17Gkks6NG+9DkCldRwEYNpCaBfx4Sdf+sPO6exzxp31IasMtHbL/rFf+l/k84AF8zoo6e+kk3Jda8
+	GUknpMewx0jZVuIPrXGgpkMVs0gpczhlWJnQYl6AGuqdRdm8PFvesLLDJNYs1hNPK1ycgWpolNCrW
+	A1yjwoI6F4A8ucDef/Lg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyhnW-0002oB-KG; Fri, 16 Aug 2019 19:22:02 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1hyiFQ-00039t-Cr; Fri, 16 Aug 2019 19:50:52 +0000
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyhnR-0002nj-Uz
- for linux-riscv@lists.infradead.org; Fri, 16 Aug 2019 19:21:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1565983318; x=1597519318;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=ZNDl+bii6Kn3re353eARcian2bRjMp890MTLEeU/mto=;
- b=EpqHQu5yGnys8kdxC64+/VebSBP+70CvJQk0YMIt3d4WbbZume9y14n/
- FZFxWnTfNoQuuCJzHHeENKMZrJT8HpAW6ekJbLVQeoPAwcpW2TUDI14Ux
- QU9daLtT31+EaDKuLtk/iQmQeP8SZ0mjRXuzc8telTG2lNPxTIMohOLya
- 59OyS34iWsJktWJqxObIO5qUeZjvIgB2sejfXpdAfL8IcnAcXSdogbH+c
- 3Kc/99CmPjYxoJXiCK0RkFMNrU1ljgyqx4AfO8JZLjUpzPhKaXueAqa6k
- 5Zw1IscCeNRBb/ip459n0d9HeygekWG8tFYSkQEcaJn0zz1V5awp4mXjQ g==;
-IronPort-SDR: 6sl0qd4cRw2Ws0eKbKN0Juck8C3Wub18vyQ5OmihUoflzicBgNWfPQKmtdmzRZhJeIvWTvrfEf
- wFzoYRS5sFaS31B0g50upLUl7Q1pVMYdA+1X7EsBrKLhvzYa1TcqRQtY3bMEMWCIhpdhurDCm5
- KyiD9JZaY9R7nZOaGa+XSpCTLy4LxUHN24G+P20Zoz08N4PlsIrRPz426nlzqCR0UVD2pwZOeK
- WODuCfsY0+JhZbDEXwSkJuo0/DCZD1AzVMf0Vll9FrozR8lZM46do/+4Rqj/bqjt3hTYd/tTeX
- 2d8=
-X-IronPort-AV: E=Sophos;i="5.64,394,1559491200"; d="scan'208";a="120614103"
-Received: from mail-bl2nam02lp2058.outbound.protection.outlook.com (HELO
- NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.58])
- by ob1.hgst.iphmx.com with ESMTP; 17 Aug 2019 03:21:55 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JeOEXv+Yj67xuO4pvcmqVNv2tPWzqFY7bSIdG0yJNO2dcLXTlRNH88Yq1bEHxgubVF9OvXwNEtKWrA6z4U0MKTWCs0jgyNJ/tjXNCHwCt2A9kwKVN3W7gkaF+O5hWOfLO9xvVO/CAQYmPh14kZLY1MM7+yCTGh8VXf4MzlVS2lhgVa+x6RTGrPKSWds/wnRSJaVMlYVokG9PmHttipvan4xHcgq2B3QLUkOzObLQ2uPlW9AMjzg6tCQU6YjjiZZiJ55Zyy+zV9WRw7WhSoDKDD2IKjOMa1XY76iIsSutZoGg6AF/vTMLH6CV2HL92Mi1m/AXYChNRBLqkr6RjhCJCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZNDl+bii6Kn3re353eARcian2bRjMp890MTLEeU/mto=;
- b=VkN4fUxEqYGxErl0nphmLobN3aRA97I/rQMP3ULPogJ1z55pqkcwbMRL/OnoEB2TDsqXKx50jPuRzj+RDUb5ZjainncgufnqVB2ysCwBRrNEWRkSXVQN233kPI2gdeMqnclrqRfLvyBFuffdPzm0lJcQXSKbZp4Jj1qO6C6+vDbUIn6f4KD15c+dqsX4frs6sV/DHoyBSEQCfysYS31SxWAhGXnKMltqb79vzxhYgApsmaRVEv3ABcqsIS0OBNw5ZvSCzSDIY3z2+9+Pl2UwA+NwZF/g1r9oGbAryJ/rGO42c3s2/mKkYrGiiJBx1WVzvEJUEj5ZLK/ya+7laIk3dw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZNDl+bii6Kn3re353eARcian2bRjMp890MTLEeU/mto=;
- b=gjQ/a2Q7arhq4kvf16Yf96ow8rzvAkcNx1pzVtRYaDU5X5j/HXoblSupWjmODRwTNMTbxcZSsSVXknKZl4D6cqodMf3jA8gYmOyGOpHsYwWCpa+JiYshnb3G9x7tRP5kL5QDLdsFymH1ZTIuIDLyjwRSiRHSVa800nZymW984jo=
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB5845.namprd04.prod.outlook.com (20.179.59.22) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.20; Fri, 16 Aug 2019 19:21:53 +0000
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::d89b:cb55:d563:79e9]) by BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::d89b:cb55:d563:79e9%6]) with mapi id 15.20.2157.022; Fri, 16 Aug 2019
- 19:21:53 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "hch@infradead.org" <hch@infradead.org>
-Subject: Re: [v5 PATCH] RISC-V: Fix unsupported isa string info.
-Thread-Topic: [v5 PATCH] RISC-V: Fix unsupported isa string info.
-Thread-Index: AQHVTU090lWiUiEQM02Uoz9V3NTipqb3o0CAgAaR3AA=
-Date: Fri, 16 Aug 2019 19:21:52 +0000
-Message-ID: <3fb8d4f0383b005ecd932a69c4dd295a79b6fb1a.camel@wdc.com>
-References: <20190807182316.28013-1-atish.patra@wdc.com>
- <20190812150215.GF26897@infradead.org>
-In-Reply-To: <20190812150215.GF26897@infradead.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.44.175]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8f4e447b-ebf0-4905-ffaf-08d7227efebe
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB5845; 
-x-ms-traffictypediagnostic: BYAPR04MB5845:
-x-microsoft-antispam-prvs: <BYAPR04MB5845D238E3A0F20487A85358FAAF0@BYAPR04MB5845.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:2449;
-x-forefront-prvs: 0131D22242
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(366004)(136003)(396003)(39860400002)(376002)(189003)(199004)(6116002)(81166006)(36756003)(5660300002)(3846002)(1730700003)(446003)(478600001)(256004)(54906003)(6246003)(25786009)(81156014)(8676002)(305945005)(71200400001)(71190400001)(99286004)(14454004)(7736002)(53936002)(316002)(6512007)(66446008)(66556008)(64756008)(76176011)(66476007)(6506007)(2501003)(86362001)(118296001)(66946007)(76116006)(476003)(4326008)(8936002)(102836004)(26005)(186003)(6916009)(6436002)(6486002)(229853002)(5640700003)(2906002)(2351001)(66066001)(486006)(11346002)(2616005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5845;
- H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: vmdvgaEmU/EnPLf9DH+NxedgHk1PxS/K/CNCREo1pck+cVAElfpHJRBlUAEQYW9IARMKLSIlBhrH/Y4+fbmfbaayDJ35dE/zjjS28OB4aAzY1+etlWNp2tIseOwt6V+1QkZBUqOci+f/5C6o+lODXGrkfabZ7f4MuEuUYL6C9Wm9Oc8+dllGMAd4Rmc91pSIzkwvh5f7vBIfszXEue8ekQAPoLflc8MPlNpk0pVgGk/TRLo2g3FEqEbCB+SyA0I17kFOxHFHHlm7AGJYE/gF+03UMZUW2VA58ht43BzXCM+bA0zXqgt8tDCplqGP90GAQOxA+QwxAH/PwKaopl1IcVpKgnyCIQKxcMuhrmgmhqzG3KN8rTwuDAhFR+Xc78M+T3tlJleXWgG6/gU6My947BwYpFB/TGcvHRx8mAmAH/w=
-x-ms-exchange-transport-forked: True
-Content-ID: <C1958C8B74608D4698922317252C5ED2@namprd04.prod.outlook.com>
+ id 1hyiFM-00039a-I3
+ for linux-riscv@lists.infradead.org; Fri, 16 Aug 2019 19:50:49 +0000
+Received: by mail-io1-xd34.google.com with SMTP id j5so8552480ioj.8
+ for <linux-riscv@lists.infradead.org>; Fri, 16 Aug 2019 12:50:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=ONmXDIuNzqxdi+K97+GLTBz35xCP5n9Rpwaa6NR4X5Y=;
+ b=VNXcHJj88JMFq9KE744X5PtYUIZR1hoxfNMb+IClS7AMdtDL2fxI1BJh7OOYf/Yt8t
+ 1dOq+un9FCmneTtcaBN69a6rXMJ3BJ8DmXEPTwAijWMrIvgOmEb5DtdzA4DNmZc+4s8S
+ gn8MhTdmYCmOIeAD2IN0tep5IDWASsREUFXKtzA/WT3jS9h4QJ2qixSwyvp6xOPKl5nV
+ EPW6K2W8s2D2IqeKBwNrphryDgMZBVNuxSMjANFETc6IRIQ7e6Gs/iswlGsFoDCSaWRW
+ DPJ5tKhM4/NKFoX0cFHaHtahMbAqs5CCla9PgtnYJxBLhuA83ulK4yXp944H38TxbY5g
+ 1SUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=ONmXDIuNzqxdi+K97+GLTBz35xCP5n9Rpwaa6NR4X5Y=;
+ b=nyx7fZaYpUZyRjdLndCHmGGKLK8I/G2zA6UhPaCLux2YAsfWK1K/C9l6P+w8lk/yiQ
+ Nexz97rmaEB4D+FHal4Dh+g6wZcwOOUerVBrwS+WB2eDg8pihHzGJciPDx/PR1i+ehkT
+ 4JJp5x9ZS2dZTgJQbGj8T09+aHupTQ9rubEnUCnQ/Gn3UgohM/R8k3Zs+G7novztM6dt
+ UTm4ozAOTJleVXK/psZFbn3VBzKRSKWrdqBSSZfKrneJKQf5AEYnbm7pzRPm3zpKxSWB
+ Jom7CBw6rVrnFQzFutAwc4S4waplisomQ5mo9N248WRpMwvF2iH0fg3LQ0TxWc50N3C3
+ 1fMg==
+X-Gm-Message-State: APjAAAVqdvT/FIOguyTRVtp8s4dEZ+tpDIgReZlBOXz9TyaHbaOclP2z
+ ltaX1eDgzrhzEfbr+MwvPEWhYQ==
+X-Google-Smtp-Source: APXvYqxw5a4Xhc3YqX+G5NkX3dJZLdeC1f5dYjeMdNRatyDh9AdvjMZRqJyAyPcKww3csdyckiDoWQ==
+X-Received: by 2002:a05:6638:627:: with SMTP id
+ h7mr12815495jar.33.1565985047069; 
+ Fri, 16 Aug 2019 12:50:47 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ i4sm4807204iog.31.2019.08.16.12.50.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Aug 2019 12:50:46 -0700 (PDT)
+Date: Fri, 16 Aug 2019 12:50:45 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Carlos Eduardo de Paula <me@carlosedp.com>
+Subject: Re: Changing SiFive Unleashed core clock rate on 5.x kernel
+In-Reply-To: <CADnnUqeUwjhmFp5moem4Cx-ux1kAmhpdyeerTqZ2cNhyvrT_hw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.9999.1908161221010.18249@viisi.sifive.com>
+References: <CADnnUqcp_7yN4WK2uXberCV_uwjPSj0PxpiXg6kp71--QGPJaA@mail.gmail.com>
+ <alpine.DEB.2.21.9999.1908131417450.29979@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.1908131908000.19217@viisi.sifive.com>
+ <CADnnUqeUwjhmFp5moem4Cx-ux1kAmhpdyeerTqZ2cNhyvrT_hw@mail.gmail.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8f4e447b-ebf0-4905-ffaf-08d7227efebe
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Aug 2019 19:21:52.9989 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: J3+uy0fnnvUehxT0mwnBbGg3K6xzcDxzjwkyjoj9QEpttRSsoZjVVRzWbl3ndZqFBELmDzereRy3uX1yDUiEDw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5845
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190816_122158_174895_E2917DB4 
-X-CRM114-Status: GOOD (  20.11  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190816_125048_628307_A404902B 
+X-CRM114-Status: UNSURE (   6.08  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d34 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -143,80 +102,25 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "anup@brainfault.org" <anup@brainfault.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "johan@kernel.org" <johan@kernel.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 2019-08-12 at 08:02 -0700, Christoph Hellwig wrote:
-> > +	for (e = mandatory_ext; *e != '\0'; ++e) {
-> > +		if (isa[0] != e[0]) {
-> > +#if defined(CONFIG_FP)
-> > +			if ((isa[0] == 'f') || (isa[0] == 'd'))
-> > +				continue;
-> > +#endif
-> > +			unsupported_isa[index] = e[0];
-> > +			index++;
-> > +		}
-> 
-> I'd just use if (IS_ENABLED()) here to get full compiler coverage.
-> Also no need for the inner braces.
-> 
+On Fri, 16 Aug 2019, Carlos Eduardo de Paula wrote:
 
-Sure. I will do that.
+> Got it, just to be clear, the sysfs changes only work on this 5.3 tree
+> and patches right? Not on my current 5.2-rc7.
 
-> > +	if (isa[0] != '\0') {
-> > +		/* Add remainging isa strings */
-> > +		for (e = isa; *e != '\0'; ++e) {
-> > +#if !defined(CONFIG_VIRTUALIZATION)
-> > +			if (e[0] != 'h')
-> > +#endif
-> > +				seq_write(f, e, 1);
-> > +		}
-> > +	}
-> 
-> This one I don't get.  Why do we want to check CONFIG_VIRTUALIZATION?
-> 
+Those three patches in the branch that I sent you seem to work about as 
+well on v5.2 as they do on v5.3-rc4.
 
-If CONFIG_VIRTUALIZATION is not enabled, it shouldn't print that
-hypervisor extension "h" in isa extensions.
-
-This can be extended to any other future extensions and related config.
-
-> >  	seq_puts(f, "\n");ther you want to know if a specific extension
-> > is enabled
-> >  
-> >  	/*
-> >  	 * If we were given an unsupported ISA in the device tree then
-> > print
-> >  	 * a bit of info describing what went wrong.
-> >  	 */
-> > -	if (isa[0] != '\0')
-> > -		pr_info("unsupported ISA \"%s\" in device tree\n",
-> > orig_isa);
-> > +	if (unsupported_isa[0])
-> > +		pr_info("unsupported ISA extensions \"%s\" in device
-> > tree for cpu [%ld]\n",
-> > +			unsupported_isa, cpuid);
-> 
-> And I'm not even sure why we care about unsupported
-> extensions.  Sooner
-> or late a few will op up and they should be harmless.
-
-This is just an information to the userspace that some of the mandatory
-ISA extensions ("mafdcsu") are not supported in kernel which may lead
-to undesirable results.
+v5.2-rc7 by itself won't do anything in this regard.  Those patches (or 
+ones like them) are necessary.
 
 
-Regards,
-Atish
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
