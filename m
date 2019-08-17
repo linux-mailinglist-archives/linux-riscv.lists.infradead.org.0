@@ -2,94 +2,108 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F24091343
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 23:27:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 954AF91350
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 23:31:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X8rm7Wxn/XncE1mIcYol7DAx8uevk55LEx+2zMiHbZ4=; b=mwjFq77YRoUQt5
-	uROxg1Yqn3R6hWkgd92ezYYAhoVrpeyWPaoSc34pBqcpt0KnnvHJo/ANLfC/jGn4RP1j5Ber1oAMk
-	1oCt1KaiqY6N/4f6YIW/0ux5AnYAIFX2kp83OUgJ5FgsU9OX5xQzd1hVezobhroDa4/YHTyPqBs6L
-	wq8SjGQE/l6yDl1x2Lb49Ab4gQUXD1B2CYyOLLMlyn5xJvDhNmyEmdD76PS4tPxKGZWR3+thHpRG7
-	usHeo8o+Jt1znftHiiYGebPgSD6hLkUtJmkyHLBdsOOTr6vQ8h+t/0uT9yMqPfu5XoRjQcBxTiGls
-	NuUdBhnaPPoR9w1tTPqQ==;
+	List-Owner; bh=qK+NJ3TIsizpC2rRj6HEfzc43qpw/e7iSc8zfb6CSC8=; b=kA60lzEpG7xgTK
+	hU+W/fv5u2t7oTnsbmSO+Qq5ym0+lNcOkC07DHunJhyMidtNqJBoiiM1xRlCBUgIL94n/GnrjMRb6
+	+SVMjIDae6A0fGNiqNde9vJN09nRX69Z1Y0D7k/BKTi1bFaDvXVsIg2Df7FXdSgkPpERJevXvTHQh
+	Z4j767qBCP20/baa82TruafmPbVOuQXKzndagnUSex9wZx3M19/Gw7UgsfDISlygEndflEc4nGdwq
+	I3q323ZhuMzwESWL9p5nPU4tXgKAJKTvfP8xwSod0tV675DtUFQM+KL57yOouq6Bv90rdoSr2J5UZ
+	BxKs5hCwKqNZGzFHtZQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hz6Ea-0001lX-Mu; Sat, 17 Aug 2019 21:27:36 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1hz6Hy-0003Vh-L7; Sat, 17 Aug 2019 21:31:06 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hz6E4-0001H6-Nu
- for linux-riscv@lists.infradead.org; Sat, 17 Aug 2019 21:27:06 +0000
-Received: by mail-io1-xd43.google.com with SMTP id o9so13256122iom.3
- for <linux-riscv@lists.infradead.org>; Sat, 17 Aug 2019 14:27:04 -0700 (PDT)
+ id 1hz6Hl-0003E4-Th
+ for linux-riscv@bombadil.infradead.org; Sat, 17 Aug 2019 21:30:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
+ Message-ID:In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=of7+kXZ7O7iQMaD+uR4bskNv7dazvfYrCLyFqQNS+Ys=; b=Y/9gCyUyMojd3Mgx2wdhYAASs
+ oc8QY6wDX5Bux6mmTRAvWC17O4WlNY+eL9iytP2Iolxr0l9nZk6QkEyan7hN9djXMXOoFa4C7i2mk
+ 9VW6QQ2KIfOnCb8cNzYOE30HnaRYCEH/KmNvhybpAs43Jisd0/jBV7YI+49fQIaNIRP/A7j8QCAJH
+ 34D00ZvE3oA0b5NmHnJ1XSBNOU3uD6AvW43hq20jEM16OxxPewrmiCAC9RYWomOUL0nfCYj9U8Bs5
+ 16T58lX7wEOKpmASV4G5Nxa2h3t7KAXkrv/eZlXAEe0/bVufX2cdqthRGS06b273c8qIuzdAMfe5E
+ 07I4VPX3g==;
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
+ by casper.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hz62s-00017A-8W
+ for linux-riscv@lists.infradead.org; Sat, 17 Aug 2019 21:15:32 +0000
+Received: by mail-io1-xd42.google.com with SMTP id 18so13240319ioe.10
+ for <linux-riscv@lists.infradead.org>; Sat, 17 Aug 2019 14:15:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=RWNnky4tg4pNafhn5H03aH8PwpXjgmBSavfJgIeX0Ak=;
- b=hov3AcxQ6M0mcpBwyir6wMfwuFoM/2pj4MlCmv+T09knj2Mmqt8UJz4bLEelDU0dEY
- q35RSput0GqdXzjDl39iW6e96fi6ZvYG7hVSedcruoQ/r2si3vSEQf+S3NbKo/JWKMFz
- l1Pncvs1WA7x9utXPIZU7hNH8C4hBPXAZA2OymhT4WgZagRVCnEht474gNpFzrJa6Xjg
- FvMhl4KIMbZ3FFtCmeGSVrAzUl96LhDRs8lD2zGj/KFGyr4hodIlFUOwRQsA6Da7S+zZ
- ouRU8O2CZBVhaSm1B4pGrx6QOwfw1b8VOQgHVh5JaC0Jm1cxHTFnZdggwnO1D5Ig+YJ1
- Lkvg==
+ bh=of7+kXZ7O7iQMaD+uR4bskNv7dazvfYrCLyFqQNS+Ys=;
+ b=J32rrdBRvRsfbFjCu9mt8fMYOMslmZza78qiqRkRyerF7Tvcpg2S9u01Ma540XGXA7
+ 2iMu5p3Hkj4aS5LBrD+33KElVbGx/xBadIYVGPANBM7jO6Se6GA6GrwSMEwF29HvJ6ER
+ vZ9LmfwOTrujU/Kp5jYgpxJYxNHczK453ZXPgcwCmkGHcdiVYKwlFvQ6JuUiC1/4nCYl
+ uFAhRB0N/reKVlsdq1bNGymQlRL3HWYkOuH8XT80KfGMY/WL2QfRa8xGoQM4QoYPzMnq
+ iTWN1h7rhUiSs1zoLq4NqE4o/IAPIBBfkwLsR3a1H+aqVN59SAAPttTAgUB3YgtJ2wpS
+ 6ilA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=RWNnky4tg4pNafhn5H03aH8PwpXjgmBSavfJgIeX0Ak=;
- b=de+MMx7/ipCQvgo/Se1BbdkSAJk2takINYWAH6a3XDJMVsKq1FNRXSOYi2WMUL7GHq
- 7a0dFExp1C3uEY4z/N3WcBBM4PkE1ceRJsMmSlRbsQeMgjYYJ0Dsr29zFkqxa0xHvpDL
- ESJCvMwRKAvjdWWOENbDsudPWInc+Y/saLG7AmOjNc2QtdqnWTrTDSI5k0aUiFgjUktY
- 2RyoqPI3dWngc4/vuqBQoZwFXDvM7THaB0VceW5TuXHKvpRFYm0I4+oJ+sHU1sldUS4f
- 7F1fe3WytlmSKbyktoS81OEcEoZTK6LVQojuhUwT8TlqbXpLhOPKDMFhINPIyTOAq1nf
- HZYg==
-X-Gm-Message-State: APjAAAWADdok6TiA5f62++G/COMjHoOKMU923kHLvqopFJM7fp3U8mIL
- vhEQTDNhpY8+t9ndE9Lk6U/hiw==
-X-Google-Smtp-Source: APXvYqwKE/3SM/rVpl4teujkfN9+UilDZaKhxrZT/14FwdMPovoCNf3aYcPot40i7G8y5JQK54ukCg==
-X-Received: by 2002:a6b:b9c2:: with SMTP id
- j185mr15509819iof.148.1566077223658; 
- Sat, 17 Aug 2019 14:27:03 -0700 (PDT)
+ bh=of7+kXZ7O7iQMaD+uR4bskNv7dazvfYrCLyFqQNS+Ys=;
+ b=UAK5hiZ7qpl/T3nrD+ct1+bJmA3c4IP3B6Fyehc+BFd8cVSDeyiJQcg5ta0KslHPnt
+ RJmkmqRdYK2XrntI8V/LMTM7xGjw0EPmntmNKphZjSXiKgqZd5qC6wq+5kDI3jLmqlJg
+ JV1GnUg1GYBdqLh199GpsMLWb5vYG3HG0LHADcT8ouOmVS7Iu4fwlICKxg5sgYFC6GBl
+ /Urn54ciXoqOzacV/03TqlpXX1UYLc/2pBlNur0DuUqnhsmSYJQDEjVNnQK2iNL+DTjx
+ 5gypPReI0pK/V9K6zxInAL2hDVwTq2u/GalP4DyBbU7Wd5L4NJ0kb1owZrbkQj2h2lOa
+ K+DA==
+X-Gm-Message-State: APjAAAXVvAiEhXFzAeZ1pjmv/VbetJVfh3vq5EpEpuVR+dt4IdN9wdDc
+ xSFCCsvWU5PU8YeIefqYyddOeQ==
+X-Google-Smtp-Source: APXvYqxhPFwhoGwEv9EiCGR2YXAs4N7HYnW3IuL/COnl5kQqZm2U/FQDN7BsZ9+pbm1TtqxdMhb2eg==
+X-Received: by 2002:a02:654d:: with SMTP id u74mr19023736jab.115.1566076507872; 
+ Sat, 17 Aug 2019 14:15:07 -0700 (PDT)
 Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
  by smtp.gmail.com with ESMTPSA id
- v23sm11488293ioh.58.2019.08.17.14.27.03
+ z19sm8681923ioh.12.2019.08.17.14.15.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 17 Aug 2019 14:27:03 -0700 (PDT)
-Date: Sat, 17 Aug 2019 14:27:02 -0700 (PDT)
+ Sat, 17 Aug 2019 14:15:07 -0700 (PDT)
+Date: Sat, 17 Aug 2019 14:15:06 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 14/26] asm-generic: don't provide __ioremap
-In-Reply-To: <alpine.DEB.2.21.9999.1908171357180.4130@viisi.sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1908171426390.4130@viisi.sifive.com>
+Subject: Re: [PATCH 16/26] asm-generic: don't provide ioremap for
+ CONFIG_MMU
+In-Reply-To: <20190817073253.27819-17-hch@lst.de>
+Message-ID: <alpine.DEB.2.21.9999.1908171414260.4130@viisi.sifive.com>
 References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-15-hch@lst.de>
- <alpine.DEB.2.21.9999.1908171357180.4130@viisi.sifive.com>
+ <20190817073253.27819-17-hch@lst.de>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190817_142704_778136_8542379D 
-X-CRM114-Status: UNSURE (   5.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190817_221530_382556_2B58A8CD 
+X-CRM114-Status: GOOD (  23.19  )
 X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
+ Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,12 +132,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, 17 Aug 2019, Paul Walmsley wrote:
+On Sat, 17 Aug 2019, Christoph Hellwig wrote:
 
-> Acked-by: Paul Walmsley <paul.walmsley@sifive.com> # arch/riscv
+> All MMU-enabled ports have a non-trivial ioremap and should thus provide
+> the prototype for their implementation instead of providing a generic
+> one unless a different symbol is not defined.  Note that this only
+> affects sparc32 nds32 as all others do provide their own version.
+> 
+> Also update the kerneldoc comments in asm-generic/io.h to explain the
+> situation around the default ioremap* implementations correctly.
+> 
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  arch/nds32/include/asm/io.h    |  2 ++
+>  arch/sparc/include/asm/io_32.h |  1 +
+>  include/asm-generic/io.h       | 29 ++++++++---------------------
+>  3 files changed, 11 insertions(+), 21 deletions(-)
+> 
 
-This ack is superfluous since the patch doesn't touch arch/riscv; feel 
-free to drop it
+[ ... ]
+
+> diff --git a/include/asm-generic/io.h b/include/asm-generic/io.h
+> index a98ed6325727..6a5edc23afe2 100644
+> --- a/include/asm-generic/io.h
+> +++ b/include/asm-generic/io.h
+> @@ -922,28 +922,16 @@ static inline void *phys_to_virt(unsigned long address)
+>  /**
+>   * DOC: ioremap() and ioremap_*() variants
+>   *
+> - * If you have an IOMMU your architecture is expected to have both ioremap()
+> - * and iounmap() implemented otherwise the asm-generic helpers will provide a
+> - * direct mapping.
+> + * Architectures with an MMU are expected to provide ioremap() and iounmap()
+> + * themselves.  For NOMMU architectures we provide a default nop-op
+> + * implementation that expect that the physical address used for MMIO are
+> + * already marked as uncached, and can be used as kernel virtual addresses.
+>   *
+> - * There are ioremap_*() call variants, if you have no IOMMU we naturally will
+> - * default to direct mapping for all of them, you can override these defaults.
+> - * If you have an IOMMU you are highly encouraged to provide your own
+> - * ioremap variant implementation as there currently is no safe architecture
+> - * agnostic default. To avoid possible improper behaviour default asm-generic
+> - * ioremap_*() variants all return NULL when an IOMMU is available. If you've
+> - * defined your own ioremap_*() variant you must then declare your own
+> - * ioremap_*() variant as defined to itself to avoid the default NULL return.
+> + * ioremap_wc() and ioremap_wt() can provide more relaxed caching attributes
+> + * for specific drivers if the architecture choses to implement them.  If they
+                                               ^^^ chooses
+
 
 
 - Paul
