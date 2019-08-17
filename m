@@ -2,34 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96A8990F3B
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:56:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBC5590F40
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:57:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jYmO19lUxt87G+Kxe2EXjj46rcHT6VpQ8jeG2owYmqI=; b=pP315qjWuhFVn7
-	Ob7/c8fut339JiI5tDOKwb8XFAiUPx2X1b+wyOlQOfM2K/oT7Nbka1yCnyBhV9FHD9eDIVyUDI9BA
-	C0L7deKpF1hOWEYEG/PZGamFmdXjp6yOXnIsU+Sx6xNUNHi4j4JWrwQ+UAvfJxy4XuCM3lKzcLLim
-	fWRrOfcEDmCc4qSuH1Wy8C9eIavF0Edu7bEO8QmNTYz2FvULnuoAjVw9S8LSWc73HhSu4ylTLR4JR
-	KiLAQy4qXvVhq0upTJgf4ZlFift1rvMnU7Q3sevpOTAk08TPznr182f961pPIpjYCdKQD4gcQFzSG
-	my9le/JHbY0M0Jp/mAlg==;
+	List-Owner; bh=7bXUBnlau4vU1UcOcmZIS/JwMtRKvlCRZFjwS45uRkc=; b=Kx3RORAPSTtWv7
+	oVM7CREv54cbDAZ8enrwTl5SqWZwojepxtiYDWqMVSJVEwPwcCzxi+lQ/1Vsn24zoXi/qCt5gGPt3
+	qHs/7Mc7H2yPd6w8dpP9xruph/xIApSJ9JlQC02qVv+p+C0ocWCSnuCGG3zCoSR3xoHahKHP+p3T/
+	vzs9fch5X5IQ3BvkxcPXJkmoZveNGNhrCzlwk5YQ8b/SbS83bkAwHwI+cafCKdN7e64q/mR63Si+K
+	U+6AdWbCiSmLqPl36h554crk/4KKlHtRkaRodIkmarXjTgnSDvmGPI0JtRsw3YKhQZTqUiRa4FLXE
+	bgcrB3oysJ061FUU3QtA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hytZa-0006J9-K0; Sat, 17 Aug 2019 07:56:26 +0000
+	id 1hytaA-0006vX-1E; Sat, 17 Aug 2019 07:57:02 +0000
 Received: from [2001:4bb8:18c:28b5:44f9:d544:957f:32cb] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hytSX-0005RI-L0; Sat, 17 Aug 2019 07:49:10 +0000
+ id 1hytSb-0005Tx-3i; Sat, 17 Aug 2019 07:49:13 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Arnd Bergmann <arnd@arndb.de>, Guo Ren <guoren@kernel.org>,
  Michal Simek <monstr@monstr.eu>, Greentime Hu <green.hu@gmail.com>,
  Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
  x86@kernel.org
-Subject: [PATCH 19/26] arm64: remove __iounmap
-Date: Sat, 17 Aug 2019 09:32:46 +0200
-Message-Id: <20190817073253.27819-20-hch@lst.de>
+Subject: [PATCH 20/26] hexagon: remove __iounmap
+Date: Sat, 17 Aug 2019 09:32:47 +0200
+Message-Id: <20190817073253.27819-21-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190817073253.27819-1-hch@lst.de>
 References: <20190817073253.27819-1-hch@lst.de>
@@ -59,54 +59,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-No need to indirect iounmap for arm64.
+No need to indirect iounmap for hexagon.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/arm64/include/asm/io.h | 3 +--
- arch/arm64/mm/ioremap.c     | 4 ++--
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ arch/hexagon/include/asm/io.h       | 7 +------
+ arch/hexagon/kernel/hexagon_ksyms.c | 2 +-
+ arch/hexagon/mm/ioremap.c           | 2 +-
+ 3 files changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/include/asm/io.h b/arch/arm64/include/asm/io.h
-index a61b1469f7d9..1bf5631671c3 100644
---- a/arch/arm64/include/asm/io.h
-+++ b/arch/arm64/include/asm/io.h
-@@ -165,12 +165,11 @@ extern void __memset_io(volatile void __iomem *, int, size_t);
-  * I/O memory mapping functions.
-  */
- extern void __iomem *__ioremap(phys_addr_t phys_addr, size_t size, pgprot_t prot);
--extern void __iounmap(volatile void __iomem *addr);
-+extern void iounmap(volatile void __iomem *addr);
- extern void __iomem *ioremap_cache(phys_addr_t phys_addr, size_t size);
+diff --git a/arch/hexagon/include/asm/io.h b/arch/hexagon/include/asm/io.h
+index 89537dc1cf97..539e3efcf39c 100644
+--- a/arch/hexagon/include/asm/io.h
++++ b/arch/hexagon/include/asm/io.h
+@@ -27,7 +27,7 @@
+ extern int remap_area_pages(unsigned long start, unsigned long phys_addr,
+ 				unsigned long end, unsigned long flags);
  
- #define ioremap(addr, size)		__ioremap((addr), (size), __pgprot(PROT_DEVICE_nGnRE))
- #define ioremap_wc(addr, size)		__ioremap((addr), (size), __pgprot(PROT_NORMAL_NC))
--#define iounmap				__iounmap
+-extern void __iounmap(const volatile void __iomem *addr);
++extern void iounmap(const volatile void __iomem *addr);
  
- /*
-  * PCI configuration space mapping function.
-diff --git a/arch/arm64/mm/ioremap.c b/arch/arm64/mm/ioremap.c
-index fdb595a5d65f..9be71bee902c 100644
---- a/arch/arm64/mm/ioremap.c
-+++ b/arch/arm64/mm/ioremap.c
-@@ -69,7 +69,7 @@ void __iomem *__ioremap(phys_addr_t phys_addr, size_t size, pgprot_t prot)
- }
- EXPORT_SYMBOL(__ioremap);
+ /* Defined in lib/io.c, needed for smc91x driver. */
+ extern void __raw_readsw(const void __iomem *addr, void *data, int wordlen);
+@@ -175,11 +175,6 @@ void __iomem *ioremap(unsigned long phys_addr, unsigned long size);
+ #define ioremap_nocache ioremap
  
--void __iounmap(volatile void __iomem *io_addr)
-+void iounmap(volatile void __iomem *io_addr)
- {
- 	unsigned long addr = (unsigned long)io_addr & PAGE_MASK;
  
-@@ -80,7 +80,7 @@ void __iounmap(volatile void __iomem *io_addr)
- 	if (is_vmalloc_addr((void *)addr))
- 		vunmap((void *)addr);
- }
+-static inline void iounmap(volatile void __iomem *addr)
+-{
+-	__iounmap(addr);
+-}
+-
+ #define __raw_writel writel
+ 
+ static inline void memcpy_fromio(void *dst, const volatile void __iomem *src,
+diff --git a/arch/hexagon/kernel/hexagon_ksyms.c b/arch/hexagon/kernel/hexagon_ksyms.c
+index b3dbb472572e..6fb1aaab1c29 100644
+--- a/arch/hexagon/kernel/hexagon_ksyms.c
++++ b/arch/hexagon/kernel/hexagon_ksyms.c
+@@ -14,7 +14,7 @@
+ EXPORT_SYMBOL(__clear_user_hexagon);
+ EXPORT_SYMBOL(raw_copy_from_user);
+ EXPORT_SYMBOL(raw_copy_to_user);
 -EXPORT_SYMBOL(__iounmap);
 +EXPORT_SYMBOL(iounmap);
+ EXPORT_SYMBOL(__strnlen_user);
+ EXPORT_SYMBOL(__vmgetie);
+ EXPORT_SYMBOL(__vmsetie);
+diff --git a/arch/hexagon/mm/ioremap.c b/arch/hexagon/mm/ioremap.c
+index b103d83b5fbb..255c5b1ee1a7 100644
+--- a/arch/hexagon/mm/ioremap.c
++++ b/arch/hexagon/mm/ioremap.c
+@@ -38,7 +38,7 @@ void __iomem *ioremap(unsigned long phys_addr, unsigned long size)
+ 	return (void __iomem *) (offset + addr);
+ }
  
- void __iomem *ioremap_cache(phys_addr_t phys_addr, size_t size)
+-void __iounmap(const volatile void __iomem *addr)
++void iounmap(const volatile void __iomem *addr)
  {
+ 	vunmap((void *) ((unsigned long) addr & PAGE_MASK));
+ }
 -- 
 2.20.1
 
