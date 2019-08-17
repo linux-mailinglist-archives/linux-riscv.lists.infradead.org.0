@@ -2,95 +2,94 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DEC391010
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 12:35:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15E15911DA
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 18:01:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zg+JC1QcvPLEVmFCLNaz2hQHGbDDa6KH2NkzsPaw4sw=; b=bQsOzN83r8japk
-	7OVhV5zjWT+GvoKXgGfUrBQSSn+O7Pa0W9caNVPM1E04hf5piRcfEjt1yFXbfaU8I1EhitgXqS0la
-	tBOdmhr93kNUB74qiBpjzlNZ8KOlDfIy3XT+cxZ3UAbfxO+0X/9zeNGh6M4NKM0Fo0ZPyrVMZDOld
-	2B+vBas1/1JhYBkg4/BjV5nbHhXzfAFDjXrvpuGD7U4SnjW9CGPgTZrAamlEkgWLrsceZo7wgfLDp
-	TFmR+Lgi/JzC0x1GkwYPrziZgJ8Lyb4Xn2KpGNSMzfyxPGrEpa5W4flOQ2ZK0j+tl6d84Q0pBXTAO
-	5BRsKkd4DloVv5FboVUQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Y481TFPIESlQS3PwGpcspIza+KgVLvFjGufLYG2gukw=; b=Iaq2Xy7tKHBM55OZyB+5HnQN6
+	YafUAiTVKwkQC+N19xxlM/2ozqb1FOCb5a861Fg878JJBhxaQG+x/8YA2d/lRrU04ntBTbS2KEqt3
+	8oA73zGfjy+ukpee+XN4dGRyi3nTSYwbPASoMWA5GVuVTkclm53KLY7wzCY/FRJJ+saXC+h2m8uNI
+	TVu8K9ES3WBgZZeXoP5q8RTzlF0+dQ3F1IkY4hkDVOOTjDkYo8xs6ZWcPz1HFNVGx+Oqer+HmjBpU
+	OT0YP/lY/ZIWWYOarRuo8uelBNfM4S0Uzzl2TJ799BcwscKQHJqkz2UPnL0qn1KbgQOwpXOlvBObX
+	e8dRTYctQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyw2j-0004GH-Rn; Sat, 17 Aug 2019 10:34:42 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1hz18j-0007eC-MU; Sat, 17 Aug 2019 16:01:13 +0000
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyw2C-00044w-2m; Sat, 17 Aug 2019 10:34:09 +0000
-Received: by mail-wm1-x343.google.com with SMTP id g67so6023118wme.1;
- Sat, 17 Aug 2019 03:34:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=39YvwnXSLPYPPS8HyY6xQ0pEYqQsaSVOcIZxY6QaSy0=;
- b=HaU5j73Xl18SPfWIKR/l5s1id63iaB7lpk2eLE9Cv93RaSr0QygCeb8VtdrjK/DFoH
- BzanBzeDzwH/CfWIayA254C8bK/pzQhAr1B+Cx1TRlWNSkT4XCzZLK+D58uxuJj/Z6c8
- 1+jn+z+dU7Ewi0li9IwJ7jmFgqXABsf3p+TxQXzA7fHIgWlPmx739auC7j/bqLC+8NoU
- C3XDYz8eetWLerWT9nDLSd3eyiPofE72zfZEgyCEmcNmd7KEx0oxertXb8lLCukZQpFv
- 6wFercfLlPzs2ZP2Iysl6A4A+S9cPkEPkEAEiZMttS1pDBUiq7OyBBL/XEMk2UGfKSWg
- tAUQ==
+ id 1hz18f-0007cV-Tt
+ for linux-riscv@lists.infradead.org; Sat, 17 Aug 2019 16:01:11 +0000
+Received: by mail-lf1-x143.google.com with SMTP id x3so6096709lfn.6
+ for <linux-riscv@lists.infradead.org>; Sat, 17 Aug 2019 09:01:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=1+7TiPxmJ3iAAUyU8+nGKfNJ+qg4H69wdJGgYgGKXe4=;
+ b=renwLVE4t6MRcP5ZcmILI4AbPfXwqYVjMBTfKIElNDtgfcIFYeU8tIrB/gUAytl6lf
+ GUpFHkf80zb+V0K3tM4r1Ot/9rCYkg84zdkCVJdaGdaWLOpozsDhzbvufdrpihHrN3tR
+ TMxRzxhlJOIgtqRCrMKBJjP0q/GTzQu3Y+xuowVJpW1Icfg6Gn+WBtpfMuxFGsqNj8oB
+ RlW1kLKfSyibvLnhWNBdW0PJ1JnQ35HN0rADSVoKpu7sfG7Xl0X/7sr2FWTSDPYnsGg8
+ aLYzSLDdBf8VJM9zqhQZCDbdbFM9CTE+LknLwNOfmvJpyWjg0Gz9hP3js+7ih/iHtfFi
+ vrkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=39YvwnXSLPYPPS8HyY6xQ0pEYqQsaSVOcIZxY6QaSy0=;
- b=q3yKc+hIhVMyfqrYr+CGNCCBqEUbiubZTi+XTypqrhTtXyeybVirp0Jn8lnBWCJBzq
- QMc+zVbsXbJpkWZM3O8jWJHklbyJT78c5ewbwqjBtSpYmM6/CqYEiOY8x8HDFdIPEcgt
- XQIid6s/BXQ8zMy9SQVV4y0IbC78avwKMCSZZotaxwVi6KOZ8WkHRgArI99IxTZ8EKFH
- oYWL/n4LT9eHgB27/yihM/QdxWy5ge95lVX7kH1yTEBp9AT8Hdg/tv0endBQ8XZ162Rr
- rdXfzPeOxWtO0/p41i7dnke/qHxKDz184u8Y+yUxOMZXEnDF5jcFL9QC8wTdOXR43W6G
- Cu4w==
-X-Gm-Message-State: APjAAAU2/7iAXZCALd9CRxiDWOVHdkFoWwx9MBq/0s4+gxElEiVWqcfo
- MNLJL/3x/GkDo1TB2A/8msA=
-X-Google-Smtp-Source: APXvYqx+skxBDSiX8lI2gwUVvrx6yD5s1jqeJ+6VF/JmtojW+ENXyX4cQUxihmaZEwvtXGQA8HaHqg==
-X-Received: by 2002:a1c:b342:: with SMTP id c63mr11130163wmf.84.1566038046300; 
- Sat, 17 Aug 2019 03:34:06 -0700 (PDT)
-Received: from gmail.com (2E8B0CD5.catv.pool.telekom.hu. [46.139.12.213])
- by smtp.gmail.com with ESMTPSA id 4sm14396946wro.78.2019.08.17.03.34.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 17 Aug 2019 03:34:05 -0700 (PDT)
-Date: Sat, 17 Aug 2019 12:34:02 +0200
-From: Ingo Molnar <mingo@kernel.org>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 12/26] x86: clean up ioremap
-Message-ID: <20190817103402.GA7602@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1+7TiPxmJ3iAAUyU8+nGKfNJ+qg4H69wdJGgYgGKXe4=;
+ b=jnUUApcCQ/v3IrS6Qwd9MfL81dTjg89dQvdcyMRJJWfrwxElsZnB45oT6MBY75M62b
+ 44bakaMJ/zGP3/x/VOydvX+Sz0KXYdCim3U7NDZ0uvKfO3yeH7k5gfV1hYDDxOCPCnSX
+ RtVWWgxFVy4zKo4dpVtPK8/QKuiRYvJaN6Ivt5REu2koAqkzTunmQPES3yQBicgA3/7g
+ 4Qc8Ll5+CK6dGkgdRFbbcBDTPgA/97OYN2tRupy9g7HGQ9lfU7V9dEOXR8KA9iIMybRi
+ ccbtVqdMBqJVgYwOi23Zvf4Nr81XBzG9sADWEIgVtK0XD955V6hY8gBgBO2x7ci7/M7R
+ zKfg==
+X-Gm-Message-State: APjAAAUjeHsf4KRYWNdbMK6Zf6LypX3Kg/zmW6UuG4igOeJhEUMIRuZ3
+ MOYlaFr9Tv3NN6AleEEZT6nt5Q==
+X-Google-Smtp-Source: APXvYqzgHOkrd316w+DBxyDOOMOwfJvlMQJHfKxSm3Tpn7OUxlUzLbfoBMdqodlTlf7xRwkY3y0i2g==
+X-Received: by 2002:ac2:456d:: with SMTP id k13mr7785781lfm.77.1566057666460; 
+ Sat, 17 Aug 2019 09:01:06 -0700 (PDT)
+Received: from ?IPv6:2a00:1fa0:4817:8b14:6cce:9848:7977:d7d5?
+ ([2a00:1fa0:4817:8b14:6cce:9848:7977:d7d5])
+ by smtp.gmail.com with ESMTPSA id b10sm1517289ljk.79.2019.08.17.09.01.04
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 17 Aug 2019 09:01:05 -0700 (PDT)
+Subject: Re: [PATCH 06/26] ia64: rename ioremap_nocache to ioremap_uc
+To: Christoph Hellwig <hch@lst.de>, Arnd Bergmann <arnd@arndb.de>,
+ Guo Ren <guoren@kernel.org>, Michal Simek <monstr@monstr.eu>,
+ Greentime Hu <green.hu@gmail.com>, Vincent Chen <deanbo422@gmail.com>,
+ Guan Xuetao <gxt@pku.edu.cn>, x86@kernel.org
 References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-13-hch@lst.de>
+ <20190817073253.27819-7-hch@lst.de>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Message-ID: <b19607c1-07aa-e361-3c26-8bcb063ed8c1@cogentembedded.com>
+Date: Sat, 17 Aug 2019 19:00:48 +0300
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190817073253.27819-13-hch@lst.de>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190817073253.27819-7-hch@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190817_033408_151043_72E6345F 
-X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-CacheID: sfid-20190817_090110_092260_08B97557 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 3.5 (+++)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (3.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:143 listed in]
  [list.dnswl.org]
- 3.1 FSL_HELO_FAKE          No description available.
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (mingo.kernel.org[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,41 +101,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-kernel@vger.kernel.org, Guo Ren <guoren@kernel.org>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-hexagon@vger.kernel.org, x86@kernel.org,
- linux-snps-arc@lists.infradead.org, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, Greentime Hu <green.hu@gmail.com>,
- linux-mtd@lists.infradead.org, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, Michal Simek <monstr@monstr.eu>,
- linux-parisc@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-alpha@vger.kernel.org, nios2-dev@lists.rocketboards.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ linux-ia64@vger.kernel.org, linux-parisc@vger.kernel.org,
+ linux-sh@vger.kernel.org, linux-hexagon@vger.kernel.org,
+ linux-xtensa@linux-xtensa.org, linux-mips@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-m68k@lists.linux-m68k.org,
+ openrisc@lists.librecores.org, linux-mtd@lists.infradead.org,
+ linux-alpha@vger.kernel.org, sparclinux@vger.kernel.org,
+ nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org,
+ linux-snps-arc@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hello!
 
-* Christoph Hellwig <hch@lst.de> wrote:
+On 17.08.2019 10:32, Christoph Hellwig wrote:
 
-> Use ioremap as the main implemented function, and defined
-> ioremap_nocache to it as a deprecated alias.
+> On ia64 ioremap_nocache fails if attributs don't match.  Not other
+
+    Attributes. :-)
+
+> architectures does this, and we plan to get rid of ioremap_nocache.
+> So get rid of the special semantics and define ioremap_nocache in
+> terms of ioremap as no portable driver could rely on the behavior
+> anyway.
+> 
+> However x86 implements ioremap_uc with a in a similar way as the ia64
+
+    "With a" not really needed?
+
+> version of ioremap_nocache, so implement that instead.
 > 
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> ---
->  arch/x86/include/asm/io.h | 8 ++------
->  arch/x86/mm/ioremap.c     | 8 ++++----
->  arch/x86/mm/pageattr.c    | 4 ++--
->  3 files changed, 8 insertions(+), 12 deletions(-)
+[...]
 
-Acked-by: Ingo Molnar <mingo@kernel.org>
-
-Thanks,
-
-	Ingo
+MBR, Sergei
 
 _______________________________________________
 linux-riscv mailing list
