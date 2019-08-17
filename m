@@ -2,108 +2,94 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 954AF91350
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 23:31:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9EBA9135F
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 23:42:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:
+	References:Message-ID:Subject:To:From:Date:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qK+NJ3TIsizpC2rRj6HEfzc43qpw/e7iSc8zfb6CSC8=; b=kA60lzEpG7xgTK
-	hU+W/fv5u2t7oTnsbmSO+Qq5ym0+lNcOkC07DHunJhyMidtNqJBoiiM1xRlCBUgIL94n/GnrjMRb6
-	+SVMjIDae6A0fGNiqNde9vJN09nRX69Z1Y0D7k/BKTi1bFaDvXVsIg2Df7FXdSgkPpERJevXvTHQh
-	Z4j767qBCP20/baa82TruafmPbVOuQXKzndagnUSex9wZx3M19/Gw7UgsfDISlygEndflEc4nGdwq
-	I3q323ZhuMzwESWL9p5nPU4tXgKAJKTvfP8xwSod0tV675DtUFQM+KL57yOouq6Bv90rdoSr2J5UZ
-	BxKs5hCwKqNZGzFHtZQw==;
+	List-Owner; bh=Ss3mIRN2XivQ2H7+DZE9mQ+0b7uTM4jNSE78vcP2RAI=; b=o2msdq+TyvdFh3
+	lIMvhCTX66bEROHdQjlFumMjgRP0Z73FJCEu36r4adSFyfv30QWpdFYa2yUdiha7qX3RFAvfFiDZl
+	z9jngXgdtEXD3aO+VB+9wnmSUZK/Z7Cs0CUH0D55ornjtJqpRguHWDvRUtR/+bCz/3l2oWxfRHQUP
+	AOviiE2SbCinjwEbi39iw+dOKmJVnVcMdbKPX6pLzdKTmmGxEfIEN1k8+3seOFVuuWLkHuGpgCp1w
+	R1d+pS+0gL/tyY1HM6/nvmnDwIdmQtj7OWhTdahGSlORhUpz11uNvSRonzmnjgcWXA/2t16crmpkO
+	MhSOWUaKN4NahiwWHlbg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hz6Hy-0003Vh-L7; Sat, 17 Aug 2019 21:31:06 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1hz6Sw-0006hk-FN; Sat, 17 Aug 2019 21:42:26 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hz6Hl-0003E4-Th
- for linux-riscv@bombadil.infradead.org; Sat, 17 Aug 2019 21:30:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
- Message-ID:In-Reply-To:Subject:cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=of7+kXZ7O7iQMaD+uR4bskNv7dazvfYrCLyFqQNS+Ys=; b=Y/9gCyUyMojd3Mgx2wdhYAASs
- oc8QY6wDX5Bux6mmTRAvWC17O4WlNY+eL9iytP2Iolxr0l9nZk6QkEyan7hN9djXMXOoFa4C7i2mk
- 9VW6QQ2KIfOnCb8cNzYOE30HnaRYCEH/KmNvhybpAs43Jisd0/jBV7YI+49fQIaNIRP/A7j8QCAJH
- 34D00ZvE3oA0b5NmHnJ1XSBNOU3uD6AvW43hq20jEM16OxxPewrmiCAC9RYWomOUL0nfCYj9U8Bs5
- 16T58lX7wEOKpmASV4G5Nxa2h3t7KAXkrv/eZlXAEe0/bVufX2cdqthRGS06b273c8qIuzdAMfe5E
- 07I4VPX3g==;
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
- by casper.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hz62s-00017A-8W
- for linux-riscv@lists.infradead.org; Sat, 17 Aug 2019 21:15:32 +0000
-Received: by mail-io1-xd42.google.com with SMTP id 18so13240319ioe.10
- for <linux-riscv@lists.infradead.org>; Sat, 17 Aug 2019 14:15:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=of7+kXZ7O7iQMaD+uR4bskNv7dazvfYrCLyFqQNS+Ys=;
- b=J32rrdBRvRsfbFjCu9mt8fMYOMslmZza78qiqRkRyerF7Tvcpg2S9u01Ma540XGXA7
- 2iMu5p3Hkj4aS5LBrD+33KElVbGx/xBadIYVGPANBM7jO6Se6GA6GrwSMEwF29HvJ6ER
- vZ9LmfwOTrujU/Kp5jYgpxJYxNHczK453ZXPgcwCmkGHcdiVYKwlFvQ6JuUiC1/4nCYl
- uFAhRB0N/reKVlsdq1bNGymQlRL3HWYkOuH8XT80KfGMY/WL2QfRa8xGoQM4QoYPzMnq
- iTWN1h7rhUiSs1zoLq4NqE4o/IAPIBBfkwLsR3a1H+aqVN59SAAPttTAgUB3YgtJ2wpS
- 6ilA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=of7+kXZ7O7iQMaD+uR4bskNv7dazvfYrCLyFqQNS+Ys=;
- b=UAK5hiZ7qpl/T3nrD+ct1+bJmA3c4IP3B6Fyehc+BFd8cVSDeyiJQcg5ta0KslHPnt
- RJmkmqRdYK2XrntI8V/LMTM7xGjw0EPmntmNKphZjSXiKgqZd5qC6wq+5kDI3jLmqlJg
- JV1GnUg1GYBdqLh199GpsMLWb5vYG3HG0LHADcT8ouOmVS7Iu4fwlICKxg5sgYFC6GBl
- /Urn54ciXoqOzacV/03TqlpXX1UYLc/2pBlNur0DuUqnhsmSYJQDEjVNnQK2iNL+DTjx
- 5gypPReI0pK/V9K6zxInAL2hDVwTq2u/GalP4DyBbU7Wd5L4NJ0kb1owZrbkQj2h2lOa
- K+DA==
-X-Gm-Message-State: APjAAAXVvAiEhXFzAeZ1pjmv/VbetJVfh3vq5EpEpuVR+dt4IdN9wdDc
- xSFCCsvWU5PU8YeIefqYyddOeQ==
-X-Google-Smtp-Source: APXvYqxhPFwhoGwEv9EiCGR2YXAs4N7HYnW3IuL/COnl5kQqZm2U/FQDN7BsZ9+pbm1TtqxdMhb2eg==
-X-Received: by 2002:a02:654d:: with SMTP id u74mr19023736jab.115.1566076507872; 
- Sat, 17 Aug 2019 14:15:07 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- z19sm8681923ioh.12.2019.08.17.14.15.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 17 Aug 2019 14:15:07 -0700 (PDT)
-Date: Sat, 17 Aug 2019 14:15:06 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 16/26] asm-generic: don't provide ioremap for
- CONFIG_MMU
-In-Reply-To: <20190817073253.27819-17-hch@lst.de>
-Message-ID: <alpine.DEB.2.21.9999.1908171414260.4130@viisi.sifive.com>
-References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-17-hch@lst.de>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1hz6St-0006gw-QD
+ for linux-riscv@lists.infradead.org; Sat, 17 Aug 2019 21:42:25 +0000
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x7HLgJQo070110; Sat, 17 Aug 2019 17:42:20 -0400
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2ueagrykqm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 17 Aug 2019 17:42:20 -0400
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x7HLdlMV021950;
+ Sat, 17 Aug 2019 21:42:17 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma02dal.us.ibm.com with ESMTP id 2ue9760hdq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 17 Aug 2019 21:42:17 +0000
+Received: from b01ledav003.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
+ [9.57.199.108])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x7HLgHQ636438384
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 17 Aug 2019 21:42:17 GMT
+Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 03038B2065;
+ Sat, 17 Aug 2019 21:42:17 +0000 (GMT)
+Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D6CAEB205F;
+ Sat, 17 Aug 2019 21:42:16 +0000 (GMT)
+Received: from paulmck-ThinkPad-W541 (unknown [9.85.201.199])
+ by b01ledav003.gho.pok.ibm.com (Postfix) with ESMTP;
+ Sat, 17 Aug 2019 21:42:16 +0000 (GMT)
+Received: by paulmck-ThinkPad-W541 (Postfix, from userid 1000)
+ id BE05416C1700; Sat, 17 Aug 2019 14:42:17 -0700 (PDT)
+Date: Sat, 17 Aug 2019 14:42:17 -0700
+From: "Paul E. McKenney" <paulmck@linux.ibm.com>
+To: Joel Fernandes <joel@joelfernandes.org>
+Subject: Re: [PATCH -rcu/dev] Please squash: fixup! rcu/tree: Add basic
+ support for kfree_rcu() batching
+Message-ID: <20190817214217.GD28441@linux.ibm.com>
+References: <20190817042211.137149-1-joel@joelfernandes.org>
+ <alpine.DEB.2.21.9999.1908162131490.18249@viisi.sifive.com>
+ <20190817044308.GA139754@google.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190817044308.GA139754@google.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-08-17_10:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1908170237
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190817_221530_382556_2B58A8CD 
-X-CRM114-Status: GOOD (  23.19  )
-X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-0.2 points, 5.0 required)
+X-CRM114-CacheID: sfid-20190817_144223_972963_09E516CD 
+X-CRM114-Status: GOOD (  17.23  )
+X-Spam-Score: -0.7 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,74 +101,50 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-kernel@vger.kernel.org, Guo Ren <guoren@kernel.org>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-hexagon@vger.kernel.org, x86@kernel.org,
- linux-snps-arc@lists.infradead.org, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, Greentime Hu <green.hu@gmail.com>,
- linux-mtd@lists.infradead.org, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, Michal Simek <monstr@monstr.eu>,
- linux-parisc@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-alpha@vger.kernel.org, nios2-dev@lists.rocketboards.org
+Reply-To: paulmck@linux.ibm.com
+Cc: rcu@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, 17 Aug 2019, Christoph Hellwig wrote:
-
-> All MMU-enabled ports have a non-trivial ioremap and should thus provide
-> the prototype for their implementation instead of providing a generic
-> one unless a different symbol is not defined.  Note that this only
-> affects sparc32 nds32 as all others do provide their own version.
+On Sat, Aug 17, 2019 at 12:43:08AM -0400, Joel Fernandes wrote:
+> On Fri, Aug 16, 2019 at 09:38:54PM -0700, Paul Walmsley wrote:
+> > On Sat, 17 Aug 2019, Joel Fernandes (Google) wrote:
+> > 
+> > > xchg() on a bool is causing issues on riscv and arm32.
+> > 
+> > Indeed, it seems best not to use xchg() on any type that's not 32 bits 
+> > long or that's not the CPU's native word size.  Probably we should update 
+> > the documentation.
 > 
-> Also update the kerneldoc comments in asm-generic/io.h to explain the
-> situation around the default ioremap* implementations correctly.
+> I would endorse any such documentation effort ;-)
 > 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> ---
->  arch/nds32/include/asm/io.h    |  2 ++
->  arch/sparc/include/asm/io_32.h |  1 +
->  include/asm-generic/io.h       | 29 ++++++++---------------------
->  3 files changed, 11 insertions(+), 21 deletions(-)
-> 
+> > > Please squash this into the -rcu dev branch to resolve the issue.
+> > > 
+> > > Please squash this fix.
 
-[ ... ]
+Done, please see below for updated version.
 
-> diff --git a/include/asm-generic/io.h b/include/asm-generic/io.h
-> index a98ed6325727..6a5edc23afe2 100644
-> --- a/include/asm-generic/io.h
-> +++ b/include/asm-generic/io.h
-> @@ -922,28 +922,16 @@ static inline void *phys_to_virt(unsigned long address)
->  /**
->   * DOC: ioremap() and ioremap_*() variants
->   *
-> - * If you have an IOMMU your architecture is expected to have both ioremap()
-> - * and iounmap() implemented otherwise the asm-generic helpers will provide a
-> - * direct mapping.
-> + * Architectures with an MMU are expected to provide ioremap() and iounmap()
-> + * themselves.  For NOMMU architectures we provide a default nop-op
-> + * implementation that expect that the physical address used for MMIO are
-> + * already marked as uncached, and can be used as kernel virtual addresses.
->   *
-> - * There are ioremap_*() call variants, if you have no IOMMU we naturally will
-> - * default to direct mapping for all of them, you can override these defaults.
-> - * If you have an IOMMU you are highly encouraged to provide your own
-> - * ioremap variant implementation as there currently is no safe architecture
-> - * agnostic default. To avoid possible improper behaviour default asm-generic
-> - * ioremap_*() variants all return NULL when an IOMMU is available. If you've
-> - * defined your own ioremap_*() variant you must then declare your own
-> - * ioremap_*() variant as defined to itself to avoid the default NULL return.
-> + * ioremap_wc() and ioremap_wt() can provide more relaxed caching attributes
-> + * for specific drivers if the architecture choses to implement them.  If they
-                                               ^^^ chooses
+> > > Fixes: -rcu dev commit 3cbd3aa7d9c7bdf ("rcu/tree: Add basic support for kfree_rcu() batching")
+> > > 
+> > > Signed-off-by: Joel Fernandes (Google) <joel@joelfernandes.org>
+> > 
+> > Link: https://lore.kernel.org/lkml/alpine.DEB.2.21.9999.1908161931110.32497@viisi.sifive.com/T/#me9956f66cb611b95d26ae92700e1d901f46e8c59
+> > Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
 
+I added the link, thank you Paul!  If you meant the Reviewed-by to apply
+to the entire kfree_rcu() patch, I will of course be very happy to apply
+that as well.
 
+> Thanks Paul! And nice to meet you again after many years ;-) Glad to see you
+> working on riscv.
 
-- Paul
+What Joel said!  ;-)
+
+							Thanx, Paul
 
 _______________________________________________
 linux-riscv mailing list
