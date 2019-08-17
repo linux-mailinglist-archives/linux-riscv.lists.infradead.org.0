@@ -2,35 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58F0590E00
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:42:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B93490E11
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:44:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qzZGnqnaj0xq3kZ2M6cXYXgMZC6K+TW7LUi389QzomQ=; b=SbZr1ed+nAOSFC
-	pbTa9sIyCg7DV7f5yQHI/NJ9a4IDlQ/j+4ZeE8yy2txHWFZO2XmcJXJoSezyK6oz90llWkax+HOrS
-	vNcOmni8Zq0l7rn/R813iS7cz2EmFBgEvRHF7vaWY5JpM+f7Mal3CeOg4eI3xmziby5vbNsPuw8/n
-	cNKx7XKx3tiED7Z7tpenILrB0bxPmKPRWefY6YuX+gE4L/LB37o46h8ful2TKDP0NGFwn/YlJPo2k
-	jocmPZoKNY0fdy72uWKB2niYszX+Zw1qr3s9Dqu0Rlvt+/ZumW/jKdp/TkGeFd3TPNdD6IARnwyK0
-	uCNg7LBNw+rl/ghkNPWg==;
+	List-Owner; bh=HxtzEZ4J7NwSLIi6bvtwp9DRhX+J1r5TxQPD4VzzUl4=; b=extALnurVk4txy
+	KGE02IEYfLUpLkfkIkm8D1gKROuutX/MaA8mU9X/yJn+xllapkWi0F2FPdorB3N25yA5B5G6eBXe+
+	h2qZMbv9z2V5wRnnR/MEldmSgDk1IlkP1ag8FaF/1s7pkoAJblU4TjGiS56mr0RqXQyofr/jWXxcq
+	2E9r0esHzTbabYxDgPlT+jESRPXzpi+buPmJvQvl2aZcwKzLoGv0+tN/v2/iVHkONdsMaKlQahrro
+	3nLPY5wqQoJ/MYcNZPnoaVmw16v0K4WFU/rdFpd9yoYU3oPqzqwhZMSVqLb50Xg6YESxxn1O/fMhI
+	1rO67raJlZWXFmIWrckA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hytLh-0001JM-Gy; Sat, 17 Aug 2019 07:42:05 +0000
+	id 1hytNo-00023F-Kf; Sat, 17 Aug 2019 07:44:16 +0000
 Received: from 089144199030.atnat0008.highway.a1.net ([89.144.199.30]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hytLO-000175-Cc; Sat, 17 Aug 2019 07:41:46 +0000
+ id 1hytNX-0001rF-8R; Sat, 17 Aug 2019 07:43:59 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Arnd Bergmann <arnd@arndb.de>, Guo Ren <guoren@kernel.org>,
  Michal Simek <monstr@monstr.eu>, Greentime Hu <green.hu@gmail.com>,
  Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
  x86@kernel.org
-Subject: [PATCH 03/26] m68k, microblaze: remove ioremap_fullcache
-Date: Sat, 17 Aug 2019 09:32:30 +0200
-Message-Id: <20190817073253.27819-4-hch@lst.de>
+Subject: [PATCH 04/26] mips: remove ioremap_cachable
+Date: Sat, 17 Aug 2019 09:32:31 +0200
+Message-Id: <20190817073253.27819-5-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190817073253.27819-1-hch@lst.de>
 References: <20190817073253.27819-1-hch@lst.de>
@@ -60,44 +60,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-No callers of this function.
+Just define ioremap_cache directly.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/m68k/include/asm/kmap.h     | 7 -------
- arch/microblaze/include/asm/io.h | 1 -
- 2 files changed, 8 deletions(-)
+ arch/mips/include/asm/io.h | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/arch/m68k/include/asm/kmap.h b/arch/m68k/include/asm/kmap.h
-index aac7f045f7f0..03d904fe6087 100644
---- a/arch/m68k/include/asm/kmap.h
-+++ b/arch/m68k/include/asm/kmap.h
-@@ -43,13 +43,6 @@ static inline void __iomem *ioremap_wt(unsigned long physaddr,
- 	return __ioremap(physaddr, size, IOMAP_WRITETHROUGH);
- }
+diff --git a/arch/mips/include/asm/io.h b/arch/mips/include/asm/io.h
+index 97a280640daf..c02db986ddf5 100644
+--- a/arch/mips/include/asm/io.h
++++ b/arch/mips/include/asm/io.h
+@@ -262,11 +262,11 @@ static inline void __iomem *ioremap_prot(phys_addr_t offset,
+ #define ioremap_uc ioremap_nocache
  
--#define ioremap_fullcache ioremap_fullcache
--static inline void __iomem *ioremap_fullcache(unsigned long physaddr,
--					      unsigned long size)
--{
--	return __ioremap(physaddr, size, IOMAP_FULL_CACHING);
--}
--
- #define memset_io memset_io
- static inline void memset_io(volatile void __iomem *addr, unsigned char val,
- 			     int count)
-diff --git a/arch/microblaze/include/asm/io.h b/arch/microblaze/include/asm/io.h
-index c7968139486f..86c95b2a1ce1 100644
---- a/arch/microblaze/include/asm/io.h
-+++ b/arch/microblaze/include/asm/io.h
-@@ -40,7 +40,6 @@ extern void iounmap(volatile void __iomem *addr);
+ /*
+- * ioremap_cachable -	map bus memory into CPU space
++ * ioremap_cache -	map bus memory into CPU space
+  * @offset:	    bus address of the memory
+  * @size:	    size of the resource to map
+  *
+- * ioremap_nocache performs a platform specific sequence of operations to
++ * ioremap_cache performs a platform specific sequence of operations to
+  * make bus memory CPU accessible via the readb/readw/readl/writeb/
+  * writew/writel functions and the other mmio helpers. The returned
+  * address is not guaranteed to be usable directly as a virtual
+@@ -276,9 +276,8 @@ static inline void __iomem *ioremap_prot(phys_addr_t offset,
+  * the CPU.  Also enables full write-combining.	 Useful for some
+  * memory-like regions on I/O busses.
+  */
+-#define ioremap_cachable(offset, size)					\
++#define ioremap_cache(offset, size)					\
+ 	__ioremap_mode((offset), (size), _page_cachable_default)
+-#define ioremap_cache ioremap_cachable
  
- extern void __iomem *ioremap(phys_addr_t address, unsigned long size);
- #define ioremap_nocache(addr, size)		ioremap((addr), (size))
--#define ioremap_fullcache(addr, size)		ioremap((addr), (size))
- #define ioremap_wc(addr, size)			ioremap((addr), (size))
- #define ioremap_wt(addr, size)			ioremap((addr), (size))
- 
+ /*
+  * ioremap_wc     -   map bus memory into CPU space
 -- 
 2.20.1
 
