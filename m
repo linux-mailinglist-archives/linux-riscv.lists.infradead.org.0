@@ -2,34 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1B8E90EF2
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:50:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 415AB90F0D
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:51:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u9LOhoqN/FZNHWy00Pyn8CSBiEEl3j9LL13bFAnHGmw=; b=jXvIHXerYD/bhH
-	TZSOYnJ2ZMsQmlJUqcn1qSoCw4cs5nnCUa73FLVDFK7K3JtnCfDyrQ0Pfeh/yjXQD0+yrPPN80ngV
-	VkaHYrnV6NmS/9jRJM+l/p+mZwkjNsb32b7g5sRq0kGabi9IJKxvZb521mp0uJ4ewCGEHeMkdnauD
-	ceSfbJPEJ71eiVDP70QgJAsDd7fSJASnL3nw5TxkMecB8tjMeuK5qO77yWeOO7QIawYVhDZnWLW6G
-	NefBDhdp0d4WFC9XkDVWrb7FpB+eIEZknZr252KOkizF0f6lqMK+Yhb9GWoymyXIjQTHwNZjusK4V
-	fSB1xOvTQoeQJ6KjE83Q==;
+	List-Owner; bh=UIMC3Cx5hkgymfxrIYKaPHSQ38wBS9XG6k+JBeAjcto=; b=ZAPQJZzYI7C89F
+	d2Cm9KjknrbIFKg9k54xtetc/0+5wx7ALhaNrno0WTtbffv35MwK8nN/8F4LysGmvhAZmtyGxba//
+	pbQ+avcP9p4reYegTvqK8H7Kmeu2hzgWWk9fhgoptGr48yZTJty2gkXMx8tQ7xmOhXySR6zd9Op7U
+	M3FjXCAZYdNAPblmcPnklQmtQ2jxMIYtptFGUYcCdTBkkW0cmxQ/HHxa4CGyLUvRlXIkJFFuyRWrO
+	5mUP7uwEJ6Atmq3iJTq00utAHky6BNZ9Ej3SmtyPQzdc8V2hk4bWicErH2IWC1I+I6J6C4arPul+A
+	lsAytzTjDSaMIAWom+zw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hytTg-0007ZF-MC; Sat, 17 Aug 2019 07:50:20 +0000
+	id 1hytUE-00083t-QM; Sat, 17 Aug 2019 07:50:54 +0000
 Received: from [2001:4bb8:18c:28b5:44f9:d544:957f:32cb] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hytRw-0004oo-JJ; Sat, 17 Aug 2019 07:48:33 +0000
+ id 1hytRz-0004t1-Sm; Sat, 17 Aug 2019 07:48:36 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Arnd Bergmann <arnd@arndb.de>, Guo Ren <guoren@kernel.org>,
  Michal Simek <monstr@monstr.eu>, Greentime Hu <green.hu@gmail.com>,
  Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
  x86@kernel.org
-Subject: [PATCH 08/26] m68k: simplify ioremap_nocache
-Date: Sat, 17 Aug 2019 09:32:35 +0200
-Message-Id: <20190817073253.27819-9-hch@lst.de>
+Subject: [PATCH 09/26] alpha: remove the unused __ioremap wrapper
+Date: Sat, 17 Aug 2019 09:32:36 +0200
+Message-Id: <20190817073253.27819-10-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190817073253.27819-1-hch@lst.de>
 References: <20190817073253.27819-1-hch@lst.de>
@@ -59,36 +59,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Just define ioremap_nocache to ioremap instead of duplicating the
-inline.  Also defined ioremap_uc in terms of ioremap instead of
-the using a double indirection.
+No need for the additional namespace pollution.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/m68k/include/asm/kmap.h | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ arch/alpha/include/asm/io.h | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/arch/m68k/include/asm/kmap.h b/arch/m68k/include/asm/kmap.h
-index 03d904fe6087..421b6c9c769d 100644
---- a/arch/m68k/include/asm/kmap.h
-+++ b/arch/m68k/include/asm/kmap.h
-@@ -28,14 +28,8 @@ static inline void __iomem *ioremap(unsigned long physaddr, unsigned long size)
- 	return __ioremap(physaddr, size, IOMAP_NOCACHE_SER);
+diff --git a/arch/alpha/include/asm/io.h b/arch/alpha/include/asm/io.h
+index af2c0063dc75..1989b946a28d 100644
+--- a/arch/alpha/include/asm/io.h
++++ b/arch/alpha/include/asm/io.h
+@@ -283,12 +283,6 @@ static inline void __iomem *ioremap(unsigned long port, unsigned long size)
+ 	return IO_CONCAT(__IO_PREFIX,ioremap) (port, size);
  }
  
--#define ioremap_nocache ioremap_nocache
--static inline void __iomem *ioremap_nocache(unsigned long physaddr,
--					    unsigned long size)
+-static inline void __iomem *__ioremap(unsigned long port, unsigned long size,
+-				      unsigned long flags)
 -{
--	return __ioremap(physaddr, size, IOMAP_NOCACHE_SER);
+-	return ioremap(port, size);
 -}
 -
--#define ioremap_uc ioremap_nocache
-+#define ioremap_nocache ioremap
-+#define ioremap_uc ioremap
- #define ioremap_wt ioremap_wt
- static inline void __iomem *ioremap_wt(unsigned long physaddr,
- 				       unsigned long size)
+ static inline void __iomem * ioremap_nocache(unsigned long offset,
+ 					     unsigned long size)
+ {
 -- 
 2.20.1
 
