@@ -2,34 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E85990F21
-	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:53:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A342A90F29
+	for <lists+linux-riscv@lfdr.de>; Sat, 17 Aug 2019 09:54:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Uu9gvz2cyWPi5O87njOXkaRXr8qCFzL+hZ/XUvH6T38=; b=khZymChp8uJlIM
-	S6iak4RlRFBaEhKTcEoIZUWP3vktboE/tknRIujGLYc8ZENPVodG7/5O/oPG1GtDOOb9Qgxr7q4/e
-	SJB6ixzGxP9EoZfEnNae0h9selEgXSom2WDqgCcz+0gGZKJ10YeGBLU/VHTg5XadI1Q9vLM+0Gbrq
-	MNVD1wWLRUfmIC1882cxfKjXU+0Or9FTTRJY5VKqtn8n6lqXU5A7d3uatPEDZqibGBZP7f7UJxN3E
-	Cahm7XcmtcesXlrTvYKjk3Y6tMoxvFkDjYPTPlMyJ7wX5tya9GFsfqLyBy139CIcS2cOM+LqjRXud
-	NoN5tIhRvaCs8QBEv11g==;
+	List-Owner; bh=jubPsS/BZauWrSsaQJLqLlEDy6jf24vItkpWWOvA1Ck=; b=Qd83Fg2PMunxwT
+	+e4l+8TkJTJKW0ppBAlk1N9273g4EoD8/78wMC8qjPKLMpPTSpDh9Ut0oZdYU/dxx+S0x36LTweEN
+	B9LucS8MBR/dUoHjmP5UYL7N0rxNbSNlGXvQnLeXnsOL7qCgDMctDKGknujPWLq6GGJp+quOXYpOC
+	h/AK24XomFxZl+GyTVx/KwYJZg3i/vKC2VFV24Y8/LXfGGeKZ5Rt6KXteEq/+Bita5WqxDUIutA8I
+	VtxNsBzF+NrdKYHp1vIyWQmCivVfNlHKCG8oywPZPmwL3AyDtQYQ1Xcd8uIP/sWyge8+fzgZHtBWh
+	RI7GO8OhVDPXvpIKh6Hw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hytWJ-0001pP-K9; Sat, 17 Aug 2019 07:53:03 +0000
+	id 1hytXC-0002kC-Fr; Sat, 17 Aug 2019 07:53:58 +0000
 Received: from [2001:4bb8:18c:28b5:44f9:d544:957f:32cb] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hytSD-00055m-Im; Sat, 17 Aug 2019 07:48:50 +0000
+ id 1hytSH-00059n-FF; Sat, 17 Aug 2019 07:48:53 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Arnd Bergmann <arnd@arndb.de>, Guo Ren <guoren@kernel.org>,
  Michal Simek <monstr@monstr.eu>, Greentime Hu <green.hu@gmail.com>,
  Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
  x86@kernel.org
-Subject: [PATCH 13/26] xtensa: clean up ioremap
-Date: Sat, 17 Aug 2019 09:32:40 +0200
-Message-Id: <20190817073253.27819-14-hch@lst.de>
+Subject: [PATCH 14/26] asm-generic: don't provide __ioremap
+Date: Sat, 17 Aug 2019 09:32:41 +0200
+Message-Id: <20190817073253.27819-15-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190817073253.27819-1-hch@lst.de>
 References: <20190817073253.27819-1-hch@lst.de>
@@ -59,47 +59,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Use ioremap as the main implemented function, and defined
-ioremap_nocache to it as a deprecated alias.
+__ioremap is not a kernel API, but used for helpers with differing
+semantics in arch code.  We should not provide it in as-generic.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/xtensa/include/asm/io.h | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
+ include/asm-generic/io.h | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-diff --git a/arch/xtensa/include/asm/io.h b/arch/xtensa/include/asm/io.h
-index da3e783f896b..ffadc99c8601 100644
---- a/arch/xtensa/include/asm/io.h
-+++ b/arch/xtensa/include/asm/io.h
-@@ -31,8 +31,7 @@ void xtensa_iounmap(volatile void __iomem *addr);
- /*
-  * Return the virtual address for the specified bus memory.
-  */
--static inline void __iomem *ioremap_nocache(unsigned long offset,
--		unsigned long size)
-+static inline void __iomem *ioremap(unsigned long offset, unsigned long size)
- {
- 	if (offset >= XCHAL_KIO_PADDR
- 	    && offset - XCHAL_KIO_PADDR < XCHAL_KIO_SIZE)
-@@ -51,15 +50,10 @@ static inline void __iomem *ioremap_cache(unsigned long offset,
- 		return xtensa_ioremap_cache(offset, size);
+diff --git a/include/asm-generic/io.h b/include/asm-generic/io.h
+index b83e2802c969..d02806513670 100644
+--- a/include/asm-generic/io.h
++++ b/include/asm-generic/io.h
+@@ -963,15 +963,6 @@ static inline void __iomem *ioremap(phys_addr_t offset, size_t size)
  }
- #define ioremap_cache ioremap_cache
--#define ioremap_nocache ioremap_nocache
--
--#define ioremap_wc ioremap_nocache
--#define ioremap_wt ioremap_nocache
+ #endif
  
--static inline void __iomem *ioremap(unsigned long offset, unsigned long size)
+-#ifndef __ioremap
+-#define __ioremap __ioremap
+-static inline void __iomem *__ioremap(phys_addr_t offset, size_t size,
+-				      unsigned long flags)
 -{
--	return ioremap_nocache(offset, size);
+-	return ioremap(offset, size);
 -}
-+#define ioremap_nocache ioremap
-+#define ioremap_wc ioremap
-+#define ioremap_wt ioremap
+-#endif
+-
+ #ifndef iounmap
+ #define iounmap iounmap
  
- static inline void iounmap(volatile void __iomem *addr)
- {
 -- 
 2.20.1
 
