@@ -2,36 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73BCA918A9
-	for <lists+linux-riscv@lfdr.de>; Sun, 18 Aug 2019 20:16:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65950918B0
+	for <lists+linux-riscv@lfdr.de>; Sun, 18 Aug 2019 20:19:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qYO2+U7gRX91j9YG/krGHjEgLACScSg725xRM5zzS0Y=; b=ZjOW6ULEVjnt+v
-	9/1IWeddRTs9PNRyuMfMWEvt+tti2ayKpj7C0bc0WS0eZBYNzDu6GmlxltdzDK4vBmFui0rYaiDg0
-	J4e4UGqBsqpiWEQMZllo9MiGhPftv98wt+pXAra4nMKlEqiVxQD/o3Tygy1/tegyfcjGDPawhqzfD
-	FG6PMtxanpfm9CTJKGX4WRKbMojFvkCyls1tPlw5moyuKJauOBQ/gUTvu/O4MekjBZ8lpuJzBYnKG
-	LefNRufKcTzml/AJ84LG1d/GyXasqRkDKPsEJ3FVNiwrd3ALUPhhPsEnXsSoLnNWMCV2/vjoVaJBy
-	/1qxl8eaghQ3qZqqSiqA==;
+	List-Owner; bh=+mvEBgoeIgGrQVzyJ4J+opgJzh1ATGCZ/e/h3qqZUm4=; b=tPUT4gxh2yHWJg
+	xIOPMWjCSFD8+zOI/MUSJ2ZGJqCOEnc2c6oI+OQdtZdu0zESVhf60VRVORaL0gyNNhZMSAc0u4pYh
+	0g8dEQGIqsBuAqQiluuRCD20l2gfnjehzBpnL6p5klfy35GLCwxZkqFrr8INgmye4Ew684ospPGKc
+	cwrNWcBqqVjTI9M4Jwa9HT3ogxI/67fMHuiExiLOgI8BKulINv6Aj7VGS2XVPOKUhk7b8ZorYXC+R
+	B6S0YKS0LfaC1+SggfwA9df1pNjG0sapzJ7pkgSDuSE6wbqHeFd/50xKD4pyGvzXgVGNGnKUARoJs
+	bIhUAZgLdiBefN9STbKQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzPjK-0006Uj-DN; Sun, 18 Aug 2019 18:16:38 +0000
+	id 1hzPls-0006mj-51; Sun, 18 Aug 2019 18:19:16 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1hzPjC-0006UO-Bi; Sun, 18 Aug 2019 18:16:30 +0000
-Date: Sun, 18 Aug 2019 11:16:30 -0700
-From: "hch@infradead.org" <hch@infradead.org>
-To: Atish Patra <Atish.Patra@wdc.com>
-Subject: Re: [v5 PATCH] RISC-V: Fix unsupported isa string info.
-Message-ID: <20190818181630.GA20217@infradead.org>
-References: <20190807182316.28013-1-atish.patra@wdc.com>
- <20190812150215.GF26897@infradead.org>
- <3fb8d4f0383b005ecd932a69c4dd295a79b6fb1a.camel@wdc.com>
+ Linux)) id 1hzPlq-0006mQ-4u; Sun, 18 Aug 2019 18:19:14 +0000
+Date: Sun, 18 Aug 2019 11:19:14 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Anup Patel <Anup.Patel@wdc.com>
+Subject: Re: [PATCH] RISC-V: Fix FIXMAP area corruption on RV32 systems
+Message-ID: <20190818181914.GB20217@infradead.org>
+References: <20190816114915.4648-1-anup.patel@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <3fb8d4f0383b005ecd932a69c4dd295a79b6fb1a.camel@wdc.com>
+In-Reply-To: <20190816114915.4648-1-anup.patel@wdc.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -44,52 +42,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "anup@brainfault.org" <anup@brainfault.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
+Cc: Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "johan@kernel.org" <johan@kernel.org>, "hch@infradead.org" <hch@infradead.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Aug 16, 2019 at 07:21:52PM +0000, Atish Patra wrote:
-> > > +	if (isa[0] != '\0') {
-> > > +		/* Add remainging isa strings */
-> > > +		for (e = isa; *e != '\0'; ++e) {
-> > > +#if !defined(CONFIG_VIRTUALIZATION)
-> > > +			if (e[0] != 'h')
-> > > +#endif
-> > > +				seq_write(f, e, 1);
-> > > +		}
-> > > +	}
-> > 
-> > This one I don't get.  Why do we want to check CONFIG_VIRTUALIZATION?
-> > 
-> 
-> If CONFIG_VIRTUALIZATION is not enabled, it shouldn't print that
-> hypervisor extension "h" in isa extensions.
+> +#define FIXADDR_TOP      (VMALLOC_START)
 
-CONFIG_VIRTUALIZATION doesn't change anything in the kernels
-capabilities, it just enables other config options.  But more
-importantly the 'h' extension is only relevant for S-mode software
-anyway.
+Nit: no need for the braces, the definitions below don't use it
+either.
 
-> This is just an information to the userspace that some of the mandatory
-> ISA extensions ("mafdcsu") are not supported in kernel which may lead
-> to undesirable results.
+> +#ifdef CONFIG_64BIT
+> +#define FIXADDR_SIZE     PMD_SIZE
+> +#else
+> +#define FIXADDR_SIZE     PGDIR_SIZE
+> +#endif
+> +#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
+> +
+>  /*
+> - * Task size is 0x4000000000 for RV64 or 0xb800000 for RV32.
+> + * Task size is 0x4000000000 for RV64 or 0x9fc00000 for RV32.
+>   * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
+>   */
+>  #ifdef CONFIG_64BIT
+>  #define TASK_SIZE (PGDIR_SIZE * PTRS_PER_PGD / 2)
+>  #else
+> -#define TASK_SIZE VMALLOC_START
+> +#define TASK_SIZE FIXADDR_START
+>  #endif
 
-I think we need to sit down decide what the purpose of /proc/cpuinfo
-is.  IIRC on other architectures is just prints what the hardware
-supports, not what you can actually make use of.  How else would you
-find out that you'd need to enable more kernel options to fully
-utilize the hardware?
+Mentioning the addresses is a little weird.  IMHO this would be
+a much nicer place to explain the high-level memory layout, including
+maybe a little ASCII art.  Also we could have one #ifdef CONFIG_64BIT
+for both related values.  Last but not least instead of saying that
+something should be dividable it would be nice to have a BUILD_BUG_ON
+to enforce it.
 
-Also printing this warning to the kernel log when someone reads the
-procfs file is very strange.
+Either way we are late in the cycle, so I guess this is ok for now:
+
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+
+But I'd love to see this area improved a little further as it is full
+of mine fields.
 
 _______________________________________________
 linux-riscv mailing list
