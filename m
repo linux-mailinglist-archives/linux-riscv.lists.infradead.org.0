@@ -2,35 +2,37 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4BDB9158E
-	for <lists+linux-riscv@lfdr.de>; Sun, 18 Aug 2019 10:32:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 73BCA918A9
+	for <lists+linux-riscv@lfdr.de>; Sun, 18 Aug 2019 20:16:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xjxczBzBI/r7rRrSwdn8R1HU7fXhPBGuidg+cLPEEM0=; b=PfbPABaC5bdfSh
-	2NhZx056zjhaI6OlQzieHjBq8Os6QLnBzObdEmOSbg4d85DUW7SREQeqvvu2729CymKFyuhENT0Cc
-	FfgivmwyxDrLW+M6oZbWxlfsLUZ2+1GhZmsvTIcfzOor4dIm3ZCF7uJA+bksWl87zKxm8nRkdbdO5
-	jl/m5rJvkefz8OL1sqoMRSmUS/S31gQUDjiFbg/uve8n3JcCUiIvci/J3Kn+4cEdTJJ8erlTEAkLm
-	6jfyE1gzOHnNa4SQKYJiV0LD3hZMlzdMkZt50hGvtKYCmZHuLS/xAy6erLqmPytDPczI8SJIXzy3Q
-	/Re6gJW7pcgQwik6XRVw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qYO2+U7gRX91j9YG/krGHjEgLACScSg725xRM5zzS0Y=; b=ZjOW6ULEVjnt+v
+	9/1IWeddRTs9PNRyuMfMWEvt+tti2ayKpj7C0bc0WS0eZBYNzDu6GmlxltdzDK4vBmFui0rYaiDg0
+	J4e4UGqBsqpiWEQMZllo9MiGhPftv98wt+pXAra4nMKlEqiVxQD/o3Tygy1/tegyfcjGDPawhqzfD
+	FG6PMtxanpfm9CTJKGX4WRKbMojFvkCyls1tPlw5moyuKJauOBQ/gUTvu/O4MekjBZ8lpuJzBYnKG
+	LefNRufKcTzml/AJ84LG1d/GyXasqRkDKPsEJ3FVNiwrd3ALUPhhPsEnXsSoLnNWMCV2/vjoVaJBy
+	/1qxl8eaghQ3qZqqSiqA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzGbS-0002Cj-Kj; Sun, 18 Aug 2019 08:31:54 +0000
-Received: from 213-225-6-198.nat.highway.a1.net ([213.225.6.198]
- helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hzGbO-0002CY-Nn; Sun, 18 Aug 2019 08:31:51 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: paul.walmsley@sifive.com,
-	palmer@sifive.com
-Subject: [PATCH] riscv: move sifive_l2_cache.c to drivers/soc
-Date: Sun, 18 Aug 2019 10:29:35 +0200
-Message-Id: <20190818082935.14869-1-hch@lst.de>
-X-Mailer: git-send-email 2.20.1
+	id 1hzPjK-0006Uj-DN; Sun, 18 Aug 2019 18:16:38 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
+ Linux)) id 1hzPjC-0006UO-Bi; Sun, 18 Aug 2019 18:16:30 +0000
+Date: Sun, 18 Aug 2019 11:16:30 -0700
+From: "hch@infradead.org" <hch@infradead.org>
+To: Atish Patra <Atish.Patra@wdc.com>
+Subject: Re: [v5 PATCH] RISC-V: Fix unsupported isa string info.
+Message-ID: <20190818181630.GA20217@infradead.org>
+References: <20190807182316.28013-1-atish.patra@wdc.com>
+ <20190812150215.GF26897@infradead.org>
+ <3fb8d4f0383b005ecd932a69c4dd295a79b6fb1a.camel@wdc.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <3fb8d4f0383b005ecd932a69c4dd295a79b6fb1a.camel@wdc.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,117 +44,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-edac@vger.kernel.org
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "anup@brainfault.org" <anup@brainfault.org>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "johan@kernel.org" <johan@kernel.org>, "hch@infradead.org" <hch@infradead.org>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The sifive_l2_cache.c is in no way related to RISC-V architecture
-memory management.  It is a little stub driver working around the fact
-that the EDAC maintainers prefer their drivers to be structured in a
-certain way that doesn't fit the SiFive SOCs.
+On Fri, Aug 16, 2019 at 07:21:52PM +0000, Atish Patra wrote:
+> > > +	if (isa[0] != '\0') {
+> > > +		/* Add remainging isa strings */
+> > > +		for (e = isa; *e != '\0'; ++e) {
+> > > +#if !defined(CONFIG_VIRTUALIZATION)
+> > > +			if (e[0] != 'h')
+> > > +#endif
+> > > +				seq_write(f, e, 1);
+> > > +		}
+> > > +	}
+> > 
+> > This one I don't get.  Why do we want to check CONFIG_VIRTUALIZATION?
+> > 
+> 
+> If CONFIG_VIRTUALIZATION is not enabled, it shouldn't print that
+> hypervisor extension "h" in isa extensions.
 
-Move the file to drivers/soc and add a Kconfig option for it, as well
-as the whole drivers/soc boilerplate for CONFIG_SOC_SIFIVE.
+CONFIG_VIRTUALIZATION doesn't change anything in the kernels
+capabilities, it just enables other config options.  But more
+importantly the 'h' extension is only relevant for S-mode software
+anyway.
 
-Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- arch/riscv/mm/Makefile                                 |  1 -
- drivers/edac/Kconfig                                   |  2 +-
- drivers/soc/Kconfig                                    |  1 +
- drivers/soc/Makefile                                   |  1 +
- drivers/soc/sifive/Kconfig                             | 10 ++++++++++
- drivers/soc/sifive/Makefile                            |  4 ++++
- .../riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c  |  0
- 7 files changed, 17 insertions(+), 2 deletions(-)
- create mode 100644 drivers/soc/sifive/Kconfig
- create mode 100644 drivers/soc/sifive/Makefile
- rename {arch/riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c (100%)
+> This is just an information to the userspace that some of the mandatory
+> ISA extensions ("mafdcsu") are not supported in kernel which may lead
+> to undesirable results.
 
-diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-index 74055e1d6f21..d2101d0741d4 100644
---- a/arch/riscv/mm/Makefile
-+++ b/arch/riscv/mm/Makefile
-@@ -11,6 +11,5 @@ obj-y += extable.o
- obj-y += ioremap.o
- obj-y += cacheflush.o
- obj-y += context.o
--obj-y += sifive_l2_cache.o
- 
- obj-$(CONFIG_HUGETLB_PAGE) += hugetlbpage.o
-diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
-index 200c04ce5b0e..9241b3e7a050 100644
---- a/drivers/edac/Kconfig
-+++ b/drivers/edac/Kconfig
-@@ -462,7 +462,7 @@ config EDAC_ALTERA_SDMMC
- 
- config EDAC_SIFIVE
- 	bool "Sifive platform EDAC driver"
--	depends on EDAC=y && RISCV
-+	depends on EDAC=y && SIFIVE_L2
- 	help
- 	  Support for error detection and correction on the SiFive SoCs.
- 
-diff --git a/drivers/soc/Kconfig b/drivers/soc/Kconfig
-index 833e04a7835c..1778f8c62861 100644
---- a/drivers/soc/Kconfig
-+++ b/drivers/soc/Kconfig
-@@ -14,6 +14,7 @@ source "drivers/soc/qcom/Kconfig"
- source "drivers/soc/renesas/Kconfig"
- source "drivers/soc/rockchip/Kconfig"
- source "drivers/soc/samsung/Kconfig"
-+source "drivers/soc/sifive/Kconfig"
- source "drivers/soc/sunxi/Kconfig"
- source "drivers/soc/tegra/Kconfig"
- source "drivers/soc/ti/Kconfig"
-diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
-index 2ec355003524..8b49d782a1ab 100644
---- a/drivers/soc/Makefile
-+++ b/drivers/soc/Makefile
-@@ -20,6 +20,7 @@ obj-y				+= qcom/
- obj-y				+= renesas/
- obj-$(CONFIG_ARCH_ROCKCHIP)	+= rockchip/
- obj-$(CONFIG_SOC_SAMSUNG)	+= samsung/
-+obj-$(CONFIG_SOC_SIFIVE)	+= sifive/
- obj-y				+= sunxi/
- obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
- obj-y				+= ti/
-diff --git a/drivers/soc/sifive/Kconfig b/drivers/soc/sifive/Kconfig
-new file mode 100644
-index 000000000000..9ffb2e8a48cd
---- /dev/null
-+++ b/drivers/soc/sifive/Kconfig
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0
-+
-+if SOC_SIFIVE
-+
-+config SIFIVE_L2
-+	tristate "Sifive L2 Cache controller"
-+	help
-+	  Support for the L2 cache controller on SiFive platforms.
-+
-+endif
-diff --git a/drivers/soc/sifive/Makefile b/drivers/soc/sifive/Makefile
-new file mode 100644
-index 000000000000..9b4a85558347
---- /dev/null
-+++ b/drivers/soc/sifive/Makefile
-@@ -0,0 +1,4 @@
-+# SPDX-License-Identifier: GPL-2.0
-+
-+obj-$(CONFIG_SIFIVE_L2)	+= sifive_l2_cache.o
-+
-diff --git a/arch/riscv/mm/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
-similarity index 100%
-rename from arch/riscv/mm/sifive_l2_cache.c
-rename to drivers/soc/sifive/sifive_l2_cache.c
--- 
-2.20.1
+I think we need to sit down decide what the purpose of /proc/cpuinfo
+is.  IIRC on other architectures is just prints what the hardware
+supports, not what you can actually make use of.  How else would you
+find out that you'd need to enable more kernel options to fully
+utilize the hardware?
 
+Also printing this warning to the kernel log when someone reads the
+procfs file is very strange.
 
 _______________________________________________
 linux-riscv mailing list
