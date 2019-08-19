@@ -2,73 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5DB791C24
-	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 06:44:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4FCE91C2C
+	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 06:49:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u3JCIuPjF3ETbxmBBbi0CYbEuVTUjnB1UkAiO6xJUwQ=; b=ll+bN3R99E0vNj
-	PaLyliAkVibEzUl+xnhIoJpjZPVv0r01W7UgAjc4MEyIlojouZSglirLfSJkzdE0Vv/I/HkT0z81Y
-	wmgyJUn4qeuAqnWeA4sYG32/Rv7uJl6Be60RB5dlV8vTGFBtw4l6tOcAM/NTfBpL4Fbzt0Bt8ed7P
-	WEJ+86ESr8HavfvNX1koJ2Bo3q3cRrFT9EYSopcT1czBGaheXkVHcFwFbOwwNBQmyLUWNNXdhBDPR
-	sY49t6tmLrj3nr3lGOCAMuq16m9z5a+ehN8vQE1/k37blKOsxQI5dC5/IVEbJMzCirfkgOwi2A28W
-	z7rfsRdG3h0pKEDfu0Cw==;
+	List-Owner; bh=bUIBf31nynZAfFRpabFAzpe/JxqyRyFKUSotSAXVzjo=; b=B5i6DluNM0c/Eq
+	4lgOrVpj/KYNLVWTlKkKot9b1uEQoi2Hc2ahMsBS8mjF1d4D/e1dYcuOmnrSCIeOUtICghSBhedKg
+	thaVuVANv/TDQeawTsOMcXRznp/EqT5Z5XBKqXrUVXuxPUm5MUjn0zCoIFeTzO3zjSdfquBLD5bh3
+	WLpy+4zHgGslqxr3P7H2hMtpAAZDGpV4h0f2/QxXcwQRuA2NYqyGK/gd3OUpgTfgM/RUSxkqi3y2m
+	lrRBgZkVHBuGSHcKRBgmOejX7M9fApZv5rkFxca9703pS9T6ld8j0s2tuLyuU+EM/4YBkq1Se+hVQ
+	/o/enUmvQccO/Kc/zbkQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzZX3-0006PB-Ki; Mon, 19 Aug 2019 04:44:37 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1hzZba-0001JX-Up; Mon, 19 Aug 2019 04:49:19 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzZWw-0006Dq-0O
- for linux-riscv@lists.infradead.org; Mon, 19 Aug 2019 04:44:31 +0000
-Received: by mail-wr1-x442.google.com with SMTP id r3so7216876wrt.3
- for <linux-riscv@lists.infradead.org>; Sun, 18 Aug 2019 21:44:27 -0700 (PDT)
+ id 1hzZbX-0001Ip-5A
+ for linux-riscv@lists.infradead.org; Mon, 19 Aug 2019 04:49:16 +0000
+Received: by mail-wm1-x342.google.com with SMTP id i63so369045wmg.4
+ for <linux-riscv@lists.infradead.org>; Sun, 18 Aug 2019 21:49:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fTdhTJlfOEvwMxtoOo8JgnOcQgqcJ7O6rfujPFqHNDs=;
- b=rH337aQk94SWC4IT60yJz1ozOzffxGCHpGpI+emUGND0A3/kgYnnSBEK6gpjmxFxXp
- iuYFCUFx5wyjY7wLk62+KIJavNt0eYH/GXtCHCjveXmnPvGiN5OixCTWxdfnqsgjxn9w
- 2lcinCuOPQQySpK+QGLWFSuatxvnSJlh8MhxDp9csdOV9XsW7zqcSFXBjX6mPDhkIe34
- 1AOQrEjGsSl39kOicGpeCeoVpbELRFY6k0FlA7xEmwKa0twcyyuxlKlJb13YTPAd4Tt8
- GgwlgGroYXUM9cgK5gMV1px5kHAahLOzoObnOfaO6DJ4LyQruK6G6kAZF/L72wkkS0wR
- TL2A==
+ :cc; bh=60R/A+kC11q0AvPf3oQzvFsQ9aUEzwZLL3SNB5rWKEw=;
+ b=nL8FCkBRIA9ZswKPpogtISq5zl3WUFiheZbLSi4QEdbvtLimsxQoQLIeMP5JtAlFDb
+ ykekZsfnKLDai2fFfF6b69ku6rZ1zeROwWKbI1b80N6JfI5MB8jllwsI5CFVXgQuuuxN
+ e9UCBmJsfHCY8xOf0ovTQbF9ScYF5/EckXpbRiSxJ3tI8PWZ3Tceg/KpRmzFp9H0hT/h
+ WP6bXwT6hKDIXh27OqGvbD8AYcnweAMzQLz8+kZVzsJPT0fkkD8qOmmPWNI6aikATE3u
+ 39AKL36oW88Kc2Qvtj9T1hqdFnJN3ANrwExyfgA+wg1rrEtxGzcqwoRbpbzWelINbDYn
+ rBpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=fTdhTJlfOEvwMxtoOo8JgnOcQgqcJ7O6rfujPFqHNDs=;
- b=nQ78u8st8YyUPrBS/DxbvnZwrS2D8PpWKt25FtfGSFRDZY8LWQJHgnolYlLtbqZOq2
- b7482jzfGPR8JLz9KwdjcPptygVJ2zU5pO8zBzPbEiuANvgNJIZe4a1Cm5CvWEhI+ffT
- iB4ZLFxCHjYxK4ocD6FEjEp3hOOL6HYc42dv5067bkMf8IMtj4KOd5DmMeALYXiNB56P
- crOtpHYCCBi8j2gdzOzQAiXEF9KmTi4W5F6TbYk6wCT10k4R22243QUz4zJIlgBtXrBs
- AoiwXwR+wrZHmUhIhaBYGxbGRa/jrEL2AjnQFKESC7lNdB9LqGvZ3KD67cKeGRPRVmwr
- Xopg==
-X-Gm-Message-State: APjAAAViI0qRvk8A3zk0UE7DHXeJbjVafcscdloyTt8fD7c36GjUjWYW
- RhzBr4oJ2I5qYU9AGH9Pq+7PHoQElHcVXfchiia9DA==
-X-Google-Smtp-Source: APXvYqwUQPkud8m3pn3JD+iQBOJ9pDvE11srZt37VrKVieKqD5k2pI6Be57Z3epvvVVDV/zbKoPQvn8POiUVFTV1Zn8=
-X-Received: by 2002:a5d:4ecb:: with SMTP id s11mr16468225wrv.323.1566189866336; 
- Sun, 18 Aug 2019 21:44:26 -0700 (PDT)
+ bh=60R/A+kC11q0AvPf3oQzvFsQ9aUEzwZLL3SNB5rWKEw=;
+ b=T/RuTow5RTKC6jDXxCEfsWXlOZdN2Jvo440Y4RXFJlxCuci8KFtqluyQL5VOJy8hm6
+ d7nQYmguLB1sjl5XgCgzYBO55acdA707zyrV0qAbc8nUhWvOL6BxBQRig780S3dUWBwB
+ 0Kn0XiJtHhT6I0KuqnPeEUKTQ+DrLtS8blU9ikrjEMDCG1AZkl6+gwGB9jbEP7xUb4AH
+ pwjdWfGQzjipSnl2yZQiRT5TdDzULR9eX9Nc4Z4GsF3SoOGOLP94crpno7AwYsueemy3
+ hOURr3C8lkQ2AoW6VgbWiIHTDcD3e65ahyw11WVMSVPOAjOUOus4q9tRomNVtp62PPYa
+ dFvQ==
+X-Gm-Message-State: APjAAAWkMeu8Xvh7Qk1XWfCmkHiZNnVRLO34+IXssCm5Ny2oPh7fHJ2+
+ 7DCHEUBIBqaDv9gWnIeqrEJURflgk9nu7dPDIR9VLQ==
+X-Google-Smtp-Source: APXvYqxjwK3ZIYOpOhKcI+ZBVXW0UrOARuiEJ/I30F5R0lum5iB1rSe5G2ZIrcY+TLebQjGbo3iHZYOLbYqMwmqWLr8=
+X-Received: by 2002:a1c:c909:: with SMTP id f9mr5518379wmb.52.1566190152793;
+ Sun, 18 Aug 2019 21:49:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190818082935.14869-1-hch@lst.de>
-In-Reply-To: <20190818082935.14869-1-hch@lst.de>
+References: <20190816114915.4648-1-anup.patel@wdc.com>
+ <20190818181914.GB20217@infradead.org>
+In-Reply-To: <20190818181914.GB20217@infradead.org>
 From: Anup Patel <anup@brainfault.org>
-Date: Mon, 19 Aug 2019 10:14:14 +0530
-Message-ID: <CAAhSdy18rh+3nSrpeMPoxmi_St4FUEy=48oPZmDnOndWUFegbg@mail.gmail.com>
-Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/soc
-To: Christoph Hellwig <hch@lst.de>
+Date: Mon, 19 Aug 2019 10:19:01 +0530
+Message-ID: <CAAhSdy1arxoekV4p3so=2PtTtBCvT61sz+uDbaZ=e11p7b5DXg@mail.gmail.com>
+Subject: Re: [PATCH] RISC-V: Fix FIXMAP area corruption on RV32 systems
+To: Christoph Hellwig <hch@infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190818_214430_120295_F840F787 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20190818_214915_202526_BD8DA26D 
+X-CRM114-Status: GOOD (  13.95  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -86,125 +87,65 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- linux-edac@vger.kernel.org, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Palmer Dabbelt <palmer@sifive.com>, Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Atish Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Aug 18, 2019 at 2:01 PM Christoph Hellwig <hch@lst.de> wrote:
+On Sun, Aug 18, 2019 at 11:49 PM Christoph Hellwig <hch@infradead.org> wrote:
 >
-> The sifive_l2_cache.c is in no way related to RISC-V architecture
-> memory management.  It is a little stub driver working around the fact
-> that the EDAC maintainers prefer their drivers to be structured in a
-> certain way that doesn't fit the SiFive SOCs.
+> > +#define FIXADDR_TOP      (VMALLOC_START)
 >
-> Move the file to drivers/soc and add a Kconfig option for it, as well
-> as the whole drivers/soc boilerplate for CONFIG_SOC_SIFIVE.
->
-> Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> ---
->  arch/riscv/mm/Makefile                                 |  1 -
->  drivers/edac/Kconfig                                   |  2 +-
->  drivers/soc/Kconfig                                    |  1 +
->  drivers/soc/Makefile                                   |  1 +
->  drivers/soc/sifive/Kconfig                             | 10 ++++++++++
->  drivers/soc/sifive/Makefile                            |  4 ++++
->  .../riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c  |  0
->  7 files changed, 17 insertions(+), 2 deletions(-)
->  create mode 100644 drivers/soc/sifive/Kconfig
->  create mode 100644 drivers/soc/sifive/Makefile
->  rename {arch/riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c (100%)
->
-> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-> index 74055e1d6f21..d2101d0741d4 100644
-> --- a/arch/riscv/mm/Makefile
-> +++ b/arch/riscv/mm/Makefile
-> @@ -11,6 +11,5 @@ obj-y += extable.o
->  obj-y += ioremap.o
->  obj-y += cacheflush.o
->  obj-y += context.o
-> -obj-y += sifive_l2_cache.o
->
->  obj-$(CONFIG_HUGETLB_PAGE) += hugetlbpage.o
-> diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
-> index 200c04ce5b0e..9241b3e7a050 100644
-> --- a/drivers/edac/Kconfig
-> +++ b/drivers/edac/Kconfig
-> @@ -462,7 +462,7 @@ config EDAC_ALTERA_SDMMC
->
->  config EDAC_SIFIVE
->         bool "Sifive platform EDAC driver"
-> -       depends on EDAC=y && RISCV
-> +       depends on EDAC=y && SIFIVE_L2
->         help
->           Support for error detection and correction on the SiFive SoCs.
->
-> diff --git a/drivers/soc/Kconfig b/drivers/soc/Kconfig
-> index 833e04a7835c..1778f8c62861 100644
-> --- a/drivers/soc/Kconfig
-> +++ b/drivers/soc/Kconfig
-> @@ -14,6 +14,7 @@ source "drivers/soc/qcom/Kconfig"
->  source "drivers/soc/renesas/Kconfig"
->  source "drivers/soc/rockchip/Kconfig"
->  source "drivers/soc/samsung/Kconfig"
-> +source "drivers/soc/sifive/Kconfig"
->  source "drivers/soc/sunxi/Kconfig"
->  source "drivers/soc/tegra/Kconfig"
->  source "drivers/soc/ti/Kconfig"
-> diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
-> index 2ec355003524..8b49d782a1ab 100644
-> --- a/drivers/soc/Makefile
-> +++ b/drivers/soc/Makefile
-> @@ -20,6 +20,7 @@ obj-y                         += qcom/
->  obj-y                          += renesas/
->  obj-$(CONFIG_ARCH_ROCKCHIP)    += rockchip/
->  obj-$(CONFIG_SOC_SAMSUNG)      += samsung/
-> +obj-$(CONFIG_SOC_SIFIVE)       += sifive/
->  obj-y                          += sunxi/
->  obj-$(CONFIG_ARCH_TEGRA)       += tegra/
->  obj-y                          += ti/
-> diff --git a/drivers/soc/sifive/Kconfig b/drivers/soc/sifive/Kconfig
-> new file mode 100644
-> index 000000000000..9ffb2e8a48cd
-> --- /dev/null
-> +++ b/drivers/soc/sifive/Kconfig
-> @@ -0,0 +1,10 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +
-> +if SOC_SIFIVE
-> +
-> +config SIFIVE_L2
-> +       tristate "Sifive L2 Cache controller"
-> +       help
-> +         Support for the L2 cache controller on SiFive platforms.
-> +
-> +endif
-> diff --git a/drivers/soc/sifive/Makefile b/drivers/soc/sifive/Makefile
-> new file mode 100644
-> index 000000000000..9b4a85558347
-> --- /dev/null
-> +++ b/drivers/soc/sifive/Makefile
-> @@ -0,0 +1,4 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +
-> +obj-$(CONFIG_SIFIVE_L2)        += sifive_l2_cache.o
-> +
-> diff --git a/arch/riscv/mm/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
-> similarity index 100%
-> rename from arch/riscv/mm/sifive_l2_cache.c
-> rename to drivers/soc/sifive/sifive_l2_cache.c
-> --
-> 2.20.1
->
+> Nit: no need for the braces, the definitions below don't use it
+> either.
 
-LGTM.
+Sure, I will update and send v2 soon.
 
-Reviewed-by: Anup Patel <anup@brainfault.org>
+>
+> > +#ifdef CONFIG_64BIT
+> > +#define FIXADDR_SIZE     PMD_SIZE
+> > +#else
+> > +#define FIXADDR_SIZE     PGDIR_SIZE
+> > +#endif
+> > +#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
+> > +
+> >  /*
+> > - * Task size is 0x4000000000 for RV64 or 0xb800000 for RV32.
+> > + * Task size is 0x4000000000 for RV64 or 0x9fc00000 for RV32.
+> >   * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
+> >   */
+> >  #ifdef CONFIG_64BIT
+> >  #define TASK_SIZE (PGDIR_SIZE * PTRS_PER_PGD / 2)
+> >  #else
+> > -#define TASK_SIZE VMALLOC_START
+> > +#define TASK_SIZE FIXADDR_START
+> >  #endif
+>
+> Mentioning the addresses is a little weird.  IMHO this would be
+> a much nicer place to explain the high-level memory layout, including
+> maybe a little ASCII art.  Also we could have one #ifdef CONFIG_64BIT
+> for both related values.  Last but not least instead of saying that
+> something should be dividable it would be nice to have a BUILD_BUG_ON
+> to enforce it.
+>
+> Either way we are late in the cycle, so I guess this is ok for now:
+>
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
+>
+> But I'd love to see this area improved a little further as it is full
+> of mine fields.
+
+I agree with you. We also have Sparsemem and KASAN patches which
+touch virtual memory layout so it's important to have virtual memory layout
+documented clearly. I can add the required documentation as separate patch.
+
+I think the best place to add ASCII art would be asm/pgtable.h where all
+virtual memory related defines are placed. Suggestions??
 
 Regards,
 Anup
