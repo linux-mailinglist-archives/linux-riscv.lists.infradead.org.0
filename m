@@ -2,53 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7F7991FF8
-	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 11:21:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1AC5E92122
+	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 12:16:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1JdfbZVQPVA8UkrWFduIi4DXnq5t4ZuxqN+4r3JJDQI=; b=aoscBnoSna4VqM
-	q7m115g+wqz3W/BGwrCXSErA+rc1h9VDjHI0NpbOwQvA1chrShC7qMwGsM7HP6/txs/LWD4RLADlq
-	vb8AHYYCBshqJtWmyJ8hqB2Wcq0sNHPZPxTTZyFf4+Ho1iwU/JvuBuRCHLN7qf/SfNvJk5/W6Q1ua
-	Merpd5zSAgJWk31auzH9W13B4x2M2ArkUnlTR5YKQiydGwzhbk5tCXHE/Gnnv2FFmP4eTQhlSt/dS
-	RNDwv1QSfBj4etC+pewOmmOvBRkwGryZLDyPY70TIHPjZ45b5gXpTeEv0BUdNhVtylWQ3CXJebAVz
-	YTIuBvQ8mcoJiZscGIiw==;
+	List-Owner; bh=NwvCtg4kDGxU3af5GDDl+8y0L4pZ26g5VSQ6FK+2cns=; b=Xz3ELu4/2nYjqt
+	lYffXDttyZ8nnoVTuxu9ZuSRzOaCA3DzayjBETJYb4GVt4KkUiwnCDJYHceQ1AUjzyeu1oa5vsJvP
+	/34lTy6G4rF1Q6Kr8VUvELa9jwA+lC7uFAPkly0RJSVKzgfyB1kPgZ6VegETxydkeOLZkgumCBLwo
+	7xK/G0YI9rn/iAH5pmVaTqxaHHPNcskg9SY8hST2Dirxw1N//b7gjy5OlJv/4EXRrxAYrgqxcHNlN
+	GtefRm9xxuXBeWXfUwgZgffQsKYJHwEEthN7hIBNjNQRV4VIJ6lBAg9Xcilf4jt5z4MkZjhfWDa80
+	wZZj99An//y4ilrfjm+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzdqb-0004KQ-9w; Mon, 19 Aug 2019 09:21:05 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1hzehX-0004Vd-0e; Mon, 19 Aug 2019 10:15:47 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzdoS-00027f-5V; Mon, 19 Aug 2019 09:18:54 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 6A7AE68B05; Mon, 19 Aug 2019 11:18:46 +0200 (CEST)
-Date: Mon, 19 Aug 2019 11:18:46 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH 08/26] m68k: simplify ioremap_nocache
-Message-ID: <20190819091846.GA27890@lst.de>
-References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-9-hch@lst.de>
- <CAMuHMdWyXGjokWi7tn9JHCTz9YMb_vHn6XKeE7KzH5n-54Sy0A@mail.gmail.com>
+ id 1hzehQ-0004VI-72
+ for linux-riscv@lists.infradead.org; Mon, 19 Aug 2019 10:15:41 +0000
+Received: by mail-pg1-x542.google.com with SMTP id l21so952197pgm.3
+ for <linux-riscv@lists.infradead.org>; Mon, 19 Aug 2019 03:15:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=dvoZuXsWbX7lGOYq0TI7+TMlH9iF9uBzei6TSIkQpEo=;
+ b=i/VaJFb6t3Te0/Ydwxw+vNiDeOkdb+MJcn7TXNKivhdWghXmslO+y9j87467I23K5B
+ UEIdHIp5NmCbO2tD0ms4O0rHfC9npZUxAQBJwWN2F1wOvMf78WZozaAhabZwXV8s6gme
+ kr0uF3g+rOBACFQwNusHDXx0rDj3zT0uXJuO2ELFMqR9kumQa8+cEsOTnGOXV53mYZ/7
+ eJ2P7RVuUV0As1NWdtd6aa9IAu0zjMd8v1DnOmTKmilI2vqiIRgtnAvAf6f2rEF+Owvk
+ fvCVxPV5Pf7NZim8ShF9cnEGA62qMbfwPvm4GU1U06dDRlFPtwj++Y8rxmEMd5Gr6Np0
+ hCyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=dvoZuXsWbX7lGOYq0TI7+TMlH9iF9uBzei6TSIkQpEo=;
+ b=GBQo5GI2uBOUCAuqIp6TH9IzOZsoYED2O7EbTWRoFARvOenZDb3M9QvHOxOzmyg81Y
+ eWZ23d8rP2EMn+qlRF6bOe4jE62qWwlq18227LNR1gREczXBKtU6zukL+eg54AbXFsws
+ NA3TzaZTzK/vU4FCpcsftceNNOlgTuCZI/6jgIZ16qspf9t3sXholHk22eM36wDgkM5g
+ 1HpsbKnWUn/8VnGxM3oHeSiFNwyN4HUAQZq3Hp1pOHQqihKu+w9WWbBHD8mNXFm8rVxI
+ T93Q43SCVXNSNcXTRIb7TDVi7EPwioSfL+jLSmZqdciEH15S/bbsxnb6q5L0N3Vr97ag
+ 45UA==
+X-Gm-Message-State: APjAAAVVjixZDTzyecLd1KCb8cEjquoxrRenUFraRrb/+8SxF0t28qza
+ ohkB4ELnzcNDNOX34WX3VsgJ0fe1H78I7CFdvl8=
+X-Google-Smtp-Source: APXvYqx5xUj0PgOqdNxe923ijztvKJq0n7kqXgvHNZUnz4s7+1GMnujrSsYL9Fe2veAZjTKScqieSNogP1xZzEeGNWE=
+X-Received: by 2002:aa7:8488:: with SMTP id u8mr23776800pfn.229.1566209739353; 
+ Mon, 19 Aug 2019 03:15:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdWyXGjokWi7tn9JHCTz9YMb_vHn6XKeE7KzH5n-54Sy0A@mail.gmail.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+Received: by 2002:a17:90a:b296:0:0:0:0 with HTTP; Mon, 19 Aug 2019 03:15:38
+ -0700 (PDT)
+In-Reply-To: <20190807182316.28013-1-atish.patra@wdc.com>
+References: <20190807182316.28013-1-atish.patra@wdc.com>
+From: Jacob Lifshay <programmerjake@gmail.com>
+Date: Mon, 19 Aug 2019 03:15:38 -0700
+Message-ID: <CAC2bXD5JiEmYFQnJK9qr2=PLiXzHw2Ece_g+iMc_B_YAW7e0Eg@mail.gmail.com>
+Subject: Re: [v5 PATCH] RISC-V: Fix unsupported isa string info.
+To: Atish Patra <atish.patra@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_021852_606911_7E2A9092 
-X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-CacheID: sfid-20190819_031540_284563_8AC93C25 
+X-CRM114-Status: UNSURE (   7.63  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (programmerjake[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,37 +94,33 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
- Linux-sh list <linux-sh@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Guo Ren <guoren@kernel.org>, sparclinux <sparclinux@vger.kernel.org>,
- linux-riscv@lists.infradead.org, Vincent Chen <deanbo422@gmail.com>,
- Christoph Hellwig <hch@lst.de>, Linux-Arch <linux-arch@vger.kernel.org>,
- linux-s390 <linux-s390@vger.kernel.org>,
- "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
- the arch/x86 maintainers <x86@kernel.org>,
- arcml <linux-snps-arc@lists.infradead.org>, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-m68k <linux-m68k@lists.linux-m68k.org>,
- Openrisc <openrisc@lists.librecores.org>, Greentime Hu <green.hu@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>, Guan Xuetao <gxt@pku.edu.cn>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Michal Simek <monstr@monstr.eu>, Parisc List <linux-parisc@vger.kernel.org>,
- linux-mips@vger.kernel.org, alpha <linux-alpha@vger.kernel.org>,
- nios2-dev@lists.rocketboards.org
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Johan Hovold <johan@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Aug 19, 2019 at 10:56:02AM +0200, Geert Uytterhoeven wrote:
-> BTW, shouldn't we get rid of the sole user of ioremap_uc(), too?
-> Seems to make a difference on x86 only, where it is "strongly uncached"
-> (whatever that may mean ;-)
+On 8/7/19, Atish Patra <atish.patra@wdc.com> wrote:
+>  		}
+>  	}
+> +	if (isa[0] != '\0') {
+> +		/* Add remainging isa strings */
 
-Yes, we probably should.  However that actually seems worth a discussion
-so I wanted to defer it until after this already huge series.
+That should be spelled "remaining"
 
-Another thing we can do after this series is to kill of ioremap_nocache.
+> +		for (e = isa; *e != '\0'; ++e) {
+> +#if !defined(CONFIG_VIRTUALIZATION)
+> +			if (e[0] != 'h')
+> +#endif
+> +				seq_write(f, e, 1);
+> +		}
+> +	}
+>  	seq_puts(f, "\n");
+
+Jacob Lifshay
 
 _______________________________________________
 linux-riscv mailing list
