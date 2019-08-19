@@ -2,59 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08CCF91EB1
-	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 10:18:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7684E91F5E
+	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 10:51:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=koDSN1OvznW9rN26m8EZpeuyNXxracTXcPQxPwxNevg=; b=jLgUV3PrGbopsSkCkTZttvish
-	tiP+UMaPskJubSOa7KFhfv7htEhVWHydqBN80mZW2iBf97hOWfpoM3Vkpz+Oc+F+AEYj8pq1llt4P
-	7NnwJOnLWNt9s8p1LCHqUTqLFGAkhYZXC/6Zq7qXSxtSqee317iAh0wFKRoP+M4JGNZ7zyd6SZ4Bx
-	YUc6jkQm1Xt27QkLYAV1jTV4/88QlQ31oOsi79Yo3LVKQX+ussudNa5RD4fF4HkE2CP2oiT3XuMZu
-	+B1bIbKB6l8rT34hVDQznB7nP4FbIB9yeNODFZeaRw3+aAik/YnyIv0Cw5Oxf92W4pW4JTmXI/Pon
-	TMQU5PUsw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BJ3UVej6fulcSqyFfK5VK01+v9j12ysjk39x42MeYoA=; b=YAjJywPuvoF8Cb
+	QzBLP0JxiqggrYkXqIefmU5IE0FB3jjDLEBDMOgjRj0Ciapf+hqFu9VgKt0/BoePt3PwRkOSP8UlS
+	oimnrDIPralsGgStXDwJFbeuLdan3f1GSuxUXOnYk4BbeM2FxViUsumYt2p0M/MII0Y47GFrxBLyV
+	3vYvlu0aPpTLeGeRCjlF3MLDmbKNlSRLRWDXKQV6YTdN7lOoIMPqZH1d/jwqVtWY4//aEujXX1fUl
+	lF/4rQrrE5qGno3KMjYe7f9hU6USUIpwnCmP5lke6w4sKZVW74ULaw+bjjEy5A1mb5ceart6u0Oz1
+	xJ7Qo2IInN2aS9Vxv8WA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzcrk-0002Go-61; Mon, 19 Aug 2019 08:18:12 +0000
-Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
+	id 1hzdNb-0000Jq-Jq; Mon, 19 Aug 2019 08:51:07 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzcre-0002GA-Ti
- for linux-riscv@lists.infradead.org; Mon, 19 Aug 2019 08:18:10 +0000
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07575988|-1; CH=green;
- DM=CONTINUE|CONTINUE|true|0.0307753-0.00242969-0.966795; FP=0|0|0|0|0|0|0|0;
- HT=e02c03302; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=3; RT=3; SR=0;
- TI=SMTPD_---.FEWH.Ih_1566202681; 
-Received: from localhost(mailfrom:han_mao@c-sky.com
- fp:SMTPD_---.FEWH.Ih_1566202681)
- by smtp.aliyun-inc.com(10.147.40.233);
- Mon, 19 Aug 2019 16:18:01 +0800
-Date: Mon, 19 Aug 2019 16:18:01 +0800
-From: Mao Han <han_mao@c-sky.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH V3 0/3] riscv: Add perf callchain support
-Message-ID: <20190819081758.GA15999@vmh-VirtualBox>
-References: <cover.1558081981.git.han_mao@c-sky.com>
- <alpine.DEB.2.21.9999.1908161008450.18249@viisi.sifive.com>
+ id 1hzdNO-000098-F5; Mon, 19 Aug 2019 08:50:55 +0000
+Received: by mail-oi1-f194.google.com with SMTP id c15so735301oic.3;
+ Mon, 19 Aug 2019 01:50:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=XvpHNQzLHQyAljD3a4MUdfT4ynucGZ6tzJYlGCkwzvk=;
+ b=MvgVzfQh96j0E3U0jHDtimDvGDtIdjcJCdCXd6RHpFyTjMveFeeg56TujWQWMdk7A3
+ 6SUlySAHYX5FAeVknB5y808/bKnD9S+SxSMH1mvACwT7/AgEiTVsAkBtDp12YayjXqa9
+ 9HrW0pE5Uwfb3eujsUTijvzrJub1GvgppCocLpGE9mzPPN23JZqU4s+VHVbQ2eaVUTjj
+ z1ruxppCahnI8IhepPjxcqM4oQafJAKlT9j2WQx8PDHS7g2gEmSayl7juONxIc3jHG90
+ 1wZ+GE+luZrltnA2ZpAReaAdjiK+cMZxOERvc5Ay4Evq0mWQ4t2jfVsHh19Q1Qt8kX+F
+ FSAg==
+X-Gm-Message-State: APjAAAWqgsXEUcKxW9amll1FlZWwQPPI228gqworO3GhULfOLTbh4WA7
+ pFEZotOYNslTiKC20sJvnU60h4tadGFtuSBVwOQ=
+X-Google-Smtp-Source: APXvYqwmqcH0DTBSRr1W5PEboqZl9eNrRnGfwBz/22T1r10yVcw0KO4fHH9AZZHFDFACKa88tOO5vT/zZa40mMCQj8M=
+X-Received: by 2002:a54:4618:: with SMTP id p24mr2849469oip.148.1566204653079; 
+ Mon, 19 Aug 2019 01:50:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="zhXaljGHf11kAtnf"
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1908161008450.18249@viisi.sifive.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+References: <20190817073253.27819-1-hch@lst.de>
+ <20190817073253.27819-4-hch@lst.de>
+In-Reply-To: <20190817073253.27819-4-hch@lst.de>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 19 Aug 2019 10:50:41 +0200
+Message-ID: <CAMuHMdVT3VSQ1S=YEoTjYzxwpavy+43XUWA-wzCO56FuHK6R-g@mail.gmail.com>
+Subject: Re: [PATCH 03/26] m68k, microblaze: remove ioremap_fullcache
+To: Christoph Hellwig <hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_011807_156025_16A3F1C9 
-X-CRM114-Status: GOOD (  16.95  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190819_015054_503715_7AF3F709 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.167.194 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (geert.uytterhoeven[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,190 +79,49 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
+ Linux-sh list <linux-sh@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Guo Ren <guoren@kernel.org>, sparclinux <sparclinux@vger.kernel.org>,
+ linux-riscv@lists.infradead.org, Vincent Chen <deanbo422@gmail.com>,
+ Linux-Arch <linux-arch@vger.kernel.org>,
+ linux-s390 <linux-s390@vger.kernel.org>,
+ "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
+ the arch/x86 maintainers <x86@kernel.org>,
+ arcml <linux-snps-arc@lists.infradead.org>, linux-xtensa@linux-xtensa.org,
+ Arnd Bergmann <arnd@arndb.de>, linux-m68k <linux-m68k@lists.linux-m68k.org>,
+ Openrisc <openrisc@lists.librecores.org>, Greentime Hu <green.hu@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>, Guan Xuetao <gxt@pku.edu.cn>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Michal Simek <monstr@monstr.eu>, Parisc List <linux-parisc@vger.kernel.org>,
+ linux-mips@vger.kernel.org, alpha <linux-alpha@vger.kernel.org>,
+ nios2-dev@lists.rocketboards.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
---zhXaljGHf11kAtnf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-Hi Paul,
-On Fri, Aug 16, 2019 at 10:14:01AM -0700, Paul Walmsley wrote:
-> Hello Mao Han,
-> 
-> On Fri, 17 May 2019, Mao Han wrote:
-> 
-> > This patch set add perf callchain(FP/DWARF) support for RISC-V.
-> > It comes from the csky version callchain support with some
-> > slight modifications. The patchset base on Linux 5.1.
-> > 
-> > CC: Palmer Dabbelt <palmer@sifive.com>
-> > CC: linux-riscv <linux-riscv@lists.infradead.org>
-> > CC: Christoph Hellwig <hch@lst.de>
-> > CC: Guo Ren <guoren@kernel.org>
-> 
-> I tried these patches on v5.3-rc4, both on the HiFive Unleashed board 
-> with a Debian-based rootfs and QEMU rv64 with a Fedora-based rootfs.  For 
-> QEMU, I used defconfig, and for the HiFive Unleashed, I added a few more 
-> Kconfig directives; and on both, I enabled CONFIG_PERF_EVENTS.  I built 
-> the perf tools from the kernel tree.
-> 
-> Upon running "/root/bin/perf record -e cpu-clock --call-graph fp 
-> /bin/ls", I see the backtraces below.  The first is on the HiFive 
-> Unleashed, the second is on QEMU.  
-> 
-> Could you take a look and tell me if you see similar issues?  And if not, 
-> could you please walk me through your process for testing these patches on 
-> rv64, so I can reproduce it here?
+On Sat, Aug 17, 2019 at 9:41 AM Christoph Hellwig <hch@lst.de> wrote:
+> No callers of this function.
 >
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
 
-I'v tried the command line above and got similar issues with probability.
-unwind_frame_kernel can not stop unwind when fp is a quite large
-value(like 0x70aac93ff0eff584) which can pass the simple stack check.
-        if (kstack_end((void *)frame->fp))
-                return -EPERM;
-        if (frame->fp & 0x3 || frame->fp < TASK_SIZE)
-                return -EPERM;
-handle_exception from arch/riscv/kernel/entry.S will use s0(fp) as temp
-register. The context for this frame is unpredictable. We may add more
-strict check in unwind_frame_kernel or keep s0 always 0 in handle_exception
-to fix this issue.
+>  arch/m68k/include/asm/kmap.h     | 7 -------
 
-Breakpoint 1, unwind_frame_kernel (frame=0xffffffe0000057a0 <rcu_init+118>)
-    at arch/riscv/kernel/perf_callchain.c:14
-14      {
-1: /x *frame = {fp = 0xffffffe000005ee0, ra = 0xffffffe000124c90}
-(gdb)
-Continuing.
+Acked-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-Breakpoint 1, unwind_frame_kernel (frame=0xffffffe0000057a0 <rcu_init+118>)
-    at arch/riscv/kernel/perf_callchain.c:14
-14      {
-1: /x *frame = {fp = 0xffffffe000124c74, ra = 0xffffffe000036cba}
-(gdb)
-Continuing.
+Gr{oetje,eeting}s,
 
-Breakpoint 1, unwind_frame_kernel (frame=0xffffffe0000057a0 <rcu_init+118>)
-    at arch/riscv/kernel/perf_callchain.c:14
-14      {
-1: /x *frame = {fp = 0x70aac57ff0eff584, ra = 0x8082614d64ea740a}
-(gdb)
+                        Geert
 
-Some time perf record can output perf.data correct. something like:
-# perf record -e cpu-clock --call-graph fp ls
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-perf.data
-[ perf record: Woken up 1 times to write data ]
-[ perf record: Captured and wrote 0.012 MB perf.data (102 samples) ]
-# 
-# perf report
-# To display the perf.data header info, please use --header/--header-only options.
-#
-#
-# Total Lost Samples: 0
-#
-# Samples: 102  of event 'cpu-clock'
-# Event count (approx.): 25500000
-#
-# Children      Self  Command  Shared Object      Symbol                           
-# ........  ........  .......  .................  .................................
-#
-    30.39%     0.00%  ls       [kernel.kallsyms]  [k] ret_from_exception
-            |
-            ---ret_from_exception
-               |          
-               |--16.67%--do_page_fault
-               |          handle_mm_fault
-               |          __handle_mm_fault
-               |          |          
-               |          |--9.80%--filemap_map_pages
-               |          |          |          
-               |          |          |--3.92%--alloc_set_pte
-               |          |          |          page_add_file_rmap
-               |          |          |          
-               |          |           --3.92%--filemap_map_pages
-               |          |          
-               |           --0.98%--__do_fault
-               |          
-               |--8.82%--schedule
-               |          __sched_text_start
-               |          finish_task_switch
-               |          
-                --4.90%--__kprobes_text_start
-                          irq_exit
-                          irq_exit
-
-    28.43%     0.00%  ls       [kernel.kallsyms]  [k] ret_from_syscall
-            |
-            ---ret_from_syscall
-               |          
-               |--15.69%--__se_sys_execve
-               |          __do_execve_file
-               |          search_binary_handler.part.7
-
-I previous tested these patch with a program(callchain_test.c) mostly
-running in userspace, so I didn't got this issues.
-
-Thanks,
-Mao Han
-
---zhXaljGHf11kAtnf
-Content-Type: text/x-csrc; charset=us-ascii
-Content-Disposition: attachment; filename="callchain_test.c"
-
-#include <stdio.h>
-
-void test_4(void)
-{
-  volatile int i, j;
-
-  for(i = 0; i < 10000000; i++) 
-    j=i; 
-}
-
-void test_3(void)
-{
-  volatile int i, j;
-  test_4();
-  for(i = 0; i < 3000; i++)
-    j=i;
-}
-
-void test_2(void)
-{
-  volatile int i, j;
-  test_3();
-  for(i = 0; i < 3000; i++)
-    j=i;
-}
-
-void test_1(void)
-{
-  volatile int i, j;
-  test_2();
-  for(i = 0; i < 3000; i++)
-    j=i;
-
-}
-
-int main(void)
-{
-  test_1();
-  return 0;
-}
-
---zhXaljGHf11kAtnf
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---zhXaljGHf11kAtnf--
-
