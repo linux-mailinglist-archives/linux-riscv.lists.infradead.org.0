@@ -2,54 +2,58 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA0539212B
-	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 12:18:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6B38921B0
+	for <lists+linux-riscv@lfdr.de>; Mon, 19 Aug 2019 12:53:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7wtj4IJSPJhcpknWicCMS2TNrW/VtNwFf7xodplprAY=; b=sFxZTg1Pz13pdw
-	BfHZLt79qOwlOR4mgQwj15gHCq0aD0qsumF8Tv27kVk8eI9wM1g1ckeOwuwif9quHuxoCI1C1L9O2
-	MBGIecepeKW9RG6RLzHNWodJUCeIdCbblIVa1L4tE2OpzIDt0NPmOAX+C3rVai9Rm4+KXyQtsDbpY
-	ZT6ubN7H6MnZt4C9bRCovhIQIFBuszMbM2CeRhso05Tte7oFJZRMmXHsIN/zjJRwOTBkY2qsynlxi
-	8YvgGHsiNDJhyoNKYhzL5dkfUVnrRGFI8CEF+i9Lpcc90Hfby63YNGA+gVV4vmEHTBBn6MrhKEYNE
-	g/BQ5fHLt8MiWAj9Z/Qg==;
+	List-Owner; bh=45FWlpSpYA80dK9QRk+1bu5G3f5uS3lYpPn/5AzDAT0=; b=VE0A2tCnUcYsRR
+	crHYY9ZtLlMwVzn5TNFMTRjxvU3UaG/0XqQdi9M9BDBKMolwrvlXZ5FmYWrPcgqPQRSUsXsSmYGJ5
+	0GgpC9QJKv+8GlupmQqbtOXvmv+72Qh5aV/pOPVWTgL0mwh1wE2jumOpKfycEt1rDdctzJtL7m3YU
+	7cW7oohQpYyL4/v5+i/2luJMY7Ocz826CMsTrUpiQWettBJQpaHWJBwDkjiwYtvlljZ/jvqoRcZr4
+	nLEz2c3TccTaOd8a4mwyyncB5pL3aOBXwDCWNlAE09laYrsHCjr9OgaLlJMycuASayrRjZsRWfeVf
+	ibOe7XZCVdwtk5SCv/6w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzejs-0004go-JJ; Mon, 19 Aug 2019 10:18:12 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1hzfI3-0007hZ-ME; Mon, 19 Aug 2019 10:53:31 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzejo-0004g9-6K
- for linux-riscv@lists.infradead.org; Mon, 19 Aug 2019 10:18:09 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 75597227A8B; Mon, 19 Aug 2019 12:18:05 +0200 (CEST)
-Date: Mon, 19 Aug 2019 12:18:05 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH 03/15] riscv: refactor the IPI code
-Message-ID: <20190819101805.GB29645@lst.de>
-References: <20190813154747.24256-1-hch@lst.de>
- <20190813154747.24256-4-hch@lst.de>
- <alpine.DEB.2.21.9999.1908132141350.18249@viisi.sifive.com>
+ id 1hzfHy-0007hE-Ld
+ for linux-riscv@lists.infradead.org; Mon, 19 Aug 2019 10:53:28 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 2C286B647;
+ Mon, 19 Aug 2019 10:53:23 +0000 (UTC)
+From: Andreas Schwab <schwab@suse.de>
+To: Atish Patra <Atish.Patra@wdc.com>
+Subject: Re: Random memory corruption with v5.2
+References: <mvm8sshcdwc.fsf@suse.de>
+ <CAEn-LTpM-0TMxkNNh6nnLH9Bnr9Zm+VFLf=z1y9sER6RXrQooQ@mail.gmail.com>
+ <mvm1ry8au3f.fsf@suse.de>
+ <a47ede7577580987feb279d9879a994786a65d1a.camel@wdc.com>
+X-Yow: I smell a RANCID CORN DOG!
+Date: Mon, 19 Aug 2019 12:53:22 +0200
+In-Reply-To: <a47ede7577580987feb279d9879a994786a65d1a.camel@wdc.com> (Atish
+ Patra's message of "Thu, 15 Aug 2019 20:52:43 +0000")
+Message-ID: <mvmtvadzasd.fsf@suse.de>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2.90 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1908132141350.18249@viisi.sifive.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_031808_385043_242CE667 
-X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-CacheID: sfid-20190819_035326_857901_F43870AF 
+X-CRM114-Status: UNSURE (   6.51  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,25 +65,27 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- Christoph Hellwig <hch@lst.de>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "david.abdurachmanov@gmail.com" <david.abdurachmanov@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Aug 13, 2019 at 09:41:58PM -0700, Paul Walmsley wrote:
-> On Tue, 13 Aug 2019, Christoph Hellwig wrote:
-> 
-> > This prepare for adding native non-SBI IPI code.
-> > 
-> > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> 
-> Thanks, queued for v5.4-rc1.
+On Aug 15 2019, Atish Patra <Atish.Patra@wdc.com> wrote:
 
-Where did you queue it up?  I can't find it anywhere in your tree,
-and I really need a baseline for the next iteration.
+> Linux kernel:
+> http://lists.infradead.org/pipermail/linux-riscv/2019-August/005889.html
+
+I've been using that patch, without any changes to openSBI, to run
+bootstrap/regtest on gcc and to build glibc without issues.
+
+Andreas.
+
+-- 
+Andreas Schwab, SUSE Labs, schwab@suse.de
+GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
+"And now for something completely different."
 
 _______________________________________________
 linux-riscv mailing list
