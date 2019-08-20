@@ -2,81 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D167196A8B
-	for <lists+linux-riscv@lfdr.de>; Tue, 20 Aug 2019 22:29:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 07E0E96B0D
+	for <lists+linux-riscv@lfdr.de>; Tue, 20 Aug 2019 23:05:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lFWIAcPDLSrd1Z8hOW7XSOAepKe/hESN0ecrSDeX4MY=; b=YwZEQBYlswjCT8
-	xrnwFW3asjYBJXsCAAjYNJAFDkp/aXLMhy3EbiIekmRpFj07slKWFXqRhKlq/Zc1cCY7ayR39qmD7
-	NUHcebp2Riw3ZGbJ7SBJD2Gvm53g0279MNRXyxOqtH/sgtyopuedVhuhcHfeCMRK/JzVNlkuliPee
-	fcKz4M71y8loFqVeHJuapHCcLvQCWD5UQpanGFZd0diXcUDfa7Z1p0as7avlbZHXWg0lyZnCNsOTV
-	fCJg5itd/jk5OlaGjPGtVjKnYnka825kBvP1cYJrf5QJ6CmhGdmxZQPhQkVYcSwVgeBPmpF2iv1c2
-	2dJ+5aGDF5I3mMAvnFuw==;
+	List-Owner; bh=cH+oDMkruoOegNEsWEd/SvERo0jTfPlFv0FYluqqXcQ=; b=KvyypxVA+6fgrW
+	tSmWKOSUgtuSlh3q1iY/Tny+i+SHzrwHFKSFCwnkSJeIJ3h2yV6WWceXTiqD1hirtPgxyIhXwkPbf
+	Y+XG20/W6mo+ksIrH1azq4qC6YWboWvFHcKxN6M2Z+drZa96pFzANtXdHN4PjIYqAaY9k8v5dBzoJ
+	u8yaJ1OYRkhSlaSiZ1Ic+htGOGxDh4/UxegsVeehV3RN5CbkIntXIX4/7S6XJapjQ5tjAQM6CJVis
+	17Cn4iOHcGTzIvauapwq5BDRjeD3NjyZ5m1BS2dB496p5d77NgZSQp/hqKLW9sRpJ5ksmV27DyqOW
+	m5p1hLtdngIqhVt2FKCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0AlN-0005Y7-AV; Tue, 20 Aug 2019 20:29:53 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1i0BJP-0006bO-P1; Tue, 20 Aug 2019 21:05:03 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0AlJ-0005XN-OD
- for linux-riscv@lists.infradead.org; Tue, 20 Aug 2019 20:29:51 +0000
+ id 1i0BJL-0006VJ-VA
+ for linux-riscv@lists.infradead.org; Tue, 20 Aug 2019 21:05:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1566332990; x=1597868990;
+ t=1566335101; x=1597871101;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=O1SvXr94+aBuhezicF2UtLS/6BWYlUxtYT7VCJG9jno=;
- b=GWcXBGGEMyO75ATZZa7U3knDSZgv9knIDEom+1mN3Dm5SqMgjPOokCrf
- bYRPWNWUuprjFB9KzhOjHT+5PpZfNwFcxxkbyBMLLrfV54G/CyZCGe/9Q
- ycBVBtOiiDaVVjrzzCxEi55U5LFnZnOY+GyKVDppppgjwI9FlPcvT1NfI
- ybyESUcDoPiG/wx29F5EeMRQr+3u77g+uquJ99V80OAIsblGsTOwYw2Xu
- pPPdHbIy8UOsulV+DNeEhGzhtvtrL3MUAICqGHu6GkmWHU6CHwFLtsfu1
- QtvmqyM07DWzR7aAPgLDxru7viUZoRh4Cm7enkHG+MS4biRjHqrUTA/zi Q==;
-IronPort-SDR: 5J5wtKN6vNz1ZdSOztd2htI3GqdsmUw62JzR/CLbE7BeI6AYKjNOMDnWy/r5iGyXePOic3CykW
- eOpxziXi551Ba0GdmAWvz/vWdHVwo9DSkOWSgO0bYBdFPuMhQgbzcBKQFaHGHDU38T+Avih/aJ
- IO1R/3bJGYyoUG/nXubghW1B5vbgcNSUjTSc9TPdjQlaGjU1uKc2t5ZzOdPxeoLFPwYnM/SQFU
- L7Ncl1Chpz5ERl7JHz4yjqzYqxalTFa2A6zrRFGUlqccD+8uDImqeR008rJhTa+9GuZLTv+aHq
- NZs=
-X-IronPort-AV: E=Sophos;i="5.64,410,1559491200"; d="scan'208";a="117212209"
-Received: from mail-co1nam04lp2054.outbound.protection.outlook.com (HELO
- NAM04-CO1-obe.outbound.protection.outlook.com) ([104.47.45.54])
- by ob1.hgst.iphmx.com with ESMTP; 21 Aug 2019 04:29:49 +0800
+ bh=6kBuad4Y+wWNtvBqol4LM0EQY+Y3HPZMluS/SMiHtPI=;
+ b=O8YFNc+Xb7CyK3IcQ+IJIIsn2OoGucfDwJ5V5ssr2OlTVjD+Yw47+Ymc
+ BZ7cbsY/OVGHrrZZOJz1ZSZOkFmUk4Vg3xJQBd/ArNQv3+evo+Av/H+vs
+ g98V0lOlrala7X/ClUXt+rsEcV1tLX+HEGs8TLT3xjz0V+2HoydkzO+u/
+ zCJCd8jwwcraxmaapPTyLaPWmB0VmfwoiH4EhD1m6HINPf7E+9ztKRkLf
+ 2vkkJ/Yqo1gonnRQXGn5fYCqscQhJ+neurF7jA9wIJE10NByqjFqqBCop
+ btVA3wZCug+Kx+XfSWtiPRBApxW45hiMaKL5atugTg0DyuadKUTShJLf+ A==;
+IronPort-SDR: GKJ7+kuVpmOR6roKNkYqfRvten4725RcPEN+460TDseYQzsZY1rBf8yikJMfg28sNkN7lyiP5F
+ mC6CaH2zblWMTsoqwQvHMerpEFKSmosF0jP85pdTx10VlrUp1dqPowRqeCS4FvJpdbIXzDgHN3
+ DfkhQiXgusTXR3nQxa9rUlUvse37i4FDZHnEdGLXH8KPIjR5BTAtcobN9ns52OW5hjaDYNwxAU
+ ZF3bmc3q2NB4bK9BS9R1acYX7VVPdOvysj0k5fUe+zTzsH5MwpP+nl2SDfIN4Yd3T+G49+URf0
+ 6OY=
+X-IronPort-AV: E=Sophos;i="5.64,410,1559491200"; d="scan'208";a="120872935"
+Received: from mail-by2nam05lp2051.outbound.protection.outlook.com (HELO
+ NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.51])
+ by ob1.hgst.iphmx.com with ESMTP; 21 Aug 2019 05:04:59 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ez46ZQKJIbOTbsurGTF737BukyetYHD6Vze8Qjl6J0KSLDWAib4gNLqVxPWw+FbGQKMieL5z6ETsMHeUjY+L9PU1IWeYWcnVVOhwi/FmAxKAfTKmEztJbo05CGQzw0lP645sMOExEhdklvVBgWWYz4sgaFAIX6aScIc3EgIunxso89iQButaWGs63reBhhFQbGuUgX3wqoy+0iyh6uktX8aB1jfbpkXH9KfzhHvpnSe/6VaGlwWtQnDsQSRlRI/aeuPi9ZdEk8NJzU2D8AG95Cv4BLtBiVHFlY+HuOSvKIQXhr9gi0ulAI0RGzzVr1IUBeS3SDypbKBORV1BLgCj1A==
+ b=Cij2CEf4uSfkBjlc4fiExvQ8VU+SsoKnrdb3y95+i49dhyzRxX5KuR5RzT5rxzRWtIMcCJiY3a5jClvmC2QuFcgRzU2bGySbUu42/XuEfg4zvRUNuF/Ce+pu5tJXBXLGMDvj9UcKhhkhPrGrXmeBk/Qt7rEvB2h3ny+d5aSk6Mg0/X0kl8jmRf2O01EbQyUc//bWZIvjjiWP4z3nRR25T55tguaZ/btXaE/mFRHJ5M3BHerz+4DcAr2PSNBBphmh5d2M5eYp/PBKit5o+/lyYHK3OdhaGm/boCywJbYPVrlTWbg0eQ9ikHGAUtAlSaLElZObe9cFUzShE8o9l2PhyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O1SvXr94+aBuhezicF2UtLS/6BWYlUxtYT7VCJG9jno=;
- b=oH5tS/DH4EUmzT1NNRvU4Qt3yLM4ZlJM5unzIpWF0yT7QOrqpnIoSlObtATTggENCzlVk2qmBz3HRp2hNg4qHz+AWiWMm0JwjIpH+TKvq1p036swqmZml5GsqCpjheui7fNJ1P11yEFim/FQxc1ERKLMlS/tPPUPqgbpDZRR/Fuf2c6ouChg9xl22boGtTDa3s7co6Vjj5noAgppcIUcx+bVnvXD78SEZ5lqF9eeBNxSE2zd7wB6Ky5DuOWCPLB65GLt4nCK/Qpw0tDCjjoC5AIi7dGGT5AIPVWKTUVL0CPuLDUIfpRV1Tii4xIiiXBwa9YpH4I5I4inP59E2k9NlQ==
+ bh=6kBuad4Y+wWNtvBqol4LM0EQY+Y3HPZMluS/SMiHtPI=;
+ b=KLHvV32+Jim4E2Q9A0R1yMn6NTubp7ou1KXurHC0NJDCLVeVneOlc2iQYb0+DqxcfVKTAOyF0zGMFO2YjXYJHg7bETy42r9RYpmXXkaarRvIRwJEyIv6EoC9cUukJEBR9qIIVyhxRl+i/4D1gLl8UXVjz02zffa7/bxmIOISgv8L1jq46H8EvFDKLDm+1PaOBBUReoNI0s+0HAHxeH+5pEg+WCGwJWURM/ZGkQzEPy6RWbC9B/dmcZh0WL/rQ6yugquHNHR7EwwZSGbgmw/k71JbMC23wjqlUqkQ3AVAU0Q90S7zM3FegOPQEgc3tFX5AKpy36pvOjO/EBZR7scOGQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O1SvXr94+aBuhezicF2UtLS/6BWYlUxtYT7VCJG9jno=;
- b=XQgOCv+telPd67zweL/Kcn6PM7Kp0I7swBPPnEHbCyURoL/D+mRe80Q6hulV+TpAtmY9zFTc/NHrRGaggQmI6PyFUpDYvTxB4Df/C6l552zeTgALzi65oxeINgZhuVXRd/rlK7FHkg8MfOL7+Qa3h9UdVfIUIdThE2Bh9XBqIKw=
+ bh=6kBuad4Y+wWNtvBqol4LM0EQY+Y3HPZMluS/SMiHtPI=;
+ b=RJb/bwLmRyR5YGP5PFwES9332/3DQCx6MeXYmW7/GSwCayyXXvMii6AFGmORgctulCD+vGJMRnAV77NwiVhGhv78Qo6kysWYmMoVjxSgYEiolZ5Q6QONIRNBVbUOJhM+3O/QGygyn7an2pUDAWCUv8ECTMGEK8MO5aGwWtKbptI=
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB5864.namprd04.prod.outlook.com (20.179.59.82) with Microsoft SMTP
+ BYAPR04MB4310.namprd04.prod.outlook.com (20.176.251.29) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2178.16; Tue, 20 Aug 2019 20:29:47 +0000
+ 15.20.2178.18; Tue, 20 Aug 2019 21:04:57 +0000
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::24ca:5178:5475:9a0e]) by BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::24ca:5178:5475:9a0e%4]) with mapi id 15.20.2178.018; Tue, 20 Aug 2019
- 20:29:47 +0000
+ 21:04:57 +0000
 From: Atish Patra <Atish.Patra@wdc.com>
-To: "anup@brainfault.org" <anup@brainfault.org>
-Subject: Re: [v2 PATCH] RISC-V: Optimize tlb flush path.
-Thread-Topic: [v2 PATCH] RISC-V: Optimize tlb flush path.
-Thread-Index: AQHVVvDfUBJCIAOoL0y7jXfLdcYugacDuw4AgADDFIA=
-Date: Tue, 20 Aug 2019 20:29:47 +0000
-Message-ID: <171bb233718ba2897fa5fd48853721108825d22c.camel@wdc.com>
-References: <20190820004735.18518-1-atish.patra@wdc.com>
- <CAAhSdy3uQ=CSg4pHb_BYCEOh_MMTyLf8SW2o9SCn0UZDYwgGpg@mail.gmail.com>
-In-Reply-To: <CAAhSdy3uQ=CSg4pHb_BYCEOh_MMTyLf8SW2o9SCn0UZDYwgGpg@mail.gmail.com>
+To: "hch@lst.de" <hch@lst.de>, "paul.walmsley@sifive.com"
+ <paul.walmsley@sifive.com>, "palmer@sifive.com" <palmer@sifive.com>
+Subject: Re: [PATCH 09/15] riscv: implement remote sfence.i natively for M-mode
+Thread-Topic: [PATCH 09/15] riscv: implement remote sfence.i natively for
+ M-mode
+Thread-Index: AQHVUe6Ste5QyM3L50+bKaWbkCQXSacEkfiA
+Date: Tue, 20 Aug 2019 21:04:57 +0000
+Message-ID: <d3ca4c6174dea85a4a55f2ec62875b226f05b69d.camel@wdc.com>
+References: <20190813154747.24256-1-hch@lst.de>
+ <20190813154747.24256-10-hch@lst.de>
+In-Reply-To: <20190813154747.24256-10-hch@lst.de>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -85,44 +87,44 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Atish.Patra@wdc.com; 
 x-originating-ip: [199.255.44.250]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 8229c90f-1b64-4022-3e5d-08d725ad2515
+x-ms-office365-filtering-correlation-id: c8931afa-639f-42a4-ef0f-08d725b20e5d
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:BYAPR04MB5864; 
-x-ms-traffictypediagnostic: BYAPR04MB5864:
-x-microsoft-antispam-prvs: <BYAPR04MB586493FCA9815B6EFE38C344FAAB0@BYAPR04MB5864.namprd04.prod.outlook.com>
+ SRVR:BYAPR04MB4310; 
+x-ms-traffictypediagnostic: BYAPR04MB4310:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR04MB43107754AE335F34E46FBB42FAAB0@BYAPR04MB4310.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
 x-ms-oob-tlc-oobclassifiers: OLM:7691;
 x-forefront-prvs: 013568035E
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(376002)(366004)(39860400002)(136003)(346002)(199004)(189003)(25786009)(476003)(2616005)(81166006)(2351001)(6246003)(2501003)(1730700003)(76176011)(6916009)(81156014)(14454004)(4326008)(229853002)(8936002)(99286004)(3846002)(316002)(2906002)(54906003)(305945005)(6116002)(71200400001)(71190400001)(66556008)(66476007)(26005)(86362001)(64756008)(76116006)(486006)(66946007)(6436002)(66066001)(186003)(478600001)(53546011)(446003)(5660300002)(7736002)(11346002)(53936002)(118296001)(6486002)(102836004)(5640700003)(6512007)(6506007)(36756003)(256004)(66446008)(8676002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5864;
+ SFS:(10019020)(4636009)(396003)(346002)(136003)(366004)(376002)(39860400002)(199004)(189003)(81156014)(81166006)(53936002)(316002)(110136005)(8676002)(118296001)(14454004)(186003)(256004)(5660300002)(6246003)(102836004)(6116002)(305945005)(3846002)(6506007)(2616005)(2906002)(11346002)(25786009)(26005)(4326008)(486006)(7736002)(71190400001)(71200400001)(478600001)(8936002)(446003)(36756003)(229853002)(76176011)(476003)(2501003)(76116006)(86362001)(6436002)(66066001)(54906003)(66446008)(66556008)(66476007)(2201001)(64756008)(6486002)(66946007)(6512007)(99286004);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4310;
  H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; MX:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: pJay5Fl+4voQ49Sk0fuH1BtkKtOx+Plf4PTGuIRfL8VG4syRuVb0Vc3s63WWqpYZy35Ib2wjrJ3JbdwbwkQwzrY8aOVEIX9VUDzt93NMOud1eLIPi1UDX11tkJTZCxnZe+cytvr+GtDyQgA4CJCX2LO/xQMYlBsB6wblRAiee/qhVWipS3+T29gb1U/UmR12KXPRpKlrdUo2E0Jx7cHB3VOF41OACAMRckyUGtcBdXpUuqrl/SUvz443lr26J6P9DbtF/dvMx8hmtefszmLFMPKTmaH4TSXi9zPFU3xN6NjXJFNmg6IBkCH/2qMJna7eH8EkHAdoSPTs+iEpRvGbEzzVd9BQdtzoQAguevlDVy7NGOLWAazWfi/+JIdsruLTfpORIIKfVveGleG5JsnjX2MFnUr1gu0MlqjmTVgYuT4=
-x-ms-exchange-transport-forked: True
-Content-ID: <676BF3AC5FF9F243836EFCF14992B59E@namprd04.prod.outlook.com>
+x-microsoft-antispam-message-info: QSc+McBQaVF24NWReMYlDmQrQkxEsiOhFw5d6u52I5wuoebgHQykbmpSJh/hqTTEW98q8YIOlwawJrPbMDd431mj3fd6nGGfyF0w0xfXuXiW100Dmuf28VEL1Q0z4uL+ZmL/aFqdHy6CUKA/uAvtzb+G7ENc2OoFPqE1t6B7gK0NIEl4O3HrSn6wnZseHWaQK8G0RW8TvCnEkPUVk6Go9nf0q+bdTF8EtgGxtE8NAAOFIyOsT8L/Dt3k42NU1mtxxWC16spkgO3M1fdtRV502XfI0dT3GqHCU8tzAcoMYDEbJhW3w+RCz+uxYtBHiE7ih1h8lY2zG0+wjP4/FzJ87CmMwzGypZ/vUO96bFYCXdoC2ryZC8SpirCdEh8q1CD8c9kK+Rmgv8HSii2nGtoyeP0d+V42rx2d6pPhvGvD6CM=
+Content-ID: <5CA2AAD6A7152345891D03CEE309E4DC@namprd04.prod.outlook.com>
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8229c90f-1b64-4022-3e5d-08d725ad2515
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2019 20:29:47.7014 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c8931afa-639f-42a4-ef0f-08d725b20e5d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2019 21:04:57.0598 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: hNDRjTEWxEbUXO+n8lB75bMB5vyeLarGrM1BmnCYTXPlNqGXDpggKzZ78pBAq5iKvjivn+NYhbtYoO9bDEk7Nw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5864
+X-MS-Exchange-CrossTenant-userprincipalname: dmaE4lzShq7EUi9Ip8b6eoMRh4mq1jnQSs0uSqW1+XGXY33qz7xcR29s2IBAbMFD73Rfi2kAWb2X1+9cfI3s1g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4310
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190820_132949_901934_358D2D60 
-X-CRM114-Status: GOOD (  22.01  )
+X-CRM114-CacheID: sfid-20190820_140500_150447_6DE8B064 
+X-CRM114-Status: GOOD (  19.22  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ medium trust [216.71.153.141 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -143,137 +145,95 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "hch@infradead.org" <hch@infradead.org>,
- "schwab@linux-m68k.org" <schwab@linux-m68k.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "allison@lohutok.net" <allison@lohutok.net>
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 2019-08-20 at 14:21 +0530, Anup Patel wrote:
-> On Tue, Aug 20, 2019 at 6:17 AM Atish Patra <atish.patra@wdc.com>
-> wrote:
-> > In RISC-V, tlb flush happens via SBI which is expensive.
-> > If the target cpumask contains a local hartid, some cost
-> > can be saved by issuing a local tlb flush as we do that
-> > in OpenSBI anyways. There is also no need of SBI call if
-> > cpumask is empty.
-> > 
-> > Do a local flush first if current cpu is present in cpumask.
-> > Invoke SBI call only if target cpumask contains any cpus
-> > other than local cpu.
-> > 
-> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> > ---
-> >  arch/riscv/include/asm/tlbflush.h | 37 ++++++++++++++++++++++++++-
-> > ----
-> >  1 file changed, 31 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/arch/riscv/include/asm/tlbflush.h
-> > b/arch/riscv/include/asm/tlbflush.h
-> > index b5e64dc19b9e..3f9cd17b5402 100644
-> > --- a/arch/riscv/include/asm/tlbflush.h
-> > +++ b/arch/riscv/include/asm/tlbflush.h
-> > @@ -8,6 +8,7 @@
-> >  #define _ASM_RISCV_TLBFLUSH_H
-> > 
-> >  #include <linux/mm_types.h>
-> > +#include <linux/sched.h>
-> >  #include <asm/smp.h>
-> > 
-> >  /*
-> > @@ -42,20 +43,44 @@ static inline void flush_tlb_range(struct
-> > vm_area_struct *vma,
-> > 
-> >  #include <asm/sbi.h>
-> > 
-> > -static inline void remote_sfence_vma(struct cpumask *cmask,
-> > unsigned long start,
-> > -                                    unsigned long size)
-> > +static void __riscv_flush_tlb(struct cpumask *cmask, unsigned long
-> > start,
-> > +                             unsigned long size)
-> >  {
-> >         struct cpumask hmask;
-> > +       unsigned int hartid;
-> > +       unsigned int cpuid;
-> > 
-> >         cpumask_clear(&hmask);
-> > +
-> > +       if (!cmask) {
-> > +               riscv_cpuid_to_hartid_mask(cpu_online_mask,
-> > &hmask);
-> > +               goto issue_sfence;
-> > +       }
-> > +
-> > +       cpuid = get_cpu();
-> > +       if (cpumask_test_cpu(cpuid, cmask)) {
-> > +               /* Save trap cost by issuing a local tlb flush here
-> > */
-> > +               if ((start == 0 && size == -1) || (size >
-> > PAGE_SIZE))
-> > +                       local_flush_tlb_all();
-> > +               else if (size == PAGE_SIZE)
-> > +                       local_flush_tlb_page(start);
-> > +       }
-> > +       if (cpumask_any_but(cmask, cpuid) >= nr_cpu_ids)
-> > +               goto done;
-> > +
-> >         riscv_cpuid_to_hartid_mask(cmask, &hmask);
-> > +       hartid = cpuid_to_hartid_map(cpuid);
-> > +       cpumask_clear_cpu(hartid, &hmask);
-> > +
-> > +issue_sfence:
-> >         sbi_remote_sfence_vma(hmask.bits, start, size);
-> > +done:
-> > +       put_cpu();
-> >  }
-> > 
-> > -#define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
-> > -
-> > +#define flush_tlb_all() __riscv_flush_tlb(NULL, 0, -1)
-> >  #define flush_tlb_range(vma, start, end) \
-> > -       remote_sfence_vma(mm_cpumask((vma)->vm_mm), start, (end) -
-> > (start))
-> > +       __riscv_flush_tlb(mm_cpumask((vma)->vm_mm), start, (end) -
-> > (start))
-> > 
-> >  static inline void flush_tlb_page(struct vm_area_struct *vma,
-> >                                   unsigned long addr) {
-> > @@ -63,7 +88,7 @@ static inline void flush_tlb_page(struct
-> > vm_area_struct *vma,
-> >  }
-> > 
-> >  #define flush_tlb_mm(mm)                               \
-> > -       remote_sfence_vma(mm_cpumask(mm), 0, -1)
-> > +       __riscv_flush_tlb(mm_cpumask(mm), 0, -1)
-> > 
-> >  #endif /* CONFIG_SMP */
-> > 
-> > --
-> > 2.21.0
-> > 
+On Tue, 2019-08-13 at 17:47 +0200, Christoph Hellwig wrote:
+> The RISC-V ISA only supports flushing the instruction cache for the
+> local
+> CPU core.  For normal S-mode Linux remote flushing is offloaded to
+> machine mode using ecalls, but for M-mode Linux we'll have to do it
+> ourselves.  Use the same implementation as all the existing open
+> source
+> SBI implementations by just doing an IPI to all remote cores to
+> execute
+> th sfence.i instruction on every live core.
 > 
-> I think we should move __riscv_flush_tlb() to mm/tlbflush.c because
-> it's quite
-> big now.
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  arch/riscv/mm/cacheflush.c | 31 +++++++++++++++++++++++++++----
+>  1 file changed, 27 insertions(+), 4 deletions(-)
 > 
-> In future, we will also have __riscv_flush_tlb_asid() which will
-> flush TLB based
-> on ASID.
-> 
+> diff --git a/arch/riscv/mm/cacheflush.c b/arch/riscv/mm/cacheflush.c
+> index 9ebcff8ba263..10875ea1065e 100644
+> --- a/arch/riscv/mm/cacheflush.c
+> +++ b/arch/riscv/mm/cacheflush.c
+> @@ -10,10 +10,35 @@
+>  
+>  #include <asm/sbi.h>
+>  
+> +#ifdef CONFIG_M_MODE
+> +static void ipi_remote_fence_i(void *info)
+> +{
+> +	return local_flush_icache_all();
+> +}
+> +
+> +void flush_icache_all(void)
+> +{
+> +	on_each_cpu(ipi_remote_fence_i, NULL, 1);
+> +}
+> +
+> +static void flush_icache_cpumask(const cpumask_t *mask)
+> +{
+> +	on_each_cpu_mask(mask, ipi_remote_fence_i, NULL, 1);
+> +}
+> +#else /* CONFIG_M_MODE */
+>  void flush_icache_all(void)
+>  {
+>  	sbi_remote_fence_i(NULL);
+>  }
+> +static void flush_icache_cpumask(const cpumask_t *mask)
+> +{
+> +	cpumask_t hmask;
+> +
+> +	cpumask_clear(&hmask);
+> +	riscv_cpuid_to_hartid_mask(mask, &hmask);
+> +	sbi_remote_fence_i(hmask.bits);
+> +}
+> +#endif /* CONFIG_M_MODE */
+>  
+>  /*
+>   * Performs an icache flush for the given MM context.  RISC-V has no
+> direct
+> @@ -28,7 +53,7 @@ void flush_icache_all(void)
+>  void flush_icache_mm(struct mm_struct *mm, bool local)
+>  {
+>  	unsigned int cpu;
+> -	cpumask_t others, hmask, *mask;
+> +	cpumask_t others, *mask;
+>  
+>  	preempt_disable();
+>  
+> @@ -47,9 +72,7 @@ void flush_icache_mm(struct mm_struct *mm, bool
+> local)
+>  	cpumask_andnot(&others, mm_cpumask(mm), cpumask_of(cpu));
+>  	local |= cpumask_empty(&others);
+>  	if (mm != current->active_mm || !local) {
+> -		cpumask_clear(&hmask);
+> -		riscv_cpuid_to_hartid_mask(&others, &hmask);
+> -		sbi_remote_fence_i(hmask.bits);
+> +		flush_icache_cpumask(&others);
+>  	} else {
+>  		/*
+>  		 * It's assumed that at least one strongly ordered
+> operation is
 
-Sounds good to me. Christoph has already mm/tlbflush.c in his mmu
-series. I will rebase on top of it.
-
-> Regards,
-> Anup
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
 
 -- 
 Regards,
