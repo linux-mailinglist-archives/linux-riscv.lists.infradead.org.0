@@ -2,72 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ACEC2960C7
-	for <lists+linux-riscv@lfdr.de>; Tue, 20 Aug 2019 15:43:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C04F496380
+	for <lists+linux-riscv@lfdr.de>; Tue, 20 Aug 2019 16:59:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zMOsBi5+dGEsChAcA0Xq026ejfuvJhj/+2iboZq0NW4=; b=ikA8OWOIdAWK+M
-	mlkm9d/XT03PWK39VWj7jarK6fbCIjh7P4wjls72UAAy7yB1SywQJsx1zun3eJlNx0e16TlBUXKNg
-	PtpN0A+Yjf3kWT/w2PNSNqvUGrtM2OUrtllFXGb9WgEJDi5+CEEcQ50N5z8NAiIwUWu++Bu03eb73
-	gmmbs9uUcU4x0PRjJHj/bWyDLjWIPcZ4R3lsEUem0eCE5eJIQc14/Ywm0JIMhDdQ162YA3XG0xAxP
-	ZYIarf2VSLEwH/03G55AMdMgR4qEwOZAd+GmNTJ448z+pEVKKnoWB4n1RczZnV0JvMbfrkMVwiUK1
-	v9N/IbGOzG04roP7dwnA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ETzHQIBmecZskIN7fhOsCtrsFyMfsJ462HoGS43rBhI=; b=IxqbJ3WR7i+9JL
+	mJ9t8WzVw3tZ4sknRhjoTpXYztHfAnuhD7gKhb1Pp/8oZh+dFv29B4Q/0dcb40K6c0k4Rf9h69Gzf
+	TaDqbAJBrGGQPYlDIPNbwhaYVGPs5hJDVYmUN4ttfiS/1lCrOhWVJYR8eii2/IEQMzIEfyTKRAyQv
+	dWJ34dJF4immo00iO68tpDzh/kCOZXMm34iW5xUyThWrflH8rQZCmbMtyJDDM0Sv1NGFGaQtEVKey
+	P39tSm5sVvR9z5KgGH4oizwU37/e6oU7shGwL67eiewhHXnmNhgVr5R9eDMnWfq/evGdVjtzc0i0f
+	v9vkzvyQdjsYSbWPqCnQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i04Ps-0004qO-GI; Tue, 20 Aug 2019 13:43:16 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1i05bi-0005rv-Jx; Tue, 20 Aug 2019 14:59:35 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i04OT-0003dW-S2
- for linux-riscv@lists.infradead.org; Tue, 20 Aug 2019 13:41:51 +0000
-Received: from sasha-vm.mshome.net (unknown [12.236.144.82])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D566522DA9;
- Tue, 20 Aug 2019 13:41:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1566308509;
- bh=f7YM/3Q8L0ApNqXbbo71GtoGj0NE8twR1TW8alf6JmQ=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Q3ba/jVFYHd63Ji++MgUNvgg8NctFGLPOAIPZDzuIo82b49paINMJ4Qy5OUpvt9l3
- Lcd8tAlh88FUkjc944iV2Uufb8d4b0MFPpJIAo1md5C4a8uysL4mswS8E8Ji4fHkGV
- QSNRAS2cLvat523za9YoIp/nc+/qrVfo8WusNGqA=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.2 37/44] riscv: fix flush_tlb_range() end address
- for flush_tlb_page()
-Date: Tue, 20 Aug 2019 09:40:21 -0400
-Message-Id: <20190820134028.10829-37-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190820134028.10829-1-sashal@kernel.org>
-References: <20190820134028.10829-1-sashal@kernel.org>
+ id 1i05ai-0004yO-Lc; Tue, 20 Aug 2019 14:58:34 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 3DB25AE42;
+ Tue, 20 Aug 2019 14:58:29 +0000 (UTC)
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+To: catalin.marinas@arm.com, hch@lst.de, wahrenst@gmx.net,
+ marc.zyngier@arm.com, robh+dt@kernel.org,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arch@vger.kernel.org,
+ iommu@lists.linux-foundation.org, linux-mm@kvack.org,
+ linux-riscv@lists.infradead.org
+Subject: [PATCH v2 00/11] Raspberry Pi 4 DMA addressing support
+Date: Tue, 20 Aug 2019 16:58:08 +0200
+Message-Id: <20190820145821.27214-1-nsaenzjulienne@suse.de>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190820_064150_079062_4DE335E1 
-X-CRM114-Status: GOOD (  10.79  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190820_075833_000630_38287657 
+X-CRM114-Status: GOOD (  16.95  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,68 +61,127 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Andreas Schwab <schwab@suse.de>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: phill@raspberryi.org, linux-s390@vger.kernel.org, f.fainelli@gmail.com,
+ frowand.list@gmail.com, linuxppc-dev@lists.ozlabs.org,
+ linux-kernel@vger.kernel.org, eric@anholt.net, mbrugger@suse.com,
+ linux-rpi-kernel@lists.infradead.org, akpm@linux-foundation.org,
+ will@kernel.org, nsaenzjulienne@suse.de, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Paul Walmsley <paul.walmsley@sifive.com>
+Hi all,
+this series attempts to address some issues we found while bringing up
+the new Raspberry Pi 4 in arm64 and it's intended to serve as a follow
+up of these discussions:
+v1: https://lkml.org/lkml/2019/7/31/922
+RFC: https://lkml.org/lkml/2019/7/17/476
 
-[ Upstream commit eb93685847a9055283d05951c1b205e737f38533 ]
+The new Raspberry Pi 4 has up to 4GB of memory but most peripherals can
+only address the first GB: their DMA address range is
+0xc0000000-0xfc000000 which is aliased to the first GB of physical
+memory 0x00000000-0x3c000000. Note that only some peripherals have these
+limitations: the PCIe, V3D, GENET, and 40-bit DMA channels have a wider
+view of the address space by virtue of being hooked up trough a second
+interconnect.
 
-The RISC-V kernel implementation of flush_tlb_page() when CONFIG_SMP
-is set is wrong.  It passes zero to flush_tlb_range() as the final
-address to flush, but it should be at least 'addr'.
+Part of this is solved in arm32 by setting up the machine specific
+'.dma_zone_size = SZ_1G', which takes care of reserving the coherent
+memory area at the right spot. That said no buffer bouncing (needed for
+dma streaming) is available at the moment, but that's a story for
+another series.
 
-Some other Linux architecture ports use the beginning address to
-flush, plus PAGE_SIZE, as the final address to flush.  This might
-flush slightly more than what's needed, but it seems unlikely that
-being more clever would improve anything.  So let's just take that
-implementation for now.
+Unfortunately there is no such thing as 'dma_zone_size' in arm64. Only
+ZONE_DMA32 is created which is interpreted by dma-direct and the arm64
+arch code as if all peripherals where be able to address the first 4GB
+of memory.
 
-While here, convert the macro into a static inline function, primarily
-to avoid unintentional multiple evaluations of 'addr'.
+In the light of this, the series implements the following changes:
 
-This second version of the patch fixes a coding style issue found by
-Christoph Hellwig <hch@lst.de>.
+- Create generic 'dma_zone_size' in order for hardware description code
+  to set it up when needed.
 
-Reported-by: Andreas Schwab <schwab@suse.de>
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+- Add a function in early_init_dt_scan() to setup 'dma_zone_size' for
+  the RPi4.
+
+- Create both DMA zones in arm64, ZONE_DMA will contain the area
+  addressable by all peripherals and ZONE_DMA32 the rest of the 32 bit
+  addressable memory. ZONE_DMA32 might be left empty.
+
+- Reserve the CMA area in a place suitable for all peripherals.
+
+- Inform dma-direct of the new runtime calculated min_mask.
+
+This series has been tested on multiple devices both by checking the
+zones setup matches the expectations and by double-checking physical
+addresses on pages allocated on the three relevant areas GFP_DMA,
+GFP_DMA32, GFP_KERNEL:
+
+- On an RPi4 with variations on the ram memory size. But also forcing
+  the situation where all three memory zones are nonempty by setting a 3G
+  ZONE_DMA32 ceiling on a 4G setup. Both with and without NUMA support.
+
+- On a Synquacer box[1] with 32G of memory.
+
+- On an ACPI based Huawei TaiShan server[2] with 256G of memory.
+
+- On a QEMU virtual machine running arm64's OpenSUSE Tumbleweed.
+
+That's all.
+
+Regards,
+Nicolas
+
+[1] https://www.96boards.org/product/developerbox/
+[2] https://e.huawei.com/en/products/cloud-computing-dc/servers/taishan-server/taishan-2280-v2
+
 ---
- arch/riscv/include/asm/tlbflush.h | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/arch/riscv/include/asm/tlbflush.h b/arch/riscv/include/asm/tlbflush.h
-index 687dd19735a7e..4d9bbe8438bf6 100644
---- a/arch/riscv/include/asm/tlbflush.h
-+++ b/arch/riscv/include/asm/tlbflush.h
-@@ -53,10 +53,17 @@ static inline void remote_sfence_vma(struct cpumask *cmask, unsigned long start,
- }
- 
- #define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
--#define flush_tlb_page(vma, addr) flush_tlb_range(vma, addr, 0)
-+
- #define flush_tlb_range(vma, start, end) \
- 	remote_sfence_vma(mm_cpumask((vma)->vm_mm), start, (end) - (start))
--#define flush_tlb_mm(mm) \
-+
-+static inline void flush_tlb_page(struct vm_area_struct *vma,
-+				  unsigned long addr)
-+{
-+	flush_tlb_range(vma, addr, addr + PAGE_SIZE);
-+}
-+
-+#define flush_tlb_mm(mm)				\
- 	remote_sfence_vma(mm_cpumask(mm), 0, -1)
- 
- #endif /* CONFIG_SMP */
+Changes in v2:
+- More in depth testing.
+- Create new global 'dma_zone_size'.
+- New approach to getting the dma_zone_size, instead of parsing the dts
+  we hardcode it conditionally to the machine compatible name.
+- Fix ZONE_DMA and ZONE_DMA32 split, now ZONE_DMA32 remains empty if
+  ZONE_DMA fits the whole 32 bit addressable space.
+- Take into account devices with DMA offset.
+- Rename new dma-direct variable to zone_dma_bits.
+- Try new approach by merging both ZONE_DMA and ZONE_DMA32 comments
+  in mmzone.h, add new up to date examples.
+
+Nicolas Saenz Julienne (11):
+  asm-generic: add dma_zone_size
+  arm: use generic dma_zone_size
+  of/fdt: add of_fdt_machine_is_compatible function
+  of/fdt: add early_init_dt_get_dma_zone_size()
+  arm64: mm: use arm64_dma_phys_limit instead of calling
+    max_zone_dma_phys()
+  arm64: rename variables used to calculate ZONE_DMA32's size
+  arm64: re-introduce max_zone_dma_phys()
+  arm64: use both ZONE_DMA and ZONE_DMA32
+  dma-direct: turn ARCH_ZONE_DMA_BITS into a variable
+  arm64: edit zone_dma_bits to fine tune dma-direct min mask
+  mm: refresh ZONE_DMA and ZONE_DMA32 comments in 'enum zone_type'
+
+ arch/arm/include/asm/dma.h      |  8 ++--
+ arch/arm/mm/init.c              | 12 ++----
+ arch/arm64/Kconfig              |  4 ++
+ arch/arm64/mm/init.c            | 73 +++++++++++++++++++++++++--------
+ arch/powerpc/include/asm/page.h |  9 ----
+ arch/powerpc/mm/mem.c           | 16 +++++---
+ arch/s390/include/asm/page.h    |  2 -
+ arch/s390/mm/init.c             |  1 +
+ drivers/of/fdt.c                | 15 +++++++
+ include/asm-generic/dma.h       |  8 +++-
+ include/linux/dma-direct.h      |  2 +
+ include/linux/mmzone.h          | 46 ++++++++++++---------
+ kernel/dma/direct.c             | 13 +++---
+ mm/page_alloc.c                 |  3 ++
+ 14 files changed, 140 insertions(+), 72 deletions(-)
+
 -- 
-2.20.1
+2.22.0
 
 
 _______________________________________________
