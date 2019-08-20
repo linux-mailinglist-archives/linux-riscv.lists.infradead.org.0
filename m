@@ -2,71 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4CF195A66
-	for <lists+linux-riscv@lfdr.de>; Tue, 20 Aug 2019 10:53:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3996395A6A
+	for <lists+linux-riscv@lfdr.de>; Tue, 20 Aug 2019 10:53:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dK9tb/w1a2eaS7XHXXkyRymeaut/rbSuhT/yX3arujQ=; b=JEvN7INhbzqnjJ
-	SBaZQafumVOJhcBJer+HTJXn6SFYLMi+rAKEyE8HgYI0Huz3MN71aZZHE3OfKpQ21LV0LwKFL64pw
-	GnQ2vkr1ZRmcSrcKBuYuBOOgcSANKMbQbI1hhTp8x0kK0IjEfMlO4NjdHoZr4SFS+3pw3W5qcG6HB
-	7aQZqzWDV1tYtz4nmcitDZGS8TF+c6wizd/MyzzgpZMUfgfuJ+t5E0YDLEqicnkwrqxRcm70jsURP
-	V380wjkrOjdn2ZPS4pSLiFwnb466LKn1mRDEpcgZxteMW9pofx3h2ZfW0s7tXif5hv8m+0cY3bz1L
-	YoX4UhY+kPonx84PE7jw==;
+	List-Owner; bh=Uk7Be342s9atEfB2ln1zuS/BYKLsUWVC9dkU13hVCAg=; b=P59/8NO4Xei3gm
+	nwWRvXouo0eQwAGfr193XZgJZejp/xWYaxtutFneHxjnAvOm/vA3bhIQJlsZO03lSfOjtZee1/jQq
+	ES1jvx9yQLH+xt80jk/BBQi1Yw602nmol0xAyLNbRZWtN3JAXDRt5xhyoqRh4R0v0AOonUjGa/2ix
+	czRaH0hJCGwkOoiGvZ1zZZcS6Eygj1MJdTqRTDy65uMKv8NvpPR+psDvbUWKXFmRzokAep9VN9lNR
+	8VlMoJV8st/3LP2gpQhD9bxH0ldLMFpQ0lIi4JHhWx46OvXq9uZl2zfET0h8U2wpm/UwvPNl01zpD
+	29nB5ePmICM8mWIfIQWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzztN-0003gM-Ht; Tue, 20 Aug 2019 08:53:25 +0000
-Received: from mail-out.m-online.net ([212.18.0.9])
+	id 1hzzte-0003yJ-Ok; Tue, 20 Aug 2019 08:53:42 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzzrG-0001gp-9b
- for linux-riscv@lists.infradead.org; Tue, 20 Aug 2019 08:51:16 +0000
-Received: from frontend01.mail.m-online.net (unknown [192.168.8.182])
- by mail-out.m-online.net (Postfix) with ESMTP id 46CPf55hJxz1rK4j;
- Tue, 20 Aug 2019 10:51:09 +0200 (CEST)
-Received: from localhost (dynscan1.mnet-online.de [192.168.6.70])
- by mail.m-online.net (Postfix) with ESMTP id 46CPf54PDPz1qqkR;
- Tue, 20 Aug 2019 10:51:09 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at mnet-online.de
-Received: from mail.mnet-online.de ([192.168.8.182])
- by localhost (dynscan1.mail.m-online.net [192.168.6.70]) (amavisd-new,
- port 10024)
- with ESMTP id L20mSo19cVoG; Tue, 20 Aug 2019 10:51:08 +0200 (CEST)
-X-Auth-Info: xcY6E7IcabXdliwAorIpwgVxvtg+uHfQdCPV1Me18qGqBrFxBMgTnTm+lnzp4WNr
-Received: from hawking (charybdis-ext.suse.de [195.135.221.2])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.mnet-online.de (Postfix) with ESMTPSA;
- Tue, 20 Aug 2019 10:51:08 +0200 (CEST)
-From: Andreas Schwab <schwab@linux-m68k.org>
-To: Atish Patra <Atish.Patra@wdc.com>
-Subject: Re: [v2 PATCH] RISC-V: Optimize tlb flush path.
-References: <20190820004735.18518-1-atish.patra@wdc.com>
- <mvmh86cl1o3.fsf@linux-m68k.org>
- <b2510462b55ffd93dba0c1b7cc28f9eef3089b50.camel@wdc.com>
-X-Yow: Hold the MAYO & pass the COSMIC AWARENESS...
-Date: Tue, 20 Aug 2019 10:51:07 +0200
-In-Reply-To: <b2510462b55ffd93dba0c1b7cc28f9eef3089b50.camel@wdc.com> (Atish
- Patra's message of "Tue, 20 Aug 2019 08:42:19 +0000")
-Message-ID: <mvma7c4kyo4.fsf@linux-m68k.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2.90 (gnu/linux)
+ id 1hzzro-0002C8-FW
+ for linux-riscv@lists.infradead.org; Tue, 20 Aug 2019 08:51:50 +0000
+Received: by mail-wm1-x344.google.com with SMTP id g67so1902098wme.1
+ for <linux-riscv@lists.infradead.org>; Tue, 20 Aug 2019 01:51:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=v+zMdfxIJC6szl/s3F3QtV0vZKEEjr7EvMl1gxJ6Wko=;
+ b=VzunMJleY9TwC0oBKPWz1G/teeRWt/mJNGQ8Yt6ooyD9ildZ6hLc9QhAL7zBcNN8UG
+ oh/J3pynXQS3grHkDGYn3Y95nrQhenrNUzQRyawsmRS9zkCJBiiioN4uvrDxauZdGkPP
+ GCBcAP1W4msKzzcI8n/V7wvKnOkSNp+yMDgyNOgHxDqanJEGAyz+Z5O9Z4Ipw3ieRlHV
+ IjKmb7YMU4LdsIDki1fgr8GCSgL9+ykmI2Po/TSHNWPp3cGh09m+JZuUaIGxEaICaHED
+ cxFCroQ5qHLcNRix6HfQQJtfqiHzVeMVNRzR5MoHLDVPXB6hBCK2fUEhfyW/dJPKShKm
+ e+0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=v+zMdfxIJC6szl/s3F3QtV0vZKEEjr7EvMl1gxJ6Wko=;
+ b=HJMMudS8Yo/+qWktRwuj1oPwSuMfCoR3yIqvqIgdGEiJVMYtamaarTJ9C4NqyZHa4B
+ dvlTgIwMjcs6p8g91t/3SktuiJ6mjj9hI6Z17hCfmF9lNQY4TF6V6fC3YIwHTvPZc4fk
+ XUN1FkvmXCIChzsBRSgDybMT1ve3xR0X6qNDCJDcq4oT8wGmo+VsDUME48U0QhQzXzhg
+ 5BK3ObjK5sO7v+9le4chlWsg6mzvlN+h3vrKh0wp+hM53dfbayG1VidkUrq2nzy8WOhn
+ nnJw+DyRVjZurED/38NLVdA3KqGOcrGAkobc7W/XJVpNddAGemIGlABhJmGDglccLhjv
+ y64w==
+X-Gm-Message-State: APjAAAVt/e/U2vrct3h0PupXnXTfCo2+INK2Shb2Z9SkiovA4VDEUQoC
+ vFLYMOq6URbuIj44Btdn79Leyox170dK3H8/W165Yw==
+X-Google-Smtp-Source: APXvYqy8V5DPpUJexEYPlMqitRub8PR3y6aNCqaicw9koTGcTSjg2cVbFm0nu895bhfqr35b1qTsh1ChBfSggX68vPQ=
+X-Received: by 2002:a7b:c933:: with SMTP id h19mr4236338wml.177.1566291106225; 
+ Tue, 20 Aug 2019 01:51:46 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190820004735.18518-1-atish.patra@wdc.com>
+In-Reply-To: <20190820004735.18518-1-atish.patra@wdc.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 20 Aug 2019 14:21:34 +0530
+Message-ID: <CAAhSdy3uQ=CSg4pHb_BYCEOh_MMTyLf8SW2o9SCn0UZDYwgGpg@mail.gmail.com>
+Subject: Re: [v2 PATCH] RISC-V: Optimize tlb flush path.
+To: Atish Patra <atish.patra@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190820_015114_646318_1356E23C 
-X-CRM114-Status: GOOD (  10.38  )
-X-Spam-Score: -0.5 (/)
+X-CRM114-CacheID: sfid-20190820_015148_592570_AA66E8C1 
+X-CRM114-Status: GOOD (  15.56  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [212.18.0.9 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,40 +86,81 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "anup@brainfault.org" <anup@brainfault.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
  "hch@infradead.org" <hch@infradead.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "allison@lohutok.net" <allison@lohutok.net>
+ Andreas Schwab <schwab@linux-m68k.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Allison Randal <allison@lohutok.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Aug 20 2019, Atish Patra <Atish.Patra@wdc.com> wrote:
-
+On Tue, Aug 20, 2019 at 6:17 AM Atish Patra <atish.patra@wdc.com> wrote:
+>
+> In RISC-V, tlb flush happens via SBI which is expensive.
+> If the target cpumask contains a local hartid, some cost
+> can be saved by issuing a local tlb flush as we do that
+> in OpenSBI anyways. There is also no need of SBI call if
+> cpumask is empty.
+>
+> Do a local flush first if current cpu is present in cpumask.
+> Invoke SBI call only if target cpumask contains any cpus
+> other than local cpu.
+>
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> ---
+>  arch/riscv/include/asm/tlbflush.h | 37 ++++++++++++++++++++++++++-----
+>  1 file changed, 31 insertions(+), 6 deletions(-)
+>
+> diff --git a/arch/riscv/include/asm/tlbflush.h b/arch/riscv/include/asm/tlbflush.h
+> index b5e64dc19b9e..3f9cd17b5402 100644
+> --- a/arch/riscv/include/asm/tlbflush.h
+> +++ b/arch/riscv/include/asm/tlbflush.h
+> @@ -8,6 +8,7 @@
+>  #define _ASM_RISCV_TLBFLUSH_H
+>
+>  #include <linux/mm_types.h>
+> +#include <linux/sched.h>
+>  #include <asm/smp.h>
+>
+>  /*
+> @@ -42,20 +43,44 @@ static inline void flush_tlb_range(struct vm_area_struct *vma,
+>
+>  #include <asm/sbi.h>
+>
+> -static inline void remote_sfence_vma(struct cpumask *cmask, unsigned long start,
+> -                                    unsigned long size)
+> +static void __riscv_flush_tlb(struct cpumask *cmask, unsigned long start,
+> +                             unsigned long size)
+>  {
+>         struct cpumask hmask;
+> +       unsigned int hartid;
+> +       unsigned int cpuid;
+>
+>         cpumask_clear(&hmask);
 > +
-> +       cpuid = get_cpu();
-> +	if (!cmask) {
+> +       if (!cmask) {
 > +               riscv_cpuid_to_hartid_mask(cpu_online_mask, &hmask);
 > +               goto issue_sfence;
 > +       }
 > +
-> +       
-> +       if (cpumask_test_cpu(cpuid, cmask) && cpumask_weight(cmask) ==
-> 1) {
+> +       cpuid = get_cpu();
+> +       if (cpumask_test_cpu(cpuid, cmask)) {
 > +               /* Save trap cost by issuing a local tlb flush here */
 > +               if ((start == 0 && size == -1) || (size > PAGE_SIZE))
 > +                       local_flush_tlb_all();
 > +               else if (size == PAGE_SIZE)
 > +                       local_flush_tlb_page(start);
-> +               goto done;
 > +       }
+> +       if (cpumask_any_but(cmask, cpuid) >= nr_cpu_ids)
+> +               goto done;
 > +
 >         riscv_cpuid_to_hartid_mask(cmask, &hmask);
+> +       hartid = cpuid_to_hartid_map(cpuid);
+> +       cpumask_clear_cpu(hartid, &hmask);
 > +
 > +issue_sfence:
 >         sbi_remote_sfence_vma(hmask.bits, start, size);
@@ -119,17 +168,36 @@ On Aug 20 2019, Atish Patra <Atish.Patra@wdc.com> wrote:
 > +       put_cpu();
 >  }
 >
-> This is much simpler than what I had done in v2. I will address the if
-> condition around size as well.
+> -#define flush_tlb_all() sbi_remote_sfence_vma(NULL, 0, -1)
+> -
+> +#define flush_tlb_all() __riscv_flush_tlb(NULL, 0, -1)
+>  #define flush_tlb_range(vma, start, end) \
+> -       remote_sfence_vma(mm_cpumask((vma)->vm_mm), start, (end) - (start))
+> +       __riscv_flush_tlb(mm_cpumask((vma)->vm_mm), start, (end) - (start))
+>
+>  static inline void flush_tlb_page(struct vm_area_struct *vma,
+>                                   unsigned long addr) {
+> @@ -63,7 +88,7 @@ static inline void flush_tlb_page(struct vm_area_struct *vma,
+>  }
+>
+>  #define flush_tlb_mm(mm)                               \
+> -       remote_sfence_vma(mm_cpumask(mm), 0, -1)
+> +       __riscv_flush_tlb(mm_cpumask(mm), 0, -1)
+>
+>  #endif /* CONFIG_SMP */
+>
+> --
+> 2.21.0
+>
 
-I still think that this function should be moved out of the header.
+I think we should move __riscv_flush_tlb() to mm/tlbflush.c because it's quite
+big now.
 
-Andreas.
+In future, we will also have __riscv_flush_tlb_asid() which will flush TLB based
+on ASID.
 
--- 
-Andreas Schwab, schwab@linux-m68k.org
-GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
-"And now for something completely different."
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
