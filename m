@@ -2,69 +2,69 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0222E995B3
-	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 16:01:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 87508995D4
+	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 16:06:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gxy6JoO8d4Oc7fH/ajncq6RvOFpBdjwLwbKGKoJimiI=; b=A4PqztbD/TdwKD
-	qzBxnB4f2D+qvQu+8in1ujWDIkTw4R7GgPOBqMLM7G3mYwbcbapl5FxuBMSGQeIPYtyb+ffTwNljc
-	ocXQ6BBvtxKT5O69hJ2cvzWMJKeChMZYhAxTIPn2tupYZCToV3dHTuyx54UMiHEkjdNAbBoyv8YqI
-	lbQPHD72xTLt2eQgVQkQnvcbwPdR7tkeMB7vLcwHfc+Oi8HHf7O89kYH1XLNYcLCpu8HqvGbwhYVE
-	cZmDf3WG4mfbnQiEKbKr462wcjtQ625DmNP84JBmghOZa4KciosYW1kGi41RpvN45jBFrcgBIRFGj
-	NurBxj0TNBNXQmnTmIKw==;
+	List-Owner; bh=h4o3M9KafdWQLU1/HVTTGKACcYtjlUOGQLNhYNqD7lA=; b=CgDiRsJ8T6xtzt
+	CzR+/oLnu6GyOpvHpg/DzrxX88oeu0Sgshf95lMG+XVaRvgp35wSSSMkrYn+Y2AZxgZqZ+IT9L4mA
+	WO5DUYufjtt8BNcR6W5kbpVawkMGpT5nhG9+F8kYrreorLgULLSzKIybMfDRFB1c36vk/n0uj9sHA
+	zoEwUvzsEKgWV8qN9cj0Z0ibZPAwgG+mU1zgZn81Nuz8ZuuXyPEnnCyc5clGJT/Gbl074N7GLDwPy
+	KqMhYU8Hk8MvJalidHFON1zgtUfoYCrOM721302Z53tNRWZdb2cXFmAFdLHd8CLKo/obfW37EE2sk
+	O3UpJda6vb13dCQbX7UA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0ne9-0000nh-UD; Thu, 22 Aug 2019 14:01:01 +0000
+	id 1i0njD-0002QU-BF; Thu, 22 Aug 2019 14:06:15 +0000
 Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0ne6-0000nI-AV
- for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 14:01:00 +0000
-Received: by mail-wm1-x344.google.com with SMTP id f72so5758998wmf.5
- for <linux-riscv@lists.infradead.org>; Thu, 22 Aug 2019 07:00:57 -0700 (PDT)
+ id 1i0nj9-0002Q2-75
+ for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 14:06:13 +0000
+Received: by mail-wm1-x344.google.com with SMTP id d16so5934412wme.2
+ for <linux-riscv@lists.infradead.org>; Thu, 22 Aug 2019 07:06:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BYa6tjL2V3XaMoQE3BhKW3UPDRomuHKgIfVfgHeXWkk=;
- b=SLoyt31scpRwxQBpNMLbyMa2/JRzuZ/BvQpsmqigUavDoqB3UBrVcOQ2zNbgB93tJY
- 7gmE1ESkIu45NoMKahMGZ6mucJ2K0ER3t14M60WH5wltnZNqZy/sR52AK5Og1ZxvPafC
- tpatC5C8yYAPSjBPnPPx5L52ONkg0uwedvI/Np7gQqHMvV6taKwsQGI+x4yyHTjrFdOY
- xGqn79jRZheK7D9l85xO+Jaje7akWcupNQ8OX9Lkftj5kSsriFrZHMdgLwbwY2IQn3VP
- 3k2MDSqvA3TE7le83FB3i3F1gvmxdh1xyTyIAbRxwaUSnoz4kGwz+gbxZIf6TwqrMOyP
- roWA==
+ :cc; bh=UhoJNwk+jD3IPeIWcY04TZ0CQ+4XcqjycjVm4Ee5JqM=;
+ b=aA9ctZLv1KSZzykJqRoxgVFGFR8QZAa8YQnkcKF4MiB5Q0ftjEMtJHhJeTe6IZhRpU
+ GgFZBDuAguqnMKN8CWXPkt+Z+WaDCV/k1cLdewkTeAHjD5BbQCBMayQ8IVXj1Ha34mCM
+ Z7Fa1cdNMMLBSZ7iKjM83NRrNiclr5Oj+hzM9kRdyVNXjLcW95IQmQn9HuPdMvseke0B
+ fupSB091l/7cRMYwfZ6zYJMBZ9WXx2GWgnN9utyXYlLm0v2if0jLIq2nId3u73L26VwB
+ KueBieSDp1TTJeNZIXgmjN1QyDzvcTa4XktsLQgNtneT3LrYWqi39m88TVOvoUPo0h3O
+ T98g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=BYa6tjL2V3XaMoQE3BhKW3UPDRomuHKgIfVfgHeXWkk=;
- b=LlRn+s68rtqVVeey0uPiO03+U6YkPRyM+ydOaJreQY8nyBds8L2zHfWSYV5XttdQvb
- tcbSa9jXNedItCjvBZYbbaDhgOYvfQJo8n27yOQz0YgAqE5suBsnh1xQu9WpNYd/6wik
- DjtVN2BRG57TIDLV605lhcoGSAjIPCkyNhqYEjjAbKC/t9Hk7zzPc4BAxJAwd+nfjBX4
- 3ywUKNO4oZ61jeaadFg35qfA4DtV6eKSlQ8EDXFDr3W7+7nYUgQECm5XQ5x4kwakIdBZ
- J8Um4CrRBRMPySaIjnNwlOK6V9qGkSlHkq60tmXeF9dpShWI8J9KOEHvVwHyAgyEmJvb
- O9dw==
-X-Gm-Message-State: APjAAAUOm0RE+79m/VaDV80lbcQvMKV4Huudrru5zobPAZVSd5J5aEZA
- vucf0OS0+KF0zxcRxl0n+YkBOb+CJ+C5zpT6Ci20QaQY
-X-Google-Smtp-Source: APXvYqww1WWneVrQ4WkvUlVG34D6g7hmpsx3qbNxfWrjylvCb0bpJgFZDZJaUwFYA8VxxwoXD8Ib3QvAG/0D3LLNp/g=
-X-Received: by 2002:a1c:c909:: with SMTP id f9mr6776316wmb.52.1566482456476;
- Thu, 22 Aug 2019 07:00:56 -0700 (PDT)
+ bh=UhoJNwk+jD3IPeIWcY04TZ0CQ+4XcqjycjVm4Ee5JqM=;
+ b=RK5sMWC03tKcHWfGXCegOJaTrLFUB9MEEhoQnT+AsUBlM3mrJs840hoo0jClKpJsrC
+ o1IQ67ildua1kkiTg+ADfedomXbPE/kXqfOKlpW2iQjH+KwraqzM5E01lpWICHrkLQkZ
+ 9rbGQKrmosj+dYgfJKvWovWFe+0lRph0dSZO4hvLOv/m0mhAemnG7m/zl2l63qLsQt4C
+ d4kaBvgKuK3x8rJBaS88hpz8f1VkCy/Yt9gDL1fMY4kv/YGDsxLen7jOay+52f9jpk2n
+ KMI4Ps8s899tjNgcax5cWSj8ue/D2LryMHgHeztNHu0Te8MpxICmpOXXqDG5NjYFCOJb
+ FmeA==
+X-Gm-Message-State: APjAAAXOiv5lF3qB/Fn6ivd9jJ3rzBV0xsYXtfBZEJYy2ab1FKtKa+xE
+ vj7kDVzupj2UCK5qMtxnZ/BwluC2qWqNzXInE0plQw==
+X-Google-Smtp-Source: APXvYqyrQnFiJb8lAHnaPDWf5G+Ck0+0M5Z1aUnQf8yzsNtKJP+DsVOzfNGS84Yq2DYEOOGkZTCgtv8cYLwXU7yyMyY=
+X-Received: by 2002:a7b:c933:: with SMTP id h19mr6380815wml.177.1566482769663; 
+ Thu, 22 Aug 2019 07:06:09 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190822084131.114764-1-anup.patel@wdc.com>
  <20190822084131.114764-9-anup.patel@wdc.com>
  <d306ffaf-c9ac-4a9f-4382-95001487364d@amazon.com>
 In-Reply-To: <d306ffaf-c9ac-4a9f-4382-95001487364d@amazon.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Thu, 22 Aug 2019 19:30:45 +0530
-Message-ID: <CAAhSdy0t7P1a_eYmLo9sSYTCbumCqqWcvuv4yJXGCBQOXvw5TQ@mail.gmail.com>
+Date: Thu, 22 Aug 2019 19:35:58 +0530
+Message-ID: <CAAhSdy1zKY44BGjp0FQrnPpmMFr2AuS9osumCr8BmjF5TPX=gw@mail.gmail.com>
 Subject: Re: [PATCH v5 08/20] RISC-V: KVM: Implement
  KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
 To: Alexander Graf <graf@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_070058_371170_18C05A0C 
-X-CRM114-Status: GOOD (  27.62  )
+X-CRM114-CacheID: sfid-20190822_070611_383054_4AE38F1F 
+X-CRM114-Status: GOOD (  26.63  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -155,11 +155,6 @@ On Thu, Aug 22, 2019 at 5:31 PM Alexander Graf <graf@amazon.com> wrote:
 > Is there any particular reason you're reusing kvm_regs and don't invent
 > your own struct? kvm_regs is explicitly meant for the get_regs and
 > set_regs ioctls.
-
-We are implementing only ONE_REG interface so most of these
-structs are unused hence we tried to reuse these struct instead
-of introducing new structs. (Similar to KVM ARM64)
-
 >
 > >   };
 > >
@@ -188,9 +183,6 @@ of introducing new structs. (Similar to KVM ARM64)
 > > +     unsigned long satp;
 >
 > Same comment here.
-
-Same as above, we are trying to use unused struct.
-
 >
 > >   };
 > >
@@ -256,18 +248,9 @@ Same as above, we are trying to use unused struct.
 >
 > What does this reflect? The current guest time hopefully not? An offset?
 > Related to what?
-
-riscv_timebase is the frequency in HZ of the system timer.
-
-The name "timebase" is not appropriate but we have been
-carrying it since quite some time now.
-
 >
 > All ONE_REG registers should be documented in
 > Documentation/virtual/kvm/api.txt. Please add them there.
-
-Sure, I will update in next revision.
-
 >
 > > +             break;
 > > +     default:
@@ -306,13 +289,6 @@ Sure, I will update in next revision.
 > This register definitely needs proper documentation too ;). You may want
 > to reconsider to put a few of the helper bits from patch 02/20 into
 > uapi, so that user space can directly use them.
-
-Sure, I will add details about ISA register in Documentation/virt/kvm/api.txt
-
-Regards,
-Anup
-
-
 >
 > > +             } else {
 > > +                     return -ENOTSUPP;
@@ -443,6 +419,19 @@ Anup
 > > +             WRITE_ONCE(vcpu->arch.irqs_pending_mask, 0);
 >
 > Why does writing SIP clear all pending interrupts?
+
+irqs_pending_mask represents bits changes in irqs_pending.
+
+Once the SIP CSR is updated by user-space, the changes to
+irqs_pending are no longer valid so we clear irqs_pending_mask.
+
+If we don't clear irqs_pending_mask then value programmed by
+user-space can get overwritten if there were interrupts after
+we saved SIP CSR and before we restored it.
+
+Regards,
+Anup
+
 >
 >
 > Alex
