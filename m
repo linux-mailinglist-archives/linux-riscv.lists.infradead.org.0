@@ -2,43 +2,43 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD6BC98D0C
-	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 10:10:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 226E298D11
+	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 10:11:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B6eviKRBMWYY71+kNzSmaLPm2omSSS05ika9t8gdDtY=; b=nfVQAGhjVVtWDv
-	Rn6DDkrIPgX+ZapBGqpxkTDrB/ldFG6bTdUN/g54ohXkwbVMhv7D0vJXAHWEvEAg0Rt74ykqV6Rkg
-	1yXlyedtAVT75QOijWrl5DBMKxp+QT50d3l6hQrGK5m/LshJRRSm69ea3ADSzWVRrnldJ6iNQpim0
-	WxB6vmg2mCUh117u0N/r0009LdiE39nuYWPmWvAXpawWSnJW4lf0JKNJGjG0Flieb/yAcOQvJuJ4I
-	jrDqSJc87q4to1oxQYAdkb+lwZHii4EHrZj/VpcHNZ7nYpuxHVCW/7OmtZh1z5VpX1sK1NmL42zR3
-	uRjP9KVRJYDqUq1niDIA==;
+	List-Owner; bh=ibM/0jW3cCG7fvq7VR3s+XN7BHJ8qopL6BEZZ0hObY0=; b=hDgCDCqma56wzl
+	WxMSt00kTQFQcDOlqvgRgaSIaxpYJXaP9HAOsTQfaBJDGDVLJ4RGdKccUcZQWfYGucrWkqBL1onen
+	uVN9HF2LJiIgSFvWyf8WnBrET9ba19KkUKH60aJp9AM8g2d8vdv5eOha8ud+5BckgP7MwFyJR0/PD
+	PpNi6/VO+tCksLv3gfCVde6lsudjIEpZPlwN4CbFP828rM7hN3Hy3eydDWmLDl1IuHUZtdyawK7Ui
+	3H7oCNQRhL8lhBgXv4Bh4PLNeu/x5Pd6antn+klUrbgGEw8lwqeSTyCJKsdlFD+lSLURFFkh1kCTf
+	RaOd+qCMEx5dQwOCeqUA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0iAm-000531-Fz; Thu, 22 Aug 2019 08:10:20 +0000
+	id 1i0iBR-00057N-NE; Thu, 22 Aug 2019 08:11:01 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0iAi-00052J-4T
- for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 08:10:17 +0000
+ id 1i0iBN-00056N-LI
+ for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 08:10:58 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 34F7068C4E; Thu, 22 Aug 2019 10:10:07 +0200 (CEST)
-Date: Thu, 22 Aug 2019 10:10:07 +0200
+ id E4EE768C4E; Thu, 22 Aug 2019 10:10:54 +0200 (CEST)
+Date: Thu, 22 Aug 2019 10:10:54 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH v4 1/3] RISC-V: Do not invoke SBI call if cpumask is empty
-Message-ID: <20190822081007.GA17573@lst.de>
+Subject: Re: [PATCH v4 2/3] RISC-V: Issue a local tlbflush if possible.
+Message-ID: <20190822081054.GB17573@lst.de>
 References: <20190822075151.24838-1-atish.patra@wdc.com>
- <20190822075151.24838-2-atish.patra@wdc.com>
+ <20190822075151.24838-3-atish.patra@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190822075151.24838-2-atish.patra@wdc.com>
+In-Reply-To: <20190822075151.24838-3-atish.patra@wdc.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_011016_333685_1BE8CB05 
-X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-CacheID: sfid-20190822_011057_847858_1F4EF587 
+X-CRM114-Status: UNSURE (   7.65  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -69,9 +69,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Aug 22, 2019 at 12:51:49AM -0700, Atish Patra wrote:
-> SBI calls are expensive. If cpumask is empty, there is no need to
-> trap via SBI as no remote tlb flushing is required.
+On Thu, Aug 22, 2019 at 12:51:50AM -0700, Atish Patra wrote:
+> In RISC-V, tlb flush happens via SBI which is expensive. If the local
+> cpu is the only cpu in cpumask, there is no need to invoke a SBI call.
+> 
+> Just do a local flush and return.
 > 
 > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 
