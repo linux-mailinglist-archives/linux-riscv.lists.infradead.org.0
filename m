@@ -2,84 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20C4799E45
-	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 19:49:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32F1D99EBC
+	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 20:29:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4KcSe1ewIT2buM/sOLIrChxW9EjQ1ZHx02WwG7cI9DA=; b=lg+v+UL61fzK4G
-	Nw+z2u/KBeYxEHwkMCF0nOL+l+CdlIeDR9UeyIyLWemg4zX+n2uA/3dhxvZXdCJ3tgHc0ogvLMKWu
-	l87vYNQHvsL9hJawZWrMW9oNLDftwu91/3LjbM6a3kbKWk0rg5lWQxt4v9/MUN7/il/6ewonaX/kS
-	qgKtcKZs5MrpSVIfOZLo3w6D4V3vPDVHQsD1A1r1bAe6JO9ghsYVg2H4jPRvMd6gGV1d6hRd781Um
-	HME8awwF9yaTUBdjyQWKLJESBlKXzCqmNihw7IAZUAyGX1DVktYR9xk7G9WMoItENtVmO1CKzT54d
-	Mx5VnYwKYy8YlvKN9GBQ==;
+	List-Owner; bh=gSpUp7+ldMMi8v6CpBAbQBUBBFXYMbesci2fETxwgBc=; b=n7VKedsukZzRSw
+	V5MUCbGs/U/XmlK4R+MxQWOhA2zsFRmHXAUZgK3hlyi4XlKxSoGbc0FSAFmXHRpJkk/lkvwlUT/r3
+	IeFHaEUf/9YvraQhbCoW2ehN9EaXZs1EFHxnlRU6DyQeaJNxQpZkVEhwDfWDP8Lg7kVrUedEfoIQH
+	ss9kecDbP4SZUs87/OqUeLPFblQb82DgqwT6PQvvncUcsgEY4ZX3GOCUaIgNrILacVZ3ZErJ4qoHB
+	EVlCXkuBCRfrhbjkO6z7amUBaSy64KivRc3HzVLAQVb+Oj7v3os7bp1Tv6cO6/OiLeylxybpDZWMa
+	qGDk9eusbAw+dF9GrGDQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0rDG-0001UJ-Ci; Thu, 22 Aug 2019 17:49:30 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1i0rqB-0001ry-V4; Thu, 22 Aug 2019 18:29:43 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0rDC-0001TW-Gg
- for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 17:49:27 +0000
+ id 1i0rq8-0001rb-OZ
+ for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 18:29:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1566496185; x=1598032185;
+ t=1566498581; x=1598034581;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=FZI07xPMvohdC4dIeK081ipMHL/0rbgqAueSQ3zlqDQ=;
- b=Qqut8J5lAjgWadqNaOF7w5n54ips9+TDizJxS6NhVeY0QfdwS39zdO1r
- OL9ievhsYuycIHUX62BhTpd8Y1mmErp5MohmijyLKFo5Y9zyRgD6+cGXB
- tq6WNjKipYsJQmEgqdES4h2GoELytVZ4mKSr0/4NzCoazI3/lsx+qvNXI
- By+xjOp6p9L28mELayEtQn24sZSdkOP4Ll2N/yhrHX/pB5dE2+fGxmbOT
- JwmP5x4ozJp0RjNd9C59cSG9xQCoNxGR5tXx6fs8gWB6ratSXjdQelLY7
- FGxiFXZvXIOJFWIcajUyplqD1/CtFWJLgyRvOFWHBhgnRH/THA7FAjJmi Q==;
-IronPort-SDR: yx9XUMv09tRiOysEVlZ04P7LFXHjVL9jcEJipKLfYtBaUTVmriWLV0KP5JJygKIfsZXiVLBGDy
- C7RNMOmVKw985WY/w/SKWRMEKEHiSXCNuUimk6ZciDYvymlWpQA55e9WEyCSQRXiU+gSRcoP1V
- lH+jILd7wybNn/OL5lh4lsh6bpQKgr1CuPCuNnLovG2ZLQ0h5A5zId9g4lp8ts1Xo7ZqLfSic9
- OeizvwDL3146pvm2FBc0N7vrRWG7Ny2qPqdZ3Fp5XeNMy6HB3II91PYP4zXY4fn/jPx6lWFGlY
- a9M=
-X-IronPort-AV: E=Sophos;i="5.64,417,1559491200"; d="scan'208";a="216888274"
-Received: from mail-bn3nam01lp2052.outbound.protection.outlook.com (HELO
- NAM01-BN3-obe.outbound.protection.outlook.com) ([104.47.33.52])
- by ob1.hgst.iphmx.com with ESMTP; 23 Aug 2019 01:49:40 +0800
+ bh=pTVZKKK0VyjSriAeFvJBRhqHEx2UoV85UNwZDRiIqYI=;
+ b=nU1sfGSffEly16i03hLFbz/CIeb6mAvMUJTWd5+O8gxuSbbZy1D0A16W
+ lxqxQwi/P8dJredcMlh0Zml8Rx8Qxled3PBDXdWlIgS7a8FlXHIYXLMcq
+ Jize92Ewi/p6R0ndkTAKvduOX87Bmqw1z8yQY+T7v+6aLH4JJF1by9MlA
+ XzwDaRbkKMFqgR5I+TBAyt5EpbfJULXQsccMK2qPhoeQQBszQxXw1IM5/
+ xfYthVb16vkRGuHUVjHv/kMjF4sD0Cj8Mh+oAsIReMR/0gSJb478nPeA4
+ VFTapySlFWjAvzXceC3btKn+uR9PRdg+CPcN8btmAV8bY+a2fF8TD/WnV Q==;
+IronPort-SDR: xpSMR6TnqR1E8QfveKcX0MneyCFPLB/2+zFo9Y0K815AaSz0+Hz105JiuFEQ3HHaLl922UOfi6
+ Rqy5RoIbsBvS6SGUSE4D+HLb/RDiI0Skgus052lsamFa1fXUAuG+fP3RVR/B8ppwgdJ1KqEgYp
+ D0vjPQgyrvX55Sj/z553GmBzwoUZM3wLjkc62VMrrbXrvWmZMl4e3rJsTOJanP8N2yfqyx53pk
+ mNOvTj6ePjuhmUPEpC/8YDu3dJZX6Osjv1IqZJpkmGja2pxqpJ1qPtHJmDWzMALtV+otrmEBbY
+ r18=
+X-IronPort-AV: E=Sophos;i="5.64,417,1559491200"; d="scan'208";a="118046492"
+Received: from mail-by2nam01lp2056.outbound.protection.outlook.com (HELO
+ NAM01-BY2-obe.outbound.protection.outlook.com) ([104.47.34.56])
+ by ob1.hgst.iphmx.com with ESMTP; 23 Aug 2019 02:29:36 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ClVdJbneph7v5OwO09cXnNmfFaOVzs3mNOEGu3WfjxhPPrJeuDMw0XQO9R8Kq9PkE6Gp4BBTqqifqH8VuMPvQ5BDqvc3QI5jAdcoXGBOoMTxHMiXtdVyq5HIRtrMBdgKVFvvkZK2+kuwieSU/6wEXc79SdnNQpnOfThCrVnFHFEu9njdx4Dh+G/I0MIxQoSNyBcgt62eh1Ihux+787SqDSVJPpCwNLI2C4/NOHAZCwtJSzu0CT4TU3NzE8ZPOM4dZgG8yhiQh9tpspryJZy93lQzXLfOC1urs1CrlYbuBWAx1mcryeV+6r9cdyUkGPtB0C9oKiaH+331VQ0N7cFSrw==
+ b=gvxdYLpzKk+ALil3ab8dFv3tj+U1oX/f8jZDKy2dPP/tXzRp5OWSg8Dr7TB/+EWAnENHw1B++jeKJ6FyWH30h3JxH0uqr7jGDdSS1D2XjP8Etp09joxYdqK5fGfwqoE6Df45Y+UmytH4hX2cXHvLz5JUHxyTvfXie6NMiaxcaTcCCNiGZ6WEXnQFuXOYO5hmFqXDczuxb40VY7CTWtIN8N/82g5a5jc0TrFyS456reJyDm2Cry1ysxkobel+/rSJu9HuM6aws6bsJ8Vw/B2q3UUFrMTmVT2V0qDPEDYSlkKE5sI52jltgGVayVB4ZiXCBHzwbxRcVQMkJgAh55G6sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FZI07xPMvohdC4dIeK081ipMHL/0rbgqAueSQ3zlqDQ=;
- b=M4iuGLZeA7pfvI/6v/31fy6TRO1UmeGMDiQisINuVxVNSrTLRc4PnJaKEQRMxCdb/vCsErkEsPsqlVKMwHLYQJKrfchZsgVsgIYPKO/pJMa1eBgJ6tQZTNGWnOCOtSaPg067NZe8mAQLhVjMKq9xyjZ7afB2tH0HdUmj1jRHiJkdkUDU8cwFUFDrHNYBqd1SRecmemt4LZXi456zc3MvVWv5q2oydaw2hmRyNFS5NB2YLtv4Qpn9p6XPgctzMAn0HCbK3/sn004O1pt4AJJ0O9mA6O9aGd+IIEst+oSxINuqauG4DwYIAQdE1QiuswJT9KaUkzAHFKOyqDCoywXYPw==
+ bh=pTVZKKK0VyjSriAeFvJBRhqHEx2UoV85UNwZDRiIqYI=;
+ b=CX+VQjSHgPer/lwoVrOMqVr8btHEvFRwUjNIsFQjPejnU80FRmDxaRqclXc40TdEqncwJwyVlZC3p8e1mbHMSqvDdHWpXX+pv0FXqxAJpCV2DraVjmlv0lJcCYdfgjGOYwKlfayxqpvlE2/rA/pDBIjx3LhMDbVcwFYxOHOxgRY+AdOJWrsOVV0T7etRPSPL/LHZ43/iDjrP1knSO6/sUd6FlK1iRyZvmoPcaShtuEDRwj50wOdl3lnyXkUMIi0V7XDofaEoMZKxG3lNXdreMCkf+gNLnWpHoVF/o/lXn9LPPaeHbbETuoXbP91+jv7m88zKA2jbbelzmm9AmxW45g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FZI07xPMvohdC4dIeK081ipMHL/0rbgqAueSQ3zlqDQ=;
- b=DWQjRq4GjPKMgcgtd0eh0m9s4lUuymYNwZt52sjTHx/J5t3T69YY4mnxbWQwtHx8E/BsDzpZL2fjuWa1JGL/QiFKYZMZeR718WSbFfrGoCy+fUoWSWxOvgjsn6sdJo3cnt8scPQuWgTShkISz5YtJwbL6f4Whxo+mvl9eLqZrVM=
+ bh=pTVZKKK0VyjSriAeFvJBRhqHEx2UoV85UNwZDRiIqYI=;
+ b=hWwmxNdrMHJLieq7AUfX5ASr+gdvxJrmggInDFA72LLh5pd7/wAn4E+Hsuwt3obgp4Abyl2AqDIUIdh+hF5vjGhQblFKbYD/UVyEIjtVrQM91jREa+LvXDp8AHvJbbNyccztQjSBD3vB5skauBaSpAH79uWzgmFRUuKg/+VRWVE=
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB4998.namprd04.prod.outlook.com (52.135.233.15) with Microsoft SMTP
+ BYAPR04MB3909.namprd04.prod.outlook.com (52.135.214.160) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2178.19; Thu, 22 Aug 2019 17:49:20 +0000
+ 15.20.2178.18; Thu, 22 Aug 2019 18:29:35 +0000
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::24ca:5178:5475:9a0e]) by BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::24ca:5178:5475:9a0e%4]) with mapi id 15.20.2178.020; Thu, 22 Aug 2019
- 17:49:20 +0000
+ 18:29:35 +0000
 From: Atish Patra <Atish.Patra@wdc.com>
 To: "hch@lst.de" <hch@lst.de>, "paul.walmsley@sifive.com"
  <paul.walmsley@sifive.com>, "palmer@sifive.com" <palmer@sifive.com>
-Subject: Re: [PATCH 6/8] riscv: use get_cpu and put_cpu in
- sys_riscv_flush_icache
-Thread-Topic: [PATCH 6/8] riscv: use get_cpu and put_cpu in
- sys_riscv_flush_icache
-Thread-Index: AQHVWLa3LGWms5Pc4E+LLqn10p92iacGu+4AgAC2fYA=
-Date: Thu, 22 Aug 2019 17:49:20 +0000
-Message-ID: <157504fc8f48057a8198e39262a786f901e67cd2.camel@wdc.com>
+Subject: Re: [PATCH 5/8] riscv: actually clear icache_stale_mask for all harts
+ in mm_cpumask
+Thread-Topic: [PATCH 5/8] riscv: actually clear icache_stale_mask for all
+ harts in mm_cpumask
+Thread-Index: AQHVWLbBlRrCD3076U21YSh8MgWPU6cHfakA
+Date: Thu, 22 Aug 2019 18:29:35 +0000
+Message-ID: <53f59546a691888c07bfb16780c6d5550b4be4fe.camel@wdc.com>
 References: <20190822065612.28634-1-hch@lst.de>
- <20190822065612.28634-7-hch@lst.de>
-In-Reply-To: <20190822065612.28634-7-hch@lst.de>
+ <20190822065612.28634-6-hch@lst.de>
+In-Reply-To: <20190822065612.28634-6-hch@lst.de>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -88,44 +88,44 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Atish.Patra@wdc.com; 
 x-originating-ip: [2601:646:8280:fdf0:69be:1cca:a557:65ea]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a6b7754a-450f-4421-b68d-08d727290fc9
+x-ms-office365-filtering-correlation-id: 44d159f2-01d2-4a86-5e03-08d7272eaf18
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(5600166)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:BYAPR04MB4998; 
-x-ms-traffictypediagnostic: BYAPR04MB4998:
-x-microsoft-antispam-prvs: <BYAPR04MB49980DD260E7750DDD6A4918FAA50@BYAPR04MB4998.namprd04.prod.outlook.com>
+ SRVR:BYAPR04MB3909; 
+x-ms-traffictypediagnostic: BYAPR04MB3909:
+x-microsoft-antispam-prvs: <BYAPR04MB39090B02884D65CFAF5EF829FAA50@BYAPR04MB3909.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-forefront-prvs: 01371B902F
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(396003)(376002)(366004)(346002)(136003)(189003)(199004)(2906002)(6436002)(6486002)(71190400001)(4326008)(2201001)(446003)(76176011)(2501003)(256004)(6512007)(6246003)(316002)(476003)(53936002)(2616005)(71200400001)(229853002)(25786009)(486006)(110136005)(99286004)(11346002)(66556008)(64756008)(66446008)(66476007)(6116002)(8676002)(46003)(305945005)(86362001)(66946007)(36756003)(118296001)(6506007)(14454004)(81156014)(81166006)(7736002)(186003)(102836004)(8936002)(5660300002)(478600001)(76116006);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4998;
+ SFS:(10019020)(4636009)(136003)(346002)(39860400002)(376002)(366004)(396003)(189003)(199004)(102836004)(6116002)(486006)(478600001)(5660300002)(11346002)(446003)(186003)(46003)(99286004)(118296001)(305945005)(2616005)(476003)(76116006)(66946007)(110136005)(4326008)(25786009)(14454004)(64756008)(66446008)(66476007)(66556008)(2201001)(86362001)(8936002)(81156014)(81166006)(8676002)(229853002)(6506007)(7736002)(6246003)(2501003)(76176011)(6436002)(36756003)(71190400001)(256004)(316002)(6486002)(53936002)(2906002)(71200400001)(6512007);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB3909;
  H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: OtP4Y5A8wU4TStjTovxSuEBVNB2UzB7paXW058a8GRLqERY8XLNduDK2wkf4HR8cyXg5xek0dstXCLlcPvLsR//6cNyVDsnCHsf4F4hwVxAmEqormGdpK7pvKg+DxpmclFyPvi6cwEdDfdXXCTR2kLBskb00XELCVu87Dqp8UYJt9VTVGM3T4jIRCtjACP/KVyOez4KCur/500hSCpv4bdmHQunUuIjvVVv0Qin57/1t8znlBmQ6ImNp9NA6SedD6ziqAvh7z9dWlMom6BuzCaOH7irAJuUjhk+RGMY4sDo31TmxFv9iMYGF5HNLl9bd3u6jzzYc+5tQTYyklW8jO9OR4Q5MO7qgYTWVrRim9+CPAEyox5gIRLSDVhI/ll24q1wE1Xf2Vh+0W3DEgWB1lTLE4z1cCUfzkkNTJKBFB80=
+x-microsoft-antispam-message-info: 5FNlQPGINFCgUpP7zaNCnEyqIetTCU+ZjQZbizKeXymprpD3ati+97Tu2PY/8AD9Ol/ubd6xiYNj8BcyT23ytzsksLurpHuvuqiu8/mBMFkZ8rvcahZxLxjY2rlQRLRlV16u+qwqFYiIBGgfFmZJHea+tQkfVG5UG6h+ZqR8T029c/qe1vFrMdKcteGXUN4HFSkPs/3Eo6iuS8BmtmulEm0l6FcFkGGvxGkA5Fs286GrbhZBp0vOGjVVpm2PhvPX3dp2h+PF1if4/qIHk4ZRQmfn5W229jyoQGTH1NXcBNXJajZQbNaKQ0uIQoXOec6ecm1B/4gbi+til/S7lI3Yl9j52L+uxY71ua1mXGOpqmkkmmMInX0gvOR4WHyvzFB7qOqHn4TH7P8a6O62Q0h8xzCSk/HeIBU/W7ek4tmearo=
 x-ms-exchange-transport-forked: True
-Content-ID: <A5239E143C55F948A130FC7670D026C8@namprd04.prod.outlook.com>
+Content-ID: <1C7AC79026B77D4CA708DCF7E5A58312@namprd04.prod.outlook.com>
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a6b7754a-450f-4421-b68d-08d727290fc9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Aug 2019 17:49:20.6685 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 44d159f2-01d2-4a86-5e03-08d7272eaf18
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Aug 2019 18:29:35.4473 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rCeq38RdJmjr5ylIWp0quVm8RVGLiNA60Myrdvi+pK/UBI8fr8Hoor/dka3KLuOU6NJ1CSn6f8X6RaDsmbJVrA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4998
+X-MS-Exchange-CrossTenant-userprincipalname: Eeye2Vc/Z+fYHLE2S1wbZEKwbivwCdzZmVtMN26PiP278oNVqV55mBtWGLUidmhkDbzUeuabABR60hTV40sElg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3909
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_104926_596063_B4A3875F 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20190822_112940_844066_9545353A 
+X-CRM114-Status: GOOD (  19.76  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -153,55 +153,65 @@ Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, 2019-08-22 at 15:56 +0900, Christoph Hellwig wrote:
-> Use get_cpu/put_cpu instead of opencoding them.
+> The comment in flush_icache_mm claim that we mark all harts that we
+> are sending the remote sfence.i to are marked as flushed, but we only
+> actually do this for the current one.  Fix the code to actually mark
+> all.
 > 
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > ---
->  arch/riscv/mm/cacheflush.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+>  arch/riscv/mm/cacheflush.c | 16 +++++++++-------
+>  1 file changed, 9 insertions(+), 7 deletions(-)
 > 
 > diff --git a/arch/riscv/mm/cacheflush.c b/arch/riscv/mm/cacheflush.c
-> index dacf72f94d12..9180b2e93058 100644
+> index eed715de4795..dacf72f94d12 100644
 > --- a/arch/riscv/mm/cacheflush.c
 > +++ b/arch/riscv/mm/cacheflush.c
-> @@ -19,11 +19,9 @@ void flush_icache_all(void)
->  
+> @@ -20,21 +20,23 @@ void flush_icache_all(void)
 >  static void flush_icache_mm(bool local)
 >  {
-> -	unsigned int cpu;
-> +	unsigned int cpu = get_cpu();
-
-I thought it is recommended to put variables with assignment at the
-end. But I can't find anything about it in coding guidelines. So it
-might be all in my head ;-)
-
->  	cpumask_t others, hmask;
+>  	unsigned int cpu;
+> -	cpumask_t others, hmask, *mask;
+> +	cpumask_t others, hmask;
 >  
-> -	preempt_disable();
-> -
->  	/*
->  	 * Mark the I$ for all harts not concurrently executing as
+>  	preempt_disable();
+>  
+> -	/* Mark every hart's icache as needing a flush for this MM. */
+> -	mask = &current->mm->context.icache_stale_mask;
+> -	cpumask_setall(mask);
+> +	/*
+> +	 * Mark the I$ for all harts not concurrently executing as
 > needing a
->  	 * flush for this MM.
-> @@ -32,7 +30,6 @@ static void flush_icache_mm(bool local)
->  		       cpu_possible_mask, mm_cpumask(current->mm));
->  
+> +	 * flush for this MM.
+> +	 */
+> +	cpumask_andnot(&current->mm->context.icache_stale_mask,
+> +		       cpu_possible_mask, mm_cpumask(current->mm));
+> +
+
+I guess you have added cpu_possible_mask keeping cpu hotplug in mind
+for future.
+
+I think it should be cpu_present_mask instead of cpu_possible_mask as
+they can be different in case where some cpus are just waiting in the
+boot loader.
+
 >  	/* Flush this hart's I$ now, and mark it as flushed. */
-> -	cpu = smp_processor_id();
+>  	cpu = smp_processor_id();
+> -	cpumask_clear_cpu(cpu, mask);
 >  	local_flush_icache_all();
 >  
 >  	/*
-> @@ -55,7 +52,7 @@ static void flush_icache_mm(bool local)
->  		smp_mb();
->  	}
->  
-> -	preempt_enable();
-> +	put_cpu();
->  }
->  #else
->  #define flush_icache_mm(local)	flush_icache_all()
+> -	 * Flush the I$ of other harts concurrently executing, and mark
+> them as
+> -	 * flushed.
+> +	 * Flush the I$ of other harts concurrently executing.
+>  	 */
+>  	cpumask_andnot(&others, mm_cpumask(current->mm),
+> cpumask_of(cpu));
+>  	local |= cpumask_empty(&others);
 
 Otherwise, looks good.
+
 Reviewed-by: Atish Patra <atish.patra@wdc.com>
 
 -- 
