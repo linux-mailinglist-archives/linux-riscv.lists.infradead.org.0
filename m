@@ -2,129 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8A1099ED5
-	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 20:31:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E88B39A177
+	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 22:56:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Vvcl9zKWr09pLZVLE0dG79RCfcJsxgCFOObC/uMXTw=; b=Ri9ZX5z7B0F4Oh
-	lEOtbmK2ENiuSEZ6qi96luYBH5clo5x3JEnZ8XQZ1+zwDuvmk5ngicin79IOQZXHu9r71deHMdPGi
-	uJFXCHl5pGiENLWCRwjIKltafITyBXznhP9Dyq1RK4+Gi+RHWCNgCavtfpGh5456HXCUFipKR+H6E
-	ZqLwEJ4/uOIeIWEPPfWLsEan1bxbIBDcat0tykMqXuWYlj0OM7xqC8TD+vdO0SZ2rkhYZg2JwumWJ
-	/e0RMjlMpMYLw/ZlFpITi93CIuWsLc5wFl92bpPAFjajZw1Mzd6kun0K08GHb26fATDaYYkfCCm1m
-	0EFRSPyfhVG89rwafRqQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=q3dNwJYKr/mJKvXPzIH8sY4HzQYxC6AJcGzvkQcBVic=; b=OV+mP8MVC0V0H9
+	lv+GBPVi8mdkXQv+m/FR142PYqVwnujnq/rCVviJARsEYnVhj3jyq9vT39og8Wq2Axl+XnDoF+87t
+	x0Xvxr0VLJ/04I2LQ0meJ6adtOAXCzFhBGxgf2jI+IN2gg0SHt/kqA521Q+Nd1IybdwNgN4RgXc6n
+	tfnZKIbWKgRmdUWjZbJVk7WnjcvWEKuGUSWsCvdDdpzR7x+U0r3+LvsFfbPJpe/l/qalQMf7YNYQg
+	Atpjfxaqo9+gUpCIXBsdsRwEnImwNWsF1UbRby0yUIa9LKNW4wYhIXAjgnqUowvCMMOHFxBDuVWqX
+	rrlOphoq+MVAQCYz5LzA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0rs5-0003Z6-Cv; Thu, 22 Aug 2019 18:31:41 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1i0u7u-0006Vj-8X; Thu, 22 Aug 2019 20:56:10 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0rs2-0003YA-63
- for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 18:31:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1566498699; x=1598034699;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=0Jk2c7yUIuhxgQsOiX5/4Y8fqlVy2ksI6oH8D72P9rE=;
- b=VZ6MV+hCzEMWykifeCnSLKqQWdorAZ9zgNOCoK74pZRWMT2H00MnhkH3
- S2dqHjsoEONhAuXXER8yYFsiOxNdCfQlwNH2zdWq8CMHE4sU/JBMyb2/i
- wOBRybYII6SFL+w0T7o/1Tp3ZkSJLLOrwRvlmcCqEBk3dtgDmqTciOJ1e
- PsFC9N2zGYulAWDNLDW/qM9HCdijp0qVtZLx2qjpXuqgTEjLGj6N++Wx2
- 8u4Bqb7FlGHB9xE3aN3XDBRFCZSB0GjXqtqnDghjwuNt6shM9wote0nL0
- kbfjfSNhp7hqe5ESPdkII+N+RQjald6IoQzpgLJjOqenAr6sDTlau3IIu g==;
-IronPort-SDR: LQQyNtp5cOjfFGY5t+91RK1VvXKDcpFmZNa1Kt8YQLJ3x+XM9qNXZDIxSJ+QXPNg0yghP8huKA
- xK5CFmWucyPKfGsxHcUB5ZTpY+6y/18gtaPX54qXhVWrNlMCMn8PMh+B+HqIsLTeTO1FX5RgVG
- v3koeURmA3xrPhKcoEwygjcxYxptkxMmWcrai+icdRS42pXcIpEgGTGUftpK5Us/yzp6DkEbWx
- Qh/qgj+gM4mbeNZzaU0qoO2q8Ll7xHVXxIXUBOdHAroq0ydFmjKM0Cd6NkC4NUDak9744gcV3S
- acI=
-X-IronPort-AV: E=Sophos;i="5.64,417,1559491200"; d="scan'208";a="117378618"
-Received: from mail-co1nam05lp2058.outbound.protection.outlook.com (HELO
- NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.58])
- by ob1.hgst.iphmx.com with ESMTP; 23 Aug 2019 02:31:31 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KC04pYJp2VCsNneJIC/iUgL4TGhMAycCmcVQxMwK0mjb9HFXuZeFuVkcIIZ+4ng6ifuJ7eERJu6VwE9ilUTcgxPkCwUI1n1kyZp7KedmCWb95r8snBJFWSRzcjoCy/UKPHN6xyGWuon3Nsb3KFkUN5zkFJhCsDCiisK8F+qdjP2DHei795SVA9XHpFM8kng4bKadHglrp6Hoid/fVOYRb0T4EBZHaCWqRz3wzb8jUdonmlsEgEa6z/pJ/A8dCxSqGpg31VWIJMIWNHpSeje2Anfm+3Yc1/RMRYDdKAR9ITvkf4GxzSdbmD7DrACyfn6ZUeDeHEJDufNGsmA7H0JlcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0Jk2c7yUIuhxgQsOiX5/4Y8fqlVy2ksI6oH8D72P9rE=;
- b=FmHOvmIESv5x/7m89kKqmC4p47YXcYnyMV+/eFb9lRosBHlRi/B9lBkqHQlO/mOUg6No/NJnhBRLkX4HLVwb4f7jNmBeIoxHdZIWjsSDtO5HB0sPMXnkDFBEi9FaVGZBdyUNSiMQG85/1XKZowtJpbppDIiB4BCSKW20pzUTBztXdjeSaPmQtZQmcsanePGmZ5UDCfpEC/k4uH3lLzfA1aI1PBT7Pv9LkLVUGN2ul0taCr8vOj6QvppUZqPr8m2PpxwMB+r2Mz72MFvq+MDeaFIO7JUA571CFk34dzT3NWjL+4nMJBQlgXBjeLdmqQDwM1WZexYKO/CysnNNWeaVMQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0Jk2c7yUIuhxgQsOiX5/4Y8fqlVy2ksI6oH8D72P9rE=;
- b=YvWu6dwZ1McuZh0rUQsGZAcElcAf5hazwU0Yso2yCevBlYR6/SLUH+LZWS39x0o47ZV7NurGBBVB4SYd7g/6aSpuBOXSW32u+hv7uJFz5CKsrgD60sOaa/6DN1fE0TaFNryS+TPpl530XHDAIiAJGp5tsG5K9zPfyyHBBtj3y0Q=
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB5896.namprd04.prod.outlook.com (20.179.59.142) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2178.16; Thu, 22 Aug 2019 18:31:29 +0000
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::24ca:5178:5475:9a0e]) by BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::24ca:5178:5475:9a0e%4]) with mapi id 15.20.2178.020; Thu, 22 Aug 2019
- 18:31:29 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "hch@lst.de" <hch@lst.de>
-Subject: Re: [PATCH v4 3/3] RISC-V: Issue a tlb page flush if possible
-Thread-Topic: [PATCH v4 3/3] RISC-V: Issue a tlb page flush if possible
-Thread-Index: AQHVWL95e6LZrQt6lE6f3WVrn/k0WqcG0QSAgACtHAA=
-Date: Thu, 22 Aug 2019 18:31:29 +0000
-Message-ID: <ab8e3417e7949390ce256fc4afb5d6e82e4f91da.camel@wdc.com>
-References: <20190822075151.24838-1-atish.patra@wdc.com>
- <20190822075151.24838-4-atish.patra@wdc.com>
- <20190822081153.GC17573@lst.de>
-In-Reply-To: <20190822081153.GC17573@lst.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [2601:646:8280:fdf0:69be:1cca:a557:65ea]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: aac10f71-62bf-4031-593d-08d7272ef2e9
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600166)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:BYAPR04MB5896; 
-x-ms-traffictypediagnostic: BYAPR04MB5896:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB58964DE80B3D48F67EDFDDE1FAA50@BYAPR04MB5896.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:5516;
-x-forefront-prvs: 01371B902F
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(136003)(366004)(376002)(346002)(396003)(51914003)(199004)(189003)(51444003)(6246003)(76176011)(2501003)(25786009)(6916009)(6116002)(7736002)(4326008)(86362001)(53936002)(4744005)(6506007)(229853002)(8936002)(6436002)(66946007)(6486002)(5640700003)(478600001)(71200400001)(71190400001)(2351001)(81166006)(76116006)(2906002)(66476007)(66556008)(81156014)(305945005)(118296001)(1730700003)(66446008)(5660300002)(54906003)(46003)(14454004)(6512007)(102836004)(446003)(486006)(99286004)(186003)(14444005)(2616005)(64756008)(316002)(36756003)(11346002)(476003)(66574012)(256004)(8676002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5896;
- H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 3WcSdkPW652FHwl64/VtpB+Ac9Jg7YyyjipQxCi2kUKOXGH426zUUwoK+hMSZJegvBNqBjQWLji1TuY3W54/0Vwlp8RdZQQH5aQBFNDtudzC3aYTVvkplGCsN8x6BR46Qf8w0XfKQwaUyX8g23KElZUK+mOl0inptQk551G74sXcVwatRzmpYkXag7gPY2tJT96TErm7YRrZ8AQVM5LhhemXTAdRp41Dy5h+wZgM+Mjhf2dEs8VofDAIIq7zoSzoT6JOz9dCsQ8O3j3MMlSGvOA/1rDN1ByBc8KO6gBDSnpho3RFM5BDSWBIWTqzFRQlZm/tlO+lA+wBxUQu9fWiNcc5O8LKxCEgIefSRwfb57wSl0V0yDWN2fXFBnS2oDIkgn1KKZhRrQJR+dcUxQMO8QxGh5IvBXTAzne+57CQ13Q=
-Content-ID: <F8695B9941D48D4DB50C08E0C3B3715F@namprd04.prod.outlook.com>
+ id 1i0u7r-0006VH-09
+ for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 20:56:08 +0000
+Received: by mail-pl1-x642.google.com with SMTP id go14so4145141plb.0
+ for <linux-riscv@lists.infradead.org>; Thu, 22 Aug 2019 13:56:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dkOlZMnbpz2S+cmJ2jL1bEKYw67H/e7YSCRv/YErFnY=;
+ b=C1g4rct5u8o+HEUCUxjjtCRBK+wdSIunOTkXavVoyR1q+BlgNILLKX1zPuzbwyAHKj
+ 9TF1SEFlmRDP05qxnmW4ALaMPlIEG2w6btrYdU/3W2tNMWMkx6+G+pMPR7U3oVll3a23
+ fBWiKd/Gg+jeaO1kgZ6cL0BxLe8fI6YG7JhOQLP1gQQPqzoT8frJFyjShiJHvpEAuYhD
+ WiqGn2ylvIDXuTYnOuQevCXKTeEe78sgerxUZqTaBdCcaTvbsjl1pX49Ed+bGEur7PlQ
+ +6EJgLzTEaviONg4mAigafhVxz0P8O8T9q6d3zLZtFH/JsoR1lTkvpStbu8CQL7gtPvR
+ n4TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dkOlZMnbpz2S+cmJ2jL1bEKYw67H/e7YSCRv/YErFnY=;
+ b=KwXsSjoooDUaqIgyOHM97Oyu9UtpKNdZNrCntaBu+zwf9Px7366lvV3sqx0Dd8mO0q
+ VZl7huERyeYbNGLHc6nRYguaJW7MKOryQBGvV33g1rIX/+lsmo7HEkbF8toG7Xl3iCYe
+ cGPvbBbLrt7LJKpXWm5Cn6z2Xh4qmvK3UgzFIOhNDZKGxXQh4Z1f7Doj96G0zHFC2/BC
+ mndrt78MTvDHvwxGhBgQWKNBZtb8bA/GwDm2gYcOrPB+z08xBoaLrzkWRQrKAB3icSdf
+ gq3VuDsUd4rcH7/4pcYRYfrMaDcNTm7HtUyaBnDQCeapA3yqx3juZWAF+95Fv5iJgK9B
+ hCTw==
+X-Gm-Message-State: APjAAAWWI7YOsK001kyHcCQRL9Sgr6vADOXMZ0zMgHsSTR43oVV6Opd7
+ lAquyPL0be+QmylCy08ROMM=
+X-Google-Smtp-Source: APXvYqz4oB1N6lhiWyngJv8lmCAclasVsaOWSsJMsAXM5Bfe8NVNTn2DC2RcURoEfpgsjyb6Hc0EEA==
+X-Received: by 2002:a17:902:684f:: with SMTP id
+ f15mr818360pln.332.1566507365441; 
+ Thu, 22 Aug 2019 13:56:05 -0700 (PDT)
+Received: from localhost.localdomain.com ([12.206.222.2])
+ by smtp.gmail.com with ESMTPSA id w2sm179056pgc.32.2019.08.22.13.56.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 Aug 2019 13:56:04 -0700 (PDT)
+From: David Abdurachmanov <david.abdurachmanov@gmail.com>
+X-Google-Original-From: David Abdurachmanov <david.abdurachmanov@sifive.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Oleg Nesterov <oleg@redhat.com>, Kees Cook <keescook@chromium.org>,
+ Andy Lutomirski <luto@amacapital.net>, Will Drewry <wad@chromium.org>,
+ Shuah Khan <shuah@kernel.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Martin KaFai Lau <kafai@fb.com>,
+ Song Liu <songliubraving@fb.com>, Yonghong Song <yhs@fb.com>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
+ Alexios Zavras <alexios.zavras@intel.com>, Anup Patel <Anup.Patel@wdc.com>,
+ Vincent Chen <vincentc@andestech.com>, Alan Kao <alankao@andestech.com>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, netdev@vger.kernel.org,
+ bpf@vger.kernel.org
+Subject: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
+Date: Thu, 22 Aug 2019 13:55:22 -0700
+Message-Id: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aac10f71-62bf-4031-593d-08d7272ef2e9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Aug 2019 18:31:29.1223 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Ai+Dli4t/JVNsnwmMa6X61LzgXFbn0/biI5aO2JMnSmZoSeYygrpykwnO/QznneZ8iEs0ILn/FkwupsHLbZhMQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5896
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_113138_337622_B4E2D302 
-X-CRM114-Status: GOOD (  13.87  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190822_135607_046050_31763B82 
+X-CRM114-Status: GOOD (  19.37  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (david.abdurachmanov[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -144,29 +110,223 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "palmer@sifive.com" <palmer@sifive.com>, Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: me@carlosedp.com, david.abdurachmanov@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVGh1LCAyMDE5LTA4LTIyIGF0IDEwOjExICswMjAwLCBDaHJpc3RvcGggSGVsbHdpZyB3cm90
-ZToNCj4gT24gVGh1LCBBdWcgMjIsIDIwMTkgYXQgMTI6NTE6NTFBTSAtMDcwMCwgQXRpc2ggUGF0
-cmEgd3JvdGU6DQo+ID4gSWYgdGxiZmx1c2ggcmVxdWVzdCBpcyBmb3IgcGFnZSBvbmx5LCB0aGVy
-ZSBpcyBubyBuZWVkIHRvIGRvIGENCj4gPiBjb21wbGV0ZSBsb2NhbCB0bGIgc2hvb3Rkb3duLg0K
-PiA+IA0KPiA+IEp1c3QgZG8gYSBsb2NhbCB0bGIgZmx1c2ggZm9yIHRoZSBnaXZlbiBhZGRyZXNz
-Lg0KPiANCj4gTG9va3MgZ29vZCwgYWx0aG91Z2ggSSBzdXNwZWN0IGluIG1hbnkgY2FzZXMgZXZl
-biBkb2luZyBtdWx0aXBsZQ0KPiBzaW5nbGUtcGFnZSBzZmVuY2Uudm1hIGNhbGxzIG1pZ2h0IGJl
-IGNoZWFwZXIgdGhhbiB0aGUgZ2xvYmFsIG9uZS4NCj4gDQo+IEJ1dCBJIHRoaW5rIHRoYXQgaXMg
-d29ydGggYSDRlWVwYXJhdGUgZGlzY3Vzc2lvbiwgcHJlZmVyYWJseSB3aXRoDQo+IGFjdHVhbA0K
-PiBudW1iZXJzLg0KPiANCg0KWXVwLiBGaW5kaW5nIGEgZ29vZCB0aHJlYXNob2xkIGlzIGFsd2F5
-cyB0cmlja3kgd2l0aG91dCByZWFsDQpiZW5jaG1hcmtzLg0KDQo+IFJldmlld2VkLWJ5OiBDaHJp
-c3RvcGggSGVsbHdpZyA8aGNoQGxzdC5kZT4NCg0KVGhhbmtzIGZvciB0aGUgcmV2aWV3Lg0KDQot
-LSANClJlZ2FyZHMsDQpBdGlzaA0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yaXNjdgo=
+This patch was extensively tested on Fedora/RISCV (applied by default on
+top of 5.2-rc7 kernel for <2 months). The patch was also tested with 5.3-rc
+on QEMU and SiFive Unleashed board.
+
+libseccomp (userspace) was rebased:
+https://github.com/seccomp/libseccomp/pull/134
+
+Fully passes libseccomp regression testing (simulation and live).
+
+There is one failing kernel selftest: global.user_notification_signal
+
+v1 -> v2:
+  - return immediatly if secure_computing(NULL) returns -1
+  - fixed whitespace issues
+  - add missing seccomp.h
+  - remove patch #2 (solved now)
+  - add riscv to seccomp kernel selftest
+
+Cc: keescook@chromium.org
+Cc: me@carlosedp.com
+
+Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
+---
+ arch/riscv/Kconfig                            | 14 ++++++++++
+ arch/riscv/include/asm/seccomp.h              | 10 +++++++
+ arch/riscv/include/asm/thread_info.h          |  5 +++-
+ arch/riscv/kernel/entry.S                     | 27 +++++++++++++++++--
+ arch/riscv/kernel/ptrace.c                    | 10 +++++++
+ tools/testing/selftests/seccomp/seccomp_bpf.c |  8 +++++-
+ 6 files changed, 70 insertions(+), 4 deletions(-)
+ create mode 100644 arch/riscv/include/asm/seccomp.h
+
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 59a4727ecd6c..441e63ff5adc 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -31,6 +31,7 @@ config RISCV
+ 	select GENERIC_SMP_IDLE_THREAD
+ 	select GENERIC_ATOMIC64 if !64BIT
+ 	select HAVE_ARCH_AUDITSYSCALL
++	select HAVE_ARCH_SECCOMP_FILTER
+ 	select HAVE_MEMBLOCK_NODE_MAP
+ 	select HAVE_DMA_CONTIGUOUS
+ 	select HAVE_FUTEX_CMPXCHG if FUTEX
+@@ -235,6 +236,19 @@ menu "Kernel features"
+ 
+ source "kernel/Kconfig.hz"
+ 
++config SECCOMP
++	bool "Enable seccomp to safely compute untrusted bytecode"
++	help
++	  This kernel feature is useful for number crunching applications
++	  that may need to compute untrusted bytecode during their
++	  execution. By using pipes or other transports made available to
++	  the process as file descriptors supporting the read/write
++	  syscalls, it's possible to isolate those applications in
++	  their own address space using seccomp. Once seccomp is
++	  enabled via prctl(PR_SET_SECCOMP), it cannot be disabled
++	  and the task is only allowed to execute a few safe syscalls
++	  defined by each seccomp mode.
++
+ endmenu
+ 
+ menu "Boot options"
+diff --git a/arch/riscv/include/asm/seccomp.h b/arch/riscv/include/asm/seccomp.h
+new file mode 100644
+index 000000000000..bf7744ee3b3d
+--- /dev/null
++++ b/arch/riscv/include/asm/seccomp.h
+@@ -0,0 +1,10 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++#ifndef _ASM_SECCOMP_H
++#define _ASM_SECCOMP_H
++
++#include <asm/unistd.h>
++
++#include <asm-generic/seccomp.h>
++
++#endif /* _ASM_SECCOMP_H */
+diff --git a/arch/riscv/include/asm/thread_info.h b/arch/riscv/include/asm/thread_info.h
+index 905372d7eeb8..a0b2a29a0da1 100644
+--- a/arch/riscv/include/asm/thread_info.h
++++ b/arch/riscv/include/asm/thread_info.h
+@@ -75,6 +75,7 @@ struct thread_info {
+ #define TIF_MEMDIE		5	/* is terminating due to OOM killer */
+ #define TIF_SYSCALL_TRACEPOINT  6       /* syscall tracepoint instrumentation */
+ #define TIF_SYSCALL_AUDIT	7	/* syscall auditing */
++#define TIF_SECCOMP		8	/* syscall secure computing */
+ 
+ #define _TIF_SYSCALL_TRACE	(1 << TIF_SYSCALL_TRACE)
+ #define _TIF_NOTIFY_RESUME	(1 << TIF_NOTIFY_RESUME)
+@@ -82,11 +83,13 @@ struct thread_info {
+ #define _TIF_NEED_RESCHED	(1 << TIF_NEED_RESCHED)
+ #define _TIF_SYSCALL_TRACEPOINT	(1 << TIF_SYSCALL_TRACEPOINT)
+ #define _TIF_SYSCALL_AUDIT	(1 << TIF_SYSCALL_AUDIT)
++#define _TIF_SECCOMP		(1 << TIF_SECCOMP)
+ 
+ #define _TIF_WORK_MASK \
+ 	(_TIF_NOTIFY_RESUME | _TIF_SIGPENDING | _TIF_NEED_RESCHED)
+ 
+ #define _TIF_SYSCALL_WORK \
+-	(_TIF_SYSCALL_TRACE | _TIF_SYSCALL_TRACEPOINT | _TIF_SYSCALL_AUDIT)
++	(_TIF_SYSCALL_TRACE | _TIF_SYSCALL_TRACEPOINT | _TIF_SYSCALL_AUDIT | \
++	 _TIF_SECCOMP )
+ 
+ #endif /* _ASM_RISCV_THREAD_INFO_H */
+diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
+index bc7a56e1ca6f..0bbedfa3e47d 100644
+--- a/arch/riscv/kernel/entry.S
++++ b/arch/riscv/kernel/entry.S
+@@ -203,8 +203,25 @@ check_syscall_nr:
+ 	/* Check to make sure we don't jump to a bogus syscall number. */
+ 	li t0, __NR_syscalls
+ 	la s0, sys_ni_syscall
+-	/* Syscall number held in a7 */
+-	bgeu a7, t0, 1f
++	/*
++	 * The tracer can change syscall number to valid/invalid value.
++	 * We use syscall_set_nr helper in syscall_trace_enter thus we
++	 * cannot trust the current value in a7 and have to reload from
++	 * the current task pt_regs.
++	 */
++	REG_L a7, PT_A7(sp)
++	/*
++	 * Syscall number held in a7.
++	 * If syscall number is above allowed value, redirect to ni_syscall.
++	 */
++	bge a7, t0, 1f
++	/*
++	 * Check if syscall is rejected by tracer or seccomp, i.e., a7 == -1.
++	 * If yes, we pretend it was executed.
++	 */
++	li t1, -1
++	beq a7, t1, ret_from_syscall_rejected
++	/* Call syscall */
+ 	la s0, sys_call_table
+ 	slli t0, a7, RISCV_LGPTR
+ 	add s0, s0, t0
+@@ -215,6 +232,12 @@ check_syscall_nr:
+ ret_from_syscall:
+ 	/* Set user a0 to kernel a0 */
+ 	REG_S a0, PT_A0(sp)
++	/*
++	 * We didn't execute the actual syscall.
++	 * Seccomp already set return value for the current task pt_regs.
++	 * (If it was configured with SECCOMP_RET_ERRNO/TRACE)
++	 */
++ret_from_syscall_rejected:
+ 	/* Trace syscalls, but only if requested by the user. */
+ 	REG_L t0, TASK_TI_FLAGS(tp)
+ 	andi t0, t0, _TIF_SYSCALL_WORK
+diff --git a/arch/riscv/kernel/ptrace.c b/arch/riscv/kernel/ptrace.c
+index 368751438366..63e47c9f85f0 100644
+--- a/arch/riscv/kernel/ptrace.c
++++ b/arch/riscv/kernel/ptrace.c
+@@ -154,6 +154,16 @@ void do_syscall_trace_enter(struct pt_regs *regs)
+ 		if (tracehook_report_syscall_entry(regs))
+ 			syscall_set_nr(current, regs, -1);
+ 
++	/*
++	 * Do the secure computing after ptrace; failures should be fast.
++	 * If this fails we might have return value in a0 from seccomp
++	 * (via SECCOMP_RET_ERRNO/TRACE).
++	 */
++	if (secure_computing(NULL) == -1) {
++		syscall_set_nr(current, regs, -1);
++		return;
++	}
++
+ #ifdef CONFIG_HAVE_SYSCALL_TRACEPOINTS
+ 	if (test_thread_flag(TIF_SYSCALL_TRACEPOINT))
+ 		trace_sys_enter(regs, syscall_get_nr(current, regs));
+diff --git a/tools/testing/selftests/seccomp/seccomp_bpf.c b/tools/testing/selftests/seccomp/seccomp_bpf.c
+index 6ef7f16c4cf5..492e0adad9d3 100644
+--- a/tools/testing/selftests/seccomp/seccomp_bpf.c
++++ b/tools/testing/selftests/seccomp/seccomp_bpf.c
+@@ -112,6 +112,8 @@ struct seccomp_data {
+ #  define __NR_seccomp 383
+ # elif defined(__aarch64__)
+ #  define __NR_seccomp 277
++# elif defined(__riscv)
++#  define __NR_seccomp 277
+ # elif defined(__hppa__)
+ #  define __NR_seccomp 338
+ # elif defined(__powerpc__)
+@@ -1582,6 +1584,10 @@ TEST_F(TRACE_poke, getpid_runs_normally)
+ # define ARCH_REGS	struct user_pt_regs
+ # define SYSCALL_NUM	regs[8]
+ # define SYSCALL_RET	regs[0]
++#elif defined(__riscv) && __riscv_xlen == 64
++# define ARCH_REGS	struct user_regs_struct
++# define SYSCALL_NUM	a7
++# define SYSCALL_RET	a0
+ #elif defined(__hppa__)
+ # define ARCH_REGS	struct user_regs_struct
+ # define SYSCALL_NUM	gr[20]
+@@ -1671,7 +1677,7 @@ void change_syscall(struct __test_metadata *_metadata,
+ 	EXPECT_EQ(0, ret) {}
+ 
+ #if defined(__x86_64__) || defined(__i386__) || defined(__powerpc__) || \
+-    defined(__s390__) || defined(__hppa__)
++    defined(__s390__) || defined(__hppa__) || defined(__riscv)
+ 	{
+ 		regs.SYSCALL_NUM = syscall;
+ 	}
+-- 
+2.21.0
+
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
