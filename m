@@ -2,78 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98ABC995AA
-	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 15:59:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0222E995B3
+	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 16:01:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MOAptaN7AVi2b3kpsZhXGRr0YZUmslyd/1QGFOLYeDw=; b=gP/WvOQBJ/1r1x
-	85v3E7ldYXIhCTYyVWF9hBw+BOpuHuBGDdn31JsSFDhYmAR+hgEtee2TiV49dFDYmfRKiCzehGDdz
-	q6x8Q9VPcJhwUFVKrxcI83jhoCjCd5z0YpTK8a0B42KOw4s9K3Er8zF1k5z9aLiOJyg7mXSGQf6GW
-	dDyoXbFAE20iARtDZ8HkeEohg915SUHKAosyLBGIHE+PS37xmtGnZyHHMQZHe+XevztZ78ZP8f2RG
-	tC3mLloShF/kYFD/pNNDuc/kRF0QAr7DvdHtV7k3AFUjq1T4BWJDKqQD7g44SyNJEBwCLbe2XVM5f
-	+eyORiliEyk0RdJz5XYg==;
+	List-Owner; bh=Gxy6JoO8d4Oc7fH/ajncq6RvOFpBdjwLwbKGKoJimiI=; b=A4PqztbD/TdwKD
+	qzBxnB4f2D+qvQu+8in1ujWDIkTw4R7GgPOBqMLM7G3mYwbcbapl5FxuBMSGQeIPYtyb+ffTwNljc
+	ocXQ6BBvtxKT5O69hJ2cvzWMJKeChMZYhAxTIPn2tupYZCToV3dHTuyx54UMiHEkjdNAbBoyv8YqI
+	lbQPHD72xTLt2eQgVQkQnvcbwPdR7tkeMB7vLcwHfc+Oi8HHf7O89kYH1XLNYcLCpu8HqvGbwhYVE
+	cZmDf3WG4mfbnQiEKbKr462wcjtQ625DmNP84JBmghOZa4KciosYW1kGi41RpvN45jBFrcgBIRFGj
+	NurBxj0TNBNXQmnTmIKw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0ncC-0007p8-4h; Thu, 22 Aug 2019 13:59:00 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1i0ne9-0000nh-UD; Thu, 22 Aug 2019 14:01:01 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0nc8-0007oc-Qh
- for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 13:58:58 +0000
-Received: by mail-wm1-x342.google.com with SMTP id o4so5762492wmh.2
- for <linux-riscv@lists.infradead.org>; Thu, 22 Aug 2019 06:58:56 -0700 (PDT)
+ id 1i0ne6-0000nI-AV
+ for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 14:01:00 +0000
+Received: by mail-wm1-x344.google.com with SMTP id f72so5758998wmf.5
+ for <linux-riscv@lists.infradead.org>; Thu, 22 Aug 2019 07:00:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=n2ZETo25ZbVRtndwNoCMa7+VCH83yBcVxID8DRYyuKs=;
- b=SsLoyyE522ywIbe4SxLwD0VKyIDByZrtNPvNWvYLTA4kRAmAWxmfateXO/jFyWaiR7
- N/itX9bTIxwE4cBf/pxAO9XfvTUPiTk87Kn7jX1/FfAeODsDvA9iBb+yDXkT6oT0Xy87
- j6wFSjbJKNHrmL8a5RrFX3Avr2XRfpsUngPHa+6HmtmUmq/veGgUq7xtokdA6m06/Zwx
- ZBDzRi+CKbpMKvw4mVcrjWZIFIig9wMQ5v0YyRwhyXQJj629DruxjxezhbWkStjt9bwb
- HMJeASWbV8d8wFeuRFJZ7wflqATCIDDFU1GvyIBW4aPzKmMV5aPsafsEqaX9ypjHFtMg
- OO0g==
+ :cc; bh=BYa6tjL2V3XaMoQE3BhKW3UPDRomuHKgIfVfgHeXWkk=;
+ b=SLoyt31scpRwxQBpNMLbyMa2/JRzuZ/BvQpsmqigUavDoqB3UBrVcOQ2zNbgB93tJY
+ 7gmE1ESkIu45NoMKahMGZ6mucJ2K0ER3t14M60WH5wltnZNqZy/sR52AK5Og1ZxvPafC
+ tpatC5C8yYAPSjBPnPPx5L52ONkg0uwedvI/Np7gQqHMvV6taKwsQGI+x4yyHTjrFdOY
+ xGqn79jRZheK7D9l85xO+Jaje7akWcupNQ8OX9Lkftj5kSsriFrZHMdgLwbwY2IQn3VP
+ 3k2MDSqvA3TE7le83FB3i3F1gvmxdh1xyTyIAbRxwaUSnoz4kGwz+gbxZIf6TwqrMOyP
+ roWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=n2ZETo25ZbVRtndwNoCMa7+VCH83yBcVxID8DRYyuKs=;
- b=RcXYuE39ptB4Pbt9U1/BAw1dyic6XZaTNmG/Zhl9DqvKdihaxlC1SoHR+uB7jTtA97
- 3fNY2Wm1KQVlAjkd4EhXRVmoRSLrlVNrBh6HhdLNA3ZZVFpYZB7y+oZYzRamMD5e651M
- z0iDiZOsUph6vn8grfTmYpXr874TwLzLFKZxPS78rfdhECdizvJ+is27DhpykMCrJqs/
- Ob+p2zY3bzjnwmlg6lzAvGAWzRaT4jndqzuJAMTPDvReWCaP3YKzeoVtXcgjVnEO6l37
- RsT3VOCAd4A/PUS9H96+WlOVdb9KveJcexRXoueVYWh9Av0MZUZm/tNjd3yJ/c0p4cPJ
- j0dQ==
-X-Gm-Message-State: APjAAAU3SCXH2SHZVOHI9vNqODIkkMaRNPDLjyHyDZ26C71sMm4ZoYK0
- 9kAxvIXI+h5GWl2RVeHhKRbYQu2mArdj6mT2i3R0Eg==
-X-Google-Smtp-Source: APXvYqwFCRfHPFhmoCxdnEut9Pl3bieYvMC+ES1WiyQNBcXiQzFQbQv/xowoZF8XsFOFoHrZnrb0cwnjMzew4z2awXs=
-X-Received: by 2002:a1c:c909:: with SMTP id f9mr6765062wmb.52.1566482334676;
- Thu, 22 Aug 2019 06:58:54 -0700 (PDT)
+ bh=BYa6tjL2V3XaMoQE3BhKW3UPDRomuHKgIfVfgHeXWkk=;
+ b=LlRn+s68rtqVVeey0uPiO03+U6YkPRyM+ydOaJreQY8nyBds8L2zHfWSYV5XttdQvb
+ tcbSa9jXNedItCjvBZYbbaDhgOYvfQJo8n27yOQz0YgAqE5suBsnh1xQu9WpNYd/6wik
+ DjtVN2BRG57TIDLV605lhcoGSAjIPCkyNhqYEjjAbKC/t9Hk7zzPc4BAxJAwd+nfjBX4
+ 3ywUKNO4oZ61jeaadFg35qfA4DtV6eKSlQ8EDXFDr3W7+7nYUgQECm5XQ5x4kwakIdBZ
+ J8Um4CrRBRMPySaIjnNwlOK6V9qGkSlHkq60tmXeF9dpShWI8J9KOEHvVwHyAgyEmJvb
+ O9dw==
+X-Gm-Message-State: APjAAAUOm0RE+79m/VaDV80lbcQvMKV4Huudrru5zobPAZVSd5J5aEZA
+ vucf0OS0+KF0zxcRxl0n+YkBOb+CJ+C5zpT6Ci20QaQY
+X-Google-Smtp-Source: APXvYqww1WWneVrQ4WkvUlVG34D6g7hmpsx3qbNxfWrjylvCb0bpJgFZDZJaUwFYA8VxxwoXD8Ib3QvAG/0D3LLNp/g=
+X-Received: by 2002:a1c:c909:: with SMTP id f9mr6776316wmb.52.1566482456476;
+ Thu, 22 Aug 2019 07:00:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190822084131.114764-1-anup.patel@wdc.com>
- <20190822084131.114764-14-anup.patel@wdc.com>
- <77b9ff3c-292f-ee17-ddbb-134c0666fde7@amazon.com>
- <CAAhSdy1h+m0gA2pro-XAb4qhe0Q+8knjW+8+6jaz3efOdKWskA@mail.gmail.com>
- <a44f86ac-8902-0aa3-1eee-013ac97d667b@amazon.com>
-In-Reply-To: <a44f86ac-8902-0aa3-1eee-013ac97d667b@amazon.com>
+ <20190822084131.114764-9-anup.patel@wdc.com>
+ <d306ffaf-c9ac-4a9f-4382-95001487364d@amazon.com>
+In-Reply-To: <d306ffaf-c9ac-4a9f-4382-95001487364d@amazon.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Thu, 22 Aug 2019 19:28:43 +0530
-Message-ID: <CAAhSdy20D=t5hbeWDi=1XmNAe5rwvNyjMth-WUwrVe+HcagVpg@mail.gmail.com>
-Subject: Re: [PATCH v5 13/20] RISC-V: KVM: Implement stage2 page table
- programming
+Date: Thu, 22 Aug 2019 19:30:45 +0530
+Message-ID: <CAAhSdy0t7P1a_eYmLo9sSYTCbumCqqWcvuv4yJXGCBQOXvw5TQ@mail.gmail.com>
+Subject: Re: [PATCH v5 08/20] RISC-V: KVM: Implement
+ KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
 To: Alexander Graf <graf@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_065856_868936_49D152EB 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20190822_070058_371170_18C05A0C 
+X-CRM114-Status: GOOD (  27.62  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -106,186 +104,345 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Aug 22, 2019 at 6:57 PM Alexander Graf <graf@amazon.com> wrote:
+On Thu, Aug 22, 2019 at 5:31 PM Alexander Graf <graf@amazon.com> wrote:
 >
+> On 22.08.19 10:44, Anup Patel wrote:
+> > For KVM RISC-V, we use KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls to access
+> > VCPU config and registers from user-space.
+> >
+> > We have three types of VCPU registers:
+> > 1. CONFIG - these are VCPU config and capabilities
+> > 2. CORE   - these are VCPU general purpose registers
+> > 3. CSR    - these are VCPU control and status registers
+> >
+> > The CONFIG registers available to user-space are ISA and TIMEBASE. Out
+> > of these, TIMEBASE is a read-only register which inform user-space about
+> > VCPU timer base frequency. The ISA register is a read and write register
+> > where user-space can only write the desired VCPU ISA capabilities before
+> > running the VCPU.
+> >
+> > The CORE registers available to user-space are PC, RA, SP, GP, TP, A0-A7,
+> > T0-T6, S0-S11 and MODE. Most of these are RISC-V general registers except
+> > PC and MODE. The PC register represents program counter whereas the MODE
+> > register represent VCPU privilege mode (i.e. S/U-mode).
+> >
+> > The CSRs available to user-space are SSTATUS, SIE, STVEC, SSCRATCH, SEPC,
+> > SCAUSE, STVAL, SIP, and SATP. All of these are read/write registers.
+> >
+> > In future, more VCPU register types will be added (such as FP) for the
+> > KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls.
+> >
+> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+> > ---
+> >   arch/riscv/include/uapi/asm/kvm.h |  40 ++++-
+> >   arch/riscv/kvm/vcpu.c             | 235 +++++++++++++++++++++++++++++-
+> >   2 files changed, 272 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/arch/riscv/include/uapi/asm/kvm.h b/arch/riscv/include/uapi/asm/kvm.h
+> > index 6dbc056d58ba..024f220eb17e 100644
+> > --- a/arch/riscv/include/uapi/asm/kvm.h
+> > +++ b/arch/riscv/include/uapi/asm/kvm.h
+> > @@ -23,8 +23,15 @@
+> >
+> >   /* for KVM_GET_REGS and KVM_SET_REGS */
+> >   struct kvm_regs {
+> > +     /* out (KVM_GET_REGS) / in (KVM_SET_REGS) */
+> > +     struct user_regs_struct regs;
+> > +     unsigned long mode;
 >
->
-> On 22.08.19 14:38, Anup Patel wrote:
-> > On Thu, Aug 22, 2019 at 5:58 PM Alexander Graf <graf@amazon.com> wrote:
-> >>
-> >> On 22.08.19 10:45, Anup Patel wrote:
-> >>> This patch implements all required functions for programming
-> >>> the stage2 page table for each Guest/VM.
-> >>>
-> >>> At high-level, the flow of stage2 related functions is similar
-> >>> from KVM ARM/ARM64 implementation but the stage2 page table
-> >>> format is quite different for KVM RISC-V.
-> >>>
-> >>> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> >>> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-> >>> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> >>> ---
-> >>>    arch/riscv/include/asm/kvm_host.h     |  10 +
-> >>>    arch/riscv/include/asm/pgtable-bits.h |   1 +
-> >>>    arch/riscv/kvm/mmu.c                  | 637 +++++++++++++++++++++++++-
-> >>>    3 files changed, 638 insertions(+), 10 deletions(-)
-> >>>
-> >>> diff --git a/arch/riscv/include/asm/kvm_host.h b/arch/riscv/include/asm/kvm_host.h
-> >>> index 3b09158f80f2..a37775c92586 100644
-> >>> --- a/arch/riscv/include/asm/kvm_host.h
-> >>> +++ b/arch/riscv/include/asm/kvm_host.h
-> >>> @@ -72,6 +72,13 @@ struct kvm_mmio_decode {
-> >>>        int shift;
-> >>>    };
-> >>>
-> >>> +#define KVM_MMU_PAGE_CACHE_NR_OBJS   32
-> >>> +
-> >>> +struct kvm_mmu_page_cache {
-> >>> +     int nobjs;
-> >>> +     void *objects[KVM_MMU_PAGE_CACHE_NR_OBJS];
-> >>> +};
-> >>> +
-> >>>    struct kvm_cpu_context {
-> >>>        unsigned long zero;
-> >>>        unsigned long ra;
-> >>> @@ -163,6 +170,9 @@ struct kvm_vcpu_arch {
-> >>>        /* MMIO instruction details */
-> >>>        struct kvm_mmio_decode mmio_decode;
-> >>>
-> >>> +     /* Cache pages needed to program page tables with spinlock held */
-> >>> +     struct kvm_mmu_page_cache mmu_page_cache;
-> >>> +
-> >>>        /* VCPU power-off state */
-> >>>        bool power_off;
-> >>>
-> >>> diff --git a/arch/riscv/include/asm/pgtable-bits.h b/arch/riscv/include/asm/pgtable-bits.h
-> >>> index bbaeb5d35842..be49d62fcc2b 100644
-> >>> --- a/arch/riscv/include/asm/pgtable-bits.h
-> >>> +++ b/arch/riscv/include/asm/pgtable-bits.h
-> >>> @@ -26,6 +26,7 @@
-> >>>
-> >>>    #define _PAGE_SPECIAL   _PAGE_SOFT
-> >>>    #define _PAGE_TABLE     _PAGE_PRESENT
-> >>> +#define _PAGE_LEAF      (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC)
-> >>>
-> >>>    /*
-> >>>     * _PAGE_PROT_NONE is set on not-present pages (and ignored by the hardware) to
-> >>> diff --git a/arch/riscv/kvm/mmu.c b/arch/riscv/kvm/mmu.c
-> >>> index 2b965f9aac07..9e95ab6769f6 100644
-> >>> --- a/arch/riscv/kvm/mmu.c
-> >>> +++ b/arch/riscv/kvm/mmu.c
-> >>> @@ -18,6 +18,432 @@
-> >>>    #include <asm/page.h>
-> >>>    #include <asm/pgtable.h>
-> >>>
-> >>> +#ifdef CONFIG_64BIT
-> >>> +#define stage2_have_pmd              true
-> >>> +#define stage2_gpa_size              ((phys_addr_t)(1ULL << 39))
-> >>> +#define stage2_cache_min_pages       2
-> >>> +#else
-> >>> +#define pmd_index(x)         0
-> >>> +#define pfn_pmd(x, y)                ({ pmd_t __x = { 0 }; __x; })
-> >>> +#define stage2_have_pmd              false
-> >>> +#define stage2_gpa_size              ((phys_addr_t)(1ULL << 32))
-> >>> +#define stage2_cache_min_pages       1
-> >>> +#endif
-> >>> +
-> >>> +static int stage2_cache_topup(struct kvm_mmu_page_cache *pcache,
-> >>> +                           int min, int max)
-> >>> +{
-> >>> +     void *page;
-> >>> +
-> >>> +     BUG_ON(max > KVM_MMU_PAGE_CACHE_NR_OBJS);
-> >>> +     if (pcache->nobjs >= min)
-> >>> +             return 0;
-> >>> +     while (pcache->nobjs < max) {
-> >>> +             page = (void *)__get_free_page(GFP_KERNEL | __GFP_ZERO);
-> >>> +             if (!page)
-> >>> +                     return -ENOMEM;
-> >>> +             pcache->objects[pcache->nobjs++] = page;
-> >>> +     }
-> >>> +
-> >>> +     return 0;
-> >>> +}
-> >>> +
-> >>> +static void stage2_cache_flush(struct kvm_mmu_page_cache *pcache)
-> >>> +{
-> >>> +     while (pcache && pcache->nobjs)
-> >>> +             free_page((unsigned long)pcache->objects[--pcache->nobjs]);
-> >>> +}
-> >>> +
-> >>> +static void *stage2_cache_alloc(struct kvm_mmu_page_cache *pcache)
-> >>> +{
-> >>> +     void *p;
-> >>> +
-> >>> +     if (!pcache)
-> >>> +             return NULL;
-> >>> +
-> >>> +     BUG_ON(!pcache->nobjs);
-> >>> +     p = pcache->objects[--pcache->nobjs];
-> >>> +
-> >>> +     return p;
-> >>> +}
-> >>> +
-> >>> +struct local_guest_tlb_info {
-> >>> +     struct kvm_vmid *vmid;
-> >>> +     gpa_t addr;
-> >>> +};
-> >>> +
-> >>> +static void local_guest_tlb_flush_vmid_gpa(void *info)
-> >>> +{
-> >>> +     struct local_guest_tlb_info *infop = info;
-> >>> +
-> >>> +     __kvm_riscv_hfence_gvma_vmid_gpa(READ_ONCE(infop->vmid->vmid_version),
-> >>> +                                      infop->addr);
-> >>> +}
-> >>> +
-> >>> +static void stage2_remote_tlb_flush(struct kvm *kvm, gpa_t addr)
-> >>> +{
-> >>> +     struct local_guest_tlb_info info;
-> >>> +     struct kvm_vmid *vmid = &kvm->arch.vmid;
-> >>> +
-> >>> +     /* TODO: This should be SBI call */
-> >>> +     info.vmid = vmid;
-> >>> +     info.addr = addr;
-> >>> +     preempt_disable();
-> >>> +     smp_call_function_many(cpu_all_mask, local_guest_tlb_flush_vmid_gpa,
-> >>> +                            &info, true);
-> >>
-> >> This is all nice and dandy on the toy 4 core systems we have today, but
-> >> it will become a bottleneck further down the road.
-> >>
-> >> How many VMIDs do you have? Could you just allocate a new one every time
-> >> you switch host CPUs? Then you know exactly which CPUs to flush by
-> >> looking at all your vcpu structs and a local field that tells you which
-> >> pCPU they're on at this moment.
-> >>
-> >> Either way, it's nothing that should block inclusion. For today, we're fine.
-> >
-> > We are not happy about this either.
-> >
-> > Other two options, we have are:
-> > 1. Have SBI calls for remote HFENCEs
-> > 2. Propose RISC-V ISA extension for remote FENCEs
-> >
-> > Option1 is mostly extending SBI spec and implementing it in runtime
-> > firmware.
-> >
-> > Option2 is ideal solution but requires consensus among wider audience
-> > in RISC-V foundation.
-> >
-> > At this point, we are fine with a simple solution.
->
-> It's fine to explicitly IPI other CPUs to flush their TLBs. What is not
-> fine is to IPI *all* CPUs to flush their TLBs.
+> Is there any particular reason you're reusing kvm_regs and don't invent
+> your own struct? kvm_regs is explicitly meant for the get_regs and
+> set_regs ioctls.
 
-Ahh, this should have been cpu_online_mask instead of cpu_all_mask
+We are implementing only ONE_REG interface so most of these
+structs are unused hence we tried to reuse these struct instead
+of introducing new structs. (Similar to KVM ARM64)
 
-I will update this in next revision.
+>
+> >   };
+> >
+> > +/* Possible privilege modes for kvm_regs */
+> > +#define KVM_RISCV_MODE_S     1
+> > +#define KVM_RISCV_MODE_U     0
+> > +
+> >   /* for KVM_GET_FPU and KVM_SET_FPU */
+> >   struct kvm_fpu {
+> >   };
+> > @@ -41,10 +48,41 @@ struct kvm_guest_debug_arch {
+> >   struct kvm_sync_regs {
+> >   };
+> >
+> > -/* dummy definition */
+> > +/* for KVM_GET_SREGS and KVM_SET_SREGS */
+> >   struct kvm_sregs {
+> > +     unsigned long sstatus;
+> > +     unsigned long sie;
+> > +     unsigned long stvec;
+> > +     unsigned long sscratch;
+> > +     unsigned long sepc;
+> > +     unsigned long scause;
+> > +     unsigned long stval;
+> > +     unsigned long sip;
+> > +     unsigned long satp;
+>
+> Same comment here.
+
+Same as above, we are trying to use unused struct.
+
+>
+> >   };
+> >
+> > +#define KVM_REG_SIZE(id)             \
+> > +     (1U << (((id) & KVM_REG_SIZE_MASK) >> KVM_REG_SIZE_SHIFT))
+> > +
+> > +/* If you need to interpret the index values, here is the key: */
+> > +#define KVM_REG_RISCV_TYPE_MASK              0x00000000FF000000
+> > +#define KVM_REG_RISCV_TYPE_SHIFT     24
+> > +
+> > +/* Config registers are mapped as type 1 */
+> > +#define KVM_REG_RISCV_CONFIG         (0x01 << KVM_REG_RISCV_TYPE_SHIFT)
+> > +#define KVM_REG_RISCV_CONFIG_ISA     0x0
+> > +#define KVM_REG_RISCV_CONFIG_TIMEBASE        0x1
+> > +
+> > +/* Core registers are mapped as type 2 */
+> > +#define KVM_REG_RISCV_CORE           (0x02 << KVM_REG_RISCV_TYPE_SHIFT)
+> > +#define KVM_REG_RISCV_CORE_REG(name) \
+> > +             (offsetof(struct kvm_regs, name) / sizeof(unsigned long))
+>
+> I see, you're trying to implicitly use the struct offsets as index.
+>
+> I'm not a really big fan of it, but I can't pinpoint exactly why just
+> yet. It just seems too magical (read: potentially breaking down the
+> road) for me.
+>
+> > +
+> > +/* Control and status registers are mapped as type 3 */
+> > +#define KVM_REG_RISCV_CSR            (0x03 << KVM_REG_RISCV_TYPE_SHIFT)
+> > +#define KVM_REG_RISCV_CSR_REG(name)  \
+> > +             (offsetof(struct kvm_sregs, name) / sizeof(unsigned long))
+> > +
+> >   #endif
+> >
+> >   #endif /* __LINUX_KVM_RISCV_H */
+> > diff --git a/arch/riscv/kvm/vcpu.c b/arch/riscv/kvm/vcpu.c
+> > index 7f59e85c6af8..9396a83c0611 100644
+> > --- a/arch/riscv/kvm/vcpu.c
+> > +++ b/arch/riscv/kvm/vcpu.c
+> > @@ -164,6 +164,215 @@ vm_fault_t kvm_arch_vcpu_fault(struct kvm_vcpu *vcpu, struct vm_fault *vmf)
+> >       return VM_FAULT_SIGBUS;
+> >   }
+> >
+> > +static int kvm_riscv_vcpu_get_reg_config(struct kvm_vcpu *vcpu,
+> > +                                      const struct kvm_one_reg *reg)
+> > +{
+> > +     unsigned long __user *uaddr =
+> > +                     (unsigned long __user *)(unsigned long)reg->addr;
+> > +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> > +                                         KVM_REG_SIZE_MASK |
+> > +                                         KVM_REG_RISCV_CONFIG);
+> > +     unsigned long reg_val;
+> > +
+> > +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +
+> > +     switch (reg_num) {
+> > +     case KVM_REG_RISCV_CONFIG_ISA:
+> > +             reg_val = vcpu->arch.isa;
+> > +             break;
+> > +     case KVM_REG_RISCV_CONFIG_TIMEBASE:
+> > +             reg_val = riscv_timebase;
+>
+> What does this reflect? The current guest time hopefully not? An offset?
+> Related to what?
+
+riscv_timebase is the frequency in HZ of the system timer.
+
+The name "timebase" is not appropriate but we have been
+carrying it since quite some time now.
+
+>
+> All ONE_REG registers should be documented in
+> Documentation/virtual/kvm/api.txt. Please add them there.
+
+Sure, I will update in next revision.
+
+>
+> > +             break;
+> > +     default:
+> > +             return -EINVAL;
+> > +     };
+> > +
+> > +     if (copy_to_user(uaddr, &reg_val, KVM_REG_SIZE(reg->id)))
+> > +             return -EFAULT;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int kvm_riscv_vcpu_set_reg_config(struct kvm_vcpu *vcpu,
+> > +                                      const struct kvm_one_reg *reg)
+> > +{
+> > +     unsigned long __user *uaddr =
+> > +                     (unsigned long __user *)(unsigned long)reg->addr;
+> > +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> > +                                         KVM_REG_SIZE_MASK |
+> > +                                         KVM_REG_RISCV_CONFIG);
+> > +     unsigned long reg_val;
+> > +
+> > +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +
+> > +     if (copy_from_user(&reg_val, uaddr, KVM_REG_SIZE(reg->id)))
+> > +             return -EFAULT;
+> > +
+> > +     switch (reg_num) {
+> > +     case KVM_REG_RISCV_CONFIG_ISA:
+> > +             if (!vcpu->arch.ran_atleast_once) {
+> > +                     vcpu->arch.isa = reg_val;
+> > +                     vcpu->arch.isa &= riscv_isa_extension_base(NULL);
+> > +                     vcpu->arch.isa &= KVM_RISCV_ISA_ALLOWED;
+>
+> This register definitely needs proper documentation too ;). You may want
+> to reconsider to put a few of the helper bits from patch 02/20 into
+> uapi, so that user space can directly use them.
+
+Sure, I will add details about ISA register in Documentation/virt/kvm/api.txt
 
 Regards,
 Anup
 
+
+>
+> > +             } else {
+> > +                     return -ENOTSUPP;
+> > +             }
+> > +             break;
+> > +     case KVM_REG_RISCV_CONFIG_TIMEBASE:
+> > +             return -ENOTSUPP;
+> > +     default:
+> > +             return -EINVAL;
+> > +     };
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int kvm_riscv_vcpu_get_reg_core(struct kvm_vcpu *vcpu,
+> > +                                    const struct kvm_one_reg *reg)
+> > +{
+> > +     struct kvm_cpu_context *cntx = &vcpu->arch.guest_context;
+> > +     unsigned long __user *uaddr =
+> > +                     (unsigned long __user *)(unsigned long)reg->addr;
+> > +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> > +                                         KVM_REG_SIZE_MASK |
+> > +                                         KVM_REG_RISCV_CORE);
+> > +     unsigned long reg_val;
+> > +
+> > +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +
+> > +     if (reg_num == KVM_REG_RISCV_CORE_REG(regs.pc))
+> > +             reg_val = cntx->sepc;
+> > +     else if (KVM_REG_RISCV_CORE_REG(regs.pc) < reg_num &&
+> > +              reg_num <= KVM_REG_RISCV_CORE_REG(regs.t6))
+> > +             reg_val = ((unsigned long *)cntx)[reg_num];
+> > +     else if (reg_num == KVM_REG_RISCV_CORE_REG(mode))
+> > +             reg_val = (cntx->sstatus & SR_SPP) ?
+> > +                             KVM_RISCV_MODE_S : KVM_RISCV_MODE_U;
+> > +     else
+> > +             return -EINVAL;
+> > +
+> > +     if (copy_to_user(uaddr, &reg_val, KVM_REG_SIZE(reg->id)))
+> > +             return -EFAULT;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int kvm_riscv_vcpu_set_reg_core(struct kvm_vcpu *vcpu,
+> > +                                    const struct kvm_one_reg *reg)
+> > +{
+> > +     struct kvm_cpu_context *cntx = &vcpu->arch.guest_context;
+> > +     unsigned long __user *uaddr =
+> > +                     (unsigned long __user *)(unsigned long)reg->addr;
+> > +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> > +                                         KVM_REG_SIZE_MASK |
+> > +                                         KVM_REG_RISCV_CORE);
+> > +     unsigned long reg_val;
+> > +
+> > +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +
+> > +     if (copy_from_user(&reg_val, uaddr, KVM_REG_SIZE(reg->id)))
+> > +             return -EFAULT;
+> > +
+> > +     if (reg_num == KVM_REG_RISCV_CORE_REG(regs.pc))
+> > +             cntx->sepc = reg_val;
+> > +     else if (KVM_REG_RISCV_CORE_REG(regs.pc) < reg_num &&
+> > +              reg_num <= KVM_REG_RISCV_CORE_REG(regs.t6))
+> > +             ((unsigned long *)cntx)[reg_num] = reg_val;
+> > +     else if (reg_num == KVM_REG_RISCV_CORE_REG(mode)) {
+> > +             if (reg_val == KVM_RISCV_MODE_S)
+> > +                     cntx->sstatus |= SR_SPP;
+> > +             else
+> > +                     cntx->sstatus &= ~SR_SPP;
+> > +     } else
+> > +             return -EINVAL;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int kvm_riscv_vcpu_get_reg_csr(struct kvm_vcpu *vcpu,
+> > +                                   const struct kvm_one_reg *reg)
+> > +{
+> > +     struct kvm_vcpu_csr *csr = &vcpu->arch.guest_csr;
+> > +     unsigned long __user *uaddr =
+> > +                     (unsigned long __user *)(unsigned long)reg->addr;
+> > +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> > +                                         KVM_REG_SIZE_MASK |
+> > +                                         KVM_REG_RISCV_CSR);
+> > +     unsigned long reg_val;
+> > +
+> > +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +     if (reg_num >= sizeof(struct kvm_sregs) / sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +
+> > +     if (reg_num == KVM_REG_RISCV_CSR_REG(sip))
+> > +             kvm_riscv_vcpu_flush_interrupts(vcpu);
+> > +
+> > +     reg_val = ((unsigned long *)csr)[reg_num];
+> > +
+> > +     if (copy_to_user(uaddr, &reg_val, KVM_REG_SIZE(reg->id)))
+> > +             return -EFAULT;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int kvm_riscv_vcpu_set_reg_csr(struct kvm_vcpu *vcpu,
+> > +                                   const struct kvm_one_reg *reg)
+> > +{
+> > +     struct kvm_vcpu_csr *csr = &vcpu->arch.guest_csr;
+> > +     unsigned long __user *uaddr =
+> > +                     (unsigned long __user *)(unsigned long)reg->addr;
+> > +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> > +                                         KVM_REG_SIZE_MASK |
+> > +                                         KVM_REG_RISCV_CSR);
+> > +     unsigned long reg_val;
+> > +
+> > +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +     if (reg_num >= sizeof(struct kvm_sregs) / sizeof(unsigned long))
+> > +             return -EINVAL;
+> > +
+> > +     if (copy_from_user(&reg_val, uaddr, KVM_REG_SIZE(reg->id)))
+> > +             return -EFAULT;
+> > +
+> > +     ((unsigned long *)csr)[reg_num] = reg_val;
+> > +
+> > +     if (reg_num == KVM_REG_RISCV_CSR_REG(sip))
+> > +             WRITE_ONCE(vcpu->arch.irqs_pending_mask, 0);
+>
+> Why does writing SIP clear all pending interrupts?
 >
 >
 > Alex
