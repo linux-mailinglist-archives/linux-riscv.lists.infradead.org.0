@@ -2,81 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F21FC98DFE
-	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 10:42:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CEFB98E01
+	for <lists+linux-riscv@lfdr.de>; Thu, 22 Aug 2019 10:43:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M7qy/xfh7QT6B0DpfVnOe+l8o/sCPDf3k10bfX4NTNo=; b=uP3jQM5FoONOUh
-	ueyv9+Iq1c3oOuVKOAH7kViGIFSahA9M4YhZhq2Dl/fe6X87Aa/kZeOh4gnqGwwa5qijTB+4/5z2s
-	3n2hQjv3ma882hEDS2kGGz0Pa/lDMCR+Ft1osZIs8n9mldK2pLOCu/lyGrz1DEJgXafNl3krzJKU1
-	rbuY7UIiIocc9Z5ILhB4e7IB5QEELJ1+rCGmRnSrzkmTe2lnPKfBLC1i7FHZ5GfnWwEBo3PhOt6NA
-	1/ZrixWz4Ub2fTbBNIxRr0TVIICZqfpN+9iKWEPL2HuPe61vU+BI8DY4Gd7Vxag7LU0xSm2s48FGZ
-	/QHRyq52gOXyaoPGYFSA==;
+	List-Owner; bh=cwisLjoIEaJ5Y9gPkDwfpuLwDNmbZMX8/1S44rr+3+8=; b=Y0gpAp7XGJhtis
+	2GSsU0XDyu39YsWbziBHvujDCkk3mtQtxn09ecoFE8Eo2PWarpYORdOJikI8OGSw6J5vifDv9uK60
+	KjfNrH1HK7pSPSnLw6y4Dhu+PKSeHjZ6WT1IREIVBDBHkTy/V+Kb8lWaF2OVxZwI3QwBwA7cf+LXk
+	neSV0lRBpU5ynWvs1Q/SaS5aW3i7uytZO7q8TR/z9dOokYJh+CUlOSct7r6jePMLMGqx/LU2TYn6g
+	XCI2zEIdxd/O6iO9N7WTe8WVf8k9F29559Bhy0Vl8qppVJzI5cxA2N6nRVSaoShmqWsO2Ba22cGYn
+	9jNpt4Lo97pYkKWaRkXQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0ig0-0005ra-Ix; Thu, 22 Aug 2019 08:42:36 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1i0igJ-0005wo-4T; Thu, 22 Aug 2019 08:42:55 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0ifw-0005r1-BC
- for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 08:42:33 +0000
+ id 1i0igF-0005vw-Gx
+ for linux-riscv@lists.infradead.org; Thu, 22 Aug 2019 08:42:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1566463352; x=1597999352;
+ t=1566463371; x=1597999371;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=9wly2ZqB8szYB10REO9hVQXoBMbrUmZ3YdQFqShIxWQ=;
- b=U5fVGGDLpKpv135GFUPnpmXaCHfDVuc9IXN0//GQe6vN/Sgi3V/3rVZu
- boW+hdL8sSmjKMZlJyffo+jHim4ibF/OuPSWo2qq3vZYZDSADjr907gBP
- 5ThdPsgHpZ1KmkCRBOXVe0PTN5t5PP4bIDOHLtaFkyqE8CMV5VUfSwGDi
- lWcpmziVq+B/RXBd2SXyk2x4a/ovwcuAcDit00Ed4arKlIu6rGNs5mY2o
- WjujCfttOcsV0ih7r5C35L59K5xA+R7Y+otLJoKbsJL3UjlIUqKSXVrYM
- Ydtjrfqkgnn1cVCOzrRYWKumzxkTT6w9EQgWtO8xGs8rzZUNcdxou0Kd8 w==;
-IronPort-SDR: QSr15ROykkQ6HgOv0PrQcuu2UlP7FbfvHDbrg+IefkS/UNwXoIqBNejL1GHo8+hYg4xhzAzPbN
- PTG22Xc/oGMKs43ZEwdm4UbIYoXD3Dc0wfkIhgMEEmARKRxF/h/2WpWw/nqH7TSKPD3c91g3WT
- DK4urRC48Q74KK1FUT1mc8kxtYdvdDKXbp1qDCyfv3yccGjOyaURiGfSH/T6okTuc1MPOIF5ck
- UfAvQnbSNyc9EGLkNytMX06Dsl3w/KFGosfCKkjg4fskT1VwkKTJrK3hPlFvKwEgsCBC+LforF
- v0M=
-X-IronPort-AV: E=Sophos;i="5.64,416,1559491200"; d="scan'208";a="116400162"
-Received: from mail-bl2nam02lp2056.outbound.protection.outlook.com (HELO
- NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.56])
- by ob1.hgst.iphmx.com with ESMTP; 22 Aug 2019 16:42:31 +0800
+ bh=Gh+268eQRrXht6C2BWr7/3xmFSKe5PjeBZTxlMFqdy0=;
+ b=BcKrfQS1ngeRG7WHN86dki3HtfLN//DORTvaXLSlV7qaL8lJpuqAIfDA
+ zCZiILLLImap81vp0B4OepdZDnjZ0/pWfnxvMtsF88JW20ZU6wVWYynSo
+ IcRozqDpS2WPRkAiqJIuSxhCBONZolyrDAkrgk93yU1WxV3we2KPYkObx
+ UNUedHBJfz5ZN9i4IZXDTymYmwrmZ02CGuZgCrNN7QiAwy47HVSqsIpoL
+ 4kTUvBF7TdPc3PHFsbzZ7wqPeUja/SU+L+itA30m8OCz4ln+2Nk6+T8pA
+ 0AtVHvNxzJKtFxTdLstv0rEQt1zBYGo8ZFZISxd+dsz8K/ke7FE8tx14W w==;
+IronPort-SDR: WTEwKtCLtrRpFF2Mj5kNnwLySqCZtMZmkWbUo7Jqvkw0YgVZcshurYmwSPgQbDcLKijjI+Krmb
+ RAo+0lg7yrGI25bJT1KXp0ZXi5sCdxqksYwzivBcfzOuBa9TlMZF+g3we1OohCjlr3a88Q93bJ
+ JDnME8kwPcQIcU+zTasp2mB3DFtWGkxSXZBXBYr2dVWXHaLQvrXHb72my0lgveWAJhcTqoJ1WV
+ OOWay2ZETKo14LKLcUL88/QFOj/WoVHans76Tv1gixtSR/tLg1thXj9CFxJA6bxZWWy84SzNH/
+ yw4=
+X-IronPort-AV: E=Sophos;i="5.64,416,1559491200"; d="scan'208";a="222996883"
+Received: from mail-bl2nam02lp2055.outbound.protection.outlook.com (HELO
+ NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.55])
+ by ob1.hgst.iphmx.com with ESMTP; 22 Aug 2019 16:42:47 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Fkkr+zDN+l3TO8WQRvrU8f4GIjaI/t3g3REEt5fZhEXE4zV5jr3GOG780+vX+oqZm3aCZlFcqJzCGhUuorfsXvf0oRNaR7aFvUafWdc+loU4vC8Seld4/NuL1CbNhCQQkqvEqVTZFl5h38v5AiwkoP/LmuszyMu1d05YvDFtv76qYEsWugrjjKbFEQuHvUdO9R4ZyEWfgNPfsnqx3pYfU9WlY7FjsOHz5iZrUy5+x4pojmUAm8b6rk5BuwhuyK4jaOLLP9MJ1PfTVZGWZecpORkvRKDbHHHH3M7+JofYm4jh/5blTVB9om7oTBl8usv9QCwPab+3tPdu7Y/irPNxRg==
+ b=npIkjNKzYTTnX6P5YOt1kVX1oDp/9kZ254s/7Q+jaNLW1/T5uduSrGUuwGqmWbsYoGgHHryPexrj0lz7fU50LR5RA72H4rTOHjo87UShkfzxgJ3m+KyYrrX+rcc9zagwrqyFfS+GCQtOsh9Rs27sL6jCBMBLesVYy/mxj7NNVLwzQzUqcf8Lw+LuJQtBEW5iBSRE2CO8AszmTcnb7jLt5IC2YYLzqmr1YI0GvVhsuB4o9y1hKmfjSFZI7HM7gHOVydekVlbwZEqlRYBXFcqz94nx6q9O8lvv/qocmGfPyo1q6268L3WFWJA+s/xWykbcxZm/GYN0hffmh0fhpSRN5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3QIaUtavuVeCoWdfgfjqxFFAzYWV6HZkJPA+thztH6o=;
- b=nHAWFj4g+8c0BnqAZqXb9HFvGGyBvOWb/ypJ9g0RC3OlXLMdqyS04NU1dcQeN/QcsO+7gdaI+erPRDwOnz8vuHz2JwCR2U1Uh9tY5Dm0Tn8LAYVE/WPvgNdaOBHU1AIQEx8aH1crvZ46Nmrj0fba6qrcRLW/anoImAu3GhIWyD76Q7WnU1lKzPJBBn8liNlp+WLoEZ8+FWMeJNQv+/QJDSI9D5+skV1XLDjbm1HKL8+dUAkSYsyANytXkOkIKuRheIJYoCvIEyMk5qr5xGqqraAtX+jrio5dS7rm4yzUdyvGJNxWFylYU16fKajQxhRjzzVRbdgEJOvGznufGX74cg==
+ bh=vv8nXZoJjS5sMpY+qxnbQkeuY2smjv4KTma2aiBeTns=;
+ b=CHaTwAHpi/4ub4SeiMLlYJWGLOWodnjggqSs22EpPlIrVeJlbJ0GIhXwZnyH0ygkNboKZxmuLvi63dmjFUGTOHgBZAHkX1ySjpwKDb8ULN1DBkpoFG6q1VLPZnbfXAZll3BOFXYDn79t5rXH8zSlR8h76Gf4GqzNOHAxKnNkauZp2CCtQMW6g/mYgFawExq8N7FdcxIevP+gTtjmXU541SR83zZsTfhHq6yY1M366HVHrx9wo/i7cHiaKcAAg0/jjjYyylo0TkOETzWEHpIeB3DDQ0OIoxZ84DBy7plBms//4eJS4JzP47ok4FEErp18HHn9LswOPKhzo6dh2G0t+w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3QIaUtavuVeCoWdfgfjqxFFAzYWV6HZkJPA+thztH6o=;
- b=A9BuANOlt+joTQ/TFtcKCifD42xnA2H46Tts8GleoGjPUIqkav/6TAXn56bIr/MMyBterIsCV/krp8O6Xe6SZdeIGB8eOS/aGVwx6FpJa93riwhi7fTRuCKpPzxpMCNoleDqLXtQCG5RmQjcT1IU05v9JNdxSgBvL359BpevhO0=
+ bh=vv8nXZoJjS5sMpY+qxnbQkeuY2smjv4KTma2aiBeTns=;
+ b=YAosbQ0629MshDThqbXWxrlT2k028K4N7LHikA3G2KZXo+opfnbyMAD0Fxcwuvwj0L4uCrarDKVCHxpFTDzhEdDmqFMttUyuy2IZZWdY9FrcDT0F86ZuPSacqtL8yQrU+zhqgw8sI9ED6G/EyoHoFun3hm8kjGgZsclCVR1uB9U=
 Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
  MN2PR04MB7070.namprd04.prod.outlook.com (10.186.146.18) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2178.16; Thu, 22 Aug 2019 08:42:30 +0000
+ 15.20.2178.16; Thu, 22 Aug 2019 08:42:45 +0000
 Received: from MN2PR04MB6061.namprd04.prod.outlook.com
  ([fe80::a815:e61a:b4aa:60c8]) by MN2PR04MB6061.namprd04.prod.outlook.com
  ([fe80::a815:e61a:b4aa:60c8%7]) with mapi id 15.20.2178.018; Thu, 22 Aug 2019
- 08:42:30 +0000
+ 08:42:45 +0000
 From: Anup Patel <Anup.Patel@wdc.com>
 To: Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley
  <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>, Radim K
  <rkrcmar@redhat.com>
-Subject: [PATCH v5 01/20] KVM: RISC-V: Add KVM_REG_RISCV for ONE_REG interface
-Thread-Topic: [PATCH v5 01/20] KVM: RISC-V: Add KVM_REG_RISCV for ONE_REG
- interface
-Thread-Index: AQHVWMWIsBQjRK+t0E6B2vDaDS4FuA==
-Date: Thu, 22 Aug 2019 08:42:30 +0000
-Message-ID: <20190822084131.114764-2-anup.patel@wdc.com>
+Subject: [PATCH v5 02/20] RISC-V: Add bitmap reprensenting ISA features common
+ across CPUs
+Thread-Topic: [PATCH v5 02/20] RISC-V: Add bitmap reprensenting ISA features
+ common across CPUs
+Thread-Index: AQHVWMWR9LVkivHCeU+yKxy3T1RSlA==
+Date: Thu, 22 Aug 2019 08:42:45 +0000
+Message-ID: <20190822084131.114764-3-anup.patel@wdc.com>
 References: <20190822084131.114764-1-anup.patel@wdc.com>
 In-Reply-To: <20190822084131.114764-1-anup.patel@wdc.com>
 Accept-Language: en-US
@@ -92,43 +93,43 @@ x-ms-exchange-messagesentrepresentingtype: 1
 x-mailer: git-send-email 2.17.1
 x-originating-ip: [199.255.44.175]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e25e022e-3c3a-4f01-b5d2-08d726dcaaad
+x-ms-office365-filtering-correlation-id: 182bec79-4eb2-4a50-e8f3-08d726dcb3f4
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(5600166)(711020)(4605104)(1401327)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
  SRVR:MN2PR04MB7070; 
 x-ms-traffictypediagnostic: MN2PR04MB7070:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR04MB7070777C5DECBD768FDB171F8DA50@MN2PR04MB7070.namprd04.prod.outlook.com>
+x-microsoft-antispam-prvs: <MN2PR04MB7070BBD0687DB04E6CD4AF298DA50@MN2PR04MB7070.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:147;
+x-ms-oob-tlc-oobclassifiers: OLM:274;
 x-forefront-prvs: 01371B902F
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(366004)(396003)(376002)(136003)(39860400002)(346002)(189003)(199004)(86362001)(25786009)(110136005)(486006)(316002)(52116002)(446003)(54906003)(76176011)(476003)(11346002)(36756003)(14454004)(8676002)(44832011)(6506007)(81166006)(256004)(386003)(2906002)(99286004)(2616005)(66446008)(81156014)(66556008)(64756008)(66476007)(3846002)(6512007)(4326008)(1076003)(305945005)(7736002)(50226002)(66946007)(53936002)(4744005)(186003)(26005)(478600001)(6436002)(102836004)(6486002)(5660300002)(71200400001)(6116002)(8936002)(66066001)(71190400001)(7416002);
+ SFS:(10019020)(4636009)(366004)(396003)(376002)(136003)(39860400002)(346002)(189003)(199004)(86362001)(25786009)(110136005)(486006)(316002)(52116002)(446003)(54906003)(76176011)(476003)(11346002)(36756003)(14454004)(8676002)(44832011)(6506007)(81166006)(256004)(386003)(2906002)(99286004)(2616005)(66446008)(81156014)(66556008)(64756008)(66476007)(3846002)(6512007)(4326008)(1076003)(305945005)(7736002)(50226002)(66946007)(53936002)(186003)(26005)(478600001)(6436002)(102836004)(6486002)(5660300002)(71200400001)(6116002)(8936002)(66066001)(71190400001)(7416002);
  DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB7070;
  H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: TY/4wPSjoTlsNHAe/1lsCNKPKBLj9wNKUOYH5V8oN8//tWCcX5dBceE/L/ipi0lxLKpJ2nKHyygOavb/Jipab4rDD59iDcMH0vBT8RWw5xvDPZ4XhGyiSgtpBLSkUKNW5/D0fkvTZid5UDl6MOPmImDPfXtDaTdt1xz8YLPtrntqaLiWlGYWnrdGfiyr2Zc6pQ9824V0XMW5FwZ+TvUVCscyrx55Tpc3aXeYojDlRevJpqYHacqko/rjYBedaHIkOdGzuca4aAKNer8HK7XCNWElUkoeAJ/2wIPYsJgQ12Rt9OErDFd2NAhDmQhmF2rW+uHSTCb16HRj5ng5vvuLHBrNDI3YorUpnvXMtapKeq5D+uh3WCYi8FZvLdvF4OFC1QNwmyv7l64aGe2zVEAS3mO+U63NhG3yLhEVAF06+Lc=
+x-microsoft-antispam-message-info: gcJf5wediclZELe6QR2ewD8XLWYYZyP/lhKemAYlyKGIwEHMLwiKUdrhCB2dle7v+zIopwnNjH3/xE4Vg4JjgJ+38GNjxHe1Lea9Jp5i4YoWhv5yV4j9hDkVSQ3gJ8N4Zm4VryAXaJoTTIXb7QjZdhGclAb2R5Ot+OFr48NpnBpXjVrYQ4Efk5c57W5UfxTpVxSTjXWKzslJZOqGdfkvSHGYSs4RhXr971Gi5+9UuONcMZnokGfesYB/bC3wMMgrhsVs93pxiMnZMHxpLPwPgza+tae4vl2JyYeqg1VpraP4RG/bO/yx/28s6gxteEn1dc1mAM1UsMYt8whYqLgbszs54akE268qaJ1XVlZIs28dNnWQ+sjegFcvB3/M/aDnm9rQLDTzCZ1bc0IDSiXfy8ugdwUgQbXWmOUuzLD8vgo=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e25e022e-3c3a-4f01-b5d2-08d726dcaaad
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Aug 2019 08:42:30.2291 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 182bec79-4eb2-4a50-e8f3-08d726dcb3f4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Aug 2019 08:42:45.8052 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: uNs1z9u3vpBLupsabeSgZPXV8zwlg8kPLSzOiAt9kjcQfdhd+DS62ebiodZz5zBI+Hz+ck0dB5a9H+oeYNTX4w==
+X-MS-Exchange-CrossTenant-userprincipalname: h/ipkH0INnQT5G/iUoxeKLPv1a84qAf3p/2Ohp6r5Yyu70gcnAVLD7nA6cuQnNM5gjJYbpuJyf0Kob4VESOw9A==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB7070
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_014232_419230_43A7F6B2 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20190822_014251_683689_8A74D017 
+X-CRM114-Status: GOOD (  17.97  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ medium trust [68.232.141.245 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -162,28 +163,204 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-We will be using ONE_REG interface accessing VCPU registers from
-user-space hence we add KVM_REG_RISCV for RISC-V VCPU registers.
+This patch adds riscv_isa bitmap which represents Host ISA features
+common across all Host CPUs. The riscv_isa is not same as elf_hwcap
+because elf_hwcap will only have ISA features relevant for user-space
+apps whereas riscv_isa will have ISA features relevant to both kernel
+and user-space apps.
+
+One of the use-case for riscv_isa bitmap is in KVM hypervisor where
+we will use it to do following operations:
+
+1. Check whether hypervisor extension is available
+2. Find ISA features that need to be virtualized (e.g. floating
+   point support, vector extension, etc.)
 
 Signed-off-by: Anup Patel <anup.patel@wdc.com>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
 ---
- include/uapi/linux/kvm.h | 1 +
- 1 file changed, 1 insertion(+)
+ arch/riscv/include/asm/hwcap.h | 26 +++++++++++
+ arch/riscv/kernel/cpufeature.c | 79 ++++++++++++++++++++++++++++++++--
+ 2 files changed, 102 insertions(+), 3 deletions(-)
 
-diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
-index 5e3f12d5359e..fcaea3c2fc7e 100644
---- a/include/uapi/linux/kvm.h
-+++ b/include/uapi/linux/kvm.h
-@@ -1142,6 +1142,7 @@ struct kvm_dirty_tlb {
- #define KVM_REG_S390		0x5000000000000000ULL
- #define KVM_REG_ARM64		0x6000000000000000ULL
- #define KVM_REG_MIPS		0x7000000000000000ULL
-+#define KVM_REG_RISCV		0x8000000000000000ULL
+diff --git a/arch/riscv/include/asm/hwcap.h b/arch/riscv/include/asm/hwcap.h
+index 7ecb7c6a57b1..9b657375aa51 100644
+--- a/arch/riscv/include/asm/hwcap.h
++++ b/arch/riscv/include/asm/hwcap.h
+@@ -8,6 +8,7 @@
+ #ifndef __ASM_HWCAP_H
+ #define __ASM_HWCAP_H
  
- #define KVM_REG_SIZE_SHIFT	52
- #define KVM_REG_SIZE_MASK	0x00f0000000000000ULL
++#include <linux/bits.h>
+ #include <uapi/asm/hwcap.h>
+ 
+ #ifndef __ASSEMBLY__
+@@ -22,5 +23,30 @@ enum {
+ };
+ 
+ extern unsigned long elf_hwcap;
++
++#define RISCV_ISA_EXT_a		('a' - 'a')
++#define RISCV_ISA_EXT_c		('c' - 'a')
++#define RISCV_ISA_EXT_d		('d' - 'a')
++#define RISCV_ISA_EXT_f		('f' - 'a')
++#define RISCV_ISA_EXT_h		('h' - 'a')
++#define RISCV_ISA_EXT_i		('i' - 'a')
++#define RISCV_ISA_EXT_m		('m' - 'a')
++#define RISCV_ISA_EXT_s		('s' - 'a')
++#define RISCV_ISA_EXT_u		('u' - 'a')
++#define RISCV_ISA_EXT_zicsr	(('z' - 'a') + 1)
++#define RISCV_ISA_EXT_zifencei	(('z' - 'a') + 2)
++#define RISCV_ISA_EXT_zam	(('z' - 'a') + 3)
++#define RISCV_ISA_EXT_ztso	(('z' - 'a') + 4)
++
++#define RISCV_ISA_EXT_MAX	256
++
++unsigned long riscv_isa_extension_base(const unsigned long *isa_bitmap);
++
++#define riscv_isa_extension_mask(ext) BIT_MASK(RISCV_ISA_EXT_##ext)
++
++bool __riscv_isa_extension_available(const unsigned long *isa_bitmap, int bit);
++#define riscv_isa_extension_available(isa_bitmap, ext)	\
++	__riscv_isa_extension_available(isa_bitmap, RISCV_ISA_EXT_##ext)
++
+ #endif
+ #endif
+diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
+index b1ade9a49347..4ce71ce5e290 100644
+--- a/arch/riscv/kernel/cpufeature.c
++++ b/arch/riscv/kernel/cpufeature.c
+@@ -6,21 +6,64 @@
+  * Copyright (C) 2017 SiFive
+  */
+ 
++#include <linux/bitmap.h>
+ #include <linux/of.h>
+ #include <asm/processor.h>
+ #include <asm/hwcap.h>
+ #include <asm/smp.h>
+ 
+ unsigned long elf_hwcap __read_mostly;
++
++/* Host ISA bitmap */
++static DECLARE_BITMAP(riscv_isa, RISCV_ISA_EXT_MAX) __read_mostly;
++
+ #ifdef CONFIG_FPU
+ bool has_fpu __read_mostly;
+ #endif
+ 
++/**
++ * riscv_isa_extension_base - Get base extension word
++ *
++ * @isa_bitmap ISA bitmap to use
++ * @returns base extension word as unsigned long value
++ *
++ * NOTE: If isa_bitmap is NULL then Host ISA bitmap will be used.
++ */
++unsigned long riscv_isa_extension_base(const unsigned long *isa_bitmap)
++{
++	if (!isa_bitmap)
++		return riscv_isa[0];
++	return isa_bitmap[0];
++}
++EXPORT_SYMBOL_GPL(riscv_isa_extension_base);
++
++/**
++ * __riscv_isa_extension_available - Check whether given extension
++ * is available or not
++ *
++ * @isa_bitmap ISA bitmap to use
++ * @bit bit position of the desired extension
++ * @returns true or false
++ *
++ * NOTE: If isa_bitmap is NULL then Host ISA bitmap will be used.
++ */
++bool __riscv_isa_extension_available(const unsigned long *isa_bitmap, int bit)
++{
++	const unsigned long *bmap = (isa_bitmap) ? isa_bitmap : riscv_isa;
++
++	if (bit >= RISCV_ISA_EXT_MAX)
++		return false;
++
++	return test_bit(bit, bmap) ? true : false;
++}
++EXPORT_SYMBOL_GPL(__riscv_isa_extension_available);
++
+ void riscv_fill_hwcap(void)
+ {
+ 	struct device_node *node;
+ 	const char *isa;
+-	size_t i;
++	char print_str[BITS_PER_LONG+1];
++	size_t i, j, isa_len;
+ 	static unsigned long isa2hwcap[256] = {0};
+ 
+ 	isa2hwcap['i'] = isa2hwcap['I'] = COMPAT_HWCAP_ISA_I;
+@@ -32,8 +75,11 @@ void riscv_fill_hwcap(void)
+ 
+ 	elf_hwcap = 0;
+ 
++	bitmap_zero(riscv_isa, RISCV_ISA_EXT_MAX);
++
+ 	for_each_of_cpu_node(node) {
+ 		unsigned long this_hwcap = 0;
++		unsigned long this_isa = 0;
+ 
+ 		if (riscv_of_processor_hartid(node) < 0)
+ 			continue;
+@@ -43,8 +89,20 @@ void riscv_fill_hwcap(void)
+ 			continue;
+ 		}
+ 
+-		for (i = 0; i < strlen(isa); ++i)
++		i = 0;
++		isa_len = strlen(isa);
++#if defined(CONFIG_32BIT)
++		if (!strncmp(isa, "rv32", 4))
++			i += 4;
++#elif defined(CONFIG_64BIT)
++		if (!strncmp(isa, "rv64", 4))
++			i += 4;
++#endif
++		for (; i < isa_len; ++i) {
+ 			this_hwcap |= isa2hwcap[(unsigned char)(isa[i])];
++			if ('a' <= isa[i] && isa[i] <= 'z')
++				this_isa |= (1UL << (isa[i] - 'a'));
++		}
+ 
+ 		/*
+ 		 * All "okay" hart should have same isa. Set HWCAP based on
+@@ -55,6 +113,11 @@ void riscv_fill_hwcap(void)
+ 			elf_hwcap &= this_hwcap;
+ 		else
+ 			elf_hwcap = this_hwcap;
++
++		if (riscv_isa[0])
++			riscv_isa[0] &= this_isa;
++		else
++			riscv_isa[0] = this_isa;
+ 	}
+ 
+ 	/* We don't support systems with F but without D, so mask those out
+@@ -64,7 +127,17 @@ void riscv_fill_hwcap(void)
+ 		elf_hwcap &= ~COMPAT_HWCAP_ISA_F;
+ 	}
+ 
+-	pr_info("elf_hwcap is 0x%lx\n", elf_hwcap);
++	memset(print_str, 0, sizeof(print_str));
++	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
++		if (riscv_isa[0] & BIT_MASK(i))
++			print_str[j++] = (char)('a' + i);
++	pr_info("riscv: ISA extensions %s\n", print_str);
++
++	memset(print_str, 0, sizeof(print_str));
++	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
++		if (elf_hwcap & BIT_MASK(i))
++			print_str[j++] = (char)('a' + i);
++	pr_info("riscv: ELF capabilities %s\n", print_str);
+ 
+ #ifdef CONFIG_FPU
+ 	if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
 -- 
 2.17.1
 
