@@ -2,89 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADD6A9AED5
-	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 14:11:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B35EE9AED7
+	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 14:11:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VAEFufo6vKvJi3Vxc70thWsMqrb5re8z3oSiRAX0B38=; b=o0EioB8nTg4KOj
-	7QuSG3vSdLdEsdNnv3AeBzHWhMTSm6/2BiZZXbNw9ZeTXeFo4qvYfrI373rkDIAovbxQbN682Nioy
-	zALQQsj2VDRxgbcI52b1zYLdrDmhmzS550ZYxM+tX4twEF6KvvE4QerQFEGzUxnqz/LOEJJUBS23k
-	k5aGhGkvYxYtfpv6CtUycxh2mfZwrKllLadkcLf1P72ZoVT+fz9UZHx1KvvJu418TpzUpiZz2X4Nc
-	fgszqu5fXugSTiZj/o4tppsAfmqf9UPnb6KDWcYTGEqtlJBwJeNzHFj6WN4HgHDRpSVi9hft8NpTE
-	Z5bVXpV9jhmEYRyovofg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=atL7pKCjt/j5x55RO25IC3yYZFa6jjphkTb/Z0ejBrc=; b=XIvfpBKNnrXdvC
+	+hTHnTiCkXYg3GV1wlltiDfivs/6BlB3RJwoQYD3jhJR8g/1vERQcqorhqJgnS3gpqI2yILXQ+AkJ
+	QOT6skFzA9RxZyN+z3dtJSZimxcU90LwMmR50KyAPMMjREyaY7isKPfhP8SJ1Tj2q4djmotVdyL9k
+	mIuzYWdB+Qwaoy+JkLJm23K6NzJ2CZNgowbAxPahaUB9atKX07d+Zpe1vZOB/tpeDIrbB0EKZEEI6
+	/e8/QSS1hVhF2fHt8EKHZOZ1RMAFLfNsoD+HhEXyOolXkbB8Bh1IyxAwrj6rY34dYR1JAbzwWDG4c
+	8MQZWOKoD4n3g6zk68+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i18PG-0002V8-VL; Fri, 23 Aug 2019 12:11:02 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1i18Pl-0002vt-0r; Fri, 23 Aug 2019 12:11:33 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i18P7-0002JL-S7
- for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 12:10:55 +0000
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 465722CE955
- for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 12:10:53 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id n13so2916209wmi.4
- for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 05:10:53 -0700 (PDT)
+ id 1i18Pf-0002on-4A
+ for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 12:11:28 +0000
+Received: by mail-wr1-x441.google.com with SMTP id p17so8401874wrf.11
+ for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 05:11:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iRAIEkmwp6JE/WX2NGJMgDWxiWJMs7wvHv42hCwyQfI=;
+ b=YEpPQAEvWA9shVqsD3mh8d8r/uR1cXm76LWodn7SiQ5pxKz7XzPS/ZenBR9boBZyaG
+ caGIKN8nTkYwxmJT/mzu7KBhHgk4GeQi8KzLsfjZvbcWPNgfjk8U7abtLLKyXdj5Iamh
+ WEsHh//w59EZk4ZHq2zco+dvqKcSqeOpqKfAgAxs24rR3jk7qj70m/eSqghKeO27BCbg
+ 57q5BniRpmfS+Onee+Wyw2JZmiPvY2YoeKKMT+7msYpvsBdu8lDwXAgn8HTnnVp8Mqhf
+ ANB5y7OGnpvyOk+4i8bGpz2IwFMlbb8/P8hrdq+BDZUs4bKztK084OcOQFc10fpgUOCS
+ PrkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YmpuoFAf1JV9E3g21xDaHXmAHG9KWMG9xyLy+0tzG68=;
- b=fTyeZQetixyi0bH+On43HeVl6XRZ4HXlWHaEUHiTsnCpDk2q2tKHr0uzMJorBovLyV
- lqK36X06Wu8zwWA0ppQ0kmb331mU5yl6FG4E3h7/eG17B3Q94aenWuJ0s14wqLeXT2/B
- VMcynrThtPDw2Lk3ck3nICI4IMAqjFSGb7EbmSGRhEqrllckSM4YhHBaTTnKBJvvNtti
- B3fyPNhLiD4XJHW3tOjVg9FMdASx/K0fZNNhKCiCxbdQAfWW1CObDs8UOQ8/3RSZHz0p
- 4obrbkRWP9gJdIlnAdhjCylxTs7LZrYAtDymx19kGR/bbkdPjrEqLkLYtdrtjmfGp2xs
- pE9A==
-X-Gm-Message-State: APjAAAXgXDtFkaNcPsO0FpPys6uRw1MuetAONj0YbHBzZSdV9L8R2MiS
- F5YcTpIucn7EczpSYzm/XYgr58cMIUObDZSxZkuQrojiCuNoxmff6UBg/pPfDpk8+CCtv2chBVI
- 73dGKr8No5M1m6AQipibOfN5EvhDl
-X-Received: by 2002:a05:6000:1c8:: with SMTP id
- t8mr4657580wrx.296.1566562251953; 
- Fri, 23 Aug 2019 05:10:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzyVxw1qUQIBTcRkSh95Cdl4gIPkdK+LHTRDd3Xtmfn2XR4EHjMMfyBhL3S7uHbsTcvuBxUtQ==
-X-Received: by 2002:a05:6000:1c8:: with SMTP id
- t8mr4657537wrx.296.1566562251686; 
- Fri, 23 Aug 2019 05:10:51 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:4566:f1b0:32e7:463f?
- ([2001:b07:6468:f312:4566:f1b0:32e7:463f])
- by smtp.gmail.com with ESMTPSA id g197sm2205295wme.30.2019.08.23.05.10.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Aug 2019 05:10:51 -0700 (PDT)
-Subject: Re: [PATCH v5 00/20] KVM RISC-V Support
-To: "Graf (AWS), Alexander" <graf@amazon.com>, Anup Patel <anup@brainfault.org>
-References: <20190822084131.114764-1-anup.patel@wdc.com>
- <8a2a9ea6-5636-e79a-b041-580159e703b2@amazon.com>
- <CAAhSdy2RC6Gw708wZs+FM56UkkyURgbupwdeTak7VcyarY9irg@mail.gmail.com>
- <757C929B-D26C-46D9-98E8-1191E3B86F3C@amazon.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <fda67a5d-6984-c3ef-8125-7805d927f15b@redhat.com>
-Date: Fri, 23 Aug 2019 14:10:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iRAIEkmwp6JE/WX2NGJMgDWxiWJMs7wvHv42hCwyQfI=;
+ b=jIZLqJ3mIqezuV3BXqwoNCKbeE9dhgQXZVoB0tM2Dk9fdNnwhw1Tk3wVCQTgcKei/A
+ aQvjYhbk3Es5cwnp7M4Q6asItVzAIt/REZ5NG+TsNk2HM7IdzBXsFh6BC7G+HgxlvF3Q
+ TwDi/4irGO5oD01VVJLC0+V/WuGT2pYn6HcXzh8TrT5CtrIGT9vng/mgDEh1J9gIkK0C
+ ryqme/Gnkg2DVrBK6mwVupnJyU2WhDdyVvZZjGknQ9/BQrtGvEtegEoeAMGcvYiCdoWf
+ Sgm6xODr5SzzHd1kYV/etrq0RNAmG/EKcntZcUCdAqKKffWsmeu70LNgQnYbOTwl6mSS
+ 9H0g==
+X-Gm-Message-State: APjAAAVmUdwZ//caHUgc1v0z3GPCGNmset6prpyWOemmuO8Jq38LuSCC
+ IO4JuQIKTczaLEjcNvwv8pdrLpnWvH6FJktyytudxg==
+X-Google-Smtp-Source: APXvYqweuPNty8ifIydMeMGqUfpAmO11I/wuZUHMJ01iiMWWORMqB38dG8e4+ued1WCyfTwxqp2l51dVxUm9msyVfcc=
+X-Received: by 2002:a5d:4ecb:: with SMTP id s11mr4728857wrv.323.1566562285504; 
+ Fri, 23 Aug 2019 05:11:25 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <757C929B-D26C-46D9-98E8-1191E3B86F3C@amazon.com>
-Content-Language: en-US
+References: <20190822084131.114764-1-anup.patel@wdc.com>
+ <20190822084131.114764-16-anup.patel@wdc.com>
+ <09d74212-4fa3-d64c-5a63-d556e955b88c@amazon.com>
+ <CAAhSdy36q5-x8cXM=M5S3cnE2nvCMhcsfuQayVt7jahd58HWFw@mail.gmail.com>
+ <CA3A6A8A-0227-4B92-B892-86A0C7CA369E@amazon.com>
+ <CAAhSdy2FFmCZJhNnMojp8QbiD-t6=4XrNtE9KGnCG_-mPb19-A@mail.gmail.com>
+ <e369eba6-e659-2892-9cb9-a631dd10153a@amazon.com>
+In-Reply-To: <e369eba6-e659-2892-9cb9-a631dd10153a@amazon.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 23 Aug 2019 17:41:13 +0530
+Message-ID: <CAAhSdy2sknED0W5-SpS4cP46cnS6biHYs_jRDgCj_Ucw5PUYzg@mail.gmail.com>
+Subject: Re: [PATCH v5 15/20] RISC-V: KVM: Add timer functionality
+To: Alexander Graf <graf@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190823_051053_938382_01BFBDFB 
-X-CRM114-Status: GOOD (  13.19  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190823_051127_206073_BB219EA4 
+X-CRM114-Status: GOOD (  16.28  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,31 +99,94 @@ Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 23/08/19 13:44, Graf (AWS), Alexander wrote:
->> Overall, I'm quite happy with the code. It's a very clean implementation
->> of a KVM target.
+On Fri, Aug 23, 2019 at 5:19 PM Alexander Graf <graf@amazon.com> wrote:
+>
+>
+>
+> On 23.08.19 13:46, Anup Patel wrote:
+> > On Fri, Aug 23, 2019 at 5:03 PM Graf (AWS), Alexander <graf@amazon.com> wrote:
+> >>
+> >>
+> >>
+> >>> Am 23.08.2019 um 13:05 schrieb Anup Patel <anup@brainfault.org>:
+> >>>
+> >>>> On Fri, Aug 23, 2019 at 1:23 PM Alexander Graf <graf@amazon.com> wrote:
+> >>>>
+> >>>>> On 22.08.19 10:46, Anup Patel wrote:
+> >>>>> From: Atish Patra <atish.patra@wdc.com>
+> >>>>>
+> >>>>> The RISC-V hypervisor specification doesn't have any virtual timer
+> >>>>> feature.
+> >>>>>
+> >>>>> Due to this, the guest VCPU timer will be programmed via SBI calls.
+> >>>>> The host will use a separate hrtimer event for each guest VCPU to
+> >>>>> provide timer functionality. We inject a virtual timer interrupt to
+> >>>>> the guest VCPU whenever the guest VCPU hrtimer event expires.
+> >>>>>
+> >>>>> The following features are not supported yet and will be added in
+> >>>>> future:
+> >>>>> 1. A time offset to adjust guest time from host time
+> >>>>> 2. A saved next event in guest vcpu for vm migration
+> >>>>
+> >>>> Implementing these 2 bits right now should be trivial. Why wait?
+> >>>
+>
+> [...]
+>
+> >>>> ... in fact, I feel like I'm missing something obvious here. How does
+> >>>> the guest trigger the timer event? What is the argument it uses for that
+> >>>> and how does that play with the tbfreq in the earlier patch?
+> >>>
+> >>> We have SBI call inferface between Hypervisor and Guest. One of the
+> >>> SBI call allows Guest to program time event. The next event is specified
+> >>> as absolute cycles. The Guest can read time using TIME CSR which
+> >>> returns system timer value (@ tbfreq freqency).
+> >>>
+> >>> Guest Linux will know the tbfreq from DTB passed by QEMU/KVMTOOL
+> >>> and it has to be same as Host tbfreq.
+> >>>
+> >>> The TBFREQ config register visible to user-space is a read-only CONFIG
+> >>> register which tells user-space tools (QEMU/KVMTOOL) about Host tbfreq.
+> >>
+> >> And it's read-only because you can not trap on TB reads?
+> >
+> > There is no TB registers.
+> >
+> > The tbfreq can only be know through DT/ACPI kind-of HW description
+> > for both Host and Guest.
+> >
+> > The KVM user-space tool needs to know TBFREQ so that it can set correct
+> > value in generated DT for Guest Linux.
+>
+> So what access methods do get influenced by TBFREQ? If it's only the SBI
+> timer, we can control the frequency, which means we can make TBFREQ
+> read/write.
 
-Yup, I said the same even for v1 (I prefer recursive implementation of
-page table walking but that's all I can say).
+There are two things influenced by TBFREQ:
+1. TIME CSR which is a free running counter
+2. SBI calls for programming next timer event
 
->> I will send v6 next week. I will try my best to implement unpriv
->> trap handling in v6 itself.
-> Are you sure unpriv is the only exception that can hit there? What
-> about NMIs? Do you have #MCs yet (ECC errors)? Do you have something
-> like ARM's #SError which can asynchronously hit at any time because
-> of external bus (PCI) errors?
+The Guest TIME CSR will be at same rate as Host TIME CSR so
+we cannot show different TBFREQ to Guest Linux.
 
-As far as I know, all interrupts on RISC-V are disabled by
-local_irq_disable()/local_irq_enable().
+In future, we will be having a dedicated RISC-V timer extension which
+will have all programming done via CSRs but until then we are stuck
+with TIME CSR + SBI call combination.
 
-Paolo
+Regards,
+Anup
+
+>
+>
+> Alex
 
 _______________________________________________
 linux-riscv mailing list
