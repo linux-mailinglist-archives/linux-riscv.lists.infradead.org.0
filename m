@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B634E9A77F
+	by mail.lfdr.de (Postfix) with ESMTPS id A6AE99A77E
 	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 08:17:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -11,40 +11,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=qbbXO/Y4Rr/DDSwNZjqhFtC5QKbe/KQrh6QnL6PX+0U=; b=Vh7rVraPKZdoHIfkL0N2dDpdej
-	vkORNNh+tpympuIIVOqhTAagfXSjAcR5DQD2fx+4xP8itTItWlEVrmqS5+jHVdOEuC9LsRtq/xCBg
-	T2MulPABGNt2LEJdeKoLF9kcrRcBOP6s9I3W0XFR3EIwQjIE3pVOzi/dx1AD7iOqQGuJ8/jPqxF/H
-	GszoaJmm3BzVzz0Wkxk+lFZxbmjTY9tsO5I+fQcN/qn6TPN3GTdyL4QJr5+/PTiOS+daF39cRv6nR
-	MYOm5854kegi0H5OdU476nE0R66GetB2gEjKvRvOT8PFDb3XNfaEX6mhju7b4dXics1YAk0E9/Msb
-	UoPikKmg==;
+	bh=VQebcahq2cZ3QIGxqvJ80clD7OaC5WIN+nzSptTo7vo=; b=W5jWXugbsAbvOO+kom/wfuh4DU
+	kRD/9nUxJaxVJZz9gZV+89VgVn3ZZ1CtoMRFj48N098awlt69VFZWlj2koO4KFf+n8Thwqvcw4Ia0
+	KZG3XwckSVGIeaLRjwuR4Iwnb2h9Nv1TK7W0YzQ0qrkBa9ZuwNQKP7o2bqXkUwf/HQI8SG7Mil6Vm
+	sUFMzuAsX7HQ5QseY5HQxFsRmfS6cfpCdYGd49WEYDxus+XjlM6hdl6FQuaJTBDyI9+ZW0s6NA44J
+	93CbuhiaKZxGUi0qQPvjwzzTzoM8Eb3UcQO7wCjwJfWsXBFhMn3QNxgP73fOhutBxcMrrwWtW3CIt
+	FI4yNoZw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i12sM-0007bZ-SS; Fri, 23 Aug 2019 06:16:42 +0000
+	id 1i12sR-0007dq-J0; Fri, 23 Aug 2019 06:16:47 +0000
 Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i12rr-0007Ea-AA
- for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 06:16:14 +0000
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07436283|-1; CH=green;
- DM=CONTINUE|CONTINUE|true|0.692448-0.0313479-0.276204; FP=0|0|0|0|0|-1|-1|-1;
- HT=e01a16384; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=9; RT=9; SR=0;
- TI=SMTPD_---.FGwIrxL_1566540965; 
+ id 1i12rr-0007F5-DI
+ for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 06:16:15 +0000
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07440525|-1; CH=green;
+ DM=CONTINUE|CONTINUE|true|0.365205-0.0142482-0.620547; FP=0|0|0|0|0|-1|-1|-1;
+ HT=e02c03278; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=9; RT=9; SR=0;
+ TI=SMTPD_---.FGwL6Dt_1566540966; 
 Received: from localhost(mailfrom:han_mao@c-sky.com
- fp:SMTPD_---.FGwIrxL_1566540965)
- by smtp.aliyun-inc.com(10.147.41.137);
- Fri, 23 Aug 2019 14:16:05 +0800
+ fp:SMTPD_---.FGwL6Dt_1566540966)
+ by smtp.aliyun-inc.com(10.147.44.145);
+ Fri, 23 Aug 2019 14:16:06 +0800
 From: Mao Han <han_mao@c-sky.com>
 To: linux-riscv@lists.infradead.org
-Subject: [PATCH V5 1/3] riscv: Add perf callchain support
-Date: Fri, 23 Aug 2019 14:15:58 +0800
-Message-Id: <820d80272fc5627b8d00e684663a614470217606.1566540652.git.han_mao@c-sky.com>
+Subject: [PATCH V5 2/3] riscv: Add support for perf registers sampling
+Date: Fri, 23 Aug 2019 14:15:59 +0800
+Message-Id: <e131ad4ba70ae90195163e3a8b7ef61f79f99b1b.1566540652.git.han_mao@c-sky.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1566540652.git.han_mao@c-sky.com>
 References: <cover.1566540652.git.han_mao@c-sky.com>
 In-Reply-To: <cover.1566540652.git.han_mao@c-sky.com>
 References: <cover.1566540652.git.han_mao@c-sky.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_231611_556442_585202EF 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20190822_231612_184834_95F6F406 
+X-CRM114-Status: GOOD (  10.95  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -75,9 +75,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch add support for perf callchain sampling on riscv platform.
-The return address of leaf function is retrieved from pt_regs as
-it is not saved in the outmost frame.
+This patch implements the perf registers sampling and validation API
+for riscv arch. The valid registers and their register ID are defined in
+perf_regs.h. Perf tool can backtrace in userspace with unwind library
+and the registers/user stack dump support.
 
 Signed-off-by: Mao Han <han_mao@c-sky.com>
 Cc: Paul Walmsley <paul.walmsley@sifive.com>
@@ -87,159 +88,135 @@ Cc: linux-riscv <linux-riscv@lists.infradead.org>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Guo Ren <guoren@kernel.org>
 ---
- arch/riscv/Makefile                |   3 +
- arch/riscv/kernel/Makefile         |   3 +-
- arch/riscv/kernel/perf_callchain.c | 115 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 120 insertions(+), 1 deletion(-)
- create mode 100644 arch/riscv/kernel/perf_callchain.c
+ arch/riscv/Kconfig                      |  2 ++
+ arch/riscv/include/uapi/asm/perf_regs.h | 42 +++++++++++++++++++++++++++++++
+ arch/riscv/kernel/Makefile              |  1 +
+ arch/riscv/kernel/perf_regs.c           | 44 +++++++++++++++++++++++++++++++++
+ 4 files changed, 89 insertions(+)
+ create mode 100644 arch/riscv/include/uapi/asm/perf_regs.h
+ create mode 100644 arch/riscv/kernel/perf_regs.c
 
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index 7a117be..946565b 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -54,6 +54,9 @@ endif
- ifeq ($(CONFIG_MODULE_SECTIONS),y)
- 	KBUILD_LDFLAGS_MODULE += -T $(srctree)/arch/riscv/kernel/module.lds
- endif
-+ifeq ($(CONFIG_PERF_EVENTS),y)
-+        KBUILD_CFLAGS += -fno-omit-frame-pointer
-+endif
- 
- KBUILD_CFLAGS_MODULE += $(call cc-option,-mno-relax)
- 
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 59a4727..4bc976d 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -35,6 +35,8 @@ config RISCV
+ 	select HAVE_DMA_CONTIGUOUS
+ 	select HAVE_FUTEX_CMPXCHG if FUTEX
+ 	select HAVE_PERF_EVENTS
++	select HAVE_PERF_REGS
++	select HAVE_PERF_USER_STACK_DUMP
+ 	select HAVE_SYSCALL_TRACEPOINTS
+ 	select IRQ_DOMAIN
+ 	select SPARSE_IRQ
+diff --git a/arch/riscv/include/uapi/asm/perf_regs.h b/arch/riscv/include/uapi/asm/perf_regs.h
+new file mode 100644
+index 0000000..df1a581
+--- /dev/null
++++ b/arch/riscv/include/uapi/asm/perf_regs.h
+@@ -0,0 +1,42 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (C) 2019 Hangzhou C-SKY Microsystems co.,ltd. */
++
++#ifndef _ASM_RISCV_PERF_REGS_H
++#define _ASM_RISCV_PERF_REGS_H
++
++enum perf_event_riscv_regs {
++	PERF_REG_RISCV_PC,
++	PERF_REG_RISCV_RA,
++	PERF_REG_RISCV_SP,
++	PERF_REG_RISCV_GP,
++	PERF_REG_RISCV_TP,
++	PERF_REG_RISCV_T0,
++	PERF_REG_RISCV_T1,
++	PERF_REG_RISCV_T2,
++	PERF_REG_RISCV_S0,
++	PERF_REG_RISCV_S1,
++	PERF_REG_RISCV_A0,
++	PERF_REG_RISCV_A1,
++	PERF_REG_RISCV_A2,
++	PERF_REG_RISCV_A3,
++	PERF_REG_RISCV_A4,
++	PERF_REG_RISCV_A5,
++	PERF_REG_RISCV_A6,
++	PERF_REG_RISCV_A7,
++	PERF_REG_RISCV_S2,
++	PERF_REG_RISCV_S3,
++	PERF_REG_RISCV_S4,
++	PERF_REG_RISCV_S5,
++	PERF_REG_RISCV_S6,
++	PERF_REG_RISCV_S7,
++	PERF_REG_RISCV_S8,
++	PERF_REG_RISCV_S9,
++	PERF_REG_RISCV_S10,
++	PERF_REG_RISCV_S11,
++	PERF_REG_RISCV_T3,
++	PERF_REG_RISCV_T4,
++	PERF_REG_RISCV_T5,
++	PERF_REG_RISCV_T6,
++	PERF_REG_RISCV_MAX,
++};
++#endif /* _ASM_RISCV_PERF_REGS_H */
 diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-index 2420d37..b1bea89 100644
+index b1bea89..696020f 100644
 --- a/arch/riscv/kernel/Makefile
 +++ b/arch/riscv/kernel/Makefile
-@@ -38,6 +38,7 @@ obj-$(CONFIG_MODULE_SECTIONS)	+= module-sections.o
- obj-$(CONFIG_FUNCTION_TRACER)	+= mcount.o ftrace.o
- obj-$(CONFIG_DYNAMIC_FTRACE)	+= mcount-dyn.o
+@@ -40,5 +40,6 @@ obj-$(CONFIG_DYNAMIC_FTRACE)	+= mcount-dyn.o
  
--obj-$(CONFIG_PERF_EVENTS)      += perf_event.o
-+obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o
-+obj-$(CONFIG_PERF_EVENTS)	+= perf_callchain.o
+ obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o
+ obj-$(CONFIG_PERF_EVENTS)	+= perf_callchain.o
++obj-$(CONFIG_HAVE_PERF_REGS)	+= perf_regs.o
  
  clean:
-diff --git a/arch/riscv/kernel/perf_callchain.c b/arch/riscv/kernel/perf_callchain.c
+diff --git a/arch/riscv/kernel/perf_regs.c b/arch/riscv/kernel/perf_regs.c
 new file mode 100644
-index 0000000..d75d15c
+index 0000000..04a38fb
 --- /dev/null
-+++ b/arch/riscv/kernel/perf_callchain.c
-@@ -0,0 +1,115 @@
++++ b/arch/riscv/kernel/perf_regs.c
+@@ -0,0 +1,44 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/* Copyright (C) 2019 Hangzhou C-SKY Microsystems co.,ltd. */
 +
++#include <linux/errno.h>
++#include <linux/kernel.h>
 +#include <linux/perf_event.h>
-+#include <linux/uaccess.h>
++#include <linux/bug.h>
++#include <asm/perf_regs.h>
++#include <asm/ptrace.h>
 +
-+/* Kernel callchain */
-+struct stackframe {
-+	unsigned long fp;
-+	unsigned long ra;
-+};
-+
-+static int unwind_frame_kernel(struct stackframe *frame)
++u64 perf_reg_value(struct pt_regs *regs, int idx)
 +{
-+	if (kstack_end((void *)frame->fp))
-+		return -EPERM;
-+	if (frame->fp & 0x3 || frame->fp < TASK_SIZE)
-+		return -EPERM;
-+	if (frame->fp < CONFIG_PAGE_OFFSET)
-+		return -EPERM;
++	if (WARN_ON_ONCE((u32)idx >= PERF_REG_RISCV_MAX))
++		return 0;
 +
-+	*frame = *((struct stackframe *)frame->fp - 1);
-+	if (__kernel_text_address(frame->ra)) {
-+		int graph = 0;
++	return ((unsigned long *)regs)[idx];
++}
 +
-+		frame->ra = ftrace_graph_ret_addr(NULL, &graph, frame->ra,
-+				NULL);
-+	}
++#define REG_RESERVED (~((1ULL << PERF_REG_RISCV_MAX) - 1))
++
++int perf_reg_validate(u64 mask)
++{
++	if (!mask || mask & REG_RESERVED)
++		return -EINVAL;
++
 +	return 0;
 +}
 +
-+static void notrace walk_stackframe(struct stackframe *fr,
-+			struct perf_callchain_entry_ctx *entry)
++u64 perf_reg_abi(struct task_struct *task)
 +{
-+	do {
-+		perf_callchain_store(entry, fr->ra);
-+	} while (unwind_frame_kernel(fr) >= 0);
++#if __riscv_xlen == 64
++	return PERF_SAMPLE_REGS_ABI_64;
++#else
++	return PERF_SAMPLE_REGS_ABI_32;
++#endif
 +}
 +
-+/*
-+ * Get the return address for a single stackframe and return a pointer to the
-+ * next frame tail.
-+ */
-+static unsigned long user_backtrace(struct perf_callchain_entry_ctx *entry,
-+			unsigned long fp, unsigned long reg_ra)
++void perf_get_regs_user(struct perf_regs *regs_user,
++			struct pt_regs *regs,
++			struct pt_regs *regs_user_copy)
 +{
-+	struct stackframe buftail;
-+	unsigned long ra = 0;
-+	unsigned long *user_frame_tail =
-+			(unsigned long *)(fp - sizeof(struct stackframe));
-+
-+	/* Check accessibility of one struct frame_tail beyond */
-+	if (!access_ok(user_frame_tail, sizeof(buftail)))
-+		return 0;
-+	if (__copy_from_user_inatomic(&buftail, user_frame_tail,
-+				      sizeof(buftail)))
-+		return 0;
-+
-+	if (reg_ra != 0)
-+		ra = reg_ra;
-+	else
-+		ra = buftail.ra;
-+
-+	fp = buftail.fp;
-+	perf_callchain_store(entry, ra);
-+
-+	return fp;
-+}
-+
-+/*
-+ * This will be called when the target is in user mode
-+ * This function will only be called when we use
-+ * "PERF_SAMPLE_CALLCHAIN" in
-+ * kernel/events/core.c:perf_prepare_sample()
-+ *
-+ * How to trigger perf_callchain_[user/kernel] :
-+ * $ perf record -e cpu-clock --call-graph fp ./program
-+ * $ perf report --call-graph
-+ *
-+ * On RISC-V platform, the program being sampled and the C library
-+ * need to be compiled with -fno-omit-frame-pointer, otherwise
-+ * the user stack will not contain function frame.
-+ */
-+void perf_callchain_user(struct perf_callchain_entry_ctx *entry,
-+			 struct pt_regs *regs)
-+{
-+	unsigned long fp = 0;
-+
-+	/* RISC-V does not support virtualization. */
-+	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
-+		return;
-+
-+	fp = regs->s0;
-+	perf_callchain_store(entry, regs->sepc);
-+
-+	fp = user_backtrace(entry, fp, regs->ra);
-+	while (fp && !(fp & 0x3) && entry->nr < entry->max_stack)
-+		fp = user_backtrace(entry, fp, 0);
-+}
-+
-+void perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
-+			   struct pt_regs *regs)
-+{
-+	struct stackframe fr;
-+
-+	/* RISC-V does not support virtualization. */
-+	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
-+		pr_warn("RISC-V does not support perf in guest mode!");
-+		return;
-+	}
-+
-+	fr.fp = regs->s0;
-+	fr.ra = regs->ra;
-+	walk_stackframe(&fr, entry);
++	regs_user->regs = task_pt_regs(current);
++	regs_user->abi = perf_reg_abi(current);
 +}
 -- 
 2.7.4
