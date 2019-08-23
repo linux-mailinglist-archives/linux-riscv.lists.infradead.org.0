@@ -2,68 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0833A9ADF8
-	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 13:18:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C2659ADFB
+	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 13:20:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DLLpvwGti0ZZ6VFKsfAd9opk1vkvZ2n7cWkZRl/SWLk=; b=ZOauyZGb6C3Fur
-	ukjzu2/yw7pAi3r2LQBkwzvQJ7u1vWCaB2LKHsH+NowBr95ybBNPndK3HRuckVo+JvGZEVYtzdZlZ
-	ZvzIsyWE2K4A7UsqvBkiTKdcb0qFPacnf0Ce4WtxHIWnPO46bs+uIfDH8A4Z0KfGHwO1r1IjKHXpb
-	zwlD8XFnp8JzYlVn4qNoSUmeHmDPGC3tiH/NLx/MEO4yJoFftk80+GbHOsXUvGeBUSPx14rdDIoYs
-	5Q+DifyCB+ewtk2C7wl3qWbsbS/1cHY29VTVHHytt2GUWAWv/1c1Ksu9ShxAMB68aBDNHxAwFppcN
-	UH4DCeToUNptUByidQYg==;
+	List-Owner; bh=bu23bHMFQXsdhviA7GEKQDivJh+2/ICwd7fGQxZexXE=; b=KFLvJ1aw9yZXJK
+	0L5wAsMX4HSY7USotLZ6flppDIVo4hZZ8FYvovl4OiO1hHWSWdpLYw+BAIyGG12aPsc7hhWwNd2V3
+	cMlTa9HUT66ty9Ayif5bGjUebEAUY/3VI6IkDh+mpTIYy56suvkAC2MhyDSJDDiMGZwvGR9nv2LVx
+	NqYSLmniaRhEBOC5NbbX4jIvw0vvIVLh7++E2hLlmhxhNzDWC/kOTl4cEshPH5sW0ltLs+/hTs0kg
+	KPEH/6fyKLL+Y0iA4+vrQpucGFB5GiOJEDGWi0TMlXEqJp5r7h8pJ8xOo02NYDplHiXkczkepH10S
+	/On+Z6H3/dzg1ScCdUnw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i17a6-0001wF-4K; Fri, 23 Aug 2019 11:18:10 +0000
+	id 1i17cA-0003HZ-Ag; Fri, 23 Aug 2019 11:20:18 +0000
 Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i17a2-0001vq-LH
- for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 11:18:08 +0000
-Received: by mail-wm1-x341.google.com with SMTP id k1so8575748wmi.1
- for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 04:18:06 -0700 (PDT)
+ id 1i17c6-0003Gu-2E
+ for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 11:20:15 +0000
+Received: by mail-wm1-x341.google.com with SMTP id g67so8734818wme.1
+ for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 04:20:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=D4bfHJMc+od3gVmmzNLx7edtrak7/Bvmp1LGu9HgOdM=;
- b=AZJAEH9517UhuvDXTWJs+2RA6hy4ub9gH0qKK1kRI0+PQZQQMHtNjMY5atJA9fVokF
- THdvte2sUvC+gPdp1jY/XGfwovwobQuNg6nuvGQZpU99MNEQagOFtZgh9UbKuHKmyZ0l
- 6ayjXXI8ESH7DQN8eCnThFkBTi7baA78W0we4eYSCEtVLUup9X84AFlAAw97xBsbkSDy
- K6wHDtfGf8FUIyc8LveWAmhgm8VU/soKeYRtim9Fochz4CIkc5V70BGhjTOOobB2D3FA
- k2nak7orqPs/1ztBaIObr4P1cjxHuxGoLOTO6UAZgldKyhBMKy7I6OervnY4z+oCxanb
- aBFA==
+ :cc; bh=gt/naIOsY8gmLD5TiOQ5MS/GAPTKfYYmo7pVy0WBBDI=;
+ b=CvVwFPC8yH2+//gj5H6htQvO8jMX80EB4Ob0udMTsg5dVmSnwqvlfPBOn19MQmvh1t
+ 0+gTiPSXjcG6Kq7/ct99UONMkj7NH3HDnDhV70oGwB3YObB2Wkn89ChzmeH2GYV/LGM5
+ P6EvoeR/oU5Fc5/a5pulhzXDcOzCWzaGpJOKbZok51UiTho9IqFUuKEN11eoQTBDg0Uw
+ V46Y+nraqGqQUaLGhg/Xc2ybEyjhptriU80XPJBFxgMKlpgEU4t7UM7sojfleE3auC8i
+ y0A+2B7Wb2JAsFR57V2kYf09vQZL8o9htoNz6Xofi0YAQU0tVIAM3JtYzLcl0/ja2PMp
+ OL8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=D4bfHJMc+od3gVmmzNLx7edtrak7/Bvmp1LGu9HgOdM=;
- b=b+lJYt67cFXMRkWoJhhvYa/iT9qsj6LXUu78oAjdnnETO5Vk9L27W4OFwZwFd7FGR/
- QxufHT7j0tOkuDM3tpAk3u/zKl5Ri+EUiHxZtYWCvbQbSRpIlfIO10Thf7x477X6ZLqO
- UmPqB2+2gxh7VhuQyYuOCkHmqxYJux7osakZu8ppCogAdAmIOMelXjrWazi04L7fTzAk
- F/C4TLKKDnfJIxbaSiSclyV9Ay0sBEZJdETeI0jdAcfLtReQ0jDlnGo9510GRafelDQL
- PzOT4rp2YEalgEKEsA+NGvXdnppw33+z5y9siDgg/BSeCoQqoAuXr+z424sC9PWH3lFM
- v+ZQ==
-X-Gm-Message-State: APjAAAVMchMxOHxtp7bBZ2iDN8f0gXOMeEl9L2l0darxZM6sJbCXxvPL
- kLDXh6JkzDzf1S/z9fp0/D3RZoaR0dcQg2M2bVxNHA==
-X-Google-Smtp-Source: APXvYqwxX2a3RoQkBzcp9UA9Ovjb1vIhNK6s7T6MjjuTfKB5wdJys4VDSOyx/tWegC4FdFasEZINiLZwsA7JCmQznjc=
-X-Received: by 2002:a7b:c933:: with SMTP id h19mr4379000wml.177.1566559084783; 
- Fri, 23 Aug 2019 04:18:04 -0700 (PDT)
+ bh=gt/naIOsY8gmLD5TiOQ5MS/GAPTKfYYmo7pVy0WBBDI=;
+ b=DdZn1YEf7k9YUuix9/XyjyATDZ8FHsFvmQkHAXYqpNWsYfZcCbQcPQXvaDzfQEESAc
+ UAvAj/XkjqvDRE/U7ugjHi44ZE1IXCVC8VPs33raElb6cwc+HWSzB5McI+hgYf8vQPQy
+ RtqeWIJxoFF9a1Q+0aLJsJ2vREPDDul79ehrT82ThRB846ih9IzFHaW8LTrmNXxnZOZN
+ CsGDIj5QxZUgjfPQymjTsyGOEIK24Etjsh6dAxTd1ChMVpjSrzTi6WsBo0vGS/FselhF
+ PSD9484QWpk4meJeab4BYaoLYGsisLvng7kdpR6tiYs8r8s3IKMnX0VX6+sIR56qoa8j
+ EwqA==
+X-Gm-Message-State: APjAAAWKaPXMX+kqoaStKAv5K0Wt+6s1sdiAFzkITbzvDfhihjZXwMM1
+ WyIA9h7ecuKvoXTEXfoeD12LSNSg0Len8s/NEIjNZA==
+X-Google-Smtp-Source: APXvYqxutjgh00+PyGeA3aINGZRH4UJOayx2wxrA1dv+Wwr2q4vnqnklJFh+sUqeMXjcAb5uef7DhVDhZU3kGeuwGDQ=
+X-Received: by 2002:a7b:c933:: with SMTP id h19mr4389590wml.177.1566559212602; 
+ Fri, 23 Aug 2019 04:20:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190822084131.114764-1-anup.patel@wdc.com>
- <20190822084131.114764-19-anup.patel@wdc.com>
- <40911e08-e0ce-a2b8-24d4-9cf357432850@amazon.com>
-In-Reply-To: <40911e08-e0ce-a2b8-24d4-9cf357432850@amazon.com>
+ <20190822084131.114764-9-anup.patel@wdc.com>
+ <d306ffaf-c9ac-4a9f-4382-95001487364d@amazon.com>
+ <CAAhSdy0t7P1a_eYmLo9sSYTCbumCqqWcvuv4yJXGCBQOXvw5TQ@mail.gmail.com>
+ <2871ee6a-ae7c-6937-e8ef-38a8c318638a@amazon.com>
+In-Reply-To: <2871ee6a-ae7c-6937-e8ef-38a8c318638a@amazon.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 23 Aug 2019 16:47:53 +0530
-Message-ID: <CAAhSdy3CvvYh59c=OomLZgweWREBhJj_eeH80OkU=7MMCwyiCQ@mail.gmail.com>
-Subject: Re: [PATCH v5 18/20] RISC-V: KVM: Add SBI v0.1 support
+Date: Fri, 23 Aug 2019 16:50:01 +0530
+Message-ID: <CAAhSdy05EWBP5Y5oTpW_J6AT=fe=E1UNGXVncsBRWTrr_sgjWw@mail.gmail.com>
+Subject: Re: [PATCH v5 08/20] RISC-V: KVM: Implement
+ KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
 To: Alexander Graf <graf@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190823_041806_695161_ADDDA7AF 
-X-CRM114-Status: GOOD (  26.98  )
+X-CRM114-CacheID: sfid-20190823_042014_125165_1729FAAE 
+X-CRM114-Status: GOOD (  24.18  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -103,247 +106,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Aug 23, 2019 at 1:34 PM Alexander Graf <graf@amazon.com> wrote:
+On Thu, Aug 22, 2019 at 7:42 PM Alexander Graf <graf@amazon.com> wrote:
 >
-> On 22.08.19 10:46, Anup Patel wrote:
-> > From: Atish Patra <atish.patra@wdc.com>
+>
+>
+> On 22.08.19 16:00, Anup Patel wrote:
+> > On Thu, Aug 22, 2019 at 5:31 PM Alexander Graf <graf@amazon.com> wrote:
+> >>
+> >> On 22.08.19 10:44, Anup Patel wrote:
+> >>> For KVM RISC-V, we use KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls to access
+> >>> VCPU config and registers from user-space.
+> >>>
+> >>> We have three types of VCPU registers:
+> >>> 1. CONFIG - these are VCPU config and capabilities
+> >>> 2. CORE   - these are VCPU general purpose registers
+> >>> 3. CSR    - these are VCPU control and status registers
+> >>>
+> >>> The CONFIG registers available to user-space are ISA and TIMEBASE. Out
+> >>> of these, TIMEBASE is a read-only register which inform user-space about
+> >>> VCPU timer base frequency. The ISA register is a read and write register
+> >>> where user-space can only write the desired VCPU ISA capabilities before
+> >>> running the VCPU.
+> >>>
+> >>> The CORE registers available to user-space are PC, RA, SP, GP, TP, A0-A7,
+> >>> T0-T6, S0-S11 and MODE. Most of these are RISC-V general registers except
+> >>> PC and MODE. The PC register represents program counter whereas the MODE
+> >>> register represent VCPU privilege mode (i.e. S/U-mode).
+> >>>
+> >>> The CSRs available to user-space are SSTATUS, SIE, STVEC, SSCRATCH, SEPC,
+> >>> SCAUSE, STVAL, SIP, and SATP. All of these are read/write registers.
+> >>>
+> >>> In future, more VCPU register types will be added (such as FP) for the
+> >>> KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls.
+> >>>
+> >>> Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> >>> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> >>> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+> >>> ---
+> >>>    arch/riscv/include/uapi/asm/kvm.h |  40 ++++-
+> >>>    arch/riscv/kvm/vcpu.c             | 235 +++++++++++++++++++++++++++++-
+> >>>    2 files changed, 272 insertions(+), 3 deletions(-)
+> >>>
+> >>> diff --git a/arch/riscv/include/uapi/asm/kvm.h b/arch/riscv/include/uapi/asm/kvm.h
+> >>> index 6dbc056d58ba..024f220eb17e 100644
+> >>> --- a/arch/riscv/include/uapi/asm/kvm.h
+> >>> +++ b/arch/riscv/include/uapi/asm/kvm.h
+> >>> @@ -23,8 +23,15 @@
+> >>>
+> >>>    /* for KVM_GET_REGS and KVM_SET_REGS */
+> >>>    struct kvm_regs {
+> >>> +     /* out (KVM_GET_REGS) / in (KVM_SET_REGS) */
+> >>> +     struct user_regs_struct regs;
+> >>> +     unsigned long mode;
+> >>
+> >> Is there any particular reason you're reusing kvm_regs and don't invent
+> >> your own struct? kvm_regs is explicitly meant for the get_regs and
+> >> set_regs ioctls.
 > >
-> > The KVM host kernel running in HS-mode needs to handle SBI calls coming
-> > from guest kernel running in VS-mode.
+> > We are implementing only ONE_REG interface so most of these
+> > structs are unused hence we tried to reuse these struct instead
+> > of introducing new structs. (Similar to KVM ARM64)
 > >
-> > This patch adds SBI v0.1 support in KVM RISC-V. All the SBI calls are
-> > implemented correctly except remote tlb flushes. For remote TLB flushes,
-> > we are doing full TLB flush and this will be optimized in future.
+> >>
+> >>>    };
+> >>>
+> >>> +/* Possible privilege modes for kvm_regs */
+> >>> +#define KVM_RISCV_MODE_S     1
+> >>> +#define KVM_RISCV_MODE_U     0
+> >>> +
+> >>>    /* for KVM_GET_FPU and KVM_SET_FPU */
+> >>>    struct kvm_fpu {
+> >>>    };
+> >>> @@ -41,10 +48,41 @@ struct kvm_guest_debug_arch {
+> >>>    struct kvm_sync_regs {
+> >>>    };
+> >>>
+> >>> -/* dummy definition */
+> >>> +/* for KVM_GET_SREGS and KVM_SET_SREGS */
+> >>>    struct kvm_sregs {
+> >>> +     unsigned long sstatus;
+> >>> +     unsigned long sie;
+> >>> +     unsigned long stvec;
+> >>> +     unsigned long sscratch;
+> >>> +     unsigned long sepc;
+> >>> +     unsigned long scause;
+> >>> +     unsigned long stval;
+> >>> +     unsigned long sip;
+> >>> +     unsigned long satp;
+> >>
+> >> Same comment here.
 > >
-> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-> > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> > ---
-> >   arch/riscv/include/asm/kvm_host.h |   2 +
-> >   arch/riscv/kvm/Makefile           |   2 +-
-> >   arch/riscv/kvm/vcpu_exit.c        |   3 +
-> >   arch/riscv/kvm/vcpu_sbi.c         | 119 ++++++++++++++++++++++++++++++
-> >   4 files changed, 125 insertions(+), 1 deletion(-)
-> >   create mode 100644 arch/riscv/kvm/vcpu_sbi.c
+> > Same as above, we are trying to use unused struct.
 > >
-> > diff --git a/arch/riscv/include/asm/kvm_host.h b/arch/riscv/include/asm/kvm_host.h
-> > index 2af3a179c08e..0b1eceaef59f 100644
-> > --- a/arch/riscv/include/asm/kvm_host.h
-> > +++ b/arch/riscv/include/asm/kvm_host.h
-> > @@ -241,4 +241,6 @@ bool kvm_riscv_vcpu_has_interrupt(struct kvm_vcpu *vcpu);
-> >   void kvm_riscv_vcpu_power_off(struct kvm_vcpu *vcpu);
-> >   void kvm_riscv_vcpu_power_on(struct kvm_vcpu *vcpu);
+> >>
+> >>>    };
+> >>>
+> >>> +#define KVM_REG_SIZE(id)             \
+> >>> +     (1U << (((id) & KVM_REG_SIZE_MASK) >> KVM_REG_SIZE_SHIFT))
+> >>> +
+> >>> +/* If you need to interpret the index values, here is the key: */
+> >>> +#define KVM_REG_RISCV_TYPE_MASK              0x00000000FF000000
+> >>> +#define KVM_REG_RISCV_TYPE_SHIFT     24
+> >>> +
+> >>> +/* Config registers are mapped as type 1 */
+> >>> +#define KVM_REG_RISCV_CONFIG         (0x01 << KVM_REG_RISCV_TYPE_SHIFT)
+> >>> +#define KVM_REG_RISCV_CONFIG_ISA     0x0
+> >>> +#define KVM_REG_RISCV_CONFIG_TIMEBASE        0x1
+> >>> +
+> >>> +/* Core registers are mapped as type 2 */
+> >>> +#define KVM_REG_RISCV_CORE           (0x02 << KVM_REG_RISCV_TYPE_SHIFT)
+> >>> +#define KVM_REG_RISCV_CORE_REG(name) \
+> >>> +             (offsetof(struct kvm_regs, name) / sizeof(unsigned long))
+> >>
+> >> I see, you're trying to implicitly use the struct offsets as index.
+> >>
+> >> I'm not a really big fan of it, but I can't pinpoint exactly why just
+> >> yet. It just seems too magical (read: potentially breaking down the
+> >> road) for me.
+> >>
+> >>> +
+> >>> +/* Control and status registers are mapped as type 3 */
+> >>> +#define KVM_REG_RISCV_CSR            (0x03 << KVM_REG_RISCV_TYPE_SHIFT)
+> >>> +#define KVM_REG_RISCV_CSR_REG(name)  \
+> >>> +             (offsetof(struct kvm_sregs, name) / sizeof(unsigned long))
+> >>> +
+> >>>    #endif
+> >>>
+> >>>    #endif /* __LINUX_KVM_RISCV_H */
+> >>> diff --git a/arch/riscv/kvm/vcpu.c b/arch/riscv/kvm/vcpu.c
+> >>> index 7f59e85c6af8..9396a83c0611 100644
+> >>> --- a/arch/riscv/kvm/vcpu.c
+> >>> +++ b/arch/riscv/kvm/vcpu.c
+> >>> @@ -164,6 +164,215 @@ vm_fault_t kvm_arch_vcpu_fault(struct kvm_vcpu *vcpu, struct vm_fault *vmf)
+> >>>        return VM_FAULT_SIGBUS;
+> >>>    }
+> >>>
+> >>> +static int kvm_riscv_vcpu_get_reg_config(struct kvm_vcpu *vcpu,
+> >>> +                                      const struct kvm_one_reg *reg)
+> >>> +{
+> >>> +     unsigned long __user *uaddr =
+> >>> +                     (unsigned long __user *)(unsigned long)reg->addr;
+> >>> +     unsigned long reg_num = reg->id & ~(KVM_REG_ARCH_MASK |
+> >>> +                                         KVM_REG_SIZE_MASK |
+> >>> +                                         KVM_REG_RISCV_CONFIG);
+> >>> +     unsigned long reg_val;
+> >>> +
+> >>> +     if (KVM_REG_SIZE(reg->id) != sizeof(unsigned long))
+> >>> +             return -EINVAL;
+> >>> +
+> >>> +     switch (reg_num) {
+> >>> +     case KVM_REG_RISCV_CONFIG_ISA:
+> >>> +             reg_val = vcpu->arch.isa;
+> >>> +             break;
+> >>> +     case KVM_REG_RISCV_CONFIG_TIMEBASE:
+> >>> +             reg_val = riscv_timebase;
+> >>
+> >> What does this reflect? The current guest time hopefully not? An offset?
+> >> Related to what?
 > >
-> > +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu);
-> > +
-> >   #endif /* __RISCV_KVM_HOST_H__ */
-> > diff --git a/arch/riscv/kvm/Makefile b/arch/riscv/kvm/Makefile
-> > index 3e0c7558320d..b56dc1650d2c 100644
-> > --- a/arch/riscv/kvm/Makefile
-> > +++ b/arch/riscv/kvm/Makefile
-> > @@ -9,6 +9,6 @@ ccflags-y := -Ivirt/kvm -Iarch/riscv/kvm
-> >   kvm-objs := $(common-objs-y)
+> > riscv_timebase is the frequency in HZ of the system timer.
 > >
-> >   kvm-objs += main.o vm.o vmid.o tlb.o mmu.o
-> > -kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o
-> > +kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o vcpu_sbi.o
-> >
-> >   obj-$(CONFIG_KVM)   += kvm.o
-> > diff --git a/arch/riscv/kvm/vcpu_exit.c b/arch/riscv/kvm/vcpu_exit.c
-> > index fbc04fe335ad..87b83fcf9a14 100644
-> > --- a/arch/riscv/kvm/vcpu_exit.c
-> > +++ b/arch/riscv/kvm/vcpu_exit.c
-> > @@ -534,6 +534,9 @@ int kvm_riscv_vcpu_exit(struct kvm_vcpu *vcpu, struct kvm_run *run,
-> >                   (vcpu->arch.guest_context.hstatus & HSTATUS_STL))
-> >                       ret = stage2_page_fault(vcpu, run, scause, stval);
-> >               break;
-> > +     case EXC_SUPERVISOR_SYSCALL:
-> > +             if (vcpu->arch.guest_context.hstatus & HSTATUS_SPV)
-> > +                     ret = kvm_riscv_vcpu_sbi_ecall(vcpu);
-> >       default:
-> >               break;
-> >       };
-> > diff --git a/arch/riscv/kvm/vcpu_sbi.c b/arch/riscv/kvm/vcpu_sbi.c
-> > new file mode 100644
-> > index 000000000000..5793202eb514
-> > --- /dev/null
-> > +++ b/arch/riscv/kvm/vcpu_sbi.c
-> > @@ -0,0 +1,119 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/**
-> > + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
-> > + *
-> > + * Authors:
-> > + *     Atish Patra <atish.patra@wdc.com>
-> > + */
-> > +
-> > +#include <linux/errno.h>
-> > +#include <linux/err.h>
-> > +#include <linux/kvm_host.h>
-> > +#include <asm/csr.h>
-> > +#include <asm/kvm_vcpu_timer.h>
-> > +
-> > +#define SBI_VERSION_MAJOR                    0
-> > +#define SBI_VERSION_MINOR                    1
-> > +
-> > +/* TODO: Handle traps due to unpriv load and redirect it back to VS-mode */
+> > The name "timebase" is not appropriate but we have been
+> > carrying it since quite some time now.
 >
-> Ugh, another one of those? Can't you just figure out a way to recover
-> from the page fault? Also, you want to combine this with the instruction
-> load logic, so that we have a single place that guest address space
-> reads go through.
+> What do you mean by "some time"? So far I only see a kernel internal
+> variable named after it. That's dramatically different from something
+> exposed via uapi.
+>
+> Just name it tbfreq.
 
-Walking Guest page table would be more expensive compared to implementing
-a trap handling mechanism.
-
-We will be adding trap handling mechanism for reading instruction and reading
-load.
-
-Both these operations are different in following ways:
-1. RISC-V instructions are variable length. We get to know exact instruction
-    length only after reading first 16bits
-2. We need to set VSSTATUS.MXR bit when reading instruction for
-    execute-only Guest pages.
+Sure, I will use TBFREQ name.
 
 >
-> > +static unsigned long kvm_sbi_unpriv_load(const unsigned long *addr,
-> > +                                      struct kvm_vcpu *vcpu)
-> > +{
-> > +     unsigned long flags, val;
-> > +     unsigned long __hstatus, __sstatus;
-> > +
-> > +     local_irq_save(flags);
-> > +     __hstatus = csr_read(CSR_HSTATUS);
-> > +     __sstatus = csr_read(CSR_SSTATUS);
-> > +     csr_write(CSR_HSTATUS, vcpu->arch.guest_context.hstatus | HSTATUS_SPRV);
-> > +     csr_write(CSR_SSTATUS, vcpu->arch.guest_context.sstatus);
-> > +     val = *addr;
-> > +     csr_write(CSR_HSTATUS, __hstatus);
-> > +     csr_write(CSR_SSTATUS, __sstatus);
-> > +     local_irq_restore(flags);
-> > +
-> > +     return val;
-> > +}
-> > +
-> > +static void kvm_sbi_system_shutdown(struct kvm_vcpu *vcpu, u32 type)
-> > +{
-> > +     int i;
-> > +     struct kvm_vcpu *tmp;
-> > +
-> > +     kvm_for_each_vcpu(i, tmp, vcpu->kvm)
-> > +             tmp->arch.power_off = true;
-> > +     kvm_make_all_cpus_request(vcpu->kvm, KVM_REQ_SLEEP);
-> > +
-> > +     memset(&vcpu->run->system_event, 0, sizeof(vcpu->run->system_event));
-> > +     vcpu->run->system_event.type = type;
-> > +     vcpu->run->exit_reason = KVM_EXIT_SYSTEM_EVENT;
-> > +}
-> > +
-> > +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu)
-> > +{
-> > +     int ret = 1;
-> > +     u64 next_cycle;
-> > +     int vcpuid;
-> > +     struct kvm_vcpu *remote_vcpu;
-> > +     ulong dhart_mask;
-> > +     struct kvm_cpu_context *cp = &vcpu->arch.guest_context;
-> > +
-> > +     if (!cp)
-> > +             return -EINVAL;
-> > +     switch (cp->a7) {
-> > +     case SBI_SET_TIMER:
-> > +#if __riscv_xlen == 32
-> > +             next_cycle = ((u64)cp->a1 << 32) | (u64)cp->a0;
-> > +#else
-> > +             next_cycle = (u64)cp->a0;
-> > +#endif
-> > +             kvm_riscv_vcpu_timer_next_event(vcpu, next_cycle);
->
-> Ah, this is where the timer set happens. I still don't understand how
-> this takes the frequency bit into account?
+> So if this is the frequency, where is the offset? You will need it on
+> save/restore. If you're saying that's out of scope for now, that's fine
+> with me too :).
 
-Explained it in PATCH17 comments.
+tbfreq is read-only and fixed.
 
->
-> > +             break;
-> > +     case SBI_CONSOLE_PUTCHAR:
-> > +             /* Not implemented */
-> > +             cp->a0 = -ENOTSUPP;
-> > +             break;
-> > +     case SBI_CONSOLE_GETCHAR:
-> > +             /* Not implemented */
-> > +             cp->a0 = -ENOTSUPP;
-> > +             break;
->
-> These two should be covered by the default case.
-
-Sure, I will update.
-
->
-> > +     case SBI_CLEAR_IPI:
-> > +             kvm_riscv_vcpu_unset_interrupt(vcpu, IRQ_S_SOFT);
-> > +             break;
-> > +     case SBI_SEND_IPI:
-> > +             dhart_mask = kvm_sbi_unpriv_load((unsigned long *)cp->a0, vcpu);
-> > +             for_each_set_bit(vcpuid, &dhart_mask, BITS_PER_LONG) {
-> > +                     remote_vcpu = kvm_get_vcpu_by_id(vcpu->kvm, vcpuid);
-> > +                     kvm_riscv_vcpu_set_interrupt(remote_vcpu, IRQ_S_SOFT);
-> > +             }
-> > +             break;
-> > +     case SBI_SHUTDOWN:
-> > +             kvm_sbi_system_shutdown(vcpu, KVM_SYSTEM_EVENT_SHUTDOWN);
-> > +             ret = 0;
-> > +             break;
-> > +     case SBI_REMOTE_FENCE_I:
-> > +             sbi_remote_fence_i(NULL);
-> > +             break;
-> > +     /*
-> > +      * TODO: There should be a way to call remote hfence.bvma.
-> > +      * Preferred method is now a SBI call. Until then, just flush
-> > +      * all tlbs.
-> > +      */
-> > +     case SBI_REMOTE_SFENCE_VMA:
-> > +             /*TODO: Parse vma range.*/
-> > +             sbi_remote_sfence_vma(NULL, 0, 0);
-> > +             break;
-> > +     case SBI_REMOTE_SFENCE_VMA_ASID:
-> > +             /*TODO: Parse vma range for given ASID */
-> > +             sbi_remote_sfence_vma(NULL, 0, 0);
-> > +             break;
-> > +     default:
-> > +             cp->a0 = ENOTSUPP;
-> > +             break;
->
-> Please just send unsupported SBI events into user space.
-
-For unsupported SBI calls, we should be returning error to the
-Guest Linux so that do something about it. This is in accordance
-with the SBI spec.
-
-The SBI v0.1 is quite primitive in design but we have SBI v0.2
-base spec now available. The SBI v0.2 is extensible and people
-can easily come-up with new set of SBI v0.2 calls (i.e. SBI v0.2
-extensions).
-
-We also have SBI v0.2 implementation coming-up in next
-series.
+The Guest tbfreq has to be same as Host tbfreq. This means we
+can only migrate Guest from Host A to Host B only if:
+1. They have matching ISA capabilities
+2. They have matching tbfreq
 
 Regards,
 Anup
 
 >
+>
 > Alex
->
-> > +     };
-> > +
-> > +     if (ret >= 0)
-> > +             cp->sepc += 4;
-> > +
-> > +     return ret;
-> > +}
-> >
->
 
 _______________________________________________
 linux-riscv mailing list
