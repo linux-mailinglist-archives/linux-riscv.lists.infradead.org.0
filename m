@@ -2,79 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2559F9A92A
-	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 09:53:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25ABE9A992
+	for <lists+linux-riscv@lfdr.de>; Fri, 23 Aug 2019 10:05:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3CpaWOdFNMyBSxxpAq3zTBbiMxNd+0T8oRMSPhixnbs=; b=mW/cp8QIOTCpFXWItQeltJZnm
-	HVLBYa2nIzuOQp0fQqAC8NTDEn0GVpaXDnv8/MbZqMT1g3Cyr4ROJwkZy3hnUs1EucQCbvhk57Vwt
-	thLMeARzO6gsicvMMyEWJhsZY1Wa0Ib4mh1VnD8fDzcCofOz5vTcGA9qVrInHkVnAC7fIbFS9JYbb
-	4SI58D4jpdIb4WdBWjDvGHtVEzDeabX6o1UC8d+DSCbYh9EfTGlDSMUdgJcWKg0U07AJF6XEXUPu4
-	mQn0ja/Y5o8yw/GFeYQ9Lk16lGFwMiFOj2gyVWV9MEmf9u3dkq7HDJhB4dbXAIh3Xurhb2wXPrsw9
-	5OcT+YPag==;
+	 bh=g5WKVJ7EdNjVrUp5HVJSDlJc+uh79YAcaVxXPblCryI=; b=YeHIPGU7YVz2xXL2VhYwUT8zE
+	MMk1Ps1ujOdhOIQkaX6hV/H2kP27+vb6BHMtEzTN4+Oxg/Qq+3E6izi4Fi7625ccYmJBcjXDRs/sj
+	xmOJ2dmhDmo6NQoAg7mnDaLumkcCPgg15i/wygacsPwqAHvKokTqWnbvY3hgghvFUFfpkXHnWWJZL
+	rpudBO6xreQVkiSnZFfMfxy4vY8aYF3d+9ibjc+9GAonztkotDiFtS8V32clHSaqdOdtjibi9fTPf
+	5ZwWeGiqGPaM9yipsC1sFjLbVkTduRGITRE3N5bzFIbmQF/pdv2S3BASrQ6AFPMkTiY3kNqvRZhpU
+	ygoWtqTVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i14Nh-0004aE-Kk; Fri, 23 Aug 2019 07:53:09 +0000
-Received: from smtp-fw-6001.amazon.com ([52.95.48.154])
+	id 1i14Z8-0003la-4V; Fri, 23 Aug 2019 08:04:58 +0000
+Received: from smtp-fw-9102.amazon.com ([207.171.184.29])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i14Nc-0004Zr-5a
- for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 07:53:05 +0000
+ id 1i14Z3-0003kw-MQ
+ for linux-riscv@lists.infradead.org; Fri, 23 Aug 2019 08:04:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1566546784; x=1598082784;
+ t=1566547493; x=1598083493;
  h=subject:to:cc:references:from:message-id:date:
  mime-version:in-reply-to:content-transfer-encoding;
- bh=09Znot9poc8XaBH1wWZcsG68wcVBqQsZ/zN0uPdHxv8=;
- b=rCrMuRGR1CL6r50I8VAlCfHsf/D2NqhkJ65Ug2x2wqpXEyS5ji3uUd6g
- 0OVk8nmX0wPFVs5GqNayWoiLiPpHIDKASju6aVEOS1rwYHVTN8ljFv/pS
- aB92SLHKgNltmMf/Mt+Ez4qP4edmZXP4/JbbF3jXTKj5frb27SGZO814x g=;
-X-IronPort-AV: E=Sophos;i="5.64,420,1559520000"; d="scan'208";a="411287387"
-Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com) ([10.124.125.6])
- by smtp-border-fw-out-6001.iad6.amazon.com with ESMTP;
- 23 Aug 2019 07:52:50 +0000
+ bh=QH2Lv/LpUhd8u3hbB6A5tS3kD8z+tWSKTxDXj667gvQ=;
+ b=E9alrjYgyF/qsjml0+Vcv/ME0e35qkKW9CisZK0RbY5szTni7GKHt1K/
+ dOOah+9GeFxP61ORJNHxCeq1jaITKmjPHwZRW2scmjPK8lAq0QupaJWGI
+ qbL4gvbKWv+hmHPcUBQP+fqQZYNYwj2Jmh+9vhchA+DjtYNkpTPZGMYlw M=;
+X-IronPort-AV: E=Sophos;i="5.64,420,1559520000"; d="scan'208";a="696735630"
+Received: from sea3-co-svc-lb6-vlan3.sea.amazon.com (HELO
+ email-inbound-relay-1d-74cf8b49.us-east-1.amazon.com) ([10.47.22.38])
+ by smtp-border-fw-out-9102.sea19.amazon.com with ESMTP;
+ 23 Aug 2019 08:04:47 +0000
 Received: from EX13MTAUWC001.ant.amazon.com
- (pdx4-ws-svc-p6-lb7-vlan3.pdx.amazon.com [10.170.41.166])
- by email-inbound-relay-2b-5bdc5131.us-west-2.amazon.com (Postfix) with ESMTPS
- id B5A6FA1DEB; Fri, 23 Aug 2019 07:52:49 +0000 (UTC)
+ (iad55-ws-svc-p15-lb9-vlan2.iad.amazon.com [10.40.159.162])
+ by email-inbound-relay-1d-74cf8b49.us-east-1.amazon.com (Postfix) with ESMTPS
+ id 65D64C08F7; Fri, 23 Aug 2019 08:04:42 +0000 (UTC)
 Received: from EX13D20UWC001.ant.amazon.com (10.43.162.244) by
  EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Fri, 23 Aug 2019 07:52:49 +0000
-Received: from 38f9d3867b82.ant.amazon.com (10.43.162.191) by
+ id 15.0.1367.3; Fri, 23 Aug 2019 08:04:41 +0000
+Received: from 38f9d3867b82.ant.amazon.com (10.43.161.244) by
  EX13D20UWC001.ant.amazon.com (10.43.162.244) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Fri, 23 Aug 2019 07:52:45 +0000
-Subject: Re: [PATCH v5 15/20] RISC-V: KVM: Add timer functionality
+ id 15.0.1367.3; Fri, 23 Aug 2019 08:04:37 +0000
+Subject: Re: [PATCH v5 18/20] RISC-V: KVM: Add SBI v0.1 support
 To: Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@sifive.com>, "Paul
  Walmsley" <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  Radim K <rkrcmar@redhat.com>
 References: <20190822084131.114764-1-anup.patel@wdc.com>
- <20190822084131.114764-16-anup.patel@wdc.com>
+ <20190822084131.114764-19-anup.patel@wdc.com>
 From: Alexander Graf <graf@amazon.com>
-Message-ID: <09d74212-4fa3-d64c-5a63-d556e955b88c@amazon.com>
-Date: Fri, 23 Aug 2019 09:52:42 +0200
+Message-ID: <40911e08-e0ce-a2b8-24d4-9cf357432850@amazon.com>
+Date: Fri, 23 Aug 2019 10:04:34 +0200
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
  Gecko/20100101 Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190822084131.114764-16-anup.patel@wdc.com>
+In-Reply-To: <20190822084131.114764-19-anup.patel@wdc.com>
 Content-Language: en-US
-X-Originating-IP: [10.43.162.191]
-X-ClientProxiedBy: EX13D13UWB004.ant.amazon.com (10.43.161.218) To
+X-Originating-IP: [10.43.161.244]
+X-ClientProxiedBy: EX13D04UWA001.ant.amazon.com (10.43.160.47) To
  EX13D20UWC001.ant.amazon.com (10.43.162.244)
 Precedence: Bulk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190823_005304_408502_22DC8857 
-X-CRM114-Status: GOOD (  22.01  )
-X-Spam-Score: -10.0 (----------)
+X-CRM114-CacheID: sfid-20190823_010453_791852_C1492E4F 
+X-CRM114-Status: GOOD (  22.11  )
+X-Spam-Score: -12.7 (------------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-10.0 points)
+ Content analysis details:   (-12.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [52.95.48.154 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [207.171.184.29 listed in list.dnswl.org]
  -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
  white-list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -101,8 +101,8 @@ Cc: Damien Le Moal <Damien.LeMoal@wdc.com>,
  "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Anup Patel <anup@brainfault.org>,
  Daniel Lezcano <daniel.lezcano@linaro.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
+ Christoph Hellwig <hch@infradead.org>, Atish
+ Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
  Thomas Gleixner <tglx@linutronix.de>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
@@ -113,154 +113,71 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 On 22.08.19 10:46, Anup Patel wrote:
 > From: Atish Patra <atish.patra@wdc.com>
 > 
-> The RISC-V hypervisor specification doesn't have any virtual timer
-> feature.
+> The KVM host kernel running in HS-mode needs to handle SBI calls coming
+> from guest kernel running in VS-mode.
 > 
-> Due to this, the guest VCPU timer will be programmed via SBI calls.
-> The host will use a separate hrtimer event for each guest VCPU to
-> provide timer functionality. We inject a virtual timer interrupt to
-> the guest VCPU whenever the guest VCPU hrtimer event expires.
-> 
-> The following features are not supported yet and will be added in
-> future:
-> 1. A time offset to adjust guest time from host time
-> 2. A saved next event in guest vcpu for vm migration
-
-Implementing these 2 bits right now should be trivial. Why wait?
-
+> This patch adds SBI v0.1 support in KVM RISC-V. All the SBI calls are
+> implemented correctly except remote tlb flushes. For remote TLB flushes,
+> we are doing full TLB flush and this will be optimized in future.
 > 
 > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->   arch/riscv/include/asm/kvm_host.h       |   4 +
->   arch/riscv/include/asm/kvm_vcpu_timer.h |  32 +++++++
->   arch/riscv/kvm/Makefile                 |   2 +-
->   arch/riscv/kvm/vcpu.c                   |   6 ++
->   arch/riscv/kvm/vcpu_timer.c             | 106 ++++++++++++++++++++++++
->   drivers/clocksource/timer-riscv.c       |   8 ++
->   include/clocksource/timer-riscv.h       |  16 ++++
->   7 files changed, 173 insertions(+), 1 deletion(-)
->   create mode 100644 arch/riscv/include/asm/kvm_vcpu_timer.h
->   create mode 100644 arch/riscv/kvm/vcpu_timer.c
->   create mode 100644 include/clocksource/timer-riscv.h
+>   arch/riscv/include/asm/kvm_host.h |   2 +
+>   arch/riscv/kvm/Makefile           |   2 +-
+>   arch/riscv/kvm/vcpu_exit.c        |   3 +
+>   arch/riscv/kvm/vcpu_sbi.c         | 119 ++++++++++++++++++++++++++++++
+>   4 files changed, 125 insertions(+), 1 deletion(-)
+>   create mode 100644 arch/riscv/kvm/vcpu_sbi.c
 > 
 > diff --git a/arch/riscv/include/asm/kvm_host.h b/arch/riscv/include/asm/kvm_host.h
-> index ab33e59a3d88..d2a2e45eefc0 100644
+> index 2af3a179c08e..0b1eceaef59f 100644
 > --- a/arch/riscv/include/asm/kvm_host.h
 > +++ b/arch/riscv/include/asm/kvm_host.h
-> @@ -12,6 +12,7 @@
->   #include <linux/types.h>
->   #include <linux/kvm.h>
->   #include <linux/kvm_types.h>
-> +#include <asm/kvm_vcpu_timer.h>
+> @@ -241,4 +241,6 @@ bool kvm_riscv_vcpu_has_interrupt(struct kvm_vcpu *vcpu);
+>   void kvm_riscv_vcpu_power_off(struct kvm_vcpu *vcpu);
+>   void kvm_riscv_vcpu_power_on(struct kvm_vcpu *vcpu);
 >   
->   #ifdef CONFIG_64BIT
->   #define KVM_MAX_VCPUS			(1U << 16)
-> @@ -167,6 +168,9 @@ struct kvm_vcpu_arch {
->   	unsigned long irqs_pending;
->   	unsigned long irqs_pending_mask;
->   
-> +	/* VCPU Timer */
-> +	struct kvm_vcpu_timer timer;
+> +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu);
 > +
->   	/* MMIO instruction details */
->   	struct kvm_mmio_decode mmio_decode;
->   
-> diff --git a/arch/riscv/include/asm/kvm_vcpu_timer.h b/arch/riscv/include/asm/kvm_vcpu_timer.h
-> new file mode 100644
-> index 000000000000..df67ea86988e
-> --- /dev/null
-> +++ b/arch/riscv/include/asm/kvm_vcpu_timer.h
-> @@ -0,0 +1,32 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (C) 2019 Western Digital Corporation or its affiliates.
-> + *
-> + * Authors:
-> + *	Atish Patra <atish.patra@wdc.com>
-> + */
-> +
-> +#ifndef __KVM_VCPU_RISCV_TIMER_H
-> +#define __KVM_VCPU_RISCV_TIMER_H
-> +
-> +#include <linux/hrtimer.h>
-> +
-> +#define VCPU_TIMER_PROGRAM_THRESHOLD_NS		1000
-> +
-> +struct kvm_vcpu_timer {
-> +	bool init_done;
-> +	/* Check if the timer is programmed */
-> +	bool is_set;
-> +	struct hrtimer hrt;
-> +	/* Mult & Shift values to get nanosec from cycles */
-> +	u32 mult;
-> +	u32 shift;
-> +};
-> +
-> +int kvm_riscv_vcpu_timer_init(struct kvm_vcpu *vcpu);
-> +int kvm_riscv_vcpu_timer_deinit(struct kvm_vcpu *vcpu);
-> +int kvm_riscv_vcpu_timer_reset(struct kvm_vcpu *vcpu);
-> +int kvm_riscv_vcpu_timer_next_event(struct kvm_vcpu *vcpu,
-> +				    unsigned long ncycles);
-
-This function never gets called?
-
-> +
-> +#endif
+>   #endif /* __RISCV_KVM_HOST_H__ */
 > diff --git a/arch/riscv/kvm/Makefile b/arch/riscv/kvm/Makefile
-> index c0f57f26c13d..3e0c7558320d 100644
+> index 3e0c7558320d..b56dc1650d2c 100644
 > --- a/arch/riscv/kvm/Makefile
 > +++ b/arch/riscv/kvm/Makefile
 > @@ -9,6 +9,6 @@ ccflags-y := -Ivirt/kvm -Iarch/riscv/kvm
 >   kvm-objs := $(common-objs-y)
 >   
 >   kvm-objs += main.o vm.o vmid.o tlb.o mmu.o
-> -kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o
-> +kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o
+> -kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o
+> +kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o vcpu_sbi.o
 >   
 >   obj-$(CONFIG_KVM)	+= kvm.o
-> diff --git a/arch/riscv/kvm/vcpu.c b/arch/riscv/kvm/vcpu.c
-> index 6124077d154f..018fca436776 100644
-> --- a/arch/riscv/kvm/vcpu.c
-> +++ b/arch/riscv/kvm/vcpu.c
-> @@ -54,6 +54,8 @@ static void kvm_riscv_reset_vcpu(struct kvm_vcpu *vcpu)
->   
->   	memcpy(cntx, reset_cntx, sizeof(*cntx));
->   
-> +	kvm_riscv_vcpu_timer_reset(vcpu);
-> +
->   	WRITE_ONCE(vcpu->arch.irqs_pending, 0);
->   	WRITE_ONCE(vcpu->arch.irqs_pending_mask, 0);
->   }
-> @@ -108,6 +110,9 @@ int kvm_arch_vcpu_init(struct kvm_vcpu *vcpu)
->   	cntx->hstatus |= HSTATUS_SP2P;
->   	cntx->hstatus |= HSTATUS_SPV;
->   
-> +	/* Setup VCPU timer */
-> +	kvm_riscv_vcpu_timer_init(vcpu);
-> +
->   	/* Reset VCPU */
->   	kvm_riscv_reset_vcpu(vcpu);
->   
-> @@ -116,6 +121,7 @@ int kvm_arch_vcpu_init(struct kvm_vcpu *vcpu)
->   
->   void kvm_arch_vcpu_destroy(struct kvm_vcpu *vcpu)
->   {
-> +	kvm_riscv_vcpu_timer_deinit(vcpu);
->   	kvm_riscv_stage2_flush_cache(vcpu);
->   	kmem_cache_free(kvm_vcpu_cache, vcpu);
->   }
-> diff --git a/arch/riscv/kvm/vcpu_timer.c b/arch/riscv/kvm/vcpu_timer.c
+> diff --git a/arch/riscv/kvm/vcpu_exit.c b/arch/riscv/kvm/vcpu_exit.c
+> index fbc04fe335ad..87b83fcf9a14 100644
+> --- a/arch/riscv/kvm/vcpu_exit.c
+> +++ b/arch/riscv/kvm/vcpu_exit.c
+> @@ -534,6 +534,9 @@ int kvm_riscv_vcpu_exit(struct kvm_vcpu *vcpu, struct kvm_run *run,
+>   		    (vcpu->arch.guest_context.hstatus & HSTATUS_STL))
+>   			ret = stage2_page_fault(vcpu, run, scause, stval);
+>   		break;
+> +	case EXC_SUPERVISOR_SYSCALL:
+> +		if (vcpu->arch.guest_context.hstatus & HSTATUS_SPV)
+> +			ret = kvm_riscv_vcpu_sbi_ecall(vcpu);
+>   	default:
+>   		break;
+>   	};
+> diff --git a/arch/riscv/kvm/vcpu_sbi.c b/arch/riscv/kvm/vcpu_sbi.c
 > new file mode 100644
-> index 000000000000..a45ca06e1aa6
+> index 000000000000..5793202eb514
 > --- /dev/null
-> +++ b/arch/riscv/kvm/vcpu_timer.c
-> @@ -0,0 +1,106 @@
+> +++ b/arch/riscv/kvm/vcpu_sbi.c
+> @@ -0,0 +1,119 @@
 > +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2019 Western Digital Corporation or its affiliates.
+> +/**
+> + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
 > + *
 > + * Authors:
 > + *     Atish Patra <atish.patra@wdc.com>
@@ -269,61 +186,133 @@ This function never gets called?
 > +#include <linux/errno.h>
 > +#include <linux/err.h>
 > +#include <linux/kvm_host.h>
-> +#include <clocksource/timer-riscv.h>
 > +#include <asm/csr.h>
 > +#include <asm/kvm_vcpu_timer.h>
 > +
-> +static enum hrtimer_restart kvm_riscv_vcpu_hrtimer_expired(struct hrtimer *h)
+> +#define SBI_VERSION_MAJOR			0
+> +#define SBI_VERSION_MINOR			1
+> +
+> +/* TODO: Handle traps due to unpriv load and redirect it back to VS-mode */
+
+Ugh, another one of those? Can't you just figure out a way to recover 
+from the page fault? Also, you want to combine this with the instruction 
+load logic, so that we have a single place that guest address space 
+reads go through.
+
+> +static unsigned long kvm_sbi_unpriv_load(const unsigned long *addr,
+> +					 struct kvm_vcpu *vcpu)
 > +{
-> +	struct kvm_vcpu_timer *t = container_of(h, struct kvm_vcpu_timer, hrt);
-> +	struct kvm_vcpu *vcpu = container_of(t, struct kvm_vcpu, arch.timer);
-> +
-> +	t->is_set = false;
-> +	kvm_riscv_vcpu_set_interrupt(vcpu, IRQ_S_TIMER);
-> +
-> +	return HRTIMER_NORESTART;
-> +}
-> +
-> +static u64 kvm_riscv_delta_cycles2ns(u64 cycles, struct kvm_vcpu_timer *t)
-> +{
-> +	unsigned long flags;
-> +	u64 cycles_now, cycles_delta, delta_ns;
+> +	unsigned long flags, val;
+> +	unsigned long __hstatus, __sstatus;
 > +
 > +	local_irq_save(flags);
-> +	cycles_now = get_cycles64();
-> +	if (cycles_now < cycles)
-> +		cycles_delta = cycles - cycles_now;
-> +	else
-> +		cycles_delta = 0;
-> +	delta_ns = (cycles_delta * t->mult) >> t->shift;
+> +	__hstatus = csr_read(CSR_HSTATUS);
+> +	__sstatus = csr_read(CSR_SSTATUS);
+> +	csr_write(CSR_HSTATUS, vcpu->arch.guest_context.hstatus | HSTATUS_SPRV);
+> +	csr_write(CSR_SSTATUS, vcpu->arch.guest_context.sstatus);
+> +	val = *addr;
+> +	csr_write(CSR_HSTATUS, __hstatus);
+> +	csr_write(CSR_SSTATUS, __sstatus);
 > +	local_irq_restore(flags);
 > +
-> +	return delta_ns;
+> +	return val;
 > +}
 > +
-> +static int kvm_riscv_vcpu_timer_cancel(struct kvm_vcpu_timer *t)
+> +static void kvm_sbi_system_shutdown(struct kvm_vcpu *vcpu, u32 type)
 > +{
-> +	if (!t->init_done || !t->is_set)
+> +	int i;
+> +	struct kvm_vcpu *tmp;
+> +
+> +	kvm_for_each_vcpu(i, tmp, vcpu->kvm)
+> +		tmp->arch.power_off = true;
+> +	kvm_make_all_cpus_request(vcpu->kvm, KVM_REQ_SLEEP);
+> +
+> +	memset(&vcpu->run->system_event, 0, sizeof(vcpu->run->system_event));
+> +	vcpu->run->system_event.type = type;
+> +	vcpu->run->exit_reason = KVM_EXIT_SYSTEM_EVENT;
+> +}
+> +
+> +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu)
+> +{
+> +	int ret = 1;
+> +	u64 next_cycle;
+> +	int vcpuid;
+> +	struct kvm_vcpu *remote_vcpu;
+> +	ulong dhart_mask;
+> +	struct kvm_cpu_context *cp = &vcpu->arch.guest_context;
+> +
+> +	if (!cp)
 > +		return -EINVAL;
-> +
-> +	hrtimer_cancel(&t->hrt);
-> +	t->is_set = false;
-> +
-> +	return 0;
-> +}
-> +
-> +int kvm_riscv_vcpu_timer_next_event(struct kvm_vcpu *vcpu,
-> +				    unsigned long ncycles)
-> +{
-> +	struct kvm_vcpu_timer *t = &vcpu->arch.timer;
-> +	u64 delta_ns = kvm_riscv_delta_cycles2ns(ncycles, t);
+> +	switch (cp->a7) {
+> +	case SBI_SET_TIMER:
+> +#if __riscv_xlen == 32
+> +		next_cycle = ((u64)cp->a1 << 32) | (u64)cp->a0;
+> +#else
+> +		next_cycle = (u64)cp->a0;
+> +#endif
+> +		kvm_riscv_vcpu_timer_next_event(vcpu, next_cycle);
 
-... in fact, I feel like I'm missing something obvious here. How does 
-the guest trigger the timer event? What is the argument it uses for that 
-and how does that play with the tbfreq in the earlier patch?
+Ah, this is where the timer set happens. I still don't understand how 
+this takes the frequency bit into account?
 
+> +		break;
+> +	case SBI_CONSOLE_PUTCHAR:
+> +		/* Not implemented */
+> +		cp->a0 = -ENOTSUPP;
+> +		break;
+> +	case SBI_CONSOLE_GETCHAR:
+> +		/* Not implemented */
+> +		cp->a0 = -ENOTSUPP;
+> +		break;
+
+These two should be covered by the default case.
+
+> +	case SBI_CLEAR_IPI:
+> +		kvm_riscv_vcpu_unset_interrupt(vcpu, IRQ_S_SOFT);
+> +		break;
+> +	case SBI_SEND_IPI:
+> +		dhart_mask = kvm_sbi_unpriv_load((unsigned long *)cp->a0, vcpu);
+> +		for_each_set_bit(vcpuid, &dhart_mask, BITS_PER_LONG) {
+> +			remote_vcpu = kvm_get_vcpu_by_id(vcpu->kvm, vcpuid);
+> +			kvm_riscv_vcpu_set_interrupt(remote_vcpu, IRQ_S_SOFT);
+> +		}
+> +		break;
+> +	case SBI_SHUTDOWN:
+> +		kvm_sbi_system_shutdown(vcpu, KVM_SYSTEM_EVENT_SHUTDOWN);
+> +		ret = 0;
+> +		break;
+> +	case SBI_REMOTE_FENCE_I:
+> +		sbi_remote_fence_i(NULL);
+> +		break;
+> +	/*
+> +	 * TODO: There should be a way to call remote hfence.bvma.
+> +	 * Preferred method is now a SBI call. Until then, just flush
+> +	 * all tlbs.
+> +	 */
+> +	case SBI_REMOTE_SFENCE_VMA:
+> +		/*TODO: Parse vma range.*/
+> +		sbi_remote_sfence_vma(NULL, 0, 0);
+> +		break;
+> +	case SBI_REMOTE_SFENCE_VMA_ASID:
+> +		/*TODO: Parse vma range for given ASID */
+> +		sbi_remote_sfence_vma(NULL, 0, 0);
+> +		break;
+> +	default:
+> +		cp->a0 = ENOTSUPP;
+> +		break;
+
+Please just send unsupported SBI events into user space.
 
 Alex
+
+> +	};
+> +
+> +	if (ret >= 0)
+> +		cp->sepc += 4;
+> +
+> +	return ret;
+> +}
+> 
 
 
 _______________________________________________
