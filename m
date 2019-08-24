@@ -2,78 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D57BC9B9FE
-	for <lists+linux-riscv@lfdr.de>; Sat, 24 Aug 2019 03:11:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D0DF9BA01
+	for <lists+linux-riscv@lfdr.de>; Sat, 24 Aug 2019 03:18:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xJ4NjkpZBFqh8wr2RY7qXsz9EMnBWn4giZIADb+AhcU=; b=JVEf2PZ93PvbhT
-	Y0kH1qZ6GDn123nWhlgDA79LoPsJHwuY3IyKxyuNIV5nMWtEms+wcXKnlM2M2X4l86kO5JPN9Bv05
-	tWbl+eMjFTTWMbfK/wILzxkIfLwsv4K7kJd424Wx4/d2BMKiFLhZ4U/PJEByHeOmCLqnfK74u0ZTG
-	yG3amwr+z3HEtISdCEIOHT392DDFcxEYSnFZnTRcQfVwa2SktPa8YGieMuyX36fwXxr8l4h4psyv/
-	8+KSCI0TgXNZlqZ84ZfzP/Fmcf0Bs/8d8+0ZIZ4eeyFkiXx0iQXk6/V4ElrbsbXirjHO9cVRLxL3v
-	uzdduLrUZxp+DBgOx2EQ==;
+	List-Owner; bh=PTgdss7uJ5kBj510C7UV20XjvJBvvA+RKAo3ct+zdYM=; b=rgPpzAn8iPwp89
+	ealfL4Uh+v71JbzQB9rMRJgxSq3Z7axgMwMUea95QwkeSDUClqD8lE6ovWfXDSY6AL9wr/nKnYhdr
+	2dT7XxmEUUvBtwWhVpnE1QEP57oEcFLC95DYFvl6+KvlBo4rlwq3FW+D4ePBZDYB1SaPwaCHR7Gvt
+	wXSYlXCd9pq8gJxF0DQsB0Wtjl3H1Fbqfqmfi/8id6kP3qT4aGYq8+vmJZAh2/vRgzOAtOFaBJAmt
+	rdrRKHgAvscKSkl+yeWy2SVEJLP3TM+A3AyYgyAvZMF/ZqBWjkpUT14TlarhN/lAtgw/47fqPceT4
+	KW/8zhBu4Vzl6dn7FDFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i1Ka5-0006bK-6I; Sat, 24 Aug 2019 01:11:01 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1i1KhD-000896-5H; Sat, 24 Aug 2019 01:18:23 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i1Ka0-0006av-Ry
- for linux-riscv@lists.infradead.org; Sat, 24 Aug 2019 01:10:58 +0000
-Received: by mail-wr1-x443.google.com with SMTP id b16so10097663wrq.9
- for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 18:10:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=41qUMOD0eN9ewXy9evPZN0TYC9TGr+U54AtzmQ5x03o=;
- b=pJ1qttiH2/TAejvsSIaJsBfJC3X4ms0F4j8RBNKGcnx72+uqFvCTBkeN5ie4j8McDA
- sSURZK3R3i4+L04F5EL0a9zffYefEs0mukbwHcKkgrpvEFNCC3Df3OWVYuKhgQxXhrp0
- fBT5gy3NSGdZ2UUmBj6DliklL3SPZUtjzo6U1+95QeZsoEYIPMH+beo7Om5+qjGHJt0Q
- Ym2Fu8SZ+8lCwmFW+ACV3nO0tmLcQOvsq0pHt37Iov0myUSBC6NX40fSUGL60YIqbnXJ
- Ld7Q6qjxELcwawgYKLcmbKHmKe2Cg6Oe0GzhIaPOtY8KL1lb5JhzvkslSzPFCvlL7PsB
- uaKA==
+ id 1i1Kh9-00088h-6j
+ for linux-riscv@lists.infradead.org; Sat, 24 Aug 2019 01:18:20 +0000
+Received: by mail-pg1-x542.google.com with SMTP id n4so6737629pgv.2
+ for <linux-riscv@lists.infradead.org>; Fri, 23 Aug 2019 18:18:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=hFC89CjETE6kSjgcVSwHDSYQXSiMoiEBQa3e+HIYt4Q=;
+ b=E0CEXHhixhPPnduz4oCvzrE4SYv5LhBG86wlPOFAaizB/7Pzj9s3MqGo3cOQiKxH2H
+ WMYn5lQwwEBQZbEaeBAENQsk/YFrhXIrg0RzuZMLncZ02XfQwLbYWYR9rt3b/takcJhE
+ aSXhDyTFtKSGnsa2qZk6RJyQxRh2sPqWCqyGT3lBAIH99Hqpr3Pp4LuQHYrpj1T7RfKD
+ NxtKlXH80DwCrwLgtye00jD3r875YOCXbKImkxbcOtaKojLdfF0B3pPECxdxWzjFWKZR
+ a9AcMclmd+i08OU7h4fTOBV/Ey/MmTbLs2v1E5yu8DxLZcGN2G9BtmB5htE9RbR0cpgD
+ S6nA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=41qUMOD0eN9ewXy9evPZN0TYC9TGr+U54AtzmQ5x03o=;
- b=PWfPEwgicg6EDIXd7HclFJYslY7fKMm2JOQmKv2+yeWOeyaqcCCGgh55rJJiWh6iTR
- 1nVpp+s5ifoWSbOi+12aCyCagfxSi41KwnaFBKf7IwT+v4y/ang4M5HPX48U1Y7opNn8
- BEOp6DEnTBCx7XVoQRcFSUWsSh2eN2TqCoENTND1FdGGMejosex7pIEPVIIFVCn5J3mm
- U5+kor7TT+5pC6bvaVIJBaaQl+y6CH3Lsn3h446cqaNAJO9UjYyegkkYXsQ8SCbD3u6a
- uFSnpAt/absUxVGZTEU+MN8Kec99LgUYko20laXxz/cDUnqg8ONlD0/cMRJK1+Ftfc9R
- wIRw==
-X-Gm-Message-State: APjAAAXCEp6+Nuu+KrNMccirThsV4ilSVj7HAr/hrS8vpQarrYV3O02H
- SZWOpmQZ25lW2iA43kPnqA95joggpDh49XBJJ7Es7B48FEM=
-X-Google-Smtp-Source: APXvYqydp+Vo49g56ZEwK2cZ0glM97zTlW8ryOGhTMmYD6lmAwzRBw5hzZmSPywrxkbYQA/edItRemRP6hCC9Zp+YEY=
-X-Received: by 2002:adf:e5cd:: with SMTP id a13mr7785955wrn.316.1566609054327; 
- Fri, 23 Aug 2019 18:10:54 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=hFC89CjETE6kSjgcVSwHDSYQXSiMoiEBQa3e+HIYt4Q=;
+ b=dgAYR9JymhPu7xfdVR+xzhZFrL69HCOs11hmrrj1sLVednzoZYxF5XI3ZX2lxDw4vX
+ khlEHfKH9QwqEtLrAxwQoSkrtj3jNNy0qUK9Cq6vGJHjlAYGYGhwtCLd/mxsETxUeX14
+ j2ZSrEPmgRRy1GY0uUj0m26s/xgqHL6ydDXKd2jTdpgua7gGXwLBJV1lRAjgljHPFc9+
+ xxwo6Xo/OYcJHXzZ5lqfu7sRkr3hBqDJAzEjy00fxsNHFzS5cxEOaR0sSxpTCdAkJDco
+ e/jEnUykq/bXcpIMYvaXshcWBq5HCHu9yNM55gDCLcYVdBbcANqnO+ni4n3k7s89ihsz
+ Uggg==
+X-Gm-Message-State: APjAAAUZWVCePqlKiMq9DyKmy07VTClmwuEi/pT1L4HoBSRmeIVlE/MR
+ 3sDIsGsZvqWhtsXFJf5V22/iDg==
+X-Google-Smtp-Source: APXvYqwuX2JonhdUQesJbI454z6VwBTbUlXdP9d0uxq5+0I9DCD2aD552ligSdNeFL7iVFwXuBSZOw==
+X-Received: by 2002:a17:90a:b890:: with SMTP id
+ o16mr5418766pjr.41.1566609497976; 
+ Fri, 23 Aug 2019 18:18:17 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id g2sm8023188pfq.88.2019.08.23.18.18.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Aug 2019 18:18:17 -0700 (PDT)
+Date: Fri, 23 Aug 2019 18:18:16 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: David Abdurachmanov <david.abdurachmanov@gmail.com>
+Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
+In-Reply-To: <CAEn-LTp=ss0Dfv6J00=rCAy+N78U2AmhqJNjfqjr2FDpPYjxEQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.9999.1908231816500.18210@viisi.sifive.com>
 References: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
  <alpine.DEB.2.21.9999.1908231717550.25649@viisi.sifive.com>
  <CAEn-LTp=ss0Dfv6J00=rCAy+N78U2AmhqJNjfqjr2FDpPYjxEQ@mail.gmail.com>
-In-Reply-To: <CAEn-LTp=ss0Dfv6J00=rCAy+N78U2AmhqJNjfqjr2FDpPYjxEQ@mail.gmail.com>
-From: David Abdurachmanov <david.abdurachmanov@gmail.com>
-Date: Fri, 23 Aug 2019 18:10:17 -0700
-Message-ID: <CAEn-LToT7YPwoBWO919Q0nkd9mj_Bup6n14q3LmXJYK1M1UXhg@mail.gmail.com>
-Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
-To: Paul Walmsley <paul.walmsley@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190823_181056_934533_29B4B1E1 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20190823_181819_253180_2794D265 
+X-CRM114-Status: GOOD (  13.93  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (david.abdurachmanov[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -112,9 +118,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Aug 23, 2019 at 6:04 PM David Abdurachmanov
-<david.abdurachmanov@gmail.com> wrote:
->
+On Fri, 23 Aug 2019, David Abdurachmanov wrote:
+
 > On Fri, Aug 23, 2019 at 5:30 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
 > >
 > > On Thu, 22 Aug 2019, David Abdurachmanov wrote:
@@ -126,41 +131,32 @@ On Fri, Aug 23, 2019 at 6:04 PM David Abdurachmanov
 > > here:
 > >
 > >   https://lore.kernel.org/linux-riscv/CADnnUqcmDMRe1f+3jG8SPR6jRrnBsY8VVD70VbKEm0NqYeoicA@mail.gmail.com/
->
+> 
 > Yes, it's a single test failing. After removing global.user_notification_signal
 > test everything else pass and you get the results printed.
->
-> >
-> > For example, looking at the source, I'd naively expect to see the
-> > user_notification_closed_listener test result -- which follows right
-> > after the failing test in the selftest source.  But there aren't any
-> > results?
->
-> Yes, it hangs at this point. You have to manually terminate it.
->
-> >
-> > Also - could you follow up with the author of this failing test to see if
-> > we can get some more clarity about what might be going wrong here?  It
-> > appears that the failing test was added in commit 6a21cc50f0c7f ("seccomp:
-> > add a return code to trap to userspace") by Tycho Andersen
-> > <tycho@tycho.ws>.
->
+
+OK.
+
 > Well the code states ".. and hope that it doesn't break when there
 > is actually a signal :)". Maybe we are just unlucky. I don't have results
 > from other architectures to compare.
->
+> 
 > I found that Linaro is running selftests, but SECCOMP is disabled
 > and thus it's failing. Is there another CI which tracks selftests?
->
-> https://qa-reports.linaro.org/lkft/linux-next-oe/tests/kselftest/seccomp_seccomp_bpf?top=next-20190823
 
-Actually it seems that seccomp is enabled in kernel, but not in
-systemd, and somehow seccomp_bpf is missing on all arches thus
-causing automatic failure.
+0day runs the kselftests, and at least on some architectures/Kconfigs, 
+it's succeeding:
 
-> >
-> >
-> > - Paul
+https://lore.kernel.org/lkml/20190726083740.GG22106@shao2-debian/
+
+https://lore.kernel.org/lkml/20190712064850.GC20848@shao2-debian/
+
+https://lore.kernel.org/lkml/20190311074115.GC10839@shao2-debian/
+
+etc.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
