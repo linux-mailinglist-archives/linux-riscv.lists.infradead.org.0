@@ -2,78 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 315009C3F4
-	for <lists+linux-riscv@lfdr.de>; Sun, 25 Aug 2019 15:28:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 979109C3F7
+	for <lists+linux-riscv@lfdr.de>; Sun, 25 Aug 2019 15:28:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rQqS3p7WOMPXe60mAlof5fms1rsVHSPbu20Hha2CosM=; b=QCbNDLvmhsnYoZ
-	63svmsfi3nWKLsZZ9kicO88jHxLB4DK2fzQYLpm3X0TjCCgelpeV7JBsaSPWXaFoqRVhWc4AvyHlp
-	ji3+08m2rUtsjAX5uGsLsVVxW8aAAS2DcEdfre+geWtyqI9UppQybvQL3xDlHNh5VXTiS9fT1hLWi
-	uoRwjfXifoCjvicrK8TH37eHzu532Lb5M9aTInmV/K5eSjJIvFVVnEnuj+K+S059BnmZr8j0fMkYZ
-	n7AIR9hvHpKhbEpNf0McdEfaCcFMSoHZXZm2UlDB6WGlO6NfuT+GFvbJRWRZbnJvJh0gLbWcA4xyB
-	lpwyVY/NaPIYp9FFyl6w==;
+	List-Owner; bh=SsvtOWdgpafcA48cZd69zXiIEkn3iMexBnIOcy6nZcE=; b=MPQim8RyTKuFWD
+	FaZfIY239zi7ppkCBHgQBCt1DiGflaIUCYlLsUV6LBLkgwFF+ujnfanBMDWy1JCARpcaPamnRBdAT
+	NJ3JPCBqgYXVUXTXAg3sjcGpuDheNzAsUk4H9CsAJygH9AYsK3xbdnomWw+FMkA6J2DzyYPwQjbKX
+	YAtRFB+fU4SjVd1KTsKXN00pklP2PiRiBemid6u97QSpqKys+417qnGBO9+JKnvuAfDsgT23nRU2L
+	Gxsg7N6+ZDaou363kCyM1T1ZHwqIcL7M24mN8H8wsIpURqQ9NVyMndz3RADkr5/4eqBocXtZ4HCcR
+	fQRpMXuWAMiZHoW6X9+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i1sYu-0007dk-W5; Sun, 25 Aug 2019 13:28:05 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1i1sZD-0007vZ-JO; Sun, 25 Aug 2019 13:28:23 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i1sVv-0003mw-2b; Sun, 25 Aug 2019 13:25:00 +0000
-Received: by mail-pf1-x444.google.com with SMTP id w26so9809998pfq.12;
- Sun, 25 Aug 2019 06:24:59 -0700 (PDT)
+ id 1i1sW3-0004DS-0t; Sun, 25 Aug 2019 13:25:08 +0000
+Received: by mail-pf1-x443.google.com with SMTP id g2so9845157pfq.0;
+ Sun, 25 Aug 2019 06:25:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JqpgoR8V6SjsIuqoJ+8NqdaMmEPfAbLAaPv+Hcgdg84=;
- b=cOVJF79WqvqKRT3ZXzzxuLNI4rbZt4lfbP6az49c1byhyK2QahOrqbSI2dB2fZhWCC
- xJCbft2VLYrbwdzXF9jIiXUwPyokyE/gLjMn6UbplIiyUIshSRGBh09bXozM15K1nsuc
- hVqsLwo8519kPAFe9mVCqIiwt6iUC7u7wKwV7QZ33C4FGl/cd3m96WtMvKbt7c4jcDwj
- QB3okZeBtzimdK2gKfpcMlyKmkszszsFr79e3wOM8/ErGZfWwWpwQlwOhcLgo9WKQzwE
- CO6qHnCy0oV9Gt51zgP/CeciV8d7/eTmq3bR5PhIONNKkekvCWxA77q6JHkEqqoviw1X
- t/Aw==
+ bh=NnHjdka8q9MM1nbcRBaxfkCGVCCjsDG70zM+YYdNV3E=;
+ b=g03zkfsq+c6M14xC3btV7g6IPmWaG8X+9s5nY7dD43zw7K8+Dl6zmdV/meLJmfcsMD
+ /XzawISKOMxF9+tzCwu74cViPpHxmr/GarsoBsTn/ENQVJNySASP3aLxbeDN7HAHeP7x
+ 5AqjpbMw/SWUexnfZkPSUIB379U8mtrc4sNHcxkuWU4mRUZg6at+EX63IeNV5JvMSKsP
+ dwxVFHi7nznxJzkCv1jujm1jXMieR9Eb+5viooHTscZhT58A5U5DAPY7JJfRziAsgBjm
+ JRivX+QMRW56PFrMRP81NpX/zHCaOTF8BBRZ+789DiMV5Tbs37PC1YPOlEkouAyarn5N
+ J2Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JqpgoR8V6SjsIuqoJ+8NqdaMmEPfAbLAaPv+Hcgdg84=;
- b=iVl9SITYxt+Oj38/DL9slAY3zN/HbP6w0hHA0pwbeBdkgMJ7tsBC4HyNAxbuIMs18d
- lbSKtdqjcI4mqUEBkK2l0laRmhcYKhAjJ1n9KhsCIbLij4shS896feWCdmRdAwbPNYiX
- zASLeU5jDP+5K6bBURTHM/MNjqkYciwW0uy9XxbRCmZRzx0J5hVCWxrALpJk4yGcLlCW
- +fApc2WrlKzYTSEPqWoOzaiP3c+IsERumtGJrGltG4pu6O7wwO8q54hLNOf3mqISF2Hf
- IgDBaGsaAt2c3mhJRjPQFzAyawgSBC9QH5RnCTb5lRmnrjt6MLT6//6cn0+Wq8jzO6nX
- 8aZw==
-X-Gm-Message-State: APjAAAV+FWQFW/fn+//GJ+Fuk0KMMqfFG/YOFOg5zNiljJwrt3kwGc21
- lCy+PXyJpYkATvgh0S9Scr0uvX8Ad+2fxw==
-X-Google-Smtp-Source: APXvYqwQzM/nOUwplTcnKi74XFc9NcY/wLN6wqU0HucyOEq0vc6nrliugvK9Jha3kK8nxmI1irB8+w==
-X-Received: by 2002:a63:fb14:: with SMTP id o20mr11958817pgh.136.1566739498486; 
- Sun, 25 Aug 2019 06:24:58 -0700 (PDT)
+ bh=NnHjdka8q9MM1nbcRBaxfkCGVCCjsDG70zM+YYdNV3E=;
+ b=hv6IW8p7dvubaM0HQwf9+wn7DQeclS/zUg9sw/CH7X+4HZjFP7WJvZJxxT0eqgivJL
+ hLtKSX/zXxFX8zTFNvQ8H9Rm7HtEHmbtoGEJ8Ev4PfjLs2q+QysfoaL2E3M9uU+ndYzV
+ hH+CbAxueUe//olKOnSj5MzKPRMXByvKVCkW9wyQTBo1+1uJ9w99mOaujNiuy1AAVngX
+ KLO7KDf1tIGStCMiiw3tpKiqm0tyItivUMAtFWfWUUxnd0UFKoSy9ezOIDTqX0C7PT2L
+ gIn3l2Z2BUfDI/fnC6a8ToFwvMyQPBZR9sBoRDAeV977vFm1lpkeuMcpNmkfGSUQahrv
+ G3eQ==
+X-Gm-Message-State: APjAAAVrZAlv3F/QVR/BdDHy/9hGqlvyO3nXmjjOvwt16fwxQDFbp6dT
+ boLtZwjyJfk+swJQ6vVjvhA=
+X-Google-Smtp-Source: APXvYqyz1vAktHcdxrCebWGWWISA04KQUpd77awztbV1MU/g3rutrKQ4McqGMrzQW2zfpUUXANHC4Q==
+X-Received: by 2002:aa7:97aa:: with SMTP id d10mr15293204pfq.176.1566739506119; 
+ Sun, 25 Aug 2019 06:25:06 -0700 (PDT)
 Received: from localhost.localdomain ([149.28.153.17])
- by smtp.gmail.com with ESMTPSA id y23sm11076562pfr.86.2019.08.25.06.24.51
+ by smtp.gmail.com with ESMTPSA id y23sm11076562pfr.86.2019.08.25.06.24.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Aug 2019 06:24:58 -0700 (PDT)
+ Sun, 25 Aug 2019 06:25:05 -0700 (PDT)
 From: Changbin Du <changbin.du@gmail.com>
 To: Steven Rostedt <rostedt@goodmis.org>,
 	Ingo Molnar <mingo@redhat.com>
-Subject: [PATCH 09/11] x86_64: add function prototype recording support
-Date: Sun, 25 Aug 2019 21:23:28 +0800
-Message-Id: <20190825132330.5015-10-changbin.du@gmail.com>
+Subject: [PATCH 10/11] ftrace: add doc for new option record-funcproto
+Date: Sun, 25 Aug 2019 21:23:29 +0800
+Message-Id: <20190825132330.5015-11-changbin.du@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190825132330.5015-1-changbin.du@gmail.com>
 References: <20190825132330.5015-1-changbin.du@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190825_062459_158845_661C7BB9 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20190825_062507_567462_02C6D2B5 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -110,173 +111,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch implements the arch_fgraph_record_params() function for x86_64
-platform and deliver the return value of function to ftrace core part.
+Just add the doc for our new feature.
 
 Signed-off-by: Changbin Du <changbin.du@gmail.com>
 ---
- arch/x86/Kconfig            |  1 +
- arch/x86/kernel/ftrace.c    | 84 +++++++++++++++++++++++++++++++++++--
- arch/x86/kernel/ftrace_64.S |  4 +-
- 3 files changed, 85 insertions(+), 4 deletions(-)
+ Documentation/trace/ftrace.rst | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 222855cc0158..34e583bfdab8 100644
---- a/arch/x86/Kconfig
-+++ b/arch/x86/Kconfig
-@@ -31,6 +31,7 @@ config X86_64
- 	select NEED_DMA_MAP_STATE
- 	select SWIOTLB
- 	select ARCH_HAS_SYSCALL_WRAPPER
-+	select HAVE_FTRACE_FUNC_PROTOTYPE
+diff --git a/Documentation/trace/ftrace.rst b/Documentation/trace/ftrace.rst
+index f60079259669..c68fbbedb8bd 100644
+--- a/Documentation/trace/ftrace.rst
++++ b/Documentation/trace/ftrace.rst
+@@ -988,6 +988,7 @@ To see what is available, simply cat the file::
+ 	nolatency-format
+ 	record-cmd
+ 	norecord-tgid
++	norecord-funcproto
+ 	overwrite
+ 	nodisable_on_free
+ 	irq-info
+@@ -1131,6 +1132,11 @@ Here are the available options:
+ 	mapped Thread Group IDs (TGID) mapping to pids. See
+ 	"saved_tgids".
  
- config FORCE_DYNAMIC_FTRACE
- 	def_bool y
-diff --git a/arch/x86/kernel/ftrace.c b/arch/x86/kernel/ftrace.c
-index a044734167af..fc0a062ce762 100644
---- a/arch/x86/kernel/ftrace.c
-+++ b/arch/x86/kernel/ftrace.c
-@@ -31,6 +31,7 @@
- #include <asm/ftrace.h>
- #include <asm/nops.h>
- #include <asm/text-patching.h>
-+#include <asm-generic/dwarf.h>
- 
- #ifdef CONFIG_DYNAMIC_FTRACE
- 
-@@ -918,7 +919,8 @@ static void *addr_from_call(void *ptr)
- }
- 
- void prepare_ftrace_return(unsigned long self_addr, unsigned long *parent,
--			   unsigned long frame_pointer);
-+			   unsigned long frame_pointer,
-+			   struct pt_regs *pt_regs);
- 
- /*
-  * If the ops->trampoline was not allocated, then it probably
-@@ -973,6 +975,82 @@ void arch_ftrace_trampoline_free(struct ftrace_ops *ops)
- 	ops->trampoline = 0;
- }
- 
-+#ifdef CONFIG_FTRACE_FUNC_PROTOTYPE
-+void arch_fgraph_record_params(struct ftrace_graph_ent *trace,
-+			       struct func_prototype *proto,
-+			       struct pt_regs *pt_regs)
-+{
-+	int i;
++  record-funcproto
++	Record function parameters and return value. This option
++	is only supported by function_graph tracer on x86_64
++	platform by now.
 +
-+	trace->nr_param = min(proto->nr_param, (uint8_t)FTRACE_MAX_FUNC_PARAMS);
-+
-+	for (i = 0; i < trace->nr_param; i++) {
-+		struct func_param *param = &proto->params[i];
-+		unsigned int sz = FTRACE_PROTOTYPE_SIZE(param->type);
-+		long off = (char)param->loc[1];
-+		unsigned long value = 0;
-+		bool good = true;
-+
-+		if (sz > sizeof(value)) {
-+			/* Don't record value of complex type. */
-+			trace->param_types[i] = param->type;
-+			trace->param_values[i] = 0;
-+			continue;
-+		}
-+
-+		switch (param->loc[0]) {
-+		case DW_OP_reg1:
-+			value = pt_regs->dx;
-+			break;
-+		case DW_OP_reg2:
-+			value = pt_regs->cx;
-+			break;
-+		case DW_OP_reg3:
-+			value = pt_regs->bx;
-+			break;
-+		case DW_OP_reg4:
-+			value = pt_regs->si;
-+			break;
-+		case DW_OP_reg5:
-+			value = pt_regs->di;
-+			break;
-+		case DW_OP_reg6:
-+			value = pt_regs->bp;
-+			break;
-+		case DW_OP_reg8:
-+			value = pt_regs->r8;
-+			break;
-+		case DW_OP_reg9:
-+			value = pt_regs->r9;
-+			break;
-+		case DW_OP_fbreg:
-+			if (probe_kernel_read(&value,
-+					(void *)pt_regs->bp + off,
-+					sz))
-+				good = false;
-+			break;
-+		case DW_OP_breg7:
-+			if (probe_kernel_read(&value,
-+					(void *)pt_regs->sp + off,
-+					sz))
-+				good = false;
-+			break;
-+		default:
-+			/* unexpected loc expression */
-+			good = false;
-+		}
-+
-+		trace->param_names[i] = param->name;
-+		if (good) {
-+			trace->param_types[i] = param->type;
-+			trace->param_values[i] = value;
-+		} else {
-+			/* set the type to 0 so we skip it when printing. */
-+			trace->param_types[i] = 0;
-+		}
-+	}
-+}
-+#endif /* CONFIG_FTRACE_FUNC_PROTOTYPE */
- #endif /* CONFIG_X86_64 */
- #endif /* CONFIG_DYNAMIC_FTRACE */
- 
-@@ -1017,7 +1095,7 @@ int ftrace_disable_ftrace_graph_caller(void)
-  * in current thread info.
-  */
- void prepare_ftrace_return(unsigned long self_addr, unsigned long *parent,
--			   unsigned long frame_pointer)
-+			   unsigned long frame_pointer, struct pt_regs *pt_regs)
- {
- 	unsigned long old;
- 	int faulted;
-@@ -1072,7 +1150,7 @@ void prepare_ftrace_return(unsigned long self_addr, unsigned long *parent,
- 		return;
- 	}
- 
--	if (function_graph_enter(old, self_addr, frame_pointer, parent, NULL))
-+	if (function_graph_enter(old, self_addr, frame_pointer, parent, pt_regs))
- 		*parent = old;
- }
- #endif /* CONFIG_FUNCTION_GRAPH_TRACER */
-diff --git a/arch/x86/kernel/ftrace_64.S b/arch/x86/kernel/ftrace_64.S
-index 809d54397dba..e01d6358e859 100644
---- a/arch/x86/kernel/ftrace_64.S
-+++ b/arch/x86/kernel/ftrace_64.S
-@@ -289,7 +289,8 @@ ENTRY(ftrace_graph_caller)
- 
- 	leaq MCOUNT_REG_SIZE+8(%rsp), %rsi
- 	movq $0, %rdx	/* No framepointers needed */
--	call	prepare_ftrace_return
-+	movq %rsp, %rcx /* the fourth parameter */
-+	call prepare_ftrace_return
- 
- 	restore_mcount_regs
- 
-@@ -304,6 +305,7 @@ ENTRY(return_to_handler)
- 	movq %rax, (%rsp)
- 	movq %rdx, 8(%rsp)
- 	movq %rbp, %rdi
-+	movq %rax, %rsi
- 
- 	call ftrace_return_to_handler
- 
+   overwrite
+ 	This controls what happens when the trace buffer is
+ 	full. If "1" (default), the oldest events are
 -- 
 2.20.1
 
