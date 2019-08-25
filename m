@@ -2,54 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D28229FECF
-	for <lists+linux-riscv@lfdr.de>; Wed, 28 Aug 2019 11:44:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F3DAA08AE
+	for <lists+linux-riscv@lfdr.de>; Wed, 28 Aug 2019 19:37:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Fnufgk2bPXE2zzygA1/LKBM2NbUmvxBDxA8zVYFKr0M=; b=CLRAGIczRaXI/ivq9zV8yYVZE
-	eKL85FShuBpBeN+dTaGJuE6Ez0HAO8GGBzmylwhoZSGPHRrP9ZB0gsJADESBf6mEnNl/7gbLycuJA
-	IM76Y633QZwVSwESjOope0ElOlgT401zdmIRohudEUZburCoLbXxRMKh1G/qPmppD4lezWm3IMhFv
-	A+ZGwDX1Q28ZWPx2Y/jj73vf+OOgV2qDfKtw7L12YWe1KS724XR2UGo0V80butFU/kbSaAhJpvB9i
-	uWT8O1nlZ4GGH9Y5+VVpwTTxVATHHZWTWA/ubHd0vC+wBYxlqy8K0AxofNFG+3FN4TQpVnjdkhTZA
-	tmyO9lSWA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=i0rpUJirHNlDyG2G07VM15bbaLwFZyDhbhk1WoRtEK0=; b=P6mOLoTGw/ZXWy
+	VyW2cRYHPWwUmes3vcd29UQhnZw+98i5GLkcgkXcs7bk+zlCKYUz+aXHtes2MAY4Jjy1OAbi0LULA
+	5adVakp6f9bBfsrZ1PygBTgNydKIllkVmT58oqrQaGM62U7ryF5LfVqb08BDR0e0is7WXtS4e5PZF
+	y+8EZ2VqN6s2rOXM/pTk4cermE+RY8oIBW3hAgZywYwNufeu+KRgt8Q67FL89GyJ1Fih3Ksk9R1tX
+	80gE21rBG9DP7NY0iWik13XniHCCSkCUriw+FmGpZ4RlhDcyA5ANm5JDvcBi+ZGv2oW23HCkk177X
+	U5ThYog8jeDCz2kE8+YQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2uVT-0002CR-0a; Wed, 28 Aug 2019 09:44:47 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1i31sR-0001iD-6i; Wed, 28 Aug 2019 17:36:59 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2uV3-0001yd-ML; Wed, 28 Aug 2019 09:44:23 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 7A77DAD26;
- Wed, 28 Aug 2019 09:44:16 +0000 (UTC)
-Message-ID: <5271f3041cf16ec06a8266b0072f294384280f54.camel@suse.de>
-Subject: Re: [PATCH v2 01/11] asm-generic: add dma_zone_size
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: Christoph Hellwig <hch@lst.de>
-Date: Wed, 28 Aug 2019 11:44:12 +0200
-In-Reply-To: <027272c27398b950f207101a2c5dbc07a30a36bc.camel@suse.de>
-References: <20190820145821.27214-1-nsaenzjulienne@suse.de>
- <20190820145821.27214-2-nsaenzjulienne@suse.de>
- <20190826070939.GD11331@lst.de>
- <027272c27398b950f207101a2c5dbc07a30a36bc.camel@suse.de>
-User-Agent: Evolution 3.32.4 
+ id 1i31sL-0001ew-1z
+ for linux-riscv@lists.infradead.org; Wed, 28 Aug 2019 17:36:54 +0000
+Received: by mail-pf1-x443.google.com with SMTP id y9so254610pfl.4
+ for <linux-riscv@lists.infradead.org>; Wed, 28 Aug 2019 10:36:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=M47pTZiAE3Wr8BbtgIHsQv1k4WtO4wX2CZjP2HeXAjI=;
+ b=LS7sDUBjIS1Uff386cu0zqhDdYqMUwYYKZKmEjwIsi9QTzN89/DsKYkhHeAzX+HiWz
+ XUGR2aF5xzEjpRru0i1N004SQj75D1ew2JaMZGVGSMb1w0/XqTl0B3R7YnrgYSZbcJln
+ 64EK3Y0c7M9n+gQt3BqNXH4dE9RFbDkXKcD/Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=M47pTZiAE3Wr8BbtgIHsQv1k4WtO4wX2CZjP2HeXAjI=;
+ b=MtA7OhZB4mWmHl08WKtKKZFV+ezYannFtQgDYKljCIdEIJAGcDMI/FA//O8uEvCe7X
+ lLQYi/cQlFrboUB+UyJWFVH2xUqKJddDlHtG0ofMR6o7ETjOkturkIhapGlYD496EHZj
+ ROzCu0Q/qBtNmf0wB46QjGkrwlNgkyVdz9hKUUNh8Rl8CI5z8ixyFP2e+qOqwN18rd/y
+ Vqc0X/9LWrf9Ub3LnnpP6O/ms0u+55/yhhNvF+1VJGDHe5QX2HDHZE0+r6CIhiAahdF3
+ F9AOcZ4lZkKYSah+otpEHPZCbLkE/VlsBSoi33sc+lVcXr4rW1zN6f8ddqdCA8Upcqds
+ Qn5Q==
+X-Gm-Message-State: APjAAAWYwQAv8y5EHAPkw/atj0m4n37y/GK/SXBD4fMWJYDS6IfGiap+
+ 6jTsZm4d8yBNdqmz9jEmop9VKQ==
+X-Google-Smtp-Source: APXvYqw01wf5KpqvU0SBLWBJjcZSJTFTWWCu5dmEtVFN/KxdMMnVgA4WZSzYIDlb53k7Xqylep0gCg==
+X-Received: by 2002:a63:6fc9:: with SMTP id k192mr4431758pgc.20.1567013812543; 
+ Wed, 28 Aug 2019 10:36:52 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id w207sm3832866pff.93.2019.08.28.10.36.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Aug 2019 10:36:51 -0700 (PDT)
+Date: Sun, 25 Aug 2019 14:51:42 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
+Message-ID: <201908251446.04BCB8C@keescook>
+References: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
+ <alpine.DEB.2.21.9999.1908231717550.25649@viisi.sifive.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.9999.1908231717550.25649@viisi.sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190828_024422_020942_DA698A0E 
-X-CRM114-Status: GOOD (  21.65  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190828_103653_117683_A7A3F950 
+X-CRM114-Status: GOOD (  15.99  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,121 +94,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: catalin.marinas@arm.com, eric@anholt.net, linux-riscv@lists.infradead.org,
- frowand.list@gmail.com, m.szyprowski@samsung.com, linux-arch@vger.kernel.org,
- f.fainelli@gmail.com, will@kernel.org, devicetree@vger.kernel.org,
- Arnd Bergmann <arnd@arndb.de>, marc.zyngier@arm.com, robh+dt@kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- phill@raspberryi.org, mbrugger@suse.com, linux-mm@kvack.org,
- linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
- wahrenst@gmx.net, akpm@linux-foundation.org,
- Robin Murphy <robin.murphy@arm.com>
-Content-Type: multipart/mixed; boundary="===============2812521241347977303=="
+Cc: Song Liu <songliubraving@fb.com>, Alan Kao <alankao@andestech.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ Oleg Nesterov <oleg@redhat.com>, linux-kselftest@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Shuah Khan <shuah@kernel.org>,
+ Tycho Andersen <tycho@tycho.ws>, Daniel Borkmann <daniel@iogearbox.net>,
+ Yonghong Song <yhs@fb.com>, me@carlosedp.com,
+ Albert Ou <aou@eecs.berkeley.edu>, Alexios Zavras <alexios.zavras@intel.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
+ Will Drewry <wad@chromium.org>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>, netdev@vger.kernel.org,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ Andy Lutomirski <luto@amacapital.net>, Vincent Chen <vincentc@andestech.com>,
+ bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Fri, Aug 23, 2019 at 05:30:53PM -0700, Paul Walmsley wrote:
+> On Thu, 22 Aug 2019, David Abdurachmanov wrote:
+> 
+> > There is one failing kernel selftest: global.user_notification_signal
+> 
+> Is this the only failing test?  Or are the rest of the selftests skipped 
+> when this test fails, and no further tests are run, as seems to be shown 
+> here:
+> 
+>   https://lore.kernel.org/linux-riscv/CADnnUqcmDMRe1f+3jG8SPR6jRrnBsY8VVD70VbKEm0NqYeoicA@mail.gmail.com/
+> 
+> For example, looking at the source, I'd naively expect to see the 
+> user_notification_closed_listener test result -- which follows right 
+> after the failing test in the selftest source.  But there aren't any 
+> results?
+> 
+> Also - could you follow up with the author of this failing test to see if 
+> we can get some more clarity about what might be going wrong here?  It 
+> appears that the failing test was added in commit 6a21cc50f0c7f ("seccomp: 
+> add a return code to trap to userspace") by Tycho Andersen 
+> <tycho@tycho.ws>.
 
---===============2812521241347977303==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-HuE7CYEmA0DlmwKJIinl"
+So, the original email says the riscv series is tested on top of 5.2-rc7,
+but just for fun, can you confirm that you're building a tree that includes
+9dd3fcb0ab73 ("selftests/seccomp: Handle namespace failures gracefully")? I
+assume it does, but I suspect something similar is happening, where the
+environment is slightly different than expected and the test stalls.
 
+Does it behave the same way under emulation (i.e. can I hope to
+reproduce this myself?)
 
---=-HuE7CYEmA0DlmwKJIinl
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, 2019-08-26 at 15:46 +0200, Nicolas Saenz Julienne wrote:
-> On Mon, 2019-08-26 at 09:09 +0200, Christoph Hellwig wrote:
-> > On Tue, Aug 20, 2019 at 04:58:09PM +0200, Nicolas Saenz Julienne wrote:
-> > > Some architectures have platform specific DMA addressing limitations.
-> > > This will allow for hardware description code to provide the constrai=
-nts
-> > > in a generic manner, so as for arch code to properly setup it's memor=
-y
-> > > zones and DMA mask.
-> >=20
-> > I know this just spreads the arm code, but I still kinda hate it.
->=20
-> Rob's main concern was finding a way to pass the constraint from HW defin=
-ition
-> to arch without widening fdt's architecture specific function surface. I'=
-d say
-> it's fair to argue that having a generic mechanism makes sense as it'll n=
-ow
-> traverse multiple archs and subsystems.
->=20
-> I get adding globals like this is not very appealing, yet I went with it =
-as it
-> was the easier to integrate with arm's code. Any alternative suggestions?
->=20
-> > MAX_DMA_ADDRESS is such an oddly defined concepts.  We have the mm
-> > code that uses it to start allocating after the dma zones, but
-> > I think that would better be done using a function returning
-> > 1 << max(zone_dma_bits, 32) or so.  Then we have about a handful
-> > of drivers using it that all seem rather bogus, and one of which
-> > I think are usable on arm64.
->=20
-> Is it safe to assume DMA limitations will always be a power of 2? I ask a=
-s
-> RPi4
-> kinda isn't: ZONE_DMA is 0x3c000000 bytes big, I'm approximating the zone=
- mask
-> to 30 as [0x3c000000 0x3fffffff] isn't defined as memory so it's unlikely=
- that
-> we=C2=B4ll encounter buffers there. But I don't know how it could affect =
-mm
-> initialization code.
->=20
-> This also rules out 'zone_dma_bits' as a mechanism to pass ZONE_DMA's siz=
-e
-> from
-> HW definition code to arch's.
-
-Hi Christoph,
-I gave it a thought and think this whole MAX_DMA_ADDRESS topic falls out of=
- the
-scope of the series. I agree it's something that we should get rid of, but
-fixing it isn't going to affect the overall enhancement intended here.  I'd
-rather focus on how are we going to pass the DMA zone data into the arch co=
-de
-and fix MAX_DMA_ADDRESS on another series.
-
-Regards,
-Nicolas
-
-
---=-HuE7CYEmA0DlmwKJIinl
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl1mTOwACgkQlfZmHno8
-x/5rEQf/a0hgCNBuEJW0dF6JOgmq1B1AUgrpu1lR5mCYvRYKaWrIH0GEWk7/DMYN
-5P/0pfK8WcmvSuTsH3kAL9FVcqCF1fm+KHxDUfHg0WM4TbfF/SNx8nzM0thhMSGg
-vcgA6AP1aXP4wkqXKPhjga2uBewFfdD02TKqIvsSKEXAUge69kAkVjSAy/Sz8Rj9
-NUwJ6GbY5Clul7ZkO6eRe39K/bnmICJytZCvmxas+x3YQN5eiml9ooPhHoCa48l1
-tzjKhxg5VSCVPYdvIdauSRDsuHKcYzezXiaX/mX8Rz6h2/4bWbX9/Lt9Y5UZyikO
-2DdZK0hdYuTCw2X0qHF5x4sS1s9Tew==
-=HHcK
------END PGP SIGNATURE-----
-
---=-HuE7CYEmA0DlmwKJIinl--
-
-
-
---===============2812521241347977303==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Kees Cook
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---===============2812521241347977303==--
-
-
