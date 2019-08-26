@@ -2,83 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBF729D434
-	for <lists+linux-riscv@lfdr.de>; Mon, 26 Aug 2019 18:40:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E8439D65D
+	for <lists+linux-riscv@lfdr.de>; Mon, 26 Aug 2019 21:23:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bca+cmn1+AUqSD0OVjLUnAHtIQlb2mNc14JCMGGWgdc=; b=XBkq+72y4fif1b
-	9ci14uL6zi7zS+5kjkgqMT9Ma21Qy+W44awJTVn7p8vV8eOspMmscxT1JSIAyomrBmKSeZIpIIN1v
-	ddzMZPa4aYk3/4sW7O5yiqmgSHqGr4/YhXUQu/zKA6aCBgkQeSRHXgBcsNN9Iy8mizuMVnDl6Kzhi
-	hBLt5MPGEpA+l5ObCBUFMeRkRshecglob2LrwanuD276JVn72LqtuDFGQ4DAoTOxE8waPoPEOAPtQ
-	SbFrGrdSpKQdNZ500VNltuQ9BW1JS9mMwD+d6kbL3VRvC8RpI7Z1emJdEvgCGfZ2pN+2tw3ZCv2Wx
-	YPQnI+hNfSEIx1kQw1Pw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=yI8tqSoBlA2hwvg7eJN6i+T8jLX1uzEKDJ+JBRo5piY=; b=GKlWbVGwOCA8mgZGoIEymrJxF
+	O6eHWwWWKwDUayVIHqC+OnfheKk8Ox2GeLX/F7AhhchhsHCenKzjryfDRC0K1REq3b07oUaUxhbC8
+	5kMgfjdDa/ncNiRv8rdNTSOTI3EKGatyER3dElBDsBZVRrT1dAFd4smvjD9seoBITvreL11do4Mmd
+	6GxpOaCzZDFs8FYJ2JmUyVdXTfMs9bYNjmaJql6U+r1TV7rivNsjFs3oyFu/kMge31EMAsSHg9u2e
+	dnGwwS4JPFDJY3I7zf/Yuk46GMjvPXLUTESZSLKUFjDKCfSdgO4qLesL/68EOnPl7K9t3qBPEdwt5
+	WwKgUWqoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2I2q-0002NX-Ua; Mon, 26 Aug 2019 16:40:41 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1i2KZm-0007eW-Dh; Mon, 26 Aug 2019 19:22:50 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2I2g-0002Mj-DX
- for linux-riscv@lists.infradead.org; Mon, 26 Aug 2019 16:40:32 +0000
-Received: by mail-wm1-x341.google.com with SMTP id o4so173527wmh.2
- for <linux-riscv@lists.infradead.org>; Mon, 26 Aug 2019 09:40:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QjxgBXa3y+uuhZsdeO1qBTZUTIy7XmFfl96V9DIMo6Q=;
- b=fP2Xk61Pf9uROtag057QqLPki/+ga9LNABXUsoDIZwVgKzbaYY+Yv54/cDTBAKId+L
- Gsa9FVVOLgcFlieoK30m+kYMru8msmE8LoggM8vJq/vdFO5xSMSr2LvZhqfkrFHXjhov
- 6rD3Xh8wbBkjlyhtb6/yu5I7HY09bDnj1SpktDTI8oAOdA7J0NOLAlDbY2lLOwpdhVKk
- cgebex/jZ8OF4iLFyBI5qhK43EJK74aDyp2TI03EElLOgyt3ObsAka0s9GSEMRH+4nIE
- wzpWbuPNjYFtI1GG4jgryZIAosVXa3K6wI33LepQmdDRTSqGL6fvoKnf8pvI24SlblRD
- GsiQ==
+ id 1i2KZh-0007eD-HJ
+ for linux-riscv@lists.infradead.org; Mon, 26 Aug 2019 19:22:46 +0000
+Received: by mail-pf1-x430.google.com with SMTP id v12so12414352pfn.10
+ for <linux-riscv@lists.infradead.org>; Mon, 26 Aug 2019 12:22:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZadR3Ew3/6Ag7WzsoAKFdPu4Q+E7SIHTyrErLs78DNE=;
+ b=CH+f5ENvLHTVUR685CCPc8xKUQOKMwtzJwfwH1PWcP4Oup1bOQ26PFTdklt47V0uNV
+ sN1/8nSfwJTgZf9WJxbiSx9z7++U69ZrINsa+nN5zht1TJwD3KXr5XV3Kjiu5NA+iDmN
+ lSPO81QGes0MGATJrE+cUZqvqyY+u9by+QnkQUf5SbPF5+Tig+VBjG9RhH92Wd/jeQvm
+ p5YUjKAcyq/KjSZEptsl54EJtOP/J0gBkACdJQ/2rUW19/jv/+ESWq7UkkzcODGsvVI/
+ cNoFsWW6J7oAom6ZOJEx3VrIxmhf16SLAgTRsfM3pKtKHXv9qq1GEUcyrlKHxdLu+kJf
+ 4v8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QjxgBXa3y+uuhZsdeO1qBTZUTIy7XmFfl96V9DIMo6Q=;
- b=BCPP4iGiMb5wMCdfw8opmPhtBzByZCPpsIFOG3R2bo4D+wzRP5m3eQ/NAaIEGcbsZY
- 1QVhVGgGzc+Kjn1NgHr0yXmZrHJ48HU1OIcGJGdlqE7Rq9mYgFNQ6kRv4ikfx+alu2YP
- h7QxGf1Xuh6gKjCMAOzw32bK3ujB3wHZ5VJnXnBCx5EmQtAWgT17ZzxYH696ApxqurYF
- zkeIKTty/EvKDouhsf7Zoo0GYO3ctJNywNHr6oNH/o6558FCixo4Gzra3bzRRaRSO9Ov
- YPWUXB/t5NocKUWwhq7x4dpJkf1rBSzzSmfDs1Rtq7M1FasFUQ9KpQ1rdEWCuWsOS/mq
- uqKw==
-X-Gm-Message-State: APjAAAUCyx3rg7VF1y4J3GT5Jar2rzFwe5IYlunXFvnGZBUujlYMc47c
- VFvgMLWZCkcjJU0DX5iUQqkvZXKXCJSyTrtYt6M=
-X-Google-Smtp-Source: APXvYqyR0ybZtJiikv+kwAVgdY7AWb/vcdMGH7sI0c/nWNAyYF6Ch2IHDX6ee2DH+0Mm7f0lXuO3Rk/bCGgW2RweGT4=
-X-Received: by 2002:a1c:e487:: with SMTP id b129mr23317012wmh.93.1566837626850; 
- Mon, 26 Aug 2019 09:40:26 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
- <alpine.DEB.2.21.9999.1908231717550.25649@viisi.sifive.com>
- <20190826145756.GB4664@cisco>
-In-Reply-To: <20190826145756.GB4664@cisco>
-From: David Abdurachmanov <david.abdurachmanov@gmail.com>
-Date: Mon, 26 Aug 2019 09:39:50 -0700
-Message-ID: <CAEn-LTrtn01=fp6taBBG_QkfBtgiJyt6oUjZJOi6VN8OeXp6=g@mail.gmail.com>
-Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
-To: Tycho Andersen <tycho@tycho.ws>
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ZadR3Ew3/6Ag7WzsoAKFdPu4Q+E7SIHTyrErLs78DNE=;
+ b=qyBlo3oYjBHx/lmPC3wSNR7z41UvuhYZk4mR5SU+hPZWNRBwBe0MuRaFFElMGPUPv/
+ WN11ly8afV5SnlNbYI9MoXjYbdAS6xY0NLZhcq/QS2p6LwSsrFAYjbt79ZdVd/iMaT96
+ vMOkfY5A4tRL8p41LR25C1NYNq2qN1sqdYpIn06zJ8aDKnL/t9QP5f9SF6GmZQG4WKXf
+ isFZ9DKqO0OlABNU5jeaHVN9i4ZzKo9AW+06qku51BruetvoAUEmWVwGewyExBuMdNJC
+ nd9HoDdAaO7/W7BPGtiBoPhzR87ZEtHivOYEw/qF4kdEliyhp/s45kKgCTGN6pfqC6IP
+ CvtQ==
+X-Gm-Message-State: APjAAAU63BxZ9X4GUsn43Zx9SggJyd5y2VNtdnQcZ6xdcQtVdSkPdsg9
+ m40M5VxvPuucPLYzKB8BSAfJM1IWg/jbbQ==
+X-Google-Smtp-Source: APXvYqx1Zm4kZXF4d+rN+P9hZKc+VkT4a8xPYmUom5qh5nsWW4DLmpn+iMwBY6fWMar+yGu6p7AR/A==
+X-Received: by 2002:a17:90a:f995:: with SMTP id
+ cq21mr20167125pjb.27.1566847363740; 
+ Mon, 26 Aug 2019 12:22:43 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id 185sm12096400pfa.170.2019.08.26.12.22.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 Aug 2019 12:22:42 -0700 (PDT)
+Date: Mon, 26 Aug 2019 12:22:42 -0700 (PDT)
+X-Google-Original-Date: Mon, 26 Aug 2019 12:20:06 PDT (-0700)
+Subject: Re: RISC V Kernel Decompressor symbols
+In-Reply-To: <CAK1XJzWoaJyQkbXU-hvBLKsUMdgSj7woJo0oAEdN_HDDu4q50Q@mail.gmail.com>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: gsatish.ldd@gmail.com
+Message-ID: <mhng-bd3878fc-a8da-48ee-b77e-623f70946d22@palmer-si-x1c4>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190826_094030_635990_C55F507F 
-X-CRM114-Status: GOOD (  14.29  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190826_122245_605014_BFDC6AAD 
+X-CRM114-Status: GOOD (  10.98  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:430 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (david.abdurachmanov[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 URIBL_SBL_A Contains URL's A record listed in the Spamhaus SBL
- blocklist [URIs: fedoraproject.org]
- 0.6 URIBL_SBL Contains an URL's NS IP listed in the Spamhaus SBL
- blocklist [URIs: fedoraproject.org]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -97,59 +95,48 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Alan Kao <alankao@andestech.com>,
- Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
- Oleg Nesterov <oleg@redhat.com>, linux-kselftest@vger.kernel.org,
- linux-riscv@lists.infradead.org, Shuah Khan <shuah@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Yonghong Song <yhs@fb.com>,
- me@carlosedp.com, Albert Ou <aou@eecs.berkeley.edu>,
- Kees Cook <keescook@chromium.org>, Alexios Zavras <alexios.zavras@intel.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Allison Randal <allison@lohutok.net>, Will Drewry <wad@chromium.org>,
- David Abdurachmanov <david.abdurachmanov@sifive.com>, netdev@vger.kernel.org,
- Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
- Andy Lutomirski <luto@amacapital.net>, Vincent Chen <vincentc@andestech.com>,
- bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Atish Patra <Atish.Patra@wdc.com>, linux-riscv@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, anup@brainfault.org,
+ david.abdurachmanov@gmail.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Aug 26, 2019 at 7:57 AM Tycho Andersen <tycho@tycho.ws> wrote:
+On Fri, 16 Aug 2019 02:34:27 PDT (-0700), gsatish.ldd@gmail.com wrote:
+> Hi all
 >
-> Hi,
+> I am trying  to find out the following symbols in RISC V kernel code
+> 1. Kernel decompressor symbols in RISC V kernel, which are equivalent
+> to ZTEXTADDR, ZBSSADDR, ZRELADDR, INITRD_PHYS, INITRD_VIRT,
+> PARAMS_PHYS in ARM Arch.
+
+We don't have a self-decompressing image.
+
+> 2 .Kernel symbols in RISC V equivalent to PHYS_OFFSET, PAGE_OFFSET,
+> TASK_SIZE, TEXTADDR, DATAADDR, VMALLOC_START / VMALLOC_END,
+> VMALLOC_OFFSET in ARM arch.
+
+These should largely be the same, you can grep for them.
+
+> 3. Architecture specfic macros in RISC V equivalent to BOOT_MEM(param,
+> vio, io), BOOT_PARAMS,FIXUP(func), MAPIO(func), INITIRQ(func) in ARM
+> Arch.
+
+These are handled in more general ways: boot params are passed via /chosen in 
+the device tree, for example.
+
+> Can you suggest me where will find the same , if RISC V is using
+> different kind of symbols/params for the same usage, what are names of
+> the same & where they are located.
 >
-> On Fri, Aug 23, 2019 at 05:30:53PM -0700, Paul Walmsley wrote:
-> > On Thu, 22 Aug 2019, David Abdurachmanov wrote:
-> >
-> > > There is one failing kernel selftest: global.user_notification_signal
-> >
-> > Also - could you follow up with the author of this failing test to see if
-> > we can get some more clarity about what might be going wrong here?  It
-> > appears that the failing test was added in commit 6a21cc50f0c7f ("seccomp:
-> > add a return code to trap to userspace") by Tycho Andersen
-> > <tycho@tycho.ws>.
+> Thanks & Regards
+> Satish G
 >
-> Can you post an strace and a cat of /proc/$pid/stack for both tasks
-> where it gets stuck? I don't have any riscv hardware, and it "works
-> for me" on x86 and arm64 with 100 tries.
-
-I don't have the a build with SECCOMP for the board right now, so it
-will have to wait. I just finished a new kernel (almost rc6) for Fedora,
-but it will take time to assemble new repositories and a disk image.
-
-There is older disk image available (5.2.0-rc7 kernel with v2 SECCOMP)
-for QEMU or libvirt/QEMU:
-
-https://dl.fedoraproject.org/pub/alt/risc-v/disk-images/fedora/rawhide/20190703.n.0/Developer/
-https://fedoraproject.org/wiki/Architectures/RISC-V/Installing#Boot_with_libvirt
-
-(If you are interesting trying it locally.)
-
-IIRC I attempted to connected with strace, but it quickly returns and fails
-properly. Simply put strace unblocks whatever is stuck.
-
-david
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
