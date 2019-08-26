@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CFFF9D9F0
+	by mail.lfdr.de (Postfix) with ESMTPS id E23C19D9F2
 	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 01:33:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -10,69 +10,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=urXtUE/97GJnbHDyW8kl2LTuVN0J6Zmy05dD3mjyXsA=; b=WxUgpd+iBEPX3V
-	ItI8o/LAaXiQua4ORMXa6C4NUO6+Olb9+ML0yozu8Xu6jmMzOc1g9Eu5Ivcu5FEDH1bjShQeL8vSi
-	tpT0ZArliuQAdhzjbA31Jz5jMFpn2v/gCnTTrrwqYSICGMAUcmAa1BVfC2BWjLDe7tae7oebotiiC
-	Usn3wjqKj7W+iCzh0GV33dyWk8oZXZw8JTKLVEtogCQRAa5+mPqGjI3ADQy15GkWW7fhmPvp6LtJh
-	jCuQLT19bpU68lbe+NKqByWZ1UtG8CGSmcIijipxQWXu3UxTDHk3rJZ0VQxVj3sSfaX4Fq6kh9/Oz
-	3iI/x53mSS4b3pRmbW3g==;
+	List-Owner; bh=2o6WgosOkJ9bLA3x/LADdDn7aqqc9SeRlNSNpYfzdkI=; b=jWhHlc1kiYGT+4
+	kf4lCEicyUpGDYisCB1p0Rbm5Y/TqJ4huis7BV0ZOTjltB0UKjg0jKCwjf8vJSS7/dhfBacjNeadr
+	YNNXwnHdAMGvTv9ZVOZj/o+IkFPLaf0HU5jUm+iFrKA+rEts3rROsM/a/Qx/Adc1VAjYHvDLqhI6T
+	+1ptlG4rkBacoqH7Rt9WcPd9+sRsSwxTgDVP/LyBxHglCzSUYsxZj2DwGz6dGSy1xn3X3uv4McRPz
+	/3/+5BMLd58RztCRJvdEFmZSDJC9Cn+mxSgn0Yf2gjWOHcUjmxxpxua0aVfe3Y5kFCXZyU2bwVYQZ
+	6yP+pINKup4rgj7/qteg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2OUT-00043V-0N; Mon, 26 Aug 2019 23:33:37 +0000
+	id 1i2OUW-00045M-B2; Mon, 26 Aug 2019 23:33:40 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2OUO-00041k-Kb
- for linux-riscv@lists.infradead.org; Mon, 26 Aug 2019 23:33:34 +0000
+ id 1i2OUQ-00041k-5s
+ for linux-riscv@lists.infradead.org; Mon, 26 Aug 2019 23:33:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1566862413; x=1598398413;
+ t=1566862414; x=1598398414;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=HBuM9mRogJeuAhVBz/AwUtILAVrCxrWKJVjNr8ehU94=;
- b=HxIPkQTkWhogW8dwrQjwHD/apfH2srQSEi3evMU5UIzNBUBIGb9ppG7i
- NE2BPmYrpzvNbArbRwPtnJZkLIeM1Qzo5rfT9V3zi36h6WKBEa3mDUg2s
- w9iRTp+t7Oc/qvHbUS8QpY4Q4F3LukJXQdxzbjK06yy1VqYJBhOJpC6PI
- OCd94DarVspjXfdl9MtkiNz9yurORZgyyH/yl8t+T2pRPXdaD6Gwr/S05
- cY0MS66unJwoB62uvMn3gofEQpdAC00WNpmbzl8ZU8JFVjbmOKE/jHrzd
- cWFe/Nkzd4amBA7Nq7MfdcTiVNwLuyuHVkGLynJSc/wwCXs2oyDzsOqxO Q==;
-IronPort-SDR: zWC8P3kGZI3Tunh8+O+i1dcdEwE0kmB8GHbc8v3sVHYmRsuOjh4ZNRqPFv4kUYnJBsMB6aMzz/
- g/9QOumRlgFJ8HGNoV8OQxn51Gfm8Dl0CFrWGTKcLcPzhQerLTjDtgQ4Sfh+bRqSpzw/wVq0no
- tikC65IZePza1M5rOtoEBnTkN5c/Ouq2HtbuDkiSLK3fsF6JzVVcYZYyCdIxoTviSGfRjOqeHt
- nGPoEuslPZ6K5Sjfx/xf1LhL84868Zsewoki7lkgt64d297JLv3PREZKH/fS/X0qvwkFbMEcFt
- XuI=
-X-IronPort-AV: E=Sophos;i="5.64,435,1559491200"; d="scan'208";a="118308326"
+ bh=NOwAjvHbcc50rcpd47uuWkr60xMZSOcYkQr+KzmxZ80=;
+ b=ix2uBJ9Jlw9FfqOzF8ZjipvEcXI45KBQUQ7M1Wry0FDtM3MgDcFBan3b
+ dcUTPM3v5ED0uFQvRPBBdPBbpLLOf9l1g6tbnaaU3zKi1WHbkMFYBqhlH
+ Pe4AuJV3E5pckVsYXRP6cEc1Ytw7YkKPl9A/VEhJsq0v6pT8Ce0XGOnXw
+ f+M7zieXdnmYrMjr6kW2OsYDOqhUgPQNYM5U2W7NFVmdl5wLgORJ213Yi
+ XSJgxw1a7z2QeBSU7jvCYbrXU/2Wu85SxY0nAAtmhyAQ1jECsbr3ST4tF
+ Yc4jQaIS0fN87YPcrNY/x+BxzLYeeJ80GWubN4PPgi46XNv8cjRDPYv0e A==;
+IronPort-SDR: 06cMxEtPa2QYXAelldESRSJffPKK6/Vd5ErTZMP6PBPWjL/hr7cKXOvbu/eE/oIuCQCHs8c8NF
+ f4cUWGbjsbgLaiOKu43I4DiocKchYIXHIP/08y+mzVs6YS52EfSLDlLTsatTj3WAClPZEkmdAz
+ kX0eAJkAbi2ZYSPwWYtNo7SUNnqGbQYAM7m0jeMJ1deYkKBGVZfyMm6abCiZn4dcLO+c3PLgWk
+ JezAzEvGsfnzlK9JFWRRJXec5Goz3i+/nrLiYbQywlyfpJiv1IFU97ks0LtopKzfwBD5EjS6Yl
+ 01I=
+X-IronPort-AV: E=Sophos;i="5.64,435,1559491200"; d="scan'208";a="118308329"
 Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 27 Aug 2019 07:33:27 +0800
-IronPort-SDR: wRiW2J1r86x9Ib9aYtVCKKr/r6yq4pOd482FMBLp/JGD17B+8z6kD0SuuuOLvH4EyJf+b2X4G9
- b1FVj4RvOH7hagdk8/IfeSEnGqQymSynQSeS5aFVslItKrReNhlQVtd9KIRrQWaytiMI3zFa7K
- 5kHsZqnKtauZhV6FP3jaVe21HjSIQM148N5pAw0a4819Px5+vlrqG+zoQ2U94dTqzs4lY2rb9F
- +0cTQWMVRU3MdzTmd0DQxfr3Xuvd8EeRctodjecE1xE7bbtda2eUHteSF6YYDpJV1sunKnDf2+
- bIaYIVK1IvVndlS4LyekQFth
+ by ob1.hgst.iphmx.com with ESMTP; 27 Aug 2019 07:33:28 +0800
+IronPort-SDR: 2KEm6DpkSrfcUVY+5+5KYaBZU7Z5IMT7gxrnuVT1yBLu25GsqL3IR7fd2hOnBd6g/QPkqEbT2n
+ 48eO8M79tsyuYicsTrZh9GeWHdA2wFGR3k0ulK+w3d0yM7AzVgpIlVYyoySErwxnnHQgL1miEy
+ JjejQfa22qGmlXri3L2k+eVEGfKNtFJnwmHa6jHZCLoYGlCBGPEmBfvpZNaANRvhS7Tr1GaKAW
+ 5Pdmdir+J5hpAOs6ZwGqa6Z0UIcLgkbb8q1GocP8+Uk+eNlS5hZy9Ly2mM7qexBBTWol/oYnyI
+ YYnHU/5SuYmUPVQJLKyhCPro
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Aug 2019 16:30:39 -0700
-IronPort-SDR: VOG8eo+i8O55DIxvjUlBT6lQ8Lp1YRR4ZqyqgWU1pw0NJguuGPUzQGtMOg7MeA+i62MfrhxX1/
- p5Bl9KsmHhQwCOMg/X3LkHor8uE/9fZWr+A7bCcSfbAt6EAc4s74/MOxNYvi7+zaVab7XZ55hn
- s83Hro7DAa/yqk/sIOuw76v9PU6t3TMO5ePGJgY/xysGURyiH5/vcO4LC0R1MNRclvj1EmzNjm
- xXWuszoJLx3/oOdsNK2uH3VMMYaJDS8WnG05VQgcfJF7zfKWKIa+NzEd//Y+W4j5tTevCZ5ulZ
- 84s=
+IronPort-SDR: URb8pJMR4ETxv6cJze0dd43lyc6gWQ1YGQRs+0YiVLlUBxpzdCKr2LwKae90PTni5TRqxUTGWj
+ t64IroRNYC4XBYZ25n3+7ajzg5mogFRIPhu98SnXStyODOakhjf/LdyzgjPcjSiNzyew1N2ErJ
+ VyQDtBY9tMq75Q8RvvW3XlPzsbZdg4Ys30gxHzSyVEFukSB6gUhT/Dtaz+sGSkvpVL8EbzT740
+ 6x0kWk/UW5UGrarLDnnCU08k2zhv/Y6XK3XLlvL2ShkRllwDg+F02/lpd5X+EHRKIyklmYu8tK
+ umA=
 WDCIronportException: Internal
 Received: from jedi-01.sdcorp.global.sandisk.com (HELO
  jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 26 Aug 2019 16:33:27 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 26 Aug 2019 16:33:28 -0700
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 1/2] RISC-V: Mark existing SBI as legacy SBI.
-Date: Mon, 26 Aug 2019 16:32:55 -0700
-Message-Id: <20190826233256.32383-2-atish.patra@wdc.com>
+Subject: [RFC PATCH 2/2] RISC-V: Add basic support for SBI v0.2
+Date: Mon, 26 Aug 2019 16:32:56 -0700
+Message-Id: <20190826233256.32383-3-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190826233256.32383-1-atish.patra@wdc.com>
 References: <20190826233256.32383-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190826_163332_719769_CC8E6D8D 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20190826_163334_257547_BB8BDE72 
+X-CRM114-Status: GOOD (  15.71  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -111,139 +111,208 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-As per the new SBI specification, current SBI implementation is
-defined as legacy and will be removed/replaced in future.
-
-Rename existing implementation to reflect that. This patch is just
-a preparatory patch for SBI v0.2 and doesn't introduce any functional
-changes.
+The SBI v0.2 introduces a base extension which is backward compatible
+with v0.1. Implement all helper functions and minimum required SBI
+calls from v0.2 for now. All other base extension function will be
+added later as per need.
 
 Signed-off-by: Atish Patra <atish.patra@wdc.com>
 ---
- arch/riscv/include/asm/sbi.h | 61 +++++++++++++++++++-----------------
- 1 file changed, 33 insertions(+), 28 deletions(-)
+ arch/riscv/include/asm/sbi.h | 68 +++++++++++++++++++++++++++++-------
+ arch/riscv/kernel/Makefile   |  1 +
+ arch/riscv/kernel/sbi.c      | 50 ++++++++++++++++++++++++++
+ arch/riscv/kernel/setup.c    |  2 ++
+ 4 files changed, 108 insertions(+), 13 deletions(-)
+ create mode 100644 arch/riscv/kernel/sbi.c
 
 diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-index 21134b3ef404..7f5ecaaaa0d7 100644
+index 7f5ecaaaa0d7..4a4476956693 100644
 --- a/arch/riscv/include/asm/sbi.h
 +++ b/arch/riscv/include/asm/sbi.h
-@@ -8,17 +8,18 @@
+@@ -8,7 +8,6 @@
  
  #include <linux/types.h>
  
--#define SBI_SET_TIMER 0
--#define SBI_CONSOLE_PUTCHAR 1
--#define SBI_CONSOLE_GETCHAR 2
--#define SBI_CLEAR_IPI 3
--#define SBI_SEND_IPI 4
--#define SBI_REMOTE_FENCE_I 5
--#define SBI_REMOTE_SFENCE_VMA 6
--#define SBI_REMOTE_SFENCE_VMA_ASID 7
--#define SBI_SHUTDOWN 8
 -
--#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({		\
+ #define SBI_EXT_LEGACY_SET_TIMER 0x0
+ #define SBI_EXT_LEGACY_CONSOLE_PUTCHAR 0x1
+ #define SBI_EXT_LEGACY_CONSOLE_GETCHAR 0x2
+@@ -19,28 +18,61 @@
+ #define SBI_EXT_LEGACY_REMOTE_SFENCE_VMA_ASID 0x7
+ #define SBI_EXT_LEGACY_SHUTDOWN 0x8
+ 
+-#define SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3) ({             \
++#define SBI_EXT_BASE 0x10
 +
-+#define SBI_EXT_LEGACY_SET_TIMER 0x0
-+#define SBI_EXT_LEGACY_CONSOLE_PUTCHAR 0x1
-+#define SBI_EXT_LEGACY_CONSOLE_GETCHAR 0x2
-+#define SBI_EXT_LEGACY_CLEAR_IPI 0x3
-+#define SBI_EXT_LEGACY_SEND_IPI 0x4
-+#define SBI_EXT_LEGACY_REMOTE_FENCE_I 0x5
-+#define SBI_EXT_LEGACY_REMOTE_SFENCE_VMA 0x6
-+#define SBI_EXT_LEGACY_REMOTE_SFENCE_VMA_ASID 0x7
-+#define SBI_EXT_LEGACY_SHUTDOWN 0x8
++enum sbi_ext_base_fid {
++	SBI_EXT_BASE_GET_SPEC_VERSION = 0,
++	SBI_EXT_BASE_GET_IMP_ID,
++	SBI_EXT_BASE_GET_IMP_VERSION,
++	SBI_EXT_BASE_PROBE_EXT,
++	SBI_EXT_BASE_GET_MVENDORID,
++	SBI_EXT_BASE_GET_MARCHID,
++	SBI_EXT_BASE_GET_MIMPID,
++};
 +
-+#define SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3) ({             \
++#define SBI_CALL_LEGACY(ext, fid, arg0, arg1, arg2, arg3) ({	\
  	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);	\
  	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);	\
  	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);	\
-@@ -32,58 +33,61 @@
+ 	register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);	\
+-	register uintptr_t a7 asm ("a7") = (uintptr_t)(which);	\
++	register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);	\
++	register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);	\
+ 	asm volatile ("ecall"					\
+-		      : "+r" (a0)				\
+-		      : "r" (a1), "r" (a2), "r" (a3), "r" (a7)	\
++		      : "+r" (a0), "+r" (a1)			\
++		      : "r" (a2), "r" (a3), "r" (a6), "r" (a7) \
+ 		      : "memory");				\
+ 	a0;							\
  })
  
  /* Lazy implementations until SBI is finalized */
--#define SBI_CALL_0(which) SBI_CALL(which, 0, 0, 0, 0)
--#define SBI_CALL_1(which, arg0) SBI_CALL(which, arg0, 0, 0, 0)
--#define SBI_CALL_2(which, arg0, arg1) SBI_CALL(which, arg0, arg1, 0, 0)
--#define SBI_CALL_3(which, arg0, arg1, arg2) \
--		SBI_CALL(which, arg0, arg1, arg2, 0)
--#define SBI_CALL_4(which, arg0, arg1, arg2, arg3) \
--		SBI_CALL(which, arg0, arg1, arg2, arg3)
-+#define SBI_CALL_LEGACY_0(which) SBI_CALL_LEGACY(which, 0, 0, 0, 0)
-+#define SBI_CALL_LEGACY_1(which, arg0) SBI_CALL_LEGACY(which, arg0, 0, 0, 0)
-+#define SBI_CALL_LEGACY_2(which, arg0, arg1) \
-+		SBI_CALL_LEGACY(which, arg0, arg1, 0, 0)
-+#define SBI_CALL_LEGACY_3(which, arg0, arg1, arg2) \
-+		SBI_CALL_LEGACY(which, arg0, arg1, arg2, 0)
-+#define SBI_CALL_LEGACY_4(which, arg0, arg1, arg2, arg3) \
-+		SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3)
+-#define SBI_CALL_LEGACY_0(which) SBI_CALL_LEGACY(which, 0, 0, 0, 0)
+-#define SBI_CALL_LEGACY_1(which, arg0) SBI_CALL_LEGACY(which, arg0, 0, 0, 0)
+-#define SBI_CALL_LEGACY_2(which, arg0, arg1) \
+-		SBI_CALL_LEGACY(which, arg0, arg1, 0, 0)
+-#define SBI_CALL_LEGACY_3(which, arg0, arg1, arg2) \
+-		SBI_CALL_LEGACY(which, arg0, arg1, arg2, 0)
+-#define SBI_CALL_LEGACY_4(which, arg0, arg1, arg2, arg3) \
+-		SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3)
++#define SBI_CALL_LEGACY_0(ext) SBI_CALL_LEGACY(ext, 0, 0, 0, 0, 0)
++#define SBI_CALL_LEGACY_1(ext, arg0) SBI_CALL_LEGACY(ext, 0, arg0, 0, 0, 0)
++#define SBI_CALL_LEGACY_2(ext, arg0, arg1) \
++		SBI_CALL_LEGACY(ext, 0, arg0, arg1, 0, 0)
++#define SBI_CALL_LEGACY_3(ext, arg0, arg1, arg2) \
++		SBI_CALL_LEGACY(ext, 0, arg0, arg1, arg2, 0)
++#define SBI_CALL_LEGACY_4(ext, arg0, arg1, arg2, arg3) \
++		SBI_CALL_LEGACY(ext, 0, arg0, arg1, arg2, arg3)
++
++extern unsigned long sbi_firmware_version;
++struct sbiret {
++	long error;
++	long value;
++};
++
++void riscv_sbi_init(void);
++struct sbiret riscv_sbi_ecall(int ext, int fid, int arg0, int arg1,
++			       int arg2, int arg3);
++
++#define SBI_CALL_0(ext, fid) riscv_sbi_ecall(ext, fid, 0, 0, 0, 0)
++#define SBI_CALL_1(ext, fid, arg0) riscv_sbi_ecall(ext, fid, arg0, 0, 0, 0)
++#define SBI_CALL_2(ext, fid, arg0, arg1) \
++		riscv_sbi_ecall(ext, fid, arg0, arg1, 0, 0)
++#define SBI_CALL_3(ext, fid, arg0, arg1, arg2) \
++		riscv_sbi_ecall(ext, fid, arg0, arg1, arg2, 0)
++#define SBI_CALL_4(ext, fid, arg0, arg1, arg2, arg3) \
++		riscv_sbi_ecall(ext, fid, arg0, arg1, arg2, arg3)
++
  
  static inline void sbi_console_putchar(int ch)
  {
--	SBI_CALL_1(SBI_CONSOLE_PUTCHAR, ch);
-+	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_CONSOLE_PUTCHAR, ch);
+@@ -99,4 +131,14 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+ 			  start, size, asid);
  }
  
- static inline int sbi_console_getchar(void)
- {
--	return SBI_CALL_0(SBI_CONSOLE_GETCHAR);
-+	return SBI_CALL_LEGACY_0(SBI_EXT_LEGACY_CONSOLE_GETCHAR);
- }
- 
- static inline void sbi_set_timer(uint64_t stime_value)
- {
- #if __riscv_xlen == 32
--	SBI_CALL_2(SBI_SET_TIMER, stime_value, stime_value >> 32);
-+	SBI_CALL_LEGACY_2(SBI_EXT_LEGACY_SET_TIMER, stime_value,
-+			  stime_value >> 32);
- #else
--	SBI_CALL_1(SBI_SET_TIMER, stime_value);
-+	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_SET_TIMER, stime_value);
++static inline unsigned long riscv_sbi_major_version(void)
++{
++	return (sbi_firmware_version >> 24) & 0x7f;
++}
++
++static inline unsigned long riscv_sbi_minor_version(void)
++{
++	return sbi_firmware_version & 0xffffff;
++}
++
  #endif
- }
+diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+index 2420d37d96de..faf862d26924 100644
+--- a/arch/riscv/kernel/Makefile
++++ b/arch/riscv/kernel/Makefile
+@@ -17,6 +17,7 @@ obj-y	+= irq.o
+ obj-y	+= process.o
+ obj-y	+= ptrace.o
+ obj-y	+= reset.o
++obj-y	+= sbi.o
+ obj-y	+= setup.o
+ obj-y	+= signal.o
+ obj-y	+= syscall_table.o
+diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
+new file mode 100644
+index 000000000000..457b8cc0e9d9
+--- /dev/null
++++ b/arch/riscv/kernel/sbi.c
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * SBI initialilization and base extension implementation.
++ *
++ * Copyright (c) 2019 Western Digital Corporation or its affiliates.
++ */
++
++#include <asm/sbi.h>
++#include <linux/sched.h>
++
++unsigned long sbi_firmware_version;
++
++struct sbiret riscv_sbi_ecall(int ext, int fid, int arg0, int arg1,
++			     int arg2, int arg3)
++{
++	struct sbiret ret;
++
++	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);
++	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);
++	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);
++	register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);
++	register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);
++	register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);
++	asm volatile ("ecall"
++		      : "+r" (a0), "+r" (a1)
++		      : "r" (a2), "r" (a3), "r" (a6), "r" (a7)
++		      : "memory");
++	ret.error = a0;
++	ret.value = a1;
++
++	return ret;
++}
++
++static struct sbiret sbi_get_spec_version(void)
++{
++	return SBI_CALL_0(SBI_EXT_BASE, SBI_EXT_BASE_GET_SPEC_VERSION);
++}
++
++void riscv_sbi_init(void)
++{
++	struct sbiret ret;
++
++	/* legacy SBI version*/
++	sbi_firmware_version = 0x1;
++	ret = sbi_get_spec_version();
++	if (!ret.error)
++		sbi_firmware_version = ret.value;
++	pr_info("SBI version implemented in firmware [%lu:%lu]\n",
++		riscv_sbi_major_version(), riscv_sbi_minor_version());
++}
+diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+index a990a6cb184f..4c324fd398c8 100644
+--- a/arch/riscv/kernel/setup.c
++++ b/arch/riscv/kernel/setup.c
+@@ -21,6 +21,7 @@
+ #include <asm/sections.h>
+ #include <asm/pgtable.h>
+ #include <asm/smp.h>
++#include <asm/sbi.h>
+ #include <asm/tlbflush.h>
+ #include <asm/thread_info.h>
  
- static inline void sbi_shutdown(void)
- {
--	SBI_CALL_0(SBI_SHUTDOWN);
-+	SBI_CALL_LEGACY_0(SBI_EXT_LEGACY_SHUTDOWN);
- }
+@@ -70,6 +71,7 @@ void __init setup_arch(char **cmdline_p)
+ 	swiotlb_init(1);
+ #endif
  
- static inline void sbi_clear_ipi(void)
- {
--	SBI_CALL_0(SBI_CLEAR_IPI);
-+	SBI_CALL_LEGACY_0(SBI_EXT_LEGACY_CLEAR_IPI);
- }
- 
- static inline void sbi_send_ipi(const unsigned long *hart_mask)
- {
--	SBI_CALL_1(SBI_SEND_IPI, hart_mask);
-+	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_SEND_IPI, hart_mask);
- }
- 
- static inline void sbi_remote_fence_i(const unsigned long *hart_mask)
- {
--	SBI_CALL_1(SBI_REMOTE_FENCE_I, hart_mask);
-+	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_REMOTE_FENCE_I, hart_mask);
- }
- 
- static inline void sbi_remote_sfence_vma(const unsigned long *hart_mask,
- 					 unsigned long start,
- 					 unsigned long size)
- {
--	SBI_CALL_3(SBI_REMOTE_SFENCE_VMA, hart_mask, start, size);
-+	SBI_CALL_LEGACY_3(SBI_EXT_LEGACY_REMOTE_SFENCE_VMA, hart_mask,
-+			  start, size);
- }
- 
- static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
-@@ -91,7 +95,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
- 					      unsigned long size,
- 					      unsigned long asid)
- {
--	SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
-+	SBI_CALL_LEGACY_4(SBI_EXT_LEGACY_REMOTE_SFENCE_VMA_ASID, hart_mask,
-+			  start, size, asid);
- }
- 
++	riscv_sbi_init();
+ #ifdef CONFIG_SMP
+ 	setup_smp();
  #endif
 -- 
 2.21.0
