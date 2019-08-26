@@ -2,56 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAFFC9D966
-	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 00:45:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DFEC19D9F1
+	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 01:33:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xraRBMiuVB02ZpRhhQr03VMCUhipsDwuKkB5khO8h3E=; b=j7mSMz6rQ2xGLD
-	Ltbn1CYWHz30nyDJp0m9bbyjsefCxQdDCi/D3hT8fuU16kb/WTdOdT/WaW7XoRLSDfqHwwoqAMzIP
-	f+UJD/GG9at64lNjLCoLylipyAt4v27LQG2BI4zX1NoYoVoU1PYyLdbHSWTvZ/eqHTyvjXtj9Jqhk
-	Ea1juLvprpq4XOsNe8kFzjnHTOgtM4NUrTPReFheQmaZFTCbz/oVdDtSK0eVqbNn/GRUA0igok716
-	euy3X7m7VoTao7CyLQSAGhJdgMSuGu/wAeIsxKa0q5+8AKruxCgapTzUyoGUCoKTstKBPs77SxdId
-	IPxhLUsnu3hlUijWaKjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/ky2xn6JlTJt90VGd2+ovxZQjIa124Gb8LxJi9fcma0=; b=OYba+TYBaxnu2Q
+	6LVjGxHcFRTNw7M9nwgTMZ8MJU95VssdXqraQ6ZdLnHP+K+BRLWG0yosn2csu+QauD/1WkEoQCYyt
+	7T6zSwVlIUqiL7IUYcwo0dfixGP/YsfI3aIsEGZHQBtnYvi1BFJ8zMvrxS5kCFzuT5gEGOGI60mf/
+	n54FkynYTd4+n9RaJSJYlGOrJi2aBf2B4OrWMr3midh/qUuhwuYyArZ/FlCBgX6VGlrl3bg4feyCv
+	YJzR/MTMJl9VsMru2regEIVScFnxHiTED+J1hpH23J2JBx/fWuikC8GNWbzk9mjmS4/bjjPRwOp2n
+	bLavADWEG0WJJ0d0kBBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2NjX-00061j-6H; Mon, 26 Aug 2019 22:45:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1i2OUY-000478-Pb; Mon, 26 Aug 2019 23:33:42 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2NjE-0005jD-RH; Mon, 26 Aug 2019 22:44:50 +0000
-Received: from gandalf.local.home (cpe-66-24-58-225.stny.res.rr.com
- [66.24.58.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 186C020644;
- Mon, 26 Aug 2019 22:44:46 +0000 (UTC)
-Date: Mon, 26 Aug 2019 18:44:44 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Changbin Du <changbin.du@gmail.com>
-Subject: Re: [PATCH 01/11] ftrace: move recordmcount tools to scripts/ftrace
-Message-ID: <20190826184444.09334ae9@gandalf.local.home>
-In-Reply-To: <20190825132330.5015-2-changbin.du@gmail.com>
-References: <20190825132330.5015-1-changbin.du@gmail.com>
- <20190825132330.5015-2-changbin.du@gmail.com>
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1i2OUQ-00042W-AC
+ for linux-riscv@lists.infradead.org; Mon, 26 Aug 2019 23:33:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1566862414; x=1598398414;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=c7HyBE9MxmHzkUFyuO44BKPtCDc7GbdgX0jFaQ0/3tk=;
+ b=BF7FLXm8wLkVIGGaGhVfhNpjNj4v15ImSykU60cOGnHZKzoe30Ofqpin
+ wNuheDgJD9DR9kWLyoqFx0P781SNr94rmnUNFr4b5ZWOs0H4ARF6AVruK
+ F6YonAnq84bnhuBSoKvF9jdPF/aXps9IaADVO9DgSjXc7Jb0yMKsHMo2n
+ hKue0HmM9X2mC5ybpbmqPza+0hFA73xhy3d6aFSmfmYj8MnMzAkK0vWPA
+ RzJnrx2igSAcamZrpRxzW6EQxrccQHqgYYgPNj9sWcJCzfJCpyaijrjg5
+ Xy1LotQ/AULfwHeP9uWQ4I0rU6yRKM8SbjKyME0ujmyjOfrGRCJKvO5mj A==;
+IronPort-SDR: EEwTmwlVZT+8v8vfUq+sAZBjleSWg4TW/HA3iItDzIxGe2nKN4BBOPUf1peEM4mDMHQ+kglgw6
+ BxiV4MCONbh5rDXz/KmXj/M+usipzbA3y+1hTEMdIpS9kJe++BZpsrwavCDWhIdDqzLmFzpwY7
+ 4QkR5XENLLBH8S6nBooRDMP4nn1L4dHC5ary3QUlo7wE7kh18bwMTPDogDnqfb1xO9FUxyn8lt
+ raiMvAgVBxhQx8ZqK7hjMQK0wftqxG5YcWWeJWN5EqXGI9JQKapcJU5RjY3LP/xuR7THfl7iIl
+ lwc=
+X-IronPort-AV: E=Sophos;i="5.64,435,1559491200"; d="scan'208";a="118308324"
+Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 27 Aug 2019 07:33:27 +0800
+IronPort-SDR: uVHwQtWM+Nv+JPOM7/PsC5iIdb1vBqpFq37BWGWlW1muoE4ZDWJ3/IdOZIjtF1hjehn99i6lcO
+ O6SAOf3yV8Wvp9KxCNxg50SVd6gAk52C4QOmtAzsqMKUaT0mEgfg1jwdfhfArOjX+uMy8wmRpM
+ YmfItZ8FbHFNUbQhdQCZ7btWqbs8Y6c9jaoEO2/Kgq0Gem3BgiXFfns1hFwewkHCn2DCnjgqmH
+ ZFIo/AaFhmLXqEsWmpKRFyhrDFY0V5AR24zjEGB15qusrgO1H5fgwUG7xvZ2QDBWSetbt1jQSj
+ uOoYiJ5xl6aTPMFC+Ai/jvg1
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Aug 2019 16:30:39 -0700
+IronPort-SDR: 9Zd5jC5jSoaARYwrFGDSti3pbB6lV95YOCcz73lSwbo+WPdag1frpWP9ueLJKzk5qW84IRcSIg
+ gqU0EwZtUo6rBWwZY4mBlFoz54S+JaxYhL6sn2qZS6QhKTGClyGt7aD6oIfJBA8957JeJOl1Ie
+ V205cfZVDjfU2n4BhwdLOpNTeK44dXkO+whV6x/gR23XDg+ZgaA8Ie1ZPay3IEvj0sW7iiObOf
+ g8vgyCN/8zcUz/VVPoP3ubRJPV0bIjatVXe5qrz6qC9NsZANvj2kau9OGfKxN7xQiSH5GRk7Fl
+ eRw=
+WDCIronportException: Internal
+Received: from jedi-01.sdcorp.global.sandisk.com (HELO
+ jedi-01.int.fusionio.com) ([10.11.143.218])
+ by uls-op-cesaip01.wdc.com with ESMTP; 26 Aug 2019 16:33:27 -0700
+From: Atish Patra <atish.patra@wdc.com>
+To: linux-kernel@vger.kernel.org
+Subject: [RFC PATCH 0/2] Add support for SBI version to 0.2 
+Date: Mon, 26 Aug 2019 16:32:54 -0700
+Message-Id: <20190826233256.32383-1-atish.patra@wdc.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190826_154448_929036_43A127E2 
-X-CRM114-Status: GOOD (  13.66  )
-X-Spam-Score: -4.8 (----)
+X-CRM114-CacheID: sfid-20190826_163334_385948_6C6A44F2 
+X-CRM114-Status: GOOD (  10.47  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.8 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,147 +98,40 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- linux-parisc@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-sh@vger.kernel.org, linux-s390@vger.kernel.org,
- "John F . Reiser" <jreiser@BitWagon.com>, x86@kernel.org,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
- Ingo Molnar <mingo@redhat.com>, Jessica Yu <jeyu@kernel.org>,
- sparclinux@vger.kernel.org, linux-kbuild@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>, linuxppc-dev@lists.ozlabs.org,
- linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matt Helsley <mhelsley@vmware.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Alan Kao <alankao@andestech.com>,
+ Alexios Zavras <alexios.zavras@intel.com>, Anup Patel <anup@brainfault.org>,
+ Palmer Dabbelt <palmer@sifive.com>, Mike Rapoport <rppt@linux.ibm.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Atish Patra <atish.patra@wdc.com>,
+ Gary Guo <gary@garyguo.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, 25 Aug 2019 21:23:20 +0800
-Changbin Du <changbin.du@gmail.com> wrote:
+This patch series aims to add support for SBI specification version
+v0.2. It doesn't break compatibility with any v0.1 implementation.
+Internally, all the v0.1 calls are just renamed to legacy to be in
+sync with specification [1].
 
-> Move ftrace tools to its own directory. We will add another tool later.
-> 
-> Cc: John F. Reiser <jreiser@BitWagon.com>
-> Signed-off-by: Changbin Du <changbin.du@gmail.com>
-> ---
->  scripts/.gitignore                   |  1 -
->  scripts/Makefile                     |  2 +-
->  scripts/Makefile.build               | 10 +++++-----
->  scripts/ftrace/.gitignore            |  4 ++++
->  scripts/ftrace/Makefile              |  4 ++++
->  scripts/{ => ftrace}/recordmcount.c  |  0
->  scripts/{ => ftrace}/recordmcount.h  |  0
->  scripts/{ => ftrace}/recordmcount.pl |  0
->  8 files changed, 14 insertions(+), 7 deletions(-)
->  create mode 100644 scripts/ftrace/.gitignore
->  create mode 100644 scripts/ftrace/Makefile
->  rename scripts/{ => ftrace}/recordmcount.c (100%)
->  rename scripts/{ => ftrace}/recordmcount.h (100%)
->  rename scripts/{ => ftrace}/recordmcount.pl (100%)
->  mode change 100755 => 100644
+The patches for v0.2 support in OpenSBI are available at
+http://lists.infradead.org/pipermail/opensbi/2019-August/000422.html
 
-Note, we are in the process of merging recordmcount with objtool. It
-would be better to continue from that work.
+[1] https://github.com/riscv/riscv-sbi-doc/blob/master/riscv-sbi.adoc
 
- http://lkml.kernel.org/r/2767f55f4a5fbf30ba0635aed7a9c5ee92ac07dd.1563992889.git.mhelsley@vmware.com
+Atish Patra (2):
+RISC-V: Mark existing SBI as legacy SBI.
+RISC-V: Add basic support for SBI v0.2
 
--- Steve
+arch/riscv/include/asm/sbi.h | 109 +++++++++++++++++++++++++----------
+arch/riscv/kernel/Makefile   |   1 +
+arch/riscv/kernel/sbi.c      |  50 ++++++++++++++++
+arch/riscv/kernel/setup.c    |   2 +
+4 files changed, 131 insertions(+), 31 deletions(-)
+create mode 100644 arch/riscv/kernel/sbi.c
 
-> 
-> diff --git a/scripts/.gitignore b/scripts/.gitignore
-> index 17f8cef88fa8..1b5b5d595d80 100644
-> --- a/scripts/.gitignore
-> +++ b/scripts/.gitignore
-> @@ -6,7 +6,6 @@ conmakehash
->  kallsyms
->  pnmtologo
->  unifdef
-> -recordmcount
->  sortextable
->  asn1_compiler
->  extract-cert
-> diff --git a/scripts/Makefile b/scripts/Makefile
-> index 16bcb8087899..d5992def49a8 100644
-> --- a/scripts/Makefile
-> +++ b/scripts/Makefile
-> @@ -14,7 +14,6 @@ hostprogs-$(CONFIG_BUILD_BIN2C)  += bin2c
->  hostprogs-$(CONFIG_KALLSYMS)     += kallsyms
->  hostprogs-$(CONFIG_LOGO)         += pnmtologo
->  hostprogs-$(CONFIG_VT)           += conmakehash
-> -hostprogs-$(BUILD_C_RECORDMCOUNT) += recordmcount
->  hostprogs-$(CONFIG_BUILDTIME_EXTABLE_SORT) += sortextable
->  hostprogs-$(CONFIG_ASN1)	 += asn1_compiler
->  hostprogs-$(CONFIG_MODULE_SIG)	 += sign-file
-> @@ -34,6 +33,7 @@ hostprogs-y += unifdef
->  subdir-$(CONFIG_GCC_PLUGINS) += gcc-plugins
->  subdir-$(CONFIG_MODVERSIONS) += genksyms
->  subdir-$(CONFIG_SECURITY_SELINUX) += selinux
-> +subdir-$(CONFIG_FTRACE) += ftrace
->  
->  # Let clean descend into subdirs
->  subdir-	+= basic dtc gdb kconfig mod package
-> diff --git a/scripts/Makefile.build b/scripts/Makefile.build
-> index 2f66ed388d1c..67558983c518 100644
-> --- a/scripts/Makefile.build
-> +++ b/scripts/Makefile.build
-> @@ -188,18 +188,18 @@ endif
->  # files, including recordmcount.
->  sub_cmd_record_mcount =					\
->  	if [ $(@) != "scripts/mod/empty.o" ]; then	\
-> -		$(objtree)/scripts/recordmcount $(RECORDMCOUNT_FLAGS) "$(@)";	\
-> +		$(objtree)/scripts/ftrace/recordmcount $(RECORDMCOUNT_FLAGS) "$(@)"; \
->  	fi;
-> -recordmcount_source := $(srctree)/scripts/recordmcount.c \
-> -		    $(srctree)/scripts/recordmcount.h
-> +recordmcount_source := $(srctree)/scripts/ftrace/recordmcount.c \
-> +		       $(srctree)/scripts/ftrace/recordmcount.h
->  else
-> -sub_cmd_record_mcount = perl $(srctree)/scripts/recordmcount.pl "$(ARCH)" \
-> +sub_cmd_record_mcount = perl $(srctree)/scripts/ftrace/recordmcount.pl "$(ARCH)" \
->  	"$(if $(CONFIG_CPU_BIG_ENDIAN),big,little)" \
->  	"$(if $(CONFIG_64BIT),64,32)" \
->  	"$(OBJDUMP)" "$(OBJCOPY)" "$(CC) $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS)" \
->  	"$(LD) $(KBUILD_LDFLAGS)" "$(NM)" "$(RM)" "$(MV)" \
->  	"$(if $(part-of-module),1,0)" "$(@)";
-> -recordmcount_source := $(srctree)/scripts/recordmcount.pl
-> +recordmcount_source := $(srctree)/scripts/ftrace/recordmcount.pl
->  endif # BUILD_C_RECORDMCOUNT
->  cmd_record_mcount = $(if $(findstring $(strip $(CC_FLAGS_FTRACE)),$(_c_flags)),	\
->  	$(sub_cmd_record_mcount))
-> diff --git a/scripts/ftrace/.gitignore b/scripts/ftrace/.gitignore
-> new file mode 100644
-> index 000000000000..54d582c8faad
-> --- /dev/null
-> +++ b/scripts/ftrace/.gitignore
-> @@ -0,0 +1,4 @@
-> +#
-> +# Generated files
-> +#
-> +recordmcount
-> diff --git a/scripts/ftrace/Makefile b/scripts/ftrace/Makefile
-> new file mode 100644
-> index 000000000000..6797e51473e5
-> --- /dev/null
-> +++ b/scripts/ftrace/Makefile
-> @@ -0,0 +1,4 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +
-> +hostprogs-$(BUILD_C_RECORDMCOUNT) += recordmcount
-> +always         := $(hostprogs-y)
-> diff --git a/scripts/recordmcount.c b/scripts/ftrace/recordmcount.c
-> similarity index 100%
-> rename from scripts/recordmcount.c
-> rename to scripts/ftrace/recordmcount.c
-> diff --git a/scripts/recordmcount.h b/scripts/ftrace/recordmcount.h
-> similarity index 100%
-> rename from scripts/recordmcount.h
-> rename to scripts/ftrace/recordmcount.h
-> diff --git a/scripts/recordmcount.pl b/scripts/ftrace/recordmcount.pl
-> old mode 100755
-> new mode 100644
-> similarity index 100%
-> rename from scripts/recordmcount.pl
-> rename to scripts/ftrace/recordmcount.pl
+--
+2.21.0
 
 
 _______________________________________________
