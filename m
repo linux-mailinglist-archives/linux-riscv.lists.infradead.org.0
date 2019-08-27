@@ -2,54 +2,94 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18C779DE61
-	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 09:06:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BF129DF2D
+	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 09:52:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JZ8XcYb1xB62iBpQq49AYB2+L8HDCE4g7rAOQCBKRN0=; b=fZ7kIs64Drcs5YvBLn89wyJkI
-	ZSyQc9QFoBFJQOdMT3IZoNTz3MBB7K9lPnKfEEeHWGdtBC6whXvWnKYs6r7azZzqRr+Zhmgz8vust
-	yxFQeBoneVpPE7beFC84veddNurw6JO59hISDhazRNoMeFWRDzXZhMOfr+Jeg13yL0BBZ9Cb45139
-	vWx5dctrF30B1pgxNmHY5JjyHiq3ZelNeiUMFTEQRAMXWX/6lcT/hlvRUryoXpkur7fDyYGgoVjDx
-	euUZ7HNJvhQyBkSupTndJ7zNyBugVzpcYFSvYrPdlN1PvbLg8bkydQD1XVbTjVXmCwNHtT9jD+RSU
-	tUOBvOfcQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:In-Reply-To:MIME-Version:
+	References:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=t/cZurOkHiGkWDXSV0AQ+2MLkxnijR3J7DtBWKnLqWE=; b=ddmVu6K9nDb9kY
+	CR+aMrkxfwpheMII/Bf37SUO3pWdtMHRB3haZvFCyrkHaiwaDVl7VH8jmiakQqFmfTWpTTiB+MSCn
+	bUAvvI7We+spMWd1SOwzGSbhL9Pl4OSUeIl4J2UHUvxvXCf0ftDsyn9i3hOvVWaIhI/vmATeoLRs7
+	Y7YCIuOrhLrBV03szadqK4Tx3Xw2ejQhv29qKN4TMZ1dsqsmtmPd5Ox6ArhpJRdkfM/4pw17aW3ob
+	RdCFwC4WdMPyyeOP6M86ibZjzOebkzNb7ebCyJZXSxShjExz6MHWoceLs/ifd2ehlckXy5YNs+0V/
+	aqskc0PmHvkBSrNKG5iQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2VYe-000863-KK; Tue, 27 Aug 2019 07:06:24 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1i2WGg-0002BE-KV; Tue, 27 Aug 2019 07:51:54 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2VWC-0006aX-Ka; Tue, 27 Aug 2019 07:03:55 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id F3D93B0DA;
- Tue, 27 Aug 2019 07:03:45 +0000 (UTC)
-Date: Tue, 27 Aug 2019 09:03:41 +0200
-From: Petr Tesarik <ptesarik@suse.cz>
-To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Subject: Re: [PATCH v2 10/11] arm64: edit zone_dma_bits to fine tune
- dma-direct min mask
-Message-ID: <20190827090341.2bf6b336@ezekiel.suse.cz>
-In-Reply-To: <4d8d18af22d6dcd122bc9b4d9c2bd49e8443c746.camel@suse.de>
-References: <20190820145821.27214-1-nsaenzjulienne@suse.de>
- <20190820145821.27214-11-nsaenzjulienne@suse.de>
- <20190826070633.GB11331@lst.de>
- <4d8d18af22d6dcd122bc9b4d9c2bd49e8443c746.camel@suse.de>
-Organization: SUSE Linux, s.r.o.
-X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
+ id 1i2WGc-0002A6-Im
+ for linux-riscv@lists.infradead.org; Tue, 27 Aug 2019 07:51:52 +0000
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x7R7l1n3038072
+ for <linux-riscv@lists.infradead.org>; Tue, 27 Aug 2019 03:51:47 -0400
+Received: from e06smtp04.uk.ibm.com (e06smtp04.uk.ibm.com [195.75.94.100])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2umxj8vgyr-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Tue, 27 Aug 2019 03:51:46 -0400
+Received: from localhost
+ by e06smtp04.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <rppt@linux.ibm.com>;
+ Tue, 27 Aug 2019 08:51:45 +0100
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+ by e06smtp04.uk.ibm.com (192.168.101.134) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Tue, 27 Aug 2019 08:51:40 +0100
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x7R7pd6A63242378
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 27 Aug 2019 07:51:39 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 57D43A4057;
+ Tue, 27 Aug 2019 07:51:39 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6AF34A404D;
+ Tue, 27 Aug 2019 07:51:38 +0000 (GMT)
+Received: from rapoport-lnx (unknown [9.148.8.59])
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
+ Tue, 27 Aug 2019 07:51:38 +0000 (GMT)
+Date: Tue, 27 Aug 2019 10:51:36 +0300
+From: Mike Rapoport <rppt@linux.ibm.com>
+To: Atish Patra <atish.patra@wdc.com>
+Subject: Re: [RFC PATCH 1/2] RISC-V: Mark existing SBI as legacy SBI.
+References: <20190826233256.32383-1-atish.patra@wdc.com>
+ <20190826233256.32383-2-atish.patra@wdc.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190826233256.32383-2-atish.patra@wdc.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TM-AS-GCONF: 00
+x-cbid: 19082707-0016-0000-0000-000002A36547
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19082707-0017-0000-0000-00003303AEC4
+Message-Id: <20190827075136.GC682@rapoport-lnx>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-08-26_08:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1908270087
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_000353_007628_CDFC5312 
-X-CRM114-Status: GOOD (  12.13  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190827_005150_743748_41F8745D 
+X-CRM114-Status: GOOD (  25.27  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -63,84 +103,172 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: catalin.marinas@arm.com, linux-mm@kvack.org,
- linux-riscv@lists.infradead.org, frowand.list@gmail.com,
- Christoph Hellwig <hch@lst.de>, m.szyprowski@samsung.com,
- linux-arch@vger.kernel.org, f.fainelli@gmail.com, will@kernel.org,
- devicetree@vger.kernel.org, marc.zyngier@arm.com, robh+dt@kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- phill@raspberryi.org, mbrugger@suse.com, eric@anholt.net,
- linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
- wahrenst@gmx.net, akpm@linux-foundation.org,
- Robin Murphy <robin.murphy@arm.com>
-Content-Type: multipart/mixed; boundary="===============2265114233962889803=="
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Alan Kao <alankao@andestech.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel@vger.kernel.org, Alexios Zavras <alexios.zavras@intel.com>,
+ Gary Guo <gary@garyguo.net>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
---===============2265114233962889803==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- boundary="Sig_/vmjhQR+jY/bQH=VqrrKvOyt"; protocol="application/pgp-signature"
+On Mon, Aug 26, 2019 at 04:32:55PM -0700, Atish Patra wrote:
+> As per the new SBI specification, current SBI implementation is
+> defined as legacy and will be removed/replaced in future.
+> 
+> Rename existing implementation to reflect that. This patch is just
+> a preparatory patch for SBI v0.2 and doesn't introduce any functional
+> changes.
+> 
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> ---
+>  arch/riscv/include/asm/sbi.h | 61 +++++++++++++++++++-----------------
+>  1 file changed, 33 insertions(+), 28 deletions(-)
+> 
+> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+> index 21134b3ef404..7f5ecaaaa0d7 100644
+> --- a/arch/riscv/include/asm/sbi.h
+> +++ b/arch/riscv/include/asm/sbi.h
+> @@ -8,17 +8,18 @@
+>  
+>  #include <linux/types.h>
+>  
+> -#define SBI_SET_TIMER 0
+> -#define SBI_CONSOLE_PUTCHAR 1
+> -#define SBI_CONSOLE_GETCHAR 2
+> -#define SBI_CLEAR_IPI 3
+> -#define SBI_SEND_IPI 4
+> -#define SBI_REMOTE_FENCE_I 5
+> -#define SBI_REMOTE_SFENCE_VMA 6
+> -#define SBI_REMOTE_SFENCE_VMA_ASID 7
+> -#define SBI_SHUTDOWN 8
+> -
+> -#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({		\
+> +
+> +#define SBI_EXT_LEGACY_SET_TIMER 0x0
+> +#define SBI_EXT_LEGACY_CONSOLE_PUTCHAR 0x1
+> +#define SBI_EXT_LEGACY_CONSOLE_GETCHAR 0x2
+> +#define SBI_EXT_LEGACY_CLEAR_IPI 0x3
+> +#define SBI_EXT_LEGACY_SEND_IPI 0x4
+> +#define SBI_EXT_LEGACY_REMOTE_FENCE_I 0x5
+> +#define SBI_EXT_LEGACY_REMOTE_SFENCE_VMA 0x6
+> +#define SBI_EXT_LEGACY_REMOTE_SFENCE_VMA_ASID 0x7
+> +#define SBI_EXT_LEGACY_SHUTDOWN 0x8
 
---Sig_/vmjhQR+jY/bQH=VqrrKvOyt
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+I can't say I'm closely following RISC-V development, but what will happen
+when SBI v0.3 will come out and will render v0.2 legacy?
+Won't we need another similar renaming then?
 
-On Mon, 26 Aug 2019 13:08:50 +0200
-Nicolas Saenz Julienne <nsaenzjulienne@suse.de> wrote:
+> +#define SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3) ({             \
+>  	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);	\
+>  	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);	\
+>  	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);	\
+> @@ -32,58 +33,61 @@
+>  })
+>  
+>  /* Lazy implementations until SBI is finalized */
+> -#define SBI_CALL_0(which) SBI_CALL(which, 0, 0, 0, 0)
+> -#define SBI_CALL_1(which, arg0) SBI_CALL(which, arg0, 0, 0, 0)
+> -#define SBI_CALL_2(which, arg0, arg1) SBI_CALL(which, arg0, arg1, 0, 0)
+> -#define SBI_CALL_3(which, arg0, arg1, arg2) \
+> -		SBI_CALL(which, arg0, arg1, arg2, 0)
+> -#define SBI_CALL_4(which, arg0, arg1, arg2, arg3) \
+> -		SBI_CALL(which, arg0, arg1, arg2, arg3)
+> +#define SBI_CALL_LEGACY_0(which) SBI_CALL_LEGACY(which, 0, 0, 0, 0)
+> +#define SBI_CALL_LEGACY_1(which, arg0) SBI_CALL_LEGACY(which, arg0, 0, 0, 0)
+> +#define SBI_CALL_LEGACY_2(which, arg0, arg1) \
+> +		SBI_CALL_LEGACY(which, arg0, arg1, 0, 0)
+> +#define SBI_CALL_LEGACY_3(which, arg0, arg1, arg2) \
+> +		SBI_CALL_LEGACY(which, arg0, arg1, arg2, 0)
+> +#define SBI_CALL_LEGACY_4(which, arg0, arg1, arg2, arg3) \
+> +		SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3)
+>  
+>  static inline void sbi_console_putchar(int ch)
+>  {
+> -	SBI_CALL_1(SBI_CONSOLE_PUTCHAR, ch);
+> +	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_CONSOLE_PUTCHAR, ch);
+>  }
+>  
+>  static inline int sbi_console_getchar(void)
+>  {
+> -	return SBI_CALL_0(SBI_CONSOLE_GETCHAR);
+> +	return SBI_CALL_LEGACY_0(SBI_EXT_LEGACY_CONSOLE_GETCHAR);
+>  }
+>  
+>  static inline void sbi_set_timer(uint64_t stime_value)
+>  {
+>  #if __riscv_xlen == 32
+> -	SBI_CALL_2(SBI_SET_TIMER, stime_value, stime_value >> 32);
+> +	SBI_CALL_LEGACY_2(SBI_EXT_LEGACY_SET_TIMER, stime_value,
+> +			  stime_value >> 32);
+>  #else
+> -	SBI_CALL_1(SBI_SET_TIMER, stime_value);
+> +	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_SET_TIMER, stime_value);
+>  #endif
+>  }
+>  
+>  static inline void sbi_shutdown(void)
+>  {
+> -	SBI_CALL_0(SBI_SHUTDOWN);
+> +	SBI_CALL_LEGACY_0(SBI_EXT_LEGACY_SHUTDOWN);
+>  }
+>  
+>  static inline void sbi_clear_ipi(void)
+>  {
+> -	SBI_CALL_0(SBI_CLEAR_IPI);
+> +	SBI_CALL_LEGACY_0(SBI_EXT_LEGACY_CLEAR_IPI);
+>  }
+>  
+>  static inline void sbi_send_ipi(const unsigned long *hart_mask)
+>  {
+> -	SBI_CALL_1(SBI_SEND_IPI, hart_mask);
+> +	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_SEND_IPI, hart_mask);
+>  }
+>  
+>  static inline void sbi_remote_fence_i(const unsigned long *hart_mask)
+>  {
+> -	SBI_CALL_1(SBI_REMOTE_FENCE_I, hart_mask);
+> +	SBI_CALL_LEGACY_1(SBI_EXT_LEGACY_REMOTE_FENCE_I, hart_mask);
+>  }
+>  
+>  static inline void sbi_remote_sfence_vma(const unsigned long *hart_mask,
+>  					 unsigned long start,
+>  					 unsigned long size)
+>  {
+> -	SBI_CALL_3(SBI_REMOTE_SFENCE_VMA, hart_mask, start, size);
+> +	SBI_CALL_LEGACY_3(SBI_EXT_LEGACY_REMOTE_SFENCE_VMA, hart_mask,
+> +			  start, size);
+>  }
+>  
+>  static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+> @@ -91,7 +95,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+>  					      unsigned long size,
+>  					      unsigned long asid)
+>  {
+> -	SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
+> +	SBI_CALL_LEGACY_4(SBI_EXT_LEGACY_REMOTE_SFENCE_VMA_ASID, hart_mask,
+> +			  start, size, asid);
+>  }
+>  
+>  #endif
+> -- 
+> 2.21.0
+> 
+> 
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
+> 
 
-> On Mon, 2019-08-26 at 09:06 +0200, Christoph Hellwig wrote:
-> > On Tue, Aug 20, 2019 at 04:58:18PM +0200, Nicolas Saenz Julienne wrote:=
- =20
-> > > -	if (IS_ENABLED(CONFIG_ZONE_DMA))
-> > > +	if (IS_ENABLED(CONFIG_ZONE_DMA)) {
-> > >  		arm64_dma_phys_limit =3D max_zone_dma_phys();
-> > > +		zone_dma_bits =3D ilog2((arm64_dma_phys_limit - 1) &
-> > > GENMASK_ULL(31, 0)) + 1; =20
-> > =20
-> Hi Christoph,
-> thanks for the rewiews.
->=20
-> > This adds a way too long line. =20
->=20
-> I know, I couldn't find a way to split the operation without making it ev=
-en
-> harder to read. I'll find a solution.
+-- 
+Sincerely yours,
+Mike.
 
-If all else fails, move the code to an inline function and call it e.g.
-phys_limit_to_dma_bits().
-
-Just my two cents,
-Petr T
-
---Sig_/vmjhQR+jY/bQH=VqrrKvOyt
-Content-Type: application/pgp-signature
-Content-Description: Digitální podpis OpenPGP
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEHl2YIZkIo5VO2MxYqlA7ya4PR6cFAl1k1c0ACgkQqlA7ya4P
-R6ffZggAphWovRbYbJElIMDB+201+43NCpSH8dbZwe3UrJ+1DHzEn4OEldBRpcAv
-CuA2/u6GyA8wgnGpCAKj9HNHWSx9VeFoCmf6kPVHFtoC0hnJyJtCCWS1O9B1nqXR
-3h1Dw+6F/4wh14vqUucVvfseO/T1VV1QtfsczxBy2xEvcTZGhBjo7LEKeABa2yRm
-CoPLGyNtTtNkAhXeSeVJUcuquOjdqrcU+RlCH5EIZZagAvXuNLryEsjjUfD4Lx35
-RBeRcO+KmGJvAYuelWr/lqtO5ZUnD4OXoFE6fV7AvvJCD6RIHngLS4EXDIkGAaqd
-kWlLtSieXZDEl0mMBdQBfSVcByyzKA==
-=RDo8
------END PGP SIGNATURE-----
-
---Sig_/vmjhQR+jY/bQH=VqrrKvOyt--
-
-
---===============2265114233962889803==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---===============2265114233962889803==--
-
