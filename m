@@ -2,63 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2540A9E3AD
-	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 11:09:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E3D259E42A
+	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 11:28:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TD4SjaeutRaemBZBF1xFjRU3xhCnZE0QEA2C3nZFyjk=; b=iRyaqVbozKI/3D
-	1n42ewFB6eqgxZFDbauWFmPthf09mrYnupOiGV6e4rDpAAh1hhiwYkKIapTIHpdEX7C9Zd+XUm68o
-	YIqwnZycOlBPbyUxAdKs1dFKcdtpMCqaz2CF7iuZYdJf8lbRMdof2zOiZoDSDfCSKx/2gh01wzr9v
-	UscdS1jwNGQ9580aNFQcY2BN0Tcluzqbxr4lL8Gb6V7W9Ljg9jWUNEo6xspOE6kcXdqFwsMppY+9w
-	9VbLMShcj0KOfxVrzqUMewcW0UtCoP6+9THZe7MSzULFGoG58YQb15SwDmAzQUPTGTAlq7+DXZ1Jg
-	VxCwzZZ+8kiJ/Xz0O4mw==;
+	List-Owner; bh=PpT8TK1qQKyU/kSaCpJU2dV/d7FdfIi9VBuZ+eCC9QU=; b=Ft9VLTao+LT+Ie
+	wkt19vmJf5Q31mMQZzxWlfrS8Z5zE/tNSJ1bOr6zBkRw5TLv9ClJ4gzH+SRzEAGLHHLVEbTcVijgu
+	WgPetMCE4UtZ1d0JlfUrg7ayXQuIgZW+S3dpO8OsPRsHJm9ZVKx6CsR48699vSwdCP6qyDv3pkTBC
+	vv+oG/lkmdaMlPpB6lPWHJnhHByq4ziPpjKkuiZa9oaVN24jN8c9OC7shMBcFQW/7aDb2mW5Se/h5
+	CkBl7y7pjXKEs0Gn88qlfO2U8a56xPvRVHu75pcHIYWOJ4SV/7DBIZYr0/TcjnDtpGR5tDBiBM89o
+	fIl5JFxHolNvc0MIpbyg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2XTF-0003xb-G2; Tue, 27 Aug 2019 09:08:57 +0000
-Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
- helo=ATCSQR.andestech.com)
+	id 1i2XmD-0004Zg-Lm; Tue, 27 Aug 2019 09:28:34 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2XT2-0003x7-Vu
- for linux-riscv@lists.infradead.org; Tue, 27 Aug 2019 09:08:46 +0000
-Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x7R8t2G4072298;
- Tue, 27 Aug 2019 16:55:02 +0800 (GMT-8)
- (envelope-from nickhu@andestech.com)
-Received: from andestech.com (10.0.15.65) by ATCPCS16.andestech.com
- (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Tue, 27 Aug 2019
- 17:07:37 +0800
-Date: Tue, 27 Aug 2019 17:07:38 +0800
-From: Nick Hu <nickhu@andestech.com>
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>
-Subject: Re: [PATCH 1/2] riscv: Add memmove string operation.
-Message-ID: <20190827090738.GA22972@andestech.com>
-References: <cover.1565161957.git.nickhu@andestech.com>
- <a6c24ce01dc40da10d58fdd30bc3e1316035c832.1565161957.git.nickhu@andestech.com>
- <09d5108e-f0ba-13d3-be9e-119f49f6bd85@virtuozzo.com>
+ id 1i2Xm4-0004Vm-D8
+ for linux-riscv@lists.infradead.org; Tue, 27 Aug 2019 09:28:29 +0000
+Received: by mail-wm1-x344.google.com with SMTP id v15so2316709wml.0
+ for <linux-riscv@lists.infradead.org>; Tue, 27 Aug 2019 02:28:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KD1R6ByN/3R82p9ak3vm+s3BMXArMxxW+15y2czIGAE=;
+ b=qDYbiUeoWbOmkfxAYoW+Q0M1Yc1bU6L9JcwHvViFtTTchUEXYn8vxmejI88vcOcCuv
+ c2VllOIlI5ckqOUvgaJNF+OLzkXtgYiZPKT2FAOUFMFXBQma9xjv7VVLvz80100Tm1RO
+ 38iWQqxwp7S2gWBUIfMvZixUUoLd4tjF9NqZTMXpUljpnkuN29ignL2SbU5z1/ImfKG1
+ 2qG26xJDBj09/ILW1FgQhaDU6n2Z41OPLUz09ll4qnihSlOfOY1UmIHqs189fpz6mOXG
+ rlQGRwbwSBt60FM+2c6uU0Z3K5MlTt2jeFPGKbJBCF+CpqtViC7qMcP+amWl2DzRuF/g
+ bbSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KD1R6ByN/3R82p9ak3vm+s3BMXArMxxW+15y2czIGAE=;
+ b=FgeoXeoBaoR9g4VFi7yv/zgTRyUoRJS7DM/ApN7TxZMbvm+6KlfBBavvjpv8MGuUgB
+ aCkATKzko86z+tfSiWbRAvtevdPqrzDcmBVq3SwlY4iPkHfgNatBPHGH0nPL5rEaHiRl
+ /vNz415+FkKSr3QgCNuSRZ3msrsNSckxoLQ9bZQxnbu89GZ6LOuLKoHAkYpKEKloFDZz
+ CqhP1lohIA51Dwz4YNKVSfi4h5QbNNHunY6bNBxR7K4j/azKzTYTphxOJBYFrYHIfkPh
+ ZFxcTY5N8Zs0NrmBvEE//k+wKm9HEToEyt/eRvsaUmq3sP0bFSWfddYQMGSj6k33GSe9
+ ve0Q==
+X-Gm-Message-State: APjAAAX/rdVC2ElrLJXCFdWeIM9M3JGSg9h4Pe2wnTEiWWaNI/0J0Uck
+ vMvFXFUQwoYgdJDaVhbrX+22JTxJ2b/wUcsBLzGvIg==
+X-Google-Smtp-Source: APXvYqzmCKihkrDrdGsBhCo8OeLICgm1ur4vzTRcXbBzmPILVEdii9ui9AtvUYLP9Fqj+muLw2EgeGi6VqJEaJbWowI=
+X-Received: by 2002:a1c:3d89:: with SMTP id k131mr25133981wma.24.1566898102426; 
+ Tue, 27 Aug 2019 02:28:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <09d5108e-f0ba-13d3-be9e-119f49f6bd85@virtuozzo.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Originating-IP: [10.0.15.65]
-X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x7R8t2G4072298
+References: <20190826233256.32383-1-atish.patra@wdc.com>
+ <20190826233256.32383-3-atish.patra@wdc.com>
+ <20190827075831.GD682@rapoport-lnx>
+ <CAAhSdy3gynEv1k84pghLY6+HcpBCiteUQUDbGn4_eEH_UFpbCA@mail.gmail.com>
+ <20190827083913.GG682@rapoport-lnx>
+In-Reply-To: <20190827083913.GG682@rapoport-lnx>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 27 Aug 2019 14:58:11 +0530
+Message-ID: <CAAhSdy0wBhcggNOd0C4RapnLbZ-a0TtrQ_XiZHNo9KQnJcUaBA@mail.gmail.com>
+Subject: Re: [RFC PATCH 2/2] RISC-V: Add basic support for SBI v0.2
+To: Mike Rapoport <rppt@linux.ibm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_020845_279215_A0014E20 
-X-CRM114-Status: GOOD (  13.11  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20190827_022824_654663_DB2172CD 
+X-CRM114-Status: GOOD (  27.98  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 TVD_RCVD_IP            Message was received from an IP address
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
- dynamic-looking rDNS
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,75 +90,309 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- Alan Quey-Liang =?utf-8?B?S2FvKOmrmOmtgeiJryk=?= <alankao@andestech.com>,
- "atish.patra@wdc.com" <atish.patra@wdc.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>,
- =?utf-8?B?6Zui6IG3Wm9uZyBab25nLVhpYW4gTGko5p2O5a6X5oayKQ==?=
- <zong@andestech.com>, "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
- "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
- "glider@google.com" <glider@google.com>,
- "green.hu@gmail.com" <green.hu@gmail.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "deanbo422@gmail.com" <deanbo422@gmail.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "dvyukov@google.com" <dvyukov@google.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Alan Kao <alankao@andestech.com>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Atish Patra <atish.patra@wdc.com>, Gary Guo <gary@garyguo.net>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Thomas Gleixner <tglx@linutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Andrey
+On Tue, Aug 27, 2019 at 2:09 PM Mike Rapoport <rppt@linux.ibm.com> wrote:
+>
+> On Tue, Aug 27, 2019 at 01:53:23PM +0530, Anup Patel wrote:
+> > On Tue, Aug 27, 2019 at 1:28 PM Mike Rapoport <rppt@linux.ibm.com> wrote:
+> > >
+> > > On Mon, Aug 26, 2019 at 04:32:56PM -0700, Atish Patra wrote:
+> > > > The SBI v0.2 introduces a base extension which is backward compatible
+> > > > with v0.1. Implement all helper functions and minimum required SBI
+> > > > calls from v0.2 for now. All other base extension function will be
+> > > > added later as per need.
+> > > >
+> > > > Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> > > > ---
+> > > >  arch/riscv/include/asm/sbi.h | 68 +++++++++++++++++++++++++++++-------
+> > > >  arch/riscv/kernel/Makefile   |  1 +
+> > > >  arch/riscv/kernel/sbi.c      | 50 ++++++++++++++++++++++++++
+> > > >  arch/riscv/kernel/setup.c    |  2 ++
+> > > >  4 files changed, 108 insertions(+), 13 deletions(-)
+> > > >  create mode 100644 arch/riscv/kernel/sbi.c
+> > > >
+> > > > diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+> > > > index 7f5ecaaaa0d7..4a4476956693 100644
+> > > > --- a/arch/riscv/include/asm/sbi.h
+> > > > +++ b/arch/riscv/include/asm/sbi.h
+> > > > @@ -8,7 +8,6 @@
+> > > >
+> > > >  #include <linux/types.h>
+> > > >
+> > > > -
+> > > >  #define SBI_EXT_LEGACY_SET_TIMER 0x0
+> > > >  #define SBI_EXT_LEGACY_CONSOLE_PUTCHAR 0x1
+> > > >  #define SBI_EXT_LEGACY_CONSOLE_GETCHAR 0x2
+> > > > @@ -19,28 +18,61 @@
+> > > >  #define SBI_EXT_LEGACY_REMOTE_SFENCE_VMA_ASID 0x7
+> > > >  #define SBI_EXT_LEGACY_SHUTDOWN 0x8
+> > > >
+> > > > -#define SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3) ({             \
+> > > > +#define SBI_EXT_BASE 0x10
+> > > > +
+> > > > +enum sbi_ext_base_fid {
+> > > > +     SBI_EXT_BASE_GET_SPEC_VERSION = 0,
+> > > > +     SBI_EXT_BASE_GET_IMP_ID,
+> > > > +     SBI_EXT_BASE_GET_IMP_VERSION,
+> > > > +     SBI_EXT_BASE_PROBE_EXT,
+> > > > +     SBI_EXT_BASE_GET_MVENDORID,
+> > > > +     SBI_EXT_BASE_GET_MARCHID,
+> > > > +     SBI_EXT_BASE_GET_MIMPID,
+> > > > +};
+> > > > +
+> > > > +#define SBI_CALL_LEGACY(ext, fid, arg0, arg1, arg2, arg3) ({ \
+> > > >       register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);   \
+> > > >       register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);   \
+> > > >       register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);   \
+> > > >       register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);   \
+> > > > -     register uintptr_t a7 asm ("a7") = (uintptr_t)(which);  \
+> > > > +     register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);    \
+> > > > +     register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);    \
+> > > >       asm volatile ("ecall"                                   \
+> > > > -                   : "+r" (a0)                               \
+> > > > -                   : "r" (a1), "r" (a2), "r" (a3), "r" (a7)  \
+> > > > +                   : "+r" (a0), "+r" (a1)                    \
+> > > > +                   : "r" (a2), "r" (a3), "r" (a6), "r" (a7) \
+> > >
+> > > Maybe I'm missing something, but how is this supposed to work on systems
+> > > with SBI v0.1? Wouldn't this cause a mismatch in the registers?
+> >
+> > The SBI v0.2 has two major changes:
+> > 1. New improved calling convention which is backward compatible
+> > with SBI v0.1 so older kernels with SBI v0.1 will continue to work as-is.
+> > 2. Base set of mandatory SBI v0.2 calls which can be used to detect
+> > SBI version, check supported SBI calls and extentions.
+> >
+> > Old calling convention in SBI v0.1 was:
+> > Parameters:
+> > a0 -> arg0
+> > a1 -> arg1
+> > a2 -> arg2
+> > a3 -> arg3
+> > a7 -> function_id
+> > Return:
+> > a0 -> return value or error code
+> >
+> > In SBI v0.2, we have extension and function. Each SBI extension
+> > is a set of function. The new calling convention in SBI v0.2 is:
+> > Parameters:
+> > a0 -> arg0
+> > a1 -> arg1
+> > a2 -> arg2
+> > a3 -> arg3
+> > a6 -> function_id
+> > a7 -> extension_id
+> > Return:
+> > a0 -> error code
+> > a1 -> return value (optional)
+>
+> So with this patch SBI_CALL_LEGACY() uses SBI v0.2 convention, right?
+> Doesn't it mean that you cannot run a new kernel on a system with SBI v0.1?
 
-On Thu, Aug 22, 2019 at 11:59:02PM +0800, Andrey Ryabinin wrote:
-> On 8/7/19 10:19 AM, Nick Hu wrote:
-> > There are some features which need this string operation for compilation,
-> > like KASAN. So the purpose of this porting is for the features like KASAN
-> > which cannot be compiled without it.
-> > 
-> 
-> Compilation error can be fixed by diff bellow (I didn't test it).
-> If you don't need memmove very early (before kasan_early_init()) than arch-specific not-instrumented memmove()
-> isn't necessary to have.
-> 
-> ---
->  mm/kasan/common.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> index 6814d6d6a023..897f9520bab3 100644
-> --- a/mm/kasan/common.c
-> +++ b/mm/kasan/common.c
-> @@ -107,6 +107,7 @@ void *memset(void *addr, int c, size_t len)
->  	return __memset(addr, c, len);
->  }
->  
-> +#ifdef __HAVE_ARCH_MEMMOVE
->  #undef memmove
->  void *memmove(void *dest, const void *src, size_t len)
->  {
-> @@ -115,6 +116,7 @@ void *memmove(void *dest, const void *src, size_t len)
->  
->  	return __memmove(dest, src, len);
->  }
-> +#endif
->  
->  #undef memcpy
->  void *memcpy(void *dest, const void *src, size_t len)
-> -- 
-> 2.21.0
-> 
-> 
-> 
-I have confirmed that the string operations are not used before kasan_early_init().
-But I can't make sure whether other ARCHs would need it before kasan_early_init().
-Do you have any idea to check that? Should I cc all other ARCH maintainers?
+This is certainly possible. It's just that this patch is using SBI v0.2
+convention for older firmware as well.
 
-Nick
+Ideally, we should check sbi_version for each legacy SBI calls and
+use different calling convention based sbi_version. The sbi_version
+detection will work fine on both old and new firmwares because
+on old firmware SBI version call will fail which means it is SBI v0.1
+interface.
+
+I think all legacy calls should be moved to kernel/sbi.c.
+
+I have other comments too.
+
+Let me post detailed review comments.
+
+Regards,
+Anup
+
+>
+> > All legacy SBI v0.1 functions can be thought of as separate
+> > extensions. That's how SBI v0.2 will be backward compatible.
+> >
+> > Regards,
+> > Anup
+> >
+> > >
+> > > >                     : "memory");                              \
+> > > >       a0;                                                     \
+> > > >  })
+> > > >
+> > > >  /* Lazy implementations until SBI is finalized */
+> > > > -#define SBI_CALL_LEGACY_0(which) SBI_CALL_LEGACY(which, 0, 0, 0, 0)
+> > > > -#define SBI_CALL_LEGACY_1(which, arg0) SBI_CALL_LEGACY(which, arg0, 0, 0, 0)
+> > > > -#define SBI_CALL_LEGACY_2(which, arg0, arg1) \
+> > > > -             SBI_CALL_LEGACY(which, arg0, arg1, 0, 0)
+> > > > -#define SBI_CALL_LEGACY_3(which, arg0, arg1, arg2) \
+> > > > -             SBI_CALL_LEGACY(which, arg0, arg1, arg2, 0)
+> > > > -#define SBI_CALL_LEGACY_4(which, arg0, arg1, arg2, arg3) \
+> > > > -             SBI_CALL_LEGACY(which, arg0, arg1, arg2, arg3)
+> > > > +#define SBI_CALL_LEGACY_0(ext) SBI_CALL_LEGACY(ext, 0, 0, 0, 0, 0)
+> > > > +#define SBI_CALL_LEGACY_1(ext, arg0) SBI_CALL_LEGACY(ext, 0, arg0, 0, 0, 0)
+> > > > +#define SBI_CALL_LEGACY_2(ext, arg0, arg1) \
+> > > > +             SBI_CALL_LEGACY(ext, 0, arg0, arg1, 0, 0)
+> > > > +#define SBI_CALL_LEGACY_3(ext, arg0, arg1, arg2) \
+> > > > +             SBI_CALL_LEGACY(ext, 0, arg0, arg1, arg2, 0)
+> > > > +#define SBI_CALL_LEGACY_4(ext, arg0, arg1, arg2, arg3) \
+> > > > +             SBI_CALL_LEGACY(ext, 0, arg0, arg1, arg2, arg3)
+> > > > +
+> > > > +extern unsigned long sbi_firmware_version;
+> > > > +struct sbiret {
+> > > > +     long error;
+> > > > +     long value;
+> > > > +};
+> > > > +
+> > > > +void riscv_sbi_init(void);
+> > > > +struct sbiret riscv_sbi_ecall(int ext, int fid, int arg0, int arg1,
+> > > > +                            int arg2, int arg3);
+> > > > +
+> > > > +#define SBI_CALL_0(ext, fid) riscv_sbi_ecall(ext, fid, 0, 0, 0, 0)
+> > > > +#define SBI_CALL_1(ext, fid, arg0) riscv_sbi_ecall(ext, fid, arg0, 0, 0, 0)
+> > > > +#define SBI_CALL_2(ext, fid, arg0, arg1) \
+> > > > +             riscv_sbi_ecall(ext, fid, arg0, arg1, 0, 0)
+> > > > +#define SBI_CALL_3(ext, fid, arg0, arg1, arg2) \
+> > > > +             riscv_sbi_ecall(ext, fid, arg0, arg1, arg2, 0)
+> > > > +#define SBI_CALL_4(ext, fid, arg0, arg1, arg2, arg3) \
+> > > > +             riscv_sbi_ecall(ext, fid, arg0, arg1, arg2, arg3)
+> > > > +
+> > > >
+> > > >  static inline void sbi_console_putchar(int ch)
+> > > >  {
+> > > > @@ -99,4 +131,14 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+> > > >                         start, size, asid);
+> > > >  }
+> > > >
+> > > > +static inline unsigned long riscv_sbi_major_version(void)
+> > > > +{
+> > > > +     return (sbi_firmware_version >> 24) & 0x7f;
+> > > > +}
+> > > > +
+> > > > +static inline unsigned long riscv_sbi_minor_version(void)
+> > > > +{
+> > > > +     return sbi_firmware_version & 0xffffff;
+> > > > +}
+> > > > +
+> > > >  #endif
+> > > > diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> > > > index 2420d37d96de..faf862d26924 100644
+> > > > --- a/arch/riscv/kernel/Makefile
+> > > > +++ b/arch/riscv/kernel/Makefile
+> > > > @@ -17,6 +17,7 @@ obj-y       += irq.o
+> > > >  obj-y        += process.o
+> > > >  obj-y        += ptrace.o
+> > > >  obj-y        += reset.o
+> > > > +obj-y        += sbi.o
+> > > >  obj-y        += setup.o
+> > > >  obj-y        += signal.o
+> > > >  obj-y        += syscall_table.o
+> > > > diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
+> > > > new file mode 100644
+> > > > index 000000000000..457b8cc0e9d9
+> > > > --- /dev/null
+> > > > +++ b/arch/riscv/kernel/sbi.c
+> > > > @@ -0,0 +1,50 @@
+> > > > +// SPDX-License-Identifier: GPL-2.0-only
+> > > > +/*
+> > > > + * SBI initialilization and base extension implementation.
+> > > > + *
+> > > > + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
+> > > > + */
+> > > > +
+> > > > +#include <asm/sbi.h>
+> > > > +#include <linux/sched.h>
+> > > > +
+> > > > +unsigned long sbi_firmware_version;
+> > > > +
+> > > > +struct sbiret riscv_sbi_ecall(int ext, int fid, int arg0, int arg1,
+> > > > +                          int arg2, int arg3)
+> > > > +{
+> > > > +     struct sbiret ret;
+> > > > +
+> > > > +     register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);
+> > > > +     register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);
+> > > > +     register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);
+> > > > +     register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);
+> > > > +     register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);
+> > > > +     register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);
+> > > > +     asm volatile ("ecall"
+> > > > +                   : "+r" (a0), "+r" (a1)
+> > > > +                   : "r" (a2), "r" (a3), "r" (a6), "r" (a7)
+> > > > +                   : "memory");
+> > > > +     ret.error = a0;
+> > > > +     ret.value = a1;
+> > > > +
+> > > > +     return ret;
+> > > > +}
+> > > > +
+> > > > +static struct sbiret sbi_get_spec_version(void)
+> > > > +{
+> > > > +     return SBI_CALL_0(SBI_EXT_BASE, SBI_EXT_BASE_GET_SPEC_VERSION);
+> > > > +}
+> > > > +
+> > > > +void riscv_sbi_init(void)
+> > > > +{
+> > > > +     struct sbiret ret;
+> > > > +
+> > > > +     /* legacy SBI version*/
+> > > > +     sbi_firmware_version = 0x1;
+> > > > +     ret = sbi_get_spec_version();
+> > > > +     if (!ret.error)
+> > > > +             sbi_firmware_version = ret.value;
+> > > > +     pr_info("SBI version implemented in firmware [%lu:%lu]\n",
+> > > > +             riscv_sbi_major_version(), riscv_sbi_minor_version());
+> > > > +}
+> > > > diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+> > > > index a990a6cb184f..4c324fd398c8 100644
+> > > > --- a/arch/riscv/kernel/setup.c
+> > > > +++ b/arch/riscv/kernel/setup.c
+> > > > @@ -21,6 +21,7 @@
+> > > >  #include <asm/sections.h>
+> > > >  #include <asm/pgtable.h>
+> > > >  #include <asm/smp.h>
+> > > > +#include <asm/sbi.h>
+> > > >  #include <asm/tlbflush.h>
+> > > >  #include <asm/thread_info.h>
+> > > >
+> > > > @@ -70,6 +71,7 @@ void __init setup_arch(char **cmdline_p)
+> > > >       swiotlb_init(1);
+> > > >  #endif
+> > > >
+> > > > +     riscv_sbi_init();
+> > > >  #ifdef CONFIG_SMP
+> > > >       setup_smp();
+> > > >  #endif
+> > > > --
+> > > > 2.21.0
+> > > >
+> > > >
+> > > > _______________________________________________
+> > > > linux-riscv mailing list
+> > > > linux-riscv@lists.infradead.org
+> > > > http://lists.infradead.org/mailman/listinfo/linux-riscv
+> > >
+> > > --
+> > > Sincerely yours,
+> > > Mike.
+> > >
+>
+> --
+> Sincerely yours,
+> Mike.
+>
 
 _______________________________________________
 linux-riscv mailing list
