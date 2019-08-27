@@ -2,35 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96C599EA7A
-	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 16:11:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46CD99EB6B
+	for <lists+linux-riscv@lfdr.de>; Tue, 27 Aug 2019 16:46:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JPzx4f/YR+1+bTvHeNAcGfOm6pXttwfUNvV5ErkzKCA=; b=Rugc5da3PpFoLW
-	8lbPWrFPnAp/NFo3o5IA8CYb5DERVrlkR1+fLxOkCZV0OL9+9HDiYSf5okoQLTNJd2MMLi/hoHwRF
-	cdiztoPoZ263rLRoaI4gtIwAfyPKM7YT1p5Wd/HqHp6R59SDCAYD3iKqmOV+d+edkN27FQPJOew2O
-	j/h33HD725Y+3Wo6imNFdE3RKAU9n0DU+UwdKjQEkKl3HbmYuxP/BD3y7o54XEiXQNHsK0VLQKBGl
-	+AWFuYPd3XvAtIT3G4rHMYjoB4bpAPsx75Kuy1+Z7JkgQRcp/WHNPnZbqpOg7DPp9sfx2CxTspCtz
-	499U8utCd4jMql9sdxRg==;
+	List-Owner; bh=rc9hawSsgbHzRREmSiUVHiBO+oS+jkdBod6A7iYrXuQ=; b=W8NiP7T48zYvAF
+	+EYsT0/GsgfBfGUZZ+gOshq8FJawZe23iOtG5/RlyqWEF0TqnerpQN3fZ9uoF8Ut9r1o6Vn7vg3Kb
+	tpSIiNZjIz+Oe3kM0Vt5B9aanZGvfDPy/anwT5OMhr+o1yFSQ8ZgWuXf/LvybWkhL59IdMNPNY1Hr
+	K36nWd4TjPYe4r6fXxDy3G6Q5IzRi1OOcZHGlpvTjiE49fZvwuZMR5WQNdLnn3pbQ2Dj0GnofhXGE
+	uqb563Y2pwjUlhxpzKlYQ+hUtYd0CUdmXXX/C2L0VP3/lqe73u2hCNB9BiaVX/q9A5u6PJPg9ejvx
+	zcU+523u9Qcg8uTBWvAw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2cC4-0007KW-Vb; Tue, 27 Aug 2019 14:11:33 +0000
+	id 1i2cjr-0006TX-EX; Tue, 27 Aug 2019 14:46:27 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1i2cC2-0007KK-LQ; Tue, 27 Aug 2019 14:11:30 +0000
-Date: Tue, 27 Aug 2019 07:11:30 -0700
+ Linux)) id 1i2cjo-0006Sj-Fw; Tue, 27 Aug 2019 14:46:24 +0000
+Date: Tue, 27 Aug 2019 07:46:24 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [RFC PATCH 2/2] RISC-V: Add basic support for SBI v0.2
-Message-ID: <20190827141130.GC21855@infradead.org>
+Subject: Re: [RFC PATCH 0/2] Add support for SBI version to 0.2
+Message-ID: <20190827144624.GA18535@infradead.org>
 References: <20190826233256.32383-1-atish.patra@wdc.com>
- <20190826233256.32383-3-atish.patra@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190826233256.32383-3-atish.patra@wdc.com>
+In-Reply-To: <20190826233256.32383-1-atish.patra@wdc.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -55,80 +54,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-> +#define SBI_EXT_BASE 0x10
+On Mon, Aug 26, 2019 at 04:32:54PM -0700, Atish Patra wrote:
+> This patch series aims to add support for SBI specification version
+> v0.2. It doesn't break compatibility with any v0.1 implementation.
+> Internally, all the v0.1 calls are just renamed to legacy to be in
+> sync with specification [1].
+> 
+> The patches for v0.2 support in OpenSBI are available at
+> http://lists.infradead.org/pipermail/opensbi/2019-August/000422.html
+> 
+> [1] https://github.com/riscv/riscv-sbi-doc/blob/master/riscv-sbi.adoc
 
-I think you want an enum enumerating the extensions.
+I really don't like the current design of that SBI 0.2 spec,
+and don't think implementing it as-is is helpful.
 
-> +#define SBI_CALL_LEGACY(ext, fid, arg0, arg1, arg2, arg3) ({	\
->  	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);	\
->  	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);	\
->  	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);	\
->  	register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);	\
-> -	register uintptr_t a7 asm ("a7") = (uintptr_t)(which);	\
-> +	register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);	\
-> +	register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);	\
+For one the way how the extension id is placed creates a compatibilty
+problem, not allowing your to implement a backwards compatible sbi,
+which seems bad.
 
-This seems to break the calling convention.  I also think we should go
-back to the Unix platform working group and make the calling convention
-backwards compatible.  There is really no advantage or disadvantag
-in swapping a6 and a7 in the calling convention itself, but doing so
-means you can just push the ext field in always and it will be
-ignored by the old sbi.
+Second just blindly moving all the existing calls to a single legacy
+extension doesn't seem useful.  We need to differenciate the existing
+calls:
 
-> +struct sbiret riscv_sbi_ecall(int ext, int fid, int arg0, int arg1,
-> +			       int arg2, int arg3);
-> +
-> +#define SBI_CALL_0(ext, fid) riscv_sbi_ecall(ext, fid, 0, 0, 0, 0)
-> +#define SBI_CALL_1(ext, fid, arg0) riscv_sbi_ecall(ext, fid, arg0, 0, 0, 0)
-> +#define SBI_CALL_2(ext, fid, arg0, arg1) \
-> +		riscv_sbi_ecall(ext, fid, arg0, arg1, 0, 0)
-> +#define SBI_CALL_3(ext, fid, arg0, arg1, arg2) \
-> +		riscv_sbi_ecall(ext, fid, arg0, arg1, arg2, 0)
-> +#define SBI_CALL_4(ext, fid, arg0, arg1, arg2, arg3) \
-> +		riscv_sbi_ecall(ext, fid, arg0, arg1, arg2, arg3)
-
-Again, no point in having these wrappers.
-
-> +struct sbiret riscv_sbi_ecall(int ext, int fid, int arg0, int arg1,
-> +			     int arg2, int arg3)
-> +{
-> +	struct sbiret ret;
-> +
-> +	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);
-> +	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);
-> +	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);
-> +	register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);
-> +	register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);
-> +	register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);
-> +	asm volatile ("ecall"
-> +		      : "+r" (a0), "+r" (a1)
-> +		      : "r" (a2), "r" (a3), "r" (a6), "r" (a7)
-> +		      : "memory");
-> +	ret.error = a0;
-> +	ret.value = a1;
-> +
-> +	return ret;
-
-Again much simpler done in pure asm..
-
-> +	/* legacy SBI version*/
-> +	sbi_firmware_version = 0x1;
-> +	ret = sbi_get_spec_version();
-> +	if (!ret.error)
-> +		sbi_firmware_version = ret.value;
-
-Why not:
-
-	ret = sbi_get_spec_version();
-	if (ret.error)
-		sbi_firmware_version = 0x1; /* legacy SBI */
-	else
-		sbi_firmware_version = ret.value;
-
-btw, I'd find a calling convention that returns the value as a pointer
-much nicer than the return by a struct.  Yes, the RISC-V ABI still
-returns that in registers, but it is a pain in the b**t to use.  Without
-that we could simply pass the variable to fill by reference.
+ (1) actually board specific and have not place in a cpu abstraction
+     layer: getchar/putchar, these should just never be advertised in a
+      non-legacy setup, and the drivers using them should not probe
+      on a sbi 0.2+ system
+ (2) useful for currently taped out cpus and in the long run for
+     virtualization to avoid mmio traps:  ipis, timers, tlb shootdown.
+     These should stay backwards compatible, but for sbi 0.2 be
+     negotiated individually
+ (3) in theory useful, but given how much of a big hammer sfence.i
+     not useful in theory: SBI_REMOTE_FENCE_I we can decide if we want
+     to either not allow it for sbi 0.2+ or also negotiate it.  I'd
+     personally favor not advertising it and just use ipis to implement
+     it.  If we want useful acceleration of i-cache synchronization
+     we'll need actual instructions that are much more fine grained
+     in the future.
 
 _______________________________________________
 linux-riscv mailing list
