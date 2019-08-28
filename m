@@ -2,86 +2,68 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7ABDCA0C89
-	for <lists+linux-riscv@lfdr.de>; Wed, 28 Aug 2019 23:40:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F246A0C8B
+	for <lists+linux-riscv@lfdr.de>; Wed, 28 Aug 2019 23:41:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z2ytBJz9ILG0tIcXbXiOomGJlT+//xkecHoIiS/Rru0=; b=TTypgjtbld0XoP
-	ue2YPwyCnGwPhnVX20XYCF7/S2cxPAUt3e96bH32Xh3cbWYqlh5uvd75CLQpXroDmkFkpBxqG+Wqz
-	TdKPtgjxFHQEoVM5tjh+dfLs4r1i/rvpL4c5Dw4nXWhsOzHUEGLgYaLKBwGHd3cjO6VA9mVMsiyPi
-	wDQ3vQrvpAIR7Mv3hadN/xWi2wqKJSt8ra2VtO8D2RDKEkD1BtocQ96qj29C6EXzQkqEuMiPxTt8N
-	c0ZZ8/qVwa0S2wZD9B45m6i/cmJKwDqyDNOmfMB3TAEF9ac9uNk7th0QNbGVyr2AMeh5DYS8nlyP3
-	/hQoawgdDlFE6z8bqCnA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:Message-Id:Date:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JAQv5ZVLbAw6WQwoMw4JhQMkbNepEUFBGtWWJbtymnw=; b=KeGEAEWKn/jBlS
+	helQAqPtyhAqPNibv00bl7ahA8nZO7Gux4YOBvqYg9CtXcRd+CrZ9oJG7DFyppJeGN9TZVENxHEFc
+	IGLDa9nfOCRy6WSq4WpG2QncLLOh4x2FqgN+N64YsDKnG5pQDuFOwEB4VEngcpk82aOxbrj8CF+FN
+	j3U9mqV46jH7iS5bDbwqAxArB1UJr+Ec97qYAhq4wjalZDqMP25ERuAlcY+jWarrP3fmsKeUl8wWF
+	Qr7tiEvIaRCXzXiLU+aIMrWQrnNcaJeHY+V//+C1LR3LCehIUTAfwJJ6gLlUg+Ii4wOzAVSQegr9c
+	Zd0PLbIgOttO1eC7HMOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i35gG-0007b5-Hi; Wed, 28 Aug 2019 21:40:40 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1i35gh-0007fW-In; Wed, 28 Aug 2019 21:41:07 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i35gC-0007af-N2
- for linux-riscv@lists.infradead.org; Wed, 28 Aug 2019 21:40:38 +0000
-Received: by mail-wm1-x341.google.com with SMTP id v15so1578639wml.0
- for <linux-riscv@lists.infradead.org>; Wed, 28 Aug 2019 14:40:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Fl6SJhDThIzLVktnxnUQoR6p6jMmSRZeGxNzVfHmfGc=;
- b=hP0eYnVngg0lq1hP3JK2h2x4x8ZP/LkgNSObaO5dsLMMR2EJ6hZWoQU0HSs2LYhSsb
- jZvfF3tenLWEI+TfyOXld/nC78gwghtTXq74BisZRBq370GK9BohnQcL+QB/VOVBzyRN
- sHUYswv7Krf01vNRoTte5Qv63es97SoJOsPRRwu8NnmyqYX+eL8ro9JYWEOuONfzdNxp
- QKIKfpzf935Zo9T1KzQ35aqV+s9JSs1l9PnjjYCoAWY3soLZBXfPod0i/RQpPZVAIXjn
- 8cFh1mpvHFd7YJpzBB7JyY2kJ8UTY+oxj5b63/JZLCRI08fYwRk3aBygjrSbuM3d0PUe
- pxqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Fl6SJhDThIzLVktnxnUQoR6p6jMmSRZeGxNzVfHmfGc=;
- b=brb04Dn5xqPivDb5zHWt3aZRgo6FviRZCMT7lrPks40IQfA+e0jYcT1xYis/QPN8Bt
- 7Sn4l7Q3x4An9NEJozaHyDX8nYE2VoMjLY+AOH6R4IQBVUG6m0jFDgXoOYrQIqgbGPxE
- 7c5v+LTUbREsXEuQiIyta4C4o4fwCNVyW/BXSvWcPBUsToN2uVkWxMuAGIQW7Hf/PNeG
- nUH0IsH6bU1kU2pSdTMb5jqz/WNeiWkPkTRHepIw3k+IO17IfBjXM4o8gPAE+rU52zXv
- wvH4PROl/07ntS61H0J/DyqwkmiTvjhoSSVBbP2vHr53Xsfz+SvdA63/HNCbKh0qVPjZ
- QY2g==
-X-Gm-Message-State: APjAAAXCMQFCuPCcBrf8eFF8I1SJ8k0ipGNCR6O5f1bRBmVszd3tiDXs
- CTRhT5dRnqG9rxIJK6eSkSlhGRFQtip5fRIYB+g=
-X-Google-Smtp-Source: APXvYqxOcImQNzypGFeVWXGp9py8wxlKFKPpz27tdDyzrs1uINU6LbYMgXisOoMzDrWVf3NaJrKHA50+j9kgwxhzJro=
-X-Received: by 2002:a7b:c3d4:: with SMTP id t20mr7052016wmj.71.1567028435172; 
- Wed, 28 Aug 2019 14:40:35 -0700 (PDT)
+ id 1i35gd-0007ep-Cu
+ for linux-riscv@lists.infradead.org; Wed, 28 Aug 2019 21:41:05 +0000
+Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
+ by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
+ id 1i35gX-0006pE-NZ; Wed, 28 Aug 2019 15:40:59 -0600
+Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
+ (envelope-from <gunthorp@deltatee.com>)
+ id 1i35gW-0000wB-3e; Wed, 28 Aug 2019 15:40:56 -0600
+From: Logan Gunthorpe <logang@deltatee.com>
+To: linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Palmer Dabbelt <palmer@sifive.com>
+Date: Wed, 28 Aug 2019 15:40:54 -0600
+Message-Id: <20190828214054.3562-1-logang@deltatee.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
- <alpine.DEB.2.21.9999.1908231717550.25649@viisi.sifive.com>
- <201908251446.04BCB8C@keescook>
-In-Reply-To: <201908251446.04BCB8C@keescook>
-From: David Abdurachmanov <david.abdurachmanov@gmail.com>
-Date: Wed, 28 Aug 2019 14:39:59 -0700
-Message-ID: <CAEn-LTpSPV6NDQ+J3GJxS=rtNMS384uQmq_EuR3ZN_qCGSbyww@mail.gmail.com>
-Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
-To: Kees Cook <keescook@chromium.org>
+X-SA-Exim-Connect-IP: 172.16.1.31
+X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org, sbates@raithlin.com, hch@lst.de,
+ rppt@linux.ibm.com, logang@deltatee.com, aou@eecs.berkeley.edu,
+ palmer@sifive.com, greentime.hu@sifive.com, andrew@sifive.com, olof@lixom.net,
+ michaeljclark@mac.com, robh@kernel.org, zong@andestech.com
+X-SA-Exim-Mail-From: gunthorp@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
+ version=3.4.2
+Subject: [PATCH v6] RISC-V: Implement sparsemem
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190828_144036_754768_AD556786 
-X-CRM114-Status: GOOD (  18.15  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190828_144103_480684_92467B30 
+X-CRM114-Status: GOOD (  17.68  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
- [list.dnswl.org]
+ no trust [207.54.116.67 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (david.abdurachmanov[at]gmail.com)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,63 +75,235 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Alan Kao <alankao@andestech.com>,
- Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
- Oleg Nesterov <oleg@redhat.com>, linux-kselftest@vger.kernel.org,
- linux-riscv@lists.infradead.org, Shuah Khan <shuah@kernel.org>,
- Tycho Andersen <tycho@tycho.ws>, Daniel Borkmann <daniel@iogearbox.net>,
- Yonghong Song <yhs@fb.com>, me@carlosedp.com,
- Albert Ou <aou@eecs.berkeley.edu>, Alexios Zavras <alexios.zavras@intel.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Allison Randal <allison@lohutok.net>, Will Drewry <wad@chromium.org>,
- David Abdurachmanov <david.abdurachmanov@sifive.com>, netdev@vger.kernel.org,
- Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
- Andy Lutomirski <luto@amacapital.net>, Vincent Chen <vincentc@andestech.com>,
- bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
+Cc: Rob Herring <robh@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
+ Andrew Waterman <andrew@sifive.com>, Mike Rapoport <rppt@linux.ibm.com>,
+ Zong Li <zong@andestech.com>, Michael Clark <michaeljclark@mac.com>,
+ Olof Johansson <olof@lixom.net>, Greentime Hu <greentime.hu@sifive.com>,
+ Stephen Bates <sbates@raithlin.com>, Logan Gunthorpe <logang@deltatee.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Aug 28, 2019 at 10:36 AM Kees Cook <keescook@chromium.org> wrote:
->
-> On Fri, Aug 23, 2019 at 05:30:53PM -0700, Paul Walmsley wrote:
-> > On Thu, 22 Aug 2019, David Abdurachmanov wrote:
-> >
-> > > There is one failing kernel selftest: global.user_notification_signal
-> >
-> > Is this the only failing test?  Or are the rest of the selftests skipped
-> > when this test fails, and no further tests are run, as seems to be shown
-> > here:
-> >
-> >   https://lore.kernel.org/linux-riscv/CADnnUqcmDMRe1f+3jG8SPR6jRrnBsY8VVD70VbKEm0NqYeoicA@mail.gmail.com/
-> >
-> > For example, looking at the source, I'd naively expect to see the
-> > user_notification_closed_listener test result -- which follows right
-> > after the failing test in the selftest source.  But there aren't any
-> > results?
-> >
-> > Also - could you follow up with the author of this failing test to see if
-> > we can get some more clarity about what might be going wrong here?  It
-> > appears that the failing test was added in commit 6a21cc50f0c7f ("seccomp:
-> > add a return code to trap to userspace") by Tycho Andersen
-> > <tycho@tycho.ws>.
->
-> So, the original email says the riscv series is tested on top of 5.2-rc7,
-> but just for fun, can you confirm that you're building a tree that includes
-> 9dd3fcb0ab73 ("selftests/seccomp: Handle namespace failures gracefully")? I
-> assume it does, but I suspect something similar is happening, where the
-> environment is slightly different than expected and the test stalls.
->
-> Does it behave the same way under emulation (i.e. can I hope to
-> reproduce this myself?)
+Implement sparsemem support for Risc-v which helps pave the
+way for memory hotplug and eventually P2P support.
 
-This was tested in 5.2-rc7 and later in 5.3-rc with the same behavior.
-Also VM or physical HW doesn't matter, same result.
+Introduce Kconfig options for virtual and physical address bits which
+are used to calculate the size of the vmemmap and set the
+MAX_PHYSMEM_BITS.
 
->
-> --
-> Kees Cook
+The vmemmap is located directly before the VMALLOC region and sized
+such that we can allocate enough pages to populate all the virtual
+address space in the system (similar to the way it's done in arm64).
+
+During initialization, call memblocks_present() and sparse_init(),
+and provide a stub for vmemmap_populate() (all of which is similar to
+arm64).
+
+[greentime.hu@sifive.com:
+  fixed pfn_valid, FIXADDR_TOP and fixed a bug rebasing onto v5.3]
+Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Cc: Albert Ou <aou@eecs.berkeley.edu>
+Cc: Andrew Waterman <andrew@sifive.com>
+Cc: Olof Johansson <olof@lixom.net>
+Cc: Michael Clark <michaeljclark@mac.com>
+Cc: Rob Herring <robh@kernel.org>
+Cc: Zong Li <zong@andestech.com>
+---
+ arch/riscv/Kconfig                 | 21 +++++++++++++++++++++
+ arch/riscv/include/asm/fixmap.h    |  2 +-
+ arch/riscv/include/asm/page.h      |  2 ++
+ arch/riscv/include/asm/pgtable.h   | 21 +++++++++++++++++----
+ arch/riscv/include/asm/sparsemem.h | 11 +++++++++++
+ arch/riscv/mm/init.c               | 10 ++++++++++
+ 6 files changed, 62 insertions(+), 5 deletions(-)
+ create mode 100644 arch/riscv/include/asm/sparsemem.h
+
+Changes in v6:
+ * Rebased onto v5.3-rc6 (no changes)
+ * Fixed up commit message wording (per Mike's feedback)
+ * Set SPARSEMEM_STATIC for 32BIT builds (per Mike)
+
+Changes in v5:
+ * Rebased onto v5.3-rc5 (required moving the initialization to
+   after setup_vm_final() in paging_init())
+ * Fixed FIXADDR_TOP value (per Greentime)
+ * Use generic pfn_valid() function for sparsemem to fix a bug
+   with having holes in memory (also Greentime)
+
+Changes in v4:
+ * Rebased onto v5.0-rc1
+ * Changed the SECTION_SIZE_BITS to 27, per Nick Kossifidis
+
+Changes in v3 (only sent the common patches):
+ * Rebased on v4.20-rc1
+ * Minor fixups
+ * Collected Ack from Will Deacon
+
+Changes in v2:
+ * Rebase on v4.19-rc8
+ * Move the STRUCT_PAGE_MAX_SHIFT define into a common header (near
+   the definition of struct page). As suggested by Christoph.
+ * Clean up the unnecessary nid variable in the memblocks_present()
+   function, per Christoph.
+ * Collected tags from Palmer and Catalin.
+
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 59a4727ecd6c..53b7556beb4a 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -54,6 +54,7 @@ config RISCV
+ 	select EDAC_SUPPORT
+ 	select ARCH_HAS_GIGANTIC_PAGE
+ 	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
++	select SPARSEMEM_STATIC if 32BIT
+
+ config MMU
+ 	def_bool y
+@@ -62,12 +63,32 @@ config ZONE_DMA32
+ 	bool
+ 	default y if 64BIT
+
++config VA_BITS
++	int
++	default 32 if 32BIT
++	default 39 if 64BIT
++
++config PA_BITS
++	int
++	default 34 if 32BIT
++	default 56 if 64BIT
++
+ config PAGE_OFFSET
+ 	hex
+ 	default 0xC0000000 if 32BIT && MAXPHYSMEM_2GB
+ 	default 0xffffffff80000000 if 64BIT && MAXPHYSMEM_2GB
+ 	default 0xffffffe000000000 if 64BIT && MAXPHYSMEM_128GB
+
++config ARCH_FLATMEM_ENABLE
++	def_bool y
++
++config ARCH_SPARSEMEM_ENABLE
++	def_bool y
++	select SPARSEMEM_VMEMMAP_ENABLE
++
++config ARCH_SELECT_MEMORY_MODEL
++	def_bool ARCH_SPARSEMEM_ENABLE
++
+ config ARCH_WANT_GENERAL_HUGETLB
+ 	def_bool y
+
+diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
+index 9c66033c3a54..7b0259c044c9 100644
+--- a/arch/riscv/include/asm/fixmap.h
++++ b/arch/riscv/include/asm/fixmap.h
+@@ -31,7 +31,7 @@ enum fixed_addresses {
+ };
+
+ #define FIXADDR_SIZE		(__end_of_fixed_addresses * PAGE_SIZE)
+-#define FIXADDR_TOP		(VMALLOC_START)
++#define FIXADDR_TOP		(VMEMMAP_START)
+ #define FIXADDR_START		(FIXADDR_TOP - FIXADDR_SIZE)
+
+ #define FIXMAP_PAGE_IO		PAGE_KERNEL
+diff --git a/arch/riscv/include/asm/page.h b/arch/riscv/include/asm/page.h
+index 707e00a8430b..3db261c4810f 100644
+--- a/arch/riscv/include/asm/page.h
++++ b/arch/riscv/include/asm/page.h
+@@ -110,8 +110,10 @@ extern unsigned long min_low_pfn;
+ #define page_to_bus(page)	(page_to_phys(page))
+ #define phys_to_page(paddr)	(pfn_to_page(phys_to_pfn(paddr)))
+
++#ifdef CONFIG_FLATMEM
+ #define pfn_valid(pfn) \
+ 	(((pfn) >= pfn_base) && (((pfn)-pfn_base) < max_mapnr))
++#endif
+
+ #define ARCH_PFN_OFFSET		(pfn_base)
+
+diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+index a364aba23d55..dbc19e61ee66 100644
+--- a/arch/riscv/include/asm/pgtable.h
++++ b/arch/riscv/include/asm/pgtable.h
+@@ -83,6 +83,23 @@ extern pgd_t swapper_pg_dir[];
+ #define __S110	PAGE_SHARED_EXEC
+ #define __S111	PAGE_SHARED_EXEC
+
++#define VMALLOC_SIZE     (KERN_VIRT_SIZE >> 1)
++#define VMALLOC_END      (PAGE_OFFSET - 1)
++#define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
++
++/*
++ * Roughly size the vmemmap space to be large enough to fit enough
++ * struct pages to map half the virtual address space. Then
++ * position vmemmap directly below the VMALLOC region.
++ */
++#define VMEMMAP_SHIFT \
++	(CONFIG_VA_BITS - PAGE_SHIFT - 1 + STRUCT_PAGE_MAX_SHIFT)
++#define VMEMMAP_SIZE	(1UL << VMEMMAP_SHIFT)
++#define VMEMMAP_END	(VMALLOC_START - 1)
++#define VMEMMAP_START	(VMALLOC_START - VMEMMAP_SIZE)
++
++#define vmemmap		((struct page *)VMEMMAP_START)
++
+ /*
+  * ZERO_PAGE is a global shared page that is always zero,
+  * used for zero-mapped memory areas, etc.
+@@ -416,10 +433,6 @@ static inline void pgtable_cache_init(void)
+ 	/* No page table caches to initialize */
+ }
+
+-#define VMALLOC_SIZE     (KERN_VIRT_SIZE >> 1)
+-#define VMALLOC_END      (PAGE_OFFSET - 1)
+-#define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
+-
+ /*
+  * Task size is 0x4000000000 for RV64 or 0xb800000 for RV32.
+  * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
+diff --git a/arch/riscv/include/asm/sparsemem.h b/arch/riscv/include/asm/sparsemem.h
+new file mode 100644
+index 000000000000..b58ba2d9ed6e
+--- /dev/null
++++ b/arch/riscv/include/asm/sparsemem.h
+@@ -0,0 +1,11 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++#ifndef __ASM_SPARSEMEM_H
++#define __ASM_SPARSEMEM_H
++
++#ifdef CONFIG_SPARSEMEM
++#define MAX_PHYSMEM_BITS	CONFIG_PA_BITS
++#define SECTION_SIZE_BITS	27
++#endif /* CONFIG_SPARSEMEM */
++
++#endif /* __ASM_SPARSEMEM_H */
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index 42bf939693d3..73f40c9d3dee 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -442,6 +442,16 @@ static void __init setup_vm_final(void)
+ void __init paging_init(void)
+ {
+ 	setup_vm_final();
++	memblocks_present();
++	sparse_init();
+ 	setup_zero_page();
+ 	zone_sizes_init();
+ }
++
++#ifdef CONFIG_SPARSEMEM
++int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
++			       struct vmem_altmap *altmap)
++{
++	return vmemmap_populate_basepages(start, end, node);
++}
++#endif
+--
+2.20.1
 
 _______________________________________________
 linux-riscv mailing list
