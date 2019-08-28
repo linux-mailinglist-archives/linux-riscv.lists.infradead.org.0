@@ -2,83 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FEE0A0DA1
-	for <lists+linux-riscv@lfdr.de>; Thu, 29 Aug 2019 00:33:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E121AA0E63
+	for <lists+linux-riscv@lfdr.de>; Thu, 29 Aug 2019 01:42:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=py7KJYbWusGl1Tiyz+ALBzRyzq2GX5NTU6XHDW31pgw=; b=P5DL0TBZSsEPNc
-	t4yOS2WHgmZbegXH6nQXBuKs5eRaNU60XpYz+fpBvB3eG3zOWOgKtBqUgql/9nWbuaAIAraZVe7Yk
-	DrhCsYYKZqZDt8ivHrKuZXyedRIKHNutc2UNEmEnNOFPtdIR9Ob8OfzqRboth8jkpf6uhcKub4qVI
-	7srPwYrO9EQiLxDE6US1d3TXLdvnumJn8QCCyZNJ+glCKHOiTvzPMontTNS2NjLjEnNJy7273rYX7
-	TIOETsJhn8Kw/uOhhz3S7DVjx81bK+QxclDE6m9njaQCsZHZyWM42embvpqk+3KgUWnlIfRoUg9SU
-	5UEuL+K/9y4DJ5/FN6xw==;
+	List-Owner; bh=dtCM+HHJ7KUjCYpqd+4P3zNstnTbTU64I3hG7DNS6z8=; b=UL9s9fNtksvCMy
+	ZSDSeh27/hM5SBkflxAjhhn21NstRtnSYXoimPn086h9KD8xf4bJUgTQECCU/unNOUNz36dWpnLS+
+	K/eWYV79K/0c6MbZG7xS2fPp1GQ/F1o6KE3N6ueICtDKOyR4oXhKebMX+0r1bUa+zfSBhnj6TUhdD
+	V4ajKu6vDTsdruz3C2klcu8GMo6tlV1v9M1aKow1fU7Vu2lnAk+1pTKqKMRiBULjvoptbgigwQZ2z
+	9IrG2J/IsUfHpl2tVRdvoXpcMEwolMmvShglmc2w/EBIVQ69GYpsr1LPJh5tHcAwX2fPOi6oFUSZQ
+	ikO+DuJ0vhlIGT+U/fpA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i36Vk-0002nw-IJ; Wed, 28 Aug 2019 22:33:52 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1i37Zq-00059T-TT; Wed, 28 Aug 2019 23:42:11 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i36Vg-0002nG-Iq
- for linux-riscv@lists.infradead.org; Wed, 28 Aug 2019 22:33:50 +0000
-Received: by mail-pf1-x444.google.com with SMTP id y200so683104pfb.6
- for <linux-riscv@lists.infradead.org>; Wed, 28 Aug 2019 15:33:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=66PbkMb43wbFePH3agbP8gVcp9PdE3fuoyONvv239XQ=;
- b=fhxwaF26Wm3uShV8EW5J5fXTEdJvGmHs8vWkWAdYOkIH1kDl6rpTUHKsB97Cf0VnyC
- zgt4tRBx/+Sk78gKLTUpjLsj+QwOOc/W+bEYxFumrwPjI38Qk7qLljoVCMOGa54MXKmW
- JK3orfdUI4DRBu2ljL/QPVrQwLSEws7pXJVboyHfDsFk0cuqoGsakjx9lguvNeHxdcJu
- xtm0Rhy8KQKuux76x4KfCfv2NvspJ5Gzwbj6s5AwlZWiSV/wfOADWCa7yrkZMw+A2cUT
- r3RTY7ps6c947DLJUiZ0pCIptAH+an3QZeJ7BcsPRnZ/uDOeA9k1ccjBth22lgQ13IvT
- B/Cg==
+ id 1i37Za-0004zv-Le; Wed, 28 Aug 2019 23:41:56 +0000
+Received: by mail-pg1-x542.google.com with SMTP id i18so528431pgl.11;
+ Wed, 28 Aug 2019 16:41:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=LEwbl1nqNHBHcJacD9dfeICHgcsBE/f/ceNiyU0uO2c=;
+ b=kWxS12FOGo7kRO8bUZisQdbdPaD7m90liBO1DJILGgor5och3M3Y8ixQUrLiOlvUAQ
+ KSCAKzPOIhK4qh4mkp723yecDQTzrNvHfSo5O2PLFMUzPr9tFIvttGdACmQk3GcLv9I5
+ cjYvi8Gr7ER3JMRMI2IeaYoSEzfDVilJaC9VvUum/aPr5t4C5xA5idz5lFsS5zANKFcg
+ 337AY91x4TvIwnn1y9efIs3f4w9SNmURv9K2dvAIcHu0ypgbd+SQV2CIW7BfJIlZApXq
+ u8dQIG+K1EEA2/INmvvXiOQePA1oy0eoOgbrzRogC4V4vLfCANYJbRnPt4/hj/mnM9HJ
+ IDqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=66PbkMb43wbFePH3agbP8gVcp9PdE3fuoyONvv239XQ=;
- b=CVnuFhCZie5SJQA8Xwv+5MhaPJ3jNU9lwVqENmA0QARrffSWvStwO1iqYyTwDQ/NQq
- d/a0R9P6LEIlKpMJhX9dr7srNCg5Ip48lI671CxQdsRyOjftyuEl9uUEHRLMf44Sbe7A
- eLP7bVOB1pUFSAQbNXvpR3u2C+X4F5w5EJh+ox6EB/wwIdb2/he7RGtxGCzVWQw/oLqJ
- HcgmcWJwmmQi89sFiBvKNsrcmsfddU2I+hzYRQ7/dGO3zcbHnUlM3NCXjItB/283MOrY
- A/psRbPRNuoNSGEv/E9K3YPOAdWtlNcAe1rxo/cZCKi0N7BJgDVisi0hjR1Yaw4oJ/gk
- +aww==
-X-Gm-Message-State: APjAAAW8+73Vh6ktsttr7uk+nUfsb2Wh+lRWG0xmDZNPwriUtmmGt6yx
- /KgoXSRBupJw0sPXcQv2VDeL0g==
-X-Google-Smtp-Source: APXvYqxTOiRNDO+k+BbIpv0/8yRNCFnmkuiNEmxI3IEa1o8dk3cZhV09PVMFEK8qrPHTNbD21MdJpg==
-X-Received: by 2002:aa7:991a:: with SMTP id z26mr7426934pff.43.1567031627382; 
- Wed, 28 Aug 2019 15:33:47 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id p5sm397972pfg.184.2019.08.28.15.33.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Aug 2019 15:33:46 -0700 (PDT)
-Date: Wed, 28 Aug 2019 15:33:46 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Anup Patel <anup@brainfault.org>
-Subject: Re: [PATCH v2] RISC-V: Fix FIXMAP area corruption on RV32 systems
-In-Reply-To: <CAAhSdy0XALGpc-bCuO7njiBT3p-YvLqhMnRTRu4Hd4gMKeQMTw@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1908281526410.13811@viisi.sifive.com>
-References: <20190819051345.81097-1-anup.patel@wdc.com>
- <alpine.DEB.2.21.9999.1908261704500.10109@viisi.sifive.com>
- <CAAhSdy0XALGpc-bCuO7njiBT3p-YvLqhMnRTRu4Hd4gMKeQMTw@mail.gmail.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=LEwbl1nqNHBHcJacD9dfeICHgcsBE/f/ceNiyU0uO2c=;
+ b=tEFtvqfeCxP95IhaK+TZPSVfjuHejDr9LmUgX2K57nXJ1m/zxlGuRzZQ4n5UQQl0od
+ 13buXO0HWKsGR+qPx8aFl1swBbWBxJH4iph8YdDBK3oeXoZIcz0EomZiUtBbHMCediw/
+ tvznUN8aVqyIFJiGqaSwXYysa9k+MbdA81QPfw3bN+2pSTy4giWbDNujjvA7wHNQHRfj
+ hOr7agMco+Ps1CQ7uXET27dtTYcatihEaCBtH0Qc6yD5wxHRmMBQSgR0mTdobwFkL7D2
+ FTB4UbV8yQ2xgjgWPFpVyhPM3EfqSNUg0W/mBT0RgQBvgdFytaocq8eJ0hCPAtw/erA5
+ VZeg==
+X-Gm-Message-State: APjAAAW70pUJ5kSyJeIEEV9zEH3+nQ3vZAhpkKP93WJnjuzxH/c6jbEI
+ QRjXed+mR5kwYo3Yqo7fHx4=
+X-Google-Smtp-Source: APXvYqyltBUmIDPff9MzOKVsnLKdLLLDhQKStB24jbwVvtjezQpxtP9BLXnDENuon3HqazilZSGjqw==
+X-Received: by 2002:a17:90a:32a3:: with SMTP id
+ l32mr7061863pjb.14.1567035708956; 
+ Wed, 28 Aug 2019 16:41:48 -0700 (PDT)
+Received: from mail.google.com ([149.28.153.17])
+ by smtp.gmail.com with ESMTPSA id g1sm270497pgg.27.2019.08.28.16.41.44
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 28 Aug 2019 16:41:48 -0700 (PDT)
+Date: Wed, 28 Aug 2019 23:41:34 +0000
+From: Changbin Du <changbin.du@gmail.com>
+To: Steven Rostedt <rostedt@goodmis.org>
+Subject: Re: [PATCH 01/11] ftrace: move recordmcount tools to scripts/ftrace
+Message-ID: <20190828234133.quir3ptl4kidnxud@mail.google.com>
+References: <20190825132330.5015-1-changbin.du@gmail.com>
+ <20190825132330.5015-2-changbin.du@gmail.com>
+ <20190826184444.09334ae9@gandalf.local.home>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190826184444.09334ae9@gandalf.local.home>
+User-Agent: NeoMutt/20180716-508-7c9a6d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190828_153348_659392_9A20A16D 
-X-CRM114-Status: GOOD (  25.15  )
+X-CRM114-CacheID: sfid-20190828_164154_713591_283AD695 
+X-CRM114-Status: GOOD (  11.58  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (changbin.du[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -98,84 +100,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Palmer Dabbelt <palmer@sifive.com>, Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ linux-parisc@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ linux-sh@vger.kernel.org, "John F . Reiser" <jreiser@BitWagon.com>,
+ x86@kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mips@vger.kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Jessica Yu <jeyu@kernel.org>, sparclinux@vger.kernel.org,
+ linux-kbuild@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
+ Matt Helsley <mhelsley@vmware.com>, linuxppc-dev@lists.ozlabs.org,
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Changbin Du <changbin.du@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 27 Aug 2019, Anup Patel wrote:
-
-> On Tue, Aug 27, 2019 at 5:43 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> >
-> > On Mon, 19 Aug 2019, Anup Patel wrote:
-> >
-> > > Currently, various virtual memory areas of Linux RISC-V are organized
-> > > in increasing order of their virtual addresses is as follows:
-> > > 1. User space area (This is lowest area and starts at 0x0)
-> > > 2. FIXMAP area
-> > > 3. VMALLOC area
-> > > 4. Kernel area (This is highest area and starts at PAGE_OFFSET)
-> > >
-> > > The maximum size of user space aread is represented by TASK_SIZE.
-> > >
-> > > On RV32 systems, TASK_SIZE is defined as VMALLOC_START which causes the
-> > > user space area to overlap the FIXMAP area. This allows user space apps
-> > > to potentially corrupt the FIXMAP area and kernel OF APIs will crash
-> > > whenever they access corrupted FDT in the FIXMAP area.
-> > >
-> > > On RV64 systems, TASK_SIZE is set to fixed 256GB and no other areas
-> > > happen to overlap so we don't see any FIXMAP area corruptions.
-> > >
-> > > This patch fixes FIXMAP area corruption on RV32 systems by setting
-> > > TASK_SIZE to FIXADDR_START.
-> >
-> > This part -- the TASK_SIZE change -- makes sense to me.
-> >
-> > However, the patch also changes FIXADDR_SIZE to be defined in terms of
-> > page table-related constants.  Previously, FIXADDR_SIZE was based on
-> > __end_of_fixed_addresses, as it is for most other architectures. The part
-> > of the patch that changes FIXADDR_SIZE seems unrelated to the actual fix.
-> >
-> > If that's indeed the case -- that the change to FIXADDR_SIZE is unrelated
-> > from the fix -- could you please split that into a separate patch, with a
-> > description of the rationale?  I think I understand why you're proposing
-> > it, but it seems odd to explicitly connect it to page table-related
-> > constants, rather than the contents of "enum fixed_addresses", and I'm
-> > reluctant to merge that part of this patch without a bit more discussion.
+On Mon, Aug 26, 2019 at 06:44:44PM -0400, Steven Rostedt wrote:
+> On Sun, 25 Aug 2019 21:23:20 +0800
+> Changbin Du <changbin.du@gmail.com> wrote:
 > 
-> The FIXADDR_SIZE change is related to the TASK_SIZE requirement and
-> it is not a separate change because:
+> > Move ftrace tools to its own directory. We will add another tool later.
+> > 
+> > Cc: John F. Reiser <jreiser@BitWagon.com>
+> > Signed-off-by: Changbin Du <changbin.du@gmail.com>
+> > ---
+> >  scripts/.gitignore                   |  1 -
+> >  scripts/Makefile                     |  2 +-
+> >  scripts/Makefile.build               | 10 +++++-----
+> >  scripts/ftrace/.gitignore            |  4 ++++
+> >  scripts/ftrace/Makefile              |  4 ++++
+> >  scripts/{ => ftrace}/recordmcount.c  |  0
+> >  scripts/{ => ftrace}/recordmcount.h  |  0
+> >  scripts/{ => ftrace}/recordmcount.pl |  0
+> >  8 files changed, 14 insertions(+), 7 deletions(-)
+> >  create mode 100644 scripts/ftrace/.gitignore
+> >  create mode 100644 scripts/ftrace/Makefile
+> >  rename scripts/{ => ftrace}/recordmcount.c (100%)
+> >  rename scripts/{ => ftrace}/recordmcount.h (100%)
+> >  rename scripts/{ => ftrace}/recordmcount.pl (100%)
+> >  mode change 100755 => 100644
 > 
-> 1. TASK_SIZE must be evenly divisible by PGDIR_SIZE. The FIXADDR_START
-> is defined as (FIXADDR_TOP - FIXADDR_SIZE). The original FIXADDR_SIZE
-> defined in-terms of __end_of_fixed_addresses is not a multiple of PGDIR_SIZE
-> hence it makes sense to make FIXADDR_SIZE as PGDIR_SIZE.
+> Note, we are in the process of merging recordmcount with objtool. It
+> would be better to continue from that work.
 > 
-> 2. Let say we ignore point1 above then still we cannot continue to express
-> FIXADDR_SIZE in-terms of __end_of_fixed_addresses because of cyclic
-> header dependency where asm/fixmap.h includes asm/pgtable.h and
-> __end_of_fixed_addresses is defined in asm/fixmap.h. We certainly need
-> to move FIXADDR_TOP, FIXADDR_START, and FIXADDR_SIZE to
-> asm/pgtable.h so that we can express TASK_SIZE as FIXADDR_START
-> for RV32. If we don't simplify FIXADDR_SIZE then it will result in compile
-> errors.
+>  http://lkml.kernel.org/r/2767f55f4a5fbf30ba0635aed7a9c5ee92ac07dd.1563992889.git.mhelsley@vmware.com
+> 
+> -- Steve
+Thanks for reminding. Let me check if prototype tool can merge into
+objtool easily after above work.
 
-
-It would be better if we could stick to the same approach used by other 
-Linux architectures.  That keeps things consistent across architectures.  
-However, in the short term, as you note, the header file changes to get to 
-that point are likely to be too intense for the late -rc series that we're 
-in.
-
-So, queued for v5.3-rc7.  Thanks very much for the speedy fix,
-
-
-- Paul
+-- 
+Cheers,
+Changbin Du
 
 _______________________________________________
 linux-riscv mailing list
