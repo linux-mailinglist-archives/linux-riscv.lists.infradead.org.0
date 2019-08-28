@@ -2,66 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 925349F898
-	for <lists+linux-riscv@lfdr.de>; Wed, 28 Aug 2019 05:07:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76AA89FA33
+	for <lists+linux-riscv@lfdr.de>; Wed, 28 Aug 2019 08:10:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nTv3jIF23uoeaiEtg8+vjvqw5PNJAW+uJSJBL7cRwTQ=; b=BMm09zv635aio3
-	Tu4wRTXozgHJ7RQBUBwgen0XiIqztf1GwzFS2kDqgkDS7vfjqlcXPk705xxTnvibr50uJhwfwGFa6
-	29AQvXaGwBKLY0MZYzhmBsItVGJbpQvEpvvZTkkidbJ+pBLSlPxNXn2LDTZ2prLWAwZYAibGQ9jXc
-	k3OfGF+f6luGnz+7wPvm2fuyO2RJU37uP3ccn7F1VrAZx9GLl6oi32we9AdBCRwy45G7xSEYPNHiz
-	84jXJnQpqfvhCmABDy1Rw21vovPzHc6LMjHF5UfsIkJuVc3BEnvdQnMl0x78qcJ38nT5c2sMLzRys
-	t3uK+0B5rDPCF5Tv/THQ==;
+	List-Owner; bh=68D2w/f6hDP8M+IrdRD5/xxU2nfOaTgfGe80G7BYAH8=; b=TvbdzrXWc2JHm0
+	i7YlK0+ip1uw1/qEe7Db5w/LkjnUdOl731cf2y8xgOHiajUjCe40C5dPW5eAC6XdmSmSAQX5tOK8Q
+	0kmKIVr2TNyox78Aj4f5tZotrhxOSKwXaVH+x1NHKcZdBPABWNXk4NnYm+2WQXtMaPx59sLLEhapZ
+	+KhdDQyW3fNIVTf1/E4YZzAqvUbMUgo5UXr0a2XSaG0Uy9llQ4LxLe5UmNnX2b4+Ca613PJZUdgBi
+	PIOCHVC5UEssi7D25J8zivVVux+67LLZu1CRduYoVYQS9Kr4HPmRUw4qbOCgBMsB2zC4z0NqmZlnx
+	ny5ntlVIWqtyiAEr8bLQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2oJD-00066h-Vy; Wed, 28 Aug 2019 03:07:44 +0000
-Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
- helo=ATCSQR.andestech.com)
+	id 1i2r9Z-000658-BZ; Wed, 28 Aug 2019 06:09:57 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2oJ5-000662-Dv
- for linux-riscv@lists.infradead.org; Wed, 28 Aug 2019 03:07:37 +0000
-Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x7S2s7NW017694;
- Wed, 28 Aug 2019 10:54:07 +0800 (GMT-8)
- (envelope-from nickhu@andestech.com)
-Received: from andestech.com (10.0.15.65) by ATCPCS16.andestech.com
- (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Wed, 28 Aug 2019
- 11:06:44 +0800
-Date: Wed, 28 Aug 2019 11:06:44 +0800
-From: Nick Hu <nickhu@andestech.com>
-To: Andrey Ryabinin <aryabinin@virtuozzo.com>, Paul Walmsley
- <paul.walmsley@sifive.com>
-Subject: Re: [PATCH 1/2] riscv: Add memmove string operation.
-Message-ID: <20190828030644.GA20064@andestech.com>
-References: <cover.1565161957.git.nickhu@andestech.com>
- <a6c24ce01dc40da10d58fdd30bc3e1316035c832.1565161957.git.nickhu@andestech.com>
- <09d5108e-f0ba-13d3-be9e-119f49f6bd85@virtuozzo.com>
- <20190827090738.GA22972@andestech.com>
- <92dd5f5f-c8a2-53c3-4d61-44acc4366844@virtuozzo.com>
+ id 1i2r9Q-00064Q-AZ
+ for linux-riscv@lists.infradead.org; Wed, 28 Aug 2019 06:09:50 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 9028268AFE; Wed, 28 Aug 2019 08:09:42 +0200 (CEST)
+Date: Wed, 28 Aug 2019 08:09:42 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Palmer Dabbelt <palmer@sifive.com>
+Subject: Re: [PATCH 8/8] riscv: ignore the SYS_RISCV_FLUSH_ICACHE_LOCAL flag
+Message-ID: <20190828060942.GA21592@lst.de>
+References: <20190822065612.28634-9-hch@lst.de>
+ <mhng-363188c5-b80c-4935-8a84-861fbdb1e8e4@palmer-si-x1e>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <92dd5f5f-c8a2-53c3-4d61-44acc4366844@virtuozzo.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Originating-IP: [10.0.15.65]
-X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x7S2s7NW017694
+In-Reply-To: <mhng-363188c5-b80c-4935-8a84-861fbdb1e8e4@palmer-si-x1e>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_200735_733062_CB67B306 
-X-CRM114-Status: GOOD (  14.77  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20190827_230948_519212_C627A7A0 
+X-CRM114-Status: GOOD (  12.50  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 TVD_RCVD_IP            Message was received from an IP address
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
- dynamic-looking rDNS
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,88 +59,42 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- Alan Quey-Liang =?utf-8?B?S2FvKOmrmOmtgeiJryk=?= <alankao@andestech.com>,
- "atish.patra@wdc.com" <atish.patra@wdc.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kasan-dev@googlegroups.com" <kasan-dev@googlegroups.com>,
- =?utf-8?B?6Zui6IG3Wm9uZyBab25nLVhpYW4gTGko5p2O5a6X5oayKQ==?=
- <zong@andestech.com>, "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
- "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
- "glider@google.com" <glider@google.com>,
- "green.hu@gmail.com" <green.hu@gmail.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "deanbo422@gmail.com" <deanbo422@gmail.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "dvyukov@google.com" <dvyukov@google.com>
+Cc: linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Paul,
+On Tue, Aug 27, 2019 at 06:10:33PM -0700, Palmer Dabbelt wrote:
+> This is meant to perform a context-local flush, not a cpu-local flush.  The 
+> whole point here is that userspace doesn't know anything about CPUs, just 
+> contexts -- that's why we have this deferred flush mechanism.  I think the 
+> logic is complicated but sound, and removing this will almost certainly 
+> lead to huge performance degradation.
 
-On Tue, Aug 27, 2019 at 05:33:11PM +0800, Andrey Ryabinin wrote:
-> 
-> 
-> On 8/27/19 12:07 PM, Nick Hu wrote:
-> > Hi Andrey
-> > 
-> > On Thu, Aug 22, 2019 at 11:59:02PM +0800, Andrey Ryabinin wrote:
-> >> On 8/7/19 10:19 AM, Nick Hu wrote:
-> >>> There are some features which need this string operation for compilation,
-> >>> like KASAN. So the purpose of this porting is for the features like KASAN
-> >>> which cannot be compiled without it.
-> >>>
-> >>
-> >> Compilation error can be fixed by diff bellow (I didn't test it).
-> >> If you don't need memmove very early (before kasan_early_init()) than arch-specific not-instrumented memmove()
-> >> isn't necessary to have.
-> >>
-> >> ---
-> >>  mm/kasan/common.c | 2 ++
-> >>  1 file changed, 2 insertions(+)
-> >>
-> >> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> >> index 6814d6d6a023..897f9520bab3 100644
-> >> --- a/mm/kasan/common.c
-> >> +++ b/mm/kasan/common.c
-> >> @@ -107,6 +107,7 @@ void *memset(void *addr, int c, size_t len)
-> >>  	return __memset(addr, c, len);
-> >>  }
-> >>  
-> >> +#ifdef __HAVE_ARCH_MEMMOVE
-> >>  #undef memmove
-> >>  void *memmove(void *dest, const void *src, size_t len)
-> >>  {
-> >> @@ -115,6 +116,7 @@ void *memmove(void *dest, const void *src, size_t len)
-> >>  
-> >>  	return __memmove(dest, src, len);
-> >>  }
-> >> +#endif
-> >>  
-> >>  #undef memcpy
-> >>  void *memcpy(void *dest, const void *src, size_t len)
-> >> -- 
-> >> 2.21.0
-> >>
-> >>
-> >>
-> > I have confirmed that the string operations are not used before kasan_early_init().
-> > But I can't make sure whether other ARCHs would need it before kasan_early_init().
-> > Do you have any idea to check that? Should I cc all other ARCH maintainers?
->  
-> 
-> This doesn't affect other ARCHes in any way. If other arches have their own not-instrumented
-> memmove implementation (and they do), they will continue to be able to use it early.
+All calls to flush_icache_mm are local to the context.  Take a look at
+what the current code does:
 
-I prefer Andrey's method since porting the generic string operations with newlib ones should
-be a separated patch from KASAN.
+ - set all bits in context.icache_stale_mask
+ - clear the current cpu from context.icache_stale_mask
+ - flush the cpu local icache
+ - create a local others mask containing every cpu running the context
+   except for the current one
+ - now if others is empty OR the local flag is set don't do anything
+   but a memory barrier, else flush the other cpus
 
-Nick
+>
+> Maybe I'm missing something, what is the specific issue?
+
+The issue is that the current implementation of
+SYS_RISCV_FLUSH_ICACHE_LOCAL only flushes the icache of the currently
+running core, which is an interface that can't be used correctly.
+
+riscv_flush_icache without that flag on the other handle already just
+flushes the caches for the cpus that run the current context, and then
+causes a deferred flush if the context gets run on another cpu
+eventually.
 
 _______________________________________________
 linux-riscv mailing list
