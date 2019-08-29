@@ -2,37 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFB10A1797
-	for <lists+linux-riscv@lfdr.de>; Thu, 29 Aug 2019 12:59:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D9516A17A0
+	for <lists+linux-riscv@lfdr.de>; Thu, 29 Aug 2019 13:02:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FOo2dIIM8ew4MbzqzG+iVa/p0YRcbTrpgvX4BiGcIs0=; b=VbRlbmX4a8YISs
-	hYNpg0mZfiRqIWnknF1qrfyXgk0JeU2G3XFckgnDTs9irWMndHvPLVo6briMSoWGnthyJ/rBvCzC0
-	A4f3pqU0gNMrv9z32Zt4dD0/Lo2VfPQj3QT8ztTO0lekkyaQOXABbL8POuLFUMyiXIFtJVDh/ZGIF
-	DJ7RSl3RNuFQ8Q/LS10W4eMISpVpyoRh5asxyVu9vO/8nHOuYcGxToCjuypI40mmy1hw5o4JoFV/5
-	PMaFa7TBmOHuBy3jy/hNshP7B7am9WjQ/dhzvZU6VzSvX5ccv38W+AEPFrqJc0by/kWCPUbUfY7ln
-	M/hksRP3XUS0L7tsprSg==;
+	List-Owner; bh=IzZt16HZh3WXjciq37DYEbAoLufAShCu2T4f1+TvaSE=; b=fFTJZQmRVrecTf
+	HLweVHCexGJtP2YSaC0optSoplBBikt6j5jhZSWjjf7R5MfYQYkQ14QgXG6kO5VrSiqafoecE9Qoj
+	nnznh0ynAISzky/3eiCCnoRbj/AvV63N5K6s4slSbP4Yh2UjGxOKMBwfpme3qJu2hA7ddu5CXW5Vi
+	hdaIX0I/ShmVJkMs6yY95F38/1hlnZfgw7Zt444gJyolegPncZur21ZIDnlC1qOkkLsKlNzPVF5Rg
+	3WayQbII8ca7V3mkHlns3m6s33m0e2PtWLFo1M+P7/i+ronpwHwTMejLuDuiggRTeM/jn+/DCMRtF
+	80bK2x4ubYeh6b4o+pPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i3I9C-0002pF-HA; Thu, 29 Aug 2019 10:59:22 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
- Linux)) id 1i3I99-0002ot-RM; Thu, 29 Aug 2019 10:59:19 +0000
-Date: Thu, 29 Aug 2019 03:59:19 -0700
-From: "hch@infradead.org" <hch@infradead.org>
-To: Atish Patra <Atish.Patra@wdc.com>
-Subject: Re: [RFC PATCH 0/2] Add support for SBI version to 0.2
-Message-ID: <20190829105919.GB8968@infradead.org>
-References: <20190826233256.32383-1-atish.patra@wdc.com>
- <20190827144624.GA18535@infradead.org>
- <a31c39e8653bd04efe0051a5fd6f0238d33a80e7.camel@wdc.com>
+	id 1i3IBf-0004BA-5a; Thu, 29 Aug 2019 11:01:55 +0000
+Received: from verein.lst.de ([213.95.11.211])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1i3IBc-0004AR-00
+ for linux-riscv@lists.infradead.org; Thu, 29 Aug 2019 11:01:53 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 120E168B20; Thu, 29 Aug 2019 13:01:46 +0200 (CEST)
+Date: Thu, 29 Aug 2019 13:01:45 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [PATCH v6] RISC-V: Implement sparsemem
+Message-ID: <20190829110145.GA15360@lst.de>
+References: <20190828214054.3562-1-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <a31c39e8653bd04efe0051a5fd6f0238d33a80e7.camel@wdc.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20190828214054.3562-1-logang@deltatee.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190829_040152_186683_664BDC08 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,63 +59,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "alankao@andestech.com" <alankao@andestech.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
- "hch@infradead.org" <hch@infradead.org>,
- "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
- "gary@garyguo.net" <gary@garyguo.net>,
- "anup@brainfault.org" <anup@brainfault.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "tglx@linutronix.de" <tglx@linutronix.de>
+Cc: Rob Herring <robh@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
+ Andrew Waterman <andrew@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel@vger.kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Zong Li <zong@andestech.com>, Michael Clark <michaeljclark@mac.com>,
+ Olof Johansson <olof@lixom.net>, Greentime Hu <greentime.hu@sifive.com>,
+ linux-riscv@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Aug 27, 2019 at 10:19:42PM +0000, Atish Patra wrote:
-> I did not understand this part. All the legacy SBI calls are defined as
-> a separate extension ID not single extension. How did it break the
-> backward compatibility ?
-
-Yes, sorry I mistead this.  The way is is defined is rather
-non-intuitive, but actually backwards compatible.
-
-> I think the confusion is because of legacy renaming. They are not
-> single legacy extension. They are all separate extensions. The spec
-> just called all those extensions as collectively as legacy. So I just
-> tried to make the patch sync with the spec.
+> diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
+> index 9c66033c3a54..7b0259c044c9 100644
+> --- a/arch/riscv/include/asm/fixmap.h
+> +++ b/arch/riscv/include/asm/fixmap.h
+> @@ -31,7 +31,7 @@ enum fixed_addresses {
+>  };
 > 
-> If that's the source of confusion, I can rename it to sbi_0.1_x in
-> stead of legacy.
+>  #define FIXADDR_SIZE		(__end_of_fixed_addresses * PAGE_SIZE)
+> -#define FIXADDR_TOP		(VMALLOC_START)
+> +#define FIXADDR_TOP		(VMEMMAP_START)
+>  #define FIXADDR_START		(FIXADDR_TOP - FIXADDR_SIZE)
 
-I think we actually need to fix the spec instead, even if it just the
-naming and not the mechanism.
+Note that this actually changes again in the fixes branch that
+is targeted for 5.3.  Not actually conflicting your functionality,
+but the FIXADDR_TOP definition moves to pgtable.h.
 
-> >  (1) actually board specific and have not place in a cpu abstraction
-> >      layer: getchar/putchar, these should just never be advertised in
-> > a
-> >       non-legacy setup, and the drivers using them should not probe
-> >       on a sbi 0.2+ system
-> 
-> In that case, we have to update the drivers(earlycon-riscv-sbi &
-> hvc_riscv_sbi) in kernel as well. Once these patches are merged, nobody
-> will be able to use earlycon=sbi feature in mainline kernel.
-> 
-> Personally, I am fine with it. But there were some interest during
-> RISC-V workshop in keeping these for now for easy debugging and early
-> bringup.
-
-The getchar/putchar calls unfortunately are fundamentally flawed, as
-they mean the sbi can still access the console after the host has taken
-it over using its own drivers.  Which will lead to bugs sooner or later.
-
-And if you can bring up a console driver in opensbi it should be just
-as trivial to bring up the kernel version.
+Otherwise this still looks fine.
 
 _______________________________________________
 linux-riscv mailing list
