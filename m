@@ -2,73 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E8BBA41CA
-	for <lists+linux-riscv@lfdr.de>; Sat, 31 Aug 2019 04:50:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98A0EA41CD
+	for <lists+linux-riscv@lfdr.de>; Sat, 31 Aug 2019 04:53:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BATF9tmm1ZO89xqZ16/WYB+WYfcYmgZH5P+aLzDCN0M=; b=oi/OlY8XsNI4HH
-	L3M3Zo4TsmfAb7+vw2I0X1dm+iTjo9pm1YjZ1C3zRLGKYJs7DigFU8m3qcZPlvxKjShAmKwAkpIRt
-	YFG7rr2o3dY5jTLNblzZ50RG3ypofmqzPoSkmktl9Eeg1W0SzJ9ydfNs6Vr25z5+qNcWDqPxbNi0N
-	ECr0lnYhVAilG5VVf2GH59jZOhrli4ZoZeIgql4melqNSpilFpYmnd7a5YnGPv9gzkqCf69FPplmG
-	wGExMaT26owmLj+k6yxfHnjToA0Ku6tsxTXMdd7w/nWI41Pk4sHx1yL9zLL3K//+kU/WS1bCE4YMg
-	ZUGFiLynAZMSoje1ADpg==;
+	List-Owner; bh=nghDBzceOI6+hmbeBVK71+WJD38K8m+7UNAQZcJ1gZU=; b=DzUzeCliFnMh6O
+	+o6IjTZcWbTihxogZClJ478u6nvnxWZfpDo/XgC9aaonW42mizbLBWsG7oyTueocoffZ5gpoo6uVs
+	fPsTNGFFF/m7SAHiTiUFDAka17Y+nHPKmLT02SvJp9GJPDEGppX6UuxotYFtUtsnzQZ2832douJHO
+	MWhNIgE7PX1Rv0uetWiz2b8fiYpE9JWwB9+WrPV4DlylWqAI3ldCOrTLKnBmBrW7NSq3yjofG1wke
+	7fWUnk3vi3vaYevYJ0B7D7Tq7ayDKnyLNq58OmUIpebwgPR5bAK4nUGBOwBDiDnnBaYFSXUCbjNCI
+	LHe0zNojhaHa8BshcvjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i3tTL-0001C8-Br; Sat, 31 Aug 2019 02:50:39 +0000
+	id 1i3tVz-0001Jv-V5; Sat, 31 Aug 2019 02:53:23 +0000
 Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i3tTI-0001Bo-8T
- for linux-riscv@lists.infradead.org; Sat, 31 Aug 2019 02:50:37 +0000
-Received: by mail-pg1-x543.google.com with SMTP id p3so4416815pgb.9
- for <linux-riscv@lists.infradead.org>; Fri, 30 Aug 2019 19:50:35 -0700 (PDT)
+ id 1i3tVv-0001Jb-8V
+ for linux-riscv@lists.infradead.org; Sat, 31 Aug 2019 02:53:20 +0000
+Received: by mail-pg1-x543.google.com with SMTP id w10so4432762pgj.7
+ for <linux-riscv@lists.infradead.org>; Fri, 30 Aug 2019 19:53:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=pRGk1s9ftRrOgrFlJyIOUPDg0XINxHbTOG06p4KdZFQ=;
- b=j28iqp/6JSYiDZNbRISiYHb21g4mVidI5hA2fpwhhod9ip0yIepebDaVqaNC4NSZ6t
- F4sqJtg0aNnUBAJ4xvigwSkyU3d3BhU4fKyqFQwEEecpZb6omCOOgzbVZVdAwVudh8YS
- 6sAdCx1o8qqmfBIKwSjsLucJEbNfA+AnN8WTl8dWCKLDsa5HJRooFNeT9lMV7R87U2u9
- KXmlf47JGDrH7ILcbodi08i+6ehVBoujXc6/cUx4HyJ5u93ZM3FF54VbS+qgGeIEXSfV
- n5I3UI6QXxv203AO8+D/lzpzXof1tsEkr9j37CEL5qafNFHR6QEo9dMi6UqQFn1zoh8l
- UWDA==
+ bh=TcyKIVZa6jDNzUj3tYKEQq2VBZtAcn28A/dAzDMcqB4=;
+ b=WEFXcU/DVe/kv1NFGIue1kkWHjHKcmCywg9nrpJGCiS7ca6W4bHcBM3Cu27gMuR5HW
+ uhB/dZVPFbIXfClOL8SnPxO1gxt/kSe123AhkS9dlpnzRIMB4xFdN+j28LPYPlpOf5jH
+ Il+lak+vk4acWsOuL/1cgRkKDJq33XxaVya9p5gWcDnqX2DIQJeMkuIbFUoZOvlsIyPA
+ WekqyeJle+vtM2rP11vXmJyE90jKsJibWyumscs5dCxyITX7yX5+QdYEE90HUGq6gM7q
+ brauFe3CBWQQDuP2LHOGJVQ6f8jCdUzeLVHBFc9BikofxJ6rqOWsnm2GhHiPKZALGh3o
+ EQ1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=pRGk1s9ftRrOgrFlJyIOUPDg0XINxHbTOG06p4KdZFQ=;
- b=dlpOsuz+Tq6u3TnaJow2OQlEJ+11ZCdkEkG+qCMGhidciiMq2EhsOgyu21+wfd+1DD
- qk+Sds0dS5vMVRxzP5axFwpPOEsfGDXsx2u4LRPcyFpZiR5A5c3oNR0+3iIEbyyOV1kr
- XAaPdpTP14sgra4NjcL34sMNlfQ08niKfWX1sqBu9skG7he17rkm8vjPs6XYP1M5lbTw
- sgVRIz8n/cTG0nqxq4wVC4REw9Dn4JG8ytsLSZtFCtW4g7Ik1wm73sRZ3d0Eq1fiaz1H
- tWM3Kgy+8OWhtIDX28TWVQjzX7UqlMSSIh2xa3E8XfnlvFuFmpCDccWOt19bmaanrBbM
- jrZQ==
-X-Gm-Message-State: APjAAAUMvfRvbfSXPea/ru6nVIS3pekb7UntgVf/LP3ubepc2RTVUt0M
- 1e3guP7jg2M8nednHehLufR2Ew==
-X-Google-Smtp-Source: APXvYqyyIZTS2at8UaC2GBzO1HAEDcqCzwTOJ2eIeXn1Qqrvu+CLxM4PQ8fncDRODM0mD17f4WmUzQ==
-X-Received: by 2002:a63:f07:: with SMTP id e7mr16271558pgl.238.1567219835444; 
- Fri, 30 Aug 2019 19:50:35 -0700 (PDT)
-Received: from localhost ([216.9.110.5])
- by smtp.gmail.com with ESMTPSA id 195sm8287179pfu.75.2019.08.30.19.50.34
+ bh=TcyKIVZa6jDNzUj3tYKEQq2VBZtAcn28A/dAzDMcqB4=;
+ b=puiwBSL0jiX7LnpBi+/c04w7+/8+fWGW82RDDRKx6JhsuPr42UCodQs24hLDrkoXqU
+ mlP87LcPErc6wD5Kchs3HgoQsn2sARoPDJA9TJ45E1ip5hDyshr+0AOTPGfB4TiNs/bM
+ NHKIR+hYvVoUPMcqa6SSnOj6WW8UJm8Mp/uQjSl1M5EW/DNv4I732RENqZfBgSCJng9r
+ JZVC2sIKeU5GjpwWVlmYch0V8lJQSMpCRxAFkbRFlkrUbLMoQXjv3gVM81ujYZXPC+v1
+ IZwNNJVH/GjWPxAvHFjvkkQF5iHK3Q+a5owKViBqwDiqissfnzC7/HVUYawQX5sk2f2a
+ ND0Q==
+X-Gm-Message-State: APjAAAXEJVFpuDa3onWtr6Z1VwYfcG+vp01SfgaHZZTCff1INHPC1DPB
+ I1R8Sb1HfZ0ka82JiB3KgZzABA==
+X-Google-Smtp-Source: APXvYqxfFVxDzm4BjpO5NkLMuM3Xv0D2H4t0n+BOM+Ax/QLKeOjyc8MmEjXrNdn3uuElKoxhoMgpaA==
+X-Received: by 2002:a63:316:: with SMTP id 22mr4527823pgd.242.1567219998821;
+ Fri, 30 Aug 2019 19:53:18 -0700 (PDT)
+Received: from localhost ([216.9.110.10])
+ by smtp.gmail.com with ESMTPSA id i14sm4289933pfo.158.2019.08.30.19.53.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Aug 2019 19:50:34 -0700 (PDT)
-Date: Fri, 30 Aug 2019 19:50:33 -0700 (PDT)
+ Fri, 30 Aug 2019 19:53:18 -0700 (PDT)
+Date: Fri, 30 Aug 2019 19:53:17 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH v4 0/3] Optimize tlbflush path
-In-Reply-To: <20190822075151.24838-1-atish.patra@wdc.com>
-Message-ID: <alpine.DEB.2.21.9999.1908301939300.16731@viisi.sifive.com>
-References: <20190822075151.24838-1-atish.patra@wdc.com>
+To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/soc
+In-Reply-To: <20190822062635.00f6e507@coco.lan>
+Message-ID: <alpine.DEB.2.21.9999.1908301951080.16731@viisi.sifive.com>
+References: <20190818082935.14869-1-hch@lst.de>
+ <20190819060904.GA4841@zn.tnic> <20190819062619.GA20211@lst.de>
+ <20190822062635.00f6e507@coco.lan>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190830_195036_366935_822083AF 
-X-CRM114-Status: UNSURE (   6.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190830_195319_306152_37803C48 
+X-CRM114-Status: GOOD (  10.06  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -97,31 +98,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>
+Cc: palmer@sifive.com, linux-kernel@vger.kernel.org,
+ Yash Shah <yash.shah@sifive.com>, Borislav Petkov <bp@alien8.de>,
+ linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ linux-edac@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Atish,
+Hi Mauro,
 
-On Thu, 22 Aug 2019, Atish Patra wrote:
+On Thu, 22 Aug 2019, Mauro Carvalho Chehab wrote:
 
-> This series adds few optimizations to reduce the trap cost in the tlb
-> flush path. We should only make SBI calls to remote tlb flush only if
-> absolutely required. 
+> I'm wandering if we should at least add an entry for this one at
+> MAINTAINERS, pointing it to the EDAC mailing list. Something like:
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 7dfe381c8b43..1c3bc5aa3af0 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -5906,6 +5906,7 @@ M:	Yash Shah <yash.shah@sifive.com>
+>  L:	linux-edac@vger.kernel.org
+>  S:	Supported
+>  F:	drivers/edac/sifive_edac.c
+> +F:	drivers/soc/sifive/
+>  
+>  EDAC-SKYLAKE
+>  M:	Tony Luck <tony.luck@intel.com>
 
-The patches look great.  My understanding is that these optimization 
-patches may actually be a partial workaround for the TLB flushing bug that 
-we've been looking at for the last month or so, which can corrupt memory 
-or crash the system.
-
-If that's the case, let's first root-cause the underlying bug.  Otherwise 
-we'll just be papering over the actual issue, which probably could still 
-occur even with this series, correct?  Since it contains no explicit 
-fixes?
+There's already a MAINTAINERS entry that should cover drivers/soc/sifive.  
+Probably it's not needed to add another one here.
 
 
 - Paul
