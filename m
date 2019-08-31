@@ -2,54 +2,53 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CAB3A455F
-	for <lists+linux-riscv@lfdr.de>; Sat, 31 Aug 2019 18:30:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A0F94A4568
+	for <lists+linux-riscv@lfdr.de>; Sat, 31 Aug 2019 18:45:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:
+	References:In-Reply-To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PpNqA2pw0Dnc/v1SRmgDkpAs0WZbdcVgyC+9czs1yZ0=; b=pwm5+55tZ94L5O
-	NKJwi34vsLN0vaivUYJYy+9ttBv8WC0srSTgCHXR6dtkESFXNzP0zgv44JXZ7VOwBJcHsphtgIYqg
-	3FcrYdYJC29r1ECcPI64bbHKuouXfLERUvegBZ3xSM3oytnuKfMVDdRhrnU/f849VsRXZZaPWGTMj
-	EloHUJKALpJ1DB9SDu2ZKJmG3JhFVMOADCiEMJZxfSFE8LOIIU8ye3uJmdYZsT07ri/QoMFMkNAZi
-	E8yRflbVJCEWK4id7PDKrrVASwxbPMe+pLcYGj9LaUsJpKnKte3LIofH0bjmGpOE1y6HcGFF7kl/K
-	L2LA/WyhwKIwK1SuGRRA==;
+	List-Owner; bh=bGpL5HbZvdjvp6J9p/lPm6Ir9JeioUIdQBNxe1GIGYQ=; b=iD8Q5um9s9pTJe
+	Ov3eZ997pVSncsQUIROIa6Kpt5XlB8s9RVuON/1Bn+HxQSzKL8UA9Cd7ImoQ0lNgYw7Gbah2/bXNy
+	P2s5LHr4cPw/QPOTWvMFxQFaFQVLtys/Qf2P4lmtP2PnA2QqQDUW4Jl8R95gtveN4hZHDP+qdVUR2
+	7P6p0Om48Y9YlzHv2yh8uytmu3aAJnT14J3bkvgpqoj8qm/0cNW6JqVcQWab8YsToT97Mj0GG289D
+	Oi78mQZ8nj8sxIJ6NvfZTGLCLig7dsGzVuKOi1S3Gfe3SvV4I3MowyhpnDAhBw7W7JIoKyrL13H99
+	cGDnLmPVokGzPfjsaqTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i46Gl-0004gY-1t; Sat, 31 Aug 2019 16:30:31 +0000
+	id 1i46V0-0000U3-T1; Sat, 31 Aug 2019 16:45:14 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i46G4-00033V-E8; Sat, 31 Aug 2019 16:29:49 +0000
-Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2253522D37;
- Sat, 31 Aug 2019 16:29:40 +0000 (UTC)
+ id 1i46Ux-0000Th-15
+ for linux-riscv@lists.infradead.org; Sat, 31 Aug 2019 16:45:12 +0000
+Subject: Re: [GIT PULL] RISC-V updates for v5.3-rc7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567268985;
- bh=oCFqDXfnxrqpiBFRCwyD8nHXvoMvSjbxCsJhrxHTYqM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=vX6b95IdsVrDjTXh55KZNhoPNMKUITWlit4Ldb9kHZhxWpNoqZwiOB5EF5DJcLfuZ
- wmt8nfF1pggofVEAUJWY4K2cI3w83kg0ds8vBO0zGI/+b8iJT5NQEI4dH3G3L57NyD
- AwNlHxXQFvARoZXdkRSB9gHwMtmjWPnHQrjl8Gx4=
-Date: Sat, 31 Aug 2019 17:29:38 +0100
-From: Will Deacon <will@kernel.org>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 19/26] arm64: remove __iounmap
-Message-ID: <20190831162937.5ybulvaa4eq7mybs@willie-the-truck>
-References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-20-hch@lst.de>
- <20190819073601.4yxjvmyjtpi7tk56@willie-the-truck>
- <20190830160515.GC26887@lst.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190830160515.GC26887@lst.de>
-User-Agent: NeoMutt/20170113 (1.7.2)
+ s=default; t=1567269909;
+ bh=/fHp3kLHKPUyba/CwSRKgzyn/0MAzCsY6n0GeY7+VV4=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=mC4Vmv1qgV7xGwK+iUTOdka7OnIJGnuCBzx8jRswH3+WtqJILyIxV3iHyR2T0Vumo
+ v6p8Gj0/4qPx1TpnEnyUQD/aPbgCfyvv0+xylQg3/+K/hkvRiwAA1JU9+9AFBZsndh
+ 1ksfOhfQLWyqv3X/4tDJsBMUClAXOBkwuNCHqHk8=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <alpine.DEB.2.21.9999.1908301929460.8525@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1908301929460.8525@viisi.sifive.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <alpine.DEB.2.21.9999.1908301929460.8525@viisi.sifive.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
+ tags/riscv/for-v5.3-rc7
+X-PR-Tracked-Commit-Id: a256f2e329df0773022d28df2c3d206b9aaf1e61
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 7fb86707cc3a256e5556ced9c3a3eb96122d4b16
+Message-Id: <156726990911.25629.16862572760885991706.pr-tracker-bot@kernel.org>
+Date: Sat, 31 Aug 2019 16:45:09 +0000
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190831_092948_503581_DA516278 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20190831_094511_099234_3DEBD56F 
+X-CRM114-Status: UNSURE (   0.63  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -78,49 +77,26 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-kernel@vger.kernel.org, Guo Ren <guoren@kernel.org>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-hexagon@vger.kernel.org, x86@kernel.org,
- linux-snps-arc@lists.infradead.org, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, Greentime Hu <green.hu@gmail.com>,
- linux-mtd@lists.infradead.org, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, Michal Simek <monstr@monstr.eu>,
- linux-parisc@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-alpha@vger.kernel.org, nios2-dev@lists.rocketboards.org
+Cc: linux-riscv@lists.infradead.org, torvalds@linux-foundation.org,
+ linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Christoph,
+The pull request you sent on Fri, 30 Aug 2019 19:31:58 -0700 (PDT):
 
-On Fri, Aug 30, 2019 at 06:05:15PM +0200, Christoph Hellwig wrote:
-> On Mon, Aug 19, 2019 at 08:36:02AM +0100, Will Deacon wrote:
-> > On Sat, Aug 17, 2019 at 09:32:46AM +0200, Christoph Hellwig wrote:
-> > > No need to indirect iounmap for arm64.
-> > > 
-> > > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> > > ---
-> > >  arch/arm64/include/asm/io.h | 3 +--
-> > >  arch/arm64/mm/ioremap.c     | 4 ++--
-> > >  2 files changed, 3 insertions(+), 4 deletions(-)
-> > 
-> > Not sure why we did it like this...
-> > 
-> > Acked-by: Will Deacon <will@kernel.org>
-> 
-> Can you just pick this one up through the arm64 tree for 5.4?
+> git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.3-rc7
 
-Unfortunately, it doesn't apply because the tree you've based it on has
-removed ioremap_wt(). If you send a version based on mainline, I can
-queue it.
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/7fb86707cc3a256e5556ced9c3a3eb96122d4b16
 
-Cheers,
+Thank you!
 
-Will
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 
 _______________________________________________
 linux-riscv mailing list
