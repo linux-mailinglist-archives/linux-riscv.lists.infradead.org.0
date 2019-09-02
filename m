@@ -2,47 +2,46 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26571A58DC
-	for <lists+linux-riscv@lfdr.de>; Mon,  2 Sep 2019 16:11:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A268AA58E1
+	for <lists+linux-riscv@lfdr.de>; Mon,  2 Sep 2019 16:12:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S8dLQtDJQDbT8oo6Uu2UNfmCZF2KBMBP+UYuajoNyVY=; b=HbwP4uZY2gv0St
-	YXNaX4LhMKzI4nzdEWP5XqZV+ivlROFlM2CBF/YUDtJoFPcJtQ12kVBlDAe7MOm3TREPWF/2B4niW
-	NDjDAiFZIg7XUj9XnvbFiOmdOFeJEUi6CwpoihNPREknaEyNB3XRHVEYMtZKxKxOrTO9CuiOFnixn
-	iI64BUKqo9kEFwERQB3bBQHGuzJ1l+XHuS0rTF+JQUPXlhI83Rwv7k25kab6KjeXETbUWWZzN6Rm7
-	CUoHH+muhu7inZdU3cliMjXC511d34AIeFIvuFz/uAQ/9j7h5CB1g5UteU3eDAva1yczLOv48FsKx
-	7fHpBI6Wvp0ESHi1r4Sg==;
+	List-Owner; bh=VcGhB6kLNQWKuBKplvc0asDWvZMHZblkh1WXSu1vAFo=; b=BsrTI63Nf4HXmJ
+	cdZwrnNNjZKFHAjPnMQF5rD8sGpJUCA1oTycmQsoi+r4ohoykfqt1hCcNHCgiXRe9zP8YmGgqGB7U
+	oPOvn0ygufFuQ4f15Lm0vMFkVEWUtIuC3+ZWvrPyFj0zTUY0wJPnKqNE8Z2izuWi1dTh6qSCBY33V
+	ZMnsc5YoWBdG+/0L1IeovW8LqDS//8ilyvVMlQRSomB5hUk5B/kl80oyh9gTouA1fUrwPCVyBn6dz
+	ULj8oRRfsK7eGjxrn/bI+ICBSJp5PySiVH04GNjEDZzT0Hi/oVa6cODpjXZOkVeaYGMM000KL5nEu
+	8pIHQNFF7vdEv5sAxKBQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i4n33-0001Cb-SE; Mon, 02 Sep 2019 14:11:13 +0000
+	id 1i4n3o-00020g-7u; Mon, 02 Sep 2019 14:12:00 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i4n2m-0000xn-V4; Mon, 02 Sep 2019 14:10:58 +0000
+ id 1i4n2o-0000xo-34; Mon, 02 Sep 2019 14:10:59 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 58E75ABE7;
- Mon,  2 Sep 2019 14:10:53 +0000 (UTC)
+ by mx1.suse.de (Postfix) with ESMTP id 18AAFAD05;
+ Mon,  2 Sep 2019 14:10:54 +0000 (UTC)
 From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 To: catalin.marinas@arm.com, hch@lst.de, wahrenst@gmx.net,
  marc.zyngier@arm.com, robh+dt@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mm@kvack.org,
  linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/4] arm64: mm: use arm64_dma_phys_limit instead of calling
- max_zone_dma_phys()
-Date: Mon,  2 Sep 2019 16:10:39 +0200
-Message-Id: <20190902141043.27210-2-nsaenzjulienne@suse.de>
+Subject: [PATCH v3 2/4] arm64: rename variables used to calculate ZONE_DMA32's
+ size
+Date: Mon,  2 Sep 2019 16:10:40 +0200
+Message-Id: <20190902141043.27210-3-nsaenzjulienne@suse.de>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20190902141043.27210-1-nsaenzjulienne@suse.de>
 References: <20190902141043.27210-1-nsaenzjulienne@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190902_071057_151124_D1578AF6 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190902_071058_425395_49723B1F 
+X-CRM114-Status: GOOD (  11.61  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -71,9 +70,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-By the time we call zones_sizes_init() arm64_dma_phys_limit already
-contains the result of max_zone_dma_phys(). We use the variable instead
-of calling the function directly to save some precious cpu time.
+Let the name indicate that they are used to calculate ZONE_DMA32's size
+as opposed to ZONE_DMA.
 
 Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 ---
@@ -81,22 +79,110 @@ Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Changes in v3: None
 Changes in v2: None
 
- arch/arm64/mm/init.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/mm/init.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
 diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
-index f3c795278def..6112d6c90fa8 100644
+index 6112d6c90fa8..8956c22634dd 100644
 --- a/arch/arm64/mm/init.c
 +++ b/arch/arm64/mm/init.c
+@@ -50,7 +50,7 @@
+ s64 memstart_addr __ro_after_init = -1;
+ EXPORT_SYMBOL(memstart_addr);
+ 
+-phys_addr_t arm64_dma_phys_limit __ro_after_init;
++phys_addr_t arm64_dma32_phys_limit __ro_after_init;
+ 
+ #ifdef CONFIG_KEXEC_CORE
+ /*
+@@ -168,7 +168,7 @@ static void __init reserve_elfcorehdr(void)
+  * currently assumes that for memory starting above 4G, 32-bit devices will
+  * use a DMA offset.
+  */
+-static phys_addr_t __init max_zone_dma_phys(void)
++static phys_addr_t __init max_zone_dma32_phys(void)
+ {
+ 	phys_addr_t offset = memblock_start_of_DRAM() & GENMASK_ULL(63, 32);
+ 	return min(offset + (1ULL << 32), memblock_end_of_DRAM());
 @@ -181,7 +181,7 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
  	unsigned long max_zone_pfns[MAX_NR_ZONES]  = {0};
  
  #ifdef CONFIG_ZONE_DMA32
--	max_zone_pfns[ZONE_DMA32] = PFN_DOWN(max_zone_dma_phys());
-+	max_zone_pfns[ZONE_DMA32] = PFN_DOWN(arm64_dma_phys_limit);
+-	max_zone_pfns[ZONE_DMA32] = PFN_DOWN(arm64_dma_phys_limit);
++	max_zone_pfns[ZONE_DMA32] = PFN_DOWN(arm64_dma32_phys_limit);
  #endif
  	max_zone_pfns[ZONE_NORMAL] = max;
  
+@@ -194,16 +194,16 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
+ {
+ 	struct memblock_region *reg;
+ 	unsigned long zone_size[MAX_NR_ZONES], zhole_size[MAX_NR_ZONES];
+-	unsigned long max_dma = min;
++	unsigned long max_dma32 = min;
+ 
+ 	memset(zone_size, 0, sizeof(zone_size));
+ 
+ 	/* 4GB maximum for 32-bit only capable devices */
+ #ifdef CONFIG_ZONE_DMA32
+-	max_dma = PFN_DOWN(arm64_dma_phys_limit);
+-	zone_size[ZONE_DMA32] = max_dma - min;
++	max_dma32 = PFN_DOWN(arm64_dma32_phys_limit);
++	zone_size[ZONE_DMA32] = max_dma32 - min;
+ #endif
+-	zone_size[ZONE_NORMAL] = max - max_dma;
++	zone_size[ZONE_NORMAL] = max - max_dma32;
+ 
+ 	memcpy(zhole_size, zone_size, sizeof(zhole_size));
+ 
+@@ -215,14 +215,14 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
+ 			continue;
+ 
+ #ifdef CONFIG_ZONE_DMA32
+-		if (start < max_dma) {
+-			unsigned long dma_end = min(end, max_dma);
++		if (start < max_dma32) {
++			unsigned long dma_end = min(end, max_dma32);
+ 			zhole_size[ZONE_DMA32] -= dma_end - start;
+ 		}
+ #endif
+-		if (end > max_dma) {
++		if (end > max_dma32) {
+ 			unsigned long normal_end = min(end, max);
+-			unsigned long normal_start = max(start, max_dma);
++			unsigned long normal_start = max(start, max_dma32);
+ 			zhole_size[ZONE_NORMAL] -= normal_end - normal_start;
+ 		}
+ 	}
+@@ -407,9 +407,9 @@ void __init arm64_memblock_init(void)
+ 
+ 	/* 4GB maximum for 32-bit only capable devices */
+ 	if (IS_ENABLED(CONFIG_ZONE_DMA32))
+-		arm64_dma_phys_limit = max_zone_dma_phys();
++		arm64_dma32_phys_limit = max_zone_dma32_phys();
+ 	else
+-		arm64_dma_phys_limit = PHYS_MASK + 1;
++		arm64_dma32_phys_limit = PHYS_MASK + 1;
+ 
+ 	reserve_crashkernel();
+ 
+@@ -417,7 +417,7 @@ void __init arm64_memblock_init(void)
+ 
+ 	high_memory = __va(memblock_end_of_DRAM() - 1) + 1;
+ 
+-	dma_contiguous_reserve(arm64_dma_phys_limit);
++	dma_contiguous_reserve(arm64_dma32_phys_limit);
+ }
+ 
+ void __init bootmem_init(void)
+@@ -521,7 +521,7 @@ static void __init free_unused_memmap(void)
+ void __init mem_init(void)
+ {
+ 	if (swiotlb_force == SWIOTLB_FORCE ||
+-	    max_pfn > (arm64_dma_phys_limit >> PAGE_SHIFT))
++	    max_pfn > (arm64_dma32_phys_limit >> PAGE_SHIFT))
+ 		swiotlb_init(1);
+ 	else
+ 		swiotlb_force = SWIOTLB_NO_FORCE;
 -- 
 2.23.0
 
