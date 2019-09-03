@@ -2,119 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FFB0A6484
-	for <lists+linux-riscv@lfdr.de>; Tue,  3 Sep 2019 10:57:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C5BBA648B
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Sep 2019 10:58:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g9SwB7kEGy287ufiRc4q7cvF1iGjeejytENBKiYvwMQ=; b=vBMGkDO5Km+v0V
-	4BYnsz+CLZJ533UBFVdD9YrJmeqSuHpxUFdTocitOLrZH6B8LPsMjL8QJMuAW2jCJCc1zSa/dcAnI
-	STHN857WfQGHejgXD+HJqkGRcBizoj4nH2djmrm4izfg6mKu3+CSj08MKItHtQZ1qmQFiEVPGdrm4
-	y0LoAc+DsdeDWYGN7KP56xL2yq1BQj9//EK3A0v0u+9pApk4ldBBcMJ510BsFem8IezPjDHO/dBpN
-	42IiGYaEFyyNVKNOYgLm6H9y+EKLobWS5FuL1NuFLkZjvSuGPQxsSZA6s4PN72DIFVeOvNxEI1QKb
-	pcswH1NGjTIaaCI/3cwQ==;
+	List-Owner; bh=2PMzpgMr/IlBr5UyxS1LN7ilAQyR7YnPIhl3jl/0eYc=; b=Wx9/OPS4G1r8Bk
+	0ocVoWZ6jH2VKY4q1xzVpgNDF5V9Xqz+jrawvi2FiIWZWpXIWL+9fcUEfCldFbw0xi7aaDegl5AW6
+	dGndT6k2OvwFkcDAvPdHznPP1yLDYY99V7MlnDMFR1z3PJbpVh/pE8fh5XiROUh5Eds8vkw2nrPha
+	XnfoXbxo5U7plmVX9i6qbyIplXMDCjIUKdpT2HExDYOvFcbBtE0HNc5qXeyD0kWKTG6l23YRUydLa
+	Hky/jPKdxfOnWFUW1hUELLVUrxXmj9jimBGms8KVwbEjXBhVsdx+Hw8uVsussMJfAbjpIDsxYOVf6
+	WDa780JvgFggHcrytiDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i54d0-00080H-Ad; Tue, 03 Sep 2019 08:57:30 +0000
-Received: from mail-eopbgr750110.outbound.protection.outlook.com
- ([40.107.75.110] helo=NAM02-BL2-obe.outbound.protection.outlook.com)
+	id 1i54e0-0008P7-3m; Tue, 03 Sep 2019 08:58:32 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i54ce-0007md-QK; Tue, 03 Sep 2019 08:57:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ffEmgDXQ32ktnYik+eVGVMhdy8ERJFJeO9bVlL8V0Mxg4D6rOgPOUmRR7Fyc3r5aBchk3kD/SxYNJ6jDqMm+AlskxxR5D6gxXz4Ap3C9770rvYs5nLEsf8mirPxU147GUK5AgKTMUtISMWNOtFlGwWzrwULp+0VStdI2wTEgEgT9m9CiXwweHgnAEA6bmg/le9JCAHcolXW4kVPKP+4i/tjNhpMPCtb+PiJR4S+hcx3BtV38qnjTaW2sukEWyMAFLneojynBG7YRQMRvUfkTpCTzG2o8YIi3y8H3g6xYI5TS5hmsnaBUCgqXB3ZFMQw1YJyeLXmZ+RH55DXVzybgeg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pKGjwp1Uo8LfIHoyH7+b//d/bD44+fJfePgvviW7l8g=;
- b=mG1tWN7uUdyshf80A5MUT9b4f6P+Wl3TJJjI2GQ8ZUx0AFflfdICBbq8iw3/Yhzq8BPbGw5wEEcJcYFHMoY9CTTLu5rjbdoYrQRooJHt40TGSSs8CRwl3yHAmgH3BcdBm212x/sNaI/JHePgkCL5RI5ImrHCW4Va/8xjqT8RxvnislgjsJYAH74bugV/eCnLe84HjYXFBqSKMRX7dUb10TLokdEPKjB2Pk6ZuJOwUa60shooMhVChq5OtJZYqPC3c7Lh8TPywmKg3ZnAePzVm64g0iURm4a0MshUvC9WoYxNmVvtGmHAyRBCFSAQ2px4keNF4rch/Xz1xwu89RP0iw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wavecomp.com; dmarc=pass action=none header.from=mips.com;
- dkim=pass header.d=mips.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wavecomp.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pKGjwp1Uo8LfIHoyH7+b//d/bD44+fJfePgvviW7l8g=;
- b=VCoxzS8WWTGfTcQYd0/WZ+jzrF0fosMbreNkfKpbvjQ4IW659Bg+NPwvuAf4EQKOuVRKFsAOj0pCb8p+7Dill9cY5mxZ4QAPW5CJCiLvD1LY+jZ1udVFo87TRkJbmYam+XgewallJsGzm3jjrChp1wMbXFymbbSiyHLv9/Ei034=
-Received: from MWHPR2201MB1277.namprd22.prod.outlook.com (10.172.60.12) by
- MWHPR2201MB1422.namprd22.prod.outlook.com (10.172.59.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2220.18; Tue, 3 Sep 2019 08:57:01 +0000
-Received: from MWHPR2201MB1277.namprd22.prod.outlook.com
- ([fe80::f9e8:5e8c:7194:fad3]) by MWHPR2201MB1277.namprd22.prod.outlook.com
- ([fe80::f9e8:5e8c:7194:fad3%11]) with mapi id 15.20.2220.021; Tue, 3 Sep 2019
- 08:57:01 +0000
-From: Paul Burton <paul.burton@mips.com>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 04/26] mips: remove ioremap_cachable
-Thread-Topic: [PATCH 04/26] mips: remove ioremap_cachable
-Thread-Index: AQHVYjWM7xZdW0g9rk2mdDHsFCA7Ig==
-Date: Tue, 3 Sep 2019 08:57:00 +0000
-Message-ID: <MWHPR2201MB1277E4E8214F6E50E5EC9BFCC1B90@MWHPR2201MB1277.namprd22.prod.outlook.com>
-References: <20190817073253.27819-5-hch@lst.de>
-In-Reply-To: <20190817073253.27819-5-hch@lst.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: LO2P265CA0041.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:61::29) To MWHPR2201MB1277.namprd22.prod.outlook.com
- (2603:10b6:301:18::12)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=pburton@wavecomp.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [94.196.173.241]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: bc4e3957-ec12-4171-af7d-08d7304cae89
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:MWHPR2201MB1422; 
-x-ms-traffictypediagnostic: MWHPR2201MB1422:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <MWHPR2201MB14223E109C3EC6DA480974C1C1B90@MWHPR2201MB1422.namprd22.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1728;
-x-forefront-prvs: 01494FA7F7
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(396003)(136003)(366004)(376002)(346002)(39840400004)(199004)(189003)(7736002)(71190400001)(6116002)(4744005)(3846002)(71200400001)(256004)(7416002)(99286004)(966005)(8936002)(66446008)(64756008)(66556008)(66946007)(66476007)(14454004)(8676002)(478600001)(386003)(6506007)(55236004)(53936002)(102836004)(2906002)(6246003)(74316002)(6436002)(42882007)(316002)(44832011)(446003)(476003)(11346002)(26005)(486006)(9686003)(6306002)(186003)(54906003)(55016002)(66066001)(81166006)(81156014)(25786009)(52116002)(7696005)(305945005)(52536014)(6916009)(229853002)(5660300002)(4326008)(76176011)(33656002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MWHPR2201MB1422;
- H:MWHPR2201MB1277.namprd22.prod.outlook.com; FPR:; SPF:None; PTR:InfoNoRecords;
- A:1; MX:1; 
-received-spf: None (protection.outlook.com: wavecomp.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: AMsW0LyaOM/yHrXI9m5Kie1YaQxjkfvMhyNX9ES2CGzwwwtpZntVqBckfi52aNkMc1Cdw2HlQMfo43GMtbo5mFVnqmdWekTCV8WgfEaqK2CjzX3+jfIMYgUYhhBN4zWgT9CB6mowfVObZSeeIEMtj7+DNC2MxefkmdolMdDmNiKZeyM/3alS0wsSmeCRCsmzACIx3yo9Czz0fYxxpPvPbHTf+KaRtsqNbIV5fuR38UuaxwgSY7khdFw8Ar3ThZt6HWelwgU4vmFePNfnQ/2+RAPxMWvPKk8KwT0tM6kvsaKJZ5DXKM+M8iKqCcMBcLD53stvyeVLaj4Syqkv0mqrETEw4t6/7LI69R/6BoyyTS/WN9nNKWlcsqFhE/rl8Anat/j9v2p6UBqUVH6JJkwAm+0PTbtyAY3KukhvYKL2BNg=
-x-ms-exchange-transport-forked: True
+ id 1i54dx-0008OC-2b
+ for linux-riscv@lists.infradead.org; Tue, 03 Sep 2019 08:58:30 +0000
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 741718665D;
+ Tue,  3 Sep 2019 08:58:28 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A9FF160C18;
+ Tue,  3 Sep 2019 08:58:25 +0000 (UTC)
+Date: Tue, 3 Sep 2019 10:58:23 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Anup Patel <Anup.Patel@wdc.com>
+Subject: Re: [PATCH v6 10/21] RISC-V: KVM: Handle MMIO exits for VCPU
+Message-ID: <20190903085823.s4amn27pewc54hl2@kamzik.brq.redhat.com>
+References: <20190829135427.47808-1-anup.patel@wdc.com>
+ <20190829135427.47808-11-anup.patel@wdc.com>
 MIME-Version: 1.0
-X-OriginatorOrg: mips.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bc4e3957-ec12-4171-af7d-08d7304cae89
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2019 08:57:00.4929 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 463607d3-1db3-40a0-8a29-970c56230104
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CsvUw2VRN18dDCQo8ThReG3qLd2pbxbAWkvlwIUDlGTbHTsWbcHQ6WJEwrmmhkC2GbNjKIBlixwAJHAstD6HBA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR2201MB1422
+Content-Disposition: inline
+In-Reply-To: <20190829135427.47808-11-anup.patel@wdc.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Tue, 03 Sep 2019 08:58:28 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190903_015708_892517_5855C792 
-X-CRM114-Status: UNSURE (   6.22  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190903_015829_131639_6309D339 
+X-CRM114-Status: GOOD (  13.53  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.75.110 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,54 +69,76 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
- "linux-sh@vger.kernel.org" <linux-sh@vger.kernel.org>,
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Guo Ren <guoren@kernel.org>,
- "sparclinux@vger.kernel.org" <sparclinux@vger.kernel.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Vincent Chen <deanbo422@gmail.com>,
- "linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "linux-hexagon@vger.kernel.org" <linux-hexagon@vger.kernel.org>,
- "x86@kernel.org" <x86@kernel.org>,
- "linux-snps-arc@lists.infradead.org" <linux-snps-arc@lists.infradead.org>,
- "linux-xtensa@linux-xtensa.org" <linux-xtensa@linux-xtensa.org>,
- Arnd Bergmann <arnd@arndb.de>,
- "linux-m68k@lists.linux-m68k.org" <linux-m68k@lists.linux-m68k.org>,
- "openrisc@lists.librecores.org" <openrisc@lists.librecores.org>,
- Greentime Hu <green.hu@gmail.com>,
- "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
- Guan Xuetao <gxt@pku.edu.cn>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Michal Simek <monstr@monstr.eu>,
- "linux-parisc@vger.kernel.org" <linux-parisc@vger.kernel.org>,
- "linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>,
- "linux-alpha@vger.kernel.org" <linux-alpha@vger.kernel.org>,
- "nios2-dev@lists.rocketboards.org" <nios2-dev@lists.rocketboards.org>
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hello,
+On Thu, Aug 29, 2019 at 01:56:18PM +0000, Anup Patel wrote:
+>  int kvm_riscv_vcpu_mmio_return(struct kvm_vcpu *vcpu, struct kvm_run *run)
+>  {
+> -	/* TODO: */
+> +	u8 data8;
+> +	u16 data16;
+> +	u32 data32;
+> +	u64 data64;
+> +	ulong insn;
+> +	int len, shift;
+> +
+> +	insn = vcpu->arch.mmio_decode.insn;
+> +
+> +	if (run->mmio.is_write)
+> +		goto done;
+> +
+> +	len = vcpu->arch.mmio_decode.len;
+> +	shift = vcpu->arch.mmio_decode.shift;
+> +
+> +	switch (len) {
+> +	case 1:
+> +		data8 = *((u8 *)run->mmio.data);
+> +		SET_RD(insn, &vcpu->arch.guest_context,
+> +			(ulong)data8 << shift >> shift);
+> +		break;
+> +	case 2:
+> +		data16 = *((u16 *)run->mmio.data);
+> +		SET_RD(insn, &vcpu->arch.guest_context,
+> +			(ulong)data16 << shift >> shift);
+> +		break;
+> +	case 4:
+> +		data32 = *((u32 *)run->mmio.data);
+> +		SET_RD(insn, &vcpu->arch.guest_context,
+> +			(ulong)data32 << shift >> shift);
+> +		break;
+> +	case 8:
+> +		data64 = *((u64 *)run->mmio.data);
+> +		SET_RD(insn, &vcpu->arch.guest_context,
+> +			(ulong)data64 << shift >> shift);
+> +		break;
+> +	default:
+> +		return -ENOTSUPP;
+> +	};
+> +
+> +done:
+> +	/* Move to next instruction */
+> +	vcpu->arch.guest_context.sepc += INSN_LEN(insn);
+> +
 
-Christoph Hellwig wrote:
-> Just define ioremap_cache directly.
-
-Applied to mips-next.
-
-> commit 60af0d94cc37
-> https://git.kernel.org/mips/c/60af0d94cc37
-> 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Signed-off-by: Paul Burton <paul.burton@mips.com>
+As I pointed out in the last review, just moving this instruction skip
+here is not enough. Doing so introduces the same problem that 2113c5f62b74
+("KVM: arm/arm64: Only skip MMIO insn once") fixes for arm.
 
 Thanks,
-    Paul
-
-[ This message was auto-generated; if you believe anything is incorrect
-  then please email paul.burton@mips.com to report it. ]
+drew
 
 _______________________________________________
 linux-riscv mailing list
