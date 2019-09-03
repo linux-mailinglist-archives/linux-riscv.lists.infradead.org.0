@@ -2,179 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC104A5910
-	for <lists+linux-riscv@lfdr.de>; Mon,  2 Sep 2019 16:17:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C6C85A61E4
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Sep 2019 08:54:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:Reply-To
-	:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HldV7/l2w2O9FXazZqv4DfJtwCYqUu1xvaprUeFjqm4=; b=a/O9UBbymUU1AsAJ4g4jYSz1R
-	FUulfoSDgowZom8jpobot2UzlMRnbZSLkedoCHpicvnGuzechOYqPhpTIeRvqHKuNgybgFqQRv0DC
-	wzrBvyvopsTKNE+HGd1bLLwiPOl58hdkvmp4lNoNHNAAVVmzk1XLImAN5dNwIZ3hyxwLWazAmSjsD
-	juORMLqiMP5qRle6E7351KCWJAtlLLNXqyAGHXuXY159D1HbfigbBb8YSS3F15vs5EPm9t5mDt1ES
-	xHkOIiLs9T3BtvcmK6z6wz0K4NN0bIOiIGcpmQmD+TYMt/sfkg6CrGdBnPuo/K6c0IB2V1ZoMQHjw
-	QYQVf1TlA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Pz55aM9msPOLta8Gw5Feea7fPxG+Fi2yIIPRkAqlPyc=; b=dDjWzw+UdV6N2e
+	pM/ejzIulUEYgvwTU3iCtX84JNHZZdX7af0NlyoiLUrOfBZDfSI5cTvquNN6iYF6oqxKaW/gxXTnx
+	+6xGiiP6l8JZA7GTURY1ouXaytqNSaJG+AAAMieJhLDbNXkTqkcjjjW9AZuVOW8tFOaLf5qmTHQz6
+	auQqaALoRRrDFI6bmWm6J47Jk1KKXBsCrOS81ncj+aiw11jKg4GAHup6HGgQ8RATKZ8OBm9Yk6spS
+	9+aK1L5IhI8rMR0Atm7S1SM8k3MpwTXHdTORxsB1S0nFrNcO13sVEAtp67mvVM6UcJg1wxQ3qhWCn
+	o1K34RWB58XQyQS2sibQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i4n9F-0005I1-Ft; Mon, 02 Sep 2019 14:17:37 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1i52hy-0000nO-HF; Tue, 03 Sep 2019 06:54:31 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i4n8o-0004sT-R6
- for linux-riscv@lists.infradead.org; Mon, 02 Sep 2019 14:17:13 +0000
-Received: by mail-wr1-x441.google.com with SMTP id y8so14175100wrn.10
- for <linux-riscv@lists.infradead.org>; Mon, 02 Sep 2019 07:17:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=monstr-eu.20150623.gappssmtp.com; s=20150623;
- h=reply-to:subject:to:cc:references:from:openpgp:autocrypt:message-id
- :date:user-agent:mime-version:in-reply-to;
- bh=wHLGtYkZTmnf/Q+NJRht7CodjM3w+dg+9ES/vSM0RcI=;
- b=afYPXPQLzvFAj1lVnwBQn3TA5rDlPS9rxLsQKmLyUEVYYqLvv2di5vklel8nyDuIlj
- IagBthy5dYLukTgWxTT/3ztKBRs9PTOZ66iuza579Dfj5UnylogGKx0AMzEUMimvbUWZ
- v0Jple7LvgR/plVjamH/3QMW3Vb3p+g8yC6PXiSurp6qQqqA/N9J6twCJEbcgPkvIwyL
- WsQO4HxJE3vbkuodjs3S68y25OtneQYX4b8YKVWUaflWKRlIMn5V5CKAAS7VvPy3RMkl
- oDTh3MMO0lQA3AxaolW6Uh96p9mpUIjQPq9teH1xMncYapsZ1Q7Az7UhWut9STf4/cGK
- RxUA==
+ id 1i52fb-0007mZ-S1
+ for linux-riscv@lists.infradead.org; Tue, 03 Sep 2019 06:52:06 +0000
+Received: by mail-io1-xd41.google.com with SMTP id j5so33453922ioj.8
+ for <linux-riscv@lists.infradead.org>; Mon, 02 Sep 2019 23:52:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=0F9dHVWqGS8pUXJgoGylFO0BRrE92SZVgNyvb5o+ce8=;
+ b=Rb9snEpQ7SvC+b9oG9ag30UFSjulOK5Q7VYo24KhNE4ndEiW127L6VDsWso4nAaiWY
+ Gkmfx96iNGy+MKCfw6VvEhxFwrr1QHd4XQeFucutBfqo4UILDU3OmUmAhDxk5yU9nIIM
+ 1RSCyjZ3XOQMS7iJvz6jt7lqYUb53ha+HBQZByisz3YcwKICC4WvXDU0LNciP2gzO3KC
+ OfW57Z5IQyE5YThgotILbUkKItoVs7SYt/j6LEFDvAupjI0oy4lM5jfm28uHSvgseKJk
+ FwHvsQHQEEOa34V+jVhrdQgAAJ1zN/2rJcruvgq8wjr4kSk7rA6Bk8Rfx2/6WazDBypQ
+ LL/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:reply-to:subject:to:cc:references:from:openpgp
- :autocrypt:message-id:date:user-agent:mime-version:in-reply-to;
- bh=wHLGtYkZTmnf/Q+NJRht7CodjM3w+dg+9ES/vSM0RcI=;
- b=JXH7de6s8iEA40cM8D8g7ti04d5P+EbR0yg4FqTkDRpZWQFEyXtxiJNb8rXL+4/5WJ
- 4GWFq6xmUL7ECdKVEPsfA0PAYTIImLK0t8ov9z508f2Npo+JfLa7LfItfUCOYo4klhoh
- xQc6vttxZzdJrfLJFnuymGkjfvMPJtYBgxHtEgQXP3c/jGGmvxyTDUoEQQ6A8/rTQ/Um
- iai9j+Iqpv3dPrFr7AwtmXTN3KcKof3P2P0GvCVr9xKsq5+gHMYxO84OcS5iPK36KBuT
- LUEqeBmvzz4QZZuUHI9lSxsA6eMuuZpY55+6NGyPIYiUGV/t++TNFOz1a8UeqO65ggRA
- Bajg==
-X-Gm-Message-State: APjAAAUoUYDjVoRmIWoiricKUkxN3N0m1sVnVHeq9td/+1bcweu/Qq6P
- HoGeds1gUwdvjob/CoApEmDJeQ==
-X-Google-Smtp-Source: APXvYqyShqgEJwFOtJFr9Fq0w6BS1apJDW9A6yIMdA+d8V9PFj9RZCN2SBDb4+Bki1KAn/644PK6KQ==
-X-Received: by 2002:adf:dd04:: with SMTP id a4mr5388204wrm.340.1567433828197; 
- Mon, 02 Sep 2019 07:17:08 -0700 (PDT)
-Received: from [74.125.133.108] ([149.199.62.131])
- by smtp.gmail.com with ESMTPSA id r17sm13933233wrt.68.2019.09.02.07.16.58
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 02 Sep 2019 07:17:07 -0700 (PDT)
-Subject: Re: [PATCH 03/26] m68k, microblaze: remove ioremap_fullcache
-To: Christoph Hellwig <hch@lst.de>, Arnd Bergmann <arnd@arndb.de>,
- Guo Ren <guoren@kernel.org>, Greentime Hu <green.hu@gmail.com>,
- Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- x86@kernel.org
-References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-4-hch@lst.de>
-From: Michal Simek <monstr@monstr.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=monstr@monstr.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <9a11ddb0-0799-c64a-f5aa-0504c564998f@monstr.eu>
-Date: Mon, 2 Sep 2019 16:16:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=0F9dHVWqGS8pUXJgoGylFO0BRrE92SZVgNyvb5o+ce8=;
+ b=WqXRLq8tnZGZdsHSR6sGjqfO1l8/mCNepx25wF1gnv/b/OIYidSiX9D4ZfckTpEQIJ
+ Qo3PoOdEOUU9nDLYndwSOPDxRUl/nIPfahpj+jqVLtSMT6xLsk96ascOuGwbgYPm9+qi
+ mYskwcYbww1nHPgrXXp22SCeOrWsHiGayw+EnWzy4L3QYRfqjTu1tyvf3SPt/st5VKho
+ 4oSmfn+JfTZ9DRXckxPbnnTyJXlnVJIMUKRT8PYtv1jiiCPCo799INYR9CAPafxFqqWJ
+ wWpkXNW6a/tykt27HW74RAWsvawQdhQtKzA/S97T8CImvnAj3ugogt7jT8vAuGudfx/8
+ q8tg==
+X-Gm-Message-State: APjAAAX5wonnwVeAXwS0Omq+0ecCewq5uZqROC23oE9cm/+/3SyMreHW
+ LsF0KcKjhyQrijSXobcZJC7WCBX/PBoRtPXB7sGU0lNbXSc=
+X-Google-Smtp-Source: APXvYqzaomYalEUMi0UtKAc6wlYG9J1JwC+gFONN+ZRF3rN5gAzYpDYlZkeEBuPHh200MECf4otHjQ3RpjlIGEVlVd4=
+X-Received: by 2002:a6b:b714:: with SMTP id h20mr1071770iof.302.1567493522612; 
+ Mon, 02 Sep 2019 23:52:02 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190817073253.27819-4-hch@lst.de>
+References: <1567321765-3738-1-git-send-email-pragnesh.patel@sifive.com>
+ <5d6d1b81.1c69fb81.7eabb.cabd@mx.google.com>
+In-Reply-To: <5d6d1b81.1c69fb81.7eabb.cabd@mx.google.com>
+From: Pragnesh Patel <pragnesh.patel@sifive.com>
+Date: Tue, 3 Sep 2019 12:21:51 +0530
+Message-ID: <CAN8ut8KMjo4KVcgLp6AhZOpuLwWMJ8HeiecH70RgYnLQQ05M9w@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: serial: Convert riscv,
+ sifive-serial to json-schema
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190902_071711_028529_53B0D5E7 
-X-CRM114-Status: GOOD (  15.30  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190902_235203_988795_451828A1 
+X-CRM114-Status: GOOD (  21.25  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -187,143 +91,241 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Reply-To: monstr@monstr.eu
-Cc: linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-ia64@vger.kernel.org, linux-parisc@vger.kernel.org,
- linux-sh@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-xtensa@linux-xtensa.org, linux-mips@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, linux-mtd@lists.infradead.org,
- linux-alpha@vger.kernel.org, sparclinux@vger.kernel.org,
- nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org,
- linux-snps-arc@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============0564630516779502977=="
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-serial@vger.kernel.org, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0564630516779502977==
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature";
- boundary="sxrD5DzuLHXmSTexCf4xoEovzaJstmsXm"
+On Mon, Sep 2, 2019 at 7:09 PM Rob Herring <robh@kernel.org> wrote:
+>
+> On Sun, Sep 01, 2019 at 12:39:21PM +0530, Pragnesh Patel wrote:
+> > Convert the riscv,sifive-serial binding to DT schema using json-schema.
+> >
+> > Signed-off-by: Pragnesh Patel <pragnesh.patel@sifive.com>
+> > ---
+> >  .../devicetree/bindings/serial/sifive-serial.txt   | 33 ------------
+> >  .../devicetree/bindings/serial/sifive-serial.yaml  | 62 ++++++++++++++++++++++
+> >  2 files changed, 62 insertions(+), 33 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/serial/sifive-serial.txt
+> >  create mode 100644 Documentation/devicetree/bindings/serial/sifive-serial.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/serial/sifive-serial.txt b/Documentation/devicetree/bindings/serial/sifive-serial.txt
+> > deleted file mode 100644
+> > index c86b1e5..0000000
+> > --- a/Documentation/devicetree/bindings/serial/sifive-serial.txt
+> > +++ /dev/null
+> > @@ -1,33 +0,0 @@
+> > -SiFive asynchronous serial interface (UART)
+> > -
+> > -Required properties:
+> > -
+> > -- compatible: should be something similar to
+> > -           "sifive,<chip>-uart" for the UART as integrated
+> > -           on a particular chip, and "sifive,uart<version>" for the
+> > -           general UART IP block programming model.  Supported
+> > -           compatible strings as of the date of this writing are:
+> > -           "sifive,fu540-c000-uart" for the SiFive UART v0 as
+> > -           integrated onto the SiFive FU540 chip, or "sifive,uart0"
+> > -           for the SiFive UART v0 IP block with no chip integration
+> > -           tweaks (if any)
+> > -- reg: address and length of the register space
+> > -- interrupts: Should contain the UART interrupt identifier
+> > -- clocks: Should contain a clock identifier for the UART's parent clock
+> > -
+> > -
+> > -UART HDL that corresponds to the IP block version numbers can be found
+> > -here:
+> > -
+> > -https://github.com/sifive/sifive-blocks/tree/master/src/main/scala/devices/uart
+> > -
+> > -
+> > -Example:
+> > -
+> > -uart0: serial@10010000 {
+> > -     compatible = "sifive,fu540-c000-uart", "sifive,uart0";
+> > -     interrupt-parent = <&plic0>;
+> > -     interrupts = <80>;
+> > -     reg = <0x0 0x10010000 0x0 0x1000>;
+> > -     clocks = <&prci PRCI_CLK_TLCLK>;
+> > -};
+> > diff --git a/Documentation/devicetree/bindings/serial/sifive-serial.yaml b/Documentation/devicetree/bindings/serial/sifive-serial.yaml
+> > new file mode 100644
+> > index 0000000..56fa935
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/serial/sifive-serial.yaml
+> > @@ -0,0 +1,62 @@
+> > +# SPDX-License-Identifier: GPL-2.0
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/serial/sifive-serial.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: SiFive asynchronous serial interface (UART)
+> > +
+> > +maintainers:
+> > +  - Pragnesh Patel <pragnesh.patel@sifive.com>
+> > +  - Paul Walmsley  <paul.walmsley@sifive.com>
+> > +  - Palmer Dabbelt <palmer@sifive.com>
+> > +
+> > +allOf:
+> > +  - $ref: /schemas/serial.yaml#
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - sifive,fu540-c000-uart
+> > +      - sifive,uart0
+>
+> This is wrong and should have warned if you tested this on 5.3.
+>
+> items:
+>   - const: sifive,fu540-c000-uart
+>   - const: sifive,uart0
+>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---sxrD5DzuLHXmSTexCf4xoEovzaJstmsXm
-Content-Type: multipart/mixed; boundary="Gv98DqTDPDXpgdAS8uye8pnF1A8XQfxBm";
- protected-headers="v1"
-From: Michal Simek <monstr@monstr.eu>
-Reply-To: monstr@monstr.eu
-To: Christoph Hellwig <hch@lst.de>, Arnd Bergmann <arnd@arndb.de>,
- Guo Ren <guoren@kernel.org>, Greentime Hu <green.hu@gmail.com>,
- Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- x86@kernel.org
-Cc: linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-hexagon@vger.kernel.org,
- linux-ia64@vger.kernel.org, linux-m68k@lists.linux-m68k.org,
- linux-mips@vger.kernel.org, nios2-dev@lists.rocketboards.org,
- openrisc@lists.librecores.org, linux-parisc@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org,
- linux-sh@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-xtensa@linux-xtensa.org, linux-mtd@lists.infradead.org,
- linux-arch@vger.kernel.org, linux-kernel@vger.kernel.org
-Message-ID: <9a11ddb0-0799-c64a-f5aa-0504c564998f@monstr.eu>
-Subject: Re: [PATCH 03/26] m68k, microblaze: remove ioremap_fullcache
-References: <20190817073253.27819-1-hch@lst.de>
- <20190817073253.27819-4-hch@lst.de>
-In-Reply-To: <20190817073253.27819-4-hch@lst.de>
+Thanks for the correction, i will update this in v2 patch.
 
---Gv98DqTDPDXpgdAS8uye8pnF1A8XQfxBm
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+I haven't got any warnings due to my patch.
+For your reference, following is the list of warnings when i did "make
+dtbs_check" (kernel version - 5.3.0-rc7)
 
-On 17. 08. 19 9:32, Christoph Hellwig wrote:
-> No callers of this function.
->=20
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> ---
->  arch/m68k/include/asm/kmap.h     | 7 -------
->  arch/microblaze/include/asm/io.h | 1 -
->  2 files changed, 8 deletions(-)
->=20
-> diff --git a/arch/m68k/include/asm/kmap.h b/arch/m68k/include/asm/kmap.=
-h
-> index aac7f045f7f0..03d904fe6087 100644
-> --- a/arch/m68k/include/asm/kmap.h
-> +++ b/arch/m68k/include/asm/kmap.h
-> @@ -43,13 +43,6 @@ static inline void __iomem *ioremap_wt(unsigned long=
- physaddr,
->  	return __ioremap(physaddr, size, IOMAP_WRITETHROUGH);
->  }
-> =20
-> -#define ioremap_fullcache ioremap_fullcache
-> -static inline void __iomem *ioremap_fullcache(unsigned long physaddr,
-> -					      unsigned long size)
-> -{
-> -	return __ioremap(physaddr, size, IOMAP_FULL_CACHING);
-> -}
-> -
->  #define memset_io memset_io
->  static inline void memset_io(volatile void __iomem *addr, unsigned cha=
-r val,
->  			     int count)
-> diff --git a/arch/microblaze/include/asm/io.h b/arch/microblaze/include=
-/asm/io.h
-> index c7968139486f..86c95b2a1ce1 100644
-> --- a/arch/microblaze/include/asm/io.h
-> +++ b/arch/microblaze/include/asm/io.h
-> @@ -40,7 +40,6 @@ extern void iounmap(volatile void __iomem *addr);
-> =20
->  extern void __iomem *ioremap(phys_addr_t address, unsigned long size);=
+/home/pragneshp/opensource/linux/Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml:
+cpu@0: compatible:0: 'riscv' is not one of ['sifive,rocket0',
+'sifive,e5', 'sifive,e51', 'sifive,u54-mc', 'sifive,u54', 'sifive,u5']
+/home/pragneshp/opensource/linux/Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml:
+cpu@0: compatible: ['riscv'] is too short
+/home/pragneshp/opensource/linux/Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml:
+cpu@0: 'timebase-frequency' is a required property
+/home/pragneshp/opensource/linux/Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml:
+cpu@0: 'timebase-frequency' is a required property
+/home/pragneshp/opensource/linux/Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml:
+cpu@1: 'timebase-frequency' is a required property
 
->  #define ioremap_nocache(addr, size)		ioremap((addr), (size))
-> -#define ioremap_fullcache(addr, size)		ioremap((addr), (size))
->  #define ioremap_wc(addr, size)			ioremap((addr), (size))
->  #define ioremap_wt(addr, size)			ioremap((addr), (size))
-> =20
->=20
-
-Acked-by: Michal Simek <monstr@monstr.eu> (for Microblaze)
-
-Thanks,
-Michal
-
---=20
-Michal Simek, Ing. (M.Eng), OpenPGP -> KeyID: FE3D1F91
-w: www.monstr.eu p: +42-0-721842854
-Maintainer of Linux kernel - Xilinx Microblaze
-Maintainer of Linux kernel - Xilinx Zynq ARM and ZynqMP ARM64 SoCs
-U-Boot custodian - Xilinx Microblaze/Zynq/ZynqMP/Versal SoCs
-
-
-
---Gv98DqTDPDXpgdAS8uye8pnF1A8XQfxBm--
-
---sxrD5DzuLHXmSTexCf4xoEovzaJstmsXm
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQQbPNTMvXmYlBPRwx7KSWXLKUoMIQUCXW0kVQAKCRDKSWXLKUoM
-IUCIAJ0dq35U3Gq44M2ocYgcj4SW3Em/1wCfajAs22UIYAGzwTZZyZTvB5OFi1I=
-=essT
------END PGP SIGNATURE-----
-
---sxrD5DzuLHXmSTexCf4xoEovzaJstmsXm--
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+/: compatible: ['sifive,hifive-unleashed-a00', 'sifive,fu540-c000'] is
+too short
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@3: 'timebase-frequency' is a required property
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@3: compatible: Additional items are not allowed ('riscv' was
+unexpected)
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@3: compatible:1: 'riscv' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@3: compatible: ['sifive,u54-mc', 'sifive,rocket0', 'riscv'] is too
+long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@1: 'timebase-frequency' is a required property
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@1: compatible: Additional items are not allowed ('riscv' was
+unexpected)
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@1: compatible:1: 'riscv' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@1: compatible: ['sifive,u54-mc', 'sifive,rocket0', 'riscv'] is too
+long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@4: 'timebase-frequency' is a required property
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@4: compatible: Additional items are not allowed ('riscv' was
+unexpected)
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@4: compatible:1: 'riscv' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@4: compatible: ['sifive,u54-mc', 'sifive,rocket0', 'riscv'] is too
+long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@2: 'timebase-frequency' is a required property
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@2: compatible: Additional items are not allowed ('riscv' was
+unexpected)
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@2: compatible:1: 'riscv' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@2: compatible: ['sifive,u54-mc', 'sifive,rocket0', 'riscv'] is too
+long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@0: compatible: Additional items are not allowed ('riscv' was
+unexpected)
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@0: compatible:1: 'riscv' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+cpu@0: compatible: ['sifive,e51', 'sifive,rocket0', 'riscv'] is too
+long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: compatible:0: 'sifive,fu540-c000' is not one of
+['sifive,hifive-unleashed-a00']
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: compatible:1: 'sifive,fu540-c000' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: compatible:2: 'sifive,fu540' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: $nodename:0: '/' was expected
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: spi@10041000:reg:0: [0, 268701696, 0, 4096, 0, 805306368, 0,
+268435456] is too long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: ethernet@10090000:reg:0: [0, 269025280, 0, 8192, 0, 269090816, 0,
+4096] is too long
+/home/pragneshp/opensource/linux/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dt.yaml:
+soc: spi@10040000:reg:0: [0, 268697600, 0, 4096, 0, 536870912, 0,
+268435456] is too long
 
 
---===============0564630516779502977==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>
+> > +
+> > +    description:
+> > +      Should be something similar to "sifive,<chip>-uart"
+> > +      for the UART as integrated on a particular chip,
+> > +      and "sifive,uart<version>" for the general UART IP
+> > +      block programming model.
+> > +
+> > +      UART HDL that corresponds to the IP block version
+> > +      numbers can be found here -
+> > +
+> > +      https://github.com/sifive/sifive-blocks/tree/master/src/main/scala/devices/uart
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - clocks
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +      #include <dt-bindings/clock/sifive-fu540-prci.h>
+> > +      serial@10010000 {
+> > +        compatible = "sifive,fu540-c000-uart", "sifive,uart0";
+> > +        interrupt-parent = <&plic0>;
+> > +        interrupts = <80>;
+> > +        reg = <0x0 0x10010000 0x0 0x1000>;
+> > +        clocks = <&prci PRCI_CLK_TLCLK>;
+> > +      };
+> > +
+> > +...
+> > --
+> > 2.7.4
+> >
+>
 
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---===============0564630516779502977==--
-
