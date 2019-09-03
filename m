@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02264A6554
-	for <lists+linux-riscv@lfdr.de>; Tue,  3 Sep 2019 11:34:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 71708A6555
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Sep 2019 11:34:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e4rv2BwpHkDEUSyc7vfJmWVPsPkYeSKxuYgrf71IY+0=; b=R+kBQR8Rc2KCu3
-	QBWMKAtIRtPgNqHK8Jg/Tw25ziF4nMv5zEKD8QoCftvRhzwR6aYDaLdeDBgTy9aWnysSi1wfXSNNk
-	9lV4a9an5KNTpG8mehcVeqh7vUA+/Q8SAoXkX961iP5q4HqGSmaYWkz6caJDTx7PRPV/Fj+lOV52o
-	jv+BGSaWZNEs32KSjn6edItW1MVQ3nkNKN1dU1HPbzdkcmbRKDqV+mZCwtco0yPHYC/greMCO3bjS
-	U16+jvy1dJYAkZ6bPVLRbnh+mXLlL4BdE/AU/uylKtDU3hM7q2vxlNL7ISpjJf864Draw2fY3k5Xb
-	1k+4KpCMV+InpJbuUJaw==;
+	List-Owner; bh=1TyGUDvzRqIe/OBKDNNrWiDwUXPsKBlKZo78tXynUhQ=; b=G1zMIkWS+BY7Mg
+	H+OkUlomtzFS1eGuy/6rSnO1MkxMKFka4Z2JkEUhRdn+lMWrE+803u7TEDq1xCBTMp9VKS14Y+1G3
+	LFP1qz3xgFu1Kx5j5mqPgWhqRQk/+e+MiMBcc4zmsCKUY0TvmDxH7NBn+iftg9vsIFqdF3AP+8sSn
+	LUAkWOxsuPGtpm5Aaje5EHZEw+ayxP/OkD2epW5UDpLEvpAuBRur4/a6tmJwotF3iTBFZGO5HAKmK
+	qCyMl+q7EUyu6RBQzlL1zfQZf/1liQEnx2j/prFCaWNLwev5tfhhXRhS/+gRXM1pW8b4bWev6xTR8
+	Ri6lUqTiYUqU01PWfSvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i55CK-0005NU-DI; Tue, 03 Sep 2019 09:34:00 +0000
+	id 1i55CQ-0005QX-W7; Tue, 03 Sep 2019 09:34:07 +0000
 Received: from clnet-p19-102.ikbnet.co.at ([83.175.77.102] helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1i55Bb-0004lK-Qa; Tue, 03 Sep 2019 09:33:16 +0000
+ id 1i55Bf-0004nW-1q; Tue, 03 Sep 2019 09:33:19 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>
-Subject: [PATCH 14/20] riscv: provide native clint access for M-mode
-Date: Tue,  3 Sep 2019 11:32:33 +0200
-Message-Id: <20190903093239.21278-15-hch@lst.de>
+Subject: [PATCH 15/20] riscv: read the hart ID from mhartid on boot
+Date: Tue,  3 Sep 2019 11:32:34 +0200
+Message-Id: <20190903093239.21278-16-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190903093239.21278-1-hch@lst.de>
 References: <20190903093239.21278-1-hch@lst.de>
@@ -43,245 +43,57 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Cc: Atish Patra <atish.patra@wdc.com>, Damien Le Moal <Damien.LeMoal@wdc.com>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-RISC-V has the concept of a cpu level interrupt controller.  The
-interface for it is split between a standardized part that is exposed
-as bits in the mstatus/sstatus register and the mie/mip/sie/sip
-CRS.  But the bit to actually trigger IPIs is not standardized and
-just mentioned as implementable using MMIO.
+From: Damien Le Moal <Damien.LeMoal@wdc.com>
 
-Add support for IPIs using MMIO using the SiFive clint layout (which is
-also shared by Ariane, Kendrye and the Qemu virt platform).  Additional
-the MMIO block also support the time value and timer compare registers,
-so they are also set up using the same OF node.  Support for other
-layouts should also be relatively easy to add in the future.
+When in M-Mode, we can use the mhartid CSR to get the ID of the running
+HART. Doing so, direct M-Mode boot without firmware is possible.
 
+Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
 ---
- arch/riscv/include/asm/clint.h | 39 ++++++++++++++++++++++++++++++
- arch/riscv/include/asm/sbi.h   |  2 ++
- arch/riscv/kernel/Makefile     |  1 +
- arch/riscv/kernel/clint.c      | 44 ++++++++++++++++++++++++++++++++++
- arch/riscv/kernel/setup.c      |  2 ++
- arch/riscv/kernel/smp.c        | 16 ++++++++++---
- arch/riscv/kernel/smpboot.c    |  4 ++++
- 7 files changed, 105 insertions(+), 3 deletions(-)
- create mode 100644 arch/riscv/include/asm/clint.h
- create mode 100644 arch/riscv/kernel/clint.c
+ arch/riscv/include/asm/csr.h | 1 +
+ arch/riscv/kernel/head.S     | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/arch/riscv/include/asm/clint.h b/arch/riscv/include/asm/clint.h
-new file mode 100644
-index 000000000000..02a26b68f21d
---- /dev/null
-+++ b/arch/riscv/include/asm/clint.h
-@@ -0,0 +1,39 @@
-+// SPDX-License-Identifier: GPL-2.0
-+#ifndef _ASM_CLINT_H
-+#define _ASM_CLINT_H 1
-+
-+#include <linux/io.h>
-+#include <linux/smp.h>
-+
+diff --git a/arch/riscv/include/asm/csr.h b/arch/riscv/include/asm/csr.h
+index 0dae5c361f29..d0b5113e1a54 100644
+--- a/arch/riscv/include/asm/csr.h
++++ b/arch/riscv/include/asm/csr.h
+@@ -81,6 +81,7 @@
+ #define SIE_SEIE		(_AC(0x1, UL) << IRQ_S_EXT)
+ 
+ /* symbolic CSR names: */
++#define CSR_MHARTID		0xf14
+ #define CSR_MSTATUS		0x300
+ #define CSR_MIE			0x304
+ #define CSR_MTVEC		0x305
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index bb96bb7b95d2..e0350499d7a4 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -50,6 +50,14 @@ _start_kernel:
+ 	csrw CSR_XIE, zero
+ 	csrw CSR_XIP, zero
+ 
 +#ifdef CONFIG_RISCV_M_MODE
-+extern u32 __iomem *clint_ipi_base;
++	/*
++	 * The hartid in a0 is expected later on, and we have no firmware
++	 * to hand it to us.
++	 */
++	csrr a0, CSR_MHARTID
++#endif
 +
-+void clint_init_boot_cpu(void);
-+
-+static inline void clint_send_ipi_single(unsigned long hartid)
-+{
-+	writel(1, clint_ipi_base + hartid);
-+}
-+
-+static inline void clint_send_ipi_mask(const struct cpumask *hartid_mask)
-+{
-+	int hartid;
-+
-+	for_each_cpu(hartid, hartid_mask)
-+		clint_send_ipi_single(hartid);
-+}
-+
-+static inline void clint_clear_ipi(unsigned long hartid)
-+{
-+	writel(0, clint_ipi_base + hartid);
-+}
-+#else /* CONFIG_RISCV_M_MODE */
-+#define clint_init_boot_cpu()	do { } while (0)
-+
-+/* stubs to for code is only reachable under IS_ENABLED(CONFIG_RISCV_M_MODE): */
-+void clint_send_ipi_single(unsigned long hartid);
-+void clint_send_ipi_mask(const struct cpumask *hartid_mask);
-+void clint_clear_ipi(unsigned long hartid);
-+#endif /* CONFIG_RISCV_M_MODE */
-+
-+#endif /* _ASM_CLINT_H */
-diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-index a4774bafe033..407d1024f9eb 100644
---- a/arch/riscv/include/asm/sbi.h
-+++ b/arch/riscv/include/asm/sbi.h
-@@ -97,6 +97,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
- #else /* CONFIG_RISCV_SBI */
- /* stubs to for code is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
- void sbi_set_timer(uint64_t stime_value);
-+void sbi_clear_ipi(void);
-+void sbi_send_ipi(const unsigned long *hart_mask);
- void sbi_remote_fence_i(const unsigned long *hart_mask);
- #endif /* CONFIG_RISCV_SBI */
- #endif /* _ASM_RISCV_SBI_H */
-diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-index 21a8d09c298c..b4bfeb62d28a 100644
---- a/arch/riscv/kernel/Makefile
-+++ b/arch/riscv/kernel/Makefile
-@@ -29,6 +29,7 @@ obj-y	+= vdso.o
- obj-y	+= cacheinfo.o
- obj-y	+= vdso/
- 
-+obj-$(CONFIG_RISCV_M_MODE)	+= clint.o
- obj-$(CONFIG_FPU)		+= fpu.o
- obj-$(CONFIG_SMP)		+= smpboot.o
- obj-$(CONFIG_SMP)		+= smp.o
-diff --git a/arch/riscv/kernel/clint.c b/arch/riscv/kernel/clint.c
-new file mode 100644
-index 000000000000..3647980d14c3
---- /dev/null
-+++ b/arch/riscv/kernel/clint.c
-@@ -0,0 +1,44 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 Christoph Hellwig.
-+ */
-+
-+#include <linux/io.h>
-+#include <linux/of_address.h>
-+#include <linux/types.h>
-+#include <asm/clint.h>
-+#include <asm/csr.h>
-+#include <asm/timex.h>
-+#include <asm/smp.h>
-+
-+/*
-+ * This is the layout used by the SiFive clint, which is also shared by the qemu
-+ * virt platform, and the Kendryte KD210 at least.
-+ */
-+#define CLINT_IPI_OFF		0
-+#define CLINT_TIME_CMP_OFF	0x4000
-+#define CLINT_TIME_VAL_OFF	0xbff8
-+
-+u32 __iomem *clint_ipi_base;
-+
-+void clint_init_boot_cpu(void)
-+{
-+	struct device_node *np;
-+	void __iomem *base;
-+
-+	np = of_find_compatible_node(NULL, NULL, "riscv,clint0");
-+	if (!np) {
-+		panic("clint not found");
-+		return;
-+	}
-+
-+	base = of_iomap(np, 0);
-+	if (!base)
-+		panic("could not map CLINT");
-+
-+	clint_ipi_base = base + CLINT_IPI_OFF;
-+	riscv_time_cmp = base + CLINT_TIME_CMP_OFF;
-+	riscv_time_val = base + CLINT_TIME_VAL_OFF;
-+
-+	clint_clear_ipi(boot_cpu_hartid);
-+}
-diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
-index a990a6cb184f..f4ba71b66c73 100644
---- a/arch/riscv/kernel/setup.c
-+++ b/arch/riscv/kernel/setup.c
-@@ -17,6 +17,7 @@
- #include <linux/sched/task.h>
- #include <linux/swiotlb.h>
- 
-+#include <asm/clint.h>
- #include <asm/setup.h>
- #include <asm/sections.h>
- #include <asm/pgtable.h>
-@@ -65,6 +66,7 @@ void __init setup_arch(char **cmdline_p)
- 	setup_bootmem();
- 	paging_init();
- 	unflatten_device_tree();
-+	clint_init_boot_cpu();
- 
- #ifdef CONFIG_SWIOTLB
- 	swiotlb_init(1);
-diff --git a/arch/riscv/kernel/smp.c b/arch/riscv/kernel/smp.c
-index 3836760d7aaf..006084463b76 100644
---- a/arch/riscv/kernel/smp.c
-+++ b/arch/riscv/kernel/smp.c
-@@ -14,6 +14,7 @@
- #include <linux/seq_file.h>
- #include <linux/delay.h>
- 
-+#include <asm/clint.h>
- #include <asm/sbi.h>
- #include <asm/tlbflush.h>
- #include <asm/cacheflush.h>
-@@ -90,7 +91,10 @@ static void send_ipi_mask(const struct cpumask *mask, enum ipi_message_type op)
- 	smp_mb__after_atomic();
- 
- 	riscv_cpuid_to_hartid_mask(mask, &hartid_mask);
--	sbi_send_ipi(cpumask_bits(&hartid_mask));
-+	if (IS_ENABLED(CONFIG_RISCV_SBI))
-+		sbi_send_ipi(cpumask_bits(&hartid_mask));
-+	else
-+		clint_send_ipi_mask(&hartid_mask);
- }
- 
- static void send_ipi_single(int cpu, enum ipi_message_type op)
-@@ -101,12 +105,18 @@ static void send_ipi_single(int cpu, enum ipi_message_type op)
- 	set_bit(op, &ipi_data[cpu].bits);
- 	smp_mb__after_atomic();
- 
--	sbi_send_ipi(cpumask_bits(cpumask_of(hartid)));
-+	if (IS_ENABLED(CONFIG_RISCV_SBI))
-+		sbi_send_ipi(cpumask_bits(cpumask_of(hartid)));
-+	else
-+		clint_send_ipi_single(hartid);
- }
- 
- static inline void clear_ipi(void)
- {
--	csr_clear(CSR_SIP, SIE_SSIE);
-+	if (IS_ENABLED(CONFIG_RISCV_SBI))
-+		csr_clear(CSR_SIP, SIE_SSIE);
-+	else
-+		clint_clear_ipi(cpuid_to_hartid_map(smp_processor_id()));
- }
- 
- void riscv_software_interrupt(void)
-diff --git a/arch/riscv/kernel/smpboot.c b/arch/riscv/kernel/smpboot.c
-index 18ae6da5115e..6300b09f1d1d 100644
---- a/arch/riscv/kernel/smpboot.c
-+++ b/arch/riscv/kernel/smpboot.c
-@@ -24,6 +24,7 @@
- #include <linux/of.h>
- #include <linux/sched/task_stack.h>
- #include <linux/sched/mm.h>
-+#include <asm/clint.h>
- #include <asm/irq.h>
- #include <asm/mmu_context.h>
- #include <asm/tlbflush.h>
-@@ -134,6 +135,9 @@ asmlinkage void __init smp_callin(void)
- {
- 	struct mm_struct *mm = &init_mm;
- 
-+	if (!IS_ENABLED(CONFIG_RISCV_SBI))
-+		clint_clear_ipi(cpuid_to_hartid_map(smp_processor_id()));
-+
- 	/* All kernel threads share the same mm context.  */
- 	mmgrab(mm);
- 	current->active_mm = mm;
+ 	/* Load the global pointer */
+ .option push
+ .option norelax
 -- 
 2.20.1
 
