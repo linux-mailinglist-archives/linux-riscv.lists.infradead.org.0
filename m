@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE3FFA84F2
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 16:04:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80B8EA84F3
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 16:04:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4r5WISHE1v4k3EjExGyUj+H27LRqAGaws5wiGAjRygc=; b=cWn2I+bT+pvsOF
-	xvrQ/Qh3D6TcqB7iHsGCiLzCA30hH8qLfJF40TV3i85ibcIFGAJU4QoeuDVaI0Sd+KQqAOZ4vhjxK
-	O6h+3H209NRYPI0ZAyFppssteiDUN+oJafCXUxtcXOpaYJINdfn4ZxjqM1kkv93uBrnHdlSmK4pep
-	G6VMBJPXQp7u1ToYFPLGsJr4IBZaoikjvvw0krpIOIPBpGvLOGEMj0bd2LcBYbGbLXQbY8OCugPxI
-	vDtK5qOcVjtLdrYufpLp07DXyEopDMmTo/1xk/goB0HL6vCUv/2DGqWi+O0KgMZB9TjI3EszCGzGt
-	3BcJdIX4uGQ7MpxR/NTw==;
+	List-Owner; bh=qWBdJ1/j6uS9ii0IYfYnoU0r7fNELs2ALoYMGdSwZP4=; b=ts7d3mU1z+iZ+1
+	uYUUt1AeJVG6JVXWc2d+FsNL+e9ydya76yI2zpxLP4T2UraVogL4X5oSg4N05L3at99Wu2t1Sb+AN
+	++nQpL1gVF3HFF/Jl1Z4sB0+E/wYJLMetszQaVOIhOH8Ody8rB1GFvkMqhe4VjkbeDRLrdX63fczX
+	gylz/cHUkcJKeINp8SDReoBv7yKDJSKPCzbCi35RX9k/vVYXsrmNPK1SutwrSztUBgHrjm1DGwRYE
+	40aITqjMPvgSWd1TJYEdO7KCCorYfclt5eUNVtdQtpzBhzexTSHfCqrhYfY2kdJhBkD9yG1gAcwKk
+	PbjrmhL/E4uJuFMYomKw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5VtJ-0000ch-SV; Wed, 04 Sep 2019 14:04:09 +0000
+	id 1i5VtM-0000hA-Hw; Wed, 04 Sep 2019 14:04:12 +0000
 Received: from szxga07-in.huawei.com ([45.249.212.35] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5VpL-0003Gi-VC; Wed, 04 Sep 2019 14:00:05 +0000
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 3B16BB1DB7029390B610;
- Wed,  4 Sep 2019 22:00:01 +0800 (CST)
-Received: from localhost (10.133.213.239) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 4 Sep 2019
- 21:59:52 +0800
+ id 1i5VpN-0003WK-T5; Wed, 04 Sep 2019 14:00:08 +0000
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 7D3E8F6F13507C264059;
+ Wed,  4 Sep 2019 22:00:03 +0800 (CST)
+Received: from localhost (10.133.213.239) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Wed, 4 Sep 2019
+ 21:59:54 +0800
 From: YueHaibing <yuehaibing@huawei.com>
 To: <broonie@kernel.org>, <f.fainelli@gmail.com>, <rjui@broadcom.com>,
  <sbranden@broadcom.com>, <eric@anholt.net>, <wahrenst@gmx.net>,
@@ -41,10 +41,10 @@ To: <broonie@kernel.org>, <f.fainelli@gmail.com>, <rjui@broadcom.com>,
  <mripard@kernel.org>, <wens@csie.org>, <ldewangan@nvidia.com>,
  <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
  <yamada.masahiro@socionext.com>, <michal.simek@xilinx.com>
-Subject: [PATCH -next 08/36] spi: cadence: use
- devm_platform_ioremap_resource() to simplify code
-Date: Wed, 4 Sep 2019 21:58:50 +0800
-Message-ID: <20190904135918.25352-9-yuehaibing@huawei.com>
+Subject: [PATCH -next 09/36] spi: octeon: use devm_platform_ioremap_resource()
+ to simplify code
+Date: Wed, 4 Sep 2019 21:58:51 +0800
+Message-ID: <20190904135918.25352-10-yuehaibing@huawei.com>
 X-Mailer: git-send-email 2.10.2.windows.1
 In-Reply-To: <20190904135918.25352-1-yuehaibing@huawei.com>
 References: <20190904135918.25352-1-yuehaibing@huawei.com>
@@ -52,8 +52,8 @@ MIME-Version: 1.0
 X-Originating-IP: [10.133.213.239]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_070004_261758_42C6A60C 
-X-CRM114-Status: UNSURE (   8.07  )
+X-CRM114-CacheID: sfid-20190904_070006_163564_30E7B911 
+X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -93,31 +93,31 @@ This is detected by coccinelle.
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 ---
- drivers/spi/spi-cadence.c | 4 +---
+ drivers/spi/spi-cavium-octeon.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/spi/spi-cadence.c b/drivers/spi/spi-cadence.c
-index 1c35eaa..c36587b 100644
---- a/drivers/spi/spi-cadence.c
-+++ b/drivers/spi/spi-cadence.c
-@@ -474,7 +474,6 @@ static int cdns_spi_probe(struct platform_device *pdev)
- 	int ret = 0, irq;
- 	struct spi_master *master;
- 	struct cdns_spi *xspi;
--	struct resource *res;
- 	u32 num_cs;
+diff --git a/drivers/spi/spi-cavium-octeon.c b/drivers/spi/spi-cavium-octeon.c
+index ee4703e..1a2de6c 100644
+--- a/drivers/spi/spi-cavium-octeon.c
++++ b/drivers/spi/spi-cavium-octeon.c
+@@ -18,7 +18,6 @@
  
- 	master = spi_alloc_master(&pdev->dev, sizeof(*xspi));
-@@ -485,8 +484,7 @@ static int cdns_spi_probe(struct platform_device *pdev)
- 	master->dev.of_node = pdev->dev.of_node;
+ static int octeon_spi_probe(struct platform_device *pdev)
+ {
+-	struct resource *res_mem;
+ 	void __iomem *reg_base;
+ 	struct spi_master *master;
+ 	struct octeon_spi *p;
+@@ -30,8 +29,7 @@ static int octeon_spi_probe(struct platform_device *pdev)
+ 	p = spi_master_get_devdata(master);
  	platform_set_drvdata(pdev, master);
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	xspi->regs = devm_ioremap_resource(&pdev->dev, res);
-+	xspi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(xspi->regs)) {
- 		ret = PTR_ERR(xspi->regs);
- 		goto remove_master;
+-	res_mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg_base = devm_ioremap_resource(&pdev->dev, res_mem);
++	reg_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg_base)) {
+ 		err = PTR_ERR(reg_base);
+ 		goto fail;
 -- 
 2.7.4
 
