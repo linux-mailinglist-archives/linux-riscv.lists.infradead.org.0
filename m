@@ -2,73 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02E91A94E2
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 23:22:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DB65A951B
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 23:25:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uFcrwSeq/l6Oo7xjODGUkyN//KIhnPo2FE4ClC8MZl8=; b=B5IcpONhbTQTY9
-	UXGPJNYRZzdw8IeBQRHogkdAloCbkMzguQQkgfH0TEphErTplUgX6DvOyLwkebJRQAgHEMdHCzWC/
-	sR55rbRVPKVjtkO47Oz90m2fb3UyBEmGfaUNvccePiGkM+Qnf6+eochBPNU0GXmREn3B8iMb9Wubi
-	nRshJjEng2W8TTKWU3YpinM9MAhgPYm9ZLb0UrfhvJYoLnWZQ+x2L69lWGZflGMbv8Qd9IhMIwBIS
-	0z80iDhxXsTBBKoL74Hed1iVO+T3LBzuQ6f9JSWQkjrjlKyq6nrQMEfI249RHnc+gksJQ51YKMcCu
-	hXTU67Zyd9hP6zTQSiKg==;
+	List-Owner; bh=seU5uQqqze3OYc0XFwCTmxjD3j1gyNCR28vWE+F5co0=; b=rmrYgfRoicdSjC
+	vclNUUoBEQ/rAlZBqcusetjHHlweFUwW1saKo3f/8u/tHZUaznbRUBWuh9ER+tlMDXFvnRs8CgkjU
+	sSuYP5s3Tr5WJfzn6wcU8+jFpfX2JPIIEx9UaEWhZVbwjqYwsSAl34h6mScpJ4M/e95zYsseCF2f/
+	8qoPUz4fnI70EOpsQ/o3IKVPC3B2j343dRVY/gkEOqpDSSAkRVZrzImyZzgxLICw4/UsccQ6xhkEd
+	lqgiNPvpr1TiP06X3Aeg0md2zNsvNjR/VVs9/9Zh7DIAZbik0Ytn3oz8GVwSBxpvLb0qiijtqtt7z
+	PPAXQGome2Pia9q1tthw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5cjQ-0001Hh-BS; Wed, 04 Sep 2019 21:22:24 +0000
+	id 1i5cm9-0002vE-Rq; Wed, 04 Sep 2019 21:25:14 +0000
 Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5cjM-0001GX-Rg
- for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 21:22:22 +0000
-Received: by mail-io1-xd41.google.com with SMTP id x4so47568198iog.13
- for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 14:22:20 -0700 (PDT)
+ id 1i5clv-0001mA-Ng
+ for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 21:25:01 +0000
+Received: by mail-io1-xd41.google.com with SMTP id r26so6260063ioh.8
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 14:24:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=Nm692qk4LNmOHZMyj1jVHOcSSuFyCUnTdIF+X/Nubik=;
- b=C2B2dNYdSzXJxH9VlS6QeY936qliwaicI+yJm/i6LNpGDvf1jocEMbplE0QRaj8Gds
- Se1YBeenhuMe0CwSs5mRe41ywWpNYB/rAsRcPFh8q3C1YzKTOqqHk5+CLSG0De9gxYCd
- +IPILNkX8Tvli3QVTjOmjP87J1mQHRgWavjMSOn1Yu370HPoPgbWAG3qYd0+dk46TKDU
- +gtWzTEs3wLDGQloXGmVWAIj/TIA5MZXjpSVUY28J/OnDCBlWE8k5w0u+zktLkMZu+qS
- VomIe0Nsy5aT+79e9B1fx4NtX4bopyBv/MGZ+p7ZVZMdPieM7rwOUW1vVHPhP5aluLZ7
- 74dg==
+ bh=gpnxUOC87Hy/bQFTjChPoPUmVY9m9l5TllB0pP0NeVk=;
+ b=fTLS4AC5Y3ATB96yfTaa7NNHIOTrZhvDflTG9Orv7lWVtnUCwEpcmP20IMPHHfbAo4
+ 8IZUu4m/TmyBzD4IkRERocaj62+YgKlCnp0UnS9rfQgWahlhEFwbtw+h7L7OoNv6+ap+
+ RJudWwoFvJWcbxdoKoVd/Td0s4qFhYYQFo5RvC7qc4TKPMc3MftX/S71qdKw2PGFipAO
+ nIux+yq5b0aZNpSAGSZID8kbRRvqRopQ2NLanjEh0XZx17D9feHuYXCD+G3JbySlMwSq
+ wlTIM/KfezSMBzPmjTFMtfGCmlA465gjVqqLLGaudRkH6Z3C1ADjcKPc1Em1eTAFMHrl
+ oBYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=Nm692qk4LNmOHZMyj1jVHOcSSuFyCUnTdIF+X/Nubik=;
- b=ergs14CNRzWP7msBqbH5P11aqffTY9d1OyVQAv7cwNrtixN6fsVAiakc6bcksZ+pEZ
- VoejH7rsdax7pVUskA8gtIwOscDaAZvCvpTrJZDEJgClU4hwC+J/hAZOr3r6px2Wov1G
- iRv8uRXVx7PJFoI1hkuBDDQuT1fqlKOfQEcZ9sOTsSJUyqYtEOpevxBhCLE21jz97PtD
- kb9OddXuKgUVdqr6PYVYBmqQcCQSp/YbipSuCyC+2yXtfigrMAuDWUyacpp1vA1PBCap
- A1Pyzo0R/lV8XvyC1KxYdcAPK1sLENgXZjzc0im9lUKee9eq3mS3WDYV2XD7oM3OIAPJ
- ZN0g==
-X-Gm-Message-State: APjAAAVeQC3izxygVi0by4nLKG+B9WBWO2Lmwfw9wOH4d6cGnfPIWXD3
- Tsad9ZZWbMUj8SmDRtcsjO3wPA==
-X-Google-Smtp-Source: APXvYqx3kV34KAQ1WdbjpS3AwyBLMr0HwcwCXpIRa03VFOZwIm8yjheyzlOGwLq5YOPzaFPXtHoFRQ==
-X-Received: by 2002:a6b:bc47:: with SMTP id m68mr102783iof.70.1567632139657;
- Wed, 04 Sep 2019 14:22:19 -0700 (PDT)
+ bh=gpnxUOC87Hy/bQFTjChPoPUmVY9m9l5TllB0pP0NeVk=;
+ b=VFLxyd+cFMBSNuwZniy2Lcn10ivmEQF8Il011fB9Kx7SMgsuTNVfQRKMoI7EOCRigZ
+ ZdV6kcbZtjuwPwr50Irc+hnd9T0UJECq2u+3ap4T6fXoCuLJ1XFIdE665Ji9TR8TRoBg
+ ygrfQgRjYtnMwuHdYO0F5cLeKcwiDPDfGy2lJNxS/BGpId0VruVtT0VcDMP6rbvKBaH5
+ wxDtodJXDVXtx68cFvXXXcPMqjYDB2qKGvGRPE6Re6TBDaoBpZxZABCQmqrKDtqYjc3r
+ cny2e4d+j7ZvSBOipRWfHHb9zZd85VrhcKSEktIMWq9ckaIcSHjxASKGt3ZQ6nwoSl3M
+ qc8A==
+X-Gm-Message-State: APjAAAXLoxwVYZpPtaVQOjrqLPRqGjzf8SeUiztUKX3/JzDHgdqy1fax
+ gbFlq7Ofq3sm7L5fUuxIWpxtwA==
+X-Google-Smtp-Source: APXvYqxjjM03c8YncfiKMgSDvfLe10vnXrh6O5z7tHl/a/2REfqzPMyznieZD1T0RCpHILA7wU/D0g==
+X-Received: by 2002:a02:cad1:: with SMTP id f17mr333310jap.18.1567632299044;
+ Wed, 04 Sep 2019 14:24:59 -0700 (PDT)
 Received: from localhost (75-161-11-128.albq.qwest.net. [75.161.11.128])
- by smtp.gmail.com with ESMTPSA id m25sm109477iol.12.2019.09.04.14.22.18
+ by smtp.gmail.com with ESMTPSA id r2sm66211ioh.61.2019.09.04.14.24.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 14:22:19 -0700 (PDT)
-Date: Wed, 4 Sep 2019 14:22:18 -0700 (PDT)
+ Wed, 04 Sep 2019 14:24:58 -0700 (PDT)
+Date: Wed, 4 Sep 2019 14:24:57 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Mao Han <han_mao@c-sky.com>
-Subject: Re: [PATCH V6 2/3] riscv: Add support for perf registers sampling
-In-Reply-To: <0179424c5edc166273d5fe261f70b1a4c13a90f8.1567060834.git.han_mao@c-sky.com>
-Message-ID: <alpine.DEB.2.21.9999.1909041420270.13502@viisi.sifive.com>
+Subject: Re: [PATCH V6 3/3] riscv: Add support for libdw
+In-Reply-To: <4cba2dfb6b1ef0df01185c6bce78a0a2867d0a7d.1567060834.git.han_mao@c-sky.com>
+Message-ID: <alpine.DEB.2.21.9999.1909041422220.13502@viisi.sifive.com>
 References: <cover.1567060834.git.han_mao@c-sky.com>
- <0179424c5edc166273d5fe261f70b1a4c13a90f8.1567060834.git.han_mao@c-sky.com>
+ <4cba2dfb6b1ef0df01185c6bce78a0a2867d0a7d.1567060834.git.han_mao@c-sky.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_142220_927956_2BCD7FE3 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20190904_142459_788686_4720EF40 
+X-CRM114-Status: GOOD (  11.74  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -110,25 +110,24 @@ Hello Mao Han,
 
 On Thu, 29 Aug 2019, Mao Han wrote:
 
-> This patch implements the perf registers sampling and validation API
-> for riscv arch. The valid registers and their register ID are defined in
-> perf_regs.h. Perf tool can backtrace in userspace with unwind library
-> and the registers/user stack dump support.
+> This patch add support for DWARF register mappings and libdw registers
+> initialization, which is used by perf callchain analyzing when
+> --call-graph=dwarf is given.
 
-[ ... ]
-
-> diff --git a/arch/riscv/include/uapi/asm/perf_regs.h b/arch/riscv/include/uapi/asm/perf_regs.h
+> diff --git a/tools/arch/riscv/include/uapi/asm/perf_regs.h b/tools/arch/riscv/include/uapi/asm/perf_regs.h
 > new file mode 100644
 > index 0000000..df1a581
 > --- /dev/null
-> +++ b/arch/riscv/include/uapi/asm/perf_regs.h
+> +++ b/tools/arch/riscv/include/uapi/asm/perf_regs.h
 > @@ -0,0 +1,42 @@
 > +/* SPDX-License-Identifier: GPL-2.0 */
 
-All of the other Linux architectures use "GPL-2.0 WITH Linux-syscall-note" 
-for their license for the perf uapi files.  Could you please change this 
-license string to match the standard Linux practice?  Then I think it 
-should be good to merge.
+As with 
+
+https://lore.kernel.org/linux-riscv/CAJF2gTRXH_bx0rwsTZMTnX+umZfVTL_iVnewPtVM50sLaqJPTg@mail.gmail.com/T/#t
+
+is it possible to change this license string to "GPL-2.0 WITH 
+Linux-syscall-note" to match the other Linux architectures? 
 
 
 - Paul
