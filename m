@@ -2,82 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D14C1A940D
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 22:47:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 02E91A94E2
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 23:22:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P9fgKiJRJoe+SECYmUSA6i2+6qVUIthWlrFwqgIXEzA=; b=owzOgJ9ubUcgYt
-	F6wECWk9CRoJLboRtYE03U5XiIiz7gLgYn8XgHwtYmViqm3ghxy2efXCRF6ZvVcKFG5osyEfCuhug
-	lQ60f3BK2nFILtsyRX8O6bEoTewrpXS4QK7P+29wbGrZMmha2BZFmLc9uMjdPhESW0ztsFE+yT8aI
-	m3jfC48/9piRZJYTNhR80vnsAjEXd5pWwbWFwwClKJkxYucrgy0SvFQEJchLN6R/5uisfoXMqSguu
-	WVVxYIZHI39XAslfKWFn86RLU2KqAfY5wtHL5WiOYB6F/z8X5Su8GdekcrvHEYjDKCbuh5YQHMwz1
-	n1nevi6FMelB/ctVC4Pw==;
+	List-Owner; bh=uFcrwSeq/l6Oo7xjODGUkyN//KIhnPo2FE4ClC8MZl8=; b=B5IcpONhbTQTY9
+	UXGPJNYRZzdw8IeBQRHogkdAloCbkMzguQQkgfH0TEphErTplUgX6DvOyLwkebJRQAgHEMdHCzWC/
+	sR55rbRVPKVjtkO47Oz90m2fb3UyBEmGfaUNvccePiGkM+Qnf6+eochBPNU0GXmREn3B8iMb9Wubi
+	nRshJjEng2W8TTKWU3YpinM9MAhgPYm9ZLb0UrfhvJYoLnWZQ+x2L69lWGZflGMbv8Qd9IhMIwBIS
+	0z80iDhxXsTBBKoL74Hed1iVO+T3LBzuQ6f9JSWQkjrjlKyq6nrQMEfI249RHnc+gksJQ51YKMcCu
+	hXTU67Zyd9hP6zTQSiKg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5cBA-00064t-Sd; Wed, 04 Sep 2019 20:47:00 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1i5cjQ-0001Hh-BS; Wed, 04 Sep 2019 21:22:24 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5cB5-00061a-54
- for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 20:46:57 +0000
-Received: by mail-pf1-x443.google.com with SMTP id r12so51881pfh.1
- for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 13:46:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=7FpVgaIhgimDRqpweFDbMiGBjSsk/JazcD80okKL/K8=;
- b=B3ZwBoxDNj5wp/W0+6EgPLtyn42FRM4lKEPuGul/INFNVDV0d6vrjAfI74kiYbBjwb
- RtwOAFpFkp8ULzlYQBnaGau4RSDKiK2Sdq8Hjs6JHKbU5On8H56ARMSYggt77ImaOAXR
- Phja5i1TBR6bjGzSRWjJc8EZqzoOHCuT1G+iocES8UWBNVeoOYiRY6HkgRLZvKh5M6Sb
- WHzguaFI/2ByIIVLDKt6nFLW+FJbEXZiBcnjB+VvF1jsWXutZ6GLiXNq+3ly3QHxD/gn
- UhmFNW0RtNQQoSqk6dbh3isqFmSp5AkCvUY6fi5kmUt8vL3neywbb2V1USK8/dnNvSiJ
- Cxug==
+ id 1i5cjM-0001GX-Rg
+ for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 21:22:22 +0000
+Received: by mail-io1-xd41.google.com with SMTP id x4so47568198iog.13
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 14:22:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=Nm692qk4LNmOHZMyj1jVHOcSSuFyCUnTdIF+X/Nubik=;
+ b=C2B2dNYdSzXJxH9VlS6QeY936qliwaicI+yJm/i6LNpGDvf1jocEMbplE0QRaj8Gds
+ Se1YBeenhuMe0CwSs5mRe41ywWpNYB/rAsRcPFh8q3C1YzKTOqqHk5+CLSG0De9gxYCd
+ +IPILNkX8Tvli3QVTjOmjP87J1mQHRgWavjMSOn1Yu370HPoPgbWAG3qYd0+dk46TKDU
+ +gtWzTEs3wLDGQloXGmVWAIj/TIA5MZXjpSVUY28J/OnDCBlWE8k5w0u+zktLkMZu+qS
+ VomIe0Nsy5aT+79e9B1fx4NtX4bopyBv/MGZ+p7ZVZMdPieM7rwOUW1vVHPhP5aluLZ7
+ 74dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=7FpVgaIhgimDRqpweFDbMiGBjSsk/JazcD80okKL/K8=;
- b=KZCQ5lN7y1UFbNerDZxUL53PqyjXTiLjv6W4m080bcBJ0njGsPQA81MZa3wJP+qeNy
- snwQldBHCHewvSE04TRqdqNWRADJy4a8kHhcnw1JuVKZOkoOyUgd2Ol6ZmuBDKkql1K5
- pUeL/vBBVMQnnZohfYeC5rw9l4+smQ53rA95Th3+v7nZZK0iOZSjG62oPPt2+NTDTJ4t
- Ov3U1Hw28TOwLX4NAJNkSQMAiD8iwRdb4rBM1r5WahTzPk67vIU7OOkDbqlRpz/R7q+w
- Y7btfES7VkzXe7VaHyKKSbz32UZ48jJh+D0iikRCH3E6W89L+rE4WdThdjoluzowYvfg
- qwqg==
-X-Gm-Message-State: APjAAAUQH45gytm5jG7rgXg/CUi/KsLUrOcq6LaZMCRawo0Ew/mCnupL
- jzNka3iJ1M+aaSlu/ZuPeWRj6Q==
-X-Google-Smtp-Source: APXvYqx6p9POXMCXKO+7CZNt3OeG669blGTjX7rgKqWleU9xBmKU6iit1LtXZOmDeIMaYc7+Sw+ZcA==
-X-Received: by 2002:a63:66c5:: with SMTP id a188mr49168pgc.127.1567630014448; 
- Wed, 04 Sep 2019 13:46:54 -0700 (PDT)
-Received: from tuxbook-pro (104-188-17-28.lightspeed.sndgca.sbcglobal.net.
- [104.188.17.28])
- by smtp.gmail.com with ESMTPSA id br18sm3019455pjb.20.2019.09.04.13.46.51
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=Nm692qk4LNmOHZMyj1jVHOcSSuFyCUnTdIF+X/Nubik=;
+ b=ergs14CNRzWP7msBqbH5P11aqffTY9d1OyVQAv7cwNrtixN6fsVAiakc6bcksZ+pEZ
+ VoejH7rsdax7pVUskA8gtIwOscDaAZvCvpTrJZDEJgClU4hwC+J/hAZOr3r6px2Wov1G
+ iRv8uRXVx7PJFoI1hkuBDDQuT1fqlKOfQEcZ9sOTsSJUyqYtEOpevxBhCLE21jz97PtD
+ kb9OddXuKgUVdqr6PYVYBmqQcCQSp/YbipSuCyC+2yXtfigrMAuDWUyacpp1vA1PBCap
+ A1Pyzo0R/lV8XvyC1KxYdcAPK1sLENgXZjzc0im9lUKee9eq3mS3WDYV2XD7oM3OIAPJ
+ ZN0g==
+X-Gm-Message-State: APjAAAVeQC3izxygVi0by4nLKG+B9WBWO2Lmwfw9wOH4d6cGnfPIWXD3
+ Tsad9ZZWbMUj8SmDRtcsjO3wPA==
+X-Google-Smtp-Source: APXvYqx3kV34KAQ1WdbjpS3AwyBLMr0HwcwCXpIRa03VFOZwIm8yjheyzlOGwLq5YOPzaFPXtHoFRQ==
+X-Received: by 2002:a6b:bc47:: with SMTP id m68mr102783iof.70.1567632139657;
+ Wed, 04 Sep 2019 14:22:19 -0700 (PDT)
+Received: from localhost (75-161-11-128.albq.qwest.net. [75.161.11.128])
+ by smtp.gmail.com with ESMTPSA id m25sm109477iol.12.2019.09.04.14.22.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 13:46:53 -0700 (PDT)
-Date: Wed, 4 Sep 2019 13:46:49 -0700
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-To: YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH -next 23/36] spi: spi-qcom-qspi: use
- devm_platform_ioremap_resource() to simplify code
-Message-ID: <20190904204649.GF580@tuxbook-pro>
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-24-yuehaibing@huawei.com>
+ Wed, 04 Sep 2019 14:22:19 -0700 (PDT)
+Date: Wed, 4 Sep 2019 14:22:18 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Mao Han <han_mao@c-sky.com>
+Subject: Re: [PATCH V6 2/3] riscv: Add support for perf registers sampling
+In-Reply-To: <0179424c5edc166273d5fe261f70b1a4c13a90f8.1567060834.git.han_mao@c-sky.com>
+Message-ID: <alpine.DEB.2.21.9999.1909041420270.13502@viisi.sifive.com>
+References: <cover.1567060834.git.han_mao@c-sky.com>
+ <0179424c5edc166273d5fe261f70b1a4c13a90f8.1567060834.git.han_mao@c-sky.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190904135918.25352-24-yuehaibing@huawei.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_134655_203437_575BCBCA 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20190904_142220_927956_2BCD7FE3 
+X-CRM114-Status: GOOD (  10.88  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -99,68 +97,41 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: tmaimon77@gmail.com, palmer@sifive.com, tali.perry1@gmail.com,
- eric@anholt.net, ldewangan@nvidia.com, linux-riscv@lists.infradead.org,
- festevam@gmail.com, linux-samsung-soc@vger.kernel.org, f.fainelli@gmail.com,
- benjaminfair@google.com, shc_work@mail.ru, khilman@baylibre.com,
- openbmc@lists.ozlabs.org, michal.simek@xilinx.com, krzk@kernel.org,
- jonathanh@nvidia.com, yuenn@google.com, wens@csie.org, agross@kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org, andi@etezian.org,
- rjui@broadcom.com, s.hauer@pengutronix.de, mripard@kernel.org,
- broonie@kernel.org, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, baohua@kernel.org, sbranden@broadcom.com,
- yamada.masahiro@socionext.com, avifishman70@gmail.com, venture@google.com,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- thierry.reding@gmail.com, wahrenst@gmx.net, kernel@pengutronix.de,
- kgene@kernel.org, shawnguo@kernel.org
+Cc: Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-csky@vger.kernel.org, Guo Ren <guoren@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, linux-riscv@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed 04 Sep 06:59 PDT 2019, YueHaibing wrote:
+Hello Mao Han,
 
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
-> 
+On Thu, 29 Aug 2019, Mao Han wrote:
 
-Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+> This patch implements the perf registers sampling and validation API
+> for riscv arch. The valid registers and their register ID are defined in
+> perf_regs.h. Perf tool can backtrace in userspace with unwind library
+> and the registers/user stack dump support.
 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/spi/spi-qcom-qspi.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-qcom-qspi.c b/drivers/spi/spi-qcom-qspi.c
-> index a0ad73f..250fd60 100644
-> --- a/drivers/spi/spi-qcom-qspi.c
-> +++ b/drivers/spi/spi-qcom-qspi.c
-> @@ -424,7 +424,6 @@ static int qcom_qspi_probe(struct platform_device *pdev)
->  {
->  	int ret;
->  	struct device *dev;
-> -	struct resource *res;
->  	struct spi_master *master;
->  	struct qcom_qspi *ctrl;
->  
-> @@ -440,8 +439,7 @@ static int qcom_qspi_probe(struct platform_device *pdev)
->  
->  	spin_lock_init(&ctrl->lock);
->  	ctrl->dev = dev;
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	ctrl->base = devm_ioremap_resource(dev, res);
-> +	ctrl->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(ctrl->base)) {
->  		ret = PTR_ERR(ctrl->base);
->  		goto exit_probe_master_put;
-> -- 
-> 2.7.4
-> 
-> 
+[ ... ]
+
+> diff --git a/arch/riscv/include/uapi/asm/perf_regs.h b/arch/riscv/include/uapi/asm/perf_regs.h
+> new file mode 100644
+> index 0000000..df1a581
+> --- /dev/null
+> +++ b/arch/riscv/include/uapi/asm/perf_regs.h
+> @@ -0,0 +1,42 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+
+All of the other Linux architectures use "GPL-2.0 WITH Linux-syscall-note" 
+for their license for the perf uapi files.  Could you please change this 
+license string to match the standard Linux practice?  Then I think it 
+should be good to merge.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
