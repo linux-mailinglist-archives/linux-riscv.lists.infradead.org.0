@@ -2,80 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 750EFA8684
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 18:18:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28507A86A3
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 18:35:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8D6xrAOPwQwMJYIV6imd9eedQXMBAi7pywEW0BTLI/g=; b=AJwIA+o2Eg7ifz
-	UFZ0gqNs5k5OuVBB8fw/mT6NM68O/sWy5PLN0DwGNr7MlEN0iUn+7dYi7abze26PkhxU/f5UQPFBb
-	DLQbvaQoQW5FjGkFzHw/GgDm5n0CxDiH+Qd48CDwHmAYs/JR1kiqgCLIO9vZXDeO5g6Lxr+75w0WV
-	kmVJjJgVusgbXxEsKIZcHGw2f4pX6YXXLF+fJVXUjc5XjUSZf8TsQSWTpUvQ6/7IvcaHI8GraJGH6
-	MdMue40cuTvSp4wl+VPzTuStL+lGmPrh1+boEmgElddziUpN0rBJub7awgj9/BnTrlyLnX7y1qqHr
-	hAxl4RBSfVA806dPAS5Q==;
+	List-Owner; bh=UMxAa6F1oaec71K4BMZu1wUGi7aALGFtVlMSSSuHxT4=; b=U1jOFydDb3o0lA
+	tvk0VX9VkPdgINDwP8zoT0+lzlmfpb3N6e+6OFPrNYXLi50qeQIGcbu6FZJroD3RhkMuLBpwJ/qDp
+	taRVqhf8a2ENUA5nKEbNYqbWQizI5MMJN8nXhZF4Eh6RGYKGNuGwkPVYBO1PcoTpNYTt4zGjeDC0+
+	ZpW1OoTQhhCmQcxmUDgteYtwPlXFXfqcP4MKcHdHZzBYiHnVIIYH4nEykSoQs0R7pSjMya1Jc/ZBC
+	kRfctDJ09PtHmneiHT+QJFKC6iem7Sn+DlBy0G2QgrOuQakJiVSCJb8tfti4MuTbHJzut036k4Hak
+	4PEd6FINej+pS7XkXs7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5Xyr-0004b7-EQ; Wed, 04 Sep 2019 16:18:01 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1i5YG7-0003xK-5Q; Wed, 04 Sep 2019 16:35:51 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5Xyk-0004VM-Ht
- for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 16:17:55 +0000
-Received: by mail-wm1-x341.google.com with SMTP id c10so3992758wmc.0
- for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 09:17:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rtzMO9oNYcqZ7xJCU1SqvD7PjblQqbDV29Zyklt+ON0=;
- b=Ncsm1Yid1oE4dNBUtEf93AxZ82UtQoJXxFdx0JoIxtdJEmRAih94AH5ZwIg0s+WCim
- AwYZNcE2ZXCEwyjlpNBFvd4eWLy16pliyRkGzd8PNAwAYTrAFCsTSd4oR+h1O5QNnMQW
- kGJPudKVYmlPaqsgdMx26QCxk9FkD6ft+jCl3F/yHrpccmJzCYpWz1oD2Vxhih6imE3M
- /b3Pu4IZDf3U8jGi3dM3ShEAaISjTKjmJHBIATpOUpkQE1bYfhdAOI8eURLyug8cj1q5
- 2OT2bCy7l9JwDwuo/2v2svut0t96JXYsa7UZXE1mr1Imahm0LRqbw997Y6zCI3Yplb2A
- TAAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rtzMO9oNYcqZ7xJCU1SqvD7PjblQqbDV29Zyklt+ON0=;
- b=Bkj5Nv2JsGICH6hrXl46pB5BpH5Zs6abo3hMc5JylJNDK5GnNg5byDVEl2dHa2rEsI
- SI4nbxT9LBn23fxIqqAZeL7NCvjrncibSGIpKMU4cqWnufTJYlznEsMxJX21A/x8eNSq
- eK0VtWa1qxYqcN5OA3zHhvDLlLpyZYteAq+PlMSQnfQvcU1YAsTcxtNwobhZcNT3RaUF
- dazzE19OUnm5ezghhKiurM1/UNk0u6K9YoWWL6ar09TlmD+5IXPzH6rf7pvgZpUs4bWI
- LIgC9hYrKlT5Hg50Qo8bksg/cGub6LFrn+HS0uERRqdZA/GwHQS8O3SMhNgxoSSxuP6O
- TgwQ==
-X-Gm-Message-State: APjAAAWrZx0Cn0MBU7BPPUvMT3CWQufBZyC6AgSgAZ4YNRnTQEdJEzKj
- IWUaKCjz7sCuQKceoUG0q/aAFTT0uDql4EXb3GHdKA==
-X-Google-Smtp-Source: APXvYqzX6gugStutxIYe+ILprg2riVCAyjyyZH0V55aDRXJiZFZxndYKFUqntyVHZGA5c108ncLvJ8fFq0NR4omyyd4=
-X-Received: by 2002:a1c:c909:: with SMTP id f9mr5262027wmb.52.1567613871859;
- Wed, 04 Sep 2019 09:17:51 -0700 (PDT)
+ id 1i5YG2-0003tX-Q2
+ for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 16:35:48 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1i5YFz-0006OD-Td; Wed, 04 Sep 2019 18:35:43 +0200
+Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1i5YFy-0007xr-QH; Wed, 04 Sep 2019 18:35:42 +0200
+Date: Wed, 4 Sep 2019 18:35:42 +0200
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+To: Wei Yongjun <weiyongjun1@huawei.com>
+Subject: Re: [PATCH -next] pwm: sifive: Remove redundant dev_err call in
+ pwm_sifive_probe()
+Message-ID: <20190904163542.me5q4hlzaf3pdnmx@pengutronix.de>
+References: <20190904111836.122616-1-weiyongjun1@huawei.com>
 MIME-Version: 1.0
-References: <20190904161245.111924-1-anup.patel@wdc.com>
- <20190904161245.111924-3-anup.patel@wdc.com>
-In-Reply-To: <20190904161245.111924-3-anup.patel@wdc.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Wed, 4 Sep 2019 21:47:40 +0530
-Message-ID: <CAAhSdy3G9NOuNRhiYUgxmvNBfs79gAgSWdBrw4s=+SZBEDhVfg@mail.gmail.com>
-Subject: Re: [PATCH] RISC-V: Enable KVM for RV64 and RV32
-To: Anup Patel <Anup.Patel@wdc.com>
+Content-Disposition: inline
+In-Reply-To: <20190904111836.122616-1-weiyongjun1@huawei.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_091754_669508_7876F8CD 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20190904_093546_843037_3553C6F3 
+X-CRM114-Status: UNSURE (   7.02  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,67 +69,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Damien Le Moal <Damien.LeMoal@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alexander Graf <graf@amazon.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-pwm@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>,
+ kernel-janitors@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Sep 4, 2019 at 9:43 PM Anup Patel <Anup.Patel@wdc.com> wrote:
->
-> DO NOT UPSTREAM !!!!!
->
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> ---
->  arch/riscv/configs/defconfig      | 2 ++
->  arch/riscv/configs/rv32_defconfig | 2 ++
->  2 files changed, 4 insertions(+)
->
-> diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-> index 420a0dbef386..320a7f1da4fc 100644
-> --- a/arch/riscv/configs/defconfig
-> +++ b/arch/riscv/configs/defconfig
-> @@ -16,6 +16,8 @@ CONFIG_EXPERT=y
->  CONFIG_BPF_SYSCALL=y
->  CONFIG_SOC_SIFIVE=y
->  CONFIG_SMP=y
-> +CONFIG_VIRTUALIZATION=y
-> +CONFIG_KVM=y
->  CONFIG_MODULES=y
->  CONFIG_MODULE_UNLOAD=y
->  CONFIG_NET=y
-> diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
-> index 87ee6e62b64b..6223e47cc5f0 100644
-> --- a/arch/riscv/configs/rv32_defconfig
-> +++ b/arch/riscv/configs/rv32_defconfig
-> @@ -16,6 +16,8 @@ CONFIG_EXPERT=y
->  CONFIG_BPF_SYSCALL=y
->  CONFIG_ARCH_RV32I=y
->  CONFIG_SMP=y
-> +CONFIG_VIRTUALIZATION=y
-> +CONFIG_KVM=y
->  CONFIG_MODULES=y
->  CONFIG_MODULE_UNLOAD=y
->  CONFIG_NET=y
-> --
-> 2.17.1
->
+Hello,
 
-Please ignore this patch.
+On Wed, Sep 04, 2019 at 11:18:36AM +0000, Wei Yongjun wrote:
+> There is a error message within devm_ioremap_resource
+> already, so remove the dev_err call to avoid redundant
+> error message.
+> =
 
-The KVM RISC-V should be disabled by default since it's
-experimental currently.
+> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
 
-Regards,
-Anup
+that's right
+
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+Thanks
+Uwe
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
 
 _______________________________________________
 linux-riscv mailing list
