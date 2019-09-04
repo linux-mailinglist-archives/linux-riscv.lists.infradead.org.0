@@ -2,63 +2,56 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51151A85FA
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 17:10:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA189A8647
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 17:59:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gZas7BtJBqJwvdT0uBiPgdzU0otpWOzw9cnFacG4UmA=; b=tyeZ8y9rELmufp
-	Qe6+u5oho92VarsGHAFbvfYPh8FP6qwKBphRvjPv6kSn+BOw5oB7OaU5YLgGcJfu8gC2dqXCN0GsK
-	4fPL6L65E0vC4Bh6Egt1rySJpqEFX5XTYdnOfefVG+H6Km95s+9QGJbmxw85oLe6oqrf37SkJti7z
-	Uyujd7L84NpqBC1LzZseuwXp/LnWWGcS82HIMtQcoS0mpKd9j5Dx6v+rasptTIygVMQHg5NfpLAJC
-	UHXS/HZu7M91GV+/m4sqyLh8ZbvXmFsc62DBQ+cxaw+QC8iTNX8k1JU3kqJ0TQN7Szquk3czoeL7n
-	Bim0l/a8GizKfVdD+LvA==;
+	List-Owner; bh=6an+4cz7qVUIS65loaz3FuSOLXynq0B3mGJAqASjd2A=; b=maBsGYsQa7npNw
+	6ej47dj2YJHFGk99gTpOXNoQVYshO9Ww2BBD1G9IZKlGSZ3cuex7cUmfuwWesq3dZyfwV/u2czQda
+	LolDR6xoDcxf3Iu4fw3G2PVjDPhIqeLacJRrlLKEAGy3Nm2VGQ1VfhpXYlSwQ8XjXGBW5/pTMLTVo
+	X/bY+LN5TPGreWRSKFaWrtD7+ELnw4YMx2xWfRyOIZM0CVxLDdQp0YL7Jo5i4/G28+xGG6TwYujrf
+	qsGfkyGbsGbibffDxXr0Tu++9Fg21hCnB3pmk+oZDjAy1bY2xyy9Lgqh8gkU8ohQdMwa19vr6GQEM
+	KQKoHlWnaNwO0l6BhSFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5WvV-0000O7-SY; Wed, 04 Sep 2019 15:10:29 +0000
+	id 1i5Xgt-0001Yw-09; Wed, 04 Sep 2019 15:59:27 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5Wv1-0007Nm-W4; Wed, 04 Sep 2019 15:10:01 +0000
-Received: from mail-lf1-f41.google.com (mail-lf1-f41.google.com
- [209.85.167.41])
+ id 1i5Xgm-0001Y8-I6
+ for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 15:59:22 +0000
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8408623401;
- Wed,  4 Sep 2019 15:09:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5736C20820;
+ Wed,  4 Sep 2019 15:59:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567609798;
- bh=NqqPlIXhQO92I7kvb7x3or16fY9V13TR0NCZAUTlJWQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=AWidQoGUGTEdAWDkyAQISkCNmxGOCVo2yHgzKUIPb1rWWyUYYvUj0TuGpJtJIdGR/
- dzccXezv1sNoQ0yruF9u11a6H/6iwIB/gtyccWWtz8dKuZSwGte3k4tssFtb3jdPV4
- PjPhAy257Cd8DYrkZNOy9W2gZGHSBqmSukET7M/A=
-Received: by mail-lf1-f41.google.com with SMTP id l11so16249000lfk.6;
- Wed, 04 Sep 2019 08:09:58 -0700 (PDT)
-X-Gm-Message-State: APjAAAVYAQKWs6qLanFATs3IGF6frirfX3P5TgF/YTiCJOUKCQJbB55n
- fwvIykcjStFsnIQ0FRv9Jy9ukThk+hnKkrF8Fw4=
-X-Google-Smtp-Source: APXvYqyPSaOFdTAZs9Jlj3fYyUPiQ+i5JR3LIfqaMYnX+qGBlZPtuYUs9/i9kuI0c87VBPXwtFxNFox7lL+fRxUp36w=
-X-Received: by 2002:a05:6512:25b:: with SMTP id
- b27mr12719024lfo.60.1567609796654; 
- Wed, 04 Sep 2019 08:09:56 -0700 (PDT)
+ s=default; t=1567612760;
+ bh=TGRMB95YGQkQ03FI3rbztcHl2l8WMOmLww0pLVy6bpI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=IWshuuCr0L0GBvgTb/bA3iz7epxmfJbAbVGVOrgqsq7AGeBwMAIoFFcwHHdtxWCpn
+ 7/ZulQpq5y+ZgdMm2yTmONOgxAJ8LcTdBARe93DOqpx947dZ7ik7lNvy+oCN4Y7Okx
+ b0uWmNu7msMrQONLBrjEWK541cdbRHBKhraJHmWc=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.2 65/94] RISC-V: Fix FIXMAP area corruption on RV32
+ systems
+Date: Wed,  4 Sep 2019 11:57:10 -0400
+Message-Id: <20190904155739.2816-65-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190904155739.2816-1-sashal@kernel.org>
+References: <20190904155739.2816-1-sashal@kernel.org>
 MIME-Version: 1.0
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-26-yuehaibing@huawei.com>
- <CAJKOXPdq4as1Oe3U+9znkvP0RA=sxUoiWVBCSbzf_wq_um2t=w@mail.gmail.com>
- <20190904143928.GB4348@sirena.co.uk>
-In-Reply-To: <20190904143928.GB4348@sirena.co.uk>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Date: Wed, 4 Sep 2019 17:09:45 +0200
-X-Gmail-Original-Message-ID: <CAJKOXPeRtbAvmR-=8Qa8ukGXt-cCj3ud_7y1Z4LgRpX3YCeumg@mail.gmail.com>
-Message-ID: <CAJKOXPeRtbAvmR-=8Qa8ukGXt-cCj3ud_7y1Z4LgRpX3YCeumg@mail.gmail.com>
-Subject: Re: [PATCH -next 25/36] spi: s3c24xx: use
- devm_platform_ioremap_resource() to simplify code
-To: Mark Brown <broonie@kernel.org>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_081000_075890_1B24BEC6 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20190904_085920_685752_BE133863 
+X-CRM114-Status: GOOD (  10.02  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -87,61 +80,98 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: tmaimon77@gmail.com, palmer@sifive.com, tali.perry1@gmail.com,
- eric@anholt.net, ldewangan@nvidia.com, linux-riscv@lists.infradead.org,
- festevam@gmail.com, f.fainelli@gmail.com, benjaminfair@google.com,
- shc_work@mail.ru, khilman@baylibre.com, openbmc@lists.ozlabs.org,
- YueHaibing <yuehaibing@huawei.com>, michal.simek@xilinx.com,
- jonathanh@nvidia.com, yuenn@google.com, wens@csie.org, agross@kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
- Andi Shyti <andi@etezian.org>, rjui@broadcom.com, s.hauer@pengutronix.de,
- mripard@kernel.org,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
- paul.walmsley@sifive.com, matthias.bgg@gmail.com,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- baohua@kernel.org, sbranden@broadcom.com, yamada.masahiro@socionext.com,
- avifishman70@gmail.com, venture@google.com,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linux-spi@vger.kernel.org, thierry.reding@gmail.com, wahrenst@gmx.net,
- kernel@pengutronix.de, kgene@kernel.org, shawnguo@kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, Anup Patel <anup.patel@wdc.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 4 Sep 2019 at 16:39, Mark Brown <broonie@kernel.org> wrote:
->
-> On Wed, Sep 04, 2019 at 04:28:29PM +0200, Krzysztof Kozlowski wrote:
-> > On Wed, 4 Sep 2019 at 16:00, YueHaibing <yuehaibing@huawei.com> wrote:
->
-> > > Reported-by: Hulk Robot <hulkci@huawei.com>
->
-> > This tag does not look real... First of all where is the report?
-> > Second, it was reported by coccinelle.
-> > Reported-by should be use to give real credits.
->
-> I think it's reasonable, it's giving credit to the automated system
-> they've got running coccinelle (which they do mention in their commit
-> logs).  It doesn't really hurt anyone and lets people see their system
-> is finding stuff.
+From: Anup Patel <Anup.Patel@wdc.com>
 
-Running internally coccinelle is already credited with commit author.
-The credits are coming with "From:" field.
-Otherwise for commits I send I could use:
-  From: krzk
-  ...
-  Reported-by: www.krzk.eu
-  Signed-off-by: krzk
-To me it is ridiculous.
+[ Upstream commit a256f2e329df0773022d28df2c3d206b9aaf1e61 ]
 
-Different thing is that Reported-by is for fixing bugs or issues.
-There is no bug here. There is no problem solved except making the
-code smaller. That's not what is Reported-by for.
+Currently, various virtual memory areas of Linux RISC-V are organized
+in increasing order of their virtual addresses is as follows:
+1. User space area (This is lowest area and starts at 0x0)
+2. FIXMAP area
+3. VMALLOC area
+4. Kernel area (This is highest area and starts at PAGE_OFFSET)
 
-Best regards,
-Krzysztof
+The maximum size of user space aread is represented by TASK_SIZE.
+
+On RV32 systems, TASK_SIZE is defined as VMALLOC_START which causes the
+user space area to overlap the FIXMAP area. This allows user space apps
+to potentially corrupt the FIXMAP area and kernel OF APIs will crash
+whenever they access corrupted FDT in the FIXMAP area.
+
+On RV64 systems, TASK_SIZE is set to fixed 256GB and no other areas
+happen to overlap so we don't see any FIXMAP area corruptions.
+
+This patch fixes FIXMAP area corruption on RV32 systems by setting
+TASK_SIZE to FIXADDR_START. We also move FIXADDR_TOP, FIXADDR_SIZE,
+and FIXADDR_START defines to asm/pgtable.h so that we can avoid cyclic
+header includes.
+
+Signed-off-by: Anup Patel <anup.patel@wdc.com>
+Tested-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/riscv/include/asm/fixmap.h  |  4 ----
+ arch/riscv/include/asm/pgtable.h | 12 ++++++++++--
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
+index c207f6634b91c..15b3edaabc280 100644
+--- a/arch/riscv/include/asm/fixmap.h
++++ b/arch/riscv/include/asm/fixmap.h
+@@ -25,10 +25,6 @@ enum fixed_addresses {
+ 	__end_of_fixed_addresses
+ };
+ 
+-#define FIXADDR_SIZE		(__end_of_fixed_addresses * PAGE_SIZE)
+-#define FIXADDR_TOP		(VMALLOC_START)
+-#define FIXADDR_START		(FIXADDR_TOP - FIXADDR_SIZE)
+-
+ #define FIXMAP_PAGE_IO		PAGE_KERNEL
+ 
+ #define __early_set_fixmap	__set_fixmap
+diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+index f7c3f7de15f27..e6faa469c133b 100644
+--- a/arch/riscv/include/asm/pgtable.h
++++ b/arch/riscv/include/asm/pgtable.h
+@@ -408,14 +408,22 @@ static inline void pgtable_cache_init(void)
+ #define VMALLOC_END      (PAGE_OFFSET - 1)
+ #define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
+ 
++#define FIXADDR_TOP      VMALLOC_START
++#ifdef CONFIG_64BIT
++#define FIXADDR_SIZE     PMD_SIZE
++#else
++#define FIXADDR_SIZE     PGDIR_SIZE
++#endif
++#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
++
+ /*
+- * Task size is 0x40000000000 for RV64 or 0xb800000 for RV32.
++ * Task size is 0x4000000000 for RV64 or 0x9fc00000 for RV32.
+  * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
+  */
+ #ifdef CONFIG_64BIT
+ #define TASK_SIZE (PGDIR_SIZE * PTRS_PER_PGD / 2)
+ #else
+-#define TASK_SIZE VMALLOC_START
++#define TASK_SIZE FIXADDR_START
+ #endif
+ 
+ #include <asm-generic/pgtable.h>
+-- 
+2.20.1
+
 
 _______________________________________________
 linux-riscv mailing list
