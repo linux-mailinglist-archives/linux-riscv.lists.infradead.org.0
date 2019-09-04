@@ -2,64 +2,64 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE428A8571
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 16:15:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 958FCA8578
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Sep 2019 16:15:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NuQW41JqPzl8R0gJJ4I6YXFyR64E+a42HHUn/v41ND4=; b=LvzjHAVlwPn7B8
-	nLld254iFnItW4fIuSaQ7wG5bDcmx/j8QMExYgUe/cA5uBh7NdyS3OMZjg6Ju1wP5sj+spECi+Ncz
-	0cgYFgoKNNY6pJ65eZJ6cBSSoPnS0I6vKngc9xKyWKFODN4GSPnYV3i2Ng3xOqxPDQ1uw5lMHzxPX
-	4qM/Y0hNT7sS4flh6vKJYGmnAQK82hwXECa9w1ZduM7JvcUEDb1aDwcYBD+mDiyzecofhwZacC/Qt
-	BgDZwJlSTXzEuI1QUKM+4LwAoDiMsZrJ9dZZSSwCoBevC3W1JLZiiM9KrzzML5uzGZ5m55nAkxnPl
-	kSXTymBuget1eNOfsKag==;
+	List-Owner; bh=JDY5F+PbCJhZgYr83RLl9uD9Har6ED8yQPDfb8qoHH8=; b=OoXKtKXFT9VqHm
+	6VIf+YHDBEnPQZu8a7BuLi2u7zfPkoIHnA4kFvWA2YTQSBiKHGdVGir6kZORQGIhevdsouq+qxxKh
+	867FvmyOSTk2mf5zgtXU5+2UwiChjxsPyZ3LofZhiLC+5D0PZ+hKp7yWsvbKMoXNFEBwnJL7cwhFn
+	n4iA0fKubADe3cw4+N03yYpVhDqtPh7YMkCz0hwgRk/WI0/rW16vbZl/qBWmPLb6ykb7TD9UfsQBA
+	Mit0lm+ZZy2+RLrhARMdMKv2odgmXTTqpPLZFwHFXNle1DPVPapP01FmmVVnTxPMpVmxU3qKRNleM
+	GLTJE2FX6NoEcGLVwcoQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5W44-00084H-UJ; Wed, 04 Sep 2019 14:15:16 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1i5W4a-0000Qe-1A; Wed, 04 Sep 2019 14:15:48 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5W2e-0005h6-96
- for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 14:13:51 +0000
-Received: by mail-wr1-x444.google.com with SMTP id g7so21497927wrx.2
- for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 07:13:46 -0700 (PDT)
+ id 1i5W3C-0006CM-Qg
+ for linux-riscv@lists.infradead.org; Wed, 04 Sep 2019 14:14:27 +0000
+Received: by mail-wr1-x442.google.com with SMTP id h7so20135819wrt.13
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Sep 2019 07:14:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=subject:to:cc:references:from:openpgp:autocrypt:organization
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=1t2a0vmNpD+krkpW5/ed7Lgd4DJQlz51QzbVC1XkalQ=;
- b=bEqMCkG4MJtCXLxO2pyMlNR3DCoGnaHivvsTQGeBPO3CFEImwy6xB/1YVoPgogwmDg
- mvM/HH/NGT8HeXF08WSyHJRofVnzdSuNy968qnJQPElpEG+/17X12AsJT9pGt26dKw/c
- JnnAda3k1jDU5omG3NlXa9nGAGatHlwgq598fBVMJGke8LkjfGlcVvYtitV0VruN/vNo
- HZWA0oA5OJLfF4p60snKhhoEPI/mrfFkL87lyidwroa7KlAkqOwCgt4meLgrnWEuudYQ
- WqV2fwQbdqx+4CqhpITG9dVOLm8NiVz4pd62EgVAq9gRWN++PYttfKJ7PRviYt4o/rMC
- qWsQ==
+ bh=IzWNB9ivZ/fQ2z8XW0T5fI33J0UqA0TM8uL61ZbcYJY=;
+ b=EHWSt5bqO5EcZw1Q+2tRqdWGuG5DPO2TW3pony+Xy3VJjhWA7pP76uBvtepruGRzZr
+ Y2byUBATCMXeMhtksoo2yv3JYuj8pjESoEYoaaut3uXIBnHqX7rKHuJOL8CUb4PFsAvy
+ IHM/+05kJHzx2ewRh/8Fc259CPvtM0UCInIMo9tAoJ9FFkVXfRsptE+frY/DvP9HzgWC
+ mmlHmuRLa4hFnZqt13yI+r73iwAt8f3yFjjDkXrGGR4YKOD5iEJzrwsXGNvFQZiZM0JL
+ D1xmYHQGp2Hu3offUIF5ZLO4vW/Re67ujzhn0ZHfQcTCEXszSlAOTxl7tB1AkppbUmxZ
+ FK9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
  :organization:message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=1t2a0vmNpD+krkpW5/ed7Lgd4DJQlz51QzbVC1XkalQ=;
- b=jgVz3U3KCFFPH6CP/ZfYxID2xf37eHEjPgV6uhsT+D6WNuJSJfF3FErxrh5oDWU294
- VZXZTlavjI11nN9qbYo40dya59lXHm7mBqKrNe5P8VtwmWxI1G7BexFsHqCJ7PFS+u67
- v3Sevd5G7FOdAc08sLPaGPrpEXnWcnD/TQDpGS3dg5CBfigtQ9s/+hQase3ktISRZiyN
- Lhx5er+NpYrUclsQc9Wl+daAUoXIWBmfCKWcP4pCrpD1XzxGjQdwS53ahTg9veLXrfni
- w0kW4srKTFwGcsG3mMrfDbA+mifBSGGNFWdxpmzOMnv9YZJeWrnFBOI+dVdLvQIni10f
- z8dA==
-X-Gm-Message-State: APjAAAVN2/FDRYghCpyUGnrkINUsy7CSDMgZigA2w6Jsi+gj6PVZBraK
- fkbH5yYpFJClkAgscgKFPuHVyg==
-X-Google-Smtp-Source: APXvYqxbfkIv8VlJAvAeHaITYdl98dpgyZfMVFHFOHJxvJ37cTvX5hTfAph3rk2uz0iK4r0eq+pshQ==
-X-Received: by 2002:a5d:6302:: with SMTP id i2mr6205010wru.249.1567606425323; 
- Wed, 04 Sep 2019 07:13:45 -0700 (PDT)
+ bh=IzWNB9ivZ/fQ2z8XW0T5fI33J0UqA0TM8uL61ZbcYJY=;
+ b=gzazBEI+ba9OVYHXIuhhamrifEBcl8VsDGJCKkpv6Jly317xCdE7hckAgc/DiRhHZD
+ c6dAGDAgL4oalVoo4WBoapwafz/ND2CG9+V+5zUjP6Z0CzUDCJrQNoM2bRrtSs2Z5vM3
+ yTsI5jf5zPMfXn4jl4mOQYUJexAlHvECMgwof8oBHOc+TmBCVcreWVjF+mxcpMxDAse6
+ GjYHqTICV8ynFQ5CjEpmL4o9FKFAtvvKe/Av1IUxqB2hI9k2zd32Krxp9K28BBmDz1WB
+ uo/q+JBgKhytnvswff9XjOfipPc/JRwgtPL/PGUyx9BLgLiSZeRC9FycH1b1/JlAlFAX
+ xLVQ==
+X-Gm-Message-State: APjAAAUONIj0fzIM0Axx2Wg5AcHvekEEliS7imW3/rXuc7F1CkYI9udA
+ Jz4EbJUllwFwAoC/TzOYlolQLA==
+X-Google-Smtp-Source: APXvYqwd412+TYADIB2T8KWcQvdznVreKrPX5Wc2QP3/iEI4IkUTb7u9lNJVz++zzLVE5BEaAUwxyA==
+X-Received: by 2002:a5d:6811:: with SMTP id w17mr13456149wru.181.1567606460658; 
+ Wed, 04 Sep 2019 07:14:20 -0700 (PDT)
 Received: from [10.1.2.12] (lmontsouris-657-1-212-31.w90-63.abo.wanadoo.fr.
  [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id w8sm4362920wmc.1.2019.09.04.07.13.42
+ by smtp.gmail.com with ESMTPSA id k26sm2792181wmi.37.2019.09.04.07.14.14
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 04 Sep 2019 07:13:44 -0700 (PDT)
-Subject: Re: [PATCH -next 15/36] spi: meson-spicc: use
+ Wed, 04 Sep 2019 07:14:18 -0700 (PDT)
+Subject: Re: [PATCH -next 16/36] spi: spi-meson-spifc: use
  devm_platform_ioremap_resource() to simplify code
 To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org,
  f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
@@ -74,7 +74,7 @@ To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org,
  thierry.reding@gmail.com, jonathanh@nvidia.com,
  yamada.masahiro@socionext.com, michal.simek@xilinx.com
 References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-16-yuehaibing@huawei.com>
+ <20190904135918.25352-17-yuehaibing@huawei.com>
 From: Neil Armstrong <narmstrong@baylibre.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
@@ -127,23 +127,23 @@ Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
  VsbXrP9BZ6snXyHfebPnno/te5XRqZTL9aJOytB/1iUna+1MAwBxGFPvqeEUUyT+gx1l3Acl
  ZaTUOEkgIor5losDrePdPgE=
 Organization: Baylibre
-Message-ID: <231852cf-274a-797c-1c01-c7264629a915@baylibre.com>
-Date: Wed, 4 Sep 2019 16:13:41 +0200
+Message-ID: <f4afcae3-8796-2ce4-0377-918536d5bf3e@baylibre.com>
+Date: Wed, 4 Sep 2019 16:14:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190904135918.25352-16-yuehaibing@huawei.com>
+In-Reply-To: <20190904135918.25352-17-yuehaibing@huawei.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_071348_526237_4EFA735F 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20190904_071422_925902_CDD7EAAD 
+X-CRM114-Status: GOOD (  15.31  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -179,34 +179,34 @@ On 04/09/2019 15:58, YueHaibing wrote:
 > Reported-by: Hulk Robot <hulkci@huawei.com>
 > Signed-off-by: YueHaibing <yuehaibing@huawei.com>
 > ---
->  drivers/spi/spi-meson-spicc.c | 4 +---
+>  drivers/spi/spi-meson-spifc.c | 4 +---
 >  1 file changed, 1 insertion(+), 3 deletions(-)
 > 
-> diff --git a/drivers/spi/spi-meson-spicc.c b/drivers/spi/spi-meson-spicc.c
-> index 7fe4488..f3f1044 100644
-> --- a/drivers/spi/spi-meson-spicc.c
-> +++ b/drivers/spi/spi-meson-spicc.c
-> @@ -503,7 +503,6 @@ static int meson_spicc_probe(struct platform_device *pdev)
+> diff --git a/drivers/spi/spi-meson-spifc.c b/drivers/spi/spi-meson-spifc.c
+> index f7fe9b1..c7b0399 100644
+> --- a/drivers/spi/spi-meson-spifc.c
+> +++ b/drivers/spi/spi-meson-spifc.c
+> @@ -286,7 +286,6 @@ static int meson_spifc_probe(struct platform_device *pdev)
 >  {
 >  	struct spi_master *master;
->  	struct meson_spicc_device *spicc;
+>  	struct meson_spifc *spifc;
 > -	struct resource *res;
->  	int ret, irq, rate;
->  
->  	master = spi_alloc_master(&pdev->dev, sizeof(*spicc));
-> @@ -517,8 +516,7 @@ static int meson_spicc_probe(struct platform_device *pdev)
->  	spicc->pdev = pdev;
->  	platform_set_drvdata(pdev, spicc);
+>  	void __iomem *base;
+>  	unsigned int rate;
+>  	int ret = 0;
+> @@ -300,8 +299,7 @@ static int meson_spifc_probe(struct platform_device *pdev)
+>  	spifc = spi_master_get_devdata(master);
+>  	spifc->dev = &pdev->dev;
 >  
 > -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	spicc->base = devm_ioremap_resource(&pdev->dev, res);
-> +	spicc->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(spicc->base)) {
->  		dev_err(&pdev->dev, "io resource mapping failed\n");
->  		ret = PTR_ERR(spicc->base);
+> -	base = devm_ioremap_resource(spifc->dev, res);
+> +	base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(base)) {
+>  		ret = PTR_ERR(base);
+>  		goto out_err;
 > 
 
-Acked-by: Neil Armstrong <narmstrong@baylibre.com>
+Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
 
 _______________________________________________
 linux-riscv mailing list
