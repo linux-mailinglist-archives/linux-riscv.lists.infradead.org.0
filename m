@@ -2,147 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC514A9A04
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 07:21:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DB64A9C59
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 09:54:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=13KEwz0BHu8O4ASpwP8SKlNphEUTDj7PtTislsiG8dg=; b=ctiy0Tpfcz0ILp
-	SKVNsQq7mVRlzZ5Wk6v9WpSXhTpoCTZWLSeidBkKGtuBh7xUkXe1OsRCueNwOj1wyDdI6MwQl2HCn
-	VAz4XisvzsOOBPBXnzFDtseRuKmIyGCWIdPNe2hLdg488U1FXZ297F6yd2VcaXkzQYEKeeYJ2kPqs
-	sNN67ObiG28piMfA+DzozcpeyW9WjOhFbWr8T7/IxUWPsxpx29dDTXYXVBiZ3UYCQl7uSV7jzmhA1
-	/rwQGkjeGuYLjBZv/Gphr4p85PXGS4sQX7/REUu756/DE0Uh2DU0Sng110X+o2Eygfp1o5uwRMYCf
-	4G6DHUxIG6GQbjyxaT5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ohi03jOTDoj/y2aDa7/Jl4PdnHo0QW366xfG7uOxg8I=; b=LAI0qUmGvB2PRz
+	paV94jDiduhh7NDjGfFwETArAySJ1PrGdwPaF2g8MEuvfNr/UY3xv9f4WUlU9VQ9NQVdM/LyvtjYn
+	CCnd6MYDpMTv05hsLONxt8ysKPCq6VpoXVDXSA6x/rMms44b84aQikn8nQKXmKcJzlNA+3jUKb6tE
+	Bv8iSGjIOLNybRv3g+1r26upHf1iZU8xGEXzfcPrgKOmUEyQ1TIaXnd3vEFdvFqdt3qAU0T3vYNCo
+	HVQHiuuDRQX19QmBCdJRLZHtbdLRLldOgwODW4u1UxLgJ3m9AXg7lbjgTjm0iX5rYViTgDvaFbQeu
+	alAQHKUHY7fzmst2zGAw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5kCV-0008Vj-Ht; Thu, 05 Sep 2019 05:20:55 +0000
-Received: from mail-eopbgr730084.outbound.protection.outlook.com
- ([40.107.73.84] helo=NAM05-DM3-obe.outbound.protection.outlook.com)
+	id 1i5mbA-0006t1-Il; Thu, 05 Sep 2019 07:54:32 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5kC4-0008FV-CC; Thu, 05 Sep 2019 05:20:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QefvtaMsqxyUrhCCN0xHL4XRqqF5IW68q09mQ2W5xzJaDMy5VvZDz0GAeK+l2To+fXXRchNnzVjoqEL8kRzV8d56R7Myqh1p5/GsLd2zsHkk6OgFU6sSQ/nwig3kvA/E0sOmDn4ulspPw4eM9CKsknLWMe81X3+nw5pihCuDOoUGQgOAT0rQsQPBkudZDp9TO0zDhb5MwfXZVX7yqbigjvQ0fjCjeTu+tEecr/Hfwp8T03NkTZ27gvNmaoQoTy6njtx2SIwjlEhPCt0cokGzKJRcytqm0o7RRWgIEHpiI8I8s8NQ31iVrKxXR5YDaOYHvOyzMFK0f02ivtX/+Bt/Og==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SQAzwEfRXD7T3ZN4nz/9r0j5k1a9CTAdOWrL2FjF1zg=;
- b=nEbla+dd8ph4PrqbV6OpUR0EEapeHXBBFKPtrxz07OegHXLUz6Dw6BOLhtL0kCg7WbtP4/ASQraD3PEoWN0vsFb+CTZvPyioQtGUSufwyevOB6h1JotrMX8n/6wMq/OYCUowa30W9rcCtnEm2k5DLG8plHCwIy2uZqQf1WN/y8n2uhc0zoB/BYnOm/hfDvcJuNmi/ZjaNtDYkV2cmZx+JeuAbjj2sI2chozvXkanhl7c/Tp8SkbQCvJYruy4LLuOYHv6JHHca3kOZQ6OXZ3du35ISPBi1oPdA/bTz8lXlNBxbhZo/jGptqco4dFmMmjaCFp/+K1Z0XLhKDAJ64j7jg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.100) smtp.rcpttodomain=huawei.com smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SQAzwEfRXD7T3ZN4nz/9r0j5k1a9CTAdOWrL2FjF1zg=;
- b=b20+yIaTHL+sWa1MmF3rael+2EEg/cLklBViLAteI0dvNbSmHu7Toa1UcpCt+tXqkSafKgdSu8AeAGHqg/rWdLfOurObnI0vfNCeVwWMY/AzRtcsDeNmgbohg0qID7UMeP4GUjYBk6WasnRBtrgcUydOV3vIsKBZTjWyXjNMQIE=
-Received: from BYAPR02CA0061.namprd02.prod.outlook.com (2603:10b6:a03:54::38)
- by BN7PR02MB5316.namprd02.prod.outlook.com (2603:10b6:408:2b::26)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2178.16; Thu, 5 Sep
- 2019 05:20:23 +0000
-Received: from CY1NAM02FT056.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e45::201) by BYAPR02CA0061.outlook.office365.com
- (2603:10b6:a03:54::38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2199.15 via Frontend
- Transport; Thu, 5 Sep 2019 05:20:23 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
- smtp.mailfrom=xilinx.com; huawei.com; dkim=none (message not signed)
- header.d=none;huawei.com; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.100 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
- CY1NAM02FT056.mail.protection.outlook.com (10.152.74.160) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2241.14
- via Frontend Transport; Thu, 5 Sep 2019 05:20:20 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:37867
- helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
- (envelope-from <michal.simek@xilinx.com>)
- id 1i5kBw-0001s1-5D; Wed, 04 Sep 2019 22:20:20 -0700
-Received: from [127.0.0.1] (helo=localhost)
- by xsj-pvapsmtp01 with smtp (Exim 4.63)
- (envelope-from <michal.simek@xilinx.com>)
- id 1i5kBr-0006dk-00; Wed, 04 Sep 2019 22:20:15 -0700
-Received: from xsj-pvapsmtp01 (smtp.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id x855K7PS002245; 
- Wed, 4 Sep 2019 22:20:08 -0700
-Received: from [172.30.17.116] by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <michals@xilinx.com>)
- id 1i5kBi-0005k1-Ga; Wed, 04 Sep 2019 22:20:06 -0700
-Subject: Re: [PATCH -next 35/36] spi: zynq-qspi: use
- devm_platform_ioremap_resource() to simplify code
-To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org,
- f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
- eric@anholt.net, wahrenst@gmx.net, shc_work@mail.ru, agross@kernel.org,
- khilman@baylibre.com, matthias.bgg@gmail.com, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com, avifishman70@gmail.com, tmaimon77@gmail.com,
- tali.perry1@gmail.com, venture@google.com, yuenn@google.com,
- benjaminfair@google.com, kgene@kernel.org, krzk@kernel.org,
- andi@etezian.org, palmer@sifive.com, paul.walmsley@sifive.com,
- baohua@kernel.org, mripard@kernel.org, wens@csie.org,
- ldewangan@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
- yamada.masahiro@socionext.com, michal.simek@xilinx.com
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-36-yuehaibing@huawei.com>
-From: Michal Simek <michal.simek@xilinx.com>
-Message-ID: <fbd385ec-f24d-7628-5f63-03f4444976aa@xilinx.com>
-Date: Thu, 5 Sep 2019 07:19:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1i5map-0006cV-Mi
+ for linux-riscv@lists.infradead.org; Thu, 05 Sep 2019 07:54:13 +0000
+Received: by mail-io1-xd43.google.com with SMTP id p12so2683739iog.5
+ for <linux-riscv@lists.infradead.org>; Thu, 05 Sep 2019 00:54:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=XEwhLYvc4QUR6wvAGjdkKm4IcG5eE3iFZQx/tTNYViw=;
+ b=f9GOGijbalzUu0CJL+Gr/ytsBHHkUCfxTJmxJ3N0hokbi/y34zaAwN8d3+He+KXQJk
+ vPQGMyBlLIshOD8UDGxbQoiISxNE7iad2N9MzEaID2bMkcZk56AsrarO4g8u9ZxQmMub
+ 5okbyjjEuNbRUTvEedp2vCHE+lHojS9mSeprf5ZthfKCTQ5i4VlADp5qcX7ZmKVIdp9r
+ w1Yp+/Cm7yfpEmkscIAkjQzEIuWEIQKdU18utJA6BcgPyfOtM1oQFD6rOGng01yTcbPd
+ zT+bMKGeV7XyKScy6noh7dFr61O1cfwNW17yzfJzRVBYMX8UDAfP8tiOh/WCoC46od+P
+ HQfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=XEwhLYvc4QUR6wvAGjdkKm4IcG5eE3iFZQx/tTNYViw=;
+ b=sDYcWsPBPXlHQodIp0xLA9nVv3SPjhT96MoQ0nK8bpt8+0Gv5c4w+hU09Ky8uFDJ0C
+ eo6yp4Wp+cHfKkdgaj8w31DwWs8tX0zJtFomLalFZyLlR3rOEG8TaP3nZEnW+7DCJAtp
+ rofp8cnPVdiuwZ3grtDEpsuBXcw3lTEn6Y6oY+ik7hFi6aRD6rNNvOFarez41+J64i7l
+ a7af+vwA5XKeoR2n+9CmOk4j8ZJAknGLuN0xFoHs9236LF8JM13Wq6NjurPg9dV6O7Eh
+ A1xoWcgjVLt9wO93BcehgbTZiw6h5dnTCwMgmxqDstYa4rqWGj3RfWbaRvtcm1sUfeZS
+ 7QQA==
+X-Gm-Message-State: APjAAAXphHOZ/kV2k2ul2bKW6xvfv7juUbIfx/0H6fUB45pKQVh/tKu0
+ sF2keFbDcOoGoOvtCW+wuKV67w==
+X-Google-Smtp-Source: APXvYqzhSbbGP9r0GEa00JWqwYlWyFKnvo7aDMeQ+g/vQTEPBv3G0gV8TBzguYR+mq6CgCtkF0/VpA==
+X-Received: by 2002:a6b:c9d7:: with SMTP id z206mr2564361iof.172.1567670050705; 
+ Thu, 05 Sep 2019 00:54:10 -0700 (PDT)
+Received: from localhost ([2601:8c4:0:9294:cb6f:4cf:b239:2fee])
+ by smtp.gmail.com with ESMTPSA id m67sm2549041iof.21.2019.09.05.00.54.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Sep 2019 00:54:10 -0700 (PDT)
+Date: Thu, 5 Sep 2019 00:54:08 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Mao Han <han_mao@c-sky.com>
+Subject: Re: [PATCH V7 1/2] riscv: Add support for perf registers sampling
+In-Reply-To: <49c2c29459afc59130b036eba1b1fd5155572355.1567653632.git.han_mao@c-sky.com>
+Message-ID: <alpine.DEB.2.21.9999.1909050053100.27305@viisi.sifive.com>
+References: <cover.1567653632.git.han_mao@c-sky.com>
+ <49c2c29459afc59130b036eba1b1fd5155572355.1567653632.git.han_mao@c-sky.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-In-Reply-To: <20190904135918.25352-36-yuehaibing@huawei.com>
-Content-Language: en-US
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(1496009)(4636009)(346002)(396003)(136003)(376002)(39860400002)(2980300002)(189003)(199004)(478600001)(58126008)(316002)(106002)(52146003)(2486003)(6246003)(76176011)(23676004)(4326008)(5660300002)(65956001)(65806001)(47776003)(6666004)(356004)(70586007)(70206006)(36756003)(44832011)(26005)(2616005)(305945005)(186003)(11346002)(446003)(2906002)(476003)(7416002)(7406005)(336012)(426003)(126002)(36386004)(50466002)(230700001)(31696002)(8936002)(31686004)(486006)(81166006)(81156014)(8676002)(229853002)(9786002)(921003)(5001870100001)(1121003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR02MB5316; H:xsj-pvapsmtpgw02; FPR:;
- SPF:Pass; LANG:en; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com; MX:1; A:1;
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 2770641f-c6d9-49ae-fa79-08d731c0c0b0
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(4709080)(1401327)(4618075)(2017052603328);
- SRVR:BN7PR02MB5316; 
-X-MS-TrafficTypeDiagnostic: BN7PR02MB5316:
-X-Microsoft-Antispam-PRVS: <BN7PR02MB531625F4F25A281A255B5CD4C6BB0@BN7PR02MB5316.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:1079;
-X-Forefront-PRVS: 015114592F
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: qv/pAS4OAoGo44rOeZ2Hm2SpuPSdh5pU2/ZuTflAnnakUZOlssAhfQ6teplQXOgiqD8dzoUW3NUgI4G/HIFXIZpXXHH4GNpyVofLYAQDiEYD6fVPXJ5RMt6fQBmW7TyiKV2zcwDwByMjhh3akRMWo6Ps0V8EhBeuj2Afa4Ht/srGaNbvcwr41sjRTh+qq45a/Im6ul1rf/Fv7VnFyBX1BM7VQFJ2Mj1d7PUxxxLB83CpHvVhNpTeCHtHxz+ovsB9PvxxaZ3Y2/jvyDvT9aD+JFjVlD5JRuvFwBqGaYleSzAj67tU0HXgLzbQ5UteTcLIOxt27HNX+HDsE++ZAfbOSwBXIKG2IFw9GLPBqbytHVG+Y4B1svSjlCkuw3jLb6tNnA3mBBYehhsZtFa84mFH7Dm89fjPpfKoIC71tppkQRo=
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Sep 2019 05:20:20.8182 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2770641f-c6d9-49ae-fa79-08d731c0c0b0
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.100];
- Helo=[xsj-pvapsmtpgw02]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR02MB5316
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_222028_421241_AE5B775E 
-X-CRM114-Status: GOOD (  13.34  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190905_005411_943341_4536C6EE 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.73.84 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -154,55 +98,34 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-csky@vger.kernel.org, Guo Ren <guoren@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, linux-riscv@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 04. 09. 19 15:59, YueHaibing wrote:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-> ---
->  drivers/spi/spi-zynq-qspi.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
-> index 4a5326c..5cf6993 100644
-> --- a/drivers/spi/spi-zynq-qspi.c
-> +++ b/drivers/spi/spi-zynq-qspi.c
-> @@ -620,7 +620,6 @@ static int zynq_qspi_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev->of_node;
->  	struct zynq_qspi *xqspi;
-> -	struct resource *res;
->  	u32 num_cs;
->  
->  	ctlr = spi_alloc_master(&pdev->dev, sizeof(*xqspi));
-> @@ -630,8 +629,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
->  	xqspi = spi_controller_get_devdata(ctlr);
->  	xqspi->dev = dev;
->  	platform_set_drvdata(pdev, xqspi);
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	xqspi->regs = devm_ioremap_resource(&pdev->dev, res);
-> +	xqspi->regs = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(xqspi->regs)) {
->  		ret = PTR_ERR(xqspi->regs);
->  		goto remove_master;
-> 
+On Thu, 5 Sep 2019, Mao Han wrote:
 
-Acked-by: Michal Simek <michal.simek@xilinx.com>
+> This patch implements the perf registers sampling and validation API
+> for riscv arch. The valid registers and their register ID are defined in
+> perf_regs.h. Perf tool can backtrace in userspace with unwind library
+> and the registers/user stack dump support.
+> 
+> Signed-off-by: Mao Han <han_mao@c-sky.com>
+> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: Greentime Hu <green.hu@gmail.com>
+> Cc: Palmer Dabbelt <palmer@sifive.com>
+> Cc: linux-riscv <linux-riscv@lists.infradead.org>
+> Cc: Christoph Hellwig <hch@lst.de>
+> Cc: Guo Ren <guoren@kernel.org>
 
-Thanks,
-Michal
+Thanks, queued for v5.4-rc1 with Greentime's Tested-by: (since the changes 
+from v6 to v7 had no functional impact).
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
