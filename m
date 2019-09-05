@@ -2,50 +2,44 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E751A988D
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 04:49:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1BE9A98FD
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 05:46:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kmGO0NP3Yi1VbnDK0ShqzK5nTqGTluQeWodc0zIT/e4=; b=BUq/NOvpgvDp1m
-	bx9qLSFIXfky+zgnlbz//24jkHPB36Q+O5n+fRyfkdRpq7VHEvJ3OaVAdn1xM1E667prFpzIoo5my
-	QM9fp8AC8lcuEiXdm2HgZmIAvq2oEtHYHrVVPS4oWRtHAAvfVWvYvAuGYamVOzdp/PF+K/VsEtKAH
-	OOASwkowXZFV723k6WyMaLNAWybMvQYDnwGB4OxIO3oFuPU7QMgA0OC7GgbQa3UW6SARn2whnDWYN
-	/mD+E+hr2+q22TPCYmcyl/Q5BK3tt+WTyy+lDbk9F9QcvWRjwXEvCMVTpOjTKZdacIIczMvH39/ck
-	RUihUUQuo/97U+VJBwKA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=tnc9/Snq6QwIkq/Zeolajfp9hpRAuJjMKOVFU/V6Alc=; b=jmj
+	pkfYBIBeh3WiSa6nF3SE1LhVwt0wxeA8yA+4a9AKvQk0GHorQTsdcaSyi6dNim/jRQEDL5tujfWh1
+	Ir2gE9BrlHdQZCkXwC4H8iTN9C2V3sQBZy/+/GaAanBfijB7dF0oNYIrQJPaz2v4+5ndJyYbCANsQ
+	btp/de5TKQcsDfzsa+ciQWSLNa/5Amtm39nl7wo3MvYk/cN5B5ewYQGEp7ze94WAUSO4YoLoNID/2
+	YYwkNyPtlvIIKeoCJA4Xej5PwYVsZ1SigCdIct2ygATBHX14P58EyRZF6B11t+KuwDsAvqCfiQG+n
+	+20NVuzasHelEM9347nkQMOMxCTVyTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5hqG-0005pE-NA; Thu, 05 Sep 2019 02:49:48 +0000
+	id 1i5ijQ-00077H-BE; Thu, 05 Sep 2019 03:46:48 +0000
 Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5hqD-0005oX-7Q
- for linux-riscv@lists.infradead.org; Thu, 05 Sep 2019 02:49:46 +0000
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.08002193|-1; CH=green;
- DM=CONTINUE|CONTINUE|true|0.0740845-0.00454813-0.921367; FP=0|0|0|0|0|-1|-1|-1;
- HT=e02c03278; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=4; RT=4; SR=0;
- TI=SMTPD_---.FOyO4sV_1567651782; 
+ id 1i5ijM-000762-MT
+ for linux-riscv@lists.infradead.org; Thu, 05 Sep 2019 03:46:46 +0000
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07439447|-1; CH=green;
+ DM=CONTINUE|CONTINUE|true|0.453906-0.11693-0.429164; FP=0|0|0|0|0|-1|-1|-1;
+ HT=e01l10434; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=9; RT=9; SR=0;
+ TI=SMTPD_---.FP-7udU_1567655200; 
 Received: from localhost(mailfrom:han_mao@c-sky.com
- fp:SMTPD_---.FOyO4sV_1567651782)
- by smtp.aliyun-inc.com(10.147.42.253);
- Thu, 05 Sep 2019 10:49:42 +0800
-Date: Thu, 5 Sep 2019 10:49:41 +0800
+ fp:SMTPD_---.FP-7udU_1567655200)
+ by smtp.aliyun-inc.com(10.147.40.44); Thu, 05 Sep 2019 11:46:40 +0800
 From: Mao Han <han_mao@c-sky.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH V6 3/3] riscv: Add support for libdw
-Message-ID: <20190905024940.GB3949@vmh-VirtualBox>
-References: <cover.1567060834.git.han_mao@c-sky.com>
- <4cba2dfb6b1ef0df01185c6bce78a0a2867d0a7d.1567060834.git.han_mao@c-sky.com>
- <alpine.DEB.2.21.9999.1909041422220.13502@viisi.sifive.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1909041422220.13502@viisi.sifive.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+To: linux-riscv@lists.infradead.org
+Subject: [PATCH V7 0/2] riscv: Add perf callchain support
+Date: Thu,  5 Sep 2019 11:46:34 +0800
+Message-Id: <cover.1567653632.git.han_mao@c-sky.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_194945_441475_E1779A19 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20190904_204644_918629_1195AD2A 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -66,42 +60,96 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-csky@vger.kernel.org
+Cc: Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-csky@vger.kernel.org, Guo Ren <guoren@kernel.org>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Christoph Hellwig <hch@lst.de>, Mao Han <han_mao@c-sky.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Sep 04, 2019 at 02:24:57PM -0700, Paul Walmsley wrote:
-> Hello Mao Han,
-> 
-> On Thu, 29 Aug 2019, Mao Han wrote:
-> 
-> > This patch add support for DWARF register mappings and libdw registers
-> > initialization, which is used by perf callchain analyzing when
-> > --call-graph=dwarf is given.
-> 
-> > diff --git a/tools/arch/riscv/include/uapi/asm/perf_regs.h b/tools/arch/riscv/include/uapi/asm/perf_regs.h
-> > new file mode 100644
-> > index 0000000..df1a581
-> > --- /dev/null
-> > +++ b/tools/arch/riscv/include/uapi/asm/perf_regs.h
-> > @@ -0,0 +1,42 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> 
-> As with 
-> 
-> https://lore.kernel.org/linux-riscv/CAJF2gTRXH_bx0rwsTZMTnX+umZfVTL_iVnewPtVM50sLaqJPTg@mail.gmail.com/T/#t
-> 
-> is it possible to change this license string to "GPL-2.0 WITH 
-> Linux-syscall-note" to match the other Linux architectures? 
->
-Thanks for suggestion. I didn't notice the UAPI headers are supposed to 
-have the exception notes. I'll update the license string and resend them.
+This patchset adds perf callchain(FP/DWARF) support for RISC-V.
+It comes from the csky version callchain support with some
+slight modifications. The patchset base on Linux 5.3-rc6.
 
-Thanks,
-Mao Han
+The patchset has some 'checkpatch.pl --strict' warnings:
+WARNING: Use #include <linux/perf_regs.h> instead of <asm/perf_regs.h>
+#141: FILE: tools/perf/arch/riscv/include/perf_regs.h:9:
++#include <asm/perf_regs.h>
+
+CHECK: Avoid CamelCase: <Dwfl_Thread>
+#329: FILE: tools/perf/arch/riscv/util/unwind-libdw.c:9:
++bool libdw__arch_set_initial_registers(Dwfl_Thread *thread, void *arg)
+
+CHECK: Avoid CamelCase: <Dwarf_Word>
+#333: FILE: tools/perf/arch/riscv/util/unwind-libdw.c:13:
++	Dwarf_Word dwarf_regs[32];
+As all the other Linux architectures use asm/perf_regs.h directly and
+get these camelcases, I didn't try to fix them.
+
+Changes since v6:
+  - add "WITH Linux-syscall-note" for uapi headers.
+
+Changes since v5:
+  - use walk_stackframe from stacktrace.c to handle
+    kernel callchain unwinding(fix invalid mem access)
+
+Changes since v4:
+  - Add missing PERF_HAVE_ARCH_REGS_QUERY_REGISTER_OFFSET
+    verified with extra CFLAGS(-Wall -Werror)
+
+Changes since v3:
+  - Add more strict check for unwind_frame_kernel
+  - update for kernel 5.3
+
+Changes since v2:
+  - fix inconsistent comment
+  - force to build kernel with -fno-omit-frame-pointer if perf
+    event is enabled
+
+Changes since v1:
+  - simplify implementation and code convention
+
+Signed-off-by: Mao Han <han_mao@c-sky.com>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Greentime Hu <green.hu@gmail.com>
+Cc: Palmer Dabbelt <palmer@sifive.com>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Guo Ren <guoren@kernel.org>
+
+Mao Han (2):
+  riscv: Add support for perf registers sampling
+  riscv: Add support for libdw
+
+ arch/riscv/Kconfig                            |  2 +
+ arch/riscv/include/uapi/asm/perf_regs.h       | 42 ++++++++++++
+ arch/riscv/kernel/Makefile                    |  1 +
+ arch/riscv/kernel/perf_regs.c                 | 44 ++++++++++++
+ tools/arch/riscv/include/uapi/asm/perf_regs.h | 42 ++++++++++++
+ tools/perf/Makefile.config                    |  6 +-
+ tools/perf/arch/riscv/Build                   |  1 +
+ tools/perf/arch/riscv/Makefile                |  4 ++
+ tools/perf/arch/riscv/include/perf_regs.h     | 96 +++++++++++++++++++++++++++
+ tools/perf/arch/riscv/util/Build              |  2 +
+ tools/perf/arch/riscv/util/dwarf-regs.c       | 72 ++++++++++++++++++++
+ tools/perf/arch/riscv/util/unwind-libdw.c     | 57 ++++++++++++++++
+ 12 files changed, 368 insertions(+), 1 deletion(-)
+ create mode 100644 arch/riscv/include/uapi/asm/perf_regs.h
+ create mode 100644 arch/riscv/kernel/perf_regs.c
+ create mode 100644 tools/arch/riscv/include/uapi/asm/perf_regs.h
+ create mode 100644 tools/perf/arch/riscv/Build
+ create mode 100644 tools/perf/arch/riscv/Makefile
+ create mode 100644 tools/perf/arch/riscv/include/perf_regs.h
+ create mode 100644 tools/perf/arch/riscv/util/Build
+ create mode 100644 tools/perf/arch/riscv/util/dwarf-regs.c
+ create mode 100644 tools/perf/arch/riscv/util/unwind-libdw.c
+
+-- 
+2.7.4
+
 
 _______________________________________________
 linux-riscv mailing list
