@@ -2,58 +2,147 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87819A98FE
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 05:46:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54625A9A08
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 07:21:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=OxK+2QWlJxC/oOM2QKjh5F7HhqB5wHr+S8K7IR0A8ac=; b=KfxOz2JtXOcrHN8PptaWVY6SBw
-	AklyPPuUKkQ/uBvgPIhp44ZJBW55Os81pfZk//SCG9ziypw56sZb7zupA3W9YDBrDh2YBLZeO5zro
-	kMHi5i+7q0T0pwpE/ymge8NR5Fh8bobx7aJItIb4d6slGJpBB3+K6/4DsqTze4I/cQnLVjaM3lf9W
-	9irpu2ERrt98yY4FX7rgf2Cy3/KaMXuueFofHt4cD20zTEOpMiRqW869hua9a+/Wka900+mpV7q6/
-	O3G6/YD2/fu5WiFA2yzDmUuI2JiQ2Mz0YIYFGIEo5OTFKwNIOmBvTjOvadtU5fcClSFeZJ4q1ioQL
-	9ScyIjbg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QKxWtekQgHHPbIN909ki5p0CyZJH8WwsfEQUUtJ7sRo=; b=R3ELKSsEB6gioy
+	ZQeOd7uNMUayeqIoBkQn119r1xWWAl00NA3eyLWi/fQ71c/of6yhkfl0ST2uQjefsWsSGejYzGMNW
+	AX/lQVvpQ6dszVm4KD1lhlkR5qCVX53PY6C3LoDyMq6DwpGQSR43fgi+NeAWElS5bWZoXpQOg1Pqa
+	LeQnhenFgBTNp5ObRdu4jNSHB1c80QYjk0pS4JuguMkstA/T85JBXglLHZtA2Wqd/D01PY9aafTgg
+	GjJrTdogYgtzwAd7SaFLq8ISkMYcffNDd2xmFB24AY7axg4NPZrOohQEXqfEC3COybLAPAMaeHdVH
+	sdG+Pg3ePuL9efG4fqlw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5ijT-0007B9-DQ; Thu, 05 Sep 2019 03:46:51 +0000
-Received: from smtp2200-217.mail.aliyun.com ([121.197.200.217])
+	id 1i5kD0-0000WN-BW; Thu, 05 Sep 2019 05:21:26 +0000
+Received: from mail-eopbgr820081.outbound.protection.outlook.com
+ ([40.107.82.81] helo=NAM01-SN1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5ijM-000768-MQ
- for linux-riscv@lists.infradead.org; Thu, 05 Sep 2019 03:46:48 +0000
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.07436282|-1; CH=green;
- DM=CONTINUE|CONTINUE|true|0.25575-0.00953499-0.734715; FP=0|0|0|0|0|-1|-1|-1;
- HT=e02c03306; MF=han_mao@c-sky.com; NM=1; PH=DS; RN=9; RT=9; SR=0;
- TI=SMTPD_---.FP-6.lC_1567655201; 
-Received: from localhost(mailfrom:han_mao@c-sky.com
- fp:SMTPD_---.FP-6.lC_1567655201)
- by smtp.aliyun-inc.com(10.147.41.187);
- Thu, 05 Sep 2019 11:46:42 +0800
-From: Mao Han <han_mao@c-sky.com>
-To: linux-riscv@lists.infradead.org
-Subject: [PATCH V7 2/2] riscv: Add support for libdw
-Date: Thu,  5 Sep 2019 11:46:36 +0800
-Message-Id: <e30754638a4eabce6f26ecca9d5292cc7dfa2633.1567653632.git.han_mao@c-sky.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1567653632.git.han_mao@c-sky.com>
-References: <cover.1567653632.git.han_mao@c-sky.com>
-In-Reply-To: <cover.1567653632.git.han_mao@c-sky.com>
-References: <cover.1567653632.git.han_mao@c-sky.com>
+ id 1i5kC7-0008G2-T8; Thu, 05 Sep 2019 05:20:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WTPqT3NV40EAgHb4NRZ87arJG5IEyYxaVmJlozuJofzQu8KiKo4B13juahclxrwhRm562Y29pE5UCtm9oykjUh6R5HnNkXXGHDpEfFZd2yqViBDq5pSVuqj8fl8HVh3pZ8J2oSH4jYg+1asvST4HU/P8Pcs4v/Ts0ix/ilfu5l3TbDGH5WNv46yKGhEgc67vR38TeXAMGA8VDkaRwSe/ccno0zKcH8OltFlFZ5H8upLmf4LE2xBBfUBNbDAu5BIJb2qn5WFUtcncfzZFelEDvbCIU19loxA0GCL1g/7t2yvSc/x6iwQnf8GGQg0mhQ3hUTweUW30CNl+BnlZgcXycg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fWZiTF6LDxv801hBYWsUrl1FImWGGMnV9HI+PvZzS/E=;
+ b=Ay3wPLSN1om3EURT1yNLfVC5gPo2RB+XNMzcVjG0GnIZ/sjHh0e30F084ZmFM8RO/u/fTqme2ERqEYs447tirRkLgPKtFdRCvOigsLgWrcmFme4GJ5wLY1dGQezFJdjGqr8PN7uTSQXi+7I0SAbrpKBZRq2k8nIcdLM4vn9+6ggmCV5P7h8aXBUZHvi6ujkM0e4AkqS3kbV1RKowvb4LDYp2LZC7nEtCps4pddxJ54dqDmpG6E0F7RbM1z8gcCA5Aa+MFFZ7Cb8siBrG5RzPkTCEESG7rTi98LuoL/eIpi7L/IxjyM3fU3KAvNtFYhbyemLE96R8g4qVmn9ci0wVig==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.100) smtp.rcpttodomain=huawei.com smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fWZiTF6LDxv801hBYWsUrl1FImWGGMnV9HI+PvZzS/E=;
+ b=m4mJdT0dSpC3upWdAdPLvIjDRcKPg5t0fkKu5skSCiTU4/vudxWuVR+cJv60gHNvQ7VJ+qHbpkLonhH5OdfmmOOW/M5fOFwzrZjxdDw/Me3t/uOyQ3tFia0AWXhpY37HrzliJssZPdfK0ifo+bmvAEoDOyREQxvSl/NBZmqChPg=
+Received: from MN2PR02CA0013.namprd02.prod.outlook.com (2603:10b6:208:fc::26)
+ by BN7PR02MB5331.namprd02.prod.outlook.com (2603:10b6:408:2b::29)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2199.21; Thu, 5 Sep
+ 2019 05:20:29 +0000
+Received: from CY1NAM02FT031.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e45::207) by MN2PR02CA0013.outlook.office365.com
+ (2603:10b6:208:fc::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2220.19 via Frontend
+ Transport; Thu, 5 Sep 2019 05:20:28 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+ smtp.mailfrom=xilinx.com; huawei.com; dkim=none (message not signed)
+ header.d=none;huawei.com; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.100 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
+Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
+ CY1NAM02FT031.mail.protection.outlook.com (10.152.75.180) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2241.14
+ via Frontend Transport; Thu, 5 Sep 2019 05:20:11 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66]:34131
+ helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+ (envelope-from <michal.simek@xilinx.com>)
+ id 1i5kBm-0001qx-47; Wed, 04 Sep 2019 22:20:10 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <michal.simek@xilinx.com>)
+ id 1i5kBg-000601-KA; Wed, 04 Sep 2019 22:20:04 -0700
+Received: from xsj-pvapsmtp01 (mailhub.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id x855JvMC001765; 
+ Wed, 4 Sep 2019 22:19:57 -0700
+Received: from [172.30.17.116] by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <michals@xilinx.com>)
+ id 1i5kBZ-0005jH-CE; Wed, 04 Sep 2019 22:19:57 -0700
+Subject: Re: [PATCH -next 34/36] spi: zynqmp: use
+ devm_platform_ioremap_resource() to simplify code
+To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org,
+ f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
+ eric@anholt.net, wahrenst@gmx.net, shc_work@mail.ru, agross@kernel.org,
+ khilman@baylibre.com, matthias.bgg@gmail.com, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, avifishman70@gmail.com, tmaimon77@gmail.com,
+ tali.perry1@gmail.com, venture@google.com, yuenn@google.com,
+ benjaminfair@google.com, kgene@kernel.org, krzk@kernel.org,
+ andi@etezian.org, palmer@sifive.com, paul.walmsley@sifive.com,
+ baohua@kernel.org, mripard@kernel.org, wens@csie.org,
+ ldewangan@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ yamada.masahiro@socionext.com, michal.simek@xilinx.com
+References: <20190904135918.25352-1-yuehaibing@huawei.com>
+ <20190904135918.25352-35-yuehaibing@huawei.com>
+From: Michal Simek <michal.simek@xilinx.com>
+Message-ID: <f267daf8-3351-a90a-35ea-94e1d8c20583@xilinx.com>
+Date: Thu, 5 Sep 2019 07:19:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20190904135918.25352-35-yuehaibing@huawei.com>
+Content-Language: en-US
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(1496009)(136003)(39860400002)(376002)(346002)(396003)(2980300002)(189003)(199004)(2616005)(44832011)(336012)(11346002)(476003)(126002)(26005)(486006)(446003)(426003)(305945005)(6246003)(81156014)(229853002)(186003)(5660300002)(31696002)(7416002)(478600001)(2486003)(52146003)(23676004)(356004)(8676002)(6666004)(76176011)(4326008)(58126008)(316002)(106002)(50466002)(7406005)(2906002)(47776003)(70206006)(65806001)(36756003)(9786002)(65956001)(230700001)(70586007)(31686004)(81166006)(36386004)(8936002)(921003)(1121003)(5001870100001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR02MB5331; H:xsj-pvapsmtpgw02; FPR:;
+ SPF:Pass; LANG:en; PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com; MX:1; A:1;
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: fac73ab7-0bd2-4147-3dc1-08d731c0c371
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(4709080)(1401327)(4618075)(2017052603328);
+ SRVR:BN7PR02MB5331; 
+X-MS-TrafficTypeDiagnostic: BN7PR02MB5331:
+X-Microsoft-Antispam-PRVS: <BN7PR02MB53310A6D9FFB4A2590F44CA5C6BB0@BN7PR02MB5331.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:1079;
+X-Forefront-PRVS: 015114592F
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: xDHBjZQ8GYL4pdYhnRlKeinrYnOGSRK2gTz9Op8BpLU3YyfFpCkPVoShvRJKH9fqEOtwsdouUc2baNyy/393AFAy8yVDWUPlqhFvFzWhSzmgLOrpF77Vz7N3FlNYwHkZdHRbhbyk6STbg8Ip1oVAPOZtS6ebeSkRB551f/xUe90p0iOc4jRo3+bHyEc3sTDUObc3oTapGzxrgn7Nbw2VP9Y9MyT0A7XTROOWcNDeK/uAtZAwKuNDpw/VnbfVNhowlrnXsba+EIbDx39RbUaJ2Lp0Z8a2GjzfGzyjJSHGqP5m3T70AR5jgPiHh6cWWmBij1XrIsQRgiq1EcpvjeN1cLIoLctoM4DhNV9QhVesFQVyUDrZmtwXUnu1lND/fTr4l9DD3hz0IcIuRPnsRwkCTSTrmWpInqHshY8P1ZP9SEc=
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Sep 2019 05:20:11.1281 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fac73ab7-0bd2-4147-3dc1-08d731c0c371
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.100];
+ Helo=[xsj-pvapsmtpgw02]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR02MB5331
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_204644_917998_6402C373 
-X-CRM114-Status: GOOD (  13.60  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190904_222031_944479_4B762109 
+X-CRM114-Status: GOOD (  13.41  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.82.81 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,388 +154,55 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- linux-csky@vger.kernel.org, Guo Ren <guoren@kernel.org>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Christoph Hellwig <hch@lst.de>, Mao Han <han_mao@c-sky.com>
-MIME-Version: 1.0
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch adds support for DWARF register mappings and libdw registers
-initialization, which is used by perf callchain analyzing when
---call-graph=dwarf is given.
+On 04. 09. 19 15:59, YueHaibing wrote:
+> Use devm_platform_ioremap_resource() to simplify the code a bit.
+> This is detected by coccinelle.
+> 
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
+> ---
+>  drivers/spi/spi-zynqmp-gqspi.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
+> index 5e9ea8a..60c4de4 100644
+> --- a/drivers/spi/spi-zynqmp-gqspi.c
+> +++ b/drivers/spi/spi-zynqmp-gqspi.c
+> @@ -1016,7 +1016,6 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
+>  	int ret = 0;
+>  	struct spi_master *master;
+>  	struct zynqmp_qspi *xqspi;
+> -	struct resource *res;
+>  	struct device *dev = &pdev->dev;
+>  
+>  	eemi_ops = zynqmp_pm_get_eemi_ops();
+> @@ -1031,8 +1030,7 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
+>  	master->dev.of_node = pdev->dev.of_node;
+>  	platform_set_drvdata(pdev, master);
+>  
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	xqspi->regs = devm_ioremap_resource(&pdev->dev, res);
+> +	xqspi->regs = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(xqspi->regs)) {
+>  		ret = PTR_ERR(xqspi->regs);
+>  		goto remove_master;
+> 
 
-Signed-off-by: Mao Han <han_mao@c-sky.com>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Greentime Hu <green.hu@gmail.com>
-Cc: Palmer Dabbelt <palmer@sifive.com>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Guo Ren <guoren@kernel.org>
----
- tools/arch/riscv/include/uapi/asm/perf_regs.h | 42 ++++++++++++
- tools/perf/Makefile.config                    |  6 +-
- tools/perf/arch/riscv/Build                   |  1 +
- tools/perf/arch/riscv/Makefile                |  4 ++
- tools/perf/arch/riscv/include/perf_regs.h     | 96 +++++++++++++++++++++++++++
- tools/perf/arch/riscv/util/Build              |  2 +
- tools/perf/arch/riscv/util/dwarf-regs.c       | 72 ++++++++++++++++++++
- tools/perf/arch/riscv/util/unwind-libdw.c     | 57 ++++++++++++++++
- 8 files changed, 279 insertions(+), 1 deletion(-)
- create mode 100644 tools/arch/riscv/include/uapi/asm/perf_regs.h
- create mode 100644 tools/perf/arch/riscv/Build
- create mode 100644 tools/perf/arch/riscv/Makefile
- create mode 100644 tools/perf/arch/riscv/include/perf_regs.h
- create mode 100644 tools/perf/arch/riscv/util/Build
- create mode 100644 tools/perf/arch/riscv/util/dwarf-regs.c
- create mode 100644 tools/perf/arch/riscv/util/unwind-libdw.c
+Acked-by: Michal Simek <michal.simek@xilinx.com>
 
-diff --git a/tools/arch/riscv/include/uapi/asm/perf_regs.h b/tools/arch/riscv/include/uapi/asm/perf_regs.h
-new file mode 100644
-index 0000000..196f964
---- /dev/null
-+++ b/tools/arch/riscv/include/uapi/asm/perf_regs.h
-@@ -0,0 +1,42 @@
-+/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-+/* Copyright (C) 2019 Hangzhou C-SKY Microsystems co.,ltd. */
-+
-+#ifndef _ASM_RISCV_PERF_REGS_H
-+#define _ASM_RISCV_PERF_REGS_H
-+
-+enum perf_event_riscv_regs {
-+	PERF_REG_RISCV_PC,
-+	PERF_REG_RISCV_RA,
-+	PERF_REG_RISCV_SP,
-+	PERF_REG_RISCV_GP,
-+	PERF_REG_RISCV_TP,
-+	PERF_REG_RISCV_T0,
-+	PERF_REG_RISCV_T1,
-+	PERF_REG_RISCV_T2,
-+	PERF_REG_RISCV_S0,
-+	PERF_REG_RISCV_S1,
-+	PERF_REG_RISCV_A0,
-+	PERF_REG_RISCV_A1,
-+	PERF_REG_RISCV_A2,
-+	PERF_REG_RISCV_A3,
-+	PERF_REG_RISCV_A4,
-+	PERF_REG_RISCV_A5,
-+	PERF_REG_RISCV_A6,
-+	PERF_REG_RISCV_A7,
-+	PERF_REG_RISCV_S2,
-+	PERF_REG_RISCV_S3,
-+	PERF_REG_RISCV_S4,
-+	PERF_REG_RISCV_S5,
-+	PERF_REG_RISCV_S6,
-+	PERF_REG_RISCV_S7,
-+	PERF_REG_RISCV_S8,
-+	PERF_REG_RISCV_S9,
-+	PERF_REG_RISCV_S10,
-+	PERF_REG_RISCV_S11,
-+	PERF_REG_RISCV_T3,
-+	PERF_REG_RISCV_T4,
-+	PERF_REG_RISCV_T5,
-+	PERF_REG_RISCV_T6,
-+	PERF_REG_RISCV_MAX,
-+};
-+#endif /* _ASM_RISCV_PERF_REGS_H */
-diff --git a/tools/perf/Makefile.config b/tools/perf/Makefile.config
-index 89ac5a1..eaf25ee 100644
---- a/tools/perf/Makefile.config
-+++ b/tools/perf/Makefile.config
-@@ -60,6 +60,10 @@ ifeq ($(SRCARCH),arm64)
-   LIBUNWIND_LIBS = -lunwind -lunwind-aarch64
- endif
- 
-+ifeq ($(SRCARCH),riscv)
-+  NO_PERF_REGS := 0
-+endif
-+
- ifeq ($(SRCARCH),csky)
-   NO_PERF_REGS := 0
- endif
-@@ -82,7 +86,7 @@ endif
- # Disable it on all other architectures in case libdw unwind
- # support is detected in system. Add supported architectures
- # to the check.
--ifneq ($(SRCARCH),$(filter $(SRCARCH),x86 arm arm64 powerpc s390 csky))
-+ifneq ($(SRCARCH),$(filter $(SRCARCH),x86 arm arm64 powerpc s390 csky riscv))
-   NO_LIBDW_DWARF_UNWIND := 1
- endif
- 
-diff --git a/tools/perf/arch/riscv/Build b/tools/perf/arch/riscv/Build
-new file mode 100644
-index 0000000..e4e5f33
---- /dev/null
-+++ b/tools/perf/arch/riscv/Build
-@@ -0,0 +1 @@
-+perf-y += util/
-diff --git a/tools/perf/arch/riscv/Makefile b/tools/perf/arch/riscv/Makefile
-new file mode 100644
-index 0000000..1aa9dd7
---- /dev/null
-+++ b/tools/perf/arch/riscv/Makefile
-@@ -0,0 +1,4 @@
-+ifndef NO_DWARF
-+PERF_HAVE_DWARF_REGS := 1
-+endif
-+PERF_HAVE_ARCH_REGS_QUERY_REGISTER_OFFSET := 1
-diff --git a/tools/perf/arch/riscv/include/perf_regs.h b/tools/perf/arch/riscv/include/perf_regs.h
-new file mode 100644
-index 0000000..7a8bcde
---- /dev/null
-+++ b/tools/perf/arch/riscv/include/perf_regs.h
-@@ -0,0 +1,96 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (C) 2019 Hangzhou C-SKY Microsystems co.,ltd. */
-+
-+#ifndef ARCH_PERF_REGS_H
-+#define ARCH_PERF_REGS_H
-+
-+#include <stdlib.h>
-+#include <linux/types.h>
-+#include <asm/perf_regs.h>
-+
-+#define PERF_REGS_MASK	((1ULL << PERF_REG_RISCV_MAX) - 1)
-+#define PERF_REGS_MAX	PERF_REG_RISCV_MAX
-+#if __riscv_xlen == 64
-+#define PERF_SAMPLE_REGS_ABI    PERF_SAMPLE_REGS_ABI_64
-+#else
-+#define PERF_SAMPLE_REGS_ABI	PERF_SAMPLE_REGS_ABI_32
-+#endif
-+
-+#define PERF_REG_IP	PERF_REG_RISCV_PC
-+#define PERF_REG_SP	PERF_REG_RISCV_SP
-+
-+static inline const char *perf_reg_name(int id)
-+{
-+	switch (id) {
-+	case PERF_REG_RISCV_PC:
-+		return "pc";
-+	case PERF_REG_RISCV_RA:
-+		return "ra";
-+	case PERF_REG_RISCV_SP:
-+		return "sp";
-+	case PERF_REG_RISCV_GP:
-+		return "gp";
-+	case PERF_REG_RISCV_TP:
-+		return "tp";
-+	case PERF_REG_RISCV_T0:
-+		return "t0";
-+	case PERF_REG_RISCV_T1:
-+		return "t1";
-+	case PERF_REG_RISCV_T2:
-+		return "t2";
-+	case PERF_REG_RISCV_S0:
-+		return "s0";
-+	case PERF_REG_RISCV_S1:
-+		return "s1";
-+	case PERF_REG_RISCV_A0:
-+		return "a0";
-+	case PERF_REG_RISCV_A1:
-+		return "a1";
-+	case PERF_REG_RISCV_A2:
-+		return "a2";
-+	case PERF_REG_RISCV_A3:
-+		return "a3";
-+	case PERF_REG_RISCV_A4:
-+		return "a4";
-+	case PERF_REG_RISCV_A5:
-+		return "a5";
-+	case PERF_REG_RISCV_A6:
-+		return "a6";
-+	case PERF_REG_RISCV_A7:
-+		return "a7";
-+	case PERF_REG_RISCV_S2:
-+		return "s2";
-+	case PERF_REG_RISCV_S3:
-+		return "s3";
-+	case PERF_REG_RISCV_S4:
-+		return "s4";
-+	case PERF_REG_RISCV_S5:
-+		return "s5";
-+	case PERF_REG_RISCV_S6:
-+		return "s6";
-+	case PERF_REG_RISCV_S7:
-+		return "s7";
-+	case PERF_REG_RISCV_S8:
-+		return "s8";
-+	case PERF_REG_RISCV_S9:
-+		return "s9";
-+	case PERF_REG_RISCV_S10:
-+		return "s10";
-+	case PERF_REG_RISCV_S11:
-+		return "s11";
-+	case PERF_REG_RISCV_T3:
-+		return "t3";
-+	case PERF_REG_RISCV_T4:
-+		return "t4";
-+	case PERF_REG_RISCV_T5:
-+		return "t5";
-+	case PERF_REG_RISCV_T6:
-+		return "t6";
-+	default:
-+		return NULL;
-+	}
-+
-+	return NULL;
-+}
-+
-+#endif /* ARCH_PERF_REGS_H */
-diff --git a/tools/perf/arch/riscv/util/Build b/tools/perf/arch/riscv/util/Build
-new file mode 100644
-index 0000000..1160bb2
---- /dev/null
-+++ b/tools/perf/arch/riscv/util/Build
-@@ -0,0 +1,2 @@
-+perf-$(CONFIG_DWARF) += dwarf-regs.o
-+perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
-diff --git a/tools/perf/arch/riscv/util/dwarf-regs.c b/tools/perf/arch/riscv/util/dwarf-regs.c
-new file mode 100644
-index 0000000..cd0504c
---- /dev/null
-+++ b/tools/perf/arch/riscv/util/dwarf-regs.c
-@@ -0,0 +1,72 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2019 Hangzhou C-SKY Microsystems co.,ltd.
-+ * Mapping of DWARF debug register numbers into register names.
-+ */
-+
-+#include <stddef.h>
-+#include <errno.h> /* for EINVAL */
-+#include <string.h> /* for strcmp */
-+#include <dwarf-regs.h>
-+
-+struct pt_regs_dwarfnum {
-+	const char *name;
-+	unsigned int dwarfnum;
-+};
-+
-+#define REG_DWARFNUM_NAME(r, num) {.name = r, .dwarfnum = num}
-+#define REG_DWARFNUM_END {.name = NULL, .dwarfnum = 0}
-+
-+struct pt_regs_dwarfnum riscv_dwarf_regs_table[] = {
-+	REG_DWARFNUM_NAME("%zero", 0),
-+	REG_DWARFNUM_NAME("%ra", 1),
-+	REG_DWARFNUM_NAME("%sp", 2),
-+	REG_DWARFNUM_NAME("%gp", 3),
-+	REG_DWARFNUM_NAME("%tp", 4),
-+	REG_DWARFNUM_NAME("%t0", 5),
-+	REG_DWARFNUM_NAME("%t1", 6),
-+	REG_DWARFNUM_NAME("%t2", 7),
-+	REG_DWARFNUM_NAME("%s0", 8),
-+	REG_DWARFNUM_NAME("%s1", 9),
-+	REG_DWARFNUM_NAME("%a0", 10),
-+	REG_DWARFNUM_NAME("%a1", 11),
-+	REG_DWARFNUM_NAME("%a2", 12),
-+	REG_DWARFNUM_NAME("%a3", 13),
-+	REG_DWARFNUM_NAME("%a4", 14),
-+	REG_DWARFNUM_NAME("%a5", 15),
-+	REG_DWARFNUM_NAME("%a6", 16),
-+	REG_DWARFNUM_NAME("%a7", 17),
-+	REG_DWARFNUM_NAME("%s2", 18),
-+	REG_DWARFNUM_NAME("%s3", 19),
-+	REG_DWARFNUM_NAME("%s4", 20),
-+	REG_DWARFNUM_NAME("%s5", 21),
-+	REG_DWARFNUM_NAME("%s6", 22),
-+	REG_DWARFNUM_NAME("%s7", 23),
-+	REG_DWARFNUM_NAME("%s8", 24),
-+	REG_DWARFNUM_NAME("%s9", 25),
-+	REG_DWARFNUM_NAME("%s10", 26),
-+	REG_DWARFNUM_NAME("%s11", 27),
-+	REG_DWARFNUM_NAME("%t3", 28),
-+	REG_DWARFNUM_NAME("%t4", 29),
-+	REG_DWARFNUM_NAME("%t5", 30),
-+	REG_DWARFNUM_NAME("%t6", 31),
-+	REG_DWARFNUM_END,
-+};
-+
-+#define RISCV_MAX_REGS ((sizeof(riscv_dwarf_regs_table) / \
-+		 sizeof(riscv_dwarf_regs_table[0])) - 1)
-+
-+const char *get_arch_regstr(unsigned int n)
-+{
-+	return (n < RISCV_MAX_REGS) ? riscv_dwarf_regs_table[n].name : NULL;
-+}
-+
-+int regs_query_register_offset(const char *name)
-+{
-+	const struct pt_regs_dwarfnum *roff;
-+
-+	for (roff = riscv_dwarf_regs_table; roff->name; roff++)
-+		if (!strcmp(roff->name, name))
-+			return roff->dwarfnum;
-+	return -EINVAL;
-+}
-diff --git a/tools/perf/arch/riscv/util/unwind-libdw.c b/tools/perf/arch/riscv/util/unwind-libdw.c
-new file mode 100644
-index 0000000..19536e1
---- /dev/null
-+++ b/tools/perf/arch/riscv/util/unwind-libdw.c
-@@ -0,0 +1,57 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (C) 2019 Hangzhou C-SKY Microsystems co.,ltd. */
-+
-+#include <elfutils/libdwfl.h>
-+#include "../../util/unwind-libdw.h"
-+#include "../../util/perf_regs.h"
-+#include "../../util/event.h"
-+
-+bool libdw__arch_set_initial_registers(Dwfl_Thread *thread, void *arg)
-+{
-+	struct unwind_info *ui = arg;
-+	struct regs_dump *user_regs = &ui->sample->user_regs;
-+	Dwarf_Word dwarf_regs[32];
-+
-+#define REG(r) ({						\
-+	Dwarf_Word val = 0;					\
-+	perf_reg_value(&val, user_regs, PERF_REG_RISCV_##r);	\
-+	val;							\
-+})
-+
-+	dwarf_regs[0]  = 0;
-+	dwarf_regs[1]  = REG(RA);
-+	dwarf_regs[2]  = REG(SP);
-+	dwarf_regs[3]  = REG(GP);
-+	dwarf_regs[4]  = REG(TP);
-+	dwarf_regs[5]  = REG(T0);
-+	dwarf_regs[6]  = REG(T1);
-+	dwarf_regs[7]  = REG(T2);
-+	dwarf_regs[8]  = REG(S0);
-+	dwarf_regs[9]  = REG(S1);
-+	dwarf_regs[10] = REG(A0);
-+	dwarf_regs[11] = REG(A1);
-+	dwarf_regs[12] = REG(A2);
-+	dwarf_regs[13] = REG(A3);
-+	dwarf_regs[14] = REG(A4);
-+	dwarf_regs[15] = REG(A5);
-+	dwarf_regs[16] = REG(A6);
-+	dwarf_regs[17] = REG(A7);
-+	dwarf_regs[18] = REG(S2);
-+	dwarf_regs[19] = REG(S3);
-+	dwarf_regs[20] = REG(S4);
-+	dwarf_regs[21] = REG(S5);
-+	dwarf_regs[22] = REG(S6);
-+	dwarf_regs[23] = REG(S7);
-+	dwarf_regs[24] = REG(S8);
-+	dwarf_regs[25] = REG(S9);
-+	dwarf_regs[26] = REG(S10);
-+	dwarf_regs[27] = REG(S11);
-+	dwarf_regs[28] = REG(T3);
-+	dwarf_regs[29] = REG(T4);
-+	dwarf_regs[30] = REG(T5);
-+	dwarf_regs[31] = REG(T6);
-+	dwfl_thread_state_register_pc(thread, REG(PC));
-+
-+	return dwfl_thread_state_registers(thread, 0, PERF_REG_RISCV_MAX,
-+					   dwarf_regs);
-+}
--- 
-2.7.4
-
+Thanks,
+Michal
 
 _______________________________________________
 linux-riscv mailing list
