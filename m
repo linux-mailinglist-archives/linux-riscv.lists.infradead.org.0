@@ -2,96 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BF53AAB4D
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Sep 2019 20:40:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78A2AAB2A5
+	for <lists+linux-riscv@lfdr.de>; Fri,  6 Sep 2019 08:56:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n1EJVDFFlcdBiJPNJBF8xbjDtjs3F+OiBm/d9TIXC84=; b=I/7E4MdEaic4ZD
-	hhSLTdW6hPYea32Es2iFclUIVIbcAdUY+lXZQ0OZau7IJhpUX903gESohUFrJCOMwYM1rr9X3jOrm
-	k2cmUUCJHFX3RcspvAmJsv96Ayg7qxAfzro85mwkItgZIjGmk4qijb6gyVY5LXlkgQoNcjlSqRtw1
-	VkEMQf15/MYLA98sqR0mJrVobo1oiAuBzEp2VPSNiH/gVjSvXet4q6wM6sxln8obamHIuL5V2HAWp
-	WjWMxBmX9JapcQIo4A5U8oDGXuU60W6alpi9TB9jQb+7NSpmRKfplrGmKECdXdhYYeFOhusiFAWeu
-	AY3hzSnn7goxD1gZh7OQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:
+	Subject:From:To:Date:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ns+qDQ2ShN+9JP9Ppr9x2F5aus/rwce9nUhpz+qLDfA=; b=rURNfjYFZVmLay
+	GpwLY2lbL4HYFojAVY3jWV5hgCaWqzFbXwlaYMGRPArMUNyiPb+gqfJOIEZohcKNfd1PTPYvq0+E5
+	jsuJHw1ay8KpeECssN+8UrFG8WU0QqlAR+toYXo99iVrgfQHgSY7z0p2FMeaChwmQxoN9A6ty/Pzp
+	uUcsOKef89h17Zzv3DjBBrX4VlVnY/hThHz2EHDkoUrlhlsAeLnH+4tFdqILVPS+Xzr6ZfxeFtRVn
+	TZF4uxSzwtc/Qryyr5M8/SC3LVEl3bCKFQLRNN9aFc0qIlCP2R0FGsdGcieJKk4vdiOs7RhcNuNHp
+	bXcT2G38rH33T5uoHjRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5wgC-0000bl-SP; Thu, 05 Sep 2019 18:40:24 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1i68AY-0006wh-8d; Fri, 06 Sep 2019 06:56:30 +0000
+Received: from mail2.protonmail.ch ([185.70.40.22])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5wg5-0000Wr-RF; Thu, 05 Sep 2019 18:40:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1567708792;
- bh=bhJITHNaDSNk82tHbXwjAU2m4OSwrTVq9Dh6XgoEVgM=;
- h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=l5gka5lTwefMebb8U4HzIol6vblHmV57FMzes8yN8THNc2vXcQcJZM5dhzYH/tQK4
- Rm3QwWOLfBaeoh2LLT7euoAQqboVIkauh19AbkTP6fIUnF2EtRFEnmRjZxtUUyjeWW
- qjS0cTFWD7MMMZtMvn1Fe9ouR8oBJi5t0xopZDuk=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [192.168.1.162] ([37.4.249.90]) by mail.gmx.com (mrgmx001
- [212.227.17.190]) with ESMTPSA (Nemesis) id 0MMCFR-1i4Ygs4Bw5-00859O; Thu, 05
- Sep 2019 20:39:52 +0200
-Subject: Re: [PATCH -next 06/36] spi: bcm2835: use
- devm_platform_ioremap_resource() to simplify code
-To: YueHaibing <yuehaibing@huawei.com>, broonie@kernel.org,
- f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
- eric@anholt.net, shc_work@mail.ru, agross@kernel.org, khilman@baylibre.com,
- matthias.bgg@gmail.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
- venture@google.com, yuenn@google.com, benjaminfair@google.com,
- kgene@kernel.org, krzk@kernel.org, andi@etezian.org, palmer@sifive.com,
- paul.walmsley@sifive.com, baohua@kernel.org, mripard@kernel.org,
- wens@csie.org, ldewangan@nvidia.com, thierry.reding@gmail.com,
- jonathanh@nvidia.com, yamada.masahiro@socionext.com, michal.simek@xilinx.com
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-7-yuehaibing@huawei.com>
-From: Stefan Wahren <wahrenst@gmx.net>
-Message-ID: <c9c6a9ca-5725-513f-2ef3-734ecf0878b8@gmx.net>
-Date: Thu, 5 Sep 2019 20:39:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1i68AU-0006vy-G5
+ for linux-riscv@lists.infradead.org; Fri, 06 Sep 2019 06:56:28 +0000
+Date: Fri, 06 Sep 2019 06:56:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hardenedlinux.org;
+ s=protonmail; t=1567752983;
+ bh=tnjEQHsjLTOwlXpsM+jIBd9kUJcYGN4t3QPxOXWDZXg=;
+ h=Date:To:From:Cc:Reply-To:Subject:Feedback-ID:From;
+ b=XfrsGKJAJrPo4xO99677ifuwvEb6/N4sg/bLFpox2BYBgnyajpCyTUP5pNywekQuh
+ fUloulGna6+oMTCTSCvnclVj3heLf04JYo0pVKGDMIsquM6Y53GQv5st+xArh1Qqp4
+ zMYvDAlY+xu8EjJ2Do84Lb0gHmymoWVNsYM6lRv8=
+To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Xiang Wang <merle@hardenedlinux.org>
+Subject: [PATCH] arch/riscv: disable too many harts before pick main boot hart
+Message-ID: <AMJe39pHTcb4gsI-_Dv-wmR8_x9EbCCN9LKI47j34_8vBKRqzFxPrjmZvBtwV5OU_HcOiRkKUG66xVaNQ8VAXw7Ws0CCK74gpA8pKaYN5wM=@hardenedlinux.org>
+Feedback-ID: BRRa7Rf7LqOlikZR00e5gSr_IsihWq0drDTak4NnawY-ONQTW87vpTHz90bkJTl_rn8r4L6gc-nP1pm37CQtxw==:Ext:ProtonMail
 MIME-Version: 1.0
-In-Reply-To: <20190904135918.25352-7-yuehaibing@huawei.com>
-Content-Language: en-US
-X-Provags-ID: V03:K1:PJZW3p24Sgs9pPgM0nquSd55ClUOxvx8h/ANFNBZrD5MaK8bvKD
- dHfxSFK5ClXmMrJSUR8lOZtZfJA56JgmfFkwVv7amqZJ26WGT9rJFbEFaH/uolq/SSk3/Ik
- CaU2qBvQ+UiBNHCAXrwBe+mgP4L5nXoKh99c43NCmIKAYgIHM3GmDJzctwbGc8axkanZrqb
- kItlAw0DrA85Zrq1bckLw==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:anpvg5mTIZw=:5SNYFyWX4G6ecfNsrbwtlx
- /TNEmn+IvOxzbLdzuF8xREYo/Mb0quJpFUk4fLZIaDZRc/+F/YFcML45laZ3kAnjx4pBNoRjO
- FaTTfRdwtSx5/5J9nYb0tB67pARyFpiLNRZHPeVLgFdUlMdrfx0AViG2lcR1WyrQu8EmG0w66
- FupD6Vsv3CPNx5UyEqdvrM3FS14URpj0UbKkRqhhmqSsGNa/m8W9Eot0yghivFIPbC/W+4n4o
- jaTEuayyGrRuIkPrylx/NzddppI6WbP3xHMIYbF4TaVS3IkR+abQ7z50D/5xVjLSQDpKFa57B
- ckqCfAhpYRsoKkvJVpw/+ipQjDIAF41qmM6g4CRaGbxWun3LwiZB90S2AOGePNA4ppJ7aK6Og
- 93MNpeQDqmJC4jF40SzBiV5bGYKY9t+sQ2mJ9B24d0iAjzEDa/g0K89frdKWOack+tm82B6gc
- ltMtrA0QSll5wIayinj6TBLy4S3mmBODD3LFeA67qATaC6MCSj69O4LuMtMpKbtfgth06HEMu
- YJ0FQhW4KW/0YU98OTNbUKqXrcY6VxuTAlHxN5kzpG2kcl73oo3uuVp/pW874PR2mqKpBYkAF
- o17lCCG8Hmrgnk+CY4zH2ZucP3GbNBJ3NPZXroU2mZYq+cy/1ZtQEuBRWNr5TfodKF+u15XKj
- cu+WWfsEaKkKsoLiS2dJnJ8c+Lwnn9jECz1wsbWKv4phl7tgWxwFlgPe/pNTVpZ++TjJKuCsg
- T+AEnJ5C7cuUvMW8Uy1C1xK5ZCiOQe9jMAtPKAZu237ChXgkj8wrwlFue2DSDeXfP9j+jtLTA
- 0NhL8w0Uq3LMDQW6S8dUioyZ5pjNAaSxp88yWp0qceEyktCtxOL2hmy30iJPAB8V3qJyGe/Hs
- TDQiNNZqGcJ/LQ1EfJTKbn1KwFAg40weTKSTQFAHoG6T1sCUfd5POPN71s+ZYacM5pSDbzqBF
- deyy1C9MIYl0iKHg8Ajzk5Mhyl3sTIi4XtSYvss9RewaUBcYedvXA0rnnK1fxdjZrVzQAFLD4
- LAuNFdEbCzupNWUGMAeZYtJV1B6BhPD7j6jNYoXOerQckMjA6Ke57e0yNkddTN3RCspo2hPyl
- tvCoWGf7hkWKnybbkWmAhueCK2DCj42Dm/1l5jozBLE3rORYfNVAq64ralDwip1IBHAaf3bqR
- seRgj/4/fnfu787yaeEO9o1oR+2J5hYn41YKsgVXMUjRfztTZ70iv+mH+1iD3m/vETnZk=
+X-Spam-Status: No, score=-1.2 required=7.0 tests=ALL_TRUSTED,DKIM_SIGNED,
+ DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF autolearn=ham
+ autolearn_force=no version=3.4.2
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on mail.protonmail.ch
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190905_114018_194398_5F178E6C 
-X-CRM114-Status: UNSURE (   6.13  )
+X-CRM114-CacheID: sfid-20190905_235626_695254_37C060C5 
+X-CRM114-Status: UNSURE (   6.52  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (wahrenst[at]gmx.net)
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [185.70.40.22 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -110,24 +76,62 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Reply-To: Xiang Wang <merle@hardenedlinux.org>
+Cc: "citypw@hardenedlinux.org" <citypw@hardenedlinux.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Am 04.09.19 um 15:58 schrieb YueHaibing:
-> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> This is detected by coccinelle.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-Acked-by: Stefan Wahren <wahrenst@gmx.net>
+From 12300865d1103618c9d4c375f7d7fbe601b6618c Mon Sep 17 00:00:00 2001
+From: Xiang Wang <merle@hardenedlinux.org>
+Date: Fri, 6 Sep 2019 11:56:09 +0800
+Subject: [PATCH] arch/riscv: disable too many harts before pick main boot hart
+
+These harts with id greater than or equal to CONFIG_NR_CPUS need to be disabled.
+But pick the main Hart can choose any one. So, before pick the main hart, you
+need to disable the hart with id greater than or equal to CONFIG_NR_CPUS.
+
+Signed-off-by: Xiang Wang <merle@hardenedlinux.org>
+---
+ arch/riscv/kernel/head.S | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index 0f1ba17e476f..cfffea38eb17 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -63,6 +63,11 @@ _start_kernel:
+ 	li t0, SR_FS
+ 	csrc sstatus, t0
+
++#ifdef CONFIG_SMP
++	li t0, CONFIG_NR_CPUS
++	bgeu a0, t0, .Lsecondary_park
++#endif
++
+ 	/* Pick one hart to run the main boot sequence */
+ 	la a3, hart_lottery
+ 	li a2, 1
+@@ -154,9 +159,6 @@ relocate:
+
+ .Lsecondary_start:
+ #ifdef CONFIG_SMP
+-	li a1, CONFIG_NR_CPUS
+-	bgeu a0, a1, .Lsecondary_park
+-
+ 	/* Set trap vector to spin forever to help debug */
+ 	la a3, .Lsecondary_park
+ 	csrw CSR_STVEC, a3
+--
+2.20.1
+
+
+
+
+
+
+
 
 _______________________________________________
 linux-riscv mailing list
