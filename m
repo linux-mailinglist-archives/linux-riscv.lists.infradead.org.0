@@ -2,44 +2,44 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72AE1AC4A2
-	for <lists+linux-riscv@lfdr.de>; Sat,  7 Sep 2019 06:39:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EAD2AAC4A7
+	for <lists+linux-riscv@lfdr.de>; Sat,  7 Sep 2019 06:40:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6/uIvO0j74h00R/19UFrhgwPtAMrtue4T+UsyOIAQfw=; b=QUduIM3+9xjLl6
-	HLVHW2m+QeHTolSEYsZXM0aptEWRdVfwNsPLV2ZdR3gvrBPlSCHyOolN3F6GsaQoN+Jfp2wF/pBTG
-	zOi/px0uDRw5duzE/x26rJ+LHr+jdM/pkOH95IjegQs8wYcK03Pm4v0FK9wdMtmSeu8tAjhed9DvB
-	EvjuicuI4hGHoeur+AuufIIGJlnWrYivDRefS+gb9N7NU04yUMCn6NBm5soue0iyggB+9NuHSyzH4
-	q03XpXgsP5l/vHzomKAnlH3EptaQvfYSEnSSsMu7V5ColJZFLSUOJ0yMs3inRfVqTGq8N1EghczmR
-	dWwrjxTpYAX3SESUzppQ==;
+	List-Owner; bh=oxysMJ1OLfl2dORTMmpdlvM/pCnh3gTuR0uO3PUB4WM=; b=dsaPuRNSqJayfq
+	yicJQA04pmRBuUuwlcXid5/yD8eMU58kQxgL6BZQjkUWd0PAStiDcv/u9GtsvdtWbKiFzZPaOJrEX
+	lHQc6SlMn7GxX39z27wRxVV43sFuimWOGzZNujZUD+1bGvJP33wJ7MU3Xs0GtjYfYMn/mH9OKdG69
+	RVlxbLJfrHflBhjW/M/5bJaUv45q/U1xAhzdcUv0gOqhRxrfBDqjRbrt1ZxtM5Z3Xe/86vgjURy+U
+	Ihw5v6RwTEl6mxB5dJgNPeQ/2eTmkUdojOlkAc6wysefusjsw/phWTLbiX83rhXMH22bxyuQdVstn
+	JSJGN7vQ+c98Fr1v3v8Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i6SVO-0004mT-TW; Sat, 07 Sep 2019 04:39:23 +0000
+	id 1i6SWO-00063V-VK; Sat, 07 Sep 2019 04:40:25 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i6SVI-0004bE-K8
- for linux-riscv@lists.infradead.org; Sat, 07 Sep 2019 04:39:18 +0000
+ id 1i6SWK-000635-Um
+ for linux-riscv@lists.infradead.org; Sat, 07 Sep 2019 04:40:22 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 95CBF68B05; Sat,  7 Sep 2019 06:39:11 +0200 (CEST)
-Date: Sat, 7 Sep 2019 06:39:11 +0200
+ id 263C368B05; Sat,  7 Sep 2019 06:40:18 +0200 (CEST)
+Date: Sat, 7 Sep 2019 06:40:17 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Paul Walmsley <paul.walmsley@sifive.com>
 Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/soc
-Message-ID: <20190907043911.GA21510@lst.de>
+Message-ID: <20190907044017.GB21510@lst.de>
 References: <20190818082935.14869-1-hch@lst.de>
  <alpine.DEB.2.21.9999.1909061525040.6292@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.1909061533260.6292@viisi.sifive.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1909061525040.6292@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1909061533260.6292@viisi.sifive.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190906_213916_814166_8E4B58C6 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190906_214021_142957_6D96E3C5 
+X-CRM114-Status: GOOD (  12.36  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -68,14 +68,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Sep 06, 2019 at 03:27:44PM -0700, Paul Walmsley wrote:
-> - Since the patch doesn't fix any bugs, there shouldn't be a Fixes: line.  
-> Please let me know whether I can drop the line locally before I apply the 
-> patch, or whether you'd like to resend it.
+On Fri, Sep 06, 2019 at 03:36:09PM -0700, Paul Walmsley wrote:
+> One other comment on this patch:
+> 
+> On Fri, 6 Sep 2019, Paul Walmsley wrote:
+> 
+> > On Sun, 18 Aug 2019, Christoph Hellwig wrote:
+> >
+> > > diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
+> > > index 200c04ce5b0e..9241b3e7a050 100644
+> > > --- a/drivers/edac/Kconfig
+> > > +++ b/drivers/edac/Kconfig
+> > > @@ -462,7 +462,7 @@ config EDAC_ALTERA_SDMMC
+> > >  
+> > >  config EDAC_SIFIVE
+> > >  	bool "Sifive platform EDAC driver"
+> > > -	depends on EDAC=y && RISCV
+> > > +	depends on EDAC=y && SIFIVE_L2
+> 
+> Since the guidance from the EDAC maintainers is that this driver is to be 
+> a platform driver -- which would, for example, also include EDAC support for 
+> other IP blocks (e.g., DRAM controllers) on SiFive SoCs -- this should 
+> depend on SOC_SIFIVE, not SIFIVE_L2.
 
-It fixes the bug that we build code into a default RISC-V image that
-we absolutely should not.  And it fixes the bug that the patch placed
-code in absolutely the wrong place.
+But as-is without major changes it depends on SIFIVE_L2.  And given that
+it supports nothing else as-is there is no point in making the code
+conditional either.
 
 _______________________________________________
 linux-riscv mailing list
