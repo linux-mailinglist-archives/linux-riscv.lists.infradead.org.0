@@ -2,65 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A4AAAC9F5
-	for <lists+linux-riscv@lfdr.de>; Sun,  8 Sep 2019 01:39:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5628CACA0F
+	for <lists+linux-riscv@lfdr.de>; Sun,  8 Sep 2019 01:53:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bqcbRPoKvDvuCsCkVTfjG5IG63vW3ZtcjBNu4o3XEe0=; b=BrkxWAUVS840BR
-	Oe0MOITgiJUMGezpbfH0L2VUdbtd5Pdw1Z1uqVFCPeY/iyNRTPHNvard9JkZQLmlLZ07KnkHBcaB1
-	zllOeJ7hTf76/tkFRdYCaru7/VEO3AsP+9qfzesofPe6O0abfdOXBhLpQxjbw9YaQ16i35v91qZiA
-	MFYh39xCcg5Bug1fILWJ8uaT9ty+BcznRtTkSZRxrLv5CiT7CjIbDMFNYPizX2LubYLM5KaHoG6Vi
-	S/X0hEQXVeN8F3WfNovC6VL4cYUXkTL3eQD0yDBNx53njRhQY5rJ5C6e/9GH4C5Y2CQXcM5rT/8YL
-	vMMUhb02fLPEkBu8z1tQ==;
+	List-Owner; bh=3b/Lc7tW4rYPgR27LlErh6xliMNSD6K+r0FUENPyBg0=; b=RtYdeLSM6p9kfe
+	Uhj/7RMMu/yn6gg1yH25rMp7F2bBuQl62G5MZXyGM3qdCgxC5ddIsCeHSOdymPWuF1HD0yrS/LpOu
+	3OWy0749h65jXfj1VaG3AaVPK2jbSFL6XELdZVzx57oNKgoR5QjwFxUlszUbK3b75cVbxdYbhvEym
+	GMT/4/IVqulOnGdrG35VDcw2Uvq0k0jAu6L+RI2WufIEZL+33qHnjebiQJJQEpILEO9lWavonQhjf
+	BFoMQwx2rP1QDl22XEQVmDtabp+WvIArotZ8vGhvDXxKxsrP6e8Vo+v3uRWoCZBdw+UT7+A0JnDFO
+	QlawHUmPYSj68tDC01/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i6kIa-0006FF-D5; Sat, 07 Sep 2019 23:39:21 +0000
-Received: from 15.mo5.mail-out.ovh.net ([178.33.107.29])
+	id 1i6kWH-0002Vv-Fj; Sat, 07 Sep 2019 23:53:29 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i6kIR-0006EJ-M5
- for linux-riscv@lists.infradead.org; Sat, 07 Sep 2019 23:39:13 +0000
-Received: from player728.ha.ovh.net (unknown [10.109.159.7])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 7553C24ACE1
- for <linux-riscv@lists.infradead.org>; Sun,  8 Sep 2019 01:39:05 +0200 (CEST)
-Received: from etezian.org (81-175-223-118.bb.dnainternet.fi [81.175.223.118])
- (Authenticated sender: andi@etezian.org)
- by player728.ha.ovh.net (Postfix) with ESMTPSA id 4B47C979D591;
- Sat,  7 Sep 2019 23:38:10 +0000 (UTC)
-Date: Sun, 8 Sep 2019 02:38:10 +0300
-From: Andi Shyti <andi@etezian.org>
-To: Yuehaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH -next 25/36] spi: s3c24xx: use
- devm_platform_ioremap_resource() to simplify code
-Message-ID: <20190907233810.GA15768@jack.zhora.eu>
-References: <20190904135918.25352-1-yuehaibing@huawei.com>
- <20190904135918.25352-26-yuehaibing@huawei.com>
- <CAJKOXPdq4as1Oe3U+9znkvP0RA=sxUoiWVBCSbzf_wq_um2t=w@mail.gmail.com>
- <3595bac1-e426-b4f9-4e24-01e104fdfe5d@huawei.com>
+ id 1i6kVy-0002Kr-0J; Sat, 07 Sep 2019 23:53:11 +0000
+Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com
+ [209.85.128.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7427B21882;
+ Sat,  7 Sep 2019 23:53:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1567900388;
+ bh=KU+yu1dnpjqMkvaxD0NQ/62kFYi8GAP69zuvLWhpBPg=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=iQhzSJ+9oXgDhIW7PRJgS7OAd27+ApcmlwV1Pr1t7tIdVxFSSbNmEPtHB+EVkx/QI
+ 3oFy7UEQ8OJz3CxRjUYWmyWOwvSBH4uR+n5qkd1ZBcZeaqG5m2rMeo15JOhhtEIi6O
+ gZUNlX9yNbmazWAWH7DCrTZAkCxjkeJuFftVnO9s=
+Received: by mail-wm1-f43.google.com with SMTP id n10so10780540wmj.0;
+ Sat, 07 Sep 2019 16:53:08 -0700 (PDT)
+X-Gm-Message-State: APjAAAXcCJ6DjBNFw3dKSjZNC1KMWNK5NlJ3u8gW203KEG5MF8/PH3/Y
+ SH7fZS93O2NvJQ4NRwjbg4VxPMswFntbi4H4lSc=
+X-Google-Smtp-Source: APXvYqz/EaoziXhxATPtaiz7WMpDkudp2uTSNKWYfbpcDLkqo0GVOyZavKTFmq2PKcMvW87cxTCwTetw/AbRtRbW9aM=
+X-Received: by 2002:a1c:f007:: with SMTP id a7mr12784687wmb.172.1567900386906; 
+ Sat, 07 Sep 2019 16:53:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3595bac1-e426-b4f9-4e24-01e104fdfe5d@huawei.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Ovh-Tracer-Id: 4582412622624637493
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudekvddgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+References: <20190321163623.20219-1-julien.grall@arm.com>
+ <20190321163623.20219-12-julien.grall@arm.com>
+ <0dfe120b-066a-2ac8-13bc-3f5a29e2caa3@arm.com>
+ <CAJF2gTTXHHgDboaexdHA284y6kNZVSjLis5-Q2rDnXCxr4RSmA@mail.gmail.com>
+ <c871a5ae-914f-a8bb-9474-1dcfec5d45bf@arm.com>
+ <20190619091219.GB7767@fuggles.cambridge.arm.com>
+ <CAJF2gTTmFq3yYa9UrdZRAFwJgC=KmKTe2_NFy_UZBUQovqQJPg@mail.gmail.com>
+ <20190619123939.GF7767@fuggles.cambridge.arm.com>
+ <CAJF2gTSiiiewTLwVAXvPLO7rTSUw1rg8VtFLzANdP2S2EEbTjg@mail.gmail.com>
+ <20190624104006.lvm32nahemaqklxc@willie-the-truck>
+In-Reply-To: <20190624104006.lvm32nahemaqklxc@willie-the-truck>
+From: Guo Ren <guoren@kernel.org>
+Date: Sun, 8 Sep 2019 07:52:55 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTSC1sGgmiTCgzKUTdPyUZ3LG4H7N8YbMyWr-E+eifGuYg@mail.gmail.com>
+Message-ID: <CAJF2gTSC1sGgmiTCgzKUTdPyUZ3LG4H7N8YbMyWr-E+eifGuYg@mail.gmail.com>
+Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
+ separate file
+To: Will Deacon <will@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190907_163911_870048_35D7F75B 
-X-CRM114-Status: UNSURE (   7.38  )
+X-CRM114-CacheID: sfid-20190907_165310_066042_458FC8FE 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [178.33.107.29 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,50 +93,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: tmaimon77@gmail.com, palmer@sifive.com, tali.perry1@gmail.com,
- eric@anholt.net, ldewangan@nvidia.com, linux-riscv@lists.infradead.org,
- festevam@gmail.com,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- f.fainelli@gmail.com, benjaminfair@google.com, shc_work@mail.ru,
- khilman@baylibre.com, openbmc@lists.ozlabs.org, michal.simek@xilinx.com,
- Krzysztof Kozlowski <krzk@kernel.org>, jonathanh@nvidia.com, yuenn@google.com,
- wens@csie.org, agross@kernel.org, bcm-kernel-feedback-list@broadcom.com,
- linux-imx@nxp.com, linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
- Andi Shyti <andi@etezian.org>, rjui@broadcom.com, s.hauer@pengutronix.de,
- mripard@kernel.org, broonie@kernel.org, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, baohua@kernel.org, sbranden@broadcom.com,
- yamada.masahiro@socionext.com, avifishman70@gmail.com, venture@google.com,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linux-spi@vger.kernel.org, thierry.reding@gmail.com, wahrenst@gmx.net,
- kernel@pengutronix.de, kgene@kernel.org, shawnguo@kernel.org
+Cc: julien.thierry@arm.com, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Will Deacon <will.deacon@arm.com>,
+ christoffer.dall@arm.com, Atish Patra <Atish.Patra@wdc.com>,
+ Julien Grall <julien.grall@arm.com>, gary@garyguo.net,
+ linux-riscv@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
+ Mike Rapoport <rppt@linux.ibm.com>, Christoph Hellwig <hch@infradead.org>,
+ aou@eecs.berkeley.edu, Arnd Bergmann <arnd@arndb.de>, suzuki.poulose@arm.com,
+ Marc Zyngier <marc.zyngier@arm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-arm-kernel@lists.infradead.org, Anup Patel <anup.Patel@wdc.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, james.morse@arm.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Yuehaibing,
+Thx Will,
 
-> >> Use devm_platform_ioremap_resource() to simplify the code a bit.
-> >> This is detected by coccinelle.
-> >>
-> >> Reported-by: Hulk Robot <hulkci@huawei.com>
-> > 
-> > This tag does not look real... First of all where is the report?
-> 
-> It is our internal CI robot, which is unavailable to external temporarily.
+On Mon, Jun 24, 2019 at 6:40 PM Will Deacon <will@kernel.org> wrote:
+> > I'll keep my system use the same ASID for SMP + IOMMU :P
+>
+> You will want a separate allocator for that:
+>
+> https://lkml.kernel.org/r/20190610184714.6786-2-jean-philippe.brucker@arm.com
 
-Hulk Robot is not a person and not accountable for his report.
-If it is your internal CI, please write a sentence stating that
-the fix has been made using Huawei internal tools.
+Yes, it is hard to maintain ASID between IOMMU and CPUMMU or different
+system, because it's difficult to synchronize the IO_ASID when the CPU
+ASID is rollover.
+But we could still use hardware broadcast TLB invalidation instruction
+to uniformly manage the ASID and IO_ASID, or OTHER_ASID in our IOMMU.
 
-Credit must be given to tools as well, but not accounts that will
-never answer an e-mail.
+Welcome to join our disscusion:
+"Introduce an implementation of IOMMU in linux-riscv"
+9 Sep 2019, 10:45 Jade-room-I&II (Corinthia Hotel Lisbon) RISC-V MC
 
-Otherwise, the patch would look fine.
+--
+Best Regards
+ Guo Ren
 
-Andi
+ML: https://lore.kernel.org/linux-csky/
 
 _______________________________________________
 linux-riscv mailing list
