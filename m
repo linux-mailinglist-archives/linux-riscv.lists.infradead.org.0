@@ -2,56 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C22B6AD640
-	for <lists+linux-riscv@lfdr.de>; Mon,  9 Sep 2019 12:00:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6826CADF80
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Sep 2019 21:35:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=378ybgdopq0VKsrlwFPWsYMpbsp2IhuP3dd9ty5td+o=; b=VcxHrTkWFr55VM
-	Pf4ysjxAn/hAVUk5n5OOGvtZcDYUBbtHliSQC5FaJ/8yuH298BxopaCsUjtZ9Fk9W+937t/Jhh48/
-	rzw8se9/Niymtee+h0mnyVNiEHjaToJ0lhlUPMu3uCwSS0uvod74FQztfoC1JmokE7CnYjDhOl0wO
-	vIP0XqWueB6g+OozmnNMPxzoO6Mcgk7XOaF0RDvb9epN0I1z+BZWA55P2zRtWIj5oF9M7xl2jnvPZ
-	NXRn4YYpQAip+P0J4fuu3YIMYNzjCSXvoAjfUuAy6pstsRmvzq030csan90pDMT2kiocjoLmdpWWo
-	QqGMdPaQvsDM5lQWWmdg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SxFbPanjlAGkU6aCdVC0bNMHGRlqeLeXWm+Hx6VySN8=; b=btOrg6vLrHJUrc
+	BEwDviYMWov8AUUkzn4ZFFKYlaBJYerAfCD8MkaUHwfFQVuRKKwJyUyzxP+83TvJ1rFY9lCa2T6OA
+	U2g2UfDP294M+t+4Nx9fhLmSCME3NsP5HdP4rziP43JOcNF350T3YKTHTbIhGBXk6K3aJBTBr3Oxk
+	LhU6Wr/TtkOZjfZinOeZ5QcSLydZS+lDSgRUuhvx1yeFf5ndSCuO6q3qyJTVExCD6AKweRM1kPnNC
+	FO1QFiTcCd3vnnx2ikGL6YbWXZ7KH2egcKOpPGosWga4qecXBxvKPgSSViI5WGynrrcSHSkkDvLXS
+	bGv6Dbd9bAyY+wzjMAYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i7GSm-00052u-Pr; Mon, 09 Sep 2019 10:00:00 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1i7PR2-0008Ny-2I; Mon, 09 Sep 2019 19:34:48 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i7GR9-0003ij-J4; Mon, 09 Sep 2019 09:58:21 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 17B6FABE3;
- Mon,  9 Sep 2019 09:58:18 +0000 (UTC)
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: catalin.marinas@arm.com, hch@lst.de, wahrenst@gmx.net,
- marc.zyngier@arm.com, robh+dt@kernel.org,
+ id 1i7PQp-0008GQ-Ds; Mon, 09 Sep 2019 19:34:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1568057627;
+ bh=d4t6NvwMQ9YTypUWgwkNC+7VlgA/JtZpt8GrsPSKCHs=;
+ h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
+ b=hMUpmG5bI7Ecc5qn5YxStKIYidbTDxDpIrG5t0X1WwthOKMSGEFnXbVwz2DSNffOa
+ Sv8dyTkSeSeYMwFeuT2tmsZhrWzWS2lNLvaSMgvZ+8LtrhLlXGqZKkb/ZXcVFVfPAl
+ e1W0am+4D0QCIP+kg00x2jQkHxmtfpcqdGHHqP+w=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [192.168.1.162] ([37.4.249.90]) by mail.gmx.com (mrgmx102
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 0MfjJY-1hkOv10G4S-00NDN8; Mon, 09
+ Sep 2019 21:33:47 +0200
+Subject: Re: [PATCH v5 0/4] Raspberry Pi 4 DMA addressing support
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, catalin.marinas@arm.com, 
+ hch@lst.de, marc.zyngier@arm.com, robh+dt@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mm@kvack.org,
- linux-riscv@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>
-Subject: [PATCH v5 4/4] mm: refresh ZONE_DMA and ZONE_DMA32 comments in 'enum
- zone_type'
-Date: Mon,  9 Sep 2019 11:58:07 +0200
-Message-Id: <20190909095807.18709-5-nsaenzjulienne@suse.de>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20190909095807.18709-1-nsaenzjulienne@suse.de>
+ linux-riscv@lists.infradead.org
 References: <20190909095807.18709-1-nsaenzjulienne@suse.de>
+From: Stefan Wahren <wahrenst@gmx.net>
+Message-ID: <5a8af6e9-6b90-ce26-ebd7-9ee626c9fa0e@gmx.net>
+Date: Mon, 9 Sep 2019 21:33:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20190909095807.18709-1-nsaenzjulienne@suse.de>
+Content-Language: en-US
+X-Provags-ID: V03:K1:LS01oHKQzcvClmAtuMiV35GzDWGQjl4TMocrZcQk6DA6HAVrjMq
+ joLIBQ7XFMXVpIeH/MS6IOvr05uJoNzY1DAliZFeoVMG1Smed9yI3/EPqAlOvnZYq+y4ifa
+ 1I+hzKfFlkjxIEeh48LA8fJ8+IW5/n72kNXSELzZybJBa7s3kQ74+muskUQhSuquNeriMTy
+ XJfBatyvN85xpY5hnhDdQ==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8DJJrmG3oug=:r20bBXJ9yriqQL0K7dlYtr
+ 3D5nkd2eNwi/fPIc7nA/XReM5DD2ystesZjI9WG/JWxtWZdVDqHxCXgsdG9upl0LqHxhPRWl2
+ IoruO8dbxq2k9VpIfNo6q4WCvXtkCGKKsw3sH6oNySDjjYT6mZusv7UXmfHa0ovSI12/tyJNF
+ OOZEkPvsa0wmVJ0R9v1XPZRNqH1eASiHW+iVlt/tB8NniA3l5NBhPYbYb9A3RtBjKmbDLZ2fh
+ 8+Kl9rh8JTvTgYcYKvF7i6fvXP9dJGs3ngxG+VI6VNtd1UsjcOj6HWI15CHZAaI0355vx7e+W
+ ilwfYTgk0Ma1/6qI0EfInxLskbi5eBScqF0zN/rnknI20HdCFwethoNTw0+IwAybm5l3UwXAO
+ AM9wUDmOGpXmAZFJhwHv0AW19s5t/ls0/XSr5XFmSl+urCrBLgkPcZ9BpUqXVF61h7a0IJ9c3
+ vTmEd8/Wqk3gPrHkAulh/i0IDJfnrBYJFMu5cBLFIRU9L712b3+pkTe5wa2p7jKYvOUwH1R8C
+ ALrokkoKreKkpotBT1Wsvgt+zLiHVr5Qu6134HCzGxj/jFln7a38J15ryJlaoEWj6xlXJaY5Y
+ CpuXNF2mIRbRPoTDFkejvgHl/XDalzWfCh7pHDsl/wiBfUZAl6CNPHfjYKlxwQtU0DksbtlgK
+ PP0UCzTwxEz0y/6CC+wlQfzGLv+iciCgw/bh6P54tMKmlxcIORsIiwzp0WsfICSPiSNNRA7b+
+ gJImh/7edE5WeVs3jHJmk0zNCAljed+Y6pkB60wOgaQmFDoWHoJgUc6T/RRfIrjVpFD4f7ESQ
+ NFIdgmkZ+ewXmvphXZpkC/kQ+b5umYYh8LAAu2IjmAC+NpVd2uqKGicmytJkmOl222yRcvS/i
+ KxTvBPrPPOk8/UOGm74aUUxwB/WppNLQ/4sofAEQ53FOsXJ68c9YKnSwZKpUj3/ALYd22bFGN
+ JM1GFT7CylIv1mlwb0SbD6PVHtccl4U7LVjkAh/OzirSupflS+QcIPLiDDdmWW7hsXYU2+bwk
+ DkkoVrlTPhN4e3autQhPV2XrcsKf4pJePsFukIGhvvClKgUYrNQ2kyEwUV0mt2JiS5Gz0n6WZ
+ pbUk1x1giL3IYcwkMwR3QV1KowVLihGeVN7uJ6LB+yEHapvBIqAHAxh4rEyq6qZ0wluGpNfAM
+ RCCSySDoWoGQs49i1yGfO0WkT+22+w6nWSaDNcr32p+OEUFCd2Yvrc+Mfa6zY2E7Efv3o=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190909_025819_996313_E3C21695 
-X-CRM114-Status: GOOD (  14.18  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190909_123435_767088_9277FEF5 
+X-CRM114-Status: GOOD (  19.61  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [212.227.17.20 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (wahrenst[at]gmx.net)
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,102 +102,71 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: f.fainelli@gmail.com, will@kernel.org, linux-kernel@vger.kernel.org,
+Cc: f.fainelli@gmail.com, robin.murphy@arm.com, linux-kernel@vger.kernel.org,
  mbrugger@suse.com, linux-rpi-kernel@lists.infradead.org, phill@raspberrypi.org,
- robin.murphy@arm.com, nsaenzjulienne@suse.de, m.szyprowski@samsung.com
+ will@kernel.org, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-These zones usage has evolved with time and the comments were outdated.
-This joins both ZONE_DMA and ZONE_DMA32 explanation and gives up to date
-examples on how they are used on different architectures.
+Hi Nicolas,
 
-Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
+Am 09.09.19 um 11:58 schrieb Nicolas Saenz Julienne:
+> Hi all,
+> this series attempts to address some issues we found while bringing up
+> the new Raspberry Pi 4 in arm64 and it's intended to serve as a follow
+> up of these discussions:
+> v4: https://lkml.org/lkml/2019/9/6/352
+> v3: https://lkml.org/lkml/2019/9/2/589
+> v2: https://lkml.org/lkml/2019/8/20/767
+> v1: https://lkml.org/lkml/2019/7/31/922
+> RFC: https://lkml.org/lkml/2019/7/17/476
+>
+> The new Raspberry Pi 4 has up to 4GB of memory but most peripherals can
+> only address the first GB: their DMA address range is
+> 0xc0000000-0xfc000000 which is aliased to the first GB of physical
+> memory 0x00000000-0x3c000000. Note that only some peripherals have these
+> limitations: the PCIe, V3D, GENET, and 40-bit DMA channels have a wider
+> view of the address space by virtue of being hooked up trough a second
+> interconnect.
+>
+> Part of this is solved on arm32 by setting up the machine specific
+> '.dma_zone_size = SZ_1G', which takes care of reserving the coherent
+> memory area at the right spot. That said no buffer bouncing (needed for
+> dma streaming) is available at the moment, but that's a story for
+> another series.
+>
+> Unfortunately there is no such thing as 'dma_zone_size' in arm64. Only
+> ZONE_DMA32 is created which is interpreted by dma-direct and the arm64
+> arch code as if all peripherals where be able to address the first 4GB
+> of memory.
+>
+> In the light of this, the series implements the following changes:
+>
+> - Create both DMA zones in arm64, ZONE_DMA will contain the first 1G
+>   area and ZONE_DMA32 the rest of the 32 bit addressable memory. So far
+>   the RPi4 is the only arm64 device with such DMA addressing limitations
+>   so this hardcoded solution was deemed preferable.
+>
+> - Properly set ARCH_ZONE_DMA_BITS.
+>
+> - Reserve the CMA area in a place suitable for all peripherals.
+>
+> This series has been tested on multiple devices both by checking the
+> zones setup matches the expectations and by double-checking physical
+> addresses on pages allocated on the three relevant areas GFP_DMA,
+> GFP_DMA32, GFP_KERNEL:
+>
+> - On an RPi4 with variations on the ram memory size. But also forcing
+>   the situation where all three memory zones are nonempty by setting a 3G
+>   ZONE_DMA32 ceiling on a 4G setup. Both with and without NUMA support.
+>
+i like to test this series on Raspberry Pi 4 and i have some questions
+to get arm64 running:
 
----
-
-Changes in v3:
-- Update comment to match changes in arm64
-
-Changes in v2:
-- Try another approach merging both ZONE_DMA comments into one
-- Address Christoph's comments
-- If this approach doesn't get much traction I'll just drop the patch
-  from the series as it's not really essential
-
- include/linux/mmzone.h | 45 ++++++++++++++++++++++++------------------
- 1 file changed, 26 insertions(+), 19 deletions(-)
-
-diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-index 3f38c30d2f13..bf1b916c9ecb 100644
---- a/include/linux/mmzone.h
-+++ b/include/linux/mmzone.h
-@@ -357,33 +357,40 @@ struct per_cpu_nodestat {
- #endif /* !__GENERATING_BOUNDS.H */
- 
- enum zone_type {
--#ifdef CONFIG_ZONE_DMA
- 	/*
--	 * ZONE_DMA is used when there are devices that are not able
--	 * to do DMA to all of addressable memory (ZONE_NORMAL). Then we
--	 * carve out the portion of memory that is needed for these devices.
--	 * The range is arch specific.
-+	 * ZONE_DMA and ZONE_DMA32 are used when there are peripherals not able
-+	 * to DMA to all of the addressable memory (ZONE_NORMAL).
-+	 * On architectures where this area covers the whole 32 bit address
-+	 * space ZONE_DMA32 is used. ZONE_DMA is left for the ones with smaller
-+	 * DMA addressing constraints. This distinction is important as a 32bit
-+	 * DMA mask is assumed when ZONE_DMA32 is defined. Some 64-bit
-+	 * platforms may need both zones as they support peripherals with
-+	 * different DMA addressing limitations.
-+	 *
-+	 * Some examples:
-+	 *
-+	 *  - i386 and x86_64 have a fixed 16M ZONE_DMA and ZONE_DMA32 for the
-+	 *    rest of the lower 4G.
-+	 *
-+	 *  - arm only uses ZONE_DMA, the size, up to 4G, may vary depending on
-+	 *    the specific device.
-+	 *
-+	 *  - arm64 has a fixed 1G ZONE_DMA and ZONE_DMA32 for the rest of the
-+	 *    lower 4G.
- 	 *
--	 * Some examples
-+	 *  - powerpc only uses ZONE_DMA, the size, up to 2G, may vary
-+	 *    depending on the specific device.
- 	 *
--	 * Architecture		Limit
--	 * ---------------------------
--	 * parisc, ia64, sparc	<4G
--	 * s390, powerpc	<2G
--	 * arm			Various
--	 * alpha		Unlimited or 0-16MB.
-+	 *  - s390 uses ZONE_DMA fixed to the lower 2G.
- 	 *
--	 * i386, x86_64 and multiple other arches
--	 * 			<16M.
-+	 *  - ia64 and riscv only use ZONE_DMA32.
-+	 *
-+	 *  - parisc uses neither.
- 	 */
-+#ifdef CONFIG_ZONE_DMA
- 	ZONE_DMA,
- #endif
- #ifdef CONFIG_ZONE_DMA32
--	/*
--	 * x86_64 needs two ZONE_DMAs because it supports devices that are
--	 * only able to do DMA to the lower 16M but also 32 bit devices that
--	 * can only do DMA areas below 4G.
--	 */
- 	ZONE_DMA32,
- #endif
- 	/*
--- 
-2.23.0
+Do you use U-Boot? Which tree?
+Are there any config.txt tweaks necessary?
 
 
 _______________________________________________
