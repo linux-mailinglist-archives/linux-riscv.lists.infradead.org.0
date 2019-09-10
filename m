@@ -2,30 +2,30 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23A57AEC3D
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Sep 2019 15:50:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0D7DAEC42
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Sep 2019 15:50:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A6XCYiQdwuJXwxi/BtJasquVWYJ17eyfTorGvmssERw=; b=QT6T3WGzvuVc5p
-	s7d4pC6dPiVaJk+ohe2mdM17ZSsGtS+9QxYIBVuVUa3Vu6+6PQ+SAJfivO+XHP82HOsDqOFScEvx3
-	f2M23TDT147dpmqc9SPNt0mVc4cxlJ1z4VlMOzmleY8U2jrkPPkMMLyKWJH5T0VsF5MO2o69eUdyj
-	6JJiX4W2sR0Ef9GruD8V6qZ44mlCxl4LBpCp6EDWHQl8HsxT9Ubcf1Ogl2okJrCYt7cqykctk6lGd
-	QOXCOBmtwBya8TWgrHDt7sngGUg5gttD0kOtMvZF5+CbcgtBEyVyFdWA1JWcxvlrk+Py+YglK17rr
-	OK6/Pkyd/ppHGCmFxUfg==;
+	List-Owner; bh=1Cuyqgq4b1ix8+6kWRM/CrP7VQgOAFtUTKrjxm8LBus=; b=IVrOXzO+HgwpQy
+	+48YbLt1po5NYd3ugjetsoOIZj3rEHsBQDROshuuR84wvE+s9zOGYM4TlrYCyCq0BVSObPDJE44Oh
+	g/XmKLeA5YeZv77hUSHD/ZS5KM/lIGC1DNGJpXlk/rWgtHv/fXlPTVHMPjR5SkBkUiQDBP4hhkyMl
+	Y2Bzba9LClyHJNWQK6dD1FIUqcm6eWD5mj/SgpQB+/luxntcn8a7uc1V8kPFa5T+C17MzZVuKDSgg
+	r5rtlpg/er60c4p+mo5HqjMilj9KwaxIckDwnq4xiNIuaP7BT8m7plJ9MhGNaRkMWg5xOxFvy7z3r
+	lOzsuQHcTz+sy4BCbmwg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i7gXH-0000Sn-Vs; Tue, 10 Sep 2019 13:50:24 +0000
-Received: from esa6.microchip.iphmx.com ([216.71.154.253])
+	id 1i7gXZ-0000ol-Ay; Tue, 10 Sep 2019 13:50:41 +0000
+Received: from esa3.microchip.iphmx.com ([68.232.153.233])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i7gXB-0000S0-KL; Tue, 10 Sep 2019 13:50:18 +0000
-Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
+ id 1i7gXU-0000dd-KE; Tue, 10 Sep 2019 13:50:38 +0000
+Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
  Claudiu.Beznea@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
  envelope-from="Claudiu.Beznea@microchip.com";
  x-sender="Claudiu.Beznea@microchip.com";
  x-conformance=spf_only; x-record-type="v=spf1";
@@ -33,34 +33,34 @@ Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
  a:smtpout.microchip.com a:mx1.microchip.iphmx.com
  a:mx2.microchip.iphmx.com include:servers.mcsv.net
  include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa6.microchip.iphmx.com: no sender
+Received-SPF: None (esa3.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
  envelope-from="Claudiu.Beznea@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa6.microchip.iphmx.com;
+Authentication-Results: esa3.microchip.iphmx.com;
  dkim=none (message not signed) header.i=none;
  spf=Pass smtp.mailfrom=Claudiu.Beznea@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 9tRSP9iRlrchCC6nPUcrTTPGGRCENVVVVBsvE7MHV3TQK9UifpTXkJCT3j5zmRktz4dyEG3m6u
- b3rG7Wd2oP0ft74QkM+FjQCZmfKBEjfAj/iLuRowUeH8S/vOHwQ1bB1WTi6UiKWM0pZwxlLGWc
- qodL0E1FBqjsR4B+AtWdAnc5big7iy+e5TFEer/0xQMZ0hi0TcygX+uagNVjePtea+mjfUVtbf
- L1W/8XDRxZ5sVRFwyzpQDcsIZCKNfxAJTJx5zQS6goTnqdJY/w8JlGO9MvHvJ0e3mdLw+NvYo4
- rAg=
-X-IronPort-AV: E=Sophos;i="5.64,489,1559545200"; d="scan'208";a="45605420"
+IronPort-SDR: 7Qx/t+qsjV6E0Dj1xcyp25xO9F6J0eJMEgv8Rljttory/h06/GeKzflrUaMK23yk4zpcyzRSgD
+ oc7X0UF5ZKXrf8PPjGuE4u5QFaEIVxR4voyfKyb3pZ+bW+1/amxVUdogsl++SEkth8xqzN7fiC
+ 2cW8K4IWn+UhZN2FvlZT5ULMgk4nHeh06WVzpS/tVawEfSwvFI3NAhxNOQiiiRqT++v7ZXDv6d
+ e/omb4OFyKX+MKSCiBXGp+7xlJnBhpZDZgUm66rk0ykVRhT17zotZ/yYy7Hy4kCN71Um3RINx+
+ JN4=
+X-IronPort-AV: E=Sophos;i="5.64,489,1559545200"; d="scan'208";a="48512205"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 10 Sep 2019 06:50:05 -0700
+ by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 10 Sep 2019 06:50:33 -0700
 Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 10 Sep 2019 06:50:04 -0700
+ 15.1.1713.5; Tue, 10 Sep 2019 06:50:27 -0700
 Received: from m18063-ThinkPad-T460p.mchp-main.com (10.10.85.251) by
  chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server id
- 15.1.1713.5 via Frontend Transport; Tue, 10 Sep 2019 06:49:42 -0700
+ 15.1.1713.5 via Frontend Transport; Tue, 10 Sep 2019 06:50:05 -0700
 From: Claudiu Beznea <claudiu.beznea@microchip.com>
 To: <daniel.lezcano@linaro.org>, <robh+dt@kernel.org>, <mark.rutland@arm.com>, 
  <linux@armlinux.org.uk>, <nsekhar@ti.com>, <bgolaszewski@baylibre.com>,
@@ -89,24 +89,23 @@ To: <daniel.lezcano@linaro.org>, <robh+dt@kernel.org>, <mark.rutland@arm.com>,
  <maxime.ripard@bootlin.com>, <wens@csie.org>, <thierry.reding@gmail.com>,
  <jonathanh@nvidia.com>, <linux@prisktech.co.nz>, <john.stultz@linaro.org>,
  <sboyd@kernel.org>, <matthias.bgg@gmail.com>
-Subject: [PATCH 6/7] drivers/clocksource/timer-of: keep declaration on one line
-Date: Tue, 10 Sep 2019 16:47:15 +0300
-Message-ID: <1568123236-767-7-git-send-email-claudiu.beznea@microchip.com>
+Subject: [PATCH 7/7] clocksource/drivers/integrator-ap: parse the chosen node
+Date: Tue, 10 Sep 2019 16:47:16 +0300
+Message-ID: <1568123236-767-8-git-send-email-claudiu.beznea@microchip.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
 References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190910_065017_700901_C2E30A3A 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190910_065036_887679_03444F6F 
+X-CRM114-Status: GOOD (  12.25  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.253 listed in list.dnswl.org]
+ medium trust [68.232.153.233 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -135,28 +134,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-timer_of_init() declaration could be kept on one line (80 chars per
-line rule is not broken).
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
 
+The driver currently uses aliases to know whether the timer is the
+clocksource or the clockevent. Add the /chosen/linux,clocksource and
+/chosen/linux,clockevent parsing while keeping backward compatibility.
+
+Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 Signed-off-by: Claudiu Beznea <claudiu.beznea@microchip.com>
 ---
- drivers/clocksource/timer-of.h | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/clocksource/Kconfig               |  1 +
+ drivers/clocksource/timer-integrator-ap.c | 21 ++++++++++++++++++++-
+ 2 files changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clocksource/timer-of.h b/drivers/clocksource/timer-of.h
-index 9fb8c5523150..af72e29e2ea4 100644
---- a/drivers/clocksource/timer-of.h
-+++ b/drivers/clocksource/timer-of.h
-@@ -84,8 +84,7 @@ static inline unsigned int timer_of_is_clockevent(struct timer_of *to)
- 		 (TIMER_OF_TYPE_CE | TIMER_OF_TYPE_CE_AND_CS));
+diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
+index a642c23b2fba..e1742c0abb03 100644
+--- a/drivers/clocksource/Kconfig
++++ b/drivers/clocksource/Kconfig
+@@ -240,6 +240,7 @@ config KEYSTONE_TIMER
+ config INTEGRATOR_AP_TIMER
+ 	bool "Integrator-ap timer driver" if COMPILE_TEST
+ 	select CLKSRC_MMIO
++	select TIMER_OF
+ 	help
+ 	  Enables support for the Integrator-ap timer.
+ 
+diff --git a/drivers/clocksource/timer-integrator-ap.c b/drivers/clocksource/timer-integrator-ap.c
+index 8d6f814ace36..78af89e73125 100644
+--- a/drivers/clocksource/timer-integrator-ap.c
++++ b/drivers/clocksource/timer-integrator-ap.c
+@@ -14,6 +14,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/sched_clock.h>
+ 
++#include "timer-of.h"
+ #include "timer-sp.h"
+ 
+ static void __iomem * sched_clk_base;
+@@ -160,6 +161,12 @@ static int integrator_clockevent_init(unsigned long inrate,
+ 	return 0;
  }
  
--extern int __init timer_of_init(struct device_node *np,
--				struct timer_of *to);
-+extern int __init timer_of_init(struct device_node *np, struct timer_of *to);
++static struct timer_of to[] = {
++	{ .flags = TIMER_OF_TYPE_CS, },
++	{ .flags = TIMER_OF_TYPE_CE, },
++	{ /* sentinel */ }
++};
++
+ static int __init integrator_ap_timer_init_of(struct device_node *node)
+ {
+ 	const char *path;
+@@ -169,6 +176,7 @@ static int __init integrator_ap_timer_init_of(struct device_node *node)
+ 	struct clk *clk;
+ 	unsigned long rate;
+ 	struct device_node *alias_node;
++	struct timer_of *to = node->data;
  
- extern void __init timer_of_cleanup(struct timer_of *to);
+ 	base = of_io_request_and_map(node, 0, "integrator-timer");
+ 	if (IS_ERR(base))
+@@ -183,6 +191,17 @@ static int __init integrator_ap_timer_init_of(struct device_node *node)
+ 	rate = clk_get_rate(clk);
+ 	writel(0, base + TIMER_CTRL);
  
++	if (timer_of_is_clocksource(to))
++		/* The primary timer lacks IRQ, use as clocksource */
++		return integrator_clocksource_init(rate, base);
++
++	if (timer_of_is_clockevent(to)) {
++		/* The secondary timer will drive the clock event */
++		irq = irq_of_parse_and_map(node, 0);
++		return integrator_clockevent_init(rate, base, irq);
++	}
++
++	/* DT ABI compatibility below */
+ 	err = of_property_read_string(of_aliases,
+ 				"arm,timer-primary", &path);
+ 	if (err) {
+@@ -227,4 +246,4 @@ static int __init integrator_ap_timer_init_of(struct device_node *node)
+ }
+ 
+ TIMER_OF_DECLARE(integrator_ap_timer, "arm,integrator-timer",
+-		       integrator_ap_timer_init_of, NULL);
++		       integrator_ap_timer_init_of, to);
 -- 
 2.7.4
 
