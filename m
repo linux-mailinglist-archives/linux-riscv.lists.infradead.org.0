@@ -2,56 +2,69 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE3DAAFAE4
-	for <lists+linux-riscv@lfdr.de>; Wed, 11 Sep 2019 12:55:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CEF2AFD27
+	for <lists+linux-riscv@lfdr.de>; Wed, 11 Sep 2019 14:54:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jV5mSf9Oq9KLfsN9Ea2NLflMQPcuMQkcKzDRY5VLxXk=; b=MvxPSwSE8o5cyGfASL/W+G722
-	C2w/XiU1+ngmMs57qXixHYZk6pcYouq0E1ZJQ9uj3IOkHO/b3oUQPcI9uaL5VSoFG3ehnZF/2mvea
-	4guDbHG4WL7h3G9voOQ//YWWv/ROiuJJ6/gkqWqOoCY+riAc3BIL/Y+Gz3pJargpyPzaVOsxJX1vI
-	fkn+SQYJK8qv8P1URCXyitDJwKPg49HGHrursXRRzsvQ63LrAtjk65w8afISnlnkDy+JqrsxwZ2hv
-	WxZPJCkczs4DlMxSr7DlsEL2gAPGWA/US/AauakpBvhfktZymIeXacmJVUGWd5gYS/K63Pj3KtXJV
-	bXxsmS/Kg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
+	In-Reply-To:Message-ID:Subject:From:To:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mqZGL1zbCk17snPNzADx36lFNjHyDDcgYxF9hxMeXIA=; b=bOaDm+ofdjPR7Q
+	5k8LMWq0196iiUK99nonTCecGpdkaWHmPbme65+8DeqozLjoBGEzKjOqROl6SHE1fIcxlE+7yOLUW
+	Pz/Jm5dLPB3pPSOWcmfNt0RwDTHJaHlapQo2SC1iUydEwG0nZU46COoV7QqQlqDVu8OZg6Z3hTrDR
+	NadNKrenA/n9C9tXiOkOALeWXqwCQ+PqSN4RIfCS6edS96MTYMKrm2mssqFDFoPs88OXLvtd2IevF
+	G6RPXvD10Ujj/MGYT9WrsUgn0cEU8EmErSsCO/D3QU990Opw9d005yRThzVDmE+BZZ7+XiX7qy3JI
+	2cag6ngxkzPBZUlt1mrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i80HX-00081Y-Ie; Wed, 11 Sep 2019 10:55:27 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i80Gr-0006Kw-Vj; Wed, 11 Sep 2019 10:54:49 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 625F7AFBA;
- Wed, 11 Sep 2019 10:54:41 +0000 (UTC)
-Message-ID: <b0b824bebb9ef13ce746f9914de83126b0386e23.camel@suse.de>
-Subject: Re: [PATCH v5 3/4] arm64: use both ZONE_DMA and ZONE_DMA32
-From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-To: catalin.marinas@arm.com, hch@lst.de, wahrenst@gmx.net,
- marc.zyngier@arm.com,  robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mm@kvack.org, 
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>
-Date: Wed, 11 Sep 2019 12:54:38 +0200
-In-Reply-To: <20190909095807.18709-4-nsaenzjulienne@suse.de>
-References: <20190909095807.18709-1-nsaenzjulienne@suse.de>
- <20190909095807.18709-4-nsaenzjulienne@suse.de>
-User-Agent: Evolution 3.32.4 
+	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
+	id 1i828i-0003Rz-PP; Wed, 11 Sep 2019 12:54:28 +0000
+Received: from mail4.protonmail.ch ([185.70.40.27])
+ by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1i828Y-0003RF-Cu
+ for linux-riscv@lists.infradead.org; Wed, 11 Sep 2019 12:54:19 +0000
+Date: Wed, 11 Sep 2019 12:54:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aurabindo.in;
+ s=protonmail; t=1568206455;
+ bh=/3BZ39augr1ATxiyl7hnoRIDGLBNGu5l1MgK7F7Oyjo=;
+ h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:
+ Feedback-ID:From;
+ b=CTye0k+PE/+xBZIyKanXphQXS5P9TX4t6lty9PQYhv113W/RXzTQcdN+7lAUC9L3c
+ 3fzVwV9iI5nNcTsJEBLV/2rSrJkm/EC8v/zbw1MnY5FNZy8j1r8Nlu5EPxebZoWek3
+ 8KxFe+lCdyABaw69mDkNnLQEbijbzLiTYVxMCjbY=
+To: Troy Benjegerdes <troy.benjegerdes@sifive.com>
+From: Aurabindo Jayamohanan <mail@aurabindo.in>
+Subject: Re: [RFC] buildtar: add case for riscv architecture
+Message-ID: <X9f9LozkDQUeBwasTsPlPseP6ZT5yJHNY2GcIgoAgNQJPuFAyYimnDXTJUqxfrZ64GOIl5-uPh07NZnD1pi4uWhCpZvbu9khOW6rEq5P4jU=@aurabindo.in>
+In-Reply-To: <8EF02DA7-46D3-4EA8-96FB-27708BF25DAC@sifive.com>
+References: <NwVOGH2ZdDQaDK35QUy7y8GS__G8IYSIUUIBAJsimZq5BgvI3SzLS3uY6fV7Pgppq-RTRHzpT-8KrsLjDN74CPWwHTCWoSgHkGbeJNvyS30=@aurabindo.in>
+ <8EF02DA7-46D3-4EA8-96FB-27708BF25DAC@sifive.com>
+Feedback-ID: D1Wwva8zb0UdpJtanaReRLGO3iCsewpGmDn8ZDKmpao-Gnxd2qXPmwwrSQ99r5Q15lmK-D8x6vKzqhUKCgzweA==:Ext:ProtonMail
 MIME-Version: 1.0
+X-Spam-Status: No, score=-1.2 required=7.0 tests=ALL_TRUSTED,DKIM_SIGNED,
+ DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF autolearn=ham
+ autolearn_force=no version=3.4.2
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on mail.protonmail.ch
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190911_035446_851831_83C789D9 
-X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-CacheID: sfid-20190911_055418_651975_DA48226A 
+X-CRM114-Status: UNSURE (   4.48  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [185.70.40.27 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,91 +76,24 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: f.fainelli@gmail.com, linux-kernel@vger.kernel.org, mbrugger@suse.com,
- linux-rpi-kernel@lists.infradead.org, phill@raspberrypi.org,
- robin.murphy@arm.com, m.szyprowski@samsung.com
-Content-Type: multipart/mixed; boundary="===============2772709427645576583=="
+Reply-To: Aurabindo Jayamohanan <mail@aurabindo.in>
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ "linux-kbuild@vger.kernel.org" <linux-kbuild@vger.kernel.org>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
---===============2772709427645576583==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-+mwqdWbEE6wWAYsMfkXS"
-
-
---=-+mwqdWbEE6wWAYsMfkXS
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, 2019-09-09 at 11:58 +0200, Nicolas Saenz Julienne wrote:
-> +
->  /*
-> - * Return the maximum physical address for ZONE_DMA32 (DMA_BIT_MASK(32))=
-. It
-> - * currently assumes that for memory starting above 4G, 32-bit devices w=
-ill
-> - * use a DMA offset.
-> + * Return the maximum physical address for a zone with a given address s=
-ize
-> + * limit. It currently assumes that for memory starting above 4G, 32-bit
-> + * devices will use a DMA offset.
->   */
-> -static phys_addr_t __init max_zone_dma32_phys(void)
-> +static phys_addr_t __init max_zone_phys(unsigned int zone_bits)
->  {
->         phys_addr_t offset =3D memblock_start_of_DRAM() & GENMASK_ULL(63,=
- 32);
-> -       return min(offset + (1ULL << 32), memblock_end_of_DRAM());
-> +       return min(offset + (1ULL << zone_bits), memblock_end_of_DRAM());
->  }
-
-Hi all,
-while testing other code on top of this series on odd arm64 machines I foun=
-d an
-issue: when memblock_start_of_DRAM() !=3D 0, max_zone_phys() isn't taking i=
-nto
-account the offset to the beginning of memory. This doesn't matter with
-zone_bits =3D=3D 32 but it does when zone_bits =3D=3D 30.
-
-I'll send a follow-up series.
-
-Regards,
-Nicolas
-
-
---=-+mwqdWbEE6wWAYsMfkXS
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEErOkkGDHCg2EbPcGjlfZmHno8x/4FAl140m4ACgkQlfZmHno8
-x/7BUAf8DFgSHDr3lRvqtp8RR9IRwdyy2AUPrJxMxccznKYgaiaJpx9nyG2J8h2M
-2RuPADsFlI9fX0698LVNDxwUhICkAYh5gxOw/S+KHQvpw6KDqOn5HNvAESc64TTQ
-T+KDM+LR+j6W0fRNPUDWJvLJCYf0dXc2PmysKhJF+Gck5LmHPl+aNUmJjpVqa/HJ
-cMUJAObpwDpLRySRBi5DtN+ZAv/SVwD1WhJkn/0FjWmBRBpwt9T0YVdPGbyJd877
-kLjB51r2JQSn/+Za+2TjIx4E1Qf9APCKCYzp1Jd0ofb53DO5jFtMPZ7GQljKwVf1
-d05+0WOR5OrHixfZhqXV1huP39T8Uw==
-=iRPY
------END PGP SIGNATURE-----
-
---=-+mwqdWbEE6wWAYsMfkXS--
-
-
-
---===============2772709427645576583==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---===============2772709427645576583==--
-
-
+Cgo+IE5vbmUgb2YgdGhlIGF2YWlsYWJsZSBSaXNjViBwbGF0Zm9ybXMgdGhhdCBJ4oCZbSBhd2Fy
+ZSBvZiB1c2UgY29tcHJlc3NlZCBpbWFnZXMsIHVubGVzcyB0aGVyZSBhcmUgc29tZSBuZXcgYm9v
+dGxvYWRlcnMgSSBoYXZlbuKAmXQgc2VlbiB5ZXQuCj4KCkkgbm90aWNlZCB0aGF0IGRlZmF1bHQg
+YnVpbGQgaW1hZ2UgaXMgSW1hZ2UuZ3osIHdoaWNoIGlzIHdoeSBJIHRob3VnaHQgaXRzIGEgZ29v
+ZCBpZGVhIHRvIGNvcHkgaXQgaW50byB0aGUgdGFyYmFsbC4gRG9lcyBzdWNoIGEgY29weSBub3Qg
+bWFrZSBzZW5zZSBhdCB0aGlzIHBvaW50ID8KCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1yaXNj
+dkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcmlzY3YK
