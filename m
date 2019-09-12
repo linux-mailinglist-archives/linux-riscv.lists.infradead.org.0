@@ -2,76 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB820B00E1
-	for <lists+linux-riscv@lfdr.de>; Wed, 11 Sep 2019 18:06:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BC40B0819
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Sep 2019 06:41:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AXqCVvnzQLQHEBb2pCUttR4q54rcQBCpY1UKLBRnTl0=; b=pxBbOLJLs6ICeZ
-	z12IlWhgmECkUrbkT2417ekVNrFEpl34Fq/vvGLWbdcXOmDpdC8nqQrYrDuBjHZ4K7ZyZ5TcXYGkC
-	ihUdHLnlS+kloWFRzVWgNJHL3tkV1kuix+HCeE9U0BPsudvhmECyddcLsKq1BR8I59D9BPXK9n6V6
-	CPF6nrWL32g3SiJnxqGPvKCfY46ey6X/8OlgSS1Fy+ZSbEqyozNkkg1to+vv+VF3Aqji/xKurxUp6
-	rAOz2hpzgNNZOK7NJSbJv4TNUgNjJdbkYbe42PzJO89JW8wggqjFTVgLB7ExnLqDu27dj/rjZmK7y
-	p7QGif6RysCfTDedb+1A==;
+	List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:Subject:Mime-Version
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r2sswrJAIrf4W4+liXBUHkOAvcqPr7JxvM4Y3j9uNQU=; b=EanJg1X3p0Wtv2
+	5cTySWyXH2wegKVAPErXRrlDna2BEwHkYeV4Z5/xEKt0iDsriR3/Z4uudwdj79lJAIRJMKRU9eOL1
+	KegzcYE/xOPg2I6AFzNClw/0fvGg1qDqTj2BFasP9fQUL/9+VTNN6eGU41ezhNWKXmDLIYG+YnG8c
+	1QmpleZrfBNe3g3vnhVqjhj/nL8VuRSiGhkriAKEtEolvqTF/A0R7+BrnoTxTwSvRw7kWTm5uKvr1
+	q0Gqzx7eQK0SbNfEkaLHugD+m4hbmtLAij1oUfw33bWLfkQ53ntzj7vYRgYvB236YsfBSn/t6Z/1b
+	vhfOTOQGJ98QnJqoDWew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i858R-0002g5-0U; Wed, 11 Sep 2019 16:06:23 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1i8GvM-0004aE-OG; Thu, 12 Sep 2019 04:41:40 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i858J-0002cE-IG
- for linux-riscv@lists.infradead.org; Wed, 11 Sep 2019 16:06:18 +0000
-Received: by mail-wm1-x341.google.com with SMTP id n10so4244336wmj.0
- for <linux-riscv@lists.infradead.org>; Wed, 11 Sep 2019 09:06:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FJJVoiOf8d1fBVlmA2WPx0ovMbhLVMUnVRYpkmmId2Y=;
- b=QWNGM8sNd2DIqJUVU1OLR1sxZVnOhxhVhHWu6sn3G/HkbQD0a3Uet0ziDi173OygoS
- WcCdb71vVpMMGSMyODgDg7v3IKgDf+jcLohmqJhvxgRITZz4nTjg9kVPY79Dko6yGRwI
- 7UB4qyMqR7ARnOknOJewxCb4y85Ikwb+PhhkX+/oC/E4rQZpxLeGuMO8CJ0bYDynNZAm
- te2Ui37mkNIuuDsWoWjiAyozjSyhLVPQDxNAu4pBSuumnFcQXJUuqopd6dCi8EcH5BuY
- CIK5/sU5mY617ien2evGACtTIB+KI8R4dlzQ405tx5mrGMqpJZIlUTXC+9Q+34LJuYnC
- KOCA==
+ id 1i8GvH-0004Zi-P3
+ for linux-riscv@lists.infradead.org; Thu, 12 Sep 2019 04:41:37 +0000
+Received: by mail-pg1-x544.google.com with SMTP id n4so12750059pgv.2
+ for <linux-riscv@lists.infradead.org>; Wed, 11 Sep 2019 21:41:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:content-transfer-encoding:mime-version:subject:message-id:date
+ :cc:to; bh=MDkUDgbz+SfEhyT5RETKylHGRS26Qrh0+1t+2QNZmuE=;
+ b=j7FDDxuf2ywbQ2AjC/7N7YmlIo4UmgqnzlWkcH2e6fQcgkkJ2HncOM6PINk/oY4VNz
+ 30S8ZQaV7YL57sKivXMPcgH5UwclWk09RXChpxbEm0LUjFHYRo10ZqgktwjrStEpNQ4U
+ TRXWERM01S3kqwtI9ztjhdiWJS6WRS8qRynTkL+E/S2aZfFWFC6CRQibK2ZKzU10UUgG
+ bIcClZ2KlnPnrSK42ayzLRY0RLPO9pGLe/Ks9SDLMPmoUDb8ibSwLmkDT+ntRgEGZtjl
+ nYkB3nRyMdMrjm9RlaF1Rr8B9qZNstHhSfT6L6kCIu9iq6ag5RtEFieKrYtgGFHoAURR
+ ZnFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FJJVoiOf8d1fBVlmA2WPx0ovMbhLVMUnVRYpkmmId2Y=;
- b=JtF+XfK4z9JTa1IA+RKzmJS0ejPLOltXL81aApy/bWyoJBiWVLHSaDTz/iC8HdfEIX
- MZskv24njJxQZn4iPJq7uZlpNtw8L14dCMqZtZevNX9p2Q8nhGv5x2tO1mDH1G9eCagS
- r1GOYshEY0suD9rjQOppn++Xx5VyZSSyb9BDgircESQ0bLJ0ont64ormNWG3MYRmVJA/
- /4U6RiaHyqYKtcy5U8CFWaqAsN0cwE27p0WvkqAgiTFgotxsec9icp8nS4K8lk96XVB2
- 8qjGJdr2C4XKCoIwLM/ZtRLuyydhYhpH+UfuquFWcoo72uaCpFXuqnVtyYHjz0+Trewr
- 1uhg==
-X-Gm-Message-State: APjAAAUSWtZCAlaQ6jNc+GZaPBO0sKOOQHA2qm6J6C7PVbqJNsko3zCE
- JiyobATRIUpZ7JvrLlyz++Mu768FucTIGpzOF4w7SA==
-X-Google-Smtp-Source: APXvYqxfo4OMflbhF8NmSJjJ2Gu/Ff2Dfhm+/6sbn8+WMGkQs5//gS6kM0XKRfWRoFsRG4rHItMc0Gt2atTI93osxFs=
-X-Received: by 2002:a1c:7a05:: with SMTP id v5mr4328922wmc.173.1568217973514; 
- Wed, 11 Sep 2019 09:06:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <CALAqxLWLStTqGx5DAvUKOYupdgK-doOxRF5Z_Us=L5vnFaa=7w@mail.gmail.com>
- <cb451591-88ad-f1b3-b654-cea86ae11cac@microchip.com>
-In-Reply-To: <cb451591-88ad-f1b3-b654-cea86ae11cac@microchip.com>
-From: John Stultz <john.stultz@linaro.org>
-Date: Wed, 11 Sep 2019 09:06:01 -0700
-Message-ID: <CALAqxLXRVc-K5q=me1=5tA0XYT7ncrArSoD+hq=JOGWVF9-7SQ@mail.gmail.com>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-To: Claudiu Beznea <Claudiu.Beznea@microchip.com>
+ h=x-gm-message-state:from:content-transfer-encoding:mime-version
+ :subject:message-id:date:cc:to;
+ bh=MDkUDgbz+SfEhyT5RETKylHGRS26Qrh0+1t+2QNZmuE=;
+ b=i4I65FBvc0fi99w46AWfSzGg6Mz5kXX1UDKyQx1Wu6z/iBfxtqpdBYyU27zvXjFk5x
+ qsJU6CIYcaks+BBYde2lOKFYRJrt0yficxadndPrzWgXy3yWi5GdamgyuGwb0/FWNrF0
+ V3eWBj/TE1vY0FtlW13jR2JpEs/xts5ewV7TlVMyXGT3+cypIXDlBhiwpIFNoD+ViiIL
+ sA7NacFb4Ai6Jf0o0Q8kEQfVVYAZQOrYg9TVOkKbV2fTjiSh3xEYZgpZdO9PZPfbntgW
+ dTJ5r8l9gSJBjWAREI7O0HJHSREv3Hbz/PhRhMRPuRxQI4W+BcZ9iFxIuTp4GnUURJlz
+ PxrQ==
+X-Gm-Message-State: APjAAAXkyvbkigIzD84KpR2KMx3/KfQuyzweJq3x1Dxc1gIZGrVccsKt
+ qcUUaAA0JHCWYMkw6TmO/fjHexwZ/lk=
+X-Google-Smtp-Source: APXvYqwJBpprWL3l3Jy2IbSlhN0Tz+vfWzlMYsnm/mU3AzSrzuLNo3N+iJnMY4H7hhyCzhDzfUsYeg==
+X-Received: by 2002:aa7:8436:: with SMTP id q22mr47176915pfn.74.1568263292976; 
+ Wed, 11 Sep 2019 21:41:32 -0700 (PDT)
+Received: from [127.0.0.1] (hope.twd2.net. [2001:19f0:7000:b181::1])
+ by smtp.gmail.com with ESMTPSA id h4sm25804848pfg.159.2019.09.11.21.41.29
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 11 Sep 2019 21:41:32 -0700 (PDT)
+From: Wende Tan <twd2.me@gmail.com>
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Subject: [PATCH] riscv: mm: Fix ASLR on RISC-V
+Message-Id: <3883C7B2-4CA1-4E13-9A02-F3DA4F5DA585@gmail.com>
+Date: Thu, 12 Sep 2019 12:39:25 +0800
+To: linux-riscv@lists.infradead.org
+X-Mailer: Apple Mail (2.3445.104.11)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190911_090615_618664_2EC963E6 
-X-CRM114-Status: GOOD (  21.15  )
+X-CRM114-CacheID: sfid-20190911_214135_842693_81A55729 
+X-CRM114-Status: GOOD (  14.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (twd2.me[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -91,108 +94,182 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: tmaimon77@gmail.com, Linus Walleij <linus.walleij@linaro.org>,
- nsekhar@ti.com, guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- linux-samsung-soc@vger.kernel.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Kevin Hilman <khilman@baylibre.com>, Ludovic.Desroches@microchip.com,
- linux-imx@nxp.com,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- uclinux-h8-devel@lists.sourceforge.jp, Marc Zyngier <marc.zyngier@arm.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-unisoc@lists.infradead.org,
- =?UTF-8?Q?Krzysztof_Ha=C5=82asa?= <khalasa@piap.pl>,
- Thomas Gleixner <tglx@linutronix.de>, sbranden@broadcom.com,
- lkml <linux-kernel@vger.kernel.org>, Ralf Baechle <ralf@linux-mips.org>,
- Paul Burton <paul.burton@mips.com>, kernel@pengutronix.de,
- Mark Rutland <mark.rutland@arm.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, jhogan@kernel.org,
- palmer@sifive.com, eric@anholt.net, Thierry Reding <thierry.reding@gmail.com>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, zhang.lyra@gmail.com,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Jon Hunter <jonathanh@nvidia.com>,
- bgolaszewski@baylibre.com, Kukjin Kim <kgene@kernel.org>,
- alexandre.torgue@st.com, linux-arm-msm@vger.kernel.org,
- Sudeep Holla <sudeep.holla@arm.com>, Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, baohua@kernel.org,
- kaloz@openwrt.org, Stephen Boyd <sboyd@kernel.org>, patrice.chotard@st.com,
- wahrenst@gmx.net, mcoquelin.stm32@gmail.com,
- Neil Armstrong <narmstrong@baylibre.com>, linux-tegra@vger.kernel.org,
- Fabio Estevam <festevam@gmail.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Benjamin Fair <benjaminfair@google.com>, shc_work@mail.ru,
- Krzysztof Kozlowski <krzk@kernel.org>, Nancy Yuen <yuenn@google.com>,
- Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com,
- orsonzhai@gmail.com, linux-snps-arc@lists.infradead.org, rjui@broadcom.com,
- vz@mleia.com, john@phrozen.org, tali.perry1@gmail.com, avifishman70@gmail.com,
- Patrick Venture <venture@google.com>, lftan@altera.com, linux-oxnas@groups.io,
- Shawn Guo <shawnguo@kernel.org>, afaerber@suse.de,
- Baruch Siach <baruch@tkos.co.il>, maxime.ripard@bootlin.com,
- Liviu Dudau <liviu.dudau@arm.com>, linux-mips@vger.kernel.org,
- linux-riscv@lists.infradead.org, openbmc@lists.ozlabs.org,
- Russell King - ARM Linux <linux@armlinux.org.uk>,
- Andy Gross <agross@kernel.org>, slemieux.tyco@gmail.com,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, aou@eecs.berkeley.edu,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Santosh Shilimkar <ssantosh@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Michal Simek <monstr@monstr.eu>,
- Baolin Wang <baolin.wang@linaro.org>, vgupta@synopsys.com,
- Nicolas.Ferre@microchip.com, linux@prisktech.co.nz,
- nios2-dev@lists.rocketboards.org
+Cc: twd2@163.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Sep 10, 2019 at 11:52 PM <Claudiu.Beznea@microchip.com> wrote:
-> On 10.09.2019 19:05, John Stultz wrote:
-> > External E-Mail
-> > On Tue, Sep 10, 2019 at 6:47 AM Claudiu Beznea
-> > <claudiu.beznea@microchip.com> wrote:
-> >>
-> >> This series adds support to permit the selection of clocksource/clockevent
-> >> via DT.
-> >
-> > Sorry about this, but could you try to include more of a rational for
-> > *why* this would be useful in your cover-letter/commit messages?
-> >
->
-> Sorry for not being to clear in the cover letter.
->
-> The case I am trying to solve here is as follows:
-> The timer hardware for which I publish a driver at [1] cannot work at the
-> same time as a clocksource and clockevent. On some of our platforms we have
-> more than one such a timer. So we could use one hardware resource as
-> clocksource and one as clockevent but not one for both.
-> Due to this, I proposed in the driver at [1] to have 1st probed hardware to
-> work as clocksource and the 2nd one to work as clockevent.
-[snip]
-> Due to this Daniel proposed to have an unified mechanism for this scenario,
-> see [2], (something like what I proposed in this series), such that to have
-> a determinism b/w the function that the hardware resources would behave
-> (either clocksource or clockevent or both).
+The ASLR on RISC-V does not work well (only randomize stack addresses)
+because RISC-V arch is lacking of `arch_mmap_rnd()`,
+`arch_pick_mmap_layout()` and `arch_randomize_brk()`. Add them.
 
-Thanks for the additional explanation! I'd suggest adding something
-like it to the commit logs for next time.
+Signed-off-by: Wende Tan <twd2.me@gmail.com>
+---
+ arch/riscv/Kconfig                 |  9 ++++
+ arch/riscv/include/asm/processor.h |  5 +++
+ arch/riscv/mm/Makefile             |  1 +
+ arch/riscv/mm/mmap.c               | 86 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 101 insertions(+)
+ create mode 100644 arch/riscv/mm/mmap.c
 
-Personally, I tend to think of DT bindings as a big harry ABI, and as
-such avoid it as much as possible. :)
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 59a4727..0f3b8ba 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -18,6 +18,7 @@ config RISCV
+ 	select OF_EARLY_FLATTREE
+ 	select OF_IRQ
+ 	select ARCH_HAS_BINFMT_FLAT
++	select ARCH_HAS_ELF_RANDOMIZE
+ 	select ARCH_WANT_FRAME_POINTERS
+ 	select CLONE_BACKWARDS
+ 	select COMMON_CLK
+@@ -31,6 +32,7 @@ config RISCV
+ 	select GENERIC_SMP_IDLE_THREAD
+ 	select GENERIC_ATOMIC64 if !64BIT
+ 	select HAVE_ARCH_AUDITSYSCALL
++	select HAVE_ARCH_MMAP_RND_BITS if MMU
+ 	select HAVE_MEMBLOCK_NODE_MAP
+ 	select HAVE_DMA_CONTIGUOUS
+ 	select HAVE_FUTEX_CMPXCHG if FUTEX
+@@ -58,6 +60,13 @@ config RISCV
+ config MMU
+ 	def_bool y
+ 
++config ARCH_MMAP_RND_BITS_MIN
++	default 12
++
++config ARCH_MMAP_RND_BITS_MAX
++	default 24 if 64BIT
++	default 12
++
+ config ZONE_DMA32
+ 	bool
+ 	default y if 64BIT
+diff --git a/arch/riscv/include/asm/processor.h b/arch/riscv/include/asm/processor.h
+index f539149..2638748 100644
+--- a/arch/riscv/include/asm/processor.h
++++ b/arch/riscv/include/asm/processor.h
+@@ -20,6 +20,11 @@
+ #define STACK_TOP_MAX		STACK_TOP
+ #define STACK_ALIGN		16
+ 
++/*
++ * RISC-V has an arch_pick_mmap_layout()
++ */
++#define HAVE_ARCH_PICK_MMAP_LAYOUT 1
++
+ #ifndef __ASSEMBLY__
+ 
+ struct task_struct;
+diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+index 74055e1..742e6f3 100644
+--- a/arch/riscv/mm/Makefile
++++ b/arch/riscv/mm/Makefile
+@@ -11,6 +11,7 @@ obj-y += extable.o
+ obj-y += ioremap.o
+ obj-y += cacheflush.o
+ obj-y += context.o
++obj-y += mmap.o
+ obj-y += sifive_l2_cache.o
+ 
+ obj-$(CONFIG_HUGETLB_PAGE) += hugetlbpage.o
+diff --git a/arch/riscv/mm/mmap.c b/arch/riscv/mm/mmap.c
+new file mode 100644
+index 00000000..07c7933
+--- /dev/null
++++ b/arch/riscv/mm/mmap.c
+@@ -0,0 +1,86 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Based on arch/mips/mm/mmap.c
++ *
++ * Copyright (C) 2011 Wind River Systems,
++ *   written by Ralf Baechle <ralf@linux-mips.org>
++ * Copyright (C) 2019 Wende Tan <twd2.me@gmail.com>
++ */
++#include <linux/compiler.h>
++#include <linux/elf-randomize.h>
++#include <linux/errno.h>
++#include <linux/mm.h>
++#include <linux/mman.h>
++#include <linux/personality.h>
++#include <linux/random.h>
++#include <linux/sched/mm.h>
++
++/* gap between mmap and stack */
++#define RISCV_MIN_GAP (128 * 1024 * 1024UL)
++#define RISCV_MAX_GAP ((TASK_SIZE) / 6 * 5)
++
++unsigned long arch_mmap_rnd(void)
++{
++	unsigned long rnd = get_random_long() & ((1UL << mmap_rnd_bits) - 1);
++
++	return rnd << PAGE_SHIFT;
++}
++
++static int mmap_is_legacy(struct rlimit *rlim_stack)
++{
++	if (current->personality & ADDR_COMPAT_LAYOUT)
++		return 1;
++
++	if (rlim_stack->rlim_cur == RLIM_INFINITY)
++		return 1;
++
++	return sysctl_legacy_va_layout;
++}
++
++static unsigned long mmap_base(unsigned long rnd, struct rlimit *rlim_stack)
++{
++	unsigned long gap = rlim_stack->rlim_cur;
++
++	if (gap < RISCV_MIN_GAP)
++		gap = RISCV_MIN_GAP;
++	else if (gap > RISCV_MAX_GAP)
++		gap = RISCV_MAX_GAP;
++
++	return PAGE_ALIGN(TASK_SIZE - gap - rnd);
++}
++
++void arch_pick_mmap_layout(struct mm_struct *mm, struct rlimit *rlim_stack)
++{
++	unsigned long random_factor = 0UL;
++
++	if (current->flags & PF_RANDOMIZE)
++		random_factor = arch_mmap_rnd();
++
++	if (mmap_is_legacy(rlim_stack)) {
++		mm->mmap_base = TASK_UNMAPPED_BASE + random_factor;
++		mm->get_unmapped_area = arch_get_unmapped_area;
++	} else {
++		mm->mmap_base = mmap_base(random_factor, rlim_stack);
++		mm->get_unmapped_area = arch_get_unmapped_area_topdown;
++	}
++}
++
++static inline unsigned long brk_rnd(void)
++{
++	unsigned long rnd = get_random_long() & ((1UL << mmap_rnd_bits) - 1);
++
++	return rnd << PAGE_SHIFT;
++}
++
++unsigned long arch_randomize_brk(struct mm_struct *mm)
++{
++	unsigned long base = mm->brk;
++	unsigned long ret;
++
++	ret = PAGE_ALIGN(base + brk_rnd());
++
++	if (ret < mm->brk)
++		return mm->brk;
++
++	return ret;
++}
+-- 
+2.1.4
 
-I'd probably favor driver tweaks to ensure the hardware only gets
-registered once for each, using a minimal DT compatible or flag on the
-hardware to better describe the underlying hardware quirk that keeps
-it from being usable for both clocksource and clockevent usage.
-
-That way the DT sticks to accurately describing hardware, instead of
-system/software-abstraction configuration details that just apply for
-Linux.
-
-But, again, I'm not really a DT person, so I'll defer to Rob and Daniel.
-
-thanks
--john
 
 _______________________________________________
 linux-riscv mailing list
