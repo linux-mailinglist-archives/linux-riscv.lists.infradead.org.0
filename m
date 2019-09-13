@@ -2,93 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 704F0B24B2
-	for <lists+linux-riscv@lfdr.de>; Fri, 13 Sep 2019 19:40:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C71B0B25AB
+	for <lists+linux-riscv@lfdr.de>; Fri, 13 Sep 2019 21:04:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I7hSdGocB2CDFKK1+AbVFwHsFy9enEekhDt+AFl9bWk=; b=QKu8RfUNyAqQR2
-	HzKOyHks8IvIidIX8+FJqw4rnjXHZKHz6XcSgXJ3fN8zv+d7/6S+IqcriG/cylp5nhVfCDty0+trG
-	F1+OQZF3UtonyKAyohyvFETDeQJNUWu/Gi1gcbu7jFiZqgfVlDMSR4uLHEQUXM/rw0n6ojN+o4oRz
-	5X4x7A2PvL7ANsHXgh9dujPDxwFx4T/uQk+0C9OnX6XlcGm7JandpQFz4J/q7PLN8iUqBrK/PdDY+
-	0Rpw28eIdpZmR9YKGCK/lq0lMSLrhO3dl4oH0Q28x+kXAokApYNOwye1PQT/0XZqcVBxQnPgx3HEw
-	pRQPIXPOUlB9nIO1Lnmg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=eOCv79bTyZfOZbWahoUYkmKeLHIzGNlASHR50o+5aPQ=; b=LTN3CMYgD0xpBBX2K54Zz03+L
+	Nr+UYj5fnosPTK/pPx0bHlafZlSk3RZ/wGyKGCzwoUXUNXw7mY/qClgmp3bLR4OC7fXyZEBbI4HdF
+	FPCMAw5Zy3jEKPoGYWSlainseit+9hbpn6baWGihgxAbTRRBWYat3Rpkg9yzII0Ivcxxbnx4KMGmi
+	xlDWeG4Pn+PWiGJBM5ByqW3HZiX/YXHQwjvE9SV9De8B2ThKxQyRVPz7YhyrYfXNu1r7uuoIwaKEe
+	YlJ93qYvOJlHDruVev74jBSk8OE89XeizPKRxipawMhGVMlSby324lKXpqiL0IeD6d2cQ8Pg587No
+	+Tf9bZOZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i8pYH-0001VN-RF; Fri, 13 Sep 2019 17:40:10 +0000
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143])
+	id 1i8qs3-0004Bn-Ek; Fri, 13 Sep 2019 19:04:39 +0000
+Received: from mail-pf1-f195.google.com ([209.85.210.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i8pYC-0000K1-FU
- for linux-riscv@lists.infradead.org; Fri, 13 Sep 2019 17:40:06 +0000
-Received: by mail-lf1-x143.google.com with SMTP id w67so22743596lff.4
- for <linux-riscv@lists.infradead.org>; Fri, 13 Sep 2019 10:40:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=n/8TaZzU4/Xd0tjzBKZmUfSDILX2IFr4ta9frYs5Xs0=;
- b=SG0DRyf5kA6SfAWvLtYPpTznmt8fjufKkkzVymJlQgIOKEaXvEH993F6f5kACbN+Yz
- lQ59k1nNDgSMthjqAKWH0SnAOgMLOYCbaMK3He6s/3UrpVFl+fAcnwMUonRXg/N0V+vO
- LarcEqtWjc5HfRN9gtzoUpOdxFRF8Qwzk5gLh3zTcV9n00M6tKYglOrhOIALZHi1DdoV
- El/q3LbxaktFwDSOnnGv+Xol4RPbrjoB1LdYe4fVBNmNKd7TZvsHOtNY6YkSRO5SAD7J
- SksemlJhD2EzSXR8Z7pX7rHudvXcWTv6xul2cxLZ99PC43CGMv+oBnAWf56mQ0EJorqj
- fpkQ==
+ id 1i8qs0-0004BG-10
+ for linux-riscv@lists.infradead.org; Fri, 13 Sep 2019 19:04:37 +0000
+Received: by mail-pf1-f195.google.com with SMTP id w22so18646863pfi.9
+ for <linux-riscv@lists.infradead.org>; Fri, 13 Sep 2019 12:04:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=n/8TaZzU4/Xd0tjzBKZmUfSDILX2IFr4ta9frYs5Xs0=;
- b=IZDh7VLTKGpV1xIKD6igX7VxAGQF2gjtlCQFL7sYvLmPNR9Dml0nzNyi2NBfU9Hg6b
- c9JAFo0aG8boI2zIDo6/GlT2uIpEc5ZyDMllwkTErXWXrZLhu8/JT9tJVhXPNpt9JiTE
- ++S4+vNiCTP3I2fjPtBkqIlg5a/atcRM89+Rx6Z7aEJuEcBT6KhLn6IVq4fAqKrBbkzS
- MkgOW7FQjjV48crg8HKvKMB76MXKOGJZl0ANQGgxKGVQ0IlNIzMok/6CtyrN8Qc9cNr2
- 56IvBO++NHoE8N8KQFI/4Y3ZOSRvXl6JbV/hAwIslX2yLjZWqYlP4gwyvCATiXZlhz4H
- TH+w==
-X-Gm-Message-State: APjAAAU9U3TjF+rcKfMls4Qvu3TDThJLfCEdw1FWM7UN5ux1Yj3f8/oe
- 83LLKFlUcmUxfQuJV1gJGKYOXec0/tkfEtGx6hr2NQ==
-X-Google-Smtp-Source: APXvYqyXa+N3QbXmZxivySXywHwcEIuvcRBkkU+lKWn7Lej6OFrBl0P0SWOoL1lQNIXYqbqvQ88ld/TUvWmVy+4lYxY=
-X-Received: by 2002:a19:ac0c:: with SMTP id g12mr32149008lfc.128.1568396401610; 
- Fri, 13 Sep 2019 10:40:01 -0700 (PDT)
-MIME-Version: 1.0
-References: <1558650258-15050-1-git-send-email-alan.mikhak@sifive.com>
- <305100E33629484CBB767107E4246BBB0A6FAFFD@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxsQ9NXrN7W_8HVrXQBb9HiBd+d1dNfv+cXmoBpXQnLwA@mail.gmail.com>
- <305100E33629484CBB767107E4246BBB0A6FC308@DE02WEMBXB.internal.synopsys.com>
- <CABEDWGxL-WYz1BY7yXJ6eKULgVtKeo67XhgHZjvtm5Ka5foKiA@mail.gmail.com>
- <192e3a19-8b69-dfaf-aa5c-45c7087548cc@ti.com>
- <CABEDWGxLeD-K8PjkD5hPSTFGJKs2hxEaAVO+nE5eC9Nx2yw=ig@mail.gmail.com>
- <75d578c2-a98c-d1ef-1633-6dc5dc3b0913@ti.com>
- <CABEDWGxBxmiKjoPUSUaUBXUhKkUTXVX0U9ooRou8tcWJojb52g@mail.gmail.com>
- <6e692ff6-e64f-e651-c8ae-34d0034ad7b9@ti.com>
- <CABEDWGx2N66L=27JY6Ywbfny78UaxENkxBTqxU37PfuQO-ZMZw@mail.gmail.com>
- <40fafe93-d2dd-b1f5-bc16-cd84ff07bd13@ti.com>
-In-Reply-To: <40fafe93-d2dd-b1f5-bc16-cd84ff07bd13@ti.com>
-From: Alan Mikhak <alan.mikhak@sifive.com>
-Date: Fri, 13 Sep 2019 10:39:50 -0700
-Message-ID: <CABEDWGy3VdH40QAz5NVhQHLLXXf2C5W22uUXEw3yCeNz0hfF-Q@mail.gmail.com>
-Subject: Re: [PATCH] PCI: endpoint: Add DMA to Linux PCI EP Framework
-To: Kishon Vijay Abraham I <kishon@ti.com>
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=J8WZu8kPZWoeeQELgw+yQTV+q40PZLs/qmgDReqeZXk=;
+ b=CXpUQjiG9Ac2gBLoU0W4mAkiKF0Cr9Gq9sxAkWiwQALKVpAEVMfV4b5NVGH9sdA/zM
+ MWG45eOyCnDe/9NrVSxS3CW4esGs4O/jGdMPgeC0jOyzs4bjulMqkj/QbBt6OYD3sN5+
+ qp/dCqoMXdAF2yunM3GIpqV7fT+zQHV9gEbn7VhtXe3qj7BpAe/Jln9HGbbQ7Sskc5gI
+ c+cPzStheaDnHrVpmzxMlAl3GzQhNPfyQtTzdn8KYdo8+iBa9BbkbYGkUPSeKwkkzTLm
+ HNQy7ljqgWTh4sOYkha611q9sqb0eFwWnl+jWQNsF9BWYlhgjWcgDtXcgtEnoK39BQGG
+ WjKA==
+X-Gm-Message-State: APjAAAXYR4/Dp68n9akCqO5DDSGzm7cHmrxlYmccYrqFqiD/ldMTfh3Z
+ 9/rhkL+clArK87qp9KKHUOI5XA==
+X-Google-Smtp-Source: APXvYqwJvSZDMasTEVNh5WsVDJxEBgwmLv1wBQK4AVmpBtSBRz7G3lmSplJTYG6MBOAci2cPyDA12w==
+X-Received: by 2002:a63:188:: with SMTP id 130mr44264209pgb.231.1568401473606; 
+ Fri, 13 Sep 2019 12:04:33 -0700 (PDT)
+Received: from localhost (amx-tls3.starhub.net.sg. [203.116.164.13])
+ by smtp.gmail.com with ESMTPSA id p68sm56933518pfp.9.2019.09.13.12.04.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Sep 2019 12:04:32 -0700 (PDT)
+Date: Fri, 13 Sep 2019 12:04:32 -0700 (PDT)
+X-Google-Original-Date: Fri, 13 Sep 2019 10:15:26 PDT (-0700)
+Subject: Re: arch/riscv: disable too many harts before pick main boot hart
+In-Reply-To: <EUNbud4OiUlulXZR0_kXWEOnsI1rm5JrQehjVFXdgbThdfwL5mmYxRGI7pwlf9tpuYhjjGSDRj-4jL1CtfzuOxhY62TYGw-d9L05FQxi7N4=@hardenedlinux.org>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: merle@hardenedlinux.org
+Message-ID: <mhng-0a85b4e9-be39-469c-9a50-4ee1310f6e8e@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190913_104004_590685_F6F30ED1 
-X-CRM114-Status: GOOD (  19.48  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190913_120436_067458_CEB016BD 
+X-CRM114-Status: GOOD (  13.54  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:143 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.195 listed in list.dnswl.org]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.195 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,82 +81,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
- "arnd@arndb.de" <arnd@arndb.de>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- Gustavo Pimentel <Gustavo.Pimentel@synopsys.com>, haotian.wang@duke.edu,
- "kjlu@umn.edu" <kjlu@umn.edu>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "bhelgaas@google.com" <bhelgaas@google.com>, Vinod Koul <vkoul@kernel.org>,
- Haotian Wang <haotian.wang@sifive.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
- "jingoohan1@gmail.com" <jingoohan1@gmail.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "wen.yang99@zte.com.cn" <wen.yang99@zte.com.cn>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu,
+ linux-kernel@vger.kernel.org, citypw@hardenedlinux.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Sep 13, 2019 at 5:11 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+On Thu, 05 Sep 2019 23:51:15 PDT (-0700), merle@hardenedlinux.org wrote:
+> From 12300865d1103618c9d4c375f7d7fbe601b6618c Mon Sep 17 00:00:00 2001
+> From: Xiang Wang <merle@hardenedlinux.org>
+> Date: Fri, 6 Sep 2019 11:56:09 +0800
+> Subject: [PATCH] arch/riscv: disable too many harts before pick main boot hart
 >
-> + Haotian Wang
+> These harts with id greater than or equal to CONFIG_NR_CPUS need to be disabled.
+> But pick the main Hart can choose any one. So, before pick the main hart, you
+> need to disable the hart with id greater than or equal to CONFIG_NR_CPUS.
 >
-> On 03/06/19 11:12 PM, Alan Mikhak wrote:
-> > On Sun, Jun 2, 2019 at 9:43 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> >> Hi Alan,
-> >> On 31/05/19 11:46 PM, Alan Mikhak wrote:
-> >>> On Thu, May 30, 2019 at 10:08 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> >>>> Hi Alan,
-> >>>>> Hi Kishon,
-> >>>>
-> >>>> I still have to look closer into your DMA patch but linked-list mode or single
-> >>>> block mode shouldn't be an user select-able option but should be determined by
-> >>>> the size of transfer.
-> >>>
-> >>> Please consider the following when taking a closer look at this patch.
-> >>
-> >> After seeing comments from Vinod and Arnd, it looks like the better way of
-> >> adding DMA support would be to register DMA within PCI endpoint controller to
-> >> DMA subsystem (as dmaengine) and use only dmaengine APIs in pci_epf_test.
-> >
-> > Thanks Kishon. That makes it clear where these pieces should go.
-> >
-> >>> In my specific use case, I need to verify that any valid block size,
-> >>> including a one byte transfer, can be transferred across the PCIe bus
-> >>> by memcpy_toio/fromio() or by DMA either as a single block or as
-> >>> linked-list. That is why, instead of deciding based on transfer size,
-> >>> this patch introduces the '-L' flag for pcitest to communicate the
-> >>> user intent across the PCIe bus to pci-epf-test so the endpoint can
-> >>> initiate the DMA transfer using a single block or in linked-list mode.
-> >> The -L option seems to select an internal DMA configuration which might be
-> >> specific to one implementation. As Gustavo already pointed, we should have only
-> >> generic options in pcitest. This would no longer be applicable when we move to
-> >> dmaengine.
-> >
-> > Single-block DMA seemed as generic as linked-list DMA and
-> > memcpy_toio/fromio. It remains unclear how else to communicate that
-> > intent to pci_epf_test each time I invoke pcitest.
-> >
-> > Regards,
-> > Alan
-> >
+> Signed-off-by: Xiang Wang <merle@hardenedlinux.org>
+> ---
+> arch/riscv/kernel/head.S | 8 +++++---
+> 1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> index 0f1ba17e476f..cfffea38eb17 100644
+> --- a/arch/riscv/kernel/head.S
+> +++ b/arch/riscv/kernel/head.S
+> @@ -63,6 +63,11 @@ _start_kernel:
+> li t0, SR_FS
+> csrc sstatus, t0
+>
+> +#ifdef CONFIG_SMP
+> + li t0, CONFIG_NR_CPUS
+> + bgeu a0, t0, .Lsecondary_park
+> +#endif
+> +
+> /* Pick one hart to run the main boot sequence */
+> la a3, hart_lottery
+> li a2, 1
+> @@ -154,9 +159,6 @@ relocate:
+>
+> .Lsecondary_start:
+> #ifdef CONFIG_SMP
+> - li a1, CONFIG_NR_CPUS
+> - bgeu a0, a1, .Lsecondary_park
+> -
+> /* Set trap vector to spin forever to help debug */
+> la a3, .Lsecondary_park
+> csrw CSR_STVEC, a3
 
-Hi Kishon,
+It would be better to decouple the hart masks from NR_CPUS, as there's really 
+no reason for these to be the same.
 
-FYI, I integrated your changes for DMAengine client support to PCI
-endpoint framework into my development branch. The following is the
-link you provided earlier as reference. I have been using it with good
-results. Haotian Wang also used it in a recent patch for PCI endpoint
-function for virtnet. Would you be able to comment on if and when your
-DMAengine client support may be submitted upstream?
-
-http://git.ti.com/cgit/cgit.cgi/ti-linux-kernel/ti-linux-kernel.git/tree/drivers/pci/endpoint/pci-epf-core.c?h=ti-linux-4.19.y
-
-Regards,
-Alan Mikhak
+Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
 
 _______________________________________________
 linux-riscv mailing list
