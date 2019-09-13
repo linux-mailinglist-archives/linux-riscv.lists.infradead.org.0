@@ -2,32 +2,39 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D431B195D
-	for <lists+linux-riscv@lfdr.de>; Fri, 13 Sep 2019 10:11:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91311B1A39
+	for <lists+linux-riscv@lfdr.de>; Fri, 13 Sep 2019 10:54:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4LSe9NYgvv+G3MCRxJI+AAPDDREmamMGfqFsxEIPs9s=; b=hzqdff7uc5klI4
-	6LKQhPPSl+x7GefzW3XSPs01WOIGLf+C6FB551XjY2nxu6M9TlofUks6RWE5gcO533Vis8L4Bss8M
-	BnJOHQRsqSuIbjhQtvNP5S+NTcwdFTeIxzndIQ7Th+lk66V8QIhO/PvIpz1p/LhZ0MtvHJXGblysd
-	GvfBCmnWP+g5IVEUIs6B4WCn0tZJt1GMBeIXfKRhPEJq3ktt1uboThNHZ9A+I/VVwuJKWwK/RmYu1
-	3rCKgogelAdMIZDe+0hJSh+jWxVp4wmvrO/0c3yYkCuahx0PyWOdUsgnpNY8zmGUqOxN4yY1sL2NX
-	EUzTPH8qhsMaVd4rnAkQ==;
+	List-Owner; bh=MrBLsgP745tXuvWT4UHY88zxQA5tUyNU0njlkRU9stw=; b=T/EjzuxrL11CYv
+	c1xxlXVAKlBoI3N9eM7j8+KnECL6vu/fIDbufA1gJVNN9G6t1dq8Ap6AmOGX4TloyGmZRCQl1LLMC
+	5uXLJLmPjd2zzIwT2jWdiZ9epBUMPooq952w6zzBJHteqV36C6+EEWngIDYRK5lZwS96cnt+EuWzT
+	OD+Wqzs4B6hcWtl4pXb0523g5+m4reDros4ryp/umhjaIoky9mu8jh7Na9dzMXLKUc8LwocubENts
+	UXAisckvcfbFJtaWG/r6HBAqb7wBYnXmsnEGsNCULCcc7VzCKGWaEeQ+OziJsVqhC9o4Yi2fb5A5U
+	TCqBSjyrXL1FVY1HPwew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i8gfM-0007cW-HR; Fri, 13 Sep 2019 08:10:52 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1i8hLg-0001aU-TF; Fri, 13 Sep 2019 08:54:36 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i8geF-0006BC-DU; Fri, 13 Sep 2019 08:09:46 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 55A67AF68;
- Fri, 13 Sep 2019 08:09:32 +0000 (UTC)
+ id 1i8hI8-0007mv-Ip; Fri, 13 Sep 2019 08:50:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1568364635;
+ bh=OZqY8YEmhSzYpVNahFixu1x4zax59nBDtoBfEOKOU5s=;
+ h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
+ b=LgBrFGcKw3jzMlfJOCjItxE63zvj5he1+kky9ilivtcRdrHVQsn77FeH0WFVA/7o5
+ fQ+BbYa36NLTKwhjgpD+JeHKXyvPiuy7tyD+lNpC8LEHM5cMglVxMA/OIalDzoRSGI
+ n8ASzdbzVhqlhX/QhvOfCvQb7DyVFgu6o2AJUvF8=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [192.168.1.162] ([37.4.249.90]) by mail.gmx.com (mrgmx103
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 0Lzsf1-1iCMTA0Nu7-014yUk; Fri, 13
+ Sep 2019 10:50:35 +0200
 Subject: Re: [PATCH v5 0/4] Raspberry Pi 4 DMA addressing support
-To: Stefan Wahren <wahrenst@gmx.net>, catalin.marinas@arm.com,
+To: Matthias Brugger <mbrugger@suse.com>, catalin.marinas@arm.com,
  marc.zyngier@arm.com, Matthias Brugger <matthias.bgg@gmail.com>,
  robh+dt@kernel.org, linux-mm@kvack.org,
  linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org,
@@ -37,119 +44,60 @@ References: <20190909095807.18709-1-nsaenzjulienne@suse.de>
  <3f9af46e-2e1a-771f-57f2-86a53caaf94a@suse.com>
  <09f82f88-a13a-b441-b723-7bb061a2f1e3@gmail.com>
  <2c3e1ef3-0dba-9f79-52e2-314b6b500e14@gmx.net>
-From: Matthias Brugger <mbrugger@suse.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=mbrugger@suse.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <4a6f965b-c988-5839-169f-9f24a0e7a567@suse.com>
-Date: Fri, 13 Sep 2019 10:09:30 +0200
+ <4a6f965b-c988-5839-169f-9f24a0e7a567@suse.com>
+From: Stefan Wahren <wahrenst@gmx.net>
+Message-ID: <48a6b72d-d554-b563-5ed6-9a79db5fb4ab@gmx.net>
+Date: Fri, 13 Sep 2019 10:50:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <2c3e1ef3-0dba-9f79-52e2-314b6b500e14@gmx.net>
+In-Reply-To: <4a6f965b-c988-5839-169f-9f24a0e7a567@suse.com>
 Content-Language: en-US
+X-Provags-ID: V03:K1:5fDbWcniG6VsoBWaSc+GYFShgEo4REYeFeRHrSgDDglxm5sD6x2
+ UrWf7vgL6ch3G20ivsSWNIYWs/Bz1I+ZBgUC3eKNW5tdmxyn8E7T09758U+Tzf0wd/Wfw8R
+ nrZhE9fM238lCEGselAeaRWRKnV6VycB/TqFyuOdS/3m/0VwhMdxszt4cj6OQds8ZEJHgz5
+ lsHhLpKSOwmBUbNVq/KdA==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PLc07q3TRNY=:+TtDNvVyj685IvAHzOOktc
+ kx+vI+eRRKzbqWd9bDoq8bo6RUCq2UiiBjt/4MAb2tnL51PkKCkYHzlLLVBuwOSz9m+mSJGYi
+ 3zQd9+4D5ZLnGGpSJKEJVvz2kSVmQiofGovvP1jXFcZWenr8riydzYGNY+HAYiqCxRaUA/eFX
+ E6xKpZo0iCDgnGdKi8+8xebctj7qpdvBjQif0wnINKavSgNh68oh0AUaigrhNyTkx7yCZSwv1
+ DxjnGg4fcjODfNNNEyYWmUd8MReYV1F0ehLs33w2Nxw60jHXeGmiep953V4atjlczfyqThy1R
+ uLcOMT92s/f7l7jtsN4dC+ZACigrck1L2eh2cBjDP9jBvEC79BTYXAe5bJQ/NLYlFNJzuJ0L5
+ KeM/4DFNCEJzuFJiNH3QdltPzA+2EIlzIZXl259m8wC5K2jB+gnScjnB3ZNYEg2pbIS6i4vp7
+ eA4IRIA1+P2jzMG9K8WKQp0T1aShulE+puyTCFwsz2eXeqLdxWuEbvtPiac2qMMqjLolkaG48
+ FV7hnRI3NkswtrztAzqfO+VJ0qPM00Kw6xotij/QHh8oU0BqpdD9+cAo+clP+40ysg0uKxV1Y
+ PYE2OWrVVwhEODxtvsJ+PGPADi0/tXm4fF3RyKNK5YQ69FtWTzQhecT5phJsYxTuEO6JRVFEH
+ tCm1NM+lN48t6dHOKPZPMeyASDCIy8pelwOiO5uAyg6u/RM65mkYXam7rrmEnYFTzfsw2IiCC
+ +FyqOyFxRVQbxIwaMlTwaBXGbad61xAueSYnodWFeuByuX0hGZ2Zm/uqxnLGJuQTpVrNMUDiA
+ 80QTtrA0KYBIaL2uqVZvjnTBNklNcb+Bul0JTVLe1+wSd/xs73IvfO/EH5Go5NpdCD2CHGNh/
+ SGnV/vUI0sShAZB3yhkhzvPzBDG3iWzcjKLCq9GQ2XQV6vWt/AQEE0iXQBZX5Fi85Qkf/9Orb
+ 7ZPA0klbpejckcIoscN1Vandk0ERHH6JArUBfIAQokm/ElVeOHqF7RcfpzlarmXkaz65JFY03
+ 4ZAxD1pCVkNsGrtcfta2mXQ97NrVDDVR6ZBwKR6IshAUVzG02FtirFYR/uvzQCiLzbzjhd2Jv
+ hnHwsSRwRw5L/ZeWRxt5BQOx4FXI4aaq7/ANCbqqurfTzVZ+SH+M6W7oxUb51cW+JPzUAxTxt
+ zWlhgmJD26gIhkPblPuZX6IyXK2IU/IvYLe5QIFuATMSATrzDVrMYP+IWVG4UYw4WaAdMQQf/
+ IzirydQqcD7FTclu9dRm0zhhepscswytTs0NfKopHHrsepk8IMYtE7M4DYk0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190913_010943_842664_13A04A6C 
-X-CRM114-Status: GOOD (  24.96  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190913_015056_942051_0340F571 
+X-CRM114-Status: GOOD (  23.98  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [212.227.17.20 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (wahrenst[at]gmx.net)
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -169,129 +117,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
-
-On 12/09/2019 21:32, Stefan Wahren wrote:
-> 
-> Am 12.09.19 um 19:18 schrieb Matthias Brugger:
->>
->> On 10/09/2019 11:27, Matthias Brugger wrote:
->>>
->>> On 09/09/2019 21:33, Stefan Wahren wrote:
->>>> Hi Nicolas,
+Am 13.09.19 um 10:09 schrieb Matthias Brugger:
+>
+> On 12/09/2019 21:32, Stefan Wahren wrote:
+>> Am 12.09.19 um 19:18 schrieb Matthias Brugger:
+>>> On 10/09/2019 11:27, Matthias Brugger wrote:
+>>>> On 09/09/2019 21:33, Stefan Wahren wrote:
+>>>>> Hi Nicolas,
+>>>>>
+>>>>> Am 09.09.19 um 11:58 schrieb Nicolas Saenz Julienne:
+>>>>>> Hi all,
+>>>>>> this series attempts to address some issues we found while bringing up
+>>>>>> the new Raspberry Pi 4 in arm64 and it's intended to serve as a follow
+>>>>>> up of these discussions:
+>>>>>> v4: https://lkml.org/lkml/2019/9/6/352
+>>>>>> v3: https://lkml.org/lkml/2019/9/2/589
+>>>>>> v2: https://lkml.org/lkml/2019/8/20/767
+>>>>>> v1: https://lkml.org/lkml/2019/7/31/922
+>>>>>> RFC: https://lkml.org/lkml/2019/7/17/476
+>>>>>>
+>>>>>> The new Raspberry Pi 4 has up to 4GB of memory but most peripherals can
+>>>>>> only address the first GB: their DMA address range is
+>>>>>> 0xc0000000-0xfc000000 which is aliased to the first GB of physical
+>>>>>> memory 0x00000000-0x3c000000. Note that only some peripherals have these
+>>>>>> limitations: the PCIe, V3D, GENET, and 40-bit DMA channels have a wider
+>>>>>> view of the address space by virtue of being hooked up trough a second
+>>>>>> interconnect.
+>>>>>>
+>>>>>> Part of this is solved on arm32 by setting up the machine specific
+>>>>>> '.dma_zone_size = SZ_1G', which takes care of reserving the coherent
+>>>>>> memory area at the right spot. That said no buffer bouncing (needed for
+>>>>>> dma streaming) is available at the moment, but that's a story for
+>>>>>> another series.
+>>>>>>
+>>>>>> Unfortunately there is no such thing as 'dma_zone_size' in arm64. Only
+>>>>>> ZONE_DMA32 is created which is interpreted by dma-direct and the arm64
+>>>>>> arch code as if all peripherals where be able to address the first 4GB
+>>>>>> of memory.
+>>>>>>
+>>>>>> In the light of this, the series implements the following changes:
+>>>>>>
+>>>>>> - Create both DMA zones in arm64, ZONE_DMA will contain the first 1G
+>>>>>>   area and ZONE_DMA32 the rest of the 32 bit addressable memory. So far
+>>>>>>   the RPi4 is the only arm64 device with such DMA addressing limitations
+>>>>>>   so this hardcoded solution was deemed preferable.
+>>>>>>
+>>>>>> - Properly set ARCH_ZONE_DMA_BITS.
+>>>>>>
+>>>>>> - Reserve the CMA area in a place suitable for all peripherals.
+>>>>>>
+>>>>>> This series has been tested on multiple devices both by checking the
+>>>>>> zones setup matches the expectations and by double-checking physical
+>>>>>> addresses on pages allocated on the three relevant areas GFP_DMA,
+>>>>>> GFP_DMA32, GFP_KERNEL:
+>>>>>>
+>>>>>> - On an RPi4 with variations on the ram memory size. But also forcing
+>>>>>>   the situation where all three memory zones are nonempty by setting a 3G
+>>>>>>   ZONE_DMA32 ceiling on a 4G setup. Both with and without NUMA support.
+>>>>>>
+>>>>> i like to test this series on Raspberry Pi 4 and i have some questions
+>>>>> to get arm64 running:
+>>>>>
+>>>>> Do you use U-Boot? Which tree?
+>>>> If you want to use U-Boot, try v2019.10-rc4, it should have everything you need
+>>>> to boot your kernel.
 >>>>
->>>> Am 09.09.19 um 11:58 schrieb Nicolas Saenz Julienne:
->>>>> Hi all,
->>>>> this series attempts to address some issues we found while bringing up
->>>>> the new Raspberry Pi 4 in arm64 and it's intended to serve as a follow
->>>>> up of these discussions:
->>>>> v4: https://lkml.org/lkml/2019/9/6/352
->>>>> v3: https://lkml.org/lkml/2019/9/2/589
->>>>> v2: https://lkml.org/lkml/2019/8/20/767
->>>>> v1: https://lkml.org/lkml/2019/7/31/922
->>>>> RFC: https://lkml.org/lkml/2019/7/17/476
->>>>>
->>>>> The new Raspberry Pi 4 has up to 4GB of memory but most peripherals can
->>>>> only address the first GB: their DMA address range is
->>>>> 0xc0000000-0xfc000000 which is aliased to the first GB of physical
->>>>> memory 0x00000000-0x3c000000. Note that only some peripherals have these
->>>>> limitations: the PCIe, V3D, GENET, and 40-bit DMA channels have a wider
->>>>> view of the address space by virtue of being hooked up trough a second
->>>>> interconnect.
->>>>>
->>>>> Part of this is solved on arm32 by setting up the machine specific
->>>>> '.dma_zone_size = SZ_1G', which takes care of reserving the coherent
->>>>> memory area at the right spot. That said no buffer bouncing (needed for
->>>>> dma streaming) is available at the moment, but that's a story for
->>>>> another series.
->>>>>
->>>>> Unfortunately there is no such thing as 'dma_zone_size' in arm64. Only
->>>>> ZONE_DMA32 is created which is interpreted by dma-direct and the arm64
->>>>> arch code as if all peripherals where be able to address the first 4GB
->>>>> of memory.
->>>>>
->>>>> In the light of this, the series implements the following changes:
->>>>>
->>>>> - Create both DMA zones in arm64, ZONE_DMA will contain the first 1G
->>>>>   area and ZONE_DMA32 the rest of the 32 bit addressable memory. So far
->>>>>   the RPi4 is the only arm64 device with such DMA addressing limitations
->>>>>   so this hardcoded solution was deemed preferable.
->>>>>
->>>>> - Properly set ARCH_ZONE_DMA_BITS.
->>>>>
->>>>> - Reserve the CMA area in a place suitable for all peripherals.
->>>>>
->>>>> This series has been tested on multiple devices both by checking the
->>>>> zones setup matches the expectations and by double-checking physical
->>>>> addresses on pages allocated on the three relevant areas GFP_DMA,
->>>>> GFP_DMA32, GFP_KERNEL:
->>>>>
->>>>> - On an RPi4 with variations on the ram memory size. But also forcing
->>>>>   the situation where all three memory zones are nonempty by setting a 3G
->>>>>   ZONE_DMA32 ceiling on a 4G setup. Both with and without NUMA support.
->>>>>
->>>> i like to test this series on Raspberry Pi 4 and i have some questions
->>>> to get arm64 running:
->>>>
->>>> Do you use U-Boot? Which tree?
->>> If you want to use U-Boot, try v2019.10-rc4, it should have everything you need
->>> to boot your kernel.
+>>> Ok, here is a thing. In the linux kernel we now use bcm2711 as SoC name, but the
+>>> RPi4 devicetree provided by the FW uses mostly bcm2838.
+>> Do you mean the DTB provided at runtime?
+>>
+>> You mean the merged U-Boot changes, doesn't work with my Raspberry Pi
+>> series?
+>>
+>>>  U-Boot in its default
+>>> config uses the devicetree provided by the FW, mostly because this way you don't
+>>> have to do anything to find out how many RAM you really have. Secondly because
+>>> this will allow us, in the near future, to have one U-boot binary for both RPi3
+>>> and RPi4 (and as a side effect one binary for RPi1 and RPi2).
 >>>
->> Ok, here is a thing. In the linux kernel we now use bcm2711 as SoC name, but the
->> RPi4 devicetree provided by the FW uses mostly bcm2838.
-> 
-> Do you mean the DTB provided at runtime?
-> 
-> You mean the merged U-Boot changes, doesn't work with my Raspberry Pi
-> series?
-> 
->>  U-Boot in its default
->> config uses the devicetree provided by the FW, mostly because this way you don't
->> have to do anything to find out how many RAM you really have. Secondly because
->> this will allow us, in the near future, to have one U-boot binary for both RPi3
->> and RPi4 (and as a side effect one binary for RPi1 and RPi2).
->>
->> Anyway, I found at least, that the following compatibles need to be added:
->>
->> "brcm,bcm2838-cprman"
->> "brcm,bcm2838-gpio"
->>
->> Without at least the cprman driver update, you won't see anything.
->>
->> "brcm,bcm2838-rng200" is also a candidate.
->>
->> I also suppose we will need to add "brcm,bcm2838" to
->> arch/arm/mach-bcm/bcm2711.c, but I haven't verified this.
-> How about changing this in the downstream kernel? Which is much easier.
+>>> Anyway, I found at least, that the following compatibles need to be added:
+>>>
+>>> "brcm,bcm2838-cprman"
+>>> "brcm,bcm2838-gpio"
+>>>
+>>> Without at least the cprman driver update, you won't see anything.
+>>>
+>>> "brcm,bcm2838-rng200" is also a candidate.
+>>>
+>>> I also suppose we will need to add "brcm,bcm2838" to
+>>> arch/arm/mach-bcm/bcm2711.c, but I haven't verified this.
+>> How about changing this in the downstream kernel? Which is much easier.
+> I'm not sure I understand what you want to say. My goal is to use the upstream
+> kernel with the device tree blob provided by the FW.
 
-I'm not sure I understand what you want to say. My goal is to use the upstream
-kernel with the device tree blob provided by the FW. If you talk about the
-downstream kernel, I suppose you mean we should change this in the FW DT blob
-and in the downstream kernel. That would work for me.
+The device tree blob you are talking is defined in this repository:
 
-Did I understand you correctly?
+https://github.com/raspberrypi/linux
 
->>
->> Regards,
->> Matthias
->>
+So the word FW is misleading to me.
+
+>  If you talk about the
+> downstream kernel, I suppose you mean we should change this in the FW DT blob
+> and in the downstream kernel. That would work for me.
+>
+> Did I understand you correctly?
+
+Yes
+
+So i suggest to add the upstream compatibles into the repo mentioned above.
+
+Sorry, but in case you decided as a U-Boot developer to be compatible
+with a unreviewed DT, we also need to make U-Boot compatible with
+upstream and downstream DT blobs.
+
+>
 >>> Regards,
 >>> Matthias
 >>>
->>>> Are there any config.txt tweaks necessary?
+>>>> Regards,
+>>>> Matthias
 >>>>
+>>>>> Are there any config.txt tweaks necessary?
+>>>>>
+>>>>>
+>>>> _______________________________________________
+>>>> linux-arm-kernel mailing list
+>>>> linux-arm-kernel@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 >>>>
 >>> _______________________________________________
 >>> linux-arm-kernel mailing list
 >>> linux-arm-kernel@lists.infradead.org
 >>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
->>>
->> _______________________________________________
->> linux-arm-kernel mailing list
->> linux-arm-kernel@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> 
-> 
+>>
 
 _______________________________________________
 linux-riscv mailing list
