@@ -2,92 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07F9EB2B7C
-	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 15:58:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92E32B2B84
+	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 16:01:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8T5D7jY/qgu0VEIjF302IVqAQwwzzGueODS5Y+bV11c=; b=hfBYhNjnQWWTxv
-	vHb2oiNiWObi677/tUffnVPDqVlauYC6fOM2cufQcmFK6hXMtzKvmhkeATOXekkoSotftKIA6KUeU
-	rEPPqOaosDIog67pQeg3xEhg0cm3VTX824Dh0+hbHHZNGTcPebFF9cQ8ZYjHgoMkHWB+SDvJnJZbh
-	LAt5m/dv4KgvB13TkF41g1N71VwKSyr0naGqq4iBzx73OZecC4U7UdtMBoYbDXiU8IKNaLYtgNTZi
-	F+0P42bLWP7flAAktErzr3M5kWTYv8jkI1qdvvwB/hDQra73OANYekdhGmcvU7+vEuQJ8N8RelwrT
-	afSE0QpRYKXwNEZhhuuA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=N+qpecLLaXUgtWV2VWZg3jt1i8OQFgz8SABAxyVHLcU=; b=XF0ExkMLtnD3xKjOrdHjHVYdB
+	fCZdn+y/6XDZmlbofin3GMIYVBoumQ3G+zi1mwD7SP+5yo9qCguxJ1uT2rcapwEBtqpOII0ovnZd9
+	LcIklKeTyTjomem4jSo/ZudlrHYpTLYEHzRksRUA3dFJuzOXHpIl/n/QwvJ3dOA2x9bJUxBeNnp0A
+	rp8JImHeDw0ByWsuTPdp7iIMMVQ3RJ/47Rnhjzg4+FNA+plgCSdG8khkMPswOGTRn6ofFe0d4Ym23
+	o9vmuu16tzJF4odKFglxYrCCg8jYYayB/Bp4wA35o2MqEC7+ITHwuWdDUuu1H9ozEXcNLWKrSO75E
+	YebQViGzQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i98ZE-0001hX-RH; Sat, 14 Sep 2019 13:58:25 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1i98cK-00036A-DH; Sat, 14 Sep 2019 14:01:36 +0000
+Received: from mail-pl1-f194.google.com ([209.85.214.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i98Z8-0001h9-MJ
- for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 13:58:20 +0000
-Received: by mail-wm1-x341.google.com with SMTP id o184so5537446wme.3
- for <linux-riscv@lists.infradead.org>; Sat, 14 Sep 2019 06:58:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=xeo1NeXkitHOCMx0+mNiWwWG6fFr/hiP/k5Dg78CY+w=;
- b=ZnhjKMzfJ2eq1eLUMTf3kqITmmadfrXWIUNMx4R15sbG8vdFwhVr+7O110Z/9OuBgj
- G3a7VLVsvmAOAnrPyKEiEP8LVDajZ9F88VQjI51uEmOex0dc6YtD4pzP6wko0pKSSkr8
- q6oqyveZL5bJSDQxSWZzEknTCVVWnQH60baLUIyL0QTX0UA5jvhY+4EiRYEnfMs8rjRs
- XlezleSsdbLjfRGf4NXM/5pg79LOOjKtPxEwt/zdOr0hNodPy34XA0HmVTqBcBGL5RMP
- dLJGF0s/c0p5GgzYsUJYV1TrU4ddrSfaHclBqfo7tMY4H0QGBxa6LYkHcODAHGOWfwyK
- FLjQ==
+ id 1i98cF-00035K-Q8
+ for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 14:01:33 +0000
+Received: by mail-pl1-f194.google.com with SMTP id e5so3489405pls.9
+ for <linux-riscv@lists.infradead.org>; Sat, 14 Sep 2019 07:01:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=xeo1NeXkitHOCMx0+mNiWwWG6fFr/hiP/k5Dg78CY+w=;
- b=WNBPmYjwB1zrokzxMitBDFd5hTymP4CViwsrPEXYV92aDuTiIkp8n58zVPYOPLA4PL
- EF8mgPsro2w8MNKlysxzAX068xKVtSY97I33j5IlxTn/jGquyDgZ0VIIBpVakdCiDJzF
- 7/2DpIbwhz2Cjnw8eyIhgEP4DsAnkzm5eq4PQoDmX+kbcPC077LT9F1kAKzXBMlafZiG
- Mbtl4Sivay2+bNE+9j+sflIX1qC3hBrcTKZnI+KM1W0XiIQ+l7jQhEaR0FSzXRXIVtmS
- VwX5P+5/yc+EzqHrv22w2yZYCGvhv0UOXYSOLloX9bE5c0z6WoNdcAG0X6/Rf6afOlA4
- 2+7Q==
-X-Gm-Message-State: APjAAAXPG/dSd3BAgweTfU3zTH7XQhcfGv1yc5u8RTKHVdSpkxuRCPFh
- CJ6M6MO60J8+SLmVswUrWnPf8w==
-X-Google-Smtp-Source: APXvYqynT6tmk0Bp/RtMhx53/YTcUp8rnpQPanFoCs6PDLI+3NKWwpJ+Eey/g5k8pR2ud2lzrT88gQ==
-X-Received: by 2002:a05:600c:285:: with SMTP id
- 5mr7930021wmk.161.1568469495784; 
- Sat, 14 Sep 2019 06:58:15 -0700 (PDT)
-Received: from localhost (193-126-247-196.net.novis.pt. [193.126.247.196])
- by smtp.gmail.com with ESMTPSA id g15sm4626153wmk.17.2019.09.14.06.58.14
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=SXwC5T6wCRhaSBRQu04uBARGF1aDUDc2HyVfMMcCfp8=;
+ b=i4KPYR0krzkbJdb5mCcQgKgPSlonUAtqX06rwwLNcfJcMQGhab96bRmdve6gVlr5MW
+ qnM0NoInTtBwd6CO8Ldgy7OTzw3vJQPVFIJrpqixYxZDq6TUZ1tvPaammhEySqqlx/2G
+ whw4884A+Yx7vV9myxl7hC2JKPWPJ1R9uMNoNk7EyH8bBL10Pl6jF+0x4frT9C7SoNuo
+ ry5BKget5+U9V/EaP0+RFbvZBZsj5+nKkrhvYUs27usl2ZzhikaIGkuEOR8B7/8hbleX
+ 8G4PPXoKktn66ljW8twA1Z4drwViCL1LGqoIOM0kE+udijoL/rS8XvZozj1+O9o2NhCW
+ JN7Q==
+X-Gm-Message-State: APjAAAXXSdkTgcQyac4/SAEnfJ8g52FLEitpbYNrpKxDzqlldFpSb9nj
+ e7O6KALNmEA5TpdprO5meBlG/w==
+X-Google-Smtp-Source: APXvYqwLzMQI8pZxkVqd8/Fy8A16315KeB9n6NzIBBSxCASBhPGKSRyvm9h7GHG8COZItU0wdTcuOQ==
+X-Received: by 2002:a17:902:d685:: with SMTP id
+ v5mr16361073ply.15.1568469690307; 
+ Sat, 14 Sep 2019 07:01:30 -0700 (PDT)
+Received: from localhost (amx-tls3.starhub.net.sg. [203.116.164.13])
+ by smtp.gmail.com with ESMTPSA id u17sm6671227pgf.8.2019.09.14.07.01.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Sep 2019 06:58:15 -0700 (PDT)
-Date: Sat, 14 Sep 2019 06:58:13 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Atish Patra <Atish.Patra@wdc.com>
-Subject: Re: [PATCH] riscv: modify the Image header to improve compatibility
- with the ARM64 header
-In-Reply-To: <2e697e9c7966cf1a6cac415b6a247a8ba9f4de29.camel@wdc.com>
-Message-ID: <alpine.DEB.2.21.9999.1909140653070.10284@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1909132005200.24255@viisi.sifive.com>
- <2e697e9c7966cf1a6cac415b6a247a8ba9f4de29.camel@wdc.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
-MIME-Version: 1.0
+ Sat, 14 Sep 2019 07:01:29 -0700 (PDT)
+Date: Sat, 14 Sep 2019 07:01:29 -0700 (PDT)
+X-Google-Original-Date: Sat, 14 Sep 2019 07:00:16 PDT (-0700)
+Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
+ separate file
+In-Reply-To: <20190912140256.fwbutgmadpjbjnab@willie-the-truck>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: will@kernel.org
+Message-ID: <mhng-166dcd4f-9483-4aab-a83a-914d70ddb5a4@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190914_065818_741628_388743CC 
-X-CRM114-Status: GOOD (  11.08  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190914_070131_881761_F182979C 
+X-CRM114-Status: GOOD (  13.80  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
- [list.dnswl.org]
+ no trust [209.85.214.194 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.214.194 listed in wl.mailspike.net]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,37 +83,50 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "merker@debian.org" <merker@debian.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: julien.thierry@arm.com, catalin.marinas@arm.com,
+ Will Deacon <will.deacon@arm.com>, christoffer.dall@arm.com,
+ Atish Patra <Atish.Patra@wdc.com>, julien.grall@arm.com, guoren@kernel.org,
+ gary@garyguo.net, linux-riscv@lists.infradead.org,
+ kvmarm@lists.cs.columbia.edu, rppt@linux.ibm.com,
+ Christoph Hellwig <hch@infradead.org>, aou@eecs.berkeley.edu,
+ Arnd Bergmann <arnd@arndb.de>, suzuki.poulose@arm.com, marc.zyngier@arm.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-arm-kernel@lists.infradead.org,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ iommu@lists.linux-foundation.org, james.morse@arm.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, 14 Sep 2019, Atish Patra wrote:
+On Thu, 12 Sep 2019 07:02:56 PDT (-0700), will@kernel.org wrote:
+> On Sun, Sep 08, 2019 at 07:52:55AM +0800, Guo Ren wrote:
+>> On Mon, Jun 24, 2019 at 6:40 PM Will Deacon <will@kernel.org> wrote:
+>> > > I'll keep my system use the same ASID for SMP + IOMMU :P
+>> >
+>> > You will want a separate allocator for that:
+>> >
+>> > https://lkml.kernel.org/r/20190610184714.6786-2-jean-philippe.brucker@arm.com
+>>
+>> Yes, it is hard to maintain ASID between IOMMU and CPUMMU or different
+>> system, because it's difficult to synchronize the IO_ASID when the CPU
+>> ASID is rollover.
+>> But we could still use hardware broadcast TLB invalidation instruction
+>> to uniformly manage the ASID and IO_ASID, or OTHER_ASID in our IOMMU.
+>
+> That's probably a bad idea, because you'll likely stall execution on the
+> CPU until the IOTLB has completed invalidation. In the case of ATS, I think
+> an endpoint ATC is permitted to take over a minute to respond. In reality, I
+> suspect the worst you'll ever see would be in the msec range, but that's
+> still an unacceptable period of time to hold a CPU.
+>
+>> Welcome to join our disscusion:
+>> "Introduce an implementation of IOMMU in linux-riscv"
+>> 9 Sep 2019, 10:45 Jade-room-I&II (Corinthia Hotel Lisbon) RISC-V MC
+>
+> I attended this session, but it unfortunately raised many more questions
+> than it answered.
 
-> Thanks for the quick fix. Is there a planned timeline when we can
-> remove the deprecated magic ?
-
-If Linus merges this patch, we should probably start the transition in the 
-bootloaders, QEMU, and user tools as quickly as possible.  Probably the 
-key element in the timeline is when we remove support for the old 64-bit 
-magic number location in the kernel.  I'm told that U-Boot and QEMU have 
-already issued releases with support for the v0.1 image header format, so 
-dropping the old magic number from the kernel is probably at least a few 
-years away.  (This is to increase the likelihood that anyone using the old 
-software has had the chance to update them.)
-
-> I was planning to send a U-boot header documentation patch to match
-> Linux one anyways. Do you want me that to rebase based on this patch or
-> are you planning to send a U-boot patch as well ?
-
-Once v5.3 comes out, please go ahead.
-
-
-- Paul
+Ya, we're a long way from figuring this out.
 
 _______________________________________________
 linux-riscv mailing list
