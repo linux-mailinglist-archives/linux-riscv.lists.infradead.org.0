@@ -2,88 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44BA9B2A8B
-	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 10:50:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B261B2B27
+	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 14:19:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xArYVoN7Y2LGBO66o78uWA1BAgbL5KsHAEb5o48AXRs=; b=e0jaDCZ24OOtuW
-	5pBDj2MBE/WbRmNo67JjVvs/8b1vfQ+bJ/kawAjZ7WfiWgHh2kxR4gev4Va/wETJAYZPa0o5pesAI
-	UCcbLjrSJ1ucfYvvA6OI/Ax8m4yowofkDCz+kQTymx974IcbgFowB0vLL/xSKhF2vU0dJpPpKLvJK
-	hqy1ULvoxPPozAD6s4IpJZi5ohpuEgWyt/53K/aV+HWXYWVQOj7/MMqWQRVG7nLiZu3tm5V9Q/4NS
-	XsiOIBov1ELO2FH5scmQL2EcOgfpFVGTiEwfPENzXU841IRhEguAN5vS1SmaFe7HKWLZbvkzlq6Zf
-	VKtEBwS5XQwMqhTXDbUw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=bDV3kQw0d/hbiQelm+NENREaUvrxxcFAevdFfsBUZag=; b=SezWVHRUqtf0QGqdq+A5/DWBx
+	syPepUlpHWWgn0McLlnYlvc/OC4JZVZDKH2IvEhvJJrEhAQQBshu2b77k0vQJNcfREyFy/RWx2CMb
+	NQOLkAgo01pZAwsOrZ1mRfrVdRA8XLqinfpF7krjFa6ReOzyE0RKwBB1Yg60/23rOznCV2BdH956n
+	pRgiLQSwyf1nubN9RV660SAFITh8oOl0YOQJ75Bv0YCmcmw6vPE31wrVOytqz91np4iFQ91BWjtch
+	i84gkCqguFs+tBK1AGV+j0Zb+V6lzu5lcFrSA0kKvwpYfFLSxIHthhDZVIicVTWJdUga1tLfH7L8W
+	FpL3EVrLg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i93la-0005bv-1j; Sat, 14 Sep 2019 08:50:50 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1i970l-0006oA-DW; Sat, 14 Sep 2019 12:18:43 +0000
+Received: from mail-pf1-f194.google.com ([209.85.210.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i93kj-00046D-6Q; Sat, 14 Sep 2019 08:49:59 +0000
-Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com
- [209.85.221.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D5038214C6;
- Sat, 14 Sep 2019 08:49:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1568450995;
- bh=J9o3/Ce1+YLaWOJS+1y9FmaoiXDLsFcat/B4OJD07xQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=NvC0HAkbO+X0R/hUr5ElgQAkn9X+DlHgQCaI+WUT3QaLpkyww7ouKYCiu+gLQdPnN
- Zt2iNLvAcaA/7M7mBWG5GC72IVnUlLTjmJnBCwL8Gs+y4/DomRNvqSFSk4OlGnDjoe
- Dtl/nAegdQl/qfiWPrj/maTEs4oYOJwLv1kg+bio=
-Received: by mail-wr1-f44.google.com with SMTP id l11so34157089wrx.5;
- Sat, 14 Sep 2019 01:49:54 -0700 (PDT)
-X-Gm-Message-State: APjAAAVfwvFVA4JG5ForHCOl1WGefD1rAJMdkk8mNtDJmulh4NQLmbEG
- QYCYyZ6kninxnd6FMX/mN7vK0Wg7Hz33RbyyCUw=
-X-Google-Smtp-Source: APXvYqxg6MtzWsHNFmLRbH0IHgwRMp+vQZNFO479wjLXexAnH2ZbcUXa06WI/GBB3zidLYAHo44uDXvnrwuUeLiSDAI=
-X-Received: by 2002:adf:fe0f:: with SMTP id n15mr5204507wrr.343.1568450992705; 
- Sat, 14 Sep 2019 01:49:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190321163623.20219-12-julien.grall@arm.com>
- <0dfe120b-066a-2ac8-13bc-3f5a29e2caa3@arm.com>
- <CAJF2gTTXHHgDboaexdHA284y6kNZVSjLis5-Q2rDnXCxr4RSmA@mail.gmail.com>
- <c871a5ae-914f-a8bb-9474-1dcfec5d45bf@arm.com>
- <20190619091219.GB7767@fuggles.cambridge.arm.com>
- <CAJF2gTTmFq3yYa9UrdZRAFwJgC=KmKTe2_NFy_UZBUQovqQJPg@mail.gmail.com>
- <20190619123939.GF7767@fuggles.cambridge.arm.com>
- <CAJF2gTSiiiewTLwVAXvPLO7rTSUw1rg8VtFLzANdP2S2EEbTjg@mail.gmail.com>
- <20190624104006.lvm32nahemaqklxc@willie-the-truck>
- <CAJF2gTSC1sGgmiTCgzKUTdPyUZ3LG4H7N8YbMyWr-E+eifGuYg@mail.gmail.com>
- <20190912140256.fwbutgmadpjbjnab@willie-the-truck>
- <CAJF2gTT2c45HRfATF+=zs-HNToFAKgq1inKRmJMV3uPYBo4iVg@mail.gmail.com>
- <CAJF2gTTsHCsSpf1ncVb=ZJS2d=r+AdDi2=5z-REVS=uUg9138A@mail.gmail.com>
-In-Reply-To: <CAJF2gTTsHCsSpf1ncVb=ZJS2d=r+AdDi2=5z-REVS=uUg9138A@mail.gmail.com>
-From: Guo Ren <guoren@kernel.org>
-Date: Sat, 14 Sep 2019 16:49:40 +0800
-X-Gmail-Original-Message-ID: <CAJF2gTTKFwRN6vG3+fQK8BRFskeURjv-Ziv_qb7nc9MSKw0bLA@mail.gmail.com>
-Message-ID: <CAJF2gTTKFwRN6vG3+fQK8BRFskeURjv-Ziv_qb7nc9MSKw0bLA@mail.gmail.com>
-Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
- separate file
-To: Will Deacon <will@kernel.org>
+ id 1i970f-0006nn-1v
+ for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 12:18:38 +0000
+Received: by mail-pf1-f194.google.com with SMTP id b128so830949pfa.1
+ for <linux-riscv@lists.infradead.org>; Sat, 14 Sep 2019 05:18:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=eG246burL7Epz04lN/Agoxuxu8FKEZNpqBGb+bGHtZM=;
+ b=fhdvR9pLRxVe02DSnWGb1MaCdgl/hetZS7bMsuVaMpIBMLHcLZqutFrT3byyh2/bOa
+ dZv1tHuSk1o75c9/PqkXmkOtMBRGuwzm6NwvK7KTuAtFiY+a2JK3mBAbYxpiqp17iukg
+ +5z7216Bcks3bKwuVKWOYEbIin9PDhk6TijVqKMZV+p8IoS6zbyQklX6UDtU5U+GTj8l
+ NCywNWyOBY5dYTF/RzPpWBPZvtVlVNRpDIhHORkpbEt6jifT9Y/SLiHNFPACI5jk3gZJ
+ 7w9don1BuarXTRmfUKzmbVei1nUsUQBTWul85c0xYXIo2CMFtMCwJG2McvzLUGM8Yldp
+ 72kA==
+X-Gm-Message-State: APjAAAXVyldatWnarxwuIB9EUvk7XJtL1jQnuBX5qZYXDPUNv7gxHVWH
+ U5B14wNGMtDc1/X/GnpcqkPPkgynTn0LUgXg
+X-Google-Smtp-Source: APXvYqzVgQrhKkG6g0lvhiBLe+qqPUOeknf2nbS5nMorxrOX2tNnSXyV1t7CeZmF/cqojo4WNJoebg==
+X-Received: by 2002:a63:355:: with SMTP id 82mr16568722pgd.81.1568463512195;
+ Sat, 14 Sep 2019 05:18:32 -0700 (PDT)
+Received: from localhost (amx-tls3.starhub.net.sg. [203.116.164.13])
+ by smtp.gmail.com with ESMTPSA id m12sm2344408pff.66.2019.09.14.05.18.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 Sep 2019 05:18:30 -0700 (PDT)
+Date: Sat, 14 Sep 2019 05:18:30 -0700 (PDT)
+X-Google-Original-Date: Sat, 14 Sep 2019 05:18:21 PDT (-0700)
+Subject: Re: [PATCH] riscv: modify the Image header to improve compatibility
+ with the ARM64 header
+In-Reply-To: <alpine.DEB.2.21.9999.1909132005200.24255@viisi.sifive.com>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Message-ID: <mhng-755b14c4-8f35-4079-a7ff-e421fd1b02bc@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190914_014957_369580_FBDB2446 
-X-CRM114-Status: GOOD (  17.56  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190914_051837_101051_A236DF8C 
+X-CRM114-Status: GOOD (  26.11  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.194 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.194 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,74 +82,145 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: julien.thierry@arm.com, Catalin Marinas <catalin.marinas@arm.com>,
- Palmer Dabbelt <palmer@sifive.com>, Will Deacon <will.deacon@arm.com>,
- christoffer.dall@arm.com, Atish Patra <Atish.Patra@wdc.com>,
- Julien Grall <julien.grall@arm.com>, gary@garyguo.net,
- linux-riscv@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
- Mike Rapoport <rppt@linux.ibm.com>, Christoph Hellwig <hch@infradead.org>,
- aou@eecs.berkeley.edu, Arnd Bergmann <arnd@arndb.de>, suzuki.poulose@arm.com,
- Marc Zyngier <marc.zyngier@arm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-arm-kernel@lists.infradead.org, Anup Patel <anup.Patel@wdc.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- iommu@lists.linux-foundation.org, james.morse@arm.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: merker@debian.org, Atish Patra <Atish.Patra@wdc.com>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-SGVyZSBpcyB0aGUgcHJlc2VudGF0aW9uLCBhbnkgY29tbWVudHMgaXMgd2VsY29tZS4KCmh0dHBz
-Oi8vZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFzYzI5NUp6blZBZkRJUGllQXF6amN5
-VWtjSG5ORlFzSzhGRnFkb0NZODU0L2VkaXQ/dXNwPXNoYXJpbmcKCk9uIEZyaSwgU2VwIDEzLCAy
-MDE5IGF0IDM6MTMgUE0gR3VvIFJlbiA8Z3VvcmVuQGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gQW5v
-dGhlciBpZGVhIGlzIHNlcGVyYXRlIHJlbW90ZSBUTEIgaW52YWxpZGF0ZSBpbnRvIHR3byBpbnN0
-cnVjdGlvbnM6Cj4KPiAgLSBzZmVuY2Uudm1hLmIuYXN5Ywo+ICAtIHNmZW5jZS52bWEuYi5iYXJy
-aWVyIC8vIHdhaXQgYWxsIGFzeW5jIFRMQiBpbnZhbGlkYXRlIG9wZXJhdGlvbnMgZmluaXNoZWQg
-Zm9yIGFsbCBoYXJ0cy4KPgo+IChJIHJlbWVtYmVyIHdobyBtZW50aW9uZWQgbWUgc2VwYXJhdGUg
-dGhlbSBpbnRvIHR3byBpbnN0cnVjdGlvbnMgYWZ0ZXIgc2Vzc2lvbi4gQW51cD8gSXMgdGhlIGlk
-ZWEgcmlnaHQgPykKPgo+IEFjdHVhbGx5LCBJIG5ldmVyIGNvbnNpZGVyIGFzeWMgVExCIGludmFs
-aWRhdGUgYmVmb3JlLCBiZWNhdXNlIGN1cnJlbnQgb3VyIGxpZ2h0IGlvbW11IGRpZCBub3QgbmVl
-ZCBpdC4KPgo+IFRoeCBhbGwgcGVvcGxlIGF0dGVuZCB0aGUgc2Vzc2lvbiA6KSBMZXQncyBjb250
-aW51ZSB0aGUgdGFsay4KPgo+Cj4gR3VvIFJlbiA8Z3VvcmVuQGtlcm5lbC5vcmc+IOS6jiAyMDE5
-5bm0OeaciDEy5pel5ZGo5ZubIDIyOjU55YaZ6YGT77yaCj4+Cj4+IFRoeCBXaWxsIGZvciByZXBs
-eS4KPj4KPj4gT24gVGh1LCBTZXAgMTIsIDIwMTkgYXQgMzowMyBQTSBXaWxsIERlYWNvbiA8d2ls
-bEBrZXJuZWwub3JnPiB3cm90ZToKPj4gPgo+PiA+IE9uIFN1biwgU2VwIDA4LCAyMDE5IGF0IDA3
-OjUyOjU1QU0gKzA4MDAsIEd1byBSZW4gd3JvdGU6Cj4+ID4gPiBPbiBNb24sIEp1biAyNCwgMjAx
-OSBhdCA2OjQwIFBNIFdpbGwgRGVhY29uIDx3aWxsQGtlcm5lbC5vcmc+IHdyb3RlOgo+PiA+ID4g
-PiA+IEknbGwga2VlcCBteSBzeXN0ZW0gdXNlIHRoZSBzYW1lIEFTSUQgZm9yIFNNUCArIElPTU1V
-IDpQCj4+ID4gPiA+Cj4+ID4gPiA+IFlvdSB3aWxsIHdhbnQgYSBzZXBhcmF0ZSBhbGxvY2F0b3Ig
-Zm9yIHRoYXQ6Cj4+ID4gPiA+Cj4+ID4gPiA+IGh0dHBzOi8vbGttbC5rZXJuZWwub3JnL3IvMjAx
-OTA2MTAxODQ3MTQuNjc4Ni0yLWplYW4tcGhpbGlwcGUuYnJ1Y2tlckBhcm0uY29tCj4+ID4gPgo+
-PiA+ID4gWWVzLCBpdCBpcyBoYXJkIHRvIG1haW50YWluIEFTSUQgYmV0d2VlbiBJT01NVSBhbmQg
-Q1BVTU1VIG9yIGRpZmZlcmVudAo+PiA+ID4gc3lzdGVtLCBiZWNhdXNlIGl0J3MgZGlmZmljdWx0
-IHRvIHN5bmNocm9uaXplIHRoZSBJT19BU0lEIHdoZW4gdGhlIENQVQo+PiA+ID4gQVNJRCBpcyBy
-b2xsb3Zlci4KPj4gPiA+IEJ1dCB3ZSBjb3VsZCBzdGlsbCB1c2UgaGFyZHdhcmUgYnJvYWRjYXN0
-IFRMQiBpbnZhbGlkYXRpb24gaW5zdHJ1Y3Rpb24KPj4gPiA+IHRvIHVuaWZvcm1seSBtYW5hZ2Ug
-dGhlIEFTSUQgYW5kIElPX0FTSUQsIG9yIE9USEVSX0FTSUQgaW4gb3VyIElPTU1VLgo+PiA+Cj4+
-ID4gVGhhdCdzIHByb2JhYmx5IGEgYmFkIGlkZWEsIGJlY2F1c2UgeW91J2xsIGxpa2VseSBzdGFs
-bCBleGVjdXRpb24gb24gdGhlCj4+ID4gQ1BVIHVudGlsIHRoZSBJT1RMQiBoYXMgY29tcGxldGVk
-IGludmFsaWRhdGlvbi4gSW4gdGhlIGNhc2Ugb2YgQVRTLCBJIHRoaW5rCj4+ID4gYW4gZW5kcG9p
-bnQgQVRDIGlzIHBlcm1pdHRlZCB0byB0YWtlIG92ZXIgYSBtaW51dGUgdG8gcmVzcG9uZC4gSW4g
-cmVhbGl0eSwgSQo+PiA+IHN1c3BlY3QgdGhlIHdvcnN0IHlvdSdsbCBldmVyIHNlZSB3b3VsZCBi
-ZSBpbiB0aGUgbXNlYyByYW5nZSwgYnV0IHRoYXQncwo+PiA+IHN0aWxsIGFuIHVuYWNjZXB0YWJs
-ZSBwZXJpb2Qgb2YgdGltZSB0byBob2xkIGEgQ1BVLgo+PiBKdXN0IGFzIEkndmUgc2FpZCBpbiB0
-aGUgc2Vzc2lvbiB0aGF0IElPVExCIGludmFsaWRhdGUgZGVsYXkgaXMKPj4gYW5vdGhlciB0b3Bp
-YywgTXkgbWFpbiBwcm9wb3NhbCBpcyB0byBpbnRyb2R1Y2Ugc3RhZ2UxLnBnZCBhbmQKPj4gc3Rh
-Z2UyLnBnZCBhcyBhZGRyZXNzIHNwYWNlIGlkZW50aWZpZXJzIGJldHdlZW4gZGlmZmVyZW50IFRM
-QiBzeXN0ZW1zCj4+IGJhc2VkIG9uIHZtaWQsIGFzaWQuIE15IGxhc3QgcGFydCBvZiBzaWxkZXMg
-d2lsbCBzaG93IHlvdSBob3cgdG8KPj4gdHJhbnNsYXRlIHN0YWdlMS8yLnBnZCB0byBhcy92bWlk
-IGluIFBDSSBBVFMgc3lzdGVtIGFuZCB0aGUgbWV0aG9kCj4+IGNvdWxkIHdvcmsgd2l0aCBTTU1V
-LXYzIGFuZCBpbnRlbCBWdC1kLiAoSXQncyByZWdyZXQgZm9yIG1lIHRoZXJlIGlzCj4+IG5vIHRp
-bWUgdG8gc2hvdyB5b3UgdGhlIHdob2xlIHNsaWRlcy4pCj4+Cj4+IEluIG91ciBsaWdodCBJT01N
-VSBpbXBsZW1lbnRhdGlvbiwgdGhlcmUncyBubyBJT1RMQiBpbnZhbGlkYXRlIGRlbGF5Cj4+IHBy
-b2JsZW0uIEJlY2FzdWUgSU9NTVUgaXMgdmVyeSBjbG9zZSB0byBDUFUgTU1VIGFuZCBpbnRlcmNv
-bm5lY3Qncwo+PiBkZWxheSBpcyB0aGUgc2FtZSB3aXRoIFNNUCBDUFVzIE1NVSAobm8gUENJLCBW
-TSBzdXBwb3J0ZWQpLgo+Pgo+PiBUbyBzb2x2ZSB0aGUgcHJvYmxlbSwgd2UgY291bGQgZGVmaW5l
-IGEgYXN5bmMgbW9kZSBpbiBzZmVuY2Uudm1hLmIgdG8KPj4gc2xvdmUgdGhlIHByb2JsZW0gYW5k
-IGZpbmlzaGVkIHdpdGggcGVyX2NwdV9pcnEvZXhjZXB0aW9uLgo+Pgo+PiAtLQo+PiBCZXN0IFJl
-Z2FyZHMKPj4gIEd1byBSZW4KPj4KPj4gTUw6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4
-LWNza3kvCgoKCi0tIApCZXN0IFJlZ2FyZHMKIEd1byBSZW4KCk1MOiBodHRwczovL2xvcmUua2Vy
-bmVsLm9yZy9saW51eC1jc2t5LwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KbGludXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yaXNjdgo=
+On Fri, 13 Sep 2019 20:08:14 PDT (-0700), Paul Walmsley wrote:
+>
+> Part of the intention during the definition of the RISC-V kernel image
+> header was to lay the groundwork for a future merge with the ARM64
+> image header.  One error during my original review was not noticing
+> that the RISC-V header's "magic" field was at a different size and
+> position than the ARM64's "magic" field.  If the existing ARM64 Image
+> header parsing code were to attempt to parse an existing RISC-V kernel
+> image header format, it would see a magic number 0.  This is
+> undesirable, since it's our intention to align as closely as possible
+> with the ARM64 header format.  Another problem was that the original
+> "res3" field was not being initialized correctly to zero.
+>
+> Address these issues by creating a 32-bit "magic2" field in the RISC-V
+> header which matches the ARM64 "magic" field.  RISC-V binaries will
+> store "RSC\x05" in this field.  The intention is that the use of the
+> existing 64-bit "magic" field in the RISC-V header will be deprecated
+> over time.  Increment the minor version number of the file format to
+> indicate this change, and update the documentation accordingly.  Fix
+> the assembler directives in head.S to ensure that reserved fields are
+> properly zero-initialized.
+>
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Reported-by: Palmer Dabbelt <palmer@sifive.com>
+> Cc: Atish Patra <atish.patra@wdc.com>
+> Cc: Karsten Merker <merker@debian.org>
+> ---
+> Will try to get this merged before v5.3, to minimize the delta with the
+> ARM64 header in the final release.
+>
+>  Documentation/riscv/boot-image-header.txt | 13 +++++++------
+>  arch/riscv/include/asm/image.h            | 12 ++++++------
+>  arch/riscv/kernel/head.S                  |  4 ++--
+>  3 files changed, 15 insertions(+), 14 deletions(-)
+>
+> diff --git a/Documentation/riscv/boot-image-header.txt b/Documentation/riscv/boot-image-header.txt
+> index 1b73fea23b39..14b1492f689b 100644
+> --- a/Documentation/riscv/boot-image-header.txt
+> +++ b/Documentation/riscv/boot-image-header.txt
+> @@ -18,7 +18,7 @@ The following 64-byte header is present in decompressed Linux kernel image.
+>  	u32 res1  = 0;		  /* Reserved */
+>  	u64 res2  = 0;    	  /* Reserved */
+>  	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
+> -	u32 res3;		  /* Reserved for additional RISC-V specific header */
+> +	u32 magic2 = 0x56534905;  /* Magic number 2, little endian, "RSC\x05" */
+>  	u32 res4;		  /* Reserved for PE COFF offset */
+>
+>  This header format is compliant with PE/COFF header and largely inspired from
+> @@ -37,13 +37,14 @@ Notes:
+>  	Bits 16:31 - Major version
+>
+>    This preserves compatibility across newer and older version of the header.
+> -  The current version is defined as 0.1.
+> +  The current version is defined as 0.2.
+>
+> -- res3 is reserved for offset to any other additional fields. This makes the
+> -  header extendible in future. One example would be to accommodate ISA
+> -  extension for RISC-V in future. For current version, it is set to be zero.
+> +- The "magic" field is deprecated as of version 0.2.  In a future
+> +  release, it may be removed.  This originally should have matched up
+> +  with the ARM64 header "magic" field, but unfortunately does not.
+> +  The "magic2" field replaces it, matching up with the ARM64 header.
+>
+> -- In current header, the flag field has only one field.
+> +- In current header, the flags field has only one field.
+>  	Bit 0: Kernel endianness. 1 if BE, 0 if LE.
+>
+>  - Image size is mandatory for boot loader to load kernel image. Booting will
+> diff --git a/arch/riscv/include/asm/image.h b/arch/riscv/include/asm/image.h
+> index ef28e106f247..344db5244547 100644
+> --- a/arch/riscv/include/asm/image.h
+> +++ b/arch/riscv/include/asm/image.h
+> @@ -3,7 +3,8 @@
+>  #ifndef __ASM_IMAGE_H
+>  #define __ASM_IMAGE_H
+>
+> -#define RISCV_IMAGE_MAGIC	"RISCV"
+> +#define RISCV_IMAGE_MAGIC	"RISCV\0\0\0"
+> +#define RISCV_IMAGE_MAGIC2	"RSC\x05"
+>
+>  #define RISCV_IMAGE_FLAG_BE_SHIFT	0
+>  #define RISCV_IMAGE_FLAG_BE_MASK	0x1
+> @@ -23,7 +24,7 @@
+>  #define __HEAD_FLAGS		(__HEAD_FLAG(BE))
+>
+>  #define RISCV_HEADER_VERSION_MAJOR 0
+> -#define RISCV_HEADER_VERSION_MINOR 1
+> +#define RISCV_HEADER_VERSION_MINOR 2
+>
+>  #define RISCV_HEADER_VERSION (RISCV_HEADER_VERSION_MAJOR << 16 | \
+>  			      RISCV_HEADER_VERSION_MINOR)
+> @@ -39,9 +40,8 @@
+>   * @version:		version
+>   * @res1:		reserved
+>   * @res2:		reserved
+> - * @magic:		Magic number
+> - * @res3:		reserved (will be used for additional RISC-V specific
+> - *			header)
+> + * @magic:		Magic number (RISC-V specific; deprecated)
+> + * @magic2:		Magic number 2 (to match the ARM64 'magic' field pos)
+>   * @res4:		reserved (will be used for PE COFF offset)
+>   *
+>   * The intention is for this header format to be shared between multiple
+> @@ -58,7 +58,7 @@ struct riscv_image_header {
+>  	u32 res1;
+>  	u64 res2;
+>  	u64 magic;
+> -	u32 res3;
+> +	u32 magic2;
+>  	u32 res4;
+>  };
+>  #endif /* __ASSEMBLY__ */
+> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> index 0f1ba17e476f..52eec0c1bf30 100644
+> --- a/arch/riscv/kernel/head.S
+> +++ b/arch/riscv/kernel/head.S
+> @@ -39,9 +39,9 @@ ENTRY(_start)
+>  	.word RISCV_HEADER_VERSION
+>  	.word 0
+>  	.dword 0
+> -	.asciz RISCV_IMAGE_MAGIC
+> -	.word 0
+> +	.ascii RISCV_IMAGE_MAGIC
+>  	.balign 4
+> +	.ascii RISCV_IMAGE_MAGIC2
+>  	.word 0
+>
+>  .global _start_kernel
+
+Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
