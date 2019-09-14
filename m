@@ -2,75 +2,70 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 525D2B2CD5
-	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 21:51:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0181BB2D4E
+	for <lists+linux-riscv@lfdr.de>; Sun, 15 Sep 2019 01:25:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=BuY6NAOX5bKKyFwNJM5n5wfit4V1NYWY38BGUqWFvR8=; b=YfEYyScFzpPRvZlWabCBQDT79
-	V/6mNQByeWz6HhLpbZ9DDq3cV26gSq1OuT6m7rOrpqq8M8l7V3Lm8Z2RvQmnkaf/lSQxJJabExhXi
-	fKDAaNsAMSTQts7Y9He8ZzdnFxXWvsKljMEolr5N5+XUFqQIy18p+QpqgZWZnXC32fOBoR+5G60i5
-	khwUbR7knvytBQmT1/4YmnNFQZL+9WMB4m6fNng4EVueBUrs/HXADlA/JxEMSyiyrjb4bEXLdWYgx
-	YXMHpgUADcNVYtS46IDM/KV7+72ITR46uEZTKo6SmAuSrbzjsaDFcIiIo2HKd+zZAF8ia9C3P7ygj
-	q00YYfEBw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:
+	References:In-Reply-To:From:Subject:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ixvvnb9t5HiyEYlyJmO/njsyo+Ox9yyCqBwmHBuKq6Y=; b=NGV0Wv+SBZFj61
+	TieBL4cA9ocEreIlKf492pnKMtwAa9UsuNZSxbsVOo4SsAOaKk+DC7xhrC2P5WDMaO4/yH5C5o0fV
+	bVyuxE7aNI+bE2zi+wrfCZndXaHsnje9Vswlbh+l3dmxgmI3b2dSOkZIUjT8Aogzb3ozh10Jp6A7Y
+	u1SLcIusbDnIz/boMWeR/lAE46gziBOIdkm0sFOX2hNQCQ/Z87PqRQurCdoeuWamKyN4Ji0DXVV+/
+	QXehKBJQ6xOIHgnnIAn56dxwWWmVvnXRlBgB7Hu+LTwNjj34VpEip/qbSIcJZA/rVos+8/vMBupXz
+	Ivz0Dj0UojAEQPjKmWHw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i9E4u-0004Gj-MF; Sat, 14 Sep 2019 19:51:28 +0000
-Received: from mail-pl1-f195.google.com ([209.85.214.195])
+	id 1i9HPm-00066n-43; Sat, 14 Sep 2019 23:25:14 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i9E4q-0004GK-F0
- for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 19:51:26 +0000
-Received: by mail-pl1-f195.google.com with SMTP id k1so14750502pls.11
- for <linux-riscv@lists.infradead.org>; Sat, 14 Sep 2019 12:51:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=8/82Z+AFS9yEFav5otNjqZZTLkl6BS+MrGSlNauY50Q=;
- b=pIUoXcnrh4P6Mq08uFfKqcjkgly0b5QGH3NvSKRO6C4uupDlXf6kjl4A79nXOcGshz
- H/+eOPjepbgkSgu9JtHpQ5jkFVjr+Os/75Bj6O1//OgCGm7hSJrr4lgRWhyb7qaCFtJL
- 2VMNOZNgjoqyMZT8g6B30FeBJUTdnXuw2ZvYFvp6I/s9AFpQnKUuo5JdM54i2j7G5H3C
- MTR2uo4AJizmVJrncFo0CkJBlYJ2RsEH2JwWCjdfuSUEb7bS8UBAE+or1Oztojm/wgU8
- 5+BE25okBr9w7/VMWcDwUn9L8UjlmhlPVL3LwumJaR5QqKcCu4zIvVUqGkI7Tf8sMoFd
- BXsw==
-X-Gm-Message-State: APjAAAUoCJd3Q2uatTMAmSylEY7ZUloJNHxvGU1+ALMxwPAJTCpQ2nQ2
- dt3ikAlERR6Dp5L3e09dw7EL+g==
-X-Google-Smtp-Source: APXvYqzPfbGU/elPJNGLdG9lRafcl5cXs4aUV0O4ip7XPxqZ5vaxWQW3kJO4utMNMCW3NW6nzo170A==
-X-Received: by 2002:a17:902:4a:: with SMTP id
- 68mr50794588pla.196.1568490683065; 
- Sat, 14 Sep 2019 12:51:23 -0700 (PDT)
-Received: from localhost (amx-tls3.starhub.net.sg. [203.116.164.13])
- by smtp.gmail.com with ESMTPSA id x13sm34425177pfm.157.2019.09.14.12.51.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Sep 2019 12:51:22 -0700 (PDT)
-Date: Sat, 14 Sep 2019 12:51:22 -0700 (PDT)
-X-Google-Original-Date: Sat, 14 Sep 2019 12:50:08 PDT (-0700)
-Subject: Re: [PATCH] irqchip/sifive-plic: add irq_mask and irq_unmask
-In-Reply-To: <CAMabmMJ=QcH-529O6ORWbFwOrAnMKeWTvQ=WGYgnOoihqj9uFA@mail.gmail.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: charles.papon.90@gmail.com
-Message-ID: <mhng-a57ed8d7-08c6-4bd6-83c1-19925746ba6e@palmer-si-x1e>
-Mime-Version: 1.0 (MHng)
+ id 1i9HPg-0005q1-MV
+ for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 23:25:10 +0000
+Subject: Re: [GIT PULL] Urgent RISC-V fix for v5.3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1568503506;
+ bh=zN3AiQcN4OyiNPGhUtI2YBjvp2tsF6+c4sX8WDAP87o=;
+ h=From:In-Reply-To:References:Date:To:Cc:From;
+ b=FgMzG401RLitCgZXMvXvc1xiSlLn4yaOOxbIvc+qJa3Gtpm8me5fPcEB+zyBlvWVS
+ JkhZVCuipJELlCGbs8XzdMvUZO74w7a8t+8EE8QzFyRIW91oC5XlSL6z8bWnFchD5K
+ PTPPt3S/D6ACZwcKGWdbHfaonECCHDrYx5Ct1qiM=
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <alpine.DEB.2.21.9999.1909140651430.10284@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1909140651430.10284@viisi.sifive.com>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <alpine.DEB.2.21.9999.1909140651430.10284@viisi.sifive.com>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
+ tags/riscv/for-v5.3
+X-PR-Tracked-Commit-Id: 474efecb65dceb15f793b6e2f2b226e952f0f8e9
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: b03c036e6f96340dd311817c7b964dad183c4141
+Message-Id: <156850350617.2116.314351951829278963.pr-tracker-bot@kernel.org>
+Date: Sat, 14 Sep 2019 23:25:06 +0000
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190914_125124_507618_B4418A16 
-X-CRM114-Status: GOOD (  21.43  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190914_162508_760910_C6D54B9A 
+X-CRM114-Status: UNSURE (   0.86  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.214.195 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.214.195 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,92 +77,26 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: maz@kernel.org, jason@lakedaemon.net, Darius Rad <darius@bluespec.com>,
- linux-kernel@vger.kernel.org, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, tglx@linutronix.de
+Cc: linux-riscv@lists.infradead.org, palmer@sifive.com,
+ torvalds@linux-foundation.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, 14 Sep 2019 12:42:32 PDT (-0700), charles.papon.90@gmail.com wrote:
-> I had issues with that plic driver. The current implementation wasn't
-> usable with driver using level sensitive interrupt together with the
-> IRQF_ONESHOT flag.
->
-> Those null were producing crashes in the chained_irq_enter function.
-> Filling them with dummy function fixed the issue.
+The pull request you sent on Sat, 14 Sep 2019 06:52:48 -0700 (PDT):
 
-I'm not arguing it fixes a crash, the code Darius pointed to obviously doesn't 
-check for NULL before calling these functions and will therefor crash.  There 
-is a bunch of other code that does check, though, so I guess my question is 
-really: is the bug in the PLIC driver, or in this header?
+> git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.3
 
-If we're not allowed to have these as NULL and there's nothing to do, then this 
-is a reasonable patch.  I'm just not capable of answering that question, as I'm 
-not an irqchip maintainer :)
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/b03c036e6f96340dd311817c7b964dad183c4141
 
-> On Sat, Sep 14, 2019 at 9:00 PM Palmer Dabbelt <palmer@sifive.com> wrote:
->>
->> On Thu, 12 Sep 2019 14:40:34 PDT (-0700), Darius Rad wrote:
->> > As per the existing comment, irq_mask and irq_unmask do not need
->> > to do anything for the PLIC.  However, the functions must exist
->> > (the pointers cannot be NULL) as they are not optional, based on
->> > the documentation (Documentation/core-api/genericirq.rst) as well
->> > as existing usage (e.g., include/linux/irqchip/chained_irq.h).
->> >
->> > Signed-off-by: Darius Rad <darius@bluespec.com>
->> > ---
->> >  drivers/irqchip/irq-sifive-plic.c | 13 +++++++++----
->> >  1 file changed, 9 insertions(+), 4 deletions(-)
->> >
->> > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
->> > index cf755964f2f8..52d5169f924f 100644
->> > --- a/drivers/irqchip/irq-sifive-plic.c
->> > +++ b/drivers/irqchip/irq-sifive-plic.c
->> > @@ -111,6 +111,13 @@ static void plic_irq_disable(struct irq_data *d)
->> >       plic_irq_toggle(cpu_possible_mask, d->hwirq, 0);
->> >  }
->> >
->> > +/*
->> > + * There is no need to mask/unmask PLIC interrupts.  They are "masked"
->> > + * by reading claim and "unmasked" when writing it back.
->> > + */
->> > +static void plic_irq_mask(struct irq_data *d) { }
->> > +static void plic_irq_unmask(struct irq_data *d) { }
->> > +
->> >  #ifdef CONFIG_SMP
->> >  static int plic_set_affinity(struct irq_data *d,
->> >                            const struct cpumask *mask_val, bool force)
->> > @@ -138,12 +145,10 @@ static int plic_set_affinity(struct irq_data *d,
->> >
->> >  static struct irq_chip plic_chip = {
->> >       .name           = "SiFive PLIC",
->> > -     /*
->> > -      * There is no need to mask/unmask PLIC interrupts.  They are "masked"
->> > -      * by reading claim and "unmasked" when writing it back.
->> > -      */
->> >       .irq_enable     = plic_irq_enable,
->> >       .irq_disable    = plic_irq_disable,
->> > +     .irq_mask       = plic_irq_mask,
->> > +     .irq_unmask     = plic_irq_unmask,
->> >  #ifdef CONFIG_SMP
->> >       .irq_set_affinity = plic_set_affinity,
->> >  #endif
->>
->> I can't find any other drivers in irqchip with empty irq_mask/irq_unmask.  I'm
->> not well versed in irqchip stuff, so I'll leave it up to the irqchip
->> maintainers to comment on if this is the right way to do this.  Either way, I'm
->> assuming it'll go in through some the irqchip tree so
->>
->> Acked-by: Palmer Dabbelt <palmer@sifive.com>
->>
->> just to make sure I don't get in the way if it is the right way to do it :).
->>
->> _______________________________________________
->> linux-riscv mailing list
->> linux-riscv@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-riscv
+Thank you!
+
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 
 _______________________________________________
 linux-riscv mailing list
