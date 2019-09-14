@@ -2,76 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B56E4B2B78
-	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 15:53:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 07F9EB2B7C
+	for <lists+linux-riscv@lfdr.de>; Sat, 14 Sep 2019 15:58:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Rqmn6gLl1EV0IHVjHmXHXufmlnMpBVu01QNGaj62ZzE=; b=YVMtnQdfZKJExf
-	/HfmI7W/thr4iXBB3DyGoCMRmS4BMwptipCVqCCQrLzwUwfBxJfQdM6JIQr6A6dJBus1BCFGC5WW9
-	nL15DIoiN0istcR2+ow+KPAEmT9In7fsa7XOfX905cJCJ6PSbSziYvS/BaXHUA1v/VCdeIC4V5ZR4
-	+VlXYGZ1UXuGjwM1dWq/Sk2dYP6P2vcdX4kvxA/qYSe/YcpOy60r7aO9bPprtziQ14L7bKq2yEvDR
-	UN7dGtJ7AIdK6LOTRy8THuy+XXAKXd+ZDw/XeFWBP89q2BxKoJ9e69mza4RFGWZmOBH6P11nnANFA
-	487+atSL8VrHZMcsY3Cw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8T5D7jY/qgu0VEIjF302IVqAQwwzzGueODS5Y+bV11c=; b=hfBYhNjnQWWTxv
+	vHb2oiNiWObi677/tUffnVPDqVlauYC6fOM2cufQcmFK6hXMtzKvmhkeATOXekkoSotftKIA6KUeU
+	rEPPqOaosDIog67pQeg3xEhg0cm3VTX824Dh0+hbHHZNGTcPebFF9cQ8ZYjHgoMkHWB+SDvJnJZbh
+	LAt5m/dv4KgvB13TkF41g1N71VwKSyr0naGqq4iBzx73OZecC4U7UdtMBoYbDXiU8IKNaLYtgNTZi
+	F+0P42bLWP7flAAktErzr3M5kWTYv8jkI1qdvvwB/hDQra73OANYekdhGmcvU7+vEuQJ8N8RelwrT
+	afSE0QpRYKXwNEZhhuuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i98Tx-0000Dg-2s; Sat, 14 Sep 2019 13:52:57 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1i98ZE-0001hX-RH; Sat, 14 Sep 2019 13:58:25 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i98Ts-0000Cy-Ob
- for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 13:52:54 +0000
-Received: by mail-wr1-x442.google.com with SMTP id b9so1039015wrs.0
- for <linux-riscv@lists.infradead.org>; Sat, 14 Sep 2019 06:52:51 -0700 (PDT)
+ id 1i98Z8-0001h9-MJ
+ for linux-riscv@lists.infradead.org; Sat, 14 Sep 2019 13:58:20 +0000
+Received: by mail-wm1-x341.google.com with SMTP id o184so5537446wme.3
+ for <linux-riscv@lists.infradead.org>; Sat, 14 Sep 2019 06:58:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:message-id:user-agent:mime-version;
- bh=RdKdyuMchtAQNR5tLHPOh6qnxzDs2wdkOkgcEODQq6Q=;
- b=CWLwMa0/jg5XrFiCfk6EZWcggOctvz5YacJtR3eGqWKgEEoTTDq1eNfAp8SZy1C2bj
- kS+5mL49/HZCZO4hFttI67TEM1w/1TYnXqe4O6sC6rngosQGUzl4pFO1rbk/DDYn8CNv
- Xv4aBw9v9g7Qe32DVbHy7jhRpnaCAxKvZ60CwV0dIG+EIV4l26ZTmuYU7176s0+UIvU2
- P2AujOj1L/J7j3G2m4TTjHUJNWHdlfs8OZIFCfT/OioLvqAVtCGf90faqItWdj6nZACQ
- eDXbxkzwKunK7278bAEpWluRoeuz/O8hPA7Uu+w73S915UXWoSDIaWCHYWIuVJ3BnqiU
- bGDg==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=xeo1NeXkitHOCMx0+mNiWwWG6fFr/hiP/k5Dg78CY+w=;
+ b=ZnhjKMzfJ2eq1eLUMTf3kqITmmadfrXWIUNMx4R15sbG8vdFwhVr+7O110Z/9OuBgj
+ G3a7VLVsvmAOAnrPyKEiEP8LVDajZ9F88VQjI51uEmOex0dc6YtD4pzP6wko0pKSSkr8
+ q6oqyveZL5bJSDQxSWZzEknTCVVWnQH60baLUIyL0QTX0UA5jvhY+4EiRYEnfMs8rjRs
+ XlezleSsdbLjfRGf4NXM/5pg79LOOjKtPxEwt/zdOr0hNodPy34XA0HmVTqBcBGL5RMP
+ dLJGF0s/c0p5GgzYsUJYV1TrU4ddrSfaHclBqfo7tMY4H0QGBxa6LYkHcODAHGOWfwyK
+ FLjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
- :mime-version;
- bh=RdKdyuMchtAQNR5tLHPOh6qnxzDs2wdkOkgcEODQq6Q=;
- b=dkvEFUqljg3QDayS3u1aOWJU/lUucf4yOISgL9LQ0zmor9asVUMHTA3IvpYOB4D91Q
- 0sX2MDaoK5ecTsX6by3wkSsYYEN91b51d9cgisSUfQM+2KMqTf4Iaxb/zksQ98TnJtvG
- /gP73LQXMeYpy1gYImxQDtgZvR6q3kteZWK84Gym9uH7bPOYhU9n12MYzYsUdw/V7j/k
- pYtZ9uXAZ755LbT7GL6L+8yLCFYsVWARps2zFQly2R7LatAjROqHxz+f2Gzck89gk3gt
- 0kQkbBhQuZ3wxWsh6XwVqMk+QI0v/owruo5MggBYgmqxyWTzl2nPfp960XzxnF4IA569
- SlDQ==
-X-Gm-Message-State: APjAAAUKEUPQc0iYkakTTPHMuXt1oALsf0PFcgwZNCzsOJwouqCfJxCr
- u4Rhb2BjkH/xw+5jyJAhWePqEg==
-X-Google-Smtp-Source: APXvYqxQZXGxDvytZcxEFYvIkYLbXYnM+f7vgeON5vWCZPwueJv553ZvDKXS047vVPmVnGPS/VeaHw==
-X-Received: by 2002:adf:cf0e:: with SMTP id o14mr12444450wrj.277.1568469170049; 
- Sat, 14 Sep 2019 06:52:50 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=xeo1NeXkitHOCMx0+mNiWwWG6fFr/hiP/k5Dg78CY+w=;
+ b=WNBPmYjwB1zrokzxMitBDFd5hTymP4CViwsrPEXYV92aDuTiIkp8n58zVPYOPLA4PL
+ EF8mgPsro2w8MNKlysxzAX068xKVtSY97I33j5IlxTn/jGquyDgZ0VIIBpVakdCiDJzF
+ 7/2DpIbwhz2Cjnw8eyIhgEP4DsAnkzm5eq4PQoDmX+kbcPC077LT9F1kAKzXBMlafZiG
+ Mbtl4Sivay2+bNE+9j+sflIX1qC3hBrcTKZnI+KM1W0XiIQ+l7jQhEaR0FSzXRXIVtmS
+ VwX5P+5/yc+EzqHrv22w2yZYCGvhv0UOXYSOLloX9bE5c0z6WoNdcAG0X6/Rf6afOlA4
+ 2+7Q==
+X-Gm-Message-State: APjAAAXPG/dSd3BAgweTfU3zTH7XQhcfGv1yc5u8RTKHVdSpkxuRCPFh
+ CJ6M6MO60J8+SLmVswUrWnPf8w==
+X-Google-Smtp-Source: APXvYqynT6tmk0Bp/RtMhx53/YTcUp8rnpQPanFoCs6PDLI+3NKWwpJ+Eey/g5k8pR2ud2lzrT88gQ==
+X-Received: by 2002:a05:600c:285:: with SMTP id
+ 5mr7930021wmk.161.1568469495784; 
+ Sat, 14 Sep 2019 06:58:15 -0700 (PDT)
 Received: from localhost (193-126-247-196.net.novis.pt. [193.126.247.196])
- by smtp.gmail.com with ESMTPSA id m18sm44032730wrg.97.2019.09.14.06.52.49
+ by smtp.gmail.com with ESMTPSA id g15sm4626153wmk.17.2019.09.14.06.58.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Sep 2019 06:52:49 -0700 (PDT)
-Date: Sat, 14 Sep 2019 06:52:48 -0700 (PDT)
+ Sat, 14 Sep 2019 06:58:15 -0700 (PDT)
+Date: Sat, 14 Sep 2019 06:58:13 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: torvalds@linux-foundation.org
-Subject: [GIT PULL] Urgent RISC-V fix for v5.3
-Message-ID: <alpine.DEB.2.21.9999.1909140651430.10284@viisi.sifive.com>
+To: Atish Patra <Atish.Patra@wdc.com>
+Subject: Re: [PATCH] riscv: modify the Image header to improve compatibility
+ with the ARM64 header
+In-Reply-To: <2e697e9c7966cf1a6cac415b6a247a8ba9f4de29.camel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1909140653070.10284@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1909132005200.24255@viisi.sifive.com>
+ <2e697e9c7966cf1a6cac415b6a247a8ba9f4de29.camel@wdc.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190914_065252_809269_A8DD2543 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20190914_065818_741628_388743CC 
+X-CRM114-Status: GOOD (  11.08  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -93,58 +99,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, palmer@sifive.com,
- linux-kernel@vger.kernel.org
+Cc: "merker@debian.org" <merker@debian.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Linus,
+On Sat, 14 Sep 2019, Atish Patra wrote:
 
-The following changes since commit f74c2bb98776e2de508f4d607cd519873065118e:
+> Thanks for the quick fix. Is there a planned timeline when we can
+> remove the deprecated magic ?
 
-  Linux 5.3-rc8 (2019-09-08 13:33:15 -0700)
+If Linus merges this patch, we should probably start the transition in the 
+bootloaders, QEMU, and user tools as quickly as possible.  Probably the 
+key element in the timeline is when we remove support for the old 64-bit 
+magic number location in the kernel.  I'm told that U-Boot and QEMU have 
+already issued releases with support for the v0.1 image header format, so 
+dropping the old magic number from the kernel is probably at least a few 
+years away.  (This is to increase the likelihood that anyone using the old 
+software has had the chance to update them.)
 
-are available in the Git repository at:
+> I was planning to send a U-boot header documentation patch to match
+> Linux one anyways. Do you want me that to rebase based on this patch or
+> are you planning to send a U-boot patch as well ?
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.3
+Once v5.3 comes out, please go ahead.
 
-for you to fetch changes up to 474efecb65dceb15f793b6e2f2b226e952f0f8e9:
 
-  riscv: modify the Image header to improve compatibility with the ARM64 header (2019-09-13 19:03:52 -0700)
-
-----------------------------------------------------------------
-Urgent RISC-V fix for v5.3
-
-Last week, Palmer and I learned that there was an error in the RISC-V
-kernel image header format that could make it less compatible with the
-ARM64 kernel image header format.  I had missed this error during my
-original reviews of the patch.
-
-The kernel image header format is an interface that impacts
-bootloaders, QEMU, and other user tools.  Those packages must be
-updated to align with whatever is merged in the kernel.  We would like
-to avoid proliferating these image formats by keeping the RISC-V
-header as close as possible to the existing ARM64 header.  Since the
-arch/riscv patch that adds support for the image header was merged
-with our v5.3-rc1 pull request as commit 0f327f2aaad6a ("RISC-V: Add
-an Image header that boot loader can parse."), we think it wise to try
-to fix this error before v5.3 is released.
-
-The fix itself should be backwards-compatible with any project that
-has already merged support for premature versions of this interface.
-It primarily involves ensuring that the RISC-V image header has
-something useful in the same field as the ARM64 image header.
-
-----------------------------------------------------------------
-Paul Walmsley (1):
-      riscv: modify the Image header to improve compatibility with the ARM64 header
-
- Documentation/riscv/boot-image-header.txt | 13 +++++++------
- arch/riscv/include/asm/image.h            | 12 ++++++------
- arch/riscv/kernel/head.S                  |  4 ++--
- 3 files changed, 15 insertions(+), 14 deletions(-)
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
