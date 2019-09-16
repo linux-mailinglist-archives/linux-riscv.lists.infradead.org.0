@@ -2,89 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11A08B404E
-	for <lists+linux-riscv@lfdr.de>; Mon, 16 Sep 2019 20:29:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A2257B40C7
+	for <lists+linux-riscv@lfdr.de>; Mon, 16 Sep 2019 21:05:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=FS17a6nJfW+TBa3uFUMCdUL+5kw9XUGnZBZc0f/6iNk=; b=Gmm2YdLHYAwymLlGURlktLXCp
-	+b2q0nK2PLCmAq8qTjI9geW/3Yjl9hBZH6++HHMR0xOQMwF1IZMhZFWjtZw6Ev3MPR1mN/m3XzEGV
-	RCmAYk143aBn+CcaSIONRWVfT+ga8e/WtNU7X1lQK+TkJvX+K2tKNFLqO53LyD/hFNSwCNDKy7YWC
-	xS5dj3nnmjjv+HJsRp2/IMM5o+5Os8Zc7EALK1RUoZNN+r8GoVTmg21xf1KscTTVN/pyDuWz+ZCAv
-	aDPdK5V2ob8PSBZ6X9RdIZdp/X3uzvMOO9z6LZzCYOJH1vuGcAhqF9DE3F3Foxn1M/cz8fnTojm7Y
-	IPGOoVDyQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1Csx9K3LxmwXRBopuy21aTnyYSunvJiFp48GqRzPLHs=; b=H2oO4NPftH/lhl
+	Alnh+EAWFsx+xGOF7fRnYuaMrARFuMpvwiA1+AL6U3LBAajhKeAfCeby6L888wOpaeDuM7HX6HIqK
+	+IXzrVtQCXRX/IT0uypbS5J37/DnxQibHtak5wpykQvu9lAqOmmU4DVh0AMTowJSLlBA7W79P8+RQ
+	t8o7u7gbVSK3I7fwC554sTlFDw95yGA0I2W7E09gAc7yAaTZUtq0zEK1vqt0SnZYBvShb754m9WPr
+	WPDX5NzZaePmGTRaTF3WfwbjK1BuPFH5lyGdO7vCK5RZ9XL8f9SepA+YW+/UcB1gBT/WkxBOxIdEZ
+	+w+FlsLBjqc5uo8OYJyg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i9vkN-0000y5-Vc; Mon, 16 Sep 2019 18:29:12 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1i9wJD-0006fe-Oo; Mon, 16 Sep 2019 19:05:11 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i9vkE-0000wi-Nl
- for linux-riscv@lists.infradead.org; Mon, 16 Sep 2019 18:29:08 +0000
-Received: by mail-pl1-x644.google.com with SMTP id x3so256560plr.12
- for <linux-riscv@lists.infradead.org>; Mon, 16 Sep 2019 11:29:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=Jp6I/WhdjgXBrLm8XFTV/W2CbBlPUTPrifY9W91dfHI=;
- b=SgPNHmHUI3s6Y5U+Q0BVqT7wuZAahYN9Sp7bvK/WkhmSDCYSm5A+2HKPWAwtkqtGXp
- 9J3gPqcUCHFjkPsRUuU3/KOZR1hYBqyd/MNpI1ipdxi9pUvmGf4l8CrTHsTBzP2tIBQ8
- hFmy5Ft2frUue4ny34BBNvYMvx8XYRjMj04QJzEGKwueGRY2SpndnAROT9qoBFdw5EJm
- pmSgIzCOb60ekhNb5wLkLoTTOYA6xXYpqBLK5btuPldjQ2T2RWcShbymrS2g+P20jTDk
- J+EEppal95vaxj+HdoxekXNZMooOdG9AHCiBegMOADmYTE4Cj6LN4ZjAIM8hUT2YUY+H
- p7Sg==
+ id 1i9wJ3-0005KX-Kp
+ for linux-riscv@lists.infradead.org; Mon, 16 Sep 2019 19:05:08 +0000
+Received: by mail-qk1-x742.google.com with SMTP id y144so1112194qkb.7
+ for <linux-riscv@lists.infradead.org>; Mon, 16 Sep 2019 12:04:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bluespec-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ff52y1FMBfOGXC1QXLgCWL9yIjtAUnNJjYA0n4sXHGw=;
+ b=jDyaB28hCrNYOCRVrHupPypicL1ZWl4EPcSsbp7/EzudZJFFCa++Osz22+InSHhqhe
+ 8yQsqvJ3ftDs4KKneGwAWoW2HlQ8QgH7AqxuJYgaHIDsNxKJ6FjqQz0HXVqAoGgK1VW1
+ wUqLnq7n502HUVJ7g1CRAfoBCImwwZEFXzXf/3w6csHa34QvKZg8yTzolYCWLFXT+270
+ jRffzTJjXaWTYqVd2R9wFmU94C87uH50aejnQk4VMT/6tz2V85D0JIB84/q2rj1fmZSe
+ tIqBTuxhvnLQENgzjHYYiHLf+/mLzLmXT/6PiEjc5u6cwQef43ogBcLZ5Hgiqr0afHpp
+ DtYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=Jp6I/WhdjgXBrLm8XFTV/W2CbBlPUTPrifY9W91dfHI=;
- b=SF/aO6lVox6pRfEmztdDNt0tMN8F70lWjb1r3u/Tg5s+dw22HtckvSb100e5/+p/gy
- ww2Av65QDB35OsdU1TKw/qDod3RaDYdPXuDSS4XY9wMoZJNq8oQbsSITiVD9GUxNTC8L
- k23O5QxgMYb59BVUTli9SYIrkqXHjFVx0VRvNu3YxL3APlET/0YJ3+NmWOuWI+hl+a1f
- jwB2AwYyUDkWlL95wj2zpcqSdocOxJR9KRchcLDJOWflmdbgKqb6o5fK5WV8tVQaRZwQ
- xpSZEZAphrvurwA/VqVgq+nDfZNpEE3dmbww8sFazJGLNWDr12lMM+OfvlDvbVYHRcdj
- FR5A==
-X-Gm-Message-State: APjAAAWbZmNpzFGHG88XefTGo1OA24wDd0IyQFvJys2cyzulLJOWBJO3
- CUSgPr8IxRQaKwlZ8Tnoep2ktg==
-X-Google-Smtp-Source: APXvYqyPLzCNMj7vNHvNiodpwn0FVuHbfPgpqBsoZRBBK2pBoeehbEWH1qRowZP5cnYDV+iwsY1UPQ==
-X-Received: by 2002:a17:902:5a44:: with SMTP id
- f4mr1093510plm.31.1568658539014; 
- Mon, 16 Sep 2019 11:28:59 -0700 (PDT)
-Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id a4sm12595350pfn.110.2019.09.16.11.28.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Sep 2019 11:28:58 -0700 (PDT)
-Date: Mon, 16 Sep 2019 11:28:58 -0700 (PDT)
-X-Google-Original-Date: Mon, 16 Sep 2019 11:28:52 PDT (-0700)
-Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
- separate file
-In-Reply-To: <20190916181800.7lfpt3t627byoomt@willie-the-truck>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: will@kernel.org
-Message-ID: <mhng-11e0cc7f-264b-4412-9424-2357bc27dcb3@palmer-si-x1c4>
-Mime-Version: 1.0 (MHng)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ff52y1FMBfOGXC1QXLgCWL9yIjtAUnNJjYA0n4sXHGw=;
+ b=XkPh37UzD66q0Z0zjJ4eETjh8PPa8xnLWdu+3oZ9sU3Vancnhui/RvO8baqZfj1219
+ z5ssv4BD1rHEV1nfl3qT9Q21J8Z3C+XLCWZEmZDFlJhtf7ryTEVuiU5ATqD1fk5WGZcL
+ DH3H3SwqlEqWt12Jhv2edjWwGj0Ok6Az7nknMdCcnExOkwiuuLsqLDLdllTGQ7+GkWQH
+ ujshNJYd3u1rNzAOL1IxRbTLyriIYYQBM+0YWc6R1v9bTjbXR9YlYjpDyWNHMRsXfRAR
+ 5g/PzPOqfzSon0mJuwu69wAIS5/gZT+tfRbeC3ZY4Hy8L9rQ5IHBFL6ZBODzNt8/qZUp
+ YQQQ==
+X-Gm-Message-State: APjAAAUdk2iL/+fx7stFti7YnrT5cBCU3EOT/YyxpF342xQ37sPdw3nP
+ PLymPrGfACZoKiFu5JZA4rb5
+X-Google-Smtp-Source: APXvYqyFqBGW3EZLWGfjxnG6wN9fqL/8sZ6Lh/2NMLDVcx8vQ5FCWUpgTf451SMMfsUw1I1EhgK/HQ==
+X-Received: by 2002:a37:2746:: with SMTP id n67mr1642026qkn.368.1568660698769; 
+ Mon, 16 Sep 2019 12:04:58 -0700 (PDT)
+Received: from [0.0.0.0] (198-0-189-189-static.hfc.comcastbusiness.net.
+ [198.0.189.189])
+ by smtp.gmail.com with ESMTPSA id u17sm6288511qkj.71.2019.09.16.12.04.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Sep 2019 12:04:58 -0700 (PDT)
+Subject: Re: [PATCH] irqchip/sifive-plic: add irq_mask and irq_unmask
+To: Marc Zyngier <maz@kernel.org>, Palmer Dabbelt <palmer@sifive.com>
+References: <8636gxskmj.wl-maz@kernel.org>
+ <mhng-8de39ab4-730a-4ded-a8b5-d50f34d1697b@palmer-si-x1e>
+ <861rwhs9on.wl-maz@kernel.org>
+From: Darius Rad <darius@bluespec.com>
+Message-ID: <3c0eb4e9-ee21-d07b-ad16-735b7dc06051@bluespec.com>
+Date: Mon, 16 Sep 2019 15:04:56 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <861rwhs9on.wl-maz@kernel.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190916_112902_858501_9C37AFAD 
-X-CRM114-Status: GOOD (  22.86  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190916_120501_734735_F63FCFA5 
+X-CRM114-Status: GOOD (  25.04  )
+X-Spam-Score: 0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
  [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.7 SPF_NEUTRAL            SPF: sender does not match SPF record (neutral)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,97 +98,182 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: julien.thierry@arm.com, catalin.marinas@arm.com,
- Will Deacon <will.deacon@arm.com>, christoffer.dall@arm.com,
- Atish Patra <Atish.Patra@wdc.com>, julien.grall@arm.com, guoren@kernel.org,
- gary@garyguo.net, linux-riscv@lists.infradead.org,
- kvmarm@lists.cs.columbia.edu, rppt@linux.ibm.com,
- Christoph Hellwig <hch@infradead.org>, aou@eecs.berkeley.edu,
- Arnd Bergmann <arnd@arndb.de>, suzuki.poulose@arm.com, marc.zyngier@arm.com,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-arm-kernel@lists.infradead.org,
- Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, james.morse@arm.com
+Cc: jason@lakedaemon.net, linux-kernel@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ David Johnson <davidj@sifive.com>, tglx@linutronix.de
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 16 Sep 2019 11:18:00 PDT (-0700), will@kernel.org wrote:
-> On Sun, Sep 15, 2019 at 05:03:38AM +0000, Anup Patel wrote:
+On 9/15/19 2:20 PM, Marc Zyngier wrote:
+> On Sun, 15 Sep 2019 18:31:33 +0100,
+> Palmer Dabbelt <palmer@sifive.com> wrote:
+> 
+> Hi Palmer,
+> 
 >>
+>> On Sun, 15 Sep 2019 07:24:20 PDT (-0700), maz@kernel.org wrote:
+>>> On Thu, 12 Sep 2019 22:40:34 +0100,
+>>> Darius Rad <darius@bluespec.com> wrote:
+>>>
+>>> Hi Darius,
+>>>
+>>>>
+>>>> As per the existing comment, irq_mask and irq_unmask do not need
+>>>> to do anything for the PLIC.  However, the functions must exist
+>>>> (the pointers cannot be NULL) as they are not optional, based on
+>>>> the documentation (Documentation/core-api/genericirq.rst) as well
+>>>> as existing usage (e.g., include/linux/irqchip/chained_irq.h).
+>>>>
+>>>> Signed-off-by: Darius Rad <darius@bluespec.com>
+>>>> ---
+>>>>  drivers/irqchip/irq-sifive-plic.c | 13 +++++++++----
+>>>>  1 file changed, 9 insertions(+), 4 deletions(-)
+>>>>
+>>>> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+>>>> index cf755964f2f8..52d5169f924f 100644
+>>>> --- a/drivers/irqchip/irq-sifive-plic.c
+>>>> +++ b/drivers/irqchip/irq-sifive-plic.c
+>>>> @@ -111,6 +111,13 @@ static void plic_irq_disable(struct irq_data *d)
+>>>>  	plic_irq_toggle(cpu_possible_mask, d->hwirq, 0);
+>>>>  }
+>>>>  +/*
+>>>> + * There is no need to mask/unmask PLIC interrupts.  They are "masked"
+>>>> + * by reading claim and "unmasked" when writing it back.
+>>>> + */
+>>>> +static void plic_irq_mask(struct irq_data *d) { }
+>>>> +static void plic_irq_unmask(struct irq_data *d) { }
+>>>
+>>> This outlines a bigger issue. If your irqchip doesn't require
+>>> mask/unmask, you're probably not using the right interrupt
+>>> flow. Looking at the code, I see you're using handle_simple_irq, which
+>>> is almost universally wrong.
+>>>
+>>> As per the description above, these interrupts should be using the
+>>> fasteoi flow, which is designed for this exact behaviour (the
+>>> interrupt controller knows which interrupt is in flight and doesn't
+>>> require SW to do anything bar signalling the EOI).
+>>>
+>>> Another thing is that mask/unmask tends to be a requirement, while
+>>> enable/disable tends to be optional. There is no hard line here, but
+>>> the expectations are that:
+>>>
+>>> (a) A disabled line can drop interrupts
+>>> (b) A masked line cannot drop interrupts
+>>>
+>>> Depending what the PLIC architecture mandates, you'll need to
+>>> implement one and/or the other. Having just (a) is indicative of a HW
+>>> bug, and I'm not assuming that this is the case. (b) only is pretty
+>>> common, and (a)+(b) has a few adepts. My bet is that it requires (b)
+>>> only.
+>>>
+>>>> +
+>>>>  #ifdef CONFIG_SMP
+>>>>  static int plic_set_affinity(struct irq_data *d,
+>>>>  			     const struct cpumask *mask_val, bool force)
+>>>> @@ -138,12 +145,10 @@ static int plic_set_affinity(struct irq_data *d,
+>>>>   static struct irq_chip plic_chip = {
+>>>>  	.name		= "SiFive PLIC",
+>>>> -	/*
+>>>> -	 * There is no need to mask/unmask PLIC interrupts.  They are "masked"
+>>>> -	 * by reading claim and "unmasked" when writing it back.
+>>>> -	 */
+>>>>  	.irq_enable	= plic_irq_enable,
+>>>>  	.irq_disable	= plic_irq_disable,
+>>>> +	.irq_mask	= plic_irq_mask,
+>>>> +	.irq_unmask	= plic_irq_unmask,
+>>>>  #ifdef CONFIG_SMP
+>>>>  	.irq_set_affinity = plic_set_affinity,
+>>>>  #endif
+>>>
+>>> Can you give the following patch a go? It brings the irq flow in line
+>>> with what the HW can do. It is of course fully untested (not even
+>>> compile tested...).
+>>>
+>>> Thanks,
+>>>
+>>> 	M.
+>>>
+>>> From c0ce33a992ec18f5d3bac7f70de62b1ba2b42090 Mon Sep 17 00:00:00 2001
+>>> From: Marc Zyngier <maz@kernel.org>
+>>> Date: Sun, 15 Sep 2019 15:17:45 +0100
+>>> Subject: [PATCH] irqchip/sifive-plic: Switch to fasteoi flow
+>>>
+>>> The SiFive PLIC interrupt controller seems to have all the HW
+>>> features to support the fasteoi flow, but the driver seems to be
+>>> stuck in a distant past. Bring it into the 21st century.
 >>
->> > -----Original Message-----
->> > From: linux-kernel-owner@vger.kernel.org <linux-kernel-
->> > owner@vger.kernel.org> On Behalf Of Palmer Dabbelt
->> > Sent: Saturday, September 14, 2019 7:31 PM
->> > To: will@kernel.org
->> > Cc: guoren@kernel.org; Will Deacon <will.deacon@arm.com>;
->> > julien.thierry@arm.com; aou@eecs.berkeley.edu; james.morse@arm.com;
->> > Arnd Bergmann <arnd@arndb.de>; suzuki.poulose@arm.com;
->> > marc.zyngier@arm.com; catalin.marinas@arm.com; Anup Patel
->> > <Anup.Patel@wdc.com>; linux-kernel@vger.kernel.org;
->> > rppt@linux.ibm.com; Christoph Hellwig <hch@infradead.org>; Atish Patra
->> > <Atish.Patra@wdc.com>; julien.grall@arm.com; gary@garyguo.net; Paul
->> > Walmsley <paul.walmsley@sifive.com>; christoffer.dall@arm.com; linux-
->> > riscv@lists.infradead.org; kvmarm@lists.cs.columbia.edu; linux-arm-
->> > kernel@lists.infradead.org; iommu@lists.linux-foundation.org
->> > Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
->> > separate file
->> >
->> > On Thu, 12 Sep 2019 07:02:56 PDT (-0700), will@kernel.org wrote:
->> > > On Sun, Sep 08, 2019 at 07:52:55AM +0800, Guo Ren wrote:
->> > >> On Mon, Jun 24, 2019 at 6:40 PM Will Deacon <will@kernel.org> wrote:
->> > >> > > I'll keep my system use the same ASID for SMP + IOMMU :P
->> > >> >
->> > >> > You will want a separate allocator for that:
->> > >> >
->> > >> > https://lkml.kernel.org/r/20190610184714.6786-2-jean-philippe.bruck
->> > >> > er@arm.com
->> > >>
->> > >> Yes, it is hard to maintain ASID between IOMMU and CPUMMU or
->> > >> different system, because it's difficult to synchronize the IO_ASID
->> > >> when the CPU ASID is rollover.
->> > >> But we could still use hardware broadcast TLB invalidation
->> > >> instruction to uniformly manage the ASID and IO_ASID, or OTHER_ASID in
->> > our IOMMU.
->> > >
->> > > That's probably a bad idea, because you'll likely stall execution on
->> > > the CPU until the IOTLB has completed invalidation. In the case of
->> > > ATS, I think an endpoint ATC is permitted to take over a minute to
->> > > respond. In reality, I suspect the worst you'll ever see would be in
->> > > the msec range, but that's still an unacceptable period of time to hold a
->> > CPU.
->> > >
->> > >> Welcome to join our disscusion:
->> > >> "Introduce an implementation of IOMMU in linux-riscv"
->> > >> 9 Sep 2019, 10:45 Jade-room-I&II (Corinthia Hotel Lisbon) RISC-V MC
->> > >
->> > > I attended this session, but it unfortunately raised many more
->> > > questions than it answered.
->> >
->> > Ya, we're a long way from figuring this out.
+>> Thanks.  We'd gotten these comments during the review process but
+>> nobody had gotten the time to actually fix the issues.
+> 
+> No worries. The IRQ subsystem is an acquired taste... ;-)
+> 
+>>>
+>>> Signed-off-by: Marc Zyngier <maz@kernel.org>
+>>> ---
+>>>  drivers/irqchip/irq-sifive-plic.c | 29 +++++++++++++++--------------
+>>>  1 file changed, 15 insertions(+), 14 deletions(-)
+>>>
+>>> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+>>> index cf755964f2f8..8fea384d392b 100644
+>>> --- a/drivers/irqchip/irq-sifive-plic.c
+>>> +++ b/drivers/irqchip/irq-sifive-plic.c
+>>> @@ -97,7 +97,7 @@ static inline void plic_irq_toggle(const struct cpumask *mask,
+>>>  	}
+>>>  }
+>>>  -static void plic_irq_enable(struct irq_data *d)
+>>> +static void plic_irq_mask(struct irq_data *d)
+> 
+> Of course, this is wrong. The perks of trying to do something at the
+> last minute while boarding an airplane. Don't do that.
+> 
+> This should of course read "plic_irq_unmask"...
+> 
+>>>  {
+>>>  	unsigned int cpu = cpumask_any_and(irq_data_get_affinity_mask(d),
+>>>  					   cpu_online_mask);
+>>> @@ -106,7 +106,7 @@ static void plic_irq_enable(struct irq_data *d)
+>>>  	plic_irq_toggle(cpumask_of(cpu), d->hwirq, 1);
+>>>  }
+>>>  -static void plic_irq_disable(struct irq_data *d)
+>>> +static void plic_irq_unmask(struct irq_data *d)
+> 
+> ... and this should be "plic_irq_mask".
+> 
+> [...]
+> 
+>> Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+>> Tested-by: Palmer Dabbelt <palmer@sifive.com> (QEMU Boot)
+> 
+> Huhuh... It may be that QEMU doesn't implement the full-fat PLIC, as
+> the above bug should have kept the IRQ lines masked.
+> 
+>> We should test them on the hardware, but I don't have any with me
+>> right now.  David's probably in the best spot to do this, as he's got
+>> a setup that does all the weird interrupt sources (ie, PCIe).
 >>
->> For everyone's reference, here is our first attempt at RISC-V ASID allocator:
->> http://archive.lwn.net:8080/linux-kernel/20190329045111.14040-1-anup.patel@wdc.com/T/#u
->
-> With a reply stating that the patch "absolutely does not work" ;)
->
-> What exactly do you want people to do with that? It's an awful lot of effort
-> to review this sort of stuff and given that Guo Ren is talking about sharing
-> page tables between the CPU and an accelerator, maybe you're better off
-> stabilising Linux for the platforms that you can actually test rather than
-> getting so far ahead of yourselves that you end up with a bunch of wasted
-> work on patches that probably won't get merged any time soon.
->
-> Seriously, they say "walk before you can run", but this is more "crawl
-> before you can fly". What's the rush?
+>> David: do you mind testing this?  I've put the patch here:
+>>
+>>    ssh://gitolite.kernel.org/pub/scm/linux/kernel/git/palmer/linux.git
+>>    -b plic-fasteoi
+> 
+> I've pushed out a branch with the fixed patch:
+> 
+> git://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git irq/plic-fasteoi
+> 
 
-I agree, and I think I've been pretty clear here: we're not merging this ASID 
-stuff until we have a platform we can test on, particularly as the platforms we 
-have now already need some wacky hacks around TLB flushing that we haven't 
-gotten to the bottom of.
+That patch works for me on real-ish hardware.  I tried on two FPGA
+systems that have different PLIC implementations.  Both include
+a PCIe root port (and associated interrupt source).  So for
+whatever it's worth:
 
-> Will
+Tested-by: Darius Rad <darius@bluespec.com>
+
+> Thanks,
+> 
+> 	M.
+> 
 
 _______________________________________________
 linux-riscv mailing list
