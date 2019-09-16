@@ -2,61 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA3D0B4329
-	for <lists+linux-riscv@lfdr.de>; Mon, 16 Sep 2019 23:33:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E646AB434F
+	for <lists+linux-riscv@lfdr.de>; Mon, 16 Sep 2019 23:38:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PMYveKn3/ez6hTBARR3sZoMNwY+gw4B9mG+RH3JwZ/c=; b=Ber5D7KhVCMA0W
-	5ggM+sHlF76Cdg3kjcWRtMEP3cPtckB1Cpr4NALZTSM6JYw4eb9boMf0IlY5DSyj/ULdTCFhhTk/p
-	DT8G0YiJg8QU8KOWO/X5dRNsUGw0EByUGAl8GQjP9bK+PpbnLW4Pt5W5aiDAHgLEE+qagIu+mLVLD
-	K1yJi7lrlcbk8dwHmytdzMhsrGw7knuQMutSC3B/Hy6vAMgHV5/EHXenAB6O6NH46SV8IvZSca4aY
-	0aCs/XvhuzSoem3de2oMHeDsWZ/OWvhxuK+WgSpF78ny9D4qQgHXe5/Lemm2kC3JZjWq1BB5kOJtM
-	osXAYmVGtYxA612sW6Pg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=K2yZd0I3p9CXzwJ8COXY94VH5NhUp8j2ouKnWH8WPKk=; b=HIIGF5OQ54ybTJ9GcDVhYbtho
+	5AJevnSD6gAWsBkQUlo6/C+Fgh1i8U02OGcdChMIjFiIp2QS74fLrom6UV/vX6sqcnph2Ccw5DiXA
+	vP3iCMYgTfTGZLBeofPQFIAc2FoHQ21bQQBsu2w2OKx34YIXiAoGbuYjZfKLu07Qxmo571Pd07s79
+	Ne7ZKG2wiz7tzEpKgjs/Xsal2iZzytjaUK4fIIoxaDtsxtoZ6YrNFkHz73jhVBFpE0Z2BOhLiydXe
+	okvBZkVElbNUHn9UjsZhHdfMJMn6TnvLzF8WsklZ6Dr14XhhfAv6bNvfdLoiJ3yiPYsghM6DKI0CR
+	uSGwgKMUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i9yco-0004Bw-6L; Mon, 16 Sep 2019 21:33:34 +0000
-Received: from inca-roads.misterjones.org ([213.251.177.50])
+	id 1i9yhp-0005zS-Cy; Mon, 16 Sep 2019 21:38:45 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i9ycj-0004B0-CS
- for linux-riscv@lists.infradead.org; Mon, 16 Sep 2019 21:33:31 +0000
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why)
- by cheepnis.misterjones.org with esmtpsa (TLSv1.2:AES256-GCM-SHA384:256)
- (Exim 4.80) (envelope-from <maz@kernel.org>)
- id 1i9ycf-0001TZ-K3; Mon, 16 Sep 2019 23:33:25 +0200
-Date: Mon, 16 Sep 2019 22:33:23 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Palmer Dabbelt <palmer@sifive.com>
-Subject: Re: [PATCH] irqchip/sifive-plic: add irq_mask and irq_unmask
-Message-ID: <20190916223323.07664bc2@why>
-In-Reply-To: <mhng-df6c7aad-d4fd-4c44-96c8-bf63465e0c97@palmer-si-x1c4>
-References: <3c0eb4e9-ee21-d07b-ad16-735b7dc06051@bluespec.com>
- <mhng-df6c7aad-d4fd-4c44-96c8-bf63465e0c97@palmer-si-x1c4>
-Organization: Approximate
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: palmer@sifive.com, darius@bluespec.com,
- david.abdurachmanov@sifive.com, paul.walmsley@sifive.com,
- linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- tglx@linutronix.de, jason@lakedaemon.net
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on cheepnis.misterjones.org);
- SAEximRunCond expanded to false
+ id 1i9yhl-0005z9-ML
+ for linux-riscv@lists.infradead.org; Mon, 16 Sep 2019 21:38:43 +0000
+Received: by mail-pf1-x442.google.com with SMTP id 205so733871pfw.2
+ for <linux-riscv@lists.infradead.org>; Mon, 16 Sep 2019 14:38:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ussGV4sAsw+qdSXVhtVYUo/8kyRAo8F9PtEFDW04fvs=;
+ b=ehEiIeAU6vrWvGRFxnPUj6OUoZMY60XI9IEGjHP+firBnz43tx3q307LVbyQXN4dYb
+ c4ccBMhe0wnVpAGWQvIGQ/uGI1uwGq3XhwWkVshaWEAvc0smTR5tAjQDztxorEHwdTDL
+ /rfvDBtHRBh88OPPTJE+v4YpNhHCcCYc+1lPJ1152ykjhOH0+P6oHSW0q1LbA1oL1OWy
+ 2rSsdWLn51Z4A2JyKuKStVZbFD5ZyKoyTkwxYOoQBEH54zcodvvu9fk/v321NTNLn1ha
+ e1jq3fOkv1If+qMp75PiaJ25551lrZNHmDnSvJjLwWMsnNNZt/AcZHJEkg/d8mvgKT0g
+ Y22w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ussGV4sAsw+qdSXVhtVYUo/8kyRAo8F9PtEFDW04fvs=;
+ b=NxAW/1WGOO9HSk6Gamv27DY1fBkTDk1/Ru2gbM64NlhDXZ0tFOE7paROrgKfT8ZMoq
+ k9OwIKmzeCs/AqsB0GTilefIebvjdqTU1MjXPW7hY7fZ+kcDc6MDcPQv0KomWSqQg8zA
+ 1+Slb7D70KhFcYZukaWihhlA5hgZdbGGCohi97ZmTuczj0PCobXlFQ6Tw/5mazUFslQO
+ TmS4Z19MYIRzgstxnsrIPa9eej6uVkJjJRqHK0eVAdDvjKoLug+J1Tul6LdV9aFlgWUZ
+ 1ycWSibareGSOS/gzcpAU+FilFHt3ZSLaNdipwG71guWNgMH7NU7q1QuxT/c7effX0IL
+ ci+A==
+X-Gm-Message-State: APjAAAU6ghDvvnwBr5hH3thCkbcN1zeqNi1jhV2MN2VI42+yBURpLyfs
+ W+ZfxCcIGM4VrXlnwMlJ1jnu1g==
+X-Google-Smtp-Source: APXvYqyQF4otQXzAnqHHg9QWpeu/7pnzO7LWZJg0Kp6EIFIRsfSWANkypqS5FNNikxA657tbrU+NoA==
+X-Received: by 2002:a62:1b0c:: with SMTP id b12mr529676pfb.17.1568669920805;
+ Mon, 16 Sep 2019 14:38:40 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id k31sm129129pjb.14.2019.09.16.14.38.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Sep 2019 14:38:39 -0700 (PDT)
+Date: Mon, 16 Sep 2019 14:38:39 -0700 (PDT)
+X-Google-Original-Date: Mon, 16 Sep 2019 14:38:36 PDT (-0700)
+Subject: Re: [PATCH] serial/sifive: select SERIAL_EARLYCON
+In-Reply-To: <87ftkwdo85.fsf@igel.home>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: schwab@suse.de
+Message-ID: <mhng-5091669f-461c-4e62-a71c-e16957801fad@palmer-si-x1c4>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190916_143329_575673_A494B8E9 
-X-CRM114-Status: GOOD (  31.66  )
-X-Spam-Score: 1.0 (+)
+X-CRM114-CacheID: sfid-20190916_143841_795531_6832873A 
+X-CRM114-Status: GOOD (  16.62  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,203 +94,96 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: jason@lakedaemon.net, David Abdurachmanov <david.abdurachmanov@sifive.com>,
- Darius Rad <darius@bluespec.com>, linux-kernel@vger.kernel.org,
+Cc: Greg KH <gregkh@linuxfoundation.org>, jslaby@suse.com,
+ linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
  Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- tglx@linutronix.de
-Content-Type: text/plain; charset="us-ascii"
+ Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 16 Sep 2019 13:51:58 -0700 (PDT)
-Palmer Dabbelt <palmer@sifive.com> wrote:
+On Mon, 16 Sep 2019 12:40:10 PDT (-0700), schwab@suse.de wrote:
+> On Sep 16 2019, Palmer Dabbelt <palmer@sifive.com> wrote:
+>
+>> On Sun, 15 Sep 2019 23:42:53 PDT (-0700), Christoph Hellwig wrote:
+>>> On Fri, Sep 13, 2019 at 01:40:27PM -0700, Palmer Dabbelt wrote:
+>>>> OpenEmbedded passes "earlycon=sbi", which I can find in the doumentation.
+>>>> I can't find anything about just "earlycon".  I've sent a patch adding sbi
+>>>> to the list of earlycon arguments.
+>>>
+>>> earlycon without arguments is documented, although just for ARM64.
+>>> I can send a patch to update it to properly cover all DT platforms
+>>> in addition.
+>>
+>> Thanks.  I've kind of lost track of the thread, but assuming that does the
+>> "automatically pick an earlycon" stuff then that's probably what we should
+>> be using in the distros.
+>
+> Except that it doesn't work.
 
-> On Mon, 16 Sep 2019 12:04:56 PDT (-0700), Darius Rad wrote:
-> > On 9/15/19 2:20 PM, Marc Zyngier wrote:  
-> >> On Sun, 15 Sep 2019 18:31:33 +0100,
-> >> Palmer Dabbelt <palmer@sifive.com> wrote:
-> >>
-> >> Hi Palmer,
-> >>  
-> >>>
-> >>> On Sun, 15 Sep 2019 07:24:20 PDT (-0700), maz@kernel.org wrote:  
-> >>>> On Thu, 12 Sep 2019 22:40:34 +0100,
-> >>>> Darius Rad <darius@bluespec.com> wrote:
-> >>>>
-> >>>> Hi Darius,
-> >>>>  
-> >>>>>
-> >>>>> As per the existing comment, irq_mask and irq_unmask do not need
-> >>>>> to do anything for the PLIC.  However, the functions must exist
-> >>>>> (the pointers cannot be NULL) as they are not optional, based on
-> >>>>> the documentation (Documentation/core-api/genericirq.rst) as well
-> >>>>> as existing usage (e.g., include/linux/irqchip/chained_irq.h).
-> >>>>>
-> >>>>> Signed-off-by: Darius Rad <darius@bluespec.com>
-> >>>>> ---
-> >>>>>  drivers/irqchip/irq-sifive-plic.c | 13 +++++++++----
-> >>>>>  1 file changed, 9 insertions(+), 4 deletions(-)
-> >>>>>
-> >>>>> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> >>>>> index cf755964f2f8..52d5169f924f 100644
-> >>>>> --- a/drivers/irqchip/irq-sifive-plic.c
-> >>>>> +++ b/drivers/irqchip/irq-sifive-plic.c
-> >>>>> @@ -111,6 +111,13 @@ static void plic_irq_disable(struct irq_data *d)
-> >>>>>  	plic_irq_toggle(cpu_possible_mask, d->hwirq, 0);
-> >>>>>  }
-> >>>>>  +/*
-> >>>>> + * There is no need to mask/unmask PLIC interrupts.  They are "masked"
-> >>>>> + * by reading claim and "unmasked" when writing it back.
-> >>>>> + */
-> >>>>> +static void plic_irq_mask(struct irq_data *d) { }
-> >>>>> +static void plic_irq_unmask(struct irq_data *d) { }  
-> >>>>
-> >>>> This outlines a bigger issue. If your irqchip doesn't require
-> >>>> mask/unmask, you're probably not using the right interrupt
-> >>>> flow. Looking at the code, I see you're using handle_simple_irq, which
-> >>>> is almost universally wrong.
-> >>>>
-> >>>> As per the description above, these interrupts should be using the
-> >>>> fasteoi flow, which is designed for this exact behaviour (the
-> >>>> interrupt controller knows which interrupt is in flight and doesn't
-> >>>> require SW to do anything bar signalling the EOI).
-> >>>>
-> >>>> Another thing is that mask/unmask tends to be a requirement, while
-> >>>> enable/disable tends to be optional. There is no hard line here, but
-> >>>> the expectations are that:
-> >>>>
-> >>>> (a) A disabled line can drop interrupts
-> >>>> (b) A masked line cannot drop interrupts
-> >>>>
-> >>>> Depending what the PLIC architecture mandates, you'll need to
-> >>>> implement one and/or the other. Having just (a) is indicative of a HW
-> >>>> bug, and I'm not assuming that this is the case. (b) only is pretty
-> >>>> common, and (a)+(b) has a few adepts. My bet is that it requires (b)
-> >>>> only.
-> >>>>  
-> >>>>> +
-> >>>>>  #ifdef CONFIG_SMP
-> >>>>>  static int plic_set_affinity(struct irq_data *d,
-> >>>>>  			     const struct cpumask *mask_val, bool force)
-> >>>>> @@ -138,12 +145,10 @@ static int plic_set_affinity(struct irq_data *d,
-> >>>>>   static struct irq_chip plic_chip = {
-> >>>>>  	.name		= "SiFive PLIC",
-> >>>>> -	/*
-> >>>>> -	 * There is no need to mask/unmask PLIC interrupts.  They are "masked"
-> >>>>> -	 * by reading claim and "unmasked" when writing it back.
-> >>>>> -	 */
-> >>>>>  	.irq_enable	= plic_irq_enable,
-> >>>>>  	.irq_disable	= plic_irq_disable,
-> >>>>> +	.irq_mask	= plic_irq_mask,
-> >>>>> +	.irq_unmask	= plic_irq_unmask,
-> >>>>>  #ifdef CONFIG_SMP
-> >>>>>  	.irq_set_affinity = plic_set_affinity,
-> >>>>>  #endif  
-> >>>>
-> >>>> Can you give the following patch a go? It brings the irq flow in line
-> >>>> with what the HW can do. It is of course fully untested (not even
-> >>>> compile tested...).
-> >>>>
-> >>>> Thanks,
-> >>>>
-> >>>> 	M.
-> >>>>
-> >>>> From c0ce33a992ec18f5d3bac7f70de62b1ba2b42090 Mon Sep 17 00:00:00 2001
-> >>>> From: Marc Zyngier <maz@kernel.org>
-> >>>> Date: Sun, 15 Sep 2019 15:17:45 +0100
-> >>>> Subject: [PATCH] irqchip/sifive-plic: Switch to fasteoi flow
-> >>>>
-> >>>> The SiFive PLIC interrupt controller seems to have all the HW
-> >>>> features to support the fasteoi flow, but the driver seems to be
-> >>>> stuck in a distant past. Bring it into the 21st century.  
-> >>>
-> >>> Thanks.  We'd gotten these comments during the review process but
-> >>> nobody had gotten the time to actually fix the issues.  
-> >>
-> >> No worries. The IRQ subsystem is an acquired taste... ;-)
-> >>  
-> >>>>
-> >>>> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> >>>> ---
-> >>>>  drivers/irqchip/irq-sifive-plic.c | 29 +++++++++++++++--------------
-> >>>>  1 file changed, 15 insertions(+), 14 deletions(-)
-> >>>>
-> >>>> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> >>>> index cf755964f2f8..8fea384d392b 100644
-> >>>> --- a/drivers/irqchip/irq-sifive-plic.c
-> >>>> +++ b/drivers/irqchip/irq-sifive-plic.c
-> >>>> @@ -97,7 +97,7 @@ static inline void plic_irq_toggle(const struct cpumask *mask,
-> >>>>  	}
-> >>>>  }
-> >>>>  -static void plic_irq_enable(struct irq_data *d)
-> >>>> +static void plic_irq_mask(struct irq_data *d)  
-> >>
-> >> Of course, this is wrong. The perks of trying to do something at the
-> >> last minute while boarding an airplane. Don't do that.
-> >>
-> >> This should of course read "plic_irq_unmask"...
-> >>  
-> >>>>  {
-> >>>>  	unsigned int cpu = cpumask_any_and(irq_data_get_affinity_mask(d),
-> >>>>  					   cpu_online_mask);
-> >>>> @@ -106,7 +106,7 @@ static void plic_irq_enable(struct irq_data *d)
-> >>>>  	plic_irq_toggle(cpumask_of(cpu), d->hwirq, 1);
-> >>>>  }
-> >>>>  -static void plic_irq_disable(struct irq_data *d)
-> >>>> +static void plic_irq_unmask(struct irq_data *d)  
-> >>
-> >> ... and this should be "plic_irq_mask".
-> >>
-> >> [...]
-> >>  
-> >>> Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
-> >>> Tested-by: Palmer Dabbelt <palmer@sifive.com> (QEMU Boot)  
-> >>
-> >> Huhuh... It may be that QEMU doesn't implement the full-fat PLIC, as
-> >> the above bug should have kept the IRQ lines masked.
-> >>  
-> >>> We should test them on the hardware, but I don't have any with me
-> >>> right now.  David's probably in the best spot to do this, as he's got
-> >>> a setup that does all the weird interrupt sources (ie, PCIe).
-> >>>
-> >>> David: do you mind testing this?  I've put the patch here:
-> >>>
-> >>>    ssh://gitolite.kernel.org/pub/scm/linux/kernel/git/palmer/linux.git
-> >>>    -b plic-fasteoi  
-> >>
-> >> I've pushed out a branch with the fixed patch:
-> >>
-> >> git://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git irq/plic-fasteoi
-> >>  
-> >
-> > That patch works for me on real-ish hardware.  I tried on two FPGA
-> > systems that have different PLIC implementations.  Both include
-> > a PCIe root port (and associated interrupt source).  So for
-> > whatever it's worth:
-> >
-> > Tested-by: Darius Rad <darius@bluespec.com>  
-> 
-> Awesome, thanks.  Would it be OK to put a "(on two hardware PLIC
-> implementations)" after that, just so we're clear as to who tested
-> what?
+Sorry, once again I've lost track of the thread.
 
-Sure, no problem.
+The code looks generic.  The device tree in arch/riscv for the HiFive Unleashed 
+doesn't have a stdout-path set, which if I understand correctly is used by the 
+automatic earlycon stuff to pick a console.  I gave this a quick test on QEMU, 
+which finds a 16550 earlycon for me.  I use openembedded's qemuriscv64 target, 
+the following diff to make sure I'm getting an earlycon
 
-> Assuming one of yours wasn't a SiFive PLIC then it'd be great if
-> David could still give this a whack, but I don't think it strictly
-> needs to block merging the patch.  I've included the right David this
-> time, with any luck that will be more fruitful :)
+diff --git a/drivers/tty/serial/8250/8250_early.c b/drivers/tty/serial/8250/8250_early.c
+index 5cd8c36c8fcc..61290714bbcb 100644
+--- a/drivers/tty/serial/8250/8250_early.c
++++ b/drivers/tty/serial/8250/8250_early.c
+@@ -106,6 +106,7 @@ static void early_serial8250_write(struct console *console,
+        struct earlycon_device *device = console->data;
+        struct uart_port *port = &device->port;
 
-Well, we still have time before -rc1. Once David gets a chance to test
-it, I'll apply it. Additional question: do you want this backported to
--stable? If so, how far?
++       uart_console_write(port, "_e_", 3, serial_putc);
+        uart_console_write(port, s, count, serial_putc);
+ }
 
-Thanks,
+and run this command line
 
-	M.
--- 
-Without deviation from the norm, progress is not possible.
+    /home/palmer/work/linux/openembedded-riscv64/build/tmp-glibc/work/x86_64-linux/qemu-helper-native/1.0-r1/recipe-sysroot-native/usr/bin/qemu-system-riscv64 -device virtio-net-device,netdev=net0,mac=52:54:00:12:35:02 -netdev user,id=net0,hostfwd=tcp::2222-:22,hostfwd=tcp::2323-:23,tftp=/home/palmer/work/linux/openembedded-riscv64/build/tmp-glibc/deploy/images/qemuriscv64 -drive id=disk0,file=/home/palmer/work/linux/openembedded-riscv64/build/tmp-glibc/deploy/images/qemuriscv64/core-image-full-cmdline-qemuriscv64-20190711162644.rootfs.ext4,if=none,format=raw -device virtio-blk-device,drive=disk0 -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-device,rng=rng0 -show-cursor -monitor null -device loader,file=/home/palmer/work/linux/linux/arch/riscv/boot/Image,addr=0x80200000  -nographic -machine virt  -m 512 -serial mon:stdio -serial null -kernel /home/palmer/work/linux/openembedded-riscv64/build/tmp-glibc/deploy/images/qemuriscv64/fw_jump.elf -append 'root=/dev/vda rw highres=off  console=ttyS0 mem=512M ip=dhcp earlycon '
+
+which gives me some early stuff and then some non-early stuff
+
+_e_[    0.407579] printk: console [ttyS0] disabled
+_e_[    0.409205] 10000000.uart: ttyS0 at MMIO 0x10000000 (irq = 10, base_baud = 230400) is a 16550A
+[    0.410720] printk: console [ttyS0] enabled
+_e_[    0.410720] printk: console [ttyS0] enabled
+[    0.411391] printk: bootconsole [ns16550a0] disabled
+_e_[    0.411391] printk: bootconsole [ns16550a0] disabled
+[    0.420664] [drm] radeon kernel modesetting enabled.
+[    0.428086] random: fast init done
+[    0.429331] random: crng init done
+[    0.440678] loop: module loaded
+[    0.447607] virtio_blk virtio1: [vda] 262830 512-byte logical blocks (135 MB/128 MiB)
+[    0.469483] libphy: Fixed MDIO Bus: probed
+
+If you don't have something like "/chosen/stdout-path = &uart0;" in your device 
+tree, then that's probably the issue.  Here's where it's set in Christoph's 
+k210:
+
+    http://git.infradead.org/users/hch/riscv.git/blob/f10e64873eafc68516b8884c06b9290b9887633b:/arch/riscv/boot/dts/kendryte/kd210.dts#l20
+
+but we don't set it for the HiFive Unleashed.  I'd call that a bug, something 
+like this
+
+diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+index 93d68cbd64fe..6d0ec76d93fe 100644
+--- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
++++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+@@ -13,6 +13,7 @@
+        compatible = "sifive,hifive-unleashed-a00", "sifive,fu540-c000";
+ 
+        chosen {
++               stdout-path = &uart0;
+        };
+ 
+        cpus {
+
+should fix it.  LMK if I've misunderstood something.
 
 _______________________________________________
 linux-riscv mailing list
