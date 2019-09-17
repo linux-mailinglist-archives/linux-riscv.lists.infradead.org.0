@@ -2,78 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC55DB4EC7
-	for <lists+linux-riscv@lfdr.de>; Tue, 17 Sep 2019 15:08:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2B90B4FE6
+	for <lists+linux-riscv@lfdr.de>; Tue, 17 Sep 2019 16:07:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
+	In-Reply-To:Message-ID:Subject:From:To:Date:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sUnFDWbjN5ojqV9xhdJov10suZJDs3n5xepXH6C3Dys=; b=QlnsI4RHQ4PgXL
-	xEOoJLOh1pvmFc/ORqFkg0Pw+LV4oYWtf8FdKsYrjdUV7xqM82LQDsxrR4oH7Xe4jxwpANf5fVhU1
-	xofHOW5aD2ch3AKLR8+BV7Ys+b+DBoF0ZsjUnNMbnY1CZkkkQ4z1BhbmuivUna4k1IYFMadRRcjT9
-	xrDmCGInm+CQeqgvX/Z4mNl3pdTcYpAx6U0jQrm/hE9K3db7ugp8BOkKDY+fLkPVO0BGvw7rvM8Tt
-	PygeMVn7dYBfGim+SFyWecInVN4q0spdVSomMN8GM4+2OKf9f7Ua+KKu/Z/F0hwoVyoGwgyvOf7ID
-	RlMxWi0Yc3jae3sjo9lg==;
+	List-Owner; bh=Ga5+MeMJqoOYE9mEhtVz5X9KJ54grjNKBU+jw8B6W1w=; b=Iuh1A9R1TIT7W4
+	wVskeMp911NaL4QfCa6JWpg4djIO9mIrVAnHfKVAiLYGfxoFW9PDJd/HZPD5qGYq+8Wil0fD/Pq6m
+	1PNN4/wlZdyZCWr3nRRZfu6luCGmo01ALLxC+GmYcLkVa50zrF2gmZ/3laTDiky9ouqRLJPKy2NFz
+	bL2l6PT0WfBrPiiuipEhX7jkbEGj9JeUvGbleN9hwFCriHKpFgFi+2JuhyJAwOL45a9rSIm9OJxrA
+	QNFW+F+wfIJI8i4jYt8tsn9WmHNc+pycTeXBwOWM9aR3/4GZKECUuQqfqYWRhVs0YV04XRtt9WX6i
+	tXNIMAytihj6660E0gFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iADDE-0000Kx-AY; Tue, 17 Sep 2019 13:08:08 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1iAE8A-0002B8-Ir; Tue, 17 Sep 2019 14:06:58 +0000
+Received: from mail1.protonmail.ch ([185.70.40.18])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iADD8-0000K5-Vi
- for linux-riscv@lists.infradead.org; Tue, 17 Sep 2019 13:08:05 +0000
-Received: by mail-oi1-f193.google.com with SMTP id x3so1299527oig.2
- for <linux-riscv@lists.infradead.org>; Tue, 17 Sep 2019 06:08:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=g5v8FU71dAfo6AK8WTwyNN8dUr35hQbvr87IlwvE3Io=;
- b=V8xnicDxGWgleLbt1iFvpRt7tZ2DtduestlT47z/GdhRvUzdY7l4CSd6Nj7fclBBXe
- dsZVb/gyyZ6eMcm5ncpp8vk7cDlLP8yk4MGvb1Cq7tQLgKXjxaiqFrOdo2fqp6jm6D7l
- ip0ejLlELDlBPOccj0sSoX5/GU8F2WEl0fPI1Mn2PD5QhfgxXxn3lx3Y8WfccjoHJlgH
- KVP/KQjPlNw2ZIvATGQmJs1/OQ6W/l3k8IJvk42YrZtzdOgMAK9xJ1KC+r7kDUfoZDTU
- K/TDR6EnvLYAyu3VTSyuvH4UYO32UCp/qFKWLcFCO5BdAxaQEWHjOwM0vn9FYtlF0Vno
- FuPw==
-X-Gm-Message-State: APjAAAWd82AQ3f19thgvgCIckkbBgwojq6iPlqMd3dZmO4hEUSw5YLxs
- H2BjJy+7qmVBf78jTL44jziUxl7XyE2plOaDEcjVNwhc
-X-Google-Smtp-Source: APXvYqwaN0kfjgdIW7t8fVP0vFGof1Lyd2AQyOoUJABwhT7LNqO2zCq1HVMxQCezu3Iin5SuAjx5mTMktLbiN4Zh36M=
-X-Received: by 2002:aca:f305:: with SMTP id r5mr3356423oih.131.1568725681893; 
- Tue, 17 Sep 2019 06:08:01 -0700 (PDT)
-MIME-Version: 1.0
+ id 1iAE85-0002AX-CE
+ for linux-riscv@lists.infradead.org; Tue, 17 Sep 2019 14:06:55 +0000
+Date: Tue, 17 Sep 2019 14:06:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aurabindo.in;
+ s=protonmail; t=1568729209;
+ bh=IzxXyf9LUqJRZ0W8vp8MTxeBb0vPHdEwkUasYCPeF90=;
+ h=Date:To:From:Cc:Reply-To:Subject:In-Reply-To:References:
+ Feedback-ID:From;
+ b=CFMJ9hdKjn2aCG9YQCmmp71v8ZTD11TwZDi5LFDlbLfg6t3IFfSAePNh+sipGs7XN
+ Hm4SEN4SazYKJFhWytWwStqkkSXK8DZGWtY1tGwZtRimoSqUU7Y/Wwaj1WG6RhsOUx
+ wEAjEB1dU9dwC7y7HaRIgyFD1NvImDLS30YSqxw8=
+To: Paul Walmsley <paul.walmsley@sifive.com>
+From: Aurabindo Jayamohanan <mail@aurabindo.in>
+Subject: Re: [PATCH] spi: sifive: check return value for
+ platform_get_resource()
+Message-ID: <ij_UksEXUomr_L7KQam02lHBryAppgwKDjG90VbVcRRUeXlKU8TAiBWc3aU8vt20Wvlwt_6NDgz5fuMSwwP1mm-1eP6GYWoR1Kbr0y0ElRk=@aurabindo.in>
+In-Reply-To: <alpine.DEB.2.21.9999.1909170514130.11980@viisi.sifive.com>
 References: <20190917085627.4562-1-mail@aurabindo.in>
  <CAMz4kuJczzjTPSohQ=kbZ0Pr7U_9-hzXk-jPgKk79PENOM1-dA@mail.gmail.com>
  <alpine.DEB.2.21.9999.1909170514130.11980@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1909170514130.11980@viisi.sifive.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 17 Sep 2019 15:07:50 +0200
-Message-ID: <CAMuHMdW5VgFG3NrYpPmr0VY-oG4AV3itT7mk6jbpT2w3BH0vOw@mail.gmail.com>
-Subject: Re: [PATCH] spi: sifive: check return value for
- platform_get_resource()
-To: Paul Walmsley <paul.walmsley@sifive.com>
+Feedback-ID: D1Wwva8zb0UdpJtanaReRLGO3iCsewpGmDn8ZDKmpao-Gnxd2qXPmwwrSQ99r5Q15lmK-D8x6vKzqhUKCgzweA==:Ext:ProtonMail
+MIME-Version: 1.0
+X-Spam-Status: No, score=3.8 required=7.0 tests=ALL_TRUSTED,DKIM_SIGNED,
+ DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,URIBL_BLACK autolearn=no
+ autolearn_force=no version=3.4.2
+X-Spam-Level: ***
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on mail.protonmail.ch
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190917_060803_021776_8B0C5703 
-X-CRM114-Status: GOOD (  16.33  )
-X-Spam-Score: 2.1 (++)
+X-CRM114-CacheID: sfid-20190917_070653_740946_6176130B 
+X-CRM114-Status: GOOD (  17.08  )
+X-Spam-Score: 0.8 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (2.1 points)
+ Content analysis details:   (0.8 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.193 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (geert.uytterhoeven[at]gmail.com)
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [185.70.40.18 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
  1.7 URIBL_BLACK            Contains an URL listed in the URIBL blacklist
  [URIs: aurabindo.in]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.193 listed in wl.mailspike.net]
- 0.1 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,66 +80,68 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Baolin Wang <baolin.wang@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Aurabindo Jayamohanan <mail@aurabindo.in>, LKML <linux-kernel@vger.kernel.org>,
+Reply-To: Aurabindo Jayamohanan <mail@aurabindo.in>
+Cc: Baolin Wang <baolin.wang@linaro.org>,
+ "palmer@sifive.com" <palmer@sifive.com>, LKML <linux-kernel@vger.kernel.org>,
  linux-spi <linux-spi@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
- linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Paul,
-
-On Tue, Sep 17, 2019 at 2:16 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> On Tue, 17 Sep 2019, Baolin Wang wrote:
-> > On Tue, 17 Sep 2019 at 17:12, Aurabindo Jayamohanan <mail@aurabindo.in> wrote:
-> > > platform_get_resource() may return NULL. If it is so, return -ENXIO
-> > >
-> > > Signed-off-by: Aurabindo Jayamohanan <mail@aurabindo.in>
-> > > ---
-> > >  drivers/spi/spi-sifive.c | 6 ++++++
-> > >  1 file changed, 6 insertions(+)
-> > >
-> > > diff --git a/drivers/spi/spi-sifive.c b/drivers/spi/spi-sifive.c
-> > > index 93ec2c6cdbfd..67485067a694 100644
-> > > --- a/drivers/spi/spi-sifive.c
-> > > +++ b/drivers/spi/spi-sifive.c
-> > > @@ -308,6 +308,12 @@ static int sifive_spi_probe(struct platform_device *pdev)
-> > >         platform_set_drvdata(pdev, master);
-> > >
-> > >         res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > > +       if (!res) {
-> > > +               dev_err(&pdev->dev, "no IOMEM resource found\n");
-> > > +               ret = -ENXIO;
-> > > +               goto put_master;
-> > > +       }
-> >
-> > Seems unnecessary, the devm_ioremap_resource() already validated if
-> > the resource is available.
->
-> Just doublechecked lib/devres.c and I agree with you.
->
-> Aurobindo, is this a patch for a real problem that you've encountered?
-
-Probably not.
-
-The sequence can be replaced by a single call to
-devm_platform_ioremap_resource(), which BTW also doesn't check the
-intermediate result, as that's unneeded.
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+SGkgUGF1bCwKCuKAkOKAkOKAkOKAkOKAkOKAkOKAkCBPcmlnaW5hbCBNZXNzYWdlIOKAkOKAkOKA
+kOKAkOKAkOKAkOKAkApPbiBUdWVzZGF5LCBTZXB0ZW1iZXIgMTcsIDIwMTkgNTo0NSBQTSwgUGF1
+bCBXYWxtc2xleSA8cGF1bC53YWxtc2xleUBzaWZpdmUuY29tPiB3cm90ZToKCj4gT24gVHVlLCAx
+NyBTZXAgMjAxOSwgQmFvbGluIFdhbmcgd3JvdGU6Cj4KPiA+IE9uIFR1ZSwgMTcgU2VwIDIwMTkg
+YXQgMTc6MTIsIEF1cmFiaW5kbyBKYXlhbW9oYW5hbiBtYWlsQGF1cmFiaW5kby5pbiB3cm90ZToK
+PiA+Cj4gPiA+IHBsYXRmb3JtX2dldF9yZXNvdXJjZSgpIG1heSByZXR1cm4gTlVMTC4gSWYgaXQg
+aXMgc28sIHJldHVybiAtRU5YSU8KPiA+ID4KPiA+ID4gU2lnbmVkLW9mZi1ieTogQXVyYWJpbmRv
+IEpheWFtb2hhbmFuIG1haWxAYXVyYWJpbmRvLmluCj4gPiA+Cj4gPiA+IC0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+ID4KPiA+ID4gZHJp
+dmVycy9zcGkvc3BpLXNpZml2ZS5jIHwgNiArKysrKysKPiA+ID4gMSBmaWxlIGNoYW5nZWQsIDYg
+aW5zZXJ0aW9ucygrKQo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zcGkvc3BpLXNpZml2ZS5j
+IGIvZHJpdmVycy9zcGkvc3BpLXNpZml2ZS5jCj4gPiA+IGluZGV4IDkzZWMyYzZjZGJmZC4uNjc0
+ODUwNjdhNjk0IDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL3NwaS9zcGktc2lmaXZlLmMKPiA+
+ID4gKysrIGIvZHJpdmVycy9zcGkvc3BpLXNpZml2ZS5jCj4gPiA+IEBAIC0zMDgsNiArMzA4LDEy
+IEBAIHN0YXRpYyBpbnQgc2lmaXZlX3NwaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2KQo+ID4gPiBwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBtYXN0ZXIpOwo+ID4gPgo+ID4g
+PiAgICAgICAgIHJlcyA9IHBsYXRmb3JtX2dldF9yZXNvdXJjZShwZGV2LCBJT1JFU09VUkNFX01F
+TSwgMCk7Cj4gPiA+Cj4gPiA+Cj4gPiA+IC0gICAgICAgICBpZiAoIXJlcykgewo+ID4gPgo+ID4g
+Pgo+ID4gPiAtICAgICAgICAgICAgICAgICBkZXZfZXJyKCZwZGV2LT5kZXYsICJubyBJT01FTSBy
+ZXNvdXJjZSBmb3VuZFxcbiIpOwo+ID4gPgo+ID4gPgo+ID4gPiAtICAgICAgICAgICAgICAgICBy
+ZXQgPSAtRU5YSU87Cj4gPiA+Cj4gPiA+Cj4gPiA+IC0gICAgICAgICAgICAgICAgIGdvdG8gcHV0
+X21hc3RlcjsKPiA+ID4KPiA+ID4KPiA+ID4gLSAgICAgICAgIH0KPiA+ID4KPiA+ID4KPiA+Cj4g
+PiBTZWVtcyB1bm5lY2Vzc2FyeSwgdGhlIGRldm1faW9yZW1hcF9yZXNvdXJjZSgpIGFscmVhZHkg
+dmFsaWRhdGVkIGlmCj4gPiB0aGUgcmVzb3VyY2UgaXMgYXZhaWxhYmxlLgo+Cj4gSnVzdCBkb3Vi
+bGVjaGVja2VkIGxpYi9kZXZyZXMuYyBhbmQgSSBhZ3JlZSB3aXRoIHlvdS4KPgo+IEF1cm9iaW5k
+bywgaXMgdGhpcyBhIHBhdGNoIGZvciBhIHJlYWwgcHJvYmxlbSB0aGF0IHlvdSd2ZSBlbmNvdW50
+ZXJlZD8KPgo+IC0gICBQYXVsCgpHZWVydCBpcyByaWdodC4gSSB3YXMganVzdCBicmVlemluZyB0
+aHJvdWdoIHRoZSBzb3VyY2UgYW5kIGZvdW5kIGl0IG9kZCBzaW5jZQpJIG5vdGljZWQgb3RoZXIg
+aW5zdGFuY2VzIGNoZWNraW5nIGZvciByZXR1cm4gdmFsdWUuIEFwcGFyZW50bHkgbm9uZSBvZiB0
+aG9zZQp1c2UgdGhlIG1hbmFnZWQgYXBpLgoKSWYgeW91IGRpZG50IGFscmVhZHkgZG8gR2VlcnQn
+cyBzdWdnZXN0aW9uLCBoZXJlIGlzIGEgcGF0Y2g6Cl9fX18KCnNwaTogc2lmaXZlOiB1c2UgZGV2
+aWNlIG1hbmFnZWQgYXBpIHRvIGdldCBwbGFmb3JtIHJlc291cmNlCgpjYWxscyB0byBkZXZtX2lv
+cmVtYXBfcmVzb3VyY2UoKSBwcmVjZWVkZWQgYnkgcGxhdGZvcm1fZ2V0X3Jlc291cmNlKCkKbWF5
+IGJlIHJlcGxhY2VkIGJ5IGRldm1fcGxhdGZvcm1faW9yZW1hcF9yZXNvdXJjZSgpLgoKU2lnbmVk
+LW9mZi1ieTogQXVyYWJpbmRvIEpheWFtb2hhbmFuIDxtYWlsQGF1cmFiaW5kby5pbj4KLS0tCiBk
+cml2ZXJzL3NwaS9zcGktc2lmaXZlLmMgfCA0ICstLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
+dGlvbigrKSwgMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3NwaS9zcGktc2lm
+aXZlLmMgYi9kcml2ZXJzL3NwaS9zcGktc2lmaXZlLmMKaW5kZXggOTNlYzJjNmNkYmZkLi5jMDky
+NWFhOThhYWQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3BpL3NwaS1zaWZpdmUuYworKysgYi9kcml2
+ZXJzL3NwaS9zcGktc2lmaXZlLmMKQEAgLTI5Miw3ICsyOTIsNiBAQCBzaWZpdmVfc3BpX3RyYW5z
+ZmVyX29uZShzdHJ1Y3Qgc3BpX21hc3RlciAqbWFzdGVyLCBzdHJ1Y3Qgc3BpX2RldmljZSAqZGV2
+aWNlLAogc3RhdGljIGludCBzaWZpdmVfc3BpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
+KnBkZXYpCiB7CiAJc3RydWN0IHNpZml2ZV9zcGkgKnNwaTsKLQlzdHJ1Y3QgcmVzb3VyY2UgKnJl
+czsKIAlpbnQgcmV0LCBpcnEsIG51bV9jczsKIAl1MzIgY3NfYml0cywgbWF4X2JpdHNfcGVyX3dv
+cmQ7CiAJc3RydWN0IHNwaV9tYXN0ZXIgKm1hc3RlcjsKQEAgLTMwNyw4ICszMDYsNyBAQCBzdGF0
+aWMgaW50IHNpZml2ZV9zcGlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAlp
+bml0X2NvbXBsZXRpb24oJnNwaS0+ZG9uZSk7CiAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwg
+bWFzdGVyKTsKCi0JcmVzID0gcGxhdGZvcm1fZ2V0X3Jlc291cmNlKHBkZXYsIElPUkVTT1VSQ0Vf
+TUVNLCAwKTsKLQlzcGktPnJlZ3MgPSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UoJnBkZXYtPmRldiwg
+cmVzKTsKKwlzcGktPnJlZ3MgPSBkZXZtX3BsYXRmb3JtX2lvcmVtYXBfcmVzb3VyY2UocGRldiwg
+MCk7CiAJaWYgKElTX0VSUihzcGktPnJlZ3MpKSB7CiAJCXJldCA9IFBUUl9FUlIoc3BpLT5yZWdz
+KTsKIAkJZ290byBwdXRfbWFzdGVyOwotLQoyLjIzLjAKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1y
+aXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcmlzY3YK
