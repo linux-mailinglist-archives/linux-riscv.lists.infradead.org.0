@@ -2,8 +2,8 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67990B6997
-	for <lists+linux-riscv@lfdr.de>; Wed, 18 Sep 2019 19:34:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38514B699C
+	for <lists+linux-riscv@lfdr.de>; Wed, 18 Sep 2019 19:34:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,30 +11,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=+7L/2iK3ev4ZjwzJJOuNlQoBBD514IaX5pF4sXJXDU4=; b=q45JeEqWinmxR0mVvOKWJ5IGp/
-	+5QdsxLUyFlO2jcGvzN92iJViNTpjxACkKeBrUg7tBxZTpZJ0FvId+G6sAEa3j1xAa6oTk1FuCq8A
-	LZCv7Odpc+ohNs+KzVC9dCR24FBljneR2CdSv+v7HdBTVPNnPwiwCd/yBVSEQKnBL81EmKRQvn8Up
-	ALhbo/93WsqVPdkGfsz/RAejgkQKVlTeRDn4RwK8V66p1zGSOifEm34a1pVMUPHX6r9MX9yfYFV/w
-	exvfwlpFG45miI9Tvzuw9dWpwBawYwbi31h4UUuJBmsE9SHfL68xDhQgu1P0FCFCkqyVezQKx+P5b
-	+8qEonOw==;
+	bh=f89+nTK98a1VnVsSBnuSLo2qURbjtRlU/uibTn3asak=; b=dY2JnkJe3SDN6cfSb1pkOJ9MwP
+	E+tQJyKx2NNbjUCd+x/K4ITNMEsl39HEClYtQrpDwHhbkq296WEM/ANKktHBt8DfoU+LRJGYv/lG4
+	Z8yazvJSIQbHoAobuJshHDsTgf3NtYpREj73CU+y2uz99/tZIT5TqwSClVAnIhlc2PorY8PU92CXu
+	c844WAVLurhlaNbmtwJBNPMt0oSwSgeZjgGSelGAOOcJBcPkekZ3FxwsuC4cvIV4+8RVVAolx8unZ
+	lbCYnTIqA1a4XfzwBayJmWdD/Jyvi3ZufdNfWWDbB/gpcfTfpRRWBtcLmwDIoq01mHEkXYM5lrv5W
+	yrBJ12jQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iAdqB-0006Q0-RG; Wed, 18 Sep 2019 17:34:07 +0000
+	id 1iAdqb-0006pp-UX; Wed, 18 Sep 2019 17:34:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iAdod-0004tF-RD; Wed, 18 Sep 2019 17:32:34 +0000
+ id 1iAdok-000507-FH; Wed, 18 Sep 2019 17:32:40 +0000
 Received: from localhost.localdomain (unknown [194.230.155.145])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0D71221927;
- Wed, 18 Sep 2019 17:32:25 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D79D821928;
+ Wed, 18 Sep 2019 17:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1568827951;
- bh=TBN5rIG3E121IMHkSrsLKM0ttmkZlIGjy8Mb0Alnr2E=;
+ s=default; t=1568827958;
+ bh=E9DwEf7R8b/H/w/pY582iNh72DFD9zpZbpy6YjCJtCA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fjjw5xql6I5HcW6gX8TfXmC+EZWmaIAAquqmny3vaz+f84Sjkk0yHJy0LE8H7ZUX2
- y7Fcw+0k1ciNDrte9YZVLF7tyUnql3LcOve3Ps4wE9XSwAB8H0Ti0vYY7D9uTWDHa/
- GK5Xf6mtjT0yzXqCHN6Drr2cFsPOAMLePVUKF0ik=
+ b=xHEiwH/r63UQYy4j6Uf8KGGtFbl4pyX4olLMK84c3ybxPXAShOU6AW7FSUIC76wh0
+ 9foNamqzWle3Cgmi0S2/zX1D7GQgiwPMUPGJzBJkTKl0OzQP4UHOYYHcX9YiMaCUCb
+ 5WhDtUwJ68hJrzzVaxE139BLp3UdDCgJMgSlHHEU=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Thierry Reding <thierry.reding@gmail.com>, Matt Mackall <mpm@selenic.com>,
@@ -50,16 +50,16 @@ To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
  linux-crypto@vger.kernel.org, linux-watchdog@vger.kernel.org
-Subject: [PATCH v2 4/8] dt-bindings: memory-controllers: Convert Samsung
- Exynos SROM bindings to json-schema
-Date: Wed, 18 Sep 2019 19:31:37 +0200
-Message-Id: <20190918173141.4314-4-krzk@kernel.org>
+Subject: [PATCH v2 5/8] dt-bindings: watchdog: Convert Samsung SoC watchdog
+ bindings to json-schema
+Date: Wed, 18 Sep 2019 19:31:38 +0200
+Message-Id: <20190918173141.4314-5-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190918173141.4314-1-krzk@kernel.org>
 References: <20190918173141.4314-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190918_103232_202720_D6DEB353 
-X-CRM114-Status: GOOD (  18.78  )
+X-CRM114-CacheID: sfid-20190918_103238_717065_F5ABA075 
+X-CRM114-Status: GOOD (  14.32  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -95,7 +95,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Convert Samsung Exynos SROM controller bindings to DT schema format
+Convert Samsung S3C/S5P/Exynos watchdog bindings to DT schema format
 using json-schema.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
@@ -104,236 +104,127 @@ Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
 Changes since v1:
 1. Indent example with four spaces (more readable),
-2. Split examples into two,
-3. Fix pattern for subnode name,
-4. Remove checks for #address-cells-ranges-#size-cells,
-5. Add "additionalProperties" so the wrongly named subnodes would be
-   matched.
+2. Remove unneeded timeout-sec description.
 ---
- .../memory-controllers/exynos-srom.txt        |  79 -----------
- .../memory-controllers/exynos-srom.yaml       | 128 ++++++++++++++++++
- 2 files changed, 128 insertions(+), 79 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/memory-controllers/exynos-srom.txt
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/exynos-srom.yaml
+ .../bindings/watchdog/samsung-wdt.txt         | 35 ----------
+ .../bindings/watchdog/samsung-wdt.yaml        | 67 +++++++++++++++++++
+ 2 files changed, 67 insertions(+), 35 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/watchdog/samsung-wdt.txt
+ create mode 100644 Documentation/devicetree/bindings/watchdog/samsung-wdt.yaml
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/exynos-srom.txt b/Documentation/devicetree/bindings/memory-controllers/exynos-srom.txt
+diff --git a/Documentation/devicetree/bindings/watchdog/samsung-wdt.txt b/Documentation/devicetree/bindings/watchdog/samsung-wdt.txt
 deleted file mode 100644
-index f633b5d0f8ca..000000000000
---- a/Documentation/devicetree/bindings/memory-controllers/exynos-srom.txt
+index 46dcb48e75b4..000000000000
+--- a/Documentation/devicetree/bindings/watchdog/samsung-wdt.txt
 +++ /dev/null
-@@ -1,79 +0,0 @@
--SAMSUNG Exynos SoCs SROM Controller driver.
+@@ -1,35 +0,0 @@
+-* Samsung's Watchdog Timer Controller
+-
+-The Samsung's Watchdog controller is used for resuming system operation
+-after a preset amount of time during which the WDT reset event has not
+-occurred.
 -
 -Required properties:
--- compatible : Should contain "samsung,exynos4210-srom".
+-- compatible : should be one among the following
+-	- "samsung,s3c2410-wdt" for S3C2410
+-	- "samsung,s3c6410-wdt" for S3C6410, S5PV210 and Exynos4
+-	- "samsung,exynos5250-wdt" for Exynos5250
+-	- "samsung,exynos5420-wdt" for Exynos5420
+-	- "samsung,exynos7-wdt" for Exynos7
 -
--- reg: offset and length of the register set
--
--Optional properties:
--The SROM controller can be used to attach external peripherals. In this case
--extra properties, describing the bus behind it, should be specified as below:
--
--- #address-cells: Must be set to 2 to allow device address translation.
--		  Address is specified as (bank#, offset).
--
--- #size-cells: Must be set to 1 to allow device size passing
--
--- ranges: Must be set up to reflect the memory layout with four integer values
--	  per bank:
--		<bank-number> 0 <parent address of bank> <size>
--
--Sub-nodes:
--The actual device nodes should be added as subnodes to the SROMc node. These
--subnodes, in addition to regular device specification, should contain the following
--properties, describing configuration of the relevant SROM bank:
--
--Required properties:
--- reg: bank number, base address (relative to start of the bank) and size of
--       the memory mapped for the device. Note that base address will be
--       typically 0 as this is the start of the bank.
--
--- samsung,srom-timing : array of 6 integers, specifying bank timings in the
--                        following order: Tacp, Tcah, Tcoh, Tacc, Tcos, Tacs.
--                        Each value is specified in cycles and has the following
--                        meaning and valid range:
--                        Tacp : Page mode access cycle at Page mode (0 - 15)
--                        Tcah : Address holding time after CSn (0 - 15)
--                        Tcoh : Chip selection hold on OEn (0 - 15)
--                        Tacc : Access cycle (0 - 31, the actual time is N + 1)
--                        Tcos : Chip selection set-up before OEn (0 - 15)
--                        Tacs : Address set-up before CSn (0 - 15)
+-- reg : base physical address of the controller and length of memory mapped
+-	region.
+-- interrupts : interrupt number to the cpu.
+-- samsung,syscon-phandle : reference to syscon node (This property required only
+-	in case of compatible being "samsung,exynos5250-wdt" or "samsung,exynos5420-wdt".
+-	In case of Exynos5250 and 5420 this property points to syscon node holding the PMU
+-	base address)
 -
 -Optional properties:
--- reg-io-width : data width in bytes (1 or 2). If omitted, default of 1 is used.
+-- timeout-sec : contains the watchdog timeout in seconds.
 -
--- samsung,srom-page-mode : if page mode is set, 4 data page mode will be configured,
--			   else normal (1 data) page mode will be set.
+-Example:
 -
--Example: basic definition, no banks are configured
--	memory-controller@12570000 {
--		compatible = "samsung,exynos4210-srom";
--		reg = <0x12570000 0x14>;
--	};
--
--Example: SROMc with SMSC911x ethernet chip on bank 3
--	memory-controller@12570000 {
--		#address-cells = <2>;
--		#size-cells = <1>;
--		ranges = <0 0 0x04000000 0x20000   // Bank0
--			  1 0 0x05000000 0x20000   // Bank1
--			  2 0 0x06000000 0x20000   // Bank2
--			  3 0 0x07000000 0x20000>; // Bank3
--
--		compatible = "samsung,exynos4210-srom";
--		reg = <0x12570000 0x14>;
--
--		ethernet@3,0 {
--			compatible = "smsc,lan9115";
--			reg = <3 0 0x10000>;	   // Bank 3, offset = 0
--			phy-mode = "mii";
--			interrupt-parent = <&gpx0>;
--			interrupts = <5 8>;
--			reg-io-width = <2>;
--			smsc,irq-push-pull;
--			smsc,force-internal-phy;
--
--			samsung,srom-page-mode;
--			samsung,srom-timing = <9 12 1 9 1 1>;
--		};
--	};
-diff --git a/Documentation/devicetree/bindings/memory-controllers/exynos-srom.yaml b/Documentation/devicetree/bindings/memory-controllers/exynos-srom.yaml
+-watchdog@101d0000 {
+-	compatible = "samsung,exynos5250-wdt";
+-	reg = <0x101D0000 0x100>;
+-	interrupts = <0 42 0>;
+-	clocks = <&clock 336>;
+-	clock-names = "watchdog";
+-	samsung,syscon-phandle = <&pmu_syscon>;
+-};
+diff --git a/Documentation/devicetree/bindings/watchdog/samsung-wdt.yaml b/Documentation/devicetree/bindings/watchdog/samsung-wdt.yaml
 new file mode 100644
-index 000000000000..cdfe3f7f0ea9
+index 000000000000..3ea3c9fe8390
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/exynos-srom.yaml
-@@ -0,0 +1,128 @@
++++ b/Documentation/devicetree/bindings/watchdog/samsung-wdt.yaml
+@@ -0,0 +1,67 @@
 +# SPDX-License-Identifier: GPL-2.0
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/memory-controllers/exynos-srom.yaml#
++$id: http://devicetree.org/schemas/watchdog/samsung-wdt.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Samsung Exynos SoC SROM Controller driver
++title: Samsung SoC Watchdog Timer Controller
 +
 +maintainers:
 +  - Krzysztof Kozlowski <krzk@kernel.org>
 +
 +description: |+
-+  The SROM controller can be used to attach external peripherals. In this case
-+  extra properties, describing the bus behind it, should be specified.
++  The Samsung's Watchdog controller is used for resuming system operation
++  after a preset amount of time during which the WDT reset event has not
++  occurred.
 +
 +properties:
 +  compatible:
-+    items:
-+      - const: samsung,exynos4210-srom
++    enum:
++      - samsung,s3c2410-wdt                   # for S3C2410
++      - samsung,s3c6410-wdt                   # for S3C6410, S5PV210 and Exynos4
++      - samsung,exynos5250-wdt                # for Exynos5250
++      - samsung,exynos5420-wdt                # for Exynos5420
++      - samsung,exynos7-wdt                   # for Exynos7
 +
 +  reg:
 +    maxItems: 1
 +
-+  "#address-cells":
-+    const: 2
++  interrupts:
++    maxItems: 1
 +
-+  "#size-cells":
-+    const: 1
-+
-+  ranges:
-+    description: |
-+      Reflects the memory layout with four integer values per bank. Format:
-+      <bank-number> 0 <parent address of bank> <size>
-+      Up to four banks are supported.
-+
-+patternProperties:
-+  "^.*@[0-3],[a-f0-9]+$":
-+    type: object
++  samsung,syscon-phandle:
++    $ref: /schemas/types.yaml#/definitions/phandle
 +    description:
-+      The actual device nodes should be added as subnodes to the SROMc node.
-+      These subnodes, in addition to regular device specification, should
-+      contain the following properties, describing configuration
-+      of the relevant SROM bank.
++      Phandle to the PMU system controller node (in case of Exynos5250
++      and Exynos5420).
 +
-+    properties:
-+      reg:
-+        description:
-+          Bank number, base address (relative to start of the bank) and size
-+          of the memory mapped for the device. Note that base address will be
-+          typically 0 as this is the start of the bank.
-+        maxItems: 1
-+
-+      reg-io-width:
-+        allOf:
-+          - $ref: /schemas/types.yaml#/definitions/uint32
-+          - enum: [1, 2]
-+        description:
-+          Data width in bytes (1 or 2). If omitted, default of 1 is used.
-+
-+      samsung,srom-page-mode:
-+        description:
-+          If page mode is set, 4 data page mode will be configured,
-+          else normal (1 data) page mode will be set.
-+        type: boolean
-+
-+      samsung,srom-timing:
-+        allOf:
-+          - $ref: /schemas/types.yaml#/definitions/uint32-array
-+          - items:
-+              minItems: 6
-+              maxItems: 6
-+        description: |
-+          Array of 6 integers, specifying bank timings in the following order:
-+          Tacp, Tcah, Tcoh, Tacc, Tcos, Tacs.
-+          Each value is specified in cycles and has the following meaning
-+          and valid range:
-+          Tacp: Page mode access cycle at Page mode (0 - 15)
-+          Tcah: Address holding time after CSn (0 - 15)
-+          Tcoh: Chip selection hold on OEn (0 - 15)
-+          Tacc: Access cycle (0 - 31, the actual time is N + 1)
-+          Tcos: Chip selection set-up before OEn (0 - 15)
-+          Tacs: Address set-up before CSn (0 - 15)
-+
-+    required:
-+      - reg
-+      - samsung,srom-timing
++  timeout-sec:
++    $ref: /schemas/types.yaml#/definitions/uint32
 +
 +required:
 +  - compatible
++  - interrupts
 +  - reg
 +
-+additionalProperties: false
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - samsung,exynos5250-wdt
++              - samsung,exynos5420-wdt
++    then:
++      required:
++        - samsung,syscon-phandle
 +
 +examples:
 +  - |
-+    // Example: basic definition, no banks are configured
-+    memory-controller@12560000 {
-+        compatible = "samsung,exynos4210-srom";
-+        reg = <0x12560000 0x14>;
-+    };
-+
-+  - |
-+    // Example: SROMc with SMSC911x ethernet chip on bank 3
-+    memory-controller@12570000 {
-+        #address-cells = <2>;
-+        #size-cells = <1>;
-+        ranges = <0 0 0x04000000 0x20000   // Bank0
-+                  1 0 0x05000000 0x20000   // Bank1
-+                  2 0 0x06000000 0x20000   // Bank2
-+                  3 0 0x07000000 0x20000>; // Bank3
-+
-+        compatible = "samsung,exynos4210-srom";
-+        reg = <0x12570000 0x14>;
-+
-+        ethernet@3,0 {
-+            compatible = "smsc,lan9115";
-+            reg = <3 0 0x10000>;     // Bank 3, offset = 0
-+            phy-mode = "mii";
-+            interrupt-parent = <&gpx0>;
-+            interrupts = <5 8>;
-+            reg-io-width = <2>;
-+            smsc,irq-push-pull;
-+            smsc,force-internal-phy;
-+
-+            samsung,srom-page-mode;
-+            samsung,srom-timing = <9 12 1 9 1 1>;
-+        };
++    watchdog@101d0000 {
++        compatible = "samsung,exynos5250-wdt";
++        reg = <0x101D0000 0x100>;
++        interrupts = <0 42 0>;
++        clocks = <&clock 336>;
++        clock-names = "watchdog";
++        samsung,syscon-phandle = <&pmu_syscon>;
 +    };
 -- 
 2.17.1
