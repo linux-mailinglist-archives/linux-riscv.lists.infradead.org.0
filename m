@@ -2,72 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 604A5B79B6
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Sep 2019 14:48:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 036CEB79E1
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Sep 2019 14:55:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IgnxLCKdxqOs4YWEQpBkR3Qm0E7FW1369wgjDiFAxi4=; b=YGYoXgrzUZvKS1
-	s5WzOvLQFEnPZRb1RNF7Tqna7ZBBjH+ZSHkl28+WQvk0UXLP3XCSQrnGoLyQGViDC+fab48s3u8dy
-	gG140U7cgTTI35w9lyBHS0D2EHa97UeI5yqr46slSgz58+slIGyEl75RmX+KnHwZc/RAcbadAH2jS
-	V5PtvrdGWZ449/NphtqWRQjXIPmDXuenPKI1X0fuNvUjKLfchjzRTkf3AOZE0q9S+9GFO5eaR3dMP
-	52xlGt9tMPetMo/CnTqh5KIbzcek92JpSSNZlsKq25LVqf2+G/4TMGVBGo7F0oqkPFQwmuvDVm/cC
-	yQOvr7J/XVCf43HX8dKg==;
+	List-Owner; bh=Q+7hEgrHLZBo2t7xghO3HRooWDc2tjXpXw1o0JOR2+k=; b=Zh4FG/bzKIahWI
+	7JNJmf4sxbRe2B8mWLOUUSHSIDUoUi1kRPvxP2xNEPT7BN4d9I4C/oEd6aoIiWxrG3dhbVA5/yEiX
+	T7P2WKqStkGyrrv4TMgMrWmv2PeHhJBmPACIecrc5gGR4qtgOZ7ZEALLz/FkX68jv0IgvChjxSoC8
+	xPXk7q4CmC4Bf+yfBJMuCBjzBbFMzIU3JGpgmoQhet0XSTL9Jg//kpRfJ7ek/2QNn415eoRu27wdn
+	DjiQ/M5L2K/T3BoL//gog3KtuOLPeSAQYFj2R6pF68Tet8nDvSu25bhYMbEcds/EjpSb6PmV9Czpf
+	vcEC+Bw5HKRGQRuFdCvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iAvr0-0004ys-5m; Thu, 19 Sep 2019 12:48:10 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1iAvy7-0001dI-2Q; Thu, 19 Sep 2019 12:55:31 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iAvqu-0004yY-Is
- for linux-riscv@lists.infradead.org; Thu, 19 Sep 2019 12:48:05 +0000
-Received: by mail-wm1-x341.google.com with SMTP id b24so3797765wmj.5
- for <linux-riscv@lists.infradead.org>; Thu, 19 Sep 2019 05:48:03 -0700 (PDT)
+ id 1iAvxy-0001cs-3r
+ for linux-riscv@lists.infradead.org; Thu, 19 Sep 2019 12:55:23 +0000
+Received: by mail-wr1-x441.google.com with SMTP id l11so2991259wrx.5
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Sep 2019 05:55:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=MYdRvcf8Wu6iYU4KZrqesPzUMUB/hNH+Kmue7l+9/nk=;
- b=lkBxEenYPb1crgWNgulRmMTbLuL0WwnuqjTIsDC12hH2kru7EDSQgmhOcjfLsS2Jk3
- ABgD54lhrYPwJ800Z35+fP8QMtRKZXHuqqeXwr2cbCjhBMjtfSlu6AfMDeC1g0phOuKo
- 47gyysY/XiECljEYQd9XP864CMiha1mPLGIkeYEnk56uFbDwkMQ6ayn9oS1mH4+dRYdy
- lN3VMU4PgKtpMpOdCooXonokznRv/6vO0xAh38wTDy+EXLyi+OEDKD9yyW8DEYOFbGfA
- nqBY3bwn3D/jeQwGX7fQ4W2tt5Kf9zwXK7Aou6Uv8EIY96Pp6myOfVEzMHnb2EONUSQq
- +tvw==
+ bh=65/ywDMWrzjeCzGWCGYnBZeM7JciK2cM+apP1oaSTMo=;
+ b=aMXMVXNc+01+ALajqoxJSw001xwdNeYz8ol0SlDxQ23fL+trAlbYvQpAtgX5YMFRPk
+ boQx8cdnW+Hxop65M+odc7EH+HqEkw6/hVRPSgasuYXJlzjSidX52xTTaBXqjVeIpOXH
+ GC904JYvj30jGTfjm/qj+mgyoFJVo0MXRHWDe7VXTgz4rtIX/wWhTJjpVkb8sRohbjtF
+ BtdyqNCFKqVgCnQoxne1Pqu4uPeqYX7jQvJIkp2o4gdjFOMVHHEYarCoQEKR2P24i1J9
+ pNpq8ur/JCVRqiorhCqDxPsPVfR2THSMQ/Nfn3ectKGf7KOv6IpTUR9wtIFfi5nsfawp
+ Ey8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=MYdRvcf8Wu6iYU4KZrqesPzUMUB/hNH+Kmue7l+9/nk=;
- b=bD0HXfcQI46Z8xgq7Jg8zFvvxc/EHoExwphmvUVMvuwuFV3oTU78f6OxydUfEpz6zM
- KDUGXyRa1Cf1U/pRki7C0H/8EqTLJykT8IBXQoVOs1ClE9xA1QPXuenxcEM2P47q+9Tz
- kbEW23DWz3KcueamNdhD9b5P8NOabzfziLc2+PxmAslz0jSQKX/JgE32KpIo2f4vaJl8
- Hot+UmkWhbAHJT2tfYGQnm4mLQw85HLeioFsd2W6ue7Ho6A6OSxvnfeia7K0884xbdnE
- Sb9yP8OJPe6CgX4ipCfRca4HDbqcN1dq/g+HLy4RTC71AMAHUa/eOWnCFO0SQzjoXeCG
- MFDw==
-X-Gm-Message-State: APjAAAWNUp5QJezIQHBgUax31oH9/gKtD+0n86RGrMqhbrMHzskZ9czJ
- qcqVCtWQB2HyL2bUg4YTczCG9g==
-X-Google-Smtp-Source: APXvYqydehwYm+ahwWpH/f3NBX2IBYskx/Tbnvs3t7TW+OqeIpe325S9YIiHJ4OAPKbXggjNHdT+XQ==
-X-Received: by 2002:a1c:9d15:: with SMTP id g21mr2864034wme.96.1568897282781; 
- Thu, 19 Sep 2019 05:48:02 -0700 (PDT)
+ bh=65/ywDMWrzjeCzGWCGYnBZeM7JciK2cM+apP1oaSTMo=;
+ b=QX6xwuNx7jqpcjJ1mhoV1Oya2stazcSmXD0JAbxarj/bpxCFAcHJBEQr5AkPNJYpZU
+ qoPfeh9zdn2oqvrzFH8g+fxhxO7y7/+vSQVnJ8NjD8fScqhA78L6MxEebKexIMs+ZTeK
+ QHYKY+ZmDTr3Vt/8A6MNUh5D7Ygblk1udZHp0J80wtZdFdDvF+LziN9N3DEJ/ge1fuAc
+ WHzds2IUv9WqQLIX8nFxPaOsXl/lqPLrXbuBirTae0CuJokyFZI7pZlYLJygeKW3yg7Y
+ UQF4pHVnX/UDT2wuvoRnucMYIH6DoZJfTYEkYZbGO/CwTw5BrCHb/vuJw/EhZuIj6fk1
+ tD8A==
+X-Gm-Message-State: APjAAAUpCyTGgyeyJB7eupV2Ainnztv+Cx0Gxp7COPSvgYWBta30wXn/
+ uKw6OTsNPqSZ66sygB/+pqPGSw==
+X-Google-Smtp-Source: APXvYqzfX9Vgi3rEEb5XfbpNt8GsXKxAGn3g+PjDZmnfOKy+ytg28J4GtD1MxJfxDh88ZbWtbFr7XA==
+X-Received: by 2002:adf:ce91:: with SMTP id r17mr7277133wrn.97.1568897720776; 
+ Thu, 19 Sep 2019 05:55:20 -0700 (PDT)
 Received: from localhost ([109.190.253.11])
- by smtp.gmail.com with ESMTPSA id p85sm12581592wme.23.2019.09.19.05.48.01
+ by smtp.gmail.com with ESMTPSA id q3sm10364469wrm.86.2019.09.19.05.55.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Sep 2019 05:48:02 -0700 (PDT)
-Date: Thu, 19 Sep 2019 05:48:00 -0700 (PDT)
+ Thu, 19 Sep 2019 05:55:20 -0700 (PDT)
+Date: Thu, 19 Sep 2019 05:55:18 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH] riscv: dts: sifive: Add ethernet0 to the aliases node
-In-Reply-To: <1567687574-22436-1-git-send-email-bmeng.cn@gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1909190547110.12151@viisi.sifive.com>
-References: <1567687574-22436-1-git-send-email-bmeng.cn@gmail.com>
+Subject: Re: [PATCH v2] riscv: dts: sifive: Drop "clock-frequency" property
+ of cpu nodes
+In-Reply-To: <1567687553-22334-1-git-send-email-bmeng.cn@gmail.com>
+Message-ID: <alpine.DEB.2.21.9999.1909190555020.13446@viisi.sifive.com>
+References: <1567687553-22334-1-git-send-email-bmeng.cn@gmail.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190919_054804_638832_C5167613 
-X-CRM114-Status: UNSURE (   7.10  )
+X-CRM114-CacheID: sfid-20190919_055522_161907_7C1D417B 
+X-CRM114-Status: UNSURE (   5.84  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -75,7 +76,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:441 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -106,13 +107,11 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, 5 Sep 2019, Bin Meng wrote:
 
-> U-Boot expects this alias to be in place in order to fix up the mac
-> address of the ethernet node.
+> The "clock-frequency" property of cpu nodes isn't required. Drop it.
 > 
 > Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
 
-Thanks, queued for v5.4-rc with Christoph's Reviewed-by.
-
+Thanks, queued for v5.4-rc with Christoph's Reviewed-by:.
 
 - Paul
 
