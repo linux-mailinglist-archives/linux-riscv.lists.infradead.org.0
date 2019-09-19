@@ -2,67 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9E25B770D
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Sep 2019 12:03:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DBB1B7711
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Sep 2019 12:03:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ItM12t5SJRmBTnjBqY9tNKOLoZdYUXo693MHPlMKJKQ=; b=q5EM7etocBrwmM
-	exgoXa+ONN+H1HF4WujV9pqmk/UDWnP8EHzn/RXLEN+utJuDPPeIfPuMBnkbLM6RJB4tHKcLEaNnm
-	CIWvkXLOhL3C7FrXjgF5F4MKjdtlS8cQkzYJVv0swXCI0ckEpall3MjiVjw0bXAtRzx45XPyYWlyS
-	V1mfhJSMCJDCwKEHj9WaVtm596QWoExWzpXLgoU9tYSe9JthN6wgtFypdGWs0sFJuMTTPYLzkfLpF
-	N6Z/6CKXgx2Gp9A+8ryMZT+3FXBId/A7kLqa9V+EQxihyXhg36aZmmO6z6HUlgQOQl5GxBkDhBeU7
-	+VCC25atj0rGH68fMK5Q==;
+	List-Owner; bh=adnbJpmaHNZxjrZmhBBqpT2Ic9dvp2R9vKPoYF8VoqM=; b=mtfL1p+7BlZTVi
+	WspMeHUCyjSnV1nyx45Bs6f7Lg29QTFkG1bgSKi00bD9e/OLW76cmo2u+KkVSZathv8GgNv8OD8T9
+	xTFml9hC3v00kmSZuVUrYaqv0aiW9wH8thG65tl2/jwSqFWXLcwgFVBKMzGoEWXuz0b42FV7hYrcl
+	sebE5LfLgT8ZPOxoHreGkKzZYr+7vBG4c7D8YnYdQ820D3mGEJKjM2YKR4r+5baGp+v/QTeQLD2Uj
+	DtLv+JWDvPbJbVVBgW/ecD5lFPvt7EYoHoaaJasPYTCqinpoYqE+wum/yjJ4xkK5UodW6WCcPk55V
+	5v+7nZKp7bQqYTNIIwLQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iAtHJ-0001eD-PL; Thu, 19 Sep 2019 10:03:10 +0000
+	id 1iAtHZ-0001io-SM; Thu, 19 Sep 2019 10:03:25 +0000
 Received: from mail-yw1-xc42.google.com ([2607:f8b0:4864:20::c42])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iAtHD-0001dM-Qq
- for linux-riscv@lists.infradead.org; Thu, 19 Sep 2019 10:03:05 +0000
-Received: by mail-yw1-xc42.google.com with SMTP id e205so1012197ywc.7
- for <linux-riscv@lists.infradead.org>; Thu, 19 Sep 2019 03:03:02 -0700 (PDT)
+ id 1iAtHW-0001iR-O4
+ for linux-riscv@lists.infradead.org; Thu, 19 Sep 2019 10:03:23 +0000
+Received: by mail-yw1-xc42.google.com with SMTP id s6so1019304ywe.5
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Sep 2019 03:03:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LbfIr6OQXLdhxdBKJUGehYuATbbMYOVoX4Zq+xNFWpY=;
- b=vaIt1v1ngk2wUVJXcbIHoIHXLmL/TBHF0n04p8ml3Py/MA8g4KOQUuvYwT3L9s9lLi
- c9v3H+DCeAX4bH8w3y84lLDGBPr2tjgxd4n7PXQeYGJBGs2e/d9aeX1iCXoCeKVvSnEU
- opDhtHqI72jUR3nG0aCOgdYskGwyuPoqGWbUvQCJ4Cyt6bjzjYgSf6zi36QDsUfVkOUc
- ZjoQhb5/TqJsZfKGFPlX6WEXMPWejaQbqucBQsLipMfyl702ZXRD4bv3s7v/dh0LHXOd
- aaOnM5Vp0EB5wWTC/X7MgBmi3M+cfNVbZ8KDCF8QxdZHFW3zqusodkQ1qDSueoZJnZpJ
- cxwA==
+ :cc; bh=zGmzlodVkbk9PuySdktLAlK2VmjoJpMiz8CiaztLcU4=;
+ b=nFGvNcgj0OHpxFJumDa2Ovs/fwImiZSydMwB0fQRs7Sj36jRVuZJIIuOO5ApAelTOA
+ 41+k3YSD8KWYA0+DVMYrkmlQRtQahxf2XdExNPg9QM9grRok/u/IQoYo600PTY4wWx+w
+ 8eq6uhF8zpANSTkrQSDA572dz+LQkyERbhqLuyLAwqV/o9AWj+GT+DggQxWWYUq0dzW8
+ NiDsJu2Apx9YRyJnT3xoWduKO1f7SqvRB3mwcqRl4fcVYevQMizOvGS9UutDE/KcJ+l2
+ 30zf2EUg/wS6+NLvy6ErnWgqBTXHt9nYVujDa3qHC6Ro4Lak5s9hZdNJpMI66rRY2HsT
+ vq+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=LbfIr6OQXLdhxdBKJUGehYuATbbMYOVoX4Zq+xNFWpY=;
- b=tVwMRC+tIJuqntRVhal/kF+Rd6lOAyAgr0jIWWsIcFrEgXOPLKZdKZvh/SWIqHJM5l
- x5H1K/HBDZjbcmV8qQ755Bwa9EbPI7A96MgzshOrPmtkbc9b9kKjVwXPYN/2WcDaojsW
- piaGSm2asSGCm1owLRnWWZAvOQsYfWNbw3dH+f00qDjq9iEY34cMkvm1BPNnGpqjyAUT
- o9gxQq3viUKfurc8+aN0EUtWdbNkUs5ebdotPtNdMPUqiSAl7scaOPVLg6BYH7HuAwkx
- k4Qlnt3aAvHTFJKGfQjiicgwZllrj8EWtiUhs99aX1FQDHziUYxlEWRYLQHne27yLBqi
- +rPg==
-X-Gm-Message-State: APjAAAVObOFN1OlC6DVSzOMFgbSQ02x/1ou/6kVux3n9N+cJ4ecgC3Rn
- Wv1OMHLbXqrvLhwxtTaMYPfOYxnbV98cxKgnDL4=
-X-Google-Smtp-Source: APXvYqwm40n8QgsVc8kcRdeZ+GCKm2aFLW8M50nQbNWhjhpZ3gOFAMo8UIPXBM9A5RhIkOhVGakOs4Su+Xkizx3vc6g=
-X-Received: by 2002:a81:310f:: with SMTP id x15mr7045781ywx.257.1568887382238; 
- Thu, 19 Sep 2019 03:03:02 -0700 (PDT)
+ bh=zGmzlodVkbk9PuySdktLAlK2VmjoJpMiz8CiaztLcU4=;
+ b=fpvKqYCunvRdR7idzZlccDylwIcRHrHtiQ6vDhCr2kyi8e1svzFI/VkymNlBkhCnGH
+ k/r+PwoMb4oIJardpQt7laxATtMZnTKSx9IMDVA55BvjJUtQhJQRLnhgRNd/0GYghSmk
+ +yyop1HLbO1qzk2zLw+9IJthWcjmGcOsO3tFlUaYHwZe3HkliohSdKJuWeCr0eUZSVBM
+ EnGFu61XQO7JpNXl/nxl5mpSXclUfejJVZOG/8EL3NoOJUZujhgH6YlcPo5bJrrlWYal
+ fWAk5Y3z2OW4yRQAihAG0EFj1/DTcawYdhQoAiLHiVKgYg3+7W1nwcR5oLnkDmf9rbmj
+ l4bg==
+X-Gm-Message-State: APjAAAUNkpt5ZPWNFktmXu6fDXfjVDYxDJz5hOMUG5Wz6nkiXpYb2EXa
+ KhND5UT+fwKo/lcBao98L+Vcu8A3C7mfExAFxNkYi6wq
+X-Google-Smtp-Source: APXvYqzlpdC3yeqplykvZUm//SAQW27RajjuVHyWzNxKhwFHeDyDXhAPtXBfeBzqnd8lPooPdr3YBu/vcWAYZyJ984I=
+X-Received: by 2002:a81:a401:: with SMTP id b1mr6807528ywh.280.1568887402177; 
+ Thu, 19 Sep 2019 03:03:22 -0700 (PDT)
 MIME-Version: 1.0
-References: <1567687553-22334-1-git-send-email-bmeng.cn@gmail.com>
- <20190910061431.GB10968@infradead.org>
-In-Reply-To: <20190910061431.GB10968@infradead.org>
+References: <1567687574-22436-1-git-send-email-bmeng.cn@gmail.com>
+ <20190910061449.GC10968@infradead.org>
+In-Reply-To: <20190910061449.GC10968@infradead.org>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Thu, 19 Sep 2019 18:02:51 +0800
-Message-ID: <CAEUhbmVD8bfmELA30nLa-P5Y5CL4+z-R+bR5H=fKanuBrTNvwA@mail.gmail.com>
-Subject: Re: [PATCH v2] riscv: dts: sifive: Drop "clock-frequency" property of
- cpu nodes
+Date: Thu, 19 Sep 2019 18:03:11 +0800
+Message-ID: <CAEUhbmU+DhdSO729hGExs4uE3iufOFC2LEWPCug9hqvu21aM_w@mail.gmail.com>
+Subject: Re: [PATCH] riscv: dts: sifive: Add ethernet0 to the aliases node
 To: Christoph Hellwig <hch@infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190919_030303_894067_04F1FBDD 
-X-CRM114-Status: UNSURE (   7.36  )
+X-CRM114-CacheID: sfid-20190919_030322_780763_B72440A3 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -107,8 +106,9 @@ Hi,
 
 On Tue, Sep 10, 2019 at 2:14 PM Christoph Hellwig <hch@infradead.org> wrote:
 >
-> On Thu, Sep 05, 2019 at 05:45:53AM -0700, Bin Meng wrote:
-> > The "clock-frequency" property of cpu nodes isn't required. Drop it.
+> On Thu, Sep 05, 2019 at 05:46:14AM -0700, Bin Meng wrote:
+> > U-Boot expects this alias to be in place in order to fix up the mac
+> > address of the ethernet node.
 > >
 > > Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
 >
