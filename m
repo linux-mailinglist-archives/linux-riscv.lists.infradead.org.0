@@ -2,60 +2,70 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C25DFB8100
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Sep 2019 20:43:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F814B8855
+	for <lists+linux-riscv@lfdr.de>; Fri, 20 Sep 2019 02:08:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IoVI8VjJQYQ0fhigfErvi8lVu/cYDNN8SwkVNhVASmQ=; b=d9LjXSVSB+SCTT
-	Gzyzir+b3Xy3w/ByqDtjupGFw1aKexAA00H6zMV2NeHNUZ+B/rQD9o3HUj7rqvQzsyevmiatrbAQt
-	+Xl8sR8UbpzXqgYzb4BM3RsoV8jZnwb/qL/xeu0nMPElLHYrf90bFE0FZWmh6yIXh5UC21107+7/k
-	2Pfs6GdUK70dae29PU5Q9HXdJxDraCviH0xttpSdb+jb4AD4h1D314+ptt+j+1cUrWmmYuS5gLEER
-	AhH4bISvviURM9Uh4b418i6RYyzQqWhDUOzqzFa3SRQhAelSBCx4a8t3kZGDYWKhuv321fuNOBY0g
-	LFrXoIVooQWLtVFr9rWQ==;
+	List-Owner; bh=4Mi6dbXp/OlTH/v2LOJ6/IN7Lwqb5e0NfFIhZZWaQ58=; b=gKm7WLJGAbZ4SO
+	s1aF1HwDDhKLltA8v6TxkDz1vCnSyf0fevt17G/Dp3Nfq11/fiFkrNGZAmgSvLyForefcVqcB3Ara
+	rczXmJHe5WpLxikNC0UHqR51CVR0Q/IjK/sd2Rn8LRjUwfxyXoVsxYvg1iOTkNZmf7g3ExDlgWexE
+	b+chjj/CXFnnGh9ldR20u90Pr5XHuHrUK8maOviBwiXAtaFDSyk5xiiF+nb8masQOSb1BNRXM6ggM
+	o6gWxg+CA7jzh35uiasXev9zq8cjw1psk9p4obEoWVCj6pbE+0RNNU9NerKYNdeUzEJfXQxJgLOla
+	6pRlUObabfjHl/c2fhmw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iB1On-0001Kj-Ku; Thu, 19 Sep 2019 18:43:25 +0000
+	id 1iB6TI-0003FT-LZ; Fri, 20 Sep 2019 00:08:24 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iB1Of-0001Hs-GG
- for linux-riscv@lists.infradead.org; Thu, 19 Sep 2019 18:43:19 +0000
-Received: from mail-qt1-f176.google.com (mail-qt1-f176.google.com
- [209.85.160.176])
+ id 1iB6Ss-00034q-Cd; Fri, 20 Sep 2019 00:07:59 +0000
+Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com
+ [209.85.221.48])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B83D121D56
- for <linux-riscv@lists.infradead.org>; Thu, 19 Sep 2019 18:43:15 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D5BB821BE5;
+ Fri, 20 Sep 2019 00:07:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1568918595;
- bh=glOb8s+1ryg5HNxT7Y4/e5hT0T+6wfRsV2Bzu3qQtPU=;
+ s=default; t=1568938073;
+ bh=KAhGCSVOVtUtAdEEuBhsqNfJhp1wcq6UJPR1rEams+Q=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=OQeaODO9r7UEduye62Nwuxq/KXSRsnWU0sDeTKNIw+qnkGrG4m/YTdOl/c1kGiQbD
- 1NQ+K06ho/A5qPryH8kpCXMK/Hh59JJXTTj52/3afcOPhlgZokibHVX1Jn3XllJUME
- 3MTTtvPvvJg7TZzTdwqYBwvFpMFMdw/J+xS8tgLE=
-Received: by mail-qt1-f176.google.com with SMTP id x5so5538089qtr.7
- for <linux-riscv@lists.infradead.org>; Thu, 19 Sep 2019 11:43:15 -0700 (PDT)
-X-Gm-Message-State: APjAAAX7jmv+yXGxR7bnNzA6TFcKd4xj0Zr5eGoTA6JjfsVwW82ZDvUV
- y8u/z2XEHOhhRvj6XVzVAvoWGpPWKPuQOaPnhA==
-X-Google-Smtp-Source: APXvYqzYRjSHeCplQvU/HgHTr+JQ7fo3IMGXguIVIbJ4HeWjQJF0dBTtYzJPaRGSQESSfpc0180ARBKYP51e00zy3x0=
-X-Received: by 2002:ac8:75c7:: with SMTP id z7mr4916939qtq.136.1568918594807; 
- Thu, 19 Sep 2019 11:43:14 -0700 (PDT)
+ b=v5PB0HhvLmN/6ZaebrnHpnUH8NPDVNrrZqFQJxlbGHGW5BjN98ufBDZu0YRL8ANiQ
+ BHqOCR3wlr8v5DE9t9rfG9yqZ1DCDNMv6n2DSES9zAB5DSHPlgCTPmZGM6nLPW8pkH
+ s3npw8z3tv+lCr63gyPA3pj9qac4w4UP86/GKnD8=
+Received: by mail-wr1-f48.google.com with SMTP id q17so4904115wrx.10;
+ Thu, 19 Sep 2019 17:07:52 -0700 (PDT)
+X-Gm-Message-State: APjAAAWZhlOBFewReH5S6L9tNQj0//OJG5e+8MwVyjaece3fm5qgMr8V
+ NuPFmVpkrbL5ZgiVE8/V8nhalgtmOGEHXRf/SjA=
+X-Google-Smtp-Source: APXvYqzYKnFXikeBrYgOpER2Qjc+5Diq7t0DgzMJf2ATPzJa1qK18MTpVnoNyg+SDqozE2cOBqwBEvImB62CtwuT4PI=
+X-Received: by 2002:adf:fe0f:: with SMTP id n15mr9371291wrr.343.1568938071266; 
+ Thu, 19 Sep 2019 17:07:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190919072756.1973-1-green.wan@sifive.com>
-In-Reply-To: <20190919072756.1973-1-green.wan@sifive.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 19 Sep 2019 13:43:03 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLWV=V8ja1b4GoQRg+SxVx4cSYStV47jQE6WDz5ZU=NEw@mail.gmail.com>
-Message-ID: <CAL_JsqLWV=V8ja1b4GoQRg+SxVx4cSYStV47jQE6WDz5ZU=NEw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] dt-bindings: dmaengine: sf-pdma: add bindins for
- SiFive PDMA
-To: Green Wan <green.wan@sifive.com>
+References: <CAJF2gTTmFq3yYa9UrdZRAFwJgC=KmKTe2_NFy_UZBUQovqQJPg@mail.gmail.com>
+ <20190619123939.GF7767@fuggles.cambridge.arm.com>
+ <CAJF2gTSiiiewTLwVAXvPLO7rTSUw1rg8VtFLzANdP2S2EEbTjg@mail.gmail.com>
+ <20190624104006.lvm32nahemaqklxc@willie-the-truck>
+ <CAJF2gTSC1sGgmiTCgzKUTdPyUZ3LG4H7N8YbMyWr-E+eifGuYg@mail.gmail.com>
+ <20190912140256.fwbutgmadpjbjnab@willie-the-truck>
+ <CAJF2gTT2c45HRfATF+=zs-HNToFAKgq1inKRmJMV3uPYBo4iVg@mail.gmail.com>
+ <CAJF2gTTsHCsSpf1ncVb=ZJS2d=r+AdDi2=5z-REVS=uUg9138A@mail.gmail.com>
+ <057a0af3-93f7-271c-170e-4b31e6894c3c@linaro.org>
+ <CAJF2gTRbyfrUqAULPqJTXdxx8YOscPqAEuMsoJ+dTNobNrUV1g@mail.gmail.com>
+ <20190919151844.GG1013538@lophozonia>
+In-Reply-To: <20190919151844.GG1013538@lophozonia>
+From: Guo Ren <guoren@kernel.org>
+Date: Fri, 20 Sep 2019 08:07:38 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTQtk7VhBgUan6WOZgc3UaQzHL8SxMi=yiHG-8eC207BbQ@mail.gmail.com>
+Message-ID: <CAJF2gTQtk7VhBgUan6WOZgc3UaQzHL8SxMi=yiHG-8eC207BbQ@mail.gmail.com>
+Subject: Re: [PATCH RFC 11/14] arm64: Move the ASID allocator code in a
+ separate file
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190919_114317_637853_76C1D837 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20190919_170758_455712_9177A2EE 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -84,129 +94,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:DMA GENERIC OFFLOAD ENGINE SUBSYSTEM" <dmaengine@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, linux-hackers@sifive.com,
- linux-riscv@lists.infradead.org, "Paul E. McKenney" <paulmck@linux.ibm.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: aou@eecs.berkeley.edu,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Arnd Bergmann <arnd@arndb.de>, suzuki.poulose@arm.com,
+ Marc Zyngier <marc.zyngier@arm.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Palmer Dabbelt <palmer@sifive.com>, christoffer.dall@arm.com,
+ iommu@lists.linux-foundation.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Anup Patel <anup.Patel@wdc.com>, Atish Patra <Atish.Patra@wdc.com>,
+ Julien Grall <julien.grall@arm.com>, james.morse@arm.com, gary@garyguo.net,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, kvmarm@lists.cs.columbia.edu,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Sep 19, 2019 at 2:28 AM Green Wan <green.wan@sifive.com> wrote:
->
-> Add DT bindings document for Platform DMA(PDMA) driver of board,
-> HiFive Unleashed Rev A00.
->
-> Signed-off-by: Green Wan <green.wan@sifive.com>
-> ---
->  .../bindings/dma/sifive,fu540-c000-pdma.yaml  | 63 +++++++++++++++++++
->  MAINTAINERS                                   |  5 ++
->  2 files changed, 68 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
->
-> diff --git a/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml b/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-> new file mode 100644
-> index 000000000000..b5423f1cfcaf
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-> @@ -0,0 +1,63 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/dma/sifive,fu540-c000-pdma.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: SiFive Unleashed Rev C000 Platform DMA
-> +
-> +maintainers:
-> +  - Green Wan <green.wan@sifive.com>
-> +  - Palmer Debbelt <palmer@sifive.com>
-> +  - Paul Walmsley <paul.walmsley@sifive.com>
-> +
-> +description: |
-> +  Platform DMA is a DMA engine of SiFive Unleashed. It supports 4
-> +  channels. Each channel has 2 interrupts. One is for DMA done and
-> +  the other is for DME error.
-> +
-> +  In different SoC, DMA could be attached to different IRQ line.
-> +  DT file need to be changed to meet the difference. For technical
-> +  doc,
-> +
-> +  https://static.dev.sifive.com/FU540-C000-v1.0.pdf
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: sifive,fu540-c000-pdma
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    minItems: 8
-> +    maxItems: 8
-> +
-> +  interrupt-parent:
-> +    description:
-> +      Interrupt parent must correspond to the name PLIC interrupt
-> +      controller, i.e. "plic0"
-> +    maxItems: 1
+On Thu, Sep 19, 2019 at 11:18 PM Jean-Philippe Brucker
+<jean-philippe@linaro.org> wrote:
 
-This fails 'make dt_binding_check'. You shouldn't have
-'interrupt-parent' here anyways.
-
-> +
-> +  '#dma-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupt-parent
-
-It is valid for interrupt-parent to be in a parent node too, so
-required is wrong.
-
-> +  - interrupts
-> +  - '#dma-cells'
-> +
-> +examples:
-> +  - |
-> +    dma@3000000 {
-> +      compatible = "sifive,fu540-c000-pdma";
-> +      reg = <0x0 0x3000000 0x0 0x8000>;
-> +      interrupt-parent = <&plic0>;
-> +      interrupts = <23 24 25 26 27 28 29 30>;
-> +      #dma-cells = <1>;
-> +    };
-> +
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 49f75d1b7b51..d0caa09a479e 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -14591,6 +14591,11 @@ F:     drivers/media/usb/siano/
->  F:     drivers/media/usb/siano/
->  F:     drivers/media/mmc/siano/
 >
-> +SIFIVE PDMA DRIVER
-> +M:     Green Wan <green.wan@sifive.com>
-> +S:     Maintained
-> +F:     Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-> +
->  SIFIVE DRIVERS
->  M:     Palmer Dabbelt <palmer@sifive.com>
->  M:     Paul Walmsley <paul.walmsley@sifive.com>
-> --
-> 2.17.1
+> The SMMU does support PCI Virtual Function - an hypervisor can assign a
+> VF to a guest, and let that guest partition the VF into smaller contexts
+> by using PASID.  What it can't support is assigning partitions of a PCI
+> function (VF or PF) to multiple Virtual Machines, since there is a
+> single S2 PGD per function (in the Stream Table Entry), rather than one
+> S2 PGD per PASID context.
 >
+In my concept, the two sentences "The SMMU does support PCI Virtual
+Functio" v.s. "What it can't support is assigning partitions of a PCI
+function (VF or PF) to multiple Virtual Machines" are conflict and I
+don't want to play naming game :)
+
+-- 
+Best Regards
+ Guo Ren
+
+ML: https://lore.kernel.org/linux-csky/
 
 _______________________________________________
 linux-riscv mailing list
