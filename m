@@ -2,76 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 443F1B90A9
-	for <lists+linux-riscv@lfdr.de>; Fri, 20 Sep 2019 15:29:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 756B1B9440
+	for <lists+linux-riscv@lfdr.de>; Fri, 20 Sep 2019 17:41:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x3odJlCkpLC1Wvqs5Dgrf5MMAENnGqRJjqQFnwFC6Z8=; b=LNlTo7Hy6w3fMc
-	z+0QNG1k6hpeiKW3CmPEbosceRjPGlgtGFY+uPsIOVWIPm2Kw6mLJfylrKh5RUQXl3i0i8jarl7eI
-	925M3dPlEqqQh50D6P97w7/8FE+Yk70rdwerxmi/1a8UOIssZcWhJkpF4usFnlaFO1wOB6CiPYIhv
-	8SD+2AzG7X4nzpoBxmXZ2eQkaK93a+3l1uBBCbHFoKA6jZ5Z9+FuKG0I4IrHvKLJ2wt1tG7T1wHHo
-	MwIj+yDiUDbkEPrD7xOjDQCDV1yr2jXmbN3W5HqFOkGIqoY23BcF2YSeSbBufP2X/jqLlJ0oocPpS
-	RNkr2sBcPhWPcJlWTcsA==;
+	List-Owner; bh=9N9MSYGsvI2qK3qA83kLt0ZAkbnDr5ZRALrj+cF88+8=; b=crmhL+3zz84lyv
+	G4BlaIl8aNbKIaypZK54R5xoKU74huyj7bIJ+qmPx7z6o/LhmOLTMzbKVtKZtKpOtYQSFS7NXTjg+
+	9VJWXQeo/PK7YI3sVt8EjckJcZIfa03Hc8wgFrne/WWnKh6zhfSqNlFw2a2LtAdFViqh6H41uxpak
+	XrG9Svf7OfvBYlMaEvN/oJ3tjWQVECw9wnHkwRXVpkcPZTxbj0DSLG51unVnpC8F2tJUrdBlZWVoS
+	38Yz7MG/J5u2CZy/leZ83c34OZbdG5Z4XrS6hNFRG51H6P2b7o3wLn0NLuHedySLzjjyJZXi2bT/F
+	XxGLPuIAB0GIAkg9DGkw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iBIy9-0007Kw-3G; Fri, 20 Sep 2019 13:29:05 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1iBL2Z-0000As-Fe; Fri, 20 Sep 2019 15:41:47 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iBIy5-0007K6-Od
- for linux-riscv@lists.infradead.org; Fri, 20 Sep 2019 13:29:03 +0000
-Received: by mail-ot1-x343.google.com with SMTP id s22so6177316otr.6
- for <linux-riscv@lists.infradead.org>; Fri, 20 Sep 2019 06:29:00 -0700 (PDT)
+ id 1iBL2W-0000AY-Gc
+ for linux-riscv@lists.infradead.org; Fri, 20 Sep 2019 15:41:45 +0000
+Received: by mail-wm1-x342.google.com with SMTP id y21so2736583wmi.0
+ for <linux-riscv@lists.infradead.org>; Fri, 20 Sep 2019 08:41:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e1EFKSI2taSOuRAW19A6gM/LOvRhsiSAjxhmMibFXx8=;
- b=AF1H2hPLVVGNc+OiNsqAjyKg8k+pL+BHKPOnn4mgK/uS3ttkHlL+v9rg5rnlbRuzYW
- 6GAFAllYHLe4G5GMp+MxPWpyWWpZvDcLb6yq6VydzUIE+r0SyCY13Z0SkkqjPor5odeg
- nE4WRem05gKBGGA/aESGTm9OV2DQufZk18wN6ZD5n5mNeWGSxntxtCtOppZMOVNPotgZ
- Nvbjg/AkYxhuAL7guoueUUHYygUNzmv4uKHDLNgggyvnbdDVczwqeUMRUv0D80/ndspo
- At1eaFi2Ci/Nd4QodoPs9JSqKQ3s3qjiTbKptc3Ur04E7qR5kwGHLS8VB9novgt4gId6
- FB/w==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=Xv40uHTBnQKi7ek6wxrI7XSP2Xg7D4dtkThas3W0BIA=;
+ b=DE9rGtF/QU58K8xulSxPWbvJ2lzUeXxbsZ2GKcFJSBKusu1CmofbZxSz2wnVQ+ywTq
+ kYbdol8Qp1+cNoA0Vwi2BxL5Drqf021jPLmMdFN0vYrwDlCDQWNB15w+GMAs/+5X0HFr
+ dEXLUk3YFQbUi0zoEHYujgon8JhsgFivu1lYCGmmaXuhNMFSCxPkA7RpAN+6XFulLeO6
+ Bf9L8hJBUfZ/83TBpb+8UwKT9q+i0yXQRm9JV3X+P88aX3S+vlvBt49cSLOzn1GYTHsm
+ m9D+vjtQZo3AE2yhxjxA4gptGaN6v5ca6JLBNb+D8fdORJeX2Vm9F0ZhXHXCg10xKcxz
+ Qlxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=e1EFKSI2taSOuRAW19A6gM/LOvRhsiSAjxhmMibFXx8=;
- b=rV0Prx4bFsnJzFxQQpSz3PpJ5dqKk5x4AkVcOMi+8Xpc+at0FhBgMspvwFPnk6WO0y
- veq/ipIY1pBP43hQYclJIRuRdJ1IC6hx1UyMp9EnTTJfmzwCiDR2e1nu1AKQDC6fEvTv
- WyqsDwGWnJbTVnRxuqt0XCDt1nVO87lcMgqswpWTZYO3/NcBqhVhq9Eqf10KAqprYSmQ
- FljtE0gg4ygUBjHKp2PlW8NxF5pcSGw7m9FkWcEtLk8WcGv7h/x5itWtZ4Ymco2PUPmL
- KW8JH5lC+8KY/zR0whqMxYHliSePh8ZYYzj7LK89KdXOoXrPc6MFrzZG909pAC0UYViP
- QSiQ==
-X-Gm-Message-State: APjAAAV4OXpERQ+WWRes+0M+0woSXzbXYaMmgRrcz2xHlNh4xAJxtApd
- +89AXNRvs9XA3wvwtUch1wAJMpQASRcg7+DZNhmGvQ==
-X-Google-Smtp-Source: APXvYqyPEEVYGqYC4zvTbO/6W6S45SlzHK0YpaI9OdY6IVv6zKDyKISjMw/3lHYqjdiirbdck92GKcdyAa/1P07TNGc=
-X-Received: by 2002:a9d:4e1e:: with SMTP id p30mr11740947otf.224.1568986140111; 
- Fri, 20 Sep 2019 06:29:00 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=Xv40uHTBnQKi7ek6wxrI7XSP2Xg7D4dtkThas3W0BIA=;
+ b=cH+cQftq0Ds9pA5+OjOXuHDuODQWE1A3g+HkMyVo7GCHapkYNl5EKbxwdXSQZxmygU
+ +0T35Z6tbikG3Rjn6djCQa5wjiX6C0gv1PfffUZSPDaLZLZz9Zk1zyX/gANWekfNtrN2
+ MYUhgKQ5MjnVeDyleQCsEZQparrfN/IHq/eg6hB6l8dmk0VQApd1yXfoMdKTS3BOax85
+ qK1SoO1Otu6SiWLvnz0+YHUy8sOfUdo1A+CwUhUrfaBR0bENn9gkBoCbJGe00YNoNPA3
+ Ennnc/sjKcBcMU7r3+ggHquC/TSkWWAnYcSFX0zpRM8E46LFvy6dcZ78r+GAPHQyWdQv
+ V+Dg==
+X-Gm-Message-State: APjAAAUrqfYH7SmjPhttjAFwy8PJxFk1Ls7O1NIFcZ1BTll/r4VPykjC
+ lFTgRgJfySz39J63bmhS8eaMLw==
+X-Google-Smtp-Source: APXvYqx0L/7KeU2Qshq4qSA1RuWSp0Tp1zwhgcXLHjMp7WemaABMruhTDWLceD9B42F/X/UOftL8Mg==
+X-Received: by 2002:a05:600c:294f:: with SMTP id
+ n15mr3929123wmd.157.1568994102404; 
+ Fri, 20 Sep 2019 08:41:42 -0700 (PDT)
+Received: from localhost (lmontsouris-657-1-212-31.w90-63.abo.wanadoo.fr.
+ [90.63.244.31])
+ by smtp.gmail.com with ESMTPSA id f83sm3231184wmf.43.2019.09.20.08.41.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Sep 2019 08:41:41 -0700 (PDT)
+Date: Fri, 20 Sep 2019 08:41:41 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Vincent Chen <vincent.chen@sifive.com>
+Subject: Re: [PATCH] riscv: Avoid interrupts being erroneously enabled in
+ handle_exception()
+In-Reply-To: <1568623661-16779-1-git-send-email-vincent.chen@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1909200841300.10826@viisi.sifive.com>
+References: <1568623661-16779-1-git-send-email-vincent.chen@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <3c0eb4e9-ee21-d07b-ad16-735b7dc06051@bluespec.com>
- <mhng-df6c7aad-d4fd-4c44-96c8-bf63465e0c97@palmer-si-x1c4>
- <20190916223323.07664bc2@why>
- <alpine.DEB.2.21.9999.1909170525170.30255@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1909170525170.30255@viisi.sifive.com>
-From: David Abdurachmanov <david.abdurachmanov@sifive.com>
-Date: Fri, 20 Sep 2019 16:28:48 +0300
-Message-ID: <CAPSAq_y8x7AxU1jA25_9DRtHnup1w6AZTjgj-iQ1F3n-FH3+DA@mail.gmail.com>
-Subject: Re: [PATCH] irqchip/sifive-plic: add irq_mask and irq_unmask
-To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190920_062901_866769_66A554F3 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190920_084144_586677_EC702A3E 
+X-CRM114-Status: GOOD (  11.31  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -93,57 +99,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: jason@lakedaemon.net, Marc Zyngier <maz@kernel.org>,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- Darius Rad <darius@bluespec.com>, linux-riscv@lists.infradead.org,
- tglx@linutronix.de
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Sep 17, 2019 at 3:26 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
->
-> Just tested this on the SiFive HiFive Unleashed.  Seems to work OK;
-> however I did not stress-test it.
->
-> Tested-by: Paul Walmsley <paul.walmsley@sifive.com> # HiFive Unleashed
->
->
-> - Paul
->
->
-> # !cat
-> cat /proc/interrupts
->            CPU0       CPU1       CPU2       CPU3
->   1:          0          0          0          0  SiFive PLIC   5  10011000.serial
->   3:          0          0          0          0  SiFive PLIC  51  10040000.spi
->   4:       6266          0          0          0  SiFive PLIC   4  10010000.serial
->   5:        102          0          0          0  SiFive PLIC   6  10050000.spi
->   6:         37          0          0          0  SiFive PLIC  53  eth0
-> IPI0:      1134      21128       9024     220261  Rescheduling interrupts
-> IPI1:        10        143         18          7  Function call interrupts
-> IPI2:         0          0          0          0  CPU stop interrupts
-> #
+On Mon, 16 Sep 2019, Vincent Chen wrote:
 
-I have applied the patch on top of 5.2.9 kernel and tried to stress it
-with stress-ng interrupt stressors for 2:30+ hours.
+> When the handle_exception function addresses an exception, the interrupts
+> will be unconditionally enabled after finishing the context save. However,
+> It may erroneously enable the interrupts if the interrupts are disabled
+> before entering the handle_exception.
+> 
+> For example, one of the WARN_ON() condition is satisfied in the scheduling
+> where the interrupt is disabled and rq.lock is locked. The WARN_ON will
+> trigger a break exception and the handle_exception function will enable the
+> interrupts before entering do_trap_break function. During the procedure, if
+> a timer interrupt is pending, it will be taken when interrupts are enabled.
+> In this case, it may cause a deadlock problem if the rq.lock is locked
+> again in the timer ISR.
+> 
+> Hence, the handle_exception() can only enable interrupts when the state of
+> sstatus.SPIE is 1.
+> 
+> This patch is tested on HiFive Unleashed board.
+> 
+> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
 
-# cat /proc/interrupts
-           CPU0       CPU1       CPU2       CPU3
-  1:          0          0          0          0  SiFive PLIC   5
-10011000.serial
-  3:          0          0          0          0  SiFive PLIC  51  10040000.spi
-  4:      34240          0          0          0  SiFive PLIC   4
-10010000.serial
-  5:        102          0          0          0  SiFive PLIC   6  10050000.spi
-  6:          0          0          0          0  SiFive PLIC  53  eth0
-  7:          0          0          0          0  SiFive PLIC  32
-microsemi-pcie
-IPI0:  32013933   28068736   29345256   23346339  Rescheduling interrupts
-IPI1:     78514      78586      63144     100317  Function call interrupts
-IPI2:         0          0          0          0  CPU stop interrupts
+Thanks very much.  Queued for v5.4-rc.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
