@@ -2,79 +2,92 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00E5DB9C4B
-	for <lists+linux-riscv@lfdr.de>; Sat, 21 Sep 2019 06:35:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A19DB9D40
+	for <lists+linux-riscv@lfdr.de>; Sat, 21 Sep 2019 12:02:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2N2cK4o3ec30tFoHah/2mhjW3s2PXa8ZPnRrHm7jwPY=; b=hkDR4JWfmJCZEr
-	+GsMaL1yNbIB1H4dggegQqsIyJuccu9yPuRGemqBbAM4QoFsg7zwW98K7pX6j5chfBeuzf/D6i6UC
-	1zKtjH/CKGIVlEcqINOGDgoeOrgmOcxthVpEGQjb+RVs7B8jGah4KiUJq7PtA8BTimi1xwUhQWaqH
-	Ebp2XQQdATVcORx/IRmAjw2nMI2Mt1qx9CVFRaZwZk6f0OnYD+H6nBzuoCI+spQ266PoDeNiafW3a
-	TVFpJySR5ersM49w2LxIz79s3Ptt4ecIomMZ2E7OtYza1y0MLg4GsyK00GhXphdgciGnfOrHgtltQ
-	kU9jsmLuQ3wjOdNgNkpA==;
+	List-Owner; bh=OHc7VbL0baUcv7M0JXkiDbKzikjGCYXUq06gRIgJz+g=; b=ugVm3/vAkHHZ+P
+	U740SfrC+RoKAMxYdk0nHoQFGmD9ilQq80dsBljUXCucc+GUF4BdyU4X3Vs23S9DlRMSBPMG77sQ5
+	wjCPOswQfH3lbzqkmj0n5iEjveJaIDEJI6HOd5mRyFxLCkbKaeBrpMKWeh0Q6T/3AIp3570zfMgFy
+	4+6cskbstVsZs8MZT7y3PML7fZ6hV0V6kyvYiYNL/6WIP2bXIYh5HPQhOdlClZoZM8FkaDby2jp8o
+	44SOkqFcxQL8yMRCzLEhJJ06S+rYR2FZuKSqEUDePe66+Ss/U/BYwHaMhRv8Z+X8tVMQU9UsrkQkf
+	SpFEJM6ChwDcML+uNcSg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iBX76-000604-FU; Sat, 21 Sep 2019 04:35:16 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1iBcD5-0006ox-Rg; Sat, 21 Sep 2019 10:01:47 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iBX73-0005zi-3w
- for linux-riscv@lists.infradead.org; Sat, 21 Sep 2019 04:35:14 +0000
-Received: by mail-wm1-x344.google.com with SMTP id m18so4026935wmc.1
- for <linux-riscv@lists.infradead.org>; Fri, 20 Sep 2019 21:35:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pGKiDGF7pcSXfE/kXL5zm3CUq0K5jLTeFExSKLR0vc0=;
- b=yqJ3L9P0c2mDdv0+ntW2WM0jo5HFKquFuU36IwxqO8xkVoiET+QUZ9DAmfBIPONPxZ
- Zy7dSSNhnzJeRAuplQwrb7c5am6JBUou1wSYba8U6qoeMZEgqaduhJpGxLUAOcDtHsHS
- by7/5mjC1/ioJHGEPU2PplfjqD9t1TawkOZeLxG8oFL0EGdNh1OD4FDoboE4542o16bx
- DBw6St20spsXZ1Eiw2m3nWIi/NTDLsNAUe0e+qn0XQxImOHhLhVsFxaVhK8A6i/Lft6F
- +osnK/bjjn8LSs4xb6Jxu3XxBPXob9XLMZPc0kc2Oz8oJtJwxmMAVqYu0+UgqSXp5UWj
- h/4g==
+ id 1iBcCw-0006ob-L8
+ for linux-riscv@lists.infradead.org; Sat, 21 Sep 2019 10:01:40 +0000
+Received: by mail-ot1-x344.google.com with SMTP id 67so8296947oto.3
+ for <linux-riscv@lists.infradead.org>; Sat, 21 Sep 2019 03:01:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=IH+HLtM3m/3AdPUwWj10yu5azF09YSyrzk+IE7lz+/c=;
+ b=Fjk5VEoH5TXP2GebQ8rtvVO7k9C2SXvanErm1z29Ux6o9KEmemDWy4J5YavIqS1uhz
+ ciEkXtoyKr9e0ZEDCPCY3hR1EHJw+u2cLLz+NLb4Mue3jxoRiONck0rrPTK9sSX7DgAA
+ 0oSzI8Gky1LOekb3pThUJsHuuLUvQ5ZW4Nd06XqXZwjZwjoc/McC+6yjy9/gujgon9Mn
+ 4l+iuQeFGCkuofllZWdd9TewxT7mZmI0dGTmdqTOKUh7U9WyN3+YUXgIG7hxs+vHZFap
+ ZeZMaadQmZPnKHajASa834VOs1nMVjtUJfOU4eaHrEtjrU3cqmRHqtgGhWFAcZ5SsHyw
+ 9JiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pGKiDGF7pcSXfE/kXL5zm3CUq0K5jLTeFExSKLR0vc0=;
- b=hK9Dmi2hp2NyfnJ/eyYXGxXgdjSORBGvFALrKY9GZWMIgdKvj8EAlhBGnI1iArsncP
- KhUlPWS0FkRrzAd/sM/RKCDnZZ6mBc32TvNtOauIG1X2zJSirpJL/tHGBOZKyHtn36VO
- QRrPbT3SCcGtzuNCt0YycGrFC8qEZgZnVUb7Q3fWj0ssYJslgqYp8CwNLcABJwMIswE+
- KBS0bBzERtmfaoHUs9bungcA682YdKpZRJcjyP6yrl3PbSxVLxpDTGTUdW92kibR5F4I
- lPv95I32wfE/gSf9F7LvMTAdD+ZgVgMkJzLvVwcJE1d8+ZiWRHKnI6HqQ3RSnChB5CW1
- FjPQ==
-X-Gm-Message-State: APjAAAVDecPx5XtdGXfZoz5Iqd9CIJLtbs8UBUlvCJqnDBKAVPzDDOgL
- HqtmDjbZopvyYoGbUM1dq9jZ1hbFfl/2Quo0E5dYeg==
-X-Google-Smtp-Source: APXvYqwZD5IWYiY39/ejS1DIfSMyd7f1VHWu0q0kwqBJZrxWeQyC+5jzlEApT/9Nt2UxRbi8CQZihLGKPqlM4A+5p/M=
-X-Received: by 2002:a1c:80ca:: with SMTP id b193mr5263971wmd.171.1569040509087; 
- Fri, 20 Sep 2019 21:35:09 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=IH+HLtM3m/3AdPUwWj10yu5azF09YSyrzk+IE7lz+/c=;
+ b=ZU7QI3ICt4urOtlYTxkj30DwvLZAquuPKxvmfIOOj8jC8zafs05l2KmeBv8+6DjIp/
+ f7XT3m+ybS/Fm7JHpZsQtVCkNHAyy2FeCUvEkFONeGxE3AvxN7e6p3/VpMQI4Eq55eL+
+ d6g8DjxzDYo5BodRYG/PflVb7MggWO7Fu/+vIfCEZ7pNb7j8GnVQprSHDnXy1fS7kGOC
+ cKb4wiJEI4gyb2OJO6K71I8EqckX76fagemtpJMCquvqHbvWcowfr58rwDua8byYZotY
+ QqLDi5dyCrrfWYUvksz/6v4MNCfDw3W/clLLeBBfF3CZKfcQmPihA70u5tR9lY6jGGld
+ RKBw==
+X-Gm-Message-State: APjAAAVCPoAXz9qbCPSGVBrJS7VNBayENP65eWyzdzW/IwwPxKutAapS
+ X5WZWXeUinGXMQ/hD2Ew5RVuag==
+X-Google-Smtp-Source: APXvYqzpSdwksOxrecA2OELNPx8yrVtpI8N9Oju4ihq+H1WOvzlOgo63k6TAq41Ye4rLUkc7UInGjg==
+X-Received: by 2002:a05:6830:1e2b:: with SMTP id
+ t11mr4492721otr.119.1569060094783; 
+ Sat, 21 Sep 2019 03:01:34 -0700 (PDT)
+Received: from localhost (184.sub-174-206-23.myvzw.com. [174.206.23.184])
+ by smtp.gmail.com with ESMTPSA id l17sm1309105oic.24.2019.09.21.03.01.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 21 Sep 2019 03:01:34 -0700 (PDT)
+Date: Sat, 21 Sep 2019 03:01:27 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Anup Patel <Anup.Patel@wdc.com>
+Subject: Re: [PATCH v7 02/21] RISC-V: Add bitmap reprensenting ISA features
+ common across CPUs
+In-Reply-To: <20190904161245.111924-4-anup.patel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1909210245000.2030@viisi.sifive.com>
+References: <20190904161245.111924-1-anup.patel@wdc.com>
+ <20190904161245.111924-4-anup.patel@wdc.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <20190921010002.61006-1-aou@eecs.berkeley.edu>
-In-Reply-To: <20190921010002.61006-1-aou@eecs.berkeley.edu>
-From: Anup Patel <anup@brainfault.org>
-Date: Sat, 21 Sep 2019 10:04:57 +0530
-Message-ID: <CAAhSdy3iTBeQcG0D=J7nYYudnDsEw6GN5FJ4fPCftUwvgGwjwg@mail.gmail.com>
-Subject: Re: [PATCH] riscv: Fix memblock reservation for device tree blob
-To: Albert Ou <aou@eecs.berkeley.edu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190920_213513_212241_A602A5D0 
-X-CRM114-Status: GOOD (  23.33  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190921_030138_734137_434D4ED5 
+X-CRM114-Status: GOOD (  24.51  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,156 +99,260 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
+ Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alexander Graf <graf@amazon.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Sep 21, 2019 at 6:30 AM Albert Ou <aou@eecs.berkeley.edu> wrote:
->
-> This fixes an error with how the FDT blob is reserved in memblock.
-> An incorrect physical address calculation exposed the FDT header to
-> unintended corruption, which typically manifested with of_fdt_raw_init()
-> faulting during late boot after fdt_totalsize() returned a wrong value.
-> Systems with smaller physical memory sizes more frequently trigger this
-> issue, as the kernel is more likely to allocate from the DMA32 zone
-> where bbl places the DTB after the kernel image.
->
-> Commit 671f9a3e2e24 ("RISC-V: Setup initial page tables in two stages")
-> changed the mapping of the DTB to reside in the fixmap area.
-> Consequently, early_init_fdt_reserve_self() cannot be used anymore in
-> setup_bootmem() since it relies on __pa() to derive a physical address,
-> which does not work with dtb_early_va that is no longer a valid kernel
-> logical address.
->
-> The reserved[0x1] region shows the effect of the pointer underflow
-> resulting from the __pa(initial_boot_params) offset subtraction:
->
-> [    0.000000] MEMBLOCK configuration:
-> [    0.000000]  memory size = 0x000000001fe00000 reserved size = 0x0000000000a2e514
-> [    0.000000]  memory.cnt  = 0x1
-> [    0.000000]  memory[0x0]     [0x0000000080200000-0x000000009fffffff], 0x000000001fe00000 bytes flags: 0x0
-> [    0.000000]  reserved.cnt  = 0x2
-> [    0.000000]  reserved[0x0]   [0x0000000080200000-0x0000000080c2dfeb], 0x0000000000a2dfec bytes flags: 0x0
-> [    0.000000]  reserved[0x1]   [0xfffffff080100000-0xfffffff080100527], 0x0000000000000528 bytes flags: 0x0
->
-> With the fix applied:
->
-> [    0.000000] MEMBLOCK configuration:
-> [    0.000000]  memory size = 0x000000001fe00000 reserved size = 0x0000000000a2e514
-> [    0.000000]  memory.cnt  = 0x1
-> [    0.000000]  memory[0x0]     [0x0000000080200000-0x000000009fffffff], 0x000000001fe00000 bytes flags: 0x0
-> [    0.000000]  reserved.cnt  = 0x2
-> [    0.000000]  reserved[0x0]   [0x0000000080200000-0x0000000080c2dfeb], 0x0000000000a2dfec bytes flags: 0x0
-> [    0.000000]  reserved[0x1]   [0x0000000080e00000-0x0000000080e00527], 0x0000000000000528 bytes flags: 0x0
+Hi Anup,
 
-Thanks for catching this issue.
+Thanks for changing this to use a bitmap.  A few comments below -
 
-Most of us did not notice this issue most likely because:
-1. We generally have good enough RAM on QEMU and SiFive Unleashed
-2. Most of people use OpenSBI FW_JUMP on QEMU and U-Boot  on
-    SiFive Unleashed to boot in Linux which places FDT quite far away
-    from Linux kernel end
+On Wed, 4 Sep 2019, Anup Patel wrote:
 
-Linux ARM64 kernel also uses FIXMAP to access FDT and over there
-as well early_init_fdt_reserve_self() is not used.
-
->
-> Fixes: 671f9a3e2e24 ("RISC-V: Setup initial page tables in two stages")
-> Signed-off-by: Albert Ou <aou@eecs.berkeley.edu>
+> This patch adds riscv_isa bitmap which represents Host ISA features
+> common across all Host CPUs. The riscv_isa is not same as elf_hwcap
+> because elf_hwcap will only have ISA features relevant for user-space
+> apps whereas riscv_isa will have ISA features relevant to both kernel
+> and user-space apps.
+> 
+> One of the use-case for riscv_isa bitmap is in KVM hypervisor where
+> we will use it to do following operations:
+> 
+> 1. Check whether hypervisor extension is available
+> 2. Find ISA features that need to be virtualized (e.g. floating
+>    point support, vector extension, etc.)
+> 
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> Reviewed-by: Alexander Graf <graf@amazon.com>
 > ---
->  arch/riscv/mm/init.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index f0ba713..52d007c 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -11,6 +11,7 @@
->  #include <linux/swap.h>
->  #include <linux/sizes.h>
->  #include <linux/of_fdt.h>
-> +#include <linux/libfdt.h>
->
->  #include <asm/fixmap.h>
->  #include <asm/tlbflush.h>
-> @@ -82,6 +83,8 @@ static void __init setup_initrd(void)
->  }
->  #endif /* CONFIG_BLK_DEV_INITRD */
->
-> +static phys_addr_t __dtb_pa __initdata;
+>  arch/riscv/include/asm/hwcap.h | 26 +++++++++++
+>  arch/riscv/kernel/cpufeature.c | 79 ++++++++++++++++++++++++++++++++--
+>  2 files changed, 102 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/riscv/include/asm/hwcap.h b/arch/riscv/include/asm/hwcap.h
+> index 7ecb7c6a57b1..9b657375aa51 100644
+> --- a/arch/riscv/include/asm/hwcap.h
+> +++ b/arch/riscv/include/asm/hwcap.h
+> @@ -8,6 +8,7 @@
+>  #ifndef __ASM_HWCAP_H
+>  #define __ASM_HWCAP_H
+>  
+> +#include <linux/bits.h>
+>  #include <uapi/asm/hwcap.h>
+>  
+>  #ifndef __ASSEMBLY__
+> @@ -22,5 +23,30 @@ enum {
+>  };
+>  
+>  extern unsigned long elf_hwcap;
+> +
+> +#define RISCV_ISA_EXT_a		('a' - 'a')
+> +#define RISCV_ISA_EXT_c		('c' - 'a')
+> +#define RISCV_ISA_EXT_d		('d' - 'a')
+> +#define RISCV_ISA_EXT_f		('f' - 'a')
+> +#define RISCV_ISA_EXT_h		('h' - 'a')
+> +#define RISCV_ISA_EXT_i		('i' - 'a')
+> +#define RISCV_ISA_EXT_m		('m' - 'a')
+> +#define RISCV_ISA_EXT_s		('s' - 'a')
+> +#define RISCV_ISA_EXT_u		('u' - 'a')
+> +#define RISCV_ISA_EXT_zicsr	(('z' - 'a') + 1)
+> +#define RISCV_ISA_EXT_zifencei	(('z' - 'a') + 2)
+> +#define RISCV_ISA_EXT_zam	(('z' - 'a') + 3)
+> +#define RISCV_ISA_EXT_ztso	(('z' - 'a') + 4)
 
-May be dtb_early_pa will be more consistent name
-instead of __dtb_pa because it matches dtb_early_va
-used below.
+If we add the Z extensions here, it's probably best if we drop Zam from 
+this list.  The rationale is, as maintainers, we're planning to hold off 
+on merging any support for extensions or modules that aren't in the 
+"frozen" or "ratified" states, and according to the RISC-V specs, Zicsr, 
+Zifencei, and Ztso are all either frozen or ratified.  However, see 
+below -
 
 > +
->  void __init setup_bootmem(void)
->  {
->         struct memblock_region *reg;
-> @@ -117,7 +120,12 @@ void __init setup_bootmem(void)
->         setup_initrd();
->  #endif /* CONFIG_BLK_DEV_INITRD */
->
-> -       early_init_fdt_reserve_self();
-> +       /*
-> +        * Avoid using early_init_fdt_reserve_self() since __pa() does
-> +        * not work for DTB pointers that are fixmap addresses
-> +        */
-> +       memblock_reserve(__dtb_pa, fdt_totalsize(dtb_early_va));
+> +#define RISCV_ISA_EXT_MAX	256
 > +
->         early_init_fdt_scan_reserved_mem();
->         memblock_allow_resize();
->         memblock_dump_all();
-> @@ -333,6 +341,7 @@ static uintptr_t __init best_map_size(phys_addr_t base, phys_addr_t size)
->         "not use absolute addressing."
+> +unsigned long riscv_isa_extension_base(const unsigned long *isa_bitmap);
+> +
+> +#define riscv_isa_extension_mask(ext) BIT_MASK(RISCV_ISA_EXT_##ext)
+> +
+> +bool __riscv_isa_extension_available(const unsigned long *isa_bitmap, int bit);
+> +#define riscv_isa_extension_available(isa_bitmap, ext)	\
+> +	__riscv_isa_extension_available(isa_bitmap, RISCV_ISA_EXT_##ext)
+> +
 >  #endif
->
+>  #endif
+> diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
+> index b1ade9a49347..4ce71ce5e290 100644
+> --- a/arch/riscv/kernel/cpufeature.c
+> +++ b/arch/riscv/kernel/cpufeature.c
+> @@ -6,21 +6,64 @@
+>   * Copyright (C) 2017 SiFive
+>   */
+>  
+> +#include <linux/bitmap.h>
+>  #include <linux/of.h>
+>  #include <asm/processor.h>
+>  #include <asm/hwcap.h>
+>  #include <asm/smp.h>
+>  
+>  unsigned long elf_hwcap __read_mostly;
 > +
+> +/* Host ISA bitmap */
+> +static DECLARE_BITMAP(riscv_isa, RISCV_ISA_EXT_MAX) __read_mostly;
+> +
+>  #ifdef CONFIG_FPU
+>  bool has_fpu __read_mostly;
+>  #endif
+>  
+> +/**
+> + * riscv_isa_extension_base - Get base extension word
+> + *
+> + * @isa_bitmap ISA bitmap to use
+> + * @returns base extension word as unsigned long value
+> + *
+> + * NOTE: If isa_bitmap is NULL then Host ISA bitmap will be used.
+> + */
 
-Please remove this newline addition.
+Am happy to see comments that can be automatically parsed, but could you 
+reformat them into kernel-doc format? 
 
->  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/doc-guide/kernel-doc.rst
+
+> +unsigned long riscv_isa_extension_base(const unsigned long *isa_bitmap)
+> +{
+> +	if (!isa_bitmap)
+> +		return riscv_isa[0];
+> +	return isa_bitmap[0];
+> +}
+> +EXPORT_SYMBOL_GPL(riscv_isa_extension_base);
+> +
+> +/**
+> + * __riscv_isa_extension_available - Check whether given extension
+> + * is available or not
+> + *
+> + * @isa_bitmap ISA bitmap to use
+> + * @bit bit position of the desired extension
+> + * @returns true or false
+> + *
+> + * NOTE: If isa_bitmap is NULL then Host ISA bitmap will be used.
+> + */
+
+Same comment as above.
+
+> +bool __riscv_isa_extension_available(const unsigned long *isa_bitmap, int bit)
+> +{
+> +	const unsigned long *bmap = (isa_bitmap) ? isa_bitmap : riscv_isa;
+> +
+> +	if (bit >= RISCV_ISA_EXT_MAX)
+> +		return false;
+> +
+> +	return test_bit(bit, bmap) ? true : false;
+> +}
+> +EXPORT_SYMBOL_GPL(__riscv_isa_extension_available);
+> +
+>  void riscv_fill_hwcap(void)
 >  {
->         uintptr_t va, end_va;
-> @@ -393,6 +402,8 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->
->         /* Save pointer to DTB for early FDT parsing */
->         dtb_early_va = (void *)fix_to_virt(FIX_FDT) + (dtb_pa & ~PAGE_MASK);
-> +       /* Save physical address for memblock reservation */
-> +       __dtb_pa = dtb_pa;
->  }
->
->  static void __init setup_vm_final(void)
-> --
-> 2.7.4
->
->
-> _______________________________________________
-> linux-riscv mailing list
-> linux-riscv@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-riscv
+>  	struct device_node *node;
+>  	const char *isa;
+> -	size_t i;
+> +	char print_str[BITS_PER_LONG+1];
+> +	size_t i, j, isa_len;
+>  	static unsigned long isa2hwcap[256] = {0};
+>  
+>  	isa2hwcap['i'] = isa2hwcap['I'] = COMPAT_HWCAP_ISA_I;
+> @@ -32,8 +75,11 @@ void riscv_fill_hwcap(void)
+>  
+>  	elf_hwcap = 0;
+>  
+> +	bitmap_zero(riscv_isa, RISCV_ISA_EXT_MAX);
+> +
+>  	for_each_of_cpu_node(node) {
+>  		unsigned long this_hwcap = 0;
+> +		unsigned long this_isa = 0;
+>  
+>  		if (riscv_of_processor_hartid(node) < 0)
+>  			continue;
+> @@ -43,8 +89,20 @@ void riscv_fill_hwcap(void)
+>  			continue;
+>  		}
+>  
+> -		for (i = 0; i < strlen(isa); ++i)
+> +		i = 0;
+> +		isa_len = strlen(isa);
+> +#if defined(CONFIG_32BIT)
+> +		if (!strncmp(isa, "rv32", 4))
+> +			i += 4;
+> +#elif defined(CONFIG_64BIT)
+> +		if (!strncmp(isa, "rv64", 4))
+> +			i += 4;
+> +#endif
+> +		for (; i < isa_len; ++i) {
+>  			this_hwcap |= isa2hwcap[(unsigned char)(isa[i])];
+> +			if ('a' <= isa[i] && isa[i] <= 'z')
+> +				this_isa |= (1UL << (isa[i] - 'a'));
 
-This deserves to be stable kernel fix as well.
-You should add:
-Cc: stable@vger.kernel.org
-in your commit description.
+Continuing from the earlier comment, this code won't properly handle the X 
+and Z prefix extensions.  So maybe for the time being, we should just drop 
+the lines mentioned earlier that imply that we can parse Z-prefix 
+extensions, and change this line so it ignores X and Z letters?
 
-Apart from minor nits above.
+Then a subsequent patch can add support for more complicated extension 
+string parsing.
 
-Reviewed-by: Anup Patel <anup@brainfault.org>
 
-I tried this patch for both RV64 and RV32 on QEMU with
-Yocto rootfs.
+> +		}
+>  
+>  		/*
+>  		 * All "okay" hart should have same isa. Set HWCAP based on
+> @@ -55,6 +113,11 @@ void riscv_fill_hwcap(void)
+>  			elf_hwcap &= this_hwcap;
+>  		else
+>  			elf_hwcap = this_hwcap;
+> +
+> +		if (riscv_isa[0])
+> +			riscv_isa[0] &= this_isa;
+> +		else
+> +			riscv_isa[0] = this_isa;
+>  	}
+>  
+>  	/* We don't support systems with F but without D, so mask those out
+> @@ -64,7 +127,17 @@ void riscv_fill_hwcap(void)
+>  		elf_hwcap &= ~COMPAT_HWCAP_ISA_F;
+>  	}
+>  
+> -	pr_info("elf_hwcap is 0x%lx\n", elf_hwcap);
+> +	memset(print_str, 0, sizeof(print_str));
+> +	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
+> +		if (riscv_isa[0] & BIT_MASK(i))
+> +			print_str[j++] = (char)('a' + i);
+> +	pr_info("riscv: ISA extensions %s\n", print_str);
+> +
+> +	memset(print_str, 0, sizeof(print_str));
+> +	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
+> +		if (elf_hwcap & BIT_MASK(i))
+> +			print_str[j++] = (char)('a' + i);
+> +	pr_info("riscv: ELF capabilities %s\n", print_str);
+>  
+>  #ifdef CONFIG_FPU
+>  	if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
+> -- 
+> 2.17.1
+> 
+> 
 
-Tested-by: Anup Patel <anup@brainfault.org>
 
-Regards,
-Anup
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
