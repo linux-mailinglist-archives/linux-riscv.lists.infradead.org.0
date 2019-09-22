@@ -2,47 +2,47 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A4EBBA3EF
-	for <lists+linux-riscv@lfdr.de>; Sun, 22 Sep 2019 20:46:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EC476BA3F5
+	for <lists+linux-riscv@lfdr.de>; Sun, 22 Sep 2019 20:47:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jUCqQ6O74gONoR/6frmIBLDzoU4VAAY0JeXPlVkcXxg=; b=LamcVPzoE6pNht
-	uwPSNUAcVwOpqM1dfvrPCgiLKG7g1TEf3LhpQlQ6wAnZrHyDdVPv2Bjx9J1Yhh1lzeepOicEG+A18
-	m3wx6i5dhJcYrdsKAaah0Ds16i9d/2Oeup1yN2uJpCttOnMXPShdAzRb8ncYGritMNLM5GO/Adrvc
-	05jCcnUGDyXHuv9LsPNC511QPrlwVDRT6wfrYADaJV1A5MlSxG/GZn7uFFWH9QFaLVMF86N1DF+Lh
-	EMY6n4CJlt/+gjWjhVtwWDJx6RBOOevaQA/fFu2MrBCeUBVzhWQKA/ah0wO1jGPppE6I/mnWn6hzs
-	LT5f1zs3fX2IMU4GK/zg==;
+	List-Owner; bh=t2RNF5UJX9EBWRqPXpYMHY4zV7/NWBUtl51TM35g9Vc=; b=kbZCzkBMdO6JvL
+	ni1lQWJRIFHMRKl4G07jvLTWFn0RhKxj2jBT/E+s2U2BZ6JqSWdqlsJEPJ+bcwzrX6y8G0PupYkMW
+	Dnp3K1AJT64+9fa+OJXrcopGCHOemnHq1HLoD+Iti5eUt+RIuasnfdv8sEApQIpi0/wcPMaMeahTt
+	TgZSNk283QUws3FasAVIBGf665hyHhsBVzLL2wtOOuzZnDyct2EiFvZ+Yv1xS54ulqmYMsQt2h2jv
+	0FtY3K2xELnvTciuj4+WUpzUr3pi/T5tFzvnqUZq0yScDCceHnqSTuIJnlt2jaovmA/yOln2W73Tk
+	sQd655bBH1IInBHe61ew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iC6rr-0006XO-UJ; Sun, 22 Sep 2019 18:45:55 +0000
+	id 1iC6t6-0007S3-G8; Sun, 22 Sep 2019 18:47:12 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iC6rm-0006WU-Et
- for linux-riscv@lists.infradead.org; Sun, 22 Sep 2019 18:45:53 +0000
+ id 1iC6sl-0007Cy-Tr
+ for linux-riscv@lists.infradead.org; Sun, 22 Sep 2019 18:46:53 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 257CE208C2;
- Sun, 22 Sep 2019 18:45:49 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id BFC79208C2;
+ Sun, 22 Sep 2019 18:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1569177950;
- bh=CiyScJoSbjEh1dk6sz0/OoVDGfhZZEA9aBDwuupZISg=;
+ s=default; t=1569178011;
+ bh=J857V+s2eCUvaCpjWd7tdKg18VSQm5KUn4SWhVl283w=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eZk0IM6MlZWnejsLOTihBFvyinJpeZBFn9Asjxeyq2CCoGWgh3g9YU0MK7m50OTzL
- yizhyijHi/0ZsYqnPEEzWrz5TthwnQdVL+axShQN2Yj2WzYRDBYyJXBbSFBvLtRJKf
- 2yzsFyw3qZker2EFFzPVZadEAg/mzQZ+vs4RUkw4=
+ b=sjkQ+RfwaLIsQCgXZB0wX0n7T16je9LmutJUpH72PJKJmUENBvMjvLge0R/x1hnr3
+ MWRfpDzuyWTZG6o5larLVNEzK4RMD2PKCVTPRuGglNvUOKMEhtPyuAMknK/UnaQGHA
+ n9aSpbZp5yU4r/q5TFnc/9S+mNf+UP4DKg2F//j8=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.3 056/203] RAS: Build debugfs.o only when enabled in
- Kconfig
-Date: Sun, 22 Sep 2019 14:41:22 -0400
-Message-Id: <20190922184350.30563-56-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.3 098/203] tools headers: Fixup bitsperlong per arch
+ includes
+Date: Sun, 22 Sep 2019 14:42:04 -0400
+Message-Id: <20190922184350.30563-98-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190922184350.30563-1-sashal@kernel.org>
 References: <20190922184350.30563-1-sashal@kernel.org>
@@ -50,8 +50,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190922_114550_516570_B0E58B4F 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20190922_114652_027317_2940670D 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -81,56 +81,118 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Tony Luck <tony.luck@intel.com>,
- Valdis Kletnieks <valdis.kletnieks@vt.edu>, kbuild test robot <lkp@intel.com>,
- x86@kernel.org, linux-riscv@lists.infradead.org, Borislav Petkov <bp@suse.de>,
- linux-edac@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>,
+ Arnaldo Carvalho de Melo <acme@redhat.com>, Jiri Olsa <jolsa@kernel.org>,
+ Namhyung Kim <namhyung@kernel.org>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Valdis Kletnieks <valdis.kletnieks@vt.edu>
+From: Arnaldo Carvalho de Melo <acme@redhat.com>
 
-[ Upstream commit b6ff24f7b5101101ff897dfdde3f37924e676bc2 ]
+[ Upstream commit 42fc2e9ef9603a7948aaa4ffd8dfb94b30294ad8 ]
 
-In addition, the 0day bot reported this build error:
+We were getting the file by luck, from one of the paths in -I, fix it to
+get it from the proper place:
 
-  >> drivers/ras/debugfs.c:10:5: error: redefinition of 'ras_userspace_consumers'
-      int ras_userspace_consumers(void)
-          ^~~~~~~~~~~~~~~~~~~~~~~
-     In file included from drivers/ras/debugfs.c:3:0:
-     include/linux/ras.h:14:19: note: previous definition of 'ras_userspace_consumers' was here
-      static inline int ras_userspace_consumers(void) { return 0; }
-                      ^~~~~~~~~~~~~~~~~~~~~~~
+  $ cd tools/include/uapi/asm/
+  [acme@quaco asm]$ grep include bitsperlong.h
+  #include "../../arch/x86/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/arm64/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/powerpc/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/s390/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/sparc/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/mips/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/ia64/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/riscv/include/uapi/asm/bitsperlong.h"
+  #include "../../arch/alpha/include/uapi/asm/bitsperlong.h"
+  #include <asm-generic/bitsperlong.h>
+  $ ls -la ../../arch/x86/include/uapi/asm/bitsperlong.h
+  ls: cannot access '../../arch/x86/include/uapi/asm/bitsperlong.h': No such file or directory
+  $ ls -la ../../../arch/*/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 237 ../../../arch/alpha/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 841 ../../../arch/arm64/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 966 ../../../arch/hexagon/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 234 ../../../arch/ia64/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 100 ../../../arch/microblaze/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 244 ../../../arch/mips/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 352 ../../../arch/parisc/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 312 ../../../arch/powerpc/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 353 ../../../arch/riscv/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 292 ../../../arch/s390/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 323 ../../../arch/sparc/include/uapi/asm/bitsperlong.h
+  -rw-rw-r--. 1 320 ../../../arch/x86/include/uapi/asm/bitsperlong.h
+  $
 
-for a riscv-specific .config where CONFIG_DEBUG_FS is not set. Fix all
-that by making debugfs.o depend on that define.
+Found while fixing some other problem, before it was escaping the
+tools/ chroot and using stuff in the kernel sources:
 
- [ bp: Rewrite commit message. ]
+    CC       /tmp/build/perf/util/find_bit.o
+In file included from /git/linux/tools/include/../../arch/x86/include/uapi/asm/bitsperlong.h:11,
+                 from /git/linux/tools/include/uapi/asm/bitsperlong.h:3,
+                 from /git/linux/tools/include/linux/bits.h:6,
+                 from /git/linux/tools/include/linux/bitops.h:13,
+                 from ../lib/find_bit.c:17:
 
-Reported-by: kbuild test robot <lkp@intel.com>
-Signed-off-by: Valdis Kletnieks <valdis.kletnieks@vt.edu>
-Signed-off-by: Borislav Petkov <bp@suse.de>
-Cc: Tony Luck <tony.luck@intel.com>
-Cc: linux-edac@vger.kernel.org
-Cc: x86@kernel.org
-Link: http://lkml.kernel.org/r/7053.1565218556@turing-police
+  # cd /git/linux/tools/include/../../arch/x86/include/uapi/asm/
+  # pwd
+  /git/linux/arch/x86/include/uapi/asm
+  #
+
+Now it is getting the one we want it to, i.e. the one inside tools/:
+
+    CC       /tmp/build/perf/util/find_bit.o
+  In file included from /git/linux/tools/arch/x86/include/uapi/asm/bitsperlong.h:11,
+                   from /git/linux/tools/include/linux/bits.h:6,
+                   from /git/linux/tools/include/linux/bitops.h:13,
+
+Cc: Adrian Hunter <adrian.hunter@intel.com>
+Cc: Jiri Olsa <jolsa@kernel.org>
+Cc: Namhyung Kim <namhyung@kernel.org>
+Link: https://lkml.kernel.org/n/tip-8f8cfqywmf6jk8a3ucr0ixhu@git.kernel.org
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/ras/Makefile | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ tools/include/uapi/asm/bitsperlong.h | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/ras/Makefile b/drivers/ras/Makefile
-index ef6777e14d3df..6f0404f501071 100644
---- a/drivers/ras/Makefile
-+++ b/drivers/ras/Makefile
-@@ -1,3 +1,4 @@
- # SPDX-License-Identifier: GPL-2.0-only
--obj-$(CONFIG_RAS)	+= ras.o debugfs.o
-+obj-$(CONFIG_RAS)	+= ras.o
-+obj-$(CONFIG_DEBUG_FS)	+= debugfs.o
- obj-$(CONFIG_RAS_CEC)	+= cec.o
+diff --git a/tools/include/uapi/asm/bitsperlong.h b/tools/include/uapi/asm/bitsperlong.h
+index 57aaeaf8e1920..edba4d93e9e6a 100644
+--- a/tools/include/uapi/asm/bitsperlong.h
++++ b/tools/include/uapi/asm/bitsperlong.h
+@@ -1,22 +1,22 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+ #if defined(__i386__) || defined(__x86_64__)
+-#include "../../arch/x86/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/x86/include/uapi/asm/bitsperlong.h"
+ #elif defined(__aarch64__)
+-#include "../../arch/arm64/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/arm64/include/uapi/asm/bitsperlong.h"
+ #elif defined(__powerpc__)
+-#include "../../arch/powerpc/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/powerpc/include/uapi/asm/bitsperlong.h"
+ #elif defined(__s390__)
+-#include "../../arch/s390/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/s390/include/uapi/asm/bitsperlong.h"
+ #elif defined(__sparc__)
+-#include "../../arch/sparc/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/sparc/include/uapi/asm/bitsperlong.h"
+ #elif defined(__mips__)
+-#include "../../arch/mips/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/mips/include/uapi/asm/bitsperlong.h"
+ #elif defined(__ia64__)
+-#include "../../arch/ia64/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/ia64/include/uapi/asm/bitsperlong.h"
+ #elif defined(__riscv)
+-#include "../../arch/riscv/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/riscv/include/uapi/asm/bitsperlong.h"
+ #elif defined(__alpha__)
+-#include "../../arch/alpha/include/uapi/asm/bitsperlong.h"
++#include "../../../arch/alpha/include/uapi/asm/bitsperlong.h"
+ #else
+ #include <asm-generic/bitsperlong.h>
+ #endif
 -- 
 2.20.1
 
