@@ -2,64 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29D15BA42E
-	for <lists+linux-riscv@lfdr.de>; Sun, 22 Sep 2019 20:56:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F811BAC39
+	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 02:45:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t2RNF5UJX9EBWRqPXpYMHY4zV7/NWBUtl51TM35g9Vc=; b=GXjWN6KeiJ/lg0
-	ov6w2s++VORxVVnrHLob76+6KsgziuPNmwmSLmt0/+agqGPpNO1+txuk1Oyg47ft+Wn0+XiWqUVLF
-	1OOaVDEzIbIMaavS7vwHbHXHyUv6Ci8Jau1rYvE+iaQXq9kdkjBUwkU2hq2QJTFXfErGvZyyXVulE
-	gv6SSatsauEr2Milhe2DFIxgiyUxVf8aTcMdwZd48SZfhZJmCJNNvERnhxIMfqU9PO2WuxpU5TMGr
-	v1vvqvRL4lUsMaFfxrvDtOjVWisB8eo2ON9ApQ0KBsvRHEOCUwk2rreT26dyEdMLjfVQ9kPxumwRd
-	5yyRZiQ367H8VuIrrzcQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=EVn4ZXgyyZvKfJe8xAr4tBuc1C3b05fuoGNMxmFLtrw=; b=jXY
+	am2UwDRf8Qq3TnkqDU6L6JTc0fMY/HKh0ANEKalhWGnfYPTjz8CJ62eUrqGAoIg93ki4sbzYS2M19
+	fwNiLvIK3MrZy4ODDtFPFvlqabkIdt8EiDKXB8OCO9G01Jolc3aZ8MpIFCkVxa0cvVV3iA16g2CS1
+	b2sSOQplKlLyLMLy1GL9Bf5dQrKevCuv6VwW3Y0FvKpTsYW29n7jUPxvuCPIijCT39ifGaxHkdJt2
+	HUSzknWh5HvBxPY3jhdOI0/BVZQd1A3BjzUmaAtbZiaOU8ewZaAB74vwPB2A8EPsG7ItXfS+0N/Sf
+	278yNp8woDPIH73mf2/U89hj/qOqWFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iC71j-0005mQ-6c; Sun, 22 Sep 2019 18:56:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iCCTx-0002zz-1b; Mon, 23 Sep 2019 00:45:37 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iC71O-0005TS-4v
- for linux-riscv@lists.infradead.org; Sun, 22 Sep 2019 18:55:48 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E758D208C2;
- Sun, 22 Sep 2019 18:55:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1569178545;
- bh=J857V+s2eCUvaCpjWd7tdKg18VSQm5KUn4SWhVl283w=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=IRBEG6SQYiXxzUGjepym2kgjnThOAdqj5Fy17bndQinKQngxyakGfvwbNkrBfIccs
- +aJh7LofUfA/1BDoOUQ/Bu9ximTrZ3Eb3Kp4EKQCEPZXOU5SJXJMUW5UVL1t9AOrnV
- dDb0VZgpzbEAnddqvxhoa5DFpJcuian6ZZSSp1KM=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 064/128] tools headers: Fixup bitsperlong per
- arch includes
-Date: Sun, 22 Sep 2019 14:53:14 -0400
-Message-Id: <20190922185418.2158-64-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190922185418.2158-1-sashal@kernel.org>
-References: <20190922185418.2158-1-sashal@kernel.org>
-MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+ id 1iCCTs-0002zb-85
+ for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 00:45:33 +0000
+Received: by mail-pl1-x644.google.com with SMTP id d22so4437260pls.0
+ for <linux-riscv@lists.infradead.org>; Sun, 22 Sep 2019 17:45:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=wBHZ7zM9MXX6vAa5xiClSfeozP2w4j+/6pxwIyNuhqc=;
+ b=C7jTYPeFAbIbaL5ADjIqF9fdD2IepbODMzxIU5MuN1WOhRRWcGtS+MbLhqN+eRDK4A
+ onM2qCoHTVwTR3E5SIs75A2NQqB6+EATximTQCQOD3c3VzTIhyRNhkKU+JzVMdLsRLTW
+ 2UzRJopPvdmEJGkXebL7tPxmCxP7ksuVf3q6/PJGcI6zrZvNv9MHzjT/vmMwRGzLZijF
+ 4t0/SentLUt/3pKKAuvB1dCXVy1UIYzThsysj9U8G3B13cWoPciVuwQ3Pe6ZKTZRUGLh
+ e4scPzR6bUJZ6fxsjDBXGRVwVctGrHNQVhrjWORjE2sijRN0KT/ZPBD1r5ITXhmpBtYW
+ 6bKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=wBHZ7zM9MXX6vAa5xiClSfeozP2w4j+/6pxwIyNuhqc=;
+ b=QmrVe5WjDOo35TeU9iYhT1ePxMPsfTcyotNdHEGylnEOr02XLptjn7itjyorc35RnR
+ WVsY/jqMjJquCXYIspijXUwZRlMk/N+fDHCM2MlF+26q7JVSB5/lDYn2t743/wJHnm/V
+ gDpzdYnfz1KF2BHm84JzuU7QrGZFtuX7+Qp3FnK+Z36PqQc9d6yev+1sRMFSCCTN7T5Y
+ tA282vj0vEL6MPcm0v/6KMtXdMLSQa+NZw+JZvnrPriMGdbKiGkaUDMSFX1H9cOaJaQI
+ qLYkYH6J6IekkfYB27Ebm7tND6J5zcLlc1eWo4EdVyz1bTXUnr6EJ7Ph1vKi0iIXOXQ5
+ YpxQ==
+X-Gm-Message-State: APjAAAX0b+Wbnm3ySc1wCHOTxNHcsUmpKwK/0PTimA9cd18gdQSsWTYE
+ Qv2oclpVM2ZEdar0j2aqFVWSqUjjgKs=
+X-Google-Smtp-Source: APXvYqzNPplEeS/iK1Hs/mYsLPurLGP8THxAyivT2BgkccBkoLr/z6Q4+rBcVrDGe93pO8fC50fLsw==
+X-Received: by 2002:a17:902:ff08:: with SMTP id
+ f8mr29298899plj.309.1569199529599; 
+ Sun, 22 Sep 2019 17:45:29 -0700 (PDT)
+Received: from localhost.localdomain (220-132-236-182.HINET-IP.hinet.net.
+ [220.132.236.182])
+ by smtp.gmail.com with ESMTPSA id l7sm9139392pjy.12.2019.09.22.17.45.28
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 22 Sep 2019 17:45:29 -0700 (PDT)
+From: Vincent Chen <vincent.chen@sifive.com>
+To: linux-riscv@lists.infradead.org
+Subject: [PATCH 0/4] riscv: correct the do_trap_break()
+Date: Mon, 23 Sep 2019 08:45:13 +0800
+Message-Id: <1569199517-5884-1-git-send-email-vincent.chen@sifive.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190922_115546_512205_39799043 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20190922_174532_343238_69818CCA 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -69,7 +82,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,120 +93,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>,
- Arnaldo Carvalho de Melo <acme@redhat.com>, Jiri Olsa <jolsa@kernel.org>,
- Namhyung Kim <namhyung@kernel.org>, linux-riscv@lists.infradead.org
+Cc: vincent.chen@sifive.com, palmer@sifive.com, linux-kernel@vger.kernel.org,
+ aou@eecs.berkeley.edu, paul.walmsley@sifive.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Arnaldo Carvalho de Melo <acme@redhat.com>
 
-[ Upstream commit 42fc2e9ef9603a7948aaa4ffd8dfb94b30294ad8 ]
+The following three situations may occur in the current implementation of
+do_trap_break().
+1. When the CONFIG_GENERIC_BUG is disabled, if a kernel thread is trapped
+   by BUG(), the whole system will be in the loop that infinitely handles
+   the break exception instead of entering the die function.
+2. When the kernel runs code on behalf of a user thread, and the kernel
+   executes a WARN() or WARN_ON(), the user thread will be sent a bogus
+   SIGTRAP.
+3. Handling the unexpected ebreak instructions is to send a SIGTRAP
+   to the trapped thread. However, if a kernel executes an unexpected
+   ebreak, it may cause the kernel thread to be stuck in the ebreak
+   instruction.
 
-We were getting the file by luck, from one of the paths in -I, fix it to
-get it from the proper place:
+This patch set will solve the above problems by adjusting the
+implementations of the do_trap_break().
 
-  $ cd tools/include/uapi/asm/
-  [acme@quaco asm]$ grep include bitsperlong.h
-  #include "../../arch/x86/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/arm64/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/powerpc/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/s390/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/sparc/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/mips/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/ia64/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/riscv/include/uapi/asm/bitsperlong.h"
-  #include "../../arch/alpha/include/uapi/asm/bitsperlong.h"
-  #include <asm-generic/bitsperlong.h>
-  $ ls -la ../../arch/x86/include/uapi/asm/bitsperlong.h
-  ls: cannot access '../../arch/x86/include/uapi/asm/bitsperlong.h': No such file or directory
-  $ ls -la ../../../arch/*/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 237 ../../../arch/alpha/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 841 ../../../arch/arm64/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 966 ../../../arch/hexagon/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 234 ../../../arch/ia64/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 100 ../../../arch/microblaze/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 244 ../../../arch/mips/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 352 ../../../arch/parisc/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 312 ../../../arch/powerpc/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 353 ../../../arch/riscv/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 292 ../../../arch/s390/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 323 ../../../arch/sparc/include/uapi/asm/bitsperlong.h
-  -rw-rw-r--. 1 320 ../../../arch/x86/include/uapi/asm/bitsperlong.h
-  $
 
-Found while fixing some other problem, before it was escaping the
-tools/ chroot and using stuff in the kernel sources:
+Vincent Chen (4):
+  riscv: avoid kernel hangs when trapped in BUG()
+  rsicv: avoid sending a SIGTRAP to a user thread trapped in WARN()
+  riscv: Correct the handling of unexpected ebreak in do_trap_break()
+  riscv: remove the switch statement in do_trap_break()
 
-    CC       /tmp/build/perf/util/find_bit.o
-In file included from /git/linux/tools/include/../../arch/x86/include/uapi/asm/bitsperlong.h:11,
-                 from /git/linux/tools/include/uapi/asm/bitsperlong.h:3,
-                 from /git/linux/tools/include/linux/bits.h:6,
-                 from /git/linux/tools/include/linux/bitops.h:13,
-                 from ../lib/find_bit.c:17:
-
-  # cd /git/linux/tools/include/../../arch/x86/include/uapi/asm/
-  # pwd
-  /git/linux/arch/x86/include/uapi/asm
-  #
-
-Now it is getting the one we want it to, i.e. the one inside tools/:
-
-    CC       /tmp/build/perf/util/find_bit.o
-  In file included from /git/linux/tools/arch/x86/include/uapi/asm/bitsperlong.h:11,
-                   from /git/linux/tools/include/linux/bits.h:6,
-                   from /git/linux/tools/include/linux/bitops.h:13,
-
-Cc: Adrian Hunter <adrian.hunter@intel.com>
-Cc: Jiri Olsa <jolsa@kernel.org>
-Cc: Namhyung Kim <namhyung@kernel.org>
-Link: https://lkml.kernel.org/n/tip-8f8cfqywmf6jk8a3ucr0ixhu@git.kernel.org
-Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- tools/include/uapi/asm/bitsperlong.h | 18 +++++++++---------
+ arch/riscv/kernel/traps.c | 18 +++++++++---------
  1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/tools/include/uapi/asm/bitsperlong.h b/tools/include/uapi/asm/bitsperlong.h
-index 57aaeaf8e1920..edba4d93e9e6a 100644
---- a/tools/include/uapi/asm/bitsperlong.h
-+++ b/tools/include/uapi/asm/bitsperlong.h
-@@ -1,22 +1,22 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- #if defined(__i386__) || defined(__x86_64__)
--#include "../../arch/x86/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/x86/include/uapi/asm/bitsperlong.h"
- #elif defined(__aarch64__)
--#include "../../arch/arm64/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/arm64/include/uapi/asm/bitsperlong.h"
- #elif defined(__powerpc__)
--#include "../../arch/powerpc/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/powerpc/include/uapi/asm/bitsperlong.h"
- #elif defined(__s390__)
--#include "../../arch/s390/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/s390/include/uapi/asm/bitsperlong.h"
- #elif defined(__sparc__)
--#include "../../arch/sparc/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/sparc/include/uapi/asm/bitsperlong.h"
- #elif defined(__mips__)
--#include "../../arch/mips/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/mips/include/uapi/asm/bitsperlong.h"
- #elif defined(__ia64__)
--#include "../../arch/ia64/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/ia64/include/uapi/asm/bitsperlong.h"
- #elif defined(__riscv)
--#include "../../arch/riscv/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/riscv/include/uapi/asm/bitsperlong.h"
- #elif defined(__alpha__)
--#include "../../arch/alpha/include/uapi/asm/bitsperlong.h"
-+#include "../../../arch/alpha/include/uapi/asm/bitsperlong.h"
- #else
- #include <asm-generic/bitsperlong.h>
- #endif
 -- 
-2.20.1
+2.7.4
 
 
 _______________________________________________
