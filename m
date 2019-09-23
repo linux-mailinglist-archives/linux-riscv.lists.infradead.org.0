@@ -2,75 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E4D4BB49C
-	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 14:59:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DFDF3BB4FF
+	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 15:10:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YMcEGiFKwuTb1HffpIn0NkiO07HpBN3EblRgBQn9e5o=; b=UY8b17f+N3pyM+
-	ILaBQHQOxzFlC/rtppHSqNRhZDj12YKOYGh5m/CUA2rLO3vphh9l3Ps7MLJeupp4u6bFxRvmAuuk8
-	E/LeeyN/9irz4SATxkuIMXbuM1xlAZyBaFJ1asS/Bq5O4rLM/qCbNjwXRj4eIcnZbTQ5dD2EB80mc
-	6//eLHq+Z/zHWAAUR9hkolfZoXSV1erjwmhpzXG0Sq0pZPGRhHPs7bU7BCYmiEeEchP2uSCFzSPdg
-	+J/lC0Ulml9B1vzfUWYNztucSTGPpj7Y0253Y+SbNo5tFxf0NKHTZxegYvVCArFOpHRYlFMQcp5Ns
-	OuTAw2AvXm+8BD2BCaYQ==;
+	List-Owner; bh=87F1C4QgDvCpJEANg55M4aoewxFrCUBW5N+Bj6rUY4Q=; b=T+u3nScQepw5c/
+	ChndP+ADfr8erFfN/q+xotD16UX7mVV8Potg6Vcjb8QYgyqBJ0swwA1v61kzOX4EFilTeUELGlVsz
+	RLT3HKZrP4H4IbHsX+Qgjm1HVXVgGQy5ETBmW/MtvEFkfF8QQy0x5GIccJctCb2L/UB5ESaZeqJk5
+	sqjuqmjH/uze5eV3q2Kur9eUiFvvehx8tyElqEtCM9JVdJATl0NEbJ/3/HW752FLGmPWHNKGQl6ma
+	B6nlUWemqZz76bm2YJjdKrd/iHuihT8oU7FlZZILDBcYQN/H2nk9jxmUM5Szidz8FIhd/Q9zDkqw0
+	xCyzn7CzxqjqaMTFJHwg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iCNvy-0002Mh-Mb; Mon, 23 Sep 2019 12:59:18 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1iCO6P-0006Sc-6K; Mon, 23 Sep 2019 13:10:05 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iCNvv-0002M1-BP
- for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 12:59:16 +0000
-Received: by mail-wm1-x343.google.com with SMTP id x2so9840669wmj.2
- for <linux-riscv@lists.infradead.org>; Mon, 23 Sep 2019 05:59:14 -0700 (PDT)
+ id 1iCO6K-0006EW-RH
+ for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 13:10:02 +0000
+Received: by mail-wm1-x344.google.com with SMTP id p7so9893638wmp.4
+ for <linux-riscv@lists.infradead.org>; Mon, 23 Sep 2019 06:09:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HTuM7/0UVWYw13uPzi+JxNLECRLsoMfgODIyjcc3VMA=;
- b=KHxg3sfhcAxqdoLBIjcXRxE8lVWuEiR3G6gv/GECDpR+XLvkcYfONyKgPhyWO12Pxx
- bsoM3Ln/JaM6ElP9GokIc9e7ZaT3JRpe00aXBJLKz3S4DQXQNxqU1l5bED1DlOzaKfAv
- bowzzJgpS8ooLWUkfNkTWPTGzDerYIiFNVxEUOuSQPrnOmYZkyF5nz8STB5vOw1hPANL
- RdGwHspHWsGCDayIoY4pNRNM5sBD17QO/DUasnMzcH5w71bpRyAYsL1/b/Gwe8Qff8yx
- 3zGBlhk93p7X7uGHGWFiHM7aznecCqdV8N0avWMGCiIzzgAX63kBE6zAC3k7q6TJLyit
- E2rQ==
+ :cc; bh=POQzEF32pJw+JcJGYwatIQLE1EclVL51HgsgtLA7Qmw=;
+ b=BX0d9fUZ89UyQbARi+EIiuQz7/skB03FkmvzPaRZR3ZECUUjvMHRyuchQCs+a9LAea
+ 2G+PIK23wzO+ITkoV9HFRLsgbyKRheMT1vim2zYSLgpWoWWc768/w/OGIxA96QWxNPvq
+ SJEKRVfFuMmfOJ4unliQJ5+TqqUvYFiIxrGMrgtRcVF3bmfjsXCvhjEXGeLH1u++HYAe
+ qbVfRinf3ErfTk1H3EIgzb+9pP38kcbHr+3YQCq6Js11GuGfHHbjTYGjPwlL63q3Y4/U
+ SKvhbtyKQWs8UXSHYGStv9Jl55kLNR8viy0MdL8sHCwy11YhD12ccd5rFMgoUxtK2ykE
+ sItA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HTuM7/0UVWYw13uPzi+JxNLECRLsoMfgODIyjcc3VMA=;
- b=H4ysiBqDqjCI9Sekbs0lFFXK2ahpx6OUwjD2rhZcD3LX6eNNoIiSYpiv+O7zhzXw5Y
- dOqRqTJJF8WO9XHTZXgtnKwrfhPpSVGSeoXKEPtcwKOMPZr+9ky+8hWG/sINQER1KgCR
- r9lEO22esV4LowRsa5wOx6g+n1cGifBkuI3NqyCREaMkQYaiuc091uFDajtvc5wBrqfr
- KeChy3qsYuH5FnRjda1k6Q0UEjwSL6PyC1UpRf2PU8zcadHGQ8g3QSSeyWuatUHsSu+9
- Egd/HlJiv3WrCcVuVmHsTHTtKNCgsckRDu6/dXtVsEAhfP3rk1np+LA1Iqkd8UHwm5kB
- 3BdA==
-X-Gm-Message-State: APjAAAXivuPvytZFj7/hlIS7h5iL6dsumEuNt8eRCphQ+CpQJYtMiDJP
- A8NRs32Dmwa9Z6BpOsTzjQeHlNI1M/Tl/ejAUA69IA==
-X-Google-Smtp-Source: APXvYqzh2IBz0cIlPb7hv46bd1P8/dI9ldz/B7wmwEcTK3TnZ6Hf8lVRsJVYT/tG4aQeI5ajqHIpCC6rKKf/Oh9nAIE=
-X-Received: by 2002:a1c:5451:: with SMTP id p17mr13776037wmi.103.1569243552938; 
- Mon, 23 Sep 2019 05:59:12 -0700 (PDT)
+ bh=POQzEF32pJw+JcJGYwatIQLE1EclVL51HgsgtLA7Qmw=;
+ b=MyYde0FuFzTZcxUwnlcUp4YhiyGgqBd3eBXVBUE2wMpEmeLgUntXuk4pruVXiFIGne
+ QObo7yFH+dN13NOZiyShpZJWLqssthaujtl+2LPXVi/PAKOZi+6dhJXxKMnz+6M0/0B/
+ 18Tkx4yGYcrfXCWQfYMnDZcKPWUZbP00dkmS7KGW/ch1zJsm5o+CrWNUxvx2YxAwOl+Y
+ g1iZAfdCgvIxRsU8X4aWXxv7KFWQRG142DIUd3d6ESWve9xRAFpXuv8/1Rc/iCaHyMl+
+ qFiD6dYeG8cQaeyPmPeR609bHZz7sbjZwtiKlrcfPSOSRnAC30RpXL3vMju8nsKo3Hfo
+ QK8A==
+X-Gm-Message-State: APjAAAXzXB0hUeTEsOdTY7jshn5fIAZJMNIRA5yQSfpvk6m6Hjt7lIO5
+ Df6PjLGCd3HiBBmKM95LlT60Vbg+5ZfyN9l5U5fxig==
+X-Google-Smtp-Source: APXvYqxmSBlwd2lVkFWxE9RTK2LVohXpZcBHo1U2r2gpRoUOnN9IsM4d5615+AEz4vMLdLGhar/FgZSJ+9bVZz2tU3M=
+X-Received: by 2002:a7b:c84f:: with SMTP id c15mr12094316wml.52.1569244194712; 
+ Mon, 23 Sep 2019 06:09:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190904161245.111924-1-anup.patel@wdc.com>
- <20190904161245.111924-20-anup.patel@wdc.com>
- <d144652e-898b-bf6b-dc73-352fb1fffd40@amazon.com>
-In-Reply-To: <d144652e-898b-bf6b-dc73-352fb1fffd40@amazon.com>
+ <20190904161245.111924-12-anup.patel@wdc.com>
+ <8c44ac8a-3fdc-b9dd-1815-06e86cb73047@redhat.com>
+In-Reply-To: <8c44ac8a-3fdc-b9dd-1815-06e86cb73047@redhat.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Mon, 23 Sep 2019 18:29:01 +0530
-Message-ID: <CAAhSdy3HE_s5mqGmC0w8WWxJ4C6HJPyo-9Pdc-7snQ4aN9vKOA@mail.gmail.com>
-Subject: Re: [PATCH v7 18/21] RISC-V: KVM: Add SBI v0.1 support
-To: Alexander Graf <graf@amazon.com>
+Date: Mon, 23 Sep 2019 18:39:43 +0530
+Message-ID: <CAAhSdy1-1yxMnjzppmUBxtSOAuwWaPtNZwW+QH1O7LAnEVP8pg@mail.gmail.com>
+Subject: Re: [PATCH v7 10/21] RISC-V: KVM: Handle MMIO exits for VCPU
+To: Paolo Bonzini <pbonzini@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190923_055915_394326_510F080F 
-X-CRM114-Status: GOOD (  25.84  )
+X-CRM114-CacheID: sfid-20190923_061000_887652_7C966634 
+X-CRM114-Status: GOOD (  13.95  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -94,8 +94,8 @@ Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
  Anup Patel <Anup.Patel@wdc.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alexander Graf <graf@amazon.com>, Paul Walmsley <paul.walmsley@sifive.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Thomas Gleixner <tglx@linutronix.de>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
@@ -103,205 +103,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Sep 23, 2019 at 12:31 PM Alexander Graf <graf@amazon.com> wrote:
+On Mon, Sep 23, 2019 at 4:42 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 >
->
->
-> On 04.09.19 18:16, Anup Patel wrote:
-> > From: Atish Patra <atish.patra@wdc.com>
-> >
-> > The KVM host kernel running in HS-mode needs to handle SBI calls coming
-> > from guest kernel running in VS-mode.
-> >
-> > This patch adds SBI v0.1 support in KVM RISC-V. All the SBI calls are
-> > implemented correctly except remote tlb flushes. For remote TLB flushes,
-> > we are doing full TLB flush and this will be optimized in future.
-> >
-> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-> > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> > ---
-> >   arch/riscv/include/asm/kvm_host.h |   2 +
-> >   arch/riscv/kvm/Makefile           |   2 +-
-> >   arch/riscv/kvm/vcpu_exit.c        |   3 +
-> >   arch/riscv/kvm/vcpu_sbi.c         | 104 ++++++++++++++++++++++++++++++
-> >   4 files changed, 110 insertions(+), 1 deletion(-)
-> >   create mode 100644 arch/riscv/kvm/vcpu_sbi.c
-> >
-> > diff --git a/arch/riscv/include/asm/kvm_host.h b/arch/riscv/include/asm/kvm_host.h
-> > index 928c67828b1b..269bfa5641b1 100644
-> > --- a/arch/riscv/include/asm/kvm_host.h
-> > +++ b/arch/riscv/include/asm/kvm_host.h
-> > @@ -250,4 +250,6 @@ bool kvm_riscv_vcpu_has_interrupt(struct kvm_vcpu *vcpu);
-> >   void kvm_riscv_vcpu_power_off(struct kvm_vcpu *vcpu);
-> >   void kvm_riscv_vcpu_power_on(struct kvm_vcpu *vcpu);
-> >
-> > +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu);
+> On 04/09/19 18:15, Anup Patel wrote:
+> > +     unsigned long guest_sstatus =
+> > +                     vcpu->arch.guest_context.sstatus | SR_MXR;
+> > +     unsigned long guest_hstatus =
+> > +                     vcpu->arch.guest_context.hstatus | HSTATUS_SPRV;
+> > +     unsigned long guest_vsstatus, old_stvec, tmp;
 > > +
-> >   #endif /* __RISCV_KVM_HOST_H__ */
-> > diff --git a/arch/riscv/kvm/Makefile b/arch/riscv/kvm/Makefile
-> > index 3e0c7558320d..b56dc1650d2c 100644
-> > --- a/arch/riscv/kvm/Makefile
-> > +++ b/arch/riscv/kvm/Makefile
-> > @@ -9,6 +9,6 @@ ccflags-y := -Ivirt/kvm -Iarch/riscv/kvm
-> >   kvm-objs := $(common-objs-y)
-> >
-> >   kvm-objs += main.o vm.o vmid.o tlb.o mmu.o
-> > -kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o
-> > +kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o vcpu_sbi.o
-> >
-> >   obj-$(CONFIG_KVM)   += kvm.o
-> > diff --git a/arch/riscv/kvm/vcpu_exit.c b/arch/riscv/kvm/vcpu_exit.c
-> > index 39469f67b241..0ee4e8943f4f 100644
-> > --- a/arch/riscv/kvm/vcpu_exit.c
-> > +++ b/arch/riscv/kvm/vcpu_exit.c
-> > @@ -594,6 +594,9 @@ int kvm_riscv_vcpu_exit(struct kvm_vcpu *vcpu, struct kvm_run *run,
-> >                   (vcpu->arch.guest_context.hstatus & HSTATUS_STL))
-> >                       ret = stage2_page_fault(vcpu, run, scause, stval);
-> >               break;
-> > +     case EXC_SUPERVISOR_SYSCALL:
-> > +             if (vcpu->arch.guest_context.hstatus & HSTATUS_SPV)
-> > +                     ret = kvm_riscv_vcpu_sbi_ecall(vcpu);
+> > +     guest_sstatus = csr_swap(CSR_SSTATUS, guest_sstatus);
+> > +     old_stvec = csr_swap(CSR_STVEC, (ulong)&__kvm_riscv_unpriv_trap);
+> > +
+> > +     if (read_insn) {
+> > +             guest_vsstatus = csr_read_set(CSR_VSSTATUS, SR_MXR);
 >
-> implicit fall-through
+> Is this needed?  IIUC SSTATUS.MXR encompasses a wider set of permissions:
+>
+>   The HS-level MXR bit makes any executable page readable.  {\tt
+>   vsstatus}.MXR makes readable those pages marked executable at the VS
+>   translation level, but only if readable at the guest-physical
+>   translation level.
+>
+> So it should be enough to set SSTATUS.MXR=1 I think.  But you also
+> shouldn't set SSTATUS.MXR=1 in the !read_insn case.
 
-Okay, I will add break here.
+I was being overly cautious here. Initially, I thought SSTATUS.MXR
+applies only to Stage2 and VSSTATUS.MXR applies only to Stage1.
+
+I agree with you. The HS-mode should only need to set SSTATUS.MXR.
 
 >
-> >       default:
-> >               break;
-> >       };
-> > diff --git a/arch/riscv/kvm/vcpu_sbi.c b/arch/riscv/kvm/vcpu_sbi.c
-> > new file mode 100644
-> > index 000000000000..b415b8b54bb1
-> > --- /dev/null
-> > +++ b/arch/riscv/kvm/vcpu_sbi.c
-> > @@ -0,0 +1,104 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/**
-> > + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
-> > + *
-> > + * Authors:
-> > + *     Atish Patra <atish.patra@wdc.com>
-> > + */
-> > +
-> > +#include <linux/errno.h>
-> > +#include <linux/err.h>
-> > +#include <linux/kvm_host.h>
-> > +#include <asm/csr.h>
-> > +#include <asm/kvm_vcpu_timer.h>
-> > +
-> > +#define SBI_VERSION_MAJOR                    0
-> > +#define SBI_VERSION_MINOR                    1
-> > +
-> > +static void kvm_sbi_system_shutdown(struct kvm_vcpu *vcpu, u32 type)
-> > +{
-> > +     int i;
-> > +     struct kvm_vcpu *tmp;
-> > +
-> > +     kvm_for_each_vcpu(i, tmp, vcpu->kvm)
-> > +             tmp->arch.power_off = true;
-> > +     kvm_make_all_cpus_request(vcpu->kvm, KVM_REQ_SLEEP);
-> > +
-> > +     memset(&vcpu->run->system_event, 0, sizeof(vcpu->run->system_event));
-> > +     vcpu->run->system_event.type = type;
-> > +     vcpu->run->exit_reason = KVM_EXIT_SYSTEM_EVENT;
->
-> Is there a particular reason this has to be implemented in kernel space?
+> Also, you can drop the irq save/restore (which is already a save/restore
+> of SSTATUS) since you already write 0 to SSTATUS.SIE in your csr_swap.
+> Perhaps add a BUG_ON(guest_sstatus & SR_SIE) before the csr_swap?
 
-It's not implemented in kernel space. We are forwarding it to user space
-using exit reason KVM_EXIT_SYSTEM_EVENT. These exit reason is
-arch independent and both QEMU and KVMTOOL already implement
-it in arch independent way.
-
-> It's not performance critical and all stopping vcpus is something user
-> space should be able to do as well, no?
-
-Yes, it's not performance critical but it's done in user space.
+I had already dropped irq save/restore in v7 series and having BUG_ON()
+on guest_sstatus here would be better.
 
 >
-> > +}
-> > +
-> > +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu)
-> > +{
-> > +     int i, ret = 1;
-> > +     u64 next_cycle;
-> > +     struct kvm_vcpu *rvcpu;
-> > +     bool next_sepc = true;
-> > +     ulong hmask, ut_scause = 0;
-> > +     struct kvm_cpu_context *cp = &vcpu->arch.guest_context;
-> > +
-> > +     if (!cp)
-> > +             return -EINVAL;
-> > +
-> > +     switch (cp->a7) {
-> > +     case SBI_SET_TIMER:
-> > +#if __riscv_xlen == 32
-> > +             next_cycle = ((u64)cp->a1 << 32) | (u64)cp->a0;
+> > +             asm volatile ("\n"
+> > +                     "csrrw %[hstatus], " STR(CSR_HSTATUS) ", %[hstatus]\n"
+> > +                     "li %[tilen], 4\n"
+> > +                     "li %[tscause], 0\n"
+> > +                     "lhu %[val], (%[addr])\n"
+> > +                     "andi %[tmp], %[val], 3\n"
+> > +                     "addi %[tmp], %[tmp], -3\n"
+> > +                     "bne %[tmp], zero, 2f\n"
+> > +                     "lhu %[tmp], 2(%[addr])\n"
+> > +                     "sll %[tmp], %[tmp], 16\n"
+> > +                     "add %[val], %[val], %[tmp]\n"
+> > +                     "2: csrw " STR(CSR_HSTATUS) ", %[hstatus]"
+> > +             : [hstatus] "+&r"(guest_hstatus), [val] "=&r" (val),
+> > +               [tmp] "=&r" (tmp), [tilen] "+&r" (tilen),
+> > +               [tscause] "+&r" (tscause)
+> > +             : [addr] "r" (addr));
+> > +             csr_write(CSR_VSSTATUS, guest_vsstatus);
+>
+> >
+> > +#ifndef CONFIG_RISCV_ISA_C
+> > +                     "li %[tilen], 4\n"
 > > +#else
-> > +             next_cycle = (u64)cp->a0;
+> > +                     "li %[tilen], 2\n"
 > > +#endif
-> > +             kvm_riscv_vcpu_timer_next_event(vcpu, next_cycle);
-> > +             break;
-> > +     case SBI_CLEAR_IPI:
-> > +             kvm_riscv_vcpu_unset_interrupt(vcpu, IRQ_S_SOFT);
-> > +             break;
-> > +     case SBI_SEND_IPI:
-> > +             hmask = kvm_riscv_vcpu_unpriv_read(vcpu, false, cp->a0,
-> > +                                                &ut_scause);
-> > +             if (ut_scause) {
-> > +                     kvm_riscv_vcpu_trap_redirect(vcpu, ut_scause,
-> > +                                                  cp->a0);
-> > +                     next_sepc = false;
-> > +             } else {
-> > +                     for_each_set_bit(i, &hmask, BITS_PER_LONG) {
-> > +                             rvcpu = kvm_get_vcpu_by_id(vcpu->kvm, i);
-> > +                             kvm_riscv_vcpu_set_interrupt(rvcpu, IRQ_S_SOFT);
-> > +                     }
-> > +             }
-> > +             break;
-> > +     case SBI_SHUTDOWN:
-> > +             kvm_sbi_system_shutdown(vcpu, KVM_SYSTEM_EVENT_SHUTDOWN);
-> > +             ret = 0;
-> > +             break;
-> > +     case SBI_REMOTE_FENCE_I:
-> > +             sbi_remote_fence_i(NULL);
-> > +             break;
-> > +     /*
-> > +      * TODO: There should be a way to call remote hfence.bvma.
-> > +      * Preferred method is now a SBI call. Until then, just flush
-> > +      * all tlbs.
-> > +      */
-> > +     case SBI_REMOTE_SFENCE_VMA:
-> > +             /* TODO: Parse vma range. */
-> > +             sbi_remote_sfence_vma(NULL, 0, 0);
-> > +             break;
-> > +     case SBI_REMOTE_SFENCE_VMA_ASID:
-> > +             /* TODO: Parse vma range for given ASID */
-> > +             sbi_remote_sfence_vma(NULL, 0, 0);
-> > +             break;
-> > +     default:
-> > +             /*
-> > +              * For now, just return error to Guest.
-> > +              * TODO: In-future, we will route unsupported SBI calls
-> > +              * to user-space.
-> > +              */
-> > +             cp->a0 = -ENOTSUPP;
-> > +             break;
-> > +     };
-> > +
-> > +     if (ret >= 0)
-> > +             cp->sepc += 4;
 >
-> I don't see you ever setting ret except for shutdown?
+> Can you use an assembler directive to force using a non-compressed
+> format for ld and lw?  This would get rid of tilen, which is costing 6
+> bytes (if I did the RVC math right) in order to save two. :)
+
+I tried looking for it but could not find any assembler directive
+to selectively turn-off instruction compression.
+
 >
-> Really, now is the time to plumb SBI calls down to user space. It allows
-> you to have a clean shutdown story from day 1.
-
-I agree with you.
-
-I will implement unsupported SBI call forwarding to user-space in v8 series.
+> Paolo
+>
+> > +                     "li %[tscause], 0\n"
+> > +#ifdef CONFIG_64BIT
+> > +                     "ld %[val], (%[addr])\n"
+> > +#else
+> > +                     "lw %[val], (%[addr])\n"
+> > +#endif
 
 Regards,
 Anup
