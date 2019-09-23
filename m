@@ -2,76 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B453BB476
-	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 14:54:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E4D4BB49C
+	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 14:59:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QqDUtOMZcZXQ2PCTUawnBJqH3uwLQXCHq/t7Wg1CUfA=; b=AXQdpzvwbcIgPW
-	iTSUPo/luJ0ZSUp7964KXg82TJWoqu0oa4xkdZqvYddnWcZ/xAM9tlOSMOHP7FXCIdF2OqqnruIT9
-	1gGq5trHyObIsNAmHgXCj8xgFgODyCndJzl6aML5e8ZTPBk2OuUlOYutAtUJHBby5UqGUavZC7LpR
-	Vv53OG63UPP0E8aFCq0qnR7g8fCm7cqf+/eqGX98x++9oJMSqzyTmhzhgHPnZ6U3l+ytWfgeGQ01P
-	NjCoejCa3StW4S7fPmzdykFfMBZu/wHL/LQABVEZv8xBjdbQhWQn1sShknAYfDuNKx4GrlEv6nHrX
-	9+d16ceNsLTV5ONsLzfQ==;
+	List-Owner; bh=YMcEGiFKwuTb1HffpIn0NkiO07HpBN3EblRgBQn9e5o=; b=UY8b17f+N3pyM+
+	ILaBQHQOxzFlC/rtppHSqNRhZDj12YKOYGh5m/CUA2rLO3vphh9l3Ps7MLJeupp4u6bFxRvmAuuk8
+	E/LeeyN/9irz4SATxkuIMXbuM1xlAZyBaFJ1asS/Bq5O4rLM/qCbNjwXRj4eIcnZbTQ5dD2EB80mc
+	6//eLHq+Z/zHWAAUR9hkolfZoXSV1erjwmhpzXG0Sq0pZPGRhHPs7bU7BCYmiEeEchP2uSCFzSPdg
+	+J/lC0Ulml9B1vzfUWYNztucSTGPpj7Y0253Y+SbNo5tFxf0NKHTZxegYvVCArFOpHRYlFMQcp5Ns
+	OuTAw2AvXm+8BD2BCaYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iCNrB-0000nQ-5C; Mon, 23 Sep 2019 12:54:21 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1iCNvy-0002Mh-Mb; Mon, 23 Sep 2019 12:59:18 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iCNr6-0000mD-V6
- for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 12:54:18 +0000
-Received: by mail-wr1-x443.google.com with SMTP id i1so13813069wro.4
- for <linux-riscv@lists.infradead.org>; Mon, 23 Sep 2019 05:54:16 -0700 (PDT)
+ id 1iCNvv-0002M1-BP
+ for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 12:59:16 +0000
+Received: by mail-wm1-x343.google.com with SMTP id x2so9840669wmj.2
+ for <linux-riscv@lists.infradead.org>; Mon, 23 Sep 2019 05:59:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AovsfvrkVC8KgehdY4+Z592P7dBIQY37LqoSTZ8Zeho=;
- b=HYeBM2QpSXqbmldBl/VrqKVlCePEW918eFcjyJyHTWUNdbLCTZvsYKhdc8gAKYhMQ3
- onS/RCKaAqam1IA/rnrzUrG+d7bZJr2jWsdDZkfh4si4j5R5w4HYXf0LAGhhfEQta0VH
- kOBETSMUfxF4BbeVChawSoHw5c/AqsVpt+ZYrtYpzU7nRnQBVA20F3pvTns/+ea10zfQ
- 3lBnqyOgUJHfGIr8j6LZs4YD/QrIBGZVH71lwS4eH1TSI15nbdNFNbGMZDcU0+pPHYDb
- fKiRaH3Q7y7oQ6BZr9K95rEDYWpXA3J7EJA9gsU8++gi2Mp8u0O7xXR4hJuREj8UxXok
- ifZg==
+ :cc; bh=HTuM7/0UVWYw13uPzi+JxNLECRLsoMfgODIyjcc3VMA=;
+ b=KHxg3sfhcAxqdoLBIjcXRxE8lVWuEiR3G6gv/GECDpR+XLvkcYfONyKgPhyWO12Pxx
+ bsoM3Ln/JaM6ElP9GokIc9e7ZaT3JRpe00aXBJLKz3S4DQXQNxqU1l5bED1DlOzaKfAv
+ bowzzJgpS8ooLWUkfNkTWPTGzDerYIiFNVxEUOuSQPrnOmYZkyF5nz8STB5vOw1hPANL
+ RdGwHspHWsGCDayIoY4pNRNM5sBD17QO/DUasnMzcH5w71bpRyAYsL1/b/Gwe8Qff8yx
+ 3zGBlhk93p7X7uGHGWFiHM7aznecCqdV8N0avWMGCiIzzgAX63kBE6zAC3k7q6TJLyit
+ E2rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=AovsfvrkVC8KgehdY4+Z592P7dBIQY37LqoSTZ8Zeho=;
- b=UW66ye2Um7IxMYAIHaf/5jGJ2anTKQSP+vE0dcoBtwmdj3C4U+bWp/GXRkobcd39rz
- fvxRYKPTfrMSe1jXxWtMhWpLp5gFS3yUInLtU0bUj/oehJX+JJjnSZvno7It3et+0Yl/
- Lo9/dee3AXs2npJtgdY+dLYDfVKCuPSNX6vEi69yORFxSZuFhFLi4o7bywVnCDps6D5E
- wb3FJUifOZZnBDBZZAtU9KXIw7xgCW0IaF/FniD8jNySVLtUvs9E80KzhYEgZYtl7D2j
- N2GWguvRZQXx0xjs29JT0rUy5RdI/gpY7sJ3x+KZujHcReZ2cImwLCrOg3RZEFtryquO
- G8Bg==
-X-Gm-Message-State: APjAAAWbJ90ZYNTLp8J0p6cXgjGeFtXE1uRSt0v9OM0OogR1FUz/9Xd8
- 7OQp9ySyI0B6jObwr2tlhwAw9FMC4JzgdB5CSfk1qA==
-X-Google-Smtp-Source: APXvYqwsHYbO+9L86VnJoBwoB8mk7eZ22lokkO725a1cKAw31Hv4kO0LqdHgIV0+Yju7xAlyzJlQVzY0aMbR9OJm2Ec=
-X-Received: by 2002:a05:6000:2:: with SMTP id
- h2mr20587928wrx.309.1569243255021; 
- Mon, 23 Sep 2019 05:54:15 -0700 (PDT)
+ bh=HTuM7/0UVWYw13uPzi+JxNLECRLsoMfgODIyjcc3VMA=;
+ b=H4ysiBqDqjCI9Sekbs0lFFXK2ahpx6OUwjD2rhZcD3LX6eNNoIiSYpiv+O7zhzXw5Y
+ dOqRqTJJF8WO9XHTZXgtnKwrfhPpSVGSeoXKEPtcwKOMPZr+9ky+8hWG/sINQER1KgCR
+ r9lEO22esV4LowRsa5wOx6g+n1cGifBkuI3NqyCREaMkQYaiuc091uFDajtvc5wBrqfr
+ KeChy3qsYuH5FnRjda1k6Q0UEjwSL6PyC1UpRf2PU8zcadHGQ8g3QSSeyWuatUHsSu+9
+ Egd/HlJiv3WrCcVuVmHsTHTtKNCgsckRDu6/dXtVsEAhfP3rk1np+LA1Iqkd8UHwm5kB
+ 3BdA==
+X-Gm-Message-State: APjAAAXivuPvytZFj7/hlIS7h5iL6dsumEuNt8eRCphQ+CpQJYtMiDJP
+ A8NRs32Dmwa9Z6BpOsTzjQeHlNI1M/Tl/ejAUA69IA==
+X-Google-Smtp-Source: APXvYqzh2IBz0cIlPb7hv46bd1P8/dI9ldz/B7wmwEcTK3TnZ6Hf8lVRsJVYT/tG4aQeI5ajqHIpCC6rKKf/Oh9nAIE=
+X-Received: by 2002:a1c:5451:: with SMTP id p17mr13776037wmi.103.1569243552938; 
+ Mon, 23 Sep 2019 05:59:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190904161245.111924-1-anup.patel@wdc.com>
- <20190904161245.111924-13-anup.patel@wdc.com>
- <3c149ec4-38df-9073-2880-b28148d3c059@amazon.com>
-In-Reply-To: <3c149ec4-38df-9073-2880-b28148d3c059@amazon.com>
+ <20190904161245.111924-20-anup.patel@wdc.com>
+ <d144652e-898b-bf6b-dc73-352fb1fffd40@amazon.com>
+In-Reply-To: <d144652e-898b-bf6b-dc73-352fb1fffd40@amazon.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Mon, 23 Sep 2019 18:24:02 +0530
-Message-ID: <CAAhSdy1A-FZJ5DeyzFzZn8h-Vs4QR16uFgeeCNpJi2KMQMbPmQ@mail.gmail.com>
-Subject: Re: [PATCH v7 11/21] RISC-V: KVM: Handle WFI exits for VCPU
+Date: Mon, 23 Sep 2019 18:29:01 +0530
+Message-ID: <CAAhSdy3HE_s5mqGmC0w8WWxJ4C6HJPyo-9Pdc-7snQ4aN9vKOA@mail.gmail.com>
+Subject: Re: [PATCH v7 18/21] RISC-V: KVM: Add SBI v0.1 support
 To: Alexander Graf <graf@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190923_055417_003536_2A2F6353 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20190923_055915_394326_510F080F 
+X-CRM114-Status: GOOD (  25.84  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -104,110 +103,208 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Sep 23, 2019 at 12:24 PM Alexander Graf <graf@amazon.com> wrote:
+On Mon, Sep 23, 2019 at 12:31 PM Alexander Graf <graf@amazon.com> wrote:
 >
 >
 >
-> On 04.09.19 18:15, Anup Patel wrote:
-> > We get illegal instruction trap whenever Guest/VM executes WFI
-> > instruction.
+> On 04.09.19 18:16, Anup Patel wrote:
+> > From: Atish Patra <atish.patra@wdc.com>
 > >
-> > This patch handles WFI trap by blocking the trapped VCPU using
-> > kvm_vcpu_block() API. The blocked VCPU will be automatically
-> > resumed whenever a VCPU interrupt is injected from user-space
-> > or from in-kernel IRQCHIP emulation.
+> > The KVM host kernel running in HS-mode needs to handle SBI calls coming
+> > from guest kernel running in VS-mode.
 > >
+> > This patch adds SBI v0.1 support in KVM RISC-V. All the SBI calls are
+> > implemented correctly except remote tlb flushes. For remote TLB flushes,
+> > we are doing full TLB flush and this will be optimized in future.
+> >
+> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 > > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 > > ---
-> >   arch/riscv/kvm/vcpu_exit.c | 72 ++++++++++++++++++++++++++++++++++++++
-> >   1 file changed, 72 insertions(+)
+> >   arch/riscv/include/asm/kvm_host.h |   2 +
+> >   arch/riscv/kvm/Makefile           |   2 +-
+> >   arch/riscv/kvm/vcpu_exit.c        |   3 +
+> >   arch/riscv/kvm/vcpu_sbi.c         | 104 ++++++++++++++++++++++++++++++
+> >   4 files changed, 110 insertions(+), 1 deletion(-)
+> >   create mode 100644 arch/riscv/kvm/vcpu_sbi.c
 > >
+> > diff --git a/arch/riscv/include/asm/kvm_host.h b/arch/riscv/include/asm/kvm_host.h
+> > index 928c67828b1b..269bfa5641b1 100644
+> > --- a/arch/riscv/include/asm/kvm_host.h
+> > +++ b/arch/riscv/include/asm/kvm_host.h
+> > @@ -250,4 +250,6 @@ bool kvm_riscv_vcpu_has_interrupt(struct kvm_vcpu *vcpu);
+> >   void kvm_riscv_vcpu_power_off(struct kvm_vcpu *vcpu);
+> >   void kvm_riscv_vcpu_power_on(struct kvm_vcpu *vcpu);
+> >
+> > +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu);
+> > +
+> >   #endif /* __RISCV_KVM_HOST_H__ */
+> > diff --git a/arch/riscv/kvm/Makefile b/arch/riscv/kvm/Makefile
+> > index 3e0c7558320d..b56dc1650d2c 100644
+> > --- a/arch/riscv/kvm/Makefile
+> > +++ b/arch/riscv/kvm/Makefile
+> > @@ -9,6 +9,6 @@ ccflags-y := -Ivirt/kvm -Iarch/riscv/kvm
+> >   kvm-objs := $(common-objs-y)
+> >
+> >   kvm-objs += main.o vm.o vmid.o tlb.o mmu.o
+> > -kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o
+> > +kvm-objs += vcpu.o vcpu_exit.o vcpu_switch.o vcpu_timer.o vcpu_sbi.o
+> >
+> >   obj-$(CONFIG_KVM)   += kvm.o
 > > diff --git a/arch/riscv/kvm/vcpu_exit.c b/arch/riscv/kvm/vcpu_exit.c
-> > index d75a6c35b6c7..39469f67b241 100644
+> > index 39469f67b241..0ee4e8943f4f 100644
 > > --- a/arch/riscv/kvm/vcpu_exit.c
 > > +++ b/arch/riscv/kvm/vcpu_exit.c
-> > @@ -12,6 +12,13 @@
-> >   #include <linux/kvm_host.h>
-> >   #include <asm/csr.h>
-> >
-> > +#define INSN_OPCODE_MASK     0x007c
-> > +#define INSN_OPCODE_SHIFT    2
-> > +#define INSN_OPCODE_SYSTEM   28
-> > +
-> > +#define INSN_MASK_WFI                0xffffff00
-> > +#define INSN_MATCH_WFI               0x10500000
-> > +
-> >   #define INSN_MATCH_LB               0x3
-> >   #define INSN_MASK_LB                0x707f
-> >   #define INSN_MATCH_LH               0x1003
-> > @@ -112,6 +119,67 @@
-> >                                (s32)(((insn) >> 7) & 0x1f))
-> >   #define MASK_FUNCT3         0x7000
-> >
-> > +static int truly_illegal_insn(struct kvm_vcpu *vcpu,
-> > +                           struct kvm_run *run,
-> > +                           ulong insn)
-> > +{
-> > +     /* Redirect trap to Guest VCPU */
-> > +     kvm_riscv_vcpu_trap_redirect(vcpu, EXC_INST_ILLEGAL, insn);
-> > +
-> > +     return 1;
-> > +}
-> > +
-> > +static int system_opcode_insn(struct kvm_vcpu *vcpu,
-> > +                           struct kvm_run *run,
-> > +                           ulong insn)
-> > +{
-> > +     if ((insn & INSN_MASK_WFI) == INSN_MATCH_WFI) {
-> > +             vcpu->stat.wfi_exit_stat++;
-> > +             if (!kvm_arch_vcpu_runnable(vcpu)) {
-> > +                     srcu_read_unlock(&vcpu->kvm->srcu, vcpu->arch.srcu_idx);
-> > +                     kvm_vcpu_block(vcpu);
-> > +                     vcpu->arch.srcu_idx = srcu_read_lock(&vcpu->kvm->srcu);
-> > +                     kvm_clear_request(KVM_REQ_UNHALT, vcpu);
-> > +             }
-> > +             vcpu->arch.guest_context.sepc += INSN_LEN(insn);
-> > +             return 1;
-> > +     }
-> > +
-> > +     return truly_illegal_insn(vcpu, run, insn);
-> > +}
-> > +
-> > +static int illegal_inst_fault(struct kvm_vcpu *vcpu, struct kvm_run *run,
-> > +                           unsigned long insn)
-> > +{
-> > +     unsigned long ut_scause = 0;
-> > +     struct kvm_cpu_context *ct;
-> > +
-> > +     if (unlikely((insn & 3) != 3)) {
+> > @@ -594,6 +594,9 @@ int kvm_riscv_vcpu_exit(struct kvm_vcpu *vcpu, struct kvm_run *run,
+> >                   (vcpu->arch.guest_context.hstatus & HSTATUS_STL))
+> >                       ret = stage2_page_fault(vcpu, run, scause, stval);
+> >               break;
+> > +     case EXC_SUPERVISOR_SYSCALL:
+> > +             if (vcpu->arch.guest_context.hstatus & HSTATUS_SPV)
+> > +                     ret = kvm_riscv_vcpu_sbi_ecall(vcpu);
 >
-> What do the low 2 bits mean here? Maybe you can use a define instead?
+> implicit fall-through
 
-These bits are for instruction length (16bit or 32bit).
+Okay, I will add break here.
 
-I will add appropriate defines for these bits.
+>
+> >       default:
+> >               break;
+> >       };
+> > diff --git a/arch/riscv/kvm/vcpu_sbi.c b/arch/riscv/kvm/vcpu_sbi.c
+> > new file mode 100644
+> > index 000000000000..b415b8b54bb1
+> > --- /dev/null
+> > +++ b/arch/riscv/kvm/vcpu_sbi.c
+> > @@ -0,0 +1,104 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/**
+> > + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
+> > + *
+> > + * Authors:
+> > + *     Atish Patra <atish.patra@wdc.com>
+> > + */
+> > +
+> > +#include <linux/errno.h>
+> > +#include <linux/err.h>
+> > +#include <linux/kvm_host.h>
+> > +#include <asm/csr.h>
+> > +#include <asm/kvm_vcpu_timer.h>
+> > +
+> > +#define SBI_VERSION_MAJOR                    0
+> > +#define SBI_VERSION_MINOR                    1
+> > +
+> > +static void kvm_sbi_system_shutdown(struct kvm_vcpu *vcpu, u32 type)
+> > +{
+> > +     int i;
+> > +     struct kvm_vcpu *tmp;
+> > +
+> > +     kvm_for_each_vcpu(i, tmp, vcpu->kvm)
+> > +             tmp->arch.power_off = true;
+> > +     kvm_make_all_cpus_request(vcpu->kvm, KVM_REQ_SLEEP);
+> > +
+> > +     memset(&vcpu->run->system_event, 0, sizeof(vcpu->run->system_event));
+> > +     vcpu->run->system_event.type = type;
+> > +     vcpu->run->exit_reason = KVM_EXIT_SYSTEM_EVENT;
+>
+> Is there a particular reason this has to be implemented in kernel space?
+
+It's not implemented in kernel space. We are forwarding it to user space
+using exit reason KVM_EXIT_SYSTEM_EVENT. These exit reason is
+arch independent and both QEMU and KVMTOOL already implement
+it in arch independent way.
+
+> It's not performance critical and all stopping vcpus is something user
+> space should be able to do as well, no?
+
+Yes, it's not performance critical but it's done in user space.
+
+>
+> > +}
+> > +
+> > +int kvm_riscv_vcpu_sbi_ecall(struct kvm_vcpu *vcpu)
+> > +{
+> > +     int i, ret = 1;
+> > +     u64 next_cycle;
+> > +     struct kvm_vcpu *rvcpu;
+> > +     bool next_sepc = true;
+> > +     ulong hmask, ut_scause = 0;
+> > +     struct kvm_cpu_context *cp = &vcpu->arch.guest_context;
+> > +
+> > +     if (!cp)
+> > +             return -EINVAL;
+> > +
+> > +     switch (cp->a7) {
+> > +     case SBI_SET_TIMER:
+> > +#if __riscv_xlen == 32
+> > +             next_cycle = ((u64)cp->a1 << 32) | (u64)cp->a0;
+> > +#else
+> > +             next_cycle = (u64)cp->a0;
+> > +#endif
+> > +             kvm_riscv_vcpu_timer_next_event(vcpu, next_cycle);
+> > +             break;
+> > +     case SBI_CLEAR_IPI:
+> > +             kvm_riscv_vcpu_unset_interrupt(vcpu, IRQ_S_SOFT);
+> > +             break;
+> > +     case SBI_SEND_IPI:
+> > +             hmask = kvm_riscv_vcpu_unpriv_read(vcpu, false, cp->a0,
+> > +                                                &ut_scause);
+> > +             if (ut_scause) {
+> > +                     kvm_riscv_vcpu_trap_redirect(vcpu, ut_scause,
+> > +                                                  cp->a0);
+> > +                     next_sepc = false;
+> > +             } else {
+> > +                     for_each_set_bit(i, &hmask, BITS_PER_LONG) {
+> > +                             rvcpu = kvm_get_vcpu_by_id(vcpu->kvm, i);
+> > +                             kvm_riscv_vcpu_set_interrupt(rvcpu, IRQ_S_SOFT);
+> > +                     }
+> > +             }
+> > +             break;
+> > +     case SBI_SHUTDOWN:
+> > +             kvm_sbi_system_shutdown(vcpu, KVM_SYSTEM_EVENT_SHUTDOWN);
+> > +             ret = 0;
+> > +             break;
+> > +     case SBI_REMOTE_FENCE_I:
+> > +             sbi_remote_fence_i(NULL);
+> > +             break;
+> > +     /*
+> > +      * TODO: There should be a way to call remote hfence.bvma.
+> > +      * Preferred method is now a SBI call. Until then, just flush
+> > +      * all tlbs.
+> > +      */
+> > +     case SBI_REMOTE_SFENCE_VMA:
+> > +             /* TODO: Parse vma range. */
+> > +             sbi_remote_sfence_vma(NULL, 0, 0);
+> > +             break;
+> > +     case SBI_REMOTE_SFENCE_VMA_ASID:
+> > +             /* TODO: Parse vma range for given ASID */
+> > +             sbi_remote_sfence_vma(NULL, 0, 0);
+> > +             break;
+> > +     default:
+> > +             /*
+> > +              * For now, just return error to Guest.
+> > +              * TODO: In-future, we will route unsupported SBI calls
+> > +              * to user-space.
+> > +              */
+> > +             cp->a0 = -ENOTSUPP;
+> > +             break;
+> > +     };
+> > +
+> > +     if (ret >= 0)
+> > +             cp->sepc += 4;
+>
+> I don't see you ever setting ret except for shutdown?
+>
+> Really, now is the time to plumb SBI calls down to user space. It allows
+> you to have a clean shutdown story from day 1.
+
+I agree with you.
+
+I will implement unsupported SBI call forwarding to user-space in v8 series.
 
 Regards,
 Anup
-
->
->
-> Alex
->
->
->
->
-> Amazon Development Center Germany GmbH
-> Krausenstr. 38
-> 10117 Berlin
-> Geschaeftsfuehrung: Christian Schlaeger, Ralf Herbrich
-> Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
-> Sitz: Berlin
-> Ust-ID: DE 289 237 879
->
->
 
 _______________________________________________
 linux-riscv mailing list
