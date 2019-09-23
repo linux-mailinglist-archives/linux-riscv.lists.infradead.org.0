@@ -2,81 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5269DBADF8
-	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 08:45:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D487ABAE01
+	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 08:51:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3kMHfrqFixny7f5k7QvPo/9BjwLKOq7afYkrBk9ucZM=; b=uCmlmFsR76EG72fsIJCagCNdV
-	5x1UG57X2IIjkqrX/ZxVc+Nw7u38OBiMZqdtv8jZR8rDulGnvxf17KoKNAB20vaQghb9Baoa9biP/
-	p5cqwzm4DgQeNEHomea04JxOuNMZaJTNEHl01L+6yFfAYaWp77VvuRWo2m3VOzqzDXFUZhPB9MSLo
-	Sv22RVTHMRyE7JTCru0++whKrAQKlD3pGk4QH1wq9Xfkfr6689fQjzUFJEqLrkdiaceK2sBh5KwVA
-	H6XZoMdGuOaoz8mqIm/cmjy/ETwd/Tj0E1ZlkfY1RK1vsbQjAZx0OaW3MbhIBmH16p5U2V7hIRia0
-	t8ZZHNSYg==;
+	 bh=yshLEGD+y/mnzS9nEUrwTTwbmpCk5XY7AcZfTiC2z4I=; b=NR33h3ZiBtgcSFRgIi6KHgHul
+	ImA/F+kw+ExG49x/98SPLAOsu57VenfB87MuKqMofRnzxi3Jda/Aak5qR0HsCu5FwwUEDkVhF3H+0
+	QA5d56TnrRYLdLjxDkHB4WBHkECDFO0U9GLtpmkvW1KhZK9dyMXaxqu/LLYrRIc8zgzIU4DkHsvgu
+	XNse1OaE3zplGt/r00I1WW9+3C9q/r/DoCkmlGY7ZELwU+rGBvk16GyNTRK+wgsAAlMy7khRbXRs3
+	ns7rp27qRe4v9DLHIHWvrm5SBiLFdKwNTcNPaURvH8eMHAd/PDw7gaL5Lv+lGYrO8OE/ryNl4+557
+	/Wv2B8mDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iCI5U-0000Gr-CB; Mon, 23 Sep 2019 06:44:45 +0000
-Received: from smtp-fw-6001.amazon.com ([52.95.48.154])
+	id 1iCIBX-00036Y-Op; Mon, 23 Sep 2019 06:51:00 +0000
+Received: from smtp-fw-2101.amazon.com ([72.21.196.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iCI5P-0000G5-2n
- for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 06:44:40 +0000
+ id 1iCIBO-000366-5v
+ for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 06:50:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1569221078; x=1600757078;
+ t=1569221450; x=1600757450;
  h=subject:to:cc:references:from:message-id:date:
  mime-version:in-reply-to:content-transfer-encoding;
- bh=RgSUTh1W/pPjW8MoN9jzPoRAZYLQRC12Kn961QLA8zA=;
- b=QYDBzydGnBzKvdID2hy2fa/NXbHI0xGpD7tdnIS6OkZvX1u9djkL66X9
- oA1cRu6WATbjimBbBLd/47v+ST56lvb7xpmWW8TFnRbNjHlZ7cn9Y4nct
- /Fj5c75FVd8NGHYAAQHC/hq5Z/zV8vQiQGAwOLdYFIFT3CxUEKupG9OyG Y=;
-X-IronPort-AV: E=Sophos;i="5.64,539,1559520000"; d="scan'208";a="416897595"
-Received: from iad6-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-1d-74cf8b49.us-east-1.amazon.com) ([10.124.125.6])
- by smtp-border-fw-out-6001.iad6.amazon.com with ESMTP;
- 23 Sep 2019 06:44:35 +0000
+ bh=66BxKyEsadOoOfbaqrGNVZTKJUAK251j6+K+EAtqSQE=;
+ b=bRQc995StoNJ9I/P/nYimA6mNn+gORKaKiRzbfOC3pZvgX7OXE6hZb/+
+ vdoL52MG0iffT4g6d1CyXnFSuOZz9Aa98Pt13OmqqJYFt5/6UOFfH1zlD
+ 63xIEs3RXgebVIOw/8PHmQolXuQEI+rERuheQr/K8Qzyi2WuznmwZaX71 k=;
+X-IronPort-AV: E=Sophos;i="5.64,539,1559520000"; d="scan'208";a="752436814"
+Received: from iad6-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ email-inbound-relay-1d-474bcd9f.us-east-1.amazon.com) ([10.124.125.2])
+ by smtp-border-fw-out-2101.iad2.amazon.com with ESMTP;
+ 23 Sep 2019 06:50:46 +0000
 Received: from EX13MTAUWC001.ant.amazon.com
  (iad55-ws-svc-p15-lb9-vlan2.iad.amazon.com [10.40.159.162])
- by email-inbound-relay-1d-74cf8b49.us-east-1.amazon.com (Postfix) with ESMTPS
- id EC80DC0C6A; Mon, 23 Sep 2019 06:44:30 +0000 (UTC)
+ by email-inbound-relay-1d-474bcd9f.us-east-1.amazon.com (Postfix) with ESMTPS
+ id 1C6D1A2423; Mon, 23 Sep 2019 06:50:41 +0000 (UTC)
 Received: from EX13D20UWC001.ant.amazon.com (10.43.162.244) by
  EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Mon, 23 Sep 2019 06:44:30 +0000
-Received: from 38f9d3867b82.ant.amazon.com (10.43.162.74) by
+ id 15.0.1367.3; Mon, 23 Sep 2019 06:50:41 +0000
+Received: from 38f9d3867b82.ant.amazon.com (10.43.161.217) by
  EX13D20UWC001.ant.amazon.com (10.43.162.244) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Mon, 23 Sep 2019 06:44:25 +0000
-Subject: Re: [PATCH v7 06/21] RISC-V: KVM: Implement VCPU create, init and
- destroy functions
+ id 15.0.1367.3; Mon, 23 Sep 2019 06:50:36 +0000
+Subject: Re: [PATCH v7 10/21] RISC-V: KVM: Handle MMIO exits for VCPU
 To: Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@sifive.com>, "Paul
  Walmsley" <paul.walmsley@sifive.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  Radim K <rkrcmar@redhat.com>
 References: <20190904161245.111924-1-anup.patel@wdc.com>
- <20190904161245.111924-8-anup.patel@wdc.com>
+ <20190904161245.111924-12-anup.patel@wdc.com>
 From: Alexander Graf <graf@amazon.com>
-Message-ID: <520eed26-9332-1519-44b1-fb08b6410116@amazon.com>
-Date: Mon, 23 Sep 2019 08:44:22 +0200
+Message-ID: <f5bf0227-5066-5fcc-55bd-9a3777826404@amazon.com>
+Date: Mon, 23 Sep 2019 08:50:27 +0200
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
  Gecko/20100101 Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20190904161245.111924-8-anup.patel@wdc.com>
+In-Reply-To: <20190904161245.111924-12-anup.patel@wdc.com>
 Content-Language: en-US
-X-Originating-IP: [10.43.162.74]
-X-ClientProxiedBy: EX13D29UWA004.ant.amazon.com (10.43.160.33) To
+X-Originating-IP: [10.43.161.217]
+X-ClientProxiedBy: EX13D29UWC001.ant.amazon.com (10.43.162.143) To
  EX13D20UWC001.ant.amazon.com (10.43.162.244)
 Precedence: Bulk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190922_234439_276872_D22578A2 
-X-CRM114-Status: UNSURE (   5.34  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.2 (--)
+X-CRM114-CacheID: sfid-20190922_235050_351043_E7585437 
+X-CRM114-Status: GOOD (  10.92  )
+X-Spam-Score: -4.9 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.2 points)
+ Content analysis details:   (-4.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [52.95.48.154 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [72.21.196.25 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
@@ -112,15 +110,32 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 
 
-On 04.09.19 18:14, Anup Patel wrote:
-> This patch implements VCPU create, init and destroy functions
-> required by generic KVM module. We don't have much dynamic
-> resources in struct kvm_vcpu_arch so thest functions are quite
+On 04.09.19 18:15, Anup Patel wrote:
+> We will get stage2 page faults whenever Guest/VM access SW emulated
+> MMIO device or unmapped Guest RAM.
+> 
+> This patch implements MMIO read/write emulation by extracting MMIO
+> details from the trapped load/store instruction and forwarding the
+> MMIO read/write to user-space. The actual MMIO emulation will happen
+> in user-space and KVM kernel module will only take care of register
+> updates before resuming the trapped VCPU.
+> 
+> The handling for stage2 page faults for unmapped Guest RAM will be
+> implemeted by a separate patch later.
+> 
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Since you're respinning for v8 anyway, please s/thest/these/ :)
+This version is indeed much better. I would not mind a bit more 
+documentation when it comes to implicit register value assumptions (a0, 
+a1 in the trap handler), but the code is small enough that someone who 
+cares can figure it out quickly enough.
+
+Reviewed-by: Alexander Graf <graf@amazon.com>
+
 
 Alex
-
 
 
 
