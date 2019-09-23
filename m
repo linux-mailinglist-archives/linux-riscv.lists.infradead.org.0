@@ -2,78 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CC19BB3E8
-	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 14:37:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B453BB476
+	for <lists+linux-riscv@lfdr.de>; Mon, 23 Sep 2019 14:54:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=24Zw61XL9M1e1cNeYRuP9wd3Dkt/SkMIsFVs176D7dg=; b=JtVk/R9BrluyPT
-	uL4YsrtsxRkxG5esfioGiyJ+mHoL3r8wsaXO2jXhxf8ur2at095xmnroYNLrNOn94TJ2Re6tzAPHv
-	niug1o8e66A4mKl21WoAvK3k/eNXcSZNDgenXCASRqGCFqhLc7ejY7exttjFouryADJVOKZtlvshm
-	3yRIGv+m5MipdGHxOfXhnOt0j/8YJki1dzkfjhNwPBm7AZUyCxF63fCvnaMHJUVPAYDsyvOT7PS1u
-	0/CqnbpKX58NCKvvzjPeH5/F3IVJwYGs4S0Go5nqIWi9YJBIww/r1m+RTpHpXzlHRn5jKFQfrGeg0
-	gkh5FXJZX52V4oceBMDA==;
+	List-Owner; bh=QqDUtOMZcZXQ2PCTUawnBJqH3uwLQXCHq/t7Wg1CUfA=; b=AXQdpzvwbcIgPW
+	iTSUPo/luJ0ZSUp7964KXg82TJWoqu0oa4xkdZqvYddnWcZ/xAM9tlOSMOHP7FXCIdF2OqqnruIT9
+	1gGq5trHyObIsNAmHgXCj8xgFgODyCndJzl6aML5e8ZTPBk2OuUlOYutAtUJHBby5UqGUavZC7LpR
+	Vv53OG63UPP0E8aFCq0qnR7g8fCm7cqf+/eqGX98x++9oJMSqzyTmhzhgHPnZ6U3l+ytWfgeGQ01P
+	NjCoejCa3StW4S7fPmzdykFfMBZu/wHL/LQABVEZv8xBjdbQhWQn1sShknAYfDuNKx4GrlEv6nHrX
+	9+d16ceNsLTV5ONsLzfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iCNaq-0002bl-UP; Mon, 23 Sep 2019 12:37:29 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1iCNrB-0000nQ-5C; Mon, 23 Sep 2019 12:54:21 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iCNae-0002bC-HL
- for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 12:37:17 +0000
-Received: by mail-wm1-x342.google.com with SMTP id m18so9145606wmc.1
- for <linux-riscv@lists.infradead.org>; Mon, 23 Sep 2019 05:37:15 -0700 (PDT)
+ id 1iCNr6-0000mD-V6
+ for linux-riscv@lists.infradead.org; Mon, 23 Sep 2019 12:54:18 +0000
+Received: by mail-wr1-x443.google.com with SMTP id i1so13813069wro.4
+ for <linux-riscv@lists.infradead.org>; Mon, 23 Sep 2019 05:54:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nT+7rSzFzl9ohdCpEtepkt+of0YH3ZJsWiyLqzd3cYs=;
- b=ORms6xGaws01dtGaiH75TPByIntW6XwOMdAl72molJD1F8b0KU5pBJhP/rEQjYtJOi
- nWR1Sklr0O+2Bw/9iPdAiSoMl/bFWmvM1kD7qBkjIK6wp3ajbnxTVjFtrl/myPrx8CX0
- v1iEzHdPOx7ZnhJjpxrJbEjjejKiJ96AkYmrIMYIKt9pxQnRAkK9AEQK/n27fCliMt3v
- rPg0dOt6Vz86mv+KAH2Y9ny1yLNvVAE9f3DSY4d6ZBwX4HORSDvf2dSXniBTdmF4Y+Rf
- 1JsEIueY+/4L2qK25zsedLLl04sgOnB4DX4pzm3xBBpXQ1mJ8Nq5NFthYv2+fZkNL6u0
- QoKg==
+ :cc; bh=AovsfvrkVC8KgehdY4+Z592P7dBIQY37LqoSTZ8Zeho=;
+ b=HYeBM2QpSXqbmldBl/VrqKVlCePEW918eFcjyJyHTWUNdbLCTZvsYKhdc8gAKYhMQ3
+ onS/RCKaAqam1IA/rnrzUrG+d7bZJr2jWsdDZkfh4si4j5R5w4HYXf0LAGhhfEQta0VH
+ kOBETSMUfxF4BbeVChawSoHw5c/AqsVpt+ZYrtYpzU7nRnQBVA20F3pvTns/+ea10zfQ
+ 3lBnqyOgUJHfGIr8j6LZs4YD/QrIBGZVH71lwS4eH1TSI15nbdNFNbGMZDcU0+pPHYDb
+ fKiRaH3Q7y7oQ6BZr9K95rEDYWpXA3J7EJA9gsU8++gi2Mp8u0O7xXR4hJuREj8UxXok
+ ifZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nT+7rSzFzl9ohdCpEtepkt+of0YH3ZJsWiyLqzd3cYs=;
- b=fnmLLj8X3jvLUtktrINqCmqaqkPSEdu9cfBHg1LNFFTO9YpiN76vWInXpRbmDf2VaI
- vHyr012JwOBcmrSpRAJG8eAGb5lq13wBLs/1g3nYilkEBfmQmeqVuujFZtZhuWuj7l5y
- I3m7imrf3chmK029nbniQRuya0gFKMxQMVFVbqYX3bYA7P247GnYGhYk8SOw3tjoB2bz
- yjTlb6kZ1vAtSQF0H6/eKXb6sl/Lvvjn2alYO3HtnMXl8TnU/FZRAoERbToifI8eqEkr
- Rsl0zwM2txUSpN9dAmCEgaTpZC/c2+kET2svd7zPjk56kqLpgqwxK62uJGneJk7i01Ve
- Bhcg==
-X-Gm-Message-State: APjAAAVnIybyKot1nfLPReQCfTyI+wfLNMRJ9IIclpTJNaNQvhyfUZm2
- rc89atoN2/+ViqrfwO/FaMVeGW9wsD9c0+YrSPQ2Xw==
-X-Google-Smtp-Source: APXvYqytGAFF6UUTeImuIoUQSKUPZ6j1zL0VHm3CfQoT1frjsg0FIDt5b/rxGFfKRF3Gb42DXvXRPHkhIJ00mZ77V2M=
-X-Received: by 2002:a05:600c:22da:: with SMTP id
- 26mr13191518wmg.177.1569242234306; 
- Mon, 23 Sep 2019 05:37:14 -0700 (PDT)
+ bh=AovsfvrkVC8KgehdY4+Z592P7dBIQY37LqoSTZ8Zeho=;
+ b=UW66ye2Um7IxMYAIHaf/5jGJ2anTKQSP+vE0dcoBtwmdj3C4U+bWp/GXRkobcd39rz
+ fvxRYKPTfrMSe1jXxWtMhWpLp5gFS3yUInLtU0bUj/oehJX+JJjnSZvno7It3et+0Yl/
+ Lo9/dee3AXs2npJtgdY+dLYDfVKCuPSNX6vEi69yORFxSZuFhFLi4o7bywVnCDps6D5E
+ wb3FJUifOZZnBDBZZAtU9KXIw7xgCW0IaF/FniD8jNySVLtUvs9E80KzhYEgZYtl7D2j
+ N2GWguvRZQXx0xjs29JT0rUy5RdI/gpY7sJ3x+KZujHcReZ2cImwLCrOg3RZEFtryquO
+ G8Bg==
+X-Gm-Message-State: APjAAAWbJ90ZYNTLp8J0p6cXgjGeFtXE1uRSt0v9OM0OogR1FUz/9Xd8
+ 7OQp9ySyI0B6jObwr2tlhwAw9FMC4JzgdB5CSfk1qA==
+X-Google-Smtp-Source: APXvYqwsHYbO+9L86VnJoBwoB8mk7eZ22lokkO725a1cKAw31Hv4kO0LqdHgIV0+Yju7xAlyzJlQVzY0aMbR9OJm2Ec=
+X-Received: by 2002:a05:6000:2:: with SMTP id
+ h2mr20587928wrx.309.1569243255021; 
+ Mon, 23 Sep 2019 05:54:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190904161245.111924-1-anup.patel@wdc.com>
- <20190904161245.111924-8-anup.patel@wdc.com>
- <520eed26-9332-1519-44b1-fb08b6410116@amazon.com>
-In-Reply-To: <520eed26-9332-1519-44b1-fb08b6410116@amazon.com>
+ <20190904161245.111924-13-anup.patel@wdc.com>
+ <3c149ec4-38df-9073-2880-b28148d3c059@amazon.com>
+In-Reply-To: <3c149ec4-38df-9073-2880-b28148d3c059@amazon.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Mon, 23 Sep 2019 18:07:02 +0530
-Message-ID: <CAAhSdy0S9jOGUz3ufgMx_8E91VNQZGL3D+q+Hhuj+3ZkwmWkTQ@mail.gmail.com>
-Subject: Re: [PATCH v7 06/21] RISC-V: KVM: Implement VCPU create, init and
- destroy functions
+Date: Mon, 23 Sep 2019 18:24:02 +0530
+Message-ID: <CAAhSdy1A-FZJ5DeyzFzZn8h-Vs4QR16uFgeeCNpJi2KMQMbPmQ@mail.gmail.com>
+Subject: Re: [PATCH v7 11/21] RISC-V: KVM: Handle WFI exits for VCPU
 To: Alexander Graf <graf@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190923_053716_625285_19904FD3 
-X-CRM114-Status: UNSURE (   7.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190923_055417_003536_2A2F6353 
+X-CRM114-Status: GOOD (  16.53  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -106,19 +104,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Sep 23, 2019 at 12:14 PM Alexander Graf <graf@amazon.com> wrote:
+On Mon, Sep 23, 2019 at 12:24 PM Alexander Graf <graf@amazon.com> wrote:
 >
 >
 >
-> On 04.09.19 18:14, Anup Patel wrote:
-> > This patch implements VCPU create, init and destroy functions
-> > required by generic KVM module. We don't have much dynamic
-> > resources in struct kvm_vcpu_arch so thest functions are quite
+> On 04.09.19 18:15, Anup Patel wrote:
+> > We get illegal instruction trap whenever Guest/VM executes WFI
+> > instruction.
+> >
+> > This patch handles WFI trap by blocking the trapped VCPU using
+> > kvm_vcpu_block() API. The blocked VCPU will be automatically
+> > resumed whenever a VCPU interrupt is injected from user-space
+> > or from in-kernel IRQCHIP emulation.
+> >
+> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+> > ---
+> >   arch/riscv/kvm/vcpu_exit.c | 72 ++++++++++++++++++++++++++++++++++++++
+> >   1 file changed, 72 insertions(+)
+> >
+> > diff --git a/arch/riscv/kvm/vcpu_exit.c b/arch/riscv/kvm/vcpu_exit.c
+> > index d75a6c35b6c7..39469f67b241 100644
+> > --- a/arch/riscv/kvm/vcpu_exit.c
+> > +++ b/arch/riscv/kvm/vcpu_exit.c
+> > @@ -12,6 +12,13 @@
+> >   #include <linux/kvm_host.h>
+> >   #include <asm/csr.h>
+> >
+> > +#define INSN_OPCODE_MASK     0x007c
+> > +#define INSN_OPCODE_SHIFT    2
+> > +#define INSN_OPCODE_SYSTEM   28
+> > +
+> > +#define INSN_MASK_WFI                0xffffff00
+> > +#define INSN_MATCH_WFI               0x10500000
+> > +
+> >   #define INSN_MATCH_LB               0x3
+> >   #define INSN_MASK_LB                0x707f
+> >   #define INSN_MATCH_LH               0x1003
+> > @@ -112,6 +119,67 @@
+> >                                (s32)(((insn) >> 7) & 0x1f))
+> >   #define MASK_FUNCT3         0x7000
+> >
+> > +static int truly_illegal_insn(struct kvm_vcpu *vcpu,
+> > +                           struct kvm_run *run,
+> > +                           ulong insn)
+> > +{
+> > +     /* Redirect trap to Guest VCPU */
+> > +     kvm_riscv_vcpu_trap_redirect(vcpu, EXC_INST_ILLEGAL, insn);
+> > +
+> > +     return 1;
+> > +}
+> > +
+> > +static int system_opcode_insn(struct kvm_vcpu *vcpu,
+> > +                           struct kvm_run *run,
+> > +                           ulong insn)
+> > +{
+> > +     if ((insn & INSN_MASK_WFI) == INSN_MATCH_WFI) {
+> > +             vcpu->stat.wfi_exit_stat++;
+> > +             if (!kvm_arch_vcpu_runnable(vcpu)) {
+> > +                     srcu_read_unlock(&vcpu->kvm->srcu, vcpu->arch.srcu_idx);
+> > +                     kvm_vcpu_block(vcpu);
+> > +                     vcpu->arch.srcu_idx = srcu_read_lock(&vcpu->kvm->srcu);
+> > +                     kvm_clear_request(KVM_REQ_UNHALT, vcpu);
+> > +             }
+> > +             vcpu->arch.guest_context.sepc += INSN_LEN(insn);
+> > +             return 1;
+> > +     }
+> > +
+> > +     return truly_illegal_insn(vcpu, run, insn);
+> > +}
+> > +
+> > +static int illegal_inst_fault(struct kvm_vcpu *vcpu, struct kvm_run *run,
+> > +                           unsigned long insn)
+> > +{
+> > +     unsigned long ut_scause = 0;
+> > +     struct kvm_cpu_context *ct;
+> > +
+> > +     if (unlikely((insn & 3) != 3)) {
 >
-> Since you're respinning for v8 anyway, please s/thest/these/ :)
+> What do the low 2 bits mean here? Maybe you can use a define instead?
 
-Sure, I will update.
+These bits are for instruction length (16bit or 32bit).
 
+I will add appropriate defines for these bits.
+
+Regards,
+Anup
+
+>
 >
 > Alex
 >
@@ -134,9 +208,6 @@ Sure, I will update.
 > Ust-ID: DE 289 237 879
 >
 >
-
-Regards,
-Anup
 
 _______________________________________________
 linux-riscv mailing list
