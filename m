@@ -2,85 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9245BF6BE
-	for <lists+linux-riscv@lfdr.de>; Thu, 26 Sep 2019 18:30:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E853FBF793
+	for <lists+linux-riscv@lfdr.de>; Thu, 26 Sep 2019 19:28:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7A+PsPlF6zPMxOGFJw5y39dgcxfETHdt2puOk6JZJ14=; b=sWHL+2AIqAYMHdg/IrgKbBmvs
-	FKyM2BCwWTyJYzHBigDh1D7fszHChhob+VGVPafBBwLlLAG0mf1InM7HrRk9XrhsH3SwMB6J9JeEb
-	NcyK/R0WeSYnPSw3E9cJIpoRX90abM9S4BhkWAhI3GhNwALG9Uqt5eapHwYSqlhq7QBtidlOrWXWB
-	nH8is8/Ugrq1nmiumcREfS8RYuBRGjFHk5TMH7UqCnOKhUMitQiq3BnotKxYw8PMILXzPf5OEtyw0
-	Fv6ODS7tvOyKXGY7mkNZpwP9RajVm7vnoXIMJek6oJqIaQQril6TVgRTPqyPzSkvkuwNnnda2Bteb
-	S2Lzi/6Sw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Kk5cQuA18dEr+YoCLPHGXBUM/2iHNbAyQqtuSqBQwqA=; b=M4AjxHEloS8fkK
+	zjT/ykH/MIOf9Ju86+UEikrIukfButTJ89cXtmUALo1EmfAJq5cyT88hE/yeqQxb8FmmKbKGvmX+i
+	Myg8CRnLYGD5Yai6SBIUFTUghHywuy3Mzz9QbeEDt0bvazrE55mtAUoXoPCK2H/5Fmxo56jOnXoGQ
+	1i3ry8p6pm1ocQP+J4TKJv5uonLzTnyQv9H+kAkG6wjDjBLmf+0mTtDXliPiWrjhnH7UBv7Sd6cd8
+	hVTt1SZ1OdCe++de6Evba1j+k4yQ8z+L0mGl+SvPOfrhS1XDnWeaTlGO6H3X2nYb2gfwDTC8chYoJ
+	0M2EPSZhS6rbAwjrd3ZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iDWef-00024o-OU; Thu, 26 Sep 2019 16:30:10 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1iDXYj-00047z-Ps; Thu, 26 Sep 2019 17:28:05 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iDWea-00013z-NZ
- for linux-riscv@lists.infradead.org; Thu, 26 Sep 2019 16:30:05 +0000
-Received: by mail-pl1-x642.google.com with SMTP id q24so1258009plr.13
- for <linux-riscv@lists.infradead.org>; Thu, 26 Sep 2019 09:30:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=iUBOjyHfuR7bXfhhUiHsxfKRvIQzrO86xTAr8Ifre0Q=;
- b=y3h5OT0UmQqXJi0n0rBvqkcTo+13EdxQBhESuHKUhhUdt4HIIcVQewbszw7316Jbj3
- B26hOzlkXv8XsgeN5pGs7wsfUu35kRVDjdfbd80Cz2QkLIg0M3MsvsJVJdd9QD5RXeiy
- 6UEhQ9sxyZ6zQojKZM8g8YSAiU0HmfS6EeGLmm2G3M5zDUXby8glVotg/+s3ve95UAlT
- DAQ0U/ntgxEnEPfGxe+68Qz99D7tUdj8cjDtGb+44i81+8OKBcckxrd+3wvZeL0MsCVS
- GUydrXVlNXeNeT9yD3EB7dKB2lMU1zF3uY6+lKZ9hv2ld2NLoMT31L6wdQwnvoc03z5L
- JHDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=iUBOjyHfuR7bXfhhUiHsxfKRvIQzrO86xTAr8Ifre0Q=;
- b=Pu5JPfLLVb7RBNWdi6bMbYd0ZZfvG5+076EKcMXKxbrYwxz/CSp4sx3n04btP0O3AY
- EK8C1gj7EVHqLyA0UM7hVs1Q2YApp3C9ZKTFTLT1VVR87ki0MrR1eY7fXBbFNyWOMbbY
- IQ6wch/hGiEfcjuHYQPUE8NaAiasGNj9rorKPx0Z4uJL5SQTeI/qMwDrqmNIHTy4hkf1
- idfoopHMY/fZ85OWQ1DxUKVawiZS3mfHePiu29BlPfgxTBQw61CRllt9VbJrMfoKInOK
- TlVJchhpa0utfzBnwPWb/pcqnGZdd9DYEMB33qYvZOj9SWCDxQKXF6eVzG/ZFDcN1GKr
- XF+w==
-X-Gm-Message-State: APjAAAVc/cwmdSY69DrcVSSSaUpoRHPTd4VxvA0gsv7kRNlwG1EEqTjD
- jwKnzlkzpnJmD6MPDNjV82A20Wd7XzLlV6Zi
-X-Google-Smtp-Source: APXvYqzWSovEndvhpUlPPG2KWsLiHc/5J0wB0jU8KW7kk3lkOzlRWdHFYbFHIpUg2H8EkpfjsR5P5g==
-X-Received: by 2002:a17:902:8a88:: with SMTP id
- p8mr4822043plo.152.1569515400373; 
- Thu, 26 Sep 2019 09:30:00 -0700 (PDT)
-Received: from Shannons-MacBook-Pro.local
- (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
- by smtp.gmail.com with ESMTPSA id e127sm3547209pfe.37.2019.09.26.09.29.57
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 26 Sep 2019 09:29:59 -0700 (PDT)
-Subject: Re: [PATCH 1/3] docs: fix some broken references
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>, corbet@lwn.net
-References: <b87385b2ac6ce6c75df82062fce2976149bbaa6b.1569330078.git.mchehab+samsung@kernel.org>
-From: Shannon Nelson <snelson@pensando.io>
-Message-ID: <81dc41d5-606a-7638-1d11-4fe53e9c2a7f@pensando.io>
-Date: Thu, 26 Sep 2019 09:29:56 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.9.0
+ id 1iDXYf-000471-Dw
+ for linux-riscv@lists.infradead.org; Thu, 26 Sep 2019 17:28:03 +0000
+Received: from localhost (unknown [12.206.46.59])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5CE18222C7;
+ Thu, 26 Sep 2019 17:27:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1569518878;
+ bh=+kUKKkoU3NS4CPTGiKMYje27qC3S1qVrJa2ymZOWb1g=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=BF+FcB0EzC9lgecWmuufTBcJm3gXe12+5aCwHz3lXh4wvUlPoycec36fWLFn5D7FD
+ gzk9XufsonBHtFISX6/uU0CjFmFc3v0IEVIGc013P0sfJvPjFwWcjsGSRT7i+DLVd2
+ OQSJHBKsVTJweTHoIc68DKf9s/UuxU71XABSzcHI=
+Date: Thu, 26 Sep 2019 10:26:57 -0700
+From: Vinod Koul <vkoul@kernel.org>
+To: Green Wan <green.wan@sifive.com>
+Subject: Re: [PATCH v3 3/3] dmaengine: sf-pdma: add platform DMA support for
+ HiFive Unleashed A00
+Message-ID: <20190926172657.GO3824@vkoul-mobl>
+References: <20190920090205.19552-1-green.wan@sifive.com>
+ <20190924212011.GG3824@vkoul-mobl>
+ <CAJivOr4qZ7s20cME5=Fdw6G2-2JQGjO2ZT-ar2oHk3aad0R1gg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <b87385b2ac6ce6c75df82062fce2976149bbaa6b.1569330078.git.mchehab+samsung@kernel.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CAJivOr4qZ7s20cME5=Fdw6G2-2JQGjO2ZT-ar2oHk3aad0R1gg@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190926_093004_775458_6F100A0B 
-X-CRM114-Status: GOOD (  10.84  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190926_102801_514560_7A9BDDDB 
+X-CRM114-Status: GOOD (  21.22  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -90,6 +67,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,37 +79,123 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, James Hogan <jhogan@kernel.org>,
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Linus Walleij <linus.walleij@linaro.org>, Palmer Dabbelt <palmer@sifive.com>,
- linux-mips@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>,
- linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- linux-cifs@vger.kernel.org, Leon Romanovsky <leon@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-rdma@vger.kernel.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Saeed Mahameed <saeedm@mellanox.com>, Guenter Roeck <linux@roeck-us.net>,
- devicetree@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
- Mauro Carvalho Chehab <mchehab@infradead.org>, linux-gpio@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Pensando Drivers <drivers@pensando.io>, linux-hwmon@vger.kernel.org,
- netdev@vger.kernel.org, samba-technical@lists.samba.org,
- linux-kernel@vger.kernel.org, Ralf Baechle <ralf@linux-mips.org>,
- Steve French <sfrench@samba.org>, Paul Burton <paul.burton@mips.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ linux-hackers <linux-hackers@sifive.com>,
+ Dan Williams <dan.j.williams@intel.com>,
+ "Paul E. McKenney" <paulmck@linux.ibm.com>,
  "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 9/24/19 6:01 AM, Mauro Carvalho Chehab wrote:
-> There are a number of documentation files that got moved or
-> renamed. update their references.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+On 26-09-19, 12:18, Green Wan wrote:
+> Hi Vinod,
+> 
+> Thanks for the comments. Check my reply below.
+> 
+> On Wed, Sep 25, 2019 at 5:21 AM Vinod Koul <vkoul@kernel.org> wrote:
+> 
+> > Hi Green,
+> >
+> > On 20-09-19, 17:01, Green Wan wrote:
+> >
+> > Please make sure threading is *not* broken in your patch series. Atm
+> > they are all over place in my mailbox!
+> >
+> > K, I'll check. Just simply git send to the list retrieved from "
+> get_maintainer.pl".
 
->   drivers/net/ethernet/pensando/ionic/ionic_if.h            | 4 ++--
+Well I guess you used each patch on git-send, you should pass on the
+whole series so that it threads as well
 
-Acked-by: Shannon Nelson <snelson@pensando.io>
+To test: you can send to yourself and check if threading is fine or not.
 
+> > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > index d0caa09a479e..c5f0662c9106 100644
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -14594,6 +14594,7 @@ F:    drivers/media/mmc/siano/
+> > >  SIFIVE PDMA DRIVER
+> > >  M:   Green Wan <green.wan@sifive.com>
+> > >  S:   Maintained
+> > > +F:   drivers/dma/sf-pdma/
+> > >  F:   Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
+> >
+> > What is this generated against, only one line?
+> >
+> > against patch v3 1/3. I split the maintainer modification into patch 1/3
+> and 3/3 to make "checkpatch.pl --strict" zero warning for both of them. And
+> to give info more specifically, I can add
+
+Ah, Can you please add these changes in a separate patch at the end
+please
+
+> > > +                                chan->dma_dev_addr,
+> > > +                                chan->dma_dev_size,
+> > > +                                chan->dma_dir, 0);
+> > > +     chan->dma_dir = DMA_NONE;
+> > > +}
+> > > +
+> > > +static int sf_pdma_slave_config(struct dma_chan *dchan,
+> > > +                             struct dma_slave_config *cfg)
+> > > +{
+> > > +     struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
+> > > +
+> > > +     memcpy(&chan->cfg, cfg, sizeof(*cfg));
+> > > +     sf_pdma_unprep_slave_dma(chan);
+> >
+> > Why unprep?
+> >
+> 
+> I think the original idea from ./drivers/dma/fsl-edma* is to make sure the
+
+We should fix that too!
+
+> > > +static enum dma_status
+> > > +sf_pdma_tx_status(struct dma_chan *dchan,
+> > > +               dma_cookie_t cookie,
+> > > +               struct dma_tx_state *txstate)
+> > > +{
+> > > +     struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
+> > > +     enum dma_status status;
+> > > +     unsigned long flags;
+> > > +
+> > > +     spin_lock_irqsave(&chan->lock, flags);
+> > > +     if (chan->xfer_err) {
+> > > +             chan->status = DMA_ERROR;
+> > > +             spin_unlock_irqrestore(&chan->lock, flags);
+> > > +             return chan->status;
+> > > +     }
+> > > +
+> > > +     spin_unlock_irqrestore(&chan->lock, flags);
+> > > +
+> > > +     status = dma_cookie_status(dchan, cookie, txstate);
+> > > +
+> > > +     if (status == DMA_COMPLETE)
+> > > +             return status;
+> > > +
+> > > +     if (!txstate)
+> > > +             return chan->status;
+> >
+> > why not return status? Is that expected to be different than status?
+> >
+> >
+> Depends on the value set by dma_cookie_status(). At the moment, the value
+> of chan->status should be DMA_IN_PROGRESS till changed by
+> sf_pdma_desc_residue() or set to DMA_ERROR by err ISR. The value could be
+> different between status and chan->status.
+
+In case !txstate there is no sf_pdma_desc_residue() so it doesnt make
+sense to me to have return different things here!
+
+-- 
+~Vinod
 
 _______________________________________________
 linux-riscv mailing list
