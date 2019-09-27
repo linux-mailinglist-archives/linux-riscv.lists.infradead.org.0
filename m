@@ -2,35 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D34D1C0DF0
-	for <lists+linux-riscv@lfdr.de>; Sat, 28 Sep 2019 00:19:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C6F85C0DF7
+	for <lists+linux-riscv@lfdr.de>; Sat, 28 Sep 2019 00:21:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/XdDUUebi/9tax979d0PDAn7gwY9MHcgZuJyHDYbbqk=; b=Xxtr04ncVp7jk7
-	dyLxiPo+DD3HMgaxPQjHiagqVE7X3DON1wE8wWEKgqcsysFeycKr63YjwmHN2rQEJnpJuxLoFLj7S
-	r1FUWAVnlNbh77yLrQiDKfGRxhRQIoXEv54XRQi3xMmOZunQK7xWNfBfYGwYECJYj7xE+Fzg7ZZRf
-	0Tl5s/CEjWXdEjRlboSTUfh753VsbWfWSOMHOhEZjdHoONVtL+ZD6CG0rvWIazjY/ZYMTsRf1uEbr
-	rjVh8HAAoWHy8YU6Rxi8oWz+iAdKNazfJtx70AIVDzK/SlZE3UyOPBdQ7XGvDI3BLJ3EeKedvqcrt
-	0qGmQs4Fk+Nd1kThcBOw==;
+	List-Owner; bh=wrzJZQ5gAsHrhF1ql91dZBUN3j0B8QLpcz1jpj7M2DE=; b=DxmqBCKZHawceG
+	2XNO7lzCy/C8F19hnYnKrV2v0bZz9rAflt4okv3VZ/FAebo43KS9pyPXQ7vNSjWD0cnAqr5AaEd8M
+	NuCrpz/0WfjWCNlsPSm+wOzVTE7Jq9cvN3wBZZckHd+HgHwQXCpEKWLDVKS0dQKbrzSrpRUlzcT1R
+	oRRxKSIJc2gpBajxTLO5SXPlytX+dGv2O/e6TyNBcZVjBmOhSmauITl5QO8pGIc5IOIM7c0mpBbcp
+	YzgsGU5xFqrAC4bwvUnr20VkPmkDyuI5S3sQ5po7DoYIAIMWh0WXYtNwENAULGRaOQ7ZfG6DdsJFp
+	37C/hQ5AtPmRRFzHtTdQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iDyaV-0001Mz-TY; Fri, 27 Sep 2019 22:19:43 +0000
+	id 1iDybu-0002it-LR; Fri, 27 Sep 2019 22:21:10 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92.2 #3 (Red
- Hat Linux)) id 1iDyaT-0001Ma-5y; Fri, 27 Sep 2019 22:19:41 +0000
-Date: Fri, 27 Sep 2019 15:19:41 -0700
+ Hat Linux)) id 1iDybs-0002ih-0Z; Fri, 27 Sep 2019 22:21:08 +0000
+Date: Fri, 27 Sep 2019 15:21:07 -0700
 From: Christoph Hellwig <hch@infradead.org>
 To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH v2 1/3] RISC-V: Mark existing SBI as 0.1 SBI.
-Message-ID: <20190927221941.GB4700@infradead.org>
+Subject: Re: [PATCH v2 3/3] RISC-V: Move SBI related macros under uapi.
+Message-ID: <20190927222107.GC4700@infradead.org>
 References: <20190927000915.31781-1-atish.patra@wdc.com>
- <20190927000915.31781-2-atish.patra@wdc.com>
+ <20190927000915.31781-4-atish.patra@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190927000915.31781-2-atish.patra@wdc.com>
+In-Reply-To: <20190927000915.31781-4-atish.patra@wdc.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -55,11 +55,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Sep 26, 2019 at 05:09:13PM -0700, Atish Patra wrote:
-> -#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({		\
-> +#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({             \
+On Thu, Sep 26, 2019 at 05:09:15PM -0700, Atish Patra wrote:
+> All SBI related macros can be reused by KVM RISC-V and userspace tools
+> such as kvmtool, qemu-kvm. SBI calls can also be emulated by userspace
+> if required. Any future vendor extensions can leverage this to emulate
+> the specific extension in userspace instead of kernel.
 
-Spurious whitespace change.
+Just because userspace can use them that doesn't mean they are a
+userspace API.  Please don't do this as this limits how we can ever
+remove previously existing symbols.  Just copy over the current
+version of the file into the other project of your choice instead
+of creating and API we need to maintain.
 
 _______________________________________________
 linux-riscv mailing list
