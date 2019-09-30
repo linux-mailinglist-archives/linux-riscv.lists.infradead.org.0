@@ -2,87 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F67AC220C
-	for <lists+linux-riscv@lfdr.de>; Mon, 30 Sep 2019 15:35:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E71BC2358
+	for <lists+linux-riscv@lfdr.de>; Mon, 30 Sep 2019 16:33:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SY4cPpZGjT6bSQ1tOQR1HuPA9R1ltMKVEQi4dt5rbiE=; b=t+7RX8ZDbP+U1Y
-	eBiHaLWD8N7d3cHVuZUZ24k7nxmM0ActNicoz+Koj7S33CyYgLoQNRzjARr+UCQHDE9PWJvvr/B8C
-	kzKSe799tuvWHhJzVEQH+RhZ4+vmG+XiLSWtK7TbOkd5Wl06VwACqiRugbHhKn3oeoi1Imtqb4R1X
-	azILXtAK+fxbZNJeXTzIm3nGvXQOuWzeBsefxBRICSXzmO2mPUeSANRb95WOGV32QlwVqycDCOqcW
-	Z81j+3KpQ8QilRmWTMLqQ7SdbAdzOwtBcgN4aXeLW8zINU0xyAKcBPGJOQQnZGjZpJFcZ34qLtxcE
-	V5jPqNbA1t9DjCBc6LPQ==;
+	List-Owner; bh=d7hU63aT6VS9BQWYXB6/aNu2SJZj9j02GCaiiIvKsOU=; b=TMHWL+CqWyjjKa
+	t43rrqxhcUgYfVw7rYzbwkxqWK9tRYdUNFJDC3y07RIWoyaTfutz3bQb+gfNfOOK8N9paRNSSBZFR
+	VyWRNxUQy2Qr4a3Iwx8VkSB344U0VHpWkQfDisQh3YVUcGXqvbGVIZKruhGFLOBCuu6TeluFrPxNI
+	rnpPdWF4fhbI6Z6SEKkY2wLNp1M83KSMnRiPYglUFgLuCPcpZi0nf/AgR+s3x6vdpDBOwEFKLY5qF
+	OUIXNn2ZVobFOLkTpY4bWy6HdfqwRthar2WBbXM4vy4kclamaptra1VfZqWRE5+pI6wNn+StmlzfL
+	ulgyZH1Sx8+NcVKSPuFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iEvpI-0008UQ-Gp; Mon, 30 Sep 2019 13:34:56 +0000
-Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
+	id 1iEwjO-0005oh-0D; Mon, 30 Sep 2019 14:32:54 +0000
+Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iEvpF-0008Td-5l
- for linux-riscv@lists.infradead.org; Mon, 30 Sep 2019 13:34:54 +0000
-Received: by mail-vs1-xe42.google.com with SMTP id v19so6768036vsv.3
- for <linux-riscv@lists.infradead.org>; Mon, 30 Sep 2019 06:34:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AMvf0aJLSBw670rdzFO9x6SzJk02/YpUBF290pMe194=;
- b=XRHsgO2ll4Out3o1wWqMo9/abYElPhYcstVnCjrAX4aJrgfwN3SSOi/aFXRHfmoHHQ
- KieWKrU3/AlNLArqYMjHIkhyQsWX1bKkMj3Cy05J0In/IglcbWMeOzdgPfEQ0JGXeEoY
- Ly8MkBlzdNqEkscNPaJWQMwsgNSQlneFvr9c8uj4bdNHLyBOD/RBlbMtEuOazxlROCZB
- zyRh9eBTf+T5h7F0DsfDbwugnqO2BG3TTeTK3V4q3V4OIwNA9nqI0gB3HUkg38F+hxDJ
- teov5TcNbR1trLL4uRTSp93QzxHScrbmgI4+kb4NNWtFM76u7MkDK4dHz6hgdWR4Tbys
- xqmQ==
+ id 1iEwjI-0005mh-Ts; Mon, 30 Sep 2019 14:32:50 +0000
+Received: by mail-oi1-f196.google.com with SMTP id k9so11282585oib.7;
+ Mon, 30 Sep 2019 07:32:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AMvf0aJLSBw670rdzFO9x6SzJk02/YpUBF290pMe194=;
- b=mweclOGKNFpqxnR016mbru4IJFMNPFJT9K5s0hGTsn/NUsNNCniL8qHXrobAQDZxlJ
- tXvzmG3snnOjFjBVzOERO2C62zPKQSiSEOsRrnrjxkJmWcYPsUYUeKBd1hfW+rNxJZI5
- YvsnyTOdg4+u/eP+z2KHf7XTepIRa6n+HRj/0Giqbkgej1/xZ40WLw330pokXWpAyuso
- JxFMn9+Dhi0aUsYJqTuQdClIZQXsu+QCS6FmGSZimUj69nUPtA3Gta5X2ZqAquKvJvkE
- akC6yXm3RSyFzfIAYIxIgjSot7uHm1Vyk1JDhHzC1cPw0yYXE1qgUmJ45AaEroPS2GcZ
- oMag==
-X-Gm-Message-State: APjAAAV7e92f4+5ZRH0ViYlyTuy/zmFEB19cI1ZKSSRpdsxDGLYnsM1x
- vyvEA6yf6BU/IqiitQfzBXGXsFhTLuWWM994/HR8oQ==
-X-Google-Smtp-Source: APXvYqwFoFBboIPgwzdCmxDRfbxS1fhkFS38SreFnzfJ31NLXbmDoVntXc3bbJ78f872NGqPaK/9xydoPhVnoDLPfKk=
-X-Received: by 2002:a67:f0dd:: with SMTP id j29mr4889144vsl.92.1569850491648; 
- Mon, 30 Sep 2019 06:34:51 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=kUMYVmu3XMOxDG5rrYQfwaFPZ00CpUb0hbyz3+BbaG0=;
+ b=Lf9o40fcYlA/8zr/t3sBOA30YEwf8ywN2f2CJsVJ0pAXKFPACLBWP04hbS3LC5ZDeL
+ N4aljkk2ejuLuxkT1FXdg5JkY6sSs01ZhHPirWqyCvt9VoCjRA0k9Bwr30PvHdICfjGH
+ INsw4/6t+PQgrP74R7tlYa2o7Tvyr8QaNQS4wclBTVs6rlVy6Tz4/jjVby3/tFch7PF2
+ lMJ3C26QQ5+IGC/VfCe1K+uKCSF18v6SG2TahQBh8pOwaHaVVhSJrc8Z41xQxSzEXK4h
+ vRmcEaprwOZxF/HPTyfrpbZJjlmtet1kCzp2rli3MxeJ93ETH/lWNeJehX8FYjq9Iy8F
+ Nq0Q==
+X-Gm-Message-State: APjAAAWLz4JoYdP1Q7nv6jmv95hZXKPEhFGbFqcKS9oihJZqaitdj+IV
+ tW0wiLbCQBnHlSOKiX4QAA==
+X-Google-Smtp-Source: APXvYqyWWGHweAxd+epg50sMtp2YxM9KH4bIudckXn/jzkB0T25eaocN5L6p2a1h/laqh+KPJMVjkw==
+X-Received: by 2002:aca:c792:: with SMTP id
+ x140mr18609373oif.132.1569853967784; 
+ Mon, 30 Sep 2019 07:32:47 -0700 (PDT)
+Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id t82sm4319977oie.12.2019.09.30.07.32.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 30 Sep 2019 07:32:47 -0700 (PDT)
+Date: Mon, 30 Sep 2019 09:32:46 -0500
+From: Rob Herring <robh@kernel.org>
+To: Claudiu.Beznea@microchip.com
+Subject: Re: [PATCH 4/7] dt-bindings: chosen: Add clocksource and clockevent
+ selection
+Message-ID: <20190930143246.GA19967@bogus>
+References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
+ <1568123236-767-5-git-send-email-claudiu.beznea@microchip.com>
+ <20190910143231.GB14966@e107533-lin.cambridge.arm.com>
+ <ab43b209-78fa-0cab-b8ea-acd4c550e689@microchip.com>
+ <20190910150826.GA18308@e107533-lin.cambridge.arm.com>
+ <20190910151055.GX21254@piout.net>
+ <CACRpkda4mmpbPWa2nD93CvD6HWzcTUDzyyLdQxC2gNB7XiJF3w@mail.gmail.com>
+ <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
 MIME-Version: 1.0
-References: <1568822505-19297-1-git-send-email-sagar.kadam@sifive.com>
-In-Reply-To: <1568822505-19297-1-git-send-email-sagar.kadam@sifive.com>
-From: Sagar Kadam <sagar.kadam@sifive.com>
-Date: Mon, 30 Sep 2019 19:04:40 +0530
-Message-ID: <CAARK3HkOwyvg=xr7fw1SrP_=B+Gj+waQmtZvgiK4AUpQrbM41Q@mail.gmail.com>
-Subject: Re: [PATCH v9 0/2] mtd: spi-nor: add support for is25wp256 spi-nor
- flash
-To: Marek Vasut <marek.vasut@gmail.com>, tudor.ambarus@microchip.com, 
- David Woodhouse <dwmw2@infradead.org>,
- Brian Norris <computersforpeace@gmail.com>, 
- Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>
+Content-Disposition: inline
+In-Reply-To: <a2aca46a-8eb9-d8a8-de42-9850a8a8f44c@microchip.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190930_063453_248701_000FC90E 
-X-CRM114-Status: GOOD (  23.12  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190930_073248_964476_4CD284B7 
+X-CRM114-Status: GOOD (  15.87  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:e42 listed in]
- [list.dnswl.org]
+ no trust [209.85.167.196 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit (robherring2[at]gmail.com)
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (robherring2[at]gmail.com)
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.196 listed in wl.mailspike.net]
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,108 +97,102 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@sifive.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mtd <linux-mtd@lists.infradead.org>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: tmaimon77@gmail.com, linus.walleij@linaro.org, nsekhar@ti.com,
+ guoren@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ khilman@baylibre.com, Ludovic.Desroches@microchip.com, linux-imx@nxp.com,
+ u.kleine-koenig@pengutronix.de, uclinux-h8-devel@lists.sourceforge.jp,
+ marc.zyngier@arm.com, s.hauer@pengutronix.de, linux-unisoc@lists.infradead.org,
+ khalasa@piap.pl, tglx@linutronix.de, sbranden@broadcom.com,
+ linux-kernel@vger.kernel.org, ralf@linux-mips.org, paul.burton@mips.com,
+ kernel@pengutronix.de, mark.rutland@arm.com, alexandre.belloni@bootlin.com,
+ jhogan@kernel.org, palmer@sifive.com, eric@anholt.net,
+ thierry.reding@gmail.com, manivannan.sadhasivam@linaro.org,
+ ysato@users.sourceforge.jp, zhang.lyra@gmail.com, daniel.lezcano@linaro.org,
+ jonathanh@nvidia.com, bgolaszewski@baylibre.com, kgene@kernel.org,
+ alexandre.torgue@st.com, linux-arm-msm@vger.kernel.org, sudeep.holla@arm.com,
+ lorenzo.pieralisi@arm.com, john.stultz@linaro.org,
+ linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, baohua@kernel.org, kaloz@openwrt.org,
+ sboyd@kernel.org, patrice.chotard@st.com, wahrenst@gmx.net,
+ mcoquelin.stm32@gmail.com, narmstrong@baylibre.com,
+ linux-tegra@vger.kernel.org, festevam@gmail.com, f.fainelli@gmail.com,
+ benjaminfair@google.com, shc_work@mail.ru, krzk@kernel.org, yuenn@google.com,
+ wens@csie.org, bcm-kernel-feedback-list@broadcom.com, orsonzhai@gmail.com,
+ linux-snps-arc@lists.infradead.org, rjui@broadcom.com, vz@mleia.com,
+ john@phrozen.org, tali.perry1@gmail.com, avifishman70@gmail.com,
+ venture@google.com, lftan@altera.com, linux-oxnas@groups.io,
+ shawnguo@kernel.org, afaerber@suse.de, baruch@tkos.co.il,
+ maxime.ripard@bootlin.com, liviu.dudau@arm.com, linux-mips@vger.kernel.org,
+ linux-riscv@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux@armlinux.org.uk, agross@kernel.org, slemieux.tyco@gmail.com,
+ devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ linux-mediatek@lists.infradead.org, ssantosh@kernel.org,
+ matthias.bgg@gmail.com, monstr@monstr.eu, baolin.wang@linaro.org,
+ vgupta@synopsys.com, Nicolas.Ferre@microchip.com, linux@prisktech.co.nz,
+ nios2-dev@lists.rocketboards.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
+On Wed, Sep 11, 2019 at 07:18:07AM +0000, Claudiu.Beznea@microchip.com wrote:
+> 
+> 
+> On 11.09.2019 03:03, Linus Walleij wrote:
+> > External E-Mail
+> > 
+> > 
+> > On Tue, Sep 10, 2019 at 4:11 PM Alexandre Belloni
+> > <alexandre.belloni@bootlin.com> wrote:
+> >> On 10/09/2019 16:08:26+0100, Sudeep Holla wrote:
+> >>> On Tue, Sep 10, 2019 at 02:51:50PM +0000, Claudiu.Beznea@microchip.com wrote:
+> > 
+> >>> In that case, why can't we identify capability that with the compatibles
+> >>> for this timer IP ?
+> >>>
+> >>> IOW, I don't like the proposal as it's hardware limitation.
+> >>
+> >> To be clear, bot timers are exactly the same but can't be clocksource
+> >> and clockevent at the same time. Why would we have different compatibles
+> >> for the exact same IP?
+> > 
+> > In that case why not just pick the first one you find as clocksource
+> > and the second one as clock event? As they all come to the
+> > same timer of init function two simple local state variables can
+> > solve that:
+> > 
+> > static bool registered_clocksource;
+> > static bool registered_clockevent;
+> > 
+> > probe(timer) {
+> >    if (!registered_clocksource) {
+> >        register_clocksource(timer);
+> >        registrered_clocksource = true;
+> >        return;
+> >    }
+> >    if (!registered_clockevent) {
+> >        register_clockevent(timer);
+> >        registered_clockevent = true;
+> >        return;
+> >    }
+> >    pr_info("surplus timer %p\n", timer);
+> > }
+> > 
+> 
+> That was also my proposal for the driver I'm sending this series for (see
+> [1]) but it has been proposed to implement a mechanism similar to this one
+> in this series (see [2] and [3]).
 
-On Wed, Sep 18, 2019 at 9:32 PM Sagar Shrikant Kadam
-<sagar.kadam@sifive.com> wrote:
->
-> The patch series adds basic support for 32MiB spi-nor is25wp256 present on HiFive
-> Unleashed A00 board. The flash device gets BFPT_DWORD1_ADDRESS_BYTES_3_ONLY
-> from BFPT table for address width, whereas the flash can support 4 byte
-> address width, so the address width is configured by using the post bfpt
-> fixup hook as done for is25lp256 device in
-> commit cf580a924005 ("mtd: spi-nor: fix nor->addr_width when its value
-> configured from SFDP does not match the actual width")
->
-> Patches are based on original work done by Wesley Terpstra and/or
-> Palmer Dabbelt:
-> https://github.com/riscv/riscv-linux/commit/c94e267766d62bc9a669611c3d0c8ed5ea26569b
->
-> Erase/Read/Write operations are verified on HiFive Unleashed board using  mtd and
-> flash utils (v1.5.2):
-> 1. mtd_debug    : Options available are : erase/read/write.
-> 2. flashcp      : Single utility that erases flash, writes a file to flash and verifies the data back.
->
-> The changes are available under branch dev/sagark/spi-nor-v9 at
-> https://github.com/sagsifive/riscv-linux-hifive
->
-> Revision history:
-> V8<->V9:
-> -Rebased this series to mainline v5.3-rc8
-> -Corrected number of sectors in the spi nor id table for is25wp256 device as suggested in the review.
-> -The lock/unlock scheme in the V8 version of this series needs to have a more generic approach.
->  These protection scheme patches are not included in this series, will submit those separately.
->
+This comes up over and over, and the answer is still no. Either each 
+block is identical and doesn't matter which one is used for what or 
+there is some h/w difference that you should describe. 
 
-A gentle reminder!!
-Any comments on this series?
+If you want something that would even be considered to put into DT, 
+then define something BSD or other OS's could use too. (That's not a 
+suggestion to respin this with generalized names.)
 
-Thanks & BR,
-Sagar Kadam
-
-> V7<->V8:
-> -Rebased this series on mainline v5.3-rc4.
-> -Removed remaining func_reg reference from issi_lock as updating OTP region was dropped as part of V6.
-> -Updated Reviewed-By tags to 1st and 2nd patch.
->
-> V6<->V7:
-> -Incorporated review comments from Vignesh.
-> -Used post bfpt fixup hook as suggested by Vignesh.
-> -Introduce SPI_NOR_HAS_BP3 to identify whether the flash has 4th bit protect bit.
-> -Prefix generic flash access functions with spi_nor_xxxx.
->
-> V5<->V6:
-> -Incorporated review comments from Vignesh.
-> -Set addr width based on device size and if SPI_NOR_4B_OPCODES is set.
-> -Added 4th block protect identifier (SPI_NOR_HAS_BP3) to flash_info structure
-> -Changed flash_info: flag from u16 to u32 to accommodate SPI_NOR_HAS_BP3
-> -Prefix newly added function with spi_nor_xxx.
-> -Dropped write_fr function, as updating OTP bit's present in function register doesn't seem to be a good idea.
-> -Set lock/unlock schemes based on whether the ISSI device has locking support and  BP3 bit present.
->
-> V4<->V5:
-> -Rebased to linux version v5.2-rc1.
-> -Updated heading of this cover letter with sub-system, instead of just plain "add support for is25wp256..."
->
-> V3<->V4:
-> -Extracted comman code and renamed few stm functions so that it can be reused for issi lock implementation.
-> -Added function's to read and write FR register, for selecting Top/Bottom area.
->
-> V2<->V3:
-> -Rebased patch to mainline v5.1 from earlier v5.1-rc5.
-> -Updated commit messages, and cover letter with reference to git URL and author information.
-> -Deferred flash_lock mechanism and can go as separate patch.
->
-> V1<-> V2:
-> -Incorporated changes suggested by reviewers regarding patch/cover letter versioning, references of patch.
-> -Updated cover letter with description for flash operations verified with these changes.
-> -Add support for unlocking is25xxxxxx device.
-> -Add support for locking is25xxxxxx device.
->
-> v1:
-> -Add support for is25wp256 device.
->
-> Sagar Shrikant Kadam (2):
->   mtd: spi-nor: add support for is25wp256
->   mtd: spi-nor: fix nor->addr_width for is25wp256
->
->  drivers/mtd/spi-nor/spi-nor.c | 9 ++++++++-
->  include/linux/mtd/spi-nor.h   | 1 +
->  2 files changed, 9 insertions(+), 1 deletion(-)
->
-> --
-> 1.9.1
->
+Rob
 
 _______________________________________________
 linux-riscv mailing list
