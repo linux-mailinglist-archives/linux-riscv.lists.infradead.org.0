@@ -2,80 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75E42C3691
-	for <lists+linux-riscv@lfdr.de>; Tue,  1 Oct 2019 16:00:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34A16C38E3
+	for <lists+linux-riscv@lfdr.de>; Tue,  1 Oct 2019 17:25:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CZUCifuYpoqE4bOMQk/a/scJkUuvCBmYnisbm1K3O+k=; b=LlibgRscwp6hmM
-	22GI1er8dTUin4OFgGaPyx1UFO6Mw66ky2la9oPc/3yU8M6grnQRchAMI0ZVPTa+QupEAWFOXuG29
-	4XC2OIx3gwIvZDB7ww7B+EwUUHOntDxhavJzT2PiK6jXRhyNWS+2dOYPYAVlev8FwA2q83wZIQu/z
-	ayhJNo+VlNiXYXEwr5eyV160Mdwm/nhNTHiqO2lBnIwUrSWa9QsmW9elvJInGPOz8UeHnmPWBXKLY
-	X9McdajB3PfMl12/NlMOh+Zn+ACU2PEK1THO7D1L5j44twdC0ZdcFtnrkORnBd7ddfVqg9TCkNGob
-	WKRxk3ofDjNa/dz5ft6w==;
+	List-Owner; bh=9/OWLx5VhOJod6mmCjHJMRI9viLUmccj7TpRdw951qI=; b=aG4KVKdZXUx7lp
+	eYPWMSGe30wvDVQkHQRqBVj9JzKGr93MR88Zh+BzN7aEQBglBiB6FCr5sfkCRZ5PLpIb+uBZlsSNt
+	49QLSr6B9dRZA5598Ze1y+HCIrIalFTxHMmKhpvNxhoxSqnBDmZH4C2VmTunFldjmybT1jZYYJyty
+	X3De2PZiFYsOt48vo+9Co1KplgKLsuG3PM6PzmqAp8Ph/QAFqZ237sjU0T3P/a94jOg7tRMtS6Myh
+	q2QfHHRJvvnUxIWo+FCFBpd7Okgz7GaoeMld/0+Tyt2eNxXxrZUcHellkl+jZA1tTB5MDCE30ZdRU
+	I2ZY7fAhSOLVYS+coLnA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iFIhc-0007FV-PL; Tue, 01 Oct 2019 14:00:32 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1iFK1C-0006PA-BQ; Tue, 01 Oct 2019 15:24:50 +0000
+Received: from mail-wm1-f66.google.com ([209.85.128.66])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iFIhE-0005hV-NM; Tue, 01 Oct 2019 14:00:10 +0000
-Received: by mail-ot1-f67.google.com with SMTP id 41so11583743oti.12;
- Tue, 01 Oct 2019 07:00:05 -0700 (PDT)
+ id 1iFK0w-00069J-BY; Tue, 01 Oct 2019 15:24:36 +0000
+Received: by mail-wm1-f66.google.com with SMTP id v17so3707217wml.4;
+ Tue, 01 Oct 2019 08:24:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=JZBM1FPFDAl5uESgEP9tPsFTn7qdNx8IBtQzRJpA2CU=;
- b=aer6VLjy8+Mr+vQ6cQvBMdfgqgu9nPxjI/HVtzbNs17eS4WQIrx7VhKmV+379e7uGZ
- upbO7DFwGhnzp85mQGVTVjjCE02L+Pxngrijdyv1OQg87Yz+uz9OKArRCQfhlX+1p5KB
- 9pwyGIJ1QrJZ0SSQipFejRg7tD5/f/qmr5DQotiMqz2URN9FbcI6bCKZBTcDoxcqxAKj
- 4yUAeCbwNIcA2mBIygnmdIEslCpAW8Lbsrusy0YtjHMKe9fBre8D6Hmn7EbNqdNqcjPI
- BjCsoFfxEwvBbOnrTbhQtfId6uZIuA9eA1VrYGKtBKWLXoUEG7DnTDtAj4Zq3KfmdnKq
- 0xQw==
-X-Gm-Message-State: APjAAAULyc1f2eHQAGxbnrFdYy2+xGHaM1baQH+T9SEqFLftKVST9bpN
- 6cBZ3DQsnCaTVIzscKUXQQ==
-X-Google-Smtp-Source: APXvYqyny3jSQCJcTq07B8NFgeh+CqrPZ/jllExOJcitfcVJnCPPhlC7KQB0zTngJlFTUtwdcVIBqg==
-X-Received: by 2002:a9d:4041:: with SMTP id o1mr4924805oti.61.1569938405253;
- Tue, 01 Oct 2019 07:00:05 -0700 (PDT)
-Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id m25sm5045457oie.39.2019.10.01.07.00.04
+ bh=qIz20MyIeJ4YRS3q69VVUyLU1/qqd5R6Zf74yV/b9ww=;
+ b=Jo2Strk3UOyLXIsdvUM36G6pAbxSbf6qgbRgkdC/iWHvWI/Q/8nuVrSVVndYYEgEuz
+ UYKO1HvkdAit5nxpX+Ytn3BEvXADSYvvbLIJ58td6BOWq4Acck1EPWp6eAE7JOjrTpy8
+ q2JtuPEREVOtHsP+yky3lN64xS0v4w7+ITA9z2xn1uLY+HkZgckzaBwj9aN66/41tYxR
+ xQ+wCxCRSU0f6zpoPHoQZYU9YwWRFrcSExqyH565OjPB2eH2TY21AwxLobqIsH5m/+iK
+ 6helwP5KFxPGdrD+R7p8PoOEt/iLUmzsL+uUIlLKRP8qKXLwZXyR+5d5L7tB98CpjAeM
+ evWw==
+X-Gm-Message-State: APjAAAWGD3Q6Gpp9z9o2Kxc2GQ+FQzUidJW0oEslexKGk/Tw9uzsMys6
+ LuuVxqDEkUfkjkBhEq/4vmc=
+X-Google-Smtp-Source: APXvYqzgA01GZd24cae9Ug02bMZVgbmEoHDdIAy+uHttgtTk16j30giNWmxHikB8fPnYof+FbNzouQ==
+X-Received: by 2002:a1c:60c1:: with SMTP id u184mr4104201wmb.32.1569943469278; 
+ Tue, 01 Oct 2019 08:24:29 -0700 (PDT)
+Received: from pi3 ([194.230.155.145])
+ by smtp.googlemail.com with ESMTPSA id i1sm4699293wmb.19.2019.10.01.08.24.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Oct 2019 07:00:04 -0700 (PDT)
-Date: Tue, 1 Oct 2019 09:00:03 -0500
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
+ Tue, 01 Oct 2019 08:24:28 -0700 (PDT)
+Date: Tue, 1 Oct 2019 17:24:22 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Rob Herring <robh@kernel.org>
 Subject: Re: [PATCH v2 2/8] dt-bindings: sram: Convert SRAM bindings to
  json-schema
-Message-ID: <20191001140003.GA31344@bogus>
+Message-ID: <20191001152422.GA31358@pi3>
 References: <20190918173141.4314-1-krzk@kernel.org>
  <20190918173141.4314-2-krzk@kernel.org>
+ <20191001140003.GA31344@bogus>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190918173141.4314-2-krzk@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20191001140003.GA31344@bogus>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191001_070008_766327_055E1956 
-X-CRM114-Status: GOOD (  25.22  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20191001_082434_397814_C59E4372 
+X-CRM114-Status: GOOD (  26.96  )
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.67 listed in list.dnswl.org]
+ no trust [209.85.128.66 listed in list.dnswl.org]
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.210.67 listed in wl.mailspike.net]
+ [209.85.128.66 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (robherring2[at]gmail.com)
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (robherring2[at]gmail.com)
+ provider (k.kozlowski.k[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
@@ -108,195 +106,165 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Sep 18, 2019 at 07:31:35PM +0200, Krzysztof Kozlowski wrote:
-> Convert generic mmio-sram bindings to DT schema format using
-> json-schema.
+On Tue, Oct 01, 2019 at 09:00:03AM -0500, Rob Herring wrote:
+> On Wed, Sep 18, 2019 at 07:31:35PM +0200, Krzysztof Kozlowski wrote:
+> > Convert generic mmio-sram bindings to DT schema format using
+> > json-schema.
+> 
+> I've been slow getting to this because I started on the same thing...
+> 
+> > 
+> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> > 
+> > ---
+> > 
+> > Changes since v1:
+> > 1. Indent example with four spaces (more readable).
+> > ---
+> >  .../devicetree/bindings/sram/sram.txt         |  80 ----------
+> >  .../devicetree/bindings/sram/sram.yaml        | 138 ++++++++++++++++++
+> >  2 files changed, 138 insertions(+), 80 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/sram/sram.txt
+> >  create mode 100644 Documentation/devicetree/bindings/sram/sram.yaml
+> 
+> > diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
+> > new file mode 100644
+> > index 000000000000..8d9d6ce494b2
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/sram/sram.yaml
+> > @@ -0,0 +1,138 @@
+> > +# SPDX-License-Identifier: GPL-2.0
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/sram/sram.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Generic on-chip SRAM
+> > +
+> > +maintainers:
+> > +  - FIXME <who@should.it.be>
+> 
+> You can put me.
 
-I've been slow getting to this because I started on the same thing...
+Sure.
 
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> > +
+> > +description: |+
+> > +  Simple IO memory regions to be managed by the genalloc API.
+> > +
+> > +  Each child of the sram node specifies a region of reserved memory. Each
+> > +  child node should use a 'reg' property to specify a specific range of
+> > +  reserved memory.
+> > +
+> > +  Following the generic-names recommended practice, node names should
+> > +  reflect the purpose of the node. Unit address (@<address>) should be
+> > +  appended to the name.
+> > +
+> > +properties:
+> > +  $nodename:
+> > +    pattern: "^sram(@.*)?"
+> > +
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - mmio-sram
+> > +          - atmel,sama5d2-securam
 > 
-> ---
+> I was trying to go down the path of putting all the compatibles for 
+> various SRAM bindings here, but I ran into some issues. I need to 
+> revisit as I've forgotten the exact issue.
 > 
-> Changes since v1:
-> 1. Indent example with four spaces (more readable).
-> ---
->  .../devicetree/bindings/sram/sram.txt         |  80 ----------
->  .../devicetree/bindings/sram/sram.yaml        | 138 ++++++++++++++++++
->  2 files changed, 138 insertions(+), 80 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/sram/sram.txt
->  create mode 100644 Documentation/devicetree/bindings/sram/sram.yaml
+> This would need to be a 'contains' if this is going to work for others.
 
-> diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
-> new file mode 100644
-> index 000000000000..8d9d6ce494b2
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sram/sram.yaml
-> @@ -0,0 +1,138 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sram/sram.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Generic on-chip SRAM
-> +
-> +maintainers:
-> +  - FIXME <who@should.it.be>
+OK.
 
-You can put me.
-
-> +
-> +description: |+
-> +  Simple IO memory regions to be managed by the genalloc API.
-> +
-> +  Each child of the sram node specifies a region of reserved memory. Each
-> +  child node should use a 'reg' property to specify a specific range of
-> +  reserved memory.
-> +
-> +  Following the generic-names recommended practice, node names should
-> +  reflect the purpose of the node. Unit address (@<address>) should be
-> +  appended to the name.
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: "^sram(@.*)?"
-> +
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mmio-sram
-> +          - atmel,sama5d2-securam
-
-I was trying to go down the path of putting all the compatibles for 
-various SRAM bindings here, but I ran into some issues. I need to 
-revisit as I've forgotten the exact issue.
-
-This would need to be a 'contains' if this is going to work for others.
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  "#address-cells":
-> +    description: Should use the same values as the root node.
-> +
-> +  "#size-cells":
-> +    description: Should use the same values as the root node.
-
-I defined both of these to be 1 as 4GB of SRAM should be enough for a 
-while. We can debate 1 or 2 cells vs. 1, but there's no reason it has to 
-be the same as the root (unless we're failing to do address 
-translation).
-
-> +
-> +  ranges:
-> +    description:
-> +      Should translate from local addresses within the sram to bus addresses.
-> +
-> +  no-memory-wc:
-> +    description:
-> +      The flag indicating, that SRAM memory region has not to be remapped
-> +      as write combining. WC is used by default.
-> +    type: boolean
-> +
-> +  # TODO: additionalProperties: false
-> +
-> +patternProperties:
-> +  "^([a-z]*-)?sram@[a-f0-9]$":
-> +    type: object
-> +    description:
-> +      Each child of the sram node specifies a region of reserved memory.
-> +    properties:
-> +      reg:
-> +        description:
-> +          IO mem address range, relative to the SRAM range.
-
-maxItems: 1
-
-> +
-> +      compatible:
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +        description:
-> +          Should contain a vendor specific string in the form
-> +          <vendor>,[<device>-]<usage>
-> +
-> +      pool:
-> +        description:
-> +          Indicates that the particular reserved SRAM area is addressable
-> +          and in use by another device or devices.
-> +        type: boolean
-> +
-> +      export:
-> +        description:
-> +          Indicates that the reserved SRAM area may be accessed outside
-> +          of the kernel, e.g. by bootloader or userspace.
-> +        type: boolean
-> +
-> +      protect-exec:
-> +        description: |
-> +          Same as 'pool' above but with the additional constraint that code
-> +          will be run from the region and that the memory is maintained as
-> +          read-only, executable during code execution. NOTE: This region must
-> +          be page aligned on start and end in order to properly allow
-> +          manipulation of the page attributes.
-> +        type: boolean
-> +
-> +      label:
-> +        $ref: /schemas/types.yaml#/definitions/string
-
-Already has a type definition.
-
-> +        description:
-> +          The name for the reserved partition, if omitted, the label is taken
-> +          from the node name excluding the unit address.
-> +
-> +      clocks:
-> +        description:
-> +          A list of phandle and clock specifier pair that controls the
-> +          single SRAM clock.
-> +
-> +      # TODO: additionalProperties: false
-> +
-> +    required:
-> +      - reg
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - "#address-cells"
-> +  - "#size-cells"
-> +  - ranges
-> +
-> +examples:
-> +  - |
-> +    sram: sram@5c000000 {
-> +        compatible = "mmio-sram";
-> +        reg = <0x5c000000 0x40000>; /* 256 KiB SRAM at address 0x5c000000 */
-> +
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +        ranges = <0 0x5c000000 0x40000>;
-> +
-> +        smp-sram@100 {
-> +            compatible = "socvendor,smp-sram";
-> +            reg = <0x100 0x50>;
-> +        };
-> +
-> +        device-sram@1000 {
-> +            reg = <0x1000 0x1000>;
-> +            pool;
-> +        };
-> +
-> +        exported@20000 {
-> +            reg = <0x20000 0x20000>;
-> +            export;
-> +        };
-> +    };
-> -- 
-> 2.17.1
 > 
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  "#address-cells":
+> > +    description: Should use the same values as the root node.
+> > +
+> > +  "#size-cells":
+> > +    description: Should use the same values as the root node.
+> 
+> I defined both of these to be 1 as 4GB of SRAM should be enough for a 
+> while. We can debate 1 or 2 cells vs. 1, but there's no reason it has to 
+> be the same as the root (unless we're failing to do address 
+> translation).
+
+That was copied from txt version. I can adjust them to 1 although this
+is will more than simple conversion.
+
+> 
+> > +
+> > +  ranges:
+> > +    description:
+> > +      Should translate from local addresses within the sram to bus addresses.
+> > +
+> > +  no-memory-wc:
+> > +    description:
+> > +      The flag indicating, that SRAM memory region has not to be remapped
+> > +      as write combining. WC is used by default.
+> > +    type: boolean
+> > +
+> > +  # TODO: additionalProperties: false
+> > +
+> > +patternProperties:
+> > +  "^([a-z]*-)?sram@[a-f0-9]$":
+> > +    type: object
+> > +    description:
+> > +      Each child of the sram node specifies a region of reserved memory.
+> > +    properties:
+> > +      reg:
+> > +        description:
+> > +          IO mem address range, relative to the SRAM range.
+> 
+> maxItems: 1
+
+OK
+
+> 
+> > +
+> > +      compatible:
+> > +        $ref: /schemas/types.yaml#/definitions/string
+> > +        description:
+> > +          Should contain a vendor specific string in the form
+> > +          <vendor>,[<device>-]<usage>
+> > +
+> > +      pool:
+> > +        description:
+> > +          Indicates that the particular reserved SRAM area is addressable
+> > +          and in use by another device or devices.
+> > +        type: boolean
+> > +
+> > +      export:
+> > +        description:
+> > +          Indicates that the reserved SRAM area may be accessed outside
+> > +          of the kernel, e.g. by bootloader or userspace.
+> > +        type: boolean
+> > +
+> > +      protect-exec:
+> > +        description: |
+> > +          Same as 'pool' above but with the additional constraint that code
+> > +          will be run from the region and that the memory is maintained as
+> > +          read-only, executable during code execution. NOTE: This region must
+> > +          be page aligned on start and end in order to properly allow
+> > +          manipulation of the page attributes.
+> > +        type: boolean
+> > +
+> > +      label:
+> > +        $ref: /schemas/types.yaml#/definitions/string
+> 
+> Already has a type definition.
+
+OK
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 linux-riscv mailing list
