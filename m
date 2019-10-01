@@ -2,82 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63EC1C2B50
-	for <lists+linux-riscv@lfdr.de>; Tue,  1 Oct 2019 02:24:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B34DC2B5D
+	for <lists+linux-riscv@lfdr.de>; Tue,  1 Oct 2019 02:36:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=s35d91ZdcdkTPu4B75HI5R7Cwl69FgurLEq2nhvk5VE=; b=A7zDgO0oo9nvug
-	oIOnNvVCCs5/x1pHWEt1HVArJvZplEnM6QyMViKVbxmJubBlp0r+WFqmfWQg9zWa4GC0xcXHPiIyc
-	F6o/o+CV53hwg3P1AYBodqh4XGJGYprHOPKY4GLYE/itEWAsI5orHa18ukIbxAgw3bu4AO2mpRrpa
-	EaSQp/hBSVBRz6n2qRFkDghr1NgH4NYjJjnlKqqEXBm8AcIWemu4nLPtkuWz4p9mjHGAZrCsSJv0L
-	7ErJnN1LBpLPqJOqPU2+ah3fnWySgWjg/Ur/Gx5t7FQw5nDmToUifnOURQ5MdQn3Wu9ShwBGicFQJ
-	XOc/wwKAyFe+bmrvFj3Q==;
+	List-Archive:List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version
+	:Message-Id:In-Reply-To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vSOvcqE2AeUlszNB8YDxjjQ3WeiErpOvvLn0iBBXvJs=; b=Q3T0YenX+uXn3n
+	zUHrGGdNvTO/uLkkj6T5i4jdbHexzxmzQatnWb4SL0fH72v5dMQ5NnjON1oaHrP9agxPKhDOklQ2O
+	SrraO6D7cXoVqgeUjVWJ5Amm/rHJ5oGsdonK2Nzcx4cTZQNi+N6t+BCarkshnGQL71pRsCDMdm0iA
+	jzTODdPnIo5LX6FqT5YspIGzwYIQ53p163OfIle73UnRFxXUMZhRJo+tWPuRMc71bXoEaJX/+K1pl
+	ndhcnKZexRklO0lOTCQZniRL8XMTPYH1Ct/yK/U/OxzvcnAZq+0P03MD9ER+ud8R4LVWkgQ/ioSVy
+	jIpEUl9Ri6mLM5M5L1ag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iF5xH-0006JS-Q9; Tue, 01 Oct 2019 00:23:51 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1iF69c-000368-Qe; Tue, 01 Oct 2019 00:36:36 +0000
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iF5xD-0006Hm-Md
- for linux-riscv@lists.infradead.org; Tue, 01 Oct 2019 00:23:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1569889427; x=1601425427;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=j/bjglqWF/oGbWlxsWj+tvbJ6Bessty1AA1xECR1Vog=;
- b=DBG9148VauShiw/Ha+unqmWYD34XVqNCQqcGKgJrLvCniyD09QCxuSqG
- sqpN3dVX3uTwMaf8Ma3aJ1kuUi7dZn7+dVGkbAfG7OpIEzkVqCBFzkCLA
- efl/yfUed7T6y1L3m/snnL44ZA1o94GoIG1HoLoupZ2iknVrZ/H+FhEsp
- CaGmjvAbqNYG/GwWcCtSQ0w6BpyUM6ZEAfWnT0fdqOf5E3QlxXSae5ktw
- JDiB/aa11EdFTxfD5RLWyiwKBwSEyePGXzaB2ig645UA4N4y7+B6Ih+R4
- zujsQF59np5xQuRP+JM9DYVVkw/VIebnG4ieargfd9kMUKVhvYSxVjnB1 Q==;
-IronPort-SDR: k5QHEDSmENPPPD7596iQVhJeRS0BptY/sWNQcgKuD1s0nyWfAsmDPM5Vzmk199vqSdn9CyRn/Q
- hXudsxp0toilamXn0VbFUvrjy7sMvNv+os11av9giBntyu6L/tU5ONNFh+kah3jWFQXCW3qBxq
- NPs7Oem3Z2PYHZ9NWUdD4RstGv6w6a6PSt4yFTXLEJtvztvn7cvheZyjPHVwbHU6W9sDG50+MP
- WjVVAvAplDK25nmaloz5VOhH6bMugKIgD7SZy5wxR/jMi+ii+U7p+6QZxYvagLk+6EjXgnjfRI
- Bs4=
-X-IronPort-AV: E=Sophos;i="5.64,569,1559491200"; d="scan'208";a="121061940"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 01 Oct 2019 08:23:44 +0800
-IronPort-SDR: PCmkcFsIb5VHcLowatW8vyQoR72mtzZ2xwrM7NtigHj+X1yHTdjfB6lW7nlAbfayoarvfK5TLJ
- hXCHiNG5rQncE8Ko89E7j/xBno/eOcc+L7LL2ubhRJ34SY8teAo+5qqLgNFCpwNQ8Kha/Nx5n8
- ydbDeHvrAa5wd5i7ROUDlR7e8dG1sS/UWEkj2YJ0/EWlczs5AQxsAXs5IUXPWvBPJf91EzmT9f
- 8l3VEYdIWRJCZrfKJacx4xKjbDtIpHDPN06e+osAWpJCxKfdxlTSodOUqqyXt7wTMVbIj1WAQs
- qe19PzGmWpLyYInuS6+USK+G
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Sep 2019 17:19:58 -0700
-IronPort-SDR: Enpz6ImGLYlKOaKEwe6Rbmc3lpN5MHdhtg9jzP56tbwwu7o/wCSsI6NznTgoDyXW5JR6DdBbtK
- R6bq130Vc/KfWJvdEGEd98JWn0oidKKoIMOVn5RpLcv9ZqpRTROCFyw6/d81DrnzuP4Dcb9jXB
- IQX8Hhbpk1BM92zQhRP1D9hKEgNxm23tY90YbREGxWOlyORjvfGAdkxrPuqqSXME/PofiaZeK1
- UrcBJkdK+yG9Eb1k1PLq1QGQw8M8SeNs/r9r/dkXETQyYfrcxed4V6oeE2OzbAH9ntc+jHEcV+
- 9/4=
-WDCIronportException: Internal
-Received: from jedi-01.sdcorp.global.sandisk.com (HELO
- jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip02.wdc.com with ESMTP; 30 Sep 2019 17:23:45 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [v6 PATCH] RISC-V: Remove unsupported isa string info print
-Date: Mon, 30 Sep 2019 17:23:18 -0700
-Message-Id: <20191001002318.7515-1-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.21.0
-MIME-Version: 1.0
+ id 1iF69W-00035A-QH
+ for linux-riscv@lists.infradead.org; Tue, 01 Oct 2019 00:36:35 +0000
+Received: by mail-pg1-x54a.google.com with SMTP id j7so7135564pgj.5
+ for <linux-riscv@lists.infradead.org>; Mon, 30 Sep 2019 17:36:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=oYTZkEy3W0e4PbVAv1y8KLAY8k3Oo31VP2ah/jDHFQc=;
+ b=S6QQmPoWzrubPfcSOzsPiCJN+1qgZf2c+tv54+BwWz3BOhH+o6DLSk94EpJDZulwdi
+ cf62/OFFED0jodTOpXul/eDJLQnhjyGlA+KVhjpWKR/LMkD1x9/W5xeg2Pu2L7y4eJjC
+ 828GsKA6m6lBmPEwWKFmgsUZhafbEW0Rsy8I84ZV01jVFUT7MaAE72bxo7B5RNlPvJNJ
+ pn+VaqPEJ296uKcbV9RisrNjsXhcWQBD5G4ml1W09e1XL065Bqi/KerQ+/WMsEKM+0UI
+ TmGQG05ckKsuBd01WE5gulVp/gi4zz09TxO6RghoTcBlNvnbBQFK7RJ/ldsT80Ch16Mk
+ ps3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=oYTZkEy3W0e4PbVAv1y8KLAY8k3Oo31VP2ah/jDHFQc=;
+ b=FaOenHq+zrAqIWza4zE7l0Ua9vX3dfeKYqE2hCP1fK3cbQEvcJp4h1A64PsiwId45/
+ bLLF4RxY7qtGLkxjuQkyK1Gf+pglqYqmf+e2WwzAfsmPwKc0UUtm6ZI0kALtgpCzv6yl
+ 1M15KCqiQqjVlhpt346DX9K0SLD3R1vjAtKBa3RODWZFXiZb75/84UA040rP5WkFRvvm
+ SHPsSFnWNDCsFKAE1r3Bd54n/z323g9tOAdEIUwt3g4a6zwSu9gguYs1cQzGIbV72df7
+ Pq0ca8Flc1Sdtly/gj1I9gPgLS9Me6IlmElDBr3R0VFeF9umU46nFtjNT/n4ZAHSXVS0
+ rbkg==
+X-Gm-Message-State: APjAAAWqm4vbjpFTsNaeNBUjiHZDANoBGrtlD9nw9vlY5G2CmjnYyHok
+ 5E12F33F3xprWupYiCRBE/PNFz6CLt3c
+X-Google-Smtp-Source: APXvYqxEf6p8EFkn50B2WuAFuiRJs9BmPF7hf7xcWLiIo8vZoaIoSfyVQqr4/mWtHqiBU295sRtCGdTmc3bu
+X-Received: by 2002:a65:6102:: with SMTP id z2mr26922306pgu.391.1569890187818; 
+ Mon, 30 Sep 2019 17:36:27 -0700 (PDT)
+Date: Mon, 30 Sep 2019 17:36:23 -0700
+In-Reply-To: <20190927214341.170683-1-irogers@google.com>
+Message-Id: <20191001003623.255186-1-irogers@google.com>
+Mime-Version: 1.0
+References: <20190927214341.170683-1-irogers@google.com>
+X-Mailer: git-send-email 2.23.0.444.g18eeb5a265-goog
+Subject: [PATCH v3] perf tools: avoid sample_reg_masks being const + weak
+From: Ian Rogers <irogers@google.com>
+To: Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>, 
+ Arnaldo Carvalho de Melo <acme@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Alexander Shishkin <alexander.shishkin@linux.intel.com>,
+ Jiri Olsa <jolsa@redhat.com>, 
+ Namhyung Kim <namhyung@kernel.org>, Guo Ren <guoren@kernel.org>, 
+ Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt <palmer@sifive.com>, 
+ Albert Ou <aou@eecs.berkeley.edu>, Mao Han <han_mao@c-sky.com>, 
+ Kan Liang <kan.liang@linux.intel.com>, Andi Kleen <ak@linux.intel.com>, 
+ Alexey Budankov <alexey.budankov@linux.intel.com>, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org, clang-built-linux@googlegroups.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190930_172347_794717_CB1FCAB3 
-X-CRM114-Status: GOOD (  13.53  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190930_173630_983232_4FE9C6E2 
+X-CRM114-Status: GOOD (  15.80  )
+X-Spam-Score: -7.7 (-------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-7.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:54a listed in]
+ [list.dnswl.org]
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -87,6 +90,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,90 +102,241 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
- Palmer Dabbelt <palmer@sifive.com>, Johan Hovold <johan@kernel.org>,
- hch@infradead.org, Atish Patra <atish.patra@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: Ian Rogers <irogers@google.com>, Stephane Eranian <eranian@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-/proc/cpuinfo should just print all the isa string as an information
-instead of determining what is supported or not. ELF hwcap can be
-used by the userspace to figure out that.
+Being const + weak breaks with some compilers that constant-propagate
+from the weak symbol. This behavior is outside of the specification, but
+in LLVM is chosen to match GCC's behavior.
 
-Simplify the isa string printing by removing the unsupported isa string
-print and all related code.
+LLVM's implementation was set in this patch:
+https://github.com/llvm/llvm-project/commit/f49573d1eedcf1e44893d5a062ac1b72c8419646
+A const + weak symbol is set to be weak_odr:
+https://llvm.org/docs/LangRef.html
+ODR is one definition rule, and given there is one constant definition
+constant-propagation is possible. It is possible to get this code to
+miscompile with LLVM when applying link time optimization. As compilers
+become more aggressive, this is likely to break in more instances.
 
-The relevant discussion can be found at
-http://lists.infradead.org/pipermail/linux-riscv/2019-September/006702.html
+Move the definition of sample_reg_masks to the conditional part of
+perf_regs.h and guard usage with HAVE_PERF_REGS_SUPPORT. This avoids the
+weak symbol.
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
+Fix an issue when HAVE_PERF_REGS_SUPPORT isn't defined from patch v1.
+In v3, add perf_regs.c for architectures that HAVE_PERF_REGS_SUPPORT but
+don't declare sample_regs_masks.
+
+Signed-off-by: Ian Rogers <irogers@google.com>
 ---
- arch/riscv/kernel/cpu.c | 35 ++++-------------------------------
- 1 file changed, 4 insertions(+), 31 deletions(-)
+ tools/perf/arch/arm/util/Build         | 2 ++
+ tools/perf/arch/arm/util/perf_regs.c   | 6 ++++++
+ tools/perf/arch/arm64/util/Build       | 1 +
+ tools/perf/arch/arm64/util/perf_regs.c | 6 ++++++
+ tools/perf/arch/csky/util/Build        | 2 ++
+ tools/perf/arch/csky/util/perf_regs.c  | 6 ++++++
+ tools/perf/arch/riscv/util/Build       | 2 ++
+ tools/perf/arch/riscv/util/perf_regs.c | 6 ++++++
+ tools/perf/arch/s390/util/Build        | 1 +
+ tools/perf/arch/s390/util/perf_regs.c  | 6 ++++++
+ tools/perf/util/parse-regs-options.c   | 8 ++++++--
+ tools/perf/util/perf_regs.c            | 4 ----
+ tools/perf/util/perf_regs.h            | 4 ++--
+ 13 files changed, 46 insertions(+), 8 deletions(-)
+ create mode 100644 tools/perf/arch/arm/util/perf_regs.c
+ create mode 100644 tools/perf/arch/arm64/util/perf_regs.c
+ create mode 100644 tools/perf/arch/csky/util/perf_regs.c
+ create mode 100644 tools/perf/arch/riscv/util/perf_regs.c
+ create mode 100644 tools/perf/arch/s390/util/perf_regs.c
 
-diff --git a/arch/riscv/kernel/cpu.c b/arch/riscv/kernel/cpu.c
-index 7da3c6a93abd..9486c426af86 100644
---- a/arch/riscv/kernel/cpu.c
-+++ b/arch/riscv/kernel/cpu.c
-@@ -48,49 +48,22 @@ int riscv_of_processor_hartid(struct device_node *node)
+diff --git a/tools/perf/arch/arm/util/Build b/tools/perf/arch/arm/util/Build
+index 296f0eac5e18..37fc63708966 100644
+--- a/tools/perf/arch/arm/util/Build
++++ b/tools/perf/arch/arm/util/Build
+@@ -1,3 +1,5 @@
++perf-y += perf_regs.o
++
+ perf-$(CONFIG_DWARF) += dwarf-regs.o
  
- static void print_isa(struct seq_file *f, const char *orig_isa)
+ perf-$(CONFIG_LOCAL_LIBUNWIND)    += unwind-libunwind.o
+diff --git a/tools/perf/arch/arm/util/perf_regs.c b/tools/perf/arch/arm/util/perf_regs.c
+new file mode 100644
+index 000000000000..2864e2e3776d
+--- /dev/null
++++ b/tools/perf/arch/arm/util/perf_regs.c
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0
++#include "../../util/perf_regs.h"
++
++const struct sample_reg sample_reg_masks[] = {
++	SMPL_REG_END
++};
+diff --git a/tools/perf/arch/arm64/util/Build b/tools/perf/arch/arm64/util/Build
+index 3cde540d2fcf..0a7782c61209 100644
+--- a/tools/perf/arch/arm64/util/Build
++++ b/tools/perf/arch/arm64/util/Build
+@@ -1,4 +1,5 @@
+ perf-y += header.o
++perf-y += perf_regs.o
+ perf-y += sym-handling.o
+ perf-$(CONFIG_DWARF)     += dwarf-regs.o
+ perf-$(CONFIG_LOCAL_LIBUNWIND) += unwind-libunwind.o
+diff --git a/tools/perf/arch/arm64/util/perf_regs.c b/tools/perf/arch/arm64/util/perf_regs.c
+new file mode 100644
+index 000000000000..2864e2e3776d
+--- /dev/null
++++ b/tools/perf/arch/arm64/util/perf_regs.c
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0
++#include "../../util/perf_regs.h"
++
++const struct sample_reg sample_reg_masks[] = {
++	SMPL_REG_END
++};
+diff --git a/tools/perf/arch/csky/util/Build b/tools/perf/arch/csky/util/Build
+index 1160bb2332ba..7d3050134ae0 100644
+--- a/tools/perf/arch/csky/util/Build
++++ b/tools/perf/arch/csky/util/Build
+@@ -1,2 +1,4 @@
++perf-y += perf_regs.o
++
+ perf-$(CONFIG_DWARF) += dwarf-regs.o
+ perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
+diff --git a/tools/perf/arch/csky/util/perf_regs.c b/tools/perf/arch/csky/util/perf_regs.c
+new file mode 100644
+index 000000000000..2864e2e3776d
+--- /dev/null
++++ b/tools/perf/arch/csky/util/perf_regs.c
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0
++#include "../../util/perf_regs.h"
++
++const struct sample_reg sample_reg_masks[] = {
++	SMPL_REG_END
++};
+diff --git a/tools/perf/arch/riscv/util/Build b/tools/perf/arch/riscv/util/Build
+index 1160bb2332ba..7d3050134ae0 100644
+--- a/tools/perf/arch/riscv/util/Build
++++ b/tools/perf/arch/riscv/util/Build
+@@ -1,2 +1,4 @@
++perf-y += perf_regs.o
++
+ perf-$(CONFIG_DWARF) += dwarf-regs.o
+ perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
+diff --git a/tools/perf/arch/riscv/util/perf_regs.c b/tools/perf/arch/riscv/util/perf_regs.c
+new file mode 100644
+index 000000000000..2864e2e3776d
+--- /dev/null
++++ b/tools/perf/arch/riscv/util/perf_regs.c
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0
++#include "../../util/perf_regs.h"
++
++const struct sample_reg sample_reg_masks[] = {
++	SMPL_REG_END
++};
+diff --git a/tools/perf/arch/s390/util/Build b/tools/perf/arch/s390/util/Build
+index 22797f043b84..3d9d0f4f72ca 100644
+--- a/tools/perf/arch/s390/util/Build
++++ b/tools/perf/arch/s390/util/Build
+@@ -1,5 +1,6 @@
+ perf-y += header.o
+ perf-y += kvm-stat.o
++perf-y += perf_regs.o
+ 
+ perf-$(CONFIG_DWARF) += dwarf-regs.o
+ perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
+diff --git a/tools/perf/arch/s390/util/perf_regs.c b/tools/perf/arch/s390/util/perf_regs.c
+new file mode 100644
+index 000000000000..2864e2e3776d
+--- /dev/null
++++ b/tools/perf/arch/s390/util/perf_regs.c
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0
++#include "../../util/perf_regs.h"
++
++const struct sample_reg sample_reg_masks[] = {
++	SMPL_REG_END
++};
+diff --git a/tools/perf/util/parse-regs-options.c b/tools/perf/util/parse-regs-options.c
+index ef46c2848808..e687497b3aac 100644
+--- a/tools/perf/util/parse-regs-options.c
++++ b/tools/perf/util/parse-regs-options.c
+@@ -13,7 +13,7 @@ static int
+ __parse_regs(const struct option *opt, const char *str, int unset, bool intr)
  {
--	static const char *ext = "mafdcsu";
--	const char *isa = orig_isa;
--	const char *e;
--
- 	/*
- 	 * Linux doesn't support rv32e or rv128i, and we only support booting
- 	 * kernels on harts with the same ISA that the kernel is compiled for.
- 	 */
- #if defined(CONFIG_32BIT)
--	if (strncmp(isa, "rv32i", 5) != 0)
-+	if (strncmp(orig_isa, "rv32i", 5) != 0)
- 		return;
- #elif defined(CONFIG_64BIT)
--	if (strncmp(isa, "rv64i", 5) != 0)
-+	if (strncmp(orig_isa, "rv64i", 5) != 0)
- 		return;
- #endif
+ 	uint64_t *mode = (uint64_t *)opt->value;
+-	const struct sample_reg *r;
++	const struct sample_reg *r = NULL;
+ 	char *s, *os = NULL, *p;
+ 	int ret = -1;
+ 	uint64_t mask;
+@@ -46,19 +46,23 @@ __parse_regs(const struct option *opt, const char *str, int unset, bool intr)
  
--	/* Print the base ISA, as we already know it's legal. */
-+	/* Print the entire ISA as it is */
- 	seq_puts(f, "isa\t\t: ");
--	seq_write(f, isa, 5);
--	isa += 5;
--
--	/*
--	 * Check the rest of the ISA string for valid extensions, printing those
--	 * we find.  RISC-V ISA strings define an order, so we only print the
--	 * extension bits when they're in order. Hide the supervisor (S)
--	 * extension from userspace as it's not accessible from there.
--	 */
--	for (e = ext; *e != '\0'; ++e) {
--		if (isa[0] == e[0]) {
--			if (isa[0] != 's')
--				seq_write(f, isa, 1);
--
--			isa++;
--		}
--	}
-+	seq_write(f, orig_isa, strlen(orig_isa));
- 	seq_puts(f, "\n");
--
--	/*
--	 * If we were given an unsupported ISA in the device tree then print
--	 * a bit of info describing what went wrong.
--	 */
--	if (isa[0] != '\0')
--		pr_info("unsupported ISA \"%s\" in device tree\n", orig_isa);
- }
+ 			if (!strcmp(s, "?")) {
+ 				fprintf(stderr, "available registers: ");
++#ifdef HAVE_PERF_REGS_SUPPORT
+ 				for (r = sample_reg_masks; r->name; r++) {
+ 					if (r->mask & mask)
+ 						fprintf(stderr, "%s ", r->name);
+ 				}
++#endif
+ 				fputc('\n', stderr);
+ 				/* just printing available regs */
+ 				return -1;
+ 			}
++#ifdef HAVE_PERF_REGS_SUPPORT
+ 			for (r = sample_reg_masks; r->name; r++) {
+ 				if ((r->mask & mask) && !strcasecmp(s, r->name))
+ 					break;
+ 			}
+-			if (!r->name) {
++#endif
++			if (!r || !r->name) {
+ 				ui__warning("Unknown register \"%s\", check man page or run \"perf record %s?\"\n",
+ 					    s, intr ? "-I" : "--user-regs=");
+ 				goto error;
+diff --git a/tools/perf/util/perf_regs.c b/tools/perf/util/perf_regs.c
+index 2774cec1f15f..5ee47ae1509c 100644
+--- a/tools/perf/util/perf_regs.c
++++ b/tools/perf/util/perf_regs.c
+@@ -3,10 +3,6 @@
+ #include "perf_regs.h"
+ #include "event.h"
  
- static void print_mmu(struct seq_file *f, const char *mmu_type)
+-const struct sample_reg __weak sample_reg_masks[] = {
+-	SMPL_REG_END
+-};
+-
+ int __weak arch_sdt_arg_parse_op(char *old_op __maybe_unused,
+ 				 char **new_op __maybe_unused)
+ {
+diff --git a/tools/perf/util/perf_regs.h b/tools/perf/util/perf_regs.h
+index 47fe34e5f7d5..e014c2c038f4 100644
+--- a/tools/perf/util/perf_regs.h
++++ b/tools/perf/util/perf_regs.h
+@@ -15,8 +15,6 @@ struct sample_reg {
+ #define SMPL_REG2(n, b) { .name = #n, .mask = 3ULL << (b) }
+ #define SMPL_REG_END { .name = NULL }
+ 
+-extern const struct sample_reg sample_reg_masks[];
+-
+ enum {
+ 	SDT_ARG_VALID = 0,
+ 	SDT_ARG_SKIP,
+@@ -27,6 +25,8 @@ uint64_t arch__intr_reg_mask(void);
+ uint64_t arch__user_reg_mask(void);
+ 
+ #ifdef HAVE_PERF_REGS_SUPPORT
++extern const struct sample_reg sample_reg_masks[];
++
+ #include <perf_regs.h>
+ 
+ #define DWARF_MINIMAL_REGS ((1ULL << PERF_REG_IP) | (1ULL << PERF_REG_SP))
 -- 
-2.21.0
+2.23.0.444.g18eeb5a265-goog
 
 
 _______________________________________________
