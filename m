@@ -2,81 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34A16C38E3
-	for <lists+linux-riscv@lfdr.de>; Tue,  1 Oct 2019 17:25:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15ED8C3FF2
+	for <lists+linux-riscv@lfdr.de>; Tue,  1 Oct 2019 20:35:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9/OWLx5VhOJod6mmCjHJMRI9viLUmccj7TpRdw951qI=; b=aG4KVKdZXUx7lp
-	eYPWMSGe30wvDVQkHQRqBVj9JzKGr93MR88Zh+BzN7aEQBglBiB6FCr5sfkCRZ5PLpIb+uBZlsSNt
-	49QLSr6B9dRZA5598Ze1y+HCIrIalFTxHMmKhpvNxhoxSqnBDmZH4C2VmTunFldjmybT1jZYYJyty
-	X3De2PZiFYsOt48vo+9Co1KplgKLsuG3PM6PzmqAp8Ph/QAFqZ237sjU0T3P/a94jOg7tRMtS6Myh
-	q2QfHHRJvvnUxIWo+FCFBpd7Okgz7GaoeMld/0+Tyt2eNxXxrZUcHellkl+jZA1tTB5MDCE30ZdRU
-	I2ZY7fAhSOLVYS+coLnA==;
+	List-Owner; bh=MF2+JtmFJAxLLMwhLL1r6WECC0TWKwFC8MWFKXAzmeo=; b=W+kZmkfoEqPKzU
+	sZpSqXJaWJN4scYrtd3DjGbzMjxQFSJVx3hyjyy9jAfiJsM6Dm5B/Ve3lRNKgEd2bf+AtNuZ8Wrd6
+	si/bFmgBcnmVrbmrG0HGj08FCIq7lWqmuzgK/0DqyKRNZmJxoH2/RWoc4kd0nglLJgd5riqlv8NcC
+	A6lbs0+W2f6HZIyAwi7XluBgKyHLuFxVY5LKjz5EoPtTb1ztzRjaGEyP8X57MEDSj82PkpQSypXYb
+	errqaKjUSHOcbArSgFrJdGqbeuhkMTtDMfCR5DlLeWTtZdk5h8hTECk4+g/mIxwD2aYwRAtE5dywQ
+	VNzhB1yWdbWF//cOlXTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iFK1C-0006PA-BQ; Tue, 01 Oct 2019 15:24:50 +0000
-Received: from mail-wm1-f66.google.com ([209.85.128.66])
+	id 1iFMzW-0003vt-FW; Tue, 01 Oct 2019 18:35:18 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iFK0w-00069J-BY; Tue, 01 Oct 2019 15:24:36 +0000
-Received: by mail-wm1-f66.google.com with SMTP id v17so3707217wml.4;
- Tue, 01 Oct 2019 08:24:31 -0700 (PDT)
+ id 1iFMzT-0003vL-5E
+ for linux-riscv@lists.infradead.org; Tue, 01 Oct 2019 18:35:16 +0000
+Received: by mail-io1-xd41.google.com with SMTP id b136so50592588iof.3
+ for <linux-riscv@lists.infradead.org>; Tue, 01 Oct 2019 11:35:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=5Fb9YzTga/9+WMrU/2SgNO0ujHSLL6+IpDmwPVkwFnc=;
+ b=MgWKg3MG9CFFTbex7gURjFzj/yGw9uuzkuu5j+o0ih7zhVtPEW9RiKP0YWZW0S7TMS
+ 2EjaJMUEbOyWOI8aChBxYQnkekrgosM844KOs9vUMrE0ZjW/MjKNHGreR1SdbMf/jeop
+ SqbRhsDxtNrg14UaJZxR937/bCEuM4ullb94tJPl+dLTzY8ZjY/aJiOBUws0OKzCZ9gY
+ iLobxmvd2YU/ItYaJTrQpH2ChTwNVyB9NTqztommrzAAmjLWkUaSKMUwlrHGNKQtC6az
+ MxX/nvvKCuEnkstBJ01oIE0ezjmN8Wiz80OEHvCv6z+28Z/yddutvIzX+hkcqkOCi7kC
+ cV0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=qIz20MyIeJ4YRS3q69VVUyLU1/qqd5R6Zf74yV/b9ww=;
- b=Jo2Strk3UOyLXIsdvUM36G6pAbxSbf6qgbRgkdC/iWHvWI/Q/8nuVrSVVndYYEgEuz
- UYKO1HvkdAit5nxpX+Ytn3BEvXADSYvvbLIJ58td6BOWq4Acck1EPWp6eAE7JOjrTpy8
- q2JtuPEREVOtHsP+yky3lN64xS0v4w7+ITA9z2xn1uLY+HkZgckzaBwj9aN66/41tYxR
- xQ+wCxCRSU0f6zpoPHoQZYU9YwWRFrcSExqyH565OjPB2eH2TY21AwxLobqIsH5m/+iK
- 6helwP5KFxPGdrD+R7p8PoOEt/iLUmzsL+uUIlLKRP8qKXLwZXyR+5d5L7tB98CpjAeM
- evWw==
-X-Gm-Message-State: APjAAAWGD3Q6Gpp9z9o2Kxc2GQ+FQzUidJW0oEslexKGk/Tw9uzsMys6
- LuuVxqDEkUfkjkBhEq/4vmc=
-X-Google-Smtp-Source: APXvYqzgA01GZd24cae9Ug02bMZVgbmEoHDdIAy+uHttgtTk16j30giNWmxHikB8fPnYof+FbNzouQ==
-X-Received: by 2002:a1c:60c1:: with SMTP id u184mr4104201wmb.32.1569943469278; 
- Tue, 01 Oct 2019 08:24:29 -0700 (PDT)
-Received: from pi3 ([194.230.155.145])
- by smtp.googlemail.com with ESMTPSA id i1sm4699293wmb.19.2019.10.01.08.24.26
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=5Fb9YzTga/9+WMrU/2SgNO0ujHSLL6+IpDmwPVkwFnc=;
+ b=NxJpyzmp2OwBLVMCqAQEPDNEEtUzKqTe5ggzwMAm/FM3kTNqk1GDsgxBYdg4c8igYW
+ eG0PMxFfCcQbHWF53H/ilYYF5X55XqrI/5sTZrX11dy4M0JVIm8mjfCwCcCc7cq8uUkC
+ QiR1XYhkSwzq6Wtic4EJlc+IxDdwQMu/Mdt2zMQAHbx3HiPGdW0oDU5R/HpgbvuOOE7u
+ ca2Ba9NxbESdyuyLJnADgnS6bbUGBvhzY5SqZqar1PP2lQns9LQpEvjACmyAWx9KQMmD
+ nvjUQ86Aqz0iHAym4WyhZrvdrdr0iu0lzS/MS8ja+lZrorirrsKpT2P9BCzhLt4YbXmK
+ 0YXA==
+X-Gm-Message-State: APjAAAWzsalRPQ7coJkuoJNrVxlhotKoEBITydZv1m0hO9SqeorCE5el
+ I8Fi/Oydq7G15sby53vdCdq1PBIFNms=
+X-Google-Smtp-Source: APXvYqxBrZp6foWvPhswC6rB/mDoUsUd3wHiswUzJVpu1vT5vd9zpn3vwJDmd4c8Gt6pF9rTIZS2sg==
+X-Received: by 2002:a6b:8e92:: with SMTP id q140mr7413827iod.205.1569954912731; 
+ Tue, 01 Oct 2019 11:35:12 -0700 (PDT)
+Received: from localhost (67-0-10-3.albq.qwest.net. [67.0.10.3])
+ by smtp.gmail.com with ESMTPSA id m9sm7691487ion.65.2019.10.01.11.35.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Oct 2019 08:24:28 -0700 (PDT)
-Date: Tue, 1 Oct 2019 17:24:22 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/8] dt-bindings: sram: Convert SRAM bindings to
- json-schema
-Message-ID: <20191001152422.GA31358@pi3>
-References: <20190918173141.4314-1-krzk@kernel.org>
- <20190918173141.4314-2-krzk@kernel.org>
- <20191001140003.GA31344@bogus>
+ Tue, 01 Oct 2019 11:35:12 -0700 (PDT)
+Date: Tue, 1 Oct 2019 11:35:11 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Jonathan Corbet <corbet@lwn.net>
+Subject: Re: [PATCH] riscv-docs: correct the sequence of the magic number 2
+ since it's little endian
+In-Reply-To: <20191001072212.21d55899@lwn.net>
+Message-ID: <alpine.DEB.2.21.9999.1910011132280.3732@viisi.sifive.com>
+References: <20190916130108.31404-1-clin@suse.com>
+ <20191001072212.21d55899@lwn.net>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191001140003.GA31344@bogus>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191001_082434_397814_C59E4372 
-X-CRM114-Status: GOOD (  26.96  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20191001_113515_328841_2613D6E4 
+X-CRM114-Status: GOOD (  14.00  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.128.66 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.128.66 listed in wl.mailspike.net]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (k.kozlowski.k[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,183 +98,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, linux-pwm@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-leds@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- Herbert Xu <herbert@gondor.apana.org.au>, linux-clk@vger.kernel.org,
- linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
- Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, Matt Mackall <mpm@selenic.com>,
- linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-crypto@vger.kernel.org
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "palmer@sifive.com" <palmer@sifive.com>, Chester Lin <clin@suse.com>,
+ "atish.patra@wdc.com" <atish.patra@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Oct 01, 2019 at 09:00:03AM -0500, Rob Herring wrote:
-> On Wed, Sep 18, 2019 at 07:31:35PM +0200, Krzysztof Kozlowski wrote:
-> > Convert generic mmio-sram bindings to DT schema format using
-> > json-schema.
+Hi Jon,
+
+On Tue, 1 Oct 2019, Jonathan Corbet wrote:
+
+> On Mon, 16 Sep 2019 13:01:40 +0000
+> Chester Lin <clin@suse.com> wrote:
 > 
-> I've been slow getting to this because I started on the same thing...
-> 
+> > Correct the sequence of the magic number 2 since it's little endian.
 > > 
-> > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> > 
+> > Signed-off-by: Chester Lin <clin@suse.com>
 > > ---
-> > 
-> > Changes since v1:
-> > 1. Indent example with four spaces (more readable).
-> > ---
-> >  .../devicetree/bindings/sram/sram.txt         |  80 ----------
-> >  .../devicetree/bindings/sram/sram.yaml        | 138 ++++++++++++++++++
-> >  2 files changed, 138 insertions(+), 80 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/sram/sram.txt
-> >  create mode 100644 Documentation/devicetree/bindings/sram/sram.yaml
+> >  Documentation/riscv/boot-image-header.txt | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> > diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
-> > new file mode 100644
-> > index 000000000000..8d9d6ce494b2
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/sram/sram.yaml
-> > @@ -0,0 +1,138 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/sram/sram.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Generic on-chip SRAM
-> > +
-> > +maintainers:
-> > +  - FIXME <who@should.it.be>
+> So I'm slowly digging my way through my docs folder, sorry for the delay.
 > 
-> You can put me.
-
-Sure.
-
+> > diff --git a/Documentation/riscv/boot-image-header.txt b/Documentation/riscv/boot-image-header.txt
+> > index 14b1492f689b..f388805aa5c3 100644
+> > --- a/Documentation/riscv/boot-image-header.txt
+> > +++ b/Documentation/riscv/boot-image-header.txt
+> > @@ -18,7 +18,7 @@ The following 64-byte header is present in decompressed Linux kernel image.
+> >  	u32 res1  = 0;		  /* Reserved */
+> >  	u64 res2  = 0;    	  /* Reserved */
+> >  	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
+> > -	u32 magic2 = 0x56534905;  /* Magic number 2, little endian, "RSC\x05" */
+> > +	u32 magic2 = 0x05435352;  /* Magic number 2, little endian, "RSC\x05" */
 > 
-> > +
-> > +description: |+
-> > +  Simple IO memory regions to be managed by the genalloc API.
-> > +
-> > +  Each child of the sram node specifies a region of reserved memory. Each
-> > +  child node should use a 'reg' property to specify a specific range of
-> > +  reserved memory.
-> > +
-> > +  Following the generic-names recommended practice, node names should
-> > +  reflect the purpose of the node. Unit address (@<address>) should be
-> > +  appended to the name.
-> > +
-> > +properties:
-> > +  $nodename:
-> > +    pattern: "^sram(@.*)?"
-> > +
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mmio-sram
-> > +          - atmel,sama5d2-securam
-> 
-> I was trying to go down the path of putting all the compatibles for 
-> various SRAM bindings here, but I ran into some issues. I need to 
-> revisit as I've forgotten the exact issue.
-> 
-> This would need to be a 'contains' if this is going to work for others.
+> That's doing more than just reordering the bytes.  Was the original
+> completely wrong?  If so, the changelog should probably reflect that.  Or
+> else what am I missing?
 
-OK.
+This was simply due to idiocy on my part, due to a very last-minute patch 
+submission, where I missed that the original documented magic number was 
+already in little-endian format.  The updated number from Chester is 
+correct.
 
-> 
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  "#address-cells":
-> > +    description: Should use the same values as the root node.
-> > +
-> > +  "#size-cells":
-> > +    description: Should use the same values as the root node.
-> 
-> I defined both of these to be 1 as 4GB of SRAM should be enough for a 
-> while. We can debate 1 or 2 cells vs. 1, but there's no reason it has to 
-> be the same as the root (unless we're failing to do address 
-> translation).
+So,
 
-That was copied from txt version. I can adjust them to 1 although this
-is will more than simple conversion.
+Reviewed-by: Paul Walmsley <paul.walmsley@sifive.com>
 
-> 
-> > +
-> > +  ranges:
-> > +    description:
-> > +      Should translate from local addresses within the sram to bus addresses.
-> > +
-> > +  no-memory-wc:
-> > +    description:
-> > +      The flag indicating, that SRAM memory region has not to be remapped
-> > +      as write combining. WC is used by default.
-> > +    type: boolean
-> > +
-> > +  # TODO: additionalProperties: false
-> > +
-> > +patternProperties:
-> > +  "^([a-z]*-)?sram@[a-f0-9]$":
-> > +    type: object
-> > +    description:
-> > +      Each child of the sram node specifies a region of reserved memory.
-> > +    properties:
-> > +      reg:
-> > +        description:
-> > +          IO mem address range, relative to the SRAM range.
-> 
-> maxItems: 1
 
-OK
-
-> 
-> > +
-> > +      compatible:
-> > +        $ref: /schemas/types.yaml#/definitions/string
-> > +        description:
-> > +          Should contain a vendor specific string in the form
-> > +          <vendor>,[<device>-]<usage>
-> > +
-> > +      pool:
-> > +        description:
-> > +          Indicates that the particular reserved SRAM area is addressable
-> > +          and in use by another device or devices.
-> > +        type: boolean
-> > +
-> > +      export:
-> > +        description:
-> > +          Indicates that the reserved SRAM area may be accessed outside
-> > +          of the kernel, e.g. by bootloader or userspace.
-> > +        type: boolean
-> > +
-> > +      protect-exec:
-> > +        description: |
-> > +          Same as 'pool' above but with the additional constraint that code
-> > +          will be run from the region and that the memory is maintained as
-> > +          read-only, executable during code execution. NOTE: This region must
-> > +          be page aligned on start and end in order to properly allow
-> > +          manipulation of the page attributes.
-> > +        type: boolean
-> > +
-> > +      label:
-> > +        $ref: /schemas/types.yaml#/definitions/string
-> 
-> Already has a type definition.
-
-OK
-
-Best regards,
-Krzysztof
-
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
