@@ -2,67 +2,139 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C8EFC47A1
-	for <lists+linux-riscv@lfdr.de>; Wed,  2 Oct 2019 08:17:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B225C47C2
+	for <lists+linux-riscv@lfdr.de>; Wed,  2 Oct 2019 08:29:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gQV88RcpdwH8MQeFu93xkeRv4oQH5vBqWbHeiypUhdY=; b=bns2NrABglF5lz
-	QQFMQREJ37EpdlqeKck+IiId6bTd3wXIfukCjZfumuw5tYG+dImFQCYQZflfz/4dXv/bID+DA0by1
-	n556M2aaALRILOQYpoZ4yqRelJS0EAYbDSDaWsex67zMdJwihsP41fWFwOHhC19on0Ahqvq2Enbrq
-	hf/YHaxxjWVDgUYOWhTOYajfYH35yYL8VeivnjN2wxBLG89uu8lH6C/XUphoON0yWwkhlJjPlul8/
-	TkqI0zGhP1+D/IX6vIZwS/SXJ6bofEJUNPM2UN16e4E77pL61I5JMeLXU8hcrWOzyJgVlqvroScq9
-	dv/iJJNYxeHyPgD3y4Nw==;
+	List-Owner; bh=dbwLILHrgVQrvuD4rnUyqcraqpFiqElx0mKBZ/f+aeQ=; b=uM6NZYdDStgBea
+	01BN4fAS2uVZUfxOIlNVFJ8nrgtbxkfJxFQusAs9CQ8zUS0QIOrbH1OWsJqfBjeidjfNL71OmegSv
+	772UOx2R/is/2UvlG7dZ/1ApfmlvlK0xtCSNUUBkO4BbJmgylDBV42kvexVYngf8UqiY4ox4y/m9d
+	A5g6R+amHKMWH0Et/hLo/cOkrHvSf+KuoetS51hhLSPyb9Ir/uclwe3dSyOcDw3O1G2kUH5Trvnv1
+	7Tuv9lHccDox+9rcbW67+T/+BsPXHwFJBvhR1IrAdY9e1KbEVoW9j0450BHPwcMKO7ZiD4urn6qJX
+	tGEz2/gAIaxqnZM0Gi7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iFXwt-0002Ic-9H; Wed, 02 Oct 2019 06:17:19 +0000
-Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
- helo=ATCSQR.andestech.com)
+	id 1iFY8J-0005WK-4C; Wed, 02 Oct 2019 06:29:07 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iFXwn-0002CL-2k
- for linux-riscv@lists.infradead.org; Wed, 02 Oct 2019 06:17:16 +0000
-Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x9260tqa065631;
- Wed, 2 Oct 2019 14:00:55 +0800 (GMT-8)
- (envelope-from nickhu@andestech.com)
-Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
- (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Wed, 2 Oct 2019
- 14:16:21 +0800
-From: Nick Hu <nickhu@andestech.com>
-To: <alankao@andestech.com>, <paul.walmsley@sifive.com>, <palmer@sifive.com>, 
- <aou@eecs.berkeley.edu>, <aryabinin@virtuozzo.com>,
- <glider@google.com>, <dvyukov@google.com>, <alexios.zavras@intel.com>,
- <allison@lohutok.net>, <Anup.Patel@wdc.com>, <tglx@linutronix.de>,
- <gregkh@linuxfoundation.org>, <atish.patra@wdc.com>,
- <kstewart@linuxfoundation.org>, <linux-riscv@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <kasan-dev@googlegroups.com>,
- <linux-mm@kvack.org>
-Subject: [PATCH v2 2/2] riscv: Add KASAN support
-Date: Wed, 2 Oct 2019 14:16:05 +0800
-Message-ID: <8d86d53e904bece0623cb8969cdc70f782fa2bae.1569995450.git.nickhu@andestech.com>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <cover.1569995450.git.nickhu@andestech.com>
-References: <cover.1569995450.git.nickhu@andestech.com>
+ id 1iFY8F-0005Vt-Sy
+ for linux-riscv@lists.infradead.org; Wed, 02 Oct 2019 06:29:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1569997743; x=1601533743;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=UzYkHkEOmMP5qbsWK9Iap/UZT1AjOFYKp5WANIT7QTo=;
+ b=ENMLmGtSPD257oAC90/6EEq5gznYIVMI3JNORqrSShn4SEp9C1mdyjOQ
+ C48DoLcxG8vneEMglR6jCnhH3Xd3TLzoihRCNoIwF4XxxZlxZMEHCcdir
+ 7X799mafw76zN+vXo3Il4XzmZtBr9ottLXiQeuaplzkszB4MoKbMUmnbd
+ r0Y9V7RJFH5MdOhae7hwI0Wb1OY8jecIQjugrWUrg5Ysdl22BBmedsL49
+ FXEg6tQR6yUlgETIGjk35mvCL/rWETmtjGwBJgvPmjW2otGAriFwe6eSn
+ hD1Qtp1H613siVHxIexy9RIb8sgSLeKq7y0/552RYS7g/8xI+WBlZEFKK g==;
+IronPort-SDR: /koFlAyJj3q8gqF6Z0DhzMgMolu3QLUAZQE/SML6QZOW4EIb09V4dGr/wmwLg5YIpS29/zPqfd
+ pN42KhDtTCGMuxHcBe4PGPD6wd/QklENhWRvUJcosYSd2YLkQhHQ3abY+dlnX9XlaIhX3/aEtd
+ nlmLyKuhCW9QVbrWU2Y0B0KEXUQ++7/P2bhpLpMmp1N/7RzMrriTD0mqv/adpChRGxR+DFe6kp
+ yWNdSmcK+444OjL5fByrHg/gwTbBH/lktymf6thKYY7yI0SJNPPmB3Bsupzs2kcFVl0XkuhwhD
+ X3Q=
+X-IronPort-AV: E=Sophos;i="5.64,573,1559491200"; d="scan'208";a="226518798"
+Received: from mail-sn1nam02lp2051.outbound.protection.outlook.com (HELO
+ NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.51])
+ by ob1.hgst.iphmx.com with ESMTP; 02 Oct 2019 14:29:00 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QTldFei08MIqd2Fp6kmXCXQ19EIDoQCdpgbrDL7NIMKIMpOL4GwmSGQiJz8SVPFrZhVD5cjRWSID6Y6HAhQZ5IF9ds24lT+IplRYl8XEaBS3aOwdVBFIHeOxuB/2L8rcjjt7kbXz0bSxUjJUqz7mFdFvG+U8xEThiktVtcrMtfgxSDDwd3sxB849akDrHb07c8t1ZqmpfyoL2F96CO/4dfh/dFrRuvb2STYR825L2rZOdLCEIFp8ksHAzQIapOr1xoW8tVmVG+A+bCDmlMY9SuwTKpiFKBgi1TyRQFe72La5qt4zOW9KhclgJSa8c2aKK6yG1rCFl8EpnHDEPpyBkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UzYkHkEOmMP5qbsWK9Iap/UZT1AjOFYKp5WANIT7QTo=;
+ b=KV7bEfyyIfpaB7nwTD9ejR71Mly2bo52xUql1+WppvPMbzxaRHQ5+IWCXK+A0BoHEQf4//6GaTwekhVk98qybQhkZcyzmEVRVlMlgfiXjZq6iwoGaecZ2PjOx6WSwwEh/vxoEfl++VZ7zVviU0ip5cSm07I/r2CiW2QIcXI8riM1mbjVUPhcw17UIPpMj0hNGo1o33IaOCI1yLxGDkkFQp2U2X8prOaxX137/8NBViBvgp8xFL9WHM4GJp2WLexX19KfGwwr7Hq7IKLNaw8ztr6PdAEm+TkX7iyyxKUtcw1neQIjfLtHAC1fPmFxcGtIS/Z2RKS2qJFc0Wg7le+wog==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UzYkHkEOmMP5qbsWK9Iap/UZT1AjOFYKp5WANIT7QTo=;
+ b=a1VA7allulVn+6XdxA0MUPHuW93mCoCimmVrbALBG2KpcPf8QGj8TBB5RK9g7PgMQsIQATifqAoFTdDpqkL0dy687FJOeg0Kng3bz0+OYpOVMlOJKiTGx9Rta3YmNs+T0AOv6AoHiweK8yQu79sWo+LuOd14jX/pueTfEhRiwdc=
+Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
+ BYAPR04MB3784.namprd04.prod.outlook.com (52.135.217.32) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2305.22; Wed, 2 Oct 2019 06:28:59 +0000
+Received: from BYAPR04MB3990.namprd04.prod.outlook.com
+ ([fe80::a50d:40a0:cd7b:acbc]) by BYAPR04MB3990.namprd04.prod.outlook.com
+ ([fe80::a50d:40a0:cd7b:acbc%5]) with mapi id 15.20.2305.022; Wed, 2 Oct 2019
+ 06:28:59 +0000
+From: Atish Patra <Atish.Patra@wdc.com>
+To: "hch@infradead.org" <hch@infradead.org>, "alankao@andestech.com"
+ <alankao@andestech.com>
+Subject: Re: [v6 PATCH] RISC-V: Remove unsupported isa string info print
+Thread-Topic: [v6 PATCH] RISC-V: Remove unsupported isa string info print
+Thread-Index: AQHVd+597x5i5uf5J02UT+QA3h/uMqdFXIsAgAAWWgCAAB4VAIABB5SAgABM7AA=
+Date: Wed, 2 Oct 2019 06:28:59 +0000
+Message-ID: <bc0d2f2803950ebb38fd487fddb0fcf8a370512e.camel@wdc.com>
+References: <20191001002318.7515-1-atish.patra@wdc.com>
+ <20191001070236.GA7622@infradead.org>
+ <b0c39a9895698d74e2f44eb1f2faed46eee54bc3.camel@wdc.com>
+ <20191001101016.GB23507@infradead.org>
+ <20191002015338.GA28086@andestech.com>
+In-Reply-To: <20191002015338.GA28086@andestech.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Atish.Patra@wdc.com; 
+x-originating-ip: [73.162.108.221]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 41067940-68bc-40ae-6554-08d74701cf34
+x-ms-office365-filtering-ht: Tenant
+x-ms-traffictypediagnostic: BYAPR04MB3784:
+x-ms-exchange-purlcount: 2
+x-microsoft-antispam-prvs: <BYAPR04MB3784CE51C7A8494B49F813A6FA9C0@BYAPR04MB3784.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-forefront-prvs: 0178184651
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(136003)(366004)(396003)(376002)(346002)(39860400002)(199004)(189003)(305945005)(229853002)(6486002)(6306002)(6512007)(6436002)(8936002)(7736002)(118296001)(5660300002)(2501003)(71190400001)(64756008)(66556008)(66446008)(76116006)(66476007)(66946007)(71200400001)(256004)(36756003)(8676002)(81166006)(81156014)(6116002)(3846002)(66066001)(2906002)(966005)(4326008)(316002)(14454004)(99286004)(186003)(26005)(102836004)(6506007)(76176011)(486006)(476003)(478600001)(2616005)(446003)(25786009)(54906003)(11346002)(110136005)(6246003)(86362001);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB3784;
+ H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: /lm+Y4isaTKq+gsML+rG1TB6/yt3pCOzvs5+gyA0bMMSwntWUiNA0VwV+IciyJVyX1Kg0WuY4isAPXXYyG+StgJ/V0/wudcr/XBVkxRI7rvQf9zNtU5BasXwnG8VHwuBw9DGizqzzlIbIjSbNbAlT7Jg6Xdecf56eYZogch+FfwofE9eSDp1qPnbXr5GVDv+4sC5/43P+2UD520HHGhfF4imwkAayg6saXg8cxD41IyvAN6vkWbMUpNOh3uulXgLHHwZOvBGTN3hu/IzNVs7RslVmbNY1JeK8O8qfbU/bXUeJgNVoJ1Ke2tn63HgiRheCSFoNrtkxnSVbEj8JYPhkjytBs+zIMO03Lp4BcsM6nOUfXgyZhu4rVICp2fr5BHAzyWTpI/ARPvdbXqakwl9/r0Bd43zNGe1CgKNtaquMNDgYJAd0a7rqp+7a1pdEpII78tR6nn3nc2sbDVA2PSEOA==
+x-ms-exchange-transport-forked: True
+Content-ID: <3E04A680A98562449A11428D2831F1BB@namprd04.prod.outlook.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.0.15.65]
-X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x9260tqa065631
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 41067940-68bc-40ae-6554-08d74701cf34
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Oct 2019 06:28:59.1272 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: tAFl5itzCpFgw8ftJP4adcO36LkLdkpoz9J+UaY2i0kbv5DsR3ZOuyUxaY4P1NCyeM+F6HTRVkk6CDX9ztIE3g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3784
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191001_231713_379076_7F5771EA 
-X-CRM114-Status: GOOD (  16.85  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20191001_232903_967417_72506435 
+X-CRM114-Status: GOOD (  15.41  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 TVD_RCVD_IP            Message was received from an IP address
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [68.232.141.245 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
- dynamic-looking rDNS
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,357 +146,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Nick Hu <nickhu@andestech.com>
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "anup@brainfault.org" <anup@brainfault.org>,
+ "palmer@sifive.com" <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "johan@kernel.org" <johan@kernel.org>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch ports the feature Kernel Address SANitizer (KASAN).
+On Wed, 2019-10-02 at 09:53 +0800, Alan Kao wrote:
+> On Tue, Oct 01, 2019 at 03:10:16AM -0700, hch@infradead.org wrote:
+> > On Tue, Oct 01, 2019 at 08:22:37AM +0000, Atish Patra wrote:
+> > > riscv_of_processor_hartid() or seems to be a better candidate. We
+> > > already check if "rv" is present in isa string or not. I will
+> > > extend
+> > > that to check for rv64i or rv32i. Is that okay ?
+> > 
+> > I'd rather lift the checks out of that into a function that is
+> > called
+> > exactly once per hart on boot (and future cpu hotplug).
+> 
+@Christoph
+Do you mean to lift the checks for "rv" as well from
+riscv_of_processor_hartid as well or leave that as it is? 
 
-Note: The start address of shadow memory is at the beginning of kernel
-space, which is 2^64 - (2^39 / 2) in SV39. The size of the kernel space is
-2^38 bytes so the size of shadow memory should be 2^38 / 8. Thus, the
-shadow memory would not overlap with the fixmap area.
+> Sorry that I am a bit out of date on this.  Is there any related
+> discussion about such checks?  
 
-There are currently two limitations in this port,
+We are trying to remove all the checks in /proc/cpuinfo and just print
+isa as it is. Here is the previous discussion.
 
-1. RV64 only: KASAN need large address space for extra shadow memory
-region.
+http://lists.infradead.org/pipermail/linux-riscv/2019-
+September/006702.html
 
-2. KASAN can't debug the modules since the modules are allocated in VMALLOC
-area. We mapped the shadow memory, which corresponding to VMALLOC area, to
-the kasan_early_shadow_page because we don't have enough physical space for
-all the shadow memory corresponding to VMALLOC area.
+> Just want to make sure if the check
+> stops here and will not go any further for extensions, Xs and Zs.
+> 
 
-Signed-off-by: Nick Hu <nickhu@andestech.com>
----
- arch/riscv/Kconfig                  |   1 +
- arch/riscv/include/asm/kasan.h      |  27 ++++++++
- arch/riscv/include/asm/pgtable-64.h |   5 ++
- arch/riscv/include/asm/string.h     |   9 +++
- arch/riscv/kernel/head.S            |   3 +
- arch/riscv/kernel/riscv_ksyms.c     |   2 +
- arch/riscv/kernel/setup.c           |   5 ++
- arch/riscv/kernel/vmlinux.lds.S     |   1 +
- arch/riscv/lib/memcpy.S             |   5 +-
- arch/riscv/lib/memset.S             |   5 +-
- arch/riscv/mm/Makefile              |   6 ++
- arch/riscv/mm/kasan_init.c          | 104 ++++++++++++++++++++++++++++
- 12 files changed, 169 insertions(+), 4 deletions(-)
- create mode 100644 arch/riscv/include/asm/kasan.h
- create mode 100644 arch/riscv/mm/kasan_init.c
+At least not here. I don't think we need to check for optional
+extensions anywhere except in the extension relevant code.
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 8eebbc8860bb..ca2fc8ba8550 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -61,6 +61,7 @@ config RISCV
- 	select SPARSEMEM_STATIC if 32BIT
- 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
- 	select HAVE_ARCH_MMAP_RND_BITS
-+	select HAVE_ARCH_KASAN if MMU && 64BIT
- 
- config ARCH_MMAP_RND_BITS_MIN
- 	default 18 if 64BIT
-diff --git a/arch/riscv/include/asm/kasan.h b/arch/riscv/include/asm/kasan.h
-new file mode 100644
-index 000000000000..eb9b1a2f641c
---- /dev/null
-+++ b/arch/riscv/include/asm/kasan.h
-@@ -0,0 +1,27 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (C) 2019 Andes Technology Corporation */
-+
-+#ifndef __ASM_KASAN_H
-+#define __ASM_KASAN_H
-+
-+#ifndef __ASSEMBLY__
-+
-+#ifdef CONFIG_KASAN
-+
-+#include <asm/pgtable.h>
-+
-+#define KASAN_SHADOW_SCALE_SHIFT	3
-+
-+#define KASAN_SHADOW_SIZE	(UL(1) << (38 - KASAN_SHADOW_SCALE_SHIFT))
-+#define KASAN_SHADOW_START	0xffffffc000000000 // 2^64 - 2^38
-+#define KASAN_SHADOW_END	(KASAN_SHADOW_START + KASAN_SHADOW_SIZE)
-+
-+#define KASAN_SHADOW_OFFSET	(KASAN_SHADOW_END - (1ULL << \
-+					(64 - KASAN_SHADOW_SCALE_SHIFT)))
-+
-+void kasan_init(void);
-+asmlinkage void kasan_early_init(void);
-+
-+#endif
-+#endif
-+#endif /* __ASM_KASAN_H */
-diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
-index 7df8daa66cc8..777a1dddb3df 100644
---- a/arch/riscv/include/asm/pgtable-64.h
-+++ b/arch/riscv/include/asm/pgtable-64.h
-@@ -59,6 +59,11 @@ static inline unsigned long pud_page_vaddr(pud_t pud)
- 	return (unsigned long)pfn_to_virt(pud_val(pud) >> _PAGE_PFN_SHIFT);
- }
- 
-+static inline struct page *pud_page(pud_t pud)
-+{
-+	return pfn_to_page(pud_val(pud) >> _PAGE_PFN_SHIFT);
-+}
-+
- #define pmd_index(addr) (((addr) >> PMD_SHIFT) & (PTRS_PER_PMD - 1))
- 
- static inline pmd_t *pmd_offset(pud_t *pud, unsigned long addr)
-diff --git a/arch/riscv/include/asm/string.h b/arch/riscv/include/asm/string.h
-index 1b5d44585962..a4451f768826 100644
---- a/arch/riscv/include/asm/string.h
-+++ b/arch/riscv/include/asm/string.h
-@@ -11,8 +11,17 @@
- 
- #define __HAVE_ARCH_MEMSET
- extern asmlinkage void *memset(void *, int, size_t);
-+extern asmlinkage void *__memset(void *, int, size_t);
- 
- #define __HAVE_ARCH_MEMCPY
- extern asmlinkage void *memcpy(void *, const void *, size_t);
-+extern asmlinkage void *__memcpy(void *, const void *, size_t);
- 
-+// For those files which don't want to check by kasan.
-+#if defined(CONFIG_KASAN) && !defined(__SANITIZE_ADDRESS__)
-+
-+#define memcpy(dst, src, len) __memcpy(dst, src, len)
-+#define memset(s, c, n) __memset(s, c, n)
-+
-+#endif
- #endif /* _ASM_RISCV_STRING_H */
-diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-index 72f89b7590dd..95eca23cd811 100644
---- a/arch/riscv/kernel/head.S
-+++ b/arch/riscv/kernel/head.S
-@@ -102,6 +102,9 @@ clear_bss_done:
- 	sw zero, TASK_TI_CPU(tp)
- 	la sp, init_thread_union + THREAD_SIZE
- 
-+#ifdef CONFIG_KASAN
-+	call kasan_early_init
-+#endif
- 	/* Start the kernel */
- 	call parse_dtb
- 	tail start_kernel
-diff --git a/arch/riscv/kernel/riscv_ksyms.c b/arch/riscv/kernel/riscv_ksyms.c
-index 4800cf703186..376bba7f65ce 100644
---- a/arch/riscv/kernel/riscv_ksyms.c
-+++ b/arch/riscv/kernel/riscv_ksyms.c
-@@ -14,3 +14,5 @@ EXPORT_SYMBOL(__asm_copy_to_user);
- EXPORT_SYMBOL(__asm_copy_from_user);
- EXPORT_SYMBOL(memset);
- EXPORT_SYMBOL(memcpy);
-+EXPORT_SYMBOL(__memset);
-+EXPORT_SYMBOL(__memcpy);
-diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
-index a990a6cb184f..41f7eae9bc4d 100644
---- a/arch/riscv/kernel/setup.c
-+++ b/arch/riscv/kernel/setup.c
-@@ -23,6 +23,7 @@
- #include <asm/smp.h>
- #include <asm/tlbflush.h>
- #include <asm/thread_info.h>
-+#include <asm/kasan.h>
- 
- #ifdef CONFIG_DUMMY_CONSOLE
- struct screen_info screen_info = {
-@@ -70,6 +71,10 @@ void __init setup_arch(char **cmdline_p)
- 	swiotlb_init(1);
- #endif
- 
-+#ifdef CONFIG_KASAN
-+	kasan_init();
-+#endif
-+
- #ifdef CONFIG_SMP
- 	setup_smp();
- #endif
-diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
-index 23cd1a9e52a1..97009803ba9f 100644
---- a/arch/riscv/kernel/vmlinux.lds.S
-+++ b/arch/riscv/kernel/vmlinux.lds.S
-@@ -46,6 +46,7 @@ SECTIONS
- 		KPROBES_TEXT
- 		ENTRY_TEXT
- 		IRQENTRY_TEXT
-+		SOFTIRQENTRY_TEXT
- 		*(.fixup)
- 		_etext = .;
- 	}
-diff --git a/arch/riscv/lib/memcpy.S b/arch/riscv/lib/memcpy.S
-index b4c477846e91..51ab716253fa 100644
---- a/arch/riscv/lib/memcpy.S
-+++ b/arch/riscv/lib/memcpy.S
-@@ -7,7 +7,8 @@
- #include <asm/asm.h>
- 
- /* void *memcpy(void *, const void *, size_t) */
--ENTRY(memcpy)
-+ENTRY(__memcpy)
-+WEAK(memcpy)
- 	move t6, a0  /* Preserve return value */
- 
- 	/* Defer to byte-oriented copy for small sizes */
-@@ -104,4 +105,4 @@ ENTRY(memcpy)
- 	bltu a1, a3, 5b
- 6:
- 	ret
--END(memcpy)
-+END(__memcpy)
-diff --git a/arch/riscv/lib/memset.S b/arch/riscv/lib/memset.S
-index 5a7386b47175..34c5360c6705 100644
---- a/arch/riscv/lib/memset.S
-+++ b/arch/riscv/lib/memset.S
-@@ -8,7 +8,8 @@
- #include <asm/asm.h>
- 
- /* void *memset(void *, int, size_t) */
--ENTRY(memset)
-+ENTRY(__memset)
-+WEAK(memset)
- 	move t0, a0  /* Preserve return value */
- 
- 	/* Defer to byte-oriented fill for small sizes */
-@@ -109,4 +110,4 @@ ENTRY(memset)
- 	bltu t0, a3, 5b
- 6:
- 	ret
--END(memset)
-+END(__memset)
-diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-index 9d9a17335686..b8a8ca71f86e 100644
---- a/arch/riscv/mm/Makefile
-+++ b/arch/riscv/mm/Makefile
-@@ -17,3 +17,9 @@ ifeq ($(CONFIG_MMU),y)
- obj-$(CONFIG_SMP) += tlbflush.o
- endif
- obj-$(CONFIG_HUGETLB_PAGE) += hugetlbpage.o
-+obj-$(CONFIG_KASAN)   += kasan_init.o
-+
-+ifdef CONFIG_KASAN
-+KASAN_SANITIZE_kasan_init.o := n
-+KASAN_SANITIZE_init.o := n
-+endif
-diff --git a/arch/riscv/mm/kasan_init.c b/arch/riscv/mm/kasan_init.c
-new file mode 100644
-index 000000000000..c3152768cdbe
---- /dev/null
-+++ b/arch/riscv/mm/kasan_init.c
-@@ -0,0 +1,104 @@
-+// SPDX-License-Identifier: GPL-2.0
-+// Copyright (C) 2019 Andes Technology Corporation
-+
-+#include <linux/pfn.h>
-+#include <linux/init_task.h>
-+#include <linux/kasan.h>
-+#include <linux/kernel.h>
-+#include <linux/memblock.h>
-+#include <asm/tlbflush.h>
-+#include <asm/pgtable.h>
-+#include <asm/fixmap.h>
-+
-+extern pgd_t early_pg_dir[PTRS_PER_PGD];
-+asmlinkage void __init kasan_early_init(void)
-+{
-+	uintptr_t i;
-+	pgd_t *pgd = early_pg_dir + pgd_index(KASAN_SHADOW_START);
-+
-+	for (i = 0; i < PTRS_PER_PTE; ++i)
-+		set_pte(kasan_early_shadow_pte + i,
-+			mk_pte(virt_to_page(kasan_early_shadow_page),
-+			PAGE_KERNEL));
-+
-+	for (i = 0; i < PTRS_PER_PMD; ++i)
-+		set_pmd(kasan_early_shadow_pmd + i,
-+		 pfn_pmd(PFN_DOWN(__pa((uintptr_t)kasan_early_shadow_pte)),
-+			__pgprot(_PAGE_TABLE)));
-+
-+	for (i = KASAN_SHADOW_START; i < KASAN_SHADOW_END;
-+	     i += PGDIR_SIZE, ++pgd)
-+		set_pgd(pgd,
-+		 pfn_pgd(PFN_DOWN(__pa(((uintptr_t)kasan_early_shadow_pmd))),
-+			__pgprot(_PAGE_TABLE)));
-+
-+	// init for swapper_pg_dir
-+	pgd = pgd_offset_k(KASAN_SHADOW_START);
-+
-+	for (i = KASAN_SHADOW_START; i < KASAN_SHADOW_END;
-+	     i += PGDIR_SIZE, ++pgd)
-+		set_pgd(pgd,
-+		 pfn_pgd(PFN_DOWN(__pa(((uintptr_t)kasan_early_shadow_pmd))),
-+			__pgprot(_PAGE_TABLE)));
-+
-+	flush_tlb_all();
-+}
-+
-+static void __init populate(void *start, void *end)
-+{
-+	unsigned long i;
-+	unsigned long vaddr = (unsigned long)start & PAGE_MASK;
-+	unsigned long vend = PAGE_ALIGN((unsigned long)end);
-+	unsigned long n_pages = (vend - vaddr) / PAGE_SIZE;
-+	unsigned long n_pmds =
-+		(n_pages % PTRS_PER_PTE) ? n_pages / PTRS_PER_PTE + 1 :
-+						n_pages / PTRS_PER_PTE;
-+	pgd_t *pgd = pgd_offset_k(vaddr);
-+	pmd_t *pmd = memblock_alloc(n_pmds * sizeof(pmd_t), PAGE_SIZE);
-+	pte_t *pte = memblock_alloc(n_pages * sizeof(pte_t), PAGE_SIZE);
-+
-+	for (i = 0; i < n_pages; i++) {
-+		phys_addr_t phys = memblock_phys_alloc(PAGE_SIZE, PAGE_SIZE);
-+
-+		set_pte(pte + i, pfn_pte(PHYS_PFN(phys), PAGE_KERNEL));
-+	}
-+
-+	for (i = 0; i < n_pages; ++pmd, i += PTRS_PER_PTE)
-+		set_pmd(pmd, pfn_pmd(PFN_DOWN(__pa((uintptr_t)(pte + i))),
-+				__pgprot(_PAGE_TABLE)));
-+
-+	for (i = vaddr; i < vend; i += PGDIR_SIZE, ++pgd)
-+		set_pgd(pgd, pfn_pgd(PFN_DOWN(__pa(((uintptr_t)pmd))),
-+				__pgprot(_PAGE_TABLE)));
-+
-+	flush_tlb_all();
-+	memset(start, 0, end - start);
-+}
-+
-+void __init kasan_init(void)
-+{
-+	struct memblock_region *reg;
-+	unsigned long i;
-+
-+	kasan_populate_early_shadow((void *)KASAN_SHADOW_START,
-+			(void *)kasan_mem_to_shadow((void *)VMALLOC_END));
-+
-+	for_each_memblock(memory, reg) {
-+		void *start = (void *)__va(reg->base);
-+		void *end = (void *)__va(reg->base + reg->size);
-+
-+		if (start >= end)
-+			break;
-+
-+		populate(kasan_mem_to_shadow(start),
-+			 kasan_mem_to_shadow(end));
-+	};
-+
-+	for (i = 0; i < PTRS_PER_PTE; i++)
-+		set_pte(&kasan_early_shadow_pte[i],
-+			mk_pte(virt_to_page(kasan_early_shadow_page),
-+			__pgprot(_PAGE_PRESENT | _PAGE_READ | _PAGE_ACCESSED)));
-+
-+	memset(kasan_early_shadow_page, 0, PAGE_SIZE);
-+	init_task.kasan_depth = 0;
-+}
+> > _______________________________________________
+> > linux-riscv mailing list
+> > linux-riscv@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-riscv
+
 -- 
-2.17.0
-
-
+Regards,
+Atish
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
