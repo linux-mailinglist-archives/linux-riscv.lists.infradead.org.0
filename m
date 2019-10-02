@@ -2,54 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3BAFC45BE
-	for <lists+linux-riscv@lfdr.de>; Wed,  2 Oct 2019 03:54:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B119C479F
+	for <lists+linux-riscv@lfdr.de>; Wed,  2 Oct 2019 08:17:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fyWJcKf0sbxnXhYpo0LznmGj1j+D5j/5SnB6qQ3bBro=; b=jt5U4J/LRkDLtg
-	UXabcCQI3jE/ZVlyJrILnPxr/DARUKOMdMjWrGRG3Z6u44NcNc0G32W1dVxbdb5C669dCRo6O1Y9m
-	Z+fDZemYEuhuDU/uhZ+Iq+qjh//9KOTGKRvmB+sBlIFYYd9s8mbE8EjofqmoxNgGnjLGXjf0Cmfrs
-	VHDcarRD2Gq6ljptwW/UPyyxTvOeWrMXFkUrsByHNtVIRMOa3SW93IrqUeDguAa9KaA0cOA/rikOD
-	q2v03Bq3KcGtgq1jSpX6+ir8Rh6R7oo2T3TCYdpOBfJesE0St1ZqEpcgScVWdrB5P+sF1bwlvEt4y
-	yCA3MtjCH0krkUlXJQMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jN9kCJfvHalit96q6/O7/nngKFMEbTGLcAkqVWOKw3Y=; b=JjxXuWfoqMH10I
+	UhgSIJ44W4MeXyoR+aqrzD5WuXnyEUt64FcFa9VRerp0OjWuY+4WlqL/ccWMhE87AbxwaiWsNxPD4
+	k4wNp9hzHX+kGBpPHlKYfw+MTrnE/wr/kkosjMSPaaPHHYOx2I0IsZywTVjyn4jzfOGXC3ck2XA9a
+	TamxLoz9wDEoxxoSJv/oh7dArHEdYo6TEcTEhOS56gpX0iYXpkQ2zeV3J8c8PJs/qjteVapd/TtcS
+	Mj7EznNAAkJUPSxLBEaghlDzbIVX0r+rhleYY0FMRsKyvoLR1wvtPOhdHEYcufBdRDKlCi7CD4oCt
+	jxVdUBbU78dIZDW95uug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iFTqI-0005lX-PU; Wed, 02 Oct 2019 01:54:14 +0000
+	id 1iFXwq-0002DP-Ie; Wed, 02 Oct 2019 06:17:16 +0000
 Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
  helo=ATCSQR.andestech.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iFTqF-0005l1-Cc
- for linux-riscv@lists.infradead.org; Wed, 02 Oct 2019 01:54:13 +0000
+ id 1iFXwn-0002CN-2y
+ for linux-riscv@lists.infradead.org; Wed, 02 Oct 2019 06:17:14 +0000
 Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x921cDgV024925;
- Wed, 2 Oct 2019 09:38:13 +0800 (GMT-8)
- (envelope-from alankao@andestech.com)
-Received: from andestech.com (10.0.15.65) by ATCPCS16.andestech.com
+ by ATCSQR.andestech.com with ESMTP id x9260iVl065604;
+ Wed, 2 Oct 2019 14:00:44 +0800 (GMT-8)
+ (envelope-from nickhu@andestech.com)
+Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
  (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Wed, 2 Oct 2019
- 09:53:39 +0800
-Date: Wed, 2 Oct 2019 09:53:39 +0800
-From: Alan Kao <alankao@andestech.com>
-To: "hch@infradead.org" <hch@infradead.org>
-Subject: Re: [v6 PATCH] RISC-V: Remove unsupported isa string info print
-Message-ID: <20191002015338.GA28086@andestech.com>
-References: <20191001002318.7515-1-atish.patra@wdc.com>
- <20191001070236.GA7622@infradead.org>
- <b0c39a9895698d74e2f44eb1f2faed46eee54bc3.camel@wdc.com>
- <20191001101016.GB23507@infradead.org>
+ 14:16:11 +0800
+From: Nick Hu <nickhu@andestech.com>
+To: <alankao@andestech.com>, <paul.walmsley@sifive.com>, <palmer@sifive.com>, 
+ <aou@eecs.berkeley.edu>, <aryabinin@virtuozzo.com>,
+ <glider@google.com>, <dvyukov@google.com>, <alexios.zavras@intel.com>,
+ <allison@lohutok.net>, <Anup.Patel@wdc.com>, <tglx@linutronix.de>,
+ <gregkh@linuxfoundation.org>, <atish.patra@wdc.com>,
+ <kstewart@linuxfoundation.org>, <linux-riscv@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <kasan-dev@googlegroups.com>,
+ <linux-mm@kvack.org>
+Subject: [PATCH v2 0/2] KASAN support for RISC-V
+Date: Wed, 2 Oct 2019 14:16:03 +0800
+Message-ID: <cover.1569995450.git.nickhu@andestech.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191001101016.GB23507@infradead.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
 X-Originating-IP: [10.0.15.65]
 X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x921cDgV024925
+X-MAIL: ATCSQR.andestech.com x9260iVl065604
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191001_185411_687884_24FDAA46 
-X-CRM114-Status: UNSURE (   6.04  )
+X-CRM114-CacheID: sfid-20191001_231713_377335_D39B1FD4 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -72,36 +73,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "anup@brainfault.org" <anup@brainfault.org>,
- "palmer@sifive.com" <palmer@sifive.com>, "johan@kernel.org" <johan@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: Nick Hu <nickhu@andestech.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Oct 01, 2019 at 03:10:16AM -0700, hch@infradead.org wrote:
-> On Tue, Oct 01, 2019 at 08:22:37AM +0000, Atish Patra wrote:
-> > riscv_of_processor_hartid() or seems to be a better candidate. We
-> > already check if "rv" is present in isa string or not. I will extend
-> > that to check for rv64i or rv32i. Is that okay ?
-> 
-> I'd rather lift the checks out of that into a function that is called
-> exactly once per hart on boot (and future cpu hotplug).
+KASAN is an important runtime memory debugging feature in linux kernel
+which can detect use-after-free and out-of- bounds problems.
 
-Sorry that I am a bit out of date on this.  Is there any related
-discussion about such checks?  Just want to make sure if the check
-stops here and will not go any further for extensions, Xs and Zs.
+Changes in v2:
+  - Remove the porting of memmove and exclude the check instead.
+  - Fix some code noted by Christoph Hellwig
 
-> 
-> _______________________________________________
-> linux-riscv mailing list
-> linux-riscv@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-riscv
+Nick Hu (2):
+  kasan: Archs don't check memmove if not support it.
+  riscv: Add KASAN support
+
+ arch/riscv/Kconfig                  |   1 +
+ arch/riscv/include/asm/kasan.h      |  27 ++++++++
+ arch/riscv/include/asm/pgtable-64.h |   5 ++
+ arch/riscv/include/asm/string.h     |   9 +++
+ arch/riscv/kernel/head.S            |   3 +
+ arch/riscv/kernel/riscv_ksyms.c     |   2 +
+ arch/riscv/kernel/setup.c           |   5 ++
+ arch/riscv/kernel/vmlinux.lds.S     |   1 +
+ arch/riscv/lib/memcpy.S             |   5 +-
+ arch/riscv/lib/memset.S             |   5 +-
+ arch/riscv/mm/Makefile              |   6 ++
+ arch/riscv/mm/kasan_init.c          | 104 ++++++++++++++++++++++++++++
+ mm/kasan/common.c                   |   2 +
+ 13 files changed, 171 insertions(+), 4 deletions(-)
+ create mode 100644 arch/riscv/include/asm/kasan.h
+ create mode 100644 arch/riscv/mm/kasan_init.c
+
+-- 
+2.17.0
+
 
 _______________________________________________
 linux-riscv mailing list
