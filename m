@@ -2,89 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0811BCC2A8
-	for <lists+linux-riscv@lfdr.de>; Fri,  4 Oct 2019 20:28:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3648CCC428
+	for <lists+linux-riscv@lfdr.de>; Fri,  4 Oct 2019 22:27:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8kp+2IyX1H02szP/sYDwnW9Unlm2any8w4/sRvfRMmU=; b=jR8IMGIXjxUd2y
-	5dWNWsxXoZFe1eDEf4Vewj9/QAp7snM8bAl+W19m+5yiM/l1NRWaSVrFN328wXXjRXohuNeIEgDuo
-	wxv47UF+aNxE6iRK4vbFtKKao6SPu71T8blZdjED1aM6UrsFSs7p+1NHtc0cDAoUgpVvxFF4Z5tMO
-	OF/ud0RDztY+I4dqtPyN97rOidW5KW0qn697ryWJlHs13koEYXbg82NDLPhQKX4BrneeQ3e5yxZ7c
-	Bkl63xTN/s/a+tegRfeVgvK74hQ8Cq4eInCSFdi1gGRlnxDy5Q5dvxZGldJNDJ2+m6ghywl5w//J1
-	3JIL8OWYyMzHlfmPzlPQ==;
+	List-Owner; bh=X2oZIxbLZeiMxeMVYDRiWBJNfme50Ft6ESF082W+F40=; b=hxIB74BpZ/Na5a
+	EudbhZkvcfPzWJD7SsJnnpSg5M1xCVZlQG2Q5Ul0Og5Qd/UhgxUeLQ+t3VPQhzu/awgz8aDrz5o0K
+	BzYbwmCZ8T+n6eLPXSZh4EAZLspaBF8lqJapW7C2oc7HNdwnRyjNB0TaKc2TImOCiGbk4LULU2gBa
+	GWbvPm69BZcW1xjrqnmg2ugag/ixOnPqp/zfn2z0oZv5n5VLQvKGbQjUekAFnZ64HGqCgXeTQG7Z1
+	ZD0+bQzOEUxP4xWmzpM+VDQt8qbIl/lQBDB8E8z1TWMETyZ6dJHMpTCL2Z03kwi1pKUxaFVG9o022
+	SdoysdVTdLilb/aD10+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iGSJZ-0001sE-L0; Fri, 04 Oct 2019 18:28:29 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1iGUA5-0000vw-OH; Fri, 04 Oct 2019 20:26:49 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iGSJV-0001rr-Ly
- for linux-riscv@lists.infradead.org; Fri, 04 Oct 2019 18:28:27 +0000
-Received: by mail-io1-xd43.google.com with SMTP id h144so15565021iof.7
- for <linux-riscv@lists.infradead.org>; Fri, 04 Oct 2019 11:28:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=Fk8zqqB0DvKX1W+/xtDSBwvEx3/VT0qa/q3V+wIeS+4=;
- b=BJQs4oC2tQPqVsTxzbgiivHy+/6Ct+K69IBnhkhd6z1mC5a/kwh5ihWtOSqVtGW2Rh
- blUYdZmYKWkDY6MGhgOrCfw57rt2fLAH18FjnBmEjb/YfqJe8NDjYYFkMkmz94/vbmuu
- hFhKvlmP2BavH2D5lmn2EspTFZJv0GlZuGVKpDLinWdiswK/OA7FEnR/ovhp2o31dD63
- Nw3OPrQ3kgfG7SMfrlfBBG4m+nir+5gWG2MtMrb2v71HF0bEjVYGxaBCguxP2eKSwxnC
- u/E1MvSzBUK6TMTjMRe8BOrdPgBJMLk3Yf5JdfX6zYg3eUV1FZ621OcySCTZt1p4+DoM
- ekNg==
+ id 1iGU9r-0000fP-C7
+ for linux-riscv@lists.infradead.org; Fri, 04 Oct 2019 20:26:36 +0000
+Received: by mail-lj1-x244.google.com with SMTP id l21so7777589lje.4
+ for <linux-riscv@lists.infradead.org>; Fri, 04 Oct 2019 13:26:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux-foundation.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZsYBLeosgG67nHnpA9UFSWQuiStl1sE/t4aS6dfWhz0=;
+ b=Cm3I98WO9VJ2gEAchiqSnXcfMomS33yaHkHBu8IWjlPGtMrH4PRP0yXEbeqQPW4Foe
+ 4KKAgooSz/Eo3cM3cNGdjpi632jSAX1QihEpm3jasmmntSgg4Vl8lwIorhfqt+YCfWnu
+ 7uBJqFj+Qs8nLZKj7IR6LVuVmdEKC7nRN9B1c=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=Fk8zqqB0DvKX1W+/xtDSBwvEx3/VT0qa/q3V+wIeS+4=;
- b=j+ub1jXOTX8gJcWSIHM2poExqX54y1Ckf/LoSryK/g3Rlz1MbmwWvU/t3RG/quT7ep
- ACp0FMQy89DCrAvsQQTdp7TxXi8bkhNlpVZXE+RNgCJrPZU9RhHwSmzuIK2ntEKwuB0c
- xBI9DrT5mVfEgNmbt9+B7GKBBJzrcWpADTKKz3toeEBID0k13FtTOWfYAwQOmj786veB
- 45DDeWZ6a8HHB7qvjqKrbaHJvMKdikELvjsR8vTnhUFG/66d3yuKGS0IW2AqaJ60Z8gV
- OJxlDT4UguBSOXWAjtg2V5A++wBXQBt8l3L/FgdRcZQtO/atC1oLyBz+vcOzTNyRDVPs
- v7bQ==
-X-Gm-Message-State: APjAAAVHKPjrvhz+kSavn4Kp+uTCwPxy2MsOQcBoLRvBly3++0bbWqr/
- XDgGrw1WGwz08OvTFptRb0epUA==
-X-Google-Smtp-Source: APXvYqy2YoyT0hpqneriwFplV402hIYoJCPRTxh9qzs3ve8YY/hj5XUj1AoPbQWVL0IPAUyYv/D8bg==
-X-Received: by 2002:a92:498c:: with SMTP id k12mr16757053ilg.88.1570213705113; 
- Fri, 04 Oct 2019 11:28:25 -0700 (PDT)
-Received: from localhost (67-0-10-3.albq.qwest.net. [67.0.10.3])
- by smtp.gmail.com with ESMTPSA id d18sm3912869ild.63.2019.10.04.11.28.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2019 11:28:24 -0700 (PDT)
-Date: Fri, 4 Oct 2019 11:28:23 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Vincent Chen <vincent.chen@sifive.com>
-Subject: Re: [PATCH 3/4] riscv: Correct the handling of unexpected ebreak in
- do_trap_break()
-In-Reply-To: <1569199517-5884-4-git-send-email-vincent.chen@sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1910041126420.15827@viisi.sifive.com>
-References: <1569199517-5884-1-git-send-email-vincent.chen@sifive.com>
- <1569199517-5884-4-git-send-email-vincent.chen@sifive.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZsYBLeosgG67nHnpA9UFSWQuiStl1sE/t4aS6dfWhz0=;
+ b=CInvEVLYzP2JHsGGgSwvjFriZawVY4trDQstf4r+cP334EmQyylNZs1Qh3DKeQWofB
+ ainesgoIVY4aZUPp2iMs5IT27f9kaNSC4eLpwr2KVvES6v7yzN2TOJi7VCOFI4ZVj/Fh
+ 0W3Gj7GN2wXsU5yhELK8unoF8HHw2StUFAjSZUzooV/xdX9uGWVbe8Zgy0bpXKS8swPk
+ 74n64Uw+Yq+RxH6lJgQg+RKrZZs+7KvNANh42OT6NRrPZBzndlAT5CuM+IjbndTTBvkP
+ C1QIacbgxSAQhrpdQFfGdnR9X4mNHjnJBXEir8qWLNno7zx04H3JYTm9JUyyVjIl94jL
+ wrkQ==
+X-Gm-Message-State: APjAAAUMMkR58RkyBDlsZtXYYdnGANb3mn38sn11zgxIt7/KOtM8JhnT
+ 9dLuB4OUbefWMGywHdrJLEdpy5tumu8=
+X-Google-Smtp-Source: APXvYqw4tMHQn1iYV4kHKwFmSKk/iD4loiuZSFIeGbXCpRz6ADmi5c7Ge8M3vp7yDiWByK0k8Wmk/Q==
+X-Received: by 2002:a2e:7606:: with SMTP id r6mr10362387ljc.192.1570220792268; 
+ Fri, 04 Oct 2019 13:26:32 -0700 (PDT)
+Received: from mail-lj1-f177.google.com (mail-lj1-f177.google.com.
+ [209.85.208.177])
+ by smtp.gmail.com with ESMTPSA id r6sm1320674lfn.29.2019.10.04.13.26.31
+ for <linux-riscv@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Oct 2019 13:26:31 -0700 (PDT)
+Received: by mail-lj1-f177.google.com with SMTP id a22so7791889ljd.0
+ for <linux-riscv@lists.infradead.org>; Fri, 04 Oct 2019 13:26:31 -0700 (PDT)
+X-Received: by 2002:a2e:2bdb:: with SMTP id r88mr10689784ljr.82.1570220791008; 
+ Fri, 04 Oct 2019 13:26:31 -0700 (PDT)
 MIME-Version: 1.0
+References: <alpine.DEB.2.21.9999.1910041036010.15827@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1910041036010.15827@viisi.sifive.com>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Fri, 4 Oct 2019 13:26:15 -0700
+X-Gmail-Original-Message-ID: <CAHk-=wi9S6PopwTdeFPybnapKwL17ux80e9mbLXNo52e4B8rHg@mail.gmail.com>
+Message-ID: <CAHk-=wi9S6PopwTdeFPybnapKwL17ux80e9mbLXNo52e4B8rHg@mail.gmail.com>
+Subject: Re: [GIT PULL] RISC-V updates for v5.4-rc2
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191004_112825_732999_12D00729 
-X-CRM114-Status: GOOD (  16.51  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191004_132635_464036_AB04C09B 
+X-CRM114-Status: UNSURE (   6.66  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:244 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -98,85 +99,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, palmer@sifive.com,
- linux-kernel@vger.kernel.org, aou@eecs.berkeley.edu
+Cc: linux-riscv@lists.infradead.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 23 Sep 2019, Vincent Chen wrote:
+On Fri, Oct 4, 2019 at 10:36 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+>
+> - Ensure that exclusive-load reservations are terminated after system
+>   call or exception handling.  This primarily affects QEMU, which does
+>     not expire load reservations.
 
-> For the kernel space, all ebreak instructions are determined at compile
-> time because the kernel space debugging module is currently unsupported.
-> Hence, it should be treated as a bug if an ebreak instruction which does
-> not belong to BUG_TRAP_TYPE_WARN or BUG_TRAP_TYPE_BUG is executed in
-> kernel space. For the userspace, debugging module or user problem may
-> intentionally insert an ebreak instruction to trigger a SIGTRAP signal.
-> To approach the above two situations, the do_trap_break() will direct
-> the BUG_TRAP_TYPE_NONE ebreak exception issued in kernel space to die()
-> and will send a SIGTRAP to the trapped process only when the ebreak is
-> in userspace.
-> 
-> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+Grr. Can somebody talk sense to the RISC-V architects?
 
-Thanks, queued the following for v5.4-rc.
+Copying the PowerPC model was broken. PowerPC has now become the
+absolute worst architecture out there wrt just about any memory
+ordering issues, and the exclusive reservation is just another example
+of that.
 
+ARMv8 and even alpha got this right, and clear the reservation on
+return from traps/exceptions.
 
-- Paul
+Why did RISC-V copy the power model? (Yeah, I realize that ARM did too
+originally, but they learnt from their mistakes).
 
-From: Vincent Chen <vincent.chen@sifive.com>
-Date: Mon, 23 Sep 2019 08:45:16 +0800
-Subject: [PATCH] riscv: Correct the handling of unexpected ebreak in
- do_trap_break()
+Oh well.
 
-For the kernel space, all ebreak instructions are determined at compile
-time because the kernel space debugging module is currently unsupported.
-Hence, it should be treated as a bug if an ebreak instruction which does
-not belong to BUG_TRAP_TYPE_WARN or BUG_TRAP_TYPE_BUG is executed in
-kernel space. For the userspace, debugging module or user problem may
-intentionally insert an ebreak instruction to trigger a SIGTRAP signal.
-To approach the above two situations, the do_trap_break() will direct
-the BUG_TRAP_TYPE_NONE ebreak exception issued in kernel space to die()
-and will send a SIGTRAP to the trapped process only when the ebreak is
-in userspace.
-
-Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-[paul.walmsley@sifive.com: fixed checkpatch issue]
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
----
- arch/riscv/kernel/traps.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
-index 82f42a55451e..93742df9067f 100644
---- a/arch/riscv/kernel/traps.c
-+++ b/arch/riscv/kernel/traps.c
-@@ -130,8 +130,6 @@ asmlinkage void do_trap_break(struct pt_regs *regs)
- 		type = report_bug(regs->sepc, regs);
- 		switch (type) {
- #ifdef CONFIG_GENERIC_BUG
--		case BUG_TRAP_TYPE_NONE:
--			break;
- 		case BUG_TRAP_TYPE_WARN:
- 			regs->sepc += get_break_insn_length(regs->sepc);
- 			return;
-@@ -140,8 +138,10 @@ asmlinkage void do_trap_break(struct pt_regs *regs)
- 		default:
- 			die(regs, "Kernel BUG");
- 		}
-+	} else {
-+		force_sig_fault(SIGTRAP, TRAP_BRKPT,
-+				(void __user *)(regs->sepc));
- 	}
--	force_sig_fault(SIGTRAP, TRAP_BRKPT, (void __user *)(regs->sepc));
- }
- 
- #ifdef CONFIG_GENERIC_BUG
--- 
-2.23.0
-
+              Linus
 
 _______________________________________________
 linux-riscv mailing list
