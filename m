@@ -2,125 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18EA6CC528
-	for <lists+linux-riscv@lfdr.de>; Fri,  4 Oct 2019 23:46:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 53FF9CC72C
+	for <lists+linux-riscv@lfdr.de>; Sat,  5 Oct 2019 03:21:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wq1z128XTixlTkKUj1Kh4jqdeIN7ecCutVRI/czcA3U=; b=h1Ak89GLVC9BX/
-	KRml0p0UfN4eniAm+rEpqRjS98e5w0VIBhpSf9PUletct/djwK8rhZGe2oOdK1np+3gLA2SRe5lJH
-	PslNTJ6mhcyhy/Rd9tLXtgAsm1Q6CkqP5yK5wfTcdat+rtvY40MgCQa0+Ft0gp/qeXc2/gzw/Zl7q
-	ZInFRF0jRg9GVovEZGTXqplEhLA62Y97uXuQD7mINkXzLyaZRwdbotE4Xvka1RmAaBQAWvznGbUcF
-	FlCOiEHNO1ug/o+UnuzxmPIempg9Y51fGk5qzYxcbkCPNIru25+CqU6beVA3ztavojdbp51SD+x/7
-	EeJ5uN7ngnMzV9pRCa+w==;
+	List-Owner; bh=eYK3pOxK2v23HQkK6vnCF0IUz0OS8Q/vru6SaMD/2k8=; b=rWILkjk4np/fro
+	7rsi6nAf5qoGL0NwDe2ptGy5SAl7yVqh8f/io7rvsJ2cnQpaqPEt4hh9KsInprSgfpWZSRJ37Ubk0
+	d/L5R9fcpKBwKwINaisHw0VnspA1CdZJFjEMWlXohLRlU9UY/12lKPwTcrGx5EXl1yMvu55ZJkLWq
+	ZHUEhP0yH3jUSWM/TAYL0RO2jvoJ5JWza6PNVR5k8alZ5WEMT232tXo0+KnJw5FCl4jjMaemuB1IK
+	c00YTxZt9oFyvTeBRAFNsMShdrrhMrpl97pooLEJloztgHVzLVWlkiaqvhPVl0M7CNcTJybcmwe01
+	M+/aosJy8mVPc8RAyZrA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iGVOn-0002uJ-CK; Fri, 04 Oct 2019 21:46:05 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1iGYkk-0002pj-Ov; Sat, 05 Oct 2019 01:20:58 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iGVOj-0002sq-BB
- for linux-riscv@lists.infradead.org; Fri, 04 Oct 2019 21:46:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1570225561; x=1601761561;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=GsdOAMBWqQKtjvp7rGC8aXc/V0KDeh17dQ05YBgTriE=;
- b=idGpJpbJQyC9u4smC+axy/MccCCW6+TAJu4mH+pbXk7ISWHhuTRnPlUj
- DmkmxVrkVhEqk2hgrtbmtGSudBQavKYHCtXd8ShHB1RtlhDUqwHyhcHnR
- s6mNTAKtaW+CwJZu5pkI2UWOWP6HWaP+YwEib1j/uyoeok6ccUtF0gM2A
- tpzCdfnbQmHFsRZab85F4x4FfQgDmFL5GRRrko62Q9OePiZ6jdFCuumID
- 4OzsM2AykvE6McyZjQQExoEou8GSZ+ypiYAmuTOPOBPh7SwEW9vvbWKAl
- MJZaGtHWq5xRifqfy6gZonshQBPODRMEVsMj6X0G6KQNTFH+D4MoHooao Q==;
-IronPort-SDR: 68tG+3lOinD6NHX76la5nkT5xWRVnse3dtdfz6u9OZrU7M8AglKw95Dt9k+9Tv3bLNDrYP/v3z
- /ahVehlCZLJrlEVzXOa/zP1Y9TO9nPYmITrJW5g2xXfSo0SFSGQfHVlPqwRb9mhTyMnxGaC/zE
- AVJXVX42PK5SFujN2HGuFKXRFHatybAJzTDVy4g8XjS/2MTMWLQzu1ZX/zbr3Z2wnjaAmL7Gjt
- UPZfvE4kHUSqpZS9RDjt4FdTmppKLAxc62R/Y6eE8Qi360Y8IQVb5aqFK8b2/h/P6pD4qeDR9n
- /9w=
-X-IronPort-AV: E=Sophos;i="5.67,257,1566835200"; d="scan'208";a="119837120"
-Received: from mail-by2nam03lp2051.outbound.protection.outlook.com (HELO
- NAM03-BY2-obe.outbound.protection.outlook.com) ([104.47.42.51])
- by ob1.hgst.iphmx.com with ESMTP; 05 Oct 2019 05:45:56 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Gr7sTrhj/A02q62S+Dl/zMgHz6xhb3X5K2XZt0fr/i9mY6v2nmC+P4SwwRVXiOlgcZP80FnNzwJtwT377z0MMHW4LB0rNlQ2cBIUz+LulLTVjfaW6EhDonxPeU48NkXWL9V7Qk8wzyCGFQreZSupdwh0J0V+D0h6DIis/4wsbgDQcBtoJ4ahvhokZ+270K/wPqwGnJ2gIKP/QbWpETR/ghosBRHxC/yHa8rp2nxEXvyOjMlelBCaUSCotlcGGWC7q2+8W0Z4mgZznbmO4QwJwcjtdop/PjdaVmAykaYrsAxbiBWMvgceLczautpW87068FCvV9rCkUGrdkLdxlIupQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GsdOAMBWqQKtjvp7rGC8aXc/V0KDeh17dQ05YBgTriE=;
- b=kWqB8Orr5TjSeSTTGH7QPQER5Yz1nWZ/dyXKQwRSRHt0L0SAfJhc5CDnpney8lCEZ27JHIvEaDsaEzYQdLDGJEkB6n6TqielOBCTNu5VZIAr9RsP2dcEmwX4ZwJ3VzFQsNOmQjVsIw9NVLHRI/LqmhqA9LGYsJnEACDKGnVlPq9FPvXBE2RrNsYfrTGvd4ihMG5NyImlmJe8f0+ic8iUgzTuMQbsX71w4qwJYPwxOGKvuPBD9WGohjC7Wd4c5eaG5L90dhNg5QE7nnpNt0tWdLP8encKjltCa8KPWbWoZsmP9zzOZesco0oaVX8XsFIcMj7b/cqqwv6OkUgphkrYog==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GsdOAMBWqQKtjvp7rGC8aXc/V0KDeh17dQ05YBgTriE=;
- b=ndkdAR8inlv84QkqHSQXb7fiPArnaZBfOJNuLB7m0Wxr+7gCkpVswwVws6QaNT+9PHrhrwpLGHWx6FJpykZVdvWzaNe4S5YoQcxVxhXhrdd8rK8dLJa+ImFksm8AY+KXPXcSr6HgPn/PV9xJojyqEBm9nJHvhAxpmLQuSN+nDtM=
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB5799.namprd04.prod.outlook.com (20.179.58.149) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2305.20; Fri, 4 Oct 2019 21:45:55 +0000
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::a50d:40a0:cd7b:acbc]) by BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::a50d:40a0:cd7b:acbc%5]) with mapi id 15.20.2305.023; Fri, 4 Oct 2019
- 21:45:54 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "palmer@sifive.com" <palmer@sifive.com>, "schwab@suse.de" <schwab@suse.de>
-Subject: Re: [PATCH] serial/sifive: select SERIAL_EARLYCON
-Thread-Topic: [PATCH] serial/sifive: select SERIAL_EARLYCON
-Thread-Index: AQHVZ5zswty3GF3Lq0WixhbTjk0muackeuqrgAAB/oCAABSJ3IAAaZoAgAUcroCAA8z7gIAAnw2AgAA6NpiAACEDgIAcS/yA
-Date: Fri, 4 Oct 2019 21:45:54 +0000
-Message-ID: <e3d91f171a5a3bbbc7d4e0957bd843d63c9b587c.camel@wdc.com>
-References: <mhng-5091669f-461c-4e62-a71c-e16957801fad@palmer-si-x1c4>
-In-Reply-To: <mhng-5091669f-461c-4e62-a71c-e16957801fad@palmer-si-x1c4>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.44.170]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c7f4b246-cdd2-46bd-4b89-08d749143bee
-x-ms-office365-filtering-ht: Tenant
-x-ms-traffictypediagnostic: BYAPR04MB5799:
-x-ms-exchange-purlcount: 2
-x-microsoft-antispam-prvs: <BYAPR04MB5799C5A96A76E6EB8E628EACFA9E0@BYAPR04MB5799.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 018093A9B5
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(346002)(396003)(366004)(136003)(39860400002)(189003)(199004)(6436002)(476003)(229853002)(6486002)(6512007)(446003)(6306002)(3846002)(305945005)(11346002)(7736002)(2616005)(66446008)(4326008)(66476007)(64756008)(66946007)(478600001)(76116006)(71190400001)(71200400001)(102836004)(966005)(66556008)(14454004)(5660300002)(316002)(76176011)(36756003)(110136005)(25786009)(26005)(2501003)(6506007)(66066001)(118296001)(2906002)(14444005)(486006)(6246003)(256004)(6116002)(8936002)(99286004)(81166006)(81156014)(186003)(8676002)(86362001)(54906003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5799;
- H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: zn8ChTfVy8CV8GDzEoGqt39u2bGrCCGXb27iFjAbAl1aG//kE9EQc0wxBD7ZUwBFf25pohDbxniiFYy0H6ySf8d8MJ60LfXV3J4rATRalTCwpU5bxZd8eqLd1kxHM0KAEydnU9cnLZE/zNm+yOiCAO1LtW6rywiUU9G7O5GrQqOwZUjxSkp3SRBTLUMv4MA4j3Tk5nyo8TpypZlbSEmzs18PaVy4CiD9pHcBUn6rO6MxUPuQEYb8aasQEdO/75bEFYelniuVSRbSClwLpJPy2b80I45Dxhbn7fnvl9CeaNwByXXIbTmL7uzkjyf/m9QUT8kBKw+yy8O6wbJ/vbklIT/cHf+Fv9w0yNILGmqpYtcfDTd+oJaCfLHTtzW19gEDTX9leUov2F6+nL6dp3pDBN+0qnlAMoNtT70Zet1ijkYKufpaO2uVOwQ6gSJbz6fIGuEsSUlTjZHO7Pwl+Q7E9A==
-x-ms-exchange-transport-forked: True
-Content-ID: <95E894A3CD0C17429BA2C6F79F22071D@namprd04.prod.outlook.com>
+ id 1iGYkh-0002oD-GY
+ for linux-riscv@lists.infradead.org; Sat, 05 Oct 2019 01:20:57 +0000
+Received: by mail-oi1-x243.google.com with SMTP id w6so7285568oie.11
+ for <linux-riscv@lists.infradead.org>; Fri, 04 Oct 2019 18:20:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=l7SpZ5N+nq30rgJQpL3EBg3liLfBQdxTGgET1uXmwsc=;
+ b=Zze+RMswfsiddqq3WNI6XF4iUfnjUN6r5TgrfWQ4m6MyLHMOGcWr4pEvPthzvwK8aN
+ tt1fKZzJzv6YWCnV00bfmaolg5RrsHhjCXMRdAd9mQyvBTuwFB7dxJvhxWh2MphwtRh9
+ PBjrwgb5NQPBRaMP+qkUDRWwWhCnohuoUhclbWAWelsBXXZJiPZr7waaEGU5epdBmy31
+ 82zCYtmRC57tRi55eycEDhBXSt2ihJGHpdbsNqKa2WVexsNXjySNeZ9MTZFQUaJH8rLu
+ 91RMXm5UnBZPKPxRp6Qa3HhgE6eZP/hsLXtZNeCZqU4f1wIKjm3KU1rBQ+KxyfJGkAOq
+ mcIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=l7SpZ5N+nq30rgJQpL3EBg3liLfBQdxTGgET1uXmwsc=;
+ b=kF7ijNAPS9ZxBlBsWoT/hRNdlxxX9opSMeSvO8YnhHfW8e3hGRxrTmfF3djVynopI2
+ jnYRrSV8MWHHSF3C2ByzOVgElLbANYRLsbwZI4alpA8+BXBnCTXglQUM6szwbOO4o8sN
+ 4F5raE6IXO7EIWDG4qO4AFwJWesFjBM+hEnr3k1j5EDnRHuToEwM2SShsZ+RZ10vb0mJ
+ xLXo84GvM32cpBsC3AtJ9oWutHRU1tjchrOK22Z40yKdMNV7AE2DXU2+lPyqZmW72Dwa
+ uJ6akMyAIi2Z+fhWSfyh4kMIQprThdQksa6eWhNn4LWIPBNo6Ahv0fWXTlMXu9vadiCe
+ HTug==
+X-Gm-Message-State: APjAAAXhwFDTFv1rOt3Cm3wPR/om8FAF5FMLvi+HGj4grQtMICnm2AFI
+ DmZO+TCOkBhsaxCrUYsgJQ4wDA==
+X-Google-Smtp-Source: APXvYqzioOi+HOtThzusxaB/ANabIUdROpbaSBNWELHI+GDE5ZcWC75F+oaJ1TZH0khzFfbAEuRH6w==
+X-Received: by 2002:aca:c4d3:: with SMTP id u202mr8918088oif.139.1570238452426; 
+ Fri, 04 Oct 2019 18:20:52 -0700 (PDT)
+Received: from localhost ([2600:100e:b029:4ada:34fb:aeb7:d598:e51c])
+ by smtp.gmail.com with ESMTPSA id y30sm2321328oix.36.2019.10.04.18.20.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Oct 2019 18:20:51 -0700 (PDT)
+Date: Fri, 4 Oct 2019 18:20:50 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Shuah Khan <shuah@kernel.org>
+Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
+In-Reply-To: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1910041819230.15827@viisi.sifive.com>
+References: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c7f4b246-cdd2-46bd-4b89-08d749143bee
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Oct 2019 21:45:54.8281 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: AatPjnPUVi2/b46SHqGGvFkri/ABltYtE6nTlCMaKBoMjdJMFieFei+27OOmekTQ17yKd3YSn+IlzRS5JlQUKA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5799
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191004_144601_489678_96A3EB63 
-X-CRM114-Status: GOOD (  30.66  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191004_182055_615098_C521B428 
+X-CRM114-Status: GOOD (  26.97  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -141,155 +96,255 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
- "jslaby@suse.com" <jslaby@suse.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "hch@lst.de" <hch@lst.de>
+Cc: Song Liu <songliubraving@fb.com>, Alan Kao <alankao@andestech.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ Oleg Nesterov <oleg@redhat.com>, linux-kselftest@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Daniel Borkmann <daniel@iogearbox.net>,
+ Yonghong Song <yhs@fb.com>, me@carlosedp.com,
+ Albert Ou <aou@eecs.berkeley.edu>, Kees Cook <keescook@chromium.org>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
+ Will Drewry <wad@chromium.org>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>, netdev@vger.kernel.org,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ Andy Lutomirski <luto@amacapital.net>, Vincent Chen <vincentc@andestech.com>,
+ bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 2019-09-16 at 14:38 -0700, Palmer Dabbelt wrote:
-> On Mon, 16 Sep 2019 12:40:10 PDT (-0700), schwab@suse.de wrote:
-> > On Sep 16 2019, Palmer Dabbelt <palmer@sifive.com> wrote:
-> > 
-> > > On Sun, 15 Sep 2019 23:42:53 PDT (-0700), Christoph Hellwig
-> > > wrote:
-> > > > On Fri, Sep 13, 2019 at 01:40:27PM -0700, Palmer Dabbelt wrote:
-> > > > > OpenEmbedded passes "earlycon=sbi", which I can find in the
-> > > > > doumentation.
-> > > > > I can't find anything about just "earlycon".  I've sent a
-> > > > > patch adding sbi
-> > > > > to the list of earlycon arguments.
-> > > > 
-> > > > earlycon without arguments is documented, although just for
-> > > > ARM64.
-> > > > I can send a patch to update it to properly cover all DT
-> > > > platforms
-> > > > in addition.
-> > > 
-> > > Thanks.  I've kind of lost track of the thread, but assuming that
-> > > does the
-> > > "automatically pick an earlycon" stuff then that's probably what
-> > > we should
-> > > be using in the distros.
-> > 
-> > Except that it doesn't work.
+Hello Shuah,
+
+On Thu, 22 Aug 2019, David Abdurachmanov wrote:
+
+> This patch was extensively tested on Fedora/RISCV (applied by default on
+> top of 5.2-rc7 kernel for <2 months). The patch was also tested with 5.3-rc
+> on QEMU and SiFive Unleashed board.
 > 
-> Sorry, once again I've lost track of the thread.
+> libseccomp (userspace) was rebased:
+> https://github.com/seccomp/libseccomp/pull/134
 > 
-> The code looks generic.  The device tree in arch/riscv for the HiFive
-> Unleashed 
-> doesn't have a stdout-path set, which if I understand correctly is
-> used by the 
-> automatic earlycon stuff to pick a console.  I gave this a quick test
-> on QEMU, 
-> which finds a 16550 earlycon for me.  I use openembedded's
-> qemuriscv64 target, 
-> the following diff to make sure I'm getting an earlycon
+> Fully passes libseccomp regression testing (simulation and live).
 > 
-> diff --git a/drivers/tty/serial/8250/8250_early.c
-> b/drivers/tty/serial/8250/8250_early.c
-> index 5cd8c36c8fcc..61290714bbcb 100644
-> --- a/drivers/tty/serial/8250/8250_early.c
-> +++ b/drivers/tty/serial/8250/8250_early.c
-> @@ -106,6 +106,7 @@ static void early_serial8250_write(struct console
-> *console,
->         struct earlycon_device *device = console->data;
->         struct uart_port *port = &device->port;
+> There is one failing kernel selftest: global.user_notification_signal
 > 
-> +       uart_console_write(port, "_e_", 3, serial_putc);
->         uart_console_write(port, s, count, serial_putc);
->  }
+> v1 -> v2:
+>   - return immediatly if secure_computing(NULL) returns -1
+>   - fixed whitespace issues
+>   - add missing seccomp.h
+>   - remove patch #2 (solved now)
+>   - add riscv to seccomp kernel selftest
 > 
-> and run this command line
+> Cc: keescook@chromium.org
+> Cc: me@carlosedp.com
 > 
->     /home/palmer/work/linux/openembedded-riscv64/build/tmp-
-> glibc/work/x86_64-linux/qemu-helper-native/1.0-r1/recipe-sysroot-
-> native/usr/bin/qemu-system-riscv64 -device virtio-net-
-> device,netdev=net0,mac=52:54:00:12:35:02 -netdev
-> user,id=net0,hostfwd=tcp::2222-:22,hostfwd=tcp::2323-
-> :23,tftp=/home/palmer/work/linux/openembedded-riscv64/build/tmp-
-> glibc/deploy/images/qemuriscv64 -drive
-> id=disk0,file=/home/palmer/work/linux/openembedded-riscv64/build/tmp-
-> glibc/deploy/images/qemuriscv64/core-image-full-cmdline-qemuriscv64-
-> 20190711162644.rootfs.ext4,if=none,format=raw -device virtio-blk-
-> device,drive=disk0 -object rng-random,filename=/dev/urandom,id=rng0
-> -device virtio-rng-device,rng=rng0 -show-cursor -monitor null -device
-> loader,file=/home/palmer/work/linux/linux/arch/riscv/boot/Image,addr=
-> 0x80200000  -nographic -machine virt  -m 512 -serial mon:stdio
-> -serial null -kernel /home/palmer/work/linux/openembedded-
-> riscv64/build/tmp-glibc/deploy/images/qemuriscv64/fw_jump.elf -append
-> 'root=/dev/vda rw highres=off  console=ttyS0 mem=512M ip=dhcp
-> earlycon '
+> Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
+
+We'd like to merge this patch through the RISC-V tree.
+Care to ack the change to tools/testing/selftests/seccomp/seccomp_bpf.c ?  
+
+Kees has already reviewed it:
+
+https://lore.kernel.org/linux-riscv/CAJr-aD=UnCN9E_mdVJ2H5nt=6juRSWikZnA5HxDLQxXLbsRz-w@mail.gmail.com/
+
+
+- Paul
+
+
+> ---
+>  arch/riscv/Kconfig                            | 14 ++++++++++
+>  arch/riscv/include/asm/seccomp.h              | 10 +++++++
+>  arch/riscv/include/asm/thread_info.h          |  5 +++-
+>  arch/riscv/kernel/entry.S                     | 27 +++++++++++++++++--
+>  arch/riscv/kernel/ptrace.c                    | 10 +++++++
+>  tools/testing/selftests/seccomp/seccomp_bpf.c |  8 +++++-
+>  6 files changed, 70 insertions(+), 4 deletions(-)
+>  create mode 100644 arch/riscv/include/asm/seccomp.h
 > 
-> which gives me some early stuff and then some non-early stuff
-> 
-> _e_[    0.407579] printk: console [ttyS0] disabled
-> _e_[    0.409205] 10000000.uart: ttyS0 at MMIO 0x10000000 (irq = 10,
-> base_baud = 230400) is a 16550A
-> [    0.410720] printk: console [ttyS0] enabled
-> _e_[    0.410720] printk: console [ttyS0] enabled
-> [    0.411391] printk: bootconsole [ns16550a0] disabled
-> _e_[    0.411391] printk: bootconsole [ns16550a0] disabled
-> [    0.420664] [drm] radeon kernel modesetting enabled.
-> [    0.428086] random: fast init done
-> [    0.429331] random: crng init done
-> [    0.440678] loop: module loaded
-> [    0.447607] virtio_blk virtio1: [vda] 262830 512-byte logical
-> blocks (135 MB/128 MiB)
-> [    0.469483] libphy: Fixed MDIO Bus: probed
-> 
-> If you don't have something like "/chosen/stdout-path = &uart0;" in
-> your device 
-> tree, then that's probably the issue.  Here's where it's set in
-> Christoph's 
-> k210:
-> 
->     
-> http://git.infradead.org/users/hch/riscv.git/blob/f10e64873eafc68516b8884c06b9290b9887633b:/arch/riscv/boot/dts/kendryte/kd210.dts#l20
-> 
-> but we don't set it for the HiFive Unleashed.  I'd call that a bug,
-> something 
-> like this
-> 
-> diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> index 93d68cbd64fe..6d0ec76d93fe 100644
-> --- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> +++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> @@ -13,6 +13,7 @@
->         compatible = "sifive,hifive-unleashed-a00", "sifive,fu540-
-> c000";
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index 59a4727ecd6c..441e63ff5adc 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -31,6 +31,7 @@ config RISCV
+>  	select GENERIC_SMP_IDLE_THREAD
+>  	select GENERIC_ATOMIC64 if !64BIT
+>  	select HAVE_ARCH_AUDITSYSCALL
+> +	select HAVE_ARCH_SECCOMP_FILTER
+>  	select HAVE_MEMBLOCK_NODE_MAP
+>  	select HAVE_DMA_CONTIGUOUS
+>  	select HAVE_FUTEX_CMPXCHG if FUTEX
+> @@ -235,6 +236,19 @@ menu "Kernel features"
 >  
->         chosen {
-> +               stdout-path = &uart0;
->         };
+>  source "kernel/Kconfig.hz"
 >  
->         cpus {
+> +config SECCOMP
+> +	bool "Enable seccomp to safely compute untrusted bytecode"
+> +	help
+> +	  This kernel feature is useful for number crunching applications
+> +	  that may need to compute untrusted bytecode during their
+> +	  execution. By using pipes or other transports made available to
+> +	  the process as file descriptors supporting the read/write
+> +	  syscalls, it's possible to isolate those applications in
+> +	  their own address space using seccomp. Once seccomp is
+> +	  enabled via prctl(PR_SET_SECCOMP), it cannot be disabled
+> +	  and the task is only allowed to execute a few safe syscalls
+> +	  defined by each seccomp mode.
+> +
+>  endmenu
+>  
+>  menu "Boot options"
+> diff --git a/arch/riscv/include/asm/seccomp.h b/arch/riscv/include/asm/seccomp.h
+> new file mode 100644
+> index 000000000000..bf7744ee3b3d
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/seccomp.h
+> @@ -0,0 +1,10 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +
+> +#ifndef _ASM_SECCOMP_H
+> +#define _ASM_SECCOMP_H
+> +
+> +#include <asm/unistd.h>
+> +
+> +#include <asm-generic/seccomp.h>
+> +
+> +#endif /* _ASM_SECCOMP_H */
+> diff --git a/arch/riscv/include/asm/thread_info.h b/arch/riscv/include/asm/thread_info.h
+> index 905372d7eeb8..a0b2a29a0da1 100644
+> --- a/arch/riscv/include/asm/thread_info.h
+> +++ b/arch/riscv/include/asm/thread_info.h
+> @@ -75,6 +75,7 @@ struct thread_info {
+>  #define TIF_MEMDIE		5	/* is terminating due to OOM killer */
+>  #define TIF_SYSCALL_TRACEPOINT  6       /* syscall tracepoint instrumentation */
+>  #define TIF_SYSCALL_AUDIT	7	/* syscall auditing */
+> +#define TIF_SECCOMP		8	/* syscall secure computing */
+>  
+>  #define _TIF_SYSCALL_TRACE	(1 << TIF_SYSCALL_TRACE)
+>  #define _TIF_NOTIFY_RESUME	(1 << TIF_NOTIFY_RESUME)
+> @@ -82,11 +83,13 @@ struct thread_info {
+>  #define _TIF_NEED_RESCHED	(1 << TIF_NEED_RESCHED)
+>  #define _TIF_SYSCALL_TRACEPOINT	(1 << TIF_SYSCALL_TRACEPOINT)
+>  #define _TIF_SYSCALL_AUDIT	(1 << TIF_SYSCALL_AUDIT)
+> +#define _TIF_SECCOMP		(1 << TIF_SECCOMP)
+>  
+>  #define _TIF_WORK_MASK \
+>  	(_TIF_NOTIFY_RESUME | _TIF_SIGPENDING | _TIF_NEED_RESCHED)
+>  
+>  #define _TIF_SYSCALL_WORK \
+> -	(_TIF_SYSCALL_TRACE | _TIF_SYSCALL_TRACEPOINT | _TIF_SYSCALL_AUDIT)
+> +	(_TIF_SYSCALL_TRACE | _TIF_SYSCALL_TRACEPOINT | _TIF_SYSCALL_AUDIT | \
+> +	 _TIF_SECCOMP )
+>  
+>  #endif /* _ASM_RISCV_THREAD_INFO_H */
+> diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
+> index bc7a56e1ca6f..0bbedfa3e47d 100644
+> --- a/arch/riscv/kernel/entry.S
+> +++ b/arch/riscv/kernel/entry.S
+> @@ -203,8 +203,25 @@ check_syscall_nr:
+>  	/* Check to make sure we don't jump to a bogus syscall number. */
+>  	li t0, __NR_syscalls
+>  	la s0, sys_ni_syscall
+> -	/* Syscall number held in a7 */
+> -	bgeu a7, t0, 1f
+> +	/*
+> +	 * The tracer can change syscall number to valid/invalid value.
+> +	 * We use syscall_set_nr helper in syscall_trace_enter thus we
+> +	 * cannot trust the current value in a7 and have to reload from
+> +	 * the current task pt_regs.
+> +	 */
+> +	REG_L a7, PT_A7(sp)
+> +	/*
+> +	 * Syscall number held in a7.
+> +	 * If syscall number is above allowed value, redirect to ni_syscall.
+> +	 */
+> +	bge a7, t0, 1f
+> +	/*
+> +	 * Check if syscall is rejected by tracer or seccomp, i.e., a7 == -1.
+> +	 * If yes, we pretend it was executed.
+> +	 */
+> +	li t1, -1
+> +	beq a7, t1, ret_from_syscall_rejected
+> +	/* Call syscall */
+>  	la s0, sys_call_table
+>  	slli t0, a7, RISCV_LGPTR
+>  	add s0, s0, t0
+> @@ -215,6 +232,12 @@ check_syscall_nr:
+>  ret_from_syscall:
+>  	/* Set user a0 to kernel a0 */
+>  	REG_S a0, PT_A0(sp)
+> +	/*
+> +	 * We didn't execute the actual syscall.
+> +	 * Seccomp already set return value for the current task pt_regs.
+> +	 * (If it was configured with SECCOMP_RET_ERRNO/TRACE)
+> +	 */
+> +ret_from_syscall_rejected:
+>  	/* Trace syscalls, but only if requested by the user. */
+>  	REG_L t0, TASK_TI_FLAGS(tp)
+>  	andi t0, t0, _TIF_SYSCALL_WORK
+> diff --git a/arch/riscv/kernel/ptrace.c b/arch/riscv/kernel/ptrace.c
+> index 368751438366..63e47c9f85f0 100644
+> --- a/arch/riscv/kernel/ptrace.c
+> +++ b/arch/riscv/kernel/ptrace.c
+> @@ -154,6 +154,16 @@ void do_syscall_trace_enter(struct pt_regs *regs)
+>  		if (tracehook_report_syscall_entry(regs))
+>  			syscall_set_nr(current, regs, -1);
+>  
+> +	/*
+> +	 * Do the secure computing after ptrace; failures should be fast.
+> +	 * If this fails we might have return value in a0 from seccomp
+> +	 * (via SECCOMP_RET_ERRNO/TRACE).
+> +	 */
+> +	if (secure_computing(NULL) == -1) {
+> +		syscall_set_nr(current, regs, -1);
+> +		return;
+> +	}
+> +
+>  #ifdef CONFIG_HAVE_SYSCALL_TRACEPOINTS
+>  	if (test_thread_flag(TIF_SYSCALL_TRACEPOINT))
+>  		trace_sys_enter(regs, syscall_get_nr(current, regs));
+> diff --git a/tools/testing/selftests/seccomp/seccomp_bpf.c b/tools/testing/selftests/seccomp/seccomp_bpf.c
+> index 6ef7f16c4cf5..492e0adad9d3 100644
+> --- a/tools/testing/selftests/seccomp/seccomp_bpf.c
+> +++ b/tools/testing/selftests/seccomp/seccomp_bpf.c
+> @@ -112,6 +112,8 @@ struct seccomp_data {
+>  #  define __NR_seccomp 383
+>  # elif defined(__aarch64__)
+>  #  define __NR_seccomp 277
+> +# elif defined(__riscv)
+> +#  define __NR_seccomp 277
+>  # elif defined(__hppa__)
+>  #  define __NR_seccomp 338
+>  # elif defined(__powerpc__)
+> @@ -1582,6 +1584,10 @@ TEST_F(TRACE_poke, getpid_runs_normally)
+>  # define ARCH_REGS	struct user_pt_regs
+>  # define SYSCALL_NUM	regs[8]
+>  # define SYSCALL_RET	regs[0]
+> +#elif defined(__riscv) && __riscv_xlen == 64
+> +# define ARCH_REGS	struct user_regs_struct
+> +# define SYSCALL_NUM	a7
+> +# define SYSCALL_RET	a0
+>  #elif defined(__hppa__)
+>  # define ARCH_REGS	struct user_regs_struct
+>  # define SYSCALL_NUM	gr[20]
+> @@ -1671,7 +1677,7 @@ void change_syscall(struct __test_metadata *_metadata,
+>  	EXPECT_EQ(0, ret) {}
+>  
+>  #if defined(__x86_64__) || defined(__i386__) || defined(__powerpc__) || \
+> -    defined(__s390__) || defined(__hppa__)
+> +    defined(__s390__) || defined(__hppa__) || defined(__riscv)
+>  	{
+>  		regs.SYSCALL_NUM = syscall;
+>  	}
+> -- 
+> 2.21.0
 > 
-> should fix it.  LMK if I've misunderstood something.
 > 
 
-OpenSBI already adds this node to DT for U-Boot serial console.
-I have tested that just adding "earlycon" to the commandline works as
-long as you are using OpenSBI and SERIAL_EARLYCON is enabled.
 
-If this entry can be added to dt residing in kernel, we can remove the
-code that adds the "stdout-path" from OpenSBI.
+- Paul
 
-> _______________________________________________
-> linux-riscv mailing list
-> linux-riscv@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-riscv
-
--- 
-Regards,
-Atish
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
