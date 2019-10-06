@@ -2,58 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29C9CCD1E1
-	for <lists+linux-riscv@lfdr.de>; Sun,  6 Oct 2019 14:29:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30C1CCD8DC
+	for <lists+linux-riscv@lfdr.de>; Sun,  6 Oct 2019 21:19:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rDOX1vABIh3XpkTdqe4Nr1Njg+yxH5HdbccotowScQQ=; b=HEYqASJDG5HHa9
-	YFHSPuEe+ZuXl9Biqa/Ka0Uvgfi7T6shvPW4eIq8mJj1ibwce6SaDeVFu9jNsXXEHa1weWVBJfQnN
-	szY3H2JyQ/u0eqcTL/wMTOHEFNpOXIaq43HYaptYtK+6Pv6numzLUAh+7BVPrs1G2l/CCrtPQJ+N1
-	LgYSfDYytSPIF2G545tcEsHSBxf4ZUNw0l0EZnSa7fnL4M+VroJAnQmSvJoMNONhby6PCMkUAwI+P
-	8bqxa6z67yWFOHJYM0pLI/Go9dnQHkGRJCwOuwvT/tMbXQKSdh8Px51JYNUyinpMErwP86CWsUC5V
-	3HQGEjzqttl+5RiGdxQg==;
+	List-Owner; bh=lS2hvKvIeNt7/NxuZCiixoY6OMdPVxOGjxBFbK+HCh0=; b=Jyg3Mb8QdM95kq
+	mGMBnWn5RGtk2iC7rdMA3zV04HRJ7/AhpaZbRp1zGgzVTIH0Rc1buyYMem+cwm0f7PR49VdlOWhji
+	Xyi9qtjEnsJQabBGC9p6mQTaQTIiakH8/OlbSpVi4Ieb8s7DFfDP67puZE68HNQyYyF+a8p9qTcjZ
+	oQ4fDt/07u30jin7+Xz4US5EzFLphnKt4EGTkXsfxjhr9iH6541wauJLa+P7fijVAmqXIrhyx4Xco
+	7qztaBBooyCBsC9T6wtj4Hacr97SspeOBZzCa1JqEEmwFy2rCICmk9TmFBcXC5l47IQVA+Ytoucg3
+	TkPYgLaIr0Oc6Rrprx7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iH5ev-00008P-4o; Sun, 06 Oct 2019 12:29:09 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1iHC3o-0007Nd-2J; Sun, 06 Oct 2019 19:19:16 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iH5eq-00007L-HT
- for linux-riscv@lists.infradead.org; Sun, 06 Oct 2019 12:29:06 +0000
-Received: from [2a01:e35:2fdd:a4e1:fe91:fc89:bc43:b814] (helo=ohm.rr44.fr)
- by hall.aurel32.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <aurelien@aurel32.net>)
- id 1iH5ec-0002W0-Mw; Sun, 06 Oct 2019 14:28:50 +0200
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.92.2)
- (envelope-from <aurelien@aurel32.net>)
- id 1iH5ec-0008Q6-BC; Sun, 06 Oct 2019 14:28:50 +0200
-Date: Sun, 6 Oct 2019 14:28:50 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Atish Patra <Atish.Patra@wdc.com>
-Subject: Re: Fail to bring hart online on HiFive Unleashed
-Message-ID: <20191006122850.GA31831@aurel32.net>
-References: <20191003200735.GA26760@aurel32.net>
- <73a9ba9fd6c29075209a61660137fb4b899f7ff2.camel@wdc.com>
- <20191005102541.GA22188@aurel32.net>
+ id 1iHC3l-0007ND-9g
+ for linux-riscv@lists.infradead.org; Sun, 06 Oct 2019 19:19:14 +0000
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com
+ [209.85.128.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ED46D2087E
+ for <linux-riscv@lists.infradead.org>; Sun,  6 Oct 2019 19:19:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1570389552;
+ bh=ktUpIaexhlxRiG4ce7iLuw4QHFnf1O8GxwmdLQRzKQQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=yoHDBSHfwn2R9DQNKNey6IjgYQQ3iKumA9xVSa4w7i0ZBbVIjDv7j4kF/rzp6dak+
+ g+yjLDpx0ycO6XeI4GT37gZAk6+zY6rrqL9xPsh93vnexztlzjyD1+CL1A0VKcY7bU
+ RNHZComg9ON5ELsv2hs0AaFM4rfSAe5HKQvYxpnE=
+Received: by mail-wm1-f48.google.com with SMTP id r19so10359181wmh.2
+ for <linux-riscv@lists.infradead.org>; Sun, 06 Oct 2019 12:19:11 -0700 (PDT)
+X-Gm-Message-State: APjAAAUkBHl9+luJzO9aQFiZLe0WQXxSOdfMmc7kGww0isfE9FQopwbX
+ gCcL2itz7H2oqC2XBxZoWmqoeZt9ccBxvZf16/Kiog==
+X-Google-Smtp-Source: APXvYqzx1ZnDJzMrKkfkPpBPdQaV6IOTwM8ALHjC39JfwEbpQY+QpI4wEbZ4dp0MU/oNOnC7f2vGFBUaGlcGv6Uudg8=
+X-Received: by 2002:a1c:1bcf:: with SMTP id b198mr19073715wmb.0.1570389548492; 
+ Sun, 06 Oct 2019 12:19:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191005102541.GA22188@aurel32.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <419CB0D1-E51C-49D5-9745-7771C863462F@amacapital.net>
+ <mhng-c8a768f7-1a90-4228-b654-be9e879c92ec@palmer-si-x1c4>
+ <CALCETrUmqKz4vu2VCPC5MYGFyiG4djbOmKG32oLtQPb=o6rJ_Q@mail.gmail.com>
+In-Reply-To: <CALCETrUmqKz4vu2VCPC5MYGFyiG4djbOmKG32oLtQPb=o6rJ_Q@mail.gmail.com>
+From: Andy Lutomirski <luto@kernel.org>
+Date: Sun, 6 Oct 2019 12:18:57 -0700
+X-Gmail-Original-Message-ID: <CALCETrVrQf2B5T6GhoWWuMzrmvTBx9TWxEEN5ZEaXFCiajqMZg@mail.gmail.com>
+Message-ID: <CALCETrVrQf2B5T6GhoWWuMzrmvTBx9TWxEEN5ZEaXFCiajqMZg@mail.gmail.com>
+Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
+To: Andy Lutomirski <luto@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191006_052904_576210_49B9AA50 
-X-CRM114-Status: GOOD (  21.12  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20191006_121913_379996_ECD855A3 
+X-CRM114-Status: GOOD (  16.62  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [2001:bc8:30d7:100:0:0:0:1 listed in] [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,75 +85,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Song Liu <songliubraving@fb.com>, Alan Kao <alankao@andestech.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ Oleg Nesterov <oleg@redhat.com>,
+ "open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>,
+ linux-riscv@lists.infradead.org, Shuah Khan <shuah@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Yonghong Song <yhs@fb.com>,
+ me@carlosedp.com, Albert Ou <aou@eecs.berkeley.edu>,
+ Kees Cook <keescook@chromium.org>, Alexios Zavras <alexios.zavras@intel.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Allison Randal <allison@lohutok.net>, Will Drewry <wad@chromium.org>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>,
+ Network Development <netdev@vger.kernel.org>, Anup Patel <Anup.Patel@wdc.com>,
+ LKML <linux-kernel@vger.kernel.org>, Vincent Chen <vincentc@andestech.com>,
+ bpf <bpf@vger.kernel.org>, Martin KaFai Lau <kafai@fb.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2019-10-05 12:25, Aurelien Jarno wrote:
-> Hi,
-> 
-> On 2019-10-03 23:13, Atish Patra wrote:
-> > On Thu, 2019-10-03 at 22:07 +0200, Aurelien Jarno wrote:
-> > > Hi all,
-> > > 
-> > > When it happens, the kernel logs contain:
-> > > 
-> > > > [    0.049851] smp: Bringing up secondary CPUs ...
-> > > > [    1.082530] CPU2: failed to come online
-> > > >  [    1.086267] smp: Brought up 1 node, 3 CPUs
-> > > 
-> > 
-> > The log is aligned with the outcome. CPU2 never came up within 1 second
-> > for some reason. How often do you see this ?
-> 
-> It happens about 80% of the time.
-> 
-> > I tried couple of times and did not see this issue. Here is the log
-> > 
-> > OpenSBI v0.4-50-g30f09fbfd1ec (Oct  3 2019 14:03:20)
-> > U-Boot 2019.10-rc4-00023-g72efcc8f00fc (Oct 03 2019 - 14:03:12 -0700)
-> > Linux version 5.4.0-rc1-00004-gecd4522e3e09
-> > 
-> > Here is the bootlog.
-> > https://paste.fedoraproject.org/paste/-gr1Zeg4~UBs~bqIPraJwA
-> > 
-> > If this issue is reliably reproducible, here are some areas to dbeug.
-> > 
-> > 1. __cpu_up() in smpboot.c has a 1sec timeout for each cpu to come up.
-> > 
-> > You can increase that time just to make sure that it's not a hardware
-> > issue.
-
-I tried to increase it to 5 seconds. This does not change anything.
-
-> > or
-> > 
-> > 2. Put some debug prints in U-boot/OpenSBI to confirm that all 4 harts
-> > did  come up at each layer. 
-> > 
-> > You can also just use kernel image directly FW_PAYLOAD_PATH in OpenSBI
-> > to avoid U-boot. That may give a clue if it is a U-boot issue or not.
-> 
-> I have tried that first as it's the easiest to do. I have not been able
-> to reproduce the issue when skipping u-boot. I'll therefore now try to
-> debug that using your suggestions.
-
-I have finally tracked down the issue to the usage of extlinux for the
-boot process. When using ext4load to load the kernel and dtb, and booti
-to boot the kernel, the issue does not happen.
-
-It is therefore purely an u-boot issue. I'll continue to debug that and
-report the issue to u-boot.
-
-Aurelien
-
--- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gRnJpLCBTZXAgMjcsIDIwMTkgYXQgMTo1OCBQTSBBbmR5IEx1dG9taXJza2kgPGx1dG9Aa2Vy
+bmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBUdWUsIFNlcCAzLCAyMDE5IGF0IDM6MjcgUE0gUGFsbWVy
+IERhYmJlbHQgPHBhbG1lckBzaWZpdmUuY29tPiB3cm90ZToKPiA+Cj4gPiBPbiBXZWQsIDI4IEF1
+ZyAyMDE5IDEwOjUyOjA1IFBEVCAoLTA3MDApLCBsdXRvQGFtYWNhcGl0YWwubmV0IHdyb3RlOgo+
+ID4gPgo+ID4gPgo+ID4gPj4gT24gQXVnIDI1LCAyMDE5LCBhdCAyOjU5IFBNLCBLZWVzIENvb2sg
+PGtlZXNjb29rQGNocm9taXVtLm9yZz4gd3JvdGU6Cj4gPiA+Pgo+ID4gPj4+IE9uIFRodSwgQXVn
+IDIyLCAyMDE5IGF0IDAxOjU1OjIyUE0gLTA3MDAsIERhdmlkIEFiZHVyYWNobWFub3Ygd3JvdGU6
+Cj4gPiA+Pj4gVGhpcyBwYXRjaCB3YXMgZXh0ZW5zaXZlbHkgdGVzdGVkIG9uIEZlZG9yYS9SSVND
+ViAoYXBwbGllZCBieSBkZWZhdWx0IG9uCj4gPiA+Pj4gdG9wIG9mIDUuMi1yYzcga2VybmVsIGZv
+ciA8MiBtb250aHMpLiBUaGUgcGF0Y2ggd2FzIGFsc28gdGVzdGVkIHdpdGggNS4zLXJjCj4gPiA+
+Pj4gb24gUUVNVSBhbmQgU2lGaXZlIFVubGVhc2hlZCBib2FyZC4KPiA+ID4+Cj4gPiA+PiBPb3Bz
+LCBJIHNlZSB0aGUgbWVudGlvbiBvZiBRRU1VIGhlcmUuIFdoZXJlJ3MgdGhlIGJlc3QgcGxhY2Ug
+dG8gZmluZAo+ID4gPj4gaW5zdHJ1Y3Rpb25zIG9uIGNyZWF0aW5nIGEgcWVtdSByaXNjdiBpbWFn
+ZS9lbnZpcm9ubWVudD8KPiA+ID4KPiA+ID4gSSBkb27igJl0IHN1cHBvc2Ugb25lIG9mIHlvdSBy
+aXNjdiBmb2xrcyB3b3VsZCBsaWtlIHRvIGNvbnRyaWJ1dGUgcmlzY3Ygc3VwcG9ydCB0byB2aXJ0
+bWU/ICB2aXJ0bWUtcnVuIOKAlGFyY2g9cmlzY3Ygd291bGQgYmUgcXVpdGUgbmljZSwgYW5kIHRo
+ZSB0b3RhbCBwYXRjaCBzaG91bGQgYmUganVzdCBhIGNvdXBsZSBsaW5lcy4gIFVuZm9ydHVuYXRl
+bHksIGl0IGhlbHBzIGEgbG90IHRvIHVuZGVyc3RhbmQgdGhlIHN1YnRsZXRpZXMgb2YgYm9vdGlu
+ZyB0aGUgYXJjaGl0ZWN0dXJlIHRvIHdyaXRlIHRob3NlIGNvdXBsZSBsaW5lcyA6KQo+ID4KCkZZ
+SSwgaXQgd29ya3Mgbm93OgoKJCB2aXJ0bWUtY29uZmlna2VybmVsIC0tYXJjaD1yaXNjdiAtLWRl
+ZmNvbmZpZwogIEdFTiAgICAgTWFrZWZpbGUKWy4uLl0KQ29uZmlndXJlZC4gIEJ1aWxkIHdpdGgg
+J21ha2UgQVJDSD1yaXNjdiBDUk9TU19DT01QSUxFPXJpc2N2NjQtbGludXgtZ251LSAtajQnCgok
+IG1ha2UgQVJDSD1yaXNjdiBDUk9TU19DT01QSUxFPXJpc2N2NjQtbGludXgtZ251LSAtajQKWy4u
+Ll0KCiQgdmlydG1lLXJ1biAtLWtkaXI9LiAtLWFyY2g9cmlzY3Y2NCAtLW1vZHM9YXV0byAtLXJv
+b3QgW3BhdGggdG8gYQpyaXNjdiBmaWxlc3lzdGVtXQoKVGhpcyBpcyB3aXRoIHZpcnRtZSBtYXN0
+ZXIgYW5kIGEgcWVtdS1zeXN0ZW0tcmlzY3Y2NCBmcm9tIHFlbXUgZ2l0IG9uCm15IHBhdGguICBJ
+dCBkb2VzICpub3QqIHdvcmsgd2l0aCBGZWRvcmEgMzAncyBxZW11LgoKU28gbm93IHlvdSBjYW4g
+YWxsIGp1bXAgb24gdGhlIHZpcnRtZSBiYW5kd2Fnb24gYW5kIGhhdmUgYW4gZWFzeSB3YXkKdG8g
+dGVzdCByaXNjdiBrZXJuZWxzLiA6KSAgQWx0aG91Z2gsIGlmIHlvdSB3YW50IHRvIHJ1biBrZXJu
+ZWwKc2VsZnRlc3RzLCB5b3UgbWF5IGZpbmQgdGhlIHByb2Nlc3Mgb2YgYWN0dWFsbHkgcnVubmlu
+ZyB0aGVtIHRvIGJlCm1vcmUgZnVuIGlmIHlvdSB1c2UgLS1yb2RpciBvciAtLXJ3ZGlyIHRvIG1h
+cCB0aGUga2VybmVsIHNlbGZ0ZXN0cwpkaXJlY3RvcnkgaW50byB0aGUgZ3Vlc3QuCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWls
+aW5nIGxpc3QKbGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
