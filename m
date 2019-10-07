@@ -2,51 +2,92 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91830CE7FA
-	for <lists+linux-riscv@lfdr.de>; Mon,  7 Oct 2019 17:41:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BCF3CE8A8
+	for <lists+linux-riscv@lfdr.de>; Mon,  7 Oct 2019 18:08:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k0NW8nKa22tzc1xrLWt4v7XciWEycDVtDKV6j2oBvws=; b=kSiMT7xqr3iI2H
-	5qNgQknvbMmQGBoxED3HNDLJh0s44mn8T6flqgRl5zCY+cOFR5NNX0cKP2EhedeXX+RR4F2eqD1DH
-	Nt8vuNy2ejmMarq14974iKwRxUxCSmStexTo65D2BLL20VyVWalfFfJZs7hlFIsmZrPiDFAaXbK5+
-	iiWFNshbSvm9Ard6XxYFgMwc6JMHb1RYM61YvYiYSv/lbi/YXUlmeoVcRKSqzQM60FgnZqSd1A4we
-	CUraJzJMTlytSJ40z2Tu2EfB5pyATtkX2vdvdcGvEeuuxaKpq/tReLARYhdbkGeYzGtVMbt5TQC/t
-	FcMRg10Uvbkdk0uOpyKA==;
+	List-Owner; bh=1ESEtIcgk5j5y3Z+Iq9dyS6hh4iipTSqjI2dnqx+BlU=; b=uSygrzXrpS1sdr
+	iNbvG3x133elQna+0rm6AhYGC0jMMh6i/u/9WbQGz0YejcllYqRCmxF742WKtQ1kpOKUah8Whcxyc
+	TX/+2vwYgEwOVSK3QYGRPd1jQ47cA/BOKTQ1Yvodb1zJ0CXmWLXWAUJnVFkNSmqEGpGcmOZwRiSTN
+	+3JmdKu1JqLqvLRL60sl5Xwmk6LRgrgwtd1n8Oz5+KnESuqsyhtADMjhLRSEyJMJeJgDZe8wI7B4q
+	6zPZb4/Z4e+7YdoQuggOl/hu3SApxb5isdfFCYPXRs7mRGSJvG4uI8jAW8bFw8HOaV0Tb6kBySD73
+	Pyo1r8FVbQlYjRSahmtg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iHV7z-0006Y3-MI; Mon, 07 Oct 2019 15:40:51 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iHV6F-0003Q8-5x; Mon, 07 Oct 2019 15:39:05 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AB25915AB;
- Mon,  7 Oct 2019 08:39:02 -0700 (PDT)
-Received: from e112269-lin.arm.com (unknown [10.1.197.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C2AE13F6C4;
- Mon,  7 Oct 2019 08:38:59 -0700 (PDT)
-From: Steven Price <steven.price@arm.com>
-To: linux-mm@kvack.org
-Subject: [PATCH v11 07/22] riscv: mm: Add p?d_leaf() definitions
-Date: Mon,  7 Oct 2019 16:38:07 +0100
-Message-Id: <20191007153822.16518-8-steven.price@arm.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191007153822.16518-1-steven.price@arm.com>
-References: <20191007153822.16518-1-steven.price@arm.com>
+	id 1iHVYj-0005Ci-4S; Mon, 07 Oct 2019 16:08:29 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+ by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1iHVYf-0005C5-A6
+ for linux-riscv@lists.infradead.org; Mon, 07 Oct 2019 16:08:26 +0000
+Received: by mail-io1-xd44.google.com with SMTP id q10so29862448iop.2
+ for <linux-riscv@lists.infradead.org>; Mon, 07 Oct 2019 09:08:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=OYnf5Eb8n9ykt/uD7msDqCGImCXIjmz3mqehpAtin5w=;
+ b=i1yGJLhiLyuMdojyTXTTab15PI1V480jrKDuDZL9zx2s46oSYkji95PIveIRZxXRvm
+ JNOhyzE2x/SaKj9y0VqFm6ds+W6txWfFoYz9wBw8d9f6eo+OMEVxNl+gjjtZx++LvFOW
+ ay1YMXKcJNTrjhrGkSxiqABUUzgTRSjIRsjNo2IQ89+kqwHJY4jnuCbOWXy4TQ30nrCx
+ wZekK7T5a/L9b9D8dNZIYOEwEpXZgOAuzr5uQtmWYwCQfyv57dWxGD/D1WAbIPsgP3NZ
+ pDemS16N8xJPf/hJUlo9oCOl8ouutkgwl2UU/YSeHP9u0VX3rVC1AXDqSyyaMnCtyd4a
+ tywA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=OYnf5Eb8n9ykt/uD7msDqCGImCXIjmz3mqehpAtin5w=;
+ b=H0Mj1WGqAilTcQZUIko0jVV0MJDWADB/oiap6LvWIiIWi5OV3G8bxUEiytt+5hVRxn
+ Q6JMwvlog1uj/FpmP/Zhyg8UM0XlWvj4A0vDB+GdmaLQQFIexPuq/fUVUE7x5w0T1hYD
+ qq5Orax45sqAOOg3E2fQXUeeoMV7AZuvZkI9ar/W9Ojs/L6IjQt4AeYSuadyrtZYQbm8
+ VFcUfqvASxQ/wkc9epUTBzK/8Ih7BYRnHmP+u1rqH8R2Cu+bAAzSIIT1yEHYbM5m/yyS
+ 3ZRHbofv9l9hEcHooEmNK7i5Ccjl5gURBAUrHKyeZuYjwA1VwXoyGPxczyHIKYMKeYBi
+ wyDQ==
+X-Gm-Message-State: APjAAAVGpiEuph4wOAodXY8dus60ilJVwvjsp85TKTnmawlzM2EhW6WQ
+ hX4mZw+lAqAeneRNcm3caDcNS5jWR9w=
+X-Google-Smtp-Source: APXvYqysgSod7rlGeElbwsjIxKd06AgfXKGvqpl8gz5zmmcjW+EOSfeoq40wCwPIGBZVOvP4zx3kAg==
+X-Received: by 2002:a02:c654:: with SMTP id k20mr27301575jan.96.1570464504223; 
+ Mon, 07 Oct 2019 09:08:24 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ k66sm6121262iof.25.2019.10.07.09.08.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Oct 2019 09:08:23 -0700 (PDT)
+Date: Mon, 7 Oct 2019 09:08:23 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Vincent Chen <vincent.chen@sifive.com>
+Subject: Re: [PATCH 4/4] riscv: remove the switch statement in do_trap_break()
+In-Reply-To: <20190927224711.GI4700@infradead.org>
+Message-ID: <alpine.DEB.2.21.9999.1910070906570.10936@viisi.sifive.com>
+References: <1569199517-5884-1-git-send-email-vincent.chen@sifive.com>
+ <1569199517-5884-5-git-send-email-vincent.chen@sifive.com>
+ <20190927224711.GI4700@infradead.org>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191007_083903_742444_F3772E2F 
-X-CRM114-Status: GOOD (  11.19  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191007_090825_355464_E728637F 
+X-CRM114-Status: GOOD (  15.62  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,79 +99,100 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <Mark.Rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, "H. Peter Anvin" <hpa@zytor.com>,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>, "Liang,
- Kan" <kan.liang@linux.intel.com>, x86@kernel.org,
- Steven Price <steven.price@arm.com>, Ingo Molnar <mingo@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Arnd Bergmann <arnd@arndb.de>,
- =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-kernel@vger.kernel.org,
- James Morse <james.morse@arm.com>, Andrew Morton <akpm@linux-foundation.org>
+Cc: Christoph Hellwig <hch@infradead.org>, linux-riscv@lists.infradead.org,
+ palmer@sifive.com, linux-kernel@vger.kernel.org, aou@eecs.berkeley.edu
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-walk_page_range() is going to be allowed to walk page tables other than
-those of user space. For this it needs to know when it has reached a
-'leaf' entry in the page tables. This information is provided by the
-p?d_leaf() functions/macros.
+Vincent,
 
-For riscv a page is a leaf page when it has a read, write or execute bit
-set on it.
+On Fri, 27 Sep 2019, Christoph Hellwig wrote:
 
-CC: Palmer Dabbelt <palmer@sifive.com>
-CC: Albert Ou <aou@eecs.berkeley.edu>
-CC: linux-riscv@lists.infradead.org
-Signed-off-by: Steven Price <steven.price@arm.com>
+> On Mon, Sep 23, 2019 at 08:45:17AM +0800, Vincent Chen wrote:
+> > To make the code more straightforward, replacing the switch statement
+> > with if statement.
+> > 
+> > Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
+> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+
+...
+
+> I like where this is going, but I think this can be improved further
+> given that fact that report_bug has a nice stub for the
+> !CONFIG_GENERIC_BUG case.
+> 
+> How about:
+> 
+> 	if (user_mode(regs))
+> 		force_sig_fault(SIGTRAP, TRAP_BRKPT, (void __user *)regs->sepc);
+> 	else if (report_bug(regs->sepc, regs) == BUG_TRAP_TYPE_WARN)
+> 		regs->sepc += get_break_insn_length(regs->sepc);
+> 	else
+> 		die(regs, "Kernel BUG");
+> 
+
+Christoph's suggestion looks good to me.  What do you think about this 
+modification to your patch?
+
+- Paul
+
+
+From: Vincent Chen <vincent.chen@sifive.com>
+Date: Mon, 23 Sep 2019 08:45:17 +0800
+Subject: [PATCH] riscv: remove the switch statement in do_trap_break()
+
+To make the code more straightforward, replace the switch statement
+with an if statement.
+
+Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
+Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+[paul.walmsley@sifive.com: removed CONFIG_GENERIC_BUG tests per
+ Christoph's suggestion; cleaned up patch description]
+Cc: Christoph Hellwig <hch@lst.de>
+Link: https://lore.kernel.org/linux-riscv/20190927224711.GI4700@infradead.org/
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
 ---
- arch/riscv/include/asm/pgtable-64.h | 7 +++++++
- arch/riscv/include/asm/pgtable.h    | 7 +++++++
- 2 files changed, 14 insertions(+)
+ arch/riscv/kernel/traps.c | 21 +++++----------------
+ 1 file changed, 5 insertions(+), 16 deletions(-)
 
-diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
-index 74630989006d..e88a8e8acbdf 100644
---- a/arch/riscv/include/asm/pgtable-64.h
-+++ b/arch/riscv/include/asm/pgtable-64.h
-@@ -43,6 +43,13 @@ static inline int pud_bad(pud_t pud)
- 	return !pud_present(pud);
+diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
+index 93742df9067f..45b82be00714 100644
+--- a/arch/riscv/kernel/traps.c
++++ b/arch/riscv/kernel/traps.c
+@@ -124,24 +124,13 @@ static inline unsigned long get_break_insn_length(unsigned long pc)
+ 
+ asmlinkage void do_trap_break(struct pt_regs *regs)
+ {
+-	if (!user_mode(regs)) {
+-		enum bug_trap_type type;
+-
+-		type = report_bug(regs->sepc, regs);
+-		switch (type) {
+-#ifdef CONFIG_GENERIC_BUG
+-		case BUG_TRAP_TYPE_WARN:
+-			regs->sepc += get_break_insn_length(regs->sepc);
+-			return;
+-		case BUG_TRAP_TYPE_BUG:
+-#endif /* CONFIG_GENERIC_BUG */
+-		default:
+-			die(regs, "Kernel BUG");
+-		}
+-	} else {
++	if (user_mode(regs))
+ 		force_sig_fault(SIGTRAP, TRAP_BRKPT,
+ 				(void __user *)(regs->sepc));
+-	}
++	else if (report_bug(regs->sepc, regs) == BUG_TRAP_TYPE_WARN)
++		regs->sepc += get_break_insn_length(regs->sepc);
++	else
++		die(regs, "Kernel BUG");
  }
  
-+#define pud_leaf	pud_leaf
-+static inline int pud_leaf(pud_t pud)
-+{
-+	return pud_present(pud)
-+		&& (pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
-+}
-+
- static inline void set_pud(pud_t *pudp, pud_t pud)
- {
- 	*pudp = pud;
-diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-index 7255f2d8395b..b9a679153265 100644
---- a/arch/riscv/include/asm/pgtable.h
-+++ b/arch/riscv/include/asm/pgtable.h
-@@ -130,6 +130,13 @@ static inline int pmd_bad(pmd_t pmd)
- 	return !pmd_present(pmd);
- }
- 
-+#define pmd_leaf	pmd_leaf
-+static inline int pmd_leaf(pmd_t pmd)
-+{
-+	return pmd_present(pmd)
-+		&& (pmd_val(pmd) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
-+}
-+
- static inline void set_pmd(pmd_t *pmdp, pmd_t pmd)
- {
- 	*pmdp = pmd;
+ #ifdef CONFIG_GENERIC_BUG
 -- 
-2.20.1
+2.23.0
 
 
 _______________________________________________
