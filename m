@@ -2,84 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FB57CF714
-	for <lists+linux-riscv@lfdr.de>; Tue,  8 Oct 2019 12:35:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D47ACF845
+	for <lists+linux-riscv@lfdr.de>; Tue,  8 Oct 2019 13:32:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=eDdjmFfso0M2FzOM2j1qFRoDoDZHyPP0V9E3nV2Zh/U=; b=tkU
-	95h4BZ7mhDib+jAuDZ4QxsKLnXMavbIcoQITStCv1llVslu3PI9zsiNrz93WHgsUAXMBDaRl+bc+y
-	uCLUUqz5ysI+wukzg7f2fsNhd4xnzxnBYNKWqfVvNPT6FbwRXIPpg/9iBmE4MfxHA4mpyHPbkc7AF
-	RoJjWNNyyZluvrkRQ2/uNHSkVscIuvBCB4TE59h+aULnXRjWtbIVxaqT4xghyKfMeIuNvemgzK78o
-	/0/XcN0y1U+cSVXrxUgVN5Hk27eQn4KDBgfJEeC2ue235ikI96FWn255vAdzZ+fWQi/tsDB9HO64H
-	7/C8x9YFki646fb4elFLOss0N7NSanQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=uNU/Y/ENh9EEh2orZLRqubMo24ZPGmsG/mJsxbyGdcM=; b=FXa/nU7Cg+a0Sq9mn/lhg4+yo
+	5jKNqmCQMM8bBC+AwE9yzJWepuMdnY6kvv5mQRtYcF3A6E78n9jbH+0uqETpUidZoITndwgR0xPLP
+	8k55xd2M361+/3KvdjiaZHnshwQA+GrKN0kbbjs+AUboHci8pdSUydwJdyEzZAC1v28MUfVVXI0Ps
+	tBduU/xjl1yadW4eRL1qSLOSJBOmR4V7D4A0d8WUGU0UKTc0xUFoGoPPw76VJDEC/IrEigKJBt/Lh
+	teZ9e9hITRym+tun5ONPbKFsghIDc4UpDgvph7Fs3iqugvOfmVpYo8VqE7Z0wbH98W7thZranc76B
+	reA9I/DcA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iHmpU-0001lJ-FN; Tue, 08 Oct 2019 10:34:56 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1iHniy-00063N-Ai; Tue, 08 Oct 2019 11:32:16 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iHmpR-0001kt-03
- for linux-riscv@lists.infradead.org; Tue, 08 Oct 2019 10:34:54 +0000
-Received: by mail-wm1-x341.google.com with SMTP id a6so2553566wma.5
- for <linux-riscv@lists.infradead.org>; Tue, 08 Oct 2019 03:34:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=monstr-eu.20150623.gappssmtp.com; s=20150623;
- h=sender:from:to:cc:subject:date:message-id;
- bh=yhoP5CFY+Z1ghLZyUQcS4Xw0PBKTH2xNqhN5u2X2Zzc=;
- b=S/y/UYFIfK5H9H2HljRRWcBwJ8ElgkL7TyHzC4kXPvVwxvpRbnTaMm0R/RDTQW3QDo
- R2AQ0tHtXzOmzjcF0HBHdZsQfX+cem0hZzCB8bzwis0VRQHcKRLhy2nOtURawr/8sixL
- ZehQEUTJCwts6uZ4FqewNFSZIzqfeLrRp8RFdbAdmlRcaQ84u+RGwK7b20gClMNHFJTs
- 8zazCsfJ8utaVe9grK31P0Q663c7Y2oVP5+SFdFI3aBl+q9wxuME/HS1rhiO6M1+1tzg
- aUUuBEfh1J0FIZ75a1foG5Cv9rreLhueg3K8gKSGkD+gnS6kPci613hhSFpvsIxTZhxc
- SaqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=yhoP5CFY+Z1ghLZyUQcS4Xw0PBKTH2xNqhN5u2X2Zzc=;
- b=Y2Hsi7ttVtj9clad00+Dn5XI21N2Oo+0+qFktAlDFaoAm1E6LxZOLkFJzOqbqnlbdM
- AS/6ncdT+/7i4dSHndt0ZW+nCfwfvZGcvGhEjO3zAW86SOyYnHEPd6pZettAV3tNvHvh
- I73647fcSJhEHKIci4I5aKtCt5PlBMhP1aFmFgVwR+d40fL1n6q5kASs1Xiann126Tvm
- BPirC1jC71PJGcHhHOzVop5UqxB9xjpx1bWQdYtA9ZGS7jIQi2LsLaqRBGf1m94PA+CS
- qJOsdaqVKTzyOmVBVBV/VTEqv04EbWyzvb6qL8qBa+iNkr1EdcbSMIxWGoqprfJ0SnWW
- kTDw==
-X-Gm-Message-State: APjAAAWuPZKyO68DbEn2oySttrZw11ZkqiI5XJFCUadi3K/vkMYhhNsS
- RoRRj/AM6J39FcOHvmxMyzHdmA==
-X-Google-Smtp-Source: APXvYqxOtD4WlrE1pyD3uJ7bqFN11xNdK3t/H3wgvpDqFkTZ+Wb4TRhM7KwImXRCWbyD1sQHepAmKg==
-X-Received: by 2002:a1c:e906:: with SMTP id q6mr3029258wmc.136.1570530889569; 
- Tue, 08 Oct 2019 03:34:49 -0700 (PDT)
-Received: from localhost (nat-35.starnet.cz. [178.255.168.35])
- by smtp.gmail.com with ESMTPSA id d15sm7310906wru.50.2019.10.08.03.34.48
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 08 Oct 2019 03:34:48 -0700 (PDT)
-From: Michal Simek <michal.simek@xilinx.com>
-To: linux-kernel@vger.kernel.org, monstr@monstr.eu, michal.simek@xilinx.com,
- git@xilinx.com
-Subject: [PATCH] microblaze: Include generic support for MSI irqdomains
-Date: Tue,  8 Oct 2019 12:34:47 +0200
-Message-Id: <aa6dd855474451ff4f2e82691d1f590f3a85ba68.1570530881.git.michal.simek@xilinx.com>
-X-Mailer: git-send-email 2.17.1
+ id 1iHnim-0005x1-B4; Tue, 08 Oct 2019 11:32:06 +0000
+X-Originating-IP: 81.185.168.180
+Received: from [192.168.43.237] (180.168.185.81.rev.sfr.net [81.185.168.180])
+ (Authenticated sender: alex@ghiti.fr)
+ by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 4F5AEFF809;
+ Tue,  8 Oct 2019 11:31:43 +0000 (UTC)
+Subject: Re: [PATCH v11 07/22] riscv: mm: Add p?d_leaf() definitions
+To: Steven Price <steven.price@arm.com>, linux-mm@kvack.org
+References: <20191007153822.16518-1-steven.price@arm.com>
+ <20191007153822.16518-8-steven.price@arm.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <69a56736-4093-202a-4eaf-feeaaa0216d1@ghiti.fr>
+Date: Tue, 8 Oct 2019 07:31:42 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20191007153822.16518-8-steven.price@arm.com>
+Content-Language: sv-FI
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191008_033453_039418_AC88A59F 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20191008_043204_520141_D3DF17CB 
+X-CRM114-Status: GOOD (  16.55  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
- [list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.183.199 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [217.70.183.199 listed in wl.mailspike.net]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,49 +64,93 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- Kuldeep Dave <kuldeep.dave@xilinx.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Palmer Dabbelt <palmer@sifive.com>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Firoz Khan <firoz.khan@linaro.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Andrew Morton <akpm@linux-foundation.org>, Will Deacon <will@kernel.org>,
- linux-riscv@lists.infradead.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Mark Rutland <Mark.Rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>, "H. Peter Anvin" <hpa@zytor.com>,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>, "Liang,
+ Kan" <kan.liang@linux.intel.com>, x86@kernel.org,
+ Ingo Molnar <mingo@redhat.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Arnd Bergmann <arnd@arndb.de>,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-kernel@vger.kernel.org,
+ James Morse <james.morse@arm.com>, Andrew Morton <akpm@linux-foundation.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Kuldeep Dave <kuldeep.dave@xilinx.com>
+On 10/7/19 11:38 AM, Steven Price wrote:
+> walk_page_range() is going to be allowed to walk page tables other than
+> those of user space. For this it needs to know when it has reached a
+> 'leaf' entry in the page tables. This information is provided by the
+> p?d_leaf() functions/macros.
+>
+> For riscv a page is a leaf page when it has a read, write or execute bit
+> set on it.
+>
+> CC: Palmer Dabbelt <palmer@sifive.com>
+> CC: Albert Ou <aou@eecs.berkeley.edu>
+> CC: linux-riscv@lists.infradead.org
+> Signed-off-by: Steven Price <steven.price@arm.com>
+> ---
+>   arch/riscv/include/asm/pgtable-64.h | 7 +++++++
+>   arch/riscv/include/asm/pgtable.h    | 7 +++++++
+>   2 files changed, 14 insertions(+)
+>
+> diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
+> index 74630989006d..e88a8e8acbdf 100644
+> --- a/arch/riscv/include/asm/pgtable-64.h
+> +++ b/arch/riscv/include/asm/pgtable-64.h
+> @@ -43,6 +43,13 @@ static inline int pud_bad(pud_t pud)
+>   	return !pud_present(pud);
+>   }
+>   
+> +#define pud_leaf	pud_leaf
+> +static inline int pud_leaf(pud_t pud)
+> +{
+> +	return pud_present(pud)
+> +		&& (pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
+> +}
+> +
+>   static inline void set_pud(pud_t *pudp, pud_t pud)
+>   {
+>   	*pudp = pud;
+> diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+> index 7255f2d8395b..b9a679153265 100644
+> --- a/arch/riscv/include/asm/pgtable.h
+> +++ b/arch/riscv/include/asm/pgtable.h
+> @@ -130,6 +130,13 @@ static inline int pmd_bad(pmd_t pmd)
+>   	return !pmd_present(pmd);
+>   }
+>   
+> +#define pmd_leaf	pmd_leaf
+> +static inline int pmd_leaf(pmd_t pmd)
+> +{
+> +	return pmd_present(pmd)
+> +		&& (pmd_val(pmd) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
+> +}
+> +
+>   static inline void set_pmd(pmd_t *pmdp, pmd_t pmd)
+>   {
+>   	*pmdp = pmd;
 
-Enable msi.h generation for pci/pcie irq domain support.
+Hi Steven,
 
-The same change has been done by commit 251a44888183
-("riscv: include generic support for MSI irqdomains").
+The way you check leaf entries is correct: we do the same for hugepages. 
+So is
+there a reason you did not use the pmd/pud_huge functions that are 
+defined in
+arch/riscv/mm/hugetlbpage.c ?
 
-Signed-off-by: Kuldeep Dave <kuldeep.dave@xilinx.com>
-Signed-off-by: Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>
-Signed-off-by: Michal Simek <michal.simek@xilinx.com>
----
+Anyway, FWIW:
 
- arch/microblaze/include/asm/Kbuild | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Alexandre Ghiti <alex@ghiti.fr>
 
-diff --git a/arch/microblaze/include/asm/Kbuild b/arch/microblaze/include/asm/Kbuild
-index e5c9170a07fc..83417105c00a 100644
---- a/arch/microblaze/include/asm/Kbuild
-+++ b/arch/microblaze/include/asm/Kbuild
-@@ -25,6 +25,7 @@ generic-y += local64.h
- generic-y += mcs_spinlock.h
- generic-y += mm-arch-hooks.h
- generic-y += mmiowb.h
-+generic-y += msi.h
- generic-y += parport.h
- generic-y += percpu.h
- generic-y += preempt.h
--- 
-2.17.1
+Thanks,
+
+Alex
 
 
 _______________________________________________
