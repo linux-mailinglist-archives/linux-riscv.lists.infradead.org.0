@@ -2,36 +2,56 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36BFCCFE07
-	for <lists+linux-riscv@lfdr.de>; Tue,  8 Oct 2019 17:47:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BD17CFF8B
+	for <lists+linux-riscv@lfdr.de>; Tue,  8 Oct 2019 19:08:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QhDz5do90e23nEM1b2DJz8LYAgntaK+WtwDw5fG8Bvc=; b=Ub+5cor8DTdPfS
-	reOqeyKiu3fa0yS+5h5YsfgS/D5Lux9KieW5jy0vs7G7t3yfjS4TpP1zFSxtwOEuJYJXHVwTm88n6
-	i0UwEDBPurRC14QzYwPUe7urTe7D3vCZPkLqTsEsx4xzPUWIZlxksra2ct0CuO4nSG+pCScZPIU3A
-	yLck72WQIhPu4bflWO+XyOIXbjA+Zaxxgnkk+S//fuc594a5CnpYi9t7b00EDYhG/8OwPkxDIuJ88
-	2hzEox/gmfmt7jW4dzMVMJQ54H9LH+bNn8M2bUpJvDa5R8lYImoeziWpEc5hyK6qPQ0ZQ1DXYyHvv
-	J/KNqJt/M+Mt30HCe2uQ==;
+	List-Owner; bh=6hXFqXgtXeovW0GwlJ11yQAfbtLaDcEaiwD1sOzGm7s=; b=hxGkSlqw+xmibk
+	dgc3t8q3BpLv9IBTooCvdb+0rYPTbdcVsIjaFvojEgJkwTqohUKQqEz3GluTFQ2cDBYixLY1ZGNAY
+	CL4UdP7UUo4Vsrep14VXb7nX3TA1+7Up1MnWbSjeD+WwcEBnt5INHB7SIV1G4rXfUHmHyTK0v5HtT
+	h/q7SUxV15tyvhcUcpeCAxIWtT4CNvdP01FpPlII91qEvZFjQHrDf+GtbrCK3n80/YcnJ6pKahl7v
+	ju0nu+CJhpY6RwuTmVjZ8BYiOjcmHexueOz+NeIu/ad4bOJOVHQ2tx+rd9CNWV2CGQnonsRw8PTHN
+	N4boUrdfDE0h1Tox72tA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iHrhO-0004ll-Sb; Tue, 08 Oct 2019 15:46:54 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.92.2 #3 (Red
- Hat Linux)) id 1iHrhM-0004lP-GK; Tue, 08 Oct 2019 15:46:52 +0000
-Date: Tue, 8 Oct 2019 08:46:52 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Michal Simek <michal.simek@xilinx.com>
-Subject: Re: [PATCH v2] PCI/MSI: Enable PCI_MSI_IRQ_DOMAIN support for
- Microblaze
-Message-ID: <20191008154652.GB7903@infradead.org>
-References: <b5959a9f6bfa65f0ae1a6a184e1b09dcec8e8f15.1570539512.git.michal.simek@xilinx.com>
+	id 1iHsxr-0005Nz-Em; Tue, 08 Oct 2019 17:07:59 +0000
+Received: from utopia.booyaka.com ([74.50.51.50])
+ by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1iHsxo-0005NA-Cw
+ for linux-riscv@lists.infradead.org; Tue, 08 Oct 2019 17:07:57 +0000
+Received: (qmail 6504 invoked by uid 1019); 8 Oct 2019 17:07:52 -0000
+Received: from localhost (sendmail-bs@127.0.0.1)
+ by localhost with SMTP; 8 Oct 2019 17:07:52 -0000
+Date: Tue, 8 Oct 2019 17:07:52 +0000 (UTC)
+From: Paul Walmsley <paul@pwsan.com>
+To: Vincent Chen <vincent.chen@sifive.com>
+Subject: Re: [PATCH 4/4] riscv: remove the switch statement in do_trap_break()
+In-Reply-To: <CABvJ_xiHJSB7P5QekuLRP=LBPzXXghAfuUpPUYb=a_HbnOQ6BA@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.999.1910081707220.4786@utopia.booyaka.com>
+References: <1569199517-5884-1-git-send-email-vincent.chen@sifive.com>
+ <1569199517-5884-5-git-send-email-vincent.chen@sifive.com>
+ <20190927224711.GI4700@infradead.org>
+ <alpine.DEB.2.21.9999.1910070906570.10936@viisi.sifive.com>
+ <20191007161050.GA20596@infradead.org>
+ <alpine.DEB.2.21.9999.1910070930270.10936@viisi.sifive.com>
+ <CABvJ_xiHJSB7P5QekuLRP=LBPzXXghAfuUpPUYb=a_HbnOQ6BA@mail.gmail.com>
+User-Agent: Alpine 2.21.999 (DEB 260 2018-02-26)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b5959a9f6bfa65f0ae1a6a184e1b09dcec8e8f15.1570539512.git.michal.simek@xilinx.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20191008_100756_515763_B51B123E 
+X-CRM114-Status: UNSURE (   5.81  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,33 +63,25 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Kuldeep Dave <kuldeep.dave@xilinx.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Palmer Dabbelt <palmer@sifive.com>, monstr@monstr.eu,
- linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>,
- Firoz Khan <firoz.khan@linaro.org>, git@xilinx.com,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-pci@vger.kernel.org,
- Bjorn Helgaas <bhelgaas@google.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-> diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
-> index a304f5ea11b9..9d259372fbfd 100644
-> --- a/drivers/pci/Kconfig
-> +++ b/drivers/pci/Kconfig
-> @@ -52,7 +52,7 @@ config PCI_MSI
->  	   If you don't know what to do here, say Y.
->  
->  config PCI_MSI_IRQ_DOMAIN
-> -	def_bool ARC || ARM || ARM64 || X86 || RISCV
-> +	def_bool ARC || ARM || ARM64 || X86 || RISCV || MICROBLAZE
+On Tue, 8 Oct 2019, Vincent Chen wrote:
 
-Can you find out what the actual dependency is so that we can
-automatically enabled this instead of the weird arch list?
+> Sorry,  I missed the comment. Christoph's suggestion is also good to me.
+> I will modify it as you suggested.
+
+Thanks - no need to resend, I'll queue the modified patch up here.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
