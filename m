@@ -2,94 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6903BD035B
-	for <lists+linux-riscv@lfdr.de>; Wed,  9 Oct 2019 00:21:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D1DAD0371
+	for <lists+linux-riscv@lfdr.de>; Wed,  9 Oct 2019 00:38:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vP8ao7r1nt1QhzQ+U6xJCfNgngZ+oABG0S1z8RfsDnw=; b=ou8q/+QkpSCq3y
-	mAzBugSF4lUjMzpB1fW6Foa5fdI1QHIiMQwHO3mp7mWaNDPsXfxOdKpyt66l5h5qYQt1yzjKoiJGs
-	EPiu6d6jp9fSJ90CbAShPI2gTjIL00XzCGJoTaTPrHR34Wlvz+kFtAcwQmxqNr0QpHCPrKzs6hUI/
-	4q1gef1zu8i35H1fip+tuPb+7pQLeDe5tTUXnpVC3jvXC4zbYCDNjRws5BsMZM+q3QzUGj4KUNXzW
-	y5Ezn6mcfPCE7J/JJGmd0TaPRfVjr91kEsGcw8Y/D6OdJwrQMjCcXUNNEmaBZjNUcQv7ZarAfBRgg
-	9VAOmhg7X5Rv/2S1cn7g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=PZ+UQl3Ac8Qf9G1qm8vDgUjdmVHFg0rKdat4Ejkxeeo=; b=pJ6dBxdN2Rv/2x6cjpfkh6lZe
+	11b/outQ2QRQSVW9QIKEB804Elqr2bZCxR4iB638/YgHYWgwwzHLaPwNPqmkmlB8KceeJKDO8Q2cJ
+	Ixp+mEYdCw5TGEQXPyLk8rmxOpfxlko51A4ji5/aVriX8w0a9PMdgPp3W0AOKZzNIRwG4CmEwSTt1
+	tAS0lMyNgDjMOawGmIxZtz5FdO3/PaWtllsKNpNMLmYHm9QdtlHBO5havIRFcHsk72KFo21qivg2q
+	MxALOO1ziOtgUU3NzYCoVZUNODF/WXWHDZJQC1SvMVK9e68Ip2rlOJRstC351JuIcYfn8WoTwNPqe
+	R+104xZwQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iHxr4-0006GM-IQ; Tue, 08 Oct 2019 22:21:18 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+	id 1iHy7b-0002gb-KX; Tue, 08 Oct 2019 22:38:23 +0000
+Received: from mail-pf1-f193.google.com ([209.85.210.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iHxr0-0006Ef-OW
- for linux-riscv@lists.infradead.org; Tue, 08 Oct 2019 22:21:16 +0000
-Received: by mail-io1-xd44.google.com with SMTP id n197so478563iod.9
- for <linux-riscv@lists.infradead.org>; Tue, 08 Oct 2019 15:21:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=TmI9bIackLTeFU39VZv1JVYmmLC+5RPh9QlJQ4hbpCQ=;
- b=CO2aCGK5TzPZHMxxhnmMsK1S0V+rYmE/fe//GFXVGWneX6XHIpxx6dvp8WdMz77qJ6
- JMhaQLoJoDZhNeyIzR3ynJBPgxf1+TchM04Gt2hyu4UZOlGlm2NoNvu9uWD0nMdR3R7U
- I4dtJLprfHNXsqzkO+/k5UTYq9fJxt19eX0vC2whyrJkCLOUORqf+LSdz/YA2zwaGG0K
- ytjJVrdmNE46jdi0jpO730sJ2prq5KD5VDLs6boo4yvnGhYeI6nk6zDP+CtU5YOJY8On
- HToAasP1sushCze3qcnrL4X4D3AVJHLPZdDlWKKtKXJHaRFme/m6H3gBgIufgvvOktfp
- SXtA==
+ id 1iHy7X-0002gC-OF
+ for linux-riscv@lists.infradead.org; Tue, 08 Oct 2019 22:38:21 +0000
+Received: by mail-pf1-f193.google.com with SMTP id y72so244446pfb.12
+ for <linux-riscv@lists.infradead.org>; Tue, 08 Oct 2019 15:38:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=TmI9bIackLTeFU39VZv1JVYmmLC+5RPh9QlJQ4hbpCQ=;
- b=t3ujvOM3CBcxxPRw/3GFgpdKOZ2P0YCJAT3N0af9h/TNcGef+b3hsRLNRChcysxXPV
- zpwjOzSCJHMyzVnET94gIAs1b+NY182ZHgqnNbsMoj+nToohlsguTdBIl+4w+E6M3G33
- UKc5Dy2pwZmUPog/F/JxZMlBh/t91ch/Rx1z2zv58omzHDrrLbHhmhGBTxsq/skieWPH
- xHqO0jKXRVonyDYAul9DIEercFgE1gM5cq//O3Xe3uB1hlpA01wHbOatPCucfLOfxCmW
- HaCw52MT80UzdTtQEsEy3xrP+MqpFEu8ox17IKF/OUdJnNleLPEVc+UBzDfOGXGJKGZI
- 2NPQ==
-X-Gm-Message-State: APjAAAXIvRR8gy7wP7HXgJNyH+cP2zVPawprQ1Ya0yt21yA6n9aS2YfU
- A9MqLPZKvJ+WZaVD781pUtCOYw==
-X-Google-Smtp-Source: APXvYqwdAkp2j8V+RT/40xGpfEWjsCPGIN4dZzNbdG4pKTtHPPksZnZq/WD7EUmA/G008FI4boR7ZQ==
-X-Received: by 2002:a02:9a05:: with SMTP id b5mr275358jal.111.1570573272901;
- Tue, 08 Oct 2019 15:21:12 -0700 (PDT)
-Received: from [192.168.1.196] ([216.160.37.230])
- by smtp.gmail.com with ESMTPSA id 26sm194048ilx.47.2019.10.08.15.21.11
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 08 Oct 2019 15:21:11 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Subject: Re: Fail to bring hart online on HiFive Unleashed
-From: Troy Benjegerdes <troy.benjegerdes@sifive.com>
-In-Reply-To: <97CDD0F9-32F9-4C14-8211-63454C5C379A@aurel32.net>
-Date: Tue, 8 Oct 2019 17:21:10 -0500
-Message-Id: <E7098422-DFF2-4366-B97A-6D86E0202595@sifive.com>
-References: <20191003200735.GA26760@aurel32.net>
- <73a9ba9fd6c29075209a61660137fb4b899f7ff2.camel@wdc.com>
- <20191005102541.GA22188@aurel32.net> <20191006122850.GA31831@aurel32.net>
- <71c93a62192eb4259ba7e868f7f9aa8ae066c6ad.camel@wdc.com>
- <20191008043014.GA23380@aurel32.net>
- <CAPSAq_znsoOrLsA_rPbmq=e2syZA9MA=-oaZbda5KRiZGG9yyg@mail.gmail.com>
- <97CDD0F9-32F9-4C14-8211-63454C5C379A@aurel32.net>
-To: Aurelien Jarno <aurelien@aurel32.net>
-X-Mailer: Apple Mail (2.3445.9.1)
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=7hYj82odng1jMSAaDEYDJcbFa/mw5vWpBNUQtKyLYSs=;
+ b=Zp15lIsjkYfdPbQJ8Y38u/MNV01qx3ZW+lAQvQqDmOmQU2b1p5q4SGckIaVqngtQ9y
+ dpNzMRd4elL5hMeAMsdDeO5N4Fi2pfqWZPMSBWdUwD6u6MBT0vYs1MDAMPxtSLP1mi7M
+ furZuPHrWtxKgvc2WWaEV1f/g8lA33wjbvbs0dnJGvobbIEwwNTEBvUciYcbhNVnCYE1
+ EuaTPwcnal/8lHX4g5wDOEaIzYcd8S5BfhhJTAodNmw+1ih6QQ5m78tKy+pxm9PXkTax
+ haNMhWCvJ+m4rPuUm6juSubdsFbncjSPKqt3h0wdgwoA62/z3WppOp+i0es7ZxqQkOdS
+ 9Jdw==
+X-Gm-Message-State: APjAAAVS6CTOWRdRAigwtbmkIHP3O+UCwrVmEwNHl9Nhn5mssGSByNTZ
+ aLMkHThlhbWzYJVBNmkYw+Flaw==
+X-Google-Smtp-Source: APXvYqzZwXk6wfpZldLYfQzDSJO+0eZyrrg5uBIg5ME1ljqHCxjVhktp3ndtoYX03SNqOWTWpz8FSw==
+X-Received: by 2002:aa7:9295:: with SMTP id j21mr272972pfa.223.1570574295986; 
+ Tue, 08 Oct 2019 15:38:15 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id j24sm141233pff.71.2019.10.08.15.38.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Oct 2019 15:38:15 -0700 (PDT)
+Date: Tue, 08 Oct 2019 15:38:15 -0700 (PDT)
+X-Google-Original-Date: Tue, 08 Oct 2019 15:26:32 PDT (-0700)
+Subject: Re: [PATCH] riscv: Fix memblock reservation for device tree blob
+In-Reply-To: <CAAhSdy3iTBeQcG0D=J7nYYudnDsEw6GN5FJ4fPCftUwvgGwjwg@mail.gmail.com>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: aou@eecs.berkeley.edu, anup@brainfault.org
+Message-ID: <mhng-464b0376-8728-4ca9-a090-e785ffb2df14@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191008_152114_863006_1ECEF8E1 
-X-CRM114-Status: GOOD (  18.08  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191008_153819_788497_B2455BC9 
+X-CRM114-Status: GOOD (  26.03  )
+X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.193 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.193 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,95 +81,160 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: David Abdurachmanov <david.abdurachmanov@sifive.com>,
- Atish Patra <Atish.Patra@wdc.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-kernel@vger.kernel.org, Anup Patel <Anup.Patel@wdc.com>,
+ aou@eecs.berkeley.edu, linux-riscv@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Cgo+IE9uIE9jdCA4LCAyMDE5LCBhdCAxOjMzIEFNLCBBdXJlbGllbiBKYXJubyA8YXVyZWxpZW5A
-YXVyZWwzMi5uZXQ+IHdyb3RlOgo+IAo+IExlIDggb2N0b2JyZSAyMDE5IDA4OjE0OjU4IEdNVCsw
-MjowMCwgRGF2aWQgQWJkdXJhY2htYW5vdiA8ZGF2aWQuYWJkdXJhY2htYW5vdkBzaWZpdmUuY29t
-PiBhIMOpY3JpdCA6Cj4+IE9uIFR1ZSwgT2N0IDgsIDIwMTkgYXQgNzozMCBBTSBBdXJlbGllbiBK
-YXJubyA8YXVyZWxpZW5AYXVyZWwzMi5uZXQ+Cj4+IHdyb3RlOgo+Pj4gCj4+PiBPbiAyMDE5LTEw
-LTA3IDIyOjE5LCBBdGlzaCBQYXRyYSB3cm90ZToKPj4+PiBUaGFua3MgZm9yIHRoZSBkZXRhaWxl
-ZCBhbmFseXNpcy4gQ2FuIHlvdSBwbGVhc2Uga2VlcCBtZSBhbmQgZGF2aWQKPj4gaW4KPj4+PiBj
-YyB3aGVuIHlvdSByZXBvcnQgdGhlIGlzc3VlIHRvIFUtYm9vdCA/Cj4+PiAKPj4+IFllcC4gSSBo
-YXZlIHByb2dyZXNzZWQgYSBiaXQgb24gdGhhdCwgYW5kIG5vdyBJIGFtIG5vdCBjb252aW5jZWQg
-aXQncwo+PiBhbgo+Pj4gVS1ib290IGlzc3VlLCBpdCBjYW4gYmUgYSBHQ0MgaXNzdWUuCj4+PiAK
-Pj4+IEhlcmUgYXJlIHRoZSBjb25kaXRpb25zIHRvIHJlcHJvZHVjZSB0aGUgYnVnOgo+Pj4gLSBV
-LWJvb3QgcnVucyBvbiBoYXJ0IDEsIDIgb3IgMwo+Pj4gLSB0aGUgYXV0b2Jvb3QgcHJvY2VzcyBp
-cyBub3QgaW50ZXJydXB0ZWQKPj4+IC0gZXh0bGludXggaXMgdXNlZCB0byBib290IHRoZSBrZXJu
-ZWwKPj4+IC0gYXJjaC9yaXNjdi9saWIvYm9vdG0uYyBpcyBjb21waWxlZCB3aXRoIEdDQyA5ICh3
-b3JrcyBmaW5lIHdpdGggR0NDCj4+IDgpCj4+PiAKPj4+IFdoZW4gdGhlIHByb2JsZW0gaGFwcGVu
-cywgdGhlIG1pc3NpbmcgaGFydCBhY3R1YWxseSBlbmRzIGl0cwo+PiBleGVjdXRpb24KPj4+IGlu
-IGFuIGlsbGVnYWwgaW5zdHJ1Y3Rpb24gdHJhcCB0cnlpbmcgdG8gZXhlY3V0ZSB0aGUgRkRUIChJ
-IG9ubHkKPj4gbm90aWNlZAo+Pj4gdGhhdCByZWNlbnRseSBhcyB0aGUgbWVzc2FnZSB3YXMgaGlk
-ZGVuIGJ5IHRoZSB1c2Ugb2YgZWFybHljb249c2JpKToKPj4+IAo+Pj4gfCBTaUZpdmUgRlNCTDog
-ICAgICAgMjAxOC0wMy0yMAo+Pj4gfCBIaUZpdmUtVSBzZXJpYWwgIzogMDAwMDAyNDYKPj4+IHwK
-Pj4+IHwgT3BlblNCSSB2MC40LTUwLWczMGYwOWZiIChPY3QgIDYgMjAxOSAyMTo1ODowNSkKPj4+
-IHwgICAgX19fXyAgICAgICAgICAgICAgICAgICAgX19fX18gX19fXyBfX19fXwo+Pj4gfCAgIC8g
-X18gXCAgICAgICAgICAgICAgICAgIC8gX19fX3wgIF8gXF8gICBffAo+Pj4gfCAgfCB8ICB8IHxf
-IF9fICAgX19fIF8gX18gfCAoX19fIHwgfF8pIHx8IHwKPj4+IHwgIHwgfCAgfCB8ICdfIFwgLyBf
-IFwgJ18gXCBcX19fIFx8ICBfIDwgfCB8Cj4+PiB8ICB8IHxfX3wgfCB8XykgfCAgX18vIHwgfCB8
-X19fXykgfCB8XykgfHwgfF8KPj4+IHwgICBcX19fXy98IC5fXy8gXF9fX3xffCB8X3xfX19fXy98
-X19fXy9fX19fX3wKPj4+IHwgICAgICAgICB8IHwKPj4+IHwgICAgICAgICB8X3wKPj4+IHwKPj4+
-IHwgUGxhdGZvcm0gTmFtZSAgICAgICAgICA6IFNpRml2ZSBGcmVlZG9tIFU1NDAKPj4+IHwgUGxh
-dGZvcm0gSEFSVCBGZWF0dXJlcyA6IFJWNjRBQ0RGSU1TVQo+Pj4gfCBQbGF0Zm9ybSBNYXggSEFS
-VHMgICAgIDogNQo+Pj4gfCBDdXJyZW50IEhhcnQgICAgICAgICAgIDogMgo+Pj4gfCBGaXJtd2Fy
-ZSBCYXNlICAgICAgICAgIDogMHg4MDAwMDAwMAo+Pj4gfCBGaXJtd2FyZSBTaXplICAgICAgICAg
-IDogMTA0IEtCCj4+PiB8IFJ1bnRpbWUgU0JJIFZlcnNpb24gICAgOiAwLjIKPj4+IHwKPj4+IHwg
-UE1QMDogMHgwMDAwMDAwMDgwMDAwMDAwLTB4MDAwMDAwMDA4MDAxZmZmZiAoQSkKPj4+IHwgUE1Q
-MTogMHgwMDAwMDAwMDAwMDAwMDAwLTB4MDAwMDAwN2ZmZmZmZmZmZiAoQSxSLFcsWCkKPj4+IHwK
-Pj4+IHwKPj4+IHwgVS1Cb290IDIwMTkuMTAtcmM0LTAwMDM3LWdkYWM1MWU5YWFmLWRpcnR5IChP
-Y3QgMDYgMjAxOSAtIDIxOjU2OjUxCj4+ICswMDAwKQo+Pj4gfAo+Pj4gfCBDUFU6ICAgcnY2NGlt
-YWZkYwo+Pj4gfCBNb2RlbDogU2lGaXZlIEhpRml2ZSBVbmxlYXNoZWQgQTAwCj4+PiB8IERSQU06
-ICA4IEdpQgo+Pj4gfAo+Pj4gfCBNTUM6ICAgc3BpQDEwMDUwMDAwOm1tY0AwOiAwCj4+PiB8IElu
-OiAgICBzZXJpYWxAMTAwMTAwMDAKPj4+IHwgT3V0OiAgIHNlcmlhbEAxMDAxMDAwMAo+Pj4gfCBF
-cnI6ICAgc2VyaWFsQDEwMDEwMDAwCj4+PiB8IE5ldDogICBldGgwOiBldGhlcm5ldEAxMDA5MDAw
-MAo+Pj4gfCBIaXQgYW55IGtleSB0byBzdG9wIGF1dG9ib290OiAgMAo+Pj4gfCBzd2l0Y2ggdG8g
-cGFydGl0aW9ucyAjMCwgT0sKPj4+IHwgbW1jMCBpcyBjdXJyZW50IGRldmljZQo+Pj4gfCBTY2Fu
-bmluZyBtbWMgMDoyLi4uCj4+PiB8IEZvdW5kIC9ib290L2V4dGxpbnV4L2V4dGxpbnV4LmNvbmYK
-Pj4+IHwgUmV0cmlldmluZyBmaWxlOiAvYm9vdC9leHRsaW51eC9leHRsaW51eC5jb25mCj4+PiB8
-IDUxMCBieXRlcyByZWFkIGluIDUgbXMgKDk5LjYgS2lCL3MpCj4+PiB8IFUtQm9vdCBtZW51Cj4+
-PiB8IDE6ICAgICAga2VybmVsIDUuMy40Cj4+PiB8IDI6ICAgICAgRGViaWFuIEdOVS9MaW51eCBr
-ZXJuZWwgNS4zLjAtdHJ1bmstcmlzY3Y2NAo+Pj4gfCBFbnRlciBjaG9pY2U6IDEKPj4+IHwgMTog
-ICAgICBrZXJuZWwgNS4zLjQKPj4+IHwgUmV0cmlldmluZyBmaWxlOiAvYm9vdC92bWxpbnV4LTUu
-My40Cj4+PiB8IDk0ODYwNzYgYnl0ZXMgcmVhZCBpbiA0ODEzIG1zICgxLjkgTWlCL3MpCj4+PiB8
-IGFwcGVuZDogcm9vdD0vZGV2L21tY2JsazBwMiBydyBjb25zb2xlPXR0eVNJRjAgcm9vdHdhaXQK
-Pj4+IHwgUmV0cmlldmluZyBmaWxlOiAvYm9vdC9oaWZpdmUtdW5sZWFzaGVkLWEwMC5kdGIKPj4+
-IHwgNjA4OCBieXRlcyByZWFkIGluIDcgbXMgKDg0OC42IEtpQi9zKQo+Pj4gfCAjIyBGbGF0dGVu
-ZWQgRGV2aWNlIFRyZWUgYmxvYiBhdCA4ODAwMDAwMAo+Pj4gfCAgICBCb290aW5nIHVzaW5nIHRo
-ZSBmZHQgYmxvYiBhdCAweDg4MDAwMDAwCj4+PiB8ICAgIFVzaW5nIERldmljZSBUcmVlIGluIHBs
-YWNlIGF0IDAwMDAwMDAwODgwMDAwMDAsIGVuZAo+PiAwMDAwMDAwMDg4MDA0N2M3Cj4+PiB8Cj4+
-PiB8IFN0YXJ0aW5nIGtlcm5lbCAuLi4KPj4+IHwKPj4+IHwgZXhjZXB0aW9uIGNvZGU6IDIgLCBJ
-bGxlZ2FsIGluc3RydWN0aW9uICwgZXBjICAsIHJhIDg4MDAwMDA0Cj4+IDg4MDAwMDAwCj4+PiB8
-ICMjIyBFUlJPUiAjIyMgUGxlYXNlIFJFU0VUIHRoZSBib2FyZCAjIyMKPj4gCj4+IEkgdGhpbmss
-IHRoYXQncyB0aGUgc2FtZSBpc3N1ZSBJIGhhZCAob3Igc3RpbGwgaGF2ZSkgYSB3ZWVrIGFnby4K
-Pj4gSnVzdCByZW1pbmRlciB0aGF0IGtlcm5lbCA1LjMgaW50cm9kdWNlZCBhIDY0LWJ5dGUgaGVh
-ZGVyICh0aHVzIG5vCj4+IG5lZWQgdG8gd3JhcCBrZXJuZWwpIGF0IGxlYXN0IGZvciBJbWFnZSB0
-YXJnZXQuIFRodXMgaXQncyBib290aSB0aGF0Cj4+IGJvb3RzIHRoZSBrZXJuZWwgb24gVS1Cb290
-IHNpZGUuCj4+IFRodXMgdGhlIDFzdCBpbnN0cnVjdGlvbiBvZiB0aGF0IGhlYWRlciBpcyAiaiAw
-eDQwIiAodG8gdGhlIGJlZ2lubmluZwo+PiBvZiB0aGUgYWN0dWFsIGtlcm5lbCkuICBBbmQgODgw
-MDAwMDQgd291bGQgZGVmaW5pdGVseSBob2xkIGFuIGlsbGVnYWwKPj4gaW5zdHJ1Y3Rpb24uCj4+
-IAo+PiAwMDAwMDAwMDAwMDAwMDAwIDwuZGF0YT46Cj4+IDA6ICAgICAgIDgxYTAgICAgICAgICAg
-ICAgICAgICAgIGogICAgICAgMHg0MAo+PiAyOiAgICAgICAwMDAwICAgICAgICAgICAgICAgICAg
-ICB1bmltcAo+PiA0OiAgICAgICAwMDAwICAgICAgICAgICAgICAgICAgICB1bmltcAo+PiA2OiAg
-ICAgICAwMTAwICAgICAgICAgICAgICAgICAgICBub3AKPj4gWy4uXQo+IAo+IEhtbSB0aGF0J3Mg
-dGhlIGJlZ2lubmluZyBvZiB0aGUga2VybmVsIGNvZGUuIFRoZSBhZGRyZXNzIDg4MDAwMDA0Cj4g
-YWN0dWFsbHkgY29ycmVzcG9uZHMgdG8gdGhlIEZEVC4gU28gdGhlIGhhcnQgZW5kaW5nIHVwIGlu
-IGEgdHJhcAo+IGFjdHVhbGx5IHRyaWVzIHRvIGJvb3QgdGhlIEZEVCBpbnN0ZWFkIG9mIHRoZSBr
-ZXJuZWwuCj4gCj4gSSBoYXZlbid0IHNwb3R0ZWQgYW55IG9idmlvdXMgZGlmZmVyZW5jZXMgYmV0
-d2VlbiBib290bS5vIGNvbXBpbGVkIHdpdGgKPiBHQ0MgOCBhbmQgR0NDIDkuIEkgd29uZGVyIGlm
-IHRoZXJlIGlzIHNvbWVob3cgYSByYWNlIGNvbmRpdGlvbiBiZWNhdXNlCj4gc29tZSBoYXJ0cyBh
-cmUgYWxyZWFkeSBleGVjdXRpbmcgbGludXggd2hpbGUgdGhlIGxhc3Qgb25lIGlzIHN0aWxsCj4g
-ZXhlY3V0aW5nIFUtYm9vdC4KClRoaXMgaXMgZnJvbSBvdXIgR0NDIG1haW50YWluZXIsIEppbSBX
-aWxzb246CgpCdXQgd2UndmUgZml4ZWQgMyBjb21iaW5lIG9wdGltaXphdGlvbiBidWdzIG9uIHRo
-ZSBnY2MtOSBicmFuY2gKcmVjZW50bHksIGFuZCBJJ3ZlIGdvdCBhIGZvdXJ0aCBvbmUgdGhhdCBJ
-J20gd29ya2luZyBvbiBub3csIHNvIHRoZXJlCmlzIGEgZ29vZCBjaGFuY2UgdGhhdCB0aGlzIGlz
-IGEga25vd24gYW5kIGFscmVhZHkgZml4ZWQgcHJvYmxlbS4gCgoKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QK
-bGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
+On Fri, 20 Sep 2019 21:34:57 PDT (-0700), anup@brainfault.org wrote:
+> On Sat, Sep 21, 2019 at 6:30 AM Albert Ou <aou@eecs.berkeley.edu> wrote:
+>>
+>> This fixes an error with how the FDT blob is reserved in memblock.
+>> An incorrect physical address calculation exposed the FDT header to
+>> unintended corruption, which typically manifested with of_fdt_raw_init()
+>> faulting during late boot after fdt_totalsize() returned a wrong value.
+>> Systems with smaller physical memory sizes more frequently trigger this
+>> issue, as the kernel is more likely to allocate from the DMA32 zone
+>> where bbl places the DTB after the kernel image.
+>>
+>> Commit 671f9a3e2e24 ("RISC-V: Setup initial page tables in two stages")
+>> changed the mapping of the DTB to reside in the fixmap area.
+>> Consequently, early_init_fdt_reserve_self() cannot be used anymore in
+>> setup_bootmem() since it relies on __pa() to derive a physical address,
+>> which does not work with dtb_early_va that is no longer a valid kernel
+>> logical address.
+>>
+>> The reserved[0x1] region shows the effect of the pointer underflow
+>> resulting from the __pa(initial_boot_params) offset subtraction:
+>>
+>> [    0.000000] MEMBLOCK configuration:
+>> [    0.000000]  memory size = 0x000000001fe00000 reserved size = 0x0000000000a2e514
+>> [    0.000000]  memory.cnt  = 0x1
+>> [    0.000000]  memory[0x0]     [0x0000000080200000-0x000000009fffffff], 0x000000001fe00000 bytes flags: 0x0
+>> [    0.000000]  reserved.cnt  = 0x2
+>> [    0.000000]  reserved[0x0]   [0x0000000080200000-0x0000000080c2dfeb], 0x0000000000a2dfec bytes flags: 0x0
+>> [    0.000000]  reserved[0x1]   [0xfffffff080100000-0xfffffff080100527], 0x0000000000000528 bytes flags: 0x0
+>>
+>> With the fix applied:
+>>
+>> [    0.000000] MEMBLOCK configuration:
+>> [    0.000000]  memory size = 0x000000001fe00000 reserved size = 0x0000000000a2e514
+>> [    0.000000]  memory.cnt  = 0x1
+>> [    0.000000]  memory[0x0]     [0x0000000080200000-0x000000009fffffff], 0x000000001fe00000 bytes flags: 0x0
+>> [    0.000000]  reserved.cnt  = 0x2
+>> [    0.000000]  reserved[0x0]   [0x0000000080200000-0x0000000080c2dfeb], 0x0000000000a2dfec bytes flags: 0x0
+>> [    0.000000]  reserved[0x1]   [0x0000000080e00000-0x0000000080e00527], 0x0000000000000528 bytes flags: 0x0
+>
+> Thanks for catching this issue.
+>
+> Most of us did not notice this issue most likely because:
+> 1. We generally have good enough RAM on QEMU and SiFive Unleashed
+> 2. Most of people use OpenSBI FW_JUMP on QEMU and U-Boot  on
+>     SiFive Unleashed to boot in Linux which places FDT quite far away
+>     from Linux kernel end
+>
+> Linux ARM64 kernel also uses FIXMAP to access FDT and over there
+> as well early_init_fdt_reserve_self() is not used.
+>
+>>
+>> Fixes: 671f9a3e2e24 ("RISC-V: Setup initial page tables in two stages")
+>> Signed-off-by: Albert Ou <aou@eecs.berkeley.edu>
+>> ---
+>>  arch/riscv/mm/init.c | 13 ++++++++++++-
+>>  1 file changed, 12 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+>> index f0ba713..52d007c 100644
+>> --- a/arch/riscv/mm/init.c
+>> +++ b/arch/riscv/mm/init.c
+>> @@ -11,6 +11,7 @@
+>>  #include <linux/swap.h>
+>>  #include <linux/sizes.h>
+>>  #include <linux/of_fdt.h>
+>> +#include <linux/libfdt.h>
+>>
+>>  #include <asm/fixmap.h>
+>>  #include <asm/tlbflush.h>
+>> @@ -82,6 +83,8 @@ static void __init setup_initrd(void)
+>>  }
+>>  #endif /* CONFIG_BLK_DEV_INITRD */
+>>
+>> +static phys_addr_t __dtb_pa __initdata;
+>
+> May be dtb_early_pa will be more consistent name
+> instead of __dtb_pa because it matches dtb_early_va
+> used below.
+>
+>> +
+>>  void __init setup_bootmem(void)
+>>  {
+>>         struct memblock_region *reg;
+>> @@ -117,7 +120,12 @@ void __init setup_bootmem(void)
+>>         setup_initrd();
+>>  #endif /* CONFIG_BLK_DEV_INITRD */
+>>
+>> -       early_init_fdt_reserve_self();
+>> +       /*
+>> +        * Avoid using early_init_fdt_reserve_self() since __pa() does
+>> +        * not work for DTB pointers that are fixmap addresses
+>> +        */
+>> +       memblock_reserve(__dtb_pa, fdt_totalsize(dtb_early_va));
+>> +
+>>         early_init_fdt_scan_reserved_mem();
+>>         memblock_allow_resize();
+>>         memblock_dump_all();
+>> @@ -333,6 +341,7 @@ static uintptr_t __init best_map_size(phys_addr_t base, phys_addr_t size)
+>>         "not use absolute addressing."
+>>  #endif
+>>
+>> +
+>
+> Please remove this newline addition.
+>
+>>  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>>  {
+>>         uintptr_t va, end_va;
+>> @@ -393,6 +402,8 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>>
+>>         /* Save pointer to DTB for early FDT parsing */
+>>         dtb_early_va = (void *)fix_to_virt(FIX_FDT) + (dtb_pa & ~PAGE_MASK);
+>> +       /* Save physical address for memblock reservation */
+>> +       __dtb_pa = dtb_pa;
+>>  }
+>>
+>>  static void __init setup_vm_final(void)
+>> --
+>> 2.7.4
+>>
+>>
+>> _______________________________________________
+>> linux-riscv mailing list
+>> linux-riscv@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-riscv
+>
+> This deserves to be stable kernel fix as well.
+> You should add:
+> Cc: stable@vger.kernel.org
+> in your commit description.
+>
+> Apart from minor nits above.
+>
+> Reviewed-by: Anup Patel <anup@brainfault.org>
+>
+> I tried this patch for both RV64 and RV32 on QEMU with
+> Yocto rootfs.
+>
+> Tested-by: Anup Patel <anup@brainfault.org>
+>
+> Regards,
+> Anup
+
+Albert: Do you plan on spinning a v2 of the patch set?
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
