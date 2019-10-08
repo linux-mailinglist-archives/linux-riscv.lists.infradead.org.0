@@ -2,58 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75A1DCF90B
-	for <lists+linux-riscv@lfdr.de>; Tue,  8 Oct 2019 13:59:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A5F3CF9CC
+	for <lists+linux-riscv@lfdr.de>; Tue,  8 Oct 2019 14:31:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IyfmHFJPlT5e5/je7e5iYNh52E/V1oMfoOUMXisJOLQ=; b=nTE17rXDmkDNtfMCQf37q0GO/
-	TBem1qpVFmeUCQP192QwF4Q1pQd6G/qfdCgsVw6IHVp2b/hoT4hgyLVuqYlTU5M9x4Vq3k/DCFZFx
-	g/uUjmR57FrfXcQGTAmrqL3ap7zK4lywXiPfnbtHToLE9KfvM+d0u7s5OFn8myqLT3VHSVdNvUt3d
-	4GFAY7t24BeKdhBOsXih/bfw3/lqlmC6yTc+k31uaxc3HmxT7aPBs1q7MY4oaOty/ZISIfWkmRzq5
-	uuKqP9v2hcDnq2U5smMYnOJEPsjZcENsEG6IoIzk1p5Zz2XKFfT6QGIROwDYhVhB9qMcy7xf+NE9l
-	LMVQPcTWA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f7KwGLxlqUMqnqKq0U4sAymHPYX1+BB8vQMaslwFgTA=; b=r6JCso3LjmI54x
+	oCE0GEQJvqx011AoHKNsM3KxUsWf999uTUnNK6npCl9qyl+g1ZMpLezGFlwmcut/I/9qNIqhrQ7cg
+	y6OHk7m3R+cupnLq6MHZvoyfdG1j0OU9xlyTqx+p3WrrxBRyy8oVGK28WBJWaNQzymUC9nRr4AVky
+	tZ/Atrnu4qA1CaZu5uEVtiq6p69+9zJeScmq2sBqgeco6av0aFxFkGX7VZSBI5MZFdaQqrPyPzm4G
+	Ou5MiiqsJ+KwmU59CmNKLwgql9Lqt9VF7qlJe98Niu0yi3X73wrHlC+ANuKI0JX7yAScQiynq3SSm
+	4GB5yvft7is7SWRJCBcA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iHo8e-0001PS-MY; Tue, 08 Oct 2019 11:58:48 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1iHoe4-00077X-SR; Tue, 08 Oct 2019 12:31:16 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iHo8O-0001DF-47; Tue, 08 Oct 2019 11:58:34 +0000
-X-Originating-IP: 81.185.168.180
-Received: from [192.168.43.237] (180.168.185.81.rev.sfr.net [81.185.168.180])
- (Authenticated sender: alex@ghiti.fr)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 2154FC0014;
- Tue,  8 Oct 2019 11:58:18 +0000 (UTC)
-Subject: Re: [PATCH v6 14/14] riscv: Make mmap allocation top-down by default
-To: Atish Patra <Atish.Patra@wdc.com>
-References: <20190808061756.19712-1-alex@ghiti.fr>
- <20190808061756.19712-15-alex@ghiti.fr>
- <208433f810b5b07b1e679d7eedb028697dff851b.camel@wdc.com>
- <60b52f20-a2c7-dee9-7cf3-a727f07400b9@ghiti.fr>
- <daeb33415751ef16a717f6ff6a29486110c503d7.camel@wdc.com>
-From: Alex Ghiti <alex@ghiti.fr>
-Message-ID: <9e9a3fea-d8a3-ae62-317a-740773f0725c@ghiti.fr>
-Date: Tue, 8 Oct 2019 07:58:18 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1iHoe0-00076a-MC
+ for linux-riscv@lists.infradead.org; Tue, 08 Oct 2019 12:31:14 +0000
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id DF604C0546FF;
+ Tue,  8 Oct 2019 12:31:09 +0000 (UTC)
+Received: from krava (unknown [10.40.205.103])
+ by smtp.corp.redhat.com (Postfix) with SMTP id 5E5B0600CE;
+ Tue,  8 Oct 2019 12:31:05 +0000 (UTC)
+Date: Tue, 8 Oct 2019 14:31:04 +0200
+From: Jiri Olsa <jolsa@redhat.com>
+To: Ian Rogers <irogers@google.com>
+Subject: Re: [PATCH v3] perf tools: avoid sample_reg_masks being const + weak
+Message-ID: <20191008123104.GA16241@krava>
+References: <20190927214341.170683-1-irogers@google.com>
+ <20191001003623.255186-1-irogers@google.com>
 MIME-Version: 1.0
-In-Reply-To: <daeb33415751ef16a717f6ff6a29486110c503d7.camel@wdc.com>
-Content-Language: sv-FI
+Content-Disposition: inline
+In-Reply-To: <20191001003623.255186-1-irogers@google.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.32]); Tue, 08 Oct 2019 12:31:11 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191008_045832_436480_0D2C52F0 
-X-CRM114-Status: GOOD (  22.92  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20191008_053112_767419_1B4FAF34 
+X-CRM114-Status: GOOD (  26.61  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.198 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,251 +69,263 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "keescook@chromium.org" <keescook@chromium.org>,
- "jhogan@kernel.org" <jhogan@kernel.org>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "will.deacon@arm.com" <will.deacon@arm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ralf@linux-mips.org" <ralf@linux-mips.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "paul.burton@mips.com" <paul.burton@mips.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "viro@zeniv.linux.org.uk" <viro@zeniv.linux.org.uk>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "hch@lst.de" <hch@lst.de>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "mcgrof@kernel.org" <mcgrof@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Andi Kleen <ak@linux.intel.com>, clang-built-linux@googlegroups.com,
+ Peter Zijlstra <peterz@infradead.org>,
+ Alexey Budankov <alexey.budankov@linux.intel.com>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Arnaldo Carvalho de Melo <acme@kernel.org>,
+ Alexander Shishkin <alexander.shishkin@linux.intel.com>,
+ Ingo Molnar <mingo@redhat.com>, Guo Ren <guoren@kernel.org>,
+ Stephane Eranian <eranian@google.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Namhyung Kim <namhyung@kernel.org>,
+ linux-riscv@lists.infradead.org, Mao Han <han_mao@c-sky.com>,
+ Kan Liang <kan.liang@linux.intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 10/7/19 8:46 PM, Atish Patra wrote:
-> On Mon, 2019-10-07 at 05:11 -0400, Alex Ghiti wrote:
->> On 10/4/19 10:12 PM, Atish Patra wrote:
->>> On Thu, 2019-08-08 at 02:17 -0400, Alexandre Ghiti wrote:
->>>> In order to avoid wasting user address space by using bottom-up
->>>> mmap
->>>> allocation scheme, prefer top-down scheme when possible.
->>>>
->>>> Before:
->>>> root@qemuriscv64:~# cat /proc/self/maps
->>>> 00010000-00016000 r-xp 00000000 fe:00
->>>> 6389       /bin/cat.coreutils
->>>> 00016000-00017000 r--p 00005000 fe:00
->>>> 6389       /bin/cat.coreutils
->>>> 00017000-00018000 rw-p 00006000 fe:00
->>>> 6389       /bin/cat.coreutils
->>>> 00018000-00039000 rw-p 00000000 00:00 0          [heap]
->>>> 1555556000-155556d000 r-xp 00000000 fe:00 7193   /lib/ld-2.28.so
->>>> 155556d000-155556e000 r--p 00016000 fe:00 7193   /lib/ld-2.28.so
->>>> 155556e000-155556f000 rw-p 00017000 fe:00 7193   /lib/ld-2.28.so
->>>> 155556f000-1555570000 rw-p 00000000 00:00 0
->>>> 1555570000-1555572000 r-xp 00000000 00:00 0      [vdso]
->>>> 1555574000-1555576000 rw-p 00000000 00:00 0
->>>> 1555576000-1555674000 r-xp 00000000 fe:00 7187   /lib/libc-
->>>> 2.28.so
->>>> 1555674000-1555678000 r--p 000fd000 fe:00 7187   /lib/libc-
->>>> 2.28.so
->>>> 1555678000-155567a000 rw-p 00101000 fe:00 7187   /lib/libc-
->>>> 2.28.so
->>>> 155567a000-15556a0000 rw-p 00000000 00:00 0
->>>> 3fffb90000-3fffbb1000 rw-p 00000000 00:00 0      [stack]
->>>>
->>>> After:
->>>> root@qemuriscv64:~# cat /proc/self/maps
->>>> 00010000-00016000 r-xp 00000000 fe:00
->>>> 6389       /bin/cat.coreutils
->>>> 00016000-00017000 r--p 00005000 fe:00
->>>> 6389       /bin/cat.coreutils
->>>> 00017000-00018000 rw-p 00006000 fe:00
->>>> 6389       /bin/cat.coreutils
->>>> 2de81000-2dea2000 rw-p 00000000 00:00 0          [heap]
->>>> 3ff7eb6000-3ff7ed8000 rw-p 00000000 00:00 0
->>>> 3ff7ed8000-3ff7fd6000 r-xp 00000000 fe:00 7187   /lib/libc-
->>>> 2.28.so
->>>> 3ff7fd6000-3ff7fda000 r--p 000fd000 fe:00 7187   /lib/libc-
->>>> 2.28.so
->>>> 3ff7fda000-3ff7fdc000 rw-p 00101000 fe:00 7187   /lib/libc-
->>>> 2.28.so
->>>> 3ff7fdc000-3ff7fe2000 rw-p 00000000 00:00 0
->>>> 3ff7fe4000-3ff7fe6000 r-xp 00000000 00:00 0      [vdso]
->>>> 3ff7fe6000-3ff7ffd000 r-xp 00000000 fe:00 7193   /lib/ld-2.28.so
->>>> 3ff7ffd000-3ff7ffe000 r--p 00016000 fe:00 7193   /lib/ld-2.28.so
->>>> 3ff7ffe000-3ff7fff000 rw-p 00017000 fe:00 7193   /lib/ld-2.28.so
->>>> 3ff7fff000-3ff8000000 rw-p 00000000 00:00 0
->>>> 3fff888000-3fff8a9000 rw-p 00000000 00:00 0      [stack]
->>>>
->>>> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
->>>> Acked-by: Paul Walmsley <paul.walmsley@sifive.com>
->>>> Reviewed-by: Christoph Hellwig <hch@lst.de>
->>>> Reviewed-by: Kees Cook <keescook@chromium.org>
->>>> Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
->>>> ---
->>>>    arch/riscv/Kconfig | 12 ++++++++++++
->>>>    1 file changed, 12 insertions(+)
->>>>
->>>> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
->>>> index 59a4727ecd6c..87dc5370becb 100644
->>>> --- a/arch/riscv/Kconfig
->>>> +++ b/arch/riscv/Kconfig
->>>> @@ -54,6 +54,18 @@ config RISCV
->>>>    	select EDAC_SUPPORT
->>>>    	select ARCH_HAS_GIGANTIC_PAGE
->>>>    	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
->>>> +	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
->>>> +	select HAVE_ARCH_MMAP_RND_BITS
->>>> +
->>>> +config ARCH_MMAP_RND_BITS_MIN
->>>> +	default 18 if 6legacy_va_layout4BIT
->>>> +	default 8
->>>> +
->>>> +# max bits determined by the following formula:
->>>> +#  VA_BITS - PAGE_SHIFT - 3
->>>> +config ARCH_MMAP_RND_BITS_MAX
->>>> +	default 24 if 64BIT # SV39 based
->>>> +	default 17
->>>>    
->>>>    config MMU
->>>>    	def_bool y
->>> With this patch, I am not able to boot a Fedora Linux(a Gnome
->>> desktop
->>> image) on RISC-V hardware (Unleashed + Microsemi Expansion board).
->>> The
->>> booting gets stuck right after systemd starts.
->>>
->>> https://paste.fedoraproject.org/paste/TOrUMqqKH-pGFX7CnfajDg
->>>
->>> Reverting just this patch allow to boot Fedora successfully on
->>> specific
->>> RISC-V hardware. I have not root caused the issue but it looks like
->>> it
->>> might have messed userpsace mapping.
->> It might have messed userspace mapping but not enough to make
->> userspace
->> completely broken
->> as systemd does some things. I would try to boot in legacy layout:
->> if
->> you can try to set sysctl legacy_va_layout
->> at boottime, it will map userspace as it was before (bottom-up). If
->> that
->> does not work, the problem could
->> be the randomization that is activated by default now.
-> Randomization may not be the issue. I just removed
-> ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT from the config and that seems to
-> work. Here is the bottom-up layout with randomization on.
+On Mon, Sep 30, 2019 at 05:36:23PM -0700, Ian Rogers wrote:
+> Being const + weak breaks with some compilers that constant-propagate
+> from the weak symbol. This behavior is outside of the specification, but
+> in LLVM is chosen to match GCC's behavior.
+> 
+> LLVM's implementation was set in this patch:
+> https://github.com/llvm/llvm-project/commit/f49573d1eedcf1e44893d5a062ac1b72c8419646
+> A const + weak symbol is set to be weak_odr:
+> https://llvm.org/docs/LangRef.html
+> ODR is one definition rule, and given there is one constant definition
+> constant-propagation is possible. It is possible to get this code to
+> miscompile with LLVM when applying link time optimization. As compilers
+> become more aggressive, this is likely to break in more instances.
 
-Oups, sorry for my previous answer, I missed yours that landed in 
-another folder.
+is this just aprecaution or you actualy saw some breakage?
 
-Removing ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT also removes randomization
-as this config selects ARCH_HAS_ELF_RANDOMIZE.
-You could remove ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT and selects by hand
-ARCH_HAS_ELF_RANDOMIZE but you would have to implement arch_mmap_rnd and
-arch_randomize_brk (elf-randomize.h).
+> 
+> Move the definition of sample_reg_masks to the conditional part of
+> perf_regs.h and guard usage with HAVE_PERF_REGS_SUPPORT. This avoids the
+> weak symbol.
+> 
+> Fix an issue when HAVE_PERF_REGS_SUPPORT isn't defined from patch v1.
+> In v3, add perf_regs.c for architectures that HAVE_PERF_REGS_SUPPORT but
+> don't declare sample_regs_masks.
 
-The simplest would be to boot in legacy layout: I did not find a way to 
-set this in kernel
-command line, but you can by modifying it directly in the code:
+looks good to me (again ;-)), let's see if it passes Arnaldo's farm
 
-https://elixir.bootlin.com/linux/v5.4-rc2/source/kernel/sysctl.c#L269
+thanks,
+jirka
 
-> [root@fedora-riscv ~]# cat /proc/self/maps
-> 1555556000-1555570000 r-xp 00000000 103:01
-> 280098                        /usr/lib64/ld-2.28.so
-> 1555570000-1555571000 r--p 00019000 103:01
-> 280098                        /usr/lib64/ld-2.28.so
-> 1555571000-1555572000 rw-p 0001a000 103:01
-> 280098                        /usr/lib64/ld-2.28.so
-> 1555572000-1555573000 rw-p 00000000 00:00 0
-> 1555573000-1555575000 r-xp 00000000 00:00
-> 0                              [vdso]
-> 1555575000-1555576000 r--p 00000000 103:01
-> 50936                         /usr/lib/locale/en_US.utf8/LC_IDENTIFICAT
-> ION
-> 1555576000-155557d000 r--s 00000000 103:01
-> 280826                        /usr/lib64/gconv/gconv-modules.cache
-> 155557d000-155557e000 r--p 00000000 103:01
-> 50937                         /usr/lib/locale/en_US.utf8/LC_MEASUREMENT
-> 155557e000-155557f000 r--p 00000000 103:01
-> 50939                         /usr/lib/locale/en_US.utf8/LC_TELEPHONE
-> 155557f000-1555580000 r--p 00000000 103:01
-> 3706                          /usr/lib/locale/en_US.utf8/LC_ADDRESS
-> 1555580000-1555581000 r--p 00000000 103:01
-> 50944                         /usr/lib/locale/en_US.utf8/LC_NAME
-> 1555581000-1555582000 r--p 00000000 103:01
-> 3775                          /usr/lib/locale/en_US.utf8/LC_PAPER
-> 1555582000-1555583000 r--p 00000000 103:01
-> 3758                          /usr/lib/locale/en_US.utf8/LC_MESSAGES/SY
-> S_LC_MESSAGES
-> 1555583000-1555584000 r--p 00000000 103:01
-> 50938                         /usr/lib/locale/en_US.utf8/LC_MONETARY
-> 1555584000-1555585000 r--p 00000000 103:01
-> 50940                         /usr/lib/locale/en_US.utf8/LC_TIME
-> 1555585000-1555586000 r--p 00000000 103:01
-> 50945                         /usr/lib/locale/en_US.utf8/LC_NUMERIC
-> 1555590000-1555592000 rw-p 00000000 00:00 0
-> 1555592000-15556b1000 r-xp 00000000 103:01
-> 280105                        /usr/lib64/libc-2.28.so
-> 15556b1000-15556b5000 r--p 0011e000 103:01
-> 280105                        /usr/lib64/libc-2.28.so
-> 15556b5000-15556b7000 rw-p 00122000 103:01
-> 280105                        /usr/lib64/libc-2.28.so
-> 15556b7000-15556bb000 rw-p 00000000 00:00 0
-> 15556bb000-1555933000 r--p 00000000 103:01
-> 3755                          /usr/lib/locale/en_US.utf8/LC_COLLATE
-> 1555933000-1555986000 r--p 00000000 103:01
-> 50942                         /usr/lib/locale/en_US.utf8/LC_CTYPE
-> 1555986000-15559a8000 rw-p 00000000 00:00 0
-> 2aaaaaa000-2aaaab1000 r-xp 00000000 103:01
-> 283975                        /usr/bin/cat
-> 2aaaab1000-2aaaab2000 r--p 00006000 103:01
-> 283975                        /usr/bin/cat
-> 2aaaab2000-2aaaab3000 rw-p 00007000 103:01
-> 283975                        /usr/bin/cat
-> 2aaaab3000-2aaaad4000 rw-p 00000000 00:00
-> 0                              [heap]
-> 3fffc97000-3fffcb8000 rw-p 00000000 00:00
-> 0                              [stack]
->
->
->> Anyway, it's weird since userspace should not depend on how the
->> mapping is.
->>
->> If you can identify the program that stalls, that would be fantastic
->> :)
->>
-> It stucks while booting. So I am not sure how to figure out which
-> program stalls. It is difficult to figure out from boot log as it
-> stucks at different places but soon after systemd starts.
-
-If you can attach the running kernel, I would use vmlinux-gdb.py commands
-to figure out which processes are running (lx-ps command in particular could
-give us a hint). You can also add traces directly in the kernel and 
-either use
-lx-dmesg command to print them from gdb or use your standard serial output:
-I would then print task_struct->comm at context switch to see which process
-is stuck.
-To use the python script, you need to recompile with DEBUG_INFO and
-GDB_SCRIPTS enabled.
-
-FYI, I have just booted a custom buildroot image based on kernel 5.4-rc2.
-
-Let me know if I can do anything.
-
-Alex
-
->> As the code is common to mips and arm now and I did not hear from
->> them,
->> I imagine the problem comes
->> from us.
->>
->> Alex
+> 
+> Signed-off-by: Ian Rogers <irogers@google.com>
+> ---
+>  tools/perf/arch/arm/util/Build         | 2 ++
+>  tools/perf/arch/arm/util/perf_regs.c   | 6 ++++++
+>  tools/perf/arch/arm64/util/Build       | 1 +
+>  tools/perf/arch/arm64/util/perf_regs.c | 6 ++++++
+>  tools/perf/arch/csky/util/Build        | 2 ++
+>  tools/perf/arch/csky/util/perf_regs.c  | 6 ++++++
+>  tools/perf/arch/riscv/util/Build       | 2 ++
+>  tools/perf/arch/riscv/util/perf_regs.c | 6 ++++++
+>  tools/perf/arch/s390/util/Build        | 1 +
+>  tools/perf/arch/s390/util/perf_regs.c  | 6 ++++++
+>  tools/perf/util/parse-regs-options.c   | 8 ++++++--
+>  tools/perf/util/perf_regs.c            | 4 ----
+>  tools/perf/util/perf_regs.h            | 4 ++--
+>  13 files changed, 46 insertions(+), 8 deletions(-)
+>  create mode 100644 tools/perf/arch/arm/util/perf_regs.c
+>  create mode 100644 tools/perf/arch/arm64/util/perf_regs.c
+>  create mode 100644 tools/perf/arch/csky/util/perf_regs.c
+>  create mode 100644 tools/perf/arch/riscv/util/perf_regs.c
+>  create mode 100644 tools/perf/arch/s390/util/perf_regs.c
+> 
+> diff --git a/tools/perf/arch/arm/util/Build b/tools/perf/arch/arm/util/Build
+> index 296f0eac5e18..37fc63708966 100644
+> --- a/tools/perf/arch/arm/util/Build
+> +++ b/tools/perf/arch/arm/util/Build
+> @@ -1,3 +1,5 @@
+> +perf-y += perf_regs.o
+> +
+>  perf-$(CONFIG_DWARF) += dwarf-regs.o
+>  
+>  perf-$(CONFIG_LOCAL_LIBUNWIND)    += unwind-libunwind.o
+> diff --git a/tools/perf/arch/arm/util/perf_regs.c b/tools/perf/arch/arm/util/perf_regs.c
+> new file mode 100644
+> index 000000000000..2864e2e3776d
+> --- /dev/null
+> +++ b/tools/perf/arch/arm/util/perf_regs.c
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +#include "../../util/perf_regs.h"
+> +
+> +const struct sample_reg sample_reg_masks[] = {
+> +	SMPL_REG_END
+> +};
+> diff --git a/tools/perf/arch/arm64/util/Build b/tools/perf/arch/arm64/util/Build
+> index 3cde540d2fcf..0a7782c61209 100644
+> --- a/tools/perf/arch/arm64/util/Build
+> +++ b/tools/perf/arch/arm64/util/Build
+> @@ -1,4 +1,5 @@
+>  perf-y += header.o
+> +perf-y += perf_regs.o
+>  perf-y += sym-handling.o
+>  perf-$(CONFIG_DWARF)     += dwarf-regs.o
+>  perf-$(CONFIG_LOCAL_LIBUNWIND) += unwind-libunwind.o
+> diff --git a/tools/perf/arch/arm64/util/perf_regs.c b/tools/perf/arch/arm64/util/perf_regs.c
+> new file mode 100644
+> index 000000000000..2864e2e3776d
+> --- /dev/null
+> +++ b/tools/perf/arch/arm64/util/perf_regs.c
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +#include "../../util/perf_regs.h"
+> +
+> +const struct sample_reg sample_reg_masks[] = {
+> +	SMPL_REG_END
+> +};
+> diff --git a/tools/perf/arch/csky/util/Build b/tools/perf/arch/csky/util/Build
+> index 1160bb2332ba..7d3050134ae0 100644
+> --- a/tools/perf/arch/csky/util/Build
+> +++ b/tools/perf/arch/csky/util/Build
+> @@ -1,2 +1,4 @@
+> +perf-y += perf_regs.o
+> +
+>  perf-$(CONFIG_DWARF) += dwarf-regs.o
+>  perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
+> diff --git a/tools/perf/arch/csky/util/perf_regs.c b/tools/perf/arch/csky/util/perf_regs.c
+> new file mode 100644
+> index 000000000000..2864e2e3776d
+> --- /dev/null
+> +++ b/tools/perf/arch/csky/util/perf_regs.c
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +#include "../../util/perf_regs.h"
+> +
+> +const struct sample_reg sample_reg_masks[] = {
+> +	SMPL_REG_END
+> +};
+> diff --git a/tools/perf/arch/riscv/util/Build b/tools/perf/arch/riscv/util/Build
+> index 1160bb2332ba..7d3050134ae0 100644
+> --- a/tools/perf/arch/riscv/util/Build
+> +++ b/tools/perf/arch/riscv/util/Build
+> @@ -1,2 +1,4 @@
+> +perf-y += perf_regs.o
+> +
+>  perf-$(CONFIG_DWARF) += dwarf-regs.o
+>  perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
+> diff --git a/tools/perf/arch/riscv/util/perf_regs.c b/tools/perf/arch/riscv/util/perf_regs.c
+> new file mode 100644
+> index 000000000000..2864e2e3776d
+> --- /dev/null
+> +++ b/tools/perf/arch/riscv/util/perf_regs.c
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +#include "../../util/perf_regs.h"
+> +
+> +const struct sample_reg sample_reg_masks[] = {
+> +	SMPL_REG_END
+> +};
+> diff --git a/tools/perf/arch/s390/util/Build b/tools/perf/arch/s390/util/Build
+> index 22797f043b84..3d9d0f4f72ca 100644
+> --- a/tools/perf/arch/s390/util/Build
+> +++ b/tools/perf/arch/s390/util/Build
+> @@ -1,5 +1,6 @@
+>  perf-y += header.o
+>  perf-y += kvm-stat.o
+> +perf-y += perf_regs.o
+>  
+>  perf-$(CONFIG_DWARF) += dwarf-regs.o
+>  perf-$(CONFIG_LIBDW_DWARF_UNWIND) += unwind-libdw.o
+> diff --git a/tools/perf/arch/s390/util/perf_regs.c b/tools/perf/arch/s390/util/perf_regs.c
+> new file mode 100644
+> index 000000000000..2864e2e3776d
+> --- /dev/null
+> +++ b/tools/perf/arch/s390/util/perf_regs.c
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +#include "../../util/perf_regs.h"
+> +
+> +const struct sample_reg sample_reg_masks[] = {
+> +	SMPL_REG_END
+> +};
+> diff --git a/tools/perf/util/parse-regs-options.c b/tools/perf/util/parse-regs-options.c
+> index ef46c2848808..e687497b3aac 100644
+> --- a/tools/perf/util/parse-regs-options.c
+> +++ b/tools/perf/util/parse-regs-options.c
+> @@ -13,7 +13,7 @@ static int
+>  __parse_regs(const struct option *opt, const char *str, int unset, bool intr)
+>  {
+>  	uint64_t *mode = (uint64_t *)opt->value;
+> -	const struct sample_reg *r;
+> +	const struct sample_reg *r = NULL;
+>  	char *s, *os = NULL, *p;
+>  	int ret = -1;
+>  	uint64_t mask;
+> @@ -46,19 +46,23 @@ __parse_regs(const struct option *opt, const char *str, int unset, bool intr)
+>  
+>  			if (!strcmp(s, "?")) {
+>  				fprintf(stderr, "available registers: ");
+> +#ifdef HAVE_PERF_REGS_SUPPORT
+>  				for (r = sample_reg_masks; r->name; r++) {
+>  					if (r->mask & mask)
+>  						fprintf(stderr, "%s ", r->name);
+>  				}
+> +#endif
+>  				fputc('\n', stderr);
+>  				/* just printing available regs */
+>  				return -1;
+>  			}
+> +#ifdef HAVE_PERF_REGS_SUPPORT
+>  			for (r = sample_reg_masks; r->name; r++) {
+>  				if ((r->mask & mask) && !strcasecmp(s, r->name))
+>  					break;
+>  			}
+> -			if (!r->name) {
+> +#endif
+> +			if (!r || !r->name) {
+>  				ui__warning("Unknown register \"%s\", check man page or run \"perf record %s?\"\n",
+>  					    s, intr ? "-I" : "--user-regs=");
+>  				goto error;
+> diff --git a/tools/perf/util/perf_regs.c b/tools/perf/util/perf_regs.c
+> index 2774cec1f15f..5ee47ae1509c 100644
+> --- a/tools/perf/util/perf_regs.c
+> +++ b/tools/perf/util/perf_regs.c
+> @@ -3,10 +3,6 @@
+>  #include "perf_regs.h"
+>  #include "event.h"
+>  
+> -const struct sample_reg __weak sample_reg_masks[] = {
+> -	SMPL_REG_END
+> -};
+> -
+>  int __weak arch_sdt_arg_parse_op(char *old_op __maybe_unused,
+>  				 char **new_op __maybe_unused)
+>  {
+> diff --git a/tools/perf/util/perf_regs.h b/tools/perf/util/perf_regs.h
+> index 47fe34e5f7d5..e014c2c038f4 100644
+> --- a/tools/perf/util/perf_regs.h
+> +++ b/tools/perf/util/perf_regs.h
+> @@ -15,8 +15,6 @@ struct sample_reg {
+>  #define SMPL_REG2(n, b) { .name = #n, .mask = 3ULL << (b) }
+>  #define SMPL_REG_END { .name = NULL }
+>  
+> -extern const struct sample_reg sample_reg_masks[];
+> -
+>  enum {
+>  	SDT_ARG_VALID = 0,
+>  	SDT_ARG_SKIP,
+> @@ -27,6 +25,8 @@ uint64_t arch__intr_reg_mask(void);
+>  uint64_t arch__user_reg_mask(void);
+>  
+>  #ifdef HAVE_PERF_REGS_SUPPORT
+> +extern const struct sample_reg sample_reg_masks[];
+> +
+>  #include <perf_regs.h>
+>  
+>  #define DWARF_MINIMAL_REGS ((1ULL << PERF_REG_IP) | (1ULL << PERF_REG_SP))
+> -- 
+> 2.23.0.444.g18eeb5a265-goog
+> 
 
 _______________________________________________
 linux-riscv mailing list
