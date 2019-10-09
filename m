@@ -2,82 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C10D4D04EE
-	for <lists+linux-riscv@lfdr.de>; Wed,  9 Oct 2019 02:51:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CBEFD0503
+	for <lists+linux-riscv@lfdr.de>; Wed,  9 Oct 2019 03:07:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wb/MiPd0j76dWwqilaB95F9tcq0zsxUHYHBIBkdKQPY=; b=rlOCkEcJsGbwQp
-	PaSLRZEaXFf3bGGLLLw1aifM/3WmC9nLYjLPqifMNL5OBiKDnEhhr8Eugrp+xrqyOLOsnmf1WrxXD
-	aDtGSUtoF28q/82XAlK2v92qFR8a2eLASwkIZeQVJAdVB+MnHGBckfSGbBGXF7yR1zNYbU34ZlOe0
-	P68+3R1hF1mtTIKXRdmnYiRuEncx4NSIa+3dAcwfmyhcvEDpV8Kyiz86xO9DcWi+0ubtrTW9F9qsl
-	B5TZ1v4hkFLI5k2FA/PFrzq+nZrbbUON7x8TqGTRllnbtOc5bTLlUaz0JgD8GEsouIiz/KGtl5Pyg
-	PalcBxkdk3NwsAgWzXog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FrvTZ1kKyvVRRR1qOYkEc3hg9fx/sFi1L6WoCerVjGc=; b=CDnyDC3HT54ngV
+	9Y/Wd6z3K7MKck1FlTHISr8ntNYz8Ke+hcKXM5tE0mvDSsaf09Q8yo0g9XgGkYUhoOiYTeoqWmhGq
+	Te8400fHYnE1WC0oV+57rGjCsLkzB0X8D2yuitQStL+Lz/AwTmo5JGO5HdISX0n53tbol4bh3df43
+	LdgOpyclTZC0WkgHmDpEnDY4oK3xSVzEyEVKXZkYaetWNhIORnDUAkLkAC6BH6zH2vSSd24qcOM2X
+	9lsIYCoWQwsiGqi5uXnh+gxzoxg9npyhX6V3tz1h1+s5xTCLM/0uBEbHLks2d/1wccfNwaDXDdw7n
+	KaOOkiTvkJCGUnaaRY9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iI0CN-0007Zs-1o; Wed, 09 Oct 2019 00:51:27 +0000
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
+	id 1iI0RW-0003eN-9m; Wed, 09 Oct 2019 01:07:06 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iI0CJ-0007ZP-2w
- for linux-riscv@lists.infradead.org; Wed, 09 Oct 2019 00:51:25 +0000
-Received: by mail-io1-xd42.google.com with SMTP id c25so1061976iot.12
- for <linux-riscv@lists.infradead.org>; Tue, 08 Oct 2019 17:51:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=EMZtjM31Em1vP/4BHL66TlLSBp4SJ3Jkhr3vg2//7Jg=;
- b=FYPYWqSyx4I3ZdZfLoUgyxUd20pJG/ZUWUmeIssVu39IfkVLIkxhKVy06RoPkesrsm
- hFaWeoAHnxfoYSf8IZwPDCWB1n5+X8KncOA8FGYqRdSWFpoJEys20ueJ1eEmPy/L6dt/
- DyHkVUXmlwQiddd7cu0vt2BJMC51MIyDgimr5t1fA7UaU0hq5EcGEsWQBVyynaW8K+fW
- KBfCdGxTbpLbrr3CKY2Vt+QzyHOMTQjTAKsi7lzyq/8yxweHp2onHOFAs577ckKV94tz
- SiOGqQEafjAzm1mJqRqqJkUy0VQCsoOiHafkVUqLZT5ohXOw3ezyhsJqN/tE9TTThuEw
- QbJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=EMZtjM31Em1vP/4BHL66TlLSBp4SJ3Jkhr3vg2//7Jg=;
- b=F040FdYZCtPvsBzxu/exnet9xYxuWV8QoQtU7QWDUb+iZC9kqMP34BBvzs8wdAQuvg
- xOU8rya1rL6ZmQVdHyMI/kwexVhTO4KjJCKaSrm0aMXVXN+PFY4o9+7w5oCPEo4GAk72
- wedfRP4bX7g1Yse3BcnjYx+J4IU0x84abXdhHhitlXz8trTj4cpyDzVyPqDmbOMO8RPn
- lmL+yiAI9UMnuq9YyCTYDasY4ujGWctKARZKdgI7y81V3ahMRiRKqyfWkz2Hm1I1T3GT
- uFOblOgN8WKQX/hoFMAkhiDfMZEILQFma7ABtJsUzhRwd7Yaetajv9iRjbYPDC4WaKwD
- 2FeA==
-X-Gm-Message-State: APjAAAUPLrGbKuiNOtHrNmI/l0l7lGNk/F6jM8nq9kye6R6SMu1BfDM0
- WBsQbpQ/Hpe44TwsNhR/fyxkew==
-X-Google-Smtp-Source: APXvYqx67KnJKfLnhVzjCetf/uH7UeQb+kzcmcUELfUuKW4/Y+MbDnfd/wSipbJOtBrTJKbztJ3S4g==
-X-Received: by 2002:a92:5dda:: with SMTP id e87mr627357ilg.216.1570582281295; 
- Tue, 08 Oct 2019 17:51:21 -0700 (PDT)
-Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id o187sm363778ila.13.2019.10.08.17.51.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 17:51:20 -0700 (PDT)
-Date: Tue, 8 Oct 2019 17:51:14 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Valentin Schneider <valentin.schneider@arm.com>
-Subject: Re: [PATCH v2 6/9] RISC-V: entry: Remove unneeded need_resched() loop
-In-Reply-To: <20190923143620.29334-7-valentin.schneider@arm.com>
-Message-ID: <alpine.DEB.2.21.9999.1910081750550.32458@viisi.sifive.com>
-References: <20190923143620.29334-1-valentin.schneider@arm.com>
- <20190923143620.29334-7-valentin.schneider@arm.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ id 1iI0RT-0003dw-EM
+ for linux-riscv@lists.infradead.org; Wed, 09 Oct 2019 01:07:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1570583223; x=1602119223;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Drzoga2/qb62rG5gRYCswouIqBr/dzKl/+yVPPdGcgM=;
+ b=iZhFZiwXj7FQ8rJBfDNCxyh7kmwKUAJ5bH+Cs6fT14lIXPZQxajU8v+7
+ UJZIpHgjU+BlxeyOls9p977pgrcfujRaLXzV5w63AQqQjc6tg4GX3veCh
+ vagpPOEiXzNuNgswLmCm2hgbSNlZ2xZ84NkvhGloLrSeegkNiGIc41Me1
+ 9lyulYnjULKdPdtMcKCv3aWgcu4OC0vdWhaxvJuWxOYOdb6TS3LXUrTXs
+ QMUxsjX55h0tYqWSbxqy9GB/wrUlyaGP2eAGluX+9frGFHYUHhNFUWCpX
+ RBdQxFjbvF65TwWA74l/GVqhkMfAM58pT8WljA9Ye2U6jzziISrirvj6Z Q==;
+IronPort-SDR: 9QHElGfQI++i5CyYGnKeHeSM4RXVYa+zux+UVOObyohBePma2z42+rUBS8mDG8c/b+DCXVPZ+1
+ ohZLJnbS181498mfZUBamOQL/SEN6NjnP7CF0XEWVOT3/SS/r2PY6ptahTmIRIugjExHNefkrU
+ kvqjKs6IK6D1waIyoDLC4iLnvfNsQxGuqexbgXoklvZQ+qQPSNUkBGWIzcLvllIITJvBr4swpj
+ eEoBP9nbIM7G02HJaE37gDtyEH1EiiT/NlOWMK6nrEK2aVCFKdt8xluPb873nY0tWRMLGHCsvZ
+ 2pw=
+X-IronPort-AV: E=Sophos;i="5.67,273,1566835200"; d="scan'208";a="120092283"
+Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 09 Oct 2019 09:06:58 +0800
+IronPort-SDR: Qb4dru1R7sBPcflRB/aNiXDOuT7hQOSyoGLIVHthHt2K3OVLjI8rGTYYzNIVf897g0HCmtSO38
+ ULedoL1+zc6bG7Lg4d6sFPW5nhaI7o1CsezzkFRSbavEvFpkP0mx6j5xjnpKkA82ygQGVqv83O
+ EgzTKYpi4A3OhsIpntDFGQ9JzKwdPiBZ4FCSL+wSHG2QUzuTb12XaHPNgjIcPsgqJ1HQXslP0K
+ 9u5HiXP+9TOB6f5oyUX+K15sXg0i4p/7v8N7irf7rNA0m++HMS2VsVRzUoyj9barzxEtXjUtda
+ EXwxviTf4ndHSnTsubpkcaM2
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+ by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Oct 2019 18:02:59 -0700
+IronPort-SDR: WGv8QSqeoPrRU4wj9q+DsbCGhW6kDwro69+hpsH/32hMiPv+tpqPC9K76rfmXhXKkaW8uM3d08
+ xkO7tt7ppZ8Sff79lVGqkdKX/if+MxfB0grUGXIYHkyd7Rlm5NeZuTy8JMnbpCS27qsFJS5/te
+ 5Ku7OL1c/skrw1+qmMsoUgNM/y6vrPwriBmMOhvSb1UMlW1N6JHZiEn5bUAc8f60A2F0gmYJ0I
+ 2VsOI9JxPfFUKgk4trI5/VjmpC7/bwXhlGF5oLc6IJyWzBekiTDR5jrC6Bfa8b09NdAt8DZlGO
+ xKg=
+WDCIronportException: Internal
+Received: from jedi-01.sdcorp.global.sandisk.com (HELO
+ jedi-01.int.fusionio.com) ([10.11.143.218])
+ by uls-op-cesaip02.wdc.com with ESMTP; 08 Oct 2019 18:06:59 -0700
+From: Atish Patra <atish.patra@wdc.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] RISC-V: Typo fixes in image header and documentation.
+Date: Tue,  8 Oct 2019 18:06:37 -0700
+Message-Id: <20191009010637.9955-1-atish.patra@wdc.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191008_175123_190331_B6C75058 
-X-CRM114-Status: UNSURE (   7.26  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191008_180703_519068_39492720 
+X-CRM114-Status: GOOD (  12.77  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -98,28 +98,73 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>,
- linux-kernel@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, linux-doc@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>, Atish Patra <atish.patra@wdc.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Karsten Merker <merker@debian.org>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 23 Sep 2019, Valentin Schneider wrote:
+There are some typos in boot image header and riscv boot documentation.
 
-> Since the enabling and disabling of IRQs within preempt_schedule_irq()
-> is contained in a need_resched() loop, we don't need the outer arch
-> code loop.
-> 
-> Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
-> Signed-off-by: Valentin Schneider <valentin.schneider@arm.com>
-> Cc: Albert Ou <aou@eecs.berkeley.edu>
-> Cc: linux-riscv@lists.infradead.org
+Fix the typos.
 
-Thanks, queued for v5.4-rc.
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+---
+ Documentation/riscv/boot-image-header.rst | 4 ++--
+ arch/riscv/include/asm/image.h            | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/Documentation/riscv/boot-image-header.rst b/Documentation/riscv/boot-image-header.rst
+index 7b4d1d747585..8efb0596a33f 100644
+--- a/Documentation/riscv/boot-image-header.rst
++++ b/Documentation/riscv/boot-image-header.rst
+@@ -22,7 +22,7 @@ The following 64-byte header is present in decompressed Linux kernel image::
+ 	u64 res2 = 0;		  /* Reserved */
+ 	u64 magic = 0x5643534952; /* Magic number, little endian, "RISCV" */
+ 	u32 magic2 = 0x56534905;  /* Magic number 2, little endian, "RSC\x05" */
+-	u32 res4;		  /* Reserved for PE COFF offset */
++	u32 res3;		  /* Reserved for PE COFF offset */
+ 
+ This header format is compliant with PE/COFF header and largely inspired from
+ ARM64 header. Thus, both ARM64 & RISC-V header can be combined into one common
+@@ -34,7 +34,7 @@ Notes
+ - This header can also be reused to support EFI stub for RISC-V in future. EFI
+   specification needs PE/COFF image header in the beginning of the kernel image
+   in order to load it as an EFI application. In order to support EFI stub,
+-  code0 should be replaced with "MZ" magic string and res5(at offset 0x3c) should
++  code0 should be replaced with "MZ" magic string and res3(at offset 0x3c) should
+   point to the rest of the PE/COFF header.
+ 
+ - version field indicate header version number
+diff --git a/arch/riscv/include/asm/image.h b/arch/riscv/include/asm/image.h
+index 344db5244547..4f8061a5ac4a 100644
+--- a/arch/riscv/include/asm/image.h
++++ b/arch/riscv/include/asm/image.h
+@@ -42,7 +42,7 @@
+  * @res2:		reserved
+  * @magic:		Magic number (RISC-V specific; deprecated)
+  * @magic2:		Magic number 2 (to match the ARM64 'magic' field pos)
+- * @res4:		reserved (will be used for PE COFF offset)
++ * @res3:		reserved (will be used for PE COFF offset)
+  *
+  * The intention is for this header format to be shared between multiple
+  * architectures to avoid a proliferation of image header formats.
+@@ -59,7 +59,7 @@ struct riscv_image_header {
+ 	u64 res2;
+ 	u64 magic;
+ 	u32 magic2;
+-	u32 res4;
++	u32 res3;
+ };
+ #endif /* __ASSEMBLY__ */
+ #endif /* __ASM_IMAGE_H */
+-- 
+2.21.0
 
-- Paul
 
 _______________________________________________
 linux-riscv mailing list
