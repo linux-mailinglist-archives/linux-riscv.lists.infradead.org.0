@@ -2,60 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30A60D0A4F
-	for <lists+linux-riscv@lfdr.de>; Wed,  9 Oct 2019 10:53:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9D3BD0D42
+	for <lists+linux-riscv@lfdr.de>; Wed,  9 Oct 2019 12:56:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NOlRr7I4PP0GEthSP5xmuAMKSR+FXHEM7yKPOERC47o=; b=GWD9aDzDTp1mv/
-	RfCnTEhDg1rCr0UiqHNv/0Y6Y2sYLPn9zGvFiuHll0pcMHptBdARFqpi/Hnr25mN9vU7KsxiBBMEJ
-	CiVWpUVSfNFyVtO0sgcTJ+IGlkkF59BijUp+E/APFBq8muMuQTJ2QkK4fUwkNBWT+g3Y3VwpDX44n
-	wDrpjPZT2PdP3OQFlB4xY9lhT2X4/J2j9Hak02Q4AHm8I9CajZymSsikTQFCQnlG331joy2RhPGAz
-	qZ7bec6RyHmXay3lJDhLCLYH/N0GQ+zTwWw6o/v2lMhc5/pAV+YRtwOlCjB3rEPK/qFZXEy/5cz3g
-	5tkZh+7E6x8h11PZRTuw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SvXQL6eg+nNqwXFJzftqoF1qf+WHnmsMEb4jxGdf1oo=; b=aYTE2rkhZVxlUI
+	PekUw9dvM6+7FovhN8wfpMnaXzhLl04lBkTxBScUATcU9x+1ncrJlphAQDl2CQv11/S2ta/XBfdD2
+	7DPiLtC5LhJYg1AP4lH0et2XSUtGkiYEeuo8qfIt6aqQP3LUBviO21B2Gh6vB/FH21kEuVZTOzSnI
+	trWSR9uJeR00tbEweZLAsu5QyvPwxb47fO84fBDki4mgS4cW+QlM7HwyyNMMGIM8mYo55muSV1M/p
+	1VAQ4lXRQSmE7tocMLQs6tlugBJYkjr1dULrLdHAvilPrIAb7P4dfSHYeJSsyuroEhghiX0/baJjw
+	gVFmy6BLcu9lhEdL05CQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iI7it-0000xn-7K; Wed, 09 Oct 2019 08:53:31 +0000
-Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
- helo=ATCSQR.andestech.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iI7ip-0000x4-QN
- for linux-riscv@lists.infradead.org; Wed, 09 Oct 2019 08:53:29 +0000
-Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x998bE2t098477;
- Wed, 9 Oct 2019 16:37:14 +0800 (GMT-8)
- (envelope-from alankao@andestech.com)
-Received: from andestech.com (10.0.15.65) by ATCPCS16.andestech.com
- (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Wed, 9 Oct 2019
- 16:53:13 +0800
-Date: Wed, 9 Oct 2019 16:53:14 +0800
-From: Alan Kao <alankao@andestech.com>
-To: <paul.walmsley@sifive.com>, <palmer@sifive.com>
-Subject: Does sfence.vma implicitly cover what fence.i does?
-Message-ID: <20191009085313.GA14021@andestech.com>
+	id 1iI9dV-0006Bw-NF; Wed, 09 Oct 2019 10:56:05 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1iI9dG-00063O-Mp; Wed, 09 Oct 2019 10:55:52 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8A51628;
+ Wed,  9 Oct 2019 03:55:47 -0700 (PDT)
+Received: from [10.1.196.133] (unknown [10.1.196.133])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9F3443F703;
+ Wed,  9 Oct 2019 03:55:44 -0700 (PDT)
+Subject: Re: [PATCH v11 07/22] riscv: mm: Add p?d_leaf() definitions
+To: Paul Walmsley <paul.walmsley@sifive.com>, alex@ghiti.fr
+References: <20191007153822.16518-1-steven.price@arm.com>
+ <20191007153822.16518-8-steven.price@arm.com>
+ <alpine.DEB.2.21.9999.1910081431310.11044@viisi.sifive.com>
+From: Steven Price <steven.price@arm.com>
+Message-ID: <b0ed95cd-703f-9ac2-a2e8-9a059f4095f9@arm.com>
+Date: Wed, 9 Oct 2019 11:55:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Originating-IP: [10.0.15.65]
-X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x998bE2t098477
+In-Reply-To: <alpine.DEB.2.21.9999.1910081431310.11044@viisi.sifive.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191009_015328_112353_AF82462E 
-X-CRM114-Status: UNSURE (   2.33  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20191009_035550_790200_034F7D16 
+X-CRM114-Status: GOOD (  15.51  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 TVD_RCVD_IP            Message was received from an IP address
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
- dynamic-looking rDNS
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,31 +62,66 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org
+Cc: Mark Rutland <Mark.Rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>, linux-mm@kvack.org,
+ "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, "Liang, Kan" <kan.liang@linux.intel.com>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Arnd Bergmann <arnd@arndb.de>,
+ =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-kernel@vger.kernel.org,
+ James Morse <james.morse@arm.com>, Andrew Morton <akpm@linux-foundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Paul, Palmer,
+On 08/10/2019 22:33, Paul Walmsley wrote:
+> On Mon, 7 Oct 2019, Steven Price wrote:
+> 
+>> walk_page_range() is going to be allowed to walk page tables other than
+>> those of user space. For this it needs to know when it has reached a
+>> 'leaf' entry in the page tables. This information is provided by the
+>> p?d_leaf() functions/macros.
+>>
+>> For riscv a page is a leaf page when it has a read, write or execute bit
+>> set on it.
+>>
+>> CC: Palmer Dabbelt <palmer@sifive.com>
+>> CC: Albert Ou <aou@eecs.berkeley.edu>
+>> CC: linux-riscv@lists.infradead.org
+>> Signed-off-by: Steven Price <steven.price@arm.com>
+> 
+> Acked-by: Paul Walmsley <paul.walmsley@sifive.com> # for arch/riscv  
+> 
+> Alex has a good point, but probably the right thing to do is to replace 
+> the contents of the arch/riscv/mm/hugetlbpage.c p{u,m}d_huge() functions 
+> with calls to Steven's new static inline functions.
 
-In arch/riscv/include/asm/tlbflush.h, the comment says
+The intention is to create new functions that are not dependent on
+hugepage support in user space. hugetlbpage.c is only built if
+CONFIG_HUGETLB_PAGE is defined.
 
-> Flush entire local TLB.  'sfence.vma' implicitly fences with the instruction
-> cache as well, so a 'fence.i' is not necessary.
+As you say - the p{u,m}d_huge() functions can be reimplemented using the
+new static inline functions if desired.
 
-and in the privileged spec, it is stated that
+Thanks for the review.
 
-> Executing an SFENCE.VMA instruction guarantees that any previous stores
-> already visible to the current RISC-V hart are ordered before all subsequent
-> implicit references from that hart to the memory-management data structures.
+Steve
 
-So my question is straightforward.  Is I-cache a kind of memory-management data
-structure?  am I missing something here?
+> 
+> - Paul
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> 
 
-Thanks for any clarification.
-
-Alan
 
 _______________________________________________
 linux-riscv mailing list
