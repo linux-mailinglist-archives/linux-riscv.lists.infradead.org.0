@@ -2,90 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A76AD1D21
-	for <lists+linux-riscv@lfdr.de>; Thu, 10 Oct 2019 02:09:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ED1CD216A
+	for <lists+linux-riscv@lfdr.de>; Thu, 10 Oct 2019 09:10:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4xPRD1MiV86UTpyTv3dzQiwWMow1+naqInsJzhPAV2c=; b=Zq7KO3xwmOa7Vd
-	RZ2rfOwi0dL5Qh1trmL/xqdrc9MVggtbqa8Xp6iHBug9RpFTLnsfTz2LcRYrxBYA2jkKmwT/Juqcp
-	zxkKY9MIz66W14L8/YDG0IGNuIXtl3zeWt6a3TnxHQR5v/cewo7eUzv5Kc5HBaQDKU3HeoNVBij5L
-	V1occRTfMBBwW85u3FogmPN49i9DmDwqgzKkV76/ysK855zoygzwgBniIKliFnIJIKkaJnmhLJZaC
-	LIa4jUr9ynkgeIO9K4g80MVNuJyjisePn+TwYvougps3h2UYBYm90ocvY6Z8v+aBtMQDX3GMlKsYw
-	u3WvlrbGnN4nXGgpOsnA==;
+	List-Owner; bh=6JJpR+kieTmoHTN8BluiZjR7tYO/uziy5YHpi7w4x4w=; b=J5NoRyDl2XRr3D
+	cAAtQNSkjeNLQsmUy6UF2Zyncu8ej9E7uRD2tbT2HWIkw+HgikRj3YVGH017ovCf6fk4yz2F71Rzi
+	ua/CAfhRSpz4kAATmzA6OmB6v5Gk7SGpPFc5dLAO7k6zPEtjQMoGYRstirIENPqFS3Nz90WPwfugN
+	WMccvHEGbXBWLtFypNaowEDNmZcqhbsdE29FzEUWUlAcnRm1EGQ5HuCtEBMfJ9uzsXMJKph9XMSqf
+	ab5rsr7xH+l7pOaSylk695rotitXbeTKQcI3TFIB8MKRbEezU0HmB/yPHt4gt+zVn3kbYlKX4PM7u
+	3IQp83BBbpjEyTTujzDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iIM0h-0005Yh-B9; Thu, 10 Oct 2019 00:08:51 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1iISap-0001ey-1r; Thu, 10 Oct 2019 07:10:35 +0000
+Received: from mail-oi1-f195.google.com ([209.85.167.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iIM0d-0005Y3-Il
- for linux-riscv@lists.infradead.org; Thu, 10 Oct 2019 00:08:49 +0000
-Received: by mail-io1-xd43.google.com with SMTP id b136so9690135iof.3
- for <linux-riscv@lists.infradead.org>; Wed, 09 Oct 2019 17:08:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=27bPZ5AjHbkAvma41N9WmP13swNHgshH29767ZOGwvE=;
- b=ZxD4EoEu6a0XX57fQ9vuCr2Qdbqb486Yy+eIELlgZpMWd2I1HaiX7iC7Jq5ct1DnzT
- i6A1uNstnxnfaoLOabt8dbFoPCAUoEmXI0aSSZduZw5ByiVNKjG9ayG/ksg0vYYuGcPG
- JC79MRCqUSPJM/BY2C/Vsfya1TawIGSSndPMZgAvaxG/M9J4OkJM5LYCwwtbp8tlLzyA
- O3l39mNFN6sRktrkV1/gU8eAIFxT0MELDrPLBjI6eB9+cHbJANLr4tQSnreXsnNpbMfO
- 1/VFr2dIiqCzhh3YWpSQhne6zKR0hlqfH03njxQcCAvNPPAe7wMKVLHAPh8ePGOw5lSr
- IFuw==
+ id 1iISak-0001dT-L9
+ for linux-riscv@lists.infradead.org; Thu, 10 Oct 2019 07:10:32 +0000
+Received: by mail-oi1-f195.google.com with SMTP id k9so4013115oib.7
+ for <linux-riscv@lists.infradead.org>; Thu, 10 Oct 2019 00:10:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=27bPZ5AjHbkAvma41N9WmP13swNHgshH29767ZOGwvE=;
- b=PfN/2TbKS5PqYvx0EVRd3oUJhyc4/4lWE7KvdiHZZdWOiRiDBjx0/K30O+FO4PtCEB
- gwOD4odtCTPQ3brTy4Z8mOFfFMJKXQf2kEc0KRUfmsG66WDPFYYUtFIHwimJMs3mXCr2
- 6Mjf4SmOlyLqF96lo5kgS8lOAclffGL/XsiyuoXudL3s24vt2DYzzGxOjoqe/cRY6p+b
- 9Y76ePcyXmvBLvbn8+2OAUGtSvdt5UJdmrg9BtXvHvSEATk4EU2RYCpTt40ec74q91zN
- p8OTMzPF2Lg+QuKza+Tsir/5/u82dkuG7NSmviMQSoYJPYSTrSoZRGqvmQLuuJypN5pm
- DNng==
-X-Gm-Message-State: APjAAAUxvrh9/7atqWxcURyRTkKHiYn9OOq+9r20ENyLjvLNTIYhQltN
- S59hpOFIW7YlV/NdOCswcwJOQQ==
-X-Google-Smtp-Source: APXvYqx8WLA6LKnMW9EfBeEKRznNEk0nJV0oAheX1NZ38rElDZ1PT+oHrJ0dYK7NlOJowD+Wsbrqlw==
-X-Received: by 2002:a02:6d08:: with SMTP id m8mr6621388jac.34.1570666126079;
- Wed, 09 Oct 2019 17:08:46 -0700 (PDT)
-Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
- by smtp.gmail.com with ESMTPSA id
- z20sm1627289iof.38.2019.10.09.17.08.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Oct 2019 17:08:44 -0700 (PDT)
-Date: Wed, 9 Oct 2019 17:08:43 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2] dt-bindings: riscv: Fix CPU schema errors
-In-Reply-To: <20191009234648.2271-1-robh@kernel.org>
-Message-ID: <alpine.DEB.2.21.9999.1910091657240.11044@viisi.sifive.com>
-References: <20191009234648.2271-1-robh@kernel.org>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TU10B3nKbfIpm9WNlkT9iNcLTqsb+xgrJpyrz4+X/IA=;
+ b=b40VZqqCxMjgttJTDHoEZrCczqEhRdVMun0bVobqkPhBjv+QWD7RSVzhb4ueSKeNhD
+ ar9r3ITbY7b4Pp0yt3I7yQxFGZhfwWuNE0YqmpPx2RdfzzuZWsrweQXn0Ch8JQGi4mND
+ 1t1UdH7Xi2pQMtHqKyYDcz+0a1cAjiC+5YVDUaiCHIwPwBjVTLksN97+F22KlxLHsYl7
+ RWI+55p1qbQEysyJE2UEwBNfy6exNEMw7z5ba2yCkBtWoWy/y7lFgm2tqybBaVfLSmQ/
+ anYsGstztVDtUmdViThHdUFlEQFMmvSb/BIneTO0ZfOE5tOJW9JWUIQoxoEfO/SfThpk
+ Y59w==
+X-Gm-Message-State: APjAAAXsLpx3Qez7lX1p6CXu4a3VSEG4YWRYOB41EZAcLu2GzYwxJWdk
+ tQEyu/3UzzMQ9BEmrQOrbmirc0xtEcTNK9Gj8as=
+X-Google-Smtp-Source: APXvYqy+li7Xr8sM09s9qHeHYmcP9+9HHF++GuPo9eOazB7/UBi9MtzGp2SFtJxnjCj66BmyNdMv5eH+ZbbiswlC9f4=
+X-Received: by 2002:a54:4e89:: with SMTP id c9mr5896405oiy.148.1570691429202; 
+ Thu, 10 Oct 2019 00:10:29 -0700 (PDT)
 MIME-Version: 1.0
+References: <alpine.DEB.2.21.9999.1910091252160.11044@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1910091252160.11044@viisi.sifive.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 10 Oct 2019 09:10:18 +0200
+Message-ID: <CAMuHMdUfqvkVJHHwyuYxLSxj_iUofx-vSvEj92C5mg3bGxHqmA@mail.gmail.com>
+Subject: Re: [PATCH] Documentation: admin-guide: add earlycon documentation
+ for RISC-V
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191009_170847_649809_03E94464 
-X-CRM114-Status: GOOD (  16.40  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191010_001030_688575_0B108854 
+X-CRM114-Status: GOOD (  10.28  )
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
- [list.dnswl.org]
+ no trust [209.85.167.195 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.195 listed in wl.mailspike.net]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (geert.uytterhoeven[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,112 +81,36 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-riscv@lists.infradead.org,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>
+Cc: "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ Andreas Schwab <schwab@suse.de>, Jonathan Corbet <corbet@lwn.net>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 9 Oct 2019, Rob Herring wrote:
+On Wed, Oct 9, 2019 at 9:53 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+> Kernels booting on RISC-V can specify "earlycon" with no options on
+> the Linux command line, and the generic DT earlycon support will query
+> the "chosen/stdout-path" property (if present) to determine which
+> early console device to use.  Document this appropriately in the
+> admin-guide.
+>
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
 
-> Fix the errors in the RiscV CPU DT schema:
-> 
-> Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml: cpu@0: 'timebase-frequency' is a required property
-> Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml: cpu@1: 'timebase-frequency' is a required property
-> Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml: cpu@0: compatible:0: 'riscv' is not one of ['sifive,rocket0', 'sifive,e5', 'sifive,e51', 'sifive,u54-mc', 'sifive,u54', 'sifive,u5']
-> Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml: cpu@0: compatible: ['riscv'] is too short
-> Documentation/devicetree/bindings/riscv/cpus.example.dt.yaml: cpu@0: 'timebase-frequency' is a required property
-> 
-> The DT spec allows for 'timebase-frequency' to be in 'cpu' or 'cpus' node
-> and RiscV is doing nothing special with it, so just drop the definition
-> here and don't make it required.
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-The RISC-V kernel code does in fact parse it and use it, and we currently 
-rely on it being under /cpus:
+Gr{oetje,eeting}s,
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/riscv/kernel/time.c#n19
+                        Geert
 
-The RISC-V user ISA specification also constrains the timebase-frequency 
-to be the same across all CPUs, in section 10.1:
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
-  https://github.com/riscv/riscv-isa-manual/releases/download/draft-20190608-f467e5d/riscv-spec.pdf
-
-So the right thing is to require 'timebase-frequency' at /cpus, and forbid 
-it in the individual CPU nodes. 
-
-> 
-> Fixes: 4fd669a8c487 ("dt-bindings: riscv: convert cpu binding to json-schema")
-> Cc: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt <palmer@sifive.com>
-> Cc: Albert Ou <aou@eecs.berkeley.edu>
-> Cc: linux-riscv@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../devicetree/bindings/riscv/cpus.yaml       | 28 ++++++++-----------
->  1 file changed, 11 insertions(+), 17 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/riscv/cpus.yaml b/Documentation/devicetree/bindings/riscv/cpus.yaml
-> index b261a3015f84..925b531767bf 100644
-> --- a/Documentation/devicetree/bindings/riscv/cpus.yaml
-> +++ b/Documentation/devicetree/bindings/riscv/cpus.yaml
-> @@ -24,15 +24,17 @@ description: |
->  
->  properties:
->    compatible:
-> -    items:
-> -      - enum:
-> -          - sifive,rocket0
-> -          - sifive,e5
-> -          - sifive,e51
-> -          - sifive,u54-mc
-> -          - sifive,u54
-> -          - sifive,u5
-> -      - const: riscv
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - sifive,rocket0
-> +              - sifive,e5
-> +              - sifive,e51
-> +              - sifive,u54-mc
-> +              - sifive,u54
-> +              - sifive,u5
-> +          - const: riscv
-> +      - const: riscv    # Simulator only
->      description:
->        Identifies that the hart uses the RISC-V instruction set
->        and identifies the type of the hart.
-> @@ -66,13 +68,6 @@ properties:
->        insensitive, letters in the riscv,isa string must be all
->        lowercase to simplify parsing.
->  
-> -  timebase-frequency:
-> -    type: integer
-> -    minimum: 1
-> -    description:
-> -      Specifies the clock frequency of the system timer in Hz.
-> -      This value is common to all harts on a single system image.
-> -
->    interrupt-controller:
->      type: object
->      description: Describes the CPU's local interrupt controller
-> @@ -93,7 +88,6 @@ properties:
->  
->  required:
->    - riscv,isa
-> -  - timebase-frequency
->    - interrupt-controller
->  
->  examples:
-> -- 
-> 2.20.1
-> 
-> 
-
-
-- Paul
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 linux-riscv mailing list
