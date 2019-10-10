@@ -2,77 +2,64 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DE1FD310F
-	for <lists+linux-riscv@lfdr.de>; Thu, 10 Oct 2019 20:59:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B130D31BE
+	for <lists+linux-riscv@lfdr.de>; Thu, 10 Oct 2019 21:59:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RVtHCnTRW6EIRusPddhvw6WHhRvMr52+chtlYUypVqE=; b=VRtnZZYqhLvMGM
-	7dQUU3Afu7KHd4McMY3EOjon3rdSswou1YT4Q8/IVD8HDSijcfkCLsxUgvwC+hqnJHrNIAOB3VE7w
-	GIjxgJ/MMPgafxREHth58MHuEfAA5w+QBonvotS5hlp4JEMn8i11IvRQpFEUSyWQAk97AcgW8QZdR
-	cAoxQnGzC5COzmgwWYKu48+clndk827LPuO76tslMmR6mIm3ejUxneozbUOTWu5qjyj0ApS/hx04F
-	Pdbj1V72LG4OaLkPJvroMlnQ/q5ejYbmCt8I4zWFToPGEF7I94u5buZKd4pvwErh/IOs7T3gUo98e
-	VArqb7GSSaGX/ODkv81Q==;
+	List-Owner; bh=z27o8OUdmKXR5fF49z1mVADVPBcDSMCH53pYKWwpsPc=; b=ZgYE44h2+hABoi
+	FTOfcAXKsmFiTBYtCrWcm3stewCMIs1Bs/8dziKRKw5BCz64ioRFlgxjNq38UJsLK1jmtMZ1XYify
+	ACdQO0xOS36VTmo3qVkFk4xGeiCeZCg8Pn7OJnUGT4FZd5mQyrf7381AEacnzA1RzlzEJK0khIK8S
+	bGqTbj5KDyLWOEMjCcpdO8yBNUcyNJ8YfKYiU1DlBaA9C8/Ru6GP7Vpex2sTozIImZvcRoO+1uGaG
+	GyrJnlm721+iLmu/2fGdppQq+GcJkUB7LMNoyvKkZ5VPUMIG0ompyGD5kqiFtsAqcXmaFOLaJhE2O
+	B5uRHiMgCXv0QR9/dvUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iIdeR-0004od-EW; Thu, 10 Oct 2019 18:59:03 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iIeaZ-0002Pa-Lr; Thu, 10 Oct 2019 19:59:07 +0000
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iIde7-0004Yh-5i; Thu, 10 Oct 2019 18:58:44 +0000
-Received: from mail-qt1-f172.google.com (mail-qt1-f172.google.com
- [209.85.160.172])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 16C3421A4A;
- Thu, 10 Oct 2019 18:58:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1570733922;
- bh=C3qJQMyjD9A/GMvJ52P6U8GDKE7BNVgB4aq0nJUK3Tc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=x9hnp5Xo4bB1M1JWF8/BAZab4UX1ziPUvnFgk/cPG/ZALiC2ezbfWSIK9WfrWnqxU
- Be8N6AeS7oihMOahkrPHOI0whlDuASFXutW+vuKo6b1R/NAzZ/WsV5JfutdIEk6dPX
- j9KYoQjQg6HQBC03nBIRN41NzOebPx9rSvB/Ja9M=
-Received: by mail-qt1-f172.google.com with SMTP id l51so9980029qtc.4;
- Thu, 10 Oct 2019 11:58:42 -0700 (PDT)
-X-Gm-Message-State: APjAAAVetRWIqqbGQNzHRFkNnBBSHasQoKdoD23L9/7wdTiWpZH5d60u
- PqVYP9TPE64RqnunwTRNlULJV4eXpU2mn/tB/w==
-X-Google-Smtp-Source: APXvYqzB5TzRKwoOcFcNVQukkGMmMU2iFIhyKCekwRBNJHWn3GTHP/CmHznLTqw+AnmCr8x0PiE1VBXV/9mGgldc2YU=
-X-Received: by 2002:ad4:5044:: with SMTP id m4mr12009044qvq.85.1570733921147; 
- Thu, 10 Oct 2019 11:58:41 -0700 (PDT)
+ id 1iIeaV-0002Oi-5I
+ for linux-riscv@lists.infradead.org; Thu, 10 Oct 2019 19:59:05 +0000
+Received: from [2a01:e35:2fdd:a4e1:fe91:fc89:bc43:b814] (helo=ohm.rr44.fr)
+ by hall.aurel32.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <aurelien@aurel32.net>)
+ id 1iIeaJ-0002oT-Fh; Thu, 10 Oct 2019 21:58:51 +0200
+Received: from aurel32 by ohm.rr44.fr with local (Exim 4.92.2)
+ (envelope-from <aurelien@aurel32.net>)
+ id 1iIeaJ-00030J-43; Thu, 10 Oct 2019 21:58:51 +0200
+Date: Thu, 10 Oct 2019 21:58:51 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Atish Patra <Atish.Patra@wdc.com>
+Subject: Re: Fail to bring hart online on HiFive Unleashed
+Message-ID: <20191010195851.GA10676@aurel32.net>
+References: <20191003200735.GA26760@aurel32.net>
+ <73a9ba9fd6c29075209a61660137fb4b899f7ff2.camel@wdc.com>
+ <20191005102541.GA22188@aurel32.net>
+ <20191006122850.GA31831@aurel32.net>
+ <71c93a62192eb4259ba7e868f7f9aa8ae066c6ad.camel@wdc.com>
+ <20191008043014.GA23380@aurel32.net>
+ <CAPSAq_znsoOrLsA_rPbmq=e2syZA9MA=-oaZbda5KRiZGG9yyg@mail.gmail.com>
+ <97CDD0F9-32F9-4C14-8211-63454C5C379A@aurel32.net>
+ <dbdd3d63186abb230840b6e8698358afc01a62cb.camel@wdc.com>
 MIME-Version: 1.0
-References: <20191002164047.14499-1-krzk@kernel.org>
- <20191002164047.14499-2-krzk@kernel.org>
-In-Reply-To: <20191002164047.14499-2-krzk@kernel.org>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 10 Oct 2019 13:58:30 -0500
-X-Gmail-Original-Message-ID: <CAL_Jsq+Fa1+epSvDpSx4NdzOUohoJR+qR3-xyMTTw4LaOK7AbQ@mail.gmail.com>
-Message-ID: <CAL_Jsq+Fa1+epSvDpSx4NdzOUohoJR+qR3-xyMTTw4LaOK7AbQ@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2] dt-bindings: pwm: Convert Samsung PWM bindings to
- json-schema
-To: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <dbdd3d63186abb230840b6e8698358afc01a62cb.camel@wdc.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191010_115843_236255_9E885257 
-X-CRM114-Status: GOOD (  10.31  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20191010_125903_201215_72DD9088 
+X-CRM114-Status: GOOD (  26.42  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [2001:bc8:30d7:100:0:0:0:1 listed in] [list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,53 +71,166 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Linux PWM List <linux-pwm@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- linux-stm32@st-md-mailman.stormreply.com,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-clk <linux-clk@vger.kernel.org>,
- Linux LED Subsystem <linux-leds@vger.kernel.org>,
- "moderated list:BROADCOM BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "david.abdurachmanov@sifive.com" <david.abdurachmanov@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Oct 2, 2019 at 11:41 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->
-> Convert Samsung PWM (S3C, S5P and Exynos SoCs) bindings to DT schema
-> format using json-schema.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
->
-> ---
->
-> Changes since v2:
-> 1. Add additionalProperties: false.
->
-> Changes since v1:
-> 1. Indent example with four spaces (more readable),
-> 2. Fix samsung,pwm-outputs after review,
-> 3. Remove double-quotes from clock names.
-> ---
->  .../devicetree/bindings/pwm/pwm-samsung.txt   |  51 --------
->  .../devicetree/bindings/pwm/pwm-samsung.yaml  | 109 ++++++++++++++++++
->  2 files changed, 109 insertions(+), 51 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.txt
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
+On 2019-10-09 01:34, Atish Patra wrote:
+> On Tue, 2019-10-08 at 08:33 +0200, Aurelien Jarno wrote:
+> > Le 8 octobre 2019 08:14:58 GMT+02:00, David Abdurachmanov <
+> > david.abdurachmanov@sifive.com> a =E9crit :
+> > > On Tue, Oct 8, 2019 at 7:30 AM Aurelien Jarno <aurelien@aurel32.net
+> > > >
+> > > wrote:
+> > > > On 2019-10-07 22:19, Atish Patra wrote:
+> > > > > Thanks for the detailed analysis. Can you please keep me and
+> > > > > david
+> > > in
+> > > > > cc when you report the issue to U-boot ?
+> > > > =
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+> > > > Yep. I have progressed a bit on that, and now I am not convinced
+> > > > it's
+> > > an
+> > > > U-boot issue, it can be a GCC issue.
+> > > > =
+
+> > > > Here are the conditions to reproduce the bug:
+> > > > - U-boot runs on hart 1, 2 or 3
+> > > > - the autoboot process is not interrupted
+> > > > - extlinux is used to boot the kernel
+> > > > - arch/riscv/lib/bootm.c is compiled with GCC 9 (works fine with
+> > > > GCC
+> > > 8)
+> > > > When the problem happens, the missing hart actually ends its
+> > > execution
+> > > > in an illegal instruction trap trying to execute the FDT (I only
+> > > noticed
+> > > > that recently as the message was hidden by the use of
+> > > > earlycon=3Dsbi):
+> > > > =
+
+> > > > > SiFive FSBL:       2018-03-20
+> > > > > HiFive-U serial #: 00000246
+> > > > > =
+
+> > > > > OpenSBI v0.4-50-g30f09fb (Oct  6 2019 21:58:05)
+> > > > >    ____                    _____ ____ _____
+> > > > >   / __ \                  / ____|  _ \_   _|
+> > > > >  | |  | |_ __   ___ _ __ | (___ | |_) || |
+> > > > >  | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+> > > > >  | |__| | |_) |  __/ | | |____) | |_) || |_
+> > > > >   \____/| .__/ \___|_| |_|_____/|____/_____|
+> > > > >         | |
+> > > > >         |_|
+> > > > > =
+
+> > > > > Platform Name          : SiFive Freedom U540
+> > > > > Platform HART Features : RV64ACDFIMSU
+> > > > > Platform Max HARTs     : 5
+> > > > > Current Hart           : 2
+> > > > > Firmware Base          : 0x80000000
+> > > > > Firmware Size          : 104 KB
+> > > > > Runtime SBI Version    : 0.2
+> > > > > =
+
+> > > > > PMP0: 0x0000000080000000-0x000000008001ffff (A)
+> > > > > PMP1: 0x0000000000000000-0x0000007fffffffff (A,R,W,X)
+> > > > > =
+
+> > > > > =
+
+> > > > > U-Boot 2019.10-rc4-00037-gdac51e9aaf-dirty (Oct 06 2019 -
+> > > > > 21:56:51
+> > > +0000)
+> > > > > CPU:   rv64imafdc
+> > > > > Model: SiFive HiFive Unleashed A00
+> > > > > DRAM:  8 GiB
+> > > > > =
+
+> > > > > MMC:   spi@10050000:mmc@0: 0
+> > > > > In:    serial@10010000
+> > > > > Out:   serial@10010000
+> > > > > Err:   serial@10010000
+> > > > > Net:   eth0: ethernet@10090000
+> > > > > Hit any key to stop autoboot:  0
+> > > > > switch to partitions #0, OK
+> > > > > mmc0 is current device
+> > > > > Scanning mmc 0:2...
+> > > > > Found /boot/extlinux/extlinux.conf
+> > > > > Retrieving file: /boot/extlinux/extlinux.conf
+> > > > > 510 bytes read in 5 ms (99.6 KiB/s)
+> > > > > U-Boot menu
+> > > > > 1:      kernel 5.3.4
+> > > > > 2:      Debian GNU/Linux kernel 5.3.0-trunk-riscv64
+> > > > > Enter choice: 1
+> > > > > 1:      kernel 5.3.4
+> > > > > Retrieving file: /boot/vmlinux-5.3.4
+> > > > > 9486076 bytes read in 4813 ms (1.9 MiB/s)
+> > > > > append: root=3D/dev/mmcblk0p2 rw console=3DttySIF0 rootwait
+> > > > > Retrieving file: /boot/hifive-unleashed-a00.dtb
+> > > > > 6088 bytes read in 7 ms (848.6 KiB/s)
+> > > > > ## Flattened Device Tree blob at 88000000
+> > > > >    Booting using the fdt blob at 0x88000000
+> > > > >    Using Device Tree in place at 0000000088000000, end
+> > > 00000000880047c7
+> > > > > Starting kernel ...
+> > > > > =
+
+> > > > > exception code: 2 , Illegal instruction , epc  , ra 88000004
+> > > 88000000
+> > > > > ### ERROR ### Please RESET the board ###
+> > > =
+
+> > > I think, that's the same issue I had (or still have) a week ago.
+> > > Just reminder that kernel 5.3 introduced a 64-byte header (thus no
+> > > need to wrap kernel) at least for Image target. Thus it's booti
+> > > that
+> > > boots the kernel on U-Boot side.
+> > > Thus the 1st instruction of that header is "j 0x40" (to the
+> > > beginning
+> > > of the actual kernel).  And 88000004 would definitely hold an
+> > > illegal
+> > > instruction.
+> > > =
+
+> > > 0000000000000000 <.data>:
+> > > 0:       81a0                    j       0x40
+> > > 2:       0000                    unimp
+> > > 4:       0000                    unimp
+> > > 6:       0100                    nop
+> > > [..]
+> > =
+
+> > Hmm that's the beginning of the kernel code. The address 88000004
+> > actually corresponds to the FDT. So the hart ending up in a trap
+> > actually tries to boot the FDT instead of the kernel.
+> > =
+
+> =
+
+> Do you see the issue if you manually use bootm instead of extlinux?
+> =
+
+> =3D> bootm $kernel_addr_r - $fdt_addr_r
+> =
+
+> This is a probably not related as bootm is jumping to wrong location
+> for some reason. However, it may be worth a shot as it fixes fdt
+> corruption. =
+
+
+I have just tested, and it doesn't work. On the other hand I have try to
+run that manually, and interrupting the boot process usually hides the
+problem.
+
+-- =
+
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
 _______________________________________________
 linux-riscv mailing list
