@@ -2,78 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAB8DD5169
-	for <lists+linux-riscv@lfdr.de>; Sat, 12 Oct 2019 19:39:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3B33D5252
+	for <lists+linux-riscv@lfdr.de>; Sat, 12 Oct 2019 22:11:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=ac8WaqTTnK2xxynr/XxDaSi7+1+2q74j6uoth5AvgGs=; b=rQv022X6FF/JtTgebVaUyX5Az
-	gtHTDCjNK6xob16ZDR6RQqUVwU7zLKaoPIuHtqcz1qX4aWMdrLWZ8d1a2aRCvVgAtGQk7spDEojkT
-	LhGTFxcazXoCQxVTx0Q79pQ1RMK61dZDY5/BjxsjVR3yKO0efAJCRpZ8LmSC/Lw1aBuZwyUxCwNY2
-	i4ARRRPCbot2zByTVgyfXS3f0MKrKkDarUPq7VF1GxWIVa9aLYF7bMo/CQQnYYZ0lydzcurxsX7oY
-	F2WPuGcLRHAMmqDcfkU3fbp8nTJ5tBCV9ZjB86oEGNikCW9tSBCsFk+7gAA1njO1CN3DtWAgAEyxM
-	p7BX95eRg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FNHW+lpYoFuvSNB28uFgcT36iyoGfppOnfjqb0KDiJA=; b=U7LbD80sBpDjXd
+	lQL6m9cV8LbXx6eiTLKP9Eq//LBxkUCgyfli4+6vaAMPJb5/9whQk3yLnx2Qa5qpqw7W9WzVPe4gY
+	gNc6nBO4yuLZ7hloFavwMvI89qdzKyrAe/3w7lMXBaJHO6boKwQ8fPONFsJRhLWG6yHNGRS2xyalt
+	bc8yxLs5ry4gBHWUUvHwFH3OPiIraKm91LaC2pzALcJkeKdvNz7wHBqYafPu+8YXgRI8NZ2xQADPp
+	7taTaYwUtrYE0Nqo8s/YesdohzjSG1zEgEpoWWlQw8rQgzMBLRhiucJm6cnTMBETWoeHl0kO6Iehl
+	LSQsSG+hMJaD2tlezuvw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iJLLs-00073R-Ka; Sat, 12 Oct 2019 17:38:48 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1iJNj7-0007nl-B2; Sat, 12 Oct 2019 20:10:57 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iJLLp-00072i-Gw
- for linux-riscv@lists.infradead.org; Sat, 12 Oct 2019 17:38:47 +0000
-Received: by mail-pf1-x442.google.com with SMTP id q21so7936703pfn.11
- for <linux-riscv@lists.infradead.org>; Sat, 12 Oct 2019 10:38:43 -0700 (PDT)
+ id 1iJNj4-0007nG-SK
+ for linux-riscv@lists.infradead.org; Sat, 12 Oct 2019 20:10:56 +0000
+Received: by mail-io1-xd42.google.com with SMTP id c25so28593121iot.12
+ for <linux-riscv@lists.infradead.org>; Sat, 12 Oct 2019 13:10:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=QGULoH50CkpFs9ZPMN0T6KllCcRA7SCxuzqckP0gnTU=;
- b=V+O9w7oCvmWLh3i5Tt0HokYwr5aCEtbOMnxkQh93haiqG5tRmpJfBrSzTUhVOxw/qy
- MflYyC4yaUd0QkBmtIwVAbVdHDMAh9G34f78PCPTVqZ3LTnl+A3Ck152ZhHolai0umvH
- x+eRt/AO8CJaK5Uy4i5F/INQbp4XOqa3GnZ3QPaZL/70qM0JDady/u6cd+19cWwFjyNi
- hdOO4BtOo0e2T2XegKd+48X4G3l8hYqAG58/idv+ZLFVj4jGsBewv8PDocnXa+NoFxs/
- 0zxEvBunmH7620m0WrKWFi2l8gPMC4sVs3MtCPF1lZTd7xcwvALMruFnhPQ8sHQ/DTSk
- bQ9A==
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=w4/POuTWUDiZtOhUix11luXG+xnY9Yx35d0vIUWcKFE=;
+ b=DlKXNXRs6QgShbGdEn/kZP9ek6vlfp+9Nkuj/VBQgO+gM4l1hR8CavApjGkyY44uat
+ pxuov27CpBZx6QF+yN89kE5WZsIvZF6HOJbrdBxJAEcWA8WlZ0JwgM2xyOGRmZ+f3yoO
+ muTjP6sSWHS2jRsxzt6f8KgsgXGPUQ6ZrDvfps5AEdo8EalcNhGVh8qvEA2/s7mlpZAL
+ KbK7RNuLPha9WCvf2WmcqGm5ipkFzRw3bydc4oyIMi4GSnEF6+ikVdTLWdFEYyjRJMFv
+ AAzEo8Xqt2cQrZhnC7eYQKX4WTdFL8onI+HDqc+SNdYJhqw7l5m1gz4j0W9oB3FhrrAq
+ aQ5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=QGULoH50CkpFs9ZPMN0T6KllCcRA7SCxuzqckP0gnTU=;
- b=tkDf/jaRasIb/jMLO+LfHocghKnzg5v7K1jmVkuCW7Zq4KSCWNxI6ZTLFdKyvd0TuZ
- NmUGPaXZ7iGnZ3DOIj3FPi3PerbCnoEiKoSlrB7FW99xz3z3vtPGthpYCeV8xDtP4hJn
- sTdaTXGXJDlp8JNPPJapLIyUfPguggRYZWKxqWdQtRKpe7fDOJRuFBCCkgOFoSu81+rd
- 7KinJBvM6xrplPn+U6JhJ/osq7KUNFSPjYs5hkRKRAN7UjVZFluuFLFG0UKMIIj3n+ye
- 1PNJzar8PWKvsSrX8VOgLgD5e7VvZwXKm7EJxR6L8k11WaXEf2WpnSIm/oIUYo/frGsV
- ho6Q==
-X-Gm-Message-State: APjAAAUDmDL4X8SCHGx8w5V+tbeAmg6Krp//QVH4qSSRmTZy1RrkGGO8
- Z19JkuEt/Dwjdaf1f2Zt86cbQA==
-X-Google-Smtp-Source: APXvYqzW1OO3P+m0WSPdYkvU5HibLfM3ibywisk4ThgutqOLNgBG8iO4E+dx0Lx0Ub7yrHG07c1Xnw==
-X-Received: by 2002:a17:90a:338c:: with SMTP id
- n12mr24412467pjb.24.1570901922575; 
- Sat, 12 Oct 2019 10:38:42 -0700 (PDT)
-Received: from localhost ([192.55.54.60])
- by smtp.gmail.com with ESMTPSA id m12sm16808019pff.66.2019.10.12.10.38.41
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=w4/POuTWUDiZtOhUix11luXG+xnY9Yx35d0vIUWcKFE=;
+ b=jK6yESb7tUMPs4tjqUu2ogc8lQ6Hr0A+FszM7uhVQK5f6J6slRDR/IoUFTaKBejkaf
+ EcD9LRztP8iI9QjuJizcMmpP8mGfuEdBafEjbIeZ/180Hm+GnfmSOY8W2+4H+SJL9ik5
+ xRAGQ6mlkf4WpS5erRRPwty8OFd4OGUcmB7pPzEkdrZs/e5VotNkKcNI8+RC5s/8mixd
+ Mh+9wtKLiax4b3fqZ91J7H689u/daCk61Xb+MuzrIO24LPlsvnXq5VOdeaSEU9RO8DWE
+ aGWIzMGW76PIV7xj3RuHc2CQD9mdlYTzdvQppdjiAf3iptf5Xw7q4b2nC1gWQuG7S1d+
+ 1wLA==
+X-Gm-Message-State: APjAAAWP9K5sM0LBEv/a5gT/R6JKLeAOQj+RGmRIOHEL2hF/be2l94sX
+ gerfahQGFIQPMZWPAuF0/kF7NA==
+X-Google-Smtp-Source: APXvYqzmy+Sa3CxJDUMcVmYUrwvMkOknIMN4j2mDR0wZZEvzVGV/iFzMbPM39F1SIqcWA3tPPVvPHw==
+X-Received: by 2002:a6b:7609:: with SMTP id g9mr4529225iom.130.1570911053230; 
+ Sat, 12 Oct 2019 13:10:53 -0700 (PDT)
+Received: from localhost (c-73-95-159-87.hsd1.co.comcast.net. [73.95.159.87])
+ by smtp.gmail.com with ESMTPSA id
+ a14sm9138006ioo.85.2019.10.12.13.10.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Oct 2019 10:38:41 -0700 (PDT)
-Date: Sat, 12 Oct 2019 10:38:41 -0700 (PDT)
-X-Google-Original-Date: Sat, 12 Oct 2019 10:38:01 PDT (-0700)
-Subject: Re: [PATCH v2 2/2] RISC-V: defconfig: Enable Goldfish RTC driver
-In-Reply-To: <20190925063706.56175-3-anup.patel@wdc.com>
-From: Palmer Dabbelt <palmer@sifive.com>
-To: Anup Patel <Anup.Patel@wdc.com>
-Message-ID: <mhng-edb410db-fdd1-46f6-84c3-ae3b843f7e3a@palmer-si-x1c4>
-Mime-Version: 1.0 (MHng)
+ Sat, 12 Oct 2019 13:10:52 -0700 (PDT)
+Date: Sat, 12 Oct 2019 13:10:52 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] RISC-V updates for v5.4-rc3
+Message-ID: <alpine.DEB.2.21.9999.1910121307270.18026@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191012_103845_562227_BCDFB9EA 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20191012_131054_976862_366E139E 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -95,74 +95,48 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, Greg KH <gregkh@linuxfoundation.org>,
- anup@brainfault.org, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-kernel@vger.kernel.org, Christoph Hellwig <hch@infradead.org>,
- Atish Patra <Atish.Patra@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, rkir@google.com,
- linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 24 Sep 2019 23:38:08 PDT (-0700), Anup Patel wrote:
-> We have Goldfish RTC device available on QEMU RISC-V virt machine
-> hence enable required driver in RV32 and RV64 defconfigs.
->
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> ---
->  arch/riscv/configs/defconfig      | 3 +++
->  arch/riscv/configs/rv32_defconfig | 3 +++
->  2 files changed, 6 insertions(+)
->
-> diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-> index 3efff552a261..57b4f67b0c0b 100644
-> --- a/arch/riscv/configs/defconfig
-> +++ b/arch/riscv/configs/defconfig
-> @@ -73,7 +73,10 @@ CONFIG_USB_STORAGE=y
->  CONFIG_USB_UAS=y
->  CONFIG_MMC=y
->  CONFIG_MMC_SPI=y
-> +CONFIG_RTC_CLASS=y
-> +CONFIG_RTC_DRV_GOLDFISH=y
->  CONFIG_VIRTIO_MMIO=y
-> +CONFIG_GOLDFISH=y
->  CONFIG_EXT4_FS=y
->  CONFIG_EXT4_FS_POSIX_ACL=y
->  CONFIG_AUTOFS4_FS=y
-> diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
-> index 7da93e494445..50716c1395aa 100644
-> --- a/arch/riscv/configs/rv32_defconfig
-> +++ b/arch/riscv/configs/rv32_defconfig
-> @@ -69,7 +69,10 @@ CONFIG_USB_OHCI_HCD=y
->  CONFIG_USB_OHCI_HCD_PLATFORM=y
->  CONFIG_USB_STORAGE=y
->  CONFIG_USB_UAS=y
-> +CONFIG_RTC_CLASS=y
-> +CONFIG_RTC_DRV_GOLDFISH=y
->  CONFIG_VIRTIO_MMIO=y
-> +CONFIG_GOLDFISH=y
->  CONFIG_SIFIVE_PLIC=y
->  CONFIG_EXT4_FS=y
->  CONFIG_EXT4_FS_POSIX_ACL=y
-> -- 
-> 2.17.1
+Linus,
 
-Reviewed-by: Palmer Dabbelt <palmer@sifive.com>
+The following changes since commit da0c9ea146cbe92b832f1b0f694840ea8eb33cce:
 
-IIRC there was supposed to be a follow-up to your QEMU patch set to rebase it 
-on top of a refactoring of their RTC code, but I don't see it in my inbox.  LMK 
-if I missed it, as QEMU's soft freeze is in a few weeks and I'd like to make 
-sure I get everything in.
+  Linux 5.4-rc2 (2019-10-06 14:27:30 -0700)
 
-Additionally: we should refactor our Kconfig to have some sort of 
-CONFIG_SOC_VIRT that selects this stuff, like we have the CONFIG_SOC_SIFIVE.  
-This will explicitly document why devices are in the defconfig, avoid 
-duplicating a bunch of stuff between defconfigs, and provide an example of how 
-we support multiple SOCs in a single image.
+are available in the Git repository at:
 
-I don't see why either of these should block merging the patch, though.
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.4-rc3
+
+for you to fetch changes up to cd9e72b80090a8cd7d84a47a30a06fa92ff277d1:
+
+  RISC-V: entry: Remove unneeded need_resched() loop (2019-10-09 16:48:27 -0700)
+
+----------------------------------------------------------------
+RISC-V updates for v5.4-rc3
+
+Some RISC-V fixes for v5.4-rc3:
+
+- Fix several bugs in the breakpoint trap handler
+
+- Drop an unnecessary loop around calls to preempt_schedule_irq()
+
+----------------------------------------------------------------
+Valentin Schneider (1):
+      RISC-V: entry: Remove unneeded need_resched() loop
+
+Vincent Chen (3):
+      riscv: avoid kernel hangs when trapped in BUG()
+      riscv: avoid sending a SIGTRAP to a user thread trapped in WARN()
+      riscv: Correct the handling of unexpected ebreak in do_trap_break()
+
+ arch/riscv/kernel/entry.S |  3 +--
+ arch/riscv/kernel/traps.c | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 9 deletions(-)
+
 
 _______________________________________________
 linux-riscv mailing list
