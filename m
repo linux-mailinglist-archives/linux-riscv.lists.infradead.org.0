@@ -2,183 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15A74D7230
-	for <lists+linux-riscv@lfdr.de>; Tue, 15 Oct 2019 11:24:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD8DCD7B69
+	for <lists+linux-riscv@lfdr.de>; Tue, 15 Oct 2019 18:28:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sBOOoe9MeXFxSceMqdz70XH5laGcjveSZ9XSQoCA9kA=; b=mGhnGw6ZYSbShV
-	u1S8eOl0MywsvCqQG3r5Gggaan/Nz517Gi5G002McW1/3KoPsGhh1eyF4kd1+ml9BqvexytwsMouS
-	yqURvSSisutwTAcVZ+Ostyt8crYlBAXj9YJ6AefYd27nYZkYmFIzoE5vanulWswQ1N6ubjXYKsdcg
-	b6/Ajmmm26VR7ntKpKfKAliJBjCDpLjUNmx6EesztVhmrNbbQYKUVLSw1C4a1Qog4i+FFAQZCPd7R
-	Uh5Al9uGV6hRJZ7OoNVFp6vcX+iBtZbnBOjGSXMM29k0wd2z56tS1hoYyxwM43w9S7tz3jpK0AHjc
-	s2KJxS0MGCqQEoFw5/MA==;
+	List-Owner; bh=/MxhcrzdBSFqt5AuM6+rsuTbLXXH79QA/y3EI77ur90=; b=aB5dX+bYzXLFxH
+	E0NAA4iJM2f/Ge6lrzuitr5itd93r9douZMt8iM+dz9xIFfzID7zmsCEKpnbxGmiw+w+zJa4urMuQ
+	48Sohj+W2aZl/KmRcArnoGWi8KHasWVDbwsPflqtvWdbWTTvcV9QiS0vVI/aQusRJn8gk3WrzxSZo
+	EQnoO5tslZh0L46zXVOjZp0uYU2RCNomi4cLroqNwxxfJbl/yrC5FjUxsCuueRzblEkIx7Pc1JOzo
+	fb3hdELpWEJPxphJGiisOckES88bK5vBsKJB5UMHK9F3pIKTNewSlCNzteTp7SP3s449PKuy0RTSf
+	sHLph1U9vUM8j7DM0S1w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iKJ3c-0003wX-6f; Tue, 15 Oct 2019 09:23:56 +0000
-Received: from esa3.microchip.iphmx.com ([68.232.153.233])
+	id 1iKPfn-0006IZ-6o; Tue, 15 Oct 2019 16:27:47 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iKJ3V-0003t5-PF; Tue, 15 Oct 2019 09:23:51 +0000
-Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
- Claudiu.Beznea@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Claudiu.Beznea@microchip.com";
- x-sender="Claudiu.Beznea@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com a:mx1.microchip.iphmx.com
- a:mx2.microchip.iphmx.com include:servers.mcsv.net
- include:mktomail.com include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa3.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Claudiu.Beznea@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa3.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Claudiu.Beznea@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: rXFTltOiIYusDEFIfDhz9HhCPGCwTHmv+39ufI7F1cBRrINWI07PCbHs0xhJIhh7Z+FSlcVT3C
- PdizDsz81Fu/nMcesDjrZ39ciy4sGEUtUFhSnpHRWo7Tly7j4ARdhusyFllp4nplDPlbd4VfIj
- plz96QXQz404CaXTGGXq49xuq7bW+3CQIlzjenyYqpDHyH8Cp7clLKbc7nIvSqiCwqFpBAkuRG
- 4vatespU8ZUI/8kibj0jPN21BbGLPRGAcR/om2vowt5VVqRT3h0UPZL/Q3Kk5+b1XbAFuyc1T9
- O9E=
-X-IronPort-AV: E=Sophos;i="5.67,298,1566889200"; d="scan'208";a="52997501"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 15 Oct 2019 02:23:45 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 15 Oct 2019 02:23:41 -0700
-Received: from NAM03-DM3-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5 via Frontend
- Transport; Tue, 15 Oct 2019 02:23:41 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hNDEQuuyTzADbaoc7ugixWmCOpREDrL+CVhMMkGxo8zMWXLAUO1uiuhf6aymq0r5YMKJUayYbiWqP9fQcQSDaiPeeaF4t3A4447YVkqEHEv0Z23+WkGs1w5kO8Bf+iehnphuElGs5z0lXpzix5hWJgycEljOYPVIuCn3UamxHgKUfJ157DwOsAvAD12O4YfXBAyOca95aJK0toymZsSFhSEmoxk17s84uLZDuMweGbDpJZpggbQ6lYyinxunm0+I+5cVQb5iU/JKlfMmvusfy15iocQDeqQTxB+cjCERSOWDFOdHVK4JZ3VAa8xPfkdXRiiUMTm2dUCO7XsR/142bA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7aGhdWqY3Fnc2zZWuG4aXUs+xH7yPkHgIIzfz85IGe8=;
- b=HMrjqrxjwNJEImoMukkIQZoOMHgVADmJ+innXOCao6+dQVTkbJIwS07QAaYERsIQ8bYapRIgGzLsAIEzOC7AlbAiHOy8QZwJ9/VkAVTncGnQ0CWlpPynw/I8N51QnfXmA61aQBbNnNHcN1tGuCO9FtQoNsRtyP1IdGI7AFs00BXhkFE52lJf23Zpcd88z6r48rx5XCKIpB61hjSfftaA8vOI5NM/FXohL9iLQy3LOXzNJ6QY3/VdpAnk4GGsCjMRuYmHkPN9Lsqc16meRafT69d9nJW4sPUvHNR5c7Oqv09q2sBffg/t9Wbi7UYWAM0lSSHzgq0lLL4xDdBdMdd+zw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7aGhdWqY3Fnc2zZWuG4aXUs+xH7yPkHgIIzfz85IGe8=;
- b=TxqNkYll6aV6QMceQhJDf7BnsT5lNY2Vzckpb+gIOZYHgkkzQa2no8SB4b8sMzVIs2zKWahOXIBfnmWPqiXl+NpCgRGfzsuTbjaqkpS7KA1wmQ0eRflUKhKuQIzP+JrLibAPfzmTl8yR4lT43tBM2pa9cak2ajkLaXf20YhjP9I=
-Received: from DM6PR11MB3225.namprd11.prod.outlook.com (20.176.120.85) by
- DM6PR11MB3146.namprd11.prod.outlook.com (20.177.219.155) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.16; Tue, 15 Oct 2019 09:23:35 +0000
-Received: from DM6PR11MB3225.namprd11.prod.outlook.com
- ([fe80::3874:9f3c:5325:d22]) by DM6PR11MB3225.namprd11.prod.outlook.com
- ([fe80::3874:9f3c:5325:d22%6]) with mapi id 15.20.2347.023; Tue, 15 Oct 2019
- 09:23:35 +0000
-From: <Claudiu.Beznea@microchip.com>
-To: <daniel.lezcano@linaro.org>, <robh+dt@kernel.org>, <mark.rutland@arm.com>, 
- <linux@armlinux.org.uk>, <nsekhar@ti.com>, <bgolaszewski@baylibre.com>,
- <monstr@monstr.eu>, <john@phrozen.org>, <ralf@linux-mips.org>,
- <paul.burton@mips.com>, <jhogan@kernel.org>, <lftan@altera.com>,
- <tglx@linutronix.de>, <vgupta@synopsys.com>, <marc.zyngier@arm.com>,
- <patrice.chotard@st.com>, <mcoquelin.stm32@gmail.com>,
- <alexandre.torgue@st.com>, <eric@anholt.net>, <wahrenst@gmx.net>,
- <f.fainelli@gmail.com>, <rjui@broadcom.com>, <sbranden@broadcom.com>,
- <bcm-kernel-feedback-list@broadcom.com>, <linus.walleij@linaro.org>,
- <shc_work@mail.ru>, <kgene@kernel.org>, <krzk@kernel.org>,
- <ysato@users.sourceforge.jp>, <liviu.dudau@arm.com>, <sudeep.holla@arm.com>,
- <lorenzo.pieralisi@arm.com>, <shawnguo@kernel.org>, <s.hauer@pengutronix.de>, 
- <kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
- <baohua@kernel.org>, <Nicolas.Ferre@microchip.com>,
- <alexandre.belloni@bootlin.com>, <Ludovic.Desroches@microchip.com>,
- <baruch@tkos.co.il>, <u.kleine-koenig@pengutronix.de>, <guoren@kernel.org>,
- <kaloz@openwrt.org>, <khalasa@piap.pl>, <ssantosh@kernel.org>,
- <vz@mleia.com>, <slemieux.tyco@gmail.com>, <khilman@baylibre.com>,
- <avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
- <venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
- <afaerber@suse.de>, <manivannan.sadhasivam@linaro.org>,
- <narmstrong@baylibre.com>, <agross@kernel.org>, <palmer@sifive.com>,
- <aou@eecs.berkeley.edu>, <heiko@sntech.de>, <orsonzhai@gmail.com>,
- <baolin.wang@linaro.org>, <zhang.lyra@gmail.com>,
- <maxime.ripard@bootlin.com>, <wens@csie.org>, <thierry.reding@gmail.com>,
- <jonathanh@nvidia.com>, <linux@prisktech.co.nz>, <john.stultz@linaro.org>,
- <sboyd@kernel.org>, <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Thread-Topic: [PATCH 0/7] add support for clocksource/clockevent DT selection
-Thread-Index: AQHVc8VbrLXkUp4vH02J/Sk0g3X+4A==
-Date: Tue, 15 Oct 2019 09:23:35 +0000
-Message-ID: <7071b6fa-f7ed-c879-4a43-44100dbe6121@microchip.com>
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
- <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
- <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
- <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
- <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
-In-Reply-To: <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: VI1PR07CA0177.eurprd07.prod.outlook.com
- (2603:10a6:802:3e::25) To DM6PR11MB3225.namprd11.prod.outlook.com
- (2603:10b6:5:59::21)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20191015122310531
-x-originating-ip: [94.177.32.156]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 903bf272-15ec-4b39-7326-08d751515a8c
-x-ms-traffictypediagnostic: DM6PR11MB3146:
-x-ms-exchange-purlcount: 2
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB31465E8CCD9A2DFCEFF38A7587930@DM6PR11MB3146.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 01917B1794
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(396003)(39860400002)(346002)(136003)(366004)(376002)(189003)(199004)(1191002)(386003)(6506007)(4326008)(71200400001)(53546011)(14454004)(102836004)(36756003)(31686004)(25786009)(478600001)(110136005)(14444005)(52116002)(66946007)(66446008)(256004)(76176011)(305945005)(64756008)(66476007)(66556008)(966005)(229853002)(54906003)(99286004)(7736002)(66066001)(86362001)(2201001)(6116002)(2906002)(26005)(11346002)(7416002)(6306002)(6512007)(186003)(2616005)(476003)(486006)(6246003)(71190400001)(7366002)(7406005)(7336002)(6486002)(8936002)(5660300002)(81166006)(81156014)(446003)(8676002)(316002)(31696002)(2171002)(3846002)(2501003)(6436002)(921003)(1121003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR11MB3146;
- H:DM6PR11MB3225.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: E6WiqbrMgLABzTuw0J9j3v67ijI/hQBH1RWNsWatD7hOHuh5SIIMCMHoLvyKJEoW6XDxh5AoX2Ef+XdBBpvEyn4/qbCbwjH3OsgkLMvqBD06S4p9ORDlq9zasJegmIQE//C0ZihL2ZOoIcbGEIiui1+a8RY8F4t6hm/Wcq7W+vH8JS8x5GlWYbGrCoN4XuY1SaEe3LkB1a6uJGKt4CiEfJwo0XSe50uneb2DqFcHDNX92BltSs5knX4KAva0mEfrR6bfp3IWTKvunvvUS05GtPDB2BzbZ8weO1/vEor8VAHIPrAmR+UJ8BFyVY/sfwUWYq+ZOnjOY3s0qW/dr5F1X+RxRxO6ll6JLrvoxwEOy74Dt4tW5cI9sjhrIGSwbdik/clFSsmRhKmrOGYHD8dsxVBJz6ExosWFZ9HZCrNlNaGK4DDgxp33ZR4NtEOc5FsV
-Content-ID: <BFEA965B7AA9B54388AC67448362747B@namprd11.prod.outlook.com>
+ id 1iKPfj-0006ID-7O
+ for linux-riscv@lists.infradead.org; Tue, 15 Oct 2019 16:27:45 +0000
+Received: by mail-pf1-x442.google.com with SMTP id q21so12787939pfn.11
+ for <linux-riscv@lists.infradead.org>; Tue, 15 Oct 2019 09:27:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=2YPG3gRwYfXbp+PqjrfJDTcKIYwl4QysGzAj/FIuSos=;
+ b=MXn9aY+e1v9kk20NICPzGvwY+Px1ZIi4lzFWAFpC0mgYifIcIA4Ng8+M/saZ9oWevZ
+ 5thi8H4LsvXpJWxGVtelermxVi1AOXvSgGBkrczcoQj0t0SGpVvshqREN96VE0z/cBjD
+ dCYkKU1SCSnbEcYrjv2tLpwXPFjgHkrNOrUPc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=2YPG3gRwYfXbp+PqjrfJDTcKIYwl4QysGzAj/FIuSos=;
+ b=SW7hSl5IhdITWL6QYx7561R6Hww3W0CVbfoFUzyBRExaqViNPS+TptmFgRMd7jVYR2
+ a/1Hh+yhYeYHvvDLsI5zCxR7o65soqnZggP/tHbbJavegrRjbzPM68Klqp0XVwk3hFcq
+ zyNLyt1g8cXHhu8RiEDX/OFs6PQYMg51LiVpnAfNkv+lWTpMkylY5SpxjWZHBUjWoxC5
+ gREziw6uxGGWvEVz4H5+TnZsWL9WiW4+GgkvEGQF16SMPdrdUyUOBxzH/LJnBk+x+WJi
+ C4ptie8jIi0re0wwAGXltIejJVm4kSU0rQrnhvOZGvSVjEai6ZtHrrkKoZorn4xHptWD
+ wmdA==
+X-Gm-Message-State: APjAAAV2QlcjdR70mgjC7wt1LgqtpF8pdRoFntsoDVOZK8wF6ly/IXtt
+ JmdgbSWR7Lmu/r5ydf8Otm0hNg==
+X-Google-Smtp-Source: APXvYqxOVSEi7vMIRInZ0gQPRgs8DbiGbhqjaOX4rWv3bmMlkRYwRFZmFztuAZypLKlBXsdmkZZi4A==
+X-Received: by 2002:a17:90a:80c2:: with SMTP id
+ k2mr43947622pjw.92.1571156861760; 
+ Tue, 15 Oct 2019 09:27:41 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+ by smtp.gmail.com with ESMTPSA id 11sm21224383pgd.0.2019.10.15.09.27.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Oct 2019 09:27:40 -0700 (PDT)
+Date: Tue, 15 Oct 2019 09:27:39 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH v2] riscv: add support for SECCOMP and SECCOMP_FILTER
+Message-ID: <201910150926.E621A5B@keescook>
+References: <20190822205533.4877-1-david.abdurachmanov@sifive.com>
+ <alpine.DEB.2.21.9999.1910041819230.15827@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.1910141405220.12988@viisi.sifive.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 903bf272-15ec-4b39-7326-08d751515a8c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Oct 2019 09:23:35.2487 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Z8aXzzMcSPD4+Z12Z92evGbhOPtVVEiPr1QR59wKyZPbxgxJRH5GLNcoeXiYW+CPcZiWidPIE+x/H9SvgQ0uOeYLCPJa5w7TPl7eizAszNY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3146
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.9999.1910141405220.12988@viisi.sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191015_022349_855742_F156BA65 
-X-CRM114-Status: GOOD (  16.83  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20191015_092743_292176_E94D2B8B 
+X-CRM114-Status: GOOD (  33.66  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.153.233 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,79 +96,279 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: uclinux-h8-devel@lists.sourceforge.jp, devicetree@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-tegra@vger.kernel.org, nios2-dev@lists.rocketboards.org,
- linux-riscv@lists.infradead.org, linux-snps-arc@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Cc: Song Liu <songliubraving@fb.com>, Alan Kao <alankao@andestech.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Alexei Starovoitov <ast@kernel.org>,
+ Oleg Nesterov <oleg@redhat.com>, linux-kselftest@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Shuah Khan <shuah@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Yonghong Song <yhs@fb.com>,
+ me@carlosedp.com, Albert Ou <aou@eecs.berkeley.edu>,
+ Alexios Zavras <alexios.zavras@intel.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
+ Will Drewry <wad@chromium.org>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>, netdev@vger.kernel.org,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ Andy Lutomirski <luto@amacapital.net>, Vincent Chen <vincentc@andestech.com>,
+ bpf@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Daniel,
-
-On 13.10.2019 21:16, Daniel Lezcano wrote:
-> Hi Claudiu,
+On Mon, Oct 14, 2019 at 02:06:07PM -0700, Paul Walmsley wrote:
+> Shuah,
 > 
-> sorry for the delay, I was OoO again.
+> Could you please take a quick look at this and ack it if you're OK with 
+> the tools/testing change?  We'd like to get this merged soon.
 
-No problem, thank you for your reply.
+FWIW, I regularly carry these kinds of selftest changes via my seccomp
+tree, so if Shuah is busy, I think it'll be fine to take this in
+riscv. If not, I'll take responsibility of apologizing to Shuah! :) :)
 
-> 
-> On 03/10/2019 12:43, Claudiu.Beznea@microchip.com wrote:
->>
->>
->> On 02.10.2019 16:35, Claudiu Beznea wrote:
->>> Hi Daniel,
->>>
->>> Taking into account that Rob doesn't agree with the solution proposed in
->>> this series do you think there is a chance to merge this driver as is?
->>
->> Sorry, I was talking here about the driver at [1].
->>
->> [1] https://lore.kernel.org/lkml/1552580772-8499-1-git-send-email-claudiu.beznea@microchip.com/
-> 
-> Damn! 7 months old. I'm truly sorry we do not have progress on this. Let
-> fix this once and for all.
-> 
-> In the driver:
-> 
-> ret = of_property_read_u32(node, "clock-frequency", &freq);
-> 
-> It is unclear how is used this property. It should be the frequency
-> driving the timer, but can we get from a clk_get_rate() and a fixed divider?
-> 
-
-The timer could be driven by 2 clock sources, one is called peripheral
-clock and is the clock that is also driving the IP itself, and one is
-called generic clock (this could drive only the timer itself) and should be
-at least 3 times lower than the peripheral clock.
-
-We could choose the clock driving the timer by setting the PIT64B_MR.SGCLK
-bit (0 - means the timer itself is driven by peripheral clock, 1 - means
-the timer is driven by the generic clock).
-
-The timer clock source could be divided by MR.PRES + 1.
-
-So, I used the clock-frequency DT binding to let user choose the timer's
-frequency. Based on the value provided via this DT binding the best clock
-source and prescaler is chosen via mchp_pit64b_pres_prepare() function.
-
-As the datasheet for the product that is using this IP is open now, I'm
-inserting here a link to it [1].
-
-Thank you,
-Claudiu Beznea
-
-[1]
-http://ww1.microchip.com/downloads/en/DeviceDoc/SAM9X60-Data-Sheet-DS60001579A.pdf
+-Kees
 
 > 
+> - Paul
+> 
+> 
+> On Fri, 4 Oct 2019, Paul Walmsley wrote:
+> 
+> > Hello Shuah,
+> > 
+> > On Thu, 22 Aug 2019, David Abdurachmanov wrote:
+> > 
+> > > This patch was extensively tested on Fedora/RISCV (applied by default on
+> > > top of 5.2-rc7 kernel for <2 months). The patch was also tested with 5.3-rc
+> > > on QEMU and SiFive Unleashed board.
+> > > 
+> > > libseccomp (userspace) was rebased:
+> > > https://github.com/seccomp/libseccomp/pull/134
+> > > 
+> > > Fully passes libseccomp regression testing (simulation and live).
+> > > 
+> > > There is one failing kernel selftest: global.user_notification_signal
+> > > 
+> > > v1 -> v2:
+> > >   - return immediatly if secure_computing(NULL) returns -1
+> > >   - fixed whitespace issues
+> > >   - add missing seccomp.h
+> > >   - remove patch #2 (solved now)
+> > >   - add riscv to seccomp kernel selftest
+> > > 
+> > > Cc: keescook@chromium.org
+> > > Cc: me@carlosedp.com
+> > > 
+> > > Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
+> > 
+> > We'd like to merge this patch through the RISC-V tree.
+> > Care to ack the change to tools/testing/selftests/seccomp/seccomp_bpf.c ?  
+> > 
+> > Kees has already reviewed it:
+> > 
+> > https://lore.kernel.org/linux-riscv/CAJr-aD=UnCN9E_mdVJ2H5nt=6juRSWikZnA5HxDLQxXLbsRz-w@mail.gmail.com/
+> > 
+> > 
+> > - Paul
+> > 
+> > 
+> > > ---
+> > >  arch/riscv/Kconfig                            | 14 ++++++++++
+> > >  arch/riscv/include/asm/seccomp.h              | 10 +++++++
+> > >  arch/riscv/include/asm/thread_info.h          |  5 +++-
+> > >  arch/riscv/kernel/entry.S                     | 27 +++++++++++++++++--
+> > >  arch/riscv/kernel/ptrace.c                    | 10 +++++++
+> > >  tools/testing/selftests/seccomp/seccomp_bpf.c |  8 +++++-
+> > >  6 files changed, 70 insertions(+), 4 deletions(-)
+> > >  create mode 100644 arch/riscv/include/asm/seccomp.h
+> > > 
+> > > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> > > index 59a4727ecd6c..441e63ff5adc 100644
+> > > --- a/arch/riscv/Kconfig
+> > > +++ b/arch/riscv/Kconfig
+> > > @@ -31,6 +31,7 @@ config RISCV
+> > >  	select GENERIC_SMP_IDLE_THREAD
+> > >  	select GENERIC_ATOMIC64 if !64BIT
+> > >  	select HAVE_ARCH_AUDITSYSCALL
+> > > +	select HAVE_ARCH_SECCOMP_FILTER
+> > >  	select HAVE_MEMBLOCK_NODE_MAP
+> > >  	select HAVE_DMA_CONTIGUOUS
+> > >  	select HAVE_FUTEX_CMPXCHG if FUTEX
+> > > @@ -235,6 +236,19 @@ menu "Kernel features"
+> > >  
+> > >  source "kernel/Kconfig.hz"
+> > >  
+> > > +config SECCOMP
+> > > +	bool "Enable seccomp to safely compute untrusted bytecode"
+> > > +	help
+> > > +	  This kernel feature is useful for number crunching applications
+> > > +	  that may need to compute untrusted bytecode during their
+> > > +	  execution. By using pipes or other transports made available to
+> > > +	  the process as file descriptors supporting the read/write
+> > > +	  syscalls, it's possible to isolate those applications in
+> > > +	  their own address space using seccomp. Once seccomp is
+> > > +	  enabled via prctl(PR_SET_SECCOMP), it cannot be disabled
+> > > +	  and the task is only allowed to execute a few safe syscalls
+> > > +	  defined by each seccomp mode.
+> > > +
+> > >  endmenu
+> > >  
+> > >  menu "Boot options"
+> > > diff --git a/arch/riscv/include/asm/seccomp.h b/arch/riscv/include/asm/seccomp.h
+> > > new file mode 100644
+> > > index 000000000000..bf7744ee3b3d
+> > > --- /dev/null
+> > > +++ b/arch/riscv/include/asm/seccomp.h
+> > > @@ -0,0 +1,10 @@
+> > > +/* SPDX-License-Identifier: GPL-2.0 */
+> > > +
+> > > +#ifndef _ASM_SECCOMP_H
+> > > +#define _ASM_SECCOMP_H
+> > > +
+> > > +#include <asm/unistd.h>
+> > > +
+> > > +#include <asm-generic/seccomp.h>
+> > > +
+> > > +#endif /* _ASM_SECCOMP_H */
+> > > diff --git a/arch/riscv/include/asm/thread_info.h b/arch/riscv/include/asm/thread_info.h
+> > > index 905372d7eeb8..a0b2a29a0da1 100644
+> > > --- a/arch/riscv/include/asm/thread_info.h
+> > > +++ b/arch/riscv/include/asm/thread_info.h
+> > > @@ -75,6 +75,7 @@ struct thread_info {
+> > >  #define TIF_MEMDIE		5	/* is terminating due to OOM killer */
+> > >  #define TIF_SYSCALL_TRACEPOINT  6       /* syscall tracepoint instrumentation */
+> > >  #define TIF_SYSCALL_AUDIT	7	/* syscall auditing */
+> > > +#define TIF_SECCOMP		8	/* syscall secure computing */
+> > >  
+> > >  #define _TIF_SYSCALL_TRACE	(1 << TIF_SYSCALL_TRACE)
+> > >  #define _TIF_NOTIFY_RESUME	(1 << TIF_NOTIFY_RESUME)
+> > > @@ -82,11 +83,13 @@ struct thread_info {
+> > >  #define _TIF_NEED_RESCHED	(1 << TIF_NEED_RESCHED)
+> > >  #define _TIF_SYSCALL_TRACEPOINT	(1 << TIF_SYSCALL_TRACEPOINT)
+> > >  #define _TIF_SYSCALL_AUDIT	(1 << TIF_SYSCALL_AUDIT)
+> > > +#define _TIF_SECCOMP		(1 << TIF_SECCOMP)
+> > >  
+> > >  #define _TIF_WORK_MASK \
+> > >  	(_TIF_NOTIFY_RESUME | _TIF_SIGPENDING | _TIF_NEED_RESCHED)
+> > >  
+> > >  #define _TIF_SYSCALL_WORK \
+> > > -	(_TIF_SYSCALL_TRACE | _TIF_SYSCALL_TRACEPOINT | _TIF_SYSCALL_AUDIT)
+> > > +	(_TIF_SYSCALL_TRACE | _TIF_SYSCALL_TRACEPOINT | _TIF_SYSCALL_AUDIT | \
+> > > +	 _TIF_SECCOMP )
+> > >  
+> > >  #endif /* _ASM_RISCV_THREAD_INFO_H */
+> > > diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
+> > > index bc7a56e1ca6f..0bbedfa3e47d 100644
+> > > --- a/arch/riscv/kernel/entry.S
+> > > +++ b/arch/riscv/kernel/entry.S
+> > > @@ -203,8 +203,25 @@ check_syscall_nr:
+> > >  	/* Check to make sure we don't jump to a bogus syscall number. */
+> > >  	li t0, __NR_syscalls
+> > >  	la s0, sys_ni_syscall
+> > > -	/* Syscall number held in a7 */
+> > > -	bgeu a7, t0, 1f
+> > > +	/*
+> > > +	 * The tracer can change syscall number to valid/invalid value.
+> > > +	 * We use syscall_set_nr helper in syscall_trace_enter thus we
+> > > +	 * cannot trust the current value in a7 and have to reload from
+> > > +	 * the current task pt_regs.
+> > > +	 */
+> > > +	REG_L a7, PT_A7(sp)
+> > > +	/*
+> > > +	 * Syscall number held in a7.
+> > > +	 * If syscall number is above allowed value, redirect to ni_syscall.
+> > > +	 */
+> > > +	bge a7, t0, 1f
+> > > +	/*
+> > > +	 * Check if syscall is rejected by tracer or seccomp, i.e., a7 == -1.
+> > > +	 * If yes, we pretend it was executed.
+> > > +	 */
+> > > +	li t1, -1
+> > > +	beq a7, t1, ret_from_syscall_rejected
+> > > +	/* Call syscall */
+> > >  	la s0, sys_call_table
+> > >  	slli t0, a7, RISCV_LGPTR
+> > >  	add s0, s0, t0
+> > > @@ -215,6 +232,12 @@ check_syscall_nr:
+> > >  ret_from_syscall:
+> > >  	/* Set user a0 to kernel a0 */
+> > >  	REG_S a0, PT_A0(sp)
+> > > +	/*
+> > > +	 * We didn't execute the actual syscall.
+> > > +	 * Seccomp already set return value for the current task pt_regs.
+> > > +	 * (If it was configured with SECCOMP_RET_ERRNO/TRACE)
+> > > +	 */
+> > > +ret_from_syscall_rejected:
+> > >  	/* Trace syscalls, but only if requested by the user. */
+> > >  	REG_L t0, TASK_TI_FLAGS(tp)
+> > >  	andi t0, t0, _TIF_SYSCALL_WORK
+> > > diff --git a/arch/riscv/kernel/ptrace.c b/arch/riscv/kernel/ptrace.c
+> > > index 368751438366..63e47c9f85f0 100644
+> > > --- a/arch/riscv/kernel/ptrace.c
+> > > +++ b/arch/riscv/kernel/ptrace.c
+> > > @@ -154,6 +154,16 @@ void do_syscall_trace_enter(struct pt_regs *regs)
+> > >  		if (tracehook_report_syscall_entry(regs))
+> > >  			syscall_set_nr(current, regs, -1);
+> > >  
+> > > +	/*
+> > > +	 * Do the secure computing after ptrace; failures should be fast.
+> > > +	 * If this fails we might have return value in a0 from seccomp
+> > > +	 * (via SECCOMP_RET_ERRNO/TRACE).
+> > > +	 */
+> > > +	if (secure_computing(NULL) == -1) {
+> > > +		syscall_set_nr(current, regs, -1);
+> > > +		return;
+> > > +	}
+> > > +
+> > >  #ifdef CONFIG_HAVE_SYSCALL_TRACEPOINTS
+> > >  	if (test_thread_flag(TIF_SYSCALL_TRACEPOINT))
+> > >  		trace_sys_enter(regs, syscall_get_nr(current, regs));
+> > > diff --git a/tools/testing/selftests/seccomp/seccomp_bpf.c b/tools/testing/selftests/seccomp/seccomp_bpf.c
+> > > index 6ef7f16c4cf5..492e0adad9d3 100644
+> > > --- a/tools/testing/selftests/seccomp/seccomp_bpf.c
+> > > +++ b/tools/testing/selftests/seccomp/seccomp_bpf.c
+> > > @@ -112,6 +112,8 @@ struct seccomp_data {
+> > >  #  define __NR_seccomp 383
+> > >  # elif defined(__aarch64__)
+> > >  #  define __NR_seccomp 277
+> > > +# elif defined(__riscv)
+> > > +#  define __NR_seccomp 277
+> > >  # elif defined(__hppa__)
+> > >  #  define __NR_seccomp 338
+> > >  # elif defined(__powerpc__)
+> > > @@ -1582,6 +1584,10 @@ TEST_F(TRACE_poke, getpid_runs_normally)
+> > >  # define ARCH_REGS	struct user_pt_regs
+> > >  # define SYSCALL_NUM	regs[8]
+> > >  # define SYSCALL_RET	regs[0]
+> > > +#elif defined(__riscv) && __riscv_xlen == 64
+> > > +# define ARCH_REGS	struct user_regs_struct
+> > > +# define SYSCALL_NUM	a7
+> > > +# define SYSCALL_RET	a0
+> > >  #elif defined(__hppa__)
+> > >  # define ARCH_REGS	struct user_regs_struct
+> > >  # define SYSCALL_NUM	gr[20]
+> > > @@ -1671,7 +1677,7 @@ void change_syscall(struct __test_metadata *_metadata,
+> > >  	EXPECT_EQ(0, ret) {}
+> > >  
+> > >  #if defined(__x86_64__) || defined(__i386__) || defined(__powerpc__) || \
+> > > -    defined(__s390__) || defined(__hppa__)
+> > > +    defined(__s390__) || defined(__hppa__) || defined(__riscv)
+> > >  	{
+> > >  		regs.SYSCALL_NUM = syscall;
+> > >  	}
+> > > -- 
+> > > 2.21.0
+> > > 
+> > > 
+> > 
+> > 
+> > - Paul
+> > 
+> 
+> 
+
+-- 
+Kees Cook
+
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
