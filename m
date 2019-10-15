@@ -2,139 +2,134 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8325FD6C78
-	for <lists+linux-riscv@lfdr.de>; Tue, 15 Oct 2019 02:32:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 01B25D6F5D
+	for <lists+linux-riscv@lfdr.de>; Tue, 15 Oct 2019 07:59:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OrKCaAEswmlPC6XoT22qvWEIHZtxtfLaaF5tbDxQd5E=; b=b1EZEyH4cERlJN
-	hjn1sBiRxBlCstsLPNfDa/vVQaw1mR1F69F0PlbDqlPmOjKvuCTT1YjLhdNcXjCzf7TSi+yaRmR4L
-	2NEYIpIhIkvT1om2/c60cmc+ZTRYhyNYWRBUqWtn7KjlZ8Cv2vt1Y6dKijUZc0OLII+egFgu1aB7d
-	TTm8MXYIegEqUBX/dcQvXsod3495R8/9Vf4vfOp+6a/5Z6Yd4DEM3ijo3w1jY5J34BbdSXGKZQMNk
-	ZJMcKN34JMJajq4C7YH0JNmp0MDRqwvejwpVhxJTJKQoDQWNRPenTUz3Yz4XhDN8B1JyoWBaACcmN
-	WaLXYonxNHbteKf2iGmQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4+hETKVMFbs0ocrVFhi4gsrRjhjVYgTXfOO4dY2oUL4=; b=Gf8z90I/QXAngn
+	ERS1gtj5RiuJbg/HnMd2QdNZY1wE6XDvBhC59AFpagYlsQmGZKACNKxoYnYycoD5pv12KZV4g5jJ8
+	dg3oVvxfwsaXsR54ZMRQ3y+mSNfRJYzKWowag6XFIxaXYzy4u3kDb1ZE6WaUwgxPwN/DEOTwCEVjo
+	fsPK3ynWJ3BmBezVmYh7zwbHw6ZykkOc86pLvHvHIHMkEG6Kk1mwUPPdZQavGZ26DAPnnAiLEO4go
+	Qny7pWoCKiQ1bi8hKKEqCU6yJIlUae4KoirO66xJ69E96RuwNRF/3IWAkdZtg6XAZUbk8KjC5raWl
+	/KMeUsMBeHP4SJ/6YSdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iKAku-0007jA-Fo; Tue, 15 Oct 2019 00:32:04 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1iKFrl-0006A1-Tp; Tue, 15 Oct 2019 05:59:29 +0000
+Received: from mail-eopbgr720086.outbound.protection.outlook.com
+ ([40.107.72.86] helo=NAM05-CO1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iKAkZ-0007Ea-Vl; Tue, 15 Oct 2019 00:31:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1571099503; x=1602635503;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=vGUAUiE6HWuzW05ag+uD2UDXYvceeHSfyWnl+vAUii4=;
- b=VpgmsF4BdYPnRYWvxGUaYcso9ayXCtpGp/jTwGPwNFZmgOCg/wG418Rx
- KCrg8RNVCh81cILwNi7kQrFLB0+7yirR38VAAwNdTHxTRNKPkiy18D8lq
- otwIqfZK8RoPtqlnPlrSpSCwFKPDN9YHLay0dxUvGi92MgILZYkppLwsX
- 1C4GoPRvsap7epuBnsqmuAkJ4QdzcNUaDT8U5WxDVkobu1xFXeKvOUqfm
- iO1jLhA480AiHOxZixzAAFOmyfSlS7uJTwQPAE+jp3vmu4zHsMenxJhdW
- L8EVCJAKqr/xhiPS6f7kOhQBz3gN/TpPr6q3WBLDmDqxwm4kpcttevLL/ A==;
-IronPort-SDR: EL3n9BzG789Qj1bCB4B+Ajiv0j75T5aIVfEjdsYGCkbyo/Oi2vTCZFpdGrduQFGnnGH6WZwxbZ
- Zz/R5oKDVePf1iny5k4ZmNdavSoijb5oKBhMk9JLRdIGP97UjqLwWOLpl9HWooK1ieslSIA21N
- kyYI6zn1UpcXI9WPZnN7wm4kSW/3j9hMJ1Q/1BAmrqmURLP9IfwsifAyhwvkFLgHkCTG1fH1r3
- 70zs9IGZ9xR/tSHfSNLPzuPf+u5QbWF+NQRznDPt5MJvFqTVkraqLCZPRaoVhGpUYgwZ+5JmH2
- iFA=
-X-IronPort-AV: E=Sophos;i="5.67,296,1566835200"; d="scan'208";a="227576049"
-Received: from mail-cys01nam02lp2059.outbound.protection.outlook.com (HELO
- NAM02-CY1-obe.outbound.protection.outlook.com) ([104.47.37.59])
- by ob1.hgst.iphmx.com with ESMTP; 15 Oct 2019 08:31:38 +0800
+ id 1iKFrj-00069Q-25
+ for linux-riscv@lists.infradead.org; Tue, 15 Oct 2019 05:59:28 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lEL3qjtrhNcDpqLYxd/THVrYF8ScE1wQ9yjDN5dWk/CQ1U9VRYFTe0eIfdh3BDvc6hTGDcasa27vSxNIRc4FoGoHkpvc2A9OUiweBiAMaQwE502qDZ3uktfDEfBbdfuck86DrGcXKHILPQFzKKuzCmmOOjBHBf7rYd1GZSzYXkiJ3LK+OsjnA54GHMKqhUlzyCtQss3r2tJ95xlajUeo5txleHhDiVjsE1kHrh3jSGdYjYlIC3ubWe9J2/PDcRLiebDyokctcAXUgIBSAoAZZtGXFM682kJMj7Geihwb++46FAx6CWm4CDDsbI76tsvQPFHH4UhA3gRSFk//PlpJ4A==
+ b=cVqalrSrFp6+7ikmVUfHWZZ1pXcJVk5xNJuoi8XAHAuNBUf7Gka6AOydB+nlTd2fVKYwDDYic01n67KCN8M3nYnRVX5RNdb5GZ1bWtQPilmd9ouh4gbQUXVipO+F3MKzuxS+8pjZqpbtw72G2S2UafLkom3EVXVuAgg7kbwedLLrJg5pydh1PxWCr4dqh1HhSnQlhtXzlb0H/tzFTGKYMiFCkBtX+qIf0PD/VuIN0LzwetSOB61VGYraqtDGCRowmHHDvbg42by9C6VDYDr0LIkzwtJ+eN6NkvHDO2YLJMtKdxWfLL2bBU2SxYL8KF3nnFhFlsNZpbxG+7zpqdsplA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vGUAUiE6HWuzW05ag+uD2UDXYvceeHSfyWnl+vAUii4=;
- b=UZYWzcm/ywUKFgZWKRK2Adjm24QtfVdWOI5tdf4V0oU//oCg8W97yGaK3rB65p7A4lBWvQieRQoclTR1E/7CtNFqQChc2HyH3zv61tRQnG9TlOEt8gxGDY6MiA+0YmVL3EhAmvWjSysJBsKvN9hWXzzotCvvMdF9kKYz6W4BVNOQd4WvheHgrpsXANbMRizeVBXoXDNCy+QJlVLOgPkEw9XEbRFmsrOjqllBn7CgBfDXCqbCoL9rzJuhgMJ99vbdwt4+LaDrB3MVQuur15Bp7IHQQhWULarZumUe4tTdFed/vsfdRUEwfBOcGAQ5hDGIy5KA5ZjHWSnedeNWMc+TBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
+ bh=Gch6YVfyYZuYsX15PwK+/TgxGhvXHBW7TapWdpOXyoM=;
+ b=m370o/60aigTQDQa9wVBqsZxzSHHAUM1TAkqBqiIqHHLeSjJh+jFro5yC4KEsKXQ8g6hrj/JzNcB2KkVhH6tdkC3fjn/sXSbPIuvU7NykQUzktAQeUS6v8Af++93cYdSW6RYKy7TZ6X04yVnj4NwkyJw+hsoyaIfh9HxZSi/kJkC6S+jnLnpk+8jAtib8a8uJw14r7ALhCoW3WY4mMtC+XMR0QavbOXhiTgpHONPcOqVJ3XwwXJzadEiTSoByHrwvPYI2V8Mt8vtnYFlue8BaXCeU/eIlkD0S3mbNvpMz0G3B2UU/tql/bU2OUoBCSYRJw/xaknT+FpdmeCnTQ/EkQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=kernel.org smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vGUAUiE6HWuzW05ag+uD2UDXYvceeHSfyWnl+vAUii4=;
- b=OSO+Zc4RUwdoiumO6CdeR+WWSH3cM5AlTEQC0G9lZCAaPf1R9kegFQTReGwkl06zKnXAHD7++W6xBWyU+7Z7A+d8+uQcDJMyZBiwH9GhjdqbAGOeLV5DiWvILlS5dgO27i/NOftmcF7FoNdklo6KAlfxhbMz5NRWxBNWNcolLFw=
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
- BYAPR04MB4981.namprd04.prod.outlook.com (52.135.233.216) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.21; Tue, 15 Oct 2019 00:31:37 +0000
-Received: from BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::51dd:7de9:c4a1:f9f3]) by BYAPR04MB3990.namprd04.prod.outlook.com
- ([fe80::51dd:7de9:c4a1:f9f3%3]) with mapi id 15.20.2347.023; Tue, 15 Oct 2019
- 00:31:37 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "alex@ghiti.fr" <alex@ghiti.fr>
-Subject: Re: [PATCH v6 14/14] riscv: Make mmap allocation top-down by default
-Thread-Topic: [PATCH v6 14/14] riscv: Make mmap allocation top-down by default
-Thread-Index: AQHVTbNRR2y1x3jR5Uinm4nvlyFP7KdLqT4AgAOZyQCAAQUZAIAAu9IAgADtSYCAARUzgIAIPfkA
-Date: Tue, 15 Oct 2019 00:31:37 +0000
-Message-ID: <d27c8eac16d1cc4d5ca139802b4d0cdd2dbbca11.camel@wdc.com>
-References: <20190808061756.19712-1-alex@ghiti.fr>
- <20190808061756.19712-15-alex@ghiti.fr>
- <208433f810b5b07b1e679d7eedb028697dff851b.camel@wdc.com>
- <60b52f20-a2c7-dee9-7cf3-a727f07400b9@ghiti.fr>
- <daeb33415751ef16a717f6ff6a29486110c503d7.camel@wdc.com>
- <9e9a3fea-d8a3-ae62-317a-740773f0725c@ghiti.fr>
- <d9bc696aa9d1e306e4cff04a2926b0faa2dc5587.camel@wdc.com>
- <4192e5ef-2e9c-950c-1899-ee8ce9a05ec3@ghiti.fr>
-In-Reply-To: <4192e5ef-2e9c-950c-1899-ee8ce9a05ec3@ghiti.fr>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 151b5772-8635-4938-ebbd-08d751070a40
-x-ms-office365-filtering-ht: Tenant
-x-ms-traffictypediagnostic: BYAPR04MB4981:
-x-ms-exchange-purlcount: 2
-x-microsoft-antispam-prvs: <BYAPR04MB498189266DF51BCFEFBFFB68FA930@BYAPR04MB4981.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 01917B1794
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(39860400002)(376002)(136003)(346002)(366004)(189003)(199004)(52314003)(66066001)(478600001)(966005)(81156014)(8936002)(81166006)(5640700003)(25786009)(6436002)(6512007)(76176011)(14454004)(99286004)(8676002)(4326008)(6306002)(118296001)(6246003)(66946007)(1730700003)(66476007)(6916009)(64756008)(66556008)(2351001)(66446008)(7416002)(6486002)(76116006)(2906002)(3846002)(6116002)(229853002)(7736002)(2501003)(316002)(71190400001)(19627235002)(86362001)(305945005)(54906003)(2616005)(486006)(36756003)(186003)(446003)(11346002)(102836004)(30864003)(5024004)(14444005)(256004)(53546011)(71200400001)(476003)(26005)(6506007)(5660300002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4981;
- H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: P106JlTSeFaU9XkPrWzyhDtAtfzb8pa/uhB7IoOvtbP22JTafFXPnP4vU/K4MOHqBrFwIqmnPmkEFe0NfG+lMNUs6cYxOfUwccXMb2vGP+799D6syCcTPNeeTR9/u4vU4emAlh5iH4Pf/HBNjKB+Y+MkOIljImxO/uC1DchYe03s/n4i4zs/tWI8R84d1B1+KEscdlMvXJmmBPUCwTyQj2FwLhsUTTqfD7I3za3SFGAe3fzVkODggOIXvkCO+CE94J1F/nUvbpEBV7PPwgFm4BnUd6geYZ2+CX9ebThMCVt/ividoq9Bcz58NvGuohVIsscC5cdyyD/U6vuY7HYs14VGkas+45eobosXdckXC+fp9G5FHqVmYFPiT4z6XEkW3vTPju2jgAiH82Mw7NAnCsbiSKTUMEVjQpil6sr5rgpX64Wxf9/rlWEb1+m90eD9Xs7uWCR6VcSrCVfvFqFADg==
-x-ms-exchange-transport-forked: True
-Content-ID: <DFD9BC418220F5459EDAAD8429D5F8D2@namprd04.prod.outlook.com>
+ bh=Gch6YVfyYZuYsX15PwK+/TgxGhvXHBW7TapWdpOXyoM=;
+ b=JGIAXc4tz01Z85k44d6YP2mY1QkmD2e3pfEM1MjPVCY5QVWzUlGNM+tRt8rEGZkB0ULQ5jae+fJMfSagHoLxzXohP+EcBOepcVwif5LEjtziEqyZgu9JaU974UboD+sePQ2OeX2SbqEu4EK11bFaGuxjjXyErUCr9u0yzmdsoAQ=
+Received: from BL0PR02CA0061.namprd02.prod.outlook.com (2603:10b6:207:3d::38)
+ by SN6PR02MB4160.namprd02.prod.outlook.com (2603:10b6:805:2e::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2347.18; Tue, 15 Oct
+ 2019 05:59:20 +0000
+Received: from BL2NAM02FT026.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e46::203) by BL0PR02CA0061.outlook.office365.com
+ (2603:10b6:207:3d::38) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2347.21 via Frontend
+ Transport; Tue, 15 Oct 2019 05:59:20 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ BL2NAM02FT026.mail.protection.outlook.com (10.152.77.156) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2347.16
+ via Frontend Transport; Tue, 15 Oct 2019 05:59:20 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
+ (envelope-from <michal.simek@xilinx.com>)
+ id 1iKFrb-0001ob-R8; Mon, 14 Oct 2019 22:59:19 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <michal.simek@xilinx.com>)
+ id 1iKFrW-0001GV-N2; Mon, 14 Oct 2019 22:59:14 -0700
+Received: from xsj-pvapsmtp01 (maildrop.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id x9F5xBuo030875; 
+ Mon, 14 Oct 2019 22:59:11 -0700
+Received: from [172.30.17.123] by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <michals@xilinx.com>)
+ id 1iKFrT-0001Fm-9x; Mon, 14 Oct 2019 22:59:11 -0700
+Subject: Re: [PATCH v2] PCI/MSI: Enable PCI_MSI_IRQ_DOMAIN support for
+ Microblaze
+To: Bjorn Helgaas <helgaas@kernel.org>, Christoph Hellwig <hch@infradead.org>
+References: <20191014232345.GA246093@google.com>
+From: Michal Simek <michal.simek@xilinx.com>
+Message-ID: <fe37e872-09c7-7b60-cd3e-33228c740afc@xilinx.com>
+Date: Tue, 15 Oct 2019 07:59:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 151b5772-8635-4938-ebbd-08d751070a40
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Oct 2019 00:31:37.3672 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 5Q18QHVEvQ42kpL2GIf6HGPia4hmeh4hYJI8KhDGsRg466fTa+zI9LY8eXkkHO76ICPN7wW7AFkRpmsN+NKVkw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4981
+In-Reply-To: <20191014232345.GA246093@google.com>
+Content-Language: en-US
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(136003)(346002)(39860400002)(396003)(376002)(189003)(199004)(23676004)(2486003)(478600001)(5660300002)(305945005)(65956001)(47776003)(50466002)(70586007)(7416002)(186003)(26005)(70206006)(81156014)(65806001)(31696002)(476003)(76176011)(486006)(6666004)(356004)(8676002)(81166006)(2616005)(126002)(31686004)(11346002)(8936002)(44832011)(36386004)(6246003)(2906002)(4326008)(106002)(54906003)(110136005)(58126008)(230700001)(336012)(446003)(316002)(229853002)(426003)(9786002)(36756003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:SN6PR02MB4160; H:xsj-pvapsmtpgw01; FPR:;
+ SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; MX:1; A:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 79c74e17-b857-4259-eb03-08d75134d260
+X-MS-TrafficTypeDiagnostic: SN6PR02MB4160:
+X-LD-Processed: 657af505-d5df-48d0-8300-c31994686c5c,ExtAddr
+X-Microsoft-Antispam-PRVS: <SN6PR02MB416005D85ABEBC954A79E85FC6930@SN6PR02MB4160.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
+X-Forefront-PRVS: 01917B1794
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: REpVFAM0fZ9M5YqGbaUd0Zin9r9SkqM4DOO2Q9t1qxzmhXVOUBizaIPcqbwlIOQ+xDGXR3rqegwipy/jImSFHFYtgBTYjoEBDimya9URX34zyABSx28kUJxiYmThgfzfaxm9GJYJtRmA00BLGj3SFt4djLoihheHAcYoeIgv07k+j0CIju+kwE8P36D7yKMejo3yQB2EvsjzQm0p0JaCmy2HbQERwCkd/O8772DuCMBV293U+vGFnCvJIRtP1oTfUahbAAfq9PQSgNhkp1INZGrdxWMHZrZd7Q1xy4yJR1hysR6EoLuQhQ+87UMrVEqjMbgPiHg2VxhhSM+o+/M+zcl/UGAr04ZhqN7+VNZz3k68qSEXPGMhf+gwZa5ZsSF4DIX/6fab3mD0OhqUxZL2fNeWZ4z9X6hBSeaVddlxC84=
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Oct 2019 05:59:20.4195 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 79c74e17-b857-4259-eb03-08d75134d260
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB4160
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191014_173144_214171_5CB3B985 
-X-CRM114-Status: GOOD (  22.46  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191014_225927_106822_8E4B1C6B 
+X-CRM114-Status: GOOD (  13.58  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.72.86 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -147,369 +142,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "keescook@chromium.org" <keescook@chromium.org>,
- "jhogan@kernel.org" <jhogan@kernel.org>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "palmer@sifive.com" <palmer@sifive.com>,
- "will.deacon@arm.com" <will.deacon@arm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "ralf@linux-mips.org" <ralf@linux-mips.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "paul.burton@mips.com" <paul.burton@mips.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "viro@zeniv.linux.org.uk" <viro@zeniv.linux.org.uk>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-fsdevel@vger.kernel.org" <linux-fsdevel@vger.kernel.org>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "hch@lst.de" <hch@lst.de>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "mcgrof@kernel.org" <mcgrof@kernel.org>
+Cc: Kuldeep Dave <kuldeep.dave@xilinx.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@sifive.com>,
+ linux-pci@vger.kernel.org, monstr@monstr.eu,
+ Michal Simek <michal.simek@xilinx.com>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>,
+ Firoz Khan <firoz.khan@linaro.org>, git@xilinx.com,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 2019-10-09 at 14:39 -0400, Alex Ghiti wrote:
-> On 10/8/19 10:07 PM, Atish Patra wrote:
-> > On Tue, 2019-10-08 at 07:58 -0400, Alex Ghiti wrote:
-> > > On 10/7/19 8:46 PM, Atish Patra wrote:
-> > > > On Mon, 2019-10-07 at 05:11 -0400, Alex Ghiti wrote:
-> > > > > On 10/4/19 10:12 PM, Atish Patra wrote:
-> > > > > > On Thu, 2019-08-08 at 02:17 -0400, Alexandre Ghiti wrote:
-> > > > > > > In order to avoid wasting user address space by using
-> > > > > > > bottom-
-> > > > > > > up
-> > > > > > > mmap
-> > > > > > > allocation scheme, prefer top-down scheme when possible.
-> > > > > > > 
-> > > > > > > Before:
-> > > > > > > root@qemuriscv64:~# cat /proc/self/maps
-> > > > > > > 00010000-00016000 r-xp 00000000 fe:00
-> > > > > > > 6389       /bin/cat.coreutils
-> > > > > > > 00016000-00017000 r--p 00005000 fe:00
-> > > > > > > 6389       /bin/cat.coreutils
-> > > > > > > 00017000-00018000 rw-p 00006000 fe:00
-> > > > > > > 6389       /bin/cat.coreutils
-> > > > > > > 00018000-00039000 rw-p 00000000 00:00 0          [heap]
-> > > > > > > 1555556000-155556d000 r-xp 00000000 fe:00 7193   /lib/ld-
-> > > > > > > 2.28.so
-> > > > > > > 155556d000-155556e000 r--p 00016000 fe:00 7193   /lib/ld-
-> > > > > > > 2.28.so
-> > > > > > > 155556e000-155556f000 rw-p 00017000 fe:00 7193   /lib/ld-
-> > > > > > > 2.28.so
-> > > > > > > 155556f000-1555570000 rw-p 00000000 00:00 0
-> > > > > > > 1555570000-1555572000 r-xp 00000000 00:00 0      [vdso]
-> > > > > > > 1555574000-1555576000 rw-p 00000000 00:00 0
-> > > > > > > 1555576000-1555674000 r-xp 00000000 fe:00
-> > > > > > > 7187   /lib/libc-
-> > > > > > > 2.28.so
-> > > > > > > 1555674000-1555678000 r--p 000fd000 fe:00
-> > > > > > > 7187   /lib/libc-
-> > > > > > > 2.28.so
-> > > > > > > 1555678000-155567a000 rw-p 00101000 fe:00
-> > > > > > > 7187   /lib/libc-
-> > > > > > > 2.28.so
-> > > > > > > 155567a000-15556a0000 rw-p 00000000 00:00 0
-> > > > > > > 3fffb90000-3fffbb1000 rw-p 00000000 00:00 0      [stack]
-> > > > > > > 
-> > > > > > > After:
-> > > > > > > root@qemuriscv64:~# cat /proc/self/maps
-> > > > > > > 00010000-00016000 r-xp 00000000 fe:00
-> > > > > > > 6389       /bin/cat.coreutils
-> > > > > > > 00016000-00017000 r--p 00005000 fe:00
-> > > > > > > 6389       /bin/cat.coreutils
-> > > > > > > 00017000-00018000 rw-p 00006000 fe:00
-> > > > > > > 6389       /bin/cat.coreutils
-> > > > > > > 2de81000-2dea2000 rw-p 00000000 00:00 0          [heap]
-> > > > > > > 3ff7eb6000-3ff7ed8000 rw-p 00000000 00:00 0
-> > > > > > > 3ff7ed8000-3ff7fd6000 r-xp 00000000 fe:00
-> > > > > > > 7187   /lib/libc-
-> > > > > > > 2.28.so
-> > > > > > > 3ff7fd6000-3ff7fda000 r--p 000fd000 fe:00
-> > > > > > > 7187   /lib/libc-
-> > > > > > > 2.28.so
-> > > > > > > 3ff7fda000-3ff7fdc000 rw-p 00101000 fe:00
-> > > > > > > 7187   /lib/libc-
-> > > > > > > 2.28.so
-> > > > > > > 3ff7fdc000-3ff7fe2000 rw-p 00000000 00:00 0
-> > > > > > > 3ff7fe4000-3ff7fe6000 r-xp 00000000 00:00 0      [vdso]
-> > > > > > > 3ff7fe6000-3ff7ffd000 r-xp 00000000 fe:00 7193   /lib/ld-
-> > > > > > > 2.28.so
-> > > > > > > 3ff7ffd000-3ff7ffe000 r--p 00016000 fe:00 7193   /lib/ld-
-> > > > > > > 2.28.so
-> > > > > > > 3ff7ffe000-3ff7fff000 rw-p 00017000 fe:00 7193   /lib/ld-
-> > > > > > > 2.28.so
-> > > > > > > 3ff7fff000-3ff8000000 rw-p 00000000 00:00 0
-> > > > > > > 3fff888000-3fff8a9000 rw-p 00000000 00:00 0      [stack]
-> > > > > > > 
-> > > > > > > Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
-> > > > > > > Acked-by: Paul Walmsley <paul.walmsley@sifive.com>
-> > > > > > > Reviewed-by: Christoph Hellwig <hch@lst.de>
-> > > > > > > Reviewed-by: Kees Cook <keescook@chromium.org>
-> > > > > > > Reviewed-by: Luis Chamberlain <mcgrof@kernel.org>
-> > > > > > > ---
-> > > > > > >     arch/riscv/Kconfig | 12 ++++++++++++
-> > > > > > >     1 file changed, 12 insertions(+)
-> > > > > > > 
-> > > > > > > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> > > > > > > index 59a4727ecd6c..87dc5370becb 100644
-> > > > > > > --- a/arch/riscv/Kconfig
-> > > > > > > +++ b/arch/riscv/Kconfig
-> > > > > > > @@ -54,6 +54,18 @@ config RISCV
-> > > > > > >     	select EDAC_SUPPORT
-> > > > > > >     	select ARCH_HAS_GIGANTIC_PAGE
-> > > > > > >     	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
-> > > > > > > +	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
-> > > > > > > +	select HAVE_ARCH_MMAP_RND_BITS
-> > > > > > > +
-> > > > > > > +config ARCH_MMAP_RND_BITS_MIN
-> > > > > > > +	default 18 if 6legacy_va_layout4BIT
-> > > > > > > +	default 8
-> > > > > > > +
-> > > > > > > +# max bits determined by the following formula:
-> > > > > > > +#  VA_BITS - PAGE_SHIFT - 3
-> > > > > > > +config ARCH_MMAP_RND_BITS_MAX
-> > > > > > > +	default 24 if 64BIT # SV39 based
-> > > > > > > +	default 17
-> > > > > > >     
-> > > > > > >     config MMU
-> > > > > > >     	def_bool y
-> > > > > > With this patch, I am not able to boot a Fedora Linux(a
-> > > > > > Gnome
-> > > > > > desktop
-> > > > > > image) on RISC-V hardware (Unleashed + Microsemi Expansion
-> > > > > > board).
-> > > > > > The
-> > > > > > booting gets stuck right after systemd starts.
-> > > > > > 
-> > > > > > https://paste.fedoraproject.org/paste/TOrUMqqKH-pGFX7CnfajDg
-> > > > > > 
-> > > > > > Reverting just this patch allow to boot Fedora successfully
-> > > > > > on
-> > > > > > specific
-> > > > > > RISC-V hardware. I have not root caused the issue but it
-> > > > > > looks
-> > > > > > like
-> > > > > > it
-> > > > > > might have messed userpsace mapping.
-> > > > > It might have messed userspace mapping but not enough to make
-> > > > > userspace
-> > > > > completely broken
-> > > > > as systemd does some things. I would try to boot in legacy
-> > > > > layout:
-> > > > > if
-> > > > > you can try to set sysctl legacy_va_layout
-> > > > > at boottime, it will map userspace as it was before (bottom-
-> > > > > up).
-> > > > > If
-> > > > > that
-> > > > > does not work, the problem could
-> > > > > be the randomization that is activated by default now.
-> > > > Randomization may not be the issue. I just removed
-> > > > ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT from the config and that
-> > > > seems to
-> > > > work. Here is the bottom-up layout with randomization on.
-> > > Oups, sorry for my previous answer, I missed yours that landed in
-> > > another folder.
-> > > 
-> > > Removing ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT also removes
-> > > randomization
-> > > as this config selects ARCH_HAS_ELF_RANDOMIZE.
-> > > You could remove ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT and
-> > > selects by
-> > > hand
-> > > ARCH_HAS_ELF_RANDOMIZE but you would have to implement
-> > > arch_mmap_rnd
-> > > and
-> > > arch_randomize_brk (elf-randomize.h).
-> > > 
-> > Ahh okay.
-> > 
-> > > The simplest would be to boot in legacy layout: I did not find a
-> > > way
-> > > to
-> > > set this in kernel
-> > > command line, but you can by modifying it directly in the code:
-> > > 
-> > > https://elixir.bootlin.com/linux/v5.4-rc2/source/kernel/sysctl.c#L269
-> > > 
-> > Setting this to 1 works.
-> > 
-> > > > [root@fedora-riscv ~]# cat /proc/self/maps
-> > > > 1555556000-1555570000 r-xp 00000000 103:01
-> > > > 280098                        /usr/lib64/ld-2.28.so
-> > > > 1555570000-1555571000 r--p 00019000 103:01
-> > > > 280098                        /usr/lib64/ld-2.28.so
-> > > > 1555571000-1555572000 rw-p 0001a000 103:01
-> > > > 280098                        /usr/lib64/ld-2.28.so
-> > > > 1555572000-1555573000 rw-p 00000000 00:00 0
-> > > > 1555573000-1555575000 r-xp 00000000 00:00
-> > > > 0                              [vdso]
-> > > > 1555575000-1555576000 r--p 00000000 103:01
-> > > > 50936                         /usr/lib/locale/en_US.utf8/LC_IDE
-> > > > NTIF
-> > > > ICAT
-> > > > ION
-> > > > 1555576000-155557d000 r--s 00000000 103:01
-> > > > 280826                        /usr/lib64/gconv/gconv-
-> > > > modules.cache
-> > > > 155557d000-155557e000 r--p 00000000 103:01
-> > > > 50937                         /usr/lib/locale/en_US.utf8/LC_MEA
-> > > > SURE
-> > > > MENT
-> > > > 155557e000-155557f000 r--p 00000000 103:01
-> > > > 50939                         /usr/lib/locale/en_US.utf8/LC_TEL
-> > > > EPHO
-> > > > NE
-> > > > 155557f000-1555580000 r--p 00000000 103:01
-> > > > 3706                          /usr/lib/locale/en_US.utf8/LC_ADD
-> > > > RESS
-> > > > 1555580000-1555581000 r--p 00000000 103:01
-> > > > 50944                         /usr/lib/locale/en_US.utf8/LC_NAM
-> > > > E
-> > > > 1555581000-1555582000 r--p 00000000 103:01
-> > > > 3775                          /usr/lib/locale/en_US.utf8/LC_PAP
-> > > > ER
-> > > > 1555582000-1555583000 r--p 00000000 103:01
-> > > > 3758                          /usr/lib/locale/en_US.utf8/LC_MES
-> > > > SAGE
-> > > > S/SY
-> > > > S_LC_MESSAGES
-> > > > 1555583000-1555584000 r--p 00000000 103:01
-> > > > 50938                         /usr/lib/locale/en_US.utf8/LC_MON
-> > > > ETAR
-> > > > Y
-> > > > 1555584000-1555585000 r--p 00000000 103:01
-> > > > 50940                         /usr/lib/locale/en_US.utf8/LC_TIM
-> > > > E
-> > > > 1555585000-1555586000 r--p 00000000 103:01
-> > > > 50945                         /usr/lib/locale/en_US.utf8/LC_NUM
-> > > > ERIC
-> > > > 1555590000-1555592000 rw-p 00000000 00:00 0
-> > > > 1555592000-15556b1000 r-xp 00000000 103:01
-> > > > 280105                        /usr/lib64/libc-2.28.so
-> > > > 15556b1000-15556b5000 r--p 0011e000 103:01
-> > > > 280105                        /usr/lib64/libc-2.28.so
-> > > > 15556b5000-15556b7000 rw-p 00122000 103:01
-> > > > 280105                        /usr/lib64/libc-2.28.so
-> > > > 15556b7000-15556bb000 rw-p 00000000 00:00 0
-> > > > 15556bb000-1555933000 r--p 00000000 103:01
-> > > > 3755                          /usr/lib/locale/en_US.utf8/LC_COL
-> > > > LATE
-> > > > 1555933000-1555986000 r--p 00000000 103:01
-> > > > 50942                         /usr/lib/locale/en_US.utf8/LC_CTY
-> > > > PE
-> > > > 1555986000-15559a8000 rw-p 00000000 00:00 0
-> > > > 2aaaaaa000-2aaaab1000 r-xp 00000000 103:01
-> > > > 283975                        /usr/bin/cat
-> > > > 2aaaab1000-2aaaab2000 r--p 00006000 103:01
-> > > > 283975                        /usr/bin/cat
-> > > > 2aaaab2000-2aaaab3000 rw-p 00007000 103:01
-> > > > 283975                        /usr/bin/cat
-> > > > 2aaaab3000-2aaaad4000 rw-p 00000000 00:00
-> > > > 0                              [heap]
-> > > > 3fffc97000-3fffcb8000 rw-p 00000000 00:00
-> > > > 0                              [stack]
-> > > > 
-> > > > 
-> > > > > Anyway, it's weird since userspace should not depend on how
-> > > > > the
-> > > > > mapping is.
-> > > > > 
-> > > > > If you can identify the program that stalls, that would be
-> > > > > fantastic
-> > > > > :)
-> > > > > 
-> > > > It stucks while booting. So I am not sure how to figure out
-> > > > which
-> > > > program stalls. It is difficult to figure out from boot log as
-> > > > it
-> > > > stucks at different places but soon after systemd starts.
-> > > If you can attach the running kernel, I would use vmlinux-gdb.py
-> > > commands
-> > > to figure out which processes are running (lx-ps command in
-> > > particular could
-> > > give us a hint). You can also add traces directly in the kernel
-> > > and
-> > > either use
-> > > lx-dmesg command to print them from gdb or use your standard
-> > > serial
-> > > output:
-> > > I would then print task_struct->comm at context switch to see
-> > > which
-> > > process
-> > > is stuck.
-> > > To use the python script, you need to recompile with DEBUG_INFO
-> > > and
-> > > GDB_SCRIPTS enabled.
-> > > 
-> > > FYI, I have just booted a custom buildroot image based on kernel
-> > > 5.4-
-> > > rc2.
-> > > 
-> > vmlinux-gdb.py works only if you are running in Qemu or have a
-> > JTAG.
-> > Right ?
-> 
-> Yes. Does the problem appear on qemu too ?
-> 
+Hi Bjorn,
 
-Nope.
-
-> > I am seeing this issue only on HiFive Unleashed + Microsemi
-> > Expansion
-> > board with Fedora Gnome desktop image. I can even boot a Fedora
-> > developer image on same hardware and a busybox image in Unleashed
-> > without any issues. But the issue is not specific to fedora as we
-> > see
-> > the same issue in OpenEmbedded disk image as well (HiFive Unleashed
-> > +
-> > Microsemi Expansion board).
-> > 
-> > May be it gets triggerd only if bigger userspace ?
+On 15. 10. 19 1:23, Bjorn Helgaas wrote:
+> On Tue, Oct 08, 2019 at 08:46:52AM -0700, Christoph Hellwig wrote:
+>>> diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
+>>> index a304f5ea11b9..9d259372fbfd 100644
+>>> --- a/drivers/pci/Kconfig
+>>> +++ b/drivers/pci/Kconfig
+>>> @@ -52,7 +52,7 @@ config PCI_MSI
+>>>  	   If you don't know what to do here, say Y.
+>>>  
+>>>  config PCI_MSI_IRQ_DOMAIN
+>>> -	def_bool ARC || ARM || ARM64 || X86 || RISCV
+>>> +	def_bool ARC || ARM || ARM64 || X86 || RISCV || MICROBLAZE
+>>
+>> Can you find out what the actual dependency is so that we can
+>> automatically enabled this instead of the weird arch list?
 > 
-> The purpose of this patch is, on the contrary, to not lose address
-> space by
-> setting an arbitrary starting point (TASK_UNMAPPED_BASE) for mmap.
-> 
-> Do you a link to an image that fails to boot and reproduce the
-> problem 
-> on Qemu ?
-> 
+> Hi Michal, I'll wait for your response on whether it's feasible to do
+> something smarter than listing every arch here.  Please ping here or
+> post a v3; since I marked this patch "Changed Requested" in patchwork,
+> it's fallen off my to-do list.
 
-Nope. This is only reproducible in RISC-V Fedora Gnome desktop image on
-a HiFive Unleashed + Microsemi Expansion. Just to clarify, there is no
-issue with OpenEmbedded disk image related to memory layout. It was a
-userspace thing.
+I was waiting more for you to comment this. I was expecting that the
+same question came last time when RISCV was added.
+I am happy to investigate more about it but definitely some your input
+would help.
 
-Unforunately, fedora builders do not build gnome images now and the one
-I am using is very old (~ 1 year). I think I can just use the sysctl
-parameter for now in my tree and live with it until we have Fedora 31
-images availale. We can revisit the problem after that. Thanks for
-suggestions.
+Thanks,
+Michal
 
-> I don't have much idea here, the only thing I can think of is
-> finding 
-> the application
-> that makes the boot stall and understand what is wrong.
-> 
-> > > Let me know if I can do anything.
-> > > 
-> > > Alex
-> > > 
-> > > > > As the code is common to mips and arm now and I did not hear
-> > > > > from
-> > > > > them,
-> > > > > I imagine the problem comes
-> > > > > from us.
-> > > > > 
-> > > > > Alex
 
--- 
-Regards,
-Atish
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
