@@ -2,102 +2,65 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF40BD8248
-	for <lists+linux-riscv@lfdr.de>; Tue, 15 Oct 2019 23:38:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65024D838A
+	for <lists+linux-riscv@lfdr.de>; Wed, 16 Oct 2019 00:22:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XMW6N6ba4b55FrT9ovIkMUkXNrit7ro9qBR6Hjlbmvc=; b=UiDsKpWjFncYCH
-	SEvNXxWmS0c7E/pfasYMvTNm2yk2vB3SMDg9sW+lLWh5Y0nxrSG6FGXoxTB7K9TDEZ7sKSLJuLSgq
-	a2nEt+MJkoiQAfGgxGj54VhHMOcPf7YEm0ZUYwiw8mJyHb8r8Ypbw5hI/rys268u2ao2lKKIfZGW0
-	1FU4m+UC/Fb46B3PK0akYKMuo2lv8E0wTqIZ8E41GkR8b+t/mKxQZraNEpyVzFw3csXt8Vbw3mnQU
-	kWlHZifGTJbksJi07KnFuFquok7rFpOwRWQdC9cKX48XAYLIhO8R3rESoPg+lsVQj9TLuzanGizao
-	TyRk3ZKeyzuBk6s7nMaQ==;
+	List-Owner; bh=uvfpUXswdLTcOJxb4v+GkJ7Z/Ndl+SATEoD9BuZMJCo=; b=jk/hFsEBDY5EdI
+	X7B5Bd1BoWRlCs37bQFEuoI7nhh8sMTa6zk6nwsc9A1D4rzazerA1rmWkgX5AR9a84d2Zt3P1dJkw
+	RoBeLFtm2plRb0JMWEqlJPlYPvRrJ2ZkNDBKDTl7tII28aHcX+qOL//HujzLTyXFPF50Of5fUZoBm
+	vMxcJxpDkm38gyrDqqGma7l7E1LOkFuBAjzSB0jc07OMMf75pf3KRxFrs67wRY2EVD3q5eh7crs42
+	ziE6kJZ2uOCRYqXN8NCioLyFhUuYmG/OCZeMz55hcAIigDUpGO/a/WuEvSCLB/74LQqdEPGlKWwoW
+	F8ERAE/BqYlbDXf3tL1A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iKUWh-0002dc-JK; Tue, 15 Oct 2019 21:38:43 +0000
-Received: from mail-edgedd24.fraunhofer.de ([192.102.167.24])
+	id 1iKVCz-0001e0-M7; Tue, 15 Oct 2019 22:22:25 +0000
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iKUWd-0002ck-6d
- for linux-riscv@lists.infradead.org; Tue, 15 Oct 2019 21:38:41 +0000
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2HiAABQO6Zd/xoHYZlmGgEBAQEBAQE?=
- =?us-ascii?q?BAQMBAQEBEQEBAQICAQEBAYF7giBsVAEfEioKhBuJAodzfphCgWcJAQEBAQE?=
- =?us-ascii?q?BAQEBCCUKAQECgSkBgxQCF4JYJDgTAgwBAQUBAQEBAQUEAgJphS0Mg0ZrAQE?=
- =?us-ascii?q?BAQEBAQEBAQEBAQEBAQEBARYCDVRkAQUjEUUQAgEIGAICJgICAjAVEAIEAQ0?=
- =?us-ascii?q?FgyOCdgEPrxCBMoo8BoEMKIwOgVk+gRGCXQcuPoJhBIFDBRcXgneCXgSNBDK?=
- =?us-ascii?q?CN4VdlxNuAwQDgTtnhwqOERuCOodPhAAsiw2OMYgjkUCBaSOBWHGDO1AQFIF?=
- =?us-ascii?q?YAxeEA4ogQQEBMZA0gSMBAQ?=
-X-IPAS-Result: =?us-ascii?q?A2HiAABQO6Zd/xoHYZlmGgEBAQEBAQEBAQMBAQEBEQEBA?=
- =?us-ascii?q?QICAQEBAYF7giBsVAEfEioKhBuJAodzfphCgWcJAQEBAQEBAQEBCCUKAQECg?=
- =?us-ascii?q?SkBgxQCF4JYJDgTAgwBAQUBAQEBAQUEAgJphS0Mg0ZrAQEBAQEBAQEBAQEBA?=
- =?us-ascii?q?QEBAQEBARYCDVRkAQUjEUUQAgEIGAICJgICAjAVEAIEAQ0FgyOCdgEPrxCBM?=
- =?us-ascii?q?oo8BoEMKIwOgVk+gRGCXQcuPoJhBIFDBRcXgneCXgSNBDKCN4VdlxNuAwQDg?=
- =?us-ascii?q?TtnhwqOERuCOodPhAAsiw2OMYgjkUCBaSOBWHGDO1AQFIFYAxeEA4ogQQEBM?=
- =?us-ascii?q?ZA0gSMBAQ?=
-X-IronPort-AV: E=Sophos;i="5.67,301,1566856800"; d="scan'208";a="27734392"
-Received: from mail-mtas26.fraunhofer.de ([153.97.7.26])
- by mail-edgeDD24.fraunhofer.de with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Oct 2019 23:38:27 +0200
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0DeAAAkO6ZdfRBhWMBmGgEBAQEBAQE?=
- =?us-ascii?q?BAQMBAQEBEQEBAQICAQEBAYF7gwxUAR8SKgqEG4kCh3R+mEKBZwkBAwEBAQE?=
- =?us-ascii?q?BCCUKAQGBKwGDFAIXgns4EwIMAQEEAQEBAgEFBBQBARY6hTQMhUwBBSMRRRA?=
- =?us-ascii?q?CAQgYAgImAgICMBUQAgQBDQWDI4J3D68QgTKKPAaBDCiNZz6BEYJdBy4+gmE?=
- =?us-ascii?q?EgUMFFxeCd4JeBI0EMoI3hV2XE24DBAOBO2eHCo4RG4I6h0+EACyLDY4xiCO?=
- =?us-ascii?q?RQIFpIYFZcYM7UBAUgVgDF4QDiiBBAQIwkDSBIwEB?=
-X-IronPort-AV: E=Sophos;i="5.67,301,1566856800"; d="scan'208";a="93005696"
-Received: from fgdemucivp01ltm.xch.fraunhofer.de (HELO
- FGDEMUCIMP11EXC.ads.fraunhofer.de) ([192.88.97.16])
- by mail-mtaS26.fraunhofer.de with ESMTP/TLS/AES256-SHA;
- 15 Oct 2019 23:38:26 +0200
-Received: from FGDEMUCIMP01EXC.ads.fraunhofer.de ([10.80.232.40]) by
- FGDEMUCIMP11EXC.ads.fraunhofer.de ([10.80.232.42]) with mapi id
- 14.03.0439.000; Tue, 15 Oct 2019 23:41:24 +0200
-From: "Auer, Lukas" <lukas.auer@aisec.fraunhofer.de>
-To: "aurelien@aurel32.net" <aurelien@aurel32.net>, "Atish.Patra@wdc.com"
- <Atish.Patra@wdc.com>
+ id 1iKVCv-0001dH-0w
+ for linux-riscv@lists.infradead.org; Tue, 15 Oct 2019 22:22:23 +0000
+Received: from [2a01:e35:2fdd:a4e1:fe91:fc89:bc43:b814] (helo=ohm.rr44.fr)
+ by hall.aurel32.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <aurelien@aurel32.net>)
+ id 1iKVCk-0005mc-On; Wed, 16 Oct 2019 00:22:10 +0200
+Received: from aurel32 by ohm.rr44.fr with local (Exim 4.92.2)
+ (envelope-from <aurelien@aurel32.net>)
+ id 1iKVCk-0003Jl-D6; Wed, 16 Oct 2019 00:22:10 +0200
+Date: Wed, 16 Oct 2019 00:22:10 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: "Auer, Lukas" <lukas.auer@aisec.fraunhofer.de>
 Subject: Re: Fail to bring hart online on HiFive Unleashed
-Thread-Topic: Fail to bring hart online on HiFive Unleashed
-Thread-Index: AQHVeiZCDKtCCXFHhkKVjgWjDQPBDqdJamEAgAJORYCAAbS9AIACN2qAgABnhwCAAB1DAIAABRyAgAE+zgCAAsbxgIAH93KA
-Date: Tue, 15 Oct 2019 21:38:25 +0000
-Message-ID: <f2a467d2dfd1828533fee8a8edf7eac51d8c1d84.camel@aisec.fraunhofer.de>
-References: <20191003200735.GA26760@aurel32.net>
- <73a9ba9fd6c29075209a61660137fb4b899f7ff2.camel@wdc.com>
- <20191005102541.GA22188@aurel32.net> <20191006122850.GA31831@aurel32.net>
+Message-ID: <20191015222210.GA11794@aurel32.net>
+References: <73a9ba9fd6c29075209a61660137fb4b899f7ff2.camel@wdc.com>
+ <20191005102541.GA22188@aurel32.net>
+ <20191006122850.GA31831@aurel32.net>
  <71c93a62192eb4259ba7e868f7f9aa8ae066c6ad.camel@wdc.com>
  <20191008043014.GA23380@aurel32.net>
  <CAPSAq_znsoOrLsA_rPbmq=e2syZA9MA=-oaZbda5KRiZGG9yyg@mail.gmail.com>
  <97CDD0F9-32F9-4C14-8211-63454C5C379A@aurel32.net>
  <dbdd3d63186abb230840b6e8698358afc01a62cb.camel@wdc.com>
  <20191010195851.GA10676@aurel32.net>
-In-Reply-To: <20191010195851.GA10676@aurel32.net>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.80.233.51]
-x-tm-as-product-ver: SMEX-11.0.0.4179-8.200.1013-24972.000
-x-tm-as-result: No--25.777300-8.000000-31
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-Content-ID: <9528B6451886CD4BAFA210EB7B9C9E8E@xch.fraunhofer.de>
+ <f2a467d2dfd1828533fee8a8edf7eac51d8c1d84.camel@aisec.fraunhofer.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <f2a467d2dfd1828533fee8a8edf7eac51d8c1d84.camel@aisec.fraunhofer.de>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191015_143839_585029_ABBF13CD 
-X-CRM114-Status: GOOD (  34.38  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20191015_152221_206059_EAC59F95 
+X-CRM114-Status: GOOD (  30.69  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.102.167.24 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [2001:bc8:30d7:100:0:0:0:1 listed in] [list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,153 +73,193 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: "david.abdurachmanov@sifive.com" <david.abdurachmanov@sifive.com>,
+ "Atish.Patra@wdc.com" <Atish.Patra@wdc.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVGh1LCAyMDE5LTEwLTEwIGF0IDIxOjU4ICswMjAwLCBBdXJlbGllbiBKYXJubyB3cm90ZToN
-Cj4gT24gMjAxOS0xMC0wOSAwMTozNCwgQXRpc2ggUGF0cmEgd3JvdGU6DQo+ID4gT24gVHVlLCAy
-MDE5LTEwLTA4IGF0IDA4OjMzICswMjAwLCBBdXJlbGllbiBKYXJubyB3cm90ZToNCj4gPiA+IExl
-IDggb2N0b2JyZSAyMDE5IDA4OjE0OjU4IEdNVCswMjowMCwgRGF2aWQgQWJkdXJhY2htYW5vdiA8
-DQo+ID4gPiBkYXZpZC5hYmR1cmFjaG1hbm92QHNpZml2ZS5jb20+IGEgw6ljcml0IDoNCj4gPiA+
-ID4gT24gVHVlLCBPY3QgOCwgMjAxOSBhdCA3OjMwIEFNIEF1cmVsaWVuIEphcm5vIDxhdXJlbGll
-bkBhdXJlbDMyLm5ldA0KPiA+ID4gPiB3cm90ZToNCj4gPiA+ID4gPiBPbiAyMDE5LTEwLTA3IDIy
-OjE5LCBBdGlzaCBQYXRyYSB3cm90ZToNCj4gPiA+ID4gPiA+IFRoYW5rcyBmb3IgdGhlIGRldGFp
-bGVkIGFuYWx5c2lzLiBDYW4geW91IHBsZWFzZSBrZWVwIG1lIGFuZA0KPiA+ID4gPiA+ID4gZGF2
-aWQNCj4gPiA+ID4gaW4NCj4gPiA+ID4gPiA+IGNjIHdoZW4geW91IHJlcG9ydCB0aGUgaXNzdWUg
-dG8gVS1ib290ID8NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBZZXAuIEkgaGF2ZSBwcm9ncmVzc2Vk
-IGEgYml0IG9uIHRoYXQsIGFuZCBub3cgSSBhbSBub3QgY29udmluY2VkDQo+ID4gPiA+ID4gaXQn
-cw0KPiA+ID4gPiBhbg0KPiA+ID4gPiA+IFUtYm9vdCBpc3N1ZSwgaXQgY2FuIGJlIGEgR0NDIGlz
-c3VlLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEhlcmUgYXJlIHRoZSBjb25kaXRpb25zIHRvIHJl
-cHJvZHVjZSB0aGUgYnVnOg0KPiA+ID4gPiA+IC0gVS1ib290IHJ1bnMgb24gaGFydCAxLCAyIG9y
-IDMNCj4gPiA+ID4gPiAtIHRoZSBhdXRvYm9vdCBwcm9jZXNzIGlzIG5vdCBpbnRlcnJ1cHRlZA0K
-PiA+ID4gPiA+IC0gZXh0bGludXggaXMgdXNlZCB0byBib290IHRoZSBrZXJuZWwNCj4gPiA+ID4g
-PiAtIGFyY2gvcmlzY3YvbGliL2Jvb3RtLmMgaXMgY29tcGlsZWQgd2l0aCBHQ0MgOSAod29ya3Mg
-ZmluZSB3aXRoDQo+ID4gPiA+ID4gR0NDDQo+ID4gPiA+IDgpDQo+ID4gPiA+ID4gV2hlbiB0aGUg
-cHJvYmxlbSBoYXBwZW5zLCB0aGUgbWlzc2luZyBoYXJ0IGFjdHVhbGx5IGVuZHMgaXRzDQo+ID4g
-PiA+IGV4ZWN1dGlvbg0KPiA+ID4gPiA+IGluIGFuIGlsbGVnYWwgaW5zdHJ1Y3Rpb24gdHJhcCB0
-cnlpbmcgdG8gZXhlY3V0ZSB0aGUgRkRUIChJIG9ubHkNCj4gPiA+ID4gbm90aWNlZA0KPiA+ID4g
-PiA+IHRoYXQgcmVjZW50bHkgYXMgdGhlIG1lc3NhZ2Ugd2FzIGhpZGRlbiBieSB0aGUgdXNlIG9m
-DQo+ID4gPiA+ID4gZWFybHljb249c2JpKToNCj4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IFNpRml2
-ZSBGU0JMOiAgICAgICAyMDE4LTAzLTIwDQo+ID4gPiA+ID4gPiBIaUZpdmUtVSBzZXJpYWwgIzog
-MDAwMDAyNDYNCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gT3BlblNCSSB2MC40LTUwLWczMGYw
-OWZiIChPY3QgIDYgMjAxOSAyMTo1ODowNSkNCj4gPiA+ID4gPiA+ICAgIF9fX18gICAgICAgICAg
-ICAgICAgICAgIF9fX19fIF9fX18gX19fX18NCj4gPiA+ID4gPiA+ICAgLyBfXyBcICAgICAgICAg
-ICAgICAgICAgLyBfX19ffCAgXyBcXyAgIF98DQo+ID4gPiA+ID4gPiAgfCB8ICB8IHxfIF9fICAg
-X19fIF8gX18gfCAoX19fIHwgfF8pIHx8IHwNCj4gPiA+ID4gPiA+ICB8IHwgIHwgfCAnXyBcIC8g
-XyBcICdfIFwgXF9fXyBcfCAgXyA8IHwgfA0KPiA+ID4gPiA+ID4gIHwgfF9ffCB8IHxfKSB8ICBf
-Xy8gfCB8IHxfX19fKSB8IHxfKSB8fCB8Xw0KPiA+ID4gPiA+ID4gICBcX19fXy98IC5fXy8gXF9f
-X3xffCB8X3xfX19fXy98X19fXy9fX19fX3wNCj4gPiA+ID4gPiA+ICAgICAgICAgfCB8DQo+ID4g
-PiA+ID4gPiAgICAgICAgIHxffA0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBQbGF0Zm9ybSBO
-YW1lICAgICAgICAgIDogU2lGaXZlIEZyZWVkb20gVTU0MA0KPiA+ID4gPiA+ID4gUGxhdGZvcm0g
-SEFSVCBGZWF0dXJlcyA6IFJWNjRBQ0RGSU1TVQ0KPiA+ID4gPiA+ID4gUGxhdGZvcm0gTWF4IEhB
-UlRzICAgICA6IDUNCj4gPiA+ID4gPiA+IEN1cnJlbnQgSGFydCAgICAgICAgICAgOiAyDQo+ID4g
-PiA+ID4gPiBGaXJtd2FyZSBCYXNlICAgICAgICAgIDogMHg4MDAwMDAwMA0KPiA+ID4gPiA+ID4g
-RmlybXdhcmUgU2l6ZSAgICAgICAgICA6IDEwNCBLQg0KPiA+ID4gPiA+ID4gUnVudGltZSBTQkkg
-VmVyc2lvbiAgICA6IDAuMg0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBQTVAwOiAweDAwMDAw
-MDAwODAwMDAwMDAtMHgwMDAwMDAwMDgwMDFmZmZmIChBKQ0KPiA+ID4gPiA+ID4gUE1QMTogMHgw
-MDAwMDAwMDAwMDAwMDAwLTB4MDAwMDAwN2ZmZmZmZmZmZiAoQSxSLFcsWCkNCj4gPiA+ID4gPiA+
-IA0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBVLUJvb3QgMjAxOS4xMC1yYzQtMDAwMzctZ2Rh
-YzUxZTlhYWYtZGlydHkgKE9jdCAwNiAyMDE5IC0NCj4gPiA+ID4gPiA+IDIxOjU2OjUxDQo+ID4g
-PiA+ICswMDAwKQ0KPiA+ID4gPiA+ID4gQ1BVOiAgIHJ2NjRpbWFmZGMNCj4gPiA+ID4gPiA+IE1v
-ZGVsOiBTaUZpdmUgSGlGaXZlIFVubGVhc2hlZCBBMDANCj4gPiA+ID4gPiA+IERSQU06ICA4IEdp
-Qg0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBNTUM6ICAgc3BpQDEwMDUwMDAwOm1tY0AwOiAw
-DQo+ID4gPiA+ID4gPiBJbjogICAgc2VyaWFsQDEwMDEwMDAwDQo+ID4gPiA+ID4gPiBPdXQ6ICAg
-c2VyaWFsQDEwMDEwMDAwDQo+ID4gPiA+ID4gPiBFcnI6ICAgc2VyaWFsQDEwMDEwMDAwDQo+ID4g
-PiA+ID4gPiBOZXQ6ICAgZXRoMDogZXRoZXJuZXRAMTAwOTAwMDANCj4gPiA+ID4gPiA+IEhpdCBh
-bnkga2V5IHRvIHN0b3AgYXV0b2Jvb3Q6ICAwDQo+ID4gPiA+ID4gPiBzd2l0Y2ggdG8gcGFydGl0
-aW9ucyAjMCwgT0sNCj4gPiA+ID4gPiA+IG1tYzAgaXMgY3VycmVudCBkZXZpY2UNCj4gPiA+ID4g
-PiA+IFNjYW5uaW5nIG1tYyAwOjIuLi4NCj4gPiA+ID4gPiA+IEZvdW5kIC9ib290L2V4dGxpbnV4
-L2V4dGxpbnV4LmNvbmYNCj4gPiA+ID4gPiA+IFJldHJpZXZpbmcgZmlsZTogL2Jvb3QvZXh0bGlu
-dXgvZXh0bGludXguY29uZg0KPiA+ID4gPiA+ID4gNTEwIGJ5dGVzIHJlYWQgaW4gNSBtcyAoOTku
-NiBLaUIvcykNCj4gPiA+ID4gPiA+IFUtQm9vdCBtZW51DQo+ID4gPiA+ID4gPiAxOiAgICAgIGtl
-cm5lbCA1LjMuNA0KPiA+ID4gPiA+ID4gMjogICAgICBEZWJpYW4gR05VL0xpbnV4IGtlcm5lbCA1
-LjMuMC10cnVuay1yaXNjdjY0DQo+ID4gPiA+ID4gPiBFbnRlciBjaG9pY2U6IDENCj4gPiA+ID4g
-PiA+IDE6ICAgICAga2VybmVsIDUuMy40DQo+ID4gPiA+ID4gPiBSZXRyaWV2aW5nIGZpbGU6IC9i
-b290L3ZtbGludXgtNS4zLjQNCj4gPiA+ID4gPiA+IDk0ODYwNzYgYnl0ZXMgcmVhZCBpbiA0ODEz
-IG1zICgxLjkgTWlCL3MpDQo+ID4gPiA+ID4gPiBhcHBlbmQ6IHJvb3Q9L2Rldi9tbWNibGswcDIg
-cncgY29uc29sZT10dHlTSUYwIHJvb3R3YWl0DQo+ID4gPiA+ID4gPiBSZXRyaWV2aW5nIGZpbGU6
-IC9ib290L2hpZml2ZS11bmxlYXNoZWQtYTAwLmR0Yg0KPiA+ID4gPiA+ID4gNjA4OCBieXRlcyBy
-ZWFkIGluIDcgbXMgKDg0OC42IEtpQi9zKQ0KPiA+ID4gPiA+ID4gIyMgRmxhdHRlbmVkIERldmlj
-ZSBUcmVlIGJsb2IgYXQgODgwMDAwMDANCj4gPiA+ID4gPiA+ICAgIEJvb3RpbmcgdXNpbmcgdGhl
-IGZkdCBibG9iIGF0IDB4ODgwMDAwMDANCj4gPiA+ID4gPiA+ICAgIFVzaW5nIERldmljZSBUcmVl
-IGluIHBsYWNlIGF0IDAwMDAwMDAwODgwMDAwMDAsIGVuZA0KPiA+ID4gPiAwMDAwMDAwMDg4MDA0
-N2M3DQo+ID4gPiA+ID4gPiBTdGFydGluZyBrZXJuZWwgLi4uDQo+ID4gPiA+ID4gPiANCj4gPiA+
-ID4gPiA+IGV4Y2VwdGlvbiBjb2RlOiAyICwgSWxsZWdhbCBpbnN0cnVjdGlvbiAsIGVwYyAgLCBy
-YSA4ODAwMDAwNA0KPiA+ID4gPiA4ODAwMDAwMA0KPiA+ID4gPiA+ID4gIyMjIEVSUk9SICMjIyBQ
-bGVhc2UgUkVTRVQgdGhlIGJvYXJkICMjIw0KPiA+ID4gPiANCj4gPiA+ID4gSSB0aGluaywgdGhh
-dCdzIHRoZSBzYW1lIGlzc3VlIEkgaGFkIChvciBzdGlsbCBoYXZlKSBhIHdlZWsgYWdvLg0KPiA+
-ID4gPiBKdXN0IHJlbWluZGVyIHRoYXQga2VybmVsIDUuMyBpbnRyb2R1Y2VkIGEgNjQtYnl0ZSBo
-ZWFkZXIgKHRodXMgbm8NCj4gPiA+ID4gbmVlZCB0byB3cmFwIGtlcm5lbCkgYXQgbGVhc3QgZm9y
-IEltYWdlIHRhcmdldC4gVGh1cyBpdCdzIGJvb3RpDQo+ID4gPiA+IHRoYXQNCj4gPiA+ID4gYm9v
-dHMgdGhlIGtlcm5lbCBvbiBVLUJvb3Qgc2lkZS4NCj4gPiA+ID4gVGh1cyB0aGUgMXN0IGluc3Ry
-dWN0aW9uIG9mIHRoYXQgaGVhZGVyIGlzICJqIDB4NDAiICh0byB0aGUNCj4gPiA+ID4gYmVnaW5u
-aW5nDQo+ID4gPiA+IG9mIHRoZSBhY3R1YWwga2VybmVsKS4gIEFuZCA4ODAwMDAwNCB3b3VsZCBk
-ZWZpbml0ZWx5IGhvbGQgYW4NCj4gPiA+ID4gaWxsZWdhbA0KPiA+ID4gPiBpbnN0cnVjdGlvbi4N
-Cj4gPiA+ID4gDQo+ID4gPiA+IDAwMDAwMDAwMDAwMDAwMDAgPC5kYXRhPjoNCj4gPiA+ID4gMDog
-ICAgICAgODFhMCAgICAgICAgICAgICAgICAgICAgaiAgICAgICAweDQwDQo+ID4gPiA+IDI6ICAg
-ICAgIDAwMDAgICAgICAgICAgICAgICAgICAgIHVuaW1wDQo+ID4gPiA+IDQ6ICAgICAgIDAwMDAg
-ICAgICAgICAgICAgICAgICAgIHVuaW1wDQo+ID4gPiA+IDY6ICAgICAgIDAxMDAgICAgICAgICAg
-ICAgICAgICAgIG5vcA0KPiA+ID4gPiBbLi5dDQo+ID4gPiANCj4gPiA+IEhtbSB0aGF0J3MgdGhl
-IGJlZ2lubmluZyBvZiB0aGUga2VybmVsIGNvZGUuIFRoZSBhZGRyZXNzIDg4MDAwMDA0DQo+ID4g
-PiBhY3R1YWxseSBjb3JyZXNwb25kcyB0byB0aGUgRkRULiBTbyB0aGUgaGFydCBlbmRpbmcgdXAg
-aW4gYSB0cmFwDQo+ID4gPiBhY3R1YWxseSB0cmllcyB0byBib290IHRoZSBGRFQgaW5zdGVhZCBv
-ZiB0aGUga2VybmVsLg0KPiA+ID4gDQo+ID4gDQo+ID4gRG8geW91IHNlZSB0aGUgaXNzdWUgaWYg
-eW91IG1hbnVhbGx5IHVzZSBib290bSBpbnN0ZWFkIG9mIGV4dGxpbnV4Pw0KPiA+IA0KPiA+ID0+
-IGJvb3RtICRrZXJuZWxfYWRkcl9yIC0gJGZkdF9hZGRyX3INCj4gPiANCj4gPiBUaGlzIGlzIGEg
-cHJvYmFibHkgbm90IHJlbGF0ZWQgYXMgYm9vdG0gaXMganVtcGluZyB0byB3cm9uZyBsb2NhdGlv
-bg0KPiA+IGZvciBzb21lIHJlYXNvbi4gSG93ZXZlciwgaXQgbWF5IGJlIHdvcnRoIGEgc2hvdCBh
-cyBpdCBmaXhlcyBmZHQNCj4gPiBjb3JydXB0aW9uLiANCj4gDQo+IEkgaGF2ZSBqdXN0IHRlc3Rl
-ZCwgYW5kIGl0IGRvZXNuJ3Qgd29yay4gT24gdGhlIG90aGVyIGhhbmQgSSBoYXZlIHRyeSB0bw0K
-PiBydW4gdGhhdCBtYW51YWxseSwgYW5kIGludGVycnVwdGluZyB0aGUgYm9vdCBwcm9jZXNzIHVz
-dWFsbHkgaGlkZXMgdGhlDQo+IHByb2JsZW0uDQo+IA0KDQpJIHRyaWVkIHRvIHJlcHJvZHVjZSB0
-aGUgaXNzdWUgdG9kYXksIGJ1dCB3YXMgbm90IGFibGUgdG8uIElmIHlvdSBjYW4NCnVwbG9hZCB0
-aGUgcmVsZXZhbnQgZmlsZXMgc29tZXdoZXJlLCBJIGNhbiByZXRyeSBpdCB3aXRoIHRoZW0uIEkg
-aGF2ZQ0KYWxzbyBhZGRlZCBpbmZvcm1hdGlvbiBvbiB0aGUgYm9vdCBmbG93IGluIFUtQm9vdCBi
-ZWxvdyBpbiBob3BlcyB0aGF0DQppdCBpcyBoZWxwZnVsIGZvciBkZWJ1Z2dpbmcuDQoNClUtQm9v
-dCBkaXZpZGVzIHRoZSBoYXJ0cyBpbiB0aGUgc3lzdGVtIGludG8gdGhlIG1haW4gaGFydCAocnVu
-bmluZyAgIA0KVS1Cb290KSBhbmQgdGhlIHNlY29uZGFyeSBoYXJ0cyAoYWxsIG90aGVycykuIFRo
-ZSBtYWluIGhhcnQgaXMNCnJlc3BvbnNpYmxlIGZvciBub3RpZnlpbmcgdGhlIHNlY29uZGFyeSBo
-YXJ0cyBvZiB3aGVyZSB0byBqdW1wIHRvLiBUbw0KY29tbXVuaWNhdGUgd2l0aCB0aGVtLCBpdCB1
-c2VzIElQSXMgYW5kIHRoZSBVLUJvb3QgZ2xvYmFsIGRhdGEgZGF0YQ0Kc3RydWN0dXJlIChyZWdp
-c3RlciBncCBzdG9yZXMgYSBwb2ludGVyIHRvIGl0KSwgbG9jYXRlZCBhdCB0aGUgZW5kIG9mDQpS
-QU0uIE90aGVyIHZhcmlhYmxlcyBpbiBnbG9iYWwgZGF0YSB0aGF0IGNvdWxkIGJlIGhlbHBmdWwg
-Zm9yIGRlYnVnZ2luZw0KYXJlIGFyY2guYm9vdF9oYXJ0ICh0aGUgbWFpbiBoYXJ0IHJ1bm5pbmcg
-VS1Cb290KSBhbmQNCmFyY2guYXZhaWxhYmxlX2hhcnRzIChhIGJpdG1hc2sgb2YgYWxsIGhhcnRz
-IHRoYXQgaGF2ZSBlbnRlcmVkIFUtQm9vdCkuIA0KVGhleSBhcmUgZGVmaW5lZCBpbiANCmh0dHBz
-Oi8vZ2l0bGFiLmRlbnguZGUvdS1ib290L3UtYm9vdC9ibG9iL21hc3Rlci9hcmNoL3Jpc2N2L2lu
-Y2x1ZGUvYXNtL2dsb2JhbF9kYXRhLmgNCi4NCg0KQm9vdGluZyBMaW51eCB3aWxsIHVzdWFsbHkg
-dXNlIHRoZSBib290bSBjb21tYW5kIC8gZnVuY3Rpb25zIGF0IHNvbWUNCnBvaW50LiBCZWZvcmUg
-anVtcGluZyB0byB0aGUga2VybmVsLCB0aGUgbWFpbiBoYXJ0IGluc3RydWN0cyB0aGUNCnNlY29u
-ZGFyeSBoYXJ0cyB0byBqdW1wIHRvIHRoZSBrZXJuZWwgaW1hZ2UuIFRoZSByZWxldmFudCBjb2Rl
-IGZvciB0aGlzDQppcyBhdCANCmh0dHBzOi8vZ2l0bGFiLmRlbnguZGUvdS1ib290L3UtYm9vdC9i
-bG9iL21hc3Rlci9hcmNoL3Jpc2N2L2xpYi9ib290bS5jI0wxMDENCi4gVGhpcyB3aWxsIHNlbmQg
-YW4gSVBJIHRvIGFsbCBzZWNvbmRhcnkgaGFydHMuIFRoZXkgYXJlIHJlY2VpdmVkIGluDQphcmNo
-L3Jpc2N2L2NwdS9zdGFydC5TIGFuZCBhcmUgZXZlbnR1YWxseSBoYW5kbGVkIGluIGhhbmRsZV9p
-cGkoKSBhdCANCmh0dHBzOi8vZ2l0bGFiLmRlbnguZGUvdS1ib290L3UtYm9vdC9ibG9iL21hc3Rl
-ci9hcmNoL3Jpc2N2L2xpYi9zbXAuYyNMODYNCi4NCg0KV2hhdCBJIGZpbmQgc3RyYW5nZSB3aXRo
-IHRoZSBlcnJvciB5b3UgYXJlIHNlZWluZyBpcyB0aGF0IG9uZSBvZiB0aGUNCmhhcnRzIGlzIGp1
-bXBpbmcgdG8gdGhlIGRldmljZSB0cmVlIGJpbmFyeS4gQXMgeW91IG1lbnRpb25lZCwgaXQgY291
-bGQNCmJlIHRoYXQgd2UgaGF2ZSBhIHJhY2UgY29uZGl0aW9uIHNvbWV3aGVyZSwgZm9yIGV4YW1w
-bGUgY2F1c2luZw0Kc29tZXRoaW5nIHRvIGJlIG92ZXJ3cml0dGVuIGluIGdsb2JhbCBkYXRhIHdo
-aWxlIHNvbWUgaGFydHMgYXJlIHN0aWxsDQpydW5uaW5nIFUtQm9vdC4gSG93ZXZlciwgSSB3b3Vs
-ZCBleHBlY3QgbW9yZSBvciBsZXNzIHJhbmRvbSBkYXRhIGFuZA0Kbm90IHRoZSBhZGRyZXNzIG9m
-IHRoZSBkZXZpY2UgdHJlZSBiaW5hcnkgaW4gdGhhdCBjYXNlLiBGb3IgdGhhdCByZWFzb24NCkkg
-d291bGQgdGVuZCB0byBydWxlIG91dCB0aGlzIHNjZW5hcmlvLiBTaW5jZSBvbmx5IG9uZSBoYXJ0
-IGlzIGZhaWxpbmcNCnRvIGVudGVyIExpbnV4LCBJIGFzc3VtZSB0aGF0IGFsbCBzZWNvbmRhcnkg
-aGFydHMgc3VjY2Vzc2Z1bGx5IGJvb3QNCkxpbnV4IGFuZCBvbmx5IHRoZSBtYWluIGhhcnQgaXMg
-aGF2aW5nIHByb2JsZW1zLiBUaGF0IHdvdWxkIG1lYW4gdGhhdA0Kc29tZXRoaW5nIGlzIGdvaW5n
-IHdyb25nIGluIGFyY2gvcmlzY3YvbGliL2Jvb3RtLmMgLg0KDQpBbmRyZWFzIGFsc28gYnJvdWdo
-dCB1cCBhIGdvb2QgcG9pbnQuIFdlIGRpZCBoYXZlIGEgc2ltaWxhciBwcm9ibGVtDQpiZWZvcmUs
-IHdoaWNoIHdhcyBjYXVzZWQgYnkgaW5zdWZmaWNpZW50IGluaXRpYWxpemF0aW9uLiBUaGUgd29y
-a2Fyb3VuZA0KdG8gZml4IHRoaXMgd2FzIHRvIHVzZSB0aGUgcG93ZXIgc3dpdGNoIGluc3RlYWQg
-b2YgdGhlIHJlc2V0IGJ1dHRvbiB0bw0KcmVzZXQgdGhlIGJvYXJkLiBJIGhhdmVuJ3QgdGVzdGVk
-IGl0LCBidXQgSSBiZWxpZXZlIGluaXRpYWxpemF0aW9uIGluDQpPcGVuU0JJIHNob3VsZCBiZSBi
-ZXR0ZXIgbm93LCBtZWFuaW5nIHRoYXQgdGhpcyBtaWdodCBub3QgYmUgYSBwcm9ibGVtDQphbnlt
-b3JlLiBIb3dldmVyLCB0aGVyZSBtaWdodCBhbHNvIGJlIGEgc2ltaWxhciBwcm9ibGVtIGluIFUt
-Qm9vdC4NCg0KUmVnYXJkcywNCkx1a2FzDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJpc2N2Cg==
+On 2019-10-15 21:38, Auer, Lukas wrote:
+> On Thu, 2019-10-10 at 21:58 +0200, Aurelien Jarno wrote:
+> > On 2019-10-09 01:34, Atish Patra wrote:
+> > > On Tue, 2019-10-08 at 08:33 +0200, Aurelien Jarno wrote:
+> > > > Le 8 octobre 2019 08:14:58 GMT+02:00, David Abdurachmanov <
+> > > > david.abdurachmanov@sifive.com> a =E9crit :
+> > > > > On Tue, Oct 8, 2019 at 7:30 AM Aurelien Jarno <aurelien@aurel32.n=
+et
+> > > > > wrote:
+> > > > > > On 2019-10-07 22:19, Atish Patra wrote:
+> > > > > > > Thanks for the detailed analysis. Can you please keep me and
+> > > > > > > david
+> > > > > in
+> > > > > > > cc when you report the issue to U-boot ?
+> > > > > > =
+
+> > > > > > Yep. I have progressed a bit on that, and now I am not convinced
+> > > > > > it's
+> > > > > an
+> > > > > > U-boot issue, it can be a GCC issue.
+> > > > > > =
+
+> > > > > > Here are the conditions to reproduce the bug:
+> > > > > > - U-boot runs on hart 1, 2 or 3
+> > > > > > - the autoboot process is not interrupted
+> > > > > > - extlinux is used to boot the kernel
+> > > > > > - arch/riscv/lib/bootm.c is compiled with GCC 9 (works fine with
+> > > > > > GCC
+> > > > > 8)
+> > > > > > When the problem happens, the missing hart actually ends its
+> > > > > execution
+> > > > > > in an illegal instruction trap trying to execute the FDT (I only
+> > > > > noticed
+> > > > > > that recently as the message was hidden by the use of
+> > > > > > earlycon=3Dsbi):
+> > > > > > =
+
+> > > > > > > SiFive FSBL:       2018-03-20
+> > > > > > > HiFive-U serial #: 00000246
+> > > > > > > =
+
+> > > > > > > OpenSBI v0.4-50-g30f09fb (Oct  6 2019 21:58:05)
+> > > > > > >    ____                    _____ ____ _____
+> > > > > > >   / __ \                  / ____|  _ \_   _|
+> > > > > > >  | |  | |_ __   ___ _ __ | (___ | |_) || |
+> > > > > > >  | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+> > > > > > >  | |__| | |_) |  __/ | | |____) | |_) || |_
+> > > > > > >   \____/| .__/ \___|_| |_|_____/|____/_____|
+> > > > > > >         | |
+> > > > > > >         |_|
+> > > > > > > =
+
+> > > > > > > Platform Name          : SiFive Freedom U540
+> > > > > > > Platform HART Features : RV64ACDFIMSU
+> > > > > > > Platform Max HARTs     : 5
+> > > > > > > Current Hart           : 2
+> > > > > > > Firmware Base          : 0x80000000
+> > > > > > > Firmware Size          : 104 KB
+> > > > > > > Runtime SBI Version    : 0.2
+> > > > > > > =
+
+> > > > > > > PMP0: 0x0000000080000000-0x000000008001ffff (A)
+> > > > > > > PMP1: 0x0000000000000000-0x0000007fffffffff (A,R,W,X)
+> > > > > > > =
+
+> > > > > > > =
+
+> > > > > > > U-Boot 2019.10-rc4-00037-gdac51e9aaf-dirty (Oct 06 2019 -
+> > > > > > > 21:56:51
+> > > > > +0000)
+> > > > > > > CPU:   rv64imafdc
+> > > > > > > Model: SiFive HiFive Unleashed A00
+> > > > > > > DRAM:  8 GiB
+> > > > > > > =
+
+> > > > > > > MMC:   spi@10050000:mmc@0: 0
+> > > > > > > In:    serial@10010000
+> > > > > > > Out:   serial@10010000
+> > > > > > > Err:   serial@10010000
+> > > > > > > Net:   eth0: ethernet@10090000
+> > > > > > > Hit any key to stop autoboot:  0
+> > > > > > > switch to partitions #0, OK
+> > > > > > > mmc0 is current device
+> > > > > > > Scanning mmc 0:2...
+> > > > > > > Found /boot/extlinux/extlinux.conf
+> > > > > > > Retrieving file: /boot/extlinux/extlinux.conf
+> > > > > > > 510 bytes read in 5 ms (99.6 KiB/s)
+> > > > > > > U-Boot menu
+> > > > > > > 1:      kernel 5.3.4
+> > > > > > > 2:      Debian GNU/Linux kernel 5.3.0-trunk-riscv64
+> > > > > > > Enter choice: 1
+> > > > > > > 1:      kernel 5.3.4
+> > > > > > > Retrieving file: /boot/vmlinux-5.3.4
+> > > > > > > 9486076 bytes read in 4813 ms (1.9 MiB/s)
+> > > > > > > append: root=3D/dev/mmcblk0p2 rw console=3DttySIF0 rootwait
+> > > > > > > Retrieving file: /boot/hifive-unleashed-a00.dtb
+> > > > > > > 6088 bytes read in 7 ms (848.6 KiB/s)
+> > > > > > > ## Flattened Device Tree blob at 88000000
+> > > > > > >    Booting using the fdt blob at 0x88000000
+> > > > > > >    Using Device Tree in place at 0000000088000000, end
+> > > > > 00000000880047c7
+> > > > > > > Starting kernel ...
+> > > > > > > =
+
+> > > > > > > exception code: 2 , Illegal instruction , epc  , ra 88000004
+> > > > > 88000000
+> > > > > > > ### ERROR ### Please RESET the board ###
+> > > > > =
+
+> > > > > I think, that's the same issue I had (or still have) a week ago.
+> > > > > Just reminder that kernel 5.3 introduced a 64-byte header (thus no
+> > > > > need to wrap kernel) at least for Image target. Thus it's booti
+> > > > > that
+> > > > > boots the kernel on U-Boot side.
+> > > > > Thus the 1st instruction of that header is "j 0x40" (to the
+> > > > > beginning
+> > > > > of the actual kernel).  And 88000004 would definitely hold an
+> > > > > illegal
+> > > > > instruction.
+> > > > > =
+
+> > > > > 0000000000000000 <.data>:
+> > > > > 0:       81a0                    j       0x40
+> > > > > 2:       0000                    unimp
+> > > > > 4:       0000                    unimp
+> > > > > 6:       0100                    nop
+> > > > > [..]
+> > > > =
+
+> > > > Hmm that's the beginning of the kernel code. The address 88000004
+> > > > actually corresponds to the FDT. So the hart ending up in a trap
+> > > > actually tries to boot the FDT instead of the kernel.
+> > > > =
+
+> > > =
+
+> > > Do you see the issue if you manually use bootm instead of extlinux?
+> > > =
+
+> > > =3D> bootm $kernel_addr_r - $fdt_addr_r
+> > > =
+
+> > > This is a probably not related as bootm is jumping to wrong location
+> > > for some reason. However, it may be worth a shot as it fixes fdt
+> > > corruption. =
+
+> > =
+
+> > I have just tested, and it doesn't work. On the other hand I have try to
+> > run that manually, and interrupting the boot process usually hides the
+> > problem.
+> > =
+
+> =
+
+> I tried to reproduce the issue today, but was not able to. If you can
+> upload the relevant files somewhere, I can retry it with them. I have
+> also added information on the boot flow in U-Boot below in hopes that
+> it is helpful for debugging.
+
+You can find the files there:
+https://temp.aurel32.net/hifive-opensbi-uboot/
+
+fw_payload.bin contains the OpenSBI + U-Boot payload to be copied to the
+first partition of the SD card. The boot.tar.gz contains the /boot =
+
+directory (kernel, fdt and extlinux.conf) and has to be put on the
+second partition of the SD card. Note that this partition should have
+the GPT boot flag enabled for extlinux to work.
+
+I haven't looked more at the issue recently now that I have found that
+using GCC 8 is a fix/workaround. Therefore those files are from ~10 days
+ago. I will try to do more tests during the week-end.
+
+-- =
+
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
