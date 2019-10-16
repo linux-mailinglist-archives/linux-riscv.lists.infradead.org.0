@@ -2,81 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C97CAD85BA
-	for <lists+linux-riscv@lfdr.de>; Wed, 16 Oct 2019 04:07:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D36D6D89A0
+	for <lists+linux-riscv@lfdr.de>; Wed, 16 Oct 2019 09:34:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sQAD5fS0jf8oHabjeKbDZNy5rynhlQ+DpIf3vvXLeKQ=; b=fsRDbygJRFMPjp
-	vNHR2P68/goV8ogLXuiy8yEK9Z7iysam4b36bmmjqA1+VaNP62k5xSYklwr8jFgzz4TMFkv6Z8ayP
-	aSUUwM+liCmlthTJVrUq6xu11m8WuQREQDn45JM2e7PJ0dKhqp1Q2bdO3LFcd8GC/zQBKh9t0noY7
-	D+FwsYZWbAjTWMo2uKJtpk1LBlGCVIpmqzbKy2TmcoBxdyoKSsVhxj0Dfqn6nSG7e8Czt47ZHyj4r
-	G5NCcFEP7UA04su4DKDCOCseQ1jvklA8DRfDdVgb8mDuXPaXFiyjgTikWNOXe5iTsTw6koGfOu6sT
-	3fDJJo22abtZEDkWgakA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JijI2+D2fCQacZoRInkQa+cgqJgMGizmf3apBOO7OKY=; b=gV6sy/P1WPtMyv
+	XWDiZLEC3BAvAViJvKmwGpHoElg783XC/w7pBY59jItVgvXFsM6vg7H2JaN15ed8kgpuqWF577V6r
+	yaAjzAmCK7yV+/dQ/WnmfFafj7foRlLf6Bv2MHY7sRWTUVGmS1BtA8pjmOok2m+xG8mTc5EhYMfEA
+	pGf4mL7McblV+zyY0nrThQxH/8zSkp/6IeksvqkzlgTC+qnamldUuWkLXwiMAXVfgwrCBU5ijGcR/
+	24Q0DR17WojZ/wjjYGHIm8r6CtV0l7O/cPbYVrwEqdOtJ0v9cTnrwcfJo+aJykldCgE/xtFPKcGbW
+	jXTNtqZifiHKNIMAAOQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iKYio-0000C8-EM; Wed, 16 Oct 2019 02:07:30 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1iKdp9-0003zR-BY; Wed, 16 Oct 2019 07:34:23 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iKYik-0000B7-Od
- for linux-riscv@lists.infradead.org; Wed, 16 Oct 2019 02:07:28 +0000
-Received: by mail-il1-x144.google.com with SMTP id z2so858437ilb.3
- for <linux-riscv@lists.infradead.org>; Tue, 15 Oct 2019 19:07:21 -0700 (PDT)
+ id 1iKdp6-0003yG-14
+ for linux-riscv@lists.infradead.org; Wed, 16 Oct 2019 07:34:21 +0000
+Received: by mail-pf1-x444.google.com with SMTP id h195so14159918pfe.5
+ for <linux-riscv@lists.infradead.org>; Wed, 16 Oct 2019 00:34:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=51zE725bGKn/TMsbEENR+3CzjGIUxaDayj5ujguNtv8=;
- b=TuTgvHXnCneheTiY92PhGPs5WuijQ83ksh7D0cAI0C9x8HFesAJhsgRelKOXXMWhPo
- OqxujUk6fNo9nnCyVfR4jMvaRh5xf4wNJB2sA24dA5vqWIOeC5QBMg28ArPEDqvaoYO/
- Xlqnm9+O+7chiIniytFR0+6+ilfWyuj1I42ho43TJElpTcx3EFSDRUjACD07pbp23Uk9
- BCeAWHUFcJGt8ndp69mhiOWm9hZZjPSIMEfubVfSaE/obSlmnea7kn8Z7cRTdh5/Qm7c
- yWzPqiQURMDSUSjD8uEawNfKYW/27caNwDVRpDlRc9RXyoK+KpM9mVvjJ5dKr1++Gjsn
- 6IKA==
+ h=from:to:subject:date:message-id;
+ bh=pK2qwDb6039LW4fpVN7sB6lBT8h6fpy8/DAwlCYdB60=;
+ b=ldLjKQ/2qpgiAHYu/ICIETehZvhdoXt5ztL5XbWzpuswY8fqmRkLZrDrw2PkpR9G9/
+ yWWZFA7Ns+sGE/T2YpTj/vJfuzu0djXQvm2ymdi9hfJrJUwLg/oqhjNsQ6K3cJfH/NCN
+ PVLcg60N/qmIiF5uUHiryyBEeNywkmTgNudmvbPQHhrOwG4vwG+TrSvrfUF0RrH2FCE6
+ jN3MGHcQCb2YUM/Vivd7KPqzybdWbltY3MdR9WRjw4lBGkD8xLtd65uBGMsXxYmFsEnD
+ LL8ytrVqLI8yC8sTLVHY7BOunZaiKp7CbOivpkxrPhf8TrdRYJJjiIqaqScO9Y93nl+c
+ QuOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=51zE725bGKn/TMsbEENR+3CzjGIUxaDayj5ujguNtv8=;
- b=TNxy9AJ95ywaH2jQMLESAhQzE45jlfNNPZOfd6F5LiLuISXwHvrihpXA2BdSoFCKzW
- tCEv6bqOx8KzaboEwMT9902mKOXg6VTNuyVjfkSTMrKBu/wI1hfz8RJYIs+3BGkUkZBa
- uXETxG3HixvAGqjqe2tqqwGmIBS7C9gFR1W7p1fVKYkOFxTUnLSGEFpJMtHYWuIXmHfh
- ///0R0/uA6sf5bIIg6kzgqhRrFMHnWcR89RXsAcYEGkfuhxTXOG/WzxO+ulfH5hpH5WR
- eDOnWHYIqvjMe15i/RAYGciI/eOq1mSJxACXLGxLeUjEBSs7mwbyhH5kM5okESwpMhbM
- +Z3g==
-X-Gm-Message-State: APjAAAW6qZGfr6tdm+GZRvAOmLe2LBJhMpa5WfhenBVrDpmpx8Boxyrg
- 9G9SBms+4LHNyd97mXLCKIVapQ==
-X-Google-Smtp-Source: APXvYqzIRB6Bwyz35Ayx6azyqs98nmZMFA75wpQMZvBBAVpBl4S4ChwRipQn2BBFVSTLizuvItE5jQ==
-X-Received: by 2002:a92:1948:: with SMTP id e8mr9256429ilm.302.1571191640330; 
- Tue, 15 Oct 2019 19:07:20 -0700 (PDT)
-Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id q11sm3509738ilc.29.2019.10.15.19.07.19
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=pK2qwDb6039LW4fpVN7sB6lBT8h6fpy8/DAwlCYdB60=;
+ b=d5Sn7laV1zh3kvtWQYyQNyhNa4PCGUSNPhAN7trLEEoZJQhLHBVXjy5IX6tSwuJXDN
+ zu9ohDm0sGyFphgCfh1nw/uRCagay8efq6RpsnbYEC4J5eblQ6YJ8Nhu1DsSaxxavdw0
+ rI2gR0mF4DRWrzL4ixYetH//CUTTl/E0CQFTj+tGGMSzOAiE7foNZ+0wcHEEXdua4olv
+ 4xL4WY9p0WOkEHRI3ElSKyvEXi/6y2M31074SecD2nvGXbasW8NIHiVuBWtpHgTb7vAb
+ XjVrKCsXh5bcN5ZqQU1X0oKF2NoT1suc5p8uPDPVC12/JtWVQeYn0oM6SldoMjkOsApm
+ z3Nw==
+X-Gm-Message-State: APjAAAXMgKS/KsFDMu9PI+0DqxFH/c+LofJXoLNsxUjrA7P3+tJvHNGP
+ tcAUqH4hhtAZXZPM28OEmNBoxg==
+X-Google-Smtp-Source: APXvYqwSkcsw+C+K2IFO+yRj+DBcxD9V8gX+qJfV1KUfjuPnIvFguE9Pi5u0/yESJK7ryR7aUNfipg==
+X-Received: by 2002:aa7:9907:: with SMTP id z7mr43342933pff.133.1571211258753; 
+ Wed, 16 Oct 2019 00:34:18 -0700 (PDT)
+Received: from localhost.localdomain (220-132-236-182.HINET-IP.hinet.net.
+ [220.132.236.182])
+ by smtp.gmail.com with ESMTPSA id 126sm26574767pgg.10.2019.10.16.00.34.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Oct 2019 19:07:19 -0700 (PDT)
-Date: Tue, 15 Oct 2019 19:07:17 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 08/20] riscv: abstract out CSR names for supervisor vs
- machine mode
-In-Reply-To: <20190903093239.21278-9-hch@lst.de>
-Message-ID: <alpine.DEB.2.21.9999.1910151902060.12675@viisi.sifive.com>
-References: <20190903093239.21278-1-hch@lst.de>
- <20190903093239.21278-9-hch@lst.de>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
-MIME-Version: 1.0
+ Wed, 16 Oct 2019 00:34:18 -0700 (PDT)
+From: greentime.hu@sifive.com
+To: greentime.hu@sifive.com, green.hu@gmail.com, paul.walmsley@sifive.com,
+ palmer@sifive.com, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] RISC-V: fix virtual address overlapped in FIXADDR_START and
+ VMEMMAP_START
+Date: Wed, 16 Oct 2019 15:34:08 +0800
+Message-Id: <20191016073408.7299-1-greentime.hu@sifive.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191015_190726_802464_8D372998 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20191016_003420_101549_E1666D93 
+X-CRM114-Status: UNSURE (   8.24  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -98,53 +95,62 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>, Damien Le Moal <damien.lemoal@wdc.com>,
- Palmer Dabbelt <palmer@sifive.com>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 3 Sep 2019, Christoph Hellwig wrote:
+From: Greentime Hu <greentime.hu@sifive.com>
 
-> Many of the privileged CSRs exist in a supervisor and machine version
-> that are used very similarly.  Provide a new X-naming layer so that
-> we don't have to ifdef everywhere for M-mode Linux support.
-> 
-> Contains contributions from Damien Le Moal <Damien.LeMoal@wdc.com>.
-> 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Atish Patra <atish.patra@wdc.com>
+This patch fixes the virtual address layout in pgtable.h.
+The virtual address of FIXADDR_START and VMEMMAP_START should not be overlapped.
+These addresses will be existed at the same time in Linux kernel that they can't
+be overlapped.
 
-[ ... ]
+Fixes: d95f1a542c3d ("RISC-V: Implement sparsemem")
+Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+---
+ arch/riscv/include/asm/pgtable.h | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-> diff --git a/arch/riscv/kernel/process.c b/arch/riscv/kernel/process.c
-> index fb3a082362eb..853af1b7837b 100644
-> --- a/arch/riscv/kernel/process.c
-> +++ b/arch/riscv/kernel/process.c
-> @@ -56,23 +56,23 @@ void show_regs(struct pt_regs *regs)
->  	pr_cont(" t5 : " REG_FMT " t6 : " REG_FMT "\n",
->  		regs->t5, regs->t6);
->  
-> -	pr_cont("sstatus: " REG_FMT " sbadaddr: " REG_FMT " scause: " REG_FMT "\n",
-> -		regs->sstatus, regs->sbadaddr, regs->scause);
-> +	pr_cont("status: " REG_FMT " badaddr: " REG_FMT " cause: " REG_FMT "\n",
-> +		regs->xstatus, regs->xbadaddr, regs->xcause);
->  }
->  
->  void start_thread(struct pt_regs *regs, unsigned long pc,
->  	unsigned long sp)
->  {
-> -	regs->sstatus = SR_SPIE;
-> +	regs->xstatus = SR_SPIE;
+diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+index 4f4162d90586..b927fb4ecf1c 100644
+--- a/arch/riscv/include/asm/pgtable.h
++++ b/arch/riscv/include/asm/pgtable.h
+@@ -87,14 +87,6 @@ extern pgd_t swapper_pg_dir[];
+ #define VMALLOC_END      (PAGE_OFFSET - 1)
+ #define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
+ 
+-#define FIXADDR_TOP      VMALLOC_START
+-#ifdef CONFIG_64BIT
+-#define FIXADDR_SIZE     PMD_SIZE
+-#else
+-#define FIXADDR_SIZE     PGDIR_SIZE
+-#endif
+-#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
+-
+ /*
+  * Roughly size the vmemmap space to be large enough to fit enough
+  * struct pages to map half the virtual address space. Then
+@@ -108,6 +100,14 @@ extern pgd_t swapper_pg_dir[];
+ 
+ #define vmemmap		((struct page *)VMEMMAP_START)
+ 
++#define FIXADDR_TOP      (VMEMMAP_START)
++#ifdef CONFIG_64BIT
++#define FIXADDR_SIZE     PMD_SIZE
++#else
++#define FIXADDR_SIZE     PGDIR_SIZE
++#endif
++#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
++
+ /*
+  * ZERO_PAGE is a global shared page that is always zero,
+  * used for zero-mapped memory areas, etc.
+-- 
+2.17.1
 
-Looks like this should be "regs->xstatus = SR_PIE;"
-
-Will update it here.  Let me know if you don't agree -
-
-
-- Paul
 
 _______________________________________________
 linux-riscv mailing list
