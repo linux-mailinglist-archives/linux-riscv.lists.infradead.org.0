@@ -2,33 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05F4EDB364
-	for <lists+linux-riscv@lfdr.de>; Thu, 17 Oct 2019 19:37:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E93B1DB363
+	for <lists+linux-riscv@lfdr.de>; Thu, 17 Oct 2019 19:37:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WiTeRiyruEK6QmI1MUi2Zc8ja5N1G0dRlA9QvPda+lw=; b=J8BxxDzc1qZ3j6
-	DPDpMVuthGy4V8W76Fq08U97kFY8/4wG+LnPLkgUz9IYFeUIbtX33dpTcVpuzNSHPP73BzKu1lLFp
-	DoiOVRwzN6nP9JFdaHpwgZp+42t9dHE5k4FDpy7BKf9UfTn9mndkpswmOcJC/JKYChZYLhzYQPaav
-	LE/ssLIacAEFOzvFSLFF1yw5Leijy0kl7b8AAN2M62mryX/KsaxiGmdDX3li7qai2eqvJnb5xoQn7
-	iaFRuP/bW3aYvBWa9sSqOJ5hdh9hYd+PH0fH0SGOXVrAfBTRAE2Y9k7mufmfp/N3T+3PkCdalDenA
-	QCa7FTYXk6jjr+Nl/LAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4Kbilm14DEbvrwMhsQWM2J6qSaVFSfIQm4yJb9V4jhI=; b=DBPbAlfTCeohfU
+	xFuHmjzK3EEbELSm0caKSNQKm1LjdFY+fn+oEDapqKZyjtVoPz3nso5J7LMiMF++FjOOoUzwnQQWZ
+	6KYcDwnZuzqLh9odlcsf5VtXh8aoiTD5MIHvCStNSdbI9qg/+sWLsyreL87+au8z75Hi95Xsi9VKd
+	EZI3DDauIBBRyh7GdXwTs3WBNjv1W76mylcW+nST87U+WsgG9Br4rciTl9P3SXimgQ+Ng8+/jMU3j
+	XFhNZ+QBtC3jLIKDR3NkHLFCDhNsaA2s1kPEUSNZJUZNPW00Ef9e27g4OprfgciqvXguFAx+29yB0
+	8Llclr964hLeGeO+LRMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iL9id-0007FW-T6; Thu, 17 Oct 2019 17:37:47 +0000
+	id 1iL9ig-0007Gv-5b; Thu, 17 Oct 2019 17:37:50 +0000
 Received: from [2001:4bb8:18c:d7b:c70:4a89:bc61:3] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iL9ib-0007FG-Do; Thu, 17 Oct 2019 17:37:46 +0000
+ id 1iL9ie-0007FU-3C; Thu, 17 Oct 2019 17:37:48 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Palmer Dabbelt <palmer@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>
-Subject: RISC-V nommu support v5
-Date: Thu, 17 Oct 2019 19:37:28 +0200
-Message-Id: <20191017173743.5430-1-hch@lst.de>
+Subject: [PATCH 01/15] riscv: cleanup <asm/bug.h>
+Date: Thu, 17 Oct 2019 19:37:29 +0200
+Message-Id: <20191017173743.5430-2-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191017173743.5430-1-hch@lst.de>
+References: <20191017173743.5430-1-hch@lst.de>
 MIME-Version: 1.0
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -48,62 +50,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi all,
+Remove various not required ifdefs and externs.
 
-below is a series to support nommu mode on RISC-V.  For now this series
-just works under qemu with the qemu-virt platform, but Damien has also
-been able to get kernel based on this tree with additional driver hacks
-to work on the Kendryte KD210, but that will take a while to cleanup
-an upstream.
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+---
+ arch/riscv/include/asm/bug.h | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
-A git tree is available here:
+diff --git a/arch/riscv/include/asm/bug.h b/arch/riscv/include/asm/bug.h
+index 07ceee8b1747..75604fec1b1b 100644
+--- a/arch/riscv/include/asm/bug.h
++++ b/arch/riscv/include/asm/bug.h
+@@ -12,7 +12,6 @@
+ 
+ #include <asm/asm.h>
+ 
+-#ifdef CONFIG_GENERIC_BUG
+ #define __INSN_LENGTH_MASK  _UL(0x3)
+ #define __INSN_LENGTH_32    _UL(0x3)
+ #define __COMPRESSED_INSN_MASK	_UL(0xffff)
+@@ -20,7 +19,6 @@
+ #define __BUG_INSN_32	_UL(0x00100073) /* ebreak */
+ #define __BUG_INSN_16	_UL(0x9002) /* c.ebreak */
+ 
+-#ifndef __ASSEMBLY__
+ typedef u32 bug_insn_t;
+ 
+ #ifdef CONFIG_GENERIC_BUG_RELATIVE_POINTERS
+@@ -43,6 +41,7 @@ typedef u32 bug_insn_t;
+ 	RISCV_SHORT " %2"
+ #endif
+ 
++#ifdef CONFIG_GENERIC_BUG
+ #define __BUG_FLAGS(flags)					\
+ do {								\
+ 	__asm__ __volatile__ (					\
+@@ -58,14 +57,10 @@ do {								\
+ 		  "i" (flags),					\
+ 		  "i" (sizeof(struct bug_entry)));              \
+ } while (0)
+-
+-#endif /* !__ASSEMBLY__ */
+ #else /* CONFIG_GENERIC_BUG */
+-#ifndef __ASSEMBLY__
+ #define __BUG_FLAGS(flags) do {					\
+ 	__asm__ __volatile__ ("ebreak\n");			\
+ } while (0)
+-#endif /* !__ASSEMBLY__ */
+ #endif /* CONFIG_GENERIC_BUG */
+ 
+ #define BUG() do {						\
+@@ -79,15 +74,10 @@ do {								\
+ 
+ #include <asm-generic/bug.h>
+ 
+-#ifndef __ASSEMBLY__
+-
+ struct pt_regs;
+ struct task_struct;
+ 
+-extern void die(struct pt_regs *regs, const char *str);
+-extern void do_trap(struct pt_regs *regs, int signo, int code,
+-	unsigned long addr);
+-
+-#endif /* !__ASSEMBLY__ */
++void die(struct pt_regs *regs, const char *str);
++void do_trap(struct pt_regs *regs, int signo, int code, unsigned long addr);
+ 
+ #endif /* _ASM_RISCV_BUG_H */
+-- 
+2.20.1
 
-    git://git.infradead.org/users/hch/riscv.git riscv-nommu.5
-
-Gitweb:
-
-    http://git.infradead.org/users/hch/riscv.git/shortlog/refs/heads/riscv-nommu.5
-
-I've also pushed out a builtroot branch that can build a RISC-V nommu
-root filesystem here:
-
-   git://git.infradead.org/users/hch/buildroot.git riscv-nommu.2
-
-Gitweb:
-
-   http://git.infradead.org/users/hch/buildroot.git/shortlog/refs/heads/riscv-nommu.2
-
-
-Changes since v4:
- - rebased to 5.4-rc + latest riscv fixes
- - clean up do_trap_break
- - fix an SR_XPIE issue (Paul Walmsley)
- - use the symbolic PAGE_OFFSET value in the flat loader
-   (Aurabindo Jayamohanan)
-
-Changes since v3:
- - improve a few commit message
- - cleanup riscv_cpuid_to_hartid_mask
- - cleanup the timer handling
- - cleanup the IPI handling a little more
- - renamed CONFIG_M_MODE to CONFIG_RISCV_M_MODE
- - split out CONFIG_RISCV_SBI to make some of the ifdefs more obbious
- - use IS_ENABLED wherever possible instead of if ifdefs to make the
-   code more readable
-
-Changes since v2:
- - rebased to 5.3-rc
- - remove the EFI image header for nommu builds
- - set ARCH_SLAB_MINALIGN to ensure stack alignment in the flat binary
-   loader
- - minor comment improvement
- - use #defines for more CSRs
-
-Changes since v1:
- - fixes so that a kernel with this series still work on builds with an
-   IOMMU
- - small clint cleanups
- - the binfmt_flat base and buildroot now don't put arguments on the stack
 
 _______________________________________________
 linux-riscv mailing list
