@@ -2,53 +2,34 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFE6BDB327
-	for <lists+linux-riscv@lfdr.de>; Thu, 17 Oct 2019 19:19:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 05F4EDB364
+	for <lists+linux-riscv@lfdr.de>; Thu, 17 Oct 2019 19:37:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NxtiJYPHws3Vry03pavlXiB7U94oXGxNZ/WaXdoo5xA=; b=LqsZZ7eBHg8pRK
-	TXl1modzSrgy44rVjX1qkGEyS51GmqU/NzYYVGXj47VQ11VQRq821iQlzbnM8iBWvd1Qoazno5eE+
-	ZrKVDSHBG/Z/vBR1qAQzuoB+BcjPs4R3gWs5wlwfTw1RnoDkGYxEIdSojx7dMvbAk1HJOqFg2k/pU
-	bgVxWS6ZC6djKKmGOHapxkOPwfcu7RuY+3CHdUk6fWyJmqBaHIVnT8taGMKlHvZ8QIgGogbku38ot
-	TCYbH9UFCXtlEeUpI0cGOqRNTMwi0bo7zMRZJcV5EQ4Fzt24BjkKh3OCYeDMMAEMDkNSHjKRI5mmX
-	6v7i9JG/AbBDzjDfQ1JQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WiTeRiyruEK6QmI1MUi2Zc8ja5N1G0dRlA9QvPda+lw=; b=J8BxxDzc1qZ3j6
+	DPDpMVuthGy4V8W76Fq08U97kFY8/4wG+LnPLkgUz9IYFeUIbtX33dpTcVpuzNSHPP73BzKu1lLFp
+	DoiOVRwzN6nP9JFdaHpwgZp+42t9dHE5k4FDpy7BKf9UfTn9mndkpswmOcJC/JKYChZYLhzYQPaav
+	LE/ssLIacAEFOzvFSLFF1yw5Leijy0kl7b8AAN2M62mryX/KsaxiGmdDX3li7qai2eqvJnb5xoQn7
+	iaFRuP/bW3aYvBWa9sSqOJ5hdh9hYd+PH0fH0SGOXVrAfBTRAE2Y9k7mufmfp/N3T+3PkCdalDenA
+	QCa7FTYXk6jjr+Nl/LAQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iL9Qx-0000Qe-84; Thu, 17 Oct 2019 17:19:31 +0000
-Received: from verein.lst.de ([213.95.11.211])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iL9Qu-0000Q2-KV
- for linux-riscv@lists.infradead.org; Thu, 17 Oct 2019 17:19:29 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id B322368BE1; Thu, 17 Oct 2019 19:19:24 +0200 (CEST)
-Date: Thu, 17 Oct 2019 19:19:24 +0200
+	id 1iL9id-0007FW-T6; Thu, 17 Oct 2019 17:37:47 +0000
+Received: from [2001:4bb8:18c:d7b:c70:4a89:bc61:3] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iL9ib-0007FG-Do; Thu, 17 Oct 2019 17:37:46 +0000
 From: Christoph Hellwig <hch@lst.de>
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Re: [PATCH] riscv: move sifive_l2_cache.c to drivers/soc
-Message-ID: <20191017171924.GA10928@lst.de>
-References: <20190818082935.14869-1-hch@lst.de>
- <20190819060904.GA4841@zn.tnic> <20190819062619.GA20211@lst.de>
- <20190822062635.00f6e507@coco.lan> <20190927225304.GA18456@lst.de>
+To: Palmer Dabbelt <palmer@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
+Subject: RISC-V nommu support v5
+Date: Thu, 17 Oct 2019 19:37:28 +0200
+Message-Id: <20191017173743.5430-1-hch@lst.de>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190927225304.GA18456@lst.de>
-User-Agent: Mutt/1.5.17 (2007-11-01)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_101928_823813_424C08FC 
-X-CRM114-Status: GOOD (  13.61  )
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,32 +41,69 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: palmer@sifive.com, linux-kernel@vger.kernel.org,
- Yash Shah <yash.shah@sifive.com>, Borislav Petkov <bp@alien8.de>,
- paul.walmsley@sifive.com, linux-riscv@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>, linux-edac@vger.kernel.org
+Cc: Damien Le Moal <damien.lemoal@wdc.com>, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Mauro, can you Ack this patch?
+Hi all,
 
-On Sat, Sep 28, 2019 at 12:53:04AM +0200, Christoph Hellwig wrote:
-> > > well enough myself, and I really need to get this code out of the
-> > > forced on RISC-V codebase as some SOCs I'm working with simply don't
-> > > have the memory for it..
-> > > 
-> > > So unless someone signs up to do a per-IP block edac drivers instead
-> > > very quickly I'd still like to see something like this go into 5.4
-> > > for now.
-> > 
-> > I'm wandering if we should at least add an entry for this one at
-> > MAINTAINERS, pointing it to the EDAC mailing list. Something like:
-> 
-> Sounds fine.  Can you also ACK the patch with that, as Paul mention
-> in another thread he wants an EDAC ACK for it.
----end quoted text---
+below is a series to support nommu mode on RISC-V.  For now this series
+just works under qemu with the qemu-virt platform, but Damien has also
+been able to get kernel based on this tree with additional driver hacks
+to work on the Kendryte KD210, but that will take a while to cleanup
+an upstream.
+
+A git tree is available here:
+
+    git://git.infradead.org/users/hch/riscv.git riscv-nommu.5
+
+Gitweb:
+
+    http://git.infradead.org/users/hch/riscv.git/shortlog/refs/heads/riscv-nommu.5
+
+I've also pushed out a builtroot branch that can build a RISC-V nommu
+root filesystem here:
+
+   git://git.infradead.org/users/hch/buildroot.git riscv-nommu.2
+
+Gitweb:
+
+   http://git.infradead.org/users/hch/buildroot.git/shortlog/refs/heads/riscv-nommu.2
+
+
+Changes since v4:
+ - rebased to 5.4-rc + latest riscv fixes
+ - clean up do_trap_break
+ - fix an SR_XPIE issue (Paul Walmsley)
+ - use the symbolic PAGE_OFFSET value in the flat loader
+   (Aurabindo Jayamohanan)
+
+Changes since v3:
+ - improve a few commit message
+ - cleanup riscv_cpuid_to_hartid_mask
+ - cleanup the timer handling
+ - cleanup the IPI handling a little more
+ - renamed CONFIG_M_MODE to CONFIG_RISCV_M_MODE
+ - split out CONFIG_RISCV_SBI to make some of the ifdefs more obbious
+ - use IS_ENABLED wherever possible instead of if ifdefs to make the
+   code more readable
+
+Changes since v2:
+ - rebased to 5.3-rc
+ - remove the EFI image header for nommu builds
+ - set ARCH_SLAB_MINALIGN to ensure stack alignment in the flat binary
+   loader
+ - minor comment improvement
+ - use #defines for more CSRs
+
+Changes since v1:
+ - fixes so that a kernel with this series still work on builds with an
+   IOMMU
+ - small clint cleanups
+ - the binfmt_flat base and buildroot now don't put arguments on the stack
 
 _______________________________________________
 linux-riscv mailing list
