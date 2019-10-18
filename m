@@ -2,56 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 688E7DCAE3
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 18:21:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89F76DCBA9
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 18:38:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ssiqysXYW+qJhFsZMa5H04mT1t07pok8wsUmbZCdeEY=; b=Zf8MnsPi+TJaxX
-	MGNXGITebDsDngskQjPHUX75Z+Qvdj7+qphgV3S0a+fKxIlaauKk1cwXoh9Hm9LKVejtLSs24MKH9
-	NKBDwxwDI/rXGvGyQHf9fgfegQR0g40fEkPQU41Za6UozWHgkv0EfYtlESR140lhLEZeyf8gHu3X9
-	F3T+oZ2CuVqGK0AJ5lfmpTVzj83iwCLJG4tBPUqcFYk8K53oT142G6K6cghHXaI5qrls3+EVsomTu
-	RazoMJixPI1K0uBtwSv+C2s36AecOXvb8OAU/+wkJUpnFN7sxX2Dfo8fwNt0awd0afZ7FXamHbKP0
-	ZbG+zpBZ4Lq0Fhz2ocDQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Content-ID:MIME-Version
+	:Subject:To:References:In-Reply-To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rsxQhdiYFio4RXvs/kE8Y3ufNm2LSUtnkqCkRPHyZrw=; b=i26o8+bKe4X5O1
+	bD+NK7bxgCIq+Yqvu71fSuUGb7PKvuBiDM3lHJ/ML1QCF3CCipokT5/D6qmVWb1Jtc/0kNdsRCb+5
+	OX/A1wZHN+uNJV3+ECAv+eSqVHCP628d+5eEGBQEG7+iV35YUF5fuUQvWKyE2gyi7aRBTquXr9dlz
+	IcwG4Z5OQ1fDK2njDgm4KzJ4I13Gn53VH+lDrW5F+G3yr2/mjtVEuQVENZ5AfoKjHLN+q40KpDyAc
+	k40cJYP+OodNBlsv9k8ax5APfm4ru5sexHu+kqzzoekLFfyn0u3q1u6urNuelt69oRj5qQWFgnY8D
+	5sgn/j0qVm1C/KPCp4ng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLUzr-0003D8-Nc; Fri, 18 Oct 2019 16:20:59 +0000
-Received: from [217.140.110.172] (helo=foss.arm.com)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLUze-0002zw-8g; Fri, 18 Oct 2019 16:20:47 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 98337C8F;
- Fri, 18 Oct 2019 09:20:35 -0700 (PDT)
-Received: from [10.1.194.43] (e112269-lin.cambridge.arm.com [10.1.194.43])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1B9163F718;
- Fri, 18 Oct 2019 09:20:32 -0700 (PDT)
-Subject: Re: [PATCH v12 07/22] riscv: mm: Add p?d_leaf() definitions
-To: Christoph Hellwig <hch@infradead.org>
-References: <20191018101248.33727-1-steven.price@arm.com>
- <20191018101248.33727-8-steven.price@arm.com>
- <20191018155743.GG25386@infradead.org>
-From: Steven Price <steven.price@arm.com>
-Message-ID: <fe6a0fe4-e789-fb4b-4481-b3934234e16f@arm.com>
-Date: Fri, 18 Oct 2019 17:20:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1iLVGa-00041y-Sp; Fri, 18 Oct 2019 16:38:16 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iLVGY-00041A-02
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 16:38:15 +0000
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 80F98307D98A;
+ Fri, 18 Oct 2019 16:38:09 +0000 (UTC)
+Received: from warthog.procyon.org.uk (ovpn-121-84.rdu2.redhat.com
+ [10.10.121.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4F90660600;
+ Fri, 18 Oct 2019 16:38:06 +0000 (UTC)
+Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
+ Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
+ Kingdom.
+ Registered in England and Wales under Company Registration No. 3798903
+From: David Howells <dhowells@redhat.com>
+In-Reply-To: <CAHk-=wjFozfjV34_qy3_Z155uz_Z7qFVfE8h=_9ceGU-SVk9hA@mail.gmail.com>
+References: <CAHk-=wjFozfjV34_qy3_Z155uz_Z7qFVfE8h=_9ceGU-SVk9hA@mail.gmail.com>
+ <000000000000830fe50595115344@google.com>
+ <00000000000071e2fc05951229ad@google.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Subject: Re: WARNING: refcount bug in find_key_to_update
 MIME-Version: 1.0
-In-Reply-To: <20191018155743.GG25386@infradead.org>
-Content-Language: en-GB
+Content-ID: <31179.1571416685.1@warthog.procyon.org.uk>
+Date: Fri, 18 Oct 2019 17:38:05 +0100
+Message-ID: <31180.1571416685@warthog.procyon.org.uk>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Fri, 18 Oct 2019 16:38:13 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191018_092046_351488_1CEA4CC6 
-X-CRM114-Status: GOOD (  13.02  )
-X-Spam-Score: 1.3 (+)
+X-CRM114-CacheID: sfid-20191018_093814_073255_4EA54872 
+X-CRM114-Status: GOOD (  16.94  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,40 +74,66 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <Mark.Rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, linux-mm@kvack.org,
- "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, "Liang, Kan" <kan.liang@linux.intel.com>,
- Alexandre Ghiti <alex@ghiti.fr>, x86@kernel.org,
- Ingo Molnar <mingo@redhat.com>, Palmer Dabbelt <palmer@sifive.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Arnd Bergmann <arnd@arndb.de>,
- =?UTF-8?B?SsOpcsO0bWUgR2xpc3Nl?= <jglisse@redhat.com>,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-kernel@vger.kernel.org,
- James Morse <james.morse@arm.com>, Andrew Morton <akpm@linux-foundation.org>
+Cc: aou@eecs.berkeley.edu,
+ syzbot <syzbot+6455648abc28dbdd1e7f@syzkaller.appspotmail.com>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
+ James Morris James Morris <jmorris@namei.org>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dhowells@redhat.com,
+ LSM List <linux-security-module@vger.kernel.org>, keyrings@vger.kernel.org,
+ linux-riscv@lists.infradead.org, "Serge E. Hallyn" <serge@hallyn.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 18/10/2019 16:57, Christoph Hellwig wrote:
->> +	return pud_present(pud)
->> +		&& (pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
->> +}
+Linus Torvalds <torvalds@linux-foundation.org> wrote:
+
+> The backtrace looks simple enough, though:
 > 
-> The operators always need to go before the line break, not after it
-> per linux coding style.  There are a few more spots like this, so please
-> audit the whole series for it.
+>   RIP: 0010:refcount_inc_checked+0x2b/0x30 lib/refcount.c:156
+>    __key_get include/linux/key.h:281 [inline]
+>    find_key_to_update+0x67/0x80 security/keys/keyring.c:1127
+>    key_create_or_update+0x4e5/0xb20 security/keys/key.c:905
+>    __do_sys_add_key security/keys/keyctl.c:132 [inline]
+>    __se_sys_add_key security/keys/keyctl.c:72 [inline]
+>    __x64_sys_add_key+0x219/0x3f0 security/keys/keyctl.c:72
+>    do_syscall_64+0xd0/0x540 arch/x86/entry/common.c:296
+>    entry_SYSCALL_64_after_hwframe+0x49/0xbe
+> 
+> which to me implies that there's some locking bug, and somebody
+> released the key without holding a lock.
+>
+> That code looks a bit confused to me. Releasing a key without holding
+> a lock looks permitted, but if that's the case then __key_get() is
+> complete garbage. It would need to use 'refcount_inc_not_zero()' and
+> failure would require failing the caller.
 
-Fair enough. In this case I was just copying the example in pte_huge()
-that already existed - but you're right this isn't the kernel coding style.
+find_key_to_update() must be called with the keyring-to-be-searched locked, as
+stated in the comment on that function.
 
-Thanks,
+If a key-to-be-updated can be found in that keyring, then the keyring must be
+holding a ref on that key already, so it's refcount must be > 0, so it
+shouldn't be necessary to use refcount_inc_not_zero().
 
-Steve
+There shouldn't be a race with key_link(), key_unlink(), key_move(),
+keyring_clear() or keyring_gc() (garbage collection) as all of those take a
+write-lock on the keyring.
+
+> But I haven't followed the key locking rules, so who knows. That "put
+> without lock" scenario would explain the crash, though.
+
+That shouldn't explain it.  When key_put() reduces the refcount to 0, it just
+schedules the garbage collector.  It doesn't touch the key again directly.
+
+I would guess that something incorrectly put a ref when it shouldn't have.  Do
+we know which type of key is involved?  Looking at the syzkaller reproducer,
+it's adding an encrypted key and a user key to the process keyring -
+presumably repeating the procedure within the same process, hence how it finds
+something to update.
+
+David
 
 _______________________________________________
 linux-riscv mailing list
