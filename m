@@ -2,74 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69F60DBB83
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:53:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 559C7DBB84
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:54:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DLeXSiYvrgO/A+/w0HHhS4AzY9BcBrIdBOriXKqnlQY=; b=W9Xm97vGEeQXti
-	DkwS9b4Ycfy/R6gPs1DIaTvvA2vVQW7ffxX6nXuQPMja2iviCGlln4JbDSPv5FgfX6hHQ7yYL7dDe
-	Cb7DNjodgQ83g9BqFKfkqTMLVuU2oJDUHwZux4TR2/0ygHG9vljzTrjHi/VXA8eootPRN6uCvnJDJ
-	OUWvwHejV7Kr71oOizUR6vsFESZ9/+hs5y0iWF7dNAhuqlpxvkg/dihdU9CAhB3PngUbuPHbt/OKp
-	LF6UXA1FQejZZzshP9wHxveyjlGhNpqV2A+AOtwZ00Of+yzO6pkqzyJBp1w1jeP7iVRHRZ4HgZIg4
-	7dVbhYWk24IM+mvuBTOw==;
+	List-Owner; bh=vZe1bC6sWZKfT8gACfcVr2NYDXf6ilh4IkAfD/iZxNg=; b=iBdfyDfCCobAvG
+	ob+UpVYEcaHSKMOryTV41tBINI3+u8FBiCgGuJ029pEpcBlvQrLbKwzvv/gB7pMBmi4ylv0tlO5Z9
+	Vq7JnnazJpVUsphbnz4qGgL/ySRLk/yJwJL2Qm1fBt7ugyijS8QCjYINOCfCm6K//W94gQZl+wIU7
+	ps8AIPDRHk73wwuMaM+/1R7hQdpQZX3Wg/4AWbbwE4lsLAZ5hqv5VkonFPXCM/Nn76eD1zTlMCYkG
+	VjMGBgcjlvkPVTvNVnMRRF0L5fk+fyzMarlwS5n4iPlo7HhCzlejbB9AskhVCtbm1Qw2TvAspishU
+	dTjxg1Ak/bp4eGnQtnhA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLIOC-0000Kd-4N; Fri, 18 Oct 2019 02:53:16 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1iLIP9-0000c0-4J; Fri, 18 Oct 2019 02:54:15 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLIO9-0000KG-1m
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:53:14 +0000
-Received: by mail-wr1-x441.google.com with SMTP id z9so4482868wrl.11
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:53:12 -0700 (PDT)
+ id 1iLIP6-0000bQ-3V
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:54:13 +0000
+Received: by mail-wr1-x443.google.com with SMTP id o18so4476159wrv.13
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:54:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4IN8nkOuZaw4qMQqgoM+lr6oMWm+8vooDBY/2Fj6u8A=;
- b=cm6uu8LpVpbMuL7DTMw6/Q94OH+JJ/d/EbywAS5toHgB/ZqGU2lf3f/Y7MvvSD8lq0
- zNa9dTRgHlPFKlPi86zmTIIkzEww9tHfPahEgiexjHmiad5TCjHzyaOZqtatTvUT+Hpd
- 3gK91DBP38CMpuk5/U6gqYK7VIe9sq2MO2Iu5sNIR1MhEQOVzhbghc+gB1RZPw8AFrqx
- imhGyqmHueePDv38KOcLpANTNfPnCBMsQY3LwE8BQktBZ9vBz/ffbZuew4YQAZ5/+IG3
- trx2cV7+nnnj9WZC90wmQxPUY+Xz3PEerkymbiEcJxxiop6/tPvpOhwfFgKfL54zUZzk
- ig2w==
+ :cc; bh=h73TqF5SoJ6GAIIKRG22eugF7D1cochNYSQVPWgygxk=;
+ b=oT+ec34QQePEIN8AhUZGIGxnIWGt8bBJbEIgZPVeAawhIgHnNshdKFCxck2vhENTAr
+ vbr2hWswQdFMhAFRLwWwvlEls+zsASyOIedKdO/I9WSbxqBIry0+LhvKUULxL+e/Tfuz
+ l3dWDY9QlsHdcrJNMVeJkWCVuDUbu+n8Czh+/KZivTKW0pF0qJx3p44zF7ZYc0Fffiuk
+ zj7uOIb5BcqssmkN44Hmde4nPeNCu0KnzWItOzKgfqz8/ZS4wDzatknooeMs8PcbDJ64
+ kiawb0PA8ePO9j31VtLaA2f16BXSL76nj/kQw8d3ySbGRDO9iKoGDTyuE85HmlXupXdt
+ f/rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=4IN8nkOuZaw4qMQqgoM+lr6oMWm+8vooDBY/2Fj6u8A=;
- b=TOMQ0+uO3UyNwahHNAfcnt3JJDWHCO3uv+jxv+DHfQqms482qwgN9SneoE36VlGQ8y
- afvG+ckQnNaoi5En5tJJp3fDGkfGPManoQF8wvbwYz+0xVKjZAzYzdLaa3ZsQIyVJoiD
- OHO+3kFgfNIEUJKwe9bK6XEkVBk7PPXoGn46n4mTyP/EFag8i5p4p4YfF1DmyF1zhnM6
- X9IibMJTbuSYp+N6fdZGJlhVt6E7F4ssvyiGuL+IIovJ3OAJarNfH1Ps15O4MlTq2JdN
- M+j6+mnwXWE71sbKtXzY4SWN9UtJxk0DlAViC5s/CG+riXbz4FL9MjCzY/rLYS8EM/GC
- Pd0A==
-X-Gm-Message-State: APjAAAXznAnRp+j/rnZH0s9XPXgfJHz3wSIuk+X2HEryW7d8WSO/AVM1
- MKMdt4oq+Yw7aZNKJbYUJBOppIs6Y7NkK3QbYkq/nw==
-X-Google-Smtp-Source: APXvYqxZtU4Zdishzaj1EdrbSwuCs4hJmh3Nm9boGXA21TSzBjIiq3CCeMGIKdggwniwp7AwhXHQUGRPWxdMMSIGcIQ=
-X-Received: by 2002:adf:f145:: with SMTP id y5mr5400621wro.330.1571367191529; 
- Thu, 17 Oct 2019 19:53:11 -0700 (PDT)
+ bh=h73TqF5SoJ6GAIIKRG22eugF7D1cochNYSQVPWgygxk=;
+ b=VNIrJzs9/t/nor+oZBe5gWo63t4JuZ3wnS9pADb/5q8IirouBc+OE4JH/gOMgNz27/
+ 4CvJO7YBEua5TgN2QJ+0IUgeCU5HH67GqpLQraKsqo1zaxex53M4fz1hiuYcf9y+P5Qz
+ VE39xLDjPyGL4IRJwBUS9JFCesyScEVoY2EKysPw779wPBNyl7pTKHnSh8hRLul/DNHw
+ 6TuBbNKCYeORvxoUOJUAViu0krowgUvmXsDG4U8xiJP7JbFvBetqeKWBxFW/YqIOMzC9
+ 6Bu0uopTEUENSqj6t9rsdmz89AJ2urA4d+y1Iz9RWRFsoMvAu81XFDUVYJgsl1x9Jx/B
+ vIgg==
+X-Gm-Message-State: APjAAAXC5wPEZME0hEyIhlqlisNnsgyOx/IpC0OrTRnT8qI5OjpwM85s
+ MU/z1MKB3t6kiCqiGjihrGH2bQXDLUeG4j4RWvYBFA==
+X-Google-Smtp-Source: APXvYqzKRMy1STi+JQe3ZerDLgemp6MoY0u4gJnfJOMrrFsiaL70l/OsymsbOB47n6U96qOe+1clLwmxcheZ4TNEnKk=
+X-Received: by 2002:adf:a109:: with SMTP id o9mr5299771wro.96.1571367250161;
+ Thu, 17 Oct 2019 19:54:10 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191017173743.5430-1-hch@lst.de>
- <20191017173743.5430-6-hch@lst.de>
-In-Reply-To: <20191017173743.5430-6-hch@lst.de>
+ <20191017173743.5430-7-hch@lst.de>
+In-Reply-To: <20191017173743.5430-7-hch@lst.de>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 18 Oct 2019 08:23:00 +0530
-Message-ID: <CAAhSdy3MjGvPuAtsfdtbxe9N8LG3FYjQh=6rLpUqx7r73nNiWw@mail.gmail.com>
-Subject: Re: [PATCH 05/15] riscv: poison SBI calls for M-mode
+Date: Fri, 18 Oct 2019 08:23:59 +0530
+Message-ID: <CAAhSdy1DotXOmo472pXDmRny1Zt11eSH4soG_tYaAALrYzVgBw@mail.gmail.com>
+Subject: Re: [PATCH 06/15] riscv: cleanup the default power off implementation
 To: Christoph Hellwig <hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_195313_096036_DEBA350D 
-X-CRM114-Status: GOOD (  14.02  )
+X-CRM114-CacheID: sfid-20191017_195412_147064_5A8264A6 
+X-CRM114-Status: GOOD (  16.34  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -87,10 +87,10 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Atish Patra <atish.patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
@@ -98,34 +98,72 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, Oct 17, 2019 at 11:08 PM Christoph Hellwig <hch@lst.de> wrote:
 >
-> There is no SBI when we run in M-mode, so fail the compile for any code
-> trying to use SBI calls.
+> Move the sbi poweroff to a separate function and file that is only
+> compiled if CONFIG_SBI is set.  Provide a new default fallback
+> power off that just sits in a wfi loop to save some power.
 >
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
+> Reviewed-by: Atish Patra <atish.patra@wdc.com>
 > ---
->  arch/riscv/include/asm/sbi.h | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  arch/riscv/kernel/Makefile |  1 +
+>  arch/riscv/kernel/reset.c  |  5 ++---
+>  arch/riscv/kernel/sbi.c    | 17 +++++++++++++++++
+>  3 files changed, 20 insertions(+), 3 deletions(-)
+>  create mode 100644 arch/riscv/kernel/sbi.c
 >
-> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-> index 21134b3ef404..b167af3e7470 100644
-> --- a/arch/riscv/include/asm/sbi.h
-> +++ b/arch/riscv/include/asm/sbi.h
-> @@ -8,6 +8,7 @@
+> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> index 696020ff72db..d8c35fa93cc6 100644
+> --- a/arch/riscv/kernel/Makefile
+> +++ b/arch/riscv/kernel/Makefile
+> @@ -41,5 +41,6 @@ obj-$(CONFIG_DYNAMIC_FTRACE)  += mcount-dyn.o
+>  obj-$(CONFIG_PERF_EVENTS)      += perf_event.o
+>  obj-$(CONFIG_PERF_EVENTS)      += perf_callchain.o
+>  obj-$(CONFIG_HAVE_PERF_REGS)   += perf_regs.o
+> +obj-$(CONFIG_RISCV_SBI)                += sbi.o
 >
->  #include <linux/types.h>
+>  clean:
+> diff --git a/arch/riscv/kernel/reset.c b/arch/riscv/kernel/reset.c
+> index d0fe623bfb8f..5e4e69859af1 100644
+> --- a/arch/riscv/kernel/reset.c
+> +++ b/arch/riscv/kernel/reset.c
+> @@ -4,12 +4,11 @@
+>   */
 >
-> +#ifdef CONFIG_RISCV_SBI
->  #define SBI_SET_TIMER 0
->  #define SBI_CONSOLE_PUTCHAR 1
->  #define SBI_CONSOLE_GETCHAR 2
-> @@ -93,5 +94,5 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+>  #include <linux/reboot.h>
+> -#include <asm/sbi.h>
+>
+>  static void default_power_off(void)
 >  {
->         SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
+> -       sbi_shutdown();
+> -       while (1);
+> +       while (1)
+> +               wait_for_interrupt();
 >  }
-> -
-> -#endif
-> +#endif /* CONFIG_RISCV_SBI */
-> +#endif /* _ASM_RISCV_SBI_H */
+>
+>  void (*pm_power_off)(void) = default_power_off;
+> diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
+> new file mode 100644
+> index 000000000000..f6c7c3e82d28
+> --- /dev/null
+> +++ b/arch/riscv/kernel/sbi.c
+> @@ -0,0 +1,17 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +
+> +#include <linux/init.h>
+> +#include <linux/pm.h>
+> +#include <asm/sbi.h>
+> +
+> +static void sbi_power_off(void)
+> +{
+> +       sbi_shutdown();
+> +}
+> +
+> +static int __init sbi_init(void)
+> +{
+> +       pm_power_off = sbi_power_off;
+> +       return 0;
+> +}
+> +early_initcall(sbi_init);
 > --
 > 2.20.1
 >
