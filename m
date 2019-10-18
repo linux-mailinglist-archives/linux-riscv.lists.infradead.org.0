@@ -2,71 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11A9ADBB0C
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 02:50:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE50EDBB44
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 03:15:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BeDcrUBXCnacWulnoqp4NgDlD3cyzuazqLB0F+KXtBc=; b=keH05xMU15Dn/D
-	Uws9phjwb7biYirEZfOI4jw8YeJbf2KUIV7km4Mfly7ML8OOxddTwgdVpunHqFi4I5Nt3HDiE5WoQ
-	nDwukRkvy36zq910MElEtZc1dZw93u/1EwmA3FHCm29vWC2TqFJoW5D21iaM8Fcp96qWKO1e1vbuJ
-	d1Dtqv2A0ocxkxKPoYP5P94TKYUQsmaD5yKYLdJAvYn+sRu7vSXWBzxdFj0TsQU+Y9jOVsrz/tCBa
-	Uq7CsrpUZxzZrSa83YY+GpwKGxWoU3sOwhZp7DFsdqxWn62zEhyKore6uXLeyz4XVTh/1GhM6c+sJ
-	7QhGh+KFOalpxhSheOsw==;
+	List-Owner; bh=mxDqZUU3XI4IY7q8NKlLaB5ZgEIEaS91vJuak9VN+v4=; b=lkIPnJjjKaNwzI
+	nksCP5qgGiczpYSny0WK8j1O5fcrfkqkiAnVzQWQ08G1k1hHcokpyG5Nk95w55LJy0A5pSn7iXxfV
+	HwxbMP8o4nkLnBYqS1b4BSKo7hPoqxwBIUCJ0aUkv93pohchTq/Vwyjlp/T0nKOUTCItK2XpwFi6k
+	2gPxJH23CA+bFw53tsy2SQCFCc5QTMAtiG3maENm+ztW6ANXeZ+ITeekyrd37XlpRLnZYiMPC1ZtY
+	Od2d9yxMouNobxfUyH+IbwvDMDAwjWa61CbhfPH5IrMxyCpYkNEiRiK7Ly2ZxpCnHgUPfoyPnj83A
+	6x8P6bHHFsbh0CJAUWGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLGTB-0004Zi-Qn; Fri, 18 Oct 2019 00:50:17 +0000
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
+	id 1iLGrf-0003xx-NM; Fri, 18 Oct 2019 01:15:35 +0000
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLGSv-00037e-5W
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 00:50:03 +0000
-Received: by mail-il1-x142.google.com with SMTP id z10so3932165ilo.8
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 17:50:01 -0700 (PDT)
+ id 1iLGrc-0003xf-GK
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 01:15:33 +0000
+Received: by mail-il1-x143.google.com with SMTP id l12so3991903ilq.4
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 18:15:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=BDNARAWoiAFizEyliYmITz0WDECsamFFfEfTjTwse14=;
- b=ZxKJbb75JUb8XtdmyH6ELjVl2TxKr+2knfv6zeJLtjAEUY6blYfLbV5wIOiq5g1CJf
- qAm4Xy0ZpmQ4dUJXLg3NJ5XiOzOGpaZFsChkS+2oZxuR0aiBeCYVk/q+rwVTGjsdktpd
- 3tXdvHYaEM6JwRgXysZe7f/u7TBtDC38uEEpA4QGBXtUYqCraU2/mCey9hW93unnycaY
- rnWIVszNZcwyXk2NQsUP3zRNqNthv4y3wgNgvavnmiFryMA2SRsFocr38S+W6naLIWn4
- cmwq9gUuIcIYuKutu2aUOk7ZArHCf6J/7MC0nNg1HyYXzPatkxiSdOBS/jfm+47+SH/t
- QWIw==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=xMVFVGLiYSSLdYjE6VASkhDClgpi5ByjWpde3EPzDTo=;
+ b=awDrOrTNZsTliFwdBDUIyxs4uX5joR2/y276X1UXTxr76eI9fflr4Pp//BNKhw4LDP
+ udF5JY/ajGrCY8RdxmG2kJGXyipHWyNWPld3aZCqGILhwuTzivqGa1IDcV2DNRnj84q3
+ jlhnWl/WK/LTKjgg1pinyZrNLcMWVxx9FOwlZFX2iHQXHVfBZCuyWYvdWDFdVSM66+B4
+ SHBwMkz/wzQWkQVbZR+r2lNRYuiUTKLqYPo0e3CA1LavnCJGdkOF8sRgaNGe05WYeZC+
+ xG/cSojbKWDQHv1N8NC8pVWLjReHS2jTlxCJFM1wMFgozUD9nbcTIJIUroCyYj2/DMdi
+ Udlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=BDNARAWoiAFizEyliYmITz0WDECsamFFfEfTjTwse14=;
- b=re0AFjOn1kkQyGGFy8RYT/JpKhdMkfT9QLypO7vnu//hMhRgc46taQdUtJgzHbWYw2
- kdSIqtJKZggwWmcsHk8kXjrNc+CVQxc+5kNwY/N8+SZwDBOKj2DS2GEI7HDRV1KaZ7QY
- n7UtScyg4NAmUIHQxW8Gw0zGHLAwyjHFAqcUvNjxvAWGzYMXviN/1/z9rWHHlIAgqQlY
- 8HnXSWAf9Z4tyDlFHkshcFg88Y94CXxzxiTkwN1eZbryL+Av/gJDAkWFCM5m/5sw76jJ
- ZGFgMfb28xMjKhB+zvZ2whNrp+6MtGxARAQh/0oH6wR+6cMy5KFWZErkvHglb1YCNaHG
- jL4A==
-X-Gm-Message-State: APjAAAW7iL3pD7FmW4kMHlqPbiX47nP3Xc1f+p9zJ/pdLE4F26JzDdQF
- wRBnopYcQR+6aisQnnlY6fFiMZriSnE=
-X-Google-Smtp-Source: APXvYqz89Az5yviOLCd30UK04C1xP1O6eNU91MfQje3M5l58kOclitK04wId42uS1RkuH8Tus8v5MQ==
-X-Received: by 2002:a92:7f0f:: with SMTP id a15mr6918766ild.116.1571359800009; 
- Thu, 17 Oct 2019 17:50:00 -0700 (PDT)
-Received: from viisi.Home ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id z20sm1493891iof.38.2019.10.17.17.49.58
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=xMVFVGLiYSSLdYjE6VASkhDClgpi5ByjWpde3EPzDTo=;
+ b=AQd3Q7irOH7OOOe3ooDnf/xPTnQ9Teig+W+2TYH/OXoA9haZMAhOKHdPf3MXqUkEKZ
+ Qh2p+fLwj2HwCa8UZWhu9ACEpMNt3y96aUtzRJZBNlHbKGKwrwD0WFqZom8SLA08oejN
+ hk6Rk6u1ylSyNNB8rzyjFD1ey5/hdxd4w1dvyXPZhJQM/pJN2odUzBs7MFjacfSH1aty
+ P0NSzCD8bpIMOwCkse1bUrkRBNzr3vU2JrLv8/bVGWZ8NBDmpaBGW6+MouzetQw2OKpj
+ duT2JVgS7HBwCOmdkAQ6C3ikg0CvcqawOFYc8EBBvH2ABKD9zQUZdThK1TsVUrTDX7Is
+ E9dg==
+X-Gm-Message-State: APjAAAUHM+xpMtadlayr5B+N/mMI/uaG/jhegP+KOWgmHUrTr1XU9zp7
+ 9Co990vRLGTBIQdYzM5neQM2fmsqDDI=
+X-Google-Smtp-Source: APXvYqzDVQiMyZIgvTZC/Q7ZcqBa0pFaN3EJ5m9p1+F6LuzHOYBWFwOn3qLkn0mFMNJ187/UdFrNTw==
+X-Received: by 2002:a92:83c5:: with SMTP id p66mr7527394ilk.204.1571361331720; 
+ Thu, 17 Oct 2019 18:15:31 -0700 (PDT)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id t86sm1829722ila.21.2019.10.17.18.15.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 17:49:59 -0700 (PDT)
+ Thu, 17 Oct 2019 18:15:31 -0700 (PDT)
+Date: Thu, 17 Oct 2019 18:15:29 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
 To: linux-riscv@lists.infradead.org
-Subject: [PATCH 8/8] riscv: fp: add missing __user pointer annotations
-Date: Thu, 17 Oct 2019 17:49:29 -0700
-Message-Id: <20191018004929.3445-9-paul.walmsley@sifive.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20191018004929.3445-1-paul.walmsley@sifive.com>
+Subject: Re: [PATCH 2/8] riscv: add prototypes for assembly language functions
+ from head.S
+In-Reply-To: <20191018004929.3445-3-paul.walmsley@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1910171814310.12651@viisi.sifive.com>
 References: <20191018004929.3445-1-paul.walmsley@sifive.com>
+ <20191018004929.3445-3-paul.walmsley@sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_175001_387060_19B04C3E 
-X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-CacheID: sfid-20191017_181532_572160_D77B4DAF 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -74,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:142 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:143 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -96,51 +99,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Alan Kao <alankao@andestech.com>
+Cc: linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The __user annotations were removed from the {save,restore}_fp_state()
-function signatures by commit 007f5c358957 ("Refactor FPU code in
-signal setup/return procedures"), but should be present, and sparse
-warns when they are not applied.  Add them back in.
+On Thu, 17 Oct 2019, Paul Walmsley wrote:
 
-This change should have no functional impact.
+> Add prototypes for assembly language functions defined in head.S,
+> and include these prototypes into C source files that call those
+> functions.
 
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-Fixes: 007f5c358957 ("Refactor FPU code in signal setup/return procedures")
-Cc: Alan Kao <alankao@andestech.com>
----
- arch/riscv/kernel/signal.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+[ ... ]
 
-diff --git a/arch/riscv/kernel/signal.c b/arch/riscv/kernel/signal.c
-index 85c700ad47e9..9437167f463e 100644
---- a/arch/riscv/kernel/signal.c
-+++ b/arch/riscv/kernel/signal.c
-@@ -28,7 +28,7 @@ struct rt_sigframe {
- 
- #ifdef CONFIG_FPU
- static long restore_fp_state(struct pt_regs *regs,
--			     union __riscv_fp_state *sc_fpregs)
-+			     union __riscv_fp_state __user *sc_fpregs)
- {
- 	long err;
- 	struct __riscv_d_ext_state __user *state = &sc_fpregs->d;
-@@ -55,7 +55,7 @@ static long restore_fp_state(struct pt_regs *regs,
- }
- 
- static long save_fp_state(struct pt_regs *regs,
--			  union __riscv_fp_state *sc_fpregs)
-+			  union __riscv_fp_state __user *sc_fpregs)
- {
- 	long err;
- 	struct __riscv_d_ext_state __user *state = &sc_fpregs->d;
--- 
-2.23.0
+> diff --git a/arch/riscv/mm/fault.c b/arch/riscv/mm/fault.c
+> index 96add1427a75..ec15a9b15448 100644
+> --- a/arch/riscv/mm/fault.c
+> +++ b/arch/riscv/mm/fault.c
+> @@ -18,6 +18,8 @@
+>  #include <asm/ptrace.h>
+>  #include <asm/tlbflush.h>
+>  
+> +#include "../head.h"
+> +
 
+"../kernel/head.h", rather.
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
