@@ -2,74 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 559C7DBB84
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:54:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E5F5DBB85
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:55:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vZe1bC6sWZKfT8gACfcVr2NYDXf6ilh4IkAfD/iZxNg=; b=iBdfyDfCCobAvG
-	ob+UpVYEcaHSKMOryTV41tBINI3+u8FBiCgGuJ029pEpcBlvQrLbKwzvv/gB7pMBmi4ylv0tlO5Z9
-	Vq7JnnazJpVUsphbnz4qGgL/ySRLk/yJwJL2Qm1fBt7ugyijS8QCjYINOCfCm6K//W94gQZl+wIU7
-	ps8AIPDRHk73wwuMaM+/1R7hQdpQZX3Wg/4AWbbwE4lsLAZ5hqv5VkonFPXCM/Nn76eD1zTlMCYkG
-	VjMGBgcjlvkPVTvNVnMRRF0L5fk+fyzMarlwS5n4iPlo7HhCzlejbB9AskhVCtbm1Qw2TvAspishU
-	dTjxg1Ak/bp4eGnQtnhA==;
+	List-Owner; bh=tW9DNcq/Gi2rAaVl0NtOAr/1sfn/mUvraXetP0CBZlo=; b=azuz9SuIUPkU8I
+	EOaXWZzHijj1Do9/EUHiBHkXmZaiJ5cAxRw0ykD/bAYt5Vq54iMdFahfCnwxKpO0qbgsEPk5gxtOH
+	7v02VosR/GgVjYDaJbW13aSlcsEowpEBwSNPkHZVJguxkM1iUx1OQhxTXA0oUDHOH1ZG8mboba4vp
+	zROaYbL3dX9Hf3ZT2gZuUYck0IGFkURa8w0XtQ326Bszu6XjF7vHcA+5oyaSiVUOGk9oaFJIcR95D
+	buBUBqXybBDjt9oEghwsGG/PL81h7dSh0/z48cTiqf25bes6DZGQr2JF5DPIa/bw/OkQKfdIofVKn
+	jDkDIZHmLb3ynzOCKswg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLIP9-0000c0-4J; Fri, 18 Oct 2019 02:54:15 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1iLIQO-0001z9-UC; Fri, 18 Oct 2019 02:55:32 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLIP6-0000bQ-3V
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:54:13 +0000
-Received: by mail-wr1-x443.google.com with SMTP id o18so4476159wrv.13
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:54:11 -0700 (PDT)
+ id 1iLIQL-0001yp-ID
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:55:31 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 3so4534091wmi.3
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:55:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h73TqF5SoJ6GAIIKRG22eugF7D1cochNYSQVPWgygxk=;
- b=oT+ec34QQePEIN8AhUZGIGxnIWGt8bBJbEIgZPVeAawhIgHnNshdKFCxck2vhENTAr
- vbr2hWswQdFMhAFRLwWwvlEls+zsASyOIedKdO/I9WSbxqBIry0+LhvKUULxL+e/Tfuz
- l3dWDY9QlsHdcrJNMVeJkWCVuDUbu+n8Czh+/KZivTKW0pF0qJx3p44zF7ZYc0Fffiuk
- zj7uOIb5BcqssmkN44Hmde4nPeNCu0KnzWItOzKgfqz8/ZS4wDzatknooeMs8PcbDJ64
- kiawb0PA8ePO9j31VtLaA2f16BXSL76nj/kQw8d3ySbGRDO9iKoGDTyuE85HmlXupXdt
- f/rQ==
+ :cc; bh=xKBYmqBKnM/fTox+DxH/j6jDg0wBrXkD7WU8TmLcePI=;
+ b=P7b8jX1ijvI/1bRMfMuCiF0DEfoT7NClM6s9cMKR7dPyvouJu3HRaHo0oNEOiIahvW
+ LnPgQ7tzaz6FV2kJQH7KN0daOdPvxM/i8MQyIWUjxhfUwumj9stzNXKAyHHcvFdn4OI/
+ t8qPLUyAZ+NvrqlrlxFWHnMKvbZHDa0pnlb2cgzexpgcQQzLIjqlxum+EFN5TA1U1mcn
+ wjB+Ni93KTrNJB7Ncrk/ysFSdGxHwows7K8UvOp1offJm7vaxd9gggcXKetxJilyGmE5
+ y3s8l4JLTbm8cp5/1FfpR+C9aw1JnFbY61P4A8w45w431ia/nPKYBTcieXjzaowvKALO
+ 4JWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=h73TqF5SoJ6GAIIKRG22eugF7D1cochNYSQVPWgygxk=;
- b=VNIrJzs9/t/nor+oZBe5gWo63t4JuZ3wnS9pADb/5q8IirouBc+OE4JH/gOMgNz27/
- 4CvJO7YBEua5TgN2QJ+0IUgeCU5HH67GqpLQraKsqo1zaxex53M4fz1hiuYcf9y+P5Qz
- VE39xLDjPyGL4IRJwBUS9JFCesyScEVoY2EKysPw779wPBNyl7pTKHnSh8hRLul/DNHw
- 6TuBbNKCYeORvxoUOJUAViu0krowgUvmXsDG4U8xiJP7JbFvBetqeKWBxFW/YqIOMzC9
- 6Bu0uopTEUENSqj6t9rsdmz89AJ2urA4d+y1Iz9RWRFsoMvAu81XFDUVYJgsl1x9Jx/B
- vIgg==
-X-Gm-Message-State: APjAAAXC5wPEZME0hEyIhlqlisNnsgyOx/IpC0OrTRnT8qI5OjpwM85s
- MU/z1MKB3t6kiCqiGjihrGH2bQXDLUeG4j4RWvYBFA==
-X-Google-Smtp-Source: APXvYqzKRMy1STi+JQe3ZerDLgemp6MoY0u4gJnfJOMrrFsiaL70l/OsymsbOB47n6U96qOe+1clLwmxcheZ4TNEnKk=
-X-Received: by 2002:adf:a109:: with SMTP id o9mr5299771wro.96.1571367250161;
- Thu, 17 Oct 2019 19:54:10 -0700 (PDT)
+ bh=xKBYmqBKnM/fTox+DxH/j6jDg0wBrXkD7WU8TmLcePI=;
+ b=ClSfXy+1fibhNt2SD8iA+jQz0KZ69d3QVgY8XYfg5/KsMX1lE1bP1Sp8EJPNzh47ir
+ Cb8lzoOHUvG0isVsK2dy9S9DyaN+5mml5Kxwvvn4EOc1srxK3IYkIWax1HcycZ/hSND4
+ zBKvUcrS+9UiFbDX2HNZ/Boek6u9NA358pA4FxgVgP19ImfrP4dOsNnp5KiT9cguKsDu
+ +fy0aZQZKlfuslo9Oa/ZHbDY97wCqJy2FvwNzo5wuWejEutYelPcGcIlUpXSwy/okonb
+ H3Nbq2YdTS4om5VPoR7XiwvEmT/p0Y9qbBXDYMdAT62NId41Rpmya6smi4NN/rhp4g7c
+ ab1w==
+X-Gm-Message-State: APjAAAW44V22cnzEzvrsmOuFL/ZqXMrc5kfpPtdwe77JtqjXFiMbzaVo
+ +OlNDgO2nRrAtAk0lIDGcDSOwbe4M9LaFiekerh1GA==
+X-Google-Smtp-Source: APXvYqw+zZ6m5fPdynWeKKLdxpqE/Ya5xs97ZcCWMTHNwCMgBFStCutZthRzJj95DpqP7ZHXHVJR1o+avys8gdz7thE=
+X-Received: by 2002:a1c:bc07:: with SMTP id m7mr5449292wmf.103.1571367327709; 
+ Thu, 17 Oct 2019 19:55:27 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191017173743.5430-1-hch@lst.de>
- <20191017173743.5430-7-hch@lst.de>
-In-Reply-To: <20191017173743.5430-7-hch@lst.de>
+ <20191017173743.5430-8-hch@lst.de>
+In-Reply-To: <20191017173743.5430-8-hch@lst.de>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 18 Oct 2019 08:23:59 +0530
-Message-ID: <CAAhSdy1DotXOmo472pXDmRny1Zt11eSH4soG_tYaAALrYzVgBw@mail.gmail.com>
-Subject: Re: [PATCH 06/15] riscv: cleanup the default power off implementation
+Date: Fri, 18 Oct 2019 08:25:17 +0530
+Message-ID: <CAAhSdy2DpOh2FZUUjiYdHf0Oh-j_RJyXv6AvJDg+DNNfSdJSOw@mail.gmail.com>
+Subject: Re: [PATCH 07/15] riscv: implement remote sfence.i using IPIs
 To: Christoph Hellwig <hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_195412_147064_5A8264A6 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20191017_195529_603344_8C522DF0 
+X-CRM114-Status: GOOD (  20.10  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -87,10 +87,10 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
@@ -98,72 +98,90 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, Oct 17, 2019 at 11:08 PM Christoph Hellwig <hch@lst.de> wrote:
 >
-> Move the sbi poweroff to a separate function and file that is only
-> compiled if CONFIG_SBI is set.  Provide a new default fallback
-> power off that just sits in a wfi loop to save some power.
+> The RISC-V ISA only supports flushing the instruction cache for the
+> local CPU core.  Currently we always offload the remote TLB flushing to
+> the SBI, which then issues an IPI under the hoods.  But with M-mode
+> we do not have an SBI so we have to do it ourselves.   IPI to the
+> other nodes using the existing kernel helpers instead if we have
+> native clint support and thus can IPI directly from the kernel.
 >
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Atish Patra <atish.patra@wdc.com>
 > ---
->  arch/riscv/kernel/Makefile |  1 +
->  arch/riscv/kernel/reset.c  |  5 ++---
->  arch/riscv/kernel/sbi.c    | 17 +++++++++++++++++
->  3 files changed, 20 insertions(+), 3 deletions(-)
->  create mode 100644 arch/riscv/kernel/sbi.c
+>  arch/riscv/include/asm/sbi.h |  3 +++
+>  arch/riscv/mm/cacheflush.c   | 24 ++++++++++++++++++------
+>  2 files changed, 21 insertions(+), 6 deletions(-)
 >
-> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-> index 696020ff72db..d8c35fa93cc6 100644
-> --- a/arch/riscv/kernel/Makefile
-> +++ b/arch/riscv/kernel/Makefile
-> @@ -41,5 +41,6 @@ obj-$(CONFIG_DYNAMIC_FTRACE)  += mcount-dyn.o
->  obj-$(CONFIG_PERF_EVENTS)      += perf_event.o
->  obj-$(CONFIG_PERF_EVENTS)      += perf_callchain.o
->  obj-$(CONFIG_HAVE_PERF_REGS)   += perf_regs.o
-> +obj-$(CONFIG_RISCV_SBI)                += sbi.o
->
->  clean:
-> diff --git a/arch/riscv/kernel/reset.c b/arch/riscv/kernel/reset.c
-> index d0fe623bfb8f..5e4e69859af1 100644
-> --- a/arch/riscv/kernel/reset.c
-> +++ b/arch/riscv/kernel/reset.c
-> @@ -4,12 +4,11 @@
->   */
->
->  #include <linux/reboot.h>
-> -#include <asm/sbi.h>
->
->  static void default_power_off(void)
+> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+> index b167af3e7470..0cb74eccc73f 100644
+> --- a/arch/riscv/include/asm/sbi.h
+> +++ b/arch/riscv/include/asm/sbi.h
+> @@ -94,5 +94,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
 >  {
-> -       sbi_shutdown();
-> -       while (1);
-> +       while (1)
-> +               wait_for_interrupt();
+>         SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
+>  }
+> +#else /* CONFIG_RISCV_SBI */
+> +/* stub to for code is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
+> +void sbi_remote_fence_i(const unsigned long *hart_mask);
+>  #endif /* CONFIG_RISCV_SBI */
+>  #endif /* _ASM_RISCV_SBI_H */
+> diff --git a/arch/riscv/mm/cacheflush.c b/arch/riscv/mm/cacheflush.c
+> index 3f15938dec89..794c9ab256eb 100644
+> --- a/arch/riscv/mm/cacheflush.c
+> +++ b/arch/riscv/mm/cacheflush.c
+> @@ -10,9 +10,17 @@
+>
+>  #include <asm/sbi.h>
+>
+> +static void ipi_remote_fence_i(void *info)
+> +{
+> +       return local_flush_icache_all();
+> +}
+> +
+>  void flush_icache_all(void)
+>  {
+> -       sbi_remote_fence_i(NULL);
+> +       if (IS_ENABLED(CONFIG_RISCV_SBI))
+> +               sbi_remote_fence_i(NULL);
+> +       else
+> +               on_each_cpu(ipi_remote_fence_i, NULL, 1);
 >  }
 >
->  void (*pm_power_off)(void) = default_power_off;
-> diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
-> new file mode 100644
-> index 000000000000..f6c7c3e82d28
-> --- /dev/null
-> +++ b/arch/riscv/kernel/sbi.c
-> @@ -0,0 +1,17 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
+>  /*
+> @@ -28,7 +36,7 @@ void flush_icache_all(void)
+>  void flush_icache_mm(struct mm_struct *mm, bool local)
+>  {
+>         unsigned int cpu;
+> -       cpumask_t others, hmask, *mask;
+> +       cpumask_t others, *mask;
+>
+>         preempt_disable();
+>
+> @@ -46,10 +54,7 @@ void flush_icache_mm(struct mm_struct *mm, bool local)
+>          */
+>         cpumask_andnot(&others, mm_cpumask(mm), cpumask_of(cpu));
+>         local |= cpumask_empty(&others);
+> -       if (mm != current->active_mm || !local) {
+> -               riscv_cpuid_to_hartid_mask(&others, &hmask);
+> -               sbi_remote_fence_i(hmask.bits);
+> -       } else {
+> +       if (mm == current->active_mm && local) {
+>                 /*
+>                  * It's assumed that at least one strongly ordered operation is
+>                  * performed on this hart between setting a hart's cpumask bit
+> @@ -59,6 +64,13 @@ void flush_icache_mm(struct mm_struct *mm, bool local)
+>                  * with flush_icache_deferred().
+>                  */
+>                 smp_mb();
+> +       } else if (IS_ENABLED(CONFIG_RISCV_SBI)) {
+> +               cpumask_t hartid_mask;
 > +
-> +#include <linux/init.h>
-> +#include <linux/pm.h>
-> +#include <asm/sbi.h>
-> +
-> +static void sbi_power_off(void)
-> +{
-> +       sbi_shutdown();
-> +}
-> +
-> +static int __init sbi_init(void)
-> +{
-> +       pm_power_off = sbi_power_off;
-> +       return 0;
-> +}
-> +early_initcall(sbi_init);
+> +               riscv_cpuid_to_hartid_mask(&others, &hartid_mask);
+> +               sbi_remote_fence_i(cpumask_bits(&hartid_mask));
+> +       } else {
+> +               on_each_cpu_mask(&others, ipi_remote_fence_i, NULL, 1);
+>         }
+>
+>         preempt_enable();
 > --
 > 2.20.1
 >
