@@ -2,76 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29D39DBF74
+	by mail.lfdr.de (Postfix) with ESMTPS id 33BAADBF75
 	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 10:09:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Dpw23r7DPxDCBr9ciodD0bYKPTE0ak88ea2+IQr/KMA=; b=b/0UZHws5KlrJy
-	O1YHhcKc1/ARJ3UokrYw2mGEUDWPFtW2wB0nqmK9Ac68q18b7QQAJCPA0vwXOMIFf7pZCKQ5+S3Oz
-	HyPFoAjRFs9YMormsORk/5t2k6Nlk65xCvkElQRWnUUSVC4eu2QSb3/pdmkrHn6IWiSLwD3Nl/LIV
-	2D+fj3ba53mfWHeYTuCKZSVbbQCZulkDf/2PlIY3tB7mNlEOwHtBrhYsj8LtHAe+wvtQA8VBPXxk/
-	CZrnxXfYBzTWhvls37iubDuwgYq0+xxBChbbazlHRIMsTTLq6u1keTcGaL+m15vvehmryttJHcP+Z
-	TR776j2gRo32Ts0a0qfA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZeO8iX2CbvHVN8nanfd3UNPttHA8wIXLciWp5yrGDGg=; b=auvSLhA4+ffzeh
+	umeHlNjVpF8GQeEK4v5imEQ5MiPkj0+m/ozzlos9tFf/SNsUMC0yZ4vqw3U+fFc9RLJfAsL9hIWL0
+	ck1SQthgcrFQ1SwrbhnrYIH7WaYI01g8+A1dH3HK99P6tU1OHTejkoWVq6BQ4LbgNIrIQgCMkl3Bu
+	vvbciNcySEN3+9JTQv44f9iXjnQ0hB9MOX73M7uM8BN1sjbO/HFN2eg0Kr9d0+tJ8OUhZezIc+0/F
+	9NB0gTe7OyyUBJSURmySavS+20B2JX9Gz122ojHD2qYYWi7IxfVB9XCaJAyVhlYpL5zerRBfFNeyz
+	CrPsX95TUQqGmUX0NnNw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLNJe-0007gO-92; Fri, 18 Oct 2019 08:08:54 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+	id 1iLNJg-0007im-Mp; Fri, 18 Oct 2019 08:08:56 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLNJb-0007fV-0x
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 08:08:52 +0000
-Received: by mail-io1-xd44.google.com with SMTP id t18so2274060iog.2
- for <linux-riscv@lists.infradead.org>; Fri, 18 Oct 2019 01:08:50 -0700 (PDT)
+ id 1iLNJc-0007fz-Ql
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 08:08:54 +0000
+Received: by mail-io1-xd43.google.com with SMTP id c25so6340749iot.12
+ for <linux-riscv@lists.infradead.org>; Fri, 18 Oct 2019 01:08:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OsOgYMSsyTjbkroAj3oOC8H18OvB8iGYAKFSlXx+BSY=;
- b=H+ZDs2XYdH0O56HX3VDXwCQVFh++q5NGu+haqRDwCYKEITTaHB8d4gMRkeoXIC7eJR
- hPkFtA7PA/lYUOO+uW/cm6Yhd+JCwdI4k8zip2AkFKOZCJbupK2V2DlIlzPsx93h3Vlp
- 9srOuJ/tZx9Kr/K/k2aNXTxcy8oxiyKZD94TkzftcCLzffOo4CD4kehQPRBpknijaiKY
- rWDp0/O/p2N/5GiCXhxiKja78a3EMuypOdTwt2Dr3at0jZU+hjJ8sZ+NoF8HAnhujla5
- H55cVpgB2Di9NHoHPKj2rbGh37oBagcQZSglTzl3W+Exw7kBuTVqupoCCGkjhb82EpIf
- j8PQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=gALXE7phMSnF5XNrDSEyjkXd1DZJtTY9PSTVrsQZe00=;
+ b=VdiO5twVtCF9UsEJN/g/Ibi63daAcXzXNmZwrtCD1RybuXu7p4ff+DqxMMhOvSexJ9
+ O+h+RCzoMAYVvqRmSYWRgQ0cKZ4kGPOd2mYMuTQE8CbqgQ4NrCDOD1MNtlJsLs/QBVck
+ yDEzptuIrt49pyuPEslqXvV0+EtOBXjCLscuS8Zztqra4SVC/n4wl43V2OBapnsBnS7l
+ ScmBx8PLNNCUyWrl5FE0itd8L+nCgKDR9xwi/In98CmvYPv4qoYlpdl2id6DvE5MWOC3
+ m16329oHHSaXla9lmZ93+A/+QggzKyLBRL24MePHKpxlby7tgnemMvIAYIDjBc5HF3Bu
+ 4fOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=OsOgYMSsyTjbkroAj3oOC8H18OvB8iGYAKFSlXx+BSY=;
- b=fDU7UWkQXlNKMtVfhWrItdAuxNauaNlXjt6h/zav5JndGkssz5Gcir0ObduIB4SxRh
- +kyoO7KIVv+lqAytQohPFBAKDneAljxCCFT4FoW4oFNegKEI2GqnWbu44MCtR/LItxxC
- acjZ5EJRc8NfvWzPK8l3BBI63+mVZ7zc9Av6ZD3ObjIUtJxDnv43eAARfyfbqIt6UHs2
- fqaorE3nskDOWJ0HjQ91xhHtiAWtBwaFXWlzeAMqa8dWzmcdtvIskH6Y/2ro40ATe7X4
- kRka4GcMpkOfwODBYD3yiv9GAVMIemXb4J92aPKBMqm+BdaiWThqh9ekmrWHE0to0GVp
- mQ4Q==
-X-Gm-Message-State: APjAAAVyzxMbmbMYTui6yriK6ozrm97vTwcEI8DcZy+Aw4ePJPikCV2O
- YfqpZLpVgABBEDD/C+Yr7ml0YHwdLBo=
-X-Google-Smtp-Source: APXvYqyjWXiLACNA3jdhTpVfFb8nQ3bXXxtGvxNttTT/x6HmX+quBkUlt6blvv678FE4MDtZIT7NOA==
-X-Received: by 2002:a6b:5404:: with SMTP id i4mr7524183iob.204.1571386129901; 
- Fri, 18 Oct 2019 01:08:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=gALXE7phMSnF5XNrDSEyjkXd1DZJtTY9PSTVrsQZe00=;
+ b=UASLosKERgNSr8jW39XceYDVw0Cy0eCHbiFSFAE5XxioYDRHKyLnm4IHp/x9uLvGz9
+ FfpFqZanBz1gXSGbBacQa1g4tD6Ge+3tl7oynirNf6POq+23lTLsIEFKjQMwcWOvYbUU
+ oWF2C+JMpvsM3pzddNAOLY2mK5PfZs7rcu0cgiEJDKCIAtkHoLwFAmrdOiE70jyGjFEl
+ bIi1QQW4S+FiH7OCvqGNBABd1r/CC7EbMKosGwNT9IU/UKDdKgkO2nPZ2gpHFIpyxBLt
+ vuTDdE1Uw737GoLWs3u+iabNLptI5pZCPXFvmY4oG5OqLb3zLMMZBI4RBpFPdDQBs+RD
+ cg5g==
+X-Gm-Message-State: APjAAAWUMXuYYjEttODRO+oiL4//D75qOvg2QtwLkCuXe1Hx8w1CYIBR
+ bsYaDOqwsXRv18YFhbfhd6VnA3A4oqw=
+X-Google-Smtp-Source: APXvYqzfJ8zKMPYKiC0SIxFmIQKB8w+RgetlcbhzplyFFJO/YWgSaIBZm0V0UHqa+RzxKZ3ivY9Rew==
+X-Received: by 2002:a02:1d44:: with SMTP id 65mr7665917jaj.129.1571386131665; 
+ Fri, 18 Oct 2019 01:08:51 -0700 (PDT)
 Received: from viisi.Home ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id z86sm2121026ilf.73.2019.10.18.01.08.48
+ by smtp.gmail.com with ESMTPSA id z86sm2121026ilf.73.2019.10.18.01.08.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Oct 2019 01:08:49 -0700 (PDT)
+ Fri, 18 Oct 2019 01:08:51 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 To: linux-riscv@lists.infradead.org
-Subject: [PATCH v3 0/8] riscv: resolve most warnings from sparse
-Date: Fri, 18 Oct 2019 01:08:33 -0700
-Message-Id: <20191018080841.26712-1-paul.walmsley@sifive.com>
+Subject: [PATCH v3 1/8] riscv: add prototypes for assembly language functions
+ from entry.S
+Date: Fri, 18 Oct 2019 01:08:34 -0700
+Message-Id: <20191018080841.26712-2-paul.walmsley@sifive.com>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20191018080841.26712-1-paul.walmsley@sifive.com>
+References: <20191018080841.26712-1-paul.walmsley@sifive.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191018_010851_093551_714624B8 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20191018_010852_868380_766321AB 
+X-CRM114-Status: GOOD (  12.53  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -99,72 +102,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Resolve most warnings from the 'sparse' static analysis tool for the
-arch/riscv codebase.  This makes life easier for us as maintainers,
-and makes it easier for developers to use static analysis tools on
-their own changes.
+Add prototypes for assembly language functions defined in entry.S,
+and include these prototypes into C source files that call those
+functions.
 
-This third version drops the patch that adds one of the
-__riscv_cmodel* preprocessor definitions, and uses __visible for C
-functions called only by assembly code - both based on some guidance
-from Luc Van Oostenryck.
+This patch resolves the following warnings from sparse:
 
-This patch series incorporates some changes based on feedback from
-Christoph Hellwig <hch@lst.de> and Luc Van Oostenryck
-<luc.vanoostenryck@gmail.com>.
+arch/riscv/kernel/signal.c:32:53: warning: incorrect type in initializer (different address spaces)
+arch/riscv/kernel/signal.c:45:23: warning: incorrect type in initializer (different address spaces)
+arch/riscv/kernel/signal.c:59:53: warning: incorrect type in initializer (different address spaces)
+arch/riscv/kernel/signal.c:69:23: warning: incorrect type in initializer (different address spaces)
+arch/riscv/kernel/signal.c:89:48: warning: incorrect type in argument 2 (different address spaces)
+arch/riscv/kernel/signal.c:142:45: warning: incorrect type in argument 2 (different address spaces)
+arch/riscv/kernel/signal.c:295:17: warning: symbol 'do_notify_resume' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:91:1: warning: symbol 'do_trap_unknown' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:93:1: warning: symbol 'do_trap_insn_misaligned' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:95:1: warning: symbol 'do_trap_insn_fault' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:97:1: warning: symbol 'do_trap_insn_illegal' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:99:1: warning: symbol 'do_trap_load_misaligned' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:101:1: warning: symbol 'do_trap_load_fault' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:103:1: warning: symbol 'do_trap_store_misaligned' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:105:1: warning: symbol 'do_trap_store_fault' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:107:1: warning: symbol 'do_trap_ecall_u' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:109:1: warning: symbol 'do_trap_ecall_s' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:111:1: warning: symbol 'do_trap_ecall_m' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:125:17: warning: symbol 'do_trap_break' was not declared. Should it be static?
+arch/riscv/kernel/traps.c:163:13: warning: symbol 'trap_init' was not declared. Should it be static?
 
-Applies on the current riscv fixes branch that is based on v5.4-rc3.
+This change should have no functional impact.
 
-- Paul
-
-
-Paul Walmsley (8):
-  riscv: add prototypes for assembly language functions from entry.S
-  riscv: add prototypes for assembly language functions from head.S
-  riscv: init: merge split string literals in preprocessor directive
-  riscv: add missing prototypes
-  riscv: mark some code and data as file-static
-  riscv: add missing header file includes
-  riscv: fp: add missing __user pointer annotations
-  riscv: for C functions called only from assembly, mark with __visible
-
-Kernel object size difference:
-  text	   data	    bss	    dec	    hex	filename
-6664246	2136664	 312608	9113518	 8b0fae	vmlinux.rv64.orig
-6664178	2136632	 312608	9113418	 8b0f4a	vmlinux.rv64.patched
-6444536	1797560	 255184	8497280	 81a880	vmlinux.rv32.orig
-6444492	1797536	 255184	8497212	 81a83c	vmlinux.rv32.patched
-
- arch/riscv/include/asm/irq.h        |  6 ++++++
- arch/riscv/include/asm/pgtable.h    |  2 ++
- arch/riscv/include/asm/processor.h  |  4 ++++
- arch/riscv/include/asm/ptrace.h     |  2 ++
- arch/riscv/include/asm/smp.h        |  2 ++
- arch/riscv/include/asm/switch_to.h  |  1 +
- arch/riscv/kernel/cpufeature.c      |  1 +
- arch/riscv/kernel/entry.h           | 29 +++++++++++++++++++++++++++++
- arch/riscv/kernel/head.h            | 21 +++++++++++++++++++++
- arch/riscv/kernel/module-sections.c |  1 +
- arch/riscv/kernel/process.c         |  2 ++
- arch/riscv/kernel/ptrace.c          |  4 ++--
- arch/riscv/kernel/reset.c           |  1 +
- arch/riscv/kernel/setup.c           |  2 ++
- arch/riscv/kernel/signal.c          |  6 ++++--
- arch/riscv/kernel/smp.c             |  2 ++
- arch/riscv/kernel/smpboot.c         |  3 +++
- arch/riscv/kernel/stacktrace.c      |  6 ++++--
- arch/riscv/kernel/syscall_table.c   |  1 +
- arch/riscv/kernel/time.c            |  1 +
- arch/riscv/kernel/traps.c           |  2 ++
- arch/riscv/kernel/vdso.c            |  3 ++-
- arch/riscv/mm/context.c             |  1 +
- arch/riscv/mm/fault.c               |  2 ++
- arch/riscv/mm/init.c                | 17 ++++++++++-------
- arch/riscv/mm/sifive_l2_cache.c     |  2 +-
- 26 files changed, 109 insertions(+), 15 deletions(-)
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+---
+ arch/riscv/kernel/entry.h  | 29 +++++++++++++++++++++++++++++
+ arch/riscv/kernel/signal.c |  2 ++
+ arch/riscv/kernel/traps.c  |  2 ++
+ 3 files changed, 33 insertions(+)
  create mode 100644 arch/riscv/kernel/entry.h
- create mode 100644 arch/riscv/kernel/head.h
 
+diff --git a/arch/riscv/kernel/entry.h b/arch/riscv/kernel/entry.h
+new file mode 100644
+index 000000000000..73bfcda993d0
+--- /dev/null
++++ b/arch/riscv/kernel/entry.h
+@@ -0,0 +1,29 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2019 SiFive, Inc.
++ */
++#ifndef __ASM_ENTRY_H
++#define __ASM_ENTRY_H
++
++#include <linux/linkage.h>
++#include <linux/init.h>
++
++asmlinkage void do_trap_unknown(struct pt_regs *regs);
++asmlinkage void do_trap_insn_misaligned(struct pt_regs *regs);
++asmlinkage void do_trap_insn_fault(struct pt_regs *regs);
++asmlinkage void do_trap_insn_illegal(struct pt_regs *regs);
++asmlinkage void do_trap_load_misaligned(struct pt_regs *regs);
++asmlinkage void do_trap_load_fault(struct pt_regs *regs);
++asmlinkage void do_trap_store_misaligned(struct pt_regs *regs);
++asmlinkage void do_trap_store_fault(struct pt_regs *regs);
++asmlinkage void do_trap_ecall_u(struct pt_regs *regs);
++asmlinkage void do_trap_ecall_s(struct pt_regs *regs);
++asmlinkage void do_trap_ecall_m(struct pt_regs *regs);
++asmlinkage void do_trap_break(struct pt_regs *regs);
++
++asmlinkage void do_notify_resume(struct pt_regs *regs,
++				 unsigned long thread_info_flags);
++
++void __init trap_init(void);
++
++#endif /* __ASM__H */
+diff --git a/arch/riscv/kernel/signal.c b/arch/riscv/kernel/signal.c
+index b14d7647d800..85c700ad47e9 100644
+--- a/arch/riscv/kernel/signal.c
++++ b/arch/riscv/kernel/signal.c
+@@ -17,6 +17,8 @@
+ #include <asm/switch_to.h>
+ #include <asm/csr.h>
+ 
++#include "entry.h"
++
+ #define DEBUG_SIG 0
+ 
+ struct rt_sigframe {
+diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
+index 1ac75f7d0bff..eff679c3b618 100644
+--- a/arch/riscv/kernel/traps.c
++++ b/arch/riscv/kernel/traps.c
+@@ -19,6 +19,8 @@
+ #include <asm/ptrace.h>
+ #include <asm/csr.h>
+ 
++#include "entry.h"
++
+ int show_unhandled_signals = 1;
+ 
+ extern asmlinkage void handle_exception(void);
 -- 
 2.23.0
 
