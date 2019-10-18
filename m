@@ -2,75 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFD23DBBF5
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 06:38:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EE2D8DBBF6
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 06:39:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d8ErO7Qf/tUENbXZPMIkcd3+7+v35r21sKIG/WC+ZKg=; b=kJn5U7nVxMaVW9
-	krLmY6NlhqS3vbrqxakKlQvyI77Ij6viWv6AdWl2PC1O0WvhOvSNZbYPqU1QhoSCwNbAMSRk+E57a
-	3IIfP+UyhoG657qsENLms65H9dmmALT7oC+NrceI/HTC6btWXr/uHU/hKzMw20Hu2DxR9U6ZAdoow
-	m+TOm8zZjWwP89o4ilRtMQDLZHsUTPw3g6i/GQB63OUopCp3zOgFXmo5zf+hCwietJx0avPpycVld
-	KpExIN4wjHQx+DOuPh3ETPhQ8j6t9pBvS6qPp2uK7/LXX2d9YwM3L/3h6mQz1DyrIIBrFxOkRgtzZ
-	YkiVsfq6jhvjEck6vhow==;
+	List-Owner; bh=8kCNv61+nowWAePcKMaIPwZTNhge3+VVjgaXms2OGVQ=; b=sFgRyD39al9D46
+	3s0h2vCMN4jPyyQ2qkA17mUFDvGkXDRYPhp3PLCMnqlQ8KXw+egOmtb+hqmVMXd2AYqEsxL7G2fs0
+	BvNd0IWqhbp9j4e/h7GLyWH9G0W9eEIil9dMU4l9lSyqd9oyO6YxKfaTZfLR+M0Whyqq1e/LcLWz5
+	78kFbseuyFoVApUKDH+WKmqv1I2vGPL3/gxrNplDgbwb0tVygK9Uii2S4D3dcfrda97SXD3RoWStb
+	H2Z7tOLXLgTj/fPYgFWdLIO95exthHPjN95pkkn3pC3fUork3ocpMONBS9AmYpn1I++Z4um7ZQbpp
+	y5WADP9uELyB29up/McA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLK1x-0003ns-3f; Fri, 18 Oct 2019 04:38:25 +0000
+	id 1iLK34-0003xw-Hl; Fri, 18 Oct 2019 04:39:34 +0000
 Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLK1u-0003nX-6l
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 04:38:23 +0000
-Received: by mail-io1-xd42.google.com with SMTP id h144so5855418iof.7
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 21:38:21 -0700 (PDT)
+ id 1iLK31-0003xI-5w
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 04:39:32 +0000
+Received: by mail-io1-xd42.google.com with SMTP id n26so5846804ioj.8
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 21:39:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=Ar03SN8ojdCPgdDDnhBr1SKZnLdM9cLb9Yk7E1pUhvA=;
- b=HWO1Og9hde/TMA3RyAXmPzOZqdhjb5gLcg2VdZkxBTWSAXVnVEHtmfUEZ9Bdly/5Pj
- zUkp/siL3Z0sOwANXcY9TGdwcTIzYUymEUTEU5H0I1Am5BoqlQo0OLsDJGzB77MM8N8C
- Hmhp9f2ap3GaScWS15oXAGTsnLgOK1ldfs73dPBEWXcUdizem3nAcwjd5oJfiNgygKQG
- iCwbs/OLUDnLvmaDsIp0/+OXeV1rAq+wHHvKKm8qhbNm+O996t7m7xzDEgBHD4e//0LM
- 5v5kEu60irubA+e/vdEIosEV4qfWiihBbyd1ClO2GgDjBojWmczJzJHzjx1OPqxvtykj
- rNyQ==
+ bh=kdaIg1bmKvTuY1siBcuKtqxXXbNP+bO8qDJ8qtoHLrs=;
+ b=alw6W5GQyFhcnDqfvGuR8ILsbtiVCq3gFNSbsc/XVCP/pbXcnDdCPf5Y8lhD+ZGjD3
+ k70D30BaJyuuRDhkvJ+MYnPNjUNkDzOJObYzjLN9WjpGG6uwhVPce/MNyj2Gb3jpNE3N
+ x12yIHzuETRu1nJA+I1boHpOvXikuy3MWOAVWs1ir7esAwfr2HFoVhDI34y1EhvUzbT9
+ P313Uiqsbz9BN595bX4qtsM+rAYBUE7+jnI3adKsIbO3f+d+7d/aVjrY+PTr58X5PRO1
+ dp2o6liHqfUAeu2MWjv+rB5i8j6bNLoTljIC3yYORBqQE44NGIUf6xD6JGxF0pKfbJjr
+ li1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=Ar03SN8ojdCPgdDDnhBr1SKZnLdM9cLb9Yk7E1pUhvA=;
- b=LVAr41tNF0G6xe6maA/kiq7oJTpEvEWoO/KnjqKSMPszfxBni+K1Q1PNplY7ptp9mx
- bcIgTi0EQpneLHYP0qQh3ES0mAk4/GC4SvGx976Rbmk2ol9Fihw4Ih/Q9uo+Sfx2eWH/
- haUm8JYdyaGjiDlgq1LKbGj1NjzXN2gw9vOoK9KWJ+KHNmd5kJ4zwSYKaatHMdFWKaGI
- xYUmN009PPHddCbJdMG1qVj3WKn66uYuuQKjXXCA4/Jf/7oSH1RMYSEMHKsJrPzJ6QcV
- wwMQ767UxfWf/AqeoCI3e3IUSgkh2aL1pczL+bQ0Iy8Wk6rYdzh90t9fURmF6G4pcgrF
- v5Wg==
-X-Gm-Message-State: APjAAAV41DzWbkOh3g7dLCgCsONVHb8bpOxYViKzwKkEgCbxLlSBgQYY
- UqkzWa0uABirfogDaoqcMXRp+w==
-X-Google-Smtp-Source: APXvYqySaMUMX6+h6cD/AKKX0qnuUY0VtV4hMOq6tJB5V4tLWwii7PNoFEbMhirlF6g4QwMw2BBzzA==
-X-Received: by 2002:a5e:da45:: with SMTP id o5mr3854840iop.177.1571373500501; 
- Thu, 17 Oct 2019 21:38:20 -0700 (PDT)
+ bh=kdaIg1bmKvTuY1siBcuKtqxXXbNP+bO8qDJ8qtoHLrs=;
+ b=tapIYrG6Oc8q7c9IHol6u6SJtVoXLrSpFShLFWEdCYMfNHQvsV/inhMP5I6CLFrHEU
+ 1cASDipFY15rGBv7IwSZ/h3MmbDIHf/Nd9PetGUOGOJiWn7rnVvuXRcgo+qeEg8JkRSe
+ ciuG1mguy7LiwxwM5Os9kQJZ77MlHIAN0eOTA510FVs14pQIfSSbATQfbLeFneLOPI1b
+ HtzEEROd/Esa3ZGHcZTo1mLUDrzoOGlvU2irOwrIVZYZuDtNhA4m3d0NwLoeBJK7pfrg
+ QxIczYkpNtPAZeManUlKJlADdpkJ/zUMsJOrTMRXkEZRC5iRE5S/dkaFo6VQ3k0vm/kJ
+ 6WDw==
+X-Gm-Message-State: APjAAAXhw9cZ09WHl+IxLWSitHCbuAumpTg5+oDgR1EYJO4aWaVVjxy4
+ i6fWxP7tUvn+RXjCENgZpw3qK7vWWjc=
+X-Google-Smtp-Source: APXvYqz+VSmPYFEehv0u4XSaZ4gGq/6ly+snn34TQolYszWZAPowUNkcflBsfouOqC+vsTbwwiqpnQ==
+X-Received: by 2002:a5e:dd41:: with SMTP id u1mr6869403iop.112.1571373570538; 
+ Thu, 17 Oct 2019 21:39:30 -0700 (PDT)
 Received: from localhost (67-0-11-246.albq.qwest.net. [67.0.11.246])
- by smtp.gmail.com with ESMTPSA id y23sm1544228iob.28.2019.10.17.21.38.19
+ by smtp.gmail.com with ESMTPSA id 26sm1545703iog.10.2019.10.17.21.39.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 21:38:19 -0700 (PDT)
-Date: Thu, 17 Oct 2019 21:38:18 -0700 (PDT)
+ Thu, 17 Oct 2019 21:39:30 -0700 (PDT)
+Date: Thu, 17 Oct 2019 21:39:29 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
 To: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
-Subject: Re: [PATCH 3/8] riscv: init: merge split string literals in
- preprocessor directive
-In-Reply-To: <20191018040237.3eyrfrty72r63pkz@ltop.local>
-Message-ID: <alpine.DEB.2.21.9999.1910172127220.3026@viisi.sifive.com>
+Subject: Re: [PATCH 4/8] riscv: ensure RISC-V C model definitions are passed
+ to static analyzers
+In-Reply-To: <20191018040619.o3qb5fyj4qdevwoe@ltop.local>
+Message-ID: <alpine.DEB.2.21.9999.1910172138320.3026@viisi.sifive.com>
 References: <20191018004929.3445-1-paul.walmsley@sifive.com>
- <20191018004929.3445-4-paul.walmsley@sifive.com>
- <20191018040237.3eyrfrty72r63pkz@ltop.local>
+ <20191018004929.3445-5-paul.walmsley@sifive.com>
+ <20191018040619.o3qb5fyj4qdevwoe@ltop.local>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_213822_255385_74455711 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20191017_213931_221455_E396BBF1 
+X-CRM114-Status: GOOD (  13.04  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -107,40 +107,37 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Fri, 18 Oct 2019, Luc Van Oostenryck wrote:
 
-> On Thu, Oct 17, 2019 at 05:49:24PM -0700, Paul Walmsley wrote:
-> > sparse complains loudly when string literals associated with
-> > preprocessor directives are split into multiple, separately quoted
-> > strings across different lines:
+> On Thu, Oct 17, 2019 at 05:49:25PM -0700, Paul Walmsley wrote:
+> > Static analysis tools such as sparse don't set the RISC-V C model
+> > preprocessor directives such as "__riscv_cmodel_medany", set by the C
+> > compilers.  This causes the static analyzers to evaluate different
+> > preprocessor paths than C compilers would.  Fix this by defining the
+> > appropriate C model macros in the static analyzer command lines.
+> > 
+> > Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> > ---
+> >  arch/riscv/Makefile | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
+> > index f5e914210245..0247a90bd4d8 100644
+> > --- a/arch/riscv/Makefile
+> > +++ b/arch/riscv/Makefile
+> > @@ -47,9 +47,11 @@ KBUILD_CFLAGS += -DCONFIG_PAGE_OFFSET=$(CONFIG_PAGE_OFFSET)
+> >  
+> >  ifeq ($(CONFIG_CMODEL_MEDLOW),y)
+> >  	KBUILD_CFLAGS += -mcmodel=medlow
+> > +	CHECKFLAGS += -D__riscv_cmodel_medlow
+> >  endif
+> >  ifeq ($(CONFIG_CMODEL_MEDANY),y)
+> >  	KBUILD_CFLAGS += -mcmodel=medany
+> > +	CHECKFLAGS += -D__riscv_cmodel_medany
 > 
-> ...
->  
-> >  #ifndef __riscv_cmodel_medany
-> > -#error "setup_vm() is called from head.S before relocate so it should "
-> > -	"not use absolute addressing."
-> > +#error "setup_vm() is called from head.S before relocate so it should not use absolute addressing."
-> >  #endif
-> 
-> Using a blacslash should do the trick :
-> 	#error "blablablablablablablablablablablabla" \
-> 			"and blablabla again"
-> Or if need I cn fix Sparse if needed and desiable.
+> I can teach sparse about this in the following days.
 
-Thanks for the kind offer!
-
-The backslashless syntax is pretty horrible to my eyes.  As far as I can 
-tell from a brief glance, the instance fixed by this patch was the only 
-instance of its kind in the kernel.  The existing kernel precedents appear 
-to be to simply use a single long line.  Example:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/compiler-gcc.h#n3
-
-So, from a kernel point of view, we should just fix this specific 
-instance.  It doesn't seem worth changing sparse for such a rare case.
-
-On the other hand, gcc seems to support the non-backslashed syntax.  So if 
-the intention is for sparse to follow the gcc practice, and to be used 
-beyond the kernel, maybe it's worth aligning sparse to gcc?  Only if 
-you're bored, I suppose...
+That would be great.  Would you be willing to follow up with me via E-mail 
+or mailing list post when it's fixed?  If so, then in the meantime, I'll 
+just drop this patch.
 
 
 - Paul
