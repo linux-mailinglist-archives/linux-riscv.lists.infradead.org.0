@@ -2,77 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E5F5DBB85
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:55:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 73364DBB86
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:58:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tW9DNcq/Gi2rAaVl0NtOAr/1sfn/mUvraXetP0CBZlo=; b=azuz9SuIUPkU8I
-	EOaXWZzHijj1Do9/EUHiBHkXmZaiJ5cAxRw0ykD/bAYt5Vq54iMdFahfCnwxKpO0qbgsEPk5gxtOH
-	7v02VosR/GgVjYDaJbW13aSlcsEowpEBwSNPkHZVJguxkM1iUx1OQhxTXA0oUDHOH1ZG8mboba4vp
-	zROaYbL3dX9Hf3ZT2gZuUYck0IGFkURa8w0XtQ326Bszu6XjF7vHcA+5oyaSiVUOGk9oaFJIcR95D
-	buBUBqXybBDjt9oEghwsGG/PL81h7dSh0/z48cTiqf25bes6DZGQr2JF5DPIa/bw/OkQKfdIofVKn
-	jDkDIZHmLb3ynzOCKswg==;
+	List-Owner; bh=5Qizim+3Vaj1CHXp8WcNYfFABBgjEW76UlqFZyB/Pm8=; b=DnW/vyUIfoizwY
+	hCgckB+viZ+fix8s1VIyWX8WybBgOOKjvYJ3I5aTB0oxhO80O7JKdXGuNRbqpm43gg/D4KRJDpyHL
+	hkw+n4rwcoaX6ldnsx0SaSLHxsMZUE8Y6EJmZkubWJIpZwlhBnf+sPJ29exD9SoJC4DXWwbCaQzF2
+	27WZl7zEo0aBuw6nVSlrq14t7lurJZ1ToN3yIzVmLbVBqspt1ctzpgCaVjEbY2QL+YMMHXxX6Psaa
+	SbLMPfmEDrfpzQYc6m0ceWtOg9Dcb1AU84FmORa9IyRipVGy3kNYVvfDe/HaFBOQsQdaaMpXjQ6ZO
+	P7Xuhq35C1JkgvZsC8Ew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLIQO-0001z9-UC; Fri, 18 Oct 2019 02:55:32 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1iLISf-0002Ir-Gc; Fri, 18 Oct 2019 02:57:53 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLIQL-0001yp-ID
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:55:31 +0000
-Received: by mail-wm1-x342.google.com with SMTP id 3so4534091wmi.3
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:55:29 -0700 (PDT)
+ id 1iLISb-0002I7-UK
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:57:51 +0000
+Received: by mail-wm1-x343.google.com with SMTP id m18so4549053wmc.1
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:57:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xKBYmqBKnM/fTox+DxH/j6jDg0wBrXkD7WU8TmLcePI=;
- b=P7b8jX1ijvI/1bRMfMuCiF0DEfoT7NClM6s9cMKR7dPyvouJu3HRaHo0oNEOiIahvW
- LnPgQ7tzaz6FV2kJQH7KN0daOdPvxM/i8MQyIWUjxhfUwumj9stzNXKAyHHcvFdn4OI/
- t8qPLUyAZ+NvrqlrlxFWHnMKvbZHDa0pnlb2cgzexpgcQQzLIjqlxum+EFN5TA1U1mcn
- wjB+Ni93KTrNJB7Ncrk/ysFSdGxHwows7K8UvOp1offJm7vaxd9gggcXKetxJilyGmE5
- y3s8l4JLTbm8cp5/1FfpR+C9aw1JnFbY61P4A8w45w431ia/nPKYBTcieXjzaowvKALO
- 4JWg==
+ :cc; bh=Be+nqHFdPq0NG3pyh4Rq7hQf+czCYg0L1pW1x7p+760=;
+ b=DoA6IJxv26NmgWjkeJeBKv/mm4gBftt7CZNlftvhSbQVjLZT75mE7vzu4UmAD3XZPr
+ MRZM0pDFz2HNMJySzUfEeVzKl1VbHaCSxmAkUVujCaolp5Wh+9U/Ly3OfHSQKuvrGup6
+ 17AV7GSnpvpJFD26BfqTFd0Vq4dAvC4GfuQJZvzcGAxuaYucrdMCrnPHINXF+JFR7V2G
+ Jp5KD1aPBzQSYNWWB+1DBO3+Y51RVtciU2HDBz2oHOnZZnFnAxepA6Ai3+9sWhQ7eM+F
+ DUpXaFYjmHize5NmajKvCdL3pkf0OuvGiewLyWcoSTIHUVbZdvAoBbsATT4micGZ7Tw1
+ 0Z2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=xKBYmqBKnM/fTox+DxH/j6jDg0wBrXkD7WU8TmLcePI=;
- b=ClSfXy+1fibhNt2SD8iA+jQz0KZ69d3QVgY8XYfg5/KsMX1lE1bP1Sp8EJPNzh47ir
- Cb8lzoOHUvG0isVsK2dy9S9DyaN+5mml5Kxwvvn4EOc1srxK3IYkIWax1HcycZ/hSND4
- zBKvUcrS+9UiFbDX2HNZ/Boek6u9NA358pA4FxgVgP19ImfrP4dOsNnp5KiT9cguKsDu
- +fy0aZQZKlfuslo9Oa/ZHbDY97wCqJy2FvwNzo5wuWejEutYelPcGcIlUpXSwy/okonb
- H3Nbq2YdTS4om5VPoR7XiwvEmT/p0Y9qbBXDYMdAT62NId41Rpmya6smi4NN/rhp4g7c
- ab1w==
-X-Gm-Message-State: APjAAAW44V22cnzEzvrsmOuFL/ZqXMrc5kfpPtdwe77JtqjXFiMbzaVo
- +OlNDgO2nRrAtAk0lIDGcDSOwbe4M9LaFiekerh1GA==
-X-Google-Smtp-Source: APXvYqw+zZ6m5fPdynWeKKLdxpqE/Ya5xs97ZcCWMTHNwCMgBFStCutZthRzJj95DpqP7ZHXHVJR1o+avys8gdz7thE=
-X-Received: by 2002:a1c:bc07:: with SMTP id m7mr5449292wmf.103.1571367327709; 
- Thu, 17 Oct 2019 19:55:27 -0700 (PDT)
+ bh=Be+nqHFdPq0NG3pyh4Rq7hQf+czCYg0L1pW1x7p+760=;
+ b=gjoORfmtLswb3TWb2Jy1/KispBi2VYAdYakcdStFNLZoPsLO1AI+GIg0OUGX3TxSo8
+ g1dciYwZzgzG1mzYBVn1wxrmX7oKvp7IkL+KNBNHF60GsCHBUvpnhqaOpqzprAVtSDBV
+ nEzT7g2UZdc7w52Jk3v6sWur1u7CkWXNSuHnZOvDLk/OvXwsKA9R+6aku3s0HeAlFJFV
+ oJbDlqlehI+8lUeMHSYLHlSUbzvzfEnwMmr3xn8vbKl+s+zMFhh0fz744MKh7ynuTKfb
+ YEoqQkXTTNXL/HynkxXz2S/rO2uiQrGB+zBlevpPG6v35zALvloZ7AcbtiHQQzljLhdd
+ t65g==
+X-Gm-Message-State: APjAAAXQvnTN+A16U+kQCfzgZncdmxbRv6Lcf1uV3YSOkbA3jV1dwGD0
+ 5xZOsJyAaqnu+V53rPx0F864eyHgyel6xqvhU+YSyg==
+X-Google-Smtp-Source: APXvYqwxdrfkpUCWZjtubzLxwgGss6R4bxw1aLLjLER8GLyL4IIeYeiFxknMdYUVFzcsXWuLWKN0LVPHIz/j2kKUtgc=
+X-Received: by 2002:a05:600c:214f:: with SMTP id
+ v15mr5252538wml.177.1571367467638; 
+ Thu, 17 Oct 2019 19:57:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191017173743.5430-1-hch@lst.de>
- <20191017173743.5430-8-hch@lst.de>
-In-Reply-To: <20191017173743.5430-8-hch@lst.de>
+ <20191017173743.5430-9-hch@lst.de>
+In-Reply-To: <20191017173743.5430-9-hch@lst.de>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 18 Oct 2019 08:25:17 +0530
-Message-ID: <CAAhSdy2DpOh2FZUUjiYdHf0Oh-j_RJyXv6AvJDg+DNNfSdJSOw@mail.gmail.com>
-Subject: Re: [PATCH 07/15] riscv: implement remote sfence.i using IPIs
+Date: Fri, 18 Oct 2019 08:27:36 +0530
+Message-ID: <CAAhSdy2Ln1H4hSbjSt30pZQpHRiP5G2rJffDXFDS6TbvBnM-vw@mail.gmail.com>
+Subject: Re: [PATCH 08/15] riscv: add support for MMIO access to the timer
+ registers
 To: Christoph Hellwig <hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_195529_603344_8C522DF0 
-X-CRM114-Status: GOOD (  20.10  )
+X-CRM114-CacheID: sfid-20191017_195749_991353_FC767931 
+X-CRM114-Status: GOOD (  21.33  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
- [list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ [list.dnswl.org]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -98,90 +100,120 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, Oct 17, 2019 at 11:08 PM Christoph Hellwig <hch@lst.de> wrote:
 >
-> The RISC-V ISA only supports flushing the instruction cache for the
-> local CPU core.  Currently we always offload the remote TLB flushing to
-> the SBI, which then issues an IPI under the hoods.  But with M-mode
-> we do not have an SBI so we have to do it ourselves.   IPI to the
-> other nodes using the existing kernel helpers instead if we have
-> native clint support and thus can IPI directly from the kernel.
+> When running in M-mode we can't use the SBI to set the timer, and
+> don't have access to the time CSR as that usually is emulated by
+> M-mode.  Instead provide code that directly accesses the MMIO for
+> the timer.
 >
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > ---
->  arch/riscv/include/asm/sbi.h |  3 +++
->  arch/riscv/mm/cacheflush.c   | 24 ++++++++++++++++++------
->  2 files changed, 21 insertions(+), 6 deletions(-)
+>  arch/riscv/include/asm/sbi.h      |  3 ++-
+>  arch/riscv/include/asm/timex.h    | 19 +++++++++++++++++--
+>  drivers/clocksource/timer-riscv.c | 21 +++++++++++++++++----
+>  3 files changed, 36 insertions(+), 7 deletions(-)
 >
 > diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-> index b167af3e7470..0cb74eccc73f 100644
+> index 0cb74eccc73f..a4774bafe033 100644
 > --- a/arch/riscv/include/asm/sbi.h
 > +++ b/arch/riscv/include/asm/sbi.h
-> @@ -94,5 +94,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
->  {
+> @@ -95,7 +95,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
 >         SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
 >  }
-> +#else /* CONFIG_RISCV_SBI */
-> +/* stub to for code is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
-> +void sbi_remote_fence_i(const unsigned long *hart_mask);
+>  #else /* CONFIG_RISCV_SBI */
+> -/* stub to for code is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
+> +/* stubs to for code is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
+> +void sbi_set_timer(uint64_t stime_value);
+>  void sbi_remote_fence_i(const unsigned long *hart_mask);
 >  #endif /* CONFIG_RISCV_SBI */
 >  #endif /* _ASM_RISCV_SBI_H */
-> diff --git a/arch/riscv/mm/cacheflush.c b/arch/riscv/mm/cacheflush.c
-> index 3f15938dec89..794c9ab256eb 100644
-> --- a/arch/riscv/mm/cacheflush.c
-> +++ b/arch/riscv/mm/cacheflush.c
-> @@ -10,9 +10,17 @@
+> diff --git a/arch/riscv/include/asm/timex.h b/arch/riscv/include/asm/timex.h
+> index c7ef131b9e4c..e17837d61667 100644
+> --- a/arch/riscv/include/asm/timex.h
+> +++ b/arch/riscv/include/asm/timex.h
+> @@ -7,12 +7,25 @@
+>  #define _ASM_RISCV_TIMEX_H
 >
->  #include <asm/sbi.h>
+>  #include <asm/csr.h>
+> +#include <asm/io.h>
 >
-> +static void ipi_remote_fence_i(void *info)
-> +{
-> +       return local_flush_icache_all();
-> +}
+>  typedef unsigned long cycles_t;
+>
+> +extern u64 __iomem *riscv_time_val;
+> +extern u64 __iomem *riscv_time_cmp;
 > +
->  void flush_icache_all(void)
+> +#ifdef CONFIG_64BIT
+> +#define mmio_get_cycles()      readq_relaxed(riscv_time_val)
+> +#else
+> +#define mmio_get_cycles()      readl_relaxed(riscv_time_val)
+> +#define mmio_get_cycles_hi()   readl_relaxed(((u32 *)riscv_time_val) + 1)
+> +#endif
+> +
+>  static inline cycles_t get_cycles(void)
 >  {
-> -       sbi_remote_fence_i(NULL);
+> -       return csr_read(CSR_TIME);
 > +       if (IS_ENABLED(CONFIG_RISCV_SBI))
-> +               sbi_remote_fence_i(NULL);
-> +       else
-> +               on_each_cpu(ipi_remote_fence_i, NULL, 1);
+> +               return csr_read(CSR_TIME);
+> +       return mmio_get_cycles();
+>  }
+>  #define get_cycles get_cycles
+>
+> @@ -24,7 +37,9 @@ static inline u64 get_cycles64(void)
+>  #else /* CONFIG_64BIT */
+>  static inline u32 get_cycles_hi(void)
+>  {
+> -       return csr_read(CSR_TIMEH);
+> +       if (IS_ENABLED(CONFIG_RISCV_SBI))
+> +               return csr_read(CSR_TIMEH);
+> +       return mmio_get_cycles_hi();
 >  }
 >
->  /*
-> @@ -28,7 +36,7 @@ void flush_icache_all(void)
->  void flush_icache_mm(struct mm_struct *mm, bool local)
->  {
->         unsigned int cpu;
-> -       cpumask_t others, hmask, *mask;
-> +       cpumask_t others, *mask;
+>  static inline u64 get_cycles64(void)
+> diff --git a/drivers/clocksource/timer-riscv.c b/drivers/clocksource/timer-riscv.c
+> index 5d2fdc3e28a9..2b9fbc4ebe49 100644
+> --- a/drivers/clocksource/timer-riscv.c
+> +++ b/drivers/clocksource/timer-riscv.c
+> @@ -3,9 +3,9 @@
+>   * Copyright (C) 2012 Regents of the University of California
+>   * Copyright (C) 2017 SiFive
+>   *
+> - * All RISC-V systems have a timer attached to every hart.  These timers can be
+> - * read from the "time" and "timeh" CSRs, and can use the SBI to setup
+> - * events.
+> + * All RISC-V systems have a timer attached to every hart.  These timers can
+> + * either be read from the "time" and "timeh" CSRs, and can use the SBI to
+> + * setup events, or directly accessed using MMIO registers.
+>   */
+>  #include <linux/clocksource.h>
+>  #include <linux/clockchips.h>
+> @@ -13,14 +13,27 @@
+>  #include <linux/delay.h>
+>  #include <linux/irq.h>
+>  #include <linux/sched_clock.h>
+> +#include <linux/io-64-nonatomic-lo-hi.h>
+>  #include <asm/smp.h>
+>  #include <asm/sbi.h>
 >
->         preempt_disable();
->
-> @@ -46,10 +54,7 @@ void flush_icache_mm(struct mm_struct *mm, bool local)
->          */
->         cpumask_andnot(&others, mm_cpumask(mm), cpumask_of(cpu));
->         local |= cpumask_empty(&others);
-> -       if (mm != current->active_mm || !local) {
-> -               riscv_cpuid_to_hartid_mask(&others, &hmask);
-> -               sbi_remote_fence_i(hmask.bits);
-> -       } else {
-> +       if (mm == current->active_mm && local) {
->                 /*
->                  * It's assumed that at least one strongly ordered operation is
->                  * performed on this hart between setting a hart's cpumask bit
-> @@ -59,6 +64,13 @@ void flush_icache_mm(struct mm_struct *mm, bool local)
->                  * with flush_icache_deferred().
->                  */
->                 smp_mb();
-> +       } else if (IS_ENABLED(CONFIG_RISCV_SBI)) {
-> +               cpumask_t hartid_mask;
+> +u64 __iomem *riscv_time_cmp;
+> +u64 __iomem *riscv_time_val;
 > +
-> +               riscv_cpuid_to_hartid_mask(&others, &hartid_mask);
-> +               sbi_remote_fence_i(cpumask_bits(&hartid_mask));
-> +       } else {
-> +               on_each_cpu_mask(&others, ipi_remote_fence_i, NULL, 1);
->         }
+> +static inline void mmio_set_timer(u64 val)
+> +{
+> +       writeq_relaxed(val,
+> +               riscv_time_cmp + cpuid_to_hartid_map(smp_processor_id()));
+> +}
+> +
+>  static int riscv_clock_next_event(unsigned long delta,
+>                 struct clock_event_device *ce)
+>  {
+>         csr_set(CSR_XIE, XIE_XTIE);
+> -       sbi_set_timer(get_cycles64() + delta);
+> +       if (IS_ENABLED(CONFIG_RISCV_SBI))
+> +               sbi_set_timer(get_cycles64() + delta);
+> +       else
+> +               mmio_set_timer(get_cycles64() + delta);
+>         return 0;
+>  }
 >
->         preempt_enable();
 > --
 > 2.20.1
 >
