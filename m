@@ -2,84 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95375DBBB9
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 06:15:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EFD23DBBF5
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 06:38:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A+Sw+mxMRtLhtLB2j/rNll6V63vVqdQp5mXvd//rlZc=; b=IhsqJXZmG+RQG3
-	UnJOQB3iOPvHj3OJ6Xyu2gJYA2SI3Eugl0v/xSSv1FRjAWbsBSLNpYs6+KrviL8w6Y/PeMYupAGXg
-	X2izALf/eUugDm4htEQt4RVsxOE5GuBqBpNY2GAN2z6KUMyQcCJvNGMhA6uhEyea9ZiPSh47vT/FD
-	ghZhG6BcopXCc41+FfqaSY8Y7uJvPJ7lA9cKXkC62KTKOlBMWIcErpLucnmKrrCxLun1paB7JiGEO
-	T7KHHYwuejIzFd9mbkJxeSLT8GSYiD7FIXAUBpXIBu4g/viHU2osLymAa8Hyx8Zp0tHFXiDo8uou9
-	wXRNX/myBR7fHfz8cdUA==;
+	List-Owner; bh=d8ErO7Qf/tUENbXZPMIkcd3+7+v35r21sKIG/WC+ZKg=; b=kJn5U7nVxMaVW9
+	krLmY6NlhqS3vbrqxakKlQvyI77Ij6viWv6AdWl2PC1O0WvhOvSNZbYPqU1QhoSCwNbAMSRk+E57a
+	3IIfP+UyhoG657qsENLms65H9dmmALT7oC+NrceI/HTC6btWXr/uHU/hKzMw20Hu2DxR9U6ZAdoow
+	m+TOm8zZjWwP89o4ilRtMQDLZHsUTPw3g6i/GQB63OUopCp3zOgFXmo5zf+hCwietJx0avPpycVld
+	KpExIN4wjHQx+DOuPh3ETPhQ8j6t9pBvS6qPp2uK7/LXX2d9YwM3L/3h6mQz1DyrIIBrFxOkRgtzZ
+	YkiVsfq6jhvjEck6vhow==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLJfR-0005Sj-Uy; Fri, 18 Oct 2019 04:15:09 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1iLK1x-0003ns-3f; Fri, 18 Oct 2019 04:38:25 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLJfN-0004h7-UY
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 04:15:07 +0000
-Received: by mail-wm1-x341.google.com with SMTP id 5so4643135wmg.0
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 21:15:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=GXpwiWbrAU/653GmrWZ4CKDfopVqbQJlCnoRGMU0IXo=;
- b=HCkne4s8lruvHSjpE5jf0OgLyMhPwrvNwZ3XZUMDJxIAmbTJ7U0e0j5lACmvchXOqb
- 2wIXjnp6mVboS7gpgge2/f0WIp8FzhCfT1YzwjZn2XMChTk+3gX4w/G3wm1ASj5evE2v
- 9KiN6Bd+zRI7o53M1ioDgisIswMb4TuhvO4CAV+HMlcpRWwIq6DGiBu+HsFpiLvXgdyx
- yyAuvxqH9F6W51uc00HyFnNZGHyf5BfLq8tgaAZ5qX1mMOJQD3r3KIrfjNUUGuKn5IDz
- wwRkRZtW4RWjuR6lMcdS7SsHtCR7KkOHVEIl/XHnXpbtnpPonSGPxfNxqxg7BH4lcH/l
- Ympw==
+ id 1iLK1u-0003nX-6l
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 04:38:23 +0000
+Received: by mail-io1-xd42.google.com with SMTP id h144so5855418iof.7
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 21:38:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=Ar03SN8ojdCPgdDDnhBr1SKZnLdM9cLb9Yk7E1pUhvA=;
+ b=HWO1Og9hde/TMA3RyAXmPzOZqdhjb5gLcg2VdZkxBTWSAXVnVEHtmfUEZ9Bdly/5Pj
+ zUkp/siL3Z0sOwANXcY9TGdwcTIzYUymEUTEU5H0I1Am5BoqlQo0OLsDJGzB77MM8N8C
+ Hmhp9f2ap3GaScWS15oXAGTsnLgOK1ldfs73dPBEWXcUdizem3nAcwjd5oJfiNgygKQG
+ iCwbs/OLUDnLvmaDsIp0/+OXeV1rAq+wHHvKKm8qhbNm+O996t7m7xzDEgBHD4e//0LM
+ 5v5kEu60irubA+e/vdEIosEV4qfWiihBbyd1ClO2GgDjBojWmczJzJHzjx1OPqxvtykj
+ rNyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=GXpwiWbrAU/653GmrWZ4CKDfopVqbQJlCnoRGMU0IXo=;
- b=c7IOLqmHyDgS3AauaTy9AFXxSsFQthnhSoAqoY7R679JmUBLcvg81M4GpEHNfrX8Qo
- NRlJHb4oZW5BcfH9g1QjAKPPAgLZPjV6nkN7HsBV88wlWJ/wSLK3IRczw1u3L0tExbd1
- yandfwbU2nSYeGL460KHVtUC6UxNhig0EVYekUuVnl+vJ2cSjffLnlf1KwIJkHdRXdU9
- 77O5htASRaKj4L0UrYmpsLEFENXFZe2DrtKZYAylYmu3Bc9PCtJJrTOnaNczOqgTL6y5
- GQxpc+XAaG2tDcURbHVwu7ynqeNRWvpbffb80s5+1CqTgoPdNgLvBZIWXeE2ggyNsmi+
- UYeA==
-X-Gm-Message-State: APjAAAVa3jVr1Ygy9A5MYZM4caSOdHpRMCM5IzEQxlhwnlk1bR5DTz34
- +fVZ8bSVU0IYBfmCxt22LiI=
-X-Google-Smtp-Source: APXvYqz+4Pinskrf2UCosw5rgRX7f2A0VhKcLk6IxtbU+1p4dOJAsqVStmjoGBzaMqSnB+Zff8cyzQ==
-X-Received: by 2002:a1c:9e07:: with SMTP id h7mr5807160wme.96.1571372104081;
- Thu, 17 Oct 2019 21:15:04 -0700 (PDT)
-Received: from ltop.local ([2a02:a03f:40ac:ce00:18e1:7d90:ccf5:4489])
- by smtp.gmail.com with ESMTPSA id x9sm4453820wrq.63.2019.10.17.21.15.03
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 17 Oct 2019 21:15:03 -0700 (PDT)
-Date: Fri, 18 Oct 2019 06:15:02 +0200
-From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: [PATCH 5/8] riscv: add missing prototypes
-Message-ID: <20191018041501.cuyyhcm23dsihcif@ltop.local>
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=Ar03SN8ojdCPgdDDnhBr1SKZnLdM9cLb9Yk7E1pUhvA=;
+ b=LVAr41tNF0G6xe6maA/kiq7oJTpEvEWoO/KnjqKSMPszfxBni+K1Q1PNplY7ptp9mx
+ bcIgTi0EQpneLHYP0qQh3ES0mAk4/GC4SvGx976Rbmk2ol9Fihw4Ih/Q9uo+Sfx2eWH/
+ haUm8JYdyaGjiDlgq1LKbGj1NjzXN2gw9vOoK9KWJ+KHNmd5kJ4zwSYKaatHMdFWKaGI
+ xYUmN009PPHddCbJdMG1qVj3WKn66uYuuQKjXXCA4/Jf/7oSH1RMYSEMHKsJrPzJ6QcV
+ wwMQ767UxfWf/AqeoCI3e3IUSgkh2aL1pczL+bQ0Iy8Wk6rYdzh90t9fURmF6G4pcgrF
+ v5Wg==
+X-Gm-Message-State: APjAAAV41DzWbkOh3g7dLCgCsONVHb8bpOxYViKzwKkEgCbxLlSBgQYY
+ UqkzWa0uABirfogDaoqcMXRp+w==
+X-Google-Smtp-Source: APXvYqySaMUMX6+h6cD/AKKX0qnuUY0VtV4hMOq6tJB5V4tLWwii7PNoFEbMhirlF6g4QwMw2BBzzA==
+X-Received: by 2002:a5e:da45:: with SMTP id o5mr3854840iop.177.1571373500501; 
+ Thu, 17 Oct 2019 21:38:20 -0700 (PDT)
+Received: from localhost (67-0-11-246.albq.qwest.net. [67.0.11.246])
+ by smtp.gmail.com with ESMTPSA id y23sm1544228iob.28.2019.10.17.21.38.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Oct 2019 21:38:19 -0700 (PDT)
+Date: Thu, 17 Oct 2019 21:38:18 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Subject: Re: [PATCH 3/8] riscv: init: merge split string literals in
+ preprocessor directive
+In-Reply-To: <20191018040237.3eyrfrty72r63pkz@ltop.local>
+Message-ID: <alpine.DEB.2.21.9999.1910172127220.3026@viisi.sifive.com>
 References: <20191018004929.3445-1-paul.walmsley@sifive.com>
- <20191018004929.3445-6-paul.walmsley@sifive.com>
+ <20191018004929.3445-4-paul.walmsley@sifive.com>
+ <20191018040237.3eyrfrty72r63pkz@ltop.local>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191018004929.3445-6-paul.walmsley@sifive.com>
-User-Agent: NeoMutt/20180716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_211506_028470_2C0A3F5D 
-X-CRM114-Status: UNSURE (   8.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191017_213822_255385_74455711 
+X-CRM114-Status: GOOD (  11.19  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
  [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (luc.vanoostenryck[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -106,29 +105,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Oct 17, 2019 at 05:49:26PM -0700, Paul Walmsley wrote:
-> sparse identifies these missing prototypes when building arch/riscv:
-> 
-> arch/riscv/kernel/cpu.c:149:29: warning: symbol 'cpuinfo_op' was not declared. Should it be static?
-> arch/riscv/kernel/irq.c:27:29: warning: symbol 'do_IRQ' was not declared. Should it be static?
-> arch/riscv/kernel/irq.c:57:13: warning: symbol 'init_IRQ' was not declared. Should it be static?
-> arch/riscv/kernel/syscall_table.c:15:6: warning: symbol 'sys_call_table' was not declared. Should it be static?
-> arch/riscv/kernel/time.c:15:13: warning: symbol 'time_init' was not declared. Should it be static?
-> arch/riscv/kernel/smpboot.c:135:24: warning: symbol 'smp_callin' was not declared. Should it be static?
-> arch/riscv/kernel/smp.c:72:5: warning: symbol 'setup_profiling_timer' was not declared. Should it be static?
-> arch/riscv/mm/init.c:151:7: warning: symbol 'trampoline_pg_dir' was not declared. Should it be static?
-> arch/riscv/mm/init.c:157:7: warning: symbol 'early_pg_dir' was not declared. Should it be static?
-> arch/riscv/kernel/process.c:32:6: warning: symbol 'show_regs' was not declared. Should it be static?
-> arch/riscv/kernel/ptrace.c:151:6: warning: symbol 'do_syscall_trace_enter' was not declared. Should it be static?
-> arch/riscv/kernel/ptrace.c:165:6: warning: symbol 'do_syscall_trace_exit' was not declared. Should it be static?
-> 
-> Fix by adding the missing prototypes to the appropriate header files.
+On Fri, 18 Oct 2019, Luc Van Oostenryck wrote:
 
-For functions defined in C but used ony in assembly, you can also simply mark
-them as '__visible'  (aka __attribute__((exrernally_visible)) ).
- 
-Best regards,
--- Luc
+> On Thu, Oct 17, 2019 at 05:49:24PM -0700, Paul Walmsley wrote:
+> > sparse complains loudly when string literals associated with
+> > preprocessor directives are split into multiple, separately quoted
+> > strings across different lines:
+> 
+> ...
+>  
+> >  #ifndef __riscv_cmodel_medany
+> > -#error "setup_vm() is called from head.S before relocate so it should "
+> > -	"not use absolute addressing."
+> > +#error "setup_vm() is called from head.S before relocate so it should not use absolute addressing."
+> >  #endif
+> 
+> Using a blacslash should do the trick :
+> 	#error "blablablablablablablablablablablabla" \
+> 			"and blablabla again"
+> Or if need I cn fix Sparse if needed and desiable.
+
+Thanks for the kind offer!
+
+The backslashless syntax is pretty horrible to my eyes.  As far as I can 
+tell from a brief glance, the instance fixed by this patch was the only 
+instance of its kind in the kernel.  The existing kernel precedents appear 
+to be to simply use a single long line.  Example:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/compiler-gcc.h#n3
+
+So, from a kernel point of view, we should just fix this specific 
+instance.  It doesn't seem worth changing sparse for such a rare case.
+
+On the other hand, gcc seems to support the non-backslashed syntax.  So if 
+the intention is for sparse to follow the gcc practice, and to be used 
+beyond the kernel, maybe it's worth aligning sparse to gcc?  Only if 
+you're bored, I suppose...
+
+
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
