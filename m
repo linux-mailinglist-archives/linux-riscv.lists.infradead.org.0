@@ -2,90 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 464D5DBB89
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 04:58:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7028DDBB8C
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 05:00:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UzDNiCwE25BqIws0xim2z8BXrtV7DSiKo2kvJhboQwQ=; b=A1EYnqAI2O0Tpo
-	wCId9KkUMHrhZSZpT1MlE4gYyxPir85bniHN58p7FHCfUQ6Xc1A8Xh3cOPrQj09HJf64HG2lTvCGd
-	9Cbl9ps066KHGE5CfrV1zTJl1eWRKvj7oMtaaY2/8mJ5PkaTLRH7y95iUqZhDGC/KCaE/2MYw+eM6
-	Ko+jQfEbPorm+AZTS04f0hmAO6kKYgCT/IQWgOW/6MyXaYBD5M30rvp6Idl1SHVH+FHhk1HjP1yme
-	rn2MnSMXm8bJRpvj7ae4Xhi4NjTnyiZv2aKpy4eSXlSYk5vuWp2EOBaE+T8qFyYeLBhWxx9a7Y28t
-	yVq5GhWgYSyeJzjwmvpQ==;
+	List-Owner; bh=w3Tt/NAgBq8rOUZN2M/C/qupva30ps1aAWSabvt40fE=; b=fhKNsr5crxsUR3
+	xyVMBmpKnV+IXkj8CFk7V1gtMgQEmffsxJyz5SjRY0TXPrtofwSesoilsWKtOloecHbzL2t9wlcd3
+	+GUu+qieSle2kK++gonK5D2pMRmpgtLJWh7mshzAQeIdGwFpPrZWyltgyLhLmwfAMDuEtfnYCwJ9Q
+	abvnzfIGgrBOtIwuV6oebE0UTMbOSaiudRzQk4IaXxOC17fQ7C9Q8KFj4Mvltmu+xoVPGfd1DdmVZ
+	s69oBpZARuLU5E03r5fLeNhVbWjpgfDId+fQshhKGh13wSGZA2GmHMs3mL1pLjfCSBuhZ6VIH9bog
+	jegNch/MdzRKeFm4GriQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLISy-0002Yw-19; Fri, 18 Oct 2019 02:58:12 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1iLIV6-00046N-VE; Fri, 18 Oct 2019 03:00:24 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLISu-0002X2-Fs
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 02:58:09 +0000
-Received: by mail-io1-xd41.google.com with SMTP id h144so5656823iof.7
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 19:58:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=6vl776tt39Djj97+yEKzgcDA8S7SdrfVeVZOrfDrtPA=;
- b=dU09HL7YiUwk/maqwxoin70k8Ds5wcr8FCr03pp80PJHAKOp3OReif4boc/KD+b2DM
- J85QCudqpCs1TCoMc9wVPTRMRU0STpgD/1QlgpUBNod7Cl0dHQT0+cS+GqwwKn1pTQoh
- qDbr/RW6USHBn1Lwi3PUSRcsIdwJasq0mwWOSN/6upWfMh7UN21nQLP+JZJjujE1EJbf
- sUB+YacJewIY1v4hglgcqfHidAp7zxIlzY5AWW/L7aOkuYBKghGCKY1Qjy7HoZc4IpvO
- ig+ikN0mJIZGCo3VIdRDOweYsfcUzSaai36eoZbFKR8i5RlAmAWDLaVCq5E1yt0FO8qa
- Fflg==
+ id 1iLIV2-00045x-Pb
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 03:00:22 +0000
+Received: by mail-wm1-x342.google.com with SMTP id v17so4525035wml.4
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 20:00:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WpUdtRZLCMWCE2pmgbqMCnO+ca2VrAa6THp+EdS32g0=;
+ b=WnxLA/4qFYmYNv+uh8zSB+n98MDKY4/X+1hsTlDKM6RySJ1Uu6y3xAksZ6QWCGMNuC
+ rVIHurjG66Ir2cp37i2ZVQGuY2U5sd3aBt9dr8Vu95rOkRqGnLYG6d3CvhKkiS0cvF1n
+ 9duE+0KqbkjsxnKCZHMMKoXyiyiaVlcXe0jvrnul7wIRSnsZqQSV71NpfYO66++PWPMY
+ p1t3824K6uFYswQXepQ5H7PmsaOjTQW8MSL5L6JZpgQdUGemG6h5a1xVmau+J3VVqKqM
+ v2sas0q8Ws64hksvWfbacUnNkfetqIBgcinGxwGvsDWgCPH5TcbEExKomIPYvoBH+/Hu
+ TSHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=6vl776tt39Djj97+yEKzgcDA8S7SdrfVeVZOrfDrtPA=;
- b=RJwiGEbJqNoeJXrjbax6V56Huj//z9lsR9r16XNmVgcCLDVJZiZ4FFENTVkKX6ShJb
- AyR1Uo3Y3DCq9UbFlfT4NSs3Ap/8WMdDK+kNDuP2Enplj5PcS5Fb45HptLPQz5xSdJmN
- 0G7gSxZxB8+fwLS/xOqwUG5VNSWdnIWzn06+n3LuQHZUBpojO21Lwu5e/kFi8Ngb7IMI
- 3PsEoyn0Ut+83AIiIkknz57pJ3X7xa7D90YxRfgqmS2xveW2rNXLsDUnwBA/wxb74A9a
- oGjXkE3o0zUuEknxcUHpIO663FPfrXzF2n2CCSiZD11hOriRF+vndUpGkp712yVvYdMw
- ELSw==
-X-Gm-Message-State: APjAAAVPWMOg7nqrNkVwChwsxI2EYx+nWgQiB+IjHb34U/VT1Z2tuQhs
- lhfPQ9+jLYMEvWawiZ/NCqI4kQ==
-X-Google-Smtp-Source: APXvYqzmzVECICRUhTk0jHEyAsknDFm8SCMbAaOwaHumsoit6u726yoCOL3R0yOSUQ676wBRE6GLoQ==
-X-Received: by 2002:a05:6602:1c4:: with SMTP id
- w4mr6000255iot.153.1571367487601; 
- Thu, 17 Oct 2019 19:58:07 -0700 (PDT)
-Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id o66sm2100434ili.45.2019.10.17.19.58.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 19:58:06 -0700 (PDT)
-Date: Thu, 17 Oct 2019 19:58:04 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Nick Hu <nickhu@andestech.com>, Andrey Ryabinin <aryabinin@virtuozzo.com>
-Subject: Re: [PATCH v3 1/3] kasan: Archs don't check memmove if not support it.
-In-Reply-To: <ba456776-a77f-5306-60ef-c19a4a8b3119@virtuozzo.com>
-Message-ID: <alpine.DEB.2.21.9999.1910171957310.3156@viisi.sifive.com>
-References: <cover.1570514544.git.nickhu@andestech.com>
- <c9fa9eb25a5c0b1f733494dfd439f056c6e938fd.1570514544.git.nickhu@andestech.com>
- <ba456776-a77f-5306-60ef-c19a4a8b3119@virtuozzo.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WpUdtRZLCMWCE2pmgbqMCnO+ca2VrAa6THp+EdS32g0=;
+ b=sZyW7T8qYzn9XMQT30xm/CcvJ6GpD+hqXGwSxOOuFDdkokl6HlkLmhYjTWqeGjG+3e
+ Me+Y72w3y37SLnn9IZsPPV2Yl2y9hSurtxjdw3RxR/P19GxkxT279TH9HAz3T+qWxizB
+ YJImIv8cCOZF1cMXPCRCk5nGgw9C0Ft/ip5Pzu7ed6Hwu/wY5xDaQ6NgBFvXzEWA8zTm
+ KD1kmLLrK1L0GXC7dm639R8UhD5qPvd4lKuWNNd6Ry+oqPa3M2WPNX2Jy/5Aprn9mfxg
+ CgnQSW/lvJZq/hwFL36paMmRg71uWViVke3gvcBxBcGYZVT1evkuUn1j+6RIsMKxe35C
+ HGWw==
+X-Gm-Message-State: APjAAAXf1L0em7lcwFHsoMOTVWJLGPH3lEgcoMpt3IYemTEkxgIW0/zK
+ i4E/XUiT0SdIsvtzTXgLk+hY+KI4cR0SiHVLzf9H8g==
+X-Google-Smtp-Source: APXvYqwwwBuUBCt7oqEwdI8TI1PlPWwkwe5zKEfrYA6s60h8NummaGNVZdFHXmYdZXHuWxAqMUcCKTRj1ImrgTkeu60=
+X-Received: by 2002:a1c:a697:: with SMTP id p145mr5028401wme.24.1571367619176; 
+ Thu, 17 Oct 2019 20:00:19 -0700 (PDT)
 MIME-Version: 1.0
+References: <20191017173743.5430-1-hch@lst.de>
+ <20191017173743.5430-10-hch@lst.de>
+In-Reply-To: <20191017173743.5430-10-hch@lst.de>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 18 Oct 2019 08:30:08 +0530
+Message-ID: <CAAhSdy288Mue2YE-MWNW9KcYvF_5qswpqjeMycxiN0GGNMHNOg@mail.gmail.com>
+Subject: Re: [PATCH 09/15] riscv: provide native clint access for M-mode
+To: Christoph Hellwig <hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_195808_560986_66A88293 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191017_200020_851106_015A8285 
+X-CRM114-Status: GOOD (  24.31  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -100,31 +87,264 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, aou@eecs.berkeley.edu, alankao@andestech.com,
- corbet@lwn.net, gregkh@linuxfoundation.org, palmer@sifive.com,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- kasan-dev@googlegroups.com, linux-mm@kvack.org, alexios.zavras@intel.com,
- Anup.Patel@wdc.com, glider@google.com, allison@lohutok.net, tglx@linutronix.de,
- atish.patra@wdc.com, linux-riscv@lists.infradead.org, dvyukov@google.com
+Cc: "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 17 Oct 2019, Andrey Ryabinin wrote:
+On Thu, Oct 17, 2019 at 11:08 PM Christoph Hellwig <hch@lst.de> wrote:
+>
+> RISC-V has the concept of a cpu level interrupt controller.  The
+> interface for it is split between a standardized part that is exposed
+> as bits in the mstatus/sstatus register and the mie/mip/sie/sip
+> CRS.  But the bit to actually trigger IPIs is not standardized and
+> just mentioned as implementable using MMIO.
+>
+> Add support for IPIs using MMIO using the SiFive clint layout (which is
+> also shared by Ariane, Kendrye and the Qemu virt platform).  Additional
+> the MMIO block also support the time value and timer compare registers,
+> so they are also set up using the same OF node.  Support for other
+> layouts should also be relatively easy to add in the future.
+>
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  arch/riscv/include/asm/clint.h | 39 ++++++++++++++++++++++++++++++
+>  arch/riscv/include/asm/sbi.h   |  2 ++
+>  arch/riscv/kernel/Makefile     |  1 +
+>  arch/riscv/kernel/clint.c      | 44 ++++++++++++++++++++++++++++++++++
+>  arch/riscv/kernel/setup.c      |  2 ++
+>  arch/riscv/kernel/smp.c        | 16 ++++++++++---
+>  arch/riscv/kernel/smpboot.c    |  4 ++++
+>  7 files changed, 105 insertions(+), 3 deletions(-)
+>  create mode 100644 arch/riscv/include/asm/clint.h
+>  create mode 100644 arch/riscv/kernel/clint.c
+>
+> diff --git a/arch/riscv/include/asm/clint.h b/arch/riscv/include/asm/clint.h
+> new file mode 100644
+> index 000000000000..02a26b68f21d
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/clint.h
+> @@ -0,0 +1,39 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +#ifndef _ASM_CLINT_H
+> +#define _ASM_CLINT_H 1
+> +
+> +#include <linux/io.h>
+> +#include <linux/smp.h>
+> +
+> +#ifdef CONFIG_RISCV_M_MODE
+> +extern u32 __iomem *clint_ipi_base;
+> +
+> +void clint_init_boot_cpu(void);
+> +
+> +static inline void clint_send_ipi_single(unsigned long hartid)
+> +{
+> +       writel(1, clint_ipi_base + hartid);
+> +}
+> +
+> +static inline void clint_send_ipi_mask(const struct cpumask *hartid_mask)
+> +{
+> +       int hartid;
+> +
+> +       for_each_cpu(hartid, hartid_mask)
+> +               clint_send_ipi_single(hartid);
+> +}
+> +
+> +static inline void clint_clear_ipi(unsigned long hartid)
+> +{
+> +       writel(0, clint_ipi_base + hartid);
+> +}
+> +#else /* CONFIG_RISCV_M_MODE */
+> +#define clint_init_boot_cpu()  do { } while (0)
+> +
+> +/* stubs to for code is only reachable under IS_ENABLED(CONFIG_RISCV_M_MODE): */
+> +void clint_send_ipi_single(unsigned long hartid);
+> +void clint_send_ipi_mask(const struct cpumask *hartid_mask);
+> +void clint_clear_ipi(unsigned long hartid);
+> +#endif /* CONFIG_RISCV_M_MODE */
+> +
+> +#endif /* _ASM_CLINT_H */
+> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+> index a4774bafe033..407d1024f9eb 100644
+> --- a/arch/riscv/include/asm/sbi.h
+> +++ b/arch/riscv/include/asm/sbi.h
+> @@ -97,6 +97,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+>  #else /* CONFIG_RISCV_SBI */
+>  /* stubs to for code is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
+>  void sbi_set_timer(uint64_t stime_value);
+> +void sbi_clear_ipi(void);
+> +void sbi_send_ipi(const unsigned long *hart_mask);
+>  void sbi_remote_fence_i(const unsigned long *hart_mask);
+>  #endif /* CONFIG_RISCV_SBI */
+>  #endif /* _ASM_RISCV_SBI_H */
+> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> index d8c35fa93cc6..2dca51046899 100644
+> --- a/arch/riscv/kernel/Makefile
+> +++ b/arch/riscv/kernel/Makefile
+> @@ -29,6 +29,7 @@ obj-y += vdso.o
+>  obj-y  += cacheinfo.o
+>  obj-y  += vdso/
+>
+> +obj-$(CONFIG_RISCV_M_MODE)     += clint.o
+>  obj-$(CONFIG_FPU)              += fpu.o
+>  obj-$(CONFIG_SMP)              += smpboot.o
+>  obj-$(CONFIG_SMP)              += smp.o
+> diff --git a/arch/riscv/kernel/clint.c b/arch/riscv/kernel/clint.c
+> new file mode 100644
+> index 000000000000..3647980d14c3
+> --- /dev/null
+> +++ b/arch/riscv/kernel/clint.c
+> @@ -0,0 +1,44 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2019 Christoph Hellwig.
+> + */
+> +
+> +#include <linux/io.h>
+> +#include <linux/of_address.h>
+> +#include <linux/types.h>
+> +#include <asm/clint.h>
+> +#include <asm/csr.h>
+> +#include <asm/timex.h>
+> +#include <asm/smp.h>
+> +
+> +/*
+> + * This is the layout used by the SiFive clint, which is also shared by the qemu
+> + * virt platform, and the Kendryte KD210 at least.
+> + */
+> +#define CLINT_IPI_OFF          0
+> +#define CLINT_TIME_CMP_OFF     0x4000
+> +#define CLINT_TIME_VAL_OFF     0xbff8
+> +
+> +u32 __iomem *clint_ipi_base;
+> +
+> +void clint_init_boot_cpu(void)
+> +{
+> +       struct device_node *np;
+> +       void __iomem *base;
+> +
+> +       np = of_find_compatible_node(NULL, NULL, "riscv,clint0");
+> +       if (!np) {
+> +               panic("clint not found");
+> +               return;
+> +       }
+> +
+> +       base = of_iomap(np, 0);
+> +       if (!base)
+> +               panic("could not map CLINT");
+> +
+> +       clint_ipi_base = base + CLINT_IPI_OFF;
+> +       riscv_time_cmp = base + CLINT_TIME_CMP_OFF;
+> +       riscv_time_val = base + CLINT_TIME_VAL_OFF;
+> +
+> +       clint_clear_ipi(boot_cpu_hartid);
+> +}
+> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+> index a990a6cb184f..f4ba71b66c73 100644
+> --- a/arch/riscv/kernel/setup.c
+> +++ b/arch/riscv/kernel/setup.c
+> @@ -17,6 +17,7 @@
+>  #include <linux/sched/task.h>
+>  #include <linux/swiotlb.h>
+>
+> +#include <asm/clint.h>
+>  #include <asm/setup.h>
+>  #include <asm/sections.h>
+>  #include <asm/pgtable.h>
+> @@ -65,6 +66,7 @@ void __init setup_arch(char **cmdline_p)
+>         setup_bootmem();
+>         paging_init();
+>         unflatten_device_tree();
+> +       clint_init_boot_cpu();
+>
+>  #ifdef CONFIG_SWIOTLB
+>         swiotlb_init(1);
+> diff --git a/arch/riscv/kernel/smp.c b/arch/riscv/kernel/smp.c
+> index b18cd6c8e8fb..c46df9c2e927 100644
+> --- a/arch/riscv/kernel/smp.c
+> +++ b/arch/riscv/kernel/smp.c
+> @@ -14,6 +14,7 @@
+>  #include <linux/seq_file.h>
+>  #include <linux/delay.h>
+>
+> +#include <asm/clint.h>
+>  #include <asm/sbi.h>
+>  #include <asm/tlbflush.h>
+>  #include <asm/cacheflush.h>
+> @@ -90,7 +91,10 @@ static void send_ipi_mask(const struct cpumask *mask, enum ipi_message_type op)
+>         smp_mb__after_atomic();
+>
+>         riscv_cpuid_to_hartid_mask(mask, &hartid_mask);
+> -       sbi_send_ipi(cpumask_bits(&hartid_mask));
+> +       if (IS_ENABLED(CONFIG_RISCV_SBI))
+> +               sbi_send_ipi(cpumask_bits(&hartid_mask));
+> +       else
+> +               clint_send_ipi_mask(&hartid_mask);
+>  }
+>
+>  static void send_ipi_single(int cpu, enum ipi_message_type op)
+> @@ -101,12 +105,18 @@ static void send_ipi_single(int cpu, enum ipi_message_type op)
+>         set_bit(op, &ipi_data[cpu].bits);
+>         smp_mb__after_atomic();
+>
+> -       sbi_send_ipi(cpumask_bits(cpumask_of(hartid)));
+> +       if (IS_ENABLED(CONFIG_RISCV_SBI))
+> +               sbi_send_ipi(cpumask_bits(cpumask_of(hartid)));
+> +       else
+> +               clint_send_ipi_single(hartid);
+>  }
+>
+>  static inline void clear_ipi(void)
+>  {
+> -       csr_clear(CSR_SIP, SIE_SSIE);
+> +       if (IS_ENABLED(CONFIG_RISCV_SBI))
+> +               csr_clear(CSR_SIP, SIE_SSIE);
+> +       else
+> +               clint_clear_ipi(cpuid_to_hartid_map(smp_processor_id()));
+>  }
+>
+>  void riscv_software_interrupt(void)
+> diff --git a/arch/riscv/kernel/smpboot.c b/arch/riscv/kernel/smpboot.c
+> index 18ae6da5115e..6300b09f1d1d 100644
+> --- a/arch/riscv/kernel/smpboot.c
+> +++ b/arch/riscv/kernel/smpboot.c
+> @@ -24,6 +24,7 @@
+>  #include <linux/of.h>
+>  #include <linux/sched/task_stack.h>
+>  #include <linux/sched/mm.h>
+> +#include <asm/clint.h>
+>  #include <asm/irq.h>
+>  #include <asm/mmu_context.h>
+>  #include <asm/tlbflush.h>
+> @@ -134,6 +135,9 @@ asmlinkage void __init smp_callin(void)
+>  {
+>         struct mm_struct *mm = &init_mm;
+>
+> +       if (!IS_ENABLED(CONFIG_RISCV_SBI))
+> +               clint_clear_ipi(cpuid_to_hartid_map(smp_processor_id()));
+> +
+>         /* All kernel threads share the same mm context.  */
+>         mmgrab(mm);
+>         current->active_mm = mm;
+> --
+> 2.20.1
+>
+>
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
-> On 10/8/19 9:11 AM, Nick Hu wrote:
-> > Skip the memmove checking for those archs who don't support it.
->  
-> The patch is fine but the changelog sounds misleading. We don't skip memmove checking.
-> If arch don't have memmove than the C implementation from lib/string.c used.
-> It's instrumented by compiler so it's checked and we simply don't need that KASAN's memmove with
-> manual checks.
+LGTM.
 
-Thanks Andrey.  Nick, could you please update the patch description?
+Reviewed-by: Anup Patel <anup@brainfault.org>
 
-- Paul
-
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
