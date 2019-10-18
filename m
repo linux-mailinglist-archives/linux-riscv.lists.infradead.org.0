@@ -2,73 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB143DBBAD
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 05:43:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0969DBBB3
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 06:03:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bGk0b9/ko5npyJ6LbA/FYvtM2xMIhTv4BJKQD1HbsLM=; b=NAqXh0XGyHcPBK
-	b2mYoCzHTd+4ogllpureTmjnsuNBVfLzFOn70udwmxjNCxK/jyVdXezAStMA7QVl/XXkuUWNB+ugP
-	dH74ImQMkHLGmtdrCvXRPWPGguJzqR79AYSklIdZvILc6h9YUC6Xb17guSXLwdfgmV3tKxsnYarUw
-	VUeDfYyihAYcEinU6f7GHfm3UWbNHDQ+jyJ2WpNIW4Ea6rAbi5BlvBEY4z0AbMd/z1ztQqtEfrQFT
-	xrWlIYyACGqrNQop7hkRzw9nPrNXAabCWBhAoMzJkRjdR3gaKe0sh/vNlwweaA0C/JPbbNaPn6L/L
-	ODv7/PS/7Oqq439RlE7g==;
+	List-Owner; bh=I7B1HbIe3cL/EQDRy+AH1ur9qE5r07fSY+FPvWOcSMA=; b=i9f1zi0GMLngIY
+	ndSNRGekg3eVd7tcKNhUFvAY909POCBdIjlchmWudJqDsOK/DyCJ9Hag+fPUn/isM5L2eOw+N3h8p
+	SCBwEHnevtr4XBBFoKZ09YhU2X9tbjdBKd2r6no+Rv+l0y/Mkoh8s2TwLt5zmkUttMiDk16YjG9iH
+	QJNfhdp3Vmv6ob2ADIUaK44dBs+foaVkJMAZ1nSBsAARDcwAikfRufI7hONqEt/VDdAmgEmUZGjPe
+	DPSXkNBzis+DzTjDNz78CcXdxDcXS4T6wZCUMEk0Xsljk23W58oobXiG3T2XZCTeuz20Iuj5qThYW
+	msT9XRdz7Gul0dyewV8A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLJAZ-0002co-5h; Fri, 18 Oct 2019 03:43:15 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1iLJTT-0001Dg-4W; Fri, 18 Oct 2019 04:02:47 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLJ9f-0001iw-A0
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 03:42:23 +0000
-Received: by mail-il1-x144.google.com with SMTP id l12so4240170ilq.4
- for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 20:42:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=ofLqnhuaTacSfKe2YQoATYL+HC8rQjiCUNcY3XPivmE=;
- b=N5x8bC5o7w6rADZFh4KHeDpeb6o3Jgm+KphbQhVkPqZz1Fd8E9M3PaWuoBNyLGjNby
- FcCFIu+ox9T9DjhSC9heNZjMQrgm4xMjJ8TFBQCdlE86wvAdlBsUPOrsnGVYu9lKKeHQ
- D7w1xDFzmUYo0NdnoKDfVHfBV9rDMkKr3XHd+n6zCsh3R453pBKlec2RqfraXt+7FOJg
- 3/bKBkC2vF8FVFJOQ2O0M59pBjRLRRSRz4XeMXB7o18TKzN8hqr5whm5Tas+OI+iIky7
- 4MLLxBvYd+AUGMn4Rl6c+9BDiHaJCgsFf4PgCwD87izM7iHj9N5OArKOuTr8d8G+a9R5
- mQMQ==
+ id 1iLJTP-0001DB-GT
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 04:02:44 +0000
+Received: by mail-wm1-x343.google.com with SMTP id m18so4635018wmc.1
+ for <linux-riscv@lists.infradead.org>; Thu, 17 Oct 2019 21:02:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=TGIeMHWXK53sHye5G1LgnfCP8Ga7F8A0ZVwuDPcGRt4=;
+ b=JljwbGRTq1E6mquIfDwk+xIsr8rGHug6c2MDq2EbaJSII1XUYxA/xrd2MX5v/Wb+yy
+ yMqgKBOTpFzBB7hjADLAg/CkmrD946ZY+ATcnXTBsYxMeYzmRmgbQDdKyPqdiDj2qMha
+ XgbjW27wieRO9ktfmfDUGR4J3YTSIMf9hV4A62eqGAtTX3Vc7m3MeNR9ie7VWLXQ8c55
+ uSO/mVVKpXDWD1lTVkfjKuaiZVNECxJxPjk+lt7j0OxeJeR1qdiqSC8ziCRuE5pZvlzs
+ JDBLG+vv+qjCPme7i7SjW4VSHZYY0M3+dhj/TUgQ2r/TyudulEdFpv0UWuK7UF0RH01h
+ 8dmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=ofLqnhuaTacSfKe2YQoATYL+HC8rQjiCUNcY3XPivmE=;
- b=blVyLwWrnE9Uv4l/WYF2jLc+o5F1gYUv1+5nwayWyMnHFvMAlz/hZt9iitYMMUkSBi
- GhtkBefYai+ZU6GSOpSF8kdorlZrhEnP4QI+8pMDi9LcIdcS08++l0Ts30I+3KsC88aY
- 7DECk9N1g4CmB0hsfF/3s8Mn00Gyb8y8a7j9PerxKoNixzJaP7d07grZcoWmZKrcZ9jR
- e48gL4/GSiWzpgBN7NgDh1QxLvRpF0f4rFBIL5ydoFevLmRshEeUQWWlFbr7pgJE66fn
- gOzf77LJrik7x6xUyVzMYcKfbiwSpAHY8hIun9vHqEM3z77I6G62IUFVClOY9Fj/H4u0
- 5yqA==
-X-Gm-Message-State: APjAAAVs+73FzYm7WWmiRtD4CPjXQYBHQt6L8KP11tntKG7Lj37h3v0r
- wUVcDmJuhcAMxZz/5JdvwCNoCA==
-X-Google-Smtp-Source: APXvYqykkUrK0vrBdmDDbwAwwr+5ZePp14K9XbkSbU4CaVjxo7HzjYRIh3HQWncCN26aSDHosD7Fnw==
-X-Received: by 2002:a92:9a54:: with SMTP id t81mr8275762ili.197.1571370138242; 
- Thu, 17 Oct 2019 20:42:18 -0700 (PDT)
-Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id d6sm1356657iop.34.2019.10.17.20.42.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 20:42:16 -0700 (PDT)
-Date: Thu, 17 Oct 2019 20:42:14 -0700 (PDT)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 18/21] riscv: use the generic ioremap code
-In-Reply-To: <20191017174554.29840-19-hch@lst.de>
-Message-ID: <alpine.DEB.2.21.9999.1910172038040.3156@viisi.sifive.com>
-References: <20191017174554.29840-1-hch@lst.de>
- <20191017174554.29840-19-hch@lst.de>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=TGIeMHWXK53sHye5G1LgnfCP8Ga7F8A0ZVwuDPcGRt4=;
+ b=Z2MgJYnfQ9Pk7t3y5hvTGdlPDxeg7vKDLSickz6DPfc8bNSLhdwiMDiJIqSB7PxmEc
+ AXpUyEJ6FcHiGhrFYpNe5ZamNhroJIbWrHB95OgVrbBEfsRxdF3m0mz/wMAFjUY3fuEx
+ MaftzqRxSMbFrUiN+7qnNVfXgz7lDBedq2EwjHiFt8xIjoAoSB70p5JWX4C+KRx2kJD9
+ dLEn3VIvlMaEq5wwTtzylh30TDE1jYQqB8UY+oqUvyQiJYhA+lPbQiy0DLH6V/IxYyCJ
+ +NTfZl1gAnaRw7qP+KzI5XVh/h0o5FE9JBlY4k95Q07o9SErpINF5kXXf/k2quNpJTEv
+ CS9A==
+X-Gm-Message-State: APjAAAX95EXNYVIWcrh+YvUKxGt3qTkpnxJiCJLjjM0hQdWYxUfcEfRB
+ +GgL8jhUNmFmEejbViuyH5E=
+X-Google-Smtp-Source: APXvYqw2h7j0z61HR1StZiLhVSnluIve/ZvioYgT9l/NCWXf13qZK2iZSZmrNPZxvp9A/BW7wSEurQ==
+X-Received: by 2002:a05:600c:143:: with SMTP id
+ w3mr5566109wmm.17.1571371361356; 
+ Thu, 17 Oct 2019 21:02:41 -0700 (PDT)
+Received: from ltop.local ([2a02:a03f:40ac:ce00:18e1:7d90:ccf5:4489])
+ by smtp.gmail.com with ESMTPSA id u25sm3951686wml.4.2019.10.17.21.02.39
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 17 Oct 2019 21:02:40 -0700 (PDT)
+Date: Fri, 18 Oct 2019 06:02:38 +0200
+From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Subject: Re: [PATCH 3/8] riscv: init: merge split string literals in
+ preprocessor directive
+Message-ID: <20191018040237.3eyrfrty72r63pkz@ltop.local>
+References: <20191018004929.3445-1-paul.walmsley@sifive.com>
+ <20191018004929.3445-4-paul.walmsley@sifive.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191018004929.3445-4-paul.walmsley@sifive.com>
+User-Agent: NeoMutt/20180716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_204219_443989_FD613FC2 
-X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-CacheID: sfid-20191017_210243_572171_7D1F77F7 
+X-CRM114-Status: UNSURE (   7.98  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -76,8 +78,10 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (luc.vanoostenryck[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -98,48 +102,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-kernel@vger.kernel.org, Guo Ren <guoren@kernel.org>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-hexagon@vger.kernel.org, x86@kernel.org,
- linux-snps-arc@lists.infradead.org, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, Greentime Hu <green.hu@gmail.com>,
- linux-mtd@lists.infradead.org, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, Michal Simek <monstr@monstr.eu>,
- linux-parisc@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-alpha@vger.kernel.org, nios2-dev@lists.rocketboards.org
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 17 Oct 2019, Christoph Hellwig wrote:
+On Thu, Oct 17, 2019 at 05:49:24PM -0700, Paul Walmsley wrote:
+> sparse complains loudly when string literals associated with
+> preprocessor directives are split into multiple, separately quoted
+> strings across different lines:
 
-> Use the generic ioremap code instead of providing a local version.
-> Note that this relies on the asm-generic no-op definition of
-> pgprot_noncached.
-> 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
+...
+ 
+>  #ifndef __riscv_cmodel_medany
+> -#error "setup_vm() is called from head.S before relocate so it should "
+> -	"not use absolute addressing."
+> +#error "setup_vm() is called from head.S before relocate so it should not use absolute addressing."
+>  #endif
 
-According to the series introduction E-mail:
-
-https://lore.kernel.org/linux-riscv/20191017174554.29840-1-hch@lst.de/T/#m9ac4010fd725c8c84179fa99aa391a6f701a32de
-
-nothing substantive related to RISC-V or the common code has changed since 
-the first version of this series, and this RISC-V-specific patch appears 
-to be quite close (if not identical) to the first version of the patch:
-
-https://lore.kernel.org/linux-riscv/alpine.DEB.2.21.9999.1908171421560.4130@viisi.sifive.com/
-
-Thus the Tested-by, Reviewed-by, and Acked-by for RISC-V should all still 
-apply:
-
-https://lore.kernel.org/linux-riscv/alpine.DEB.2.21.9999.1908171421560.4130@viisi.sifive.com/
-
-
-- Paul
+Using a blacslash should do the trick :
+	#error "blablablablablablablablablablablabla" \
+			"and blablabla again"
+Or if need I cn fix Sparse if needed and desiable.
+ 
+Best regards
+-- Luc Van Oostenryck
 
 _______________________________________________
 linux-riscv mailing list
