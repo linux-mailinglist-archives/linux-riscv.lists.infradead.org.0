@@ -2,71 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6FF2DBF80
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 10:09:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4075CDBF81
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 10:09:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BeDcrUBXCnacWulnoqp4NgDlD3cyzuazqLB0F+KXtBc=; b=ao/FeLC6bO80Sv
-	e5xxt413QpX/W5FUr3Vv2eg1DowP85BgEAOGpDU1cRuG4VDiG7M0PS3aTWcl/SwP49Rd2u5F8lC7o
-	phZ56Vuh4enX/66sGkJwyj5MVMn0dNUAwk2rof7o3hnmHQcRDeazw1DkE2lHrw94a3au1mUZ2cLBt
-	Y6Op9uEExTEk/oFX5YcqkZI/bvvCP+ODeE5nWkac4KnsxWvrroixkGXJ1S/ZndvjIMl7gDwzAQGNA
-	Zaxqe3qwGv841+hwuOdV/Ieo19z0keYHSw/s+Nrucq5KAkT/P0Szkn1OZLP6NSn13Mu1MxmKbPWVN
-	GVOyI0z1dIwqC0Gq5l/A==;
+	List-Owner; bh=YS3TeYws4BDPv6bCVuM8vIrFdMBXfJhLaBSZazHgkiM=; b=cXzj/51tz67fq3
+	Hj/xKVf8nr/GCut0Y9BDJ3mykUYMjcfp481JntmRtegTWZ3lsXE54yHXAlD1ZHocPEu4mphMz9jf9
+	do0W2FgD2zH+F71BnG7nmsTg9tBzr/3L85g1LXk6MVvrAk7E5RfEZRzqwBn+hy7QnKIRKVuXqoG/o
+	CMf82K9JFpR4oM/K2Rwd12j85QAiq8l+31pSVindNl61DiT75X0D20h5kb4kKvTCCwLBlE55XxRPD
+	1DEka2IelDXarmMShtxCT/7hj225p1pBdBXIpDAUGnwEu9RLOCZIB+Xy4QXZbFlDV/6tLGKWI1Gpa
+	x6PDvgSWdr32+rgKRzFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLNJw-000846-Fd; Fri, 18 Oct 2019 08:09:12 +0000
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
+	id 1iLNK0-00087k-TD; Fri, 18 Oct 2019 08:09:16 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLNJk-0007p7-Ez
+ id 1iLNJl-0007qV-BL
  for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 08:09:02 +0000
-Received: by mail-io1-xd42.google.com with SMTP id v2so6351509iob.10
- for <linux-riscv@lists.infradead.org>; Fri, 18 Oct 2019 01:09:00 -0700 (PDT)
+Received: by mail-io1-xd41.google.com with SMTP id t18so2274524iog.2
+ for <linux-riscv@lists.infradead.org>; Fri, 18 Oct 2019 01:09:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=BDNARAWoiAFizEyliYmITz0WDECsamFFfEfTjTwse14=;
- b=BH2SZAJI7pzAjQaIWJl0yJG8OFbAURLSsSN2T7bCaujThYLoFQwOn6z4+Yy2Nr2i+7
- VeOFWtmiAtkfd1NjwrjrebM0WUBRv8nJcBFQxeh82F+KKEUrePTE8zrGHu7G7QQ+nCiB
- Qcb/YSUdh+FN2Z/WjhYa/giocNRxKLilLM3aGMBc16ZftLviykl0epsG5X3Pai//FG4P
- 68XGtwnDzgtJ1EdabbhJ81T05HwEeiiQJh33FBXeMxf6lj9j9sFxkz1t085zaU8WVa2n
- hvGfdEvhyCGvBxu4rYLb/g6wl5sOfaxorW7fhDuZPD19m3IimT3JiPejWTbVdryCqfiS
- bv4Q==
+ bh=/rqN9u0/2+ao+d3JFwKTj45TNXeBg3DCl+L7bcDO5L0=;
+ b=AgRnIqMPI9/c78JU0tZ2ukpZmzDiY3JwBESuXLef+ZlyuwPVl0hWk/I4aTbZ37Yz2t
+ wBXespQ6ClJkWurhzK8+z7L3vufj/oD3RDQaBgd+c/seJgwQQwIKdHefZrlyFJm1PCaP
+ D8yAK7khexd85MvufOeWx+kF8/B+8jToNlCiBDxueaWGhck1V9xJ4TPeI5auXeWOPr7D
+ /bsc8iL44mCKAVSzpqLdIvfiQe2wwwpzVWof8Jj3K1Dqhnqb2ZcckbrUGMk0ZRnFupa8
+ GN/mgsOHEg6SeW83zbui+yitvxqgYKaHLceFXsigsvd3STC1fivnrdZuoJgP1eEir9aV
+ 7k8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=BDNARAWoiAFizEyliYmITz0WDECsamFFfEfTjTwse14=;
- b=J5VKQIPTYyuUcQJYzxpY+cyRw6pT/31owWSeDwtyT9L9u+rulgk6K8uc/PD9FCuD8s
- DOxBR7tMX044dsFvieVSTdIx2b+os7ZkfULb0CerTFSyqJXGzIhlKC6oCPLS4rPn0Q22
- dhmnSoC9YJyfBHEB2oeMJzg1fi/B0htaR72KDPjOY8WvC+GuZj1u+4WlgHuAYH4Qk36p
- Nsba37cjwcFQzJJfGCXy5NYB4GASoiNcRYGO+O0tOj3M1raFLOT4yJFKW++90Psjm1VP
- 4y7Ne0qL+XH5rvKTq99sJ8/rmZ4f97qqH6+9A0d3tODFXZFIkuRn03D6niCELpBQKnAi
- NmaA==
-X-Gm-Message-State: APjAAAX94DxRyUDApyUTXb+ovvlqYDl8S1etjWETKjQTHlk8QLdRHcbk
- SLcvpp/y0ZVH+m/vJlvWkzqIGEQfwYM=
-X-Google-Smtp-Source: APXvYqy6AwVkDkkhxvbEhidluVWq8r5Xas/hfQEFm/idpPNWew4L2BI8RKV4B8QWgFUYKl9y9I+90Q==
-X-Received: by 2002:a02:6508:: with SMTP id u8mr7939505jab.28.1571386139226;
- Fri, 18 Oct 2019 01:08:59 -0700 (PDT)
+ bh=/rqN9u0/2+ao+d3JFwKTj45TNXeBg3DCl+L7bcDO5L0=;
+ b=tY8J1mrv0/tLRfy88aCUxBRGnsh1i5bemQ6lMwu5CBTGgAHS/ZAX7bq8OXuateItyg
+ pKMl778+3eq2NyFsGAUrOCfH4eJcRHMkEivDHpZLA6NuLIWx0vzZCNrB+ukGAE1eW0ck
+ M+j4TtF5VLdOlf6wxee5npqwMiptrUv3zm6dtwEMuPEMroAxOGtr5TDpT8lavIHkSa5p
+ 0quAqjMqn/N4ZHNDbEZ/268flcpMUquW/h+kYI/xAR4sEgUXT6R6zzCULt8huh9VtLWz
+ FiQoTPQFVM8K1GA8PuBHplLK/9OuizPb40BxF+dCk0PTG5PZVgSMhUzHVknvYDT7D4sd
+ ha6Q==
+X-Gm-Message-State: APjAAAXezcrDeTYQB7HhjCtMPmdGa5Ay8tMiX6NFqcw/AE5wHknIQnn2
+ 44Olp0kG5BzFtcdcjI5wCv90XFvMreo=
+X-Google-Smtp-Source: APXvYqxG7epqlIJRSyy/8bM9quGUJjMyJ24lYOlQwYCPAW5aHjJzro/76ki7t3mpduRVDdN14r7s+g==
+X-Received: by 2002:a6b:5a09:: with SMTP id o9mr7397346iob.241.1571386140466; 
+ Fri, 18 Oct 2019 01:09:00 -0700 (PDT)
 Received: from viisi.Home ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id z86sm2121026ilf.73.2019.10.18.01.08.58
+ by smtp.gmail.com with ESMTPSA id z86sm2121026ilf.73.2019.10.18.01.08.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Oct 2019 01:08:58 -0700 (PDT)
+ Fri, 18 Oct 2019 01:09:00 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 To: linux-riscv@lists.infradead.org
-Subject: [PATCH v3 7/8] riscv: fp: add missing __user pointer annotations
-Date: Fri, 18 Oct 2019 01:08:40 -0700
-Message-Id: <20191018080841.26712-8-paul.walmsley@sifive.com>
+Subject: [PATCH v3 8/8] riscv: for C functions called only from assembly,
+ mark with __visible
+Date: Fri, 18 Oct 2019 01:08:41 -0700
+Message-Id: <20191018080841.26712-9-paul.walmsley@sifive.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <20191018080841.26712-1-paul.walmsley@sifive.com>
 References: <20191018080841.26712-1-paul.walmsley@sifive.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191018_010900_540587_57244B5E 
-X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-CacheID: sfid-20191018_010901_395428_57929CE0 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -74,7 +75,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -96,48 +97,50 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Alan Kao <alankao@andestech.com>
+Cc: linux-kernel@vger.kernel.org,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The __user annotations were removed from the {save,restore}_fp_state()
-function signatures by commit 007f5c358957 ("Refactor FPU code in
-signal setup/return procedures"), but should be present, and sparse
-warns when they are not applied.  Add them back in.
+Rather than adding prototypes for C functions called only by assembly
+code, mark them as __visible.  This avoids adding prototypes that will
+never be used by the callers.  Resolves the following sparse warnings:
 
-This change should have no functional impact.
+arch/riscv/kernel/ptrace.c:151:6: warning: symbol 'do_syscall_trace_enter' was not declared. Should it be static?
+arch/riscv/kernel/ptrace.c:175:6: warning: symbol 'do_syscall_trace_exit' was not declared. Should it be static?
+
+Based on a suggestion from Luc Van Oostenryck.
 
 Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-Fixes: 007f5c358957 ("Refactor FPU code in signal setup/return procedures")
-Cc: Alan Kao <alankao@andestech.com>
+Cc: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 ---
- arch/riscv/kernel/signal.c | 4 ++--
+ arch/riscv/kernel/ptrace.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/riscv/kernel/signal.c b/arch/riscv/kernel/signal.c
-index 85c700ad47e9..9437167f463e 100644
---- a/arch/riscv/kernel/signal.c
-+++ b/arch/riscv/kernel/signal.c
-@@ -28,7 +28,7 @@ struct rt_sigframe {
- 
- #ifdef CONFIG_FPU
- static long restore_fp_state(struct pt_regs *regs,
--			     union __riscv_fp_state *sc_fpregs)
-+			     union __riscv_fp_state __user *sc_fpregs)
+diff --git a/arch/riscv/kernel/ptrace.c b/arch/riscv/kernel/ptrace.c
+index 63e47c9f85f0..0f84628b9385 100644
+--- a/arch/riscv/kernel/ptrace.c
++++ b/arch/riscv/kernel/ptrace.c
+@@ -148,7 +148,7 @@ long arch_ptrace(struct task_struct *child, long request,
+  * Allows PTRACE_SYSCALL to work.  These are called from entry.S in
+  * {handle,ret_from}_syscall.
+  */
+-void do_syscall_trace_enter(struct pt_regs *regs)
++__visible void do_syscall_trace_enter(struct pt_regs *regs)
  {
- 	long err;
- 	struct __riscv_d_ext_state __user *state = &sc_fpregs->d;
-@@ -55,7 +55,7 @@ static long restore_fp_state(struct pt_regs *regs,
+ 	if (test_thread_flag(TIF_SYSCALL_TRACE))
+ 		if (tracehook_report_syscall_entry(regs))
+@@ -172,7 +172,7 @@ void do_syscall_trace_enter(struct pt_regs *regs)
+ 	audit_syscall_entry(regs->a7, regs->a0, regs->a1, regs->a2, regs->a3);
  }
  
- static long save_fp_state(struct pt_regs *regs,
--			  union __riscv_fp_state *sc_fpregs)
-+			  union __riscv_fp_state __user *sc_fpregs)
+-void do_syscall_trace_exit(struct pt_regs *regs)
++__visible void do_syscall_trace_exit(struct pt_regs *regs)
  {
- 	long err;
- 	struct __riscv_d_ext_state __user *state = &sc_fpregs->d;
+ 	audit_syscall_exit(regs);
+ 
 -- 
 2.23.0
 
