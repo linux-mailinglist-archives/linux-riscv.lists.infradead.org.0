@@ -2,72 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4075CDBF81
-	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 10:09:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B92B6DBFB9
+	for <lists+linux-riscv@lfdr.de>; Fri, 18 Oct 2019 10:19:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YS3TeYws4BDPv6bCVuM8vIrFdMBXfJhLaBSZazHgkiM=; b=cXzj/51tz67fq3
-	Hj/xKVf8nr/GCut0Y9BDJ3mykUYMjcfp481JntmRtegTWZ3lsXE54yHXAlD1ZHocPEu4mphMz9jf9
-	do0W2FgD2zH+F71BnG7nmsTg9tBzr/3L85g1LXk6MVvrAk7E5RfEZRzqwBn+hy7QnKIRKVuXqoG/o
-	CMf82K9JFpR4oM/K2Rwd12j85QAiq8l+31pSVindNl61DiT75X0D20h5kb4kKvTCCwLBlE55XxRPD
-	1DEka2IelDXarmMShtxCT/7hj225p1pBdBXIpDAUGnwEu9RLOCZIB+Xy4QXZbFlDV/6tLGKWI1Gpa
-	x6PDvgSWdr32+rgKRzFQ==;
+	List-Owner; bh=MtWMvjnMgjlXjHW+Er4iLUmBT7oSUQEAfSElWq4anBk=; b=X6U8ryDknBFkrR
+	vmgOwn6eVFPpzexiMrmvVIDwXDfcCK3VOtnLr+KiGefxPnlbTwRtXcpTDsHjPCImg9r2vZlKQUQLU
+	6AStb4ROdq+1HFYnJbFi4c3n22ymHw9tUdktPeGDAgvy9uHzpuOyPL3b7z7/pbD71JrrVkg6Gg8so
+	Y+y36yv4lIq734lBmr4CmW0SxhqwTfDMfuisi5/Cpy+Ztbmaxd4MxMGiWarLF8BvCGPfi4xws5LLP
+	sun89lAZYUt96KptyKIUsb4HWpLVWQbIDkzCddYayXIRoxoYDrULr+LZh6ZDuIaDOuUWrWG98fA3r
+	TOP7XjpYocSgFa6NDcUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLNK0-00087k-TD; Fri, 18 Oct 2019 08:09:16 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1iLNTj-0003SO-6p; Fri, 18 Oct 2019 08:19:19 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLNJl-0007qV-BL
- for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 08:09:02 +0000
-Received: by mail-io1-xd41.google.com with SMTP id t18so2274524iog.2
- for <linux-riscv@lists.infradead.org>; Fri, 18 Oct 2019 01:09:01 -0700 (PDT)
+ id 1iLNTf-0003Ra-H2
+ for linux-riscv@lists.infradead.org; Fri, 18 Oct 2019 08:19:17 +0000
+Received: by mail-io1-xd43.google.com with SMTP id w12so6379878iol.11
+ for <linux-riscv@lists.infradead.org>; Fri, 18 Oct 2019 01:19:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/rqN9u0/2+ao+d3JFwKTj45TNXeBg3DCl+L7bcDO5L0=;
- b=AgRnIqMPI9/c78JU0tZ2ukpZmzDiY3JwBESuXLef+ZlyuwPVl0hWk/I4aTbZ37Yz2t
- wBXespQ6ClJkWurhzK8+z7L3vufj/oD3RDQaBgd+c/seJgwQQwIKdHefZrlyFJm1PCaP
- D8yAK7khexd85MvufOeWx+kF8/B+8jToNlCiBDxueaWGhck1V9xJ4TPeI5auXeWOPr7D
- /bsc8iL44mCKAVSzpqLdIvfiQe2wwwpzVWof8Jj3K1Dqhnqb2ZcckbrUGMk0ZRnFupa8
- GN/mgsOHEg6SeW83zbui+yitvxqgYKaHLceFXsigsvd3STC1fivnrdZuoJgP1eEir9aV
- 7k8w==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=WGR6gGKdLj4dEHPdPs5AUTsaDTf+joh7rvJz3pg5W+4=;
+ b=cGRxWKOUdtE+FVh54xi6iHtA03A0lsX1/a1mfMXI71ZJu3crqcwAEl+lxizFIQ/WyV
+ 3M3aS9b7XFvaeP7OJai6HFJgaHH2BEnrrhMIgaPzaGOz7mOrZcaBhzzMV2TD/+AaRT63
+ l3vhP08aEM6/ryy4qAIMUULW6zepIWYQQLC1M+8Jvd2eY9B+F4Wku2M3Ha5IgvtrSccz
+ /57HDfY1IcWKFwBDnejKi2v7SwdgIA5q12t7bGAddScWIKrb0SprmDBlKK3bM+T6P5UY
+ VBbftGdQ3PLnPHxdKbAbma29Xsqn2wmQ5zGR+qJqwdoyrZPZrTNHXM02hj3Y0hcuyU9k
+ k0RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/rqN9u0/2+ao+d3JFwKTj45TNXeBg3DCl+L7bcDO5L0=;
- b=tY8J1mrv0/tLRfy88aCUxBRGnsh1i5bemQ6lMwu5CBTGgAHS/ZAX7bq8OXuateItyg
- pKMl778+3eq2NyFsGAUrOCfH4eJcRHMkEivDHpZLA6NuLIWx0vzZCNrB+ukGAE1eW0ck
- M+j4TtF5VLdOlf6wxee5npqwMiptrUv3zm6dtwEMuPEMroAxOGtr5TDpT8lavIHkSa5p
- 0quAqjMqn/N4ZHNDbEZ/268flcpMUquW/h+kYI/xAR4sEgUXT6R6zzCULt8huh9VtLWz
- FiQoTPQFVM8K1GA8PuBHplLK/9OuizPb40BxF+dCk0PTG5PZVgSMhUzHVknvYDT7D4sd
- ha6Q==
-X-Gm-Message-State: APjAAAXezcrDeTYQB7HhjCtMPmdGa5Ay8tMiX6NFqcw/AE5wHknIQnn2
- 44Olp0kG5BzFtcdcjI5wCv90XFvMreo=
-X-Google-Smtp-Source: APXvYqxG7epqlIJRSyy/8bM9quGUJjMyJ24lYOlQwYCPAW5aHjJzro/76ki7t3mpduRVDdN14r7s+g==
-X-Received: by 2002:a6b:5a09:: with SMTP id o9mr7397346iob.241.1571386140466; 
- Fri, 18 Oct 2019 01:09:00 -0700 (PDT)
-Received: from viisi.Home ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id z86sm2121026ilf.73.2019.10.18.01.08.59
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=WGR6gGKdLj4dEHPdPs5AUTsaDTf+joh7rvJz3pg5W+4=;
+ b=i74lTaEbdKzBo686/GryzBpUBVQ4W7IqERuJf5JeFy9J3shNYL940lp3mRephqGyLA
+ tevU5GueikGLZrcLr58kiqe4ZvzspX5Wq9dv+HW1lC9fraYMuNdlDOdVX3J70udeXSDS
+ oWeH0aDtk7qGSoy/e7FXPVdu7Cmw6fhp1tpfQMCjWRW9g4WLWfQYad6GPn1wjj6oY2gs
+ sLVtearhi1SnhVsSXJ1u0pCHjCERVr+PBEwSrC0pcUOswIUpwR5WuiOJFqe7YWzyuzoE
+ i4nLjH3yu+YW0DZuAgZ710J/z5Rldf838xkWLqY3KWBY3Pf2QIrXks0QPkVJoKc+Inz+
+ 222g==
+X-Gm-Message-State: APjAAAVlGLMmc1aY/BkZNf3k3GvlT22HdvBzgK+j1GWVHHxHrIr//grm
+ 0xjoJ1/yDDDmLiEG22076GdU8g==
+X-Google-Smtp-Source: APXvYqzg2amXejQW+i9jcNd9zVISmlG81QkF/azJj7dk0YWCV0ZFMBFXJ14tIw4FPNHDbSJoeiYrXA==
+X-Received: by 2002:a6b:fb12:: with SMTP id h18mr7431244iog.103.1571386754534; 
+ Fri, 18 Oct 2019 01:19:14 -0700 (PDT)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id 2sm2217679ilw.50.2019.10.18.01.19.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Oct 2019 01:09:00 -0700 (PDT)
+ Fri, 18 Oct 2019 01:19:13 -0700 (PDT)
+Date: Fri, 18 Oct 2019 01:19:12 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
-To: linux-riscv@lists.infradead.org
-Subject: [PATCH v3 8/8] riscv: for C functions called only from assembly,
- mark with __visible
-Date: Fri, 18 Oct 2019 01:08:41 -0700
-Message-Id: <20191018080841.26712-9-paul.walmsley@sifive.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20191018080841.26712-1-paul.walmsley@sifive.com>
-References: <20191018080841.26712-1-paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Atish Patra <atish.patra@wdc.com>
+Subject: Re: [PATCH v2  1/2] RISC-V: Remove unsupported isa string info print
+In-Reply-To: <20191009220058.24964-2-atish.patra@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1910180118510.21875@viisi.sifive.com>
+References: <20191009220058.24964-1-atish.patra@wdc.com>
+ <20191009220058.24964-2-atish.patra@wdc.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191018_010901_395428_57929CE0 
-X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-CacheID: sfid-20191018_011915_573436_802F9B70 
+X-CRM114-Status: UNSURE (   9.51  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -75,7 +76,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -97,53 +98,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org,
- Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ Johan Hovold <johan@kernel.org>, Richard Fontana <rfontana@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-riscv@lists.infradead.org, Enrico Weigelt <info@metux.net>,
+ Christoph Hellwig <hch@lst.de>, Allison Randal <allison@lohutok.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Rather than adding prototypes for C functions called only by assembly
-code, mark them as __visible.  This avoids adding prototypes that will
-never be used by the callers.  Resolves the following sparse warnings:
+On Wed, 9 Oct 2019, Atish Patra wrote:
 
-arch/riscv/kernel/ptrace.c:151:6: warning: symbol 'do_syscall_trace_enter' was not declared. Should it be static?
-arch/riscv/kernel/ptrace.c:175:6: warning: symbol 'do_syscall_trace_exit' was not declared. Should it be static?
+> /proc/cpuinfo should just print all the isa string as an information
+> instead of determining what is supported or not. ELF hwcap can be
+> used by the userspace to figure out that.
+> 
+> Simplify the isa string printing by removing the unsupported isa string
+> print and all related code.
+> 
+> The relevant discussion can be found at
+> http://lists.infradead.org/pipermail/linux-riscv/2019-September/006702.html
+> 
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
 
-Based on a suggestion from Luc Van Oostenryck.
+Thanks, queued for v5.5-rc1.
 
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
----
- arch/riscv/kernel/ptrace.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/riscv/kernel/ptrace.c b/arch/riscv/kernel/ptrace.c
-index 63e47c9f85f0..0f84628b9385 100644
---- a/arch/riscv/kernel/ptrace.c
-+++ b/arch/riscv/kernel/ptrace.c
-@@ -148,7 +148,7 @@ long arch_ptrace(struct task_struct *child, long request,
-  * Allows PTRACE_SYSCALL to work.  These are called from entry.S in
-  * {handle,ret_from}_syscall.
-  */
--void do_syscall_trace_enter(struct pt_regs *regs)
-+__visible void do_syscall_trace_enter(struct pt_regs *regs)
- {
- 	if (test_thread_flag(TIF_SYSCALL_TRACE))
- 		if (tracehook_report_syscall_entry(regs))
-@@ -172,7 +172,7 @@ void do_syscall_trace_enter(struct pt_regs *regs)
- 	audit_syscall_entry(regs->a7, regs->a0, regs->a1, regs->a2, regs->a3);
- }
- 
--void do_syscall_trace_exit(struct pt_regs *regs)
-+__visible void do_syscall_trace_exit(struct pt_regs *regs)
- {
- 	audit_syscall_exit(regs);
- 
--- 
-2.23.0
-
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
