@@ -2,71 +2,103 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68AA3DDEC4
-	for <lists+linux-riscv@lfdr.de>; Sun, 20 Oct 2019 16:00:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67851DE01F
+	for <lists+linux-riscv@lfdr.de>; Sun, 20 Oct 2019 20:57:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qNRjMGRwrorE38M701q0YO5O5YboMBJH2SWc6P16wSs=; b=pKvnkJgH8YtvsO
-	uzXI3hiI0UgZsO63fHk1lrwCNHXxXZUdrGPZClS9y9Eaxcf6otX5+PNf78u8fowLvMJTeuK3POBu3
-	IdJZWw5JmNVwqXzO6g70lWUr2a9KoAirqaOPTjvW3YGFmyTzoCXKwTtxoJSvyQExr5+9Wb7NPcUmS
-	1IzOSU+s6gwWtFxku731yI4FBrQSnREI28R3b4SF+tMPuWPW5RextG3TIXMdA0eMXCnrFRSxLAd0k
-	nDvJniuc3iYwpgANZKgfh3gooaE+60p49duz8GyPYVSSJN2sB+9ObdrTnBBhjHrzqjc0mnMAX8xz8
-	zf6+sSk9cRx/GWS2Gfzg==;
+	List-Owner; bh=0sFlLsRqIcFyoQ+7SwhLt/b4HtgTLzqmYyHga6x9F2U=; b=Lt7949EjieEMgk
+	XX+2QzjCFqmnqUd221YGcw/qBYv9rUb/JFanz5yVYCAI0GmAkIn5LoexHO1Q242LwOwZ4xzhF5vUU
+	8wD9/MpQ6/275ZUavU4v1McLg3Z13gYQBg5oLjXIyGvqTimY6nfN1Voakod8rF2No8A/TD3Q3nq+j
+	9qTa+RSnZE8gKU5ofEzSsn40KX57KjULvD5EExw51Rqb9n/f2kWTB7G1UmbTP03wxA16/S7txjrHH
+	RXoHOg8ct4cj5LzaIaUYlGvyqHBcPPIfTg6IsZBtt1EFMjoHUq09ido7aRrddmzvV0db12PmloWb7
+	/05RoDJBx4j49lL3dEpQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMBke-0002Pc-6V; Sun, 20 Oct 2019 14:00:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iMGOS-0002AE-B4; Sun, 20 Oct 2019 18:57:32 +0000
+Received: from mail-edgeka24.fraunhofer.de ([153.96.1.24])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMBkY-0001rl-9V
- for linux-riscv@lists.infradead.org; Sun, 20 Oct 2019 14:00:04 +0000
-Received: from localhost (unknown [106.51.108.167])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AA33221835;
- Sun, 20 Oct 2019 14:00:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571580001;
- bh=dJPbKdcJSzXbptQK//XpIi5kDh3BWFfFpMSmRiLd+iI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=y+4PNmnb2iFDucdONLx+ZV2n+HrKsZu2LDRPoEw3wwEya+INUdmj0vmD1Sj+ZyFfP
- 6XPvCCHl1tedShe5sLdLzQlcySprmWYY7U/kTztvJ2MzyTqraBfTOELNGhikrU6eZJ
- w2F9AEKapQtjxn4rrJdDtdVta5mApmbkjDtUznWM=
-Date: Sun, 20 Oct 2019 19:29:52 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Green Wan <green.wan@sifive.com>
-Subject: Re: [PATCH v4 3/4] dmaengine: sf-pdma: add platform DMA support for
- HiFive Unleashed A00
-Message-ID: <20191020135952.GU2654@vkoul-mobl>
-References: <20191003090945.29210-1-green.wan@sifive.com>
- <20191003090945.29210-4-green.wan@sifive.com>
+ id 1iMGON-00018i-9H
+ for linux-riscv@lists.infradead.org; Sun, 20 Oct 2019 18:57:30 +0000
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2HKAADCraxd/xoBYJllGgEBAQEBAQE?=
+ =?us-ascii?q?BAQMBAQEBEQEBAQICAQEBAYF7giBsVAEfEioKhByDSoU4h3l+mEaBZwkBAQE?=
+ =?us-ascii?q?BAQEBAQEIIwwBAQKBKQGDFAIXgnckOBMCDAEBBQEBAQEBBQQCAmmFLQELg0Z?=
+ =?us-ascii?q?qAQEBAQEBAQEBAQEBAQEBAQEBAQEWAg1ULDgBBSMRRRACAQgYAgImAgICMBU?=
+ =?us-ascii?q?QAgQOBYMjgnYBD65bgTKDez4BhgUGgQ4ojA+BWT6BEYJdBy4+hC4XF4J5gl4?=
+ =?us-ascii?q?EjTuCN4VemAcDBAOBPGiHDo4YG4I7h1GEASyLE441iCaRSIFpI4FYcYM7UBA?=
+ =?us-ascii?q?UgVkaiCk7hT9BAQExj0CBIwEB?=
+X-IPAS-Result: =?us-ascii?q?A2HKAADCraxd/xoBYJllGgEBAQEBAQEBAQMBAQEBEQEBA?=
+ =?us-ascii?q?QICAQEBAYF7giBsVAEfEioKhByDSoU4h3l+mEaBZwkBAQEBAQEBAQEIIwwBA?=
+ =?us-ascii?q?QKBKQGDFAIXgnckOBMCDAEBBQEBAQEBBQQCAmmFLQELg0ZqAQEBAQEBAQEBA?=
+ =?us-ascii?q?QEBAQEBAQEBAQEWAg1ULDgBBSMRRRACAQgYAgImAgICMBUQAgQOBYMjgnYBD?=
+ =?us-ascii?q?65bgTKDez4BhgUGgQ4ojA+BWT6BEYJdBy4+hC4XF4J5gl4EjTuCN4VemAcDB?=
+ =?us-ascii?q?AOBPGiHDo4YG4I7h1GEASyLE441iCaRSIFpI4FYcYM7UBAUgVkaiCk7hT9BA?=
+ =?us-ascii?q?QExj0CBIwEB?=
+X-IronPort-AV: E=Sophos;i="5.67,320,1566856800"; d="scan'208";a="17745359"
+Received: from mail-mtaka26.fraunhofer.de ([153.96.1.26])
+ by mail-edgeKA24.fraunhofer.de with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Oct 2019 20:57:11 +0200
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0CaAAAMraxdfRBhWMBlGgEBAQEBAQE?=
+ =?us-ascii?q?BAQMBAQEBEQEBAQICAQEBAYF7gwxTAQEfEioKhByJAod5fphGgWcJAQMBAQE?=
+ =?us-ascii?q?BAQgjDAEBgSsBgxQCF4MaOBMCDAEBBAEBAQIBBQQUAQEWOoU0AQuFTAECAyM?=
+ =?us-ascii?q?RRRACAQgYAgImAgICMBUQAgQOBYMjgncPrluBMoQ5AYYCBoEOKI1oPoERgl0?=
+ =?us-ascii?q?HLj6ELhcXgnmCXgSNO4I3hV6YBwMEA4E8aIcOjhgbgjuHUYQBLIsTjjWIJpF?=
+ =?us-ascii?q?IgWkhgVlxgztQEBSBWRqIKTuFP0EBAjCPQIEjAQE?=
+X-IronPort-AV: E=Sophos;i="5.67,320,1566856800"; d="scan'208";a="62215886"
+Received: from fgdemucivp01ltm.xch.fraunhofer.de (HELO
+ FGDEMUCIMP11EXC.ads.fraunhofer.de) ([192.88.97.16])
+ by mail-mtaKA26.fraunhofer.de with ESMTP/TLS/AES256-SHA;
+ 20 Oct 2019 20:57:10 +0200
+Received: from FGDEMUCIMP01EXC.ads.fraunhofer.de ([10.80.232.40]) by
+ FGDEMUCIMP11EXC.ads.fraunhofer.de ([10.80.232.42]) with mapi id
+ 14.03.0439.000; Sun, 20 Oct 2019 20:57:10 +0200
+From: "Auer, Lukas" <lukas.auer@aisec.fraunhofer.de>
+To: "aurelien@aurel32.net" <aurelien@aurel32.net>
+Subject: Re: Fail to bring hart online on HiFive Unleashed
+Thread-Topic: Fail to bring hart online on HiFive Unleashed
+Thread-Index: AQHVeiZCDKtCCXFHhkKVjgWjDQPBDqdJamEAgAJORYCAAbS9AIACN2qAgABnhwCAAB1DAIAABRyAgAE+zgCAAsbxgIAH93KAgAAMQQCAAXh0gIABkE2AgASZngA=
+Date: Sun, 20 Oct 2019 18:57:08 +0000
+Message-ID: <2a1089078a0118fd973945d7d75a7b2662287dc1.camel@aisec.fraunhofer.de>
+References: <20191006122850.GA31831@aurel32.net>
+ <71c93a62192eb4259ba7e868f7f9aa8ae066c6ad.camel@wdc.com>
+ <20191008043014.GA23380@aurel32.net>
+ <CAPSAq_znsoOrLsA_rPbmq=e2syZA9MA=-oaZbda5KRiZGG9yyg@mail.gmail.com>
+ <97CDD0F9-32F9-4C14-8211-63454C5C379A@aurel32.net>
+ <dbdd3d63186abb230840b6e8698358afc01a62cb.camel@wdc.com>
+ <20191010195851.GA10676@aurel32.net>
+ <f2a467d2dfd1828533fee8a8edf7eac51d8c1d84.camel@aisec.fraunhofer.de>
+ <20191015222210.GA11794@aurel32.net>
+ <6e42e45b9af6467bb72eb4880ae9bf6b5b4f67cd.camel@aisec.fraunhofer.de>
+ <20191017204217.GA11023@aurel32.net>
+In-Reply-To: <20191017204217.GA11023@aurel32.net>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.80.233.51]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.200.1013-24972.000
+x-tm-as-result: No--29.742900-8.000000-31
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+Content-ID: <E9D266F7A02E3140902CD38C4A49FF17@xch.fraunhofer.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191003090945.29210-4-green.wan@sifive.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191020_070002_397726_51D822D9 
-X-CRM114-Status: GOOD (  22.00  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20191020_115727_772729_5050CDDD 
+X-CRM114-Status: GOOD (  34.28  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [153.96.1.24 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,277 +110,171 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Albert Ou <aou@eecs.berkeley.edu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- linux-riscv@lists.infradead.org, Bin Meng <bmeng.cn@gmail.com>,
- dmaengine@vger.kernel.org, Yash Shah <yash.shah@sifive.com>,
- Rob Herring <robh+dt@kernel.org>, Sagar Kadam <sagar.kadam@sifive.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, linux-hackers@sifive.com,
- Dan Williams <dan.j.williams@intel.com>,
- "Paul E. McKenney" <paulmck@linux.ibm.com>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "david.abdurachmanov@sifive.com" <david.abdurachmanov@sifive.com>,
+ "Atish.Patra@wdc.com" <Atish.Patra@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 03-10-19, 17:09, Green Wan wrote:
-
-> diff --git a/drivers/dma/Kconfig b/drivers/dma/Kconfig
-> index 7af874b69ffb..03dc82094857 100644
-> --- a/drivers/dma/Kconfig
-> +++ b/drivers/dma/Kconfig
-> @@ -661,6 +661,8 @@ source "drivers/dma/qcom/Kconfig"
->  
->  source "drivers/dma/dw/Kconfig"
->  
-> +source "drivers/dma/sf-pdma/Kconfig"
-
-Please keep this in sorted order
-
-> +
->  source "drivers/dma/dw-edma/Kconfig"
->  
->  source "drivers/dma/hsu/Kconfig"
-> diff --git a/drivers/dma/Makefile b/drivers/dma/Makefile
-> index f5ce8665e944..4bbd90563ede 100644
-> --- a/drivers/dma/Makefile
-> +++ b/drivers/dma/Makefile
-> @@ -28,6 +28,7 @@ obj-$(CONFIG_DMA_SUN4I) += sun4i-dma.o
->  obj-$(CONFIG_DMA_SUN6I) += sun6i-dma.o
->  obj-$(CONFIG_DW_AXI_DMAC) += dw-axi-dmac/
->  obj-$(CONFIG_DW_DMAC_CORE) += dw/
-> +obj-$(CONFIG_SF_PDMA) += sf-pdma/
-
-here as well!
-
->  obj-$(CONFIG_DW_EDMA) += dw-edma/
->  obj-$(CONFIG_EP93XX_DMA) += ep93xx_dma.o
->  obj-$(CONFIG_FSL_DMA) += fsldma.o
-> diff --git a/drivers/dma/sf-pdma/Kconfig b/drivers/dma/sf-pdma/Kconfig
-> new file mode 100644
-> index 000000000000..0e01a5728a79
-> --- /dev/null
-> +++ b/drivers/dma/sf-pdma/Kconfig
-> @@ -0,0 +1,6 @@
-> +config SF_PDMA
-> +	bool "Sifive PDMA controller driver"
-
-why not a module?
-
-> +#include <linux/module.h>
-> +#include <linux/device.h>
-> +#include <linux/kernel.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/dmaengine.h>
-> +#include <linux/err.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/dma-mapping.h>
-> +#include <linux/irq.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/of_address.h>
-> +#include <linux/of_irq.h>
-> +#include <linux/of_dma.h>
-
-do you need all the headers?
-
-> +#include <linux/time64.h>
-
-why is this required?
-
-> +
-> +#include "sf-pdma.h"
-> +#include "../dmaengine.h"
-> +#include "../virt-dma.h"
-> +
-> +#define SIFIVE_PDMA_NAME "sf-pdma"
-
-this is used only once! can you use it directly to help readability!
-
-> +
-> +#ifndef readq
-> +static inline unsigned long long readq(void __iomem *addr)
-> +{
-> +	return readl(addr) | (((unsigned long long)readl(addr + 4)) << 32LL);
-> +}
-> +#endif
-> +
-> +#ifndef writeq
-> +static inline void writeq(unsigned long long v, void __iomem *addr)
-> +{
-> +	writel(v & 0xffffffff, addr);
-> +	writel(v >> 32, addr + 4);
-
-why not use upper/lower_32_bits?
-
-> +static void sf_pdma_fill_desc(struct sf_pdma_chan *chan,
-> +			      u64 dst,
-> +			      u64 src,
-> +			      u64 size)
-
-these can fit in a line!
-
-> +struct dma_async_tx_descriptor *
-> +	sf_pdma_prep_dma_memcpy(struct dma_chan *dchan,
-> +				dma_addr_t dest,
-> +				dma_addr_t src,
-> +				size_t len,
-> +				unsigned long flags)
-> +{
-> +	struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
-> +	struct sf_pdma_desc *desc;
-> +
-> +	if (!chan || !len || !dest || !src) {
-> +		pr_debug("%s: Please check dma len, dest, src!\n", __func__);
-
-why pr_debug() and not dev_debug(), bonus you get the device name in
-each print!
-
-and this should be an error print!
-
-> +static void sf_pdma_unprep_slave_dma(struct sf_pdma_chan *chan)
-> +{
-> +	if (chan->dma_dir != DMA_NONE)
-> +		dma_unmap_resource(chan->vchan.chan.device->dev,
-> +				   chan->dma_dev_addr,
-> +				   chan->dma_dev_size,
-> +				   chan->dma_dir, 0);
-
-this does not seem correct to me, in slave cases the client is supposed
-to take care of mapping and unmapping, why is this being done here?
-
-> +	chan->dma_dir = DMA_NONE;
-> +}
-> +
-> +static int sf_pdma_slave_config(struct dma_chan *dchan,
-> +				struct dma_slave_config *cfg)
-> +{
-> +	struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
-> +
-> +	memcpy(&chan->cfg, cfg, sizeof(*cfg));
-> +	sf_pdma_unprep_slave_dma(chan);
-
-why unmap!
-
-> +static enum dma_status
-> +sf_pdma_tx_status(struct dma_chan *dchan,
-> +		  dma_cookie_t cookie,
-> +		  struct dma_tx_state *txstate)
-> +{
-> +	struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
-> +	enum dma_status status;
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&chan->lock, flags);
-> +	if (chan->xfer_err) {
-> +		chan->status = DMA_ERROR;
-> +		spin_unlock_irqrestore(&chan->lock, flags);
-> +		return chan->status;
-
-well this is not correct! The status is queried for a descriptor and we
-might have that succeeded so returning error of a channel for descriptor
-does not make sense!
-
-> +static irqreturn_t sf_pdma_done_isr(int irq, void *dev_id)
-> +{
-> +	struct sf_pdma_chan *chan = dev_id;
-> +	struct pdma_regs *regs = &chan->regs;
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&chan->lock, flags);
-> +	writel((readl(regs->ctrl)) & ~PDMA_DONE_STATUS_MASK, regs->ctrl);
-> +	spin_unlock_irqrestore(&chan->lock, flags);
-
-why not submit next transaction here? This is DMA so we do care about
-utilizing it!
-
-> +static int sf_pdma_irq_init(struct platform_device *pdev, struct sf_pdma *pdma)
-> +{
-> +	int irq, r, i;
-> +	struct sf_pdma_chan *chan;
-> +
-> +	for (i = 0; i < pdma->n_chans; i++) {
-> +		chan = &pdma->chans[i];
-> +
-> +		irq = platform_get_irq(pdev, i * 2);
-> +		if (irq < 0) {
-> +			dev_err(&pdev->dev, "Can't get pdma done irq.\n");
-> +			return irq;
-> +		}
-> +
-> +		r = devm_request_irq(&pdev->dev, irq, sf_pdma_done_isr, 0,
-> +				     dev_name(&pdev->dev), (void *)chan);
-> +		if (r) {
-> +			dev_err(&pdev->dev, "Fail to attach done ISR: %d\n", r);
-> +			return -1;
-
--1 :(
-
-> +static int sf_pdma_probe(struct platform_device *pdev)
-> +{
-> +	struct sf_pdma *pdma;
-> +	struct sf_pdma_chan *chan;
-> +	struct resource *res;
-> +	int len, chans;
-> +	int ret;
-> +
-> +	chans = PDMA_NR_CH;
-> +	len = sizeof(*pdma) + sizeof(*chan) * chans;
-> +	pdma = devm_kzalloc(&pdev->dev, len, GFP_KERNEL);
-> +	if (!pdma)
-> +		return -ENOMEM;
-> +
-> +	pdma->n_chans = chans;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	pdma->membase = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(pdma->membase))
-> +		goto ERR_MEMBASE;
-> +
-> +	ret = sf_pdma_irq_init(pdev, pdma);
-> +	if (ret)
-> +		goto ERR_INITIRQ;
-> +
-> +	sf_pdma_setup_chans(pdma);
-> +
-> +	pdma->dma_dev.dev = &pdev->dev;
-> +	dma_cap_set(DMA_MEMCPY, pdma->dma_dev.cap_mask);
-> +
-> +	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
-> +	if (ret)
-> +		pr_warn("*** Failed to set DMA mask. Fall back to default.\n");
-> +
-> +	/* Setup DMA APIs */
-> +	pdma->dma_dev.device_alloc_chan_resources =
-> +		sf_pdma_alloc_chan_resources;
-> +	pdma->dma_dev.device_free_chan_resources =
-> +		sf_pdma_free_chan_resources;
-> +	pdma->dma_dev.device_tx_status = sf_pdma_tx_status;
-> +	pdma->dma_dev.device_prep_dma_memcpy = sf_pdma_prep_dma_memcpy;
-> +	pdma->dma_dev.device_config = sf_pdma_slave_config;
-> +	pdma->dma_dev.device_terminate_all = sf_pdma_terminate_all;
-> +	pdma->dma_dev.device_issue_pending = sf_pdma_issue_pending;
-
-please set the capabilities of the controller, width, direction,
-granularity etc!
-
-> +static int sf_pdma_remove(struct platform_device *pdev)
-> +{
-> +	struct sf_pdma *pdma = platform_get_drvdata(pdev);
-> +
-> +	dma_async_device_unregister(&pdma->dma_dev);
-
-since you used devm_irq_() you have irq which is running, tasklets which
-maybe schedule and can be scheduled again including the vchan one!
--- 
-~Vinod
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gVGh1LCAyMDE5LTEwLTE3IGF0IDIyOjQyICswMjAwLCBBdXJlbGllbiBKYXJubyB3cm90ZToN
+Cj4gT24gMjAxOS0xMC0xNiAyMDo0OSwgQXVlciwgTHVrYXMgd3JvdGU6DQo+ID4gT24gV2VkLCAy
+MDE5LTEwLTE2IGF0IDAwOjIyICswMjAwLCBBdXJlbGllbiBKYXJubyB3cm90ZToNCj4gPiA+IE9u
+IDIwMTktMTAtMTUgMjE6MzgsIEF1ZXIsIEx1a2FzIHdyb3RlOg0KPiA+ID4gPiBPbiBUaHUsIDIw
+MTktMTAtMTAgYXQgMjE6NTggKzAyMDAsIEF1cmVsaWVuIEphcm5vIHdyb3RlOg0KPiA+ID4gPiA+
+IE9uIDIwMTktMTAtMDkgMDE6MzQsIEF0aXNoIFBhdHJhIHdyb3RlOg0KPiA+ID4gPiA+ID4gT24g
+VHVlLCAyMDE5LTEwLTA4IGF0IDA4OjMzICswMjAwLCBBdXJlbGllbiBKYXJubyB3cm90ZToNCj4g
+PiA+ID4gPiA+ID4gTGUgOCBvY3RvYnJlIDIwMTkgMDg6MTQ6NTggR01UKzAyOjAwLCBEYXZpZCBB
+YmR1cmFjaG1hbm92IDwNCj4gPiA+ID4gPiA+ID4gZGF2aWQuYWJkdXJhY2htYW5vdkBzaWZpdmUu
+Y29tPiBhIMOpY3JpdCA6DQo+ID4gPiA+ID4gPiA+ID4gT24gVHVlLCBPY3QgOCwgMjAxOSBhdCA3
+OjMwIEFNIEF1cmVsaWVuIEphcm5vIDxhdXJlbGllbkBhdXJlbDMyLm5ldA0KPiA+ID4gPiA+ID4g
+PiA+IHdyb3RlOg0KPiA+ID4gPiA+ID4gPiA+ID4gT24gMjAxOS0xMC0wNyAyMjoxOSwgQXRpc2gg
+UGF0cmEgd3JvdGU6DQo+ID4gPiA+ID4gPiA+ID4gPiA+IFRoYW5rcyBmb3IgdGhlIGRldGFpbGVk
+IGFuYWx5c2lzLiBDYW4geW91IHBsZWFzZSBrZWVwIG1lIGFuZA0KPiA+ID4gPiA+ID4gPiA+ID4g
+PiBkYXZpZA0KPiA+ID4gPiA+ID4gPiA+IGluDQo+ID4gPiA+ID4gPiA+ID4gPiA+IGNjIHdoZW4g
+eW91IHJlcG9ydCB0aGUgaXNzdWUgdG8gVS1ib290ID8NCj4gPiA+ID4gPiA+ID4gPiA+IA0KPiA+
+ID4gPiA+ID4gPiA+ID4gWWVwLiBJIGhhdmUgcHJvZ3Jlc3NlZCBhIGJpdCBvbiB0aGF0LCBhbmQg
+bm93IEkgYW0gbm90IGNvbnZpbmNlZA0KPiA+ID4gPiA+ID4gPiA+ID4gaXQncw0KPiA+ID4gPiA+
+ID4gPiA+IGFuDQo+ID4gPiA+ID4gPiA+ID4gPiBVLWJvb3QgaXNzdWUsIGl0IGNhbiBiZSBhIEdD
+QyBpc3N1ZS4NCj4gPiA+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiA+ID4gSGVyZSBhcmUg
+dGhlIGNvbmRpdGlvbnMgdG8gcmVwcm9kdWNlIHRoZSBidWc6DQo+ID4gPiA+ID4gPiA+ID4gPiAt
+IFUtYm9vdCBydW5zIG9uIGhhcnQgMSwgMiBvciAzDQo+ID4gPiA+ID4gPiA+ID4gPiAtIHRoZSBh
+dXRvYm9vdCBwcm9jZXNzIGlzIG5vdCBpbnRlcnJ1cHRlZA0KPiA+ID4gPiA+ID4gPiA+ID4gLSBl
+eHRsaW51eCBpcyB1c2VkIHRvIGJvb3QgdGhlIGtlcm5lbA0KPiA+ID4gPiA+ID4gPiA+ID4gLSBh
+cmNoL3Jpc2N2L2xpYi9ib290bS5jIGlzIGNvbXBpbGVkIHdpdGggR0NDIDkgKHdvcmtzIGZpbmUg
+d2l0aA0KPiA+ID4gPiA+ID4gPiA+ID4gR0NDDQo+ID4gPiA+ID4gPiA+ID4gOCkNCj4gPiA+ID4g
+PiA+ID4gPiA+IFdoZW4gdGhlIHByb2JsZW0gaGFwcGVucywgdGhlIG1pc3NpbmcgaGFydCBhY3R1
+YWxseSBlbmRzIGl0cw0KPiA+ID4gPiA+ID4gPiA+IGV4ZWN1dGlvbg0KPiA+ID4gPiA+ID4gPiA+
+ID4gaW4gYW4gaWxsZWdhbCBpbnN0cnVjdGlvbiB0cmFwIHRyeWluZyB0byBleGVjdXRlIHRoZSBG
+RFQgKEkgb25seQ0KPiA+ID4gPiA+ID4gPiA+IG5vdGljZWQNCj4gPiA+ID4gPiA+ID4gPiA+IHRo
+YXQgcmVjZW50bHkgYXMgdGhlIG1lc3NhZ2Ugd2FzIGhpZGRlbiBieSB0aGUgdXNlIG9mDQo+ID4g
+PiA+ID4gPiA+ID4gPiBlYXJseWNvbj1zYmkpOg0KPiA+ID4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+
+ID4gPiA+ID4gPiA+IFNpRml2ZSBGU0JMOiAgICAgICAyMDE4LTAzLTIwDQo+ID4gPiA+ID4gPiA+
+ID4gPiA+IEhpRml2ZS1VIHNlcmlhbCAjOiAwMDAwMDI0Ng0KPiA+ID4gPiA+ID4gPiA+ID4gPiAN
+Cj4gPiA+ID4gPiA+ID4gPiA+ID4gT3BlblNCSSB2MC40LTUwLWczMGYwOWZiIChPY3QgIDYgMjAx
+OSAyMTo1ODowNSkNCj4gPiA+ID4gPiA+ID4gPiA+ID4gICAgX19fXyAgICAgICAgICAgICAgICAg
+ICAgX19fX18gX19fXyBfX19fXw0KPiA+ID4gPiA+ID4gPiA+ID4gPiAgIC8gX18gXCAgICAgICAg
+ICAgICAgICAgIC8gX19fX3wgIF8gXF8gICBffA0KPiA+ID4gPiA+ID4gPiA+ID4gPiAgfCB8ICB8
+IHxfIF9fICAgX19fIF8gX18gfCAoX19fIHwgfF8pIHx8IHwNCj4gPiA+ID4gPiA+ID4gPiA+ID4g
+IHwgfCAgfCB8ICdfIFwgLyBfIFwgJ18gXCBcX19fIFx8ICBfIDwgfCB8DQo+ID4gPiA+ID4gPiA+
+ID4gPiA+ICB8IHxfX3wgfCB8XykgfCAgX18vIHwgfCB8X19fXykgfCB8XykgfHwgfF8NCj4gPiA+
+ID4gPiA+ID4gPiA+ID4gICBcX19fXy98IC5fXy8gXF9fX3xffCB8X3xfX19fXy98X19fXy9fX19f
+X3wNCj4gPiA+ID4gPiA+ID4gPiA+ID4gICAgICAgICB8IHwNCj4gPiA+ID4gPiA+ID4gPiA+ID4g
+ICAgICAgICB8X3wNCj4gPiA+ID4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+ID4gPiA+IFBs
+YXRmb3JtIE5hbWUgICAgICAgICAgOiBTaUZpdmUgRnJlZWRvbSBVNTQwDQo+ID4gPiA+ID4gPiA+
+ID4gPiA+IFBsYXRmb3JtIEhBUlQgRmVhdHVyZXMgOiBSVjY0QUNERklNU1UNCj4gPiA+ID4gPiA+
+ID4gPiA+ID4gUGxhdGZvcm0gTWF4IEhBUlRzICAgICA6IDUNCj4gPiA+ID4gPiA+ID4gPiA+ID4g
+Q3VycmVudCBIYXJ0ICAgICAgICAgICA6IDINCj4gPiA+ID4gPiA+ID4gPiA+ID4gRmlybXdhcmUg
+QmFzZSAgICAgICAgICA6IDB4ODAwMDAwMDANCj4gPiA+ID4gPiA+ID4gPiA+ID4gRmlybXdhcmUg
+U2l6ZSAgICAgICAgICA6IDEwNCBLQg0KPiA+ID4gPiA+ID4gPiA+ID4gPiBSdW50aW1lIFNCSSBW
+ZXJzaW9uICAgIDogMC4yDQo+ID4gPiA+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiA+ID4g
+PiBQTVAwOiAweDAwMDAwMDAwODAwMDAwMDAtMHgwMDAwMDAwMDgwMDFmZmZmIChBKQ0KPiA+ID4g
+PiA+ID4gPiA+ID4gPiBQTVAxOiAweDAwMDAwMDAwMDAwMDAwMDAtMHgwMDAwMDA3ZmZmZmZmZmZm
+IChBLFIsVyxYKQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gPiA+ID4gDQo+
+ID4gPiA+ID4gPiA+ID4gPiA+IFUtQm9vdCAyMDE5LjEwLXJjNC0wMDAzNy1nZGFjNTFlOWFhZi1k
+aXJ0eSAoT2N0IDA2IDIwMTkgLQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiAyMTo1Njo1MQ0KPiA+ID4g
+PiA+ID4gPiA+ICswMDAwKQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiBDUFU6ICAgcnY2NGltYWZkYw0K
+PiA+ID4gPiA+ID4gPiA+ID4gPiBNb2RlbDogU2lGaXZlIEhpRml2ZSBVbmxlYXNoZWQgQTAwDQo+
+ID4gPiA+ID4gPiA+ID4gPiA+IERSQU06ICA4IEdpQg0KPiA+ID4gPiA+ID4gPiA+ID4gPiANCj4g
+PiA+ID4gPiA+ID4gPiA+ID4gTU1DOiAgIHNwaUAxMDA1MDAwMDptbWNAMDogMA0KPiA+ID4gPiA+
+ID4gPiA+ID4gPiBJbjogICAgc2VyaWFsQDEwMDEwMDAwDQo+ID4gPiA+ID4gPiA+ID4gPiA+IE91
+dDogICBzZXJpYWxAMTAwMTAwMDANCj4gPiA+ID4gPiA+ID4gPiA+ID4gRXJyOiAgIHNlcmlhbEAx
+MDAxMDAwMA0KPiA+ID4gPiA+ID4gPiA+ID4gPiBOZXQ6ICAgZXRoMDogZXRoZXJuZXRAMTAwOTAw
+MDANCj4gPiA+ID4gPiA+ID4gPiA+ID4gSGl0IGFueSBrZXkgdG8gc3RvcCBhdXRvYm9vdDogIDAN
+Cj4gPiA+ID4gPiA+ID4gPiA+ID4gc3dpdGNoIHRvIHBhcnRpdGlvbnMgIzAsIE9LDQo+ID4gPiA+
+ID4gPiA+ID4gPiA+IG1tYzAgaXMgY3VycmVudCBkZXZpY2UNCj4gPiA+ID4gPiA+ID4gPiA+ID4g
+U2Nhbm5pbmcgbW1jIDA6Mi4uLg0KPiA+ID4gPiA+ID4gPiA+ID4gPiBGb3VuZCAvYm9vdC9leHRs
+aW51eC9leHRsaW51eC5jb25mDQo+ID4gPiA+ID4gPiA+ID4gPiA+IFJldHJpZXZpbmcgZmlsZTog
+L2Jvb3QvZXh0bGludXgvZXh0bGludXguY29uZg0KPiA+ID4gPiA+ID4gPiA+ID4gPiA1MTAgYnl0
+ZXMgcmVhZCBpbiA1IG1zICg5OS42IEtpQi9zKQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiBVLUJvb3Qg
+bWVudQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiAxOiAgICAgIGtlcm5lbCA1LjMuNA0KPiA+ID4gPiA+
+ID4gPiA+ID4gPiAyOiAgICAgIERlYmlhbiBHTlUvTGludXgga2VybmVsIDUuMy4wLXRydW5rLXJp
+c2N2NjQNCj4gPiA+ID4gPiA+ID4gPiA+ID4gRW50ZXIgY2hvaWNlOiAxDQo+ID4gPiA+ID4gPiA+
+ID4gPiA+IDE6ICAgICAga2VybmVsIDUuMy40DQo+ID4gPiA+ID4gPiA+ID4gPiA+IFJldHJpZXZp
+bmcgZmlsZTogL2Jvb3Qvdm1saW51eC01LjMuNA0KPiA+ID4gPiA+ID4gPiA+ID4gPiA5NDg2MDc2
+IGJ5dGVzIHJlYWQgaW4gNDgxMyBtcyAoMS45IE1pQi9zKQ0KPiA+ID4gPiA+ID4gPiA+ID4gPiBh
+cHBlbmQ6IHJvb3Q9L2Rldi9tbWNibGswcDIgcncgY29uc29sZT10dHlTSUYwIHJvb3R3YWl0DQo+
+ID4gPiA+ID4gPiA+ID4gPiA+IFJldHJpZXZpbmcgZmlsZTogL2Jvb3QvaGlmaXZlLXVubGVhc2hl
+ZC1hMDAuZHRiDQo+ID4gPiA+ID4gPiA+ID4gPiA+IDYwODggYnl0ZXMgcmVhZCBpbiA3IG1zICg4
+NDguNiBLaUIvcykNCj4gPiA+ID4gPiA+ID4gPiA+ID4gIyMgRmxhdHRlbmVkIERldmljZSBUcmVl
+IGJsb2IgYXQgODgwMDAwMDANCj4gPiA+ID4gPiA+ID4gPiA+ID4gICAgQm9vdGluZyB1c2luZyB0
+aGUgZmR0IGJsb2IgYXQgMHg4ODAwMDAwMA0KPiA+ID4gPiA+ID4gPiA+ID4gPiAgICBVc2luZyBE
+ZXZpY2UgVHJlZSBpbiBwbGFjZSBhdCAwMDAwMDAwMDg4MDAwMDAwLCBlbmQNCj4gPiA+ID4gPiA+
+ID4gPiAwMDAwMDAwMDg4MDA0N2M3DQo+ID4gPiA+ID4gPiA+ID4gPiA+IFN0YXJ0aW5nIGtlcm5l
+bCAuLi4NCj4gPiA+ID4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA+ID4gPiA+IGV4Y2VwdGlv
+biBjb2RlOiAyICwgSWxsZWdhbCBpbnN0cnVjdGlvbiAsIGVwYyAgLCByYSA4ODAwMDAwNA0KPiA+
+ID4gPiA+ID4gPiA+IDg4MDAwMDAwDQo+ID4gPiA+ID4gPiA+ID4gPiA+ICMjIyBFUlJPUiAjIyMg
+UGxlYXNlIFJFU0VUIHRoZSBib2FyZCAjIyMNCj4gPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+
+ID4gPiBJIHRoaW5rLCB0aGF0J3MgdGhlIHNhbWUgaXNzdWUgSSBoYWQgKG9yIHN0aWxsIGhhdmUp
+IGEgd2VlayBhZ28uDQo+ID4gPiA+ID4gPiA+ID4gSnVzdCByZW1pbmRlciB0aGF0IGtlcm5lbCA1
+LjMgaW50cm9kdWNlZCBhIDY0LWJ5dGUgaGVhZGVyICh0aHVzIG5vDQo+ID4gPiA+ID4gPiA+ID4g
+bmVlZCB0byB3cmFwIGtlcm5lbCkgYXQgbGVhc3QgZm9yIEltYWdlIHRhcmdldC4gVGh1cyBpdCdz
+IGJvb3RpDQo+ID4gPiA+ID4gPiA+ID4gdGhhdA0KPiA+ID4gPiA+ID4gPiA+IGJvb3RzIHRoZSBr
+ZXJuZWwgb24gVS1Cb290IHNpZGUuDQo+ID4gPiA+ID4gPiA+ID4gVGh1cyB0aGUgMXN0IGluc3Ry
+dWN0aW9uIG9mIHRoYXQgaGVhZGVyIGlzICJqIDB4NDAiICh0byB0aGUNCj4gPiA+ID4gPiA+ID4g
+PiBiZWdpbm5pbmcNCj4gPiA+ID4gPiA+ID4gPiBvZiB0aGUgYWN0dWFsIGtlcm5lbCkuICBBbmQg
+ODgwMDAwMDQgd291bGQgZGVmaW5pdGVseSBob2xkIGFuDQo+ID4gPiA+ID4gPiA+ID4gaWxsZWdh
+bA0KPiA+ID4gPiA+ID4gPiA+IGluc3RydWN0aW9uLg0KPiA+ID4gPiA+ID4gPiA+IA0KPiA+ID4g
+PiA+ID4gPiA+IDAwMDAwMDAwMDAwMDAwMDAgPC5kYXRhPjoNCj4gPiA+ID4gPiA+ID4gPiAwOiAg
+ICAgICA4MWEwICAgICAgICAgICAgICAgICAgICBqICAgICAgIDB4NDANCj4gPiA+ID4gPiA+ID4g
+PiAyOiAgICAgICAwMDAwICAgICAgICAgICAgICAgICAgICB1bmltcA0KPiA+ID4gPiA+ID4gPiA+
+IDQ6ICAgICAgIDAwMDAgICAgICAgICAgICAgICAgICAgIHVuaW1wDQo+ID4gPiA+ID4gPiA+ID4g
+NjogICAgICAgMDEwMCAgICAgICAgICAgICAgICAgICAgbm9wDQo+ID4gPiA+ID4gPiA+ID4gWy4u
+XQ0KPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gSG1tIHRoYXQncyB0aGUgYmVnaW5uaW5n
+IG9mIHRoZSBrZXJuZWwgY29kZS4gVGhlIGFkZHJlc3MgODgwMDAwMDQNCj4gPiA+ID4gPiA+ID4g
+YWN0dWFsbHkgY29ycmVzcG9uZHMgdG8gdGhlIEZEVC4gU28gdGhlIGhhcnQgZW5kaW5nIHVwIGlu
+IGEgdHJhcA0KPiA+ID4gPiA+ID4gPiBhY3R1YWxseSB0cmllcyB0byBib290IHRoZSBGRFQgaW5z
+dGVhZCBvZiB0aGUga2VybmVsLg0KPiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IA0KPiA+ID4g
+PiA+ID4gRG8geW91IHNlZSB0aGUgaXNzdWUgaWYgeW91IG1hbnVhbGx5IHVzZSBib290bSBpbnN0
+ZWFkIG9mIGV4dGxpbnV4Pw0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiA9PiBib290bSAka2Vy
+bmVsX2FkZHJfciAtICRmZHRfYWRkcl9yDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IFRoaXMg
+aXMgYSBwcm9iYWJseSBub3QgcmVsYXRlZCBhcyBib290bSBpcyBqdW1waW5nIHRvIHdyb25nIGxv
+Y2F0aW9uDQo+ID4gPiA+ID4gPiBmb3Igc29tZSByZWFzb24uIEhvd2V2ZXIsIGl0IG1heSBiZSB3
+b3J0aCBhIHNob3QgYXMgaXQgZml4ZXMgZmR0DQo+ID4gPiA+ID4gPiBjb3JydXB0aW9uLiANCj4g
+PiA+ID4gPiANCj4gPiA+ID4gPiBJIGhhdmUganVzdCB0ZXN0ZWQsIGFuZCBpdCBkb2Vzbid0IHdv
+cmsuIE9uIHRoZSBvdGhlciBoYW5kIEkgaGF2ZSB0cnkgdG8NCj4gPiA+ID4gPiBydW4gdGhhdCBt
+YW51YWxseSwgYW5kIGludGVycnVwdGluZyB0aGUgYm9vdCBwcm9jZXNzIHVzdWFsbHkgaGlkZXMg
+dGhlDQo+ID4gPiA+ID4gcHJvYmxlbS4NCj4gPiA+ID4gPiANCj4gPiA+ID4gDQo+ID4gPiA+IEkg
+dHJpZWQgdG8gcmVwcm9kdWNlIHRoZSBpc3N1ZSB0b2RheSwgYnV0IHdhcyBub3QgYWJsZSB0by4g
+SWYgeW91IGNhbg0KPiA+ID4gPiB1cGxvYWQgdGhlIHJlbGV2YW50IGZpbGVzIHNvbWV3aGVyZSwg
+SSBjYW4gcmV0cnkgaXQgd2l0aCB0aGVtLiBJIGhhdmUNCj4gPiA+ID4gYWxzbyBhZGRlZCBpbmZv
+cm1hdGlvbiBvbiB0aGUgYm9vdCBmbG93IGluIFUtQm9vdCBiZWxvdyBpbiBob3BlcyB0aGF0DQo+
+ID4gPiA+IGl0IGlzIGhlbHBmdWwgZm9yIGRlYnVnZ2luZy4NCj4gPiA+IA0KPiA+ID4gWW91IGNh
+biBmaW5kIHRoZSBmaWxlcyB0aGVyZToNCj4gPiA+IGh0dHBzOi8vdGVtcC5hdXJlbDMyLm5ldC9o
+aWZpdmUtb3BlbnNiaS11Ym9vdC8NCj4gPiA+IA0KPiA+ID4gZndfcGF5bG9hZC5iaW4gY29udGFp
+bnMgdGhlIE9wZW5TQkkgKyBVLUJvb3QgcGF5bG9hZCB0byBiZSBjb3BpZWQgdG8gdGhlDQo+ID4g
+PiBmaXJzdCBwYXJ0aXRpb24gb2YgdGhlIFNEIGNhcmQuIFRoZSBib290LnRhci5neiBjb250YWlu
+cyB0aGUgL2Jvb3QgDQo+ID4gPiBkaXJlY3RvcnkgKGtlcm5lbCwgZmR0IGFuZCBleHRsaW51eC5j
+b25mKSBhbmQgaGFzIHRvIGJlIHB1dCBvbiB0aGUNCj4gPiA+IHNlY29uZCBwYXJ0aXRpb24gb2Yg
+dGhlIFNEIGNhcmQuIE5vdGUgdGhhdCB0aGlzIHBhcnRpdGlvbiBzaG91bGQgaGF2ZQ0KPiA+ID4g
+dGhlIEdQVCBib290IGZsYWcgZW5hYmxlZCBmb3IgZXh0bGludXggdG8gd29yay4NCj4gPiA+IA0K
+PiA+ID4gSSBoYXZlbid0IGxvb2tlZCBtb3JlIGF0IHRoZSBpc3N1ZSByZWNlbnRseSBub3cgdGhh
+dCBJIGhhdmUgZm91bmQgdGhhdA0KPiA+ID4gdXNpbmcgR0NDIDggaXMgYSBmaXgvd29ya2Fyb3Vu
+ZC4gVGhlcmVmb3JlIHRob3NlIGZpbGVzIGFyZSBmcm9tIH4xMCBkYXlzDQo+ID4gPiBhZ28uIEkg
+d2lsbCB0cnkgdG8gZG8gbW9yZSB0ZXN0cyBkdXJpbmcgdGhlIHdlZWstZW5kLg0KPiA+ID4gDQo+
+ID4gDQo+ID4gVGhhbmtzIGZvciB0aGUgZmlsZXMsIEkgd2FzIGFibGUgdG8gcmVwcm9kdWNlIHRo
+ZSBpc3N1ZSBub3cuIFNlZW1zIGxpa2UNCj4gPiBpdCBpcyBjYXVzZWQgYnkgYSBzdGFjayBvdmVy
+Zmxvdy4gV2hlbiBzbXBfY2FsbF9mdW5jdGlvbigpIGlzIGNhbGxlZA0KPiA+IGR1cmluZyBib290
+bSwgdGhlIHN0YWNrIG9mIHRoZSBtYWluIGhhcnQgb3ZlcmZsb3dzIGludG8gdGhlIHN0YWNrIG9m
+DQo+ID4gb25lIG9mIHRoZSBvdGhlciBoYXJ0cy4gVGhlIHJldHVybiBhZGRyZXNzIG9mIHRoZSBt
+YWluIGhhcnQgbm93IGxpZXMNCj4gPiB3aXRoaW4gdGhlIHN0YWNrIG9mIHRoZSBvdGhlciBoYXJ0
+LiBPbmNlIHRoYXQgaGFydCBnZXRzIHdva2VuIGJ5IHRoZQ0KPiA+IElQSSBpdCBvdmVyd3JpdGVz
+IHRoZSByZXR1cm4gYWRkcmVzcywgaW4gb3VyIGNhc2Ugd2l0aCAweDg4MDAwMDAwLiBUaGlzDQo+
+ID4gd2lsbCBjYXVzZSB0aGUgaWxsZWdhbCBpbnN0cnVjdGlvbiB0cmFwIG9uY2UgdGhlIG1haW4g
+aGFydCByZXR1cm5zLg0KPiA+IFRoaXMgYWxzbyBleHBsYWlucywgd2h5IHRoZSBwcm9ibGVtIGRv
+ZXMgbm90IG9jY3VyIHdoZW4gdGhlIG1haW4gaGFydA0KPiA+IGlzIGhhcnQgNCwgc2luY2UgaXRz
+IHN0YWNrIGlzIGF0IHRoZSBib3R0b20gYW5kIHRoZXJlZm9yZSBjYW4ndA0KPiA+IG92ZXJmbG93
+IGludG8gb25lIG9mIHRoZSBvdGhlciBzdGFja3MuDQo+ID4gDQo+ID4gSW5jcmVhc2luZyB0aGUg
+c3RhY2sgc2l6ZSAoQ09ORklHX1NUQUNLX1NJWkVfU0hJRlQpIHRvIDE0IGZpeGVzIHRoZQ0KPiA+
+IHByb2JsZW0uIEknbGwgZG91YmxlIGNoZWNrIHRoYXQgdGhlcmUncyBub3RoaW5nIGVsc2UgY2F1
+c2luZyBhbiBpc3N1ZQ0KPiA+IGFuZCB3aWxsIHRoZW4gc2VuZCBhIHBhdGNoIHRvIGluY3JlYXNl
+IHRoZSBzdGFjayBzaXplLg0KPiANCj4gVGhhbmtzIGEgbG90IGZvciBkZWJ1Z2dpbmcgdGhhdC4g
+SSBoYXZlIGp1c3QgdHJpZWQsIEkgY29uZmlybSBpdCBmaXhlcw0KPiB0aGUgaXNzdWUgZm9yIG1l
+Lg0KPiANCj4gVGVzdGVkLWJ5OiBBdXJlbGllbiBKYXJubyA8YXVyZWxpZW5AYXVyZWwzMi5uZXQ+
+DQo+IA0KDQpUaGFua3MgZm9yIHRlc3RpbmcgdGhlIGZpeCwgRGF2aWQgYW5kIEF1cmVsaWVuISBJ
+IGhhdmUgc3VibWl0dGVkIGENCnBhdGNoIHRvIFUtQm9vdCB3aXRoIHRoZSBmaXguDQoNCmh0dHBz
+Oi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcGF0Y2gvMTE4MDA1Ny8NCg0KUmVnYXJkcywNCkx1a2Fz
+DQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1y
+aXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
