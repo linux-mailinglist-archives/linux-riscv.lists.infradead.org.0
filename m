@@ -2,205 +2,63 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABB65DEF38
-	for <lists+linux-riscv@lfdr.de>; Mon, 21 Oct 2019 16:18:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A1DEDF259
+	for <lists+linux-riscv@lfdr.de>; Mon, 21 Oct 2019 18:03:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zdrNr0D84GSuu3vFdXMgH258oXSdEwBxPyLES0az2LE=; b=UDL4O/fp+fwud2
-	dM0EG4H37YzpBZBIrZPPHTSz3MM5KRJQWevQxjjfhtc8wpWlgIZVwk4LOFs4/mHIQ7qK3wx/JBotp
-	jDEOn8Cx3OD/1yF1Xil143C/LQlTQC5dLgye2HwHZg3VAuF+tQx4ctEU216vk/30qk/3ZjMlojGdj
-	Xtag2QiGxMU0TJTlIrKPM0jqALCV4NEHSzGvkuMlwAvnp8uw+DjNHXN3tcc9LUdrtB56SM/bTRWLM
-	wvyCi4kxoNIPt3xk4xNo+KNCyjL+H43geRr4XEHQ/6vj7Yd0T1B+hddqEmiwi+7qoq4VELtGogYvk
-	VnDCd//XhU1YlF6ysNoA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=rCyDsgKKmiM9HD3tVnLVyamX8n6lOh41v4cyRxgy4/A=; b=ZUb
+	tFJyKDRXBilzTjLDdr3AC/a5yOPdehipv5bfLDVYCSn7S0CE/BjxWXLnqtKkKPldb6sUWDgcZl/Vj
+	rF3M5ejDQAj2zCuTuom0GpgH4J/3baEhTjh7HEeciJWI02LgBET9dSlrUxAh9x5b5NiNONVunvL3k
+	YiMueqDfSoS57FyvV7tt8RgcURNhv7ngg6jLU9wvxehFxsb0dI9VI4HyFTino02tzj2OI1mg0nhqj
+	tk+n42VbuZDT+0CurT+0pvOPVbqv42FV47bRMv0VIJro/yNad9SDhSSf2YTzIRpGTAv/Qw29rAIjk
+	vhKSGXeu+kw/l8+S8I89lqhx1UBtCxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMYVM-0001np-UO; Mon, 21 Oct 2019 14:17:52 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1iMa8t-0003vU-IC; Mon, 21 Oct 2019 16:02:47 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMYVE-0001he-9h
- for linux-riscv@lists.infradead.org; Mon, 21 Oct 2019 14:17:48 +0000
-Received: by mail-wr1-x444.google.com with SMTP id c2so8971568wrr.10
- for <linux-riscv@lists.infradead.org>; Mon, 21 Oct 2019 07:17:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/WDnw20hof//f108sNDoL9I+yqZkabrTq50r3yQY+F0=;
- b=KLAJ14s95s88cfdnvfzEhPDx+9y5y7BXCERNYqrUCirDIG8cK//syX5WafrxKwBIl6
- UzUk/FbGc8qGNi38WvElvMf/9yvqotbOv5yAJKDQylbV5YyKHTLs4UBv+SkUunv7iNzh
- cNKyPIeCBaii3LSjApY6m0ivRNHwn0ptiAP1IAj6gXljol7LCqo7YSp1Al4c8TrT1XLq
- l+ajZnRTJ7+PuDZTbBvIahSjf507dBB6H4g8jHlC/aI5tv+MmzHt2Khz7QXpdp0jPjNO
- /niof0v5ywrTO54OfQVGzIGUk2Y0q1IBLSSaQcCCA/L3ZlhcWrW9QeP9wVyVUqycZYq1
- 2FAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=/WDnw20hof//f108sNDoL9I+yqZkabrTq50r3yQY+F0=;
- b=HTfO7w9J1M1P1hNsEpIzC3UajyyoR+H64KTsDrJYqeAToxILs4kLWnoBxyEu/g6GNs
- wJ+Ff4vDv3BdO9aXSO6VEHwW1qSvZJamfbp2QjIL4hhJB3w0yk95gdDAXX1rCEAUkJFa
- YPZvV6aLqdbEsBHMo4ASh7dIic0+Labtzk5w2Z3QAs3PVwHnGDJWhJojROWyAmkFtxmn
- /McW8FygFA5ZObUvWJHu9MHAuuGnbRwhTamFdERLTLuH2n/iphUBqhnPsH8DGBkTG5f6
- nVR0ZCTxbPtjjMWqxmK85G6dL27AkX5EpljfDgdEoXsirH94MvZtIzK6potMl0YdXAsP
- I7ug==
-X-Gm-Message-State: APjAAAX4kSGolOZvLpmearK4L4W6gg+/xqLDMzA5EKDTIV58au8073pS
- BoGJY3Oz8VFaXKOdWRO4hxbzyQ==
-X-Google-Smtp-Source: APXvYqwREJVP2GbyCg/6FXksJwBQ7zGgd1HfpYrdxGm2nXuyGb9IrjXUFxsO9HicW8AQCtYZQhoggQ==
-X-Received: by 2002:adf:ee4f:: with SMTP id w15mr20897350wro.378.1571667461332; 
- Mon, 21 Oct 2019 07:17:41 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:516c:4b89:6e4b:aa56?
- ([2a01:e34:ed2f:f020:516c:4b89:6e4b:aa56])
- by smtp.googlemail.com with ESMTPSA id m18sm17882307wrg.97.2019.10.21.07.17.35
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 21 Oct 2019 07:17:40 -0700 (PDT)
-Subject: Re: [PATCH 0/7] add support for clocksource/clockevent DT selection
-To: Claudiu.Beznea@microchip.com, robh+dt@kernel.org, mark.rutland@arm.com,
- linux@armlinux.org.uk, nsekhar@ti.com, bgolaszewski@baylibre.com,
- monstr@monstr.eu, john@phrozen.org, ralf@linux-mips.org,
- paul.burton@mips.com, jhogan@kernel.org, lftan@altera.com,
- tglx@linutronix.de, vgupta@synopsys.com, marc.zyngier@arm.com,
- patrice.chotard@st.com, mcoquelin.stm32@gmail.com, alexandre.torgue@st.com,
- eric@anholt.net, wahrenst@gmx.net, f.fainelli@gmail.com, rjui@broadcom.com,
- sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com,
- linus.walleij@linaro.org, shc_work@mail.ru, kgene@kernel.org,
- krzk@kernel.org, ysato@users.sourceforge.jp, liviu.dudau@arm.com,
- sudeep.holla@arm.com, lorenzo.pieralisi@arm.com, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com, baohua@kernel.org, Nicolas.Ferre@microchip.com,
- alexandre.belloni@bootlin.com, Ludovic.Desroches@microchip.com,
- baruch@tkos.co.il, u.kleine-koenig@pengutronix.de, guoren@kernel.org,
- kaloz@openwrt.org, khalasa@piap.pl, ssantosh@kernel.org, vz@mleia.com,
- slemieux.tyco@gmail.com, khilman@baylibre.com, avifishman70@gmail.com,
- tmaimon77@gmail.com, tali.perry1@gmail.com, venture@google.com,
- yuenn@google.com, benjaminfair@google.com, afaerber@suse.de,
- manivannan.sadhasivam@linaro.org, narmstrong@baylibre.com,
- agross@kernel.org, palmer@sifive.com, aou@eecs.berkeley.edu,
- heiko@sntech.de, orsonzhai@gmail.com, baolin.wang@linaro.org,
- zhang.lyra@gmail.com, maxime.ripard@bootlin.com, wens@csie.org,
- thierry.reding@gmail.com, jonathanh@nvidia.com, linux@prisktech.co.nz,
- john.stultz@linaro.org, sboyd@kernel.org, matthias.bgg@gmail.com
-References: <1568123236-767-1-git-send-email-claudiu.beznea@microchip.com>
- <c3a68a08-d134-cd28-c8af-f757628e07f1@linaro.org>
- <72edc5fd-df05-cba5-5aa7-39da1709415b@microchip.com>
- <620a19d5-73b8-709d-9eec-49274ac23e51@microchip.com>
- <187d7020-fbe9-7984-2358-8a70faef019f@microchip.com>
- <14df6e5d-19ef-4ebc-fd11-9953bc3fc44e@linaro.org>
- <7071b6fa-f7ed-c879-4a43-44100dbe6121@microchip.com>
- <8e9f709f-2ded-c666-26e0-9235d6107c34@linaro.org>
- <215a1cd3-b1a8-5171-d70c-8d8081038e7f@microchip.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Openpgp: preference=signencrypt
-Autocrypt: addr=daniel.lezcano@linaro.org; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <99688909-929a-a1c2-5dfe-be98b50b6328@linaro.org>
-Date: Mon, 21 Oct 2019 16:17:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <215a1cd3-b1a8-5171-d70c-8d8081038e7f@microchip.com>
-Content-Language: en-US
+ id 1iMa8Q-0003Ll-Oq; Mon, 21 Oct 2019 16:02:22 +0000
+Received: from localhost.localdomain (unknown [194.230.155.217])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3D5ED2084B;
+ Mon, 21 Oct 2019 16:02:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1571673738;
+ bh=x3DZeADFnnRoLnhNTWxmX1HBbTzDnaIwqp/8ZaBzgjk=;
+ h=From:To:Cc:Subject:Date:From;
+ b=diiUm3G9bTEbBnzryrGvrmiChQQlzHKCAWwNI84RzWHhdhFUT9i7/QReQ42jHaGJa
+ kmwZ3GLMUpNMlPGVKsiaU8wNspY7/jkQsMg6/HfJFx0CIeVmvH/kYocYKKBpMsFgR3
+ N7UjkFL/yO2JFqMSLZGZvkdwnDQlctsDk4lyx9fk=
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH v4 1/2] dt-bindings: pwm: Convert PWM bindings to json-schema
+Date: Mon, 21 Oct 2019 18:02:06 +0200
+Message-Id: <20191021160207.18026-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_071744_389176_C3D84853 
-X-CRM114-Status: GOOD (  19.17  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191021_090218_860717_0F71D75A 
+X-CRM114-Status: GOOD (  17.09  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -210,6 +68,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -221,68 +80,632 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: uclinux-h8-devel@lists.sourceforge.jp, devicetree@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, openbmc@lists.ozlabs.org, linux-oxnas@groups.io,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-tegra@vger.kernel.org, nios2-dev@lists.rocketboards.org,
- linux-riscv@lists.infradead.org, linux-snps-arc@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gMjEvMTAvMjAxOSAxMDo1OCwgQ2xhdWRpdS5CZXpuZWFAbWljcm9jaGlwLmNvbSB3cm90ZToK
-PiBIaSBEYW5pZWwsCj4gCj4gT24gMTguMTAuMjAxOSAyMzoyNCwgRGFuaWVsIExlemNhbm8gd3Jv
-dGU6Cj4+IEhpIENsYXVkaXUsCj4+Cj4+IE9uIDE1LzEwLzIwMTkgMTE6MjMsIENsYXVkaXUuQmV6
-bmVhQG1pY3JvY2hpcC5jb20gd3JvdGU6Cj4+Cj4+IFsgLi4uIF0KPj4KPj4+IFRoZSB0aW1lciBj
-bG9jayBzb3VyY2UgY291bGQgYmUgZGl2aWRlZCBieSBNUi5QUkVTICsgMS4KPj4+Cj4+PiBTbywg
-SSB1c2VkIHRoZSBjbG9jay1mcmVxdWVuY3kgRFQgYmluZGluZyB0byBsZXQgdXNlciBjaG9vc2Ug
-dGhlIHRpbWVyJ3MKPj4+IGZyZXF1ZW5jeS4gQmFzZWQgb24gdGhlIHZhbHVlIHByb3ZpZGVkIHZp
-YSB0aGlzIERUIGJpbmRpbmcgdGhlIGJlc3QgY2xvY2sKPj4+IHNvdXJjZSBhbmQgcHJlc2NhbGVy
-IGlzIGNob3NlbiB2aWEgbWNocF9waXQ2NGJfcHJlc19wcmVwYXJlKCkgZnVuY3Rpb24uCj4+Cj4+
-IEknbSB3aWxsaW5nIHRvIHRha2UgdGhlIGRyaXZlciBidXQgSSBkb3VidCB0aGUgcHVycG9zZSBv
-ZiB0aGUKPj4gY2xvY2stZnJlcXVlbmN5IGlzIHRvIGxldCB0aGUgdXNlciBjaG9vc2UgdGhlIGZy
-ZXF1ZW5jeS4KPj4KPiAKPiBJIGZvdW5kIHRoaXMgYXBwcm9hY2ggaW4gdGhlIGZvbGxvd2luZyBh
-bHJlYWR5IGludGVncmF0ZWQgZHJpdmVyczoKPiBkcml2ZXJzL2Nsb2Nrc291cmNlL2FybXY3bV9z
-eXN0aWNrLmMKPiBkcml2ZXJzL2Nsb2Nrc291cmNlL2JjbTI4MzVfdGltZXIuYwo+IGRyaXZlcnMv
-Y2xvY2tzb3VyY2UvYmNtX2tvbmFfdGltZXIuYwo+IGRyaXZlcnMvY2xvY2tzb3VyY2UvbWlwcy1n
-aWMtdGltZXIuYwo+IGRyaXZlcnMvY2xvY2tzb3VyY2UvbXBzMi10aW1lci5jCj4gZHJpdmVycy9j
-bG9ja3NvdXJjZS90aW1lci1xY29tLmMKPiBkcml2ZXJzL2Nsb2Nrc291cmNlL2FybV9hcmNoX3Rp
-bWVyLmMKPiAKPiBMb29raW5nIHRocm91Z2ggdGhlIGRvY3VtZW50YXRpb24gb2YgdGhlc2UsIG1v
-c3Qgb2YgdGhlbSBkb2N1bWVudCB0aGlzIERUCj4gcHJvcGVydHkgYXMgdGhlIGZyZXF1ZW5jeSBv
-ZiB0aGUgY2xvY2sgdGhhdCBkcml2ZXJzIHRoZSB0aW1lciwgYnV0IG5vbmUgb2YKPiB0aGVtIHNl
-ZW1zIHRvIGhhdmUgc29tZSBJUCBpbnRlcm5hbCBkaXZpZGVycyBzbyB0aGF0IHRoZSB0aW1lciB0
-byB0aWNrIGF0Cj4gZGlmZmVyZW50IGZyZXF1ZW5jeSB0aGFuIHRoZSBjbG9jayB0aGF0IGZlZWRz
-IHRoZSBJUC4gRnJvbSB0aGUKPiBkb2N1bWVudGF0aW9uIG9mIHRoZSBhYm92ZSBkcml2ZXJzOwo+
-IGRyaXZlcnMvY2xvY2tzb3VyY2UvYXJtdjdtX3N5c3RpY2suYwo+IAktIGNsb2NrLWZyZXF1ZW5j
-eSA6IFRoZSByYXRlIGluIEhaIGluIGlucHV0IG9mIHRoZSBBUk0gU3lzVGljawo+IAo+IGRyaXZl
-cnMvY2xvY2tzb3VyY2UvYmNtMjgzNV90aW1lci5jCj4gCS0gY2xvY2stZnJlcXVlbmN5IDogVGhl
-IGZyZXF1ZW5jeSBvZiB0aGUgY2xvY2sgdGhhdCBkcml2ZXMgdGhlIGNvdW50ZXIsIGluCj4gSHou
-Cj4gZHJpdmVycy9jbG9ja3NvdXJjZS9iY21fa29uYV90aW1lci5jCj4gCS0gY2xvY2stZnJlcXVl
-bmN5OiBmcmVxdWVuY3kgdGhhdCB0aGUgY2xvY2sgb3BlcmF0ZXMKPiAKPiBkcml2ZXJzL2Nsb2Nr
-c291cmNlL21pcHMtZ2ljLXRpbWVyLmMKPiAJY2xvY2stZnJlcXVlbmN5IDogQ2xvY2sgZnJlcXVl
-bmN5IGF0IHdoaWNoIHRoZSBHSUMgdGltZXJzIG9wZXJhdGUuCj4gZHJpdmVycy9jbG9ja3NvdXJj
-ZS9tcHMyLXRpbWVyLmMKPiAJLSBjbG9jay1mcmVxdWVuY3kgOiBUaGUgcmF0ZSBpbiBIWiBpbiBp
-bnB1dCBvZiB0aGUgQVJNIE1QUzIgdGltZXIKPiAKPiBkcml2ZXJzL2Nsb2Nrc291cmNlL3RpbWVy
-LXFjb20uYwo+IAktIGNsb2NrLWZyZXF1ZW5jeSA6IFRoZSBmcmVxdWVuY3kgb2YgdGhlIGRlYnVn
-IHRpbWVyIGFuZCB0aGUgZ2VuZXJhbAo+IHB1cnBvc2UKPiAgICAgICAgICAgICAgICAgICAgIHRp
-bWVyKHMpIGluIEh6IGluIHRoYXQgb3JkZXIuCj4gCj4gCj4gVGhpcyBpcyB3aHkgSSBhbHNvIGNo
-b3NlIHRoaXMgRFQgYmluZGluZ3MuCj4gCj4gSWYgeW91IHdhbnQgSSBjYW4gc3RpY2sgdG8gYSBm
-aXhlZCBmcmVxdWVuY3kgaGFyZCBjb2RlZCBpbiB0aGUgZHJpdmVyLgo+IFBsZWFzZSBsZXQgbWUg
-a25vdyBpZiB0aGlzIHdvdWxkIGJlIE9LIGZvciB5b3UuCgpZZXMsIHRoZSBjbG9jay1mcmVxdWVu
-Y3kgaXMgdXNlZCB0byBzcGVjaWZ5IHRoZSBmcmVxdWVuY3kgd2hlbiB0aGUKaW5mb3JtYXRpb24g
-Y2FuIG5vdCBiZSByZXRyaWV2ZWQgZnJvbSB0aGUgY2xvY2suIFRoZSBnb2FsIGlzIG5vdCB0bwpz
-cGVjaWZ5IGEgZnJlcXVlbmN5IGFuZCBjb21wdXRlIGZyb20gdGhlcmUgYSBwcmVzY2FsYXIgdmFs
-dWUuCgpIYXJkY29kaW5nIHRoZSBmcmVxdWVuY3kgaXMgZmluZSBvciBoYXJkY29kZSB0aGUgZGl2
-aWRlciBhbmQgY29tcHV0ZSB0aGUKZnJlcXVlbmN5IGZyb20gdGhlIGNsb2NrIHJhdGUuCgoKCi0t
-IAogPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNv
-ZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29r
-LmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5h
-cm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxv
-ZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4
-LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcmlzY3YK
+Convert generic PWM controller bindings to DT schema format using
+json-schema.  The consumer bindings are provided by dt-schema.
+
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Acked-by: Stephen Boyd <sboyd@kernel.org>
+Acked-by: Paul Walmsley <paul.walmsley@sifive.com>
+
+---
+
+Changes since v3:
+1. Remove pwm-consumers.yaml as they do not give anything new except
+   description.
+2. Leave pwm.txt with consumers description.
+3. Add acks.
+
+Changes since v2:
+1. Change also pwm-sprd.txt
+
+Changes since v1:
+1. Indent example with four spaces (more readable),
+2. Change pattern for pwm nodes,
+3. Remove $ref from #cells.
+---
+ .../bindings/display/bridge/ti,sn65dsi86.txt  |  2 +-
+ .../bindings/pwm/atmel-hlcdc-pwm.txt          |  2 +-
+ .../devicetree/bindings/pwm/atmel-pwm.txt     |  2 +-
+ .../devicetree/bindings/pwm/atmel-tcb-pwm.txt |  2 +-
+ .../bindings/pwm/brcm,bcm7038-pwm.txt         |  2 +-
+ .../bindings/pwm/brcm,iproc-pwm.txt           |  2 +-
+ .../devicetree/bindings/pwm/brcm,kona-pwm.txt |  2 +-
+ .../devicetree/bindings/pwm/img-pwm.txt       |  2 +-
+ .../devicetree/bindings/pwm/imx-pwm.txt       |  2 +-
+ .../devicetree/bindings/pwm/imx-tpm-pwm.txt   |  2 +-
+ .../bindings/pwm/lpc1850-sct-pwm.txt          |  2 +-
+ .../devicetree/bindings/pwm/mxs-pwm.txt       |  2 +-
+ .../bindings/pwm/nvidia,tegra20-pwm.txt       |  2 +-
+ .../bindings/pwm/nxp,pca9685-pwm.txt          |  2 +-
+ .../devicetree/bindings/pwm/pwm-bcm2835.txt   |  2 +-
+ .../devicetree/bindings/pwm/pwm-berlin.txt    |  2 +-
+ .../devicetree/bindings/pwm/pwm-fsl-ftm.txt   |  2 +-
+ .../devicetree/bindings/pwm/pwm-hibvt.txt     |  2 +-
+ .../devicetree/bindings/pwm/pwm-lp3943.txt    |  2 +-
+ .../devicetree/bindings/pwm/pwm-mediatek.txt  |  2 +-
+ .../devicetree/bindings/pwm/pwm-meson.txt     |  2 +-
+ .../devicetree/bindings/pwm/pwm-mtk-disp.txt  |  2 +-
+ .../bindings/pwm/pwm-omap-dmtimer.txt         |  2 +-
+ .../devicetree/bindings/pwm/pwm-rockchip.txt  |  2 +-
+ .../devicetree/bindings/pwm/pwm-sifive.txt    |  2 +-
+ .../devicetree/bindings/pwm/pwm-stm32-lp.txt  |  2 +-
+ .../devicetree/bindings/pwm/pwm-stm32.txt     |  2 +-
+ .../devicetree/bindings/pwm/pwm-tiecap.txt    |  2 +-
+ .../devicetree/bindings/pwm/pwm-tiehrpwm.txt  |  2 +-
+ .../devicetree/bindings/pwm/pwm-zx.txt        |  2 +-
+ Documentation/devicetree/bindings/pwm/pwm.txt | 11 +------
+ .../devicetree/bindings/pwm/pwm.yaml          | 29 +++++++++++++++++++
+ .../bindings/pwm/renesas,pwm-rcar.yaml        |  2 +-
+ .../bindings/pwm/renesas,tpu-pwm.yaml         |  2 +-
+ .../devicetree/bindings/pwm/spear-pwm.txt     |  2 +-
+ .../devicetree/bindings/pwm/st,stmpe-pwm.txt  |  2 +-
+ .../devicetree/bindings/pwm/ti,twl-pwm.txt    |  2 +-
+ .../devicetree/bindings/pwm/ti,twl-pwmled.txt |  2 +-
+ .../devicetree/bindings/pwm/vt8500-pwm.txt    |  2 +-
+ .../devicetree/bindings/timer/ingenic,tcu.txt |  2 +-
+ 40 files changed, 68 insertions(+), 48 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pwm/pwm.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/bridge/ti,sn65dsi86.txt b/Documentation/devicetree/bindings/display/bridge/ti,sn65dsi86.txt
+index 0a3fbb53a16e..8ec4a7f2623a 100644
+--- a/Documentation/devicetree/bindings/display/bridge/ti,sn65dsi86.txt
++++ b/Documentation/devicetree/bindings/display/bridge/ti,sn65dsi86.txt
+@@ -21,7 +21,7 @@ Optional properties:
+ - #gpio-cells    : Should be two. The first cell is the pin number and
+                    the second cell is used to specify flags.
+                    See ../../gpio/gpio.txt for more information.
+-- #pwm-cells : Should be one. See ../../pwm/pwm.txt for description of
++- #pwm-cells : Should be one. See ../../pwm/pwm.yaml for description of
+                the cell formats.
+ 
+ - clock-names: should be "refclk"
+diff --git a/Documentation/devicetree/bindings/pwm/atmel-hlcdc-pwm.txt b/Documentation/devicetree/bindings/pwm/atmel-hlcdc-pwm.txt
+index cfda0d57d302..afa501bf7f94 100644
+--- a/Documentation/devicetree/bindings/pwm/atmel-hlcdc-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/atmel-hlcdc-pwm.txt
+@@ -10,7 +10,7 @@ Required properties:
+  - pinctrl-0: should contain the pinctrl states described by pinctrl
+    default.
+  - #pwm-cells: should be set to 3. This PWM chip use the default 3 cells
+-   bindings defined in pwm.txt in this directory.
++   bindings defined in pwm.yaml in this directory.
+ 
+ Example:
+ 
+diff --git a/Documentation/devicetree/bindings/pwm/atmel-pwm.txt b/Documentation/devicetree/bindings/pwm/atmel-pwm.txt
+index 591ecdd39c7b..fbb5325be1f0 100644
+--- a/Documentation/devicetree/bindings/pwm/atmel-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/atmel-pwm.txt
+@@ -7,7 +7,7 @@ Required properties:
+     - "atmel,sama5d2-pwm"
+     - "microchip,sam9x60-pwm"
+   - reg: physical base address and length of the controller's registers
+-  - #pwm-cells: Should be 3. See pwm.txt in this directory for a
++  - #pwm-cells: Should be 3. See pwm.yaml in this directory for a
+     description of the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/atmel-tcb-pwm.txt b/Documentation/devicetree/bindings/pwm/atmel-tcb-pwm.txt
+index 8031148bcf85..985fcc65f8c4 100644
+--- a/Documentation/devicetree/bindings/pwm/atmel-tcb-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/atmel-tcb-pwm.txt
+@@ -2,7 +2,7 @@ Atmel TCB PWM controller
+ 
+ Required properties:
+ - compatible: should be "atmel,tcb-pwm"
+-- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 3. See pwm.yaml in this directory for a description of
+   the cells format. The only third cell flag supported by this binding is
+   PWM_POLARITY_INVERTED.
+ - tc-block: The Timer Counter block to use as a PWM chip.
+diff --git a/Documentation/devicetree/bindings/pwm/brcm,bcm7038-pwm.txt b/Documentation/devicetree/bindings/pwm/brcm,bcm7038-pwm.txt
+index d9254a6da5ed..0e662d7f6bd1 100644
+--- a/Documentation/devicetree/bindings/pwm/brcm,bcm7038-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/brcm,bcm7038-pwm.txt
+@@ -4,7 +4,7 @@ Required properties:
+ 
+ - compatible: must be "brcm,bcm7038-pwm"
+ - reg: physical base address and length for this controller
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description
+   of the cells format
+ - clocks: a phandle to the reference clock for this block which is fed through
+   its internal variable clock frequency generator
+diff --git a/Documentation/devicetree/bindings/pwm/brcm,iproc-pwm.txt b/Documentation/devicetree/bindings/pwm/brcm,iproc-pwm.txt
+index 21f75bbd6dae..655f6cd4ef46 100644
+--- a/Documentation/devicetree/bindings/pwm/brcm,iproc-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/brcm,iproc-pwm.txt
+@@ -6,7 +6,7 @@ Required Properties :
+ - compatible: must be "brcm,iproc-pwm"
+ - reg: physical base address and length of the controller's registers
+ - clocks: phandle + clock specifier pair for the external clock
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a
+   description of the cells format.
+ 
+ Refer to clocks/clock-bindings.txt for generic clock consumer properties.
+diff --git a/Documentation/devicetree/bindings/pwm/brcm,kona-pwm.txt b/Documentation/devicetree/bindings/pwm/brcm,kona-pwm.txt
+index 8eae9fe7841c..c42eecfc81ed 100644
+--- a/Documentation/devicetree/bindings/pwm/brcm,kona-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/brcm,kona-pwm.txt
+@@ -6,7 +6,7 @@ Required Properties :
+ - compatible: should contain "brcm,kona-pwm"
+ - reg: physical base address and length of the controller's registers
+ - clocks: phandle + clock specifier pair for the external clock
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a
+   description of the cells format.
+ 
+ Refer to clocks/clock-bindings.txt for generic clock consumer properties.
+diff --git a/Documentation/devicetree/bindings/pwm/img-pwm.txt b/Documentation/devicetree/bindings/pwm/img-pwm.txt
+index fade5f26fcac..9db6de97317d 100644
+--- a/Documentation/devicetree/bindings/pwm/img-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/img-pwm.txt
+@@ -8,7 +8,7 @@ Required properties:
+   - clock-names: Must include the following entries.
+     - pwm: PWM operating clock.
+     - sys: PWM system interface clock.
+-  - #pwm-cells: Should be 2. See pwm.txt in this directory for the
++  - #pwm-cells: Should be 2. See pwm.yaml in this directory for the
+ 	description of the cells format.
+   - img,cr-periph: Must contain a phandle to the peripheral control
+ 	syscon node which contains PWM control registers.
+diff --git a/Documentation/devicetree/bindings/pwm/imx-pwm.txt b/Documentation/devicetree/bindings/pwm/imx-pwm.txt
+index c61bdf8cd41b..22f1c3d8b773 100644
+--- a/Documentation/devicetree/bindings/pwm/imx-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/imx-pwm.txt
+@@ -6,7 +6,7 @@ Required properties:
+   - "fsl,imx1-pwm" for PWM compatible with the one integrated on i.MX1
+   - "fsl,imx27-pwm" for PWM compatible with the one integrated on i.MX27
+ - reg: physical base address and length of the controller's registers
+-- #pwm-cells: 2 for i.MX1 and 3 for i.MX27 and newer SoCs. See pwm.txt
++- #pwm-cells: 2 for i.MX1 and 3 for i.MX27 and newer SoCs. See pwm.yaml
+   in this directory for a description of the cells format.
+ - clocks : Clock specifiers for both ipg and per clocks.
+ - clock-names : Clock names should include both "ipg" and "per"
+diff --git a/Documentation/devicetree/bindings/pwm/imx-tpm-pwm.txt b/Documentation/devicetree/bindings/pwm/imx-tpm-pwm.txt
+index 3ba958d764ff..5bf20950a24e 100644
+--- a/Documentation/devicetree/bindings/pwm/imx-tpm-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/imx-tpm-pwm.txt
+@@ -3,7 +3,7 @@ Freescale i.MX TPM PWM controller
+ Required properties:
+ - compatible : Should be "fsl,imx7ulp-pwm".
+ - reg: Physical base address and length of the controller's registers.
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a description of the cells format.
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of the cells format.
+ - clocks : The clock provided by the SoC to drive the PWM.
+ - interrupts: The interrupt for the PWM controller.
+ 
+diff --git a/Documentation/devicetree/bindings/pwm/lpc1850-sct-pwm.txt b/Documentation/devicetree/bindings/pwm/lpc1850-sct-pwm.txt
+index 36e49d4325cd..43d9f4f08a2e 100644
+--- a/Documentation/devicetree/bindings/pwm/lpc1850-sct-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/lpc1850-sct-pwm.txt
+@@ -7,7 +7,7 @@ Required properties:
+     See ../clock/clock-bindings.txt for details.
+   - clock-names: Must include the following entries.
+     - pwm: PWM operating clock.
+-  - #pwm-cells: Should be 3. See pwm.txt in this directory for the description
++  - #pwm-cells: Should be 3. See pwm.yaml in this directory for the description
+     of the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/mxs-pwm.txt b/Documentation/devicetree/bindings/pwm/mxs-pwm.txt
+index 96cdde5f6208..1b06f86a7091 100644
+--- a/Documentation/devicetree/bindings/pwm/mxs-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/mxs-pwm.txt
+@@ -3,7 +3,7 @@ Freescale MXS PWM controller
+ Required properties:
+ - compatible: should be "fsl,imx23-pwm"
+ - reg: physical base address and length of the controller's registers
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description of
+   the cells format.
+ - fsl,pwm-number: the number of PWM devices
+ 
+diff --git a/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt b/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt
+index c57e11b8d937..0a69eadf44ce 100644
+--- a/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/nvidia,tegra20-pwm.txt
+@@ -10,7 +10,7 @@ Required properties:
+   - "nvidia,tegra210-pwm", "nvidia,tegra20-pwm": for Tegra210
+   - "nvidia,tegra186-pwm": for Tegra186
+ - reg: physical base address and length of the controller's registers
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description of
+   the cells format.
+ - clocks: Must contain one entry, for the module clock.
+   See ../clocks/clock-bindings.txt for details.
+diff --git a/Documentation/devicetree/bindings/pwm/nxp,pca9685-pwm.txt b/Documentation/devicetree/bindings/pwm/nxp,pca9685-pwm.txt
+index f84ec9d291ea..f21b55c95738 100644
+--- a/Documentation/devicetree/bindings/pwm/nxp,pca9685-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/nxp,pca9685-pwm.txt
+@@ -3,7 +3,7 @@ NXP PCA9685 16-channel 12-bit PWM LED controller
+ 
+ Required properties:
+   - compatible: "nxp,pca9685-pwm"
+-  - #pwm-cells: Should be 2. See pwm.txt in this directory for a description of
++  - #pwm-cells: Should be 2. See pwm.yaml in this directory for a description of
+     the cells format.
+     The index 16 is the ALLCALL channel, that sets all PWM channels at the same
+     time.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-bcm2835.txt b/Documentation/devicetree/bindings/pwm/pwm-bcm2835.txt
+index 8cf87d1bfca5..f5753b3f79df 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-bcm2835.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-bcm2835.txt
+@@ -6,7 +6,7 @@ Required properties:
+ - clocks: This clock defines the base clock frequency of the PWM hardware
+   system, the period and the duty_cycle of the PWM signal is a multiple of
+   the base period.
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Examples:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-berlin.txt b/Documentation/devicetree/bindings/pwm/pwm-berlin.txt
+index 82cbe16fcbbc..f01e993a498a 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-berlin.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-berlin.txt
+@@ -4,7 +4,7 @@ Required properties:
+ - compatible: should be "marvell,berlin-pwm"
+ - reg: physical base address and length of the controller's registers
+ - clocks: phandle to the input clock
+-- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 3. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-fsl-ftm.txt b/Documentation/devicetree/bindings/pwm/pwm-fsl-ftm.txt
+index 576ad002bc83..36532cd5ab25 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-fsl-ftm.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-fsl-ftm.txt
+@@ -21,7 +21,7 @@ Required properties:
+   - "fsl,vf610-ftm-pwm" for PWM compatible with the one integrated on VF610
+   - "fsl,imx8qm-ftm-pwm" for PWM compatible with the one integrated on i.MX8QM
+ - reg: Physical base address and length of the controller's registers
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of
+   the cells format.
+ - clock-names: Should include the following module clock source entries:
+     "ftm_sys" (module clock, also can be used as counter clock),
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-hibvt.txt b/Documentation/devicetree/bindings/pwm/pwm-hibvt.txt
+index daedfef09bb6..54dbc2a0e648 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-hibvt.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-hibvt.txt
+@@ -10,7 +10,7 @@ Required properties:
+ - reg: physical base address and length of the controller's registers.
+ - clocks: phandle and clock specifier of the PWM reference clock.
+ - resets: phandle and reset specifier for the PWM controller reset.
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-lp3943.txt b/Documentation/devicetree/bindings/pwm/pwm-lp3943.txt
+index 7bd9d3b12ce1..f214305a8f5e 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-lp3943.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-lp3943.txt
+@@ -2,7 +2,7 @@ TI/National Semiconductor LP3943 PWM controller
+ 
+ Required properties:
+   - compatible: "ti,lp3943-pwm"
+-  - #pwm-cells: Should be 2. See pwm.txt in this directory for a
++  - #pwm-cells: Should be 2. See pwm.yaml in this directory for a
+                 description of the cells format.
+                 Note that this hardware limits the period length to the
+                 range 6250~1600000.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+index c8501530173c..69cae11d80a6 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+@@ -9,7 +9,7 @@ Required properties:
+    - "mediatek,mt7629-pwm", "mediatek,mt7622-pwm": found on mt7629 SoC.
+    - "mediatek,mt8516-pwm": found on mt8516 SoC.
+  - reg: physical base address and length of the controller's registers.
+- - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
++ - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
+    the cell format.
+  - clocks: phandle and clock specifier of the PWM reference clock.
+  - clock-names: must contain the following, except for MT7628 which
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-meson.txt b/Documentation/devicetree/bindings/pwm/pwm-meson.txt
+index 891632354065..bd02b0a1496f 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-meson.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-meson.txt
+@@ -10,7 +10,7 @@ Required properties:
+                          or "amlogic,meson-g12a-ee-pwm"
+                          or "amlogic,meson-g12a-ao-pwm-ab"
+                          or "amlogic,meson-g12a-ao-pwm-cd"
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Optional properties:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+index 6f8af2bcc7b7..0521957c253f 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+@@ -6,7 +6,7 @@ Required properties:
+    - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
+    - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
+  - reg: physical base address and length of the controller's registers.
+- - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
++ - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
+    the cell format.
+  - clocks: phandle and clock specifier of the PWM reference clock.
+  - clock-names: must contain the following:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-omap-dmtimer.txt b/Documentation/devicetree/bindings/pwm/pwm-omap-dmtimer.txt
+index 5ccfcc82da08..d722ae3be363 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-omap-dmtimer.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-omap-dmtimer.txt
+@@ -4,7 +4,7 @@ Required properties:
+ - compatible: Shall contain "ti,omap-dmtimer-pwm".
+ - ti,timers: phandle to PWM capable OMAP timer. See timer/ti,timer.txt for info
+   about these timers.
+-- #pwm-cells: Should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Optional properties:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt b/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
+index 2c5e52a5bede..f70956dea77b 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
+@@ -14,7 +14,7 @@ Required properties:
+    - For newer hardware (rk3328 and future socs): specified by name
+      - "pwm": This is used to derive the functional clock.
+      - "pclk": This is the APB bus clock.
+- - #pwm-cells: must be 2 (rk2928) or 3 (rk3288). See pwm.txt in this directory
++ - #pwm-cells: must be 2 (rk2928) or 3 (rk3288). See pwm.yaml in this directory
+    for a description of the cell format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-sifive.txt b/Documentation/devicetree/bindings/pwm/pwm-sifive.txt
+index 36447e3c9378..3d1dd7b06efc 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-sifive.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-sifive.txt
+@@ -17,7 +17,7 @@ Required properties:
+   Please refer to sifive-blocks-ip-versioning.txt for details.
+ - reg: physical base address and length of the controller's registers
+ - clocks: Should contain a clock identifier for the PWM's parent clock.
+-- #pwm-cells: Should be 3. See pwm.txt in this directory
++- #pwm-cells: Should be 3. See pwm.yaml in this directory
+   for a description of the cell format.
+ - interrupts: one interrupt per PWM channel
+ 
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-stm32-lp.txt b/Documentation/devicetree/bindings/pwm/pwm-stm32-lp.txt
+index 6521bc44a74e..4cecb8e456b6 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-stm32-lp.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-stm32-lp.txt
+@@ -8,7 +8,7 @@ See ../mfd/stm32-lptimer.txt for details about the parent node.
+ Required parameters:
+ - compatible:		Must be "st,stm32-pwm-lp".
+ - #pwm-cells:		Should be set to 3. This PWM chip uses the default 3 cells
+-			bindings defined in pwm.txt.
++			bindings defined in pwm.yaml.
+ 
+ Optional properties:
+ - pinctrl-names: 	Set to "default". An additional "sleep" state can be
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-stm32.txt b/Documentation/devicetree/bindings/pwm/pwm-stm32.txt
+index a8690bfa5e1f..f390a5ba3d3a 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-stm32.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-stm32.txt
+@@ -9,7 +9,7 @@ Required parameters:
+ - pinctrl-0: 		List of phandles pointing to pin configuration nodes for PWM module.
+ 			For Pinctrl properties see ../pinctrl/pinctrl-bindings.txt
+ - #pwm-cells:		Should be set to 3. This PWM chip uses the default 3 cells
+-			bindings defined in pwm.txt.
++			bindings defined in pwm.yaml.
+ 
+ Optional parameters:
+ - st,breakinput:	One or two <index level filter> to describe break input configurations.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-tiecap.txt b/Documentation/devicetree/bindings/pwm/pwm-tiecap.txt
+index b9a1d7402128..c7c4347a769a 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-tiecap.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-tiecap.txt
+@@ -8,7 +8,7 @@ Required properties:
+   for dra746 - compatible = "ti,dra746-ecap", "ti,am3352-ecap";
+   for 66ak2g - compatible = "ti,k2g-ecap", "ti,am3352-ecap";
+   for am654  - compatible = "ti,am654-ecap", "ti,am3352-ecap";
+-- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 3. See pwm.yaml in this directory for a description of
+   the cells format. The PWM channel index ranges from 0 to 4. The only third
+   cell flag supported by this binding is PWM_POLARITY_INVERTED.
+ - reg: physical base address and size of the registers map.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-tiehrpwm.txt b/Documentation/devicetree/bindings/pwm/pwm-tiehrpwm.txt
+index 31c4577157dd..c7e28f6d28be 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-tiehrpwm.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-tiehrpwm.txt
+@@ -7,7 +7,7 @@ Required properties:
+   for am654   - compatible = "ti,am654-ehrpwm", "ti-am3352-ehrpwm";
+   for da850   - compatible = "ti,da850-ehrpwm", "ti-am3352-ehrpwm", "ti,am33xx-ehrpwm";
+   for dra746 - compatible = "ti,dra746-ehrpwm", "ti-am3352-ehrpwm";
+-- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 3. See pwm.yaml in this directory for a description of
+   the cells format. The only third cell flag supported by this binding is
+   PWM_POLARITY_INVERTED.
+ - reg: physical base address and size of the registers map.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-zx.txt b/Documentation/devicetree/bindings/pwm/pwm-zx.txt
+index a6bcc75c9164..3c8fe7aa8269 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-zx.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-zx.txt
+@@ -7,7 +7,7 @@ Required properties:
+  - clock-names: "pclk" for PCLK, "wclk" for WCLK to the PWM controller.  The
+    PCLK is for register access, while WCLK is the reference clock for
+    calculating period and duty cycles.
+- - #pwm-cells: Should be 3. See pwm.txt in this directory for a description of
++ - #pwm-cells: Should be 3. See pwm.yaml in this directory for a description of
+    the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/pwm.txt b/Documentation/devicetree/bindings/pwm/pwm.txt
+index 8556263b8502..084886bd721e 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm.txt
+@@ -57,13 +57,4 @@ Example with optional PWM specifier for inverse polarity
+ 2) PWM controller nodes
+ -----------------------
+ 
+-PWM controller nodes must specify the number of cells used for the
+-specifier using the '#pwm-cells' property.
+-
+-An example PWM controller might look like this:
+-
+-	pwm: pwm@7000a000 {
+-		compatible = "nvidia,tegra20-pwm";
+-		reg = <0x7000a000 0x100>;
+-		#pwm-cells = <2>;
+-	};
++See pwm.yaml.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm.yaml b/Documentation/devicetree/bindings/pwm/pwm.yaml
+new file mode 100644
+index 000000000000..fa4f9de92090
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pwm/pwm.yaml
+@@ -0,0 +1,29 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pwm/pwm.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: PWM controllers (providers)
++
++maintainers:
++  - Thierry Reding <thierry.reding@gmail.com>
++
++properties:
++  $nodename:
++    pattern: "^pwm(@.*|-[0-9a-f])*$"
++
++  "#pwm-cells":
++    description:
++      Number of cells in a PWM specifier.
++
++required:
++  - "#pwm-cells"
++
++examples:
++  - |
++    pwm: pwm@7000a000 {
++        compatible = "nvidia,tegra20-pwm";
++        reg = <0x7000a000 0x100>;
++        #pwm-cells = <2>;
++    };
+diff --git a/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml b/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml
+index 272a4df4a9d1..945c14e1be35 100644
+--- a/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml
++++ b/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml
+@@ -39,7 +39,7 @@ properties:
+     maxItems: 1
+ 
+   '#pwm-cells':
+-    # should be 2. See pwm.txt in this directory for a description of
++    # should be 2. See pwm.yaml in this directory for a description of
+     # the cells format.
+     const: 2
+ 
+diff --git a/Documentation/devicetree/bindings/pwm/renesas,tpu-pwm.yaml b/Documentation/devicetree/bindings/pwm/renesas,tpu-pwm.yaml
+index 4908f004651b..4969a954993c 100644
+--- a/Documentation/devicetree/bindings/pwm/renesas,tpu-pwm.yaml
++++ b/Documentation/devicetree/bindings/pwm/renesas,tpu-pwm.yaml
+@@ -35,7 +35,7 @@ properties:
+     maxItems: 1
+ 
+   '#pwm-cells':
+-    # should be 3. See pwm.txt in this directory for a description of
++    # should be 3. See pwm.yaml in this directory for a description of
+     # the cells format. The only third cell flag supported by this binding is
+     # PWM_POLARITY_INVERTED.
+     const: 3
+diff --git a/Documentation/devicetree/bindings/pwm/spear-pwm.txt b/Documentation/devicetree/bindings/pwm/spear-pwm.txt
+index b486de2c3fe3..95894128b62f 100644
+--- a/Documentation/devicetree/bindings/pwm/spear-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/spear-pwm.txt
+@@ -5,7 +5,7 @@ Required properties:
+   - "st,spear320-pwm"
+   - "st,spear1340-pwm"
+ - reg: physical base address and length of the controller's registers
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/st,stmpe-pwm.txt b/Documentation/devicetree/bindings/pwm/st,stmpe-pwm.txt
+index cb209646bf13..f401316e0248 100644
+--- a/Documentation/devicetree/bindings/pwm/st,stmpe-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/st,stmpe-pwm.txt
+@@ -7,7 +7,7 @@ subdevices of the STMPE MFD device.
+ Required properties:
+ - compatible: should be:
+   - "st,stmpe-pwm"
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/ti,twl-pwm.txt b/Documentation/devicetree/bindings/pwm/ti,twl-pwm.txt
+index 4e32bee11201..d97ca1964e94 100644
+--- a/Documentation/devicetree/bindings/pwm/ti,twl-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/ti,twl-pwm.txt
+@@ -6,7 +6,7 @@ On TWL6030 series: PWM0 and PWM1
+ 
+ Required properties:
+ - compatible: "ti,twl4030-pwm" or "ti,twl6030-pwm"
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/ti,twl-pwmled.txt b/Documentation/devicetree/bindings/pwm/ti,twl-pwmled.txt
+index 9f4b46090782..31ca1b032ef0 100644
+--- a/Documentation/devicetree/bindings/pwm/ti,twl-pwmled.txt
++++ b/Documentation/devicetree/bindings/pwm/ti,twl-pwmled.txt
+@@ -6,7 +6,7 @@ On TWL6030 series: LED PWM (mainly used as charging indicator LED)
+ 
+ Required properties:
+ - compatible: "ti,twl4030-pwmled" or "ti,twl6030-pwmled"
+-- #pwm-cells: should be 2. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 2. See pwm.yaml in this directory for a description of
+   the cells format.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/pwm/vt8500-pwm.txt b/Documentation/devicetree/bindings/pwm/vt8500-pwm.txt
+index a76390e6df2e..4fba93ce1985 100644
+--- a/Documentation/devicetree/bindings/pwm/vt8500-pwm.txt
++++ b/Documentation/devicetree/bindings/pwm/vt8500-pwm.txt
+@@ -3,7 +3,7 @@ VIA/Wondermedia VT8500/WM8xxx series SoC PWM controller
+ Required properties:
+ - compatible: should be "via,vt8500-pwm"
+ - reg: physical base address and length of the controller's registers
+-- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
++- #pwm-cells: should be 3. See pwm.yaml in this directory for a description of
+   the cells format. The only third cell flag supported by this binding is
+   PWM_POLARITY_INVERTED.
+ - clocks: phandle to the PWM source clock
+diff --git a/Documentation/devicetree/bindings/timer/ingenic,tcu.txt b/Documentation/devicetree/bindings/timer/ingenic,tcu.txt
+index 5a4b9ddd9470..0c7bd51c19eb 100644
+--- a/Documentation/devicetree/bindings/timer/ingenic,tcu.txt
++++ b/Documentation/devicetree/bindings/timer/ingenic,tcu.txt
+@@ -42,7 +42,7 @@ Required properties:
+ - compatible: Must be one of:
+   * ingenic,jz4740-pwm
+   * ingenic,jz4725b-pwm
+-- #pwm-cells: Should be 3. See ../pwm/pwm.txt for a description of the cell
++- #pwm-cells: Should be 3. See ../pwm/pwm.yaml for a description of the cell
+   format.
+ - clocks: List of phandle & clock specifiers for the TCU clocks.
+ - clock-names: List of name strings for the TCU clocks.
+-- 
+2.17.1
+
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
