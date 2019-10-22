@@ -2,80 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0021BDFD04
-	for <lists+linux-riscv@lfdr.de>; Tue, 22 Oct 2019 07:12:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD0DBE0230
+	for <lists+linux-riscv@lfdr.de>; Tue, 22 Oct 2019 12:36:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Content-ID:MIME-Version
+	:Subject:To:References:In-Reply-To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Md9N5wrxpZ6m+/qJOzGHajJp7d38zIAYIoYuY3PU3U=; b=a3Ck2Zk+pCg67M
-	coBCO7knLuYAC7XoV0dYJEicR1B9BwMH9emgtoZ35A8hCTWzDY5z6hpsf3bAsceGWUSNjervNy8fJ
-	69ZopQfnsQsGZIV93hYbEJApm1oUbg1tdL9+7BZ6UzRNby1OBiO7uqzwUWc2RnFbpwoLhkYkDf4bF
-	qq2n4XJ1ytnYOHyEuqLJhFWpj3d9XRlukiI+VZKsENRXvuTPzuqmB8qhb3esMb9CQ64IY/jnNRs/C
-	FFghHMXkrGRpIKVTWnGFkIqxyjSh4kXWJHdgQn2CBqDY1niaMUqb0P/idEOQ29l/Lzpows/T2IM7g
-	0ET8sYeQK0c4Z4K+YtRQ==;
+	List-Owner; bh=9CRRymWZYCKQuhLTaJkAMQuk0H3AxJqNI2ynpZYyGc8=; b=Uwaa3KqD8PaMPA
+	kWjMuRDn5lsri2C8BlX7zvb8tvlhTTYyJuG+WGSvpgmKed3s4wwKAcLLMU7/dBta7x1AULBwZzFts
+	uTIR0bBlf/RIIk9lD3wWgLbPIXZeQBXjLV0DjpZe0O02XzKVy+vPWLKWkhQwclIYPlFEhk3MC2i8C
+	YEiYILMVVIW+vD6Jpdf2+kuP4gLwyHNXtX3JgaaR6wdQlFqzSXQoDx/AQti4Rqz27qUVOQR4Y4OEz
+	vd+u0K2aRcU4nsmZc0XN5XXBBzwUOQTkC7Lej5n/19+hOpZknz7iOoCgaJDG3e0Vl/pQXLqdXDGW2
+	lMjxIaOaagmIpWboAyVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMmT4-00042p-EX; Tue, 22 Oct 2019 05:12:26 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1iMrW3-0001u0-Lg; Tue, 22 Oct 2019 10:35:51 +0000
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]
+ helo=us-smtp-delivery-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMmSz-00042M-Or
- for linux-riscv@lists.infradead.org; Tue, 22 Oct 2019 05:12:24 +0000
-Received: by mail-wm1-x343.google.com with SMTP id b24so14771049wmj.5
- for <linux-riscv@lists.infradead.org>; Mon, 21 Oct 2019 22:12:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nH2VfY1Lqiadrc2d2U2Vn/NqlhRALtPWE/Zbdbc1TnI=;
- b=xVjFRrbFOm+9rQ7sBNkvTLnf8mh+shyCz1X1xTlQ2IQW+pDrw47V6hFSI2KICpfAid
- n/JZvHjeyZG3iMhrylcn3bzIvwJ8FMZ7M9B5r7Cy+eGehDN8+npI4nrSQwQrid6UVCBF
- aaOcsG61ihX4reFmYyuBRUGZ3tjasVt10+AFvQhiJfplJI3VUkyWDWCvLuarrxieI/Vv
- 9TnBMReZ9zSWtuoPpzeGq36oS2yFUVlo0wn3oZQL++puAh1+dw/F3yKZB5W5E302eR1R
- E7zai9aLmOQO5p1O6zQqAYhRHZB4zTSPQ48lXvK+DgsjZToL9ZHe7IgDAuHNfV3HKdl8
- JsgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nH2VfY1Lqiadrc2d2U2Vn/NqlhRALtPWE/Zbdbc1TnI=;
- b=OERcJcjx0mlYzRhw63PP+DRy2/mXkxknePHbZrpl2osiAQSRcDGGzcmlM1SQzcpdTf
- 6wk9omOxCLk8WvnEEI5AhZTnEIPbjOnJU0Cue6WBsluF10D1iQZltRhlHCJO+XLiFwzz
- gZ1tpCWLvx6xkP/mALg0eYQpa7Gr0/YX41HnDL9/RI8bHNHwsXtvK7yCW+xWoIXUtT2w
- aYwtAC79HTu5NLM3mUA7JsttWH3fNVRWSp7+7+CiyayBOn3ICtJ0Bbee/SDYhwyyVXwr
- gjiS3FiVN6EaQfhBJVvz/u27o1PIt73fAstprKNvC7VLIhWiWclqpuqGwYkXtKxp1QkX
- hyRg==
-X-Gm-Message-State: APjAAAWYyJSQS4uOnkoSvMNNuSY+XVjzIw2+RvlZzKsRI1U9w6rP86lp
- FJT+7hD6V/as9heFQ+aOw+sZT1t0Wlxqw7O6w2r/Pw==
-X-Google-Smtp-Source: APXvYqyPf5jpiR9Z1KOBDuHuNLy6ijvIaKHt9LrWJ4wE2wSBMdiZhVu21WKG1kgLWKi75yrLsBkiiemlZ0cfKz7SPUE=
-X-Received: by 2002:a7b:c4d3:: with SMTP id g19mr1079549wmk.24.1571721139639; 
- Mon, 21 Oct 2019 22:12:19 -0700 (PDT)
+ id 1iMrVz-0001tA-9z
+ for linux-riscv@lists.infradead.org; Tue, 22 Oct 2019 10:35:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571740544;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ULN5eSGY4MtkW08yCSqz0QqvTO9SX1bksmLq7XKOj9M=;
+ b=azJ3Q7p1XNV5UDQEiC1Bs8pmqc1ZHXN2sjin3vP+z6G0iu1Tj3KhbEMPsjLanT15sjCL07
+ 0Y8XPk9F5WMSYLVfp2o0AlqlEQMSgzieHgW5Y9T24qUmzuRYG7btOQOKk3jLRgEkTdbtTu
+ ciiPvyHDzKLTvh5NXY/uxE9dpTttBeo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-282-W9eko3ddNJq9PMAOLuqccg-1; Tue, 22 Oct 2019 06:35:41 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 75F501800D79;
+ Tue, 22 Oct 2019 10:35:39 +0000 (UTC)
+Received: from warthog.procyon.org.uk (ovpn-121-40.rdu2.redhat.com
+ [10.10.121.40])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9C7095DD61;
+ Tue, 22 Oct 2019 10:35:34 +0000 (UTC)
+Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
+ Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
+ Kingdom.
+ Registered in England and Wales under Company Registration No. 3798903
+From: David Howells <dhowells@redhat.com>
+In-Reply-To: <CAHk-=wjFozfjV34_qy3_Z155uz_Z7qFVfE8h=_9ceGU-SVk9hA@mail.gmail.com>
+References: <CAHk-=wjFozfjV34_qy3_Z155uz_Z7qFVfE8h=_9ceGU-SVk9hA@mail.gmail.com>
+ <000000000000830fe50595115344@google.com>
+ <00000000000071e2fc05951229ad@google.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>,
+ Mimi Zohar <zohar@linux.ibm.com>
+Subject: Re: WARNING: refcount bug in find_key_to_update
 MIME-Version: 1.0
-References: <20191016160649.24622-1-anup.patel@wdc.com>
- <20191016160649.24622-19-anup.patel@wdc.com>
- <b2056560-e0b8-821b-f38a-5f13704e205f@redhat.com>
-In-Reply-To: <b2056560-e0b8-821b-f38a-5f13704e205f@redhat.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Tue, 22 Oct 2019 10:42:07 +0530
-Message-ID: <CAAhSdy37JULGRtSaw1ORj-e-qn8=py2167EhHuoujjqdtCNomQ@mail.gmail.com>
-Subject: Re: [PATCH v9 18/22] RISC-V: KVM: Simplify stage2 page table
- programming
-To: Paolo Bonzini <pbonzini@redhat.com>
+Content-ID: <11433.1571740533.1@warthog.procyon.org.uk>
+Date: Tue, 22 Oct 2019 11:35:33 +0100
+Message-ID: <11434.1571740533@warthog.procyon.org.uk>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: W9eko3ddNJq9PMAOLuqccg-1
+X-Mimecast-Spam-Score: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_221221_820411_9B2EE1B3 
-X-CRM114-Status: GOOD (  18.98  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191022_033547_420924_20EE6DE1 
+X-CRM114-Status: GOOD (  12.96  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [205.139.110.61 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -89,665 +96,95 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alexander Graf <graf@amazon.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: aou@eecs.berkeley.edu,
+ syzbot <syzbot+6455648abc28dbdd1e7f@syzkaller.appspotmail.com>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
+ James Morris James Morris <jmorris@namei.org>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dhowells@redhat.com,
+ LSM List <linux-security-module@vger.kernel.org>, keyrings@vger.kernel.org,
+ linux-riscv@lists.infradead.org, "Serge E. Hallyn" <serge@hallyn.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Oct 21, 2019 at 11:01 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
->
-> On 16/10/19 18:11, Anup Patel wrote:
-> > Instead of dealing with PGD, PMD, and PTE differently in stage2
-> > page table progamming, we can simply use iterative and recursive
-> > helper functions to program stage2 page tables of any level.
-> >
-> > This patch re-implements stage2_get_leaf_entry(), stage2_set_pte(),
-> > stage2_map_page(), stage2_op_pte(), stage2_unmap_range(), and
-> > stage2_wp_range() helper functions as mentioned above.
-> >
-> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
->
-> I honestly haven't reviewed this in depth, but I definitely agree with
-> the idea.  Please squash it with the original implementation though.
+Linus Torvalds <torvalds@linux-foundation.org> wrote:
 
-Sure, I will squash patch18 (this patch) onto patch11.
+> > syzbot has bisected this bug to 0570bc8b7c9b ("Merge tag
+> >  'riscv/for-v5.3-rc1' ...")
+> 
+> Yeah, that looks unlikely. The only non-riscv changes are from
+> documentation updates and moving a config variable around.
+> 
+> Looks like the crash is quite unlikely, and only happens in one out of
+> ten runs for the ones it has happened to.
+> 
+> The backtrace looks simple enough, though:
+> 
+>   RIP: 0010:refcount_inc_checked+0x2b/0x30 lib/refcount.c:156
+>    __key_get include/linux/key.h:281 [inline]
+>    find_key_to_update+0x67/0x80 security/keys/keyring.c:1127
+>    key_create_or_update+0x4e5/0xb20 security/keys/key.c:905
+>    __do_sys_add_key security/keys/keyctl.c:132 [inline]
+>    __se_sys_add_key security/keys/keyctl.c:72 [inline]
+>    __x64_sys_add_key+0x219/0x3f0 security/keys/keyctl.c:72
+>    do_syscall_64+0xd0/0x540 arch/x86/entry/common.c:296
+>    entry_SYSCALL_64_after_hwframe+0x49/0xbe
+> 
+> which to me implies that there's some locking bug, and somebody
+> released the key without holding a lock.
 
-Regards,
-Anup
+I'm wondering if this is actually a bug in the error handling in the encrypted
+key type.  Looking in the syzbot console log, there's a lot of output from
+there prior to the crash, of which the following is an excerpt:
 
->
-> Paolo
->
-> > ---
-> >  arch/riscv/kvm/mmu.c | 469 +++++++++++++++----------------------------
-> >  1 file changed, 164 insertions(+), 305 deletions(-)
-> >
-> > diff --git a/arch/riscv/kvm/mmu.c b/arch/riscv/kvm/mmu.c
-> > index 5aa5ea5ef8f6..fe86cae4cf42 100644
-> > --- a/arch/riscv/kvm/mmu.c
-> > +++ b/arch/riscv/kvm/mmu.c
-> > @@ -21,15 +21,56 @@
-> >  #ifdef CONFIG_64BIT
-> >  #define stage2_have_pmd              true
-> >  #define stage2_gpa_size              ((phys_addr_t)(1ULL << 39))
-> > -#define stage2_cache_min_pages       2
-> > +#define stage2_pgd_levels    3
-> > +#define stage2_index_bits    9
-> >  #else
-> > -#define pmd_index(x)         0
-> > -#define pfn_pmd(x, y)                ({ pmd_t __x = { 0 }; __x; })
-> >  #define stage2_have_pmd              false
-> >  #define stage2_gpa_size              ((phys_addr_t)(1ULL << 32))
-> > -#define stage2_cache_min_pages       1
-> > +#define stage2_pgd_levels    2
-> > +#define stage2_index_bits    10
-> >  #endif
-> >
-> > +#define stage2_pte_index(addr, level) \
-> > +(((addr) >> (PAGE_SHIFT + stage2_index_bits * (level))) & (PTRS_PER_PTE - 1))
-> > +
-> > +static inline unsigned long stage2_pte_page_vaddr(pte_t pte)
-> > +{
-> > +     return (unsigned long)pfn_to_virt(pte_val(pte) >> _PAGE_PFN_SHIFT);
-> > +}
-> > +
-> > +static int stage2_page_size_to_level(unsigned long page_size, u32 *out_level)
-> > +{
-> > +     if (page_size == PAGE_SIZE)
-> > +             *out_level = 0;
-> > +     else if (page_size == PMD_SIZE)
-> > +             *out_level = 1;
-> > +     else if (page_size == PGDIR_SIZE)
-> > +             *out_level = (stage2_have_pmd) ? 2 : 1;
-> > +     else
-> > +             return -EINVAL;
-> > +
-> > +     return 0;
-> > +}
-> > +
-> > +static int stage2_level_to_page_size(u32 level, unsigned long *out_pgsize)
-> > +{
-> > +     switch (level) {
-> > +     case 0:
-> > +             *out_pgsize = PAGE_SIZE;
-> > +             break;
-> > +     case 1:
-> > +             *out_pgsize = (stage2_have_pmd) ? PMD_SIZE : PGDIR_SIZE;
-> > +             break;
-> > +     case 2:
-> > +             *out_pgsize = PGDIR_SIZE;
-> > +             break;
-> > +     default:
-> > +             return -EINVAL;
-> > +     }
-> > +
-> > +     return 0;
-> > +}
-> > +
-> >  static int stage2_cache_topup(struct kvm_mmu_page_cache *pcache,
-> >                             int min, int max)
-> >  {
-> > @@ -67,61 +108,30 @@ static void *stage2_cache_alloc(struct kvm_mmu_page_cache *pcache)
-> >       return p;
-> >  }
-> >
-> > -static int stage2_pgdp_test_and_clear_young(pgd_t *pgd)
-> > -{
-> > -     return ptep_test_and_clear_young(NULL, 0, (pte_t *)pgd);
-> > -}
-> > -
-> > -static int stage2_pmdp_test_and_clear_young(pmd_t *pmd)
-> > -{
-> > -     return ptep_test_and_clear_young(NULL, 0, (pte_t *)pmd);
-> > -}
-> > -
-> > -static int stage2_ptep_test_and_clear_young(pte_t *pte)
-> > -{
-> > -     return ptep_test_and_clear_young(NULL, 0, pte);
-> > -}
-> > -
-> >  static bool stage2_get_leaf_entry(struct kvm *kvm, gpa_t addr,
-> > -                               pgd_t **pgdpp, pmd_t **pmdpp, pte_t **ptepp)
-> > +                               pte_t **ptepp, u32 *ptep_level)
-> >  {
-> > -     pgd_t *pgdp;
-> > -     pmd_t *pmdp;
-> >       pte_t *ptep;
-> > -
-> > -     *pgdpp = NULL;
-> > -     *pmdpp = NULL;
-> > -     *ptepp = NULL;
-> > -
-> > -     pgdp = &kvm->arch.pgd[pgd_index(addr)];
-> > -     if (!pgd_val(*pgdp))
-> > -             return false;
-> > -     if (pgd_val(*pgdp) & _PAGE_LEAF) {
-> > -             *pgdpp = pgdp;
-> > -             return true;
-> > -     }
-> > -
-> > -     if (stage2_have_pmd) {
-> > -             pmdp = (void *)pgd_page_vaddr(*pgdp);
-> > -             pmdp = &pmdp[pmd_index(addr)];
-> > -             if (!pmd_present(*pmdp))
-> > -                     return false;
-> > -             if (pmd_val(*pmdp) & _PAGE_LEAF) {
-> > -                     *pmdpp = pmdp;
-> > +     u32 current_level = stage2_pgd_levels - 1;
-> > +
-> > +     *ptep_level = current_level;
-> > +     ptep = (pte_t *)kvm->arch.pgd;
-> > +     ptep = &ptep[stage2_pte_index(addr, current_level)];
-> > +     while (ptep && pte_val(*ptep)) {
-> > +             if (pte_val(*ptep) & _PAGE_LEAF) {
-> > +                     *ptep_level = current_level;
-> > +                     *ptepp = ptep;
-> >                       return true;
-> >               }
-> >
-> > -             ptep = (void *)pmd_page_vaddr(*pmdp);
-> > -     } else {
-> > -             ptep = (void *)pgd_page_vaddr(*pgdp);
-> > -     }
-> > -
-> > -     ptep = &ptep[pte_index(addr)];
-> > -     if (!pte_present(*ptep))
-> > -             return false;
-> > -     if (pte_val(*ptep) & _PAGE_LEAF) {
-> > -             *ptepp = ptep;
-> > -             return true;
-> > +             if (current_level) {
-> > +                     current_level--;
-> > +                     *ptep_level = current_level;
-> > +                     ptep = (pte_t *)stage2_pte_page_vaddr(*ptep);
-> > +                     ptep = &ptep[stage2_pte_index(addr, current_level)];
-> > +             } else {
-> > +                     ptep = NULL;
-> > +             }
-> >       }
-> >
-> >       return false;
-> > @@ -160,96 +170,37 @@ static void stage2_remote_tlb_flush(struct kvm *kvm, gpa_t addr)
-> >       preempt_enable();
-> >  }
-> >
-> > -static int stage2_set_pgd(struct kvm *kvm, gpa_t addr, const pgd_t *new_pgd)
-> > -{
-> > -     pgd_t *pgdp = &kvm->arch.pgd[pgd_index(addr)];
-> > -
-> > -     *pgdp = *new_pgd;
-> > -     if (pgd_val(*pgdp) & _PAGE_LEAF)
-> > -             stage2_remote_tlb_flush(kvm, addr);
-> > -
-> > -     return 0;
-> > -}
-> > -
-> > -static int stage2_set_pmd(struct kvm *kvm, struct kvm_mmu_page_cache *pcache,
-> > -                       gpa_t addr, const pmd_t *new_pmd)
-> > +static int stage2_set_pte(struct kvm *kvm, u32 level,
-> > +                        struct kvm_mmu_page_cache *pcache,
-> > +                        gpa_t addr, const pte_t *new_pte)
-> >  {
-> > -     int rc;
-> > -     pmd_t *pmdp;
-> > -     pgd_t new_pgd;
-> > -     pgd_t *pgdp = &kvm->arch.pgd[pgd_index(addr)];
-> > -
-> > -     if (!pgd_val(*pgdp)) {
-> > -             pmdp = stage2_cache_alloc(pcache);
-> > -             if (!pmdp)
-> > -                     return -ENOMEM;
-> > -             new_pgd = pfn_pgd(PFN_DOWN(__pa(pmdp)), __pgprot(_PAGE_TABLE));
-> > -             rc = stage2_set_pgd(kvm, addr, &new_pgd);
-> > -             if (rc)
-> > -                     return rc;
-> > -     }
-> > -
-> > -     if (pgd_val(*pgdp) & _PAGE_LEAF)
-> > -             return -EEXIST;
-> > +     u32 current_level = stage2_pgd_levels - 1;
-> > +     pte_t *next_ptep = (pte_t *)kvm->arch.pgd;
-> > +     pte_t *ptep = &next_ptep[stage2_pte_index(addr, current_level)];
-> >
-> > -     pmdp = (void *)pgd_page_vaddr(*pgdp);
-> > -     pmdp = &pmdp[pmd_index(addr)];
-> > -
-> > -     *pmdp = *new_pmd;
-> > -     if (pmd_val(*pmdp) & _PAGE_LEAF)
-> > -             stage2_remote_tlb_flush(kvm, addr);
-> > -
-> > -     return 0;
-> > -}
-> > -
-> > -static int stage2_set_pte(struct kvm *kvm,
-> > -                       struct kvm_mmu_page_cache *pcache,
-> > -                       gpa_t addr, const pte_t *new_pte)
-> > -{
-> > -     int rc;
-> > -     pte_t *ptep;
-> > -     pmd_t new_pmd;
-> > -     pmd_t *pmdp;
-> > -     pgd_t new_pgd;
-> > -     pgd_t *pgdp = &kvm->arch.pgd[pgd_index(addr)];
-> > -
-> > -     if (!pgd_val(*pgdp)) {
-> > -             pmdp = stage2_cache_alloc(pcache);
-> > -             if (!pmdp)
-> > -                     return -ENOMEM;
-> > -             new_pgd = pfn_pgd(PFN_DOWN(__pa(pmdp)), __pgprot(_PAGE_TABLE));
-> > -             rc = stage2_set_pgd(kvm, addr, &new_pgd);
-> > -             if (rc)
-> > -                     return rc;
-> > -     }
-> > +     if (current_level < level)
-> > +             return -EINVAL;
-> >
-> > -     if (pgd_val(*pgdp) & _PAGE_LEAF)
-> > -             return -EEXIST;
-> > +     while (current_level != level) {
-> > +             if (pte_val(*ptep) & _PAGE_LEAF)
-> > +                     return -EEXIST;
-> >
-> > -     if (stage2_have_pmd) {
-> > -             pmdp = (void *)pgd_page_vaddr(*pgdp);
-> > -             pmdp = &pmdp[pmd_index(addr)];
-> > -             if (!pmd_present(*pmdp)) {
-> > -                     ptep = stage2_cache_alloc(pcache);
-> > -                     if (!ptep)
-> > +             if (!pte_val(*ptep)) {
-> > +                     next_ptep = stage2_cache_alloc(pcache);
-> > +                     if (!next_ptep)
-> >                               return -ENOMEM;
-> > -                     new_pmd = pfn_pmd(PFN_DOWN(__pa(ptep)),
-> > -                                       __pgprot(_PAGE_TABLE));
-> > -                     rc = stage2_set_pmd(kvm, pcache, addr, &new_pmd);
-> > -                     if (rc)
-> > -                             return rc;
-> > +                     *ptep = pfn_pte(PFN_DOWN(__pa(next_ptep)),
-> > +                                     __pgprot(_PAGE_TABLE));
-> > +             } else {
-> > +                     if (pte_val(*ptep) & _PAGE_LEAF)
-> > +                             return -EEXIST;
-> > +                     next_ptep = (pte_t *)stage2_pte_page_vaddr(*ptep);
-> >               }
-> >
-> > -             if (pmd_val(*pmdp) & _PAGE_LEAF)
-> > -                     return -EEXIST;
-> > -
-> > -             ptep = (void *)pmd_page_vaddr(*pmdp);
-> > -     } else {
-> > -             ptep = (void *)pgd_page_vaddr(*pgdp);
-> > +             current_level--;
-> > +             ptep = &next_ptep[stage2_pte_index(addr, current_level)];
-> >       }
-> >
-> > -     ptep = &ptep[pte_index(addr)];
-> > -
-> >       *ptep = *new_pte;
-> >       if (pte_val(*ptep) & _PAGE_LEAF)
-> >               stage2_remote_tlb_flush(kvm, addr);
-> > @@ -262,26 +213,16 @@ static int stage2_map_page(struct kvm *kvm,
-> >                          gpa_t gpa, phys_addr_t hpa,
-> >                          unsigned long page_size, pgprot_t prot)
-> >  {
-> > +     int ret;
-> > +     u32 level = 0;
-> >       pte_t new_pte;
-> > -     pmd_t new_pmd;
-> > -     pgd_t new_pgd;
-> > -
-> > -     if (page_size == PAGE_SIZE) {
-> > -             new_pte = pfn_pte(PFN_DOWN(hpa), prot);
-> > -             return stage2_set_pte(kvm, pcache, gpa, &new_pte);
-> > -     }
-> >
-> > -     if (stage2_have_pmd && page_size == PMD_SIZE) {
-> > -             new_pmd = pfn_pmd(PFN_DOWN(hpa), prot);
-> > -             return stage2_set_pmd(kvm, pcache, gpa, &new_pmd);
-> > -     }
-> > -
-> > -     if (page_size == PGDIR_SIZE) {
-> > -             new_pgd = pfn_pgd(PFN_DOWN(hpa), prot);
-> > -             return stage2_set_pgd(kvm, gpa, &new_pgd);
-> > -     }
-> > +     ret = stage2_page_size_to_level(page_size, &level);
-> > +     if (ret)
-> > +             return ret;
-> >
-> > -     return -EINVAL;
-> > +     new_pte = pfn_pte(PFN_DOWN(hpa), prot);
-> > +     return stage2_set_pte(kvm, level, pcache, gpa, &new_pte);
-> >  }
-> >
-> >  enum stage2_op {
-> > @@ -290,171 +231,100 @@ enum stage2_op {
-> >       STAGE2_OP_WP,           /* Write-protect */
-> >  };
-> >
-> > -static void stage2_op_pte(struct kvm *kvm, gpa_t addr, pte_t *ptep,
-> > -                       enum stage2_op op)
-> > -{
-> > -     BUG_ON(addr & (PAGE_SIZE - 1));
-> > -
-> > -     if (!pte_present(*ptep))
-> > -             return;
-> > -
-> > -     if (op == STAGE2_OP_CLEAR)
-> > -             set_pte(ptep, __pte(0));
-> > -     else if (op == STAGE2_OP_WP)
-> > -             set_pte(ptep, __pte(pte_val(*ptep) & ~_PAGE_WRITE));
-> > -     stage2_remote_tlb_flush(kvm, addr);
-> > -}
-> > -
-> > -static void stage2_op_pmd(struct kvm *kvm, gpa_t addr, pmd_t *pmdp,
-> > -                       enum stage2_op op)
-> > +static void stage2_op_pte(struct kvm *kvm, gpa_t addr,
-> > +                       pte_t *ptep, u32 ptep_level, enum stage2_op op)
-> >  {
-> > -     int i;
-> > -     pte_t *ptep;
-> > +     int i, ret;
-> > +     pte_t *next_ptep;
-> > +     u32 next_ptep_level;
-> > +     unsigned long next_page_size, page_size;
-> >
-> > -     BUG_ON(addr & (PMD_SIZE - 1));
-> > -
-> > -     if (!pmd_present(*pmdp))
-> > +     ret = stage2_level_to_page_size(ptep_level, &page_size);
-> > +     if (ret)
-> >               return;
-> >
-> > -     if (pmd_val(*pmdp) & _PAGE_LEAF)
-> > -             ptep = NULL;
-> > -     else
-> > -             ptep = (pte_t *)pmd_page_vaddr(*pmdp);
-> > -
-> > -     if (op == STAGE2_OP_CLEAR)
-> > -             set_pmd(pmdp, __pmd(0));
-> > -
-> > -     if (ptep) {
-> > -             for (i = 0; i < PTRS_PER_PTE; i++)
-> > -                     stage2_op_pte(kvm, addr + i * PAGE_SIZE, &ptep[i], op);
-> > -             if (op == STAGE2_OP_CLEAR)
-> > -                     put_page(virt_to_page(ptep));
-> > -     } else {
-> > -             if (op == STAGE2_OP_WP)
-> > -                     set_pmd(pmdp, __pmd(pmd_val(*pmdp) & ~_PAGE_WRITE));
-> > -             stage2_remote_tlb_flush(kvm, addr);
-> > -     }
-> > -}
-> > -
-> > -static void stage2_op_pgd(struct kvm *kvm, gpa_t addr, pgd_t *pgdp,
-> > -                       enum stage2_op op)
-> > -{
-> > -     int i;
-> > -     pte_t *ptep;
-> > -     pmd_t *pmdp;
-> > +     BUG_ON(addr & (page_size - 1));
-> >
-> > -     BUG_ON(addr & (PGDIR_SIZE - 1));
-> > -
-> > -     if (!pgd_val(*pgdp))
-> > +     if (!pte_val(*ptep))
-> >               return;
-> >
-> > -     ptep = NULL;
-> > -     pmdp = NULL;
-> > -     if (!(pgd_val(*pgdp) & _PAGE_LEAF)) {
-> > -             if (stage2_have_pmd)
-> > -                     pmdp = (pmd_t *)pgd_page_vaddr(*pgdp);
-> > -             else
-> > -                     ptep = (pte_t *)pgd_page_vaddr(*pgdp);
-> > -     }
-> > -
-> > -     if (op == STAGE2_OP_CLEAR)
-> > -             set_pgd(pgdp, __pgd(0));
-> > +     if (ptep_level && !(pte_val(*ptep) & _PAGE_LEAF)) {
-> > +             next_ptep = (pte_t *)stage2_pte_page_vaddr(*ptep);
-> > +             next_ptep_level = ptep_level - 1;
-> > +             ret = stage2_level_to_page_size(next_ptep_level,
-> > +                                             &next_page_size);
-> > +             if (ret)
-> > +                     return;
-> >
-> > -     if (pmdp) {
-> > -             for (i = 0; i < PTRS_PER_PMD; i++)
-> > -                     stage2_op_pmd(kvm, addr + i * PMD_SIZE, &pmdp[i], op);
-> >               if (op == STAGE2_OP_CLEAR)
-> > -                     put_page(virt_to_page(pmdp));
-> > -     } else if (ptep) {
-> > +                     set_pte(ptep, __pte(0));
-> >               for (i = 0; i < PTRS_PER_PTE; i++)
-> > -                     stage2_op_pte(kvm, addr + i * PAGE_SIZE, &ptep[i], op);
-> > +                     stage2_op_pte(kvm, addr + i * next_page_size,
-> > +                                     &next_ptep[i], next_ptep_level, op);
-> >               if (op == STAGE2_OP_CLEAR)
-> > -                     put_page(virt_to_page(ptep));
-> > +                     put_page(virt_to_page(next_ptep));
-> >       } else {
-> > -             if (op == STAGE2_OP_WP)
-> > -                     set_pgd(pgdp, __pgd(pgd_val(*pgdp) & ~_PAGE_WRITE));
-> > +             if (op == STAGE2_OP_CLEAR)
-> > +                     set_pte(ptep, __pte(0));
-> > +             else if (op == STAGE2_OP_WP)
-> > +                     set_pte(ptep, __pte(pte_val(*ptep) & ~_PAGE_WRITE));
-> >               stage2_remote_tlb_flush(kvm, addr);
-> >       }
-> >  }
-> >
-> >  static void stage2_unmap_range(struct kvm *kvm, gpa_t start, gpa_t size)
-> >  {
-> > -     pmd_t *pmdp;
-> > +     int ret;
-> >       pte_t *ptep;
-> > -     pgd_t *pgdp;
-> > +     u32 ptep_level;
-> > +     bool found_leaf;
-> > +     unsigned long page_size;
-> >       gpa_t addr = start, end = start + size;
-> >
-> >       while (addr < end) {
-> > -             pgdp = &kvm->arch.pgd[pgd_index(addr)];
-> > -             if (!pgd_val(*pgdp)) {
-> > -                     addr += PGDIR_SIZE;
-> > -                     continue;
-> > -             } else if (!(addr & (PGDIR_SIZE - 1)) &&
-> > -                       ((end - addr) >= PGDIR_SIZE)) {
-> > -                     stage2_op_pgd(kvm, addr, pgdp, STAGE2_OP_CLEAR);
-> > -                     addr += PGDIR_SIZE;
-> > -                     continue;
-> > -             }
-> > +             found_leaf = stage2_get_leaf_entry(kvm, addr,
-> > +                                                &ptep, &ptep_level);
-> > +             ret = stage2_level_to_page_size(ptep_level, &page_size);
-> > +             if (ret)
-> > +                     break;
-> >
-> > -             if (stage2_have_pmd) {
-> > -                     pmdp = (pmd_t *)pgd_page_vaddr(*pgdp);
-> > -                     if (!pmd_present(*pmdp)) {
-> > -                             addr += PMD_SIZE;
-> > -                             continue;
-> > -                     } else if (!(addr & (PMD_SIZE - 1)) &&
-> > -                                ((end - addr) >= PMD_SIZE)) {
-> > -                             stage2_op_pmd(kvm, addr, pmdp,
-> > -                                           STAGE2_OP_CLEAR);
-> > -                             addr += PMD_SIZE;
-> > -                             continue;
-> > -                     }
-> > -                     ptep = (pte_t *)pmd_page_vaddr(*pmdp);
-> > -             } else {
-> > -                     ptep = (pte_t *)pgd_page_vaddr(*pgdp);
-> > -             }
-> > +             if (!found_leaf)
-> > +                     goto next;
-> > +
-> > +             if (!(addr & (page_size - 1)) && ((end - addr) >= page_size))
-> > +                     stage2_op_pte(kvm, addr, ptep,
-> > +                                   ptep_level, STAGE2_OP_CLEAR);
-> >
-> > -             stage2_op_pte(kvm, addr, ptep, STAGE2_OP_CLEAR);
-> > -             addr += PAGE_SIZE;
-> > +next:
-> > +             addr += page_size;
-> >       }
-> >  }
-> >
-> >  static void stage2_wp_range(struct kvm *kvm, gpa_t start, gpa_t end)
-> >  {
-> > -     pmd_t *pmdp;
-> > +     int ret;
-> >       pte_t *ptep;
-> > -     pgd_t *pgdp;
-> > +     u32 ptep_level;
-> > +     bool found_leaf;
-> >       gpa_t addr = start;
-> > +     unsigned long page_size;
-> >
-> >       while (addr < end) {
-> > -             pgdp = &kvm->arch.pgd[pgd_index(addr)];
-> > -             if (!pgd_val(*pgdp)) {
-> > -                     addr += PGDIR_SIZE;
-> > -                     continue;
-> > -             } else if (!(addr & (PGDIR_SIZE - 1)) &&
-> > -                        ((end - addr) >= PGDIR_SIZE)) {
-> > -                     stage2_op_pgd(kvm, addr, pgdp, STAGE2_OP_WP);
-> > -                     addr += PGDIR_SIZE;
-> > -                     continue;
-> > -             }
-> > +             found_leaf = stage2_get_leaf_entry(kvm, addr,
-> > +                                                &ptep, &ptep_level);
-> > +             ret = stage2_level_to_page_size(ptep_level, &page_size);
-> > +             if (ret)
-> > +                     break;
-> >
-> > -             if (stage2_have_pmd) {
-> > -                     pmdp = (pmd_t *)pgd_page_vaddr(*pgdp);
-> > -                     if (!pmd_present(*pmdp)) {
-> > -                             addr += PMD_SIZE;
-> > -                             continue;
-> > -                     } else if (!(addr & (PMD_SIZE - 1)) &&
-> > -                                ((end - addr) >= PMD_SIZE)) {
-> > -                             stage2_op_pmd(kvm, addr, pmdp, STAGE2_OP_WP);
-> > -                             addr += PMD_SIZE;
-> > -                             continue;
-> > -                     }
-> > -                     ptep = (pte_t *)pmd_page_vaddr(*pmdp);
-> > -             } else {
-> > -                     ptep = (pte_t *)pgd_page_vaddr(*pgdp);
-> > -             }
-> > +             if (!found_leaf)
-> > +                     goto next;
-> > +
-> > +             if (!(addr & (page_size - 1)) && ((end - addr) >= page_size))
-> > +                     stage2_op_pte(kvm, addr, ptep,
-> > +                                   ptep_level, STAGE2_OP_WP);
-> >
-> > -             stage2_op_pte(kvm, addr, ptep, STAGE2_OP_WP);
-> > -             addr += PAGE_SIZE;
-> > +next:
-> > +             addr += page_size;
-> >       }
-> >  }
-> >
-> > @@ -490,13 +360,13 @@ int stage2_ioremap(struct kvm *kvm, gpa_t gpa, phys_addr_t hpa,
-> >                       pte = pte_wrprotect(pte);
-> >
-> >               ret = stage2_cache_topup(&pcache,
-> > -                                      stage2_cache_min_pages,
-> > +                                      stage2_pgd_levels,
-> >                                        KVM_MMU_PAGE_CACHE_NR_OBJS);
-> >               if (ret)
-> >                       goto out;
-> >
-> >               spin_lock(&kvm->mmu_lock);
-> > -             ret = stage2_set_pte(kvm, &pcache, addr, &pte);
-> > +             ret = stage2_set_pte(kvm, 0, &pcache, addr, &pte);
-> >               spin_unlock(&kvm->mmu_lock);
-> >               if (ret)
-> >                       goto out;
-> > @@ -698,7 +568,7 @@ static int kvm_set_spte_handler(struct kvm *kvm,
-> >       pte_t *pte = (pte_t *)data;
-> >
-> >       WARN_ON(size != PAGE_SIZE);
-> > -     stage2_set_pte(kvm, NULL, gpa, pte);
-> > +     stage2_set_pte(kvm, 0, NULL, gpa, pte);
-> >
-> >       return 0;
-> >  }
-> > @@ -722,20 +592,15 @@ int kvm_set_spte_hva(struct kvm *kvm, unsigned long hva, pte_t pte)
-> >  static int kvm_age_hva_handler(struct kvm *kvm,
-> >                               gpa_t gpa, u64 size, void *data)
-> >  {
-> > -     pgd_t *pgd;
-> > -     pmd_t *pmd;
-> > -     pte_t *pte;
-> > +     pte_t *ptep;
-> > +     u32 ptep_level = 0;
-> >
-> >       WARN_ON(size != PAGE_SIZE && size != PMD_SIZE && size != PGDIR_SIZE);
-> > -     if (!stage2_get_leaf_entry(kvm, gpa, &pgd, &pmd, &pte))
-> > +
-> > +     if (!stage2_get_leaf_entry(kvm, gpa, &ptep, &ptep_level))
-> >               return 0;
-> >
-> > -     if (pgd)
-> > -             return stage2_pgdp_test_and_clear_young(pgd);
-> > -     else if (pmd)
-> > -             return stage2_pmdp_test_and_clear_young(pmd);
-> > -     else
-> > -             return stage2_ptep_test_and_clear_young(pte);
-> > +     return ptep_test_and_clear_young(NULL, 0, ptep);
-> >  }
-> >
-> >  int kvm_age_hva(struct kvm *kvm, unsigned long start, unsigned long end)
-> > @@ -749,20 +614,14 @@ int kvm_age_hva(struct kvm *kvm, unsigned long start, unsigned long end)
-> >  static int kvm_test_age_hva_handler(struct kvm *kvm,
-> >                                   gpa_t gpa, u64 size, void *data)
-> >  {
-> > -     pgd_t *pgd;
-> > -     pmd_t *pmd;
-> > -     pte_t *pte;
-> > +     pte_t *ptep;
-> > +     u32 ptep_level = 0;
-> >
-> >       WARN_ON(size != PAGE_SIZE && size != PMD_SIZE);
-> > -     if (!stage2_get_leaf_entry(kvm, gpa, &pgd, &pmd, &pte))
-> > +     if (!stage2_get_leaf_entry(kvm, gpa, &ptep, &ptep_level))
-> >               return 0;
-> >
-> > -     if (pgd)
-> > -             return pte_young(*((pte_t *)pgd));
-> > -     else if (pmd)
-> > -             return pte_young(*((pte_t *)pmd));
-> > -     else
-> > -             return pte_young(*pte);
-> > +     return pte_young(*ptep);
-> >  }
-> >
-> >  int kvm_test_age_hva(struct kvm *kvm, unsigned long hva)
-> > @@ -811,7 +670,7 @@ int kvm_riscv_stage2_map(struct kvm_vcpu *vcpu, gpa_t gpa, unsigned long hva,
-> >       }
-> >
-> >       /* We need minimum second+third level pages */
-> > -     ret = stage2_cache_topup(pcache, stage2_cache_min_pages,
-> > +     ret = stage2_cache_topup(pcache, stage2_pgd_levels,
-> >                                KVM_MMU_PAGE_CACHE_NR_OBJS);
-> >       if (ret) {
-> >               kvm_err("Failed to topup stage2 cache\n");
-> >
->
+[  248.516746][T27381] encrypted_key: key user:syz not found
+[  248.524392][T27382] encrypted_key: key user:syz not found
+[  248.616141][T27392] encrypted_key: key user:syz not found
+[  248.618890][T27393] encrypted_key: key user:syz not found
+[  248.690844][T27404] encrypted_key: key user:syz not found
+[  248.739405][T27403] encrypted_key: key user:syz not found
+[  248.804881][T27417] encrypted_key: key user:syz not found
+[  248.828354][T27418] encrypted_key: keyword 'new' not allowed when called from .update method
+[  248.925249][T27427] encrypted_key: keyword 'new' not allowed when called from .update method
+[  248.928200][T27415] Bad refcount user syz
+[  248.934043][T27428] encrypted_key: key user:syz not found
+[  248.939502][T27429] encrypted_key: key user:syz not found
+[  248.968744][T27434] encrypted_key: key user:syz not found
+[  248.982201][T27415] ==================================================================
+[  248.996072][T27415] BUG: KASAN: use-after-free in refcount_inc_not_zero_checked+0x81/0x200
+
+Note that the "Bad refcount user syz" is a bit I patched in to print the type
+and description of the key that incurred the error.
+
+It's a tad difficult to say exactly what's going on since I've no idea what
+the syzbot reproducer is actually doing.
+
+#{"threaded":true,"collide":true,"repeat":true,"procs":6,"sandbox":"namespace","fault_call":-1,"tun":true,"netdev":true,"resetnet":true,"cgroups":true,"binfmt_misc":true,"close_fds":true,"tmpdir":true,"segv":true}
+perf_event_open(&(0x7f000001d000)={0x1, 0x70, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, @perf_config_ext}, 0x0, 0xffffffffffffffff, 0xffffffffffffffff, 0x0)
+keyctl$instantiate(0xc, 0x0, &(0x7f0000000100)=ANY=[@ANYBLOB='new default user:syz 04096'], 0x1, 0x0)
+r0 = add_key(&(0x7f0000000140)='encrypted\x00', &(0x7f0000000180)={'syz'}, &(0x7f0000000100), 0xca, 0xfffffffffffffffe)
+add_key$user(&(0x7f0000000040)='user\x00', &(0x7f0000000000)={'syz'}, &(0x7f0000000440)='X', 0x1, 0xfffffffffffffffe)
+keyctl$read(0xb, r0, &(0x7f0000000240)=""/112, 0x349b7f55)
+
+However, it looks like the encrypted key type is trying to access a user key,
+so maybe there's an overput there?  I'm trying to insert more debugging, but
+the test doesn't always fail.
+
+syzbot <syzbot+6455648abc28dbdd1e7f@syzkaller.appspotmail.com> wrote:
+
+> HEAD commit:    bc88f85c kthread: make __kthread_queue_delayed_work static
+> git tree:       upstream
+> console output: https://syzkaller.appspot.com/x/log.txt?x=1730584b600000
+> kernel config:  https://syzkaller.appspot.com/x/.config?x=e0ac4d9b35046343
+> dashboard link: https://syzkaller.appspot.com/bug?extid=6455648abc28dbdd1e7f
+> compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
+> syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=11c8adab600000
+
+David
+
 
 _______________________________________________
 linux-riscv mailing list
