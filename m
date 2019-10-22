@@ -2,90 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA48BE04B6
-	for <lists+linux-riscv@lfdr.de>; Tue, 22 Oct 2019 15:18:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3F88E070F
+	for <lists+linux-riscv@lfdr.de>; Tue, 22 Oct 2019 17:10:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Content-ID:MIME-Version
-	:Subject:To:References:In-Reply-To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GXIaQrw87UK+Vo70MY+CNK+DOYmczuYgbbZBHrhGEUM=; b=RnMgaPq/8TKaEa
-	WAp8YwD6+MnxGdqzmf9PGigN8/8jlqyfy5PddTfF3OG0hloMgR6eAAzQmRM0IORA4nSPZvQq1rUXm
-	KzOBk7IBQ3zASGMjdIh2DH35ReCODKPE/S0kzCbN8JiUafeicG6eKCnl+0BZdgmpA49baxNoVH1/o
-	+AURcjzT8ZHrYrLSO9EqOlbBvm5F0srlRhLR75DVVd3H9so+sL1nVOXp6kx846oD5dHy2jces4qc7
-	o2pVOSByGXjrgknrR3Dyg8cNvUp+VhPGJghv/PeyXgdCFG3H1EuN9nxEvXSc6PJT98GSfadTMSZFM
-	VnaIzeIXRAm6sPm0KhuQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=91jN9hLz44E0SIllcR3+W3/8+Kxo4Xau3UgLzglMjUg=; b=W+86XPyBWkByWl9pq3sEy4dLj
+	9/jG7TwuLxReSDX8SwbcOAbAOFs5vNs7ggt5syI9Jgq8rttcoRUUxUzSRvuKJaJsAY76IzGKcce+Q
+	BkaqT7ECwc36FZSkAyPM5kMGJShXOtk9ylUUbt4060cOHH13zbU65dksQeHe72WDUuScbu40HOsmu
+	BXK0ol+1RvVNleLALp1xU0WROPGhnoe0IODFONbO9M9s0pTkKhket00SddKVCm2ZCoxJfDEcCWLRE
+	9+6snpo88XLcfbw9Voch1wu8tS6r0NmAcsVpwz5V+2ZhCOkx9gQqQ1cgcY+wk4JFWxrm3odySfRrK
+	zvwPzDItQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMu2s-0007Uv-6t; Tue, 22 Oct 2019 13:17:54 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
+	id 1iMvnT-0006LU-CP; Tue, 22 Oct 2019 15:10:07 +0000
+Received: from mail-pf1-f193.google.com ([209.85.210.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMu2o-0007U7-Jw
- for linux-riscv@lists.infradead.org; Tue, 22 Oct 2019 13:17:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571750266;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=efljvJ2w2MdjEO93WQa9AoZJv0D+nIyDWGfcRPbJ1Lo=;
- b=I46S3I2Kg8s9JJT5urqKeI/DLMb1CaIVpy4w1dn6sabF8+A6ey4wpiJAcva95x1QDPqORq
- WCiSDzKeEtp3/0m2/YqCCDUPKAmH5pfJ50X5OnLVmLkwL7EzRlbHWnjozhVltKa4Y7RXr2
- F5fTLGerNX6moC9ki7HD8uPJ2TqRBIE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-330-HLyXQWEwMU2neTojI_a1xg-1; Tue, 22 Oct 2019 09:17:41 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 38012800D4E;
- Tue, 22 Oct 2019 13:17:39 +0000 (UTC)
-Received: from warthog.procyon.org.uk (ovpn-121-40.rdu2.redhat.com
- [10.10.121.40])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CAEDD1001B20;
- Tue, 22 Oct 2019 13:17:36 +0000 (UTC)
-Organization: Red Hat UK Ltd. Registered Address: Red Hat UK Ltd, Amberley
- Place, 107-111 Peascod Street, Windsor, Berkshire, SI4 1TE, United
- Kingdom.
- Registered in England and Wales under Company Registration No. 3798903
-From: David Howells <dhowells@redhat.com>
-In-Reply-To: <11434.1571740533@warthog.procyon.org.uk>
-References: <11434.1571740533@warthog.procyon.org.uk>
- <CAHk-=wjFozfjV34_qy3_Z155uz_Z7qFVfE8h=_9ceGU-SVk9hA@mail.gmail.com>
- <000000000000830fe50595115344@google.com>
- <00000000000071e2fc05951229ad@google.com>
-To: Mimi Zohar <zohar@linux.ibm.com>
-Subject: Re: WARNING: refcount bug in find_key_to_update
-MIME-Version: 1.0
-Content-ID: <24776.1571750256.1@warthog.procyon.org.uk>
-Date: Tue, 22 Oct 2019 14:17:36 +0100
-Message-ID: <24777.1571750256@warthog.procyon.org.uk>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: HLyXQWEwMU2neTojI_a1xg-1
-X-Mimecast-Spam-Score: 0
+ id 1iMvnP-0005ji-M5
+ for linux-riscv@lists.infradead.org; Tue, 22 Oct 2019 15:10:05 +0000
+Received: by mail-pf1-f193.google.com with SMTP id q12so10827266pff.9
+ for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 08:10:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=VpPZchWxBalhXenlomTdpWCrOTqc954uAKLWrxBCzwg=;
+ b=igyvW7jvtqUf9FJEcOtlUYyyHy00HgnYmQxTGWwzQAvUu3zy5YnFv6eVDzt3xcRrcn
+ OBgI5m3ePrG/Aaq5y5oyax0Fgg/uKKdubrUciqF0A+IoJIgiGmaRucX0hXEFyzDa9It9
+ zgGh2RWbwjpcKQm1aaWhRn9o0XZbHhRHO8rDQSJ7lK80UH/DrJ2W0Mr7WD41UI6xck1W
+ t8cJ7+CYnIvw8fk7jMSgwGQ/nsnjgmrrfrO5qTYm3Inc1NlUs3HdstAYKNjTekRoVXdT
+ PmbY4xUTre9hPEf7W7C23ig10TLN1nR++6MJBwJGlm5iV0cJ4TNzvBqI5YtoBzhLSQt6
+ ingQ==
+X-Gm-Message-State: APjAAAUHugfrYGBR0our+xSQFf+TZ0z9bzV3qbKquxQJ8KM2RzT6E2bv
+ R/GDoEovxLYjZanl7gqwDP6IlQ==
+X-Google-Smtp-Source: APXvYqy/RH57lz78tmo+obFfGFFGPfZHogTmReh9YUV/QtsrPLBStlqA39MPr3GYs1lhDAYM+t/DZA==
+X-Received: by 2002:a17:90a:a889:: with SMTP id
+ h9mr5345232pjq.61.1571757000702; 
+ Tue, 22 Oct 2019 08:10:00 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id m102sm16867880pje.5.2019.10.22.08.09.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Oct 2019 08:09:59 -0700 (PDT)
+Date: Tue, 22 Oct 2019 08:09:59 -0700 (PDT)
+X-Google-Original-Date: Tue, 22 Oct 2019 08:07:08 PDT (-0700)
+Subject: Re: [PATCH 4/8] riscv: ensure RISC-V C model definitions are passed
+ to static analyzers
+In-Reply-To: <alpine.DEB.2.21.9999.1910172138320.3026@viisi.sifive.com>
+From: Palmer Dabbelt <palmer@sifive.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Message-ID: <mhng-8e06672c-a3e1-4dde-bbe9-ba1d8ab79645@palmer-si-x1e>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_061750_726579_82E31A37 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191022_081003_725654_5E445FFD 
+X-CRM114-Status: GOOD (  15.94  )
+X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [205.139.110.120 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.193 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.193 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,57 +83,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu,
- syzbot <syzbot+6455648abc28dbdd1e7f@syzkaller.appspotmail.com>,
- Palmer Dabbelt <palmer@sifive.com>,
- syzkaller-bugs <syzkaller-bugs@googlegroups.com>,
- James Morris James Morris <jmorris@namei.org>,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dhowells@redhat.com,
- LSM List <linux-security-module@vger.kernel.org>, keyrings@vger.kernel.org,
- linux-riscv@lists.infradead.org,
- Linus Torvalds <torvalds@linux-foundation.org>,
- "Serge E. Hallyn" <serge@hallyn.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
+ luc.vanoostenryck@gmail.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Okay, I managed to catch a backtrace for this line:
+On Thu, 17 Oct 2019 21:39:29 PDT (-0700), Paul Walmsley wrote:
+> On Fri, 18 Oct 2019, Luc Van Oostenryck wrote:
+>
+>> On Thu, Oct 17, 2019 at 05:49:25PM -0700, Paul Walmsley wrote:
+>> > Static analysis tools such as sparse don't set the RISC-V C model
+>> > preprocessor directives such as "__riscv_cmodel_medany", set by the C
+>> > compilers.  This causes the static analyzers to evaluate different
+>> > preprocessor paths than C compilers would.  Fix this by defining the
+>> > appropriate C model macros in the static analyzer command lines.
+>> >
+>> > Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+>> > ---
+>> >  arch/riscv/Makefile | 2 ++
+>> >  1 file changed, 2 insertions(+)
+>> >
+>> > diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
+>> > index f5e914210245..0247a90bd4d8 100644
+>> > --- a/arch/riscv/Makefile
+>> > +++ b/arch/riscv/Makefile
+>> > @@ -47,9 +47,11 @@ KBUILD_CFLAGS += -DCONFIG_PAGE_OFFSET=$(CONFIG_PAGE_OFFSET)
+>> >
+>> >  ifeq ($(CONFIG_CMODEL_MEDLOW),y)
+>> >  	KBUILD_CFLAGS += -mcmodel=medlow
+>> > +	CHECKFLAGS += -D__riscv_cmodel_medlow
+>> >  endif
+>> >  ifeq ($(CONFIG_CMODEL_MEDANY),y)
+>> >  	KBUILD_CFLAGS += -mcmodel=medany
+>> > +	CHECKFLAGS += -D__riscv_cmodel_medany
+>>
+>> I can teach sparse about this in the following days.
+>
+> That would be great.  Would you be willing to follow up with me via E-mail
+> or mailing list post when it's fixed?  If so, then in the meantime, I'll
+> just drop this patch.
 
-	encrypted_key: key user:syz not found (-126)
+It's probably worth going through all our argument-dependent builtin 
+definitions at the same time.  They're generated by riscv_cpu_cpp_builtins(): 
+https://github.com/gcc-mirror/gcc/blob/master/gcc/config/riscv/riscv-c.c#L35 .
 
-looking like:
-
-	CPU: 0 PID: 8878 Comm: syz-executor.0 Not tainted 5.4.0-rc3+ #0
-	Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/01/2011
-	Call Trace:
-	 dump_stack+0x172/0x1f0
-	 request_master_key.isra.0.cold+0x62/0xc3
-	 encrypted_read+0x221/0x830
-	 ? get_derived_key+0xf0/0xf0
-	 ? keyctl_read_key+0x1c2/0x2b0
-	 ? __kasan_check_write+0x14/0x20
-	 ? down_read+0x109/0x430
-	 ? security_key_permission+0x8d/0xc0
-	 ? down_read_killable+0x490/0x490
-	 ? key_task_permission+0x1b5/0x3a0
-	 keyctl_read_key+0x231/0x2b0
-	 __x64_sys_keyctl+0x171/0x470
-	 do_syscall_64+0xfa/0x760
-	entry_SYSCALL_64_after_hwframe+0x49/0xbe
-
-So something somewhere is calling keyctl_read() in userspace on the encrypted
-key and that is then referring across to the user key added.
-
-Also, the encrypted key is being given the following payload:
-
-	ENCRYPTED: 'new default user:syz 04096'
-
-in at least one of the cases that encrypted_update() being called.
-
-David
-
+>
+>
+> - Paul
+>
+> _______________________________________________
+> linux-riscv mailing list
+> linux-riscv@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-riscv
 
 _______________________________________________
 linux-riscv mailing list
