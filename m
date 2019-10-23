@@ -2,76 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E2F8E0E6F
-	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 01:03:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16D89E0ED7
+	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 02:04:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3CfGWoEYRlxImaCNs+2gV/W5SH/ebayEDYueVi0v7pY=; b=a9a6eMvSNya9Zi
-	iG4IxGfuJOji3gCbWcwphXL8ng0bwlxdIrRVcOPFoBi7K1t+oEfDnKNIuMaKtQh8y6AsR1b1jYuM5
-	uBiLjlncxPY4wk/LMb5Cp+Q7pOIJyp7RUv5Yp7cC00/xrb/OpVbXwk/q7RmSPUmgh2X2CnN0/fqs+
-	nA9YHPH3SJiiQKUWxH1SZ1vKCuLrIUdhHr+3mYbM07EZ460pnAaRzV81i/40wBTPP44wPvinPjA2W
-	O4QBqnkrjXTnhW9bk42ABCsEMwPv3Hoo7OtVaJxyXSj6CD7f03nsIvVDXX0lQSCyQmIzMaGivt4oi
-	QzS3MTW1aCwyVmVDSZhQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v660pLYu39HGvv42RnEYRmsAXBi5UNRo8247Qre9v74=; b=KWUB5pA1kZjaNC
+	IWC/qou9XuXGCCVn5q5iD4MTzupYABz3BIKM9TWiFGRF7KwC1DEHHEnGeMt3F6knRNWzCDF/hRO0x
+	60+61M1hH0tkCFj/Nc5Eyal6+a0jAjANGNWjzoXgur3Lxsg3ky4YbB9laU7yU2Kg1gkBmId9LarO3
+	hJWm8WCJotzdRCcVoUVEUUEQyVAeL0x91YWkSRSLlDOF3wVTC6clzjB++OR/uuEnFmVA1gowxFqap
+	EqhlJtGZd3/royZq5TnoDnum2O8x+BYuA2VfT87SrUMJeEbMA66ha+/sFx2Hu/t4IiwRUwuOq/EQn
+	9HT2sZIcGj0Uxt1mnJfw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iN3BN-0003lb-HP; Tue, 22 Oct 2019 23:03:17 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1iN48d-0005Wk-9Q; Wed, 23 Oct 2019 00:04:31 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iN3BJ-0003km-76
- for linux-riscv@lists.infradead.org; Tue, 22 Oct 2019 23:03:14 +0000
-Received: by mail-il1-x144.google.com with SMTP id a13so2735822ilp.1
- for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 16:03:12 -0700 (PDT)
+ id 1iN48a-0005WQ-VV
+ for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 00:04:30 +0000
+Received: by mail-io1-xd41.google.com with SMTP id z19so22757936ior.0
+ for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 17:04:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:message-id:user-agent:mime-version;
- bh=FCNSpvhucdslU4xdhlUj1eji96TKzrd4QEx7zlNJdXU=;
- b=gvCCbLOIKWTljdF4xlr9PMDzTM+XPkwYupgcnkTFkWUWvEOvNUNgBK3weffnZMZNn+
- Ghs0fgjmCqPEoAg8e3W7Ff4o4zsQECeZTGFDRd83PgGZuD/lZsaPWQzEb/f0d/rfvfPo
- a/1i3Las7Uz/UnynRVaTZEl4Qbaob6K41EbYxjD0Y3pZeWTXnZc4GSEWHEHWBHxuYMsh
- 33ONw0DyDd0kEJf/T+f7G1tvAvQw7SXOHR7jxmAf/63pVXIxTuBA5rE2jn3eH76CVJVi
- F5bJcvR4qUCI1RUGpPFU9GnXtVwAnIjmbBiGPtpxLG1kbPcKx5Vcjg92d5NBp4pdBqvt
- F2Lg==
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=1rtVr/ZOhpNpvbFSPZYgwy0CM3ZRkSH7ha89fWeyBas=;
+ b=Y+boVY1hjhDRKWtrcGpFDcm0GwovVPTWbsrU2MchHjtOF7yX5Kb4Im3xw04s2HMhP6
+ pwDTJ7wiXMpBV28Pj4VO7o+mPBCGcnyZNITcfem8VeyJ34KmCNuY+39RX3ArXgcvg83l
+ ufDPIFtVbLF0kDbtdYw0ovgumUPXSmkXUTrO6CAx4g3kMiuzRIKtyW/OSBxCITcv/wYM
+ DjM30dPrY8dIvSDk4tuEtV5F6krPfdImPHc4bqzMJoIsNsOeXHbYra7kY8OElLJaQNcG
+ zqHuuH/eKwoIcU3sDgeWUl+gi4TJs8GbpztY1vSxQe8bSJg+kk0GeGAlJ+NQRTZAR14Q
+ YxTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
- :mime-version;
- bh=FCNSpvhucdslU4xdhlUj1eji96TKzrd4QEx7zlNJdXU=;
- b=EhyX8c+JIHg6/1Ag5R8Fj9I2UIKAtI8jt86hwdxzXxUHRLfiLiYLMMql/4B2HwPb18
- 5WviCrCpF8y1hgHIDO7fn7KKVAO0sJ6yJiZKVpMPmAFtVV8h8DV75Es8QmOQph7AecRw
- nXaSCKOzYCyaGgeE7K3WUikmql8YKEscjQ3lfhaVpXyePRWRA3k40fktjnDC/DROWg2x
- OP+25oZtBF+6/oyVKxlbR5Jy3NOUTQhxw2qgHVhjNEbfrbf0xbRx8exwYjDrmU1zde9h
- u08jtze/hl1ZGZ93thcfcalhgL8MU6wB37rTfzLpGXCC15EtuJLWB3dSxo47SYFEJp6K
- pXOg==
-X-Gm-Message-State: APjAAAVo6EYCaFfEsyvPv2egfkYKVF4QzC+wxWl3Qh4uhPsoR8OrzTFx
- 0+sx0LtueAkYN2MNF60Gfxfe2w==
-X-Google-Smtp-Source: APXvYqx5+7e2i1TygQBtYul2CZ+dTQLBLh4OyjITtN3933T1jRnJPAzZcgf6MWL1RshfohIFNIyYzQ==
-X-Received: by 2002:a92:b00f:: with SMTP id x15mr11505916ilh.280.1571785391511; 
- Tue, 22 Oct 2019 16:03:11 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=1rtVr/ZOhpNpvbFSPZYgwy0CM3ZRkSH7ha89fWeyBas=;
+ b=TNyvD4F1lldQy1TiqeoCPuGuSjeez93px+wfTLiCJfNdFveIdUR+tE31UQ+xs0YQ3J
+ t6kUzmEWOmm9KVI9T88PyLfUg+UYK9YMOpw2pP46PR65+5W9FnKFPLi2hhRsyOCVbcYy
+ MMMaW3jOli855zbfL/BQ+kcUor6Wktyw1Lc2ImrYN5lUthgIJLoraBGpbTiEVuNSQwz7
+ XAcfBE0YHSzhxTTWR6uZ1q4wTFOlwSzA/k2miJxDR9VSg1SRtYDpb4YnT6HJZMx3wFgz
+ 45v3FB7QMReoh+ygYrWk8LEIIKCoTG3wThdTND1uIby8S8C1ncxzZrwQumi/Uu0oPwPJ
+ hd/g==
+X-Gm-Message-State: APjAAAUamIwz7zVolvQGyQdBVkPMwNuYMa29S9mF9yPKdiuNf8isSkQg
+ wkhld8IjztB9N3v2gPcjsebv5A==
+X-Google-Smtp-Source: APXvYqzyoNKcYzwZ/8xyNs7i4pJ3CtGNzrEchhGUJe7DwTb0UAJxkLfB10L7NcRu39S/HmlD+n1LNg==
+X-Received: by 2002:a6b:d61a:: with SMTP id w26mr477097ioa.159.1571789067401; 
+ Tue, 22 Oct 2019 17:04:27 -0700 (PDT)
 Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id y5sm3011061ioa.13.2019.10.22.16.03.10
+ by smtp.gmail.com with ESMTPSA id q66sm8814241ili.69.2019.10.22.17.04.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Oct 2019 16:03:10 -0700 (PDT)
-Date: Tue, 22 Oct 2019 16:03:08 -0700 (PDT)
+ Tue, 22 Oct 2019 17:04:26 -0700 (PDT)
+Date: Tue, 22 Oct 2019 17:04:24 -0700 (PDT)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: torvalds@linux-foundation.org
-Subject: [GIT PULL] RISC-V SECCOMP support for v5.4-rc5
-Message-ID: <alpine.DEB.2.21.9999.1910221600320.25457@viisi.sifive.com>
+To: David Abdurachmanov <david.abdurachmanov@gmail.com>
+Subject: Re: [PATCH] riscv: fix fs/proc/kcore.c compilation with sparsemem
+ enabled
+In-Reply-To: <20191022162136.19076-1-david.abdurachmanov@sifive.com>
+Message-ID: <alpine.DEB.2.21.9999.1910221703540.25457@viisi.sifive.com>
+References: <20191022162136.19076-1-david.abdurachmanov@sifive.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_160313_287939_A50B2C2C 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20191022_170429_043049_7A3CDEE6 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -93,56 +98,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: david.abdurachmanov@sifive.com, linux-riscv@lists.infradead.org,
- keescook@chromium.org, linux-kernel@vger.kernel.org
+Cc: Stefan O'Rear <sorear2@gmail.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Alexandre Ghiti <alex@ghiti.fr>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ Mike Rapoport <rppt@linux.ibm.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Greentime Hu <greentime.hu@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Logan Gunthorpe <logang@deltatee.com>, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Linus,
+On Tue, 22 Oct 2019, David Abdurachmanov wrote:
 
-The following changes since commit 5bf4e52ff0317db083fafee010dc806f8d4cb0cb:
+> Failed to compile Fedora/RISCV kernel (5.4-rc3+) with sparsemem enabled:
+> 
+> fs/proc/kcore.c: In function 'read_kcore':
+> fs/proc/kcore.c:510:8: error: implicit declaration of function 'kern_addr_valid'; did you mean 'virt_addr_valid'? [-Werror=implicit-function-declaration]
+>   510 |    if (kern_addr_valid(start)) {
+>       |        ^~~~~~~~~~~~~~~
+>       |        virt_addr_valid
+> 
+> Looking at other architectures I don't see kern_addr_valid being guarded by
+> CONFIG_FLATMEM.
+> 
+> Fixes: d95f1a542c3d ("RISC-V: Implement sparsemem")
+> Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
+> Tested-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 
-  RISC-V: fix virtual address overlapped in FIXADDR_START and VMEMMAP_START (2019-10-15 22:47:41 -0700)
+Thanks, queued for v5.4-rc with Logan's Reviewed-by:.
 
-are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.4-rc5
-
-for you to fetch changes up to 7326fcbeea619b95c9b380ddee0a94f5f9ea6a48:
-
-  riscv: add support for SECCOMP and SECCOMP_FILTER (2019-10-16 08:27:25 -0700)
-
-----------------------------------------------------------------
-RISC-V SECCOMP support for v5.4-rc5
-
-This pull request contains a single change: the addition of SECCOMP
-support for RISC-V for v5.4-rc5.  Normally, I'd consider this too
-large for this point in the -rc releases.  However, we've heard that
-v5.4 is likely to be a long-term support release, and adding it in now
-should help the distribution and security folks.  The changes look
-relatively bounded, and the only reason we've been sitting on it until
-now is because we've been waiting for a trivial ack from the
-tools/testing maintainer.  That hasn't come.  Since the change to that
-subsystem is quite minor, we think it should be OK with her, so,
-sending it now.
-
-If you have a different opinion about whether this patch should go in
-now, we're fine with requeuing it for v5.5-rc1.
-
-----------------------------------------------------------------
-David Abdurachmanov (1):
-      riscv: add support for SECCOMP and SECCOMP_FILTER
-
- arch/riscv/Kconfig                            | 14 ++++++++++++++
- arch/riscv/include/asm/seccomp.h              | 10 ++++++++++
- arch/riscv/include/asm/thread_info.h          |  5 ++++-
- arch/riscv/kernel/entry.S                     | 27 +++++++++++++++++++++++++--
- arch/riscv/kernel/ptrace.c                    | 10 ++++++++++
- tools/testing/selftests/seccomp/seccomp_bpf.c |  8 +++++++-
- 6 files changed, 70 insertions(+), 4 deletions(-)
- create mode 100644 arch/riscv/include/asm/seccomp.h
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
