@@ -2,56 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E42EE11F5
-	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 08:13:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86236E1274
+	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 08:49:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k/Yqi6ZTDhf2QnloDlPivajcUm5RPVXo07Vzxg3xvJQ=; b=qI5ZW18dZ+HbZY
-	vKA/rUSCDBfWdgXmuhCOde3cmk1EP1eMl2MazYMZDHi+rVR2am/qkJt2BIlLVrNDUSy9FYu2wjCus
-	xhhBhleoEY6Q2LX3HKFNhp68hW1UFBGC++aJYsIYJyPmutGrMrpusFl2GP72C8KodsyDZ9NTNXtG3
-	A2VJz2TOwVfQgqOcP8gQqQyjGr9NkkCOCywSVlwV8A6p9qibpHrGhk0TPAM1JNJkitLhOrXzQW/Vl
-	K3L2bMreMHCueIeAMfImRqtkd7vNNCUk1HhjpwTrZndqhfKJ+WTaFM0WdB8WQQxK2fP8fPsHRo/nW
-	BcB/bEuIux2nnFsQI5tA==;
+	List-Owner; bh=lLB8fF7I/YsCbNv6NmAT7e0h3x6D+qQhGUB+b5bGVTY=; b=KdLU0VmluvG4Kr
+	kI5lQDQk/9jG/ioqk9hvOjfZQ2Z6pchiUHDfHnfm0Hk9+IseIq7zJNv9aDCljUIKSo9ZCiOp/sLoL
+	twhQSuOvzbAA6g7zIPCxF9XCTuNhFCH4bqn16HlcBoYn6Hz5ylxf/x/p1Yv/dmrGbmW6tjbEGLyK1
+	7uC+hj3cHBMg20J3qEFIij/l9Ir9vddd+p2b2fTNcaoSACci3EChh2Lhaabv0QHjM7N5SXgRakHB7
+	erSrAG5fI7mr/6ZLbJS5MuX5i8lT4EwknzzandM4QIBOJkbYM1lJZpRknadg4WToh1PRlU/pUHv8/
+	Ng9XBIRiflw0B6JhqDxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iN9t4-0002jT-A8; Wed, 23 Oct 2019 06:12:50 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1iNASW-0007q4-Mf; Wed, 23 Oct 2019 06:49:28 +0000
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iN9t0-0002iV-DG
- for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 06:12:48 +0000
-Received: by mail-wm1-x342.google.com with SMTP id r141so8732361wme.4
- for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 23:12:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=s8le1WyXyeTyUa/Z2e+egXbBte2l9NNmas2pvZ4/syo=;
- b=nLqN5enMDqEAYntQA8O/U/OLZ4Os+aQ+ZzD6WpMcCZPacskczuoFfQR/hGWkoU+qOp
- 595KTJObybNJe9Yttsbv8w+eQaSRN5172hZMY0c+ng/c8nFcuKqh0+x8h5L/o1sSCnkl
- Tzb5YM+U54tWEeSy9vlmVeLVLP1Wd0dfEMDdABMF52bEAMkxkJOjap7woq9L3SAmBg4H
- mP6BWpEyDTn4JzFMckLEhhs86iwEk9RvbU114w9e1Nx9vS/RR/8IOD0qy8YdzCfFbzxF
- PxLMZ4GLbHfN8VrRdRGJQSkXhY9qQTbLuqJ9Dt5yo7c65rL4e9gZEvI/SsXphv9Ovsn8
- y6Kg==
+ id 1iNAST-0007oy-Sf
+ for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 06:49:27 +0000
+Received: by mail-il1-x143.google.com with SMTP id t5so17857279ilh.10
+ for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 23:49:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=uTV1lJCzWFvRXETtO2mm+8BlPiNvkSuuO+tB+dJpstk=;
+ b=HEKT0OaDe7wVp2IwPmhzg9oS8ASUNGE+l9sM6GGHumKXoFvztLhKcnEVebUveLk0lE
+ ddKc0iy+VAZL/gJ/+f7zIa2P1Z+WXZxHxxuB9fDWExD3LUKHVFM50NgVxxiou+AI0T5A
+ 8Ond0kBE1Gbyptmyau6lVQk4kvxX0TooS1qkOnwxOvRKgnBxK/RVX+AGJe3u+7lWC3Xn
+ 63ox0czq78T1jQompfU6mCBzNTOvR+bR77CkQGS5x1k+W6EzFnbZPkXBybyd74hvg5jn
+ 8mkq8ZzYphYqQSDtI2zTISRY9cYM6OZ+GszrN9jUGUy3dLW/UuY0NJkpQudBJOk35Axo
+ gHgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=s8le1WyXyeTyUa/Z2e+egXbBte2l9NNmas2pvZ4/syo=;
- b=ll+hlBDLPxFgKefh13n1I1JPGMMmM9V6lZgIlePrNKk+F8OUtCLsUOqo8cjidl01LB
- ZYt0nsthzJ15wMXCBb65vTtKqB2VU/L7mTV60FGRlO9uZPD7UlCl0MrB82vvKOXrifWo
- IakE/tXAuxOsCmeIBHIw/FOEwQ3ea0p80O4C95NwtjlXwXvo4bjn3htRADyeQsudRw7w
- dGIOhF534leJDIWBa0BOyr42PEROCrhlaD7c3T86MfcCd4ALP8vuujFuaLjKPF+6bnWW
- uOstz0EtK+/K5WXka6c1ICDDN/ziV8/mjjp0gNeUkk885YsXV47c7twlA6xUoepZQbAa
- NpTA==
-X-Gm-Message-State: APjAAAX1G84f2J7xFGPnr6ARVDM4uq60yXBYiG03jIYfpI82Tt14oaOf
- wJvzNolAIqpKjibdL2qeGZ9H9VBzGtgSaggJg+Q9hA==
-X-Google-Smtp-Source: APXvYqwyEoWUB1RH8jQxZgTmcn4QkfgMMeY3guAKffsaUXZDLVEqxRSPGnVR9jTgjqmizV+GwpDTEsSdSI25dby9QBs=
-X-Received: by 2002:a7b:c4d3:: with SMTP id g19mr5690896wmk.24.1571811163897; 
- Tue, 22 Oct 2019 23:12:43 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=uTV1lJCzWFvRXETtO2mm+8BlPiNvkSuuO+tB+dJpstk=;
+ b=jJby45G6Q0LzO3w5Dhv/uHGjK5dokgEvdGxPnR1rg+IFEkLpyC5oeQB6LyNKQCf8iN
+ f+7G4z2vUdTgF/ZL6Li3KpiQs6S78Cn131DXZJacP5P4MndLFPlvzmHvE9ooGgwffcbC
+ +kjnLcVoN55PsIrv5cgfhFOCoQLf3kpONTkqrZyJl+jRWSVD3sFxcLfPmYMLakvT2yJr
+ 4/8NCElkQTQ4b+TmN9LMXEWTSciozdp+pLrH0o2P5Q6WPz/9QbwacFZzUsgyuTk2CrBi
+ 6h4Rqbmv2ks4l8pzyC2wxq7VJOlSDX630xC6l2fGXuXPW0CFlYp1iS1qXyv5HcNRecOh
+ Asdw==
+X-Gm-Message-State: APjAAAX4W32/v9XkdrvBawcr2v7k9tKUp8QkVLPsNGOchApVaRydTrb3
+ 2vOi+u0LCaoSd0ZrMCdaFdx84xpxfjw=
+X-Google-Smtp-Source: APXvYqxCUm6SxWWwGkCNKzk9zup/53mgmApuSF4MbnOGNYdFzDacNqMKt1Jgi61RPE/SKfD2UthTWA==
+X-Received: by 2002:a92:3b52:: with SMTP id i79mr18330339ila.19.1571813363853; 
+ Tue, 22 Oct 2019 23:49:23 -0700 (PDT)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id o25sm1577662ili.51.2019.10.22.23.49.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Oct 2019 23:49:23 -0700 (PDT)
+Date: Tue, 22 Oct 2019 23:49:17 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Anup Patel <anup@brainfault.org>
+Subject: Re: [PATCH v2 2/2] RISC-V: defconfig: Enable Goldfish RTC driver
+In-Reply-To: <CAAhSdy00_snfqstOg1KVookNm8kG9gW=S-7fugzv+awtk+HBmQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.21.9999.1910222348260.12442@viisi.sifive.com>
 References: <20190925063706.56175-3-anup.patel@wdc.com>
  <mhng-edb410db-fdd1-46f6-84c3-ae3b843f7e3a@palmer-si-x1c4>
  <MN2PR04MB606160F5306A5F3C5D97FB788D900@MN2PR04MB6061.namprd04.prod.outlook.com>
@@ -60,26 +70,27 @@ References: <20190925063706.56175-3-anup.patel@wdc.com>
  <alpine.DEB.2.21.9999.1910221751500.25457@viisi.sifive.com>
  <CAAhSdy3KccuzC0pV6Jy_diLwkdgb=SdHBQnsSoGrgpu6g7TCQA@mail.gmail.com>
  <alpine.DEB.2.21.9999.1910222250490.5600@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1910222250490.5600@viisi.sifive.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Wed, 23 Oct 2019 11:42:32 +0530
-Message-ID: <CAAhSdy00_snfqstOg1KVookNm8kG9gW=S-7fugzv+awtk+HBmQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] RISC-V: defconfig: Enable Goldfish RTC driver
-To: Paul Walmsley <paul.walmsley@sifive.com>
+ <CAAhSdy00_snfqstOg1KVookNm8kG9gW=S-7fugzv+awtk+HBmQ@mail.gmail.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_231246_509263_CC73AD78 
-X-CRM114-Status: GOOD (  17.52  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191022_234925_957697_457FF2B0 
+X-CRM114-Status: GOOD (  11.81  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:143 listed in]
  [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -106,59 +117,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Oct 23, 2019 at 11:30 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> On Wed, 23 Oct 2019, Anup Patel wrote:
->
-> > On Wed, Oct 23, 2019 at 6:37 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
-> >
-> > > Incidentally, just looking at drivers/platform/goldfish, that driver seems
-> > > to be some sort of Google-specific RPC driver.  Are you all really sure
-> >
-> > Nopes, it's not RPC driver.  In fact, all Goldfish virtual platform
-> > devices are MMIO devices.
->
-> Is drivers/platform/goldfish/goldfish_pipe.c required for the Goldfish RTC
-> driver or not?
+On Wed, 23 Oct 2019, Anup Patel wrote:
 
-No, it's not required.
-
+> On Wed, Oct 23, 2019 at 11:30 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
 >
-> If not, then the first patch that was sent isn't the right fix.  It would
-> be better to remove the Kbuild dependency between the code in
-> drivers/platform/goldfish and the Goldfish RTC.
+> > Is drivers/platform/goldfish/goldfish_pipe.c required for the Goldfish RTC
+> > driver or not?
+> 
+> No, it's not required.
+> 
+> > If not, then the first patch that was sent isn't the right fix.  It would
+> > be better to remove the Kbuild dependency between the code in
+> > drivers/platform/goldfish and the Goldfish RTC.
+> 
+> The common GOLDFISH kconfig option is there to specify the
+> common expectations of all GOLDFISH drivers from Linux ARCH
+> support.
 
-The common GOLDFISH kconfig option is there to specify the
-common expectations of all GOLDFISH drivers from Linux ARCH
-support.
+OK, then in that case the Goldfish RTC sounds reasonable to me.
 
-Currently, all GOLDFISH drivers require HAS_IOMEM and
-HAS_DMA support from underlying arch.
 
-If you still think that common GOLDFISH kconfig option is not
-required then please go ahead and send patch.
-
->
-> If it is required, then surely there must be a simpler RTC implementation
-> available.
-
-GOLDFISH pipe is not required so GOLDFISH RTC is certainly
-a simple RTC implementation.
-
->
-> > The problem is VirtIO spec does not define any RTC device so instead of
-> > inventing our own virtual RTC device we re-use RTC device defined in
-> > Goldfish virtual platform for QEMU virt machine. This way we can re-use
-> > the Linux Goldfish RTC driver.
->
-> With 160+ RTC drivers in the kernel tree already, we certainly agree that
-> it doesn't make sense to invent a new RTC.
->
->
-> - Paul
-
-Regards,
-Anup
+- Paul
 
 _______________________________________________
 linux-riscv mailing list
