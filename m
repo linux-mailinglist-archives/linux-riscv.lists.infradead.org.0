@@ -2,82 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3263E1086
-	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 05:24:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 669A1E11D4
+	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 07:47:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hwK5YnItBDChcrfipyzLvFWNHop5f79+WpP7zfLfNDI=; b=tnWfz1+WDrTy2y
-	bOHW7nMHkRzYL9oPNtnOM/iuNNGVoGguHexBkPB3ZBz+Aua7q5kZiJswJNZ8dgMwMct22wk3gUZsu
-	o2BUsPIG/acONmc0ZafSf3llKV7LjeN6KdYpH8pOrTWMZdiC4LS2nCJNI3J/y+xxa9oaDZXRn1M7F
-	+oc+Eno3fDwQt4PDgOMLkdj6DIrTOZJLE3oWQS9BeLdPDdD5H0k7TNdSzl5Vv6O/X0m6pzsXvWx4q
-	IwwiYRWKeDkNXzEq20BKteVJYgZOTh1nwqqI+CQpIHKHSpMrTuoaQyvVk8cPVGIYiutxv4cIhxC+U
-	dvHAAjUptrNySvksobHw==;
+	List-Owner; bh=2TnmDyxdGyiJGKIukQKJrM9Yef3AGoLkROFF0PttIT4=; b=FB+IxQn/RPa8V3
+	zi9zUPPJzi9Sbph4jgMCA4R2dLar069cWz9dGgXKpBdNAM/JlfyyUaNr2shDzYBDWjDyB4BmQ0j10
+	7LH6+RBoeGgrRYN2svppAHXT1pxjt2oj7NkhNzz1j9xDNnLmU43YqVJ9kjTmPpa6X7+enMQ0K3HjQ
+	Q/5cSuPihPsXtMyGL6BED6yZsJnlYvz0kwhFl5HpXMrV0cxgUd0xu0z+5hrIOmyCmg/AO3OKl6kBg
+	JB4VhdqsIqzK8uD9hQ1F+RyBQNBHKHZd9GDw60Rium0Uqc1Me7a2ro7V/bOvH/9yXGn/db92aIYRx
+	sC6W6KO4LaxEDINg9BJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iN7GI-0002uN-C0; Wed, 23 Oct 2019 03:24:38 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1iN9UA-00033t-N4; Wed, 23 Oct 2019 05:47:06 +0000
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iN7GE-0002tc-1o
- for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 03:24:35 +0000
-Received: by mail-wm1-x341.google.com with SMTP id 6so4977087wmf.0
- for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 20:24:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ id 1iN9U7-000330-De
+ for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 05:47:04 +0000
+Received: by mail-qt1-x842.google.com with SMTP id u22so30542147qtq.13
+ for <linux-riscv@lists.infradead.org>; Tue, 22 Oct 2019 22:47:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PoiwGNtU0nAEwpqhaQ40WOeNzy+Ug1D1A+7yaqwVZpE=;
- b=yLN/ddNFMfFhvPjBZjTwKqoSwWn/DGdu7QUqpRbP8p9LI1mFK7KIlnrmHTLH01uos+
- X0D82O2AYz2IOS9/+jyeTWKP9FcdB/e3uP6Z42DJbWTV6MQr7OkuzYq3kjk1RuEoOSOC
- eNv3Qo7LIIG+xOTLtiUJ+6EnRnxxTFzlGvAGBHGPUMmYKgEhFhfnbJFhQI1rQPdG1OiE
- d96LttnBqOssIU7NYDQc5/uF1ZD1QnrxEj/9dMaee9uPD4JB1Vjxwda0O5TfOCTW1vBp
- YBogOBQGt8j3ddQYskXwVEGM3mtoVnSL2pbeaIDRQvrjheAM3nxeNfolhNL/blZzk/9l
- TX+Q==
+ :cc:content-transfer-encoding;
+ bh=f9WOenHv0SsCyblXFz9SFK/8h5V+cleS3WS1obhs2JY=;
+ b=gxgo2Wt/VlyBqp8oFAAjLMqC7k6nO1YSO/FNF8dk3j8nQ/EyIVLKI1nKcU4jaQFYuU
+ NA+GgyhtaPNe6gPJ70LLC9kx3OcU/3gnBgfGK0MZM9a+5gYDBVXmqoNLVtk0xbQiVFv7
+ 9DgWISHTNoakaUGNQ5mW2JiN0MB7z/0Nj0axNTWpDRIwxpQi9IqSXpJcM6+kExdpncMd
+ C3PeQUmGZQqF+BXLAAtqIxAd9yebkNPNVz/Zc8vGbFjcH30VnzUH6x7eSTxlqUPm2MTT
+ wNTBO6b2qK0aD24xtQAV1IKh/FV6VleRo0XzYyJEWFl1ZPi1yEx+gLnXE1tkULKUxz2t
+ KvXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PoiwGNtU0nAEwpqhaQ40WOeNzy+Ug1D1A+7yaqwVZpE=;
- b=ScJUi28M8nqDlyT7TfkuDbT+0Xa00+hjUDFKk91e4hhW4wa3UUp1V/YQ+Fq5jjGg0S
- 3u2tsa6XhmJXH76/bz1wLUz1ZI8PJ1sao95DFG/d77feAwbOOFOlWMGvGyNwHusw2uU9
- EpHKDXwUkdQvkufGoFWAIMCS6JC3lKIAtoSGTa2SiWi6UT/jJdUKSdx6uyI7cJjtsNmb
- +04aIIJ9FIG7nDFdedyU0Dm/KsTDRNyaG20LtYqqlXT1Fyb+2Viv+aDUaiKoh/JXnCuR
- C203jcKvybnvkkjQH/x1vf4sHakvIitV/dUrNjsupKNF6hhndBYiLAIVznn0xLmdNRKl
- YGsA==
-X-Gm-Message-State: APjAAAXtFIOGQwf5LQUreEsPh31N1Yqi5AI/2xsYl7rclObm5dRpqAHl
- 1XnQf2lGiv2gTGn0IFKFCznQ9FvfJ3Ow1XQSS4ra1g==
-X-Google-Smtp-Source: APXvYqy5Sx8ql4wbo4/WWnaIsB4nlRntpQJU9X6Eo8IJsbZIxg84bb2+RxjkQXSTZmod8Omr2TCvJvSRKbaedXpuwn0=
-X-Received: by 2002:a1c:9695:: with SMTP id y143mr5676311wmd.103.1571801071659; 
- Tue, 22 Oct 2019 20:24:31 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=f9WOenHv0SsCyblXFz9SFK/8h5V+cleS3WS1obhs2JY=;
+ b=kn7XMT2u/3dXC0oyx2xzVGMGnFeIEKFp9ylPbSaYZn9+nW6+o8CYcsy6ZKR7h0o6qb
+ FyMXlYsYNx7Ux028HF1XbiyhNM0sKI4v0CxASOhfkgtWBnaASoXGiP3yvW8kNAVcLS4n
+ 85m5EOBbIvuZi9tiCR5gqv+MJgNsZ+9N4PupueSPBq7vMpwIh7Oqy1lBRCksI0TRn9NP
+ C90YDDRCiXzRpC8FzRmCN59s1MO8eGcFtUlTxNgz4YYNwwYyS32C24BaEeAZjG7+LkAc
+ zUwKt4tnL6b4LkpmyVvuEOVP52gu2Ifx6yAE+DYlyMCfUVpUCcuLHz2RToDDJKRJbLA0
+ grCA==
+X-Gm-Message-State: APjAAAWACK1+GVdU5wbD0cDrWM4pgPB2UY7Gxtr9LtGTstTcs9Mj3ynP
+ accUoaLbhmyjzk4dDcHNd5n219HyDqJdtc2tKC4=
+X-Google-Smtp-Source: APXvYqwF3Ej0HdjncpvSi+yzIRxGTr1udcCX4dDn3d3Q9Eb4jGIEwxYSlVQ4eXGb/yYYjy5FM58Xc/XHPIUIPBQLjhU=
+X-Received: by 2002:ac8:542:: with SMTP id c2mr7578807qth.338.1571809621155;
+ Tue, 22 Oct 2019 22:47:01 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190925063706.56175-3-anup.patel@wdc.com>
- <mhng-edb410db-fdd1-46f6-84c3-ae3b843f7e3a@palmer-si-x1c4>
- <MN2PR04MB606160F5306A5F3C5D97FB788D900@MN2PR04MB6061.namprd04.prod.outlook.com>
- <alpine.DEB.2.21.9999.1910221213490.28831@viisi.sifive.com>
- <17db4a6244d09abf867daf2a6c10de6a5cd58c89.camel@wdc.com>
- <alpine.DEB.2.21.9999.1910221751500.25457@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1910221751500.25457@viisi.sifive.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Wed, 23 Oct 2019 08:54:19 +0530
-Message-ID: <CAAhSdy3KccuzC0pV6Jy_diLwkdgb=SdHBQnsSoGrgpu6g7TCQA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] RISC-V: defconfig: Enable Goldfish RTC driver
-To: Paul Walmsley <paul.walmsley@sifive.com>
+References: <20191018080841.26712-1-paul.walmsley@sifive.com>
+ <20191018080841.26712-6-paul.walmsley@sifive.com>
+In-Reply-To: <20191018080841.26712-6-paul.walmsley@sifive.com>
+From: Greentime Hu <green.hu@gmail.com>
+Date: Wed, 23 Oct 2019 13:46:24 +0800
+Message-ID: <CAEbi=3dk0R3HMnqsK1mSm2bewecdHm279f9zEq1pHWLPo9tdAg@mail.gmail.com>
+Subject: Re: [PATCH v3 5/8] riscv: mark some code and data as file-static
+To: Paul Walmsley <paul.walmsley@sifive.com>, Mao Han <han_mao@c-sky.com>, 
+ Guo Ren <guoren@kernel.org>, Greentime Hu <greentime.hu@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_202434_119097_2182C0F7 
-X-CRM114-Status: GOOD (  19.81  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191022_224703_461117_F347A876 
+X-CRM114-Status: GOOD (  13.61  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
  [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (green.hu[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -91,83 +94,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- Anup Patel <Anup.Patel@wdc.com>, "palmer@sifive.com" <palmer@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "hch@infradead.org" <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "rkir@google.com" <rkir@google.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-riscv@lists.infradead.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Oct 23, 2019 at 6:37 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> On Tue, 22 Oct 2019, Alistair Francis wrote:
->
-> > I think it makese sense for this to go into Linux first.
-> >
-> > The QEMU patches are going to be accepted, just some nit picking to do
-> > first :)
-> >
-> > After that we have to wait for a PR and then a QEMU release until most
-> > people will see the change in QEMU. In that time Linux 5.4 will be
-> > released, if this can make it into 5.4 then everyone using 5.4 will get
-> > the new RTC as soon as they upgrade QEMU (QEMU provides the device
-> > tree). If this has to wait until QEMU has support then it won't be
-> > supported for users until even later.
-> >
-> > Users are generally slow to update kernels (buildroot is still using
-> > 5.1 by default for example) so the sooner changes like this go in the
-> > better.
->
-> The defconfigs are really just for kernel developers.  We expect users to
-> define their own Kconfigs for their own needs.
->
-> If using the Goldfish code really is what we all want to do (see below),
-> then the kernel patch that should go in right away -- which also has no
-> dependence on what QEMU does -- would be the first patch of this series:
->
-> https://lore.kernel.org/linux-riscv/20190925063706.56175-2-anup.patel@wdc.com/
->
-> And that should go in via whoever is maintaining the Goldfish driver, not
-> the RISC-V tree.  (It looks like drivers/platform/goldfish is completely
-> unmaintained - a red flag! - so probably someone needs to persuade Greg or
-> Andrew to take it.)
-
-GregKH has already queued this for Linux-5.5 and you can see this
-commit present in linux-next tree:
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/log/drivers/platform/goldfish?h=next-20191022
-
->
-> Incidentally, just looking at drivers/platform/goldfish, that driver seems
-> to be some sort of Google-specific RPC driver.  Are you all really sure
-
-Nopes, it's not RPC driver. In fact, all Goldfish virtual platform devices
-are MMIO devices.
-
-> you want to enable that just for an RTC?  Seems like overkill - there are
-> much simpler RTCs out there.
-
-No, it's not overkill. All Goldfish virtual platform devices are quite simple
-MMIO devices having bare minimum registers required for device
-functioning.
-
-The problem is VirtIO spec does not define any RTC device so instead of
-inventing our own virtual RTC device we re-use RTC device defined in
-Goldfish virtual platform for QEMU virt machine. This way we can re-use
-the Linux Goldfish RTC driver.
-
-BTW, I will send-out QEMU Goldfish RTC patches today or tomorrow
-addressing nit comments from Alistair.
-
-Regards,
-Anup
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+UGF1bCBXYWxtc2xleSA8cGF1bC53YWxtc2xleUBzaWZpdmUuY29tPiDmlrwgMjAxOeW5tDEw5pyI
+MTnml6Ug6YCx5YWtIOS4i+WNiDM6NTjlr6vpgZPvvJoKPgo+IFNldmVyYWwgZnVuY3Rpb25zIGFu
+ZCBhcnJheXMgd2hpY2ggYXJlIG9ubHkgdXNlZCBpbiB0aGUgZmlsZXMgaW4gd2hpY2gKPiB0aGV5
+IGFyZSBkZWNsYXJlZCBhcmUgbWlzc2luZyAic3RhdGljIiBxdWFsaWZpZXJzLiAgV2FybmluZ3Mg
+Zm9yIHRoZXNlCj4gc3ltYm9scyBhcmUgcmVwb3J0ZWQgYnkgc3BhcnNlOgo+Cj4gYXJjaC9yaXNj
+di9rZXJuZWwvc3RhY2t0cmFjZS5jOjIyOjE0OiB3YXJuaW5nOiBzeW1ib2wgJ3dhbGtfc3RhY2tm
+cmFtZScgd2FzIG5vdCBkZWNsYXJlZC4gU2hvdWxkIGl0IGJlIHN0YXRpYz8KPiBhcmNoL3Jpc2N2
+L2tlcm5lbC92ZHNvLmM6Mjg6MTg6IHdhcm5pbmc6IHN5bWJvbCAndmRzb19kYXRhJyB3YXMgbm90
+IGRlY2xhcmVkLiBTaG91bGQgaXQgYmUgc3RhdGljPwo+IGFyY2gvcmlzY3YvbW0vaW5pdC5jOjQy
+OjY6IHdhcm5pbmc6IHN5bWJvbCAnc2V0dXBfemVyb19wYWdlJyB3YXMgbm90IGRlY2xhcmVkLiBT
+aG91bGQgaXQgYmUgc3RhdGljPwo+IGFyY2gvcmlzY3YvbW0vaW5pdC5jOjE1Mjo3OiB3YXJuaW5n
+OiBzeW1ib2wgJ2ZpeG1hcF9wdGUnIHdhcyBub3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0
+aWM/Cj4gYXJjaC9yaXNjdi9tbS9pbml0LmM6MjExOjc6IHdhcm5pbmc6IHN5bWJvbCAndHJhbXBv
+bGluZV9wbWQnIHdhcyBub3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/Cj4gYXJjaC9y
+aXNjdi9tbS9pbml0LmM6MjEyOjc6IHdhcm5pbmc6IHN5bWJvbCAnZml4bWFwX3BtZCcgd2FzIG5v
+dCBkZWNsYXJlZC4gU2hvdWxkIGl0IGJlIHN0YXRpYz8KPiBhcmNoL3Jpc2N2L21tL2luaXQuYzoy
+MTk6Nzogd2FybmluZzogc3ltYm9sICdlYXJseV9wbWQnIHdhcyBub3QgZGVjbGFyZWQuIFNob3Vs
+ZCBpdCBiZSBzdGF0aWM/Cj4gYXJjaC9yaXNjdi9tbS9zaWZpdmVfbDJfY2FjaGUuYzoxNDU6MTI6
+IHdhcm5pbmc6IHN5bWJvbCAnc2lmaXZlX2wyX2luaXQnIHdhcyBub3QgZGVjbGFyZWQuIFNob3Vs
+ZCBpdCBiZSBzdGF0aWM/Cj4KPiBSZXNvbHZlIHRoZXNlIHdhcm5pbmdzIGJ5IG1hcmtpbmcgdGhl
+bSBhcyBzdGF0aWMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBQYXVsIFdhbG1zbGV5IDxwYXVsLndhbG1z
+bGV5QHNpZml2ZS5jb20+Cj4gLS0tCj4gIGFyY2gvcmlzY3Yva2VybmVsL3N0YWNrdHJhY2UuYyAg
+fCAgNiArKysrLS0KPiAgYXJjaC9yaXNjdi9rZXJuZWwvdmRzby5jICAgICAgICB8ICAyICstCj4g
+IGFyY2gvcmlzY3YvbW0vaW5pdC5jICAgICAgICAgICAgfCAxMiArKysrKysrLS0tLS0KPiAgYXJj
+aC9yaXNjdi9tbS9zaWZpdmVfbDJfY2FjaGUuYyB8ICAyICstCj4gIDQgZmlsZXMgY2hhbmdlZCwg
+MTMgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9hcmNoL3Jp
+c2N2L2tlcm5lbC9zdGFja3RyYWNlLmMgYi9hcmNoL3Jpc2N2L2tlcm5lbC9zdGFja3RyYWNlLmMK
+PiBpbmRleCAwOTQwNjgxZDJmNjguLmZkOTA4YmFlZDUxYyAxMDA2NDQKPiAtLS0gYS9hcmNoL3Jp
+c2N2L2tlcm5lbC9zdGFja3RyYWNlLmMKPiArKysgYi9hcmNoL3Jpc2N2L2tlcm5lbC9zdGFja3Ry
+YWNlLmMKPiBAQCAtMTksOCArMTksMTAgQEAgc3RydWN0IHN0YWNrZnJhbWUgewo+ICAgICAgICAg
+dW5zaWduZWQgbG9uZyByYTsKPiAgfTsKPgo+IC12b2lkIG5vdHJhY2Ugd2Fsa19zdGFja2ZyYW1l
+KHN0cnVjdCB0YXNrX3N0cnVjdCAqdGFzaywgc3RydWN0IHB0X3JlZ3MgKnJlZ3MsCj4gLSAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBib29sICgqZm4pKHVuc2lnbmVkIGxvbmcsIHZvaWQgKiks
+IHZvaWQgKmFyZykKPiArc3RhdGljIHZvaWQgbm90cmFjZSB3YWxrX3N0YWNrZnJhbWUoc3RydWN0
+IHRhc2tfc3RydWN0ICp0YXNrLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHN0cnVjdCBwdF9yZWdzICpyZWdzLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIGJvb2wgKCpmbikodW5zaWduZWQgbG9uZywgdm9pZCAqKSwKPiArICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB2b2lkICphcmcpCgpJIHRoaW5rIHdhbGtfc3RhY2tmcmFtZSgp
+IGNvdWxkIG5vdCBiZSBzdGF0aWMgYmVjYXVzZSBpdCB3aWxsIGJlIHVzZWQKaW4gcGVyZl9jYWxs
+Y2hhaW4uYy4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcmlzY3YK
