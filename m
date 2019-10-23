@@ -2,72 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF053E1F04
-	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 17:16:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B69E2E1FFD
+	for <lists+linux-riscv@lfdr.de>; Wed, 23 Oct 2019 17:57:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Date:Message-ID:Subject:From:To:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Nf2sPv9JoqVb04pm27E3jDn2Jf2+2RUcQfnzHwooepg=; b=HsC/sF97NIe5uqHI3SOf7tgX1v
-	ft7pSSoMXrHiY1CB5xvgRu5N0mmbqf57Dshs1Wnvg1TLEh6x75gvdlmstPXMhmfmI/C9vk8vdLwXQ
-	YWOREZtprW75od+zolggjDtkusVpPLAjHWU3SWPiivqJEAI2P5l8A2Yr9ljiJ1ylCUCAM4dlsVqiw
-	z16oHzOn0HMArAaG+y1rYR6VI1jq/lLny1jz30TJ15lbSuobk/0xrpJAL84lkmBSAWG3WhaX2/AJT
-	wJUn8LXOaFiuwyFZbXFX3riGHJQgSeXyUMlz/a7seJFIQXm5rHlOb3PMDN464eySOEgpFj5FTPte2
-	WYyIbLpQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=e7BpeBFjMW7JYzdRJCupniM/f2hsJNNnRZb3TaHPwyE=; b=IMKvcTt5HYMDqn
+	JMWA+2+PqIU9TNT/998Xjp+LC0U32twixAf92IGLjO/1LyRnxw4Jgx8FU5c8HXeGMgKO0sxnb4KfD
+	r3HQLWr/Uo8DItFR7lr+AL3v0s2mzrw8zJTDOysaSqNcm1ZRp9iTBUjIRsxQYaBom4yW2eE7G5vRB
+	JPegQPaRfto2hDeVxj+r7D8/KB7hSl6d5lGLYz99Scm2a8vwLWH3HoNmfWka9vPPx4q6pwjtl3Obx
+	6N/dKZZ+0VwyFOnncq9AleKyHfJquRivLQiMAupXRORQBG1vbECAp7SmxHhreSFGl4ub+IggmYPRl
+	cvbtWBCFTutYKiRwI5Nw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNIMk-0001WW-5e; Wed, 23 Oct 2019 15:16:02 +0000
-Received: from mailgate.ics.forth.gr ([139.91.1.2])
+	id 1iNJ0J-0007nk-RM; Wed, 23 Oct 2019 15:56:55 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNIMg-0001Vu-Ri
- for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 15:16:00 +0000
-Received: from av3.ics.forth.gr (av3in.ics.forth.gr [139.91.1.77])
- by mailgate.ics.forth.gr (8.15.2/ICS-FORTH/V10-1.8-GATE) with ESMTP id
- x9NFFnw6055728
- for <linux-riscv@lists.infradead.org>; Wed, 23 Oct 2019 18:15:49 +0300 (EEST)
-X-AuditID: 8b5b014d-787ff70000003678-69-5db06e9f4d87
-Received: from enigma.ics.forth.gr (enigma.ics.forth.gr [139.91.151.35])
- by av3.ics.forth.gr (Symantec Messaging Gateway) with SMTP id
- 08.EB.13944.F9E60BD5; Wed, 23 Oct 2019 18:15:43 +0300 (EEST)
-X-ICS-AUTH-INFO: Authenticated user: mick at ics.forth.gr
-To: linux-riscv@lists.infradead.org
-From: Nick Kossifidis <mick@ics.forth.gr>
-Subject: Perf-related compilation issues
-Message-ID: <1bba622b-1f59-d21b-f396-d9c1a021dc3a@ics.forth.gr>
-Date: Wed, 23 Oct 2019 18:15:43 +0300
+ id 1iNJ0F-0007mX-MQ
+ for linux-riscv@lists.infradead.org; Wed, 23 Oct 2019 15:56:53 +0000
+Received: from s0106ac1f6bb1ecac.cg.shawcable.net ([70.73.163.230]
+ helo=[192.168.11.155])
+ by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <logang@deltatee.com>)
+ id 1iNJ0C-0005gH-NA; Wed, 23 Oct 2019 09:56:49 -0600
+To: Kefeng Wang <wangkefeng.wang@huawei.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
+References: <20191023032302.160388-1-wangkefeng.wang@huawei.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <54385600-0cd9-6113-ed16-41df15fc8fe0@deltatee.com>
+Date: Wed, 23 Oct 2019 09:56:46 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="------------3A6B26ED3074B4F0F5F3BD9F"
-Content-Language: el
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrLLMWRmVeSWpSXmKPExsXSHT1dWXd+3oZYg/V7LS22fW5hc2D02Lyk
- PoAxissmJTUnsyy1SN8ugStj0dQVbAV/pCreT/zF3MC4QqKLkZNDQsBE4u7912wgtpDAUUaJ
- iX8tIeKWEps/vWTpYuTgEBFQlph/zxUkzCagKTH/0kEWEFtYQEPiQu9zdhCbV8Be4vHRlWBx
- FgFViQ1PToCNFBWIkJh0bScLRI2gxMmZT8BsZoEAiadfpzFD2CISLc0fWCcw8sxCUjYLSdks
- JGUQtrrEn3mXoOLaEssWvoayzSXub+jEIm4hcfP7TqYFjByrGAUSy4z1MpOL9dLyi0oy9NKL
- NjGCQ5HRdwfj7c1v9Q4xMnEwHmJUAep6tGH1BUYplrz8vFQlEd47BmtjhXhTEiurUovy44tK
- c1KLDzFKc7AoifPmcS+PFRJITyxJzU5NLUgtgskycXBKNTDt2rTtOdPpnzKn53MY3N5rocsy
- L6bxqkLY0cmlwmsauXbLLdsc3Gqpb+xpsmNu62Leygyp8hSFOfd/8NU+vOygxD0xu9asnHOJ
- LEP6qqqTLgs6gu7r6p2a/fdb8apTm3cuNZKp+fFqpoHWrTsBWUGh7dYppv3MgvfNZarX93qs
- 2s0l9ff2egPtuvk1emnritbkHJloFXxquchNHa3bfL7Ct+PSHz5zeRIdZHD93dPdSTdOPlkv
- tmindZ/igl2qHnX95Sn537bx/yx+qrDa8Nzl75Nf2dhH7nx3J37NW5Zy46N9fzYdZnbxbXfR
- 5Zni8Nq+5XvOyvNW6VeTGHKZlTcd/f7xyrbHmTL7NA9lPTFUYinOSDTUYi4qTgQAE5uO78AC
- AAA=
+In-Reply-To: <20191023032302.160388-1-wangkefeng.wang@huawei.com>
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 70.73.163.230
+X-SA-Exim-Rcpt-To: aou@eecs.berkeley.edu, palmer@sifive.com,
+ linux-riscv@lists.infradead.org, paul.walmsley@sifive.com,
+ wangkefeng.wang@huawei.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
+ autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH 1/2] riscv: Fix implicit declaration of 'page_to_section'
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191023_081559_271747_DAA95332 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20191023_085651_776580_C66F0A04 
+X-CRM114-Status: GOOD (  13.47  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.54.116.67 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [139.91.1.2 listed in list.dnswl.org]
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,101 +74,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Cc: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>,
+ Albert Ou <aou@eecs.berkeley.edu>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This is a multi-part message in MIME format.
---------------3A6B26ED3074B4F0F5F3BD9F
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-Hello all,
-
-a) Compiling the current fixes branch with a minimal config I get the
-following error:
-
-riscv64-unknown-linux-gnu-ld: arch/riscv/kernel/perf_callchain.o: in
-function `.L0 ':
-perf_callchain.c:(.text+0x16a): undefined reference to `walk_stackframe'
-make: *** [Makefile:1074: vmlinux] Error 1
-
-
-I've removed the static delcaration of walk_stackframe on stackframe.c
-and marked walk_stackframe as extern on perf_callchain.c to fix the
-above issue.
-
-
-b) Then If I compile the kernel without CONFIG_RISCV_BASE_PMU I get
-
-
-=2E/arch/riscv/include/asm/perf_event.h:26:2: error: #error "Please
-provide a valid RISCV_MAX_COUNTERS for the PMU."
- #error "Please provide a valid RISCV_MAX_COUNTERS for the PMU."
-
-
-I noticed that the only place where CONFIG_RISCV_BASE_PMU is checked is
-on perf_event.h and only for this parameter that's not defined anywhere
-else. So for now if one tries to compile the kernel without PMU the
-kernel won't compile + I don't see how unsetting this saves code size as
-the config description says.
-
-
-Since I'm not familiar with the perf code how should I approach this ?
-Is the fix on a correct ? How should we handle b ?
-
-Thanks a lot in advance.
-
-Regards,
-Nick
-
---------------3A6B26ED3074B4F0F5F3BD9F
-Content-Type: application/pgp-keys;
- name="pEpkey.asc"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
- filename="pEpkey.asc"
-
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-mQENBFzZWtwBCADKPn3YlVAho32wgflIm0rYOSGswdG9Y8m27nZrs7Vd0rP13i9v
-oGhpudY/oq+GV42S8s8KRI4E38rbW4bQC28LKC7XO6j0vu1hZpgV1Xs71pEjn/3U
-a1Rzk9ZLEyBE7W4QEAcKmxOCNljhshjoni6cSVmZo4BGqRhgSWE0LIWHzxigT2Vy
-coLeoUbkRvjZbaAA9EvD1HoJ+aBqO2tJfG5RaBrhGQMb4MQDSA0E6q/yk5B9m04U
-ulxVhx/is/0fGTh4GvrDg3y58hYNx4nLmoQEFUE6TnctlcK0pehJ4327YsUR4PE4
-mbXnPCESTJDn26aLsw1cS1gDq5oMib2Yt94LABEBAAG0I05pY2sgS29zc2lmaWRp
-cyA8bWlja0BpY3MuZm9ydGguZ3I+iQFUBBMBCAA+FiEEjcr5kzeu2JH2OScZm0nK
-dvKCPe8FAlzZWtwCGwMFCQHhM4AFCwkIBwIGFQoJCAsCBBYCAwECHgECF4AACgkQ
-m0nKdvKCPe+B3AgAgqNC6SuP5RDyczNqRPzTcQJM0zqh5cUtLlyOA1dkzDSH0X0Y
-MpfT9HpxrqtIjA6dABk56uRZxB98J5fKu2NEKCyrDV83hjbyXLvkbbJKvKSUepTx
-0J7djRSpQ0HBy2FL6+3mWUyM+Y9s/Hriw5+vqqtKJvU0SMYnOmujv2nJIrt81zZl
-HlqzAyGkIgSQBqCLc8PpTImg/Op4BlG/GRuRBjq9bNq+KB7laFVKJNBAd6aWznh2
-n6iN5E7+IdHJhhpzi8XtkTN4Nnh92cCm+NQQUPtamhBCafA35XNyV8k/+xaP9t4R
-m/uZdATlgV/sFW/pkOtAb68Yf9SfNpfPHcqtpbkBDQRc2VrcAQgAyFPHy27tQrSq
-CXoxAeTJTOiV/0u9iMEulJXiSoI345aw3LcSMAaBmT2tqTkSPUtsgUQQUNh7higK
-0Vekw7IuQthZ1zK2QGnyp2OZMLCSDsQkUtNV9uvCsNyqM0r+AtD8tluoq1e2GQ6Q
-RT7xR6QS+vRxLnvlOK3F5JKzzf1ESH1JNeEKiagMEstEwZOdz5t9Wf25otlU6QF2
-Yfnl7SlavlYCkxZSpsuPGbdSi8d1PHBA8xZUA7iql4Wv8Bgos9RQV2c+O7hlVbiY
-v8dsjueoUNNDgK2s1h/iM7nZsBjD809ho07JR/fVQS7ykfXGgInInHkG8NNY9pRl
-MW99stzZGwARAQABiQE8BBgBCAAmFiEEjcr5kzeu2JH2OScZm0nKdvKCPe8FAlzZ
-WtwCGwwFCQHhM4AACgkQm0nKdvKCPe/LIwf/ZXhkFJ6tLSMmB3NvpeBG2Z7uu/tZ
-9uRb5hg47fkaNguHKVt28UXCPhpFN7d39eMiC82lsR/jscVy1z6oOmkJ8T7/7yxY
-FlN1EFgDJM2FYcS+V88slcHn0GzCMk6AEi2zf825oHqDg8l4JUI5Htunt8BlK+eZ
-DM+ezxulA6w8vNduhsvTFt0Jh8WUn1tIpVHt5loehQy0Npy79Fg4+TrapdIqfSw4
-C1pO2MKBVDC/4VXOgV2YIUkHhoQ2BTOXQzIf0C3240lr14u7Tvhg/JWpe1jUoBHa
-0IuDJbgWgNcGuhjnEisrHlT2u0CSR8NJY4hCmTY3Jf2SV+MRs8Homz3IdA=3D=3D
-=3DD0B2
------END PGP PUBLIC KEY BLOCK-----
-
---------------3A6B26ED3074B4F0F5F3BD9F
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---------------3A6B26ED3074B4F0F5F3BD9F--
-
+CgpPbiAyMDE5LTEwLTIyIDk6MjMgcC5tLiwgS2VmZW5nIFdhbmcgd3JvdGU6Cj4gV2l0aCBDT05G
+SUdfU1BBUlNFTUVNIGFuZCAhQ09ORklHX1NQQVJTRU1FTV9WTUVNTUFQLAo+IAo+IGFyY2gvcmlz
+Y3YvaW5jbHVkZS9hc20vcGd0YWJsZS5oOiBJbiBmdW5jdGlvbiDigJhta19wdGXigJk6Cj4gaW5j
+bHVkZS9hc20tZ2VuZXJpYy9tZW1vcnlfbW9kZWwuaDo2NDoxNDogZXJyb3I6IGltcGxpY2l0IGRl
+Y2xhcmF0aW9uIG9mIGZ1bmN0aW9uIOKAmHBhZ2VfdG9fc2VjdGlvbuKAmTsgZGlkIHlvdSBtZWFu
+IOKAmHByZXNlbnRfc2VjdGlvbuKAmT8gWy1XZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24tZGVjbGFy
+YXRpb25dCj4gICBpbnQgX19zZWMgPSBwYWdlX3RvX3NlY3Rpb24oX19wZyk7ICAgXAo+ICAgICAg
+ICAgICAgICAgXn5+fn5+fn5+fn5+fn5+Cj4gCj4gRml4ZWQgYnkgY2hhbmdpbmcgbWtfcHRlKCkg
+ZnJvbSBpbmxpbmUgZnVuY3Rpb24gdG8gbWFjcm8uCj4gCj4gQ2M6IExvZ2FuIEd1bnRob3JwZSA8
+bG9nYW5nQGRlbHRhdGVlLmNvbT4KPiBGaXhlczogZDk1ZjFhNTQyYzNkICgiUklTQy1WOiBJbXBs
+ZW1lbnQgc3BhcnNlbWVtIikKPiBTaWduZWQtb2ZmLWJ5OiBLZWZlbmcgV2FuZyA8d2FuZ2tlZmVu
+Zy53YW5nQGh1YXdlaS5jb20+CgpNYWtlcyBzZW5zZS4KClJldmlld2VkLWJ5OiBMb2dhbiBHdW50
+aG9ycGUgPGxvZ2FuZ0BkZWx0YXRlZS5jb20+Cgo+IC0tLQo+ICBhcmNoL3Jpc2N2L2luY2x1ZGUv
+YXNtL3BndGFibGUuaCB8IDUgKy0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
+LCA0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNt
+L3BndGFibGUuaCBiL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vcGd0YWJsZS5oCj4gaW5kZXggNDIy
+OTJkOTljYzc0Li4xZGIyMTQ0ZjkyMjEgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9yaXNjdi9pbmNsdWRl
+L2FzbS9wZ3RhYmxlLmgKPiArKysgYi9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3BndGFibGUuaAo+
+IEBAIC0xODQsMTAgKzE4NCw3IEBAIHN0YXRpYyBpbmxpbmUgcHRlX3QgcGZuX3B0ZSh1bnNpZ25l
+ZCBsb25nIHBmbiwgcGdwcm90X3QgcHJvdCkKPiAgCXJldHVybiBfX3B0ZSgocGZuIDw8IF9QQUdF
+X1BGTl9TSElGVCkgfCBwZ3Byb3RfdmFsKHByb3QpKTsKPiAgfQo+ICAKPiAtc3RhdGljIGlubGlu
+ZSBwdGVfdCBta19wdGUoc3RydWN0IHBhZ2UgKnBhZ2UsIHBncHJvdF90IHByb3QpCj4gLXsKPiAt
+CXJldHVybiBwZm5fcHRlKHBhZ2VfdG9fcGZuKHBhZ2UpLCBwcm90KTsKPiAtfQo+ICsjZGVmaW5l
+IG1rX3B0ZShwYWdlLHByb3QpICAgICAgIHBmbl9wdGUocGFnZV90b19wZm4ocGFnZSkscHJvdCkK
+PiAgCj4gICNkZWZpbmUgcHRlX2luZGV4KGFkZHIpICgoKGFkZHIpID4+IFBBR0VfU0hJRlQpICYg
+KFBUUlNfUEVSX1BURSAtIDEpKQo+ICAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51eC1yaXNjdkBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcmlzY3YK
