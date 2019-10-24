@@ -2,71 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14DCDE3956
-	for <lists+linux-riscv@lfdr.de>; Thu, 24 Oct 2019 19:07:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 01DC6E3FD0
+	for <lists+linux-riscv@lfdr.de>; Fri, 25 Oct 2019 00:59:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/RelRzoeINrdQSvrzyjnlmF7BK/8av3rTXvZ/tDwo7A=; b=eZ/5Pl1GCoYSfw
-	nCb65ANir13J7DLi4FVWewlrpKmj4jiKNoB64HqRgNf3g6n0lvWDA8V/egGNDayytXVprY9EhBV0i
-	imKpSWe35g1cIF2s6ElJrrxl/sB+EbfHEXQ4klI9+nES+JgCF7Hdwd1YQ2Dx7FAbp108MAikHjOPZ
-	kbCBDYgCoi+1xtHI/NE56aoLSfJlrqOg85nWKRIo/USxw+CBdeL4dEIbTvHuktT5aVbhx2zvqATPx
-	e0O3YVmuIQl3IO+xGqMdwstNVTUIECz+Zc3hVyaX2HaAMzFVix1h6pka4i3p5bmahA0Oim7ba7bm/
-	MMp5089jVEl4fMwmaTYA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UGasZrzDqPf9kXZiUm2zrVF45WQXHkCZoIcqIJFAkEI=; b=tklAY325uoHKhB
+	5kRbGVhk587Mi9/VzzA1dcPIrhaWTVLWOVhrzumy88em7TyN+SZawZUlcL/NBNoa6UZqXSNQCq9dH
+	jBDKWT4tvF/gt+VNRXbEax6vL7cZ4W7mKKn3kKcmjMFt/r3AHb0SORZ0jFTc1jMoT4PUlmFWyCZm+
+	l2VdUwIV15L46ZB1Jg+iv5lHDuk57jMEbk24yMI51xmimyz+zRotteQOb5KzRevlvRyDmZ5InKbde
+	3aYPU6vtPXUMVMbB1bqAtJG6hwAGv+jezDQUxRmNck6VwXPC8xn/VqtI32l9ARdji27ka98OrGwGj
+	GqahGaui1AVT9TJdJE2w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNgaC-0005xP-Th; Thu, 24 Oct 2019 17:07:32 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1iNm4C-0008SU-VG; Thu, 24 Oct 2019 22:58:52 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNga8-0005qT-Ad
- for linux-riscv@lists.infradead.org; Thu, 24 Oct 2019 17:07:29 +0000
-Received: from s0106ac1f6bb1ecac.cg.shawcable.net ([70.73.163.230]
- helo=[192.168.11.155])
- by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <logang@deltatee.com>)
- id 1iNgZv-0005cq-D7; Thu, 24 Oct 2019 11:07:16 -0600
-To: Paul Walmsley <paul.walmsley@sifive.com>
-References: <1571908438-4802-1-git-send-email-yash.shah@sifive.com>
- <c4817ec1-4e50-5646-68f0-caeb0ab6f0bf@deltatee.com>
- <alpine.DEB.2.21.9999.1910240937350.20010@viisi.sifive.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <0684fa31-1dfd-9f6c-762e-5811e6e9d5b9@deltatee.com>
-Date: Thu, 24 Oct 2019 11:07:12 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ id 1iNm49-0008Rz-HC
+ for linux-riscv@lists.infradead.org; Thu, 24 Oct 2019 22:58:50 +0000
+Received: by mail-io1-xd44.google.com with SMTP id i26so195779iog.9
+ for <linux-riscv@lists.infradead.org>; Thu, 24 Oct 2019 15:58:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LUBTpk9ooV35xQmJoHGn2mN1fpHGsBmiJOBvpI0fOq4=;
+ b=IEZZ4TeaPYu9KusTwoj7WfdPn1cK9KTxR4CsgVIUWzNM7sVDrk3QIl2JqN9AP1q0fD
+ mQXxqZpLv+F4Ydq+wQp+MJN/9hawT5YJAt+K9tIz6QieiXo0WvRn8I3QJPxmkUA/T0hn
+ cpV5d5m4J3wPcN2XdvKbdGsqTagFTIPB8b/3uzjMERWxapHtaBLtmCNwGpnmZdsLLejh
+ FhVD6WbH5LS1wKsH4UWrLuZQ27dBPSyLar0UMkbAufifbBJb9MamMy0Jjn3rcFBLSNp8
+ ZhWEIPwBzFvS5cxxxuHtZWn7eq8Y7pAtrgiUUXBzQ66D4OswlcQgnNug4JdMNlAxil2E
+ aWSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LUBTpk9ooV35xQmJoHGn2mN1fpHGsBmiJOBvpI0fOq4=;
+ b=LD0TMgAvot8fWwbY0D+mWHfbxLsCbQzD9mxRwMmKZ77fNGKIq6IUxk6adJe4sNbSH5
+ 8fc9RnmARTyd4C/hmNM9ij4bEGrIfhMgCOFfZK1e3fhyNhMeSmkixw4V5b7ebdd/JYb2
+ ksaU2wa1H+OIS1ZpjGsHcY8UZlZsRtCCoUkbMB4dtzo6M5Uy1aUcJyS02ud1OuZEQ+S2
+ +kyPlHLKRboS/r5PJq6ce4vzZK8fMpmM80aIhsJF1v96HYnENLo22qS0YYefQaMLT10+
+ nj81n4p68AUcgZf+3JTlS4lA8hfPsr5/jVK4gWj+nB8Se2rJzEsbOrvR8wQR4JW9ApY8
+ zfZw==
+X-Gm-Message-State: APjAAAUEikN7rWxH+/xqvpSSFUmydgL5gQQYV+EhWA9A2PnOtH+x39Hq
+ 5G74Pp5aDUf4o5MZjzsfpTMzJ1bEg9w=
+X-Google-Smtp-Source: APXvYqxalK2YIo83Fu+BbBhgGuXezPvIjtKCSmn+b8821E2LzS3kdbtWvqRZW1DApkW9NtiE75wsTw==
+X-Received: by 2002:a5d:8d0e:: with SMTP id p14mr637597ioj.4.1571957928395;
+ Thu, 24 Oct 2019 15:58:48 -0700 (PDT)
+Received: from viisi.Home ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id b18sm58112ilo.70.2019.10.24.15.58.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Oct 2019 15:58:47 -0700 (PDT)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+To: linux-riscv@lists.infradead.org
+Subject: [PATCH v4 0/8] riscv: resolve most warnings from sparse
+Date: Thu, 24 Oct 2019 15:58:32 -0700
+Message-Id: <20191024225838.27743-1-paul.walmsley@sifive.com>
+X-Mailer: git-send-email 2.24.0.rc0
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.9999.1910240937350.20010@viisi.sifive.com>
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 70.73.163.230
-X-SA-Exim-Rcpt-To: allison@lohutok.net, will@kernel.org, tglx@linutronix.de,
- gregkh@linuxfoundation.org, greentime.hu@g.sifive.com, sachin.ghadi@sifive.com,
- rppt@linux.ibm.com, Anup.Patel@wdc.com, catalin.marinas@arm.com, alex@ghiti.fr,
- aou@eecs.berkeley.edu, sorear2@gmail.com, linux-kernel@vger.kernel.org,
- linux-riscv@lists.infradead.org, palmer@g.sifive.com,
- paul.walmsley@g.sifive.com, yash.shah@sifive.com, paul.walmsley@sifive.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH] RISC-V: Add PCIe I/O BAR memory mapping
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191024_100728_706779_3C3C8BAC 
-X-CRM114-Status: GOOD (  10.02  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20191024_155849_598724_5A9C390E 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,58 +94,74 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "sorear2@gmail.com" <sorear2@gmail.com>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "alex@ghiti.fr" <alex@ghiti.fr>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "Palmer Dabbelt \( Sifive\)" <palmer@g.sifive.com>,
- "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "Paul Walmsley \( Sifive\)" <paul.walmsley@g.sifive.com>,
- "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
- Sachin Ghadi <sachin.ghadi@sifive.com>, Yash Shah <yash.shah@sifive.com>,
- Greentime Hu <greentime.hu@g.sifive.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "will@kernel.org" <will@kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
- "allison@lohutok.net" <allison@lohutok.net>
+Cc: hch@lst.dev, greentime.hu@sifive.com, linux-kernel@vger.kernel.org,
+ luc.vanoostenryck@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Resolve most warnings from the 'sparse' static analysis tool for the
+arch/riscv codebase.  This makes life easier for us as maintainers,
+and makes it easier for developers to use static analysis tools on
+their own changes.
+
+This fourth version drops some patches that were in the previous
+versions, and restructures some of what was left.  Much of this was
+based on feedback from Christoph Hellwig <hch@lst.de>, Luc Van
+Oostenryck <luc.vanoostenryck@gmail.com>, and Greentime Hu
+<greentime.hu@sifive.com>.
+
+Applies on the current riscv fixes branch, which itself is based on
+v5.4-rc5.  Tested on RV32 QEMU, RV64 QEMU, and the SiFive HiFive
+Unleashed board.
 
 
-On 2019-10-24 10:51 a.m., Paul Walmsley wrote:
-> On Thu, 24 Oct 2019, Logan Gunthorpe wrote:
-> 
->> On 2019-10-24 3:14 a.m., Yash Shah wrote:
->>> For I/O BARs to work correctly on RISC-V Linux, we need to establish a
->>> reserved memory region for them, so that drivers that wish to use I/O BARs
->>> can issue reads and writes against a memory region that is mapped to the
->>> host PCIe controller's I/O BAR MMIO mapping.
->>
->> I don't think other arches do this. 
-> 
-> $ git grep 'define PCI_IOBASE' arch/ 
-> arch/arm/include/asm/io.h:#define PCI_IOBASE            ((void __iomem *)PCI_IO_VIRT_BASE)
-> arch/arm64/include/asm/io.h:#define PCI_IOBASE          ((void __iomem *)PCI_IO_START)
-> arch/m68k/include/asm/io_no.h:#define PCI_IOBASE        ((void __iomem *) PCI_IO_PA)
-> arch/microblaze/include/asm/io.h:#define PCI_IOBASE     ((void __iomem *)_IO_BASE)
-> arch/unicore32/include/asm/io.h:#define PCI_IOBASE      PKUNITY_PCILIO_BASE
-> arch/xtensa/include/asm/io.h:#define PCI_IOBASE         ((void __iomem *)XCHAL_KIO_BYPASS_VADDR)
-> $
-> 
-> This is for the old x86-style, non-memory mapped I/O address space the 
-> legacy PCI stuff that one would use in{b,w,l}()/out{b,w,l}() for.
-> 
-> Yash, you might consider updating your patch description to note that this 
-> is for "legacy I/O BARs (i.e., non-MMIO BARs)" or something similar.  That 
-> might make things clearer.
+- Paul
 
-Ah, right, yes, that would clear things up.
 
-Logan
+Paul Walmsley (6):
+  riscv: add prototypes for assembly language functions from head.S
+  riscv: init: merge split string literals in preprocessor directive
+  riscv: mark some code and data as file-static
+  riscv: add missing header file includes
+  riscv: fp: add missing __user pointer annotations
+  riscv: for C functions called only from assembly, mark with __visible
+
+Kernel object size difference:
+   text	   data	    bss	    dec	    hex	filename
+6662533	2136168	 312608	9111309	 8b070d	vmlinux.rv64.orig
+6662537	2136160	 312608	9111305	 8b0709	vmlinux.rv64.patched
+6443041	1792976	 255184	8491201	 8190c1	vmlinux.rv32.orig
+6443021	1792968	 255184	8491173	 8190a5	vmlinux.rv32.patched
+
+ arch/riscv/include/asm/irq.h        |  3 +++
+ arch/riscv/include/asm/switch_to.h  |  1 +
+ arch/riscv/kernel/cpufeature.c      |  1 +
+ arch/riscv/kernel/head.h            | 21 +++++++++++++++++++++
+ arch/riscv/kernel/irq.c             |  2 +-
+ arch/riscv/kernel/module-sections.c |  1 +
+ arch/riscv/kernel/process.c         |  2 ++
+ arch/riscv/kernel/ptrace.c          |  4 ++--
+ arch/riscv/kernel/reset.c           |  1 +
+ arch/riscv/kernel/setup.c           |  2 ++
+ arch/riscv/kernel/signal.c          |  8 ++++----
+ arch/riscv/kernel/smp.c             |  2 ++
+ arch/riscv/kernel/smpboot.c         |  5 ++++-
+ arch/riscv/kernel/syscall_table.c   |  1 +
+ arch/riscv/kernel/time.c            |  1 +
+ arch/riscv/kernel/traps.c           |  5 +++--
+ arch/riscv/kernel/vdso.c            |  3 ++-
+ arch/riscv/mm/context.c             |  1 +
+ arch/riscv/mm/fault.c               |  2 ++
+ arch/riscv/mm/init.c                |  5 +++--
+ arch/riscv/mm/sifive_l2_cache.c     |  2 +-
+ 21 files changed, 59 insertions(+), 14 deletions(-)
+ create mode 100644 arch/riscv/kernel/head.h
+
+-- 
+2.24.0.rc0
+
 
 _______________________________________________
 linux-riscv mailing list
