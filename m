@@ -2,55 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9EC4E2AF9
-	for <lists+linux-riscv@lfdr.de>; Thu, 24 Oct 2019 09:21:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 569B3E2B1A
+	for <lists+linux-riscv@lfdr.de>; Thu, 24 Oct 2019 09:28:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Gq1rvwYq0S7dIlJbRummFFJ4OFi/DJvA2ZLEe7/lvcc=; b=OKx6dliB+VDTGh
-	Q5S7pogJ3toemp6uNtjEd0F4g3vtinpELhxMrMAKMbq3HwkuPijMBHx1fjDr46xlBq6hypMqO2eb8
-	7INDi0I/VoiXCvT5gGCGjgJwHVZ/33Bs254POXfnaAL8hrlv37AXpIrhwpN5seog80z5hGetHiky7
-	A4EXdg3RJAYn4xRW3uGedcObgxXMzKsJwxqQ05DkbuyzHWgiGDtut1qzuCXTJhZAB7nESgTeQ3K5T
-	Nf2BtVqsxAsFcw/xBZ7OUqomxRva77fsyY5V7iVaQdx00HAU5DKOkqNKdg70uLZopLRPEh0A9l9U+
-	q1m33Zw/f0z7v5Xm8+3g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:From:Date:
+	MIME-Version:Subject:To:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=iI/qaHouqJlHa6Sy3V+2j/NcCYys1kj3UgeDpQWFDT4=; b=SvWrQBAXcs4lJx9BkvsJMR2wa
+	wmCBBK/+qeeMdKsV4AclmV8hOXfS/ME8eoktl3sxcRpqLG8GOt7ga9dn5RihfuZNPxIgC+EgZlycP
+	oAas27/02YhYDze1l/eVVRoyAmQ928y5thojEyaLMYlG/nWhWR2N/oFzFbVY4DLwWC5b7b5K0NT2R
+	9lkmXGzEPVhzPCxS+xR9Ic6rWivqP1HralQSpMjv+YacOV70hIsuYzI7rZQwzyymGnWFSSCLpo4+5
+	ijsP22Ajrh/oMDpFjmMdjF1QpYAt0C4ahvtrCYpwt20iQPzdiT1o7unMn1wjnrjoQOqIXhPtT00PY
+	tB+Ij2Mkw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNXQz-0005qD-89; Thu, 24 Oct 2019 07:21:25 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191] helo=huawei.com)
+	id 1iNXXM-0008WT-9E; Thu, 24 Oct 2019 07:28:00 +0000
+Received: from inca-roads.misterjones.org ([213.251.177.50])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNXQv-0005pR-MY
- for linux-riscv@lists.infradead.org; Thu, 24 Oct 2019 07:21:23 +0000
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 89B7791A5303F06AF5F6;
- Thu, 24 Oct 2019 15:21:12 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Thu, 24 Oct 2019 15:21:04 +0800
-From: Kefeng Wang <wangkefeng.wang@huawei.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: [PATCH] riscv: only select serial sifive if TTY is enabled
-Date: Thu, 24 Oct 2019 15:20:03 +0800
-Message-ID: <20191024072003.87116-1-wangkefeng.wang@huawei.com>
-X-Mailer: git-send-email 2.20.1
+ id 1iNXXI-0008VV-Ri
+ for linux-riscv@lists.infradead.org; Thu, 24 Oct 2019 07:27:58 +0000
+Received: from www-data by cheepnis.misterjones.org with local (Exim 4.80)
+ (envelope-from <maz@kernel.org>)
+ id 1iNXXE-0002IH-M6; Thu, 24 Oct 2019 09:27:52 +0200
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH] irqchip: Skip contexts other supervisor in
+ =?UTF-8?Q?plic=5Finit=28=29?=
+X-PHP-Originating-Script: 0:main.inc
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+Date: Thu, 24 Oct 2019 08:27:52 +0100
+From: Marc Zyngier <maz@kernel.org>
+In-Reply-To: <20191024070311.GA16652@infradead.org>
+References: <alpine.DEB.2.21.9999.1910231152580.16536@viisi.sifive.com>
+ <mhng-aefb3209-29c4-46db-8cf2-e12db46d9a6e@palmer-si-x1c4>
+ <20191024013019.GA675@infradead.org> <20191024075116.48055961@why>
+ <20191024070311.GA16652@infradead.org>
+Message-ID: <67fff4d811c27017e7b34267365c8c0f@www.loen.fr>
+X-Sender: maz@kernel.org
+User-Agent: Roundcube Webmail/0.7.2
+X-SA-Exim-Connect-IP: <locally generated>
+X-SA-Exim-Rcpt-To: hch@infradead.org, palmer@sifive.com,
+ paul.walmsley@sifive.com, alan.mikhak@sifive.com, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org, tglx@linutronix.de, jason@lakedaemon.net
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on cheepnis.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191024_002121_928634_1896A848 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20191024_002757_042586_699AED5E 
+X-CRM114-Status: GOOD (  14.31  )
+X-Spam-Score: 1.0 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [45.249.212.191 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,40 +69,57 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>,
- Kefeng Wang <wangkefeng.wang@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>
-Content-Type: text/plain; charset="us-ascii"
+Cc: jason@lakedaemon.net, Palmer Dabbelt <palmer@sifive.com>,
+ linux-kernel@vger.kernel.org, alan.mikhak@sifive.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
+ linux-riscv@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-There is some warning if TTY is not enabled, and lead to
-build error, only select serial sifive if TTY enabled, and
-this also makes randconfig happy.
+On 2019-10-24 08:03, Christoph Hellwig wrote:
+> On Thu, Oct 24, 2019 at 07:51:16AM +0100, Marc Zyngier wrote:
+>> > > > Will this need to change for RISC-V M-mode Linux support?
+>> > > >
+>> > > > 
+>> https://lore.kernel.org/linux-riscv/20191017173743.5430-1-hch@lst.de/
+>> > >
+>> > > Yes.
+>> >
+>> > For M-mode we'll want to check IRQ_M_EXT above.  So we should just
+>> > merge this patch ASAP and then for my rebased M-mode series I'll
+>> > fix the check to do that for the M-Mode case, which is much 
+>> cleaner
+>> > than my hack.
+>>
+>> Does this need to be taken as a fix, potentially Cc to stable? Or is
+>> that 5.5 material?
+>
+> So I though that the S-mode context were kinda aways to be sorted 
+> before
+> M-mode, but I can't find anything guranteeing it.  So I think this
+> actually is a fix, and getting this queued up in the next -rc would
+> really help me with the nommu stuff - otherwise we'd need to take it
+> through the riscv tree for 5.5 to avoid conflicts.
+>
+> Btw, here is my:
+>
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
+>
+> for the patch.
 
-Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
----
- arch/riscv/Kconfig.socs | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks for that.
 
-diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
-index 536c0ef4aee8..c1043799e194 100644
---- a/arch/riscv/Kconfig.socs
-+++ b/arch/riscv/Kconfig.socs
-@@ -2,8 +2,8 @@ menu "SoC selection"
- 
- config SOC_SIFIVE
-        bool "SiFive SoCs"
--       select SERIAL_SIFIVE
--       select SERIAL_SIFIVE_CONSOLE
-+       select SERIAL_SIFIVE if TTY
-+       select SERIAL_SIFIVE_CONSOLE if TTY
-        select CLK_SIFIVE
-        select CLK_SIFIVE_FU540_PRCI
-        select SIFIVE_PLIC
+Alan, if you can respin this patch with an updated commit message, I'll 
+queue
+it with a couple of other nits I have lying around, and send it to 
+Thomas by
+the end of the week.
+
+         M.
 -- 
-2.20.1
-
+Jazz is not dead. It just smells funny...
 
 _______________________________________________
 linux-riscv mailing list
