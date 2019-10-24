@@ -2,86 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3644E392B
-	for <lists+linux-riscv@lfdr.de>; Thu, 24 Oct 2019 19:03:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14DCDE3956
+	for <lists+linux-riscv@lfdr.de>; Thu, 24 Oct 2019 19:07:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kT+Gz+rLHzw98q65OTgjMQaeXT+OvRu6Met92W04VVY=; b=giPOd4mSY4+R4d
-	h6/Ihwv6GbuBhcmaPu/nsrXyZXd90Ps1xjMuiSW4fh8+0DCcf3lI2Gjsslbia3c1n/gcdlGCz3N1x
-	d03fxaUG3Dve7ro6deqK1MtRhAD39zqoJTsLtNrimlk3jT0KRjMRIwEf0/NDB7Cf2bnFSH7zBtPb6
-	jMkkKyXbBspOE4WrObA3E4q+6Tqdf813jowlsOdxsbN+QfRo44aglPYdLuP847pKLvtgcuLatJsPs
-	f5Zt/AWDoYLaLLvSauN53OXmu7ohcqkH79UWc0sugAwtYK2frU3ga+vku1jsrInpbtgRVtFwVl4yp
-	87V3VTMbmmfeN0MaSgXw==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/RelRzoeINrdQSvrzyjnlmF7BK/8av3rTXvZ/tDwo7A=; b=eZ/5Pl1GCoYSfw
+	nCb65ANir13J7DLi4FVWewlrpKmj4jiKNoB64HqRgNf3g6n0lvWDA8V/egGNDayytXVprY9EhBV0i
+	imKpSWe35g1cIF2s6ElJrrxl/sB+EbfHEXQ4klI9+nES+JgCF7Hdwd1YQ2Dx7FAbp108MAikHjOPZ
+	kbCBDYgCoi+1xtHI/NE56aoLSfJlrqOg85nWKRIo/USxw+CBdeL4dEIbTvHuktT5aVbhx2zvqATPx
+	e0O3YVmuIQl3IO+xGqMdwstNVTUIECz+Zc3hVyaX2HaAMzFVix1h6pka4i3p5bmahA0Oim7ba7bm/
+	MMp5089jVEl4fMwmaTYA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNgWZ-00031g-A8; Thu, 24 Oct 2019 17:03:47 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
- helo=us-smtp-1.mimecast.com)
+	id 1iNgaC-0005xP-Th; Thu, 24 Oct 2019 17:07:32 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNgWT-0002zl-Pk
- for linux-riscv@lists.infradead.org; Thu, 24 Oct 2019 17:03:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571936620;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KPuVZSjsJby28GYRrSW7KOOUQEyPDIp7ehYqx2CiMW8=;
- b=MCqDGEx5d1nmpaGulY9oWAEWrOOdd6AH1FeAb8dSjLPEPOtIJ5T4gFJv4uf+ge5ex/xAd7
- 5KbJgA4REyWouZKqZK/+KnUb8TcBJIDiyd8V5SyW3JvUWbt47uTMSwE8q+6aFZdZOMXRSg
- keJL4NMVRDp6DA47ZQWtkAZEs3Pdsp4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-305-4DGjzRdVOO-j_UhaexIoDw-1; Thu, 24 Oct 2019 13:03:34 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1CED11800DFB;
- Thu, 24 Oct 2019 17:03:22 +0000 (UTC)
-Received: from llong.remote.csb (dhcp-17-59.bos.redhat.com [10.18.17.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EA8096012E;
- Thu, 24 Oct 2019 17:03:16 +0000 (UTC)
-Subject: Re: [PATCH 0/2] Enabling MSI for Microblaze
-To: Michal Simek <michal.simek@xilinx.com>, linux-kernel@vger.kernel.org,
- monstr@monstr.eu, git@xilinx.com, palmer@sifive.com, hch@infradead.org,
- helgaas@kernel.org
-References: <cover.1571911976.git.michal.simek@xilinx.com>
-From: Waiman Long <longman@redhat.com>
-Organization: Red Hat
-Message-ID: <e9feafd1-8497-025b-e81d-f0e974038f3c@redhat.com>
-Date: Thu, 24 Oct 2019 13:03:16 -0400
+ id 1iNga8-0005qT-Ad
+ for linux-riscv@lists.infradead.org; Thu, 24 Oct 2019 17:07:29 +0000
+Received: from s0106ac1f6bb1ecac.cg.shawcable.net ([70.73.163.230]
+ helo=[192.168.11.155])
+ by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <logang@deltatee.com>)
+ id 1iNgZv-0005cq-D7; Thu, 24 Oct 2019 11:07:16 -0600
+To: Paul Walmsley <paul.walmsley@sifive.com>
+References: <1571908438-4802-1-git-send-email-yash.shah@sifive.com>
+ <c4817ec1-4e50-5646-68f0-caeb0ab6f0bf@deltatee.com>
+ <alpine.DEB.2.21.9999.1910240937350.20010@viisi.sifive.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <0684fa31-1dfd-9f6c-762e-5811e6e9d5b9@deltatee.com>
+Date: Thu, 24 Oct 2019 11:07:12 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <cover.1571911976.git.michal.simek@xilinx.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1910240937350.20010@viisi.sifive.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: 4DGjzRdVOO-j_UhaexIoDw-1
-X-Mimecast-Spam-Score: 0
+X-SA-Exim-Connect-IP: 70.73.163.230
+X-SA-Exim-Rcpt-To: allison@lohutok.net, will@kernel.org, tglx@linutronix.de,
+ gregkh@linuxfoundation.org, greentime.hu@g.sifive.com, sachin.ghadi@sifive.com,
+ rppt@linux.ibm.com, Anup.Patel@wdc.com, catalin.marinas@arm.com, alex@ghiti.fr,
+ aou@eecs.berkeley.edu, sorear2@gmail.com, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org, palmer@g.sifive.com,
+ paul.walmsley@g.sifive.com, yash.shah@sifive.com, paul.walmsley@sifive.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH] RISC-V: Add PCIe I/O BAR memory mapping
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191024_100341_918932_BBA7CCFF 
-X-CRM114-Status: GOOD (  14.29  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191024_100728_706779_3C3C8BAC 
+X-CRM114-Status: GOOD (  10.02  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [207.211.31.120 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.54.116.67 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,68 +78,58 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Catalin Marinas <catalin.marinas@arm.com>,
- Eric Biggers <ebiggers@google.com>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>, linux-pci@vger.kernel.org,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Paul Mackerras <paulus@samba.org>, sparclinux@vger.kernel.org,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- Ingo Molnar <mingo@kernel.org>, linux-arch@vger.kernel.org,
- Herbert Xu <herbert@gondor.apana.org.au>,
- Michael Ellerman <mpe@ellerman.id.au>, Jackie Liu <liuyun01@kylinos.cn>,
- Russell King <linux@armlinux.org.uk>, Firoz Khan <firoz.khan@linaro.org>,
- Wesley Terpstra <wesley@sifive.com>, James Hogan <jhogan@kernel.org>,
- linux-snps-arc@lists.infradead.org, Albert Ou <aou@eecs.berkeley.edu>,
- Arnd Bergmann <arnd@arndb.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Cornelia Huck <cohuck@redhat.com>, linux-mips@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>, Paul Burton <paul.burton@mips.com>,
- Vineet Gupta <vgupta@synopsys.com>, Paolo Bonzini <pbonzini@redhat.com>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: "sorear2@gmail.com" <sorear2@gmail.com>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "alex@ghiti.fr" <alex@ghiti.fr>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+ "Palmer Dabbelt \( Sifive\)" <palmer@g.sifive.com>,
+ "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "Paul Walmsley \( Sifive\)" <paul.walmsley@g.sifive.com>,
+ "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>, Yash Shah <yash.shah@sifive.com>,
+ Greentime Hu <greentime.hu@g.sifive.com>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "will@kernel.org" <will@kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
+ "allison@lohutok.net" <allison@lohutok.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 10/24/19 6:13 AM, Michal Simek wrote:
-> Hi,
->
-> these two patches come from discussion with Christoph, Bjorn, Palmer and
-> Waiman. The first patch was suggestion by Christoph here
-> https://lore.kernel.org/linux-riscv/20191008154604.GA7903@infradead.org/
-> The second part was discussed
-> https://lore.kernel.org/linux-pci/mhng-5d9bcb53-225e-441f-86cc-b335624b3e7c@palmer-si-x1e/
-> and
-> https://lore.kernel.org/linux-pci/20191017181937.7004-1-palmer@sifive.com/
->
-> Thanks,
-> Michal
->
->
-> Michal Simek (1):
->   asm-generic: Make msi.h a mandatory include/asm header
->
-> Palmer Dabbelt (1):
->   pci: Default to PCI_MSI_IRQ_DOMAIN
->
->  arch/arc/include/asm/Kbuild     | 1 -
->  arch/arm/include/asm/Kbuild     | 1 -
->  arch/arm64/include/asm/Kbuild   | 1 -
->  arch/mips/include/asm/Kbuild    | 1 -
->  arch/powerpc/include/asm/Kbuild | 1 -
->  arch/riscv/include/asm/Kbuild   | 1 -
->  arch/sparc/include/asm/Kbuild   | 1 -
->  drivers/pci/Kconfig             | 2 +-
->  include/asm-generic/Kbuild      | 1 +
->  9 files changed, 2 insertions(+), 8 deletions(-)
->
-That looks OK.
 
-Acked-by: Waiman Long <longman@redhat.com>
 
+On 2019-10-24 10:51 a.m., Paul Walmsley wrote:
+> On Thu, 24 Oct 2019, Logan Gunthorpe wrote:
+> 
+>> On 2019-10-24 3:14 a.m., Yash Shah wrote:
+>>> For I/O BARs to work correctly on RISC-V Linux, we need to establish a
+>>> reserved memory region for them, so that drivers that wish to use I/O BARs
+>>> can issue reads and writes against a memory region that is mapped to the
+>>> host PCIe controller's I/O BAR MMIO mapping.
+>>
+>> I don't think other arches do this. 
+> 
+> $ git grep 'define PCI_IOBASE' arch/ 
+> arch/arm/include/asm/io.h:#define PCI_IOBASE            ((void __iomem *)PCI_IO_VIRT_BASE)
+> arch/arm64/include/asm/io.h:#define PCI_IOBASE          ((void __iomem *)PCI_IO_START)
+> arch/m68k/include/asm/io_no.h:#define PCI_IOBASE        ((void __iomem *) PCI_IO_PA)
+> arch/microblaze/include/asm/io.h:#define PCI_IOBASE     ((void __iomem *)_IO_BASE)
+> arch/unicore32/include/asm/io.h:#define PCI_IOBASE      PKUNITY_PCILIO_BASE
+> arch/xtensa/include/asm/io.h:#define PCI_IOBASE         ((void __iomem *)XCHAL_KIO_BYPASS_VADDR)
+> $
+> 
+> This is for the old x86-style, non-memory mapped I/O address space the 
+> legacy PCI stuff that one would use in{b,w,l}()/out{b,w,l}() for.
+> 
+> Yash, you might consider updating your patch description to note that this 
+> is for "legacy I/O BARs (i.e., non-MMIO BARs)" or something similar.  That 
+> might make things clearer.
+
+Ah, right, yes, that would clear things up.
+
+Logan
 
 _______________________________________________
 linux-riscv mailing list
