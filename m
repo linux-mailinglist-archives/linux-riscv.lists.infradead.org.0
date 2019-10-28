@@ -2,35 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AF5AE6AED
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E3B9E6AEC
 	for <lists+linux-riscv@lfdr.de>; Mon, 28 Oct 2019 03:42:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WaQfOWNquMF/Prhp/SPtrlr3FK1XpiZEp7dgs+g1Nes=; b=Lzg11mfBUTb1h7
-	nGp9yW0317Qz19fohhj282i/vxzHPaj0py/jTOrwbtrsLdo0GYtP5DYGO/T1OF3Z6CwoDt7xDB49P
-	FVwVgoWRZjbk1TqnEyjfmrNHjZmR0n1Gi5D9o3JAxrqrxqwtPg0zBp7m9O45tS+g04/r1OJg5uNc1
-	dft/eBQczZ1dftrb3JVynkTlkeCL815cT4Lls/nUArapW/5Hf96n+coT5W4PLDzxdx0KKi0/p0UxH
-	pWI4lkbgYzjtvxkJUWp4ihrUAHn00blld/fmRYQk+9pM+1sl0b3QRO2Cw7e0264lhmOe0jTfH+Qm/
-	gA+waWeEIQQ6R+AzFvGg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8dHgnDrKykGBMOQSQGrFLtpkUSzDRl+8ozm7D51vnLU=; b=e67ifBqFqPXkoW
+	7hhBoyw+gFoGimICpKI1Zle610wALtXT0lwtnibm6cdHn+5/KFbwU2Sh4IJLMWIdYN8PujdiE2V2X
+	S/Sf5rcSN4usfibA2fXYg3SH1EMm/686dhO1HFFJI1PSPAzlEV6j/MC3eFfAWRx8SWDa1zLRvRtWE
+	4BRVP8aVyhr6icgPMxIElFRsLb24gO1Ap3sb9Mn8QKGLg7NH3vh6/1HxgpnDorHwZQT33L1Rz6Z5p
+	PVziK+ZHlntdfhuX6vwpifWd8fCfdxNwwPg6p9jRHH7zUinW7z9lka0qEi08ID1my+O49q0zVnD/o
+	dksn//G3/8UvVOPoQiYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOuzB-00073S-Pz; Mon, 28 Oct 2019 02:42:25 +0000
+	id 1iOuz7-00070G-CC; Mon, 28 Oct 2019 02:42:21 +0000
 Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
  helo=ATCSQR.andestech.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOuz1-0006rf-0E
+ id 1iOuz1-0006rg-0W
  for linux-riscv@lists.infradead.org; Mon, 28 Oct 2019 02:42:17 +0000
 Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id x9S2Ns1u087163;
- Mon, 28 Oct 2019 10:23:54 +0800 (GMT-8)
+ by ATCSQR.andestech.com with ESMTP id x9S2O9tf087229;
+ Mon, 28 Oct 2019 10:24:09 +0800 (GMT-8)
  (envelope-from nickhu@andestech.com)
 Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
  (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Mon, 28 Oct 2019
- 10:41:22 +0800
+ 10:41:38 +0800
 From: Nick Hu <nickhu@andestech.com>
 To: <aryabinin@virtuozzo.com>, <glider@google.com>, <dvyukov@google.com>,
  <corbet@lwn.net>, <paul.walmsley@sifive.com>, <palmer@sifive.com>,
@@ -40,17 +40,19 @@ To: <aryabinin@virtuozzo.com>, <glider@google.com>, <dvyukov@google.com>,
  <kasan-dev@googlegroups.com>, <linux-doc@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-riscv@lists.infradead.org>,
  <linux-mm@kvack.org>, <green.hu@gmail.com>
-Subject: [PATCH v4 0/3] KASAN support for RISC-V
-Date: Mon, 28 Oct 2019 10:40:58 +0800
-Message-ID: <20191028024101.26655-1-nickhu@andestech.com>
+Subject: [PATCH v4 1/3] kasan: No KASAN's memmove check if archs don't have it.
+Date: Mon, 28 Oct 2019 10:40:59 +0800
+Message-ID: <20191028024101.26655-2-nickhu@andestech.com>
 X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20191028024101.26655-1-nickhu@andestech.com>
+References: <20191028024101.26655-1-nickhu@andestech.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.0.15.65]
 X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com x9S2Ns1u087163
+X-MAIL: ATCSQR.andestech.com x9S2O9tf087229
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191027_194215_347603_14EAE888 
-X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-CacheID: sfid-20191027_194215_341108_2F0BA4C1 
+X-CRM114-Status: UNSURE (   6.06  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -79,43 +81,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-KASAN is an important runtime memory debugging feature in linux kernel which can
-detect use-after-free and out-of-bounds problems.
+If archs don't have memmove then the C implementation from lib/string.c is used,
+and then it's instrumented by compiler. So there is no need to add KASAN's
+memmove to manual checks.
 
-Changes in v2:
-  - Remove the porting of memmove and exclude the check instead.
-  - Fix some code noted by Christoph Hellwig
+Signed-off-by: Nick Hu <nickhu@andestech.com>
+---
+ mm/kasan/common.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v3:
-  - Update the KASAN documentation to mention that riscv is supported.
-
-Changes in v4:
-  - Correct the commit log
-  - Fix the bug reported by Greentime Hu
-
-Nick Hu (3):
-  kasan: No KASAN's memmove check if archs don't have it.
-  riscv: Add KASAN support
-  kasan: Add riscv to KASAN documentation.
-
- Documentation/dev-tools/kasan.rst   |   4 +-
- arch/riscv/Kconfig                  |   1 +
- arch/riscv/include/asm/kasan.h      |  27 ++++++++
- arch/riscv/include/asm/pgtable-64.h |   5 ++
- arch/riscv/include/asm/string.h     |   9 +++
- arch/riscv/kernel/head.S            |   3 +
- arch/riscv/kernel/riscv_ksyms.c     |   2 +
- arch/riscv/kernel/setup.c           |   5 ++
- arch/riscv/kernel/vmlinux.lds.S     |   1 +
- arch/riscv/lib/memcpy.S             |   5 +-
- arch/riscv/lib/memset.S             |   5 +-
- arch/riscv/mm/Makefile              |   6 ++
- arch/riscv/mm/kasan_init.c          | 104 ++++++++++++++++++++++++++++
- mm/kasan/common.c                   |   2 +
- 14 files changed, 173 insertions(+), 6 deletions(-)
- create mode 100644 arch/riscv/include/asm/kasan.h
- create mode 100644 arch/riscv/mm/kasan_init.c
-
+diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+index 6814d6d6a023..897f9520bab3 100644
+--- a/mm/kasan/common.c
++++ b/mm/kasan/common.c
+@@ -107,6 +107,7 @@ void *memset(void *addr, int c, size_t len)
+ 	return __memset(addr, c, len);
+ }
+ 
++#ifdef __HAVE_ARCH_MEMMOVE
+ #undef memmove
+ void *memmove(void *dest, const void *src, size_t len)
+ {
+@@ -115,6 +116,7 @@ void *memmove(void *dest, const void *src, size_t len)
+ 
+ 	return __memmove(dest, src, len);
+ }
++#endif
+ 
+ #undef memcpy
+ void *memcpy(void *dest, const void *src, size_t len)
 -- 
 2.17.0
 
