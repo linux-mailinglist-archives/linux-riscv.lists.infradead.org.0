@@ -2,70 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3900E6247
-	for <lists+linux-riscv@lfdr.de>; Sun, 27 Oct 2019 12:30:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AF5AE6AED
+	for <lists+linux-riscv@lfdr.de>; Mon, 28 Oct 2019 03:42:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:
-	References:In-Reply-To:From:Subject:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0OCsx2dABKvCVvZ5g/vG4yRZfWTuceK5ws5SFxjco8w=; b=dZNUbnYI37/YnV
-	7mFNdtN2SBiNnckG6unjMmEK0Y4W3Feak+P7ZdGNvtcy6NsGTWpxTkboLdIQ6hwjjVe81DuAxTR2z
-	LRSAPMvPdbBCKyBUKyEjgaJGI2BzmVQlmVzkCWsWGFQNL4V5Y59xp5L7Wozl45LAblEe+wN2X8Vh9
-	DrTjc9akNqpqgjn+q0P4n7OWlNtPqJO1/csH9Wd3Ww6ng6K0EPDpKNZNPqy5+Xp4jmHdmEQZh954H
-	rUaUD35WckKrQW5wCyLULdvF0oNbEtgpc6PTm+CWbV8ZNLcJD1AYpgP5j2ZO+eMQTcjw8Ekupowd3
-	AxP/rBa+KieWFEFWngnQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WaQfOWNquMF/Prhp/SPtrlr3FK1XpiZEp7dgs+g1Nes=; b=Lzg11mfBUTb1h7
+	nGp9yW0317Qz19fohhj282i/vxzHPaj0py/jTOrwbtrsLdo0GYtP5DYGO/T1OF3Z6CwoDt7xDB49P
+	FVwVgoWRZjbk1TqnEyjfmrNHjZmR0n1Gi5D9o3JAxrqrxqwtPg0zBp7m9O45tS+g04/r1OJg5uNc1
+	dft/eBQczZ1dftrb3JVynkTlkeCL815cT4Lls/nUArapW/5Hf96n+coT5W4PLDzxdx0KKi0/p0UxH
+	pWI4lkbgYzjtvxkJUWp4ihrUAHn00blld/fmRYQk+9pM+1sl0b3QRO2Cw7e0264lhmOe0jTfH+Qm/
+	gA+waWeEIQQ6R+AzFvGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOgkQ-0007n4-UJ; Sun, 27 Oct 2019 11:30:14 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iOuzB-00073S-Pz; Mon, 28 Oct 2019 02:42:25 +0000
+Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
+ helo=ATCSQR.andestech.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOgkK-0006ed-7B
- for linux-riscv@lists.infradead.org; Sun, 27 Oct 2019 11:30:09 +0000
-Subject: Re: [GIT PULL] RISC-V updates for v5.4-rc5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572175804;
- bh=C7auwD1WXWbMnFdBuCDr/ykryLHxN64hBFI3GfcQY7E=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=E9rIU8KwjAmwtRcMrwUc9kHyeOyKFUwkAoctz8MOAdDkw2EAYlRc5vkH1LXlzyq4a
- 2fcr0n1r9ueu9RJcxDVKujrVgJOc5uYTaHWpjWbLXkCFiUXgqW9Yj4ZwACwwobr7vh
- vCfodc7/t3c5rO6OWqy4p8dUcvwQg27wBxwRDCC0=
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <alpine.DEB.2.21.9999.1910261701250.12828@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1910261701250.12828@viisi.sifive.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <alpine.DEB.2.21.9999.1910261701250.12828@viisi.sifive.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
- tags/riscv/for-v5.4-rc5-b
-X-PR-Tracked-Commit-Id: e8f44c50dfe75315d1ff6efc837d62cbe7368c9b
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 6995a6a5a538dae047ff16ec267394e5258e84b7
-Message-Id: <157217580489.15608.4260623730121864685.pr-tracker-bot@kernel.org>
-Date: Sun, 27 Oct 2019 11:30:04 +0000
-To: Paul Walmsley <paul.walmsley@sifive.com>
+ id 1iOuz1-0006rf-0E
+ for linux-riscv@lists.infradead.org; Mon, 28 Oct 2019 02:42:17 +0000
+Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
+ by ATCSQR.andestech.com with ESMTP id x9S2Ns1u087163;
+ Mon, 28 Oct 2019 10:23:54 +0800 (GMT-8)
+ (envelope-from nickhu@andestech.com)
+Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
+ (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Mon, 28 Oct 2019
+ 10:41:22 +0800
+From: Nick Hu <nickhu@andestech.com>
+To: <aryabinin@virtuozzo.com>, <glider@google.com>, <dvyukov@google.com>,
+ <corbet@lwn.net>, <paul.walmsley@sifive.com>, <palmer@sifive.com>,
+ <aou@eecs.berkeley.edu>, <tglx@linutronix.de>,
+ <gregkh@linuxfoundation.org>, <alankao@andestech.com>,
+ <Anup.Patel@wdc.com>, <atish.patra@wdc.com>,
+ <kasan-dev@googlegroups.com>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-riscv@lists.infradead.org>,
+ <linux-mm@kvack.org>, <green.hu@gmail.com>
+Subject: [PATCH v4 0/3] KASAN support for RISC-V
+Date: Mon, 28 Oct 2019 10:40:58 +0800
+Message-ID: <20191028024101.26655-1-nickhu@andestech.com>
+X-Mailer: git-send-email 2.17.0
+MIME-Version: 1.0
+X-Originating-IP: [10.0.15.65]
+X-DNSRBL: 
+X-MAIL: ATCSQR.andestech.com x9S2Ns1u087163
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191027_043008_315308_0908595B 
-X-CRM114-Status: UNSURE (   0.66  )
+X-CRM114-CacheID: sfid-20191027_194215_347603_14EAE888 
+X-CRM114-Status: UNSURE (   8.80  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.4 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ 0.0 TVD_RCVD_IP            Message was received from an IP address
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.4 RDNS_DYNAMIC           Delivered to internal network by host with
+ dynamic-looking rDNS
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,26 +73,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, torvalds@linux-foundation.org,
- linux-kernel@vger.kernel.org
-MIME-Version: 1.0
+Cc: Nick Hu <nickhu@andestech.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The pull request you sent on Sat, 26 Oct 2019 17:02:43 -0700 (PDT):
+KASAN is an important runtime memory debugging feature in linux kernel which can
+detect use-after-free and out-of-bounds problems.
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.4-rc5-b
+Changes in v2:
+  - Remove the porting of memmove and exclude the check instead.
+  - Fix some code noted by Christoph Hellwig
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/6995a6a5a538dae047ff16ec267394e5258e84b7
+Changes in v3:
+  - Update the KASAN documentation to mention that riscv is supported.
 
-Thank you!
+Changes in v4:
+  - Correct the commit log
+  - Fix the bug reported by Greentime Hu
+
+Nick Hu (3):
+  kasan: No KASAN's memmove check if archs don't have it.
+  riscv: Add KASAN support
+  kasan: Add riscv to KASAN documentation.
+
+ Documentation/dev-tools/kasan.rst   |   4 +-
+ arch/riscv/Kconfig                  |   1 +
+ arch/riscv/include/asm/kasan.h      |  27 ++++++++
+ arch/riscv/include/asm/pgtable-64.h |   5 ++
+ arch/riscv/include/asm/string.h     |   9 +++
+ arch/riscv/kernel/head.S            |   3 +
+ arch/riscv/kernel/riscv_ksyms.c     |   2 +
+ arch/riscv/kernel/setup.c           |   5 ++
+ arch/riscv/kernel/vmlinux.lds.S     |   1 +
+ arch/riscv/lib/memcpy.S             |   5 +-
+ arch/riscv/lib/memset.S             |   5 +-
+ arch/riscv/mm/Makefile              |   6 ++
+ arch/riscv/mm/kasan_init.c          | 104 ++++++++++++++++++++++++++++
+ mm/kasan/common.c                   |   2 +
+ 14 files changed, 173 insertions(+), 6 deletions(-)
+ create mode 100644 arch/riscv/include/asm/kasan.h
+ create mode 100644 arch/riscv/mm/kasan_init.c
 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.wiki.kernel.org/userdoc/prtracker
+2.17.0
+
 
 _______________________________________________
 linux-riscv mailing list
