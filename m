@@ -2,74 +2,98 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CA66E7C30
-	for <lists+linux-riscv@lfdr.de>; Mon, 28 Oct 2019 23:12:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85F08E7F1B
+	for <lists+linux-riscv@lfdr.de>; Tue, 29 Oct 2019 05:20:22 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iXKxaqB+0dbfbWcyt4wHyR4US3+enwWUuANcBZC6iNo=; b=f61U7kWhPCWUuQ
-	4fRVkg/5rLa8jB7k3HZvMQGZ9KpDgRiCXcpxZluKPdiz6W4vg1qBeqLwIjOGRpr9ISrRraNTNdLZR
-	eVPCu1jv+LVknQ8jmnGRaHJHoI8OwN2sAZ6aT5fefWxH3G7xxfc+FjldYrfQlFj//GcxF/n2xgC0I
-	/O3LqU7u59/hVDIFSJz9FZS1D1Qx8IHKgzm8KWKV6pCMIFLQQO25Y9HSWrqeZhwt0iHpfVDOeYUp0
-	Y9iwZHW/8ERXpTbNcOUJvIn62N0ZiGONwCDQaqxjNUhVHhI/Ypdil8iRoFijEg65XVKLa2A/Np4H0
-	m2aUiIc9JuZwX9K9kC8g==;
+	List-Owner; bh=4Sr2raiRt2oJCczHxG45whdcMySrFNX5I17MuRgVJWo=; b=Of0gIGFdtk/tP3
+	oMPj10ilrpW79y4KFQCQx0YnUmhufLOMjhplCknO/xfUmM1yJxZI8xfuv5MeurxJuGYs5qW+St5ps
+	lxu9SR8VlhoJS/JV1GUdeVwozE782zvteNt+NLU/LE64LgMKrKgPmBhvMD8o/BTBSxBSoLbrRO7W+
+	sSTvmLyYzDzj6dX3ki19iWAb/woxadR7rvscLC2ajO9kNYEI7bYgIrhFKibvxBtGo609qJL1as3Fg
+	rrSPj1HIVxy48lEoULsFVKrNC2FxsM2SfdLASXP4inD4T3kV8zMItvtBGQTyw9/hzmZYDDVqi4t84
+	k0Sv9YJ+2srs1DbwvpcA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPDF1-0001LR-B9; Mon, 28 Oct 2019 22:11:59 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1iPIzE-0002EW-Pm; Tue, 29 Oct 2019 04:20:04 +0000
+Received: from mail-eopbgr820088.outbound.protection.outlook.com
+ ([40.107.82.88] helo=NAM01-SN1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPDEx-0001L4-Qs
- for linux-riscv@lists.infradead.org; Mon, 28 Oct 2019 22:11:57 +0000
-Received: by mail-wm1-x342.google.com with SMTP id v3so642989wmh.1
- for <linux-riscv@lists.infradead.org>; Mon, 28 Oct 2019 15:11:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=YjMWv87Txz8ruISksDEwTY/yiCDggkCZffCKhGJVPqo=;
- b=a6WH1c4A3Zp2KbScjqDYgpeYNoumQEFfWVGo6UgRuVMOiL5sHK7jRmR5ZDlTNjSmre
- t1+uA2Lv1NWloGTHH5bAooKYLv85rP6Gj+xTMT45L9dh1NeWI+ZJcGTfnIxtFvWFtsaI
- QnZUQ3HI1FUHsnAtB5zaLSINszDZgYfP+TR8dRx1LpN3DGxMoIVLVZBMzb+vk6/A1rb8
- nBr9Hn6+6Fj/D8baXWVHftCCzOX7+lZCHwhnNGbLK7ActolTE8p4ZEVjRkdMO6+DjhBK
- WTiijBceKnhXmwUlyLQ3zYxsW1GB3Thr6s5EoPDAXEMIqDZ0tEDYtz/lcVIUrnkltqnX
- Cw8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=YjMWv87Txz8ruISksDEwTY/yiCDggkCZffCKhGJVPqo=;
- b=dK4j48I3x6A6jO2HrJzVUkg4pG9IoULR6myJTtCSH+WMA4nSW3NyNIuvqLx/xJo6r0
- HyF6LAG6NYDFIYZvX7zQfYJxbQe7LALFGGLCtXC49eDH8d0LuYzM9tekELIZbC4m4Gj0
- kuecl3QGMxsd+QwKjLk8CvPXkgYq2AOfGVTj0Lj21PxQJ8jOds97uMDKyI3pRms2qTyw
- 3Kkmrvmj2Y7ub2cKglkpHhwF1R/cI3IH5q85RXy9otRj7rxYuES8C1r/gsKNNuhjCXbY
- EhGtr8iKHBLePwzaNKF/6yYwznIpoVDLGJsDTeRFGMpNjnUlNXeDxUJVxHqLC/X24AU6
- cOGw==
-X-Gm-Message-State: APjAAAWcdIYPS+Xb2WslRft3fXTiiHwa8+NOIBx79u0LMW/PGnEvz2oG
- knp/BuAaWdaMskgnZA7uNSg=
-X-Google-Smtp-Source: APXvYqxVhyqboSyYmsgvo32+aV4wHUK0cx8Hd7TlVaxn75jcJJUtRP9dEehXjF3+7RcW6VFNqRPZIQ==
-X-Received: by 2002:a1c:7311:: with SMTP id d17mr1159537wmb.49.1572300714030; 
- Mon, 28 Oct 2019 15:11:54 -0700 (PDT)
-Received: from desk.local ([2a02:a03f:40ac:ce00:6dcd:e18f:2cd1:7611])
- by smtp.gmail.com with ESMTPSA id r1sm12939065wrw.60.2019.10.28.15.11.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 15:11:53 -0700 (PDT)
-Date: Mon, 28 Oct 2019 23:11:52 +0100
-From: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
-To: Palmer Dabbelt <palmer@sifive.com>
-Subject: Re: [PATCH 4/8] riscv: ensure RISC-V C model definitions are passed
- to static analyzers
-Message-ID: <20191028221151.bpbp27x6xeotbvm5@desk.local>
-References: <alpine.DEB.2.21.9999.1910172138320.3026@viisi.sifive.com>
- <mhng-8e06672c-a3e1-4dde-bbe9-ba1d8ab79645@palmer-si-x1e>
+ id 1iPIzB-000266-D6
+ for linux-riscv@lists.infradead.org; Tue, 29 Oct 2019 04:20:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FD+vPqhtQ60eJRKTCMjnG4aj1bo6272XuVyft+D8x51FQ4seQstpipctLc0c5Q9621pV/QxwjktlTn7nW+FzHq60/fdn+/p44U33c9wyCRNa6ZfdpKL9bK98s6mr8k0ar/YIsav1hf/Cg9uqCTzomLvvNwsaKq+RJ+GG/hAK0BnuUwlW3dBPzBvG/+5mXDzrlkO824ywFbKB5JFHi9nmGgusL+7VdrgbQ3NDqLQ2J9hb2RRLTESqqn4h5eWlplV+2STVBMtKK/cQ7SpYH7P/hWwZuaLABHHlkRB1LktgmPp4KVL7F0ZXwm0l9fi7xP3MF9C6ODkG898WPA/Q/U7uLA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=z/FCPeXafzqDSGZLSY8HTfoMAstxNbe+6oObwMBwK6Q=;
+ b=CIiKCfbRfxn4A6i/+E9pwNx7sIdxV/cM6MkcViD8Cau1BApa8OW12GxawnUegAj4FKq8oJFHS0vhSVCFSExmfgNc1+1FNDE/LxBN5MyctveFqoYzWaZNSQIaDYWFoeqwaCT6y4jxOSpp1ofDF3DqCu6EvypvYZeQh+Ee1PHG6xw7S2w1oXmjzVmV1iVCDALa77ec2UfmxV0vs9KNbVtkyFi8UjXr3PrZ706NcqhxEY6jeFenCcfODY+3UpT38nzWCUqVvlW9us5BIxvfB1zuC4HfuSp52gD5oBzK/Rlv0P8k2HPpAdoOm4HXneqfPpiw7DyeTn2QDOV+1Ka6V2wCow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
+ dkim=pass header.d=sifive.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=z/FCPeXafzqDSGZLSY8HTfoMAstxNbe+6oObwMBwK6Q=;
+ b=Aiv58saHLMWA1vUUPO84uy+8e414p/ka2Y7nNjo4BeTssM0rTHqU/Ek3BjFKugPn/n6oXHyvl/l71uH6ESvDlPVvPHPL9IMmx66xq31mvuMLvQXrgN4tQkQ+hXAtbyOCZHgbFcEiXPt8u0NP8P4EIW0qgAI0htZLSBVYn3too0s=
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
+ CH2PR13MB3445.namprd13.prod.outlook.com (52.132.244.32) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2408.15; Tue, 29 Oct 2019 04:19:56 +0000
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::853e:1256:311e:d29]) by CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::853e:1256:311e:d29%7]) with mapi id 15.20.2408.014; Tue, 29 Oct 2019
+ 04:19:56 +0000
+From: Yash Shah <yash.shah@sifive.com>
+To: "Paul Walmsley ( Sifive)" <paul.walmsley@sifive.com>
+Subject: RE: [PATCH v2] RISC-V: Add PCIe I/O BAR memory mapping
+Thread-Topic: [PATCH v2] RISC-V: Add PCIe I/O BAR memory mapping
+Thread-Index: AQHViw5l0jY9JQhUEkq6xffYZOywOadrgoeAgAWHKLA=
+Date: Tue, 29 Oct 2019 04:19:56 +0000
+Message-ID: <CH2PR13MB3368A6E99DAB164A52D2954A8C610@CH2PR13MB3368.namprd13.prod.outlook.com>
+References: <1571992163-6811-1-git-send-email-yash.shah@sifive.com>
+ <alpine.DEB.2.21.9999.1910250852420.28076@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1910250852420.28076@viisi.sifive.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=yash.shah@sifive.com; 
+x-originating-ip: [114.143.65.226]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: a71613c0-7ad6-41ea-c404-08d75c274136
+x-ms-traffictypediagnostic: CH2PR13MB3445:
+x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CH2PR13MB34456B932746A73B676418788C610@CH2PR13MB3445.namprd13.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-forefront-prvs: 0205EDCD76
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(39850400004)(376002)(136003)(366004)(396003)(346002)(189003)(199004)(107886003)(229853002)(4744005)(6246003)(316002)(86362001)(6862004)(55016002)(486006)(66556008)(44832011)(66476007)(76116006)(9686003)(4326008)(64756008)(66946007)(66446008)(256004)(14444005)(99286004)(6116002)(14454004)(26005)(6436002)(54906003)(102836004)(3846002)(186003)(33656002)(476003)(5660300002)(446003)(11346002)(6636002)(7416002)(66066001)(52536014)(8936002)(74316002)(81166006)(2906002)(81156014)(7736002)(6506007)(8676002)(76176011)(7696005)(305945005)(25786009)(71200400001)(478600001)(71190400001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3445;
+ H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: sifive.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: MEGWlcZfPwgDwjBu9LhuaZgUGZIud4RgLg+rKY6Fn/bn6BkGgnEsbHQtzcc7IRE4sAuc7fL09/Pc5AmzZQDWoueG9WDC09tu+XZ8OSuUXfYG3qNL0efK9MXkZyVuIECy2mQt8Tr+l1n/+0v94kvnp9BFMZcYSiDLEIBHkw6QXhUV8mNNq8Oj7y5quJ4Cp1a1e0DoXW0ugfZ2E8l3MYqtfmoLc6PYvY16cK4IwOJmJ6ugwXW7Aj3rR0z0eW1Bppakkrvy6wqla5qgIR7NnKn7Fa39wO6RJjYFxUvxki5T24xYWqf+5uk9iPuuX52YracI9RLFUQZozVhjqu+gx33J47VOSa9elpmkkDPrKeZ0okPP8TruQ5zhRrZD9nfz+rKPT70RS0WU8BW8XBiw19OflTrDRJK8bYwrPb1IdKACoXyJSdZgXMdTbJZ9Brjzb9Kz
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <mhng-8e06672c-a3e1-4dde-bbe9-ba1d8ab79645@palmer-si-x1e>
-User-Agent: NeoMutt/20180716
+X-OriginatorOrg: sifive.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a71613c0-7ad6-41ea-c404-08d75c274136
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Oct 2019 04:19:56.3003 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7dPlHCLmbI+c1hn/2tr4Q6S9mfcTqpwbYBTNN+JttOH6YMxcxRlmlKP++uzFUIkVSXBJL+5FyOtkh9VPuGDH1Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_151155_896044_F8E80412 
-X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-CacheID: sfid-20191028_212001_512374_A12B7E08 
+X-CRM114-Status: UNSURE (   8.00  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -77,12 +101,9 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (luc.vanoostenryck[at]gmail.com)
+ no trust [40.107.82.88 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -101,27 +122,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-sparse@vger.kernel.org,
- linux-kernel@vger.kernel.org, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: "logang@deltatee.com" <logang@deltatee.com>,
+ "sorear2@gmail.com" <sorear2@gmail.com>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "alex@ghiti.fr" <alex@ghiti.fr>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "catalin.marinas@arm.com" <catalin.marinas@arm.com>, "Palmer Dabbelt \(
+ Sifive\)" <palmer@sifive.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>,
+ "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
+ "Paul Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
+ Greentime Hu <greentime.hu@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "will@kernel.org" <will@kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
+ "allison@lohutok.net" <allison@lohutok.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Oct 22, 2019 at 08:09:59AM -0700, Palmer Dabbelt wrote:
+> On Fri, 25 Oct 2019, Yash Shah wrote:
 > 
-> It's probably worth going through all our argument-dependent builtin
-> definitions at the same time.  They're generated by
-> riscv_cpu_cpp_builtins():
-> https://github.com/gcc-mirror/gcc/blob/master/gcc/config/riscv/riscv-c.c#L35
+> > For legacy I/O BARs (non-MMIO BARs) to work correctly on RISC-V Linux,
+> > we need to establish a reserved memory region for them, so that
+> > drivers that wish to use the legacy I/O BARs can issue reads and
+> > writes against a memory region that is mapped to the host PCIe
+> > controller's I/O BAR mapping.
+> >
+> > Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> 
+> Thanks.  And just to confirm: this is a fix, right?  Without this patch, legacy
+> PCIe I/O resources won't be accessible on RISC-V?
 
-Yes, I agree.
-However, these are higly dependent on parsing -march and this is quite
-arch-specific which sparse is not really needed for.
+Yes, this is a fix.
 
-I'll add some infrastructure for this in the followings weeks.
-
--- Luc
+- Yash
 
 _______________________________________________
 linux-riscv mailing list
