@@ -2,38 +2,59 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EAA90E81BF
-	for <lists+linux-riscv@lfdr.de>; Tue, 29 Oct 2019 08:02:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4FB7E861A
+	for <lists+linux-riscv@lfdr.de>; Tue, 29 Oct 2019 11:51:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QlK1NuXoBaQ6SbJXG3WCDjrDFGjntPwHteYTg3xtZ1w=; b=Tps4pGkDV4s2HB
-	5BV2JLuFf7AsQmLiEU47c7RxdOIyleOOmEfrI5ULyIeKiSyr29/4o8hlXYhEg04C0jJsUo2aZf45B
-	Hq8MRS56L6loFwIQOZrcjtVcj4kHmVzYcT/XiCzJbbShad8rpblj59xWMRAXlTOWC3TWa+ntDS1ZX
-	AZZOE9Gy0/C83C9y348B/9WjeqcDDeC/eNhaSVbv6mRh2IIUQxqXF63aScpF3+iQ/mT/TA9DG6Z6K
-	Utnepe2OBnNOohVhewiyYKvT46ZEu7pedjysyVc776MMKS2cbOxA4jXRMKjlzhWYCNYIWdyUC6jd7
-	MQ0lza+8p9EMr5LfgUbA==;
+	List-Owner; bh=bkrNMRvWwJ4wIWYMcq1v1WQaD1exaDxrNhflzz0MQVY=; b=XqxOSS0qBTizB6
+	FrdhNNRuJxt4suTSWJA0TEUP1rmYzjJco7V7P2DqIng1e37SV1/9AsaCIfqJ80+1WhJvjX3Z65Q6X
+	Cg7s644luOGOVwq9CykgERK/Voy359Gdy20VScMN53/aNEyllSAkrrtb7TG19tpDwEuU8/gn873P4
+	UXsXy7ioAv9uE48xyhmGjHnRJWKnIxIeyXxJl9uW7si7rYauxIy4W8gC5doIPzCXIWHOpBOK4Z3lA
+	TCwbJL07wrlDYhtsUBJO0oHQEQIjwjVNtwSHPFlz5EKTNaC+K+X3J129J73G72NzOyMWqNAC0gn99
+	JBrkhNWpiKkdCTR5HMvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPLW7-0002Y1-TU; Tue, 29 Oct 2019 07:02:11 +0000
-Received: from [2001:4bb8:18c:c7d:c70:4a89:bc61:2] (helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPLK3-0004Ik-1s; Tue, 29 Oct 2019 06:49:43 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: Arnd Bergmann <arnd@arndb.de>, Guo Ren <guoren@kernel.org>,
- Michal Simek <monstr@monstr.eu>, Greentime Hu <green.hu@gmail.com>,
- Vincent Chen <deanbo422@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- x86@kernel.org
-Subject: [PATCH 21/21] csky: use generic ioremap
-Date: Tue, 29 Oct 2019 07:48:34 +0100
-Message-Id: <20191029064834.23438-22-hch@lst.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191029064834.23438-1-hch@lst.de>
-References: <20191029064834.23438-1-hch@lst.de>
+	id 1iPP5k-0000ji-9d; Tue, 29 Oct 2019 10:51:12 +0000
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iPP5g-0000iK-UK
+ for linux-riscv@lists.infradead.org; Tue, 29 Oct 2019 10:51:10 +0000
+Received: from [91.217.168.176] (helo=ohm.local)
+ by hall.aurel32.net with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <aurelien@aurel32.net>)
+ id 1iPP5U-0004nL-MD; Tue, 29 Oct 2019 11:50:56 +0100
+Received: from aurel32 by ohm.local with local (Exim 4.92.3)
+ (envelope-from <aurelien@aurel32.net>)
+ id 1iPP5T-0005UP-IX; Tue, 29 Oct 2019 11:50:55 +0100
+Date: Tue, 29 Oct 2019 11:50:55 +0100
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: Romain Dolbeau <romain.dolbeau@european-processor-initiative.eu>
+Subject: Re: 32-bits offset issue preventing module to load,
+Message-ID: <20191029105055.GA20736@aurel32.net>
+References: <1572281840733.3517@european-processor-initiative.eu>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1572281840733.3517@european-processor-initiative.eu>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20191029_035108_975304_BB817125 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 2.9 (++)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (2.9 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 3.6 RCVD_IN_SBL_CSS        RBL: Received via a relay in Spamhaus SBL-CSS
+ [91.217.168.176 listed in zen.spamhaus.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [2001:bc8:30d7:100:0:0:0:1 listed in] [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,137 +66,56 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-ia64@vger.kernel.org, linux-parisc@vger.kernel.org,
- linux-sh@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-xtensa@linux-xtensa.org, linux-mips@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, linux-mtd@lists.infradead.org,
- linux-alpha@vger.kernel.org, sparclinux@vger.kernel.org,
- nios2-dev@lists.rocketboards.org, linux-riscv@lists.infradead.org,
- linux-snps-arc@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@sifive.com>, "romain@dolbeau.org" <romain@dolbeau.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Paul Walmsley <paul.walmsley@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Use the generic ioremap_prot and iounmap helpers.
+Hi,
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- arch/csky/Kconfig               |  1 +
- arch/csky/include/asm/io.h      |  8 +++---
- arch/csky/include/asm/pgtable.h |  4 +++
- arch/csky/mm/ioremap.c          | 45 ---------------------------------
- 4 files changed, 8 insertions(+), 50 deletions(-)
+On 2019-10-28 16:57, Romain Dolbeau wrote:
+> Hello,
+> 
+> I have a Fedora RISC-V running fine in QEMU, using packaged kernel "5.4.0-0.rc4.git0.300.1.riscv64.fc32.riscv64".
+> Some modules won't load, such as openvswitch:
+> 
+> #####
+> $ sudo modprobe openvswitch ; dmesg | tail -1
+> modprobe: ERROR: could not insert 'openvswitch': Invalid argument
+> [  227.833317] openvswitch: target ffffffe0000d1fd8 can not be addressed by the 32-bit offset from PC = 00000000bcd11221
+> #####
 
-diff --git a/arch/csky/Kconfig b/arch/csky/Kconfig
-index 3973847b5f42..da09c884cc30 100644
---- a/arch/csky/Kconfig
-+++ b/arch/csky/Kconfig
-@@ -17,6 +17,7 @@ config CSKY
- 	select IRQ_DOMAIN
- 	select HANDLE_DOMAIN_IRQ
- 	select DW_APB_TIMER_OF
-+	select GENERIC_IOREMAP
- 	select GENERIC_LIB_ASHLDI3
- 	select GENERIC_LIB_ASHRDI3
- 	select GENERIC_LIB_LSHRDI3
-diff --git a/arch/csky/include/asm/io.h b/arch/csky/include/asm/io.h
-index f572605d5ad5..332f51bc68fb 100644
---- a/arch/csky/include/asm/io.h
-+++ b/arch/csky/include/asm/io.h
-@@ -36,11 +36,9 @@
- /*
-  * I/O memory mapping functions.
-  */
--extern void __iomem *__ioremap(phys_addr_t addr, size_t size, pgprot_t prot);
--extern void iounmap(void *addr);
--
--#define ioremap(addr, size)		__ioremap((addr), (size), pgprot_noncached(PAGE_KERNEL))
--#define ioremap_wc(addr, size)		__ioremap((addr), (size), pgprot_writecombine(PAGE_KERNEL))
-+#define ioremap_wc(addr, size) \
-+	ioremap_prot((addr), (size), \
-+		(_PAGE_IOREMAP & ~_CACHE_MASK) | _CACHE_UNCACHED)
- 
- #include <asm-generic/io.h>
- 
-diff --git a/arch/csky/include/asm/pgtable.h b/arch/csky/include/asm/pgtable.h
-index 7c21985c60dc..4b2a41e15f2e 100644
---- a/arch/csky/include/asm/pgtable.h
-+++ b/arch/csky/include/asm/pgtable.h
-@@ -86,6 +86,10 @@
- #define PAGE_USERIO	__pgprot(_PAGE_PRESENT | _PAGE_READ | _PAGE_WRITE | \
- 				_CACHE_CACHED)
- 
-+#define _PAGE_IOREMAP \
-+	(_PAGE_PRESENT | __READABLE | __WRITEABLE | _PAGE_GLOBAL | \
-+	 _CACHE_UNCACHED | _PAGE_SO)
-+
- #define __P000	PAGE_NONE
- #define __P001	PAGE_READONLY
- #define __P010	PAGE_COPY
-diff --git a/arch/csky/mm/ioremap.c b/arch/csky/mm/ioremap.c
-index ae78256a56fd..70c8268d3b2b 100644
---- a/arch/csky/mm/ioremap.c
-+++ b/arch/csky/mm/ioremap.c
-@@ -3,53 +3,8 @@
- 
- #include <linux/export.h>
- #include <linux/mm.h>
--#include <linux/vmalloc.h>
- #include <linux/io.h>
- 
--#include <asm/pgtable.h>
--
--static void __iomem *__ioremap_caller(phys_addr_t addr, size_t size,
--				      pgprot_t prot, void *caller)
--{
--	phys_addr_t last_addr;
--	unsigned long offset, vaddr;
--	struct vm_struct *area;
--
--	last_addr = addr + size - 1;
--	if (!size || last_addr < addr)
--		return NULL;
--
--	offset = addr & (~PAGE_MASK);
--	addr &= PAGE_MASK;
--	size = PAGE_ALIGN(size + offset);
--
--	area = get_vm_area_caller(size, VM_IOREMAP, caller);
--	if (!area)
--		return NULL;
--
--	vaddr = (unsigned long)area->addr;
--
--	if (ioremap_page_range(vaddr, vaddr + size, addr, prot)) {
--		free_vm_area(area);
--		return NULL;
--	}
--
--	return (void __iomem *)(vaddr + offset);
--}
--
--void __iomem *__ioremap(phys_addr_t phys_addr, size_t size, pgprot_t prot)
--{
--	return __ioremap_caller(phys_addr, size, prot,
--				__builtin_return_address(0));
--}
--EXPORT_SYMBOL(__ioremap);
--
--void iounmap(void __iomem *addr)
--{
--	vunmap((void *)((unsigned long)addr & PAGE_MASK));
--}
--EXPORT_SYMBOL(iounmap);
--
- pgprot_t phys_mem_access_prot(struct file *file, unsigned long pfn,
- 			      unsigned long size, pgprot_t vma_prot)
- {
+The same problem also happens on a 5.2.17 kernel (from the Debian
+package) with the scsi_mod loading (dependency of virtio_scsi):
+
+[  330.737763] scsi_mod: target ffffffe00007fa20 can not be addressed by the 32-bit offset from PC = 00000000e0712647
+
+> The message is explicit, a 32-bits offset is not enough to access the data @ 0xffffffe0000d1fd8 from 0x00000000bcd11221. The relevant (I think) part of the System.map is:
+> 
+> #####
+> /usr/src/kernels/5.4.0-0.rc4.git0.300.1.riscv64.fc32.riscv64/System.map:ffffffe0000d1fd8 D __init_end
+> /usr/src/kernels/5.4.0-0.rc4.git0.300.1.riscv64.fc32.riscv64/System.map:ffffffe0000d1fd8 D __per_cpu_end
+> /usr/src/kernels/5.4.0-0.rc4.git0.300.1.riscv64.fc32.riscv64/System.map:ffffffe0000d1fd8 T _stext
+> /usr/src/kernels/5.4.0-0.rc4.git0.300.1.riscv64.fc32.riscv64/System.map:ffffffe0000d1fd8 T _text
+> /usr/src/kernels/5.4.0-0.rc4.git0.300.1.riscv64.fc32.riscv64/System.map:ffffffe0000d1fd8 t trace_initcall_finish_cb
+> #####
+
+In my case, it points to the same symbols:
+
+ffffffe00007fa18 D __init_end
+ffffffe00007fa18 D __per_cpu_end
+ffffffe00007fa18 T _stext
+ffffffe00007fa18 T _text
+ffffffe00007fa18 t trace_initcall_finish_cb
+
+Aurelien
+
 -- 
-2.20.1
-
+Aurelien Jarno                          GPG: 4096R/1DDD8C9B
+aurelien@aurel32.net                 http://www.aurel32.net
 
 _______________________________________________
 linux-riscv mailing list
