@@ -2,53 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC0CCEC464
-	for <lists+linux-riscv@lfdr.de>; Fri,  1 Nov 2019 15:12:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A195ECBC8
+	for <lists+linux-riscv@lfdr.de>; Sat,  2 Nov 2019 00:07:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fWPqmBHCkc5OshFhDvSRSO8wQWIqHq0KMME5MlFZ3nQ=; b=Hds3m2RwZeHm+r
-	76qHcGXx9mRdGIlG79bTIyFO66hvV1+Q4+oxKoM/7QSfjun0eiI5QLdDFDWBss8tQy6U7gxsFCOua
-	LRpxsD/fj4uExAj6pFOAY2oLFJdLR/rElP3qbuME+L/oSxrBJeffc4kNl7mp+vAdpR7JGY72Hh0v4
-	yITLR8TA6XlHVh4d+kX2aavVyFQjwfosUN16YFxDr2/K35L9bsnHvYKjijY62f0qdnKw3AhszLYui
-	hZDH1KVNL/U9EqCYKaKU+W33Z7Y+RObQ19s91wzJXvXXSj02TLSdd4Y7IIRtglYdvsqwIoSKZntEz
-	qUe2yFAPEt50a0d1y57A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=pGk3cZzDRMIe/5wBBa235FDrh17fu8DFmPcoRMetcVs=; b=PBakB9svgZV/G04GQYMfi8/ks
+	WpZPn3SclpEXGSdouVxG1AoqaumDAROSevKhx6simN0GadMkmCTOnieZjReuLmCBFZI5kylBDhcCI
+	YLb3p5F6m3t1tISsVC9iZqEi8r/dXkWGI4C/b91+WAJeptn4jb1629hDV+qYQIewoLHlxpYiqzuTL
+	M+/HCsSKXowJRNwqyZME5OZ5lxc1Bi9ja+MZWWGO8SRkEt5xP40larfM0N/x7B8dwKuoZAlPETehO
+	V+09ETbRu+MGH1VvGrIZqbsogxtcSVlZ9RKBkEXBmDrbkjKgoPAYoEy6wyqHwY++5T3trlFH9H1zq
+	eVBCAYaJw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iQXew-0002Cd-8p; Fri, 01 Nov 2019 14:12:14 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iQXd1-0000I3-BG; Fri, 01 Nov 2019 14:10:17 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 89BFF337;
- Fri,  1 Nov 2019 07:10:14 -0700 (PDT)
-Received: from e112269-lin.cambridge.arm.com (e112269-lin.cambridge.arm.com
- [10.1.194.43])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 51CDF3F718;
- Fri,  1 Nov 2019 07:10:11 -0700 (PDT)
-From: Steven Price <steven.price@arm.com>
-To: Andrew Morton <akpm@linux-foundation.org>,
-	linux-mm@kvack.org
-Subject: [PATCH v15 07/23] riscv: mm: Add p?d_leaf() definitions
-Date: Fri,  1 Nov 2019 14:09:26 +0000
-Message-Id: <20191101140942.51554-8-steven.price@arm.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191101140942.51554-1-steven.price@arm.com>
-References: <20191101140942.51554-1-steven.price@arm.com>
-MIME-Version: 1.0
+	id 1iQg12-0007x2-El; Fri, 01 Nov 2019 23:07:36 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iQg0z-0007wQ-1s
+ for linux-riscv@lists.infradead.org; Fri, 01 Nov 2019 23:07:34 +0000
+Received: by mail-pl1-x642.google.com with SMTP id q16so4976167pll.11
+ for <linux-riscv@lists.infradead.org>; Fri, 01 Nov 2019 16:07:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xp3A8vdh1NO+887OUg4MRpz1hgoXlnInMjaDscwcRX4=;
+ b=yYriT6h58xv7hTXRzRB5iUZbmOc5hfCHewM2Mn+UNE2HN6q4ot/vtr6GVE9xr9Jq7v
+ rTmrjCeexwllHIjaJ0T9qdR+VD4y89F7Zd1DNeouk0nXPojIgyGe4P9Jkb1L01bZk0Br
+ MBif6u0NSdZpeTSvrepGMxTj5dlUg8gB2hYfkF4XDyPXffagLnSq9b66FkDavj5E4gsG
+ WeworxdV9zPAcmnaMW6Bwwy+zXiFrtoHAytsvZ9iQNf5LVCBgJd+DxxwHjuJ2FjllLQc
+ WHjW27/Vg4xxU7lMx4LeqLGpmdqnmy9VnqNtQRCld93taP9KRm5poqrJpna8obEFlAhy
+ QKVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=xp3A8vdh1NO+887OUg4MRpz1hgoXlnInMjaDscwcRX4=;
+ b=C+HLO6dpQ0tsUAVYq+wmwxdYG0rY6XdAhJBnfIlTnLHAAP154U70tDBflYbQBvUq3O
+ kZaIBaM51zETYDEls9Hy0gfq0kriUKRIfROp0FAhPMTY6C/OpBCQn+PCMGqauGoYbiG+
+ hM/2+WaBHYYoQLBm0QjKJ2U9F3Y+YHR8nnqwvuIfKjst5iVmDGOTEFUPIh/Z2g5Bi3ja
+ PZs8z9mlqXcwX7juFsSRjbKzNIN61KLK/p32zeEG2XCMbCWpIHU2e3K7CKezGnINfD5s
+ NI2I74QlV7QSUlqERP6dB+70t3VJHgCWe4AE9hjgyZcFeMnP7RzN+LUpXI0RmfCYQ1Or
+ QHHg==
+X-Gm-Message-State: APjAAAVmi+jv4j2mLdUZqPXZrd+gsZ5gnNA48WxjMC6FFV506aAhYyjE
+ Aequ/tz4tyeSIR/riYPsebEYNg==
+X-Google-Smtp-Source: APXvYqxnsTZAEt4O+FvzghWOLNmYefTtpIpLZBMMy0wB7jnrlC85ie0yvSHdvkcDZFGQbFUhj+6ObQ==
+X-Received: by 2002:a17:902:349:: with SMTP id
+ 67mr2206815pld.221.1572649651082; 
+ Fri, 01 Nov 2019 16:07:31 -0700 (PDT)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id v15sm8798149pfc.85.2019.11.01.16.07.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Nov 2019 16:07:29 -0700 (PDT)
+Date: Fri, 01 Nov 2019 16:07:29 -0700 (PDT)
+X-Google-Original-Date: Fri, 01 Nov 2019 15:53:59 PDT (-0700)
+Subject: Re: [PATCH] spi: sifive: disable clk when probe fails and remove
+In-Reply-To: <20191101121745.13413-1-hslester96@gmail.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: hslester96@gmail.com
+Message-ID: <mhng-3be3dc4e-15f2-4ad2-b156-ea5439e729bd@palmer-si-x1c4>
+Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191101_071015_475823_AF190C5B 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20191101_160733_124737_B57046DD 
+X-CRM114-Status: GOOD (  16.95  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,85 +92,79 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <Mark.Rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, Zong Li <zong.li@sifive.com>,
- "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, "Liang, Kan" <kan.liang@linux.intel.com>,
- Alexandre Ghiti <alex@ghiti.fr>, x86@kernel.org,
- Steven Price <steven.price@arm.com>, Ingo Molnar <mingo@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Arnd Bergmann <arnd@arndb.de>,
- =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-kernel@vger.kernel.org,
- James Morse <james.morse@arm.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: hslester96@gmail.com, linux-kernel@vger.kernel.org,
+ linux-spi@vger.kernel.org, broonie@kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-walk_page_range() is going to be allowed to walk page tables other than
-those of user space. For this it needs to know when it has reached a
-'leaf' entry in the page tables. This information is provided by the
-p?d_leaf() functions/macros.
+On Fri, 01 Nov 2019 05:17:45 PDT (-0700), hslester96@gmail.com wrote:
+> The driver forgets to disable and unprepare clk when probe fails and
+> remove.
+> Add the calls to fix the problem.
+>
+> Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+> ---
+>  drivers/spi/spi-sifive.c | 11 +++++++----
+>  1 file changed, 7 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/spi/spi-sifive.c b/drivers/spi/spi-sifive.c
+> index 35254bdc42c4..f7c1e20432e0 100644
+> --- a/drivers/spi/spi-sifive.c
+> +++ b/drivers/spi/spi-sifive.c
+> @@ -357,14 +357,14 @@ static int sifive_spi_probe(struct platform_device *pdev)
+>  	if (!cs_bits) {
+>  		dev_err(&pdev->dev, "Could not auto probe CS lines\n");
+>  		ret = -EINVAL;
+> -		goto put_master;
+> +		goto disable_clk;
+>  	}
+>
+>  	num_cs = ilog2(cs_bits) + 1;
+>  	if (num_cs > SIFIVE_SPI_MAX_CS) {
+>  		dev_err(&pdev->dev, "Invalid number of spi slaves\n");
+>  		ret = -EINVAL;
+> -		goto put_master;
+> +		goto disable_clk;
+>  	}
+>
+>  	/* Define our master */
+> @@ -393,7 +393,7 @@ static int sifive_spi_probe(struct platform_device *pdev)
+>  			       dev_name(&pdev->dev), spi);
+>  	if (ret) {
+>  		dev_err(&pdev->dev, "Unable to bind to interrupt\n");
+> -		goto put_master;
+> +		goto disable_clk;
+>  	}
+>
+>  	dev_info(&pdev->dev, "mapped; irq=%d, cs=%d\n",
+> @@ -402,11 +402,13 @@ static int sifive_spi_probe(struct platform_device *pdev)
+>  	ret = devm_spi_register_master(&pdev->dev, master);
+>  	if (ret < 0) {
+>  		dev_err(&pdev->dev, "spi_register_master failed\n");
+> -		goto put_master;
+> +		goto disable_clk;
+>  	}
+>
+>  	return 0;
+>
+> +disable_clk:
+> +	clk_disable_unprepare(spi->clk);
+>  put_master:
+>  	spi_master_put(master);
+>
+> @@ -420,6 +422,7 @@ static int sifive_spi_remove(struct platform_device *pdev)
+>
+>  	/* Disable all the interrupts just in case */
+>  	sifive_spi_write(spi, SIFIVE_SPI_REG_IE, 0);
+> +	clk_disable_unprepare(spi->clk);
+>
+>  	return 0;
+>  }
 
-For riscv a page is a leaf page when it has a read, write or execute bit
-set on it.
-
-CC: Palmer Dabbelt <palmer@sifive.com>
-CC: Albert Ou <aou@eecs.berkeley.edu>
-CC: linux-riscv@lists.infradead.org
-Reviewed-by: Alexandre Ghiti <alex@ghiti.fr>
-Reviewed-by: Zong Li <zong.li@sifive.com>
-Acked-by: Paul Walmsley <paul.walmsley@sifive.com> # for arch/riscv
-Signed-off-by: Steven Price <steven.price@arm.com>
----
- arch/riscv/include/asm/pgtable-64.h | 7 +++++++
- arch/riscv/include/asm/pgtable.h    | 7 +++++++
- 2 files changed, 14 insertions(+)
-
-diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
-index 74630989006d..4c4d2c65ba6c 100644
---- a/arch/riscv/include/asm/pgtable-64.h
-+++ b/arch/riscv/include/asm/pgtable-64.h
-@@ -43,6 +43,13 @@ static inline int pud_bad(pud_t pud)
- 	return !pud_present(pud);
- }
- 
-+#define pud_leaf	pud_leaf
-+static inline int pud_leaf(pud_t pud)
-+{
-+	return pud_present(pud) &&
-+	       (pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
-+}
-+
- static inline void set_pud(pud_t *pudp, pud_t pud)
- {
- 	*pudp = pud;
-diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-index 7255f2d8395b..3aa972dda75a 100644
---- a/arch/riscv/include/asm/pgtable.h
-+++ b/arch/riscv/include/asm/pgtable.h
-@@ -130,6 +130,13 @@ static inline int pmd_bad(pmd_t pmd)
- 	return !pmd_present(pmd);
- }
- 
-+#define pmd_leaf	pmd_leaf
-+static inline int pmd_leaf(pmd_t pmd)
-+{
-+	return pmd_present(pmd) &&
-+	       (pmd_val(pmd) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
-+}
-+
- static inline void set_pmd(pmd_t *pmdp, pmd_t pmd)
- {
- 	*pmdp = pmd;
--- 
-2.20.1
-
+Reviewed-by: Palmer Dabbelt <palmer@dabbelt.com>
 
 _______________________________________________
 linux-riscv mailing list
