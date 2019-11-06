@@ -2,92 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75A60F0AE0
-	for <lists+linux-riscv@lfdr.de>; Wed,  6 Nov 2019 01:07:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64A84F0B8A
+	for <lists+linux-riscv@lfdr.de>; Wed,  6 Nov 2019 02:17:39 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RGAfFCkbb6UxeqIGf1l0hbleyeiSWv8EFEhm3s7vXmQ=; b=bZCJzZDIeSViTd
-	CCeNgxWUp8N/x48Wwhs8ZIdmAq+GgTMMys2VaT10Ndsnta+hhLdGWij5h+Nozoio/Ryu44Zu+6Bx5
-	0WgVLMURU7DdpPwSVtQeNVpkyG8RmQwfrvvakL/jqVceerZKz6qaHkmSmnSfEQyVnKtN1ZH/j+L2d
-	VYUPSaltjvlC8PEGZLMMJkrjHYdAs7Tc7UXfi0ERccdgJfZdi/8hkMSq6d/5uHAWdiVVPfPdO3VhS
-	gMb6hl3eJYZjga40N7N7cZ4kGvp6N27z2yfnrGkRKvRS+MS6kjkk5E8noLhr90XAYQVE6x8rODwvn
-	aqBm3/ykX2zShnVMumjA==;
+	List-Owner; bh=Knm54yJN97rukj4P7wg54rx/O1TocldluLUbFUlRXlQ=; b=uJb6nFcuERlS0m
+	v2KfXcYz4YRHer0VZj++vDMETHnQhu5IOs3zBlgSOMl79ygvTN9Olsu7LqerQhv5utgJjQ5hVz8OZ
+	EHvHhLwhh3iFNezdlnr9GvMIIHD48p8dnNhos1+WU+nDmPU6YC/tyb8RkTlXjxHE6Ett/xITptdXg
+	0TPPzdX0M0QJO6spIdUo7HnVjfNOjktRy9ne3+6PEXWtCfS8or/0uPGnJh4YUzRvbhPwKWp4yGtXd
+	6e9EAP+yvv0M6y8qKdrnlOH3Rs6/6lZogIbzyxY+K8SmHgV7qCtF4R3T1TK5aaUv6Nx/oZFwI/twp
+	AStUsZN3LGISQj7D4z7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iS8qm-0006NE-4A; Wed, 06 Nov 2019 00:07:04 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iS8qi-0006M3-AO
- for linux-riscv@lists.infradead.org; Wed, 06 Nov 2019 00:07:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1572998821; x=1604534821;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=9+9EDzlFDTNp9/Z8GOSoCt1TUGGrH1xywpXlR2HtQmI=;
- b=Xwl1dzUY4KgEBbuzUWKut/WjISLX5uk/zy2CZ3kidzVW3H0xm/utU4oo
- KE7q1masVHTUCmuJmZmNv1K2vDTV661opxwOWq69KDS3S5JqDY8XqLJDC
- By7hA2EpZGhfg1EIapVXvyspQllXmWrmAFPPWWVs1xHu12qFScRICDn9w
- 0w6ArJh9ABk5luH+DzZhq+4+oGUXAATO359HRokwNSc5ox5JZ/zz/84tn
- +yy6xZ8LVBI8njN4DT4hC33AzxdVoB8U1YmdSv5BKMNn659jRAynZiinC
- HYmsiMOrr2tpKJUIuGSXcBo1ZOazjfe6SOSxeyD0PehcWHLeSXHiEeBra A==;
-IronPort-SDR: YJF3k+eXs5LWTeU0NUlZxiVQr9uoFQZjBTbri+pM5HbfxI5CF1VOzSjcMvsKvmgdeL4W31AsKc
- 8lpbDJxLEOvNu3U/HBrg1VhznsGyDfG2Qt9ugw+RB72AmTXdLAS8ZR3w19hr8VNIEtgd/r53CX
- atUvNwsdK6zj54OyxMV6sEFlsbOUi1/sC63YTRqILnukySWW5SjpKYYicUDXY38dd1kNSozc7l
- TkhZ8dgyw6z+R3FWR8L1SmI/CpISFt/vtaNyMAAng3QelnJVId3dOHNVT8Vb7eoZt/AqjcT5Gs
- 24I=
-X-IronPort-AV: E=Sophos;i="5.68,271,1569254400"; d="scan'208";a="123838559"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 06 Nov 2019 08:06:58 +0800
-IronPort-SDR: gfOn4kU/ReC6fvQJKEPvjXsp3ZdVEIkkbDE60xhQ5N0vQpOsMhQp+SWdAPB+peDJgFpiaNolG9
- FtNt0V754Docnvd4fhd6c/Fw5j+gLSnL2zOg16VPF4M/Wq5Dr4Gsq3odQJVk4h3UW9IkrKL1f7
- DiYMv06xP5hZywuXXMXJocn9StGIplfrqJhAuwVeL1Z6ZGgZIVMPKSnyvr08VZnP+6AljjgiNa
- AB3bUafO8dU9rbLrWJcRW0rPpHfZGFViczv+UR9InshhYkyhzcEQIIhmBMeP2jf3Uq7SVduAqv
- 01XW9PRykQEv+gLAGeJ87jhX
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2019 16:02:11 -0800
-IronPort-SDR: vh7cUu24VmQmVXEdKsm4LuWH9m0ZsRfp77NEUxJhWkKhEXJXYChdhjvup9hikb6x+KE2pPuAOD
- hdm7fc96/jeIBGZ7nMYyKFoNnasKxt/vmA8UB4jDiH6hxH/bRikK7uDxMrB0dpAEu0V4DV6LPi
- KXqxX/xzIJwaoUxXekMJbI1RKigPE9V3c7X6bbBdqRb4nSAf0VWGNvOXxRIcE9mDDlFN1GxAZV
- dRZn7Wg0k4jWgvEHmtZWWhfT2xYbV9NWLE46Dfy0as6J5WajHCKsJ+r6ZapH+CnkVi63SaA5G0
- cqk=
-WDCIronportException: Internal
-Received: from jedi-01.sdcorp.global.sandisk.com (HELO
- jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 05 Nov 2019 16:06:58 -0800
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] RISC-V: Add multiple compression image format.
-Date: Tue,  5 Nov 2019 16:06:52 -0800
-Message-Id: <20191106000652.8370-1-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.21.0
+	id 1iS9ws-000714-6y; Wed, 06 Nov 2019 01:17:26 +0000
+Received: from [76.14.1.154] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iS9wp-00070f-Nu; Wed, 06 Nov 2019 01:17:23 +0000
+From: Christoph Hellwig <hch@lst.de>
+To: paul.walmsley@sifive.com, palmer@dabbelt.com, bp@alien8.de,
+ mchehab@kernel.org, tony.luck@intel.com, james.morse@arm.com,
+ rrichter@marvell.com, yash.shah@sifive.com
+Subject: [PATCH, resend] riscv: move sifive_l2_cache.c to drivers/soc
+Date: Tue,  5 Nov 2019 17:17:23 -0800
+Message-Id: <20191106011723.2110-1-hch@lst.de>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191105_160700_424168_798B5534 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,51 +42,133 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
- Palmer Dabbelt <palmer@sifive.com>, Atish Patra <atish.patra@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, linux-edac@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Currently, there is only support for .gz compression type
-for generating kernel Image.
+The sifive_l2_cache.c is in no way related to RISC-V architecture
+memory management.  It is a little stub driver working around the fact
+that the EDAC maintainers prefer their drivers to be structured in a
+certain way that doesn't fit the SiFive SOCs.
 
-Add support for other compression methods(lzma, lz4, lzo, bzip2)
-that helps in generating a even smaller kernel image. Image.gz
-will still be the default compressed image.
+Move the file to drivers/soc and add a Kconfig option for it, as well
+as the whole drivers/soc boilerplate for CONFIG_SOC_SIFIVE.
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
+Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
+Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/riscv/boot/Makefile | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
 
-diff --git a/arch/riscv/boot/Makefile b/arch/riscv/boot/Makefile
-index 0990a9fdbe5d..88356650c992 100644
---- a/arch/riscv/boot/Makefile
-+++ b/arch/riscv/boot/Makefile
-@@ -24,6 +24,18 @@ $(obj)/Image: vmlinux FORCE
- $(obj)/Image.gz: $(obj)/Image FORCE
- 	$(call if_changed,gzip)
+I'll still need ACKs from the edac maintainers for this according to
+Paul..
+
+ MAINTAINERS                                            |  1 +
+ arch/riscv/mm/Makefile                                 |  1 -
+ drivers/edac/Kconfig                                   |  2 +-
+ drivers/soc/Kconfig                                    |  1 +
+ drivers/soc/Makefile                                   |  1 +
+ drivers/soc/sifive/Kconfig                             | 10 ++++++++++
+ drivers/soc/sifive/Makefile                            |  4 ++++
+ .../riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c  |  0
+ 8 files changed, 18 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/soc/sifive/Kconfig
+ create mode 100644 drivers/soc/sifive/Makefile
+ rename {arch/riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c (100%)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cba1095547fd..f5a8accb0df3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -5972,6 +5972,7 @@ M:	Yash Shah <yash.shah@sifive.com>
+ L:	linux-edac@vger.kernel.org
+ S:	Supported
+ F:	drivers/edac/sifive_edac.c
++F:	drivers/soc/sifive/
  
-+$(obj)/Image.bz2: $(obj)/Image FORCE
-+	$(call if_changed,bzip2)
+ EDAC-SKYLAKE
+ M:	Tony Luck <tony.luck@intel.com>
+diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+index 9d9a17335686..b225134c29e0 100644
+--- a/arch/riscv/mm/Makefile
++++ b/arch/riscv/mm/Makefile
+@@ -11,7 +11,6 @@ obj-y += extable.o
+ obj-y += ioremap.o
+ obj-y += cacheflush.o
+ obj-y += context.o
+-obj-y += sifive_l2_cache.o
+ 
+ ifeq ($(CONFIG_MMU),y)
+ obj-$(CONFIG_SMP) += tlbflush.o
+diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
+index 417dad635526..5c8272329a65 100644
+--- a/drivers/edac/Kconfig
++++ b/drivers/edac/Kconfig
+@@ -462,7 +462,7 @@ config EDAC_ALTERA_SDMMC
+ 
+ config EDAC_SIFIVE
+ 	bool "Sifive platform EDAC driver"
+-	depends on EDAC=y && RISCV
++	depends on EDAC=y && SIFIVE_L2
+ 	help
+ 	  Support for error detection and correction on the SiFive SoCs.
+ 
+diff --git a/drivers/soc/Kconfig b/drivers/soc/Kconfig
+index 833e04a7835c..1778f8c62861 100644
+--- a/drivers/soc/Kconfig
++++ b/drivers/soc/Kconfig
+@@ -14,6 +14,7 @@ source "drivers/soc/qcom/Kconfig"
+ source "drivers/soc/renesas/Kconfig"
+ source "drivers/soc/rockchip/Kconfig"
+ source "drivers/soc/samsung/Kconfig"
++source "drivers/soc/sifive/Kconfig"
+ source "drivers/soc/sunxi/Kconfig"
+ source "drivers/soc/tegra/Kconfig"
+ source "drivers/soc/ti/Kconfig"
+diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
+index 2ec355003524..8b49d782a1ab 100644
+--- a/drivers/soc/Makefile
++++ b/drivers/soc/Makefile
+@@ -20,6 +20,7 @@ obj-y				+= qcom/
+ obj-y				+= renesas/
+ obj-$(CONFIG_ARCH_ROCKCHIP)	+= rockchip/
+ obj-$(CONFIG_SOC_SAMSUNG)	+= samsung/
++obj-$(CONFIG_SOC_SIFIVE)	+= sifive/
+ obj-y				+= sunxi/
+ obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
+ obj-y				+= ti/
+diff --git a/drivers/soc/sifive/Kconfig b/drivers/soc/sifive/Kconfig
+new file mode 100644
+index 000000000000..9ffb2e8a48cd
+--- /dev/null
++++ b/drivers/soc/sifive/Kconfig
+@@ -0,0 +1,10 @@
++# SPDX-License-Identifier: GPL-2.0
 +
-+$(obj)/Image.lz4: $(obj)/Image FORCE
-+	$(call if_changed,lz4)
++if SOC_SIFIVE
 +
-+$(obj)/Image.lzma: $(obj)/Image FORCE
-+	$(call if_changed,lzma)
++config SIFIVE_L2
++	tristate "Sifive L2 Cache controller"
++	help
++	  Support for the L2 cache controller on SiFive platforms.
 +
-+$(obj)/Image.lzo: $(obj)/Image FORCE
-+	$(call if_changed,lzo)
++endif
+diff --git a/drivers/soc/sifive/Makefile b/drivers/soc/sifive/Makefile
+new file mode 100644
+index 000000000000..9b4a85558347
+--- /dev/null
++++ b/drivers/soc/sifive/Makefile
+@@ -0,0 +1,4 @@
++# SPDX-License-Identifier: GPL-2.0
 +
- install:
- 	$(CONFIG_SHELL) $(srctree)/$(src)/install.sh $(KERNELRELEASE) \
- 	$(obj)/Image System.map "$(INSTALL_PATH)"
++obj-$(CONFIG_SIFIVE_L2)	+= sifive_l2_cache.o
++
+diff --git a/arch/riscv/mm/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
+similarity index 100%
+rename from arch/riscv/mm/sifive_l2_cache.c
+rename to drivers/soc/sifive/sifive_l2_cache.c
 -- 
-2.21.0
+2.20.1
 
 
 _______________________________________________
