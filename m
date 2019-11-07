@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CE17F3AC4
+	by mail.lfdr.de (Postfix) with ESMTPS id 581EDF3AC5
 	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 22:53:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
@@ -10,71 +10,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
 	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=P7JL75qtfMUOeGVnCbaThm3GP52Fv0Bh8QgONnN0sO4=; b=c1UcIeHTBWTqDDBesTyKs5ANA
-	OLjkFrFodvEqrUIe18TwarxdF/OPQ3iKHE7OpGTfOy3Zfu8ukLI8pxDaCeEBu64fd9LuMO2nvuYjm
-	mqkrSxXMJoUAuxcFCCKnImqrtOFQQz11S4bsqfcaUBmGExhvZTn1MJRJU6U/ix5ei+0lTC9uKoc0E
-	t5BwWF6t2cKVsLLuvREpZMBFVq+NfcXDKyk4B0nn4THgON6v/+gb2PWed9BcyC1mqE0ZuehTRdkkW
-	6+GIA24w+4B/k5l9vWvQnjhgsKfE/FOf1mTvEH/vgSL57i0evR7d8zXXSJosS8VXwafd4ZBcU+f5K
-	scn7ofYkA==;
+	 bh=RTV7MUZoEacQXqTH6iqQU34/f99BP0CnV/SItrUByEo=; b=l9/rB+vzOKZCO8MeV/QB3wxyw
+	ov6EUXzDf99Ol0Cx/ccpsSZr75Nr46B1PudV8Dr3CCPl2WbO+rP8bs+nixTw9sT2egoK2o8ipX9kn
+	Mxhla6L7BfljDdp4V2Y4Fi5BEHCEkzMJg0KfwFl/N2eW6a9bxonEt8Q9TZ6SV6DPdQVASsAv+VCS8
+	yBxlSKmVjZBl9NKmTyfb4gtOEtrAP907ACcwCouVraTW75T325BEsI6oxt7Htt9ZIcURYt9CoITB0
+	wXpRLHcDCAbwZZCFdQzMQjbqa8b/1RUt3uZgNhlgM2dMFfvnsx+EFVKgsgRb1B3AveZmDMpe/Nof8
+	mSD0xshHA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSpiB-0001Ma-T6; Thu, 07 Nov 2019 21:53:03 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1iSpiE-0001OP-UE; Thu, 07 Nov 2019 21:53:06 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSpi8-0001LV-Rd
- for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 21:53:02 +0000
-Received: by mail-pg1-x542.google.com with SMTP id f19so2795115pgk.11
- for <linux-riscv@lists.infradead.org>; Thu, 07 Nov 2019 13:53:00 -0800 (PST)
+ id 1iSpi9-0001Lq-QI
+ for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 21:53:03 +0000
+Received: by mail-pg1-x541.google.com with SMTP id w11so2795540pga.12
+ for <linux-riscv@lists.infradead.org>; Thu, 07 Nov 2019 13:53:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=1ZmP3Rg7HzABUgxKqQ/4jGQaai0OdMM5UHRs2UoA2Us=;
- b=l3vjWLydFjCtnlYdjNGzXOljrsJTHX7IERVD5wJFYO/t45yCELfuaDoGwYeNyVpB+n
- XJY0CrCVjHDn4tgOv41UjW04q89qVSuKyrmw3WyN+SUF2+WhB1Z2CVsZO9mXZ+3Gm0Fk
- XITUMqVoXa1++r+JUrAoyVzBswTQkxIKvy0zryDeeGCLem79epiacJJYmY4qHsYvj965
- eV0qb3WtRvntvfMLHk/3wf5DBA4WxPbPUWk18Iy2O0Fr7EYaoHFJuqkegWXJjPGLodU7
- CRMK5eKfjf8Vu2scccHhiMkieOf4DnxBcKR95/NlZ1ZoSPvrIT8aTsVKRuBoFZEizlmd
- +A5g==
+ bh=o0ume9X7I6N76DsAN7wkv6uhtYAHw2lFawaiRsAlXeE=;
+ b=UQi/e0xSKJZk+h6N6SInwLTOvaB+klR3whs7t8mKIGUnRvZArtjpC8RSo7uemHTEog
+ L7zp8gMgTWzsA/X9pPfA+qCR50U4LkP+g2RyYmgUgSW/qxRkehVnykpfUOh5AGPhvH7H
+ PsIniA+uvxRVU0+/UYuNtTeOIXRNCSG24XEso8YUu/tpHoU1XKAsMFzqukmasIa6IVFr
+ YFxWMda1IcuXCy9c+7TIug4zFQwkSjBNRO5aTb9psVbmQYjDGZo9tzMD1NlDYZt67JtS
+ M9IBmOsbaT4vOb4APRiL1xK61NK3SCGuVT7FuBJ+EpBCsCb7bY+B7Qcuvai7de9A4Rfh
+ wepQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=1ZmP3Rg7HzABUgxKqQ/4jGQaai0OdMM5UHRs2UoA2Us=;
- b=m0xZEHG+pPaoiiUnrQKpyGyjm8twFJQQeRyJMLTRDs0CDLdW4nV6QyrPqFWBnq+Lu1
- rjUFfUreMetq+kXQyECNUfqwvG3FEii/xrDlP/aqVK9srzTXgcquzss/hP5wzESCgys7
- FWMymVM+L2nj91tVtXwtnuwSA4p0GKWogWKRFPaiyUy7mGJmp1mkCFB8Hr7oUBNYpuPS
- aybQbN1t0mVz/roBu041U0WPxnR42Ads3/3c4xlZ/S7L+DskJIPdjdO1rTnN6jhywFRh
- 32h2tS/53Wfe5NVPsFSvu7pPCZG1YpCcJhvJZn6yoWyQadfOZi/CIIKcIvNAVey+EcQV
- UViQ==
-X-Gm-Message-State: APjAAAUbISev12ig8TtzDkM/u4Ed2egzM/Tjp6XbK6F8+vuiycRgW2Uy
- gkBKbHUAwpoBTYQO+F3fFuKzGw==
-X-Google-Smtp-Source: APXvYqzzcZmDI/kaSp6LdK1qm0znVJ6nCHWBAR7hkCC2Zt7lvAHXwwzIgNfPrMwN/CstJOHouv4T7w==
-X-Received: by 2002:a63:955a:: with SMTP id t26mr7618796pgn.280.1573163579261; 
- Thu, 07 Nov 2019 13:52:59 -0800 (PST)
+ bh=o0ume9X7I6N76DsAN7wkv6uhtYAHw2lFawaiRsAlXeE=;
+ b=Io01XVcVP6OmsWWVYc18BG7wLiBy455Lc5iidBeguBBCDQYCnj8TjsZL/31EmgXUEx
+ pr1eOaet/ghgklWBVoJAfSzxDjxDLrqp/eBAG4vcH140Z5Ol2HAgb3uMwcm+MGoaXL/G
+ FSCLxhxWoeit1epFmtNi99tJ02932Li+QiiUPE3eZbYst3p+whZrZO8UZPw5kBR1bpCQ
+ bAhsV1cXvlrW+aRH7qMr2IB/XUVGNoeHlzF0UaBmiuLhO4aKdaRog2F7Ay+oTCDCQBes
+ aAoMUppfHht/knhJkzO0GPRKS504AtyK7Z4OPYT9yX2bWbaYinhi/bojYN3kFizWWd5K
+ 4Qcg==
+X-Gm-Message-State: APjAAAW/VmCUIrjBtP0mpvcIek23eyq2yapCAQ/vR9v33a/SPPuNhuoe
+ /4s6dBP10JWJXSXdGQTadhWVHw==
+X-Google-Smtp-Source: APXvYqz4ytu4dwGEBbaA+ANgDsfu16kcduxM5Ii57ZM/xvTSeqnvyTcX1+5FWYiHFkLiQRzwoRqo1A==
+X-Received: by 2002:a62:ab17:: with SMTP id p23mr7036931pff.116.1573163580868; 
+ Thu, 07 Nov 2019 13:53:00 -0800 (PST)
 Received: from localhost ([12.206.222.5])
- by smtp.gmail.com with ESMTPSA id f13sm3338842pgs.83.2019.11.07.13.52.58
+ by smtp.gmail.com with ESMTPSA id w2sm3463961pgm.18.2019.11.07.13.53.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Nov 2019 13:52:58 -0800 (PST)
-Date: Thu, 07 Nov 2019 13:52:58 -0800 (PST)
-X-Google-Original-Date: Thu, 07 Nov 2019 13:45:27 PST (-0800)
-Subject: Re: [PATCH 1/2] dt-bindings: power: reset: document the QEMU RISC-V
- virt machine poweroff device
-In-Reply-To: <20191107212408.11857-2-hch@lst.de>
+ Thu, 07 Nov 2019 13:53:00 -0800 (PST)
+Date: Thu, 07 Nov 2019 13:53:00 -0800 (PST)
+X-Google-Original-Date: Thu, 07 Nov 2019 13:51:19 PST (-0800)
+Subject: Re: [PATCH 2/2] power: reset: add a QEMU RISC-V virt machine poweroff
+ driver
+In-Reply-To: <20191107212408.11857-3-hch@lst.de>
 From: Palmer Dabbelt <palmer@dabbelt.com>
 To: Christoph Hellwig <hch@lst.de>
-Message-ID: <mhng-5b9f028d-0839-42e5-8d6f-7fb00ac9f39d@palmer-si-x1c4>
+Message-ID: <mhng-b62f1a62-8264-4e99-bc31-66fb59855bf8@palmer-si-x1c4>
 Mime-Version: 1.0 (MHng)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191107_135300_899542_AE1FC2D2 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20191107_135301_851676_B0851652 
+X-CRM114-Status: GOOD (  22.65  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -100,43 +100,112 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 07 Nov 2019 13:24:07 PST (-0800), Christoph Hellwig wrote:
-> Add the binding for the trivial Qemu RISC-V poweroff mechanism, which is
-> just a single MMIO register exposed through the DT.
+On Thu, 07 Nov 2019 13:24:08 PST (-0800), Christoph Hellwig wrote:
+> Add a trivial poweroff driver for the qemu-virt test device that
+> allows an oderly shutdown of the VM.
 >
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > ---
->  .../power/reset/qemu-riscv-virt-poweroff.txt     | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+>  arch/riscv/configs/defconfig                  |  2 +
+>  drivers/power/reset/Kconfig                   |  8 ++++
+>  drivers/power/reset/Makefile                  |  1 +
+>  .../power/reset/qemu-riscv-virt-poweroff.c    | 47 +++++++++++++++++++
+>  4 files changed, 58 insertions(+)
+>  create mode 100644 drivers/power/reset/qemu-riscv-virt-poweroff.c
 >
-> diff --git a/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt b/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+> diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+> index 420a0dbef386..47da87725b5e 100644
+> --- a/arch/riscv/configs/defconfig
+> +++ b/arch/riscv/configs/defconfig
+> @@ -63,6 +63,8 @@ CONFIG_HW_RANDOM_VIRTIO=y
+>  CONFIG_SPI=y
+>  CONFIG_SPI_SIFIVE=y
+>  # CONFIG_PTP_1588_CLOCK is not set
+> +CONFIG_POWER_RESET=y
+> +CONFIG_QEMU_RISCV_VIRT_POWEROFF=y
+>  CONFIG_DRM=y
+>  CONFIG_DRM_RADEON=y
+>  CONFIG_DRM_VIRTIO_GPU=y
+> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
+> index a564237278ff..56cb18520850 100644
+> --- a/drivers/power/reset/Kconfig
+> +++ b/drivers/power/reset/Kconfig
+> @@ -256,5 +256,13 @@ config NVMEM_REBOOT_MODE
+>  	  then the bootloader can read it and take different
+>  	  action according to the mode.
+>
+> +config QEMU_RISCV_VIRT_POWEROFF
+> +	tristate "QEMU RISC-V virt machine poweroff driver"
+> +	depends on OF
+> +	depends on RISCV || COMPILE_TEST
+> +	help
+> +	  Say y here to allow RISC-V Qemu VMs to be shut down by
+> +	  the kernel.
+> +
+>  endif
+>
+> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
+> index 85da3198e4e0..b3094016b634 100644
+> --- a/drivers/power/reset/Makefile
+> +++ b/drivers/power/reset/Makefile
+> @@ -30,3 +30,4 @@ obj-$(CONFIG_REBOOT_MODE) += reboot-mode.o
+>  obj-$(CONFIG_SYSCON_REBOOT_MODE) += syscon-reboot-mode.o
+>  obj-$(CONFIG_POWER_RESET_SC27XX) += sc27xx-poweroff.o
+>  obj-$(CONFIG_NVMEM_REBOOT_MODE) += nvmem-reboot-mode.o
+> +obj-$(CONFIG_QEMU_RISCV_VIRT_POWEROFF) += qemu-riscv-virt-poweroff.o
+> diff --git a/drivers/power/reset/qemu-riscv-virt-poweroff.c b/drivers/power/reset/qemu-riscv-virt-poweroff.c
 > new file mode 100644
-> index 000000000000..80ff6fd4e3b7
+> index 000000000000..5b9a12dd853b
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
-> @@ -0,0 +1,16 @@
-> +QEMU RISC-V virt machine poweroff device
+> +++ b/drivers/power/reset/qemu-riscv-virt-poweroff.c
+> @@ -0,0 +1,47 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2019 Christoph Hellwig.
+> + */
 > +
-> +This is a device in Qemu that can signal successful or error exit
-> +by writing two magic numbers to a trivial mmio register.
-> +A Linux poweroff is implemented as successful exit.
-
-There's a third value that reboots the system, but it's only implemented in 
-qemu-4.2 (not released yet) and above.  It'll be 'compatible = "sifive,test1", 
-"sifive,test0";' (or at least will be when I merge my patch to do so).
-
+> +#include <linux/reboot.h>
+> +#include <linux/init.h>
+> +#include <linux/io.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/of_address.h>
+> +#include <linux/module.h>
 > +
-> +Required Properties:
-> +-compatible: "sifive,test0"
-> +-reg: Specifies the physical address of the register
+> +#define VIRT_TEST_FINISHER_PASS         0x5555
 > +
-> +Example:
+> +static u16 __iomem *test_addr;
 > +
-> +	test@100000 {
-> +		compatible = "sifive,test0";
-> +		reg = <0x100000 0x1000>;
-> +	};
+> +static void qemu_virt_power_off(void)
+> +{
+> +	writew(VIRT_TEST_FINISHER_PASS, test_addr);
+> +}
+> +
+> +static int sifive_test_probe(struct platform_device *pdev)
+> +{
+> +	/* there can only be a single instance */
+> +	if (WARN_ON_ONCE(test_addr))
+> +		return -EINVAL;
+> +
+> +	test_addr = of_iomap(pdev->dev.of_node, 0);
+> +	if (!test_addr)
+> +		return -EINVAL;
+> +	pm_power_off = qemu_virt_power_off;
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id sifive_test_of_match[] = {
+> +	{ .compatible = "sifive,test0", },
+> +	{},
+> +};
+> +
+> +static struct platform_driver sifive_test_driver = {
+> +	.probe			= sifive_test_probe,
+> +	.driver = {
+> +		.name		= "sifive_test",
+> +		.of_match_table = sifive_test_of_match,
+> +	},
+> +};
+> +module_platform_driver(sifive_test_driver);
 
 Reviewed-by: Palmer Dabbelt <palmer@dabbelt.com>
 
