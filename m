@@ -2,8 +2,8 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F3EFF29CF
-	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 09:53:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0F3DF29D6
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 09:53:35 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,70 +11,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Caf78Zyjz6RQZek8hKwPZYmZGXmjCHkuITwFLwX0N4M=; b=WiuRrWFNNcj/ratrRSOZ5I8bVt
-	DpvD+B8VR1+Y0tgCtnXBqwRqQnfZ0WfHTQfdZ590g5OxIwupO/jNvVobn0UwiGrqjYWUqGtNyC44T
-	jz7IJ6m2Qb1Cd25W+QtyTWOvnwE1eXSYO4ycBTmgfMrpqrIBWNJeDpgdnnybUNei2I3Q7zwPq/3hc
-	/9MiRmqs9N5wObnIOsHcZeg6UtEPQKxUxx29AvtXEjqElrIMwAABPII4e4eY7GT81mD6MM1afOT49
-	l7kY74rPU9fFkj9Kat5Ijt9SAuoz3XrtJJclQoEcuIyKug4Fr12U/n0LQ7Iw4nyoyyaDcfIf86lVs
-	3mkYCJdw==;
+	bh=SciYZ/WKlV+O35auAfvLWbx7AMO1R6eNo1IZ/ci2f7k=; b=Mj4Efls7HPrZkk6AbAeKjnqmXV
+	sQayECapQpn4OwX9rtRsv/TjEk29bZ/OX/0kYrpBPlvarmQPVHcezUP15gTgFbXtNVf3vNTznQWTV
+	L2SXHT3jw3bUU1gay6L/XTBDrwhiw/idaBu85isWGKqVQ9tzWYRvsqaNpaSjys9ZuhAZWGS2trXD0
+	t/17B57VCsrhj4zulwGp9xE2gncM1PwdrU+MVOgjOGnQuhduadpK6HapPdFe5wwOQOtr0U8nw/gZC
+	wLSf/1kq5spfKy6jRN2yBKuqpY/qO9Mo4LEPL5JFZU4u40EPH+qQLEYmstYtnElJEztNTL73fcV38
+	q/THzJmg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSdXC-00068C-64; Thu, 07 Nov 2019 08:52:54 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1iSdXg-0006Vy-L0; Thu, 07 Nov 2019 08:53:24 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSdWv-0005uo-BA
- for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 08:52:38 +0000
-Received: by mail-pf1-x442.google.com with SMTP id 193so2084661pfc.13
- for <linux-riscv@lists.infradead.org>; Thu, 07 Nov 2019 00:52:37 -0800 (PST)
+ id 1iSdXd-0006Vg-Qv
+ for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 08:53:23 +0000
+Received: by mail-pf1-x444.google.com with SMTP id r4so2121738pfl.7
+ for <linux-riscv@lists.infradead.org>; Thu, 07 Nov 2019 00:53:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=WYgJCjRBqhwY0ulINWDVeN12R2Tn8RH5kuZplnJEZos=;
- b=G7HveYk1IudPQMGmvQ2c7tpccDcJSLzQvM5gihotCO9sU2EOQLD2dorDNKZBfLnQbT
- N299NgJA3fiMAGdZgC783yJ9ZXiHACZgpJKpgs7L982cA26pzAI5GYZNrG7ANQNxjnXb
- qd0j7fsekgVSkMUTPu4TaxKbzSWwciTPEeZu+WoSCijwnzq0YqxWwyK+Y4jCYbuOIWMm
- Vpk/29WFu6gz7HwqVrz/+GW+0eRA2epF1LgMr271rBQUiHgEZMG8EBtg/A3gmYIt6z3x
- Gx9CKuJfuUJMDCInxFFvPWBGivrfBPjMSyqDt8Y96fYzEzxlSWkV1iu6zyuHfFBBAl7S
- K6lg==
+ bh=rTp8veXsbPSlIboKUPW27VEfaouXwybhFA3W6d1O8fo=;
+ b=Nf9DBQGuiPv+DM370AIy9xr6rpoQTSkVEgQIjOjzF27ommG1tr9FxySdRD8FhsNjNH
+ ag+mnLngc3Jagt6yR26vyv0BzdjXJ+24xdnO/Q4eFGlFMZOYgO7urSdkfRK1ndlofOAK
+ lcepW1ADDTvPU5uyralgOwXE7UWiuZikY4+Onzim+MJWJ7lEl0TH9/6iLgbtMWMvdRZo
+ 9pKJu/admijRQcr1C2a8ycejgE396VPhIhplbgEb77lkcivKsrC6u2MNH9EAVZriy4uT
+ Ll+IQr8zv8sfrHVPPHx5vAntlpIPhzvQp+S1oomn4RjbE6gy9Sv2Hz+HS2DRgRZNqG+L
+ tSVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=WYgJCjRBqhwY0ulINWDVeN12R2Tn8RH5kuZplnJEZos=;
- b=J30iSgU2PIgITtDw4f0ccFuyd9C3zXcgy9xxNuHNgtz5uKR30+2/JVbhzk26zRjfaL
- ttM/N44Y8lVIBlChUnbB1Cc29XB1dab4nGLiprCDktgV5E30agp969BXuDox1dqtfjEj
- kUu2WQV0N23O3yMnJy0pMtrmPAFFq0aKLxoN81yXgi+ysV8v9q4lrUULPIVmzmkOyXVL
- /9KVjKpEVaiXhwGGPp0HFWRi2nP/PqJVrBEancosd4U1KE5VNWxPdgBJoekeVhamoTZw
- AxOEfzF7DHy1gtqzPxRIpKrE2YNADxQxHoszs8ruieAr2dGZ40cJdGiKdx6JiBoLgeOs
- 30SA==
-X-Gm-Message-State: APjAAAV5Sr+WYZAUeDUG2iE4LT3Bic9h+2Li1KAjWtWn+CxAcBCoTQif
- xTQth7L+hwAyYbmcXI8lpoS44Q==
-X-Google-Smtp-Source: APXvYqzwiffXH7qAwTNlrwNnSzFYjok1bc9tn4Pi6HSzCFjYW64y7zo3+tmzH1fmx6SaC2g7igW/Ig==
-X-Received: by 2002:a63:d405:: with SMTP id a5mr3054839pgh.79.1573116756735;
- Thu, 07 Nov 2019 00:52:36 -0800 (PST)
+ bh=rTp8veXsbPSlIboKUPW27VEfaouXwybhFA3W6d1O8fo=;
+ b=gBKd8utZxKHhEwQHts68rsQ2Po9Q4hvIVp+XMi+0k+bz1zjDhOeR0c3WlUHAnRHIiU
+ gFp+KW4jWPPN6sqBxdBOSl21PPvIno7YJqlLFaaHsWr7UV75mcl8GuJ/zkMEEz3wQPDU
+ Pqb6T1iXA26oIzdE7M9b33T27o0QlzegTncxLKOUAdHaWMLGeksM+4uovOA85SFA07Zu
+ snORASt0/KWPUnVXFrUvTqwD2OiQ0E6k4Cydntu7Y6O2NMmnBaJ0nWj37c8UYqlYcBpG
+ +8S7x3L5Tl6UmZ9QGprcK09NUE1fJCCoTjZSacekPMep0ZwekMvS7h+fANmEm7FAK90I
+ AMew==
+X-Gm-Message-State: APjAAAUoK0Ip8zPR3/2NgmLooxIKPYBd2lUbQtl8g7rKmDjJgmu0Nap8
+ uzDimC9Maisucpc2bRlv7In12w==
+X-Google-Smtp-Source: APXvYqwjonCLe6lKUq8m5TTtxhcWb55hteTieYRwORhrcDOmYcewk+My9YdyJjeoZwrBij17ZnLBQA==
+X-Received: by 2002:a63:cf45:: with SMTP id b5mr3072879pgj.36.1573116801206;
+ Thu, 07 Nov 2019 00:53:21 -0800 (PST)
 Received: from localhost.localdomain (36-228-119-18.dynamic-ip.hinet.net.
  [36.228.119.18])
- by smtp.gmail.com with ESMTPSA id a33sm2402361pgb.57.2019.11.07.00.52.33
+ by smtp.gmail.com with ESMTPSA id a33sm2402361pgb.57.2019.11.07.00.53.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Nov 2019 00:52:36 -0800 (PST)
+ Thu, 07 Nov 2019 00:53:20 -0800 (PST)
 From: Green Wan <green.wan@sifive.com>
 To: 
-Subject: [PATCH v6 1/4] dt-bindings: dmaengine: sf-pdma: add bindins for
- SiFive PDMA
-Date: Thu,  7 Nov 2019 16:49:19 +0800
-Message-Id: <20191107084955.7580-2-green.wan@sifive.com>
+Subject: [PATCH v6 2/4] riscv: dts: add support for PDMA device of HiFive
+ Unleashed Rev A00
+Date: Thu,  7 Nov 2019 16:49:20 +0800
+Message-Id: <20191107084955.7580-3-green.wan@sifive.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191107084955.7580-1-green.wan@sifive.com>
 References: <20191107084955.7580-1-green.wan@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191107_005237_382169_29F8AD5B 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20191107_005321_871466_1B7742AD 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -115,78 +116,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add DT bindings document for Platform DMA(PDMA) driver of board,
-HiFive Unleashed Rev A00.
+Add PDMA support to (arch/riscv/boot/dts/sifive/fu540-c000.dtsi)
 
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Pragnesh Patel <pragnesh.patel@sifive.com>
 Signed-off-by: Green Wan <green.wan@sifive.com>
 ---
- .../bindings/dma/sifive,fu540-c000-pdma.yaml  | 55 +++++++++++++++++++
- 1 file changed, 55 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
+ arch/riscv/boot/dts/sifive/fu540-c000.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml b/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-new file mode 100644
-index 000000000000..2ca3ddbe1ff4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dma/sifive,fu540-c000-pdma.yaml
-@@ -0,0 +1,55 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/dma/sifive,fu540-c000-pdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: SiFive Unleashed Rev C000 Platform DMA
-+
-+maintainers:
-+  - Green Wan <green.wan@sifive.com>
-+  - Palmer Debbelt <palmer@sifive.com>
-+  - Paul Walmsley <paul.walmsley@sifive.com>
-+
-+description: |
-+  Platform DMA is a DMA engine of SiFive Unleashed. It supports 4
-+  channels. Each channel has 2 interrupts. One is for DMA done and
-+  the other is for DME error.
-+
-+  In different SoC, DMA could be attached to different IRQ line.
-+  DT file need to be changed to meet the difference. For technical
-+  doc,
-+
-+  https://static.dev.sifive.com/FU540-C000-v1.0.pdf
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: sifive,fu540-c000-pdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    minItems: 1
-+    maxItems: 8
-+
-+  '#dma-cells':
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - '#dma-cells'
-+
-+examples:
-+  - |
-+    dma@3000000 {
-+      compatible = "sifive,fu540-c000-pdma";
-+      reg = <0x0 0x3000000 0x0 0x8000>;
-+      interrupts = <23 24 25 26 27 28 29 30>;
-+      #dma-cells = <1>;
-+    };
-+
-+...
+diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+index afa43c7ea369..70a1891e7cd0 100644
+--- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
++++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+@@ -162,6 +162,13 @@
+ 			clocks = <&prci PRCI_CLK_TLCLK>;
+ 			status = "disabled";
+ 		};
++		dma: dma@3000000 {
++			compatible = "sifive,fu540-c000-pdma";
++			reg = <0x0 0x3000000 0x0 0x8000>;
++			interrupt-parent = <&plic0>;
++			interrupts = <23 24 25 26 27 28 29 30>;
++			#dma-cells = <1>;
++		};
+ 		uart1: serial@10011000 {
+ 			compatible = "sifive,fu540-c000-uart", "sifive,uart0";
+ 			reg = <0x0 0x10011000 0x0 0x1000>;
 -- 
 2.17.1
 
