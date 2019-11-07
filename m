@@ -2,54 +2,36 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93D5FF2A68
-	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 10:19:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D951F2A72
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 10:21:03 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F1nQNpOY0TSZcKiSILgjmPO3x+mOqR3Zw3H0ObRqYvc=; b=RBRdCbV81NEC2e
-	QKCcXJKN8Ts4sCMX/33hher/lUkh0W6hOq8GPqR9eK+lEiJmLIWaC1kSLGF8vxhzXWVLdkYErt76C
-	+xiFPe8wjJihEPPvcbVJoSBJcRMaGyUqr6QwA0qXrF29HyAjsOJt4lEHt/ziKhk9EJjjwZi+6mHdq
-	2HgDX7NtcPOfycMtvcT42v1035khL6dkahChyUPPstmqztYLzrWpzDCshLv4pCXhij791/C5KOgiD
-	QiaDMoCHLS2MitBIAJvNEaV2z5B+UAlqN0QBz3LROzmN//1u8THpmMn+o6YJJmKEbayMi/gPkFsf2
-	PYcUFBpzfeUXbMMDSw0Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=F7FOIjKunU0IRn185NjTxqsMckAQgN9p3vv9wRuwVAo=; b=TLvoHfpk+hlI0z
+	k4PBVFi5kIhHYj3QyhT5mzelPjd7l3/6RyHnCqBnrg0m5Zv4VJi0ybdAIFrrOPwDXLyzTEewtphaD
+	SUHJchmeevHtVA/3eTTNPD/ekIuMDWZr3+vOLN2uPiCviHWwYLnM+CXwMuQm3GWvoOLNztTqRUkAh
+	971ISAxw6+fY/ZFcYQtWHJAHggOvpIYt5GPVcyo9S4AuPz+3h0HM15BStehxJpo4hx9qU8iulu+1B
+	Aa23MllcTDpLWwEpTJGTkkQzs8jaGUy7n4RXOBQLa86qFh45YbpcJNvJV1IowZzUCh6vnhvuRgTgo
+	O//a+A8AHb2qRgPoNc+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSdwz-0002I3-GW; Thu, 07 Nov 2019 09:19:33 +0000
-Received: from verein.lst.de ([213.95.11.211])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSdww-0002Hd-Rg
- for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 09:19:32 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 0DC8C68B05; Thu,  7 Nov 2019 10:19:26 +0100 (CET)
-Date: Thu, 7 Nov 2019 10:19:25 +0100
+	id 1iSdyK-0003qZ-Ls; Thu, 07 Nov 2019 09:20:56 +0000
+Received: from [2001:4bb8:184:e48:c70:4a89:bc61:2] (helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iSdyH-0003qI-Qk; Thu, 07 Nov 2019 09:20:54 +0000
 From: Christoph Hellwig <hch@lst.de>
-To: Borislav Petkov <bp@alien8.de>
-Subject: Re: [PATCH, resend] riscv: move sifive_l2_cache.c to drivers/soc
-Message-ID: <20191107091925.GA10676@lst.de>
-References: <20191106011723.2110-1-hch@lst.de>
- <20191106091013.GA28380@zn.tnic> <20191106144859.GA17326@lst.de>
- <20191106150259.GB28380@zn.tnic>
+To: paul.walmsley@sifive.com, palmer@dabbelt.com, bp@alien8.de,
+ mchehab@kernel.org, tony.luck@intel.com, james.morse@arm.com,
+ rrichter@marvell.com, yash.shah@sifive.com,
+ linux-riscv@lists.infradead.org, linux-edac@vger.kernel.org
+Subject: [PATCH v2] riscv: move sifive_l2_cache.c to drivers/soc
+Date: Thu,  7 Nov 2019 10:20:39 +0100
+Message-Id: <20191107092039.32240-1-hch@lst.de>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191106150259.GB28380@zn.tnic>
-User-Agent: Mutt/1.5.17 (2007-11-01)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191107_011931_044740_44D9F237 
-X-CRM114-Status: UNSURE (   7.32  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,30 +43,133 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: tony.luck@intel.com, yash.shah@sifive.com, rrichter@marvell.com,
- james.morse@arm.com, paul.walmsley@sifive.com, palmer@dabbelt.com,
- linux-riscv@lists.infradead.org, mchehab@kernel.org,
- Christoph Hellwig <hch@lst.de>, linux-edac@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Nov 06, 2019 at 04:02:59PM +0100, Borislav Petkov wrote:
-> On Wed, Nov 06, 2019 at 03:48:59PM +0100, Christoph Hellwig wrote:
-> > On Wed, Nov 06, 2019 at 10:10:13AM +0100, Borislav Petkov wrote:
-> > > Also, building with a cross-compiler fails here:
-> > 
-> > What config?  riscv defconfig + CONFIG_SIFIVE_L2 works just fine for me.
-> 
-> Do you not see the one I attached?
+The sifive_l2_cache.c is in no way related to RISC-V architecture
+memory management.  It is a little stub driver working around the fact
+that the EDAC maintainers prefer their drivers to be structured in a
+certain way that doesn't fit the SiFive SOCs.
 
-Sorry, missed it.
+Move the file to drivers/soc and add a Kconfig option for it, as well
+as the whole drivers/soc boilerplate for CONFIG_SOC_SIFIVE.
 
-The problem is that you have a modular build, which doesn't make much
-sense given that the actual EDAC_SIFIVE needs to be built-in anyway.
+Fixes: a967a289f169 ("RISC-V: sifive_l2_cache: Add L2 cache controller driver for SiFive SoCs")
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+---
 
-I've changed it to bool and will resend.
+Changes since v2:
+ - don't allow modular builds
+ - remove the empty last line in the new Makefile
+
+ MAINTAINERS                                            |  1 +
+ arch/riscv/mm/Makefile                                 |  1 -
+ drivers/edac/Kconfig                                   |  2 +-
+ drivers/soc/Kconfig                                    |  1 +
+ drivers/soc/Makefile                                   |  1 +
+ drivers/soc/sifive/Kconfig                             | 10 ++++++++++
+ drivers/soc/sifive/Makefile                            |  3 +++
+ .../riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c  |  0
+ 8 files changed, 17 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/soc/sifive/Kconfig
+ create mode 100644 drivers/soc/sifive/Makefile
+ rename {arch/riscv/mm => drivers/soc/sifive}/sifive_l2_cache.c (100%)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cba1095547fd..f5a8accb0df3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -5972,6 +5972,7 @@ M:	Yash Shah <yash.shah@sifive.com>
+ L:	linux-edac@vger.kernel.org
+ S:	Supported
+ F:	drivers/edac/sifive_edac.c
++F:	drivers/soc/sifive/
+ 
+ EDAC-SKYLAKE
+ M:	Tony Luck <tony.luck@intel.com>
+diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+index 9d9a17335686..b225134c29e0 100644
+--- a/arch/riscv/mm/Makefile
++++ b/arch/riscv/mm/Makefile
+@@ -11,7 +11,6 @@ obj-y += extable.o
+ obj-y += ioremap.o
+ obj-y += cacheflush.o
+ obj-y += context.o
+-obj-y += sifive_l2_cache.o
+ 
+ ifeq ($(CONFIG_MMU),y)
+ obj-$(CONFIG_SMP) += tlbflush.o
+diff --git a/drivers/edac/Kconfig b/drivers/edac/Kconfig
+index 417dad635526..5c8272329a65 100644
+--- a/drivers/edac/Kconfig
++++ b/drivers/edac/Kconfig
+@@ -462,7 +462,7 @@ config EDAC_ALTERA_SDMMC
+ 
+ config EDAC_SIFIVE
+ 	bool "Sifive platform EDAC driver"
+-	depends on EDAC=y && RISCV
++	depends on EDAC=y && SIFIVE_L2
+ 	help
+ 	  Support for error detection and correction on the SiFive SoCs.
+ 
+diff --git a/drivers/soc/Kconfig b/drivers/soc/Kconfig
+index 833e04a7835c..1778f8c62861 100644
+--- a/drivers/soc/Kconfig
++++ b/drivers/soc/Kconfig
+@@ -14,6 +14,7 @@ source "drivers/soc/qcom/Kconfig"
+ source "drivers/soc/renesas/Kconfig"
+ source "drivers/soc/rockchip/Kconfig"
+ source "drivers/soc/samsung/Kconfig"
++source "drivers/soc/sifive/Kconfig"
+ source "drivers/soc/sunxi/Kconfig"
+ source "drivers/soc/tegra/Kconfig"
+ source "drivers/soc/ti/Kconfig"
+diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
+index 2ec355003524..8b49d782a1ab 100644
+--- a/drivers/soc/Makefile
++++ b/drivers/soc/Makefile
+@@ -20,6 +20,7 @@ obj-y				+= qcom/
+ obj-y				+= renesas/
+ obj-$(CONFIG_ARCH_ROCKCHIP)	+= rockchip/
+ obj-$(CONFIG_SOC_SAMSUNG)	+= samsung/
++obj-$(CONFIG_SOC_SIFIVE)	+= sifive/
+ obj-y				+= sunxi/
+ obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
+ obj-y				+= ti/
+diff --git a/drivers/soc/sifive/Kconfig b/drivers/soc/sifive/Kconfig
+new file mode 100644
+index 000000000000..58cf8c40d08d
+--- /dev/null
++++ b/drivers/soc/sifive/Kconfig
+@@ -0,0 +1,10 @@
++# SPDX-License-Identifier: GPL-2.0
++
++if SOC_SIFIVE
++
++config SIFIVE_L2
++	bool "Sifive L2 Cache controller"
++	help
++	  Support for the L2 cache controller on SiFive platforms.
++
++endif
+diff --git a/drivers/soc/sifive/Makefile b/drivers/soc/sifive/Makefile
+new file mode 100644
+index 000000000000..b5caff77938f
+--- /dev/null
++++ b/drivers/soc/sifive/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++
++obj-$(CONFIG_SIFIVE_L2)	+= sifive_l2_cache.o
+diff --git a/arch/riscv/mm/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
+similarity index 100%
+rename from arch/riscv/mm/sifive_l2_cache.c
+rename to drivers/soc/sifive/sifive_l2_cache.c
+-- 
+2.20.1
+
 
 _______________________________________________
 linux-riscv mailing list
