@@ -2,39 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC488F3A6C
-	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 22:24:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CE17F3AC4
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 22:53:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2GygaaIeQUYh5Mcea6Uhly/8hzFV1PPHYl4PRfCye2Q=; b=QWgPFLDtbZWxdc
-	eVn/k6b6fmrPvIN3gDsQ3V/gm5eeZihuhgKw3lwwAbsfVw8n+HFgnrY2wYcrkq1+GGtEJwyqsXlMs
-	A9J7aH4RzvXibyIwiIj4Thwtjxah2paalKBotCdbx6vlE04CGka7eZFEGYxXdlABg0iRS+t5Go0Em
-	bCw5FjZOL6HdgV+FeXPUzieqHQ7CiQqU/hcN0+JjKnyQLjauQUzxyUuaZhIihvY7pKxb/JwIxjWL4
-	SGgCMIYrk8WtzFDxja1kNJuCcssnAr/1Bz24UWuNTktwUAPmK+6G7gYbPkJSI7rIhr1R3KEI0J0Bx
-	P2w6ANS2HymXHFUo/pbg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=P7JL75qtfMUOeGVnCbaThm3GP52Fv0Bh8QgONnN0sO4=; b=c1UcIeHTBWTqDDBesTyKs5ANA
+	OLjkFrFodvEqrUIe18TwarxdF/OPQ3iKHE7OpGTfOy3Zfu8ukLI8pxDaCeEBu64fd9LuMO2nvuYjm
+	mqkrSxXMJoUAuxcFCCKnImqrtOFQQz11S4bsqfcaUBmGExhvZTn1MJRJU6U/ix5ei+0lTC9uKoc0E
+	t5BwWF6t2cKVsLLuvREpZMBFVq+NfcXDKyk4B0nn4THgON6v/+gb2PWed9BcyC1mqE0ZuehTRdkkW
+	6+GIA24w+4B/k5l9vWvQnjhgsKfE/FOf1mTvEH/vgSL57i0evR7d8zXXSJosS8VXwafd4ZBcU+f5K
+	scn7ofYkA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSpGP-0007MA-OB; Thu, 07 Nov 2019 21:24:21 +0000
-Received: from [2001:4bb8:184:e48:c70:4a89:bc61:2] (helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSpGM-0007Hi-Dr; Thu, 07 Nov 2019 21:24:18 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: Sebastian Reichel <sre@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 2/2] power: reset: add a QEMU RISC-V virt machine poweroff
- driver
-Date: Thu,  7 Nov 2019 22:24:08 +0100
-Message-Id: <20191107212408.11857-3-hch@lst.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191107212408.11857-1-hch@lst.de>
-References: <20191107212408.11857-1-hch@lst.de>
-MIME-Version: 1.0
+	id 1iSpiB-0001Ma-T6; Thu, 07 Nov 2019 21:53:03 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iSpi8-0001LV-Rd
+ for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 21:53:02 +0000
+Received: by mail-pg1-x542.google.com with SMTP id f19so2795115pgk.11
+ for <linux-riscv@lists.infradead.org>; Thu, 07 Nov 2019 13:53:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1ZmP3Rg7HzABUgxKqQ/4jGQaai0OdMM5UHRs2UoA2Us=;
+ b=l3vjWLydFjCtnlYdjNGzXOljrsJTHX7IERVD5wJFYO/t45yCELfuaDoGwYeNyVpB+n
+ XJY0CrCVjHDn4tgOv41UjW04q89qVSuKyrmw3WyN+SUF2+WhB1Z2CVsZO9mXZ+3Gm0Fk
+ XITUMqVoXa1++r+JUrAoyVzBswTQkxIKvy0zryDeeGCLem79epiacJJYmY4qHsYvj965
+ eV0qb3WtRvntvfMLHk/3wf5DBA4WxPbPUWk18Iy2O0Fr7EYaoHFJuqkegWXJjPGLodU7
+ CRMK5eKfjf8Vu2scccHhiMkieOf4DnxBcKR95/NlZ1ZoSPvrIT8aTsVKRuBoFZEizlmd
+ +A5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=1ZmP3Rg7HzABUgxKqQ/4jGQaai0OdMM5UHRs2UoA2Us=;
+ b=m0xZEHG+pPaoiiUnrQKpyGyjm8twFJQQeRyJMLTRDs0CDLdW4nV6QyrPqFWBnq+Lu1
+ rjUFfUreMetq+kXQyECNUfqwvG3FEii/xrDlP/aqVK9srzTXgcquzss/hP5wzESCgys7
+ FWMymVM+L2nj91tVtXwtnuwSA4p0GKWogWKRFPaiyUy7mGJmp1mkCFB8Hr7oUBNYpuPS
+ aybQbN1t0mVz/roBu041U0WPxnR42Ads3/3c4xlZ/S7L+DskJIPdjdO1rTnN6jhywFRh
+ 32h2tS/53Wfe5NVPsFSvu7pPCZG1YpCcJhvJZn6yoWyQadfOZi/CIIKcIvNAVey+EcQV
+ UViQ==
+X-Gm-Message-State: APjAAAUbISev12ig8TtzDkM/u4Ed2egzM/Tjp6XbK6F8+vuiycRgW2Uy
+ gkBKbHUAwpoBTYQO+F3fFuKzGw==
+X-Google-Smtp-Source: APXvYqzzcZmDI/kaSp6LdK1qm0znVJ6nCHWBAR7hkCC2Zt7lvAHXwwzIgNfPrMwN/CstJOHouv4T7w==
+X-Received: by 2002:a63:955a:: with SMTP id t26mr7618796pgn.280.1573163579261; 
+ Thu, 07 Nov 2019 13:52:59 -0800 (PST)
+Received: from localhost ([12.206.222.5])
+ by smtp.gmail.com with ESMTPSA id f13sm3338842pgs.83.2019.11.07.13.52.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Nov 2019 13:52:58 -0800 (PST)
+Date: Thu, 07 Nov 2019 13:52:58 -0800 (PST)
+X-Google-Original-Date: Thu, 07 Nov 2019 13:45:27 PST (-0800)
+Subject: Re: [PATCH 1/2] dt-bindings: power: reset: document the QEMU RISC-V
+ virt machine poweroff device
+In-Reply-To: <20191107212408.11857-2-hch@lst.de>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: Christoph Hellwig <hch@lst.de>
+Message-ID: <mhng-5b9f028d-0839-42e5-8d6f-7fb00ac9f39d@palmer-si-x1c4>
+Mime-Version: 1.0 (MHng)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20191107_135300_899542_AE1FC2D2 
+X-CRM114-Status: GOOD (  18.20  )
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,121 +92,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-pm@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ sre@kernel.org, robh+dt@kernel.org, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add a trivial poweroff driver for the qemu-virt test device that
-allows an oderly shutdown of the VM.
+On Thu, 07 Nov 2019 13:24:07 PST (-0800), Christoph Hellwig wrote:
+> Add the binding for the trivial Qemu RISC-V poweroff mechanism, which is
+> just a single MMIO register exposed through the DT.
+>
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  .../power/reset/qemu-riscv-virt-poweroff.txt     | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+>
+> diff --git a/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt b/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+> new file mode 100644
+> index 000000000000..80ff6fd4e3b7
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+> @@ -0,0 +1,16 @@
+> +QEMU RISC-V virt machine poweroff device
+> +
+> +This is a device in Qemu that can signal successful or error exit
+> +by writing two magic numbers to a trivial mmio register.
+> +A Linux poweroff is implemented as successful exit.
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- arch/riscv/configs/defconfig                  |  2 +
- drivers/power/reset/Kconfig                   |  8 ++++
- drivers/power/reset/Makefile                  |  1 +
- .../power/reset/qemu-riscv-virt-poweroff.c    | 47 +++++++++++++++++++
- 4 files changed, 58 insertions(+)
- create mode 100644 drivers/power/reset/qemu-riscv-virt-poweroff.c
+There's a third value that reboots the system, but it's only implemented in 
+qemu-4.2 (not released yet) and above.  It'll be 'compatible = "sifive,test1", 
+"sifive,test0";' (or at least will be when I merge my patch to do so).
 
-diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-index 420a0dbef386..47da87725b5e 100644
---- a/arch/riscv/configs/defconfig
-+++ b/arch/riscv/configs/defconfig
-@@ -63,6 +63,8 @@ CONFIG_HW_RANDOM_VIRTIO=y
- CONFIG_SPI=y
- CONFIG_SPI_SIFIVE=y
- # CONFIG_PTP_1588_CLOCK is not set
-+CONFIG_POWER_RESET=y
-+CONFIG_QEMU_RISCV_VIRT_POWEROFF=y
- CONFIG_DRM=y
- CONFIG_DRM_RADEON=y
- CONFIG_DRM_VIRTIO_GPU=y
-diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
-index a564237278ff..56cb18520850 100644
---- a/drivers/power/reset/Kconfig
-+++ b/drivers/power/reset/Kconfig
-@@ -256,5 +256,13 @@ config NVMEM_REBOOT_MODE
- 	  then the bootloader can read it and take different
- 	  action according to the mode.
- 
-+config QEMU_RISCV_VIRT_POWEROFF
-+	tristate "QEMU RISC-V virt machine poweroff driver"
-+	depends on OF
-+	depends on RISCV || COMPILE_TEST
-+	help
-+	  Say y here to allow RISC-V Qemu VMs to be shut down by
-+	  the kernel.
-+
- endif
- 
-diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
-index 85da3198e4e0..b3094016b634 100644
---- a/drivers/power/reset/Makefile
-+++ b/drivers/power/reset/Makefile
-@@ -30,3 +30,4 @@ obj-$(CONFIG_REBOOT_MODE) += reboot-mode.o
- obj-$(CONFIG_SYSCON_REBOOT_MODE) += syscon-reboot-mode.o
- obj-$(CONFIG_POWER_RESET_SC27XX) += sc27xx-poweroff.o
- obj-$(CONFIG_NVMEM_REBOOT_MODE) += nvmem-reboot-mode.o
-+obj-$(CONFIG_QEMU_RISCV_VIRT_POWEROFF) += qemu-riscv-virt-poweroff.o
-diff --git a/drivers/power/reset/qemu-riscv-virt-poweroff.c b/drivers/power/reset/qemu-riscv-virt-poweroff.c
-new file mode 100644
-index 000000000000..5b9a12dd853b
---- /dev/null
-+++ b/drivers/power/reset/qemu-riscv-virt-poweroff.c
-@@ -0,0 +1,47 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 Christoph Hellwig.
-+ */
-+
-+#include <linux/reboot.h>
-+#include <linux/init.h>
-+#include <linux/io.h>
-+#include <linux/platform_device.h>
-+#include <linux/of_address.h>
-+#include <linux/module.h>
-+
-+#define VIRT_TEST_FINISHER_PASS         0x5555
-+
-+static u16 __iomem *test_addr;
-+
-+static void qemu_virt_power_off(void)
-+{
-+	writew(VIRT_TEST_FINISHER_PASS, test_addr);
-+}
-+
-+static int sifive_test_probe(struct platform_device *pdev)
-+{
-+	/* there can only be a single instance */
-+	if (WARN_ON_ONCE(test_addr))
-+		return -EINVAL;
-+
-+	test_addr = of_iomap(pdev->dev.of_node, 0);
-+	if (!test_addr)
-+		return -EINVAL;
-+	pm_power_off = qemu_virt_power_off;
-+	return 0;
-+}
-+
-+static const struct of_device_id sifive_test_of_match[] = {
-+	{ .compatible = "sifive,test0", },
-+	{},
-+};
-+
-+static struct platform_driver sifive_test_driver = {
-+	.probe			= sifive_test_probe,
-+	.driver = {
-+		.name		= "sifive_test",
-+		.of_match_table = sifive_test_of_match,
-+	},
-+};
-+module_platform_driver(sifive_test_driver);
--- 
-2.20.1
+> +
+> +Required Properties:
+> +-compatible: "sifive,test0"
+> +-reg: Specifies the physical address of the register
+> +
+> +Example:
+> +
+> +	test@100000 {
+> +		compatible = "sifive,test0";
+> +		reg = <0x100000 0x1000>;
+> +	};
 
+Reviewed-by: Palmer Dabbelt <palmer@dabbelt.com>
 
 _______________________________________________
 linux-riscv mailing list
