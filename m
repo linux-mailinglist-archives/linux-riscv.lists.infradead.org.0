@@ -2,35 +2,38 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DE9CF3A6A
+	by mail.lfdr.de (Postfix) with ESMTPS id CEB3EF3A6B
 	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 22:24:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eJcyaE5olVWs4pEpg11kTJk6A0H8LSKvNNTmbmNLVLk=; b=taTR1vQAQoFjCQ
-	G12X7CIl/urqieNssknAyOveNRF51wDO0M0DZFONbH079qrdNNMJLi//pkOm19vvaAighy/2by9fH
-	lEkcKX1kp21dkRFjHrs4m0kSrqW6WeaY72/GNR8gBuL7O52Y+0ozNPRJ+keOKAKtLTCO1tTN/ve/o
-	GdJmNrkfHrOiuBAeNfCjOx+zxy60/BNH+oN9ZIbrIb0VoAloX6ikvyk2MIKvGHZW9lpBsF+o+HA9I
-	oFp/gBAlwHcnVZYXExDBJFMeFPtgHKmcniDpSri/hNc5FhkYldugMXVQQN9CydeiAbx2XBZLqguCd
-	q98W6xrCZag9TpjVYxHQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rb3GQa2Qnirp3ZjIeHvp11mqi6QICqyG+tq0qQhRzNo=; b=LULKUd20r1NN39
+	sZ52d6U30yHIUxTkvsgGkJQqXdxdtHPl9SiiiW29to9oRf1blFINk63Rg7wmo5bM4n+XesLd71A1w
+	PYJoeKYZCLYZk9YS2CttwYaCbA1GXwsNMtqgtOZL8ww7axTaiMsFb1PQlbCleCr7mR1u9awa9hg2P
+	wsAHNFmieMYPVTwmX8YYk7hVg98VOK/sLiOxiUvT3GYFNOZx3bD5V2/LdHsNph9IxFixJaln+wkyk
+	FZdtiTeOl1DdwLC46rIB/gG7lV4ayHYJTAYTcSBzPkCwINqNPEw9g3AJr6d6+wyrRDtMKTrRMwVkO
+	S8h8Iquf/9S1vbzK4mAw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSpGJ-0007Fm-Lb; Thu, 07 Nov 2019 21:24:15 +0000
+	id 1iSpGM-0007IL-Kv; Thu, 07 Nov 2019 21:24:18 +0000
 Received: from [2001:4bb8:184:e48:c70:4a89:bc61:2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSpGH-0007F5-Hl; Thu, 07 Nov 2019 21:24:13 +0000
+ id 1iSpGJ-0007Fe-VH; Thu, 07 Nov 2019 21:24:16 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Sebastian Reichel <sre@kernel.org>, Rob Herring <robh+dt@kernel.org>,
  Mark Rutland <mark.rutland@arm.com>,
  Paul Walmsley <paul.walmsley@sifive.com>,
  Palmer Dabbelt <palmer@dabbelt.com>
-Subject: QEMU RISC-V virt machine poweroff driver
-Date: Thu,  7 Nov 2019 22:24:06 +0100
-Message-Id: <20191107212408.11857-1-hch@lst.de>
+Subject: [PATCH 1/2] dt-bindings: power: reset: document the QEMU RISC-V virt
+ machine poweroff device
+Date: Thu,  7 Nov 2019 22:24:07 +0100
+Message-Id: <20191107212408.11857-2-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191107212408.11857-1-hch@lst.de>
+References: <20191107212408.11857-1-hch@lst.de>
 MIME-Version: 1.0
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -50,12 +53,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi all,
+Add the binding for the trivial Qemu RISC-V poweroff mechanism, which is
+just a single MMIO register exposed through the DT.
 
-this patch add a driver for the test device in the Qemu RISC-V
-virt machine which allows properly shutting down the VM.
-It also is added to the riscv defconfig given that qemu-virt
-is the most popular riscv platform.
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+---
+ .../power/reset/qemu-riscv-virt-poweroff.txt     | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+
+diff --git a/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt b/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+new file mode 100644
+index 000000000000..80ff6fd4e3b7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/reset/qemu-riscv-virt-poweroff.txt
+@@ -0,0 +1,16 @@
++QEMU RISC-V virt machine poweroff device
++
++This is a device in Qemu that can signal successful or error exit
++by writing two magic numbers to a trivial mmio register.
++A Linux poweroff is implemented as successful exit.
++
++Required Properties:
++-compatible: "sifive,test0"
++-reg: Specifies the physical address of the register
++
++Example:
++
++	test@100000 {
++		compatible = "sifive,test0";
++		reg = <0x100000 0x1000>;
++	};
+-- 
+2.20.1
+
 
 _______________________________________________
 linux-riscv mailing list
