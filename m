@@ -2,74 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A80ABF2299
-	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 00:28:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A806F250A
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 Nov 2019 03:12:05 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4qMxNANvD2mKx5rRvKwF+D2iZps98DMNuo9E1FfjoHc=; b=m/SDtYG120STwL
-	oSppZHrLi9PCbeMCjrMEoLV4xZFkfwfbdF31qsXGuaX+qUMHLHxBAoW/o2JbTWJSfgTzLoPtaADpI
-	s00bZl56+Mp7jPdWIdK0MeMfX8rlH9toqVdoWwhA5azI4DsIy1dp0bt2xAlUgeuVn425/je8CVzDr
-	qGGc89vl2N169sXShYSaeWZ3zxtFdcQBn1HvihOcMIgsPGbnkTBScRWdVH3w6pAifpCxyO+WdAZUi
-	8Z9EGfMrB/nKgL+8NghfXfU+nbb5my+wSeC6a/mqVcE7ETdL9qcTYhm2RZfrt3BYXLPjPxkLnclsm
-	C+KhxFHfhgOYEJcuTHnw==;
+	List-Owner; bh=0jJiKiBvqGPejCNvf8aTAxXQIVUIUowK9a6zoa0aSkM=; b=T8Euv1uNr4kO2L
+	+QD5OPP6PXllXcMghVvfudStyqD2+hh6dG7fJfbQSggGLiBKb/uYzcLX5BJzFllbhdE+MIS9Qw7So
+	vgqdF6TRj3IDkSFhEL0wlUO0MaYgYSYjuF/cVuXcmOd/ZgFhdkRvPKMYPflcmTqVNulje9rYPISF0
+	vEQM0+f8oClYv+chd3Gs1lVoiPYEVj+Mj9tIwB4Q/6MkUJf2ZShyzsllHpwy7TXAzjTU3c/tEeUCP
+	Iccm/TpLdV27gAKvaRd8poL23SO7TB2YQnoWqjUM8Kf2TIvPVju84tcRW4BaYGx/i5qg4V/bqIBZB
+	rGRmn5uQmSgkHFzHQSvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSUio-0002Z9-At; Wed, 06 Nov 2019 23:28:18 +0000
-Received: from pandora.armlinux.org.uk
- ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
+	id 1iSXH1-0005wx-Oc; Thu, 07 Nov 2019 02:11:47 +0000
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSUil-0002YC-C4; Wed, 06 Nov 2019 23:28:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PRxpis2yYVwo9kDaUSfGCl5VFlJxyHbhU0YR7G7gbJ8=; b=iy2paYFVbfDDxvP/gOAeR2zl0
- YOZEPL3WjHOmVg+0OQahNkJkI83R2voT2LINyyq/NpOQgJ8XbP653WAnOCKJeMd3FQfk1r00D1g6Z
- fp0OZxAP4Vl3Ld3lf2vsPvJVAaYSvfV/oRelynTl2M99Xzch5Yo0n9rKkDRrpqI+VDj8uG0IE0Mwu
- DLXZUR9cXBF6yhsVU66Hv9Zw3qb9D4TtgACKhdNRerRuquMvaCXNfaGPMRzGBVS3f+JaE6Gz3Dc5B
- ZjnPN/i029uWQPyVkPtoGc8KSHKL1/41r92P9256aLhtNWmorZhciQ3YdFO8welchayVt2ute4n7E
- rzURiZTZA==;
-Received: from shell.armlinux.org.uk
- ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:52746)
- by pandora.armlinux.org.uk with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <linux@armlinux.org.uk>)
- id 1iSUgS-00085H-Vb; Wed, 06 Nov 2019 23:25:53 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1iSUfp-0004Pa-1s; Wed, 06 Nov 2019 23:25:13 +0000
-Date: Wed, 6 Nov 2019 23:25:13 +0000
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-To: Peter Zijlstra <peterz@infradead.org>
-Subject: Re: [PATCH 00/50] Add log level to show_stack()
-Message-ID: <20191106232512.GU25745@shell.armlinux.org.uk>
-References: <20191106030542.868541-1-dima@arista.com>
- <20191106092039.GT4131@hirez.programming.kicks-ass.net>
- <10db6fa1-5b17-ebe6-09e0-6335e09e4db8@arista.com>
- <20191106203440.GH3079@worktop.programming.kicks-ass.net>
+ id 1iSXGy-0005vx-7X
+ for linux-riscv@lists.infradead.org; Thu, 07 Nov 2019 02:11:45 +0000
+Received: by mail-il1-x142.google.com with SMTP id z10so337745ilo.8
+ for <linux-riscv@lists.infradead.org>; Wed, 06 Nov 2019 18:11:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zj5nVV7hFwHQ61cfvcd7q5vRxcIEvVb9YfJiy7fOWvA=;
+ b=QS6qH6KplAbzHfCsXrTMxGf7/EoowWyvJoRyUXZH5b5nSj1rJMvUcnL5KVNbQa9KdY
+ N7i/quh0dY0FujcDlilijbFSYfm+WYVmUB93UA2Xy8j5TZaYNXzxMRgwikJx6kcbcwjZ
+ +rW1WFH9ixpIEG9zzF8ddoItXj1z9E6alHN7AGV7acyoPCvPcI7sHP8ttXAIGmEAKtCK
+ Hz0uyLuIhA5QFb+zP2QX1ZsobUpOaQQqodCyVcoolVvXWupcllpLHiVyiD2+A+Asc8d0
+ /rB//XJsfvWLnv+UVN+KizmMR88BlZNGvmYMYj5nVVmpPKTZnYpRTre5rsbXzRdjcPfG
+ 0WVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zj5nVV7hFwHQ61cfvcd7q5vRxcIEvVb9YfJiy7fOWvA=;
+ b=l0cvB2oQmlryb/KOmKndYib7QeoFX3B+8C/L3+dXYqEvabL73YqtQYl+8wMBASBmUK
+ Vg83ATAJ1B4YIx9498zMNDiQc1Q3D1M7elS5H7trEW7kK80DHL0EL/F9DuuEz+stEfgR
+ vfc4L4vpnOXvsiuV9ZdeN/bkGPBWLThmUjss4Uk7pK6Zqfvx24f8iargaR6ls7kDE/7l
+ JrPdiA9ETNWuRGmP9ma0HnTO6hI2XfUpxTHEUMEWbQMWZwbUxLTbpZPtXp9sFxyya0NL
+ 7hjBjusDAZF4aOF2GWO3QRS1yfmrCJw8M7AwsSFTvfC+ijVlQJxXYUh1d3Pi37M/PtGt
+ vkpg==
+X-Gm-Message-State: APjAAAUK8FrAvw/Q26nye6ynQkvoPoMhSJVrKCNy8RBCHhxo4xJpEhzw
+ 76wk9BtRr1TQQ7MVAdH2d33aii07S8tav5Bw+ue3+Q==
+X-Google-Smtp-Source: APXvYqzyeDjr5TTdOJAdTcs2Mr8QC5C9jpLr0O1hsPKOR4KROaGVbyvqfBoBKMTT9YtrQzx5v4HhQifzo5shXhGLKpw=
+X-Received: by 2002:a92:4555:: with SMTP id s82mr1356329ila.228.1573092702728; 
+ Wed, 06 Nov 2019 18:11:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191106203440.GH3079@worktop.programming.kicks-ass.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20191028075658.12143-1-green.wan@sifive.com>
+ <20191028075658.12143-4-green.wan@sifive.com>
+ <20191105174823.GF952516@vkoul-mobl>
+In-Reply-To: <20191105174823.GF952516@vkoul-mobl>
+From: Green Wan <green.wan@sifive.com>
+Date: Thu, 7 Nov 2019 10:11:33 +0800
+Message-ID: <CAJivOr7ZGwm8Bp1oGcYQHkao2zr0GsMQrcdawMHukmeA8wYVnQ@mail.gmail.com>
+Subject: Re: [PATCH v5 3/4] dmaengine: sf-pdma: add platform DMA support for
+ HiFive Unleashed A00
+To: Vinod Koul <vkoul@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_152815_574233_47586EE9 
-X-CRM114-Status: GOOD (  12.06  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191106_181144_279721_0DA31688 
+X-CRM114-Status: GOOD (  23.17  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [2001:4d48:ad52:3201:214:fdff:fe10:1be6 listed in]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:142 listed in]
  [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -88,93 +92,167 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>, linux-sh@vger.kernel.org,
- Catalin Marinas <catalin.marinas@arm.com>, Ben Segall <bsegall@google.com>,
- Guo Ren <guoren@kernel.org>, Pavel Machek <pavel@ucw.cz>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Paul Burton <paulburton@kernel.org>, Dmitry Safonov <dima@arista.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Geert Uytterhoeven <geert@linux-m68k.org>, Mel Gorman <mgorman@suse.de>,
- Jiri Slaby <jslaby@suse.com>, Matt Turner <mattst88@gmail.com>,
- uclinux-h8-devel@lists.sourceforge.jp, Len Brown <len.brown@intel.com>,
- linux-pm@vger.kernel.org, Heiko Carstens <heiko.carstens@de.ibm.com>,
- linux-um@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Richard Henderson <rth@twiddle.net>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Albert Ou <aou@eecs.berkeley.edu>, kbuild test robot <lkp@intel.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>, Paul Mackerras <paulus@samba.org>,
- Andrew Morton <akpm@linux-foundation.org>, linux-ia64@vger.kernel.org,
- Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
- James Hogan <jhogan@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Vincent Chen <deanbo422@gmail.com>,
- Ingo Molnar <mingo@kernel.org>, linux-s390@vger.kernel.org,
- linux-c6x-dev@linux-c6x.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- linux-hexagon@vger.kernel.org, Helge Deller <deller@gmx.de>,
- linux-xtensa@linux-xtensa.org, Vasily Gorbik <gor@linux.ibm.com>,
- Aurelien Jacquiot <jacquiot.aurelien@gmail.com>,
- linux-m68k@lists.linux-m68k.org, Stafford Horne <shorne@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Chris Zankel <chris@zankel.net>,
- Tony Luck <tony.luck@intel.com>, Douglas Anderson <dianders@chromium.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dmitry Safonov <0x7f454c46@gmail.com>, Will Deacon <will@kernel.org>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Brian Cain <bcain@codeaurora.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- kgdb-bugreport@lists.sourceforge.net, linux-snps-arc@lists.infradead.org,
- Fenghua Yu <fenghua.yu@intel.com>, Borislav Petkov <bp@alien8.de>,
- Jeff Dike <jdike@addtoit.com>, Steven Rostedt <rostedt@goodmis.org>,
- Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Greentime Hu <green.hu@gmail.com>,
- Guan Xuetao <gxt@pku.edu.cn>, linux-parisc@vger.kernel.org,
- linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
- "David S. Miller" <davem@davemloft.net>, Rich Felker <dalias@libc.org>,
- Petr Mladek <pmladek@suse.com>, "H. Peter Anvin" <hpa@zytor.com>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Anton Ivanov <anton.ivanov@cambridgegreys.com>,
- Jonas Bonn <jonas@southpole.se>, Richard Weinberger <richard@nod.at>,
- x86@kernel.org, clang-built-linux@googlegroups.com,
- Ingo Molnar <mingo@redhat.com>, Mark Salter <msalter@redhat.com>,
- Albert Ou <aou@eecs.berkeley.edu>,
- Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>,
- openrisc@lists.librecores.org, Paul Walmsley <paul.walmsley@sifive.com>,
- Michal Simek <monstr@monstr.eu>, Vineet Gupta <vgupta@synopsys.com>,
- linux-mips@vger.kernel.org, Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Jason Wessel <jason.wessel@windriver.com>,
- nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Bin Meng <bmeng.cn@gmail.com>,
+ dmaengine@vger.kernel.org, Yash Shah <yash.shah@sifive.com>,
+ Rob Herring <robh+dt@kernel.org>, Sagar Kadam <sagar.kadam@sifive.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Dan Williams <dan.j.williams@intel.com>,
+ "Paul E. McKenney" <paulmck@linux.ibm.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Nov 06, 2019 at 09:34:40PM +0100, Peter Zijlstra wrote:
-> I suppose I'm surprised there are backtraces that are not important.
-> Either badness happened and it needs printing, or the user asked for it
-> and it needs printing.
+On Wed, Nov 6, 2019 at 1:48 AM Vinod Koul <vkoul@kernel.org> wrote:
+>
+> On 28-10-19, 15:56, Green Wan wrote:
+> > Add PDMA driver, sf-pdma, to enable DMA engine on HiFive Unleashed
+> > Rev A00 board.
+> >
+> >  - Implement dmaengine APIs, support MEM_TO_MEM async copy.
+> >  - Tested by DMA Test client
+> >  - Supports 4 channels DMA, each channel has 1 done and 1 err
+> >    interrupt connected to platform-level interrupt controller (PLIC).
+> >  - Depends on DMA_ENGINE and DMA_VIRTUAL_CHANNELS
+> >
+> > The datasheet is here:
+> >
+> >   https://static.dev.sifive.com/FU540-C000-v1.0.pdf
+> >
+> > Follow the DMAengine controller doc,
+> > "./Documentation/driver-api/dmaengine/provider.rst" to implement DMA
+> > engine. And use the dma test client in doc,
+> > "./Documentation/driver-api/dmaengine/dmatest.rst", to test.
+> >
+> > Each DMA channel has separate HW regs and support done and error ISRs.
+> > 4 channels share 1 done and 1 err ISRs. There's no expander/arbitrator
+> > in DMA HW.
+> >
+> >    ------               ------
+> >    |    |--< done 23 >--|ch 0|
+> >    |    |--< err  24 >--|    |     (dma0chan0)
+> >    |    |               ------
+> >    |    |               ------
+> >    |    |--< done 25 >--|ch 1|
+> >    |    |--< err  26 >--|    |     (dma0chan1)
+> >    |PLIC|               ------
+> >    |    |               ------
+> >    |    |--< done 27 >--|ch 2|
+> >    |    |--< err  28 >--|    |     (dma0chan2)
+> >    |    |               ------
+> >    |    |               ------
+> >    |    |--< done 29 >--|ch 3|
+> >    |    |--< err  30 >--|    |     (dma0chan3)
+> >    ------               ------
+> >
+> > Reviewed-by: Vinod Koul <vkoul@kernel.org>
+>
+> when did i provide this?
+>
+> > Signed-off-by: Green Wan <green.wan@sifive.com>
+> > Reported-by: kbuild test robot <lkp@intel.com>
+> > Fixes: 31c3b98b5a01 ("dmaengine: sf-pdma: add platform DMA support for HiFive Unleashed A00")
+>
+> Fixes what... this is not a upstream commit?
+>
 
-Or utterly meaningless.
+Since I received a RFC patch from kbuild with the fix commit number I
+thought it was about merged. RFC requested to add the "Reported-by"
+and "Fixes" but looks miss the contributor so I added them as well.
+I'll remove them in next submit. Sorry for causing confusion.
 
-> Perhaps we should be removing backtraces if they're not important
-> instead of allowing to print them as lower loglevels?
+> > Signed-off-by: kbuild test robot <lkp@intel.com>
+> > ---
+>
+> Please list the changes done from prev version, here or in cover letter
+>
+will add change log.
 
-Definitely!  WARN_ON() is well overused - and as is typical, used
-without much thought.  Bound to happen after Linus got shirty about
-BUG_ON() being over used.  Everyone just grabbed the next nearest thing
-to assert().
+> > +static struct sf_pdma_desc *sf_pdma_alloc_desc(struct sf_pdma_chan *chan)
+> > +{
+> > +     struct sf_pdma_desc *desc;
+> > +     unsigned long flags;
+> > +
+> > +     spin_lock_irqsave(&chan->lock, flags);
+> > +
+> > +     if (chan->desc && !chan->desc->in_use) {
+> > +             spin_unlock_irqrestore(&chan->lock, flags);
+> > +             return chan->desc;
+> > +     }
+> > +
+> > +     spin_unlock_irqrestore(&chan->lock, flags);
+> > +
+> > +     desc = kzalloc(sizeof(*desc), GFP_NOWAIT);
+> > +
+>
+> this empty line in not required
+>
+> > +static struct dma_async_tx_descriptor *
+> > +     sf_pdma_prep_dma_memcpy(struct dma_chan *dchan,
+> > +                             dma_addr_t dest,
+>
+> please make it left justified
 
-As a kind of example, I've recently come across one WARN_ON() in a
-driver subsystem (that shall remain nameless at the moment) which very
-likely has multiple different devices on a platform.  The WARN_ON()
-triggers as a result of a problem with the hardware, but because it's a
-WARN_ON(), you've no idea which device has a problem.  The backtrace is
-mostly meaningless.  So you know that a problem has occurred, but the
-kernel prints *useless* backtrace to let you know, and totally omits
-the *useful* information.
+will fix.
+>
+> > +static int sf_pdma_slave_config(struct dma_chan *dchan,
+> > +                             struct dma_slave_config *cfg)
+> > +{
+> > +     struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
+> > +
+> > +     memcpy(&chan->cfg, cfg, sizeof(*cfg));
+> > +     chan->dma_dir = DMA_MEM_TO_MEM;
+>
+> ?? looking at changelog we have only memcpy support, so this should not
+> be here, pls remove this.
+>
+> > +static enum dma_status
+> > +sf_pdma_tx_status(struct dma_chan *dchan,
+> > +               dma_cookie_t cookie,
+> > +               struct dma_tx_state *txstate)
+> > +{
+> > +     struct sf_pdma_chan *chan = to_sf_pdma_chan(dchan);
+> > +     enum dma_status status;
+> > +
+> > +     status = dma_cookie_status(dchan, cookie, txstate);
+> > +
+> > +     if (txstate && status != DMA_ERROR)
+> > +             dma_set_residue(txstate, sf_pdma_desc_residue(chan));
+>
+> which residue? the query can be for a cookie which is still in pending
+> list! you need to check the cookie and only read register for cookie if
+> submitted
+>
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+WIll fix this.
+
+> > +static int sf_pdma_remove(struct platform_device *pdev)
+> > +{
+> > +     struct sf_pdma *pdma = platform_get_drvdata(pdev);
+> > +     struct sf_pdma_chan *ch;
+> > +     int i;
+> > +
+> > +     for (i = 0; i < PDMA_NR_CH; i++) {
+> > +             ch = &pdma->chans[i];
+> > +
+> > +             list_del(&ch->vchan.chan.device_node);
+> > +             tasklet_kill(&ch->vchan.task);
+> > +             tasklet_kill(&ch->done_tasklet);
+> > +             tasklet_kill(&ch->err_tasklet);
+>
+> you have an isr registered which can fire and schedule tasklets..
+
+will fix it by free irq first. Thanks for reviewing.
+
+> --
+> ~Vinod
 
 _______________________________________________
 linux-riscv mailing list
