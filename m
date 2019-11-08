@@ -2,92 +2,54 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3231DF44B7
-	for <lists+linux-riscv@lfdr.de>; Fri,  8 Nov 2019 11:37:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA82AF4CFD
+	for <lists+linux-riscv@lfdr.de>; Fri,  8 Nov 2019 14:18:20 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/TbfvbBMMqYJhaiiDLT5hNlGfQ9AYI+qFDv44qtxUn8=; b=ev1AOwJFzwsuKz
-	KReAxG09UHfg38wG4XRZOHXjGaMk/Fey12D2/WiOJEBAMFBnkMFH8M6nFVSRigk2V50gJTBa5ox8P
-	hK7A/SRq/Yh5MjFhzsOZ1kneLnxnZXD/eCPO3b/9OA0Ug0pF7B8B7m8+E+6bh4x7hbcOBiy+5cZFU
-	S4f+1ptRlURf91kNyJbmhqyiyDYc5+8pUPzLb1zjJx65sakMqCxmywH/eNa/MxUZI/vpoYKmLiPC5
-	7pzjWHdw8m8wBtrXrhyjPNntHGhRwXZwJQooYVKMQ3Pzv4JwLofpguhkmRU4bl8o1Ct0elLuHQshs
-	OckqDG8vQ/DBS+IykC+w==;
+	List-Owner; bh=6HRtPB4dgbR/tMfK+1JrAMMkDw1luofp9UTk8Pc3yLU=; b=fgOQALt645O2k+
+	CN5+5w/2R/66qasOFOEvh4ptIHeA3mPDTFplCUVDVfuBGU+2kQh95lcrASAjNhKf/I5r79CAFWf7X
+	KyP0N1ZFhylxUHCqq7pSbbCy7/D1lkapPwBckYvG7NG3ElfrVxG0wW/ZS3fCge8O2B4obmZjRh8ca
+	zJR0lE3plbS3Ldt8yzNzsM9u/ONtxQtJr/XevbYAkQEBSRPWFRJVKzr2uElb+EUuAdzjBjLmVw9kp
+	kVny5PwR2XBmTowzmQRtsgmlSotFoyjorjARBfzsbhgtfE3yF5aSE/vQlpkr6pKExGl7ZuTnfFUtm
+	UdYB3oK1DTy3sP71f6Zw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iT1dv-0004RJ-Ju; Fri, 08 Nov 2019 10:37:27 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1iT49O-00058Q-C1; Fri, 08 Nov 2019 13:18:06 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iT1dr-0004QV-B1; Fri, 08 Nov 2019 10:37:24 +0000
-Received: by mail-pf1-x441.google.com with SMTP id d13so4304331pfq.2;
- Fri, 08 Nov 2019 02:37:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=S+Nia2Oa5QzCO5JT/esBQ1livkv4TlWV+4fZRWkEO+o=;
- b=f9fUi1K0epILaPpMKUGA+FGIJ+GYnQXz31FR/JIRsr0jNtvXVD8WKS6AKbo2g/yYiS
- jp2Jgic4IxPn6T+PZphyltIyB4vnkBFwniOcMw51O2csFX1kjAC4QKejH96MUOsdWVPi
- BoIKRt+J7TT0AysruvIMXwSoJkxw5mAFsb1iShx9yrdJQ4jAMH1x3fQmLCILPy17O63N
- P5MCDaBbfZ4mb7y00oRdGf9IW4tz0D1nAGsSM5DLvdeQEZfjNAjb8k+88kSyJh4+WTH8
- CfsXzxfWKj+ARiV2OGLJRKeQ2vRNt5PSY65UAb+0sRHT/5MlGv9E/r9lKer8LjaXODrM
- kWIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=S+Nia2Oa5QzCO5JT/esBQ1livkv4TlWV+4fZRWkEO+o=;
- b=Gey08aSE7P0QEqtqM73/1+4z4d8KPb4SHU/xHBN2csJrKWl2Nm5F7Ksacw0eqURD4G
- oWoBVHrGC2CQBQgMMFmYS6cr1aHVSP6DqUsGemfBvbzVIeoWMvTTs9ccJXwc1rrY71M8
- mEa/vHhVqLFLHth5H+jyLglqQSp2woFu6nh4ZAPokUBk7Ry3Lomz3OrAhTwt9ToNtMQL
- DCq+NbO6peFwiHOkB7nrWfxAz7irijUlcSbccbXjkfm763gPGnoO4Y1vlgID4vJznEv+
- fsmLOn48acZMO/XdhgrLpHs8jD1FlMJSX/oSibU7xpUGYkfylc6YcKceiMAwAXg+Q5zN
- NGYQ==
-X-Gm-Message-State: APjAAAWZ/yTfjQJNUWg9iF1znFmiWScpomlrGXCQ+eRjmkFhLXZYYgVc
- GjLcUYAKzyv7VA5Jg0QlAC0=
-X-Google-Smtp-Source: APXvYqyO7sUpnj6a7Ff+Mjm5FDdK7wKit2fH7+9aIK/ZJYnbn96UndAqrCFpv1s9jhGv09wzRODVog==
-X-Received: by 2002:a17:90a:25ea:: with SMTP id
- k97mr12085072pje.110.1573209442245; 
- Fri, 08 Nov 2019 02:37:22 -0800 (PST)
-Received: from localhost ([2401:fa00:8f:203:250d:e71d:5a0a:9afe])
- by smtp.gmail.com with ESMTPSA id m14sm5221119pgj.8.2019.11.08.02.37.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Nov 2019 02:37:21 -0800 (PST)
-Date: Fri, 8 Nov 2019 19:37:19 +0900
-From: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
-To: Petr Mladek <pmladek@suse.com>
+ id 1iT3xC-00077C-OD; Fri, 08 Nov 2019 13:05:33 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 4150BABE8;
+ Fri,  8 Nov 2019 13:04:55 +0000 (UTC)
+Date: Fri, 8 Nov 2019 14:04:47 +0100
+From: Petr Mladek <pmladek@suse.com>
+To: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
 Subject: Re: [PATCH 00/50] Add log level to show_stack()
-Message-ID: <20191108103719.GB175344@google.com>
+Message-ID: <20191108130447.h3wfgo4efjkto56f@pathway.suse.cz>
 References: <20191106030542.868541-1-dima@arista.com>
  <20191106083538.z5nlpuf64cigxigh@pathway.suse.cz>
+ <20191108103719.GB175344@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191106083538.z5nlpuf64cigxigh@pathway.suse.cz>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20191108103719.GB175344@google.com>
+User-Agent: NeoMutt/20170912 (1.9.0)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191108_023723_717938_0748F105 
-X-CRM114-Status: GOOD (  10.68  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191108_050531_139166_6F145ABF 
+X-CRM114-Status: GOOD (  13.54  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sergey.senozhatsky.work[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -158,18 +120,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On (19/11/06 09:35), Petr Mladek wrote:
-> I agree with all the other justification.
+On Fri 2019-11-08 19:37:19, Sergey Senozhatsky wrote:
+> On (19/11/06 09:35), Petr Mladek wrote:
+> > I agree with all the other justification.
+> > 
+> > I would add. The backtrace is really useful for debugging. It should
+> > be possible to print it even in less critical situations.
 > 
-> I would add. The backtrace is really useful for debugging. It should
-> be possible to print it even in less critical situations.
+> Hmm, I don't know.
+> Do we really need debug/info level backtraces?
 
-Hmm, I don't know.
-Do we really need debug/info level backtraces? May be all backtraces
-can be converted to something more severe (so we can stop playing games
-with loglvl) and then we can clean up "(ab)users"?
+debug is exactly the loglevel where registry content and backtrace
+might be very useful. It is not always important to reach the console.
 
-	-ss
+
+> May be all backtraces can be converted to something more severe
+> (so we can stop playing games with loglvl) and then we can
+> clean up "(ab)users"?
+
+IMHO, we should distinguish warning, error, crit, alert, emerg
+situations. Backtraces and any related messages should be
+filtered the same way. Any information might be useless without
+the context.
+
+I agree that it is complicated to pass the loglevel as
+a parameter. It would be better define the default
+log level for a given code section. It might be stored
+in task_struct for the normal context and in per-CPU
+variables for interrupt contexts.
+
+Best Regards,
+Petr
 
 _______________________________________________
 linux-riscv mailing list
