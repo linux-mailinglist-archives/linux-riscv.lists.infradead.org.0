@@ -2,53 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 751E1F7126
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 Nov 2019 10:48:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 315CBF7139
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 Nov 2019 10:55:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CIWU9lP0k03GtATYx0qLg/sqN83YFv4GUaJLE0BLSRI=; b=QXsFPoFb1uk//i
-	elQawGPdtUajjwm4w0vkk+fupXzQenIlum9oZwumrlbXZbN1Rv3dO2wKG0ccOaLE0dWKshja68DrW
-	F8PPlTZCtzrpmvLNgvaNsyZC8siLAPZSK4TC65AqY1AGQ502x0KAXxrasow2Vp5FIqxTIRJx2vvNV
-	qF9DMoRuGILD+XyNLWEPQ1MCZhLOzQu+0Kuswlo+mY7YYrLUUpVgyXjzl86Ug5ughdKlQ+IJHH5EJ
-	WFDwx89DNpC797KZRT6CPBYFb5M9Mf8FXR6G68nnIKipqYSusaeRZY/TrnhJgGQ6k2HWpA5dbkm0S
-	m6DovzDCGZjN+GFAuRDw==;
+	List-Owner; bh=XOxkxEXuoevQ1i01aOMp9TH5uTKKg4mYIPfM4bYdKpA=; b=olpA1XZd4OqkYQ
+	yWRf2mY/SJSZxgoyyCTUWy9yAnmVblXEfGV8QiUV6Y73WwqQyRLcWJu6NKdO7fh3u+FLWEGSeOSLc
+	T+vVc0yAUqRP70t9gQwR6awRx5EVjFsDuaF4a6yb0H6ZOOpMFFQmZwqrwrXNYR8ESqc454KTVQ9oP
+	Pd/6ENnrybQQTnjedS10pMo1gq6gCMlvrqlymjdjHiw5fXZOsTdZXTgJ6LRVw6YiexaRpUOEy1AGJ
+	JNodeIfeosXFkO/MmGsvAuGK7ldhoj5ZcepmIlc8Y+MrPZfp920OMaKNrMYseGPIC+Alwn4jlTbXl
+	HDdLF6t2ceMcXt4W5Ydg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iU6Is-0004Lt-Dm; Mon, 11 Nov 2019 09:48:10 +0000
-Received: from verein.lst.de ([213.95.11.211])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iU6IJ-0003no-52
- for linux-riscv@lists.infradead.org; Mon, 11 Nov 2019 09:47:36 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id E49AF68BE1; Mon, 11 Nov 2019 10:47:29 +0100 (CET)
-Date: Mon, 11 Nov 2019 10:47:29 +0100
-From: Christoph Hellwig <hch@lst.de>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-Subject: Re: RISC-V nommu support v6
-Message-ID: <20191111094729.GA11878@lst.de>
-References: <20191028121043.22934-1-hch@lst.de>
- <alpine.DEB.2.21.9999.1910301311240.6452@viisi.sifive.com>
+	id 1iU6QH-0007Za-Pk; Mon, 11 Nov 2019 09:55:49 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
+ Hat Linux)) id 1iU6QE-0007ZE-93; Mon, 11 Nov 2019 09:55:46 +0000
+Date: Mon, 11 Nov 2019 01:55:46 -0800
+From: Christoph Hellwig <hch@infradead.org>
+To: Zong Li <zong.li@sifive.com>
+Subject: Re: [PATCH v3] riscv: Use PMD_SIZE to repalce PTE_PARENT_SIZE
+Message-ID: <20191111095546.GA23301@infradead.org>
+References: <1573203640-6173-1-git-send-email-zong.li@sifive.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.9999.1910301311240.6452@viisi.sifive.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_014735_347097_9DEA6BE6 
-X-CRM114-Status: UNSURE (   5.07  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+In-Reply-To: <1573203640-6173-1-git-send-email-zong.li@sifive.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,17 +42,20 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <damien.lemoal@wdc.com>, Palmer Dabbelt <palmer@sifive.com>,
- Christoph Hellwig <hch@lst.de>, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Cc: anup@brainfault.org, linux-kernel@vger.kernel.org, hch@infradead.org,
+ palmer@dabbelt.com, paul.walmsley@sifive.com, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Paul,
+On Fri, Nov 08, 2019 at 01:00:40AM -0800, Zong Li wrote:
+> The PMD_SIZE is equal to PGDIR_SIZE when __PAGETABLE_PMD_FOLDED is
+> defined.
 
-what is the status of this series?
+Looks good,
+
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 linux-riscv mailing list
