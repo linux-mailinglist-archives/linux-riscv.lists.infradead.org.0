@@ -2,95 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0A7BF82A1
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 Nov 2019 22:57:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 231DFF86D8
+	for <lists+linux-riscv@lfdr.de>; Tue, 12 Nov 2019 03:18:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:In-Reply-To:MIME-Version:
-	References:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HRdByoHXsgvsDU9sm0zYwNIMRjxpBCLiuC9U1uanHB0=; b=HjpB8o3i5LZDgY
-	3aDxbBT4LF2f0QNeR3tQdgOft9gaYUdXSWHYc+Wq47aWryuQengW7Bg8yB/dYVoGzxWa9kTIEwktK
-	vSQpOsVmtVcJYlcjD3oY/v2HI+/wEs7i0NX1hYxTXGNR8u43nsknmSbR5m2ZLSTx8ZjDNKnR3lEtC
-	2UbPvmT6Ao1p8YRwsn+iTT7GnZP5GSAciDaE1QzpFPZRnhxop0QzlFBrlf04prHbwtEYJuzkLDXbC
-	CoynKYR9AS+qASVc8MkjuOTL5MDvP7o6+4KooOSNIjgVbzYEi61nXA8yGYBA7nA2Q6fZE8qOqFIMT
-	abviB22Py/NC8t19LQFA==;
+	List-Owner; bh=Guc/SnXr9vvX4xEx1xDqKSHQIRS7eYk0OXesgRSAh30=; b=Rz08+sZlcbNKHt
+	dZsHPdSSooLyOZwsVJwtXKnPQZw1aWpquiL73D6SugGO9DzSse9Z58squxtElMHQuTcbgGUZN9C1u
+	QC2hrQ4am4iZNB5aDCMaFEhzyVzAltJ1ZpVvDryYFO9PwmGD+Z+VsfPcPcY4oKvpLXY3vrWRW3i2h
+	Xhs56ej5jc6TiUAmsgvsoVpUq2WM+vBqfWZ4GnC5un18/dkTha0J0hilSOwer/JaIlgq3B1wNOh/j
+	qTVtp8fq+zzTSUeSj4V7jMgcHPZH8QKsGXWTNvHnLEHDBJ/zmfRNfa+uBeOm6rXPwhLCasPX6uTMP
+	7mtlL4nMP5e8KUHKFBzA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUHgJ-0000F5-IY; Mon, 11 Nov 2019 21:57:07 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
- helo=mx0a-001b2d01.pphosted.com)
+	id 1iULkj-0005Ug-HS; Tue, 12 Nov 2019 02:17:57 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUHgF-0000Ej-Gg
- for linux-riscv@lists.infradead.org; Mon, 11 Nov 2019 21:57:04 +0000
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- xABLr6h4121004
- for <linux-riscv@lists.infradead.org>; Mon, 11 Nov 2019 16:57:01 -0500
-Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2w7fmdgq45-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-riscv@lists.infradead.org>; Mon, 11 Nov 2019 16:57:00 -0500
-Received: from localhost
- by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <linux-riscv@lists.infradead.org> from <rppt@linux.ibm.com>;
- Mon, 11 Nov 2019 21:56:59 -0000
-Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
- by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Mon, 11 Nov 2019 21:56:55 -0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- xABLusSA55640234
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 11 Nov 2019 21:56:54 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6BB70A405F;
- Mon, 11 Nov 2019 21:56:54 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 72048A4060;
- Mon, 11 Nov 2019 21:56:51 +0000 (GMT)
-Received: from linux.ibm.com (unknown [9.148.207.107])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTPS;
- Mon, 11 Nov 2019 21:56:51 +0000 (GMT)
-Date: Mon, 11 Nov 2019 22:56:48 +0100
-From: Mike Rapoport <rppt@linux.ibm.com>
-To: Yash Shah <yash.shah@sifive.com>
-Subject: Re: [PATCH] RISC-V: Add address map dumper
-References: <1573450015-16475-1-git-send-email-yash.shah@sifive.com>
+ id 1iULkg-0005Tv-SH; Tue, 12 Nov 2019 02:17:56 +0000
+Received: by mail-pg1-x541.google.com with SMTP id k13so10792803pgh.3;
+ Mon, 11 Nov 2019 18:17:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=IS2Rt6ZY2kbQpUl893KQNxQCDA75x7+my/1Tf7NswKk=;
+ b=Vjlm6KDBvoD6YwvO++lGZ6lHjSc6cCAm9fWSs4JjxabSDi/CqNgEayfiCYPC9t2GLz
+ /Uty/IrZcv04aOS3qRrPGUG7rvgiF7YDnI2Kh9DQ5F3zuIcYwKRvol7P+LJHVR2Ntpue
+ BmenkoLlXCW6FGqP0oYogfaCGkjco6cjgwMGb8PovVw8l1XJbVJPK3lxsi28NPqBWING
+ uoTRw1Bt7GD9J0aMH2Xm/nWO4Q+ipdt8rIvGvN7pJpIBErQgGrRImSVcDd2J/2wookMd
+ 9Mf3+OZR0ijbdxrDUHHqzfcSZeytQjNDcnXBd9Ph8Qnd5c5vZ2BNhRMMpdwPBrRfh+x9
+ Q4tA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=IS2Rt6ZY2kbQpUl893KQNxQCDA75x7+my/1Tf7NswKk=;
+ b=Txv8z1hYh7T6hjeVzAKiEHjEoEnibBjJiw9k6gGRAz9MrZ9vtEeZZnLOrO/jUK+99t
+ dSWp/jsUklOkxZ6yTGeAwwfkG3wx2ju2605KdNbhTDAANNSw705V5RHheMXDpa+cZGPD
+ JNlEP93uaLtTPAx1+qeo1Po/7NJi3NFrWtOZGcxUGLYCdbcRG9DCOdKJ00PrjDvKoBNf
+ +TCDr7O1CaH6M+2jjp5CgrADayCaCpoFAdA1WnGDCd36YpMsT1/j5ob7mt3a7A3epMxt
+ QbLc+miaGDATlvdv9Az7dcYUMP2NfbnXmFxyTnXMPb3CzkgAr41dNfTRNEXdcABQ/Awj
+ NXVA==
+X-Gm-Message-State: APjAAAU21x/LiYO0lfdRLGelKRoe+KxmMJcuS6WwVi/r43dZgR6paYPx
+ V2APodWYLqiyDcWVoROw9oo=
+X-Google-Smtp-Source: APXvYqzpzPbBNdkztHOhg5atVqEV6ayQFi/1XFUzsE81gTsFNG+Jay6WO4tdKRJ91MFuBRoP65cRJw==
+X-Received: by 2002:a65:6119:: with SMTP id z25mr32726962pgu.332.1573525071244; 
+ Mon, 11 Nov 2019 18:17:51 -0800 (PST)
+Received: from localhost ([2401:fa00:8f:203:250d:e71d:5a0a:9afe])
+ by smtp.gmail.com with ESMTPSA id k103sm739924pje.16.2019.11.11.18.17.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Nov 2019 18:17:50 -0800 (PST)
+Date: Tue, 12 Nov 2019 11:17:47 +0900
+From: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
+To: Dmitry Safonov <dima@arista.com>
+Subject: Re: [PATCH 00/50] Add log level to show_stack()
+Message-ID: <20191112021747.GA68506@google.com>
+References: <20191106030542.868541-1-dima@arista.com>
+ <20191106083538.z5nlpuf64cigxigh@pathway.suse.cz>
+ <20191108103719.GB175344@google.com>
+ <20191108130447.h3wfgo4efjkto56f@pathway.suse.cz>
+ <20191111012336.GA85185@google.com>
+ <13e72b62-c842-8ed5-5b41-bc1692b28f53@arista.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1573450015-16475-1-git-send-email-yash.shah@sifive.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TM-AS-GCONF: 00
-x-cbid: 19111121-0020-0000-0000-00000385517D
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19111121-0021-0000-0000-000021DB564D
-Message-Id: <20191111215647.GB10647@linux.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-11-11_07:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=2 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=833 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1910280000 definitions=main-1911110188
+In-Reply-To: <13e72b62-c842-8ed5-5b41-bc1692b28f53@arista.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_135703_674013_6CD9749A 
-X-CRM114-Status: GOOD (  29.33  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20191111_181754_920050_FC5DE91F 
+X-CRM114-Status: GOOD (  16.49  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.158.5 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sergey.senozhatsky.work[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,105 +102,173 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Sachin Ghadi <sachin.ghadi@sifive.com>,
- "palmer@dabbelt.com" <palmer@dabbelt.com>,
- "ren_guo@c-sky.com" <ren_guo@c-sky.com>,
- "Paul Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
- "logang@deltatee.com" <logang@deltatee.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>
+Cc: Juri Lelli <juri.lelli@redhat.com>,
+ Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Ben Segall <bsegall@google.com>, Guo Ren <guoren@kernel.org>,
+ Pavel Machek <pavel@ucw.cz>, Vincent Guittot <vincent.guittot@linaro.org>,
+ Paul Burton <paulburton@kernel.org>, Michael Ellerman <mpe@ellerman.id.au>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Mel Gorman <mgorman@suse.de>,
+ Jiri Slaby <jslaby@suse.com>, Matt Turner <mattst88@gmail.com>,
+ uclinux-h8-devel@lists.sourceforge.jp, Petr Mladek <pmladek@suse.com>,
+ linux-pm@vger.kernel.org, Heiko Carstens <heiko.carstens@de.ibm.com>,
+ linux-um@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Richard Henderson <rth@twiddle.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ Ralf Baechle <ralf@linux-mips.org>, Paul Mackerras <paulus@samba.org>,
+ Andrew Morton <akpm@linux-foundation.org>, linux-ia64@vger.kernel.org,
+ Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
+ James Hogan <jhogan@kernel.org>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Vincent Chen <deanbo422@gmail.com>,
+ Ingo Molnar <mingo@kernel.org>, linux-s390@vger.kernel.org,
+ linux-c6x-dev@linux-c6x.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ linux-hexagon@vger.kernel.org, Helge Deller <deller@gmx.de>,
+ linux-xtensa@linux-xtensa.org, Vasily Gorbik <gor@linux.ibm.com>,
+ Aurelien Jacquiot <jacquiot.aurelien@gmail.com>,
+ linux-m68k@lists.linux-m68k.org, Stafford Horne <shorne@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Chris Zankel <chris@zankel.net>,
+ Tony Luck <tony.luck@intel.com>, Douglas Anderson <dianders@chromium.org>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Dmitry Safonov <0x7f454c46@gmail.com>, Will Deacon <will@kernel.org>,
+ Daniel Thompson <daniel.thompson@linaro.org>,
+ Brian Cain <bcain@codeaurora.org>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ kgdb-bugreport@lists.sourceforge.net, linux-snps-arc@lists.infradead.org,
+ Fenghua Yu <fenghua.yu@intel.com>, Borislav Petkov <bp@alien8.de>,
+ Jeff Dike <jdike@addtoit.com>, Steven Rostedt <rostedt@goodmis.org>,
+ Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Greentime Hu <green.hu@gmail.com>,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-parisc@vger.kernel.org,
+ linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
+ "David S. Miller" <davem@davemloft.net>, Rich Felker <dalias@libc.org>,
+ Len Brown <len.brown@intel.com>, Peter Zijlstra <peterz@infradead.org>,
+ "H. Peter Anvin" <hpa@zytor.com>, sparclinux@vger.kernel.org,
+ linux-riscv@lists.infradead.org,
+ Anton Ivanov <anton.ivanov@cambridgegreys.com>,
+ Jonas Bonn <jonas@southpole.se>, Richard Weinberger <richard@nod.at>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ clang-built-linux@googlegroups.com, Ingo Molnar <mingo@redhat.com>,
+ Mark Salter <msalter@redhat.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>,
+ openrisc@lists.librecores.org, Paul Walmsley <paul.walmsley@sifive.com>,
+ Michal Simek <monstr@monstr.eu>, Vineet Gupta <vgupta@synopsys.com>,
+ linux-mips@vger.kernel.org, Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Jason Wessel <jason.wessel@windriver.com>,
+ nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
+On (19/11/11 19:47), Dmitry Safonov wrote:
+[..]
+> I don't see how bits on task_struct or in per-cpu are easier than
+> supplying a log level parameter down the stack.
+> How would it work if sysrq_handle_crash() called by key-press?
+> How would that interact with deferred printing?
+> How would it make visible prints from current context, but not from
+> something that preempted it?
 
-On Mon, Nov 11, 2019 at 05:27:25AM +0000, Yash Shah wrote:
-> Add support for dumping the kernel address space layout to the console.
-> User can enable CONFIG_DEBUG_VM_LAYOUT to dump the virtual memory region
-> into dmesg buffer during boot-up.
-> 
-> Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> ---
-> This patch is based on Linux 5.4-rc6 and tested on SiFive HiFive Unleashed
-> board.
-> ---
->  arch/riscv/Kconfig.debug |  9 +++++++++
->  arch/riscv/mm/init.c     | 30 ++++++++++++++++++++++++++++++
->  2 files changed, 39 insertions(+)
-> 
-> diff --git a/arch/riscv/Kconfig.debug b/arch/riscv/Kconfig.debug
-> index e69de29..cdedfd3 100644
-> --- a/arch/riscv/Kconfig.debug
-> +++ b/arch/riscv/Kconfig.debug
-> @@ -0,0 +1,9 @@
-> +config DEBUG_VM_LAYOUT
+[..]
 
-I believe this could be enabled when CONFIG_DEBUG_VM=y without adding yet
-another architecture specific Kconfig option.
+per-context log_level works pretty much the same way as per-message
+log_level.
 
-> +	bool "Print virtual memory layout on boot up"
-> +	depends on DEBUG_KERNEL
-> +	help
-> +	  Say Y here if you want to dump the kernel virtual memory layout to
-> +	  dmesg log on boot up. This information is only useful for kernel
-> +	  developers who are working in architecture specific areas of the
-> +	  kernel. It is probably not a good idea to enable this feature in a
-> +	  production kernel.
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index 79cfb35..fcb8144 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -55,6 +55,36 @@ void __init mem_init(void)
->  	memblock_free_all();
->  
->  	mem_init_print_info(NULL);
-> +#ifdef CONFIG_DEBUG_VM_LAYOUT
-> +#define MLK(b, t) b, t, (((t) - (b)) >> 10)
-> +#define MLM(b, t) b, t, (((t) - (b)) >> 20)
-> +#define MLK_ROUNDUP(b, t) b, t, DIV_ROUND_UP(((t) - (b)), SZ_1K)
-> +
-> +
-> +	pr_notice("Virtual kernel memory layout:\n"
-> +			"    fixmap  : 0x%08lx - 0x%08lx   (%4ld kB)\n"
-> +			"    vmemmap : 0x%08lx - 0x%08lx   (%4ld MB)\n"
-> +			"    vmalloc : 0x%08lx - 0x%08lx   (%4ld MB)\n"
-> +			"    lowmem  : 0x%08lx - 0x%08lx   (%4ld MB)\n"
-> +			"      .init : 0x%px - 0x%px   (%4td kB)\n"
-> +			"      .text : 0x%px - 0x%px   (%4td kB)\n"
-> +			"      .data : 0x%px - 0x%px   (%4td kB)\n"
-> +			"       .bss : 0x%px - 0x%px   (%4td kB)\n",
-> +
-> +			MLK(FIXADDR_START, FIXADDR_TOP),
-> +			MLM(VMEMMAP_START, VMEMMAP_END),
-> +			MLM(VMALLOC_START, VMALLOC_END),
-> +			MLM(PAGE_OFFSET, (unsigned long)high_memory),
-> +
-> +			MLK_ROUNDUP(__init_begin, __init_end),
-> +			MLK_ROUNDUP(_text, _etext),
-> +			MLK_ROUNDUP(_sdata, _edata),
-> +			MLK_ROUNDUP(__bss_start, __bss_stop));
-> +
-> +#undef MLK
-> +#undef MLM
-> +#undef MLK_ROUNDUP
-> +#endif
->  }
->  
->  #ifdef CONFIG_BLK_DEV_INITRD
-> -- 
-> 2.7.4
-> 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+static DEFINE_PER_CPU(int, cpu_loglevels[4]); // @INITME.. LOGLEVEL_DEBUG + 1?
 
--- 
-Sincerely yours,
-Mike.
+static int __printing_context(void)
+{
+	unsigned int preempt = preempt_count();
 
+	if (!(preempt & (NMI_MASK | HARDIRQ_MASK | SOFITRQ_OFFSET)))
+		return 0;
+	if (preempt & SOFITRQ_OFFSET)
+		return 1;
+	if (preempt & HARDIRQ_MASK)
+		return 2;
+	return 3;
+}
+
+static int adj_context_loglevel(int level)
+{
+	int ctx = __printing_context();
+	int cpu_level = this_cpu_read(cpu_loglevels[ctx]);
+
+	// this one is important
+	if (level == LOGLEVEL_SCHED)
+		return level;
+	// we are not in emergency context
+	if (cpu_level == LOGLEVEL_DEBUG + 1)
+		return level;
+	// we better not override these
+	if (LOGLEVEL_EMERG <= level && level <= LOGLEVEL_ERR)
+		return level;
+	return cpu_level;
+}
+
+void printk_emergency_enter(int log_level)
+{
+	int ctx;
+
+	preempt_disable();
+	ctx = __printing_context();
+	this_cpu_write(cpu_loglevels[ctx], log_level);
+}
+
+void printk_emergency_exit(void)
+{
+	int ctx = __printing_context();
+
+	this_cpu_write(cpu_loglevels[ctx], LOGLEVEL_DEBUG + 1);
+	preempt_enable();
+}
+
+void vprintk_emit(...)
+{
+	level = adj_context_loglevel(level);
+}
+//
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+//
+static void __show_stack(struct task_struct *task, unsigned long *sp)
+{
+	printk();
+	...
+	printk();
+}
+
+void show_stack(struct task_struct *task, unsigned long *sp, int log_level)
+{
+	printk_emergency_enter(log_level);
+	__show_stack(task, sp);
+	printk_emergency_exit();
+}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+show_stack() never schedules, disabling preemption around it should
+not change anything. Should it be interrupted, we will handle it via
+preempt count.
+
+printk_emergency_enter(log_level) handles every printk() that
+__show_stack() and friends do. Not worse than printk("%s Stack", lvl);
+all over the place.
+
+> What I'm going to do - is to fix all build and reported issues, I'll
+> send v2 this week and feel free to NAK it, I will forget about those
+> patches and won't be offended.
+
+Lovely.
+And - no, I'm not going to NAK platform specific changes. Just so you know.
+
+*All* I'm talking about is an alternative, less "go and touch a ton of
+platform code" approach. The argument "I patched so many files that I'm
+not even going to discuss anything now" is not productive, to say the
+least. Hope this clarifies.
+
+	-ss
 
 _______________________________________________
 linux-riscv mailing list
