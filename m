@@ -2,99 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF725F86F8
-	for <lists+linux-riscv@lfdr.de>; Tue, 12 Nov 2019 03:40:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5AB6F874D
+	for <lists+linux-riscv@lfdr.de>; Tue, 12 Nov 2019 05:17:08 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S13d3wdATnq3uMiA9w/xZ8BF4JVr4ukXg9ZPB7BZcfE=; b=IH4CXYDe4hfbP7
-	cmzVQkSLVii/sC4UEAoJ1rpxeKJlMdGocO33Pom+nCjK4n4URjgsTXkGz0HWKrWxLD7pTzA/cAZNS
-	wpj/gN6A82h/ReXj/LNcj6+pYRPDi2xjIfwXVKRXMEJAeDxp6zj03ZURN7xUIZIHgCj6btdhERxnU
-	a9exNFOcDYi79V3vxjbg1vmLj7grFFv7XAWhKqjK8GIr+Cvj6OPbDN6+kPJ4PGp25G+enq0RJN9/l
-	ypo8TtgBQVI4H8mWbCzPVprieVd7AccjGrgxu4kF+VEOU4thCuMVfzVNqTVbRIre/NSrYWgnjpA2q
-	CTMhGH+k6KGRr6+vod3w==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=S9pbOeGgBcYIfwxeP2XFnADv+Vr9M9TfeEjbEZPEIPs=; b=a5+Rh+NVdJAR/M
+	oT6l7HrSvu6nOUajKk+d8U9/DbPPyoQss27sWaC4bO9HnM7sufBGJlsStRFnnRg8o2eYgohybNM1u
+	i8NtBmFHJ3D/LDjo1Ze94tV160iolNhCSDOnYLV60drJe8VhHUyCAEeqsF2f4TMddDfgitmvEsHIE
+	xdbY0MSBWrU1CXRj5jO5nY6w3bzAzEtoI6zIgos5KaNtcDUEoa1OsOj2V/cCZck2e2+QY+oPr42mc
+	jjT9HcdSsGA0PsVRgQT2yIscDnaKL9sEeYL9ad7nqBSx1A4Ad1wRSI8ViS5lIYI8kKR+/u0T9Xodw
+	RaKkGyLIw+rjirTUMdNg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUM6V-0004nm-7L; Tue, 12 Nov 2019 02:40:27 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1iUNbp-0000eH-Ae; Tue, 12 Nov 2019 04:16:53 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUM6P-0004m4-OC
- for linux-riscv@lists.infradead.org; Tue, 12 Nov 2019 02:40:24 +0000
-Received: by mail-wm1-x342.google.com with SMTP id q70so1422256wme.1
- for <linux-riscv@lists.infradead.org>; Mon, 11 Nov 2019 18:40:21 -0800 (PST)
+ id 1iUNbm-0000da-62
+ for linux-riscv@lists.infradead.org; Tue, 12 Nov 2019 04:16:51 +0000
+Received: by mail-wm1-x343.google.com with SMTP id z19so1440831wmk.3
+ for <linux-riscv@lists.infradead.org>; Mon, 11 Nov 2019 20:16:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=arista.com; s=googlenew;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hc0bl6ua3Awo0puTEJJtiCFLlsTJGov09J6GyMYDUcw=;
- b=MX42aMTTzAgzmolo19ziCaVvJW01j4llkcsSSsPBgIZf5M/QJqFnu0ykgQ+YU9I1XM
- lWWUfFOOmvWQUbOV/+iKy4yX6WRH0x7F+7sbAobnLPJdwSzb9YWyJ9/pnJvSWZVMB+xV
- UFEneok+5nQrKqWY1H/ryexuorVth0ci9XQccgC0yNGEatwsWoLWkeJcz3zYnXhenkJH
- nhLbJhqGH8CSvC3ekwmNTkFJs9KRa26JVi5KOJ0GN3lmDlPGH14xef5YqFU0Sk8qUi0p
- NtXZ7DYgZXwHf2rN/1LtOFtVEw8aJlkAZJ8tf3acCKNzLndcz00BKo1YrVsWG4zo53JF
- Pi/g==
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=W50KQG2LFA7dHByW0G4rq+4w30ZkeUHgi/q749Efz9c=;
+ b=E0hRKU/Dadwcx5lWC6Ebg2wEBHzcFiZavDG8bsoKpnC1H225E6HAfLRzGIpXXPXr/K
+ /n944XNNZk2M0OaMQTi858v3bUpjhR8cMD14PV85iO2EWbn36gQ6k3sMV79xxo1hvIDE
+ WkbH35o2w7c/D9v/+tX54m+90eyGuSkkXRrGRV6+pzyOGSFPmvrYclzsIlFwou7DNiCz
+ FyGtGRS3DyikeLyPKb94A2gg7ngVEpp4+2k6CYXAI053kJnhL/9Uh9mTLeXbh+4Fmcza
+ /QCGAh/HrSMZ27VizL2GoblO5awCKHHX1yBN+S9MT7xYNmrKeOKEPuV2cOGonAEXjzsv
+ OYKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hc0bl6ua3Awo0puTEJJtiCFLlsTJGov09J6GyMYDUcw=;
- b=c9rUERNzsbAeOyWR5slxfBDFA3LIrSuPICvUy+PgmiVcjy3GFjEq78YVKJi5JgqI/e
- L5LWlvzPXab/jZlf9z4MUwbwPYqJYPrNeEa7YtRjL2iRvBL5dtFE72rL7akWuejT6IM+
- oouGbR7TIa8Sf7IuIFNjOQcGU43frQLTL53ORysqsHMUBIP8nQ+zdiFPyKD1Smrni3ZA
- eMM70+zHKFiMacATiPLuvZdMHu0g4WgQH4lrO1Ujvrq/T5U8uwnEihIGGozq2ZjKMJ9S
- KBpiRzfJEViAq/JqrYS3IdHqvDXceUpRf/DbfXL3jtH5/3sqcXd2HN08OP5lRxMkWAvv
- Ygdg==
-X-Gm-Message-State: APjAAAU3XKNogLYTJpyykNwebdZvYmaEnKQb7dVyy7hbvHk1//x2roRg
- G9OxaBukrUPpry5jmemBuY6pHA==
-X-Google-Smtp-Source: APXvYqwGQmDILzErOejMnS6vcYmyu3aXwuweLJ3fDyVGcyV1rhcTRlJUkjSBJvf4yqYURAoU8N6Q/w==
-X-Received: by 2002:a7b:c211:: with SMTP id x17mr1567811wmi.71.1573526420054; 
- Mon, 11 Nov 2019 18:40:20 -0800 (PST)
-Received: from [10.83.36.153] ([217.173.96.166])
- by smtp.gmail.com with ESMTPSA id u26sm1511046wmj.9.2019.11.11.18.40.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Nov 2019 18:40:19 -0800 (PST)
-Subject: Re: [PATCH 00/50] Add log level to show_stack()
-To: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
-References: <20191106030542.868541-1-dima@arista.com>
- <20191106083538.z5nlpuf64cigxigh@pathway.suse.cz>
- <20191108103719.GB175344@google.com>
- <20191108130447.h3wfgo4efjkto56f@pathway.suse.cz>
- <20191111012336.GA85185@google.com>
- <13e72b62-c842-8ed5-5b41-bc1692b28f53@arista.com>
- <20191112021747.GA68506@google.com>
-From: Dmitry Safonov <dima@arista.com>
-Message-ID: <25cb9647-007a-9c18-4784-49c0aef4f54b@arista.com>
-Date: Tue, 12 Nov 2019 02:40:11 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=W50KQG2LFA7dHByW0G4rq+4w30ZkeUHgi/q749Efz9c=;
+ b=seras2drYCZNBVs3ImjcGfIK31uxsMyy9D5sg4CtPBDaKBnd2SH1rWCrsT39aaA9eB
+ PN3ZFtqdn1MSwJnPbBF56m8udnLswEmOQBryWBLXiQSbE18S6fmQiLVY8g7EdZvhhR8b
+ OHMr1L5lOWCwfEM+cves5TJJbMPMjJsTTSO38dMrgXEcGYbA5T21KqSZa0pyFRknlgWe
+ HUlLj6P8dErazFR/W4mJZyH7hup0RbBV9yoX9OoBr0Em0TT8kaKdYJ049V7i+k1Lke/m
+ aEz8TFmep9LFs8iOimVPYlFuvYOhtsp7rXW/d2AZg2CSLiA/73gnJYUjZ7YxEqc8chDl
+ /Qlg==
+X-Gm-Message-State: APjAAAUQ4meOtYHsPQvSZu0js0IQZ+dRHijuHyZvwc0umWOIe9FLeigE
+ V1bm46dM3KQGXJIldb7VU7+ZEXN734A2U3HAE6Kzfp2WP8I=
+X-Google-Smtp-Source: APXvYqxUyN+ibz5Y/rVkCie2tTUD7Oq+mca7VUbRYcUXzCivhJSFkdhIOnQeiyijk6BsUunYFgG1TWWyTYC7BV+GO9s=
+X-Received: by 2002:a1c:4c10:: with SMTP id z16mr1791779wmf.24.1573532204655; 
+ Mon, 11 Nov 2019 20:16:44 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191112021747.GA68506@google.com>
-Content-Language: en-US
+References: <20191107212408.11857-1-hch@lst.de>
+ <CAAhSdy3SGAkOFMhx320KJdPDh6c=qcKqCZ=qrXNKBGtejpZwSA@mail.gmail.com>
+ <20191111161217.GA19157@lst.de>
+ <alpine.DEB.2.21.999.1911111717320.32333@utopia.booyaka.com>
+In-Reply-To: <alpine.DEB.2.21.999.1911111717320.32333@utopia.booyaka.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 12 Nov 2019 09:46:33 +0530
+Message-ID: <CAAhSdy2Lki2rZeNJyH6p0RKWjd6O+DboDE_mq8rHzXA0JRQ=7g@mail.gmail.com>
+Subject: Re: QEMU RISC-V virt machine poweroff driver
+To: Paul Walmsley <paul@pwsan.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_184021_794784_49650513 
-X-CRM114-Status: GOOD (  14.86  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191111_201650_247598_873DC682 
+X-CRM114-Status: GOOD (  17.07  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,96 +89,81 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>, linux-sh@vger.kernel.org,
- Catalin Marinas <catalin.marinas@arm.com>, Ben Segall <bsegall@google.com>,
- Guo Ren <guoren@kernel.org>, Pavel Machek <pavel@ucw.cz>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Paul Burton <paulburton@kernel.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Geert Uytterhoeven <geert@linux-m68k.org>, Mel Gorman <mgorman@suse.de>,
- Jiri Slaby <jslaby@suse.com>, Matt Turner <mattst88@gmail.com>,
- uclinux-h8-devel@lists.sourceforge.jp, Len Brown <len.brown@intel.com>,
- linux-pm@vger.kernel.org, Heiko Carstens <heiko.carstens@de.ibm.com>,
- linux-um@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Richard Henderson <rth@twiddle.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>, Paul Mackerras <paulus@samba.org>,
- Andrew Morton <akpm@linux-foundation.org>, linux-ia64@vger.kernel.org,
- Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
- James Hogan <jhogan@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Vincent Chen <deanbo422@gmail.com>,
- Ingo Molnar <mingo@kernel.org>, linux-s390@vger.kernel.org,
- linux-c6x-dev@linux-c6x.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- linux-hexagon@vger.kernel.org, Helge Deller <deller@gmx.de>,
- linux-xtensa@linux-xtensa.org, Vasily Gorbik <gor@linux.ibm.com>,
- Aurelien Jacquiot <jacquiot.aurelien@gmail.com>,
- linux-m68k@lists.linux-m68k.org, Stafford Horne <shorne@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Chris Zankel <chris@zankel.net>,
- Tony Luck <tony.luck@intel.com>, Douglas Anderson <dianders@chromium.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dmitry Safonov <0x7f454c46@gmail.com>, Will Deacon <will@kernel.org>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Brian Cain <bcain@codeaurora.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- kgdb-bugreport@lists.sourceforge.net, linux-snps-arc@lists.infradead.org,
- Fenghua Yu <fenghua.yu@intel.com>, Borislav Petkov <bp@alien8.de>,
- Jeff Dike <jdike@addtoit.com>, Steven Rostedt <rostedt@goodmis.org>,
- Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Greentime Hu <green.hu@gmail.com>,
- Guan Xuetao <gxt@pku.edu.cn>, linux-parisc@vger.kernel.org,
- linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
- "David S. Miller" <davem@davemloft.net>, Rich Felker <dalias@libc.org>,
- Petr Mladek <pmladek@suse.com>, Peter Zijlstra <peterz@infradead.org>,
- "H. Peter Anvin" <hpa@zytor.com>, sparclinux@vger.kernel.org,
- linux-riscv@lists.infradead.org,
- Anton Ivanov <anton.ivanov@cambridgegreys.com>,
- Jonas Bonn <jonas@southpole.se>, Richard Weinberger <richard@nod.at>,
- x86@kernel.org, Russell King <linux@armlinux.org.uk>,
- clang-built-linux@googlegroups.com, Ingo Molnar <mingo@redhat.com>,
- Mark Salter <msalter@redhat.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>,
- openrisc@lists.librecores.org, Paul Walmsley <paul.walmsley@sifive.com>,
- Michal Simek <monstr@monstr.eu>, Vineet Gupta <vgupta@synopsys.com>,
- linux-mips@vger.kernel.org, Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Jason Wessel <jason.wessel@windriver.com>,
- nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org, Sebastian Reichel <sre@kernel.org>,
+ Atish Patra <atish.patra@wdc.com>, Rob Herring <robh+dt@kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Sergey,
+On Mon, Nov 11, 2019 at 10:50 PM Paul Walmsley <paul@pwsan.com> wrote:
+>
+> On Mon, 11 Nov 2019, Christoph Hellwig wrote:
+>
+> > On Mon, Nov 11, 2019 at 05:06:24PM +0530, Anup Patel wrote:
+> > > We really don't need this driver. Instead, we can simply re-use
+> > > following drivers:
+> > > mfd/syscon
+> > > power/reset/syscon-reboot
+> > > power/reset/syscon-poweroff
+> > >
+> > > Just enable following to your defconfig:
+> > > CONFIG_POWER_RESET=y
+> > > CONFIG_POWER_RESET_SYSCON=y
+> > > CONFIG_POWER_RESET_SYSCON_POWEROFF=y
+> > > CONFIG_SYSCON_REBOOT_MODE=y
+> > >
+> > >
+> > > Once above drivers are enabled in your defconfig, make sure
+> > > test device DT nodes are described in the following way for virt machine:
+> >
+> > Oh well, that is a lot more churn than a just works driver, and
+> > will also pull it dependencies like regmap which quite blow up the
+> > kernel size.  But I guess that is where modern Linux drivers are
+> > heading, so I'm not going to complain too loud..
+>
+> The core issue is that putting random register writes in DT doesn't match
+> the hardware.  And the doctrine with DT has always been that it's supposed
+> to represent the actual hardware.  On FPGA bitstreams or ASICs that have
+> the teststatus/testfinisher IP block, there really is an IP block out
+> there - it's not just a bare register.
+>
+> If you update your driver to note that this is a SiFive IP block rather
+> than a "RISC-V" IP block, I'll ack it.
+>
 
-On 11/12/19 2:17 AM, Sergey Senozhatsky wrote:
-> On (19/11/11 19:47), Dmitry Safonov wrote:
-[..]
->> What I'm going to do - is to fix all build and reported issues, I'll
->> send v2 this week and feel free to NAK it, I will forget about those
->> patches and won't be offended.
-> 
-> Lovely.
-> And - no, I'm not going to NAK platform specific changes. Just so you know.
-> 
-> *All* I'm talking about is an alternative, less "go and touch a ton of
-> platform code" approach. The argument "I patched so many files that I'm
-> not even going to discuss anything now" is not productive, to say the
-> least. Hope this clarifies.
+The SiFive Test device has only one register at offset 0x0 and three
+possible magic values (0x3333, 0x5555, and 0x7777).
 
-It probably was a wrong impression from the both sides.
-My impression was "You touch every architecture - we won't even consider
-that". Sorry for the the wrong impression from my side - I'm open for
-discussion.
+The SYSCON based Reboot and Poweroff driver do exactly the same
+thing what Christop's virt machine poweroff driver does so we are not
+doing "random register writes" via DT.
 
-In my point of view the cost of one-time [mostly build] testing every
-architecture is cheaper than introducing some new smart code that will
-live forever. Though, again you and Petr understand more than me in
-printk() code, so I'm not any insisting.
+In fact, using SYSCON based Reboot and Poweroff we are actually
+describing the Reboot and Poweroff mechanism directly in DT without
+adding a complete driver for just one register write. This means we
+are totally aligned with "DT doctrine" and over here we going one-step
+more by describing Reboot and Poweroff mechanism in DT.
 
-I'll reply to your suggestion tomorrow, it's a bit late in my tz.
+A quick GREP shows that the SYSCON Reboot and Poweroff drivers
+are quite widely used in ARM, ARM64 and MIPS architectures. Some of
+the  SOCs using these drivers are: Samsung Exynos, HiSilicon Hi3660,
+HiSilicon Hi6220, Rockchip RK3xxx, AppliedMicro XGene, Broadcom
+BCM33xx, Broadcom BCM63xx, etc. Majority of ARM/ARM64 SOCs
+these days use the PSCI based SYSTEM RESET and SHUTDOWN
+methods so we might not see more Reboot and Poweroff drivers for
+ARM world.
 
-Thanks,
-          Dmitry
+IMHO, we should definitely avoid adding a driver to Linux when there
+a generic driver already available. This helps in kernel maintenance
+in long-term.
+
+Regards,
+Anup
 
 _______________________________________________
 linux-riscv mailing list
