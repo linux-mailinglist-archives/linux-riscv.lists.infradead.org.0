@@ -2,63 +2,64 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60F5BFA6B8
-	for <lists+linux-riscv@lfdr.de>; Wed, 13 Nov 2019 03:42:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10E53FA6DF
+	for <lists+linux-riscv@lfdr.de>; Wed, 13 Nov 2019 03:52:07 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rLh7Q3GdiOOnXztTmb+NTAb+Wh+Y3hEa8ZnAFymAzVc=; b=RAeQL7WJnGNv4+
-	GVRE3f6r+ph8NVKKzr7TopfFmQ+hGX116RGQTwPjZx/hgpiFoDX6ur/kYP41Ae4ncHawPS8+qVUq5
-	RFjHfwVt4jkjzp0VG0Pa8dOmbBVwEQtD/H5S4nlWz/07fyYhL92tMprdPt6KOKsb0bpidNGts1Pdm
-	S/6OixtTCSoaUDNZKXSLRW8xvNXNTSRvcwSNeaFqD8Jwfrrhj7FL+2mfnRw6M18HDrjt1PYp3HY1s
-	hAouTcL7YlssVNeciEZlYhpzk8Af0BFgXUUXxbbq8xEgEyp3X1LkzIR4c56LQjmkGwpmDfIseVFLH
-	v2syWlxIQYsk6R0NkP6A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pDT5yRPn9SlnfHXXTiYssqGmvx2r398LWrYx2wizQQw=; b=HEhEqnl2VfQbAt
+	2haM1qIp1I+4E32ysFfIAM5wh3p2uIBRfjLI8l1wBfHRYxaXQPFMc96cwPFvu7pXQQ4zbX0Z/LaZh
+	6rjiRjlR7qLCZl+JLNFVVD1TWzBU2IGON9rjFdfdI71XG7bvzXjJEQzoNRrxm2y5dPhVWT7n4ReDs
+	rPZdHsaxQECMxa4Y5fCzTR+7wg7aqA3KlQdhBaK6pYb7u0ZdcGnTFAbXzywfl4/sErYxlJapH9Kzl
+	4nFSUB7icZ+FXlsSLaF7bLKWIXU0IMXUKOTWB/8YFrZYszmsbTvmrw2aVuF548dDrTQbn6pKR3hHH
+	nZkh/faKE6p+hivKb+CQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUibu-0006Cr-TO; Wed, 13 Nov 2019 02:42:22 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1iUilD-0001tL-7I; Wed, 13 Nov 2019 02:51:59 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUibr-0006Bc-B9
- for linux-riscv@lists.infradead.org; Wed, 13 Nov 2019 02:42:20 +0000
-Received: by mail-pg1-x543.google.com with SMTP id l24so345577pgh.10
- for <linux-riscv@lists.infradead.org>; Tue, 12 Nov 2019 18:42:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=arista.com; s=googlenew;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9ewNkq+k7WzF7N7FeKsJZWJsQUcIf4AaWPjf05A0Fco=;
- b=httZFalB2VvN+DAYr6xQfb8CS2lpW4CgtAeEsAWgjkvbyyGvCmjTLAPAEMfF/JCr7/
- c8P9raTPSqNexy65EPzsFOdG6kVk1K592cMDIy0cHhBebJPWF8fQ9egPpzwWXfBWSrCz
- Jk1zAXvG+gTTHY9iuktiuKZH9vWWl//5vaZrlx7ppzhO4sTAZlX2C/T/kVZYDrElUqcN
- VIOq5oDXrk5HHYGKLT0+ff2WZ+LnUZTUWEqoGOOJeX0XdIUXtb1PCt6iQWGnVWpEOeHv
- 9p5PFEhwRvitpIH0ba4n5ClWOCwYigDV+TgMORDfM82fnMfxgxqmD7OSd4a8lnQJEp7K
- YgYw==
+ id 1iUil9-0001st-Tf; Wed, 13 Nov 2019 02:51:57 +0000
+Received: by mail-pl1-x643.google.com with SMTP id w8so411371plq.5;
+ Tue, 12 Nov 2019 18:51:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=mAEGoUcf015Kc1YtW4ruE+InFHxWlwYn7gbBVyirKYs=;
+ b=XXCh/lzhc9PTzZMC0vGMEKaB6i1csVlUbqsH9rt47YYmIE3wdFLdN1RZ9XLo0Arau9
+ DFSxYtIImotqP13tsBpRhqb8n2/Js3UmCNvM723O76JsU3YeDgNvB62RSmDR472f865P
+ t1QAOVBhx+MjcLVo2R7QGZwppOQAhnDe5pnFM8bcC1mQYP4Xfr9JZq5mLce2CdFOCSHQ
+ 84njoBNSpMDUUGTsuJ77DSMbJh6PdBhKnrYmuC5XmJlJhZH9X7UWxpAWc2QurRhXPwj/
+ RNRLsIyLkoYPXcQN5wrdc5lLemIanQ8txwfErNc3g/3wLnhyIhyW/Sj8BqL1ib+dXaLC
+ deQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9ewNkq+k7WzF7N7FeKsJZWJsQUcIf4AaWPjf05A0Fco=;
- b=pK7qaM47TwbxJS84iqud3LKc6GwYfvtrQUb1Aat4uhlRweUoBraduk5bOUottAWXv6
- HC9LxNATyMdKL2N6aSYdklZlullfp+5PU4c94tmfdB51ix4CipcAaTNexWq2iEaJ19UK
- NkTlgtkuRdG9q5TAUu4RkNNk9JU6EtZ47KlHndaQjSjYyuEuEEMcjIVyELk8XwHI6BUU
- LOz80/ArUDyKPi1CFLfCZJB78yF9BR1XsYcXZ5teyR5L8YLN47cdIg2ilqmN98kl2a22
- mYtvqOyqS+i7k403Pgx4FTg5V+vO7TGgonIP7/sZj41fesA0wkWEr7aCBp2+5U/wAUOZ
- HlSw==
-X-Gm-Message-State: APjAAAUL3ACBWj2Wqsb3iGJ2pMNxfKIpMljIRnFr8g/hgb1R2kgA4aea
- luBdPsRNzH8V4ee24NvK9u1LGg==
-X-Google-Smtp-Source: APXvYqyg0YKjFTNIvTLCv1J1tDb1jq98QSviRK57/SbcLNfCJ0c+TDqSL8X9WHbEQTrvYD3q+/dxRw==
-X-Received: by 2002:a63:cb0f:: with SMTP id p15mr887811pgg.81.1573612938430;
- Tue, 12 Nov 2019 18:42:18 -0800 (PST)
-Received: from [10.83.36.153] ([217.173.96.166])
- by smtp.gmail.com with ESMTPSA id r22sm395559pfg.54.2019.11.12.18.41.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Nov 2019 18:42:17 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=mAEGoUcf015Kc1YtW4ruE+InFHxWlwYn7gbBVyirKYs=;
+ b=mP1/ajVK1eFW3W0im7rTC28EQjYsVTUQLVGJcC4oWjmNWbFIdvq6LxjAS5w7DWeEdd
+ nxKzjGnt0gf/usIQdIGVb4uFMnr+KX8XWjOHr3UJ/0c5sspTNIW4mLDNelO0+LQzzNBc
+ Q7ImNkHwwlXCh6L/Dm2HAgdcACtVC/l9Avpte9GfHmZVbhRSfUIGpI605i76VPR6vrmL
+ gWFHe+lTxs3f8NA8IW6Nm6ftdZCvtpK2FYGtdlxd+oVWdL4qRw65ViFxqMFHsbEmz4sA
+ u8Ms1972+zYvA+oFnaZlThH4EWgScpu912Dw/CLj1g0mMF0aRED4OrwQ55b/gwd6fj12
+ LlKQ==
+X-Gm-Message-State: APjAAAVybhkLultWVmlPWWy9LJsCU6FNhBz2+4nk2zQuz0nn9aagYWBg
+ Y0abpcaKQnW0hAg7Moe2nzU=
+X-Google-Smtp-Source: APXvYqyYgp5zwm8PfyC8ptc3y1M5FnRWqZNijSFiWVlVB0inT58a3/TsEELAtnKC4KW8B7tYLJSv2Q==
+X-Received: by 2002:a17:902:fe06:: with SMTP id
+ g6mr1170542plj.159.1573613513522; 
+ Tue, 12 Nov 2019 18:51:53 -0800 (PST)
+Received: from localhost ([2401:fa00:8f:203:250d:e71d:5a0a:9afe])
+ by smtp.gmail.com with ESMTPSA id b1sm463002pjw.19.2019.11.12.18.51.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Nov 2019 18:51:52 -0800 (PST)
+Date: Wed, 13 Nov 2019 11:51:50 +0900
+From: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
+To: Dmitry Safonov <dima@arista.com>
 Subject: Re: [PATCH 00/50] Add log level to show_stack()
-To: Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>
+Message-ID: <20191113025150.GA101113@google.com>
 References: <20191106030542.868541-1-dima@arista.com>
  <20191106083538.z5nlpuf64cigxigh@pathway.suse.cz>
  <20191108103719.GB175344@google.com>
@@ -68,25 +69,24 @@ References: <20191106030542.868541-1-dima@arista.com>
  <20191112021747.GA68506@google.com>
  <25cb9647-007a-9c18-4784-49c0aef4f54b@arista.com>
  <20191112042546.GA119579@google.com>
-From: Dmitry Safonov <dima@arista.com>
-Message-ID: <d828cb62-aeea-4d67-33ba-b3a93ea10a3d@arista.com>
-Date: Wed, 13 Nov 2019 02:41:50 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ <d828cb62-aeea-4d67-33ba-b3a93ea10a3d@arista.com>
 MIME-Version: 1.0
-In-Reply-To: <20191112042546.GA119579@google.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <d828cb62-aeea-4d67-33ba-b3a93ea10a3d@arista.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191112_184219_383422_D4E4B0AA 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20191112_185155_980659_BBD72B2E 
+X-CRM114-Status: GOOD (  10.90  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sergey.senozhatsky.work[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -96,7 +96,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,14 +107,15 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>, linux-sh@vger.kernel.org,
- Catalin Marinas <catalin.marinas@arm.com>, Ben Segall <bsegall@google.com>,
- Guo Ren <guoren@kernel.org>, Pavel Machek <pavel@ucw.cz>,
- Vincent Guittot <vincent.guittot@linaro.org>,
+Cc: Juri Lelli <juri.lelli@redhat.com>,
+ Sergey Senozhatsky <sergey.senozhatsky.work@gmail.com>,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Ben Segall <bsegall@google.com>, Guo Ren <guoren@kernel.org>,
+ Pavel Machek <pavel@ucw.cz>, Vincent Guittot <vincent.guittot@linaro.org>,
  Paul Burton <paulburton@kernel.org>, Michael Ellerman <mpe@ellerman.id.au>,
  Geert Uytterhoeven <geert@linux-m68k.org>, Mel Gorman <mgorman@suse.de>,
  Jiri Slaby <jslaby@suse.com>, Matt Turner <mattst88@gmail.com>,
- uclinux-h8-devel@lists.sourceforge.jp, Len Brown <len.brown@intel.com>,
+ uclinux-h8-devel@lists.sourceforge.jp, Petr Mladek <pmladek@suse.com>,
  linux-pm@vger.kernel.org, Heiko Carstens <heiko.carstens@de.ibm.com>,
  linux-um@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
  Dietmar Eggemann <dietmar.eggemann@arm.com>,
@@ -148,7 +148,7 @@ Cc: Juri Lelli <juri.lelli@redhat.com>, linux-sh@vger.kernel.org,
  Guan Xuetao <gxt@pku.edu.cn>, linux-parisc@vger.kernel.org,
  linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
  "David S. Miller" <davem@davemloft.net>, Rich Felker <dalias@libc.org>,
- Petr Mladek <pmladek@suse.com>, Peter Zijlstra <peterz@infradead.org>,
+ Len Brown <len.brown@intel.com>, Peter Zijlstra <peterz@infradead.org>,
  "H. Peter Anvin" <hpa@zytor.com>, sparclinux@vger.kernel.org,
  linux-riscv@lists.infradead.org,
  Anton Ivanov <anton.ivanov@cambridgegreys.com>,
@@ -167,32 +167,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 11/12/19 4:25 AM, Sergey Senozhatsky wrote:
-> On (19/11/12 02:40), Dmitry Safonov wrote:
-> [..]
->> In my point of view the cost of one-time [mostly build] testing every
->> architecture is cheaper than introducing some new smart code that will
->> live forever.
+On (19/11/13 02:41), Dmitry Safonov wrote:
+[..]
 > 
-> Well, there may be the need to pass loglevel deeper due to "hey __show_stack()
-> on that arch invokes bar(), which invokes foo() and now foo() does printk(),
-> but we don't see it". The context which decided to backtaraces decided
-> to do so for a reason, probably, so I guess we can look at it as "a special
-> error reporting code block".
+> I don't strongly disagree, but if you look at those results:
+> git grep 'printk("%s.*", \(lvl\|level\)'
 > 
-> The proposed patch set passes loglevel via slightly unusual channel -
-> via sprintf(). We probably can do it, but I would prefer to minimize
-> the number of such printk-s in the kernel. The code snippet which I
-> posted also does pretty unusual thing w.r.t loglevel. Both approaches
-> are "non-standard" from that POV.
+> it seems to be used in quite a few places.
 
-I don't strongly disagree, but if you look at those results:
-git grep 'printk("%s.*", \(lvl\|level\)'
+Yes, you are right, it is used in some places. That's why I said
+that I'd prefer to keep that number low (minimize it). But it's
+not 0 (that ship has sailed).
 
-it seems to be used in quite a few places.
-
-Thanks,
-          Dmitry
+	-ss
 
 _______________________________________________
 linux-riscv mailing list
