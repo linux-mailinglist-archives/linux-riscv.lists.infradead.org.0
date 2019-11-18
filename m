@@ -2,77 +2,112 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9189DFFE3A
-	for <lists+linux-riscv@lfdr.de>; Mon, 18 Nov 2019 07:13:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85F80FFF5F
+	for <lists+linux-riscv@lfdr.de>; Mon, 18 Nov 2019 08:14:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FFgEVuNl9nMapSOWal59xLQ6PTyo3nLhZ9VpdlkxJ0k=; b=XOCJgXmMALl+I5
-	gyOeM3QhQIxJ9mqMrXtha+HZzI26F9NYEtrAUK/N7x+xhSymtgzME4TJMFkmJtZ7nbKFmYfGWeqRD
-	oJ0IrAdFbU/0j0lUpSvp8mc/A1n/tcYRYLrHZAbFc9LPqLwUkCHSKjNwVvVtJNExbB++XK63gucdj
-	q3qCDjWdyFyNtfD74FDJp7uzbxQrWVp7zpgBIGlj/WsIToSU1p47cCT+UuGPh5qQkUmixaVHJx+eY
-	h4JldNvpMBta5FOxOQvx8pgtFASzalmAKNVqLDnyAqoEW0/QEN9+eIyfCwr69ZkD1mXjmovGmtU7A
-	wEjmAqk4qhiRjWhIfckA==;
+	List-Owner; bh=gVmx5M0SlIPWq/GGmNpUYk4BGlPEbwlVACHBQEClgrc=; b=DLFNDKzGsEQJF7
+	JoqXI0B7EzSpTWPk/GSc1T4PIjCyLvOZTwRELVYIcAN4Q5/NghvfNkIQEIlrEzwE9cL6eh6C0skNM
+	r6xyQj32owzC64lD2/8IJ1L2qwYPE7sfvH6nVMoecXaJeFjsSL11EgUWaWQBhDbrZeu0rqPQxWCfG
+	Vcz/6b2eYfRWe68+gqG8awjcLUcpuqB9/N5YBXDa9SHnJlyxLrJQwvF2UT6OB8cbGu22fbKquZaLW
+	BsjNT6VZulBWsvvIkZr4pASctf2Qb2Z+AWwDCizkKzOf4G725iT8hNe14qIjts+f2GG2wY7i5EfD8
+	OCl1CYoHarsgCc6F37Vg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iWaHT-0007ep-4S; Mon, 18 Nov 2019 06:12:59 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1iWbF4-0003us-Pt; Mon, 18 Nov 2019 07:14:34 +0000
+Received: from mail-eopbgr820045.outbound.protection.outlook.com
+ ([40.107.82.45] helo=NAM01-SN1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iWaHQ-0007eW-41
- for linux-riscv@lists.infradead.org; Mon, 18 Nov 2019 06:12:57 +0000
-Received: by mail-wr1-x441.google.com with SMTP id n1so17896994wra.10
- for <linux-riscv@lists.infradead.org>; Sun, 17 Nov 2019 22:12:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dzhVBOMf59PHYjhcO5/bPOeyIO8A+TPlN5Z6xmX6Zfg=;
- b=mUbuNpugZTAnDNPQd9lieNDlt85CfqQ5HxNZOSP9AmjHYAi6SjRi99kn9IidBIRO/y
- nzWX4u6iJv3jxNH6Ebm8CnPahp9MXMG+rmb4i0k1gmRvkRsojYil4v294x+cCA73d/M1
- Us3w7jQR2ohkELcopCpnoFTNzC3mSuK01Y9IvHC8sSVUCljzpsjr8GGit1OmpD0D+YXg
- W/5aMm/0YbvxkVD9FrAwPdS1Y1KuysOwOlWlg7aQy/uN765LkJrx/wDzh/U+m731G2ph
- iKLwDuP0Rk7eOLCRi+7hP1QR8HELJWzSN1tMuVxi3Cckij/mAA0xQsY65zhW6Y33o60a
- ATGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dzhVBOMf59PHYjhcO5/bPOeyIO8A+TPlN5Z6xmX6Zfg=;
- b=GN07CSLebpvlvFwpYb3av/uGJMIESyYOhycoq6laPvVFj6l550n4LlPRp91uecfNzp
- edajXbLQBM1tjH2NLhK1up/SEu+AFMaewvNkKyBmyIZv00Gan2yyQNwUWf0eC0jRL/u0
- bq5DuZzb0yy0dnqE+t2EOxFQhAeLbvM3t2PJQ+9LYg7/njjMAZ52KzIFM+HFycDlxZRP
- NNhDLBDwpsZBIoRUWAIQRqyqE6vrz+vAppy0GgnHZrmcQADeD3KQh0sGRFzf5dW2baFp
- aKRl3njNH+U3bv8Io9ZyvVpQExTf1vNJSCpQBrtphNcnSYs5xUogGISH1CnquqFa0gQM
- CTUA==
-X-Gm-Message-State: APjAAAXF6MLcVCno1rojZg00NSgU0/ZOrqEDmAKaukadzstO6mcnvsTt
- opvranmjINOGdg5Ai9C7+WNRQ1C70fYRT3woQvljjA==
-X-Google-Smtp-Source: APXvYqyF3YsX2G6wuJDiAhQzqIEHeeH7CEoNFF0mxhQU8u7tkSKps01SW+5Q5xygjLmoJsN3EyJbGsKlbggWsNZV+yo=
-X-Received: by 2002:a05:6000:104:: with SMTP id
- o4mr26662567wrx.309.1574057574393; 
- Sun, 17 Nov 2019 22:12:54 -0800 (PST)
+ id 1iWbF0-0003uN-U8
+ for linux-riscv@lists.infradead.org; Mon, 18 Nov 2019 07:14:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=g9jdCG6FypEr7RBKq1IixN/tSmm/My2D3h1wUBj1Bc0bDaG/p7eoSnUctWUeGFBYtSTObqdb6+WyYRyymXypaVHCOxvorQmzUNO+qeocLc+mW7PYOexXFtDWnGb3aSdsE09v9XxUqTzU0WHgS4sPTK/No6pwC/2N+l+OrCqghE9v8kutXFh4GhbSBU5ldUsLnBtG/Ute14tx6kJqHUxpQd0dgn8vjU+ZslgPfnvjQZcwO1B9fkLHs1+SANsh0G98IjBIY920Z+NxTOm4qOH6IqQQmFuknlEfIb2lC7PC93/U2FJZU8UyhuAiqeJcfec8ciR8E8LD9RdO9yaO+Z5vew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Bz7BcH3KrKew71E5j6GlDHqVcrDDEIUcDM8g0aS0LKU=;
+ b=OaUFT6Vo3R+bcxMr9DMf75CzrxJeQzHsHp7CdxAd1SLgtJbTfS3XSGfQNN7HRR8xfc2akB2tIKceOKezm9NWNy03C4g/ruYdyo8ZWb1IMApnwymIW+X3upLNq6drJG3YHvLir/YyW+RTsclSuFE/1aZt+4llxN9y5k0wyq2WMWZAIsNc82b3A5IdjM9bYzfaK5oK0VhoOz/gkXR1beVAjsSxmmKWHHylEwia07dyIsgRWlI96uNSBMEVcXkCJoVvNQ4PELLHiroXanzwZiTVTjEeJGzGjjSCZz5w1s+I6VW0ULoYfVoQTZrjU0G8KVb/ornTcDlDLcFbAa+JkPtWwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
+ dkim=pass header.d=sifive.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Bz7BcH3KrKew71E5j6GlDHqVcrDDEIUcDM8g0aS0LKU=;
+ b=erifsc6XS7U6kAEZgPq93Qo/UkxKNt6w2U+KrPIZWkhVv/BGWhcKhznqrbwZB2p5D6WMDmFK93Ly/0rlGWfDSjMfnpp9QQlKJTIc4LLw7w+DbekLD1FjTePlwXjOx7yc2OewzC2OjFBJhXM9eCGif3qwK3LkPfl8hBK7MkjF7Bg=
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
+ CH2PR13MB3304.namprd13.prod.outlook.com (10.255.155.218) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2474.15; Mon, 18 Nov 2019 07:14:27 +0000
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::853e:1256:311e:d29]) by CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::853e:1256:311e:d29%7]) with mapi id 15.20.2474.012; Mon, 18 Nov 2019
+ 07:14:27 +0000
+From: Yash Shah <yash.shah@sifive.com>
+To: Marc Zyngier <maz@kernel.org>
+Subject: RE: [PATCH 1/4] irqchip: sifive: Support hierarchy irq domain
+Thread-Topic: [PATCH 1/4] irqchip: sifive: Support hierarchy irq domain
+Thread-Index: AQHVmVJiuq127ZCTBUqmuCH0wyl5F6eHetSAgAkRSfA=
+Date: Mon, 18 Nov 2019 07:14:27 +0000
+Message-ID: <CH2PR13MB3368254D0684E46A2C47AE418C4D0@CH2PR13MB3368.namprd13.prod.outlook.com>
+References: <1573560684-48104-1-git-send-email-yash.shah@sifive.com>
+ <1573560684-48104-2-git-send-email-yash.shah@sifive.com>
+ <ad0a3b419a3f5c3475d5fafcc2a037fb@www.loen.fr>
+In-Reply-To: <ad0a3b419a3f5c3475d5fafcc2a037fb@www.loen.fr>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=yash.shah@sifive.com; 
+x-originating-ip: [114.143.65.226]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 14783145-2780-4b5d-2cf8-08d76bf6f2dc
+x-ms-traffictypediagnostic: CH2PR13MB3304:
+x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CH2PR13MB330474EB2317E3655E1C393C8C4D0@CH2PR13MB3304.namprd13.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:580;
+x-forefront-prvs: 0225B0D5BC
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(376002)(396003)(366004)(346002)(39830400003)(136003)(13464003)(189003)(199004)(6506007)(33656002)(8936002)(8676002)(81166006)(53546011)(81156014)(102836004)(7696005)(76176011)(486006)(26005)(4326008)(44832011)(186003)(446003)(11346002)(476003)(229853002)(66066001)(7416002)(6916009)(6436002)(55016002)(74316002)(66446008)(64756008)(66556008)(66476007)(6116002)(3846002)(5660300002)(52536014)(9686003)(6246003)(305945005)(7736002)(107886003)(76116006)(2906002)(66946007)(54906003)(478600001)(256004)(71190400001)(71200400001)(4001150100001)(316002)(99286004)(25786009)(14454004)(86362001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3304;
+ H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: sifive.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: XwusVMB7vjqGB6vof1yERGl8XvW5TFjKRtIuBF8dzcEKaLzpqnZUu2zDW/yPy1y5KbkIIoXjSGS1vg8nS4RQbzhceE7eaLpvAr7h7bn7mMF2pSB2NEISG2cuXNKoIe2iXGl+CkDHiEStXhnDvBuj6Kr/bOUqWovNbvtWK/FWnQOma+J/6EzDM/S1tZ+SVbg7HjRJUQ18MIaDs2FaYmOfTGTNZmk7Bw2MnTYaM2n+xhr6ciPox0I6VpVD8ODkBSmXj99OVQIVIABnBG/rSd/+ZTyiEtbv1mmLCYy8fJ6u8hSFVZL+k7HWKAb1oRBJ7O6Jo1kprulrDFIx3HWdKvDDhJtsoZcnHgONtWyyEUVOH9KMyerW5J62Z383w/So7C/U75Fj0aRcYj0nxzfhij3jSLEbngsYn/nKcnWn+AC8A9QO171do1bnMpQCGI47i5jV
 MIME-Version: 1.0
-References: <1574056694-28927-1-git-send-email-yash.shah@sifive.com>
-In-Reply-To: <1574056694-28927-1-git-send-email-yash.shah@sifive.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Mon, 18 Nov 2019 11:42:43 +0530
-Message-ID: <CAAhSdy1i8i9MNnSyBud_k2sqn9mwYadh3YFgQ_42u9+C6F3VDg@mail.gmail.com>
-Subject: Re: [PATCH v2] RISC-V: Add address map dumper
-To: Yash Shah <yash.shah@sifive.com>
+X-OriginatorOrg: sifive.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 14783145-2780-4b5d-2cf8-08d76bf6f2dc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Nov 2019 07:14:27.5307 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: tu8aHh2Y4u+6eQTDkGT+rB0XjGT7rOLTYN+eOQOMLRr6c6fgepcmrIFCs9WmH0r7zSD5DgX+nrNHzbcYqD3zGg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3304
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191117_221256_161560_99E01659 
-X-CRM114-Status: GOOD (  15.64  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191117_231431_128545_A602C048 
+X-CRM114-Status: GOOD (  15.87  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ no trust [40.107.82.45 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -87,108 +122,97 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "wangkefeng.wang@huawei.com" <wangkefeng.wang@huawei.com>,
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
+ "jason@lakedaemon.net" <jason@lakedaemon.net>,
+ "atish.patra@wdc.com" <atish.patra@wdc.com>,
  Sachin Ghadi <sachin.ghadi@sifive.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
  "palmer@dabbelt.com" <palmer@dabbelt.com>,
- "ren_guo@c-sky.com" <ren_guo@c-sky.com>,
+ Sagar Kadam <sagar.kadam@sifive.com>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
  "Paul Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
  "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
- "logang@deltatee.com" <logang@deltatee.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Nov 18, 2019 at 11:28 AM Yash Shah <yash.shah@sifive.com> wrote:
->
-> Add support for dumping the kernel address space layout to the console.
-> User can enable CONFIG_DEBUG_VM to dump the virtual memory region into
-> dmesg buffer during boot-up.
->
-> Signed-off-by: Yash Shah <yash.shah@sifive.com>
-> ---
-> This patch is based on Linux 5.4-rc6 and tested on SiFive HiFive
-> Unleashed board.
->
-> Changes in v2:
-> - Avoid #ifdefs inside functions
-> - Helper functions instead of macros
-> - Drop newly added CONFIG_DEBUG_VM_LAYOUT, instead use CONFIG_DEBUG_VM
-> ---
->  arch/riscv/mm/init.c | 36 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 36 insertions(+)
->
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index 573463d..7828136 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -45,6 +45,41 @@ void setup_zero_page(void)
->         memset((void *)empty_zero_page, 0, PAGE_SIZE);
->  }
->
-> +#ifdef CONFIG_DEBUG_VM
-> +static inline void print_mlk(char *name, unsigned long b, unsigned long t)
-> +{
-> +       pr_notice("%12s : 0x%08lx - 0x%08lx   (%4ld kB)\n", name, b, t,
-> +                 (((t) - (b)) >> 10));
-> +}
-> +
-> +static inline void print_mlm(char *name, unsigned long b, unsigned long t)
-> +{
-> +       pr_notice("%12s : 0x%08lx - 0x%08lx   (%4ld MB)\n", name, b, t,
-> +                 (((t) - (b)) >> 20));
-> +}
-> +
-> +static void print_vm_layout(void)
-> +{
-> +       pr_notice("Virtual kernel memory layout:\n");
-> +       print_mlk("fixmap", (unsigned long)FIXADDR_START,
-> +                 (unsigned long)FIXADDR_TOP);
-> +       print_mlm("vmemmap", (unsigned long)VMEMMAP_START,
-> +                 (unsigned long)VMEMMAP_END);
-> +       print_mlm("vmalloc", (unsigned long)VMALLOC_START,
-> +                 (unsigned long)VMALLOC_END);
-> +       print_mlm("lowmem", (unsigned long)PAGE_OFFSET,
-> +                 (unsigned long)high_memory);
-> +       print_mlk(".init", (unsigned long)__init_begin,
-> +                 (unsigned long)__init_end);
-> +       print_mlk(".text", (unsigned long)_text, (unsigned long)_etext);
-> +       print_mlk(".data", (unsigned long)_sdata, (unsigned long)_edata);
-> +       print_mlk(".bss", (unsigned long)__bss_start,
-> +                 (unsigned long)__bss_stop);
-> +}
-> +#else
-> +static void print_vm_layout(void) { }
-> +#endif /* CONFIG_DEBUG_VM */
-> +
->  void __init mem_init(void)
->  {
->  #ifdef CONFIG_FLATMEM
-> @@ -55,6 +90,7 @@ void __init mem_init(void)
->         memblock_free_all();
->
->         mem_init_print_info(NULL);
-> +       print_vm_layout();
->  }
->
->  #ifdef CONFIG_BLK_DEV_INITRD
+> -----Original Message-----
+> From: Marc Zyngier <maz@kernel.org>
+> Sent: 12 November 2019 18:13
+> To: Yash Shah <yash.shah@sifive.com>
+> Cc: linus.walleij@linaro.org; bgolaszewski@baylibre.com;
+> robh+dt@kernel.org; mark.rutland@arm.com; palmer@dabbelt.com; Paul
+> Walmsley ( Sifive) <paul.walmsley@sifive.com>; aou@eecs.berkeley.edu;
+> tglx@linutronix.de; jason@lakedaemon.net; bmeng.cn@gmail.com;
+> atish.patra@wdc.com; Sagar Kadam <sagar.kadam@sifive.com>; linux-
+> gpio@vger.kernel.org; devicetree@vger.kernel.org; linux-
+> riscv@lists.infradead.org; linux-kernel@vger.kernel.org; Sachin Ghadi
+> <sachin.ghadi@sifive.com>
+> Subject: Re: [PATCH 1/4] irqchip: sifive: Support hierarchy irq domain
+> 
+> On 2019-11-12 13:21, Yash Shah wrote:
+> > Add support for hierarchy irq domains. This is needed as pre-requisite
+> > for gpio-sifive driver.
+> >
+> > Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> > ---
+> >  drivers/irqchip/Kconfig           |  1 +
+> >  drivers/irqchip/irq-sifive-plic.c | 41
+> > +++++++++++++++++++++++++++++++++++----
+> >  2 files changed, 38 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig index
+> > ccbb897..a398552 100644
+> > --- a/drivers/irqchip/Kconfig
+> > +++ b/drivers/irqchip/Kconfig
+> > @@ -488,6 +488,7 @@ endmenu
+> >  config SIFIVE_PLIC
+> >  	bool "SiFive Platform-Level Interrupt Controller"
+> >  	depends on RISCV
+> > +	select IRQ_DOMAIN_HIERARCHY
+> >  	help
+...
+> >
+> > +static int plic_irq_domain_translate(struct irq_domain *d,
+> > +				     struct irq_fwspec *fwspec,
+> > +				     unsigned long *hwirq, unsigned int *type)
+> {
+> > +	if (WARN_ON(fwspec->param_count < 1))
+> > +		return -EINVAL;
+> > +	*hwirq = fwspec->param[0];
+> > +	*type = IRQ_TYPE_NONE;
+> > +	return 0;
+> > +}
+> 
+> This is actually what should be called irq_domain_translate_onecell().
+> 
+> Consider implementing that instead, and using it in this driver. I'm pretty sure
+> other drivers could use it (I spotted irq-nvic.c).
+
+Sure, will implement irq_domain_translate_onecell() and use that instead.
+Thanks for your comments!
+
+- Yash
+
+> 
+> >
+> >  static struct irq_domain *plic_irqdomain;
+> 
+> Otherwise, looks OK.
+> 
+> Thanks,
+> 
+>          M.
 > --
-> 2.7.4
->
-
-LGTM.
-
-Reviewed-by: Anup Patel <anup@brainfault.org>
-
-Regards,
-Anup
-
+> Jazz is not dead. It just smells funny...
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
