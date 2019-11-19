@@ -2,92 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6986D100F13
-	for <lists+linux-riscv@lfdr.de>; Mon, 18 Nov 2019 23:57:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15D69102790
+	for <lists+linux-riscv@lfdr.de>; Tue, 19 Nov 2019 16:03:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YvK+Vv0/w6CTf0cQzsiAQNqCy+vwZRGUDxzwwvSYyyE=; b=D7JhiDq0MzC8gx
-	WHvieqtqcrIG7maZrSD4Y9uhsfHmdkIo946qmvVxayzvbeQDp4/NTnHvdoCi6Ro30fWQkFyL2ceGH
-	mJMbgDs15UAhh7ofdRSjVI24ZO0smMKmdQzJshtc0nnOVkP9j63T56ld7Ca5yteY1HjbqYgE8/jqK
-	KJHJEudN18+pl3QFjOo+Eq1mbnnDeHCMYf798ahujPOp914D55t5yo/AsLdBRhmxQjVrIoo+9BZwB
-	BAvLRKORzLESyb8W/4BQ0HWqoTYNxTJzhdwLpt7Wo4BNU65UcEgvcyOfbd4v9H9AyYDae4S+sKWgz
-	LBzp5ZBlSSUAspcu2TBg==;
+	List-Owner; bh=5iHLrAjzoX0MARzszHBA8Mex2EWVmWuIG3U1DTOIzOk=; b=ighl0nOCK9hU67
+	Jp6KC1I+J2kbLfFB0UpDIvUN3kPTTGRiAgeAP/B1qss1Pj4dN53kCkiXrjIUjv5N56hJyP+FA0G35
+	19NAl4H9V0Od2ByPuj2HDwegWYAEYrRxtRHKndQ/xnxVbyP4qWMcuX68tewwLs/lFVXsoVRqwBIWF
+	kPgY+OjzpiC4ktpfLip2tGd4/dTn25qCJDDT4aEiirjz5ZrZsHN4U/ZMwuCEh5hB5hPF6OMR9Da1d
+	hdhhW/BHZeOi+a+z3lIZuUd+N50kLvXnP3RXsTiwjO6lovHdPeRanKl8EpHxkqMVRvdH5nvXHICAO
+	Fz+mkqyg9U2o6u7FcyKQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iWpxS-0007RB-Dd; Mon, 18 Nov 2019 22:57:22 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1iX529-0007zO-FI; Tue, 19 Nov 2019 15:03:13 +0000
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iWpxL-0007Ko-L0
- for linux-riscv@lists.infradead.org; Mon, 18 Nov 2019 22:57:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1574117835; x=1605653835;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=2Cl3Yy4laR6Em8oB4Zv8FAgT/XtNVIz5adorAyEv8c0=;
- b=Xsvmr9V+lL/9yJLqdE6wAOChFmwzth4w5ywxu5PVfNgPa7t7tOjEheuJ
- kitzzn5JXPQ734onmn9wyKbTSvx1eCv98zr85Jlf1FY4juqE40X9FLEBh
- rViq430IAiLJLnKnBZuTvTfGavU0CilR/ea4Bp88zSKAp4NdOR4dagvuD
- FBhI6WAwjRGHl+9DaJnEP2ELMPBozrT0CBAn4ahYUWmiV9rI2hmQ85g7A
- I/7FB6p0hFFJpVAmaTXsE4gfqBNML3D38wXdOZPYeO+ygIuPMPtT1dr1t
- Lbly+avv/meyELjCN0pNNhdypSkXJ3b0cSWfIwLrGa2s9Wj6hXWLdM//P A==;
-IronPort-SDR: Q2AGnnAiMHCU4O+VDeq9plUIWnbj7U807EyyHT/igQ+w53FFIpotL69KUzmKiODJKupq2uKlF4
- FI/POI/DP3cPI1y7E2u78qDmx6DPuP5dczbWwCKRB4Cbefw+pjgXKgXH5ooLZqrC11yBmjNHOK
- K9ftMKLCcnH/rsFiwvcdfszsba6x0EPPsFHluINY8ysT8OgA5bImujeZxfa9bOUJKCSlUHOkwq
- DpkuceijBgygZa2JuGesCg1n4nxfvqmjYs32x5drit9vSvT80LOWviZH6p7tkJgg23wZILDeOG
- Fb0=
-X-IronPort-AV: E=Sophos;i="5.68,321,1569254400"; d="scan'208";a="124142839"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 19 Nov 2019 06:57:06 +0800
-IronPort-SDR: ZfNf4O5L6CXld/B30fT3362HNTZwRAW3vSJSKx/9n2nnGN3Uv2an3CspiljQG53d541DDzADnU
- KZ9VCvDZ82/VmT45RjzM6G/17clQ5R/2Wtz5zjroW7DVL9Nc/e+X+cn32e7hGRK3iuxr2E5If3
- Fyl1wM5qPYchNW/5QngGWvcYQYsshSOcUUr8sXPupIyC4HM7yXuBJSM621QvfTch+QltW8lphk
- l4sPipCVIUOsXYxtPBpt30hSG6Te60X8L+yqMbRgc+X624cdmjv04o6WutEGO6zKdtbPTnseNk
- hT3tstrMj6Fcdudmfls+YZox
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Nov 2019 14:52:20 -0800
-IronPort-SDR: 23SWddq2Pkm9apBV1nKKaB2btadRLUgOpJYF3Iq4CYXbv1XQ+fa+Q3PtfqUAfZlrkwfFeNqOMc
- tC0OftSgpKyENBIeqsRbQ7mgMBQV91b9jHmAYWrjyn8qObEF5L+5K2rIoW32EQBo1N0ZuDZ6/Z
- pCB5SIlloSevTDgnY4HNnz1XuoH3bzboYqUHv0PDOQNdVqduunUe7yTKB16cKAEkZcg4HvpYUS
- y3485++2vy4P0HUXTcu5JqP7ef/4aIl6Uj/k5mmU5ZgslAeL/qpXNB/LCwjXUVAs/+x9IjYB87
- G8s=
-WDCIronportException: Internal
-Received: from yoda.sdcorp.global.sandisk.com (HELO yoda.int.fusionio.com)
- ([10.196.158.237])
- by uls-op-cesaip02.wdc.com with ESMTP; 18 Nov 2019 14:57:07 -0800
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v3 4/4] RISC-V: Implement SBI v0.2 replacement extensions
-Date: Mon, 18 Nov 2019 14:45:39 -0800
-Message-Id: <20191118224539.2171-5-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20191118224539.2171-1-atish.patra@wdc.com>
-References: <20191118224539.2171-1-atish.patra@wdc.com>
+ id 1iX525-0007yw-Mh
+ for linux-riscv@lists.infradead.org; Tue, 19 Nov 2019 15:03:12 +0000
+Received: by mail-lj1-x241.google.com with SMTP id t5so23732159ljk.0
+ for <linux-riscv@lists.infradead.org>; Tue, 19 Nov 2019 07:03:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=PbOCer/DbEIDkV9HM4Ua32e1t8DBngr+pDXysIFGRg8=;
+ b=ghhb7CWnwNxAbrzbSuXvrfTWrUaikmjOuxcxbZzhekhweUFV9we26m0KktjuUT12cy
+ DozWtpM03n61uITyiCInX3tY4YBxpKlEOG2nSGKyK5N9nZYuhQI7I8nlgr7v9u4WTAiC
+ azEp+p7C9AEL7DBegmAPPbrND76N9Jjf0OWzfEkUmTdIa55WHk3ybiz29nshZn4Gtits
+ Bc0GjA0BnNBYKZpWPx7MQIa9cxGUQeloQ3M7jYsv2LvZQFDeLGf0L2qUnJTskweJCjCu
+ 156mBCrJ72nFj2G7luKBxfO5xwCFDuJ3NdbRLreV7CtFnrHx/itCksfMS1Fxmfo83llm
+ eq1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=PbOCer/DbEIDkV9HM4Ua32e1t8DBngr+pDXysIFGRg8=;
+ b=CVrXzZGr0alOLsu31ha7090Iyc3Rx0OJT8bE0GTZf5cZ10f9LMjcCM9SQ6ExHZCMK3
+ VHbknBnBw1eE4F2qFA/w4FpvMS0Cid/EbPaKQilk/xyp0Us2S8Bb7bjhodgI96cmQamz
+ Rk4Wh9Q9qPoSKWMwgStdegByOswt0D3fMZV5stRSvVuc82+eLJXJfNQhTH+zeLatYWkc
+ dYK7s0RbqUuVke6i19OtYYkzLQo23ZSbvTQ53zbNEoVejGwfWC9PModfOc2lbjLV2nv0
+ 75cXBHFrLjHtF+KcYf3HgexxN4zJEmBnyvzheD8lZonuKtINbDVuWMj8skTxub5nyWuh
+ 6TTA==
+X-Gm-Message-State: APjAAAWrKJITiANDvrM3I5ZkkuS2Z6udDvo2hR/YwQd8qGkg3qfn8kda
+ C0PvHi3qxh7GnOsxA5k4Wbf3QKdpDuDAfoxCY2/Y6g==
+X-Google-Smtp-Source: APXvYqxK4BLaj4M+k3bwc7DPGWsPytu2MBOD+HBWoGml8EjxWn/fiVfiTHJU/tL8gTg0U5x+X6BHUCC0vamRMq4wY+M=
+X-Received: by 2002:a2e:8597:: with SMTP id b23mr4384572lji.218.1574175787982; 
+ Tue, 19 Nov 2019 07:03:07 -0800 (PST)
 MIME-Version: 1.0
+References: <1573560684-48104-1-git-send-email-yash.shah@sifive.com>
+ <1573560684-48104-4-git-send-email-yash.shah@sifive.com>
+ <CAMpxmJWcuV7goPWxOWv_Og9GwzGrioF62SfS1LCiHf9eDX=vdw@mail.gmail.com>
+ <CH2PR13MB33680443C101511E66ECADF08C4D0@CH2PR13MB3368.namprd13.prod.outlook.com>
+ <CAMpxmJU+P=nWe9fpp45Jw=GwX3+V0sVVshRcE7AD1Kyz_F0qJQ@mail.gmail.com>
+In-Reply-To: <CAMpxmJU+P=nWe9fpp45Jw=GwX3+V0sVVshRcE7AD1Kyz_F0qJQ@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 19 Nov 2019 16:02:56 +0100
+Message-ID: <CACRpkdb9KKPsu7dkjVmHbgQcdo1Zx9uC_jtd6HFwM+RO2EA4nw@mail.gmail.com>
+Subject: Re: [PATCH 3/4] gpio: sifive: Add GPIO driver for SiFive SoCs
+To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191118_145715_712702_AC1E11E2 
-X-CRM114-Status: GOOD (  10.10  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191119_070309_767934_17F0A087 
+X-CRM114-Status: GOOD (  14.15  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:241 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -100,201 +94,51 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>,
- Alexios Zavras <alexios.zavras@intel.com>, Anup Patel <anup@brainfault.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Atish Patra <atish.patra@wdc.com>,
- Jonathan Behrens <behrensj@mit.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Mao Han <han_mao@c-sky.com>, Gary Guo <gary@garyguo.net>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>, Allison Randal <allison@lohutok.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "jason@lakedaemon.net" <jason@lakedaemon.net>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "atish.patra@wdc.com" <atish.patra@wdc.com>, Yash Shah <yash.shah@sifive.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "palmer@dabbelt.com" <palmer@dabbelt.com>,
+ Sagar Kadam <sagar.kadam@sifive.com>,
+ "Paul Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Few v0.1 SBI calls are being replaced by new SBI calls that follows
-v0.2 calling convention. The specification changes can be found at
-
-https://github.com/riscv/riscv-sbi-doc/pull/27
-
-Implement the replacement extensions that makes way for a better SBI
-interface in future.
-
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- arch/riscv/include/asm/sbi.h | 22 ++++++++++++++
- arch/riscv/kernel/sbi.c      | 57 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 79 insertions(+)
-
-diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-index 75ad7a190b1b..09beb0bfa3b4 100644
---- a/arch/riscv/include/asm/sbi.h
-+++ b/arch/riscv/include/asm/sbi.h
-@@ -19,6 +19,10 @@ enum sbi_ext_id {
- 	SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID = 0x7,
- 	SBI_EXT_0_1_SHUTDOWN = 0x8,
- 	SBI_EXT_BASE = 0x10,
-+	SBI_EXT_TIME = 0x54494D45,
-+	SBI_EXT_IPI = 0x735049,
-+	SBI_EXT_RFENCE = 0x52464E43,
-+
- };
- 
- enum sbi_ext_base_fid {
-@@ -31,6 +35,24 @@ enum sbi_ext_base_fid {
- 	SBI_BASE_GET_MIMPID,
- };
- 
-+enum sbi_ext_time_fid {
-+	SBI_EXT_TIME_SET_TIMER = 0,
-+};
-+
-+enum sbi_ext_ipi_fid {
-+	SBI_EXT_IPI_SEND_IPI = 0,
-+};
-+
-+enum sbi_ext_rfence_fid {
-+	SBI_EXT_RFENCE_REMOTE_FENCE_I = 0,
-+	SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
-+	SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID,
-+};
-+
- #define SBI_SPEC_VERSION_DEFAULT	0x1
- #define SBI_SPEC_VERSION_MAJOR_OFFSET	24
- #define SBI_SPEC_VERSION_MAJOR_MASK	0x7f
-diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
-index 6c864fd7fb95..02e7bf581183 100644
---- a/arch/riscv/kernel/sbi.c
-+++ b/arch/riscv/kernel/sbi.c
-@@ -120,6 +120,14 @@ void sbi_set_timer(uint64_t stime_value)
- 	}
- #endif
- 
-+#if __riscv_xlen == 32
-+	sbi_ecall(SBI_EXT_TIME, SBI_EXT_TIME_SET_TIMER, stime_value,
-+			  stime_value >> 32, 0, 0, 0, 0);
-+#else
-+	sbi_ecall(SBI_EXT_TIME, SBI_EXT_TIME_SET_TIMER, stime_value, 0,
-+		  0, 0, 0, 0);
-+#endif
-+
- }
- 
- /**
-@@ -130,6 +138,8 @@ void sbi_set_timer(uint64_t stime_value)
-  */
- void sbi_send_ipi(const unsigned long *hart_mask)
- {
-+	unsigned long hmask_val;
-+	struct sbiret ret;
- #ifdef CONFIG_RISCV_SBI_V01
- 	if (sbi_spec_is_0_1()) {
- 		sbi_ecall(SBI_EXT_0_1_SEND_IPI, 0, (unsigned long)hart_mask,
-@@ -137,6 +147,16 @@ void sbi_send_ipi(const unsigned long *hart_mask)
- 		return;
- 	}
- #endif
-+	if (!hart_mask)
-+		hmask_val = *(cpumask_bits(cpu_online_mask));
-+	else
-+		hmask_val = *hart_mask;
-+
-+	ret = sbi_ecall(SBI_EXT_IPI, SBI_EXT_IPI_SEND_IPI, *hart_mask,
-+		  0, 0, 0, 0, 0);
-+	if (ret.error)
-+		pr_err("%s: failed with error [%d]\n", __func__,
-+			sbi_err_map_linux_errno(ret.error));
- }
- 
- /**
-@@ -147,6 +167,8 @@ void sbi_send_ipi(const unsigned long *hart_mask)
-  */
- void sbi_remote_fence_i(const unsigned long *hart_mask)
- {
-+	unsigned long hmask_val;
-+	struct sbiret ret;
- #ifdef CONFIG_RISCV_SBI_V01
- 	if (sbi_spec_is_0_1()) {
- 		sbi_ecall(SBI_EXT_0_1_REMOTE_FENCE_I, 0,
-@@ -154,6 +176,16 @@ void sbi_remote_fence_i(const unsigned long *hart_mask)
- 		return;
- 	}
- #endif
-+	if (!hart_mask)
-+		hmask_val = *(cpumask_bits(cpu_online_mask));
-+	else
-+		hmask_val = *hart_mask;
-+
-+	ret = sbi_ecall(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_FENCE_I,
-+			hmask_val, 0, 0, 0, 0, 0);
-+	if (ret.error)
-+		pr_err("%s: failed with error [%d]\n", __func__,
-+			sbi_err_map_linux_errno(ret.error));
- }
- 
- /**
-@@ -169,6 +201,8 @@ void sbi_remote_sfence_vma(const unsigned long *hart_mask,
- 					 unsigned long start,
- 					 unsigned long size)
- {
-+	unsigned long hmask_val;
-+	struct sbiret ret;
- #ifdef CONFIG_RISCV_SBI_V01
- 	if (sbi_spec_is_0_1()) {
- 		sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
-@@ -176,6 +210,17 @@ void sbi_remote_sfence_vma(const unsigned long *hart_mask,
- 		return;
- 	}
- #endif
-+	if (!hart_mask)
-+		hmask_val = *(cpumask_bits(cpu_online_mask));
-+	else
-+		hmask_val = *hart_mask;
-+
-+	ret = sbi_ecall(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
-+		  hmask_val, 0, start, size, 0, 0);
-+
-+	if (ret.error)
-+		pr_err("%s: failed with error [%d]\n", __func__,
-+			sbi_err_map_linux_errno(ret.error));
- }
- 
- /**
-@@ -194,6 +239,8 @@ void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
- 					      unsigned long size,
- 					      unsigned long asid)
- {
-+	struct sbiret ret;
-+	unsigned long hmask_val;
- #ifdef CONFIG_RISCV_SBI_V01
- 	if (sbi_spec_is_0_1()) {
- 		sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
-@@ -201,6 +248,16 @@ void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
- 		return;
- 	}
- #endif
-+	if (!hart_mask)
-+		hmask_val = *(cpumask_bits(cpu_online_mask));
-+	else
-+		hmask_val = *hart_mask;
-+
-+	ret = sbi_ecall(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
-+		  hmask_val, 0, start, size, asid, 0);
-+	if (ret.error)
-+		pr_err("%s: failed with error [%d]\n", __func__,
-+			sbi_err_map_linux_errno(ret.error));
- }
- 
- /**
--- 
-2.23.0
-
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
+T24gTW9uLCBOb3YgMTgsIDIwMTkgYXQgMTE6MTUgQU0gQmFydG9zeiBHb2xhc3pld3NraQo8Ymdv
+bGFzemV3c2tpQGJheWxpYnJlLmNvbT4gd3JvdGU6Cj4gcG9uLiwgMTggbGlzIDIwMTkgbyAxMTow
+MyBZYXNoIFNoYWggPHlhc2guc2hhaEBzaWZpdmUuY29tPiBuYXBpc2HFgihhKToKCj4gPiBBcyBz
+dWdnZXN0ZWQgaW4gdGhlIGNvbW1lbnRzIHJlY2VpdmVkIG9uIHRoZSBSRkMgdmVyc2lvbiBvZiB0
+aGlzIHBhdGNoWzBdLCBJIGFtIHRyeWluZyB0byB1c2UgcmVnbWFwIE1NSU8gYnkgbG9va2luZyBh
+dCBncGlvLW12ZWJ1LmMuIEkgZ290IHlvdXIgcG9pbnQgcmVnYXJkaW5nIHRoZSB1c2FnZSBvZiBv
+d24gbG9ja3MgaXMgbm90IG1ha2luZyBhbnkgc2Vuc2UuCj4gPiBIZXJlIGlzIHdoYXQgSSB3aWxs
+IGRvIGluIHYyOgo+ID4gMS4gZHJvcCB0aGUgdXNhZ2Ugb2Ygb3duIGxvY2tzCj4gPiAyLiBjb25z
+aXN0ZW50bHkgdXNlIHJlZ21hcF8qIGFwaXMgZm9yIHJlZ2lzdGVyIGFjY2VzcyAocmVwbGFjZSBh
+bGwgaW93cml0ZXMpLgo+ID4gRG9lcyB0aGlzIG1ha2Ugc2Vuc2Ugbm93Pwo+Cj4gVGhlIHRoaW5n
+IGlzOiB0aGUgZ3Bpby1tbWlvIGNvZGUgeW91J3JlIChjb3JyZWN0bHkpIHJldXNpbmcgdXNlcyBh
+Cj4gZGlmZmVyZW50IGxvY2sgLSBuYW1lbHk6IGJncGlvX2xvY2sgaW4gc3RydWN0IGdwaW9fY2hp
+cC4gSWYgeW91IHdhbnQKPiB0byB1c2UgcmVnbWFwIGZvciByZWdpc3RlciBvcGVyYXRpb25zLCB0
+aGVuIHlvdSBuZWVkIHRvIHNldAo+IGRpc2FibGVfbG9ja2luZyBpbiByZWdtYXBfY29uZmlnIHRv
+IHRydWUgYW5kIHRoZW4gdGFrZSB0aGlzIGxvY2sKPiBtYW51YWxseSBvbiBldmVyeSBhY2Nlc3Mu
+CgpJcyBpdCByZWFsbHkgc28/IFRoZSBiZ3Bpb19sb2NrIGRvZXMgcHJvdGVjdCB0aGUgcmVnaXN0
+ZXJzIHVzZWQKYnkgcmVnbWFwLW1taW8gYnV0IHVubGVzcyB0aGUgaW50ZXJydXB0IGNvZGUgaXMg
+YWxzbyB1c2luZyB0aGUKc2FtZSByZWdpc3RlcnMgaXQgaXMgZmluZSB0byBoYXZlIGEgZGlmZmVy
+ZW50IGxvY2sgZm9yIHRob3NlLgoKSXMgdGhlIGludGVycnVwdCBjb2RlIHJlYWxseSBwb2tpbmcg
+aW50byB0aGUgdmVyeSBzYW1lIHJlZ2lzdGVycwphcyBwYXNzZWQgdG8gYmdwaW9faW5pdCgpPwoK
+T2YgY291cnNlIGl0IGNvdWxkIGJlIHNlZW4gYXMgYSBiaXQgZGlydHkgdG8gcG9rZSBhcm91bmQg
+aW4gdGhlCnNhbWUgbWVtb3J5IHNwYWNlIHdpdGggcmVnbWFwIGFuZCB0aGUgYmdwaW9fKiBhY2Nl
+c3NvcnMKYnV0IGluIHByYWN0aWNlIGl0J3Mgbm8gcHJvYmxlbSBpZiB0aGV5IG5ldmVyIHRvdWNo
+IHRoZSBzYW1lCnRoaW5ncy4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QK
+bGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cg==
