@@ -2,79 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5B731035A1
-	for <lists+linux-riscv@lfdr.de>; Wed, 20 Nov 2019 08:52:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 72D131035C8
+	for <lists+linux-riscv@lfdr.de>; Wed, 20 Nov 2019 09:04:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HaQYYghaPln88Iqf53XQCKast/QDa4QbGkXjyEsjmeU=; b=okjE/qTHwp8oxh
-	IPn0gL/6aRR5zoM9TDLgxurDKxmZLgYw4UrHqL68dJk6KM+9zaMZCRdPV0MJ7i2gmoXtkTF3vBVYD
-	ZlRD/g/R3n7Azy7QkI0p7nmF2sO8CRB3ArwvRQnNKmDphKQjhMF6cOG8p6ct6PEOHCeYHw9Xr5cKg
-	aBx3jt2GMX2QY7YAM4gW94C9DiclbQKfmMG/C5aXvG/FSPg5fO1aIqCzYWwRVd3kWXfKuGfYYxGGc
-	bjSCVaxTj71+HTwLcijuRZp1CF9TvXWkLmlu4WYrRzkbg6uffOA8z/YNVYHqLvt0vko05OQ8GvtLT
-	J62FSW6s2dOgs0XiflIg==;
+	List-Owner; bh=4vsDWwGWVswN/l9IsretJtwJTKPQBSNGG3M+WGfwUWI=; b=Rb6Z4gg2nH/KyW
+	i36dqWIxRJwJ2nP9npdVG+RqPocDR0YBryPJ9gBljFhGTv0nS1SfdXeQY6bL7IpB5fwK/C77VJTNJ
+	22sXbmD8bikY9Hoshubl1nQX1vFv6kMepYmXVvksPzMetQF6xHWCtLw431gfQNKipoHP/KHpTto+V
+	5odgaRfUvEUgYLlSW+KIrorjxhzyC1ZH7cCbsa0FobgNEwXWmI7mMhEaCkxo7FIqN1pkQeTCMUTY4
+	d8veIL0VZMe85O80s8J7iaC7Vlz03zG7r97Sk1hgDiFMQPKyAUdVavlMFMFyWK7PHbBqDN9NFhLBT
+	PvNIgbRofBXDU6nGLWsA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXKmT-0006sc-Da; Wed, 20 Nov 2019 07:52:05 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1iXKyJ-000242-Ht; Wed, 20 Nov 2019 08:04:19 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXKmO-0006rP-RA
- for linux-riscv@lists.infradead.org; Wed, 20 Nov 2019 07:52:02 +0000
-Received: by mail-il1-x144.google.com with SMTP id r9so976395ilq.10
- for <linux-riscv@lists.infradead.org>; Tue, 19 Nov 2019 23:51:58 -0800 (PST)
+ id 1iXKyG-00023I-CK
+ for linux-riscv@lists.infradead.org; Wed, 20 Nov 2019 08:04:17 +0000
+Received: by mail-io1-xd41.google.com with SMTP id k1so26615746ioj.6
+ for <linux-riscv@lists.infradead.org>; Wed, 20 Nov 2019 00:04:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=6RukAU4yfanIMPunVIfuS2B5y73IXuIqDOCI0UMmxkk=;
- b=PVO9AuwSNDQnHRLBSNzM0TSp1Zp1SdvCGoDnpyhmu7WVv0zg4E3qxBP4Ve8/VNVG/L
- BJmtp+MAp8ki3sJjxVhqCnYJUW3LpbQPAm1HaL9HR3wJXMRgD4/iSvOifSbhpC6diMhi
- r3+Oa7d3zgcFZ4mXlPNh7SlvSrOqWurTkEbpC2SQId3okyPF7qjTOnKhCUqT97c96TI1
- 4qtDVgfX49hd739zROfni6i/j3qulUrIk78hpZ51UVpieMlW2GGzTtHCtxDkLrUluVHL
- xB0JPsoUmT/qRMPc9f7NUhpxDibstRYWiLpPC7tEkaOOLYe+0eAutu6AFiXn8s82sA/w
- N90A==
+ bh=BacJ7EBR9ytS2/6OwHcGzjIg710Zu5B5M5aCR72bJWA=;
+ b=VO8JDuiYDFx9cSL5SqJK3STzGgAjyrHydkFR2rL2wLLXNbBFnDHTepn7fMtUJpbe4E
+ obnzLYzJIX2DCUk7C9YHLXU+G/1wcpLygGrJzo4jNx1u9lQjIztdjytuGSy8eYhTw7xO
+ FJAdNaw27IoeGn1j3JYhZNcTVl1HUxjR62WpPXz9x2KYxe+Wh7ujofcnk4UlKbm9EThJ
+ 4ltquqg9ml2N8qlVXt26KMAokZAyaFR0pjwaQmFfZC5vVWS5bnQ/9I+2WYKOL5KpV6vj
+ L44Q1Om9Kbq0JPnB6E0RsIhuJOl9iQ+syl0zVUoU/MXq4vVI6t+72g1afJuZlmB060iZ
+ a+1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=6RukAU4yfanIMPunVIfuS2B5y73IXuIqDOCI0UMmxkk=;
- b=ewNA80JPs8kWR8/ruUAU+cb401O2YF3ExevOIZcFca+YDteLJw48ZJiq3t0kbfXilR
- qwIHbsn6nSsvM+OwcRwPOMGTW+vK5zUIOI3gyhI/cYryeb2SYKL8VGDyfmKm9rHmma1e
- cbnSpcX6jTKswl/ZZQ0On9RxvkTL9TQJlFad+cMJ/mDoXyXx1yUw16MYapDxxX0BUIII
- xtMAfuYjyXxyIxHuBceLX3F7gHeFehTWoI/kRDxMQ2tfkwNvvHPAve4IESamvSjMC6Ze
- gjP53E90HkBR9XuV0j12X8jpwOdWoQ5SqzQfh3SxmNlbgQj4U5OdLeXNL+W+ngpYvrfq
- Bz1Q==
-X-Gm-Message-State: APjAAAVCr3GT//986okKOrbrzFMi2OwB6FPV+NnKFU7bJyBQLIcKDdud
- K3ePq/SoYG6WB7WPX7XuzgHuGA==
-X-Google-Smtp-Source: APXvYqxyj22gfdW5UAgMeF5MFaHfqP5hvYnwkk6L0UAliggkFBPMDJLq5pqDqo0MB5NpTRnfUdsUjw==
-X-Received: by 2002:a92:7e18:: with SMTP id z24mr2049781ilc.276.1574236317557; 
- Tue, 19 Nov 2019 23:51:57 -0800 (PST)
+ bh=BacJ7EBR9ytS2/6OwHcGzjIg710Zu5B5M5aCR72bJWA=;
+ b=sHmDtTlTygJ+F/D6nysSHhCXAYRiuJ7W3GoLwgcFrMVvA5j5Vmbr1JSg/8qMUZw+7x
+ izflQJk0mpIIp2WkoKIZneIfCsQpBTA4L3oO+zsiKbSFRdP9WatNrIt9TRBEx9UXJl6G
+ qaJCgqw/vrcJPx/qENIN/C7RDLlEpHfyVLP3nGNcmgYNLBCQeTY5GVQt5/he6mo5N1s8
+ DR2HeztavR+/SapDEsnJi/Fa7aqJ0QngDBjisD1Jrjqzlh7MjUucoKjQRjA7A+n2KUSP
+ PXBAQdIrQTzdVBBinuJ4SCgUiF4aUvQ1+gi40zSHy+tF/Syw8IGvpdp30eiLKBe9YAMH
+ eaSA==
+X-Gm-Message-State: APjAAAU6f9LCW4ww8cKC0EouhjilwfY12cQZ8Esgz2SEmuU+GHSD7Ozp
+ 2ougBwPqPTEaDJLVWN5k07aNKw==
+X-Google-Smtp-Source: APXvYqy+717NLJlVd20jJMYLKR/1De7mJqNFF+/oYOiwoN3AGBAq1ytMXqic/gdugH11qYE0ztUcQg==
+X-Received: by 2002:a5e:a70e:: with SMTP id b14mr1088130iod.166.1574237054759; 
+ Wed, 20 Nov 2019 00:04:14 -0800 (PST)
 Received: from localhost (67-0-26-4.albq.qwest.net. [67.0.26.4])
- by smtp.gmail.com with ESMTPSA id f2sm4719623iog.30.2019.11.19.23.51.56
+ by smtp.gmail.com with ESMTPSA id a11sm6274182ilb.72.2019.11.20.00.04.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Nov 2019 23:51:57 -0800 (PST)
-Date: Tue, 19 Nov 2019 23:51:56 -0800 (PST)
+ Wed, 20 Nov 2019 00:04:14 -0800 (PST)
+Date: Wed, 20 Nov 2019 00:04:13 -0800 (PST)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH v3 0/4] Add support for SBI v0.2 
-In-Reply-To: <20191118224539.2171-1-atish.patra@wdc.com>
-Message-ID: <alpine.DEB.2.21.9999.1911192344560.12489@viisi.sifive.com>
-References: <20191118224539.2171-1-atish.patra@wdc.com>
+To: Anup Patel <Anup.Patel@wdc.com>
+Subject: Re: [PATCH v9 03/22] RISC-V: Add initial skeletal KVM support
+In-Reply-To: <20191016160649.24622-4-anup.patel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1911200002310.490@viisi.sifive.com>
+References: <20191016160649.24622-1-anup.patel@wdc.com>
+ <20191016160649.24622-4-anup.patel@wdc.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191119_235201_004030_976D44FC 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20191120_000416_498474_91E868A3 
+X-CRM114-Status: GOOD (  12.48  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -96,52 +97,55 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
- linux-kernel@vger.kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
- Alexios Zavras <alexios.zavras@intel.com>, Jonathan Behrens <behrensj@mit.edu>,
- Palmer Dabbelt <palmer@dabbelt.com>, Mao Han <han_mao@c-sky.com>,
- Gary Guo <gary@garyguo.net>, linux-riscv@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>, Allison Randal <allison@lohutok.net>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Radim K <rkrcmar@redhat.com>,
+ Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
+ Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Alexander Graf <graf@amazon.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Atish,
+Hi,
 
-On Mon, 18 Nov 2019, Atish Patra wrote:
+On Wed, 16 Oct 2019, Anup Patel wrote:
 
-> The Supervisor Binary Interface(SBI) specification[1] now defines a
-> base extension that provides extendability to add future extensions
-> while maintaining backward compatibility with previous versions.
-> The new version is defined as 0.2 and older version is marked as 0.1.
+> This patch adds initial skeletal KVM RISC-V support which has:
+> 1. A simple implementation of arch specific VM functions
+>    except kvm_vm_ioctl_get_dirty_log() which will implemeted
+>    in-future as part of stage2 page loging.
+> 2. Stubs of required arch specific VCPU functions except
+>    kvm_arch_vcpu_ioctl_run() which is semi-complete and
+>    extended by subsequent patches.
+> 3. Stubs for required arch specific stage2 MMU functions.
 > 
-> This series adds support v0.2 and a unified calling convention
-> implementation between 0.1 and 0.2. It also adds minimal SBI functions
-> from 0.2 as well to keep the series lean. 
-> 
-> [1] https://github.com/riscv/riscv-sbi-doc/blob/master/riscv-sbi.adoc
-> 
-> The base support for SBI v0.2 is already available in OpenSBI v0.5.
-> This series needs following additional patches in OpenSBI. 
-> 
-> http://lists.infradead.org/pipermail/opensbi/2019-November/000704.html
-> 
-> Tested on both BBL, OpenSBI with/without the above patch series. 
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+> Reviewed-by: Alexander Graf <graf@amazon.com>
 
-Just based on a quick look:
+Olof's autobuilder found an issue with this patch (below)
 
-All of the patches in this series add warnings reported by 
-'scripts/checkpatch.pl --strict'.  Could you please fix and repost?
+> diff --git a/arch/riscv/include/asm/kvm_host.h b/arch/riscv/include/asm/kvm_host.h
+> new file mode 100644
+> index 000000000000..9459709656be
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/kvm_host.h
+> @@ -0,0 +1,81 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
 
-Also: could you rebase these patches on top of the current RISC-V for-next 
-branch?  There are some significant conflicts after Christoph's nommu 
-work.
+This should be
 
-We'll wait to send these upstream until the SBI v0.2 spec is frozen, but 
-in the meantime, it'll be good to get these into the experimental branch.
+/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 
-thanks,
+to match the license used in the kvm.h files in other architectures.
+
 
 - Paul
 
