@@ -2,62 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08508104DFC
-	for <lists+linux-riscv@lfdr.de>; Thu, 21 Nov 2019 09:32:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7D82104E15
+	for <lists+linux-riscv@lfdr.de>; Thu, 21 Nov 2019 09:35:56 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QBc9236vanxclLn34Vw+wQ7884nMAamqp04AnnNnDtY=; b=j0Fj2jZb1m42PY
-	sTFSbT0cILiNJx+SPhMk424jOcQDEw8DmVgi1tGrNvra9ijdtkO83JymjamD5GOQ1yuPTR8oCF/eO
-	VW6LGktpI5q2NKDexknVIgD2QXozOikNs1OGEOGF/pMh88BWrbfgtor8egHcbXj0xFQBwTIU8WgGN
-	ulNsv9CDINViUF1N/hQ50NRJAaCYbvzXqGiCLqyKOXqJHLBHX4SByo2TBDfe1ebATwvv2A7w98Y/G
-	PvWGURGZHJeR7F9xkc1MQEHY0L0p6x3kX4gpmlFXeq6aOaNU/OHkmwgEiRIWcCfslfvvB529giELr
-	v1AMo9WyhUyupVAX7axw==;
+	List-Owner; bh=xO5QgUPoGOsRj1y8sCgLPoM8d3dGNHwo/pigjpPrdUQ=; b=RrNwj4piKye68b
+	bZylr7NUT+tup5tZwjQG/tNq2E+y4AqYZ58yiL7snNQsdKvE1gSpnZrtDITxbyOd5UHTlDMLHQQoP
+	0tyAPBhvrkXZf4W4O5uMSP0CXB7D6YLaQUXzQxh/eLvFBAJFaP7rCZXyBbR/N/cychSN/xhHzQ1Qh
+	E76OnrggVnP0/GKR5GOGvxOOLvpuvKsk+afdXKLpyQBI3AfMwDpuQwz+8Kosq2wGSbnT2ValwXsSN
+	He3W2f4iIK91LRbviWSN+gW/q2iH78NNWIeG/JdkIZjJBJdTv//k11azFK7hd4RBx27jZ78lpca5w
+	1gXRkZfEm/OFdrx3HVEg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXhtJ-0002ag-VO; Thu, 21 Nov 2019 08:32:41 +0000
-Received: from mail-eopbgr750040.outbound.protection.outlook.com
- ([40.107.75.40] helo=NAM02-BL2-obe.outbound.protection.outlook.com)
+	id 1iXhwN-0004RI-LY; Thu, 21 Nov 2019 08:35:51 +0000
+Received: from mail-eopbgr720063.outbound.protection.outlook.com
+ ([40.107.72.63] helo=NAM05-CO1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXhtG-0002a5-93
- for linux-riscv@lists.infradead.org; Thu, 21 Nov 2019 08:32:40 +0000
+ id 1iXhwJ-0004Qw-Kl
+ for linux-riscv@lists.infradead.org; Thu, 21 Nov 2019 08:35:49 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kZAq84s4rX+3DPQgo3i/TwB95MGnCzq2/zXzXmEylM1RxpGF3kFxrERXMvsANfQChW68tWyFB0JUeIfCL569+1eimS9MTxxCjG0PMxGI7NkD9rrRRe9mtlbECaN7seshFmZuuNscL0G+a1F4kOvdNZ0dIoE7H51bT1w2NYf8ixB7bWiT1pY+P6PjjLuVLsVuYHhgv4+miNmZaBPL+kY1SE/8vwxdaqcbL1dwY513dL7vdW7T54Gk9tjBzbxBxDjQjevmpJBCy2JhESwWRhNjsXTYUdvfgMKyslX1mG45xVk0cuts8k5P1IknXLBL2puQs2sYRJf6LPxjEoi6wYIdlA==
+ b=TIdUGLVAHG57CKy4bSX0+pLFaeJRZq/yuASMJqwGeHNi/G4E2dG+Pbu2dkiu6QfIiFce8RFuc1pmBxABnIQYQtdaLXeTAyQi2ugX3KKXhu1BCedwQLG9LRQAYY2IG0Vy3T32ehT12dxknigLDz3UPNeNDjm3j+9taUVXoL7jecT3JKCBtnHtVHMbmi9SfeqP82liUblMcpsjlsBo+tScxouKPcv7ZOGQidIMB7wdo5EPMk1aSRAknyW4+knwjhDwBLA1IRfnRD1OLfK4bSSThu7qVn/YZI0FuePem1F1g0WT78w4YW0NvLDHbu2nBdleWGwyYwSrYSWwxAe39dwIfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1LObPKV2I3TIgIm3aGytSrIHyCFApil+sQwyntJfBDc=;
- b=jfXpM/VoL9hGdkFeccnkq71FGfmnPJBf8ONxCdq6C40QvuczNRRcBPHPI+4Nf0I1boPHZ30uSFRT9wnaq+01LtwH09IDHVV3bFcyuLl5bhWDuras8THbVT4yTZd+vvbXUyJbl2JdVd/Zk2KV5iFlvWwUWlrnMNfno8ylqN4DFlpGQnmKcjqtWgyqHMsjMGx1H5PfycIMpjH0HEe/VcjN7/Vn6u50fhbuTKIna8oRDH9BR5sGL8HT8ct/VyknDQEaBwS7FJSMmchAfGvpwBPmiET8xHF+yTb59xDuMnyZ8f1sMA0Kp4LHxlp8nJ2V41sM8J/VRf3b5rdkOuUniLAnWA==
+ bh=3Sn0OSbRmZMqOfWAigYtrtVnYBqlhloFuzpBZkCY7os=;
+ b=EI3TcoAdREbqyQzZ+reVLJbkAz6UrdRlZvMW3c77EVTPPg53JbirAThRg9GSqkdAHQEctJQC3wTcqasEv2zxMWcUdZsSAemrNGQ/0Ip2yOFm2yWXFUZ4puik55D8yutNhxK+YIsjemDZwEhAkVbxEFwjylcbqOjjwTbNOBh4Efd7ldY3+M7vlwPWjm56rM5cUQxKs4HZbycrsBcK1ksWNTisUUYqL/5DQrz4YPO2MmwG3hodR+KAjDwRSynpBTR31WpTVk1LTbc/Fhvs3trn1zsK793TugbLHi9StJG0XVgakgFIKzMkqKAEQXEv/v79s84FIK+eyNcWGP0R70xbaQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
  dkim=pass header.d=sifive.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1LObPKV2I3TIgIm3aGytSrIHyCFApil+sQwyntJfBDc=;
- b=P/A1nIxk7sE2EIQwDo9HGmP42NUbPQs1g2kXJTpiufFb6ddey6v5/QCy305GYuHB+UPXahN5u8m5i1XrRc7hGqoXbYz47WtyWj+YsA7GyZmZ8B2nTE7TCWYyH+zLsZGlTB1E8sX8Okwaj7manVGkQwCOqzBaasNj7Os1eFM+1S0=
+ bh=3Sn0OSbRmZMqOfWAigYtrtVnYBqlhloFuzpBZkCY7os=;
+ b=GNQ+AUled/o9fM5I7VfBKGjQt4S06aui+fc3m8qwOiXL+Uzst0noXKbPsBX+Jlgv/uZc5B7Muoozfy9RwFu4T8CJG16fbOZ8BmKEhAOyaBI66LQW9psNLB5uqPiVKTgf/2kMfl6NOjQYeKSs4C3Yr6AUj4EpE19KnCQE8SERTug=
 Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
- CH2PR13MB3606.namprd13.prod.outlook.com (52.132.246.217) with Microsoft SMTP
+ CH2PR13MB3701.namprd13.prod.outlook.com (20.180.14.200) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.10; Thu, 21 Nov 2019 08:32:33 +0000
+ 15.20.2474.8; Thu, 21 Nov 2019 08:35:45 +0000
 Received: from CH2PR13MB3368.namprd13.prod.outlook.com
  ([fe80::853e:1256:311e:d29]) by CH2PR13MB3368.namprd13.prod.outlook.com
  ([fe80::853e:1256:311e:d29%7]) with mapi id 15.20.2474.018; Thu, 21 Nov 2019
- 08:32:33 +0000
+ 08:35:45 +0000
 From: Yash Shah <yash.shah@sifive.com>
-To: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Subject: RE: [PATCH v2 4/5] gpio: sifive: Add GPIO driver for SiFive SoCs
-Thread-Topic: [PATCH v2 4/5] gpio: sifive: Add GPIO driver for SiFive SoCs
-Thread-Index: AQHVn3AVOu1YvEqrSUK2kxGeF7Rov6eT0/+AgAF4gCA=
-Date: Thu, 21 Nov 2019 08:32:33 +0000
-Message-ID: <CH2PR13MB3368A85F74CA82994E8C0D1B8C4E0@CH2PR13MB3368.namprd13.prod.outlook.com>
+To: Marc Zyngier <maz@kernel.org>
+Subject: RE: [PATCH v2 1/5] genirq: introduce irq_domain_translate_onecell
+Thread-Topic: [PATCH v2 1/5] genirq: introduce irq_domain_translate_onecell
+Thread-Index: AQHVn3AJHBiRD+wuIUSzxWzN0+e/fqeT3o6AgAFvDhA=
+Date: Thu, 21 Nov 2019 08:35:44 +0000
+Message-ID: <CH2PR13MB33682B1E7B40DC5C2FD1094C8C4E0@CH2PR13MB3368.namprd13.prod.outlook.com>
 References: <1574233128-28114-1-git-send-email-yash.shah@sifive.com>
- <1574233128-28114-5-git-send-email-yash.shah@sifive.com>
- <CAMpxmJX0A+_6LmrWPe=Ne5KGhG9r_HySpstDhV5ZTnpz2QXF7Q@mail.gmail.com>
-In-Reply-To: <CAMpxmJX0A+_6LmrWPe=Ne5KGhG9r_HySpstDhV5ZTnpz2QXF7Q@mail.gmail.com>
+ <1574233128-28114-2-git-send-email-yash.shah@sifive.com>
+ <5ec51559d8b4cd3b8e80943788b52926@www.loen.fr>
+In-Reply-To: <5ec51559d8b4cd3b8e80943788b52926@www.loen.fr>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -66,42 +66,42 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=yash.shah@sifive.com; 
 x-originating-ip: [114.143.65.226]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: efe53d99-ae6c-4409-e020-08d76e5d5ae7
-x-ms-traffictypediagnostic: CH2PR13MB3606:
+x-ms-office365-filtering-correlation-id: 401f03cb-132e-4d51-f171-08d76e5dcd35
+x-ms-traffictypediagnostic: CH2PR13MB3701:
 x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <CH2PR13MB3606558442BD56B81775A4718C4E0@CH2PR13MB3606.namprd13.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-microsoft-antispam-prvs: <CH2PR13MB3701A082B564FE78E21731848C4E0@CH2PR13MB3701.namprd13.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
 x-forefront-prvs: 0228DDDDD7
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(6029001)(376002)(39840400004)(366004)(136003)(396003)(346002)(13464003)(189003)(199004)(86362001)(186003)(53546011)(6506007)(26005)(446003)(44832011)(11346002)(102836004)(14454004)(6916009)(5660300002)(7736002)(478600001)(52536014)(14444005)(7696005)(76116006)(305945005)(66946007)(74316002)(7416002)(76176011)(66476007)(25786009)(66446008)(64756008)(66556008)(81166006)(81156014)(3846002)(8936002)(6116002)(33656002)(99286004)(256004)(316002)(8676002)(54906003)(6246003)(107886003)(55016002)(9686003)(4326008)(66066001)(71200400001)(71190400001)(229853002)(2906002)(6436002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3606;
+ SFS:(10009020)(39840400004)(396003)(346002)(376002)(366004)(136003)(13464003)(189003)(199004)(446003)(76116006)(229853002)(52536014)(6116002)(256004)(14444005)(305945005)(186003)(7736002)(26005)(3846002)(74316002)(66066001)(8676002)(81166006)(11346002)(4326008)(76176011)(8936002)(86362001)(25786009)(53546011)(102836004)(81156014)(6506007)(7696005)(44832011)(71200400001)(4001150100001)(33656002)(54906003)(5660300002)(6246003)(107886003)(2906002)(478600001)(55016002)(64756008)(316002)(14454004)(9686003)(66476007)(66556008)(71190400001)(66446008)(99286004)(7416002)(6916009)(66946007)(6436002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3701;
  H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: sifive.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: GUbGOwExWAoAkA2lyxtdOwT5CfL9vEtcB2OyRM0uLVWgQzF9qsO+jMWJT0qzgShxrHygEeym3Nx6D2uQuqi5kpDu6J/wUZV6q2d4sqNL+pqA6/b97HVl2gw5HTcb3T5SNmu6m6zuoXp/r/qqPaTsv3dyJnkyXbRg+7gP2EmEdED/2k79B+cSFS06kZuEhIe4eXShVinF6zXOwB/6yqB8oHPOdcv1SxV6wCCqnqKJtWSvp5Glyl+yEicNMyGG5au4IN/8Ef7vdDHO1eA/9oYssR1VgeXtC5WvpjD4+hCuw3ry6tDp4QCUOK2Q8TWdLEqBiPaufp51DdibcROUO299vVtmswy/2/pBpObnw+64RGeji5MIyoFM1FjQVgFU8yJsBqMy+TY1aoNLtfx+GanNXbZ3w3S3Jl1/rE+a3Tv+4hEjNxgI3ydX/D6TtAKDxB5u
+x-microsoft-antispam-message-info: /HcBd7ADO5gnTAHnfOjeQEtjACQtFbmNT+WE7w2P6nmQqNRLAkM/IQ00j7qX+WjIxZGysYL3joXGp5IgjRHC0W9ICCrPps6qoR51bTRyj5an0gtNHSYJududOCAYxBor9cw3UCACXY84batAZ0wunzEcCaLvXHZoHttpVuAX1r3vA8OFH23XckF5sqnv4mB8jYmHiFRo84XPcwOcWzKk4sYdcLXTo4XQEuvA4zNDY442cxDg8vP1u/jfRt7/HwdmdkenzVM8MLahrdOM+cIUD3XnNw99FUvZCMjrUV7nVTquKrndKT0FxsOBRRVE8mdHg2vKm9XfifXDIUT5/f7Meh7t6AsMlLk1OEhHw62CI8eIbX/5lSj/fXDvIP66SEX/mfySjqpNpEgIvM7vrE4Dyrv2hkdKQwcLZQDJuFSavgwDaEQvRyOGVU8jesAefcuc
 MIME-Version: 1.0
 X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: efe53d99-ae6c-4409-e020-08d76e5d5ae7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2019 08:32:33.1474 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 401f03cb-132e-4d51-f171-08d76e5dcd35
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2019 08:35:44.8443 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Yh0JX270p+ErwDZVg19Bqh44nwlqt4Frx7Ee/wOFxTJ/IjQ/7jNamxTjQ629AHz7nP+gw1X69O9hgccOd4loTg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3606
+X-MS-Exchange-CrossTenant-userprincipalname: h46K2nORX+uV8wxgeIzakpLGfcIlOW2nKvbpYh0MpYOjVSaEZhsTe7JLwe4bVVQv6YeyzMtcZ0simxoQfVad7w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3701
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191121_003238_333549_A498EE4B 
-X-CRM114-Status: GOOD (  21.24  )
+X-CRM114-CacheID: sfid-20191121_003547_683461_727844EF 
+X-CRM114-Status: GOOD (  13.42  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.75.40 listed in list.dnswl.org]
+ no trust [40.107.72.63 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -126,92 +126,91 @@ Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
  "jason@lakedaemon.net" <jason@lakedaemon.net>,
- "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
- "maz@kernel.org" <maz@kernel.org>,
+ "atish.patra@wdc.com" <atish.patra@wdc.com>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>,
  "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "atish.patra@wdc.com" <atish.patra@wdc.com>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
  "robh+dt@kernel.org" <robh+dt@kernel.org>,
  "palmer@dabbelt.com" <palmer@dabbelt.com>,
- Sagar Kadam <sagar.kadam@sifive.com>, "Paul
- Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
+ Sagar Kadam <sagar.kadam@sifive.com>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ "Paul Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
  "tglx@linutronix.de" <tglx@linutronix.de>,
  "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Sachin Ghadi <sachin.ghadi@sifive.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBCYXJ0b3N6IEdvbGFzemV3c2tp
-IDxiZ29sYXN6ZXdza2lAYmF5bGlicmUuY29tPg0KPiBTZW50OiAyMCBOb3ZlbWJlciAyMDE5IDE1
-OjMxDQo+IFRvOiBZYXNoIFNoYWggPHlhc2guc2hhaEBzaWZpdmUuY29tPg0KPiBDYzogbGludXMu
-d2FsbGVpakBsaW5hcm8ub3JnOyByb2JoK2R0QGtlcm5lbC5vcmc7IG1hcmsucnV0bGFuZEBhcm0u
-Y29tOw0KPiBwYWxtZXJAZGFiYmVsdC5jb207IFBhdWwgV2FsbXNsZXkgKCBTaWZpdmUpIDxwYXVs
-LndhbG1zbGV5QHNpZml2ZS5jb20+Ow0KPiBhb3VAZWVjcy5iZXJrZWxleS5lZHU7IHRnbHhAbGlu
-dXRyb25peC5kZTsgamFzb25AbGFrZWRhZW1vbi5uZXQ7DQo+IG1hekBrZXJuZWwub3JnOyBibWVu
-Zy5jbkBnbWFpbC5jb207IGF0aXNoLnBhdHJhQHdkYy5jb207IFNhZ2FyIEthZGFtDQo+IDxzYWdh
-ci5rYWRhbUBzaWZpdmUuY29tPjsgbGludXgtZ3Bpb0B2Z2VyLmtlcm5lbC5vcmc7DQo+IGRldmlj
-ZXRyZWVAdmdlci5rZXJuZWwub3JnOyBsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnOyBs
-aW51eC0NCj4ga2VybmVsQHZnZXIua2VybmVsLm9yZzsgU2FjaGluIEdoYWRpIDxzYWNoaW4uZ2hh
-ZGlAc2lmaXZlLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MiA0LzVdIGdwaW86IHNpZml2
-ZTogQWRkIEdQSU8gZHJpdmVyIGZvciBTaUZpdmUgU29Dcw0KPiANCj4gxZtyLiwgMjAgbGlzIDIw
-MTkgbyAwNzo1OSBZYXNoIFNoYWggPHlhc2guc2hhaEBzaWZpdmUuY29tPiBuYXBpc2HFgihhKToN
-Cj4gPg0KPiA+IEFkZHMgdGhlIEdQSU8gZHJpdmVyIGZvciBTaUZpdmUgUklTQy1WIFNvQ3MuDQo+
-ID4NCj4gDQo+IFRoaXMgbG9va3MgbXVjaCBiZXR0ZXIganVzdCBhIGNvdXBsZSBuaXRzLg0KPiAN
-Cj4gPiBTaWduZWQtb2ZmLWJ5OiBXZXNsZXkgVy4gVGVycHN0cmEgPHdlc2xleUBzaWZpdmUuY29t
-Pg0KPiA+IFtBdGlzaDogVmFyaW91cyBmaXhlcyBhbmQgY29kZSBjbGVhbnVwXQ0KPiA+IFNpZ25l
-ZC1vZmYtYnk6IEF0aXNoIFBhdHJhIDxhdGlzaC5wYXRyYUB3ZGMuY29tPg0KPiA+IFNpZ25lZC1v
-ZmYtYnk6IFlhc2ggU2hhaCA8eWFzaC5zaGFoQHNpZml2ZS5jb20+DQpbLi4uXQ0KPiA+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1zaWZpdmUuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXNp
-Zml2ZS5jDQo+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQgaW5kZXggMDAwMDAwMC4uMDI2NjZhZQ0K
-PiA+IC0tLSAvZGV2L251bGwNCj4gPiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1zaWZpdmUuYw0K
-PiA+IEBAIC0wLDAgKzEsMjU2IEBADQo+ID4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBH
-UEwtMi4wDQo+ID4gKy8qDQo+ID4gKyAqIENvcHlyaWdodCAoQykgMjAxOSBTaUZpdmUNCj4gPiAr
-ICovDQo+IA0KPiBJIHByZWZlciB0byBoYXZlIGEgbmV3bGluZSBiZXR3ZWVuIHRoZSBjb3B5cmln
-aHQgbm90aWNlIGFuZCB0aGUgaGVhZGVycy4NCg0KRG9uZQ0KDQo+IA0KPiA+ICsjaW5jbHVkZSA8
-bGludXgvYml0b3BzLmg+DQo+ID4gKyNpbmNsdWRlIDxsaW51eC9kZXZpY2UuaD4NCj4gPiArI2lu
-Y2x1ZGUgPGxpbnV4L2Vycm5vLmg+DQo+ID4gKyNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4NCj4g
-PiArI2luY2x1ZGUgPGxpbnV4L2dwaW8vZHJpdmVyLmg+DQo+ID4gKyNpbmNsdWRlIDxsaW51eC9p
-bml0Lmg+DQo+ID4gKyNpbmNsdWRlIDxsaW51eC9vZi5oPg0KPiANCj4gSXMgdGhpcyByZWFsbHkg
-bmVlZGVkPyBJIG9ubHkgc2VlIGZ1bmN0aW9ucyBkZWZpbmVkIGluIG9mX2lycS5oLg0KPiANCj4g
-PiArI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPg0KPiA+ICsjaW5jbHVkZSA8bGlu
-dXgvcG0uaD4NCj4gDQo+IFNhbWUgaGVyZSAtIEkgZG9uJ3Qgc2VlIGFueSBmdW5jdGlvbnMgZnJv
-bSB0aGlzIGhlYWRlciBiZWluZyBjYWxsZWQuDQo+IA0KDQpZZXMsIHlvdSBhcmUgcmlnaHQuIEJv
-dGggdGhlIGFib3ZlIGluY2x1c2lvbiBvZiBoZWFkZXIgZmlsZSBpcyB1bm5lY2Vzc2FyeS4gV2ls
-bCByZW1vdmUgdGhlbS4NCg0KPiA+ICsjaW5jbHVkZSA8bGludXgvc2xhYi5oPg0KPiA+ICsjaW5j
-bHVkZSA8bGludXgvc3BpbmxvY2suaD4NCj4gPiArI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPg0K
-PiA+ICsNCj4gPiArI2RlZmluZSBHUElPX0lOUFVUX1ZBTCAweDAwDQo+ID4gKyNkZWZpbmUgR1BJ
-T19JTlBVVF9FTiAgMHgwNA0KPiA+ICsjZGVmaW5lIEdQSU9fT1VUUFVUX0VOIDB4MDgNCj4gPiAr
-I2RlZmluZSBHUElPX09VVFBVVF9WQUwgICAgICAgIDB4MEMNCj4gPiArI2RlZmluZSBHUElPX1JJ
-U0VfSUUgICAweDE4DQo+ID4gKyNkZWZpbmUgR1BJT19SSVNFX0lQICAgMHgxQw0KPiA+ICsjZGVm
-aW5lIEdQSU9fRkFMTF9JRSAgIDB4MjANCj4gPiArI2RlZmluZSBHUElPX0ZBTExfSVAgICAweDI0
-DQo+ID4gKyNkZWZpbmUgR1BJT19ISUdIX0lFICAgMHgyOA0KPiA+ICsjZGVmaW5lIEdQSU9fSElH
-SF9JUCAgIDB4MkMNCj4gPiArI2RlZmluZSBHUElPX0xPV19JRSAgICAweDMwDQo+ID4gKyNkZWZp
-bmUgR1BJT19MT1dfSVAgICAgMHgzNA0KPiA+ICsjZGVmaW5lIEdQSU9fT1VUUFVUX1hPUiAgICAg
-ICAgMHg0MA0KPiA+ICsNCj4gPiArI2RlZmluZSBNQVhfR1BJTyAgICAgICAgICAgICAgIDMyDQo+
-ID4gKyNkZWZpbmUgU0lGSVZFX0dQSU9fSVJRX09GRlNFVCA3DQo+IA0KPiBQbGVhc2UgdXNlIGEg
-c2luZ2xlIHByZWZpeCBmb3IgYWxsIHN5bWJvbHMgaW4gdGhpcyBkcml2ZXIuIExldCdzIHN0aWNr
-IHRvIHNpZml2ZV9ncGlvDQo+IGFuZCBTSUZJVkVfR1BJTyBmb3IgZGVmaW5lcy4NCg0KU3VyZS4N
-Cg0KPiANCj4gPiArDQo+ID4gK3N0cnVjdCBzaWZpdmVfZ3BpbyB7DQo+ID4gKyAgICAgICB2b2lk
-IF9faW9tZW0gICAgICAgICAgICAqYmFzZTsNCj4gPiArICAgICAgIHN0cnVjdCBncGlvX2NoaXAg
-ICAgICAgIGdjOw0KPiA+ICsgICAgICAgc3RydWN0IHJlZ21hcCAgICAgICAgICAgKnJlZ3M7DQo+
-ID4gKyAgICAgICB1MzIgICAgICAgICAgICAgICAgICAgICBlbmFibGVkOw0KPiANCj4gVGhlIG5h
-bWUgb2YgdGhpcyBmaWVsZCBpcyBhIGJpdCBjb25mdXNpbmcgLSBkbyB5b3UgbWluZCByZW5hbWlu
-ZyBpdCB0bw0KPiBzb21ldGhpbmcgbGlrZSBpcnFfc3RhdGU/IE1heWJlIHNvbWV0aGluZyBlbHNl
-LCBidXQgc2ltcGx5IHVzaW5nICdlbmFibGVkJw0KPiBtYWtlcyBtZSB0aGluayB0aGlzIGhhcyBt
-b3JlIHRvIGRvIHdpdGggdGhlIGNoaXAgYmVpbmcgZW5hYmxlZC4NCj4gDQoNClN1cmUsIHdpbGwg
-cmVuYW1lIGl0IHRvIGlycV9zdGF0ZS4NCg0KWy4uLl0NCj4gPiArICAgICAgIHNwaW5fbG9ja19p
-cnFzYXZlKCZjaGlwLT5nYy5iZ3Bpb19sb2NrLCBmbGFncyk7DQo+ID4gKyAgICAgICAvKiBEaXNh
-YmxlIGFsbCBHUElPIGludGVycnVwdHMgYmVmb3JlIGVuYWJsaW5nIHBhcmVudCBpbnRlcnJ1cHRz
-ICovDQo+ID4gKyAgICAgICByZWdtYXBfd3JpdGUoY2hpcC0+cmVncywgR1BJT19SSVNFX0lFLCAw
-KTsNCj4gPiArICAgICAgIHJlZ21hcF93cml0ZShjaGlwLT5yZWdzLCBHUElPX0ZBTExfSUUsIDAp
-Ow0KPiA+ICsgICAgICAgcmVnbWFwX3dyaXRlKGNoaXAtPnJlZ3MsIEdQSU9fSElHSF9JRSwgMCk7
-DQo+ID4gKyAgICAgICByZWdtYXBfd3JpdGUoY2hpcC0+cmVncywgR1BJT19MT1dfSUUsIDApOw0K
-PiA+ICsgICAgICAgc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmY2hpcC0+Z2MuYmdwaW9fbG9jaywg
-ZmxhZ3MpOw0KPiANCj4gTm8gbmVlZCBmb3IgbG9ja2luZyBpbiBwcm9iZSgpLg0KDQpPay4NClRo
-YW5rcyBmb3IgeW91ciBjb21tZW50cyENCg0KLSBZYXNoDQoNCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LXJpc2N2IG1haWxpbmcgbGlzdApsaW51
-eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcmlzY3YK
+> -----Original Message-----
+> From: Marc Zyngier <maz@kernel.org>
+> Sent: 20 November 2019 16:09
+> To: Yash Shah <yash.shah@sifive.com>
+> Cc: linus.walleij@linaro.org; bgolaszewski@baylibre.com;
+> robh+dt@kernel.org; mark.rutland@arm.com; palmer@dabbelt.com; Paul
+> Walmsley ( Sifive) <paul.walmsley@sifive.com>; aou@eecs.berkeley.edu;
+> tglx@linutronix.de; jason@lakedaemon.net; bmeng.cn@gmail.com;
+> atish.patra@wdc.com; Sagar Kadam <sagar.kadam@sifive.com>; linux-
+> gpio@vger.kernel.org; devicetree@vger.kernel.org; linux-
+> riscv@lists.infradead.org; linux-kernel@vger.kernel.org; Sachin Ghadi
+> <sachin.ghadi@sifive.com>
+> Subject: Re: [PATCH v2 1/5] genirq: introduce irq_domain_translate_onecell
+> 
+> On 2019-11-20 06:59, Yash Shah wrote:
+> > Add a new function irq_domain_translate_onecell() that is to be used
+> > as the translate function in struct irq_domain_ops for the v2 IRQ API.
+> >
+> > Signed-off-by: Yash Shah <yash.shah@sifive.com>
+[...]
+> >
+> >  /**
+> > + * irq_domain_translate_onecell() - Generic translate for direct one
+> > cell
+> > + * bindings
+> > + *
+> > + * Device Tree IRQ specifier translation function which works with
+> > one cell
+> 
+> nit: the whole point of the 'new' translate function is that they are
+> firmware-agnostic. Just drop the DT reference here.
+
+Ok sure.
+
+> 
+> > + * bindings where the cell values map directly to the hwirq number.
+> > + */
+> > +int irq_domain_translate_onecell(struct irq_domain *d,
+> > +				 struct irq_fwspec *fwspec,
+> > +				 unsigned long *out_hwirq,
+> > +				 unsigned int *out_type)
+> > +{
+> > +	if (WARN_ON(fwspec->param_count < 1))
+> > +		return -EINVAL;
+> > +	*out_hwirq = fwspec->param[0];
+> > +	*out_type = IRQ_TYPE_NONE;
+> > +	return 0;
+> > +}
+> > +EXPORT_SYMBOL_GPL(irq_domain_translate_onecell);
+> > +
+> > +/**
+> >   * irq_domain_translate_twocell() - Generic translate for direct two
+> > cell
+> >   * bindings
+> >   *
+> 
+> Can you please also update (potentially in a separate patch) the
+> potential
+> users of this? I mentioned the nvic driver last time...
+> 
+
+Ok, I will separate out this patch from the patchset and send it individually along with potential users of it.
+Thanks for your comments
+
+- Yash
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
