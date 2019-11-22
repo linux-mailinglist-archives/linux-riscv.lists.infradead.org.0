@@ -2,79 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F34B107AF2
-	for <lists+linux-riscv@lfdr.de>; Fri, 22 Nov 2019 23:57:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F9D8107AF4
+	for <lists+linux-riscv@lfdr.de>; Fri, 22 Nov 2019 23:58:10 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6fzgr2LaL3KAAZDsqQ+9qlwPKR13tavvAAN7+MZBGtA=; b=F6xGASAsAI3dcB
-	9vxSwurrRCIv8sFAChLniRroYAm6O2J25ELT4NbGHZ6JPshcdjAzVGhLt9PMV8vOJvhpN8Ne08vnG
-	zLtEKCPRzVSo1fn/fCqPo8kdt0fCaQYpNo8LYo4PFuHBwhCxnnwD4rLqW9mYnpc+l/zRX04tAjWVa
-	I+u95jWlMGAAYd3XiAsbZ6fec23CiuFflag0DWcL3pxgYylXD3yrZ+lIJzdh2lwGu5hHO/K3KbVlH
-	Ak2TrlAWzjV6JmERSPl0CfmnejWZpUQT50djwMlOdufF+hA6RL6670D8SNp4RVA2BhAeqvysCdOb5
-	hFKAs03FBSobJFQvDTzw==;
+	List-Owner; bh=E28fG3lmTfzbLSXj4PKC+hzkgLadL/nyjghzP+GBLBA=; b=Kj4+mvevpX5DP7
+	UOCR+dLkxJXuLg0EWVdnLsWiqCYRrrGLfoNQcP9KEPzBWoLfRTqwv0hEV3/4o9+t4DCHrexq6NFXL
+	N9O/+dqBLxb0MjwxmzhphcigbIOZCq1KRvQ4mVut6uIxS4tv7DtvZzs2RpLQxRl4RLE4c5H9aYtv2
+	CQ++Pc7MYFJPWR8J37dgWO56zJomqtLebxyrZeNzp1v6WzLDyGxWr0CF9Wcq5Vzhq65RV0w5Rezr6
+	z7aFY7Oa21bGNXkXpGHdqmLQb6RzpmY7Pqhmn6MFcaRCV0EkLO2L8jkKmDKDjPSF3KXkzps4/W4Ue
+	q38AYrp2oKOrCCUOSoAQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYHs8-0008Rn-MZ; Fri, 22 Nov 2019 22:57:52 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1iYHsK-0008WH-Mu; Fri, 22 Nov 2019 22:58:04 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYHs5-0008Qw-Db
- for linux-riscv@lists.infradead.org; Fri, 22 Nov 2019 22:57:50 +0000
-Received: by mail-il1-x143.google.com with SMTP id p6so8570428ilp.1
- for <linux-riscv@lists.infradead.org>; Fri, 22 Nov 2019 14:57:49 -0800 (PST)
+ id 1iYHsG-0008VG-Uz
+ for linux-riscv@lists.infradead.org; Fri, 22 Nov 2019 22:58:02 +0000
+Received: by mail-io1-xd44.google.com with SMTP id p12so2604372iog.10
+ for <linux-riscv@lists.infradead.org>; Fri, 22 Nov 2019 14:58:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=u3ZBGYnvbJ/3nC+9DjDgIqK97Mwi6LQxKmI4rG9RExg=;
- b=ZNg6oVsYlzBrw+efMsCCKJFqUM7pP5WJAG3qgMjIb0gYMFdfjOLDYsIxGc8FzaxZ1u
- RbVAQ2XiHWGtar5BEx1bZQmXaUagK/styfpLTil1J057VCH5u4FGEc5J7f/XRUqlAYAs
- i5HpA2gbxnG8lOh0IeB+P0Q9UqAVktrc+UYcSQfdo3LZHQpX81RZI3ImSIIujMdA1797
- uv3Yp9rNZ9DnTtkCi2392cEkIk2qJNF453a8+tvt8BK9Y13Q0HvO3tuCwK5KNcS5BNbe
- jlYieAQgReeHxuyWipzj2dBlt8eEu3IimpQSd7QcQA6SijuBE0Rdhtbi6CE8+SXm4YFb
- 2LKw==
+ bh=99kjuSaTfqi/O4G1kyhfKCZh2c7fOK6oatEBRmcILQ8=;
+ b=B7JQEyBNYP1GfiTbFxMdlna/NrN43milA+eYIgVGqzaFgJaFpveYCXriOZYZleY7H6
+ VDbr0mTRD/N42M7YlMymtYO6USoYJ7dFqsKjdw9+tgexKWfR3Lvnqp5UyBy6THWlOzMy
+ WDSWxznb4l3auRftRXKogDP6R6azYkLTvkqtVSDLtrN1/j2tqWhdDKttoGV4qtDtwsRh
+ 108Gt3dTDkh/k5dG4tliY5bZtluAg/B5JbEEzZB30m/jinBhQNBM9B49A4EGsj9Axov2
+ zpjHmv+2uIgcoDaH/RE0qXyZsEv+uCoAcq3MvTwHVX0R6NZwKJpc3EzumA245/PIkexZ
+ +gIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=u3ZBGYnvbJ/3nC+9DjDgIqK97Mwi6LQxKmI4rG9RExg=;
- b=hUakf0Mp8lD3PhgNIqtGdBKKMXlqbhbu99exeMnm3mD3t7n+GQpWgPJSKB2WNovMST
- YtfMXTYW3ZBbrp1zOCynRZFuZXRZ+yGMEy+0hhIFdqyeqC+2FppkPWF52yi8pJ8FhrcH
- I5I36NyvGjBa/YP47A3fwwaFf9Vko6xluCA+pGYfxxvS23h5kvU9kDOwjxvkjAHDMdzk
- m7/bUzDSta+rhDebjqI+g9lgkVg8ZHPPpatGhq+sqB6flkNfu4N1TjejqfqxWNmo3g7j
- NAy4LdjpjyR34P9epmcVAjp3amSmt0WLU8iKsOziWRaJgEm1EYrUwQOtrCt8OXPNbe6w
- tYAg==
-X-Gm-Message-State: APjAAAVYACwZ1/gpY27UDRmfOsJtW2bkoqxUceDKGB+euJiD0LXdWwTC
- G+Msy9BG6NiRlvnx+t8Kpa8GI5jY0S8=
-X-Google-Smtp-Source: APXvYqxtiKJSC7igr3lL77ErIu+id/gxtWpxS43pAdQZ2RUOnTCZoaoEUbp6J8KXzVQejZdOdWf0NQ==
-X-Received: by 2002:a92:109c:: with SMTP id 28mr19458344ilq.142.1574463468403; 
- Fri, 22 Nov 2019 14:57:48 -0800 (PST)
+ bh=99kjuSaTfqi/O4G1kyhfKCZh2c7fOK6oatEBRmcILQ8=;
+ b=Rh5adDJiHLOE6xP1cRX3k5eMkd/BwHFJamCDa93zWrU2RsAdfTdmzP++cKrySQ6ace
+ 0PNLWawahuBTM/Aoq+UqS9vIIIcKmkQ9SqdPAItjRVi7aNnpIeSLWQ4bLBiLSJCMlVbN
+ fjUIICaYMQVXF/MWRCruyZujhSAh1PX7yUoMTVLlvgtL5ALdV1KHd8dctkzXIl34mxEc
+ h0RRpk64JwlYj3oxw5E6ey8p0RHwYBfjtbqgjhnWmr3ej8vRH0VrL/BBREeSuYBGIogC
+ pNXUUgabg/1HT5Z0bt8HhuedqxfH8kAN978iIh27ppHPAk47USG+jf3Z6gOYqc916p7i
+ ktIQ==
+X-Gm-Message-State: APjAAAUcwhEdbm1Wu7vURKt4aN2YXz2iGNVgkFTfyQiICDcqJ+AhHnKg
+ NnjBCPT+tLIH0gpry7HCICZK14wA+8c=
+X-Google-Smtp-Source: APXvYqycb34XtfKRGUpVDlBDfOTeyet9l4IX6fAabGzR//Fr+CRZaoeKUT1/lzsQoErO4Ytb1jHG1A==
+X-Received: by 2002:a02:a798:: with SMTP id e24mr660532jaj.77.1574463479845;
+ Fri, 22 Nov 2019 14:57:59 -0800 (PST)
 Received: from viisi.Home ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id x9sm3277098ilp.43.2019.11.22.14.57.39
+ by smtp.gmail.com with ESMTPSA id x9sm3277098ilp.43.2019.11.22.14.57.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Nov 2019 14:57:41 -0800 (PST)
+ Fri, 22 Nov 2019 14:57:56 -0800 (PST)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 To: linux-riscv@lists.infradead.org
-Subject: [PATCH 1/2] riscv: defconfigs: enable debugfs
-Date: Fri, 22 Nov 2019 14:56:58 -0800
-Message-Id: <20191122225659.21876-2-paul.walmsley@sifive.com>
+Subject: [PATCH 2/2] riscv: defconfigs: enable more debugging options
+Date: Fri, 22 Nov 2019 14:56:59 -0800
+Message-Id: <20191122225659.21876-3-paul.walmsley@sifive.com>
 X-Mailer: git-send-email 2.24.0.rc0
 In-Reply-To: <20191122225659.21876-1-paul.walmsley@sifive.com>
 References: <20191122225659.21876-1-paul.walmsley@sifive.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191122_145749_459426_2C75CF9F 
-X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-CacheID: sfid-20191122_145801_000897_46E63B6F 
+X-CRM114-Status: UNSURE (   7.32  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: 0.6 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.6 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:143 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -85,6 +85,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ 0.8 UPPERCASE_50_75        message body is 50-75% uppercase
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,34 +103,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-debugfs is broadly useful, so enable it in the RISC-V defconfigs.
+Enable more debugging options in the RISC-V defconfigs to help kernel
+developers catch problems with patches earlier in the development
+cycle.
 
 Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
 ---
- arch/riscv/configs/defconfig      | 1 +
- arch/riscv/configs/rv32_defconfig | 1 +
- 2 files changed, 2 insertions(+)
+ arch/riscv/configs/defconfig      | 23 +++++++++++++++++++++++
+ arch/riscv/configs/rv32_defconfig | 23 +++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
 
 diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-index 420a0dbef386..f0710d8f50cc 100644
+index f0710d8f50cc..e2ff95cb3390 100644
 --- a/arch/riscv/configs/defconfig
 +++ b/arch/riscv/configs/defconfig
-@@ -100,4 +100,5 @@ CONFIG_9P_FS=y
- CONFIG_CRYPTO_USER_API_HASH=y
+@@ -101,4 +101,27 @@ CONFIG_CRYPTO_USER_API_HASH=y
  CONFIG_CRYPTO_DEV_VIRTIO=y
  CONFIG_PRINTK_TIME=y
-+CONFIG_DEBUG_FS=y
+ CONFIG_DEBUG_FS=y
++CONFIG_DEBUG_PAGEALLOC=y
++CONFIG_DEBUG_VM=y
++CONFIG_DEBUG_VM_PGFLAGS=y
++CONFIG_DEBUG_MEMORY_INIT=y
++CONFIG_DEBUG_PER_CPU_MAPS=y
++CONFIG_SOFTLOCKUP_DETECTOR=y
++CONFIG_WQ_WATCHDOG=y
++CONFIG_SCHED_STACK_END_CHECK=y
++CONFIG_DEBUG_TIMEKEEPING=y
++CONFIG_DEBUG_RT_MUTEXES=y
++CONFIG_DEBUG_SPINLOCK=y
++CONFIG_DEBUG_MUTEXES=y
++CONFIG_DEBUG_RWSEMS=y
++CONFIG_DEBUG_ATOMIC_SLEEP=y
++CONFIG_STACKTRACE=y
++CONFIG_DEBUG_LIST=y
++CONFIG_DEBUG_PLIST=y
++CONFIG_DEBUG_SG=y
  # CONFIG_RCU_TRACE is not set
++CONFIG_RCU_EQS_DEBUG=y
++CONFIG_DEBUG_BLOCK_EXT_DEVT=y
++# CONFIG_FTRACE is not set
++# CONFIG_RUNTIME_TESTING_MENU is not set
++CONFIG_MEMTEST=y
 diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
-index 87ee6e62b64b..bdec58e6c5f7 100644
+index bdec58e6c5f7..eb519407c841 100644
 --- a/arch/riscv/configs/rv32_defconfig
 +++ b/arch/riscv/configs/rv32_defconfig
-@@ -97,4 +97,5 @@ CONFIG_9P_FS=y
- CONFIG_CRYPTO_USER_API_HASH=y
+@@ -98,4 +98,27 @@ CONFIG_CRYPTO_USER_API_HASH=y
  CONFIG_CRYPTO_DEV_VIRTIO=y
  CONFIG_PRINTK_TIME=y
-+CONFIG_DEBUG_FS=y
+ CONFIG_DEBUG_FS=y
++CONFIG_DEBUG_PAGEALLOC=y
++CONFIG_DEBUG_VM=y
++CONFIG_DEBUG_VM_PGFLAGS=y
++CONFIG_DEBUG_MEMORY_INIT=y
++CONFIG_DEBUG_PER_CPU_MAPS=y
++CONFIG_SOFTLOCKUP_DETECTOR=y
++CONFIG_WQ_WATCHDOG=y
++CONFIG_SCHED_STACK_END_CHECK=y
++CONFIG_DEBUG_TIMEKEEPING=y
++CONFIG_DEBUG_RT_MUTEXES=y
++CONFIG_DEBUG_SPINLOCK=y
++CONFIG_DEBUG_MUTEXES=y
++CONFIG_DEBUG_RWSEMS=y
++CONFIG_DEBUG_ATOMIC_SLEEP=y
++CONFIG_STACKTRACE=y
++CONFIG_DEBUG_LIST=y
++CONFIG_DEBUG_PLIST=y
++CONFIG_DEBUG_SG=y
  # CONFIG_RCU_TRACE is not set
++CONFIG_RCU_EQS_DEBUG=y
++CONFIG_DEBUG_BLOCK_EXT_DEVT=y
++# CONFIG_FTRACE is not set
++# CONFIG_RUNTIME_TESTING_MENU is not set
++CONFIG_MEMTEST=y
 -- 
 2.24.0.rc0
 
