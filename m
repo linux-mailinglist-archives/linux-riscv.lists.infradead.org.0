@@ -2,73 +2,70 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86496107BAA
-	for <lists+linux-riscv@lfdr.de>; Sat, 23 Nov 2019 00:53:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0421B107C0D
+	for <lists+linux-riscv@lfdr.de>; Sat, 23 Nov 2019 01:34:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:Message-ID:To:From:In-Reply-To:Subject:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=nKnrDao2zUfJJSLtrorNPVEv//zdkbbdBuN3e2WX8jc=; b=oj3nLiR65luYSOoqPw3qEHDGu
-	8wg55Kl/Ej94TpienuWjYKbFBW2ulzbYcQUgurh12kxIwOEnqBesyHWGVmK39xHzHcRZwhychjMBv
-	sUFp23BoiODfGJxiOLNzdACoXhqEwbjc4gtI7Ng108USgTpENWIDI/p8rAhdenRrJA9fXkfNtDV1W
-	dueEbWg90Palcv2BDdfiMYKKf0mTFDcqzzRwnJf8mIJE0iP94hQ6jY9G9OX/ixEeQVbHEn2GufH5I
-	HDcrPxwTNEBD7Eb8pFzCGIQIxkTXtKVb7/gJf8P4hgyLnI6u+coM+yuHfvtGk6KmTjU6XE+la+Nm5
-	wCylm3HUg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=pbHj9oAoCIaTpPtDtfOTklB2pkDBwgvkn34bOKPHhKg=; b=bsIvpkln1Kxa1H
+	KLwl7QJvjar/lgjIoab5I5u80PyDeURzuG71h/OUstlXQkSBzL8y5rb/esSWPRFaO4vyYk/X5qFJJ
+	j59FfHJwpXidkoKGwnWD1CtHucMfwC1Nr5XFJYgF+ec5ZS+KA8hbaju42u8Y0yQfkFe0iV1DpaZ6Z
+	Mg0FJbFf4HvXHufv0nWOcT8nArg7f7t4BzJQnc1GG/egGby+ZpeAu5jUmKkJ/5qhqZF2RfumWuxrQ
+	312vJOyEMFM38e3Xbxwgh26aExIMbzdm1lE46SvVWNFuoBnTHWzFlS96srXPrD/oYF6Lr8FXB3U5H
+	mbUeH/BfBJR5/KU6dm4g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYIjj-0004QB-TH; Fri, 22 Nov 2019 23:53:15 +0000
+	id 1iYJNl-0001U8-M9; Sat, 23 Nov 2019 00:34:37 +0000
 Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYIjf-0004NW-7q
- for linux-riscv@lists.infradead.org; Fri, 22 Nov 2019 23:53:12 +0000
-Received: by mail-pf1-x441.google.com with SMTP id i187so99457pfc.7
- for <linux-riscv@lists.infradead.org>; Fri, 22 Nov 2019 15:53:08 -0800 (PST)
+ id 1iYJNi-0001TW-04
+ for linux-riscv@lists.infradead.org; Sat, 23 Nov 2019 00:34:35 +0000
+Received: by mail-pf1-x441.google.com with SMTP id i187so160720pfc.7
+ for <linux-riscv@lists.infradead.org>; Fri, 22 Nov 2019 16:34:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=hGAas7kbfHEyduv+qdDvn9qOuG+QbmzDwbHASjA3jcU=;
- b=pj4DGDZ1nbrVcXZWpL8KUkxPGpmLOFPsaxSKDWTo+GotooYRqGqGPkpynSYiRdngOh
- cCSWFvHCasu+bQBjEmLAPbCzqtENh6C/41p+62l4bX73LDW5BeDSGCfvfZfDwNCVcWCE
- RoEcw+qj0Q6X1HCTdeIS32UGXPfXIhYm2dWIpVSwAZRld7EK7pAJeyKOvAJQGRmwuVXE
- VZIbtCsRCJv98LJatgyTpvsH06/PsYZB2O+F73gHe3lgy7eneevuukJLftYHJzCDcD2T
- 0t4zwLp8L0q5L6d6XMdz9gLAs67stVDPsT1Q/f82FbrQUEgI/lZGUhS4QMHKZpEjABje
- HafA==
+ h=date:subject:in-reply-to:cc:from:to:message-id;
+ bh=Wc5BiZ4I36HRDEEesag6zOFOwEaj3z0DfK9Nrlush+M=;
+ b=DAFRx87WKODf/taUcv5k3GFO0oVJuxdM0hqW2dr/FlpkY7X01nEEoYXCHuUiYfkweO
+ xuInVbogrsuKkR8EYh0aRNgNGGJnzWDVyE6ZQ+KTdgIJqV3AFRRFkhu+0/XOLq4Hal6Z
+ ajCWdNc3XxUYsgn0EGt1Ze91c8MzjiaEI2zGMNNfonWg/p7Q7YWLNOXFNpZFGY8kO+B5
+ xTOwwcYcVTUZpc2wWUR8hWAjxE+rHRlsYmwWmddhEFPNNQj07mwkHCoNY5npl15+V22e
+ 2U1Q1M65y/usY/iclKE6/YOQvhjF1TqDsje3JAegdIAQXa6SfmrsDlCiepT3wC1Zoiep
+ BCfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=hGAas7kbfHEyduv+qdDvn9qOuG+QbmzDwbHASjA3jcU=;
- b=d6CD5XFKwqvBW9L2YfJ/AlFCCV9d4MfHR3NP7fijKC6kj7GhVcEBSVVmEWy0GeQ0/c
- c2QI7lVPlik1lzjxJEpnnmGGicC5f6nHuzoSdwJgHjFE79G0Ws7E2id7q+e8n66suqZ6
- gZKbrzk3PELW8+j5Xv8JC6hfrQJUIFldkcTu33j5IfMe43Ao6gCuxsFMn3yEFCE/MlZa
- FxNfDSa2bm+40QB+VUHh6SGVoLAP/nqbJEjtAS8Fgeyc3Cp2wlNsZ4MxdH5GtrUxUYpT
- AeZQZ6YB7PxqpivNJ665VmjzLnXEZYDTeXlK+6i4xK9wIKjHnghUmi89BMYh+cwnQmpE
- 9xEA==
-X-Gm-Message-State: APjAAAUJq2R27LS6Y03yeXnJfIN8HocntVmYduAotdbkIahq8RgcsBWc
- 1nNCFnmNN1DE5Aj9xj4kH6JTLSuOLB8=
-X-Google-Smtp-Source: APXvYqw99JsgPoFTCZ13835v1K37KM8rcO8/jaVQxczy+Przjc8a7wzamUt/r7KH8d14gd9sD7OBhA==
-X-Received: by 2002:a62:4d43:: with SMTP id a64mr20955676pfb.197.1574466787744; 
- Fri, 22 Nov 2019 15:53:07 -0800 (PST)
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id;
+ bh=Wc5BiZ4I36HRDEEesag6zOFOwEaj3z0DfK9Nrlush+M=;
+ b=m6eJ3kzvE2vxLythwmwddUVpmXn75cgjmCum2oJNzp/4ojrWv8P3SURVxEou3pWDwD
+ Y4Anaf9JKlaIYv0xDiwrgUKILwlcKKJhhAPdLG087sxbqUg1Jsim5s6HciWb32v9V+xW
+ 9BZPcWOxApMOcAjypoYG/CPW1l4MpmvlQbuJK619cxMUj5tA+VP4ppirv0KeXC5ylbrY
+ 1DGxnmBT6vLPDjdzprlPitsWrsOIyBLHTwwTRmgjK9Jm9m0GHx77MhopAv2lteH8/zSP
+ Ifej0XdKuhHJgGEOwdjr9UBy/Py+kYqDBygzMRjLvpAXCczYPIixvOPO6V9wa1bH/XQu
+ H8Tg==
+X-Gm-Message-State: APjAAAW0d6UzdaLDwobKOnaa7Mny02kOlNwaMYHJJ8z1QP42rabn4S69
+ cJZ4Et3Kt0Qm1GhwlsTCeLFWv97kitU=
+X-Google-Smtp-Source: APXvYqycGUwOGtI9grWjunlCYHSGXUm7Ws9eGxG4NRCjB1ejXFBbTbjFJ8i+ZHZ8PJptBniA/Nj0jg==
+X-Received: by 2002:aa7:9a96:: with SMTP id w22mr21660060pfi.162.1574469272664; 
+ Fri, 22 Nov 2019 16:34:32 -0800 (PST)
 Received: from localhost ([2620:15c:211:200:12cb:e51e:cbf0:6e3f])
- by smtp.gmail.com with ESMTPSA id j20sm8374170pff.182.2019.11.22.15.53.07
+ by smtp.gmail.com with ESMTPSA id x186sm8700961pfx.105.2019.11.22.16.34.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Nov 2019 15:53:07 -0800 (PST)
-Date: Fri, 22 Nov 2019 15:53:07 -0800 (PST)
-X-Google-Original-Date: Fri, 22 Nov 2019 15:37:38 PST (-0800)
-Subject: Re: [PATCH 2/2] riscv: defconfigs: enable more debugging options
-In-Reply-To: <20191122225659.21876-3-paul.walmsley@sifive.com>
+ Fri, 22 Nov 2019 16:34:32 -0800 (PST)
+Date: Fri, 22 Nov 2019 16:34:32 -0800 (PST)
+X-Google-Original-Date: Fri, 22 Nov 2019 16:34:08 PST (-0800)
+Subject: Re: [PATCH 0/2] riscv: defconfigs: enable debugging options 
+In-Reply-To: <20191122225659.21876-1-paul.walmsley@sifive.com>
 From: Palmer Dabbelt <palmerdabbelt@google.com>
 To: Paul Walmsley <paul.walmsley@sifive.com>
-Message-ID: <mhng-8455ab79-f2b9-437d-81ed-814dd06328a4@palmerdabbelt.mtv.corp.google.com>
-Mime-Version: 1.0 (MHng)
+Message-ID: <mhng-a92b32ea-0365-407c-9569-1ebce2d3b37f@palmerdabbelt.mtv.corp.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191122_155311_278332_E8A75354 
-X-CRM114-Status: GOOD (  12.62  )
-X-Spam-Score: -14.9 (--------------)
+X-CRM114-CacheID: sfid-20191122_163434_068951_C4BB494E 
+X-CRM114-Status: GOOD (  11.94  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-14.9 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
@@ -87,7 +84,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.8 UPPERCASE_50_75        message body is 50-75% uppercase
  -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
  Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -102,88 +98,69 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 22 Nov 2019 14:56:59 PST (-0800), Paul Walmsley wrote:
-> Enable more debugging options in the RISC-V defconfigs to help kernel
-> developers catch problems with patches earlier in the development
-> cycle.
+On Fri, 22 Nov 2019 14:56:57 PST (-0800), Paul Walmsley wrote:
+> Enable more debugging options in the defconfig.  Debugfs is generally
+> useful for everyone; the other options are intended to make it easier
+> for developers and testers to catch problems earlier.
 >
-> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
-> ---
->  arch/riscv/configs/defconfig      | 23 +++++++++++++++++++++++
->  arch/riscv/configs/rv32_defconfig | 23 +++++++++++++++++++++++
->  2 files changed, 46 insertions(+)
 >
-> diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-> index f0710d8f50cc..e2ff95cb3390 100644
-> --- a/arch/riscv/configs/defconfig
-> +++ b/arch/riscv/configs/defconfig
-> @@ -101,4 +101,27 @@ CONFIG_CRYPTO_USER_API_HASH=y
->  CONFIG_CRYPTO_DEV_VIRTIO=y
->  CONFIG_PRINTK_TIME=y
->  CONFIG_DEBUG_FS=y
-> +CONFIG_DEBUG_PAGEALLOC=y
-> +CONFIG_DEBUG_VM=y
-> +CONFIG_DEBUG_VM_PGFLAGS=y
-> +CONFIG_DEBUG_MEMORY_INIT=y
-> +CONFIG_DEBUG_PER_CPU_MAPS=y
-> +CONFIG_SOFTLOCKUP_DETECTOR=y
-> +CONFIG_WQ_WATCHDOG=y
-> +CONFIG_SCHED_STACK_END_CHECK=y
-> +CONFIG_DEBUG_TIMEKEEPING=y
-> +CONFIG_DEBUG_RT_MUTEXES=y
-> +CONFIG_DEBUG_SPINLOCK=y
-> +CONFIG_DEBUG_MUTEXES=y
-> +CONFIG_DEBUG_RWSEMS=y
-> +CONFIG_DEBUG_ATOMIC_SLEEP=y
-> +CONFIG_STACKTRACE=y
-> +CONFIG_DEBUG_LIST=y
-> +CONFIG_DEBUG_PLIST=y
-> +CONFIG_DEBUG_SG=y
->  # CONFIG_RCU_TRACE is not set
-> +CONFIG_RCU_EQS_DEBUG=y
-> +CONFIG_DEBUG_BLOCK_EXT_DEVT=y
-> +# CONFIG_FTRACE is not set
-> +# CONFIG_RUNTIME_TESTING_MENU is not set
-> +CONFIG_MEMTEST=y
-> diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_defconfig
-> index bdec58e6c5f7..eb519407c841 100644
-> --- a/arch/riscv/configs/rv32_defconfig
-> +++ b/arch/riscv/configs/rv32_defconfig
-> @@ -98,4 +98,27 @@ CONFIG_CRYPTO_USER_API_HASH=y
->  CONFIG_CRYPTO_DEV_VIRTIO=y
->  CONFIG_PRINTK_TIME=y
->  CONFIG_DEBUG_FS=y
-> +CONFIG_DEBUG_PAGEALLOC=y
-> +CONFIG_DEBUG_VM=y
-> +CONFIG_DEBUG_VM_PGFLAGS=y
-> +CONFIG_DEBUG_MEMORY_INIT=y
-> +CONFIG_DEBUG_PER_CPU_MAPS=y
-> +CONFIG_SOFTLOCKUP_DETECTOR=y
-> +CONFIG_WQ_WATCHDOG=y
-> +CONFIG_SCHED_STACK_END_CHECK=y
-> +CONFIG_DEBUG_TIMEKEEPING=y
-> +CONFIG_DEBUG_RT_MUTEXES=y
-> +CONFIG_DEBUG_SPINLOCK=y
-> +CONFIG_DEBUG_MUTEXES=y
-> +CONFIG_DEBUG_RWSEMS=y
-> +CONFIG_DEBUG_ATOMIC_SLEEP=y
-> +CONFIG_STACKTRACE=y
-> +CONFIG_DEBUG_LIST=y
-> +CONFIG_DEBUG_PLIST=y
-> +CONFIG_DEBUG_SG=y
->  # CONFIG_RCU_TRACE is not set
-> +CONFIG_RCU_EQS_DEBUG=y
-> +CONFIG_DEBUG_BLOCK_EXT_DEVT=y
-> +# CONFIG_FTRACE is not set
-> +# CONFIG_RUNTIME_TESTING_MENU is not set
-> +CONFIG_MEMTEST=y
+> - Paul
+>
+> Paul Walmsley (2):
+>   riscv: defconfigs: enable debugfs
+>   riscv: defconfigs: enable more debugging options
+>
+>  arch/riscv/configs/defconfig      | 24 ++++++++++++++++++++++++
+>  arch/riscv/configs/rv32_defconfig | 24 ++++++++++++++++++++++++
+>  2 files changed, 48 insertions(+)
+>
+>
+> Kernel object size difference:
+>    text	   data	    bss	    dec	    hex	filename
+> 6665154	2132584	 312608	9110346	 8b034a	vmlinux.rv64.orig
+> 6779347	2299448	 313600	9392395	 8f510b	vmlinux.rv64.patched
+> 6445414	1797616	 255248	8498278	 81ac66	vmlinux.rv32.orig
+> 6552029	1921996	 257448	8731473	 853b51	vmlinux.rv32.patched
 
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Does it make sense to turn on some CONFIG_*_SELFTEST entries as well?  I know
+I've found RISC-V bugs with ATOMIC64_SELFTEST before, but they do take a while
+to run.  I just turned on 
+
+    diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+    index 420a0dbef386..90001c3746cd 100644
+    --- a/arch/riscv/configs/defconfig
+    +++ b/arch/riscv/configs/defconfig
+    @@ -100,4 +100,18 @@ CONFIG_9P_FS=y
+     CONFIG_CRYPTO_USER_API_HASH=y
+     CONFIG_CRYPTO_DEV_VIRTIO=y
+     CONFIG_PRINTK_TIME=y
+    +CONFIG_DEBUG_RT_MUTEXES=y
+    +CONFIG_DEBUG_SPINLOCK=y
+    +CONFIG_DEBUG_MUTEXES=y
+    +CONFIG_DEBUG_RWSEMS=y
+    +CONFIG_DEBUG_ATOMIC_SLEEP=y
+    +CONFIG_DEBUG_LOCKING_API_SELFTESTS=y
+    +CONFIG_LOCK_TORTURE_TEST=y
+    +CONFIG_WW_MUTEX_SELFTEST=y
+    +CONFIG_RCU_PERF_TEST=y
+    +CONFIG_RCU_TORTURE_TEST=y
+     # CONFIG_RCU_TRACE is not set
+    +CONFIG_PERCPU_TEST=m
+    +CONFIG_ATOMIC64_SELFTEST=y
+    +CONFIG_TEST_LKM=m
+    +CONFIG_TEST_USER_COPY=m
+
+as an experiment and OE looks like it's still functional, but it looks like the
+lock torture stuff keeps running and the RCU torture can't run at the same
+time.
+
+Either way, this looks good to me!
 
 _______________________________________________
 linux-riscv mailing list
