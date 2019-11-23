@@ -2,79 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB991107C93
-	for <lists+linux-riscv@lfdr.de>; Sat, 23 Nov 2019 03:57:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E9FA2107C99
+	for <lists+linux-riscv@lfdr.de>; Sat, 23 Nov 2019 04:03:35 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QlDq9OrQLbwTmknOffLglOwiRgwzp7QfjYTQmFzv6Ps=; b=iIN4u7Xk3XEfGt
-	5PZ5LjueHbHEHQkEoL/yam1S2HDsXg+HeQUOHLJMdFVI11MMTs5rgvq5gvRLtV0qvSqPayfpygXbo
-	AjA5NmAgOUW0yQvhjF+eoyrKmxWIMD/fp7qII5VyfrvpUxISzDmWpXvUQM7+rhUaoHTv/kKQmCk+H
-	0ZElMFMYAjBWTLrELJNdLxQ0OUMu6Wd0UkDJOj61UVOj9q+tCuQChJZPXO1/8Mpgl9jKE4mw/K9FH
-	j9tvJXxnvL8l6yVxFtlDNCg/vWdIqVCPbTtvBlbRxLRvAzUC6s3KgaChvySe7bp3zSF6x06Xv899Y
-	sufWXLY7Y/bjYjWFSxwA==;
+	List-Owner; bh=0oQZBggspyPEi2NdHiRJ/ENixJVmZrIQYO8Veh9YIsQ=; b=IJZDQOwxVhXkSs
+	OCdLm0GAMbdf5NRtjLqpRqo3xEPgxshTYgmXBecCeMal2J8djxWwVbjTvo/SDrsUlh+hJbgkmjffz
+	Ql6pHwN9zCOjHFXhWaLBtmtOKe5glJ/HgARmpMzF8jr0myMmzcIAA5L0QSVHqZX5ysg5rpdpNfHiM
+	NNTWpYTTMxE5fs3Et8hEi20zsPyICSTSQZtmvgx1R1lqNG45+PKfSXZbhHX4UayRSa3cw5rE13E4J
+	wz5lwiCGz65x5IEKl/BLOABvcv7jtrHVexqVeDe/1sKT5Ro5sZwA5dsKpN2k5MPdkDp465QWUjBbH
+	sIUbfNfC4p/dHLhQ6Dbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYLc5-00035u-Ah; Sat, 23 Nov 2019 02:57:33 +0000
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
+	id 1iYLhn-0004WO-Nm; Sat, 23 Nov 2019 03:03:27 +0000
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYLc2-00035Y-8A
- for linux-riscv@lists.infradead.org; Sat, 23 Nov 2019 02:57:31 +0000
-Received: by mail-il1-x142.google.com with SMTP id i6so9037300ilr.11
- for <linux-riscv@lists.infradead.org>; Fri, 22 Nov 2019 18:57:29 -0800 (PST)
+ id 1iYLhj-0004W4-Uk
+ for linux-riscv@lists.infradead.org; Sat, 23 Nov 2019 03:03:25 +0000
+Received: by mail-il1-x144.google.com with SMTP id q15so9078001ils.8
+ for <linux-riscv@lists.infradead.org>; Fri, 22 Nov 2019 19:03:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=yH4Y/VZBJNypI69fryRWHnM3YvLC5pprHhmD6xuLHHY=;
- b=jsczJLCKJeiUOE0FeT5APJ0lVv+av3CejiFSaMmNxx+LsgmHoO3KGk4ReoBi5gyl1f
- NQXxiuZVmj4UqhFzKKS8zkE4oDEQ4bKuw/qjCAstpPS1Y60GYq7O8yQRsxherm5aS3Gm
- 8Co9yLzOIXPfHsmC9e5D8WiXqxIwLMhTsyRRagWS+lujAlCV9WBed8XLTgtGaqcsmoZW
- yIg63k1GCH+D3BdqUhhNWKbY0fmYFTAKfm9TTDzCDKeN5yPXHIQOhqQWo3Vn03zWcYff
- 4gokQnx5rHFCIt0ldEW3XxWB/UsVDV1T/lYI0ts/r8SiwP8ElnolFikRqtJUQkGTyCFq
- NuHQ==
+ bh=2llGKEwGqv02JA/iBX+8mG7RLi4bNxYF08xd4XLsLD8=;
+ b=ep6UGdtnlU/KZdTqxXNqm0FzL29oHDdirYk4Fc3SybTk4zz23nIC0y2M+TzIOtoB+1
+ EBgutDulXFno8wkRsiSMqOf4JrVuVsjjO+br0kUtBtbPda7hCpJ5B/gM9c5YAR6fW3pN
+ Ru/3l7SwaiXpg+AFO1AxFQ2njVZJ4vy/bIs5kLhLVGra/NYBrtU/aCHGKUZMQV3214nu
+ wVje/GBG1bTJLnUgdOM7pqNhn8X+tSy6tD/DPTEYbayyVCJ9UMOQr9Kaxz2sX+Q585+B
+ Q0GsIL6LTzNQ1Hqi96qVQqhtExbH3lUyFsatcmJ6EhXcx6CDJHLhcUt7ISHlDcz+kAws
+ s3iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=yH4Y/VZBJNypI69fryRWHnM3YvLC5pprHhmD6xuLHHY=;
- b=RgEcF7pD/IxvQDrW/mR9PjUJTyzZe6oib02shsQPGMsdbGofWxbgLPEQC92PrRErMZ
- I8HkOjPVFnUaU998g5tEKIiLK2ySdTdSi6hjzBx1XDlg0XXdHfW65rPG0DdfZdjrIquX
- pRErPp+g+um0dAmIwXNKM19VcbKEWzSdPRpeyp3bhpR7guwFqOwMpeEH3iJ6QYu00+mP
- dLk5zu+eBt8rY0bop7yEzeypdbi601c0HxtaAR5GFySUcY8dch2x+0cEWMMXk5TkPFeh
- vTmqDrqXQg/wjLaiTgzU5yLhp0cq+KxUlqsO48HvQFAaDPLEsrybzK3/8UOlCSAaK7oV
- XNHg==
-X-Gm-Message-State: APjAAAUqc8+CN8FRPDVLv7sDdJEdffWaV7z2MP8oS5EkKpPYHk+YmyQt
- 2bUEOAMCOU+gy+OQ1EeKZ7IJDQ==
-X-Google-Smtp-Source: APXvYqyUPZmbBKkTYRnzFl7gku7LXrzHzXLv8sJNM2GLB9CL9PL9p/dGxPHeK++UIo0GACZBjpuKVQ==
-X-Received: by 2002:a92:d7c6:: with SMTP id g6mr3671456ilq.282.1574477849400; 
- Fri, 22 Nov 2019 18:57:29 -0800 (PST)
+ bh=2llGKEwGqv02JA/iBX+8mG7RLi4bNxYF08xd4XLsLD8=;
+ b=o41ROSdHpS8uc7R6iw8AZ5eKU6Sm/dTyJwj58AnNnQ9hjgKwKhqFVHbgACl6qEaQw3
+ f2wen0qmumrs03APJz1KOAQl5QIL87cOs7oYsU5vu7n21Hu33gEDC4Imzt8x6jwnlK7n
+ tFNq8r3SyNs8xGPMFzEUEkUQKkvw5RspHHNU/dVubkwGco5cju8eEtyjuNINZe29KTSS
+ 39V7Hk1ifJsIUybCZeP6+Hx02ndGb0pkfwmER+jFFo6Lqkh/qLEtSXr2frjGU608Cdkg
+ jA0WXDIjxCLWcpab7kAb3D1v09s81BG+oxZUJR57l+zR4zOa8CGIv5pqagOFPiFrEScd
+ 3L2g==
+X-Gm-Message-State: APjAAAUca5ci1NshGUmT3IbnyDmS6mPa+yjewakQ+qaToZSK+NdGz5Xu
+ hhH0IyS4/27lsvDWk85IZpCBzjcdJ34=
+X-Google-Smtp-Source: APXvYqyflPBOhrUhlsM4NKxHbLsbeWUNItVw1cZNZ7q1pxHf4aG881IEeLsmwO9inXyKq5ciJSUL9A==
+X-Received: by 2002:a02:c4cd:: with SMTP id h13mr17996512jaj.33.1574478203111; 
+ Fri, 22 Nov 2019 19:03:23 -0800 (PST)
 Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id d23sm2823667iom.55.2019.11.22.18.57.28
+ by smtp.gmail.com with ESMTPSA id r17sm3612636ill.19.2019.11.22.19.03.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Nov 2019 18:57:28 -0800 (PST)
-Date: Fri, 22 Nov 2019 18:57:27 -0800 (PST)
+ Fri, 22 Nov 2019 19:03:22 -0800 (PST)
+Date: Fri, 22 Nov 2019 19:03:20 -0800 (PST)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Yash Shah <yash.shah@sifive.com>
-Subject: Re: [PATCH v2] RISC-V: Add address map dumper
-In-Reply-To: <1574056694-28927-1-git-send-email-yash.shah@sifive.com>
-Message-ID: <alpine.DEB.2.21.9999.1911221855090.14532@viisi.sifive.com>
-References: <1574056694-28927-1-git-send-email-yash.shah@sifive.com>
+To: Anup Patel <Anup.Patel@wdc.com>
+Subject: Re: [PATCH] RISC-V: Enable SYSCON reboot and poweroff drivers
+In-Reply-To: <20191111133421.14390-1-anup.patel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1911221901320.490@viisi.sifive.com>
+References: <20191111133421.14390-1-anup.patel@wdc.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191122_185730_292945_E489BA89 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20191122_190324_119871_52764FC9 
+X-CRM114-Status: UNSURE (   7.20  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:142 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -96,111 +97,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "wangkefeng.wang@huawei.com" <wangkefeng.wang@huawei.com>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "Anup.Patel@wdc.com" <Anup.Patel@wdc.com>,
+Cc: Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmer@sifive.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
- Sachin Ghadi <sachin.ghadi@sifive.com>,
- "palmer@dabbelt.com" <palmer@dabbelt.com>,
- "ren_guo@c-sky.com" <ren_guo@c-sky.com>,
+ Atish Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
- "logang@deltatee.com" <logang@deltatee.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Yash,
+On Mon, 11 Nov 2019, Anup Patel wrote:
 
-On Mon, 18 Nov 2019, Yash Shah wrote:
-
-> Add support for dumping the kernel address space layout to the console.
-> User can enable CONFIG_DEBUG_VM to dump the virtual memory region into
-> dmesg buffer during boot-up.
+> We can use SYSCON reboot and poweroff drivers for the
+> SiFive test device found on QEMU virt machine and SiFive
+> SOCs.
 > 
-> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> This patch enables SYSCON reboot and poweroff drivers
+> in RV64 and RV32 defconfigs.
+> 
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
 
-Thanks, I've queued up the following patch.  I added the PCI I/O region,
-and also dropped some of the .init/.text/etc. prints since they duplicate 
-the output from mem_init_print_info().
+Sounds like Christoph isn't planning to follow up on his reset driver.  
+So this patch looks OK to me, as far as QEMU is concerned.  Still it seems 
+best to avoid SYSCON for real hardware as much as possible, so, will plan 
+to apply this after CONFIG_SOC_VIRT support lands.
 
+thanks,
 
 - Paul
-
-From: Yash Shah <yash.shah@sifive.com>
-Date: Mon, 18 Nov 2019 05:58:34 +0000
-Subject: [PATCH] RISC-V: Add address map dumper
-
-Add support for dumping the kernel address space layout to the console.
-User can enable CONFIG_DEBUG_VM to dump the virtual memory region into
-dmesg buffer during boot-up.
-
-Signed-off-by: Yash Shah <yash.shah@sifive.com>
-Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
-Reviewed-by: Anup Patel <anup@brainfault.org>
-[paul.walmsley@sifive.com: dropped .init/.text/.data/.bss prints;
- added PCI legacy I/O region display]
-Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
----
- arch/riscv/mm/init.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
-
-diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-index 573463d1c799..c2c0e244555f 100644
---- a/arch/riscv/mm/init.c
-+++ b/arch/riscv/mm/init.c
-@@ -45,6 +45,37 @@ void setup_zero_page(void)
- 	memset((void *)empty_zero_page, 0, PAGE_SIZE);
- }
- 
-+#ifdef CONFIG_DEBUG_VM
-+static inline void print_mlk(char *name, unsigned long b, unsigned long t)
-+{
-+	pr_notice("%12s : 0x%08lx - 0x%08lx   (%4ld kB)\n", name, b, t,
-+		  (((t) - (b)) >> 10));
-+}
-+
-+static inline void print_mlm(char *name, unsigned long b, unsigned long t)
-+{
-+	pr_notice("%12s : 0x%08lx - 0x%08lx   (%4ld MB)\n", name, b, t,
-+		  (((t) - (b)) >> 20));
-+}
-+
-+static void print_vm_layout(void)
-+{
-+	pr_notice("Virtual kernel memory layout:\n");
-+	print_mlk("fixmap", (unsigned long)FIXADDR_START,
-+		  (unsigned long)FIXADDR_TOP);
-+	print_mlm("pci io", (unsigned long)PCI_IO_START,
-+		  (unsigned long)PCI_IO_END);
-+	print_mlm("vmemmap", (unsigned long)VMEMMAP_START,
-+		  (unsigned long)VMEMMAP_END);
-+	print_mlm("vmalloc", (unsigned long)VMALLOC_START,
-+		  (unsigned long)VMALLOC_END);
-+	print_mlm("lowmem", (unsigned long)PAGE_OFFSET,
-+		  (unsigned long)high_memory);
-+}
-+#else
-+static void print_vm_layout(void) { }
-+#endif /* CONFIG_DEBUG_VM */
-+
- void __init mem_init(void)
- {
- #ifdef CONFIG_FLATMEM
-@@ -55,6 +86,7 @@ void __init mem_init(void)
- 	memblock_free_all();
- 
- 	mem_init_print_info(NULL);
-+	print_vm_layout();
- }
- 
- #ifdef CONFIG_BLK_DEV_INITRD
--- 
-2.24.0.rc0
-
 
 _______________________________________________
 linux-riscv mailing list
