@@ -2,81 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5F78108112
-	for <lists+linux-riscv@lfdr.de>; Sun, 24 Nov 2019 00:36:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A753F10811A
+	for <lists+linux-riscv@lfdr.de>; Sun, 24 Nov 2019 00:39:04 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=emUOzJIJU46V/nqct9eaGMuxOBdNCUgpQ4aeh3dXzfo=; b=JJQ3xna2j4EE9l
-	KfL14EVA19HaxonJu53DUhjXtk+jXT01l1VYTG9WUKyeVComyirrnkhB37MKYEity7v7z6Z3B1baM
-	0EV86jbhD39lXt4dqiDv7AVcmVf8+7czLzkw84M9+zK9AOHGRk4Ii88fAp8DAt/+tY5HnaOUWIln6
-	xcFOwJrsekXkkGa3+mx8LgW4becdUKbAi5xpNqvI/g1XegYhd8+rUpMC+G7FZd9JfQKGaqgOZsTUf
-	+droRiXUsxrB10stItWoPwKK/Y7390UnwQOQluy5jmHPcAlYvZ4hxcYOS5VSvTLzkj1UjMRQeMB+T
-	5yO6i1Suj1vJ08V9woWQ==;
+	List-Owner; bh=2vixyGL1jdpx4SfcdTGK4Xb7l+6Y2JMAZnyOGO5Ppkc=; b=m3zIdrh2LplNI9
+	wtanBa4i9qYh70gHBKMjTanlfOKc6bfmPXKLgO15n1V8hs/2EvkNssmE3U9eyGCTMBfU8BPb2Xiqe
+	XLeYT4vuTB6Z4dWl3KZ5UTAtXq4kVRkqN1OfAh6nC8NbqmhD4/yU96nMgQyWUnxmG1RGvXXFobgTp
+	K5JjI0ND2PtTH1ohZp3D1QYjY1rXkPPfHSMfWXjmnkKpw8W7Yduit4qkspbPtkF5Jhf2CGsbylC8Y
+	LpES1xH/Q7tKjmWphZHiF3+RYKLggEm6PBhSyxHjO2bCCH6Mrr9Mt8kZKsgeuJAt/ikvWf77zL2/4
+	joJwa3/Oeh8Qyn97zFGQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYewh-0002D3-4Q; Sat, 23 Nov 2019 23:36:07 +0000
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
+	id 1iYezS-0002P0-BJ; Sat, 23 Nov 2019 23:38:58 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYewe-0002CA-8J
- for linux-riscv@lists.infradead.org; Sat, 23 Nov 2019 23:36:06 +0000
-Received: by mail-oi1-x241.google.com with SMTP id l202so9910445oig.1
- for <linux-riscv@lists.infradead.org>; Sat, 23 Nov 2019 15:36:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=intel-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=T5L4Gn1hhSzVUcUQ6WI2TNf9x3LhnvpN90/COmumAnw=;
- b=yeA/sLZwxejLTkTA4QQrsDuj/+2JYc5Gz1JKu2xDO772QyAN3CDOdByAmUeMBoy5LJ
- zz8BMIPq0ShSOgKiRHjQ7bkDm6oGcBC9wtgcJ9gWsQmOKdpfZ9dtOsZ2PjmMCDjgGAib
- KF2otB1MAajxcKrsHB9/C2zgTgd+IUSjyqh7A7wQGmtJj4Qx/ebW1UK3AktErcSoRbdN
- o55EOdxvb3aowA/aKXe9EoJrwLOsTjzybS3c7QzVXu/SVHg8SHtbiLsxgmgs8x9huWCA
- WZd+lvKr5ZkU7egEzJFwE1Pv9DwLE7y7pMgmMpmtALlviycGBsPhvtK6MHt4RTAjoouH
- N8eA==
+ id 1iYezO-0002OX-6q
+ for linux-riscv@lists.infradead.org; Sat, 23 Nov 2019 23:38:55 +0000
+Received: by mail-io1-xd44.google.com with SMTP id x21so12145543ior.2
+ for <linux-riscv@lists.infradead.org>; Sat, 23 Nov 2019 15:38:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=56zdBpxlclR0g1LjYAS1+32bVAGecBlra1y4WDc61ak=;
+ b=S+TW1nKxE5gRiH0TPfNeT4yyprYSSApYNNurctsEcBCQsSqmNsRfTZlHBzYmsw7E0S
+ QRk1VUsNgB8IeBSzwrihAhPgW4go96mZ7mQaDI6+T7nrCClTTycN7QJW5xPZ0cYem5hF
+ 1kALf0BBRfROJIb/sh4xSnXUkxSx3/qgo+P2MDl2Z/DxPS6B/1HYM5ajQEYq6b1vJPH7
+ 7xEg3fDb1D0d/lz6nDInR50lI2UDeGOJQOtlBQpbuYq7gbzSJaAiH68w1gI4dB5CM0bq
+ qPuMTuyDLS+2WGo/S3Fq0uAUKvoVrka0cHKSiALFAZBkIS9hqNdSrs9o6NKDHff1aQ0U
+ TBBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=T5L4Gn1hhSzVUcUQ6WI2TNf9x3LhnvpN90/COmumAnw=;
- b=iWtr/UykYFCyv/z0Phn7KJBAMlBhXSZJDEFAMYQNIMHpOGoJdEiomsvT1Vj7rKPez5
- mO+FAwna3e/v27CsSUMQJf9ohF6PhwiKr0neKw0Sc889FTBb0EloAJvKb93wQXLNpnBO
- EOiUI7OQ3XRhRDmyQovgOAqPcxdQ4cDi2HCL3+cQO5M83KAYXuJBVWqUDmAloUJjXyv/
- uLe2ctvxZoKvoTstSJAcrLc5vQCE6+ujICw2AVvpptGOg4jFt+/qJIAN2oNljyH+8ZOA
- Vw+b1zIWCHb41vYcN2XUhl0AdiqPj36dzoQoGixOaFplp5r319QKzIjiuu4oJVh6XcV1
- kR0g==
-X-Gm-Message-State: APjAAAVRpWf5/5HXrG0wy6Ocg3djCVDr5Hd17Ni0TGPgIKKeVPuMsgeS
- afGM3DTNeH0I4zbC6ADxTDpJecvshtR/9x2jrrR/9Q==
-X-Google-Smtp-Source: APXvYqzYAzV9FzTAnT3siA1wHlJKRAHjMitc1EcCn6cfgNohnZwV6E4k19jMHeqWhusSSVyNMc4q1Be4wCoNN73QqDI=
-X-Received: by 2002:aca:ead7:: with SMTP id i206mr18410174oih.0.1574552161328; 
- Sat, 23 Nov 2019 15:36:01 -0800 (PST)
-MIME-Version: 1.0
-References: <alpine.DEB.2.21.9999.1911221842200.14532@viisi.sifive.com>
- <20191123092552.1438bc95@lwn.net>
- <alpine.DEB.2.21.9999.1911231523390.14532@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1911231523390.14532@viisi.sifive.com>
-From: Dan Williams <dan.j.williams@intel.com>
-Date: Sat, 23 Nov 2019 15:35:50 -0800
-Message-ID: <CAPcyv4hmagCVLCTYmmv0U8-YD5BEoQPV=wtm5hbp3MxqwZRQUA@mail.gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=56zdBpxlclR0g1LjYAS1+32bVAGecBlra1y4WDc61ak=;
+ b=qHFEtvdOWz6Nx2D+lF1MpmNhiEfkCYo7Vi27sP9yHpZnJVyeWLSOBdQe+6BO75pQ4R
+ laiGyICeycI9GaFlKp7E1x/CVOUzMuQcFJV6HnguYL7SKrGntc1SkIvnANesKIMf6jSS
+ LKTx/hxPUs8PnyNG0Xq7WsMIFq8kMEDTz5D9jCWgm/CrrbV129wVp5KyfzPyqNKNF1bl
+ eMeiH/jusbpvIX2X1aKnYanmBwAH/SenopBTsJkQqRTWhwIdJ/2wTmce/WcdQj52Y24U
+ pGN6+eW8aovW/5UYmiZEPexP0gwieFmmBkGElVB/DJPsYetRFViAfjXug4LI5YUGzd/e
+ SEXQ==
+X-Gm-Message-State: APjAAAWRyG7KZZTUjSmzUyFL7i4P+Lmhm2mWD5lZtmwMxV8h5fxPaiir
+ nPMocyIbSzchZMnGGOgb4676yQ==
+X-Google-Smtp-Source: APXvYqwlp/VBmKTfbXYnwdw6P2u/JqwD2uFYCVpGOeBQfXAbCAE1DRvFvX7L5V0UpSEy3wwjtI/t8A==
+X-Received: by 2002:a5e:d602:: with SMTP id w2mr16471010iom.94.1574552333070; 
+ Sat, 23 Nov 2019 15:38:53 -0800 (PST)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id j18sm696555ili.84.2019.11.23.15.38.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 23 Nov 2019 15:38:52 -0800 (PST)
+Date: Sat, 23 Nov 2019 15:38:50 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Matthew Wilcox <willy@infradead.org>
 Subject: Re: [PATCH] Documentation: riscv: add patch acceptance guidelines
-To: Paul Walmsley <paul.walmsley@sifive.com>
+In-Reply-To: <20191123035827.GZ20752@bombadil.infradead.org>
+Message-ID: <alpine.DEB.2.21.9999.1911231536300.14532@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1911221842200.14532@viisi.sifive.com>
+ <20191123035827.GZ20752@bombadil.infradead.org>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191123_153604_433534_24FDEB29 
-X-CRM114-Status: GOOD (  17.92  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191123_153854_261838_85B98654 
+X-CRM114-Status: GOOD (  20.03  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:241 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,58 +98,127 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: krste@berkeley.edu, aou@eecs.berkeley.edu, waterman@eecs.berkeley.edu,
- Jonathan Corbet <corbet@lwn.net>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, palmer@dabbelt.com,
- linux-riscv@lists.infradead.org
+ corbet@lwn.net, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ palmer@dabbelt.com, linux-riscv@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Nov 23, 2019 at 3:27 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> Hi Jon,
->
-> On Sat, 23 Nov 2019, Jonathan Corbet wrote:
->
-> > On Fri, 22 Nov 2019 18:44:39 -0800 (PST) Paul Walmsley
-> > <paul.walmsley@sifive.com> wrote:
-> >
-> > > Formalize, in kernel documentation, the patch acceptance policy for
-> > > arch/riscv.  In summary, it states that as maintainers, we plan to only
-> > > accept patches for new modules or extensions that have been frozen or
-> > > ratified by the RISC-V Foundation.
-> > >
-> > > We've been following these guidelines for the past few months.  In the
-> > > meantime, we've received quite a bit of feedback that it would be
-> > > helpful to have these guidelines formally documented.
-> >
-> > If at all possible, I would really love to have this be part of the
-> > maintainer profile documentation:
-> >
-> >       https://lwn.net/ml/linux-kernel/156821692280.2951081.18036584954940423225.stgit@dwillia2-desk3.amr.corp.intel.com/
-> >
-> > ...if we could only (hint...CC'd...) get Dan to resubmit it with the
-> > needed tweaks so it could be merged...
->
-> It looks like the main thing that would be needed would be to add the P:
-> entry with the path to our patch-acceptance.rst file into the MAINTAINERS
-> file, after Dan's patches are merged.
->
-> Of course, we could also add more information about sparse cleanliness,
-> checkpatch warnings, etc., but we mostly try to follow the common kernel
-> guidelines there.
+Hi Matthew,
 
-Those could likely be automated to highlight warnings that a given
-subsystem treats as errors, but wherever possible my expectation is
-that the policy should be specified globally.
+On Fri, 22 Nov 2019, Matthew Wilcox wrote:
 
->
-> Is that summary accurate, or did I miss some additional steps?
->
+> On Fri, Nov 22, 2019 at 06:44:39PM -0800, Paul Walmsley wrote:
+> >  Documentation/riscv/patch-acceptance.rst | 32 ++++++++++++++++++++++++
+> >  1 file changed, 32 insertions(+)
+> >  create mode 100644 Documentation/riscv/patch-acceptance.rst
+> 
+> Should this be linked into the toctree somewhere so it's findable
+> on kernel.org?  Maybe add a line to Documentation/process/index.rst
+> to include ../riscv/patch-acceptance.rst?
 
-I'll go fixup and get the into patch submitted today then we can go from there.
+Does this updated patch contain what you had in mind?
+
+
+- Paul
+
+From: Paul Walmsley <paul.walmsley@sifive.com>
+Date: Fri, 22 Nov 2019 18:33:28 -0800
+Subject: [PATCH] Documentation: riscv: add patch acceptance guidelines
+
+Formalize, in kernel documentation, the patch acceptance policy for
+arch/riscv.  In summary, it states that as maintainers, we plan to
+only accept patches for new modules or extensions that have been
+frozen or ratified by the RISC-V Foundation.
+
+We've been following these guidelines for the past few months.  In the
+meantime, we've received quite a bit of feedback that it would be
+helpful to have these guidelines formally documented.
+
+Based on a suggestion from Matthew Wilcox, we also add a link to this
+file to Documentation/process/index.rst, to make this document easier
+to find.
+
+Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>
+Cc: Krste Asanovic <krste@berkeley.edu>
+Cc: Andrew Waterman <waterman@eecs.berkeley.edu>
+Cc: Matthew Wilcox <willy@infradead.org>
+---
+ Documentation/process/index.rst          |  1 +
+ Documentation/riscv/index.rst            |  1 +
+ Documentation/riscv/patch-acceptance.rst | 32 ++++++++++++++++++++++++
+ 3 files changed, 34 insertions(+)
+ create mode 100644 Documentation/riscv/patch-acceptance.rst
+
+diff --git a/Documentation/process/index.rst b/Documentation/process/index.rst
+index e2c9ffc682c5..9b8394eacea6 100644
+--- a/Documentation/process/index.rst
++++ b/Documentation/process/index.rst
+@@ -58,6 +58,7 @@ lack of a better place.
+    magic-number
+    volatile-considered-harmful
+    clang-format
++   ../riscv/patch-acceptance
+ 
+ .. only::  subproject and html
+ 
+diff --git a/Documentation/riscv/index.rst b/Documentation/riscv/index.rst
+index 215fd3c1f2d5..fa33bffd8992 100644
+--- a/Documentation/riscv/index.rst
++++ b/Documentation/riscv/index.rst
+@@ -7,6 +7,7 @@ RISC-V architecture
+ 
+     boot-image-header
+     pmu
++    patch-acceptance
+ 
+ .. only::  subproject and html
+ 
+diff --git a/Documentation/riscv/patch-acceptance.rst b/Documentation/riscv/patch-acceptance.rst
+new file mode 100644
+index 000000000000..2e658353b53c
+--- /dev/null
++++ b/Documentation/riscv/patch-acceptance.rst
+@@ -0,0 +1,32 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++====================================================
++arch/riscv maintenance and the RISC-V specifications
++====================================================
++
++The RISC-V instruction set architecture is developed in the open:
++in-progress drafts are available for all to review and to experiment
++with implementations.  New module or extension drafts can change
++during the development process - sometimes in ways that are
++incompatible with previous drafts.  This flexibility can present a
++challenge for RISC-V Linux maintenance.  Linux maintainers disapprove
++of churn, and the Linux development process prefers well-reviewed and
++tested code over experimental code.  We wish to extend these same
++principles to the RISC-V-related code that will be accepted for
++inclusion in the kernel.
++
++Therefore, as maintainers, we'll only accept patches for new modules
++or extensions if the specifications for those modules or extensions
++are listed as being "Frozen" or "Ratified" by the RISC-V Foundation.
++(Developers may, of course, maintain their own Linux kernel trees that
++contain code for any draft extensions that they wish.)
++
++Additionally, the RISC-V specification allows implementors to create
++their own custom extensions.  These custom extensions aren't required
++to go through any review or ratification process by the RISC-V
++Foundation.  To avoid the maintenance complexity and potential
++performance impact of adding kernel code for implementor-specific
++RISC-V extensions, we'll only to accept patches for extensions that
++have been officially frozen or ratified by the RISC-V Foundation.
++(Implementors, may, of course, maintain their own Linux kernel trees
++containing code for any custom extensions that they wish.)
+-- 
+2.24.0.rc0
+
 
 _______________________________________________
 linux-riscv mailing list
