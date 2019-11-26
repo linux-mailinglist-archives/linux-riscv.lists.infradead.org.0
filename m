@@ -2,78 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A542110A474
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 20:26:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A82310A5D3
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 22:13:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DgX3bPKLc1fWI4E1SzNWYt8/ZSjWIaT+dsHHk84aL54=; b=llI+3DDESA3PE8
-	qonwNv6F6ELnRPkraXjGwjbD0e21ILr4ivrw6KP29GH0xpJDzH0EkRuX8G4O6zaYgwyx82KzXz/Tx
-	KUuu1UXJ5KYVPyrv8eqNk/rVYJkEhnz7EIstvU+xg8di6Cncpk8OkrmkZOf+H1wxv+XlT/l2H/ISG
-	7dtfp//h0D0G6rUDXnXIMdnMNUfS5en9dzVMtJiECdCMUZMQCpRTnKaAUeW4cItTmWnSWrWVZ3AR0
-	8WJrh2LQLNbueQ9JfYX+LcXwWqSvon7XMJRcwrTcCGH21aNgM9215znAcaCVTmMIIo5so40ILmgCH
-	nY8jTEjO3uV+in2nSLqw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uwQAvZI2wtSVWU5b8R/NcsoWEm3dCDSNzZTd5FQ7IgM=; b=mf+z/ds4po1ANT
+	ODpqPChKDNpbAAYp/YqQiNFdejR1MdCCUdZ3VJbDQt2CwUTphS56uqQA6eDlybDePoY5j/UMFVnad
+	Ti7ffl4TefjgQoUVytzE4b2b8/dyJF1MiSm6U9qbvaFJ3hffiiY1rrQ5MgGXQbhAqNgtEkEMNsKlW
+	9cq5bFnRKInumK4C2qWpoB/XF64+NGQcmv3qD9U+55JzhOKq3ovuWIHE5uOuNtdQwnPk+CdvRlEnV
+	n7woXtYQQ75hLYQFiOL7mfFv/IZLgqZDSqwJj4z5tTs/OZ1x1Hz+L8kHgl5h3xqfgdJ+GDTQVF6Ut
+	ibukDDdUPYfC/58RIpFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZgU5-0005Kg-Sz; Tue, 26 Nov 2019 19:26:49 +0000
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44])
+	id 1iZi9M-0007Ei-Hk; Tue, 26 Nov 2019 21:13:32 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZgU2-0005JZ-Qy
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 19:26:48 +0000
-Received: by mail-qv1-xf44.google.com with SMTP id s18so7804745qvr.4
- for <linux-riscv@lists.infradead.org>; Tue, 26 Nov 2019 11:26:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=sy4O0jIBu7sikzaZw9xPpxh7Hoq+uKc8+wAUrCduRmI=;
- b=IaKSoBya95ZVS21LtECbNBD2W/zUXL1u2xXRgoUR/j/aEKqZ167dEPDfmKpZMC1AeW
- Xg//KufTNFz3cwLpcfkF48sEPUG7RvUdkZuTMwF5Wxk/rYwK9cr5m1n/xs1s47OQF1LX
- wIRTiWM4+W00fXHH25WXQ/9zQKzgE3fc1oM4VbFX+/gKDLXX+fxoEqio9n5k46feajTB
- PDDJ3l3ur19BBHo9NY5H3O+d342szEJXEKsR8TzQ+lqtUmqrmM8Kk2oOWRq6DxVUc2UM
- YyANOG3hESvbrutjKZiy6cPzqU2kqfEGT4fwvIaRX42BMaTEC2iVfOVp5ohyx7sUrC0U
- W2/A==
+ id 1iZi9I-0007E9-PW
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 21:13:30 +0000
+Received: by mail-io1-xd44.google.com with SMTP id z26so18775991iot.8
+ for <linux-riscv@lists.infradead.org>; Tue, 26 Nov 2019 13:13:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=mpA+IuAnkJSmb7fL5XFR2xELtboFdJ5nrRIhIf/PCnI=;
+ b=V2hscENoErbWip9hMb2EK7clIA048Q7sAAWAvtH6s2xMyuBtK6rN/j+qwubtjuERCQ
+ OY9GC4UxqiyLn1PFnL1bfoAgVGoMMuNRfLHHl2+4RCHRyFxj+NXR17Kpkce2cwh/jcK4
+ DMDBv56OKCa055DXikeNllVLStnIqClvuqw4AO3syHP7RKgQUe+Z6EsxtnVESoVtgbJE
+ 8yAOqJaE6AVo2e5vZyBFd6S3iT+Sskk20w6c83FPyA3ggZWZ9kUtjkOzKFeje9IYnlxH
+ jfsDdL/Eox0/diJ1eQs0OdwKOPooz/UWWnChIR4dIeQQceLCUDwJJ+JM/rFFckarWQlK
+ BEHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=sy4O0jIBu7sikzaZw9xPpxh7Hoq+uKc8+wAUrCduRmI=;
- b=BywnpMwWqPxSaeq6jcE0UYy6urM2nuPEcCoJKAOA61K85JBLGyg6ja7rZR2DL2/E8w
- kBGZUsujbPHospBSKCHK02H0d5Zlk0BYrANKTFLad7DJLshO41gMCQraBPLj1fgOSfbV
- T8qkMLQQG52aP1CMD1/+BW4a6V70nV7atomhV6Q5FM74Ms50KEWed6NCfaqqgEkJT9y4
- rufGl0ZcIrebYFn57wm2Ws79QoK/xO6P7S8ZhJQ0/F7Yw5OYBsukn366qWYNLFehnMFJ
- eif4PQfhGW7ghGhBijdFf8Edhf3HIKnEEaBoMjRb9KA3eAQgJzVovfTF9Er21eX+nlnh
- 3dLQ==
-X-Gm-Message-State: APjAAAVqoGRV392SlzPYy9GI4MYzW3gAjgzCotl4PuZgnrork3wNiY7t
- YBgYdJ4q2LoOn6t8DbyfV2d5tNwN/meLjO0mSETI8KOOYb69Hg==
-X-Google-Smtp-Source: APXvYqygvCYs5HhYtbjMCao7/k5cvnH8pQnn8YY1qYrJ7tGzS5X0OYUmkkOGCXnR18LGDROl0WI//k/FJmi5NDK3YQc=
-X-Received: by 2002:a05:6214:707:: with SMTP id b7mr297023qvz.97.1574796402191; 
- Tue, 26 Nov 2019 11:26:42 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=mpA+IuAnkJSmb7fL5XFR2xELtboFdJ5nrRIhIf/PCnI=;
+ b=c1mUuphOLUO2q0ufVnzHMxVV65AVB5v/OLS0rKDzrC2RXNoaIJ5J+UkXg6EoABS3Wo
+ QE9CJcGzbPoQ5OYSW8etpL49lTdole19nRz79W0NC+6aTO7jtXRzXWwqLBSma8KYYJGm
+ VX2tbXc8YpZAyHfnoxz1Eyp25ZkbvN1Lz2xQbGgLB2xWAD6rn+pC4tEp4f2knULV4/6Z
+ t0acN0wVF1RUj+26PNCfYYzQvxzpKpDXHJl2Cu3/RSKiPG89slTlvOfvPXqTtm+nz0iN
+ osN+ZCASrU/5f6kZ9Ht817RwTpi6qaFI2UXP04ygJE8WjMZylCKrfrpLr/ykOfCcFrHT
+ +4aQ==
+X-Gm-Message-State: APjAAAXTHBu95OHHQbj3Rwj6y9c7n2bKrB1meKkiOQXKdAbd7sqzlvmG
+ Zkv38IeZq7B2tkYsPBN/3FdpPw==
+X-Google-Smtp-Source: APXvYqxSo9bBvUzQp+cD74S2AUMpLC+ZJjdqmUu+EwvHplkNqlV0982ky5d1zM1tY1fGQK3cbCL5kA==
+X-Received: by 2002:a5e:8e4b:: with SMTP id r11mr25991166ioo.167.1574802807280; 
+ Tue, 26 Nov 2019 13:13:27 -0800 (PST)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id k6sm2953316iom.52.2019.11.26.13.13.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Nov 2019 13:13:26 -0800 (PST)
+Date: Tue, 26 Nov 2019 13:13:24 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] First set of RISC-V updates for v5.5-rc1
+Message-ID: <alpine.DEB.2.21.9999.1911261311520.23039@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <mhng-0a2f9574-9b23-4f26-ae76-18ed7f2c8533@palmer-si-x1c4>
- <87d0yoizv9.fsf@xps13.shealevy.com> <87zi19gjof.fsf@xps13.shealevy.com>
- <CAJ+HfNhoJnGon-L9OwSfrMbmUt1ZPBB_=A8ZFrg1CgEq3ua-Sg@mail.gmail.com>
- <87o8wyojlq.fsf@xps13.shealevy.com>
- <CAJ+HfNiq9LWA1Zmf_F9j23__K2_NqcfQqRA5evGVP5wGzi881w@mail.gmail.com>
-In-Reply-To: <CAJ+HfNiq9LWA1Zmf_F9j23__K2_NqcfQqRA5evGVP5wGzi881w@mail.gmail.com>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Tue, 26 Nov 2019 20:26:30 +0100
-Message-ID: <CAJ+HfNgsrFv0zgLy-CORXs-gOtiW2a3Sf=RQ6yDP5akDT+_-kg@mail.gmail.com>
-Subject: Re: [PATCH] RISC-V: Load modules within relative jump range of the
- kernel text.
-To: Shea Levy <shea@shealevy.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_112646_898702_071CDA5D 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20191126_131329_042409_DFFAA95F 
+X-CRM114-Status: GOOD (  15.96  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bjorn.topel[at]gmail.com)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -94,28 +93,191 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, albert@sifive.com,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVHVlLCAyNiBOb3YgMjAxOSBhdCAxNzo0MywgQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxA
-Z21haWwuY29tPiB3cm90ZToKPgo+IE9uIFR1ZSwgMjYgTm92IDIwMTkgYXQgMTQ6MjUsIFNoZWEg
-TGV2eSA8c2hlYUBzaGVhbGV2eS5jb20+IHdyb3RlOgo+ID4KPiA+IEhpIEJqw7ZybiwKPiA+Cj4g
-PiBVbmZvcnR1bmF0ZWx5IEknbSBub3Qgc3VyZSB3aGF0IG1vcmUgaXMgbmVlZGVkIHRvIGdldCB0
-aGlzIGluLCBhbmQgSSdtCj4gPiBpbiB0aGUgbWlkZGxlIG9mIGEgbW92ZSBhbmQgd29uJ3QgaGF2
-ZSBlYXN5IGFjY2VzcyB0byBteSBSSVNDLVYgc2V0dXAKPiA+IGZvciB0ZXN0aW5nLiBJIGRvbid0
-IHRoaW5rIHlvdSBjYW4gY291bnQgb24gbWUgZm9yIHRoaXMgb25lLgo+ID4KPgo+IFRoYW5rcyBm
-b3IgZ2V0dGluZyBiYWNrIHF1aWNrbHkhIE5vIHdvcnJpZXMsIEknbGwgcGljayBpdCB1cCEKPgoK
-SSBqdXN0IHB1bGxlZCBpbiB5b3VyIHBhdGNoIGluIG15IHNlcmllcyBbMV0gKGl0J3Mgbm90IGRv
-bmUgZm9yCnN1Ym1pc3Npb24geWV0LCBidXQgcGFzc2VzIGFsbCB0ZXN0cyk7IEp1c3QgdG8gZ2V0
-IHRoZSBpZGVhLiBSZWFkaW5nCnVwIG9uIHRoZSB0aHJlYWQsIGl0IGxvb2tzIGxpa2Ugd2UgY2Fu
-IHNoYXJlIHNvbWUgbW9yZSBiZXR3ZWVuIHRoZQphcmNocyAobWlwcykuCgoKVGhhbmtzLApCasO2
-cm4KClsxXSBodHRwczovL2dpdGh1Yi5jb20vYmpvdG8vbGludXgvdHJlZS9ydjY0LWJwZi1qaXQt
-YmNjCj4KPiBDaGVlcnMsCj4gQmrDtnJuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJpc2N2Cg==
+Linus,
+
+The following changes since commit a99d8080aaf358d5d23581244e5da23b35e340b9:
+
+  Linux 5.4-rc6 (2019-11-03 14:07:26 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.5-rc1
+
+for you to fetch changes up to 5ba9aa56e6d3e8fddb954c2f818d1ce0525235bb:
+
+  Merge branch 'next/nommu' into for-next (2019-11-22 18:59:09 -0800)
+
+----------------------------------------------------------------
+First set of RISC-V updates for v5.5-rc1
+
+New features:
+
+- SECCOMP support
+
+- nommu support
+
+- SBI-less system support
+
+- M-Mode support
+
+- TLB flush optimizations
+
+Other improvements:
+
+- Pass the complete RISC-V ISA string supported by the CPU cores to
+  userspace, rather than redacting parts of it in the kernel
+
+- Add platform DMA IP block data to the HiFive Unleashed board DT file
+
+- Add Makefile support for BZ2, LZ4, LZMA, LZO kernel image
+  compression formats, in line with other architectures
+
+Cleanups:
+
+- Remove unnecessary PTE_PARENT_SIZE macro
+
+- Standardize include guard naming across arch/riscv
+
+----------------------------------------------------------------
+Atish Patra (5):
+      RISC-V: Remove unsupported isa string info print
+      RISC-V: Do not invoke SBI call if cpumask is empty
+      RISC-V: Issue a local tlbflush if possible.
+      RISC-V: Issue a tlb page flush if possible
+      RISC-V: Add multiple compression image format.
+
+Christoph Hellwig (10):
+      riscv: enter WFI in default_power_off() if SBI does not shutdown
+      riscv: abstract out CSR names for supervisor vs machine mode
+      riscv: poison SBI calls for M-mode
+      riscv: cleanup the default power off implementation
+      riscv: implement remote sfence.i using IPIs
+      riscv: add support for MMIO access to the timer registers
+      riscv: provide native clint access for M-mode
+      riscv: clear the instruction cache and all registers when booting
+      riscv: add nommu support
+      riscv: provide a flat image loader
+
+Damien Le Moal (2):
+      riscv: don't allow selecting SBI based drivers for M-mode
+      riscv: read the hart ID from mhartid on boot
+
+David Abdurachmanov (1):
+      riscv: add support for SECCOMP and SECCOMP_FILTER
+
+Green Wan (1):
+      riscv: dts: add support for PDMA device of HiFive Unleashed Rev A00
+
+Paul Walmsley (6):
+      riscv: separate MMIO functions into their own header file
+      Merge branch 'next/seccomp' into for-next
+      Merge branch 'next/isa-string' into for-next
+      Merge branch 'next/tlb-opt' into for-next
+      Merge branch 'next/misc' into for-next
+      Merge branch 'next/nommu' into for-next
+
+Zong Li (2):
+      riscv: Use PMD_SIZE to replace PTE_PARENT_SIZE
+      riscv: clean up the macro format in each header file
+
+ arch/riscv/Kconfig                            |  50 ++++++--
+ arch/riscv/Makefile                           |  13 +-
+ arch/riscv/boot/Makefile                      |  19 ++-
+ arch/riscv/boot/dts/sifive/fu540-c000.dtsi    |   7 ++
+ arch/riscv/boot/loader.S                      |   8 ++
+ arch/riscv/boot/loader.lds.S                  |  16 +++
+ arch/riscv/configs/nommu_virt_defconfig       |  78 ++++++++++++
+ arch/riscv/include/asm/asm-prototypes.h       |   1 +
+ arch/riscv/include/asm/cache.h                |   8 ++
+ arch/riscv/include/asm/clint.h                |  39 ++++++
+ arch/riscv/include/asm/csr.h                  |  74 ++++++++++--
+ arch/riscv/include/asm/current.h              |   6 +-
+ arch/riscv/include/asm/elf.h                  |   4 +-
+ arch/riscv/include/asm/fixmap.h               |   2 +
+ arch/riscv/include/asm/ftrace.h               |   5 +
+ arch/riscv/include/asm/futex.h                |  12 +-
+ arch/riscv/include/asm/hwcap.h                |   7 +-
+ arch/riscv/include/asm/image.h                |   6 +-
+ arch/riscv/include/asm/io.h                   | 149 +----------------------
+ arch/riscv/include/asm/irqflags.h             |  12 +-
+ arch/riscv/include/asm/kprobes.h              |   6 +-
+ arch/riscv/include/asm/mmio.h                 | 168 ++++++++++++++++++++++++++
+ arch/riscv/include/asm/mmiowb.h               |   2 +-
+ arch/riscv/include/asm/mmu.h                  |   3 +
+ arch/riscv/include/asm/page.h                 |  10 +-
+ arch/riscv/include/asm/pci.h                  |   6 +-
+ arch/riscv/include/asm/pgalloc.h              |   2 +
+ arch/riscv/include/asm/pgtable.h              |  94 +++++++-------
+ arch/riscv/include/asm/processor.h            |   2 +-
+ arch/riscv/include/asm/ptrace.h               |  16 +--
+ arch/riscv/include/asm/sbi.h                  |  11 +-
+ arch/riscv/include/asm/seccomp.h              |  10 ++
+ arch/riscv/include/asm/sparsemem.h            |   6 +-
+ arch/riscv/include/asm/spinlock_types.h       |   2 +-
+ arch/riscv/include/asm/switch_to.h            |  10 +-
+ arch/riscv/include/asm/thread_info.h          |   5 +-
+ arch/riscv/include/asm/timex.h                |  19 ++-
+ arch/riscv/include/asm/tlbflush.h             |  12 +-
+ arch/riscv/include/asm/uaccess.h              |   4 +
+ arch/riscv/include/uapi/asm/elf.h             |   6 +-
+ arch/riscv/include/uapi/asm/hwcap.h           |   6 +-
+ arch/riscv/include/uapi/asm/ucontext.h        |   6 +-
+ arch/riscv/kernel/Makefile                    |   5 +-
+ arch/riscv/kernel/asm-offsets.c               |   8 +-
+ arch/riscv/kernel/clint.c                     |  44 +++++++
+ arch/riscv/kernel/cpu.c                       |  45 +------
+ arch/riscv/kernel/entry.S                     | 112 ++++++++++++-----
+ arch/riscv/kernel/fpu.S                       |   8 +-
+ arch/riscv/kernel/head.S                      | 112 ++++++++++++++++-
+ arch/riscv/kernel/irq.c                       |  17 +--
+ arch/riscv/kernel/perf_callchain.c            |   2 +-
+ arch/riscv/kernel/process.c                   |  17 +--
+ arch/riscv/kernel/ptrace.c                    |  10 ++
+ arch/riscv/kernel/reset.c                     |   5 +-
+ arch/riscv/kernel/sbi.c                       |  17 +++
+ arch/riscv/kernel/setup.c                     |   2 +
+ arch/riscv/kernel/signal.c                    |  38 ++++--
+ arch/riscv/kernel/smp.c                       |  16 ++-
+ arch/riscv/kernel/smpboot.c                   |   4 +
+ arch/riscv/kernel/traps.c                     |  16 +--
+ arch/riscv/lib/Makefile                       |  11 +-
+ arch/riscv/lib/uaccess.S                      |  12 +-
+ arch/riscv/mm/Makefile                        |   3 +-
+ arch/riscv/mm/cacheflush.c                    |  26 +++-
+ arch/riscv/mm/context.c                       |   2 +
+ arch/riscv/mm/extable.c                       |   4 +-
+ arch/riscv/mm/fault.c                         |   6 +-
+ arch/riscv/mm/init.c                          |  28 +++--
+ arch/riscv/mm/tlbflush.c                      |  25 +++-
+ drivers/clocksource/timer-riscv.c             |  31 +++--
+ drivers/irqchip/irq-sifive-plic.c             |  11 +-
+ drivers/tty/hvc/Kconfig                       |   2 +-
+ drivers/tty/serial/Kconfig                    |   2 +-
+ tools/testing/selftests/seccomp/seccomp_bpf.c |   8 +-
+ 74 files changed, 1106 insertions(+), 465 deletions(-)
+ create mode 100644 arch/riscv/boot/loader.S
+ create mode 100644 arch/riscv/boot/loader.lds.S
+ create mode 100644 arch/riscv/configs/nommu_virt_defconfig
+ create mode 100644 arch/riscv/include/asm/clint.h
+ create mode 100644 arch/riscv/include/asm/mmio.h
+ create mode 100644 arch/riscv/include/asm/seccomp.h
+ create mode 100644 arch/riscv/kernel/clint.c
+ create mode 100644 arch/riscv/kernel/sbi.c
+
+Kernel object size difference (from v5.4-rc6):
+   text	   data	    bss	    dec	    hex	filename
+6665154	2132584	 312608	9110346	 8b034a	vmlinux.rv64.orig
+6665098	2132768	 312608	9110474	 8b03ca	vmlinux.rv64.patched
+6445414	1797616	 255248	8498278	 81ac66	vmlinux.rv32.orig
+6445448	1797776	 255248	8498472	 81ad28	vmlinux.rv32.patched
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
