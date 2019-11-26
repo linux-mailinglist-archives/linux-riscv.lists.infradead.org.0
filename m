@@ -2,65 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 252B0109960
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 07:53:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A423109E43
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 13:49:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gRIH7qgYqZEkcQTl5r4YTvVMe3Dg9PFQIuttPubJ7+8=; b=irhxYhl+OXcKqTm1Poh/oUjeH
-	4qXbPrvhOststQTWt1qeoS9De+/94kxk7IjJ7ZNhqvEg5g4jC0StTifteC2QjyIpiMSMHNR6HAmoi
-	BOgTRd1bPBNJKjuIBgsloQxllosiii+v/CC6UsSkptr/8GTUhACSmOY7CsMjzdR2xRs/CLN7Wrc0F
-	eDXvkIn+/D4ZX+BEgWi0Wga+WP+sEdh7XexghKaIWSUdKlHj+SeOLJxtd+AiX731uALLrowjHjjWh
-	wv5zHsR6uty3kgzY+krXppFdFoYojhGMluovlGl2h3mCHk3Gmn47pfqQz5s8NFaakCgHGA0dxBh3E
-	iezv2o4Rg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IwHHl+hNWNKkKTw3W9Tap92e+tfHJH4oSCrYx1k4HSI=; b=TKGZ0PBp6khq32
+	+IRhaPoB/ko6YKhtJcONaUFEizEpl1fMnZvYuD5z2vftktcDERXksAzf9lok2XIW9kNk8KEa3HC4E
+	nj+b9xKBaYclh9PiLtO1C0o0imD1doJix8991Vc3AUDOm7rfvrNrzGsLbmTc5gmk7Bl42zOruAaZu
+	kYcU8QyAUPsttBqmoqqUN/0go1j9cC4aLDi9xEtfBMyNOZPLqlw/o99AUQBsJ+eYLDEegFMekCI+N
+	ek+kdG0uB/jmuPHrJx/A/f1wpEDTBS0CRywSTmwl6G3IGoIeevFR0O11zjwg/u3ZdcMIvEv/MuvLO
+	G0BTo3lcc/ZXFWDnbZSA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZUih-0007qc-Vw; Tue, 26 Nov 2019 06:53:07 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1iZaHe-0006qX-0x; Tue, 26 Nov 2019 12:49:34 +0000
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZUid-0007q3-O2
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 06:53:06 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2019 22:53:02 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,244,1571727600"; 
- d="gz'50?scan'50,208,50";a="239819555"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 25 Nov 2019 22:53:00 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iZUiZ-000AIW-EA; Tue, 26 Nov 2019 14:52:59 +0800
-Date: Tue, 26 Nov 2019 14:52:32 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Atish Patra <atish.patra@wdc.com>
-Subject: Re: [PATCH v4 4/4] RISC-V: Implement new SBI v0.2 extensions
-Message-ID: <201911261435.WbPxe8Dn%lkp@intel.com>
-References: <20191126032033.14825-5-atish.patra@wdc.com>
+ id 1iZaGV-0003PJ-Ed
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 12:48:27 +0000
+Received: by mail-qt1-x842.google.com with SMTP id g1so11865927qtj.6
+ for <linux-riscv@lists.infradead.org>; Tue, 26 Nov 2019 04:48:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yP69oNOwLRKOH1bABrCf+MIfhE/Or+bR3PI8UIEOa8o=;
+ b=TCsnvbwhQ0FDfWbBUgMkKruo7ZhMBrB3n6VB+8IASb0zgRXk7/OC4pm3O9SZwQEbRI
+ MlDLR9D0gFOCjEp5/WO9Z+nxkj1UkwIZnIUbMRDkPi8ycAsWS2EUvPkI0cSk5VcoYsJU
+ 2dMoe6j2ZrjkeYTMfqB8jF7Lxsc+tIjuq6sQw4rKBxq6FLEV15DW/CgrI/zlHqdygDST
+ wWUupAtODBDahuotMQPG++lLM7Oubu7X6nLJGk81oAyVamouYvjl6e+3PMNoZ0fJQFsK
+ smelWZCAkxzBBfMJY1yFeJuo20IvSV9DIkxr/Cn39LNV6KgYScwogregcpfGjl5ob/oN
+ 1Zzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yP69oNOwLRKOH1bABrCf+MIfhE/Or+bR3PI8UIEOa8o=;
+ b=GbSfuk50gmYCQUhouW/IQ4zI3ZB6jRiJYH7bwxACLwZbAuN1/3sQQAuZG5DlRuexxp
+ peiGjxSj+H6VKgbAThiN/F3SIgiZPD+3wQyZKM/are0rKtbr9G9aKts+Oe1dHdi8KgdD
+ 9iFHxBKsPaFNwLweD6MNWzR7aNLbrr2iFAkFpWAici8zxTYoNfr1qITiWA3NgsDpPdKg
+ gnGUVyuxg/g/NG1fe2930WJQDiAdHdMQBjHxhxnT+soAeFqbMVgRAQrC5OtftbTWnZxV
+ 0Qhq2IKcZzcgqtmHpv0e7LYwlMY5oDZwaTtWHBJcpFG1hTwE+LBS040GY7gr2HqgJG5p
+ c0Lw==
+X-Gm-Message-State: APjAAAVfGNb9Xj5iTfPj7yOxh6iW3A3cP4mCyETlMI8wVs8MmRAhjC5l
+ Ujk0EjmvSqQIYio5U3EHt4apmihwaxw8OMD3ZlT3Dw==
+X-Google-Smtp-Source: APXvYqxqg2YuiESg5BwxtiVVFsY0/lo513Z/1OkGS1LPpw/CVw6krDI+9lMssFWGO4qeB4L8nhIXJc7F5Lt+dZcKeiw=
+X-Received: by 2002:ac8:7943:: with SMTP id r3mr35021510qtt.49.1574772499379; 
+ Tue, 26 Nov 2019 04:48:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="jssjhuawk3q2yyk2"
-Content-Disposition: inline
-In-Reply-To: <20191126032033.14825-5-atish.patra@wdc.com>
-X-Patchwork-Hint: ignore
-User-Agent: NeoMutt/20170113 (1.7.2)
+References: <1572919114-3886-1-git-send-email-vincent.chen@sifive.com>
+ <1572919114-3886-2-git-send-email-vincent.chen@sifive.com>
+ <alpine.DEB.2.21.9999.1911211225350.30580@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.1911211418320.5296@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1911211418320.5296@viisi.sifive.com>
+From: Vincent Chen <vincent.chen@sifive.com>
+Date: Tue, 26 Nov 2019 20:48:08 +0800
+Message-ID: <CABvJ_xiWWGUGTJ36_4zN+RWhrTQn1bQTAsbFR-KaCSLcPy00pw@mail.gmail.com>
+Subject: Re: [PATCH 1/3] riscv: add required functions to enable
+ HAVE_REGS_AND_STACK_ACCESS_API
+To: Paul Walmsley <paul.walmsley@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191125_225303_807860_62F4E5A9 
-X-CRM114-Status: GOOD (  12.29  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20191126_044823_561171_B5575D9B 
+X-CRM114-Status: GOOD (  34.06  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.151 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,687 +94,168 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, kbuild-all@lists.01.org,
- Anup Patel <anup@brainfault.org>, linux-kernel@vger.kernel.org,
- Mike Rapoport <rppt@linux.ibm.com>, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Mao Han <han_mao@c-sky.com>
+Cc: =?UTF-8?Q?Patrick_St=C3=A4hlin?= <me@packi.ch>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>, linux-kselftest@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
---jssjhuawk3q2yyk2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-Hi Atish,
-
-Thank you for the patch! Yet something to improve:
-
-[auto build test ERROR on next-20191125]
-[cannot apply to linus/master v5.4 v5.4-rc8 v5.4-rc7 v5.4]
-[if your patch is applied to the wrong git tree, please drop us a note to help
-improve the system. BTW, we also suggest to use '--base' option to specify the
-base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
-
-url:    https://github.com/0day-ci/linux/commits/Atish-Patra/Add-support-for-SBI-v0-2/20191126-122142
-base:    c165016bac2719e05794c216f9b6da730d68d1e3
-config: riscv-allnoconfig (attached as .config)
-compiler: riscv64-linux-gcc (GCC) 7.4.0
-reproduce:
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # save the attached .config to linux build tree
-        GCC_VERSION=7.4.0 make.cross ARCH=riscv 
-
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
-   arch/riscv/kernel/sbi.c:71:52: note: format string is defined here
-     pr_warn("IPI extension is not available in SBI v%lu.%lu\n",
-                                                     ~~^
-                                                     %u
-   In file included from include/linux/printk.h:7:0,
-                    from include/linux/kernel.h:15,
-                    from include/linux/list.h:9,
-                    from include/linux/pm.h:11,
-                    from arch/riscv/kernel/sbi.c:4:
-   include/linux/kern_levels.h:5:18: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
-    #define KERN_SOH "\001"  /* ASCII Start Of Header */
-                     ^
-   include/linux/kern_levels.h:12:22: note: in expansion of macro 'KERN_SOH'
-    #define KERN_WARNING KERN_SOH "4" /* warning conditions */
-                         ^~~~~~~~
-   include/linux/printk.h:306:9: note: in expansion of macro 'KERN_WARNING'
-     printk(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)
-            ^~~~~~~~~~~~
-   include/linux/printk.h:307:17: note: in expansion of macro 'pr_warning'
-    #define pr_warn pr_warning
-                    ^~~~~~~~~~
-   arch/riscv/kernel/sbi.c:71:2: note: in expansion of macro 'pr_warn'
-     pr_warn("IPI extension is not available in SBI v%lu.%lu\n",
-     ^~~~~~~
-   arch/riscv/kernel/sbi.c:71:56: note: format string is defined here
-     pr_warn("IPI extension is not available in SBI v%lu.%lu\n",
-                                                         ~~^
-                                                         %u
-   In file included from include/linux/printk.h:7:0,
-                    from include/linux/kernel.h:15,
-                    from include/linux/list.h:9,
-                    from include/linux/pm.h:11,
-                    from arch/riscv/kernel/sbi.c:4:
-   arch/riscv/kernel/sbi.c: In function '__sbi_rfence_dummy_warn':
-   include/linux/kern_levels.h:5:18: warning: format '%lu' expects argument of type 'long unsigned int', but argument 2 has type 'int' [-Wformat=]
-    #define KERN_SOH "\001"  /* ASCII Start Of Header */
-                     ^
-   include/linux/kern_levels.h:12:22: note: in expansion of macro 'KERN_SOH'
-    #define KERN_WARNING KERN_SOH "4" /* warning conditions */
-                         ^~~~~~~~
-   include/linux/printk.h:306:9: note: in expansion of macro 'KERN_WARNING'
-     printk(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)
-            ^~~~~~~~~~~~
-   include/linux/printk.h:307:17: note: in expansion of macro 'pr_warning'
-    #define pr_warn pr_warning
-                    ^~~~~~~~~~
-   arch/riscv/kernel/sbi.c:83:2: note: in expansion of macro 'pr_warn'
-     pr_warn("remote fence extension is not available in SBI v%lu.%lu\n",
-     ^~~~~~~
-   arch/riscv/kernel/sbi.c:83:61: note: format string is defined here
-     pr_warn("remote fence extension is not available in SBI v%lu.%lu\n",
-                                                              ~~^
-                                                              %u
-   In file included from include/linux/printk.h:7:0,
-                    from include/linux/kernel.h:15,
-                    from include/linux/list.h:9,
-                    from include/linux/pm.h:11,
-                    from arch/riscv/kernel/sbi.c:4:
-   include/linux/kern_levels.h:5:18: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
-    #define KERN_SOH "\001"  /* ASCII Start Of Header */
-                     ^
-   include/linux/kern_levels.h:12:22: note: in expansion of macro 'KERN_SOH'
-    #define KERN_WARNING KERN_SOH "4" /* warning conditions */
-                         ^~~~~~~~
-   include/linux/printk.h:306:9: note: in expansion of macro 'KERN_WARNING'
-     printk(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)
-            ^~~~~~~~~~~~
-   include/linux/printk.h:307:17: note: in expansion of macro 'pr_warning'
-    #define pr_warn pr_warning
-                    ^~~~~~~~~~
-   arch/riscv/kernel/sbi.c:83:2: note: in expansion of macro 'pr_warn'
-     pr_warn("remote fence extension is not available in SBI v%lu.%lu\n",
-     ^~~~~~~
-   arch/riscv/kernel/sbi.c:83:65: note: format string is defined here
-     pr_warn("remote fence extension is not available in SBI v%lu.%lu\n",
-                                                                  ~~^
-                                                                  %u
-   arch/riscv/kernel/sbi.c: In function '__sbi_set_timer_v02':
-   arch/riscv/kernel/sbi.c:214:12: error: 'SBI_EXT_TIME' undeclared (first use in this function); did you mean 'STA_PPSTIME'?
-     sbi_ecall(SBI_EXT_TIME, SBI_EXT_TIME_SET_TIMER, stime_value, 0,
-               ^~~~~~~~~~~~
-               STA_PPSTIME
-   arch/riscv/kernel/sbi.c:214:26: error: 'SBI_EXT_TIME_SET_TIMER' undeclared (first use in this function); did you mean 'SBI_EXT_TIME'?
-     sbi_ecall(SBI_EXT_TIME, SBI_EXT_TIME_SET_TIMER, stime_value, 0,
-                             ^~~~~~~~~~~~~~~~~~~~~~
-                             SBI_EXT_TIME
-   arch/riscv/kernel/sbi.c: In function '__sbi_send_ipi_v02':
-   arch/riscv/kernel/sbi.c:222:9: error: variable 'ret' has initializer but incomplete type
-     struct sbiret ret = {0};
-            ^~~~~~
-   arch/riscv/kernel/sbi.c:222:23: warning: excess elements in struct initializer
-     struct sbiret ret = {0};
-                          ^
-   arch/riscv/kernel/sbi.c:222:23: note: (near initialization for 'ret')
-   arch/riscv/kernel/sbi.c:222:16: error: storage size of 'ret' isn't known
-     struct sbiret ret = {0};
-                   ^~~
-   arch/riscv/kernel/sbi.c:230:18: error: 'SBI_EXT_IPI' undeclared (first use in this function)
-     ret = sbi_ecall(SBI_EXT_IPI, SBI_EXT_IPI_SEND_IPI, hmask_val,
-                     ^~~~~~~~~~~
->> arch/riscv/kernel/sbi.c:230:31: error: 'SBI_EXT_IPI_SEND_IPI' undeclared (first use in this function); did you mean 'SBI_EXT_IPI'?
-     ret = sbi_ecall(SBI_EXT_IPI, SBI_EXT_IPI_SEND_IPI, hmask_val,
-                                  ^~~~~~~~~~~~~~~~~~~~
-                                  SBI_EXT_IPI
-   arch/riscv/kernel/sbi.c:222:16: warning: unused variable 'ret' [-Wunused-variable]
-     struct sbiret ret = {0};
-                   ^~~
-   arch/riscv/kernel/sbi.c: In function '__sbi_rfence_v02':
-   arch/riscv/kernel/sbi.c:249:9: error: variable 'ret' has initializer but incomplete type
-     struct sbiret ret = {0};
-            ^~~~~~
-   arch/riscv/kernel/sbi.c:249:23: warning: excess elements in struct initializer
-     struct sbiret ret = {0};
-                          ^
-   arch/riscv/kernel/sbi.c:249:23: note: (near initialization for 'ret')
-   arch/riscv/kernel/sbi.c:249:16: error: storage size of 'ret' isn't known
-     struct sbiret ret = {0};
-                   ^~~
-   arch/riscv/kernel/sbi.c:251:22: error: 'SBI_EXT_RFENCE' undeclared (first use in this function); did you mean 'RISCV_FENCE'?
-     unsigned long ext = SBI_EXT_RFENCE;
-                         ^~~~~~~~~~~~~~
-                         RISCV_FENCE
-   arch/riscv/kernel/sbi.c:259:7: error: 'SBI_EXT_RFENCE_REMOTE_FENCE_I' undeclared (first use in this function)
-     case SBI_EXT_RFENCE_REMOTE_FENCE_I:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c:262:7: error: 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA' undeclared (first use in this function); did you mean 'SBI_EXT_RFENCE_REMOTE_FENCE_I'?
-     case SBI_EXT_RFENCE_REMOTE_SFENCE_VMA:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          SBI_EXT_RFENCE_REMOTE_FENCE_I
-   arch/riscv/kernel/sbi.c:266:7: error: 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID' undeclared (first use in this function); did you mean 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA'?
-     case SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          SBI_EXT_RFENCE_REMOTE_SFENCE_VMA
->> arch/riscv/kernel/sbi.c:271:7: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA' undeclared (first use in this function); did you mean 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA'?
-     case SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          SBI_EXT_RFENCE_REMOTE_SFENCE_VMA
->> arch/riscv/kernel/sbi.c:275:7: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID' undeclared (first use in this function); did you mean 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID'?
-     case SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID
->> arch/riscv/kernel/sbi.c:279:7: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA' undeclared (first use in this function); did you mean 'SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA'?
-     case SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA
->> arch/riscv/kernel/sbi.c:283:7: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID' undeclared (first use in this function); did you mean 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID'?
-     case SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID:
-          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID
-   arch/riscv/kernel/sbi.c:249:16: warning: unused variable 'ret' [-Wunused-variable]
-     struct sbiret ret = {0};
-                   ^~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_fence_i':
-   arch/riscv/kernel/sbi.c:335:15: error: 'SBI_EXT_0_1_REMOTE_FENCE_I' undeclared (first use in this function)
-     __sbi_rfence(SBI_EXT_0_1_REMOTE_FENCE_I, SBI_EXT_RFENCE_REMOTE_FENCE_I,
-                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c:335:43: error: 'SBI_EXT_RFENCE_REMOTE_FENCE_I' undeclared (first use in this function); did you mean 'SBI_EXT_0_1_REMOTE_FENCE_I'?
-     __sbi_rfence(SBI_EXT_0_1_REMOTE_FENCE_I, SBI_EXT_RFENCE_REMOTE_FENCE_I,
-                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                              SBI_EXT_0_1_REMOTE_FENCE_I
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_sfence_vma':
-   arch/riscv/kernel/sbi.c:353:15: error: 'SBI_EXT_0_1_REMOTE_SFENCE_VMA' undeclared (first use in this function)
-     __sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA,
-                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> arch/riscv/kernel/sbi.c:354:8: error: 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA' undeclared (first use in this function); did you mean 'SBI_EXT_0_1_REMOTE_SFENCE_VMA'?
-           SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           SBI_EXT_0_1_REMOTE_SFENCE_VMA
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_sfence_vma_asid':
-   arch/riscv/kernel/sbi.c:375:15: error: 'SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID' undeclared (first use in this function)
-     __sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID,
-                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> arch/riscv/kernel/sbi.c:376:8: error: 'SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID' undeclared (first use in this function); did you mean 'SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID'?
-           SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_gvma':
-   arch/riscv/kernel/sbi.c:394:22: error: 'SBI_EXT_RFENCE' undeclared (first use in this function); did you mean 'RISCV_FENCE'?
-     return __sbi_rfence(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA,
-                         ^~~~~~~~~~~~~~
-                         RISCV_FENCE
-   arch/riscv/kernel/sbi.c:394:38: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA' undeclared (first use in this function)
-     return __sbi_rfence(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA,
-                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_gvma_vmid':
-   arch/riscv/kernel/sbi.c:415:22: error: 'SBI_EXT_RFENCE' undeclared (first use in this function); did you mean 'RISCV_FENCE'?
-     return __sbi_rfence(SBI_EXT_RFENCE,
-                         ^~~~~~~~~~~~~~
-                         RISCV_FENCE
-   arch/riscv/kernel/sbi.c:416:8: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID' undeclared (first use in this function)
-           SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID,
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_vvma':
-   arch/riscv/kernel/sbi.c:434:22: error: 'SBI_EXT_RFENCE' undeclared (first use in this function); did you mean 'RISCV_FENCE'?
-     return __sbi_rfence(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA,
-                         ^~~~~~~~~~~~~~
-                         RISCV_FENCE
-   arch/riscv/kernel/sbi.c:434:38: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA' undeclared (first use in this function)
-     return __sbi_rfence(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA,
-                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_vvma_asid':
-   arch/riscv/kernel/sbi.c:456:22: error: 'SBI_EXT_RFENCE' undeclared (first use in this function); did you mean 'RISCV_FENCE'?
-     return __sbi_rfence(SBI_EXT_RFENCE,
-                         ^~~~~~~~~~~~~~
-                         RISCV_FENCE
-   arch/riscv/kernel/sbi.c:457:8: error: 'SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID' undeclared (first use in this function)
-           SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID,
-           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_probe_extension':
-   arch/riscv/kernel/sbi.c:470:16: error: storage size of 'ret' isn't known
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c:472:18: error: 'SBI_EXT_BASE' undeclared (first use in this function); did you mean 'BIT_MASK'?
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_PROBE_EXT, extid, 0, 0, 0, 0, 0);
-                     ^~~~~~~~~~~~
-                     BIT_MASK
-   arch/riscv/kernel/sbi.c:472:32: error: 'SBI_BASE_PROBE_EXT' undeclared (first use in this function)
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_PROBE_EXT, extid, 0, 0, 0, 0, 0);
-                                   ^~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c:470:16: warning: unused variable 'ret' [-Wunused-variable]
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_get_spec_version':
-   arch/riscv/kernel/sbi.c:484:16: error: storage size of 'ret' isn't known
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c:486:18: error: 'SBI_EXT_BASE' undeclared (first use in this function); did you mean 'BIT_MASK'?
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_SPEC_VERSION,
-                     ^~~~~~~~~~~~
-                     BIT_MASK
-   arch/riscv/kernel/sbi.c:486:32: error: 'SBI_BASE_GET_SPEC_VERSION' undeclared (first use in this function)
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_SPEC_VERSION,
-                                   ^~~~~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c:484:16: warning: unused variable 'ret' [-Wunused-variable]
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_get_firmware_id':
-   arch/riscv/kernel/sbi.c:496:16: error: storage size of 'ret' isn't known
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c:498:18: error: 'SBI_EXT_BASE' undeclared (first use in this function); did you mean 'BIT_MASK'?
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_ID,
-                     ^~~~~~~~~~~~
-                     BIT_MASK
-   arch/riscv/kernel/sbi.c:498:32: error: 'SBI_BASE_GET_IMP_ID' undeclared (first use in this function)
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_ID,
-                                   ^~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c:496:16: warning: unused variable 'ret' [-Wunused-variable]
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_get_firmware_version':
-   arch/riscv/kernel/sbi.c:508:16: error: storage size of 'ret' isn't known
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c:510:18: error: 'SBI_EXT_BASE' undeclared (first use in this function); did you mean 'BIT_MASK'?
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_VERSION,
-                     ^~~~~~~~~~~~
-                     BIT_MASK
-   arch/riscv/kernel/sbi.c:510:32: error: 'SBI_BASE_GET_IMP_VERSION' undeclared (first use in this function); did you mean '__GXX_ABI_VERSION'?
-     ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_VERSION,
-                                   ^~~~~~~~~~~~~~~~~~~~~~~~
-                                   __GXX_ABI_VERSION
-   arch/riscv/kernel/sbi.c:508:16: warning: unused variable 'ret' [-Wunused-variable]
-     struct sbiret ret;
-                   ^~~
-   arch/riscv/kernel/sbi.c: In function 'sbi_power_off':
-   arch/riscv/kernel/sbi.c:520:2: error: implicit declaration of function 'sbi_shutdown' [-Werror=implicit-function-declaration]
-     sbi_shutdown();
-     ^~~~~~~~~~~~
-   In file included from include/linux/printk.h:7:0,
-                    from include/linux/kernel.h:15,
-                    from include/linux/list.h:9,
-                    from include/linux/pm.h:11,
-                    from arch/riscv/kernel/sbi.c:4:
-   arch/riscv/kernel/sbi.c: In function 'sbi_init':
-   include/linux/kern_levels.h:5:18: warning: format '%lu' expects argument of type 'long unsigned int', but argument 2 has type 'int' [-Wformat=]
-    #define KERN_SOH "\001"  /* ASCII Start Of Header */
-                     ^
-   include/linux/kern_levels.h:14:19: note: in expansion of macro 'KERN_SOH'
-    #define KERN_INFO KERN_SOH "6" /* informational */
-                      ^~~~~~~~
-   include/linux/printk.h:311:9: note: in expansion of macro 'KERN_INFO'
-     printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
-            ^~~~~~~~~
-   arch/riscv/kernel/sbi.c:532:2: note: in expansion of macro 'pr_info'
-     pr_info("SBI specification v%lu.%lu detected\n",
-     ^~~~~~~
-   arch/riscv/kernel/sbi.c:532:32: note: format string is defined here
-     pr_info("SBI specification v%lu.%lu detected\n",
-                                 ~~^
-                                 %u
-   In file included from include/linux/printk.h:7:0,
-                    from include/linux/kernel.h:15,
-                    from include/linux/list.h:9,
-                    from include/linux/pm.h:11,
-                    from arch/riscv/kernel/sbi.c:4:
-   include/linux/kern_levels.h:5:18: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'int' [-Wformat=]
-    #define KERN_SOH "\001"  /* ASCII Start Of Header */
-                     ^
-   include/linux/kern_levels.h:14:19: note: in expansion of macro 'KERN_SOH'
-    #define KERN_INFO KERN_SOH "6" /* informational */
-                      ^~~~~~~~
-   include/linux/printk.h:311:9: note: in expansion of macro 'KERN_INFO'
-     printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
-            ^~~~~~~~~
-   arch/riscv/kernel/sbi.c:532:2: note: in expansion of macro 'pr_info'
-     pr_info("SBI specification v%lu.%lu detected\n",
-     ^~~~~~~
-   arch/riscv/kernel/sbi.c:532:36: note: format string is defined here
-     pr_info("SBI specification v%lu.%lu detected\n",
-                                     ~~^
-                                     %u
-   arch/riscv/kernel/sbi.c:535:6: error: implicit declaration of function 'sbi_spec_is_0_1' [-Werror=implicit-function-declaration]
-     if (sbi_spec_is_0_1()) {
-         ^~~~~~~~~~~~~~~
-   arch/riscv/kernel/sbi.c:542:27: error: 'SBI_EXT_TIME' undeclared (first use in this function); did you mean 'STA_PPSTIME'?
-      if (sbi_probe_extension(SBI_EXT_TIME) > 0)
-                              ^~~~~~~~~~~~
-                              STA_PPSTIME
->> arch/riscv/kernel/sbi.c:546:27: error: 'SBI_EXT_IPI' undeclared (first use in this function); did you mean 'SBI_EXT_TIME'?
-      if (sbi_probe_extension(SBI_EXT_IPI) > 0)
-                              ^~~~~~~~~~~
-                              SBI_EXT_TIME
->> arch/riscv/kernel/sbi.c:550:27: error: 'SBI_EXT_RFENCE' undeclared (first use in this function); did you mean 'SBI_EXT_TIME'?
-      if (sbi_probe_extension(SBI_EXT_RFENCE) > 0)
-                              ^~~~~~~~~~~~~~
-                              SBI_EXT_TIME
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_gvma':
-   arch/riscv/kernel/sbi.c:396:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_gvma_vmid':
-   arch/riscv/kernel/sbi.c:418:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_vvma':
-   arch/riscv/kernel/sbi.c:436:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   arch/riscv/kernel/sbi.c: In function 'sbi_remote_hfence_vvma_asid':
-   arch/riscv/kernel/sbi.c:459:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   arch/riscv/kernel/sbi.c: In function 'sbi_get_spec_version':
-   arch/riscv/kernel/sbi.c:492:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   arch/riscv/kernel/sbi.c: In function 'sbi_get_firmware_id':
-   arch/riscv/kernel/sbi.c:504:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   arch/riscv/kernel/sbi.c: In function 'sbi_get_firmware_version':
-   arch/riscv/kernel/sbi.c:516:1: warning: control reaches end of non-void function [-Wreturn-type]
-    }
-    ^
-   cc1: some warnings being treated as errors
-
-vim +230 arch/riscv/kernel/sbi.c
-
-   218	
-   219	static int __sbi_send_ipi_v02(const unsigned long *hart_mask)
-   220	{
-   221		unsigned long hmask_val;
- > 222		struct sbiret ret = {0};
-   223		int result;
-   224	
-   225		if (!hart_mask)
-   226			hmask_val = *(cpumask_bits(cpu_online_mask));
-   227		else
-   228			hmask_val = *hart_mask;
-   229	
- > 230		ret = sbi_ecall(SBI_EXT_IPI, SBI_EXT_IPI_SEND_IPI, hmask_val,
-   231				0, 0, 0, 0, 0);
-   232		if (ret.error) {
-   233			pr_err("%s: failed with error [%d]\n", __func__,
-   234				sbi_err_map_linux_errno(ret.error));
-   235			result = ret.error;
-   236		} else
-   237			result = ret.value;
-   238	
-   239		return result;
-   240	}
-   241	
-   242	static int __sbi_rfence_v02(unsigned long extid, unsigned long fid,
-   243				     const unsigned long *hart_mask,
-   244				     unsigned long hbase, unsigned long start,
-   245				     unsigned long size, unsigned long arg4,
-   246				     unsigned long arg5)
-   247	{
-   248		unsigned long hmask_val;
-   249		struct sbiret ret = {0};
-   250		int result;
-   251		unsigned long ext = SBI_EXT_RFENCE;
-   252	
-   253		if (!hart_mask)
-   254			hmask_val = *(cpumask_bits(cpu_online_mask));
-   255		else
-   256			hmask_val = *hart_mask;
-   257	
-   258		switch (fid) {
-   259		case SBI_EXT_RFENCE_REMOTE_FENCE_I:
-   260			ret = sbi_ecall(ext, fid, hmask_val, 0, 0, 0, 0, 0);
-   261			break;
- > 262		case SBI_EXT_RFENCE_REMOTE_SFENCE_VMA:
-   263			ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-   264					size, 0, 0);
-   265			break;
- > 266		case SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID:
-   267			ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-   268					size, arg4, 0);
-   269			break;
-   270		/*TODO: Handle non zero hbase cases */
- > 271		case SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA:
-   272			ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-   273					size, 0, 0);
-   274			break;
- > 275		case SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID:
-   276			ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-   277					size, arg4, 0);
-   278			break;
- > 279		case SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA:
-   280			ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-   281					size, 0, 0);
-   282			break;
- > 283		case SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID:
-   284			ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-   285					size, arg4, 0);
-   286			break;
-   287		default:
-   288			pr_err("unknown function ID [%lu] for SBI extension [%lu]\n",
-   289				fid, ext);
-   290			result = -EINVAL;
-   291		}
-   292	
-   293		if (ret.error) {
-   294			pr_err("%s: failed with error [%d]\n", __func__,
-   295				sbi_err_map_linux_errno(ret.error));
-   296			result = ret.error;
-   297		} else
-   298			result = ret.value;
-   299	
-   300		return result;
-   301	}
-   302	
-   303	/**
-   304	 * sbi_set_timer() - Program the timer for next timer event.
-   305	 * @stime_value: The value after which next timer event should fire.
-   306	 *
-   307	 * Return: None
-   308	 */
-   309	void sbi_set_timer(uint64_t stime_value)
-   310	{
-   311		__sbi_set_timer(stime_value);
-   312	}
-   313	
-   314	/**
-   315	 * sbi_send_ipi() - Send an IPI to any hart.
-   316	 * @hart_mask: A cpu mask containing all the target harts.
-   317	 *
-   318	 * Return: None
-   319	 */
-   320	void sbi_send_ipi(const unsigned long *hart_mask)
-   321	{
-   322		__sbi_send_ipi(hart_mask);
-   323	}
-   324	EXPORT_SYMBOL(sbi_send_ipi);
-   325	
-   326	
-   327	/**
-   328	 * sbi_remote_fence_i() - Execute FENCE.I instruction on given remote harts.
-   329	 * @hart_mask: A cpu mask containing all the target harts.
-   330	 *
-   331	 * Return: None
-   332	 */
-   333	void sbi_remote_fence_i(const unsigned long *hart_mask)
-   334	{
- > 335		__sbi_rfence(SBI_EXT_0_1_REMOTE_FENCE_I, SBI_EXT_RFENCE_REMOTE_FENCE_I,
-   336			     hart_mask, 0, 0, 0, 0, 0);
-   337	}
-   338	EXPORT_SYMBOL(sbi_remote_fence_i);
-   339	
-   340	/**
-   341	 * sbi_remote_sfence_vma() - Execute SFENCE.VMA instructions on given remote
-   342	 *			     harts for the specified virtual address range.
-   343	 * @hart_mask: A cpu mask containing all the target harts.
-   344	 * @start: Start of the virtual address
-   345	 * @size: Total size of the virtual address range.
-   346	 *
-   347	 * Return: None
-   348	 */
-   349	void sbi_remote_sfence_vma(const unsigned long *hart_mask,
-   350						 unsigned long start,
-   351						 unsigned long size)
-   352	{
-   353		__sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA,
- > 354			     SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
-   355			     hart_mask, 0, start, size, 0, 0);
-   356	}
-   357	EXPORT_SYMBOL(sbi_remote_sfence_vma);
-   358	
-   359	/**
-   360	 * sbi_remote_sfence_vma_asid() - Execute SFENCE.VMA instructions on given
-   361	 * remote harts for a virtual address range belonging to a specific ASID.
-   362	 *
-   363	 * @hart_mask: A cpu mask containing all the target harts.
-   364	 * @start: Start of the virtual address
-   365	 * @size: Total size of the virtual address range.
-   366	 * @asid: The value of address space identifier (ASID).
-   367	 *
-   368	 * Return: None
-   369	 */
-   370	void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
-   371						      unsigned long start,
-   372						      unsigned long size,
-   373						      unsigned long asid)
-   374	{
-   375		__sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID,
- > 376			     SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
-   377			     hart_mask, 0, start, size, asid, 0);
-   378	}
-   379	EXPORT_SYMBOL(sbi_remote_sfence_vma_asid);
-   380	
-
----
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
-
---jssjhuawk3q2yyk2
-Content-Type: application/gzip
-Content-Disposition: attachment; filename=".config.gz"
-Content-Transfer-Encoding: base64
-
-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
-
---jssjhuawk3q2yyk2
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-linux-riscv mailing list
-linux-riscv@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-riscv
-
---jssjhuawk3q2yyk2--
-
+T24gRnJpLCBOb3YgMjIsIDIwMTkgYXQgNjozMiBBTSBQYXVsIFdhbG1zbGV5IDxwYXVsLndhbG1z
+bGV5QHNpZml2ZS5jb20+IHdyb3RlOgo+Cj4gT24gVGh1LCAyMSBOb3YgMjAxOSwgUGF1bCBXYWxt
+c2xleSB3cm90ZToKPgo+ID4gQXMgSSB1bmRlcnN0YW5kIGl0LCB0aGlzIHBhdGNoIGhhc24ndCBi
+ZWVuIHNpZ25lZCBvZmYgb24gYnkgUGF0cmljay4KPiA+IEkndmUgc2VudCBoaW0gYW4gRS1tYWls
+IGFza2luZyBoaW0gd2hldGhlciBoZSdzIHdpbGxpbmcgdG8gYWRkIGhpcwo+ID4gU2lnbmVkLW9m
+Zi1ieTosIGJ1dCBoYXZlbid0IGhlYXJkIGJhY2sgZnJvbSBpdC4KPiA+Cj4gPiBGcm9tIG91ciBk
+aXNjdXNzaW9ucywgSSB1bmRlcnN0YW5kIHRoYXQgdGhpcyBwYXRjaCBpcyBiYXNlZCBwYXJ0aWFs
+bHkgb24KPiA+IHNvbWUgb2YgaGlzIGVhcmxpZXIsIHB1YmxpYywga3Byb2JlcyB3b3JrLiAgSW4g
+bGlldSBvZiBhbnkgcmVzcG9uc2UgZnJvbQo+ID4gUGF0cmljaywgY291bGQgeW91IHBsZWFzZSBy
+ZXNlbmQgdGhpcyBwYXRjaCBhbmQganVzdCBub3RlIGluIHRoZSBjb21taXQKPiA+IGRlc2NyaXB0
+aW9uIHRoYXQgaXQncyBwYXJ0aWFsbHkgYmFzZWQgb24gb25lIG9mIGhpcyBwYXRjaGVzLCBhZGQg
+YSBMaW5rOgo+ID4gbGluZSB0aGF0IHBvaW50cyB0byB0aGUgVVJMIG9mIHRoZSBwYXRjaCB0aGF0
+IGl0J3MgcGFydGlhbGx5IGJhc2VkIG9uLCBhbmQKPiA+IHJlcGxhY2UgdGhlIFNpZ25lZC1vZmYt
+Ynk6IHdpdGggYSBDby1kZXZlbG9wZWQtYnk6IG9yIHNvbWV0aGluZyBzaW1pbGFyPwo+Cj4gT0sg
+LSBqdXN0IGxvb2tlZCBhdCB0aGUgcGF0Y2hlcyBtb3JlIGNsb3NlbHksIGFuZCBJIHRoaW5rIEkg
+c2VlIHdoYXQncwo+IGdvaW5nIG9uIGhlcmUuICBUaGlzIHBhdGNoIGxvb2tzIGxpa2UgYSByZWJh
+c2VkIHZlcnNpb24gb2YgdGhpcyBwYXRjaDoKPgo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xp
+bnV4LXJpc2N2LzIwMTgxMTEzMTk1ODA0LjIyODI1LTItbWVAcGFja2kuY2gvCj4KPiBTbyBsZXQn
+cyBqdXN0IHBsYW4gdG8gdXNlIGFuIHVwZGF0ZWQgdmVyc2lvbiBvZiBQYXRyaWNrJ3Mgb3JpZ2lu
+YWwKPiAoYmVsb3cpLiAgUGxlYXNlIGxldCBtZSBrbm93IGlmIHlvdSBoYXZlIGFueSBjb21tZW50
+cyBvbiBpdCBvciBpZiBJCj4gbWlzc2VkIHNvbWV0aGluZyAtCj4KPgo+IC0gUGF1bAo+CgpEZWFy
+IFBhdWwsCkR1ZSB0byB0aGUgcnVsZSBvZiBtYWlsIGNsYXNzaWZpY2F0aW9uLCBJIGRvIG5vdCBm
+aW5kIHRoaXMgbWFpbCBpbgp0aW1lLiBJIGFtIHNvcnJ5IGZvciB0aGF0LgpJIHRoaW5rIGl0IGlz
+IGdvb2QgZm9yIG1lLgoKVGhhbmtzIGFuZCByZWdhcmRzClZpbmNlbnQKCgo+IEZyb206IFBhdHJp
+Y2sgU3TDpGhsaW4gPG1lQHBhY2tpLmNoPgo+IERhdGU6IFR1ZSwgMTMgTm92IDIwMTggMjA6NTg6
+MDMgKzAxMDAKPiBTdWJqZWN0OiBbUEFUQ0hdIFJJU0MtVjogSW1wbGVtZW50IHB0cmFjZSByZWdz
+IGFuZCBzdGFjayBBUEkKPiBNSU1FLVZlcnNpb246IDEuMAo+IENvbnRlbnQtVHlwZTogdGV4dC9w
+bGFpbjsgY2hhcnNldD1VVEYtOAo+IENvbnRlbnQtVHJhbnNmZXItRW5jb2Rpbmc6IDhiaXQKPgo+
+IE5lZWRlZCBmb3Iga3Byb2JlcyBzdXBwb3J0LiBDb3BpZWQgYW5kIGFkYXB0ZWQgZnJvbSBhcm02
+NCBjb2RlLgo+Cj4gU2lnbmVkLW9mZi1ieTogUGF0cmljayBTdMOkaGxpbiA8bWVAcGFja2kuY2g+
+Cj4gW3BhdWwud2FsbXNsZXlAc2lmaXZlLmNvbTogdXBkYXRlZCB0byBhcHBseTsgZml4ZWQgY2hl
+Y2twYXRjaCBpc3N1ZXM7Cj4gIGZpeGVkIHJlZ3NfZ2V0X3JlZ2lzdGVyKCkga2VybmVsZG9jXQo+
+IENjOiBWaW5jZW50IENoZW4gPHZpbmNlbnQuY2hlbkBzaWZpdmUuY29tPgo+IExpbms6IGh0dHBz
+Oi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJpc2N2LzIwMTgxMTEzMTk1ODAzLkNqdEJDc1VjRzlj
+endpcW1QQkdLVWp2bDVPanhxMlNJUGFpb1FVSFhGSTBAei8KPiBMaW5rOiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9saW51eC1yaXNjdi8xNTcyOTE5MTE0LTM4ODYtMS1naXQtc2VuZC1lbWFpbC12
+aW5jZW50LmNoZW5Ac2lmaXZlLmNvbS9ULyNtZGIzNDY1MjdkMjVlYTE5NTlhYjU3ZmY5ZDFjMDU2
+YmNkMjljNzE3Mgo+IFNpZ25lZC1vZmYtYnk6IFBhdWwgV2FsbXNsZXkgPHBhdWwud2FsbXNsZXlA
+c2lmaXZlLmNvbT4KPiAtLS0KPiAgYXJjaC9yaXNjdi9LY29uZmlnICAgICAgICAgICAgICB8ICAx
+ICsKPiAgYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9wdHJhY2UuaCB8IDMwICsrKysrKysrKysKPiAg
+YXJjaC9yaXNjdi9rZXJuZWwvcHRyYWNlLmMgICAgICB8IDk5ICsrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKwo+ICAzIGZpbGVzIGNoYW5nZWQsIDEzMCBpbnNlcnRpb25zKCspCj4KPiBk
+aWZmIC0tZ2l0IGEvYXJjaC9yaXNjdi9LY29uZmlnIGIvYXJjaC9yaXNjdi9LY29uZmlnCj4gaW5k
+ZXggOGVlYmJjODg2MGJiLi5kNWJiZjQyMjNmZDIgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9yaXNjdi9L
+Y29uZmlnCj4gKysrIGIvYXJjaC9yaXNjdi9LY29uZmlnCj4gQEAgLTYxLDYgKzYxLDcgQEAgY29u
+ZmlnIFJJU0NWCj4gICAgICAgICBzZWxlY3QgU1BBUlNFTUVNX1NUQVRJQyBpZiAzMkJJVAo+ICAg
+ICAgICAgc2VsZWN0IEFSQ0hfV0FOVF9ERUZBVUxUX1RPUERPV05fTU1BUF9MQVlPVVQgaWYgTU1V
+Cj4gICAgICAgICBzZWxlY3QgSEFWRV9BUkNIX01NQVBfUk5EX0JJVFMKPiArICAgICAgIHNlbGVj
+dCBIQVZFX1JFR1NfQU5EX1NUQUNLX0FDQ0VTU19BUEkKPgo+ICBjb25maWcgQVJDSF9NTUFQX1JO
+RF9CSVRTX01JTgo+ICAgICAgICAgZGVmYXVsdCAxOCBpZiA2NEJJVAo+IGRpZmYgLS1naXQgYS9h
+cmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3B0cmFjZS5oIGIvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9w
+dHJhY2UuaAo+IGluZGV4IGQ0OGQxZTEzOTczYy4uNTBkMzdiMTIzYTYxIDEwMDY0NAo+IC0tLSBh
+L2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vcHRyYWNlLmgKPiArKysgYi9hcmNoL3Jpc2N2L2luY2x1
+ZGUvYXNtL3B0cmFjZS5oCj4gQEAgLTgsNiArOCw3IEBACj4KPiAgI2luY2x1ZGUgPHVhcGkvYXNt
+L3B0cmFjZS5oPgo+ICAjaW5jbHVkZSA8YXNtL2Nzci5oPgo+ICsjaW5jbHVkZSA8bGludXgvY29t
+cGlsZXIuaD4KPgo+ICAjaWZuZGVmIF9fQVNTRU1CTFlfXwo+Cj4gQEAgLTYwLDYgKzYxLDcgQEAg
+c3RydWN0IHB0X3JlZ3Mgewo+Cj4gICNkZWZpbmUgdXNlcl9tb2RlKHJlZ3MpICgoKHJlZ3MpLT5z
+c3RhdHVzICYgU1JfU1BQKSA9PSAwKQo+Cj4gKyNkZWZpbmUgTUFYX1JFR19PRkZTRVQgb2Zmc2V0
+b2Yoc3RydWN0IHB0X3JlZ3MsIG9yaWdfYTApCj4KPiAgLyogSGVscGVycyBmb3Igd29ya2luZyB3
+aXRoIHRoZSBpbnN0cnVjdGlvbiBwb2ludGVyICovCj4gIHN0YXRpYyBpbmxpbmUgdW5zaWduZWQg
+bG9uZyBpbnN0cnVjdGlvbl9wb2ludGVyKHN0cnVjdCBwdF9yZWdzICpyZWdzKQo+IEBAIC04NSw2
+ICs4NywxMiBAQCBzdGF0aWMgaW5saW5lIHZvaWQgdXNlcl9zdGFja19wb2ludGVyX3NldChzdHJ1
+Y3QgcHRfcmVncyAqcmVncywKPiAgICAgICAgIHJlZ3MtPnNwID0gIHZhbDsKPiAgfQo+Cj4gKy8q
+IFZhbGlkIG9ubHkgZm9yIEtlcm5lbCBtb2RlIHRyYXBzLiAqLwo+ICtzdGF0aWMgaW5saW5lIHVu
+c2lnbmVkIGxvbmcga2VybmVsX3N0YWNrX3BvaW50ZXIoc3RydWN0IHB0X3JlZ3MgKnJlZ3MpCj4g
+K3sKPiArICAgICAgIHJldHVybiByZWdzLT5zcDsKPiArfQo+ICsKPiAgLyogSGVscGVycyBmb3Ig
+d29ya2luZyB3aXRoIHRoZSBmcmFtZSBwb2ludGVyICovCj4gIHN0YXRpYyBpbmxpbmUgdW5zaWdu
+ZWQgbG9uZyBmcmFtZV9wb2ludGVyKHN0cnVjdCBwdF9yZWdzICpyZWdzKQo+ICB7Cj4gQEAgLTEw
+MSw2ICsxMDksMjggQEAgc3RhdGljIGlubGluZSB1bnNpZ25lZCBsb25nIHJlZ3NfcmV0dXJuX3Zh
+bHVlKHN0cnVjdCBwdF9yZWdzICpyZWdzKQo+ICAgICAgICAgcmV0dXJuIHJlZ3MtPmEwOwo+ICB9
+Cj4KPiAraW50IHJlZ3NfcXVlcnlfcmVnaXN0ZXJfb2Zmc2V0KGNvbnN0IGNoYXIgKm5hbWUpOwo+
+ICt1bnNpZ25lZCBsb25nIHJlZ3NfZ2V0X2tlcm5lbF9zdGFja19udGgoc3RydWN0IHB0X3JlZ3Mg
+KnJlZ3MsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVk
+IGludCBuKTsKPiArCj4gKy8qKgo+ICsgKiByZWdzX2dldF9yZWdpc3RlcigpIC0gZ2V0IHJlZ2lz
+dGVyIHZhbHVlIGZyb20gaXRzIG9mZnNldAo+ICsgKiBAcmVnczogICAgICBwdF9yZWdzIGZyb20g
+d2hpY2ggcmVnaXN0ZXIgdmFsdWUgaXMgZ290dGVuCj4gKyAqIEBvZmZzZXQ6ICAgIG9mZnNldCBv
+ZiB0aGUgcmVnaXN0ZXIuCj4gKyAqCj4gKyAqIHJlZ3NfZ2V0X3JlZ2lzdGVyKCkgcmV0dXJucyB0
+aGUgdmFsdWUgZnJvbSBAcmVncyBvZiBhIHJlZ2lzdGVyCj4gKyAqIGlkZW50aWZpZWQgYnkgQG9m
+ZnNldC4gIFRoZSBAb2Zmc2V0IGlzIHRoZSBvZmZzZXQgb2YgdGhlIHJlZ2lzdGVyCj4gKyAqIGlu
+IHN0cnVjdCBwdF9yZWdzLiAgSWYgQG9mZnNldCBpcyBiaWdnZXIgdGhhbiBNQVhfUkVHX09GRlNF
+VCwgdGhpcwo+ICsgKiByZXR1cm5zIDAuCj4gKyAqLwo+ICtzdGF0aWMgaW5saW5lIHVuc2lnbmVk
+IGxvbmcgcmVnc19nZXRfcmVnaXN0ZXIoc3RydWN0IHB0X3JlZ3MgKnJlZ3MsCj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGludCBvZmZzZXQp
+Cj4gK3sKPiArICAgICAgIGlmICh1bmxpa2VseShvZmZzZXQgPiBNQVhfUkVHX09GRlNFVCkpCj4g
+KyAgICAgICAgICAgICAgIHJldHVybiAwOwo+ICsKPiArICAgICAgIHJldHVybiAqKHVuc2lnbmVk
+IGxvbmcgKikoKHVuc2lnbmVkIGxvbmcpcmVncyArIG9mZnNldCk7Cj4gK30KPiAgI2VuZGlmIC8q
+IF9fQVNTRU1CTFlfXyAqLwo+Cj4gICNlbmRpZiAvKiBfQVNNX1JJU0NWX1BUUkFDRV9IICovCj4g
+ZGlmZiAtLWdpdCBhL2FyY2gvcmlzY3Yva2VybmVsL3B0cmFjZS5jIGIvYXJjaC9yaXNjdi9rZXJu
+ZWwvcHRyYWNlLmMKPiBpbmRleCAxMjUyMTEzZWY4YjIuLjUwNzZiMzBmZTE4YiAxMDA2NDQKPiAt
+LS0gYS9hcmNoL3Jpc2N2L2tlcm5lbC9wdHJhY2UuYwo+ICsrKyBiL2FyY2gvcmlzY3Yva2VybmVs
+L3B0cmFjZS5jCj4gQEAgLTEyNSw2ICsxMjUsMTA1IEBAIGNvbnN0IHN0cnVjdCB1c2VyX3JlZ3Nl
+dF92aWV3ICp0YXNrX3VzZXJfcmVnc2V0X3ZpZXcoc3RydWN0IHRhc2tfc3RydWN0ICp0YXNrKQo+
+ICAgICAgICAgcmV0dXJuICZyaXNjdl91c2VyX25hdGl2ZV92aWV3Owo+ICB9Cj4KPiArc3RydWN0
+IHB0X3JlZ3Nfb2Zmc2V0IHsKPiArICAgICAgIGNvbnN0IGNoYXIgKm5hbWU7Cj4gKyAgICAgICBp
+bnQgb2Zmc2V0Owo+ICt9Owo+ICsKPiArI2RlZmluZSBSRUdfT0ZGU0VUX05BTUUocikgey5uYW1l
+ID0gI3IsIC5vZmZzZXQgPSBvZmZzZXRvZihzdHJ1Y3QgcHRfcmVncywgcil9Cj4gKyNkZWZpbmUg
+UkVHX09GRlNFVF9FTkQgey5uYW1lID0gTlVMTCwgLm9mZnNldCA9IDB9Cj4gKwo+ICtzdGF0aWMg
+Y29uc3Qgc3RydWN0IHB0X3JlZ3Nfb2Zmc2V0IHJlZ29mZnNldF90YWJsZVtdID0gewo+ICsgICAg
+ICAgUkVHX09GRlNFVF9OQU1FKHNlcGMpLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKHJhKSwK
+PiArICAgICAgIFJFR19PRkZTRVRfTkFNRShzcCksCj4gKyAgICAgICBSRUdfT0ZGU0VUX05BTUUo
+Z3ApLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKHRwKSwKPiArICAgICAgIFJFR19PRkZTRVRf
+TkFNRSh0MCksCj4gKyAgICAgICBSRUdfT0ZGU0VUX05BTUUodDEpLAo+ICsgICAgICAgUkVHX09G
+RlNFVF9OQU1FKHQyKSwKPiArICAgICAgIFJFR19PRkZTRVRfTkFNRShzMCksCj4gKyAgICAgICBS
+RUdfT0ZGU0VUX05BTUUoczEpLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKGEwKSwKPiArICAg
+ICAgIFJFR19PRkZTRVRfTkFNRShhMSksCj4gKyAgICAgICBSRUdfT0ZGU0VUX05BTUUoYTIpLAo+
+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKGEzKSwKPiArICAgICAgIFJFR19PRkZTRVRfTkFNRShh
+NCksCj4gKyAgICAgICBSRUdfT0ZGU0VUX05BTUUoYTUpLAo+ICsgICAgICAgUkVHX09GRlNFVF9O
+QU1FKGE2KSwKPiArICAgICAgIFJFR19PRkZTRVRfTkFNRShhNyksCj4gKyAgICAgICBSRUdfT0ZG
+U0VUX05BTUUoczIpLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKHMzKSwKPiArICAgICAgIFJF
+R19PRkZTRVRfTkFNRShzNCksCj4gKyAgICAgICBSRUdfT0ZGU0VUX05BTUUoczUpLAo+ICsgICAg
+ICAgUkVHX09GRlNFVF9OQU1FKHM2KSwKPiArICAgICAgIFJFR19PRkZTRVRfTkFNRShzNyksCj4g
+KyAgICAgICBSRUdfT0ZGU0VUX05BTUUoczgpLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKHM5
+KSwKPiArICAgICAgIFJFR19PRkZTRVRfTkFNRShzMTApLAo+ICsgICAgICAgUkVHX09GRlNFVF9O
+QU1FKHMxMSksCj4gKyAgICAgICBSRUdfT0ZGU0VUX05BTUUodDMpLAo+ICsgICAgICAgUkVHX09G
+RlNFVF9OQU1FKHQ0KSwKPiArICAgICAgIFJFR19PRkZTRVRfTkFNRSh0NSksCj4gKyAgICAgICBS
+RUdfT0ZGU0VUX05BTUUodDYpLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKHNzdGF0dXMpLAo+
+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKHNiYWRhZGRyKSwKPiArICAgICAgIFJFR19PRkZTRVRf
+TkFNRShzY2F1c2UpLAo+ICsgICAgICAgUkVHX09GRlNFVF9OQU1FKG9yaWdfYTApLAo+ICsgICAg
+ICAgUkVHX09GRlNFVF9FTkQsCj4gK307Cj4gKwo+ICsvKioKPiArICogcmVnc19xdWVyeV9yZWdp
+c3Rlcl9vZmZzZXQoKSAtIHF1ZXJ5IHJlZ2lzdGVyIG9mZnNldCBmcm9tIGl0cyBuYW1lCj4gKyAq
+IEBuYW1lOiAgICAgIHRoZSBuYW1lIG9mIGEgcmVnaXN0ZXIKPiArICoKPiArICogcmVnc19xdWVy
+eV9yZWdpc3Rlcl9vZmZzZXQoKSByZXR1cm5zIHRoZSBvZmZzZXQgb2YgYSByZWdpc3RlciBpbiBz
+dHJ1Y3QKPiArICogcHRfcmVncyBmcm9tIGl0cyBuYW1lLiBJZiB0aGUgbmFtZSBpcyBpbnZhbGlk
+LCB0aGlzIHJldHVybnMgLUVJTlZBTDsKPiArICovCj4gK2ludCByZWdzX3F1ZXJ5X3JlZ2lzdGVy
+X29mZnNldChjb25zdCBjaGFyICpuYW1lKQo+ICt7Cj4gKyAgICAgICBjb25zdCBzdHJ1Y3QgcHRf
+cmVnc19vZmZzZXQgKnJvZmY7Cj4gKwo+ICsgICAgICAgZm9yIChyb2ZmID0gcmVnb2Zmc2V0X3Rh
+YmxlOyByb2ZmLT5uYW1lOyByb2ZmKyspCj4gKyAgICAgICAgICAgICAgIGlmICghc3RyY21wKHJv
+ZmYtPm5hbWUsIG5hbWUpKQo+ICsgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiByb2ZmLT5v
+ZmZzZXQ7Cj4gKyAgICAgICByZXR1cm4gLUVJTlZBTDsKPiArfQo+ICsKPiArLyoqCj4gKyAqIHJl
+Z3Nfd2l0aGluX2tlcm5lbF9zdGFjaygpIC0gY2hlY2sgdGhlIGFkZHJlc3MgaW4gdGhlIHN0YWNr
+Cj4gKyAqIEByZWdzOiAgICAgIHB0X3JlZ3Mgd2hpY2ggY29udGFpbnMga2VybmVsIHN0YWNrIHBv
+aW50ZXIuCj4gKyAqIEBhZGRyOiAgICAgIGFkZHJlc3Mgd2hpY2ggaXMgY2hlY2tlZC4KPiArICoK
+PiArICogcmVnc193aXRoaW5fa2VybmVsX3N0YWNrKCkgY2hlY2tzIEBhZGRyIGlzIHdpdGhpbiB0
+aGUga2VybmVsIHN0YWNrIHBhZ2UocykuCj4gKyAqIElmIEBhZGRyIGlzIHdpdGhpbiB0aGUga2Vy
+bmVsIHN0YWNrLCBpdCByZXR1cm5zIHRydWUuIElmIG5vdCwgcmV0dXJucyBmYWxzZS4KPiArICov
+Cj4gK3N0YXRpYyBib29sIHJlZ3Nfd2l0aGluX2tlcm5lbF9zdGFjayhzdHJ1Y3QgcHRfcmVncyAq
+cmVncywgdW5zaWduZWQgbG9uZyBhZGRyKQo+ICt7Cj4gKyAgICAgICByZXR1cm4gKGFkZHIgJiB+
+KFRIUkVBRF9TSVpFIC0gMSkpICA9PQo+ICsgICAgICAgICAgICAgICAoa2VybmVsX3N0YWNrX3Bv
+aW50ZXIocmVncykgJiB+KFRIUkVBRF9TSVpFIC0gMSkpOwo+ICt9Cj4gKwo+ICsvKioKPiArICog
+cmVnc19nZXRfa2VybmVsX3N0YWNrX250aCgpIC0gZ2V0IE50aCBlbnRyeSBvZiB0aGUgc3RhY2sK
+PiArICogQHJlZ3M6ICAgICAgcHRfcmVncyB3aGljaCBjb250YWlucyBrZXJuZWwgc3RhY2sgcG9p
+bnRlci4KPiArICogQG46ICAgICAgICAgc3RhY2sgZW50cnkgbnVtYmVyLgo+ICsgKgo+ICsgKiBy
+ZWdzX2dldF9rZXJuZWxfc3RhY2tfbnRoKCkgcmV0dXJucyBAbiB0aCBlbnRyeSBvZiB0aGUga2Vy
+bmVsIHN0YWNrIHdoaWNoCj4gKyAqIGlzIHNwZWNpZmllZCBieSBAcmVncy4gSWYgdGhlIEBuIHRo
+IGVudHJ5IGlzIE5PVCBpbiB0aGUga2VybmVsIHN0YWNrLAo+ICsgKiB0aGlzIHJldHVybnMgMC4K
+PiArICovCj4gK3Vuc2lnbmVkIGxvbmcgcmVnc19nZXRfa2VybmVsX3N0YWNrX250aChzdHJ1Y3Qg
+cHRfcmVncyAqcmVncywgdW5zaWduZWQgaW50IG4pCj4gK3sKPiArICAgICAgIHVuc2lnbmVkIGxv
+bmcgKmFkZHIgPSAodW5zaWduZWQgbG9uZyAqKWtlcm5lbF9zdGFja19wb2ludGVyKHJlZ3MpOwo+
+ICsKPiArICAgICAgIGFkZHIgKz0gbjsKPiArICAgICAgIGlmIChyZWdzX3dpdGhpbl9rZXJuZWxf
+c3RhY2socmVncywgKHVuc2lnbmVkIGxvbmcpYWRkcikpCj4gKyAgICAgICAgICAgICAgIHJldHVy
+biAqYWRkcjsKPiArICAgICAgIGVsc2UKPiArICAgICAgICAgICAgICAgcmV0dXJuIDA7Cj4gK30K
+PiArCj4gIHZvaWQgcHRyYWNlX2Rpc2FibGUoc3RydWN0IHRhc2tfc3RydWN0ICpjaGlsZCkKPiAg
+ewo+ICAgICAgICAgY2xlYXJfdHNrX3RocmVhZF9mbGFnKGNoaWxkLCBUSUZfU1lTQ0FMTF9UUkFD
+RSk7Cj4gLS0KPiAyLjI0LjAucmMwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpsaW51eC1yaXNjdiBtYWlsaW5nIGxpc3QKbGludXgtcmlzY3ZAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJpc2N2Cg==
