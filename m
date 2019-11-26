@@ -2,83 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E397410A45D
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 20:12:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D2D410A462
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 20:14:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MFNkaJXAM2NrC9q6MCmGvIZ4DIBpDmukIEdfsIJOY4Q=; b=hSHV43c4mTpk9a
-	D8t3ClcKFeuL0sarZ4RAlj+G1SvYJ33kQvKXhgfZ/nkcn8SNZ0Mq+XjGRJIlryTHMuNWKguGudeUH
-	UCrx36OdPYU8JoZUXBkzS1g15+2IgS2v9/rs1Oqe+MDUECb1TClB6SqTjXN2xLPmZAUfwam9k9FPu
-	oj2m48+e5JL5x/QVizPVh72GksKwBQTjMNyKpUmAHSUFdr8JAHl6Z213iMK9GBIlxSsteu0ZqSINW
-	w/TifOFY2jgm2hxVeWeWkKpYZGfdtXXxgpxSwjqr3+CF+JghsVPa4egMm6u1oEfeegCvktMhdgTuZ
-	dX260mGMx+0Ze2H/cHgA==;
+	List-Owner; bh=4o7egGcLcaaIDXKji+BZA6lxmlX1x9F5v92TxTnzEKA=; b=st8J4yeZxQvXYM
+	cAs8Nd61TE1DTJTkf9Wusqcu1vFIUielryxqi/2FuLC3ziaeTVsdF7AGlQWq0lHobhKBfF4xyL65o
+	uU8oPhpc25efLXMGeoA4es0BFEaStEECCJ/J/uKe8VW8TwCURO1kuLdQmrp11llP0nbGbqD5KWHh8
+	02JvrKhPlFf6X8P/ACWnHcP1UQrLRu/+XOQB0gQ3JJOJ4qFg91ZSHr+oEFkEkXkdGYTL9Pe13loTi
+	BhQb2wF9wqZWxVbV7Uu6H3iGxeAw78uFQ1X7l9iwM7I2fsxxwxfOTjVBlOwd7MhgOXSXpHY2Dwr6c
+	g5cSEbup2TRoCA+ZPX9A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZgGD-0000Mf-Ux; Tue, 26 Nov 2019 19:12:29 +0000
+	id 1iZgIN-00012J-VL; Tue, 26 Nov 2019 19:14:43 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZgGB-0000MD-3l
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 19:12:28 +0000
+ id 1iZgIK-00011q-NP
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 19:14:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1574795547; x=1606331547;
+ t=1574795681; x=1606331681;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=U+JxvNoXq3UAD7DRH+k72uPXzjJus7iETq/4nsBX7HY=;
- b=FnEc5KEEDdZgLVKwUJACQE8ZCsyOMJOwChJXOV0pDg6xHY1zpLFLDV7J
- vDlb8GDVG5JncU+q/Ro2iSUO79qqAHA4REFNtTlhzaNA9YxNcd9EYxT2w
- cEz51bJDrHiWxRBK0RMMi69/+Yo/Pc8ezDiID90borj/CYoJ/YO2+8RdV
- CyYCTZ0YPDUgwC4HqPFiVfRPqa9sFEJs0DoMwnRVD+58YRkuKEYibD14U
- gtW0j0lbIckapRON26rTRBAcjB3aHmMvY9EG2QlZ/h2j4MxDtITdhJsnn
- gMzXn/Be/MTtERqm+5FLDakyOcgB7xEG/eOMnJQhJ6TcEngkmuef869mj g==;
-IronPort-SDR: sZMMIH05jNVmGxv+c4ClbgCzbEaQTAuLiVBoflrJIOK9tcIHUnatvFavrAABec8FMnwib8YT1x
- nbLSJBJSN0K5Z9WHaxUW9R/klVL4dXe1fCNqfh742PVBWWaAK0ZBTSujpm6pnLmNn4LBvaGKGb
- FIuFaoWKMu1sdaIGCWABd73Cn+TqOkAE6VQaZVL549iGbTnhf3DKHdxEIHqbeo/aXXTPGZaTqe
- +tpaflbHNKbMawRldN6rBtRQSb+kHsfegrGOEY9/trM3dyOy40S5C/3h6X3xqPzaB3C1mxuy1D
- Llw=
-X-IronPort-AV: E=Sophos;i="5.69,246,1571673600"; d="scan'208";a="125670931"
-Received: from mail-bl2nam02lp2059.outbound.protection.outlook.com (HELO
- NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.59])
- by ob1.hgst.iphmx.com with ESMTP; 27 Nov 2019 03:12:24 +0800
+ bh=Mh9oP1vRPRJ6iCVwgCS+9JamwfmnKqLeDSqFOowWZqo=;
+ b=kWlnA4Cn5P3TT7QTvEr+1+oRPq20rJH1Thl1WjNWXmK/jtidj845UBhA
+ W6T9mrnh24I0+bXgHTfzOlXEHRYaV7leZlk+Fk6EWEfybJ1Fo6NxBHJSk
+ wHmFTY2ZDU4DQUGOsfKN+Wz/pHXgs8jadHM+aDBQsUdmgfdtyFaOk2h39
+ 2+q5Ni9M4/fKi+ltw/OLo6N7yMR4hTECB+Dz4WQs5USDLsUWSX+dIiD+I
+ 1+8zI4LoZKDNQk0RpiFLvGPXDkImSQ1zLxgVb+pMl7Lj2hvU98hrVhAWh
+ CxMq23y6mOADzLncTOCtql3a0BzIFN1lZ45/UhcSmmhZ6KXRLWF+Hg8MI g==;
+IronPort-SDR: p303q5DuQcNokq1/QS379kNYP+AR2dyesIyV5XFFAF6i8RrlKvcdfGkOxBqmwhv1VvoSHvuGcq
+ avuujRUxAYV13BhGn4ldhuqdYe02eAttp03Vix2/yT1CVhlVOK0j4C6pRqfOzCTGMVP+DZPD8M
+ 6sCORr8zlRgDehPKzDL9wLHnFCiiEPG2kiCUt59t1HXUrQEEO+zMUnc23Tem8fXyNOuVCJRcha
+ nc//0k16wa1DvafeDWctFxd84j/v0F8UlLGV/c9chTtAlhDl1AC5OE9+W9YoOpCbcKi8TSVZi6
+ 3jE=
+X-IronPort-AV: E=Sophos;i="5.69,246,1571673600"; d="scan'208";a="125671099"
+Received: from mail-bl2nam02lp2058.outbound.protection.outlook.com (HELO
+ NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.58])
+ by ob1.hgst.iphmx.com with ESMTP; 27 Nov 2019 03:14:39 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HURcx1037FCqvqmCXaA1A3b2PneejtYXKfapF6jWLKb9+c6SBW5zYJ8ZhxqTpxpbOe2BLt2cw++1RRrWhcmfN67WWOzmxVlZZQxbYT+ncslmVELHt433o8JgniLCtt+tjVfKgeNuzVLuJSX47Z/RhzpWuzfoo47QpoS+ZBwYgk3FXUewu+8sEzIdM570q7nOPwqjsZvULpRvJ5eauQxVCPI9znyMUzwtCGC1JV3uxaECUNutveURV1TsNBZuJ6STjTb6GEsNByMigo1Jf8zjvvzce22WV7xGtmmcYXImgkT/ES1/1X7YL/zmt38Ohgce8/MqC5e13aF3xKyOf06xBg==
+ b=kiNBpI16rdJv2ZavA5GbXZCvsHZZMLBdP0nLG20iwjux6woSYx/ukoPb0eq01T2svVXhd5OEQ/dGHEro5NWWdIuw6WXWESj9SIM4Ocwryz4p9XvI/tj2AjyeN8KXijhS12Ku+gqmXLwl3EDJMtFhqwKS5hJiSjZ7QL5fV1RqIlfzLgQeIKYAB03CT67NVZbjNWFNcavPivf3eSmXqJNNP8GfW7aFq/rZXaT6dnkR/+GFa6kBfYFC2dTsIldepeyxl1gwS8USXqTziKzJV9m4qZ/O9I42cYmFgUp0xOj8N7kf+7CEbia0dhh6C71TfuXBR8N+M/YcXkNBaV6z4855WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U+JxvNoXq3UAD7DRH+k72uPXzjJus7iETq/4nsBX7HY=;
- b=jcPaRyjzwoIJAXWqrIWCWoC1DxS7/Wywm1cMY3COWrbux28dyan0ZFHdWqkT30/uKOAxTjuY//br3USBLh46SVHmSgqUmR609aGY95ThoByyy45gaFjTGtkT7Qe3leY61N5prWnFh/sCFCzA9QGsMzJv8k8IAGA2zopP23Eh3QLmp//QtT4tkqKOlW/d5C2XfKp5VKqfxkrYZ1cENrQivBgGovVNh5LHUBEOnR+UXk4GtMdeOPGiH/vajDN67hWWO9fdE/KSoL4g9ghOpZU8eTM6x95SmJc/wDYY5mLLxJpTPDXZuyJr54bhScrnuR7WcmvUMBVN+F38sB05hF6TKw==
+ bh=Mh9oP1vRPRJ6iCVwgCS+9JamwfmnKqLeDSqFOowWZqo=;
+ b=FYR473BFzaTsjDuXQuBAJZhBBEAUJiObexbKPfnKsLPaSCN1NTkhCohp0gfgqdUbDE0DDHAi6Bl8WoioBidHsByRaYZudOWocKDqOf7fLUnafJQQCcboHYosmGSD+BUZms/jyHbEM4WJ0qRjfBgNb2ZFFINdTx0yWJA8q/nU1ocujrLh1sXb1MBKK9K8MyRK/KCis/MHOjB7F1koniTe7sT48D4Y36aIKdfpbAmjaIUjSyKw/BhLzXCVybnWc5rrlT3a2rsFca3Nu1kx0whJkxMm3bW7RrfLGOfcTx6RbdSTxVML3qKBNxePulV1sLYmb4uERBpn8d8OroYiNy3IVg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U+JxvNoXq3UAD7DRH+k72uPXzjJus7iETq/4nsBX7HY=;
- b=gPDqufTweS2Dsm+pd/njp1nhQUwZwu0nanl6QSwpBCziDNlWhu0bSwhAcxplzIIA84iHERdYs6GrP8JDwTyYD5msFKFBLSyPJ4x8v25UlYqpIp23HHWOs2Kx2m1eRbaRpTNpNgn3pFOeJg8buPROrtvEqY3oDMETgPdeY5f7zMc=
+ bh=Mh9oP1vRPRJ6iCVwgCS+9JamwfmnKqLeDSqFOowWZqo=;
+ b=HzMByUVPPory8LgypTHPGJCsJLBlyOLcurq+o2krn7pVELgoTgm7nLctz3lFHpEqwDkni1dI8wFzEcFdjVpT7i1zTU8UHSlRPWgA5MwdnZGrLUEim6k/0h9Y+f8jTdly+iPzR3KFi1kSJaQ9teDTeRxi+i2k0495vZH2RLAHMeo=
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
  BYAPR04MB5959.namprd04.prod.outlook.com (20.178.235.90) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2474.16; Tue, 26 Nov 2019 19:12:23 +0000
+ 15.20.2474.16; Tue, 26 Nov 2019 19:14:37 +0000
 Received: from BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::1d22:29b6:df03:86f7]) by BYAPR04MB3990.namprd04.prod.outlook.com
  ([fe80::1d22:29b6:df03:86f7%3]) with mapi id 15.20.2474.023; Tue, 26 Nov 2019
- 19:12:22 +0000
+ 19:14:37 +0000
 From: Atish Patra <Atish.Patra@wdc.com>
 To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>, "palmer@sifive.com"
  <palmer@sifive.com>, Anup Patel <Anup.Patel@wdc.com>,
  "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>
-Subject: Re: [PATCH 1/4] RISC-V: Add kconfig option for QEMU virt machine
-Thread-Topic: [PATCH 1/4] RISC-V: Add kconfig option for QEMU virt machine
-Thread-Index: AQHVo5Nfdy6Dk930FkiYD7mQlZsw86ed07UA
-Date: Tue, 26 Nov 2019 19:12:22 +0000
-Message-ID: <256d158d64bc747431855f4593e008ff744fdcfd.camel@wdc.com>
+Subject: Re: [PATCH 2/4] RISC-V: Enable QEMU virt machine support in defconfigs
+Thread-Topic: [PATCH 2/4] RISC-V: Enable QEMU virt machine support in
+ defconfigs
+Thread-Index: AQHVo5NiGffd8yApskGKkdUmXYega6ed1FQA
+Date: Tue, 26 Nov 2019 19:14:37 +0000
+Message-ID: <bfd66a0d4f4e5ec112244101bc4173aef9a56286.camel@wdc.com>
 References: <20191125132147.97111-1-anup.patel@wdc.com>
- <20191125132147.97111-2-anup.patel@wdc.com>
-In-Reply-To: <20191125132147.97111-2-anup.patel@wdc.com>
+ <20191125132147.97111-3-anup.patel@wdc.com>
+In-Reply-To: <20191125132147.97111-3-anup.patel@wdc.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -88,37 +89,37 @@ authentication-results: spf=none (sender IP is )
 x-originating-ip: [2601:646:8280:fdf0:69be:1cca:a557:65ea]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: f0d7db1a-1fe8-4207-3d68-08d772a4910d
+x-ms-office365-filtering-correlation-id: b0171fe4-d022-4674-bf61-08d772a4e10b
 x-ms-traffictypediagnostic: BYAPR04MB5959:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB59593FB77223BE95950213ECFA450@BYAPR04MB5959.namprd04.prod.outlook.com>
+x-microsoft-antispam-prvs: <BYAPR04MB595917C73108042D82FE4E44FA450@BYAPR04MB5959.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:2399;
+x-ms-oob-tlc-oobclassifiers: OLM:227;
 x-forefront-prvs: 0233768B38
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(346002)(136003)(366004)(396003)(376002)(189003)(199004)(5660300002)(2616005)(2171002)(71190400001)(71200400001)(11346002)(446003)(46003)(76176011)(305945005)(36756003)(316002)(81156014)(4001150100001)(6116002)(8676002)(6506007)(8936002)(81166006)(7736002)(102836004)(2501003)(54906003)(256004)(99286004)(2906002)(478600001)(6512007)(86362001)(186003)(14454004)(6486002)(6246003)(66946007)(4326008)(66556008)(110136005)(66476007)(76116006)(66446008)(64756008)(25786009)(6436002)(118296001)(229853002);
+ SFS:(10019020)(4636009)(39860400002)(346002)(136003)(366004)(396003)(376002)(189003)(199004)(5660300002)(2616005)(2171002)(71190400001)(71200400001)(11346002)(446003)(46003)(76176011)(305945005)(36756003)(316002)(81156014)(4001150100001)(6116002)(8676002)(6506007)(8936002)(81166006)(7736002)(102836004)(2501003)(54906003)(256004)(99286004)(14444005)(2906002)(478600001)(6512007)(86362001)(186003)(14454004)(6486002)(6246003)(66946007)(4326008)(66556008)(110136005)(66476007)(76116006)(66446008)(64756008)(25786009)(6436002)(118296001)(229853002);
  DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5959;
  H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: EEpmhXz3cJ3UKxRSFHTdYm70x6VV9KdZjkttc01aW1Mqll97lda2yNGtZQNklrjOqOoWe4mg11ogZHPaVt0v9ZqaFHkFEvxuwMsGsEim7pz7XJr0XrBjFhAuqrGYLenXGOgKq8hkhKTgY8rW2uVnLGONvUi4qLn8udVYoGZ8AGN+C0fXuGfHDWVUGOk6hpYc/HtBN6ETAM+gcIu3hdAKNDf4E5+WBvnRfaRhbZ6hr8TlJrixIa0iFQhB7PORllBlSXiqX81Jv8EVEX+D/vEG/96zZqf1hsr32Lrb8TUupALFewZU+5kT9QUkNJr5R+VbUxuThRHcRfP08nHOGtA9HLNuj4rYMqo8LrwShrQ8WpdAxNn1LUK+80h/EmgTdcd8VltZr5BIpRQbcis841aPgKmeolLEqlZKW5407If9d3FGZs8rHqcj45sD3O7aOkh/
-Content-ID: <C8993BB3D52D3A42B7BB29DB05DBA6E1@namprd04.prod.outlook.com>
+x-microsoft-antispam-message-info: 7LdF6JNKtnsHoWN6kgSLu1z0g4NUygN8WiJLbYT1F/FiCYPn4zyn0dijwOkIHyI+L92N/cSRt7iaXI9n5CT3vMl0ZloXoeD+SSaIG9CpB+q16HSf5zaRqTe+HnJcPzMM4KweOAsUTxWWFaEHbKXURjtM474gnHtTRvA3KqBTlBW+GAcLeFvpoSO8nZnJSc74vv6gKXtGV5wtF925BWmcWnGJmnRVyIq5uH/SG0s4GbYFHymn/lQg5JgcJeG8XICJ7Q3sI3j1NAweg5JGEhWoBtFovShjDAwP337/T5ddjVjQWXDFuM45GpM2IS0G4fAP2qWwApK2FjOQgdWr1t+T0D39B4OLw7sZsnaEDVxVAcj6OSq9Yw+MMtmllIC8xYKSnnxS/+chYfJHonYK3hoObl0sQwVgLYyZHZ6JMVCwsQiP9eDyyIg/y/a9+RB4VBTu
+Content-ID: <DE3E432933B97941803ED957693C419A@namprd04.prod.outlook.com>
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f0d7db1a-1fe8-4207-3d68-08d772a4910d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2019 19:12:22.8822 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b0171fe4-d022-4674-bf61-08d772a4e10b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2019 19:14:37.0152 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yH/w0ZCbtUKxUfE3aeHoYb8x9gjUAFD5Bwwhrk3Li6KhnRzfJiDTlEFW5t3TBhOWshRYii8T/eGHDLSlSdmXFg==
+X-MS-Exchange-CrossTenant-userprincipalname: RVAdPcNCOdLpSegPpDwvUKGexeouB4cWDSThJXvzypb7U9kvaROFJhIpxWeTIOtPshp4qtMJvbd+Q4nIYcs3Tw==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5959
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_111227_257770_36420890 
-X-CRM114-Status: GOOD (  16.21  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191126_111440_800433_45D43520 
+X-CRM114-Status: GOOD (  16.18  )
+X-Spam-Score: -1.7 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-1.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
@@ -132,6 +133,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.8 UPPERCASE_50_75        message body is 50-75% uppercase
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,45 +155,168 @@ Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Mon, 2019-11-25 at 13:22 +0000, Anup Patel wrote:
-> We add kconfig option for QEMU virt machine and select all
-> required VIRTIO drivers using this kconfig option.
+> We have kconfig option for QEMU virt machine so let's enable it
+> in RV32 and RV64 defconfigs.
 > 
+
+and remove the virt specific configs from defconfig.
+
+Bit more verbose commit text makes more sense here.
+
+
 > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > ---
->  arch/riscv/Kconfig.socs | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
+>  arch/riscv/configs/defconfig      | 15 +--------------
+>  arch/riscv/configs/rv32_defconfig | 16 +---------------
+>  2 files changed, 2 insertions(+), 29 deletions(-)
 > 
-> diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
-> index 536c0ef4aee8..62383951bf2e 100644
-> --- a/arch/riscv/Kconfig.socs
-> +++ b/arch/riscv/Kconfig.socs
-> @@ -10,4 +10,24 @@ config SOC_SIFIVE
->         help
->           This enables support for SiFive SoC platform hardware.
->  
-> +config SOC_VIRT
-> +       bool "QEMU Virt Machine"
-> +       select VIRTIO_PCI
-> +       select VIRTIO_BALLOON
-> +       select VIRTIO_MMIO
-> +       select VIRTIO_CONSOLE
-> +       select VIRTIO_NET
-> +       select NET_9P_VIRTIO
-> +       select VIRTIO_BLK
-> +       select SCSI_VIRTIO
-> +       select DRM_VIRTIO_GPU
-> +       select HW_RANDOM_VIRTIO
-> +       select RPMSG_CHAR
-> +       select RPMSG_VIRTIO
-> +       select CRYPTO_DEV_VIRTIO
-> +       select VIRTIO_INPUT
-> +       select SIFIVE_PLIC
-> +       help
-> +         This enables support for QEMU Virt Machine.
-> +
->  endmenu
+> diff --git a/arch/riscv/configs/defconfig
+> b/arch/riscv/configs/defconfig
+> index 420a0dbef386..2515fe6417e1 100644
+> --- a/arch/riscv/configs/defconfig
+> +++ b/arch/riscv/configs/defconfig
+> @@ -15,6 +15,7 @@ CONFIG_BLK_DEV_INITRD=y
+>  CONFIG_EXPERT=y
+>  CONFIG_BPF_SYSCALL=y
+>  CONFIG_SOC_SIFIVE=y
+> +CONFIG_SOC_VIRT=y
+>  CONFIG_SMP=y
+>  CONFIG_MODULES=y
+>  CONFIG_MODULE_UNLOAD=y
+> @@ -30,7 +31,6 @@ CONFIG_IP_PNP_BOOTP=y
+>  CONFIG_IP_PNP_RARP=y
+>  CONFIG_NETLINK_DIAG=y
+>  CONFIG_NET_9P=y
+> -CONFIG_NET_9P_VIRTIO=y
+>  CONFIG_PCI=y
+>  CONFIG_PCIEPORTBUS=y
+>  CONFIG_PCI_HOST_GENERIC=y
+> @@ -38,15 +38,12 @@ CONFIG_PCIE_XILINX=y
+>  CONFIG_DEVTMPFS=y
+>  CONFIG_DEVTMPFS_MOUNT=y
+>  CONFIG_BLK_DEV_LOOP=y
+> -CONFIG_VIRTIO_BLK=y
+>  CONFIG_BLK_DEV_SD=y
+>  CONFIG_BLK_DEV_SR=y
+> -CONFIG_SCSI_VIRTIO=y
+>  CONFIG_ATA=y
+>  CONFIG_SATA_AHCI=y
+>  CONFIG_SATA_AHCI_PLATFORM=y
+>  CONFIG_NETDEVICES=y
+> -CONFIG_VIRTIO_NET=y
+>  CONFIG_MACB=y
+>  CONFIG_E1000E=y
+>  CONFIG_R8169=y
+> @@ -57,15 +54,12 @@ CONFIG_SERIAL_8250_CONSOLE=y
+>  CONFIG_SERIAL_OF_PLATFORM=y
+>  CONFIG_SERIAL_EARLYCON_RISCV_SBI=y
+>  CONFIG_HVC_RISCV_SBI=y
+> -CONFIG_VIRTIO_CONSOLE=y
+>  CONFIG_HW_RANDOM=y
+> -CONFIG_HW_RANDOM_VIRTIO=y
+>  CONFIG_SPI=y
+>  CONFIG_SPI_SIFIVE=y
+>  # CONFIG_PTP_1588_CLOCK is not set
+>  CONFIG_DRM=y
+>  CONFIG_DRM_RADEON=y
+> -CONFIG_DRM_VIRTIO_GPU=y
+>  CONFIG_FRAMEBUFFER_CONSOLE=y
+>  CONFIG_USB=y
+>  CONFIG_USB_XHCI_HCD=y
+> @@ -78,12 +72,6 @@ CONFIG_USB_STORAGE=y
+>  CONFIG_USB_UAS=y
+>  CONFIG_MMC=y
+>  CONFIG_MMC_SPI=y
+> -CONFIG_VIRTIO_PCI=y
+> -CONFIG_VIRTIO_BALLOON=y
+> -CONFIG_VIRTIO_INPUT=y
+> -CONFIG_VIRTIO_MMIO=y
+> -CONFIG_RPMSG_CHAR=y
+> -CONFIG_RPMSG_VIRTIO=y
+>  CONFIG_EXT4_FS=y
+>  CONFIG_EXT4_FS_POSIX_ACL=y
+>  CONFIG_AUTOFS4_FS=y
+> @@ -98,6 +86,5 @@ CONFIG_NFS_V4_2=y
+>  CONFIG_ROOT_NFS=y
+>  CONFIG_9P_FS=y
+>  CONFIG_CRYPTO_USER_API_HASH=y
+> -CONFIG_CRYPTO_DEV_VIRTIO=y
+>  CONFIG_PRINTK_TIME=y
+>  # CONFIG_RCU_TRACE is not set
+> diff --git a/arch/riscv/configs/rv32_defconfig
+> b/arch/riscv/configs/rv32_defconfig
+> index 87ee6e62b64b..bbcf14fd6f40 100644
+> --- a/arch/riscv/configs/rv32_defconfig
+> +++ b/arch/riscv/configs/rv32_defconfig
+> @@ -14,6 +14,7 @@ CONFIG_CHECKPOINT_RESTORE=y
+>  CONFIG_BLK_DEV_INITRD=y
+>  CONFIG_EXPERT=y
+>  CONFIG_BPF_SYSCALL=y
+> +CONFIG_SOC_VIRT=y
+>  CONFIG_ARCH_RV32I=y
+>  CONFIG_SMP=y
+>  CONFIG_MODULES=y
+> @@ -30,7 +31,6 @@ CONFIG_IP_PNP_BOOTP=y
+>  CONFIG_IP_PNP_RARP=y
+>  CONFIG_NETLINK_DIAG=y
+>  CONFIG_NET_9P=y
+> -CONFIG_NET_9P_VIRTIO=y
+>  CONFIG_PCI=y
+>  CONFIG_PCIEPORTBUS=y
+>  CONFIG_PCI_HOST_GENERIC=y
+> @@ -38,15 +38,12 @@ CONFIG_PCIE_XILINX=y
+>  CONFIG_DEVTMPFS=y
+>  CONFIG_DEVTMPFS_MOUNT=y
+>  CONFIG_BLK_DEV_LOOP=y
+> -CONFIG_VIRTIO_BLK=y
+>  CONFIG_BLK_DEV_SD=y
+>  CONFIG_BLK_DEV_SR=y
+> -CONFIG_SCSI_VIRTIO=y
+>  CONFIG_ATA=y
+>  CONFIG_SATA_AHCI=y
+>  CONFIG_SATA_AHCI_PLATFORM=y
+>  CONFIG_NETDEVICES=y
+> -CONFIG_VIRTIO_NET=y
+>  CONFIG_MACB=y
+>  CONFIG_E1000E=y
+>  CONFIG_R8169=y
+> @@ -57,13 +54,10 @@ CONFIG_SERIAL_8250_CONSOLE=y
+>  CONFIG_SERIAL_OF_PLATFORM=y
+>  CONFIG_SERIAL_EARLYCON_RISCV_SBI=y
+>  CONFIG_HVC_RISCV_SBI=y
+> -CONFIG_VIRTIO_CONSOLE=y
+>  CONFIG_HW_RANDOM=y
+> -CONFIG_HW_RANDOM_VIRTIO=y
+>  # CONFIG_PTP_1588_CLOCK is not set
+>  CONFIG_DRM=y
+>  CONFIG_DRM_RADEON=y
+> -CONFIG_DRM_VIRTIO_GPU=y
+>  CONFIG_FRAMEBUFFER_CONSOLE=y
+>  CONFIG_USB=y
+>  CONFIG_USB_XHCI_HCD=y
+> @@ -74,13 +68,6 @@ CONFIG_USB_OHCI_HCD=y
+>  CONFIG_USB_OHCI_HCD_PLATFORM=y
+>  CONFIG_USB_STORAGE=y
+>  CONFIG_USB_UAS=y
+> -CONFIG_VIRTIO_PCI=y
+> -CONFIG_VIRTIO_BALLOON=y
+> -CONFIG_VIRTIO_INPUT=y
+> -CONFIG_VIRTIO_MMIO=y
+> -CONFIG_RPMSG_CHAR=y
+> -CONFIG_RPMSG_VIRTIO=y
+> -CONFIG_SIFIVE_PLIC=y
+>  CONFIG_EXT4_FS=y
+>  CONFIG_EXT4_FS_POSIX_ACL=y
+>  CONFIG_AUTOFS4_FS=y
+> @@ -95,6 +82,5 @@ CONFIG_NFS_V4_2=y
+>  CONFIG_ROOT_NFS=y
+>  CONFIG_9P_FS=y
+>  CONFIG_CRYPTO_USER_API_HASH=y
+> -CONFIG_CRYPTO_DEV_VIRTIO=y
+>  CONFIG_PRINTK_TIME=y
+>  # CONFIG_RCU_TRACE is not set
 
-Looks good.
+Otherwise, looks good.
 
 Reviewed-by: Atish Patra <atish.patra@wdc.com>
 
