@@ -2,73 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E19D010A6C2
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 23:45:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C01110A6C4
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 23:45:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=5wvzop5JGbzpginrmwObcAu0txzT2jtxXJEYYGIERf0=; b=b8Y
-	UCgbZPITmfKx6oHctIt54o4F17A4Vpk0rzOzmsCfs3/R07kHYRGEm4tDLoxAkr/o7dQtIBNOvnkE9
-	k4VxEUjYdIkB6z8qw0B169wU4kLFMxiylyfEmr7Wiutd6X9ddzxkGSHXhKMfGilcWGB3hClskfAkp
-	R5sPgCfMVtcLiqffOjDW3GtgYadGCLsCBDwkucpzu8/kvHNsFchVyEJ+4GGPKFf4Bg9U6U2ShmK9b
-	0gmDjakm5plt39uSw0E9JPidR+n+LQyTfXncqwMwRWW+gcJ+afWDSE9DMs6KKkNzLuR4OMBRThwOm
-	E49xDkpeVMjooVJA6a5FXsIYSOEm7Xg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=d3gnRMbi9pyXR6T9OZ17YlVt1EpSgJXTYpN+W5a5GnM=; b=TatNifhrjv5FcAX03KTHfGo81G
+	CUZH5maFsvD8KqBBb4DUOlouOQ9bE5xbfzH8jIe1L1XYOQw5rXM3YyBxXJ+46GssOxM5VsKgU/yHP
+	6mcNR+4kZb8vPsYmOZk4osBIhxmAytOLvRzD3M6wIa50l2dHM2BuGmz5Ony3sjtO4dqlzBY4gytxu
+	W9TbpsHmszpcQ6gWuuyd9VXDl6U1DdOgO6mWgNvNV5PjoJ2OuJGCpzuvALsNaIlbSZjGoirQX9f6Z
+	AlY/Iv8ftvCFwy0LMzI/TuGMtyj5zIRlStFif5x5pyeiNLl7IJY5g/RT8f8LHbCfRW42cJav9Af5o
+	ZQ/bGEOg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZjaD-0005cH-4W; Tue, 26 Nov 2019 22:45:21 +0000
+	id 1iZjaX-0005gb-T2; Tue, 26 Nov 2019 22:45:41 +0000
 Received: from wout3-smtp.messagingengine.com ([64.147.123.19])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZja9-0005be-L0
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 22:45:20 +0000
+ id 1iZjaU-0005gB-4E
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 22:45:39 +0000
 Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
- by mailout.west.internal (Postfix) with ESMTP id A7F78821;
- Tue, 26 Nov 2019 17:45:13 -0500 (EST)
+ by mailout.west.internal (Postfix) with ESMTP id 4E40185C;
+ Tue, 26 Nov 2019 17:45:37 -0500 (EST)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute7.internal (MEProxy); Tue, 26 Nov 2019 17:45:14 -0500
+ by compute7.internal (MEProxy); Tue, 26 Nov 2019 17:45:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gstardust.com;
- h=from:to:cc:subject:date:message-id; s=mesmtp; bh=GXPSExd0Xh1m
- HUV01+q3c74RT3biwUg3NF4msP/s7N8=; b=pi0x798Q6EsHvFVVdrct1ELtvO/I
- uxb2ur16DWj3INZuKaGHhpyR0O4Yw72ygjVDhFrxw15pm6vK5UOjzr8ODjCDbQkN
- v0hCK7aMl0JFS34UtK4meMxo60AYW2u3/w1ehWFnqsmZFO+xzR4IJ1yfNqP+1NwI
- YDq5CUQXDrv5Hlk=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references; s=
+ mesmtp; bh=/67MZLwHQD9tg2Lk/4ZkTp40ytZAb/Bq1guU4IDp2yo=; b=EJJI6
+ /5IHEvfDKe+GbXBhYndpkMrGyma1nWP34Wjzqbe8HsjbJXBE2qrzTqsYXW3F+rRR
+ wWZpTQdENHjjk7Ykd0H2odCu1gzkkV6L6BFEGhhj/E4TYnqM6mv6ilhAOBfj6Ub4
+ ARBnWtri91Bhh0ukK7JBejbctu3we5uUuuYJbY=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:date:from:message-id:subject:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; bh=GXPSExd0Xh1mHUV01+q3c74RT3biwUg3NF4msP/s7N8=; b=sWTLbOKy
- UNx90cUSIF9NOpUBlf+uDT8ebGpBQuZ/fbKEJTVCPQ+VM08qnaYtvOB5wv3bJx+T
- GlkaqSKJLhladxJvEBe619zw8DZ6IylHOAQm83hYzGhm2ScnTMj2GKaKZhAfxhsB
- LyYA/cVGklK7mQcivQ6MIzjDuhcV/CXgP32U2x0P7/Gdsil522Y2KcgtxJ8NFgFM
- 6MAhiqjflQCFYPs3hyxBKex5fUtFDkSNVFZoYW07fDm6IFWuZ8I4PliSyWu8D4Ht
- oxOjwlwuheFxB6P4FUMJpEr90rjs78doMx+RHX7nokImbL4s/JNN8Zezoq0JKmn3
- KccMjKzmL96k4w==
-X-ME-Sender: <xms:86rdXbbogGPtk52Bs143gc29U3svGQ2jeO09FoI2-o1zwrsFSrm0zw>
+ messagingengine.com; h=cc:date:from:in-reply-to:message-id
+ :references:subject:to:x-me-proxy:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm1; bh=/67MZLwHQD9tg2Lk/4ZkTp40ytZAb
+ /Bq1guU4IDp2yo=; b=Z8h069Gbc0Z7Ej7jm8QyJ5fhkdv5E5AXZb3eCLU9Shwny
+ MRBPrRjyJZaNT1IeMLMnFr36ljWeEASph0U3NahVOMRvJhWIW/gtl57Uj7dYYL7j
+ j+Gr/FlfQZml0d3xQkRQQlHlsEVea5SZvKhUAw4Tgj9dV2B2I6mLTKwCOxQyNFq3
+ fuplH+zD1FGj+OPTsyEAMEj5DBsRHQkLcv0UQaVKgKPLk3x5yKk6TX0oROsy+ki7
+ HIPG57UT4WzCseNB+Cb2UUrdLvOF4d3pItcWBxg94Wsj7Y2Qb/nOs5yvE9HEb4pP
+ jM2r6ZVCL9It6MVbA0/vhknmFVAp6zXcz2qLFAYgA==
+X-ME-Sender: <xms:EKvdXV7VZQP9G8nk1DUatq1VDEDQQsu0KkKsHVWf4wjEpO-qGCHMdw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudeigedgtdduucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvufffkffosedttdertdertddtnecuhfhrohhmpeforghrtgcuifgruhht
- hhhivghruceotghonhhsuhhlthdqmhhgsehgshhtrghrughushhtrdgtohhmqeenucfkph
- epudegvddrheelrdehledrvdelnecurfgrrhgrmhepmhgrihhlfhhrohhmpegtohhnshhu
- lhhtqdhmghesghhsthgrrhguuhhsthdrtghomhenucevlhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:86rdXeqO4yvyxf2vfua4pIcMDnoQdPg1WIE1v_jB9o_S8tAPsoIakA>
- <xmx:86rdXY8CrY-RsHG037UFVQBnZAT_Y_WFULI3mXqQLa6nuiY-AZQDPg>
- <xmx:86rdXV-ayQltTTfGXD2n8s3SAlawo1b6lp2QP5Rv8PCfp7RqQIS6Og>
- <xmx:-ardXSpXN7EV4GVC6AITBqbuUhRuhGhb_nbz890qdIM5nv-ASQvA9Q>
+ cujfgurhephffvufffkffojghfsedttdertdertddtnecuhfhrohhmpeforghrtgcuifgr
+ uhhthhhivghruceotghonhhsuhhlthdqmhhgsehgshhtrghrughushhtrdgtohhmqeenuc
+ fkphepudegvddrheelrdehledrvdelnecurfgrrhgrmhepmhgrihhlfhhrohhmpegtohhn
+ shhulhhtqdhmghesghhsthgrrhguuhhsthdrtghomhenucevlhhushhtvghrufhiiigvpe
+ dt
+X-ME-Proxy: <xmx:EKvdXQBjKzEt5Gc7cm1bKQzkVqlGzESFXkzYpX-TsYNJ20kZOKTNdg>
+ <xmx:EKvdXc4O3MyPRNHDEVKVScH07ETJfwRB17m3lNgwhvJ0TD4nmhepig>
+ <xmx:EKvdXfLiwNSa-C1fLu2bFhd3FAHQo5FPH28wc8fiO23RTKa98MYNzw>
+ <xmx:EKvdXelUWJdfWhaFwx_hFkkkGxWpXcReXj-bLf3wxfp_cQNmGjeu-g>
 Received: from SurfBoard.localdomain (unknown [142.59.59.29])
- by mail.messagingengine.com (Postfix) with ESMTPA id EBD00306005C;
- Tue, 26 Nov 2019 17:45:06 -0500 (EST)
+ by mail.messagingengine.com (Postfix) with ESMTPA id 769DF3060062;
+ Tue, 26 Nov 2019 17:45:36 -0500 (EST)
 From: Marc Gauthier <consult-mg@gstardust.com>
 To: linux-riscv@lists.infradead.org
-Subject: [PATCH v2 0/2] riscv: Align shared mappings to avoid cache aliasing
-Date: Tue, 26 Nov 2019 17:44:44 -0500
-Message-Id: <20191126224446.15145-1-consult-mg@gstardust.com>
+Subject: [PATCH v2 1/2] riscv: Align shared mappings to SHMLBA
+Date: Tue, 26 Nov 2019 17:44:45 -0500
+Message-Id: <20191126224446.15145-2-consult-mg@gstardust.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20191126224446.15145-1-consult-mg@gstardust.com>
+References: <20191126224446.15145-1-consult-mg@gstardust.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_144517_963742_EF5BE2FA 
-X-CRM114-Status: UNSURE (   6.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191126_144538_210349_30416FCD 
+X-CRM114-Status: GOOD (  13.11  )
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.9 points)
@@ -105,32 +108,171 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Ensure optimal performance on larger VIPT caches by aligning shared
-mappings to the maximum cache "span" (line size * number of sets) of
-all CPU L1 instruction and data caches (L2 and up are rarely VIPT).
-If the device tree does not provide cache parameters, use a conservative
-16 KB alignment:  only large enough to avoid aliasing in most VIPT caches.
+Align shared mappings according to SHMLBA for VIPT cache performance.
 
-This patchset is based on Linux 5.4-rc7 and tested in simulation.
+arch_get_unmapped_area() and arch_get_unmapped_area_topdown() are
+essentially copies of their default implementations in mm/mmap.c,
+modified to align the address to SHMLBA for shared mappings, i.e.
+where MAP_SHARED is specified or a file pointer is provided.
 
-Changes in v2:
-- Fix formatting per scripts/checkpatch.pl
-- Edit include/asm/Kbuild to reflect shmparam.h addition
+Allow MAP_FIXED to request unaligned shared mappings.  Although this
+may potentially reduce performance, very little software does this, as
+it is not portable across architectures that enforce alignment.
 
 Signed-off-by: Marc Gauthier <consult-mg@gstardust.com>
+---
+ arch/riscv/include/asm/pgtable.h |   4 ++
+ arch/riscv/kernel/sys_riscv.c    | 113 +++++++++++++++++++++++++++++++
+ 2 files changed, 117 insertions(+)
 
-Marc Gauthier (2):
-  riscv: Align shared mappings to SHMLBA
-  riscv: Set SHMLBA according to cache geometry
-
- arch/riscv/include/asm/Kbuild     |   1 -
- arch/riscv/include/asm/pgtable.h  |   4 ++
- arch/riscv/include/asm/shmparam.h |  12 ++++
- arch/riscv/kernel/cacheinfo.c     |  52 ++++++++++++++
- arch/riscv/kernel/sys_riscv.c     | 113 ++++++++++++++++++++++++++++++
- 5 files changed, 181 insertions(+), 1 deletion(-)
- create mode 100644 arch/riscv/include/asm/shmparam.h
-
+diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+index d3221017194d..7d1cc47ac5f9 100644
+--- a/arch/riscv/include/asm/pgtable.h
++++ b/arch/riscv/include/asm/pgtable.h
+@@ -436,6 +436,10 @@ extern void *dtb_early_va;
+ extern void setup_bootmem(void);
+ extern void paging_init(void);
+ 
++/* We provide arch_get_unmapped_area to handle VIPT caches efficiently. */
++#define HAVE_ARCH_UNMAPPED_AREA
++#define HAVE_ARCH_UNMAPPED_AREA_TOPDOWN
++
+ /*
+  * Task size is 0x4000000000 for RV64 or 0x9fc00000 for RV32.
+  * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
+diff --git a/arch/riscv/kernel/sys_riscv.c b/arch/riscv/kernel/sys_riscv.c
+index f3619f59d85c..3e739b30b1f7 100644
+--- a/arch/riscv/kernel/sys_riscv.c
++++ b/arch/riscv/kernel/sys_riscv.c
+@@ -3,11 +3,15 @@
+  * Copyright (C) 2012 Regents of the University of California
+  * Copyright (C) 2014 Darius Rad <darius@bluespec.com>
+  * Copyright (C) 2017 SiFive
++ * Copyright (C) 2019 Aril Inc
+  */
+ 
+ #include <linux/syscalls.h>
+ #include <asm/unistd.h>
+ #include <asm/cacheflush.h>
++#include <linux/shm.h>
++#include <linux/mman.h>
++#include <linux/security.h>
+ 
+ static long riscv_sys_mmap(unsigned long addr, unsigned long len,
+ 			   unsigned long prot, unsigned long flags,
+@@ -65,3 +69,112 @@ SYSCALL_DEFINE3(riscv_flush_icache, uintptr_t, start, uintptr_t, end,
+ 
+ 	return 0;
+ }
++
++/*
++ * RISC-V requires implementations to function correctly in the presence
++ * of cache aliasing, regardless of page alignment.  It says nothing about
++ * performance.  To ensure healthy performance with commonly implemented
++ * VIPT caches, the following code avoids most cases of cache aliasing by
++ * aligning shared mappings such that all mappings of a given physical
++ * page of an object are at a multiple of SHMLBA bytes from each other.
++ *
++ * It does not enforce alignment.  Using MAP_FIXED to request unaligned
++ * shared mappings is not common, and may perform poorly with VIPT caches.
++ */
++unsigned long
++arch_get_unmapped_area(struct file *filp, unsigned long addr,
++			unsigned long len, unsigned long pgoff,
++			unsigned long flags)
++{
++	struct mm_struct *mm = current->mm;
++	struct vm_area_struct *vma, *prev;
++	struct vm_unmapped_area_info info;
++	const unsigned long pgoffset = pgoff << PAGE_SHIFT;
++	int do_align = (filp || (flags & MAP_SHARED));
++
++	if (len > TASK_SIZE - mmap_min_addr)
++		return -ENOMEM;
++
++	if (flags & MAP_FIXED)
++		return addr;
++
++	if (addr) {
++		if (do_align)
++			addr = ALIGN(addr, SHMLBA) + (pgoffset & (SHMLBA - 1));
++		else
++			addr = PAGE_ALIGN(addr);
++		vma = find_vma_prev(mm, addr, &prev);
++		if (TASK_SIZE - len >= addr && addr >= mmap_min_addr &&
++		    (!vma || addr + len <= vm_start_gap(vma)) &&
++		    (!prev || addr >= vm_end_gap(prev)))
++			return addr;
++	}
++
++	info.flags = 0;
++	info.length = len;
++	info.low_limit = mm->mmap_base;
++	info.high_limit = TASK_SIZE;
++	info.align_mask = do_align ? SHMLBA - 1 : 0;
++	info.align_offset = pgoffset;
++	return vm_unmapped_area(&info);
++}
++
++/*
++ * Similar to arch_get_unmapped_area(), but allocating top-down from below the
++ * stack's low limit (the base).
++ */
++unsigned long
++arch_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
++				unsigned long len, unsigned long pgoff,
++				unsigned long flags)
++{
++	struct vm_area_struct *vma, *prev;
++	struct mm_struct *mm = current->mm;
++	struct vm_unmapped_area_info info;
++	const unsigned long pgoffset = pgoff << PAGE_SHIFT;
++	int do_align = (filp || (flags & MAP_SHARED));
++
++	/* requested length too big for entire address space */
++	if (len > TASK_SIZE - mmap_min_addr)
++		return -ENOMEM;
++
++	if (flags & MAP_FIXED)
++		return addr;
++
++	/* requesting a specific address */
++	if (addr) {
++		if (do_align)
++			addr = ALIGN(addr, SHMLBA) + (pgoffset & (SHMLBA - 1));
++		else
++			addr = PAGE_ALIGN(addr);
++		vma = find_vma_prev(mm, addr, &prev);
++		if (TASK_SIZE - len >= addr && addr >= mmap_min_addr &&
++				(!vma || addr + len <= vm_start_gap(vma)) &&
++				(!prev || addr >= vm_end_gap(prev)))
++			return addr;
++	}
++
++	info.flags = VM_UNMAPPED_AREA_TOPDOWN;
++	info.length = len;
++	info.low_limit = max(PAGE_SIZE, mmap_min_addr);
++	info.high_limit = mm->mmap_base;
++	info.align_mask = do_align ? SHMLBA - 1 : 0;
++	info.align_offset = pgoffset;
++	addr = vm_unmapped_area(&info);
++
++	/*
++	 * A failed mmap() very likely causes application failure,
++	 * so fall back to the bottom-up function here. This scenario
++	 * can happen with large stack limits and large mmap()
++	 * allocations.
++	 */
++	if (offset_in_page(addr)) {
++		VM_BUG_ON(addr != -ENOMEM);
++		info.flags = 0;
++		info.low_limit = TASK_UNMAPPED_BASE;
++		info.high_limit = TASK_SIZE;
++		addr = vm_unmapped_area(&info);
++	}
++
++	return addr;
++}
 -- 
 2.17.1
 
