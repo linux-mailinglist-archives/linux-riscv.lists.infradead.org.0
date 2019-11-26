@@ -2,75 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9F0F10983F
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 05:11:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AAF39109841
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 05:14:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KxYjj6zIQ36kZkLZZSjNz7kHnI+9tj9Adcua5XOOwhU=; b=Th+0pBUFzDblZd
-	BRvFvo2gmHyrwG1oz9rUoYqzqKX92yGmc/8r0Ep2762nks2TDo7A7pP5iUixNUmkTNULm0P6Xj8c7
-	qQwtPV5IpRgluqLbrHL6HgIWN4tEnhw3c5ziku4ZWzx8SckhTAkHvli0Q/aoIOUFIlnO16UCSDrEN
-	DDJfTBfCsgGhgPa0ryC75X95hdWIYGC9F7HRHu60kyDtoxQkApzlKVI74y0gKT1do0gZLb8+/2cw2
-	zJ/uA4fuspJIy3Ucxaj3pik1LEhxrRILqbXypuwVWEOOCHW7IvEuHwdI3CZlx0JGTRrsdkAPRj4hT
-	hu5ilAJWaaNWfz2o56kQ==;
+	List-Owner; bh=grZRpFWiAB07plB68Te3yLwexb6ckWX7xk7FXWo85nk=; b=rZRkeRMIDYNGuq
+	Gm9Cn995UMor7FJEekpJ8zuZGttOYpYgMpdexpCOPRhjwnuDwo45yQk71OeJc7/gmtXB4Vjlr2Ewq
+	MbKygYS/anFMJbzs8NJBNo5n1c7q4CE+E+BpW/dRKQqDlVvcxm9Qsy4/m79nM9AuOugazGm0ExJbx
+	iUB3xPkVF7PfDn9V1FfPNaQseNtzjobXA+nJqm/zOO/a3MnaqNBAM8wJibbzLmslq0nFuUusb0+jh
+	CFsHagvsEhrlpuuEkM3I9iqAfqywYsAX4bsID7FGhdpuDgY/dQ3LlyVCEA6wMxUDZpqSJf3z4RYLC
+	XWrSsW1Ulqj2mByEdg+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZSCH-00072q-L5; Tue, 26 Nov 2019 04:11:29 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1iZSFN-0007Bs-Ui; Tue, 26 Nov 2019 04:14:41 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZSCE-00072I-7z
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 04:11:28 +0000
-Received: by mail-wr1-x441.google.com with SMTP id i12so20787364wro.5
- for <linux-riscv@lists.infradead.org>; Mon, 25 Nov 2019 20:11:25 -0800 (PST)
+ id 1iZSFK-0007BQ-AH
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 04:14:40 +0000
+Received: by mail-wm1-x341.google.com with SMTP id t26so1659321wmi.4
+ for <linux-riscv@lists.infradead.org>; Mon, 25 Nov 2019 20:14:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IAdaq4HTHtn9UgygwSdqo6FWXUDWbOVhcJ/s4RYHz+I=;
- b=UttFGa4lxPvm+iLc64DRzuRfcQiSlZzAgaYzR424BxldHrnCMmu78AyFCWdK575ACh
- meTh55reoWtdSHPpZ5VNx81OmjdiYACqo2kN5+VgABfhxwPNgz7QsyygBwwqkQ6+wbHd
- UsI549xpieguIIp3Mqj97QYYh0xD/8URU5IM5VgJP1DaZMz56jhSKQVY0aFgbib9FluN
- KXBg3HYHGLETtcABnsEQqpOEmNnfp/lDA61rTtVdnvl6awxCwCijGcnQx3cYWITDQSK6
- nFcMxKKBd3OET4LkRm1fWJ1bgyCEcf4J6X64OgmLSog4vYO7WN4ywzXKTyCzR4AmLezO
- d6Gg==
+ :cc; bh=xFemv6wCZalf/9FIJedyD8IoPPbwLyub0+LMLtADr4Y=;
+ b=KEZDFhU/h0tVP//zt+DQk0efvcyC1ew9ggc6zktCUmLFBN++tWwfdUJmKxb7JaQAde
+ m1xe+L87gsIxnNiFBifwR1LkP/RE7BwjTOaon14wr5XtxSI4I3OqoMimZlRpyO3BDK7I
+ rhK7t1pqe/U8QJZK38U6g73BSJNlf7UgLng1G8qu05sjausIx8KOUkY0Rof2XTTP2g2M
+ 2/xhUi7BIBZjjW3Uo+LFuGYkVbB0OHJJUQwHkGdBFpBuOzHeml/twnCFK5Vg8sQJcYeL
+ F6pvzLZuT/DSYKxyG4w2ZnKmQMgkadezNtLgWyZaNtq4Ecbmgbm+/6DLbHVwDr0XU1XJ
+ +w4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=IAdaq4HTHtn9UgygwSdqo6FWXUDWbOVhcJ/s4RYHz+I=;
- b=CxKlBF+UVXm4C6EqBEhme8nu2H8/wKWXh57St5zCtwgLKUKZ/0tMPOGfMtJcrmnvi2
- JvvjdIXJMDYy5G2KsCYa0FD+jjBJppx4e3iZUb9tfemnwzYqiDKQe/KNovmDGa8H5KRH
- e9+opwDtOFECw2XDcvvqcx1arERS9MpRpFuBD//EvV1PfzN7S5R2HHVxTdSl+8meYDPc
- Pfka38e4qfzB+UnN6T4AkrZleVDYIq2slJbFTWpR8PTmBuXCwNihpSokFycznLy0mCpv
- 1c97eac+TuR2+km4R8ykB8q4cTfQntG0jNfv2wWi/fz8bnkOh81S3clmg6xMMQeZ8Wyl
- GZog==
-X-Gm-Message-State: APjAAAWMgVEJ9RLDLbSWYPjh1JDLNdWB4c+G0cfI4LnjOkcJWHFV4zQY
- r6jqbhrOQ51NHJZ2lFpixdTj3+3W7FjbFqKCfJzN+g==
-X-Google-Smtp-Source: APXvYqz+JMk4RFaQtiNFIeVm0nYA2ZcUqDgRh1gC1tS1iqcqNn+kxAfNXaz8nxbt0z6dtf8yF1WsCfJ4b5MX8ptmGsM=
-X-Received: by 2002:a05:6000:104:: with SMTP id
- o4mr4620484wrx.309.1574741479689; 
- Mon, 25 Nov 2019 20:11:19 -0800 (PST)
+ bh=xFemv6wCZalf/9FIJedyD8IoPPbwLyub0+LMLtADr4Y=;
+ b=Q4YORb/obya5w8AYccsyk5tTX56VXFLFY/pXcB93QiFrVsv6fEARDOl+6APzoKjosV
+ 9e5xFzR4kv3akd00talEbl/4GtIqhuZG7inqrX17DdInqTvFNfpmEO6DDzfesY8w0n6M
+ hagLMkwukcDCCxdAVEs50wlpRUIzaGjjB4zaN0SC48uUL8z6MKHFDnYtiEa/VXMcivHD
+ DHgEFizPHBrdwXB5E1Dw/ysBHk8CFVT/Ot9DFTH7l4Y/Kh2PBh5qFktfEFD7ADBXs9Tu
+ FvokdxpXHR3cmOi4i5pZapyueXeMXZmg4DyP8LXVThkGcdcfftJ+FPmqd9Uj/rYRKyIH
+ d1KA==
+X-Gm-Message-State: APjAAAW6OGM8g7IlYv5Zoo4JTm0B1BFj6AwheaqYPyCLpIMWmzF+t82o
+ BfIZFSNysxanimCi/s8an+xAuQWeYHetwW3aoekG5A==
+X-Google-Smtp-Source: APXvYqzoA5B9vUcfyEmHKOBxoNoyUHVAz8idRDlq3cIlYOGg2WlGSZVoW5eBmsLK8Flb1AC0QGTgtEXEE47MYBSSJw8=
+X-Received: by 2002:a05:600c:2292:: with SMTP id
+ 18mr1987740wmf.103.1574741676457; 
+ Mon, 25 Nov 2019 20:14:36 -0800 (PST)
 MIME-Version: 1.0
 References: <20191126032033.14825-1-atish.patra@wdc.com>
- <20191126032033.14825-3-atish.patra@wdc.com>
-In-Reply-To: <20191126032033.14825-3-atish.patra@wdc.com>
+ <20191126032033.14825-4-atish.patra@wdc.com>
+In-Reply-To: <20191126032033.14825-4-atish.patra@wdc.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Tue, 26 Nov 2019 09:41:08 +0530
-Message-ID: <CAAhSdy214G=FukvK=N=KyXtp-Ljr8xAVCvDMZp0ZTqA=sD8nzA@mail.gmail.com>
-Subject: Re: [PATCH v4 2/4] RISC-V: Add basic support for SBI v0.2
+Date: Tue, 26 Nov 2019 09:44:25 +0530
+Message-ID: <CAAhSdy2icvYPfa5Dm+1qF9sr=22ErHVYr=ZmXYqu6dHZing81A@mail.gmail.com>
+Subject: Re: [PATCH v4 3/4] RISC-V: Introduce a new config for SBI v0.1
 To: Atish Patra <atish.patra@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191125_201126_289453_2B1415AF 
-X-CRM114-Status: GOOD (  20.89  )
+X-CRM114-CacheID: sfid-20191125_201438_358545_D52ECCDB 
+X-CRM114-Status: GOOD (  22.73  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -101,280 +101,234 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Tue, Nov 26, 2019 at 8:50 AM Atish Patra <atish.patra@wdc.com> wrote:
 >
-> The SBI v0.2 introduces a base extension which is backward compatible
-> with v0.1. Implement all helper functions and minimum required SBI
-> calls from v0.2 for now. All other base extension function will be
-> added later as per need.
-> As v0.2 calling convention is backward compatible with v0.1, remove
-> the v0.1 helper functions and just use v0.2 calling convention.
+> We now have SBI v0.2 which is more scalable and extendable to handle
+> future needs for RISC-V supervisor interfaces.
+>
+> Introduce a new config and move all SBI v0.1 code under that config.
+> This allows to implement the new replacement SBI extensions cleanly
+> and remove v0.1 extensions easily in future. Currently, the config
+> is enabled by default. Once all M-mode software with v0.1 are no
+> longer in use, this config option and all relevant code can be easily
+> removed.
 >
 > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > ---
->  arch/riscv/include/asm/sbi.h | 139 ++++++++++----------
->  arch/riscv/kernel/Makefile   |   1 +
->  arch/riscv/kernel/sbi.c      | 248 ++++++++++++++++++++++++++++++++++-
->  arch/riscv/kernel/setup.c    |   2 +
->  4 files changed, 316 insertions(+), 74 deletions(-)
+>  arch/riscv/Kconfig           |   6 ++
+>  arch/riscv/include/asm/sbi.h |   2 +
+>  arch/riscv/kernel/sbi.c      | 154 +++++++++++++++++++++++++++++------
+>  3 files changed, 138 insertions(+), 24 deletions(-)
 >
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index ca3b5541ae93..15c020d6837b 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -304,6 +304,12 @@ config SECCOMP
+>           and the task is only allowed to execute a few safe syscalls
+>           defined by each seccomp mode.
+>
+> +config RISCV_SBI_V01
+> +       bool "SBI v0.1 support"
+> +       default y
+> +       help
+> +         This config allows kernel to use SBI v0.1 APIs. This will be
+> +         deprecated in future once legacy M-mode software are no longer in use.
+>  endmenu
+>
+>  menu "Boot options"
 > diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-> index 96aaee270ded..906438322932 100644
+> index 906438322932..cc82ae63f8e0 100644
 > --- a/arch/riscv/include/asm/sbi.h
 > +++ b/arch/riscv/include/asm/sbi.h
-> @@ -9,93 +9,88 @@
->  #include <linux/types.h>
+> @@ -10,6 +10,7 @@
 >
 >  #ifdef CONFIG_RISCV_SBI
-> -#define SBI_EXT_0_1_SET_TIMER 0x0
-> -#define SBI_EXT_0_1_CONSOLE_PUTCHAR 0x1
-> -#define SBI_EXT_0_1_CONSOLE_GETCHAR 0x2
-> -#define SBI_EXT_0_1_CLEAR_IPI 0x3
-> -#define SBI_EXT_0_1_SEND_IPI 0x4
-> -#define SBI_EXT_0_1_REMOTE_FENCE_I 0x5
-> -#define SBI_EXT_0_1_REMOTE_SFENCE_VMA 0x6
-> -#define SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID 0x7
-> -#define SBI_EXT_0_1_SHUTDOWN 0x8
-> +enum sbi_ext_id {
-> +       SBI_EXT_0_1_SET_TIMER = 0x0,
-> +       SBI_EXT_0_1_CONSOLE_PUTCHAR = 0x1,
-> +       SBI_EXT_0_1_CONSOLE_GETCHAR = 0x2,
-> +       SBI_EXT_0_1_CLEAR_IPI = 0x3,
-> +       SBI_EXT_0_1_SEND_IPI = 0x4,
-> +       SBI_EXT_0_1_REMOTE_FENCE_I = 0x5,
-> +       SBI_EXT_0_1_REMOTE_SFENCE_VMA = 0x6,
-> +       SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID = 0x7,
-> +       SBI_EXT_0_1_SHUTDOWN = 0x8,
-> +       SBI_EXT_BASE = 0x10,
-> +};
+>  enum sbi_ext_id {
+> +#ifdef CONFIG_RISCV_SBI_V01
+>         SBI_EXT_0_1_SET_TIMER = 0x0,
+>         SBI_EXT_0_1_CONSOLE_PUTCHAR = 0x1,
+>         SBI_EXT_0_1_CONSOLE_GETCHAR = 0x2,
+> @@ -19,6 +20,7 @@ enum sbi_ext_id {
+>         SBI_EXT_0_1_REMOTE_SFENCE_VMA = 0x6,
+>         SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID = 0x7,
+>         SBI_EXT_0_1_SHUTDOWN = 0x8,
+> +#endif
+>         SBI_EXT_BASE = 0x10,
+>  };
 >
-> -#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({             \
-> -       register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);   \
-> -       register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);   \
-> -       register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);   \
-> -       register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);   \
-> -       register uintptr_t a7 asm ("a7") = (uintptr_t)(which);  \
-> -       asm volatile ("ecall"                                   \
-> -                     : "+r" (a0)                               \
-> -                     : "r" (a1), "r" (a2), "r" (a3), "r" (a7)  \
-> -                     : "memory");                              \
-> -       a0;                                                     \
-> -})
-> +enum sbi_ext_base_fid {
-> +       SBI_BASE_GET_SPEC_VERSION = 0,
-> +       SBI_BASE_GET_IMP_ID,
-> +       SBI_BASE_GET_IMP_VERSION,
-> +       SBI_BASE_PROBE_EXT,
-> +       SBI_BASE_GET_MVENDORID,
-> +       SBI_BASE_GET_MARCHID,
-> +       SBI_BASE_GET_MIMPID,
-> +};
->
-> -/* Lazy implementations until SBI is finalized */
-> -#define SBI_CALL_0(which) SBI_CALL(which, 0, 0, 0, 0)
-> -#define SBI_CALL_1(which, arg0) SBI_CALL(which, arg0, 0, 0, 0)
-> -#define SBI_CALL_2(which, arg0, arg1) SBI_CALL(which, arg0, arg1, 0, 0)
-> -#define SBI_CALL_3(which, arg0, arg1, arg2) \
-> -               SBI_CALL(which, arg0, arg1, arg2, 0)
-> -#define SBI_CALL_4(which, arg0, arg1, arg2, arg3) \
-> -               SBI_CALL(which, arg0, arg1, arg2, arg3)
-> +#define SBI_SPEC_VERSION_DEFAULT       0x1
-> +#define SBI_SPEC_VERSION_MAJOR_OFFSET  24
-> +#define SBI_SPEC_VERSION_MAJOR_MASK    0x7f
-> +#define SBI_SPEC_VERSION_MINOR_MASK    0xffffff
->
-> -static inline void sbi_console_putchar(int ch)
-> -{
-> -       SBI_CALL_1(SBI_EXT_0_1_CONSOLE_PUTCHAR, ch);
-> -}
-> +/* SBI return error codes */
-> +#define SBI_SUCCESS            0
-> +#define SBI_ERR_FAILURE                -1
-> +#define SBI_ERR_NOT_SUPPORTED  -2
-> +#define SBI_ERR_INVALID_PARAM   -3
-> +#define SBI_ERR_DENIED         -4
-> +#define SBI_ERR_INVALID_ADDRESS -5
->
-> -static inline int sbi_console_getchar(void)
-> -{
-> -       return SBI_CALL_0(SBI_EXT_0_1_CONSOLE_GETCHAR);
-> -}
-> +extern unsigned long sbi_spec_version;
-> +struct sbiret {
-> +       long error;
-> +       long value;
-> +};
->
-> -static inline void sbi_set_timer(uint64_t stime_value)
-> -{
-> -#if __riscv_xlen == 32
-> -       SBI_CALL_2(SBI_EXT_0_1_SET_TIMER, stime_value,
-> -                         stime_value >> 32);
-> -#else
-> -       SBI_CALL_1(SBI_EXT_0_1_SET_TIMER, stime_value);
-> -#endif
-> -}
-> -
-> -static inline void sbi_shutdown(void)
-> -{
-> -       SBI_CALL_0(SBI_EXT_0_1_SHUTDOWN);
-> -}
-> +int sbi_init(void);
-> +struct sbiret sbi_ecall(int ext, int fid, unsigned long arg0,
-> +                       unsigned long arg1, unsigned long arg2,
-> +                       unsigned long arg3, unsigned long arg4,
-> +                       unsigned long arg5);
->
-> -static inline void sbi_clear_ipi(void)
-> -{
-> -       SBI_CALL_0(SBI_EXT_0_1_CLEAR_IPI);
-> -}
-> +void sbi_console_putchar(int ch);
-> +int sbi_console_getchar(void);
-> +void sbi_set_timer(uint64_t stime_value);
-> +void sbi_shutdown(void);
-> +void sbi_clear_ipi(void);
-> +void sbi_send_ipi(const unsigned long *hart_mask);
-> +void sbi_remote_fence_i(const unsigned long *hart_mask);
-> +void sbi_remote_sfence_vma(const unsigned long *hart_mask,
-> +                          unsigned long start,
-> +                          unsigned long size);
->
-> -static inline void sbi_send_ipi(const unsigned long *hart_mask)
-> -{
-> -       SBI_CALL_1(SBI_EXT_0_1_SEND_IPI, hart_mask);
-> -}
-> +void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
-> +                               unsigned long start,
-> +                               unsigned long size,
-> +                               unsigned long asid);
-> +int sbi_probe_extension(long ext);
->
-> -static inline void sbi_remote_fence_i(const unsigned long *hart_mask)
-> +/* Check if current SBI specification version is 0.1 or not */
-> +static inline int sbi_spec_is_0_1(void)
->  {
-> -       SBI_CALL_1(SBI_EXT_0_1_REMOTE_FENCE_I, hart_mask);
-> +       return (sbi_spec_version == SBI_SPEC_VERSION_DEFAULT) ? 1 : 0;
->  }
->
-> -static inline void sbi_remote_sfence_vma(const unsigned long *hart_mask,
-> -                                        unsigned long start,
-> -                                        unsigned long size)
-> +/* Get the major version of SBI */
-> +static inline unsigned long sbi_major_version(void)
->  {
-> -       SBI_CALL_3(SBI_EXT_0_1_REMOTE_SFENCE_VMA, hart_mask,
-> -                         start, size);
-> +       return (sbi_spec_version >> SBI_SPEC_VERSION_MAJOR_OFFSET) &
-> +               SBI_SPEC_VERSION_MAJOR_MASK;
->  }
->
-> -static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
-> -                                             unsigned long start,
-> -                                             unsigned long size,
-> -                                             unsigned long asid)
-> +/* Get the minor version of SBI */
-> +static inline unsigned long sbi_minor_version(void)
->  {
-> -       SBI_CALL_4(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, hart_mask,
-> -                         start, size, asid);
-> +       return sbi_spec_version & SBI_SPEC_VERSION_MINOR_MASK;
->  }
->  #else /* CONFIG_RISCV_SBI */
->  /* stubs for code that is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
-> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-> index f40205cb9a22..56127dd359f1 100644
-> --- a/arch/riscv/kernel/Makefile
-> +++ b/arch/riscv/kernel/Makefile
-> @@ -17,6 +17,7 @@ obj-y += irq.o
->  obj-y  += process.o
->  obj-y  += ptrace.o
->  obj-y  += reset.o
-> +obj-y  += sbi.o
->  obj-y  += setup.o
->  obj-y  += signal.o
->  obj-y  += syscall_table.o
 > diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
-> index f6c7c3e82d28..8b36269fa515 100644
+> index 8b36269fa515..8574de1074c4 100644
 > --- a/arch/riscv/kernel/sbi.c
 > +++ b/arch/riscv/kernel/sbi.c
-> @@ -4,14 +4,258 @@
->  #include <linux/pm.h>
->  #include <asm/sbi.h>
+> @@ -8,6 +8,14 @@
+>  unsigned long sbi_spec_version = SBI_SPEC_VERSION_DEFAULT;
+>  EXPORT_SYMBOL(sbi_spec_version);
 >
-> +/* default SBI version is 0.1 */
-> +unsigned long sbi_spec_version = SBI_SPEC_VERSION_DEFAULT;
-> +EXPORT_SYMBOL(sbi_spec_version);
+> +void (*__sbi_set_timer)(uint64_t stime);
+> +int (*__sbi_send_ipi)(const unsigned long *hart_mask);
+> +int (*__sbi_rfence)(unsigned long extid, unsigned long fid,
+> +                 const unsigned long *hart_mask,
+> +                 unsigned long hbase, unsigned long start,
+> +                 unsigned long size, unsigned long arg4,
+> +                 unsigned long arg5);
 > +
-> +struct sbiret sbi_ecall(int ext, int fid, unsigned long arg0,
-> +                       unsigned long arg1, unsigned long arg2,
-> +                       unsigned long arg3, unsigned long arg4,
-> +                       unsigned long arg5)
+
+Make these function pointers static.
+
+>  struct sbiret sbi_ecall(int ext, int fid, unsigned long arg0,
+>                         unsigned long arg1, unsigned long arg2,
+>                         unsigned long arg3, unsigned long arg4,
+> @@ -52,6 +60,32 @@ static int sbi_err_map_linux_errno(int err)
+>         };
+>  }
+>
+> +static inline void __sbi_set_timer_dummy_warn(uint64_t stime_value)
+
+Don't make this function inline because you are assigning it to function
+pointer below.
+
 > +{
-> +       struct sbiret ret;
-> +
-> +       register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);
-> +       register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);
-> +       register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);
-> +       register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);
-> +       register uintptr_t a4 asm ("a4") = (uintptr_t)(arg4);
-> +       register uintptr_t a5 asm ("a5") = (uintptr_t)(arg5);
-> +       register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);
-> +       register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);
-> +       asm volatile ("ecall"
-> +                     : "+r" (a0), "+r" (a1)
-> +                     : "r" (a2), "r" (a3), "r" (a4), "r" (a5), "r" (a6), "r" (a7)
-> +                     : "memory");
-> +       ret.error = a0;
-> +       ret.value = a1;
-> +
-> +       return ret;
+> +       pr_warn("Timer extension is not available in SBI v%lu.%lu\n",
+> +               sbi_major_version(), sbi_minor_version());
 > +}
-> +EXPORT_SYMBOL(sbi_ecall);
 > +
-> +static int sbi_err_map_linux_errno(int err)
+> +static inline int __sbi_send_ipi_dummy_warn(const unsigned long *hart_mask)
+
+Same as above.
+
 > +{
-> +       switch (err) {
-> +       case SBI_SUCCESS:
-> +               return 0;
-> +       case SBI_ERR_DENIED:
-> +               return -EPERM;
-> +       case SBI_ERR_INVALID_PARAM:
-> +               return -EINVAL;
-> +       case SBI_ERR_INVALID_ADDRESS:
-> +               return -EFAULT;
-> +       case SBI_ERR_NOT_SUPPORTED:
-> +       case SBI_ERR_FAILURE:
+> +       pr_warn("IPI extension is not available in SBI v%lu.%lu\n",
+> +               sbi_major_version(), sbi_minor_version());
+> +       return 0;
+> +}
+> +
+> +static inline int __sbi_rfence_dummy_warn(unsigned long extid,
+> +                            unsigned long fid,
+> +                            const unsigned long *hart_mask,
+> +                            unsigned long hbase, unsigned long start,
+> +                            unsigned long size, unsigned long arg4,
+> +                            unsigned long arg5)
+
+Same as above.
+
+> +{
+> +       pr_warn("remote fence extension is not available in SBI v%lu.%lu\n",
+> +               sbi_major_version(), sbi_minor_version());
+> +       return 0;
+> +}
+> +
+> +#ifdef CONFIG_RISCV_SBI_V01
+>  /**
+>   * sbi_console_putchar() - Writes given character to the console device.
+>   * @ch: The data to be written to the console.
+> @@ -80,41 +114,106 @@ int sbi_console_getchar(void)
+>  EXPORT_SYMBOL(sbi_console_getchar);
+>
+>  /**
+> - * sbi_set_timer() - Program the timer for next timer event.
+> - * @stime_value: The value after which next timer event should fire.
+> + * sbi_shutdown() - Remove all the harts from executing supervisor code.
+>   *
+>   * Return: None
+>   */
+> -void sbi_set_timer(uint64_t stime_value)
+> +void sbi_shutdown(void)
+>  {
+> -#if __riscv_xlen == 32
+> -       sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value,
+> -                         stime_value >> 32, 0, 0, 0, 0);
+> -#else
+> -       sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value, 0, 0, 0, 0, 0);
+> -#endif
+> +       sbi_ecall(SBI_EXT_0_1_SHUTDOWN, 0, 0, 0, 0, 0, 0, 0);
+>  }
+>  EXPORT_SYMBOL(sbi_set_timer);
+>
+>  /**
+> - * sbi_shutdown() - Remove all the harts from executing supervisor code.
+> + * sbi_clear_ipi() - Clear any pending IPIs for the calling hart.
+>   *
+>   * Return: None
+>   */
+> -void sbi_shutdown(void)
+> +void sbi_clear_ipi(void)
+>  {
+> -       sbi_ecall(SBI_EXT_0_1_SHUTDOWN, 0, 0, 0, 0, 0, 0, 0);
+> +       sbi_ecall(SBI_EXT_0_1_CLEAR_IPI, 0, 0, 0, 0, 0, 0, 0);
+>  }
+>  EXPORT_SYMBOL(sbi_shutdown);
+>
+>  /**
+> - * sbi_clear_ipi() - Clear any pending IPIs for the calling hart.
+> + * sbi_set_timer_v01() - Program the timer for next timer event.
+> + * @stime_value: The value after which next timer event should fire.
+>   *
+>   * Return: None
+>   */
+> -void sbi_clear_ipi(void)
+> +static void __sbi_set_timer_v01(uint64_t stime_value)
+>  {
+> -       sbi_ecall(SBI_EXT_0_1_CLEAR_IPI, 0, 0, 0, 0, 0, 0, 0);
+> +#if __riscv_xlen == 32
+> +       sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value,
+> +                 stime_value >> 32, 0, 0, 0, 0);
+> +#else
+> +       sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value, 0, 0, 0, 0, 0);
+> +#endif
+> +}
+> +
+> +static int __sbi_send_ipi_v01(const unsigned long *hart_mask)
+> +{
+> +       sbi_ecall(SBI_EXT_0_1_SEND_IPI, 0, (unsigned long)hart_mask,
+> +                 0, 0, 0, 0, 0);
+> +       return 0;
+> +}
+> +
+> +static int __sbi_rfence_v01(unsigned long ext, unsigned long fid,
+> +                            const unsigned long *hart_mask,
+> +                            unsigned long hbase, unsigned long start,
+> +                            unsigned long size, unsigned long arg4,
+> +                            unsigned long arg5)
+> +{
+> +       switch (ext) {
+> +       case SBI_EXT_0_1_REMOTE_FENCE_I:
+> +               sbi_ecall(SBI_EXT_0_1_REMOTE_FENCE_I, 0,
+> +                         (unsigned long)hart_mask, 0, 0, 0, 0, 0);
+> +               break;
+> +       case SBI_EXT_0_1_REMOTE_SFENCE_VMA:
+> +               sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
+> +                         (unsigned long)hart_mask, start, size,
+> +                         0, 0, 0);
+> +               break;
+> +       case SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID:
+> +               sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
+> +                         (unsigned long)hart_mask, start, size,
+> +                         arg4, 0, 0);
+> +               break;
 > +       default:
-> +               return -ENOTSUPP;
-> +       };
-> +}
+> +               pr_err("extid [%lu]not supported in SBI v0.1\n", ext);
+> +       }
 > +
-> +/**
-> + * sbi_console_putchar() - Writes given character to the console device.
-> + * @ch: The data to be written to the console.
-> + *
-> + * Return: None
-> + */
-> +void sbi_console_putchar(int ch)
+> +       return 0;
+> +}
+> +#else
+> +static void __sbi_set_timer_v01(uint64_t stime_value)
 > +{
-> +       sbi_ecall(SBI_EXT_0_1_CONSOLE_PUTCHAR, 0, ch, 0, 0, 0, 0, 0);
+> +       __sbi_set_timer_dummy_warn(0);
 > +}
-> +EXPORT_SYMBOL(sbi_console_putchar);
-> +
-> +/**
-> + * sbi_console_getchar() - Reads a byte from console device.
-> + *
-> + * Returns the value read from console.
-> + */
-> +int sbi_console_getchar(void)
+> +static int __sbi_send_ipi_v01(const unsigned long *hart_mask)
 > +{
-> +       struct sbiret ret;
-> +
-> +       ret = sbi_ecall(SBI_EXT_0_1_CONSOLE_GETCHAR, 0, 0, 0, 0, 0, 0, 0);
-> +
-> +       return ret.error;
+> +       return __sbi_send_ipi_dummy_warn(NULL);
 > +}
-> +EXPORT_SYMBOL(sbi_console_getchar);
+> +static int __sbi_rfence_v01(unsigned long ext, unsigned long fid,
+> +                            const unsigned long *hart_mask,
+> +                            unsigned long hbase, unsigned long start,
+> +                            unsigned long size, unsigned long arg4,
+> +                            unsigned long arg5)
+> +{
+> +       return __sbi_rfence_dummy_warn(0, 0, 0, 0, 0, 0, 0, 0);
+> +
+> +}
+> +#endif /* CONFIG_RISCV_SBI_V01 */
 > +
 > +/**
 > + * sbi_set_timer() - Program the timer for next timer event.
@@ -384,205 +338,79 @@ On Tue, Nov 26, 2019 at 8:50 AM Atish Patra <atish.patra@wdc.com> wrote:
 > + */
 > +void sbi_set_timer(uint64_t stime_value)
 > +{
-> +#if __riscv_xlen == 32
-> +       sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value,
-> +                         stime_value >> 32, 0, 0, 0, 0);
-> +#else
-> +       sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value, 0, 0, 0, 0, 0);
-> +#endif
-> +}
-> +EXPORT_SYMBOL(sbi_set_timer);
-> +
-> +/**
-> + * sbi_shutdown() - Remove all the harts from executing supervisor code.
-> + *
-> + * Return: None
-> + */
-> +void sbi_shutdown(void)
-> +{
-> +       sbi_ecall(SBI_EXT_0_1_SHUTDOWN, 0, 0, 0, 0, 0, 0, 0);
-> +}
-> +EXPORT_SYMBOL(sbi_shutdown);
-> +
-> +/**
-> + * sbi_clear_ipi() - Clear any pending IPIs for the calling hart.
-> + *
-> + * Return: None
-> + */
-> +void sbi_clear_ipi(void)
-> +{
-> +       sbi_ecall(SBI_EXT_0_1_CLEAR_IPI, 0, 0, 0, 0, 0, 0, 0);
-> +}
-> +
-> +/**
-> + * sbi_send_ipi() - Send an IPI to any hart.
-> + * @hart_mask: A cpu mask containing all the target harts.
-> + *
-> + * Return: None
-> + */
-> +void sbi_send_ipi(const unsigned long *hart_mask)
-> +{
-> +       sbi_ecall(SBI_EXT_0_1_SEND_IPI, 0, (unsigned long)hart_mask,
-> +                       0, 0, 0, 0, 0);
-> +}
-> +EXPORT_SYMBOL(sbi_send_ipi);
-> +
-> +/**
-> + * sbi_remote_fence_i() - Execute FENCE.I instruction on given remote harts.
-> + * @hart_mask: A cpu mask containing all the target harts.
-> + *
-> + * Return: None
-> + */
-> +void sbi_remote_fence_i(const unsigned long *hart_mask)
-> +{
-> +       sbi_ecall(SBI_EXT_0_1_REMOTE_FENCE_I, 0, (unsigned long)hart_mask,
-> +                       0, 0, 0, 0, 0);
-> +}
-> +EXPORT_SYMBOL(sbi_remote_fence_i);
-> +
-> +/**
-> + * sbi_remote_sfence_vma() - Execute SFENCE.VMA instructions on given remote
-> + *                          harts for the specified virtual address range.
-> + * @hart_mask: A cpu mask containing all the target harts.
-> + * @start: Start of the virtual address
-> + * @size: Total size of the virtual address range.
-> + *
-> + * Return: None
-> + */
-> +void sbi_remote_sfence_vma(const unsigned long *hart_mask,
-> +                                        unsigned long start,
-> +                                        unsigned long size)
-> +{
-> +       sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
-> +                       (unsigned long)hart_mask, start, size, 0, 0, 0);
-> +}
-> +EXPORT_SYMBOL(sbi_remote_sfence_vma);
-> +
-> +/**
-> + * sbi_remote_sfence_vma_asid() - Execute SFENCE.VMA instructions on given
-> + * remote harts for a virtual address range belonging to a specific ASID.
-> + *
-> + * @hart_mask: A cpu mask containing all the target harts.
-> + * @start: Start of the virtual address
-> + * @size: Total size of the virtual address range.
-> + * @asid: The value of address space identifier (ASID).
-> + *
-> + * Return: None
-> + */
-> +void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
-> +                                             unsigned long start,
-> +                                             unsigned long size,
-> +                                             unsigned long asid)
-> +{
-> +       sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
-> +                       (unsigned long)hart_mask, start, size, asid, 0, 0);
-> +}
-> +EXPORT_SYMBOL(sbi_remote_sfence_vma_asid);
-> +
-> +/**
-> + * sbi_probe_extension() - Check if an SBI extension ID is supported or not.
-> + * @extid: The extension ID to be probed.
-> + *
-> + * Return: Extension specific nonzero value f yes, -ENOTSUPP otherwise.
-> + */
-> +int sbi_probe_extension(long extid)
-> +{
-> +       struct sbiret ret;
-> +
-> +       ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_PROBE_EXT, extid, 0, 0, 0, 0, 0);
-> +       pr_err("%ld: %ld\n", ret.value, ret.error);
-> +       if (!ret.error)
-> +               if (ret.value)
-> +                       return ret.value;
-> +
-> +       return -ENOTSUPP;
-> +}
-> +EXPORT_SYMBOL(sbi_probe_extension);
-> +
-> +static long sbi_get_spec_version(void)
-> +{
-> +       struct sbiret ret;
-> +
-> +       ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_SPEC_VERSION,
-> +                              0, 0, 0, 0, 0, 0);
-> +       if (!ret.error)
-> +               return ret.value;
-> +       else
-> +               return ret.error;
-> +}
-> +
-> +static long sbi_get_firmware_id(void)
-> +{
-> +       struct sbiret ret;
-> +
-> +       ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_ID,
-> +                              0, 0, 0, 0, 0, 0);
-> +       if (!ret.error)
-> +               return ret.value;
-> +       else
-> +               return sbi_err_map_linux_errno(ret.error);
-> +}
-> +
-> +static long sbi_get_firmware_version(void)
-> +{
-> +       struct sbiret ret;
-> +
-> +       ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_VERSION,
-> +                              0, 0, 0, 0, 0, 0);
-> +       if (!ret.error)
-> +               return ret.value;
-> +       else
-> +               return sbi_err_map_linux_errno(ret.error);
-> +}
-> +
->  static void sbi_power_off(void)
->  {
->         sbi_shutdown();
+> +       __sbi_set_timer(stime_value);
 >  }
 >
-> -static int __init sbi_init(void)
-> +int __init sbi_init(void)
+>  /**
+> @@ -125,11 +224,11 @@ void sbi_clear_ipi(void)
+>   */
+>  void sbi_send_ipi(const unsigned long *hart_mask)
 >  {
-> +       int ret;
+> -       sbi_ecall(SBI_EXT_0_1_SEND_IPI, 0, (unsigned long)hart_mask,
+> -                       0, 0, 0, 0, 0);
+> +       __sbi_send_ipi(hart_mask);
+>  }
+>  EXPORT_SYMBOL(sbi_send_ipi);
+>
 > +
->         pm_power_off = sbi_power_off;
-> +       ret = sbi_get_spec_version();
-> +       if (ret > 0)
-> +               sbi_spec_version = ret;
+>  /**
+>   * sbi_remote_fence_i() - Execute FENCE.I instruction on given remote harts.
+>   * @hart_mask: A cpu mask containing all the target harts.
+> @@ -138,8 +237,8 @@ EXPORT_SYMBOL(sbi_send_ipi);
+>   */
+>  void sbi_remote_fence_i(const unsigned long *hart_mask)
+>  {
+> -       sbi_ecall(SBI_EXT_0_1_REMOTE_FENCE_I, 0, (unsigned long)hart_mask,
+> -                       0, 0, 0, 0, 0);
+> +       __sbi_rfence(SBI_EXT_0_1_REMOTE_FENCE_I, 0,
+> +                    hart_mask, 0, 0, 0, 0, 0);
+>  }
+>  EXPORT_SYMBOL(sbi_remote_fence_i);
+>
+> @@ -156,8 +255,8 @@ void sbi_remote_sfence_vma(const unsigned long *hart_mask,
+>                                          unsigned long start,
+>                                          unsigned long size)
+>  {
+> -       sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
+> -                       (unsigned long)hart_mask, start, size, 0, 0, 0);
+> +       __sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
+> +                    hart_mask, 0, start, size, 0, 0);
+>  }
+>  EXPORT_SYMBOL(sbi_remote_sfence_vma);
+>
+> @@ -177,8 +276,8 @@ void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+>                                               unsigned long size,
+>                                               unsigned long asid)
+>  {
+> -       sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
+> -                       (unsigned long)hart_mask, start, size, asid, 0, 0);
+> +       __sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
+> +                    hart_mask, 0, start, size, asid, 0);
+>  }
+>  EXPORT_SYMBOL(sbi_remote_sfence_vma_asid);
+>
+> @@ -254,8 +353,15 @@ int __init sbi_init(void)
+>
+>         pr_info("SBI specification v%lu.%lu detected\n",
+>                 sbi_major_version(), sbi_minor_version());
+> -       if (!sbi_spec_is_0_1())
 > +
-> +       pr_info("SBI specification v%lu.%lu detected\n",
-> +               sbi_major_version(), sbi_minor_version());
-> +       if (!sbi_spec_is_0_1())
-> +               pr_info("SBI implementation ID=0x%lx Version=0x%lx\n",
-> +                       sbi_get_firmware_id(), sbi_get_firmware_version());
+> +       if (sbi_spec_is_0_1()) {
+> +               __sbi_set_timer = __sbi_set_timer_v01;
+> +               __sbi_send_ipi  = __sbi_send_ipi_v01;
+> +               __sbi_rfence    = __sbi_rfence_v01;
+> +       } else {
+>                 pr_info("SBI implementation ID=0x%lx Version=0x%lx\n",
+>                         sbi_get_firmware_id(), sbi_get_firmware_version());
+> +       }
+> +
 >         return 0;
 >  }
-> -early_initcall(sbi_init);
-> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
-> index 365ff8420bfe..f0a3c51e3d1b 100644
-> --- a/arch/riscv/kernel/setup.c
-> +++ b/arch/riscv/kernel/setup.c
-> @@ -22,6 +22,7 @@
->  #include <asm/sections.h>
->  #include <asm/pgtable.h>
->  #include <asm/smp.h>
-> +#include <asm/sbi.h>
->  #include <asm/tlbflush.h>
->  #include <asm/thread_info.h>
->
-> @@ -74,6 +75,7 @@ void __init setup_arch(char **cmdline_p)
->         swiotlb_init(1);
->  #endif
->
-> +       sbi_init();
->  #ifdef CONFIG_SMP
->         setup_smp();
->  #endif
 > --
 > 2.23.0
 >
 
-LGTM.
+Minor comments above otherwise looks good.
 
 Reviewed-by: Anup Patel <anup@brainfault.org>
 
