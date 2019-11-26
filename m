@@ -2,87 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC7A9109F32
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 14:21:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 03339109F3D
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 14:25:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3WtBC4frGIqky2bJrrdcERzxQ0P/B1ntTRfmrDNQDT0=; b=DUcvxKAq2sTqx5
-	nnLJjX1eXvaXeobVYFPhufz2ucrYbPznBpm8SGbNJKfYQe8H+yV6WiTISnmU6yamIFug7U6RZ6vDw
-	9zyV15QmLQN1p/qTw+6vOJxNU48LmbREOQ9B9PaLw2M0NxisRGAlTuRmox5aDo72GP4vvC3/6Hj+r
-	uys0T/xPYc2pKTFdv2djdRQn/CbttpDPvnFUUEnwdkzPmpi5UFHiulkQM/YijfjgdmKOVSb2kw4NX
-	w5qPZW+C9gB7Qf5qrQz2HKLyMcUlUOuWu5I8qUvvwBVUvqpAmjyRjc/KubvCmbIxU9/locwdFc5q6
-	Oaf7ITfLPGHMD8WLJElw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=S4ZjxtwEGxXIQzpMtSPqQRk7Bhv4LBzAkY2LHNz5Yh0=; b=Hs9wSsNkgreYzpkVppM2Uez/e
+	YlEDpQu3FWyulZfN1d3tQq25WFgY5kgtX+1vRlZaJ7ise3i9dwmHWA5v7ETVM2gwKLG+zrbwVuA0Z
+	7tPsJOW5CyGO3uYIkrAjIMXxNtgSxTCVtJh2boj6S36C0Q0fCVLW7DfxU3CflfBO77RGUWYWcAPqK
+	H5DxBVIJTfKs6x4VXnzCTO5qKKw8ovCL+Y7G6H+7Kqju+C3XSijipilysLzDm85qYAWXQhFC/njB7
+	qp4+d7WZcUhWnwJkNtAC6rBFZ9K+gTF2sUoSUCl13KfefG3AkUWxklnmP2KxptB9iKOFYIUceEJT6
+	EpP26FLUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZamV-0006Fk-NU; Tue, 26 Nov 2019 13:21:27 +0000
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
+	id 1iZaqW-0001pE-SD; Tue, 26 Nov 2019 13:25:36 +0000
+Received: from smtprelay0081.hostedemail.com ([216.40.44.81]
+ helo=smtprelay.hostedemail.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZaft-0002yf-RG
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 13:14:39 +0000
-Received: by mail-qt1-x844.google.com with SMTP id 14so21334052qtf.5
- for <linux-riscv@lists.infradead.org>; Tue, 26 Nov 2019 05:14:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=cpPxka1Pl27l5pcH6nCC6OburpGArFz8nhEvihO8xNg=;
- b=jTCV7l3jNyoKkSnavBxPWKG7xXbsf4keKse9VtmD0UNTC7nV5MSXLWHd0M21Su28JI
- RpeGYfG41qyscMKZaydg8jOFeUnbC8By/o4moFV0MxKGBx+nGucowfb5GB0L3APzWQyq
- 9EGHVmXTkopcYKenWF9Wz3O7zkODFY1CUH9T7xHEEj6/BGMC57yPd2rGbwUYdnURqSO5
- rIStZs8MhXX+xgyXc/vzRekBA7FhIvpi4pGN5YfNBQ6vUrw4vlRJJ4OK3E8FoqJMWqBk
- BXvtjClTgFEqzClQ4/ndvqzvyxUVegh0KnhdNNxYGatBtVopF6N0lCOKbsw5MXCnn+aR
- 6Y6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=cpPxka1Pl27l5pcH6nCC6OburpGArFz8nhEvihO8xNg=;
- b=qerjYhq0N8YMvmKzFxYiQ6psqnUiNiYkogOXdly2KI1W3UrNfIEHcj0UI6/CU6KjHq
- ODkRh6ejC4/WoVwKWC3Fcfyc9zKEZE71zIrORqOg3HpsjXcEprk1SKorwTUUqJqv9Spi
- EiUr0heoueGZaDzmfEUEBDgasLi15dvY7YaqQvnv1cXSbAkoQb2r2VDvEElEq4okoArc
- IjNoaM4F+AWdA1C9VCGO9RqhbKG8LqIbpruRoS5EI/UXi5sAOqQQOI8htOD2dM5Tof7B
- PYHY1TonTVDu+zbj3kb8npo2fqbYlh6v1aOUxNJ6YS3N39EZk7mBCKnl7kT55uoHRycJ
- u54w==
-X-Gm-Message-State: APjAAAUlGLNpTz6NGH2gwN6apGErUuhOOrdt8KyliVm9uaO8qZIKSXzV
- GGeqyVKutJXPqKXFBr1RSnBQn0F4X1eocjl0V3I=
-X-Google-Smtp-Source: APXvYqzvpjLjGloa05lw3i6I7fgHo/R4gvZ+aD1eq+3S4tCNKb5dQ6Noemh342gMN8vs6C7Xgr0E0nChjCjoOogvPVg=
-X-Received: by 2002:ac8:1bed:: with SMTP id m42mr17979158qtk.359.1574774074441; 
- Tue, 26 Nov 2019 05:14:34 -0800 (PST)
-MIME-Version: 1.0
-References: <mhng-0a2f9574-9b23-4f26-ae76-18ed7f2c8533@palmer-si-x1c4>
- <87d0yoizv9.fsf@xps13.shealevy.com> <87zi19gjof.fsf@xps13.shealevy.com>
-In-Reply-To: <87zi19gjof.fsf@xps13.shealevy.com>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Tue, 26 Nov 2019 14:14:22 +0100
-Message-ID: <CAJ+HfNhoJnGon-L9OwSfrMbmUt1ZPBB_=A8ZFrg1CgEq3ua-Sg@mail.gmail.com>
+ id 1iZaqR-00017b-Fc
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 13:25:33 +0000
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay04.hostedemail.com (Postfix) with ESMTP id 5A9C41800BEAB;
+ Tue, 26 Nov 2019 13:25:24 +0000 (UTC)
+X-Session-Marker: 7368656140736865616C6576792E636F6D
+X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, shea@shealevy.com, :::::::::::::,
+ RULES_HIT:41:152:355:379:599:800:871:960:973:988:989:1000:1260:1313:1314:1345:1359:1431:1437:1516:1518:1535:1544:1575:1594:1605:1711:1730:1747:1777:1792:1801:1981:2194:2199:2393:2553:2559:2562:2693:2901:3138:3139:3140:3141:3142:3865:3866:3867:3868:3870:3871:3872:3873:3874:4117:4250:4321:4362:4605:5007:6117:6119:6261:6506:6747:7281:7514:7875:7903:7909:8603:8660:9036:9040:10004:10848:11026:11232:11233:11473:11657:11658:11914:12043:12296:12297:12438:12555:12663:12740:12895:12986:13148:13230:14180:14181:14721:21060:21080:21325:21433:21451:21627:21740:30025:30054:30056:30090:30091,
+ 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
+ DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
+ LFtime:2, LUA_SUMMARY:none
+X-HE-Tag: actor99_69506a9204f19
+X-Filterd-Recvd-Size: 6817
+Received: from localhost (unknown [75.112.159.170])
+ (Authenticated sender: shea@shealevy.com)
+ by omf19.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 26 Nov 2019 13:25:23 +0000 (UTC)
+From: Shea Levy <shea@shealevy.com>
+To: =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
 Subject: Re: [PATCH] RISC-V: Load modules within relative jump range of the
  kernel text.
-To: Shea Levy <shea@shealevy.com>
+In-Reply-To: <CAJ+HfNhoJnGon-L9OwSfrMbmUt1ZPBB_=A8ZFrg1CgEq3ua-Sg@mail.gmail.com>
+References: <mhng-0a2f9574-9b23-4f26-ae76-18ed7f2c8533@palmer-si-x1c4>
+ <87d0yoizv9.fsf@xps13.shealevy.com> <87zi19gjof.fsf@xps13.shealevy.com>
+ <CAJ+HfNhoJnGon-L9OwSfrMbmUt1ZPBB_=A8ZFrg1CgEq3ua-Sg@mail.gmail.com>
+Date: Tue, 26 Nov 2019 08:25:21 -0500
+Message-ID: <87o8wyojlq.fsf@xps13.shealevy.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_051437_936156_6179BC4D 
-X-CRM114-Status: GOOD (  21.14  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191126_052531_668452_744A6C2D 
+X-CRM114-Status: GOOD (  20.20  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:844 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bjorn.topel[at]gmail.com)
+ no trust [216.40.44.81 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,83 +77,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Cc: Netdev <netdev@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, albert@sifive.com,
  Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0015582529216391555=="
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gV2VkLCA5IE1heSAyMDE4IGF0IDEzOjIyLCBTaGVhIExldnkgPHNoZWFAc2hlYWxldnkuY29t
-PiB3cm90ZToKPgo+IEhpIFBhbG1lciwKPgo+IFNoZWEgTGV2eSA8c2hlYUBzaGVhbGV2eS5jb20+
-IHdyaXRlczoKPgo+ID4gSGkgUGFsbWVyLAo+ID4KPiA+IFBhbG1lciBEYWJiZWx0IDxwYWxtZXJA
-c2lmaXZlLmNvbT4gd3JpdGVzOgo+ID4KPiA+PiBPbiBTdW4sIDIyIEFwciAyMDE4IDA1OjUzOjU2
-IFBEVCAoLTA3MDApLCBzaGVhQHNoZWFsZXZ5LmNvbSB3cm90ZToKPiA+Pj4gSGkgUGFsbWVyLAo+
-ID4+Pgo+ID4+PiBTaGVhIExldnkgPHNoZWFAc2hlYWxldnkuY29tPiB3cml0ZXM6Cj4gPj4+Cj4g
-Pj4+PiBTaWduZWQtb2ZmLWJ5OiBTaGVhIExldnkgPHNoZWFAc2hlYWxldnkuY29tPgo+ID4+Pj4g
-LS0tCj4gPj4+Pgo+ID4+Pj4gTm90ZSB0aGF0IHRoaXMgcGF0Y2ggd29ya2VkIGluIG15IG9sZCBt
-b2R1bGVzIHBhdGNoc2V0IGFuZCBzZWVtcyB0byBiZQo+ID4+Pj4gd29ya2luZyBub3csIGJ1dCBt
-eSBrZXJuZWwgYm9vdCBsb2NrcyB1cCBvbiB0b3Agb2YKPiA+Pj4+IHJpc2N2LWZvci1saW51cy00
-LjE3LW13MCBhbmQgSSBkb24ndCBrbm93IGlmIGl0J3MgZHVlIHRvIHRoaXMgcGF0Y2ggb3IKPiA+
-Pj4+IHNvbWV0aGluZyBlbHNlIHRoYXQncyBjaGFuZ2VkIGluIHRoZSBtZWFuIHRpbWUuCj4gPj4+
-Pgo+ID4+Pj4gLS0tCj4gPj4+PiAgYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9wZ3RhYmxlLmggfCAg
-OSArKysrKysrKysKPiA+Pj4+ICBhcmNoL3Jpc2N2L2tlcm5lbC9tb2R1bGUuYyAgICAgICB8IDEx
-ICsrKysrKysrKysrCj4gPj4+PiAgMiBmaWxlcyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspCj4g
-Pj4+Pgo+ID4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vcGd0YWJsZS5o
-IGIvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9wZ3RhYmxlLmgKPiA+Pj4+IGluZGV4IDE2MzAxOTY2
-ZDY1Yi4uYjA4ZGVkMTMzNjRhIDEwMDY0NAo+ID4+Pj4gLS0tIGEvYXJjaC9yaXNjdi9pbmNsdWRl
-L2FzbS9wZ3RhYmxlLmgKPiA+Pj4+ICsrKyBiL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vcGd0YWJs
-ZS5oCj4gPj4+PiBAQCAtMjUsNiArMjUsNyBAQAo+ID4+Pj4gICNpbmNsdWRlIDxhc20vcGFnZS5o
-Pgo+ID4+Pj4gICNpbmNsdWRlIDxhc20vdGxiZmx1c2guaD4KPiA+Pj4+ICAjaW5jbHVkZSA8bGlu
-dXgvbW1fdHlwZXMuaD4KPiA+Pj4+ICsjaW5jbHVkZSA8bGludXgvc2l6ZXMuaD4KPiA+Pj4+Cj4g
-Pj4+PiAgI2lmZGVmIENPTkZJR182NEJJVAo+ID4+Pj4gICNpbmNsdWRlIDxhc20vcGd0YWJsZS02
-NC5oPgo+ID4+Pj4gQEAgLTQyNSw2ICs0MjYsMTQgQEAgc3RhdGljIGlubGluZSB2b2lkIHBndGFi
-bGVfY2FjaGVfaW5pdCh2b2lkKQo+ID4+Pj4gICNkZWZpbmUgVEFTS19TSVpFIFZNQUxMT0NfU1RB
-UlQKPiA+Pj4+ICAjZW5kaWYKPiA+Pj4+Cj4gPj4+PiArLyoKPiA+Pj4+ICsgKiBUaGUgbW9kdWxl
-IHNwYWNlIGxpdmVzIGJldHdlZW4gdGhlIGFkZHJlc3NlcyBnaXZlbiBieSBUQVNLX1NJWkUKPiA+
-Pj4+ICsgKiBhbmQgUEFHRV9PRkZTRVQgLSBpdCBtdXN0IGJlIHdpdGhpbiAyRyBvZiB0aGUga2Vy
-bmVsIHRleHQuCj4gPj4+PiArICovCj4gPj4+PiArI2RlZmluZSBNT0RVTEVTX1NJWkUgICAgICAg
-ICAgICAgIChTWl8xMjhNKQo+ID4+Pj4gKyNkZWZpbmUgTU9EVUxFU19WQUREUiAgICAgICAgICAg
-ICAoUEFHRV9PRkZTRVQgLSBNT0RVTEVTX1NJWkUpCj4gPj4+PiArI2RlZmluZSBNT0RVTEVTX0VO
-RCAgICAgICAgICAgICAgIChWTUFMTE9DX0VORCkKPiA+Pj4+ICsKPiA+Pj4+ICAjaW5jbHVkZSA8
-YXNtLWdlbmVyaWMvcGd0YWJsZS5oPgo+ID4+Pj4KPiA+Pj4+ICAjZW5kaWYgLyogIV9fQVNTRU1C
-TFlfXyAqLwo+ID4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvcmlzY3Yva2VybmVsL21vZHVsZS5jIGIv
-YXJjaC9yaXNjdi9rZXJuZWwvbW9kdWxlLmMKPiA+Pj4+IGluZGV4IDVkZGRiYTMwMWQwYS4uMWIz
-ODJjN2RlMDk1IDEwMDY0NAo+ID4+Pj4gLS0tIGEvYXJjaC9yaXNjdi9rZXJuZWwvbW9kdWxlLmMK
-PiA+Pj4+ICsrKyBiL2FyY2gvcmlzY3Yva2VybmVsL21vZHVsZS5jCj4gPj4+PiBAQCAtMTYsNiAr
-MTYsOCBAQAo+ID4+Pj4gICNpbmNsdWRlIDxsaW51eC9lcnIuaD4KPiA+Pj4+ICAjaW5jbHVkZSA8
-bGludXgvZXJybm8uaD4KPiA+Pj4+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlbG9hZGVyLmg+Cj4g
-Pj4+PiArI2luY2x1ZGUgPGxpbnV4L3ZtYWxsb2MuaD4KPiA+Pj4+ICsjaW5jbHVkZSA8YXNtL3Bn
-dGFibGUuaD4KPiA+Pj4+Cj4gPj4+PiAgc3RhdGljIGludCBhcHBseV9yX3Jpc2N2XzY0X3JlbGEo
-c3RydWN0IG1vZHVsZSAqbWUsIHUzMiAqbG9jYXRpb24sIEVsZl9BZGRyIHYpCj4gPj4+PiAgewo+
-ID4+Pj4gQEAgLTM4MiwzICszODQsMTIgQEAgaW50IGFwcGx5X3JlbG9jYXRlX2FkZChFbGZfU2hk
-ciAqc2VjaGRycywgY29uc3QgY2hhciAqc3RydGFiLAo+ID4+Pj4KPiA+Pj4+ICAgIHJldHVybiAw
-Owo+ID4+Pj4gIH0KPiA+Pj4+ICsKPiA+Pj4+ICt2b2lkICptb2R1bGVfYWxsb2ModW5zaWduZWQg
-bG9uZyBzaXplKQo+ID4+Pj4gK3sKPiA+Pj4+ICsgIHJldHVybiBfX3ZtYWxsb2Nfbm9kZV9yYW5n
-ZShzaXplLCAxLCBNT0RVTEVTX1ZBRERSLAo+ID4+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIE1PRFVMRVNfRU5ELCBHRlBfS0VSTkVMLAo+ID4+Pj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIFBBR0VfS0VSTkVMX0VYRUMsIDAsCj4gPj4+PiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgTlVNQV9OT19OT0RFLAo+ID4+Pj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIF9fYnVpbHRpbl9yZXR1cm5fYWRkcmVzcygwKSk7Cj4gPj4+PiArfQo+ID4+Pj4g
-LS0KPiA+Pj4+IDIuMTYuMgo+ID4+Pgo+ID4+PiBBbnkgdGhvdWdodHMgb24gdGhpcz8KPiA+Pgo+
-ID4+IFRoZSBjb25jZXB0IGxvb2tzIGdvb2QsIGJ1dCBkb2VzIHRoaXMgYWN0dWFsbHkga2VlcCB0
-aGUgbW9kdWxlcyB3aXRoaW4gMkdpQiBvZgo+ID4+IHRoZSB0ZXh0IGlmIFBBR0VfT0ZGU0VUIGlz
-IGxhcmdlPwo+ID4KPiA+IEl0J3MgYmVlbiBzb21lIHRpbWUgc2luY2UgSSB3cm90ZSB0aGlzLCBi
-dXQgSSB0aG91Z2h0IFBBR0VfT0ZGU0VUIHdhcwo+ID4gd2hlcmUgdGhlIGtlcm5lbCB0ZXh0ICpz
-dGFydGVkKj8gU28gdW5sZXNzIHRoZSB0ZXh0IGl0c2VsZiBpcyBiaWdnZXIKPiA+IHRoYW4gMkcg
-LSAxMjggTSwgaW4gd2hpY2ggY2FzZSB3ZSdyZSBTT0wgYW55d2F5LCBpdCBzZWVtcyBsaWtlIHRo
-aXMKPiA+IHNob3VsZCB3b3JrLiBJcyB0aGVyZSBzb21ldGhpbmcgYmV0dGVyIHdlIGNhbiBkbywg
-d2l0aG91dCBhIGxhcmdlIG1lbW9yeQo+ID4gbW9kZWw/Cj4gPgo+ID4gVGhhbmtzLAo+ID4gU2hl
-YQo+Cj4gQW55IGZ1cnRoZXIgdGhvdWdodHMgb24gdGhpcz8KPgo+IFRoYW5rcywKPiBTaGVhCgpT
-aGVhLAoKV2FraW5nIHVwIHRoZSBkZWFkICh0aHJlYWRzKSEKCkknbSBoYWNraW5nIG9uIGNhbGwg
-aW1wcm92ZW1lbnRzIGZvciB0aGUgUklTQy1WIEJQRiBKSVQuCm1vZHVsZV9hbGxvYygpIGlzIHVz
-ZWQgdW5kZXIgdGhlIGhvb2Qgb2YgYnBmX2ppdF9iaW5hcnlfYWxsb2MoKSwgd2hpY2gKaW4gdHVy
-biBpcyB1c2VkIHRvIGFsbG9jYXRlIHRoZSBKSVQgaW1hZ2UuIFRoZSBjdXJyZW50IEpJVAppbXBs
-ZW1lbnRhdGlvbiBoYXMgdG8gdG8gImxvYWQgaW1tNjQgKyBqYWxyIiB0byBjYWxsIGtlcm5lbCBz
-eW1zLApzaW5jZSB0aGUgcmVsYXRpdmUgb2Zmc2V0IGlzID4zMmIuIFdpdGggeW91ciBwYXRjaCwg
-SSBjYW4gdXNlIHJlZ3VsYXIKamFsL2F1aXBjK2phbHIgaW5zdGVhZC4gSU9XLCBpdCB3b3VsZCBi
-ZSBncmVhdCBpZiBpdCBjb3VsZCBiZSBtZXJnZWQuCjstKSBJJ2QgcHJlZmVyIG5vdCBoYXZpbmcg
-dGhlIHBhdGNoIGluIG15IEJQRiBKSVQgc2VyaWVzLCBzaW5jZSB0aGF0CndpbGwgZ28gdGhyb3Vn
-aCBhIGRpZmZlcmVudCB0cmVlIHRoYW4gUGF1bCdzIFJWIG9uZS4KCldkeXQgYWJvdXQgYnJ1c2hp
-bmcgb2YgdGhlIGR1c3Qgb2YgdGhlIHBhdGNoLCBhbmQgcmUtc2VuZCBpdD8KCgpUaGFua3MhCkJq
-w7ZybgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGlu
-dXgtcmlzY3YgbWFpbGluZyBsaXN0CmxpbnV4LXJpc2N2QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yaXNjdgo=
+--===============0015582529216391555==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Bj=C3=B6rn,
+
+Unfortunately I'm not sure what more is needed to get this in, and I'm
+in the middle of a move and won't have easy access to my RISC-V setup
+for testing. I don't think you can count on me for this one.
+
+Thanks,
+Shea
+
+Bj=C3=B6rn T=C3=B6pel <bjorn.topel@gmail.com> writes:
+
+> On Wed, 9 May 2018 at 13:22, Shea Levy <shea@shealevy.com> wrote:
+>>
+>> Hi Palmer,
+>>
+>> Shea Levy <shea@shealevy.com> writes:
+>>
+>> > Hi Palmer,
+>> >
+>> > Palmer Dabbelt <palmer@sifive.com> writes:
+>> >
+>> >> On Sun, 22 Apr 2018 05:53:56 PDT (-0700), shea@shealevy.com wrote:
+>> >>> Hi Palmer,
+>> >>>
+>> >>> Shea Levy <shea@shealevy.com> writes:
+>> >>>
+>> >>>> Signed-off-by: Shea Levy <shea@shealevy.com>
+>> >>>> ---
+>> >>>>
+>> >>>> Note that this patch worked in my old modules patchset and seems to=
+ be
+>> >>>> working now, but my kernel boot locks up on top of
+>> >>>> riscv-for-linus-4.17-mw0 and I don't know if it's due to this patch=
+ or
+>> >>>> something else that's changed in the mean time.
+>> >>>>
+>> >>>> ---
+>> >>>>  arch/riscv/include/asm/pgtable.h |  9 +++++++++
+>> >>>>  arch/riscv/kernel/module.c       | 11 +++++++++++
+>> >>>>  2 files changed, 20 insertions(+)
+>> >>>>
+>> >>>> diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/=
+asm/pgtable.h
+>> >>>> index 16301966d65b..b08ded13364a 100644
+>> >>>> --- a/arch/riscv/include/asm/pgtable.h
+>> >>>> +++ b/arch/riscv/include/asm/pgtable.h
+>> >>>> @@ -25,6 +25,7 @@
+>> >>>>  #include <asm/page.h>
+>> >>>>  #include <asm/tlbflush.h>
+>> >>>>  #include <linux/mm_types.h>
+>> >>>> +#include <linux/sizes.h>
+>> >>>>
+>> >>>>  #ifdef CONFIG_64BIT
+>> >>>>  #include <asm/pgtable-64.h>
+>> >>>> @@ -425,6 +426,14 @@ static inline void pgtable_cache_init(void)
+>> >>>>  #define TASK_SIZE VMALLOC_START
+>> >>>>  #endif
+>> >>>>
+>> >>>> +/*
+>> >>>> + * The module space lives between the addresses given by TASK_SIZE
+>> >>>> + * and PAGE_OFFSET - it must be within 2G of the kernel text.
+>> >>>> + */
+>> >>>> +#define MODULES_SIZE              (SZ_128M)
+>> >>>> +#define MODULES_VADDR             (PAGE_OFFSET - MODULES_SIZE)
+>> >>>> +#define MODULES_END               (VMALLOC_END)
+>> >>>> +
+>> >>>>  #include <asm-generic/pgtable.h>
+>> >>>>
+>> >>>>  #endif /* !__ASSEMBLY__ */
+>> >>>> diff --git a/arch/riscv/kernel/module.c b/arch/riscv/kernel/module.c
+>> >>>> index 5dddba301d0a..1b382c7de095 100644
+>> >>>> --- a/arch/riscv/kernel/module.c
+>> >>>> +++ b/arch/riscv/kernel/module.c
+>> >>>> @@ -16,6 +16,8 @@
+>> >>>>  #include <linux/err.h>
+>> >>>>  #include <linux/errno.h>
+>> >>>>  #include <linux/moduleloader.h>
+>> >>>> +#include <linux/vmalloc.h>
+>> >>>> +#include <asm/pgtable.h>
+>> >>>>
+>> >>>>  static int apply_r_riscv_64_rela(struct module *me, u32 *location,=
+ Elf_Addr v)
+>> >>>>  {
+>> >>>> @@ -382,3 +384,12 @@ int apply_relocate_add(Elf_Shdr *sechdrs, cons=
+t char *strtab,
+>> >>>>
+>> >>>>    return 0;
+>> >>>>  }
+>> >>>> +
+>> >>>> +void *module_alloc(unsigned long size)
+>> >>>> +{
+>> >>>> +  return __vmalloc_node_range(size, 1, MODULES_VADDR,
+>> >>>> +                              MODULES_END, GFP_KERNEL,
+>> >>>> +                              PAGE_KERNEL_EXEC, 0,
+>> >>>> +                              NUMA_NO_NODE,
+>> >>>> +                              __builtin_return_address(0));
+>> >>>> +}
+>> >>>> --
+>> >>>> 2.16.2
+>> >>>
+>> >>> Any thoughts on this?
+>> >>
+>> >> The concept looks good, but does this actually keep the modules withi=
+n 2GiB of
+>> >> the text if PAGE_OFFSET is large?
+>> >
+>> > It's been some time since I wrote this, but I thought PAGE_OFFSET was
+>> > where the kernel text *started*? So unless the text itself is bigger
+>> > than 2G - 128 M, in which case we're SOL anyway, it seems like this
+>> > should work. Is there something better we can do, without a large memo=
+ry
+>> > model?
+>> >
+>> > Thanks,
+>> > Shea
+>>
+>> Any further thoughts on this?
+>>
+>> Thanks,
+>> Shea
+>
+> Shea,
+>
+> Waking up the dead (threads)!
+>
+> I'm hacking on call improvements for the RISC-V BPF JIT.
+> module_alloc() is used under the hood of bpf_jit_binary_alloc(), which
+> in turn is used to allocate the JIT image. The current JIT
+> implementation has to to "load imm64 + jalr" to call kernel syms,
+> since the relative offset is >32b. With your patch, I can use regular
+> jal/auipc+jalr instead. IOW, it would be great if it could be merged.
+> ;-) I'd prefer not having the patch in my BPF JIT series, since that
+> will go through a different tree than Paul's RV one.
+>
+> Wdyt about brushing of the dust of the patch, and re-send it?
+>
+>
+> Thanks!
+> Bj=C3=B6rn
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE6ESKvwKkwnxgMLnaXAvWlX2G/icFAl3dJ8EACgkQXAvWlX2G
+/iegUw//RFoBh407tMvoG6prgim8nj0qW2gGKFCKiCAaVK0h2XP/oQmMFT9LKQf+
+ZjzdWx6TStG29g+JPBnHPgdIaXHDmFB6DK4z4rZkBgufog1k6kkIBsWaEu6q7/lP
+cOX31sGO+r4yljFg2f5KLQV0qkyd1sFFDxNwLTjwBLPV3PsGw2fjfMxCiLYgPg9N
+G1mcp/7PscyZErrgaysfBUOZ2sYyhjM9xFh8BJxq3vIVXEqf94zMgHD63mgVC1x8
+gcv/3Fbe1pN/nXr7otX0XR16h04xIOojrnKnuZlDPqqppv4ywao4yci7SYQvM0lL
+xeuy7nTdu7CGNd+o8icrvQia8K5Hcbb5OqeESRKUg7z+TrftdK1r5Khny+fLIa1r
+QqK+at8W2t4JDkli+45IkL9KYPkPkdf1I/xEvksADLOjXFYKL1bwYAE7iyPdds37
+uvXqWGOdio4pOyq34UM95AdDjbG0CrO4aTeTQBSDGTcSwfEPoVpPrF5zIsqQtmHr
+VULez79njycJMJaIsIABp2gpkFM5GvY3iFPudqbtcHOs/z2vTO/zVE8MwTP/AhAV
+l8PZ2dsD4csFAk0IHLoqLw4LERAtA9sT0veDJEcU2ikOwHe5a+6Br3zU7hvjNkR9
+OOLJHeVePytK4GR3yJjDjZ1/B+9ihhOeKfqPefCLV3Dht7vmUAk=
+=thWq
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============0015582529216391555==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+linux-riscv mailing list
+linux-riscv@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-riscv
+
+--===============0015582529216391555==--
+
