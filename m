@@ -2,83 +2,127 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A47D710A450
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 20:05:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E397410A45D
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 Nov 2019 20:12:40 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Rx0IvybFvh7UrPfz8DKeti0yEyYtasJHAH/eoxpiWw=; b=VSb2YxoBnGsF4O
-	SilUOXWqSh+JXfKrjjxqRWi2M7Z8VIq7mdeX8+iK+9y9gf0vfzrOyI3yOUcBCNhT7ZNciyWbkmnrp
-	mV0M8t/t/cN8cvIbCyr3VbpbgD0hwf9WJnseo2VFGF1kCobFGIgwu4PfBXqTu2btd+hzek63zNKNb
-	SDChpoV9DBWtLGd2qUhUix0G3uRmZ7oaRqoORNZxNPRbdBW+jUAIehpK0QWqZJ9kQFdZ5Eg4IWdvT
-	I6/uYr3W+WyLJt1RSPGPtTrkxRbnxRAFWkq+CpTLxrWevbaROqpTftI14e6YX3Cl5wGWgWtmxi/O2
-	nF9+RxWcZ2ozBnZ5PMuA==;
+	List-Owner; bh=MFNkaJXAM2NrC9q6MCmGvIZ4DIBpDmukIEdfsIJOY4Q=; b=hSHV43c4mTpk9a
+	D8t3ClcKFeuL0sarZ4RAlj+G1SvYJ33kQvKXhgfZ/nkcn8SNZ0Mq+XjGRJIlryTHMuNWKguGudeUH
+	UCrx36OdPYU8JoZUXBkzS1g15+2IgS2v9/rs1Oqe+MDUECb1TClB6SqTjXN2xLPmZAUfwam9k9FPu
+	oj2m48+e5JL5x/QVizPVh72GksKwBQTjMNyKpUmAHSUFdr8JAHl6Z213iMK9GBIlxSsteu0ZqSINW
+	w/TifOFY2jgm2hxVeWeWkKpYZGfdtXXxgpxSwjqr3+CF+JghsVPa4egMm6u1oEfeegCvktMhdgTuZ
+	dX260mGMx+0Ze2H/cHgA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZg9h-0005tn-6L; Tue, 26 Nov 2019 19:05:45 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1iZgGD-0000Mf-Ux; Tue, 26 Nov 2019 19:12:29 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZg9X-0005is-8f
- for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 19:05:37 +0000
+ id 1iZgGB-0000MD-3l
+ for linux-riscv@lists.infradead.org; Tue, 26 Nov 2019 19:12:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1574795135; x=1606331135;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=yKOTF+GCSs6nbJNoJs6kHfpbalUWcXa02Lk071ru3Uk=;
- b=NFVzWEcB3M7g3bLjXMdtGHVTVDnvwFJfGxuG8Sibf+vYKd95a2/6dNUQ
- jQZIxuFNQ0as+eE2B/Zk5sZlyePF2H48pt9FMA4od1JSDCYhzBNHNuz1P
- lr+oKWUIEZYFs9oa8kuS/Jh+oUldQBtheCeUQUGedCUyKMHFkZzT/H30x
- zFVBI3QO/OvLCb1p9osoYb1FTcgCfCL7GWH8gx6aakrhIoFv9pSkjTZZv
- yH+3LtYzgesAtCO6P7jKoSnC4qjSxYgKPL+EdprgLSk7VcOqOoA98/NFo
- 7Y6JJSRiM3k+EmjkuJNka1O92T+6R2NXLxxP588tBNsKlH9KI4qrZgNVP w==;
-IronPort-SDR: 0ZVRghOk9IDPo0J9KDNebCNhFlasSzgrL9zM5QGsHBUWL+jrruUS9QqN4bkT0R7zSwDqVgKelg
- POaoKDj22mueTFWDR/9V46mHoD0wEPmLGQRCYG+EVpVSJVVk5Ax4ykagGcxRQ2p0dN+Bgzmf8N
- fzUVzNsoueOognXIJgtXYBcH5rt+EAidzHG5fXzG0Bb9x3cldsy2yT/FzPsCd3Ixef+qyHJiDF
- Jd09vWV4JSDB+pd1tXtdR1+yb76b4NzFbwPhbBi8D5U6dos9Gyrymu3OwbS92rUBi7jLVxFrBP
- 6Hs=
-X-IronPort-AV: E=Sophos;i="5.69,246,1571673600"; d="scan'208";a="124821889"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 27 Nov 2019 03:05:30 +0800
-IronPort-SDR: ZfiOe+tL3eQXgTPaJQsTYoFEZ/ecXawcg688pfe+WHCMCCDqSgAH4CdTwtWJxiIndbET3WrLow
- HJAccmlctIyPqzXjTB0GloK8iaZyvcf6y0Ju0Y1T0yC0b0v2IVWh2DnmqR/AEZdvF2Y1biPxUn
- 86aH1M6PpLZ1riNGTw9SqrOpMJcf4saMgCxc1Rf/3n/9v8+SUzp/kYTd3nfM7l0FgejduN9j3c
- 18fjrio3GTcSDRdVAWTQv6M2AK4ALqQGCQH905zAkZABtUUnE0fg4c+FBln+SMw2rJ9As7GFZX
- +vtAi49vwn1eVIQNqSN+pvsz
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Nov 2019 11:00:08 -0800
-IronPort-SDR: u2MmJIFf7NloOdDU92JSzs09Dxcub3v4QUwQaOkChqW7kbLCk4BdI2WfbRWvU+LFE8lvCp83TV
- 6ZUCISLUseEwZuU7SEAuDcJOJ6Fhnjwq4z1yWlTG6UP2qhQjrVFsC+Me0isQTIQd5wM4ckt4M6
- /fTNdtONAcZzMwAkH1Ezhm8FxfG72Bwkx2AbGx2D/cXwrsXGfo2fvSoY+9S2rx1+eBXl1aqSJ4
- aD2+aX/uuqEpGmwNmQK9tmCB+8SNqLPh8ibOsdhSrWTeeSruIml8C60mbboCoW4PU2Yc0gMWPn
- T2M=
-WDCIronportException: Internal
-Received: from usa003951.ad.shared (HELO yoda.hgst.com) ([10.86.50.226])
- by uls-op-cesaip02.wdc.com with ESMTP; 26 Nov 2019 11:05:30 -0800
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v5 4/4] RISC-V: Implement new SBI v0.2 extensions
-Date: Tue, 26 Nov 2019 11:05:03 -0800
-Message-Id: <20191126190503.19303-5-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20191126190503.19303-1-atish.patra@wdc.com>
-References: <20191126190503.19303-1-atish.patra@wdc.com>
+ t=1574795547; x=1606331547;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=U+JxvNoXq3UAD7DRH+k72uPXzjJus7iETq/4nsBX7HY=;
+ b=FnEc5KEEDdZgLVKwUJACQE8ZCsyOMJOwChJXOV0pDg6xHY1zpLFLDV7J
+ vDlb8GDVG5JncU+q/Ro2iSUO79qqAHA4REFNtTlhzaNA9YxNcd9EYxT2w
+ cEz51bJDrHiWxRBK0RMMi69/+Yo/Pc8ezDiID90borj/CYoJ/YO2+8RdV
+ CyYCTZ0YPDUgwC4HqPFiVfRPqa9sFEJs0DoMwnRVD+58YRkuKEYibD14U
+ gtW0j0lbIckapRON26rTRBAcjB3aHmMvY9EG2QlZ/h2j4MxDtITdhJsnn
+ gMzXn/Be/MTtERqm+5FLDakyOcgB7xEG/eOMnJQhJ6TcEngkmuef869mj g==;
+IronPort-SDR: sZMMIH05jNVmGxv+c4ClbgCzbEaQTAuLiVBoflrJIOK9tcIHUnatvFavrAABec8FMnwib8YT1x
+ nbLSJBJSN0K5Z9WHaxUW9R/klVL4dXe1fCNqfh742PVBWWaAK0ZBTSujpm6pnLmNn4LBvaGKGb
+ FIuFaoWKMu1sdaIGCWABd73Cn+TqOkAE6VQaZVL549iGbTnhf3DKHdxEIHqbeo/aXXTPGZaTqe
+ +tpaflbHNKbMawRldN6rBtRQSb+kHsfegrGOEY9/trM3dyOy40S5C/3h6X3xqPzaB3C1mxuy1D
+ Llw=
+X-IronPort-AV: E=Sophos;i="5.69,246,1571673600"; d="scan'208";a="125670931"
+Received: from mail-bl2nam02lp2059.outbound.protection.outlook.com (HELO
+ NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.59])
+ by ob1.hgst.iphmx.com with ESMTP; 27 Nov 2019 03:12:24 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HURcx1037FCqvqmCXaA1A3b2PneejtYXKfapF6jWLKb9+c6SBW5zYJ8ZhxqTpxpbOe2BLt2cw++1RRrWhcmfN67WWOzmxVlZZQxbYT+ncslmVELHt433o8JgniLCtt+tjVfKgeNuzVLuJSX47Z/RhzpWuzfoo47QpoS+ZBwYgk3FXUewu+8sEzIdM570q7nOPwqjsZvULpRvJ5eauQxVCPI9znyMUzwtCGC1JV3uxaECUNutveURV1TsNBZuJ6STjTb6GEsNByMigo1Jf8zjvvzce22WV7xGtmmcYXImgkT/ES1/1X7YL/zmt38Ohgce8/MqC5e13aF3xKyOf06xBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=U+JxvNoXq3UAD7DRH+k72uPXzjJus7iETq/4nsBX7HY=;
+ b=jcPaRyjzwoIJAXWqrIWCWoC1DxS7/Wywm1cMY3COWrbux28dyan0ZFHdWqkT30/uKOAxTjuY//br3USBLh46SVHmSgqUmR609aGY95ThoByyy45gaFjTGtkT7Qe3leY61N5prWnFh/sCFCzA9QGsMzJv8k8IAGA2zopP23Eh3QLmp//QtT4tkqKOlW/d5C2XfKp5VKqfxkrYZ1cENrQivBgGovVNh5LHUBEOnR+UXk4GtMdeOPGiH/vajDN67hWWO9fdE/KSoL4g9ghOpZU8eTM6x95SmJc/wDYY5mLLxJpTPDXZuyJr54bhScrnuR7WcmvUMBVN+F38sB05hF6TKw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=U+JxvNoXq3UAD7DRH+k72uPXzjJus7iETq/4nsBX7HY=;
+ b=gPDqufTweS2Dsm+pd/njp1nhQUwZwu0nanl6QSwpBCziDNlWhu0bSwhAcxplzIIA84iHERdYs6GrP8JDwTyYD5msFKFBLSyPJ4x8v25UlYqpIp23HHWOs2Kx2m1eRbaRpTNpNgn3pFOeJg8buPROrtvEqY3oDMETgPdeY5f7zMc=
+Received: from BYAPR04MB3990.namprd04.prod.outlook.com (52.135.215.29) by
+ BYAPR04MB5959.namprd04.prod.outlook.com (20.178.235.90) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2474.16; Tue, 26 Nov 2019 19:12:23 +0000
+Received: from BYAPR04MB3990.namprd04.prod.outlook.com
+ ([fe80::1d22:29b6:df03:86f7]) by BYAPR04MB3990.namprd04.prod.outlook.com
+ ([fe80::1d22:29b6:df03:86f7%3]) with mapi id 15.20.2474.023; Tue, 26 Nov 2019
+ 19:12:22 +0000
+From: Atish Patra <Atish.Patra@wdc.com>
+To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>, "palmer@sifive.com"
+ <palmer@sifive.com>, Anup Patel <Anup.Patel@wdc.com>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>
+Subject: Re: [PATCH 1/4] RISC-V: Add kconfig option for QEMU virt machine
+Thread-Topic: [PATCH 1/4] RISC-V: Add kconfig option for QEMU virt machine
+Thread-Index: AQHVo5Nfdy6Dk930FkiYD7mQlZsw86ed07UA
+Date: Tue, 26 Nov 2019 19:12:22 +0000
+Message-ID: <256d158d64bc747431855f4593e008ff744fdcfd.camel@wdc.com>
+References: <20191125132147.97111-1-anup.patel@wdc.com>
+ <20191125132147.97111-2-anup.patel@wdc.com>
+In-Reply-To: <20191125132147.97111-2-anup.patel@wdc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Atish.Patra@wdc.com; 
+x-originating-ip: [2601:646:8280:fdf0:69be:1cca:a557:65ea]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: f0d7db1a-1fe8-4207-3d68-08d772a4910d
+x-ms-traffictypediagnostic: BYAPR04MB5959:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR04MB59593FB77223BE95950213ECFA450@BYAPR04MB5959.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:2399;
+x-forefront-prvs: 0233768B38
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(39860400002)(346002)(136003)(366004)(396003)(376002)(189003)(199004)(5660300002)(2616005)(2171002)(71190400001)(71200400001)(11346002)(446003)(46003)(76176011)(305945005)(36756003)(316002)(81156014)(4001150100001)(6116002)(8676002)(6506007)(8936002)(81166006)(7736002)(102836004)(2501003)(54906003)(256004)(99286004)(2906002)(478600001)(6512007)(86362001)(186003)(14454004)(6486002)(6246003)(66946007)(4326008)(66556008)(110136005)(66476007)(76116006)(66446008)(64756008)(25786009)(6436002)(118296001)(229853002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5959;
+ H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: EEpmhXz3cJ3UKxRSFHTdYm70x6VV9KdZjkttc01aW1Mqll97lda2yNGtZQNklrjOqOoWe4mg11ogZHPaVt0v9ZqaFHkFEvxuwMsGsEim7pz7XJr0XrBjFhAuqrGYLenXGOgKq8hkhKTgY8rW2uVnLGONvUi4qLn8udVYoGZ8AGN+C0fXuGfHDWVUGOk6hpYc/HtBN6ETAM+gcIu3hdAKNDf4E5+WBvnRfaRhbZ6hr8TlJrixIa0iFQhB7PORllBlSXiqX81Jv8EVEX+D/vEG/96zZqf1hsr32Lrb8TUupALFewZU+5kT9QUkNJr5R+VbUxuThRHcRfP08nHOGtA9HLNuj4rYMqo8LrwShrQ8WpdAxNn1LUK+80h/EmgTdcd8VltZr5BIpRQbcis841aPgKmeolLEqlZKW5407If9d3FGZs8rHqcj45sD3O7aOkh/
+Content-ID: <C8993BB3D52D3A42B7BB29DB05DBA6E1@namprd04.prod.outlook.com>
 MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f0d7db1a-1fe8-4207-3d68-08d772a4910d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2019 19:12:22.8822 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: yH/w0ZCbtUKxUfE3aeHoYb8x9gjUAFD5Bwwhrk3Li6KhnRzfJiDTlEFW5t3TBhOWshRYii8T/eGHDLSlSdmXFg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5959
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_110535_326419_B234B0CA 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20191126_111227_257770_36420890 
+X-CRM114-Status: GOOD (  16.21  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -99,348 +143,61 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>,
- Alexios Zavras <alexios.zavras@intel.com>, Anup Patel <anup@brainfault.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Mao Han <han_mao@c-sky.com>
+Cc: "anup@brainfault.org" <anup@brainfault.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>, "hch@lst.de" <hch@lst.de>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Few v0.1 SBI calls are being replaced by new SBI calls that follows
-v0.2 calling convention. The specification changes can be found at
+On Mon, 2019-11-25 at 13:22 +0000, Anup Patel wrote:
+> We add kconfig option for QEMU virt machine and select all
+> required VIRTIO drivers using this kconfig option.
+> 
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> ---
+>  arch/riscv/Kconfig.socs | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+> 
+> diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
+> index 536c0ef4aee8..62383951bf2e 100644
+> --- a/arch/riscv/Kconfig.socs
+> +++ b/arch/riscv/Kconfig.socs
+> @@ -10,4 +10,24 @@ config SOC_SIFIVE
+>         help
+>           This enables support for SiFive SoC platform hardware.
+>  
+> +config SOC_VIRT
+> +       bool "QEMU Virt Machine"
+> +       select VIRTIO_PCI
+> +       select VIRTIO_BALLOON
+> +       select VIRTIO_MMIO
+> +       select VIRTIO_CONSOLE
+> +       select VIRTIO_NET
+> +       select NET_9P_VIRTIO
+> +       select VIRTIO_BLK
+> +       select SCSI_VIRTIO
+> +       select DRM_VIRTIO_GPU
+> +       select HW_RANDOM_VIRTIO
+> +       select RPMSG_CHAR
+> +       select RPMSG_VIRTIO
+> +       select CRYPTO_DEV_VIRTIO
+> +       select VIRTIO_INPUT
+> +       select SIFIVE_PLIC
+> +       help
+> +         This enables support for QEMU Virt Machine.
+> +
+>  endmenu
 
-riscv/riscv-sbi-doc#27
+Looks good.
 
-Implement the replacement extensions and few additional new SBI
-function calls that makes way for a better SBI interface in future.
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
-Reviewed-by: Anup Patel <anup@brainfault.org>
----
- arch/riscv/include/asm/sbi.h |  35 ++++++
- arch/riscv/kernel/sbi.c      | 208 +++++++++++++++++++++++++++++++++--
- 2 files changed, 236 insertions(+), 7 deletions(-)
-
-diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-index cc82ae63f8e0..54ba9eebec11 100644
---- a/arch/riscv/include/asm/sbi.h
-+++ b/arch/riscv/include/asm/sbi.h
-@@ -22,6 +22,9 @@ enum sbi_ext_id {
- 	SBI_EXT_0_1_SHUTDOWN = 0x8,
- #endif
- 	SBI_EXT_BASE = 0x10,
-+	SBI_EXT_TIME = 0x54494D45,
-+	SBI_EXT_IPI = 0x735049,
-+	SBI_EXT_RFENCE = 0x52464E43,
- };
- 
- enum sbi_ext_base_fid {
-@@ -34,6 +37,24 @@ enum sbi_ext_base_fid {
- 	SBI_BASE_GET_MIMPID,
- };
- 
-+enum sbi_ext_time_fid {
-+	SBI_EXT_TIME_SET_TIMER = 0,
-+};
-+
-+enum sbi_ext_ipi_fid {
-+	SBI_EXT_IPI_SEND_IPI = 0,
-+};
-+
-+enum sbi_ext_rfence_fid {
-+	SBI_EXT_RFENCE_REMOTE_FENCE_I = 0,
-+	SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
-+	SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA,
-+	SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID,
-+};
-+
- #define SBI_SPEC_VERSION_DEFAULT	0x1
- #define SBI_SPEC_VERSION_MAJOR_OFFSET	24
- #define SBI_SPEC_VERSION_MAJOR_MASK	0x7f
-@@ -74,6 +95,20 @@ void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
- 				unsigned long start,
- 				unsigned long size,
- 				unsigned long asid);
-+int sbi_remote_hfence_gvma(const unsigned long *hart_mask,
-+			   unsigned long start,
-+			   unsigned long size);
-+int sbi_remote_hfence_gvma_vmid(const unsigned long *hart_mask,
-+				unsigned long start,
-+				unsigned long size,
-+				unsigned long vmid);
-+int sbi_remote_hfence_vvma(const unsigned long *hart_mask,
-+			   unsigned long start,
-+			   unsigned long size);
-+int sbi_remote_hfence_vvma_asid(const unsigned long *hart_mask,
-+				unsigned long start,
-+				unsigned long size,
-+				unsigned long asid);
- int sbi_probe_extension(long ext);
- 
- /* Check if current SBI specification version is 0.1 or not */
-diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
-index ee710bfe0b0e..af3d5f8d8af7 100644
---- a/arch/riscv/kernel/sbi.c
-+++ b/arch/riscv/kernel/sbi.c
-@@ -205,6 +205,101 @@ static int __sbi_rfence_v01(unsigned long ext, unsigned long fid,
- }
- #endif /* CONFIG_RISCV_SBI_V01 */
- 
-+static void __sbi_set_timer_v02(uint64_t stime_value)
-+{
-+#if __riscv_xlen == 32
-+	sbi_ecall(SBI_EXT_TIME, SBI_EXT_TIME_SET_TIMER, stime_value,
-+			  stime_value >> 32, 0, 0, 0, 0);
-+#else
-+	sbi_ecall(SBI_EXT_TIME, SBI_EXT_TIME_SET_TIMER, stime_value, 0,
-+		  0, 0, 0, 0);
-+#endif
-+}
-+
-+static int __sbi_send_ipi_v02(const unsigned long *hart_mask)
-+{
-+	unsigned long hmask_val;
-+	struct sbiret ret = {0};
-+	int result;
-+
-+	if (!hart_mask)
-+		hmask_val = *(cpumask_bits(cpu_online_mask));
-+	else
-+		hmask_val = *hart_mask;
-+
-+	ret = sbi_ecall(SBI_EXT_IPI, SBI_EXT_IPI_SEND_IPI, hmask_val,
-+			0, 0, 0, 0, 0);
-+	if (ret.error) {
-+		pr_err("%s: failed with error [%d]\n", __func__,
-+			sbi_err_map_linux_errno(ret.error));
-+		result = ret.error;
-+	} else
-+		result = ret.value;
-+
-+	return result;
-+}
-+
-+static int __sbi_rfence_v02(unsigned long extid, unsigned long fid,
-+			     const unsigned long *hart_mask,
-+			     unsigned long hbase, unsigned long start,
-+			     unsigned long size, unsigned long arg4,
-+			     unsigned long arg5)
-+{
-+	unsigned long hmask_val;
-+	struct sbiret ret = {0};
-+	int result;
-+	unsigned long ext = SBI_EXT_RFENCE;
-+
-+	if (!hart_mask)
-+		hmask_val = *(cpumask_bits(cpu_online_mask));
-+	else
-+		hmask_val = *hart_mask;
-+
-+	switch (fid) {
-+	case SBI_EXT_RFENCE_REMOTE_FENCE_I:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, 0, 0, 0, 0);
-+		break;
-+	case SBI_EXT_RFENCE_REMOTE_SFENCE_VMA:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-+				size, 0, 0);
-+		break;
-+	case SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-+				size, arg4, 0);
-+		break;
-+	/*TODO: Handle non zero hbase cases */
-+	case SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-+				size, 0, 0);
-+		break;
-+	case SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-+				size, arg4, 0);
-+		break;
-+	case SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-+				size, 0, 0);
-+		break;
-+	case SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID:
-+		ret = sbi_ecall(ext, fid, hmask_val, 0, start,
-+				size, arg4, 0);
-+		break;
-+	default:
-+		pr_err("unknown function ID [%lu] for SBI extension [%lu]\n",
-+			fid, ext);
-+		result = -EINVAL;
-+	}
-+
-+	if (ret.error) {
-+		pr_err("%s: failed with error [%d]\n", __func__,
-+			sbi_err_map_linux_errno(ret.error));
-+		result = ret.error;
-+	} else
-+		result = ret.value;
-+
-+	return result;
-+}
-+
- /**
-  * sbi_set_timer() - Program the timer for next timer event.
-  * @stime_value: The value after which next timer event should fire.
-@@ -237,7 +332,7 @@ EXPORT_SYMBOL(sbi_send_ipi);
-  */
- void sbi_remote_fence_i(const unsigned long *hart_mask)
- {
--	__sbi_rfence(SBI_EXT_0_1_REMOTE_FENCE_I, 0,
-+	__sbi_rfence(SBI_EXT_0_1_REMOTE_FENCE_I, SBI_EXT_RFENCE_REMOTE_FENCE_I,
- 		     hart_mask, 0, 0, 0, 0, 0);
- }
- EXPORT_SYMBOL(sbi_remote_fence_i);
-@@ -255,7 +350,8 @@ void sbi_remote_sfence_vma(const unsigned long *hart_mask,
- 					 unsigned long start,
- 					 unsigned long size)
- {
--	__sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
-+	__sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA,
-+		     SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
- 		     hart_mask, 0, start, size, 0, 0);
- }
- EXPORT_SYMBOL(sbi_remote_sfence_vma);
-@@ -276,11 +372,93 @@ void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
- 					      unsigned long size,
- 					      unsigned long asid)
- {
--	__sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
-+	__sbi_rfence(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID,
-+		     SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
- 		     hart_mask, 0, start, size, asid, 0);
- }
- EXPORT_SYMBOL(sbi_remote_sfence_vma_asid);
- 
-+/**
-+ * sbi_remote_hfence_gvma() - Execute HFENCE.GVMA instructions on given remote
-+ *			   harts for the specified guest physical address range.
-+ * @hart_mask: A cpu mask containing all the target harts.
-+ * @start: Start of the guest physical address
-+ * @size: Total size of the guest physical address range.
-+ *
-+ * Return: None
-+ */
-+int sbi_remote_hfence_gvma(const unsigned long *hart_mask,
-+					 unsigned long start,
-+					 unsigned long size)
-+{
-+	return __sbi_rfence(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA,
-+			    hart_mask, 0, start, size, 0, 0);
-+}
-+EXPORT_SYMBOL_GPL(sbi_remote_hfence_gvma);
-+
-+/**
-+ * sbi_remote_hfence_gvma_vmid() - Execute HFENCE.GVMA instructions on given
-+ * remote harts for a guest physical address range belonging to a specific VMID.
-+ *
-+ * @hart_mask: A cpu mask containing all the target harts.
-+ * @start: Start of the guest physical address
-+ * @size: Total size of the guest physical address range.
-+ * @vmid: The value of guest ID (VMID).
-+ *
-+ * Return: 0 if success, Error otherwise.
-+ */
-+int sbi_remote_hfence_gvma_vmid(const unsigned long *hart_mask,
-+					      unsigned long start,
-+					      unsigned long size,
-+					      unsigned long vmid)
-+{
-+	return __sbi_rfence(SBI_EXT_RFENCE,
-+			    SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID,
-+			    hart_mask, 0, start, size, vmid, 0);
-+}
-+EXPORT_SYMBOL(sbi_remote_hfence_gvma_vmid);
-+
-+/**
-+ * sbi_remote_hfence_vvma() - Execute HFENCE.VVMA instructions on given remote
-+ *			     harts for the current guest virtual address range.
-+ * @hart_mask: A cpu mask containing all the target harts.
-+ * @start: Start of the current guest virtual address
-+ * @size: Total size of the current guest virtual address range.
-+ *
-+ * Return: None
-+ */
-+int sbi_remote_hfence_vvma(const unsigned long *hart_mask,
-+					 unsigned long start,
-+					 unsigned long size)
-+{
-+	return __sbi_rfence(SBI_EXT_RFENCE, SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA,
-+			    hart_mask, 0, start, size, 0, 0);
-+}
-+EXPORT_SYMBOL(sbi_remote_hfence_vvma);
-+
-+/**
-+ * sbi_remote_hfence_vvma_asid() - Execute HFENCE.VVMA instructions on given
-+ * remote harts for current guest virtual address range belonging to a specific
-+ * ASID.
-+ *
-+ * @hart_mask: A cpu mask containing all the target harts.
-+ * @start: Start of the current guest virtual address
-+ * @size: Total size of the current guest virtual address range.
-+ * @asid: The value of address space identifier (ASID).
-+ *
-+ * Return: None
-+ */
-+int sbi_remote_hfence_vvma_asid(const unsigned long *hart_mask,
-+					      unsigned long start,
-+					      unsigned long size,
-+					      unsigned long asid)
-+{
-+	return __sbi_rfence(SBI_EXT_RFENCE,
-+			    SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID,
-+			    hart_mask, 0, start, size, asid, 0);
-+}
-+EXPORT_SYMBOL(sbi_remote_hfence_vvma_asid);
-+
- /**
-  * sbi_probe_extension() - Check if an SBI extension ID is supported or not.
-  * @extid: The extension ID to be probed.
-@@ -356,11 +534,27 @@ int __init sbi_init(void)
- 	if (!sbi_spec_is_0_1()) {
- 		pr_info("SBI implementation ID=0x%lx Version=0x%lx\n",
- 			sbi_get_firmware_id(), sbi_get_firmware_version());
-+		if (sbi_probe_extension(SBI_EXT_TIME) > 0) {
-+			__sbi_set_timer = __sbi_set_timer_v02;
-+			pr_info("SBI v0.2 TIME extension detected\n");
-+		} else
-+			__sbi_set_timer = __sbi_set_timer_dummy_warn;
-+		if (sbi_probe_extension(SBI_EXT_IPI) > 0) {
-+			__sbi_send_ipi	= __sbi_send_ipi_v02;
-+			pr_info("SBI v0.2 IPI extension detected\n");
-+		} else
-+			__sbi_send_ipi = __sbi_send_ipi_dummy_warn;
-+		if (sbi_probe_extension(SBI_EXT_RFENCE) > 0) {
-+			__sbi_rfence	= __sbi_rfence_v02;
-+			pr_info("SBI v0.2 RFENCE extension detected\n");
-+		} else
-+			__sbi_rfence	= __sbi_rfence_dummy_warn;
-+
-+	} else {
-+		__sbi_set_timer = __sbi_set_timer_v01;
-+		__sbi_send_ipi	= __sbi_send_ipi_v01;
-+		__sbi_rfence	= __sbi_rfence_v01;
- 	}
- 
--	__sbi_set_timer = __sbi_set_timer_v01;
--	__sbi_send_ipi	= __sbi_send_ipi_v01;
--	__sbi_rfence	= __sbi_rfence_v01;
--
- 	return 0;
- }
 -- 
-2.23.0
-
-
+Regards,
+Atish
 _______________________________________________
 linux-riscv mailing list
 linux-riscv@lists.infradead.org
