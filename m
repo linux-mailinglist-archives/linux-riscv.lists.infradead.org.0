@@ -2,49 +2,49 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C09F1110144
-	for <lists+linux-riscv@lfdr.de>; Tue,  3 Dec 2019 16:29:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BFD61103D4
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Dec 2019 18:47:22 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FS71CG5Ryyce9IHr/+djC7Fit5NyhtvhlmTIrOtpEaE=; b=K8n7gBoyI6mvjW
-	tVEJBA6waGwoGMScdr7hI/lVwBG3bpkxUB6WbJ2zuTIXyEYDUomSopea7d/V5MGivQ+dHMJXJHLT+
-	vZo8F77QNCIJToQ6VcY0V7Zt9oUdk51+o/W1R/f0LiUdwne4fXqlmulEBcr88bvixd0qnDOFIEt5d
-	sOEBECtS//D3/VTlMpKpkXxTbApX1ZwJm/sVjbuOFvs/VWRNdvLvCwtHov8wIGy8vJmZ8eDOU8thp
-	4kL2mSxik5Yr7t4ZslJO0RufLjY+rA+cXfu06V31L/BqabouLdVy77IetgIRtjFmRvG+86K2ryTwC
-	XfLSu0FoOYb3DsO2Meew==;
+	List-Owner; bh=Ni80H4cfnE6cOG0nbmJwPwPK7q4NtpeTg3GDpPwMYJE=; b=clUpMUnL/cbraQ
+	xznZdD+ibVZPW8AWqAoBf6EsmKpFKcBzMrdPVDEMs6bN9qqvXx2bSKIKTBWkiq83ipam/Gwq7EEkc
+	WIX5q7PHlBDprbsMxGmpk+2nbyFnvgoNGNmfz/V2Fv695MU6fH5uJFIGThF4cYy3tAev2mXd9BKIL
+	1ZheETbbfJKLmOwRJnfCBfSpnY/jNMEMPWLMnegjqwQ16t5fZqwTv4wwff1GdXXYXvAnUPW72jq3y
+	eXF+5yWJghPWOH/A0tVJfovIZ6dJxB6i9eRYeptUxOvtFc+R4WDtiohUDlJyK5g4gbnUY9IK2ixCU
+	SWyOPLRHwV6BhmDK3a6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icA6X-0007gb-1B; Tue, 03 Dec 2019 15:28:45 +0000
+	id 1icCGO-0004dS-84; Tue, 03 Dec 2019 17:47:04 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icA6B-0007UR-L0; Tue, 03 Dec 2019 15:28:28 +0000
+ id 1icCG4-0004Fy-1M; Tue, 03 Dec 2019 17:46:46 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 2BD8169A7F;
- Tue,  3 Dec 2019 15:28:22 +0000 (UTC)
-Subject: Re: [PATCH 3/6] clk: realtek: add common clock support for Realtek
- SoCs
+ by mx1.suse.de (Postfix) with ESMTP id 7912AB221D;
+ Tue,  3 Dec 2019 17:46:42 +0000 (UTC)
+Subject: Re: [PATCH 4/6] clk: realtek: add reset controller support for
+ Realtek SoCs
 To: James Tai <james.tai@realtek.com>
 References: <20191203074513.9416-1-james.tai@realtek.com>
- <20191203074513.9416-4-james.tai@realtek.com>
+ <20191203074513.9416-5-james.tai@realtek.com>
 From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
 Organization: SUSE Software Solutions Germany GmbH
-Message-ID: <90124940-e946-1163-8baa-5064d3d973c5@suse.de>
-Date: Tue, 3 Dec 2019 16:28:21 +0100
+Message-ID: <304f5a33-e809-c65a-9872-2176c985e3d3@suse.de>
+Date: Tue, 3 Dec 2019 18:46:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.1
 MIME-Version: 1.0
-In-Reply-To: <20191203074513.9416-4-james.tai@realtek.com>
+In-Reply-To: <20191203074513.9416-5-james.tai@realtek.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191203_072827_163890_B26C8516 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20191203_094644_373135_1DE7B5C4 
+X-CRM114-Status: GOOD (  29.64  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -68,6 +68,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Cc: cylee12 <cylee12@realtek.com>, linux-realtek-soc@lists.infradead.org,
  Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Paul Walmsley <paul.walmsley@sifive.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-riscv@lists.infradead.org,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
@@ -76,229 +77,328 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 Hi James,
 
-[dropping Palmer]
+[dropping Palmer, adding Philipp]
+
+$subject: I prefer to have the subject start with uppercase letter, to
+clearly distinguish it from the lowercase prefixes (and because that's
+how a book or newspaper headline would start, too). Applies also to
+other patches in this series, e.g., "reset: Add ..." (cf. below).
 
 Am 03.12.19 um 08:45 schrieb James Tai:
 > From: cylee12 <cylee12@realtek.com>
 
-Please fix the author name.
+--author.
 
 > 
-> This patch adds common clock support for Realtek SoCs, including PLLs,
-> Mux clocks and Gate clocks.
+> This patch add reset control support for Realtek SoCs.
 
-Can you be more specific here, please? Is this compatible back to
-RTD1195 or RTD1295 or just 1619 forward? I only see RTD1619 in 5/6. And
-not a single .dtsi patch is included in this series for testing it.
+Please don't write "This patch" in a Git commit message. You can
+elegantly avoid the patch vs. commit topic by using "This adds" (and
+note the grammar for third-person presence vs. imperative in subject).
+
+All SoCs since the beginning of time or just RTD1619 and later?
+As you know, we're already using reset-simple driver for RTD1295.
 
 > 
 > Signed-off-by: Cheng-Yu Lee <cylee12@realtek.com>
 > Signed-off-by: James Tai <james.tai@realtek.com>
 > ---
->  drivers/clk/Kconfig                   |   1 +
->  drivers/clk/Makefile                  |   1 +
->  drivers/clk/realtek/Kconfig           |  10 +
->  drivers/clk/realtek/Makefile          |   9 +
->  drivers/clk/realtek/clk-pll-dif.c     |  81 ++++++
->  drivers/clk/realtek/clk-pll-psaud.c   | 120 ++++++++
->  drivers/clk/realtek/clk-pll.c         | 400 ++++++++++++++++++++++++++
->  drivers/clk/realtek/clk-pll.h         | 151 ++++++++++
->  drivers/clk/realtek/clk-regmap-gate.c |  89 ++++++
->  drivers/clk/realtek/clk-regmap-gate.h |  26 ++
->  drivers/clk/realtek/clk-regmap-mux.c  |  63 ++++
->  drivers/clk/realtek/clk-regmap-mux.h  |  26 ++
->  drivers/clk/realtek/common.c          | 320 +++++++++++++++++++++
->  drivers/clk/realtek/common.h          | 123 ++++++++
->  14 files changed, 1420 insertions(+)
+>  drivers/clk/realtek/Kconfig  |   1 +
+>  drivers/clk/realtek/Makefile |   1 +
+>  drivers/clk/realtek/reset.c  | 107 +++++++++++++++++++++++++++++++++++
+>  drivers/clk/realtek/reset.h  |  37 ++++++++++++
 
-This patch is way too large for me to review. Please split this up
-further into logically self-contained, compile-testable patches.
+Why in the world under clk? I just introduced syscon nodes to cleanly
+allow accessing CRT and Iso registers from multiple independent drivers,
+and I have patches doing exactly that for RTD1295 and RTD1195. Please
+move it into drivers/reset/, also to make sure that for v2 the reset
+maintainers actually get CC'ed for review.
 
->  create mode 100644 drivers/clk/realtek/Kconfig
->  create mode 100644 drivers/clk/realtek/Makefile
->  create mode 100644 drivers/clk/realtek/clk-pll-dif.c
->  create mode 100644 drivers/clk/realtek/clk-pll-psaud.c
->  create mode 100644 drivers/clk/realtek/clk-pll.c
->  create mode 100644 drivers/clk/realtek/clk-pll.h
->  create mode 100644 drivers/clk/realtek/clk-regmap-gate.c
->  create mode 100644 drivers/clk/realtek/clk-regmap-gate.h
->  create mode 100644 drivers/clk/realtek/clk-regmap-mux.c
->  create mode 100644 drivers/clk/realtek/clk-regmap-mux.h
->  create mode 100644 drivers/clk/realtek/common.c
->  create mode 100644 drivers/clk/realtek/common.h
+>  4 files changed, 146 insertions(+)
+>  create mode 100644 drivers/clk/realtek/reset.c
+>  create mode 100644 drivers/clk/realtek/reset.h
 > 
-> diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-> index c44247d0b83e..8e06487440ce 100644
-> --- a/drivers/clk/Kconfig
-> +++ b/drivers/clk/Kconfig
-> @@ -317,6 +317,7 @@ source "drivers/clk/mediatek/Kconfig"
->  source "drivers/clk/meson/Kconfig"
->  source "drivers/clk/mvebu/Kconfig"
->  source "drivers/clk/qcom/Kconfig"
-> +source "drivers/clk/realtek/Kconfig"
->  source "drivers/clk/renesas/Kconfig"
->  source "drivers/clk/samsung/Kconfig"
->  source "drivers/clk/sifive/Kconfig"
-> diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-> index 0138fb14e6f8..71ea17f97f7d 100644
-> --- a/drivers/clk/Makefile
-> +++ b/drivers/clk/Makefile
-> @@ -95,6 +95,7 @@ obj-$(CONFIG_COMMON_CLK_NXP)		+= nxp/
->  obj-$(CONFIG_MACH_PISTACHIO)		+= pistachio/
->  obj-$(CONFIG_COMMON_CLK_PXA)		+= pxa/
->  obj-$(CONFIG_COMMON_CLK_QCOM)		+= qcom/
-> +obj-$(CONFIG_COMMON_CLK_REALTEK)	+= realtek/
-
-Should we take the Renesas approach here and allow for COMPILE_TEST?
-
->  obj-y					+= renesas/
->  obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
->  obj-$(CONFIG_COMMON_CLK_SAMSUNG)	+= samsung/
 > diff --git a/drivers/clk/realtek/Kconfig b/drivers/clk/realtek/Kconfig
-> new file mode 100644
-> index 000000000000..5bca757dddfa
-> --- /dev/null
+> index 5bca757dddfa..8e7e7edf64dd 100644
+> --- a/drivers/clk/realtek/Kconfig
 > +++ b/drivers/clk/realtek/Kconfig
-> @@ -0,0 +1,10 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config COMMON_CLK_REALTEK
+> @@ -1,6 +1,7 @@
+>  # SPDX-License-Identifier: GPL-2.0-only
+>  config COMMON_CLK_REALTEK
+>  	bool "Clock driver for realtek"
+> +	select RESET_CONTROLLER
 
-I would personally think that it's not necessary to prefix with COMMON_
-here, even if based on CONFIG_COMMON_CLK framework, since Realtek is no
-longer common. Stephen/Michael?
+No!
 
-Which brings us to the next aspect, is this really universally common
-for Realtek? Are they compatible with old MIPS SoCs and Arm SoCs from
-departments other than DHC? (e.g., Smart TV)
-If the answer to any of these is no, then please rename the Kconfig
-symbol to the oldest SoC for uniqueness, e.g., RTD1195.
+BTW if you would make this Kconfig option "depends on ARCH_REALTEK" then
+it would be selected already. However, ARCH_REALTEK || COMPILE_TEST
+would be preferable for noticing errors early. It doesn't make sense to
+allow selecting this driver for non-Realtek systems unless COMPILE_TEST
+asks for it.
 
-> +	bool "Clock driver for realtek"
-
-Spelling.
-
-> +	select MFD_SYSCON
-
-Please add help text and include SoC names.
-
-> +
-> +config CLK_PLL_PSAUD
-
-Too generic name.
-
-> +	bool
-> +
-> +config CLK_PLL_DIF
-
-Ditto.
-
-> +	bool
+>  	select MFD_SYSCON
+>  
+>  config CLK_PLL_PSAUD
 > diff --git a/drivers/clk/realtek/Makefile b/drivers/clk/realtek/Makefile
-> new file mode 100644
-> index 000000000000..050d450db067
-> --- /dev/null
+> index 050d450db067..43f8bd71c0c8 100644
+> --- a/drivers/clk/realtek/Makefile
 > +++ b/drivers/clk/realtek/Makefile
-> @@ -0,0 +1,9 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +obj-$(CONFIG_COMMON_CLK_REALTEK) += clk-rtk.o
-> +
-> +clk-rtk-y += common.o
-> +clk-rtk-y += clk-regmap-mux.o
-> +clk-rtk-y += clk-regmap-gate.o
-> +clk-rtk-y += clk-pll.o
-> +clk-rtk-$(CONFIG_CLK_PLL_PSAUD) += clk-pll-psaud.o
-> +clk-rtk-$(CONFIG_CLK_PLL_DIF) += clk-pll-dif.o
-> diff --git a/drivers/clk/realtek/clk-pll-dif.c b/drivers/clk/realtek/clk-pll-dif.c
+> @@ -7,3 +7,4 @@ clk-rtk-y += clk-regmap-gate.o
+>  clk-rtk-y += clk-pll.o
+>  clk-rtk-$(CONFIG_CLK_PLL_PSAUD) += clk-pll-psaud.o
+>  clk-rtk-$(CONFIG_CLK_PLL_DIF) += clk-pll-dif.o
+> +clk-rtk-y += reset.o
+> diff --git a/drivers/clk/realtek/reset.c b/drivers/clk/realtek/reset.c
 > new file mode 100644
-> index 000000000000..d19efef2626e
+> index 000000000000..3f4d1a723b2a
 > --- /dev/null
-> +++ b/drivers/clk/realtek/clk-pll-dif.c
-> @@ -0,0 +1,81 @@
+> +++ b/drivers/clk/realtek/reset.c
+> @@ -0,0 +1,107 @@
 > +// SPDX-License-Identifier: GPL-2.0-only
 
-Can you relicense this code as GPL-2.0-or-later? For Makefile and
-Kconfig it doesn't matter, just for low-level code that could become
-relevant for debuggers like OpenOCD, which is licensed GPLv2+.
+Is GPL-2.0-or-later possible?
 
 > +/*
+> + * Copyright (C) 2019 Realtek Semiconductor Corporation
+> + */
+> +
+> +#include <linux/of.h>
+> +#include <linux/device.h>
 
-Care to elaborate here what "dif" is? :)
+Sort order.
 
-> + * Copyright (c) 2019 Realtek Semiconductor Corporation
+> +#include <linux/regmap.h>
+> +#include <linux/reset-controller.h>
+> +#include <linux/slab.h>
+
+White line please ...
+
+> +#include "reset.h"
+
+... or better try to avoid this #include by driver design.
+
+> +
+> +static int rtk_reset_assert(struct reset_controller_dev *rcdev,
+
+rtd1619_?
+
+> +			    unsigned long idx)
+> +{
+> +	struct rtk_reset_data *data = to_rtk_reset_controller(rcdev);
+
+_controller vs. _data looks weird.
+
+> +	struct rtk_reset_bank *bank = &data->banks[idx >> 8];
+> +	uint32_t id   = idx & 0xff;
+> +	uint32_t mask = bank->write_en ? (0x3 << id) : BIT(id);
+> +	uint32_t val  = bank->write_en ? (0x2 << id) : 0;
+
+Peeking into patch 5/6, write_en seems always 1 for CRT and 0 for a
+single ISO bank.
+
+Wouldn't it be easier to just keep two different drivers, one for
+RTD1619-and-later with the new semantics, and one for the older simpler
+semantics? I was really just waiting for you to post a trivial patch
+that with an ack from Rob Philipp and I could apply right away. This
+here is huge and I don't think you realize yet how convoluted this is
+for trying to merge this into mainline within one merge window...
+
+> +
+> +	return regmap_update_bits(data->regmap, bank->ofs, mask, val);
+> +}
+> +
+> +static int rtk_reset_deassert(struct reset_controller_dev *rcdev,
+> +			      unsigned long idx)
+> +{
+> +	struct rtk_reset_data *data = to_rtk_reset_controller(rcdev);
+> +	struct rtk_reset_bank *bank = &data->banks[idx >> 8];
+> +	uint32_t id   = idx & 0xff;
+> +	uint32_t mask = bank->write_en ? (0x3 << id) : BIT(id);
+> +	uint32_t val  = mask;
+> +
+> +	return regmap_update_bits(data->regmap, bank->ofs, mask, val);
+> +}
+
+The way I first read this code, there's one bit BIT(1) for writing the
+new status and one bit BIT(0) for checking current status? Shouldn't
+enable/disable then poll for the change to go into effect before
+returning? Otherwise the caller may make wrong assumptions.
+
+Or is this like the write_data bit for the irq mux ISR but in bit 1?
+Then I am having trouble following this code and wonder why you use
+regmap_update_bits() in the first place, if only some bits get written
+anyway - use plain regmap_write() then. If I am puzzled, having seen the
+other code, then consider it badly maintainable for the community...
+
+You need to make the code self-documenting by using symbolic constants
+instead of magic numbers, or add an inline helper. Maybe add comments.
+
+> +
+> +static int rtk_reset_reset(struct reset_controller_dev *rcdev,
+> +			   unsigned long idx)
+> +{
+> +	int ret;
+> +
+> +	ret = rtk_reset_assert(rcdev, idx);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return rtk_reset_deassert(rcdev, idx);
+> +}
+
+Does the reset core not do this for us? (If not, shouldn't we fix that?)
+
+> +
+> +static int rtk_reset_status(struct reset_controller_dev *rcdev,
+> +			    unsigned long idx)
+> +{
+> +	struct rtk_reset_data *data = to_rtk_reset_controller(rcdev);
+> +	struct rtk_reset_bank *bank = &data->banks[idx >> 8];
+> +	uint32_t id = idx & 0xff;
+> +	uint32_t val;
+> +
+> +	regmap_read(data->regmap, bank->ofs, &val);
+> +	return !((val >> id) & 1);
+
+	return !(val & BIT(id)); seems much more readable to me?
+
+Without seeing bit 0 read here, the above enable/disable code would be
+even more confusing.
+
+Please share what the register bits are actually called, then we can
+discuss what the best way of calling and using them will be.
+
+> +}
+> +
+> +static struct reset_control_ops rtk_reset_ops = {
+> +	.assert   = rtk_reset_assert,
+> +	.deassert = rtk_reset_deassert,
+> +	.reset    = rtk_reset_reset,
+> +	.status   = rtk_reset_status,
+> +};
+> +
+> +static int rtk_of_reset_xlate(struct reset_controller_dev *rcdev,
+> +			      const struct of_phandle_args *reset_spec)
+> +{
+> +	struct rtk_reset_data *data = to_rtk_reset_controller(rcdev);
+> +	int val;
+> +
+> +	val = reset_spec->args[0];
+> +	if (val >= rcdev->nr_resets)
+> +		return -EINVAL;
+> +
+> +	if (data->id_xlate)
+> +		return data->id_xlate(val);
+
+This does not appear to be used in this series - how do you envision it
+to be used? That would need to be covered in the dt-binding then.
+
+> +	return val;
+> +}
+> +
+> +
+> +int rtk_reset_controller_add(struct device *dev, struct regmap *regmap,
+> +			     struct rtk_reset_initdata *initdata)
+
+Just get that initdata via DT compatible within this reset driver, like
+I did for irqchip.
+
+> +{
+> +	struct rtk_reset_data *data;
+> +	struct device_node *np = dev->of_node;
+> +
+> +	data = kzalloc(sizeof(*data), GFP_KERNEL);
+> +	if (!data)
+> +		return -ENOMEM;
+> +	data->regmap    = regmap;
+> +	data->num_banks = initdata->num_banks;
+> +	data->banks     = initdata->banks;
+> +	data->id_xlate  = initdata->id_xlate;
+> +
+> +	data->rcdev.owner     = THIS_MODULE;
+> +	data->rcdev.ops       = &rtk_reset_ops;
+> +	data->rcdev.of_node   = np;
+> +	data->rcdev.nr_resets = initdata->num_banks * 0x100;
+
+This design doesn't make much sense to me? At most a bank is going to
+get you 32 resets, 16 in case of the new ones, all much smaller than 256.
+
+The theoretical-here case of mixed sizes you could just handle by
+exposing them as individual DT nodes, like we do today, which as a bonus
+would make the syscon DT node nicely self-documenting. I.e.,
+"realtek,rtd1619-reset" vs. "realtek,rtd1195-reset".
+
+> +	data->rcdev.of_xlate  = rtk_of_reset_xlate;
+> +	data->rcdev.of_reset_n_cells = 1;
+> +
+> +	return reset_controller_register(&data->rcdev);
+> +}
+> +
+
+Trailing white line.
+
+I would expect a platform_driver here, turning above _add into _probe.
+
+> diff --git a/drivers/clk/realtek/reset.h b/drivers/clk/realtek/reset.h
+> new file mode 100644
+> index 000000000000..f0cc7b1045ee
+> --- /dev/null
+> +++ b/drivers/clk/realtek/reset.h
+> @@ -0,0 +1,37 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (C) 2019 Realtek Semiconductor Corporation
 > + * Author: Cheng-Yu Lee <cylee12@realtek.com>
 > + */
 > +
-> +#include <linux/clk-provider.h>
-> +#include <linux/clk.h>
-> +#include <linux/spinlock.h>
-> +#include <linux/delay.h>
-
-Insert white line here?
-
-> +#include "common.h"
-> +#include "clk-pll.h"
+> +#ifndef __CLK_REALTEK_RESET_H
+> +#define __CLK_REALTEK_RESET_H
 > +
-> +static int clk_pll_dif_enable(struct clk_hw *hw)
-> +{
-> +	struct clk_pll_dif *pll = to_clk_pll_dif(hw);
+> +#include <linux/reset-controller.h>
 > +
-> +	pr_debug("%pC: %s\n", hw->clk, __func__);
+> +struct rtk_reset_bank {
+> +	uint32_t ofs;
+> +	uint32_t write_en;
 
-Please review debug and info messages for whether they are still needed
-- in particular for info below I assume no.
+If we needed this, it might as well be bool with true/false.
 
+> +};
 > +
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x0C, 0x00000048);
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x08, 0x00020c00);
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x04, 0x204004ca);
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x00, 0x8000a000);
+> +struct rtk_reset_data {
+> +	struct reset_controller_dev rcdev;
+> +	struct rtk_reset_bank *banks;
 
-This is way too much dark magic!
+const?
 
-Start with giving the offsets symbolic names, please.
+> +	uint32_t num_banks;
+> +	struct regmap *regmap;
+> +	unsigned long (*id_xlate)(unsigned long id);
 
-Next, construct the value from symbolic constants. You will see me use
-BIT() and GENMASK() macros elsewhere; please adopt those conventions.
+Drop until used?
 
-> +	udelay(100);
-
-Is this from some internal datasheet? Otherwise, from some MCU clocks
-that I've previously implemented, I would expect there to be some status
-bit indicating readyness that we should poll rather than trusting a
-hardcoded delay. I don't see a single read below, nor any explanatory
-comment.
-
+> +};
 > +
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x08, 0x00420c00);
-> +	udelay(50);
+> +#define to_rtk_reset_controller(r) \
+> +	container_of(r, struct rtk_reset_data, rcdev)
 > +
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x08, 0x00420c03);
-> +	udelay(200);
-> +
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x0C, 0x00000078);
-> +	udelay(100);
-> +
-> +	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x04, 0x204084ca);
-> +
-> +	/* ssc control */
+> +struct rtk_reset_initdata {
+> +	struct rtk_reset_bank *banks;
 
-This lonely comment seems kind of redundant with ssc_ofs vs. pll_ofs.
+const?
 
-> +	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x00, 0x00000004);
-> +	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x04, 0x00006800);
-> +	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x0C, 0x00000000);
-> +	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x10, 0x00000000);
-> +	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x08, 0x001e1f98);
-> +	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x00, 0x00000005);
-> +	pll->status = 1;
+> +	uint32_t num_banks;
+> +	unsigned long (*id_xlate)(unsigned long id);
+
+Drop until used?
+
+> +};
 > +
-> +	return 0;
-> +}
-[snip]
+> +int rtk_reset_controller_add(struct device *dev, struct regmap *regmap,
+> +			     struct rtk_reset_initdata *initdata);
+> +
+> +#endif /* __CLK_REALTEK_RESET_H */
 
-I'll stop reviewing here and am waiting for a v2.
-
-Thanks,
+Regards,
 Andreas
 
 -- 
