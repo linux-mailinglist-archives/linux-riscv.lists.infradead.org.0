@@ -2,131 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11C8B110546
-	for <lists+linux-riscv@lfdr.de>; Tue,  3 Dec 2019 20:35:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A877A110664
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Dec 2019 22:17:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mfc3z6xu/tdR6QRl1v+jHb7R7Va2vQ9UYQrF+DqXqz8=; b=l9q0WMamzbR1WnS9t0fxbVr4t
-	j7y8Hsl8nyGIFvX3WYDrNja1GGNZI97mUZRWl+nHkRBvkIlWGwN0TR2yo9ldeXn+mBniFm5jmQmKz
-	MjpjrfqjoBW0nZlN3rPUWpmBDjAeUZiL3sQ6b9NOqLEElH/SfG5wltDZxiPbbx+60ORVnZdmdY94P
-	BP8yrIo3M6ew/nTMs8Tp4THCSUycW6Cg9cuddN0xvniGuxNxmGNbXjes30TqpP/4qGvffnMOigCAB
-	ziihXgNajSRN/HRIEHknBxVN+SjvbBpLHowtmGFOoJhbMqZvZhecZ7ojLvxxw2Ux7+vYNmsvx1EeW
-	XscKYXYeg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:In-Reply-To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=Kk4eyKCQbt4LTkStrsOoT/hozp2/UamnwwPVxzjOwyI=; b=arDWafa9DSI7H0
+	Ii16EUXV/CKirI4yhHUreEcOctfbmt+zdOnewaSOE9ZoSn066nUGAwIxGbE/rKwk+Hz5pnD9MHeHd
+	J1JbeaKUn9Onm6LfOdLwIVfExTp13/q8ehga6YM5m2XY5Iz1WkcIrKimCdGTDJP83+3AjhrMVUM6c
+	9hb7YjwhveQ0uvfLW/DRrndgb9U5lWGL1TWdtHfakL6xHq+qN7c7JGor9/W/bgySQF/liGQ0bk71Z
+	+QxdBVqCS9chVuqW/RVLeqUjwEfBPOfSyV96L3juqiRaINYqCGbtvS4yY08vTs8+L5WiRTx3DRVFZ
+	WoD1E5OWVGOXstFhDKBQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icDx0-0003Q2-Bk; Tue, 03 Dec 2019 19:35:10 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1icFYI-0008Th-3I; Tue, 03 Dec 2019 21:17:46 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icDwi-0003JG-Ce
- for linux-riscv@lists.infradead.org; Tue, 03 Dec 2019 19:34:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1575401692; x=1606937692;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=mfc3z6xu/tdR6QRl1v+jHb7R7Va2vQ9UYQrF+DqXqz8=;
- b=YnQHhwI4onI8UnzEOWkQSXHZAw7jxY/5js2BQhhYwkts4UDnXduOZfAq
- Qc3DDPtXA1tUFdqspWDKr2N6Ej859I/RNjarUhre5yBKedHW4syJEs8lT
- QJu4BTs9dhLKBuJtxKEcniw462dPku8bHHaoVToBDkSC+P7N8lQTqPsW8
- MZ+2bLB6SNxATJ+moed4l9cN4WPiiQLPbsk/QHRqeKzsYzfuKlL2f9fTk
- 3PMRqzqT30gjUavecl8UFyPBuPc/8YSrUx/MfFWnqyG4wBSfCAGBuoH5y
- qHNqLtRhYGWpP2/9wuVqVvMHv4MqVpJHT0Fk2sTykxXi3K0obhIPLFY0R A==;
-IronPort-SDR: 6+hciHoeezZvAMndFalxIaLDYOD2XWyRNF+mUCj8SMsvuEOIvIDG/VHt/+1DKgxwJyoN2s41Ua
- CqfRedEWsgw2bICTFfgmjFLKB/miIa+aCrLejgz2xXVvD2uAGTKdTqicW44k7TP5hoQ7ibCg/P
- EMmVrlGa2pSdzCjXUVwNTEMzuZogYMW2wVCXPIXQluufHaHSOy1F+r/ac/vAHrKiAUTcmU1Nt8
- WGItU8iDqx88gQZ29vmZ7qGkAjlzj41hHRGkAyB8SHepaDRV89AUd7FLyd/frleuaHHz9vIUTG
- cwg=
-X-IronPort-AV: E=Sophos;i="5.69,274,1571673600"; d="scan'208";a="126140235"
-Received: from mail-co1nam03lp2055.outbound.protection.outlook.com (HELO
- NAM03-CO1-obe.outbound.protection.outlook.com) ([104.47.40.55])
- by ob1.hgst.iphmx.com with ESMTP; 04 Dec 2019 03:34:51 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Q/GpJOgVJO5h1lJunIFqJ0mE/+efKb8y2xxkoOb1BBJBMbTKJnGwds6bMxPvqtusSqB3eFWc0vn9uuJQ2LGriRuFt20pfVqiRTpGSExBewxL0RXdmUD/6mqjMvmdz09jvHAGfgubWqbKm6k/2JqWTSgWgpJ3FlAZdF25LfctkJ8ioHBYUy4Wnd/9leYu3eIkNE5Uike40vUenEDGoCMFRamR3qFw3E0+0MclO+W2Wfmc4tCdqW3vKQ5J3aRNmVtyNyvDdmvxOMrqpHCCobjYbb9A97oIhxaARAbmkIfzFVYOHo8mOgiHNG6p8kX2CQ3qgvVumVVcX2AQXGZZRiydAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mfc3z6xu/tdR6QRl1v+jHb7R7Va2vQ9UYQrF+DqXqz8=;
- b=YMuTKiERPg1a0gQ1Iurk05t6et5FqoDHtu4o7rusCTn3FKnCTbeionsuArgzf37r7zRwaO7gQWyCq/shlc0LBcNctx35bI1gUBegx2U1KrME+wwipTb2skAuiai1z5t4K2fdw0Uy4ksdMohbvvH9huRZ68+tcK4Eo2tcR30mHtqdf2Ase04aDdRS1icthXPGmtorwWw8uQ7yZKkOh7Svcvzv3KAU+2NzhFSzLsomNdl9RrbGyz6RDkZW2IAm69jAEkwJMSRBuaf67kD+Zc9wrd6u3QSWWfWioiYj8pvFUyTkWC+O86B5p1gMZOUSXkfnaCCGcE+v5lqZvSO1RT0ZXQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mfc3z6xu/tdR6QRl1v+jHb7R7Va2vQ9UYQrF+DqXqz8=;
- b=QQ0PQmdtFUx+xWxpC9D3TQ/Qp0KRD6xm/RPYZFMZLpc/kaBYRfauh/2/eRSzFu1Nak2m5Nl9HARVT8LnP2vZN1azw3OYpEsUXBpCofDP070pS1NBoOI3nnjg3PyNydkw/42FKS/byFTqqfQRoh6xPI0raP6vcvw5yLfU9PKHTi0=
-Received: from BYAPR04MB4901.namprd04.prod.outlook.com (52.135.232.206) by
- BYAPR04MB4951.namprd04.prod.outlook.com (52.135.232.220) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.22; Tue, 3 Dec 2019 19:34:50 +0000
-Received: from BYAPR04MB4901.namprd04.prod.outlook.com
- ([fe80::112d:6934:52da:df11]) by BYAPR04MB4901.namprd04.prod.outlook.com
- ([fe80::112d:6934:52da:df11%7]) with mapi id 15.20.2495.014; Tue, 3 Dec 2019
- 19:34:50 +0000
-From: Alistair Francis <Alistair.Francis@wdc.com>
-To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "palmer@dabbelt.com" <palmer@dabbelt.com>, Anup Patel <Anup.Patel@wdc.com>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>
-Subject: Re: [PATCH v2 4/4] RISC-V: Select Goldfish RTC driver for QEMU virt
- machine
-Thread-Topic: [PATCH v2 4/4] RISC-V: Select Goldfish RTC driver for QEMU virt
- machine
-Thread-Index: AQHVqYywhAESsLkgyU61ggXDSaqsqqeozM6A
-Date: Tue, 3 Dec 2019 19:34:50 +0000
-Message-ID: <f0a7eeea1f344f80a46398e307f237363f661c80.camel@wdc.com>
-References: <20191203034909.37385-1-anup.patel@wdc.com>
- <20191203034909.37385-5-anup.patel@wdc.com>
-In-Reply-To: <20191203034909.37385-5-anup.patel@wdc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Alistair.Francis@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: b5f7b043-0531-473e-e08b-08d77827dd14
-x-ms-traffictypediagnostic: BYAPR04MB4951:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB495118356A3DE318B773746F90420@BYAPR04MB4951.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:2958;
-x-forefront-prvs: 02408926C4
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(39860400002)(376002)(346002)(366004)(136003)(199004)(189003)(8676002)(86362001)(8936002)(6506007)(76176011)(2501003)(81166006)(81156014)(26005)(2616005)(118296001)(229853002)(102836004)(11346002)(36756003)(478600001)(6486002)(446003)(14454004)(316002)(6512007)(66476007)(66946007)(76116006)(2906002)(7736002)(6246003)(54906003)(71200400001)(110136005)(66556008)(6436002)(71190400001)(66446008)(5660300002)(64756008)(2171002)(186003)(6116002)(4326008)(3846002)(25786009)(14444005)(99286004)(256004)(305945005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4951;
- H:BYAPR04MB4901.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: uzhqj+q/P/uCeBI33jLYUmcpgSavjKeHYkwSUFQ5IZGSOeE7dRZTU2H7sIYR+hjeuCaMSTdjg60qBaiLy2qFLUurdGt/4LzMCHRfjv1T0ztAdp6cx3IaoFCzVQyQ5bgDZr3oRe+IPd1a3VIDBemjBmHEVtDsqW2STOo2ejx7SAGZ5lM+PjfUR+Avjx7FtpKdus+QNxofrbM1z8erfIECjUwr1m+NF2ylsujd+cQp5CDSMZd0I8aivXUkGWlCTbYusAsnA9ufcBCKvCv0ue7X+OfCO6xYgIQd8HxMrav9fEk9Y46pd6vogASIUBeJgeff2Mb1VDS3GlAdki6cgns9odlGDV6kenzhaD+AcRtsu9k24QCxdNpsT8bHVECdSp1Evf4oU0KyPDb6BRACeG5b1oOVFuQQKoDt11Uum8rnnpG3ycp45L6enPMn/OukTqFY
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <1275B79FD287034C93514474232E2E3E@namprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b5f7b043-0531-473e-e08b-08d77827dd14
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Dec 2019 19:34:50.2556 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: nonfqCseYnVq2O7gZvRe0E4g1wDuileVR8t936zbOxiXofOhuTiI0wwqkjWCF3lQOuH5U0UehjiZ7Lnz6RTDwqERb/aIwf+MttluajRw0FE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4951
+ id 1icFYC-0008SG-VG
+ for linux-riscv@lists.infradead.org; Tue, 03 Dec 2019 21:17:43 +0000
+Received: by mail-pg1-x541.google.com with SMTP id z124so2200772pgb.13
+ for <linux-riscv@lists.infradead.org>; Tue, 03 Dec 2019 13:17:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:subject:in-reply-to:cc:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Kk4eyKCQbt4LTkStrsOoT/hozp2/UamnwwPVxzjOwyI=;
+ b=H8jmJW5pJiEjzdOMZSdg1bx0E/C360jxMUrruq85ya0JKjYxvN+el7+10FL+hUEaF+
+ 1nvKRDYVn0hZVAtfAhhiOsY1P/Ovq6P553TUm++Khc1+VSB/MG1augzEi/pKHQoPULf4
+ a5ohbeoOE6kqo7oSL+Jh9hcoU4cU1dA0X8KIygDqg705h7PY2VtbNSxEIccwT434HDhh
+ nlTlUeXvNoJ7LB7fz7SUbDIV6OwPx6TxF5m1XzfCDZstMNVhXqfHntvmZPqdk3zOBQ3P
+ 3Ri2mbzyGQt9SMh19zEjZ1Z6kg2NIVqiXsSyPiIty1LdyDYCOucdCZMBbO/9X9ozFwDx
+ 9Q+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:subject:in-reply-to:cc:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=Kk4eyKCQbt4LTkStrsOoT/hozp2/UamnwwPVxzjOwyI=;
+ b=UmhRxtf6WwZVelRXF2jDmvUA2ov6a7rv7At5lv+f/xobmpqJxGwJsNEuIXSjNhbffG
+ ZiqgLAqUbz8zILYieHfw6f1CLy2lpDehHz7ifvGL8gO9jzzl8zHLitR8MgoWzlZKNIlN
+ ObKJx8HJr+GTe5+GDenH7rOLaHPxYP7tK6ZFJgnnb7ta14m6iESzq+BIcajMl6uvmdaq
+ xm5xXjrskhCi4+zo/iLL+5c2zWVkqi1vHafbe+nw3sef0P4bAdBJ8TkVo8HVpscFiAWg
+ nJTh3QajtGb46DdyAT4+DJj+AAenKXKo8JLOAysuwmQiZG0N0joeg5Q55vm96l+CAnX5
+ er5g==
+X-Gm-Message-State: APjAAAWGXNU05oCdkhephvDLoLFX4GCQudaG3t5V6PZ7wotxK0O6Nyao
+ O+X1Xmpjsk4hn8EIpgLj+EIWkg==
+X-Google-Smtp-Source: APXvYqzw01Wl+qr7wtMKYsRbMWLY0Hhp5JdvCmC84Ol8MAygCNFhAHg9Mdr0O84mj4b+4Kw2Lg00uw==
+X-Received: by 2002:a63:3404:: with SMTP id b4mr7479509pga.438.1575407859535; 
+ Tue, 03 Dec 2019 13:17:39 -0800 (PST)
+Received: from localhost ([2620:15c:211:200:12cb:e51e:cbf0:6e3f])
+ by smtp.gmail.com with ESMTPSA id k9sm3938518pje.26.2019.12.03.13.17.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Dec 2019 13:17:39 -0800 (PST)
+Date: Tue, 03 Dec 2019 13:17:39 -0800 (PST)
+X-Google-Original-Date: Tue, 03 Dec 2019 12:41:55 PST (-0800)
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH v5 2/4] RISC-V: Add basic support for SBI v0.2
+In-Reply-To: <20191126190503.19303-3-atish.patra@wdc.com>
+To: Atish Patra <Atish.Patra@wdc.com>
+Message-ID: <mhng-7197c95a-ef02-46df-ba9b-ca1903dcd6ec@palmerdabbelt.mtv.corp.google.com>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191203_113452_580113_F04D6768 
-X-CRM114-Status: GOOD (  15.70  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191203_131741_041720_4AC09D79 
+X-CRM114-Status: GOOD (  23.08  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ [list.dnswl.org]
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -136,6 +90,8 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,46 +103,491 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "anup@brainfault.org" <anup@brainfault.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "hch@lst.de" <hch@lst.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>
+Cc: aou@eecs.berkeley.edu, alexios.zavras@intel.com, anup@brainfault.org,
+ linux-kernel@vger.kernel.org, rppt@linux.ibm.com,
+ Atish Patra <Atish.Patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org, tglx@linutronix.de, han_mao@c-sky.com
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVHVlLCAyMDE5LTEyLTAzIGF0IDAzOjQ5ICswMDAwLCBBbnVwIFBhdGVsIHdyb3RlOg0KPiBX
-ZSBzZWxlY3QgR29sZGZpc2ggUlRDIGRyaXZlciB1c2luZyBRRU1VIHZpcnQgbWFjaGluZSBrY29u
-ZmlnIG9wdGlvbg0KPiB0byBhY2Nlc3MgUlRDIGRldmljZSBvbiBRRU1VIHZpcnQgbWFjaGluZS4N
-Cj4gDQo+IFNpZ25lZC1vZmYtYnk6IEFudXAgUGF0ZWwgPGFudXAucGF0ZWxAd2RjLmNvbT4NCj4g
-UmV2aWV3ZWQtYnk6IEF0aXNoIFBhdHJhIDxhdGlzaC5wYXRyYUB3ZGMuY29tPg0KPiBSZXZpZXdl
-ZC1ieTogUGFsbWVyIERhYmJlbHQgPHBhbG1lcmRhYmJlbHRAZ29vZ2xlLmNvbT4NCg0KUmV2aWV3
-ZWQtYnk6IEFsaXN0YWlyIEZyYW5jaXMgPGFsaXN0YWlyLmZyYW5jaXNAd2RjLmNvbT4NCg0KQWxp
-c3RhaXINCg0KPiAtLS0NCj4gIGFyY2gvcmlzY3YvS2NvbmZpZy5zb2NzICAgICAgICAgICB8IDIg
-KysNCj4gIGFyY2gvcmlzY3YvY29uZmlncy9kZWZjb25maWcgICAgICB8IDEgKw0KPiAgYXJjaC9y
-aXNjdi9jb25maWdzL3J2MzJfZGVmY29uZmlnIHwgMSArDQo+ICAzIGZpbGVzIGNoYW5nZWQsIDQg
-aW5zZXJ0aW9ucygrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2FyY2gvcmlzY3YvS2NvbmZpZy5zb2Nz
-IGIvYXJjaC9yaXNjdi9LY29uZmlnLnNvY3MNCj4gaW5kZXggYmFlNDkwN2I0ODgwLi42NWNmMzk4
-NjdjNjAgMTAwNjQ0DQo+IC0tLSBhL2FyY2gvcmlzY3YvS2NvbmZpZy5zb2NzDQo+ICsrKyBiL2Fy
-Y2gvcmlzY3YvS2NvbmZpZy5zb2NzDQo+IEBAIC0yOCw2ICsyOCw4IEBAIGNvbmZpZyBTT0NfVklS
-VA0KPiAgICAgICAgIHNlbGVjdCBWSVJUSU9fSU5QVVQNCj4gICAgICAgICBzZWxlY3QgUE9XRVJf
-UkVTRVRfU1lTQ09ODQo+ICAgICAgICAgc2VsZWN0IFBPV0VSX1JFU0VUX1NZU0NPTl9QT1dFUk9G
-Rg0KPiArICAgICAgIHNlbGVjdCBHT0xERklTSA0KPiArICAgICAgIHNlbGVjdCBSVENfRFJWX0dP
-TERGSVNIDQo+ICAgICAgICAgc2VsZWN0IFNJRklWRV9QTElDDQo+ICAgICAgICAgaGVscA0KPiAg
-ICAgICAgICAgVGhpcyBlbmFibGVzIHN1cHBvcnQgZm9yIFFFTVUgVmlydCBNYWNoaW5lLg0KPiBk
-aWZmIC0tZ2l0IGEvYXJjaC9yaXNjdi9jb25maWdzL2RlZmNvbmZpZw0KPiBiL2FyY2gvcmlzY3Yv
-Y29uZmlncy9kZWZjb25maWcNCj4gaW5kZXggYmYzM2JkNDBlZTA3Li5jNWUwNDM4NGVjM2QgMTAw
-NjQ0DQo+IC0tLSBhL2FyY2gvcmlzY3YvY29uZmlncy9kZWZjb25maWcNCj4gKysrIGIvYXJjaC9y
-aXNjdi9jb25maWdzL2RlZmNvbmZpZw0KPiBAQCAtNzMsNiArNzMsNyBAQCBDT05GSUdfVVNCX1NU
-T1JBR0U9eQ0KPiAgQ09ORklHX1VTQl9VQVM9eQ0KPiAgQ09ORklHX01NQz15DQo+ICBDT05GSUdf
-TU1DX1NQST15DQo+ICtDT05GSUdfUlRDX0NMQVNTPXkNCj4gIENPTkZJR19FWFQ0X0ZTPXkNCj4g
-IENPTkZJR19FWFQ0X0ZTX1BPU0lYX0FDTD15DQo+ICBDT05GSUdfQVVUT0ZTNF9GUz15DQo+IGRp
-ZmYgLS1naXQgYS9hcmNoL3Jpc2N2L2NvbmZpZ3MvcnYzMl9kZWZjb25maWcNCj4gYi9hcmNoL3Jp
-c2N2L2NvbmZpZ3MvcnYzMl9kZWZjb25maWcNCj4gaW5kZXggMjM0MjEzYjRlYTc0Li43OTcyYjFk
-MzIxYzEgMTAwNjQ0DQo+IC0tLSBhL2FyY2gvcmlzY3YvY29uZmlncy9ydjMyX2RlZmNvbmZpZw0K
-PiArKysgYi9hcmNoL3Jpc2N2L2NvbmZpZ3MvcnYzMl9kZWZjb25maWcNCj4gQEAgLTY5LDYgKzY5
-LDcgQEAgQ09ORklHX1VTQl9PSENJX0hDRD15DQo+ICBDT05GSUdfVVNCX09IQ0lfSENEX1BMQVRG
-T1JNPXkNCj4gIENPTkZJR19VU0JfU1RPUkFHRT15DQo+ICBDT05GSUdfVVNCX1VBUz15DQo+ICtD
-T05GSUdfUlRDX0NMQVNTPXkNCj4gIENPTkZJR19FWFQ0X0ZTPXkNCj4gIENPTkZJR19FWFQ0X0ZT
-X1BPU0lYX0FDTD15DQo+ICBDT05GSUdfQVVUT0ZTNF9GUz15DQo=
+On Tue, 26 Nov 2019 11:05:01 PST (-0800), Atish Patra wrote:
+> The SBI v0.2 introduces a base extension which is backward compatible
+> with v0.1. Implement all helper functions and minimum required SBI
+> calls from v0.2 for now. All other base extension function will be
+> added later as per need.
+> As v0.2 calling convention is backward compatible with v0.1, remove
+> the v0.1 helper functions and just use v0.2 calling convention.
+>
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> Reviewed-by: Anup Patel <anup@brainfault.org>
+> ---
+>  arch/riscv/include/asm/sbi.h | 139 ++++++++++----------
+>  arch/riscv/kernel/Makefile   |   1 +
+>  arch/riscv/kernel/sbi.c      | 247 ++++++++++++++++++++++++++++++++++-
+>  arch/riscv/kernel/setup.c    |   2 +
+>  4 files changed, 315 insertions(+), 74 deletions(-)
+>
+> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+> index 96aaee270ded..906438322932 100644
+> --- a/arch/riscv/include/asm/sbi.h
+> +++ b/arch/riscv/include/asm/sbi.h
+> @@ -9,93 +9,88 @@
+>  #include <linux/types.h>
+>
+>  #ifdef CONFIG_RISCV_SBI
+> -#define SBI_EXT_0_1_SET_TIMER 0x0
+> -#define SBI_EXT_0_1_CONSOLE_PUTCHAR 0x1
+> -#define SBI_EXT_0_1_CONSOLE_GETCHAR 0x2
+> -#define SBI_EXT_0_1_CLEAR_IPI 0x3
+> -#define SBI_EXT_0_1_SEND_IPI 0x4
+> -#define SBI_EXT_0_1_REMOTE_FENCE_I 0x5
+> -#define SBI_EXT_0_1_REMOTE_SFENCE_VMA 0x6
+> -#define SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID 0x7
+> -#define SBI_EXT_0_1_SHUTDOWN 0x8
+> +enum sbi_ext_id {
+> +	SBI_EXT_0_1_SET_TIMER = 0x0,
+> +	SBI_EXT_0_1_CONSOLE_PUTCHAR = 0x1,
+> +	SBI_EXT_0_1_CONSOLE_GETCHAR = 0x2,
+> +	SBI_EXT_0_1_CLEAR_IPI = 0x3,
+> +	SBI_EXT_0_1_SEND_IPI = 0x4,
+> +	SBI_EXT_0_1_REMOTE_FENCE_I = 0x5,
+> +	SBI_EXT_0_1_REMOTE_SFENCE_VMA = 0x6,
+> +	SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID = 0x7,
+> +	SBI_EXT_0_1_SHUTDOWN = 0x8,
+> +	SBI_EXT_BASE = 0x10,
+> +};
+>
+> -#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({             \
+> -	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);	\
+> -	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);	\
+> -	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);	\
+> -	register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);	\
+> -	register uintptr_t a7 asm ("a7") = (uintptr_t)(which);	\
+> -	asm volatile ("ecall"					\
+> -		      : "+r" (a0)				\
+> -		      : "r" (a1), "r" (a2), "r" (a3), "r" (a7)	\
+> -		      : "memory");				\
+> -	a0;							\
+> -})
+> +enum sbi_ext_base_fid {
+> +	SBI_BASE_GET_SPEC_VERSION = 0,
+> +	SBI_BASE_GET_IMP_ID,
+> +	SBI_BASE_GET_IMP_VERSION,
+> +	SBI_BASE_PROBE_EXT,
+> +	SBI_BASE_GET_MVENDORID,
+> +	SBI_BASE_GET_MARCHID,
+> +	SBI_BASE_GET_MIMPID,
+> +};
+>
+> -/* Lazy implementations until SBI is finalized */
+> -#define SBI_CALL_0(which) SBI_CALL(which, 0, 0, 0, 0)
+> -#define SBI_CALL_1(which, arg0) SBI_CALL(which, arg0, 0, 0, 0)
+> -#define SBI_CALL_2(which, arg0, arg1) SBI_CALL(which, arg0, arg1, 0, 0)
+> -#define SBI_CALL_3(which, arg0, arg1, arg2) \
+> -		SBI_CALL(which, arg0, arg1, arg2, 0)
+> -#define SBI_CALL_4(which, arg0, arg1, arg2, arg3) \
+> -		SBI_CALL(which, arg0, arg1, arg2, arg3)
+> +#define SBI_SPEC_VERSION_DEFAULT	0x1
+> +#define SBI_SPEC_VERSION_MAJOR_OFFSET	24
+> +#define SBI_SPEC_VERSION_MAJOR_MASK	0x7f
+> +#define SBI_SPEC_VERSION_MINOR_MASK	0xffffff
+>
+> -static inline void sbi_console_putchar(int ch)
+> -{
+> -	SBI_CALL_1(SBI_EXT_0_1_CONSOLE_PUTCHAR, ch);
+> -}
+> +/* SBI return error codes */
+> +#define SBI_SUCCESS		0
+> +#define SBI_ERR_FAILURE		-1
+> +#define SBI_ERR_NOT_SUPPORTED	-2
+> +#define SBI_ERR_INVALID_PARAM   -3
+> +#define SBI_ERR_DENIED		-4
+> +#define SBI_ERR_INVALID_ADDRESS -5
+>
+> -static inline int sbi_console_getchar(void)
+> -{
+> -	return SBI_CALL_0(SBI_EXT_0_1_CONSOLE_GETCHAR);
+> -}
+> +extern unsigned long sbi_spec_version;
+> +struct sbiret {
+> +	long error;
+> +	long value;
+> +};
+>
+> -static inline void sbi_set_timer(uint64_t stime_value)
+> -{
+> -#if __riscv_xlen == 32
+> -	SBI_CALL_2(SBI_EXT_0_1_SET_TIMER, stime_value,
+> -			  stime_value >> 32);
+> -#else
+> -	SBI_CALL_1(SBI_EXT_0_1_SET_TIMER, stime_value);
+> -#endif
+> -}
+> -
+> -static inline void sbi_shutdown(void)
+> -{
+> -	SBI_CALL_0(SBI_EXT_0_1_SHUTDOWN);
+> -}
+> +int sbi_init(void);
+> +struct sbiret sbi_ecall(int ext, int fid, unsigned long arg0,
+> +			unsigned long arg1, unsigned long arg2,
+> +			unsigned long arg3, unsigned long arg4,
+> +			unsigned long arg5);
+>
+> -static inline void sbi_clear_ipi(void)
+> -{
+> -	SBI_CALL_0(SBI_EXT_0_1_CLEAR_IPI);
+> -}
+> +void sbi_console_putchar(int ch);
+> +int sbi_console_getchar(void);
+> +void sbi_set_timer(uint64_t stime_value);
+> +void sbi_shutdown(void);
+> +void sbi_clear_ipi(void);
+> +void sbi_send_ipi(const unsigned long *hart_mask);
+> +void sbi_remote_fence_i(const unsigned long *hart_mask);
+> +void sbi_remote_sfence_vma(const unsigned long *hart_mask,
+> +			   unsigned long start,
+> +			   unsigned long size);
+>
+> -static inline void sbi_send_ipi(const unsigned long *hart_mask)
+> -{
+> -	SBI_CALL_1(SBI_EXT_0_1_SEND_IPI, hart_mask);
+> -}
+> +void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+> +				unsigned long start,
+> +				unsigned long size,
+> +				unsigned long asid);
+> +int sbi_probe_extension(long ext);
+>
+> -static inline void sbi_remote_fence_i(const unsigned long *hart_mask)
+> +/* Check if current SBI specification version is 0.1 or not */
+> +static inline int sbi_spec_is_0_1(void)
+>  {
+> -	SBI_CALL_1(SBI_EXT_0_1_REMOTE_FENCE_I, hart_mask);
+> +	return (sbi_spec_version == SBI_SPEC_VERSION_DEFAULT) ? 1 : 0;
+>  }
+>
+> -static inline void sbi_remote_sfence_vma(const unsigned long *hart_mask,
+> -					 unsigned long start,
+> -					 unsigned long size)
+> +/* Get the major version of SBI */
+> +static inline unsigned long sbi_major_version(void)
+>  {
+> -	SBI_CALL_3(SBI_EXT_0_1_REMOTE_SFENCE_VMA, hart_mask,
+> -			  start, size);
+> +	return (sbi_spec_version >> SBI_SPEC_VERSION_MAJOR_OFFSET) &
+> +		SBI_SPEC_VERSION_MAJOR_MASK;
+>  }
+>
+> -static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+> -					      unsigned long start,
+> -					      unsigned long size,
+> -					      unsigned long asid)
+> +/* Get the minor version of SBI */
+> +static inline unsigned long sbi_minor_version(void)
+>  {
+> -	SBI_CALL_4(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, hart_mask,
+> -			  start, size, asid);
+> +	return sbi_spec_version & SBI_SPEC_VERSION_MINOR_MASK;
+>  }
+>  #else /* CONFIG_RISCV_SBI */
+>  /* stubs for code that is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
+> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> index f40205cb9a22..56127dd359f1 100644
+> --- a/arch/riscv/kernel/Makefile
+> +++ b/arch/riscv/kernel/Makefile
+> @@ -17,6 +17,7 @@ obj-y	+= irq.o
+>  obj-y	+= process.o
+>  obj-y	+= ptrace.o
+>  obj-y	+= reset.o
+> +obj-y	+= sbi.o
+>  obj-y	+= setup.o
+>  obj-y	+= signal.o
+>  obj-y	+= syscall_table.o
+> diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
+> index f6c7c3e82d28..a47e23c3a2e1 100644
+> --- a/arch/riscv/kernel/sbi.c
+> +++ b/arch/riscv/kernel/sbi.c
+> @@ -4,14 +4,257 @@
+>  #include <linux/pm.h>
+>  #include <asm/sbi.h>
+>
+> +/* default SBI version is 0.1 */
+> +unsigned long sbi_spec_version = SBI_SPEC_VERSION_DEFAULT;
+> +EXPORT_SYMBOL(sbi_spec_version);
+> +
+> +struct sbiret sbi_ecall(int ext, int fid, unsigned long arg0,
+> +			unsigned long arg1, unsigned long arg2,
+> +			unsigned long arg3, unsigned long arg4,
+> +			unsigned long arg5)
+> +{
+> +	struct sbiret ret;
+> +
+> +	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);
+> +	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);
+> +	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);
+> +	register uintptr_t a3 asm ("a3") = (uintptr_t)(arg3);
+> +	register uintptr_t a4 asm ("a4") = (uintptr_t)(arg4);
+> +	register uintptr_t a5 asm ("a5") = (uintptr_t)(arg5);
+> +	register uintptr_t a6 asm ("a6") = (uintptr_t)(fid);
+> +	register uintptr_t a7 asm ("a7") = (uintptr_t)(ext);
+> +	asm volatile ("ecall"
+> +		      : "+r" (a0), "+r" (a1)
+> +		      : "r" (a2), "r" (a3), "r" (a4), "r" (a5), "r" (a6), "r" (a7)
+> +		      : "memory");
+> +	ret.error = a0;
+> +	ret.value = a1;
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(sbi_ecall);
+> +
+> +static int sbi_err_map_linux_errno(int err)
+> +{
+> +	switch (err) {
+> +	case SBI_SUCCESS:
+> +		return 0;
+> +	case SBI_ERR_DENIED:
+> +		return -EPERM;
+> +	case SBI_ERR_INVALID_PARAM:
+> +		return -EINVAL;
+> +	case SBI_ERR_INVALID_ADDRESS:
+> +		return -EFAULT;
+> +	case SBI_ERR_NOT_SUPPORTED:
+> +	case SBI_ERR_FAILURE:
+> +	default:
+> +		return -ENOTSUPP;
+> +	};
+> +}
+> +
+> +/**
+> + * sbi_console_putchar() - Writes given character to the console device.
+> + * @ch: The data to be written to the console.
+> + *
+> + * Return: None
+> + */
+> +void sbi_console_putchar(int ch)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_CONSOLE_PUTCHAR, 0, ch, 0, 0, 0, 0, 0);
+> +}
+> +EXPORT_SYMBOL(sbi_console_putchar);
+> +
+> +/**
+> + * sbi_console_getchar() - Reads a byte from console device.
+> + *
+> + * Returns the value read from console.
+> + */
+> +int sbi_console_getchar(void)
+> +{
+> +	struct sbiret ret;
+> +
+> +	ret = sbi_ecall(SBI_EXT_0_1_CONSOLE_GETCHAR, 0, 0, 0, 0, 0, 0, 0);
+> +
+> +	return ret.error;
+> +}
+> +EXPORT_SYMBOL(sbi_console_getchar);
+> +
+> +/**
+> + * sbi_set_timer() - Program the timer for next timer event.
+> + * @stime_value: The value after which next timer event should fire.
+> + *
+> + * Return: None
+> + */
+> +void sbi_set_timer(uint64_t stime_value)
+> +{
+> +#if __riscv_xlen == 32
+> +	sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value,
+> +			  stime_value >> 32, 0, 0, 0, 0);
+> +#else
+> +	sbi_ecall(SBI_EXT_0_1_SET_TIMER, 0, stime_value, 0, 0, 0, 0, 0);
+> +#endif
+> +}
+> +EXPORT_SYMBOL(sbi_set_timer);
+> +
+> +/**
+> + * sbi_shutdown() - Remove all the harts from executing supervisor code.
+> + *
+> + * Return: None
+> + */
+> +void sbi_shutdown(void)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_SHUTDOWN, 0, 0, 0, 0, 0, 0, 0);
+> +}
+> +EXPORT_SYMBOL(sbi_shutdown);
+> +
+> +/**
+> + * sbi_clear_ipi() - Clear any pending IPIs for the calling hart.
+> + *
+> + * Return: None
+> + */
+> +void sbi_clear_ipi(void)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_CLEAR_IPI, 0, 0, 0, 0, 0, 0, 0);
+> +}
+> +
+> +/**
+> + * sbi_send_ipi() - Send an IPI to any hart.
+> + * @hart_mask: A cpu mask containing all the target harts.
+> + *
+> + * Return: None
+> + */
+> +void sbi_send_ipi(const unsigned long *hart_mask)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_SEND_IPI, 0, (unsigned long)hart_mask,
+> +			0, 0, 0, 0, 0);
+> +}
+> +EXPORT_SYMBOL(sbi_send_ipi);
+> +
+> +/**
+> + * sbi_remote_fence_i() - Execute FENCE.I instruction on given remote harts.
+> + * @hart_mask: A cpu mask containing all the target harts.
+> + *
+> + * Return: None
+> + */
+> +void sbi_remote_fence_i(const unsigned long *hart_mask)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_REMOTE_FENCE_I, 0, (unsigned long)hart_mask,
+> +			0, 0, 0, 0, 0);
+> +}
+> +EXPORT_SYMBOL(sbi_remote_fence_i);
+> +
+> +/**
+> + * sbi_remote_sfence_vma() - Execute SFENCE.VMA instructions on given remote
+> + *			     harts for the specified virtual address range.
+> + * @hart_mask: A cpu mask containing all the target harts.
+> + * @start: Start of the virtual address
+> + * @size: Total size of the virtual address range.
+> + *
+> + * Return: None
+> + */
+> +void sbi_remote_sfence_vma(const unsigned long *hart_mask,
+> +					 unsigned long start,
+> +					 unsigned long size)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA, 0,
+> +			(unsigned long)hart_mask, start, size, 0, 0, 0);
+> +}
+> +EXPORT_SYMBOL(sbi_remote_sfence_vma);
+> +
+> +/**
+> + * sbi_remote_sfence_vma_asid() - Execute SFENCE.VMA instructions on given
+> + * remote harts for a virtual address range belonging to a specific ASID.
+> + *
+> + * @hart_mask: A cpu mask containing all the target harts.
+> + * @start: Start of the virtual address
+> + * @size: Total size of the virtual address range.
+> + * @asid: The value of address space identifier (ASID).
+> + *
+> + * Return: None
+> + */
+> +void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+> +					      unsigned long start,
+> +					      unsigned long size,
+> +					      unsigned long asid)
+> +{
+> +	sbi_ecall(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, 0,
+> +			(unsigned long)hart_mask, start, size, asid, 0, 0);
+> +}
+> +EXPORT_SYMBOL(sbi_remote_sfence_vma_asid);
+> +
+> +/**
+> + * sbi_probe_extension() - Check if an SBI extension ID is supported or not.
+> + * @extid: The extension ID to be probed.
+> + *
+> + * Return: Extension specific nonzero value f yes, -ENOTSUPP otherwise.
+> + */
+> +int sbi_probe_extension(long extid)
+> +{
+> +	struct sbiret ret;
+> +
+> +	ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_PROBE_EXT, extid, 0, 0, 0, 0, 0);
+> +	if (!ret.error)
+> +		if (ret.value)
+> +			return ret.value;
+> +
+> +	return -ENOTSUPP;
+> +}
+> +EXPORT_SYMBOL(sbi_probe_extension);
+> +
+> +static long sbi_get_spec_version(void)
+> +{
+> +	struct sbiret ret;
+> +
+> +	ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_SPEC_VERSION,
+> +			       0, 0, 0, 0, 0, 0);
+> +	if (!ret.error)
+> +		return ret.value;
+> +	else
+> +		return ret.error;
+> +}
+> +
+> +static long sbi_get_firmware_id(void)
+> +{
+> +	struct sbiret ret;
+> +
+> +	ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_ID,
+> +			       0, 0, 0, 0, 0, 0);
+> +	if (!ret.error)
+> +		return ret.value;
+> +	else
+> +		return sbi_err_map_linux_errno(ret.error);
+> +}
+> +
+> +static long sbi_get_firmware_version(void)
+> +{
+> +	struct sbiret ret;
+> +
+> +	ret = sbi_ecall(SBI_EXT_BASE, SBI_BASE_GET_IMP_VERSION,
+> +			       0, 0, 0, 0, 0, 0);
+> +	if (!ret.error)
+> +		return ret.value;
+> +	else
+> +		return sbi_err_map_linux_errno(ret.error);
+> +}
+> +
+>  static void sbi_power_off(void)
+>  {
+>  	sbi_shutdown();
+>  }
+>
+> -static int __init sbi_init(void)
+> +int __init sbi_init(void)
+>  {
+> +	int ret;
+> +
+>  	pm_power_off = sbi_power_off;
+> +	ret = sbi_get_spec_version();
+> +	if (ret > 0)
+> +		sbi_spec_version = ret;
+> +
+> +	pr_info("SBI specification v%lu.%lu detected\n",
+> +		sbi_major_version(), sbi_minor_version());
+> +	if (!sbi_spec_is_0_1())
+> +		pr_info("SBI implementation ID=0x%lx Version=0x%lx\n",
+> +			sbi_get_firmware_id(), sbi_get_firmware_version());
+>  	return 0;
+>  }
+> -early_initcall(sbi_init);
+> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+> index 365ff8420bfe..f0a3c51e3d1b 100644
+> --- a/arch/riscv/kernel/setup.c
+> +++ b/arch/riscv/kernel/setup.c
+> @@ -22,6 +22,7 @@
+>  #include <asm/sections.h>
+>  #include <asm/pgtable.h>
+>  #include <asm/smp.h>
+> +#include <asm/sbi.h>
+>  #include <asm/tlbflush.h>
+>  #include <asm/thread_info.h>
+>
+> @@ -74,6 +75,7 @@ void __init setup_arch(char **cmdline_p)
+>  	swiotlb_init(1);
+>  #endif
+>
+> +	sbi_init();
+>  #ifdef CONFIG_SMP
+>  	setup_smp();
+>  #endif
+
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
