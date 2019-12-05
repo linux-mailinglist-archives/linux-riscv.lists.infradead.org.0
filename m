@@ -2,133 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C31D113AA9
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Dec 2019 04:58:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E928113B5C
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Dec 2019 06:36:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZYSVgKihrD9JiIcPAtmtWoqSsGd92X0JMsBQ8GlVeME=; b=g0+X0NsEDM01er8THsGKHV+e1
-	9Nw0nU155t5OiiYh/8EXJnlDcJnG/SJDsXryMZRfnDRCTRR7rUeAjbmSNPImkhiBgFC0P0Srf2Vwl
-	2CTCVZsb1UTxmsqXcVy/FJK/fAe+LFN30OXA7T4MAV/iuka/B/VSG5KbUbRDVrHNfTdEC8KfHcCqb
-	xJ4IXTXyYI2vhCrEMk5iKmpOutydkpFcK2cnjQJ1Uf5sKZQTMtwmulhMYdh07rm0mKF1pvOtp/bci
-	cYNCnEXX2FLtLmk7d4hbQMDI3QMxWA4bYtSVwJcbVqERRPrTB/uZF0OQd7cMkF5CWCJowMM2u8lpL
-	Ye6m9Vc9A==;
+	 bh=KWeVLA+Lco2PS6ChZN6Zdh3HiL42eMKEtVIMaYS087k=; b=RerPMVGnsAu23CQ/b/yiEMAJF
+	BdEvr3l2ZwzxhVYnxtyGehYkvEXmCDBsfQNWH8ypJwq3eYVh5dEeF/s7ml4v6iaNCgL2Ve4eL9wr3
+	9UMWPkCnhbt/lff7kTpCOn1P0bc0x+9KEIpPmmwQgz+aYf5xWLfqxpWLBM3btTfA2ebnY9cFellj2
+	LhnFdI8PfyAeVRpvKjluwxz4ncY+mydmUaZBP2xT/hSG2iux10N41iA/zCwZ5H2ECON7SfZYgN3Oh
+	wlCS15jSbf81BISruSHPp7guYkrfpQ9GtNJfhXK+iwyDguG97+g15Vp+EBIkCOT7jNJmOG21bNu7/
+	Vl6gXDzng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iciHm-0003FN-Tt; Thu, 05 Dec 2019 03:58:38 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1icjoF-0001PZ-0u; Thu, 05 Dec 2019 05:36:15 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iciHi-0003Et-Mx
- for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 03:58:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1575518314; x=1607054314;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=ZYSVgKihrD9JiIcPAtmtWoqSsGd92X0JMsBQ8GlVeME=;
- b=ja4apM6NPk8DzZkxQboSQhO/hBHdc9gtjIIJQhL6eMz3SiB+gjQAIqhN
- UHQH03Po+eDXyzqe0JDNK78+qj1NTEaKKQMAT0dfpTw58naXNydMW46Ta
- okODdHEm4TIpHBtGx0m7e06RUkQulVLd7WrqcZvc50O2JRZkXruVYOPrA
- lOcE1plUw5petbh9hOlKYWK5w38RplZC2uUC6BW1HT+5zYf+ls8uUhOjN
- BLvN8by2Dktdd3YNb7AYtWfpMnrefQSQi7Qan0rK9O4CIvRJcsY16sSJ7
- anPHiOUlaVbTHvHPGQJlpNkuHfHZZFok/OcvJUZoGzZwYPrFHrVveU3d+ g==;
-IronPort-SDR: 8JaCMmhAQA3xU6I4QaolqLo1z+Ql8rx4NcNsHZgaPjW+E70pM+HcBDBl7BZzO3isMatxJUnycj
- 658pdWEuoafMQNV3rrv45F5uzkX0P48tglfM2vDHMTsEdn7WxDu4m6xXDw7Vis8UWn/S8Xqg+8
- 8bPePnU1aqvpRYljSU1hRqXmJXOrckIgkFQTv5CfDTAek/CgzTtFA1C8XERZmrbcn4KaITFQ7n
- vL/OHdIeBZ2UCyNDJ4cOdWs/wRelmpGjgiywv7UAClpfn97PXOf0tUK+74yZ8ji+gito0RmWrK
- Kds=
-X-IronPort-AV: E=Sophos;i="5.69,279,1571673600"; d="scan'208";a="124646314"
-Received: from mail-bn3nam04lp2052.outbound.protection.outlook.com (HELO
- NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.52])
- by ob1.hgst.iphmx.com with ESMTP; 05 Dec 2019 11:58:23 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VukLJ46adtPb0J3zjv3t8v7LH7PFKZhHKm8h8cPPHtBwIXkAd3Zzgjsk8Q4dndOHMpM6Am+tBLemmFEmIxSk68hElEUF4TJjfBMov2B2cX+XtBgg/XwYq58SRcQNzVmalNnkbo0lw7fNVtWNtmdOVm0E9dN7u1s6RdQpzvNeweL1Q3uF7p4EMGASqpgiZPSRA7aohpWsq7zXzNjmdTCpnCIxIfgOnLJ1n1yUk3HAjorcNFYGUoYnirvZ/spMXpAnkwzJHb1h2XELVggHSKGCNXA54nBeIfFOY68S7Cq50arLQpWRUiJLi55B7Z9vvr0lHiMajcg6syBCnXPYJFGTgg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZYSVgKihrD9JiIcPAtmtWoqSsGd92X0JMsBQ8GlVeME=;
- b=d2sIU+Y14RWUPBNxpQGd9jyeG7V2T01psctJ3Op56ID7TGY93P/UInQeOGfcDUpNEnFlpz77pjBJ5NT+XtGCA/zhMKVrcEZUkXgH6Z+xvb/e5/ZKKbznT2A4aX4bqk/pMhkmTMAa3tOlrXd4DtaNtSt/ZY9rnoQX3J+qzt2PdJF1MxR+mfLSqbXxxaB+jO5A9su9JxNBq6adoZo2gR1ammOAaoIiQa2Lm/gI8y0hwmJfhRZxB1wNc5Aa+V+Qut/gkUX4IH9atP34mrPT/poigeWv6RPtPkPRIeQkf7zk53zd+F9B9TZ2Pas5+ate4QpOmRU7j5jVSR61TwbJtz8bBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZYSVgKihrD9JiIcPAtmtWoqSsGd92X0JMsBQ8GlVeME=;
- b=Ys/NrJWFz7qXaaJJSZaDJHAjZws8zlX9RYc9IDDCgB0jHtX677LO09a2Wd58jQNGsMQsh9qFqQtSt7U5tXIoDsSDF0H54SOxxD2ipSFzwe52LklgKJQy/7Gsx9KmyRLKcvRFcNJZANJJTtkwNK4Asa/KbHN9hFAjMLFXSloq8/o=
-Received: from BYAPR04MB4901.namprd04.prod.outlook.com (52.135.232.206) by
- BYAPR04MB3861.namprd04.prod.outlook.com (52.135.214.33) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.17; Thu, 5 Dec 2019 03:58:22 +0000
-Received: from BYAPR04MB4901.namprd04.prod.outlook.com
- ([fe80::545f:1547:d48a:7fbc]) by BYAPR04MB4901.namprd04.prod.outlook.com
- ([fe80::545f:1547:d48a:7fbc%7]) with mapi id 15.20.2516.014; Thu, 5 Dec 2019
- 03:58:21 +0000
-From: Alistair Francis <Alistair.Francis@wdc.com>
-To: "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
-Subject: Re: [GIT PULL] Second set of RISC-V updates for v5.5-rc1
-Thread-Topic: [GIT PULL] Second set of RISC-V updates for v5.5-rc1
-Thread-Index: AQHVqoAixayXodMShUatl8RuOOpeiKep7kMAgABfWICAABJLgIAAAdGAgAB4CACAABG3AA==
-Date: Thu, 5 Dec 2019 03:58:20 +0000
-Message-ID: <84c4ee600c0dd235a0fcc257115807af7207b5f6.camel@wdc.com>
+ id 1icjoB-0001PD-5e
+ for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 05:36:13 +0000
+Received: by mail-wr1-x444.google.com with SMTP id y11so1910236wrt.6
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Dec 2019 21:36:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KWeVLA+Lco2PS6ChZN6Zdh3HiL42eMKEtVIMaYS087k=;
+ b=iSEPzrPKtrYXwDLHNsOC/7aP1sXXYyoVLr4k0hjJpp7I0+czzzGISbfd4MXNVKE/4U
+ EqFJmW2hjQh9YQACl0izw6q1PETP2l8hdKrpr6xVxniLhj7ib7lQszHtDFid37kRvl+k
+ 22xL5G68WoD/S8Q524AlG2AWKndiWh+xUZ5ZLeNhn5i8kaYEdHj1R4PQITayApKcbJ7r
+ z8XcsN8h+kBToxkaVsZfxCNqn7grswtPwjvxlYT/k7OUotxWM9R+3HdS5az3m93gG58C
+ X2/jKCJJrELJfeERLHjEe93jpz6apyO0W/TwQ9pkYVkcWAcpbrx14If+gcnLOhcubyQg
+ oONQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KWeVLA+Lco2PS6ChZN6Zdh3HiL42eMKEtVIMaYS087k=;
+ b=dgHL81wvKLRx6CbZoLlCFnHoK0PL7pqE3CzlMK5qMMWbqR4NI/7Lc0gpf0dosVhjrX
+ E8QmZ80Fr/Fd+wZZRQugAQpM1JUPUK3a7rlwfwrM5RTO/ns38UkAMh0cySkA4yrRMIUJ
+ MVnOcjY57CEoFUDyxXvRfZhP36s32EAuFEAxlRMYTALRGR9Ozi1KIcg+VfXfUUfhncQl
+ n2PySnuv7UninAmg3fP1e0rxq198m1GgYOpt8S7B7v+8q+S38yaBnJgjGWz/fKW5J38Z
+ XXw5uK2IvzzDQ0xjY4edVNs5UmyM41XCvsUOM/BGR2pj418q3oLLmhuZNXiDm2mR4RDC
+ l8jA==
+X-Gm-Message-State: APjAAAUM7sQ5586OJoYp30BS/V/JSK0Oryg1PxsxXJX8jaUgZrpTasC3
+ K2B/PCRsXtTtpk8k4w1Fc4ughC74tw4CusGKqHI=
+X-Google-Smtp-Source: APXvYqx6pHHttuBMJ2/WAYkQRUg02kxzZW3kuQMKWhdKVcEHEiRn5j2iekLW7//lcjDDot2ZFb96+UxZ7mpB4pbe92w=
+X-Received: by 2002:a5d:4c85:: with SMTP id z5mr7673956wrs.42.1575524169206;
+ Wed, 04 Dec 2019 21:36:09 -0800 (PST)
+MIME-Version: 1.0
 References: <alpine.DEB.2.21.9999.1912040050430.56420@viisi.sifive.com>
  <CAAhSdy2id0FoLBxWwN7WHEk5Am770BizkK=sZO0-G54MtYa6DQ@mail.gmail.com>
  <9044bad02aa6553cdb2523294500b50fccf3fd2a.camel@wdc.com>
  <alpine.DEB.2.21.9999.1912041128400.186402@viisi.sifive.com>
  <81530734312456aab8b9625d7e9bb071c43db1c5.camel@wdc.com>
  <alpine.DEB.2.21.9999.1912041644170.206929@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1912041644170.206929@viisi.sifive.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Alistair.Francis@wdc.com; 
-x-originating-ip: [2601:646:8e00:37b2:d3fd:11e9:7cc1:adaf]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 2acc84bd-270a-46c0-920b-08d779375e9f
-x-ms-traffictypediagnostic: BYAPR04MB3861:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB386135AD772A5E8B2EBD07B9905C0@BYAPR04MB3861.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 02426D11FE
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(366004)(136003)(39860400002)(376002)(346002)(199004)(189003)(305945005)(81166006)(316002)(7736002)(5640700003)(2351001)(2501003)(4326008)(6916009)(186003)(66446008)(66476007)(66556008)(6436002)(66946007)(99286004)(64756008)(54906003)(6246003)(5660300002)(76116006)(6486002)(229853002)(6512007)(6306002)(11346002)(2616005)(15650500001)(14444005)(118296001)(14454004)(478600001)(81156014)(86362001)(6116002)(8676002)(71190400001)(966005)(25786009)(6506007)(102836004)(8936002)(36756003)(76176011)(2906002)(71200400001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB3861;
- H:BYAPR04MB4901.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: gEKPwxV+uY5K09Mat52iAEq/9cb5e7xpv0zetq0cuz6RNy18d83l/XsR3U/byST4RjMjbcbtsovZ+WwWKV92fCZI9Tcbz8zT3nBprK4iqHVZv0QpAdO333yETh1fEloQdhuJL03miq1MMhg2uwT8hROz4YveI/DR+l58kkJTRL2ySJKgOV4KFPmGrprOp0zZZfx7PSTJKAemZl7gtUFcaAfD2GxnP8CLdTooyNeDuGHsEmp723+38jQ8+uF7g2nv83mNTYuZhoDzuLtC2ttR61xuZqUkT/uVi7OMQ4lu4fK1zDy68mFPeeRQVOyoW/WKTCRAJ4nBDE9xIlqYoj1FHzKIip+NO7d6PbhA40CFlLlkcYCLs2446OjZKvALj+pV1zruGHr1DbxZ9vkeKEcZ0c6STc5cS/jkvnL7bocJwLeNbh6t9DtRh+xCY7RAZP4dmvHqXLIenhBJn7Z6Dt4PCPIL84993pRtKwt6sLLIkTU=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <18FD81BE44FAE1409D69A884BA96D18B@namprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2acc84bd-270a-46c0-920b-08d779375e9f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2019 03:58:21.1843 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oNWE4ASSmH30DNY6n4AnxBQLPHuK8DE0+ZF15UhjOJTws55l3TgcO7aDND8f8MVMhqKecHw2vCyyG83MUTqv/FJpmuRuiKBiheJODWUN/88=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3861
+ <84c4ee600c0dd235a0fcc257115807af7207b5f6.camel@wdc.com>
+In-Reply-To: <84c4ee600c0dd235a0fcc257115807af7207b5f6.camel@wdc.com>
+From: David Abdurachmanov <david.abdurachmanov@gmail.com>
+Date: Thu, 5 Dec 2019 07:35:32 +0200
+Message-ID: <CAEn-LTozM5K5PQY3LTqB0G2y9DGSME-7PX=jwuujZ=cvyQN6NA@mail.gmail.com>
+Subject: Re: [GIT PULL] Second set of RISC-V updates for v5.5-rc1
+To: Alistair Francis <Alistair.Francis@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191204_195834_839985_DBC78ED9 
-X-CRM114-Status: GOOD (  33.16  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191204_213611_238093_F044CBB7 
+X-CRM114-Status: GOOD (  37.06  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (david.abdurachmanov[at]gmail.com)
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -150,112 +101,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Cc: "anup@brainfault.org" <anup@brainfault.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  Atish Patra <Atish.Patra@wdc.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
  "torvalds@linux-foundation.org" <torvalds@linux-foundation.org>,
  "hch@lst.de" <hch@lst.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gV2VkLCAyMDE5LTEyLTA0IGF0IDE4OjU0IC0wODAwLCBQYXVsIFdhbG1zbGV5IHdyb3RlOg0K
-PiBPbiBXZWQsIDQgRGVjIDIwMTksIEFsaXN0YWlyIEZyYW5jaXMgd3JvdGU6DQo+IA0KPiA+IFRo
-YXQgaXMganVzdCBub3Qgd2hhdCBoYXBwZW5zIHRob3VnaC4NCj4gPiANCj4gPiBJdCBpcyB0b28g
-bXVjaCB0byBleHBlY3QgZXZlcnkgZGlzdHJvIHRvIG1haW50YWluIGEgZGVmY29uZmlnIGZvcg0K
-PiA+IFJJU0MtIA0KPiA+IFYuIA0KPiANCj4gVGhlIG1ham9yIExpbnV4IGRpc3RyaWJ1dGlvbnMg
-bWFpbnRhaW4gdGhlaXIgb3duIGtlcm5lbA0KPiBjb25maWd1cmF0aW9uIA0KPiBmaWxlcywgY29t
-cGxldGVseSBpZ25vcmluZyBrZXJuZWwgZGVmY29uZmlncy4gIFRoaXMgaGFzIGJlZW4gc28gZm9y
-IGENCj4gbG9uZyANCj4gdGltZS4NCg0KVGhhdCBtaWdodCBiZSB0cnVlIGZvciB0aGUgdHJhZGl0
-aW9uYWwgImRlc2t0b3AiIGRpc3Ryb3MsIGJ1dCBlbWJlZGRlZA0KZGlzdHJvcyAodGhlIG1haW4g
-dGFyZ2V0IGZvciBSSVNDLVYgYXQgdGhlIG1vbWVudCkgZG9uJ3QgZ2VuZXJhbGx5IGRvDQp0aGlz
-Lg0KDQo+IA0KPiA+IFdoaWNoIGlzIHdoeSB3ZSBjdXJyZW50bHkgdXNlIHRoZSBkZWZjb25maWcg
-YXMgYSBiYXNlIGFuZCBhcHBseQ0KPiA+IGV4dHJhIA0KPiA+IGZlYXR1cmVzIHRoYXQgZGlzdHJv
-IHdhbnQgb24gdG9wLg0KPiANCj4gQXMgeW91IGtub3csIHNpbmNlIHlvdSd2ZSB3b3JrZWQgb24g
-c29tZSBvZiB0aGUgZGlzdHJpYnV0aW9uIGJ1aWxkZXIgDQo+IGZyYW1ld29ya3MgKG5vdCBkaXN0
-cmlidXRpb25zKSBsaWtlIE9FIGFuZCBCdWlsZHJvb3QsIHRob3NlIGJ1aWxkDQo+IHN5c3RlbXMg
-DQo+IGhhdmUgc29waGlzdGljYXRlZCBrZXJuZWwgY29uZmlndXJhdGlvbiBwYXRjaGluZyBhbmQg
-b3ZlcnJpZGUgc3lzdGVtcw0KPiB0aGF0IA0KPiBjYW4gZGlzYWJsZSB0aGUgZGVidWcgb3B0aW9u
-cyBpZiB0aGUgbWFpbnRhaW5lcnMgdGhpbmsgaXQncyBhIGdvb2QNCj4gaWRlYSB0byANCj4gZG8g
-dGhhdC4NCg0KWWVzIHRoZXkgZG8uIEFzIEkgc2FpZCwgd2Ugc3RhcnQgd2l0aCB0aGUgZGVmY29u
-ZmlnIGFuZCB0aGVuIGFwcGx5DQpjb25maWcgY2hhbmdlcyBvbiB0b3AuIEV2ZXJ5IGRpdmVyc2lv
-biBpcyBhIG1haW50YWluZW5jZSBidXJkZW4gc28NCndoZXJlIHBvc3NpYmxlIHdlIGRvbid0IG1h
-a2UgYW55IGNoYW5nZWQuIEFsbCBvZiB0aGUgUUVNVSBtYWNoaW5lcw0KY3VycmVudGx5IGRvbid0
-IGhhdmUgY29uZmlnIGNoYW5nZXMgKGFuZCBob3BlZnVsbHkgbmV2ZXIgd2lsbCkgYXMgaXQncw0K
-YSBwYWluIHRvIG1haW50YWluLg0KDQo+IA0KPiBZb3UndmUgY29udHJpYnV0ZWQgdG8gYm90aCBC
-dWlsZHJvb3QgYW5kIE9FIG1ldGEtcmlzY3YgUklTQy1WIGtlcm5lbCANCj4gY29uZmlndXJhdGlv
-biBmcmFnbWVudHMgeW91cnNlbGYsIHNvIHRoaXMgc2hvdWxkbid0IGJlIGEgcHJvYmxlbSBmb3IN
-Cj4geW91IA0KPiBpZiB5b3UgZGlzYWdyZWUgd2l0aCBvdXIgY2hvaWNlcyBoZXJlLiAgRm9yIGV4
-YW1wbGUsIGhlcmUncyBhbg0KPiBleGFtcGxlIG9mIA0KPiBob3cgdG8gcGF0Y2ggZGVmY29uZmln
-IGRpcmVjdGl2ZXMgb3V0IGluIEJ1aWxkcm9vdDoNCj4gDQo+ICAgDQo+IGh0dHBzOi8vZ2l0LmJ1
-aWxkcm9vdC5uZXQvYnVpbGRyb290L3RyZWUvYm9hcmQvcWVtdS9jc2t5L2xpbnV4LWNrODA3LmNv
-bmZpZy5mcmFnbWVudCNuMw0KPiANCj4gSSdtIGFzc3VtaW5nIHlvdSBkb24ndCBuZWVkIGFuIGV4
-YW1wbGUgZm9yIG1ldGEtcmlzY3YsIHNpbmNlIHlvdSd2ZSANCj4gYWxyZWFkeSBjb250cmlidXRl
-ZCBSSVNDLVYtcmVsYXRlZCBrZXJuZWwgY29uZmlndXJhdGlvbiBmcmFnbWVudHMgdG8NCj4gdGhh
-dCANCj4gcmVwb3NpdG9yeS4NCg0KQXMgSSBzdGF0ZWQsIHRoaXMgaXMgcG9zc2libGUuIEl0J3Mg
-anVzdCBhIHBhaW4gdG8gbWFpbnRhaW4gYW5kIGZvciB0aGUNClFFTVUgbWFjaGluZXMgd2lsbCBw
-cm9iYWJseSBub3QgaGFwcGVuLg0KDQpXZSBhcmUgdHJ5aW5nIHRvIHJlbW92ZSBSSVNDLVYgc3Bl
-Y2lmaWMgY2hhbmdlcywgbm90IGFkZCBtb3JlLg0KDQo+IA0KPiA+IEV4cGVjdGluZyBldmVyeSBk
-aXN0cm8gdG8gaGF2ZSBhIGtlcm5lbCBkZXZlbG9wZXJzIGxldmVsIG9mDQo+ID4ga25vd2xlZGdl
-DQo+ID4gYWJvdXQgY29uZmlndXJpbmcgS2NvbmZpZ3MgaXMganVzdCB1bnJlYWxpc3RpYy4NCj4g
-DQo+IEkgdGhpbmsgaXQncyBmYWxzZSB0aGF0IG9ubHkga2VybmVsIGRldmVsb3BlcnMga25vdyBo
-b3cgdG8gZGlzYWJsZQ0KPiBkZWJ1ZyANCj4gb3B0aW9ucyBpbiBLY29uZmlnIGZpbGVzLiAgQXMg
-ZmFyIGFzIHRoZSB1bmRlcmx5aW5nIHByZW1pc2UgdGhhdCBvbmUgDQo+IHNob3VsZG4ndCBleHBl
-Y3QgZGlzdHJpYnV0aW9uIG1haW50YWluZXJzIHRvIGtub3cgaG93IHRvIGNoYW5nZQ0KPiBLY29u
-ZmlnIA0KPiBvcHRpb25zLCB3ZSdsbCBqdXN0IGhhdmUgdG8gYWdyZWUgdG8gZGlzYWdyZWUuDQoN
-CkRvIHlvdSByZWFsbHkgZXhwZWN0IGV2ZXJ5IGRpc3RvIHRvIGZvbGxvdyBhbGwgb2YgdGhlIGtl
-cm5lbCBjaGFuZ2VzDQphbmQgZ2VuZXJhdGUgdGhlaXIgb3duIGNvbmZpZyBiYXNlZCBvbiB3aGF0
-IGhhcHBlbmVkIGluIHRoZSBrZXJuZWwgdHJlZQ0Kc2luY2UgdGhlIGxhc3QgcmVsZWFzZT8gV2Ug
-ZG9uJ3QgYWxsIGp1c3Qgc3BlbmQgb3VyIGRheXMgYWRqdXN0aW5nIHRvDQp0aGUgTGludXgga2Vy
-bmVsLg0KDQpUaGlzIGlzIGVzcGljaWFsbHkgdHJ1ZSBmb3IgUklTQy1WIGFzIGl0J3MgbmV3IGFu
-ZCBjb25zdGFudGx5IGNoYW5naW5nLg0KDQo+IA0KPiA+ID4gZGlzdHJvcyBhbmQgYmVuY2htYXJr
-ZXJzIHdpbGwgY3JlYXRlIHRoZWlyIG93biBLY29uZmlncyBmb3IgdGhlaXINCj4gPiA+IG5lZWRz
-Lg0KPiA+IA0KPiA+IExpa2UgSSBzYWlkLCB0aGF0IGlzbid0IHRydWUuIEFmdGVyIHRoaXMgcGF0
-Y2ggaXMgYXBwbGllZCAoYW5kIGl0DQo+ID4gbWFrZXMgDQo+ID4gaXQgdG8gYSByZWxlYXNlKSBh
-bGwgT0UgdXNlcnMgd2lsbCBub3cgaGF2ZSBhIHNsb3dlciBSSVNDLVYga2VybmVsLg0KPiANCj4g
-T0UgZG9lc24ndCBoYXZlIGFueSBSSVNDLVYgc3VwcG9ydCB1cHN0cmVhbSwgc28gcHVyZSBPRSB1
-c2VycyB3b24ndA0KPiBub3RpY2UgDQoNClRoYXQgaXMganVzdCBub3QgdHJ1ZS4gWW91IHRhbGsg
-bGF0ZXIgYWJvdXQgbWlzaW5mb3JtYXRpb24gYnV0IHRoaXMgaXMNCmEgYmxhdGVudCBsaWUuDQoN
-Cj4gYW55IGNoYW5nZSBhdCBhbGwuICBBc3N1bWluZyB5b3UncmUgdGFsa2luZyBhYm91dCBtZXRh
-LXJpc2N2IHVzZXJzOg0KPiBhcyANCj4gbm90ZWQgYWJvdmUsIGl0J3Mgc2ltcGxlIHRvIGF1dG9t
-YXRpY2FsbHkgcmVtb3ZlIEtjb25maWcgZW50cmllcyB5b3UgDQo+IGRpc2FncmVlIHdpdGgsIG9y
-IGFkZCBvbmVzIHlvdSB3YW50Lg0KPiANCj4gPiBOb3cgaW1hZ2Ugc29tZSBjb21wYW55IHdhbnRz
-IHRvIGludmVzdGlnYXRlIHVzaW5nIGEgUklTQy1WIGNoaXAgZm9yDQo+ID4gdGhlaXIgZW1iZWRk
-ZWQgcHJvamVjdC4gVGhleSB1c2UgT0UvYnVpbGRyb290IHRvIGJ1aWxkIGEgcXVpY2sgdGVzdA0K
-PiA+IHNldHVwIGFuZCBib290IExpbnV4LiBJdCBub3cgcnVucyBzaWduaWZpY2FudGx5IHNsb3dl
-ciB0aGVuIHNvbWUNCj4gPiBvdGhlcg0KPiA+IGFyY2hpdGVjdHVyZSBhbmQgdGhleSBkb24ndCBj
-aG9vc2UgUklTQy1WLg0KPiANCj4gVGhlIGJlc3Qgb3B0aW9uIGZvciBuYWl2ZSB1c2VycyB3aG8g
-YXJlIHNlZWtpbmcgbWF4aW11bSBwZXJmb3JtYW5jZQ0KPiBpcyB0byANCj4gdXNlIGEgdmVuZG9y
-IEJTUC4gIFRoaXMgZ29lcyBiZXlvbmQgc2V0dGluZ3MgaW4gYSBrZXJuZWwgY29uZmlnIGZpbGU6
-DQo+IGl0IA0KPiBleHRlbmRzIHRvIGNvbXBpbGVyIGFuZCBsaW5rZXIgb3B0aW1pemF0aW9uIGZs
-YWdzLCBMVE8sIGFjY2VsZXJhdG9yIA0KPiBmaXJtd2FyZSBhbmQgbGlicmFyaWVzLCBub24tdXBz
-dHJlYW1lZCBwZXJmb3JtYW5jZS1yZWxhdGVkIHBhdGNoZXMsIA0KPiB2ZW5kb3Igc3VwcG9ydCwg
-ZXRjLg0KDQpXaGF0PyBIb3cgbWFueSBwZW9wbGUgYWN0dWFsbHkgZG8gdGhpcyBmb3IgZW1iZWRk
-ZWQgc3lzdGVtcy4NCg0KSSBhZ3JlZSB0aGF0IGlmIHlvdSByZWFsbHkgd2FudCB0byBtYXhpbWlz
-ZSBpdCBhcyBtdWNoIGFzIHlvdSBjYW4geW91DQp3aWxsIGdvIHRvIHRoaXMgZWZmb3J0LCBidXQg
-SSBkb24ndCB0aGluayBtb3N0IHBlb3BsZSBkby4gSSB0aGluayB3ZQ0KYWxsIGtub3cgdGhhdCBs
-b3RzIG9mIHRpbWVzIGVtYmVkZGVkIExpbnV4IGlzIGp1c3QgaGFja2VkIHVudGlsIGl0DQp3b3Jr
-cyBhbmQgdGhlbiBzaGlwcGVkLiBJbiB0aGlzIGNhc2UgZGVmYXVsdHMgYXJlIHZlcnkgaW1wb3J0
-YW50Lg0KDQo+IA0KPiA+IFNsb3dpbmcgZG93biBhbGwgdXNlcnMgdG8gaGVscCBrZXJuZWwgZGV2
-ZWxvcGVycyBkZWJ1ZyBzZWVtcyBsaWtlDQo+ID4gdGhlDQo+ID4gd3JvbmcgZGlyZWN0aW9uLiBL
-ZXJuZWwgZGV2ZWxvcGVycyBzaG91bGQga25vdyBlbm91Z2ggdG8gYmUgYWJsZSB0bw0KPiA+IHR1
-cm4gb24gdGhlIHJlcXVpcmVkIGNvbmZpZ3MsIHdoeSBkb2VzIHRoaXMgbmVlZCB0byBiZSB0aGUg
-ZGVmYXVsdD8NCj4gDQo+IEl0J3MgY2xlYXIgeW91IHN0cm9uZ2x5IGRpc2FncmVlIHdpdGggdGhl
-IGRlY2lzaW9uIHRvIGRvIHRoaXMuICBJdCdzIA0KPiBjZXJ0YWlubHkgeW91ciByaWdodCB0byBk
-byBzby4gIEJ1dCBpdCdzIG5vdCBnb29kIHRvIHNwcmVhZA0KPiBtaXNpbmZvcm1hdGlvbiANCj4g
-YWJvdXQgaG93IGNoYW5naW5nIHRoZSBkZWZjb25maWdzICJzbG93W3NdIGRvd24gYWxsIHVzZXJz
-LCIgb3IgDQoNCldoYXQgbWlzaW5mb3JtYXRpb24/DQoNCkFudXAgc2hhcmVkIGJlbmNobWFya2lu
-ZyByZXN1bHRzIGluZGljYXRpbmcgdGhhdCB0aGlzIGNoYW5nZSBoYXMgYSAxMiUNCnBlcmZvcm1h
-bmNlIGRlY3JlYXNlIGZvciBldmVyeW9uZSB3aG8gdXNlcyB0aGUgZGVmY29uZmlnIHdpdGhvdXQN
-CnJlbW92aW5nIHRoaXMgY2hhbmdlLg0KDQpUaGF0IGlzIGV2ZXJ5b25lIHdobyBkb2Vzbid0IGRl
-Y2lkZSB0byByZW1vdmUgY29uZmlnIG9wdGlvbnMgZnJvbSB0aGUNCmRlZmF1bHQgY29uZmlnIHN1
-cHBsaWVkIGJ5IHRoZSBwZW9wbGUgd2hvIHdyb3RlIHRoZSBjb2RlIGFyZSBub3cgc3R1Y2sNCndp
-dGggYSBsYXJnZSBwZXJmb3JtYW5jZSBoaXQuIFBhc3NpbmcgdGhlIGJ1Y2sgYW5kIHNheWluZyB0
-aGF0IHBlb3BsZQ0Kc2hvdWxkIGJlIGNoYW5naW5nIHRoZSBkZWZjb25maWcgY2Fubm90IGJlIHRo
-ZSByaWdodCBzb2x1dGlvbiBoZXJlLg0KDQo+IGV4YWdnZXJhdGluZyB0aGUgZGlmZmljdWx0eSBm
-b3IgZG93bnN0cmVhbSBzb2Z0d2FyZSBlbnZpcm9ubWVudHMgdG8NCj4gYmFjayANCj4gdGhpcyBj
-aGFuZ2Ugb3V0IGlmIHRoZXkgd2lzaC4NCg0KSWYgeW91IHRoaW5rIGl0IGlzIHRoYXQgZWFzeSBj
-YW4geW91IHBsZWFzZSBzdWJtaXQgdGhlIHBhdGNoZXM/DQoNCkkgdW5kZXJzdGFuZCBpdCdzIGVh
-c3kgdG8gbWFrZSBkZWNpc2lvbnMgdGhhdCBzaW1wbGZ5IHlvdXIgZmxvdywgYnV0DQp0aGlzIGhh
-cyByZWFsIG5lZ2F0aXZlIGNvbnNlcXVlbmNlcyBpbiB0ZXJtcyBvZiBwZXJmb3JtYW5jZSBmb3Ig
-dXNlcnMNCm9yIGNvbXBsZXhpdHkgZm9yIG1haW50YWluZXJzLiBJdCB3b3VsZCBiZSBuaWNlIGlm
-IHlvdSB0YWtlIG90aGVyIHVzZXJzDQovZGV2ZWxvcGVycyBpbnRvIGFjY291bnQgYmVmb3JlIG1l
-cmdpbmcgY2hhbmdlcy4NCg0KQWxpc3RhaXINCg0KPiANCj4gDQo+IC0gUGF1bA0K
+On Thu, Dec 5, 2019 at 5:58 AM Alistair Francis
+<Alistair.Francis@wdc.com> wrote:
+>
+> On Wed, 2019-12-04 at 18:54 -0800, Paul Walmsley wrote:
+> > On Wed, 4 Dec 2019, Alistair Francis wrote:
+> >
+> > > That is just not what happens though.
+> > >
+> > > It is too much to expect every distro to maintain a defconfig for
+> > > RISC-
+> > > V.
+> >
+> > The major Linux distributions maintain their own kernel
+> > configuration
+> > files, completely ignoring kernel defconfigs.  This has been so for a
+> > long
+> > time.
+>
+> That might be true for the traditional "desktop" distros, but embedded
+> distros (the main target for RISC-V at the moment) don't generally do
+> this.
+
+I can confirm that Fedora/CentOS/RHEL do not depend on default
+config in kernel. Same seems to apply to Ubuntu, Arch and probably
+others. We maintain our own configs.
+
+>
+> >
+> > > Which is why we currently use the defconfig as a base and apply
+> > > extra
+> > > features that distro want on top.
+> >
+> > As you know, since you've worked on some of the distribution builder
+> > frameworks (not distributions) like OE and Buildroot, those build
+> > systems
+> > have sophisticated kernel configuration patching and override systems
+> > that
+> > can disable the debug options if the maintainers think it's a good
+> > idea to
+> > do that.
+>
+> Yes they do. As I said, we start with the defconfig and then apply
+> config changes on top. Every diversion is a maintainence burden so
+> where possible we don't make any changed. All of the QEMU machines
+> currently don't have config changes (and hopefully never will) as it's
+> a pain to maintain.
+>
+> >
+> > You've contributed to both Buildroot and OE meta-riscv RISC-V kernel
+> > configuration fragments yourself, so this shouldn't be a problem for
+> > you
+> > if you disagree with our choices here.  For example, here's an
+> > example of
+> > how to patch defconfig directives out in Buildroot:
+> >
+> >
+> > https://git.buildroot.net/buildroot/tree/board/qemu/csky/linux-ck807.config.fragment#n3
+> >
+> > I'm assuming you don't need an example for meta-riscv, since you've
+> > already contributed RISC-V-related kernel configuration fragments to
+> > that
+> > repository.
+>
+> As I stated, this is possible. It's just a pain to maintain and for the
+> QEMU machines will probably not happen.
+>
+> We are trying to remove RISC-V specific changes, not add more.
+>
+> >
+> > > Expecting every distro to have a kernel developers level of
+> > > knowledge
+> > > about configuring Kconfigs is just unrealistic.
+> >
+> > I think it's false that only kernel developers know how to disable
+> > debug
+> > options in Kconfig files.  As far as the underlying premise that one
+> > shouldn't expect distribution maintainers to know how to change
+> > Kconfig
+> > options, we'll just have to agree to disagree.
+>
+> Do you really expect every disto to follow all of the kernel changes
+> and generate their own config based on what happened in the kernel tree
+> since the last release? We don't all just spend our days adjusting to
+> the Linux kernel.
+
+I cannot talk for all distros (there are too many), but major desktop
+distributions do that. For the 1st few RCs of a new kernel version I
+will be adjusting Fedora/RISCV configuration based on whatever
+changes land.
+
+Of course looking at default defconfig is part of that process.
+
+>
+> This is espicially true for RISC-V as it's new and constantly changing.
+>
+> >
+> > > > distros and benchmarkers will create their own Kconfigs for their
+> > > > needs.
+> > >
+> > > Like I said, that isn't true. After this patch is applied (and it
+> > > makes
+> > > it to a release) all OE users will now have a slower RISC-V kernel.
+> >
+> > OE doesn't have any RISC-V support upstream, so pure OE users won't
+> > notice
+>
+> That is just not true. You talk later about misinformation but this is
+> a blatent lie.
+>
+> > any change at all.  Assuming you're talking about meta-riscv users:
+> > as
+> > noted above, it's simple to automatically remove Kconfig entries you
+> > disagree with, or add ones you want.
+> >
+> > > Now image some company wants to investigate using a RISC-V chip for
+> > > their embedded project. They use OE/buildroot to build a quick test
+> > > setup and boot Linux. It now runs significantly slower then some
+> > > other
+> > > architecture and they don't choose RISC-V.
+> >
+> > The best option for naive users who are seeking maximum performance
+> > is to
+> > use a vendor BSP.  This goes beyond settings in a kernel config file:
+> > it
+> > extends to compiler and linker optimization flags, LTO, accelerator
+> > firmware and libraries, non-upstreamed performance-related patches,
+> > vendor support, etc.
+>
+> What? How many people actually do this for embedded systems.
+>
+> I agree that if you really want to maximise it as much as you can you
+> will go to this effort, but I don't think most people do. I think we
+> all know that lots of times embedded Linux is just hacked until it
+> works and then shipped. In this case defaults are very important.
+>
+> >
+> > > Slowing down all users to help kernel developers debug seems like
+> > > the
+> > > wrong direction. Kernel developers should know enough to be able to
+> > > turn on the required configs, why does this need to be the default?
+> >
+> > It's clear you strongly disagree with the decision to do this.  It's
+> > certainly your right to do so.  But it's not good to spread
+> > misinformation
+> > about how changing the defconfigs "slow[s] down all users," or
+>
+> What misinformation?
+>
+> Anup shared benchmarking results indicating that this change has a 12%
+> performance decrease for everyone who uses the defconfig without
+> removing this change.
+>
+> That is everyone who doesn't decide to remove config options from the
+> default config supplied by the people who wrote the code are now stuck
+> with a large performance hit. Passing the buck and saying that people
+> should be changing the defconfig cannot be the right solution here.
+>
+> > exaggerating the difficulty for downstream software environments to
+> > back
+> > this change out if they wish.
+>
+> If you think it is that easy can you please submit the patches?
+>
+> I understand it's easy to make decisions that simplfy your flow, but
+> this has real negative consequences in terms of performance for users
+> or complexity for maintainers. It would be nice if you take other users
+> /developers into account before merging changes.
+
+I would prefer to have a separate config for debug (that's what we do in
+Fedora). Why not use config fragment here (e.g. call it debug.config like
+in powerpc)?
+
+See:
+https://github.com/torvalds/linux/commit/c1bc6f93f95970f917caaac544a374862e84df52
+https://elinux.org/images/3/39/Managing-Linux-Kernel-Configurations-with-Config-Fragments-Darren-Hart-VMware.pdf
+
+david
+
+>
+> Alistair
+>
+> >
+> >
+> > - Paul
 
