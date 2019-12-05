@@ -2,93 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC72A1149B6
-	for <lists+linux-riscv@lfdr.de>; Fri,  6 Dec 2019 00:15:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 753891149CE
+	for <lists+linux-riscv@lfdr.de>; Fri,  6 Dec 2019 00:24:00 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=StZhfAUYQQoX4hSeN7hmhB8YxNwfE6easEwqsPBfh9o=; b=VuJH4VuE8LpHiuvVAjcKdJtTu
-	HSm5ldHCcxTgw5kDNdnzg98lOj80PggGd4qfsmdbbV5vNUWdiptnnTs8f3ZgwvAt2AvvoKl7Hfkfn
-	COJ655DvoGOZ8lr8UONXGab2r8AaR5mXCEMm7XCs97hMrkija2RvfbeKPLbfA2Y8fSi8J/+Sj3qVV
-	5V1Fi6/eNaJhMenY9WsqYJ9LLQ28Xlzyr709HQQuPKuN1BTRPFE4J25Pf6CNY1M90VRTYVt+8kkso
-	Nq6NzUtzLHDQVsUgxG3mfQL1EyTRqdD3Gx4MK72oOC482gG54FEgv1rAL/7imOWdye1aJxRyVwusO
-	Mf3stt/1w==;
+	 bh=uoew3w+WjCDvHa4nERX4szfxNTztaiIuTi5nYNUkYZY=; b=URJVmrb5ILmUh84/uMMgTKJ5J
+	nITbTQfWpZdODn4lqq0lb1UcREAqJyC4TYGfdLCAM89WMKoG0SzbzcRrj+4Ax2lw3b2077fKeYi/6
+	jxCW0oAzKLa93e1Tw8fN7vyQVV0P6jmtjmhKeRqDE4tLNetP2lqOBeGJLr2e4q33PsKZL0k9NFyUu
+	z0m13B4eYckMQfnhPOC+L/nVZlnn1d5kPyhyUrin28VkpacBzLGURHPozGnUYqAa52ajkrAPlJlFs
+	4r26RJ2g5odd3i4r3vxHZOUJbisavMRjNDGnHL1i+FJn6jlrhQ/ETYNmIOjZsZE4zI0dQRrBdugPD
+	elUXzhiBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1id0Kx-0004XF-F3; Thu, 05 Dec 2019 23:15:07 +0000
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1id0TR-0007c9-CF; Thu, 05 Dec 2019 23:23:53 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1id0Ks-0004Cr-Cz
- for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 23:15:03 +0000
-Received: by mail-il1-x141.google.com with SMTP id f6so4544110ilh.9
- for <linux-riscv@lists.infradead.org>; Thu, 05 Dec 2019 15:14:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=StZhfAUYQQoX4hSeN7hmhB8YxNwfE6easEwqsPBfh9o=;
- b=fF7LHLt5NfogWQmdGHQc1p/sFHLwFSySpSt8RlN6ociIGyw6Qrui71XT6rSxFOrlGj
- u+mz5XhPYWipDeJMktJSJ0399DtB7JygbnK98hSZLw+ewDoPIY9NxJkW2jeDgXgr2MyQ
- 4h7bYy9AfTg0wuk+auK6Tt78//6AIpCBjas1/3E0OAhT+VBhf8qR5axwBS5KTJ1+RCdU
- y1GedK2ClGrCdjAe9BammfNeqk0dpewSESqeiE0hGh8e8qRi2ErrIvoIkTZf4SBglCEO
- VJFMgbqp4a3Bc6QZggD+Lx1UhbBnOfNoI8DivihSsgAc8GapXu/n2byIJUlCJvtPC8Bs
- ftiQ==
+ id 1id0TN-0007bg-Rs
+ for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 23:23:51 +0000
+Received: by mail-wm1-x341.google.com with SMTP id n9so5366082wmd.3
+ for <linux-riscv@lists.infradead.org>; Thu, 05 Dec 2019 15:23:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uoew3w+WjCDvHa4nERX4szfxNTztaiIuTi5nYNUkYZY=;
+ b=vlWRoepl00jLfiXESI0GCgAl5wxXlnr5e1i4KUimKoDa2Ab+iu2yxSM5HkhaHOGQUX
+ kVP3wz3yMrBLYChAlm+JrIo7cr40RALBw2NKPcjcMt55KAxku8dJqbykXlnk9kEfdlfm
+ yJTgkc3QNQMMebhIRne6lp+lfa+/q+AInAGOon2bzXPLp1YMqkeWy01PoPy78222hAmd
+ hR1tx9sfHzojLy7Slwep84Z71mbYoRT3ZAOVNAdRfEDVL4r3LCExAN5Rs4SsfsRRP1xL
+ tpDxx0eB3V3mPuv/FR6fJllox5q6mmh89fj35K9fYxcVUcHCjlkVHTh4fOrEEIMQXOZU
+ iIog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=StZhfAUYQQoX4hSeN7hmhB8YxNwfE6easEwqsPBfh9o=;
- b=C11viGHmbf4Igsym82PTITk6zm0tjJmrzkYpLOgQgMITo86Bs+zX9IDPBRq8uLlyeF
- XCZTcQuFlU+a+YByrfR2G56jfWA0X69hVsnIq71E2YVXg89SWVmrwjf74+IWmzL3piZ8
- BUuX3jxrcZBKHSRleGbN2LZp9ItxickteS12NIgi9C8RAinStcZ2i2oBTB39V+vxB8yN
- PSc4zaRLy8vLLRFRsDljnU2NHo8K8h0Kf077iTL+3ptScplv44p38bqEubiw3I616eGO
- TAAd4ACP4BNuffzOqZgQYh6ctPLs0IKw70n2wmCopgNeChZboRSvQ1mgw3IfInSTiy4c
- DMaQ==
-X-Gm-Message-State: APjAAAXeS3t80U7kaOVpN8nEGPZTArhXcCCaZr/6Mj0pYdpZ+C77s7eQ
- 88LPySZ9OuVC7JY86x1ypAnoyA==
-X-Google-Smtp-Source: APXvYqydf7mBx0+Uo1plA0d7tO+7ImshuSiBG4WEJNBPDdtWKuLvED1KnHVqzaPR8FxH2svgWvllyA==
-X-Received: by 2002:a92:8458:: with SMTP id l85mr11587638ild.296.1575587699432; 
- Thu, 05 Dec 2019 15:14:59 -0800 (PST)
-Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id l26sm1721358ioj.73.2019.12.05.15.14.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Dec 2019 15:14:58 -0800 (PST)
-Date: Thu, 5 Dec 2019 15:14:55 -0800 (PST)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: Anup Patel <anup@brainfault.org>
-Subject: Re: [PATCH] RISC-V: Add debug defconfigs
-In-Reply-To: <CAAhSdy2ySO_TGL9EYsHnk2p=tceRGaVfogyhthqJEJf-AoOCYw@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.1912051512590.239155@viisi.sifive.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uoew3w+WjCDvHa4nERX4szfxNTztaiIuTi5nYNUkYZY=;
+ b=p9bPfllNUf4WzWvxoTZh4YY0MZZpdabvxRM15slLh9JSrsA+PygIxq0WNAk0I/wwGS
+ d7sq/25ccCTBQmdzNNodD35vdWHR2Ze0Wn63aZYUpijjyO7T4HOUBawG0F7Yue/1i7tm
+ j8r04WWrNhNMVEVkvHjfh98/fI7sdpvD2ysbGhyaacPjkiv9h7ZQJLlJjPHIoCX5LiKG
+ jCgfsCGFd+b0RFX+lFs2QkAdDCygY8OrwXEqiOOxvx5kXVNTmGDglL7EoqK1jKz7yoj8
+ siaCXhGGWrUirymdwRR9bCOxk5iAEo1QmKu8lrVUDrZSTa4R07bw/lT+x+pcFiLEPLUF
+ HKUg==
+X-Gm-Message-State: APjAAAVzZdCtYINzSyqvS1YGN4P7LlvG15bUpq+/j6B8tfxAWc4gLqTW
+ CuDqh30Q4vBeEOweh0jdGQ6uF/uodLVq2JFvGyZ/lw==
+X-Google-Smtp-Source: APXvYqz3qNfyynvmdufghI95by6GfxVqSiTFOJeqqtWbL44qExje+YkBX4Yuyji8d4GJFqWKeKcnLjW/D97Q6dCbDSE=
+X-Received: by 2002:a05:600c:218f:: with SMTP id
+ e15mr7287277wme.124.1575588227572; 
+ Thu, 05 Dec 2019 15:23:47 -0800 (PST)
+MIME-Version: 1.0
 References: <20191205005601.1559-1-anup.patel@wdc.com>
  <alpine.DEB.2.21.9999.1912041859070.215427@viisi.sifive.com>
  <CAAhSdy1RQw3MVcVT5y1EHr72LDNADKRL5nO2E8OrzBi+tpuvtA@mail.gmail.com>
  <alpine.DEB.2.21.9999.1912050900030.218941@viisi.sifive.com>
  <CAAhSdy2ySO_TGL9EYsHnk2p=tceRGaVfogyhthqJEJf-AoOCYw@mail.gmail.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+ <alpine.DEB.2.21.9999.1912051512590.239155@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1912051512590.239155@viisi.sifive.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 6 Dec 2019 04:53:36 +0530
+Message-ID: <CAAhSdy0VXuhqXnEHTMwYKfDKQt2c5fU=ejXuz54c6LvwLRew_A@mail.gmail.com>
+Subject: Re: [PATCH] RISC-V: Add debug defconfigs
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191205_151502_457136_ED7F4030 
-X-CRM114-Status: UNSURE (   7.98  )
+X-CRM114-CacheID: sfid-20191205_152350_049514_A89115A4 
+X-CRM114-Status: UNSURE (   8.05  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:141 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -111,17 +103,25 @@ Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 5 Dec 2019, Anup Patel wrote:
-
-> On Thu, Dec 5, 2019 at 10:31 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+On Fri, Dec 6, 2019 at 4:44 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
 >
-> > What leads you to conclude that this was done for SiFive internal use?
-> 
-> Why else you need it ?
+> On Thu, 5 Dec 2019, Anup Patel wrote:
+>
+> > On Thu, Dec 5, 2019 at 10:31 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+> >
+> > > What leads you to conclude that this was done for SiFive internal use?
+> >
+> > Why else you need it ?
+>
+> Suppose you were to assume that I had reasons for doing it that aren't
+> related to SiFive.  What might they be?
 
-Suppose you were to assume that I had reasons for doing it that aren't 
-related to SiFive.  What might they be?
+It does not matter what your reasons were. Having DEBUG options in
+defconfigs is not the right way to do it.
 
+I have posted v2 of this patch. Please have a look. It's much cleaner
+now and does not have performance impact for people using defconfigs.
 
-- Paul
+Regards,
+Anup
 
