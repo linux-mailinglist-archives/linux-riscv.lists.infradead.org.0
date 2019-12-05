@@ -2,87 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9AFB1149A0
-	for <lists+linux-riscv@lfdr.de>; Fri,  6 Dec 2019 00:03:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 238251149B2
+	for <lists+linux-riscv@lfdr.de>; Fri,  6 Dec 2019 00:12:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:In-Reply-To
-	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=UaCKQZiD0d5nTkej3tKWw6jNxfWpLT5zIEUWWqdRKpA=; b=QLTX4HKMyMTDYl
-	G5WTey5rzmTDHIRZUHkVQy0XmaE8UmDi0MnebRTurYeIA+7V6sAQtMx7ktVyQNaE5MmIDqCzOW4U7
-	Mjo8q+qkY/uH9pZRkg+Zliq2XifemVR740NmVHKAdLa7aigeXumOhDkHA/oWSgcm9gpDjFgT/D9wP
-	MxaWJ5tcZpE+Jy/T5AGZkqPzQLscFYrvo+dF3AD8PelTDYOZDWgI8+j8PzvrFnJZicazC3GnJK+Ha
-	8QrYTcUzIBKT8HNxwSBKO/3LYGToFq0IQl6D5HFz8KX3CGXaSwsm/Lph3J1UheBC2kEn//OV7aF+o
-	gnm6SGHtVvP7J1j7SO/A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=At6HvOSlwFx69DNlcjSWSbtHuC15o2vy25oLL0IdSIs=; b=A5IRM3dZf93p/glaNixpMQoFr
+	S3Dt6WPcYhdqLGLrxj7iZhighYMdR2VIlIXimXCPEUy9I/fos31CEJQgAXHdl+IA5Ob7UvErHhErq
+	QKdgApiriiVVY9AXSnpV6TkNglOpAKV+bRbqPP80HNopCjmOmc7kNJt2mOnoJuWLVJnrnVgZdBD04
+	qk1DFzEOj1eKFEygC0VaiOTtbhkktCK5p8oUcVGjSB+Y+/B4Zd6g1JELLI3oPeSu4Mf5jM+VdjxgC
+	4OTJO573ebHSHqNt+dpDdmCDkyVgmm670pZONGJI8arKJ9d5+AQEQfRhJKXhJXoqyCffdiZIV7wB2
+	NUlFrKtUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1id09b-0000va-IO; Thu, 05 Dec 2019 23:03:23 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1id0IA-000458-H6; Thu, 05 Dec 2019 23:12:14 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1id09X-0000qR-R6
- for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 23:03:21 +0000
-Received: by mail-pg1-x544.google.com with SMTP id a33so2078188pgm.5
- for <linux-riscv@lists.infradead.org>; Thu, 05 Dec 2019 15:03:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:subject:in-reply-to:cc:to:message-id:mime-version
- :content-transfer-encoding;
- bh=UaCKQZiD0d5nTkej3tKWw6jNxfWpLT5zIEUWWqdRKpA=;
- b=LDDuXijm67qxXxgWoaRdOgJdwZNAAacMOLmfr7YmKSYNoqjibWm0chc2O/a9cDfd6E
- 5kYZHFZ3Mlr/dC4r5W/DmXgwhFH2g14YcP28Q/fy3+cg0SHj/OVoHjMidQXhpn6Wc+L+
- VteybtQS9bhRET8sF2AD6f+s6F+amurrNH0J1RCd+awf5Jta45X5kBgLOUIn6yLlC9A8
- JW1REukHA4rx67RVSS/gSr9Q2ylApBsdHv4xirE287iqpzSZJKDxmntu0AOyHNgi87yR
- jJ6KAvFYt12BMdOgEvf5AWYIYr3w0A5lc64q0FjVUp8qwafoT2h48pdJYDqCboWjZkE1
- 1f8A==
+ id 1id0I5-00044T-UD
+ for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 23:12:12 +0000
+Received: by mail-io1-xd42.google.com with SMTP id c16so5427117ioh.6
+ for <linux-riscv@lists.infradead.org>; Thu, 05 Dec 2019 15:12:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=At6HvOSlwFx69DNlcjSWSbtHuC15o2vy25oLL0IdSIs=;
+ b=KksCuKmKAwHIOMrAzcR1CAT2l9X2g9xfwOqVX/z/ngLmeKNjY+cKTfDcNyEvnTkQog
+ poobitaHiDJuO4KjOSN9GLmXUPVUYrRXJWRQKPbBjcL4M3dkEkCG7CCWZbxBJRLOFWkl
+ /tdlsHK4Gipfh4O2e0klJSDLDsBT+9ak0oTUnIoDOF8cdGHwIQMYLPbx23SH6Kw3spJ1
+ Iz/IVvYyl3Rs+kF7MQcATLFdAnCsVOYPqBKEtkTnSwbiQPFRM//hOd5d6JqagAUPafDm
+ Dp5JvnSLiuKPJ/1ZW8Y/le4ek/ikkhnOZvrsS3Grcm/IF9i/2pI3vYLovdcZgIEc93mE
+ pfuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:subject:in-reply-to:cc:to:message-id
- :mime-version:content-transfer-encoding;
- bh=UaCKQZiD0d5nTkej3tKWw6jNxfWpLT5zIEUWWqdRKpA=;
- b=YA/0yeB2D6AmGbFlzvPc9Rs5P6I5sSNL5OHMhKrMU3RID/NHvJgph4Bg1bxfKacHkq
- DB5T8WwVXX0FHCFZ3xr2QMZh3Ahw2rNBNUzGsLRYvB+Is7sce39G+ZTaQh6tdMHGh0xB
- 0vV1WlyB1Lhy/lxD8LD4k7wAgQPB2SYCbndCW9LI6/keXV+ef3rpMM/yqB+fn0p/yAED
- b+S42sqVWKz+LOfDiW1ZQX/jS/tXmIN0HJgNoR4brcIFLiK4z7EQRI8xyzOY8d5loT+e
- 7bAVn/RqfeIlDZSBtkoqIOnZFCgrMl3lxvkeTBUvc8KVZGsaU+pCR8XdIaGXI7AvVdqT
- giRw==
-X-Gm-Message-State: APjAAAUt/TNHU+5SzuG/Pewrcm8JulzamP6U2whYK1QEK8koQ7E1BtuO
- uQkmgJoT9z7Jq+ROzNL+LsVJ9Rxboyw=
-X-Google-Smtp-Source: APXvYqxE4Tc1/1L7Sw0XQXwXkvkcrBAsfTkOmdmawlmE1yFHWH8R58ddCHm4r8TFNKRGj3/CotqmQg==
-X-Received: by 2002:a63:f961:: with SMTP id q33mr96229pgk.350.1575586996212;
- Thu, 05 Dec 2019 15:03:16 -0800 (PST)
-Received: from localhost ([2620:0:1000:2514:7f69:cd98:a2a2:a03d])
- by smtp.gmail.com with ESMTPSA id k190sm12628177pga.73.2019.12.05.15.03.14
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=At6HvOSlwFx69DNlcjSWSbtHuC15o2vy25oLL0IdSIs=;
+ b=gaU6FHMClJ+uB9H4pPlZ8rOTag84sfAR5sqTPOMDLnqJpjfpRdY83O/hsxRt6Cy06s
+ dCD+zHyTszT9EPan6pg/tWHn507urSmsipTKOaUIphzqrK+Q4RyOk6U8bV6vqLSO532F
+ O0KWT4LgWJ7e5WbFna6K6FMqj2Iaq20WWmL1atXu7wJR64VD9LGp2ydgbnvlDxJiTKNp
+ D2sXP5TUIkkO867OoHEsdoGQNjsEnNjYzH/e1Af8FaE9TNA/0O/rjRZcnM8mVfvsAVQQ
+ zNbfWVv8q4+Ao0WzZrCT7vPEeGn4cR4KTlTCRIijB3wTJQUjsldkV6Y4K3ZFRQ8vYsMu
+ DJfg==
+X-Gm-Message-State: APjAAAU2CMZP8OTWa2uOL10l542BcZxOFybv7GrvLyMuOnT8YID8WJqn
+ Qy2mUI9pHGszuyiil+xWGilmMg==
+X-Google-Smtp-Source: APXvYqxU9tuM56/pkySosrweH7NrZ+rnY/k0mRKp1T3IB8gtWL8a+1kzvXYs+QZ+an1cIN0xgNdUpg==
+X-Received: by 2002:a5d:8cd6:: with SMTP id k22mr7983995iot.283.1575587525678; 
+ Thu, 05 Dec 2019 15:12:05 -0800 (PST)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id s88sm3352711ilk.79.2019.12.05.15.12.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Dec 2019 15:03:15 -0800 (PST)
-Date: Thu, 05 Dec 2019 15:03:15 -0800 (PST)
-X-Google-Original-Date: Thu, 05 Dec 2019 15:03:01 PST (-0800)
-From: Palmer Dabbelt <palmerdabbelt@google.com>
-X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH v2 2/2] riscv: Set SHMLBA according to cache geometry
-In-Reply-To: <20191126224446.15145-3-consult-mg@gstardust.com>
-To: consult-mg@gstardust.com
-Message-ID: <mhng-344205d1-f6ce-45d3-a420-77c00ab0f4ad@palmerdabbelt-glaptop>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ Thu, 05 Dec 2019 15:12:05 -0800 (PST)
+Date: Thu, 5 Dec 2019 15:12:03 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Alistair Francis <Alistair.Francis@wdc.com>
+Subject: Re: [GIT PULL] Second set of RISC-V updates for v5.5-rc1
+In-Reply-To: <84c4ee600c0dd235a0fcc257115807af7207b5f6.camel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1912051435130.239155@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.1912040050430.56420@viisi.sifive.com>
+ <CAAhSdy2id0FoLBxWwN7WHEk5Am770BizkK=sZO0-G54MtYa6DQ@mail.gmail.com>
+ <9044bad02aa6553cdb2523294500b50fccf3fd2a.camel@wdc.com>
+ <alpine.DEB.2.21.9999.1912041128400.186402@viisi.sifive.com>
+ <81530734312456aab8b9625d7e9bb071c43db1c5.camel@wdc.com>
+ <alpine.DEB.2.21.9999.1912041644170.206929@viisi.sifive.com>
+ <84c4ee600c0dd235a0fcc257115807af7207b5f6.camel@wdc.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191205_150319_882757_EF4D52DC 
-X-CRM114-Status: GOOD (  25.96  )
-X-Spam-Score: -15.7 (---------------)
+X-CRM114-CacheID: sfid-20191205_151210_181789_E39A9F92 
+X-CRM114-Status: GOOD (  31.20  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-15.7 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
- white-list
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -90,8 +92,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
- Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,147 +103,120 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, consult-mg@gstardust.com,
- aou@eecs.berkeley.edu, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: "anup@brainfault.org" <anup@brainfault.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Atish Patra <Atish.Patra@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "torvalds@linux-foundation.org" <torvalds@linux-foundation.org>,
+ "hch@lst.de" <hch@lst.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 26 Nov 2019 14:44:46 PST (-0800), consult-mg@gstardust.com wrote:
-> Set SHMLBA to the maximum cache "span" (line size * number of sets) of
-> all CPU L1 instruction and data caches (L2 and up are rarely VIPT).
-> This avoids VIPT cache aliasing with minimal alignment constraints.
->
-> If the device tree does not provide cache parameters, use a conservative
-> default of 16 KB:  only large enough to avoid aliasing in most VIPT caches.
->
-> Signed-off-by: Marc Gauthier <consult-mg@gstardust.com>
-> ---
->  arch/riscv/include/asm/Kbuild     |  1 -
->  arch/riscv/include/asm/shmparam.h | 12 +++++++
->  arch/riscv/kernel/cacheinfo.c     | 52 +++++++++++++++++++++++++++++++
->  3 files changed, 64 insertions(+), 1 deletion(-)
->  create mode 100644 arch/riscv/include/asm/shmparam.h
->
-> diff --git a/arch/riscv/include/asm/Kbuild b/arch/riscv/include/asm/Kbuild
-> index 16970f246860..3905765807af 100644
-> --- a/arch/riscv/include/asm/Kbuild
-> +++ b/arch/riscv/include/asm/Kbuild
-> @@ -27,7 +27,6 @@ generic-y += percpu.h
->  generic-y += preempt.h
->  generic-y += sections.h
->  generic-y += serial.h
-> -generic-y += shmparam.h
->  generic-y += topology.h
->  generic-y += trace_clock.h
->  generic-y += unaligned.h
-> diff --git a/arch/riscv/include/asm/shmparam.h b/arch/riscv/include/asm/shmparam.h
-> new file mode 100644
-> index 000000000000..9b6a98153648
-> --- /dev/null
-> +++ b/arch/riscv/include/asm/shmparam.h
-> @@ -0,0 +1,12 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +#ifndef _ASM_RISCV_SHMPARAM_H
-> +#define _ASM_RISCV_SHMPARAM_H
-> +
-> +/*
-> + * Minimum alignment of shared memory segments as a function of cache geometry.
-> + */
-> +#define	SHMLBA	arch_shmlba()
+On Thu, 5 Dec 2019, Alistair Francis wrote:
 
-I'd prefer if we inline the memoization, which would avoid the cost of a
-function call in the general case.  You can also avoid that 0 test by
-initializing the variable to PAGE_SIZE and the filling it out in our early init
-code -- maybe setup_vm()?  That's what SPARC is doing.
+> On Wed, 2019-12-04 at 18:54 -0800, Paul Walmsley wrote:
+> > On Wed, 4 Dec 2019, Alistair Francis wrote:
+> > 
+> > > It is too much to expect every distro to maintain a defconfig for 
+> > > RISC-V.
+> > 
+> > The major Linux distributions maintain their own kernel configuration 
+> > files, completely ignoring kernel defconfigs.  This has been so for a 
+> > long time.
+> 
+> That might be true for the traditional "desktop" distros, but embedded
+> distros (the main target for RISC-V at the moment) don't generally do
+> this.
 
-> +
-> +long arch_shmlba(void);
-> +
-> +#endif /* _ASM_RISCV_SHMPARAM_H */
-> diff --git a/arch/riscv/kernel/cacheinfo.c b/arch/riscv/kernel/cacheinfo.c
-> index 4c90c07d8c39..1bc7df8577d6 100644
-> --- a/arch/riscv/kernel/cacheinfo.c
-> +++ b/arch/riscv/kernel/cacheinfo.c
-> @@ -1,12 +1,61 @@
->  // SPDX-License-Identifier: GPL-2.0-only
->  /*
->   * Copyright (C) 2017 SiFive
-> + * Copyright (C) 2019 Aril Inc
->   */
->
->  #include <linux/cacheinfo.h>
->  #include <linux/cpu.h>
->  #include <linux/of.h>
->  #include <linux/of_device.h>
-> +#include <linux/mm.h>
-> +
-> +static long shmlba;
-> +
-> +
-> +/*
-> + * Assuming  cache size = line size * #sets * N  for N-way associative caches,
-> + * return the max cache "span" == (line size * #sets) == (cache size / N)
-> + * across all L1 caches, or 0 if cache parameters are not available.
-> + * VIPT caches with span > min page size are susceptible to aliasing.
-> + */
-> +static long get_max_cache_span(void)
-> +{
-> +	struct cpu_cacheinfo *this_cpu_ci;
-> +	struct cacheinfo *this_leaf;
-> +	long span, max_span = 0;
-> +	int cpu, leaf;
-> +
-> +	for_each_possible_cpu(cpu) {
-> +		this_cpu_ci = get_cpu_cacheinfo(cpu);
-> +		this_leaf = this_cpu_ci->info_list;
-> +		for (leaf = 0; leaf < this_cpu_ci->num_leaves; leaf++) {
-> +			if (this_leaf->level > 1)
-> +				break;
-> +			span = this_leaf->coherency_line_size *
-> +			       this_leaf->number_of_sets;
-> +			if (span > max_span)
-> +				max_span = span;
-> +			this_leaf++;
-> +		}
-> +	}
-> +	return max_span;
-> +}
-> +
-> +/*
-> + * Align shared mappings to the maximum cache "span" to avoid aliasing
-> + * in VIPT caches, for performance.
-> + * The returned SHMLBA value is always a power-of-two multiple of PAGE_SIZE.
-> + */
-> +long arch_shmlba(void)
-> +{
-> +	if (shmlba == 0) {
-> +		long max_span = get_max_cache_span();
-> +
-> +		shmlba = max_span ? PAGE_ALIGN(max_span) : 4 * PAGE_SIZE;
+Maybe in this discussion we can agree to use the common distinction 
+between distributions and distribution build frameworks, where users of 
+the latter need to be more technically sophisticated - as opposed to 
+downloading a disk image.
 
-I'd prefer to avoid sneaking in a default 4*PAGE_SIZE here, just default to
-PAGE_SIZE and rely on systems with this behavior specifying the correct tuning
-value in the device tree.  This avoids changing the behavior for existing
-systems, which is a slight regression as the alignment uses more memory.  It's
-not a big deal, but on systems that don't require alignment for high
-performance there's no reason to just throw away memory -- particularly as we
-have some RISC-V systems with pretty limited memory (I'm thinking of the
-Kendryte boards, though I don't know how SHMLBA interacts with NOMMU so it
-might not matter).
+> > > Which is why we currently use the defconfig as a base and apply 
+> > > extra features that distro want on top.
+> > 
+> > As you know, since you've worked on some of the distribution builder 
+> > frameworks (not distributions) like OE and Buildroot, those build 
+> > systems have sophisticated kernel configuration patching and override 
+> > systems that can disable the debug options if the maintainers think 
+> > it's a good idea to do that.
+> 
+> Yes they do. As I said, we start with the defconfig and then apply
+> config changes on top. Every diversion is a maintainence burden so
+> where possible we don't make any changed. All of the QEMU machines
+> currently don't have config changes (and hopefully never will) as it's
+> a pain to maintain.
 
-> +	}
-> +	return shmlba;
-> +}
->
->  static void ci_leaf_init(struct cacheinfo *this_leaf,
->  			 struct device_node *node,
-> @@ -93,6 +142,9 @@ static int __populate_cache_leaves(unsigned int cpu)
->  	}
->  	of_node_put(np);
->
-> +	/* Force recalculating SHMLBA if cache parameters are updated. */
-> +	shmlba = 0;
-> +
->  	return 0;
->  }
+I'm open to your concerns here.  Can you help me understand why adding a 
+few lines to the kernel configuration fragments to disable the debug 
+options creates maintenance pain?  Isn't it just a matter of adding a few 
+lines to disable the debug options, and -- since you clearly don't want 
+them enabled for any platform -- just leaving them in there?
+
+> > > > distros and benchmarkers will create their own Kconfigs for their
+> > > > needs.
+> > > 
+> > > Like I said, that isn't true. After this patch is applied (and it 
+> > > makes it to a release) all OE users will now have a slower RISC-V 
+> > > kernel.
+> > 
+> > OE doesn't have any RISC-V support upstream, so pure OE users won't
+> > notice 
+> 
+> That is just not true. 
+
+After getting your response, I reviewed the OE-core tree that I have here, 
+which is based on following the OE-core "getting started" instructions. 
+The result is a tree with no RISC-V machine support.  Looking again at 
+those instructions, I see that they check out the last release, rather 
+than the current top of the tree; and the current top of tree does have a 
+QEMU RISC-V machine.  So this statement of yours is correct, and I was in 
+error about the current top-of-tree OE-core support.
+
+> You talk later about misinformation but this is a blatent lie.
+
+This isn't acceptable.  We've met each other in person, and I've 
+considered you an enjoyable and trustworthy person to discuss technical 
+issues with.  This is the first time that you've ever publicly accused me 
+of misrepresenting an issue with intent to deceive.  There's a big 
+difference between stating that someone is quoting misinformation and 
+accusing someone of bad intentions.  I expect an apology from you.
+
+> > > Slowing down all users to help kernel developers debug seems like 
+> > > the wrong direction. Kernel developers should know enough to be able 
+> > > to turn on the required configs, why does this need to be the 
+> > > default?
+> > 
+> > It's clear you strongly disagree with the decision to do this.  It's 
+> > certainly your right to do so.  But it's not good to spread 
+> > misinformation about how changing the defconfigs "slow[s] down all 
+> > users," or
+> 
+> What misinformation?
+
+You've already acknowledged in your response that the major Linux 
+distributions don't use defconfigs.  So it's clear that your statement is 
+false, and rather than admitting that you're wrong, you're doubling down.
+
+> > exaggerating the difficulty for downstream software environments to 
+> > back this change out if they wish.
+> 
+> If you think it is that easy can you please submit the patches?
+
+For my part, I'd be happy if the current RISC-V OE and Buildroot users who 
+don't change the kernel configs run with the defconfig debug options 
+enabled right now.   So, I don't plan to send patches for them.
+
+> I understand it's easy to make decisions that simplfy your flow, but
+> this has real negative consequences in terms of performance for users
+> or complexity for maintainers. It would be nice if you take other users
+> /developers into account before merging changes.
+
+As stated earlier, I'm open to reconsidering if it indeed is onerous, and 
+not just a matter of patching a few lines of kernel configuration 
+fragments in OE and Buildroot once.
+
+
+- Paul
 
