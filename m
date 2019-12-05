@@ -2,84 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92190113A1C
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Dec 2019 03:55:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DAEE113A2E
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Dec 2019 04:03:33 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Wx2vN1sbfR2KEWh0Q5FWJVtfVEAyeU1xy6cPm3pYEkQ=; b=Wwc0rUiHT0c2lyw/BOjIT/oWG
-	1eKAfdCOlwhNKghsU8kdPxMWy9R4CIS393m8CcfyqG4b3dMAfEo2ckfyDzEEtNUk/K0DiD1WQtHgU
-	81x1uJ6frd176j8navYObokINa6wOW9aT2n2dK4xN3XhTyc1TDo48EoCSu5TWjK++m6cLQCPtjQYT
-	rWqnFbYwzvMlKUQa+MTkBtOBdUTr29NQoUVE7AF1erVRXCXZpjQgq+yQORM4z61K1iCX/ZZOojnhZ
-	s0gHbp80vMITqb+2kVFcNOdzypjSwvhmKoL+nIbkDpoRl/gQNSqb6JGDDXAYsXoaeTDpkfjvQU+XV
-	zkbtWjOxA==;
+	 bh=DDaxXfCxsiOyqMSO9KYcmqVtM/PNL1XNRneVF7PtEEk=; b=H+G4PTUcsB5tqCfOpLsk8SPZN
+	UgH4Rna93Pq9qEeXj+8/Ewo3YeE37qzZXbao4MZK7ZqfPSpOTSoBrUNqLAkWnXVVvSjrTG4LvlHmy
+	gV5YXh8EFlkg8Ptvp8NqqNP894bcUcpRqPHXxpqTWp85JX6SVwV3SusX7z7KFfP8KLl5HCYU2KQMj
+	vllfZMwzZl0IsQ8xFfP8AWmr1OZj7zC+tRtaXD7PSGYyNg6e7TeaGXzHvKnGM5X+dbzjJiq1TyT6T
+	lbBUaJoBZu1aJz6NRR7bTA2c4zuTFPz7T8pFqp7+vlcDjGsEahGYIiQEFlpbcLHiRZuokHfM32eYV
+	Tbi4eBYBQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ichIJ-0007TE-UV; Thu, 05 Dec 2019 02:55:07 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1ichQL-0001Qi-7p; Thu, 05 Dec 2019 03:03:25 +0000
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ichIE-0006ng-Oi
- for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 02:55:04 +0000
-Received: by mail-io1-xd43.google.com with SMTP id v18so2037914iol.2
- for <linux-riscv@lists.infradead.org>; Wed, 04 Dec 2019 18:55:02 -0800 (PST)
+ id 1ichQI-0001QN-HI
+ for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 03:03:23 +0000
+Received: by mail-il1-x144.google.com with SMTP id f6so1616963ilh.9
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Dec 2019 19:03:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=Wx2vN1sbfR2KEWh0Q5FWJVtfVEAyeU1xy6cPm3pYEkQ=;
- b=Sn3hzJMiBhlnjlbDl3cQWnmVZn3CKfHiaMjRRohBzk3ad1ubx5myEHE8f2QM61tgz1
- 9Wo2SESO3K+sTUNvQVRtIPk51yS67iY2jEx/b0nJL3TvixsrowhcaPdgl8xMHFzdsPJF
- /i4d1G/txICC2FzkyZQeWxpLu+Vu4F5lbBwlkDPPYPxs7AQsh/+XUZCEd8343JT/784t
- DFTEfO+yxhRX+PwnmnnjMXBKWV86dHq0RGjig4YZqYr8t7F6216CqhQUlsrN32q7OG30
- 217adLUW6AwwGwX6eyEoPMcAzfcrpo71jpzu2op/iSAxe3onXnvhZKlrFxnGdF6gE1sK
- SLUg==
+ bh=DDaxXfCxsiOyqMSO9KYcmqVtM/PNL1XNRneVF7PtEEk=;
+ b=QKySukuX+whyDlwTei1UZnZksz7c546kdE1Q+t6mhe/INeqiwSx/Pk/RJiJZbOtRd6
+ giQJPsRdGlSjiHECuRruZEWSBvWnNW3YZlCwVezmQA4x9AlwZrO9YCUgsY/TV2VXEOgx
+ JTqrpo8Yfz6IpPoASBfaTkbgkdymob1DtfD0OkGjk3yTa+AYbeMPbk3dZrtH7gwXiQP6
+ 2ucQMO3dMfiWQWK18vtoPyMjp2Tf3PEg5jXBOcvCbUdFQCKwYnu4yilSU5bcW5bM3esk
+ pP7BWROiTfbyMWcefykLoXmV2DQOybkonJhJCb9BuhJmdJPjSIDaIk1TsdfjtplayCTZ
+ WiKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=Wx2vN1sbfR2KEWh0Q5FWJVtfVEAyeU1xy6cPm3pYEkQ=;
- b=pDhy8GABhYmLOgO5F4naXEz8DeNFkpcpNZVhZQUwuDzNPBoZbhR6s5Wp1Yb+wAmNhH
- T4Fh22t/0edHylUB8VWxnkgDtZTPX9+XKJpMwkHtC2kPx/uLDuHoIvTnbesDYELWVQ3w
- YRAGcKhXjN48ASqRhgfRU2lKPhW/XnF4KUD1z8HVmaAvQV3EdN/8l1jjRtsp64wHvPEE
- xs/g39rpX+meDnKbUg9mn3ffscH8pUgfdfwBYWOODjMqh338ZfdBdlH0Has20yMzbm7a
- OYqjr/0ReqMEz5mTauV3YEGTeiV3rOjmMtIhLqPwioro4doGHZOZit1YBjtS4lRXuqZ/
- NFsw==
-X-Gm-Message-State: APjAAAVNP+4DlKrk3kUmcB//CakbUWGT1kpqJW6JgU+J6sIygofzfdU0
- xBB47BGFDEISsFc7sf4X6UJD0g==
-X-Google-Smtp-Source: APXvYqxMpDQEvRh6dSHWsRJucpfP+RiNSViXrITtQiMiUtuG1U9XPcXXFNqowIIqL7RSH3bqzLRZjQ==
-X-Received: by 2002:a5e:d50a:: with SMTP id e10mr4935722iom.83.1575514497748; 
- Wed, 04 Dec 2019 18:54:57 -0800 (PST)
+ bh=DDaxXfCxsiOyqMSO9KYcmqVtM/PNL1XNRneVF7PtEEk=;
+ b=EwcmZjSKBuisr6sTu0MhEd7qPbD//y0ljWwhxY5EwO+IGTU1xJM5znFqUUcUdBfNut
+ YNSYz08scNywOh8M5uPYVWRpQsDyb23XGlIe74V5B6Iub/jrNVzsR9UycWr1Zwo8SGab
+ hjkt3KVX9cX0L36d+sYrMifDt92lGbuBIFlMaX3ME4r+Wizii4VUefzkmkKWESZyK6rt
+ EcoFuyfvJGw6xuJw3zSJoCwNHgHqeASTYAIfLVMddqcCaYpYze93wOyrBzQF8+cuHQxr
+ tiSfMKSCg7KGj3QDqM/WD7aNPAdbWcDVP0Q7NvNxd8AUPbSNUMgSBsyMO74OnxFcn33k
+ kFfw==
+X-Gm-Message-State: APjAAAXm71/cmJBF4bwzUgDQdsQuaSpnsHZJjtSP2UOGjYUYQclO3gwZ
+ a51W8E/qqzbW9HtCPVfPAu+jvQ==
+X-Google-Smtp-Source: APXvYqyNnDI4WPiQUe9ac+q6KSTTvsCXeGX7VU41qKjhR8914xo5CQA56RjP81NH34TxvX8az+BIKw==
+X-Received: by 2002:a92:1b89:: with SMTP id f9mr6567185ill.122.1575515001113; 
+ Wed, 04 Dec 2019 19:03:21 -0800 (PST)
 Received: from localhost (67-0-26-4.albq.qwest.net. [67.0.26.4])
- by smtp.gmail.com with ESMTPSA id k16sm2377507ila.12.2019.12.04.18.54.57
+ by smtp.gmail.com with ESMTPSA id e1sm2365633ill.47.2019.12.04.19.03.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Dec 2019 18:54:57 -0800 (PST)
-Date: Wed, 4 Dec 2019 18:54:56 -0800 (PST)
+ Wed, 04 Dec 2019 19:03:20 -0800 (PST)
+Date: Wed, 4 Dec 2019 19:03:19 -0800 (PST)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Alistair Francis <Alistair.Francis@wdc.com>
-Subject: Re: [GIT PULL] Second set of RISC-V updates for v5.5-rc1
-In-Reply-To: <81530734312456aab8b9625d7e9bb071c43db1c5.camel@wdc.com>
-Message-ID: <alpine.DEB.2.21.9999.1912041644170.206929@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1912040050430.56420@viisi.sifive.com>
- <CAAhSdy2id0FoLBxWwN7WHEk5Am770BizkK=sZO0-G54MtYa6DQ@mail.gmail.com>
- <9044bad02aa6553cdb2523294500b50fccf3fd2a.camel@wdc.com>
- <alpine.DEB.2.21.9999.1912041128400.186402@viisi.sifive.com>
- <81530734312456aab8b9625d7e9bb071c43db1c5.camel@wdc.com>
+To: Anup Patel <Anup.Patel@wdc.com>
+Subject: Re: [PATCH] RISC-V: Add debug defconfigs
+In-Reply-To: <20191205005601.1559-1-anup.patel@wdc.com>
+Message-ID: <alpine.DEB.2.21.9999.1912041859070.215427@viisi.sifive.com>
+References: <20191205005601.1559-1-anup.patel@wdc.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191204_185502_814413_B81A91B9 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20191204_190322_582862_861C0E96 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -101,85 +98,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "anup@brainfault.org" <anup@brainfault.org>,
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>,
+ Atish Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "torvalds@linux-foundation.org" <torvalds@linux-foundation.org>,
- "hch@lst.de" <hch@lst.de>
+ Christoph Hellwig <hch@lst.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 4 Dec 2019, Alistair Francis wrote:
+On Thu, 5 Dec 2019, Anup Patel wrote:
 
-> That is just not what happens though.
+> Various Linux kernel DEBUG options have big performance impact
+> so these should not be enabled in RISC-V normal defconfigs.
 > 
-> It is too much to expect every distro to maintain a defconfig for RISC- 
-> V. 
+> Instead we should have separate RISC-V debug defconfigs having
+> these DEBUG options enabled. This way Linux RISC-V can build both
+> non-debug and debug kernels separately.
 
-The major Linux distributions maintain their own kernel configuration 
-files, completely ignoring kernel defconfigs.  This has been so for a long 
-time.
+I respect your point of view, but until the RISC-V kernel port is more 
+mature, I personally am not planning to merge this patch, for reasons 
+discussed in the defconfig patch descriptions and the subsequent pull 
+request threads.
 
-> Which is why we currently use the defconfig as a base and apply extra 
-> features that distro want on top.
-
-As you know, since you've worked on some of the distribution builder 
-frameworks (not distributions) like OE and Buildroot, those build systems 
-have sophisticated kernel configuration patching and override systems that 
-can disable the debug options if the maintainers think it's a good idea to 
-do that.
-
-You've contributed to both Buildroot and OE meta-riscv RISC-V kernel 
-configuration fragments yourself, so this shouldn't be a problem for you 
-if you disagree with our choices here.  For example, here's an example of 
-how to patch defconfig directives out in Buildroot:
-
-  https://git.buildroot.net/buildroot/tree/board/qemu/csky/linux-ck807.config.fragment#n3
-
-I'm assuming you don't need an example for meta-riscv, since you've 
-already contributed RISC-V-related kernel configuration fragments to that 
-repository.
-
-> Expecting every distro to have a kernel developers level of knowledge
-> about configuring Kconfigs is just unrealistic.
-
-I think it's false that only kernel developers know how to disable debug 
-options in Kconfig files.  As far as the underlying premise that one 
-shouldn't expect distribution maintainers to know how to change Kconfig 
-options, we'll just have to agree to disagree.
-
-> > distros and benchmarkers will create their own Kconfigs for their
-> > needs.
-> 
-> Like I said, that isn't true. After this patch is applied (and it makes 
-> it to a release) all OE users will now have a slower RISC-V kernel.
-
-OE doesn't have any RISC-V support upstream, so pure OE users won't notice 
-any change at all.  Assuming you're talking about meta-riscv users: as 
-noted above, it's simple to automatically remove Kconfig entries you 
-disagree with, or add ones you want.
-
-> Now image some company wants to investigate using a RISC-V chip for
-> their embedded project. They use OE/buildroot to build a quick test
-> setup and boot Linux. It now runs significantly slower then some other
-> architecture and they don't choose RISC-V.
-
-The best option for naive users who are seeking maximum performance is to 
-use a vendor BSP.  This goes beyond settings in a kernel config file: it 
-extends to compiler and linker optimization flags, LTO, accelerator 
-firmware and libraries, non-upstreamed performance-related patches, 
-vendor support, etc.
-
-> Slowing down all users to help kernel developers debug seems like the
-> wrong direction. Kernel developers should know enough to be able to
-> turn on the required configs, why does this need to be the default?
-
-It's clear you strongly disagree with the decision to do this.  It's 
-certainly your right to do so.  But it's not good to spread misinformation 
-about how changing the defconfigs "slow[s] down all users," or 
-exaggerating the difficulty for downstream software environments to back 
-this change out if they wish.
+I'm sure we'll revisit this in the future to realign with the defconfig 
+debug settings for more mature architecture ports - but my guess is that 
+we'll probably avoid creating debug_defconfigs, since only S390 does that.
 
 
 - Paul
