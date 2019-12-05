@@ -2,77 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D709114558
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Dec 2019 18:05:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A7F211456A
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Dec 2019 18:10:22 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nmiicMy/6M+nsAYismUP6xCcu8kfa7/13Wnrua1z9JQ=; b=K4yp/GtyfWSEWfLLq275FluZ7
-	qnWExrfG3wdKYQcnwAHIaCBh+1UWT8MDmEx0QrXgPJOCLpayyAEZ5Aj5RjWYdm+KRKR8Djynv7nWI
-	ABSSO9dFz+z4JW8DQvL7l+GjDNCytIcslyRyJwvrSN3yQm/cN2wwd9NhdC8SYNjcIU10Od5442PS8
-	zAOg/JlSze8pLthLvbJ+j3hb0asgCUTHXcmvHcWTNVeGSzweVOSsjeEWS7Pu9uQTxgkThhncCJOSC
-	kTF8x+oBRXUy3wnWtFlxRps1A/rEIzINyaqvsFGbEJD9AUpbnpk0A7OtC3egSQ+oGusyErmT6aJUb
-	MXR0fBlXQ==;
+	 bh=HcoTcF4iRuur8fj4ZxTucRs4Jlu4z0J4uMeCsvrPgA0=; b=SKGT+alIXk5ZCNllTjKiH0/Oc
+	OKqAGpI+ZUJK/sFBuBTzBVY+TyxUFkN6XRTMpn4fE60k/tjgcY585OllUyE45ZpbpJIMJtwA19eip
+	5KWE4P1xX7VDNGcq3Vff7BkqZVNfCxmHPZX/A0GzYpyPDQ/CBYBv+p4fszcnQ4PYpKoD11LJXBTyK
+	cJHze6/3Y2zESb2IRqESMBvG672GZk1MkrhT0/KVKvRfj20PoBA7K+LDOJH3x9299bebvNqYjwafG
+	aZy309EFODF5M+CvwTW6yWMHOAAqt55xRZKSsrqV1zwO9wKC/xBBpbJbzlxc/cxI7MYDvFHgEExZf
+	5xCAMjaQA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icuZF-0006QO-W9; Thu, 05 Dec 2019 17:05:30 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1icudr-000872-FT; Thu, 05 Dec 2019 17:10:15 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icuZD-0006Pg-A6
- for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 17:05:28 +0000
-Received: by mail-wr1-x442.google.com with SMTP id j42so4484233wrj.12
- for <linux-riscv@lists.infradead.org>; Thu, 05 Dec 2019 09:05:26 -0800 (PST)
+ id 1icudo-00086H-Cs
+ for linux-riscv@lists.infradead.org; Thu, 05 Dec 2019 17:10:13 +0000
+Received: by mail-wm1-x343.google.com with SMTP id c20so3049308wmb.0
+ for <linux-riscv@lists.infradead.org>; Thu, 05 Dec 2019 09:10:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nmiicMy/6M+nsAYismUP6xCcu8kfa7/13Wnrua1z9JQ=;
- b=ZyBCIqvHD5Fw3/s1GossAdaOw/98K3zrqYDElXCxBpi4/Iv68AoRrJRRnG7HyBO2lW
- MTWiDEDoFmNklk1lP/I5zIT6bEjood7Bk+G0PlzfzSVPTNkDyuKZxFXBXoxqiYqXtbBr
- 2njrE6Br/bHNIpleZjeD41c48Wm/O7MQnua5TsIuspIVxVOJEACbpVFEepSRH8YvuISi
- 8/My4nIfSwAGy0BA7RKcgkkpY7cX6cjhLrLT/7QaEa1MstVIUgtC/c+kB1rVjMElb3iI
- D5D+CWD+R+Qe3qia42mRY8QSLu3uqYi/9SjS7DioUpOb0d/eyoulcNdrtTv22qmVb+oh
- o3hg==
+ :cc; bh=HcoTcF4iRuur8fj4ZxTucRs4Jlu4z0J4uMeCsvrPgA0=;
+ b=GhB+Cp5GOFV9kdBjApIpdy8Oog116Zo+KvrUdUrw4aeA3NNowP+teHJw08qpODUq58
+ Rd1X+kIkDOvrow7+B2HCFYOGogx9cRB4KrY8B0jO06HKDTfh95VhVbDwjHPotNILj0Wy
+ mmmUvmsesOWiFMLwd/qFV67yUxuZ7fyFDpCWnbiGtCkSJ+wOS4Dm/UAAEELhj+toaQLk
+ 4btu6/ModWT2ApflPzcCOeDme6VbmOXFAyV9aI//qKfWt6+/fGDtuvYKug78C/KQqV5w
+ /dp0NqUIDNdvLstMHXRKEomk7cttm1xW6Cvo8unmJUOEvMf8nGkTYba7xbOLPtho0aFv
+ kChw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nmiicMy/6M+nsAYismUP6xCcu8kfa7/13Wnrua1z9JQ=;
- b=axQX+R3/RAIjL7DM1NxmUxoWO3an1wz7UT9qOQkwveNFefzQhZkX3UPmheczdtv0LD
- P8ifCBqW1d7pToNidur0hen+L/iY7rrhazq3mvGdux8gudg7AnBZhsziN2VQy+rmcrSQ
- AEoilHwSGlFpRcACAE/1vQt+ePhAm1zoEkJ8VhpeG0d0Oi4np0xEdv4TdaHhEVANXmL8
- PjFA728mv/uoUc7TiqO8kvgD7Lkw1XSb0k+8w39wWzhSuYZVgjiuUO/oFPZ109MX39fJ
- +sHiAoSjz7y+8ioToP3VcppAKg0tp7o3ymiSMuDue2M/PXLuPHxLWhFtQZSAEaEIWyh2
- ALDg==
-X-Gm-Message-State: APjAAAURzxWm4oMbNgTtmiH80pZI+YNVezTItp/vrojHp0UH0PAi96SP
- 2Dhn2T6XnTzZ/MlzRhfWJattOAuOH4yO3cbiklpffw==
-X-Google-Smtp-Source: APXvYqw4k4hAJNrFCSqp5tAxbLz6JAprMFbTtuiQEa4hm28f/i05PdxA4aj5EH1iDs22iFZgxPNrT87oVQSx5niAtW8=
-X-Received: by 2002:a5d:4752:: with SMTP id o18mr10964514wrs.330.1575565524767; 
- Thu, 05 Dec 2019 09:05:24 -0800 (PST)
+ bh=HcoTcF4iRuur8fj4ZxTucRs4Jlu4z0J4uMeCsvrPgA0=;
+ b=TTbLUNwTS/1UI/wCz1cjcc+tWTV4Lif9YpHlWg6Jj/ayvSjIB2KL8uUyxKPKcJYoEH
+ tBhnj9xGyA6ogAbsZBxEDI4jHM67hmEiq0jVkpvxG80UYQM3aBmrsAP4sOLjC5jCbci7
+ JllhnvvVB5pDAn/JaSJVFWATG+wKSIqmgShZpTYclyhheR6vu8piipRTO90YuYhpmi3o
+ PuFRxXYxky2MglJwrrrPicc6sIp6AZmAj4iJ5b+xls78Efo8O8gFtjxNovr3QLOeIwDE
+ GZ99VhNeqMlxH+MC+wuvWSzAARHK0rExZ1a28RK5edWp/bFbU5pPJsz47X8hH86gJWUX
+ gXJw==
+X-Gm-Message-State: APjAAAW0ZVwLsP2GxT6J9F7bz9MVo+mS7Yqvfc7DaA+eYTLTHrA9c3st
+ Qw7RdrHf3EON5XVWakwNheSCwQqz9RbokVjPmFz/Sg==
+X-Google-Smtp-Source: APXvYqwCDsQjsFf4aCoujj4lgDcKz1RHdCiPDAZd2dsX4LRayTGzMnK+ZmkuGr5iNH8DVweFmWFtFB/IBrnXgzBpEvw=
+X-Received: by 2002:a1c:9602:: with SMTP id y2mr6231625wmd.23.1575565810251;
+ Thu, 05 Dec 2019 09:10:10 -0800 (PST)
 MIME-Version: 1.0
 References: <20191205005601.1559-1-anup.patel@wdc.com>
  <alpine.DEB.2.21.9999.1912041859070.215427@viisi.sifive.com>
  <CAAhSdy1RQw3MVcVT5y1EHr72LDNADKRL5nO2E8OrzBi+tpuvtA@mail.gmail.com>
- <alpine.DEB.2.21.9999.1912050900030.218941@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.1912050900030.218941@viisi.sifive.com>
+ <20191205164706.svarpjp2kdokl2pg@holly.lan>
+In-Reply-To: <20191205164706.svarpjp2kdokl2pg@holly.lan>
 From: Anup Patel <anup@brainfault.org>
-Date: Thu, 5 Dec 2019 22:35:13 +0530
-Message-ID: <CAAhSdy2ySO_TGL9EYsHnk2p=tceRGaVfogyhthqJEJf-AoOCYw@mail.gmail.com>
+Date: Thu, 5 Dec 2019 22:39:59 +0530
+Message-ID: <CAAhSdy3cMp8241Mcwb7tQCRd1LEzv9gKO2wyq8bctW86c0BVRg@mail.gmail.com>
 Subject: Re: [PATCH] RISC-V: Add debug defconfigs
-To: Paul Walmsley <paul.walmsley@sifive.com>
+To: Daniel Thompson <daniel.thompson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191205_090527_352863_3BD42EFB 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20191205_091012_441081_4987BB60 
+X-CRM114-Status: GOOD (  19.85  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -93,36 +93,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  Atish Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
  Christoph Hellwig <hch@lst.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Dec 5, 2019 at 10:31 PM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+On Thu, Dec 5, 2019 at 10:17 PM Daniel Thompson
+<daniel.thompson@linaro.org> wrote:
 >
-> On Thu, 5 Dec 2019, Anup Patel wrote:
->
-> > I understand that you need DEBUG options for SiFive internal
-> > use
->
-> [ ... ]
->
+> On Thu, Dec 05, 2019 at 10:03:34PM +0530, Anup Patel wrote:
+> > On Thu, Dec 5, 2019 at 8:33 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+> > >
+> > > On Thu, 5 Dec 2019, Anup Patel wrote:
+> > >
+> > > > Various Linux kernel DEBUG options have big performance impact
+> > > > so these should not be enabled in RISC-V normal defconfigs.
+> > > >
+> > > > Instead we should have separate RISC-V debug defconfigs having
+> > > > these DEBUG options enabled. This way Linux RISC-V can build both
+> > > > non-debug and debug kernels separately.
+> > >
+> > > I respect your point of view, but until the RISC-V kernel port is more
+> > > mature, I personally am not planning to merge this patch, for reasons
+> > > discussed in the defconfig patch descriptions and the subsequent pull
+> > > request threads.
+> > >
+> > > I'm sure we'll revisit this in the future to realign with the defconfig
+> > > debug settings for more mature architecture ports - but my guess is that
+> > > we'll probably avoid creating debug_defconfigs, since only S390 does that.
+> >
+> > We have a lot of users (Yocto and Buildroot) dependent on the Linux
+> > defconfig. I understand that you need DEBUG options for SiFive internal
+> > use but this does not mean all users dependent on Linux defconfig
+> > should be penalized in-terms of performance.
+> >
 > > This is the right time to introduce debug defconfigs so that you can
-> > use it for your SiFive internal use
+> > use it for your SiFive internal use and all users dependent on normal
+> > defconfigs are not penalized in-terms of performance.
+> >
+> > If you still don't want debug defconfigs then I recommend reverting
+> > your DEBUG options patch and you can find an alternative way to
+> > enable DEBUG options for SiFive internal use.
 >
-> [ ... ]
+> None of my business (except that I watch threads with debug in the
+> subject line) but why propose putting debug options into any kind
+> of defconfig. If you want standardized set debug options to chase
+> problems why can't they into a .config file rather than a defconfig
+> file.
 >
-> > and you can find an alternative way to enable DEBUG options for SiFive
-> > internal use.
+> In use it will look like:
+>   make defconfig extra_debug.config
 >
-> What leads you to conclude that this was done for SiFive internal use?
+> That way you don't have to maintain two almost identical files that will
+> inevitably drift apart.
 
-Why else you need it ?
+This is a good suggestion. I will certainly try it out at my end and send
+a v2 with "extra_debug.config" file.
 
-It is not at all a standard practice to put DEBUG options in defconfigs
-across architectures.
-
-Regards,
+Thanks,
 Anup
 
