@@ -2,80 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE9331160B5
-	for <lists+linux-riscv@lfdr.de>; Sun,  8 Dec 2019 06:28:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 301641165CA
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 05:25:09 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z9pquV3bCMWDZGt16luo26JnnZC+AO01g0+9zHilts8=; b=ko8BTTbNHhkc1ibQrctj6StnM
-	YrIMGZnxd8cONnoLSABDNqlhO5vlF4mtXdtHyq7Vpm0tVpubDnsyZ62IHuGpSxQkDH0ctlvo/0Cst
-	Lgi7/cPfzovwws0zXc2z/waLTu1/nRPRaeFIclAtS1CMXClTZpSS9ld2gl7KrEP0fhb+Dc/x/q6/I
-	AGusG6PrMshd74TNoLQBwT2At79QI5hmtZQUHFuBYOVdxqwytXyEHafKYIYwHiqWt1nK3Rbh7U+vi
-	TuNNcKXZR0sq8X+1Ri8XolesXGzsBPKxrxwnglCnP3QKSiMS/IUgRlfiUuaygb+MBjV1sxPvaz/Jc
-	0iCOMbWAQ==;
+	 bh=FjBJowwpo7B18Ub3dHkRzHZQJot1o+Yw+UkDlG9NzVw=; b=stEjRRnFXy1cDD+bRXw7Eh6FQ
+	N/ixtZgJ3A145ixqsF8a4EnyTiIcB/raHNwFR1wPwV66GuMGMBgUNAsjqe3e6EEHfT6eBFzT7Xzwp
+	6BtCmLe45MY4cE9LE/omMR2RxXPp1Cfinq7+Zrg7QPZWQQXYUD2/PKiJ8WRd8OA1cM2nmw2uuAb0o
+	0by66AO4S9vpI5hMnRrrX52hSjwiiRZeYmtFXmu4Drr0DDDiczqXuZu2ZTFJEPqK78SpnDpXyPwEd
+	WqIs15ElmC50CH8/Jue6aAfvp2rMMADkIZoNFRSi7A3jueWEr63c/aC+ptOVOvUZ3NAoNTrK5seK6
+	t1gXbIgDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1idp6g-0001t9-4m; Sun, 08 Dec 2019 05:27:46 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1ieAbM-0007kR-9Z; Mon, 09 Dec 2019 04:24:52 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1idp6c-0001si-OE
- for linux-riscv@lists.infradead.org; Sun, 08 Dec 2019 05:27:44 +0000
-Received: by mail-wr1-x444.google.com with SMTP id d16so12253746wre.10
- for <linux-riscv@lists.infradead.org>; Sat, 07 Dec 2019 21:27:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=z9pquV3bCMWDZGt16luo26JnnZC+AO01g0+9zHilts8=;
- b=jLkzEE1Emr1PE83CAnq1AgI/inVp1i1XP/A3KxFtGeJPzlHjql/AW7qbDdoJ6RkwP/
- M/blOWuFrHwTqVu0HD7XU6oBygARII63Io7FMuwFIxSBZNWXQE31nohsv70D5gUG4c0i
- lNvmgd8v9iiNwDU13GC2k+iVIOlGqM5ZLBBwFS0BOKt6JCa7on8rMz9kSlcs7esYIHgo
- fvsHYFEuxDFHfp+pl5oEMOHRNsbovOC8155cnN2xpFkU2AfJHF/8Ko8IyKuo7p2XDSiq
- 71OYrCMOENeHGiW1mvRDeWIrxseD+Z++mGviUs4LIgYBh6i6l3P4WQsYall4BQaOHbjs
- zn5w==
+ id 1ieAbI-0007k1-LC
+ for linux-riscv@lists.infradead.org; Mon, 09 Dec 2019 04:24:50 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id o11so5283855pjp.9
+ for <linux-riscv@lists.infradead.org>; Sun, 08 Dec 2019 20:24:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version;
+ bh=FjBJowwpo7B18Ub3dHkRzHZQJot1o+Yw+UkDlG9NzVw=;
+ b=D1ibm2C7XTOofsRttdhpF11tP65by4t0pFUwmAoPmaDAx4VpEkL3NABBy15ET/yX5F
+ IKzoajric3nimWNAwP8bzseUrk4siqyqtR6DMoyuDvcWfjctFjfdzo8/KatIVozJT199
+ fD2jjNpeOTyrV3n7mPjMf6kC6bwo9JaumSFx4YF9c8UwW+DIwgXqAHbdpil2wTjqSFkY
+ 26nbf583knZvGaDkWtVMRhmNbcgoQNUbcwzGtpwFHQzBAhnSrXuP6UCVmY7lUgtJoWtM
+ n4QLqOMc85w468yYOtF50HQIkYlKOPp+NGqwIIurT/aikeh0qWsmnIzORpH04JG6Rax3
+ XfIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=z9pquV3bCMWDZGt16luo26JnnZC+AO01g0+9zHilts8=;
- b=hcuE/KeSdEqGselbBDmmwu8Wjj7yCCoclQwju8IcpDRFq38/0G5KX6vVWUUyLBNMRC
- UT/AP19T53h3ApC5WDuzuFzapaiLvdjww/pwwypbec38UHlvidzY3fMxhHu5DLssVKp+
- x//Oa14LodxKmos+W9igXCSDb5kBzGqawzUz46dgNv4t3bjnmC1yneOVgqckRnESEGpm
- pTIujMbteAlxt3U2Bzh0PLo465O2f2C/4TrjFfE3vG+FEuLmHeL4oACJtCG4zJhafN48
- ppP6D9XRLDrojtO8cpJSPdmp4L5fCreIwSST50IVhNtD2hLImoY61mjTVnN1fhCt4kL+
- pRFg==
-X-Gm-Message-State: APjAAAW3Mg33khOqf9JgJwGqmEi5PvHCvhEYNnl8KsSwgx2uCCwUbRTs
- JwY7xu6oGYv0O342kYd3ymsGM3r/kajR7Y+cPW79Lw==
-X-Google-Smtp-Source: APXvYqw49COcOiWILG4CPx3KrlSGO4gmMkeSr4gqepLQqQqL+tWII/HFy4Sqica4vGqIHrcRGxBt0cpTksMJcfg5rEs=
-X-Received: by 2002:adf:d850:: with SMTP id k16mr22791152wrl.96.1575782858366; 
- Sat, 07 Dec 2019 21:27:38 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version;
+ bh=FjBJowwpo7B18Ub3dHkRzHZQJot1o+Yw+UkDlG9NzVw=;
+ b=XajttuAxFFRc2d069heczyCReXtIxZCQEU/mbdSx9XmEqCcHOhWdzjHjMphkwogXWd
+ My7Ca730IQe4S+J3zEKzFa+E4rjgq7TPj1YWmZDPhGK8jugaCvFApCxoOEWSfGKUHInZ
+ 0VGri+ZklnvO+pYMf/5pRv5Qe95NEc3MNFOoCrKZWwOuvAik/3MWp4r/7mImhjnsLZAj
+ rUjNSX0l4kK481/80d7D6SsNBKFOiEWjo9ZigLlBQS3oWvxNxu7MxkazuAK+SbhoXByz
+ 5CaD5zPzA2SZDeQCFePYI8h82fPPbGT9/UE6KjeJq2KEoFgquD3A8ZnPAhTsAUTHgWuN
+ WtQQ==
+X-Gm-Message-State: APjAAAWsQC4nffjFTXmmMWZI+0NxAJ4YwxM5TYjGoxZZgYIJ4NbQT/zt
+ Ydd+on/MoPkHTqCElQBnbTfJcA==
+X-Google-Smtp-Source: APXvYqzaA8A/mEmeA4tXov3YGFR32Fl6cONa/Q55/CrsoMaL4IAFFuQyCFNPHXA3QfJwDXRz2YD7Og==
+X-Received: by 2002:a17:90a:c385:: with SMTP id
+ h5mr29733384pjt.122.1575865487160; 
+ Sun, 08 Dec 2019 20:24:47 -0800 (PST)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id e1sm25733094pfl.98.2019.12.08.20.24.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 08 Dec 2019 20:24:46 -0800 (PST)
+Date: Sun, 8 Dec 2019 20:24:45 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: Kefeng Wang <wangkefeng.wang@huawei.com>
+Subject: Re: [PATCH] riscv: only select serial sifive if TTY is enabled
+In-Reply-To: <b1f38e52-f34f-b867-bc18-1549333200e5@huawei.com>
+Message-ID: <alpine.DEB.2.21.9999.1912082023330.298041@viisi.sifive.com>
+References: <20191024072003.87116-1-wangkefeng.wang@huawei.com>
+ <alpine.DEB.2.21.9999.1910240911590.20010@viisi.sifive.com>
+ <b1f38e52-f34f-b867-bc18-1549333200e5@huawei.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-References: <20191207212916.130825-1-olof@lixom.net>
-In-Reply-To: <20191207212916.130825-1-olof@lixom.net>
-From: Anup Patel <anup@brainfault.org>
-Date: Sun, 8 Dec 2019 10:57:27 +0530
-Message-ID: <CAAhSdy0ERFToCEPtpaV9WX=RTyVD_=2GKutE7=cLnYtY-dU-OA@mail.gmail.com>
-Subject: Re: [PATCH] riscv: Fix build dependency for loader
-To: Olof Johansson <olof@lixom.net>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191207_212742_812808_CA373F58 
-X-CRM114-Status: GOOD (  11.57  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191208_202448_822127_1156FDAC 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,52 +98,30 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
+Cc: linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@sifive.com>,
+ Albert Ou <aou@eecs.berkeley.edu>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Dec 8, 2019 at 2:59 AM Olof Johansson <olof@lixom.net> wrote:
->
-> The Makefile addition for the flat image loader missed an obj prefix.
->
-> For most parallel builds this worked out fine, but with -j1 the dependency
-> wasn't fulfilled and thus fails:
->
-> arch/riscv/boot/loader.S: Assembler messages:
-> arch/riscv/boot/loader.S:7: Error: file not found: arch/riscv/boot/Image
->
-> Fixes: 405fe7aa0dba ("riscv: provide a flat image loader")
-> Cc: Christoph Hellwig <hch@lst.de>
-> Signed-off-by: Olof Johansson <olof@lixom.net>
+Hi Kefeng Wang,
 
-LGTM.
+On Fri, 29 Nov 2019, Kefeng Wang wrote:
 
-Reviewed-by: Anup Patel <anup@brainfault.org>
+> On 2019/10/25 0:12, Paul Walmsley wrote:
+> > On Thu, 24 Oct 2019, Kefeng Wang wrote:
+> > 
+> >> There is some warning if TTY is not enabled, and lead to
+> >> build error, only select serial sifive if TTY enabled, and
+> >> this also makes randconfig happy.
+> >>
+> >> Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
+> > 
+> > Thanks for doing these randconfig tests!  Queued for v5.4-rc.
+> 
+> Hi Paul, this patch is not in v5.4 :)
 
-Regards,
-Anup
+Sorry about that.  I've re-queued it for v5.5-rc.
 
-> ---
->  arch/riscv/boot/Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/riscv/boot/Makefile b/arch/riscv/boot/Makefile
-> index a474f98ce4fae..36db8145f9f46 100644
-> --- a/arch/riscv/boot/Makefile
-> +++ b/arch/riscv/boot/Makefile
-> @@ -24,7 +24,7 @@ $(obj)/Image: vmlinux FORCE
->  $(obj)/Image.gz: $(obj)/Image FORCE
->         $(call if_changed,gzip)
->
-> -loader.o: $(src)/loader.S $(obj)/Image
-> +$(obj)/loader.o: $(src)/loader.S $(obj)/Image
->
->  $(obj)/loader: $(obj)/loader.o $(obj)/Image $(obj)/loader.lds FORCE
->         $(Q)$(LD) -T $(obj)/loader.lds -o $@ $(obj)/loader.o
-> --
-> 2.11.0
->
+
+- Paul
 
