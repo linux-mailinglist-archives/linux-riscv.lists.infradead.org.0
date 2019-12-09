@@ -2,56 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B41F117675
-	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 20:58:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AC19117685
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 20:58:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IvoK48XMkvTMy8qiYExc0dK2WdplKiTgSr2CX/mQRuY=; b=NwiEimeqQGnBwUFPqvo8An3Sx/
-	o4qU1g19uaeMsH0WaMSHQKarSPQ51DXCLd6oQUXc/DC1yE8TDvNt4wW8szwVoYD8LhvB+j3E0/zRk
-	KeiWInfSjQr8C12riFU1IyZHjkZ8mqqfISAUw2NL/aJwnN8X1VGZscOSb9XOS3B0Vvas96kp0HXH1
-	9Xjf8mZpGadwjqgHL6rQI/s4UPP3TkFASv2BPUu47LRcFfLqR5mz/KQ5828y7xkFbEgc9tDM7HXuy
-	QpVQZtuzT6ueHhvsZarKILuCk15S/oaQhWhFV5TuQXlfuUENoDNb3LrmmJNDQDZIMM/L+puf7/8v7
-	fVK4ZoCQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
+	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oFak+0J7ythKfPAlMM6BlHsXOZpfWhjFtYhFdd8JGAU=; b=VU5Cc3NNJSrojh
+	DtPh7un0PK/ISDc5nDmQDqmSTeBbOsSbkNJYh0h8q7lxsFOyHrEzmxwlwo458lF0tgUSQyM02++U+
+	152qUuNJTk3U7+aiJJ0vlhbCFE6CT1r5CUTJQAd27U7Ta+Dj4cIQBvgms/Ihm1K3U5iH1TEMBoXty
+	aTLFpbcWk1Q3FO85fdhMHE49ofEJ2fisBT+6aWIPOkinMl6UELwXtGEgEaequMxbV9dBNU4QlUjno
+	3zPvy+OXS3+1OfkUkNXiKHpK7zx+k+xeT0aFWcBsaGRF1PVlYqmRvvsVsxZ+Q+wiXeSRLSEkhZ5uh
+	sQcbSXKkibbIYxhguF0A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iePAK-0001Q2-Ji; Mon, 09 Dec 2019 19:57:56 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1iePAf-0001fW-TA; Mon, 09 Dec 2019 19:58:17 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iePAF-0001Op-VE; Mon, 09 Dec 2019 19:57:53 +0000
-Received: by mail-pf1-x441.google.com with SMTP id h14so7752461pfe.10;
- Mon, 09 Dec 2019 11:57:51 -0800 (PST)
+ id 1iePAU-0001VR-Ig; Mon, 09 Dec 2019 19:58:08 +0000
+Received: by mail-pl1-x644.google.com with SMTP id s10so6245285plp.2;
+ Mon, 09 Dec 2019 11:58:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=IvoK48XMkvTMy8qiYExc0dK2WdplKiTgSr2CX/mQRuY=;
- b=j+hgEZpZ55FVOsvuQu5R+uJRyxi6R8PbS8VSObrqP6U6QABWGFNmJk7rsKEttOtMqY
- CWLgzTDEnRHLon5MC6xAns6zDB1Q6TFv4m2LjMws94TmRUFuwVijAuAYrAnjNg2hgy/b
- L++ZcMnL/zWmMyU8iQvSzEtUCtE8wNjH1U+wYQhpCluLfkLAZ1PMjqCKh5AloR6aB6Nf
- VCVpKkxGRHFeNE5Nw4bGTeFtYHeK2yPSlqVGT14zz+uzsVeYoin8sj3wewHRPEsa5H5F
- I0XNdbA8FosC/WO4PPbL8xwsZbUO3cYHpEnpqi40sF0mL2PKdkjFCAcfT1bXJ6UElPFb
- P8FQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=oFak+0J7ythKfPAlMM6BlHsXOZpfWhjFtYhFdd8JGAU=;
+ b=fTOm1kOhKLvzJHC0AAqUb2/p0TvDJgwfmvnY3lHowW7c+48yFQB6XDVPnKvWLsFxoJ
+ 8+qJLxmjP0fWQPJFjWjrzeKdmr7HCcvUPvupXLrSiUy+v9Xm/2K0P4PcQJxly8qcGPCT
+ BZANJxsD9diLPPIp8TWbnOz5lnrhf195tMiXAMYWOceS/lA0pRyYJPDmU/jaMZth8IfN
+ JqAS64c3uyTNUvVI4njUfbds4hdw1XR9X31FhizZGxy80cDDrI5aZ8b0q895feKvjQ+B
+ Ic5kPESbJnMbBdfonlBK5KqGSgrPk5e5jgkhxoFwB5eQGA5OUimVoap56TL4+5rhG0lU
+ jDuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=IvoK48XMkvTMy8qiYExc0dK2WdplKiTgSr2CX/mQRuY=;
- b=umLzHEkwTnmTbE8ggypwHqf9EJn/NigVulCad6wAuXPSEHYwPm+aDazdRwef1YMcC7
- R3HStozF0054W8n3xPwX8dsGJkorIVDQtDt0eXVFR6LUZFfhhnTS0wHE5loJdveDmzhH
- GIQHHQnMTo9rYEN02IXB7nooy2laOq89fR2+vV0KhfsKTPFl+dU/0hUhtYzhM3jUkz7q
- 6IXFq/9RTAWLx5sVUGDcD+Zkbc6jCtamD7L3lEwRjuSUL9uO6151nJadxeWqbfemsLqc
- uTbiLXZdmke3JR0dHjegwasoYvh1tOACWaYQ7KM5xmbGEOzw8mz3Rl/Y3eOUqVKY3Zjb
- /lig==
-X-Gm-Message-State: APjAAAUip06qDwgYfGYBYcpBnA5khiUnYkZ27srEsdKmdLlzMkHyS4ic
- RMN3HxPsomq9KlTHh3GmbNw=
-X-Google-Smtp-Source: APXvYqwuBV1uQV1WLQZ4M+aEZQMsoHsNQhsRHxo1Ou+jCE6+Qsb06pjjlBpaPji+HVgJJhu669OFbA==
-X-Received: by 2002:a63:2808:: with SMTP id o8mr20217117pgo.39.1575921471235; 
- Mon, 09 Dec 2019 11:57:51 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=oFak+0J7ythKfPAlMM6BlHsXOZpfWhjFtYhFdd8JGAU=;
+ b=S5XPr5DRw58jbJ12opS9FfXBGNmk1bCIDDrahBHrtKFGASJQr5fs3Ab8UWz4GbhoJM
+ vtno93xuYq9KYgjS6grHvkQIOqIdgsvyREwibe4I9HNP3rQ3re7LqRB2AwLqynWDCsZF
+ U+VYzzlCxrpcsd+DN6X69btJxRNJyVaNaG6wPlkc3gfCnzum3k0/9dmw8WBnMdrcGPwC
+ 2hqTT/CKuK/pphACRZLNmPi9P6HkzlBMXboB4esE0gGpLz9VCiVUQYHl7j6d6qgEduxi
+ L90a0BjndbYGU9x8Op4IG+faK9jXWIixDu1ZcL24frAXzkdMCwcfiUVhu4KODnj+GqK/
+ ihZg==
+X-Gm-Message-State: APjAAAVKjSljeCO+3C6dGWNt/G44V7RGE6pVDjvQPUUuWiS4P/qVGgHS
+ HEjFmp6ZjSUmbB6+qXNd3Ug=
+X-Google-Smtp-Source: APXvYqw8p9qnWyQgULg4OsrlEke+jE9I3hGNN9t0otHZ2EhBJwliK/uGLJQ+ngat7SZpVpL4h+AdQg==
+X-Received: by 2002:a17:90a:6484:: with SMTP id h4mr863042pjj.84.1575921482018; 
+ Mon, 09 Dec 2019 11:58:02 -0800 (PST)
 Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id e10sm316733pfm.3.2019.12.09.11.57.50
+ by smtp.gmail.com with ESMTPSA id k12sm358411pgm.65.2019.12.09.11.58.01
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 09 Dec 2019 11:57:50 -0800 (PST)
+ Mon, 09 Dec 2019 11:58:01 -0800 (PST)
 From: Yangtao Li <tiny.windzz@gmail.com>
 To: afaerber@suse.de, manivannan.sadhasivam@linaro.org,
  mturquette@baylibre.com, sboyd@kernel.org, Eugeniy.Paltsev@synopsys.com,
@@ -69,22 +70,22 @@ To: afaerber@suse.de, manivannan.sadhasivam@linaro.org,
  wangyan.wang@mediatek.com, chunhui.dai@mediatek.com,
  miquel.raynal@bootlin.com, heiko@sntech.de, jcmvbkbc@gmail.com,
  nsekhar@ti.com, geert+renesas@glider.be
-Subject: [PATCH 01/17] clk: sunxi: sunxi-ng: convert to
- devm_platform_ioremap_resource
-Date: Mon,  9 Dec 2019 19:57:33 +0000
-Message-Id: <20191209195749.868-1-tiny.windzz@gmail.com>
+Subject: [PATCH 02/17] clk: qcom: convert to devm_platform_ioremap_resource
+Date: Mon,  9 Dec 2019 19:57:34 +0000
+Message-Id: <20191209195749.868-2-tiny.windzz@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20191209195749.868-1-tiny.windzz@gmail.com>
+References: <20191209195749.868-1-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_115752_012430_06417A5A 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191209_115806_635342_7C08AA54 
+X-CRM114-Status: GOOD (  10.85  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (tiny.windzz[at]gmail.com)
@@ -120,270 +121,107 @@ Use devm_platform_ioremap_resource() to simplify code.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/clk/sunxi-ng/ccu-sun50i-a64.c    | 4 +---
- drivers/clk/sunxi-ng/ccu-sun50i-h6.c     | 4 +---
- drivers/clk/sunxi-ng/ccu-sun8i-a83t.c    | 4 +---
- drivers/clk/sunxi-ng/ccu-sun8i-de2.c     | 4 +---
- drivers/clk/sunxi-ng/ccu-sun8i-r40.c     | 4 +---
- drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c  | 4 +---
- drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c | 4 +---
- drivers/clk/sunxi-ng/ccu-sun9i-a80.c     | 4 +---
- drivers/clk/sunxi/clk-mod0.c             | 4 +---
- drivers/clk/sunxi/clk-sun6i-apb0-gates.c | 4 +---
- drivers/clk/sunxi/clk-sun6i-apb0.c       | 4 +---
- drivers/clk/sunxi/clk-sun6i-ar100.c      | 4 +---
- drivers/clk/sunxi/clk-sun8i-apb0.c       | 4 +---
- 13 files changed, 13 insertions(+), 39 deletions(-)
+ drivers/clk/qcom/a53-pll.c  | 4 +---
+ drivers/clk/qcom/common.c   | 8 ++------
+ drivers/clk/qcom/hfpll.c    | 4 +---
+ drivers/clk/qcom/kpss-xcc.c | 4 +---
+ 4 files changed, 5 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/clk/sunxi-ng/ccu-sun50i-a64.c b/drivers/clk/sunxi-ng/ccu-sun50i-a64.c
-index 49bd7a4c015c..087880b20c15 100644
---- a/drivers/clk/sunxi-ng/ccu-sun50i-a64.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun50i-a64.c
-@@ -923,12 +923,10 @@ static const struct sunxi_ccu_desc sun50i_a64_ccu_desc = {
- 
- static int sun50i_a64_ccu_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/qcom/a53-pll.c b/drivers/clk/qcom/a53-pll.c
+index 45cfc57bff92..42d14b6861d4 100644
+--- a/drivers/clk/qcom/a53-pll.c
++++ b/drivers/clk/qcom/a53-pll.c
+@@ -38,7 +38,6 @@ static int qcom_a53pll_probe(struct platform_device *pdev)
  {
--	struct resource *res;
- 	void __iomem *reg;
- 	u32 val;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi-ng/ccu-sun50i-h6.c b/drivers/clk/sunxi-ng/ccu-sun50i-h6.c
-index f2497d0a4683..00fa8ff2f51b 100644
---- a/drivers/clk/sunxi-ng/ccu-sun50i-h6.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun50i-h6.c
-@@ -1183,13 +1183,11 @@ static const u32 usb2_clk_regs[] = {
- 
- static int sun50i_h6_ccu_probe(struct platform_device *pdev)
- {
--	struct resource *res;
- 	void __iomem *reg;
- 	u32 val;
- 	int i;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c b/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c
-index 2b434521c5cc..b2aaa99ad23f 100644
---- a/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c
-@@ -887,12 +887,10 @@ static void sun8i_a83t_cpu_pll_fixup(void __iomem *reg)
- 
- static int sun8i_a83t_ccu_probe(struct platform_device *pdev)
- {
--	struct resource *res;
- 	void __iomem *reg;
- 	u32 val;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi-ng/ccu-sun8i-de2.c b/drivers/clk/sunxi-ng/ccu-sun8i-de2.c
-index d9668493c3f9..f48f61297551 100644
---- a/drivers/clk/sunxi-ng/ccu-sun8i-de2.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun8i-de2.c
-@@ -251,7 +251,6 @@ static const struct sunxi_ccu_desc sun8i_v3s_de2_clk_desc = {
- 
- static int sunxi_de2_clk_probe(struct platform_device *pdev)
- {
--	struct resource *res;
- 	struct clk *bus_clk, *mod_clk;
- 	struct reset_control *rstc;
- 	void __iomem *reg;
-@@ -262,8 +261,7 @@ static int sunxi_de2_clk_probe(struct platform_device *pdev)
- 	if (!ccu_desc)
- 		return -EINVAL;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi-ng/ccu-sun8i-r40.c b/drivers/clk/sunxi-ng/ccu-sun8i-r40.c
-index 897490800102..b456f85fd8da 100644
---- a/drivers/clk/sunxi-ng/ccu-sun8i-r40.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun8i-r40.c
-@@ -1294,14 +1294,12 @@ static struct regmap_config sun8i_r40_ccu_regmap_config = {
- 
- static int sun8i_r40_ccu_probe(struct platform_device *pdev)
- {
--	struct resource *res;
+ 	struct device *dev = &pdev->dev;
  	struct regmap *regmap;
- 	void __iomem *reg;
- 	u32 val;
- 	int ret;
+-	struct resource *res;
+ 	struct clk_pll *pll;
+ 	void __iomem *base;
+ 	struct clk_init_data init = { };
+@@ -48,8 +47,7 @@ static int qcom_a53pll_probe(struct platform_device *pdev)
+ 	if (!pll)
+ 		return -ENOMEM;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
  
-diff --git a/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c b/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c
-index 6616e8114f62..94552199d54d 100644
---- a/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c
-@@ -203,14 +203,12 @@ static const struct sunxi_ccu_desc sun9i_a80_de_clk_desc = {
+diff --git a/drivers/clk/qcom/common.c b/drivers/clk/qcom/common.c
+index 60d2a78d1395..0932e019dd12 100644
+--- a/drivers/clk/qcom/common.c
++++ b/drivers/clk/qcom/common.c
+@@ -73,11 +73,9 @@ struct regmap *
+ qcom_cc_map(struct platform_device *pdev, const struct qcom_cc_desc *desc)
+ {
+ 	void __iomem *base;
+-	struct resource *res;
+ 	struct device *dev = &pdev->dev;
  
- static int sun9i_a80_de_clk_probe(struct platform_device *pdev)
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return ERR_CAST(base);
+ 
+@@ -313,11 +311,9 @@ int qcom_cc_probe_by_index(struct platform_device *pdev, int index,
+ 			   const struct qcom_cc_desc *desc)
+ {
+ 	struct regmap *regmap;
+-	struct resource *res;
+ 	void __iomem *base;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, index);
+-	base = devm_ioremap_resource(&pdev->dev, res);
++	base = devm_platform_ioremap_resource(pdev, index);
+ 	if (IS_ERR(base))
+ 		return -ENOMEM;
+ 
+diff --git a/drivers/clk/qcom/hfpll.c b/drivers/clk/qcom/hfpll.c
+index a6de7101430c..de7df848dcfb 100644
+--- a/drivers/clk/qcom/hfpll.c
++++ b/drivers/clk/qcom/hfpll.c
+@@ -47,7 +47,6 @@ static const struct regmap_config hfpll_regmap_config = {
+ 
+ static int qcom_hfpll_probe(struct platform_device *pdev)
  {
 -	struct resource *res;
- 	struct clk *bus_clk;
- 	struct reset_control *rstc;
- 	void __iomem *reg;
- 	int ret;
+ 	struct device *dev = &pdev->dev;
+ 	void __iomem *base;
+ 	struct regmap *regmap;
+@@ -62,8 +61,7 @@ static int qcom_hfpll_probe(struct platform_device *pdev)
+ 	if (!h)
+ 		return -ENOMEM;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
+-	base = devm_ioremap_resource(dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
  
-diff --git a/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c b/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c
-index 4b4a507d04ed..adac159a5f63 100644
---- a/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c
-@@ -92,13 +92,11 @@ static const struct sunxi_ccu_desc sun9i_a80_usb_clk_desc = {
- 
- static int sun9i_a80_usb_clk_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/qcom/kpss-xcc.c b/drivers/clk/qcom/kpss-xcc.c
+index 8590b5edd19d..4fec1f9142b8 100644
+--- a/drivers/clk/qcom/kpss-xcc.c
++++ b/drivers/clk/qcom/kpss-xcc.c
+@@ -33,7 +33,6 @@ static int kpss_xcc_driver_probe(struct platform_device *pdev)
  {
+ 	const struct of_device_id *id;
+ 	struct clk *clk;
 -	struct resource *res;
- 	struct clk *bus_clk;
- 	void __iomem *reg;
- 	int ret;
+ 	void __iomem *base;
+ 	const char *name;
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi-ng/ccu-sun9i-a80.c b/drivers/clk/sunxi-ng/ccu-sun9i-a80.c
-index dcac1391767f..8295667e2252 100644
---- a/drivers/clk/sunxi-ng/ccu-sun9i-a80.c
-+++ b/drivers/clk/sunxi-ng/ccu-sun9i-a80.c
-@@ -1213,12 +1213,10 @@ static void sun9i_a80_cpu_pll_fixup(void __iomem *reg)
- 
- static int sun9i_a80_ccu_probe(struct platform_device *pdev)
- {
--	struct resource *res;
- 	void __iomem *reg;
- 	u32 val;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, res);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi/clk-mod0.c b/drivers/clk/sunxi/clk-mod0.c
-index 0cca91e075a5..cdb98937f584 100644
---- a/drivers/clk/sunxi/clk-mod0.c
-+++ b/drivers/clk/sunxi/clk-mod0.c
-@@ -88,14 +88,12 @@ CLK_OF_DECLARE_DRIVER(sun4i_a10_mod0, "allwinner,sun4i-a10-mod0-clk",
- static int sun4i_a10_mod0_clk_probe(struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
--	struct resource *r;
- 	void __iomem *reg;
- 
- 	if (!np)
+@@ -41,8 +40,7 @@ static int kpss_xcc_driver_probe(struct platform_device *pdev)
+ 	if (!id)
  		return -ENODEV;
  
--	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, r);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi/clk-sun6i-apb0-gates.c b/drivers/clk/sunxi/clk-sun6i-apb0-gates.c
-index a165e7172346..abae2813c59e 100644
---- a/drivers/clk/sunxi/clk-sun6i-apb0-gates.c
-+++ b/drivers/clk/sunxi/clk-sun6i-apb0-gates.c
-@@ -41,7 +41,6 @@ static int sun6i_a31_apb0_gates_clk_probe(struct platform_device *pdev)
- 	const struct gates_data *data;
- 	const char *clk_parent;
- 	const char *clk_name;
--	struct resource *r;
- 	void __iomem *reg;
- 	int ngates;
- 	int i;
-@@ -55,8 +54,7 @@ static int sun6i_a31_apb0_gates_clk_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	data = device->data;
- 
--	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, r);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi/clk-sun6i-apb0.c b/drivers/clk/sunxi/clk-sun6i-apb0.c
-index 10f70c35c265..f80c67bafe38 100644
---- a/drivers/clk/sunxi/clk-sun6i-apb0.c
-+++ b/drivers/clk/sunxi/clk-sun6i-apb0.c
-@@ -32,12 +32,10 @@ static int sun6i_a31_apb0_clk_probe(struct platform_device *pdev)
- 	struct device_node *np = pdev->dev.of_node;
- 	const char *clk_name = np->name;
- 	const char *clk_parent;
--	struct resource *r;
- 	void __iomem *reg;
- 	struct clk *clk;
- 
--	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, r);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi/clk-sun6i-ar100.c b/drivers/clk/sunxi/clk-sun6i-ar100.c
-index e1b7d0929cf7..ffc297732f8f 100644
---- a/drivers/clk/sunxi/clk-sun6i-ar100.c
-+++ b/drivers/clk/sunxi/clk-sun6i-ar100.c
-@@ -71,12 +71,10 @@ static DEFINE_SPINLOCK(sun6i_ar100_lock);
- static int sun6i_a31_ar100_clk_probe(struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
--	struct resource *r;
- 	void __iomem *reg;
- 	struct clk *clk;
- 
--	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, r);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
- 
-diff --git a/drivers/clk/sunxi/clk-sun8i-apb0.c b/drivers/clk/sunxi/clk-sun8i-apb0.c
-index fc5d6e3b77d1..f605ecca879f 100644
---- a/drivers/clk/sunxi/clk-sun8i-apb0.c
-+++ b/drivers/clk/sunxi/clk-sun8i-apb0.c
-@@ -87,12 +87,10 @@ CLK_OF_DECLARE_DRIVER(sun8i_a23_apb0, "allwinner,sun8i-a23-apb0-clk",
- static int sun8i_a23_apb0_clk_probe(struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
--	struct resource *r;
- 	void __iomem *reg;
- 	struct clk *clk;
- 
--	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	reg = devm_ioremap_resource(&pdev->dev, r);
-+	reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(reg))
- 		return PTR_ERR(reg);
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(&pdev->dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
  
 -- 
 2.17.1
