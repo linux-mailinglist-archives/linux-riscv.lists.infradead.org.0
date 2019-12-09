@@ -2,68 +2,68 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E14E71172DA
-	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 18:32:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C2BE1172DB
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 18:32:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qigMm4EqiyANinCkFguk39Cl6HfqkkQUc4cgfeXf+Bk=; b=A3hF4I7pkaeqnz
-	N2WczWHz39fcxLhLDyLgtIS08s4fz0BsX88tn+zhBU4k2cBZDyWrk2LEcrA8Q3arRfIpB2YswnoyY
-	135AladjWW//mnq0CXxDQfCm7GYpDdOQpPnbrjvTFB7U/7P1yYJqmHsLEyiXHknF06NK5sxHrSnyZ
-	mItx4a86EsVzFwZOumM/7DL16mXiydD5sdH8SRHyZfet1GJT9gdNUKeAZJUTbfFuG47kCDfY4Ny2O
-	P0JMm2ORseNHZHdPlyyxiQIHS20bEOYPWq8bUxP3cijzWKYyKJYsdBtVPwzyN8CHH0zXjGkOgIZX+
-	ELmdbQIpMtKWA1m8hw/g==;
+	List-Owner; bh=JJx1gb7dyIux/wvtlAjUM4Ul67VDqBxG4kjHz1T/apg=; b=bFyJrnzawGwPbW
+	lmy8lSSk7lbtHtqidIqEeaqF3SVJsnqepZwYGsZj5GKp+m789hd/KC0W2lPcjpqrknpO7pi0DGRAE
+	ZeeltCAvzdXKLbVC1OVo3gt/DB4EXO1OGYiL7YWf/Qc59W7GauVVmolrSfXvw76l1oKTV7kal+Lrd
+	PWBPhOPlVXpCnGQlmxN+DOkghhFSp3y2i8Tra/RbVixfezpnz1nlRRsJwzdq8RqciT0WPNX2jxpgs
+	43EkW9g7yYf12qLvoeqCmr4GY7SCwmFsAzHRrF3UZxPOCwOUu9mYGWdW4OVpaFaftliEjeaQXcFpk
+	dNxbfjQA490LYNbFxUag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieMtN-0004bc-Et; Mon, 09 Dec 2019 17:32:17 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1ieMtP-0004ey-73; Mon, 09 Dec 2019 17:32:19 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieMtE-0004Tr-1L
- for linux-riscv@lists.infradead.org; Mon, 09 Dec 2019 17:32:09 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id z21so6166291pjq.13
- for <linux-riscv@lists.infradead.org>; Mon, 09 Dec 2019 09:32:07 -0800 (PST)
+ id 1ieMtG-0004WZ-PN
+ for linux-riscv@lists.infradead.org; Mon, 09 Dec 2019 17:32:12 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id o11so6180344pjp.9
+ for <linux-riscv@lists.infradead.org>; Mon, 09 Dec 2019 09:32:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qigMm4EqiyANinCkFguk39Cl6HfqkkQUc4cgfeXf+Bk=;
- b=vOpqIJ6q75D7Put1Ibs+aBj9GoAdDjQOk0kztitX4aNnyO/uS5BEGTuVOgzGw3NuBq
- JhC61Pb0KNlCTr4SsK7zAwkA3PhZlEAIDpK9DHRPY9T8ODSc9+HqQ7xpE8Ta/uMp8QUW
- qHTBgLILsfFr+3JqxiF26oCYVBtFk2gGrj72WTrXW3GF5KB0cxTJi0xpP/oy4drKf1vA
- ZxqCN+fhD3HZ716kGXZCnQqRhyvSGhQg8vPxDf4XLKKz8GX+t7jFrKyhuLlHH/z8klwd
- Y91XRDVJEquj55w7xMkcNWqqJnBOyzRGmO3lrm7tXbKsPFW1J+nIqrjeMe6b3wBgC90K
- Ogaw==
+ bh=JJx1gb7dyIux/wvtlAjUM4Ul67VDqBxG4kjHz1T/apg=;
+ b=uS7kguZbewotiewe3eNEHiAYQ1NBG4BmutBfowVjnF3VSkL7gmTKFZI1qF19mjsr7U
+ 5Ymr+omBiK4cAUBfSnV7+LszdqA+5WKxmsJQPsh1nWll88ySD6QpGmUEVspEOECCoazn
+ ksCs2t465xw2OIIjFykCvuSH2f/l6AHW15B/bMSIXzYmku7qq5PQJxVBwFHHqEEEIJf2
+ lcBEpY62ERPEUolysJgD7ieIuyWWFH6st04PLD881a9iHhTgiq1ezMCQy+k7i9Kccdxs
+ Xy0jnm0HdR+Ci0bYEumQQ43R2A8zgVWjnPvVyqCmlkjf9AE0SgiTdy2UDK2cx9hPyCgq
+ qhnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qigMm4EqiyANinCkFguk39Cl6HfqkkQUc4cgfeXf+Bk=;
- b=jgM/YJJ3VR392MCowmPfqRpZ/cKiFL6iAgwUs6/amEuSCe5nD06wzFOkW6FvrK9A2/
- cUXFd2Zl9/loXpluSHW9A4TL0UWmFruWAlR68RqbydZTo7ZjAdqMhpxlRFoX3bp0enud
- YzCCZUZZqkj+1LbXzUJw0N6ltfriWXmCnjtpZQFTjZqBj9mQb2elz7Y9Fcxadyn0Mx14
- BRtA0SQLOeUqS/MW8ZopbI4L+iwL0Be/jtNBGEJuCiOizJx4EIZB1aDrXt1ZnOuU2Des
- CEuHBLzSQk04ZhZ9mwy12Q2qvLSlxatu843CieDc4PvngZ7URdig8PF82pv/qT3p62U6
- 4BpQ==
-X-Gm-Message-State: APjAAAVkEPGKlM2sGYBBsu6ES99MJp0vx+4kf2xcUQVf087MGlYyfgRF
- d+Zgh9QdRI/NUADrVc8G0V4=
-X-Google-Smtp-Source: APXvYqyWxdQ0hJhMJ0rThrltp9ujToYcSdgDSDZcAlBK2cFpYYNKVR4Jr1SX1fsoeMJ7K9c2xhIJGA==
-X-Received: by 2002:a17:902:ac8b:: with SMTP id
- h11mr30749482plr.87.1575912727095; 
- Mon, 09 Dec 2019 09:32:07 -0800 (PST)
+ bh=JJx1gb7dyIux/wvtlAjUM4Ul67VDqBxG4kjHz1T/apg=;
+ b=kbdyHsDmYmETwSEO90/8xnGHkg1Kvz5enwJz+kq1tNblOhlparYqwE7w5TipWHEVcw
+ ZoRLS2QIHyzoYMT9aAKKEJ4nxU05fheOqvQqPFWIZ2joh/nW5eSkpqHtcRshBvZg8izK
+ iEu9vmvmsmLwW9ryfvyupjTkcbusgz4T0beyuLJGsm9lPFLev9R0vMZeXTrODG2e48Rc
+ vNB76osD9teVSpxSB6tvV1st28/YRVT+pHP2sOqIhyQrGpkjpmE2oHoyTJm7X/zwW7cS
+ 36ImITyQBHi22uqAt7A5lgQo9DHBLDHu/O4MiKqSh7mjmb9DmlDwTuy/F986I9GuKXt+
+ 4PEA==
+X-Gm-Message-State: APjAAAUjYHz/yoLDpma12QufMn27LPNr8z4JXZ0s3iLh7c75zs4OlDZM
+ zjjQDnc1jp959sv8VQ0Y0QA=
+X-Google-Smtp-Source: APXvYqy8i85CXpsfyv8dckCdsUg7eLteOhLSNdZVYk516MDZYXdwuPo9V61Bsf6Mk2ZN6V00qpmncQ==
+X-Received: by 2002:a17:90a:ac0e:: with SMTP id
+ o14mr156393pjq.11.1575912729718; 
+ Mon, 09 Dec 2019 09:32:09 -0800 (PST)
 Received: from btopel-mobl.ger.intel.com ([192.55.55.41])
- by smtp.gmail.com with ESMTPSA id d23sm54943pfo.176.2019.12.09.09.32.04
+ by smtp.gmail.com with ESMTPSA id d23sm54943pfo.176.2019.12.09.09.32.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2019 09:32:06 -0800 (PST)
+ Mon, 09 Dec 2019 09:32:09 -0800 (PST)
 From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
 To: daniel@iogearbox.net,
 	ast@kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH bpf-next 7/8] riscv,
- bpf: add missing uapi header for BPF_PROG_TYPE_PERF_EVENT programs
-Date: Mon,  9 Dec 2019 18:31:35 +0100
-Message-Id: <20191209173136.29615-8-bjorn.topel@gmail.com>
+Subject: [PATCH bpf-next 8/8] riscv,
+ perf: add arch specific perf_arch_bpf_user_pt_regs
+Date: Mon,  9 Dec 2019 18:31:36 +0100
+Message-Id: <20191209173136.29615-9-bjorn.topel@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191209173136.29615-1-bjorn.topel@gmail.com>
 References: <20191209173136.29615-1-bjorn.topel@gmail.com>
@@ -71,8 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_093208_138486_44CC1B8D 
-X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-CacheID: sfid-20191209_093210_840139_AEF80920 
+X-CRM114-Status: UNSURE (   6.87  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -106,45 +106,27 @@ Cc: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add missing uapi header the BPF_PROG_TYPE_PERF_EVENT programs by
-exporting struct user_regs_struct instead of struct pt_regs which is
-in-kernel only.
+RISC-V was missing a proper perf_arch_bpf_user_pt_regs macro for
+CONFIG_PERF_EVENT builds.
 
 Signed-off-by: Björn Töpel <bjorn.topel@gmail.com>
 ---
- arch/riscv/include/uapi/asm/bpf_perf_event.h | 9 +++++++++
- tools/include/uapi/asm/bpf_perf_event.h      | 2 ++
- 2 files changed, 11 insertions(+)
- create mode 100644 arch/riscv/include/uapi/asm/bpf_perf_event.h
+ arch/riscv/include/asm/perf_event.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/riscv/include/uapi/asm/bpf_perf_event.h b/arch/riscv/include/uapi/asm/bpf_perf_event.h
-new file mode 100644
-index 000000000000..6cb1c2823288
---- /dev/null
-+++ b/arch/riscv/include/uapi/asm/bpf_perf_event.h
-@@ -0,0 +1,9 @@
-+/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-+#ifndef _UAPI__ASM_BPF_PERF_EVENT_H__
-+#define _UAPI__ASM_BPF_PERF_EVENT_H__
+diff --git a/arch/riscv/include/asm/perf_event.h b/arch/riscv/include/asm/perf_event.h
+index aefbfaa6a781..0234048b12bc 100644
+--- a/arch/riscv/include/asm/perf_event.h
++++ b/arch/riscv/include/asm/perf_event.h
+@@ -82,4 +82,8 @@ struct riscv_pmu {
+ 	int		irq;
+ };
+ 
++#ifdef CONFIG_PERF_EVENTS
++#define perf_arch_bpf_user_pt_regs(regs) (struct user_regs_struct *)regs
++#endif
 +
-+#include <asm/ptrace.h>
-+
-+typedef struct user_regs_struct bpf_user_pt_regs_t;
-+
-+#endif /* _UAPI__ASM_BPF_PERF_EVENT_H__ */
-diff --git a/tools/include/uapi/asm/bpf_perf_event.h b/tools/include/uapi/asm/bpf_perf_event.h
-index 13a58531e6fa..39acc149d843 100644
---- a/tools/include/uapi/asm/bpf_perf_event.h
-+++ b/tools/include/uapi/asm/bpf_perf_event.h
-@@ -2,6 +2,8 @@
- #include "../../arch/arm64/include/uapi/asm/bpf_perf_event.h"
- #elif defined(__s390__)
- #include "../../arch/s390/include/uapi/asm/bpf_perf_event.h"
-+#elif defined(__riscv)
-+#include "../../arch/riscv/include/uapi/asm/bpf_perf_event.h"
- #else
- #include <uapi/asm-generic/bpf_perf_event.h>
- #endif
+ #endif /* _ASM_RISCV_PERF_EVENT_H */
 -- 
 2.20.1
 
