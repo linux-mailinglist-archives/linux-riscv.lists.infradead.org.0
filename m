@@ -2,66 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B6341172D1
-	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 18:32:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5485A1172D5
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 18:32:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ldUAi30p4Fm9YFcB6XPp82qK2Gx4LpczH2It45srXeo=; b=kZVxgEkIYfLI/T
-	40fXu/X/2YzUV6SOwzxQbddRfC1xNVvDX0zNiTf/4tOtHkQph+LECo9pUwXlqgN3kfH1vn7HmpWHx
-	UQ1aw4xA/Uoxz3MMOx9iLrKBMmrSvDPQC/4DkH+4vswCg0o1JrtyQc7XlbDJVWsRkG3mVaL4sx5/+
-	8d7B4bi0Z5vlkw89K0CU4tVi7xc9ve8CPewxy+9T2WWzeIitOBUFmz4c261gJseR8s39PeqZn2e6L
-	X4SaFbNI1PfULf0YIe52tPn1iF+5zEC+jsadVIcxZAdMkAAhwKV6xmi6cmbd0AosDR7ejQJPHooq+
-	0AuoS2QnH01cGV3NR/gg==;
+	List-Owner; bh=Q72cQM+3SI70k7ctcpb9LKDM8a7LAen8E8Vv2d4hTLo=; b=WuzMQxfUzXKsGW
+	E2RnMQx8Sog0LpaWZSZLrfGmT6xWG008zU7sLvR0u5CCuW18/omfEKoKmlh5EVTcMGVZp41g/r6UD
+	w/iD6JAssfF8zIru3QwM/ZmqKe4emvE5MkrZdeTW3lSH5Kb+SEJvg7XEUVFWS2v/LK/xD29WmMg7w
+	46+/IG8OUfGhvEa27sXORMXhnkL/zU1Gi6pAHLz4zZ915aEm6P5Rt/Ndbl2Oi3WfIxA1KSh1yCC3U
+	US4uIORrePpWGVbA+N9FZb/dto107gESWOi76GFqb/hJf8nz3ZlJl06G/RIazTGO78aJjYmA9IyBQ
+	7a6438C0k8fS91j7g8qA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieMt9-0004MC-GE; Mon, 09 Dec 2019 17:32:03 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1ieMtD-0004Om-KL; Mon, 09 Dec 2019 17:32:07 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieMt3-0004Hg-HP
- for linux-riscv@lists.infradead.org; Mon, 09 Dec 2019 17:31:59 +0000
-Received: by mail-pf1-x443.google.com with SMTP id b19so7590114pfo.2
- for <linux-riscv@lists.infradead.org>; Mon, 09 Dec 2019 09:31:57 -0800 (PST)
+ id 1ieMt5-0004Jf-Us
+ for linux-riscv@lists.infradead.org; Mon, 09 Dec 2019 17:32:01 +0000
+Received: by mail-pf1-x441.google.com with SMTP id h14so7570464pfe.10
+ for <linux-riscv@lists.infradead.org>; Mon, 09 Dec 2019 09:31:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ldUAi30p4Fm9YFcB6XPp82qK2Gx4LpczH2It45srXeo=;
- b=I2wCeTTo+LKa1bhU4VfmVyMc9Cd30NbyeEDRCtVDaC5dxtYFpo1WOKYY95ZDtYBt77
- iLg4li5iVJPHBpqiaviSog5MP82WrRWIN/U2NuUoXiE3R3G05In5bf47/BcNlaYuSw5r
- TY7FoFnUt8LsxJwW7Golo15Zr7pxD2JDCB/F7YFcStshkWcBbf14zYnOq9CyNkKkyUYL
- GQtBNYFSfB+mL85SqgoiKbPnOcD0xRd6re5WemLJ97anofCxlu2xl7NAKKtUT1ksbCmL
- TiLKe8bVYr+vQoalNaG2xu/HojCwUu3u1UYd2zktXNHybg6SAW1BJNBwyv8xjNIasv9G
- RMIA==
+ bh=Q72cQM+3SI70k7ctcpb9LKDM8a7LAen8E8Vv2d4hTLo=;
+ b=sRk23x/JpxVKbzZj54qVRUi2aIExQ0SRE7GqFLD/hMDxEVsFavaeMfS44RU6oiuXfb
+ H0xi5LdEkduZ2iYCJYodCJF6Ing7Rv1IW8FMsyWVB2+sCdRzMHiUhKXmMg3xSMH6nHsX
+ ayoDJZab2LVWXwXub2wg/AlQtXMlEvPjhk8JTyMAKviCRlRECgURo0yOcgepZ2IDOykr
+ W3UsS2Gn8bgOe6SddLX7KSOBEYFK9IYdxMuaWv45tRXpfXQSmLLWywYTazar2mRObXn5
+ 1loXAYvQ7kzXfJ7qWWqSuEMjX6mcN+A83MnD5l6sHk/M+WOUax9WPdqqaHvnilPlsfcj
+ gSCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ldUAi30p4Fm9YFcB6XPp82qK2Gx4LpczH2It45srXeo=;
- b=ZymhZw2mKAStsuO+2xy7LZnP9/JYlZb1xLDJH8zMKKTNgQRBnNduXcomhL2fKuwKN9
- tnZJu5oDjEHoEsnUu+vFEBVH5uZIV6dViUyjR9UB807KjwHMTQkyxRHF8dag0PaEgIeQ
- h4ErZ6gCv3adVQTYfAksA5tH6GN/xY3FzlDH1EHsI38OirHG+3OlTbsWTlocuNIwFPZb
- co3ZhqG5ZoddbZ4m1yjJY3WSP4zlkWSslxZ6rjEMeu5VqmAa8ZJh3drBrKbgj1Lsv+6H
- myStUNvBTYLuEbSTXF0qNEVcsGuuldPdBYhyXTgFzlROVNjWOgE1ov7IvRyX4EyP9pwr
- ub2w==
-X-Gm-Message-State: APjAAAXJUepl+8lwtllDEox5mH5A8bxnku83EfuTdGyxzuCHTU5VWPsX
- fH+aqeMuIOPsWrry8MUMBBg=
-X-Google-Smtp-Source: APXvYqwXA7UudhebZ3PjOLU7xMSYDqHPA3gpUTrpfjHhuIm1CEOoB/cMYEqKSVi2rCrmP7SQU/ckUQ==
-X-Received: by 2002:a63:e14b:: with SMTP id h11mr19248346pgk.297.1575912716328; 
- Mon, 09 Dec 2019 09:31:56 -0800 (PST)
+ bh=Q72cQM+3SI70k7ctcpb9LKDM8a7LAen8E8Vv2d4hTLo=;
+ b=bCi+vUSOaFDC5inZaJsVAuqQ1T/wTlgLtRK2Z9l15oOUmXKYjnJTLB4vnHD1FiWAiu
+ 91FlMt5n5AIjspDC8KxbvhS0euMxDsWRK8PjqlOXL9CdbotPKr/idMYznjojkBfoLmNy
+ rMZlSl5Ku8UgA1waxAduJX/XP8ltL8W0kue0NtWL742gSbEwBswnqVGE3n5MVAOahdpv
+ 9Q5JV8stjDOsLa5sSQGzMjkzBc+DhfAJ7aPnOKbZeLPyDabydkvs0mSvegEvz5hV3WWj
+ RA+aQEbGM3Zxs8lXW07EuVxMcI7rMRySy24IBeupNyI1vicuYyabplTW4WbVzZnd3XWd
+ oOcQ==
+X-Gm-Message-State: APjAAAVKJomFIw6bTxxLODBRgM9TlTBKbhJUigkxYFVnYXPfbonIyvq+
+ DxD1iTTZCQl2w7YsojnhSMI=
+X-Google-Smtp-Source: APXvYqxlMvkVuCdFoizkUk0kiP7e9NabguDeK3+5YeBoqX6bG5u2+aRmcgQwBwQtLnS2H8IY30slww==
+X-Received: by 2002:a63:d501:: with SMTP id c1mr19227970pgg.356.1575912719116; 
+ Mon, 09 Dec 2019 09:31:59 -0800 (PST)
 Received: from btopel-mobl.ger.intel.com ([192.55.55.41])
- by smtp.gmail.com with ESMTPSA id d23sm54943pfo.176.2019.12.09.09.31.54
+ by smtp.gmail.com with ESMTPSA id d23sm54943pfo.176.2019.12.09.09.31.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2019 09:31:55 -0800 (PST)
+ Mon, 09 Dec 2019 09:31:58 -0800 (PST)
 From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
 To: daniel@iogearbox.net,
 	ast@kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH bpf-next 3/8] riscv, bpf: add support for far jumps and exits
-Date: Mon,  9 Dec 2019 18:31:31 +0100
-Message-Id: <20191209173136.29615-4-bjorn.topel@gmail.com>
+Subject: [PATCH bpf-next 4/8] riscv, bpf: optimize BPF tail calls
+Date: Mon,  9 Dec 2019 18:31:32 +0100
+Message-Id: <20191209173136.29615-5-bjorn.topel@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191209173136.29615-1-bjorn.topel@gmail.com>
 References: <20191209173136.29615-1-bjorn.topel@gmail.com>
@@ -69,15 +69,16 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_093157_593708_5A6118A6 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20191209_093200_037154_32676E6E 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (bjorn.topel[at]gmail.com)
@@ -106,82 +107,60 @@ Cc: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This commit add support for far (offset > 21b) jumps and exits.
+Remove one addi, and instead use the offset part of jalr.
 
 Signed-off-by: Björn Töpel <bjorn.topel@gmail.com>
 ---
- arch/riscv/net/bpf_jit_comp.c | 37 ++++++++++++++++-------------------
- 1 file changed, 17 insertions(+), 20 deletions(-)
+ arch/riscv/net/bpf_jit_comp.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
-index e2f6724b64f7..e9cc9832ac2c 100644
+index e9cc9832ac2c..cbcb33613d1d 100644
 --- a/arch/riscv/net/bpf_jit_comp.c
 +++ b/arch/riscv/net/bpf_jit_comp.c
-@@ -506,16 +506,6 @@ static int is_13b_check(int off, int insn)
+@@ -562,7 +562,7 @@ static int epilogue_offset(struct rv_jit_context *ctx)
+ 	return (to - from) << 2;
+ }
+ 
+-static void __build_epilogue(u8 reg, struct rv_jit_context *ctx)
++static void __build_epilogue(bool is_tail_call, struct rv_jit_context *ctx)
+ {
+ 	int stack_adjust = ctx->stack_size, store_offset = stack_adjust - 8;
+ 
+@@ -599,9 +599,11 @@ static void __build_epilogue(u8 reg, struct rv_jit_context *ctx)
+ 
+ 	emit(rv_addi(RV_REG_SP, RV_REG_SP, stack_adjust), ctx);
+ 	/* Set return value. */
+-	if (reg == RV_REG_RA)
++	if (!is_tail_call)
+ 		emit(rv_addi(RV_REG_A0, RV_REG_A5, 0), ctx);
+-	emit(rv_jalr(RV_REG_ZERO, reg, 0), ctx);
++	emit(rv_jalr(RV_REG_ZERO, is_tail_call ? RV_REG_T3 : RV_REG_RA,
++		     is_tail_call ? 4 : 0), /* skip TCC init */
++	     ctx);
+ }
+ 
+ static void emit_zext_32(u8 reg, struct rv_jit_context *ctx)
+@@ -664,9 +666,8 @@ static int emit_bpf_tail_call(int insn, struct rv_jit_context *ctx)
+ 	if (is_12b_check(off, insn))
+ 		return -1;
+ 	emit(rv_ld(RV_REG_T3, off, RV_REG_T2), ctx);
+-	emit(rv_addi(RV_REG_T3, RV_REG_T3, 4), ctx);
+ 	emit(rv_addi(RV_REG_TCC, RV_REG_T1, 0), ctx);
+-	__build_epilogue(RV_REG_T3, ctx);
++	__build_epilogue(true, ctx);
  	return 0;
  }
  
--static int is_21b_check(int off, int insn)
--{
--	if (!is_21b_int(off)) {
--		pr_err("bpf-jit: insn=%d 21b < offset=%d not supported yet!\n",
--		       insn, (int)off);
--		return -1;
--	}
--	return 0;
--}
--
- static void emit_imm(u8 rd, s64 val, struct rv_jit_context *ctx)
+@@ -1520,7 +1521,7 @@ static void build_prologue(struct rv_jit_context *ctx)
+ 
+ static void build_epilogue(struct rv_jit_context *ctx)
  {
- 	/* Note that the immediate from the add is sign-extended,
-@@ -733,6 +723,21 @@ static void emit_sext_32_rd(u8 *rd, struct rv_jit_context *ctx)
- 	*rd = RV_REG_T2;
+-	__build_epilogue(RV_REG_RA, ctx);
++	__build_epilogue(false, ctx);
  }
  
-+static void emit_jump_and_link(u8 rd, int rvoff, struct rv_jit_context *ctx)
-+{
-+	s64 upper, lower;
-+
-+	if (is_21b_int(rvoff)) {
-+		emit(rv_jal(rd, rvoff >> 1), ctx);
-+		return;
-+	}
-+
-+	upper = (rvoff + (1 << 11)) >> 12;
-+	lower = rvoff & 0xfff;
-+	emit(rv_auipc(RV_REG_T1, upper), ctx);
-+	emit(rv_jalr(rd, RV_REG_T1, lower), ctx);
-+}
-+
- /* return -1 or inverted cond */
- static int invert_bpf_cond(u8 cond)
- {
-@@ -1117,13 +1122,7 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
- 	/* JUMP off */
- 	case BPF_JMP | BPF_JA:
- 		rvoff = rv_offset(i, off, ctx);
--		if (!is_21b_int(rvoff)) {
--			pr_err("bpf-jit: insn=%d offset=%d not supported yet!\n",
--			       i, rvoff);
--			return -1;
--		}
--
--		emit(rv_jal(RV_REG_ZERO, rvoff >> 1), ctx);
-+		emit_jump_and_link(RV_REG_ZERO, rvoff, ctx);
- 		break;
- 
- 	/* IF (dst COND src) JUMP off */
-@@ -1261,9 +1260,7 @@ static int emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
- 			break;
- 
- 		rvoff = epilogue_offset(ctx);
--		if (is_21b_check(rvoff, i))
--			return -1;
--		emit(rv_jal(RV_REG_ZERO, rvoff >> 1), ctx);
-+		emit_jump_and_link(RV_REG_ZERO, rvoff, ctx);
- 		break;
- 
- 	/* dst = imm64 */
+ static int build_body(struct rv_jit_context *ctx, bool extra_pass)
 -- 
 2.20.1
 
