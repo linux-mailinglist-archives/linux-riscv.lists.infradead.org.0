@@ -2,58 +2,58 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 916F711768B
-	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 20:58:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B2E411768C
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Dec 2019 20:58:45 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
 	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Ypj/Z6w2S/xgkl+ZC6Pju9LNZ16DA5i5275AzT7Az8=; b=iiJJM0aQLBp21d
-	sL/wKiBnZZMy4BcCUd5o79aQ7ZEVIDSxEEqXlrgMJu02GS8lNzWfsj6SK93mDd9zB1iUiYONoehhF
-	nLAKs3xYsDLXeAHoGBkRJ+xsVvHWTPO2LpsEkHcz6Pf9txCn2WzblMoR0MGefERHurw3+4heU88Aj
-	Aayy4QclvnaL4B4thsxkAigH5diJ1GVetxgZAyIFdQS8rMgAFDf7+wMeEbSVrCFcpROaZ7KZDOfCS
-	H9O5cXzmZI5ECnkLJY+Uk0nNC5RuSC85hDgqXelX4EpbAU+zNp0udXkNbRmY6nsUVUtS/q7FNWQ2F
-	ZXJXmqlXMtZM6V/4XYbQ==;
+	List-Owner; bh=qpHD+BzRmCza+J8cARPun5felyrs+dQCyBCt49mQSmg=; b=EW0nROx3WvrbIf
+	cPYKBGGPWNTn0/mQZDJzR44ocW5STHBly/CxwUl8bhjkXgpkNXFlupZr1fRkhxdCtz6h9jZql+2mn
+	Olv4/cvJyUNqluXnHDmY3klmIZI1KXudICJ7gkmp9Th4bcjB2cFAgyHJzrmWhDt4off/bV5U0l0dX
+	Va4VLOmD87XUjmP+n5cTGS46f00l5BCyB+XyQ1xMjy0TzTpUYQawFa/QccGOcjXxw8ETJdRUMN8FE
+	9f5EyUmPyvS6QW9Ogry63NSUTUVI/EWPdss3aa+O0Den7PpgIyeRmjtnb2mA8tx98PJrp598dzvpi
+	Sg4p8x0j9HkTs27Ru9nQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iePAz-00024J-Qe; Mon, 09 Dec 2019 19:58:38 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1iePB2-00027S-IF; Mon, 09 Dec 2019 19:58:40 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iePAY-0001aR-Ot; Mon, 09 Dec 2019 19:58:12 +0000
-Received: by mail-pl1-x642.google.com with SMTP id bh2so5107754plb.11;
- Mon, 09 Dec 2019 11:58:10 -0800 (PST)
+ id 1iePAa-0001cP-TH; Mon, 09 Dec 2019 19:58:14 +0000
+Received: by mail-pl1-x643.google.com with SMTP id bh2so5107777plb.11;
+ Mon, 09 Dec 2019 11:58:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=5Ypj/Z6w2S/xgkl+ZC6Pju9LNZ16DA5i5275AzT7Az8=;
- b=XDWN9d8k0pBMo+UkkcX1UfyWaeD0FDlwtPRgLxmAGmjfj7VvxgJ+utoSJJbVFf1e8j
- cVTIMVhpbFcRmnCfJfNrkdQDWPHhpAOS6W2qbTijNUU98elxzA9CRXupry7r7PmtENWG
- 2iaJ+jjdaYShsBjUrnXiXi/RlnB92+H8ym7JDCEv9VRZ/4ps0/dodXmZRSU7hxJVc5Cj
- YthVNwPROegPqrfA3slLTAM8fGIglRXefx2+/Zo8G+iHQesFdbwBYxdnYbogEbDdBjog
- mySYP15VONRcvZ4j7foihrlRjJ+yWyhvJOUqFtIC3Sbs19NDP8t3owrbeHwfGbVV579t
- +rZw==
+ bh=qpHD+BzRmCza+J8cARPun5felyrs+dQCyBCt49mQSmg=;
+ b=uV5pv0K9ZJ71Pl8qC7WYaq6P9NAskW0V0XiAkeLFSyizhvo/+ytjTGIPfksDrUOIFH
+ Js0M/AxShyNuEgwRGXYUxmSZ9hS6mIf6M6xroyN+ABr52UgxQDr8i0IRUHbeNitNuT1U
+ PyUwlJnQD23uobSXoQoShIOi+Kx7wfE/5XbsRDZ587jUIWCSXsQUy11Zts/sTvp2lFbH
+ 5TgIDQ+C35M4wzudq3ZZddIUCRLtt/+hDyJ6KSWhPBgoXvqB8KNkjACrIFSo5b2nMNRp
+ LHW08kv8joPWFKL9aOkDknxugehsWCZaRmGHlhK3NQtdzsZtB0+K+c6WRLw/WT63Dj6Q
+ tQKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=5Ypj/Z6w2S/xgkl+ZC6Pju9LNZ16DA5i5275AzT7Az8=;
- b=eWb1sTn4VCxDbBB9JQ43+8E12iz7EOvxRhG7LMDr1hU1dhglPDzWVLZwSm9QQ7giut
- JFZsu2GXt4L818EJEA+Wv0L3n0gLPdbYg28pwR9gVCVrMZ33ETxeBlEcndEdDkscivmD
- Zx0Ie7LSsbayPzswyALxdXVQLoGHlP/n8xNQDXlnXWRfab8D0Y3yDXmNmUrgE54QSD5D
- QJBfghsICpzcXSN7hdR7OiULSSX342kHM/++KFH//4rNOdyvz/lbGzxcHbto1U7Ta0OO
- BV6wJ5JCblVXiZlbvr9MwH+2CdwVDcsdDhkGCbaxDjOQqOOIlWVdu6FrypdirJu4vVIh
- 2lAA==
-X-Gm-Message-State: APjAAAXoZ8lx98Vwvxfzvyq5v6kjOLB9164HxuwVmmA5U1JKiEmwFjGa
- hTWJ8+RtJ8YbDcrDfpAZLdc=
-X-Google-Smtp-Source: APXvYqwB7mvU3N06HUnt/fRjyLYz5X1psEZz61OVWSzTqPYA5ykl2uCZGGD6VXZzgLMxQd0Zqd4WHQ==
-X-Received: by 2002:a17:902:724b:: with SMTP id
- c11mr19110880pll.177.1575921489905; 
- Mon, 09 Dec 2019 11:58:09 -0800 (PST)
+ bh=qpHD+BzRmCza+J8cARPun5felyrs+dQCyBCt49mQSmg=;
+ b=D9QRhpPNwJTR4zpL0gS5df+sMkqBp3vTfPZLXwfyVT1lWXYtbogwlAiZd+uhNmV9Lg
+ h+x5KzPFm7HhHp89vBZjhTkCDdOxvNXHfo8uiu9MSBmeYu4fXj206oIxTSPglA02SS/G
+ A6QjWIuINAy0eqkoyO+DflNqxOaJSTCGL9HdBdeKfl7+e8l5wJ+x3cdRE3/lY7qE3DEe
+ jaY+C95gMdgcjVOIO+GXKuKCZP0OM3EBNfNSU547fn5yUzObckoOmbk+l+K6rhEjWZqB
+ G9bmhtkAmivxp+JrHktfbIgmXIOvO4u81D/0yfv6+HCgWWcNOq2rFnE7W/zGOte5a7e4
+ hG6A==
+X-Gm-Message-State: APjAAAUD3Yt4U9+V/ZsdukRoWXT27XeSbzg4ML1P4JlNZIuwSoSKtt1F
+ IpXCmoOS+xJrm1CI/0gJCWg=
+X-Google-Smtp-Source: APXvYqygbR8Mv8+x1FDwcshTXI8hOICMR3PVfkwhuHwXw/fxZ9bDbGQIRtAbeAH/HT1r6178kXxFQw==
+X-Received: by 2002:a17:902:567:: with SMTP id
+ 94mr30967241plf.174.1575921491679; 
+ Mon, 09 Dec 2019 11:58:11 -0800 (PST)
 Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id p17sm312835pfn.31.2019.12.09.11.58.09
+ by smtp.gmail.com with ESMTPSA id c19sm293007pfc.144.2019.12.09.11.58.11
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 09 Dec 2019 11:58:09 -0800 (PST)
+ Mon, 09 Dec 2019 11:58:11 -0800 (PST)
 From: Yangtao Li <tiny.windzz@gmail.com>
 To: afaerber@suse.de, manivannan.sadhasivam@linaro.org,
  mturquette@baylibre.com, sboyd@kernel.org, Eugeniy.Paltsev@synopsys.com,
@@ -71,15 +71,15 @@ To: afaerber@suse.de, manivannan.sadhasivam@linaro.org,
  wangyan.wang@mediatek.com, chunhui.dai@mediatek.com,
  miquel.raynal@bootlin.com, heiko@sntech.de, jcmvbkbc@gmail.com,
  nsekhar@ti.com, geert+renesas@glider.be
-Subject: [PATCH 06/17] clk: tegra: convert to devm_platform_ioremap_resource
-Date: Mon,  9 Dec 2019 19:57:38 +0000
-Message-Id: <20191209195749.868-6-tiny.windzz@gmail.com>
+Subject: [PATCH 07/17] clk: mvebu: convert to devm_platform_ioremap_resource
+Date: Mon,  9 Dec 2019 19:57:39 +0000
+Message-Id: <20191209195749.868-7-tiny.windzz@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191209195749.868-1-tiny.windzz@gmail.com>
 References: <20191209195749.868-1-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_115810_851794_F740F7CB 
-X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-CacheID: sfid-20191209_115813_002262_CE405537 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -87,7 +87,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (tiny.windzz[at]gmail.com)
@@ -123,77 +123,54 @@ Use devm_platform_ioremap_resource() to simplify code.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/clk/tegra/clk-dfll.c | 34 ++++------------------------------
- 1 file changed, 4 insertions(+), 30 deletions(-)
+ drivers/clk/mvebu/armada-37xx-periph.c | 4 +---
+ drivers/clk/mvebu/armada-37xx-tbg.c    | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/clk/tegra/clk-dfll.c b/drivers/clk/tegra/clk-dfll.c
-index c051d92c2bbf..070a2957e119 100644
---- a/drivers/clk/tegra/clk-dfll.c
-+++ b/drivers/clk/tegra/clk-dfll.c
-@@ -1935,7 +1935,6 @@ static int dfll_fetch_common_params(struct tegra_dfll *td)
- int tegra_dfll_register(struct platform_device *pdev,
- 			struct tegra_dfll_soc_data *soc)
- {
--	struct resource *mem;
- 	struct tegra_dfll *td;
- 	int ret;
+diff --git a/drivers/clk/mvebu/armada-37xx-periph.c b/drivers/clk/mvebu/armada-37xx-periph.c
+index f5746f9ea929..0d03878920ac 100644
+--- a/drivers/clk/mvebu/armada-37xx-periph.c
++++ b/drivers/clk/mvebu/armada-37xx-periph.c
+@@ -725,7 +725,6 @@ static int armada_3700_periph_clock_probe(struct platform_device *pdev)
+ 	const struct clk_periph_data *data;
+ 	struct device *dev = &pdev->dev;
+ 	int num_periph = 0, i, ret;
+-	struct resource *res;
  
-@@ -1985,51 +1984,26 @@ int tegra_dfll_register(struct platform_device *pdev,
- 		return ret;
- 	}
+ 	data = of_device_get_match_data(dev);
+ 	if (!data)
+@@ -746,8 +745,7 @@ static int armada_3700_periph_clock_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	driver_data->hw_data->num = num_periph;
  
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!mem) {
--		dev_err(td->dev, "no control register resource\n");
--		return -ENODEV;
--	}
--
--	td->base = devm_ioremap(td->dev, mem->start, resource_size(mem));
-+	td->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (!td->base) {
- 		dev_err(td->dev, "couldn't ioremap DFLL control registers\n");
- 		return -ENODEV;
- 	}
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	driver_data->reg = devm_ioremap_resource(dev, res);
++	driver_data->reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(driver_data->reg))
+ 		return PTR_ERR(driver_data->reg);
  
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 1);
--	if (!mem) {
--		dev_err(td->dev, "no i2c_base resource\n");
--		return -ENODEV;
--	}
--
--	td->i2c_base = devm_ioremap(td->dev, mem->start, resource_size(mem));
-+	td->i2c_base = devm_platform_ioremap_resource(pdev, 1);
- 	if (!td->i2c_base) {
- 		dev_err(td->dev, "couldn't ioremap i2c_base resource\n");
- 		return -ENODEV;
- 	}
+diff --git a/drivers/clk/mvebu/armada-37xx-tbg.c b/drivers/clk/mvebu/armada-37xx-tbg.c
+index 585a02e0b330..5d86912fbb6e 100644
+--- a/drivers/clk/mvebu/armada-37xx-tbg.c
++++ b/drivers/clk/mvebu/armada-37xx-tbg.c
+@@ -84,7 +84,6 @@ static int armada_3700_tbg_clock_probe(struct platform_device *pdev)
+ 	struct clk_hw_onecell_data *hw_tbg_data;
+ 	struct device *dev = &pdev->dev;
+ 	const char *parent_name;
+-	struct resource *res;
+ 	struct clk *parent;
+ 	void __iomem *reg;
+ 	int i, ret;
+@@ -105,8 +104,7 @@ static int armada_3700_tbg_clock_probe(struct platform_device *pdev)
+ 	parent_name = __clk_get_name(parent);
+ 	clk_put(parent);
  
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 2);
--	if (!mem) {
--		dev_err(td->dev, "no i2c_controller_base resource\n");
--		return -ENODEV;
--	}
--
--	td->i2c_controller_base = devm_ioremap(td->dev, mem->start,
--					       resource_size(mem));
-+	td->i2c_controller_base = devm_platform_ioremap_resource(pdev, 2);
- 	if (!td->i2c_controller_base) {
- 		dev_err(td->dev,
- 			"couldn't ioremap i2c_controller_base resource\n");
- 		return -ENODEV;
- 	}
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
  
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 3);
--	if (!mem) {
--		dev_err(td->dev, "no lut_base resource\n");
--		return -ENODEV;
--	}
--
--	td->lut_base = devm_ioremap(td->dev, mem->start, resource_size(mem));
-+	td->lut_base = devm_platform_ioremap_resource(pdev, 3);
- 	if (!td->lut_base) {
- 		dev_err(td->dev,
- 			"couldn't ioremap lut_base resource\n");
 -- 
 2.17.1
 
