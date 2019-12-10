@@ -2,47 +2,46 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84DA5119366
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Dec 2019 22:11:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80AD011943F
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Dec 2019 22:15:55 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UuIIUM+mEA5HOT/U68XQz21wyQoVeVdKtKaYQjuXEnk=; b=eP3+zATvJbOBkk
-	ucT1JVfBet8l1r24Wv9No5qeBOzFlhtHa3RldA7GJF/OFB7chwe/7pObdGoG/T/Hcv/cnJDwMiEg9
-	tiaEdxG4rHY/u6Fx0FQW/lfYGRwQKquiXOcSlzUkJM6aBXci3CCaO3lwQ1oxiXXOwazG/eleBo/nG
-	kxmxlfMrFsTWL8ZRXJes2CC5UBFoWwMHPscgYV0jF98eIuBgcfQb0voqU4/dzAzndAlNFfc1YTMzf
-	wrBjLx5tKMa9sqDmSpNKmH6S+iIoT3ayIrbMvIEmpNcdsqBlql66LcuzE/afz89UzUebKoeuq3cPC
-	rh1BcSZst0uyldEwpZ4A==;
+	List-Owner; bh=VB2kXzUyCs+LHMHfy4rybjdh/XGXzGUTou10XIeA+/A=; b=bdF+3SkTWJAZal
+	VcxnZxCN8qm6qdOhZ3r/3bFUT3aPPtRMkFSjYq1B9+onxvxtDpRMH15sPta5ktp42CnIQazykKu5T
+	u5bbxda25BdUf3OVAtS0ATfkrPxKUH/BPETmXsxDAMZrKq8yOcg8kWy1HcPaNWQFCQiaBaXkG3RV7
+	yv5JBuHJTBirGA+dwucRQKJ7mY5CHdWkxyhUbvXdH9mjrbt8DoiHha10n7W9PlFeKIcGKtZmfOilf
+	maLJUhOfr+BGkqjQLV5Hx+ZmE2pGOMJAOEbI6R3k2FfxLEAUQpAXmi5edr3vEEgDsfqGyZ54Q1yMz
+	498X2rMaq87xeXETPkMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iemmx-0005GK-8l; Tue, 10 Dec 2019 21:11:23 +0000
+	id 1iemrE-0001t9-Uu; Tue, 10 Dec 2019 21:15:48 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iemmO-0004ph-Vc
- for linux-riscv@lists.infradead.org; Tue, 10 Dec 2019 21:10:50 +0000
+ id 1iemom-00074O-QV; Tue, 10 Dec 2019 21:13:18 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B5AC324697;
- Tue, 10 Dec 2019 21:10:47 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7FBCE21556;
+ Tue, 10 Dec 2019 21:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576012248;
- bh=WvEFyyi/O+WRj6bp4PbOSJv1s0e0tDsQyd8Jf5h5W+U=;
+ s=default; t=1576012396;
+ bh=AlB50L9uHf+wEk2eppPCYqPzcfDZ+tSlFufi17speCI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Fp0Cif0+NghVk0j7oUceQblI5x8D5PtUkMAbeRgUCKujqBWKqA8MrmekmNSQy03Rc
- GSN2bxJ9tcBwv9QKquSW63BoLHSChdj0+BJ3Nr+b6gWeZfuop0Y4Gid9SZ8Kl/knUd
- qttN/RIORF9g3T+4OdPGf6cL7jiuvju/PEDtG//g=
+ b=hwckcBTw4TgGY73/NSULq30fifSMIOtbMbg6Zes+QuEwg9VQG88o+HuSvTREtgVAF
+ 38TKlC6UBiKB1hQDC7V80775QRvmCiOSCmXQ4P7KYoYlNuhsdRKhF2gh3k4MeDaj2t
+ 2Ew2LYkJI+gR0WlXlhQ86zjm9OcTWjjZhojQU34A=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 196/350] spi: sifive: disable clk when probe fails
- and remove
-Date: Tue, 10 Dec 2019 16:05:01 -0500
-Message-Id: <20191210210735.9077-157-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 316/350] int128: move __uint128_t compiler test to
+ Kconfig
+Date: Tue, 10 Dec 2019 16:07:01 -0500
+Message-Id: <20191210210735.9077-277-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191210210735.9077-1-sashal@kernel.org>
 References: <20191210210735.9077-1-sashal@kernel.org>
@@ -51,8 +50,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191210_131049_049489_4B444B8E 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20191210_131316_911403_3D2EAE45 
+X-CRM114-Status: GOOD (  13.49  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -81,82 +80,136 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Chuhong Yuan <hslester96@gmail.com>,
- linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, linux-riscv@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, Herbert Xu <herbert@gondor.apana.org.au>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>, linux-crypto@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Ard Biesheuvel <ardb@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Chuhong Yuan <hslester96@gmail.com>
+From: Ard Biesheuvel <ardb@kernel.org>
 
-[ Upstream commit a725272bda77e61c1b4de85c7b0c875b2ea639b6 ]
+[ Upstream commit c12d3362a74bf0cd9e1d488918d40607b62a3104 ]
 
-The driver forgets to disable and unprepare clk when probe fails and
-remove.
-Add the calls to fix the problem.
+In order to use 128-bit integer arithmetic in C code, the architecture
+needs to have declared support for it by setting ARCH_SUPPORTS_INT128,
+and it requires a version of the toolchain that supports this at build
+time. This is why all existing tests for ARCH_SUPPORTS_INT128 also test
+whether __SIZEOF_INT128__ is defined, since this is only the case for
+compilers that can support 128-bit integers.
 
-Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
-Reviewed-by: Palmer Dabbelt <palmer@dabbelt.com>
-Link: https://lore.kernel.org/r/20191101121745.13413-1-hslester96@gmail.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Let's fold this additional test into the Kconfig declaration of
+ARCH_SUPPORTS_INT128 so that we can also use the symbol in Makefiles,
+e.g., to decide whether a certain object needs to be included in the
+first place.
+
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Herbert Xu <herbert@gondor.apana.org.au>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/spi/spi-sifive.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ arch/arm64/Kconfig | 2 +-
+ arch/riscv/Kconfig | 2 +-
+ arch/x86/Kconfig   | 2 +-
+ crypto/ecc.c       | 2 +-
+ init/Kconfig       | 4 ++++
+ lib/ubsan.c        | 2 +-
+ lib/ubsan.h        | 2 +-
+ 7 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/spi/spi-sifive.c b/drivers/spi/spi-sifive.c
-index 35254bdc42c48..f7c1e20432e07 100644
---- a/drivers/spi/spi-sifive.c
-+++ b/drivers/spi/spi-sifive.c
-@@ -357,14 +357,14 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 	if (!cs_bits) {
- 		dev_err(&pdev->dev, "Could not auto probe CS lines\n");
- 		ret = -EINVAL;
--		goto put_master;
-+		goto disable_clk;
- 	}
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index 3f047afb982c8..54c38c9cab88a 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -67,7 +67,7 @@ config ARM64
+ 	select ARCH_USE_QUEUED_SPINLOCKS
+ 	select ARCH_SUPPORTS_MEMORY_FAILURE
+ 	select ARCH_SUPPORTS_ATOMIC_RMW
+-	select ARCH_SUPPORTS_INT128 if GCC_VERSION >= 50000 || CC_IS_CLANG
++	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128 && (GCC_VERSION >= 50000 || CC_IS_CLANG)
+ 	select ARCH_SUPPORTS_NUMA_BALANCING
+ 	select ARCH_WANT_COMPAT_IPC_PARSE_VERSION if COMPAT
+ 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 8eebbc8860bbd..75a6c91176221 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -164,7 +164,7 @@ config ARCH_RV32I
+ config ARCH_RV64I
+ 	bool "RV64I"
+ 	select 64BIT
+-	select ARCH_SUPPORTS_INT128 if GCC_VERSION >= 50000
++	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128 && GCC_VERSION >= 50000
+ 	select HAVE_FUNCTION_TRACER
+ 	select HAVE_FUNCTION_GRAPH_TRACER
+ 	select HAVE_FTRACE_MCOUNT_RECORD
+diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
+index 8ef85139553f5..f2aed8012e9c0 100644
+--- a/arch/x86/Kconfig
++++ b/arch/x86/Kconfig
+@@ -24,7 +24,7 @@ config X86_64
+ 	depends on 64BIT
+ 	# Options that are inherently 64-bit kernel only:
+ 	select ARCH_HAS_GIGANTIC_PAGE
+-	select ARCH_SUPPORTS_INT128
++	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128
+ 	select ARCH_USE_CMPXCHG_LOCKREF
+ 	select HAVE_ARCH_SOFT_DIRTY
+ 	select MODULES_USE_ELF_RELA
+diff --git a/crypto/ecc.c b/crypto/ecc.c
+index dfe114bc0c4af..6e6aab6c987c2 100644
+--- a/crypto/ecc.c
++++ b/crypto/ecc.c
+@@ -336,7 +336,7 @@ static u64 vli_usub(u64 *result, const u64 *left, u64 right,
+ static uint128_t mul_64_64(u64 left, u64 right)
+ {
+ 	uint128_t result;
+-#if defined(CONFIG_ARCH_SUPPORTS_INT128) && defined(__SIZEOF_INT128__)
++#if defined(CONFIG_ARCH_SUPPORTS_INT128)
+ 	unsigned __int128 m = (unsigned __int128)left * right;
  
- 	num_cs = ilog2(cs_bits) + 1;
- 	if (num_cs > SIFIVE_SPI_MAX_CS) {
- 		dev_err(&pdev->dev, "Invalid number of spi slaves\n");
- 		ret = -EINVAL;
--		goto put_master;
-+		goto disable_clk;
- 	}
+ 	result.m_low  = m;
+diff --git a/init/Kconfig b/init/Kconfig
+index b4daad2bac233..020526f681c03 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -785,6 +785,10 @@ config ARCH_SUPPORTS_NUMA_BALANCING
+ config ARCH_WANT_BATCHED_UNMAP_TLB_FLUSH
+ 	bool
  
- 	/* Define our master */
-@@ -393,7 +393,7 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 			       dev_name(&pdev->dev), spi);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Unable to bind to interrupt\n");
--		goto put_master;
-+		goto disable_clk;
- 	}
++config CC_HAS_INT128
++	def_bool y
++	depends on !$(cc-option,-D__SIZEOF_INT128__=0)
++
+ #
+ # For architectures that know their GCC __int128 support is sound
+ #
+diff --git a/lib/ubsan.c b/lib/ubsan.c
+index 0c4681118fcd2..fc552d524ef77 100644
+--- a/lib/ubsan.c
++++ b/lib/ubsan.c
+@@ -119,7 +119,7 @@ static void val_to_string(char *str, size_t size, struct type_descriptor *type,
+ {
+ 	if (type_is_int(type)) {
+ 		if (type_bit_width(type) == 128) {
+-#if defined(CONFIG_ARCH_SUPPORTS_INT128) && defined(__SIZEOF_INT128__)
++#if defined(CONFIG_ARCH_SUPPORTS_INT128)
+ 			u_max val = get_unsigned_val(type, value);
  
- 	dev_info(&pdev->dev, "mapped; irq=%d, cs=%d\n",
-@@ -402,11 +402,13 @@ static int sifive_spi_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_master(&pdev->dev, master);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "spi_register_master failed\n");
--		goto put_master;
-+		goto disable_clk;
- 	}
+ 			scnprintf(str, size, "0x%08x%08x%08x%08x",
+diff --git a/lib/ubsan.h b/lib/ubsan.h
+index b8fa83864467f..7b56c09473a98 100644
+--- a/lib/ubsan.h
++++ b/lib/ubsan.h
+@@ -78,7 +78,7 @@ struct invalid_value_data {
+ 	struct type_descriptor *type;
+ };
  
- 	return 0;
- 
-+disable_clk:
-+	clk_disable_unprepare(spi->clk);
- put_master:
- 	spi_master_put(master);
- 
-@@ -420,6 +422,7 @@ static int sifive_spi_remove(struct platform_device *pdev)
- 
- 	/* Disable all the interrupts just in case */
- 	sifive_spi_write(spi, SIFIVE_SPI_REG_IE, 0);
-+	clk_disable_unprepare(spi->clk);
- 
- 	return 0;
- }
+-#if defined(CONFIG_ARCH_SUPPORTS_INT128) && defined(__SIZEOF_INT128__)
++#if defined(CONFIG_ARCH_SUPPORTS_INT128)
+ typedef __int128 s_max;
+ typedef unsigned __int128 u_max;
+ #else
 -- 
 2.20.1
 
