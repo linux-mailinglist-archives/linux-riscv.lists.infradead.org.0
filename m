@@ -2,83 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0E1E118106
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Dec 2019 08:03:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A8D511183B8
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Dec 2019 10:36:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XOLR366ue9UbdwpGi75PQA5BDSgsShKRMR6syBVaCSI=; b=pSCif+GEONAgjZ9OdzdzUL/h8
-	ehBGkPI7nqODWR8n4LddVpcYM/al7p6jNxarYBDrxjy3ccWo7/HxICsd42+Y2lZmaSxXto4jO7MxB
-	NEibrNDmGUCe85MwJ4SOorLX99CMAdF9BPG4aeB3ks80RPDTo0buUqyRircOaNpkh5UxrRG38T/KJ
-	FK3KRQS6Hux9XATkvktgYwGWyKFYzPZDylqScls/6F2U7fNBESILCaL/2TMjzAPt/Eof6f6vM4dtO
-	7kXKOLGF/qkWU3AfnosphBGYUUcH66MmUwQqK2h/ZiAkhmOdgWlAYNiiqJT3C5KLd61wIQBePFtbx
-	Ic33iqkiw==;
+	 bh=mgAZ5+aB/GvC0mnzXTVn3f/oGiktcBasZAmAbLkZ9JE=; b=Hrm8SmG9nkhhMk1CzmIDLuAgb
+	zt47xvv6j439QuERsCU8U4DQuo6JnYiKjcOrxgkgIBj2i6AYk0FsaXcix3p7PKaFqHBlNaVyRRJlZ
+	6z+PlQVLr2ibvyZBA0E8Zov+ej6vbVAP9VEDmsb+bifVJylxswVc04+5I6Ipzs+sTCOS2wudkj7uB
+	hNP4DA1tWQOJljkOcqMVJOdv4A97xB4x7r2nthFpE4FP2TBHe6vh4PRzUrqG+Kcgtoa1KH/xwj4+t
+	R1sp65aqpU+zBS9KIZcau+a85BIFl1NKGWazcxQQu3tXBH1nGWp2MSWXZI1h9UYONA34pnscq6JGa
+	d8xOTzb0A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieZYP-0000SO-K0; Tue, 10 Dec 2019 07:03:29 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1iebwD-0006mc-Bl; Tue, 10 Dec 2019 09:36:13 +0000
+Received: from mail-wr1-f66.google.com ([209.85.221.66])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieZYM-0000RT-Ew
- for linux-riscv@lists.infradead.org; Tue, 10 Dec 2019 07:03:27 +0000
-Received: by mail-il1-x144.google.com with SMTP id p8so15151086iln.12
- for <linux-riscv@lists.infradead.org>; Mon, 09 Dec 2019 23:03:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cs.washington.edu; s=goo201206;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XOLR366ue9UbdwpGi75PQA5BDSgsShKRMR6syBVaCSI=;
- b=NkuGcga7SVDZTUMMo51w4HRsBnbf0R/URj6PpPGlU3pLyxh/0ttxIog576y1yzdvLn
- eoJ8kf6kXgiGbSaaWDuUGmWTjtsTjZKVSCJ8Q1SnoKKiwiN/5ZXbedZXayDFlSyae+Yy
- nAhd9fD3buTsungj4t2ef9PnPd818UbU+6cdU=
+ id 1iebw9-0006le-FU
+ for linux-riscv@lists.infradead.org; Tue, 10 Dec 2019 09:36:10 +0000
+Received: by mail-wr1-f66.google.com with SMTP id c9so19199032wrw.8
+ for <linux-riscv@lists.infradead.org>; Tue, 10 Dec 2019 01:36:08 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XOLR366ue9UbdwpGi75PQA5BDSgsShKRMR6syBVaCSI=;
- b=alLNE7toJ3Tpejg4qG34DmJMN/Not+1xkBq1VOsulfHbN/un9k5SuCiHsn5cmfWY0R
- hreZy+s4Ua3Ybch5FAjJtATChi+NfzWJgiUDmBZ/vQL4+5LcwS4RpjzMaMrncRctSNJg
- L/L9EzDAOj5hiLq3MYctj/Voj95zIyr4EvyiKQbe1INGnJMOQg1bIrXRyxuJtsVALcIK
- RUu9ZInkBGQfGQXEZH3PauXjpW2ecJ24qQg9sFOO9oSbl7zN4H/Z9gc5kZgyWDimwU/m
- gU0ecYf61rCdfn5DlOyC01Gg8iyv3Sca0Su8+bAWoI1vI/CaPy7e7/3GFCfrFbbBcOy6
- Vc5g==
-X-Gm-Message-State: APjAAAVptiuiabQM4AO/HFlG3uNxAr8nq+qE9DH+TpMCBWIyO6tKvmzC
- 16qxLx3gT6mt+dbBSgn30rZCXw8rEw0GgH3ey46w8rCLPl3h7A==
-X-Google-Smtp-Source: APXvYqzgHM+DLDGODvA/sjBCZyZhAfvnRErBW0IceCs2/IQqhRh8rJvuSRMhu9qEW/u/DVJiNXoqYx8gBP7F7uuyY6I=
-X-Received: by 2002:a92:86c5:: with SMTP id l66mr31157017ilh.280.1575961401998; 
- Mon, 09 Dec 2019 23:03:21 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=mgAZ5+aB/GvC0mnzXTVn3f/oGiktcBasZAmAbLkZ9JE=;
+ b=eTfg5cqbhKBt1wOB0+l3x5MO7zJXygvKbavTIK+KC1YsbeztuEFIgKPTwpPupHFTQA
+ mE3vh63pScY/ZB6zoxi/D7piCQx+pg08ap2HE26b0/Zr8pHRtgrbr4FOqjwbWJ/S3mK0
+ 46zG/XSMQ1TqEt6IbUmQFRjtMUfeflkGu9Yjvz6uNFx2qTuAcFyNoq+j+OmFkvIgu4zs
+ 2BppbRn1MTpP8fMEd6vvZytxs2MLv1JnNW33evT7gih9819H/sfVQSG4fbBfn81/h+R5
+ Z6bNdFvabGxOC6b5qCFAJeEeC+fOM1fa/aQNrJFtRAqJkAxtTKsczqitzFQuodSdtB5h
+ zwgQ==
+X-Gm-Message-State: APjAAAU5iQYV0cxzPQcM/L1JGCZorIahXs4EoIfACvL39i9+RKJgdrn9
+ lXHWkqr28BpFwJcmTM+Emj8qJHWWg5E=
+X-Google-Smtp-Source: APXvYqw6FVjHfOx8q4A7LdcghN9XlvKV2lcjY8QJoImoDiAVgnjuYhzenEbMcT7oIrBlD+tcehYX5g==
+X-Received: by 2002:a5d:6349:: with SMTP id b9mr2137418wrw.346.1575970567440; 
+ Tue, 10 Dec 2019 01:36:07 -0800 (PST)
+Received: from Nover ([161.105.209.130])
+ by smtp.gmail.com with ESMTPSA id m10sm2609149wrx.19.2019.12.10.01.36.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2019 01:36:06 -0800 (PST)
+Date: Tue, 10 Dec 2019 10:36:06 +0100
+From: Paul Chaignon <paul.chaignon@orange.com>
+To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>
+Subject: Re: [PATCH bpf 1/2] bpf, riscv: limit to 33 tail calls
+Message-ID: <20191210093605.GA31145@Nover>
+References: <cover.1575916815.git.paul.chaignon@gmail.com>
+ <966fe384383bf23a0ee1efe8d7291c78a3fb832b.1575916815.git.paul.chaignon@gmail.com>
+ <CAJ+HfNgFo8viKn3KzNfbmniPNUpjOv_QM4ua_V0RFLBpWCOBYw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20191209173136.29615-1-bjorn.topel@gmail.com>
- <20191209173136.29615-3-bjorn.topel@gmail.com>
- <CADasFoDOyJA0nDVCyA6EY78dHSSxxV+EXS=xUyLDW4_VhJvBkQ@mail.gmail.com>
- <2d5d1f2d-d4ab-2449-37c6-e5b319a778d6@iogearbox.net>
-In-Reply-To: <2d5d1f2d-d4ab-2449-37c6-e5b319a778d6@iogearbox.net>
-From: Luke Nelson <lukenels@cs.washington.edu>
-Date: Mon, 9 Dec 2019 23:02:53 -0800
-Message-ID: <CADasFoCZc7Lt=puc82x7PBSvuOG_dBwVgasYGJ4M3RFDG=qR3A@mail.gmail.com>
-Subject: Re: [PATCH bpf-next 2/8] riscv, bpf: add support for far branching
-To: Daniel Borkmann <daniel@iogearbox.net>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAJ+HfNgFo8viKn3KzNfbmniPNUpjOv_QM4ua_V0RFLBpWCOBYw@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_230326_498862_411C7D42 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.1 (/)
+X-CRM114-CacheID: sfid-20191210_013609_523163_EB86F2A1 
+X-CRM114-Status: GOOD (  16.54  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.1 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
- [list.dnswl.org]
+ no trust [209.85.221.66 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (paul.chaignon[at]gmail.com)
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.221.66 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,35 +91,65 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
- Alexei Starovoitov <ast@kernel.org>, Netdev <netdev@vger.kernel.org>,
- linux-riscv@lists.infradead.org, bpf <bpf@vger.kernel.org>,
- Xi Wang <xi.wang@gmail.com>
+Cc: Song Liu <songliubraving@fb.com>, Daniel Borkmann <daniel@iogearbox.net>,
+ Paul Burton <paulburton@kernel.org>, paul.chaignon@gmail.com,
+ Netdev <netdev@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>,
+ linux-riscv@lists.infradead.org, Martin KaFai Lau <kafai@fb.com>,
+ Yonghong Song <yhs@fb.com>, Mahshid Khezri <khezri.mahshid@gmail.com>,
+ Andrii Nakryiko <andriin@fb.com>, bpf <bpf@vger.kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Dec 9, 2019 at 1:27 PM Daniel Borkmann <daniel@iogearbox.net> wrote:
->
-> This is awesome work! Did you also check for other architectures aside
-> from riscv and x86-32, e.g. x86-64 or arm64?
+On Mon, Dec 09, 2019 at 08:57:27PM +0100, Björn Töpel wrote:
+> On Mon, 9 Dec 2019 at 19:52, Paul Chaignon <paul.chaignon@orange.com> wrote:
+> >
+> > All BPF JIT compilers except RISC-V's and MIPS' enforce a 33-tail calls
+> > limit at runtime.  In addition, a test was recently added, in tailcalls2,
+> > to check this limit.
+> >
+> > This patch updates the tail call limit in RISC-V's JIT compiler to allow
+> > 33 tail calls.  I tested it using the above selftest on an emulated
+> > RISCV64.
+> >
+> 
+> 33! ICK! ;-) Thanks for finding this!
 
-We haven't tried on x86-64 or arm64 yet, but we plan to in the
-future and are looking at ways to minimize the effort required to
-port verification to new architectures.
+Actually, Mahshid found it during her internship because she wanted to
+check that the number of tail calls was limited.  And now I feel so
+naive for trusting the doc...
 
-> It would be great if we could add such verification tool under tools/bpf/
-> which would then take the in-tree JIT-code as-is for its analysis and
-> potentially even trigger a run out of BPF selftests. Any thoughts whether
-> such path would be feasible wrt serval?
-
-Right now the verification requires manual translation of the JIT
-implementation in C to Rosette for verification, which makes it
-difficult to integrate into existing tests. Were currently working
-on automating this process to be able to verify the C implementation
-directly. If this works out, it'd be awesome to integrate into the
-selftests in some way. Will keep you posted.
-
-Thanks,
-
-Luke
+> 
+> Acked-by: Björn Töpel <bjorn.topel@gmail.com>
+> 
+> > Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+> > Reported-by: Mahshid Khezri <khezri.mahshid@gmail.com>
+> > Signed-off-by: Paul Chaignon <paul.chaignon@orange.com>
+> > ---
+> >  arch/riscv/net/bpf_jit_comp.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
+> > index 5451ef3845f2..7fbf56aab661 100644
+> > --- a/arch/riscv/net/bpf_jit_comp.c
+> > +++ b/arch/riscv/net/bpf_jit_comp.c
+> > @@ -631,14 +631,14 @@ static int emit_bpf_tail_call(int insn, struct rv_jit_context *ctx)
+> >                 return -1;
+> >         emit(rv_bgeu(RV_REG_A2, RV_REG_T1, off >> 1), ctx);
+> >
+> > -       /* if (--TCC < 0)
+> > +       /* if (TCC-- < 0)
+> >          *     goto out;
+> >          */
+> >         emit(rv_addi(RV_REG_T1, tcc, -1), ctx);
+> >         off = (tc_ninsn - (ctx->ninsns - start_insn)) << 2;
+> >         if (is_13b_check(off, insn))
+> >                 return -1;
+> > -       emit(rv_blt(RV_REG_T1, RV_REG_ZERO, off >> 1), ctx);
+> > +       emit(rv_blt(tcc, RV_REG_ZERO, off >> 1), ctx);
+> >
+> >         /* prog = array->ptrs[index];
+> >          * if (!prog)
+> > --
+> > 2.17.1
+> >
 
