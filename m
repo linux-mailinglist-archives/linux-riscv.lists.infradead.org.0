@@ -2,153 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1275B117D79
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Dec 2019 03:04:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA2A8117FC0
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Dec 2019 06:32:02 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	Content-Type:Content-Transfer-Encoding:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JIlFhIxGiAWFjXmj8eutng+eKDk0ywJyefbSTWOuCns=; b=oLkKdp59FFHFsQ
-	WJqCztWDlTNkcW12RlWQPMgAkzInSLbsKJ7XhImLqpp0ovyFkCuZ4JHcsftlxKqPCRM51fClRMy35
-	FIgMYGDu4xtVWos/EhQN12wM5WD4fNcAB3oi+1Gbp4/4WZkuDSCWFPWUYjRM09c5dM5c4s+nERmZx
-	HgFyne9zkdWn2qWJDp0hy9OxkQZUkAw+iFAQZsOU7voCq/2TSP0yw6GjnoGf77ydxRSFl/L7bgZ7R
-	GasdZfT9nWOV8z5OBE/ouvhhGNr1+QYC2PW1NU9QxjOqUO7nkKEU0kKp0+oAUi8v2wQGUhAPMJ3Qq
-	2AIMxw54eQjburspDrbg==;
+	List-Owner; bh=0i5fqFii9h3zbWBDVAysAxtbLv8smZHCpf4SOKLHP/I=; b=PXWQ3zK+I5vMdD
+	1K+zHJ6kU5BkrvDeM6y6NjcHgfGcttBUBxPcjqDOyLUbhWiWUQ4t/QeuTALh/hUgQUkHiBepQ4+ae
+	NYyFuOVOmkIpuJ+1XH9ucSFFB9DymkRqByjn9ESzSxqvxKGadNc8pQjIJOpfQTflxYDJiDrW8XKis
+	trHYOk2t+6MLUOyaeV3G6prIK8Vwq3aU3tgVdxnBv1EJcdN8fbq6rG8Dlvc8rywS7L7X3vf8ps86N
+	zxOzE9DiI1upoPDtfB285RZa+xyeSl7iZu6TAV0BCo+txH0NV6mpJkBfprJpRjeA3AO/tWnff6koq
+	eDbgjZ+BHaMWtdzpQPuw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieUt3-0005LE-KZ; Tue, 10 Dec 2019 02:04:29 +0000
-Received: from mailout4.samsung.com ([203.254.224.34])
+	id 1ieY7e-0005Us-IK; Tue, 10 Dec 2019 05:31:46 +0000
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieUsy-0005Ja-LC; Tue, 10 Dec 2019 02:04:26 +0000
-Received: from epcas1p1.samsung.com (unknown [182.195.41.45])
- by mailout4.samsung.com (KnoxPortal) with ESMTP id
- 20191210020418epoutp04311046dab4d46ed4a083aa16c0a91919~e4DmxOs8I1450614506epoutp04I;
- Tue, 10 Dec 2019 02:04:18 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
- 20191210020418epoutp04311046dab4d46ed4a083aa16c0a91919~e4DmxOs8I1450614506epoutp04I
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1575943458;
- bh=JIlFhIxGiAWFjXmj8eutng+eKDk0ywJyefbSTWOuCns=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=JJQk8o7yF1js+i8wr7DbP4opuQkC18/V/d/fwlp5vdnBQjUIzATM1kk6fxI3RPdpb
- rh7ASkXsDo+PQ7yvMHdsyb0gPx72Wzsf+zGS996PoLxs3IA7lReAemwE1J/Egerf1d
- 5FfKNG2QNaVEXPDJkF7jHjTJmB+U3FAFXzAX3t+c=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
- epcas1p3.samsung.com (KnoxPortal) with ESMTP id
- 20191210020417epcas1p3103e50cf5f2838be97d66d7844edca06~e4DmOD-n70406004060epcas1p3V;
- Tue, 10 Dec 2019 02:04:17 +0000 (GMT)
-Received: from epsmges1p2.samsung.com (unknown [182.195.40.156]) by
- epsnrtp4.localdomain (Postfix) with ESMTP id 47X3Jv075zzMqYl1; Tue, 10 Dec
- 2019 02:04:15 +0000 (GMT)
-Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
- epsmges1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
- 84.58.48498.E1DFEED5; Tue, 10 Dec 2019 11:04:14 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
- 20191210020413epcas1p3e11eda64344c8e15d7781c5071e76953~e4DjAEU5S0406004060epcas1p3Q;
- Tue, 10 Dec 2019 02:04:13 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20191210020413epsmtrp2b7f2e8b02004fb0c1daadd1d2454ecce~e4Di_LLlV2765727657epsmtrp2N;
- Tue, 10 Dec 2019 02:04:13 +0000 (GMT)
-X-AuditID: b6c32a36-a55ff7000001bd72-dd-5deefd1ee477
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- C6.AD.10238.D1DFEED5; Tue, 10 Dec 2019 11:04:13 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20191210020413epsmtip2b78f213eb12d5fbee4bff5729c9aae69~e4DiI_two1930619306epsmtip2Y;
- Tue, 10 Dec 2019 02:04:13 +0000 (GMT)
-Subject: Re: [PATCH 03/17] clk: samsung: convert to
- devm_platform_ioremap_resource
-To: Yangtao Li <tiny.windzz@gmail.com>, afaerber@suse.de,
- manivannan.sadhasivam@linaro.org, mturquette@baylibre.com, sboyd@kernel.org,
- Eugeniy.Paltsev@synopsys.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- agross@kernel.org, s.nawrocki@samsung.com, tomasz.figa@gmail.com,
- kgene@kernel.org, krzk@kernel.org, palmer@sifive.com,
- paul.walmsley@sifive.com, dinguyen@kernel.org, mripard@kernel.org,
- wens@csie.org, emilio@elopez.com.ar, pdeschrijver@nvidia.com,
- pgaikwad@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
- matthias.bgg@gmail.com, rfontana@redhat.com, gregkh@linuxfoundation.org,
- t-kristo@ti.com, john@phrozen.org, tglx@linutronix.de, allison@lohutok.net,
- kstewart@linuxfoundation.org, swinslow@gmail.com, aisheng.dong@nxp.com,
- robh@kernel.org, daniel.baluta@nxp.com, wangyan.wang@mediatek.com,
- chunhui.dai@mediatek.com, miquel.raynal@bootlin.com, heiko@sntech.de,
- jcmvbkbc@gmail.com, nsekhar@ti.com, geert+renesas@glider.be
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <02ece950-b3d2-0d1a-fd94-acb64272bc96@samsung.com>
-Date: Tue, 10 Dec 2019 11:10:39 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
+ id 1ieY7b-0005Tw-Ht
+ for linux-riscv@lists.infradead.org; Tue, 10 Dec 2019 05:31:44 +0000
+Received: by mail-qt1-x842.google.com with SMTP id t17so1682905qtr.7
+ for <linux-riscv@lists.infradead.org>; Mon, 09 Dec 2019 21:31:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=0i5fqFii9h3zbWBDVAysAxtbLv8smZHCpf4SOKLHP/I=;
+ b=tQ7NTeRHAxaLNx6IHMXSqyBmJf1gYVzude/M4QCDh2PlbjUzZWSuF/VGZ9HZuZ1qY/
+ zRqG2q0O57zGo8OLc0aTt6cCoy+v728+FGFWdR3q4NrKc5WjmIkVRMxG3os3wTy71PiT
+ e55ZNE+XG6nCfbyKVpnAkgeeWKHlZNhRQ2pyspfAXPPPcwlx3Qs98vs4K8I4qosdW2Ro
+ qXfg99EKHSV0wBEGiSKUoP68UcF8Tv322d+Fl7Bw1C8DmiHyVq1vju8tDJqkLReeaFH6
+ To+/5yzd/3j/0Rho77UBs+d9oMyT6eJTf2RTUyhuCIWKAECYHrVRoV5LGRzBUpHvrYq3
+ P/AA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=0i5fqFii9h3zbWBDVAysAxtbLv8smZHCpf4SOKLHP/I=;
+ b=QjzE+hrnIzWl+WPthwJ06J6I/XxfV0fnYVYNzd8Bwlb+i3STwPAiDZVo33Qz3zl0G8
+ Pqt6O3MyItHmn+Rt4uVP/P0Idi9jrRL4T3Ia/5X0VYv+giIMs0/x7Mdvex1AKFnCzrnr
+ 1gkAOeyDeNgKZCkkYP5ojune2+ti0cj4bsfBwx59cTolu4u5m0Dxb5sOQCWZE2cohkl9
+ NXwhntW62FmAgjv3GpVZzXviDdf4u7XEC3Qt2n12l4ZFqnwniTyGQmZPm3zr+MZzifX4
+ eS6nl0TaocEr+VuCm9xiSTP9Rl/wEZtTMh3mEm54naruiqCiaPBY0HYHO+xZs9f3J4Ds
+ 1pJA==
+X-Gm-Message-State: APjAAAVKLAozaLTeMuAv5nvUNScaLkAPqEgx+TPWbrj5TjjcvTCh7NjM
+ c8/YUrblrg3RGlsGjY65SHdqEa+OOWtnefR3RjBKj6et24XZIg==
+X-Google-Smtp-Source: APXvYqyt0Hno3XoOYazUzPfoq8HIUPXgg2qVyO9UxGrvCfIciJG9wGyISvcyjdvUm+i1pmUEpuEObOvV8wUJni1oyws=
+X-Received: by 2002:ac8:2310:: with SMTP id a16mr28240964qta.46.1575955899915; 
+ Mon, 09 Dec 2019 21:31:39 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191209195749.868-3-tiny.windzz@gmail.com>
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Brightmail-Tracker: H4sIAAAAAAAAA01UbTCcVxSeu+/HLo3mrUhdfrTrzbSdmBEWy9FGqq3KO22m1SYxnXSM7tg3
- KNZ2l3z+aBKKRQbJENkS5KNKZHwOayPWEBGdYRmNSmszjZVISzdV35XQta9M/XvOc55znnvu
- mXslhKtR4ilJUKXyGpUiiaWdyZbunb4+rz23RfvlVoVAeqMWBqwrJMwVGQmovrtKQvaDchoa
- 2i009JhviuBx/Zydqyql4OG9T6Hs+3MI0q/U0bA2PkXBwsNKBObFNhoy9JdJqClqIyHfOkWA
- 2VwvhrzSMwgarSMUFJr6xTCT94CCnH+rCRg2ltIwnD6EoGU2g4YSc4cIdHN6GiwZOgrOZARA
- d1YHBZm6HygY+ulDMJ2tF0FTQYWd0m+FczeKENwvPwzt1joC1toNYnje2khC93QWBasjDSQ8
- aXYH09AMgquPsmloaiwiYNl4iYSylQIaaozPEJTXLFGw3GUWhcm5p6PfiblLtSe5+vHrFPfM
- tpcr7Pfh2vQWMddYo6O5sZF2mrMNDIg5U1mtmGu6+i03Mz0h5jL6TCR3Nt1Gcw02g4jLf+4X
- 6XEocXc8r1DyGimvik1RJqjiQtmP98d8ECMP8pP5yEIgmJWqFMl8KBu+L9InIiHJvhhWekSR
- lGanIhVaLeu7Z7cmJS2Vl8anaFNDWV6tTFKHqHdpFcnaNFXcrtiU5Ldlfn7+crvwq8T4ptb7
- tPq09NiPqwvoFJrwzEFOEswEYuvf42QOcpa4MgaE8+5mbwT/IPyo04SEYAHhyYV84kWJZXRR
- LCRuIfxHbhEhBE8R7pz5jVxXbWMOYENOnSPhxuRK8Oj5CdF6QDC5Itwwf9HRi2a8senJKL2O
- tzJe+N6SFa1jF2YPzusZdGhI5g38s9VCrePtTBTua8nY0LyC+y5OONycmBCcXlnv6EMw7vjX
- iXKRgF/HrX+VOk6BmcdO+GZtCSkMEY6ndHdEAt6G/+xtFgvYE8/abtECPomr+27TQnE2ws2m
- QUpIBGDTtfP2YondYSeuM/oKtBduWylDgvHL2DafR61LMOOCszNdBckOPPy7ZcPWA1/J0tEF
- iNVvGke/aQT9phH0/5tVILIGvcqrtclxvFam9t+88EbkeLfeQQZ0eWBfF2IkiN3iUhFmi3al
- FEe0x5O7EJYQrJtLb6adclEqjp/gNSkxmrQkXtuF5PbbLiQ8t8em2H8BVWqMTO4fEBAAgbIg
- uUzGurtIloaiXZk4RSqfyPNqXvOiTiRx8jyFOqePvTXWkz8+Jl/8xT+n2ItNZnV7O3KrTzh7
- tn00rwz0z6racQgHv3cNfV1w5/OXqg9ohnMj3umN3n+jmIogK4Pn3L5oCi5ee3fS+bNvhma7
- 37TU+VTNRjdUhU9KT28xHD34viHqwnKU/GB9eKLH0RK/w7bbYZMGZb+0YND45fXpT9xZUhuv
- kHkTGq3iP+SSlHzNBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTZxTH89x3iJ2XouOBbXFrsiwj0YFOPSaGsCXKs2zJ/KAuminrxh26
- 0Up6QSdbMkc7pBUmmnS6y0thkCmdrqUYKdDRhK4oZlAYg+Bia7RlIcHWEBF1Ao4L2cK33/mf
- 8/t/OgKtbeYyhMPGEslk1BfpuGTmakC3bv1L84kDWf3nssDskWEw+pSBGXsXDa3XFxiojDg4
- aPOFOQiGuin42z2zmF2oY+HO6PtQX3sWgbnZxcGzu1MszN5pQhB61MmBRfmRAae9k4HT0Ska
- QiE3D1V15Qg80TEWzvgHeJiuirBg+6eVhpGuOg5GzMMIrj6wcHA+1EOBdUbhIGyxslBu2QSB
- kz0sVFh/YmH4xg7wV7spaK9pXIyU1XD2sh3BTcen4Iu6aHjm8/Iw3+FhIHDvJAsLY20MTF5J
- A//wNIKWiUoO2j12Gp50NTBQ/7SGA2fXHAKH8zELT3pDVO5mcn/8W540XPqSuO/+zJK5RB45
- M7CedCphnnicVo7cGvNxJDE4yBN//SWetLd8TabvxXhi6fczpNqc4EhbwkuR0/NZu9L3J28v
- kIoOH5VMb+R8lHyoveMmV/zNy19cXJhFJ1Asw4aSBCy+icPjj3gbSha0YjfCtQ/rqeVFOv5+
- OEjbkLDIqTgQkNVYK8YRttemqJwq7sZem4tW3TXiKQH3TTWz6kCLpygc/L2C/r/V1tTGqAon
- ZmL/5Din8mrxFTz6OIpU1og5uCo4RKvMiK/iP6NhVuW14l7c2RKllm9ScP8PsaWeJHEbNje5
- l3po8TU81/AHvcxp+K+Yg1rmdbgjXkfXoFRlha6sUJQVirJCaUSME6VLxbKh0CBnF2cbpWMb
- ZL1BLjUWbvjkiMGDll4383UvGmnJ70WigHSrNI25iQNaVn9UPm7oRVigdWs01yoWI02B/niZ
- ZDqSbyotkuRe9ILA6NI0E8a+fVqxUF8ifS5JxZLpvy0lJGWcQBsrg4kJmMlNlOdt/My6J0jy
- nfa3r2/d9MF06pbq4O7SaGVZyh783pzl+dKPW6mCdzb/MurfX+KJ73y32xlxVfhs511f3U6P
- 7NslXPwub6e/8MVfu82zQz3b4m9dmLgfL7u8d6sSueH9bXLMdpDEnsseUm5byZUBR2vfhzty
- Dj44N69j5EP67EzaJOv/BcgKhNC2AwAA
-X-CMS-MailID: 20191210020413epcas1p3e11eda64344c8e15d7781c5071e76953
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20191209195912epcas5p2759273f3c5b15df7e78285e5db964ee5
-References: <20191209195749.868-1-tiny.windzz@gmail.com>
- <CGME20191209195912epcas5p2759273f3c5b15df7e78285e5db964ee5@epcas5p2.samsung.com>
- <20191209195749.868-3-tiny.windzz@gmail.com>
+References: <20191209173136.29615-1-bjorn.topel@gmail.com>
+ <20191209173136.29615-3-bjorn.topel@gmail.com>
+In-Reply-To: <20191209173136.29615-3-bjorn.topel@gmail.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Tue, 10 Dec 2019 06:31:28 +0100
+Message-ID: <CAJ+HfNi=kDP--Vuuphdn4YhZDbBfoNXzcPDDaDo7vdvuJ0D1=Q@mail.gmail.com>
+Subject: Re: [PATCH bpf-next 2/8] riscv, bpf: add support for far branching
+To: Daniel Borkmann <daniel@iogearbox.net>, Alexei Starovoitov <ast@kernel.org>,
+ Netdev <netdev@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_180425_092917_E9BC29C4 
-X-CRM114-Status: GOOD (  17.10  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20191209_213143_616385_A392BEE5 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [203.254.224.34 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bjorn.topel[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -156,7 +86,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,115 +97,27 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, bpf <bpf@vger.kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
-
-On 12/10/19 4:57 AM, Yangtao Li wrote:
-> Use devm_platform_ioremap_resource() to simplify code.
-> 
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+On Mon, 9 Dec 2019 at 18:31, Bj=C3=B6rn T=C3=B6pel <bjorn.topel@gmail.com> =
+wrote:
+>
+> This commit adds branch relaxation to the BPF JIT, and with that
+> support for far (offset greater than 12b) branching.
+>
+> The branch relaxation requires more than two passes to converge. For
+> most programs it is three passes, but for larger programs it can be
+> more.
+>
+> Signed-off-by: Bj=C3=B6rn T=C3=B6pel <bjorn.topel@gmail.com>
 > ---
->  drivers/clk/samsung/clk-exynos-audss.c   | 4 +---
->  drivers/clk/samsung/clk-exynos4412-isp.c | 4 +---
->  drivers/clk/samsung/clk-exynos5433.c     | 4 +---
->  drivers/clk/samsung/clk-s5pv210-audss.c  | 4 +---
->  4 files changed, 4 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/clk/samsung/clk-exynos-audss.c b/drivers/clk/samsung/clk-exynos-audss.c
-> index 42b5d32c6cc7..9cc127a162ad 100644
-> --- a/drivers/clk/samsung/clk-exynos-audss.c
-> +++ b/drivers/clk/samsung/clk-exynos-audss.c
-> @@ -129,7 +129,6 @@ static int exynos_audss_clk_probe(struct platform_device *pdev)
->  	struct clk *pll_ref, *pll_in, *cdclk, *sclk_audio, *sclk_pcm_in;
->  	const struct exynos_audss_clk_drvdata *variant;
->  	struct clk_hw **clk_table;
-> -	struct resource *res;
->  	struct device *dev = &pdev->dev;
->  	int i, ret = 0;
->  
-> @@ -137,8 +136,7 @@ static int exynos_audss_clk_probe(struct platform_device *pdev)
->  	if (!variant)
->  		return -EINVAL;
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	reg_base = devm_ioremap_resource(dev, res);
-> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(reg_base))
->  		return PTR_ERR(reg_base);
->  
-> diff --git a/drivers/clk/samsung/clk-exynos4412-isp.c b/drivers/clk/samsung/clk-exynos4412-isp.c
-> index 4b9e73608c21..20f5129f7212 100644
-> --- a/drivers/clk/samsung/clk-exynos4412-isp.c
-> +++ b/drivers/clk/samsung/clk-exynos4412-isp.c
-> @@ -110,11 +110,9 @@ static int __init exynos4x12_isp_clk_probe(struct platform_device *pdev)
->  	struct samsung_clk_provider *ctx;
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev->of_node;
-> -	struct resource *res;
->  	void __iomem *reg_base;
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	reg_base = devm_ioremap_resource(dev, res);
-> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(reg_base)) {
->  		dev_err(dev, "failed to map registers\n");
->  		return PTR_ERR(reg_base);
-> diff --git a/drivers/clk/samsung/clk-exynos5433.c b/drivers/clk/samsung/clk-exynos5433.c
-> index 4b1aa9382ad2..b0d48cddfd6e 100644
-> --- a/drivers/clk/samsung/clk-exynos5433.c
-> +++ b/drivers/clk/samsung/clk-exynos5433.c
-> @@ -5557,7 +5557,6 @@ static int __init exynos5433_cmu_probe(struct platform_device *pdev)
->  	struct exynos5433_cmu_data *data;
->  	struct samsung_clk_provider *ctx;
->  	struct device *dev = &pdev->dev;
-> -	struct resource *res;
->  	void __iomem *reg_base;
->  	int i;
->  
-> @@ -5570,8 +5569,7 @@ static int __init exynos5433_cmu_probe(struct platform_device *pdev)
->  		return -ENOMEM;
->  	ctx = &data->ctx;
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	reg_base = devm_ioremap_resource(dev, res);
-> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(reg_base))
->  		return PTR_ERR(reg_base);
->  
-> diff --git a/drivers/clk/samsung/clk-s5pv210-audss.c b/drivers/clk/samsung/clk-s5pv210-audss.c
-> index 14985ebd043b..503bd8a10d8f 100644
-> --- a/drivers/clk/samsung/clk-s5pv210-audss.c
-> +++ b/drivers/clk/samsung/clk-s5pv210-audss.c
-> @@ -63,15 +63,13 @@ static struct syscore_ops s5pv210_audss_clk_syscore_ops = {
->  static int s5pv210_audss_clk_probe(struct platform_device *pdev)
->  {
->  	int i, ret = 0;
-> -	struct resource *res;
->  	const char *mout_audss_p[2];
->  	const char *mout_i2s_p[3];
->  	const char *hclk_p;
->  	struct clk_hw **clk_table;
->  	struct clk *hclk, *pll_ref, *pll_in, *cdclk, *sclk_audio;
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	reg_base = devm_ioremap_resource(&pdev->dev, res);
-> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(reg_base)) {
->  		dev_err(&pdev->dev, "failed to map audss registers\n");
->  		return PTR_ERR(reg_base);
-> 
+>  arch/riscv/net/bpf_jit_comp.c | 352 ++++++++++++++++++----------------
+[...]
+> +}
+> +
+> +static void emit_branch(u8 cond, u8 rd, u8 rs, int insn, int rvoff,
 
-Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+The "insn" is not used. I'll do a respin.
 
