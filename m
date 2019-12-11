@@ -2,61 +2,97 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D72311BD87
-	for <lists+linux-riscv@lfdr.de>; Wed, 11 Dec 2019 20:55:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1F1E11C01F
+	for <lists+linux-riscv@lfdr.de>; Wed, 11 Dec 2019 23:49:26 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m80QnpkdRtnOdbNfu8kFkomh7rqJfH/NfkLD/bU18oA=; b=sqcBhlo5yJaMOa
-	LpAV/vs7faEnapH7FXmKVBtnzSl5PM6Sg0kWdxJpyeyzkbYPiCC/qtkszAallM/Oq0PG/aBzpugeg
-	TVSWY28EZXUAS53SMWA2GfHGXmO3DyT1V/kNHOvURpTWz6W8lhsMGCzilJL1kPl0R2X9qgpSOqnUX
-	YsBnrR+BBlKx0YIicyYa5yleWym5TmObHOOVH257ZaVMXnipqRt5DLVVnDlKHGLT70C+QxnF02+d4
-	lR3td3hnO13bx7epGyzvmzquRZpmt6ymlgqwCOC2/ck60VjuYSI5nyjYzMl079vrxsaUvnq+12Xdd
-	sezUFkCsI65yB52FADXA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-ID:
+	Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:
+	Date:Reply-To:Content-Transfer-Encoding:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=q5INj5K/FoyzGZq3Fl+iF+CitcbMs72mX5maGlskDRo=; b=FGX/Kg0WV6VhaqG2u0qqlq/WB
+	vWBu1wKNjdIWoToM0FsUj9gFI1t5r21O3U7yLzKdTCgiVccFk4FXeQ+szLrsAn1qFle7sBQzTffNy
+	OH5wMwWfnnGjF2WxW8K1Z/EK74UWm/jSMvUMnsAoRh8K8/MpqRSsra4FqgCNlMsKMKP5YA08tOHUZ
+	x20u4l9YZU9TPtflXmaUbjqon02/GfN9WYV8oe8KuoihDhY+crqS1NGIejWKhD/p1AM1Yn2J9Xjrs
+	ppQKrZF99CrttMABPllgSPYzxZCk366hUyMf+4upGdeUD/7OTAVOuduupNwoE93Iq7WAIZ9gldvgb
+	vO1zpOvaA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if84n-00046p-KE; Wed, 11 Dec 2019 19:55:13 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1ifAnB-0008Tf-Pv; Wed, 11 Dec 2019 22:49:13 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if84e-0002wR-45; Wed, 11 Dec 2019 19:55:05 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 5F336AC1C;
- Wed, 11 Dec 2019 19:54:59 +0000 (UTC)
+ id 1ifAn6-0008S9-Sz
+ for linux-riscv@lists.infradead.org; Wed, 11 Dec 2019 22:49:11 +0000
+Received: by mail-pg1-x542.google.com with SMTP id k197so70747pga.10
+ for <linux-riscv@lists.infradead.org>; Wed, 11 Dec 2019 14:49:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:in-reply-to:message-id:references
+ :user-agent:mime-version:content-id;
+ bh=q5INj5K/FoyzGZq3Fl+iF+CitcbMs72mX5maGlskDRo=;
+ b=MeiVsFdiPFAc4aA9Fp5QodpjTa9d1iLK9U7j394vvMoHJpAVmuN2Y3a9BJ3UUPWt5+
+ HKMLOFQpN/heIfaXflEC0NGqrYW2v8lqUfNR2H69h7LS6RyNmVSGnCOtp0YEB2aAKgXg
+ Poy0jFUu7bEAvuPb8aqdVDIJS682+v52754AmMJvd30TEbGUD3C2qQOUl3ehrSU6Silz
+ 6i8Va8FmxLpeMozyM0XgH53XNjsID7mKpf3Qu1+8PnP7Q2ahYuIVS2rYdJwkhiSr53bK
+ rGs4YwO5SDcGW2nqyUbX1I1zN/PRLdaZVY4W6B4mJ0usMXLR4szgEhNh6R2evbfZxzHt
+ BGdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
+ :references:user-agent:mime-version:content-id;
+ bh=q5INj5K/FoyzGZq3Fl+iF+CitcbMs72mX5maGlskDRo=;
+ b=FZS6cvLvSHFuhQiyncMEHP0WTRBLkeYUh35jAb8aefIocPYPsEWnrXYmtLlKy2HIMB
+ vOqSqUt0cVaFAKTO/cVi9sjX19ojx/HrY2tcmtm57tUrOoUa1A4aYAm0XhTQ4UGwUk4b
+ ZP6OWg+T2OfcJDNutI5vjFuEaWUY8UpPjWyS2jZ/xsZTec9zgVJE51XJPoSaMa7fV4ur
+ yjb8b3bdwL2gx6HGOKDn6TV0+63TwOCykKtR2rllFwqkCJ520IKmbQ+P0TET2EnfkMTR
+ NbFEkJs7iZtMNF4Jw98RknnYQ1qPiBCjEbwV2uZ+0y3jFky8bg5PjF0YiL6+2RF+drZB
+ dLdg==
+X-Gm-Message-State: APjAAAU9hOj+UxijxFC+Y2SS8g6a2BO1zi9yM6QiyMml/IpCS2HBwH9F
+ YUBDbIGP13jiPpb6BuaaToSmCA==
+X-Google-Smtp-Source: APXvYqxZv/x8+6gPs+lvJuUwoBOCwIXFbxQfMv+55zj6XHXc7FfvAo4rlYoWWIsIgkOum3WZTwNW0A==
+X-Received: by 2002:a63:78cf:: with SMTP id t198mr6714132pgc.287.1576104547592; 
+ Wed, 11 Dec 2019 14:49:07 -0800 (PST)
+Received: from localhost ([184.105.100.2])
+ by smtp.gmail.com with ESMTPSA id h6sm3877324pgq.61.2019.12.11.14.49.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Dec 2019 14:49:06 -0800 (PST)
+Date: Wed, 11 Dec 2019 14:49:06 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 Subject: Re: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
-To: Paul Walmsley <paul@pwsan.com>
+In-Reply-To: <76d72777-b144-0679-1f4c-1136496a5f06@suse.de>
+Message-ID: <alpine.DEB.2.21.9999.1912111411120.73923@viisi.sifive.com>
 References: <20191209195749.868-1-tiny.windzz@gmail.com>
  <20191209195749.868-8-tiny.windzz@gmail.com>
  <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
  <20191210132146.GF2703785@ulmo>
  <8ff73b97-cf2e-0c91-2764-05ce4c548b06@suse.de>
  <alpine.DEB.2.21.999.1912111751490.32095@utopia.booyaka.com>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Software Solutions Germany GmbH
-Message-ID: <76d72777-b144-0679-1f4c-1136496a5f06@suse.de>
-Date: Wed, 11 Dec 2019 20:54:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+ <76d72777-b144-0679-1f4c-1136496a5f06@suse.de>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-In-Reply-To: <alpine.DEB.2.21.999.1912111751490.32095@utopia.booyaka.com>
-Content-Type: text/plain; charset=iso-8859-15
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; BOUNDARY="8323329-1646688419-1576102796=:73923"
+Content-ID: <alpine.DEB.2.21.9999.1912111420030.73923@viisi.sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_115504_464093_70488CB8 
-X-CRM114-Status: GOOD (  15.64  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20191211_144908_987281_61CD02BB 
+X-CRM114-Status: GOOD (  10.10  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,14 +142,14 @@ Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
  "mripard@kernel.org" <mripard@kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  "swinslow@gmail.com" <swinslow@gmail.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
  "john@phrozen.org" <john@phrozen.org>,
  "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
  "tglx@linutronix.de" <tglx@linutronix.de>,
  Daniel Baluta <daniel.baluta@nxp.com>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Aisheng Dong <aisheng.dong@nxp.com>, James Tai <james.tai@realtek.com>,
- Cheng-Yu Lee <cylee12@realtek.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+ Aisheng Dong <aisheng.dong@nxp.com>, Paul Walmsley <paul@pwsan.com>,
+ James Tai <james.tai@realtek.com>, Cheng-Yu Lee <cylee12@realtek.com>,
+ "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
  "sboyd@kernel.org" <sboyd@kernel.org>,
  "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
  "pdeschrijver@nvidia.com" <pdeschrijver@nvidia.com>,
@@ -127,90 +163,54 @@ Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Am 11.12.19 um 18:57 schrieb Paul Walmsley:
-> On Tue, 10 Dec 2019, Andreas Färber wrote:
-> 
->> I have similar cases with Realtek where registers are simply not grouped
->> into convenient blocks but spread across large memory regions.
-> 
-> At the hardware level, registers are grouped into IP blocks, to simply 
-> both design integration and address decoding.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Reality shows, not all vendors/chips always care about simplification.
+--8323329-1646688419-1576102796=:73923
+Content-Type: text/plain; CHARSET=ISO-8859-15
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-ID: <alpine.DEB.2.21.9999.1912111420031.73923@viisi.sifive.com>
 
-Blocks do have names, but they don't always group registers of the same
-kind, as Linux expects it - be it for historical backwards compatibility
-reasons or because Linux/Android wasn't their main use case in the past.
-Firmware developers won't care where their registers are located.
+On Wed, 11 Dec 2019, Andreas F=E4rber wrote:
 
->  Not knowing which Realtek 
-> device you're referring to,
+> Blocks do have names, but they don't always group registers of the same
+> kind, as Linux expects it
 
-Arm based RTD1195 and RTD1295/RTD1395/RTD1619/RTD1319 SoC families,
-which I maintain.
+Linux does not expect that all of the registers in the same IP block are=20
+of the same kind.  That's part of the reason why Linux frameworks exist. =
+=20
+To consider clocks as the present example, you're welcome to register=20
+local IP block clock control registers in the local IP block driver via=20
+the clock framework.  There's no need for a separate clock driver with an=
+=20
+overlapping address range, or anything like that.
 
-> most likely it's the same situation as with 
-> the IMX8M TRM, where the DT data doesn't match the underlying reality of 
-> the hardware.  In those cases the best approach is usually to just fix the 
-> DT data.
+This is nothing new with Realtek.  IP blocks that contain many different=20
+kinds of registers have had Linux driver support without requiring=20
+overlapping register address ranges long before Realtek ARM SoCs=20
+appeared.
 
-No, you're not reading me. My DT data matches the hardware as far as I
-know it. You can be really happy that you can login to get NXP manuals;
-for other vendors, manuals simply don't exist and we have to deduce DT
-from register names/offsets ourselves. Reality is messy!
+> Just please accept that hardware does not always allow for unique=20
+> contiguous memory reservations
 
-Just please accept that hardware does not always allow for unique
-contiguous memory reservations, and we therefore cannot force these
-types of reservations onto everybody.
+Hardware designs do in fact mandate unique contiguous memory reservations,=
+=20
+otherwise address decoding would be indeterministic.  What they don't=20
+mandate is that all of the registers in that region be all of one kind.=20
+It's certainly possible to have an SoC with one giant IP block with all=20
+registers mixed together.  Even in that case, it is still incorrect to=20
+have multiple DT entries with overlapping register address ranges.
 
-There might be an opportunity for a new helper with even longer name
-that does the expected combination of actions. But is it worth it?
-People seem to have stopped giving motivations for their patches in
-commit message or cover letter, so it remains entirely unclear how else
-one might satisfy the submitter's goals while keeping your code working.
-(Also referring to unjustified style-only cleanups popping up lately.)
-"to simplify code" is not much to go on, it sounds like a style cleanup
-without any practical error avoidance benefits nor an API to be dropped.
+It sounds like you're thinking of the difficulties of figuring out how to=
+=20
+structure the software driver support for those mixed IP block as a Linux=
+=20
+driver: where it would fit in the tree, what frameworks it would need to=20
+register with, and who would maintain it.  Those issues certainly merit=20
+careful thought and consideration.  They aren't related to multiple=20
+overlapping address ranges.
 
-Note that I did not receive any cover letter accompanying this patch,
-but was CC'ed on plenty of other patches like this one that I'm not
-maintainer of, leading me to assume that none was sent.
 
-Alternatively one could do the reservations decoupled from DT inside the
-driver, but again not using this suggested helper.
-
-From what I read on other such patches, apparently some Coccinelle build
-target emits warnings when it matches some pattern for potential
-refactoring, which people then set out to resolve, without understanding
-the code they touch or being able to actually test it. That's probably
-the root cause that someone would need to tackle - whitelisting
-fully-intentional usages of certain APIs to protect against unwarranted
-refactorings, or otherwise making sure that people don't get inspired to
-in their best intentions break other people's code. I assume kbuild bot
-doesn't send out such cocci warnings to us maintainers for good reasons.
-
-A completely fragmented DT with either dozens of reg entries for single
-registers or distinct compatible strings for individual registers, to
-give them their own DT nodes, is not really handy, compared to one or
-two larger clk nodes that handle reg offsets under the hood, without
-impacting public DT bindings (e.g., bumping reg's maxItems, clk header).
-
-If you care about modeling this, you're welcome to participate in patch
-review @ DTML/LAKML/LRSML. So far there's largely been a yawning silence
-in response to my patches introducing syscon and simple-mfd as cleanups,
-before things get worse as we add to the DT. Following an unreviewed clk
-RFC of mine two years back, there's now been a clk patchset from Realtek
-that got a load of review comments from me, waiting for a v2.
-
-If you don't care, then please don't lecture us about how you think
-other people's hardware should ideally be like. That's not helpful.
-
-Regards,
-Andreas
-
--- 
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 Nürnberg, Germany
-GF: Felix Imendörffer
-HRB 36809 (AG Nürnberg)
+- Paul
+--8323329-1646688419-1576102796=:73923--
 
