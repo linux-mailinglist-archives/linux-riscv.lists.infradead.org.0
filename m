@@ -2,46 +2,49 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3DE411BAA1
-	for <lists+linux-riscv@lfdr.de>; Wed, 11 Dec 2019 18:51:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A53A611BAC3
+	for <lists+linux-riscv@lfdr.de>; Wed, 11 Dec 2019 18:57:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-ID:
+	Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:
+	Date:Reply-To:Content-Transfer-Encoding:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Wa1rBQjl5OfHQwnvKrUqaMJi3N3kDyBtkn02IdAlSy8=; b=KZYgVUAqCvTj2tsi8TAPv1Us4
-	N6XZHRmXDEVyy+OcDs/WpZyivaLV4rSfmo8XdgjWO2LcA4CHR9wMBstlJACRch1byA2pg9hJW/BvA
-	WAsoOx0DQnB+F1X89Ma/+UOlgNusEFok5Lb8jys3s+MzFwuH41xPzKSqn+b/fJD/gU3jbmeTsBcFs
-	4CK9AlC4QodUY53wbBNowjf+j49iXTlw2q9qkRsaVSkpXdox6FcQ7c43z/glV5NoGu3fr4LPhYyNo
-	lpP2v8zyKiVH2NzAjT3VPJi5xDZuUvQhpoYiDTXnu5ETuyUeSfnwupDLoGTFUpJcTrjEjswpGMa5w
-	FLZaV41+A==;
+	 bh=vOMn4S+8I8KXs/zYMxcOZRrS9wR34VHPM0VoG4G2cZY=; b=SFroRY6Uffp3nZ+rXHh763n3S
+	ulpE2OPAesXjF9146FaTN91Aa+pP5A1NJk8z3NR7M8egzogn1RoN1+9eQej+8L5y4TH/PGto7NBaZ
+	Qdu2L9dU46H81+IR2j0/oULElwAPpPV55v+4pVbSG2sh0fqDMVu30D//uGxJPNob5D6KPCwRbt6yN
+	DTucJf6L6kY1/uOecYJcyu4Werv/zbVNidQwdL569iiCBoYtHOdmPOUOvAiqlcOBAHBZaTnel77P8
+	t17ubXaG6H9d5t0FDDlLivrL0ww+E9T7aU978uIzUBUEDGPI+cyzscr3g260M4U5ug2F3R7Uwbsdy
+	iszSXVBig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if69I-00053D-Al; Wed, 11 Dec 2019 17:51:44 +0000
+	id 1if6Eu-0007vT-31; Wed, 11 Dec 2019 17:57:32 +0000
 Received: from utopia.booyaka.com ([74.50.51.50])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if69D-00050l-4a
- for linux-riscv@lists.infradead.org; Wed, 11 Dec 2019 17:51:41 +0000
-Received: (qmail 1514 invoked by uid 1019); 11 Dec 2019 17:51:35 -0000
+ id 1if6Ep-0007uF-To
+ for linux-riscv@lists.infradead.org; Wed, 11 Dec 2019 17:57:29 +0000
+Received: (qmail 2254 invoked by uid 1019); 11 Dec 2019 17:57:26 -0000
 Received: from localhost (sendmail-bs@127.0.0.1)
- by localhost with SMTP; 11 Dec 2019 17:51:35 -0000
-Date: Wed, 11 Dec 2019 17:51:35 +0000 (UTC)
+ by localhost with SMTP; 11 Dec 2019 17:57:26 -0000
+Date: Wed, 11 Dec 2019 17:57:26 +0000 (UTC)
 From: Paul Walmsley <paul@pwsan.com>
-To: Leonard Crestez <leonard.crestez@nxp.com>
+To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
 Subject: Re: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
-In-Reply-To: <20191210132146.GF2703785@ulmo>
-Message-ID: <alpine.DEB.2.21.999.1912111743560.32095@utopia.booyaka.com>
+In-Reply-To: <8ff73b97-cf2e-0c91-2764-05ce4c548b06@suse.de>
+Message-ID: <alpine.DEB.2.21.999.1912111751490.32095@utopia.booyaka.com>
 References: <20191209195749.868-1-tiny.windzz@gmail.com>
  <20191209195749.868-8-tiny.windzz@gmail.com>
  <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
  <20191210132146.GF2703785@ulmo>
+ <8ff73b97-cf2e-0c91-2764-05ce4c548b06@suse.de>
 User-Agent: Alpine 2.21.999 (DEB 260 2018-02-26)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; BOUNDARY="843723315-249778640-1576086897=:32095"
+Content-ID: <alpine.DEB.2.21.999.1912111755220.32095@utopia.booyaka.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_095139_252028_F501E203 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20191211_095728_042226_1D919A1A 
+X-CRM114-Status: UNSURE (   5.39  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -72,16 +75,20 @@ Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
  "rfontana@redhat.com" <rfontana@redhat.com>,
  Thierry Reding <thierry.reding@gmail.com>,
  "weiyongjun1@huawei.com" <weiyongjun1@huawei.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
  "s.nawrocki@samsung.com" <s.nawrocki@samsung.com>,
  "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Leonard Crestez <leonard.crestez@nxp.com>,
  "festevam@gmail.com" <festevam@gmail.com>,
  "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
  "robh@kernel.org" <robh@kernel.org>,
  "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
  "emilio@elopez.com.ar" <emilio@elopez.com.ar>,
+ "linux-realtek-soc@lists.infradead.org"
+ <linux-realtek-soc@lists.infradead.org>,
  "allison@lohutok.net" <allison@lohutok.net>,
- "krzk@kernel.org" <krzk@kernel.org>,
+ Fabien DESSENNE <fabien.dessenne@st.com>,
  "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
  "cw00.choi@samsung.com" <cw00.choi@samsung.com>,
  "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
@@ -100,7 +107,8 @@ Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
  "tglx@linutronix.de" <tglx@linutronix.de>,
  Daniel Baluta <daniel.baluta@nxp.com>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Aisheng Dong <aisheng.dong@nxp.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+ Aisheng Dong <aisheng.dong@nxp.com>, James Tai <james.tai@realtek.com>,
+ Cheng-Yu Lee <cylee12@realtek.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
  "sboyd@kernel.org" <sboyd@kernel.org>,
  "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
  "pdeschrijver@nvidia.com" <pdeschrijver@nvidia.com>,
@@ -110,54 +118,31 @@ Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
  "kgene@kernel.org" <kgene@kernel.org>,
  "kernel@pengutronix.de" <kernel@pengutronix.de>,
  "wangyan.wang@mediatek.com" <wangyan.wang@mediatek.com>,
- "shawnguo@kernel.org" <shawnguo@kernel.org>,
- "afaerber@suse.de" <afaerber@suse.de>
+ "shawnguo@kernel.org" <shawnguo@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-+ Dong
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-On Tue, 10 Dec 2019, Thierry Reding wrote:
+--843723315-249778640-1576086897=:32095
+Content-Type: text/plain; CHARSET=ISO-8859-15
+Content-Transfer-Encoding: 8BIT
+Content-ID: <alpine.DEB.2.21.999.1912111755221.32095@utopia.booyaka.com>
 
-> On Mon, Dec 09, 2019 at 08:44:39PM +0000, Leonard Crestez wrote:
->
-> > This breaks imx8qxp-mek boot by causing most peripherals (like uart) to 
-> > fail to probe.
-> > 
-> > The old and new paths are not equivalent: devm_platform_ioremap_resource
-> > calls devm_ioremap_resource which differs from devm_ioremap by also 
-> > calling devm_request_mem_region.
-> > 
-> > This prevents other mappings in the area and imx8qxp-lpcg nodes map 
-> > whole hardware "subsystems" and overlap most peripherals. For example:
-> > 
-> >                   adma_lpcg: clock-controller@59000000 {
-> >                           compatible = "fsl,imx8qxp-lpcg-adma";
-> >                           reg = <0x59000000 0x2000000>;
-> >                           #clock-cells = <1>;
-> > 		};
-> > 
-> >                  adma_lpuart0: serial@5a060000 {
-> > 			reg = <0x5a060000 0x1000>;
-> > 			...
-> > 		};
-> 
-> The whole point of doing a request_mem_region() is to avoid having
-> multiple drivers trample on each others' mappings. What you do above
-> doesn't look right. Why does that clock controller need access to 32
-> MiB of I/O memory space?
+On Tue, 10 Dec 2019, Andreas Färber wrote:
 
-Thierry's right; your DT data looks broken.  Unfortunately the IMX8M TRM 
-requires some sort of signup to download, so I can't easily read it, but 
-based on files like this:
+> I have similar cases with Realtek where registers are simply not grouped
+> into convenient blocks but spread across large memory regions.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/imx/clk-imx8qxp-lpcg.h
-
-it looks like what should be in the DT instead is either a large set of 
-smaller register ranges, or a set of separate DT nodes/drivers: one per 
-peripheral LPCG instance.  That should avoid the overlapping memory range 
-issue.
+At the hardware level, registers are grouped into IP blocks, to simply 
+both design integration and address decoding.  Not knowing which Realtek 
+device you're referring to, most likely it's the same situation as with 
+the IMX8M TRM, where the DT data doesn't match the underlying reality of 
+the hardware.  In those cases the best approach is usually to just fix the 
+DT data.
 
 
 - Paul
+--843723315-249778640-1576086897=:32095--
 
