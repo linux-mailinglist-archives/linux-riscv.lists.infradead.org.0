@@ -2,66 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1F1E11C01F
-	for <lists+linux-riscv@lfdr.de>; Wed, 11 Dec 2019 23:49:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4373C11C585
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Dec 2019 06:38:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-ID:
-	Content-Type:MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:
-	Date:Reply-To:Content-Transfer-Encoding:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=q5INj5K/FoyzGZq3Fl+iF+CitcbMs72mX5maGlskDRo=; b=FGX/Kg0WV6VhaqG2u0qqlq/WB
-	vWBu1wKNjdIWoToM0FsUj9gFI1t5r21O3U7yLzKdTCgiVccFk4FXeQ+szLrsAn1qFle7sBQzTffNy
-	OH5wMwWfnnGjF2WxW8K1Z/EK74UWm/jSMvUMnsAoRh8K8/MpqRSsra4FqgCNlMsKMKP5YA08tOHUZ
-	x20u4l9YZU9TPtflXmaUbjqon02/GfN9WYV8oe8KuoihDhY+crqS1NGIejWKhD/p1AM1Yn2J9Xjrs
-	ppQKrZF99CrttMABPllgSPYzxZCk366hUyMf+4upGdeUD/7OTAVOuduupNwoE93Iq7WAIZ9gldvgb
-	vO1zpOvaA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SWeTfg1mw+9TAXbscbjgF+3G53HBCznev+9PKk0uzfI=; b=YLwAUYq33YR2Ab
+	UJuKw2uruiZdY+YmfCciM5oA50Ed8kYQQV4N8s2kUNK5YNL0h26g+ZW2qPMuQ3QnVmguWnia6zQEo
+	SPJgupomkk2yQbi/1MvLQbsKNhmA7xU9yVt+u8J5yZlWG5JrdFvHz+oEw/rmSBJLaHNvlHxFuYeMf
+	/cWqq3W75qAs2MgnDUKAtb/FePtYraZGjG7J3rZAHWcHS6SYnp3Ox1sbQ4xs9Zp/2NsGAtH3ozciM
+	2B5QVsBhvO0y8Msl2lFkTAcAA/r6l0H/hn0maZ6twkbPCpOPiYErNsN9pi5LHLUsPSgkDlH+Hzq+H
+	LC2sQPq8LVgOyLKChSMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifAnB-0008Tf-Pv; Wed, 11 Dec 2019 22:49:13 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1ifHBT-0003b4-HM; Thu, 12 Dec 2019 05:38:43 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifAn6-0008S9-Sz
- for linux-riscv@lists.infradead.org; Wed, 11 Dec 2019 22:49:11 +0000
-Received: by mail-pg1-x542.google.com with SMTP id k197so70747pga.10
- for <linux-riscv@lists.infradead.org>; Wed, 11 Dec 2019 14:49:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version:content-id;
- bh=q5INj5K/FoyzGZq3Fl+iF+CitcbMs72mX5maGlskDRo=;
- b=MeiVsFdiPFAc4aA9Fp5QodpjTa9d1iLK9U7j394vvMoHJpAVmuN2Y3a9BJ3UUPWt5+
- HKMLOFQpN/heIfaXflEC0NGqrYW2v8lqUfNR2H69h7LS6RyNmVSGnCOtp0YEB2aAKgXg
- Poy0jFUu7bEAvuPb8aqdVDIJS682+v52754AmMJvd30TEbGUD3C2qQOUl3ehrSU6Silz
- 6i8Va8FmxLpeMozyM0XgH53XNjsID7mKpf3Qu1+8PnP7Q2ahYuIVS2rYdJwkhiSr53bK
- rGs4YwO5SDcGW2nqyUbX1I1zN/PRLdaZVY4W6B4mJ0usMXLR4szgEhNh6R2evbfZxzHt
- BGdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version:content-id;
- bh=q5INj5K/FoyzGZq3Fl+iF+CitcbMs72mX5maGlskDRo=;
- b=FZS6cvLvSHFuhQiyncMEHP0WTRBLkeYUh35jAb8aefIocPYPsEWnrXYmtLlKy2HIMB
- vOqSqUt0cVaFAKTO/cVi9sjX19ojx/HrY2tcmtm57tUrOoUa1A4aYAm0XhTQ4UGwUk4b
- ZP6OWg+T2OfcJDNutI5vjFuEaWUY8UpPjWyS2jZ/xsZTec9zgVJE51XJPoSaMa7fV4ur
- yjb8b3bdwL2gx6HGOKDn6TV0+63TwOCykKtR2rllFwqkCJ520IKmbQ+P0TET2EnfkMTR
- NbFEkJs7iZtMNF4Jw98RknnYQ1qPiBCjEbwV2uZ+0y3jFky8bg5PjF0YiL6+2RF+drZB
- dLdg==
-X-Gm-Message-State: APjAAAU9hOj+UxijxFC+Y2SS8g6a2BO1zi9yM6QiyMml/IpCS2HBwH9F
- YUBDbIGP13jiPpb6BuaaToSmCA==
-X-Google-Smtp-Source: APXvYqxZv/x8+6gPs+lvJuUwoBOCwIXFbxQfMv+55zj6XHXc7FfvAo4rlYoWWIsIgkOum3WZTwNW0A==
-X-Received: by 2002:a63:78cf:: with SMTP id t198mr6714132pgc.287.1576104547592; 
- Wed, 11 Dec 2019 14:49:07 -0800 (PST)
-Received: from localhost ([184.105.100.2])
- by smtp.gmail.com with ESMTPSA id h6sm3877324pgq.61.2019.12.11.14.49.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Dec 2019 14:49:06 -0800 (PST)
-Date: Wed, 11 Dec 2019 14:49:06 -0800 (PST)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>
+ id 1ifHBO-0003Zn-6C; Thu, 12 Dec 2019 05:38:40 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 56D04B21C;
+ Thu, 12 Dec 2019 05:38:35 +0000 (UTC)
 Subject: Re: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
-In-Reply-To: <76d72777-b144-0679-1f4c-1136496a5f06@suse.de>
-Message-ID: <alpine.DEB.2.21.9999.1912111411120.73923@viisi.sifive.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>
 References: <20191209195749.868-1-tiny.windzz@gmail.com>
  <20191209195749.868-8-tiny.windzz@gmail.com>
  <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
@@ -69,30 +35,30 @@ References: <20191209195749.868-1-tiny.windzz@gmail.com>
  <8ff73b97-cf2e-0c91-2764-05ce4c548b06@suse.de>
  <alpine.DEB.2.21.999.1912111751490.32095@utopia.booyaka.com>
  <76d72777-b144-0679-1f4c-1136496a5f06@suse.de>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ <alpine.DEB.2.21.9999.1912111411120.73923@viisi.sifive.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Software Solutions Germany GmbH
+Message-ID: <1a415db0-9313-72c3-e02c-0f3b8e0e5da0@suse.de>
+Date: Thu, 12 Dec 2019 06:38:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-1646688419-1576102796=:73923"
-Content-ID: <alpine.DEB.2.21.9999.1912111420030.73923@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.1912111411120.73923@viisi.sifive.com>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_144908_987281_61CD02BB 
-X-CRM114-Status: GOOD (  10.10  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191211_213838_523505_1851FE56 
+X-CRM114-Status: GOOD (  26.18  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -163,54 +129,170 @@ Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Am 11.12.19 um 23:49 schrieb Paul Walmsley:
+> On Wed, 11 Dec 2019, Andreas Färber wrote:
+> 
+>> Blocks do have names, but they don't always group registers of the same
+>> kind, as Linux expects it
+> 
+> Linux does not expect that all of the registers in the same IP block are 
+> of the same kind.  That's part of the reason why Linux frameworks exist.  
+> To consider clocks as the present example, you're welcome to register 
+> local IP block clock control registers in the local IP block driver via 
+> the clock framework.  There's no need for a separate clock driver with an 
+> overlapping address range, or anything like that.
 
---8323329-1646688419-1576102796=:73923
-Content-Type: text/plain; CHARSET=ISO-8859-15
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Content-ID: <alpine.DEB.2.21.9999.1912111420031.73923@viisi.sifive.com>
+If I throw random code into drivers/mfd/ it will not get proper review.
 
-On Wed, 11 Dec 2019, Andreas F=E4rber wrote:
+We rely on clk drivers going into drivers/clk/, even if I could
+theoretically register clks also from other parts of the code base -
+which will then require complex Kconfig dependencies or #ifdef'ery, not
+to mention the nightmares of collecting Acks and figuring out through
+whose tree which patches go.
 
-> Blocks do have names, but they don't always group registers of the same
-> kind, as Linux expects it
+> 
+> This is nothing new with Realtek.
 
-Linux does not expect that all of the registers in the same IP block are=20
-of the same kind.  That's part of the reason why Linux frameworks exist. =
-=20
-To consider clocks as the present example, you're welcome to register=20
-local IP block clock control registers in the local IP block driver via=20
-the clock framework.  There's no need for a separate clock driver with an=
-=20
-overlapping address range, or anything like that.
+As this NXP patch proves. :)
 
-This is nothing new with Realtek.  IP blocks that contain many different=20
-kinds of registers have had Linux driver support without requiring=20
-overlapping register address ranges long before Realtek ARM SoCs=20
-appeared.
+>  IP blocks that contain many different 
+> kinds of registers have had Linux driver support without requiring 
+> overlapping register address ranges long before Realtek ARM SoCs 
+> appeared.
 
-> Just please accept that hardware does not always allow for unique=20
-> contiguous memory reservations
+Hey, you're the one that's trying to pin this on Realtek, not me!
+STM32 RCC is another example I know, also Allwinner, etc. My point was
+precisely that this is - for good or bad - a rather common scenario that
+we need to deal with.
 
-Hardware designs do in fact mandate unique contiguous memory reservations,=
-=20
-otherwise address decoding would be indeterministic.  What they don't=20
-mandate is that all of the registers in that region be all of one kind.=20
-It's certainly possible to have an SoC with one giant IP block with all=20
-registers mixed together.  Even in that case, it is still incorrect to=20
-have multiple DT entries with overlapping register address ranges.
+>> Just please accept that hardware does not always allow for unique 
+>> contiguous memory reservations
+> 
+> Hardware designs do in fact mandate unique contiguous memory reservations,
+> otherwise address decoding would be indeterministic.
 
-It sounds like you're thinking of the difficulties of figuring out how to=
-=20
-structure the software driver support for those mixed IP block as a Linux=
-=20
-driver: where it would fit in the tree, what frameworks it would need to=20
-register with, and who would maintain it.  Those issues certainly merit=20
-careful thought and consideration.  They aren't related to multiple=20
-overlapping address ranges.
+Are you not understanding what I'm saying or intentionally gas-lighting?
+A contiguous memory _reservation_ is a range of memory like <0xdead0000
+0x100> that the kernel (software!) blocks other drivers (software!) from
+reserving. This has _nothing_ to do with hardware address line decoding.
+It's still about devm_platform_ioremap_resource() and related APIs. Do a
+`cat /proc/iomem` to see, e.g., "98007800-9800781f : serial" reservation
+in successful case; as mentioned by Leonard, an unsuccessful reservation
+usually causes the driver to fail to probe and thus be unavailable.
 
+>  What they don't 
+> mandate is that all of the registers in that region be all of one kind. 
+> It's certainly possible to have an SoC with one giant IP block with all 
+> registers mixed together.  Even in that case, it is still incorrect to 
+> have multiple DT entries with overlapping register address ranges.
 
-- Paul
---8323329-1646688419-1576102796=:73923--
+Says who? Since when? Can we maybe agree that incorrect != invalid?
+
+> It sounds like you're thinking of the difficulties of figuring out how to 
+> structure the software driver support for those mixed IP block as a Linux 
+> driver:
+
+Yes, these are Linux kernel mailing lists and patches after all... I
+don't design hardware, that's why I said we need to live with the flawed
+reality of the actual hardware we get.
+
+> where it would fit in the tree, what frameworks it would need to 
+> register with, and who would maintain it.  Those issues certainly merit 
+> careful thought and consideration.  They aren't related to multiple 
+> overlapping address ranges.
+
+Oh they are. Overlapping address ranges of DT nodes are a _result_ of
+unexpected hardware design involving blocks not clearly separated the
+same way as Linux subsystems (to distinguish from "frameworks") are.
+
+The DT should describe the hardware blocks as they were designed, but on
+the other hand, we need to describe it in a way that Linux drivers can
+actually bind against the relevant parts and that those drivers can
+operate efficiently. There is no ioremap-all-regs helper that I'm aware
+of, for instance, as that would result in __iomem base addresses to be
+stored per reg entry; compare that to just one for an overlapping range.
+
+Example:
+
+clk@f00 {
+	reg = <0xf00 0x100>;
+}
+
+reset@f0f {
+	reg = <0xf0c 0x4>;
+};
+
+This should be a valid DT example today, as long as the clk driver
+doesn't mess with the reset register embedded within its range. In this
+case they can't both reserve their ranges as they would mutually cause
+each other to fail to probe, depending on probe order.
+
+As I wrote, turning this into
+
+clk@f00 {
+	reg = <0xf00 0xc>, <0xf10 0xe0>;
+};
+
+reset@f0f {
+	reg = <0xf0c 0x4>;
+};
+
+is helping no one and makes things much more complex, especially when
+the number of carve-outs grows or is not predetermined, as I noted about
+some of my cases. Thus I disagree with you about the overlapping ranges.
+
+DT needs to be designed forward-looking rather than just around the
+handful of registers we might read/write today, not just to relieve Rob
+from excessive reviews.
+
+My solution was to do
+
+syscon@f00 {
+	reg = <0xf00 0x100>;
+	ranges = ...;
+
+	clk@0 {
+		reg = <0x0 0x100>;
+	};
+
+	reset@c {
+		reg = <0xc 0x4>;
+	};
+};
+
+https://patchwork.kernel.org/cover/11269453/
+https://patchwork.kernel.org/cover/11269971/ (and more in my tree)
+
+which clearly models the blocks and shares a syscon for most children,
+other than pre-existing 8250 UART, I²C, etc. drivers using platform
+helpers such as the one discussed here.
+
+What we lose with syscon is reservations, i.e. /proc/iomem neither
+showing the full syscon nor the drivers using parts of it, unless we
+explicitly reserve the memory (syscon does the ioremap for us, so no
+need for this devm_platform_ioremap_resource helper there).
+
+Also please keep in mind that we actually want to get to the point where
+new systems are booting and usable. At least in the Arm world we do have
+hardware at plenty to boot Linux. Dying in DT-beauty then is
+counter-productive; we also need to come to timely compromises for not
+blocking other work. clk drivers don't need to be platform_drivers like
+here and thus can coexist easier with other drivers (e.g., syscon
+without child), but I clearly contradict the generality in which you
+appear to rule out overlapping memory ranges, be it for siblings or for
+parent/child.
+
+Hiding overlaps in an mfd driver does not strike me as better than
+openly declaring them - if the mfd components are not dynamic, then I
+understood simple-mfd were the way to go, which requires some reg(s),
+which then for convenience may overlap if there's no clear boundaries.
+
+Regards,
+Andreas
+
+-- 
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 Nürnberg, Germany
+GF: Felix Imendörffer
+HRB 36809 (AG Nürnberg)
 
