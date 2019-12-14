@@ -2,87 +2,99 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D299E11DF0E
-	for <lists+linux-riscv@lfdr.de>; Fri, 13 Dec 2019 09:06:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BFC611EFE8
+	for <lists+linux-riscv@lfdr.de>; Sat, 14 Dec 2019 03:12:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=29BUxaBVpPVtFW2X5I44ySfdglfYVS6Fv4e7LeJkUIc=; b=FhwjJ5/7obChX8WaDYzvwQTPi
-	zHjvi6ZW4mxz/rppvcSXpDm0o3ur1OVrAVR6HudCHSeZBKI9V2gjJzoBABztLYJRldm8V505bf1bO
-	g3UOf6iHuhRCLONOr45n/YJ9mOTL42GMgIzAZEkLE+KA/iDdcRdScsjoatZwQsubAqMIivqyqe/7n
-	3Dq1mTjka4THTVxlKZFuBopHC5vgQ+v0vrzQdLpctR7cqXUStxhatfhWGDTH4zutcp+rH1jUj2Etw
-	6Y74Pc8dIpnoniuYXT/szzaVnJS8vNviR748RQLZ1WnnxTLlRzDPrnPKjshn2JdhJloLBQvjvHI2w
-	fmvDauCWg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:References:
+	In-Reply-To:To:Subject:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VqAsPt9bELAFiBc9U8EPUlegvQWFH4OeQsw2yFpIirU=; b=WjR2Io4K5AFzm+
+	jDlqNNNB3caVoNNZF6IG7KM8IQwChE24jEBDWFTjpA1vzGlHQ8FM/e2w81NSWnUOCJEicDGnEbjQh
+	F3xICZ8VjNRfSnUMWG4btOxPkO5yp9JmaPF9MiqkjJ9xPD2MrkN2+JsCNzxwGqJDP0cwkz+k2joCp
+	eW2pMvips6qscREo3CPiZtw+hQFSxteY5V5kNd0bl7aNLoLZYcampIBa/kEq5mLs77hwDzeLFQKO/
+	G/aCg+ehKtCa7BvyZ2YvqEM2oE3WUUbDrKFEN6Zsf4YcqyQ3YIfKlVRLBmuge7OXeKHxE/SGOagmK
+	nxdaRLa+Zmbsl6mO08MA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iffxd-0005yJ-IY; Fri, 13 Dec 2019 08:06:05 +0000
-Received: from mail-ed1-f65.google.com ([209.85.208.65])
+	id 1ifwvH-0006NZ-HU; Sat, 14 Dec 2019 02:12:47 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iffxZ-0005xp-Jj; Fri, 13 Dec 2019 08:06:03 +0000
-Received: by mail-ed1-f65.google.com with SMTP id r21so1343700edq.0;
- Fri, 13 Dec 2019 00:06:00 -0800 (PST)
+ id 1ifwvD-0005wU-Ao
+ for linux-riscv@lists.infradead.org; Sat, 14 Dec 2019 02:12:44 +0000
+Received: by mail-pf1-x444.google.com with SMTP id l127so637226pfl.1
+ for <linux-riscv@lists.infradead.org>; Fri, 13 Dec 2019 18:12:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:subject:cc:to:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=VqAsPt9bELAFiBc9U8EPUlegvQWFH4OeQsw2yFpIirU=;
+ b=kT5JfkWWnltIHB+KMi22oaqdi0u7b/XW08cmsNjm4rw3SijQ4hzc17kT7kk1xgsZda
+ mqIMijiU6iWoQHCMyWHqU8fSBCVUg90YGHJ7ynH/UfGvk/2uvOxDff9KkUvHItY6Y7oo
+ lw5NjlExuH04tyEE0FfxlhF0iAXiTscaHVst2fLNWkpEdtXzloRmwvP4Mmji6OWMneWW
+ XBR2pDRcUNpAWWOmU/qgBUazLU8+aLtZnU7NxJ5l5TC3baS5oImDa1xkBINqMNiVUwhv
+ WFEAlA2pGu8Qzy3P5SYElGhntwaQXriA60SGHTFhxGQ4atZ5Vr1Njc8T+6OsOIzbfSwI
+ uDXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=29BUxaBVpPVtFW2X5I44ySfdglfYVS6Fv4e7LeJkUIc=;
- b=W4YEyK4JSkOUAFcRdtSptRlrNqI8LvvA0qGNtnOMsHSj2QGcpYxmT7HsyxqS74muzm
- w/Z5G/V13CzN4z/pLUsJN9CytREPqH6LoeV18JKBHofkzPmytwzWXgKYW/kwXE2fMR2g
- xGTMvUkTmHc/vC7nLn4oZrzYp+wrY00DuJ99y7ZvLIz3SJSEDz51Cg2PipwRzmqk4yDc
- 91l7CgomjUYagC7lRmDSkI6KpQl/xCtkav4U7fxOC59AenGwRJUl3uGJ4oHa9FQyqVGq
- MNX9CC2W3/eLq1mw33Urf7oFQGtIAgpU3wVFXCgLO8CQUFhurWc6+b2QMn1T+6ssiRCO
- SYPQ==
-X-Gm-Message-State: APjAAAXYSr1+2ghCaCiJ8aqjjRxcGfeScNxz1EZH+253XNjhAyx2cbbv
- ADdGETyWu3I1/U8/g4et6vyRXQzH451WGg==
-X-Google-Smtp-Source: APXvYqx10/kxLz+lWEBciifPa1pqNjyeGOrdi9fGP7VcgmeVSdaj1Bp02F1AdOpuDGtHgtwXyX9inA==
-X-Received: by 2002:a17:906:2344:: with SMTP id
- m4mr14709496eja.110.1576224359195; 
- Fri, 13 Dec 2019 00:05:59 -0800 (PST)
-Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com.
- [209.85.128.50])
- by smtp.gmail.com with ESMTPSA id c2sm343253ejk.74.2019.12.13.00.05.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Dec 2019 00:05:58 -0800 (PST)
-Received: by mail-wm1-f50.google.com with SMTP id u2so518353wmc.3;
- Fri, 13 Dec 2019 00:05:55 -0800 (PST)
-X-Received: by 2002:a1c:9e0d:: with SMTP id h13mr11801179wme.110.1576224354577; 
- Fri, 13 Dec 2019 00:05:54 -0800 (PST)
-MIME-Version: 1.0
-References: <20191209195749.868-1-tiny.windzz@gmail.com>
-In-Reply-To: <20191209195749.868-1-tiny.windzz@gmail.com>
-From: Chen-Yu Tsai <wens@csie.org>
-Date: Fri, 13 Dec 2019 16:05:41 +0800
-X-Gmail-Original-Message-ID: <CAGb2v67Ec3KPZZqAWHwx00ii1L+va-QTa78mj=4pFFCBVtwscw@mail.gmail.com>
-Message-ID: <CAGb2v67Ec3KPZZqAWHwx00ii1L+va-QTa78mj=4pFFCBVtwscw@mail.gmail.com>
-Subject: Re: [PATCH 01/17] clk: sunxi: sunxi-ng: convert to
- devm_platform_ioremap_resource
-To: Yangtao Li <tiny.windzz@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:date:from:subject:cc:to:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=VqAsPt9bELAFiBc9U8EPUlegvQWFH4OeQsw2yFpIirU=;
+ b=RYxTT07ss9ZZreRhvw/TxMGTDdRE3tw8r5gONm/sGmFlJv9CTn5fjTUXL/+ahOmTY9
+ wEiNzR102xlcjXpOkwVw9hQIg9aUfEyIm5G4x3I9LQgJrSgLmaL1YC/bPLoPm1xZX3+g
+ lrbz6FSZ9YhTn/2RSAF4HoCFah/Oqs97lSJ6roAWpb118Sr7S42HyInGSYQ06XIV6b03
+ NYARsaBG3UX2MHON/E9oRpupDU4HqUy+rYnZHybBxPvOtz4PkzsQGfZjxtggA2iBovmw
+ 7zEqVE/7Evw6biilrqNfVxtdRYKrwhEbStx+nvMhGehDRo7zsBsuWjVLtQZREoTjSZPJ
+ VrbQ==
+X-Gm-Message-State: APjAAAXP/kD1/J5OQIW+GCZYe+LU8F0b8Dspl2MtbWkteblWuU9MMTAp
+ sNaKuZqqPVoZaljXbIbxiYW05w==
+X-Google-Smtp-Source: APXvYqz6Aiqa+GHK4u01RqHA/l0Ts2E4I0yDj82iO4jlfpVQb6dLB9g4/nePTWCgR435ZKhTeO9gWg==
+X-Received: by 2002:a63:4b24:: with SMTP id y36mr3072965pga.176.1576289559199; 
+ Fri, 13 Dec 2019 18:12:39 -0800 (PST)
+Received: from localhost ([2620:0:1000:2514:7f69:cd98:a2a2:a03d])
+ by smtp.gmail.com with ESMTPSA id u123sm13088597pfb.109.2019.12.13.18.12.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Dec 2019 18:12:38 -0800 (PST)
+Date: Fri, 13 Dec 2019 18:12:38 -0800 (PST)
+X-Google-Original-Date: Fri, 13 Dec 2019 18:12:36 PST (-0800)
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 2/2] riscv: cacheinfo: Add support to determine no. of L2
+ cache way enabled
+To: yash.shah@sifive.com
+In-Reply-To: <1575890706-36162-3-git-send-email-yash.shah@sifive.com>
+References: <1575890706-36162-3-git-send-email-yash.shah@sifive.com>
+ <1575890706-36162-1-git-send-email-yash.shah@sifive.com>
+Message-ID: <mhng-a1ba4b8a-4c6a-43e9-a87a-f8bbbe3555d8@palmerdabbelt-glaptop>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191213_000601_648029_5FBB4055 
-X-CRM114-Status: GOOD (  10.00  )
-X-Spam-Score: 0.8 (/)
+X-CRM114-CacheID: sfid-20191213_181243_420124_6B07D5C2 
+X-CRM114-Status: GOOD (  17.25  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.8 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.208.65 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.208.65 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (wens213[at]gmail.com)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (wens213[at]gmail.com)
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,60 +106,108 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, pgaikwad@nvidia.com,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, geert+renesas@glider.be,
- chunhui.dai@mediatek.com, Mike Turquette <mturquette@baylibre.com>,
- palmer@sifive.com, nsekhar@ti.com, Tomasz Figa <tomasz.figa@gmail.com>,
- rfontana@redhat.com, Thierry Reding <thierry.reding@gmail.com>,
- weiyongjun1@huawei.com, Sylwester Nawrocki <s.nawrocki@samsung.com>,
- manivannan.sadhasivam@linaro.org, linux-riscv@lists.infradead.org,
- Fabio Estevam <festevam@gmail.com>, linux-clk <linux-clk@vger.kernel.org>,
- Rob Herring <robh@kernel.org>,
- "moderated list:ARM/SAMSUNG EXYNO..." <linux-samsung-soc@vger.kernel.org>,
- Emilio Lopez <emilio@elopez.com.ar>, Krzysztof Kozlowski <krzk@kernel.org>,
- jonathanh@nvidia.com, Chanwoo Choi <cw00.choi@samsung.com>,
- John Crispin <john@phrozen.org>, agross@kernel.org, linux-imx@nxp.com,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-tegra@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- swinslow@gmail.com, paul.walmsley@sifive.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, daniel.baluta@nxp.com,
- allison@lohutok.net, aisheng.dong@nxp.com, Max Filippov <jcmvbkbc@gmail.com>,
- Stephen Boyd <sboyd@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Peter De Schrijver <pdeschrijver@nvidia.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, t-kristo@ti.com,
- Dinh Nguyen <dinguyen@kernel.org>, Kukjin Kim <kgene@kernel.org>,
- Sascha Hauer <kernel@pengutronix.de>, wangyan.wang@mediatek.com,
- Shawn Guo <shawnguo@kernel.org>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ Atish Patra <Atish.Patra@wdc.com>, Greg KH <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, alexios.zavras@intel.com, yash.shah@sifive.com,
+ robh+dt@kernel.org, Paul Walmsley <paul.walmsley@sifive.com>,
+ tglx@linutronix.de, bmeng.cn@gmail.com, linux-riscv@lists.infradead.org,
+ allison@lohutok.net
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Dec 10, 2019 at 3:58 AM Yangtao Li <tiny.windzz@gmail.com> wrote:
+On Mon, 09 Dec 2019 03:25:06 PST (-0800), yash.shah@sifive.com wrote:
+> In order to determine the number of L2 cache ways enabled at runtime,
+> implement a private attribute using cache_get_priv_group() in cacheinfo
+> framework. Reading this attribute ("number_of_ways_enabled") will return
+> the number of enabled L2 cache ways at runtime.
 >
-> Use devm_platform_ioremap_resource() to simplify code.
->
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
 > ---
->  drivers/clk/sunxi-ng/ccu-sun50i-a64.c    | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun50i-h6.c     | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun8i-a83t.c    | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun8i-de2.c     | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun8i-r40.c     | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c  | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c | 4 +---
->  drivers/clk/sunxi-ng/ccu-sun9i-a80.c     | 4 +---
->  drivers/clk/sunxi/clk-mod0.c             | 4 +---
->  drivers/clk/sunxi/clk-sun6i-apb0-gates.c | 4 +---
->  drivers/clk/sunxi/clk-sun6i-apb0.c       | 4 +---
->  drivers/clk/sunxi/clk-sun6i-ar100.c      | 4 +---
->  drivers/clk/sunxi/clk-sun8i-apb0.c       | 4 +---
->  13 files changed, 13 insertions(+), 39 deletions(-)
+>  arch/riscv/include/asm/sifive_l2_cache.h |  2 ++
+>  arch/riscv/kernel/cacheinfo.c            | 31 +++++++++++++++++++++++++++++++
+>  drivers/soc/sifive/sifive_l2_cache.c     |  5 +++++
+>  3 files changed, 38 insertions(+)
+>
+> diff --git a/arch/riscv/include/asm/sifive_l2_cache.h b/arch/riscv/include/asm/sifive_l2_cache.h
+> index 04f6748..217a42f 100644
+> --- a/arch/riscv/include/asm/sifive_l2_cache.h
+> +++ b/arch/riscv/include/asm/sifive_l2_cache.h
+> @@ -10,6 +10,8 @@
+>  extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
+>  extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
+>
+> +int sifive_l2_largest_wayenabled(void);
 
-Reviewed-by: Chen-Yu Tsai <wens@csie.org>
+I thought the plan was to get this stuff out of arch/riscv?  It looks like it
+only got half-way done.
+
+> +
+>  #define SIFIVE_L2_ERR_TYPE_CE 0
+>  #define SIFIVE_L2_ERR_TYPE_UE 1
+>
+> diff --git a/arch/riscv/kernel/cacheinfo.c b/arch/riscv/kernel/cacheinfo.c
+> index 4c90c07..29bdb21 100644
+> --- a/arch/riscv/kernel/cacheinfo.c
+> +++ b/arch/riscv/kernel/cacheinfo.c
+> @@ -7,6 +7,7 @@
+>  #include <linux/cpu.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <asm/sifive_l2_cache.h>
+>
+>  static void ci_leaf_init(struct cacheinfo *this_leaf,
+>  			 struct device_node *node,
+> @@ -16,6 +17,36 @@ static void ci_leaf_init(struct cacheinfo *this_leaf,
+>  	this_leaf->type = type;
+>  }
+>
+> +#ifdef CONFIG_SIFIVE_L2
+> +static ssize_t number_of_ways_enabled_show(struct device *dev,
+> +					   struct device_attribute *attr,
+> +					   char *buf)
+> +{
+> +	return sprintf(buf, "%u\n", sifive_l2_largest_wayenabled());
+> +}
+> +
+> +static DEVICE_ATTR_RO(number_of_ways_enabled);
+> +
+> +static struct attribute *priv_attrs[] = {
+> +	&dev_attr_number_of_ways_enabled.attr,
+> +	NULL,
+> +};
+> +
+> +static const struct attribute_group priv_attr_group = {
+> +	.attrs = priv_attrs,
+> +};
+> +
+> +const struct attribute_group *
+> +cache_get_priv_group(struct cacheinfo *this_leaf)
+> +{
+> +	/* We want to use private group for L2 cache only */
+> +	if (this_leaf->level == 2)
+> +		return &priv_attr_group;
+> +	else
+> +		return NULL;
+> +}
+> +#endif /* CONFIG_SIFIVE_L2 */
+> +
+>  static int __init_cache_level(unsigned int cpu)
+>  {
+>  	struct cpu_cacheinfo *this_cpu_ci = get_cpu_cacheinfo(cpu);
+> diff --git a/drivers/soc/sifive/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
+> index a9ffff3..f1a5f2c 100644
+> --- a/drivers/soc/sifive/sifive_l2_cache.c
+> +++ b/drivers/soc/sifive/sifive_l2_cache.c
+> @@ -107,6 +107,11 @@ int unregister_sifive_l2_error_notifier(struct notifier_block *nb)
+>  }
+>  EXPORT_SYMBOL_GPL(unregister_sifive_l2_error_notifier);
+>
+> +int sifive_l2_largest_wayenabled(void)
+> +{
+> +	return readl(l2_base + SIFIVE_L2_WAYENABLE);
+> +}
+> +
+>  static irqreturn_t l2_int_handler(int irq, void *device)
+>  {
+>  	unsigned int add_h, add_l;
 
