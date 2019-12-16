@@ -2,75 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08FD5120096
-	for <lists+linux-riscv@lfdr.de>; Mon, 16 Dec 2019 10:14:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4167F120097
+	for <lists+linux-riscv@lfdr.de>; Mon, 16 Dec 2019 10:14:10 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vpY7MBXQP9D/muTQHYI2tuNdnNT18mzMK9mr9lmyumc=; b=an/HphUReDLi9l
-	xOJp3LmJitKiZFIX1oLtpcf2vitrKAzO0y1xYiCN/dJXNgnSQsAlqeTYIZAgCWVNKReu1EYu1//9y
-	92WDmMHPMQ9dPKcg/43Bc3eRPCaFh546G+wQax3TvDGRrtP6/94bInnsWlhfPIIqnXoiFnRFxpyoV
-	z7Qd+J6/rmClI4Mv0iZqVqqGKONqQ3ouXcwMDZyLXVIyGqTmTgxGOF2Gl7QmMYnSlUlSFXf0RGAp+
-	Jd/OTm4Vh4FhegLEwM3/vV53GwJkbpKD02BsJFNJ5HhPQIcy6XHwrK+Ow3sBmxOJix+h/EV9Mc08Y
-	AQ14ryuuwKgw/a3DICdg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bYazlit0M4yBFQMfwCbOmC5g6AIzkoA/91yiEDZt7b0=; b=Qo1XnQm/pew8O8
+	3UgTtHFr5KP7ygifNSJAzYAqV7/yS3iNMxBgiKhjY0SN25HYILFlr9KuM5CBXaJgEm3wikhf7EKhM
+	rxxIz/29HUEDIyKAnNhY/N9003gDRRdDGixLkXwlE8lPvVbP6LP9k+mtreBWF0gTQnxTxxs02/EZC
+	lF1i+OJ33vz6rdyNdjdcUlIqA0PzkHm0gTU7s4Z4uIR49SpQrJJlZTWAhQN0kWgWw+OB+KMskmu6J
+	ZK+Mb+Rd7EOe0IXLwozDxFpAPbyduGu7g+0lEFkf8tMDfHeC4rp3fasN29OkUqwVSYLASql6SyY/h
+	bEd7etNUUlvJnF6zVT0Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igmRy-0003JW-IC; Mon, 16 Dec 2019 09:13:58 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1igmS4-0003PI-VK; Mon, 16 Dec 2019 09:14:04 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igmRt-0003Gy-AX
- for linux-riscv@lists.infradead.org; Mon, 16 Dec 2019 09:13:54 +0000
-Received: by mail-pf1-x442.google.com with SMTP id b19so5254260pfo.2
- for <linux-riscv@lists.infradead.org>; Mon, 16 Dec 2019 01:13:52 -0800 (PST)
+ id 1igmRv-0003Ip-Gh
+ for linux-riscv@lists.infradead.org; Mon, 16 Dec 2019 09:14:01 +0000
+Received: by mail-pg1-x541.google.com with SMTP id s64so3314310pgb.9
+ for <linux-riscv@lists.infradead.org>; Mon, 16 Dec 2019 01:13:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=vpY7MBXQP9D/muTQHYI2tuNdnNT18mzMK9mr9lmyumc=;
- b=WXf++/PI7Qj1eL7NF3/ysask8jTXfygbq3KmxUxE4Ly3cTk1wkgW9Oh9lRRCCaRqux
- SlKDDtj6aug//loLK7vPWhfbUKbw0Pw0jawhDC8jAVB6/2TUptn1mXUtLZEDTIQPyHCt
- yUBIez9eXZJVQPXdOBicsnh8u5wBSTHcmooFYg8N0xFyCxaraVtG3iAxOETh+JzC70ah
- vdVeV4rDnqq2ZLIlovXlRf7hLcU7HDnTqJy1/oowuIjgyyRPsMALcKMJcDhoD7i2pdTU
- nYu/fmY7k28qZC3zNCm09EUnRGlMRGUij0DNVh6EIeHfVTFF5OFYhe9t4FlmgbRiAvs6
- aNlA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=bYazlit0M4yBFQMfwCbOmC5g6AIzkoA/91yiEDZt7b0=;
+ b=RwRGeVm1aeN2qkJLadfLujw+Gg4mmYcLdCef5IRe1XA0xhjwByucNBCckRiVYY6fLO
+ 4296nh+AjY2dK6wlGr86OM9pf7cguH6tlpQf7mVCmE9ZJhFyMvWHH1X5jR8DAxXPdrzK
+ Pq2mcImd24XixdeDeiReoUuU4bH2acto7KmAoYFdMkqUMLAKgT2mJIi3syGlZU4BFC3P
+ TSSxkz5RTMxufDP3glc76F5k57NP/Cxj5MleehiJXmq63EI0qxK7T7GEVKH6gXaZmUFM
+ qbH4Z0myz4VWg3u95JgmzKBXo23KfOmUgkcIZRXNLngGdkYKAf8Vguh9We/lv8iqrVqW
+ D2lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=vpY7MBXQP9D/muTQHYI2tuNdnNT18mzMK9mr9lmyumc=;
- b=GGRAigDIacYiTNvYpcFdx5082LbWDRawq82gcB76ZfoW7sL0oWSUDR6GK+OQewEsrZ
- XAimpPzaA+5ZJEVPkTAy81IhfIIqfXf4BK5LxSxF83R8KW1ahh0jc+9FvFv9RVZEVMBR
- arGrMBonqVxeDoI+8H3FfvYC5q4tPKQo4Uj/LIdHI/UMQ+I/12Wu2X5+C2BsYtvZruBG
- VFCgJ1Zm303DwyFJxbg+lKVIbncbhpEoUCFGJ3vzJWc8KZMrRVL86BYf/SF+7UsqcchK
- bdc/R6VQCROOWZZ2I/ochah+GpFnCuaUTjCKb+fIM15oOVkea+JE+r9tNvtJK6BKw4n4
- b8jw==
-X-Gm-Message-State: APjAAAXqT6ZwBN/MH+J0aCOZDzqrVCI33lM0zEW2QqWqHlWoMcRlBH8q
- /QOc82csRGiHv58RS+rtB38=
-X-Google-Smtp-Source: APXvYqzaZ3jJM3dOls1Pof33GJoVy83OTL34tNJngEBHjYW5m38n1ijiIvLP4nD5pePW34rW+GPiFQ==
-X-Received: by 2002:a63:364d:: with SMTP id d74mr16898806pga.408.1576487632409; 
- Mon, 16 Dec 2019 01:13:52 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=bYazlit0M4yBFQMfwCbOmC5g6AIzkoA/91yiEDZt7b0=;
+ b=m1zdXk/FoCkHEillGzui0a2bQ87yltkSRQODxW1MSiHPPcJqPXc+zsjEvz7kIfv3wa
+ TQi0z6M2utp4oCL0SFY0k1z+0a1xECrDhLIG/5zyzOroqbHy7ALjTBas6wbH/gWIeCWX
+ rNQ2BS1Wx9g8xd6JvZt6KNW52+F3ldpK5nbmNEhixdCUfqXr2iN0ZWnl+guNs7/FJgxx
+ 39O14KFmsuSxIINCAfP2c2VXEQXd0OoTUIUxv9mlK/HjRCznq7Y6uboYMcnon9XJkSR5
+ EbM5btpOl4WHW7RP5bJ5FqRViZ1MDptL7aHsrVw8AnnzDLe2SvxhgxXqXClYcLQjlCmx
+ 3iSw==
+X-Gm-Message-State: APjAAAUE2b5GsbWMtI7kddV2lE6iIFKjx+S0Iod2SzY0CE7Z9PXOscBK
+ ATi+pExw1J0o9yjUJEY1loQ=
+X-Google-Smtp-Source: APXvYqya/ZK/sigSlCk224VfrvfZoRMNqXimX/XMn+BCFUGM3rt7mHAstLVa1xEVZ3DJ9X5w/O85hA==
+X-Received: by 2002:a63:5807:: with SMTP id m7mr15787129pgb.83.1576487634904; 
+ Mon, 16 Dec 2019 01:13:54 -0800 (PST)
 Received: from btopel-mobl.ger.intel.com (fmdmzpr04-ext.fm.intel.com.
  [192.55.55.39])
- by smtp.gmail.com with ESMTPSA id x21sm12505033pfn.164.2019.12.16.01.13.50
+ by smtp.gmail.com with ESMTPSA id x21sm12505033pfn.164.2019.12.16.01.13.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Dec 2019 01:13:51 -0800 (PST)
+ Mon, 16 Dec 2019 01:13:54 -0800 (PST)
 From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
 To: daniel@iogearbox.net,
 	ast@kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH bpf-next v2 0/9] riscv: BPF JIT fix,
- optimizations and far jumps support
-Date: Mon, 16 Dec 2019 10:13:34 +0100
-Message-Id: <20191216091343.23260-1-bjorn.topel@gmail.com>
+Subject: [PATCH bpf-next v2 1/9] riscv, bpf: fix broken BPF tail calls
+Date: Mon, 16 Dec 2019 10:13:35 +0100
+Message-Id: <20191216091343.23260-2-bjorn.topel@gmail.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191216091343.23260-1-bjorn.topel@gmail.com>
+References: <20191216091343.23260-1-bjorn.topel@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_011353_388246_A6A55972 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20191216_011355_614794_DBD17461 
+X-CRM114-Status: UNSURE (   9.65  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -78,7 +79,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -107,70 +108,60 @@ Cc: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi!
+The BPF JIT incorrectly clobbered the a0 register, and did not flag
+usage of s5 register when BPF stack was being used.
 
-This series contain one non-critical fix, support for far jumps. and
-some optimizations for the BPF JIT.
+Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+Signed-off-by: Björn Töpel <bjorn.topel@gmail.com>
+---
+ arch/riscv/net/bpf_jit_comp.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
-Previously, the JIT only supported 12b branch targets for conditional
-branches, and 21b for unconditional branches. Starting with this
-series, 32b branching is supported.
-
-As part of supporting far jumps, branch relaxation was introduced. The
-idea is to start with a pessimistic jump (e.g. auipc/jalr) and for
-each pass the JIT will have an opportunity to pick a better
-instruction (e.g. jal) and shrink the image. Instead of two passes,
-the JIT requires more passes. It typically converges after 3 passes.
-
-The optimizations mentioned in the subject are for calls and tail
-calls. In the tail call generation we can save one instruction by
-using the offset in jalr. Calls are optimized by doing (auipc)/jal(r)
-relative jumps instead of loading the entire absolute address and
-doing jalr. This required that the JIT image allocator was made RISC-V
-specific, so we can ensure that the JIT image and the kernel text are
-in range (32b).
-
-The last two patches of the series is not critical to the series, but
-are two UAPI build issues for BPF events. A closer look from the
-RV-folks would be much appreciated.
-
-The test_bpf.ko module, selftests/bpf/test_verifier and
-selftests/seccomp/seccomp_bpf pass all tests.
-
-RISC-V is still missing proper kprobe and tracepoint support, so a lot
-of BPF selftests cannot be run.
-
-
-Thanks,
-Björn
-
-v1->v2: [1]
- * Removed unused function parameter from emit_branch()
- * Added patch to support far branch in tail call emit
-
-[1] https://lore.kernel.org/bpf/20191209173136.29615-1-bjorn.topel@gmail.com/
-
-
-Björn Töpel (9):
-  riscv, bpf: fix broken BPF tail calls
-  riscv, bpf: add support for far branching
-  riscv, bpf: add support for far branching when emitting tail call
-  riscv, bpf: add support for far jumps and exits
-  riscv, bpf: optimize BPF tail calls
-  riscv, bpf: provide RISC-V specific JIT image alloc/free
-  riscv, bpf: optimize calls
-  riscv, bpf: add missing uapi header for BPF_PROG_TYPE_PERF_EVENT
-    programs
-  riscv, perf: add arch specific perf_arch_bpf_user_pt_regs
-
- arch/riscv/include/asm/perf_event.h          |   4 +
- arch/riscv/include/asm/pgtable.h             |   4 +
- arch/riscv/include/uapi/asm/bpf_perf_event.h |   9 +
- arch/riscv/net/bpf_jit_comp.c                | 531 ++++++++++---------
- tools/include/uapi/asm/bpf_perf_event.h      |   2 +
- 5 files changed, 312 insertions(+), 238 deletions(-)
- create mode 100644 arch/riscv/include/uapi/asm/bpf_perf_event.h
-
+diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
+index 5451ef3845f2..1606ebd49666 100644
+--- a/arch/riscv/net/bpf_jit_comp.c
++++ b/arch/riscv/net/bpf_jit_comp.c
+@@ -120,6 +120,11 @@ static bool seen_reg(int reg, struct rv_jit_context *ctx)
+ 	return false;
+ }
+ 
++static void mark_fp(struct rv_jit_context *ctx)
++{
++	__set_bit(RV_CTX_F_SEEN_S5, &ctx->flags);
++}
++
+ static void mark_call(struct rv_jit_context *ctx)
+ {
+ 	__set_bit(RV_CTX_F_SEEN_CALL, &ctx->flags);
+@@ -596,7 +601,8 @@ static void __build_epilogue(u8 reg, struct rv_jit_context *ctx)
+ 
+ 	emit(rv_addi(RV_REG_SP, RV_REG_SP, stack_adjust), ctx);
+ 	/* Set return value. */
+-	emit(rv_addi(RV_REG_A0, RV_REG_A5, 0), ctx);
++	if (reg == RV_REG_RA)
++		emit(rv_addi(RV_REG_A0, RV_REG_A5, 0), ctx);
+ 	emit(rv_jalr(RV_REG_ZERO, reg, 0), ctx);
+ }
+ 
+@@ -1426,6 +1432,10 @@ static void build_prologue(struct rv_jit_context *ctx)
+ {
+ 	int stack_adjust = 0, store_offset, bpf_stack_adjust;
+ 
++	bpf_stack_adjust = round_up(ctx->prog->aux->stack_depth, 16);
++	if (bpf_stack_adjust)
++		mark_fp(ctx);
++
+ 	if (seen_reg(RV_REG_RA, ctx))
+ 		stack_adjust += 8;
+ 	stack_adjust += 8; /* RV_REG_FP */
+@@ -1443,7 +1453,6 @@ static void build_prologue(struct rv_jit_context *ctx)
+ 		stack_adjust += 8;
+ 
+ 	stack_adjust = round_up(stack_adjust, 16);
+-	bpf_stack_adjust = round_up(ctx->prog->aux->stack_depth, 16);
+ 	stack_adjust += bpf_stack_adjust;
+ 
+ 	store_offset = stack_adjust - 8;
 -- 
 2.20.1
 
