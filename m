@@ -2,66 +2,68 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E781120955
-	for <lists+linux-riscv@lfdr.de>; Mon, 16 Dec 2019 16:10:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 150CB121A8D
+	for <lists+linux-riscv@lfdr.de>; Mon, 16 Dec 2019 21:08:36 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f3ZMKgNZNE3G3mPic3bnY8Jw3Dx+vDgg3QBMz6tcf0k=; b=u+prijGU6fRUIP
-	VV8wPC5ap9KIHUPiYwLaoTgea5CFCjD070+9HhChvPoSZjWx8kZw/LNvGceTu56FQ3PIRswM5q3lS
-	MIBmLFVI+6hqRI0Rm3ZPSHoKT3GRghUk1mQkFYQJocWQQcev8EGb3UoBnHSBuw+SFrjBu7prjUMdD
-	xMdDunzBr5jfZBz4Wz8GHCosZE+Jijk7qgL/6nOoPsn2QnOwgzWew/Jnl3kzBQsKxJ47CGwArRA24
-	AaRRC9CIAG4NU+t6zaTB4E38JRI7ISM5piCz6t0mRosv2PNzj7rif8KaByaceQgpT7K6Rj20Hggzn
-	XPE1dVw0T5Cbz3fWxRRA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LeDMN718oNDBI0sDpBOWm27E0xMFvcpNwt9lhPyD83A=; b=ClSTYwr8zuCxMsx2m7oF6nhHIi
+	8oZ8LZtEGv8764Ijs0bWMTAaprgl2S3LZI0VTKBpfW/PHUQqt5vzYow9VabFAk31UFz307xjGyZjT
+	qv+wTSATEphOCvCrdXqatzYVqqcEMCDDv0yWOfnWwOcFtUBVCg8uM4GQvbrpwrMq6wotnr4W9W5Cj
+	VFXe15LonTh0cwlGsjCu2MmjYduKbgFyGYI3bLs+YT8JXHWU3gMqBiOu/gTzvSTzXbWL2gOHDSLGC
+	xRcOx4pTM++VMx/fjj/WwYmSamjTQFlShP9J4NL5usvyULuGBEIyRmqpMCCkMw5CsacnMep0nCEyr
+	9Zb607dw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igs0k-0001Ek-FK; Mon, 16 Dec 2019 15:10:14 +0000
-Received: from www62.your-server.de ([213.133.104.62])
+	id 1igwfM-0005f2-Kb; Mon, 16 Dec 2019 20:08:28 +0000
+Received: from mout.kundenserver.de ([217.72.192.75])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igs0c-000092-Bc
- for linux-riscv@lists.infradead.org; Mon, 16 Dec 2019 15:10:08 +0000
-Received: from sslproxy01.your-server.de ([88.198.220.130])
- by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
- id 1igs0R-0004Lt-4j; Mon, 16 Dec 2019 16:09:55 +0100
-Received: from [2001:1620:665:0:5795:5b0a:e5d5:5944] (helo=linux.fritz.box)
- by sslproxy01.your-server.de with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
- (envelope-from <daniel@iogearbox.net>)
- id 1igs0Q-0000NE-Ld; Mon, 16 Dec 2019 16:09:54 +0100
-Subject: Re: [PATCH bpf-next v2 6/9] riscv, bpf: provide RISC-V specific JIT
- image alloc/free
-To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>, ast@kernel.org, 
- netdev@vger.kernel.org
-References: <20191216091343.23260-1-bjorn.topel@gmail.com>
- <20191216091343.23260-7-bjorn.topel@gmail.com>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <7ceab77a-92e7-6415-3045-3e16876d4ef8@iogearbox.net>
-Date: Mon, 16 Dec 2019 16:09:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <20191216091343.23260-7-bjorn.topel@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.101.4/25665/Mon Dec 16 10:52:23 2019)
+ id 1igwfJ-0005eV-Pa
+ for linux-riscv@lists.infradead.org; Mon, 16 Dec 2019 20:08:27 +0000
+Received: from orion.localdomain ([77.2.141.144]) by mrelayeu.kundenserver.de
+ (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+ 1MeTwY-1i6VS22h3k-00aXtK; Mon, 16 Dec 2019 21:08:18 +0100
+From: "Enrico Weigelt, metux IT consult" <info@metux.net>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] scripts: package: mkdebian: add missing rsync dependency
+Date: Mon, 16 Dec 2019 21:07:19 +0100
+Message-Id: <20191216200719.30479-1-info@metux.net>
+X-Mailer: git-send-email 2.11.0
+X-Provags-ID: V03:K1:X3dLwHI5BlJvKUqov+BBRxI2y/lv6j7c5H9Exq3erg81r0oXhJV
+ fNVV0JAb3EXCrDStihXCM7spxv21WfLySYZWlSiPqIdOG3Mdoi4Mq/1x1YR2HUp3iIrzEzL
+ zwGLNs0H+1m6sPIbvCjzMARuWMD+XkhB1B/GMh/oiAdVJeCAYOWaftljzuhFVGpZ8w9G7Ww
+ zkv8KdfjfJcSMS1Mr28rg==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gJcpD6BR8ag=:LFBKzkBFmfJiXCCHB5+tD2
+ K02F0tflYl+vUPuovo2JPLQ3IGetPSmvxTZ4TJlnIu+knZoZZRx1L5ORkwALl+pR54fnFOKJL
+ 4aqu5XEZulrjHAWPqmwInktfbYghJH5/JqavTZqHEeTunLLe7sBlN26SJewzYVwO+YYOI/rXd
+ mw5geX5+WXcwLjrbcnO8jzyvuW7lLhK6dWP8gumZVZb5Bc3xRv/aEJ+26XrURyihqnpGBL2Zo
+ It0uDX57BXKKatifwXOtphjtfWIvFJBdN1SH54UG/wCiHtNaYo9OjaOZlozhGuQxWGFT5DBR9
+ TqXW8YyEn+zwuUvs+fJgzF+X3I3MzYC/yqCKdpBzmge9cajpQUyzuI90hr8gjlMKnS6ytRFU+
+ b4O048ZmxsTUJsw/ILXkGzklqF04VLBrcsX7OAy2B5Sxct/+AGm9OxtAqNhGwtgQ9+eabagRL
+ pfaKCL3NxxEeVrB6tMvUgALC6EACdO++ljrZ2zXv5ES7Jl30i/WgxWThbsJdp4ch5aD6vC471
+ rAjNgUpLvGskfU3aHFZ8Jxjj4dADn7ASAeLKmTT+DuZR+mqNX86P0c/4GIJiVpvUrOtvwZxc8
+ m45910fXufUk7Grja3W0sKGSE2lBfgVAqRYj9DZJoIXc7ncwk1PwXEOhsqFOAnf45ncTcxxZY
+ xdgi7OxncQ/iwwm2AgLDM0GKH4nHtpcC5qkemnVkn/Z+NvEwori+0FG1kQmPjhG+M0wTeIrKZ
+ 6iBzYgWWi5Vbefy8Fo7KTKtDUeEJGSXe7Vl62twFqPWl0Y//uxxOLoS8lCdby1xhac3slwQAh
+ RGyRMKi87N6QS1Yc4svyNdHGn1zLeAJ/cZd3ewWpVpsD1V4hl2zT2rMJRehUsM+hJx3NermA1
+ 9kjqKN2V4JbTmc7zh47g==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_071006_448717_45DD7765 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20191216_120826_126784_270E2A5F 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.133.104.62 listed in list.dnswl.org]
+ no trust [217.72.192.75 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,63 +75,33 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu, palmer@dabbelt.com,
- bpf@vger.kernel.org, paul.walmsley@sifive.com
+Cc: masahiroy@kernel.org, michal.lkml@markovi.net,
+ linux-riscv@lists.infradead.org, linux-kbuild@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 12/16/19 10:13 AM, Björn Töpel wrote:
-> This commit makes sure that the JIT images is kept close to the kernel
-> text, so BPF calls can use relative calling with auipc/jalr or jal
-> instead of loading the full 64-bit address and jalr.
-> 
-> The BPF JIT image region is 128 MB before the kernel text.
-> 
-> Signed-off-by: Björn Töpel <bjorn.topel@gmail.com>
-> ---
->   arch/riscv/include/asm/pgtable.h |  4 ++++
->   arch/riscv/net/bpf_jit_comp.c    | 13 +++++++++++++
->   2 files changed, 17 insertions(+)
-> 
-> diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-> index 7ff0ed4f292e..cc3f49415620 100644
-> --- a/arch/riscv/include/asm/pgtable.h
-> +++ b/arch/riscv/include/asm/pgtable.h
-> @@ -404,6 +404,10 @@ static inline int ptep_clear_flush_young(struct vm_area_struct *vma,
->   #define VMALLOC_END      (PAGE_OFFSET - 1)
->   #define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
->   
-> +#define BPF_JIT_REGION_SIZE	(SZ_128M)
-> +#define BPF_JIT_REGION_START	(PAGE_OFFSET - BPF_JIT_REGION_SIZE)
-> +#define BPF_JIT_REGION_END	(VMALLOC_END)
-> +
+We've missed the dependency to rsync, so build fails on
+minimal containers.
 
-Series looks good to me, thanks; I'd like to get an ACK from Palmer/others on this one.
+Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+---
+ scripts/package/mkdebian | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->   /*
->    * Roughly size the vmemmap space to be large enough to fit enough
->    * struct pages to map half the virtual address space. Then
-> diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
-> index 8aa19c846881..46cff093f526 100644
-> --- a/arch/riscv/net/bpf_jit_comp.c
-> +++ b/arch/riscv/net/bpf_jit_comp.c
-> @@ -1656,3 +1656,16 @@ struct bpf_prog *bpf_int_jit_compile(struct bpf_prog *prog)
->   					   tmp : orig_prog);
->   	return prog;
->   }
-> +
-> +void *bpf_jit_alloc_exec(unsigned long size)
-> +{
-> +	return __vmalloc_node_range(size, PAGE_SIZE, BPF_JIT_REGION_START,
-> +				    BPF_JIT_REGION_END, GFP_KERNEL,
-> +				    PAGE_KERNEL_EXEC, 0, NUMA_NO_NODE,
-> +				    __builtin_return_address(0));
-> +}
-> +
-> +void bpf_jit_free_exec(void *addr)
-> +{
-> +	return vfree(addr);
-> +}
-> 
+diff --git a/scripts/package/mkdebian b/scripts/package/mkdebian
+index e0750b70453f..7c230016b08d 100755
+--- a/scripts/package/mkdebian
++++ b/scripts/package/mkdebian
+@@ -174,7 +174,7 @@ Source: $sourcename
+ Section: kernel
+ Priority: optional
+ Maintainer: $maintainer
+-Build-Depends: bc, kmod, cpio, bison, flex | flex:native $extra_build_depends
++Build-Depends: bc, rsync, kmod, cpio, bison, flex | flex:native $extra_build_depends
+ Homepage: http://www.kernel.org/
+ 
+ Package: $packagename
+-- 
+2.11.0
 
 
