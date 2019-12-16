@@ -2,97 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0758412009F
-	for <lists+linux-riscv@lfdr.de>; Mon, 16 Dec 2019 10:14:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18F031207D0
+	for <lists+linux-riscv@lfdr.de>; Mon, 16 Dec 2019 15:02:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JJx1gb7dyIux/wvtlAjUM4Ul67VDqBxG4kjHz1T/apg=; b=kUoltI3c0zhYcv
-	IMxpy6LqV9bCuUA6eEuGFcZ9khl8uCqemuXs5s667mhxHPrQCyhF7HNz3Th7KezpigbNFp5GrprTF
-	GEE0a0yruSyu0moLN2Rv2Oxb4XKZki+CmbUZGEHbP+j+7/ZRzt0Vg/aM7Md61yhY4+eQWHF3w+cwT
-	xyjUhXE2D/tADkHzz5li7Ta9/v6FIhFRXWpDn4M11ABtG+zsxiQ++9YSuZfZBm8/4blBMM1w6xnOV
-	bJyaUg1qib87TrrEQcLJ0mXKX3+/iBs+WzqGJfof6hxWT48tVz42htlwlY8N3j41Ako3OxCrPDRhX
-	Mv9J4rQFjv7FqDrL/aDw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pcMYk9Deu++0QV3Jk7b/gja2xqw/hPskKqqbjWaqMPo=; b=o6mLDuiSpm/4N7jwuY9cx3jZmr
+	Ew94auVZWtmgUIKdxJJ345u0ZWNwEIYe/KTJnHjZ9OlzBuAO6Y7M//sTq+jJD6WQs/bOq5wraTjrQ
+	yS9fmNYoj4t5U9oGK1sG0lW+kx0AWpigEHz343DvcPkl0i7Os9SL7SZUv7D21AopYcxidj4eMnl1o
+	/7nB9uOTplNN9+VSxoKpM+I3ZZ8hfFULWhJeOHry6W8M1NqvtQqfoCh6oJsnvaU+Zb2XoaEaefktT
+	qx+tde3W9hS3P59wtUu67oIRPjoQh32rzOnf0RE4M7BBV9xtuscp+Hm8mbIyozxwX1TQyu9BwCCXj
+	L6Uix98w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igmSU-0003s8-QE; Mon, 16 Dec 2019 09:14:30 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1igqwu-00084Q-QZ; Mon, 16 Dec 2019 14:02:12 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igmSG-0003eX-HO
- for linux-riscv@lists.infradead.org; Mon, 16 Dec 2019 09:14:17 +0000
-Received: by mail-pf1-x444.google.com with SMTP id y14so5227098pfm.13
- for <linux-riscv@lists.infradead.org>; Mon, 16 Dec 2019 01:14:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JJx1gb7dyIux/wvtlAjUM4Ul67VDqBxG4kjHz1T/apg=;
- b=AEIfRIfuKJKYD+qvWQaSBXL7IDzElcWqewDLhnppNot8arXsdKKANjssizbJgnCmKV
- SDIbaGEkWHjZoNKopu6kC3hbpLdvJngOZY92hPXZGZTMuJhbwyr7DOFHpkYU/Bly6t0J
- MgJeIFQ1I4RJl9criTK7V/4yXUSG7Hu01jTMp0JstURGvI+v2tpJYQ902utvaQEEZReq
- umZ+iVILzopn2A5DzvLjf11+vEJvzZPxY3t1i6Ev1oLJzj44HXNhysK65vc3HI1SZSS/
- FZ6dh97VkM4iHm7mY34w1mQ0eOZzNFY+RbahdFWiY5ogJJeLCpxuc16JwcM8CNzn3EAM
- uG+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JJx1gb7dyIux/wvtlAjUM4Ul67VDqBxG4kjHz1T/apg=;
- b=KSehaXIAvzA3n+gy3HL9JKze8EXXH0M+sKEeDWHn22TamiffSVWZjOCO0JYEYpeiBE
- VpudnusUGGMFTB/Fre4PSEEvT8v4w6ynG2xk/mYF4TS5KV3e11LsVJQ7a5nFcCeGYVm4
- nn+KJsbtoqaFveD+cEp9+oZk2gO4kfXo7ECVu+sfVChulV3g/Cyxp3QgxsW4rxWlr+av
- LXp8VSPgb/tW24F6GYLo8JnOjz9wdzdWe4GT2DAOjrchiQyNo/XRQLQEgfsB2XfdW21L
- kPvL3kWDUpNh5FEvvo+YLhCLr7QnniwWHrwI2KRAXBdsyMQFtr9TpweQ7iUmAjM2MA2D
- Rg6Q==
-X-Gm-Message-State: APjAAAXdZi2gORmFF6PvPvxgYryFYBDXT7KLXsQzwNNw4SXq2SIwqcKK
- bRBR5yeTAw+fQygOCVqKtNs=
-X-Google-Smtp-Source: APXvYqxFeC9Wz/Ld4lIscKeMf0jMlKJu/7MJXqqy6/vQF89UWfwcx6tFmnqaY4nKmOGM+XOBrCNyHw==
-X-Received: by 2002:a62:7b54:: with SMTP id w81mr14816500pfc.127.1576487655949; 
- Mon, 16 Dec 2019 01:14:15 -0800 (PST)
-Received: from btopel-mobl.ger.intel.com (fmdmzpr04-ext.fm.intel.com.
- [192.55.55.39])
- by smtp.gmail.com with ESMTPSA id x21sm12505033pfn.164.2019.12.16.01.14.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Dec 2019 01:14:15 -0800 (PST)
-From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
-To: daniel@iogearbox.net,
-	ast@kernel.org,
-	netdev@vger.kernel.org
-Subject: [PATCH bpf-next v2 9/9] riscv,
- perf: add arch specific perf_arch_bpf_user_pt_regs
-Date: Mon, 16 Dec 2019 10:13:43 +0100
-Message-Id: <20191216091343.23260-10-bjorn.topel@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191216091343.23260-1-bjorn.topel@gmail.com>
-References: <20191216091343.23260-1-bjorn.topel@gmail.com>
+ id 1igqwr-00083S-BI
+ for linux-riscv@lists.infradead.org; Mon, 16 Dec 2019 14:02:10 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 5792FB0B8
+ for <linux-riscv@lists.infradead.org>; Mon, 16 Dec 2019 14:02:04 +0000 (UTC)
+From: Andreas Schwab <schwab@suse.de>
+To: linux-riscv@lists.infradead.org
+Subject: earlycon: earlycon_map: Couldn't map 0x0000000010010000
+X-Yow: TAPPING?  You POLITICIANS!  Don't you realize that the END of the
+ ``Wash Cycle'' is a TREASURED MOMENT for most people?!
+Date: Mon, 16 Dec 2019 15:02:03 +0100
+Message-ID: <mvm8snccqsk.fsf@suse.de>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_011416_592151_0D588CF8 
-X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-CacheID: sfid-20191216_060209_536503_61DACC0D 
+X-CRM114-Status: UNSURE (   4.30  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bjorn.topel[at]gmail.com)
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [195.135.220.15 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,33 +64,19 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
- linux-riscv@lists.infradead.org, bpf@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-RISC-V was missing a proper perf_arch_bpf_user_pt_regs macro for
-CONFIG_PERF_EVENT builds.
+earlycon appears to be broken in 5.5-rc.
 
-Signed-off-by: Björn Töpel <bjorn.topel@gmail.com>
----
- arch/riscv/include/asm/perf_event.h | 4 ++++
- 1 file changed, 4 insertions(+)
+[    0.000000] earlycon: earlycon_map: Couldn't map 0x0000000010010000
+[    0.000000] earlycon: sifive0 at MMIO 0x0000000010010000 (options '')
+[    0.000000] Malformed early option 'earlycon'
 
-diff --git a/arch/riscv/include/asm/perf_event.h b/arch/riscv/include/asm/perf_event.h
-index aefbfaa6a781..0234048b12bc 100644
---- a/arch/riscv/include/asm/perf_event.h
-+++ b/arch/riscv/include/asm/perf_event.h
-@@ -82,4 +82,8 @@ struct riscv_pmu {
- 	int		irq;
- };
- 
-+#ifdef CONFIG_PERF_EVENTS
-+#define perf_arch_bpf_user_pt_regs(regs) (struct user_regs_struct *)regs
-+#endif
-+
- #endif /* _ASM_RISCV_PERF_EVENT_H */
+Andreas.
+
 -- 
-2.20.1
-
+Andreas Schwab, SUSE Labs, schwab@suse.de
+GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
+"And now for something completely different."
 
