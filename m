@@ -2,72 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5CF5122148
-	for <lists+linux-riscv@lfdr.de>; Tue, 17 Dec 2019 02:10:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 564801221B5
+	for <lists+linux-riscv@lfdr.de>; Tue, 17 Dec 2019 02:54:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EfPkJ1K6br0RIoAN8GGT4R0vF2+h8CtL4curYlOC5SQ=; b=F5uXHEr/6F2z75aAk+zdApzDf
-	XLgGUSE8pdirfwIuYD0fDNsEvx6Pv1FHYFa7HdafGMgG0MqcRLvVgx2+MtKfybCaLHklmvwgUMC+g
-	523kLZvhfovrZrRG2iAkfYPXuVvglHIYEdQ2zoKuNcaW97+yZBZ5J9fM1zLdpFaHedVBl/uiN77M3
-	laGMYwCPZt6KfdS3SZqZWcaao/NhxoCLvMxNnc5AUVjXXuXjPMfssdDqK91bxAJDxByFJJhI7WPw7
-	0HLPl7Ly68pRzDheGdmgAa0HF0+Iq4bv7TTHxZl01TCeGsANWP6XOfaxt71gxSZW0pzAtFsvqB87/
-	dmI3bao4A==;
+	 bh=SlnV9qvnMLCTAEFRF8r07x6ujflDHYlwsIYrVCyjVJg=; b=s9BDmfHP491quLcBdq45jNdRM
+	rmKRtVvrQGk09Qw0TuHe75Kr07/4sge5pZsE6EUUr7GU1bPQ8GQPC3aFuylr8zDKSXkDINjeBMVaM
+	pnRxx2BaOp2T46yRpontVOJiGjGcEZZhWtjPQf1EZwZ89jCecDk2aRPdXLE6qasPXxwMeDakvTESU
+	FBUck9h6ZBPYaMt/MPCOb9gRG7ySo1+TvCoTaBI9V2GU1bfp9KBcYRVIUCFiCnPn0Wx5m72StvUlC
+	rsORR79K3bA1X8DY69ih9Ayt5OcvgydQwk4D2j7w+EwW+MHM+jfT+0KAl+tlON2QCugiaVnw/U0YY
+	cRR5o7Fsw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ih1Nr-0000AO-Mr; Tue, 17 Dec 2019 01:10:43 +0000
-Received: from conssluserg-02.nifty.com ([210.131.2.81])
+	id 1ih24P-0000CV-7g; Tue, 17 Dec 2019 01:54:41 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ih1No-00009g-QD
- for linux-riscv@lists.infradead.org; Tue, 17 Dec 2019 01:10:42 +0000
-Received: from mail-vs1-f52.google.com (mail-vs1-f52.google.com
- [209.85.217.52]) (authenticated)
- by conssluserg-02.nifty.com with ESMTP id xBH1ALYi003795
- for <linux-riscv@lists.infradead.org>; Tue, 17 Dec 2019 10:10:22 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-02.nifty.com xBH1ALYi003795
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1576545022;
- bh=EfPkJ1K6br0RIoAN8GGT4R0vF2+h8CtL4curYlOC5SQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=T5HUX7yccL+KyA+78j7r/t6p8sVwkVPF8EnE3pud8kBYKZx6+v3Fx7Kr37aQCw8rr
- jSwcemXZEXQUzvFyBYdnZErbK3TaFarfk6zMUNvAMclsAIGdvuyR9ilgRcDN6kYB4A
- rTDCiU2R399Y1wuQi5g/VvC4tC0iY/Kpufg0PR69AuRJnH3P9g0F0zbFPDgmhE0QO5
- HkSJ8EqzPFHu2UvQwDoRrJ2lvyQbB4Pu/ZCOFKRsJg3u0gXAethyKByAk56QR9YabP
- g2MwyUYHyLLmovd/elJAAa2ZL7RD9LOl55lrGpcgJ6k29QsP2L+KUuh909xXAlBefn
- v6hLWt4gUKjtQ==
-X-Nifty-SrcIP: [209.85.217.52]
-Received: by mail-vs1-f52.google.com with SMTP id v12so1420722vsv.5
- for <linux-riscv@lists.infradead.org>; Mon, 16 Dec 2019 17:10:21 -0800 (PST)
-X-Gm-Message-State: APjAAAWyPnjNiD7lCDV2KEPJaj2a+5wbrD7ET2skyIBks/58dq+/X6md
- pDLh1MPy3wxsC7GG7CbpkHv527l/c8ytMzYkcPc=
-X-Google-Smtp-Source: APXvYqwkIN9Lvwlmkp2stv+JiCv4A9+lBjvUCThtm2ZkD11UN3CKjhGlaOiDvW6XmlUNhWQtm79VZMv0NB9zgNtp9yE=
-X-Received: by 2002:a67:30c3:: with SMTP id w186mr1240283vsw.179.1576545020751; 
- Mon, 16 Dec 2019 17:10:20 -0800 (PST)
+ id 1ih24L-0000CC-O3
+ for linux-riscv@lists.infradead.org; Tue, 17 Dec 2019 01:54:38 +0000
+Received: by mail-io1-xd42.google.com with SMTP id s2so9211252iog.10
+ for <linux-riscv@lists.infradead.org>; Mon, 16 Dec 2019 17:54:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=lixom-net.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SlnV9qvnMLCTAEFRF8r07x6ujflDHYlwsIYrVCyjVJg=;
+ b=fvA+rdpJlAvWZnCSEt72CVd2qcmAk2SL7KECX8NXO2vlF23JzDdDL0yBr7yiIXvOel
+ 1B1fod8M5+cS0eD29pKgFhqf8nr6M/GgVfjIh23Ns7YMidcs8JvqOXf2rSf9QcX0//05
+ i2FJET85F1TIiC5j0sCIDGm/ERoPhyompVAnQWgam5OWDK6Tqxhb3EnyoJ5LwO3DdXgq
+ N2BOLCtE3aXLs2tLWjvgJdxcqgCSu7hd1Eur7zdUNc3HsY+ofl7Xxhgeiua58ORAyu1V
+ 8RWRKtfa6S/mNuCkfSWpOrhnyP7x0r++R6NchhEi0i4b1Og4B6y2MgENDMgm3BTX+R/Z
+ JjtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SlnV9qvnMLCTAEFRF8r07x6ujflDHYlwsIYrVCyjVJg=;
+ b=i/u4YWPyJ5Ggm9TQSPpSo8mw6NCziJuxCMmyAFMFFs0ZiE0EHgwiWwSYAIAfTuvGbl
+ Qy80fs8Im4ds0k7H9N0ypuq5wF0Gcq4DLvWiT1w4hzFYd52WpDqjcEB5Mt3Y8OjZHU2F
+ dCIvO8iWwSJhkigyae5xAoIYCAG3SbCZ2nx2xC8DuoAWYSV0czJNy+Bf7QwxyXWZ4eJV
+ k+UouFMnrhLzr3tfo7zry1Yuy2QRYjdoKvD9CB/xy4Y6v069pDgXsEM2yCef23my0JWq
+ R/51USzIGpLX7gue4vV+xp2zzUFS+Ckf4SSZtNeQ9sU+J3LaJUVWUKny4iQRfTd1IWNx
+ QnZg==
+X-Gm-Message-State: APjAAAXjJqu7sOYwoe9icu8KVKfBl92NMJdcVKILC2wIn3kBz9fwfZJ0
+ woWMlB3UlND+gth3ZTtchPklEXL+1GOYZCPlzBaxIg==
+X-Google-Smtp-Source: APXvYqwpxAHjXEyFHWyWPYpZNMiv/knleP1pkVpKJvQ3kGnNs4qYLJFOyTKc5Uor7bFXpY5AKjj+unBC8GWILWYbrw4=
+X-Received: by 2002:a5e:da0d:: with SMTP id x13mr1740295ioj.123.1576547676697; 
+ Mon, 16 Dec 2019 17:54:36 -0800 (PST)
 MIME-Version: 1.0
-References: <20191216200719.30479-1-info@metux.net>
-In-Reply-To: <20191216200719.30479-1-info@metux.net>
-From: Masahiro Yamada <masahiroy@kernel.org>
-Date: Tue, 17 Dec 2019 10:09:44 +0900
-X-Gmail-Original-Message-ID: <CAK7LNASxcne9kryTsW2+7TQxuH+tp4Z4OT+1BjUHSE2Cfp_qxA@mail.gmail.com>
-Message-ID: <CAK7LNASxcne9kryTsW2+7TQxuH+tp4Z4OT+1BjUHSE2Cfp_qxA@mail.gmail.com>
-Subject: Re: [PATCH] scripts: package: mkdebian: add missing rsync dependency
-To: "Enrico Weigelt, metux IT consult" <info@metux.net>
+References: <20191217003057.39300-1-olof@lixom.net>
+In-Reply-To: <20191217003057.39300-1-olof@lixom.net>
+From: Olof Johansson <olof@lixom.net>
+Date: Mon, 16 Dec 2019 17:54:25 -0800
+Message-ID: <CAOesGMjw5RaPR+s94RAHtMm9jTGBeqcST+=YMKLxrF9xa+c1MA@mail.gmail.com>
+Subject: Re: [PATCH] riscv: export __lshrti3
+To: Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_171041_080374_9743C04F 
-X-CRM114-Status: GOOD (  11.55  )
-X-Spam-Score: 1.0 (+)
+X-CRM114-CacheID: sfid-20191216_175437_807214_AA0EF7C7 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [210.131.2.81 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -82,55 +89,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Michal Marek <michal.lkml@markovi.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>
+Cc: linux-riscv@lists.infradead.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Dec 17, 2019 at 5:08 AM Enrico Weigelt, metux IT consult
-<info@metux.net> wrote:
+On Mon, Dec 16, 2019 at 4:31 PM Olof Johansson <olof@lixom.net> wrote:
 >
-> We've missed the dependency to rsync, so build fails on
-> minimal containers.
-
-Ah, right.
-
-Did it fail in headers_install?
-
-If so, I will add this tag.
-
-Fixes: 59b2bd05f5f4 ("kbuild: add 'headers' target to build up uapi
-headers in usr/include")
-
-
-
-
-
-> Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
+> ARM64 exports it already, and recently it started showing up as needed
+> with allmodconfig.
+>
+> To keep things building as expected, let's export on riscv as well.
+>
+> Signed-off-by: Olof Johansson <olof@lixom.net>
 > ---
->  scripts/package/mkdebian | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/scripts/package/mkdebian b/scripts/package/mkdebian
-> index e0750b70453f..7c230016b08d 100755
-> --- a/scripts/package/mkdebian
-> +++ b/scripts/package/mkdebian
-> @@ -174,7 +174,7 @@ Source: $sourcename
->  Section: kernel
->  Priority: optional
->  Maintainer: $maintainer
-> -Build-Depends: bc, kmod, cpio, bison, flex | flex:native $extra_build_depends
-> +Build-Depends: bc, rsync, kmod, cpio, bison, flex | flex:native $extra_build_depends
->  Homepage: http://www.kernel.org/
->
->  Package: $packagename
-> --
-> 2.11.0
->
+> It'd be nice to see this go in through 5.5-rc, since the breakage showed
+> up this merge window. It was triggered by ce5c31db3645 ("lib/ubsan:
+> don't serialize UBSAN report"), but I think that was just coincidental.
+
+Nevermind, I built the wrong config when I tested this. Need to pick
+up some of the generic helpers also. Posting new patch separately.
 
 
--- 
-Best Regards
-Masahiro Yamada
+-Olof
+
+
+
+-Olof
 
