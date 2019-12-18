@@ -2,76 +2,56 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DECD12492D
-	for <lists+linux-riscv@lfdr.de>; Wed, 18 Dec 2019 15:11:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92F43124DA2
+	for <lists+linux-riscv@lfdr.de>; Wed, 18 Dec 2019 17:31:13 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZtHoWzlWv4Nggpiz4JYJ0ktQQgL8zQr082eHKmhq0sA=; b=LoTfgsuzXAqMfwTJdOxp33aIH
-	0imt+tIdXr7qnSNY+cLTmxIvR4naodNDojFSBNGVumr/X/uTVTx/Z37GcJLYFq34PKu4ppKWOBVVM
-	QecjTk5kI3QncIv1IIrfyi9r4ONlNjmUWYSeBbRUfYelqofJT7V5lJWUKhrTyepj/DfGqOMmUD6bf
-	0Tf6fE/JdpNZoN5/4X1g+9tHyur/AsNg1vl5Ul7Ptyd/5OfjCRf52mDD+Ua2ra3Dh3VGrycD8YGsU
-	8k2ZnV4350Bbj7Futys+z5NvHBqF017xxGrTNpQpL9TLljL8y2Y20qPZ0cwU4XyNjQ22uEGeyQAY0
-	SPyl3oZ2A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ex82G6gYS1crw+YJCIjC4u3OW7Wo09p2wIY2iG4MNOk=; b=HeTxA67nPmckqb
+	N4X71q00vpY2YmN8cSR0quzMPz3dWLwDjbosVu6O0MeA0BbRhH3IiofvcEU1SLqAi7q05+V1jIFkl
+	EveWE656Br7A/uOUlTcZNLWaZ9520TMNJP1ESTgVmKCohu7aGqizj8Fgl8vKLrRfcopuF0fDm/dXM
+	FmQ0UcaMc1b1vo8QsFDaeSp+RoygXdZFSAAJ2YRS6IznPfgL038KMfBG4KqtKYFNzzWsfy2/kdE97
+	XCJ9LT7bs5O4WTsLnda3Kh7bg3Z7OpCCSzXJB5vYmDqJedDtotRGK4IsNAm/LaX/x+uEmXwIrXzxE
+	azS4i+jF1W8YHTQZMaYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iha2j-0004wo-3I; Wed, 18 Dec 2019 14:11:13 +0000
-Received: from conssluserg-05.nifty.com ([210.131.2.90])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iha2c-0004rm-VX
- for linux-riscv@lists.infradead.org; Wed, 18 Dec 2019 14:11:10 +0000
-Received: from mail-ua1-f50.google.com (mail-ua1-f50.google.com
- [209.85.222.50]) (authenticated)
- by conssluserg-05.nifty.com with ESMTP id xBIEAamA031762
- for <linux-riscv@lists.infradead.org>; Wed, 18 Dec 2019 23:10:37 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-05.nifty.com xBIEAamA031762
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1576678237;
- bh=ZtHoWzlWv4Nggpiz4JYJ0ktQQgL8zQr082eHKmhq0sA=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Y8IH6ikPKkZ91TfmMDmbLnCku2cKcFxE58DmglIwpn99HQzVP0ZgoP1YHXWG4K9tq
- Mt454eRcKY4Lo4HjJxr/lsGyAEMsFxOEZgakqmzincCPM7nmXAvOfJYHzciHJE8s2e
- 6//kBXRQkxo/BuWPUiPDbkFb/5/l7rF8HHWJ0T6WtfnScNDNLfCGe4MXlpbYcNuDI0
- dTOvC3rlM1AGNbPHRWJO8KHLUzGxH+oOk4YN/Bn+nPwCWsMj1Ere+y+1uy5zDupZIm
- aBjpFvxpDPxs9QFY7/Ya4O8wJhWLEBgPbxqG/9/1Tgh8PRiSacy2R7I5qzMWgXxJkN
- 9HWIChs8b86sQ==
-X-Nifty-SrcIP: [209.85.222.50]
-Received: by mail-ua1-f50.google.com with SMTP id f9so679177ual.4
- for <linux-riscv@lists.infradead.org>; Wed, 18 Dec 2019 06:10:36 -0800 (PST)
-X-Gm-Message-State: APjAAAW7LCDJFaOedIY2nSmPOEkCKmERpEDhsXk0nEGJRMpwJtklOjCm
- Xs0EY+iNHSCjGBZAkY25234uouyYRVC29JjybXM=
-X-Google-Smtp-Source: APXvYqw9cT8Od3W7kctCPwiC5X53fct0hh2cQ9AwQ0K101fOwa4G9Y/YaVZbIWbz6ZgR4YnRDQddC6j+idk0VSoEamk=
-X-Received: by 2002:ab0:63c7:: with SMTP id i7mr1393678uap.109.1576678235726; 
- Wed, 18 Dec 2019 06:10:35 -0800 (PST)
+	id 1ihcE7-00060Y-PQ; Wed, 18 Dec 2019 16:31:07 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1ihc7y-0007FB-03; Wed, 18 Dec 2019 16:24:47 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 81B6313D5;
+ Wed, 18 Dec 2019 08:24:45 -0800 (PST)
+Received: from e112269-lin.arm.com (e112269-lin.cambridge.arm.com
+ [10.1.196.56])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 529223F719;
+ Wed, 18 Dec 2019 08:24:42 -0800 (PST)
+From: Steven Price <steven.price@arm.com>
+To: Andrew Morton <akpm@linux-foundation.org>,
+	linux-mm@kvack.org
+Subject: [PATCH v17 07/23] riscv: mm: Add p?d_leaf() definitions
+Date: Wed, 18 Dec 2019 16:23:46 +0000
+Message-Id: <20191218162402.45610-8-steven.price@arm.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191218162402.45610-1-steven.price@arm.com>
+References: <20191218162402.45610-1-steven.price@arm.com>
 MIME-Version: 1.0
-References: <20191217135539.17157-1-info@metux.net>
-In-Reply-To: <20191217135539.17157-1-info@metux.net>
-From: Masahiro Yamada <masahiroy@kernel.org>
-Date: Wed, 18 Dec 2019 23:09:59 +0900
-X-Gmail-Original-Message-ID: <CAK7LNASVmO3i3BVSHHLAE3p10E5+POhBn9m9HpYqG5VeR1_NAw@mail.gmail.com>
-Message-ID: <CAK7LNASVmO3i3BVSHHLAE3p10E5+POhBn9m9HpYqG5VeR1_NAw@mail.gmail.com>
-Subject: Re: [PATCH v2] scripts: package: mkdebian: add missing rsync
- dependency
-To: "Enrico Weigelt, metux IT consult" <info@metux.net>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191218_061107_273767_4053E721 
-X-CRM114-Status: GOOD (  11.36  )
-X-Spam-Score: 1.0 (+)
+X-CRM114-CacheID: sfid-20191218_082446_089278_2FFBA720 
+X-CRM114-Status: GOOD (  10.51  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [210.131.2.90 listed in list.dnswl.org]
+ no trust [217.140.110.172 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,47 +63,81 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:SIFIVE DRIVERS" <linux-riscv@lists.infradead.org>,
- Michal Marek <michal.lkml@markovi.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>
+Cc: Mark Rutland <Mark.Rutland@arm.com>, Peter Zijlstra <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>, Zong Li <zong.li@sifive.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, "Liang, Kan" <kan.liang@linux.intel.com>,
+ Alexandre Ghiti <alex@ghiti.fr>, x86@kernel.org,
+ Steven Price <steven.price@arm.com>, Ingo Molnar <mingo@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Arnd Bergmann <arnd@arndb.de>,
+ =?UTF-8?q?J=C3=A9r=C3=B4me=20Glisse?= <jglisse@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-arm-kernel@lists.infradead.org,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>, linux-kernel@vger.kernel.org,
+ James Morse <james.morse@arm.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Dec 17, 2019 at 10:56 PM Enrico Weigelt, metux IT consult
-<info@metux.net> wrote:
->
-> We've missed the dependency to rsync, so build fails on
-> minimal containers.
->
-> Fixes: 59b2bd05f5f4 ("kbuild: add 'headers' target to build up uapi headers in usr/include")
-> Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
-> ---
+walk_page_range() is going to be allowed to walk page tables other than
+those of user space. For this it needs to know when it has reached a
+'leaf' entry in the page tables. This information is provided by the
+p?d_leaf() functions/macros.
 
-Applied to linux-kbuild .Thanks.
+For riscv a page is a leaf page when it has a read, write or execute bit
+set on it.
 
->  scripts/package/mkdebian | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/scripts/package/mkdebian b/scripts/package/mkdebian
-> index e0750b70453f..7c230016b08d 100755
-> --- a/scripts/package/mkdebian
-> +++ b/scripts/package/mkdebian
-> @@ -174,7 +174,7 @@ Source: $sourcename
->  Section: kernel
->  Priority: optional
->  Maintainer: $maintainer
-> -Build-Depends: bc, kmod, cpio, bison, flex | flex:native $extra_build_depends
-> +Build-Depends: bc, rsync, kmod, cpio, bison, flex | flex:native $extra_build_depends
->  Homepage: http://www.kernel.org/
->
->  Package: $packagename
-> --
-> 2.11.0
->
+CC: Palmer Dabbelt <palmer@sifive.com>
+CC: Albert Ou <aou@eecs.berkeley.edu>
+CC: linux-riscv@lists.infradead.org
+Reviewed-by: Alexandre Ghiti <alex@ghiti.fr>
+Reviewed-by: Zong Li <zong.li@sifive.com>
+Acked-by: Paul Walmsley <paul.walmsley@sifive.com> # for arch/riscv
+Signed-off-by: Steven Price <steven.price@arm.com>
+---
+ arch/riscv/include/asm/pgtable-64.h | 7 +++++++
+ arch/riscv/include/asm/pgtable.h    | 7 +++++++
+ 2 files changed, 14 insertions(+)
 
-
+diff --git a/arch/riscv/include/asm/pgtable-64.h b/arch/riscv/include/asm/pgtable-64.h
+index 74630989006d..4c4d2c65ba6c 100644
+--- a/arch/riscv/include/asm/pgtable-64.h
++++ b/arch/riscv/include/asm/pgtable-64.h
+@@ -43,6 +43,13 @@ static inline int pud_bad(pud_t pud)
+ 	return !pud_present(pud);
+ }
+ 
++#define pud_leaf	pud_leaf
++static inline int pud_leaf(pud_t pud)
++{
++	return pud_present(pud) &&
++	       (pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
++}
++
+ static inline void set_pud(pud_t *pudp, pud_t pud)
+ {
+ 	*pudp = pud;
+diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
+index 7ff0ed4f292e..5cf96b2b4d5a 100644
+--- a/arch/riscv/include/asm/pgtable.h
++++ b/arch/riscv/include/asm/pgtable.h
+@@ -105,6 +105,13 @@ static inline int pmd_bad(pmd_t pmd)
+ 	return !pmd_present(pmd);
+ }
+ 
++#define pmd_leaf	pmd_leaf
++static inline int pmd_leaf(pmd_t pmd)
++{
++	return pmd_present(pmd) &&
++	       (pmd_val(pmd) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
++}
++
+ static inline void set_pmd(pmd_t *pmdp, pmd_t pmd)
+ {
+ 	*pmdp = pmd;
 -- 
-Best Regards
-Masahiro Yamada
+2.20.1
+
 
