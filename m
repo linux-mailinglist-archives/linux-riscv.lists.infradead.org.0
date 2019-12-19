@@ -2,63 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E006E126283
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Dec 2019 13:47:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 311D61262BD
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Dec 2019 13:56:45 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8qnzZ+Np5eBCo9s81WnyP0pvUm+PIUtt/EaiH8TRaD0=; b=bYhF5r802As1TnTmYjxX+WNAij
-	on7ELXVqpHfBortAIllk4oJtykIcBPn7Rywcu26ipyLPEFaDRQSK5exRFKkxWDjTRo6r7jt0Cjn2t
-	7grvVgAHb4n03Z1Wq76MNr7aUNt1qVq6/rHFzjvisBrcd5j0+IhbfeqrnLehABrPxlmhiv+bZNcLt
-	QF84sDrwZ3UgOCH5sOVsefSKYA6RIPztfqlEmN8Mo9gsO4zozg9s08WTUzhKZtSGteWI2w7LXN28F
-	Mg3BmEcMvlCT1kVfpP7YW19Ivko3XUL6jpFF+T6Dcl09p0S+u7U93qjMjd3rk7480zD43lnq0dVd8
-	9yTqly2A==;
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ZtGGKEXPSlNk1o+fnDsc3hmGz4jCQ65wpZwpAym/QLU=; b=nN390txpnq+yZaThvhSlNoIYK
+	vF69u24iX0qRn05vG6BA9LtKV0jOpXTsToU8K6cq8tOLtWuZmsiq7kG1YpMDiVkQmZl+MtqBIS3X1
+	aBFJO0QtZev7H5d5RiBzI1vNTsyEbEbfysBD8SSDlqvmdZmvKZ1Oz8c1iN9ebfldC5BOjMGRfWGR1
+	ZeFiqXc2DBVVah4qyfB6Sc8TXT6JFHJJr2ZDBmwd6VCvM38ndv0MtVRujyadTnAoSEBqZnTTCbB01
+	BBWjDoDj0iT0G3oKjTypjwfHOGLMRFnQbUOVXdxEnsVRaL/NTs7fxAhcJMJlMusUoLIzu+E5KKBrh
+	KonkHm9uQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ihvCw-0008Gt-I1; Thu, 19 Dec 2019 12:47:10 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1ihvMA-0003WE-3U; Thu, 19 Dec 2019 12:56:42 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ihvCt-0008Gb-NQ
- for linux-riscv@lists.infradead.org; Thu, 19 Dec 2019 12:47:09 +0000
-Received: by mail-wm1-x344.google.com with SMTP id m24so5289301wmc.3
- for <linux-riscv@lists.infradead.org>; Thu, 19 Dec 2019 04:47:06 -0800 (PST)
+ id 1ihvM6-0003Vi-Pa
+ for linux-riscv@lists.infradead.org; Thu, 19 Dec 2019 12:56:40 +0000
+Received: by mail-wm1-x342.google.com with SMTP id f4so6977570wmj.1
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Dec 2019 04:56:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=8qnzZ+Np5eBCo9s81WnyP0pvUm+PIUtt/EaiH8TRaD0=;
- b=hRHExEz6i4Wmc7lrvRW/GPho8R6kAxjWo45k6GEyIu+thjMqoBReredTydusokjVC8
- tLVESeH0yhh/xsXFxKKbU/LM2FoWNIJL2o9Sq+qulfCMQqTaiwTAimIqhytDTjFcYJN7
- 3zelznlZvDrUSUEPAZE3hdGKmT6UeNVGO2KuOHN08/6D7YjYbQwo6PFTTG7DXUy34Fyu
- XixB7aQ0BD+yv1w5bhaz6QKEircJGARg9ESu3zApgWmLJ7oPqFPz6or/hpy2/DpvN74p
- bANodqDrqZawykh+CWLZWpoq5n98BzdCXu4eUxFMyd2txoQ3kYymtbHVoPEFy27FWnKz
- kHfA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=ZtGGKEXPSlNk1o+fnDsc3hmGz4jCQ65wpZwpAym/QLU=;
+ b=vdsHpBuYZOpTpf0myyOzxoD+/7WkUsddZ9fvWNoLJIPq9TswHWSEjqV1XWWRLHMoZy
+ uCrbX8X6nZ9BPhzPmJnS6w2lcftYQzsKSMXPi1cwtHHj9ECNLvfEF4TTUDDb3czrkuS9
+ I1PPxB6jzeGBEBoEo14GUAD60GGgsZ72zvgP0+dAtugowVwK1N3bcSFAcJ2NKA54Egy9
+ NFUcg53AMdgyc3KRvAMuOaSFEA5/2UZ61alDMvQ75dq+GOzbhXFAqGbG4/MFMdm0VezX
+ 40y+qW4/PdgP20Erh0Vz1fC6BPP4OMW2ru8yk3blcd/UoI/68q/TpX2y+ZPe34OPAytF
+ Vnwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=8qnzZ+Np5eBCo9s81WnyP0pvUm+PIUtt/EaiH8TRaD0=;
- b=aFBchjWSMNV6Gb0PQpua5s4+to2Jmnsobwswx4BIlvPmgpbBui/FlxzPuBBHF5mFEw
- pO6HpqRzBQxsY2aZuparEmPQO2nLPOW3Ubnfgs+WscRJHBdB8OPj1Y0X71YKVETAhjEq
- Ry0INlSvYwaap33yUt5kKQK+9V+ymHLC927cVgCddYAFEuvCP64P6KN1QcO2aoDAR4OZ
- evmoyXfvPYI1O7gdb8NZPYNvHbBeeN78k9zK2tK+C3OehJ9NACva+nYsv5eOslBCLp0x
- 8HV1eyDzMMk9GDlrzklzNqi9hqq8Ph8nrnHed+Bk/Tjqo20IAzvdzblIvoYBOMg8JJTk
- JELA==
-X-Gm-Message-State: APjAAAWOtYS3kxq01T3Ua5BEGv/HKx33CdZAzCtrCp/RR5/VLKHki3dg
- WRpBaQG/D2uIyayHAe6V8+KbRtK+Wn87h4sjR/dA+IPU
-X-Google-Smtp-Source: APXvYqwpcai8f4meRh8wqCrAcMR/brkZjK/db9DCOysKkym+k/PdThNexWuh6WwH617satcBew8iSxohEbKabJHeO9U=
-X-Received: by 2002:a1c:22c6:: with SMTP id i189mr10464350wmi.15.1576759625284; 
- Thu, 19 Dec 2019 04:47:05 -0800 (PST)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=ZtGGKEXPSlNk1o+fnDsc3hmGz4jCQ65wpZwpAym/QLU=;
+ b=e1tCAftvr14Pn3DEAl8sVP9sCqP94E2mWJbqYeRBVQLVaNTjRuzRl8c8kV3JgqJrLM
+ wiY0e+T9OtwVE0dQTsK9DlwPaq/Ts5H7kmmJFGokK1mN4iQ5/NbOSTtwJRYyl0ky60AE
+ vc3TS1zTtss7G4oV7KTam3ZCp1dNgo5F3/DPpNuF0E6iGCP5geul+MChIQjfjvD3dnG+
+ 4J9t00h5794cEtEqRztS+9NGzE5EoAeYZKtDjCT8oVKsIgpzSOTtKNmfUAp/Vitxj3+/
+ os+8zBKdIs3qSJLLoZfhcgmfh9Yr30T+XR9YQ7JMiC2qPwFCidZWl3FfoADjfPu6drJa
+ Arjw==
+X-Gm-Message-State: APjAAAVsuL53QEm/nsLKqISZv1Kt9r0wod+EITvV0UKKG3dwuLnq9K5C
+ ZyqW5eP7uA4DXislrtx9IAvQxIlGp94hwfQjBDCr9lLu
+X-Google-Smtp-Source: APXvYqy1iJOq0aQFnxbbh6I9+LJvG4N4Og/ncl8ONjm/gvkkFKUkUe1V2SvVS4m/a2p9f++c6m8xqHLxSqbGGX83esE=
+X-Received: by 2002:a1c:22c6:: with SMTP id i189mr10515420wmi.15.1576760197329; 
+ Thu, 19 Dec 2019 04:56:37 -0800 (PST)
 MIME-Version: 1.0
+References: <CAEn-LTqw=r7WotzzHJZou10O5mcCDs+TK_ep4hhyBbUnHMGMAg@mail.gmail.com>
+In-Reply-To: <CAEn-LTqw=r7WotzzHJZou10O5mcCDs+TK_ep4hhyBbUnHMGMAg@mail.gmail.com>
 From: David Abdurachmanov <david.abdurachmanov@gmail.com>
-Date: Thu, 19 Dec 2019 14:46:29 +0200
-Message-ID: <CAEn-LTqw=r7WotzzHJZou10O5mcCDs+TK_ep4hhyBbUnHMGMAg@mail.gmail.com>
-Subject: Compiling 5.5-rc2: warning: "IRQ_TIMER" redefined
+Date: Thu, 19 Dec 2019 14:56:01 +0200
+Message-ID: <CAEn-LTq-SQXK4EO2itu_CcyqKjM8FReHqA1WjcHkZWJO2xP5Mg@mail.gmail.com>
+Subject: Re: Compiling 5.5-rc2: warning: "IRQ_TIMER" redefined
 To: linux-riscv <linux-riscv@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191219_044707_788888_67569DF2 
-X-CRM114-Status: UNSURE (   4.10  )
+X-CRM114-CacheID: sfid-20191219_045638_833778_0230389E 
+X-CRM114-Status: UNSURE (   7.34  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -66,7 +69,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -93,53 +96,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi,
+On Thu, Dec 19, 2019 at 2:46 PM David Abdurachmanov
+<david.abdurachmanov@gmail.com> wrote:
+>
+> Hi,
+>
+> While compiling modules for 5.5-rc2 in Fedora/RISCV I see compilation
+> warning. Similar was reported 10 days ago by kbuild test robot [0].
+> That points to a4c3733d32a72f11dee86d0731d7565aa6ebe22d ("riscv:
+> abstract out CSR names for supervisor vs machine mode").  The commit
+> added
+>
+> [..]
+> #ifdef CONFIG_RISCV_M_MODE
+> [..]
+> #else /* CONFIG_RISCV_M_MODE */
+> [..]
+> # define IRQ_TIMER IRQ_S_TIMER
+> [..]
+> #endif /* CONFIG_RISCV_M_MODE */
+>
+> There seems to be a few drivers that define IRQ_TIMER:
+>
+> sound/pci/au88x0/au88x0.h
+> sound/pci/azt3328.h
+> drivers/net/fddi/skfp/h/skfbi.h
+> drivers/char/pcmcia/synclink_cs.c
+>
+> Should we pick something different than IRQ_TIMER to avoid this clash?
 
-While compiling modules for 5.5-rc2 in Fedora/RISCV I see compilation
-warning. Similar was reported 10 days ago by kbuild test robot [0].
-That points to a4c3733d32a72f11dee86d0731d7565aa6ebe22d ("riscv:
-abstract out CSR names for supervisor vs machine mode").  The commit
-added
+Sorry for the email. I just noticed that a patch was proposed
+yesterday to fix it:
 
-[..]
-#ifdef CONFIG_RISCV_M_MODE
-[..]
-#else /* CONFIG_RISCV_M_MODE */
-[..]
-# define IRQ_TIMER IRQ_S_TIMER
-[..]
-#endif /* CONFIG_RISCV_M_MODE */
-
-There seems to be a few drivers that define IRQ_TIMER:
-
-sound/pci/au88x0/au88x0.h
-sound/pci/azt3328.h
-drivers/net/fddi/skfp/h/skfbi.h
-drivers/char/pcmcia/synclink_cs.c
-
-Should we pick something different than IRQ_TIMER to avoid this clash?
+https://patchwork.kernel.org/patch/11301459/
 
 david
-
-[0] https://lkml.org/lkml/2019/12/9/24
-
-BUILDSTDERR: In file included from sound/pci/au88x0/au8810.c:3:
-BUILDSTDERR: sound/pci/au88x0/au88x0.h:52: warning: "IRQ_TIMER" redefined
-BUILDSTDERR:    52 | #define IRQ_TIMER 0x1000
-BUILDSTDERR:       |
-BUILDSTDERR: In file included from ./arch/riscv/include/asm/ptrace.h:10,
-BUILDSTDERR:                  from ./arch/riscv/include/asm/processor.h:11,
-BUILDSTDERR:                  from ./arch/riscv/include/asm/irqflags.h:10,
-BUILDSTDERR:                  from ./include/linux/irqflags.h:16,
-BUILDSTDERR:                  from ./arch/riscv/include/asm/bitops.h:14,
-BUILDSTDERR:                  from ./include/linux/bitops.h:26,
-BUILDSTDERR:                  from ./include/linux/kernel.h:12,
-BUILDSTDERR:                  from ./include/linux/list.h:9,
-BUILDSTDERR:                  from ./include/linux/pci.h:32,
-BUILDSTDERR:                  from sound/pci/au88x0/au88x0.h:8,
-BUILDSTDERR:                  from sound/pci/au88x0/au8810.c:3:
-BUILDSTDERR: ./arch/riscv/include/asm/csr.h:137: note: this is the
-location of the previous definition
-BUILDSTDERR:   137 | # define IRQ_TIMER IRQ_S_TIMER
-BUILDSTDERR:       |
 
