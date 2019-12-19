@@ -2,70 +2,99 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 077901268DA
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Dec 2019 19:20:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8660412703D
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Dec 2019 23:04:02 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=63anrj2+kB+ni6RTxQeJ0XnLzlsqh6yzjjNORsKYt7U=; b=sPdpE2xG6Xd+vufOt+bu+tnNbK
-	6EBS32pzo3rjzZNsqzpJathB8zO4HyV83Ch6L0Wti8q2OlOlwK9jqHsuIljF9vOXieaj+wrUPWd2F
-	qLDBS6yjckPeyltF8pRtaFrt2ay5MUWC/THQ5++Y12p28SR8lLZpINMZaRjgMaUGHJeofP1XHNm6w
-	KF7toHof6ZPXz+dKssNgnd7YzGk60XtD699cRO4mFIpEF147llJ+f60GqcZfiwIyDHgFmX8bCex1q
-	js6t8KlRDG3lH6991tPpmz3vuq6aEN8YAM6dpS37xoQY3wCT9WFpLMDSn48TLvsI8axBpB9Puw8x7
-	dnhxzo4A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:References:
+	In-Reply-To:To:Subject:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6Ehfo2bIiqQ+sIDTvyxCSm9TkTj7s8Fi170nwe2flnE=; b=iB3hvSqPocePRz
+	d+zplSk1eEgZjYPfGfaXnnrgpO2OtonVAbGgkq/L+ThmZ611g25iFJ4H/tO+LLvWroVjMXjuCVU+2
+	hTeHXT3hV8enuYHdHy2yYs7RBpk+9W+Vf/S8ZzqRGmxy721wvTwIGe1yQ0x7EkWWvZyFQRC5Zko5+
+	rDD53Qh2DFn6uG3cUPvY8UDy7SAiPzk/Rn2rkTzJ8X0HNWBkJWYR72PXRJQN7+3qd9xtP/FWkV3cS
+	iJR+7vXma1lyM1bSLrbmVUGvD8Sr9MsVxNR9zqPnHFXALiQEnuOB88SdpcViIgMwTzcb0+037Jwet
+	eKdjz6ucmdXGLNdzg5Aw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ii0P3-0007tJ-5F; Thu, 19 Dec 2019 18:20:01 +0000
-Received: from mout.kundenserver.de ([212.227.126.135])
+	id 1ii3tk-0002WC-6g; Thu, 19 Dec 2019 22:03:56 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ii0Oz-0007sf-6W
- for linux-riscv@lists.infradead.org; Thu, 19 Dec 2019 18:19:59 +0000
-Received: from orion.localdomain ([77.9.67.183]) by mrelayeu.kundenserver.de
- (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
- 1MfbwW-1i22sl1zi4-00g1kL; Thu, 19 Dec 2019 19:19:47 +0100
-From: "Enrico Weigelt, metux IT consult" <info@metux.net>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] drivers: clk: make gpio-gated clock support optional
-Date: Thu, 19 Dec 2019 19:19:14 +0100
-Message-Id: <20191219181914.6015-1-info@metux.net>
-X-Mailer: git-send-email 2.11.0
-X-Provags-ID: V03:K1:jpHLwXNk9hOLka9uvW//uJQnzAGMKxKM6PXIdnWgi5UdfcFPP+1
- qkK0BKGr8o0uMs0aLjei1OLw/VfwDVzrMMX8YdAgKDP0WTG6UAnGMSg5IgKoQv33epGyvmU
- fmwygj1HeGDDsFI+mnsMGJYDe3g2Ad+7b1ZBSWFf1aXz8ugcDazSaGJTI75cUqF1AglVx8k
- VNx7FW/KSmUFk1d4iDdcw==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sZrDCi3e6so=:SovrMjBvwFTmI8GTl4TqmU
- srSdn+cnFcrzRx4RsShLdt4hxCM3koBsYCyWjP57HxiKQi+nITWLO1c1j1wAYVRDCcWDr2UJx
- tSQyvXQJMLN6p7Kz5kAWBVDqtxrtPQ1T1V0byUtC/qDMqZIz1nTyI4bgs0484Zj3hSJUrYMAB
- 9gCPyHZ+nI3rUN+5vaUfw7wqyJFEpDfI7PdYgtGK2da81sZNfdEDuesmQyRSGuh0WClTDMzXl
- ugor+XYc9uVj5IKsb9VRGhoGCLc+kifuR+M2fw8nZkgefFJaxDablwdPy5XCDakR+4UvW1ODV
- 1zy3ZeHhmmrynmMzPuQotPq0R6t1iAvpViyvu0QIuMRxjBAu+fzx75gFw/Qc+bBFiAFq9CTyq
- mHEpXB20lFUpfKhc3pPNxZdkXtI/6JVOPiZxtR52RgDoet3oaBvUZ3fl6TRnQTV8e8J5xvuTf
- yg6bel6FwI3cgJBrIzIUDHygS4PftZonnyAS5KBSYio2Z2P2Bn+vnn5su3FP6oSzO1a12u+Rk
- LP5hRaX5t1uoob6PgJ2M+283T2UziMnqiwPTv9cu2YTAHgjad9M/H9VFzed7PqUqHmqr5tVjS
- 7qGqtUIeWL0X7VGkqx2v9kYw4+jJVu474kHtb4trmJPDX26TQrS9bDi7a5td+6jUqy4SH2P5x
- dium3iEh95GQ4OlIeBIsZviVWIxezaEHd3CZfp5Dv41S1wGFwM36EbhzjI1L/Lnaox22cfEQw
- MZiTkeEANK8cKo9/kex7VxiASlW44PYO270FO2LMyW/3DLkZtM0jOog5Z1lSfC2PidlwveRoH
- ZMjbooPVm+xA9xol4nQiEMNjWxzwcjQlImPE5tbm65VEjwStCkSQ/Z2uBUEp7jGEG16+qrrSd
- 529HVRNCzLi0enpkZ1SQ==
+ id 1ii3pL-0001OM-78
+ for linux-riscv@lists.infradead.org; Thu, 19 Dec 2019 21:59:24 +0000
+Received: by mail-pg1-x541.google.com with SMTP id q127so3856625pga.4
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Dec 2019 13:59:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:subject:cc:to:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=6Ehfo2bIiqQ+sIDTvyxCSm9TkTj7s8Fi170nwe2flnE=;
+ b=usI1/nTXIk8Z/gSwygrvaZBlgzgppv+K3Hz6NTS7ljeWRl0Xox2q386TddizyFxw4j
+ K/WOP9/7IMpa4DbaQKNKFvlB4iwthHzszRVmnjSoAhHAYRu6MfsgjNeKFRfDzLuJo64d
+ OMSybscVZmdIlroMzjigcDdMDb4V/BpV45IyaGJglkMPmGbph0F2sPf/zlKPO65bDHPC
+ VrsoSTgXeKjp2DikIqzgVPkIAzJq12UTv0/mX31LeAhAn0Hd+W0PqCWr3hGCjjqm0Wa+
+ cpiWYlXu+dWOCYaCXRjcbWxItlGEFtygNwpSfR7oy0BwfSBb6HTpcGGuMsSa/22TphXI
+ jL6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:subject:cc:to:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=6Ehfo2bIiqQ+sIDTvyxCSm9TkTj7s8Fi170nwe2flnE=;
+ b=Pf+AVh6dFV2lF/OgDGxR756NiqGftqp84GcVkH8bbcXTt1qyFrOtVdJsGp6f8uJv/7
+ iyFsDYGtVUqf/arwHGD+l3MzfCkl7obzgQghQVX/rn/6Dz8MXgqDTh1/fLcASrvrTbaM
+ OhkJJAkY++VqI04ukgM6I6Q9Ao3SAkr1/5FCrvBzm/uyCCFr9+ouRPpmKtpjP2KevSg+
+ p97pOIqH/9c1ZU301ZM3a70Pw4NKSOv15HXNgh34Kp0iC4ZmQKT5ztmBJ8CFuOiD+cWB
+ 6GQd5uZDMGGXVLF5w9DEryPv+2FkhtAkz+B3Tiy+ASdqbjkUfY0OVEP8S8j06w5FbgkE
+ RlSg==
+X-Gm-Message-State: APjAAAVZCvXYECJS44wTqLRlPoTrcKOdjGn+krfKCLfijJQPpXY4rTZH
+ LAKWBBw/6wWDZc/dvxiWh7iT7g==
+X-Google-Smtp-Source: APXvYqw96pcjWcaRBv5UVQ/YmpzGjtRFsYGAGBURRzHdWjAru25h6ZAeXguhwKHtgA6mCLGg9srY2w==
+X-Received: by 2002:a63:28c7:: with SMTP id
+ o190mr11008375pgo.394.1576792759540; 
+ Thu, 19 Dec 2019 13:59:19 -0800 (PST)
+Received: from localhost ([2620:0:1000:2514:7f69:cd98:a2a2:a03d])
+ by smtp.gmail.com with ESMTPSA id k4sm9325902pfk.11.2019.12.19.13.59.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Dec 2019 13:59:19 -0800 (PST)
+Date: Thu, 19 Dec 2019 13:59:19 -0800 (PST)
+X-Google-Original-Date: Thu, 19 Dec 2019 13:59:14 PST (-0800)
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH bpf-next 1/8] riscv, bpf: fix broken BPF tail calls
+To: Björn Töpel <bjorn.topel@gmail.com>
+In-Reply-To: <20191209173136.29615-2-bjorn.topel@gmail.com>
+References: <20191209173136.29615-2-bjorn.topel@gmail.com>
+ <20191209173136.29615-1-bjorn.topel@gmail.com>
+Message-ID: <mhng-dcf9c2f9-7955-4645-a229-d31bbaf96127@palmerdabbelt-glaptop>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191219_101957_532338_25ADA110 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191219_135923_412856_127062C6 
+X-CRM114-Status: GOOD (  15.17  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [212.227.126.135 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [212.227.126.135 listed in wl.mailspike.net]
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,55 +106,71 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: sboyd@kernel.org, matthias.bgg@gmail.com, mturquette@baylibre.com,
- linux-clk@vger.kernel.org, linux-riscv@lists.infradead.org
+Cc: daniel@iogearbox.net, netdev@vger.kernel.org, ast@kernel.org, Björn Töpel <bjorn.topel@gmail.com>, linux-riscv@lists.infradead.org, bpf@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The gpio-gate-clock / gpio-mux-clock driver isn't used much,
-just by a few ARM SoCs, so there's no need to always include
-it unconditionally.
+On Mon, 09 Dec 2019 09:31:29 PST (-0800), Björn Töpel wrote:
+> The BPF JIT incorrectly clobbered the a0 register, and did not flag
+> usage of s5 register when BPF stack was being used.
+>
+> Fixes: 2353ecc6f91f ("bpf, riscv: add BPF JIT for RV64G")
+> Signed-off-by: Björn Töpel <bjorn.topel@gmail.com>
+> ---
+>  arch/riscv/net/bpf_jit_comp.c | 13 +++++++++++--
+>  1 file changed, 11 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/riscv/net/bpf_jit_comp.c b/arch/riscv/net/bpf_jit_comp.c
+> index 5451ef3845f2..1606ebd49666 100644
+> --- a/arch/riscv/net/bpf_jit_comp.c
+> +++ b/arch/riscv/net/bpf_jit_comp.c
+> @@ -120,6 +120,11 @@ static bool seen_reg(int reg, struct rv_jit_context *ctx)
+>  	return false;
+>  }
+>
+> +static void mark_fp(struct rv_jit_context *ctx)
+> +{
+> +	__set_bit(RV_CTX_F_SEEN_S5, &ctx->flags);
+> +}
+> +
+>  static void mark_call(struct rv_jit_context *ctx)
+>  {
+>  	__set_bit(RV_CTX_F_SEEN_CALL, &ctx->flags);
+> @@ -596,7 +601,8 @@ static void __build_epilogue(u8 reg, struct rv_jit_context *ctx)
+>
+>  	emit(rv_addi(RV_REG_SP, RV_REG_SP, stack_adjust), ctx);
+>  	/* Set return value. */
+> -	emit(rv_addi(RV_REG_A0, RV_REG_A5, 0), ctx);
+> +	if (reg == RV_REG_RA)
+> +		emit(rv_addi(RV_REG_A0, RV_REG_A5, 0), ctx);
+>  	emit(rv_jalr(RV_REG_ZERO, reg, 0), ctx);
+>  }
+>
+> @@ -1426,6 +1432,10 @@ static void build_prologue(struct rv_jit_context *ctx)
+>  {
+>  	int stack_adjust = 0, store_offset, bpf_stack_adjust;
+>
+> +	bpf_stack_adjust = round_up(ctx->prog->aux->stack_depth, 16);
+> +	if (bpf_stack_adjust)
+> +		mark_fp(ctx);
+> +
+>  	if (seen_reg(RV_REG_RA, ctx))
+>  		stack_adjust += 8;
+>  	stack_adjust += 8; /* RV_REG_FP */
+> @@ -1443,7 +1453,6 @@ static void build_prologue(struct rv_jit_context *ctx)
+>  		stack_adjust += 8;
+>
+>  	stack_adjust = round_up(stack_adjust, 16);
+> -	bpf_stack_adjust = round_up(ctx->prog->aux->stack_depth, 16);
+>  	stack_adjust += bpf_stack_adjust;
+>
+>  	store_offset = stack_adjust - 8;
 
-Thus make it optional, but keep it enabled by default.
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
-Signed-off-by: Enrico Weigelt, metux IT consult <info@metux.net>
----
- drivers/clk/Kconfig  | 7 +++++++
- drivers/clk/Makefile | 2 +-
- 2 files changed, 8 insertions(+), 1 deletion(-)
+and I'm assuming these are going in through a BPF tree, so also
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index 45653a0e6ecd..880f89c46f6f 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -23,6 +23,13 @@ config COMMON_CLK
- menu "Common Clock Framework"
- 	depends on COMMON_CLK
- 
-+config COMMON_CLK_GPIO
-+	tristate "GPIO gated clock support"
-+	default y
-+	---help---
-+	  Supports gpio gated clocks, which can be enabled/disabled via
-+	  gpio output.
-+
- config COMMON_CLK_WM831X
- 	tristate "Clock driver for WM831x/2x PMICs"
- 	depends on MFD_WM831X
-diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-index 0696a0c1ab58..2b614126672a 100644
---- a/drivers/clk/Makefile
-+++ b/drivers/clk/Makefile
-@@ -11,7 +11,7 @@ obj-$(CONFIG_COMMON_CLK)	+= clk-multiplier.o
- obj-$(CONFIG_COMMON_CLK)	+= clk-mux.o
- obj-$(CONFIG_COMMON_CLK)	+= clk-composite.o
- obj-$(CONFIG_COMMON_CLK)	+= clk-fractional-divider.o
--obj-$(CONFIG_COMMON_CLK)	+= clk-gpio.o
-+obj-$(CONFIG_COMMON_CLK_GPIO)	+= clk-gpio.o
- ifeq ($(CONFIG_OF), y)
- obj-$(CONFIG_COMMON_CLK)	+= clk-conf.o
- endif
--- 
-2.11.0
+Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
+but LMK if you want it through the RISC-V tree.
 
