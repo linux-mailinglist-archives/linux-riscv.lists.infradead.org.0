@@ -2,81 +2,92 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29CBD125BAB
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Dec 2019 07:56:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D563C125DA6
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Dec 2019 10:28:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4frcXPE7kM7xRryyvIHRVLemANbFnBo0wH9ezz/ZFmY=; b=Qocdl1sJk/ta7BRdD49xNy90E
-	14773r9QWKGeea5tmJvt5j/iA4c5g5j+ioiqaaCe7Nca9ZjY38M7AqU/DS18r/14AIYlrhIQjN2cw
-	8zBuIQoef7gc6jsbK09z+EqvKwIQxnKsjYS8z4c0zHEq6NRRfLDsVEJl1Rn8K6HyxXzfymsltHVvh
-	TEnLlIkhqtwALnr2zZdtsR6ILWwC3G1ihAyoNGjYX2BXOYIZmq7V+1kl4Fu1158hh9IhUFICbpDoV
-	uMEJIdSuiIDoOIUlFKGpwYNcKBKoxsXTrz6ObtBT3QE1/shyg6IZVvW/qpftPLQ9VNJ8UnjOBFII8
-	tfg2YTMzA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4NG/PivYxkCtWiDfOFeqP0QaKag9pVxKakNKO49NZdU=; b=PMgNa2isFV0UCy
+	JWYFK4xKmNQOccaWiwqTQGHg7quOG21247heDoNnuqGFdU+hLnpM3IfHfYoLjZYCh1kwVZU2FUshu
+	iM1NfsdbLy1nNQtggyPcKlhzsklPP93rzSul6PY1p5mxw0IbOZSlSbNtWgUSzdgcjJACFHgNA7CMY
+	JmCZdwqZPBTqejvflRPTA/Vc69UQU3+pDP+s1QeJRQgf2mrXiJg1HnXHr3hx4H6xELTMI86X2tiFp
+	yN9hHDJZFfBe2oHy0LQcFo/QXKfemBMXP/7bPhhn/jF+qFE1i2HfVNrh1GPJlYV4XRuGthva4TOGu
+	8ojjvTHqOJ2u8yQAZk6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ihpj3-0005ZG-UL; Thu, 19 Dec 2019 06:55:57 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1ihs6m-0004ZQ-Az; Thu, 19 Dec 2019 09:28:36 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ihpj0-0005YX-A1
- for linux-riscv@lists.infradead.org; Thu, 19 Dec 2019 06:55:55 +0000
-Received: by mail-wr1-x444.google.com with SMTP id c14so4783944wrn.7
- for <linux-riscv@lists.infradead.org>; Wed, 18 Dec 2019 22:55:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ id 1ihs6i-0004Yn-PP
+ for linux-riscv@lists.infradead.org; Thu, 19 Dec 2019 09:28:34 +0000
+Received: by mail-ot1-x344.google.com with SMTP id p8so6421847oth.10
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Dec 2019 01:28:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4frcXPE7kM7xRryyvIHRVLemANbFnBo0wH9ezz/ZFmY=;
- b=zvB2lCZyj1NChC1MxfsZhHaATJiuMNQ5+778PFst5skVIxOK5XT7tAAeP0sP7A03/M
- rZd8YIwH21dApPsd0vdmqrsFNilohwMaOzNc6vjZZ89Vb1ka9nML0uU7JINmmwrNadbI
- rGlxPDvZQngLDhcCJOV9i5Hfft0lYn2avY9mb6nEW6PHVnioNGYemGDngL/zRemX78Tf
- foM/r3wu7pDNNArTEkOFUncGT6/7sbZuZvvQScHCSsYaApCpgN8/wE4e22+iYqM9o7BV
- 7ix2XBA+OHU9zthE8F9ArKkjJsu7ALDjGFayiPp8iFD+XG7L1GSaktxO0quGhuDUaJz9
- 8DJQ==
+ :cc:content-transfer-encoding;
+ bh=4NG/PivYxkCtWiDfOFeqP0QaKag9pVxKakNKO49NZdU=;
+ b=NGr0hpIuFGqTH5s7amSerqKFDh/YonkvcYyXH/q3HlE8g2B+rRINRCM+aEY2sTpCtY
+ QwATozuhn7NkVo/TnMznFjGXvY/VzQDqt1iHq6yzJUez6WmxcB2IBtUuYMWxNEgvtCma
+ M39Skgpq0KThdjQ13pTWkzVsDNCtpqyZYf6jiqE4C7PsxwLINHa0kxOvv9YGa+/21gSL
+ 1XmB/LRoo7cMB/prENRkBRASCmJE/z/3KVxpvmWjixtUBAymmlTXlzWTiV6s6vEgLKRK
+ bY4QBoJZp13sjRiQg3kAjiYHN8le3f113ZEM8+l+3rKJYvXL5TaJX1H3eBUktvQeWZ0h
+ RyAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4frcXPE7kM7xRryyvIHRVLemANbFnBo0wH9ezz/ZFmY=;
- b=qbWdzzOEXcAQPSs2CuVV11mJlnW9AA5s7Ojh1+OLxy3H/H1RZOj23YoGtO3AMawQiF
- Nlra3PACFD7KnztNZQa/hIsIjNC1kxbfnLGFaYCysMueGd45io8ibKwtHkUx5OsXWiFY
- zOtvDYC+OI6Ohmb5AigRX82yeg7ect2OhKzr2X08aKGuOPWtygPdwpVG9NUOzgQcNXyT
- mVDPX3viLsRBTqynR7EeJzNJgl1oq2m7NyX10ZmeJwkG0tfGdhzZn4HcrJf3V+4gkPt1
- o8oPB+FAD+8gKAoNDM6GiHZ/+6A7ufynAojAk7AxFQLKGNvDqp81Z35QqtQ8xd0li+sy
- /qMw==
-X-Gm-Message-State: APjAAAUU1gNsUkx1KPqOhVVoT8YkdWJRzJxEOme5XZ3NMP8BPhlha7Cd
- x5gyiA64n2Yhfa512xleEHq3Gjj3lkGp9oUBsKjobA==
-X-Google-Smtp-Source: APXvYqxTwfrl/KntorZw5YmG2v3v1ZZUz7rSdH9YRwTxTtcicDtegULMqsWzYh2MeZ1M2PwB6zTx9PBjb5oUVmXKDRE=
-X-Received: by 2002:adf:dfc2:: with SMTP id q2mr7253204wrn.251.1576738548456; 
- Wed, 18 Dec 2019 22:55:48 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=4NG/PivYxkCtWiDfOFeqP0QaKag9pVxKakNKO49NZdU=;
+ b=ZcrrIO5XK/3Epq82SSYMjbXatn6kmPAIY1xG0WdHTg/VDLslO65G7jtP161deUXdfL
+ +CSEYagqE0oJ+/ruklrqaqQWHDF0+jygLotMI9b/ADsc4ktuFYqEqqOliPn1F0MwxkWL
+ 0dxbYFwr7kvoyvZIumNg3DaMAf6hHeumynJrtJwZSWdVLD33cp7UwA1CD2DvAPq1hzPr
+ Hem/8KaTOhWLEbl9jSGmov9Hb4OK9eOQgMzcAoyDGcseH1ye4bOuMIpq8T70h/ambnRh
+ GgIrrUL5tJahP6/f8VIKMVM2QrDb6pqDOFNFV0CRxXQnGv4XeTgaH16Z1hPkoIJC2YAf
+ rGrw==
+X-Gm-Message-State: APjAAAV526kc2MH6q4Pg6qVgiyUFUvpL1jdfcTViQ/dy9ycjq7AvPu2V
+ HXwQvPM424GW6cbtZlz2We0eFfP7V/cxFjVyEr+e1A==
+X-Google-Smtp-Source: APXvYqxQeYkVBCOJ2lu6Zf3i4gHTNpgbTHBMZMkf0eV/mIYwH83FHnbi1u0qAnU6+23PmkuwLxdKornUp6YobuVq5AI=
+X-Received: by 2002:a9d:784b:: with SMTP id c11mr7516541otm.246.1576747711110; 
+ Thu, 19 Dec 2019 01:28:31 -0800 (PST)
 MIME-Version: 1.0
-References: <20191218213918.16676-1-atish.patra@wdc.com>
- <20191218213918.16676-4-atish.patra@wdc.com>
-In-Reply-To: <20191218213918.16676-4-atish.patra@wdc.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Thu, 19 Dec 2019 12:25:36 +0530
-Message-ID: <CAAhSdy2BAcaV1tcSFiJnwX5bggAD2FcLvUg-VrxtPP2KqU3cMw@mail.gmail.com>
-Subject: Re: [PATCH v6 3/5] RISC-V: Add SBI v0.2 extension definitions
-To: Atish Patra <atish.patra@wdc.com>
+References: <20181113195804.22825-1-me@packi.ch>
+ <20181113195804.22825-3-me@packi.ch>
+ <20181114003730.06f810517a270070734df4ce@kernel.org>
+ <a6abc4ce-4398-5ca6-992b-efb31e01c5ca@packi.ch>
+ <20181115004141.5ed772834fc6bdf3467f244e@kernel.org>
+ <CANXhq0qWwKRrz80Q3LSeQu-cH19otCF1my6dDGDxH0Q5j1RYYw@mail.gmail.com>
+ <9cdd84b5-6c81-9bfa-5d35-6645f542f71e@packi.ch>
+In-Reply-To: <9cdd84b5-6c81-9bfa-5d35-6645f542f71e@packi.ch>
+From: Zong Li <zong.li@sifive.com>
+Date: Thu, 19 Dec 2019 17:28:19 +0800
+Message-ID: <CANXhq0peZCWZsh37zZVzoi7spSzTfz7v4H5AytiAENKJdWK_tA@mail.gmail.com>
+Subject: Re: [RFC/RFT 2/2] RISC-V: kprobes/kretprobe support
+To: =?UTF-8?Q?Patrick_St=C3=A4hlin?= <me@packi.ch>, 
+ Masami Hiramatsu <mhiramat@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191218_225554_350263_A6CC5C4E 
-X-CRM114-Status: GOOD (  11.35  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191219_012832_853601_E144D6D4 
+X-CRM114-Status: GOOD (  15.64  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,75 +99,68 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Atish Patra <atishp@atishpatra.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Thomas Gleixner <tglx@linutronix.de>
+Cc: Greentime Hu <greentime.hu@sifive.com>, linux-riscv@lists.infradead.org,
+ Albert Ou <aou@eecs.berkeley.edu>, Anders Roxell <anders.roxell@linaro.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Dec 19, 2019 at 3:09 AM Atish Patra <atish.patra@wdc.com> wrote:
+On Wed, Dec 18, 2019 at 9:10 PM Patrick St=C3=A4hlin <me@packi.ch> wrote:
 >
-> Few v0.1 SBI calls are being replaced by new SBI calls that follows
-> v0.2 calling convention.
+> Hi all
 >
-> This patch just defines these new extensions.
+> On 18.12.19 10:14, Zong Li wrote:
+> > On Wed, Dec 18, 2019 at 5:09 PM Zong Li <zong.li@sifive.com> wrote:
+> >>
+> >> From: mhiramat@kernel.org (Masami Hiramatsu)
+> >>
+> >> On Wed, 14 Nov 2018 21:52:57 +0100
+> >> Patrick Staehlin <me@packi.ch> wrote:
+> >>
+> >>> Yeah, I think it's simpler.
+> >>>
+> >>> And I found that the kprobe_breakpoint_handler() was called without
+> >>> checking !user_mode(regs). In that case, you should add the check in
+> >>> front of kprobe_breakpoint_handler() call.
+> >>>
+> >>> Thank you,
+> >>
+> >> Hi all,
+> >>
+> >> Is there any update? I was wondering if this patch are keep going? If
+> >> not, I think I could pick it up to go head
 >
-> Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> ---
->  arch/riscv/include/asm/sbi.h | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
->
-> diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
-> index 1aeb4bb7baa8..9612133213ba 100644
-> --- a/arch/riscv/include/asm/sbi.h
-> +++ b/arch/riscv/include/asm/sbi.h
-> @@ -21,6 +21,9 @@ enum sbi_ext_id {
->         SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID = 0x7,
->         SBI_EXT_0_1_SHUTDOWN = 0x8,
->         SBI_EXT_BASE = 0x10,
-> +       SBI_EXT_TIME = 0x54494D45,
-> +       SBI_EXT_IPI = 0x735049,
-> +       SBI_EXT_RFENCE = 0x52464E43,
->  };
->
->  enum sbi_ext_base_fid {
-> @@ -33,6 +36,24 @@ enum sbi_ext_base_fid {
->         SBI_EXT_BASE_GET_MIMPID,
->  };
->
-> +enum sbi_ext_time_fid {
-> +       SBI_EXT_TIME_SET_TIMER = 0,
-> +};
-> +
-> +enum sbi_ext_ipi_fid {
-> +       SBI_EXT_IPI_SEND_IPI = 0,
-> +};
-> +
-> +enum sbi_ext_rfence_fid {
-> +       SBI_EXT_RFENCE_REMOTE_FENCE_I = 0,
-> +       SBI_EXT_RFENCE_REMOTE_SFENCE_VMA,
-> +       SBI_EXT_RFENCE_REMOTE_SFENCE_VMA_ASID,
-> +       SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA,
-> +       SBI_EXT_RFENCE_REMOTE_HFENCE_GVMA_VMID,
-> +       SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA,
-> +       SBI_EXT_RFENCE_REMOTE_HFENCE_VVMA_ASID,
-> +};
-> +
->  #define SBI_SPEC_VERSION_DEFAULT       0x1
->  #define SBI_SPEC_VERSION_MAJOR_SHIFT   24
->  #define SBI_SPEC_VERSION_MAJOR_MASK    0x7f
-> --
-> 2.24.0
->
+> I am still working on it, albeit slowly, holiday season coming up here
+> in Switzerland may accelerate that a bit. All the feedback I got from
+> Masami has been implemented.
 
-Looks good to me.
+As Masami's suggestion, I don't see stop_machine in your implementation [1]=
+,
+are there some concerns to use it on SMP?
 
-Reviewed-by: Anup Patel <anup@brainfault.org>
+> Additionally I added instruction simulation for everything except memory
+> accesses. I am currently working on getting compressed instructions
+> decoded properly into regular instructions but that is very tedious work.
+> I guess I am two or three full days of work away from getting a RFC/RFT
+> v2 series ready I guess that will happen in early January.
 
-Regards,
-Anup
+Thanks for the efforts.
+
+>
+> What I currently have is at [1], that is mostly untested as of now
+> (beware I will rebase/squash that branch regularly). What I could use
+> help with in the future (as in for v2), is somebody testing it on real
+> hardware, as I've never gotten any testing feedback on my original
+> patch-series (that would not have worked properly because of the lacking
+> cache-flush).
+
+I give some quick tests by using kprobe sanity test and simple LKM on
+Hifive Unleashed board,
+it seems to work normally. I could help to test your next version patch as =
+well.
+
+>
+> [1] https://github.com/packi/linux/tree/kprobes-riscv
+>
+> Patrick
 
