@@ -2,86 +2,111 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6255B129342
-	for <lists+linux-riscv@lfdr.de>; Mon, 23 Dec 2019 09:46:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8204F12935A
+	for <lists+linux-riscv@lfdr.de>; Mon, 23 Dec 2019 09:53:33 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ff1G2isf3ENPBF2E46NZvxlde1YZeJauMKR6NxdElmA=; b=sezRSsD9bXtRWN
-	dbcm1oA6c3B172KLa7RGyyKBPkFmTFq3uHgfNMr3FmrXm0QHy0AYC2BV0qQS3vExpw0H1ZBL+gjV2
-	QkSc+TppqMSe8k034DYZKES71OwN0+mEEUCdP6Rh11PR0/SykPJr+kfq1I4HKmd7VB0+m/A7WEmzn
-	16QggWspj8Y4x9QFDC/v++PhnRNVGxXV94C4aQqQgLPW/vAE07CXDVilt8v9VRzsRoUv+yPIsTtYY
-	MCJ0X2JUJOLcS4wq0MOwZteOD47ECFLBcrnQ/KcpfJRlx2ouhHgD6P0dtok8HP5wr+wmUyN7+R+HG
-	zQMQUrWdxdWCxPzwfxkg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=oQ/dDLtt0d1WvYIfZFppn7oKq+7G/ziJEWJHyyPzQig=; b=XS3fuksT+uQR1KMnWdbNxS0cw
+	Bm/tm1QdEbhVkKNz4GzE6VojbweMeiHcY27cqnydEwA47NAJmRwmqHFgI5Rw31wB7vm93iHvMha6t
+	MJGenqPKH64YDpAZikkD9DYpyP2t/GkGlZDjvjbJHZTL6+Pylhued5R6IlwkXiCF9TAGYvMhMFRea
+	npSbhUj0GRP5QfxI0oiU2A9syRztjgc0ElSpEJP5S9mQ1PTCvMcXkh/ehikF4MmkEex9YKNQ/IrB8
+	NtPEKjAEXaQra4OdABxJ+n/833CeHQe/THAjP/gWcUqJOBSB5Rj5odJvcHYgSzLrCZSRrPe0nkXuI
+	Y2qxPo/ng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijJMX-00017d-3H; Mon, 23 Dec 2019 08:46:49 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1ijJSy-0003z4-CS; Mon, 23 Dec 2019 08:53:28 +0000
+Received: from mail-mw2nam10on2075.outbound.protection.outlook.com
+ ([40.107.94.75] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijJMT-00015Z-MA
- for linux-riscv@lists.infradead.org; Mon, 23 Dec 2019 08:46:47 +0000
-Received: by mail-pg1-x543.google.com with SMTP id k3so8473627pgc.3
- for <linux-riscv@lists.infradead.org>; Mon, 23 Dec 2019 00:46:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ff1G2isf3ENPBF2E46NZvxlde1YZeJauMKR6NxdElmA=;
- b=VibfO/Jbrl3zvORkS4IIjAcQRdVJEcsvyxUWPE9Wg6Or5bYbgt7kUvv+ERe/v0D8cK
- nCyXtShCcbVas+YSSIG5WREjXocauJsfW+gSN13hCSEapPMvBaBOR+t4HqmrCc9vfdC2
- +vYZYvr+AlU9nrV1dedvsFlSoq9mZVxwrjJBabYQJ5jgKmm4NDHgmSMdwtlryMvQxt4l
- Q/yDrCJD8wGcvm9NBzft+H9djtvGTP1NWtTad6QuTqpnWDjD/7ybs/fICaVaMYMigIwl
- 24k3LbSz6g3jro7qyeXwKR6slev/8IhOb3nob8jRDncsu+jIJTCvS4hRIko3APXbncEJ
- Mf8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ff1G2isf3ENPBF2E46NZvxlde1YZeJauMKR6NxdElmA=;
- b=cvsdSQI2DLayhEIMn03RMTPBvqKKIL1KyKFMHJqPU2JS2DGhzKlZeZT4RGbyvJ1XUk
- qR3rmM5KxclFFx5MrdEhWFSfnf8vVjO0TQePnCOhCQvAEnMjsgOzbcZPMLq9kCH23MuC
- /lUSLImJ6kD8nhkMFTv8DwfVySXydYBqqoDeFrczaBFhCfzdRlImolR4PkIMXkHOOhay
- DMPhXxRqCpBMUqHTMG6Pq19BFI7UDqhUfXAOM6LGeN8Z10WoQvgDLp9cf0nmHZBCHrGP
- FuRQAy9HX3bg0pS7KFF9MfjBadgkePAbZ6s2Rl9w+wepZir5Qim2877f+ey36c0g0SUz
- ZhRw==
-X-Gm-Message-State: APjAAAWkAKhpo5wmpcyV0FGAsiiyFWzoCKJJQPO4asYmhiRIDi3GXr1S
- B+BZk+QuGgqufaIqmNLV53EHAw==
-X-Google-Smtp-Source: APXvYqziyy9+w5umsVZLAP3PlpDcZfc5datLpMELsbD8i83kTAgMKYnXrd9Dl1fqOgSr7xzPGzo+Cw==
-X-Received: by 2002:a63:62c2:: with SMTP id
- w185mr24538363pgb.271.1577090804127; 
- Mon, 23 Dec 2019 00:46:44 -0800 (PST)
-Received: from hsinchu02.internal.sifive.com
- (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id m71sm22000516pje.0.2019.12.23.00.46.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Dec 2019 00:46:43 -0800 (PST)
-From: Zong Li <zong.li@sifive.com>
-To: paul.walmsley@sifive.com, palmer@dabbelt.com, rostedt@goodmis.org,
- anup@brainfault.org, linux-kernel@vger.kernel.org,
- linux-riscv@lists.infradead.org
-Subject: [PATCH 2/2] clocksource/drivers/riscv: add notrace to
- riscv_sched_clock
-Date: Mon, 23 Dec 2019 16:46:14 +0800
-Message-Id: <20191223084614.67126-3-zong.li@sifive.com>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20191223084614.67126-1-zong.li@sifive.com>
-References: <20191223084614.67126-1-zong.li@sifive.com>
+ id 1ijJSu-0003yL-IL
+ for linux-riscv@lists.infradead.org; Mon, 23 Dec 2019 08:53:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=St/rLMCjmcXMhLj0ZNGomJBnr02l1T9tPJ1SpSsO5MZhX4Ez+H76d+TgVRurbt3jw1w6OsDD8OkfLW72rXHeik0EY+RH21dC9iDM5AkaAwXQkUNoaZnNkbC8PimVGQxMim48uXpjmFUw0YRdPAAQ1V0Dyl7fhWJFf9rJgxwZixnW81uQZwtbQpp4u2DgtaWExMYSGHbEt9+wBLNisXWXAuSlSffmURgaEaqCJLiyD3vGtwIDRZ6WlNLzMM5M81TbSjjUR8GvpPBfFlKgZR1xrlk2jw5ls4Jpt4Po/12kQD2zsFV2vRlpGt9utGxuwZgSgQI0u6EgfLgRlzTA/dyWBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oQ/dDLtt0d1WvYIfZFppn7oKq+7G/ziJEWJHyyPzQig=;
+ b=MxrO+zQ6n20o8pBKt2sGzPqBsPUsmpbA15L+d3ieIeChGUhHAOPIeHg1+jht6tnUv9PEdqHElyl06eLCaSHWAp1Ea6q7Gy1+VgHn3dDneGyWhqTJVs0WV35FdYOhlmiEHwwSTL8dVgBP4wOrNleW8uQ3WVJRRXsYu4/NtiImRKDQ7dkWaDpbqWx7Of2E5T9LirZUvxhe3ncwTnyyhZ5zliS/Z364hC9qQehccHvo47S1FSJrz51kkOLZjuOyhJRNeURs7BUDIyNMFTzxB/dRbje52MfdFoUKkVyGHuETuShIZyVVPmBdT1ZlNzobJR1akaxqurPliy7M3yIdeXO5iQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
+ dkim=pass header.d=sifive.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oQ/dDLtt0d1WvYIfZFppn7oKq+7G/ziJEWJHyyPzQig=;
+ b=pS8B7ty9KDtsH80K1xhIiyaKX/nhxOus7ADtwdO2YFn7RfGroIuXw7ycG/WpP0YRkEBuUqF41LFQIFxFwU2FlhCMR7EgH7yg6QhAlR+dvNmm6/c1bBvZFhPkJUaLEL/2/3+WYTz9IqaUio1e8UEmQhEuY/OCxhDDvyP33VAdQ10=
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
+ CH2PR13MB3605.namprd13.prod.outlook.com (52.132.246.89) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2581.6; Mon, 23 Dec 2019 08:53:20 +0000
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::eccb:16ac:e897:85d5]) by CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::eccb:16ac:e897:85d5%3]) with mapi id 15.20.2581.007; Mon, 23 Dec 2019
+ 08:53:20 +0000
+From: Yash Shah <yash.shah@sifive.com>
+To: Palmer Dabbelt <palmerdabbelt@google.com>
+Subject: RE: [PATCH 2/2] riscv: cacheinfo: Add support to determine no. of L2
+ cache way enabled
+Thread-Topic: [PATCH 2/2] riscv: cacheinfo: Add support to determine no. of L2
+ cache way enabled
+Thread-Index: AQHVroNnDfRRIpnH4Ei8kimblaIK3qe46uMAgA6T+RA=
+Date: Mon, 23 Dec 2019 08:53:20 +0000
+Message-ID: <CH2PR13MB3368B844DB765AE9166C1F1A8C2E0@CH2PR13MB3368.namprd13.prod.outlook.com>
+References: <1575890706-36162-3-git-send-email-yash.shah@sifive.com>
+ <1575890706-36162-1-git-send-email-yash.shah@sifive.com>
+ <mhng-a1ba4b8a-4c6a-43e9-a87a-f8bbbe3555d8@palmerdabbelt-glaptop>
+In-Reply-To: <mhng-a1ba4b8a-4c6a-43e9-a87a-f8bbbe3555d8@palmerdabbelt-glaptop>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=yash.shah@sifive.com; 
+x-originating-ip: [114.143.65.226]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 68da9839-2fbb-4bfa-fcde-08d787858f80
+x-ms-traffictypediagnostic: CH2PR13MB3605:
+x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CH2PR13MB36057327B6A3BFF1EF40FE028C2E0@CH2PR13MB3605.namprd13.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4714;
+x-forefront-prvs: 0260457E99
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(346002)(136003)(376002)(39840400004)(366004)(189003)(199004)(13464003)(33656002)(8676002)(7696005)(76116006)(9686003)(6916009)(478600001)(6506007)(81166006)(53546011)(81156014)(8936002)(71200400001)(5660300002)(26005)(66946007)(86362001)(66446008)(54906003)(66476007)(66556008)(64756008)(4326008)(2906002)(316002)(44832011)(7416002)(52536014)(186003)(55016002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3605;
+ H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: sifive.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: X3jpY3J5oaLiIeYht4LaVfv4CgVaxh5aAVkbTKK6TQnlEdSm6OuSH+pj/H7tGx8L+tiwtBd1RZuFR1ULgplPUwIRmvofAZU7FQpm3HBorkzrdq9eOqrhJGD7FP995i/NsQegR2JC/t1KX9Loabf5OOXhLnOjI8gXaeUHa/RoZPlIhIxTfJzjVxccWrmf4R+NjTsWX655sR/DhY5oPc1d5q3illOOAmT8RMwXmf6F1xKn9jWFiM0izfY65rNgKn/29nxGSJNtV/Qh2+VKHkdK39ODC+aH2ZZg/cLnyAjLWykN1hG1wODRv7x3QXKg6WAbSyMwJj7c4rlIuSgIMp+ozggdNbrCsdnW63arsggdkjoNmVlUET91J0Nhwv3RiUp9HmbbOL4y0dPiFGj0UCpeeynhNUYk374zNYhBl66K2XghBzOKJ9OepQ5+GjgUilSKL1uSfXaYZC99SsaE/OubKrKtpXa2hVBfYafJvgOh5XlaP58m+zZu+JfbQvOxEeKv
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-OriginatorOrg: sifive.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 68da9839-2fbb-4bfa-fcde-08d787858f80
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Dec 2019 08:53:20.2850 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +7wXTjDqoEN7hHJb+aF6xf5xfy6pK6sLRGW4e4A6bUpzdsb6/E04B+RdBd9Zx4oIRaNB5Rygq/uHNyNrhUgamQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3605
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191223_004645_726103_8F669BCB 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20191223_005324_706561_00500B7D 
+X-CRM114-Status: GOOD (  12.56  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ no trust [40.107.94.75 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -101,54 +126,56 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Zong Li <zong.li@sifive.com>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ Atish Patra <Atish.Patra@wdc.com>, Greg KH <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "Paul Walmsley \( Sifive\)" <paul.walmsley@sifive.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "bmeng.cn@gmail.com" <bmeng.cn@gmail.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "allison@lohutok.net" <allison@lohutok.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-When enabling ftrace graph tracer, it gets the tracing clock in
-ftrace_push_return_trace. Eventually, it invokes the riscv_sched_clock to
-get the clock. If add mcount instrument in riscv_sched_clock, it will
-call ftrace_push_return_trace and cause infinite loop.
-
-The result of failure as follow:
-
-command: echo function_graph >current_tracer
-[   46.176787] Unable to handle kernel paging request at virtual address ffffffe04fb38c48
-[   46.177309] Oops [#1]
-[   46.177478] Modules linked in:
-[   46.177770] CPU: 0 PID: 256 Comm: $d Not tainted 5.5.0-rc1 #47
-[   46.177981] epc: ffffffe00035e59a ra : ffffffe00035e57e sp : ffffffe03a7569b0
-[   46.178216]  gp : ffffffe000d29b90 tp : ffffffe03a756180 t0 : ffffffe03a756968
-[   46.178430]  t1 : ffffffe00087f408 t2 : ffffffe03a7569a0 s0 : ffffffe03a7569f0
-[   46.178643]  s1 : ffffffe00087f408 a0 : 0000000ac054cda4 a1 : 000000000087f411
-[   46.178856]  a2 : 0000000ac054cda4 a3 : 0000000000373ca0 a4 : ffffffe04fb38c48
-[   46.179099]  a5 : 00000000153e22a8 a6 : 00000000005522ff a7 : 0000000000000005
-[   46.179338]  s2 : ffffffe03a756a90 s3 : ffffffe00032811c s4 : ffffffe03a756a58
-[   46.179570]  s5 : ffffffe000d29fe0 s6 : 0000000000000001 s7 : 0000000000000003
-[   46.179809]  s8 : 0000000000000003 s9 : 0000000000000002 s10: 0000000000000004
-[   46.180053]  s11: 0000000000000000 t3 : 0000003fc815749c t4 : 00000000000efc90
-[   46.180293]  t5 : ffffffe000d29658 t6 : 0000000000040000
-[   46.180482] status: 0000000000000100 badaddr: ffffffe04fb38c48 cause: 000000000000000f
-
-Signed-off-by: Zong Li <zong.li@sifive.com>
----
- drivers/clocksource/timer-riscv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/clocksource/timer-riscv.c b/drivers/clocksource/timer-riscv.c
-index 4e54856ce2a5..c4f15c4068c0 100644
---- a/drivers/clocksource/timer-riscv.c
-+++ b/drivers/clocksource/timer-riscv.c
-@@ -56,7 +56,7 @@ static unsigned long long riscv_clocksource_rdtime(struct clocksource *cs)
- 	return get_cycles64();
- }
- 
--static u64 riscv_sched_clock(void)
-+static u64 notrace riscv_sched_clock(void)
- {
- 	return get_cycles64();
- }
--- 
-2.24.1
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBQYWxtZXIgRGFiYmVsdCA8cGFs
+bWVyZGFiYmVsdEBnb29nbGUuY29tPg0KPiBTZW50OiAxNCBEZWNlbWJlciAyMDE5IDA3OjQzDQo+
+IFRvOiBZYXNoIFNoYWggPHlhc2guc2hhaEBzaWZpdmUuY29tPg0KPiBDYzogcm9iaCtkdEBrZXJu
+ZWwub3JnOyBtYXJrLnJ1dGxhbmRAYXJtLmNvbTsgUGF1bCBXYWxtc2xleSAoIFNpZml2ZSkNCj4g
+PHBhdWwud2FsbXNsZXlAc2lmaXZlLmNvbT47IGFvdUBlZWNzLmJlcmtlbGV5LmVkdTsNCj4gYm1l
+bmcuY25AZ21haWwuY29tOyBhbGxpc29uQGxvaHV0b2submV0OyBhbGV4aW9zLnphdnJhc0BpbnRl
+bC5jb207IEF0aXNoDQo+IFBhdHJhIDxBdGlzaC5QYXRyYUB3ZGMuY29tPjsgdGdseEBsaW51dHJv
+bml4LmRlOyBHcmVnIEtIDQo+IDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz47IGRldmljZXRy
+ZWVAdmdlci5rZXJuZWwub3JnOyBsaW51eC0NCj4gcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZzsg
+bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsgWWFzaCBTaGFoDQo+IDx5YXNoLnNoYWhAc2lm
+aXZlLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCAyLzJdIHJpc2N2OiBjYWNoZWluZm86IEFk
+ZCBzdXBwb3J0IHRvIGRldGVybWluZSBuby4gb2YgTDINCj4gY2FjaGUgd2F5IGVuYWJsZWQNCj4g
+DQo+IE9uIE1vbiwgMDkgRGVjIDIwMTkgMDM6MjU6MDYgUFNUICgtMDgwMCksIHlhc2guc2hhaEBz
+aWZpdmUuY29tIHdyb3RlOg0KPiA+IEluIG9yZGVyIHRvIGRldGVybWluZSB0aGUgbnVtYmVyIG9m
+IEwyIGNhY2hlIHdheXMgZW5hYmxlZCBhdCBydW50aW1lLA0KPiA+IGltcGxlbWVudCBhIHByaXZh
+dGUgYXR0cmlidXRlIHVzaW5nIGNhY2hlX2dldF9wcml2X2dyb3VwKCkgaW4NCj4gPiBjYWNoZWlu
+Zm8gZnJhbWV3b3JrLiBSZWFkaW5nIHRoaXMgYXR0cmlidXRlDQo+ICgibnVtYmVyX29mX3dheXNf
+ZW5hYmxlZCIpDQo+ID4gd2lsbCByZXR1cm4gdGhlIG51bWJlciBvZiBlbmFibGVkIEwyIGNhY2hl
+IHdheXMgYXQgcnVudGltZS4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFlhc2ggU2hhaCA8eWFz
+aC5zaGFoQHNpZml2ZS5jb20+DQo+ID4gLS0tDQo+ID4gIGFyY2gvcmlzY3YvaW5jbHVkZS9hc20v
+c2lmaXZlX2wyX2NhY2hlLmggfCAgMiArKw0KPiA+ICBhcmNoL3Jpc2N2L2tlcm5lbC9jYWNoZWlu
+Zm8uYyAgICAgICAgICAgIHwgMzENCj4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKw0K
+PiA+ICBkcml2ZXJzL3NvYy9zaWZpdmUvc2lmaXZlX2wyX2NhY2hlLmMgICAgIHwgIDUgKysrKysN
+Cj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAzOCBpbnNlcnRpb25zKCspDQo+ID4NCj4gPiBkaWZmIC0t
+Z2l0IGEvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9zaWZpdmVfbDJfY2FjaGUuaA0KPiA+IGIvYXJj
+aC9yaXNjdi9pbmNsdWRlL2FzbS9zaWZpdmVfbDJfY2FjaGUuaA0KPiA+IGluZGV4IDA0ZjY3NDgu
+LjIxN2E0MmYgMTAwNjQ0DQo+ID4gLS0tIGEvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9zaWZpdmVf
+bDJfY2FjaGUuaA0KPiA+ICsrKyBiL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vc2lmaXZlX2wyX2Nh
+Y2hlLmgNCj4gPiBAQCAtMTAsNiArMTAsOCBAQA0KPiA+ICBleHRlcm4gaW50IHJlZ2lzdGVyX3Np
+Zml2ZV9sMl9lcnJvcl9ub3RpZmllcihzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sNCj4gPiAqbmIpOyAg
+ZXh0ZXJuIGludCB1bnJlZ2lzdGVyX3NpZml2ZV9sMl9lcnJvcl9ub3RpZmllcihzdHJ1Y3QNCj4g
+PiBub3RpZmllcl9ibG9jayAqbmIpOw0KPiA+DQo+ID4gK2ludCBzaWZpdmVfbDJfbGFyZ2VzdF93
+YXllbmFibGVkKHZvaWQpOw0KPiANCj4gSSB0aG91Z2h0IHRoZSBwbGFuIHdhcyB0byBnZXQgdGhp
+cyBzdHVmZiBvdXQgb2YgYXJjaC9yaXNjdj8gIEl0IGxvb2tzIGxpa2UgaXQgb25seQ0KPiBnb3Qg
+aGFsZi13YXkgZG9uZS4NCg0KQXJlIHlvdSBzdWdnZXN0aW5nIHRvIG1vdmUgdGhpcyBoZWFkZXIg
+ZmlsZSBvdXQgb2YgIi9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtLyIgdG8gbWF5YmUgImluY2x1ZGUv
+c29jL3NpZml2ZS8iPw0KDQotIFlhc2gNCg0K
 
