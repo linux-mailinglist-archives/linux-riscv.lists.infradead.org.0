@@ -2,58 +2,58 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3497212C1EB
-	for <lists+linux-riscv@lfdr.de>; Sun, 29 Dec 2019 09:20:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2928712C1EF
+	for <lists+linux-riscv@lfdr.de>; Sun, 29 Dec 2019 09:20:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
 	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rdRv1Yc/GVM5QzXo8OZ+uM0MpgAUogq7/gSzD+uMyQk=; b=AW6+Rc2Ic/bCax
-	ew6mZAlNRcwYNrQcuq/Dgxuw1t2n8vPJwDlxr4h5+yj4Yyxsoba0oQoAc3DB9XkmMo0hHsqLn18nM
-	VTzne246spIeW3th5H+ITm9sW4RRLxA1f5GlUc0wgyAp3I3cXew1ZrTxGcJtFzvlvGJ5BTxnlhqI8
-	B2VI4+j+oSz/cAS6tNbuSmFLwLDN/rJrIaDRV57MhMRElAREMxAiDcEOfpDH0KTxlZcVJVivWw7k1
-	Ujim5fvThjnycn0SLfw/wVWjquuc/ni49NfoWQhDqO7zCKIrgOachftyWcYGtOdYh0MK/r7TJS3cd
-	+L8NERVREEaZhCHAloxQ==;
+	List-Owner; bh=Pe7z29fRNe5SM3JyqTcr+ajpELEpJ4s61Kvtp+b3jfk=; b=JsGesCPffxkOS6
+	BPAoCNj5VDm+JnbeNZngIOm+Kj/GQgNC0PZoWvQj+cVJcjscL0hmYscBRZG8ZtFP8cPBx6fybRmoQ
+	nhdDaP95u/vlA7OnqNUrNQdt3QkiWemg8tLmeN197a3t3sU8TYiE7W6KnytgM1KYtnJpqBLeWikef
+	2mUBlKjo85iTxSBifvcFscu3K4TccHJ1T/uF1Dz2J1alfkak95A7P5kOzv3ygTHIbq8zc1v5h/OKq
+	J4hfHzKa3rmJWrLbBxM5+5sjPPwN9mO4jH5GMNiTncNZDw+yiZ2O4MqSr0jXrV2Ywa1G+QLpaQ7tU
+	Gwe7km2qiMbSHOEQg6+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilTo9-0000Al-En; Sun, 29 Dec 2019 08:20:17 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1ilToF-0000HP-Lu; Sun, 29 Dec 2019 08:20:23 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilTaw-00016F-Mn; Sun, 29 Dec 2019 08:06:40 +0000
-Received: by mail-pl1-x641.google.com with SMTP id s21so10760866plr.7;
- Sun, 29 Dec 2019 00:06:37 -0800 (PST)
+ id 1ilTaz-00017Q-1Q; Sun, 29 Dec 2019 08:06:43 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id a6so6625726pjh.2;
+ Sun, 29 Dec 2019 00:06:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=rdRv1Yc/GVM5QzXo8OZ+uM0MpgAUogq7/gSzD+uMyQk=;
- b=HyKxQ0X7zePFu/EcLQaScGOsVn6QhVTIYa4axjdO7X2n5g+utafq5uS0/MX8+zYjyG
- MoCJzgsGFNytjxvdiFfwyGGGsb2E/To4CYtFuSoG3EPTZNBhCfiGjBL9salgrEyixgaj
- /PgunUkKZTnBvZwzfFvxxVWPa/K0wT7EbrgxNve15SrZxcdO3T9Aa2zPVwn4qMT/aAtV
- qLdN6G72mIPGnCdV6XPylj4ozi5WcynmgNofyKjBpNYP90golg4KEfUfWgW6y86OixmO
- 4oon+57lcAqqj3yrOwGYtUpZbyYQb2EP6wXBdME6i8UO7Hthb2MzW74A9o3yGH04lSnb
- OP8Q==
+ bh=Pe7z29fRNe5SM3JyqTcr+ajpELEpJ4s61Kvtp+b3jfk=;
+ b=E6kKDc1ccDfUno5iuV2/36t1tRGyzcoCrbrGkA48JnmLme4WYttoT2natZ0DS1wKBy
+ jQlL7uYK0gxMbTMdSW/ouKjGvg6uGzW4AACMSO73e89dnkNh/b+8vCGyVE6wHArrA4qg
+ rZJ9hH3uoB9wDdCAPwZl3jfrY021ZsUga0LMCTHRNs2mMJ6/g/QHoWb9fxu0jB7+xZTd
+ Z/kGz/BRPgLl6OIG9cjDx3g30glFXrSoW1KmlRnOJSWs7dfGvv3J1lgYNQWKvPJMKP5w
+ 0LVM9WywgdkNgbxEYjhxa05BF3g9PfZ5tsAKHZrLXeRxyEx3GOnbmeNcKzu61Se8a+ib
+ KWlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=rdRv1Yc/GVM5QzXo8OZ+uM0MpgAUogq7/gSzD+uMyQk=;
- b=XUUkW2eJh/cnxaChN8CUckfVGLGFF6N43A0eOCorahl/XxCYm+5uY9NooDLtpmJTZd
- zsToaUrpE1Xs9+ySLTEcqf2y+XCBCABDlnvHId/IhKcAXcsU9B5v/REUXk+9xW6X57dR
- 1A9VH6fqNfolumPTkbnvBnuYn7NT0ZsT/WrpeSUSGMPQmd1WsUh2Jfx4hFaPOIItCMPG
- t01mZ26sm70Uu35jmfS0VqWMmaZHVNd9OLqSOzo7dl8P1Xq8MB9y/S9DPg4UTI8pjxEh
- LPkNmLJ3Q1rhzLcnaOt+ASMsvHHhcp2Mr/jUeTc/PA9gGfzMWRunavL1TsKNzVPvLg4j
- 7o+w==
-X-Gm-Message-State: APjAAAXkC7dx1Og66rRVrcO6VuE/xxA8ovtDCWjf2oa2mt5bvZIO0T/Q
- 6lRWsHaYYzG2w/5d7bI+RbA=
-X-Google-Smtp-Source: APXvYqwJs62lt2yTRubCpXdDcYU2gAlWxVb3iezJaG6Z7PV6NuNVu5odFRAOXqN85oLpEmH60FRe6A==
-X-Received: by 2002:a17:902:744b:: with SMTP id
- e11mr8626986plt.247.1577606796882; 
- Sun, 29 Dec 2019 00:06:36 -0800 (PST)
+ bh=Pe7z29fRNe5SM3JyqTcr+ajpELEpJ4s61Kvtp+b3jfk=;
+ b=TtYC/hCzFhjWUV/JUNcmvl5cVJgOVDpZt9XHrVJb67OjEWGGnu2eJVL2/qvjsxBWwH
+ 8f8g/WLkbomp2ZYwoi4BXe/FVhHpeUyQQtG6pyJo1rsGDtfPXwtp5yGVn8+mQ38iB2Qd
+ 6laLTJCxaSfUIgfmPD1cDSfVOI18k75DObQgyPeWjEQ+76z7QBXwsVnUI3iGSHfy31LF
+ pVnYHDX7rdUM8+NkvYMtcz7rLuEFgEiLw8HZU/cVcVWTMa/YYJ38ODevBBjTXus4Ljjh
+ McRxM2tRKwX5wquyucUHISdDe/g6JoLeaVWeUVAbxr2IgRA6I/tZE2ZoTW20Dog+mOgb
+ uytg==
+X-Gm-Message-State: APjAAAUYaAH4sgsZJiN4d6DV1CdNkfamZaorj0YjUJQL1YCMXiQuN7MO
+ P1P9BWSb1MkWlEQZNu3lGhQ=
+X-Google-Smtp-Source: APXvYqxIMYpEGxMzLdsKYBj8rpDkpOr4YQd01fkuyPBNDQ089lxGYTs+RS+KP+qyyW8xims4wb9VOQ==
+X-Received: by 2002:a17:90a:5d95:: with SMTP id
+ t21mr38920834pji.31.1577606798522; 
+ Sun, 29 Dec 2019 00:06:38 -0800 (PST)
 Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id h6sm42817258pgq.61.2019.12.29.00.06.36
+ by smtp.gmail.com with ESMTPSA id q7sm20290229pjd.3.2019.12.29.00.06.37
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 29 Dec 2019 00:06:36 -0800 (PST)
+ Sun, 29 Dec 2019 00:06:37 -0800 (PST)
 From: Yangtao Li <tiny.windzz@gmail.com>
 To: claudiu.beznea@microchip.com, thierry.reding@gmail.com,
  u.kleine-koenig@pengutronix.de, nicolas.ferre@microchip.com,
@@ -71,23 +71,21 @@ To: claudiu.beznea@microchip.com, thierry.reding@gmail.com,
  linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH 19/32] pwm: puv3: convert to devm_platform_ioremap_resource
-Date: Sun, 29 Dec 2019 08:05:57 +0000
-Message-Id: <20191229080610.7597-19-tiny.windzz@gmail.com>
+Subject: [PATCH 20/32] pwm: imx: convert to devm_platform_ioremap_resource
+Date: Sun, 29 Dec 2019 08:05:58 +0000
+Message-Id: <20191229080610.7597-20-tiny.windzz@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191229080610.7597-1-tiny.windzz@gmail.com>
 References: <20191229080610.7597-1-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191229_000638_869406_16B63458 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20191229_000641_235394_A72D9530 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (tiny.windzz[at]gmail.com)
@@ -118,30 +116,30 @@ Use devm_platform_ioremap_resource() to simplify code.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/pwm/pwm-puv3.c | 4 +---
+ drivers/pwm/pwm-imx1.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/pwm/pwm-puv3.c b/drivers/pwm/pwm-puv3.c
-index 9d0bd87a425e..2367dad7cf95 100644
---- a/drivers/pwm/pwm-puv3.c
-+++ b/drivers/pwm/pwm-puv3.c
-@@ -100,7 +100,6 @@ static const struct pwm_ops puv3_pwm_ops = {
- static int pwm_probe(struct platform_device *pdev)
+diff --git a/drivers/pwm/pwm-imx1.c b/drivers/pwm/pwm-imx1.c
+index f8b2c2e001a7..1a60bfd7d659 100644
+--- a/drivers/pwm/pwm-imx1.c
++++ b/drivers/pwm/pwm-imx1.c
+@@ -136,7 +136,6 @@ MODULE_DEVICE_TABLE(of, pwm_imx1_dt_ids);
+ static int pwm_imx1_probe(struct platform_device *pdev)
  {
- 	struct puv3_pwm_chip *puv3;
+ 	struct pwm_imx1_chip *imx;
 -	struct resource *r;
- 	int ret;
  
- 	puv3 = devm_kzalloc(&pdev->dev, sizeof(*puv3), GFP_KERNEL);
-@@ -111,8 +110,7 @@ static int pwm_probe(struct platform_device *pdev)
- 	if (IS_ERR(puv3->clk))
- 		return PTR_ERR(puv3->clk);
+ 	imx = devm_kzalloc(&pdev->dev, sizeof(*imx), GFP_KERNEL);
+ 	if (!imx)
+@@ -168,8 +167,7 @@ static int pwm_imx1_probe(struct platform_device *pdev)
+ 	imx->chip.base = -1;
+ 	imx->chip.npwm = 1;
  
 -	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	puv3->base = devm_ioremap_resource(&pdev->dev, r);
-+	puv3->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(puv3->base))
- 		return PTR_ERR(puv3->base);
+-	imx->mmio_base = devm_ioremap_resource(&pdev->dev, r);
++	imx->mmio_base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(imx->mmio_base))
+ 		return PTR_ERR(imx->mmio_base);
  
 -- 
 2.17.1
