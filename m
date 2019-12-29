@@ -2,84 +2,70 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6601112C205
-	for <lists+linux-riscv@lfdr.de>; Sun, 29 Dec 2019 09:21:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63CF212C3A6
+	for <lists+linux-riscv@lfdr.de>; Sun, 29 Dec 2019 18:22:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=47el5Owup02YUbMebGEaPI3XvpkPXD+FFtHlPrEyxFA=; b=cTSvFkkqXJRgAA
-	ErlnWHLrIGi9ZD6slBDlo1ld5XFrptNajZd44dR+O0nt9kI18fRq98hfiS8fp3cdK6ig9PWfWAvPa
-	YtdTMiOX6q6eAWEsoS2q+b5X+jJ5R0yliP1WLG3hndREEp4DjTIZxee4gdmE6/MKKHjpWpahS0s3h
-	9oaGsbBYYbwJ/TZQcyifBT6qROnCcSQGoi18W1Mgetxbr325UZIECvTPoRaniJ2EWs2WlYu1qsQlu
-	/pX8QF6NnxEsH+uRJEalSk+uSxp+6juRr0vNTi5BL47AUyQQPSAS3rxhmbtBigYurmnRCnb1uZa2C
-	jCRnlWkbMqlZEaGWjuJQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=d2ZCOXk6pOuLZ4uX0KmFIbD6q4XT8KzNcuufQdURRQw=; b=Tu1
+	rQcRQuXYXeXM/JkybdXrtTdosfRx1m+jHiLW7EBebR+XJK8sHrr5cv8TQ0G9wKBWj3vRCsEq/apzT
+	N9dCZymK1+g+pgsrhf9fz0k8s3jwcLcs9dQZDJaT4/nUfcAi5aXhxxcu/kL4vAVtrCSZSMYA2aiWg
+	tglznSsdhJU/0K+i/WsF2m34Ckp9GbGQeYdSvf4t4jqE1NGyeTY6ROHHb0ZKtKgGvAqqw6RceTw2N
+	IsWweeTGzbYN3/ZuczXOFVuubqsC37O9IppdtmDhwe8pqI6lx/BkGUd9C0bSLP7SOmTAkSFoJZI33
+	QRYuMRGfh+sYTTpMBQJzYLQDFhG/+WA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilTp4-0001PZ-Sg; Sun, 29 Dec 2019 08:21:14 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1ilcH1-0006s8-Mr; Sun, 29 Dec 2019 17:22:39 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilTbB-0001Ij-OH; Sun, 29 Dec 2019 08:06:55 +0000
-Received: by mail-pl1-x642.google.com with SMTP id g6so10550008plp.6;
- Sun, 29 Dec 2019 00:06:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=47el5Owup02YUbMebGEaPI3XvpkPXD+FFtHlPrEyxFA=;
- b=MIXP/grZx6mWbEPfFXoqRs3JDVjT04SNhSSWru67t/m2eIdF2cqFP0yxHw3B0ADWzA
- Mj3R/G2Hv0hE88wKCIVgrmJUyZU1RwbGy8FRZe4fVCKonv6vI4DRiJPdpxqydIsjM3Ll
- MCKmGePOPt3QMQPqZx5luh3T2jxYbH9ahKrCYeSs4sO6/eCjeQcZxqD6zWnTnfkm1VFm
- 4VeDCHj74to92KPKBIPeT1p5Tr6sWXUDo8dBqmrioiHBkpdcY169L96miePLUYBE4YgA
- TCVBtRbuC058Y/EY2qJFGEXH571X/xpG8vWrH0jA9cQoeT147Yy9P95L7fSgzdeip8Gu
- i2pA==
+ id 1ilcGx-0006r4-Ob
+ for linux-riscv@lists.infradead.org; Sun, 29 Dec 2019 17:22:37 +0000
+Received: by mail-pg1-x544.google.com with SMTP id x7so16941170pgl.11
+ for <linux-riscv@lists.infradead.org>; Sun, 29 Dec 2019 09:22:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=d2ZCOXk6pOuLZ4uX0KmFIbD6q4XT8KzNcuufQdURRQw=;
+ b=HyR8Bdo6jGIDQMwbuh/d960hidl00ggcit9R+GdoUC7sCFuZn4d0N/bqmU5Qb6yjL6
+ 9UiOvJH387CsLCBCQ2tTppi5Q4vhNbFgIAIXEo889sr+yw8lrOvRRAl4gIvuHTyXx4sP
+ s4Aas7Wk5ioEfpXR0txmfcigTT0OAh+vgPBiSe+cG5nBG9ckLiY/WhLdD33eVnOB3exk
+ 1krypmpTg2an+ag88yNu6ZBZU2r4QyJd9IvWOa8N3EnI6CyHDyDQ87Hze9G+JwFvzvkw
+ JrsGmNz9nIeKX8zpT28lMSe9/2cHcdq6Cra7Yg8LuEdMD3bLPJgZw5n0lVJO7UUhr/Cv
+ luCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=47el5Owup02YUbMebGEaPI3XvpkPXD+FFtHlPrEyxFA=;
- b=qI00ozP1u6vG0yMhOl8KHV1gZj4yKUX0Jfkjwr2sQ6gpSIhxYpUDga0E+zTaO1r4Mi
- M54ckxN0uQ+vXGTO+vkHuL0nLyMUeEwTdnoeOvsQjV1hlHWFXWHLSGWjpuOmERqp4lzj
- svxJdk3G0Ky8RN6bU1vpxSagPzddkG3RdyKyKKG20BHOfIAk/gJiOJcKrBxkZrBNodrF
- EGTyKH2MJbouLrd7l+B4Lo05qfX2P6HNrRStNjop3GspIM/7RkQJSSYvFmRO7TAYSY5L
- EeQ7rySzON6uCNZyckPu835AqplauWj2604p3S5GkkS6DKSWX1tcQTAjAyuwqI0ambw8
- y5HA==
-X-Gm-Message-State: APjAAAWZx06IMoMsROZ0dHuKdKDtTqQlZId50M4hi+OZFnLstbSDiDGa
- 5h7tRB6Ufiqnrv+hjNoECF8=
-X-Google-Smtp-Source: APXvYqx0/m9vcRiiE8VyrTjc7rP0/kHdHXJwPeS5Tef1XK44wL7jcNW0xwmNSTXH2Pe6rwcBvhW0LA==
-X-Received: by 2002:a17:90a:3763:: with SMTP id
- u90mr38493406pjb.107.1577606811634; 
- Sun, 29 Dec 2019 00:06:51 -0800 (PST)
-Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id a26sm37945389pfo.27.2019.12.29.00.06.50
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 29 Dec 2019 00:06:51 -0800 (PST)
-From: Yangtao Li <tiny.windzz@gmail.com>
-To: claudiu.beznea@microchip.com, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
- rjui@broadcom.com, sbranden@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, f.fainelli@gmail.com,
- nsaenzjulienne@suse.de, shc_work@mail.ru, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com, vz@mleia.com, slemieux.tyco@gmail.com,
- khilman@baylibre.com, matthias.bgg@gmail.com, heiko@sntech.de,
- palmer@dabbelt.com, paul.walmsley@sifive.com, mripard@kernel.org,
- wens@csie.org, jonathanh@nvidia.com, linux@prisktech.co.nz,
- linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- linux-tegra@vger.kernel.org
-Subject: [PATCH 32/32] pwm: atmel: convert to devm_platform_ioremap_resource
-Date: Sun, 29 Dec 2019 08:06:10 +0000
-Message-Id: <20191229080610.7597-32-tiny.windzz@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191229080610.7597-1-tiny.windzz@gmail.com>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=d2ZCOXk6pOuLZ4uX0KmFIbD6q4XT8KzNcuufQdURRQw=;
+ b=QjtZ2V1OdnNnAf3HwdacFAbEOumVXZKo+wVX+3aTP+ZtrfYa4MI45ou0LZe8jTW+x2
+ MRbSOIfUvrUH8OTOd/glbQYPK5HwsvmvkZnUp1Uxihl0LdSyUaqgkpQi2aPAMcsXqReb
+ 2bNPovZX5QbM/pWCWUD+A8UZh3ivuuQB1HSMnyraRDl98HBg3T4pKoNeKwHoxXgqR1PR
+ id1ZunyslXlavddwCTr4LipceFsPqlor1zd1aQdScv3vblFXsU7kUufhvLo+952PZVPa
+ oEb3LI0kw7kK7segxk8DNFW9ZC/+WRPif2d0hFxfmLNx2VT+eqe1bB4mtcPY+f3l4F/f
+ EhBg==
+X-Gm-Message-State: APjAAAUdkJFxu6i7t0+jN2O5m3yHbDVWhrgMxNJJd38RRJfvRltMmJZ/
+ GSUB6mCI0lzy+FcXe95BLWa9oM3Pa40=
+X-Google-Smtp-Source: APXvYqxS9B4VPY19ezhDkronqK9tX2Dc3/dG7ZtNqjBtPXUiLRViaQeqCJ3xDgjeHrXpbyuW4w4gjw==
+X-Received: by 2002:a63:1110:: with SMTP id g16mr45710067pgl.84.1577640151958; 
+ Sun, 29 Dec 2019 09:22:31 -0800 (PST)
+Received: from localhost ([64.62.168.194])
+ by smtp.gmail.com with ESMTPSA id j10sm21907911pjb.14.2019.12.29.09.22.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 29 Dec 2019 09:22:31 -0800 (PST)
+Date: Sun, 29 Dec 2019 09:22:29 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] RISC-V updates for v5.5-rc4
+Message-ID: <alpine.DEB.2.21.9999.1912290921260.204131@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191229_000653_882537_02EB2D0E 
-X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-CacheID: sfid-20191229_092235_992086_84B0E6A1 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -87,19 +73,17 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (tiny.windzz[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,40 +95,65 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Yangtao Li <tiny.windzz@gmail.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Use devm_platform_ioremap_resource() to simplify code.
+Linus,
 
-Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
----
- drivers/pwm/pwm-atmel.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+The following changes since commit 46cf053efec6a3a5f343fead837777efe8252a46:
 
-diff --git a/drivers/pwm/pwm-atmel.c b/drivers/pwm/pwm-atmel.c
-index 9ba733467e26..86cc5ccaa46c 100644
---- a/drivers/pwm/pwm-atmel.c
-+++ b/drivers/pwm/pwm-atmel.c
-@@ -340,7 +340,6 @@ MODULE_DEVICE_TABLE(of, atmel_pwm_dt_ids);
- static int atmel_pwm_probe(struct platform_device *pdev)
- {
- 	struct atmel_pwm_chip *atmel_pwm;
--	struct resource *res;
- 	int ret;
- 
- 	atmel_pwm = devm_kzalloc(&pdev->dev, sizeof(*atmel_pwm), GFP_KERNEL);
-@@ -351,8 +350,7 @@ static int atmel_pwm_probe(struct platform_device *pdev)
- 	atmel_pwm->data = of_device_get_match_data(&pdev->dev);
- 	atmel_pwm->updated_pwms = 0;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	atmel_pwm->base = devm_ioremap_resource(&pdev->dev, res);
-+	atmel_pwm->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(atmel_pwm->base))
- 		return PTR_ERR(atmel_pwm->base);
- 
--- 
-2.17.1
+  Linux 5.5-rc3 (2019-12-22 17:02:23 -0800)
 
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.5-rc4
+
+for you to fetch changes up to 1833e327a5ea1d1f356fbf6ded0760c9ff4b0594:
+
+  riscv: export flush_icache_all to modules (2019-12-27 21:51:01 -0800)
+
+----------------------------------------------------------------
+RISC-V updates for v5.5-rc4
+
+One important fix for RISC-V:
+
+- Redirect any incoming syscall with an ID less than -1 to
+  sys_ni_syscall, rather than allowing them to fall through into the
+  syscall handler.
+
+and two minor build fixes:
+
+- Export __asm_copy_{from,to}_user() from where they are defined.
+  This fixes a build error triggered by some randconfigs.
+
+- Export flush_icache_all().  I'd resisted this before, since
+  historically we didn't want modules to be able to flush the I$
+  directly; but apparently everyone else is doing it now.
+
+----------------------------------------------------------------
+David Abdurachmanov (1):
+      riscv: reject invalid syscalls below -1
+
+Luc Van Oostenryck (1):
+      riscv: fix compile failure with EXPORT_SYMBOL() & !MMU
+
+Olof Johansson (1):
+      riscv: export flush_icache_all to modules
+
+ arch/riscv/kernel/entry.S       | 1 +
+ arch/riscv/kernel/riscv_ksyms.c | 3 ---
+ arch/riscv/lib/uaccess.S        | 4 ++++
+ arch/riscv/mm/cacheflush.c      | 1 +
+ 4 files changed, 6 insertions(+), 3 deletions(-)
+
+
+Kernel object size difference:
+   text	   data	    bss	    dec	    hex	filename
+6896332	2329908	 313920	9540160	 919240	vmlinux.rv64.orig
+6896379	2329908	 313920	9540207	 91926f	vmlinux.rv64.patched
+6656967	1939072	 257576	8853615	 87186f	vmlinux.rv32.orig
+6656994	1939072	 257576	8853642	 87188a	vmlinux.rv32.patched
+1171666	 353368	 130024	1655058	 194112	vmlinux.nommu_virt.orig
+1171674	 353368	 130024	1655066	 19411a	vmlinux.nommu_virt.patched
 
