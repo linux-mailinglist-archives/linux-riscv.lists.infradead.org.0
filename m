@@ -2,70 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 946AB12CAA8
-	for <lists+linux-riscv@lfdr.de>; Sun, 29 Dec 2019 20:35:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F1B212CDC7
+	for <lists+linux-riscv@lfdr.de>; Mon, 30 Dec 2019 09:40:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:
-	References:In-Reply-To:From:Subject:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lrUl2jb9V51Cj2/TCKkSDyPeWKOR4cxujyfOIlxV4ps=; b=lOru12jJekbH+2Cr5YPOCiyWS
-	qilyrvElP/LxE575ROzsymKRbH10kR2crCBfskEFTK2PYrarn+g2Ls2kxHX3+ke2UQTGCxAt++d/z
-	Gqh7guV9P1rfW814Eg8vwUzut+C6+ggMmIm9CtTb4Pj2bzDGGUqVNrvrXpKD8ivzBWXbaTWWNDErz
-	tXH6kUwCbXZM5f2oo6wxaLs8o9aOaTCtl/xLMqiecWly0thDjYiH5rccHOt967v4dP0oa6LTC/EpG
-	NOSzds/vQ264hbr5ONwAhMh0o2JLOj5r0QSCFUKTmZxmo65+SxWIdwsLfyOr7H/FMQNM6sJKiV0NG
-	w21Q3ZwoA==;
+	 bh=4AXaN+hHC1TD7sPR6dR1QaEgQdojk/ddgFq3iJd/yrE=; b=oVh8nqLFZf0/oDbWAbn2Vemkv
+	tm4v4x9w+FMx1xfD4NAd3Z0FdzaoiWV+DASZQ8MGeKjNwt/K2EvudRlMbplwMy7GCrubW2ZEXjO71
+	Xmx9aj7eSMS5W/KJ/C2URu2+3hhSzbLBkLMHIkfo+Qv5HcyGxcP9eaLSbwO5kmHxw7Wf+PykMHlWQ
+	K0O61E0P6frp9SDx17bEpU4xOYGdsx1sPfLiGjkCWBOviA7kiWJWZzJsF6zRb38+QTV7GlfLhbPPP
+	PTVrKOr+2mERPZnFeWSDkuecUBhv8DvRl5ZtX7AsZsVUsgxJ2L9NdO1forhpJIQ43djrLrQQG4xcw
+	XNmmDpyLg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ileLG-0003ai-Qv; Sun, 29 Dec 2019 19:35:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1ilqbD-0002vk-PE; Mon, 30 Dec 2019 08:40:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ileLD-0003N6-J2
- for linux-riscv@lists.infradead.org; Sun, 29 Dec 2019 19:35:08 +0000
-Subject: Re: [GIT PULL] RISC-V updates for v5.5-rc4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1577648106;
- bh=xxYoTET7e/wH3hkJT+fld7Y6Yj0O25w85B8QzOHe9uk=;
- h=From:In-Reply-To:References:Date:To:Cc:From;
- b=Pn8rGdKZCoFeDTDBlXEsoDNd1M6+RNBw0fMpqDuaSGNOQLpp/MJ19tl45oBGh4XSw
- MbvLLkw5oSvvpPaOq4lDT6l2X3mxjjESk2uRrMN44kCxO4s5+4nGVSOVpr9NIPQS69
- nEyWQKnMMA60ndAT12CCIcivPbCDsG37Qpl7LDyw=
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <alpine.DEB.2.21.9999.1912290921260.204131@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.1912290921260.204131@viisi.sifive.com>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <alpine.DEB.2.21.9999.1912290921260.204131@viisi.sifive.com>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git
- tags/riscv/for-v5.5-rc4
-X-PR-Tracked-Commit-Id: 1833e327a5ea1d1f356fbf6ded0760c9ff4b0594
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: a99efa00891b66405ebd25e49868efc701fe1546
-Message-Id: <157764810672.31581.14083159610729733661.pr-tracker-bot@kernel.org>
-Date: Sun, 29 Dec 2019 19:35:06 +0000
-To: Paul Walmsley <paul.walmsley@sifive.com>
+ id 1ilqak-0001QM-RK; Mon, 30 Dec 2019 08:40:00 +0000
+Received: from [217.166.243.182] (helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <heiko@sntech.de>)
+ id 1ilqaS-0006tO-JZ; Mon, 30 Dec 2019 09:39:40 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Yangtao Li <tiny.windzz@gmail.com>
+Subject: Re: [PATCH 15/32] pwm: rockchip: convert to
+ devm_platform_ioremap_resource
+Date: Mon, 30 Dec 2019 09:39:38 +0100
+Message-ID: <3343090.K8KIS9te04@phil>
+In-Reply-To: <20191229080610.7597-15-tiny.windzz@gmail.com>
+References: <20191229080610.7597-1-tiny.windzz@gmail.com>
+ <20191229080610.7597-15-tiny.windzz@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191229_113507_654294_82435297 
-X-CRM114-Status: UNSURE (   0.71  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20191230_003959_036883_974FEBBA 
+X-CRM114-Status: GOOD (  12.38  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,21 +59,61 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, torvalds@linux-foundation.org,
- linux-kernel@vger.kernel.org
+Cc: alexandre.belloni@bootlin.com, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, thierry.reding@gmail.com,
+ linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com,
+ shc_work@mail.ru, khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
+ slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
+ s.hauer@pengutronix.de, u.kleine-koenig@pengutronix.de, mripard@kernel.org,
+ vz@mleia.com, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com,
+ matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com,
+ nicolas.ferre@microchip.com, linux@prisktech.co.nz, palmer@dabbelt.com,
+ kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com,
+ nsaenzjulienne@suse.de
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The pull request you sent on Sun, 29 Dec 2019 09:22:29 -0800 (PST):
+Am Sonntag, 29. Dezember 2019, 09:05:53 CET schrieb Yangtao Li:
+> Use devm_platform_ioremap_resource() to simplify code.
+> 
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 
-> git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.5-rc4
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/a99efa00891b66405ebd25e49868efc701fe1546
 
-Thank you!
+> ---
+>  drivers/pwm/pwm-rockchip.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+> index 73352e6fbccb..f0549b82338d 100644
+> --- a/drivers/pwm/pwm-rockchip.c
+> +++ b/drivers/pwm/pwm-rockchip.c
+> @@ -292,7 +292,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+>  {
+>  	const struct of_device_id *id;
+>  	struct rockchip_pwm_chip *pc;
+> -	struct resource *r;
+>  	int ret, count;
+>  
+>  	id = of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
+> @@ -303,8 +302,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+>  	if (!pc)
+>  		return -ENOMEM;
+>  
+> -	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	pc->base = devm_ioremap_resource(&pdev->dev, r);
+> +	pc->base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(pc->base))
+>  		return PTR_ERR(pc->base);
+>  
+> 
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.wiki.kernel.org/userdoc/prtracker
+
+
+
 
