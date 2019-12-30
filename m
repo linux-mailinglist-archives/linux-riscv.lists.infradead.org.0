@@ -2,52 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F1B212CDC7
-	for <lists+linux-riscv@lfdr.de>; Mon, 30 Dec 2019 09:40:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78D0012D283
+	for <lists+linux-riscv@lfdr.de>; Mon, 30 Dec 2019 18:22:05 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4AXaN+hHC1TD7sPR6dR1QaEgQdojk/ddgFq3iJd/yrE=; b=oVh8nqLFZf0/oDbWAbn2Vemkv
-	tm4v4x9w+FMx1xfD4NAd3Z0FdzaoiWV+DASZQ8MGeKjNwt/K2EvudRlMbplwMy7GCrubW2ZEXjO71
-	Xmx9aj7eSMS5W/KJ/C2URu2+3hhSzbLBkLMHIkfo+Qv5HcyGxcP9eaLSbwO5kmHxw7Wf+PykMHlWQ
-	K0O61E0P6frp9SDx17bEpU4xOYGdsx1sPfLiGjkCWBOviA7kiWJWZzJsF6zRb38+QTV7GlfLhbPPP
-	PTVrKOr+2mERPZnFeWSDkuecUBhv8DvRl5ZtX7AsZsVUsgxJ2L9NdO1forhpJIQ43djrLrQQG4xcw
-	XNmmDpyLg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DOSraRf/feCBOakeCCUz0HPgJKXdSPzNpPi3hGSIEuI=; b=kM23FWhV6C19F0hD08hIS5b5Xr
+	Ioepm1iZMZwmMEU90QbPdbJq/l3sKC0Zhw1uwci76we2WaOHHQSPFOaHW/No0r9hK5UpKP4f9mB0u
+	HfmPIP2twKDBmZK0S3KvgR78WcFVqBRPU3QJOv3jGBDVXRJlrukUwypqBWkjKBKXmzHMF2K4MNrNq
+	b5iHmC/7T51VAthFet4pX8+2wR4spHg2wYh2+fvAZJCAAE+kuv4WrnDJ7MyVbmw23g0l1dvAb5NAC
+	RTlHlqw/EsmZwYPH+MAMIroirNEwoTSQjlhvH4jYkfPOKZn+/XXo6/6H1wM8HIhuDvkYPCr0Q9LHj
+	blXt08Ig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilqbD-0002vk-PE; Mon, 30 Dec 2019 08:40:27 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ilyjm-0007HR-UR; Mon, 30 Dec 2019 17:21:51 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilqak-0001QM-RK; Mon, 30 Dec 2019 08:40:00 +0000
-Received: from [217.166.243.182] (helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <heiko@sntech.de>)
- id 1ilqaS-0006tO-JZ; Mon, 30 Dec 2019 09:39:40 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Yangtao Li <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 15/32] pwm: rockchip: convert to
- devm_platform_ioremap_resource
-Date: Mon, 30 Dec 2019 09:39:38 +0100
-Message-ID: <3343090.K8KIS9te04@phil>
-In-Reply-To: <20191229080610.7597-15-tiny.windzz@gmail.com>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20191229080610.7597-15-tiny.windzz@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+ id 1ilyjO-00072i-RF; Mon, 30 Dec 2019 17:21:28 +0000
+Received: from localhost.localdomain (unknown [194.230.155.138])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2393420718;
+ Mon, 30 Dec 2019 17:21:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1577726486;
+ bh=16Vm2+4bOHtwFPrZ/Vs4bLTz4LXA5yWYbJqpA0iY+e8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Ga+N7QV2jpHzzuMqRwqfmYcncnpQgMfPYcpoG9EdfkQ6s37hUOof4OYzE08ndjlWv
+ aktqnm77s9ZkoefUY3VIVMFVfWZ5zriRi45vTDGWQkFHNQDKDuFtBub2CBw7vPzvUS
+ RKfsShogNTWooDzeVgbJkAuU0lk/y4Jq0m8wN8jE=
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-tegra@vger.kernel.org
+Subject: [PATCH 1/2] pwm: Fix minor Kconfig whitespace issues
+Date: Mon, 30 Dec 2019 18:21:12 +0100
+Message-Id: <20191230172113.17222-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191230_003959_036883_974FEBBA 
-X-CRM114-Status: GOOD (  12.38  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191230_092126_906489_78158C35 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,61 +80,40 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, linux-kernel@vger.kernel.org,
- linux-tegra@vger.kernel.org, thierry.reding@gmail.com,
- linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com,
- shc_work@mail.ru, khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
- s.hauer@pengutronix.de, u.kleine-koenig@pengutronix.de, mripard@kernel.org,
- vz@mleia.com, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com,
- nicolas.ferre@microchip.com, linux@prisktech.co.nz, palmer@dabbelt.com,
- kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com,
- nsaenzjulienne@suse.de
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Am Sonntag, 29. Dezember 2019, 09:05:53 CET schrieb Yangtao Li:
-> Use devm_platform_ioremap_resource() to simplify code.
-> 
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+Remove double whitespace after "config" keyword.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ drivers/pwm/Kconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
-> ---
->  drivers/pwm/pwm-rockchip.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-> index 73352e6fbccb..f0549b82338d 100644
-> --- a/drivers/pwm/pwm-rockchip.c
-> +++ b/drivers/pwm/pwm-rockchip.c
-> @@ -292,7 +292,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
->  {
->  	const struct of_device_id *id;
->  	struct rockchip_pwm_chip *pc;
-> -	struct resource *r;
->  	int ret, count;
->  
->  	id = of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
-> @@ -303,8 +302,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
->  	if (!pc)
->  		return -ENOMEM;
->  
-> -	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	pc->base = devm_ioremap_resource(&pdev->dev, r);
-> +	pc->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(pc->base))
->  		return PTR_ERR(pc->base);
->  
-> 
-
-
-
+diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+index bd21655c37a6..c865d688f6b4 100644
+--- a/drivers/pwm/Kconfig
++++ b/drivers/pwm/Kconfig
+@@ -490,7 +490,7 @@ config PWM_TEGRA
+ 	  To compile this driver as a module, choose M here: the module
+ 	  will be called pwm-tegra.
+ 
+-config  PWM_TIECAP
++config PWM_TIECAP
+ 	tristate "ECAP PWM support"
+ 	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_KEYSTONE || ARCH_K3
+ 	help
+@@ -499,7 +499,7 @@ config  PWM_TIECAP
+ 	  To compile this driver as a module, choose M here: the module
+ 	  will be called pwm-tiecap.
+ 
+-config  PWM_TIEHRPWM
++config PWM_TIEHRPWM
+ 	tristate "EHRPWM PWM support"
+ 	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_K3
+ 	help
+-- 
+2.17.1
 
 
