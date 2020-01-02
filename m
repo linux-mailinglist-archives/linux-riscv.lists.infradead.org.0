@@ -2,74 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3BFC12E1F2
-	for <lists+linux-riscv@lfdr.de>; Thu,  2 Jan 2020 04:47:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A4C612E1F5
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 Jan 2020 04:50:02 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/rh9q6153m34prHm4tORWlNz9EKvypr1EIdcld9Y+es=; b=YbwhYQ9PgdL8tYwJXrlcpSNo1
-	PWDe3IaMLpuPjrxtTztHjY91LCZx3C2kAfUJOKO5aM0KHuLB8bj1U78pLKO1aaijBbEPwHrvyE8tl
-	VK6BDLV/G/ggNcpKzk7LkmnC+0ofCd5a+WGANnMNA/gaej15zIKWSwJCq9UVAioybCscp0G3OAcnS
-	su1GXVeb/qIqypDv6wyNYvcZP2vQRWmgScJlwo89QN6zFm+TWv5Jqib19KUJRAbKIvo/aoid5vjKS
-	R4b8uOserlFkgrqsYi02Cm095G0F+cCPih/7Fs9v5dgHlooGDGR//eWllI+2678s0IHud9c1fLIqx
-	vKALIP7nw==;
+	 bh=IAZWbwwfUkVb6p5+Q1nHSm8L0LTm2aiAcQDF8GpNwZk=; b=A/eoa2EMredgp79o9JjoFAvhb
+	5VBc90gR4GuM0d2wMKe+WuM31ESpLuaO81gXmetEnoL7nOcEBqlA1oQNIIHTiRhaJaVO0Hr6ZYTLZ
+	x77j2X93e5v+zs3EdPH5V9t/zgEMZaCcOdkaPxbHGXmSmEI7lUbMkRCLnYUJgItXUk2S9JwewtK+K
+	KhDAuxBqJP5/s2ehfLihX+CIUKWx8AsfgQskL8VqSzJzK166XT5x+wvlq471jOgpxBym3oT8SkiiL
+	GFqh4bsL/tDnUYE4o/XsnE8/Lq2d/g6x0GOB71pRy4vmsH/r6qnXAbnog7ei/si7+4evLSsjhyW5k
+	/8WkMYcZg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1imrSd-0007AI-Vg; Thu, 02 Jan 2020 03:47:47 +0000
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
+	id 1imrUi-0007H0-SH; Thu, 02 Jan 2020 03:49:56 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1imrSa-00079p-O7
- for linux-riscv@lists.infradead.org; Thu, 02 Jan 2020 03:47:46 +0000
-Received: by mail-ot1-x342.google.com with SMTP id k8so38146458otl.13
- for <linux-riscv@lists.infradead.org>; Wed, 01 Jan 2020 19:47:44 -0800 (PST)
+ id 1imrUg-0007Gg-AB
+ for linux-riscv@lists.infradead.org; Thu, 02 Jan 2020 03:49:55 +0000
+Received: by mail-ot1-x343.google.com with SMTP id 59so55343056otp.12
+ for <linux-riscv@lists.infradead.org>; Wed, 01 Jan 2020 19:49:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/rh9q6153m34prHm4tORWlNz9EKvypr1EIdcld9Y+es=;
- b=lkrN6Y3s6jYVS82ZyE0DHMRUjNhpHd1g2b6oJ4zb7XIx/c8X4Kvv6x2brkCBdUVrgR
- rnDOWe0iuGuf7mMnFEmT2ZF3vHDl6PvOMLXaoSHaTxlrYL7sn809stmYwGhsCDrVzK28
- 5/SOIKVsUpUOggXVsP2nBlg0C4lHYdSU1hjP1ncezHYsN99gNaupvSxKr7w3J4djzIBz
- fHjsqsn7BNL526ptCgpRX3O7NEUrGNdw5Dbpgnu3JCKirG1GrWP86Tb0rsPGm7eEqwIK
- NFvrNNgB/x0c0PJDt/fdwWpGAVPperNbSOCmhr+nCTjZ0x+Nc3gSsCT+/uXdSYk0nvMJ
- qarg==
+ :cc; bh=IAZWbwwfUkVb6p5+Q1nHSm8L0LTm2aiAcQDF8GpNwZk=;
+ b=PeAnZdpzin0SiweJmAKbZ7tGf+WHxWKMuQUAn0R1Q4X5MBtUILBw0be0mCzLxx7dLg
+ Y1ocadO2QeXjNPfozXkEfcDoeWxKGE4bD2+a+MAHtUj3+UfbuYGFBVxz95GJMM6Aqcfe
+ lf7Q+McdAhwi/DAEGGwKKBN12Gz1cs8sUiOjgTC5hD17zw1d6+r+FXjnQM8JshU2FF8h
+ F4PfDMeaLqw9jymonBBuPSy+N41OQfdChjwuO68xSeGXfu8hm2nb8S/bbzxWmIJhKDA8
+ m6HB4c3v4Z5NDxR5mnWiZt4shOJj2rmdulKEdZGXd17ggTOe6RjkoPCxj+3HreSv3rsL
+ uZVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=/rh9q6153m34prHm4tORWlNz9EKvypr1EIdcld9Y+es=;
- b=oemnXvDV+O3vWBcjnHQKU9FfrDj3Dra0P+qpaJZZuDsyh4HVPEJoS5jp9z/hgoek0u
- rxxLxRdFR+nk89hz9onUyPD2JGvU77s5ZXk3R+KRZVizlGkqgU35zsVD/ueUAS+EwMP4
- He/a8pfxZ0Iwed9rYWYQ1/rnkmL6zoqDgwbzsknRqAcc4RahXH5dRFJOi87ugRSnpXmp
- LEfKNt9G1zGSEAqgjV0wdP1A1mT9ZmRnB0DAHJdpkwdyrQ/7bPXJe7xEl1oWq21rYOy7
- 72ljaO2pWstyfvPRq4kT4YET0hYSuA45eQ7DxxKknMYHyNtsnNqaYBdZbOozc+DVU7q7
- ZgEg==
-X-Gm-Message-State: APjAAAUaWgEi8BgsbvGbonr1o20IRWUybwzbUNSl00e/LXDVfBWWmLm+
- 88uJggD37PsjkiCMIHSDjZhNkAdyLqKCkunmfQ1h1A==
-X-Google-Smtp-Source: APXvYqxJ1al3wj1gg8p8+6+WCfuZGLWekGcYeGb8eiGZqGbKRPhALLO2kxgQQjiss4qQ9EcTNN0X4O4sj2Q3Ht7FHMk=
-X-Received: by 2002:a9d:2028:: with SMTP id n37mr93593953ota.127.1577936863434; 
- Wed, 01 Jan 2020 19:47:43 -0800 (PST)
+ bh=IAZWbwwfUkVb6p5+Q1nHSm8L0LTm2aiAcQDF8GpNwZk=;
+ b=HBpMa2YfvIfyp4xLMHjmCm9rH6PEHIDDDO8SLhwQ/FGVTZW8k5ctV85Ztt/pGF8AeO
+ ifbSip4OOkwNI8A0Vcv3904cypkAjEQ+zj5qca7d1lw81Vx6iijPmEE5aHnNVYxu+K9p
+ S9CpPHH20mgMg9YvSVchGMuoXdX41X0Ax8cZUH4Ey0q3mgxATEO0gG8KNJJg/QtjaNBN
+ pd0NsQPo/z/+dod9tzRozodriFD6zI501YKCePzyuIncEW2zG/KOL2zC6+yQXseCekZx
+ HXx+P9Pa+h+u8eoiODJCsQ7kWgQ/b5i/D9eOn+evVC420UJKrajgLKNUkJJE0bbZGBXC
+ m2cw==
+X-Gm-Message-State: APjAAAXJdmVcwatZFSClNzpu1+4uy01e6cnGXmbr+QeRs/P6OkBGl4g/
+ ezjMGA1m1ff4mZuqqlmcChUTl6Ek/GaB7dlcBOO3rw==
+X-Google-Smtp-Source: APXvYqywXpa/Npr3CqGui1M+Ck/9E84gKqQV0hHmjJWX1i+iiistDvuhhUTd0M/gmnfwxd9OX67eXymSKvDEkkHWs0c=
+X-Received: by 2002:a05:6830:139a:: with SMTP id
+ d26mr92201599otq.75.1577936993075; 
+ Wed, 01 Jan 2020 19:49:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20200102030954.41225-1-zong.li@sifive.com>
- <CAAhSdy0NW9OTGOGoyZ7QmAOVbR_iF2ZM7b9eKDW0U1L+as-oaA@mail.gmail.com>
-In-Reply-To: <CAAhSdy0NW9OTGOGoyZ7QmAOVbR_iF2ZM7b9eKDW0U1L+as-oaA@mail.gmail.com>
+References: <20200102031240.44484-1-zong.li@sifive.com>
+ <20200102031240.44484-3-zong.li@sifive.com>
+ <CAAhSdy0sp_=nwAKxphA8of4UV_NfxHE-KXyTPekmHkieq_XyVw@mail.gmail.com>
+In-Reply-To: <CAAhSdy0sp_=nwAKxphA8of4UV_NfxHE-KXyTPekmHkieq_XyVw@mail.gmail.com>
 From: Zong Li <zong.li@sifive.com>
-Date: Thu, 2 Jan 2020 11:47:33 +0800
-Message-ID: <CANXhq0qP1hq9gBr19iHSmtSrfs=V4wKjjTXQGiqZ140i+eH+Lg@mail.gmail.com>
-Subject: Re: [PATCH] riscv: gcov: enable gcov for RISC-V
+Date: Thu, 2 Jan 2020 11:49:43 +0800
+Message-ID: <CANXhq0rHOj6_UetWEnvNw4TzwWR9tzWTAJysxqknPN1Ng1Pu8A@mail.gmail.com>
+Subject: Re: [PATCH 2/2] riscv: mm: use __pa_symbol for kernel symbols
 To: Anup Patel <anup@brainfault.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200101_194744_922690_1AB0C5BC 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20200101_194954_357505_6EED10B1 
+X-CRM114-Status: GOOD (  18.71  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -91,65 +93,86 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, linux-doc@vger.kernel.org,
- corbet@lwn.net,
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
  "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Jan 2, 2020 at 11:37 AM Anup Patel <anup@brainfault.org> wrote:
+On Thu, Jan 2, 2020 at 11:32 AM Anup Patel <anup@brainfault.org> wrote:
 >
-> On Thu, Jan 2, 2020 at 8:40 AM Zong Li <zong.li@sifive.com> wrote:
+> On Thu, Jan 2, 2020 at 8:42 AM Zong Li <zong.li@sifive.com> wrote:
 > >
-> > This patch enables GCOV code coverage measurement on RISC-V.
-> > Lightly tested on QEMU and Hifive Unleashed board, seems to work as
-> > expected.
+> > __pa_symbol is the marcro that should be used for kernel symbols. It is
+> > also a pre-requisite for DEBUG_VIRTUAL which will do bounds checking.
 > >
 > > Signed-off-by: Zong Li <zong.li@sifive.com>
 > > ---
-> >  Documentation/features/debug/gcov-profile-all/arch-support.txt | 2 +-
-> >  arch/riscv/Kconfig                                             | 1 +
-> >  2 files changed, 2 insertions(+), 1 deletion(-)
+> >  arch/riscv/mm/init.c | 12 ++++++------
+> >  1 file changed, 6 insertions(+), 6 deletions(-)
 > >
-> > diff --git a/Documentation/features/debug/gcov-profile-all/arch-support.txt b/Documentation/features/debug/gcov-profile-all/arch-support.txt
-> > index 059d58a549c7..6fb2b0671994 100644
-> > --- a/Documentation/features/debug/gcov-profile-all/arch-support.txt
-> > +++ b/Documentation/features/debug/gcov-profile-all/arch-support.txt
-> > @@ -23,7 +23,7 @@
-> >      |    openrisc: | TODO |
-> >      |      parisc: | TODO |
-> >      |     powerpc: |  ok  |
-> > -    |       riscv: | TODO |
-> > +    |       riscv: |  ok  |
-> >      |        s390: |  ok  |
-> >      |          sh: |  ok  |
-> >      |       sparc: | TODO |
-> > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> > index d8efbaa78d67..a31169b02ec0 100644
-> > --- a/arch/riscv/Kconfig
-> > +++ b/arch/riscv/Kconfig
-> > @@ -64,6 +64,7 @@ config RISCV
-> >         select SPARSEMEM_STATIC if 32BIT
-> >         select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
-> >         select HAVE_ARCH_MMAP_RND_BITS if MMU
-> > +       select ARCH_HAS_GCOV_PROFILE_ALL
+> > diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> > index 69f6678db7f3..965a8cf4829c 100644
+> > --- a/arch/riscv/mm/init.c
+> > +++ b/arch/riscv/mm/init.c
+> > @@ -99,13 +99,13 @@ static void __init setup_initrd(void)
+> >                 pr_info("initrd not found or empty");
+> >                 goto disable;
+> >         }
+> > -       if (__pa(initrd_end) > PFN_PHYS(max_low_pfn)) {
+> > +       if (__pa_symbol(initrd_end) > PFN_PHYS(max_low_pfn)) {
+> >                 pr_err("initrd extends beyond end of memory");
+> >                 goto disable;
+> >         }
 > >
-> >  config ARCH_MMAP_RND_BITS_MIN
-> >         default 18 if 64BIT
+> >         size = initrd_end - initrd_start;
+> > -       memblock_reserve(__pa(initrd_start), size);
+> > +       memblock_reserve(__pa_symbol(initrd_start), size);
+> >         initrd_below_start_ok = 1;
+> >
+> >         pr_info("Initial ramdisk at: 0x%p (%lu bytes)\n",
+> > @@ -124,8 +124,8 @@ void __init setup_bootmem(void)
+> >  {
+> >         struct memblock_region *reg;
+> >         phys_addr_t mem_size = 0;
+> > -       phys_addr_t vmlinux_end = __pa(&_end);
+> > -       phys_addr_t vmlinux_start = __pa(&_start);
+> > +       phys_addr_t vmlinux_end = __pa_symbol(&_end);
+> > +       phys_addr_t vmlinux_start = __pa_symbol(&_start);
+> >
+> >         /* Find the memory region containing the kernel */
+> >         for_each_memblock(memory, reg) {
+> > @@ -445,7 +445,7 @@ static void __init setup_vm_final(void)
+> >
+> >         /* Setup swapper PGD for fixmap */
+> >         create_pgd_mapping(swapper_pg_dir, FIXADDR_START,
+> > -                          __pa(fixmap_pgd_next),
+> > +                          __pa_symbol(fixmap_pgd_next),
+> >                            PGDIR_SIZE, PAGE_TABLE);
+> >
+> >         /* Map all memory banks */
+> > @@ -474,7 +474,7 @@ static void __init setup_vm_final(void)
+> >         clear_fixmap(FIX_PMD);
+> >
+> >         /* Move to swapper page table */
+> > -       csr_write(CSR_SATP, PFN_DOWN(__pa(swapper_pg_dir)) | SATP_MODE);
+> > +       csr_write(CSR_SATP, PFN_DOWN(__pa_symbol(swapper_pg_dir)) | SATP_MODE);
+> >         local_flush_tlb_all();
+> >  }
+> >  #else
 > > --
 > > 2.24.1
 > >
 >
-> Looks good to me.
+> Overall looks good to me.
 >
 > Reviewed-by: Anup Patel <anup@brainfault.org>
 >
-> May be (not 100% sure) split this into two patches so that
-> Documentation patch can be taken by Jonathan.
+> I have not tried this patch but can you confirm that
+> __pa_symbol() works fine even when DEBUG_VIRTUAL=n
 
-OK, let me split this patch in next version.
+Yes, it works fine through original way when DEBUG_VIRTUAL is not set.
 
 >
 > Regards,
