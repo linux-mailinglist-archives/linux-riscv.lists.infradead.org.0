@@ -2,89 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAA5C12D995
-	for <lists+linux-riscv@lfdr.de>; Tue, 31 Dec 2019 15:53:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EF0612E1D9
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 Jan 2020 04:10:31 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o/MjM9n8lcw4go9hM9V6jfDtkHJJ9OY553EV40YViXc=; b=iuCxuErxlFcyCtjKUMHOJOq8P
-	rJIVVkvCeKFUC67e/DOLAq8U6k4OXClFy9FmUiYD2TySFqgodgX9jGUShIS7eQUJ9nnrypKAowKAh
-	MntL4raTWnUL1HE2smY4pNBgbyLHiM4uTUJnrkyw9CzBCYlgtxiJ1qDujy/QBFZpTb4HZfywQI3MU
-	zaxCbbkFgBvwc907oEZ2exstury5Xg6PfK7nqv7O6zCnKUZMQP6DIURcaU497YIUvk0pzDGMT1+wB
-	lJMMIt7JeoM0bulQT8u0P73jHSRLOhMZzUO1WSFKW2Rw3v5q/0qmAZ+DoVbPJ+5Y0WB0yQvJP/VRR
-	IYxOt4FWQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=i3ZeFLW0tZfqHlZISm5iQNQKhwN5szM40SC3+DB7Jec=; b=eutjcN2vB000l5
+	I7/SNdjBpcySj4k6vTaAbEvIZqh93E+K817m5fKR9vqWhHjMCRxQbu5SryemZM6sPstL4AU7bLRGl
+	6Z+q9zQn6ak65FVBelb4Gl7sFCHBlt6qdK7Ra8sQLe7t2kSs5mgMRFokNib/eCI4CvfQlN3IXqGIh
+	bdVIaBQ+onbtQidsRLvUC9NZ8Scn2qe8kmhjOScFNKUKKCQDVtPQcCk4TioAsX54XNwWUOkzKvHUQ
+	O4UW583vjLPX1ODjyQ4NqhG1A5t4EaOOHE/C8nUa7UJdcMFfMra5tXt9Tcg++5xK8RaBL8iZrF2YZ
+	qNDBekPypTL+e6SgLH3Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1imIu7-0000zW-GN; Tue, 31 Dec 2019 14:53:51 +0000
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
+	id 1imqsP-0003dv-7U; Thu, 02 Jan 2020 03:10:21 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1imIte-0000Xr-Of; Tue, 31 Dec 2019 14:53:24 +0000
-Received: by mail-ed1-x543.google.com with SMTP id e10so35426374edv.9;
- Tue, 31 Dec 2019 06:53:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=googlemail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=o/MjM9n8lcw4go9hM9V6jfDtkHJJ9OY553EV40YViXc=;
- b=qZop3MAqC3vJeWXvQ48WeOe+IeamgtW3qBOEjDwmEpVxBcnmJMTPgqOyQjUAtfN4ws
- vEIG7JargoFBvhQ9uuWn4t6Fh7zgo5kHmkDFP+pdZB1+gbIfvRiEY+1YcStU57vtJCOR
- cCM9RJ1nExvM2Fb4OTh3RUlCARr00OQfescAOxBB7kGwB8ni49HlpP3hqrbEFEkL853I
- qEDOGbXotw0i9Wb/p/mqsXIQ9hLInoXcG0eIEboa/OaqZq/n7LGouKlUyzdlg+Hl1x1S
- cwnVWh7S94xFfcslXraNfh/ONokmVplLzBH0nv2QDn0mvWBJb8qVgEHMzY0Q4N1TdFOr
- EMig==
+ id 1imqsL-0003d0-Lz
+ for linux-riscv@lists.infradead.org; Thu, 02 Jan 2020 03:10:19 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id kx11so2683697pjb.4
+ for <linux-riscv@lists.infradead.org>; Wed, 01 Jan 2020 19:10:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=i3ZeFLW0tZfqHlZISm5iQNQKhwN5szM40SC3+DB7Jec=;
+ b=Vi6uFeK8FQWUpxh9kg+TRm+rbSbuHhbmk1YAT+cd52UcYzvsmrZ4GP4Q+iXx/+ldGu
+ GbwH1UiGd0FdOoOGsVNn0BtoWIJRdm8OGWDbrjqbD7hAZ6d/dpy7pauLt2E6Qjc+NdLM
+ tUuercAKxUjqHbyY+vqAijC3hOLEGrrwfuGQ8aW9dSNUw+j/Xx8RHX0T/YChcH9rX8XI
+ qRoIXCaB1kdarijD5CqXfyhZfESddv2UA3Yk7legVOaMGMAJrNWhbmH0QW3kqx2Sc/XS
+ xQLqrlvoCKY90UGMZPbHw/fBPqyGuwLse8b66izIFK4Izf5MkUE4onLL2qm6S2dq8U9j
+ b+Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=o/MjM9n8lcw4go9hM9V6jfDtkHJJ9OY553EV40YViXc=;
- b=MMxSA0MpHgXg9c6/z8oZ0d/1W8pCDo9CjfmVvz66QFqVZ/U2meeedATjCNtuRWtdx0
- 4Vn4ZvYu3VwETpIbY6vXmBDuY0TJz34tgeO4Dy01Zub+010I3izw2S+Rdf7bMDBFmfkk
- HeX0TuGI8FNVkblpzUQRfuJjhHzSIGeJwsGxMh2F3Bjc17VwVZoSV9t7SjDT17MQmsnA
- S4GIxE4izTUainvPuun3/Hq7RFG76f8R2zpfp/cnZ1/JVr6u82fqQA5gA7mTrwnEa2OA
- W2cOMleYs1jxcCRuE8cPlYi1B0Gk5Qww5Nu+SZnwRsluHv3oTbH+YSwaq3xPtNmpwmmL
- kelA==
-X-Gm-Message-State: APjAAAVG9aE+KBuvhIXJR8iwQtxuzhG4c47+cUVA0s61sdJzT53yJFXg
- CYGZ5Eb+VbGS/cFNQI+3XzpXXSzDzGgANIHWy1I=
-X-Google-Smtp-Source: APXvYqwmgH8ITwrdnbYcdkYHW7Lk6bOY4+gRvm+01zIYN0XFhQlFKFAcuRI5Kn2qdPxicg93ogpO/C0grXYHfQadKM0=
-X-Received: by 2002:a17:906:339a:: with SMTP id
- v26mr77372625eja.2.1577804000760; 
- Tue, 31 Dec 2019 06:53:20 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=i3ZeFLW0tZfqHlZISm5iQNQKhwN5szM40SC3+DB7Jec=;
+ b=pvI5dRjFEqFyI5wMPwwPHIPRw8tWKmeECk2Aai7LTE78SB2/l+dF5X6CCVgk2XsjC1
+ 77VR2UOH4+HIIR2qoJM9duCz5IZvEob1OvomSP4I/NhLwjV00f/RVWfGEjz8hnMW6Lsk
+ GLapqjVDCfb7S2zZ2TofQuSowOTe4NT4zuGybH5xTcoha/+8xleoqz9mKdh37HzOcC27
+ CNZsks0XcyrtfjGVfXhWcOz3TqGLZkyYcsaZjZkKi3mWV7rNCHa4z8yU0mOcoM0cl8F0
+ 5mWYKgiUYK3q1nZYObmi4lkToEuW2vMsOaUK4lq76eyRO//zNpufvDj5ObZ5OGB+F3PM
+ J44g==
+X-Gm-Message-State: APjAAAWV20/aXGniZqF+lMtjb5NMOBI+dsdWBRAcGxLcoFc4q7Xyv8xr
+ TFlheBuUbLthO0W1Azvtb8R2h994hKA=
+X-Google-Smtp-Source: APXvYqz6/qqGIg9+6XCIhwTyqx31euuHN1nfJJLRxO61z1RD9MygdXVLOHdb/HUCTEAi+bfmk9MVoQ==
+X-Received: by 2002:a17:90a:1a0d:: with SMTP id
+ 13mr17092503pjk.129.1577934614654; 
+ Wed, 01 Jan 2020 19:10:14 -0800 (PST)
+Received: from hsinchu02.internal.sifive.com
+ (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
+ by smtp.gmail.com with ESMTPSA id r2sm56108919pgv.16.2020.01.01.19.10.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Jan 2020 19:10:14 -0800 (PST)
+From: Zong Li <zong.li@sifive.com>
+To: corbet@lwn.net, paul.walmsley@sifive.com, palmer@dabbelt.com,
+ aou@eecs.berkeley.edu, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org
+Subject: [PATCH] riscv: gcov: enable gcov for RISC-V
+Date: Thu,  2 Jan 2020 11:09:54 +0800
+Message-Id: <20200102030954.41225-1-zong.li@sifive.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20191229080610.7597-14-tiny.windzz@gmail.com>
-In-Reply-To: <20191229080610.7597-14-tiny.windzz@gmail.com>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Tue, 31 Dec 2019 15:53:09 +0100
-Message-ID: <CAFBinCDQGGyYxDS9L5iJQpXMpp_+7WW227jVcxWcHhEWcUJLbA@mail.gmail.com>
-Subject: Re: [PATCH 14/32] pwm: meson: convert to
- devm_platform_ioremap_resource
-To: Yangtao Li <tiny.windzz@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191231_065322_817892_04B00EB3 
-X-CRM114-Status: UNSURE (   5.36  )
+X-CRM114-CacheID: sfid-20200101_191017_867545_197CE5C8 
+X-CRM114-Status: UNSURE (   7.73  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:543 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (martin.blumenstingl[at]googlemail.com)
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,34 +96,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, heiko@sntech.de,
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
- thierry.reding@gmail.com, linux-riscv@lists.infradead.org,
- Fabio Estevam <festevam@gmail.com>, f.fainelli@gmail.com, shc_work@mail.ru,
- khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
- s.hauer@pengutronix.de, u.kleine-koenig@pengutronix.de, mripard@kernel.org,
- vz@mleia.com, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com,
- nicolas.ferre@microchip.com, linux@prisktech.co.nz, palmer@dabbelt.com,
- kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com,
- nsaenzjulienne@suse.de
+Cc: Zong Li <zong.li@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Dec 29, 2019 at 9:16 AM Yangtao Li <tiny.windzz@gmail.com> wrote:
->
-> Use devm_platform_ioremap_resource() to simplify code.
->
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+This patch enables GCOV code coverage measurement on RISC-V.
+Lightly tested on QEMU and Hifive Unleashed board, seems to work as
+expected.
 
-thank you for taking care of this cleanup!
+Signed-off-by: Zong Li <zong.li@sifive.com>
+---
+ Documentation/features/debug/gcov-profile-all/arch-support.txt | 2 +-
+ arch/riscv/Kconfig                                             | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/Documentation/features/debug/gcov-profile-all/arch-support.txt b/Documentation/features/debug/gcov-profile-all/arch-support.txt
+index 059d58a549c7..6fb2b0671994 100644
+--- a/Documentation/features/debug/gcov-profile-all/arch-support.txt
++++ b/Documentation/features/debug/gcov-profile-all/arch-support.txt
+@@ -23,7 +23,7 @@
+     |    openrisc: | TODO |
+     |      parisc: | TODO |
+     |     powerpc: |  ok  |
+-    |       riscv: | TODO |
++    |       riscv: |  ok  |
+     |        s390: |  ok  |
+     |          sh: |  ok  |
+     |       sparc: | TODO |
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index d8efbaa78d67..a31169b02ec0 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -64,6 +64,7 @@ config RISCV
+ 	select SPARSEMEM_STATIC if 32BIT
+ 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
+ 	select HAVE_ARCH_MMAP_RND_BITS if MMU
++	select ARCH_HAS_GCOV_PROFILE_ALL
+ 
+ config ARCH_MMAP_RND_BITS_MIN
+ 	default 18 if 64BIT
+-- 
+2.24.1
 
-Martin
 
