@@ -2,60 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7E2F12F3CB
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 Jan 2020 05:14:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94D1112F3CC
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 Jan 2020 05:14:09 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Type:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2F/IYpY+jLyN9kGF82dJe15nO7Oczq1HkQhuLSHrgPE=; b=jbQuNIVdaIkxi9aDTXNiMjSHi
-	N3s23thi4yYEc7doOLChMkYLokz/Bnlwy7OZ2kw9EOhBrOrNvTcymQB0ONW+X7jfuG56xik/mHJFO
-	e+SQLdX6aWinibrflSazXvuTL5VaI1XdVy7H28qwANfKiRqf4q7ZJmNW/J38I7fLTjX0uyuVHJavO
-	EGa608nqkCieRokb7QUxuKtfwg8lEnZu+SVxzhP6Np6YZNhJpo5pHXVG8torfJaypfKGQhecd4n65
-	vw98t8UGumggaKBzqJ7JsgKpagD9bfR1FQXcIoPxOt6z9G8tE46H8gY/QE4YSUwB+JFnOMtsKtPmU
-	qkT8FgsFA==;
+	 bh=fZnzEye4mDUndjZtkD5HwLujVqlcczl4F5lMO8haL74=; b=JAcJg6sUODDFBhiLhFcWbwD5V
+	5kaBu2xdKbJ/MmqDJqZylK+2+7ItVFoGSotk+DJVWchJYQ0nHPv5jpiuvc/o4GLststsUmDW8Enpm
+	gxSfvNrMnHpl1AZr5KhfTLiVnXWrMEO3SsipF0Oo9r40Bw1LY+HFKh02js9fGuPyn2X/O2qiGyeln
+	opiTz9WfHhEse+Npit+ZJvgx9Hd/m1VBtC3sJKZf1uwxfaldgrAqb/J6OEE//1Jo9qe5jRGRCzYoY
+	k36CRk1XyTNWtZ1HDnEU9KAd9Pk8S5a6vmgyNCGEbhvtJ27/f+yP/SgTwDTOW2b0ZXSVZUqcZ9uqB
+	qU16qB8bA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inELV-0002W5-6q; Fri, 03 Jan 2020 04:13:57 +0000
-Received: from mail-dm6nam10on2084.outbound.protection.outlook.com
- ([40.107.93.84] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1inELc-0002bM-KE; Fri, 03 Jan 2020 04:14:04 +0000
+Received: from mail-bn8nam11on2061.outbound.protection.outlook.com
+ ([40.107.236.61] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inELS-0002Uo-4X
- for linux-riscv@lists.infradead.org; Fri, 03 Jan 2020 04:13:55 +0000
+ id 1inELY-0002Zd-Tg
+ for linux-riscv@lists.infradead.org; Fri, 03 Jan 2020 04:14:02 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=O4rM0UJe0zWVD6D8rSkT0+ll1ntsz/aB8ArH6UELIADBMCqjzk8r/ssdcxvipWQtD8oxm3dp8cUfk0S47ZSM5EcWQlCZjLAFZ2U9/yp+IIUoops7jOguIcIeDmXj1S85GCSU4SUjuywanvP/LTzh334O/5/saLDwdW8xxTVrf5UsWClGlkNMEEH+R4ZA4DHhmB3Tf/hdID/IlJN5vKqJY9kgjOB+1BUafMVdqczbeGQ6DQPr/5xXMPs6HL88jVCZmzjq4/tzPzhblGbLT0DKyGfI2i6328ezuJUJQLlafXXdyptTJWfvqchRpWSay5y6JeVL8SnG6dgwTBy7ls4lOA==
+ b=WIhLCk/r9h3KrF+4yLXhDnPwY7pFEoPwfBSXiUPHceta582u2VKljg6M1u4t4bmacQXjnfc+8lep4avuNFHV4Ex76iWkdu6RsplcFNBhvslk6mOOxRrPFhb/r7D1bmWul1Y6KYGErOjmY4X/pO487OETicj15FuBaOrHrGbVWWBc4ej2HmynsRaTiEqlvSn0P6Wirh/6FUl0mAkZqfVSjWg8W5YQczWPBSQYORPM0KYD+7kQyksW781knKUXDiHLw2f4iINbMmc3dgXwSfGCB7JH4wTb0BzDR2uMtLFIoShxW9pjZxz4K3iViNK7za/NbCnVeCK7gKKq53QhGH+78A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2F/IYpY+jLyN9kGF82dJe15nO7Oczq1HkQhuLSHrgPE=;
- b=TDcG1bEqBWyX1NVRAFTnZfUkRKygDsMmCgBwkPrb2hioHAIFfHVhUfPbNV+cQnqKYloP0BbXpLl1MiicmfQr0yx/WE4cgGjReAQ9Jqo1WOCAZsCncLkazoA6Fxn3SFfKItJA/xwl0Spq7cMZ7WDShLB1Uducpmvaa4EWk+JKS+MagMjoEhtXRKMfMrgULIFq0DsrSNiFVZm+ALnBweUWJWgn+uEQ209pg0YRqT7JQqfz2p9o4YMiOGhEMZSGBqrsmUwXl57JbkgKb8Okb93jrHMWxI8wMxq5aL9GjLYABzuT5lCt/zAoCEe6alJNYZ/oS/vgMFxSodUdn0MPU+KkbA==
+ bh=fZnzEye4mDUndjZtkD5HwLujVqlcczl4F5lMO8haL74=;
+ b=QRZknZv5Q0kyfOKRdOJHjdl+vlP3otDZ5U2BjVHX35V1Wetf+Su+BYPWp4FRKu9thaUmfxDk2oVZOqokzy+8v2h6PfXAiE1LyCfHzuAOKWQkbk7bK5EvuoYm7ClK8OzmCay1TyGz/2U23tETiGH5BZ0WXPiHSazvLgmJXSQ1Sa1aN5wOi5RMUCIcK2O+ZMkOd0ruK9gOYLDeQba/gg4KpVolofaKugtIrtMCeBN38en5m4Cpe329B11o5Senl5iIqtzfagNvVT6Z5PS7B3pMTsoV16hJQgO7bhcNEZEWi6M6xd/4lYM4GFIm7Hjtoz71tTpB9lhnwpSDQ9kZJISSfA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
  dkim=pass header.d=sifive.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2F/IYpY+jLyN9kGF82dJe15nO7Oczq1HkQhuLSHrgPE=;
- b=mVkfwB1N8xTf8GZfXTvD0spTWM4L6Glqhl3rZvLjej22ROD9ij7sLgkUGNwW7nY6np42JfzBXsXJh5cbPAeLOZOMjoQ/ErKbD8NJ1XEMNxq0eBnGpeWkoHpzQl/qb6oYi5+5TNKcGzdo6PlORqVmUKjV0QJa8F8RiLpjU6H003Q=
+ bh=fZnzEye4mDUndjZtkD5HwLujVqlcczl4F5lMO8haL74=;
+ b=FsdfYR4Co+hyTCYfie8YMp4jfDkt2PLKi+B/eDb1VVruEy2NOumOqvVpUZ19UBbM62oawVidUyf5TjEFDJgXiYi48+br0ZaZuK53f7C/x9VAgSz4QQ8GUNqLz51k6JkZ+SRW0t5NjFh7/nduzx/age9avCwdyzLU2lCg1CvUtY4=
 Authentication-Results: spf=none (sender IP is )
  smtp.mailfrom=yash.shah@sifive.com; 
 Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
  CH2PR13MB3799.namprd13.prod.outlook.com (20.180.12.212) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2623.4; Fri, 3 Jan 2020 04:13:52 +0000
+ 15.20.2623.4; Fri, 3 Jan 2020 04:13:58 +0000
 Received: from CH2PR13MB3368.namprd13.prod.outlook.com
  ([fe80::eccb:16ac:e897:85d5]) by CH2PR13MB3368.namprd13.prod.outlook.com
  ([fe80::eccb:16ac:e897:85d5%3]) with mapi id 15.20.2602.012; Fri, 3 Jan 2020
- 04:13:52 +0000
+ 04:13:58 +0000
 From: Yash Shah <yash.shah@sifive.com>
 To: robh+dt@kernel.org, mark.rutland@arm.com, paul.walmsley@sifive.com,
  palmer@dabbelt.com
-Subject: [PATCH v2 1/2] riscv: dts: Add DT support for SiFive L2 cache
- controller
-Date: Fri,  3 Jan 2020 09:43:20 +0530
-Message-Id: <1578024801-39039-2-git-send-email-yash.shah@sifive.com>
+Subject: [PATCH v2 2/2] riscv: cacheinfo: Add support to determine no. of L2
+ cache way enabled
+Date: Fri,  3 Jan 2020 09:43:21 +0530
+Message-Id: <1578024801-39039-3-git-send-email-yash.shah@sifive.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1578024801-39039-1-git-send-email-yash.shah@sifive.com>
 References: <1578024801-39039-1-git-send-email-yash.shah@sifive.com>
@@ -68,19 +68,19 @@ Received: from dhananjayk-PowerEdge-R620.open-silicon.com (114.143.65.226) by
  BM1PR0101CA0043.INDPRD01.PROD.OUTLOOK.COM (2603:1096:b00:1a::29) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.20.2602.12 via Frontend
- Transport; Fri, 3 Jan 2020 04:13:47 +0000
+ Transport; Fri, 3 Jan 2020 04:13:54 +0000
 X-Mailer: git-send-email 2.7.4
 X-Originating-IP: [114.143.65.226]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 46775e9b-0b32-487c-e770-08d79003573c
+X-MS-Office365-Filtering-Correlation-Id: 56f3fe2c-9d14-4168-6fc7-08d790035b4b
 X-MS-TrafficTypeDiagnostic: CH2PR13MB3799:
 X-LD-Processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <CH2PR13MB3799BC4DBD5BE935FD6FFB708C230@CH2PR13MB3799.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1468;
+X-Microsoft-Antispam-PRVS: <CH2PR13MB379937E117ED4C2B320ADF2C8C230@CH2PR13MB3799.namprd13.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3968;
 X-Forefront-PRVS: 0271483E06
 X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10009020)(6029001)(39840400004)(346002)(396003)(366004)(376002)(136003)(189003)(199004)(6666004)(36756003)(1006002)(66946007)(66476007)(66556008)(107886003)(44832011)(52116002)(7416002)(4326008)(2906002)(6506007)(86362001)(81156014)(81166006)(8936002)(6486002)(2616005)(26005)(8676002)(16526019)(186003)(478600001)(316002)(6512007)(956004)(5660300002);
+ SFS:(10009020)(39840400004)(346002)(396003)(366004)(376002)(136003)(189003)(199004)(6666004)(36756003)(1006002)(66946007)(66476007)(66556008)(107886003)(44832011)(52116002)(7416002)(4326008)(2906002)(6506007)(86362001)(81156014)(81166006)(8936002)(6486002)(2616005)(26005)(8676002)(16526019)(186003)(478600001)(316002)(6512007)(956004)(5660300002);
  DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3799;
  H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
@@ -88,28 +88,28 @@ Received-SPF: None (protection.outlook.com: sifive.com does not designate
  permitted sender hosts)
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: V06ox30sMVxj+gDYVnYMMb2nXARttKAbiPn+VMUef0zr9dpWr9l4xOmWhSzkBN8qHnKb+CKGLgeZt7X3QLOAYAJ11lwmkxnp78YaKZ+2S+7yU3siMA7hLsHyudt6TPNIguyvsuItosJysbprM0emRQtyDG5E0E2mIU01OXtYOkL+Ho6GicAnRYnBSja2MGBb9HNNieazU2Kmsr6eepHRFI+kbIS29xiOC7RdmtlzMR+XcAMK53jMyM2RADaK0a6DFiM6WSJ4EVDieV2kLdgTYb1TfqdbWX3cP/5PAsbU63vMY51CT8ocwxkL6E99JKwYgRfMOaUtm28uOJxFMcUYTFnov3p7RRBIPE+BKjo0Hu0rTRkFWTKYeEA0VlliHZR/uXnsHlu2xnf1M6/o9BGIxLKOvzMg8nN7LVe2tj0SE5ZtJlcfTEnJXgqSczF1/w17
+X-Microsoft-Antispam-Message-Info: b88KAMvOpL755393EADJczhZy8TAJpSv4vUrKsJa/9HoVe1A7VvA9D+192gwY3tBK69KyE9j8rT6T/l9xFL2UDPncKrdXgnWgWqsJFuIc2EnfyZYQ4Lj1/xqV9IhBCfD8Vno69Hg/YHXATr2K/3f/aYBtpDr29P+LOlfFUUsfye5wTz+6BYkRHyPrhyN37ZZd4252L9fo1n+cc9e0u9wdu3cWUG1Hy4ijFQuDaZL7Z2N9zUIvDAXQGbOzCXs+C/5S5P+b7tD9BmB583u0FhGqaWLBMxAml8Tz97KJ7D1nbJDFQ4aKVoTUYMHbWSZb5DlHsv+l9xhvDlPnY6OzTlGxN6MMh+rzUvGRyl/fXxvQM3rI7G7lDDUSKFDA1VXjyyol2VXOuJRCxBv4q0n7KvqGbT4xgd9UN2KARabyFWG7CfAn3/qmN80TXnFlrGBEiKM
 X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 46775e9b-0b32-487c-e770-08d79003573c
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jan 2020 04:13:52.0834 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 56f3fe2c-9d14-4168-6fc7-08d790035b4b
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jan 2020 04:13:58.8635 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: kEuhzK12eCBm79D/2FOtbGxCdqoXgiPjCrQP+Dyo7McVBmaO+YAHBLb3rkTLzXf315ZPuUoFMH7VjqCjVPUbXw==
+X-MS-Exchange-CrossTenant-UserPrincipalName: wtecBjbv1HI++3ZHvdV98HS6ZxvFBMhgis+OP4x2XeE79T+Ww6n8AeuK+b5I/p4ZDGrWhRKWys2/mjmcqPqr8A==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3799
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_201354_182808_B201D49F 
-X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-CacheID: sfid-20200102_201400_960838_B70A1CD7 
+X-CRM114-Status: UNSURE (   9.81  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.236.61 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.93.84 listed in list.dnswl.org]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -136,68 +136,96 @@ Cc: devicetree@vger.kernel.org, aou@eecs.berkeley.edu, sachin.ghadi@sifive.com,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add the L2 cache controller DT node in SiFive FU540 soc-specific DT file
+In order to determine the number of L2 cache ways enabled at runtime,
+implement a private attribute using cache_get_priv_group() in cacheinfo
+framework. Reading this attribute ("number_of_ways_enabled") will return
+the number of enabled L2 cache ways at runtime.
 
 Signed-off-by: Yash Shah <yash.shah@sifive.com>
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 ---
- arch/riscv/boot/dts/sifive/fu540-c000.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ arch/riscv/include/asm/sifive_l2_cache.h |  2 ++
+ arch/riscv/kernel/cacheinfo.c            | 31 +++++++++++++++++++++++++++++++
+ drivers/soc/sifive/sifive_l2_cache.c     |  5 +++++
+ 3 files changed, 38 insertions(+)
 
-diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-index 70a1891..a2e3d54 100644
---- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-+++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-@@ -54,6 +54,7 @@
- 			reg = <1>;
- 			riscv,isa = "rv64imafdc";
- 			tlb-split;
-+			next-level-cache = <&l2cache>;
- 			cpu1_intc: interrupt-controller {
- 				#interrupt-cells = <1>;
- 				compatible = "riscv,cpu-intc";
-@@ -77,6 +78,7 @@
- 			reg = <2>;
- 			riscv,isa = "rv64imafdc";
- 			tlb-split;
-+			next-level-cache = <&l2cache>;
- 			cpu2_intc: interrupt-controller {
- 				#interrupt-cells = <1>;
- 				compatible = "riscv,cpu-intc";
-@@ -100,6 +102,7 @@
- 			reg = <3>;
- 			riscv,isa = "rv64imafdc";
- 			tlb-split;
-+			next-level-cache = <&l2cache>;
- 			cpu3_intc: interrupt-controller {
- 				#interrupt-cells = <1>;
- 				compatible = "riscv,cpu-intc";
-@@ -123,6 +126,7 @@
- 			reg = <4>;
- 			riscv,isa = "rv64imafdc";
- 			tlb-split;
-+			next-level-cache = <&l2cache>;
- 			cpu4_intc: interrupt-controller {
- 				#interrupt-cells = <1>;
- 				compatible = "riscv,cpu-intc";
-@@ -253,6 +257,17 @@
- 			#pwm-cells = <3>;
- 			status = "disabled";
- 		};
-+		l2cache: cache-controller@2010000 {
-+			compatible = "sifive,fu540-c000-ccache", "cache";
-+			cache-block-size = <64>;
-+			cache-level = <2>;
-+			cache-sets = <1024>;
-+			cache-size = <2097152>;
-+			cache-unified;
-+			interrupt-parent = <&plic0>;
-+			interrupts = <1 2 3>;
-+			reg = <0x0 0x2010000 0x0 0x1000>;
-+		};
+diff --git a/arch/riscv/include/asm/sifive_l2_cache.h b/arch/riscv/include/asm/sifive_l2_cache.h
+index 04f6748..217a42f 100644
+--- a/arch/riscv/include/asm/sifive_l2_cache.h
++++ b/arch/riscv/include/asm/sifive_l2_cache.h
+@@ -10,6 +10,8 @@
+ extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
+ extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
  
- 	};
- };
++int sifive_l2_largest_wayenabled(void);
++
+ #define SIFIVE_L2_ERR_TYPE_CE 0
+ #define SIFIVE_L2_ERR_TYPE_UE 1
+ 
+diff --git a/arch/riscv/kernel/cacheinfo.c b/arch/riscv/kernel/cacheinfo.c
+index 4c90c07..29bdb21 100644
+--- a/arch/riscv/kernel/cacheinfo.c
++++ b/arch/riscv/kernel/cacheinfo.c
+@@ -7,6 +7,7 @@
+ #include <linux/cpu.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
++#include <asm/sifive_l2_cache.h>
+ 
+ static void ci_leaf_init(struct cacheinfo *this_leaf,
+ 			 struct device_node *node,
+@@ -16,6 +17,36 @@ static void ci_leaf_init(struct cacheinfo *this_leaf,
+ 	this_leaf->type = type;
+ }
+ 
++#ifdef CONFIG_SIFIVE_L2
++static ssize_t number_of_ways_enabled_show(struct device *dev,
++					   struct device_attribute *attr,
++					   char *buf)
++{
++	return sprintf(buf, "%u\n", sifive_l2_largest_wayenabled());
++}
++
++static DEVICE_ATTR_RO(number_of_ways_enabled);
++
++static struct attribute *priv_attrs[] = {
++	&dev_attr_number_of_ways_enabled.attr,
++	NULL,
++};
++
++static const struct attribute_group priv_attr_group = {
++	.attrs = priv_attrs,
++};
++
++const struct attribute_group *
++cache_get_priv_group(struct cacheinfo *this_leaf)
++{
++	/* We want to use private group for L2 cache only */
++	if (this_leaf->level == 2)
++		return &priv_attr_group;
++	else
++		return NULL;
++}
++#endif /* CONFIG_SIFIVE_L2 */
++
+ static int __init_cache_level(unsigned int cpu)
+ {
+ 	struct cpu_cacheinfo *this_cpu_ci = get_cpu_cacheinfo(cpu);
+diff --git a/drivers/soc/sifive/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
+index a9ffff3..f1a5f2c 100644
+--- a/drivers/soc/sifive/sifive_l2_cache.c
++++ b/drivers/soc/sifive/sifive_l2_cache.c
+@@ -107,6 +107,11 @@ int unregister_sifive_l2_error_notifier(struct notifier_block *nb)
+ }
+ EXPORT_SYMBOL_GPL(unregister_sifive_l2_error_notifier);
+ 
++int sifive_l2_largest_wayenabled(void)
++{
++	return readl(l2_base + SIFIVE_L2_WAYENABLE);
++}
++
+ static irqreturn_t l2_int_handler(int irq, void *device)
+ {
+ 	unsigned int add_h, add_l;
 -- 
 2.7.4
 
