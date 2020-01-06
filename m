@@ -2,163 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B3AD13109E
-	for <lists+linux-riscv@lfdr.de>; Mon,  6 Jan 2020 11:33:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D19F131C2D
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 00:16:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FAdhuUagr/hEGfEZFuPAry1k38rWdKCbMiBPO8JkBS4=; b=KqhAHY2OpbuuL60Flo2jYrPBS
-	ErgoM7El/96ZMLNTBk3R7lUxDAyVvn9LMGsPjkGiBj/+zFki9gkTSJalM7tq+CJ57tHnx1vgY5L4b
-	L4GAorAGUfOEiJzuuU8kaWB/13MXitNj1wEiMY8Muf0zpHVrgBSQihWZ70MwtHliGwu3wHSE48fRq
-	M8uFj6X/2D+qFfXaMkFB2KkSkPUhYiyAYOuHpyEixAC1n9rsNCcGWZQsUE3cktAYv5x9a5c74s3v5
-	Vc77+zU+ZP0e8OkyKH9jj7pChRgIe2+HBbmSTl1X1eyplAZ0A3ZIlUuyr8aDwv4BcCnORm6QzTaZi
-	iuirwj7XA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TrkNrlsI6gf+UgcIdoDUEX3iqa/Oz0F6ZIOtZxRpg7U=; b=Go9yFKZazonX4G
+	5qW94xjqVQujWxvr0U7jDPnTzrH6ZDvrU1iNgMO3uplaIRmY7K9HzUPMLHYiEpJ1pXQnbXO2gThEJ
+	Rl6xc/Z+bNHrjOSKtdFzfGmxyYfqr+zewhoj1Wqvo76XWC+hu588S8ev39bhQhAD8Aop1rqh5JSH3
+	JcZY9ON2kXAItg2BKRlLsWxIzYOduX7hV8CF3ZV8ZrCdHVWtkI4vjlFLuxAbEIIUxlf6JBE0jYkvO
+	p+BVwJkb2vQFygXpowQldr7kuS3vrvCC1CpcdmwLjm3QXlCqRVOIc2W9tubBICU8PbzTvZ/jM52rT
+	wldrM4Vi8s4KtPmjTIJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ioPgz-00064l-4Q; Mon, 06 Jan 2020 10:33:01 +0000
-Received: from esa6.microchip.iphmx.com ([216.71.154.253])
+	id 1iobbm-0004V8-00; Mon, 06 Jan 2020 23:16:26 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ioPgh-0005tw-1R; Mon, 06 Jan 2020 10:32:46 +0000
-Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
- Claudiu.Beznea@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
- envelope-from="Claudiu.Beznea@microchip.com";
- x-sender="Claudiu.Beznea@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa6.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
- envelope-from="Claudiu.Beznea@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa6.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Claudiu.Beznea@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: CAJK7AaDLfln2am8pZlWU5LsN/pPkVAj2SCpldtUKNIsIPjMTrpOgDFIF3oMjeXOCTqURi1Ii/
- d4v/3L9rPKFkcDdPS1NDPENDkCYkjqXzjRYfmHbvQKDVfhPJcgbN+KCulfqQ1rHBF8Igkb1G/1
- F968Zg/GdG0JaNiDrjVFJd/SzvVqt5znjwl8zNtMujIMaPHBWakMg982ujsyWPC7nARGnR9qaQ
- bd8AyxYFyWwSl0WpAjg84GSijoeq8dF5NpnrPhZU0zrTazs3zwSYKu1zA3tmvEVHPMNbftuDST
- Mhg=
-X-IronPort-AV: E=Sophos;i="5.69,402,1571727600"; d="scan'208";a="59761197"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 06 Jan 2020 03:32:39 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 6 Jan 2020 03:32:39 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Mon, 6 Jan 2020 03:32:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EUtxK/5QvOowv5pS0802tLzbu+z+DS6a064yGuPAKGcQjlJIfcci21Sph674KhHKclOe2HCbj6Ce9tFagWi0v1xgJ9YmaJ0HSC+ob8JRBX5yUGRvCVxTGdcGPv//Ajb/bbLjL6YW9LOTlg/QW7/+6qUlO3nPvdpFRcHXolY65iIWwHJSh/iB8l2jzaFPABmYWKVL5TQy09vhqePktsEy4cXQz57STej0DTn8zyjx3c+zlPXMaKFJbT/uqKrtFBBNP5TX1u+GXtoA5Se/Dnk+lYl60lZodBOo+O6xOaPsd1G2mr5ZSOqqwYIN4dsQuBjWc/NOzaZYOeJ118wS+qu1SA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FAdhuUagr/hEGfEZFuPAry1k38rWdKCbMiBPO8JkBS4=;
- b=IyVcGJMUuMyAB7DvrC9XLiLXQoKvEO7pNM7qtmX9H45t67l4/fRxqZm4S3Or75aRXrN37gKO7RVJ+uBRbP0eH6kLssWhljvx1te0imA+ZyJCJs3w0qXBdPGYtYrGbehaUndBNiLatvCBnkv3ClNcjybQZ3bQWX76jgXMvTHG/6Bopqlsk6sL5KFu1lkD5HJFkj6QBvXSIX/tF2ha7qeTSbosLmpoO5IR7i4SBxyA7+rXNFKAs2CZni3T43ZnhRFhDh5DZt2vkfm3KQaT0H+2xkkKnXTXXz1Vo+0CmHL6FHHonCcQdifaqI9sY9KZZEgBkHDuWZW4jF85xzbR47WcSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+ id 1iobbg-0004Ov-MY
+ for linux-riscv@lists.infradead.org; Mon, 06 Jan 2020 23:16:22 +0000
+Received: by mail-pg1-x542.google.com with SMTP id 6so27557820pgk.0
+ for <linux-riscv@lists.infradead.org>; Mon, 06 Jan 2020 15:16:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FAdhuUagr/hEGfEZFuPAry1k38rWdKCbMiBPO8JkBS4=;
- b=AHxrrVs5t8NEFvmbWSMrtDOtgq2Tlkztn4K7DZ2dVB3sieZOPgrvrV9uxuSx25jj3agXdNBGrZocBKsoql4J7ewzvJo824+gzNqkAufixIsLnneZ9DcMMFp7eIhmdlxDNh9rWwjh5x/TS1yqe0RzbWzZd89vWQKNBoJQQNC67gw=
-Received: from DM6PR11MB3225.namprd11.prod.outlook.com (20.176.120.224) by
- DM6PR11MB4393.namprd11.prod.outlook.com (10.255.9.97) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2602.10; Mon, 6 Jan 2020 10:32:37 +0000
-Received: from DM6PR11MB3225.namprd11.prod.outlook.com
- ([fe80::106f:424f:ac54:1dbb]) by DM6PR11MB3225.namprd11.prod.outlook.com
- ([fe80::106f:424f:ac54:1dbb%7]) with mapi id 15.20.2602.015; Mon, 6 Jan 2020
- 10:32:37 +0000
-From: <Claudiu.Beznea@microchip.com>
-To: <tiny.windzz@gmail.com>, <thierry.reding@gmail.com>,
- <u.kleine-koenig@pengutronix.de>, <Nicolas.Ferre@microchip.com>,
- <alexandre.belloni@bootlin.com>, <Ludovic.Desroches@microchip.com>,
- <rjui@broadcom.com>, <sbranden@broadcom.com>,
- <bcm-kernel-feedback-list@broadcom.com>, <f.fainelli@gmail.com>,
- <nsaenzjulienne@suse.de>, <shc_work@mail.ru>, <shawnguo@kernel.org>,
- <s.hauer@pengutronix.de>, <kernel@pengutronix.de>, <festevam@gmail.com>,
- <linux-imx@nxp.com>, <vz@mleia.com>, <slemieux.tyco@gmail.com>,
- <khilman@baylibre.com>, <matthias.bgg@gmail.com>, <heiko@sntech.de>,
- <palmer@dabbelt.com>, <paul.walmsley@sifive.com>, <mripard@kernel.org>,
- <wens@csie.org>, <jonathanh@nvidia.com>, <linux@prisktech.co.nz>,
- <linux-arm-kernel@lists.infradead.org>, <linux-pwm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-rpi-kernel@lists.infradead.org>,
- <linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
- <linux-tegra@vger.kernel.org>
-Subject: Re: [PATCH 32/32] pwm: atmel: convert to
- devm_platform_ioremap_resource
-Thread-Topic: [PATCH 32/32] pwm: atmel: convert to
- devm_platform_ioremap_resource
-Thread-Index: AQHVxHycAKU/bSXjtUyeJXn+AWSJqA==
-Date: Mon, 6 Jan 2020 10:32:36 +0000
-Message-ID: <5aef0df7-ab3a-fe81-3cd4-a81c08841a00@microchip.com>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20191229080610.7597-32-tiny.windzz@gmail.com>
-In-Reply-To: <20191229080610.7597-32-tiny.windzz@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [94.177.32.156]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: db77f637-7bd3-4105-9e4c-08d79293bfe8
-x-ms-traffictypediagnostic: DM6PR11MB4393:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB4393E533578E4ED4D982B468873C0@DM6PR11MB4393.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:299;
-x-forefront-prvs: 0274272F87
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(366004)(346002)(376002)(396003)(136003)(39860400002)(199004)(189003)(64756008)(66446008)(8936002)(6512007)(66476007)(110136005)(316002)(71200400001)(8676002)(81156014)(81166006)(76116006)(66946007)(66556008)(91956017)(7406005)(7416002)(478600001)(36756003)(6506007)(2906002)(53546011)(31696002)(186003)(26005)(2616005)(6486002)(86362001)(5660300002)(31686004)(921003)(1121003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR11MB4393;
- H:DM6PR11MB3225.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 59SlEg5gCKH9OPWST7ew7YgA9qj+Rmz/b7UU8oUGof6+hCjrkXs7xLq0Yd6+gz2tMciAW4C8S5pU0BxdkDdvKqOF0Mm3cp2L4MVnHv/FVBzONqCHSIxgwVd0cMMw1xw3vv7pdpp4EUj9ro/oAPjGwwm+5h8Iln67uEZI7x2HnpMJqQbN0I9FyXvIEMr3PzF9JbhM8xTWg9ZAindxLTGCa2U0R2p0GpLSQy93NJ4YFGUjGzrYglJvY54lb702t60R1uijDtlhogZ9JU/HTJ2QLSmfL5R3kus2tHl0/BOeP07sBfE8ldQixtbMgX2yikeXyTdi4zsh7gV8pH7IhOc9TTC9iHl1gqAw5+nqbpcm7X6LSAh2N8aCSwwzfYLXP+68OSDXBJsIry/PLjb6SZnKpITiPmJNMHe1iudIjVXtux7KUpeEhz4Ipz9LHJYjamd2KuwV4AghY1lrCq0FrxxEL6qkBbTGm+9CvXMlcGASj5EM5HnuiuA3g8f+OhCEN0JC
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <C0B3595014DD3C41BDEC06FF974DF51B@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ d=lixom-net.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TrkNrlsI6gf+UgcIdoDUEX3iqa/Oz0F6ZIOtZxRpg7U=;
+ b=h5aYFg1LHy7RecocWz2pJ8zPdAcz/Zlxf0A90TagTHHfzfgiLT7dDpHo3qzZKG5T7h
+ x6bJ+8DtVgwqQG8oyrM0gdwnUJLKdJybBqYaDsW7IsaXO6CsqpcneYkkRi011gVD/Zsz
+ 9t98bw6eht+s2PTB+3QTmsmDwt8fnshoyGsbUiAghLSWmK0QERKfo7CkKuU6f4XN8JtR
+ qN5hg/lchx9eiPOk924DnTRLTxXolWcdAnCmvRJVRpJQCtctjshI1OIAiZukYPFvHeVX
+ 8r7YjAUrMbKcFgIX4is99Zkb3FsrbRVEKe0fdyj3WsJ5BnfoEy7Dtb+atpT1zhk6ERzt
+ 0lQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TrkNrlsI6gf+UgcIdoDUEX3iqa/Oz0F6ZIOtZxRpg7U=;
+ b=qlJFeb032BqbAd5AYpgOYUSZxn93O9YwVmSuMmWMWF+VpbuxrpA4YDx5eu+bQwnPtK
+ gXB6J3tV6vPbeXv7N2rWdiS2AfN2OzdtNWPrsNaaQae4/+7FRh5j2QLpCCQySXh5t8bV
+ itaSFTPOe9rBhWMtznGb4lGnIo/zIbFDFCTyVja7l9ZjPoSmPY5GvMKHTr0iZY+f27Zy
+ i2+lWWwDW6CZq6+STXkHq7nSs8TEsFbtQmbR0da8rYQUvo2jljWJYqMeE3Cj2F5Tw8MZ
+ lyphfqLcwR2aY2jPIaV+8IsU+1fJNB9kYbSfiuBsQyyy3yvcQoLOat/18KhI6JxiICyx
+ qMqQ==
+X-Gm-Message-State: APjAAAXle2Yh0Bhq3YV2v5vD0j9rdXKAKJOQIYxsgoP1tLnxwQZlK7LK
+ 7WNB5utQXI10VyIkEQUpjPNNHNy5+/O/bv6L
+X-Google-Smtp-Source: APXvYqziUHnuk5l/Atiw2vj5n2Wz6sjwDTja/WaJs0V1Vh/2LG/VjEj5/h6HlAXT+QuTPWrIOVMPDQ==
+X-Received: by 2002:a63:4c4f:: with SMTP id
+ m15mr112630946pgl.346.1578352579414; 
+ Mon, 06 Jan 2020 15:16:19 -0800 (PST)
+Received: from rip.lixom.net (99-152-116-91.lightspeed.sntcca.sbcglobal.net.
+ [99.152.116.91])
+ by smtp.gmail.com with ESMTPSA id s131sm65052995pfs.135.2020.01.06.15.16.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Jan 2020 15:16:18 -0800 (PST)
+From: Olof Johansson <olof@lixom.net>
+To: paul.walmsley@sifive.com,
+	palmer@dabbelt.com,
+	aou@eecs.berkeley.edu
+Subject: [PATCH] riscv: keep 32-bit kernel to 32-bit phys_addr_t
+Date: Mon,  6 Jan 2020 15:16:11 -0800
+Message-Id: <20200106231611.10169-1-olof@lixom.net>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: db77f637-7bd3-4105-9e4c-08d79293bfe8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jan 2020 10:32:36.7529 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9nAopbNipMUBkPbXlcTJeYda8YK+Lh0bJ4W/SjTYJ+MqOPJ9AtID7OnC3C/QcbACEj1oDmG43Qm1InYa7LE0ycTJx4x8OfFks48dFF1g/Dg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4393
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_023243_184210_5D9E1186 
-X-CRM114-Status: GOOD (  11.14  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200106_151620_887637_D861E958 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.253 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -173,31 +96,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Cc: Olof Johansson <olof@lixom.net>, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-DQoNCk9uIDI5LjEyLjIwMTkgMTA6MDYsIFlhbmd0YW8gTGkgd3JvdGU6DQo+IFVzZSBkZXZtX3Bs
-YXRmb3JtX2lvcmVtYXBfcmVzb3VyY2UoKSB0byBzaW1wbGlmeSBjb2RlLg0KPiANCj4gU2lnbmVk
-LW9mZi1ieTogWWFuZ3RhbyBMaSA8dGlueS53aW5kenpAZ21haWwuY29tPg0KDQpBY2tlZC1ieTog
-Q2xhdWRpdSBCZXpuZWEgPGNsYXVkaXUuYmV6bmVhQG1pY3JvY2hpcC5jb20+DQoNCj4gLS0tDQo+
-ICBkcml2ZXJzL3B3bS9wd20tYXRtZWwuYyB8IDQgKy0tLQ0KPiAgMSBmaWxlIGNoYW5nZWQsIDEg
-aW5zZXJ0aW9uKCspLCAzIGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-cHdtL3B3bS1hdG1lbC5jIGIvZHJpdmVycy9wd20vcHdtLWF0bWVsLmMNCj4gaW5kZXggOWJhNzMz
-NDY3ZTI2Li44NmNjNWNjYWE0NmMgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvcHdtL3B3bS1hdG1l
-bC5jDQo+ICsrKyBiL2RyaXZlcnMvcHdtL3B3bS1hdG1lbC5jDQo+IEBAIC0zNDAsNyArMzQwLDYg
-QEAgTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgYXRtZWxfcHdtX2R0X2lkcyk7DQo+ICBzdGF0aWMg
-aW50IGF0bWVsX3B3bV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiAgew0K
-PiAgICAgICAgIHN0cnVjdCBhdG1lbF9wd21fY2hpcCAqYXRtZWxfcHdtOw0KPiAtICAgICAgIHN0
-cnVjdCByZXNvdXJjZSAqcmVzOw0KPiAgICAgICAgIGludCByZXQ7DQo+IA0KPiAgICAgICAgIGF0
-bWVsX3B3bSA9IGRldm1fa3phbGxvYygmcGRldi0+ZGV2LCBzaXplb2YoKmF0bWVsX3B3bSksIEdG
-UF9LRVJORUwpOw0KPiBAQCAtMzUxLDggKzM1MCw3IEBAIHN0YXRpYyBpbnQgYXRtZWxfcHdtX3By
-b2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+ICAgICAgICAgYXRtZWxfcHdtLT5k
-YXRhID0gb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKCZwZGV2LT5kZXYpOw0KPiAgICAgICAgIGF0
-bWVsX3B3bS0+dXBkYXRlZF9wd21zID0gMDsNCj4gDQo+IC0gICAgICAgcmVzID0gcGxhdGZvcm1f
-Z2V0X3Jlc291cmNlKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAwKTsNCj4gLSAgICAgICBhdG1lbF9w
-d20tPmJhc2UgPSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UoJnBkZXYtPmRldiwgcmVzKTsNCj4gKyAg
-ICAgICBhdG1lbF9wd20tPmJhc2UgPSBkZXZtX3BsYXRmb3JtX2lvcmVtYXBfcmVzb3VyY2UocGRl
-diwgMCk7DQo+ICAgICAgICAgaWYgKElTX0VSUihhdG1lbF9wd20tPmJhc2UpKQ0KPiAgICAgICAg
-ICAgICAgICAgcmV0dXJuIFBUUl9FUlIoYXRtZWxfcHdtLT5iYXNlKTsNCj4gDQo+IC0tDQo+IDIu
-MTcuMQ0KPiANCj4g
+While rv32 technically has 34-bit physical addresses, no current
+platforms use it and it's likely to shake out driver bugs.
+
+Let's keep 64-bit phys_addr_t off on 32-bit builds until one shows up,
+since other work will be needed to make such a system useful anyway.
+
+Signed-off-by: Olof Johansson <olof@lixom.net>
+---
+ arch/riscv/Kconfig | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index a31169b02ec06..33a20fa046e0a 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -12,8 +12,9 @@ config 32BIT
+ 
+ config RISCV
+ 	def_bool y
+-	# even on 32-bit, physical (and DMA) addresses are > 32-bits
+-	select PHYS_ADDR_T_64BIT
++	# While RV32 has 34-bit physical addresses, no known platform
++	# uses it, so keep it to 32-bit until one shows up to test with.
++	select PHYS_ADDR_T_64BIT if 64BIT
+ 	select OF
+ 	select OF_EARLY_FLATTREE
+ 	select OF_IRQ
+-- 
+2.20.1
+
 
