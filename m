@@ -2,40 +2,55 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 039DC1325B9
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 13:09:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B54561325DB
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 13:15:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qJud/CDl2kyg7TYS6VtWU1bT9qMNZvWIPdeZu5bukxo=; b=en5fwgnKdpTkeh1ms8eTrkMnA
-	WBSKBgDCCgaPSSnB7SECxriXgTRYSE6V8AKPHeLzELsYjRrJQyWCKmV0oG0R2N0K142TPlMQ0q5e+
-	By4Df9HUwP/rD2XjFrc/TEFNBoiPkM8TsjKNv9CX+JXkPgHQmYHuvLSnmCqiJGdgjd/KbErRkEnSD
-	idfpLI36k9fAtfSXdTKxqKvjJbDdKxvsiEsZ0b4D2pI79YnX2G9ytneDY1v5gmGM7JFRatPBKpmwV
-	YNaSu7h4CxQUfibzKpaFkxkKBTaRCRa0YppdzXZEVyv5yKU2abNILuPD+CJ8pzEZlFFrNwF3W4Kk8
-	6lJ9Q0S5g==;
+	 bh=dkoKwK15oscs3r0V8scapeKxlP48dhvoGFKEGuBFTog=; b=sHp7NU6nFTZIixRySO8AXed82
+	CoynwS5PvxJd+tA/eG/qb8bfKMXDn6m67WHGzwVXAMibm3wxtQGvtpjD3UNX/mIfKL+5lrkzrV5jN
+	HncBHsXHXsCgi2AOeUE8bknSE6I8HwlOmxKkbzfdAiVsahaXcSuwolhQxWj+9agxwnuP2FN+tTPRi
+	f82EMmaKuUwxsDrlGGrhkUwNA1YEgA7+Kifpf8zJ+/qQq0Qxx5FUiKe6ZvJZ85BxzG+wOqO5n9/ql
+	AEyM+3aRIOwrPJzCMyEbk/Hc6W7tklMuNPlJEQo90HgppcCaCdTJXZ/J0CfOScyGDIdFLN2yFVCBg
+	gQpzARSBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iongA-0005JL-NY; Tue, 07 Jan 2020 12:09:46 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1ionlb-00009a-M2; Tue, 07 Jan 2020 12:15:23 +0000
+Received: from mail-ed1-f65.google.com ([209.85.208.65])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iong2-0005ET-Qg
- for linux-riscv@lists.infradead.org; Tue, 07 Jan 2020 12:09:40 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1ionfq-00078D-RH; Tue, 07 Jan 2020 13:09:26 +0100
-Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <ukl@pengutronix.de>)
- id 1ionfq-0001sM-8J; Tue, 07 Jan 2020 13:09:26 +0100
-Date: Tue, 7 Jan 2020 13:09:26 +0100
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
+ id 1ionlU-00005N-Ll; Tue, 07 Jan 2020 12:15:17 +0000
+Received: by mail-ed1-f65.google.com with SMTP id b8so50167541edx.7;
+ Tue, 07 Jan 2020 04:15:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=dkoKwK15oscs3r0V8scapeKxlP48dhvoGFKEGuBFTog=;
+ b=W9+hJuWRMWNEoxiRmOUFBZOi0pq/koL2/0HygK+1yiAYpl+w8GwHLuzMTKzZR4HVs8
+ U2D24QfyD011Oiro/m5M2oSJcMuXaSaMQP4SOeSE1iX2Q7y2t4IEQGzi+C8yDH3k7nvj
+ inX9p7fBE7P9xOKGlVTnFM9+bL28Co1ZJG5J6IGLOuDjSBdaebP1pSC5BQfBiDD3hnTb
+ ALK9da3uT5W5qT7Ih1yNWGiW9ZhbFqZ+dujYtVM4VFUby7QpOZR9V36H1acn/SMZmkeb
+ +kOY3B4nzvou4+M0thQ+qOILhdZ2nzjUgtNFuchoik9NhUKG0IsJ+rtA7Q/mVaUPhW7T
+ jILw==
+X-Gm-Message-State: APjAAAWXqLU1teZPYdYajOZb1cl4md1GdOcc8R/bnqRrtM3bfHMNPZIF
+ 9GMTg1cEMPCoTDfAp/LNfoRXXJ7c
+X-Google-Smtp-Source: APXvYqwW9wXBZpzOMfTBS/kbOe4ZNckfdL5+6WOz5BazFgA1mugpFZqXKx0VrM2wxvGj7bgEnT9msA==
+X-Received: by 2002:a17:906:eda9:: with SMTP id
+ sa9mr109435185ejb.297.1578399315230; 
+ Tue, 07 Jan 2020 04:15:15 -0800 (PST)
+Received: from pi3 ([194.230.155.149])
+ by smtp.googlemail.com with ESMTPSA id f9sm7382215edr.66.2020.01.07.04.15.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Jan 2020 04:15:14 -0800 (PST)
+Date: Tue, 7 Jan 2020 13:15:12 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
-Message-ID: <20200107120926.cgrxk6b4rchf6i42@pengutronix.de>
+Message-ID: <20200107121512.GA319@pi3>
 References: <20191230172113.17222-1-krzk@kernel.org>
  <20191230172113.17222-2-krzk@kernel.org>
  <20200107072645.ko247bwhh3ibdu73@pengutronix.de>
@@ -44,27 +59,33 @@ References: <20191230172113.17222-1-krzk@kernel.org>
  <20200107110359.GA32423@pi3>
  <20200107113354.ggq6zarewq5ip354@pengutronix.de>
  <20200107115429.GA32632@pi3>
+ <20200107120926.cgrxk6b4rchf6i42@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200107115429.GA32632@pi3>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200107120926.cgrxk6b4rchf6i42@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_040938_881793_F86534B8 
-X-CRM114-Status: GOOD (  22.79  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200107_041516_715457_1F6BA773 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.208.65 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (k.kozlowski.k[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.208.65 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,88 +108,26 @@ Cc: linux-pwm@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hello Krzysztof,
+On Tue, Jan 07, 2020 at 01:09:26PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> > > (Oh, HAS_DMA is defined using "depends on !NO_DMA" + "default y".
+> > > NO_DMA has three different definitions. Two of them (in
+> > > drivers/crypto/ccree/cc_hw_queue_defs.h and arch/arm/include/asm/dma.=
+h)
+> > > unrelated.)
+> >=20
+> > Yes, HAS_DMA is the second missing piece for UM.
+>=20
+> So something like:
+>=20
+> 	# Usermode linux doesn't provide HAS_DMA and HAS_IOMEM.  To not have to
+> 	# clutter most dependencies with these just exclude UML from compile
+> 	# testing.
+>=20
+> as comment for COMPILE_TEST's depend line should be fine, right?
+>=20
 
-On Tue, Jan 07, 2020 at 12:54:29PM +0100, Krzysztof Kozlowski wrote:
-> On Tue, Jan 07, 2020 at 12:33:54PM +0100, Uwe Kleine-König wrote:
-> > On Tue, Jan 07, 2020 at 12:03:59PM +0100, Krzysztof Kozlowski wrote:
-> > > On Tue, Jan 07, 2020 at 11:42:34AM +0100, Uwe Kleine-König wrote:
-> > > > > I guess other solution would be to add stubs for few clk functions...
-> > > > > 
-> > > > > > Also HAS_IOMEM is a typical requirement, but I tested with an ARCH=um
-> > > > > > config (which does't have HAS_IOMEM) and they all compile fine.
-> > > > > 
-> > > > > Because of !HAS_IOMEM, since some time ARCH=um does not support
-> > > > > COMPILE_TEST. Therefore HAS_IOMEM dependency is not needed for compile
-> > > > > testing (and for regular build it is selected by ARCH).
-> > > > 
-> > > > Hehe, I didn't notice because for testing I just dropped the "depends on
-> > > > ..." lines in Kconfig instead of adding "|| COMPILE_TEST" :-) Still they
-> > > > compile fine on UML.
-> > > > 
-> > > > Ah, since bc083a64b6c0 ("init/Kconfig: make COMPILE_TEST depend on
-> > > > !UML") == v4.8-rc1~52^2~83 COMPILE_TEST cannot be enabled on UML, but
-> > > > later 1bcbfbfdeb00 ("um: add dummy ioremap and iounmap functions")
-> > > > == v4.13-rc1~8^2~6 UM got a dummy implementation. So maybe we could
-> > > > revert bc083a64b6c0 today? (And if not, a comment about why near the
-> > > > "depends on !UML" in init/Kconfig would be great.)
-> > > > 
-> > > > Orthogonal to that, I wonder if depending on HAS_IOMEM is right even
-> > > > though the compile testers won't notice it missing. Or should HAS_IOMEM
-> > > > be dropped?
-> > > 
-> > > I think yes, it can be dropped, but this would require:
-> > > 1. Fixing any dependencies on HAS_IOMEM, e.g.:
-> > >     WARNING: unmet direct dependencies detected for MFD_SYSCON
-> > >       Depends on [n]: HAS_IOMEM [=n]
-> > >       Selected by [y]:
-> > >       - PHY_DA8XX_USB [=y] && (ARCH_DAVINCI_DA8XX || COMPILE_TEST [=y])
-> > 
-> > I don't understand that warning. What did you modify to trigger that?
-> > Probably related to the big "if HAS_IOMEM" in drivers/mfd/Kconfig?!
-> 
-> OK, that's actually from my other patch to illustrate the problem:
-> https://lore.kernel.org/linux-arm-kernel/20200103164710.4829-2-krzk@kernel.org/
-> 
-> After reverting of bc083a64b6c0, every driver that selects MFD_SYSCON
-> (or some other parts) has to depend on HAS_IOMEM.
+I think yes.
 
-OK, understood, thanks.
-
-> > > 2. Checking if all of stubs are implemented (not only IOMEM but maybe
-> > >    DMA as well). Also 1bcbfbfdeb00 brought only few stubs. Still we
-> > >    need devm_ioremap_resource() and others.
-> > 
-> > A problem is that it's unclear (to me at least) what the presence of
-> > HAS_IOMEM actually implies. I thought it's about ioremap + readl +
-> > writel (including their respective variants). Does it really include dma
-> > stuff, too?
-> > 
-> > > Quick test shows mentioned "unmet direct dependencies" and:
-> > >     phy-pxa-usb.c:(.text+0x2f5): undefined reference to `devm_ioremap_resource'
-> > >     dma-iommu.c:(.text+0x179): undefined reference to `dma_pgprot'
-> > 
-> > dma_pgprot seems to depend on HAS_DMA though, not HAS_IOMEM.
-> > 
-> > (Oh, HAS_DMA is defined using "depends on !NO_DMA" + "default y".
-> > NO_DMA has three different definitions. Two of them (in
-> > drivers/crypto/ccree/cc_hw_queue_defs.h and arch/arm/include/asm/dma.h)
-> > unrelated.)
-> 
-> Yes, HAS_DMA is the second missing piece for UM.
-
-So something like:
-
-	# Usermode linux doesn't provide HAS_DMA and HAS_IOMEM.  To not have to
-	# clutter most dependencies with these just exclude UML from compile
-	# testing.
-
-as comment for COMPILE_TEST's depend line should be fine, right?
-
-Best regards
-Uwe
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+Best regards,
+Krzysztof
 
