@@ -2,64 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CD1513206A
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 08:27:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC26913211F
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 09:14:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wq7DFEUvP+0wFlYrjSXvC5PRny+kxFc78/76X4NTgJE=; b=kzrPozbucrMFaSt9hkU2Zhi+J
-	8CKV6sr7iQHjI4RgOQ89B49xoWzm7QOMwlfYbT5+GYvj+dYTGcb0bHvKZpGNGBohjy6Q2AEB5HOfE
-	x5dI2MHY59CMY5AgUqJFrjCtB0k0nat0jrZ+/aHGgVuqdQ3UpwU4Xh534Op2PTO+sQqWFcNszUah1
-	t/3yUptdL2nbsPizzIjATWRSEn5YoFi4PZ5FpMuQXGY7ulaNSNoU1CQf3aDHyiLx2c1/pM8Ic1UuC
-	d3bcHG/emG4WYhJapSbf1NoCca6tY1pzVRqGG9/E4rwPeMFFKARK2BVKMScdu1sUUEnTLJU6T25cH
-	F/ZE7RWGw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=akW4UWcOdP6Grp2KonZlQcBnfvoYSwriz8j1t5Jkqsc=; b=uTnNYtxNi3vWt9
+	Nw1iKtlf2PCUm1oDm+Jwq2Ju6pspiio0qasOu7W5PaAJQuD4jV8XjS13bQ0Q1yxeX1YCC+9g4utfj
+	g4VN7iNHnbc5+NHxC0HQ5AP7vWEv32jnjPv2zFjW950NPuSsMTZHpfNUHdncI9QizODCGII+kg7xq
+	pElNUiNWmcCfMrpvjRbfEAthccyaNJC+IX4r0cefoUu8a1jjaeq/aCthzNAevGHRYrjPztOnU3viS
+	PoWgliHJPkn0x2ExAARQn0xo6AiaCuyaiEfn7sR5sn5oOt2pg3D7kgmfqGiFG8zJqH70omou5tphJ
+	nJkF59Vgk6ztH2G1wgwg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iojGr-0003qt-3U; Tue, 07 Jan 2020 07:27:21 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1iok0E-0004NR-2z; Tue, 07 Jan 2020 08:14:14 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iojGW-0003Z3-52
- for linux-riscv@lists.infradead.org; Tue, 07 Jan 2020 07:27:01 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1iojGI-0000qU-CN; Tue, 07 Jan 2020 08:26:46 +0100
-Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <ukl@pengutronix.de>)
- id 1iojGH-00029v-Ic; Tue, 07 Jan 2020 08:26:45 +0100
-Date: Tue, 7 Jan 2020 08:26:45 +0100
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
-Message-ID: <20200107072645.ko247bwhh3ibdu73@pengutronix.de>
-References: <20191230172113.17222-1-krzk@kernel.org>
- <20191230172113.17222-2-krzk@kernel.org>
+ id 1iok08-0004Mk-IP
+ for linux-riscv@lists.infradead.org; Tue, 07 Jan 2020 08:14:11 +0000
+Received: by mail-qk1-x741.google.com with SMTP id x129so41907816qke.8
+ for <linux-riscv@lists.infradead.org>; Tue, 07 Jan 2020 00:14:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=akW4UWcOdP6Grp2KonZlQcBnfvoYSwriz8j1t5Jkqsc=;
+ b=bwwjdTWn07UYSehfmFp9lXNZC24KgC9QAy12z2S2u1lZBdj13/bm4d6XXe3pYuUf/t
+ CEj1OTDObiRuzXXlhrVP26ofMrwaJJsjbXfpkuEj2JXgDI1h69BPWLTP1QoM7YoUVE0P
+ VxwgCqzfjFhrUqd++O79MhTVv1KM0jcQtMO/D4Azgpz4n0MHdqZn5qY8nUCJpdQZyfMv
+ GF1/udulvUP+3WPiKoP+h4XX71z1aBrcBh0UKCsYhscb/Di3O4fCHXRGyOp6iDbamCqv
+ JJ+78i+6xp5i8/1SvT5mnlCJ5MeNM45ttLClkLYXGdV147/NKVOV0JFujb4C+ehp3lPi
+ Jubw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=akW4UWcOdP6Grp2KonZlQcBnfvoYSwriz8j1t5Jkqsc=;
+ b=NKkEj6Eje5HqGc9JKhQ5MKxAWMUY+sZkuMVRidJBi9MHBLgRyUCjIoZ6PqjniCBaIM
+ VIQ6D9cLU0hlFn8f8t4ueG0gHcFoVPxsEmHM5QxJUltol+2YT2ujbj0tVy8ZSdKx0EwA
+ KXVHcBeVKB9CxQT5Pw87fbcFVu8l4yegvgJ4hFCSulwg14ayUSWTZMXlI15P6pxlQGGm
+ UlzxGwJgpF2NvgO2KCbsz7C0Ugc8wVYDnUKNhDmv1TRH9vh0a6gcdf0dodMYhUoAMq4x
+ tZAK1NzyzCD6ZMtU4r0u1c1dUFslU/f6mOfzDinSeiktW+Vie8MGY5W6EfF/pZ0Lr61k
+ LVzw==
+X-Gm-Message-State: APjAAAX666ufbly8/lOJKF0dXUh/i7nSJAO2DfC//Kq/SwMyztNbxxgZ
+ N40YLNLqrLqYmh4NNkiNDwPtJXkhq1yrhqU0dhg=
+X-Google-Smtp-Source: APXvYqzWFUk7QyJ3Tpw6LqkcUf8FNEwTpCYweqa0ESJaK3f6n2P2SGGbBoxMUIMqV1Q2T354z2gOCnCjI/oeb9i8fvo=
+X-Received: by 2002:a05:620a:14a4:: with SMTP id
+ x4mr86046437qkj.493.1578384847200; 
+ Tue, 07 Jan 2020 00:14:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20191230172113.17222-2-krzk@kernel.org>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
+References: <20191216091343.23260-1-bjorn.topel@gmail.com>
+ <20191216091343.23260-3-bjorn.topel@gmail.com>
+ <mhng-6be38b2a-78df-4016-aaea-f35aa0acd7e0@palmerdabbelt-glaptop>
+In-Reply-To: <mhng-6be38b2a-78df-4016-aaea-f35aa0acd7e0@palmerdabbelt-glaptop>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Tue, 7 Jan 2020 09:13:56 +0100
+Message-ID: <CAJ+HfNjoO2ihHMh2NHMQfxG8X1zLdzEq6Ywr=b2qD0tNwXreFA@mail.gmail.com>
+Subject: Re: [PATCH bpf-next v2 2/9] riscv, bpf: add support for far branching
+To: Palmer Dabbelt <palmerdabbelt@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_232700_198755_E5E62F0C 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200107_001408_649061_82ED422D 
+X-CRM114-Status: GOOD (  20.11  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bjorn.topel[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,54 +97,120 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Thierry Reding <thierry.reding@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>, Luke Nelson <lukenels@cs.washington.edu>,
+ linux-riscv@lists.infradead.org, bpf <bpf@vger.kernel.org>,
+ Xi Wang <xi.wang@gmail.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hello Krzysztof,
+Back from the holidays; Sorry about the delayed reply.
 
-On Mon, Dec 30, 2019 at 06:21:13PM +0100, Krzysztof Kozlowski wrote:
-> Some of the PWM drivers can be compile tested to increase build
-> coverage.
-> 
-> The Meson PWM driver requires COMMON_CLK dependency.
+On Mon, 23 Dec 2019 at 19:03, Palmer Dabbelt <palmerdabbelt@google.com> wro=
+te:
+>
+> On Mon, 16 Dec 2019 01:13:36 PST (-0800), Bjorn Topel wrote:
+> > This commit adds branch relaxation to the BPF JIT, and with that
+[...]
+> > @@ -1557,6 +1569,7 @@ struct bpf_prog *bpf_int_jit_compile(struct bpf_p=
+rog *prog)
+> >  {
+> >       bool tmp_blinded =3D false, extra_pass =3D false;
+> >       struct bpf_prog *tmp, *orig_prog =3D prog;
+> > +     int pass =3D 0, prev_ninsns =3D 0, i;
+> >       struct rv_jit_data *jit_data;
+> >       struct rv_jit_context *ctx;
+> >       unsigned int image_size;
+> > @@ -1596,15 +1609,25 @@ struct bpf_prog *bpf_int_jit_compile(struct bpf=
+_prog *prog)
+> >               prog =3D orig_prog;
+> >               goto out_offset;
+> >       }
+> > +     for (i =3D 0; i < prog->len; i++) {
+> > +             prev_ninsns +=3D 32;
+> > +             ctx->offset[i] =3D prev_ninsns;
+> > +     }
+>
+> It feels like the first-order implementation is the same as binutils here=
+: the
+> first round is worst cased, after which things can be more exact.  We're =
+only
+> doing one pass in binutils because most of the relaxation happens in the
+> linker, but this approach seems reasonable to me.  I'd be interested in s=
+eeing
+> some benchmarks, as it may be worth relaxing these in the binutils linker=
+ as
+> well -- I can certainly come up with contrived test cases that aren't rel=
+axed,
+> but I'm not sure how common this is.
+>
 
-I'm surprised that there are not more that need this. Is HAVE_CLK not
-enough?
+Ah, interesting! Let me try to pull out some branch relaxation
+statistics/benchmarks for the BPF selftests.
 
-Also HAS_IOMEM is a typical requirement, but I tested with an ARCH=um
-config (which does't have HAS_IOMEM) and they all compile fine.
+> My only worry is that that invariant should be more explicit.  Specifical=
+ly,
+> I'm thinking that every time offset is updated there should be some sort =
+of
+> assertion that the offset is shrinking.  This is enforced structurally in=
+ the
+> binutils code because we only generate code once and then move it around,=
+ but
+> since you're generating code every time it'd be easy for a bug to sneak i=
+n as
+> the JIT gets more complicated.
+>
 
-> @@ -318,7 +319,7 @@ config PWM_MEDIATEK
->  
->  config PWM_MXS
->  	tristate "Freescale MXS PWM support"
-> -	depends on ARCH_MXS && OF
-> +	depends on (ARCH_MXS && OF) || COMPILE_TEST
->  	select STMP_DEVICE
->  	help
->  	  Generic PWM framework driver for Freescale MXS.
-> @@ -328,7 +329,8 @@ config PWM_MXS
->  
->  config PWM_OMAP_DMTIMER
->  	tristate "OMAP Dual-Mode Timer PWM support"
-> -	depends on OF && ARCH_OMAP && OMAP_DM_TIMER
-> +	depends on (ARCH_OMAP && OMAP_DM_TIMER) || COMPILE_TEST
-> +	depends on OF
+Hmm, yes. Maybe use a checksum for the program in addition to the
+length invariant, and converge condition would then be prev_len =3D=3D len
+&& prev_crc =3D=3D crc?
 
-I'm surprised that OF isn't required for PWM_MXS but is is for
-PWM_OMAP_DMTIMER. pwm-mxs compiles without CONFIG_OF, didn't test
-pwm-omap-dmtimer.
+> Since most of the branches should be forward, you'll probably end up with=
+ way
+> fewer iterations if you do the optimization passes backwards.
+>
 
-Best regards
-Uwe
+Good idea!
 
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |    | https://www.pengutronix.de/ |
+> > -     /* First pass generates the ctx->offset, but does not emit an ima=
+ge. */
+> > -     if (build_body(ctx, extra_pass)) {
+> > -             prog =3D orig_prog;
+> > -             goto out_offset;
+> > +     for (i =3D 0; i < 16; i++) {
+> > +             pass++;
+> > +             ctx->ninsns =3D 0;
+> > +             if (build_body(ctx, extra_pass)) {
+> > +                     prog =3D orig_prog;
+> > +                     goto out_offset;
+>
+> Isn't this returning a broken program if build_body() errors out the firs=
+t time
+> through?
+>
+
+Hmm, care to elaborate? I don't see how?
+
+> > +             }
+> > +             build_prologue(ctx);
+> > +             ctx->epilogue_offset =3D ctx->ninsns;
+> > +             build_epilogue(ctx);
+> > +             if (ctx->ninsns =3D=3D prev_ninsns)
+> > +                     break;
+> > +             prev_ninsns =3D ctx->ninsns;
+>
+> IDK how important the performance of the JIT is, but you could probably g=
+et
+> away with skipping an iteration by keeping track of some simple metric th=
+at
+> determines if it would be possible to
+>
+
+...to? Given that the programs are getting larger, performance of the
+JIT is important. So, any means the number of passes can be reduced is
+a good thing!
+
+
+Thanks for the review/suggestions!
+Bj=C3=B6rn
 
