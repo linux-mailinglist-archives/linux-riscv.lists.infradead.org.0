@@ -2,83 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCAE713215A
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 09:26:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21A9A13220E
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Jan 2020 10:16:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vT2NN+xI4BcelZZCoGioMbTizcdEYSLI6ni70MbnF8c=; b=HbR4F7+KL90F6g8iQsKJGLHRS
-	nOQVujglbr3w0icCSWNrgLQqCWHXq4yVyFbkfg7f62BtFST6Iuehr8n+u/fjBlfx2YEkivWo381o4
-	Kwokr9fnIwZMhcRB+dgWFmvwmwnn7IS9PWzcFBRL+SVjzEKiQUDrSfOxaL+pbdeZa+HcHRYbGSLpM
-	6hQf5CdqfvUHzxvm5YgvS7bc6cDRkk5aKI8cqZXhuYBl9WZI+qrk6CFL/IqSgdZ1zwVSWqOlEjlBT
-	ju84/3dZEK2Y8wILt6jcps0xlpBBl0cNnJtTOQ/RsChjELsKOCYdJJTWebAbEIpCx4LJj/vc5EILi
-	Y10jbHSiw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7oMdgWioDWITQzSI98n4NagJatFFPYMLbqTtAUUpj0w=; b=Cg2now6lIuHFZEpis469ddqmYa
+	I55Qf9D1Ki2DNo+LkTX/lRUKRVnZjZUvLLBw0VnyvQG4bR/vtM5cjnJXbtkh0V8koaJBtWjmAFW82
+	OiIIgi4FPZONdXMLuPojj8ouaY3rpYXQcRl3vORhkwydaFJIqxpafkqXzHP3IQoFK7c6KPPXIswJn
+	BuiYlQZS/TEBH70fyQouoVjSDIqMi1M6NKhT97Ht6axJ3HUTyUmU4wEzdoeqLXl+dRgNm4RWBZd7e
+	QCBb/Bpv1BBJM1zy5i+wvwu7ogmpmI8OTALGsHYPZUP2V7ckntHPDTyqiK2iFdxrarQyR0iGkERDu
+	YLeL7L1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iokBi-0001kw-OU; Tue, 07 Jan 2020 08:26:06 +0000
-Received: from mail-ed1-f65.google.com ([209.85.208.65])
+	id 1iokyg-0003mG-TY; Tue, 07 Jan 2020 09:16:42 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iokBM-0001RW-I4; Tue, 07 Jan 2020 08:25:45 +0000
-Received: by mail-ed1-f65.google.com with SMTP id t17so49684279eds.6;
- Tue, 07 Jan 2020 00:25:43 -0800 (PST)
+ id 1iokyY-0003dd-7d
+ for linux-riscv@lists.infradead.org; Tue, 07 Jan 2020 09:16:36 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id l35so8996856pje.3
+ for <linux-riscv@lists.infradead.org>; Tue, 07 Jan 2020 01:16:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=7oMdgWioDWITQzSI98n4NagJatFFPYMLbqTtAUUpj0w=;
+ b=muBYzEDf3kXREd5gF/6B8QBbwzXQ3RFt696Xz/URWaNaLG9ung8yAF+OK3RJKqO3t8
+ 3vX9swBxnsrQyh/mJZkDaN6vc44EeKnHTyJZSLsbAGFC8BMiZJZjFTfCyBpYeENAz0gV
+ n00TprtefUwyHJW71jx+mQ9WY4I/ucnCWax+RHAcaIMyGwYhVEoat88B1c61uUNdPGzC
+ b9j19ZZP09ngqo45VMdPj7mhT13TKoT6GkpklqR4AOkfmWggI/3u6+YW1Gf3Y1yH2rje
+ sYxiy5MY08iUZD9pWNIeLV5+lpBblpq2ncFB3OWfvEVjGhVh/yM9ft6FIo8fklLXvF8X
+ gz5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=vT2NN+xI4BcelZZCoGioMbTizcdEYSLI6ni70MbnF8c=;
- b=H5ntgANnQ3LJlZqRj0AvDM8Pfvr1d9jl/CQ24bjSzWIIGmBmCdpDNrPpvNPw8vULyW
- nmkvUE7KzTT94hnmvHVdu+FcA++X/GZjPLZpfMlfeAsmCWhIWLndg2C/FM/tLv/8wy/9
- 2kcW8rThD7+BiViGFjObJLaAliZ2RmjEVOhWnEH/CsOd1kSMHBMAAtTR8wR1OHciyx/0
- a86vrjonbzwXSAHojFzGPs7LyK/xia4xR/CD6RulUSnRVnbtjF0x7QXoT0mlJW7+PlB1
- +icv1L99aVEPiJTIxdI4Y+ln077w0Levqc0LMIi5MGYk4C5x3dncZbXS+fPJAZ0ZQZQd
- oAZQ==
-X-Gm-Message-State: APjAAAUC6jh8b1TDV8/J8Ar0MJ4Yl4qJtwSbuHlssjW8x6rCqbwpwL4P
- n2jDfHFeLuoKyxnEmy8wImE=
-X-Google-Smtp-Source: APXvYqwRuI+Pu22h1HAS8nBuWY+NEdeOj5ioRnCb8N42vbhDOOIZ7fM0eRKg8UY44R4kju5amCGT3w==
-X-Received: by 2002:a05:6402:221c:: with SMTP id
- cq28mr63552685edb.110.1578385542439; 
- Tue, 07 Jan 2020 00:25:42 -0800 (PST)
-Received: from pi3 ([194.230.155.149])
- by smtp.googlemail.com with ESMTPSA id ba29sm7398179edb.47.2020.01.07.00.25.40
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=7oMdgWioDWITQzSI98n4NagJatFFPYMLbqTtAUUpj0w=;
+ b=Z9AzX2bieSZaiB46Zu/Ye5tz6o5IzmwMajLliAyu6zP16ARHqVaeHxl3IQ5eLjJNqo
+ wneLghFwlaQJ4e6pNN34OOfv5uIfrnVc65xvJIiP7jFA3wgiOf/EJjHCYB8izbEmFEEr
+ nVBYZ0zJH4maF6d6xtUV/8DpfiJEcBeoHpY8Qb3qsItkMuMIN3uhbAjJMj5a29MgUcTI
+ eWOasPXFVtMZnuadNL7O5JtAOv6zutCTcf3u/IekZ9j/45JS0NIY8Mj7Oj0/k4Ug/7NE
+ gB3Xja2Pz1bOlNGxt0k+gRjOW+hv9gAK4jnl5A0mhGK4uZHte6k9Ar314DUDKulc8ZYI
+ qKgw==
+X-Gm-Message-State: APjAAAUdIs5rACeDCq7OMCJTIgmzKIZ+8kEW1pudt3AAyfYc3QDCu3Wq
+ taNtcr4WMe9CACHWESd/vIegnw==
+X-Google-Smtp-Source: APXvYqxjLep94Ti3iFTWlLDf1xdX+FyHt3IAErpNxzG6ui1L7m8uCDC6PAwPl7aQSChPTwNjZZihzg==
+X-Received: by 2002:a17:902:9684:: with SMTP id
+ n4mr44455505plp.154.1578388592754; 
+ Tue, 07 Jan 2020 01:16:32 -0800 (PST)
+Received: from greentime-VirtualBox.internal.sifive.com
+ (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
+ by smtp.gmail.com with ESMTPSA id s26sm48350814pfe.166.2020.01.07.01.16.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jan 2020 00:25:41 -0800 (PST)
-Date: Tue, 7 Jan 2020 09:25:39 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
-Message-ID: <20200107082539.GA31827@pi3>
-References: <20191230172113.17222-1-krzk@kernel.org>
- <20191230172113.17222-2-krzk@kernel.org>
- <20200107072645.ko247bwhh3ibdu73@pengutronix.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20200107072645.ko247bwhh3ibdu73@pengutronix.de>
+ Tue, 07 Jan 2020 01:16:32 -0800 (PST)
+From: Greentime Hu <greentime.hu@sifive.com>
+To: green.hu@gmail.com, greentime@kernel.org, paul.walmsley@sifive.com,
+ palmer@dabbelt.com, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] riscv: to make sure the cores in .Lsecondary_park
+Date: Tue,  7 Jan 2020 17:16:18 +0800
+Message-Id: <20200107091618.7214-1-greentime.hu@sifive.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_002544_602970_0997F922 
-X-CRM114-Status: GOOD (  13.10  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20200107_011634_410893_9D03A6D2 
+X-CRM114-Status: UNSURE (   7.16  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.208.65 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (k.kozlowski.k[at]gmail.com)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.208.65 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,69 +92,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Thierry Reding <thierry.reding@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Greentime Hu <greentime.hu@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jan 07, 2020 at 08:26:45AM +0100, Uwe Kleine-K=C3=B6nig wrote:
-> Hello Krzysztof,
->=20
-> On Mon, Dec 30, 2019 at 06:21:13PM +0100, Krzysztof Kozlowski wrote:
-> > Some of the PWM drivers can be compile tested to increase build
-> > coverage.
-> >=20
-> > The Meson PWM driver requires COMMON_CLK dependency.
->=20
-> I'm surprised that there are not more that need this. Is HAVE_CLK not
-> enough?
+The code in secondary_park is currently placed in the .init section.  The
+kernel reclaims and clears this code when it finishes booting.  That
+causes the cores parked in it to go to somewhere unpredictable, so we
+move this function out of init to make sure the cores stay looping there.
 
-Nope. E.g. for alpha architecture, HAVE_CLK is not set and without
-COMMON_CLK:
+Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+---
+ arch/riscv/kernel/head.S | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-drivers/pwm/pwm-meson.o: In function `meson_pwm_init_channels':
-(.text+0x244): undefined reference to `devm_clk_register'
-
-I guess other solution would be to add stubs for few clk functions...
-
-> Also HAS_IOMEM is a typical requirement, but I tested with an ARCH=3Dum
-> config (which does't have HAS_IOMEM) and they all compile fine.
-
-Because of !HAS_IOMEM, since some time ARCH=3Dum does not support
-COMPILE_TEST. Therefore HAS_IOMEM dependency is not needed for compile
-testing (and for regular build it is selected by ARCH).
-
->=20
-> > @@ -318,7 +319,7 @@ config PWM_MEDIATEK
-> > =20
-> >  config PWM_MXS
-> >  	tristate "Freescale MXS PWM support"
-> > -	depends on ARCH_MXS && OF
-> > +	depends on (ARCH_MXS && OF) || COMPILE_TEST
-> >  	select STMP_DEVICE
-> >  	help
-> >  	  Generic PWM framework driver for Freescale MXS.
-> > @@ -328,7 +329,8 @@ config PWM_MXS
-> > =20
-> >  config PWM_OMAP_DMTIMER
-> >  	tristate "OMAP Dual-Mode Timer PWM support"
-> > -	depends on OF && ARCH_OMAP && OMAP_DM_TIMER
-> > +	depends on (ARCH_OMAP && OMAP_DM_TIMER) || COMPILE_TEST
-> > +	depends on OF
->=20
-> I'm surprised that OF isn't required for PWM_MXS but is is for
-> PWM_OMAP_DMTIMER. pwm-mxs compiles without CONFIG_OF, didn't test
-> pwm-omap-dmtimer.
-
-Since some time !OF has all necessary stubs so OF is actually needed
-only for binding, not compiling.
-
-Best regards,
-Krzysztof
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index f8f996916c5b..d8da076fc69e 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -217,11 +217,6 @@ relocate:
+ 	tail smp_callin
+ #endif
+ 
+-.align 2
+-.Lsecondary_park:
+-	/* We lack SMP support or have too many harts, so park this hart */
+-	wfi
+-	j .Lsecondary_park
+ END(_start)
+ 
+ #ifdef CONFIG_RISCV_M_MODE
+@@ -303,6 +298,14 @@ ENTRY(reset_regs)
+ END(reset_regs)
+ #endif /* CONFIG_RISCV_M_MODE */
+ 
++__FINIT
++.section ".text", "ax",@progbits
++.align 2
++.Lsecondary_park:
++	/* We lack SMP support or have too many harts, so park this hart */
++	wfi
++	j .Lsecondary_park
++
+ __PAGE_ALIGNED_BSS
+ 	/* Empty zero page */
+ 	.balign PAGE_SIZE
+-- 
+2.17.1
 
 
