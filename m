@@ -2,86 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF5D0133936
-	for <lists+linux-riscv@lfdr.de>; Wed,  8 Jan 2020 03:40:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CA101339AD
+	for <lists+linux-riscv@lfdr.de>; Wed,  8 Jan 2020 04:37:03 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YdOoXfjMlmlNHacUP7Z48pi92SG1YwN9wrHsFZ4ZOxI=; b=UUXWdI4XGdIOAKkCKgoV6eXNLC
-	8+sAY07cVPr1FCBPG+4nHVwS8aRZRhFLU9H/bE3rvpOzpOWUwO6Wv4kl0QlRiJWxCmBi/gX/C46DE
-	mGoeB7iBrkJHLtoP73BtWpF/rDpp29MrEvTca7Cqg0gPhAX89ns4wg2OLAL2vEnsF9n/rDCHjFqle
-	LZOCumOJOAeZHEB04Jme7j0CqJjeXqjYn1kBvPeP3SVp+rrGZGiQixp7kxMjtTTUe2kWSyBsz4tiq
-	kjXpSuzSmX3GJ17+yMiRpOIHdi49GOqIFtQ3wGWM5/oAItp/+czt3MzxSMOs/gyYOShrYKlZW4Gug
-	rOrgO1CA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ySbkX+4r5a6zzWgSuzqB+vjv/GamaAVWkn0vznIPTa4=; b=nQ49z1il/wc12dscadXSDRAI2
+	2gzeD3fqUxzYaD05EQ7+ZefOGGFoYc4Jpd17vHNh4vCdkaja2a+8Yg3X4vwIon/2MgxQHwneev2Ia
+	WBxHFyn/rD6T51njZBFAFAlPc7/xGT858FB0P5xPKiMuQ/hJoF9pScvUm/AoNt55BPAPo6pJhqxH9
+	Gu6DON8jfUAFF5vk1Ihsdha/qmKtVE3W79UjUu5jGZHOZuhFrcDuD1Rb2561FXxV8Z63Ui7rW1Fay
+	yhdG6KKy7UYMv/NaTdDNAZkMfEqXC1Wg7d+zFjnM+owOnQDplkezg+mCym2VFaIjBDqh6n+2LkkAa
+	K1E4Iwn1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ip1H9-0007Pg-BQ; Wed, 08 Jan 2020 02:40:51 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1ip29R-0001ZO-2f; Wed, 08 Jan 2020 03:36:57 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ip1H5-0007On-Ea
- for linux-riscv@lists.infradead.org; Wed, 08 Jan 2020 02:40:48 +0000
-Received: by mail-pg1-x544.google.com with SMTP id x7so787270pgl.11
- for <linux-riscv@lists.infradead.org>; Tue, 07 Jan 2020 18:40:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=YdOoXfjMlmlNHacUP7Z48pi92SG1YwN9wrHsFZ4ZOxI=;
- b=knnFu4kfnLycncKppgXa/Y7ob1Z6g9DGNmJB3EohyBMwhCgaAc91+DxBk+nzQdjg+l
- jcfiucb2QUK8C5aKxaPM2z/dxSLT6k5DuvrckWwJIo81LdIob1zjnxkaqw+J0WENgUBz
- q1KxQXgQBVQed7tzA6aBlY3R0x2WgdFg4lIwKIORXFlgQnOzDtutBKEgP5yh+AP8qnEx
- C8nrnBWFHBnfQURBRQCStTBmeoQlAyNV4PvnOT5X40/CxvbNabnmKn4jgKfVgt9Dcpj+
- k4PUnFjEVBsSUZEQ6pXbh6UybKiyz/TEmTmRwOdlg6fyN6g23NjWPbRqtu91t2TRUOLZ
- IO+A==
+ id 1ip29M-0001Yt-V3
+ for linux-riscv@lists.infradead.org; Wed, 08 Jan 2020 03:36:54 +0000
+Received: by mail-wr1-x443.google.com with SMTP id g17so1846498wro.2
+ for <linux-riscv@lists.infradead.org>; Tue, 07 Jan 2020 19:36:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ySbkX+4r5a6zzWgSuzqB+vjv/GamaAVWkn0vznIPTa4=;
+ b=coiwODIRqSIDkJCbI5ezwrW7yd5BZTJJju0W/SVfgKIapZG5FEoUrpHuV89f9c8UVL
+ vzjVJCnAa4hhXxBnHmvVUsgyk9NxiTdBpuJykKNSNawkAa1WbF9a7XlUSziREksjZnDv
+ PHcnwBktmROK/gtIkV8Rw9FgkNXn6GnwwJ3b3M+4HHlOS/5ZZI0tZK1eCXLD0TSWt2vX
+ 7xSnBO1VuPi+pQz9peXHYrkcndjxykktnFdkFecKIY9DUjSj6mn7GIbYY7uCnG0yz+xW
+ E3q8chVkBY1R5CXRreYWmMMkJKhx+xPtmHOxvarMxHaSus/OS8uqgct3RFkGgrFkp+ox
+ n0Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=YdOoXfjMlmlNHacUP7Z48pi92SG1YwN9wrHsFZ4ZOxI=;
- b=BNIW35hZ9n3ACrgWyXAkeU/hg3+tytgwZGGTuyDtThaWP+9vICobKvvyPkte1mHw/m
- Qido+Yt6dUy3TKNuBOKvYQsBQ/V8HJr2OMRJiK/j3U5ccFPtw8ln+prmeP0MOxRe3DBm
- gO4zs2xxqsc9KnF4mRsVGpR8K7o052NFymGrpJXX9niXNMfmV0ZbYREgO/LA5KDqlcCe
- HMc9hVsCr+2J/vcef0lY9ck+QchcZ/f9H9Iuhc5WmxKixVW+1fnr4NK5g33tDbWznz6S
- VRh/jqav581vg5Mz9/dl20nZORVWLsV4jaaEP+np8HN4jlOEWUpJrQEtNVdsK/lFrgNK
- k7AA==
-X-Gm-Message-State: APjAAAVcWyx76Vt+ZzA5NQZiLw2Fxt3IFvIX9FSzeaIzyAwdqoS4qrtk
- E4yjHrVhUakPJP59LpQ1THdAIw==
-X-Google-Smtp-Source: APXvYqwEU/CLUZ+DPliiIIBvw3Nnr70BPkLNpg5SROWYJCuvyinwiF0BSh22tEYUZLUX/hfXXJVdzA==
-X-Received: by 2002:a63:f403:: with SMTP id g3mr2950955pgi.62.1578451246863;
- Tue, 07 Jan 2020 18:40:46 -0800 (PST)
-Received: from greentime-VirtualBox.internal.sifive.com
- (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id b65sm1151234pgc.18.2020.01.07.18.40.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jan 2020 18:40:46 -0800 (PST)
-From: Greentime Hu <greentime.hu@sifive.com>
-To: green.hu@gmail.com, greentime@kernel.org, paul.walmsley@sifive.com,
- palmer@dabbelt.com, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2] riscv: to make sure the cores in .Lsecondary_park
-Date: Wed,  8 Jan 2020 10:40:35 +0800
-Message-Id: <20200108024035.17524-1-greentime.hu@sifive.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ySbkX+4r5a6zzWgSuzqB+vjv/GamaAVWkn0vznIPTa4=;
+ b=A3EH0ffjZqj8c0Tg06wjs+RfiRZei8iEm7v1yezw5QcW74RlHxnpwWhBlIeYv2plpZ
+ N4Xca2fKIA0qM42bc9J4ZAmcAW3MTtulifva36411MSBltPuq8T7lGcnvn+WVa7iLprL
+ x9oVNTz3nPl43DGa0vOvamC2vAzJrJ8wQvBOWYW4yIRvYW9ySGC8n4LMspS6EUYnNNlc
+ 6b7GHNqzm6qHEy+hx8Mt69p4hEo0PlK7TyeI76kfdFSJcuktapmPGjC8krBA/HIBrOmh
+ Rb6KqPFifzT5mJX/DiutmNMjlfEJ55nleOqQUSfmD7jguCDxHvs8Ic+qQp1y4pLk728I
+ ckhA==
+X-Gm-Message-State: APjAAAUnWovGR42yYmV3qGnHMBOTYzcSuir3q0nsb5iIDaqAAbbfoxUS
+ RAeqMFqv4779pFLIuPwovnrE5spzXTLQ5XCy1krftA==
+X-Google-Smtp-Source: APXvYqyMYPh12V0kzjDt4WN4m4Lgpd4h24RikS83ZEMRJAjaizKqsZyTpaR8f8EHKyh5AmcWRtjPh47xhNpKbRhBxy8=
+X-Received: by 2002:adf:d850:: with SMTP id k16mr1938797wrl.96.1578454610421; 
+ Tue, 07 Jan 2020 19:36:50 -0800 (PST)
+MIME-Version: 1.0
+References: <20200108024035.17524-1-greentime.hu@sifive.com>
+In-Reply-To: <20200108024035.17524-1-greentime.hu@sifive.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Wed, 8 Jan 2020 09:06:38 +0530
+Message-ID: <CAAhSdy1LBo4QOCGBbCG8HxaK9Q8MWtx-istBn_5btkhaQPi3FA@mail.gmail.com>
+Subject: Re: [PATCH v2] riscv: to make sure the cores in .Lsecondary_park
+To: Greentime Hu <greentime.hu@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_184047_488437_CC23B355 
-X-CRM114-Status: UNSURE (   7.58  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200107_193653_061029_C68200D3 
+X-CRM114-Status: GOOD (  13.66  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -94,51 +87,63 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greentime Hu <greentime.hu@sifive.com>
+Cc: "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Greentime Hu <green.hu@gmail.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, greentime@kernel.org,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The code in secondary_park is currently placed in the .init section.  The
-kernel reclaims and clears this code when it finishes booting.  That
-causes the cores parked in it to go to somewhere unpredictable, so we
-move this function out of init to make sure the cores stay looping there.
+On Wed, Jan 8, 2020 at 8:10 AM Greentime Hu <greentime.hu@sifive.com> wrote:
+>
+> The code in secondary_park is currently placed in the .init section.  The
+> kernel reclaims and clears this code when it finishes booting.  That
+> causes the cores parked in it to go to somewhere unpredictable, so we
+> move this function out of init to make sure the cores stay looping there.
+>
+> Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+> ---
+>  arch/riscv/kernel/head.S | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
+>
+> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> index f8f996916c5b..276b98f9d0bd 100644
+> --- a/arch/riscv/kernel/head.S
+> +++ b/arch/riscv/kernel/head.S
+> @@ -217,11 +217,6 @@ relocate:
+>         tail smp_callin
+>  #endif
+>
+> -.align 2
+> -.Lsecondary_park:
+> -       /* We lack SMP support or have too many harts, so park this hart */
+> -       wfi
+> -       j .Lsecondary_park
+>  END(_start)
+>
+>  #ifdef CONFIG_RISCV_M_MODE
+> @@ -303,6 +298,13 @@ ENTRY(reset_regs)
+>  END(reset_regs)
+>  #endif /* CONFIG_RISCV_M_MODE */
+>
+> +.section ".text", "ax",@progbits
+> +.align 2
+> +.Lsecondary_park:
+> +       /* We lack SMP support or have too many harts, so park this hart */
+> +       wfi
+> +       j .Lsecondary_park
+> +
+>  __PAGE_ALIGNED_BSS
+>         /* Empty zero page */
+>         .balign PAGE_SIZE
+> --
+> 2.17.1
+>
 
-Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
----
- arch/riscv/kernel/head.S | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+LGTM.
 
-diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-index f8f996916c5b..276b98f9d0bd 100644
---- a/arch/riscv/kernel/head.S
-+++ b/arch/riscv/kernel/head.S
-@@ -217,11 +217,6 @@ relocate:
- 	tail smp_callin
- #endif
- 
--.align 2
--.Lsecondary_park:
--	/* We lack SMP support or have too many harts, so park this hart */
--	wfi
--	j .Lsecondary_park
- END(_start)
- 
- #ifdef CONFIG_RISCV_M_MODE
-@@ -303,6 +298,13 @@ ENTRY(reset_regs)
- END(reset_regs)
- #endif /* CONFIG_RISCV_M_MODE */
- 
-+.section ".text", "ax",@progbits
-+.align 2
-+.Lsecondary_park:
-+	/* We lack SMP support or have too many harts, so park this hart */
-+	wfi
-+	j .Lsecondary_park
-+
- __PAGE_ALIGNED_BSS
- 	/* Empty zero page */
- 	.balign PAGE_SIZE
--- 
-2.17.1
+Reviewed-by: Anup Patel <anup@brainfault.org>
 
+Regards,
+Anup
 
