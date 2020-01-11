@@ -2,90 +2,110 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01723137AF9
-	for <lists+linux-riscv@lfdr.de>; Sat, 11 Jan 2020 02:48:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67042137B55
+	for <lists+linux-riscv@lfdr.de>; Sat, 11 Jan 2020 04:57:44 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:References:
-	In-Reply-To:To:From:Subject:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xEZ6TEzAcDzhzB7iwisnARr6r+Hw8zTAaf/XQmWu/70=; b=mk9QnUR/C+jyvl
-	+wFOhhlR7/grFGtm5g48c5Yd5synaSMN9VtPxAzSgXJu1LdPye34U2Z5ApVzb45bBHJOJOKAz6/LL
-	uKgRPmRN5yqGrIcp85azPfunbnMAVVYF/Bs01xYPxaxrRIeF814zDM5zA8wUXfPx4IRuXurnJGxJC
-	OZJfKVct42vL0NG9BDF/p95J+1lxPQ6IOaI+v+s22K04BsipJZ3B8YLr3yFAs7Mo3RHZ7JkQ6LDmY
-	j1Ka2eGyY8V1xpEBG7G89wcSPVAgeVczTq50MfKI+JMv6dHbK5QIJ89pVhmkVMbEbMIMs+GunHQtx
-	JVSzipiKyys2hfrIxnpQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=nDgHu8yScAACB31qoDwmYnBppMkg5oPumfVdTWX1/SY=; b=L76T7W53Ww1rPrMMIkE9xNnCO
+	/IH1JrjzrVHURFjABcvP/OGU/naofMqXG93m7Pk+i82SlY6hYjKu/8SCV+TPtv7JzK2cFix/XhVfi
+	nrBXp/K+6xuJP3DXhWJYOODsoBH/Fwg1V2lLc/8s3v9lwkk8HTu5hqQUWArc0O9fhqqE4WeUcVv6D
+	xTfTlV7vqv8L11ZBQpSG58pM8inmqKPrnP/0yHUlSAAYOkgf+Ct9q9z8vNB6B3MTSDlv2mLT06wz+
+	nkkKG6SqSH0AHnKhnASKiqqAvflA89mZR2AITjvhp+GgQMmUcqxBkHTXk/ZIhAxaYiMkUi12lZcoq
+	1Bzsglbcg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iq5tC-0001gm-NB; Sat, 11 Jan 2020 01:48:34 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1iq7u3-0006A7-3X; Sat, 11 Jan 2020 03:57:35 +0000
+Received: from mail-dm6nam11on2052.outbound.protection.outlook.com
+ ([40.107.223.52] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iq5t9-0001gF-IU
- for linux-riscv@lists.infradead.org; Sat, 11 Jan 2020 01:48:33 +0000
-Received: by mail-pg1-x541.google.com with SMTP id k3so1835326pgc.3
- for <linux-riscv@lists.infradead.org>; Fri, 10 Jan 2020 17:48:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:subject:cc:from:to:in-reply-to:references:message-id
- :mime-version:content-transfer-encoding;
- bh=xEZ6TEzAcDzhzB7iwisnARr6r+Hw8zTAaf/XQmWu/70=;
- b=LTqZK5/dcOSC7BlHX1eRCVTfFJj4gXD+eEYavKPVdBTdMsmKAUXKpKrODMWQC/pefJ
- wANAEZX7/h7TUa2q9MxK2BGYrn3t+8GZw4cF0aCC+9vz9XvDd7P7wsL8bOqIqNT6dZT1
- RoDuL/x2J4VnomuP6EfnUQeDK9drlC6gsD8VESfGjOcwVWkNZNKhVXpf/gxMNvFfPbPy
- wtvDI95jbz1wXjmly5NFhqa3bCuqAFkaek6Kj6jWgH/XETIdO7gtWXfC1aKbeF+vpmju
- DNX8BgAYKT8vPnBlbb6MjfhY325zT5jiUuf3ZycN2m41LZBqQy757Vl9D8d6+qC0g1XS
- FBPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:cc:from:to:in-reply-to:references
- :message-id:mime-version:content-transfer-encoding;
- bh=xEZ6TEzAcDzhzB7iwisnARr6r+Hw8zTAaf/XQmWu/70=;
- b=miFGiVIjlH3aJDfYoV7wN//nUn4MGyoGXb4NHaUWcegLfBhlNQCsaT54NPL4GTw1mV
- p64yhwOGqfrOJQ+bOdvcKd1X/TK7eT85a4xUwxWmSwpMtx3L4c9N1lcgfpeVF/rVuNkA
- Anj80ibg4ERO1rLolXP3DuYZM2gKGoTp9MIixRWOs8pwt/11IrHxFErRsO6c2F+0vofn
- KxtW/LP4AZUGqUsZqn6z7Qojm9mPDxXo4XOPbsbpTQhYBQSNSySMlFrWciKn8rNmdLc5
- x9NivamfIZL3ViKLrkK2qovNrtbnaMJNvMT4bRw2+WxptNN0cltVtVtZNh3sX4KgZJnm
- 5n6g==
-X-Gm-Message-State: APjAAAXBFjqY+pAnZnjcO0no4113teJN5BT+FSnk92WXHKwPo6fAd+Hp
- kJfmz0RbumNhYGjRrF325h0RiA==
-X-Google-Smtp-Source: APXvYqyz00jbWGgySO8fqGSl+7swYcbEUDhauDDXKaFWJcBtF2PpYFpiqVpiofq7GexquwmDCGKNiA==
-X-Received: by 2002:a62:be09:: with SMTP id l9mr7386269pff.57.1578707310530;
- Fri, 10 Jan 2020 17:48:30 -0800 (PST)
-Received: from localhost ([2620:0:1000:2514:7f69:cd98:a2a2:a03d])
- by smtp.gmail.com with ESMTPSA id c68sm4542405pfc.156.2020.01.10.17.48.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jan 2020 17:48:30 -0800 (PST)
-Date: Fri, 10 Jan 2020 17:48:30 -0800 (PST)
-X-Google-Original-Date: Fri, 10 Jan 2020 17:48:28 PST (-0800)
-Subject: Re: [PATCH v2] riscv: keep 32-bit kernel to 32-bit phys_addr_t
-From: Palmer Dabbelt <palmerdabbelt@google.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.2001101709090.2113@viisi.sifive.com>
-References: <alpine.DEB.2.21.9999.2001101709090.2113@viisi.sifive.com>
- <20200106232024.97137-1-olof@lixom.net>
- <20200106231611.10169-1-olof@lixom.net>
- <mhng-d39bd2da-7e27-484a-b8f8-a96edf1336c0@palmerdabbelt-glaptop>
-Message-ID: <mhng-5513ef23-bcce-4e33-8f59-193d550e4156@palmerdabbelt-glaptop>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ id 1iq7tz-00069e-82
+ for linux-riscv@lists.infradead.org; Sat, 11 Jan 2020 03:57:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=a5wvNuw9eJl9eI6Q/oeqBYMkwBHbsXHdTScZtP2kN9gEbTNOnnrDZMv2S+vRKrAv03CmarM2O7J9YnLu3byVyw2XlfJuM8Lafh2whU7XuZs/jiFPlsa03jW62YVrV03CHVeYNp2dOZbziISGyg2r52foDxlyh7Tm56CMixuZZnvj0eLWewafCQBDWftJgCBvXPZgDhpQm8AVsRsmvs7MuKN/Klk2ZwVNkqSP9sR4IWLe8xZNZ7QRgPp7gdxa09VNapdWYsyRDbiSzwRxlMFCbUSTeaqc1JPXlQcntrPAXY67mxOGOm7UXiINBch0pxkkl9dq2c33NwJ9Bh/CJzjY2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nDgHu8yScAACB31qoDwmYnBppMkg5oPumfVdTWX1/SY=;
+ b=EA5cwPYV/mAZ+v8bu0sr62Pcs1rT8R0npLkw9GA1q9GgcC+vkQNCCElX5d2la/G6ENQzpf4OCir0q+BiToxa+mZUkQYCCZ1NWUTpFo/5Z19CVzVOGL8YBDycKV9yEtP6iu+1VEOmkFBUdbDHVHXTPZy86gFXrFD+xSP8O/xJNVj2rYep7S+nyyJja4rd9t6PSQlLkVwbPKvhOsAB62TgdWZJCPRnVTyRe3QoSxtCFNWYW8jIo73WL74XO1Uo2seUuQeZm6sW6Ml/X9NbyKJIywlNl3P66EhN126XWT+ma9N1O3z0NSHLgxDT3DXABXFcQhHYNzX5uWJPxWR5lCM3pw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
+ dkim=pass header.d=sifive.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nDgHu8yScAACB31qoDwmYnBppMkg5oPumfVdTWX1/SY=;
+ b=G0Okwd4HgfYsohTlv0aNiXMpTCy2KzuBrYhYLO7XG2JT/U5svrAJTP4BxbT4qLBuX/7YWB9ahNBp1PfvCdWlkR3wOzcjvYSpdDmhyAy86NuDQd6I6BeiBfUefeEXWa50ZnC3TWuiPEfrQbzF29xwyQA62KFDnuYUnouoS4lG1sU=
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
+ CH2PR13MB3590.namprd13.prod.outlook.com (52.132.246.32) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2644.10; Sat, 11 Jan 2020 03:57:26 +0000
+Received: from CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::eccb:16ac:e897:85d5]) by CH2PR13MB3368.namprd13.prod.outlook.com
+ ([fe80::eccb:16ac:e897:85d5%3]) with mapi id 15.20.2644.012; Sat, 11 Jan 2020
+ 03:57:26 +0000
+From: Yash Shah <yash.shah@sifive.com>
+To: "Paul Walmsley ( Sifive)" <paul.walmsley@sifive.com>
+Subject: RE: [PATCH] riscv: move sifive_l2_cache.h to include/soc
+Thread-Topic: [PATCH] riscv: move sifive_l2_cache.h to include/soc
+Thread-Index: AQHVxeorDALZ3QQDdE2BsC6QnTnA3KfkqnIAgAAL4gCAACLh8A==
+Date: Sat, 11 Jan 2020 03:57:25 +0000
+Message-ID: <CH2PR13MB3368D2DF7D06BA494AECBE238C3B0@CH2PR13MB3368.namprd13.prod.outlook.com>
+References: <1578463746-25279-1-git-send-email-yash.shah@sifive.com>
+ <alpine.DEB.2.21.9999.2001101704440.32308@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.2001101746310.40553@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.2001101746310.40553@viisi.sifive.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=yash.shah@sifive.com; 
+x-originating-ip: [114.143.65.226]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: d41a66f8-3fbf-43be-e724-08d7964a5f0f
+x-ms-traffictypediagnostic: CH2PR13MB3590:
+x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CH2PR13MB359086FF07B92FC5AC7680958C3B0@CH2PR13MB3590.namprd13.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1227;
+x-forefront-prvs: 0279B3DD0D
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(39830400003)(396003)(346002)(136003)(366004)(376002)(189003)(199004)(2906002)(44832011)(9686003)(8676002)(55016002)(81156014)(81166006)(86362001)(53546011)(6506007)(7696005)(33656002)(7416002)(6636002)(71200400001)(186003)(26005)(6862004)(5660300002)(316002)(8936002)(54906003)(76116006)(66946007)(66476007)(66446008)(66556008)(64756008)(52536014)(478600001)(4326008);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3590;
+ H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: sifive.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: PjZCvxFw3iugPFKaxKc1yDjt7OZfoWTcT/mg5M7NknV4yEonF9vROyMc7a9Nnkiqy9SQZvc4cDBp+2E/Q1Azm3OSyMvrUyy7eu/Rk08IeQ2ANkKc7IOy+q5jj3oYQObZdWM9W8rosfQyxBtpV9QZIGKiVA3w74iogTXZ2TFjl5RBdyPb1yB0FFSgOFTfOGanln4E1+8Y5HGimBeOP+cWS2w0FTp8261Rsq+3uBmK15kPoi3/QtHu2iThyUIuz4zL3ew76zSyIhDSozl2/AjS6z1UpGwwbp9ytRslwbDgKNGjeTM1i0MUWa6BoL0BRa8ZKDiRh8jo1tf43CzDO3KydZtq5d+Bdq3SYDRLvNRQ06CtmtaEPbJnRBlNOiZtAaAVx5Iw2KXYfGcZCFx8TKOEvqkG6su0nYqPR0EUXbfuYrfizGXJqctuAnzBfdzA4GFH
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: sifive.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d41a66f8-3fbf-43be-e724-08d7964a5f0f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jan 2020 03:57:25.7011 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: o+OP+VEZjDHzOQObiN8lFsh/85yxU+EZpa3jHPsN/MDMHkLlssqfPJF6xIrsti2c0HcDfWeqQLS+DYUIy1VGWA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3590
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200110_174831_633293_A0B39FD4 
-X-CRM114-Status: GOOD (  30.37  )
-X-Spam-Score: -15.7 (---------------)
+X-CRM114-CacheID: sfid-20200110_195731_354807_E39F1229 
+X-CRM114-Status: GOOD (  17.48  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-15.7 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
- [list.dnswl.org]
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ no trust [40.107.223.52 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
- white-list
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -93,8 +113,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
- Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,98 +124,133 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Olof Johansson <olof@lixom.net>, linux-riscv@lists.infradead.org,
- aou@eecs.berkeley.edu, linux-kernel@vger.kernel.org
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "james.morse@arm.com" <james.morse@arm.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "rrichter@marvell.com" <rrichter@marvell.com>,
+ "tony.luck@intel.com" <tony.luck@intel.com>, "bp@alien8.de" <bp@alien8.de>,
+ "palmer@dabbelt.com" <palmer@dabbelt.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "linux-edac@vger.kernel.org" <linux-edac@vger.kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 10 Jan 2020 17:14:46 PST (-0800), Paul Walmsley wrote:
-> On Fri, 10 Jan 2020, Palmer Dabbelt wrote:
->
->> On Mon, 06 Jan 2020 15:20:24 PST (-0800), Olof Johansson wrote:
->> > While rv32 technically has 34-bit physical addresses, no current platforms
->> > use it and it's likely to shake out driver bugs.
->> >
->> > Let's keep 64-bit phys_addr_t off on 32-bit builds until one shows up,
->> > since other work will be needed to make such a system useful anyway.
->> >
->> > PHYS_ADDR_T_64BIT is def_bool 64BIT, so just remove the select.
->> >
->> > Signed-off-by: Olof Johansson <olof@lixom.net>
->> > ---
->> >
->> > v2: Just remove the select, since it's set by default if CONFIG_64BIT
->> >
->> >  arch/riscv/Kconfig | 2 --
->> >  1 file changed, 2 deletions(-)
->> >
->> > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
->> > index a31169b02ec06..569fc6deb94d6 100644
->> > --- a/arch/riscv/Kconfig
->> > +++ b/arch/riscv/Kconfig
->> > @@ -12,8 +12,6 @@ config 32BIT
->> >
->> >  config RISCV
->> >  	def_bool y
->> > -	# even on 32-bit, physical (and DMA) addresses are > 32-bits
->> > -	select PHYS_ADDR_T_64BIT
->> >  	select OF
->> >  	select OF_EARLY_FLATTREE
->> >  	select OF_IRQ
->>
->> I gave 5.5-rc5 a quick test on a 32-bit QEMU with 8GiB of RAM and the system
->> wouldn't boot, so we've got at least some bugs floating around somewhere.
->> Given that this doesn't work I don't see any reason to keep it around as an
->> option, as if someone wants to make it work there's a lot more to do than make
->> things compile.
->>
->> I've put this on for-next.  If anyone cares about 34-bit physical addresses on
->> rv32 then now is the right time to speak up... ideally by fixing it :)
->
-> You know, if, according to
->
-> https://freenode.logbot.info/riscv/20200106
->
-> the main reason for doing this is to avoid autobuilder warnings, I'd be
-> tempted to suggest we leave it in there so people have some incentive to
-> go fix the real bugs ;-)
->
-> (that said, the patch is basically okay by me until at least QEMU is
-> fixed or hardware appears)
 
-I think it's unlikely to be a QEMU bug, as it starts printing messages from the
-payload and then hangs.  By the point QEMU is executing instructions it doesn't
-really care about pointers any more and is just doing whatever the instructions
-say to do.  It's possible QEMU decided to alias memory and blow everything up,
-but I feel like that would manifest after Linux prints some messages.  Writing
-this I feel like I've debugged that before...
 
-If I had to bet I'd put the bug in OpenSBI, but only because I don't see any
-Linux messages.  Specifically, I'd bet that someone did something like
+> -----Original Message-----
+> From: Paul Walmsley <paul.walmsley@sifive.com>
+> Sent: 11 January 2020 07:17
+> To: Yash Shah <yash.shah@sifive.com>
+> Cc: palmer@dabbelt.com; aou@eecs.berkeley.edu; bp@alien8.de;
+> mchehab@kernel.org; tony.luck@intel.com; james.morse@arm.com;
+> rrichter@marvell.com; linux-riscv@lists.infradead.org; linux-
+> kernel@vger.kernel.org; linux-edac@vger.kernel.org
+> Subject: Re: [PATCH] riscv: move sifive_l2_cache.h to include/soc
+>=20
+> On Fri, 10 Jan 2020, Paul Walmsley wrote:
+>=20
+> > On Tue, 7 Jan 2020, Yash Shah wrote:
+> >
+> > > The commit 9209fb51896f ("riscv: move sifive_l2_cache.c to
+> > > drivers/soc") moves the sifive L2 cache driver to driver/soc. It did
+> > > not move the header file along with the driver. Therefore this patch
+> > > moves the header file to driver/soc
+> > >
+> > > Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> >
+> > Thanks, queued for v5.5-rc.
+>=20
+> By the way, I fixed the include guard also.  The queued patch follows.
 
-    for (size_t i = 0; i < get_memory_size_from_fdt(); i += PAGE_SIZE)
-       memory_base[i + K], for small values of K
+Thanks, somehow I had overseen that.
 
-which would blow up for some configurations of 34-bit memory sizes and 32-bit
-size_t, given how the compiler likes to optimize things.  That definately
-happens early in the kernel boot, but IIRC we print a message after mapping a
-fixed number of pages (though that code was changed recently so I don't
-remember how it works now).
+- Yash
 
-I'd actually tested this before Olof brought up the issue and just put it in
-the "I guess just don't do that" pile, but when he mentioned it was breaking
-builds I remember chasing around some early kernel boot issue last time I
-accidentally turned on a lot of memory and figured it's probably best to just
-bail on the whole thing anyway.  IIRC part of the feedback on the original
-and while it'd be nice to have (which is probably why I ignored the feedback) I
-feel like there's more important ways to spend our time -- like getting a
-32-bit userspace.
+>=20
+>=20
+> - Paul
+>=20
+> From: Yash Shah <yash.shah@sifive.com>
+> Date: Tue, 7 Jan 2020 22:09:06 -0800
+> Subject: [PATCH] riscv: move sifive_l2_cache.h to include/soc
+>=20
+> The commit 9209fb51896f ("riscv: move sifive_l2_cache.c to drivers/soc")
+> moves the sifive L2 cache driver to driver/soc. It did not move the heade=
+r file
+> along with the driver. Therefore this patch moves the header file to
+> driver/soc
+>=20
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> Reviewed-by: Anup Patel <anup@brainfault.org>
+> [paul.walmsley@sifive.com: updated to fix the include guard]
+> Fixes: 9209fb51896f ("riscv: move sifive_l2_cache.c to drivers/soc")
+> Signed-off-by: Paul Walmsley <paul.walmsley@sifive.com>
+> ---
+>  drivers/edac/sifive_edac.c                                  | 2 +-
+>  drivers/soc/sifive/sifive_l2_cache.c                        | 2 +-
+>  .../include/asm =3D> include/soc/sifive}/sifive_l2_cache.h    | 6 +++---
+>  3 files changed, 5 insertions(+), 5 deletions(-)  rename
+> {arch/riscv/include/asm =3D> include/soc/sifive}/sifive_l2_cache.h (72%)
+>=20
+> diff --git a/drivers/edac/sifive_edac.c b/drivers/edac/sifive_edac.c inde=
+x
+> 413cdb4a591d..c0cc72a3b2be 100644
+> --- a/drivers/edac/sifive_edac.c
+> +++ b/drivers/edac/sifive_edac.c
+> @@ -10,7 +10,7 @@
+>  #include <linux/edac.h>
+>  #include <linux/platform_device.h>
+>  #include "edac_module.h"
+> -#include <asm/sifive_l2_cache.h>
+> +#include <soc/sifive/sifive_l2_cache.h>
+>=20
+>  #define DRVNAME "sifive_edac"
+>=20
+> diff --git a/drivers/soc/sifive/sifive_l2_cache.c
+> b/drivers/soc/sifive/sifive_l2_cache.c
+> index a9ffff3277c7..a5069394cd61 100644
+> --- a/drivers/soc/sifive/sifive_l2_cache.c
+> +++ b/drivers/soc/sifive/sifive_l2_cache.c
+> @@ -9,7 +9,7 @@
+>  #include <linux/interrupt.h>
+>  #include <linux/of_irq.h>
+>  #include <linux/of_address.h>
+> -#include <asm/sifive_l2_cache.h>
+> +#include <soc/sifive/sifive_l2_cache.h>
+>=20
+>  #define SIFIVE_L2_DIRECCFIX_LOW 0x100
+>  #define SIFIVE_L2_DIRECCFIX_HIGH 0x104
+> diff --git a/arch/riscv/include/asm/sifive_l2_cache.h
+> b/include/soc/sifive/sifive_l2_cache.h
+> similarity index 72%
+> rename from arch/riscv/include/asm/sifive_l2_cache.h
+> rename to include/soc/sifive/sifive_l2_cache.h
+> index 04f6748fc50b..92ade10ed67e 100644
+> --- a/arch/riscv/include/asm/sifive_l2_cache.h
+> +++ b/include/soc/sifive/sifive_l2_cache.h
+> @@ -4,8 +4,8 @@
+>   *
+>   */
+>=20
+> -#ifndef _ASM_RISCV_SIFIVE_L2_CACHE_H
+> -#define _ASM_RISCV_SIFIVE_L2_CACHE_H
+> +#ifndef __SOC_SIFIVE_L2_CACHE_H
+> +#define __SOC_SIFIVE_L2_CACHE_H
+>=20
+>  extern int register_sifive_l2_error_notifier(struct notifier_block *nb);=
+  extern
+> int unregister_sifive_l2_error_notifier(struct notifier_block *nb); @@ -1=
+3,4
+> +13,4 @@ extern int unregister_sifive_l2_error_notifier(struct notifier_b=
+lock
+> *nb);  #define SIFIVE_L2_ERR_TYPE_CE 0  #define SIFIVE_L2_ERR_TYPE_UE 1
+>=20
+> -#endif /* _ASM_RISCV_SIFIVE_L2_CACHE_H */
+> +#endif /* __SOC_SIFIVE_L2_CACHE_H */
+> --
+> 2.25.0.rc2
+>=20
+>=20
 
-That said, I'd be happy to make this selectable by menuconfig.  Presumably it's
-not that much work to chase around the drivers that blow up and add something
-like "depends 64BIT || PHYS_ADDR_T_32BIT" until randconfig builds stop failing,
-but I feel like that's as far as this is likely to go in the forseeable future.
-
-Either way, I guess this is a good reminder it's better to remain causal.  I
-suppose I'll try to do so in the future :)
 
