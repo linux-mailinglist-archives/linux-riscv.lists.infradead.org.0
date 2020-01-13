@@ -2,121 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40F0E138BE4
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Jan 2020 07:39:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C6B40139942
+	for <lists+linux-riscv@lfdr.de>; Mon, 13 Jan 2020 19:47:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eQtPDRbFbaih1fOsfTcYkS+ik74owJbwd6ks6yKbmKw=; b=GKTmq1P1M20w9Fo5yRaesPCpC
-	4nj3laGcdLSSOEjs/pRnTxRkcasXCZeAFaIn12F7SuqINh5W9mhqiIp0j1tz7r31jsp3fHJjTlAfa
-	6FdeVBPXaBo6MgULCW5rLhaI/qJXi8sL87gHMdn+41ucPPnFZk+gNlq4jiEcb91IDWN4uz8qZawKY
-	JetWmHFAZmt5J/AYlWIHYO2kjq7KhlcJknFvRfh7wxVoEIOE/pwclzQ7wtB9C5Gz2YYVjiYbEB4yW
-	fSNUNbhRrGGvD6O+LxVjSrG+akrmVUeGR9ZipQg6QRja9sKqhaUxnEBCCLANxGmcbaiu7ifegQo+b
-	WquguvSIg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:References:
+	In-Reply-To:To:Subject:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NEb0TNNHy4r1C3MNqV+qCdGg2s3vRQJoPda6bJix6S4=; b=tpR+cAvJQD+keZ
+	ZpdqNP+iM6gXwzPmPUluu4lV+Ryiap1JtcIQ8KXn6jplsSTMpw1CsO9t+hV+Ro04M9d9Uy3I/bew0
+	Gyr4JPPSZueZy38FYbiYGzU8TUZWqO+Ni9zeEfT4vaREOIMfE4lWPLILiT1vpBnS8sSJNjhndQpbG
+	ezWowCb1WUoOgZ5UJTJEXhsJzZ6In5N5HJOWL/mOCoXgOS44cNYU/M+e3pddAbXkFU9ZMy24wiNtY
+	f4qMTC1wtt/yIxs4XrLErIeTYBa8Ig3lQdlSfZUqGlAhnOLkbVAp1sys5glKUSDLLgs0SMga+O866
+	lDHTttyw7jNevssfE4GQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iqtNa-0002vE-JI; Mon, 13 Jan 2020 06:39:14 +0000
-Received: from mail-co1nam11on2041.outbound.protection.outlook.com
- ([40.107.220.41] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1ir4kS-0004gW-Dz; Mon, 13 Jan 2020 18:47:36 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iqtNW-0002tw-Pt
- for linux-riscv@lists.infradead.org; Mon, 13 Jan 2020 06:39:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XYSa+uhpi2NxRcnUCQDmDbBBPnvcI+cFxXQJpwKyFA4wXJmJvdFi160UqBVbbOtXJLaGhUSYdfbubnCxF6pNpOajsygcXhThcgkNnxmbnIv8AKNbhbXAUxc00CmJ/UwnrL5T4KwxRuI8yJVLP+e9a4UdZZPd3ZNaZuhSF0jfn0sJbmPL5eR/syZz+3F+B1053miNLP8Tid6JkFPIqrUcQ7W5tshHlFdMbMvdUq5/sZJGYq8Dj0UZ2A9U2Yy3V08iMuMzjw8kcCbTlDcezb7LDH8GU6dBh+9OZYmq6o8rjxzr0rKfgUG2Wt22oi4A4ECr38Vvr3tDmqaiqLm0LEPDvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eQtPDRbFbaih1fOsfTcYkS+ik74owJbwd6ks6yKbmKw=;
- b=FgnCdj41P1lqi3zMi0iOZZEIQSPz48mIHFDYyPQUTeTfwZqRX1eJvmTpn/EkRGxl4V05VL4Y+7Y37K4jTwshTXE7H2VttTYnqCN0v4O35X6G6QpxOxksIhuyIgcw1SWReHeu/CJEUjJpLJjyhzuOcUDm9gpNffvoSOrjxLOSd6S18laDz4+WpsO0YrZUef2ZYyDO1OeRJc+tSn/0fJi3UoiwAhI406rKiNjz+rJb8N8sePcx+sGFrYnzEL+/p6RUA2/n7bGKlC+50Wls2//b2nfCslFZc2tzx2pR+l0/qLQJ873cK0+R3XWefDcMfn/WFWD+iAf+PeX5kd7WAp2EVg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
- dkim=pass header.d=sifive.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eQtPDRbFbaih1fOsfTcYkS+ik74owJbwd6ks6yKbmKw=;
- b=YxutbpvqvJSoJZzCWAb9Yq6LhKHKoEkGnKvUo6tE88U5IYCFS/jJQqEQk0O5drh8wu5XOnLMG3XJUqY3FRU2MeA485n3xk/AacBihzX95ZZPrkvD2my2tUhzTOZesnWKjOMOwaQQhLVe8CsiS0Nds2O6dBeFN6OA+CEySTKds9c=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=yash.shah@sifive.com; 
-Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
- CH2PR13MB3317.namprd13.prod.outlook.com (52.132.246.158) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2644.6; Mon, 13 Jan 2020 06:39:09 +0000
-Received: from CH2PR13MB3368.namprd13.prod.outlook.com
- ([fe80::eccb:16ac:e897:85d5]) by CH2PR13MB3368.namprd13.prod.outlook.com
- ([fe80::eccb:16ac:e897:85d5%3]) with mapi id 15.20.2644.015; Mon, 13 Jan 2020
- 06:39:09 +0000
-From: Yash Shah <yash.shah@sifive.com>
-To: paul.walmsley@sifive.com,
-	palmer@dabbelt.com
-Subject: [PATCH v3 2/2] riscv: Add support to determine no. of L2 cache way
- enabled
-Date: Mon, 13 Jan 2020 12:08:20 +0530
-Message-Id: <1578897500-23897-3-git-send-email-yash.shah@sifive.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1578897500-23897-1-git-send-email-yash.shah@sifive.com>
-References: <1578897500-23897-1-git-send-email-yash.shah@sifive.com>
-Content-Type: text/plain
-X-ClientProxiedBy: PN1PR01CA0081.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:c00:1::21) To CH2PR13MB3368.namprd13.prod.outlook.com
- (2603:10b6:610:2c::26)
-MIME-Version: 1.0
-Received: from dhananjayk-PowerEdge-R620.open-silicon.com (114.143.65.226) by
- PN1PR01CA0081.INDPRD01.PROD.OUTLOOK.COM (2603:1096:c00:1::21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.20.2623.11 via Frontend Transport; Mon, 13 Jan 2020 06:39:05 +0000
-X-Mailer: git-send-email 2.7.4
-X-Originating-IP: [114.143.65.226]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 40a152fb-4669-4d52-bb4a-08d797f34b0f
-X-MS-TrafficTypeDiagnostic: CH2PR13MB3317:
-X-LD-Processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <CH2PR13MB3317E1707176001BB74255F98C350@CH2PR13MB3317.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3513;
-X-Forefront-PRVS: 028166BF91
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10009020)(396003)(366004)(376002)(39830400003)(136003)(346002)(189003)(199004)(66476007)(2906002)(6506007)(66556008)(66946007)(26005)(186003)(16526019)(44832011)(5660300002)(2616005)(956004)(86362001)(8936002)(36756003)(52116002)(7416002)(4326008)(6666004)(6486002)(81166006)(6512007)(316002)(8676002)(81156014)(478600001)(107886003)(1006002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3317;
- H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-Received-SPF: None (protection.outlook.com: sifive.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 2U6fIBz93qIdgznRq6c73N8PQPnEeRH5nsz/7JYTEd4unp2+MhJo3Osss8rJdBHdTXJlksfY7XXzB8M0IuhYcs+W3aA2U+VqpL1EWDHWq0ak9IXFWAdpUpbTP0Vsmx7lG0rJUoGHOwcery7A0x+289Div8TzO58kvFUME4OsHfjVDKz6+4Y1BVm0D20EnHXf7O8WYxhs4QAzAMXvF8UEh5/i8EB9HNHWkrMGzDgBlxI6m7egI+Fd3T7EtuLafKdRj/H4i9fTzwmEcO5z1drqkTBL4ZMbt/TBA6Flf5mL882Y+EK0j1CDJ1h+ZwAGr2nYKzBijcSrbZZBDJLZjJeEIIn+F+ANjOGORt25axTib+M7nafXDgu+qY/6QMLNHC3HqWdV50fXM02ib+De8LcbC5WYLo3qMoS9NzkKB8hBk6rt5FvcpjbuStFhydPLzBIO
-X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 40a152fb-4669-4d52-bb4a-08d797f34b0f
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2020 06:39:09.0842 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2onyMJ6jSSEqFEILKpw6z81Pu9yCtvnQT0dnK1fprTk0YoqIvdjKEVQ8Zy8ap5VaYbOd4sf+MHZGgs5/8I1j6w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3317
+ id 1ir4kP-0004fi-Gu
+ for linux-riscv@lists.infradead.org; Mon, 13 Jan 2020 18:47:35 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id m13so4660262pjb.2
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Jan 2020 10:47:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:subject:cc:to:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=NEb0TNNHy4r1C3MNqV+qCdGg2s3vRQJoPda6bJix6S4=;
+ b=wTG3WHErVldLTNEoR787WJ3a6mn9KO37JfaCd1gjxyhnRMdy3u4q8a2StJLyjEtQJ1
+ o1eTPE0xB4l9roo9VG+smY2vr3N9nJGRwCBzpok9hEgQdDNQCKraFiP8Fuz06tZ9/jAV
+ N2VxjEVE6q58BenVRccjb+7J5MKBbWf3KqZg+lWhWYERjZM0IOJjtwlmVfXNKkHfcexR
+ qNJqlOj9YBWcnobEHjnjwzTNGpW7sCBkFoi1vvuT46KffuV+d1kK1Rg/NNynJJacFwq7
+ vpzYJ7cS8TFxVqOoWbveGyS7zgcI+3pr6If99CeTPBrZp+6gbj9/cEbwlNUWKhiBTFxa
+ Q2xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:subject:cc:to:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=NEb0TNNHy4r1C3MNqV+qCdGg2s3vRQJoPda6bJix6S4=;
+ b=m/Sc8M9xLR22r0bn7lWFxSs7DI0uCmqg/BV8ygd6t0Vc/jjaFmYu9tO9z+xT5t9k72
+ J8TrfIOP9BuJmgC3vs8k9BHFhAMBYoPEBLKUN2m5q6NduPmhmOPewdmVE21QABt1iRQu
+ bTur1HaYhau+/pkuno9wJNQqHqaOyls3QAoyAfwmWJRzXYh2XH8Too7AETVQYjCD9O5Y
+ A4oU+W3mJ70DrT34nf/Lk4YSQReunoHQ4Z7QyOr54r//lLdhNxLNre7OvepcHBFua5Wm
+ 61mL0Bk4zB9cMOVpA08e4kWxMmXv/wX9JL9xBkBD5gftN3ycdLxzFmgAGdta2vppd4i5
+ ETPw==
+X-Gm-Message-State: APjAAAUPJBQ0sVDkx0qX1Aec259Kkebv3R3i4OxOScOyBPF/3WcaLDiA
+ xS0gD6Ps/F0ta8zqwZRGnmJUX1TDgdc=
+X-Google-Smtp-Source: APXvYqzQvCl9YiJ5sFuxllkXHGg/T/wdKVwwxe3JFw7IGvGgx+0B/AZKeo8Ckpz46TBqOti4Uzrxhg==
+X-Received: by 2002:a17:902:8503:: with SMTP id
+ bj3mr15262553plb.180.1578941250243; 
+ Mon, 13 Jan 2020 10:47:30 -0800 (PST)
+Received: from localhost ([2620:0:1000:2514:7f69:cd98:a2a2:a03d])
+ by smtp.gmail.com with ESMTPSA id d1sm14072333pjx.6.2020.01.13.10.47.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Jan 2020 10:47:29 -0800 (PST)
+Date: Mon, 13 Jan 2020 10:47:29 -0800 (PST)
+X-Google-Original-Date: Mon, 13 Jan 2020 10:47:28 PST (-0800)
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 0/3] riscv: add support for restartable sequence 
+To: vincent.chen@sifive.com
+In-Reply-To: <1572919114-3886-1-git-send-email-vincent.chen@sifive.com>
+References: <1572919114-3886-1-git-send-email-vincent.chen@sifive.com>
+Message-ID: <mhng-b7d41554-17f9-4303-82b7-6d576fc19a9a@palmerdabbelt-glaptop>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200112_223910_857215_B2F73C4E 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200113_104733_591330_BE8E54E0 
+X-CRM114-Status: GOOD (  13.74  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.220.41 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,111 +102,92 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, sachin.ghadi@sifive.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, alexios.zavras@intel.com,
- Yash Shah <yash.shah@sifive.com>, anup@brainfault.org, tglx@linutronix.de,
- bp@suse.de, linux-riscv@lists.infradead.org, allison@lohutok.net
+Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
+ mathieu.desnoyers@efficios.com, linux-kselftest@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-In order to determine the number of L2 cache ways enabled at runtime,
-implement a private attribute ("number_of_ways_enabled"). Reading this
-attribute returns the number of enabled L2 cache ways at runtime.
+On Mon, 04 Nov 2019 17:58:31 PST (-0800), vincent.chen@sifive.com wrote:
+> Add RSEQ, restartable sequence, support and related selftest to RISCV.
+> The Kconfig option HAVE_REGS_AND_STACK_ACCESS_API is also required by
+> RSEQ because RSEQ will modify the content of pt_regs.sepc through
+> instruction_pointer_set() during the fixup procedure. In order to select
+> the config HAVE_REGS_AND_STACK_ACCESS_API, the missing APIs for accessing
+> pt_regs are also added in this patch set.
+>
+> The relevant RSEQ tests in kselftest require the Binutils patch "RISC-V:
+> Fix linker problems with TLS copy relocs" to avoid placing
+> PREINIT_ARRAY and TLS variable of librseq.so at the same address.
+> https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commit;h=3e7bd7f24146f162565edf878840449f36a8d974
+> A segmental fault will happen if the Binutils misses this patch.
+>
+>
+>
+> Vincent Chen (3):
+>   riscv: add required functions to enable HAVE_REGS_AND_STACK_ACCESS_API
+>   riscv: Add support for restartable sequence
+>   rseq/selftests: Add support for riscv
+>
+>  arch/riscv/Kconfig                        |   2 +
+>  arch/riscv/include/asm/ptrace.h           |  29 +-
+>  arch/riscv/kernel/entry.S                 |   4 +
+>  arch/riscv/kernel/ptrace.c                |  99 +++++
+>  arch/riscv/kernel/signal.c                |   3 +
+>  tools/testing/selftests/rseq/param_test.c |  23 ++
+>  tools/testing/selftests/rseq/rseq-riscv.h | 622 ++++++++++++++++++++++++++++++
+>  tools/testing/selftests/rseq/rseq.h       |   2 +
+>  8 files changed, 783 insertions(+), 1 deletion(-)
+>  create mode 100644 tools/testing/selftests/rseq/rseq-riscv.h
 
-Using riscv_set_cacheinfo_ops() hook a custom function, that returns
-this private attribute, to the generic ops structure which is used by
-cache_get_priv_group() in cacheinfo framework.
+This, with Paul's updated patch 1, isn't building on my end:
 
-Signed-off-by: Yash Shah <yash.shah@sifive.com>
----
- drivers/soc/sifive/sifive_l2_cache.c | 38 ++++++++++++++++++++++++++++++++++++
- include/soc/sifive/sifive_l2_cache.h |  2 ++
- 2 files changed, 40 insertions(+)
-
-diff --git a/drivers/soc/sifive/sifive_l2_cache.c b/drivers/soc/sifive/sifive_l2_cache.c
-index a506939..8741885 100644
---- a/drivers/soc/sifive/sifive_l2_cache.c
-+++ b/drivers/soc/sifive/sifive_l2_cache.c
-@@ -9,6 +9,8 @@
- #include <linux/interrupt.h>
- #include <linux/of_irq.h>
- #include <linux/of_address.h>
-+#include <linux/device.h>
-+#include <asm/cacheinfo.h>
- #include <soc/sifive/sifive_l2_cache.h>
- 
- #define SIFIVE_L2_DIRECCFIX_LOW 0x100
-@@ -31,6 +33,7 @@
- 
- static void __iomem *l2_base;
- static int g_irq[SIFIVE_L2_MAX_ECCINTR];
-+static struct riscv_cacheinfo_ops l2_cache_ops;
- 
- enum {
- 	DIR_CORR = 0,
-@@ -107,6 +110,38 @@ int unregister_sifive_l2_error_notifier(struct notifier_block *nb)
- }
- EXPORT_SYMBOL_GPL(unregister_sifive_l2_error_notifier);
- 
-+int sifive_l2_largest_wayenabled(void)
-+{
-+	return readl(l2_base + SIFIVE_L2_WAYENABLE);
-+}
-+
-+static ssize_t number_of_ways_enabled_show(struct device *dev,
-+					   struct device_attribute *attr,
-+					   char *buf)
-+{
-+	return sprintf(buf, "%u\n", sifive_l2_largest_wayenabled());
-+}
-+
-+static DEVICE_ATTR_RO(number_of_ways_enabled);
-+
-+static struct attribute *priv_attrs[] = {
-+	&dev_attr_number_of_ways_enabled.attr,
-+	NULL,
-+};
-+
-+static const struct attribute_group priv_attr_group = {
-+	.attrs = priv_attrs,
-+};
-+
-+const struct attribute_group *l2_get_priv_group(struct cacheinfo *this_leaf)
-+{
-+	/* We want to use private group for L2 cache only */
-+	if (this_leaf->level == 2)
-+		return &priv_attr_group;
-+	else
-+		return NULL;
-+}
-+
- static irqreturn_t l2_int_handler(int irq, void *device)
- {
- 	unsigned int add_h, add_l;
-@@ -170,6 +205,9 @@ static int __init sifive_l2_init(void)
- 
- 	l2_config_read();
- 
-+	l2_cache_ops.get_priv_group = l2_get_priv_group;
-+	riscv_set_cacheinfo_ops(&l2_cache_ops);
-+
- #ifdef CONFIG_DEBUG_FS
- 	setup_sifive_debug();
- #endif
-diff --git a/include/soc/sifive/sifive_l2_cache.h b/include/soc/sifive/sifive_l2_cache.h
-index 92ade10..55feff5 100644
---- a/include/soc/sifive/sifive_l2_cache.h
-+++ b/include/soc/sifive/sifive_l2_cache.h
-@@ -10,6 +10,8 @@
- extern int register_sifive_l2_error_notifier(struct notifier_block *nb);
- extern int unregister_sifive_l2_error_notifier(struct notifier_block *nb);
- 
-+int sifive_l2_largest_wayenabled(void);
-+
- #define SIFIVE_L2_ERR_TYPE_CE 0
- #define SIFIVE_L2_ERR_TYPE_UE 1
- 
--- 
-2.7.4
-
+In file included from <command-line>:
+arch/riscv/kernel/ptrace.c:137:18: error: ‘struct pt_regs’ has no member named ‘sepc’; did you mean ‘epc’?
+  REG_OFFSET_NAME(sepc),
+                  ^~~~
+././include/linux/compiler_types.h:129:57: note: in definition of macro ‘__compiler_offsetof’
+ #define __compiler_offsetof(a, b) __builtin_offsetof(a, b)
+                                                         ^
+arch/riscv/kernel/ptrace.c:133:51: note: in expansion of macro ‘offsetof’
+ #define REG_OFFSET_NAME(r) {.name = #r, .offset = offsetof(struct pt_regs, r)}
+                                                   ^~~~~~~~
+arch/riscv/kernel/ptrace.c:137:2: note: in expansion of macro ‘REG_OFFSET_NAME’
+  REG_OFFSET_NAME(sepc),
+  ^~~~~~~~~~~~~~~
+arch/riscv/kernel/ptrace.c:169:18: error: ‘struct pt_regs’ has no member named ‘sstatus’; did you mean ‘status’?
+  REG_OFFSET_NAME(sstatus),
+                  ^~~~~~~
+././include/linux/compiler_types.h:129:57: note: in definition of macro ‘__compiler_offsetof’
+ #define __compiler_offsetof(a, b) __builtin_offsetof(a, b)
+                                                         ^
+arch/riscv/kernel/ptrace.c:133:51: note: in expansion of macro ‘offsetof’
+ #define REG_OFFSET_NAME(r) {.name = #r, .offset = offsetof(struct pt_regs, r)}
+                                                   ^~~~~~~~
+arch/riscv/kernel/ptrace.c:169:2: note: in expansion of macro ‘REG_OFFSET_NAME’
+  REG_OFFSET_NAME(sstatus),
+  ^~~~~~~~~~~~~~~
+arch/riscv/kernel/ptrace.c:170:18: error: ‘struct pt_regs’ has no member named ‘sbadaddr’; did you mean ‘badaddr’?
+  REG_OFFSET_NAME(sbadaddr),
+                  ^~~~~~~~
+././include/linux/compiler_types.h:129:57: note: in definition of macro ‘__compiler_offsetof’
+ #define __compiler_offsetof(a, b) __builtin_offsetof(a, b)
+                                                         ^
+arch/riscv/kernel/ptrace.c:133:51: note: in expansion of macro ‘offsetof’
+ #define REG_OFFSET_NAME(r) {.name = #r, .offset = offsetof(struct pt_regs, r)}
+                                                   ^~~~~~~~
+arch/riscv/kernel/ptrace.c:170:2: note: in expansion of macro ‘REG_OFFSET_NAME’
+  REG_OFFSET_NAME(sbadaddr),
+  ^~~~~~~~~~~~~~~
+arch/riscv/kernel/ptrace.c:171:18: error: ‘struct pt_regs’ has no member named ‘scause’; did you mean ‘cause’?
+  REG_OFFSET_NAME(scause),
+                  ^~~~~~
+././include/linux/compiler_types.h:129:57: note: in definition of macro ‘__compiler_offsetof’
+ #define __compiler_offsetof(a, b) __builtin_offsetof(a, b)
+                                                         ^
+arch/riscv/kernel/ptrace.c:133:51: note: in expansion of macro ‘offsetof’
+ #define REG_OFFSET_NAME(r) {.name = #r, .offset = offsetof(struct pt_regs, r)}
+                                                   ^~~~~~~~
+arch/riscv/kernel/ptrace.c:171:2: note: in expansion of macro ‘REG_OFFSET_NAME’
+  REG_OFFSET_NAME(scause),
 
