@@ -2,69 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0736D139BF1
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Jan 2020 22:54:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E05BC13A021
+	for <lists+linux-riscv@lfdr.de>; Tue, 14 Jan 2020 04:48:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:From:To:
-	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=M7Io58ZEhGxjHo17Y8hWVxamttEiEdJZDl3O+0g+FXo=; b=TiIXfu/6AghnWe
-	aJVo9z6xH4Tmd6QvGHfl1AZR3x2CDwvnHPSyLKKWCEk8M2kWLUkgGYLDBfv6esT6r4bWpAazTz4E2
-	h8Wn8d+WlugVZIV7JrYbmjrDECmoVRNBBETKJy0yFfM/PPPyDQQS0u2uysgPguEasfzpXIctXfTDZ
-	x+dwVaRkV2Rj1kdNqT1ke9avayySpTUL7ERcwpMOnKp7h/UwKo6GC/MAtmZTyBgt4mLGnZTQ7rf9C
-	hMhXbNHayCx6Sr5YGKMMX2xDGCZdeVJvWTu6YOlpQ3bq30yNpowRCp8mCKvh9TU23N7/wFpsFrkRs
-	UOycW9aPYAgUaU1WPVNg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=CTJ2coo4RHoH/lJGEL6/xkagWbBVDH7gBcZR8SjOkz8=; b=GbUOvaZhkOVdqDmhElcxnJPV8
+	AlaSg0MlIVAqyll8BcBF8fVK46wLGPcVwUdQf56X6wqckLe0B2DCaVRfE3gIeLPieUG7Qe/KdbwiM
+	L+D0ZFvI5kP43G/KN5kgY0ULy2Wd747CiGVpW47QgXEoDhrTvzBFjXjyJlq7TIh8CtkxLYAHsCezj
+	WyCI5R5faOLqkq7QdqtleKGrDgha4bPI6wrBh93W3ZowdifdcRLwaB2yx89w1CQcUUaW6ti3yQdU6
+	OC1R1QON+ffq6yqrIHm7nULxz8NwzpVHXBb3LbZdQ9l08iQIMkl3uMlciXHBkok2rTY+UXi7wuKL4
+	TPrh8nDcw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ir7fQ-0008GF-D4; Mon, 13 Jan 2020 21:54:36 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1irDC2-00026G-LA; Tue, 14 Jan 2020 03:48:38 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ir7fH-000891-O0
- for linux-riscv@lists.infradead.org; Mon, 13 Jan 2020 21:54:31 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C01E62072B;
- Mon, 13 Jan 2020 21:54:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1578952467;
- bh=uLxaFh3dKd798IEOWwkeImIOAv8m+gsYi3CSsxL7TN0=;
- h=Subject:To:Cc:From:Date:From;
- b=UY2Q54mYFFgM+WxGt+OgWeew7qOEjOpLhZHBlVn8RjMya15THVuMwdQSVAP8aRvhv
- ndqYh8wdCzNn/lxYlxdV8W2Aad+C9+lUdd4bQaGm7LAxGJhg9Jyx7i3wjWSz9OFv7p
- hU57WbjdAX1kL8SRUMtmwGITmGUSseD1bJP1K8jI=
-Subject: Patch "riscv: Implement copy_thread_tls" has been added to the
- 5.4-stable tree
-To: 20200102172413.654385-6-amanieu@gmail.com, amanieu@gmail.com,
- christian.brauner@ubuntu.com, gregkh@linuxfoundation.org,
- linux-riscv@lists.infradead.org
-From: <gregkh@linuxfoundation.org>
-Date: Mon, 13 Jan 2020 22:53:38 +0100
-Message-ID: <1578952418162164@kroah.com>
+ id 1irDBy-00025W-Qq
+ for linux-riscv@lists.infradead.org; Tue, 14 Jan 2020 03:48:36 +0000
+Received: by mail-qk1-x741.google.com with SMTP id r14so10871976qke.13
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Jan 2020 19:48:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CTJ2coo4RHoH/lJGEL6/xkagWbBVDH7gBcZR8SjOkz8=;
+ b=nQc8qxdX/AeOVnGOFlRCgCYp1v+Q9S3HUvIYqgb2rMKCYn9H5NsgVRHIHo5c7toLey
+ TL4BEKQxXsuUYLj7+4+xMp3q50jmsSvEjvG+9J0yvLmS8T2iQrpzs2qY9wRhbRKmCJxn
+ qhL8WI1HWHG9fPkkH8HxV/eOlqTHBINXjp0kFBOeruRYTz/qagED/LKtJMr+FJECKcye
+ axHnG/a53UeioPdkcDOXPDm5WZygoCFWZYwZpEcMGe9FJhkcook5Z5qNfC7miQ2HUWte
+ nB5mIAF0jz0sjypPQprD8RerGyQAys+ZI5JkALp+Xx77+fFJp+XHYzq6w+NKG6SkW/jn
+ 6+lA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CTJ2coo4RHoH/lJGEL6/xkagWbBVDH7gBcZR8SjOkz8=;
+ b=O/IxPhg6SeAcCCPHJKMorRpUTByceR9Q4XSO/XDqVYMn4NWWx+n+Ic6g615YCH7Vny
+ 1Yo1YSJfbBmg32O9vs9Ui4UU25NGI2dnGV9MQ2TtDwgDgPRCCXaXkLhjb7cibzcnTSEV
+ YjAalglO0sqdctmLLbi/T7FNNmer0RNA3VSzcs4xPLNwV6LvIMmofRLbmG15n9ATL9ze
+ VpQyQt+IuPSKvhqTQuPuic0/rfL+1bc7Oaqda9i03NQf61FCkPK1CmKFalSElEmptxr+
+ 0IoIHfxTaoTN/yvm+AEOz3XIrP1ziVS5W3sZYRA471wbyhCpzUZv3nKAi38XyF59XO4g
+ uZZQ==
+X-Gm-Message-State: APjAAAVJxisV5Wy9MVQ3qBqaqcuvuRK1GWbc+BN0qoQhGEaJm1h9S/dY
+ Q1Uv62W6SnPNLm8OQ4f8AnEv33MhBSseQsh/lUfFzQ==
+X-Google-Smtp-Source: APXvYqzDpb9Yyqx7bCFNZvCTSYvZ5WdMj+Wq11S0hKuv/ey3nRFiCF4ih93/7FilTGOzb44QaMjq/NvjhXCEP9VwNiA=
+X-Received: by 2002:ae9:c018:: with SMTP id u24mr19621044qkk.339.1578973713171; 
+ Mon, 13 Jan 2020 19:48:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=ANSI_X3.4-1968
-Content-Transfer-Encoding: 8bit
-X-stable: commit
-X-Patchwork-Hint: ignore 
+References: <20200109031516.29639-1-greentime.hu@sifive.com>
+ <alpine.DEB.2.21.9999.2001091126480.135239@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.2001121011100.160130@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.2001121011100.160130@viisi.sifive.com>
+From: Greentime Hu <greentime.hu@sifive.com>
+Date: Tue, 14 Jan 2020 11:48:21 +0800
+Message-ID: <CAHCEehKchrwd7TTmSrhtEPeCmkrYrx7TX_c6ogpCpSkCKnBQoQ@mail.gmail.com>
+Subject: Re: [PATCH v3] riscv: make sure the cores stay looping in
+ .Lsecondary_park
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_135427_874239_709F4175 
-X-CRM114-Status: GOOD (  11.16  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20200113_194835_089628_8D74A995 
+X-CRM114-Status: GOOD (  14.60  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,92 +93,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: stable-commits@vger.kernel.org
+Cc: Andreas Schwab <schwab@suse.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Gt <green.hu@gmail.com>,
+ Anup Patel <anup@brainfault.org>, greentime@kernel.org,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+Hi Paul,
 
-This is a note to let you know that I've just added the patch titled
+On Mon, Jan 13, 2020 at 2:12 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+>
+> Hi Greentime,
+>
+> On Thu, 9 Jan 2020, Paul Walmsley wrote:
+>
+> > On Thu, 9 Jan 2020, Greentime Hu wrote:
+> >
+> > > The code in secondary_park is currently placed in the .init section.  The
+> > > kernel reclaims and clears this code when it finishes booting.  That
+> > > causes the cores parked in it to go to somewhere unpredictable, so we
+> > > move this function out of init to make sure the cores stay looping there.
+> > >
+> > > Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+> > > Reviewed-by: Anup Patel <anup@brainfault.org>
+> >
+> > Thanks, the following is what's been queued for v5.5-rc.
+>
+> During final testing, when building the kernel with an initramfs, I hit
+> the following linker error:
+>
+>   LD      .tmp_vmlinux1
+> arch/riscv/kernel/head.o: in function `.L0 ':(.init.text+0x5c): relocation truncated to fit: R_RISCV_JAL against `.Lsecondary_park'
+> make[1]: *** [Makefile:1079: vmlinux] Error 1
+> make: *** [Makefile:326: __build_one_by_one] Error 2
+>
+> Could you take a look at this?
 
-    riscv: Implement copy_thread_tls
+I think it is because the sections are too far for bqeu to jump and
+the config I used just small enough for it to jump so I didn't see
+this bug. Sorry about that.
+I tried this fix to boot in Unleashed board.
 
-to the 5.4-stable tree which can be found at:
-    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
-
-The filename of the patch is:
-     riscv-implement-copy_thread_tls.patch
-and it can be found in the queue-5.4 subdirectory.
-
-If you, or anyone else, feels it should not be added to the stable tree,
-please let <stable@vger.kernel.org> know about it.
-
-
-From 20bda4ed62f507ed72e30e817b43c65fdba60be7 Mon Sep 17 00:00:00 2001
-From: Amanieu d'Antras <amanieu@gmail.com>
-Date: Thu, 2 Jan 2020 18:24:11 +0100
-Subject: riscv: Implement copy_thread_tls
-
-From: Amanieu d'Antras <amanieu@gmail.com>
-
-commit 20bda4ed62f507ed72e30e817b43c65fdba60be7 upstream.
-
-This is required for clone3 which passes the TLS value through a
-struct rather than a register.
-
-Signed-off-by: Amanieu d'Antras <amanieu@gmail.com>
-Cc: linux-riscv@lists.infradead.org
-Cc: <stable@vger.kernel.org> # 5.3.x
-Link: https://lore.kernel.org/r/20200102172413.654385-6-amanieu@gmail.com
-Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
----
- arch/riscv/Kconfig          |    1 +
- arch/riscv/kernel/process.c |    6 +++---
- 2 files changed, 4 insertions(+), 3 deletions(-)
-
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -61,6 +61,7 @@ config RISCV
- 	select SPARSEMEM_STATIC if 32BIT
- 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
- 	select HAVE_ARCH_MMAP_RND_BITS
-+	select HAVE_COPY_THREAD_TLS
- 
- config ARCH_MMAP_RND_BITS_MIN
- 	default 18 if 64BIT
---- a/arch/riscv/kernel/process.c
-+++ b/arch/riscv/kernel/process.c
-@@ -99,8 +99,8 @@ int arch_dup_task_struct(struct task_str
- 	return 0;
- }
- 
--int copy_thread(unsigned long clone_flags, unsigned long usp,
--	unsigned long arg, struct task_struct *p)
-+int copy_thread_tls(unsigned long clone_flags, unsigned long usp,
-+	unsigned long arg, struct task_struct *p, unsigned long tls)
- {
- 	struct pt_regs *childregs = task_pt_regs(p);
- 
-@@ -120,7 +120,7 @@ int copy_thread(unsigned long clone_flag
- 		if (usp) /* User fork */
- 			childregs->sp = usp;
- 		if (clone_flags & CLONE_SETTLS)
--			childregs->tp = childregs->a5;
-+			childregs->tp = tls;
- 		childregs->a0 = 0; /* Return value of fork() */
- 		p->thread.ra = (unsigned long)ret_from_fork;
- 	}
-
-
-Patches currently in stable-queue which might be from amanieu@gmail.com are
-
-queue-5.4/arm-implement-copy_thread_tls.patch
-queue-5.4/arm64-implement-copy_thread_tls.patch
-queue-5.4/xtensa-implement-copy_thread_tls.patch
-queue-5.4/arm64-move-__arch_want_sys_clone3-definition-to-uapi-headers.patch
-queue-5.4/parisc-implement-copy_thread_tls.patch
-queue-5.4/clone3-ensure-copy_thread_tls-is-implemented.patch
-queue-5.4/riscv-implement-copy_thread_tls.patch
-queue-5.4/um-implement-copy_thread_tls.patch
+ #ifdef CONFIG_SMP
+        li t0, CONFIG_NR_CPUS
+-       bgeu a0, t0, .Lsecondary_park
++       blt a0, t0, .Lgood_cores
++       tail .Lsecondary_park
++.Lgood_cores:
+ #endif
 
