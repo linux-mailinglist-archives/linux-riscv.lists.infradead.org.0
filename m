@@ -2,86 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E05BC13A021
-	for <lists+linux-riscv@lfdr.de>; Tue, 14 Jan 2020 04:48:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3A7A13A053
+	for <lists+linux-riscv@lfdr.de>; Tue, 14 Jan 2020 05:52:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CTJ2coo4RHoH/lJGEL6/xkagWbBVDH7gBcZR8SjOkz8=; b=GbUOvaZhkOVdqDmhElcxnJPV8
-	AlaSg0MlIVAqyll8BcBF8fVK46wLGPcVwUdQf56X6wqckLe0B2DCaVRfE3gIeLPieUG7Qe/KdbwiM
-	L+D0ZFvI5kP43G/KN5kgY0ULy2Wd747CiGVpW47QgXEoDhrTvzBFjXjyJlq7TIh8CtkxLYAHsCezj
-	WyCI5R5faOLqkq7QdqtleKGrDgha4bPI6wrBh93W3ZowdifdcRLwaB2yx89w1CQcUUaW6ti3yQdU6
-	OC1R1QON+ffq6yqrIHm7nULxz8NwzpVHXBb3LbZdQ9l08iQIMkl3uMlciXHBkok2rTY+UXi7wuKL4
-	TPrh8nDcw==;
+	 bh=Kdjzg/OEJ3U/n4z5ghVCYhNKmhmqsmyxQa/XtrqBQiU=; b=csanVcA7HeLF7sK4p2rZ/8g48
+	XE2pNxenlv55UVihK9ooCkje6K0+ga8ErzgYCrR35eDMzaE3l5W/gwB8aty1ATabhO347SCakahPy
+	Wp5/YU0VY4oyhWK/x8Py7m56RfKlfI+HRiudYfrcJAzQ3BqVXUYY1zD6u6C0UUDMSA0FkzFrVSCJR
+	2pL9teu/0MyhyXgG3Jpe0zzgkxbpg7EutyckJ4PZDz+2RMeyIGNShf65ahL04eDeyZromN20hhIk+
+	ro7kMDQNYKLRPDtQi0w7+OucP48LlJISuIDDEak5nadymiHS7dUJ9ou60cu47NqPSkO6Z1yXmfMs6
+	idb8HEnGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irDC2-00026G-LA; Tue, 14 Jan 2020 03:48:38 +0000
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
+	id 1irEBz-0006BC-0C; Tue, 14 Jan 2020 04:52:39 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irDBy-00025W-Qq
- for linux-riscv@lists.infradead.org; Tue, 14 Jan 2020 03:48:36 +0000
-Received: by mail-qk1-x741.google.com with SMTP id r14so10871976qke.13
- for <linux-riscv@lists.infradead.org>; Mon, 13 Jan 2020 19:48:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ id 1irEBu-00064r-Hy
+ for linux-riscv@lists.infradead.org; Tue, 14 Jan 2020 04:52:37 +0000
+Received: by mail-wm1-x342.google.com with SMTP id t14so12145835wmi.5
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Jan 2020 20:52:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CTJ2coo4RHoH/lJGEL6/xkagWbBVDH7gBcZR8SjOkz8=;
- b=nQc8qxdX/AeOVnGOFlRCgCYp1v+Q9S3HUvIYqgb2rMKCYn9H5NsgVRHIHo5c7toLey
- TL4BEKQxXsuUYLj7+4+xMp3q50jmsSvEjvG+9J0yvLmS8T2iQrpzs2qY9wRhbRKmCJxn
- qhL8WI1HWHG9fPkkH8HxV/eOlqTHBINXjp0kFBOeruRYTz/qagED/LKtJMr+FJECKcye
- axHnG/a53UeioPdkcDOXPDm5WZygoCFWZYwZpEcMGe9FJhkcook5Z5qNfC7miQ2HUWte
- nB5mIAF0jz0sjypPQprD8RerGyQAys+ZI5JkALp+Xx77+fFJp+XHYzq6w+NKG6SkW/jn
- 6+lA==
+ :cc; bh=Kdjzg/OEJ3U/n4z5ghVCYhNKmhmqsmyxQa/XtrqBQiU=;
+ b=nnWTpEg+MgOnuUhZXlIaKchwkY/TwJoS51ktgSnLLxjhRjBlYi+D6OBCmdwyfLdzLe
+ 873MHwbfUdBmKv1qTe1SN6rVUTg0KbSYQXKmTcqDDotrcUDEGA8mz7b3CzAOoMhKt2T3
+ GglM21MyVfjQd87kNLWNbsWtI5rN9drI5n2jB5xDyS99MQh9m1X1y8FGXk8HAxySqXzT
+ AQU5xfswknreI83h58ZSDJBF0BZJUJlAME7SpQuO2+VKGR1N93RY/Wcypnm7HT8Do8T2
+ A+J7/jkYCNx9a9k0WmcZtMouAf7u61tdGByBJIJ1nF0lyiFbIjjkKQ8V1UWoesDGPNo9
+ 5SbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=CTJ2coo4RHoH/lJGEL6/xkagWbBVDH7gBcZR8SjOkz8=;
- b=O/IxPhg6SeAcCCPHJKMorRpUTByceR9Q4XSO/XDqVYMn4NWWx+n+Ic6g615YCH7Vny
- 1Yo1YSJfbBmg32O9vs9Ui4UU25NGI2dnGV9MQ2TtDwgDgPRCCXaXkLhjb7cibzcnTSEV
- YjAalglO0sqdctmLLbi/T7FNNmer0RNA3VSzcs4xPLNwV6LvIMmofRLbmG15n9ATL9ze
- VpQyQt+IuPSKvhqTQuPuic0/rfL+1bc7Oaqda9i03NQf61FCkPK1CmKFalSElEmptxr+
- 0IoIHfxTaoTN/yvm+AEOz3XIrP1ziVS5W3sZYRA471wbyhCpzUZv3nKAi38XyF59XO4g
- uZZQ==
-X-Gm-Message-State: APjAAAVJxisV5Wy9MVQ3qBqaqcuvuRK1GWbc+BN0qoQhGEaJm1h9S/dY
- Q1Uv62W6SnPNLm8OQ4f8AnEv33MhBSseQsh/lUfFzQ==
-X-Google-Smtp-Source: APXvYqzDpb9Yyqx7bCFNZvCTSYvZ5WdMj+Wq11S0hKuv/ey3nRFiCF4ih93/7FilTGOzb44QaMjq/NvjhXCEP9VwNiA=
-X-Received: by 2002:ae9:c018:: with SMTP id u24mr19621044qkk.339.1578973713171; 
- Mon, 13 Jan 2020 19:48:33 -0800 (PST)
+ bh=Kdjzg/OEJ3U/n4z5ghVCYhNKmhmqsmyxQa/XtrqBQiU=;
+ b=DYMggfZEPmh2CBJyFNthhIJ7V9XzxA4oEftI0JS810xrlpFBIluW0pAdP5Uuso64WS
+ oHcekqpm6LSkmLorpMaZE1Ty5V3IRQgqiEXtqok3yWCRNjtLq8/UUY2MQ2j7XYV5/XU8
+ 89IQhby1RphaLMdiHAV+0mDZQA9RS3IFm/en/rTl7IdEfqFdiXcK0z43oEwQNtcWueKp
+ ad6wKhbqesvCi1nKvV6fFt/yyQn6ZrZwU/8pyugUHjYC1GnQpHVaXyp/VZveFpWQ3huA
+ VjkPmNyRq6DvOQg6UnIu/s4y7QHRIEtVDp8/Ec+9mOJY7MB0HLLkMFoOh2w/iLXo18fp
+ GSNg==
+X-Gm-Message-State: APjAAAVybEqaFCI/mbezkxetVanGajKXteZDnVvdOA5n0PRjNoBMT2G3
+ Iv5sySG+p8Mm5LJmOyMTdXrrMZARz0WqspkpRhlCYQ==
+X-Google-Smtp-Source: APXvYqxekq8Q6Ko5YGFKD2N3dqW+2HgsyXZWMWzqcM/WcztnksE1zFepCPnkkoyvQYT4vbpacWQUb9tjyzLTD/sEnZE=
+X-Received: by 2002:a7b:c5d8:: with SMTP id n24mr24014206wmk.124.1578977548667; 
+ Mon, 13 Jan 2020 20:52:28 -0800 (PST)
 MIME-Version: 1.0
-References: <20200109031516.29639-1-greentime.hu@sifive.com>
- <alpine.DEB.2.21.9999.2001091126480.135239@viisi.sifive.com>
- <alpine.DEB.2.21.9999.2001121011100.160130@viisi.sifive.com>
-In-Reply-To: <alpine.DEB.2.21.9999.2001121011100.160130@viisi.sifive.com>
-From: Greentime Hu <greentime.hu@sifive.com>
-Date: Tue, 14 Jan 2020 11:48:21 +0800
-Message-ID: <CAHCEehKchrwd7TTmSrhtEPeCmkrYrx7TX_c6ogpCpSkCKnBQoQ@mail.gmail.com>
-Subject: Re: [PATCH v3] riscv: make sure the cores stay looping in
- .Lsecondary_park
-To: Paul Walmsley <paul.walmsley@sifive.com>
+References: <1578897500-23897-1-git-send-email-yash.shah@sifive.com>
+ <1578897500-23897-2-git-send-email-yash.shah@sifive.com>
+In-Reply-To: <1578897500-23897-2-git-send-email-yash.shah@sifive.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 14 Jan 2020 10:22:17 +0530
+Message-ID: <CAAhSdy2sxmmZDqHx401RA4pm8Vn8sx0ocjNOmYGXHokfNrgNXQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] riscv: cacheinfo: Implement cache_get_priv_group
+ with a generic ops structure
+To: Yash Shah <yash.shah@sifive.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_194835_089628_8D74A995 
-X-CRM114-Status: GOOD (  14.60  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200113_205234_596728_682A9EE8 
+X-CRM114-Status: GOOD (  14.53  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,54 +89,89 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Andreas Schwab <schwab@suse.de>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Gt <green.hu@gmail.com>,
- Anup Patel <anup@brainfault.org>, greentime@kernel.org,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Sachin Ghadi <sachin.ghadi@sifive.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Alexios Zavras <alexios.zavras@intel.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ bp@suse.de, linux-riscv <linux-riscv@lists.infradead.org>,
+ Allison Randal <allison@lohutok.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Paul,
+On Mon, Jan 13, 2020 at 12:09 PM Yash Shah <yash.shah@sifive.com> wrote:
+>
+> Implement cache_get_priv_group() that will make use of a generic ops
+> structure to return a private attribute group for custom cache info.
+>
+> Using riscv_set_cacheinfo_ops() users can hook their own custom function
+> to return the private attribute group for cacheinfo. In future we can
+> add more ops to this generic ops structure for SOC specific cacheinfo.
+>
+> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> ---
+>  arch/riscv/include/asm/cacheinfo.h | 15 +++++++++++++++
+>  arch/riscv/kernel/cacheinfo.c      | 17 +++++++++++++++++
+>  2 files changed, 32 insertions(+)
+>  create mode 100644 arch/riscv/include/asm/cacheinfo.h
+>
+> diff --git a/arch/riscv/include/asm/cacheinfo.h b/arch/riscv/include/asm/cacheinfo.h
+> new file mode 100644
+> index 0000000..5d9662e
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/cacheinfo.h
+> @@ -0,0 +1,15 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +
+> +#ifndef _ASM_RISCV_CACHEINFO_H
+> +#define _ASM_RISCV_CACHEINFO_H
+> +
+> +#include <linux/cacheinfo.h>
+> +
+> +struct riscv_cacheinfo_ops {
+> +       const struct attribute_group * (*get_priv_group)(struct cacheinfo
+> +                                                       *this_leaf);
+> +};
+> +
+> +void riscv_set_cacheinfo_ops(struct riscv_cacheinfo_ops *ops);
+> +
+> +#endif /* _ASM_RISCV_CACHEINFO_H */
+> diff --git a/arch/riscv/kernel/cacheinfo.c b/arch/riscv/kernel/cacheinfo.c
+> index 4c90c07..bd0f122 100644
+> --- a/arch/riscv/kernel/cacheinfo.c
+> +++ b/arch/riscv/kernel/cacheinfo.c
+> @@ -7,6 +7,23 @@
+>  #include <linux/cpu.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <asm/cacheinfo.h>
+> +
+> +static struct riscv_cacheinfo_ops *rv_cache_ops;
+> +
+> +void riscv_set_cacheinfo_ops(struct riscv_cacheinfo_ops *ops)
+> +{
+> +       rv_cache_ops = ops;
+> +}
+> +EXPORT_SYMBOL_GPL(riscv_set_cacheinfo_ops);
+> +
+> +const struct attribute_group *
+> +cache_get_priv_group(struct cacheinfo *this_leaf)
+> +{
+> +       if (rv_cache_ops && rv_cache_ops->get_priv_group)
+> +               return rv_cache_ops->get_priv_group(this_leaf);
+> +       return NULL;
+> +}
+>
+>  static void ci_leaf_init(struct cacheinfo *this_leaf,
+>                          struct device_node *node,
+> --
+> 2.7.4
+>
 
-On Mon, Jan 13, 2020 at 2:12 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
->
-> Hi Greentime,
->
-> On Thu, 9 Jan 2020, Paul Walmsley wrote:
->
-> > On Thu, 9 Jan 2020, Greentime Hu wrote:
-> >
-> > > The code in secondary_park is currently placed in the .init section.  The
-> > > kernel reclaims and clears this code when it finishes booting.  That
-> > > causes the cores parked in it to go to somewhere unpredictable, so we
-> > > move this function out of init to make sure the cores stay looping there.
-> > >
-> > > Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
-> > > Reviewed-by: Anup Patel <anup@brainfault.org>
-> >
-> > Thanks, the following is what's been queued for v5.5-rc.
->
-> During final testing, when building the kernel with an initramfs, I hit
-> the following linker error:
->
->   LD      .tmp_vmlinux1
-> arch/riscv/kernel/head.o: in function `.L0 ':(.init.text+0x5c): relocation truncated to fit: R_RISCV_JAL against `.Lsecondary_park'
-> make[1]: *** [Makefile:1079: vmlinux] Error 1
-> make: *** [Makefile:326: __build_one_by_one] Error 2
->
-> Could you take a look at this?
+LGTM.
 
-I think it is because the sections are too far for bqeu to jump and
-the config I used just small enough for it to jump so I didn't see
-this bug. Sorry about that.
-I tried this fix to boot in Unleashed board.
+Reviewed-by: Anup Patel <anup@brainfault.org>
 
- #ifdef CONFIG_SMP
-        li t0, CONFIG_NR_CPUS
--       bgeu a0, t0, .Lsecondary_park
-+       blt a0, t0, .Lgood_cores
-+       tail .Lsecondary_park
-+.Lgood_cores:
- #endif
+Regards,
+Anup
 
