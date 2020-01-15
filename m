@@ -2,77 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AC7213BA15
-	for <lists+linux-riscv@lfdr.de>; Wed, 15 Jan 2020 08:05:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1813513BA17
+	for <lists+linux-riscv@lfdr.de>; Wed, 15 Jan 2020 08:07:11 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pheYEBYXRUydN40/wbI1ZvK+bBwX3RUetQibpSJmnJY=; b=KEvppvLJsHuSjZiTy7qSSOy/cC
-	axmASvthrzIoYqhWxB7AsOTwOT+8oKYB2oleSeljfLE+XCW3bXPbhP85hmRCmNNPWtdTjMwx7+nj4
-	Z977G6pXWqesSs6r+MSSs70G4UyjCrGu7JfKFUsxXP+r4MPEvlIgQqTFR4kCoVDGSeJlQElisDDbA
-	swDezXlwthYXO5Id7UL53V7QluxpG6XfiTHfOd42X+92BSp0PifwVEUH6k6Ko3guadROSUNQLniat
-	KdXBeRa+4R4k0/B1pxRiyyqJTcqByfHhWvEIimVDPqsUrvy8a+rbdrKCYxi0WHFbBYC1+puSe8nHQ
-	n+U5dqng==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=EZ9Uv0Axx1RVBpC38D2LeKDBlyYIPhsVK6uMDN/OW7Q=; b=nGJk24EeHNRTRGMUKjPmYbY+G
+	zmomRpaPuT8qAoJG6sM2c3uYApmZ2JNN8ETo5GpjiCU6aBDhBEVK62saYwUeXSl+UnkiiVoCBrME5
+	JneD7xsITSIHL9GdC/UhIfnzOuh+PsEJvNnqpJZ8nMAL7vH4CuSc0ab7UX1dLnT20kH1Niu/OolUx
+	HBnu4+BAi0fm8oY06mdBl0e2pUGLDkfWlmG8jDDNrduMNef2uCaZy68cstJjpMTbOWg2vuH91BWul
+	M01kApp+KliT2/iynxFdKdC8VIunsda+8isYqWp8TfLBvOzamzwVF+wGgG01n3ZcDhfihXKsXgfHc
+	Y2NRVobSg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irckK-0003dt-W2; Wed, 15 Jan 2020 07:05:44 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1ircld-0003pB-SE; Wed, 15 Jan 2020 07:07:05 +0000
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irckE-0003cK-UG
- for linux-riscv@lists.infradead.org; Wed, 15 Jan 2020 07:05:43 +0000
-Received: by mail-pg1-x541.google.com with SMTP id l24so7763314pgk.2
- for <linux-riscv@lists.infradead.org>; Tue, 14 Jan 2020 23:05:37 -0800 (PST)
+ id 1irclb-0003of-4D
+ for linux-riscv@lists.infradead.org; Wed, 15 Jan 2020 07:07:04 +0000
+Received: by mail-qk1-x744.google.com with SMTP id t129so14726875qke.10
+ for <linux-riscv@lists.infradead.org>; Tue, 14 Jan 2020 23:07:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=pheYEBYXRUydN40/wbI1ZvK+bBwX3RUetQibpSJmnJY=;
- b=NvUYpJrRAEoLYVNWDLCyIXnqBtZhu5T9juwnWlnFdYlwfcQphlEPKzzircApS3ZF7B
- 9b9OmmpCr4epEqhH1CboKmQk+p4BrJPEpmeM7FmdagTbPka3w94DHbv+VO+zxsOGzmaK
- OMH3E8BaI0WET4G/4ilVhXU1z7AP3936MaP2rhruDZpKMTctBJenJU3FZAXtEQFpJjaU
- EB/e2yjsxHhCJiKxYsGiOp4mG9+w0dhPih1uUFcfvx0dbN/FJe4bysTIlCwH4MkjINgC
- rAtCnkzRvAZw0PewWyeRegxwzI0sgSPtJ3HbFO9xXCZxC3x3jiX5dXO7mJQAeCblPuc4
- /YVA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=EZ9Uv0Axx1RVBpC38D2LeKDBlyYIPhsVK6uMDN/OW7Q=;
+ b=XAX/WSaxzB/941V80oBGBxxMlodBtHbxrvOGlO9DNVG8J+KyGY10lcKAeED5bV2DCe
+ 34fnSbo4MmMTXhxsOVoO/3B5Wb9+cL7nGgptOOI3w97miT0zfJK/M9L8J6h3aMZ1Fbwl
+ D6mBRXLOC3blOnjD3+EqB9k95pgtA3UPznpZmIeg8pNoPpVEVWiPo1F9UBxADi1h+FCL
+ aMoeUfg2TKbt91L1Tzk0BcSWfSe6+bFrX1egciZDzgNVYJG5LEJTHS4lH35FxoJZgtet
+ 5NEwv4J9K0/fN9B65fLguTC9Se+zbFiH6RWOsEm7RlIR8aoiQulq0M6ykkERQUJUHkvq
+ s/KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=pheYEBYXRUydN40/wbI1ZvK+bBwX3RUetQibpSJmnJY=;
- b=P/eWx7LRs8aMbVy8qCHtPMco1fy6lvE7hRVkY8fDBFouZp6igjDj4Fq1oJ7vZmSymI
- QOyV0qIFDbPVhr9Be4EPG1BNxeEyyKcu2Dnb/+tl4f/hQEuxsTjBUWjhAAeL21McFCN+
- bt6WRWt/47w6MJAY+KV9C05hL7bhfVuY3eayUCIXEHKTV3QB7ghvnTzaAoDk/Cs8+v2Y
- 9s1wZGQPp3833RmMjsUBGwKlxWcBhV7o3zst+gK9GQ9Ry81M9/9IYGsH59N5JKxg1wy3
- ygbxq/pmxQdsm4i/bs1ALnTLctWKutp+nj8CYfL2k+0myYCqBgN3Z4zwNLywlzHGyWJR
- mb1A==
-X-Gm-Message-State: APjAAAXDLu/w0RJTCrq5Oy1fED0SrDjyCut/5fwkv5GeqP+HB7d5t/WJ
- t/3bBU3un61P8LTjmVV+d7+tyg==
-X-Google-Smtp-Source: APXvYqzVGND6xq6LG8bdDE07pm1yXFpJeW17HC9m0rxajMfZLCEWDJc0iFO258V6fVljx91mfxMv/A==
-X-Received: by 2002:a65:4d46:: with SMTP id j6mr32352377pgt.63.1579071937402; 
- Tue, 14 Jan 2020 23:05:37 -0800 (PST)
-Received: from greentime-VirtualBox.internal.sifive.com
- (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id a2sm19196023pgv.64.2020.01.14.23.05.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Jan 2020 23:05:36 -0800 (PST)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=EZ9Uv0Axx1RVBpC38D2LeKDBlyYIPhsVK6uMDN/OW7Q=;
+ b=Tpu/ZLgn4P/z2TVwu1llhsmlq+5uqeBQHgH4jW1Z3Kf18q6FZisOSJCGu0MjlciIH5
+ xREhQX6uEiSgFoLiOTMCrCstOQnUYc/nPEHhUrjcJNvEmJbxFJSSD+6hWph2jXamCniR
+ M0gYF4o31N8kf9zAxF+my2k/mAkFbyYMaRl+CqTNO0nFqm+PiflYRFsj2IyngxqYDmt7
+ LHfvnStL++AQ36HC8kXAAnB6o9yjvPuDHBqYVUZ7I5wexrmre3LK444TLopZH88mM0ne
+ tERHnaarvVsn778OMFkv+WqVFmeJTCwpcROSupFS8vqYnXWi7FSlnSBsTZKeWEeSx02o
+ DABQ==
+X-Gm-Message-State: APjAAAVAm+Kiuc4VbILzSDgO7nwJGGZGEpaN2ZPocfIEX8mHedxgz5GT
+ M1UnPpwXJ78FdXWGzAoS0YM5WuPUHD4GookTHCPyzA==
+X-Google-Smtp-Source: APXvYqw/Zownjc6NkgO5O3t4IrOukQsUL9/HApOvE0AT9GibAiPkx2vP0IpC0VfPLNP3pPuE2XgD4eB9VY9GIdwmv90=
+X-Received: by 2002:ae9:eb56:: with SMTP id b83mr25434351qkg.123.1579072021933; 
+ Tue, 14 Jan 2020 23:07:01 -0800 (PST)
+MIME-Version: 1.0
+References: <20200109031516.29639-1-greentime.hu@sifive.com>
+ <alpine.DEB.2.21.9999.2001091126480.135239@viisi.sifive.com>
+ <alpine.DEB.2.21.9999.2001121011100.160130@viisi.sifive.com>
+ <CAHCEehKchrwd7TTmSrhtEPeCmkrYrx7TX_c6ogpCpSkCKnBQoQ@mail.gmail.com>
+ <alpine.DEB.2.21.9999.2001141449500.21279@viisi.sifive.com>
+In-Reply-To: <alpine.DEB.2.21.9999.2001141449500.21279@viisi.sifive.com>
 From: Greentime Hu <greentime.hu@sifive.com>
-To: green.hu@gmail.com, greentime@kernel.org, paul.walmsley@sifive.com,
- palmer@dabbelt.com, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, schwab@suse.de, anup@brainfault.org
-Subject: [PATCH v4] riscv: make sure the cores stay looping in .Lsecondary_park
-Date: Wed, 15 Jan 2020 14:54:36 +0800
-Message-Id: <20200115065436.7702-1-greentime.hu@sifive.com>
-X-Mailer: git-send-email 2.17.1
+Date: Wed, 15 Jan 2020 15:06:51 +0800
+Message-ID: <CAHCEeh+utXxqF65rtvRJXq6cPDjCcwpAeUaiD1pSpGGMFXRT9Q@mail.gmail.com>
+Subject: Re: [PATCH v3] riscv: make sure the cores stay looping in
+ .Lsecondary_park
+To: Paul Walmsley <paul.walmsley@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200114_230539_187881_725F2AAF 
-X-CRM114-Status: UNSURE (   7.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200114_230703_182266_49003E71 
+X-CRM114-Status: GOOD (  11.78  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:744 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -94,67 +95,38 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greentime Hu <greentime.hu@sifive.com>
+Cc: Andreas Schwab <schwab@suse.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Gt <green.hu@gmail.com>,
+ Anup Patel <anup@brainfault.org>, greentime@kernel.org,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The code in secondary_park is currently placed in the .init section. The
-kernel reclaims and clears this code when it finishes booting. That
-causes the cores parked in it to go to somewhere unpredictable, so we
-move this function out of init to make sure the cores stay looping there.
+On Wed, Jan 15, 2020 at 6:55 AM Paul Walmsley <paul.walmsley@sifive.com> wrote:
+>
+> Hi Greentime,
+>
+> On Tue, 14 Jan 2020, Greentime Hu wrote:
+>
+> > I think it is because the sections are too far for bqeu to jump and
+> > the config I used just small enough for it to jump so I didn't see
+> > this bug. Sorry about that.
+>
+> No problem.
+>
+> > I tried this fix to boot in Unleashed board.
+> >
+> >  #ifdef CONFIG_SMP
+> >         li t0, CONFIG_NR_CPUS
+> > -       bgeu a0, t0, .Lsecondary_park
+> > +       blt a0, t0, .Lgood_cores
+> > +       tail .Lsecondary_park
+> > +.Lgood_cores:
+> >  #endif
+>
+> Looks reasonable to me.  Care to update and repost the patch?
 
-The instruction bgeu a0, t0, .Lsecondary_park may have "a relocation
-truncated to fit" issue during linking time. It is because that sections
-are too far to jump. Let's use tail to jump to the .Lsecondary_park.
-
-Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
-Reviewed-by: Anup Patel <anup@brainfault.org>
----
- arch/riscv/kernel/head.S | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-index f8f996916c5b..d7820764122c 100644
---- a/arch/riscv/kernel/head.S
-+++ b/arch/riscv/kernel/head.S
-@@ -88,7 +88,9 @@ _start_kernel:
- 
- #ifdef CONFIG_SMP
- 	li t0, CONFIG_NR_CPUS
--	bgeu a0, t0, .Lsecondary_park
-+	blt a0, t0, .Lgood_cores
-+	tail .Lsecondary_park
-+.Lgood_cores:
- #endif
- 
- 	/* Pick one hart to run the main boot sequence */
-@@ -217,11 +219,6 @@ relocate:
- 	tail smp_callin
- #endif
- 
--.align 2
--.Lsecondary_park:
--	/* We lack SMP support or have too many harts, so park this hart */
--	wfi
--	j .Lsecondary_park
- END(_start)
- 
- #ifdef CONFIG_RISCV_M_MODE
-@@ -303,6 +300,13 @@ ENTRY(reset_regs)
- END(reset_regs)
- #endif /* CONFIG_RISCV_M_MODE */
- 
-+.section ".text", "ax",@progbits
-+.align 2
-+.Lsecondary_park:
-+	/* We lack SMP support or have too many harts, so park this hart */
-+	wfi
-+	j .Lsecondary_park
-+
- __PAGE_ALIGNED_BSS
- 	/* Empty zero page */
- 	.balign PAGE_SIZE
--- 
-2.17.1
-
+Yes, Paul. I have sent the v4 patch.
+It is tested in Unleashed board.
 
