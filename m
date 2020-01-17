@@ -2,75 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8059B141264
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 Jan 2020 21:41:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D82091413B3
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 Jan 2020 22:52:33 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=l67Q2JaZUuxYTTc14dadVG8CPVycSfA7W0h/5578mZM=; b=d7mxz1l1SMNDXv2ZCJ6r7Qvgt
-	po2wA9iVn+rnlljySz1SDrPTzgQWw1Jg1Hpj2e6rKJovUvlGuFgXJQSNAfl6pKWP2OI1A35upLe9c
-	NzO7rAb4PZ9202aHhnu1xkgyGwAFNOOTPlZ49pBpNNG8Naq08xLQmbpK5L2sa1AQ0eK+fMrdkHmCA
-	W7AU3xlvC8F8zrtwNCrWn5ztq61K7nBLg/oxnv1K9FnLogh4FOK0M/2lFwQt/of5X2QUBH+nVge22
-	N9gSCV4TbYlSgwMvmHHkjSJdbVuk1y/ILUhybXfosfuSXz/8eZjtbdcsjvNb7E+DH19BBGjF+YWHW
-	IRdsCkL/A==;
+	 bh=zjQSft/7NYSlsFJpIJXa+QqqnK9LdZDneos7vXG6e8U=; b=p6e45UO0ePrHPj4V9pdBshxKT
+	yZl5u1scqJDXsfZUvqWGvzZSeZ9d3a9ysKlPE5nfBHoSK/aDvrD+FTKxpOtIrgJK6iLZD8/hNUC0W
+	btG+Fr7hPJ8GgcTGW4Xp3tVzwfuVUZOjg47F1aThgcGm6oSGU0cgL7x9wkJYfWGR5TRufI6dh+p+D
+	uVGoApbY/ndhZ8x8bIGaNUEv8EXhe4FZcyx3F3oXY+j6yHYvscC2fSgYnO9qwaCxYpferFJfcJvC3
+	5R6NfOzqifYzUGkGpLJ+Th5H4dLsqvY+SG1aAug1T3vfdksVugyvkLTPH/esKouK7vUkz1bcxGzSH
+	W6qh+Hkbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1isYR6-0008Sa-QH; Fri, 17 Jan 2020 20:41:44 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1isZXW-0001QZ-9i; Fri, 17 Jan 2020 21:52:26 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1isYR0-0008PX-FP
- for linux-riscv@lists.infradead.org; Fri, 17 Jan 2020 20:41:42 +0000
-Received: by mail-il1-x144.google.com with SMTP id p8so22318041iln.12
- for <linux-riscv@lists.infradead.org>; Fri, 17 Jan 2020 12:41:34 -0800 (PST)
+ id 1isZXS-0001PX-Ri
+ for linux-riscv@lists.infradead.org; Fri, 17 Jan 2020 21:52:24 +0000
+Received: by mail-io1-xd41.google.com with SMTP id t26so27647488ioi.13
+ for <linux-riscv@lists.infradead.org>; Fri, 17 Jan 2020 13:52:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=date:from:to:cc:subject:in-reply-to:message-id:references
  :user-agent:mime-version;
- bh=l67Q2JaZUuxYTTc14dadVG8CPVycSfA7W0h/5578mZM=;
- b=nn60vdPY5om2CTLHZCbVBXuD2dZtq3zIDLFjv2f6o6pOmcpQs/R92aqkvIGklG1VpR
- XpNW7h8CCl1ZSya8QZWLffcfrqvDWXl5mpvfQHLU6HDBeUc1PDAD56OIt0QJlcN/XWZ+
- 2sTUPoSecKfaTR2L4Ci21mLETPNqvNgPUoYE0OSz2plDFr+UCSZjkOPhI+GiEOQaaJ8H
- oP6PnPn12MdknimQ5M8Fe85zN/+BQVIoG07WB//UeFh1qz+ilqI3tk07zQRi2qS27RNW
- YwaR7d0Hzjdm+XiTGhn0sXAazXuwx8zTapGag25WVCVYr78/TJf9U8BhImtBvcbES8t6
- qk3g==
+ bh=zjQSft/7NYSlsFJpIJXa+QqqnK9LdZDneos7vXG6e8U=;
+ b=DyEq/hO8s4RZ+2iZ2TdF0sCag4usxI3IV+LW66SjqfJX3rwnC1ZGJHJSZhOGhZmvAK
+ kQwTRgq6NW+MozpJR4MRfVmSO/wMDbZry0xANexqWvW8vJeElOXYWTnu/3CKw9eb6+RE
+ aCO9SoMkbQCVq4bE/Kch+kDMFy54kHoSbNAkR4u9NrxejyV9dVVKI0Rx4DLt+awesfih
+ RrVEu/bcSG2pJjyx0uCjii6LOF5hAIINaP82K+kDr3NTSycSJZ2U/iZP9CVchB0dgCf8
+ HleBXwjXI32smI1oNmSWJxbIsEB9rwNVFjKn2ExvJibhuZLFTKFfIqNLg6e63yxxfTvH
+ sLCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
  :references:user-agent:mime-version;
- bh=l67Q2JaZUuxYTTc14dadVG8CPVycSfA7W0h/5578mZM=;
- b=FP4fcMTQ5ySSTQ/Bey5APvakfEgzJbmyMrFkaQjgLalWv2QQAChEwyLewBc0UqzmcF
- pvcj3cMveXkox/fYhPiQIqrcbk+OTJFU4Z/3/wto/8lBAEHIwkXMcnnqqhWu5ahsSvlO
- cYzOLXROdpQG63rjhudx+Eaj5PR/8UNLCFwxv3AoehO6Yp/VU9ndfButpSUiuYjLCjzW
- fJ1B0W3eD2nM08nklf56oyvzc0cpYW+fLE/0lRxOrVHohLQE6uj8K7wZgmfFTtDDo28/
- vZX8X5zffQKkh9WQ7AGfnrHO+TkL8xbKEBSY3yrR18eY+UO4Ugfy0m37Q53lsTMgDtyX
- glTQ==
-X-Gm-Message-State: APjAAAUyJiajO3p1c8phyLI9gcdfoVUSfTWWK3YYHpisTBsr4u+FOAya
- MHquENK87UYN57YvJNlkWio/Ag==
-X-Google-Smtp-Source: APXvYqyhD/DuCNRVkINRezmPM4CoIncLA7Blgo9UbiMKgcAlY+o2QZJtykuXI74GzHHVKdxUjToU5w==
-X-Received: by 2002:a92:ba93:: with SMTP id t19mr369490ill.0.1579293694120;
- Fri, 17 Jan 2020 12:41:34 -0800 (PST)
+ bh=zjQSft/7NYSlsFJpIJXa+QqqnK9LdZDneos7vXG6e8U=;
+ b=M3GwLc7z9k4Z04h+Optg+P9EpkDbqulSKtUURi0FyBvHSlakjGNk2OxDR7JCbU7ZaU
+ JbfZ2RBWFZcS6nOtfFgzp+ULg/KIl6haC+fg/DIQYxXBu00ftN9VWjtd6AiVDpVGjoGR
+ +TAA4SlqbJBv++mzqr+UqEkETjL57mLRUAGPJw8Kzp4cTsZtyfOPEfDd7ioET64ED266
+ 2fAeVFvyXKDth21N32iOdHfoh78saP0Ic2wXo8oeUZSM31pgz+2S4zqOy1xVReBvm4ON
+ St9axWu6P3gbICUlF7WgxewdXJPOzJ4XuHpLM1hEaU5xm31ennhVrhMTtoBKGrMlV7M1
+ 7TyA==
+X-Gm-Message-State: APjAAAVdtNLnUBLw3mrk1N/bQnDCFSy7EFmLDPB6dI8heEZqLv/g491H
+ n++07XwXlP31AoNF7C+bo4+jsg==
+X-Google-Smtp-Source: APXvYqyOI2ac0khuK6ygC3i3ZJ0K7jAaLTP91Od5vfsxqrMwyAW8rIVzKYRGxYrOiKkArJC9tu10wA==
+X-Received: by 2002:a05:6638:102:: with SMTP id
+ x2mr34374608jao.71.1579297941757; 
+ Fri, 17 Jan 2020 13:52:21 -0800 (PST)
 Received: from localhost ([64.62.168.194])
- by smtp.gmail.com with ESMTPSA id x77sm8237951ilk.34.2020.01.17.12.41.33
+ by smtp.gmail.com with ESMTPSA id y62sm8243344ilk.32.2020.01.17.13.52.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Jan 2020 12:41:33 -0800 (PST)
-Date: Fri, 17 Jan 2020 12:41:31 -0800 (PST)
+ Fri, 17 Jan 2020 13:52:21 -0800 (PST)
+Date: Fri, 17 Jan 2020 13:52:19 -0800 (PST)
 From: Paul Walmsley <paul.walmsley@sifive.com>
 X-X-Sender: paulw@viisi.sifive.com
-To: Michal Simek <michal.simek@xilinx.com>
-Subject: Re: [PATCH v2 1/2] asm-generic: Make dma-contiguous.h a mandatory
- include/asm header
-In-Reply-To: <0274919c5e3b134df19d943f99cb7e84e5135ccd.1579248206.git.michal.simek@xilinx.com>
-Message-ID: <alpine.DEB.2.21.9999.2001171241070.98477@viisi.sifive.com>
-References: <cover.1579248206.git.michal.simek@xilinx.com>
- <0274919c5e3b134df19d943f99cb7e84e5135ccd.1579248206.git.michal.simek@xilinx.com>
+To: Ilie Halip <ilie.halip@gmail.com>
+Subject: Re: [PATCH] riscv: delete temporary files
+In-Reply-To: <20200115113243.23096-1-ilie.halip@gmail.com>
+Message-ID: <alpine.DEB.2.21.9999.2001171352080.98477@viisi.sifive.com>
+References: <20200115113243.23096-1-ilie.halip@gmail.com>
 User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200117_124138_522774_1DE5E9B3 
-X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-CacheID: sfid-20200117_135223_106260_8D17312F 
+X-CRM114-Status: UNSURE (   7.44  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -78,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:144 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -100,42 +99,23 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- "Peter Zijlstra \(Intel\)" <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mips@vger.kernel.org,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- Deepa Dinamani <deepa.kernel@gmail.com>, "H. Peter Anvin" <hpa@zytor.com>,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- Christoph Hellwig <hch@lst.de>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, Vasily Gorbik <gor@linux.ibm.com>,
- Paul Burton <paulburton@kernel.org>, x86@kernel.org,
- Christoph Hellwig <hch@infradead.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Wesley Terpstra <wesley@sifive.com>, James Hogan <jhogan@kernel.org>,
- Waiman Long <longman@redhat.com>, linux-xtensa@linux-xtensa.org,
- Albert Ou <aou@eecs.berkeley.edu>, Arnd Bergmann <arnd@arndb.de>,
- Borislav Petkov <bp@alien8.de>, git@xilinx.com,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Chris Zankel <chris@zankel.net>, monstr@monstr.eu,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>, Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Arnd Bergmann <arnd@arndb.de>,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, linux-riscv@lists.infradead.org,
+ Thomas Gleixner <tglx@linutronix.de>, Mao Han <han_mao@c-sky.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 17 Jan 2020, Michal Simek wrote:
+On Wed, 15 Jan 2020, Ilie Halip wrote:
 
-> dma-continuguous.h is generic for all architectures except arm32 which has
-> its own version.
+> Temporary files used in the VDSO build process linger on even after make
+> mrproper: vdso-dummy.o.tmp, vdso.so.dbg.tmp.
 > 
-> Similar change was done for msi.h by commit a1b39bae16a6
-> ("asm-generic: Make msi.h a mandatory include/asm header")
+> Delete them once they're no longer needed.
 > 
-> Suggested-by: Christoph Hellwig <hch@infradead.org>
-> Signed-off-by: Michal Simek <michal.simek@xilinx.com>
+> Signed-off-by: Ilie Halip <ilie.halip@gmail.com>
 
-Acked-by: Paul Walmsley <paul.walmsley@sifive.com> # for arch/riscv
+Thanks, queued for v5.5-rc.
 
 
 - Paul
