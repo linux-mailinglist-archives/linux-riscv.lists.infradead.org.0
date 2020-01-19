@@ -2,120 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5F0E141CDE
-	for <lists+linux-riscv@lfdr.de>; Sun, 19 Jan 2020 08:40:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38920141F43
+	for <lists+linux-riscv@lfdr.de>; Sun, 19 Jan 2020 18:52:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-ID:Subject:
-	From:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=P52uRKZeXf/DGd6XDjW32+1eVEPh+oWaZfKrW/0sLrg=; b=aPq4NSGkkIYGay
-	CM4w5EttoDYgruVWKMTzFwmqHEorf9LRY8I2wBIJg8Oaz2ZH2Es5Go2Op2mZNS5oTwKnMTAZI4H/0
-	iQQYqiKkwaSNOXqMQJF4RVBc+DUP0+2W7zfBLvbq6wrFRzM5fxueppMRxHv2M6awdLxdb0DOBjfaT
-	wu0YZUFzxRTddEAhhnJCcIZYwLiZXc0HPZ29Iibo/eLTdpH02cYWJs9A+mP/wtf6XGYPYudTd66l6
-	dFMd953g0kNexqeDnAikc+dT1fMCs7HoFpv3TJJDN8CKphR5+mefqnkihaJTSj60bqY3osNJR+MPp
-	EIZnN4QN0MMqU6TunBQA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=iYWEA7Nwdx9KjiEDDgBrOJ2jGr9aQ4qoZGBtlzHjvk0=; b=mYN
+	+RhJPyXyxfjfcq0WOyt8S7T3rg6vVJAbHTBqG6Sov/18d7KDU3qM8jcMaWInyRqvi7GOzm2e0rpYE
+	Iw/GaUw6ZzRekeDYTHGK3wfSX2PUZVMbMn7uCsnrm4PqjvSF9a5S/ztbIjR24KrdITSVvMLjqIkHm
+	xJvxRhmPIRSgLAhREY2a1ZqDuHcQKYQQgMbnx5F7a8Vh7BTF/xLONDHd5x3dQJnlPjRFk/uo8JN5/
+	TR2XVec7laq6L3qwwXhPUFpK3Pq0AjQMG3qPoA11mXq6YfW1PjFq3dkV1jOFLzrtwIiuObq+G7btz
+	HeRhiWGCuxP/5WkqSZWGoCcWs2Dw16Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1it5Bw-0002aH-0n; Sun, 19 Jan 2020 07:40:16 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1itEkK-00074n-Ew; Sun, 19 Jan 2020 17:52:24 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1it5Bp-0002Sr-Fw
- for linux-riscv@lists.infradead.org; Sun, 19 Jan 2020 07:40:13 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id 21so27176594qky.4
- for <linux-riscv@lists.infradead.org>; Sat, 18 Jan 2020 23:40:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:from:subject:autocrypt:cc:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=P52uRKZeXf/DGd6XDjW32+1eVEPh+oWaZfKrW/0sLrg=;
- b=GCc/tfpo65IWId7/3hOCYDq5t+51LnXaE6I2ZhFE32hKd3vHc7DvMJkzdclunkCv4+
- Ex5uPZMAdYxN50Khvb2SvwmQSLj5Xr8CYh/UGjMBpo6O8wC9UUpkhqDDjm7QnrtvJNBM
- zeLZEwUl8N9NIzkNnmm4aAcR7duRQYofpz8J9ORhyq6QIEMtYNfHePZIz2QUNfXvMVL2
- EIK/Hp2QzmZ7Dy3WPwmbyi+F3jTkOAVQARqlu8EX5PMnqLoUszKu2RDE6WlkdVYFGSqt
- NcMW09W+oN5w+2LYpcsRCrKfuvwLg4+GfC5vY2MXfFLcduMJkHRxh1ue7WJd7aB7gfeC
- xiPw==
+ id 1itEkG-00073x-JV
+ for linux-riscv@lists.infradead.org; Sun, 19 Jan 2020 17:52:21 +0000
+Received: by mail-io1-xd42.google.com with SMTP id c16so31232128ioh.6
+ for <linux-riscv@lists.infradead.org>; Sun, 19 Jan 2020 09:52:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=date:from:to:cc:subject:message-id:user-agent:mime-version;
+ bh=iYWEA7Nwdx9KjiEDDgBrOJ2jGr9aQ4qoZGBtlzHjvk0=;
+ b=CW4CvWsHyBNUDaDJwPytZLKUerbejYxDQBLCcEom9yUWFDSfiCkys2vhZeNP1wdxWQ
+ I1uRiaBLUsanTdej8NQgM6+rsJqg0zfdUKev2Ac7nb+Y4VcgOqTQJ064S6geRa0rN5BA
+ 6mxANYcMW048VtBa7HyNY0iZhqsfhbnT/sEtipG7Qgp9W6OTA6CzmorwJLMNDvn75/4G
+ /T7hiy3mP7uYjlhWNAbNooOhGmLrLFYCCRxtxOPvuajWFOeAwrcmbZYqag21tNB+ZbVz
+ 2ASk22LVOZhA1Xnj9ohUKNo9MgrkOovN/55kzVQzRKpL8t5FDAUlyjLnG3mIfNqQmw31
+ G2cQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:from:subject:autocrypt:cc:message-id:date
- :user-agent:mime-version:content-language:content-transfer-encoding;
- bh=P52uRKZeXf/DGd6XDjW32+1eVEPh+oWaZfKrW/0sLrg=;
- b=PuaYaNGVDZYPStEjAb30iwE/ynpNxkkB7TdXkEt61UBVyIDr8K5k/zzacggCySHDFW
- ep1px5wilxpX09d//0ScI9bUcorU+Kxdnd9AAYmgnXSynVuB56vQ9+SBLzpwoaFbttMy
- 6a1KYnGdN3d1WvGGcKqWgrtJIQqSqLm22lnN4hrXQ1RYB9xPs6lEV6s7DpCih2jhPY7c
- ATVWCAA/qkq5dBnMDPlpgiyl+P/x2itC64+3/Fm9SVb3NRpCUWQ5c56i0WJECU+wPneO
- DPUbH5u5PpOtxEuffqgr684q4Auw1D5V+Sz7riTSza/EhEexc8Rg9hEY3pY/PupR6p/e
- vhcQ==
-X-Gm-Message-State: APjAAAUW/LGMgoKzBmLiNMBuUeXgEWyA+G3PxbXsHq0qFjZH5GZoaXZ+
- cEFy1zuFrczlqvjZNVbUr//jx9VBacY=
-X-Google-Smtp-Source: APXvYqxkWvvt+Nvam0L+dtkOn5XhJZXZfQXFMIbEnHWj2E1QjOGm7wDUQWSACyVhfAgQ0aCi1Z4GbA==
-X-Received: by 2002:a05:620a:2094:: with SMTP id
- e20mr40424233qka.315.1579419606458; 
- Sat, 18 Jan 2020 23:40:06 -0800 (PST)
-Received: from [192.168.1.117] ([75.102.135.197])
- by smtp.googlemail.com with ESMTPSA id o33sm16355188qta.27.2020.01.18.23.40.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Jan 2020 23:40:05 -0800 (PST)
-To: Christoph Hellwig <hch@lst.de>
-From: Sean Anderson <seanga2@gmail.com>
-Subject: Kendryte Linux Support
-Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
- mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
- 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
- lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
- GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
- F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
- AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
- AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
- bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
- +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
- Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
- N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
- SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
- w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
- w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
- OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
- zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
- z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
- 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
- ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
- vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
- EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
- zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
- iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
- S5hN3/mP5UeooFHb
-Message-ID: <752ac7ef-0dfb-2373-972e-d5cd48f1284e@gmail.com>
-Date: Sun, 19 Jan 2020 02:40:05 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:user-agent
+ :mime-version;
+ bh=iYWEA7Nwdx9KjiEDDgBrOJ2jGr9aQ4qoZGBtlzHjvk0=;
+ b=XDn2ZG5ZbSxMtBnE78lMEa7U7aE5vFJsBRnSDCzLb6HFMl11Zg9RP31IHwToZLoJsj
+ buy6cmiMtd3mMSO5PnUsQx0e48bxoFHC2R0p+7J3qigWbsE10Fs7tC5z5iCrlR51FHmC
+ XnvgR6w/BAUWO7wH003qDxELWWQ+H4uiSUhNHQvv2fsKeHYv5aof0KF+eQ/18nqlA6o6
+ nQbnZ6+RDIjQ0lUB+PIo4Ucw2oEvPamoKOblbCfkA5W82F5Y1wCBCcGrB//mT0Hy0JL1
+ lgMqKfuFkrNhDJxYe36iw1BLm4T3aaqLevf9gvwG7rSfAlQhMHI+ayRlR+4BOSfBFRyr
+ yDAQ==
+X-Gm-Message-State: APjAAAU2Lj0HGupc5wA0atPbbJ/mmvSl2aWlUWi5nqCGjuba4Hx53VYP
+ IBsPsBroXWNRnUkTz07YXyfhww==
+X-Google-Smtp-Source: APXvYqw6GVJqwdnTZ5jJY5cb6qqQoglMjP0jUWj5PPUbWGrWb8CpsVRfHD35o6Qhc9mPreAls420vg==
+X-Received: by 2002:a05:6638:38f:: with SMTP id
+ y15mr42234285jap.17.1579456339427; 
+ Sun, 19 Jan 2020 09:52:19 -0800 (PST)
+Received: from localhost ([2601:8c4:0:9294:cb6f:4cf:b239:2fee])
+ by smtp.gmail.com with ESMTPSA id a12sm7716352ion.73.2020.01.19.09.52.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 19 Jan 2020 09:52:19 -0800 (PST)
+Date: Sun, 19 Jan 2020 09:52:16 -0800 (PST)
+From: Paul Walmsley <paul.walmsley@sifive.com>
+X-X-Sender: paulw@viisi.sifive.com
+To: torvalds@linux-foundation.org
+Subject: [GIT PULL] RISC-V updates for v5.5-rc7
+Message-ID: <alpine.DEB.2.21.9999.2001190951380.106116@viisi.sifive.com>
+User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200118_234009_536492_A780731E 
-X-CRM114-Status: GOOD (  13.65  )
-X-Spam-Score: 0.1 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+X-CRM114-CacheID: sfid-20200119_095220_700891_AE021A38 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
+X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (seanga2[at]gmail.com)
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (seanga2[at]gmail.com)
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:72d listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:d42 listed in]
  [list.dnswl.org]
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,59 +96,60 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Christoph,
+Linus,
 
-I saw you were working on adding Kendryte K210 support to linux [1]. I
-have been working on adding K210 support to U-Boot [2,3]. I've looked
-over your commits, and I have a few questions (and comments) regarding
-some of your decisions, primaryly with regard to the device tree you
-added.
+The following changes since commit b3a987b0264d3ddbb24293ebff10eddfc472f653:
 
-First, you consistently refer to the CPU which Kendryte is producing as
-the "KD210," and not the "K210." I have been unable to find any
-references to this name outside of the linux kernel. The only other
-reference I can find is to the KD233, which is a development board for
-the K210. All first- and third-party materials I could find referred to
-the CPU as the K210. Could you explain your reasoning behind referring
-to it as the KD210?
+  Linux 5.5-rc6 (2020-01-12 16:55:08 -0800)
 
-I think timebase-frequency should be <7800000>. This is because the
-timer advances at a rate equal to 1/50th of the CPU clock [4].
+are available in the Git repository at:
 
-In my device tree [5], I have tried to document the cache sizes for each
-CPU. Some preliminary testing suggests that they have a cache-line of 32
-bytes; however, I have been unable to determine this conclusively, so I
-went with a conservative estimate of 64 bytes.
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv/for-v5.5-rc7
 
-For the plic, I noticed that you have it set up to handle several
-reserved interrupts (14-20 and 33). I don't see those mentioned anywhere
-in the kendryte standalone sdk. Did you encounter those interrupts when
-testing? To me, it seems like this device should be handling external
-interrupts (8, 9, and 11).
+for you to fetch changes up to fc585d4a5cf614727f64d86550b794bcad29d5c3:
 
-I don't think the current binding for the sysctl device would be easy to
-extend when more drivers are added. There are several different
-registers which all have different functions. In particular, the current
-binding would make the addition of a reset controller driver more
-complex. I would prefer a top-level "sysctl" device with several
-sub-devices each implementing one specific function. For an example,
-have a look at [6].
+  riscv: Less inefficient gcc tishift helpers (and export their symbols) (2020-01-18 19:13:41 -0800)
 
---Sean
+----------------------------------------------------------------
+RISC-V updates for v5.5-rc7
 
-[1] <http://git.infradead.org/users/hch/riscv.git/shortlog/refs/heads/ken=
-dryte-support>
-[2] <https://github.com/Forty-Bot/u-boot/>
-[3] <https://patchwork.ozlabs.org/project/uboot/list/?series=3D153419>
-[4] <https://github.com/kendryte/kendryte-standalone-sdk/blob/e93950eff97=
-63fd7f464c1e0e3df8aba08ccef8c/lib/drivers/clint.c#L63>
-[5] <https://github.com/Forty-Bot/u-boot/blob/master/arch/riscv/dts/k210.=
-dtsi>
-[6] <https://github.com/Forty-Bot/u-boot/blob/571ff39868c61b925d2c27d1d69=
-19257cf8f3004/arch/riscv/dts/k210.dtsi#L369>
+Three fixes for RISC-V:
 
+- Don't free and reuse memory containing the code that CPUs parked at
+  boot reside in.
+
+- Fix rv64 build problems for ubsan and some modules by adding logical
+  and arithmetic shift helpers for 128-bit values.  These are from
+  libgcc and are similar to what's present for ARM64.
+
+- Fix vDSO builds to clean up their own temporary files.
+
+----------------------------------------------------------------
+Greentime Hu (1):
+      riscv: make sure the cores stay looping in .Lsecondary_park
+
+Ilie Halip (1):
+      riscv: delete temporary files
+
+Olof Johansson (1):
+      riscv: Less inefficient gcc tishift helpers (and export their symbols)
+
+ arch/riscv/include/asm/asm-prototypes.h |  4 ++
+ arch/riscv/kernel/head.S                | 16 ++++---
+ arch/riscv/kernel/vdso/Makefile         |  3 +-
+ arch/riscv/lib/tishift.S                | 75 +++++++++++++++++++++++++--------
+ 4 files changed, 73 insertions(+), 25 deletions(-)
+
+Kernel object size difference:
+   text	   data	    bss	    dec	    hex	filename
+6896935	2329912	 313920	9540767	 91949f	vmlinux.rv64.orig
+6897193	2325848	 313920	9536961	 9185c1	vmlinux.rv64.patched
+6657458	1939044	 257576	8854078	 871a3e	vmlinux.rv32.orig
+6657464	1939044	 257576	8854084	 871a44	vmlinux.rv32.patched
+1171666	 353420	 130024	1655110	 194146	vmlinux.nommu_virt.orig
+1171758	 353420	 130024	1655202	 1941a2	vmlinux.nommu_virt.patched
 
