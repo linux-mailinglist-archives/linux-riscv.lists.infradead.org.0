@@ -2,83 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 833F0145F54
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 Jan 2020 00:46:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67F58145FD8
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 Jan 2020 01:22:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:Message-ID:To:Subject:From:Date:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+D2p0Wm9U7BIJopf5V09DNgijK43wVtC5id58Byk26g=; b=ae157zDqyC5YTgVaiuscnur9Gq
-	gS2AGs0D/54x9t6cRR+EymA3iPnOK5K5xbFY6m/Zprg9Luc6PBu3v2hbuOLWnVo1ja6m47susERPB
-	MVw5o4V1QrFmoXU3VpKpvPgBRSNQSC00d4YXpfH1++msQ+cB5Wq5sdxRdc8VIRDan7zTFRAjNDpfO
-	IUVgXIKnSYSm736frmhysO5gt41/rOpJkgEFqQaVy3SVB1qQR85FD7hevedq5+t49ch5P3xSjCM+4
-	9VvVh6JLJGUl1LRBre+aGSnvdTg7H1+kV7EKIZzP7dCBKhdkKbfTXmOzOYNiNsUbspPkDA+4wy7Sj
-	6AkzLkvg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:References:
+	In-Reply-To:To:Subject:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UAm+y673BEPrHXldf2cTkx9EiCWchkK86gahuOo9dk8=; b=IR/LdjaCO2vvbg
+	a/CinpFlyLB992Ok8S8MFce/p1rVQxdzimkPUIgZIG0irlXxW2qkinENgSZr27puwHm/K7gT/p5D2
+	hBhwH1CVloYHQgru+PNdsnZmGZA3B5A8DPwFAUlH0FEbpDfMRiUMNvVYwPF0iBXiqUh7zDfLL750W
+	cNfSiQmleLvNxAb7klONKCXWgJ+uWBBU26OGtfF7VktTB8WY5gcNoMmEJnoLBpJ3ZC4ASTm2Hh6Dg
+	tBjZi0j/oEGuX9o510KJv48BlA5nQN6fpSXg8q9KM4Vb1bW6hK2q2Xiy3+tFsUFit0akLOURtJHIU
+	zbTnPq9BsOSgvG74U1pA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iuPhS-0006aV-H1; Wed, 22 Jan 2020 23:46:18 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1iuQGY-0008Q7-Pa; Thu, 23 Jan 2020 00:22:34 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iuPhP-0006Zt-9N
- for linux-riscv@lists.infradead.org; Wed, 22 Jan 2020 23:46:16 +0000
-Received: by mail-pl1-x643.google.com with SMTP id ay11so514566plb.0
- for <linux-riscv@lists.infradead.org>; Wed, 22 Jan 2020 15:46:13 -0800 (PST)
+ id 1iuQGV-0008Pf-04
+ for linux-riscv@lists.infradead.org; Thu, 23 Jan 2020 00:22:32 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id d5so327531pjz.5
+ for <linux-riscv@lists.infradead.org>; Wed, 22 Jan 2020 16:22:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:subject:to:message-id:mime-version
- :content-transfer-encoding;
- bh=+D2p0Wm9U7BIJopf5V09DNgijK43wVtC5id58Byk26g=;
- b=ZVCwpEl/eZOE+RIHkmo5HKKs/0+/CooyHDWfIkiGgH5gqbZ4LEnKItDhLbqYP2ag4V
- pOv63H3PT/6jyhgwyC1LG+Qm7fEXkoDLwV8YIkljPb4ghwyCg7ff2n+8iaHQQWebUBS3
- CBkj8dyAqC80USJN/cJMeV2pPIa+Vh1FYzIsXy1gBJ1sRVWLKhN5vbkmanz3CQns5fv+
- PlPIfv8i1czya9w+3d4/tfGgObk4lgI74tvcWIWaQvKQhm7NoOUVtI7SnVsoeDxjHhKd
- KJBBqmOmSL8owXOFOKNQwJS2+OkLxovn7M3y9xyCeCvlZ/J6RWumNrEaM/r7/eT7obIb
- Ndig==
+ h=date:from:subject:cc:to:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=UAm+y673BEPrHXldf2cTkx9EiCWchkK86gahuOo9dk8=;
+ b=Gqq0t7c92u8Zn8crwvApOUsfht3cORZv7uVMYRvrtTIgWsm23Net97AVNClAcOkmmB
+ pxqGhUp0ZYwu1u7hel7fdiadtQOUCuDIxGH7sjYeVOV+SaeLJY0jUh94/2JgvJqPJTtp
+ jPuJ6Leh4h8sRMpi7JGtMxxhmpL0ySPNaGJ52/Vk4UeDZjpRUmlIxU3a1KM6ZiRVyEie
+ KeRRkSy4qzpFfH5rytbA8QAb+12ZuybdunJ2zFVkuk051N5+XKRI/PJc5NtiRqMgZsUO
+ fy+WE2zUY4svBIjixpgXQeinZSsRNVV6YR2+eeHsXgBXUqk4iQ5Ewog33ZCx0qqjNtze
+ lpfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:subject:to:message-id:mime-version
- :content-transfer-encoding;
- bh=+D2p0Wm9U7BIJopf5V09DNgijK43wVtC5id58Byk26g=;
- b=BSJt1m6R318JVw1uV+a7fwtE/jL5vVNdwjnyBQ4ET8eCFNItashuwr5QI/ohbnv+9M
- DOD60dTg9k3ZbEe32QuapUt9tV1R1WKA6X8cgolcusFX4rmeriEPaLaDRPeh9pmcKyHb
- snbvQknh2mLw0GkH4KV3WBbRXFtq8SzU8Or+u+ShG/Xnuss03eB7RyqnKqZ7g1Qf5dRZ
- /TcmLEOljYl8jmWVglkgL7KOfdAo9liDRikqp2lVpfKXxC5GS90fuKq1CTLpIxfbfhU6
- HdjOnnQW/MBhe+xI2Dx3/x/9pEpNeSxt/Avy2ZbFDPYfAXsEnxkAUmPe5p3P4VA+Mkip
- J08Q==
-X-Gm-Message-State: APjAAAXzDprnWO7gUWOX39gPASgTmRgzBVsLlslyIcQqihu/jd/IQA0M
- Idc53l0dBjcXuKabJJqLCd1eF2zN8gY=
-X-Google-Smtp-Source: APXvYqwo4dgbtolPHqAnvh0oD3Awicu3rd2KJfEqg9hLtDQi0Veip4q+kCNZtKGC+ZkiY9vdeZuxLA==
-X-Received: by 2002:a17:902:b28b:: with SMTP id
- u11mr3058028plr.54.1579736772428; 
- Wed, 22 Jan 2020 15:46:12 -0800 (PST)
+ h=x-gm-message-state:date:from:subject:cc:to:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=UAm+y673BEPrHXldf2cTkx9EiCWchkK86gahuOo9dk8=;
+ b=l62j/D50lhYddGrsr+IHtFm7FXPqPPcqlopkda+DnYN1uOSv9P5LeiWbISgQCCWq1s
+ MMYmL9sSs8DgfFVqHfhtmeZX3Iub6jKtGOGWznDo/Hj2UPzjw0XRfnv0PLzya0Uas7If
+ Pbvp5QGSCj+2F61XOPPobi43ZdoDEIf1QLt5+HqJvCh6vRwaOilgEs+g1sTo9XuSGeti
+ U6jqlCEBJXN6eDlb2SuQzpV2C0aOdoq3Sfr6Xsif6z/HSuYvd1k43gMb8pFItJrvEvg8
+ Mh53XLctabQ9JHh1LJNkchj1SxEUQlbKxX4tNNc1Mbj5qkVIJU24H+n0PkqpeKW3t+dH
+ eoSg==
+X-Gm-Message-State: APjAAAWygQ9XXmWW6mZ+1/9Z/xElQ0QOU8ImodyYdQCAb8+w+3F8vPch
+ rk+aQqTRh2JFEpQAc7DB2DwgCw==
+X-Google-Smtp-Source: APXvYqx2V97ZyPLOxzNfRyOlfnGOYECZDnsr0TDNwoPNFUjkpuaMeWSR8pcnWnTvlQo3qPZ0SwQMdw==
+X-Received: by 2002:a17:90b:8ce:: with SMTP id
+ ds14mr1301887pjb.57.1579738949984; 
+ Wed, 22 Jan 2020 16:22:29 -0800 (PST)
 Received: from localhost ([2620:0:1000:2514:7f69:cd98:a2a2:a03d])
- by smtp.gmail.com with ESMTPSA id j17sm60238pfa.28.2020.01.22.15.46.11
- for <linux-riscv@lists.infradead.org>
+ by smtp.gmail.com with ESMTPSA id p18sm4086431pjo.3.2020.01.22.16.22.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Jan 2020 15:46:11 -0800 (PST)
-Date: Wed, 22 Jan 2020 15:46:11 -0800 (PST)
-X-Google-Original-Date: Wed, 22 Jan 2020 15:46:09 PST (-0800)
+ Wed, 22 Jan 2020 16:22:29 -0800 (PST)
+Date: Wed, 22 Jan 2020 16:22:29 -0800 (PST)
+X-Google-Original-Date: Wed, 22 Jan 2020 16:21:35 PST (-0800)
 From: Palmer Dabbelt <palmerdabbelt@google.com>
 X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: linux-next and patchwork
-To: linux-riscv@lists.infradead.org
-Message-ID: <mhng-1a26ba3c-8fb6-4c6b-9243-871caa5292b1@palmerdabbelt-glaptop>
+Subject: Re: [PATCH] riscv: change CSR M/S defines to use "X" for prefix
+To: Olof Johansson <olof@lixom.net>
+In-Reply-To: <alpine.DEB.2.21.9999.2001070314050.75790@viisi.sifive.com>
+References: <alpine.DEB.2.21.9999.2001070314050.75790@viisi.sifive.com>
+ <20191218170603.58256-1-olof@lixom.net>
+ <alpine.DEB.2.21.9999.2001031723310.283180@viisi.sifive.com>
+ <CAOesGMir810kVTDyoTFuhK-PdFe4J2u2VM+L8jOdO8DghAELQg@mail.gmail.com>
+Message-ID: <mhng-55d1f282-e2ee-4ff3-b2c0-1701d175b426@palmerdabbelt-glaptop>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200122_154615_351805_6EBD3252 
-X-CRM114-Status: UNSURE (   6.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200122_162231_064217_553954F6 
+X-CRM114-Status: GOOD (  15.41  )
 X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
- [list.dnswl.org]
  -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
  white-list
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -105,15 +105,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, aou@eecs.berkeley.edu,
+ jason@lakedaemon.net, maz@kernel.org, daniel.lezcano@linaro.org,
+ linux-kernel@vger.kernel.org, Christoph Hellwig <hch@lst.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-There were some conflicts, so I just rebased for-next on top of 5.5-rc7.  This
-is what I intend to submit for the first merge window, modulo any issues I've
-missed (I'm about two weeks behind on email).
+On Tue, 07 Jan 2020 03:15:56 PST (-0800), Paul Walmsley wrote:
+> On Fri, 3 Jan 2020, Olof Johansson wrote:
+>
+>> Sure, this does the job. I'd personally prefer consistent prefixes but
+>> that's just bikeshed color preferences -- this is fine.
+>
+> Thanks for the ack.  For what it's worth, we're in agreement that we
+> should prophylactically place RV_ prefixes on the rest of the CSR_ macro
+> names.  I just would prefer that it's done outside the late -rc series,
+> since it's not technically a fix.
 
-I also decided to take a shot at using the patchwork instance we've had set up
-for a year or two now on kernel.org.  I archived everything older than Jan 1,
-2020 (which happened to be the oldest patch in my inbox at the time) and am
-keeping it in sync with patches as I merge them in.
+Olof: are you going to send a v2 of this patch that converts everything else
+over or do you want me to?  I think we all agree it's the right way to go, Paul
+was just trying to limit the scope of the change late in the RC cycle.  I'd
+like to get this on for-next sooner rather than later as it'll probably
+conflict with everything.
+
+>> (Builds are still failing for some configs, but will be fixed if/when
+>> you pick up https://lore.kernel.org/linux-riscv/20191217040631.91886-1-olof@lixom.net/)
+>
+> That one is on my radar - just haven't had a chance to review/test it
+> yet.  Thanks for sending that one too!
+>
+>
+> - Paul
 
