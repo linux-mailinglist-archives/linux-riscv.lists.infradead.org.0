@@ -2,83 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB28D14AE15
-	for <lists+linux-riscv@lfdr.de>; Tue, 28 Jan 2020 03:28:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FA1F14AE14
+	for <lists+linux-riscv@lfdr.de>; Tue, 28 Jan 2020 03:28:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=h/dUZ06oeo3RpkYhKqwCVR3ubJl04xeFNbpUaY1kTf4=; b=nabrNphp2XzzWf
-	oYwKGd+IYWd+6JjVJI5qZUywqy7TeVCoYIlTmrlwqH4RM64pgYoKQbHH0xbupdhiYi+TjvIvUpeO8
-	kqqrSIIOhMipUDeFLcMxWV5no3qCLVpE7Inla+4NE1QMm9Xj/Gh+JWhs52PI4PSRZqBO95Okwo9ZU
-	YZ5yYLT5png68eDKgOwWrmaOjNNY6nNvWTqKt/FjgOf+x5nUs6DK4I4J6SPkT0afiscSOyANqxImS
-	9Sf5lZj0fg14gTTA1OhoG3NXSuecixC3gyw86hXUn9l1ngy59J2AgBaq6BR5qEPZNbKihFVWKwMct
-	FIZfUTkhDyKqFmkCP+oQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=O+c9WUtL6/Lnv35RbuPb68w31uHNCt8mbEATKbG+Chg=; b=N0Nvr23YKRLE5S
+	qvGC7czG1W+FB7QDXpdkWEZj82Vsreol5gnXe9Wr2+5oi3fVZoKcuxgrb9/NoACf5/WxNhGNV3xVQ
+	EGitzwqsNJ+4UmszSeh1Oy5c6wZtYF7G0ehL559qYDmFuAUEdGZcT9/yMwP3xRYGweJfd0G+ruPpk
+	hIg5ejYDo/93fhjQkF3dNzZb0gcJuGr03gSuGVU/jK8QbGpVAiUOytiQQSbkAAPjNdF7IBKWkXOEO
+	/YquzHvs1OZoHt8pFnQ6z/xHlYgVFQ9uie+cH5pDNBL3FAu8N4jN87kF9mcF0Dg9IpJsQj+ZyCy8e
+	t7aHq88hh+d7HLMALUhQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iwGby-0005tR-2A; Tue, 28 Jan 2020 02:28:18 +0000
+	id 1iwGbu-0005r6-6p; Tue, 28 Jan 2020 02:28:14 +0000
 Received: from esa2.hgst.iphmx.com ([68.232.143.124])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iwGbo-0005pr-N6
+ id 1iwGbo-0005ps-N7
  for linux-riscv@lists.infradead.org; Tue, 28 Jan 2020 02:28:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
  t=1580178508; x=1611714508;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=2nWGxJNu5AaNrPUR9Ax2z2U4KExulXxbW7We38PzOCE=;
- b=PQkIaEleBhvI1CMcGfGQ+NK1rS7w9c2exL6NaVCzKWHsmRYDX1CkcO7Q
- 37LOXN8KzKE1o9hAwLQUDjef2uClYdCmCAKi14mnr4z0jOVCp4A0TKdUn
- WFnzIfUI9iTUNQ72xRyb4vQ9BvuJ504AeNAoKKKk5J/w9aADMEo9lE98h
- 4GsKah0eRvKHA9qzy5Mxn+GAVljyqc/lYS0k4zXuIhPGapygW0wRnetCi
- G8YLLLxe5IgxUKDiAC0psBnAgeOygtjEy174v+HA2k/OjkWoIyu3yosHE
- IpMfVv381Dky0BKOxS8OV0GissDVHIhTPvt+zYRCCZQHTaC010sBiiRI+ Q==;
-IronPort-SDR: +U2m44f6SCSKlbmTor+ZKpk2UusRi7A6Qjzg6nqAQp4x/h+7Jzt9gy9ZBJSf02jhcURwpPySmj
- ILTZ46kAYT6BEPUxaUKlGmi7ppEomNjRv6HZF5taqqrPz39Wm90gqYy7RYhUZhvDI9KQcBRI1Q
- RzKodw58fzT4gIynvqDvcT3aCyP3FPEMwTHnJ9v/hWKYjZOusZ8O1ND+eIbk2jJSwDv9K8YjUc
- X0JcuEPXOUYRbQK9H1nSRLll5mEg3KTydz/BH3MFE067sgeA9WPbjpotAloIbYxa73Jh5v3dhZ
- ZLo=
-X-IronPort-AV: E=Sophos;i="5.70,372,1574092800"; d="scan'208";a="230237579"
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=UorqLKP57b6PMCT+1VL4L6XYE1Vd36TEURwukvr+gSY=;
+ b=pUfl4lvRMpN0Dk0ml9JX8nv0HQ7736i+/H0yeaZjhlXPhp4a4hp7CjiM
+ zL5na0Z8gBO0f2lOeUL1lrDW/gsiokLdB9ObTbY5qgj+BNCWYYJfOMoy0
+ hgxlGF9IAPEJFKpPzw14ELKQp4+2qWjX5nHKlIFQSwSERseWeC49K+PqD
+ nTo3KHZmmaIoK4RF6pEhbBHmTZMl2Ivn/IU44ADrirs8zo1+p2nbbMPJ3
+ 2PTaKa+VEMxO89AuwKrltXB2cwoqPcr5JrWj13CqOHh2hIpdaVISifMvn
+ uDn6PXE/AKsAZtkTu5aQVbaTa+xRg/HCMNI8Sa4b/o1Z4ZrOZzJdQ6WyQ A==;
+IronPort-SDR: 50/9mvt5UQhcIFVbI69NerqtbudwlVx0ey5YgNVBA10UYgmi47RAlRDlYvZi6Xqn+6jFqIQ+au
+ 7YBLxZ1d8G17iqbJEThjNt5+GHBXYY8ieroauMlSQanKoz1LLUUGvL27G6Yq1BxBnxIbpUPtFk
+ cuDx3n8SZjltZWraWiqzGFypHtGA0OrtnHU3ouO4FBWkc6Ap7eK19xSbpPDvPWdpq7JqPgGKQP
+ 9OrttzrguJnhCJFCZk6/7KGRVwpR+n9s4SxAywK1uSIZEA13CQQ++m7tuo16ke1jYeYwDexFGQ
+ of8=
+X-IronPort-AV: E=Sophos;i="5.70,372,1574092800"; d="scan'208";a="230237580"
 Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
  ([199.255.45.14])
  by ob1.hgst.iphmx.com with ESMTP; 28 Jan 2020 10:28:26 +0800
-IronPort-SDR: xH6AgWNNEJQRTpdew423oGj5bh+5jGvT+Mgt5pOr98UBZWE4Q19PFbRku8Qs9IepUEhsHt5mqo
- JANbElq9gmkqE0oUceL/YqRB73ibHrQnld4lvhDzgxbNXuq737u/xuJsYb5nBIOUL4X5pSWZSl
- yGR8qVusfiE+Y0x0ofHWCwwMsyWRVYwqfyDl8DXpNw00gh886jZ+BVv7lZQipPxCU4RLeUCevf
- FxEnyOlUAijUuoF4HwfFKJLkEPBhs4NjeCzFWfzgP98knbmetmKtBBkUSzH1ga9/pROQLiHtFF
- oqN747RvW8Y1lPMI6BwNZKPu
+IronPort-SDR: 3Aib+gh66cw5XV/+IhCnTM4EqNeevPdto/rVw38f7aJ1glTqf7E188FA/yU2BwYORNh7fSuMVk
+ OSoWxjxtMPdV5t2FNEtVOrG4N8orcifUqXAkEWg+jPZulr8bqoWBLy62oqPzQ7XsJ9ecmynVlW
+ EdYNwdg9Xe7mRvNzhW3NYCs2qSFrDigCkHnEMqnYH4j7+J2KQvK3fqplZzzyc1GdeVFoZIK/MU
+ SnRGFrrjhXOKb3vvGO11FNh0ceZ6bZIwZ0I4sFPe+pZZs4FmYfgCdqL+HicepBLaxpppMHJ3IQ
+ VWC+/RG4Fzs7wbh+HYfIBkZu
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 Jan 2020 18:21:22 -0800
-IronPort-SDR: 34puJ9SRsX/BV5rJp7+tSp1HSuXrV64X9EzBR/aH2/qxzQo7VHZYIgTjcmYQVPq7DmptsyF5CX
- zyK7biyrpqgd3yx9MAdeQPA7r1KYCciJRAkLxzb4KZZ2NY83A5V6woAC1bj9Pb23frcDLTCCfl
- BkEvKftbbaEdN86TIlmI0fbh+ivOizrvm09IFWYcznEi8CORqANXu0UhJOtSA8yqOFGsd2M9YQ
- GNlI8/0SghWhwwq+2QJR4kKRrMXxFdYOBrO2ROLhwuyap6cCawgS1D2t2G3bsZeDOGJZ1hAKyB
- cFs=
+IronPort-SDR: gZweaIFfZbH6bxjhNbxuvU235VwbWSMSVstM5yqZLjd10PZmIGau1fOhJzV/J4YP7bu3UrxibT
+ s9x9Gw2nTFmCp9PjioxE7ojb2Z2crQp2591B2iojxoeJq0hiYAEkuLvZi0cxW9wk6OKBKJMw+r
+ arOQhZ9SYfeBfnFpoUUUguTNSTo5ha2J88sliAO4PITBaxMkN4a/UmBCple3UIQJgbqPbZH+4z
+ nVt9fV0WpGCeD2rLXAWIabVpsp23T6NlDY/4wZqJeTx1J90qt5Q1vR4PHIGP0BSOLytUgNxIbd
+ f6g=
 WDCIronportException: Internal
 Received: from jedi-01.sdcorp.global.sandisk.com (HELO
  jedi-01.int.fusionio.com) ([10.11.143.218])
- by uls-op-cesaip01.wdc.com with ESMTP; 27 Jan 2020 18:28:07 -0800
+ by uls-op-cesaip01.wdc.com with ESMTP; 27 Jan 2020 18:28:08 -0800
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v7 00/10] Add support for SBI v0.2 and CPU hotplug
-Date: Mon, 27 Jan 2020 18:27:27 -0800
-Message-Id: <20200128022737.15371-1-atish.patra@wdc.com>
+Subject: [PATCH v7 01/10] RISC-V: Mark existing SBI as 0.1 SBI.
+Date: Mon, 27 Jan 2020 18:27:28 -0800
+Message-Id: <20200128022737.15371-2-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.24.0
+In-Reply-To: <20200128022737.15371-1-atish.patra@wdc.com>
+References: <20200128022737.15371-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200127_182808_793059_FC3E6D22 
-X-CRM114-Status: GOOD (  11.56  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200127_182808_792773_AB914012 
+X-CRM114-Status: GOOD (  12.96  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 2.5 URIBL_DBL_ABUSE_MALW   Contains an abused malware URL listed in
- the Spamhaus DBL blocklist [URIs: infradead.org]
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
  medium trust [68.232.143.124 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -104,99 +104,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Cc: Albert Ou <aou@eecs.berkeley.edu>, Thomas Gleixner <tglx@linutronix.de>,
  Kees Cook <keescook@chromium.org>, abner.chang@hpe.com,
  Vincent Chen <vincent.chen@sifive.com>, nickhu@andestech.com,
- Anup Patel <anup@brainfault.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Anup Patel <anup@brainfault.org>, Palmer Dabbelt <palmerdabbelt@google.com>,
  Heiko Carstens <heiko.carstens@de.ibm.com>, Mike Rapoport <rppt@linux.ibm.com>,
  clin@suse.com, Atish Patra <atish.patra@wdc.com>,
  Geert Uytterhoeven <geert@linux-m68k.org>,
  "Eric W. Biederman" <ebiederm@xmission.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Palmer Dabbelt <palmerdabbelt@google.com>,
  Greentime Hu <greentime.hu@sifive.com>, linux-riscv@lists.infradead.org,
  Borislav Petkov <bp@suse.de>, Palmer Dabbelt <palmer@dabbelt.com>,
  Mao Han <han_mao@c-sky.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The Supervisor Binary Interface(SBI) specification[1] now defines a
-base extension that provides extendability to add future extensions
-while maintaining backward compatibility with previous versions.
-The new version is defined as 0.2 and older version is marked as 0.1.
+As per the new SBI specification, current SBI implementation version
+is defined as 0.1 and will be removed/replaced in future. Each of the
+function call in 0.1 is defined as a separate extension which makes
+easier to replace them one at a time.
 
-This series adds support v0.2 and a unified calling convention
-implementation between 0.1 and 0.2. It also add other SBI v0.2
-functionality defined in [2]. The base support for SBI v0.2 is already
-available in OpenSBI v0.5. It also adds SBI HSM extension and cpu-hotplug
-support for RISC-V which requires additional patches[3] in OpenSBI.
+Rename existing implementation to reflect that. This patch is just
+a preparatory patch for SBI v0.2 and doesn't introduce any functional
+changes.
 
-[1] https://github.com/riscv/riscv-sbi-doc/blob/master/riscv-sbi.adoc
-[2] https://github.com/riscv/riscv-sbi-doc/pull/27
-[3] http://lists.infradead.org/pipermail/opensbi/2020-January/001050.html
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+Reviewed-by: Anup Patel <anup@brainfault.org>
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+---
+ arch/riscv/include/asm/sbi.h | 44 ++++++++++++++++++++----------------
+ 1 file changed, 24 insertions(+), 20 deletions(-)
 
-The patches are also available in following github repositery.
-
-OpenSBI     : https://github.com/atishp04/opensbi/tree/sbi_hsm_v1
-Linux Kernel: https://github.com/atishp04/linux/tree/sbi_v0.2_v7
-
-Changes from v6-v7:
-1. Rebased on v5.5
-2. Fixed few compilation issues for !CONFIG_SMP and !CONFIG_RISCV_SBI
-3. Added SBI HSM extension
-4. Add CPU hotplug support
-
-Changes from v5->v6
-1. Fixed few compilation issues around config.
-2. Fixed hart mask generation issues for RFENCE & IPI extensions.
-
-Changes from v4->v5
-1. Fixed few minor comments related to static & inline.
-2. Make sure that every patch is boot tested individually.
-
-Changes from v3->v4.
-1. Rebased on for-next.
-2. Fixed issuses with checkpatch --strict.
-3. Unfied all IPI/fence related functions.
-4. Added Hfence related SBI calls.
-
-Changes from v2->v3.
-1. Moved v0.1 extensions to a new config.
-2. Added support for relacement extensions of v0.1 extensions.
-
-Changes from v1->v2
-1. Removed the legacy calling convention.
-2. Moved all SBI related calls to sbi.c.
-3. Moved all SBI related macros to uapi.
-
-Atish Patra (10):
-RISC-V: Mark existing SBI as 0.1 SBI.
-RISC-V: Add basic support for SBI v0.2
-RISC-V: Add SBI v0.2 extension definitions
-RISC-V: Introduce a new config for SBI v0.1
-RISC-V: Implement new SBI v0.2 extensions
-RISC-V: Add cpu_ops and modify default booting method
-RISC-V: Move relocate and few other functions out of __init
-RISC-V: Add SBI HSM extension
-RISC-V: Add supported for ordered booting method using HSM
-RISC-V: Support cpu hotplug
-
-arch/riscv/Kconfig               |  18 +-
-arch/riscv/include/asm/cpu_ops.h |  36 ++
-arch/riscv/include/asm/sbi.h     | 197 +++++++----
-arch/riscv/include/asm/smp.h     |  14 +
-arch/riscv/kernel/Makefile       |   2 +
-arch/riscv/kernel/cpu-hotplug.c  |  84 +++++
-arch/riscv/kernel/cpu_ops.c      | 134 ++++++++
-arch/riscv/kernel/head.S         |  98 ++++--
-arch/riscv/kernel/sbi.c          | 574 ++++++++++++++++++++++++++++++-
-arch/riscv/kernel/setup.c        |  34 +-
-arch/riscv/kernel/smpboot.c      |  54 +--
-arch/riscv/kernel/traps.c        |   2 +-
-arch/riscv/kernel/vmlinux.lds.S  |   9 +-
-13 files changed, 1128 insertions(+), 128 deletions(-)
-create mode 100644 arch/riscv/include/asm/cpu_ops.h
-create mode 100644 arch/riscv/kernel/cpu-hotplug.c
-create mode 100644 arch/riscv/kernel/cpu_ops.c
-
---
+diff --git a/arch/riscv/include/asm/sbi.h b/arch/riscv/include/asm/sbi.h
+index 2570c1e683d3..b38bc36f7429 100644
+--- a/arch/riscv/include/asm/sbi.h
++++ b/arch/riscv/include/asm/sbi.h
+@@ -1,6 +1,7 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+  * Copyright (C) 2015 Regents of the University of California
++ * Copyright (c) 2019 Western Digital Corporation or its affiliates.
+  */
+ 
+ #ifndef _ASM_RISCV_SBI_H
+@@ -9,17 +10,17 @@
+ #include <linux/types.h>
+ 
+ #ifdef CONFIG_RISCV_SBI
+-#define SBI_SET_TIMER 0
+-#define SBI_CONSOLE_PUTCHAR 1
+-#define SBI_CONSOLE_GETCHAR 2
+-#define SBI_CLEAR_IPI 3
+-#define SBI_SEND_IPI 4
+-#define SBI_REMOTE_FENCE_I 5
+-#define SBI_REMOTE_SFENCE_VMA 6
+-#define SBI_REMOTE_SFENCE_VMA_ASID 7
+-#define SBI_SHUTDOWN 8
++#define SBI_EXT_0_1_SET_TIMER 0x0
++#define SBI_EXT_0_1_CONSOLE_PUTCHAR 0x1
++#define SBI_EXT_0_1_CONSOLE_GETCHAR 0x2
++#define SBI_EXT_0_1_CLEAR_IPI 0x3
++#define SBI_EXT_0_1_SEND_IPI 0x4
++#define SBI_EXT_0_1_REMOTE_FENCE_I 0x5
++#define SBI_EXT_0_1_REMOTE_SFENCE_VMA 0x6
++#define SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID 0x7
++#define SBI_EXT_0_1_SHUTDOWN 0x8
+ 
+-#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({		\
++#define SBI_CALL(which, arg0, arg1, arg2, arg3) ({             \
+ 	register uintptr_t a0 asm ("a0") = (uintptr_t)(arg0);	\
+ 	register uintptr_t a1 asm ("a1") = (uintptr_t)(arg1);	\
+ 	register uintptr_t a2 asm ("a2") = (uintptr_t)(arg2);	\
+@@ -43,48 +44,50 @@
+ 
+ static inline void sbi_console_putchar(int ch)
+ {
+-	SBI_CALL_1(SBI_CONSOLE_PUTCHAR, ch);
++	SBI_CALL_1(SBI_EXT_0_1_CONSOLE_PUTCHAR, ch);
+ }
+ 
+ static inline int sbi_console_getchar(void)
+ {
+-	return SBI_CALL_0(SBI_CONSOLE_GETCHAR);
++	return SBI_CALL_0(SBI_EXT_0_1_CONSOLE_GETCHAR);
+ }
+ 
+ static inline void sbi_set_timer(uint64_t stime_value)
+ {
+ #if __riscv_xlen == 32
+-	SBI_CALL_2(SBI_SET_TIMER, stime_value, stime_value >> 32);
++	SBI_CALL_2(SBI_EXT_0_1_SET_TIMER, stime_value,
++			  stime_value >> 32);
+ #else
+-	SBI_CALL_1(SBI_SET_TIMER, stime_value);
++	SBI_CALL_1(SBI_EXT_0_1_SET_TIMER, stime_value);
+ #endif
+ }
+ 
+ static inline void sbi_shutdown(void)
+ {
+-	SBI_CALL_0(SBI_SHUTDOWN);
++	SBI_CALL_0(SBI_EXT_0_1_SHUTDOWN);
+ }
+ 
+ static inline void sbi_clear_ipi(void)
+ {
+-	SBI_CALL_0(SBI_CLEAR_IPI);
++	SBI_CALL_0(SBI_EXT_0_1_CLEAR_IPI);
+ }
+ 
+ static inline void sbi_send_ipi(const unsigned long *hart_mask)
+ {
+-	SBI_CALL_1(SBI_SEND_IPI, hart_mask);
++	SBI_CALL_1(SBI_EXT_0_1_SEND_IPI, hart_mask);
+ }
+ 
+ static inline void sbi_remote_fence_i(const unsigned long *hart_mask)
+ {
+-	SBI_CALL_1(SBI_REMOTE_FENCE_I, hart_mask);
++	SBI_CALL_1(SBI_EXT_0_1_REMOTE_FENCE_I, hart_mask);
+ }
+ 
+ static inline void sbi_remote_sfence_vma(const unsigned long *hart_mask,
+ 					 unsigned long start,
+ 					 unsigned long size)
+ {
+-	SBI_CALL_3(SBI_REMOTE_SFENCE_VMA, hart_mask, start, size);
++	SBI_CALL_3(SBI_EXT_0_1_REMOTE_SFENCE_VMA, hart_mask,
++			  start, size);
+ }
+ 
+ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+@@ -92,7 +95,8 @@ static inline void sbi_remote_sfence_vma_asid(const unsigned long *hart_mask,
+ 					      unsigned long size,
+ 					      unsigned long asid)
+ {
+-	SBI_CALL_4(SBI_REMOTE_SFENCE_VMA_ASID, hart_mask, start, size, asid);
++	SBI_CALL_4(SBI_EXT_0_1_REMOTE_SFENCE_VMA_ASID, hart_mask,
++			  start, size, asid);
+ }
+ #else /* CONFIG_RISCV_SBI */
+ /* stubs for code that is only reachable under IS_ENABLED(CONFIG_RISCV_SBI): */
+-- 
 2.24.0
 
 
