@@ -2,78 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1604A14C876
-	for <lists+linux-riscv@lfdr.de>; Wed, 29 Jan 2020 11:02:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EDF6214CCE3
+	for <lists+linux-riscv@lfdr.de>; Wed, 29 Jan 2020 16:00:40 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NMxi53oQhLqzBIhRfkCNH6OHdDETWpd2dLEfkOHx2Uc=; b=RxZ6E97aHRsD0Y10PvUFjk/c3
-	GORo0kMzN7GMiNaY5/QrvgKKn/mt/ifTOqH85Hs1MHgGBlqc8HwoxcDhFd6b79UrjzGknbuNigMGw
-	AyfdL82+qUxZeIGglngfxwXuSA53BTo/EY6l1PDDqgME1JRQ2+9/K806n3qOmhS+0GhO+XJBDgQdJ
-	tBZyX1jqi4Es+mlSGCT4DQpLUZeiL5jSsB7jVP4LdyyxLwBugfLyZtryl+3pqPHO7X6Cnf0UpMp8I
-	CIWE+o15ypleBZ8A6NwEHs8gHgnH3EVirDkdbAcJrKSGOlro4Uxz7RbZuHPfU98gKXZEXQUaYoKUH
-	EGEPKKDTw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:References:
+	In-Reply-To:To:Subject:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=izVbuVQfKjxlDiWpU3YFz1uZ6NyAhFYTQIwypULO3vE=; b=nSPZQm+TYCy3ZG
+	oGgFloSmXnwMPJlSBdoovcvl0qx4WNwmjr45c5JkX5hVifZ+Uj1E9HNT7eJxf+Ybj37r6qfAX8ZPt
+	SsJErBlAHKSz01ZdMQtC7ptTpDAT+ReM4SmRgBWQrF+Ap5J5TURuYUAGHB1V9hqlFEtvdUpvFoXkb
+	+CBl6FGmT7+a5yzqxXy2NN88mjo/oet+WbjeBkV7ReytHy+DkaizG2NxDFjlGRIAX/oMTQYL0JFx9
+	Uvgmj6QFK6BsJ8GDfOlm8Ik7XT42uGgj7qvGxoPSFjtfc5REZ3toxnpehG63lppuhi6NMRFQPnGzt
+	cIXKq3wat2l6j+m/vzwQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iwkBO-0003Jg-6Y; Wed, 29 Jan 2020 10:02:50 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1iwopR-0000jR-PP; Wed, 29 Jan 2020 15:00:29 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iwkBK-0003JC-TX
- for linux-riscv@lists.infradead.org; Wed, 29 Jan 2020 10:02:48 +0000
-Received: by mail-lj1-x243.google.com with SMTP id x7so17720859ljc.1
- for <linux-riscv@lists.infradead.org>; Wed, 29 Jan 2020 02:02:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NMxi53oQhLqzBIhRfkCNH6OHdDETWpd2dLEfkOHx2Uc=;
- b=Oi4ghENtW6WcAZoWHyXkSoZL6u7K78YhV9BGUbXfC6h6iBLme0/mQHB5Ff2rNV0E6B
- On7RkAea/ORZqEDHsxpTTRJ4e8w4Dr/ZSGZ7EuaRWqhlipZW+SzN7agWqJvr30hjw0mr
- maGoxAwSH46ouE/d+AHJD5+unObzitFq5uiQ5dTuteai1qfGVsL1Gdvd7/eWX0HdFQfY
- XjtoTXtzE0WnVZ/WjTsHYubHx5SVEI0eHDsG4NvncsMPBujwg7rToS4rRJfF0yOv0Jp/
- YPoUAOBGsgvdON/p45jmIfTn8+EifTTXAmFTcc8LILl5rDhfg9yLO4+GcHBkGZGHHpVp
- wZYg==
+ id 1iwopO-0000iQ-AU
+ for linux-riscv@lists.infradead.org; Wed, 29 Jan 2020 15:00:27 +0000
+Received: by mail-wr1-x441.google.com with SMTP id g17so20533292wro.2
+ for <linux-riscv@lists.infradead.org>; Wed, 29 Jan 2020 07:00:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:subject:cc:to:in-reply-to:references:message-id
+ :mime-version:content-transfer-encoding;
+ bh=izVbuVQfKjxlDiWpU3YFz1uZ6NyAhFYTQIwypULO3vE=;
+ b=jAOCJDy7b+3jbarX0d8qXICDRSDylbN3qzBXUI8v23ZGpTQVbn6DyL60cgqzP/sHRD
+ jHENIlTIZmK/3bANbEVuZjD519GTMC7EdKqOK7/jBPh2VK3lPyXLv4at1yR9S1YqsXnT
+ s9MmDg/bDWEr9Zg6zBfgON7qHLaoDf9T47ZNmGVLM3RaGDcPBDKQ3Nwu59ZUI36uLYly
+ CIP5g0MNuiIg9rOTNdLkXEkXddsnxaQf7gdgfZ+wqDFpFB2HCwfkL0axKLMHPpOAnaK8
+ mzU1EecrudoQCDTi6RNmkSVmWI2/fXACqKsi+oMSTLYvKJfGWHfympKi6x9fFzhJ38Id
+ AdZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NMxi53oQhLqzBIhRfkCNH6OHdDETWpd2dLEfkOHx2Uc=;
- b=OsrdUtT54WZJCM7tKEY4GAk7/ve79L4k9Gr0sPbd12lNqNA9ZXEnZrOcZIxRfD51z5
- tsOLL53qgrN6YiRQaEOfdmQO2wHCvbErwSjqTJR7MrgrO94l0/fQbM3e/g2pP+SmGC5W
- g/cb6Znj4QfysF+hY0AnOZB5E+t/1fd6kiTypXIidf2XaENGszXc7mBkQUOfrTF9B4ua
- f/ex8otZaOp9myT2UaRcgoUUtk9lBd42+Xd+JrWl2mzNtljwDorgdh0sl3gEBLbE7nJf
- eXAGsXLULUaStEKSNNWfmR2NwGedwhV4RjGFN3Ac5XWFeR0FPYuTqn+0AuEvpWcqepzP
- DCxg==
-X-Gm-Message-State: APjAAAV1OreyzgZufuPO3KoY/m7nBgOgYkOvhzMpmw3DYpJEGw1TcFvY
- VL4QsvPF1qpnqIWPERHQGqlSEnWdQxf9As3YQObTug/MVSs=
-X-Google-Smtp-Source: APXvYqwETGQUBQ9evnWRAidnF08QHwkw7wCuB5Ih+rKtEwQzqb/TOP2aY3kVf4fXyMdZkgiY/Zpkwkp5E9sI99kmEjg=
-X-Received: by 2002:a2e:81c3:: with SMTP id s3mr15670925ljg.168.1580292163302; 
- Wed, 29 Jan 2020 02:02:43 -0800 (PST)
-MIME-Version: 1.0
-References: <1580189061-14091-1-git-send-email-yash.shah@sifive.com>
- <ecb0e9404a3f6256a7ba1fe48b5a1471@kernel.org>
-In-Reply-To: <ecb0e9404a3f6256a7ba1fe48b5a1471@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 29 Jan 2020 11:02:32 +0100
-Message-ID: <CACRpkdaQWB6toqVoPZCO=pfnMBFW+hXc027azu92NdOMqR_qNg@mail.gmail.com>
-Subject: Re: [PATCH] gpio/sifive: fix static checker warning
-To: Marc Zyngier <maz@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:date:from:subject:cc:to:in-reply-to:references
+ :message-id:mime-version:content-transfer-encoding;
+ bh=izVbuVQfKjxlDiWpU3YFz1uZ6NyAhFYTQIwypULO3vE=;
+ b=GU7vuZESiO4xXKLSBQdGguNcxy8drkbVTW8NKQoq9/RLVahjaGow+6paed6kzbAlTt
+ rRJZiHf7VQz0SBNivVKHT4tL6JJp891NvT3aa+yK2iqRNNPhVRU6nIWE72dh3vMQd563
+ bIzY5kxiw2++WPhIsKxunutbiPFVXSUMupNkXVmJjSl7CG1ew5/RCAIRKuy2wzABUb9+
+ lff2AkI11Zfg5+wOeBVQ0d88B3hzsj8M4FA3b3HSBMdn89dB78r6UuDP+kJgdoYDxPGr
+ dUI+Llb477eV71oY73uf03pMohueBX58Wdl9Ej1WvjLTcZkk+c4llyJoqHYjxB66h5Qx
+ fOuA==
+X-Gm-Message-State: APjAAAWijmyaOglfZtpGPCpSHrswir16ReR5gWCHEoPHON7wBLPDK30I
+ jzXtHG/0Uy/TgYefG+gqPLKv7g==
+X-Google-Smtp-Source: APXvYqwb5lM57o59SrwocyymNrtibeNLU9G8DkQ5nCCDlcJxe1cbV84jEra110J+DHdFaEONXPuKYA==
+X-Received: by 2002:adf:dc8d:: with SMTP id r13mr37387337wrj.357.1580310020461; 
+ Wed, 29 Jan 2020 07:00:20 -0800 (PST)
+Received: from localhost ([2a00:79e0:d:11:1da2:3fd4:a302:4fff])
+ by smtp.gmail.com with ESMTPSA id 18sm2492646wmf.1.2020.01.29.07.00.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Jan 2020 07:00:19 -0800 (PST)
+Date: Wed, 29 Jan 2020 07:00:19 -0800 (PST)
+X-Google-Original-Date: Wed, 29 Jan 2020 15:00:18 GMT (+0000)
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+X-Google-Original-From: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH v4 0/6] GPIO & Hierarchy IRQ support for HiFive Unleashed
+To: maz@kernel.org
+In-Reply-To: <8dcb52c94eb5a585f6cf052c18571805@kernel.org>
+References: <8dcb52c94eb5a585f6cf052c18571805@kernel.org>
+ <1575976274-13487-1-git-send-email-yash.shah@sifive.com>
+Message-ID: <mhng-cb360722-bdb6-4cf7-9fa7-1d92f6b6bbfa@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200129_020246_963487_29461F45 
-X-CRM114-Status: UNSURE (   6.89  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200129_070026_365105_01B1FDF3 
+X-CRM114-Status: GOOD (  15.99  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:243 listed in]
- [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -81,6 +92,8 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,24 +105,84 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>, "Wesley W. Terpstra" <wesley@sifive.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Yash Shah <yash.shah@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Sachin Ghadi <sachin.ghadi@sifive.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
+ jason@lakedaemon.net, Atish Patra <Atish.Patra@wdc.com>,
+ sachin.ghadi@sifive.com, linus.walleij@linaro.org,
+ linux-kernel@vger.kernel.org, bgolaszewski@baylibre.com, yash.shah@sifive.com,
+ robh+dt@kernel.org, sagar.kadam@sifive.com, linux-gpio@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
+ bmeng.cn@gmail.com, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jan 28, 2020 at 2:21 PM Marc Zyngier <maz@kernel.org> wrote:
+On Mon, 20 Jan 2020 09:09:51 GMT (+0000), maz@kernel.org wrote:
+> On 2019-12-10 12:11, Yash Shah wrote:
+>> This patch series adds GPIO drivers, DT documentation and DT nodes for
+>> HiFive Unleashed board. The gpio patches are mostly based on Wesley's
+>> patch.
+>> The patchset also adds hierarchy irq domain support as it is required
+>> by this
+>> gpio driver. It also includes the irqdomain patch to introduce
+>> irq_domain_translate_onecell() and irq-nvic driver patch to use this
+>> newly
+>> introduced function.
+>>
+>> This patchset is based on Linux 5.4-rc6 and tested on HiFive Unleashed
+>> board
+>>
+>> Changes:
+>> v4 vs v3:
+>> - Rename the DT yaml document to more standard naming
+>> (sifive,gpio.yaml)
+>> - Drop "clock-names" property from yaml document
+>> - Add "minItems" to "interrupts" node in yaml
+>>
+>> v3 vs v2:
+>> - Include patch for irq-nvic driver to use irq_domain_translate_onecell
+>> - Remove unnecessary inclusion of header files
+>> - Use a single prefix for all symbols in this driver
+>> - Rename the "enabled" field of struct sifive_gpio to "irq_state"
+>> - Remove unused variables and locking from probe()
+>> - Other minor changes
+>>
+>> v2 vs v1:
+>> - Add patch to introduce irq_domain_translate_onecell() and use it in
+>>   the sifive PLIC driver
+>> - Drop the usage of own locks, instead use internal bgpio_locks
+>> - Consistently use regmap for register access throughout the gpio code
+>> - Convert the GPIO DT documentation into a json schema
+>> - Other minor changes based upon feedback received on v1
+>>
+>> v1 vs RFC:
+>> Incorporated below changes as suggested by Linus Walleij on RFC version
+>> of this
+>> patchset[0]
+>> - Dropped PWM patches as they are already merged.
+>> - Include "GPIO_GENERIC" and "REGMAP_MMIO" in Kconfig select option
+>> - Remove unwanted inclusion of header files
+>> - Use regmap MMIO instead of customised sifive_assign_bit()
+>> - Use GPIOLIB_GENERIC and bgpio_init() to set up the accessors
+>> - Use hierarchical irqdomain
+>>
+>> [0]
+>> https://lore.kernel.org/linux-riscv/20181010123519.RVexDppaPFpIWl7QU_hpP8tc5qqWPJgeuLYn0FaGbeQ@z/
+>>
+>> Yash Shah (6):
+>>   genirq: introduce irq_domain_translate_onecell
+>>   irqchip: nvic: Use irq_domain_translate_onecell instead of custom
+>> func
+>>   irqchip: sifive: Support hierarchy irq domain
+>>   gpio: sifive: Add DT documentation for SiFive GPIO
+>>   gpio: sifive: Add GPIO driver for SiFive SoCs
+>>   riscv: dts: Add DT support for SiFive FU540 GPIO driver
+>
+> I've queued the first 5 patches. The last one should go via the
+> corresponding platform tree.
 
-> Linus, do you want me to queue this via the irqchip tree (given that
-> it is where the original bug came from)? Or would you rather take it?
+Thanks, I'd missed this one.
 
-I can take it, I just need to get my own changes for GPIO in first
-so I'll apply this past v5.6-rc1.
-
-Yours,
-Linus Walleij
+>
+> Thanks,
+>
+>          M.
 
