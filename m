@@ -2,81 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FEDE14D55F
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 Jan 2020 04:35:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3632814D580
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 Jan 2020 05:14:16 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mC7RHRuIaocmS+z3l26uFBe8rGA7IEoD8aV2xgLqy5c=; b=d5pDzYg28Od3JCp6hEAP4ykf4
-	0uUjkMw1lqGe9tDfPDhP+7A7bo/cFxUv3ki/oKQ5YBL50Cg2j6V5hxRAizkgWOAKWc2ba/akuLSlf
-	EdPRtUTo61O/OJVl7KhqfQEJedSFq7FoWw9C3um7hMy/h9+Ms8oql6GKTI47hu26p+VhT17AawJNx
-	Q+UZbxF04pbRG95RxzPwEGA0zYP25LhJXHxucZlFaH522+/a75ggxaWJH75QjjXmGsNVltqH/4R0L
-	MaTtqyET0x1veLhJvIky9vtS8CskAtLQo5yqFs7s0pu6R/VresbTK66Lr+NzoAoijXWNntn6MW8hn
-	Thv1OrHVg==;
+	 bh=FgWIjffnD3byi7rk5dOnW6BtS3H6iQwzyzRBM4tSfAM=; b=pAgyiUHdJCT0cEN6BYdiRYT4S
+	kmR+FsADEsAK1h9Os1ENNFv72Uhu+mnHkApjWBwgpoUuNLsTeqD2AHUMceicGknLN7HRNyAKb7psd
+	kJ0IbYYk460Syf6WGivgBhOlo6GHLhyLU0mGAhFcdom29c8HrEfBSOiOGOtQJD+vhGuAa+PkANzh0
+	Y8i62g2wWH+EsUBSb9UMOb86HPCl//btHZgRq49UdFas1t/wbI4gzWUU8PL8Ya56C/GwInfpKRfBg
+	LeUcGwJVxTcLjrKt2rUVwl7OTLoYvDBs8kDy3vheiPuCeFayCMMtMikZ+IXj6WK29+1odzQ5gx51F
+	wIUtma4yg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ix0c9-0005Q8-Qf; Thu, 30 Jan 2020 03:35:33 +0000
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141])
+	id 1ix1DW-0001VY-5a; Thu, 30 Jan 2020 04:14:10 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ix0c5-0005Pa-7k
- for linux-riscv@lists.infradead.org; Thu, 30 Jan 2020 03:35:31 +0000
-Received: by mail-il1-x141.google.com with SMTP id o13so1839629ilg.10
- for <linux-riscv@lists.infradead.org>; Wed, 29 Jan 2020 19:35:28 -0800 (PST)
+ id 1ix1DR-0001Uo-Lo
+ for linux-riscv@lists.infradead.org; Thu, 30 Jan 2020 04:14:07 +0000
+Received: by mail-ot1-x342.google.com with SMTP id g64so1829880otb.13
+ for <linux-riscv@lists.infradead.org>; Wed, 29 Jan 2020 20:14:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=date:from:to:cc:subject:in-reply-to:message-id:references
- :user-agent:mime-version;
- bh=mC7RHRuIaocmS+z3l26uFBe8rGA7IEoD8aV2xgLqy5c=;
- b=VXknZ1hIBUxEx/1dLxzQq86Vt/I5g5pz3Ea0JRLL8XjSPk8AMIwX6tTlsPGGaZmSsI
- dVwGNlBa0jXSzMR90M/W8zv3voYjvhC9ATi4xumiZSUP9+fZjZgffWpg/uiYCVkJ34Hx
- 0vgPPsQtkbrnfPn8hSrDM3sdyH5kWULQEH5QukQjHZ9phM0M0eKjiUPoSCX8xJQiDt/Q
- 6VCdRL2xuYqa0HOt2O7AlHEe+uYT9luGkM7t06gAdbk3sjWeJz9pf3XlzSVeObP9v30t
- ++ubr+zD6/vTxGryuwDmXCZ5iW1JWbquvAgD0TDnxfFdlRQGtJM+CiiOPeIvMEX5xG+X
- rkjQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FgWIjffnD3byi7rk5dOnW6BtS3H6iQwzyzRBM4tSfAM=;
+ b=Yt/RikqKyX4nbqjaf3PIWb6Ui8PoT91OMPxmO27zW2BwdBud6C8oLtZhbv7HSPGPus
+ d0bVTGIaxsflz+jceOaTYK4HiX/2C9H4TQtJTAk4mGBhC896wiqkZOj+qppWkhBG40mU
+ RA6dzbQSrB5db9IyHoGXTYhS3G/vN87w6Ddg8a2QZhwIsKMC9guY7pYrHyCVnai96YVG
+ GleYznx/qZ/DbEUNDXctsFZwd2fS8tYjMNtpxQ6QbKzji3cns47fayxO8s2cTW5Ddfjg
+ r+AZGXaZHRI83B2VtgEisuenYtJHzFCB10gGaJ4aFT1nu+KJA23H8Yjv4/nbKXGzFvr1
+ FRqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:in-reply-to:message-id
- :references:user-agent:mime-version;
- bh=mC7RHRuIaocmS+z3l26uFBe8rGA7IEoD8aV2xgLqy5c=;
- b=pHudUz865r0ezfAxrPWBxMGbMLV4OlsnPOGlQ1j/iibe60GffUNzSQ9EIjMiMgt6W5
- NBFrnV76nPFACmyp/obhQjPNHwUQb0PC3DX3DZ2xeZ5EldR5IyNsJPuMwkR/H4UwdeKu
- UszBtg7Bi/ih6NqnSWiBf4UOEm8jewp9l9clVYXkZNZlzGZulvN8lCSZub6JhNHMG0dT
- 8lPMqyyzr7h8CAzu2IbTxbnRaaDAVYGoKcf+/iKXY+SpAxY3EsYyxFHYcaTQXIWLCrH5
- wu38vBf8kbq21SsmLAsexmL0zP8pRUEi9G+xmhrG2eI71dSQsvux1tnSyY/hjRHlG260
- KP3g==
-X-Gm-Message-State: APjAAAUJnI08GQ9f/5h1y8UgXw4cQwMnz/ZqmMXKfOyapxREwhJytFAq
- Hma34mXoYayB7ifMelL4xNpusA==
-X-Google-Smtp-Source: APXvYqy8dSxmhoNpOD7317q+NXC3zlo/U+JsNSzJlrEoYOjQ3EzKKlWi3waDbRail60K66MLEn+W3g==
-X-Received: by 2002:a92:4891:: with SMTP id j17mr2398379ilg.33.1580355327714; 
- Wed, 29 Jan 2020 19:35:27 -0800 (PST)
-Received: from localhost (67-0-69-232.albq.qwest.net. [67.0.69.232])
- by smtp.gmail.com with ESMTPSA id l3sm1389627ilq.56.2020.01.29.19.35.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jan 2020 19:35:27 -0800 (PST)
-Date: Wed, 29 Jan 2020 19:35:20 -0800 (PST)
-From: Paul Walmsley <paul.walmsley@sifive.com>
-X-X-Sender: paulw@viisi.sifive.com
-To: JaeJoon Jung <rgbi3307@gmail.com>
-Subject: Re: [PATCH] riscv: Add gpio and pwmleds to
- DTS(/arch/riscv/boot/dts/sifive/)
-In-Reply-To: <CAHOvCC5aEc=p_6Yxkyr8n9BXZug_-NA_CJswu8vtkM8aOBhWvg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.9999.2001291930040.1008396@viisi.sifive.com>
-References: <CAHOvCC5aEc=p_6Yxkyr8n9BXZug_-NA_CJswu8vtkM8aOBhWvg@mail.gmail.com>
-User-Agent: Alpine 2.21.9999 (DEB 301 2018-08-15)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FgWIjffnD3byi7rk5dOnW6BtS3H6iQwzyzRBM4tSfAM=;
+ b=sce83Fe2Zmdr7yioAkd1Ppi76Iu3v9mgmahy3I1WF7VN2YBd2+7s5WgVJcVv56XDcP
+ 35T1E0xAN8nEQdbd5Zn9xDVGgxHJp91LjQZV0+4Pl4LGlTdoOORuMjfQrnda2rx5K2Or
+ eCla6sSlGyArcUWpgAOFPAXezb9562lyAYkhX6ARPsoM10IVku5rrMHw/c9xBnBPk9Mk
+ A8Q3gBToyOQ2feAH+L6AoU0rDEfJcITCaJB/PfSM9ghy9er2Uagd1teZ7mg64LZom39N
+ bI9xSS6hxpYZz+Y2ZBgG8FRVQqmmtJBulnDmbcE8mBBORJcxINs/TAg+6u/9vIgI72Ys
+ Q6FA==
+X-Gm-Message-State: APjAAAVPZn4NSdeocqi1+MXfbTzCx58rpi9f0+7BYoPMHG8h/XauqaNN
+ e4qni+JFbB8FyCE/DgtK+ZpysZx7jdgAMMBQoqZpygR+Jcc=
+X-Google-Smtp-Source: APXvYqzGTx8JGTdj44isrtHAA7RMz0KyMrImRir1j64u6f6Fuf5pq2fk9gu//gqHsCJ8sB6QnLJpqrIFp/SNC52EWwc=
+X-Received: by 2002:a9d:2028:: with SMTP id n37mr2180030ota.127.1580357639236; 
+ Wed, 29 Jan 2020 20:13:59 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+References: <20200123201414.8933-1-alex@ghiti.fr>
+In-Reply-To: <20200123201414.8933-1-alex@ghiti.fr>
+From: Zong Li <zong.li@sifive.com>
+Date: Thu, 30 Jan 2020 12:13:50 +0800
+Message-ID: <CANXhq0qY6eRQF3igyMAy1jgApOFqpoXwTtCfgGD-_fr4esRhaA@mail.gmail.com>
+Subject: Re: [PATCH] riscv: Introduce CONFIG_RELOCATABLE
+To: Alexandre Ghiti <alex@ghiti.fr>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200129_193529_290995_17BE721E 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20200129_201405_750968_85620A5A 
+X-CRM114-Status: GOOD (  29.63  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:141 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -98,97 +90,351 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Anup Patel <Anup.Patel@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Anup Patel <anup@brainfault.org>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 21 Jan 2020, JaeJoon Jung wrote:
-
-> I added below DTS to act gpio and pwmleds for SiFive FU540 Unleashed board.
-> 
-> diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> index a2e3d54e830c..b03bf570020c 100644
-> --- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> +++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
-> 
-> +                gpio0: gpio@10060000 {
-> +                        compatible = "sifive,fu540-c000-gpio", "sifive,gpio0";
-> +                        reg = <0x0 0x10060000 0x0 0x1000>;
-> +                        reg-names = "control";
-> +                        gpio-controller;
-> +                        #gpio-cells = <2>;
-> +                        ngpios = <16>;
-> +                        interrupt-controller;
-> +                        #interrupt-cells = <2>;
-> +                        interrupt-parent = <&plic0>;
-> +                        interrupts = <15 16 17 18 19 20 21 22 23 24
-> 25 26 27 28 29 30>;
-> +                        status = "disabled";
-> +                };
-
-Yash posted this a while ago:
-
-https://lore.kernel.org/linux-riscv/mhng-cb360722-bdb6-4cf7-9fa7-1d92f6b6bbfa@palmerdabbelt-glaptop1/T/#madb19f55bac11a9a675b1ca73ca3f0c2d88c57cf
-
-
-> 
-> diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> index 88cfcb96bf23..f3f55dbbf737 100644
-> --- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> +++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> 
->         cpus {
-> @@ -41,6 +41,39 @@
->                 clock-frequency = <RTCCLK_FREQ>;
->                 clock-output-names = "rtcclk";
->         };
+On Fri, Jan 24, 2020 at 4:14 AM Alexandre Ghiti <alex@ghiti.fr> wrote:
+>
+> This config allows to compile the kernel as PIE and to relocate it at any
+> virtual address at runtime: this paves the way to KASLR and to 4-level
+> page table folding at runtime. Runtime relocation is possible since
+> relocation metadata are embedded into the kernel.
+>
+> Note that relocating at runtime introduces an overhead even if the kernel
+> is loaded at the same address it was linked at and that the compiler
+> options are those used in arm64 which uses the same RELA relocation format.
+>
+> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+> ---
+>  arch/riscv/Kconfig              | 11 ++++
+>  arch/riscv/Makefile             |  5 +-
+>  arch/riscv/boot/loader.lds.S    |  2 +-
+>  arch/riscv/include/asm/page.h   |  5 +-
+>  arch/riscv/kernel/head.S        |  3 +-
+>  arch/riscv/kernel/vmlinux.lds.S | 10 ++--
+>  arch/riscv/mm/Makefile          |  4 ++
+>  arch/riscv/mm/init.c            | 92 ++++++++++++++++++++++++++++-----
+>  8 files changed, 110 insertions(+), 22 deletions(-)
+>
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index fa7dc03459e7..c652b4b850ce 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -163,6 +163,17 @@ config PGTABLE_LEVELS
+>         default 3 if 64BIT
+>         default 2
+>
+> +config RELOCATABLE
+> +       bool
+> +       help
+> +          This builds a kernel as a Position Independent Executable (PIE),
+> +          which retains all relocation metadata required to relocate the
+> +          kernel binary at runtime to a different virtual address than the
+> +          address it was linked at.
+> +          Since RISCV uses the RELA relocation format, this requires a
+> +          relocation pass at runtime even if the kernel is loaded at the
+> +          same address it was linked at.
 > +
+>  source "arch/riscv/Kconfig.socs"
+>
+>  menu "Platform type"
+> diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
+> index b9009a2fbaf5..5a115cf6a9c1 100644
+> --- a/arch/riscv/Makefile
+> +++ b/arch/riscv/Makefile
+> @@ -9,7 +9,10 @@
+>  #
+>
+>  OBJCOPYFLAGS    := -O binary
+> -LDFLAGS_vmlinux :=
+> +ifeq ($(CONFIG_RELOCATABLE),y)
+> +LDFLAGS_vmlinux := -shared -Bsymbolic -z notext -z norelro
+> +KBUILD_CFLAGS += -fPIE
+> +endif
+>  ifeq ($(CONFIG_DYNAMIC_FTRACE),y)
+>         LDFLAGS_vmlinux := --no-relax
+>  endif
+> diff --git a/arch/riscv/boot/loader.lds.S b/arch/riscv/boot/loader.lds.S
+> index 47a5003c2e28..a9ed218171aa 100644
+> --- a/arch/riscv/boot/loader.lds.S
+> +++ b/arch/riscv/boot/loader.lds.S
+> @@ -7,7 +7,7 @@ ENTRY(_start)
+>
+>  SECTIONS
+>  {
+> -       . = PAGE_OFFSET;
+> +       . = CONFIG_PAGE_OFFSET;
+>
+>         .payload : {
+>                 *(.payload)
+> diff --git a/arch/riscv/include/asm/page.h b/arch/riscv/include/asm/page.h
+> index ac699246ae7e..27c95da68ecb 100644
+> --- a/arch/riscv/include/asm/page.h
+> +++ b/arch/riscv/include/asm/page.h
+> @@ -31,9 +31,9 @@
+>   * When not using MMU this corresponds to the first free page in
+>   * physical memory (aligned on a page boundary).
+>   */
+> -#define PAGE_OFFSET            _AC(CONFIG_PAGE_OFFSET, UL)
+> +#define PAGE_OFFSET            kernel_load_addr
+>
+> -#define KERN_VIRT_SIZE (-PAGE_OFFSET)
+> +#define KERN_VIRT_SIZE         (-_AC(CONFIG_PAGE_OFFSET, UL))
+>
+>  #ifndef __ASSEMBLY__
+>
+> @@ -97,6 +97,7 @@ extern unsigned long pfn_base;
+>  #define ARCH_PFN_OFFSET                (PAGE_OFFSET >> PAGE_SHIFT)
+>  #endif /* CONFIG_MMU */
+>
+> +extern unsigned long kernel_load_addr;
+>  extern unsigned long max_low_pfn;
+>  extern unsigned long min_low_pfn;
+>
+> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> index 2227db63f895..5042b2b48a06 100644
+> --- a/arch/riscv/kernel/head.S
+> +++ b/arch/riscv/kernel/head.S
+> @@ -126,7 +126,8 @@ clear_bss_done:
+>  #ifdef CONFIG_MMU
+>  relocate:
+>         /* Relocate return address */
+> -       li a1, PAGE_OFFSET
+> +       la a1, kernel_load_addr
+> +       REG_L a1, 0(a1)
+>         la a2, _start
+>         sub a1, a1, a2
+>         add ra, ra, a1
+> diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
+> index 12f42f96d46e..5095aee7c37e 100644
+> --- a/arch/riscv/kernel/vmlinux.lds.S
+> +++ b/arch/riscv/kernel/vmlinux.lds.S
+> @@ -4,7 +4,7 @@
+>   * Copyright (C) 2017 SiFive
+>   */
+>
+> -#define LOAD_OFFSET PAGE_OFFSET
+> +#define LOAD_OFFSET CONFIG_PAGE_OFFSET
+>  #include <asm/vmlinux.lds.h>
+>  #include <asm/page.h>
+>  #include <asm/cache.h>
+> @@ -70,9 +70,11 @@ SECTIONS
+>
+>         EXCEPTION_TABLE(0x10)
+>
+> -       .rel.dyn : {
+> -               *(.rel.dyn*)
+> -       }
+> +        .rela.dyn : ALIGN(8) {
+> +               __rela_dyn_start = .;
+> +                *(.rela .rela*)
+> +               __rela_dyn_end = .;
+> +        }
+>
+>         _end = .;
+>
+> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+> index a1bd95c8047a..dcd3d806243f 100644
+> --- a/arch/riscv/mm/Makefile
+> +++ b/arch/riscv/mm/Makefile
+> @@ -1,6 +1,10 @@
+>  # SPDX-License-Identifier: GPL-2.0-only
+>
+>  CFLAGS_init.o := -mcmodel=medany
+> +ifdef CONFIG_RELOCATABLE
+> +CFLAGS_init.o += -fno-pie
+> +endif
 > +
-> +        pwmleds {
-> +                compatible = "pwm-leds";
-> +                heartbeat {
-> +                        label = "led1";
-> +                        max-brightness = <255>;
-> +                        active-low = <1>;
-> +                        pwms = <&pwm0 0 7812500 0>;
-> +                        linux,default-trigger = "heartbeat";
-> +                };
-> +                mtd {
-> +                        label = "led2";
-> +                        max-brightness = <255>;
-> +                        active-low = <1>;
-> +                        pwms = <&pwm0 1 7812500 0>;
-> +                        linux,default-trigger = "mtd";
-> +                };
-> +                netdev {
-> +                        label = "led3";
-> +                        max-brightness = <255>;
-> +                        active-low = <1>;
-> +                        pwms = <&pwm0 2 7812500 0>;
-> +                        linux,default-trigger = "netdev";
-> +                };
-> +                panic {
-> +                        label = "led4";
-> +                        max-brightness = <255>;
-> +                        active-low = <1>;
-> +                        pwms = <&pwm0 3 7812500 0>;
-> +                        linux,default-trigger = "panic";
-> +                };
-> +        };
->  };
+>  ifdef CONFIG_FTRACE
+>  CFLAGS_REMOVE_init.o = -pg
+>  endif
+> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> index 965a8cf4829c..ac9a9f69abc0 100644
+> --- a/arch/riscv/mm/init.c
+> +++ b/arch/riscv/mm/init.c
+> @@ -12,6 +12,9 @@
+>  #include <linux/sizes.h>
+>  #include <linux/of_fdt.h>
+>  #include <linux/libfdt.h>
+> +#ifdef CONFIG_RELOCATABLE
+> +#include <linux/elf.h>
+> +#endif
+>
+>  #include <asm/fixmap.h>
+>  #include <asm/tlbflush.h>
+> @@ -28,6 +31,9 @@ EXPORT_SYMBOL(empty_zero_page);
+>  extern char _start[];
+>  void *dtb_early_va;
+>
+> +unsigned long kernel_load_addr = _AC(CONFIG_PAGE_OFFSET, UL);
+> +EXPORT_SYMBOL(kernel_load_addr);
+> +
+>  static void __init zone_sizes_init(void)
+>  {
+>         unsigned long max_zone_pfns[MAX_NR_ZONES] = { 0, };
+> @@ -132,7 +138,8 @@ void __init setup_bootmem(void)
+>                 phys_addr_t end = reg->base + reg->size;
+>
+>                 if (reg->base <= vmlinux_end && vmlinux_end <= end) {
+> -                       mem_size = min(reg->size, (phys_addr_t)-PAGE_OFFSET);
+> +                       mem_size = min(reg->size,
+> +                                      (phys_addr_t)-kernel_load_addr);
+>
+>                         /*
+>                          * Remove memblock from the end of usable area to the
+> @@ -269,7 +276,7 @@ static phys_addr_t __init alloc_pmd(uintptr_t va)
+>         if (mmu_enabled)
+>                 return memblock_phys_alloc(PAGE_SIZE, PAGE_SIZE);
+>
+> -       pmd_num = (va - PAGE_OFFSET) >> PGDIR_SHIFT;
+> +       pmd_num = (va - kernel_load_addr) >> PGDIR_SHIFT;
+>         BUG_ON(pmd_num >= NUM_EARLY_PMDS);
+>         return (uintptr_t)&early_pmd[pmd_num * PTRS_PER_PMD];
+>  }
+> @@ -370,6 +377,54 @@ static uintptr_t __init best_map_size(phys_addr_t base, phys_addr_t size)
+>  #error "setup_vm() is called from head.S before relocate so it should not use absolute addressing."
+>  #endif
+>
+> +#ifdef CONFIG_RELOCATABLE
+> +extern unsigned long __rela_dyn_start, __rela_dyn_end;
+> +
+> +#ifdef CONFIG_64BIT
+> +#define Elf_Rela Elf64_Rela
+> +#define Elf_Addr Elf64_Addr
+> +#else
+> +#define Elf_Rela Elf32_Rela
+> +#define Elf_Addr Elf32_Addr
+> +#endif
+> +
+> +void __init relocate_kernel(uintptr_t load_pa)
+> +{
+> +       Elf_Rela *rela = (Elf_Rela *)&__rela_dyn_start;
+> +       uintptr_t link_addr = _AC(CONFIG_PAGE_OFFSET, UL);
+> +       /*
+> +        * This holds the offset between the linked virtual address and the
+> +        * relocated virtual address.
+> +        */
+> +       uintptr_t reloc_offset = kernel_load_addr - link_addr;
+> +       /*
+> +        * This holds the offset between linked virtual address and physical
+> +        * address whereas va_pa_offset holds the offset between relocated
+> +        * virtual address and physical address.
+> +        */
+> +       uintptr_t va_link_pa_offset = link_addr - load_pa;
+> +
+> +       for ( ; rela < (Elf_Rela *)&__rela_dyn_end; rela++) {
+> +               Elf_Addr addr = (rela->r_offset - va_link_pa_offset);
+> +               Elf_Addr relocated_addr = rela->r_addend;
+> +
+> +               if (rela->r_info != R_RISCV_RELATIVE)
+> +                       continue;
+> +
+> +               /*
+> +                * Make sure to not relocate vdso symbols like rt_sigreturn
+> +                * which are linked from the address 0 in vmlinux since
+> +                * vdso symbol addresses are actually used as an offset from
+> +                * mm->context.vdso in VDSO_OFFSET macro.
+> +                */
+> +               if (relocated_addr >= link_addr)
+> +                       relocated_addr += reloc_offset;
+> +
+> +               *(Elf_Addr *)addr = relocated_addr;
+> +       }
+> +}
+> +#endif
+> +
+>  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>  {
+>         uintptr_t va, end_va;
+> @@ -377,9 +432,20 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>         uintptr_t load_sz = (uintptr_t)(&_end) - load_pa;
+>         uintptr_t map_size = best_map_size(load_pa, MAX_EARLY_MAPPING_SIZE);
+>
+> -       va_pa_offset = PAGE_OFFSET - load_pa;
+> +       va_pa_offset = kernel_load_addr - load_pa;
+>         pfn_base = PFN_DOWN(load_pa);
+>
+> +#ifdef CONFIG_RELOCATABLE
+> +       /*
+> +        * Early page table uses only one PGDIR, which makes it possible
+> +        * to map 1GB aligned on 1GB: if the relocation offset makes the kernel
+> +        * cross over a 1G boundary, raise a bug since a part of the kernel
+> +        * would not get mapped.
+> +        */
+> +       BUG_ON(SZ_1G - (kernel_load_addr & (SZ_1G - 1)) < load_sz);
+> +       relocate_kernel(load_pa);
+> +#endif
+> +
+>         /*
+>          * Enforce boot alignment requirements of RV32 and
+>          * RV64 by only allowing PMD or PGD mappings.
+> @@ -387,7 +453,7 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>         BUG_ON(map_size == PAGE_SIZE);
+>
+>         /* Sanity check alignment and size */
+> -       BUG_ON((PAGE_OFFSET % PGDIR_SIZE) != 0);
+> +       BUILD_BUG_ON((_AC(CONFIG_PAGE_OFFSET, UL) % PGDIR_SIZE) != 0);
+>         BUG_ON((load_pa % map_size) != 0);
+>         BUG_ON(load_sz > MAX_EARLY_MAPPING_SIZE);
+>
+> @@ -400,13 +466,13 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>         create_pmd_mapping(fixmap_pmd, FIXADDR_START,
+>                            (uintptr_t)fixmap_pte, PMD_SIZE, PAGE_TABLE);
+>         /* Setup trampoline PGD and PMD */
+> -       create_pgd_mapping(trampoline_pg_dir, PAGE_OFFSET,
+> +       create_pgd_mapping(trampoline_pg_dir, kernel_load_addr,
+>                            (uintptr_t)trampoline_pmd, PGDIR_SIZE, PAGE_TABLE);
+> -       create_pmd_mapping(trampoline_pmd, PAGE_OFFSET,
+> +       create_pmd_mapping(trampoline_pmd, kernel_load_addr,
+>                            load_pa, PMD_SIZE, PAGE_KERNEL_EXEC);
+>  #else
+>         /* Setup trampoline PGD */
+> -       create_pgd_mapping(trampoline_pg_dir, PAGE_OFFSET,
+> +       create_pgd_mapping(trampoline_pg_dir, kernel_load_addr,
+>                            load_pa, PGDIR_SIZE, PAGE_KERNEL_EXEC);
+>  #endif
+>
+> @@ -415,10 +481,10 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>          * us to reach paging_init(). We map all memory banks later
+>          * in setup_vm_final() below.
+>          */
+> -       end_va = PAGE_OFFSET + load_sz;
+> -       for (va = PAGE_OFFSET; va < end_va; va += map_size)
+> +       end_va = kernel_load_addr + load_sz;
+> +       for (va = kernel_load_addr; va < end_va; va += map_size)
+>                 create_pgd_mapping(early_pg_dir, va,
+> -                                  load_pa + (va - PAGE_OFFSET),
+> +                                  load_pa + (va - kernel_load_addr),
+>                                    map_size, PAGE_KERNEL_EXEC);
+>
+>         /* Create fixed mapping for early FDT parsing */
+> @@ -457,9 +523,9 @@ static void __init setup_vm_final(void)
+>                         break;
+>                 if (memblock_is_nomap(reg))
+>                         continue;
+> -               if (start <= __pa(PAGE_OFFSET) &&
+> -                   __pa(PAGE_OFFSET) < end)
+> -                       start = __pa(PAGE_OFFSET);
+> +               if (start <= __pa(kernel_load_addr) &&
+> +                   __pa(kernel_load_addr) < end)
+> +                       start = __pa(kernel_load_addr);
 
-I don't think it's good to add these pwmleds to the default board DTS 
-file.  I realize that many upstream ARM development boards have added this 
-type of configuration, but it gets in the way of reusing this DT file when 
-integrators wish to have the LEDs used for different purposes.  If the 
-Unleashed silkscreen had text on it describing the LEDs as having these 
-specific functions, or if Unleashed was sold in a case with similar 
-markings on the outside, it'd be a different story, and then a change like 
-the above could make sense.
+Here should use __pa_symbol() instead of __pa() for kernel symbols.
 
+I'm working on KASLR on top of this patch, it's work to me.
 
-- Paul
+Reviewed-by: Zong Li <zong.li@sifive.com>
+Tested-by: Zong Li <zong.li@sifive.com>
+
+>
+>                 map_size = best_map_size(start, end - start);
+>                 for (pa = start; pa < end; pa += map_size) {
+> --
+> 2.20.1
+>
 
