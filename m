@@ -2,80 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B13E21505E7
-	for <lists+linux-riscv@lfdr.de>; Mon,  3 Feb 2020 13:11:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C9FB15062F
+	for <lists+linux-riscv@lfdr.de>; Mon,  3 Feb 2020 13:28:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PJ4qdO8JQggLc2fWQs+boqL64SksK4OFYeVmitKgQE4=; b=HjP/YxjGq3HC6i
-	IYbVMYneTT7s2ppoIBUngFprS3Ue4VF4LJwwyDUgwNXEFgeX5hF4RTvnNXZofqe9wRK9O4KCqq1hA
-	wFQ5W/pqbrABCR/RPTxIk0x8CR2Uyiw39QkYpg7pIgiI1oaiMps+z3kg5eMis/u4WqAWcKYtRDWrg
-	tlkTXx9FCf6KwQfiV5ak9zYE2+bdBMtQLdwIcf26/typkwBcY1vDTQ2CQb1bw1j4uIVfAX9IdB8Zd
-	pnbFSjffyQzWOc8lyV6o9hOsXb/avMBtLRGw7cw/ZTvaqnQ3BUmvawDlgBq3jrFH15UCa39/RWlj0
-	1/1AmCjz8xsenfXXjC0w==;
+	List-Owner; bh=Bps9/ugZnw/LOkhCjhjvZvxvS5kO2i7OXxXUPo/WJGE=; b=rz2D5YGDpKLVIE
+	BOmuQ0F3mu2e3ZvKQO+tcxpIwFnkYo/MLzOY7vf6Q3gjEIKRStSq1PU9ErzWB9QvAdVplOdJBTjBj
+	mG4yCMXQD3YKAfKxxxoDOfvQ8Ubx3iUrgmAZUgAVbSyvZUVvKX6trBPHogupK/HNPVZlkbSJeco0h
+	bjumlLiXI/qvabXgQ7EJsLQYJG0Vy1ffxE6X2HcBf9803YhVJ5ncnZMYAE8uVJJKk76r81VQACzB7
+	LdM+QjX7TU3sRjTrurQVkjhrQhW/DvUWj6yEUbJWiwIMhx34GXMUT8UNbn6RPJVNxUtDLKOA+ZLAW
+	DzVyYzrpNRE3V+feDtdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iyaZx-0001XM-6J; Mon, 03 Feb 2020 12:11:49 +0000
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+	id 1iyaqS-000787-Ah; Mon, 03 Feb 2020 12:28:52 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iyaZt-0001Wq-U8
- for linux-riscv@lists.infradead.org; Mon, 03 Feb 2020 12:11:47 +0000
-Received: by mail-qk1-x742.google.com with SMTP id 21so13929648qky.4
- for <linux-riscv@lists.infradead.org>; Mon, 03 Feb 2020 04:11:44 -0800 (PST)
+ id 1iyaqO-00077f-CQ
+ for linux-riscv@lists.infradead.org; Mon, 03 Feb 2020 12:28:49 +0000
+Received: by mail-qk1-x743.google.com with SMTP id q15so13996672qki.2
+ for <linux-riscv@lists.infradead.org>; Mon, 03 Feb 2020 04:28:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=PJ4qdO8JQggLc2fWQs+boqL64SksK4OFYeVmitKgQE4=;
- b=Bxb38YHIJX1vfVH2RKNljqr7dyt5Q/ki6AeGgnHvJ7uOngxB49ry89IdWx1kdg90B0
- GUL7iyKw5dK8qSyARFnm5WazGUbUNcL+RhZjW0PLt33AoYRIAbPMNUNVk2EFECzaSse6
- cs3zlPKhSYicpauAlaPnppQMfZGJI027iWqF+fbMnQyH49WfkGYrINVJ7VW0IlNpqwiS
- rirxMWUGsjIJT7hU3jM/KK/bGr+1LyPgcWyOhSNqpFYjKOeK4Env3C9EwHyDzVZn+RE+
- 3LuENlU84kdtV3wbj7hTI6F0ndsbWJlLCkOz4C91+6usbO0dszlufk/rWNoscdOoliE7
- Jf9Q==
+ bh=Bps9/ugZnw/LOkhCjhjvZvxvS5kO2i7OXxXUPo/WJGE=;
+ b=jB9d7cw/PfiS8u8EbQs9pbNd5O2Hc7F0Au7RXWC+0X/zEoq8P5dW767fu/Sc/f/7Pg
+ TiU8XRBuDYjCVjTZGWK5Swxp/mLNZj2/oaHXilAq2XR6lBRIOODl6O0rcsNhf0SQY8MI
+ nz87gFswjm/HuWRFTDlNU5evHzM+3I19xI3EbPRaKCfgS3Jb3aYy00Hr8dLky8ttfHFg
+ GXw5vY//jJdNKGf8EtGktjAegQM0PdkYkZgzkzTsVREXTq4NZzAGbrYvwjfmYWCmprYz
+ I5pRwgT9sXGL9EBlBB4SXjWEM+Oenc+f/rLbVLh249ZtgwVBLieSDQ56YGIGAZ8OErYW
+ bjuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=PJ4qdO8JQggLc2fWQs+boqL64SksK4OFYeVmitKgQE4=;
- b=kZIPa8cflLylggSJduQ6xxGANGUwPsO+JfrGi/CClhQ8FS+WOwI8OXAgazvxKquYqX
- LLyfNItMj1eFFiEEoqSws2+QzaRJwFI0N4vuik+Iz48IHCO5rfuyEeqDXDv/KSZK2lhE
- 7hDhSO6azmzGCAXIiEeadZa6BT3Nj4JTU9M+wnxpuyOE7ArYyIRfJ8y8Lvrt3Wgjc975
- zcBtZFAuqaMUYz5GlBRyVpgBVDPb1YqN9Mrfjywo5S9Q1zgzHP93SxcfV4gbZdwiHzPT
- MInsPNvHcfp/lmOQFOlW4vI32QzfCN08f2UloSO6OTRL3KitPo+9sbhgiB7QNIZ4m6oS
- oSzA==
-X-Gm-Message-State: APjAAAX6jiWp1eXCi/Ik8PxuRSyf6N1C46BDrQrPMkFjXp3B1hf547kZ
- g5K/EBudBANpMbyM8Tn/zPHVmBxN0ClpIng6wQ0=
-X-Google-Smtp-Source: APXvYqwe9Us2PgVu6MqeMNAO664AzntNtBV6pxz6hiw73jiD8G4iW8o+aobGl1EqwZofyiZhblcjvbiNbuP9RfonqcM=
-X-Received: by 2002:a37:9c0f:: with SMTP id f15mr23348389qke.297.1580731903294; 
- Mon, 03 Feb 2020 04:11:43 -0800 (PST)
+ bh=Bps9/ugZnw/LOkhCjhjvZvxvS5kO2i7OXxXUPo/WJGE=;
+ b=FVfvtwbDdvRAOo2LMw0o+tfzGrZUHjE6v19sMHoxxCExgXEFbjbbJWxpt01kMlTAre
+ s9UZUi+yjFBuh6fymAk20C/6YPRBlBXpx9blvvH6BPcOL89zC78oQfYmjjVQXZHwGTIU
+ 0G4xZWzVakn9SC7tB1qGLI/34K/rInEcRJuSFGo5Yv4oGM/eQiLb5Y4c+s8gssSQNQFH
+ CWwfqKwbzJMwHA067ilH4HoRaHcqSRK0VixBTPhRK2GYiCyI5WZ1lO7gmjvghW61XpWe
+ HPE1HttMhsc3ERWTYCsA6wISk6n8PY1pwd/ZrDISQJRSx98cYRzzG/AJp3T01th0TvLy
+ VmoA==
+X-Gm-Message-State: APjAAAWJ9Lekxwgm7SsQFNLr5x8/m9zSTsrxWSu9/oe7CgKOtpWzO1vH
+ niKMb34IVNXZ1TgoiiPvqfq6ceCn6XJ4BI/znBo=
+X-Google-Smtp-Source: APXvYqzFTVokDAvj4jM1EbkUWGFzCx3Rgz95Htz+3sKmmtcmARXUP7r9f9Tq9n+1DpqFFfKtylDEQ3g+9C6ZwMhwMic=
+X-Received: by 2002:a37:8046:: with SMTP id b67mr23085188qkd.218.1580732927145; 
+ Mon, 03 Feb 2020 04:28:47 -0800 (PST)
 MIME-Version: 1.0
 References: <20191216091343.23260-1-bjorn.topel@gmail.com>
- <20191216091343.23260-8-bjorn.topel@gmail.com>
- <mhng-041b1051-f9ac-4cd8-95bf-731bb1bfbdb8@palmerdabbelt-glaptop>
- <CAJ+HfNhvTdsBq_tmKNcxVdS=nro=jwL5yLxnyDXO02Vai+5YNg@mail.gmail.com>
- <mhng-a006210f-8a00-42c3-b93d-135144220411@palmerdabbelt-glaptop1>
-In-Reply-To: <mhng-a006210f-8a00-42c3-b93d-135144220411@palmerdabbelt-glaptop1>
+ <20191216091343.23260-7-bjorn.topel@gmail.com>
+ <3f6d3495-efdf-e663-2a84-303fde947a1d@ghiti.fr>
+In-Reply-To: <3f6d3495-efdf-e663-2a84-303fde947a1d@ghiti.fr>
 From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Mon, 3 Feb 2020 13:11:32 +0100
-Message-ID: <CAJ+HfNit8dsXV360qUCiG33yNdbf7=w58M9DncOuNqNOCAE40A@mail.gmail.com>
-Subject: Re: [PATCH bpf-next v2 7/9] riscv, bpf: optimize calls
-To: Palmer Dabbelt <palmerdabbelt@google.com>
+Date: Mon, 3 Feb 2020 13:28:35 +0100
+Message-ID: <CAJ+HfNgOrx1D-tSxXsoZsMxZtHX-Ksdeg8bZFFPRPGChup4oFg@mail.gmail.com>
+Subject: Re: [PATCH bpf-next v2 6/9] riscv, bpf: provide RISC-V specific JIT
+ image alloc/free
+To: Alex Ghiti <alex@ghiti.fr>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200203_041145_995825_03A8FA1B 
-X-CRM114-Status: UNSURE (   7.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200203_042848_422481_6065EB15 
+X-CRM114-Status: GOOD (  10.96  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:743 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -99,36 +97,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>, linux-riscv@lists.infradead.org,
- bpf <bpf@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>
+Cc: Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>, vincent.chen@sifive.com,
+ Anup Patel <anup@brainfault.org>, linux-riscv@lists.infradead.org,
+ bpf <bpf@vger.kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 28 Jan 2020 at 03:15, Palmer Dabbelt <palmerdabbelt@google.com> wro=
-te:
+On Sun, 2 Feb 2020 at 14:37, Alex Ghiti <alex@ghiti.fr> wrote:
 >
 [...]
-> >
-> > BPF passes arguments in R1, R2, ..., and return value in R0. Given
-> > that a0 plays the role of R1 and R0, how can we avoid the register
-> > juggling (without complicating the JIT too much)? It would be nice
-> > though... and ARM64 has the same concern AFAIK.
 >
-> Oh, why did you say that?  This kind of stuff is why I'm twenty days behi=
-nd on
-> email...
+> I think it would be better to completely avoid this patch and the
+> definition of this
+> new zone by using the generic implementation if we had the patch
+> discussed here
+> regarding modules memory allocation (that in any case we need to fix
+> modules loading):
 >
-> https://lore.kernel.org/bpf/20200128021145.36774-1-palmerdabbelt@google.c=
-om/T/#t
->
-> :)
+> https://lore.kernel.org/linux-riscv/d868acf5-7242-93dc-0051-f97e64dc4387@=
+ghiti.fr/T/#m2be30cb71dc9aa834a50d346961acee26158a238
 >
 
-(back from vacation)
+This patch is already upstream. I agree that when the module
+allocation fix is upstream, the BPF image allocation can be folded
+into the module allocation. IOW, I wont send any page table dumper
+patch for BPF memory.
 
-:-D Very nice, I'll take a look!
+But keep in mind that the RV BPF JIT relies on having the kernel text
+within the 32b range (as does modules)
 
 
+Cheers,
 Bj=C3=B6rn
 
