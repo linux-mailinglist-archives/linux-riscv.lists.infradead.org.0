@@ -2,81 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2141A1503CF
-	for <lists+linux-riscv@lfdr.de>; Mon,  3 Feb 2020 11:04:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B13E21505E7
+	for <lists+linux-riscv@lfdr.de>; Mon,  3 Feb 2020 13:11:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7f1WXx6cD5IK73agIm3M8O8GSfWBZtKEiuMR4Z8fWds=; b=lqDpRpWivXzhWzFjiOOL828xv
-	K5aphmVUZg0HgT2ro2UgSMUlV0CNGx1sF2XfPg/Rg0lgJKlBWLCrxAZpbUg1x6UW9K9pvVkTNmXbp
-	kSvkfAuySfjwpu/br3NUkdiszxYEgT+Ga3AdvVpbU8KqIUIpueELIu1kRI8j0QpHoImh+CBPHjV9M
-	wRO8NsV/u55keyslIMVZ7xXWEXs7YafcH7pE1ZabdUEKqFmilZdqeCvVaJY1qAh+wp0aVL0BKsUzL
-	9oj7SeN5a7awoz/c7QphcHFONa8cIrTWxb0hv3UBXShxCsrYH+1GrM5e3eI2DnGd+9kMri3qFbrZy
-	eImmo+GZw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PJ4qdO8JQggLc2fWQs+boqL64SksK4OFYeVmitKgQE4=; b=HjP/YxjGq3HC6i
+	IYbVMYneTT7s2ppoIBUngFprS3Ue4VF4LJwwyDUgwNXEFgeX5hF4RTvnNXZofqe9wRK9O4KCqq1hA
+	wFQ5W/pqbrABCR/RPTxIk0x8CR2Uyiw39QkYpg7pIgiI1oaiMps+z3kg5eMis/u4WqAWcKYtRDWrg
+	tlkTXx9FCf6KwQfiV5ak9zYE2+bdBMtQLdwIcf26/typkwBcY1vDTQ2CQb1bw1j4uIVfAX9IdB8Zd
+	pnbFSjffyQzWOc8lyV6o9hOsXb/avMBtLRGw7cw/ZTvaqnQ3BUmvawDlgBq3jrFH15UCa39/RWlj0
+	1/1AmCjz8xsenfXXjC0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iyYai-0000ak-3R; Mon, 03 Feb 2020 10:04:28 +0000
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
+	id 1iyaZx-0001XM-6J; Mon, 03 Feb 2020 12:11:49 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iyYae-0000aI-9J
- for linux-riscv@lists.infradead.org; Mon, 03 Feb 2020 10:04:25 +0000
-Received: by mail-qk1-x741.google.com with SMTP id h4so2719828qkm.0
- for <linux-riscv@lists.infradead.org>; Mon, 03 Feb 2020 02:04:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ id 1iyaZt-0001Wq-U8
+ for linux-riscv@lists.infradead.org; Mon, 03 Feb 2020 12:11:47 +0000
+Received: by mail-qk1-x742.google.com with SMTP id 21so13929648qky.4
+ for <linux-riscv@lists.infradead.org>; Mon, 03 Feb 2020 04:11:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7f1WXx6cD5IK73agIm3M8O8GSfWBZtKEiuMR4Z8fWds=;
- b=BcV4zkLS5/mOk6N9G5z+3MQxHdUqiuzEMpCSLcoJDTJipeAVkf4cEUsxmPoYnhEBvG
- T9yAlehFqt4ZbB9xdRBRCjzB34GDFOUCh8zwSc7wFCSLhCMPjxb+VUydQtD2KvZTkcyt
- IkMWQ7RAZlQm1Xxy2G7gduSB/PbUVwIu0bZp9NM9YRbiW9NagsZBx1mmpUD68INurtXI
- xO/Zqqb4OnKmYgaM/oLEB0HSiQc4f0kmtBzqTbGvTgOJhEGP71zf+usQ9pq84tK8LipA
- 37d4qUliTZxnmjVLdFrGGn87g0I9QtEuZrNhnIPEghZGX2H4Pb6I3uZ8Raq73pggoSKi
- lbWA==
+ :cc:content-transfer-encoding;
+ bh=PJ4qdO8JQggLc2fWQs+boqL64SksK4OFYeVmitKgQE4=;
+ b=Bxb38YHIJX1vfVH2RKNljqr7dyt5Q/ki6AeGgnHvJ7uOngxB49ry89IdWx1kdg90B0
+ GUL7iyKw5dK8qSyARFnm5WazGUbUNcL+RhZjW0PLt33AoYRIAbPMNUNVk2EFECzaSse6
+ cs3zlPKhSYicpauAlaPnppQMfZGJI027iWqF+fbMnQyH49WfkGYrINVJ7VW0IlNpqwiS
+ rirxMWUGsjIJT7hU3jM/KK/bGr+1LyPgcWyOhSNqpFYjKOeK4Env3C9EwHyDzVZn+RE+
+ 3LuENlU84kdtV3wbj7hTI6F0ndsbWJlLCkOz4C91+6usbO0dszlufk/rWNoscdOoliE7
+ Jf9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7f1WXx6cD5IK73agIm3M8O8GSfWBZtKEiuMR4Z8fWds=;
- b=D5kuI58IqThhgaGE2UyRb+V5G0BWnbYjHXVAz/U3tsQ6cMvmmGKLpfQUYtzJbQKczD
- mDzHKgl+0O+6g2HECRlAx+gyurUXmuFKH/WD4s8cE+R+2PuhYDinpOWdRJKsq35Q3QQP
- Z8Yf+xKurt3J3rCaJevk6+yOKhElIvnRcMXFrPX5ZVz9lz8KVbxUg9Slx7xCjm7S1Wnx
- 0rIYjvo4eoZJCUo9oddgou00Wqm+BWUR5bMcMORgNoRGLDY5eldI4L6+Lv2qpy8hValt
- LuOtGKBQB057dYkRXPGIdvO05nRCu3IRbZsWDo8FKV17Gfn8xd7LysgZJ6Z7YWAXEdIm
- GhyQ==
-X-Gm-Message-State: APjAAAXNUQvIvU0Lebhsf9R39l3H/CPQL6PFHm9Zo+sEOV37ZfpVsoBO
- 31kVJwP9/J3XZzyVPmpHZLzMHlU1ENR4UMXVR7AYzPGKA7Y=
-X-Google-Smtp-Source: APXvYqyWA44FZ4Smwej8uN1g4GfG3t8ewJhyMQq+HbZxLu8vxcgV7u0FNny9X8uS4FYiXjiLqLA+xysbj9SR4JHGd+g=
-X-Received: by 2002:ae9:f714:: with SMTP id s20mr22513156qkg.236.1580724262588; 
- Mon, 03 Feb 2020 02:04:22 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=PJ4qdO8JQggLc2fWQs+boqL64SksK4OFYeVmitKgQE4=;
+ b=kZIPa8cflLylggSJduQ6xxGANGUwPsO+JfrGi/CClhQ8FS+WOwI8OXAgazvxKquYqX
+ LLyfNItMj1eFFiEEoqSws2+QzaRJwFI0N4vuik+Iz48IHCO5rfuyEeqDXDv/KSZK2lhE
+ 7hDhSO6azmzGCAXIiEeadZa6BT3Nj4JTU9M+wnxpuyOE7ArYyIRfJ8y8Lvrt3Wgjc975
+ zcBtZFAuqaMUYz5GlBRyVpgBVDPb1YqN9Mrfjywo5S9Q1zgzHP93SxcfV4gbZdwiHzPT
+ MInsPNvHcfp/lmOQFOlW4vI32QzfCN08f2UloSO6OTRL3KitPo+9sbhgiB7QNIZ4m6oS
+ oSzA==
+X-Gm-Message-State: APjAAAX6jiWp1eXCi/Ik8PxuRSyf6N1C46BDrQrPMkFjXp3B1hf547kZ
+ g5K/EBudBANpMbyM8Tn/zPHVmBxN0ClpIng6wQ0=
+X-Google-Smtp-Source: APXvYqwe9Us2PgVu6MqeMNAO664AzntNtBV6pxz6hiw73jiD8G4iW8o+aobGl1EqwZofyiZhblcjvbiNbuP9RfonqcM=
+X-Received: by 2002:a37:9c0f:: with SMTP id f15mr23348389qke.297.1580731903294; 
+ Mon, 03 Feb 2020 04:11:43 -0800 (PST)
 MIME-Version: 1.0
-References: <CADnnUqfhxWN=cyyr0QQyKrrO13LuDFS9NTqOLwm10CnwB3sDXA@mail.gmail.com>
- <alpine.DEB.2.21.999.2001300259070.23963@utopia.booyaka.com>
- <CAEn-LToMfm=G80TmGQZefpmKhKvpGy_=XOoBLGU0a_77ahY+_w@mail.gmail.com>
- <20200131201118.GA4121429@aurel32.net>
- <CAAhSdy03C==7PmuXE441BtDJH8H07rOH-u+-_sZJG70tbTrJcA@mail.gmail.com>
- <d868acf5-7242-93dc-0051-f97e64dc4387@ghiti.fr>
- <33c9a276-6212-115c-c7c9-e62244f13c76@european-processor-initiative.eu>
-In-Reply-To: <33c9a276-6212-115c-c7c9-e62244f13c76@european-processor-initiative.eu>
-From: Vincent Chen <vincent.chen@sifive.com>
-Date: Mon, 3 Feb 2020 18:04:11 +0800
-Message-ID: <CABvJ_xiWDZfO6fOd4Roiy-yaUVFKrGEcBDBSWsvj2TKGGMjy0g@mail.gmail.com>
-Subject: Re: Error on loading some network Kernel modules
-To: Romain Dolbeau <romain.dolbeau@european-processor-initiative.eu>
+References: <20191216091343.23260-1-bjorn.topel@gmail.com>
+ <20191216091343.23260-8-bjorn.topel@gmail.com>
+ <mhng-041b1051-f9ac-4cd8-95bf-731bb1bfbdb8@palmerdabbelt-glaptop>
+ <CAJ+HfNhvTdsBq_tmKNcxVdS=nro=jwL5yLxnyDXO02Vai+5YNg@mail.gmail.com>
+ <mhng-a006210f-8a00-42c3-b93d-135144220411@palmerdabbelt-glaptop1>
+In-Reply-To: <mhng-a006210f-8a00-42c3-b93d-135144220411@palmerdabbelt-glaptop1>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Mon, 3 Feb 2020 13:11:32 +0100
+Message-ID: <CAJ+HfNit8dsXV360qUCiG33yNdbf7=w58M9DncOuNqNOCAE40A@mail.gmail.com>
+Subject: Re: [PATCH bpf-next v2 7/9] riscv, bpf: optimize calls
+To: Palmer Dabbelt <palmerdabbelt@google.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200203_020424_388115_78CE9247 
-X-CRM114-Status: GOOD (  16.25  )
+X-CRM114-CacheID: sfid-20200203_041145_995825_03A8FA1B 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [bjorn.topel[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -96,56 +99,36 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Carlos Eduardo de Paula <me@carlosedp.com>, Alex Ghiti <alex@ghiti.fr>,
- David Abdurachmanov <david.abdurachmanov@gmail.com>,
- Anup Patel <anup@brainfault.org>, Paul Walmsley <paul@pwsan.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: Netdev <netdev@vger.kernel.org>, linux-riscv@lists.infradead.org,
+ bpf <bpf@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Feb 3, 2020 at 12:27 AM Romain Dolbeau
-<romain.dolbeau@european-processor-initiative.eu> wrote:
+On Tue, 28 Jan 2020 at 03:15, Palmer Dabbelt <palmerdabbelt@google.com> wro=
+te:
 >
-> On 2020-02-01 14:59, Alex Ghiti wrote:
-> > Why restrict to 128M whereas we have 2GB offset available to the end of
-> > the kernel ?
+[...]
+> >
+> > BPF passes arguments in R1, R2, ..., and return value in R0. Given
+> > that a0 plays the role of R1 and R0, how can we avoid the register
+> > juggling (without complicating the JIT too much)? It would be nice
+> > though... and ARM64 has the same concern AFAIK.
 >
-> Isn't that 2 GiB offset to whatever the module requires in the kernel,
-> rather than to the end of the kernel space?
+> Oh, why did you say that?  This kind of stuff is why I'm twenty days behi=
+nd on
+> email...
 >
-> Is there some guarantee that symbols accessible by modules are at the
-> end of the kernel? If so, wouldn't the maximum offset for this patch
-> still be (2 GiB - <total size of accessible symbols>)?
+> https://lore.kernel.org/bpf/20200128021145.36774-1-palmerdabbelt@google.c=
+om/T/#t
 >
-> Cordially,
+> :)
 >
-> --
-> Romain Dolbeau
 
-It took me some time to find the root cause of this problem, please
-allow me to share some observations before the discussion.
-The root cause of this issue is that the percpu data is declared as a
-static variable. The "static" attribute will make the compiler think
-that this symbol is close to the .text section at runtime. Hence, the
-compiler uses "auipc" to access this percpu data instead of using GOT.
-In this case,  the access range is limited to + -2G. However, in
-practice, these percpu data are placed at a pre-allocated region
-created by the memblock_allocate() function. In other words, the
-distance between the pre-allocated region (>PAGE_OFFSET ) and the
-.text section of the kernel module (in VMALLOC region) is much larger
-than 2G.
-I agree that the original patch,
-https://github.com/bjoto/linux/commit/8a56d1c8e8e91c1bc3893946d52b9217c96e1589,
-can solve most cases. However, I do not think the patch still works if
-the kernel module region is determined by _end or <total size of
-accessible symbols>. The reason is that the pre-allocated region for
-module percpu data comes from the memblock function at runtime. Hence,
-we cannot know the actual address of this region at compile-time, and
-this issue probably may occur again in this case.
+(back from vacation)
 
-By the way, I think maybe we can refer to the implementation of MIPS.
-1. For general cases, we can use this patch to solve this issue.
-2. For a large kernel image (>2G) or enabling the KASLR feature, we
-may need a new code mode to deal with this issue.
+:-D Very nice, I'll take a look!
+
+
+Bj=C3=B6rn
 
