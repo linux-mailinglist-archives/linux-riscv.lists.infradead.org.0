@@ -2,51 +2,102 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A85E41528F2
-	for <lists+linux-riscv@lfdr.de>; Wed,  5 Feb 2020 11:15:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4582515294C
+	for <lists+linux-riscv@lfdr.de>; Wed,  5 Feb 2020 11:37:35 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=s93b7YYSc1wPR0q+daPYy4s+QvXOYgRL9MjfL95Gsag=; b=H+wJ6BU3YZECmMagvtBYEg0vgQ
-	EgcFPrGG4fguylzbbXKLWMe3IKbAUevcIHcVmNZms5HeTZlgHJLNpQy6iqacSj/Gt3YDMUs9dcNgA
-	6Xbcng2yzXgWFLPucM18vUwKpBlxrG5xg16qe3Dqv9+l6i5/wAyHdFh5PPiec0tk9DIH5erSInhjt
-	a8D+A8YYZUW21vzfAOM0+7XPN09sGd3K+syno3LQlm35UxfIwzTVoGZfxfgVROtbh9MjC/9/lCWym
-	mejDBFOWPdur/tpx6NU8y+9lqSMQHnzJC8bGdx0LibtE8utvZV5zfmkoSWJDByOdmpc1Z9VUoR4o1
-	BJaKBw6Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=26IedHC9M8wiX+uYfiK+cWPL9Z6ytS5+E04dtS8LovE=; b=d2htz83G/vrsj4
+	GqdAMfLBI7Lud5w3MfUL8CX8vzCjSYCrlL3ilAK4M+0NvbMLzt9Bquljvdmag5KMMde2QP1shHH5+
+	4HKCsr15ZsjRByWGKq0Lxlv9UgeVZJFEIvCH/gfB9Nr3bu8Kj2r8Fx6ovHqd2Z9QlwT11IMP9Bl3V
+	iIyjU7PcMPLq1J6O67AqbEgE7iqrPdg0jjkxE3vO8d/WoSUNdzVyFImJhsJqP9CH6ULHaJ6SHw+uk
+	6T1oCJzRTJNC8a+TTZjZcAFF4nirZ5Qy/FYI45AFDkLiPgdX140jhzAXvsPyMb8dD+JXHJ8hibH3i
+	/2KKtnHJSUJaaBg6KqRA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izHiK-0005YB-RY; Wed, 05 Feb 2020 10:15:20 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izHiE-0005KD-D1; Wed, 05 Feb 2020 10:15:17 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 669281FB;
- Wed,  5 Feb 2020 02:15:10 -0800 (PST)
-Received: from p8cg001049571a15.arm.com (unknown [10.163.1.140])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id A99083F6CF;
- Wed,  5 Feb 2020 02:14:49 -0800 (PST)
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-To: linux-mm@kvack.org
-Subject: [PATCH V13] mm/debug: Add tests validating architecture page table
- helpers
-Date: Wed,  5 Feb 2020 15:44:33 +0530
-Message-Id: <1580897674-16456-1-git-send-email-anshuman.khandual@arm.com>
-X-Mailer: git-send-email 2.7.4
+	id 1izI3l-0004ob-Mc; Wed, 05 Feb 2020 10:37:29 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1izI3g-0004oA-Ie
+ for linux-riscv@lists.infradead.org; Wed, 05 Feb 2020 10:37:27 +0000
+Received: by mail-qk1-x742.google.com with SMTP id v195so1270069qkb.11
+ for <linux-riscv@lists.infradead.org>; Wed, 05 Feb 2020 02:37:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=26IedHC9M8wiX+uYfiK+cWPL9Z6ytS5+E04dtS8LovE=;
+ b=kBWFKI+xkEXT5i9y8UPzGT7XkURF+45hawkSEbhhZV3a/Pz/17ep1HuqA8CQ/Wg/0O
+ 7fI99+Tvqr3zy6uJ2hBPAXsch42EWIPH9fX6Pxat/Jn1mPuOfSRDjZeyGzbEmHg2Q+Xj
+ hbLWr0C3DV72QoiDVPADLcJtVtLz1XqtrLAmEdPWH1VlrJaooJ3kcpg9jfj6uL5LNCjk
+ dLScRHn42wFsFsJUI/7OVMy6jg4+y0e8Kkft6WQUJ+7ly+W19w32bFgfxDvm7oECaRb9
+ qzb91ZgpAxEWSU9YXKHdGxffLJo3FkcSKuFtRYhmeMWwetZwyu/KczjWzW9+YfMC2WB7
+ Yrjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=26IedHC9M8wiX+uYfiK+cWPL9Z6ytS5+E04dtS8LovE=;
+ b=dg2+JRHpUS/sQ79udyf5bnksi+j6nQyPIVl+KtuKzUxzw1eMWgxQhmKJRM9eJJ64r2
+ Iw48+HO99O7ANtpiGGgUG12nfdmqBxsUWD0AWgJdJDGBKzC8V4O4UpogcVt6ge1Gdnlp
+ 61m1ibbQoxsakAKRYr4S1hGB7p0ZMhT0p1rTKx5VdoFuHwMKHm/Ar3lQz9nkOVh/zpQI
+ z/aBRD/qSHn6ZpGB+wKRm2bm/XorNlyk0VUi1HUsJPEcEhzD//M4jCMIuVLg9Hc+sWLO
+ yyaGh51LyR10OYyPah3yeYiRLi2V5m388Jf7sw/9o7SkVifb46OPXiHptuu4qEu/Y/lq
+ hohg==
+X-Gm-Message-State: APjAAAWhY6v1pfLw0Lqqlqrrcw7SBa8i7QB7/qKoAPWIyd+fQRAlRcRL
+ sZBx1PeKnN8DFKNod7CMSbuyKOf1XdjN5x/0vUeTuQ==
+X-Google-Smtp-Source: APXvYqy+VxfUmFOxsI1R5iDZy55IRCxVEC6UaUfQ6WF87ZXxMYi2fe/l/YC89PZBVIej9zRk9GnmSaUSL4kthPm2jeI=
+X-Received: by 2002:ae9:f714:: with SMTP id s20mr32096092qkg.236.1580899043160; 
+ Wed, 05 Feb 2020 02:37:23 -0800 (PST)
+MIME-Version: 1.0
+References: <CADnnUqfhxWN=cyyr0QQyKrrO13LuDFS9NTqOLwm10CnwB3sDXA@mail.gmail.com>
+ <alpine.DEB.2.21.999.2001300259070.23963@utopia.booyaka.com>
+ <CAEn-LToMfm=G80TmGQZefpmKhKvpGy_=XOoBLGU0a_77ahY+_w@mail.gmail.com>
+ <20200131201118.GA4121429@aurel32.net>
+ <CAAhSdy03C==7PmuXE441BtDJH8H07rOH-u+-_sZJG70tbTrJcA@mail.gmail.com>
+ <d868acf5-7242-93dc-0051-f97e64dc4387@ghiti.fr>
+ <33c9a276-6212-115c-c7c9-e62244f13c76@european-processor-initiative.eu>
+ <CABvJ_xiWDZfO6fOd4Roiy-yaUVFKrGEcBDBSWsvj2TKGGMjy0g@mail.gmail.com>
+ <CA+ZOyaj16M5q-g4wZ60MuUs4q1AfCB48wd+AN4TTJNu8K4NZRA@mail.gmail.com>
+ <68bb87cb-50d7-5e85-37f4-ad2cc44865f1@ghiti.fr>
+ <CA+ZOyahEPtuNqgSUHVcZpZp3WP3oX4jFOiqJvO827ye4+1DT8Q@mail.gmail.com>
+ <c12ed63e-c717-9fa0-7a6c-74d6d4a83a04@ghiti.fr>
+ <CABvJ_xiBVQjfJfZU0Dfp0fc9n_zAoc=DSHPFuDMKu4k5n0qJtQ@mail.gmail.com>
+ <CAAhSdy2gEK++MtyV9=o9r_-6CkaWMsQ0YZwB-TAkCCe3B4qTFg@mail.gmail.com>
+ <CABvJ_xjc+ojwqgMhxZ2a0Q+BvxzxUR6ab__+8iA6zx65GMKkxA@mail.gmail.com>
+ <a55f265e-71b2-5ebb-b079-6345007a442e@ghiti.fr>
+ <CABvJ_xjVLJEebCac_sb6-Yd_iHU1x8Daqw-iFqcGn11YKktm8Q@mail.gmail.com>
+ <MN2PR04MB6061ED6ABC668B59A7A544CF8D020@MN2PR04MB6061.namprd04.prod.outlook.com>
+In-Reply-To: <MN2PR04MB6061ED6ABC668B59A7A544CF8D020@MN2PR04MB6061.namprd04.prod.outlook.com>
+From: Vincent Chen <vincent.chen@sifive.com>
+Date: Wed, 5 Feb 2020 18:37:12 +0800
+Message-ID: <CABvJ_xg_+XHhND-_8mq8gUN_yN-abMjDOWGg+MFVP0gwSAhxtw@mail.gmail.com>
+Subject: Re: Error on loading some network Kernel modules
+To: Anup Patel <Anup.Patel@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200205_021514_579115_B7B44B69 
-X-CRM114-Status: GOOD (  22.69  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20200205_023724_685374_3C6EAFCA 
+X-CRM114-Status: GOOD (  48.07  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,904 +109,372 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, uclinux-h8-devel@lists.sourceforge.jp,
- linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
- Peter Zijlstra <peterz@infradead.org>, James Hogan <jhogan@kernel.org>,
- Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
- Dave Hansen <dave.hansen@intel.com>, Paul Mackerras <paulus@samba.org>,
- sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Max Filippov <jcmvbkbc@gmail.com>,
- Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
- Russell King - ARM Linux <linux@armlinux.org.uk>,
- Matthew Wilcox <willy@infradead.org>, Steven Price <Steven.Price@arm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>, Geert Uytterhoeven <geert@linux-m68k.org>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>, Mark Salter <msalter@redhat.com>,
- Matt Turner <mattst88@gmail.com>, linux-snps-arc@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
- linux-xtensa@linux-xtensa.org, Kees Cook <keescook@chromium.org>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Masahiro Yamada <yamada.masahiro@socionext.com>, linux-alpha@vger.kernel.org,
- Aurelien Jacquiot <jacquiot.aurelien@gmail.com>,
- linux-m68k@lists.linux-m68k.org, Mark Brown <broonie@kernel.org>,
- Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Dan Williams <dan.j.williams@intel.com>, Guan Xuetao <gxt@pku.edu.cn>,
- Vlastimil Babka <vbabka@suse.cz>, Richard Henderson <rth@twiddle.net>,
- Christophe Leroy <christophe.leroy@c-s.fr>, Chris Zankel <chris@zankel.net>,
- Michal Simek <monstr@monstr.eu>, Brian Cain <bcain@codeaurora.org>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
- Paul Burton <paul.burton@mips.com>, Mike Rapoport <rppt@linux.vnet.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Vineet Gupta <vgupta@synopsys.com>,
- Martin Schwidefsky <schwidefsky@de.ibm.com>, Qian Cai <cai@lca.pw>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: Carlos Eduardo de Paula <me@carlosedp.com>, Alex Ghiti <alex@ghiti.fr>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ Anup Patel <anup@brainfault.org>, Zong Li <zongbox@gmail.com>,
+ Romain Dolbeau <romain.dolbeau@european-processor-initiative.eu>,
+ Zong Li <zong.li@sifive.com>, linux-riscv <linux-riscv@lists.infradead.org>,
+ Paul Walmsley <paul@pwsan.com>, Aurelien Jarno <aurelien@aurel32.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This adds tests which will validate architecture page table helpers and
-other accessors in their compliance with expected generic MM semantics.
-This will help various architectures in validating changes to existing
-page table helpers or addition of new ones.
+On Wed, Feb 5, 2020 at 12:24 PM Anup Patel <Anup.Patel@wdc.com> wrote:
+>
+>
+>
+> > -----Original Message-----
+> > From: linux-riscv <linux-riscv-bounces@lists.infradead.org> On Behalf O=
+f
+> > Vincent Chen
+> > Sent: Wednesday, February 5, 2020 8:52 AM
+> > To: Alex Ghiti <alex@ghiti.fr>
+> > Cc: Carlos Eduardo de Paula <me@carlosedp.com>; David Abdurachmanov
+> > <david.abdurachmanov@gmail.com>; Anup Patel <anup@brainfault.org>;
+> > Paul Walmsley <paul@pwsan.com>; Zong Li <zongbox@gmail.com>; Romain
+> > Dolbeau <romain.dolbeau@european-processor-initiative.eu>; Zong Li
+> > <zong.li@sifive.com>; linux-riscv <linux-riscv@lists.infradead.org>; Au=
+relien
+> > Jarno <aurelien@aurel32.net>
+> > Subject: Re: Error on loading some network Kernel modules
+> >
+> > On Wed, Feb 5, 2020 at 3:07 AM Alex Ghiti <alex@ghiti.fr> wrote:
+> > >
+> > >
+> > > On 2/4/20 9:03 AM, Vincent Chen wrote:
+> > >
+> > > On Tue, Feb 4, 2020 at 7:31 PM Anup Patel <anup@brainfault.org> wrote=
+:
+> > >
+> > > On Tue, Feb 4, 2020 at 4:16 PM Vincent Chen <vincent.chen@sifive.com>
+> > wrote:
+> > >
+> > > On Tue, Feb 4, 2020 at 5:32 PM Alexandre Ghiti <alex@ghiti.fr> wrote:
+> > >
+> > > On 2/4/20 8:19 AM, Zong Li wrote:
+> > >
+> > > Alex Ghiti <alex@ghiti.fr> =E6=96=BC 2020=E5=B9=B42=E6=9C=884=E6=97=
+=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=882:50=E5=AF=AB=E9=81=93=EF=BC=9A
+> > >
+> > > Hi Zong,
+> > >
+> > > On 2/3/20 10:55 PM, Zong Li wrote:
+> > >
+> > > Vincent Chen <vincent.chen@sifive.com> =E6=96=BC 2020=E5=B9=B42=E6=9C=
+=883=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=88
+> > 6:04=E5=AF=AB=E9=81=93=EF=BC=9A
+> > >
+> > > On Mon, Feb 3, 2020 at 12:27 AM Romain Dolbeau
+> > > <romain.dolbeau@european-processor-initiative.eu> wrote:
+> > >
+> > > On 2020-02-01 14:59, Alex Ghiti wrote:
+> > >
+> > > Why restrict to 128M whereas we have 2GB offset available to the end
+> > > of the kernel ?
+> > >
+> > > Isn't that 2 GiB offset to whatever the module requires in the kernel=
+,
+> > > rather than to the end of the kernel space?
+> > >
+> > > Is there some guarantee that symbols accessible by modules are at the
+> > > end of the kernel? If so, wouldn't the maximum offset for this patch
+> > > still be (2 GiB - <total size of accessible symbols>)?
+> > >
+> > > Cordially,
+> > >
+> > > --
+> > > Romain Dolbeau
+> > >
+> > > It took me some time to find the root cause of this problem, please
+> > > allow me to share some observations before the discussion.
+> > > The root cause of this issue is that the percpu data is declared as a
+> > > static variable. The "static" attribute will make the compiler think
+> > > that this symbol is close to the .text section at runtime. Hence, the
+> > > compiler uses "auipc" to access this percpu data instead of using GOT=
+.
+> > > In this case,  the access range is limited to + -2G. However, in
+> > > practice, these percpu data are placed at a pre-allocated region
+> > > created by the memblock_allocate() function. In other words, the
+> > > distance between the pre-allocated region (>PAGE_OFFSET ) and the
+> > > .text section of the kernel module (in VMALLOC region) is much larger
+> > > than 2G.
+> > > I agree that the original patch,
+> > >
+> > https://github.com/bjoto/linux/commit/8a56d1c8e8e91c1bc3893946d52b921
+> > 7
+> > > c96e1589, can solve most cases. However, I do not think the patch
+> > > still works if the kernel module region is determined by _end or
+> > > <total size of accessible symbols>. The reason is that the
+> > > pre-allocated region for module percpu data comes from the memblock
+> > > function at runtime. Hence, we cannot know the actual address of this
+> > > region at compile-time, and this issue probably may occur again in
+> > > this case.
+> > >
+> > > By the way, I think maybe we can refer to the implementation of MIPS.
+> > > 1. For general cases, we can use this patch to solve this issue.
+> > > 2. For a large kernel image (>2G) or enabling the KASLR feature, we
+> > > may need a new code mode to deal with this issue.
+> > >
+> > > The range [&_end - 2G, VMALLOC_END] won't be suitable when KASLR is
+> > > enabled. Unless we limit the randomized range in small area, the
+> > > module region start address will be bigger than VMALLOC_END.
+> > >
+> > > Actually, the relocatable patch I proposed already moves "everything"
+> > > up at the same
+> > > time: the kernel itself but also all the "zones" below (vmalloc,
+> > > vmemmap, fixup...etc) since all those zones are defined from
+> > > PAGE_OFFSET that is now dynamic.
+> > > So the modules
+> > > ill remain at the same offset to the kernel, unless explicitly
+> > > randomized in the vmalloc zone.
+> > >
+> > > OK, it makes sense. The module region moves along with kernel seems t=
+o
+> > > stay away from the concern I mentioned.
+> > >
+> > > So now, the problem is that the pre-allocated region of percpu data i=
+s
+> > > located after _end symbol as Vincent mentioned, the 2G distance seems
+> > > to be too far for module region start address. (i.e. &_end - 2G).
+> > >
+> > > Actually, I don't understand this issue: we are limited to addressing
+> > > symbols within +/- 2GB from PC. So as long as the percpu symbol exist=
+s
+> > > in the kernel, it is below _end and then we don't care that its
+> > > content is initialized dynamically, as long as we can 'compute' its
+> > > address from PC, right ?
+> > >
+> > > In this case, the static percpu symbols of this issue are declared in
+> > > the kernel module, not in the kernel image.
+> > > When kernel loads the kernel module, in general, it continuously
+> > > places all the module sections in the VMALLOC memory area. However,
+> > > the ".data..percpu" section is an exception. The kernel places the
+> > > ".data..percpu" section in a pre-allocated memory region. This region
+> > > is used to place the percpu data instances for each CPU and is create=
+d
+> > > by the memblock(). Hence, the instance of these per-cpu symbols is
+> > > above the _end.  In this case, if we make the module region locate at
+> > > [_end-2G, PAGE_OFFSET], the distance between these percpu symbols (it=
+s
+> > > address >_end) and module text section will probably exceed the 2G
+> > > limitation.
+> > >
+> > > The static percpu symbols are particularly problem for loadable
+> > > modules on RISC-V but dynamic percpu variable are perfectly fine. I
+> > > had faced this issue with KVM RISC-V module and I converted static
+> > > percpu symbol into dynamic percpu variable. In fact, in Linux kernel
+> > > dynamic percpu variables are preferred over static percpu symbols so
+> > > wherever we see issue with static perpcu symbol in any module we
+> > > should just send patch to convert it into dynamic percpu.
+> > >
+> > > In general, any memory access via pointers (just like dynamic percpu
+> > > variables) are fine as long as the pointer itself is within 2GB of
+> > > relative addressing.
+> > >
+> > > As far as I know, the kernel module uses PIC as the code mode instead
+> > > of medany. Therefore, I don't think most pointers in kernel modules
+> > > have a 2GB limit. That is why the modules without static percpu
+> > > variables do not encounter the 32-bit offset issue.
+> > >
+> > > Overall, Alex's suggestion will address most cases of loadable module=
+s
+> > > except modules having static percpu symbols and for such modules just
+> > > convert these percpu symbols into dynamic percpu variables.
+> > >
+> > > Can you point out where I can take a look at this pre-allocated regio=
+n
+> > > for percpu data please ?
+> > >
+> > > In mm/percpu.c, you can find how the kernel allocates the percpu data
+> > > region during the initialization phase.
+> > > In kernel/module.c's simplify_symbols function, you can find kernel
+> > > treats .data.percpu section as an exception when loading module.
+> > >
+> > >
+> > > Thanks for your explanations, I was miles away from understanding the
+> > > real problem, good finding Vincent.
+> > >
+> > >
+> > > If I have any misunderstandings, please let me know. Thanks
+> > >
+> > > Please see above comment. We should prefer dynamic percpu variable in
+> > > loadable modules over static percpu symbols. I am sure there will be
+> > > very few kernel loadable modules having static percpu symbols.
+> > >
+> > > Thanks for your comments.
+> > > I agree that Alex's suggestion can address most cases of loadable
+> > > modules. The reason why I pointed out the static percpu variable case
+> > > is that the percpu variable is declared as a static symbol in the
+> > > reduced case provided by Romain in
+> > > https://lore.kernel.org/linux-riscv/1572281840733.3517@european-
+> > processor-initiative.eu/.
+> > > Also, I found two static percpu variables declared in openvswitch
+> > > module. After removing the static attribute, the kernel can insert
+> > > them successfully. Hence, I think the static percpu variable causes
+> > > the issue.
+> > >
+> > > (According to the result of 'grep', very few kernel loadable modules
+> > > use static percpu data, as you mentioned. However, I'm not sure this
+> > > might be a reason to prohibit RISC-V users from using static percpu
+> > > variables in kernel modules. Therefore, I have no comment on this.) I=
+f
+> > > we can ignore the existence of static percpu variable in the kernels
+> > > module, I agree with Alex's suggestions. The reason is not that we ca=
+n
+> > > use it to solve bugs, but that we can change the code model from PIC
+> > > to medany by creating a specific kernel module region to improve the
+> > > access performance.
+> > >
+> > >
+> > > If I understand well, you mean that having this module zone at the en=
+d
+> > > of vmalloc zone does not allow to fix the bug regarding static percpu
+> > > variables but allows to have better performance than PIC which uses a=
+n
+> > additional redirection using the GOT, right ?
+> > >
+> >
+> > Yes. Currently, I think PIC model can resolve most of the pointer refer=
+ence
+> > except for the static percpu variables. However, as you mentioned, It w=
+ill
+> > lose some performance due to the additional redirection using the GOT.
+> >
+> > >
+> > > (Maybe we can keep the current implementation for some corner cases
+> > > such as the size of the kernel image is close to 2GB)
+> > >
+> > >
+> > > Either we follow Anup's advice and we don't care about those static
+> > > percpu variables and if ever they fall behind the 2GB limit, we can
+> > > not load the module, or we find a way to make sure that the module
+> > > range comprises the area for module percpu variables which is
+> > > allocated in setup_per_cpu_areas. I'm taking a look at this solution =
+and
+> > how other architectures with same code model handle that.
+> > >
+> > As far as I know, ARM64 and MIPS64 with CONFIG_KBUILD_64BIT_SYM32
+> > also use PC-relative way to access the static perpcu variables. I quick=
+ly
+> > describe their implementation below, please correct me if I have any
+> > misunderstandings, thanks.
+> > 1. ARM64
+> >     When CONFIG_RANDOMIZE_BASE is disabled, they place the module
+> > region at "(u64)_etext - MODULES_VSIZE(128MB)", and the range limitatio=
+n
+> > of PC-relative ( instruction adrp) is +-4GB. When CONFIG_RANDOMIZE_BASE
+> > is enabled, the maximum access range between module region symbol and
+> > kernel symbol is limited to 2GB. There is still 2GB room to access the =
+per-cpu
+> > data. Therefore, I think it is also safe to access the per-cpu variable=
+s.
+> > 2. MIPS64 with CONFIG_KBUILD_64BIT_SYM32
+> >      The VMALLOC region is placed after the kernel image. Therefore, th=
+e start
+> > address of the kernel image is at the 0xfffffff80100000, and the kernel
+> > module region is at 0xffffffffc0000000 which is the beginning of the
+> > VMALLOC. They do not encounter this issue because the range limitation =
+of
+> > PC-relative is +-2GB.
+> >
+> > Currently, I have three solutions to fix the percpu data problem, and I=
+ list
+> > them below. Any feedback is welcome.
+> >
+> > 1. Create a specific module region locating at [PAGE_OFFSET-SIZE,
+> > PAGE_OFFSET].
+> >     I think this way can solve most cases because the general size of k=
+ernel
+> > image is much smaller than 2G, and we still can change the code model f=
+rom
+> > PIC to medany. However, it will still encounter the same problem if the
+> > kernel image is near to 2GB.
+> >
+> > 2. Request a new code model for kernel
+> >     Maybe we request compiler guys to generate a new PIC mode for kerne=
+l,
+> > which uses GOT to assess every static per-cpu data instead of PC-relati=
+ve.
+> > However, I am not sure whether this idea is accepted by the compiler gu=
+ys or
+> > not. If accepted, It may need a long time to realize it.
+> >
+> > 3. Jump to a resolved function.
+> > Zong and I came out with this rough idea to address the problem, but we=
+ do
+> > not go to realize it.
+> >
+> > The following is the current code pattern for accessing the percpu data=
+.
+> > 64: 00000917 auipc s2,0x0
+> > 68: 00093903 ld s2,0(s2) # 64 <.L0 >
+> >
+> > We plan to change the " ld s2,0(s2) " to "jalr xxx(s2)" to redirect the=
+ code to
+> > the corresponding resolved function. Each static percpu data owns a res=
+olved
+> > function. These resolved functions will go to get the variable content,=
+ and
+> > then it stores the variable to the target register by decoding the auip=
+c
+> > instruction. We think this method may solve this problem, but it will d=
+rop the
+> > performance due to the redirection.
+> >
+> > I preferred the solution combining method 1 and method 2.
+> > 1. In general, users can choose method 1 to improve the performance of
+> > data access.
+> > 2. For safety, users can use the new code model to access the static pe=
+rcpu
+> > data without any limitation.
+> > We can create a new kernel config that looks a bit like MIPS
+> > CONFIG_KBUILD_64BIT_SYM32 for users to chose.
+>
+> I think we should not waste time in our quest to find perfect solution. W=
+e
+> should first have a module_alloc() in-place (based on various suggestions=
+ in
+> this email thread) so that most people don't see issues. We can fix modul=
+e
+> loading for module with static per-cpu symbols separately.
 
-This test covers basic page table entry transformations including but not
-limited to old, young, dirty, clean, write, write protect etc at various
-level along with populating intermediate entries with next page table page
-and validating them.
+I mean "static" is the attribute in C language not the type of the
+percpu symbol.
+Sorry, the description provided is not accurate and may cause you
+misunderstanding, and I also misunderstand the meaning of static
+percpu symbols that you mentioned early.
 
-Test page table pages are allocated from system memory with required size
-and alignments. The mapped pfns at page table levels are derived from a
-real pfn representing a valid kernel text symbol. This test gets called
-inside kernel_init() right after async_synchronize_full().
+>
+> For point1, we don't need a dedicated region as long as we are allocating
+> modules from VMALLOC area. Let's avoid another virtual memory region if
+> possible.
+>
 
-This test gets built and run when CONFIG_DEBUG_VM_PGTABLE is selected. Any
-architecture, which is willing to subscribe this test will need to select
-ARCH_HAS_DEBUG_VM_PGTABLE. For now this is limited to arc, arm64, x86, s390
-and ppc32 platforms where the test is known to build and run successfully.
-Going forward, other architectures too can subscribe the test after fixing
-any build or runtime problems with their page table helpers. Meanwhile for
-better platform coverage, the test can also be enabled with CONFIG_EXPERT
-even without ARCH_HAS_DEBUG_VM_PGTABLE.
+Your comments inspire me if we can know the end of the percpu data
+region, we can dynamically calculate the start address in each module
+allocation by "<end of the percpu data region> - 2GB" if needed. I am
+finding a way to derive the <end of the percpu data region>.
 
-Folks interested in making sure that a given platform's page table helpers
-conform to expected generic MM semantics should enable the above config
-which will just trigger this test during boot. Any non conformity here will
-be reported as an warning which would need to be fixed. This test will help
-catch any changes to the agreed upon semantics expected from generic MM and
-enable platforms to accommodate it thereafter.
 
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: Vlastimil Babka <vbabka@suse.cz>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Mike Rapoport <rppt@linux.vnet.ibm.com>
-Cc: Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Dan Williams <dan.j.williams@intel.com>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Cc: Michal Hocko <mhocko@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>
-Cc: Mark Brown <broonie@kernel.org>
-Cc: Steven Price <Steven.Price@arm.com>
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: Kees Cook <keescook@chromium.org>
-Cc: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: Dave Hansen <dave.hansen@intel.com>
-Cc: Russell King - ARM Linux <linux@armlinux.org.uk>
-Cc: Michael Ellerman <mpe@ellerman.id.au>
-Cc: Paul Mackerras <paulus@samba.org>
-Cc: Martin Schwidefsky <schwidefsky@de.ibm.com>
-Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Vineet Gupta <vgupta@synopsys.com>
-Cc: James Hogan <jhogan@kernel.org>
-Cc: Paul Burton <paul.burton@mips.com>
-Cc: Ralf Baechle <ralf@linux-mips.org>
-Cc: Kirill A. Shutemov <kirill@shutemov.name>
-Cc: Gerald Schaefer <gerald.schaefer@de.ibm.com>
-Cc: Christophe Leroy <christophe.leroy@c-s.fr>
-Cc: Ingo Molnar <mingo@kernel.org>
-Cc: Richard Henderson <rth@twiddle.net>
-Cc: Ivan Kokshaysky <ink@jurassic.park.msu.ru>
-Cc: Matt Turner <mattst88@gmail.com>
-Cc: Mark Salter <msalter@redhat.com>
-Cc: Aurelien Jacquiot <jacquiot.aurelien@gmail.com>
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: Brian Cain <bcain@codeaurora.org>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Michal Simek <monstr@monstr.eu>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Guan Xuetao <gxt@pku.edu.cn>
-Cc: Chris Zankel <chris@zankel.net>
-Cc: Max Filippov <jcmvbkbc@gmail.com>
-Cc: Qian Cai <cai@lca.pw>
-Cc: linux-alpha@vger.kernel.org
-Cc: linux-c6x-dev@linux-c6x.org
-Cc: uclinux-h8-devel@lists.sourceforge.jp
-Cc: linux-hexagon@vger.kernel.org
-Cc: linux-m68k@lists.linux-m68k.org
-Cc: linux-riscv@lists.infradead.org
-Cc: linux-xtensa@linux-xtensa.org
-Cc: linux-snps-arc@lists.infradead.org
-Cc: linux-mips@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-ia64@vger.kernel.org
-Cc: linuxppc-dev@lists.ozlabs.org
-Cc: linux-s390@vger.kernel.org
-Cc: linux-sh@vger.kernel.org
-Cc: sparclinux@vger.kernel.org
-Cc: x86@kernel.org
-Cc: linux-kernel@vger.kernel.org
 
-Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
-Reviewed-by: Ingo Molnar <mingo@kernel.org>
-Tested-by: Gerald Schaefer <gerald.schaefer@de.ibm.com> # s390
-Tested-by: Christophe Leroy <christophe.leroy@c-s.fr>	# ppc32
-Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
-Signed-off-by: Christophe Leroy <christophe.leroy@c-s.fr>
-Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
----
-This adds a test validation for architecture exported page table helpers.
-Patch adds basic transformation tests at various levels of the page table.
-
-This test was originally suggested by Catalin during arm64 THP migration
-RFC discussion earlier. Going forward it can include more specific tests
-with respect to various generic MM functions like THP, HugeTLB etc and
-platform specific tests.
-
-https://lore.kernel.org/linux-mm/20190628102003.GA56463@arrakis.emea.arm.com/
-
-Needs to be applied on linux V5.5
-
-Changes in V13:
-
-- Subscribed s390 platform and updated debug-vm-pgtable/arch-support.txt per Gerald
-- Dropped keyword 'extern' from debug_vm_pgtable() declaration per Christophe
-- Moved debug_vm_pgtable() declarations to <linux/mmdebug.h> per Christophe
-- Moved debug_vm_pgtable() call site into kernel_init() per Christophe
-- Changed CONFIG_DEBUG_VM_PGTABLE rules per Christophe
-- Updated commit to include new supported platforms and changed config selection
-
-Changes in V12: (https://patchwork.kernel.org/project/linux-mm/list/?series=233905)
-
-- Replaced __mmdrop() with mmdrop()
-- Enable ARCH_HAS_DEBUG_VM_PGTABLE on X86 for non CONFIG_X86_PAE platforms as the
-  test procedure interfere with pre-allocated PMDs attached to the PGD resulting
-  in runtime failures with VM_BUG_ON()
-
-Changes in V11: (https://patchwork.kernel.org/project/linux-mm/list/?series=221135)
-
-- Rebased the patch on V5.4
-
-Changes in V10: (https://patchwork.kernel.org/project/linux-mm/list/?series=205529)
-
-- Always enable DEBUG_VM_PGTABLE when DEBUG_VM is enabled per Ingo
-- Added tags from Ingo
-
-Changes in V9: (https://patchwork.kernel.org/project/linux-mm/list/?series=201429)
-
-- Changed feature support enumeration for powerpc platforms per Christophe
-- Changed config wrapper for basic_[pmd|pud]_tests() to enable ARC platform
-- Enabled the test on ARC platform
-
-Changes in V8: (https://patchwork.kernel.org/project/linux-mm/list/?series=194297)
-
-- Enabled ARCH_HAS_DEBUG_VM_PGTABLE on PPC32 platform per Christophe
-- Updated feature documentation as DEBUG_VM_PGTABLE is now enabled on PPC32 platform
-- Moved ARCH_HAS_DEBUG_VM_PGTABLE earlier to indent it with DEBUG_VM per Christophe
-- Added an information message in debug_vm_pgtable() per Christophe
-- Dropped random_vaddr boundary condition checks per Christophe and Qian
-- Replaced virt_addr_valid() check with pfn_valid() check in debug_vm_pgtable()
-- Slightly changed pr_fmt(fmt) information
-
-Changes in V7: (https://patchwork.kernel.org/project/linux-mm/list/?series=193051)
-
-- Memory allocation and free routines for mapped pages have been droped
-- Mapped pfns are derived from standard kernel text symbol per Matthew
-- Moved debug_vm_pgtaable() after page_alloc_init_late() per Michal and Qian 
-- Updated the commit message per Michal
-- Updated W=1 GCC warning problem on x86 per Qian Cai
-- Addition of new alloc_contig_pages() helper has been submitted separately
-
-Changes in V6: (https://patchwork.kernel.org/project/linux-mm/list/?series=187589)
-
-- Moved alloc_gigantic_page_order() into mm/page_alloc.c per Michal
-- Moved alloc_gigantic_page_order() within CONFIG_CONTIG_ALLOC in the test
-- Folded Andrew's include/asm-generic/pgtable.h fix into the test patch 2/2
-
-Changes in V5: (https://patchwork.kernel.org/project/linux-mm/list/?series=185991)
-
-- Redefined and moved X86 mm_p4d_folded() into a different header per Kirill/Ingo
-- Updated the config option comment per Ingo and dropped 'kernel module' reference
-- Updated the commit message and dropped 'kernel module' reference
-- Changed DEBUG_ARCH_PGTABLE_TEST into DEBUG_VM_PGTABLE per Ingo
-- Moved config option from mm/Kconfig.debug into lib/Kconfig.debug
-- Renamed core test function arch_pgtable_tests() as debug_vm_pgtable()
-- Renamed mm/arch_pgtable_test.c as mm/debug_vm_pgtable.c
-- debug_vm_pgtable() gets called from kernel_init_freeable() after init_mm_internals()
-- Added an entry in Documentation/features/debug/ per Ingo
-- Enabled the test on arm64 and x86 platforms for now
-
-Changes in V4: (https://patchwork.kernel.org/project/linux-mm/list/?series=183465)
-
-- Disable DEBUG_ARCH_PGTABLE_TEST for ARM and IA64 platforms
-
-Changes in V3: (https://lore.kernel.org/patchwork/project/lkml/list/?series=411216)
-
-- Changed test trigger from module format into late_initcall()
-- Marked all functions with __init to be freed after completion
-- Changed all __PGTABLE_PXX_FOLDED checks as mm_pxx_folded()
-- Folded in PPC32 fixes from Christophe
-
-Changes in V2:
-
-https://lore.kernel.org/linux-mm/1568268173-31302-1-git-send-email-anshuman.khandual@arm.com/T/#t
-
-- Fixed small typo error in MODULE_DESCRIPTION()
-- Fixed m64k build problems for lvalue concerns in pmd_xxx_tests()
-- Fixed dynamic page table level folding problems on x86 as per Kirril
-- Fixed second pointers during pxx_populate_tests() per Kirill and Gerald
-- Allocate and free pte table with pte_alloc_one/pte_free per Kirill
-- Modified pxx_clear_tests() to accommodate s390 lower 12 bits situation
-- Changed RANDOM_NZVALUE value from 0xbe to 0xff
-- Changed allocation, usage, free sequence for saved_ptep
-- Renamed VMA_FLAGS as VMFLAGS
-- Implemented a new method for random vaddr generation
-- Implemented some other cleanups
-- Dropped extern reference to mm_alloc()
-- Created and exported new alloc_gigantic_page_order()
-- Dropped the custom allocator and used new alloc_gigantic_page_order()
-
-Changes in V1:
-
-https://lore.kernel.org/linux-mm/1567497706-8649-1-git-send-email-anshuman.khandual@arm.com/
-
-- Added fallback mechanism for PMD aligned memory allocation failure
-
-Changes in RFC V2:
-
-https://lore.kernel.org/linux-mm/1565335998-22553-1-git-send-email-anshuman.khandual@arm.com/T/#u
-
-- Moved test module and it's config from lib/ to mm/
-- Renamed config TEST_ARCH_PGTABLE as DEBUG_ARCH_PGTABLE_TEST
-- Renamed file from test_arch_pgtable.c to arch_pgtable_test.c
-- Added relevant MODULE_DESCRIPTION() and MODULE_AUTHOR() details
-- Dropped loadable module config option
-- Basic tests now use memory blocks with required size and alignment
-- PUD aligned memory block gets allocated with alloc_contig_range()
-- If PUD aligned memory could not be allocated it falls back on PMD aligned
-  memory block from page allocator and pud_* tests are skipped
-- Clear and populate tests now operate on real in memory page table entries
-- Dummy mm_struct gets allocated with mm_alloc()
-- Dummy page table entries get allocated with [pud|pmd|pte]_alloc_[map]()
-- Simplified [p4d|pgd]_basic_tests(), now has random values in the entries
-
-Original RFC V1:
-
-https://lore.kernel.org/linux-mm/1564037723-26676-1-git-send-email-anshuman.khandual@arm.com/
-
- .../debug/debug-vm-pgtable/arch-support.txt   |  35 ++
- arch/arc/Kconfig                              |   1 +
- arch/arm64/Kconfig                            |   1 +
- arch/powerpc/Kconfig                          |   1 +
- arch/s390/Kconfig                             |   1 +
- arch/x86/Kconfig                              |   1 +
- arch/x86/include/asm/pgtable_64.h             |   6 +
- include/linux/mmdebug.h                       |   5 +
- init/main.c                                   |   2 +
- lib/Kconfig.debug                             |  22 +
- mm/Makefile                                   |   1 +
- mm/debug_vm_pgtable.c                         | 388 ++++++++++++++++++
- 12 files changed, 464 insertions(+)
- create mode 100644 Documentation/features/debug/debug-vm-pgtable/arch-support.txt
- create mode 100644 mm/debug_vm_pgtable.c
-
-diff --git a/Documentation/features/debug/debug-vm-pgtable/arch-support.txt b/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
-new file mode 100644
-index 000000000000..64d0f9b15c49
---- /dev/null
-+++ b/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
-@@ -0,0 +1,35 @@
-+#
-+# Feature name:          debug-vm-pgtable
-+#         Kconfig:       ARCH_HAS_DEBUG_VM_PGTABLE
-+#         description:   arch supports pgtable tests for semantics compliance
-+#
-+    -----------------------
-+    |         arch |status|
-+    -----------------------
-+    |       alpha: | TODO |
-+    |         arc: |  ok  |
-+    |         arm: | TODO |
-+    |       arm64: |  ok  |
-+    |         c6x: | TODO |
-+    |        csky: | TODO |
-+    |       h8300: | TODO |
-+    |     hexagon: | TODO |
-+    |        ia64: | TODO |
-+    |        m68k: | TODO |
-+    |  microblaze: | TODO |
-+    |        mips: | TODO |
-+    |       nds32: | TODO |
-+    |       nios2: | TODO |
-+    |    openrisc: | TODO |
-+    |      parisc: | TODO |
-+    |  powerpc/32: |  ok  |
-+    |  powerpc/64: | TODO |
-+    |       riscv: | TODO |
-+    |        s390: |  ok  |
-+    |          sh: | TODO |
-+    |       sparc: | TODO |
-+    |          um: | TODO |
-+    |   unicore32: | TODO |
-+    |         x86: |  ok  |
-+    |      xtensa: | TODO |
-+    -----------------------
-diff --git a/arch/arc/Kconfig b/arch/arc/Kconfig
-index 26108ea785c2..6a76f3b609b2 100644
---- a/arch/arc/Kconfig
-+++ b/arch/arc/Kconfig
-@@ -6,6 +6,7 @@
- config ARC
- 	def_bool y
- 	select ARC_TIMERS
-+	select ARCH_HAS_DEBUG_VM_PGTABLE
- 	select ARCH_HAS_DMA_PREP_COHERENT
- 	select ARCH_HAS_PTE_SPECIAL
- 	select ARCH_HAS_SETUP_DMA_OPS
-diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index e688dfad0b72..876c9a672db1 100644
---- a/arch/arm64/Kconfig
-+++ b/arch/arm64/Kconfig
-@@ -11,6 +11,7 @@ config ARM64
- 	select ACPI_PPTT if ACPI
- 	select ARCH_CLOCKSOURCE_DATA
- 	select ARCH_HAS_DEBUG_VIRTUAL
-+	select ARCH_HAS_DEBUG_VM_PGTABLE
- 	select ARCH_HAS_DEVMEM_IS_ALLOWED
- 	select ARCH_HAS_DMA_PREP_COHERENT
- 	select ARCH_HAS_ACPI_TABLE_UPGRADE if ACPI
-diff --git a/arch/powerpc/Kconfig b/arch/powerpc/Kconfig
-index e2a412113359..e229e2a86518 100644
---- a/arch/powerpc/Kconfig
-+++ b/arch/powerpc/Kconfig
-@@ -120,6 +120,7 @@ config PPC
- 	#
- 	select ARCH_32BIT_OFF_T if PPC32
- 	select ARCH_HAS_DEBUG_VIRTUAL
-+	select ARCH_HAS_DEBUG_VM_PGTABLE if PPC32
- 	select ARCH_HAS_DEVMEM_IS_ALLOWED
- 	select ARCH_HAS_ELF_RANDOMIZE
- 	select ARCH_HAS_FORTIFY_SOURCE
-diff --git a/arch/s390/Kconfig b/arch/s390/Kconfig
-index bc88841d335d..2ea962ead27e 100644
---- a/arch/s390/Kconfig
-+++ b/arch/s390/Kconfig
-@@ -59,6 +59,7 @@ config KASAN_SHADOW_OFFSET
- config S390
- 	def_bool y
- 	select ARCH_BINFMT_ELF_STATE
-+	select ARCH_HAS_DEBUG_VM_PGTABLE
- 	select ARCH_HAS_DEVMEM_IS_ALLOWED
- 	select ARCH_HAS_ELF_RANDOMIZE
- 	select ARCH_HAS_FORTIFY_SOURCE
-diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 5e8949953660..218536a4581d 100644
---- a/arch/x86/Kconfig
-+++ b/arch/x86/Kconfig
-@@ -61,6 +61,7 @@ config X86
- 	select ARCH_CLOCKSOURCE_INIT
- 	select ARCH_HAS_ACPI_TABLE_UPGRADE	if ACPI
- 	select ARCH_HAS_DEBUG_VIRTUAL
-+	select ARCH_HAS_DEBUG_VM_PGTABLE	if !X86_PAE
- 	select ARCH_HAS_DEVMEM_IS_ALLOWED
- 	select ARCH_HAS_ELF_RANDOMIZE
- 	select ARCH_HAS_FAST_MULTIPLIER
-diff --git a/arch/x86/include/asm/pgtable_64.h b/arch/x86/include/asm/pgtable_64.h
-index 0b6c4042942a..fb0e76d254b3 100644
---- a/arch/x86/include/asm/pgtable_64.h
-+++ b/arch/x86/include/asm/pgtable_64.h
-@@ -53,6 +53,12 @@ static inline void sync_initial_page_table(void) { }
- 
- struct mm_struct;
- 
-+#define mm_p4d_folded mm_p4d_folded
-+static inline bool mm_p4d_folded(struct mm_struct *mm)
-+{
-+	return !pgtable_l5_enabled();
-+}
-+
- void set_pte_vaddr_p4d(p4d_t *p4d_page, unsigned long vaddr, pte_t new_pte);
- void set_pte_vaddr_pud(pud_t *pud_page, unsigned long vaddr, pte_t new_pte);
- 
-diff --git a/include/linux/mmdebug.h b/include/linux/mmdebug.h
-index 2ad72d2c8cc5..5339aa14b749 100644
---- a/include/linux/mmdebug.h
-+++ b/include/linux/mmdebug.h
-@@ -64,4 +64,9 @@ void dump_mm(const struct mm_struct *mm);
- #define VM_BUG_ON_PGFLAGS(cond, page) BUILD_BUG_ON_INVALID(cond)
- #endif
- 
-+#ifdef CONFIG_DEBUG_VM_PGTABLE
-+void debug_vm_pgtable(void);
-+#else
-+static inline void debug_vm_pgtable(void) { }
-+#endif
- #endif
-diff --git a/init/main.c b/init/main.c
-index da1bc0b60a7d..e2999239bb8c 100644
---- a/init/main.c
-+++ b/init/main.c
-@@ -93,6 +93,7 @@
- #include <linux/rodata_test.h>
- #include <linux/jump_label.h>
- #include <linux/mem_encrypt.h>
-+#include <linux/mmdebug.h>
- 
- #include <asm/io.h>
- #include <asm/bugs.h>
-@@ -1110,6 +1111,7 @@ static int __ref kernel_init(void *unused)
- 	kernel_init_freeable();
- 	/* need to finish all async __init code before freeing the memory */
- 	async_synchronize_full();
-+	debug_vm_pgtable();
- 	ftrace_free_init_mem();
- 	free_initmem();
- 	mark_readonly();
-diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
-index 5ffe144c9794..64c80f7af904 100644
---- a/lib/Kconfig.debug
-+++ b/lib/Kconfig.debug
-@@ -653,6 +653,12 @@ config SCHED_STACK_END_CHECK
- 	  data corruption or a sporadic crash at a later stage once the region
- 	  is examined. The runtime overhead introduced is minimal.
- 
-+config ARCH_HAS_DEBUG_VM_PGTABLE
-+	bool
-+	help
-+	  An architecture should select this when it can successfully
-+	  build and run DEBUG_VM_PGTABLE.
-+
- config DEBUG_VM
- 	bool "Debug VM"
- 	depends on DEBUG_KERNEL
-@@ -688,6 +694,22 @@ config DEBUG_VM_PGFLAGS
- 
- 	  If unsure, say N.
- 
-+config DEBUG_VM_PGTABLE
-+	bool "Debug arch page table for semantics compliance"
-+	depends on MMU
-+	depends on ARCH_HAS_DEBUG_VM_PGTABLE || EXPERT
-+	default n if !ARCH_HAS_DEBUG_VM_PGTABLE
-+	default y if DEBUG_VM
-+	help
-+	  This option provides a debug method which can be used to test
-+	  architecture page table helper functions on various platforms in
-+	  verifying if they comply with expected generic MM semantics. This
-+	  will help architecture code in making sure that any changes or
-+	  new additions of these helpers still conform to expected
-+	  semantics of the generic MM.
-+
-+	  If unsure, say N.
-+
- config ARCH_HAS_DEBUG_VIRTUAL
- 	bool
- 
-diff --git a/mm/Makefile b/mm/Makefile
-index 1937cc251883..eba423a26b19 100644
---- a/mm/Makefile
-+++ b/mm/Makefile
-@@ -86,6 +86,7 @@ obj-$(CONFIG_HWPOISON_INJECT) += hwpoison-inject.o
- obj-$(CONFIG_DEBUG_KMEMLEAK) += kmemleak.o
- obj-$(CONFIG_DEBUG_KMEMLEAK_TEST) += kmemleak-test.o
- obj-$(CONFIG_DEBUG_RODATA_TEST) += rodata_test.o
-+obj-$(CONFIG_DEBUG_VM_PGTABLE) += debug_vm_pgtable.o
- obj-$(CONFIG_PAGE_OWNER) += page_owner.o
- obj-$(CONFIG_CLEANCACHE) += cleancache.o
- obj-$(CONFIG_MEMORY_ISOLATION) += page_isolation.o
-diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
-new file mode 100644
-index 000000000000..0f37f32d15f1
---- /dev/null
-+++ b/mm/debug_vm_pgtable.c
-@@ -0,0 +1,388 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * This kernel test validates architecture page table helpers and
-+ * accessors and helps in verifying their continued compliance with
-+ * expected generic MM semantics.
-+ *
-+ * Copyright (C) 2019 ARM Ltd.
-+ *
-+ * Author: Anshuman Khandual <anshuman.khandual@arm.com>
-+ */
-+#define pr_fmt(fmt) "debug_vm_pgtable: %s: " fmt, __func__
-+
-+#include <linux/gfp.h>
-+#include <linux/highmem.h>
-+#include <linux/hugetlb.h>
-+#include <linux/kernel.h>
-+#include <linux/kconfig.h>
-+#include <linux/mm.h>
-+#include <linux/mman.h>
-+#include <linux/mm_types.h>
-+#include <linux/module.h>
-+#include <linux/pfn_t.h>
-+#include <linux/printk.h>
-+#include <linux/random.h>
-+#include <linux/spinlock.h>
-+#include <linux/swap.h>
-+#include <linux/swapops.h>
-+#include <linux/start_kernel.h>
-+#include <linux/sched/mm.h>
-+#include <asm/pgalloc.h>
-+#include <asm/pgtable.h>
-+
-+/*
-+ * Basic operations
-+ *
-+ * mkold(entry)			= An old and not a young entry
-+ * mkyoung(entry)		= A young and not an old entry
-+ * mkdirty(entry)		= A dirty and not a clean entry
-+ * mkclean(entry)		= A clean and not a dirty entry
-+ * mkwrite(entry)		= A write and not a write protected entry
-+ * wrprotect(entry)		= A write protected and not a write entry
-+ * pxx_bad(entry)		= A mapped and non-table entry
-+ * pxx_same(entry1, entry2)	= Both entries hold the exact same value
-+ */
-+#define VMFLAGS	(VM_READ|VM_WRITE|VM_EXEC)
-+
-+/*
-+ * On s390 platform, the lower 12 bits are used to identify given page table
-+ * entry type and for other arch specific requirements. But these bits might
-+ * affect the ability to clear entries with pxx_clear(). So while loading up
-+ * the entries skip all lower 12 bits in order to accommodate s390 platform.
-+ * It does not have affect any other platform.
-+ */
-+#define RANDOM_ORVALUE	(0xfffffffffffff000UL)
-+#define RANDOM_NZVALUE	(0xff)
-+
-+static void __init pte_basic_tests(unsigned long pfn, pgprot_t prot)
-+{
-+	pte_t pte = pfn_pte(pfn, prot);
-+
-+	WARN_ON(!pte_same(pte, pte));
-+	WARN_ON(!pte_young(pte_mkyoung(pte)));
-+	WARN_ON(!pte_dirty(pte_mkdirty(pte)));
-+	WARN_ON(!pte_write(pte_mkwrite(pte)));
-+	WARN_ON(pte_young(pte_mkold(pte)));
-+	WARN_ON(pte_dirty(pte_mkclean(pte)));
-+	WARN_ON(pte_write(pte_wrprotect(pte)));
-+}
-+
-+#ifdef CONFIG_TRANSPARENT_HUGEPAGE
-+static void __init pmd_basic_tests(unsigned long pfn, pgprot_t prot)
-+{
-+	pmd_t pmd = pfn_pmd(pfn, prot);
-+
-+	WARN_ON(!pmd_same(pmd, pmd));
-+	WARN_ON(!pmd_young(pmd_mkyoung(pmd)));
-+	WARN_ON(!pmd_dirty(pmd_mkdirty(pmd)));
-+	WARN_ON(!pmd_write(pmd_mkwrite(pmd)));
-+	WARN_ON(pmd_young(pmd_mkold(pmd)));
-+	WARN_ON(pmd_dirty(pmd_mkclean(pmd)));
-+	WARN_ON(pmd_write(pmd_wrprotect(pmd)));
-+	/*
-+	 * A huge page does not point to next level page table
-+	 * entry. Hence this must qualify as pmd_bad().
-+	 */
-+	WARN_ON(!pmd_bad(pmd_mkhuge(pmd)));
-+}
-+
-+#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
-+static void __init pud_basic_tests(unsigned long pfn, pgprot_t prot)
-+{
-+	pud_t pud = pfn_pud(pfn, prot);
-+
-+	WARN_ON(!pud_same(pud, pud));
-+	WARN_ON(!pud_young(pud_mkyoung(pud)));
-+	WARN_ON(!pud_write(pud_mkwrite(pud)));
-+	WARN_ON(pud_write(pud_wrprotect(pud)));
-+	WARN_ON(pud_young(pud_mkold(pud)));
-+
-+	if (mm_pmd_folded(mm) || __is_defined(ARCH_HAS_4LEVEL_HACK))
-+		return;
-+
-+	/*
-+	 * A huge page does not point to next level page table
-+	 * entry. Hence this must qualify as pud_bad().
-+	 */
-+	WARN_ON(!pud_bad(pud_mkhuge(pud)));
-+}
-+#else
-+static void __init pud_basic_tests(unsigned long pfn, pgprot_t prot) { }
-+#endif
-+#else
-+static void __init pmd_basic_tests(unsigned long pfn, pgprot_t prot) { }
-+static void __init pud_basic_tests(unsigned long pfn, pgprot_t prot) { }
-+#endif
-+
-+static void __init p4d_basic_tests(unsigned long pfn, pgprot_t prot)
-+{
-+	p4d_t p4d;
-+
-+	memset(&p4d, RANDOM_NZVALUE, sizeof(p4d_t));
-+	WARN_ON(!p4d_same(p4d, p4d));
-+}
-+
-+static void __init pgd_basic_tests(unsigned long pfn, pgprot_t prot)
-+{
-+	pgd_t pgd;
-+
-+	memset(&pgd, RANDOM_NZVALUE, sizeof(pgd_t));
-+	WARN_ON(!pgd_same(pgd, pgd));
-+}
-+
-+#ifndef __ARCH_HAS_4LEVEL_HACK
-+static void __init pud_clear_tests(struct mm_struct *mm, pud_t *pudp)
-+{
-+	pud_t pud = READ_ONCE(*pudp);
-+
-+	if (mm_pmd_folded(mm))
-+		return;
-+
-+	pud = __pud(pud_val(pud) | RANDOM_ORVALUE);
-+	WRITE_ONCE(*pudp, pud);
-+	pud_clear(pudp);
-+	pud = READ_ONCE(*pudp);
-+	WARN_ON(!pud_none(pud));
-+}
-+
-+static void __init pud_populate_tests(struct mm_struct *mm, pud_t *pudp,
-+				      pmd_t *pmdp)
-+{
-+	pud_t pud;
-+
-+	if (mm_pmd_folded(mm))
-+		return;
-+	/*
-+	 * This entry points to next level page table page.
-+	 * Hence this must not qualify as pud_bad().
-+	 */
-+	pmd_clear(pmdp);
-+	pud_clear(pudp);
-+	pud_populate(mm, pudp, pmdp);
-+	pud = READ_ONCE(*pudp);
-+	WARN_ON(pud_bad(pud));
-+}
-+#else
-+static void __init pud_clear_tests(struct mm_struct *mm, pud_t *pudp) { }
-+static void __init pud_populate_tests(struct mm_struct *mm, pud_t *pudp,
-+				      pmd_t *pmdp)
-+{
-+}
-+#endif
-+
-+#ifndef __ARCH_HAS_5LEVEL_HACK
-+static void __init p4d_clear_tests(struct mm_struct *mm, p4d_t *p4dp)
-+{
-+	p4d_t p4d = READ_ONCE(*p4dp);
-+
-+	if (mm_pud_folded(mm))
-+		return;
-+
-+	p4d = __p4d(p4d_val(p4d) | RANDOM_ORVALUE);
-+	WRITE_ONCE(*p4dp, p4d);
-+	p4d_clear(p4dp);
-+	p4d = READ_ONCE(*p4dp);
-+	WARN_ON(!p4d_none(p4d));
-+}
-+
-+static void __init p4d_populate_tests(struct mm_struct *mm, p4d_t *p4dp,
-+				      pud_t *pudp)
-+{
-+	p4d_t p4d;
-+
-+	if (mm_pud_folded(mm))
-+		return;
-+
-+	/*
-+	 * This entry points to next level page table page.
-+	 * Hence this must not qualify as p4d_bad().
-+	 */
-+	pud_clear(pudp);
-+	p4d_clear(p4dp);
-+	p4d_populate(mm, p4dp, pudp);
-+	p4d = READ_ONCE(*p4dp);
-+	WARN_ON(p4d_bad(p4d));
-+}
-+
-+static void __init pgd_clear_tests(struct mm_struct *mm, pgd_t *pgdp)
-+{
-+	pgd_t pgd = READ_ONCE(*pgdp);
-+
-+	if (mm_p4d_folded(mm))
-+		return;
-+
-+	pgd = __pgd(pgd_val(pgd) | RANDOM_ORVALUE);
-+	WRITE_ONCE(*pgdp, pgd);
-+	pgd_clear(pgdp);
-+	pgd = READ_ONCE(*pgdp);
-+	WARN_ON(!pgd_none(pgd));
-+}
-+
-+static void __init pgd_populate_tests(struct mm_struct *mm, pgd_t *pgdp,
-+				      p4d_t *p4dp)
-+{
-+	pgd_t pgd;
-+
-+	if (mm_p4d_folded(mm))
-+		return;
-+
-+	/*
-+	 * This entry points to next level page table page.
-+	 * Hence this must not qualify as pgd_bad().
-+	 */
-+	p4d_clear(p4dp);
-+	pgd_clear(pgdp);
-+	pgd_populate(mm, pgdp, p4dp);
-+	pgd = READ_ONCE(*pgdp);
-+	WARN_ON(pgd_bad(pgd));
-+}
-+#else
-+static void __init p4d_clear_tests(struct mm_struct *mm, p4d_t *p4dp) { }
-+static void __init pgd_clear_tests(struct mm_struct *mm, pgd_t *pgdp) { }
-+static void __init p4d_populate_tests(struct mm_struct *mm, p4d_t *p4dp,
-+				      pud_t *pudp)
-+{
-+}
-+static void __init pgd_populate_tests(struct mm_struct *mm, pgd_t *pgdp,
-+				      p4d_t *p4dp)
-+{
-+}
-+#endif
-+
-+static void __init pte_clear_tests(struct mm_struct *mm, pte_t *ptep)
-+{
-+	pte_t pte = READ_ONCE(*ptep);
-+
-+	pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
-+	WRITE_ONCE(*ptep, pte);
-+	pte_clear(mm, 0, ptep);
-+	pte = READ_ONCE(*ptep);
-+	WARN_ON(!pte_none(pte));
-+}
-+
-+static void __init pmd_clear_tests(struct mm_struct *mm, pmd_t *pmdp)
-+{
-+	pmd_t pmd = READ_ONCE(*pmdp);
-+
-+	pmd = __pmd(pmd_val(pmd) | RANDOM_ORVALUE);
-+	WRITE_ONCE(*pmdp, pmd);
-+	pmd_clear(pmdp);
-+	pmd = READ_ONCE(*pmdp);
-+	WARN_ON(!pmd_none(pmd));
-+}
-+
-+static void __init pmd_populate_tests(struct mm_struct *mm, pmd_t *pmdp,
-+				      pgtable_t pgtable)
-+{
-+	pmd_t pmd;
-+
-+	/*
-+	 * This entry points to next level page table page.
-+	 * Hence this must not qualify as pmd_bad().
-+	 */
-+	pmd_clear(pmdp);
-+	pmd_populate(mm, pmdp, pgtable);
-+	pmd = READ_ONCE(*pmdp);
-+	WARN_ON(pmd_bad(pmd));
-+}
-+
-+static unsigned long __init get_random_vaddr(void)
-+{
-+	unsigned long random_vaddr, random_pages, total_user_pages;
-+
-+	total_user_pages = (TASK_SIZE - FIRST_USER_ADDRESS) / PAGE_SIZE;
-+
-+	random_pages = get_random_long() % total_user_pages;
-+	random_vaddr = FIRST_USER_ADDRESS + random_pages * PAGE_SIZE;
-+
-+	return random_vaddr;
-+}
-+
-+void __init debug_vm_pgtable(void)
-+{
-+	struct mm_struct *mm;
-+	pgd_t *pgdp;
-+	p4d_t *p4dp, *saved_p4dp;
-+	pud_t *pudp, *saved_pudp;
-+	pmd_t *pmdp, *saved_pmdp, pmd;
-+	pte_t *ptep;
-+	pgtable_t saved_ptep;
-+	pgprot_t prot;
-+	phys_addr_t paddr;
-+	unsigned long vaddr, pte_aligned, pmd_aligned;
-+	unsigned long pud_aligned, p4d_aligned, pgd_aligned;
-+
-+	pr_info("Validating architecture page table helpers\n");
-+	prot = vm_get_page_prot(VMFLAGS);
-+	vaddr = get_random_vaddr();
-+	mm = mm_alloc();
-+	if (!mm) {
-+		pr_err("mm_struct allocation failed\n");
-+		return;
-+	}
-+
-+	/*
-+	 * PFN for mapping at PTE level is determined from a standard kernel
-+	 * text symbol. But pfns for higher page table levels are derived by
-+	 * masking lower bits of this real pfn. These derived pfns might not
-+	 * exist on the platform but that does not really matter as pfn_pxx()
-+	 * helpers will still create appropriate entries for the test. This
-+	 * helps avoid large memory block allocations to be used for mapping
-+	 * at higher page table levels.
-+	 */
-+	paddr = __pa(&start_kernel);
-+
-+	pte_aligned = (paddr & PAGE_MASK) >> PAGE_SHIFT;
-+	pmd_aligned = (paddr & PMD_MASK) >> PAGE_SHIFT;
-+	pud_aligned = (paddr & PUD_MASK) >> PAGE_SHIFT;
-+	p4d_aligned = (paddr & P4D_MASK) >> PAGE_SHIFT;
-+	pgd_aligned = (paddr & PGDIR_MASK) >> PAGE_SHIFT;
-+	WARN_ON(!pfn_valid(pte_aligned));
-+
-+	pgdp = pgd_offset(mm, vaddr);
-+	p4dp = p4d_alloc(mm, pgdp, vaddr);
-+	pudp = pud_alloc(mm, p4dp, vaddr);
-+	pmdp = pmd_alloc(mm, pudp, vaddr);
-+	ptep = pte_alloc_map(mm, pmdp, vaddr);
-+
-+	/*
-+	 * Save all the page table page addresses as the page table
-+	 * entries will be used for testing with random or garbage
-+	 * values. These saved addresses will be used for freeing
-+	 * page table pages.
-+	 */
-+	pmd = READ_ONCE(*pmdp);
-+	saved_p4dp = p4d_offset(pgdp, 0UL);
-+	saved_pudp = pud_offset(p4dp, 0UL);
-+	saved_pmdp = pmd_offset(pudp, 0UL);
-+	saved_ptep = pmd_pgtable(pmd);
-+
-+	pte_basic_tests(pte_aligned, prot);
-+	pmd_basic_tests(pmd_aligned, prot);
-+	pud_basic_tests(pud_aligned, prot);
-+	p4d_basic_tests(p4d_aligned, prot);
-+	pgd_basic_tests(pgd_aligned, prot);
-+
-+	pte_clear_tests(mm, ptep);
-+	pmd_clear_tests(mm, pmdp);
-+	pud_clear_tests(mm, pudp);
-+	p4d_clear_tests(mm, p4dp);
-+	pgd_clear_tests(mm, pgdp);
-+
-+	pte_unmap(ptep);
-+
-+	pmd_populate_tests(mm, pmdp, saved_ptep);
-+	pud_populate_tests(mm, pudp, saved_pmdp);
-+	p4d_populate_tests(mm, p4dp, saved_pudp);
-+	pgd_populate_tests(mm, pgdp, saved_p4dp);
-+
-+	p4d_free(mm, saved_p4dp);
-+	pud_free(mm, saved_pudp);
-+	pmd_free(mm, saved_pmdp);
-+	pte_free(mm, saved_ptep);
-+
-+	mm_dec_nr_puds(mm);
-+	mm_dec_nr_pmds(mm);
-+	mm_dec_nr_ptes(mm);
-+	mmdrop(mm);
-+}
--- 
-2.20.1
-
+> For point2, loading symbol address for per-cpu static symbols is always
+> PC-relative for most RISC architectures and static per-cpu symbols in
+> loadable modules is a known issue (Refer, https://lwn.net/Articles/1509/)=
+.
+> I don't agree that this should be using compilers because per-cpu data
+> management is Linux specific (or OS-specific) so we should rather explore
+> ways to handle this in Linux itself. The dynamic per-cpu alloc APIs (i.e.
+> alloc_percpu() and friends) were added to primarily benefit loadable
+> modules and NUMA systems. The static per-cpu symbols (i.e.
+> DEFINE_PER_CPU() and friends) should only be used in built-in modules
+> or code linked to kernel. It is generally very easy to upgrade code using
+> static per-cpu symbols to use dynamic per-cpu symbols.
+>
+I found that we want to deal with the same problem based on a
+different viewpoint, and I can understand what you mean now. I found
+that other RISC-V users also want the compiler to use GOT to access
+the static symbol instead of PC-relative.
+https://github.com/riscv/riscv-gcc/issues/158
+https://groups.google.com/a/groups.riscv.org/forum/#!msg/sw-dev/Xa3FN6gQhPI=
+/59xUWUpBCQAJ
+If this feature is supported, I think this issue can be easily resolved :)
 
