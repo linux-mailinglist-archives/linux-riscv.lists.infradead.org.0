@@ -2,152 +2,51 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA797152596
-	for <lists+linux-riscv@lfdr.de>; Wed,  5 Feb 2020 05:24:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A85E41528F2
+	for <lists+linux-riscv@lfdr.de>; Wed,  5 Feb 2020 11:15:31 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=p3O4igeCxvBxm4cNNy9Kqdsi3xsaBmnOv4hxlB59PNs=; b=QxEp6EMOdqTwXgfmCuwmUVIc5
-	AyOEu7tG4dZz4mySbkP/XVXqvP5AlyAPpue2l5onv+r89jfc6XKv5v4VuzQf3nNu/vDGWYjRXw6GM
-	X+E6eWRuNB1NmSuS+ZeYpZ/GM9EaotVzKNIq0INwhIjwb0LPxHpgC9c7tagg94jiU4ngDBAaro3Ma
-	ZswZt0SESscXYSMl3xuu1u5uE+0KSyU6Syv5/3qHRu8k5Bg8MkRHC91Vc0i00UhoycRLDFEXsHeQY
-	Tk09LMJ2cTipQ0bQFZ5fy0ee0Vto1eZAW93w8PmvDG2erIW4XdNxqgSLDa9Yj4CfET8PP9skcUIYc
-	3fXYaAF+w==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=s93b7YYSc1wPR0q+daPYy4s+QvXOYgRL9MjfL95Gsag=; b=H+wJ6BU3YZECmMagvtBYEg0vgQ
+	EgcFPrGG4fguylzbbXKLWMe3IKbAUevcIHcVmNZms5HeTZlgHJLNpQy6iqacSj/Gt3YDMUs9dcNgA
+	6Xbcng2yzXgWFLPucM18vUwKpBlxrG5xg16qe3Dqv9+l6i5/wAyHdFh5PPiec0tk9DIH5erSInhjt
+	a8D+A8YYZUW21vzfAOM0+7XPN09sGd3K+syno3LQlm35UxfIwzTVoGZfxfgVROtbh9MjC/9/lCWym
+	mejDBFOWPdur/tpx6NU8y+9lqSMQHnzJC8bGdx0LibtE8utvZV5zfmkoSWJDByOdmpc1Z9VUoR4o1
+	BJaKBw6Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izCEx-0006QK-IP; Wed, 05 Feb 2020 04:24:39 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izCEt-0006Po-Dz
- for linux-riscv@lists.infradead.org; Wed, 05 Feb 2020 04:24:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1580876677; x=1612412677;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=p3O4igeCxvBxm4cNNy9Kqdsi3xsaBmnOv4hxlB59PNs=;
- b=kRytqWGS9az2+12JIaBnHsyEe3QvR3An58M/6TP+ahp1sYAsuaJlMdek
- vwEQXnGHiEExNLn/nIZBTQsAvGK6oSbN6KEVV31UwJfWbZrXHCAKATOkt
- 8lgKi591m24lsu4VqtWuOGz1+tCOIsUoF3R5JlPimPT3s+BZsnxV/qvn3
- 1q9VAzFkkGsVPQWxZ41scaBu1FvrvC8U1nQ0yCaTLMT8lHvjNHRsOoAW0
- S+SypAJiS0nnbuZQ4qU356EHWDGDMw76qM0lgyHCe0AjgZvHY+DAZTCOm
- kvszxYRZ8dIujtn/OG0cTFezsKCLOvJTFJb23xv5mZ2HYeR4UtYYfp1Q8 g==;
-IronPort-SDR: X868Dzl6KYe6yo4MG0cM4c9VsHQ7IA+5xBgq0oqbXbID7FpBAc49G/qAtXOBqvt2QXvLD4j3wP
- 3z/kzKz9g8JCcLoDCQT25eSFQ2ZwcbzaXMWto5x0I7H/kUy1OWFmxHvyD7F9lppdljkfDtsutP
- 7oFK5cUYMmGXgBD4ycY1bYRmcEIF9AdRuRqS6K6IYIw+Yl1oupmiLvXRMzQMZfQGA5eUnFgkzm
- WCqJGHZVXeadwKrl1a/dvdY5NQMAIOSA6M86fAyotRsfs0Iww6rQMcq8IYBV38MEFi955LurEZ
- eh8=
-X-URL-LookUp-ScanningError: 1
-X-IronPort-AV: E=Sophos;i="5.70,404,1574092800"; d="scan'208";a="230859058"
-Received: from mail-dm6nam10lp2101.outbound.protection.outlook.com (HELO
- NAM10-DM6-obe.outbound.protection.outlook.com) ([104.47.58.101])
- by ob1.hgst.iphmx.com with ESMTP; 05 Feb 2020 12:25:06 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A9Zv6HXQH6nJXB2tJrlYxf0vny4I+AxslJZm0Hm6CooUjF3zumN5ds+7UyzjoEoFPQYUhPWx/ViYLGPeWz6M4vMvi7njC9Ltww8AW7bSxkxhTeUhnFn9Tux2NF5EQkZyhlPlqnsC943IqcfcJHGKFUansy/+LjwNZRWY+rOHuHr1y722hJGUcLn0gHDZ35YG0cBJ2vYkaLoJN30OFf+8FjGqKCp8T6PX10tib9lgC7djKzx+8qkmlu1XipATZ1yuBUU2x4J0nofhnkHAXGf0HmcSX+13S1j9W0CSoklz6KE9OACvOqL9eQ92fwIGWNJYph+af/dRlt5/vy5632pHag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=p3O4igeCxvBxm4cNNy9Kqdsi3xsaBmnOv4hxlB59PNs=;
- b=YPWHcVkj+G+1CoRG+dM+AwqAkVB841kOF2gyFqrr+SVP2HhMJDDrmRKHoNrQDfgYU1F3wupTxQJ51zkaAQPw+AM3jr3ZEfsV2l5rq1Pzpi2HTn3yA7CJDlrhpTbHFTvA2b7+rGtzwSHA1rofUOWBVZeaj1dT636dxJ3tWW9qbPcEfAG1+bcpzp/gz6lVugecrJGP200RBfcCD/31ASjB8N9kW1Gu+5zdLcHckjhjVlazTMaWl+2IMY4PK/GEcXayToVNl7AQWvFrMROaNykSfz+YB7ulXkFCOaePSS7ITqmfDtZgPtAwb+jHnsUqwnfxFCH1MMKJa6UP6l13pTiViA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=p3O4igeCxvBxm4cNNy9Kqdsi3xsaBmnOv4hxlB59PNs=;
- b=eUyH2sgsK0rlvlbMlElpde+osARB1cKzyPWEbKbL1aq6fokxsieFNm9SDjcHTWIXeHmGaaN7AuI2iGQanmWPm6OyzFxogHc2Q/ytXQ7ftRA/IKAAqH/DJduJ+dDMLxWmHBaZXL8iAzp9gmdCSYI9Qp5Ua0He5RIucml9mGPFvbY=
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com (20.178.246.15) by
- MN2PR04MB5919.namprd04.prod.outlook.com (20.179.22.147) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2686.29; Wed, 5 Feb 2020 04:24:24 +0000
-Received: from MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::a9a0:3ffa:371f:ad89]) by MN2PR04MB6061.namprd04.prod.outlook.com
- ([fe80::a9a0:3ffa:371f:ad89%7]) with mapi id 15.20.2686.031; Wed, 5 Feb 2020
- 04:24:24 +0000
-From: Anup Patel <Anup.Patel@wdc.com>
-To: Vincent Chen <vincent.chen@sifive.com>, Alex Ghiti <alex@ghiti.fr>
-Subject: RE: Error on loading some network Kernel modules
-Thread-Topic: Error on loading some network Kernel modules
-Thread-Index: AQHV1hBkfJA1/y692UCYeDSlVLEuzqgChswAgADfdACAAdLQAIAAw+EAgABmqoCAAbuhAIABJzOAgAErZoCAADDXgIAACBcAgAAlAgCAABS/gIAADH8AgAAqrgCAAN8uR4AAAvwg
-Date: Wed, 5 Feb 2020 04:24:23 +0000
-Message-ID: <MN2PR04MB6061ED6ABC668B59A7A544CF8D020@MN2PR04MB6061.namprd04.prod.outlook.com>
-References: <CADnnUqfhxWN=cyyr0QQyKrrO13LuDFS9NTqOLwm10CnwB3sDXA@mail.gmail.com>
- <alpine.DEB.2.21.999.2001300259070.23963@utopia.booyaka.com>
- <CAEn-LToMfm=G80TmGQZefpmKhKvpGy_=XOoBLGU0a_77ahY+_w@mail.gmail.com>
- <20200131201118.GA4121429@aurel32.net>
- <CAAhSdy03C==7PmuXE441BtDJH8H07rOH-u+-_sZJG70tbTrJcA@mail.gmail.com>
- <d868acf5-7242-93dc-0051-f97e64dc4387@ghiti.fr>
- <33c9a276-6212-115c-c7c9-e62244f13c76@european-processor-initiative.eu>
- <CABvJ_xiWDZfO6fOd4Roiy-yaUVFKrGEcBDBSWsvj2TKGGMjy0g@mail.gmail.com>
- <CA+ZOyaj16M5q-g4wZ60MuUs4q1AfCB48wd+AN4TTJNu8K4NZRA@mail.gmail.com>
- <68bb87cb-50d7-5e85-37f4-ad2cc44865f1@ghiti.fr>
- <CA+ZOyahEPtuNqgSUHVcZpZp3WP3oX4jFOiqJvO827ye4+1DT8Q@mail.gmail.com>
- <c12ed63e-c717-9fa0-7a6c-74d6d4a83a04@ghiti.fr>
- <CABvJ_xiBVQjfJfZU0Dfp0fc9n_zAoc=DSHPFuDMKu4k5n0qJtQ@mail.gmail.com>
- <CAAhSdy2gEK++MtyV9=o9r_-6CkaWMsQ0YZwB-TAkCCe3B4qTFg@mail.gmail.com>
- <CABvJ_xjc+ojwqgMhxZ2a0Q+BvxzxUR6ab__+8iA6zx65GMKkxA@mail.gmail.com>
- <a55f265e-71b2-5ebb-b079-6345007a442e@ghiti.fr>
- <CABvJ_xjVLJEebCac_sb6-Yd_iHU1x8Daqw-iFqcGn11YKktm8Q@mail.gmail.com>
-In-Reply-To: <CABvJ_xjVLJEebCac_sb6-Yd_iHU1x8Daqw-iFqcGn11YKktm8Q@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Anup.Patel@wdc.com; 
-x-originating-ip: [129.253.179.161]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: b2c3a1fc-18f7-4da9-9381-08d7a9f347de
-x-ms-traffictypediagnostic: MN2PR04MB5919:
-x-microsoft-antispam-prvs: <MN2PR04MB59193F82393752AB1F9FEB958D020@MN2PR04MB5919.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 0304E36CA3
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(396003)(376002)(39860400002)(366004)(346002)(189003)(199004)(478600001)(76116006)(66476007)(66946007)(71200400001)(64756008)(66556008)(186003)(66446008)(966005)(7416002)(2906002)(26005)(4326008)(55016002)(110136005)(81156014)(8676002)(53546011)(81166006)(86362001)(52536014)(6506007)(316002)(33656002)(54906003)(7696005)(9686003)(5660300002)(30864003)(8936002)(21314003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5919;
- H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: n4H0f0U9Ui/nwQHgeQJSrcIS/NeJyoddB8JYIa4/dL7lE/VNrMVIisJDrUPRXtpCqC2suiCk6iETcIWuYvfnQNI5DlaAASW94rO5kDPkWe5Ddrm6bqKLa4CwSMd1bmsPWpHRkigPEbBp9szbcpIAKl+JXQ90ypQ5+MSP2kxABIjxobtWj4CyXPlx61nUEzUBRqz6B2jFRPtU5k2khFSNpDdC5GnM1FcY9od1T1z80eNysxrUk5/+4sjv2YzQ4dRZcAmJPf4obgNXRVDUCSyKasxu75SzIu972KqKh6v6IoG0A8EmB9LgBzyjxe8E+EJ9s1AqqV8a2qomgkqTuu8ZeBy0Ukzv+KdwnajeyLEiNdr/qc+K9CI14KwN1kv/qeDgNxiub8klXXUiei3M5zSUEhgvYWQ76XqjwDKXfdIiN8Rpf1Xj0kczWg99jIM3jx38mj/ZRgfvXGJxHcUJW2f/AYi6aAb0uoo8JpECNtx1/jirB/hiV5/Dzh4TTpsJ7XngsD/UG/F4CZvXszIF/qE98nyxfYHSSkdP7uGudQI+MwCuZe7mT5dA2HCmobjE0ICy
-x-ms-exchange-antispam-messagedata: FoRk8xdu0rzyZiPx2+Gj//DjXLQ+3C2ML18lGN7jAiJiieQMyM/qJ1MBBNjKcN/9QB+VH/9GQt/Ascz5LJeywvxogegtavwzSZXJ8RcX5PobhDuULyOywTiNjggvjkoqEHIW/TkiAe7/Q8M27sy+Xg==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b2c3a1fc-18f7-4da9-9381-08d7a9f347de
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Feb 2020 04:24:24.1462 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +kVMgRp1lVdevZC0JPGBrDwESmwHlMrlMKU4xUrv4MfkwXPAUV5TfQiwftsSYvykJxHjR1SfLWamS2oL1id/NQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5919
+	id 1izHiK-0005YB-RY; Wed, 05 Feb 2020 10:15:20 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1izHiE-0005KD-D1; Wed, 05 Feb 2020 10:15:17 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 669281FB;
+ Wed,  5 Feb 2020 02:15:10 -0800 (PST)
+Received: from p8cg001049571a15.arm.com (unknown [10.163.1.140])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id A99083F6CF;
+ Wed,  5 Feb 2020 02:14:49 -0800 (PST)
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+To: linux-mm@kvack.org
+Subject: [PATCH V13] mm/debug: Add tests validating architecture page table
+ helpers
+Date: Wed,  5 Feb 2020 15:44:33 +0530
+Message-Id: <1580897674-16456-1-git-send-email-anshuman.khandual@arm.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200204_202435_608693_ABAA3C2A 
-X-CRM114-Status: GOOD (  33.26  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200205_021514_579115_B7B44B69 
+X-CRM114-Status: GOOD (  22.69  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.140.110.172 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,266 +58,904 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Carlos Eduardo de Paula <me@carlosedp.com>,
- David Abdurachmanov <david.abdurachmanov@gmail.com>,
- Anup Patel <anup@brainfault.org>, Paul Walmsley <paul@pwsan.com>,
- Zong Li <zongbox@gmail.com>,
- Romain Dolbeau <romain.dolbeau@european-processor-initiative.eu>,
- Zong Li <zong.li@sifive.com>, linux-riscv <linux-riscv@lists.infradead.org>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: Mark Rutland <mark.rutland@arm.com>, uclinux-h8-devel@lists.sourceforge.jp,
+ linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, James Hogan <jhogan@kernel.org>,
+ Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
+ Dave Hansen <dave.hansen@intel.com>, Paul Mackerras <paulus@samba.org>,
+ sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
+ linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Max Filippov <jcmvbkbc@gmail.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
+ Russell King - ARM Linux <linux@armlinux.org.uk>,
+ Matthew Wilcox <willy@infradead.org>, Steven Price <Steven.Price@arm.com>,
+ Jason Gunthorpe <jgg@ziepe.ca>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>, Mark Salter <msalter@redhat.com>,
+ Matt Turner <mattst88@gmail.com>, linux-snps-arc@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Ingo Molnar <mingo@kernel.org>,
+ linux-xtensa@linux-xtensa.org, Kees Cook <keescook@chromium.org>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>, linux-alpha@vger.kernel.org,
+ Aurelien Jacquiot <jacquiot.aurelien@gmail.com>,
+ linux-m68k@lists.linux-m68k.org, Mark Brown <broonie@kernel.org>,
+ Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Dan Williams <dan.j.williams@intel.com>, Guan Xuetao <gxt@pku.edu.cn>,
+ Vlastimil Babka <vbabka@suse.cz>, Richard Henderson <rth@twiddle.net>,
+ Christophe Leroy <christophe.leroy@c-s.fr>, Chris Zankel <chris@zankel.net>,
+ Michal Simek <monstr@monstr.eu>, Brian Cain <bcain@codeaurora.org>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
+ Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
+ Paul Burton <paul.burton@mips.com>, Mike Rapoport <rppt@linux.vnet.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Vineet Gupta <vgupta@synopsys.com>,
+ Martin Schwidefsky <schwidefsky@de.ibm.com>, Qian Cai <cai@lca.pw>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
+ "David S. Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogbGludXgtcmlzY3YgPGxp
-bnV4LXJpc2N2LWJvdW5jZXNAbGlzdHMuaW5mcmFkZWFkLm9yZz4gT24gQmVoYWxmIE9mDQo+IFZp
-bmNlbnQgQ2hlbg0KPiBTZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDUsIDIwMjAgODo1MiBBTQ0K
-PiBUbzogQWxleCBHaGl0aSA8YWxleEBnaGl0aS5mcj4NCj4gQ2M6IENhcmxvcyBFZHVhcmRvIGRl
-IFBhdWxhIDxtZUBjYXJsb3NlZHAuY29tPjsgRGF2aWQgQWJkdXJhY2htYW5vdg0KPiA8ZGF2aWQu
-YWJkdXJhY2htYW5vdkBnbWFpbC5jb20+OyBBbnVwIFBhdGVsIDxhbnVwQGJyYWluZmF1bHQub3Jn
-PjsNCj4gUGF1bCBXYWxtc2xleSA8cGF1bEBwd3Nhbi5jb20+OyBab25nIExpIDx6b25nYm94QGdt
-YWlsLmNvbT47IFJvbWFpbg0KPiBEb2xiZWF1IDxyb21haW4uZG9sYmVhdUBldXJvcGVhbi1wcm9j
-ZXNzb3ItaW5pdGlhdGl2ZS5ldT47IFpvbmcgTGkNCj4gPHpvbmcubGlAc2lmaXZlLmNvbT47IGxp
-bnV4LXJpc2N2IDxsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQub3JnPjsgQXVyZWxpZW4NCj4g
-SmFybm8gPGF1cmVsaWVuQGF1cmVsMzIubmV0Pg0KPiBTdWJqZWN0OiBSZTogRXJyb3Igb24gbG9h
-ZGluZyBzb21lIG5ldHdvcmsgS2VybmVsIG1vZHVsZXMNCj4gDQo+IE9uIFdlZCwgRmViIDUsIDIw
-MjAgYXQgMzowNyBBTSBBbGV4IEdoaXRpIDxhbGV4QGdoaXRpLmZyPiB3cm90ZToNCj4gPg0KPiA+
-DQo+ID4gT24gMi80LzIwIDk6MDMgQU0sIFZpbmNlbnQgQ2hlbiB3cm90ZToNCj4gPg0KPiA+IE9u
-IFR1ZSwgRmViIDQsIDIwMjAgYXQgNzozMSBQTSBBbnVwIFBhdGVsIDxhbnVwQGJyYWluZmF1bHQu
-b3JnPiB3cm90ZToNCj4gPg0KPiA+IE9uIFR1ZSwgRmViIDQsIDIwMjAgYXQgNDoxNiBQTSBWaW5j
-ZW50IENoZW4gPHZpbmNlbnQuY2hlbkBzaWZpdmUuY29tPg0KPiB3cm90ZToNCj4gPg0KPiA+IE9u
-IFR1ZSwgRmViIDQsIDIwMjAgYXQgNTozMiBQTSBBbGV4YW5kcmUgR2hpdGkgPGFsZXhAZ2hpdGku
-ZnI+IHdyb3RlOg0KPiA+DQo+ID4gT24gMi80LzIwIDg6MTkgQU0sIFpvbmcgTGkgd3JvdGU6DQo+
-ID4NCj4gPiBBbGV4IEdoaXRpIDxhbGV4QGdoaXRpLmZyPiDmlrwgMjAyMOW5tDLmnIg05pelIOmA
-seS6jCDkuIvljYgyOjUw5a+r6YGT77yaDQo+ID4NCj4gPiBIaSBab25nLA0KPiA+DQo+ID4gT24g
-Mi8zLzIwIDEwOjU1IFBNLCBab25nIExpIHdyb3RlOg0KPiA+DQo+ID4gVmluY2VudCBDaGVuIDx2
-aW5jZW50LmNoZW5Ac2lmaXZlLmNvbT4g5pa8IDIwMjDlubQy5pyIM+aXpSDpgLHkuIAg5LiL5Y2I
-DQo+IDY6MDTlr6vpgZPvvJoNCj4gPg0KPiA+IE9uIE1vbiwgRmViIDMsIDIwMjAgYXQgMTI6Mjcg
-QU0gUm9tYWluIERvbGJlYXUNCj4gPiA8cm9tYWluLmRvbGJlYXVAZXVyb3BlYW4tcHJvY2Vzc29y
-LWluaXRpYXRpdmUuZXU+IHdyb3RlOg0KPiA+DQo+ID4gT24gMjAyMC0wMi0wMSAxNDo1OSwgQWxl
-eCBHaGl0aSB3cm90ZToNCj4gPg0KPiA+IFdoeSByZXN0cmljdCB0byAxMjhNIHdoZXJlYXMgd2Ug
-aGF2ZSAyR0Igb2Zmc2V0IGF2YWlsYWJsZSB0byB0aGUgZW5kDQo+ID4gb2YgdGhlIGtlcm5lbCA/
-DQo+ID4NCj4gPiBJc24ndCB0aGF0IDIgR2lCIG9mZnNldCB0byB3aGF0ZXZlciB0aGUgbW9kdWxl
-IHJlcXVpcmVzIGluIHRoZSBrZXJuZWwsDQo+ID4gcmF0aGVyIHRoYW4gdG8gdGhlIGVuZCBvZiB0
-aGUga2VybmVsIHNwYWNlPw0KPiA+DQo+ID4gSXMgdGhlcmUgc29tZSBndWFyYW50ZWUgdGhhdCBz
-eW1ib2xzIGFjY2Vzc2libGUgYnkgbW9kdWxlcyBhcmUgYXQgdGhlDQo+ID4gZW5kIG9mIHRoZSBr
-ZXJuZWw/IElmIHNvLCB3b3VsZG4ndCB0aGUgbWF4aW11bSBvZmZzZXQgZm9yIHRoaXMgcGF0Y2gN
-Cj4gPiBzdGlsbCBiZSAoMiBHaUIgLSA8dG90YWwgc2l6ZSBvZiBhY2Nlc3NpYmxlIHN5bWJvbHM+
-KT8NCj4gPg0KPiA+IENvcmRpYWxseSwNCj4gPg0KPiA+IC0tDQo+ID4gUm9tYWluIERvbGJlYXUN
-Cj4gPg0KPiA+IEl0IHRvb2sgbWUgc29tZSB0aW1lIHRvIGZpbmQgdGhlIHJvb3QgY2F1c2Ugb2Yg
-dGhpcyBwcm9ibGVtLCBwbGVhc2UNCj4gPiBhbGxvdyBtZSB0byBzaGFyZSBzb21lIG9ic2VydmF0
-aW9ucyBiZWZvcmUgdGhlIGRpc2N1c3Npb24uDQo+ID4gVGhlIHJvb3QgY2F1c2Ugb2YgdGhpcyBp
-c3N1ZSBpcyB0aGF0IHRoZSBwZXJjcHUgZGF0YSBpcyBkZWNsYXJlZCBhcyBhDQo+ID4gc3RhdGlj
-IHZhcmlhYmxlLiBUaGUgInN0YXRpYyIgYXR0cmlidXRlIHdpbGwgbWFrZSB0aGUgY29tcGlsZXIg
-dGhpbmsNCj4gPiB0aGF0IHRoaXMgc3ltYm9sIGlzIGNsb3NlIHRvIHRoZSAudGV4dCBzZWN0aW9u
-IGF0IHJ1bnRpbWUuIEhlbmNlLCB0aGUNCj4gPiBjb21waWxlciB1c2VzICJhdWlwYyIgdG8gYWNj
-ZXNzIHRoaXMgcGVyY3B1IGRhdGEgaW5zdGVhZCBvZiB1c2luZyBHT1QuDQo+ID4gSW4gdGhpcyBj
-YXNlLCAgdGhlIGFjY2VzcyByYW5nZSBpcyBsaW1pdGVkIHRvICsgLTJHLiBIb3dldmVyLCBpbg0K
-PiA+IHByYWN0aWNlLCB0aGVzZSBwZXJjcHUgZGF0YSBhcmUgcGxhY2VkIGF0IGEgcHJlLWFsbG9j
-YXRlZCByZWdpb24NCj4gPiBjcmVhdGVkIGJ5IHRoZSBtZW1ibG9ja19hbGxvY2F0ZSgpIGZ1bmN0
-aW9uLiBJbiBvdGhlciB3b3JkcywgdGhlDQo+ID4gZGlzdGFuY2UgYmV0d2VlbiB0aGUgcHJlLWFs
-bG9jYXRlZCByZWdpb24gKD5QQUdFX09GRlNFVCApIGFuZCB0aGUNCj4gPiAudGV4dCBzZWN0aW9u
-IG9mIHRoZSBrZXJuZWwgbW9kdWxlIChpbiBWTUFMTE9DIHJlZ2lvbikgaXMgbXVjaCBsYXJnZXIN
-Cj4gPiB0aGFuIDJHLg0KPiA+IEkgYWdyZWUgdGhhdCB0aGUgb3JpZ2luYWwgcGF0Y2gsDQo+ID4N
-Cj4gaHR0cHM6Ly9naXRodWIuY29tL2Jqb3RvL2xpbnV4L2NvbW1pdC84YTU2ZDFjOGU4ZTkxYzFi
-YzM4OTM5NDZkNTJiOTIxDQo+IDcNCj4gPiBjOTZlMTU4OSwgY2FuIHNvbHZlIG1vc3QgY2FzZXMu
-IEhvd2V2ZXIsIEkgZG8gbm90IHRoaW5rIHRoZSBwYXRjaA0KPiA+IHN0aWxsIHdvcmtzIGlmIHRo
-ZSBrZXJuZWwgbW9kdWxlIHJlZ2lvbiBpcyBkZXRlcm1pbmVkIGJ5IF9lbmQgb3INCj4gPiA8dG90
-YWwgc2l6ZSBvZiBhY2Nlc3NpYmxlIHN5bWJvbHM+LiBUaGUgcmVhc29uIGlzIHRoYXQgdGhlDQo+
-ID4gcHJlLWFsbG9jYXRlZCByZWdpb24gZm9yIG1vZHVsZSBwZXJjcHUgZGF0YSBjb21lcyBmcm9t
-IHRoZSBtZW1ibG9jaw0KPiA+IGZ1bmN0aW9uIGF0IHJ1bnRpbWUuIEhlbmNlLCB3ZSBjYW5ub3Qg
-a25vdyB0aGUgYWN0dWFsIGFkZHJlc3Mgb2YgdGhpcw0KPiA+IHJlZ2lvbiBhdCBjb21waWxlLXRp
-bWUsIGFuZCB0aGlzIGlzc3VlIHByb2JhYmx5IG1heSBvY2N1ciBhZ2FpbiBpbg0KPiA+IHRoaXMg
-Y2FzZS4NCj4gPg0KPiA+IEJ5IHRoZSB3YXksIEkgdGhpbmsgbWF5YmUgd2UgY2FuIHJlZmVyIHRv
-IHRoZSBpbXBsZW1lbnRhdGlvbiBvZiBNSVBTLg0KPiA+IDEuIEZvciBnZW5lcmFsIGNhc2VzLCB3
-ZSBjYW4gdXNlIHRoaXMgcGF0Y2ggdG8gc29sdmUgdGhpcyBpc3N1ZS4NCj4gPiAyLiBGb3IgYSBs
-YXJnZSBrZXJuZWwgaW1hZ2UgKD4yRykgb3IgZW5hYmxpbmcgdGhlIEtBU0xSIGZlYXR1cmUsIHdl
-DQo+ID4gbWF5IG5lZWQgYSBuZXcgY29kZSBtb2RlIHRvIGRlYWwgd2l0aCB0aGlzIGlzc3VlLg0K
-PiA+DQo+ID4gVGhlIHJhbmdlIFsmX2VuZCAtIDJHLCBWTUFMTE9DX0VORF0gd29uJ3QgYmUgc3Vp
-dGFibGUgd2hlbiBLQVNMUiBpcw0KPiA+IGVuYWJsZWQuIFVubGVzcyB3ZSBsaW1pdCB0aGUgcmFu
-ZG9taXplZCByYW5nZSBpbiBzbWFsbCBhcmVhLCB0aGUNCj4gPiBtb2R1bGUgcmVnaW9uIHN0YXJ0
-IGFkZHJlc3Mgd2lsbCBiZSBiaWdnZXIgdGhhbiBWTUFMTE9DX0VORC4NCj4gPg0KPiA+IEFjdHVh
-bGx5LCB0aGUgcmVsb2NhdGFibGUgcGF0Y2ggSSBwcm9wb3NlZCBhbHJlYWR5IG1vdmVzICJldmVy
-eXRoaW5nIg0KPiA+IHVwIGF0IHRoZSBzYW1lDQo+ID4gdGltZTogdGhlIGtlcm5lbCBpdHNlbGYg
-YnV0IGFsc28gYWxsIHRoZSAiem9uZXMiIGJlbG93ICh2bWFsbG9jLA0KPiA+IHZtZW1tYXAsIGZp
-eHVwLi4uZXRjKSBzaW5jZSBhbGwgdGhvc2Ugem9uZXMgYXJlIGRlZmluZWQgZnJvbQ0KPiA+IFBB
-R0VfT0ZGU0VUIHRoYXQgaXMgbm93IGR5bmFtaWMuDQo+ID4gU28gdGhlIG1vZHVsZXMNCj4gPiBp
-bGwgcmVtYWluIGF0IHRoZSBzYW1lIG9mZnNldCB0byB0aGUga2VybmVsLCB1bmxlc3MgZXhwbGlj
-aXRseQ0KPiA+IHJhbmRvbWl6ZWQgaW4gdGhlIHZtYWxsb2Mgem9uZS4NCj4gPg0KPiA+IE9LLCBp
-dCBtYWtlcyBzZW5zZS4gVGhlIG1vZHVsZSByZWdpb24gbW92ZXMgYWxvbmcgd2l0aCBrZXJuZWwg
-c2VlbXMgdG8NCj4gPiBzdGF5IGF3YXkgZnJvbSB0aGUgY29uY2VybiBJIG1lbnRpb25lZC4NCj4g
-Pg0KPiA+IFNvIG5vdywgdGhlIHByb2JsZW0gaXMgdGhhdCB0aGUgcHJlLWFsbG9jYXRlZCByZWdp
-b24gb2YgcGVyY3B1IGRhdGEgaXMNCj4gPiBsb2NhdGVkIGFmdGVyIF9lbmQgc3ltYm9sIGFzIFZp
-bmNlbnQgbWVudGlvbmVkLCB0aGUgMkcgZGlzdGFuY2Ugc2VlbXMNCj4gPiB0byBiZSB0b28gZmFy
-IGZvciBtb2R1bGUgcmVnaW9uIHN0YXJ0IGFkZHJlc3MuIChpLmUuICZfZW5kIC0gMkcpLg0KPiA+
-DQo+ID4gQWN0dWFsbHksIEkgZG9uJ3QgdW5kZXJzdGFuZCB0aGlzIGlzc3VlOiB3ZSBhcmUgbGlt
-aXRlZCB0byBhZGRyZXNzaW5nDQo+ID4gc3ltYm9scyB3aXRoaW4gKy8tIDJHQiBmcm9tIFBDLiBT
-byBhcyBsb25nIGFzIHRoZSBwZXJjcHUgc3ltYm9sIGV4aXN0cw0KPiA+IGluIHRoZSBrZXJuZWws
-IGl0IGlzIGJlbG93IF9lbmQgYW5kIHRoZW4gd2UgZG9uJ3QgY2FyZSB0aGF0IGl0cw0KPiA+IGNv
-bnRlbnQgaXMgaW5pdGlhbGl6ZWQgZHluYW1pY2FsbHksIGFzIGxvbmcgYXMgd2UgY2FuICdjb21w
-dXRlJyBpdHMNCj4gPiBhZGRyZXNzIGZyb20gUEMsIHJpZ2h0ID8NCj4gPg0KPiA+IEluIHRoaXMg
-Y2FzZSwgdGhlIHN0YXRpYyBwZXJjcHUgc3ltYm9scyBvZiB0aGlzIGlzc3VlIGFyZSBkZWNsYXJl
-ZCBpbg0KPiA+IHRoZSBrZXJuZWwgbW9kdWxlLCBub3QgaW4gdGhlIGtlcm5lbCBpbWFnZS4NCj4g
-PiBXaGVuIGtlcm5lbCBsb2FkcyB0aGUga2VybmVsIG1vZHVsZSwgaW4gZ2VuZXJhbCwgaXQgY29u
-dGludW91c2x5DQo+ID4gcGxhY2VzIGFsbCB0aGUgbW9kdWxlIHNlY3Rpb25zIGluIHRoZSBWTUFM
-TE9DIG1lbW9yeSBhcmVhLiBIb3dldmVyLA0KPiA+IHRoZSAiLmRhdGEuLnBlcmNwdSIgc2VjdGlv
-biBpcyBhbiBleGNlcHRpb24uIFRoZSBrZXJuZWwgcGxhY2VzIHRoZQ0KPiA+ICIuZGF0YS4ucGVy
-Y3B1IiBzZWN0aW9uIGluIGEgcHJlLWFsbG9jYXRlZCBtZW1vcnkgcmVnaW9uLiBUaGlzIHJlZ2lv
-bg0KPiA+IGlzIHVzZWQgdG8gcGxhY2UgdGhlIHBlcmNwdSBkYXRhIGluc3RhbmNlcyBmb3IgZWFj
-aCBDUFUgYW5kIGlzIGNyZWF0ZWQNCj4gPiBieSB0aGUgbWVtYmxvY2soKS4gSGVuY2UsIHRoZSBp
-bnN0YW5jZSBvZiB0aGVzZSBwZXItY3B1IHN5bWJvbHMgaXMNCj4gPiBhYm92ZSB0aGUgX2VuZC4g
-IEluIHRoaXMgY2FzZSwgaWYgd2UgbWFrZSB0aGUgbW9kdWxlIHJlZ2lvbiBsb2NhdGUgYXQNCj4g
-PiBbX2VuZC0yRywgUEFHRV9PRkZTRVRdLCB0aGUgZGlzdGFuY2UgYmV0d2VlbiB0aGVzZSBwZXJj
-cHUgc3ltYm9scyAoaXRzDQo+ID4gYWRkcmVzcyA+X2VuZCkgYW5kIG1vZHVsZSB0ZXh0IHNlY3Rp
-b24gd2lsbCBwcm9iYWJseSBleGNlZWQgdGhlIDJHDQo+ID4gbGltaXRhdGlvbi4NCj4gPg0KPiA+
-IFRoZSBzdGF0aWMgcGVyY3B1IHN5bWJvbHMgYXJlIHBhcnRpY3VsYXJseSBwcm9ibGVtIGZvciBs
-b2FkYWJsZQ0KPiA+IG1vZHVsZXMgb24gUklTQy1WIGJ1dCBkeW5hbWljIHBlcmNwdSB2YXJpYWJs
-ZSBhcmUgcGVyZmVjdGx5IGZpbmUuIEkNCj4gPiBoYWQgZmFjZWQgdGhpcyBpc3N1ZSB3aXRoIEtW
-TSBSSVNDLVYgbW9kdWxlIGFuZCBJIGNvbnZlcnRlZCBzdGF0aWMNCj4gPiBwZXJjcHUgc3ltYm9s
-IGludG8gZHluYW1pYyBwZXJjcHUgdmFyaWFibGUuIEluIGZhY3QsIGluIExpbnV4IGtlcm5lbA0K
-PiA+IGR5bmFtaWMgcGVyY3B1IHZhcmlhYmxlcyBhcmUgcHJlZmVycmVkIG92ZXIgc3RhdGljIHBl
-cmNwdSBzeW1ib2xzIHNvDQo+ID4gd2hlcmV2ZXIgd2Ugc2VlIGlzc3VlIHdpdGggc3RhdGljIHBl
-cnBjdSBzeW1ib2wgaW4gYW55IG1vZHVsZSB3ZQ0KPiA+IHNob3VsZCBqdXN0IHNlbmQgcGF0Y2gg
-dG8gY29udmVydCBpdCBpbnRvIGR5bmFtaWMgcGVyY3B1Lg0KPiA+DQo+ID4gSW4gZ2VuZXJhbCwg
-YW55IG1lbW9yeSBhY2Nlc3MgdmlhIHBvaW50ZXJzIChqdXN0IGxpa2UgZHluYW1pYyBwZXJjcHUN
-Cj4gPiB2YXJpYWJsZXMpIGFyZSBmaW5lIGFzIGxvbmcgYXMgdGhlIHBvaW50ZXIgaXRzZWxmIGlz
-IHdpdGhpbiAyR0Igb2YNCj4gPiByZWxhdGl2ZSBhZGRyZXNzaW5nLg0KPiA+DQo+ID4gQXMgZmFy
-IGFzIEkga25vdywgdGhlIGtlcm5lbCBtb2R1bGUgdXNlcyBQSUMgYXMgdGhlIGNvZGUgbW9kZSBp
-bnN0ZWFkDQo+ID4gb2YgbWVkYW55LiBUaGVyZWZvcmUsIEkgZG9uJ3QgdGhpbmsgbW9zdCBwb2lu
-dGVycyBpbiBrZXJuZWwgbW9kdWxlcw0KPiA+IGhhdmUgYSAyR0IgbGltaXQuIFRoYXQgaXMgd2h5
-IHRoZSBtb2R1bGVzIHdpdGhvdXQgc3RhdGljIHBlcmNwdQ0KPiA+IHZhcmlhYmxlcyBkbyBub3Qg
-ZW5jb3VudGVyIHRoZSAzMi1iaXQgb2Zmc2V0IGlzc3VlLg0KPiA+DQo+ID4gT3ZlcmFsbCwgQWxl
-eCdzIHN1Z2dlc3Rpb24gd2lsbCBhZGRyZXNzIG1vc3QgY2FzZXMgb2YgbG9hZGFibGUgbW9kdWxl
-cw0KPiA+IGV4Y2VwdCBtb2R1bGVzIGhhdmluZyBzdGF0aWMgcGVyY3B1IHN5bWJvbHMgYW5kIGZv
-ciBzdWNoIG1vZHVsZXMganVzdA0KPiA+IGNvbnZlcnQgdGhlc2UgcGVyY3B1IHN5bWJvbHMgaW50
-byBkeW5hbWljIHBlcmNwdSB2YXJpYWJsZXMuDQo+ID4NCj4gPiBDYW4geW91IHBvaW50IG91dCB3
-aGVyZSBJIGNhbiB0YWtlIGEgbG9vayBhdCB0aGlzIHByZS1hbGxvY2F0ZWQgcmVnaW9uDQo+ID4g
-Zm9yIHBlcmNwdSBkYXRhIHBsZWFzZSA/DQo+ID4NCj4gPiBJbiBtbS9wZXJjcHUuYywgeW91IGNh
-biBmaW5kIGhvdyB0aGUga2VybmVsIGFsbG9jYXRlcyB0aGUgcGVyY3B1IGRhdGENCj4gPiByZWdp
-b24gZHVyaW5nIHRoZSBpbml0aWFsaXphdGlvbiBwaGFzZS4NCj4gPiBJbiBrZXJuZWwvbW9kdWxl
-LmMncyBzaW1wbGlmeV9zeW1ib2xzIGZ1bmN0aW9uLCB5b3UgY2FuIGZpbmQga2VybmVsDQo+ID4g
-dHJlYXRzIC5kYXRhLnBlcmNwdSBzZWN0aW9uIGFzIGFuIGV4Y2VwdGlvbiB3aGVuIGxvYWRpbmcg
-bW9kdWxlLg0KPiA+DQo+ID4NCj4gPiBUaGFua3MgZm9yIHlvdXIgZXhwbGFuYXRpb25zLCBJIHdh
-cyBtaWxlcyBhd2F5IGZyb20gdW5kZXJzdGFuZGluZyB0aGUNCj4gPiByZWFsIHByb2JsZW0sIGdv
-b2QgZmluZGluZyBWaW5jZW50Lg0KPiA+DQo+ID4NCj4gPiBJZiBJIGhhdmUgYW55IG1pc3VuZGVy
-c3RhbmRpbmdzLCBwbGVhc2UgbGV0IG1lIGtub3cuIFRoYW5rcw0KPiA+DQo+ID4gUGxlYXNlIHNl
-ZSBhYm92ZSBjb21tZW50LiBXZSBzaG91bGQgcHJlZmVyIGR5bmFtaWMgcGVyY3B1IHZhcmlhYmxl
-IGluDQo+ID4gbG9hZGFibGUgbW9kdWxlcyBvdmVyIHN0YXRpYyBwZXJjcHUgc3ltYm9scy4gSSBh
-bSBzdXJlIHRoZXJlIHdpbGwgYmUNCj4gPiB2ZXJ5IGZldyBrZXJuZWwgbG9hZGFibGUgbW9kdWxl
-cyBoYXZpbmcgc3RhdGljIHBlcmNwdSBzeW1ib2xzLg0KPiA+DQo+ID4gVGhhbmtzIGZvciB5b3Vy
-IGNvbW1lbnRzLg0KPiA+IEkgYWdyZWUgdGhhdCBBbGV4J3Mgc3VnZ2VzdGlvbiBjYW4gYWRkcmVz
-cyBtb3N0IGNhc2VzIG9mIGxvYWRhYmxlDQo+ID4gbW9kdWxlcy4gVGhlIHJlYXNvbiB3aHkgSSBw
-b2ludGVkIG91dCB0aGUgc3RhdGljIHBlcmNwdSB2YXJpYWJsZSBjYXNlDQo+ID4gaXMgdGhhdCB0
-aGUgcGVyY3B1IHZhcmlhYmxlIGlzIGRlY2xhcmVkIGFzIGEgc3RhdGljIHN5bWJvbCBpbiB0aGUN
-Cj4gPiByZWR1Y2VkIGNhc2UgcHJvdmlkZWQgYnkgUm9tYWluIGluDQo+ID4gaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGludXgtcmlzY3YvMTU3MjI4MTg0MDczMy4zNTE3QGV1cm9wZWFuLQ0KPiBw
-cm9jZXNzb3ItaW5pdGlhdGl2ZS5ldS8uDQo+ID4gQWxzbywgSSBmb3VuZCB0d28gc3RhdGljIHBl
-cmNwdSB2YXJpYWJsZXMgZGVjbGFyZWQgaW4gb3BlbnZzd2l0Y2gNCj4gPiBtb2R1bGUuIEFmdGVy
-IHJlbW92aW5nIHRoZSBzdGF0aWMgYXR0cmlidXRlLCB0aGUga2VybmVsIGNhbiBpbnNlcnQNCj4g
-PiB0aGVtIHN1Y2Nlc3NmdWxseS4gSGVuY2UsIEkgdGhpbmsgdGhlIHN0YXRpYyBwZXJjcHUgdmFy
-aWFibGUgY2F1c2VzDQo+ID4gdGhlIGlzc3VlLg0KPiA+DQo+ID4gKEFjY29yZGluZyB0byB0aGUg
-cmVzdWx0IG9mICdncmVwJywgdmVyeSBmZXcga2VybmVsIGxvYWRhYmxlIG1vZHVsZXMNCj4gPiB1
-c2Ugc3RhdGljIHBlcmNwdSBkYXRhLCBhcyB5b3UgbWVudGlvbmVkLiBIb3dldmVyLCBJJ20gbm90
-IHN1cmUgdGhpcw0KPiA+IG1pZ2h0IGJlIGEgcmVhc29uIHRvIHByb2hpYml0IFJJU0MtViB1c2Vy
-cyBmcm9tIHVzaW5nIHN0YXRpYyBwZXJjcHUNCj4gPiB2YXJpYWJsZXMgaW4ga2VybmVsIG1vZHVs
-ZXMuIFRoZXJlZm9yZSwgSSBoYXZlIG5vIGNvbW1lbnQgb24gdGhpcy4pIElmDQo+ID4gd2UgY2Fu
-IGlnbm9yZSB0aGUgZXhpc3RlbmNlIG9mIHN0YXRpYyBwZXJjcHUgdmFyaWFibGUgaW4gdGhlIGtl
-cm5lbHMNCj4gPiBtb2R1bGUsIEkgYWdyZWUgd2l0aCBBbGV4J3Mgc3VnZ2VzdGlvbnMuIFRoZSBy
-ZWFzb24gaXMgbm90IHRoYXQgd2UgY2FuDQo+ID4gdXNlIGl0IHRvIHNvbHZlIGJ1Z3MsIGJ1dCB0
-aGF0IHdlIGNhbiBjaGFuZ2UgdGhlIGNvZGUgbW9kZWwgZnJvbSBQSUMNCj4gPiB0byBtZWRhbnkg
-YnkgY3JlYXRpbmcgYSBzcGVjaWZpYyBrZXJuZWwgbW9kdWxlIHJlZ2lvbiB0byBpbXByb3ZlIHRo
-ZQ0KPiA+IGFjY2VzcyBwZXJmb3JtYW5jZS4NCj4gPg0KPiA+DQo+ID4gSWYgSSB1bmRlcnN0YW5k
-IHdlbGwsIHlvdSBtZWFuIHRoYXQgaGF2aW5nIHRoaXMgbW9kdWxlIHpvbmUgYXQgdGhlIGVuZA0K
-PiA+IG9mIHZtYWxsb2Mgem9uZSBkb2VzIG5vdCBhbGxvdyB0byBmaXggdGhlIGJ1ZyByZWdhcmRp
-bmcgc3RhdGljIHBlcmNwdQ0KPiA+IHZhcmlhYmxlcyBidXQgYWxsb3dzIHRvIGhhdmUgYmV0dGVy
-IHBlcmZvcm1hbmNlIHRoYW4gUElDIHdoaWNoIHVzZXMgYW4NCj4gYWRkaXRpb25hbCByZWRpcmVj
-dGlvbiB1c2luZyB0aGUgR09ULCByaWdodCA/DQo+ID4NCj4gDQo+IFllcy4gQ3VycmVudGx5LCBJ
-IHRoaW5rIFBJQyBtb2RlbCBjYW4gcmVzb2x2ZSBtb3N0IG9mIHRoZSBwb2ludGVyIHJlZmVyZW5j
-ZQ0KPiBleGNlcHQgZm9yIHRoZSBzdGF0aWMgcGVyY3B1IHZhcmlhYmxlcy4gSG93ZXZlciwgYXMg
-eW91IG1lbnRpb25lZCwgSXQgd2lsbA0KPiBsb3NlIHNvbWUgcGVyZm9ybWFuY2UgZHVlIHRvIHRo
-ZSBhZGRpdGlvbmFsIHJlZGlyZWN0aW9uIHVzaW5nIHRoZSBHT1QuDQo+IA0KPiA+DQo+ID4gKE1h
-eWJlIHdlIGNhbiBrZWVwIHRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIGZvciBzb21lIGNvcm5l
-ciBjYXNlcw0KPiA+IHN1Y2ggYXMgdGhlIHNpemUgb2YgdGhlIGtlcm5lbCBpbWFnZSBpcyBjbG9z
-ZSB0byAyR0IpDQo+ID4NCj4gPg0KPiA+IEVpdGhlciB3ZSBmb2xsb3cgQW51cCdzIGFkdmljZSBh
-bmQgd2UgZG9uJ3QgY2FyZSBhYm91dCB0aG9zZSBzdGF0aWMNCj4gPiBwZXJjcHUgdmFyaWFibGVz
-IGFuZCBpZiBldmVyIHRoZXkgZmFsbCBiZWhpbmQgdGhlIDJHQiBsaW1pdCwgd2UgY2FuDQo+ID4g
-bm90IGxvYWQgdGhlIG1vZHVsZSwgb3Igd2UgZmluZCBhIHdheSB0byBtYWtlIHN1cmUgdGhhdCB0
-aGUgbW9kdWxlDQo+ID4gcmFuZ2UgY29tcHJpc2VzIHRoZSBhcmVhIGZvciBtb2R1bGUgcGVyY3B1
-IHZhcmlhYmxlcyB3aGljaCBpcw0KPiA+IGFsbG9jYXRlZCBpbiBzZXR1cF9wZXJfY3B1X2FyZWFz
-LiBJJ20gdGFraW5nIGEgbG9vayBhdCB0aGlzIHNvbHV0aW9uIGFuZA0KPiBob3cgb3RoZXIgYXJj
-aGl0ZWN0dXJlcyB3aXRoIHNhbWUgY29kZSBtb2RlbCBoYW5kbGUgdGhhdC4NCj4gPg0KPiBBcyBm
-YXIgYXMgSSBrbm93LCBBUk02NCBhbmQgTUlQUzY0IHdpdGggQ09ORklHX0tCVUlMRF82NEJJVF9T
-WU0zMg0KPiBhbHNvIHVzZSBQQy1yZWxhdGl2ZSB3YXkgdG8gYWNjZXNzIHRoZSBzdGF0aWMgcGVy
-cGN1IHZhcmlhYmxlcy4gSSBxdWlja2x5DQo+IGRlc2NyaWJlIHRoZWlyIGltcGxlbWVudGF0aW9u
-IGJlbG93LCBwbGVhc2UgY29ycmVjdCBtZSBpZiBJIGhhdmUgYW55DQo+IG1pc3VuZGVyc3RhbmRp
-bmdzLCB0aGFua3MuDQo+IDEuIEFSTTY0DQo+ICAgICBXaGVuIENPTkZJR19SQU5ET01JWkVfQkFT
-RSBpcyBkaXNhYmxlZCwgdGhleSBwbGFjZSB0aGUgbW9kdWxlDQo+IHJlZ2lvbiBhdCAiKHU2NClf
-ZXRleHQgLSBNT0RVTEVTX1ZTSVpFKDEyOE1CKSIsIGFuZCB0aGUgcmFuZ2UgbGltaXRhdGlvbg0K
-PiBvZiBQQy1yZWxhdGl2ZSAoIGluc3RydWN0aW9uIGFkcnApIGlzICstNEdCLiBXaGVuIENPTkZJ
-R19SQU5ET01JWkVfQkFTRQ0KPiBpcyBlbmFibGVkLCB0aGUgbWF4aW11bSBhY2Nlc3MgcmFuZ2Ug
-YmV0d2VlbiBtb2R1bGUgcmVnaW9uIHN5bWJvbCBhbmQNCj4ga2VybmVsIHN5bWJvbCBpcyBsaW1p
-dGVkIHRvIDJHQi4gVGhlcmUgaXMgc3RpbGwgMkdCIHJvb20gdG8gYWNjZXNzIHRoZSBwZXItY3B1
-DQo+IGRhdGEuIFRoZXJlZm9yZSwgSSB0aGluayBpdCBpcyBhbHNvIHNhZmUgdG8gYWNjZXNzIHRo
-ZSBwZXItY3B1IHZhcmlhYmxlcy4NCj4gMi4gTUlQUzY0IHdpdGggQ09ORklHX0tCVUlMRF82NEJJ
-VF9TWU0zMg0KPiAgICAgIFRoZSBWTUFMTE9DIHJlZ2lvbiBpcyBwbGFjZWQgYWZ0ZXIgdGhlIGtl
-cm5lbCBpbWFnZS4gVGhlcmVmb3JlLCB0aGUgc3RhcnQNCj4gYWRkcmVzcyBvZiB0aGUga2VybmVs
-IGltYWdlIGlzIGF0IHRoZSAweGZmZmZmZmY4MDEwMDAwMCwgYW5kIHRoZSBrZXJuZWwNCj4gbW9k
-dWxlIHJlZ2lvbiBpcyBhdCAweGZmZmZmZmZmYzAwMDAwMDAgd2hpY2ggaXMgdGhlIGJlZ2lubmlu
-ZyBvZiB0aGUNCj4gVk1BTExPQy4gVGhleSBkbyBub3QgZW5jb3VudGVyIHRoaXMgaXNzdWUgYmVj
-YXVzZSB0aGUgcmFuZ2UgbGltaXRhdGlvbiBvZg0KPiBQQy1yZWxhdGl2ZSBpcyArLTJHQi4NCj4g
-DQo+IEN1cnJlbnRseSwgSSBoYXZlIHRocmVlIHNvbHV0aW9ucyB0byBmaXggdGhlIHBlcmNwdSBk
-YXRhIHByb2JsZW0sIGFuZCBJIGxpc3QNCj4gdGhlbSBiZWxvdy4gQW55IGZlZWRiYWNrIGlzIHdl
-bGNvbWUuDQo+IA0KPiAxLiBDcmVhdGUgYSBzcGVjaWZpYyBtb2R1bGUgcmVnaW9uIGxvY2F0aW5n
-IGF0IFtQQUdFX09GRlNFVC1TSVpFLA0KPiBQQUdFX09GRlNFVF0uDQo+ICAgICBJIHRoaW5rIHRo
-aXMgd2F5IGNhbiBzb2x2ZSBtb3N0IGNhc2VzIGJlY2F1c2UgdGhlIGdlbmVyYWwgc2l6ZSBvZiBr
-ZXJuZWwNCj4gaW1hZ2UgaXMgbXVjaCBzbWFsbGVyIHRoYW4gMkcsIGFuZCB3ZSBzdGlsbCBjYW4g
-Y2hhbmdlIHRoZSBjb2RlIG1vZGVsIGZyb20NCj4gUElDIHRvIG1lZGFueS4gSG93ZXZlciwgaXQg
-d2lsbCBzdGlsbCBlbmNvdW50ZXIgdGhlIHNhbWUgcHJvYmxlbSBpZiB0aGUNCj4ga2VybmVsIGlt
-YWdlIGlzIG5lYXIgdG8gMkdCLg0KPiANCj4gMi4gUmVxdWVzdCBhIG5ldyBjb2RlIG1vZGVsIGZv
-ciBrZXJuZWwNCj4gICAgIE1heWJlIHdlIHJlcXVlc3QgY29tcGlsZXIgZ3V5cyB0byBnZW5lcmF0
-ZSBhIG5ldyBQSUMgbW9kZSBmb3Iga2VybmVsLA0KPiB3aGljaCB1c2VzIEdPVCB0byBhc3Nlc3Mg
-ZXZlcnkgc3RhdGljIHBlci1jcHUgZGF0YSBpbnN0ZWFkIG9mIFBDLXJlbGF0aXZlLg0KPiBIb3dl
-dmVyLCBJIGFtIG5vdCBzdXJlIHdoZXRoZXIgdGhpcyBpZGVhIGlzIGFjY2VwdGVkIGJ5IHRoZSBj
-b21waWxlciBndXlzIG9yDQo+IG5vdC4gSWYgYWNjZXB0ZWQsIEl0IG1heSBuZWVkIGEgbG9uZyB0
-aW1lIHRvIHJlYWxpemUgaXQuDQo+IA0KPiAzLiBKdW1wIHRvIGEgcmVzb2x2ZWQgZnVuY3Rpb24u
-DQo+IFpvbmcgYW5kIEkgY2FtZSBvdXQgd2l0aCB0aGlzIHJvdWdoIGlkZWEgdG8gYWRkcmVzcyB0
-aGUgcHJvYmxlbSwgYnV0IHdlIGRvDQo+IG5vdCBnbyB0byByZWFsaXplIGl0Lg0KPiANCj4gVGhl
-IGZvbGxvd2luZyBpcyB0aGUgY3VycmVudCBjb2RlIHBhdHRlcm4gZm9yIGFjY2Vzc2luZyB0aGUg
-cGVyY3B1IGRhdGEuDQo+IDY0OiAwMDAwMDkxNyBhdWlwYyBzMiwweDANCj4gNjg6IDAwMDkzOTAz
-IGxkIHMyLDAoczIpICMgNjQgPC5MMCA+DQo+IA0KPiBXZSBwbGFuIHRvIGNoYW5nZSB0aGUgIiBs
-ZCBzMiwwKHMyKSAiIHRvICJqYWxyIHh4eChzMikiIHRvIHJlZGlyZWN0IHRoZSBjb2RlIHRvDQo+
-IHRoZSBjb3JyZXNwb25kaW5nIHJlc29sdmVkIGZ1bmN0aW9uLiBFYWNoIHN0YXRpYyBwZXJjcHUg
-ZGF0YSBvd25zIGEgcmVzb2x2ZWQNCj4gZnVuY3Rpb24uIFRoZXNlIHJlc29sdmVkIGZ1bmN0aW9u
-cyB3aWxsIGdvIHRvIGdldCB0aGUgdmFyaWFibGUgY29udGVudCwgYW5kDQo+IHRoZW4gaXQgc3Rv
-cmVzIHRoZSB2YXJpYWJsZSB0byB0aGUgdGFyZ2V0IHJlZ2lzdGVyIGJ5IGRlY29kaW5nIHRoZSBh
-dWlwYw0KPiBpbnN0cnVjdGlvbi4gV2UgdGhpbmsgdGhpcyBtZXRob2QgbWF5IHNvbHZlIHRoaXMg
-cHJvYmxlbSwgYnV0IGl0IHdpbGwgZHJvcCB0aGUNCj4gcGVyZm9ybWFuY2UgZHVlIHRvIHRoZSBy
-ZWRpcmVjdGlvbi4NCj4gDQo+IEkgcHJlZmVycmVkIHRoZSBzb2x1dGlvbiBjb21iaW5pbmcgbWV0
-aG9kIDEgYW5kIG1ldGhvZCAyLg0KPiAxLiBJbiBnZW5lcmFsLCB1c2VycyBjYW4gY2hvb3NlIG1l
-dGhvZCAxIHRvIGltcHJvdmUgdGhlIHBlcmZvcm1hbmNlIG9mDQo+IGRhdGEgYWNjZXNzLg0KPiAy
-LiBGb3Igc2FmZXR5LCB1c2VycyBjYW4gdXNlIHRoZSBuZXcgY29kZSBtb2RlbCB0byBhY2Nlc3Mg
-dGhlIHN0YXRpYyBwZXJjcHUNCj4gZGF0YSB3aXRob3V0IGFueSBsaW1pdGF0aW9uLg0KPiBXZSBj
-YW4gY3JlYXRlIGEgbmV3IGtlcm5lbCBjb25maWcgdGhhdCBsb29rcyBhIGJpdCBsaWtlIE1JUFMN
-Cj4gQ09ORklHX0tCVUlMRF82NEJJVF9TWU0zMiBmb3IgdXNlcnMgdG8gY2hvc2UuDQoNCkkgdGhp
-bmsgd2Ugc2hvdWxkIG5vdCB3YXN0ZSB0aW1lIGluIG91ciBxdWVzdCB0byBmaW5kIHBlcmZlY3Qg
-c29sdXRpb24uIFdlDQpzaG91bGQgZmlyc3QgaGF2ZSBhIG1vZHVsZV9hbGxvYygpIGluLXBsYWNl
-IChiYXNlZCBvbiB2YXJpb3VzIHN1Z2dlc3Rpb25zIGluDQp0aGlzIGVtYWlsIHRocmVhZCkgc28g
-dGhhdCBtb3N0IHBlb3BsZSBkb24ndCBzZWUgaXNzdWVzLiBXZSBjYW4gZml4IG1vZHVsZQ0KbG9h
-ZGluZyBmb3IgbW9kdWxlIHdpdGggc3RhdGljIHBlci1jcHUgc3ltYm9scyBzZXBhcmF0ZWx5Lg0K
-DQpGb3IgcG9pbnQxLCB3ZSBkb24ndCBuZWVkIGEgZGVkaWNhdGVkIHJlZ2lvbiBhcyBsb25nIGFz
-IHdlIGFyZSBhbGxvY2F0aW5nDQptb2R1bGVzIGZyb20gVk1BTExPQyBhcmVhLiBMZXQncyBhdm9p
-ZCBhbm90aGVyIHZpcnR1YWwgbWVtb3J5IHJlZ2lvbiBpZg0KcG9zc2libGUuDQoNCkZvciBwb2lu
-dDIsIGxvYWRpbmcgc3ltYm9sIGFkZHJlc3MgZm9yIHBlci1jcHUgc3RhdGljIHN5bWJvbHMgaXMg
-YWx3YXlzDQpQQy1yZWxhdGl2ZSBmb3IgbW9zdCBSSVNDIGFyY2hpdGVjdHVyZXMgYW5kIHN0YXRp
-YyBwZXItY3B1IHN5bWJvbHMgaW4NCmxvYWRhYmxlIG1vZHVsZXMgaXMgYSBrbm93biBpc3N1ZSAo
-UmVmZXIsIGh0dHBzOi8vbHduLm5ldC9BcnRpY2xlcy8xNTA5LykuDQpJIGRvbid0IGFncmVlIHRo
-YXQgdGhpcyBzaG91bGQgYmUgdXNpbmcgY29tcGlsZXJzIGJlY2F1c2UgcGVyLWNwdSBkYXRhDQpt
-YW5hZ2VtZW50IGlzIExpbnV4IHNwZWNpZmljIChvciBPUy1zcGVjaWZpYykgc28gd2Ugc2hvdWxk
-IHJhdGhlciBleHBsb3JlDQp3YXlzIHRvIGhhbmRsZSB0aGlzIGluIExpbnV4IGl0c2VsZi4gVGhl
-IGR5bmFtaWMgcGVyLWNwdSBhbGxvYyBBUElzIChpLmUuDQphbGxvY19wZXJjcHUoKSBhbmQgZnJp
-ZW5kcykgd2VyZSBhZGRlZCB0byBwcmltYXJpbHkgYmVuZWZpdCBsb2FkYWJsZQ0KbW9kdWxlcyBh
-bmQgTlVNQSBzeXN0ZW1zLiBUaGUgc3RhdGljIHBlci1jcHUgc3ltYm9scyAoaS5lLg0KREVGSU5F
-X1BFUl9DUFUoKSBhbmQgZnJpZW5kcykgc2hvdWxkIG9ubHkgYmUgdXNlZCBpbiBidWlsdC1pbiBt
-b2R1bGVzDQpvciBjb2RlIGxpbmtlZCB0byBrZXJuZWwuIEl0IGlzIGdlbmVyYWxseSB2ZXJ5IGVh
-c3kgdG8gdXBncmFkZSBjb2RlIHVzaW5nDQpzdGF0aWMgcGVyLWNwdSBzeW1ib2xzIHRvIHVzZSBk
-eW5hbWljIHBlci1jcHUgc3ltYm9scy4NCg0KUmVnYXJkcywNCkFudXANCg0KDQo=
+This adds tests which will validate architecture page table helpers and
+other accessors in their compliance with expected generic MM semantics.
+This will help various architectures in validating changes to existing
+page table helpers or addition of new ones.
+
+This test covers basic page table entry transformations including but not
+limited to old, young, dirty, clean, write, write protect etc at various
+level along with populating intermediate entries with next page table page
+and validating them.
+
+Test page table pages are allocated from system memory with required size
+and alignments. The mapped pfns at page table levels are derived from a
+real pfn representing a valid kernel text symbol. This test gets called
+inside kernel_init() right after async_synchronize_full().
+
+This test gets built and run when CONFIG_DEBUG_VM_PGTABLE is selected. Any
+architecture, which is willing to subscribe this test will need to select
+ARCH_HAS_DEBUG_VM_PGTABLE. For now this is limited to arc, arm64, x86, s390
+and ppc32 platforms where the test is known to build and run successfully.
+Going forward, other architectures too can subscribe the test after fixing
+any build or runtime problems with their page table helpers. Meanwhile for
+better platform coverage, the test can also be enabled with CONFIG_EXPERT
+even without ARCH_HAS_DEBUG_VM_PGTABLE.
+
+Folks interested in making sure that a given platform's page table helpers
+conform to expected generic MM semantics should enable the above config
+which will just trigger this test during boot. Any non conformity here will
+be reported as an warning which would need to be fixed. This test will help
+catch any changes to the agreed upon semantics expected from generic MM and
+enable platforms to accommodate it thereafter.
+
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Mike Rapoport <rppt@linux.vnet.ibm.com>
+Cc: Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Dan Williams <dan.j.williams@intel.com>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Michal Hocko <mhocko@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: Mark Brown <broonie@kernel.org>
+Cc: Steven Price <Steven.Price@arm.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Kees Cook <keescook@chromium.org>
+Cc: Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>
+Cc: Matthew Wilcox <willy@infradead.org>
+Cc: Dave Hansen <dave.hansen@intel.com>
+Cc: Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Paul Mackerras <paulus@samba.org>
+Cc: Martin Schwidefsky <schwidefsky@de.ibm.com>
+Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Vineet Gupta <vgupta@synopsys.com>
+Cc: James Hogan <jhogan@kernel.org>
+Cc: Paul Burton <paul.burton@mips.com>
+Cc: Ralf Baechle <ralf@linux-mips.org>
+Cc: Kirill A. Shutemov <kirill@shutemov.name>
+Cc: Gerald Schaefer <gerald.schaefer@de.ibm.com>
+Cc: Christophe Leroy <christophe.leroy@c-s.fr>
+Cc: Ingo Molnar <mingo@kernel.org>
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Ivan Kokshaysky <ink@jurassic.park.msu.ru>
+Cc: Matt Turner <mattst88@gmail.com>
+Cc: Mark Salter <msalter@redhat.com>
+Cc: Aurelien Jacquiot <jacquiot.aurelien@gmail.com>
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: Brian Cain <bcain@codeaurora.org>
+Cc: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Michal Simek <monstr@monstr.eu>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Guan Xuetao <gxt@pku.edu.cn>
+Cc: Chris Zankel <chris@zankel.net>
+Cc: Max Filippov <jcmvbkbc@gmail.com>
+Cc: Qian Cai <cai@lca.pw>
+Cc: linux-alpha@vger.kernel.org
+Cc: linux-c6x-dev@linux-c6x.org
+Cc: uclinux-h8-devel@lists.sourceforge.jp
+Cc: linux-hexagon@vger.kernel.org
+Cc: linux-m68k@lists.linux-m68k.org
+Cc: linux-riscv@lists.infradead.org
+Cc: linux-xtensa@linux-xtensa.org
+Cc: linux-snps-arc@lists.infradead.org
+Cc: linux-mips@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-ia64@vger.kernel.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-s390@vger.kernel.org
+Cc: linux-sh@vger.kernel.org
+Cc: sparclinux@vger.kernel.org
+Cc: x86@kernel.org
+Cc: linux-kernel@vger.kernel.org
+
+Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+Reviewed-by: Ingo Molnar <mingo@kernel.org>
+Tested-by: Gerald Schaefer <gerald.schaefer@de.ibm.com> # s390
+Tested-by: Christophe Leroy <christophe.leroy@c-s.fr>	# ppc32
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+Signed-off-by: Christophe Leroy <christophe.leroy@c-s.fr>
+Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+---
+This adds a test validation for architecture exported page table helpers.
+Patch adds basic transformation tests at various levels of the page table.
+
+This test was originally suggested by Catalin during arm64 THP migration
+RFC discussion earlier. Going forward it can include more specific tests
+with respect to various generic MM functions like THP, HugeTLB etc and
+platform specific tests.
+
+https://lore.kernel.org/linux-mm/20190628102003.GA56463@arrakis.emea.arm.com/
+
+Needs to be applied on linux V5.5
+
+Changes in V13:
+
+- Subscribed s390 platform and updated debug-vm-pgtable/arch-support.txt per Gerald
+- Dropped keyword 'extern' from debug_vm_pgtable() declaration per Christophe
+- Moved debug_vm_pgtable() declarations to <linux/mmdebug.h> per Christophe
+- Moved debug_vm_pgtable() call site into kernel_init() per Christophe
+- Changed CONFIG_DEBUG_VM_PGTABLE rules per Christophe
+- Updated commit to include new supported platforms and changed config selection
+
+Changes in V12: (https://patchwork.kernel.org/project/linux-mm/list/?series=233905)
+
+- Replaced __mmdrop() with mmdrop()
+- Enable ARCH_HAS_DEBUG_VM_PGTABLE on X86 for non CONFIG_X86_PAE platforms as the
+  test procedure interfere with pre-allocated PMDs attached to the PGD resulting
+  in runtime failures with VM_BUG_ON()
+
+Changes in V11: (https://patchwork.kernel.org/project/linux-mm/list/?series=221135)
+
+- Rebased the patch on V5.4
+
+Changes in V10: (https://patchwork.kernel.org/project/linux-mm/list/?series=205529)
+
+- Always enable DEBUG_VM_PGTABLE when DEBUG_VM is enabled per Ingo
+- Added tags from Ingo
+
+Changes in V9: (https://patchwork.kernel.org/project/linux-mm/list/?series=201429)
+
+- Changed feature support enumeration for powerpc platforms per Christophe
+- Changed config wrapper for basic_[pmd|pud]_tests() to enable ARC platform
+- Enabled the test on ARC platform
+
+Changes in V8: (https://patchwork.kernel.org/project/linux-mm/list/?series=194297)
+
+- Enabled ARCH_HAS_DEBUG_VM_PGTABLE on PPC32 platform per Christophe
+- Updated feature documentation as DEBUG_VM_PGTABLE is now enabled on PPC32 platform
+- Moved ARCH_HAS_DEBUG_VM_PGTABLE earlier to indent it with DEBUG_VM per Christophe
+- Added an information message in debug_vm_pgtable() per Christophe
+- Dropped random_vaddr boundary condition checks per Christophe and Qian
+- Replaced virt_addr_valid() check with pfn_valid() check in debug_vm_pgtable()
+- Slightly changed pr_fmt(fmt) information
+
+Changes in V7: (https://patchwork.kernel.org/project/linux-mm/list/?series=193051)
+
+- Memory allocation and free routines for mapped pages have been droped
+- Mapped pfns are derived from standard kernel text symbol per Matthew
+- Moved debug_vm_pgtaable() after page_alloc_init_late() per Michal and Qian 
+- Updated the commit message per Michal
+- Updated W=1 GCC warning problem on x86 per Qian Cai
+- Addition of new alloc_contig_pages() helper has been submitted separately
+
+Changes in V6: (https://patchwork.kernel.org/project/linux-mm/list/?series=187589)
+
+- Moved alloc_gigantic_page_order() into mm/page_alloc.c per Michal
+- Moved alloc_gigantic_page_order() within CONFIG_CONTIG_ALLOC in the test
+- Folded Andrew's include/asm-generic/pgtable.h fix into the test patch 2/2
+
+Changes in V5: (https://patchwork.kernel.org/project/linux-mm/list/?series=185991)
+
+- Redefined and moved X86 mm_p4d_folded() into a different header per Kirill/Ingo
+- Updated the config option comment per Ingo and dropped 'kernel module' reference
+- Updated the commit message and dropped 'kernel module' reference
+- Changed DEBUG_ARCH_PGTABLE_TEST into DEBUG_VM_PGTABLE per Ingo
+- Moved config option from mm/Kconfig.debug into lib/Kconfig.debug
+- Renamed core test function arch_pgtable_tests() as debug_vm_pgtable()
+- Renamed mm/arch_pgtable_test.c as mm/debug_vm_pgtable.c
+- debug_vm_pgtable() gets called from kernel_init_freeable() after init_mm_internals()
+- Added an entry in Documentation/features/debug/ per Ingo
+- Enabled the test on arm64 and x86 platforms for now
+
+Changes in V4: (https://patchwork.kernel.org/project/linux-mm/list/?series=183465)
+
+- Disable DEBUG_ARCH_PGTABLE_TEST for ARM and IA64 platforms
+
+Changes in V3: (https://lore.kernel.org/patchwork/project/lkml/list/?series=411216)
+
+- Changed test trigger from module format into late_initcall()
+- Marked all functions with __init to be freed after completion
+- Changed all __PGTABLE_PXX_FOLDED checks as mm_pxx_folded()
+- Folded in PPC32 fixes from Christophe
+
+Changes in V2:
+
+https://lore.kernel.org/linux-mm/1568268173-31302-1-git-send-email-anshuman.khandual@arm.com/T/#t
+
+- Fixed small typo error in MODULE_DESCRIPTION()
+- Fixed m64k build problems for lvalue concerns in pmd_xxx_tests()
+- Fixed dynamic page table level folding problems on x86 as per Kirril
+- Fixed second pointers during pxx_populate_tests() per Kirill and Gerald
+- Allocate and free pte table with pte_alloc_one/pte_free per Kirill
+- Modified pxx_clear_tests() to accommodate s390 lower 12 bits situation
+- Changed RANDOM_NZVALUE value from 0xbe to 0xff
+- Changed allocation, usage, free sequence for saved_ptep
+- Renamed VMA_FLAGS as VMFLAGS
+- Implemented a new method for random vaddr generation
+- Implemented some other cleanups
+- Dropped extern reference to mm_alloc()
+- Created and exported new alloc_gigantic_page_order()
+- Dropped the custom allocator and used new alloc_gigantic_page_order()
+
+Changes in V1:
+
+https://lore.kernel.org/linux-mm/1567497706-8649-1-git-send-email-anshuman.khandual@arm.com/
+
+- Added fallback mechanism for PMD aligned memory allocation failure
+
+Changes in RFC V2:
+
+https://lore.kernel.org/linux-mm/1565335998-22553-1-git-send-email-anshuman.khandual@arm.com/T/#u
+
+- Moved test module and it's config from lib/ to mm/
+- Renamed config TEST_ARCH_PGTABLE as DEBUG_ARCH_PGTABLE_TEST
+- Renamed file from test_arch_pgtable.c to arch_pgtable_test.c
+- Added relevant MODULE_DESCRIPTION() and MODULE_AUTHOR() details
+- Dropped loadable module config option
+- Basic tests now use memory blocks with required size and alignment
+- PUD aligned memory block gets allocated with alloc_contig_range()
+- If PUD aligned memory could not be allocated it falls back on PMD aligned
+  memory block from page allocator and pud_* tests are skipped
+- Clear and populate tests now operate on real in memory page table entries
+- Dummy mm_struct gets allocated with mm_alloc()
+- Dummy page table entries get allocated with [pud|pmd|pte]_alloc_[map]()
+- Simplified [p4d|pgd]_basic_tests(), now has random values in the entries
+
+Original RFC V1:
+
+https://lore.kernel.org/linux-mm/1564037723-26676-1-git-send-email-anshuman.khandual@arm.com/
+
+ .../debug/debug-vm-pgtable/arch-support.txt   |  35 ++
+ arch/arc/Kconfig                              |   1 +
+ arch/arm64/Kconfig                            |   1 +
+ arch/powerpc/Kconfig                          |   1 +
+ arch/s390/Kconfig                             |   1 +
+ arch/x86/Kconfig                              |   1 +
+ arch/x86/include/asm/pgtable_64.h             |   6 +
+ include/linux/mmdebug.h                       |   5 +
+ init/main.c                                   |   2 +
+ lib/Kconfig.debug                             |  22 +
+ mm/Makefile                                   |   1 +
+ mm/debug_vm_pgtable.c                         | 388 ++++++++++++++++++
+ 12 files changed, 464 insertions(+)
+ create mode 100644 Documentation/features/debug/debug-vm-pgtable/arch-support.txt
+ create mode 100644 mm/debug_vm_pgtable.c
+
+diff --git a/Documentation/features/debug/debug-vm-pgtable/arch-support.txt b/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
+new file mode 100644
+index 000000000000..64d0f9b15c49
+--- /dev/null
++++ b/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
+@@ -0,0 +1,35 @@
++#
++# Feature name:          debug-vm-pgtable
++#         Kconfig:       ARCH_HAS_DEBUG_VM_PGTABLE
++#         description:   arch supports pgtable tests for semantics compliance
++#
++    -----------------------
++    |         arch |status|
++    -----------------------
++    |       alpha: | TODO |
++    |         arc: |  ok  |
++    |         arm: | TODO |
++    |       arm64: |  ok  |
++    |         c6x: | TODO |
++    |        csky: | TODO |
++    |       h8300: | TODO |
++    |     hexagon: | TODO |
++    |        ia64: | TODO |
++    |        m68k: | TODO |
++    |  microblaze: | TODO |
++    |        mips: | TODO |
++    |       nds32: | TODO |
++    |       nios2: | TODO |
++    |    openrisc: | TODO |
++    |      parisc: | TODO |
++    |  powerpc/32: |  ok  |
++    |  powerpc/64: | TODO |
++    |       riscv: | TODO |
++    |        s390: |  ok  |
++    |          sh: | TODO |
++    |       sparc: | TODO |
++    |          um: | TODO |
++    |   unicore32: | TODO |
++    |         x86: |  ok  |
++    |      xtensa: | TODO |
++    -----------------------
+diff --git a/arch/arc/Kconfig b/arch/arc/Kconfig
+index 26108ea785c2..6a76f3b609b2 100644
+--- a/arch/arc/Kconfig
++++ b/arch/arc/Kconfig
+@@ -6,6 +6,7 @@
+ config ARC
+ 	def_bool y
+ 	select ARC_TIMERS
++	select ARCH_HAS_DEBUG_VM_PGTABLE
+ 	select ARCH_HAS_DMA_PREP_COHERENT
+ 	select ARCH_HAS_PTE_SPECIAL
+ 	select ARCH_HAS_SETUP_DMA_OPS
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index e688dfad0b72..876c9a672db1 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -11,6 +11,7 @@ config ARM64
+ 	select ACPI_PPTT if ACPI
+ 	select ARCH_CLOCKSOURCE_DATA
+ 	select ARCH_HAS_DEBUG_VIRTUAL
++	select ARCH_HAS_DEBUG_VM_PGTABLE
+ 	select ARCH_HAS_DEVMEM_IS_ALLOWED
+ 	select ARCH_HAS_DMA_PREP_COHERENT
+ 	select ARCH_HAS_ACPI_TABLE_UPGRADE if ACPI
+diff --git a/arch/powerpc/Kconfig b/arch/powerpc/Kconfig
+index e2a412113359..e229e2a86518 100644
+--- a/arch/powerpc/Kconfig
++++ b/arch/powerpc/Kconfig
+@@ -120,6 +120,7 @@ config PPC
+ 	#
+ 	select ARCH_32BIT_OFF_T if PPC32
+ 	select ARCH_HAS_DEBUG_VIRTUAL
++	select ARCH_HAS_DEBUG_VM_PGTABLE if PPC32
+ 	select ARCH_HAS_DEVMEM_IS_ALLOWED
+ 	select ARCH_HAS_ELF_RANDOMIZE
+ 	select ARCH_HAS_FORTIFY_SOURCE
+diff --git a/arch/s390/Kconfig b/arch/s390/Kconfig
+index bc88841d335d..2ea962ead27e 100644
+--- a/arch/s390/Kconfig
++++ b/arch/s390/Kconfig
+@@ -59,6 +59,7 @@ config KASAN_SHADOW_OFFSET
+ config S390
+ 	def_bool y
+ 	select ARCH_BINFMT_ELF_STATE
++	select ARCH_HAS_DEBUG_VM_PGTABLE
+ 	select ARCH_HAS_DEVMEM_IS_ALLOWED
+ 	select ARCH_HAS_ELF_RANDOMIZE
+ 	select ARCH_HAS_FORTIFY_SOURCE
+diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
+index 5e8949953660..218536a4581d 100644
+--- a/arch/x86/Kconfig
++++ b/arch/x86/Kconfig
+@@ -61,6 +61,7 @@ config X86
+ 	select ARCH_CLOCKSOURCE_INIT
+ 	select ARCH_HAS_ACPI_TABLE_UPGRADE	if ACPI
+ 	select ARCH_HAS_DEBUG_VIRTUAL
++	select ARCH_HAS_DEBUG_VM_PGTABLE	if !X86_PAE
+ 	select ARCH_HAS_DEVMEM_IS_ALLOWED
+ 	select ARCH_HAS_ELF_RANDOMIZE
+ 	select ARCH_HAS_FAST_MULTIPLIER
+diff --git a/arch/x86/include/asm/pgtable_64.h b/arch/x86/include/asm/pgtable_64.h
+index 0b6c4042942a..fb0e76d254b3 100644
+--- a/arch/x86/include/asm/pgtable_64.h
++++ b/arch/x86/include/asm/pgtable_64.h
+@@ -53,6 +53,12 @@ static inline void sync_initial_page_table(void) { }
+ 
+ struct mm_struct;
+ 
++#define mm_p4d_folded mm_p4d_folded
++static inline bool mm_p4d_folded(struct mm_struct *mm)
++{
++	return !pgtable_l5_enabled();
++}
++
+ void set_pte_vaddr_p4d(p4d_t *p4d_page, unsigned long vaddr, pte_t new_pte);
+ void set_pte_vaddr_pud(pud_t *pud_page, unsigned long vaddr, pte_t new_pte);
+ 
+diff --git a/include/linux/mmdebug.h b/include/linux/mmdebug.h
+index 2ad72d2c8cc5..5339aa14b749 100644
+--- a/include/linux/mmdebug.h
++++ b/include/linux/mmdebug.h
+@@ -64,4 +64,9 @@ void dump_mm(const struct mm_struct *mm);
+ #define VM_BUG_ON_PGFLAGS(cond, page) BUILD_BUG_ON_INVALID(cond)
+ #endif
+ 
++#ifdef CONFIG_DEBUG_VM_PGTABLE
++void debug_vm_pgtable(void);
++#else
++static inline void debug_vm_pgtable(void) { }
++#endif
+ #endif
+diff --git a/init/main.c b/init/main.c
+index da1bc0b60a7d..e2999239bb8c 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -93,6 +93,7 @@
+ #include <linux/rodata_test.h>
+ #include <linux/jump_label.h>
+ #include <linux/mem_encrypt.h>
++#include <linux/mmdebug.h>
+ 
+ #include <asm/io.h>
+ #include <asm/bugs.h>
+@@ -1110,6 +1111,7 @@ static int __ref kernel_init(void *unused)
+ 	kernel_init_freeable();
+ 	/* need to finish all async __init code before freeing the memory */
+ 	async_synchronize_full();
++	debug_vm_pgtable();
+ 	ftrace_free_init_mem();
+ 	free_initmem();
+ 	mark_readonly();
+diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
+index 5ffe144c9794..64c80f7af904 100644
+--- a/lib/Kconfig.debug
++++ b/lib/Kconfig.debug
+@@ -653,6 +653,12 @@ config SCHED_STACK_END_CHECK
+ 	  data corruption or a sporadic crash at a later stage once the region
+ 	  is examined. The runtime overhead introduced is minimal.
+ 
++config ARCH_HAS_DEBUG_VM_PGTABLE
++	bool
++	help
++	  An architecture should select this when it can successfully
++	  build and run DEBUG_VM_PGTABLE.
++
+ config DEBUG_VM
+ 	bool "Debug VM"
+ 	depends on DEBUG_KERNEL
+@@ -688,6 +694,22 @@ config DEBUG_VM_PGFLAGS
+ 
+ 	  If unsure, say N.
+ 
++config DEBUG_VM_PGTABLE
++	bool "Debug arch page table for semantics compliance"
++	depends on MMU
++	depends on ARCH_HAS_DEBUG_VM_PGTABLE || EXPERT
++	default n if !ARCH_HAS_DEBUG_VM_PGTABLE
++	default y if DEBUG_VM
++	help
++	  This option provides a debug method which can be used to test
++	  architecture page table helper functions on various platforms in
++	  verifying if they comply with expected generic MM semantics. This
++	  will help architecture code in making sure that any changes or
++	  new additions of these helpers still conform to expected
++	  semantics of the generic MM.
++
++	  If unsure, say N.
++
+ config ARCH_HAS_DEBUG_VIRTUAL
+ 	bool
+ 
+diff --git a/mm/Makefile b/mm/Makefile
+index 1937cc251883..eba423a26b19 100644
+--- a/mm/Makefile
++++ b/mm/Makefile
+@@ -86,6 +86,7 @@ obj-$(CONFIG_HWPOISON_INJECT) += hwpoison-inject.o
+ obj-$(CONFIG_DEBUG_KMEMLEAK) += kmemleak.o
+ obj-$(CONFIG_DEBUG_KMEMLEAK_TEST) += kmemleak-test.o
+ obj-$(CONFIG_DEBUG_RODATA_TEST) += rodata_test.o
++obj-$(CONFIG_DEBUG_VM_PGTABLE) += debug_vm_pgtable.o
+ obj-$(CONFIG_PAGE_OWNER) += page_owner.o
+ obj-$(CONFIG_CLEANCACHE) += cleancache.o
+ obj-$(CONFIG_MEMORY_ISOLATION) += page_isolation.o
+diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
+new file mode 100644
+index 000000000000..0f37f32d15f1
+--- /dev/null
++++ b/mm/debug_vm_pgtable.c
+@@ -0,0 +1,388 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * This kernel test validates architecture page table helpers and
++ * accessors and helps in verifying their continued compliance with
++ * expected generic MM semantics.
++ *
++ * Copyright (C) 2019 ARM Ltd.
++ *
++ * Author: Anshuman Khandual <anshuman.khandual@arm.com>
++ */
++#define pr_fmt(fmt) "debug_vm_pgtable: %s: " fmt, __func__
++
++#include <linux/gfp.h>
++#include <linux/highmem.h>
++#include <linux/hugetlb.h>
++#include <linux/kernel.h>
++#include <linux/kconfig.h>
++#include <linux/mm.h>
++#include <linux/mman.h>
++#include <linux/mm_types.h>
++#include <linux/module.h>
++#include <linux/pfn_t.h>
++#include <linux/printk.h>
++#include <linux/random.h>
++#include <linux/spinlock.h>
++#include <linux/swap.h>
++#include <linux/swapops.h>
++#include <linux/start_kernel.h>
++#include <linux/sched/mm.h>
++#include <asm/pgalloc.h>
++#include <asm/pgtable.h>
++
++/*
++ * Basic operations
++ *
++ * mkold(entry)			= An old and not a young entry
++ * mkyoung(entry)		= A young and not an old entry
++ * mkdirty(entry)		= A dirty and not a clean entry
++ * mkclean(entry)		= A clean and not a dirty entry
++ * mkwrite(entry)		= A write and not a write protected entry
++ * wrprotect(entry)		= A write protected and not a write entry
++ * pxx_bad(entry)		= A mapped and non-table entry
++ * pxx_same(entry1, entry2)	= Both entries hold the exact same value
++ */
++#define VMFLAGS	(VM_READ|VM_WRITE|VM_EXEC)
++
++/*
++ * On s390 platform, the lower 12 bits are used to identify given page table
++ * entry type and for other arch specific requirements. But these bits might
++ * affect the ability to clear entries with pxx_clear(). So while loading up
++ * the entries skip all lower 12 bits in order to accommodate s390 platform.
++ * It does not have affect any other platform.
++ */
++#define RANDOM_ORVALUE	(0xfffffffffffff000UL)
++#define RANDOM_NZVALUE	(0xff)
++
++static void __init pte_basic_tests(unsigned long pfn, pgprot_t prot)
++{
++	pte_t pte = pfn_pte(pfn, prot);
++
++	WARN_ON(!pte_same(pte, pte));
++	WARN_ON(!pte_young(pte_mkyoung(pte)));
++	WARN_ON(!pte_dirty(pte_mkdirty(pte)));
++	WARN_ON(!pte_write(pte_mkwrite(pte)));
++	WARN_ON(pte_young(pte_mkold(pte)));
++	WARN_ON(pte_dirty(pte_mkclean(pte)));
++	WARN_ON(pte_write(pte_wrprotect(pte)));
++}
++
++#ifdef CONFIG_TRANSPARENT_HUGEPAGE
++static void __init pmd_basic_tests(unsigned long pfn, pgprot_t prot)
++{
++	pmd_t pmd = pfn_pmd(pfn, prot);
++
++	WARN_ON(!pmd_same(pmd, pmd));
++	WARN_ON(!pmd_young(pmd_mkyoung(pmd)));
++	WARN_ON(!pmd_dirty(pmd_mkdirty(pmd)));
++	WARN_ON(!pmd_write(pmd_mkwrite(pmd)));
++	WARN_ON(pmd_young(pmd_mkold(pmd)));
++	WARN_ON(pmd_dirty(pmd_mkclean(pmd)));
++	WARN_ON(pmd_write(pmd_wrprotect(pmd)));
++	/*
++	 * A huge page does not point to next level page table
++	 * entry. Hence this must qualify as pmd_bad().
++	 */
++	WARN_ON(!pmd_bad(pmd_mkhuge(pmd)));
++}
++
++#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
++static void __init pud_basic_tests(unsigned long pfn, pgprot_t prot)
++{
++	pud_t pud = pfn_pud(pfn, prot);
++
++	WARN_ON(!pud_same(pud, pud));
++	WARN_ON(!pud_young(pud_mkyoung(pud)));
++	WARN_ON(!pud_write(pud_mkwrite(pud)));
++	WARN_ON(pud_write(pud_wrprotect(pud)));
++	WARN_ON(pud_young(pud_mkold(pud)));
++
++	if (mm_pmd_folded(mm) || __is_defined(ARCH_HAS_4LEVEL_HACK))
++		return;
++
++	/*
++	 * A huge page does not point to next level page table
++	 * entry. Hence this must qualify as pud_bad().
++	 */
++	WARN_ON(!pud_bad(pud_mkhuge(pud)));
++}
++#else
++static void __init pud_basic_tests(unsigned long pfn, pgprot_t prot) { }
++#endif
++#else
++static void __init pmd_basic_tests(unsigned long pfn, pgprot_t prot) { }
++static void __init pud_basic_tests(unsigned long pfn, pgprot_t prot) { }
++#endif
++
++static void __init p4d_basic_tests(unsigned long pfn, pgprot_t prot)
++{
++	p4d_t p4d;
++
++	memset(&p4d, RANDOM_NZVALUE, sizeof(p4d_t));
++	WARN_ON(!p4d_same(p4d, p4d));
++}
++
++static void __init pgd_basic_tests(unsigned long pfn, pgprot_t prot)
++{
++	pgd_t pgd;
++
++	memset(&pgd, RANDOM_NZVALUE, sizeof(pgd_t));
++	WARN_ON(!pgd_same(pgd, pgd));
++}
++
++#ifndef __ARCH_HAS_4LEVEL_HACK
++static void __init pud_clear_tests(struct mm_struct *mm, pud_t *pudp)
++{
++	pud_t pud = READ_ONCE(*pudp);
++
++	if (mm_pmd_folded(mm))
++		return;
++
++	pud = __pud(pud_val(pud) | RANDOM_ORVALUE);
++	WRITE_ONCE(*pudp, pud);
++	pud_clear(pudp);
++	pud = READ_ONCE(*pudp);
++	WARN_ON(!pud_none(pud));
++}
++
++static void __init pud_populate_tests(struct mm_struct *mm, pud_t *pudp,
++				      pmd_t *pmdp)
++{
++	pud_t pud;
++
++	if (mm_pmd_folded(mm))
++		return;
++	/*
++	 * This entry points to next level page table page.
++	 * Hence this must not qualify as pud_bad().
++	 */
++	pmd_clear(pmdp);
++	pud_clear(pudp);
++	pud_populate(mm, pudp, pmdp);
++	pud = READ_ONCE(*pudp);
++	WARN_ON(pud_bad(pud));
++}
++#else
++static void __init pud_clear_tests(struct mm_struct *mm, pud_t *pudp) { }
++static void __init pud_populate_tests(struct mm_struct *mm, pud_t *pudp,
++				      pmd_t *pmdp)
++{
++}
++#endif
++
++#ifndef __ARCH_HAS_5LEVEL_HACK
++static void __init p4d_clear_tests(struct mm_struct *mm, p4d_t *p4dp)
++{
++	p4d_t p4d = READ_ONCE(*p4dp);
++
++	if (mm_pud_folded(mm))
++		return;
++
++	p4d = __p4d(p4d_val(p4d) | RANDOM_ORVALUE);
++	WRITE_ONCE(*p4dp, p4d);
++	p4d_clear(p4dp);
++	p4d = READ_ONCE(*p4dp);
++	WARN_ON(!p4d_none(p4d));
++}
++
++static void __init p4d_populate_tests(struct mm_struct *mm, p4d_t *p4dp,
++				      pud_t *pudp)
++{
++	p4d_t p4d;
++
++	if (mm_pud_folded(mm))
++		return;
++
++	/*
++	 * This entry points to next level page table page.
++	 * Hence this must not qualify as p4d_bad().
++	 */
++	pud_clear(pudp);
++	p4d_clear(p4dp);
++	p4d_populate(mm, p4dp, pudp);
++	p4d = READ_ONCE(*p4dp);
++	WARN_ON(p4d_bad(p4d));
++}
++
++static void __init pgd_clear_tests(struct mm_struct *mm, pgd_t *pgdp)
++{
++	pgd_t pgd = READ_ONCE(*pgdp);
++
++	if (mm_p4d_folded(mm))
++		return;
++
++	pgd = __pgd(pgd_val(pgd) | RANDOM_ORVALUE);
++	WRITE_ONCE(*pgdp, pgd);
++	pgd_clear(pgdp);
++	pgd = READ_ONCE(*pgdp);
++	WARN_ON(!pgd_none(pgd));
++}
++
++static void __init pgd_populate_tests(struct mm_struct *mm, pgd_t *pgdp,
++				      p4d_t *p4dp)
++{
++	pgd_t pgd;
++
++	if (mm_p4d_folded(mm))
++		return;
++
++	/*
++	 * This entry points to next level page table page.
++	 * Hence this must not qualify as pgd_bad().
++	 */
++	p4d_clear(p4dp);
++	pgd_clear(pgdp);
++	pgd_populate(mm, pgdp, p4dp);
++	pgd = READ_ONCE(*pgdp);
++	WARN_ON(pgd_bad(pgd));
++}
++#else
++static void __init p4d_clear_tests(struct mm_struct *mm, p4d_t *p4dp) { }
++static void __init pgd_clear_tests(struct mm_struct *mm, pgd_t *pgdp) { }
++static void __init p4d_populate_tests(struct mm_struct *mm, p4d_t *p4dp,
++				      pud_t *pudp)
++{
++}
++static void __init pgd_populate_tests(struct mm_struct *mm, pgd_t *pgdp,
++				      p4d_t *p4dp)
++{
++}
++#endif
++
++static void __init pte_clear_tests(struct mm_struct *mm, pte_t *ptep)
++{
++	pte_t pte = READ_ONCE(*ptep);
++
++	pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
++	WRITE_ONCE(*ptep, pte);
++	pte_clear(mm, 0, ptep);
++	pte = READ_ONCE(*ptep);
++	WARN_ON(!pte_none(pte));
++}
++
++static void __init pmd_clear_tests(struct mm_struct *mm, pmd_t *pmdp)
++{
++	pmd_t pmd = READ_ONCE(*pmdp);
++
++	pmd = __pmd(pmd_val(pmd) | RANDOM_ORVALUE);
++	WRITE_ONCE(*pmdp, pmd);
++	pmd_clear(pmdp);
++	pmd = READ_ONCE(*pmdp);
++	WARN_ON(!pmd_none(pmd));
++}
++
++static void __init pmd_populate_tests(struct mm_struct *mm, pmd_t *pmdp,
++				      pgtable_t pgtable)
++{
++	pmd_t pmd;
++
++	/*
++	 * This entry points to next level page table page.
++	 * Hence this must not qualify as pmd_bad().
++	 */
++	pmd_clear(pmdp);
++	pmd_populate(mm, pmdp, pgtable);
++	pmd = READ_ONCE(*pmdp);
++	WARN_ON(pmd_bad(pmd));
++}
++
++static unsigned long __init get_random_vaddr(void)
++{
++	unsigned long random_vaddr, random_pages, total_user_pages;
++
++	total_user_pages = (TASK_SIZE - FIRST_USER_ADDRESS) / PAGE_SIZE;
++
++	random_pages = get_random_long() % total_user_pages;
++	random_vaddr = FIRST_USER_ADDRESS + random_pages * PAGE_SIZE;
++
++	return random_vaddr;
++}
++
++void __init debug_vm_pgtable(void)
++{
++	struct mm_struct *mm;
++	pgd_t *pgdp;
++	p4d_t *p4dp, *saved_p4dp;
++	pud_t *pudp, *saved_pudp;
++	pmd_t *pmdp, *saved_pmdp, pmd;
++	pte_t *ptep;
++	pgtable_t saved_ptep;
++	pgprot_t prot;
++	phys_addr_t paddr;
++	unsigned long vaddr, pte_aligned, pmd_aligned;
++	unsigned long pud_aligned, p4d_aligned, pgd_aligned;
++
++	pr_info("Validating architecture page table helpers\n");
++	prot = vm_get_page_prot(VMFLAGS);
++	vaddr = get_random_vaddr();
++	mm = mm_alloc();
++	if (!mm) {
++		pr_err("mm_struct allocation failed\n");
++		return;
++	}
++
++	/*
++	 * PFN for mapping at PTE level is determined from a standard kernel
++	 * text symbol. But pfns for higher page table levels are derived by
++	 * masking lower bits of this real pfn. These derived pfns might not
++	 * exist on the platform but that does not really matter as pfn_pxx()
++	 * helpers will still create appropriate entries for the test. This
++	 * helps avoid large memory block allocations to be used for mapping
++	 * at higher page table levels.
++	 */
++	paddr = __pa(&start_kernel);
++
++	pte_aligned = (paddr & PAGE_MASK) >> PAGE_SHIFT;
++	pmd_aligned = (paddr & PMD_MASK) >> PAGE_SHIFT;
++	pud_aligned = (paddr & PUD_MASK) >> PAGE_SHIFT;
++	p4d_aligned = (paddr & P4D_MASK) >> PAGE_SHIFT;
++	pgd_aligned = (paddr & PGDIR_MASK) >> PAGE_SHIFT;
++	WARN_ON(!pfn_valid(pte_aligned));
++
++	pgdp = pgd_offset(mm, vaddr);
++	p4dp = p4d_alloc(mm, pgdp, vaddr);
++	pudp = pud_alloc(mm, p4dp, vaddr);
++	pmdp = pmd_alloc(mm, pudp, vaddr);
++	ptep = pte_alloc_map(mm, pmdp, vaddr);
++
++	/*
++	 * Save all the page table page addresses as the page table
++	 * entries will be used for testing with random or garbage
++	 * values. These saved addresses will be used for freeing
++	 * page table pages.
++	 */
++	pmd = READ_ONCE(*pmdp);
++	saved_p4dp = p4d_offset(pgdp, 0UL);
++	saved_pudp = pud_offset(p4dp, 0UL);
++	saved_pmdp = pmd_offset(pudp, 0UL);
++	saved_ptep = pmd_pgtable(pmd);
++
++	pte_basic_tests(pte_aligned, prot);
++	pmd_basic_tests(pmd_aligned, prot);
++	pud_basic_tests(pud_aligned, prot);
++	p4d_basic_tests(p4d_aligned, prot);
++	pgd_basic_tests(pgd_aligned, prot);
++
++	pte_clear_tests(mm, ptep);
++	pmd_clear_tests(mm, pmdp);
++	pud_clear_tests(mm, pudp);
++	p4d_clear_tests(mm, p4dp);
++	pgd_clear_tests(mm, pgdp);
++
++	pte_unmap(ptep);
++
++	pmd_populate_tests(mm, pmdp, saved_ptep);
++	pud_populate_tests(mm, pudp, saved_pmdp);
++	p4d_populate_tests(mm, p4dp, saved_pudp);
++	pgd_populate_tests(mm, pgdp, saved_p4dp);
++
++	p4d_free(mm, saved_p4dp);
++	pud_free(mm, saved_pudp);
++	pmd_free(mm, saved_pmdp);
++	pte_free(mm, saved_ptep);
++
++	mm_dec_nr_puds(mm);
++	mm_dec_nr_pmds(mm);
++	mm_dec_nr_ptes(mm);
++	mmdrop(mm);
++}
+-- 
+2.20.1
+
 
