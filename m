@@ -2,72 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FF25155518
+	by mail.lfdr.de (Postfix) with ESMTPS id 27BC1155517
 	for <lists+linux-riscv@lfdr.de>; Fri,  7 Feb 2020 10:53:02 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zMYeHp7izR4Rb+xnGWV9UyZpsqdqC4NZ7xAtUKg6nOo=; b=TblkzY9WYHf7tu
-	NjIl6HjB0H2oBcmvjOsvBmwHwHL4SRYq2P1f9sRdE3J+9ce2hJrIHKPm2ubhnWg4iXv1ktCK5uSZY
-	tMuw+pVYsQXzX7DCjIqqljavpzDv4nhVMIviSjukRRU4LQDOgu1E7q7KXjb2Rn2+quYMukcK05o0A
-	4TQmTox3Nrkf2r5QeMpHEC1KXvbH+FDKBisw9CrE5tYzmkapTKO+b8R+wrdMCYCIoMIRZVUtBP0+H
-	5nzmmeyNbpifM7iTcyERN/KTF80w0OaXD8YqEmuu1DdRDBM/Ggr4X23TLtuDa74YSplm16+GaaxD0
-	UdZ3xb/6KiMPiE0yEQfA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=62RfhKAR/Ri4okXqm018bf0oko/VlUMmOmgrha7NFJc=; b=DpdElp/yfSHMX1
+	Fv5OmC1HWIRgDkla8KZr7TMaCGHGT/fUYH/gkvhedUb9rjsdyUgXQljAwiPh0bXevmNU3sPHScKTy
+	vzb95WJFpXLnuTyLY6IPdPUyrEkCQjYybp6zp+zMn1SMz0gghqJrZBkTdt7C+tWSQgT118ijh/TBz
+	MOUpILRnpQG9VyIOeaeEr9MHhZUS21E408Yq6Ouw+oBjF19m+I8m70lclCnwyMZ9rA2Eb2PpWgeh1
+	oTFT5nINEVMKUt+uWYWJNGtx0rSx8fpawgr90grsO9n5mHVZ0ABwBzr+5wX7xMNEj0KZck/uZZfSE
+	2466JbGnvkppvUM2FYCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j00Jj-0002tO-GQ; Fri, 07 Feb 2020 09:52:55 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1j00Jl-0002ua-KQ; Fri, 07 Feb 2020 09:52:57 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j00Jf-0002sU-J0
- for linux-riscv@lists.infradead.org; Fri, 07 Feb 2020 09:52:53 +0000
-Received: by mail-pf1-x433.google.com with SMTP id j9so1001861pfa.8
- for <linux-riscv@lists.infradead.org>; Fri, 07 Feb 2020 01:52:50 -0800 (PST)
+ id 1j00Ji-0002sm-3O
+ for linux-riscv@lists.infradead.org; Fri, 07 Feb 2020 09:52:55 +0000
+Received: by mail-pl1-x643.google.com with SMTP id y1so784516plp.7
+ for <linux-riscv@lists.infradead.org>; Fri, 07 Feb 2020 01:52:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=zMYeHp7izR4Rb+xnGWV9UyZpsqdqC4NZ7xAtUKg6nOo=;
- b=dZsSCFPZ6VJiIDvAbOx4Ve2EgnwGRXr46b6Y1/xwbiLJvTF5vygoQCqnkbsBrcvGov
- Bcwx38z3A+tY5HBT2Q9jU7pbvCmkXxe7FXJsOTwgQP872c46YUBTPbDRfTmZMSJRwSLO
- oloeKyRxz4FyfqxIdncKLha8rEWZ/7efv5WBzL3cpwh1Q0CQl/VuuHXmvKrmx2x/eLEr
- ULHlbbpsliyF78QTJk1aDfMB1fPejrsuN0rf0dt5KINdsJ4h6VltGbm9cxEy1SDnWtUo
- Pf54CclxtPYULjx5Vdh4T90InxpgK5Xa5KGfQL3MZeGni5+0VG/+7QUF/SfzDWJPSeuQ
- 1kfg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=62RfhKAR/Ri4okXqm018bf0oko/VlUMmOmgrha7NFJc=;
+ b=g+dE/lA71/7lIVK3CjQgSD3qoczW6hh85KWVkYh6PmYLHAZRZpwNA08GJ9z1uqakRe
+ SGNXQtG4e79a71zHf/jYu8DFoZotBKdogZsY4pgMg4GGxUsAEBtbuCy4UetRoxw9/MD9
+ UG1AUYjs+z0DcAnFfZSD3Jbp+va3NKSgbC3q4BhURcxvi8iuyNJ0KarQ7v7emiyexZfd
+ pjKJb48Wf3bbWl42+QV2b+GrQMbRtO2YSiRtz3+i5nyUIWmv5P5eUjbuA0Zf6w23TyD6
+ LodLXS0ZIw7aM1/QIkeXp8zXmfQ9A7Fthpe50K1S0C1O9GJNLv4B+qVzDWTGAeh9pf+y
+ 3paw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=zMYeHp7izR4Rb+xnGWV9UyZpsqdqC4NZ7xAtUKg6nOo=;
- b=HiWkGpdkONrEjXsbq4dFkmm3MO7fABLjEUq2qvHoDTpwood6UC4Mq0mA/MUYlJ5P/k
- dSFrX1irsGRwMV1UPlgcYwhx/hNT4+xYStVxVWo4szlJSU+8bCGYaZ4jdCf/f9CXO1Fn
- 51jBb54x//OYV6uhTb6FygL1veicepG5KHdWTm+bcfXNDHHpPPc1VX6NM8ajKEaky2yo
- s1GWtcbLtkD6g5J8lmex8RHtAFPs3n2LjKIAe4lc2glhuqm6KPlcR5LEZQ59K5sqrB0p
- JpThJVGas1Mr1PJmmfwl5+ScwzbaPslOogfW02y2BSLyTNloQ0/+bG60xNFk4wYITZHi
- OZcQ==
-X-Gm-Message-State: APjAAAVf1DthaXRmC4RAkTSfbOXYjocqUHcH/baV4xUeeTv1MzSyUpak
- 04C2E1gLt9ej2knt8+8RgWZWJDa+OJs=
-X-Google-Smtp-Source: APXvYqwc+9MWfFdCvGYIjKIg008oiz/1mXx5sSVztqfuEmUvdF/+sXiLCabKvglhpVvpCaC28PNY8A==
-X-Received: by 2002:aa7:820d:: with SMTP id k13mr9337393pfi.10.1581069170055; 
- Fri, 07 Feb 2020 01:52:50 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=62RfhKAR/Ri4okXqm018bf0oko/VlUMmOmgrha7NFJc=;
+ b=Zd45kyQ+3+aaQiGeKKWNcCL3yOUg/fg1AvST4GhHIrG5AsCSFEb3OkG+aOPAs5whB/
+ 3qw6hSxds3BVbl95jUr+Zl2jrePwO15sbTJur/TAs7q5dIb+4h9fnlIVfmB8XM2J/ZOT
+ vHHZewzk4nzK98YkmReXjNkGdo72rH1uQU0UJDf4Z4y48dJeJYtfH+qgvB88yledHBIi
+ c9BedPwSZg98RyYgBWgnRcqJIYptXv8jocmSYO/fB3Danvk0Zmgv/rVQEAhPHJcHblOt
+ 1ZoSVx9H38NqHaPfNzFB7BX97I6zLYH/Gf3YNmHAqWCf8+xoS3GwlZaCvHAXHhkLsVef
+ wBbg==
+X-Gm-Message-State: APjAAAW7CEJmvUVgDIIMJnpw9Ty/8leKRdt1hAbWmKY4Z2mbFOOxHwzo
+ ZkH2Lr2dR8xE10TfNrSoC527W5dtPEU=
+X-Google-Smtp-Source: APXvYqyEqxTbUYM7DH8aCdJhHthU3VF26dL8ropAoBOTPzxtNpmqZwz3S31FktC6fcgH3q3mlW/eeQ==
+X-Received: by 2002:a17:90a:2ec7:: with SMTP id
+ h7mr2885268pjs.107.1581069173488; 
+ Fri, 07 Feb 2020 01:52:53 -0800 (PST)
 Received: from hsinchu02.internal.sifive.com
  (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id s23sm2060934pjq.17.2020.02.07.01.52.48
+ by smtp.gmail.com with ESMTPSA id s23sm2060934pjq.17.2020.02.07.01.52.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Feb 2020 01:52:49 -0800 (PST)
+ Fri, 07 Feb 2020 01:52:53 -0800 (PST)
 From: Zong Li <zong.li@sifive.com>
 To: paul.walmsley@sifive.com, palmer@dabbelt.com, aou@eecs.berkeley.edu,
  linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] Fix the page table size of KASAN use.
-Date: Fri,  7 Feb 2020 17:52:43 +0800
-Message-Id: <20200207095245.21955-1-zong.li@sifive.com>
+Subject: [PATCH 1/2] riscv: allocate a complete page size for each page table
+Date: Fri,  7 Feb 2020 17:52:44 +0800
+Message-Id: <20200207095245.21955-2-zong.li@sifive.com>
 X-Mailer: git-send-email 2.25.0
+In-Reply-To: <20200207095245.21955-1-zong.li@sifive.com>
+References: <20200207095245.21955-1-zong.li@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200207_015252_377637_9FA48DCD 
-X-CRM114-Status: UNSURE (   5.19  )
+X-CRM114-CacheID: sfid-20200207_015254_142405_3B279618 
+X-CRM114-Status: UNSURE (   8.80  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
@@ -75,7 +78,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:433 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -104,18 +107,63 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 Each page table should be created by allocating a complete page size
 for it. Otherwise, the content of the page table would be corrupted
 somewhere through memory allocation which allocates the memory at the
-middle of the page table for other use. For example, if it only
-allocates 200 pmd entries memory size for pmd page table, then the
-original 201 entry will be used to other purpose, and cause the
-unexpected fault when accessing the page table.
+middle of the page table for other use.
 
-Zong Li (2):
-  riscv: allocate a complete page size for each page table
-  riscv: adjust the indent
+Signed-off-by: Zong Li <zong.li@sifive.com>
+---
+ arch/riscv/mm/kasan_init.c | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
 
- arch/riscv/mm/kasan_init.c | 53 ++++++++++++++++++++++----------------
- 1 file changed, 31 insertions(+), 22 deletions(-)
-
+diff --git a/arch/riscv/mm/kasan_init.c b/arch/riscv/mm/kasan_init.c
+index f0cc86040587..f8eaf7e73a23 100644
+--- a/arch/riscv/mm/kasan_init.c
++++ b/arch/riscv/mm/kasan_init.c
+@@ -46,29 +46,34 @@ asmlinkage void __init kasan_early_init(void)
+ 
+ static void __init populate(void *start, void *end)
+ {
+-	unsigned long i;
++	unsigned long i, offset;
+ 	unsigned long vaddr = (unsigned long)start & PAGE_MASK;
+ 	unsigned long vend = PAGE_ALIGN((unsigned long)end);
+ 	unsigned long n_pages = (vend - vaddr) / PAGE_SIZE;
++	unsigned long n_ptes =
++	    ((n_pages + PTRS_PER_PTE) & -PTRS_PER_PTE) / PTRS_PER_PTE;
+ 	unsigned long n_pmds =
+-		(n_pages % PTRS_PER_PTE) ? n_pages / PTRS_PER_PTE + 1 :
+-						n_pages / PTRS_PER_PTE;
++	    ((n_ptes + PTRS_PER_PMD) & -PTRS_PER_PMD) / PTRS_PER_PMD;
++
++	pte_t *pte =
++	    memblock_alloc(n_ptes * PTRS_PER_PTE * sizeof(pte_t), PAGE_SIZE);
++	pmd_t *pmd =
++	    memblock_alloc(n_pmds * PTRS_PER_PMD * sizeof(pmd_t), PAGE_SIZE);
+ 	pgd_t *pgd = pgd_offset_k(vaddr);
+-	pmd_t *pmd = memblock_alloc(n_pmds * sizeof(pmd_t), PAGE_SIZE);
+-	pte_t *pte = memblock_alloc(n_pages * sizeof(pte_t), PAGE_SIZE);
+ 
+ 	for (i = 0; i < n_pages; i++) {
+ 		phys_addr_t phys = memblock_phys_alloc(PAGE_SIZE, PAGE_SIZE);
+-
+-		set_pte(pte + i, pfn_pte(PHYS_PFN(phys), PAGE_KERNEL));
++		set_pte(&pte[i], pfn_pte(PHYS_PFN(phys), PAGE_KERNEL));
+ 	}
+ 
+-	for (i = 0; i < n_pmds; ++pgd, i += PTRS_PER_PMD)
+-		set_pgd(pgd, pfn_pgd(PFN_DOWN(__pa(((uintptr_t)(pmd + i)))),
++	for (i = 0, offset = 0; i < n_ptes; i++, offset += PTRS_PER_PTE)
++		set_pmd(&pmd[i],
++			pfn_pmd(PFN_DOWN(__pa(&pte[offset])),
+ 				__pgprot(_PAGE_TABLE)));
+ 
+-	for (i = 0; i < n_pages; ++pmd, i += PTRS_PER_PTE)
+-		set_pmd(pmd, pfn_pmd(PFN_DOWN(__pa((uintptr_t)(pte + i))),
++	for (i = 0, offset = 0; i < n_pmds; i++, offset += PTRS_PER_PMD)
++		set_pgd(&pgd[i],
++			pfn_pgd(PFN_DOWN(__pa(&pmd[offset])),
+ 				__pgprot(_PAGE_TABLE)));
+ 
+ 	flush_tlb_all();
 -- 
 2.25.0
 
