@@ -2,92 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFB2C156EF5
-	for <lists+linux-riscv@lfdr.de>; Mon, 10 Feb 2020 06:57:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AD62156FA0
+	for <lists+linux-riscv@lfdr.de>; Mon, 10 Feb 2020 07:38:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sfkmb35IpZPof1bD/rOU/zeEqg9sSc9VPK5w6BC0wlc=; b=IHcYF4g8uwy63G
-	jL30lV6zHIk3He/qELlAYvXgUD2ViLKIZQrmrpwjeO/ex9zUjshJqaI3Yvumx0LWLCYXH5zWC05F+
-	FPXECWg4P+32ZJxAt85PDz05c8wuXXq7b9oQP815Bo/w3+O2EGlD8SquW0T6aFIYi3BuV5LcD02D6
-	oijAUGfngbmJC9M6rRAec40qGfZfydwEwK9B4gPzjFN9wFKcvOsRZMcR4NYywSGphEugDUfKvgnjn
-	8P+wF/QCd75w9S4PJ2yLlaVEXXP6M9IbLbKg7oJS2plhv9j7JFS9ZWtZRp1CNUje10l61OHTT+oH4
-	rJlyCahrODXuqzKNMLCA==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=amqo6k0yrlTgp2Iv3BrjmciUnr5C6MMqt01YZtUVLZg=; b=aR0WUnZF59TCRz
+	di3zbNtTJ9gdNsiPfTQsWcqxdesisqhq/YvigNnYn+IaooofOZaUMLF2rcoU53qL++OvGQ2So0dOc
+	aDU7dDT3SlDbvCDUsCuMcd8iwejXKKJZ6C0GtCysNcuOjbOQyzPTGVV6/FYUm7zvpjqZFTW8ly99G
+	y0R4COO1pfpdfp9EbvRXAot+Q4wpqM8HL776r2C3vB674dvmFju7uo6AF3OEmyuO3isEwuQldEjfY
+	CGrtejhfpN0ZU44XHWG5j+NNFe1ii7bXRwYRcBbZh3eyoIdRGAqCS7NNT86PZAn9Tim3Jem1hehdp
+	ljAKgTGxc1qN/fscgFxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j124F-0004cb-Oj; Mon, 10 Feb 2020 05:57:11 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1j12i1-0002qo-2G; Mon, 10 Feb 2020 06:38:17 +0000
+Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j124B-0004YP-TS
- for linux-riscv@lists.infradead.org; Mon, 10 Feb 2020 05:57:09 +0000
-Received: by mail-pg1-x544.google.com with SMTP id 6so3327809pgk.0
- for <linux-riscv@lists.infradead.org>; Sun, 09 Feb 2020 21:57:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Sfkmb35IpZPof1bD/rOU/zeEqg9sSc9VPK5w6BC0wlc=;
- b=AiEyxIK0eV9Djm2Eo7bsijie1cc+LBMz3Uh8E+ihWsg3qgnhO/7750+B90xPY9XD5h
- oiF9ZPOw3jMTl7TKaLwrgStvnzBOQaFvWnOWi+sLj83t6LkDeQMlT++eupUb3KSBIYtE
- DZpNW+eZh2r2Ap15ekORaQVyxetQpYiLjxD14b7KjieNsMLPPaonNVsr+tYrhXq47rxl
- qGDto+/DlKBvvDd8oTRM4lFwaIQQymjRvyf/B8jPmrjWrXtjuMj/768eRevs3dXuBtai
- yW+2qbLRjJFiBVoph/sLYWCgor48Mms1NOoWTtNgtxSJPQyB22Dtveg1FyKIBlZhEoir
- 0gcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Sfkmb35IpZPof1bD/rOU/zeEqg9sSc9VPK5w6BC0wlc=;
- b=rrKn7v6v9oYamejHm2wqyDNxYCZ1lG42MVTmR5cxrsDxiiMZaj/DXKrrcs44kEngVC
- W01pqWQZieYT/Ad8XsfqAfiOzB2Iv9uJS1v1okiX5YT7ulYqOGlaq1OF6vup/iIybC+D
- nJFGp6xZQ2nKCxvo3/CNHFqr6+7/uum3w8SQvz1QxdSnfGkfNRlsbD8PRKC8L6rmrDgE
- OuvjtUfpOTv/mAA6GwWx/ukR4cG4N+PUIP2Az+ew7Rc56sM2+2McCTh8FHj9IFMHO4Gv
- mSl0uXz4C5HW+NkcQfb4YR7A66lrh+9fnOJtm1ogYen40cFqQ11TeUFHDN63fKlJhh0P
- WyvQ==
-X-Gm-Message-State: APjAAAXXqerxhEqu5K+FlyoDq6fxJtHkpyM+R21wozPnjZcaJiIcRZvO
- 4+uMP98hxaMBxtCJWZmNWPPWoQ==
-X-Google-Smtp-Source: APXvYqz3+aETwERtIyI+w4fTaxuNqIUthoZSuJH5Ho8GkNKVyNo+nwGfFEeLVB0BgaBmG5f4FqDcYQ==
-X-Received: by 2002:a63:6607:: with SMTP id a7mr13074659pgc.310.1581314226978; 
- Sun, 09 Feb 2020 21:57:06 -0800 (PST)
-Received: from hsinchu02.internal.sifive.com
- (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id s206sm11140234pfs.100.2020.02.09.21.57.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 09 Feb 2020 21:57:06 -0800 (PST)
-From: Zong Li <zong.li@sifive.com>
-To: paul.walmsley@sifive.com, palmer@dabbelt.com, aou@eecs.berkeley.edu,
- linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- joe@perches.com, nickhu@andestech.com
-Subject: [PATCH v2 2/2] riscv: adjust the indent
-Date: Mon, 10 Feb 2020 13:56:54 +0800
-Message-Id: <20200210055654.96725-3-zong.li@sifive.com>
-X-Mailer: git-send-email 2.25.0
-In-Reply-To: <20200210055654.96725-1-zong.li@sifive.com>
-References: <20200210055654.96725-1-zong.li@sifive.com>
+ id 1j12hy-0002pn-9C
+ for linux-riscv@bombadil.infradead.org; Mon, 10 Feb 2020 06:38:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
+ :Reply-To:Content-ID:Content-Description;
+ bh=amqo6k0yrlTgp2Iv3BrjmciUnr5C6MMqt01YZtUVLZg=; b=ROeap40WxPcwyqiogq7SIPdQd7
+ 4g4UIXNxJXBXY0iVDHHthL7lpNA7Bf9i8TRZRYk1svKp9mWGdjtJl7/v/DLgqQFZxYkr26CKBeIct
+ cSKbGsOhMl973ubjeyPy6t09DjcSWUZjQVSv7eJPo6j19brNcA6LETBJcuRhNeH8JdgNjGeMVoKQ3
+ w8LS1kwVfucf3qyVH/h5L2CBlARg6sDc6uqpwkTYFssjBnANWDiZ5ZT/QFLULhhpcLML4oL7OfuW3
+ aM0AYOWRbVlaQl5F8+wUYcvkgr8hbDn+MoHmMNdDQF5YtR9u0U4RAyGnEo8AYCdaC1gz6SFNrio4J
+ ubl9CfDg==;
+Received: from relay10.mail.gandi.net ([217.70.178.230])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j12ht-00053Y-W0
+ for linux-riscv@lists.infradead.org; Mon, 10 Feb 2020 06:38:12 +0000
+Received: from [192.168.0.12] (127.19.86.79.rev.sfr.net [79.86.19.127])
+ (Authenticated sender: alex@ghiti.fr)
+ by relay10.mail.gandi.net (Postfix) with ESMTPSA id 081D4240008;
+ Mon, 10 Feb 2020 06:37:20 +0000 (UTC)
+Subject: Re: Error on loading some network Kernel modules
+To: Vincent Chen <vincent.chen@sifive.com>, Anup Patel <Anup.Patel@wdc.com>
+References: <CADnnUqfhxWN=cyyr0QQyKrrO13LuDFS9NTqOLwm10CnwB3sDXA@mail.gmail.com>
+ <CABvJ_xiWDZfO6fOd4Roiy-yaUVFKrGEcBDBSWsvj2TKGGMjy0g@mail.gmail.com>
+ <CA+ZOyaj16M5q-g4wZ60MuUs4q1AfCB48wd+AN4TTJNu8K4NZRA@mail.gmail.com>
+ <68bb87cb-50d7-5e85-37f4-ad2cc44865f1@ghiti.fr>
+ <CA+ZOyahEPtuNqgSUHVcZpZp3WP3oX4jFOiqJvO827ye4+1DT8Q@mail.gmail.com>
+ <c12ed63e-c717-9fa0-7a6c-74d6d4a83a04@ghiti.fr>
+ <CABvJ_xiBVQjfJfZU0Dfp0fc9n_zAoc=DSHPFuDMKu4k5n0qJtQ@mail.gmail.com>
+ <CAAhSdy2gEK++MtyV9=o9r_-6CkaWMsQ0YZwB-TAkCCe3B4qTFg@mail.gmail.com>
+ <CABvJ_xjc+ojwqgMhxZ2a0Q+BvxzxUR6ab__+8iA6zx65GMKkxA@mail.gmail.com>
+ <a55f265e-71b2-5ebb-b079-6345007a442e@ghiti.fr>
+ <CABvJ_xjVLJEebCac_sb6-Yd_iHU1x8Daqw-iFqcGn11YKktm8Q@mail.gmail.com>
+ <MN2PR04MB6061ED6ABC668B59A7A544CF8D020@MN2PR04MB6061.namprd04.prod.outlook.com>
+ <CABvJ_xg_+XHhND-_8mq8gUN_yN-abMjDOWGg+MFVP0gwSAhxtw@mail.gmail.com>
+ <CABvJ_xgRE3P0uVhx9zyVZOzMjNYewJQK-nyhv8e5cfpNweLAGw@mail.gmail.com>
+ <CABvJ_xiqAmdqUjZ9s8w9E3BYU8ruFnACpiGZMH-Vc8nCKiwUcA@mail.gmail.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <2b69bae3-b00f-a991-16f6-8f682faeddfe@ghiti.fr>
+Date: Mon, 10 Feb 2020 01:37:20 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200209_215707_971226_97A51FD6 
-X-CRM114-Status: GOOD (  10.14  )
-X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+In-Reply-To: <CABvJ_xiqAmdqUjZ9s8w9E3BYU8ruFnACpiGZMH-Vc8nCKiwUcA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Spam-Note: CRM114 invocation failed
+X-Spam-Score: -0.7 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.178.230 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,90 +89,104 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Zong Li <zong.li@sifive.com>
+Cc: Carlos Eduardo de Paula <me@carlosedp.com>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ Anup Patel <anup@brainfault.org>, Paul Walmsley <paul@pwsan.com>,
+ Zong Li <zongbox@gmail.com>,
+ Romain Dolbeau <romain.dolbeau@european-processor-initiative.eu>,
+ Zong Li <zong.li@sifive.com>, linux-riscv <linux-riscv@lists.infradead.org>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Adjust the indent to match Linux coding style.
+Hi Vincent,
 
-Changes in v2:
-- Remove an unnecessary void* type casting. Suggested by Joe Perches.
+On 2/7/20 9:51 AM, Vincent Chen wrote:
+> On Fri, Feb 7, 2020 at 10:39 PM Vincent Chen <vincent.chen@sifive.com> wrote:
+>>
+>>>> For point1, we don't need a dedicated region as long as we are allocating
+>>>> modules from VMALLOC area. Let's avoid another virtual memory region if
+>>>> possible.
+>>>>
+>>>
+>>> Your comments inspire me if we can know the end of the percpu data
+>>> region, we can dynamically calculate the start address in each module
+>>> allocation by "<end of the percpu data region> - 2GB" if needed. I am
+>>> finding a way to derive the <end of the percpu data region>.
+>>>
+>>
+>> In the implementation of the idea, I found that I did have some
+>> misunderstandings about the mechanism of accessing static percpu
+>> symbol. Currently, I think this issue can be solved by modifying the
+>> module_allocate() to the following.
+>> #define MODULE_START max(PFN_ALIGN(&_end - 2 *
+>> SZ_1G), PFN_ALIGN(&_text + 8 * SZ_1K - 2 * SZ_1G))
+>> void *module_alloc(unsigned long size)
+>> {
+>> return __vmalloc_node_range(size, 1, MODULE_START,
+>> VMALLOC_END, GFP_KERNEL,
+>> PAGE_KERNEL_EXEC, 0,
+>> NUMA_NO_NODE,
+>> __builtin_return_address(0));
+>> }
+>> After applying a similar modification above, the kernel can
+>> successfully insert the test module provided by Romain. Any feedback
+>> is welcome. If someone is curious about the reason, I roughly
+>> described it at the end of this mail. I am sorry if someone was misled
+>> by early discussion.
+>>
+>>
+>> As mentioned early, kernel pre-allocates a memory region for each CPU
+>> to place the instances of the percpu data. According to the
+>> declaration type, each memory region can be divided into three chunks.
+>> These three chunks from low memory to high memory are static chunk,
+>> reserved chunk, and dynamic chunk.
+>> a. The static chunk is used for the static percpu symbols declared in the kernel
+>> b. The reserved chunk is used for the static percpu symbols declared
+>> in the kernel module
+>> c. The dynamic chunk is used for all dynamic percpu symbols.
+>>
+>> The order of the percpu symbols in each memory region is the same and
+>> is recorded in a symbol list maintained by the kernel. Therefore, the
+>> address of a specific CPU's percpu symbol is "The address of this
+>> percpu symbol in the symbol list" + "The offset from symbols list to
+>> the specific CPU region".
+>> a. The symbol list is created based on the ".data..percpu" section. In
+>> other words, the start address of this symbol list is the start
+>> address of ".data..percpu". When a dynamic percpu symbol is created or
+>> a kernel module import a static percpu symbol, the kernel will follow
+>> the above chunk rule to add this percpu symbol to its suitable region.
+>> b. When each memory area was created, "The offset from symbols list to
+>> the specific CPU region" has been recorded.
+>>
+>> Back to the issue, according to the rules above, the kernel will
+>> relocate the ".data..percpu" section of the loaded module to the end
+>> of the ".data..percpu" section of the kernel image. The end of the
+>> ".data..percpu" section of the kernel image almost equals _text, and
+>> the current size of the reserved chunk is 8KB. Therefore, the
+>> appropriate range to place the loaded module is [max(PFN_ALIGN(&_end -
+>> 2 *SZ_1G), PFN_ALIGN(&_text + 8 * SZ_1K - 2 * SZ_1G)),  VMALLOC_END].
+> 
+> I did not notice that the size of the kernel .text section is
+> impossible below 2 PAGES. Therefore, the modification of module_alloc
+> function can be reduced to the following.
+> void *module_alloc(unsigned long size)
+>   {
+>   return __vmalloc_node_range(size, 1, PFN_ALIGN(&_end - 2 *SZ_1G),
+>   VMALLOC_END, GFP_KERNEL,
+>   PAGE_KERNEL_EXEC, 0,
+>   NUMA_NO_NODE,
+>   __builtin_return_address(0));
+>   }
+> It is the same as Alex's suggestion. Is Alex willing to send this
+> patch to resolve this bug?
+> 
 
-Signed-off-by: Zong Li <zong.li@sifive.com>
----
- arch/riscv/mm/kasan_init.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+You did all the work, please send a patch explaining what you learnt and 
+feel free to add a Suggested-By. Anyway, I'll add a Reviewed-by when you 
+propose something.
 
-diff --git a/arch/riscv/mm/kasan_init.c b/arch/riscv/mm/kasan_init.c
-index f8eaf7e73a23..abeb590e81f2 100644
---- a/arch/riscv/mm/kasan_init.c
-+++ b/arch/riscv/mm/kasan_init.c
-@@ -19,18 +19,20 @@ asmlinkage void __init kasan_early_init(void)
- 	for (i = 0; i < PTRS_PER_PTE; ++i)
- 		set_pte(kasan_early_shadow_pte + i,
- 			mk_pte(virt_to_page(kasan_early_shadow_page),
--			PAGE_KERNEL));
-+			       PAGE_KERNEL));
- 
- 	for (i = 0; i < PTRS_PER_PMD; ++i)
- 		set_pmd(kasan_early_shadow_pmd + i,
--		 pfn_pmd(PFN_DOWN(__pa((uintptr_t)kasan_early_shadow_pte)),
--			__pgprot(_PAGE_TABLE)));
-+			pfn_pmd(PFN_DOWN
-+				(__pa((uintptr_t) kasan_early_shadow_pte)),
-+				__pgprot(_PAGE_TABLE)));
- 
- 	for (i = KASAN_SHADOW_START; i < KASAN_SHADOW_END;
- 	     i += PGDIR_SIZE, ++pgd)
- 		set_pgd(pgd,
--		 pfn_pgd(PFN_DOWN(__pa(((uintptr_t)kasan_early_shadow_pmd))),
--			__pgprot(_PAGE_TABLE)));
-+			pfn_pgd(PFN_DOWN
-+				(__pa(((uintptr_t) kasan_early_shadow_pmd))),
-+				__pgprot(_PAGE_TABLE)));
- 
- 	/* init for swapper_pg_dir */
- 	pgd = pgd_offset_k(KASAN_SHADOW_START);
-@@ -38,8 +40,9 @@ asmlinkage void __init kasan_early_init(void)
- 	for (i = KASAN_SHADOW_START; i < KASAN_SHADOW_END;
- 	     i += PGDIR_SIZE, ++pgd)
- 		set_pgd(pgd,
--		 pfn_pgd(PFN_DOWN(__pa(((uintptr_t)kasan_early_shadow_pmd))),
--			__pgprot(_PAGE_TABLE)));
-+			pfn_pgd(PFN_DOWN
-+				(__pa(((uintptr_t) kasan_early_shadow_pmd))),
-+				__pgprot(_PAGE_TABLE)));
- 
- 	flush_tlb_all();
- }
-@@ -86,7 +89,7 @@ void __init kasan_init(void)
- 	unsigned long i;
- 
- 	kasan_populate_early_shadow((void *)KASAN_SHADOW_START,
--			(void *)kasan_mem_to_shadow((void *)VMALLOC_END));
-+				    kasan_mem_to_shadow((void *)VMALLOC_END));
- 
- 	for_each_memblock(memory, reg) {
- 		void *start = (void *)__va(reg->base);
-@@ -95,14 +98,14 @@ void __init kasan_init(void)
- 		if (start >= end)
- 			break;
- 
--		populate(kasan_mem_to_shadow(start),
--			 kasan_mem_to_shadow(end));
-+		populate(kasan_mem_to_shadow(start), kasan_mem_to_shadow(end));
- 	};
- 
- 	for (i = 0; i < PTRS_PER_PTE; i++)
- 		set_pte(&kasan_early_shadow_pte[i],
- 			mk_pte(virt_to_page(kasan_early_shadow_page),
--			__pgprot(_PAGE_PRESENT | _PAGE_READ | _PAGE_ACCESSED)));
-+			       __pgprot(_PAGE_PRESENT | _PAGE_READ |
-+					_PAGE_ACCESSED)));
- 
- 	memset(kasan_early_shadow_page, 0, PAGE_SIZE);
- 	init_task.kasan_depth = 0;
--- 
-2.25.0
+Thank you Vincent for all your research,
 
+Alex
 
