@@ -2,36 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D59E158831
-	for <lists+linux-riscv@lfdr.de>; Tue, 11 Feb 2020 03:26:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F8061589A0
+	for <lists+linux-riscv@lfdr.de>; Tue, 11 Feb 2020 06:34:11 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WLq4UlIuZ4TU8jzuDj92taWWCALVupc7hYWK8++iDpY=; b=T7DwndTjqEDbw2
-	0NqhnHdFXa1ehwWhKxzZH/uQNjRYDw47cKCbmzCqQUSwNSFnQuQG0Etm7qfajyDPpiIocrRUkLAm6
-	S9k4TaPXc9gX8/DyctdTp9fErVPE7YK4lGyrcALbh/BAw0nTHBLnT7ARNFCIx19voeRSW0PuhmsCu
-	yFTMuFXGRT5gwUTmzenNO6rw8PHN12qRifiLlfL/MlcaYW42/m5igVdTMW2occc+PJqiRIxx31tl6
-	RUlo5AG9GyYoKXwz5jprZNEj4cQ16l20BJgZolXBw3IUP452ITUZ1L/f0LS4abhtsA1w8uhNoA5pY
-	+/56jXRaGxo7Taa/zC8g==;
+	List-Owner; bh=Mwmnj2Mh3WwfnwZCWtQm8v+ZNM5AU+v+3fKB+Vt+2i0=; b=F3a/zO2JTWGdCJ
+	miwEytUPvBf2VCMINkj5EwlXhXKb0umJ9W1SR/0OneLzNKYhGegUHFpqAByFXXwWr81c4d7sonkvT
+	4Tl2efrMSYde3nw2zPIWrTQ5vI2UDyfVXxG+eXoMhDSjFXQX7vlHICnFBXLEMQ3SZY1RuwxonQkgN
+	AHCX7jBDeyNLBhAOSSZmnwjvv+jbh6MjzlDSg6bFjnJrOjf0ARyMrvFdoA6E5IZ6+pw4ptY0Zx4Qf
+	cAa+LiP0TEIgjJjvbcIjfW0uM0wY/n9c/Fo5shBN3ir+4pXKsLOTFdNXVgwqqyoD1JrJyBUbovUYh
+	ImiD6D5117u6k/smrmtA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1LFR-00062i-Oq; Tue, 11 Feb 2020 02:26:01 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1LFM-00061n-T5; Tue, 11 Feb 2020 02:25:58 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1FA6531B;
- Mon, 10 Feb 2020 18:25:54 -0800 (PST)
-Received: from [10.162.16.95] (p8cg001049571a15.blr.arm.com [10.162.16.95])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EAA353F6CF;
- Mon, 10 Feb 2020 18:25:37 -0800 (PST)
+	id 1j1OBO-0004IT-R9; Tue, 11 Feb 2020 05:34:02 +0000
+Received: from pegase1.c-s.fr ([93.17.236.30])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j1OBK-0004HU-MT; Tue, 11 Feb 2020 05:34:00 +0000
+Received: from localhost (mailhub1-int [192.168.12.234])
+ by localhost (Postfix) with ESMTP id 48Grzf3xCbz9v3Zl;
+ Tue, 11 Feb 2020 06:33:50 +0100 (CET)
+Authentication-Results: localhost; dkim=pass
+ reason="1024-bit key; insecure key"
+ header.d=c-s.fr header.i=@c-s.fr header.b=eiJDqafS; dkim-adsp=pass;
+ dkim-atps=neutral
+X-Virus-Scanned: Debian amavisd-new at c-s.fr
+Received: from pegase1.c-s.fr ([192.168.12.234])
+ by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
+ with ESMTP id zkhy9QdmXM9w; Tue, 11 Feb 2020 06:33:50 +0100 (CET)
+Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
+ by pegase1.c-s.fr (Postfix) with ESMTP id 48Grzf2Rpnz9v3ZZ;
+ Tue, 11 Feb 2020 06:33:50 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=c-s.fr; s=mail;
+ t=1581399230; bh=Mwmnj2Mh3WwfnwZCWtQm8v+ZNM5AU+v+3fKB+Vt+2i0=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=eiJDqafSfDYphjROC10Vnz8Xn4zZIPklngVdYVaguBX5QmUxSbROO5kAJ30wvAhzg
+ 0fV39U/k7ykq9c6fVHRsjt4aiC/Qv+CenzoBQFemfXJIaflYEGRvsm8/278XrXInkJ
+ zdjMm7FlftlG1Bdd/ww1KQhN8+LUDsKmilPkcQWI=
+Received: from localhost (localhost [127.0.0.1])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id 112868B787;
+ Tue, 11 Feb 2020 06:33:51 +0100 (CET)
+X-Virus-Scanned: amavisd-new at c-s.fr
+Received: from messagerie.si.c-s.fr ([127.0.0.1])
+ by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
+ with ESMTP id fAOO4UrrOOMa; Tue, 11 Feb 2020 06:33:50 +0100 (CET)
+Received: from [192.168.4.90] (unknown [192.168.4.90])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id D691D8B776;
+ Tue, 11 Feb 2020 06:33:47 +0100 (CET)
 Subject: Re: [PATCH V13] mm/debug: Add tests validating architecture page
  table helpers
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>,
- Christophe Leroy <christophe.leroy@c-s.fr>
+To: Anshuman Khandual <anshuman.khandual@arm.com>,
+ Russell King - ARM Linux admin <linux@armlinux.org.uk>
 References: <1580897674-16456-1-git-send-email-anshuman.khandual@arm.com>
  <202002060619.wEOdAZU1%lkp@intel.com>
  <78d3ce6b-e100-2561-6b09-124c29731d1a@arm.com>
@@ -41,28 +65,36 @@ References: <1580897674-16456-1-git-send-email-anshuman.khandual@arm.com>
  <20200210100200.GB25745@shell.armlinux.org.uk>
  <7cb3a5bb-eaea-a01c-4047-e3c000b7ad1d@c-s.fr>
  <20200210110639.GC25745@shell.armlinux.org.uk>
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Message-ID: <82317d50-57a2-ce84-7557-21635d57448e@arm.com>
-Date: Tue, 11 Feb 2020 07:55:41 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ <82317d50-57a2-ce84-7557-21635d57448e@arm.com>
+From: Christophe Leroy <christophe.leroy@c-s.fr>
+Message-ID: <aa540cd6-93a0-1be4-cdff-c9af43ed7d8e@c-s.fr>
+Date: Tue, 11 Feb 2020 06:33:47 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-In-Reply-To: <20200210110639.GC25745@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <82317d50-57a2-ce84-7557-21635d57448e@arm.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200210_182557_028265_D1F1F2AD 
-X-CRM114-Status: GOOD (  25.35  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200210_213359_032215_4C55D186 
+X-CRM114-Status: GOOD (  14.27  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [93.17.236.30 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,127 +147,39 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 
 
-On 02/10/2020 04:36 PM, Russell King - ARM Linux admin wrote:
-> On Mon, Feb 10, 2020 at 11:46:23AM +0100, Christophe Leroy wrote:
->>
->>
->> Le 10/02/2020 à 11:02, Russell King - ARM Linux admin a écrit :
->>> On Mon, Feb 10, 2020 at 07:38:38AM +0100, Christophe Leroy wrote:
->>>>
->>>>
->>>> Le 10/02/2020 à 06:35, Anshuman Khandual a écrit :
->>>>>
->>>>>
->>>>> On 02/10/2020 10:22 AM, Andrew Morton wrote:
->>>>>> On Thu, 6 Feb 2020 13:49:35 +0530 Anshuman Khandual <anshuman.khandual@arm.com> wrote:
->>>>>>
->>>>>>>
->>>>>>> On 02/06/2020 04:40 AM, kbuild test robot wrote:
->>>>>>>> Hi Anshuman,
->>>>>>>>
->>>>>>>> Thank you for the patch! Yet something to improve:
->>>>>>>>
->>>>>>>> [auto build test ERROR on powerpc/next]
->>>>>>>> [also build test ERROR on s390/features linus/master arc/for-next v5.5]
->>>>>>>> [cannot apply to mmotm/master tip/x86/core arm64/for-next/core next-20200205]
->>>>>>>> [if your patch is applied to the wrong git tree, please drop us a note to help
->>>>>>>> improve the system. BTW, we also suggest to use '--base' option to specify the
->>>>>>>> base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
->>>>>>>>
->>>>>>>> url:    https://github.com/0day-ci/linux/commits/Anshuman-Khandual/mm-debug-Add-tests-validating-architecture-page-table-helpers/20200205-215507
->>>>>>>> base:   https://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux.git next
->>>>>>>> config: ia64-allmodconfig (attached as .config)
->>>>>>>> compiler: ia64-linux-gcc (GCC) 7.5.0
->>>>>>>> reproduce:
->>>>>>>>           wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->>>>>>>>           chmod +x ~/bin/make.cross
->>>>>>>>           # save the attached .config to linux build tree
->>>>>>>>           GCC_VERSION=7.5.0 make.cross ARCH=ia64
->>>>>>>>
->>>>>>>> If you fix the issue, kindly add following tag
->>>>>>>> Reported-by: kbuild test robot <lkp@intel.com>
->>>>>>>>
->>>>>>>> All error/warnings (new ones prefixed by >>):
->>>>>>>>
->>>>>>>>      In file included from include/asm-generic/pgtable-nopud.h:8:0,
->>>>>>>>                       from arch/ia64/include/asm/pgtable.h:586,
->>>>>>>>                       from include/linux/mm.h:99,
->>>>>>>>                       from include/linux/highmem.h:8,
->>>>>>>>                       from mm/debug_vm_pgtable.c:14:
->>>>>>>>      mm/debug_vm_pgtable.c: In function 'pud_clear_tests':
->>>>>>>>>> include/asm-generic/pgtable-nop4d-hack.h:47:32: error: implicit declaration of function '__pgd'; did you mean '__p4d'? [-Werror=implicit-function-declaration]
->>>>>>>>       #define __pud(x)    ((pud_t) { __pgd(x) })
->>>>>>>>                                      ^
->>>>>>>>>> mm/debug_vm_pgtable.c:141:8: note: in expansion of macro '__pud'
->>>>>>>>        pud = __pud(pud_val(pud) | RANDOM_ORVALUE);
->>>>>>>>              ^~~~~
->>>>>>>>>> include/asm-generic/pgtable-nop4d-hack.h:47:22: warning: missing braces around initializer [-Wmissing-braces]
->>>>>>>>       #define __pud(x)    ((pud_t) { __pgd(x) })
->>>>>>>>                            ^
->>>>>>>>>> mm/debug_vm_pgtable.c:141:8: note: in expansion of macro '__pud'
->>>>>>>>        pud = __pud(pud_val(pud) | RANDOM_ORVALUE);
->>>>>>>>              ^~~~~
->>>>>>>>      cc1: some warnings being treated as errors
->>>>>>>
->>>>>>> This build failure is expected now given that we have allowed DEBUG_VM_PGTABLE
->>>>>>> with EXPERT without platform requiring ARCH_HAS_DEBUG_VM_PGTABLE. This problem
->>>>>>> i.e build failure caused without a platform __pgd(), is known to exist both on
->>>>>>> ia64 and arm (32bit) platforms. Please refer https://lkml.org/lkml/2019/9/24/314
->>>>>>> for details where this was discussed earlier.
->>>>>>>
->>>>>>
->>>>>> I'd prefer not to merge a patch which is known to cause build
->>>>>> regressions.  Is there some temporary thing we can do to prevent these
->>>>>> errors until arch maintainers(?) get around to implementing the
->>>>>> long-term fixes?
->>>>>
->>>>> We could explicitly disable CONFIG_DEBUG_VM_PGTABLE on ia64 and arm platforms
->>>>> which will ensure that others can still use the EXPERT path.
->>>>>
->>>>> config DEBUG_VM_PGTABLE
->>>>> 	bool "Debug arch page table for semantics compliance"
->>>>> 	depends on MMU
->>>>> 	depends on !(IA64 || ARM)
->>>>> 	depends on ARCH_HAS_DEBUG_VM_PGTABLE || EXPERT
->>>>> 	default n if !ARCH_HAS_DEBUG_VM_PGTABLE
->>>>> 	default y if DEBUG_VM
->>>>>
->>>>
->>>> On both ia32 and arm, the fix is trivial.
->>>>
->>>> Can we include the fix within this patch, just the same way as the
->>>> mm_p4d_folded() fix for x86 ?
->>>
->>> Why should arm include a macro for something that nothing (apart from
->>> this checker) requires?  If the checker requires it but the rest of
->>> the kernel does not, it suggests that the checker isn't actually
->>> correct, and the results can't be relied upon.
->>>
->>
->> As far as I can see, the problem is that arm opencodes part of the API
->> instead of including asm-generic/pgtable-nopmd.h
->>
->> Here, the ARM has 2 levels, ie only PGD and PTE. But instead of defining
->> __pgd and __pte and getting everything else from asm-generic, it defines a
->> __pmd then redefines the folded levels like the pud, etc ...
->>
->> That's exactly what the checker aims at detecting: architectures than do not
->> properly use the standard linux page table structures.
+Le 11/02/2020 à 03:25, Anshuman Khandual a écrit :
 > 
-> There are good reasons for the way ARM does stuff.  The generic crap was
-> written without regard for the circumstances that ARM has, and thus is
-> entirely unsuitable for 32-bit ARM.
+> 
+> On 02/10/2020 04:36 PM, Russell King - ARM Linux admin wrote:
+>> There are good reasons for the way ARM does stuff.  The generic crap was
+>> written without regard for the circumstances that ARM has, and thus is
+>> entirely unsuitable for 32-bit ARM.
+> 
+> Since we dont have an agreement here, lets just settle with disabling the
+> test for now on platforms where the build fails. CONFIG_EXPERT is enabling
+> this test for better adaptability and coverage, hence how about re framing
+> the config like this ? This at the least conveys the fact that EXPERT only
+> works when platform is neither IA64 or ARM.
 
-Since we dont have an agreement here, lets just settle with disabling the
-test for now on platforms where the build fails. CONFIG_EXPERT is enabling
-this test for better adaptability and coverage, hence how about re framing
-the config like this ? This at the least conveys the fact that EXPERT only
-works when platform is neither IA64 or ARM.
+Agreed
 
-config DEBUG_VM_PGTABLE
-	bool "Debug arch page table for semantics compliance"
-	depends on MMU
-	depends on ARCH_HAS_DEBUG_VM_PGTABLE || (EXPERT &&  !(IA64 || ARM))
-	default n if !ARCH_HAS_DEBUG_VM_PGTABLE
-	default y if DEBUG_VM
+> 
+> config DEBUG_VM_PGTABLE
+> 	bool "Debug arch page table for semantics compliance"
+> 	depends on MMU
+> 	depends on ARCH_HAS_DEBUG_VM_PGTABLE || (EXPERT &&  !(IA64 || ARM))
+
+I think it's maybe better to have a dedicated depends line:
+
+depends on !IA64 && !ARM
+depends on ARCH_HAS_DEBUG_VM_PGTABLE || EXPERT
+
+The day arm and/or ia64 is ready for building the test, we can remove 
+that depends.
+
+> 	default n if !ARCH_HAS_DEBUG_VM_PGTABLE
+> 	default y if DEBUG_VM
+> 
+
+Christophe
 
