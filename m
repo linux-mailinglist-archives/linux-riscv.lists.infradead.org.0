@@ -2,90 +2,92 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D02FE15A0BE
-	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 06:40:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DC7815A67A
+	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 11:34:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jrIYAa6ZrSZ56lAD/bQW8k4KVnhb3nIxt303TpPxwZ8=; b=qpPr7g/GFaJCsRPxLm/rXUcmqm
-	6DqkLm4IMlMrqlH6Y/ksR30+8awIpFspZ1T+fO3eHnaQHgxViyyl0vBQGliq4DaxAD49hygnx9lh1
-	003oUJbiN8aEquIuuRROF9Zh1aOP+OlE87tp6lO/hTWFpB5mTOyVx2lbCvxKlHoGGio0ztynZNzVh
-	sAtx7zaOZIIBaJkJtqIMSTncJReqRLRwCZEQ69n3F3b5gJs7VWNO88vlwGI+0O3Hq7SGADr0hjHc3
-	z/xBpeU2kij9mkHT5IrakEpemSoR06/762vyi2SCIBw9HcwnjQklEiD69SH8pBUb4Vao8maBrfFN0
-	jO3HykVQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=N8te8B6+RyrgahzkzH8LOE+reA6OHI90ZfKaIXgPya4=; b=DWuMmZe3mOkVgC
+	hTgU4lsIH65liR/R6l3BcFlH8l9NKNhq3VhRjMiMmxj9vU8jAhqwR5j7b2NR4yq03wL71/WMWADHA
+	lMk4qQC6IfbYFUW+vLuiYBBv6BMgypfhCR2Ql2HLmQofy3s6snwy87L+RTDCONw34JWu3Rl8cfSkx
+	HyLml/XfbuiFEGRUJU5fHuhlgV1GmgL+5lhEvM5E3vtm9zIuRf2szDahAhMBJoBGdI+aHaQnIJCIo
+	QG6i+G+I9on80i1p5BUMNUZRlHkcTSBHiK23Q4Ut6k4GlwV3YBWyfyEDbtj2U+kliPzszzpOR1ljP
+	JoHVuu6kITJUopxNJ0lA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1kkr-00088l-V8; Wed, 12 Feb 2020 05:40:09 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1j1pLz-0002PG-Rb; Wed, 12 Feb 2020 10:34:47 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1kkn-0007Sl-0X
- for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 05:40:07 +0000
-Received: by mail-oi1-x243.google.com with SMTP id a22so872159oid.13
- for <linux-riscv@lists.infradead.org>; Tue, 11 Feb 2020 21:40:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:subject:message-id:mime-version:content-disposition
- :user-agent; bh=jrIYAa6ZrSZ56lAD/bQW8k4KVnhb3nIxt303TpPxwZ8=;
- b=nJI5yaMV3NQjBy+BeRHUOdytoczVAcBAuPjCxfYiCxt0t2svKOFAVlBqsnGF82k7n3
- AjU+3IAb3DkHPhlHd8Ly5boblK4OLKtIo7da00HKKkTFUOTxGVcXq4OZN9bXJfaPHVDe
- yGlrBgxIyBZ4ZSwnzILJ7bMx9OCvD/vlwxn/0AFJOPQpvXD8T/JCUeE/kVQ6AZ2Pc4we
- uI5jAziQcAgabSbvCzuE8uFNUptXVPszUSlxraGRhQs9s+cCnQT5dvV5eiQzDwdObbpa
- Ge9wa2HN+ibsqxkYqRzgIPZDW+nQtABdbbXyubwh5tA9sHwdVDl9U4eTWv3lstNscUsP
- eU/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=jrIYAa6ZrSZ56lAD/bQW8k4KVnhb3nIxt303TpPxwZ8=;
- b=ItcQJotmfYSXO4WDR3ioFryUM/oyNK9PLJcOvNfRBJGP12EjynOU9sHVjBiZ1A8gvM
- kbqSgRL6yicjn5pjUr9K7l0VgDHZP2jO6HqcQ/YDGt7Vd3VUqZeiRTkqexKRwfCnnmBw
- 86nSlwQKsQ1MD3bz+gGlYd8XucyYsWI68agg8y8iUsK+FDJ0Amop3kMWwfmxk1/nVC3A
- oTQUlb+cbfRos8+LBgoiMK2uMrO7aMrK6wVWRcYGq2hc1yHTKCBdh25CWhdZlFknES3V
- Wm8OtmJwajtkZGh6GtDBp6vfGZD+nrX9H0t/gbB7ablvxUv4A7zr9UNa4mj1CwIC/PuP
- veUg==
-X-Gm-Message-State: APjAAAVhfxmETTwasJuOke81a8mq2v72BUBbW4cJVCcxKcQtZrI6oMpH
- rfiR4d2Kc7YkTRbOOHDALQjPpdfRbIs=
-X-Google-Smtp-Source: APXvYqwuo2D4fWOpBpy05vgOsgnCCb45dO8OlIew3/4SUXyKGLj5GkfCevHUADuKi0WsWv6dOEddHg==
-X-Received: by 2002:aca:dc45:: with SMTP id t66mr5323849oig.39.1581486003475; 
- Tue, 11 Feb 2020 21:40:03 -0800 (PST)
-Received: from ubuntu-m2-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id w8sm1989786ote.80.2020.02.11.21.40.02
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 11 Feb 2020 21:40:02 -0800 (PST)
-Date: Tue, 11 Feb 2020 22:40:01 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com
-Subject: Status of building and booting the RISCV64 kernel with Clang
-Message-ID: <20200212054001.GA27071@ubuntu-m2-xlarge-x86>
+ id 1j1pLo-0002KQ-Oi
+ for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 10:34:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1581503677; x=1613039677;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Vf+1KmCT6a9twMxtUzgmN6KEPGnpMXGs3sTdwt/l51k=;
+ b=M8pXh2n1jUwjxlJgBwnsEr+Oa8FNRAAoa6y/JLYsKtcZuytyK45ndm25
+ dMlnEjU/kIU6GAG4U/ltTNbNc+93URRYxdcYNdZ5APd7MDqlNXFb/DcbB
+ GpVtaxuqG66CbitXzSMpU7sQwYCnxnn7bKNfoJMGBmDm8YVFjvYHuFs5B
+ SIqv4VzXJKZA4xmb4A+o5xBYZ6xM2+SlHDIST4PPvkaw7UfHQuBS+JgKd
+ M8EwR+BqKBmQ9PgyqiPzscdZCH4ECon5V+mcdRsqNdUcrnwEh5ziC+Dx4
+ hyDvebBlXRdhU2RJxmuCnEMc3XkGYhDRFxjtpgHba9v5WFuZzgTMWmlVc Q==;
+IronPort-SDR: g0n04Y5I06TvY3nN8YeQrXNi/XEKOTPq/wNF/Wk5xUV0GlG4tsLHPAqlb2yG9k+8OH9rW8JyWq
+ H3rF82MGR4DRWXAOaQGJ5E3ZZ4FIIhMGXBWuDGnyD4IxLDxixaoVIuMPycxEDmx4n35h+oNAXn
+ RLQOdsESa8OKaWOXKeLrIgnlG9lxfIXktGVa6YhCMmt5K4UAD2o0PaO4ZwA046JRiB1Dd9c1q0
+ jihK+gqwGq1hs3WHybZw2hgPXKGsvqHv8A30bfYh6stHi6ySj0/RS6TqdcdCEj6j6593vU0Oc3
+ ls0=
+X-IronPort-AV: E=Sophos;i="5.70,428,1574092800"; d="scan'208";a="131113039"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 12 Feb 2020 18:34:35 +0800
+IronPort-SDR: znx8cK1Qj2mLM/VSITTsIiE3Sw5JjqNbBnhrxEh46alHOyQK32GxfxlIWEb609GrVoHUDnAZSF
+ 8ELeBlM5Q7wnkfpPuNN6dAzXevZ57hHx5985/ll5xFdj7HN8zZG7Dny4Z/vKYFVpU7vRggzRC7
+ VbBiJ2BeIQH85Bpk1K2Ne9KmihKXeg0bMl9T6kc7PtSdxpG3lE9F0KSRBvBWEGtsm9Z2fq9zPA
+ on/xEkIwCiCIWduRROfgzncImR4FphO5el5C6hU1CQGu5J6cARFaAKvjhy0wmmqvm1EpO2S03g
+ thtJLa8UL3lVIXUAWbc0xTjK
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Feb 2020 02:27:23 -0800
+IronPort-SDR: UYR5J+b82oRTRsP6bBgY/8XCgOtV4LIVcnlto9fThXviPT7PSFZyGaPKMuvmyuNsp6Kpb5yBDP
+ h2eHu2BrvfIaaBDWN8wkKdww1XKyBapfN/WtcZzK+dh1t0ctP11QMgBiDlDmenBthj+iYyHDCR
+ iEOETn84rdRU57KZ0F+BFMldWpJ8ZmwZ2rm6DkrLLvmLHiEg+APP6ruPbXLA2Mx1fWeNAgbrwl
+ Rk5+Si5RHtGzzszJiBU0IOjLWjzcZ5d+31jHXZGAD07oCI+5YsX19zSI1BBCwHySe4DLhQ70MJ
+ z0I=
+WDCIronportException: Internal
+Received: from washi.fujisawa.hgst.com ([10.149.53.254])
+ by uls-op-cesaip01.wdc.com with ESMTP; 12 Feb 2020 02:34:32 -0800
+From: Damien Le Moal <damien.lemoal@wdc.com>
+To: linux-riscv@lists.infradead.org,
+	Palmer Dabbelt <palmer@dabbelt.com>
+Subject: [PATCH 00/10] Kendryte k210 SoC boards support
+Date: Wed, 12 Feb 2020 19:34:22 +0900
+Message-Id: <20200212103432.660256-1-damien.lemoal@wdc.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200211_214005_063720_D9D8F5E3 
-X-CRM114-Status: GOOD (  15.19  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200212_023436_877375_0966584F 
+X-CRM114-Status: GOOD (  17.79  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [natechancellor[at]gmail.com]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,179 +99,217 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
+Cc: Anup Patel <Anup.Patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi all,
+This series adds support to boot nommu Linux on Kendryte K210 SoC based
+boards. This is all based on initial work done by Christoph Hellwig.
 
-We (ClangBuiltLinux) have started looking at building the RISCV64
-kernel with clang and booting it in QEMU. I thought it would be nice to
-give some sort of status update and go over the issues we have notice
-so far and see what people's thoughts are for solving them. If this
-email is unwelcome, apologies! This testing was done with clang-11 (tip
-of tree) and QEMU 4.2.0 with this rootfs (built with
-buildroot-2019.02.9):
+The first 2 patches fix riscv gitignore and a potential nommu
+compilation error. These patches are not specific to the Kendryte
+support.
 
-https://github.com/nathanchance/continuous-integration/blob/21ea056022f9cf1d62b7f805c3862daf9d89736f/images/riscv/rootfs.cpio
+Patch 3 adds unaligned load/store trap handlers for M-mode.
+
+Patch 4 enables a builtin DTB to allow passing a device tree to the
+kernel when the board bootchain is enabled to pass one.
+
+Patch 5 introduces an early SoC initialization enabling very early
+hardware initialization not possible with device tree entries pointing
+to drivers. This is used in patch 6 which introduces a sysctl driver for
+the K210 SoC. The early SoC initialization is used to enable the
+additional 2MB of SRAM normally reserved to the SoC AI chip.
+
+Patch 7 to 9 add necessary Kconfig changes, a defconfig and a generic
+device tree suitable for many K210 boards.
+
+Finally, patch 10 adds compilation of a bootable image file (bin file)
+that can be used to flash the board ROM.
+
+This series was tested on the Kendryte KD233 development board, the
+Sipeed MAIX dan dock board and the Sipeed MAIXDUINO board. The userspace
+used was built using a modified buildroot tree for the toolchain part
+and an unmodified busybox tree for the initramfs image (embedded in the
+kernel as a cpio file). The folowwing github project contains the
+modified buildroot tree:
+
+https://github.com/damien-lemoal/riscv64-nommu-buildroot
+
+This is based on work from Christoph Hellwig, with additional changes
+and updates to the latest upstream versions for buildroot and uClibc.
+
+Precompiled versions of the toolchain (gcc 9.2) and initramfs file tree
+and cpio file can be found in this project under the directory:
+
+buildroot/riscv64-uclibc-nommu/
+
+Flashing the file arch/riscv/boot/loader.bin to a board can be done
+using the Sipeed kflash.py tool with the command:
+
+kflash.py/kflash.py -p /dev/ttyUSB0 -b 1500000 -t loader.bin
+
+The kflash.py tool can be found here:
+
+https://github.com/sipeed/kflash.py
+
+For reference, using the Sipeed MAIXDUINO board, here is the boot
+output:
+
+[INFO] Rebooting... 
+--- forcing DTR inactive
+--- forcing RTS inactive
+--- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+[    0.000000] Linux version 5.6.0-rc1-00011-ga2b5be1c4374 (damien@yyy) (gcc version 8.2.0 (Buildroot 2018.11-rc2-00003-ga0787e9)) #610 SMP Wed Feb 12 18:53:50 JST 2020
+[    0.000000] earlycon: sifive0 at MMIO 0x0000000038000000 (options '')
+[    0.000000] printk: bootconsole [sifive0] enabled
+[    0.000000] initrd not found or empty - disabling initrd
+[    0.000000] Zone ranges:
+[    0.000000]   DMA32    [mem 0x0000000080000000-0x00000000807fffff]
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x00000000807fffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x00000000807fffff]
+[    0.000000] elf_hwcap is 0x112d
+[    0.000000] percpu: max_distance=0x18000 too large for vmalloc space 0x0
+[    0.000000] percpu: Embedded 12 pages/cpu s18272 r0 d30880 u49152
+[    0.000000] Built 1 zonelists, mobility grouping off.  Total pages: 2020
+[    0.000000] Kernel command line: earlycon console=ttySIF0
+[    0.000000] Dentry cache hash table entries: 1024 (order: 1, 8192 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.000000] Sorting __ex_table...
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 6328K/8192K available (924K kernel code, 110K rwdata, 164K rodata, 321K init, 91K bss, 1864K reserved, 0K cma-reserved)
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] NR_IRQS: 0, nr_irqs: 0, preallocated irqs: 0
+[    0.000000] plic: mapped 65 interrupts with 2 handlers for 4 contexts.
+[    0.000000] riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [0]
+[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x3990be68b, max_idle_ns: 881590404272 ns
+[    0.000014] sched_clock: 64 bits at 7MHz, resolution 128ns, wraps every 4398046511054ns
+[    0.008232] Console: colour dummy device 80x25
+[    0.012474] Calibrating delay loop (skipped), value calculated using timer frequency.. 15.60 BogoMIPS (lpj=31200)
+[    0.022678] pid_max: default: 4096 minimum: 301
+[    0.027288] Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.034414] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.044796] rcu: Hierarchical SRCU implementation.
+[    0.049602] smp: Bringing up secondary CPUs ...
+[    0.054746] smp: Brought up 1 node, 2 CPUs
+[    0.059093] devtmpfs: initialized
+[    0.065523] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.074544] futex hash table entries: 16 (order: -2, 1024 bytes, linear)
+[    0.082512] Kendryte K210 SoC sysctl
+[    0.096010] clocksource: Switched to clocksource riscv_clocksource
+[    0.178581] workingset: timestamp_bits=62 max_order=11 bucket_order=0
+[    0.185846] 38000000.serial: ttySIF0 at MMIO 0x38000000 (irq = 1, base_baud = 0) is a SiFive UART v0
+[    0.194344] printk: console [ttySIF0] enabled
+[    0.194344] printk: console [ttySIF0] enabled
+[    0.202929] printk: bootconsole [sifive0] disabled
+[    0.202929] printk: bootconsole [sifive0] disabled
+[    0.214853] random: get_random_bytes called from 0x0000000080055178 with crng_init=0
+[    0.223606] devtmpfs: mounted
+[    0.226861] Freeing unused kernel memory: 320K
+[    0.230574] This architecture does not have kernel memory protection.
+[    0.236987] Run /sbin/init as init process
+[    0.241181] Run /etc/init as init process
+[    0.245178] Run /bin/init as init process
+
+-----------------------------
+| Kendryte K210 NOMMU Linux |
+-----------------------------
+Mounting /proc
+Starting shell
 
 
+BusyBox v1.32.0.git (2020-02-12 17:51:45 JST) hush - the humble shell
+Enter 'help' for a list of built-in commands.
 
-Outstanding issues on the LLVM side:
+/ # cat /proc/cpuinfo 
+processor	: 0
+hart		: 0
+isa		: rv64imafdc
 
-1. LLVM output over -mno-save-restore (https://github.com/ClangBuiltLinux/linux/issues/804)
+processor	: 1
+hart		: 1
+isa		: rv64imafdc
 
-The kernel passes -mno-save-restore to KBUILD_CFLAGS which causes a ton
-of warning spam from LLVM:
-
-'-save-restore' is not a recognized feature for this target (ignoring feature)
-
-This has been reported upstream as https://llvm.org/pr44853 but it could
-easily be fixed in the kernel by guarding the call against
-CONFIG_CC_IS_CLANG (although this is obviously fragile if the ABI ever
-changes to -msave-restore by default).
-
-2. -fPIC causes issues when using Clang + GNU as (https://github.com/ClangBuiltLinux/linux/issues/865)
-
-The kernel on a whole builds with -fno-integrated-as so we fall back to
-GNU as when assembling. Kernel modules are built with -fPIC and fail to
-build with a bunch of assembler errors like so (seen with binutils
-2.31.1 and ToT):
-
-/tmp/flexfilelayout-2d0cdc.s:359: Error: bad expression
-/tmp/flexfilelayout-2d0cdc.s:359: Error: illegal operands `auipc a0,%got_pcrel_hi(mem_map)'
-/tmp/flexfilelayout-2d0cdc.s:367: Error: bad expression
-/tmp/flexfilelayout-2d0cdc.s:367: Error: illegal operands `auipc a2,%got_pcrel_hi(pfn_base)'
-/tmp/flexfilelayout-2d0cdc.s:374: Error: bad expression
-/tmp/flexfilelayout-2d0cdc.s:374: Error: illegal operands `auipc a3,%got_pcrel_hi(va_pa_offset)'
-
-This has been reported upstream as https://llvm.org/pr44854. The way to
-work around this in the kernel is to just disable CONFIG_MODULES (which
-is a big hammer but that obviously won't be sent upstream in any form).
-
-
-
-
-Outstanding issues on the kernel side:
-
-1. -Wuninitialized warnings around local register variables
-
-There are a few warnings around local "register" variables, which are
-uninitialized when using clang:
-
-In file included from ../arch/riscv/kernel/asm-offsets.c:10:
-In file included from ../include/linux/sched.h:12:
-../arch/riscv/include/asm/current.h:30:9: warning: variable 'tp' is uninitialized when used here [-Wuninitialized]
-        return tp;
-               ^~
-../arch/riscv/include/asm/current.h:29:33: note: initialize the variable 'tp' to silence this warning
-        register struct task_struct *tp __asm__("tp");
-                                       ^
-                                        = NULL
-1 warning generated.
-
-../arch/riscv/kernel/process.c:112:19: warning: variable 'gp' is uninitialized when used here [-Wuninitialized]
-                childregs->gp = gp;
-                                ^~
-../arch/riscv/kernel/process.c:110:34: note: initialize the variable 'gp' to silence this warning
-                const register unsigned long gp __asm__ ("gp");
-                                               ^
-                                                = 0
-1 warning generated.
-
-../arch/riscv/kernel/stacktrace.c:34:8: warning: variable 'current_sp' is uninitialized when used here [-Wuninitialized]
-                sp = current_sp;
-                     ^~~~~~~~~~
-../arch/riscv/kernel/stacktrace.c:32:42: note: initialize the variable 'current_sp' to silence this warning
-                const register unsigned long current_sp __asm__ ("sp");
-                                                       ^
-                                                        = 0
-1 warning generated.
-
-The way to solve these is to make these register variables global, where
-they are properly initialized and work. This has been done in the kernel
-a few times:
-
-fe92da0f355e ("MIPS: Changed current_thread_info() to an equivalent supported by both clang and GCC")
-3337a10e0d0c ("arm64: LLVMLinux: Add current_stack_pointer() for arm64")
-786248705ecf ("arm64: LLVMLinux: Calculate current_thread_info from current_stack_pointer")
-0abc08baf2dd ("ARM: 8170/1: Add global named register current_stack_pointer for ARM")
-f6c9cbf091a4 ("ARM: 8173/1: Calculate current_thread_info from current_stack_pointer")
-
-The LLVM community has rejected adopting GCC's behavior of allowing
-local register variables because it would seriously complicate the
-register allocator; the full discussion can be viewed here:
-http://lists.llvm.org/pipermail/llvm-dev/2014-March/071472.html
-
-This is the diff I am currently working with; I am not sure of any side
-effects aside from two that I will list below.
-
-https://gist.github.com/b5fda253a243127736fd2ac5d317dcdd
-
-
-
-Booting in QEMU:
-
-This is where things get interesting... The kernel does not start at all
-when the registers are purely local. It does start when the tp register
-is moved globally (arch/riscv/include/asm/current.h diff above) but it
-does not finish getting to userspace. Additionally, the diff in
- -s ARCH=riscv CC=clang CROSS_COMPILE=riscv64-linux-gnu- O=out.riscv distclean defconfig all
+/ # 
+/ # ls -l /
+drwxrwxr-x    2 1000     1000             0 Feb 12  2020 bin
+drwxr-xr-x    2 0        0                0 Jan  1 00:00 dev
+drwxrwxr-x    2 1000     1000             0 Feb 12  2020 etc
+dr-xr-xr-x   58 0        0                0 Jan  1 00:00 proc
+drwxrwxr-x    2 1000     1000             0 Feb 12  2020 root
+drwxrwxr-x    2 1000     1000             0 Feb 12  2020 sbin
+drwxrwxr-x    2 1000     1000             0 Feb 12  2020 sys
+drwxrwxr-x    2 1000     1000             0 Feb 12  2020 tmp
+drwxrwxr-x    4 1000     1000             0 Feb 12  2020 usr
+/ # 
+/ # cat /proc/vmstat 
+nr_free_pages 1148
 ...
-$ timeout 30s qemu-system-riscv64 -M virt -m 512M -no-reboot -bios default -kernel out.riscv/arch/riscv/boot/Image -display none -serial mon:stdio -initrd out.riscv/rootfs.cpio
-...
-[    0.000000] Linux version 5.6.0-rc1-00001-g90c81dfc010e (nathan@ubuntu-m2-xlarge-x86) (ClangBuiltLinux clang version 11.0.0 (git://github.com/llvm/llvm-project 9c1a88c96457ffde71f13c74fd4d52a77d86cc9f)) #1 SMP Tue Feb 11 22:13:03 MST 2020
-...
-[    0.624295] Run /init as init process
-/init: exec: line 7: /sbin/init: Text file busy
-[    0.712090] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000200
-[    0.712739] CPU: 0 PID: 1 Comm: init Not tainted 5.6.0-rc1-00001-g90c81dfc010e #1
-[    0.713228] Call Trace:
-[    0.713508] [<ffffffe00004a3e6>] walk_stackframe+0x0/0xc6
-[    0.713832] [<ffffffe0007c0070>] dump_stack+0x9e/0xd6
-[    0.714112] [<ffffffe00004f250>] panic+0x112/0x2dc
-[    0.714387] [<ffffffe000051886>] exit_mm+0x0/0x12a
-[    0.714676] [<ffffffe000051a80>] sys_exit_group+0x0/0xe
-[    0.714965] [<ffffffe000051aa4>] __wake_up_parent+0x0/0x24
-[    0.715262] [<ffffffe000051a8e>] __do_sys_exit_group+0x0/0x16
-[    0.715568] [<ffffffe000048e3e>] ret_from_syscall+0x0/0x2
-[    0.716409] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000200 ]---
-qemu-system-riscv64: terminating on signal 15 from pid 55965 (timeout)
+/ #
 
-GCC 9.2.0 works just fine.
+The K210 SoC has more devices (GPIO, SD-card, LCD, etc) that likely can
+be enabled and used. For this, the sysctl driver will need further
+improvements as each device uses a different clock. To share the fun,
+supporting these is left as an exercise for the hobbyist and hackers
+interested in this SoC/boards :)
 
-$ make -j$(nproc) -s ARCH=riscv CROSS_COMPILE=riscv64-linux- O=out.riscv distclean defconfig all
-$ timeout 30s qemu-system-riscv64 -M virt -m 512M -no-reboot -bios default -kernel out.riscv/arch/riscv/boot/Image -display none -serial mon:stdio -initrd out.riscv/rootfs.cpio
-...
-[    0.634854] Run /init as init process
-Starting syslogd: OK
-Starting klogd: OK
-Initializing random number generator... [    1.329410] random: dd: uninitialized urandom read (512 bytes read)
-done.
-Starting network: OK
-Linux version 5.6.0-rc1-00001-g90c81dfc010e (nathan@ubuntu-m2-xlarge-x86) (gcc version 9.2.0 (GCC)) #1 SMP Tue Feb 11 22:20:36 MST 2020
-Linux version 5.6.0-rc1-00001-g90c81dfc010e (nathan@ubuntu-m2-xlarge-x86) (gcc version 9.2.0 (GCC)) #1 SMP Tue Feb 11 22:20:36 MST 2020
-Stopping network: OK
-Saving random seed... [    2.165960] random: dd: uninitialized urandom read (512 bytes read)
-done.
-Stopping klogd: OK
-Stopping syslogd: OK
-umount: devtmpfs busy - remounted read-only
-umount: can't unmount /: Invalid argument
-The system is going down NOW!
-Sent SIGTERM to all processes
-Sent SIGKILL to all processes
-Requesting system poweroff
-[    4.412388] reboot: Power down
+Christoph Hellwig (2):
+  riscv: Add Kendryte K210 SoC support
+  riscv: create a loader.bin for the kendryte kflash.py tool
 
-I have tried to do some debugging in gdb to see where things are going
-wrong and I see it get to run_init_process, succeed, then jump to the
-exception handler and panic so I am not really sure where things are
-going wrong. Any sort of ideas on where to go from here would certainly
-be appreciated :)
+Damien Le Moal (8):
+  riscv: Fix gitignore
+  riscv: Force flat memory model with no-mmu
+  riscv: Unaligned load/store handling for M_MODE
+  riscv: Add BUILTIN_DTB support
+  riscv: Add SOC early init support
+  riscv: Select required drivers for Kendryte SOC
+  riscv: Add Kendryte K210 device tree
+  riscv: Kendryte K210 default config
 
-Thanks for all the hard work everyone has done, hopefully we can help
-add to it!
+ arch/riscv/Kbuild                       |   1 +
+ arch/riscv/Kconfig                      |  19 ++
+ arch/riscv/Kconfig.socs                 |  10 +
+ arch/riscv/Makefile                     |   4 +-
+ arch/riscv/boot/.gitignore              |   2 +
+ arch/riscv/boot/Makefile                |   3 +
+ arch/riscv/boot/dts/Makefile            |   5 +
+ arch/riscv/boot/dts/kendryte/Makefile   |   2 +
+ arch/riscv/boot/dts/kendryte/k210.dts   |  23 ++
+ arch/riscv/boot/dts/kendryte/k210.dtsi  | 123 ++++++++
+ arch/riscv/configs/nommu_k210_defconfig |  68 +++++
+ arch/riscv/include/asm/soc.h            |  23 ++
+ arch/riscv/kernel/Makefile              |   3 +-
+ arch/riscv/kernel/head.S                |   1 +
+ arch/riscv/kernel/setup.c               |   6 +
+ arch/riscv/kernel/soc.c                 |  28 ++
+ arch/riscv/kernel/traps.c               |  27 +-
+ arch/riscv/kernel/traps_misaligned.c    | 371 ++++++++++++++++++++++++
+ arch/riscv/kernel/vmlinux.lds.S         |   6 +
+ arch/riscv/mm/init.c                    |   4 +
+ drivers/soc/Kconfig                     |   1 +
+ drivers/soc/Makefile                    |   1 +
+ drivers/soc/kendryte/Kconfig            |  14 +
+ drivers/soc/kendryte/Makefile           |   3 +
+ drivers/soc/kendryte/k210-sysctl.c      | 245 ++++++++++++++++
+ 25 files changed, 987 insertions(+), 6 deletions(-)
+ create mode 100644 arch/riscv/boot/dts/kendryte/Makefile
+ create mode 100644 arch/riscv/boot/dts/kendryte/k210.dts
+ create mode 100644 arch/riscv/boot/dts/kendryte/k210.dtsi
+ create mode 100644 arch/riscv/configs/nommu_k210_defconfig
+ create mode 100644 arch/riscv/include/asm/soc.h
+ create mode 100644 arch/riscv/kernel/soc.c
+ create mode 100644 arch/riscv/kernel/traps_misaligned.c
+ create mode 100644 drivers/soc/kendryte/Kconfig
+ create mode 100644 drivers/soc/kendryte/Makefile
+ create mode 100644 drivers/soc/kendryte/k210-sysctl.c
 
-Cheers,
-Nathan
+-- 
+2.24.1
+
 
