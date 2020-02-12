@@ -2,77 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E954715B04E
-	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 19:57:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 278E715B056
+	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 19:59:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iyJc/I0lpRN6H+cdZqby9ILklXfyzCib5G+dtV4o17U=; b=g86xiSvZiQq1Jy1jNZKd3ftqF
-	XcAzkwDvNw0IkYX6YR6QB9SEBG0FvZqMeUIvhtzOmunVP0u4TQDVaPg0LMhGjKAqYNf8+VER0xQgy
-	KVULjzEE3DpNbv5cwS6M6R7guN6EqlSqUV8i+aFf9x97J0IOgXA4X1zpMex9OWPrl3GQfVGXylpAx
-	U6i8CXbOir27tiyy59cVYYNoSwOO8HGq8QY3+zA7ZDh10v8yBwuyShC4ywrvJJw5GBU7oWgLMopTP
-	MQj1dDO/SD+/lo835B6xsguLRQgwR9AOpt1wDJGWysEEG9nzpsl2k3uH6t8gxHXsmBGYbEKtfp6zI
-	mb1UXF8rw==;
+	 bh=4iWpjS84iXuZKMy6ZUtTecttvvwiEglLKnXkpaETIX4=; b=E2lczDoOKag5TeoncX519R0j4
+	Jv3/lJjzxYbY7NomLkeCkYeVgv9NID9WLcArdRC96iQ28KXy+Jq/EaowgqLC7yx++usLbqUdX7ReR
+	6hDUi8qYFhi3LWRLi7WX8ZW7r/w82K9+BTGp1Okg3BFOdtIXHUYYDasK0O1LYCzfXMVKhHxg3Rq19
+	WTM2HNly7lWCE9iNcOh4j7IdL2aEALaCOETmLHQSYWONoQnDUvHo6rJxvyakVUoGctN+hE0LD48ld
+	DgskAkfdu1oy8iAWV4xe6vumtRGpI1aWj+4QCav/R/JAEi4lDJP/dC8JF7j5zubLOffv8w2wzKiK6
+	dtLyml2TA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1xCs-0004VL-PO; Wed, 12 Feb 2020 18:57:54 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1j1xE7-0004gZ-2P; Wed, 12 Feb 2020 18:59:11 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1xCo-0004Tv-L4
- for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 18:57:52 +0000
-Received: by mail-wm1-x341.google.com with SMTP id m10so5345525wmc.0
- for <linux-riscv@lists.infradead.org>; Wed, 12 Feb 2020 10:57:49 -0800 (PST)
+ id 1j1xE3-0004fS-BE
+ for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 18:59:09 +0000
+Received: by mail-wr1-x444.google.com with SMTP id y17so3713949wrh.5
+ for <linux-riscv@lists.infradead.org>; Wed, 12 Feb 2020 10:59:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iyJc/I0lpRN6H+cdZqby9ILklXfyzCib5G+dtV4o17U=;
- b=Kuk22axSSBuLC9HhI2J2RXbIMvroMuFWvEXcKb54/aSberKIRw6G30HQQlO3SXFHxW
- lHArLrDwA/YBXvpnE+7TeHw6CQcnHi4zENPgIrqNUbvPHpsilGBr4Tl90UOfFS9CUjLh
- GydWQHhatdGto+W3zFO7VVMvovLtYV6LqUTl3FtFmKyvTA19yClq1WxME/8MW3/x2Gvq
- Tli6o7pgFz50AcRyRPx1QhtD+JGiwyx43WqAHRF0auR+u1EOwYXtF9O5/VtjTHypyQOr
- VGzgF/RaPOB3woGNjwLFIXTeNo6e17105wCjl0egwww0Hbh55NmtHit99XGd1ElU4fjv
- lCGQ==
+ :cc; bh=4iWpjS84iXuZKMy6ZUtTecttvvwiEglLKnXkpaETIX4=;
+ b=YUiQw1hmb0MdD9htXyE7jU5pynWAVmivpNXH4tuPdrqeisAZUhAKzcEgZiBMfUOBiE
+ 91EKvU5ZYR5yY98VUkYUmylI5porAO83ZhoNvh3ZD7X+z0NLzm+QIcizro8jdkpY+qj8
+ UO7a3Q9RRKUpoCNzKzZOp5HxNZ3hTUmOgARcuDGMK6esrF+io8cRjMeDMHtvPkhymmpn
+ 4Cz4RtLXcpAIHwhsRBMsYrNcIbsb1G3sYADnadb/qMGnAiJPYQH4yiJ6+QFcOCRS5xDl
+ woLTOWSyDvDZr9nwP4h0K+5ZiUTf6EIT7D1/0UBeiWWIEwz6funXEfZvJ/8h7nGQEIK8
+ 6PZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=iyJc/I0lpRN6H+cdZqby9ILklXfyzCib5G+dtV4o17U=;
- b=cY3Isvi15pRbxvXINhWdmcEdyZRt4SepCJDlyFxhNeydVCenjShg95IJ0sIusc3B00
- /4rM/vrSbuUFfUA+QkrZfbfGnK2lo6/9RyRlGk35J95wNVk5hqJjK8mjbsPgJVHPe7Mm
- B/YmsafDn+PcIcPKwKrkAa2l5+Zf2Idl2jrFFY/b8/4SopXB4Hj/4HBrRdnqvm9dP2iW
- l9AyQJUKp4roKmfS18wAMBzZATJ9W6MuoEMgP1lGDFd9dHBUF+BtykKmoCk732dwCeuS
- Jct1NDmtYj/U0tmdrie9hbdvnOCtc13g7Elws+4elKaPsRkNPDnCqSY6W0VTn+kdaeuD
- E7zg==
-X-Gm-Message-State: APjAAAXegEcTRu2tn4CIwRTWBX7qEUAmZHS2Zm4z70+DXaalaCjOM5To
- O4jwO5F/BgZbQ1elGIB+hKPLbVDjtjKuVOBRv0bV
-X-Google-Smtp-Source: APXvYqx6hyBzMQXjyesyTpNgXNFV8PiBodV6mk3YOpmeoPgd3sT0NkrorVo7WfaXgjBRU4FwzJKKYjpCKTKh3BuyJOE=
-X-Received: by 2002:a1c:e388:: with SMTP id a130mr486034wmh.176.1581533868203; 
- Wed, 12 Feb 2020 10:57:48 -0800 (PST)
+ bh=4iWpjS84iXuZKMy6ZUtTecttvvwiEglLKnXkpaETIX4=;
+ b=jyqFSrYR5s39pbCnixuZf25jl0iteNmCib9yK4Kv5eiB6YeICXeKmbAF5Th1DWbUcu
+ Oa/9my3IRxqLbtpjHx8+LNAO+IOCUu7TSXLHK/95HBK596/g790zS6Dj9oN85OQ8LShh
+ c9xzHshnXRorcvJxkr/r0bI/oeddumwWtibLXJWjK8cqCeQiu/bqVRyW5adsX3EEFORN
+ iY6fg/hHmyWTV6x/i6yV8wrtsVHmhTDoxTniJH07Mp921h31weKtMCtm/YSOz+4sKHax
+ vfoaif5XErgDBxua6sa2IDWTo5YTsJscGSFDU2aUCmunMmH519sHe1nFWdugRXaeV1eD
+ bqkQ==
+X-Gm-Message-State: APjAAAUByzoHHxSvoPzmEPljczdHJecROmA685mEi3DFMDEHMN8Pvi+v
+ 0Db+MIUEuCYzieD7R8Bj/dnQdS0LL70yAm5C9vvu
+X-Google-Smtp-Source: APXvYqw4PbZ5JrNpOUH7XCkVriDHuZ28rg8GWkMouNDbsdGI/2lP+oarZ2Yg1FNoUyCpQWDgQ3Reb/5bW+SxuLPIYts=
+X-Received: by 2002:adf:f507:: with SMTP id q7mr16342704wro.384.1581533945683; 
+ Wed, 12 Feb 2020 10:59:05 -0800 (PST)
 MIME-Version: 1.0
 References: <20200212014822.28684-1-atish.patra@wdc.com>
- <20200212014822.28684-8-atish.patra@wdc.com>
- <CAAhSdy3RVpbum-O_ercZJkiEjDYPT-zrEHvYvMUQqE8+P82ihA@mail.gmail.com>
-In-Reply-To: <CAAhSdy3RVpbum-O_ercZJkiEjDYPT-zrEHvYvMUQqE8+P82ihA@mail.gmail.com>
+ <20200212014822.28684-7-atish.patra@wdc.com>
+ <CAAhSdy2YRnmdxYu7zSYOUxMvFDbEz1Cwg69FgnYz3Rd8wEwQfw@mail.gmail.com>
+In-Reply-To: <CAAhSdy2YRnmdxYu7zSYOUxMvFDbEz1Cwg69FgnYz3Rd8wEwQfw@mail.gmail.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Wed, 12 Feb 2020 10:57:37 -0800
-Message-ID: <CAOnJCUJtsQF64QxV=e+=g0aRur0wEXbiMDU96g1QH7pAThoeqA@mail.gmail.com>
-Subject: Re: [PATCH v8 07/11] RISC-V: Add cpu_ops and modify default booting
- method
+Date: Wed, 12 Feb 2020 10:58:54 -0800
+Message-ID: <CAOnJCULR1AwC=4sf5WZJN77OHymdbfn75R-EGnJyBw_DeJacgg@mail.gmail.com>
+Subject: Re: [PATCH v8 06/11] RISC-V: Move relocate and few other functions
+ out of __init
 To: Anup Patel <anup@brainfault.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_105750_717106_3128626C 
-X-CRM114-Status: GOOD (  30.65  )
+X-CRM114-CacheID: sfid-20200212_105907_389413_6A577EEF 
+X-CRM114-Status: GOOD (  24.08  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -111,314 +111,258 @@ Cc: Albert Ou <aou@eecs.berkeley.edu>, Jason Cooper <jason@lakedaemon.net>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Feb 11, 2020 at 8:28 PM Anup Patel <anup@brainfault.org> wrote:
+On Tue, Feb 11, 2020 at 8:18 PM Anup Patel <anup@brainfault.org> wrote:
 >
 > On Wed, Feb 12, 2020 at 7:21 AM Atish Patra <atish.patra@wdc.com> wrote:
 > >
-> > Currently, all non-booting harts start booting after the booting hart
-> > updates the per-hart stack pointer. This is done in a way that, it's
-> > difficult to implement any other booting method without breaking the
-> > backward compatibility.
+> > The secondary hart booting and relocation code are under .init section.
+> > As a result, it will be freed once kernel booting is done. However,
+> > ordered booting protocol and CPU hotplug always requires these sections
+>
+> I think you meant "... require these functions" here.
+>
+> > to be present to bringup harts after initial kernel boot.
 > >
-> > Define a cpu_ops method that allows to introduce other booting methods
-> > in future. Modify the current booting method to be compatible with
-> > cpu_ops.
+> > Move the required sections to a different section and make sure that
+>
+> Same here, I think you meant "... the required functions to a
+> different section ..."
+>
+
+My bad. Thanks for pointing out. Fixed.
+
+> > they are in memory within first 2MB offset as trampoline page directory
+> > only maps first 2MB.
 > >
 > > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > > ---
-> >  arch/riscv/include/asm/cpu_ops.h     | 34 ++++++++++++++++++
-> >  arch/riscv/kernel/Makefile           |  2 ++
-> >  arch/riscv/kernel/cpu_ops.c          | 40 +++++++++++++++++++++
-> >  arch/riscv/kernel/cpu_ops_spinwait.c | 42 ++++++++++++++++++++++
-> >  arch/riscv/kernel/smpboot.c          | 54 +++++++++++++++++-----------
-> >  5 files changed, 151 insertions(+), 21 deletions(-)
-> >  create mode 100644 arch/riscv/include/asm/cpu_ops.h
-> >  create mode 100644 arch/riscv/kernel/cpu_ops.c
-> >  create mode 100644 arch/riscv/kernel/cpu_ops_spinwait.c
+> >  arch/riscv/kernel/head.S        | 153 +++++++++++++++++---------------
+> >  arch/riscv/kernel/vmlinux.lds.S |   5 +-
+> >  2 files changed, 86 insertions(+), 72 deletions(-)
 > >
-> > diff --git a/arch/riscv/include/asm/cpu_ops.h b/arch/riscv/include/asm/cpu_ops.h
-> > new file mode 100644
-> > index 000000000000..7db276284009
-> > --- /dev/null
-> > +++ b/arch/riscv/include/asm/cpu_ops.h
-> > @@ -0,0 +1,34 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/*
-> > + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
-> > + * Based on arch/arm64/include/asm/cpu_ops.h
-> > + */
-> > +#ifndef __ASM_CPU_OPS_H
-> > +#define __ASM_CPU_OPS_H
-> > +
-> > +#include <linux/init.h>
-> > +#include <linux/sched.h>
-> > +#include <linux/threads.h>
-> > +
-> > +/**
-> > + * struct cpu_operations - Callback operations for hotplugging CPUs.
-> > + *
-> > + * @name:              Name of the boot protocol.
-> > + * @cpu_prepare:       Early one-time preparation step for a cpu. If there
-> > + *                     is a mechanism for doing so, tests whether it is
-> > + *                     possible to boot the given HART.
-> > + * @cpu_start:         Boots a cpu into the kernel.
-> > + */
-> > +struct cpu_operations {
-> > +       const char      *name;
-> > +       int             (*cpu_prepare)(unsigned int cpu);
-> > +       int             (*cpu_start)(unsigned int cpu,
-> > +                                    struct task_struct *tidle);
-> > +};
-> > +
-> > +extern const struct cpu_operations *cpu_ops[NR_CPUS];
-> > +int __init cpu_set_ops(int cpu);
->
-> This function is more like probing for appropriate cpu_ops. Also,
-> I think we don't need to return anything from cpu_set_ops().
->
-
-Correct. I will change it to void but I think set_ops is a better name
-as we are actually
-setting the right type of ops to cpu_ops.
-
-> Maybe rename it to "void cpu_probe_ops(int cpu)" ?
->
-> > +void cpu_update_secondary_bootdata(unsigned int cpuid,
-> > +                                  struct task_struct *tidle);
-> > +
-> > +#endif /* ifndef __ASM_CPU_OPS_H */
-> > diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-> > index f40205cb9a22..f81a6ff88005 100644
-> > --- a/arch/riscv/kernel/Makefile
-> > +++ b/arch/riscv/kernel/Makefile
-> > @@ -32,6 +32,8 @@ obj-$(CONFIG_RISCV_M_MODE)    += clint.o
-> >  obj-$(CONFIG_FPU)              += fpu.o
-> >  obj-$(CONFIG_SMP)              += smpboot.o
-> >  obj-$(CONFIG_SMP)              += smp.o
-> > +obj-$(CONFIG_SMP)              += cpu_ops.o
-> > +obj-$(CONFIG_SMP)              += cpu_ops_spinwait.o
-> >  obj-$(CONFIG_MODULES)          += module.o
-> >  obj-$(CONFIG_MODULE_SECTIONS)  += module-sections.o
+> > diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> > index a4242be66966..c1be597d22a1 100644
+> > --- a/arch/riscv/kernel/head.S
+> > +++ b/arch/riscv/kernel/head.S
+> > @@ -14,7 +14,7 @@
+> >  #include <asm/hwcap.h>
+> >  #include <asm/image.h>
 > >
-> > diff --git a/arch/riscv/kernel/cpu_ops.c b/arch/riscv/kernel/cpu_ops.c
-> > new file mode 100644
-> > index 000000000000..1085def3735a
-> > --- /dev/null
-> > +++ b/arch/riscv/kernel/cpu_ops.c
-> > @@ -0,0 +1,40 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2020 Western Digital Corporation or its affiliates.
-> > + */
+> > -__INIT
+> > +__HEAD
+> >  ENTRY(_start)
+> >         /*
+> >          * Image header expected by Linux boot-loaders. The image header data
+> > @@ -45,8 +45,85 @@ ENTRY(_start)
+> >         .ascii RISCV_IMAGE_MAGIC2
+> >         .word 0
+> >
+> > -.global _start_kernel
+> > -_start_kernel:
+> > +.align 2
+> > +#ifdef CONFIG_MMU
+> > +relocate:
+> > +       /* Relocate return address */
+> > +       li a1, PAGE_OFFSET
+> > +       la a2, _start
+> > +       sub a1, a1, a2
+> > +       add ra, ra, a1
 > > +
-> > +#include <linux/errno.h>
-> > +#include <linux/mm.h>
-> > +#include <linux/of.h>
-> > +#include <linux/string.h>
-> > +#include <linux/sched.h>
-> > +#include <linux/sched/task_stack.h>
-> > +#include <asm/cpu_ops.h>
-> > +#include <asm/sbi.h>
-> > +#include <asm/smp.h>
+> > +       /* Point stvec to virtual address of intruction after satp write */
+> > +       la a2, 1f
+> > +       add a2, a2, a1
+> > +       csrw CSR_TVEC, a2
 > > +
-> > +const struct cpu_operations *cpu_ops[NR_CPUS] __ro_after_init;
+> > +       /* Compute satp for kernel page tables, but don't load it yet */
+> > +       srl a2, a0, PAGE_SHIFT
+> > +       li a1, SATP_MODE
+> > +       or a2, a2, a1
 > > +
-> > +void *__cpu_up_stack_pointer[NR_CPUS];
-> > +void *__cpu_up_task_pointer[NR_CPUS];
-> > +
-> > +extern const struct cpu_operations cpu_ops_spinwait;
-> > +
-> > +void cpu_update_secondary_bootdata(unsigned int cpuid,
-> > +                                  struct task_struct *tidle)
-> > +{
-> > +       int hartid = cpuid_to_hartid_map(cpuid);
-> > +
-> > +       /* Make sure tidle is updated */
-> > +       smp_mb();
-> > +       WRITE_ONCE(__cpu_up_stack_pointer[hartid],
-> > +                 task_stack_page(tidle) + THREAD_SIZE);
-> > +       WRITE_ONCE(__cpu_up_task_pointer[hartid], tidle);
-> > +}
-> > +
-> > +int __init cpu_set_ops(int cpuid)
->
-> Maybe rename it to "void cpu_probe_ops(int cpu)" ?
->
-> > +{
-> > +       cpu_ops[cpuid] = &cpu_ops_spinwait;
-> > +
-> > +       return 0;
-> > +}
-> > diff --git a/arch/riscv/kernel/cpu_ops_spinwait.c b/arch/riscv/kernel/cpu_ops_spinwait.c
-> > new file mode 100644
-> > index 000000000000..f828e660294e
-> > --- /dev/null
-> > +++ b/arch/riscv/kernel/cpu_ops_spinwait.c
-> > @@ -0,0 +1,42 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2020 Western Digital Corporation or its affiliates.
-> > + */
-> > +
-> > +#include <linux/errno.h>
-> > +#include <linux/of.h>
-> > +#include <linux/string.h>
-> > +#include <asm/cpu_ops.h>
-> > +#include <asm/sbi.h>
-> > +#include <asm/smp.h>
-> > +
-> > +const struct cpu_operations cpu_ops_spinwait;
-> > +
-> > +static int spinwait_cpu_prepare(unsigned int cpuid)
-> > +{
-> > +       if (!cpu_ops_spinwait.cpu_start) {
-> > +               pr_err("cpu start method not defined for CPU [%d]\n", cpuid);
-> > +               return -ENODEV;
-> > +       }
-> > +       return 0;
-> > +}
-> > +
-> > +static int spinwait_cpu_start(unsigned int cpuid, struct task_struct *tidle)
-> > +{
 > > +       /*
-> > +        * In this protocol, all cpus boot on their own accord.  _start
-> > +        * selects the first cpu to boot the kernel and causes the remainder
-> > +        * of the cpus to spin in a loop waiting for their stack pointer to be
-> > +        * setup by that main cpu.  Writing to bootdata (i.e __cpu_up_stack_pointer) signals to
-> > +        * the spinning cpus that they can continue the boot process.
+> > +        * Load trampoline page directory, which will cause us to trap to
+> > +        * stvec if VA != PA, or simply fall through if VA == PA.  We need a
+> > +        * full fence here because setup_vm() just wrote these PTEs and we need
+> > +        * to ensure the new translations are in use.
 > > +        */
-> > +       cpu_update_secondary_bootdata(cpuid, tidle);
+> > +       la a0, trampoline_pg_dir
+> > +       srl a0, a0, PAGE_SHIFT
+> > +       or a0, a0, a1
+> > +       sfence.vma
+> > +       csrw CSR_SATP, a0
+> > +.align 2
+> > +1:
+> > +       /* Set trap vector to spin forever to help debug */
+> > +       la a0, .Lsecondary_park
+> > +       csrw CSR_TVEC, a0
 > > +
-> > +       return 0;
-> > +}
+> > +       /* Reload the global pointer */
+> > +.option push
+> > +.option norelax
+> > +       la gp, __global_pointer$
+> > +.option pop
 > > +
-> > +const struct cpu_operations cpu_ops_spinwait = {
-> > +       .name           = "spinwait",
-> > +       .cpu_prepare    = spinwait_cpu_prepare,
-> > +       .cpu_start      = spinwait_cpu_start,
-> > +};
-> > diff --git a/arch/riscv/kernel/smpboot.c b/arch/riscv/kernel/smpboot.c
-> > index 8bc01f0ca73b..2ee41c779a16 100644
-> > --- a/arch/riscv/kernel/smpboot.c
-> > +++ b/arch/riscv/kernel/smpboot.c
-> > @@ -25,6 +25,7 @@
-> >  #include <linux/sched/task_stack.h>
-> >  #include <linux/sched/mm.h>
-> >  #include <asm/clint.h>
-> > +#include <asm/cpu_ops.h>
-> >  #include <asm/irq.h>
-> >  #include <asm/mmu_context.h>
-> >  #include <asm/tlbflush.h>
-> > @@ -34,8 +35,6 @@
-> >
-> >  #include "head.h"
-> >
-> > -void *__cpu_up_stack_pointer[NR_CPUS];
-> > -void *__cpu_up_task_pointer[NR_CPUS];
-> >  static DECLARE_COMPLETION(cpu_running);
-> >
-> >  void __init smp_prepare_boot_cpu(void)
-> > @@ -46,6 +45,7 @@ void __init smp_prepare_boot_cpu(void)
-> >  void __init smp_prepare_cpus(unsigned int max_cpus)
-> >  {
-> >         int cpuid;
-> > +       int ret;
-> >
-> >         /* This covers non-smp usecase mandated by "nosmp" option */
-> >         if (max_cpus == 0)
-> > @@ -54,6 +54,11 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
-> >         for_each_possible_cpu(cpuid) {
-> >                 if (cpuid == smp_processor_id())
-> >                         continue;
-> > +               if (cpu_ops[cpuid]->cpu_prepare) {
-> > +                       ret = cpu_ops[cpuid]->cpu_prepare(cpuid);
-> > +                       if (ret)
-> > +                               continue;
-> > +               }
-> >                 set_cpu_present(cpuid, true);
-> >         }
-> >  }
-> > @@ -65,6 +70,8 @@ void __init setup_smp(void)
-> >         bool found_boot_cpu = false;
-> >         int cpuid = 1;
-> >
-> > +       cpu_set_ops(0);
+> > +       /*
+> > +        * Switch to kernel page tables.  A full fence is necessary in order to
+> > +        * avoid using the trampoline translations, which are only correct for
+> > +        * the first superpage.  Fetching the fence is guarnteed to work
+> > +        * because that first superpage is translated the same way.
+> > +        */
+> > +       csrw CSR_SATP, a2
+> > +       sfence.vma
 > > +
-> >         for_each_of_cpu_node(dn) {
-> >                 hart = riscv_of_processor_hartid(dn);
-> >                 if (hart < 0)
-> > @@ -92,36 +99,41 @@ void __init setup_smp(void)
-> >                         cpuid, nr_cpu_ids);
-> >
-> >         for (cpuid = 1; cpuid < nr_cpu_ids; cpuid++) {
-> > -               if (cpuid_to_hartid_map(cpuid) != INVALID_HARTID)
-> > +               if (cpuid_to_hartid_map(cpuid) != INVALID_HARTID) {
-> > +                       if (cpu_set_ops(cpuid)) {
-> > +                               cpuid_to_hartid_map(cpuid) = INVALID_HARTID;
-> > +                               continue;
-> > +                       }
-> >                         set_cpu_possible(cpuid, true);
-> > +               }
-> >         }
-> >  }
-> >
-> > +int start_secondary_cpu(int cpu, struct task_struct *tidle)
->
-> Make this function static.
->
-
-sure.
-
-> > +{
-> > +       if (cpu_ops[cpu]->cpu_start)
-> > +               return cpu_ops[cpu]->cpu_start(cpu, tidle);
+> > +       ret
+> > +#endif /* CONFIG_MMU */
+> > +#ifdef CONFIG_SMP
+> > +       /* Set trap vector to spin forever to help debug */
+> > +       la a3, .Lsecondary_park
+> > +       csrw CSR_TVEC, a3
 > > +
-> > +       return -EOPNOTSUPP;
-> > +}
+> > +       slli a3, a0, LGREG
+> > +       .global secondary_start_common
+> > +secondary_start_common:
 > > +
-> >  int __cpu_up(unsigned int cpu, struct task_struct *tidle)
-> >  {
-> >         int ret = 0;
-> > -       int hartid = cpuid_to_hartid_map(cpu);
-> >         tidle->thread_info.cpu = cpu;
+> > +#ifdef CONFIG_MMU
+> > +       /* Enable virtual memory and relocate to virtual address */
+> > +       la a0, swapper_pg_dir
+> > +       call relocate
+> > +#endif
+> > +       tail smp_callin
+> > +#endif /* CONFIG_SMP */
+> > +
+> > +.Lsecondary_park:
+> > +       /* We lack SMP support or have too many harts, so park this hart */
+> > +       wfi
+> > +       j .Lsecondary_park
+> > +
+> > +END(_start)
+> > +
+> > +       __INIT
+> > +ENTRY(_start_kernel)
+> >         /* Mask all interrupts */
+> >         csrw CSR_IE, zero
+> >         csrw CSR_IP, zero
+> > @@ -125,59 +202,6 @@ clear_bss_done:
+> >         call parse_dtb
+> >         tail start_kernel
 > >
-> > -       /*
-> > -        * On RISC-V systems, all harts boot on their own accord.  Our _start
-> > -        * selects the first hart to boot the kernel and causes the remainder
-> > -        * of the harts to spin in a loop waiting for their stack pointer to be
-> > -        * setup by that main hart.  Writing __cpu_up_stack_pointer signals to
-> > -        * the spinning harts that they can continue the boot process.
-> > -        */
-> > -       smp_mb();
-> > -       WRITE_ONCE(__cpu_up_stack_pointer[hartid],
-> > -                 task_stack_page(tidle) + THREAD_SIZE);
-> > -       WRITE_ONCE(__cpu_up_task_pointer[hartid], tidle);
+> > -#ifdef CONFIG_MMU
+> > -relocate:
+> > -       /* Relocate return address */
+> > -       li a1, PAGE_OFFSET
+> > -       la a2, _start
+> > -       sub a1, a1, a2
+> > -       add ra, ra, a1
 > > -
-> > -       lockdep_assert_held(&cpu_running);
-> > -       wait_for_completion_timeout(&cpu_running,
-> > +       ret = start_secondary_cpu(cpu, tidle);
-> > +       if (!ret) {
-> > +               lockdep_assert_held(&cpu_running);
-> > +               wait_for_completion_timeout(&cpu_running,
-> >                                             msecs_to_jiffies(1000));
+> > -       /* Point stvec to virtual address of intruction after satp write */
+> > -       la a2, 1f
+> > -       add a2, a2, a1
+> > -       csrw CSR_TVEC, a2
+> > -
+> > -       /* Compute satp for kernel page tables, but don't load it yet */
+> > -       srl a2, a0, PAGE_SHIFT
+> > -       li a1, SATP_MODE
+> > -       or a2, a2, a1
+> > -
+> > -       /*
+> > -        * Load trampoline page directory, which will cause us to trap to
+> > -        * stvec if VA != PA, or simply fall through if VA == PA.  We need a
+> > -        * full fence here because setup_vm() just wrote these PTEs and we need
+> > -        * to ensure the new translations are in use.
+> > -        */
+> > -       la a0, trampoline_pg_dir
+> > -       srl a0, a0, PAGE_SHIFT
+> > -       or a0, a0, a1
+> > -       sfence.vma
+> > -       csrw CSR_SATP, a0
+> > -.align 2
+> > -1:
+> > -       /* Set trap vector to spin forever to help debug */
+> > -       la a0, .Lsecondary_park
+> > -       csrw CSR_TVEC, a0
+> > -
+> > -       /* Reload the global pointer */
+> > -.option push
+> > -.option norelax
+> > -       la gp, __global_pointer$
+> > -.option pop
+> > -
+> > -       /*
+> > -        * Switch to kernel page tables.  A full fence is necessary in order to
+> > -        * avoid using the trampoline translations, which are only correct for
+> > -        * the first superpage.  Fetching the fence is guarnteed to work
+> > -        * because that first superpage is translated the same way.
+> > -        */
+> > -       csrw CSR_SATP, a2
+> > -       sfence.vma
+> > -
+> > -       ret
+> > -#endif /* CONFIG_MMU */
+> > -
+> >  .Lsecondary_start:
+> >  #ifdef CONFIG_SMP
+> >         /* Set trap vector to spin forever to help debug */
+> > @@ -202,16 +226,10 @@ relocate:
+> >         beqz tp, .Lwait_for_cpu_up
+> >         fence
 > >
-> > -       if (!cpu_online(cpu)) {
-> > -               pr_crit("CPU%u: failed to come online\n", cpu);
-> > -               ret = -EIO;
-> > +               if (!cpu_online(cpu)) {
-> > +                       pr_crit("CPU%u: failed to come online\n", cpu);
-> > +                       ret = -EIO;
-> > +               }
-> > +       } else {
-> > +               pr_crit("CPU%u: failed to start\n", cpu);
-> >         }
+> > -#ifdef CONFIG_MMU
+> > -       /* Enable virtual memory and relocate to virtual address */
+> > -       la a0, swapper_pg_dir
+> > -       call relocate
+> > +       tail secondary_start_common
+> >  #endif
 > >
-> >         return ret;
+> > -       tail smp_callin
+> > -#endif
+> > -
+> > -END(_start)
+> > +END(_start_kernel)
+> >
+> >  #ifdef CONFIG_RISCV_M_MODE
+> >  ENTRY(reset_regs)
+> > @@ -292,13 +310,6 @@ ENTRY(reset_regs)
+> >  END(reset_regs)
+> >  #endif /* CONFIG_RISCV_M_MODE */
+> >
+> > -.section ".text", "ax",@progbits
+> > -.align 2
+> > -.Lsecondary_park:
+> > -       /* We lack SMP support or have too many harts, so park this hart */
+> > -       wfi
+> > -       j .Lsecondary_park
+> > -
+> >  __PAGE_ALIGNED_BSS
+> >         /* Empty zero page */
+> >         .balign PAGE_SIZE
+> > diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
+> > index 12f42f96d46e..18c397953bfc 100644
+> > --- a/arch/riscv/kernel/vmlinux.lds.S
+> > +++ b/arch/riscv/kernel/vmlinux.lds.S
+> > @@ -10,6 +10,7 @@
+> >  #include <asm/cache.h>
+> >  #include <asm/thread_info.h>
+> >
+> > +#include <linux/sizes.h>
+> >  OUTPUT_ARCH(riscv)
+> >  ENTRY(_start)
+> >
+> > @@ -20,8 +21,10 @@ SECTIONS
+> >         /* Beginning of code and text segment */
+> >         . = LOAD_OFFSET;
+> >         _start = .;
+> > -       __init_begin = .;
+> >         HEAD_TEXT_SECTION
+> > +       . = ALIGN(PAGE_SIZE);
+> > +
+> > +       __init_begin = .;
+> >         INIT_TEXT_SECTION(PAGE_SIZE)
+> >         INIT_DATA_SECTION(16)
+> >         /* we have to discard exit text and such at runtime, not link time */
 > > --
 > > 2.24.0
 > >
 >
-> Apart from minor comments above, looks good to me.
+> Apart from above nit in commit description, looks good to me.
 >
 > Reviewed-by: Anup Patel <anup@brainfault.org>
 >
