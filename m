@@ -2,78 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03C5515A679
-	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 11:34:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BBD2A15A67C
+	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 11:34:56 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vu62s4ocvYkFECsl8Jh/V2JW62xz6nKADKCiLnMOeUg=; b=XfctjBH5vj/tCD
-	Vhrha5oMVTDI/hVUalR7VR8obFK55zpjjSODqfskECZmHOjMBT1br+Usr0M4hEtFUwJJGw/iIygCD
-	OA2B8FQJkiDlOpsk4i7T7ySzwAXAfBLb7Epa3lpjQKBnge964HzgGMnAXvLRhYKK9w4n26xItQWOi
-	frCjSKXOv9zzFBLZR/9p8mN0xG2Go6xRyyDRLsap+TOFEnKWo0YGdqcjj2WGXa8XqNOrR6yzulW2s
-	SXViyzxON/dd2C4Tcx8cj9n6q7aEQdXroQ2DMod4dPh6a77ZkdWYte1VlQseZd7J6W1YTgwbpynuT
-	OGLfG13e4k5hhFl/ZUsQ==;
+	List-Owner; bh=Vhn8zHgWhVC4unY8zBC5MpiuYC64k4xPBfWqvyPzd2U=; b=ivYl/zPOjw4vbe
+	awPw92aL+UGUldhK5rkQa+BKcj0B161e72J6mkPF5anV79HXA6aC8lmXVvXvfp+3rChTBFWbhgBvu
+	e6diERSvbflcLrkZ57sA+6/mxTno/TUHCB17YgNbylmLPfOn+XKxo9jOtE+qm5/QGfPNGKIFzP+oh
+	LkQE7j92AaejqAuLMKEL2C6crzU0S2DhI1rvVO3XZguF7u1ytMmXGd7l/KrLi3ub67kRXE7o3PN/I
+	iXpWDHuN+w0T1zFppbRSDyioDwt6+0hvKfu7j9mQ+c891eJLvsofKxV7uvfzH8krUWVzLHRvjq6zq
+	JRDujsIhlseMC8Pat5Ug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1pLu-0002Lu-0J; Wed, 12 Feb 2020 10:34:42 +0000
+	id 1j1pM4-0002Tp-Nq; Wed, 12 Feb 2020 10:34:52 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1pLo-0002KR-OS
- for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 10:34:38 +0000
+ id 1j1pLq-0002L5-4r
+ for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 10:34:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1581503677; x=1613039677;
+ t=1581503679; x=1613039679;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=tHl5TnkOqkg/twSyCGEuKxl+uXzRh0Hz6lA1uu11Nqg=;
- b=hP1t6ULMruPVObBtp5MH/vtp11QrGSlQhTcBCUOt9Mc5CjgWcQ/K7Sli
- HbNtwNHEG3vfcMvGe8Kmvaa5Xya/x3nf2PYH7sz7APAk/tkLdCAhwbFve
- iOtcls+d6d8STiP4X2uvlk39v7LM66Q61Tq8tUDlMjqAWU46pKBGacaPc
- AUREL1nQmzeDtTHn3utQFbNy2kXBHpXIG5b/GCqozZU1SejfCAPVh2zkg
- HfZu+X58Mz1fBebVOGpncgLtdDBIEt92kUEizti3cpJ6MkunWpqqVCRAA
- nyrl65e67OAY4WfahiWoHZ90YYDTvsCtB4dPmDZIiMug1S8V/jS4GkBwQ g==;
-IronPort-SDR: kYBsE3dw6u1Lit0xIhVSlTHNQzRp6Yvp0BHBQD4kk9HyTaNMdUZAauyShpd09qTgIzrbEKVPzG
- kCRx2AzXx4czfKWd3Nq69QiFweBt/W7ZXihg3xqeNHK/JWcLeHGZuHd9c8OZCy9kS9v7rXURKB
- NqMjl05LC6D1wljAwgSBfGPSSN3nAGuFYS5+oIpBbzoMnxqeWmizQo9/Vgb4+vgNaXOz3aGExr
- TZfAH2k//R9uHNrGoAF3bV4hgTX6Tr8QCZtIHTzDE0bweuNPoumd6p2t6ftPeyhCouAI05ndmo
- iVo=
-X-IronPort-AV: E=Sophos;i="5.70,428,1574092800"; d="scan'208";a="131113041"
+ bh=b/tIO4B5Oqs+AuZvVLPvZfx3DTjiwrDOhliJ8kKcfRI=;
+ b=Jj3bsYR4u09xVvtMEvlzLpa/IhLc0+ZDI+OwuqvHAxDQ4A7eTpd7T9r+
+ 2UcEp2Ui7kfUqMAPPjXshvLfpxSWH8R5RmH8ohA+8lvxfrl3fss7nqOAO
+ y6CJWO6r7FeRxo+hgwy+3YDRWwN2EjMSsKNTPS5w56nPa+n08tPqrOBra
+ rrhQCiI46DkVaxLVjPs1/v/M9S2lYqO3As0SuQqIHVknZ1uQTJcvlM1xf
+ YwS7UYte3osxorGoItGl3ziW2SP8M38ar2lk6xE2FIs58teH9hoRHy4l7
+ LUaT973LPhbFw/XNYcPsKxBARJWfOKSQLpOO4s2vfgkpxMaPssyBzKEd5 A==;
+IronPort-SDR: VXiVeF/KyDssoCsr8SGgQQXbkG6V7t+A60nUe7Ir54zWQZQ9WXnV1o/3pOiwbeKh44y1frs9V1
+ TLuurfbBq06oj4ZxWiCAob9txJqP83P2JulduMiEgR+PP3K+iBj+ha+w3RDXS8WYHmR2M4ey7N
+ 3CEOJDpjtNp/vyAwW50qJqX1grAqWXx10ccfVW0Q67JcRvN0nbTxldeuJweT/7dVugnXEpG2id
+ 2ktIwBrz9hsxboUXBTFS9alAHBizzGUGam1JnH7pUkWovmezB/3c0f4yKmLn3wM6UYVNwVaOCp
+ B9o=
+X-IronPort-AV: E=Sophos;i="5.70,428,1574092800"; d="scan'208";a="131113043"
 Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
  ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 12 Feb 2020 18:34:36 +0800
-IronPort-SDR: opMkitnJVARF9JsqW3YrcW4vjEB2EqyS+FzrVp0MX7eca/vTLOe2fR+V8P80tbVd1HwfKXwdyD
- fxWvDmu6b9mWqf2DJhJkBWhQW7zikBDROnNMX58hdmgFYxTumqFZXDSKRTxaJr1nykeUAKm/cR
- Ay3MkcunxTAt2tAGO7us2bxhQi5G9JvIfOw8AvKdTXsf7DW7Uct0QfSDgXcYVcbXfb4vJl5QVB
- j3nvy6nokfRYRy7gt3TTqewEqw9L2aytjxZ4SNlfYBVFBasclaElYbcYqwv6pADon5bUzpyCOQ
- 2/iPPA87QXjFXn2vGZJ6SN/L
+ by ob1.hgst.iphmx.com with ESMTP; 12 Feb 2020 18:34:37 +0800
+IronPort-SDR: lDfjh6UoZviYM33ukgN1GY1MIqb7t+gHk4qiLO9AT/5s/pbKLzhQcj4TxKqFL3lH1BVmmg90hg
+ MFSssU/HpLsP6Rbn+H0Mxu97GvVBWFT/VJpXXWb04cpCp1GFWsfrv9K9oJSk6irZTLA+Hmff51
+ Bx3Uip817kjUdHPFcLhg7mmhHdz+qnaSrPAu2CaCOZhFqLnH6AasUjTdWyN4dh1Z1TtXdBxpf1
+ H+JnDoaJKx/8mNoB8YlddsInsuWsUx68nGddAZHlSrZgoxtl729dzMkFo5CzIO2g30a9uVeryl
+ MubgRvPnfUVTumtLqppxtWLS
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Feb 2020 02:27:24 -0800
-IronPort-SDR: HaUshPNSTHQbnw+ENjnMMWmTvLWSPa79d0osXJV/xZ+6+JcquGgXEWiLPMTa+pKjVQw7tOPmNh
- CA3Kg/S8OxmdZX63EnPG0eIah6j6TtuAtbbU6efkP4kDxVkodwaoWWnTBhEmixPPjKAP7ZpzCA
- mhkNzGvHB2JJRvEnMClzJxWzEFstEt7WtouzfVwinzUBQGfo/mlEQTspONo/vBu+aFJz0XLKW0
- bkJg1+gWNxdGK6xBhiBFB4f1Ng2MYuVMPQouSDiXj97VvfWgUghoCJPN0IpZ0ekt2eCLNfbSbJ
- rU4=
+ 12 Feb 2020 02:27:25 -0800
+IronPort-SDR: L6Qxyrl7Z4oSm5b7rR9gEnCFz824MiMpH6r00SW4U9huPHF4e3w/NNFURsOtMGdWcM7kjDWnGr
+ yy7M+yCWVrgnfPjYEg5VIFfY4JxEnBXX1+ruGiglWxh+4LoGgsc7H2Nr2pA0VW2NImL+rR02uX
+ HMp4/t3eiE+Y5e9kVWTeIQ25ZOSU/WRv8OPN1j8oAg8eO+f2xBYweVr9fd/19er2nPBO/siiSx
+ w/tg230jDWJPBRh1t3VOnvGSTtciYsQIdpPOBB+kkX1XoGwk2pB9qvxnmLDd1DK4yJ3ZtlCaMX
+ VMs=
 WDCIronportException: Internal
 Received: from washi.fujisawa.hgst.com ([10.149.53.254])
- by uls-op-cesaip01.wdc.com with ESMTP; 12 Feb 2020 02:34:33 -0800
+ by uls-op-cesaip01.wdc.com with ESMTP; 12 Feb 2020 02:34:34 -0800
 From: Damien Le Moal <damien.lemoal@wdc.com>
 To: linux-riscv@lists.infradead.org,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 01/10] riscv: Fix gitignore
-Date: Wed, 12 Feb 2020 19:34:23 +0900
-Message-Id: <20200212103432.660256-2-damien.lemoal@wdc.com>
+Subject: [PATCH 02/10] riscv: Force flat memory model with no-mmu
+Date: Wed, 12 Feb 2020 19:34:24 +0900
+Message-Id: <20200212103432.660256-3-damien.lemoal@wdc.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200212103432.660256-1-damien.lemoal@wdc.com>
 References: <20200212103432.660256-1-damien.lemoal@wdc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_023436_878953_61398205 
-X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-CacheID: sfid-20200212_023438_221878_8F695D8C 
+X-CRM114-Status: UNSURE (   9.46  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
@@ -106,23 +106,28 @@ Cc: Anup Patel <Anup.Patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Tell git to not track the compiled boot/loader and boot/loader.lds
-files.
+Compilation errors trigger if ARCH_SPARSEMEM_ENABLE is enabled for
+a nommu kernel. Since the sparsemem model does not make sense anyway
+for the nommu case, do not allow selecting this option to always use
+the flatmem model.
 
 Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
 ---
- arch/riscv/boot/.gitignore | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/riscv/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/riscv/boot/.gitignore b/arch/riscv/boot/.gitignore
-index 8dab0bb6ae66..8a45a37d2af4 100644
---- a/arch/riscv/boot/.gitignore
-+++ b/arch/riscv/boot/.gitignore
-@@ -1,2 +1,4 @@
- Image
- Image.gz
-+loader
-+loader.lds
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 73f029eae0cc..1a3b5a5276be 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -121,6 +121,7 @@ config ARCH_FLATMEM_ENABLE
+ 
+ config ARCH_SPARSEMEM_ENABLE
+ 	def_bool y
++	depends on MMU
+ 	select SPARSEMEM_VMEMMAP_ENABLE
+ 
+ config ARCH_SELECT_MEMORY_MODEL
 -- 
 2.24.1
 
