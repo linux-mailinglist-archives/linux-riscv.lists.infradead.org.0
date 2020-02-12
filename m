@@ -2,85 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2981A15AFEE
-	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 19:35:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E954715B04E
+	for <lists+linux-riscv@lfdr.de>; Wed, 12 Feb 2020 19:57:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9KNdQTzecz/SJfMs4GgqFV3ANdv8gWp3Rod0UgNCFVs=; b=r7qekc6uXDefl4V3u6a8K9amb
-	OJb1ZwregCFsDRNBfH6rZt6rkrDOXS9ptwa551rVqCZohUXexh9mTgSWTvQV/QWevJXpEUqG44aS0
-	Hdnlo3pCF9ngFLW9urUv3dnRCYkgh5zx2hDfLDVroKQi4IV2zG3OZHQaYe9phiyor3FJADTGgGpoX
-	O45HQFnEFduIlHxDq6sKxAOkiIjjC0MpJk1fE5WM7fTKJQJBoKBmcTOdRtEtiHzhCvg6Q+zz0Uj40
-	1oHc6m1UuawEmevMfbVtVhu0R439D2OP/1qWb2CduTtyAaomXnp4qv69Oq2iSeZdXo1KRQogVEdf6
-	Gx76TB6TQ==;
+	 bh=iyJc/I0lpRN6H+cdZqby9ILklXfyzCib5G+dtV4o17U=; b=g86xiSvZiQq1Jy1jNZKd3ftqF
+	XcAzkwDvNw0IkYX6YR6QB9SEBG0FvZqMeUIvhtzOmunVP0u4TQDVaPg0LMhGjKAqYNf8+VER0xQgy
+	KVULjzEE3DpNbv5cwS6M6R7guN6EqlSqUV8i+aFf9x97J0IOgXA4X1zpMex9OWPrl3GQfVGXylpAx
+	U6i8CXbOir27tiyy59cVYYNoSwOO8HGq8QY3+zA7ZDh10v8yBwuyShC4ywrvJJw5GBU7oWgLMopTP
+	MQj1dDO/SD+/lo835B6xsguLRQgwR9AOpt1wDJGWysEEG9nzpsl2k3uH6t8gxHXsmBGYbEKtfp6zI
+	mb1UXF8rw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1wrS-0005lG-16; Wed, 12 Feb 2020 18:35:46 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1j1xCs-0004VL-PO; Wed, 12 Feb 2020 18:57:54 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1wrN-0005kv-OV
- for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 18:35:43 +0000
-Received: by mail-ot1-x344.google.com with SMTP id j20so2956657otq.3
- for <linux-riscv@lists.infradead.org>; Wed, 12 Feb 2020 10:35:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=9KNdQTzecz/SJfMs4GgqFV3ANdv8gWp3Rod0UgNCFVs=;
- b=gL0FnKJNJiJNa9dSHzfhhNO8SJ4Pvmvg5qHjXBm14UpYgAz9qO/shxHONMQmDjm/F7
- CVgI1kGgADGkKWBRA0XCry6kkiADNAVNomJaW45cly2aK/nPwXtTYH2h+Fk+XIfIStRg
- GMneMhvlMmKABuSc4cuohZ9MurZaBflu5tAvvfGfQz6ooYomObrajNfY0EcNqD5pLuJz
- cnTw1K05XqPopYYhXXTldVau4/73meozj+jdbfnVzojvtHrd5HOJW5kV5/c3LIOuqv4h
- 0kiwWAwb4J4FS2Qg2htzghvR7a//KW24+EuP5JaPfs33cLv1XBVp1W+u8WeCDZklnWNv
- xG0Q==
+ id 1j1xCo-0004Tv-L4
+ for linux-riscv@lists.infradead.org; Wed, 12 Feb 2020 18:57:52 +0000
+Received: by mail-wm1-x341.google.com with SMTP id m10so5345525wmc.0
+ for <linux-riscv@lists.infradead.org>; Wed, 12 Feb 2020 10:57:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iyJc/I0lpRN6H+cdZqby9ILklXfyzCib5G+dtV4o17U=;
+ b=Kuk22axSSBuLC9HhI2J2RXbIMvroMuFWvEXcKb54/aSberKIRw6G30HQQlO3SXFHxW
+ lHArLrDwA/YBXvpnE+7TeHw6CQcnHi4zENPgIrqNUbvPHpsilGBr4Tl90UOfFS9CUjLh
+ GydWQHhatdGto+W3zFO7VVMvovLtYV6LqUTl3FtFmKyvTA19yClq1WxME/8MW3/x2Gvq
+ Tli6o7pgFz50AcRyRPx1QhtD+JGiwyx43WqAHRF0auR+u1EOwYXtF9O5/VtjTHypyQOr
+ VGzgF/RaPOB3woGNjwLFIXTeNo6e17105wCjl0egwww0Hbh55NmtHit99XGd1ElU4fjv
+ lCGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=9KNdQTzecz/SJfMs4GgqFV3ANdv8gWp3Rod0UgNCFVs=;
- b=KaOIC2K899xbOWFuYTPfxhxS0TiGAwX4NM4E4DPe/urS23lkblGfpkEz7EPahXDwzC
- gV+sGdez8qZuWZjotLWcVXdskf4q1xpK+bB3TUHukxDAZawmxJtFxmuqM+0h53weWPHn
- ynRhTqvqitN4L7POhX6bVh6VAW7aL6wEhRbaeAI/E50K0YYsr2gf4EjaaFMuIT8tMtU0
- GGFq40tI6Q3pQfYJ7FEaaJBV33ZdsZ1rSqlZLG6rDmfDQueZfVr6tRplIzNJ3DutOOij
- tzXszio8Y9HCY9kEIFRNSn633bT3JhGf2ihKrvyI+5FRUwQiGIYWSg3ckEVl/uxsjjEM
- ZGBA==
-X-Gm-Message-State: APjAAAWlKkrpEfl+f2sl9wAkQ0Iq08L3M+DsiN27f2zA17EqAneOC3ks
- H3VGSBC+DNxayPHmYiJtlW3FXAA+P/Y=
-X-Google-Smtp-Source: APXvYqwUt8l78PKdBjAN9Sm0spQ3EBv7VF5bXaxMvmVuCBKXVYP4jn/2xFRFH/2gRqt+vQHJcJEVug==
-X-Received: by 2002:a9d:6f0d:: with SMTP id n13mr10594922otq.165.1581532540729; 
- Wed, 12 Feb 2020 10:35:40 -0800 (PST)
-Received: from ubuntu-m2-xlarge-x86 ([2604:1380:4111:8b00::1])
- by smtp.gmail.com with ESMTPSA id y6sm412731oti.44.2020.02.12.10.35.40
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 12 Feb 2020 10:35:40 -0800 (PST)
-Date: Wed, 12 Feb 2020 11:35:38 -0700
-From: Nathan Chancellor <natechancellor@gmail.com>
-To: Nick Desaulniers <ndesaulniers@google.com>
-Subject: Re: Status of building and booting the RISCV64 kernel with Clang
-Message-ID: <20200212183538.GA34230@ubuntu-m2-xlarge-x86>
-References: <20200212054001.GA27071@ubuntu-m2-xlarge-x86>
- <CAKwvOdnTW1AjB8nVKFd9i=ur88QtEp7taT2jo8R2-FXdBzZthQ@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iyJc/I0lpRN6H+cdZqby9ILklXfyzCib5G+dtV4o17U=;
+ b=cY3Isvi15pRbxvXINhWdmcEdyZRt4SepCJDlyFxhNeydVCenjShg95IJ0sIusc3B00
+ /4rM/vrSbuUFfUA+QkrZfbfGnK2lo6/9RyRlGk35J95wNVk5hqJjK8mjbsPgJVHPe7Mm
+ B/YmsafDn+PcIcPKwKrkAa2l5+Zf2Idl2jrFFY/b8/4SopXB4Hj/4HBrRdnqvm9dP2iW
+ l9AyQJUKp4roKmfS18wAMBzZATJ9W6MuoEMgP1lGDFd9dHBUF+BtykKmoCk732dwCeuS
+ Jct1NDmtYj/U0tmdrie9hbdvnOCtc13g7Elws+4elKaPsRkNPDnCqSY6W0VTn+kdaeuD
+ E7zg==
+X-Gm-Message-State: APjAAAXegEcTRu2tn4CIwRTWBX7qEUAmZHS2Zm4z70+DXaalaCjOM5To
+ O4jwO5F/BgZbQ1elGIB+hKPLbVDjtjKuVOBRv0bV
+X-Google-Smtp-Source: APXvYqx6hyBzMQXjyesyTpNgXNFV8PiBodV6mk3YOpmeoPgd3sT0NkrorVo7WfaXgjBRU4FwzJKKYjpCKTKh3BuyJOE=
+X-Received: by 2002:a1c:e388:: with SMTP id a130mr486034wmh.176.1581533868203; 
+ Wed, 12 Feb 2020 10:57:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAKwvOdnTW1AjB8nVKFd9i=ur88QtEp7taT2jo8R2-FXdBzZthQ@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20200212014822.28684-1-atish.patra@wdc.com>
+ <20200212014822.28684-8-atish.patra@wdc.com>
+ <CAAhSdy3RVpbum-O_ercZJkiEjDYPT-zrEHvYvMUQqE8+P82ihA@mail.gmail.com>
+In-Reply-To: <CAAhSdy3RVpbum-O_ercZJkiEjDYPT-zrEHvYvMUQqE8+P82ihA@mail.gmail.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Wed, 12 Feb 2020 10:57:37 -0800
+Message-ID: <CAOnJCUJtsQF64QxV=e+=g0aRur0wEXbiMDU96g1QH7pAThoeqA@mail.gmail.com>
+Subject: Re: [PATCH v8 07/11] RISC-V: Add cpu_ops and modify default booting
+ method
+To: Anup Patel <anup@brainfault.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_103541_804787_6A8174CF 
-X-CRM114-Status: GOOD (  30.56  )
+X-CRM114-CacheID: sfid-20200212_105750_717106_3128626C 
+X-CRM114-Status: GOOD (  30.65  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [natechancellor[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -100,191 +94,340 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: clang-built-linux <clang-built-linux@googlegroups.com>,
- linux-riscv@lists.infradead.org, Palmer Dabbelt <palmerdabbelt@google.com>,
- LKML <linux-kernel@vger.kernel.org>, asb@lowrisc.org
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Jason Cooper <jason@lakedaemon.net>,
+ Kees Cook <keescook@chromium.org>, Vincent Chen <vincent.chen@sifive.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Marc Zyngier <maz@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Mike Rapoport <rppt@linux.ibm.com>, Atish Patra <atish.patra@wdc.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Allison Randal <allison@lohutok.net>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>, Borislav Petkov <bp@suse.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Mao Han <han_mao@c-sky.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Feb 12, 2020 at 10:29:10AM -0800, 'Nick Desaulniers' via Clang Built Linux wrote:
-> + Palmer, Alex
-> 
-> On Tue, Feb 11, 2020 at 9:40 PM Nathan Chancellor
-> <natechancellor@gmail.com> wrote:
+On Tue, Feb 11, 2020 at 8:28 PM Anup Patel <anup@brainfault.org> wrote:
+>
+> On Wed, Feb 12, 2020 at 7:21 AM Atish Patra <atish.patra@wdc.com> wrote:
 > >
-> > Hi all,
+> > Currently, all non-booting harts start booting after the booting hart
+> > updates the per-hart stack pointer. This is done in a way that, it's
+> > difficult to implement any other booting method without breaking the
+> > backward compatibility.
 > >
-> > We (ClangBuiltLinux) have started looking at building the RISCV64
-> > kernel with clang and booting it in QEMU. I thought it would be nice to
-> > give some sort of status update and go over the issues we have notice
-> > so far and see what people's thoughts are for solving them. If this
-> > email is unwelcome, apologies! This testing was done with clang-11 (tip
-> > of tree) and QEMU 4.2.0 with this rootfs (built with
-> > buildroot-2019.02.9):
+> > Define a cpu_ops method that allows to introduce other booting methods
+> > in future. Modify the current booting method to be compatible with
+> > cpu_ops.
 > >
-> > https://github.com/nathanchance/continuous-integration/blob/21ea056022f9cf1d62b7f805c3862daf9d89736f/images/riscv/rootfs.cpio
+> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> > ---
+> >  arch/riscv/include/asm/cpu_ops.h     | 34 ++++++++++++++++++
+> >  arch/riscv/kernel/Makefile           |  2 ++
+> >  arch/riscv/kernel/cpu_ops.c          | 40 +++++++++++++++++++++
+> >  arch/riscv/kernel/cpu_ops_spinwait.c | 42 ++++++++++++++++++++++
+> >  arch/riscv/kernel/smpboot.c          | 54 +++++++++++++++++-----------
+> >  5 files changed, 151 insertions(+), 21 deletions(-)
+> >  create mode 100644 arch/riscv/include/asm/cpu_ops.h
+> >  create mode 100644 arch/riscv/kernel/cpu_ops.c
+> >  create mode 100644 arch/riscv/kernel/cpu_ops_spinwait.c
 > >
-> >
-> >
-> > Outstanding issues on the LLVM side:
-> >
-> > 1. LLVM output over -mno-save-restore (https://github.com/ClangBuiltLinux/linux/issues/804)
-> >
-> > The kernel passes -mno-save-restore to KBUILD_CFLAGS which causes a ton
-> > of warning spam from LLVM:
-> >
-> > '-save-restore' is not a recognized feature for this target (ignoring feature)
-> >
-> > This has been reported upstream as https://llvm.org/pr44853 but it could
-> > easily be fixed in the kernel by guarding the call against
-> > CONFIG_CC_IS_CLANG (although this is obviously fragile if the ABI ever
-> > changes to -msave-restore by default).
+> > diff --git a/arch/riscv/include/asm/cpu_ops.h b/arch/riscv/include/asm/cpu_ops.h
+> > new file mode 100644
+> > index 000000000000..7db276284009
+> > --- /dev/null
+> > +++ b/arch/riscv/include/asm/cpu_ops.h
+> > @@ -0,0 +1,34 @@
+> > +/* SPDX-License-Identifier: GPL-2.0-only */
+> > +/*
+> > + * Copyright (c) 2019 Western Digital Corporation or its affiliates.
+> > + * Based on arch/arm64/include/asm/cpu_ops.h
+> > + */
+> > +#ifndef __ASM_CPU_OPS_H
+> > +#define __ASM_CPU_OPS_H
+> > +
+> > +#include <linux/init.h>
+> > +#include <linux/sched.h>
+> > +#include <linux/threads.h>
+> > +
+> > +/**
+> > + * struct cpu_operations - Callback operations for hotplugging CPUs.
+> > + *
+> > + * @name:              Name of the boot protocol.
+> > + * @cpu_prepare:       Early one-time preparation step for a cpu. If there
+> > + *                     is a mechanism for doing so, tests whether it is
+> > + *                     possible to boot the given HART.
+> > + * @cpu_start:         Boots a cpu into the kernel.
+> > + */
+> > +struct cpu_operations {
+> > +       const char      *name;
+> > +       int             (*cpu_prepare)(unsigned int cpu);
+> > +       int             (*cpu_start)(unsigned int cpu,
+> > +                                    struct task_struct *tidle);
+> > +};
+> > +
+> > +extern const struct cpu_operations *cpu_ops[NR_CPUS];
+> > +int __init cpu_set_ops(int cpu);
+>
+> This function is more like probing for appropriate cpu_ops. Also,
+> I think we don't need to return anything from cpu_set_ops().
+>
 
-And this issue has been fixed:
-https://github.com/llvm/llvm-project/commit/07f7c00208b393296f8f27d6cd3cec2b11d86fd8
+Correct. I will change it to void but I think set_ops is a better name
+as we are actually
+setting the right type of ops to cpu_ops.
 
-> > 2. -fPIC causes issues when using Clang + GNU as (https://github.com/ClangBuiltLinux/linux/issues/865)
+> Maybe rename it to "void cpu_probe_ops(int cpu)" ?
+>
+> > +void cpu_update_secondary_bootdata(unsigned int cpuid,
+> > +                                  struct task_struct *tidle);
+> > +
+> > +#endif /* ifndef __ASM_CPU_OPS_H */
+> > diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> > index f40205cb9a22..f81a6ff88005 100644
+> > --- a/arch/riscv/kernel/Makefile
+> > +++ b/arch/riscv/kernel/Makefile
+> > @@ -32,6 +32,8 @@ obj-$(CONFIG_RISCV_M_MODE)    += clint.o
+> >  obj-$(CONFIG_FPU)              += fpu.o
+> >  obj-$(CONFIG_SMP)              += smpboot.o
+> >  obj-$(CONFIG_SMP)              += smp.o
+> > +obj-$(CONFIG_SMP)              += cpu_ops.o
+> > +obj-$(CONFIG_SMP)              += cpu_ops_spinwait.o
+> >  obj-$(CONFIG_MODULES)          += module.o
+> >  obj-$(CONFIG_MODULE_SECTIONS)  += module-sections.o
 > >
-> > The kernel on a whole builds with -fno-integrated-as so we fall back to
-> > GNU as when assembling. Kernel modules are built with -fPIC and fail to
-> > build with a bunch of assembler errors like so (seen with binutils
-> > 2.31.1 and ToT):
+> > diff --git a/arch/riscv/kernel/cpu_ops.c b/arch/riscv/kernel/cpu_ops.c
+> > new file mode 100644
+> > index 000000000000..1085def3735a
+> > --- /dev/null
+> > +++ b/arch/riscv/kernel/cpu_ops.c
+> > @@ -0,0 +1,40 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Copyright (c) 2020 Western Digital Corporation or its affiliates.
+> > + */
+> > +
+> > +#include <linux/errno.h>
+> > +#include <linux/mm.h>
+> > +#include <linux/of.h>
+> > +#include <linux/string.h>
+> > +#include <linux/sched.h>
+> > +#include <linux/sched/task_stack.h>
+> > +#include <asm/cpu_ops.h>
+> > +#include <asm/sbi.h>
+> > +#include <asm/smp.h>
+> > +
+> > +const struct cpu_operations *cpu_ops[NR_CPUS] __ro_after_init;
+> > +
+> > +void *__cpu_up_stack_pointer[NR_CPUS];
+> > +void *__cpu_up_task_pointer[NR_CPUS];
+> > +
+> > +extern const struct cpu_operations cpu_ops_spinwait;
+> > +
+> > +void cpu_update_secondary_bootdata(unsigned int cpuid,
+> > +                                  struct task_struct *tidle)
+> > +{
+> > +       int hartid = cpuid_to_hartid_map(cpuid);
+> > +
+> > +       /* Make sure tidle is updated */
+> > +       smp_mb();
+> > +       WRITE_ONCE(__cpu_up_stack_pointer[hartid],
+> > +                 task_stack_page(tidle) + THREAD_SIZE);
+> > +       WRITE_ONCE(__cpu_up_task_pointer[hartid], tidle);
+> > +}
+> > +
+> > +int __init cpu_set_ops(int cpuid)
+>
+> Maybe rename it to "void cpu_probe_ops(int cpu)" ?
+>
+> > +{
+> > +       cpu_ops[cpuid] = &cpu_ops_spinwait;
+> > +
+> > +       return 0;
+> > +}
+> > diff --git a/arch/riscv/kernel/cpu_ops_spinwait.c b/arch/riscv/kernel/cpu_ops_spinwait.c
+> > new file mode 100644
+> > index 000000000000..f828e660294e
+> > --- /dev/null
+> > +++ b/arch/riscv/kernel/cpu_ops_spinwait.c
+> > @@ -0,0 +1,42 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Copyright (c) 2020 Western Digital Corporation or its affiliates.
+> > + */
+> > +
+> > +#include <linux/errno.h>
+> > +#include <linux/of.h>
+> > +#include <linux/string.h>
+> > +#include <asm/cpu_ops.h>
+> > +#include <asm/sbi.h>
+> > +#include <asm/smp.h>
+> > +
+> > +const struct cpu_operations cpu_ops_spinwait;
+> > +
+> > +static int spinwait_cpu_prepare(unsigned int cpuid)
+> > +{
+> > +       if (!cpu_ops_spinwait.cpu_start) {
+> > +               pr_err("cpu start method not defined for CPU [%d]\n", cpuid);
+> > +               return -ENODEV;
+> > +       }
+> > +       return 0;
+> > +}
+> > +
+> > +static int spinwait_cpu_start(unsigned int cpuid, struct task_struct *tidle)
+> > +{
+> > +       /*
+> > +        * In this protocol, all cpus boot on their own accord.  _start
+> > +        * selects the first cpu to boot the kernel and causes the remainder
+> > +        * of the cpus to spin in a loop waiting for their stack pointer to be
+> > +        * setup by that main cpu.  Writing to bootdata (i.e __cpu_up_stack_pointer) signals to
+> > +        * the spinning cpus that they can continue the boot process.
+> > +        */
+> > +       cpu_update_secondary_bootdata(cpuid, tidle);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +const struct cpu_operations cpu_ops_spinwait = {
+> > +       .name           = "spinwait",
+> > +       .cpu_prepare    = spinwait_cpu_prepare,
+> > +       .cpu_start      = spinwait_cpu_start,
+> > +};
+> > diff --git a/arch/riscv/kernel/smpboot.c b/arch/riscv/kernel/smpboot.c
+> > index 8bc01f0ca73b..2ee41c779a16 100644
+> > --- a/arch/riscv/kernel/smpboot.c
+> > +++ b/arch/riscv/kernel/smpboot.c
+> > @@ -25,6 +25,7 @@
+> >  #include <linux/sched/task_stack.h>
+> >  #include <linux/sched/mm.h>
+> >  #include <asm/clint.h>
+> > +#include <asm/cpu_ops.h>
+> >  #include <asm/irq.h>
+> >  #include <asm/mmu_context.h>
+> >  #include <asm/tlbflush.h>
+> > @@ -34,8 +35,6 @@
 > >
-> > /tmp/flexfilelayout-2d0cdc.s:359: Error: bad expression
-> > /tmp/flexfilelayout-2d0cdc.s:359: Error: illegal operands `auipc a0,%got_pcrel_hi(mem_map)'
-> > /tmp/flexfilelayout-2d0cdc.s:367: Error: bad expression
-> > /tmp/flexfilelayout-2d0cdc.s:367: Error: illegal operands `auipc a2,%got_pcrel_hi(pfn_base)'
-> > /tmp/flexfilelayout-2d0cdc.s:374: Error: bad expression
-> > /tmp/flexfilelayout-2d0cdc.s:374: Error: illegal operands `auipc a3,%got_pcrel_hi(va_pa_offset)'
+> >  #include "head.h"
 > >
-> > This has been reported upstream as https://llvm.org/pr44854. The way to
-> > work around this in the kernel is to just disable CONFIG_MODULES (which
-> > is a big hammer but that obviously won't be sent upstream in any form).
+> > -void *__cpu_up_stack_pointer[NR_CPUS];
+> > -void *__cpu_up_task_pointer[NR_CPUS];
+> >  static DECLARE_COMPLETION(cpu_running);
 > >
+> >  void __init smp_prepare_boot_cpu(void)
+> > @@ -46,6 +45,7 @@ void __init smp_prepare_boot_cpu(void)
+> >  void __init smp_prepare_cpus(unsigned int max_cpus)
+> >  {
+> >         int cpuid;
+> > +       int ret;
 > >
+> >         /* This covers non-smp usecase mandated by "nosmp" option */
+> >         if (max_cpus == 0)
+> > @@ -54,6 +54,11 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
+> >         for_each_possible_cpu(cpuid) {
+> >                 if (cpuid == smp_processor_id())
+> >                         continue;
+> > +               if (cpu_ops[cpuid]->cpu_prepare) {
+> > +                       ret = cpu_ops[cpuid]->cpu_prepare(cpuid);
+> > +                       if (ret)
+> > +                               continue;
+> > +               }
+> >                 set_cpu_present(cpuid, true);
+> >         }
+> >  }
+> > @@ -65,6 +70,8 @@ void __init setup_smp(void)
+> >         bool found_boot_cpu = false;
+> >         int cpuid = 1;
 > >
+> > +       cpu_set_ops(0);
+> > +
+> >         for_each_of_cpu_node(dn) {
+> >                 hart = riscv_of_processor_hartid(dn);
+> >                 if (hart < 0)
+> > @@ -92,36 +99,41 @@ void __init setup_smp(void)
+> >                         cpuid, nr_cpu_ids);
 > >
-> > Outstanding issues on the kernel side:
+> >         for (cpuid = 1; cpuid < nr_cpu_ids; cpuid++) {
+> > -               if (cpuid_to_hartid_map(cpuid) != INVALID_HARTID)
+> > +               if (cpuid_to_hartid_map(cpuid) != INVALID_HARTID) {
+> > +                       if (cpu_set_ops(cpuid)) {
+> > +                               cpuid_to_hartid_map(cpuid) = INVALID_HARTID;
+> > +                               continue;
+> > +                       }
+> >                         set_cpu_possible(cpuid, true);
+> > +               }
+> >         }
+> >  }
 > >
-> > 1. -Wuninitialized warnings around local register variables
+> > +int start_secondary_cpu(int cpu, struct task_struct *tidle)
+>
+> Make this function static.
+>
+
+sure.
+
+> > +{
+> > +       if (cpu_ops[cpu]->cpu_start)
+> > +               return cpu_ops[cpu]->cpu_start(cpu, tidle);
+> > +
+> > +       return -EOPNOTSUPP;
+> > +}
+> > +
+> >  int __cpu_up(unsigned int cpu, struct task_struct *tidle)
+> >  {
+> >         int ret = 0;
+> > -       int hartid = cpuid_to_hartid_map(cpu);
+> >         tidle->thread_info.cpu = cpu;
 > >
-> > There are a few warnings around local "register" variables, which are
-> > uninitialized when using clang:
+> > -       /*
+> > -        * On RISC-V systems, all harts boot on their own accord.  Our _start
+> > -        * selects the first hart to boot the kernel and causes the remainder
+> > -        * of the harts to spin in a loop waiting for their stack pointer to be
+> > -        * setup by that main hart.  Writing __cpu_up_stack_pointer signals to
+> > -        * the spinning harts that they can continue the boot process.
+> > -        */
+> > -       smp_mb();
+> > -       WRITE_ONCE(__cpu_up_stack_pointer[hartid],
+> > -                 task_stack_page(tidle) + THREAD_SIZE);
+> > -       WRITE_ONCE(__cpu_up_task_pointer[hartid], tidle);
+> > -
+> > -       lockdep_assert_held(&cpu_running);
+> > -       wait_for_completion_timeout(&cpu_running,
+> > +       ret = start_secondary_cpu(cpu, tidle);
+> > +       if (!ret) {
+> > +               lockdep_assert_held(&cpu_running);
+> > +               wait_for_completion_timeout(&cpu_running,
+> >                                             msecs_to_jiffies(1000));
 > >
-> > In file included from ../arch/riscv/kernel/asm-offsets.c:10:
-> > In file included from ../include/linux/sched.h:12:
-> > ../arch/riscv/include/asm/current.h:30:9: warning: variable 'tp' is uninitialized when used here [-Wuninitialized]
-> >         return tp;
-> >                ^~
-> > ../arch/riscv/include/asm/current.h:29:33: note: initialize the variable 'tp' to silence this warning
-> >         register struct task_struct *tp __asm__("tp");
-> >                                        ^
-> >                                         = NULL
-> > 1 warning generated.
+> > -       if (!cpu_online(cpu)) {
+> > -               pr_crit("CPU%u: failed to come online\n", cpu);
+> > -               ret = -EIO;
+> > +               if (!cpu_online(cpu)) {
+> > +                       pr_crit("CPU%u: failed to come online\n", cpu);
+> > +                       ret = -EIO;
+> > +               }
+> > +       } else {
+> > +               pr_crit("CPU%u: failed to start\n", cpu);
+> >         }
 > >
-> > ../arch/riscv/kernel/process.c:112:19: warning: variable 'gp' is uninitialized when used here [-Wuninitialized]
-> >                 childregs->gp = gp;
-> >                                 ^~
-> > ../arch/riscv/kernel/process.c:110:34: note: initialize the variable 'gp' to silence this warning
-> >                 const register unsigned long gp __asm__ ("gp");
-> >                                                ^
-> >                                                 = 0
-> > 1 warning generated.
+> >         return ret;
+> > --
+> > 2.24.0
 > >
-> > ../arch/riscv/kernel/stacktrace.c:34:8: warning: variable 'current_sp' is uninitialized when used here [-Wuninitialized]
-> >                 sp = current_sp;
-> >                      ^~~~~~~~~~
-> > ../arch/riscv/kernel/stacktrace.c:32:42: note: initialize the variable 'current_sp' to silence this warning
-> >                 const register unsigned long current_sp __asm__ ("sp");
-> >                                                        ^
-> >                                                         = 0
-> > 1 warning generated.
-> >
-> > The way to solve these is to make these register variables global, where
-> > they are properly initialized and work. This has been done in the kernel
-> > a few times:
-> >
-> > fe92da0f355e ("MIPS: Changed current_thread_info() to an equivalent supported by both clang and GCC")
-> > 3337a10e0d0c ("arm64: LLVMLinux: Add current_stack_pointer() for arm64")
-> > 786248705ecf ("arm64: LLVMLinux: Calculate current_thread_info from current_stack_pointer")
-> > 0abc08baf2dd ("ARM: 8170/1: Add global named register current_stack_pointer for ARM")
-> > f6c9cbf091a4 ("ARM: 8173/1: Calculate current_thread_info from current_stack_pointer")
-> >
-> > The LLVM community has rejected adopting GCC's behavior of allowing
-> > local register variables because it would seriously complicate the
-> > register allocator; the full discussion can be viewed here:
-> > http://lists.llvm.org/pipermail/llvm-dev/2014-March/071472.html
-> >
-> > This is the diff I am currently working with; I am not sure of any side
-> > effects aside from two that I will list below.
-> >
-> > https://gist.github.com/b5fda253a243127736fd2ac5d317dcdd
-> >
-> >
-> >
-> > Booting in QEMU:
-> >
-> > This is where things get interesting... The kernel does not start at all
-> > when the registers are purely local. It does start when the tp register
-> > is moved globally (arch/riscv/include/asm/current.h diff above) but it
-> > does not finish getting to userspace. Additionally, the diff in
-> >  -s ARCH=riscv CC=clang CROSS_COMPILE=riscv64-linux-gnu- O=out.riscv distclean defconfig all
-> > ...
-> > $ timeout 30s qemu-system-riscv64 -M virt -m 512M -no-reboot -bios default -kernel out.riscv/arch/riscv/boot/Image -display none -serial mon:stdio -initrd out.riscv/rootfs.cpio
-> > ...
-> > [    0.000000] Linux version 5.6.0-rc1-00001-g90c81dfc010e (nathan@ubuntu-m2-xlarge-x86) (ClangBuiltLinux clang version 11.0.0 (git://github.com/llvm/llvm-project 9c1a88c96457ffde71f13c74fd4d52a77d86cc9f)) #1 SMP Tue Feb 11 22:13:03 MST 2020
-> > ...
-> > [    0.624295] Run /init as init process
-> > /init: exec: line 7: /sbin/init: Text file busy
-> > [    0.712090] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000200
-> > [    0.712739] CPU: 0 PID: 1 Comm: init Not tainted 5.6.0-rc1-00001-g90c81dfc010e #1
-> > [    0.713228] Call Trace:
-> > [    0.713508] [<ffffffe00004a3e6>] walk_stackframe+0x0/0xc6
-> > [    0.713832] [<ffffffe0007c0070>] dump_stack+0x9e/0xd6
-> > [    0.714112] [<ffffffe00004f250>] panic+0x112/0x2dc
-> > [    0.714387] [<ffffffe000051886>] exit_mm+0x0/0x12a
-> > [    0.714676] [<ffffffe000051a80>] sys_exit_group+0x0/0xe
-> > [    0.714965] [<ffffffe000051aa4>] __wake_up_parent+0x0/0x24
-> > [    0.715262] [<ffffffe000051a8e>] __do_sys_exit_group+0x0/0x16
-> > [    0.715568] [<ffffffe000048e3e>] ret_from_syscall+0x0/0x2
-> > [    0.716409] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000200 ]---
-> > qemu-system-riscv64: terminating on signal 15 from pid 55965 (timeout)
-> >
-> > GCC 9.2.0 works just fine.
-> >
-> > $ make -j$(nproc) -s ARCH=riscv CROSS_COMPILE=riscv64-linux- O=out.riscv distclean defconfig all
-> > $ timeout 30s qemu-system-riscv64 -M virt -m 512M -no-reboot -bios default -kernel out.riscv/arch/riscv/boot/Image -display none -serial mon:stdio -initrd out.riscv/rootfs.cpio
-> > ...
-> > [    0.634854] Run /init as init process
-> > Starting syslogd: OK
-> > Starting klogd: OK
-> > Initializing random number generator... [    1.329410] random: dd: uninitialized urandom read (512 bytes read)
-> > done.
-> > Starting network: OK
-> > Linux version 5.6.0-rc1-00001-g90c81dfc010e (nathan@ubuntu-m2-xlarge-x86) (gcc version 9.2.0 (GCC)) #1 SMP Tue Feb 11 22:20:36 MST 2020
-> > Linux version 5.6.0-rc1-00001-g90c81dfc010e (nathan@ubuntu-m2-xlarge-x86) (gcc version 9.2.0 (GCC)) #1 SMP Tue Feb 11 22:20:36 MST 2020
-> > Stopping network: OK
-> > Saving random seed... [    2.165960] random: dd: uninitialized urandom read (512 bytes read)
-> > done.
-> > Stopping klogd: OK
-> > Stopping syslogd: OK
-> > umount: devtmpfs busy - remounted read-only
-> > umount: can't unmount /: Invalid argument
-> > The system is going down NOW!
-> > Sent SIGTERM to all processes
-> > Sent SIGKILL to all processes
-> > Requesting system poweroff
-> > [    4.412388] reboot: Power down
-> >
-> > I have tried to do some debugging in gdb to see where things are going
-> > wrong and I see it get to run_init_process, succeed, then jump to the
-> > exception handler and panic so I am not really sure where things are
-> > going wrong. Any sort of ideas on where to go from here would certainly
-> > be appreciated :)
-> >
-> > Thanks for all the hard work everyone has done, hopefully we can help
-> > add to it!
-> >
-> > Cheers,
-> > Nathan
+>
+> Apart from minor comments above, looks good to me.
+>
+> Reviewed-by: Anup Patel <anup@brainfault.org>
+>
+> Regards,
+> Anup
+>
+
+
+-- 
+Regards,
+Atish
 
