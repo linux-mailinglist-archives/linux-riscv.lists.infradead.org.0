@@ -2,129 +2,119 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4312C15FC4E
-	for <lists+linux-riscv@lfdr.de>; Sat, 15 Feb 2020 03:16:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34E9215FC54
+	for <lists+linux-riscv@lfdr.de>; Sat, 15 Feb 2020 03:26:22 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	 bh=zG3naML4nxGfd++GddKwkkAKwLe5O8UM12AhXHIHzWI=; b=QBIWZeyAVMWrIzdU3ZOV+SPf5
-	BHS/jQeURFZsAv4xIK5FA9YfBxPpRd5n+zW1H5J1+HogZOHP1Lc1wIhpleLq68emYDrowZPTinRdX
-	0rD7OciFzRHnf23vWn8ohEikkY2duYx04UWv3G4do1K2EvIV7Z3WLgejlgfgIOlY8Di04/EEWFagw
-	b3mNT3wFX0KIpRKqrfcp+wT65dty1d+1UY5deDZ8QuTdgCuBkAlyPXxbm2ZuvDWm0WWCRml0QEw2/
-	WpuHg2SK2bTPtLo/rioWONiaMYtbAh92Byuyjzu1sWcbz2pQrbNDapEaa3LQbNS1ChpeSf6I2oZhF
-	3M/6aBYqA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XxUgIunWEMMBEmtyGmBtjuWtwcFy0QD4gglLtv/ZY1U=; b=W5pMM5elDVVEXa
+	wlIiMNqsOc/NZT+xWIK/XqyTJIGEOcmzCxviGxe1KDO5ux5H+hk9NT3vy+CO/fydwmGCgaZYGMGJ/
+	8HXKVYGkuzgBSad6ipjLckV4B+oSw0kkxyXfDB2GA+vbLuZKut7y82SWHWivxrKMTMyPCZ/hrIBV7
+	mEv7D8K6iO1S4Jnyebu8iAsKQlfIxzJAugIvjB9Y0yNLMNHXD1bu7bYBqrlBzOKpFa5HQFrRZ6AmS
+	1lr8NRHQwuyITU4yDB1mBL/KRGIwuVnWnf42vbxLSkT0YIY6rZusoc00dNGIvn3BGEx2kQHot7wyY
+	ls1yet2I8djzY9wlqTKA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2mzm-0004ck-Dk; Sat, 15 Feb 2020 02:15:50 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1j2n9u-0007pC-O7; Sat, 15 Feb 2020 02:26:18 +0000
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2mzi-0004Kl-VC
- for linux-riscv@lists.infradead.org; Sat, 15 Feb 2020 02:15:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1581732947; x=1613268947;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=3nxNVqqnvVPXKclTa7sdotFseT8dAynddXtNWegn9mo=;
- b=UgcT1aNhORCmbps3XtxU4cm5WZ6lW4O+erTdCYPmNJ92CYesGKQG4jp2
- Zercs5hTxvXlFhRonbneAnkVKVzXel/nHjuqESdwkDyOAq5j2oZmBaMIx
- 1nnrdPGgAYyxXfTyU2kVuWLkr2QWjS4H6uEuj2jp9tRbhXVgSnsNs3djT
- P0X9xDP6pBmq5lfzESqJgYy970aPNbeNBFh+YIUAiYehliDKMRhDhiwqo
- ay2qpIZN+tiFUenseWn5c4hCjiC1hCV8PP3ecAX6Wpb2ZO/qnbkl6dB8F
- rYihsiVCFiekHzJWTjFoZSsqWFAEBV8g12UXxxxDa5lyVBouRVdFu9bw9 w==;
-IronPort-SDR: 7ZSCc7yhebhg/G2x31ZaGinjeTdHXvCLpmjIRCOpbtB3+tFyoXp6/kmH24cU17pb6qTDngoara
- QJ1iZRuOp6mHiFxC8SDpIERwK/2YrsbIL48EU3B9XycBN+ZHwxaJqk7jN4LoavsPFDqWJFeFwK
- GggBzYBe3RMAbG8nxJGNGRvCM4kS5/tzKhtHv68s+nGa4kKe1Wg+LzBQV1+HdXL6WmelRIoQ3j
- 0EJ99cwCDe7Yr3VNX70mjH6eCZGvMHb2HXvWHHAvlwWdUHaUGz9fcwI7MDZKHrhoXReAvyJngK
- EW8=
-X-IronPort-AV: E=Sophos;i="5.70,442,1574092800"; d="scan'208";a="130432864"
-Received: from mail-mw2nam12lp2049.outbound.protection.outlook.com (HELO
- NAM12-MW2-obe.outbound.protection.outlook.com) ([104.47.66.49])
- by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2020 10:15:36 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=He/OMZeuYxd7MEJojk9oo/Cf1E8XUMdlD00IRe9Y4XmY8TWtEaiTiSE3694SFK9qO2VMVp7UAyEVj5PgUQf3XfwW7PZ1At8WXVSKSgGRFjNaCdH0gKBr1VNu0ixafCAHbPadw8YINRN5F0ccpRyLrcjZIQfxsL5leq6LlaPKeLYf8MbNE/fw6vAzz5rW/YK4EAoaoWeVPcz/hEECTDBBm7x9gotRE+BwjPq68mazCIg1HzvvlgdWQugLO+cXEw9v+tu4GD6w0d6LxIWkotBx/Acb3ivUQLr6xScIkxpALV1o9/zH6A9InoGRhSXel9NBi4u4uAIwfCa9JUyaroMt7A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zG3naML4nxGfd++GddKwkkAKwLe5O8UM12AhXHIHzWI=;
- b=kQpv3bz/DXO17Zfyg1Y3gJCTCvGsZwrkis5UhIE5gJP1VPj7LnNmmIZ5yTJChvD2o/faGXDQ8V1IBNVhGsIujtV+hzScxFyjeJBnXkseHij8OWTMiUuGYKJPMMkWhI+rmgOLAdAwVaV6/FGurANDtePSubmcY1ZFP2/vNZhPvTvb0BzMBCsBZbbfEfxnucna3fXscYeGBauCjx4cVL8zofOibegxNbGcjq6XSE33C7lHaXK/ylb2PTeqTPg5TMxic33klR6G1p2sCDxhRrZwJqWjzH9iHIBYg1xdTCqIomt+PYejR83pj1EYFqpcBF0GCGacFy/5OVbO/bkcJtH7jA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zG3naML4nxGfd++GddKwkkAKwLe5O8UM12AhXHIHzWI=;
- b=zHelKrGnWfVDR+vc+AkqqUpFX8IJYJingdK52pFHh5HL9zh4odfqgMQhY4T815CWrxwnMsWPBj3GnVXrdP64SvsA7y3IAN6Sqb7p7O+aQP3z2mqMW/RbJ7tsSHOrpWawmT5kphp8i0xfvMqpL2yLew4O70GU8s04RTii7DCL4q8=
-Received: from BYAPR04MB5816.namprd04.prod.outlook.com (20.179.59.16) by
- BYAPR04MB5878.namprd04.prod.outlook.com (20.179.57.91) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2707.21; Sat, 15 Feb 2020 02:15:35 +0000
-Received: from BYAPR04MB5816.namprd04.prod.outlook.com
- ([fe80::cd8e:d1de:e661:a61]) by BYAPR04MB5816.namprd04.prod.outlook.com
- ([fe80::cd8e:d1de:e661:a61%5]) with mapi id 15.20.2707.031; Sat, 15 Feb 2020
- 02:15:34 +0000
-From: Damien Le Moal <Damien.LeMoal@wdc.com>
-To: Sean Anderson <seanga2@gmail.com>, "linux-riscv@lists.infradead.org"
- <linux-riscv@lists.infradead.org>, Palmer Dabbelt <palmer@dabbelt.com>
+ id 1j2n9r-0007ot-Df
+ for linux-riscv@lists.infradead.org; Sat, 15 Feb 2020 02:26:17 +0000
+Received: by mail-qt1-x842.google.com with SMTP id v25so8314452qto.7
+ for <linux-riscv@lists.infradead.org>; Fri, 14 Feb 2020 18:26:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=XxUgIunWEMMBEmtyGmBtjuWtwcFy0QD4gglLtv/ZY1U=;
+ b=fGo3rBLWM43sPtS/zhMzhNuSXUlNvaxk+YRxjJEKWKJtReJBCCYQLJzrZOeihZ3D/N
+ Al6XScavhSaXMvyYnY/UNt3sjmUoVmGsTGBgIF5im07Ne1C7mTwEzLz51XS0YZGIR5r9
+ NieMccUX6P5ivZmq6GuiXrkvqrvueisfoCJr9wt/LpRlZYnIUna30Hi8ElP47NxCmfJb
+ 61CzWAroYKAZ5zSw2b0sF4c/Q3LRYznh+UBk8xv5evs83RWmIgM3FmSnEvy7OWvk/0/6
+ zLWtU2wPwp6lvv95n0UFNZ8XKl7TcPm7iN/l7E6yE35ZI0ue+5fgEcdCdPf29JM2dZSd
+ vAmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=XxUgIunWEMMBEmtyGmBtjuWtwcFy0QD4gglLtv/ZY1U=;
+ b=fGTwyKYqPtw+g6cJnpOdlv7V7Rg9BVXsz8Sle/9IgCBghxUs9LFbVcpJpsUWpEYk7v
+ W124KV2d+OjrvSzOQBoTTmvuRMbCx0RKGBZOHbGrW9LirsxMwA+ImRAOuSYY3Ckuz/78
+ nFi622Cnw/fM77sUGPFK5+BJlhSGyr8WZO4a7QeDI13FehQTJFerKYPRRUnCGU0z3EJD
+ eoobKHNqcVQkxBRSJhE4IkRPV75XFv9NXH1xVPxTzEX1Wntt6mDCu23fbxhhPn/VOr2M
+ FjhwpXAqRiXjLtKqVTgNQoP8LwBw8SZIb5WvE0riy2Poa2rBXl/0cmqbrEDOA2xCV/HF
+ boxw==
+X-Gm-Message-State: APjAAAVivOOl5FfHZX9dWMuNQthTiM3OxUkMdbc0gSxpWavc4f7OaYF6
+ E7cjNebUMLQq0nyDcsqF5wQ=
+X-Google-Smtp-Source: APXvYqxlisYd0G71H00sCJJS+TxuMJVDnPhUTtGd1Nect9Wifcy08MubKhgYM0y6VSPvD9D+vgG0Cw==
+X-Received: by 2002:ac8:4e89:: with SMTP id 9mr4979577qtp.82.1581733573670;
+ Fri, 14 Feb 2020 18:26:13 -0800 (PST)
+Received: from [192.168.1.117] ([75.102.135.197])
+ by smtp.googlemail.com with ESMTPSA id o55sm4686347qtf.46.2020.02.14.18.26.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Feb 2020 18:26:13 -0800 (PST)
 Subject: Re: [PATCH 02/10] riscv: Force flat memory model with no-mmu
-Thread-Topic: [PATCH 02/10] riscv: Force flat memory model with no-mmu
-Thread-Index: AQHV43PjnjkcjlPPqU6LQC7Weju/tQ==
-Date: Sat, 15 Feb 2020 02:15:34 +0000
-Message-ID: <BYAPR04MB58169D9654E97130A3CFD9BAE7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+To: Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>
 References: <20200212103432.660256-1-damien.lemoal@wdc.com>
  <20200212103432.660256-3-damien.lemoal@wdc.com>
  <05106cc4-3d79-7288-cd1f-0c996e5b1657@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Damien.LeMoal@wdc.com; 
-x-originating-ip: [129.253.182.57]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 46f3e77a-c09e-4b0a-57e5-08d7b1bcf0c7
-x-ms-traffictypediagnostic: BYAPR04MB5878:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB58784B4B473B6622690FFED8E7140@BYAPR04MB5878.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 03142412E2
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(366004)(346002)(376002)(136003)(396003)(39860400002)(199004)(189003)(110136005)(33656002)(66476007)(54906003)(316002)(64756008)(66446008)(478600001)(66556008)(55016002)(86362001)(26005)(76116006)(66946007)(7696005)(9686003)(8676002)(81156014)(5660300002)(186003)(8936002)(52536014)(81166006)(53546011)(6506007)(4326008)(71200400001)(2906002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5878;
- H:BYAPR04MB5816.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: FKX1uZ4REfLnzO1O0lg2yaMtrz6T3/pFP5qzdEwj/CMbLn8Ocs7TvRGbInk/RD64qjbUzPx46aLh4cgnhlKP4UUCgoySgUXiGD5WaBtiQP4n/asHUyRgwW5Gj8XKaR5twRW+5Vpx2WjjF86XrwNFw9l3idVRg3q5fEW/uZmrZsu4JIylP/ZQ/0XRVJW48jFejNOCfjKexGG6x+UKMUzwWFjKwF/gRVwNerpxBlTpv86YfcRM4AhyCc/dRxRvqEZEXj+pJzSzweRYmt8HWaK+c+Fgo21Wq7Beu1eS+nZaIPwsys2ozli4tkyg7lUIpbznocbLszjJucdMLw7hY9FYChdZWp6upwApKpJ8j+7EkSWljtoW00pcyNTMFK3Sq6Gvk0N/k/4KDwFhHTAb2tqTaC4liSeyvERY6OipHuAlds5o94urGhfD83JKxYW4TWXP
-x-ms-exchange-antispam-messagedata: 2+/an5JeqFnH3ntKHCKiZJF8FeEzs7o06C3SuT/wu6bZuwbo+sUKmGSNuT63pyytfjSLOk8ktzqXr+6b3aw7odj6cIui2DwQyVbFEwDwDyPSNxPXQ6BA5HR3LesmTD/p9WM6y7wLGujW8Usqfll5CQ==
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <BYAPR04MB58169D9654E97130A3CFD9BAE7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+From: Sean Anderson <seanga2@gmail.com>
+Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
+ mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
+ 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
+ lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
+ GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
+ F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
+ AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
+ AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
+ bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
+ +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
+ Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
+ N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
+ SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
+ w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
+ w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
+ OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
+ zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
+ z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
+ 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
+ ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
+ vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
+ EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
+ zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
+ iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
+ S5hN3/mP5UeooFHb
+Message-ID: <cb38129d-ceb8-4eb0-6bbb-a9c825478410@gmail.com>
+Date: Fri, 14 Feb 2020 21:26:12 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 46f3e77a-c09e-4b0a-57e5-08d7b1bcf0c7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Feb 2020 02:15:34.5569 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 6G8Ehia+LGCmJoN9665AJYqOkV/lHT7vHurOjZYdOAuClz6Ng46iRh96y51j8r3D/3ULGYLZii8dTSP/XAxtNQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5878
+In-Reply-To: <BYAPR04MB58169D9654E97130A3CFD9BAE7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_181547_021828_7EF09D75 
-X-CRM114-Status: GOOD (  14.46  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200214_182615_544164_6DC9A230 
+X-CRM114-Status: GOOD (  21.52  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [seanga2[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [seanga2[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -148,76 +138,73 @@ Cc: Anup Patel <Anup.Patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2020/02/15 5:18, Sean Anderson wrote:=0A=
-> Hi,=0A=
-> =0A=
-> On 2/12/20 5:34 AM, Damien Le Moal wrote:=0A=
->> Compilation errors trigger if ARCH_SPARSEMEM_ENABLE is enabled for=0A=
->> a nommu kernel. Since the sparsemem model does not make sense anyway=0A=
->> for the nommu case, do not allow selecting this option to always use=0A=
->> the flatmem model.=0A=
->>=0A=
->> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>=0A=
->> ---=0A=
->>  arch/riscv/Kconfig | 1 +=0A=
->>  1 file changed, 1 insertion(+)=0A=
->>=0A=
->> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig=0A=
->> index 73f029eae0cc..1a3b5a5276be 100644=0A=
->> --- a/arch/riscv/Kconfig=0A=
->> +++ b/arch/riscv/Kconfig=0A=
->> @@ -121,6 +121,7 @@ config ARCH_FLATMEM_ENABLE=0A=
->>  =0A=
->>  config ARCH_SPARSEMEM_ENABLE=0A=
->>  	def_bool y=0A=
->> +	depends on MMU=0A=
->>  	select SPARSEMEM_VMEMMAP_ENABLE=0A=
->>  =0A=
->>  config ARCH_SELECT_MEMORY_MODEL=0A=
->>=0A=
-> =0A=
-> Just for some background, why did you choose NOMMU? Afaik the K210 has=0A=
-> an MMU following the RISC-V privileged specification 1.9=0A=
-=0A=
-Our early experiments with the k210 with opensbi revealed that the mmu is=
-=0A=
-definitely not a normal one or that it is not functional (e.g. S-mode fault=
-=0A=
-delegation bit setup leads to a hang). So at the time, we started assuming=
-=0A=
-that this is a nommu platform.=0A=
-=0A=
-Since then, others also mentioned that there is in fact an MMU but not=0A=
-following the latest specs (I think Olof mentioned that). But I have not=0A=
-look into this (yet) to try to make it work. Not sure how much effort would=
-=0A=
-be needed on the kernel to support this older specs mmu.=0A=
-=0A=
-In any case, considering the tiny 6+2MB of memory available, direct M-mode=
-=0A=
-Linux boot avoids the bootloader chain and openSBI use, which saves a lot=
-=0A=
-of memory. We could reduce this chain to opensbi with direct payload only,=
-=0A=
-but even then, page alignment will lead to memory loss. And at run-time,=0A=
-nommu saves a lot too with the absence of page tables. Nommu makes sense=0A=
-for this platform.=0A=
-=0A=
-This is the first step to get this platform running Linux. Due to the low=
-=0A=
-memory, it probably isn't a practical use case to use Linux in the first=0A=
-place, but it definitely is a great inexpensive platform for getting=0A=
-started with RISCV. NOMMU allows running Linux without much effort. Going=
-=0A=
-forward, we can also try to get that SoC MMU running.=0A=
-=0A=
-=0A=
-> =0A=
-> --Sean=0A=
-> =0A=
-=0A=
-=0A=
--- =0A=
-Damien Le Moal=0A=
-Western Digital Research=0A=
+On 2/14/20 9:15 PM, Damien Le Moal wrote:
+> On 2020/02/15 5:18, Sean Anderson wrote:
+>> Hi,
+>>
+>> On 2/12/20 5:34 AM, Damien Le Moal wrote:
+>>> Compilation errors trigger if ARCH_SPARSEMEM_ENABLE is enabled for
+>>> a nommu kernel. Since the sparsemem model does not make sense anyway
+>>> for the nommu case, do not allow selecting this option to always use
+>>> the flatmem model.
+>>>
+>>> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
+>>> ---
+>>>  arch/riscv/Kconfig | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+>>> index 73f029eae0cc..1a3b5a5276be 100644
+>>> --- a/arch/riscv/Kconfig
+>>> +++ b/arch/riscv/Kconfig
+>>> @@ -121,6 +121,7 @@ config ARCH_FLATMEM_ENABLE
+>>>  
+>>>  config ARCH_SPARSEMEM_ENABLE
+>>>  	def_bool y
+>>> +	depends on MMU
+>>>  	select SPARSEMEM_VMEMMAP_ENABLE
+>>>  
+>>>  config ARCH_SELECT_MEMORY_MODEL
+>>>
+>>
+>> Just for some background, why did you choose NOMMU? Afaik the K210 has
+>> an MMU following the RISC-V privileged specification 1.9
+> 
+> Our early experiments with the k210 with opensbi revealed that the mmu is
+> definitely not a normal one or that it is not functional (e.g. S-mode fault
+> delegation bit setup leads to a hang). So at the time, we started assuming
+> that this is a nommu platform.
+> 
+> Since then, others also mentioned that there is in fact an MMU but not
+> following the latest specs (I think Olof mentioned that). But I have not
+> look into this (yet) to try to make it work. Not sure how much effort would
+> be needed on the kernel to support this older specs mmu.
+> 
+> In any case, considering the tiny 6+2MB of memory available, direct M-mode
+> Linux boot avoids the bootloader chain and openSBI use, which saves a lot
+> of memory. We could reduce this chain to opensbi with direct payload only,
+> but even then, page alignment will lead to memory loss. And at run-time,
+> nommu saves a lot too with the absence of page tables. Nommu makes sense
+> for this platform.
+
+Well, the VM mode bits are in mstatus for this priv spec, so OpenSBI
+won't work since there is no way to set them. 
+
+> 
+> This is the first step to get this platform running Linux. Due to the low
+> memory, it probably isn't a practical use case to use Linux in the first
+> place, but it definitely is a great inexpensive platform for getting
+> started with RISCV. NOMMU allows running Linux without much effort. Going
+> forward, we can also try to get that SoC MMU running.
+
+Yeah, that's pretty reasonable. However, I don't think much has changed
+other than the locations of some of the registers has been changed
+around. The existing code to set up page table entries should not need
+major modifications.
+
+Alternatively, the base+bound scheme could probably work pretty well
+with low memory, though we would not be able to re-use any existing
+code.
+
+--Sean
 
