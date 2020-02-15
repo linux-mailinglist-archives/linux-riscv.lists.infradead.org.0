@@ -2,79 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFDBF15FE38
-	for <lists+linux-riscv@lfdr.de>; Sat, 15 Feb 2020 12:50:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F264615FE36
+	for <lists+linux-riscv@lfdr.de>; Sat, 15 Feb 2020 12:50:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:MIME-Version:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BXTOKpdlrDmzXhALWid3mUisJuh+b0F0i2TYxXizAYU=; b=K6ngtb/nP3ctDb
-	+GP7SC1gRoz+fbof84Tx9+Icwb6QKRjB5eVehaJgodp+x3crfrSwzzkONZNTMeaK5VOLwCZ6Eq5sb
-	EDWOKFiCVX6wuvv8HGX6o24H9W4XH6a5LzBoDxBGlED8wEPsWkJbRXgWm21H83HiosQLhjLob2gLB
-	rNK3TbSPosWTLWnpVaKe4V2LQVE4TsfyFIP7imFZAE4WlrBXRPSza9i9QEhCJKvDmezgKW3P2EFMG
-	bMk4S9gn/0kC1U0BqKiZm3ax50qrEIbBALuDw8TT/9PCuNGxNychbkOxwNLp/az7/rifmE3prkOTm
-	ja6U5CD7+50alnSksFWA==;
+	List-Owner; bh=LLtmUB3Trtv7u/OvBqV6MxVks5/RiaQJykLLXKuG7Q8=; b=UwtPwtZlOc+S78
+	xy/QDTxV9w4uOIr+AYVAYfh47/S9r3zfcedd2ActAABBx+BQW0CUf3/MKiiuFky/OxxVUF20LKmFe
+	Dy7EINam3zLb/dLd9xkyWV65bqGCxP7K8wIwrpq0/gs4mDeqQckqIZScyuOZoKvVyPYT04Yv7Cx4V
+	ptqXgp5fKdnbI/xySqgQ+RHclLoyrDaidBSuHrvXKB1XIue1a5oi8nR7HoWsk2RtFfXYt8LHruJvI
+	5xcPhYs8BRrm9eDqGyU+AXsDpYwkniX7HpcuHwuplOdUicqr0uNp4v5URafP7IdEeq5ktC0nnqqQi
+	LUYhd+Tp4cZ3d1LOMiTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2vy0-00038Y-BL; Sat, 15 Feb 2020 11:50:36 +0000
+	id 1j2vxu-00033D-CA; Sat, 15 Feb 2020 11:50:30 +0000
 Received: from mout.web.de ([212.227.17.11])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2vxr-000320-5f
- for linux-riscv@lists.infradead.org; Sat, 15 Feb 2020 11:50:29 +0000
+ id 1j2vxq-00031z-Un
+ for linux-riscv@lists.infradead.org; Sat, 15 Feb 2020 11:50:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1581767417;
- bh=muQBD9SPvw+3aONjZcQUJc+xZO6shhqoY1/LvaKF8U8=;
+ s=dbaedf251592; t=1581767418;
+ bh=jCA+u/iWeunXisbMKKiKA03JHhtYvtZt9+PJ1WArJLs=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References:
  In-Reply-To:References;
- b=pbYVr6ILx787Y60KjtnvKCJ+yTlTxbRDM4WtGBlJSJF+yhz6sqqkN9+ub00mbAQGB
- HOOdBG2aRNzg+u6ZIMYMAcZgxf2weHcqOOw9vzfojMaotl61BE7fMXSRJ+jx9d6044
- vrknk+A35DJRv6A6FTB3Ma60S+fqHZyS/61qntRM=
+ b=svIz3e/SRwMfRYktOnp10mrv0KT3SN7Sf3QB7z7Taq7Iqod+wP9H4AozfN+WU/Xly
+ RUttwDku9m4AkgE9SSl0Ut0nn7nxyLb+Lw/1f19tGsBmJnEqUDXp/D6SB8HDjyxVaP
+ FK/yPv3HbAKxuJ9LT1I74K8TV9kL34hxeFjMPJus=
 X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
 Received: from md1f2u6c.ww002.siemens.net ([95.157.55.156]) by smtp.web.de
  (mrweb102 [213.165.67.124]) with ESMTPSA (Nemesis) id
- 0MQNiS-1ivCAX2XOe-00Tjup; Sat, 15 Feb 2020 12:50:17 +0100
+ 0MfqAq-1ioYKz3qVQ-00N8Df; Sat, 15 Feb 2020 12:50:18 +0100
 From: Jan Kiszka <jan.kiszka@web.de>
 To: Paul Walmsley <paul.walmsley@sifive.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
  linux-riscv@lists.infradead.org
-Subject: [PATCH v2 1/3] riscv: Add support for mem=
-Date: Sat, 15 Feb 2020 12:49:42 +0100
-Message-Id: <617f75f4eaacb02cd9d0a7044434e3e9b65e9e8b.1581767384.git.jan.kiszka@web.de>
+Subject: [PATCH v2 2/3] riscv: End kernel region search in setup_bootmem
+ earlier
+Date: Sat, 15 Feb 2020 12:49:43 +0100
+Message-Id: <b11898805c2f9f01b10867a05701aa0fafeaa886.1581767384.git.jan.kiszka@web.de>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <cover.1581767384.git.jan.kiszka@web.de>
 References: <cover.1581767384.git.jan.kiszka@web.de>
 In-Reply-To: <cover.1581767384.git.jan.kiszka@web.de>
 References: <cover.1581767384.git.jan.kiszka@web.de>
-X-Provags-ID: V03:K1:3S/9It4FAsUZJCi6+Sy0g2D79OQG9MLyYgTZXZ9nUs5XLvx8DzI
- ooiWxCBCyVHmKstdJ9+eF0vioL+swsjnJQC2ZkeDJH06wucpqRWKY5owhO9Sz011BORVWyU
- Qq/laO/AwQkpRZqG070Mv9K2jn8T/tpzSYS9/q4pahovz+4jc3YvYZt8iIItjJvjLHqevLL
- GAWME8nx5vQb4wVt88QTg==
+X-Provags-ID: V03:K1:dRJ78LiuZpsCOAaRFt2kX6CRQY/zfwNmeS/wQDiU3z1AmAFRFhs
+ a7pkspN8g5TqXQti6GoOwOTcxgRVpyBAlFa2EVziRbawhY4KUUiD3I1zy4Lq8ZsWFN+e6A7
+ Com3Vi66HeXM9fYCztbS55ZxjeSj1+Ty1jIUpdedhzMyzAONSnzJ3u1FDDZ5BIv8FQLimun
+ ok88tzo/ZaDd94JCMqDvA==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:12f8oFkUa0Q=:U0+Tvh3IFJCRgaBZDWRtWc
- YWQqUeJRKaQgWAgA6P0tBgn2xXN6Oug0mnDeNrG+2rgCszMpyP7SUeikQvfc5xSGgQkqwG+zf
- /d6m5wBjZyHHH92HTsqskjuZdaaU7nDBw+dues+B49jKfMMsThbL5/wNx7Gl06bClx8Kb9lsT
- r13VP6IHoTUxpfCnOiehsYCWeGTH4XIcrVmPOHqPQp1Tm1DyOUtD/IYtabmDb9+6kYPeRz1PR
- TvRRLO0olr5R+ezEBzDe+6NomPx/5TGnR9sRh1NNP1DcqV1Dqwp6rRAa3QeeUboo3wH3g2tDj
- kwBfE7+O1WwbhZK16vPlF4iH0BKEVoOCcvXIUookUOjYiXO2Jk1oUiZP6Amj42PdQuSvvi1so
- YonZUDeth4oagB1DIZ5ueYSiiSSISBXg/zR9qZj1AVVsnv51E6tJvZgMuscmBBDEcgIeKuH9n
- nQeC3y0zykmGkl0U3G6CsOb23TztQZjxyN6eZAHVrhuSKA1jWB4pTkJ4FkFX0A0qCS235IrNi
- toYuwVsdea8B05vhZEXPdhaP7xiTQvew73kaF7wwl28Xj9OaeHK1PbfALA8RY/9aps+Y453hH
- +u1SjRDY0JKqxZEu3dWmTfDnUmhSzUKEQ7bfZYZsLNDpgUsMubZ+JAnz4KKJ8x6AfLCqjb1Xy
- 2q8xIiK4ZaXvgu17M5CPpKogo9fVJwQoK/FA3KD1vxNryovgHfkCFbOuQ55k6l3kv/q6lH/Xc
- K77AODMf7HL5R3W58Mv+MPjqhi6pzOnfAkr8ApR5e7D0Jc1zvDSwuIiwM/8S5/yNsDGkFYD5O
- QY8q/jHxZpTklIBhFE3E9NfP0vs1ULsvVMWIo/QgvN3KeJohTbpcfIjOgPT6hRX3Gxw/PZLEf
- ttt+gnoCJ339khOAQ2m+967fqoX+6Jrxp+T2T9/mKKvUQIdHwpbW7AQJ/8gOZ/f7u410nzpkA
- CMNjAdaXCNLzpNZAvEpJRDMEHxdZbGfSlZmYvFwaJoh1h/e3HT2w9SdmvUaxqdmQEemBwl7vU
- rtIGUxaziK4XZkijZwvz9JExvdVVKphBJcGZkWBXB3yOZw8bfrLldUUYgCnaW7G4le0UH8TbK
- 07a/ViLG75ih+ibNBA1dBQigtgHEEEmXwbg9Z/kvKp4LWmPG5C4ubmyctNdVxueYoMAWyY2Gi
- oALHjbBuIjZQ+Qor8AbDQDJdy4gOXrU1D6F9sKtLnkz3zpvCmEgf/HJW1F6YXTRh9KZRfkcvq
- wZOTdF6ZNSGffTWBa
+X-UI-Out-Filterresults: notjunk:1;V03:K0:h4l0FGfFSd8=:fcKAdv9BAbt2EL6f6a/gnV
+ XDc+YpOCOmmpw5Jp3Vf6XlH/UWBcdQnDFV44NqM4kAc5oNlPgOkrvYcScwcoCV52QV1dy3bO9
+ NlWJ/Souni9qfUD5D4XoYkd7kjuv40xQvLDPB1PP5FUmBfCsidbNwrsBoRpQADynbELRhui5D
+ WLI6MwPCKxettX+mH19d5W+T2tUezhfZFdtIonKLWukREWLFUXVK9cDMY0UaM4ntnGoH/aU4Z
+ aq+TKlC5SWF46s4iJhT71Ly7GRDaIsf4B3vZYNdZRHzz70fWpR4Ips/BQhwFqJrW2XFZHVUre
+ zZt88wwNbgkTIWOwlVFwKOFHdeIxRlx0DbEhLvuh2zROEkKSKXcDrU5A6UzhroK/khKd+eXVC
+ M6UKThz43vnyVpknsDrgAMCZTvLw2HkJXFJzIchUY20V3TdGlTx6yIPABi0+gB4V4gSspQ/2h
+ K8e0en6TmHPWW9OzgikSHpRidAM0WMBxp1OpDE3wqQn2A01kSdVhPpyR/TX5twZn8zgsQFeMv
+ AVpIyln9OS9KpsuK+T3zSZtmge4qRv663UYveu28/KEdxOBLTJCdtIGk8cf6uYO2FQ95Cok4I
+ zoi/PZdUrgCxItKxd+LcPj+ntp0D7Iet+23K7Do4a9fKNRVX81/01GcRmjFj9kBhbaNq3zgSB
+ 0f3DXSQoje+FJXJkUxt3TGH0EpNlaiySAnIdz9YVLLz5dTB1TBc5Bn5tZywz9QKxVyN7eCWAg
+ HP+/JB6FY6zd9MPjYbE77A50g4ntoDcoCb3+2fZTqSgPZH2ivq6wiWZ2PcUTTMn5URGye2qWt
+ ukwBGnxKtJPJkPdfzpHfXqo3R23oVQnc2fVJ+/LyDmuzBGHffZ+6EfhesP9k+ayVUaCzPW0xX
+ hmSqAmLgJMibFEHKXFTE//Ps4EpI7S2vRRvjvlBNZTbZTy1AqUb/g8kyJRJ0UyU8F2C56jkfN
+ Zj7LRnPykC813bq+JK7Dj8wGma8aDILHJOabhx5RE+Tjw68Mjx2WP+CwK0+lRjajpK+UkrUXI
+ AXALhvcd159vwoyDN2z+Ls1F/1fEHwOymLGgqXz503JaJ2aOzHYkSK5YhL7hQFGHy0Ovx5DmP
+ Q8JSoBrJKe/uMtULDUyNpnHEcsmlmvWnQ/cz8SP1u1XUuxLiXVXSToJxrzLiShG4CMIp4eqBz
+ zvIx6EUxxodLvTGvGG/XIjFhl/MhFoTOck8Rh9uVUvp/Z2bBNg/FbcZgUhOeuysNiLfL9vORl
+ jxUgSQKNrv44U5AMB
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200215_035027_514450_19D92DA6 
-X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-CacheID: sfid-20200215_035027_336003_C6109343 
+X-CRM114-Status: UNSURE (   5.70  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
@@ -83,12 +84,12 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  ---- ---------------------- --------------------------------------------------
  -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
  low trust [212.227.17.11 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [212.227.17.11 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [jan.kiszka[at]web.de]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [212.227.17.11 listed in wl.mailspike.net]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -114,51 +115,26 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Jan Kiszka <jan.kiszka@siemens.com>
 
-This sets a memory limit provided via mem=3D on the command line,
-analogously to many other architectures.
+No need to look further when that single region is found.
 
 Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
 =2D--
- arch/riscv/mm/init.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ arch/riscv/mm/init.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-index 965a8cf4829c..aec39a56d6cf 100644
+index aec39a56d6cf..a774547e9021 100644
 =2D-- a/arch/riscv/mm/init.c
 +++ b/arch/riscv/mm/init.c
-@@ -118,6 +118,23 @@ static void __init setup_initrd(void)
- }
- #endif /* CONFIG_BLK_DEV_INITRD */
-
-+static phys_addr_t memory_limit =3D PHYS_ADDR_MAX;
+@@ -160,6 +160,8 @@ void __init setup_bootmem(void)
+ 			if (reg->base + mem_size < end)
+ 				memblock_remove(reg->base + mem_size,
+ 						end - reg->base - mem_size);
 +
-+/*
-+ * Limit the memory size that was specified via FDT.
-+ */
-+static int __init early_mem(char *p)
-+{
-+	if (!p)
-+		return 1;
-+
-+	memory_limit =3D memparse(p, &p) & PAGE_MASK;
-+	pr_notice("Memory limited to %lldMB\n", memory_limit >> 20);
-+
-+	return 0;
-+}
-+early_param("mem", early_mem);
-+
- static phys_addr_t dtb_early_pa __initdata;
-
- void __init setup_bootmem(void)
-@@ -127,6 +144,8 @@ void __init setup_bootmem(void)
- 	phys_addr_t vmlinux_end =3D __pa_symbol(&_end);
- 	phys_addr_t vmlinux_start =3D __pa_symbol(&_start);
-
-+	memblock_enforce_memory_limit(memory_limit);
-+
- 	/* Find the memory region containing the kernel */
- 	for_each_memblock(memory, reg) {
- 		phys_addr_t end =3D reg->base + reg->size;
++			break;
+ 		}
+ 	}
+ 	BUG_ON(mem_size =3D=3D 0);
 =2D-
 2.16.4
 
