@@ -2,131 +2,119 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0734415FC63
-	for <lists+linux-riscv@lfdr.de>; Sat, 15 Feb 2020 03:41:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0862315FC67
+	for <lists+linux-riscv@lfdr.de>; Sat, 15 Feb 2020 03:48:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	 bh=sdIqdFhjaGjek7tTtSFwyIV7JF0KNsz5AE187jXYOyc=; b=lCTQU5Q8x36l8VMaReXr0v8Bi
-	Au2YlY1DDHME3CfOJfWu1MmI/qQ55a0jIvlrSFwlu0cC8WKuF7vC5gNcdKPdPWzAW3nYU8IRr3ya1
-	QzGzvDswXsZfScS5Ypp7o05O9lCE/lpUW1sgdLVj/c4O9jo2EwWh3E348oe6dOn92QzxPIpRIfnZM
-	SzDTEkv4lNcaTax0T5q8P0NkgDps9bU1XAcg4AqYmeN55m67zvo5L7dY3CG1WCOGUtvVh9H/bMKbn
-	mV0DUduKu4hd/hRn2VDH1sOaSIJlhC0uMeci1nQD3rriLDf7mMnk9PJuAaqqm5bD58DjzfGrZvNzr
-	CbeUo3OfA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fJ9CzE9bt5AL2FDE7kP6Th2QOOfOf7p4eK7rd49/Ma4=; b=pv9IwcvQTY7D4t
+	yKJ6eUb+X4hnF6EIX31Z9oOerFW/pIgrMGnnRQV46wzTguPpIimCewb0E5DD4SFLEH9LUGuy0/Pf2
+	JS9dXP3lDgjCQ0iNvPToBY58pUHCRxJfyJM6I5XuJXpmkaQG+Y/B3XiEy06zvhsxNS6FWbUZXD8da
+	IQ4pDyfdQtSbHZ5IxIvHdxGa2mL+aQgLSZCfzDgvRMn+66lhmrDqVfLMRd7bf4jOIECKR44hag3WY
+	cf4gW9ccmFwGKLUlnLwxS+WSjIHddk/umHbkBSTpnlIb2bEAhoa4rD1IQX9XAHnOcp9VCRoFvTojI
+	BBBrHkXSB09EFuaKZa3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2nOF-0004Y6-Fx; Sat, 15 Feb 2020 02:41:07 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1j2nVA-0006gl-W6; Sat, 15 Feb 2020 02:48:17 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2nOC-0004Xj-50
- for linux-riscv@lists.infradead.org; Sat, 15 Feb 2020 02:41:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1581734463; x=1613270463;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=8gYm7cLAW7qT2o2r2AaLoSyCXzdsf6289wvNg+ErOwQ=;
- b=fz1O+63QCyR0qm7LK17BjJ4j43kI8ZuRi92zivejBp+z+/cYjHVhmqOL
- cBnWlXet6UGpNvmayocRL2EwlIYUh+izVMxvdxY34X5AqJrAW43Refhug
- k8qnLiMBEu7GBsddPwCcECqg2ZFn9Sg1gj5oigQWKLjzsfFtcTWKv2Mt4
- EFDFXMVkfFItaJi88JSnFlOfZzR9gQtrGWAqpsv0josqmuCUqoVVYyjjG
- zGVFhZf2mzoDYAvbJclLKOQJLVqz7tVwvmw8O8vsriPmxDV4Lj1Zwtxv2
- OPLodwRuePIOL5Gkd1bvJ8Qj6naP02w+hrT1ipr5FG5x4qeKQLg8lrxxX g==;
-IronPort-SDR: wEZ0U33aIxcs1Iz8VItkzpTxTttGQrw5z9rkZHLknhEMt2JmHgemVID9DAMDymJsB31EPLIjfD
- 3LC96ywrOX2CnRPopzBz/RH8roERHf78tns7gpajyX/T9VVBaZaZoAsV3DslGEzwKjCUNegQM/
- uQ6IeDAFNgFD5tnjGInWgd6WneNCdKN7Fai93av8+IA6kKCdmwdfg7Q/sn5SUfSqw48iBngGOR
- 74kNX3E+UeCJzL3QyaykA3QN4+wRCmOn2kR/spRRI+sAQtKd+9ZFMmwJdUwL8ah+fgdhPY5+rN
- jB8=
-X-IronPort-AV: E=Sophos;i="5.70,442,1574092800"; d="scan'208";a="129908543"
-Received: from mail-bn3nam04lp2051.outbound.protection.outlook.com (HELO
- NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.51])
- by ob1.hgst.iphmx.com with ESMTP; 15 Feb 2020 10:41:01 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=n3um2dqDAWASfCCJl481NZ8ww75srcGaDRj1+moqbrDLxGL1gHV57wtP9db6TdFHee7f7IIJDSqaCT2LmAPr70WR82OTBXQtzSkCGojlwmhIOKQG0F+1kprEcii0k2IJc1P5SnK+8veF0RgwiJFn+A+MHSiTBw3t0ZaZlsckQcgXwtBVuyASZWLnh8+I7ZaVAteGJzKrSbdx7DZIyInVaK3Zb43OJaxmUNHHBsw2AWLpfS5TpFJdWODPdc9WdZQFlA7TZnh6VzfqFC6rlWeefpM6DIeQq+Ao6TQHIKKim73VQZlYwylrwF9IZRFax6F1M+RYVGBt0rUvJjQ777sNYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sdIqdFhjaGjek7tTtSFwyIV7JF0KNsz5AE187jXYOyc=;
- b=eh2pCxG4b8xy7rvMdW80mvXOjfSggX80JaTkBKlBUxvEC3yt0AGItjxmJLjh6G8POFYOCHWng0eG6z76SGHi9ZVDs4RfF6kR6b1wxTptKR7jGDQB0ZGiNoei0MZgDcoJw50HXEbopHuc6li2XNdekZQA7C3GjRx1UUNVwibzw5LRx3O2tFiW/wNxqkSb98vV6CMrGjouUXSx4WjWdJMIcu611eDnE8WOWyD6/zgxbuPZ9PKVLEdFaVO+ppvRJalDRcHF8qW8xEh18AME/uP9a2shDwyMJQ/OCT5vccYv9hFA91BgI7loatgp5BCI0GvyUg0RkRSCJoAFHhcJelQn/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sdIqdFhjaGjek7tTtSFwyIV7JF0KNsz5AE187jXYOyc=;
- b=ZZp3/xx/zEymw0KWrTJyPnaqQsJ2YIiLG7WGjLKx5wKufLOpT0qP9njuGAceQgr5kZET060K97NSdDlYU1ret6TUj4M4B3bRyzLIu4Sn+hFKzf3G6hqCRGr6dI7JMvVHzJ4WVzUhoFQWF6Dv2zT5TG/0yR5bA8DwYi9wviDm1Hw=
-Received: from BYAPR04MB5816.namprd04.prod.outlook.com (20.179.59.16) by
- BYAPR04MB3877.namprd04.prod.outlook.com (52.135.214.13) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2729.25; Sat, 15 Feb 2020 02:41:00 +0000
-Received: from BYAPR04MB5816.namprd04.prod.outlook.com
- ([fe80::cd8e:d1de:e661:a61]) by BYAPR04MB5816.namprd04.prod.outlook.com
- ([fe80::cd8e:d1de:e661:a61%5]) with mapi id 15.20.2707.031; Sat, 15 Feb 2020
- 02:41:00 +0000
-From: Damien Le Moal <Damien.LeMoal@wdc.com>
-To: Sean Anderson <seanga2@gmail.com>, "linux-riscv@lists.infradead.org"
- <linux-riscv@lists.infradead.org>, Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH 02/10] riscv: Force flat memory model with no-mmu
-Thread-Topic: [PATCH 02/10] riscv: Force flat memory model with no-mmu
-Thread-Index: AQHV43PjnjkcjlPPqU6LQC7Weju/tQ==
-Date: Sat, 15 Feb 2020 02:40:59 +0000
-Message-ID: <BYAPR04MB5816D6AB39649A563BC96F2FE7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+ id 1j2nV6-0006g7-Td
+ for linux-riscv@lists.infradead.org; Sat, 15 Feb 2020 02:48:15 +0000
+Received: by mail-qk1-x741.google.com with SMTP id a141so1302094qkg.6
+ for <linux-riscv@lists.infradead.org>; Fri, 14 Feb 2020 18:48:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=fJ9CzE9bt5AL2FDE7kP6Th2QOOfOf7p4eK7rd49/Ma4=;
+ b=S+98ouoUBjL/M3zQblYe9dDOrizqT8Y0AUYfo+zmEAoWP90Rw+wmG+ukLSWtw3FUvN
+ qurQRMTbarq3zFwspAMZgND0ckPp1pHlmqvrjRNlUJqHpZJSD0N9VqJoKZmsbcsqoT9M
+ b6n6OM7u90n0N4xq6n/stUDqeqpWiyniyt4M+lvzkx8Qu+/FTOHxxU5AUtl9zgwCvWma
+ 2y3CHCkaTftx4U06jMOjZXet80zbBscToBiRRikqg3aokNavCcGNpG7iTLuBAi0dtuqW
+ PaIsBXuTzwbXiE7NNTcU7FRxgKRu21onSMOVC0VmBqNHbQknrR6V+Ds8E7T05PyeiCli
+ tIWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=fJ9CzE9bt5AL2FDE7kP6Th2QOOfOf7p4eK7rd49/Ma4=;
+ b=HxPMVBrEeoKBnBbr29pnrpUD9iccrsPBZU0/wcqOjhymPO4Ap0fp4jicq7dga2mQnJ
+ 8mHtNA1i5AbQcXhzhYJaWLTuvCP6BjxQo28vNguayUF4629vN8xhmnit7cPU/RkPQ4MT
+ kI8MigG/kD/cAmBI59lI9p3K3l5IdSXSmcmCeV7xtHbnNFQzLPgzK6VZE0QuV56x5pvu
+ teYgptggSjB8yHLNkAPdwBoZsTpLFBOePEzk6gKD9rDbvkLiGYQoeA/KDAOpabySsdas
+ 6xG3DKETJNEh5v+ELq6cKakNT65PlNVmmhoDbl93ziyaKrESJJMGkKmhHWFJv2RSjKou
+ DmIw==
+X-Gm-Message-State: APjAAAXo8ya3WUvTAw0of382VDaMsdr6KG2niMK+HbIBL4Y2no9774nc
+ xYK9/JPBIovi5p8cM6jNrKg=
+X-Google-Smtp-Source: APXvYqxnS0gyBrHWKl4W4KArLUu1soFgNa4w//xrL+SNCy6rRMmaR0dF5GmkAYxtSpFpdTmxuT+gtw==
+X-Received: by 2002:a37:7182:: with SMTP id m124mr5458470qkc.477.1581734886779; 
+ Fri, 14 Feb 2020 18:48:06 -0800 (PST)
+Received: from [192.168.1.117] ([75.102.135.197])
+ by smtp.googlemail.com with ESMTPSA id g26sm4555841qkk.68.2020.02.14.18.48.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Feb 2020 18:48:06 -0800 (PST)
+Subject: Re: [PATCH 08/10] riscv: Add Kendryte K210 device tree
+To: Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>
 References: <20200212103432.660256-1-damien.lemoal@wdc.com>
- <20200212103432.660256-3-damien.lemoal@wdc.com>
- <05106cc4-3d79-7288-cd1f-0c996e5b1657@gmail.com>
- <BYAPR04MB58169D9654E97130A3CFD9BAE7140@BYAPR04MB5816.namprd04.prod.outlook.com>
- <cb38129d-ceb8-4eb0-6bbb-a9c825478410@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Damien.LeMoal@wdc.com; 
-x-originating-ip: [129.253.182.57]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 820c0ea8-e48f-4332-dc10-08d7b1c07dea
-x-ms-traffictypediagnostic: BYAPR04MB3877:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR04MB3877BE0F4C399BA66A586152E7140@BYAPR04MB3877.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 03142412E2
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(39860400002)(366004)(346002)(396003)(376002)(189003)(199004)(52536014)(186003)(53546011)(2906002)(26005)(86362001)(55016002)(6506007)(4326008)(110136005)(33656002)(54906003)(316002)(66946007)(76116006)(9686003)(66446008)(66476007)(66556008)(64756008)(7696005)(8676002)(71200400001)(5660300002)(8936002)(81156014)(81166006)(478600001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB3877;
- H:BYAPR04MB5816.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: oTjZYpiHZH/R84DV2fHf+2R0jbtZ1KvrWgw5v4hT7eKvOItulgzQZO6znGPvLOuV5f7hvGwt8xyFX/lR8nSseGWSMDhdWiAy3dJYYtR0aGWjBM8hOW3xbPuhHWS4JFIZGOCqhU0nvM3UqpoxQU2+OvvvQAJrXg4SHpFhvdwjHjkNnvT4hnUYLT4VU7pVBge+JgxB6gjM5F8rSZ9aRPFGZenYcOXpyW+CpA1L3XVC7bxqdLhZyD9T9FbzfH8srXkbuFlMpH1WOQAogBVPlET2T+bRsRaop5gZJpEmNBX5yol6cAu2xevv45w+7cHw3bqvDzDdLlYT4i7hjr6P4C/A2p9tOvbpFeekp0GZgDJ5F3+bHwKN7IbCz+YcD0y1Q5ib6sUbNUi1Cqym6uMXfLuGIteVxqaULZBUyedMRhSmj9IMux6cMvC2KZCZzUz2QGks
-x-ms-exchange-antispam-messagedata: pXTEY8KxD8fLnEkfFIdZMVelk+r5k0ym4H5YAxDyqDI2VvpngnSHqVIGJeH07CAcOre5n3ki7cAt3kET6QO89saq0Ux6oQG2jhNZudkSmENh8fsrzl5lvf/brvMy2mNbFkdMGKx6rxYjb/HsFzBNIg==
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <20200212103432.660256-9-damien.lemoal@wdc.com>
+ <48e10b3d-12f3-a65c-8017-99c780c63040@gmail.com>
+ <BYAPR04MB581671F46D3FE67FD3C8B2B7E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+From: Sean Anderson <seanga2@gmail.com>
+Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
+ mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
+ 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
+ lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
+ GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
+ F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
+ AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
+ AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
+ bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
+ +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
+ Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
+ N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
+ SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
+ w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
+ w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
+ OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
+ zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
+ z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
+ 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
+ ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
+ vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
+ EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
+ zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
+ iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
+ S5hN3/mP5UeooFHb
+Message-ID: <bd74c841-2447-2f11-f924-a501230b3927@gmail.com>
+Date: Fri, 14 Feb 2020 21:48:05 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 820c0ea8-e48f-4332-dc10-08d7b1c07dea
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Feb 2020 02:40:59.9266 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ylLVHU7SUyaXUGmaO5C5M1+DpVFSjgVmE1jr510EAD2jsu9EtIlm+1gNB8aUPiIQsDClxNJJ73+CIOBaWaXHsA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3877
+In-Reply-To: <BYAPR04MB581671F46D3FE67FD3C8B2B7E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_184104_295060_0E16D5F0 
-X-CRM114-Status: GOOD (  15.95  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200214_184812_963441_EBA6F63C 
+X-CRM114-Status: GOOD (  43.50  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [seanga2[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [seanga2[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -150,110 +138,346 @@ Cc: Anup Patel <Anup.Patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2020/02/15 11:26, Sean Anderson wrote:=0A=
-> On 2/14/20 9:15 PM, Damien Le Moal wrote:=0A=
->> On 2020/02/15 5:18, Sean Anderson wrote:=0A=
->>> Hi,=0A=
->>>=0A=
->>> On 2/12/20 5:34 AM, Damien Le Moal wrote:=0A=
->>>> Compilation errors trigger if ARCH_SPARSEMEM_ENABLE is enabled for=0A=
->>>> a nommu kernel. Since the sparsemem model does not make sense anyway=
-=0A=
->>>> for the nommu case, do not allow selecting this option to always use=
-=0A=
->>>> the flatmem model.=0A=
->>>>=0A=
->>>> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>=0A=
->>>> ---=0A=
->>>>  arch/riscv/Kconfig | 1 +=0A=
->>>>  1 file changed, 1 insertion(+)=0A=
->>>>=0A=
->>>> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig=0A=
->>>> index 73f029eae0cc..1a3b5a5276be 100644=0A=
->>>> --- a/arch/riscv/Kconfig=0A=
->>>> +++ b/arch/riscv/Kconfig=0A=
->>>> @@ -121,6 +121,7 @@ config ARCH_FLATMEM_ENABLE=0A=
->>>>  =0A=
->>>>  config ARCH_SPARSEMEM_ENABLE=0A=
->>>>  	def_bool y=0A=
->>>> +	depends on MMU=0A=
->>>>  	select SPARSEMEM_VMEMMAP_ENABLE=0A=
->>>>  =0A=
->>>>  config ARCH_SELECT_MEMORY_MODEL=0A=
->>>>=0A=
->>>=0A=
->>> Just for some background, why did you choose NOMMU? Afaik the K210 has=
-=0A=
->>> an MMU following the RISC-V privileged specification 1.9=0A=
->>=0A=
->> Our early experiments with the k210 with opensbi revealed that the mmu i=
-s=0A=
->> definitely not a normal one or that it is not functional (e.g. S-mode fa=
-ult=0A=
->> delegation bit setup leads to a hang). So at the time, we started assumi=
-ng=0A=
->> that this is a nommu platform.=0A=
->>=0A=
->> Since then, others also mentioned that there is in fact an MMU but not=
-=0A=
->> following the latest specs (I think Olof mentioned that). But I have not=
-=0A=
->> look into this (yet) to try to make it work. Not sure how much effort wo=
-uld=0A=
->> be needed on the kernel to support this older specs mmu.=0A=
->>=0A=
->> In any case, considering the tiny 6+2MB of memory available, direct M-mo=
-de=0A=
->> Linux boot avoids the bootloader chain and openSBI use, which saves a lo=
-t=0A=
->> of memory. We could reduce this chain to opensbi with direct payload onl=
-y,=0A=
->> but even then, page alignment will lead to memory loss. And at run-time,=
-=0A=
->> nommu saves a lot too with the absence of page tables. Nommu makes sense=
-=0A=
->> for this platform.=0A=
-> =0A=
-> Well, the VM mode bits are in mstatus for this priv spec, so OpenSBI=0A=
-> won't work since there is no way to set them. =0A=
-=0A=
-Interesting. At FOSDEM, we discussed with Palmer the work that would be=0A=
-needed to disentangle NOMMU and M-MODE boot, which for now are rather=0A=
-synonymous, but shouldn't. I guess this platform would still require M-MODE=
-=0A=
-boot, but not necessarily NOMMU.=0A=
-=0A=
->> This is the first step to get this platform running Linux. Due to the lo=
-w=0A=
->> memory, it probably isn't a practical use case to use Linux in the first=
-=0A=
->> place, but it definitely is a great inexpensive platform for getting=0A=
->> started with RISCV. NOMMU allows running Linux without much effort. Goin=
-g=0A=
->> forward, we can also try to get that SoC MMU running.=0A=
-> =0A=
-> Yeah, that's pretty reasonable. However, I don't think much has changed=
-=0A=
-> other than the locations of some of the registers has been changed=0A=
-> around. The existing code to set up page table entries should not need=0A=
-> major modifications.=0A=
-=0A=
-OK. Sounds easy enough. But I think cleanup work to dissociate M-mode boot=
-=0A=
-and NOMMU will be needed first. After that, trying to enable the MMU should=
-=0A=
-be easier.=0A=
-=0A=
-> =0A=
-> Alternatively, the base+bound scheme could probably work pretty well=0A=
-> with low memory, though we would not be able to re-use any existing=0A=
-> code.=0A=
-> =0A=
-> --Sean=0A=
-> =0A=
-=0A=
-=0A=
--- =0A=
-Damien Le Moal=0A=
-Western Digital Research=0A=
+On 2/14/20 9:34 PM, Damien Le Moal wrote:
+> On 2020/02/15 5:51, Sean Anderson wrote:
+>> On 2/12/20 5:34 AM, Damien Le Moal wrote:
+>>> Add a generic device tree for Kendryte K210 SoC based boards. This (for
+>>> now) very simple device tree works for the Kendryte KD233 development
+>>> board, the Sipeed MAIX M1 Dock based boards and the Sipeed MAIXDUINO
+>>> board.
+>>>
+>>> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
+>>> ---
+>>>  arch/riscv/boot/dts/Makefile           |   1 +
+>>>  arch/riscv/boot/dts/kendryte/Makefile  |   2 +
+>>>  arch/riscv/boot/dts/kendryte/k210.dts  |  23 +++++
+>>>  arch/riscv/boot/dts/kendryte/k210.dtsi | 123 +++++++++++++++++++++++++
+>>>  4 files changed, 149 insertions(+)
+>>>  create mode 100644 arch/riscv/boot/dts/kendryte/Makefile
+>>>  create mode 100644 arch/riscv/boot/dts/kendryte/k210.dts
+>>>  create mode 100644 arch/riscv/boot/dts/kendryte/k210.dtsi
+>>>
+>>> diff --git a/arch/riscv/boot/dts/Makefile b/arch/riscv/boot/dts/Makefile
+>>> index 0bf2669aa12d..87815557f2db 100644
+>>> --- a/arch/riscv/boot/dts/Makefile
+>>> +++ b/arch/riscv/boot/dts/Makefile
+>>> @@ -3,4 +3,5 @@ ifneq ($(CONFIG_BUILTIN_DTB_SOURCE),"")
+>>>  obj-$(CONFIG_USE_BUILTIN_DTB) += $(patsubst "%",%,$(CONFIG_BUILTIN_DTB_SOURCE)).dtb.o
+>>>  else
+>>>  subdir-y += sifive
+>>> +subdir-y += kendryte
+>>>  endif
+>>> diff --git a/arch/riscv/boot/dts/kendryte/Makefile b/arch/riscv/boot/dts/kendryte/Makefile
+>>> new file mode 100644
+>>> index 000000000000..815444e69e89
+>>> --- /dev/null
+>>> +++ b/arch/riscv/boot/dts/kendryte/Makefile
+>>> @@ -0,0 +1,2 @@
+>>> +# SPDX-License-Identifier: GPL-2.0
+>>> +dtb-$(CONFIG_SOC_KENDRYTE) += k210.dtb
+>>> diff --git a/arch/riscv/boot/dts/kendryte/k210.dts b/arch/riscv/boot/dts/kendryte/k210.dts
+>>> new file mode 100644
+>>> index 000000000000..0d1f28fce6b2
+>>> --- /dev/null
+>>> +++ b/arch/riscv/boot/dts/kendryte/k210.dts
+>>> @@ -0,0 +1,23 @@
+>>> +// SPDX-License-Identifier: GPL-2.0+
+>>> +/*
+>>> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
+>>> + */
+>>> +
+>>> +/dts-v1/;
+>>> +
+>>> +#include "k210.dtsi"
+>>> +
+>>> +/ {
+>>> +	model = "Kendryte K210 generic";
+>>> +	compatible = "kendryte,k210";
+>>> +
+>>> +	chosen {
+>>> +		bootargs = "earlycon console=ttySIF0";
+>>> +		stdout-path = "serial0";
+>>> +	};
+>>> +};
+>>> +
+>>> +&uarths0 {
+>>> +	status = "okay";
+>>> +};
+>>> +
+>>> diff --git a/arch/riscv/boot/dts/kendryte/k210.dtsi b/arch/riscv/boot/dts/kendryte/k210.dtsi
+>>> new file mode 100644
+>>> index 000000000000..4b9eeabb07f7
+>>> --- /dev/null
+>>> +++ b/arch/riscv/boot/dts/kendryte/k210.dtsi
+>>> @@ -0,0 +1,123 @@
+>>> +// SPDX-License-Identifier: GPL-2.0+
+>>> +/*
+>>> + * Copyright (C) 2019 Sean Anderson <seanga2@gmail.com>
+>>
+>> Glad to see this is getting some use :)
+> 
+> Seeing what you did for uboot, I used a lot of it and naturally gave credit
+> where it is due :)
+> 
+>> This appears to be an old-ish version, and I've made some updates in the
+>> past month or so. My current work is availible from [1].
+>>
+>> [1] https://github.com/Forty-Bot/u-boot/blob/maix_v6/arch/riscv/dts/k210.dtsi
+> 
+> OK. Will check again.
+> 
+>>> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
+>>> + */
+>>> +
+>>> +/ {
+>>> +	/*
+>>> +	 * Although the K210 is a 64-bit CPU, the address bus is only 32-bits
+>>> +	 * wide, and the upper half of all addresses is ignored.
+>>> +	 */
+>>> +	#address-cells = <1>;
+>>> +	#size-cells = <1>;
+>>> +	compatible = "kendryte,k210";
+>>> +
+>>> +	aliases {
+>>> +		serial0 = &uarths0;
+>>> +	};
+>>> +
+>>> +	clocks {
+>>> +		in0: oscillator {
+>>> +			compatible = "fixed-clock";
+>>> +			#clock-cells = <0>;
+>>> +			clock-frequency = <26000000>;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	cpus {
+>>> +		#address-cells = <1>;
+>>> +		#size-cells = <0>;
+>>> +		timebase-frequency = <7800000>;
+>>
+>> This is true only for the default frequency. I wonder if there is a
+>> better way to encode this.
+> 
+> Yes, I suspected that. Seeing that the CPU frequency can be changed, I
+> wondered how this should all go together. But since the current code does
+> not change the cpu frequency, I simply stayed with the default here. I
+> suspect that we may want the default hard-coded in the code, and use the
+> value specified here as the one that should be setup by sysctl.
+> 
+>>> +		cpu0: cpu@0 {
+>>> +			device_type = "cpu";
+>>> +			reg = <0>;
+>>> +			compatible = "riscv";
+>>> +			riscv,isa = "rv64imafdc";
+>>> +			mmu-type = "none";
+>>
+>> This should be "sv36".
+> 
+> If we want to run the MMU, yes. For a nommu kernel, I would rather stick
+> with "none". Not that it really matters since the nommu kernel will not
+> look at this entry anyway. No strong opinion either way in the end.
+> I have not checked the specs yet, but does sv36 necessarily implies older
+> specs 1.9 too ? If not, then we may want something else in there for this
+> soc special case.
+
+Ah, this should be "sv39", sorry. Ideally we would put something like
+the priv spec version in the isa string, or perhaps as a separate
+property. From reading the dt docs, it seems like one should try to
+describe the hardware as best as possible to allow for
+foward-compatibility.
+
+>>> +			i-cache-size = <0x8000>;
+>>> +			i-cache-block-size = <64>; /* bogus */
+>>
+>> I emailed some people at Kendryte and they confirmed the 64-byte
+>> cacheline. The cpus are rocket cores.
+> 
+> Good to know. I will remove the comment then.
+> 
+>>
+>>> +			d-cache-size = <0x8000>;
+>>> +			d-cache-block-size = <64>; /* bogus */
+>>> +			clocks = <&sysctl 0>;
+>>
+>> This is correct only by coincidence. The clock structure is
+>>
+>> in0 -> pll0 -> aclk -> cpu
+>>
+>> aclk divides by two by default, so it runs at 390 MHz, which is also
+>> what you set pll1 to. However, if someone else (such as the bootloader)
+>> changes the pll0 frequency then this will be completely off.
+> 
+> Yes... The clock management needs more work as mentioned in the cover
+> letter. All of this works for now with direct m-mode boot (no boot loader)
+> and relies on the hardware defaults which are coded here. The sysctl driver
+> also relies on those defaults. A more solid implementation will need the
+> soc_early_init() code to discover and set things up correctly.
+> 
+> As mentioned in the cover letter, this is all a base. It works, but
+> definitely is not complete.
+
+At the very least, I would different identifiers for each clock. That
+way you can ignore them now and add support later. There isn't a
+"natural" ordering (since the clocks are in a different order in every
+register), so I am using this arbitrary numbering scheme [1].
+
+[1] https://github.com/Forty-Bot/u-boot/blob/maix_v6/include/dt-bindings/clock/k210-sysctl.h
+
+>>> +			clock-frequency = <390000000>;
+>>> +			cpu0_intc: interrupt-controller {
+>>> +				#interrupt-cells = <1>;
+>>> +				interrupt-controller;
+>>> +				compatible = "riscv,cpu-intc";
+>>> +			};
+>>> +		};
+>>> +		cpu1: cpu@1 {
+>>> +			device_type = "cpu";
+>>> +			reg = <1>;
+>>> +			compatible = "riscv";
+>>> +			riscv,isa = "rv64imafdc";
+>>> +			mmu-type = "none";
+>>> +			i-cache-size = <0x8000>;
+>>> +			i-cache-block-size = <64>; /* bogus */
+>>> +			d-cache-size = <0x8000>;
+>>> +			d-cache-block-size = <64>; /* bogus */
+>>> +			clocks = <&sysctl 0>;
+>>> +			clock-frequency = <390000000>;
+>>> +			cpu1_intc: interrupt-controller {
+>>> +				#interrupt-cells = <1>;
+>>> +				interrupt-controller;
+>>> +				compatible = "riscv,cpu-intc";
+>>> +			};
+>>> +		};
+>>> +	};
+>>> +
+>>> +	sram0: memory@80000000 {
+>>> +		device_type = "memory";
+>>> +		reg = <0x80000000 0x400000>;
+>>> +	};
+>>> +
+>>> +	sram1: memory@80400000 {
+>>> +		device_type = "memory";
+>>> +		reg = <0x80400000 0x200000>;
+>>> +	};
+>>> +
+>>> +	kpu_sram: memory@80600000 {
+>>> +		device_type = "memory";
+>>> +		reg = <0x80600000 0x200000>;
+>>> +	};
+>>> +
+>>> +	soc {
+>>> +		#address-cells = <1>;
+>>> +		#size-cells = <1>;
+>>> +		compatible = "kendryte,k210-soc", "simple-bus";
+>>
+>> Should the -soc suffix be here? I saw it was absent from the fu540
+>> device tree.
+> 
+> Yes, I guess it can be removed.
+> 
+>>> +		ranges;
+>>> +		interrupt-parent = <&plic0>;
+>>> +
+>>> +		sysctl: sysctl@50440000 {
+>>> +			compatible = "kendryte,k210-sysctl", "syscon";
+>>> +			reg = <0x50440000 0x1000>;
+>>> +			#clock-cells = <1>;
+>>> +		};
+>>
+>> Would it be possible to model this as an MFD? There are a lot of
+>> different registers in here, many of which are unrelated to clocks. For
+>> example, there are also reset registers, a reboot register, and DMA
+>> handshake controls. I think modeling this as a clock controller only
+>> does not correctly reflect the hardware, and will be awkward in the
+>> future.
+> 
+> Absolutely. It is far from complete. And seeing your complete device tree,
+> there are likely a lot of peripherals for which Linux already has drivers
+> and that could be used if the clocks/sysctl are improved. As mentioned in
+> the cover letter, this is left as an exercise for interested people :)
+> Note that I am indeed interested in working on this a little more. I simply
+> lack the time to do it :)
+
+My next project after u-boot support was going to be Linux, so I can
+lend a hand after I get everything merged on that end.
+
+>>> +
+>>> +		clint0: interrupt-controller@2000000 {
+>>> +			compatible = "riscv,clint0";
+>>> +			reg = <0x2000000 0xC000>;
+>>> +			interrupts-extended = <&cpu0_intc 3>,  <&cpu1_intc 3>;
+>>> +			clocks = <&sysctl 0>;
+>>
+>> Again, this is wrong; it should be running off ACLK.
+> 
+> Yep. As you said, it works because we use the defaults for everything.
+> 
+>>> +		};
+>>> +
+>>> +		plic0: interrupt-controller@c000000 {
+>>> +			#interrupt-cells = <1>;
+>>> +			interrupt-controller;
+>>> +			compatible = "kendryte,k210-plic0", "riscv,plic0";
+>>> +			reg = <0xC000000 0x3FFF008>;
+>>
+>> With regard to the size of registers, I had the following exchange on
+>> the U-Boot mailing list.
+>>
+>> On Tue, Feb 4, 2020 at 10:23 PM Sean Anderson <seanga2@gmail.com> wrote:
+>>>
+>>> On 2/4/20 6:32 AM, Bin Meng wrote:
+>>>> Hi Sean,
+>>>>
+>>>> On Mon, Feb 3, 2020 at 4:10 AM Sean Anderson <seanga2@gmail.com> wrote:
+>>>>> Should the size of a reg be the size of the documented registers, or the size
+>>>>> of the address space which will be routed to that device?
+>>>>
+>>>> Perhaps we need use the size of the address space routed to that
+>>>> device, in case there is some undocumented registers we need handle.
+>>>
+>>> Ok, I'll go with the whole address space then.
+>>
+>> You may want to make similar changes for Linux; I didn't see any
+>> documentation about what the preferred size was.
+> 
+> I wondered about it too. Not really sure what to do about it.
+
+The sizes in my device tree are based on reading device memory and
+seeing where it repeats. For example, the memory at 50210000 and
+50210100 is the same, so I set the uart1 reg to <50210000 0x100>.
+
+>>> +			interrupts-extended = <&cpu0_intc 11>, <&cpu0_intc 0xffffffff>,
+>>> +					      <&cpu1_intc 11>, <&cpu1_intc 0xffffffff>;
+>>> +			riscv,ndev = <65>;
+>>> +			riscv,max-priority = <0x07>;
+>>> +		};
+>>> +
+>>> +		uarths0: serial@38000000 {
+>>> +			compatible = "kendryte,k210-uart0", "sifive,uart0";
+>>
+>> I would change the first compatible string to "kendryte,k210-uarths",
+>> since that is how this uart is described in their documentation.
+> 
+> OK. It makes sense.
+> 
+>>
+>>> +			reg = <0x38000000 0x20>;
+>>
+>> Same thing as the size comments above.
+>>
+>>> +			interrupts = <33>;
+>>> +			clocks = <&sysctl 0>;
+>>
+>> Same clock comments.
+>>
+>>> +		};
+>>> +	};
+>>> +};
+>>>
+>>
+>> --Sean
+>>
+> 
+> 
+
 
