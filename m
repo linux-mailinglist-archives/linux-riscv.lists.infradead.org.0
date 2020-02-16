@@ -2,64 +2,105 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F0FA160497
-	for <lists+linux-riscv@lfdr.de>; Sun, 16 Feb 2020 16:46:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B7B4F1604B0
+	for <lists+linux-riscv@lfdr.de>; Sun, 16 Feb 2020 17:06:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=os9TnsjNHpEscmQ/pIjImR92ghmPlhtFserBXlIXFJQ=; b=FvHXjjx6nfUTFUyZgHsSu+2USu
-	tzWU1l4cz/nMlUEFczYf44UgHrIZeCVU882Sj33YMoJvU0M2jS1o1yl73FMyCMYOTXzo59G9ee8Zl
-	5FYtA+Wo43PfQaTGH5uCotPw9ODSiWhgx0mhtlApyvr2M/G5noh+pjOK1Vh2xQcOIkBoouH9RfKjd
-	Rro317+IB63LSPzCTnjC4QVpHxM4a6s4Lvdh7ORa3Rl1H7kXHMjPvuDA6I5iJ5++Tg44YXBT0mpkT
-	A2TOdhiHP+fQZ3Xlb6bDRjDHEFt9O01bKNiABQlBlg7AuIIb+iD2/IVn9E3vnvq2/Uvb87YAsajA4
-	jDJqBXBA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MZlY5jXxovnVpKhXenFIH3sYVC3V8sCSqoLKnbMBfrg=; b=LS3lYy2yuPKgwp
+	pU1c6vcEnH3SsTZI8hm9GWybfyfSuwqyOtNot+FmCsvvrS78JpDuAMtFm70Tp7Ga5Iz2sPsWq6ozB
+	Y60tO1wA4AhsmVaZdZgU+xCx3goIJV8UOI63VepmuRQQSTw0ODBq9wJTJLj/6/k6UoZfJKJkisbsE
+	NsJj+tQhU5lTBNyn62gAzJxIW+dvbbHusehQUzirx1lsjmfxFcfnGBfZ1mEiIAzVJB3+0+dary/mj
+	+hF+eeqdSRvhHdOwpFT0Din/jexbF676LIKG+k2UuB7FSFRijEyxDCCiAjvTiRclwyPC6jDxHA5Iu
+	2GdOwoUOG5iYrSKgM2KQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3M7v-0000uB-HZ; Sun, 16 Feb 2020 15:46:35 +0000
-Received: from conuserg-11.nifty.com ([210.131.2.78])
+	id 1j3MQq-0006iL-BE; Sun, 16 Feb 2020 16:06:08 +0000
+Received: from mout.web.de ([212.227.15.3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3M7q-0000th-2j; Sun, 16 Feb 2020 15:46:32 +0000
-Received: from grover.flets-west.jp (softbank126093102113.bbtec.net
- [126.93.102.113]) (authenticated)
- by conuserg-11.nifty.com with ESMTP id 01GFj6eR026453;
- Mon, 17 Feb 2020 00:45:06 +0900
-DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-11.nifty.com 01GFj6eR026453
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
- s=dec2015msa; t=1581867908;
- bh=os9TnsjNHpEscmQ/pIjImR92ghmPlhtFserBXlIXFJQ=;
- h=From:To:Cc:Subject:Date:From;
- b=yt2PJNXS2jXuA2jslkc3CMA95DynuZt62vxxsh0mm0pLwhD+Cle/RxDx0WvakAUns
- 3L03ZOArSyhVFVY3pW5RYd1tl6wmGrzrkdGkU26yAC/9qdZrJNtrPg6mm+O9UWqC+A
- 0UBZkbRAbVRMZU5g7rHIMxDaN/i5IM5++7O+AGOfn2N90lb2r+uATEV+HSK199wIjG
- oCaNRj3MbevSo/S5QUwfpyUV3wFEzDraNeNs8rvAs73pa57MbGm7YTRfdtfbEbNyYn
- Mfb35c7ytnmcckc+WiZ42aa668ZHiOAniV9v/3sUPYhYjoQ90eOEnmlb+zPq+BwXwq
- JuBx/z5uSY91g==
-X-Nifty-SrcIP: [126.93.102.113]
-From: Masahiro Yamada <masahiroy@kernel.org>
-To: linux-kbuild@vger.kernel.org
-Subject: [PATCH] kbuild: use KBUILD_DEFCONFIG as the fallback for
- DEFCONFIG_LIST
-Date: Mon, 17 Feb 2020 00:45:02 +0900
-Message-Id: <20200216154502.26478-1-masahiroy@kernel.org>
-X-Mailer: git-send-email 2.17.1
+ id 1j3MQl-0006hs-Lv
+ for linux-riscv@lists.infradead.org; Sun, 16 Feb 2020 16:06:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1581869156;
+ bh=MZlY5jXxovnVpKhXenFIH3sYVC3V8sCSqoLKnbMBfrg=;
+ h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
+ b=KMyaulILEc0ViK1SjeBPOF9a98z71AIW87x+3leMPx3lnAgzGJ9l/h1G3DMapurvr
+ DP0fHiGoXftlHgzqMeJjBBp2nCeoHTTy5j84XSqavLH9x4nW/bmzLVuGh/I0ILEMN3
+ ZzpNoX3i3CC8Gi5AazB9hKuvNtHe78hcPBeGEQ/g=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.10] ([95.157.55.156]) by smtp.web.de (mrweb004
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 0M4lkz-1jO4FN2tjh-00ywOb; Sun, 16
+ Feb 2020 17:05:56 +0100
+Subject: Re: [PATCH v2 3/3] riscv: Fix crash when flushing executable ioremap
+ regions
+To: Alex Ghiti <alex@ghiti.fr>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ linux-riscv@lists.infradead.org
+References: <cover.1581767384.git.jan.kiszka@web.de>
+ <8a555b0b0934f0ba134de92f6cf9db8b1744316c.1581767384.git.jan.kiszka@web.de>
+ <e721c440-2baf-d962-62ef-41a4f3b1333b@ghiti.fr>
+From: Jan Kiszka <jan.kiszka@web.de>
+Message-ID: <b63e5945-0e31-940f-5ff7-6754ef5c034f@web.de>
+Date: Sun, 16 Feb 2020 17:05:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
+MIME-Version: 1.0
+In-Reply-To: <e721c440-2baf-d962-62ef-41a4f3b1333b@ghiti.fr>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:4IYkYoTip6rhKbBbR3p45GwgeQBDPssEbOY75DgUV5s0zWnKyf0
+ /xbkS6vPCX50+OITwD3eb3uAo87TZJvAW3LpnZXgsALeRQfWGvJHoU6LUBLgJI7bjbzFoSv
+ qVOUmoJr7OI59ePFab4bMeymQ8p/fZFDG9pIq0dzd5fCPpVrjlxo8RQHkbaMl7cRTaApIvn
+ ggBPQKU+Rd9hUusHBcXYA==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+wWHqJLZyLs=:6QTPINZQciCeoWt1mjpoif
+ U0g4M0oP+tuEm0imgfgwvi+9PJsPduQv1+os4sPFys5GYlx22fgSjghLYtewimO19gTUj++Ze
+ vFYGKdCMmh8c0CwowbhJ6vv5kxVRObsvoWdGJ2v/0dO6Wxtf8136fOtSNd6gPJbQz3vheannA
+ s31KAgPiF8M5LSKv/4vkiIgpANe08i2+JOFHS+X1XfZX9HLe3bQrnRnns2H6zVBzaH0vl1X/F
+ IegofJz+Y/WqBsDLVT95hyGVBrkuhotjHpTfOEWFU2o5DxmEMG/k0NgmlIDaub4pdBGVX8i8d
+ Kaq471l4qrlCoRdU/gBWWbM863QsnaK/IsVZRrmN18fz+SBdxZzCDiErkkMqFq7jca8vL8OXf
+ aSs/o9OcxNGsFDgRzMDFv0H/2Ke7Z0mSVSZ4thoPOMSX6JlFpfw62kbIfUJCinAXVhn4Kv4gq
+ bFdl5KVmDZuteLEsWKSYaqEQJk8yjYYsu6jW9cJ+j3yHF+Q+7OF8+Nx7ABQqZMISdpjBhS6NE
+ ZxTQQCs17ET6UnHjfwm98cG3xh1MOJC6CBuDJvKP71Z57fQ95eDvPgH8o0M5v8CChWIAm61fZ
+ vb8S3Yw6iXamhgDyafgIX9omDeih/OpJ9OWLeXi1jLQrKR01vOe7plN/S91ypR3/HCE56piJZ
+ y0UKbMnmkwqS72OmAvNKnE6uJMteWfvngp74RhMHbrMZ/+jLGRM+pyiWpeBtTs+Fe0q3oGv21
+ BIegb++mAf141DNIW5MJ7RnfSLrXSBScbFjGN/9g/9uaXy8di2NoNZ03v7mWaxzQtrh2dnwhs
+ //bFXJud+4U6AKZiouQmQzZ/PRqr8Ylj6/FgieoD3jLIILgtCc2uaUxxqertGOXccCIQkRoJH
+ mwB9RnCfTrgodaU8yaLD0ulKHtRE94MA32Zp4JBkZnCyU7oaqnjZY5fZWrzcDJ58p5X1eJmbK
+ giJsp0ramTrp08SE7Zda26mRnSaNTOsDT/yoYlUuCS+gH4JFUniGmUOHhh2gObTcldodWc9R6
+ GADiM9NJwBKXXqhaQ5ia4DgyPuti30oR5xQ9KHNFz3Waz+J6fbmgdjlh341pMkKJQk3GK52mw
+ /3odEAfk2fq+7XNl+Wn/ubLONRXgYr6zIScH+0GmKWds49hS1AJq5WMHRbk8xo2sxZertduj1
+ hvuouF+o6zXkCAXdLGopYaW4G5EiWZ9u+HJze6eeCxdaMgcVYrSYz0svCU4XUtXwgUulSIX3g
+ c/wzbauloWjIWvmENOgeFVFIDCIlfzxtT5rHtvgMmrzUWW1s0JDuVQ4OGfwgwbddQdSTdYiw3
+ Gs0R5gAf3MVoK7jf4pPxEoAB9uFtirYWuJzI5yJ7xUn9qDi2yJpPO904u0E+i7ww/ELI/pAu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200216_074630_466163_D5FD4189 
-X-CRM114-Status: GOOD (  11.77  )
-X-Spam-Score: 1.0 (+)
+X-CRM114-CacheID: sfid-20200216_080604_052859_AED47B77 
+X-CRM114-Status: GOOD (  15.55  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (1.0 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [210.131.2.78 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [212.227.15.3 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [jan.kiszka[at]web.de]
+ -0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [212.227.15.3 listed in wl.mailspike.net]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,153 +112,56 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-sh@vger.kernel.org,
- Guo Ren <guoren@kernel.org>, "H. Peter Anvin" <hpa@zytor.com>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>,
- Anton Ivanov <anton.ivanov@cambridgegreys.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Richard Weinberger <richard@nod.at>, Masahiro Yamada <masahiroy@kernel.org>,
- x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Jeff Dike <jdike@addtoit.com>,
- linux-um@lists.infradead.org, Borislav Petkov <bp@alien8.de>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, Nick Hu <nickhu@andestech.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: linux-kernel@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Most of the Kconfig commands (except defconfig and all*config) read the
-.config file as a base set of CONFIG options.
+On 16.02.20 15:41, Alex Ghiti wrote:
+> Hi Jan,
+>
+> On 2/15/20 6:49 AM, Jan Kiszka wrote:
+>> From: Jan Kiszka <jan.kiszka@siemens.com>
+>>
+>> Those are not backed by page structs, and pte_page is returning an
+>> invalid pointer.
+>>
+>> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+>> =3D2D--
+>> =A0 arch/riscv/mm/cacheflush.c | 3 ++-
+>> =A0 1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/arch/riscv/mm/cacheflush.c b/arch/riscv/mm/cacheflush.c
+>> index 8930ab7278e6..9ee2c1a387cc 100644
+>> =3D2D-- a/arch/riscv/mm/cacheflush.c
+>> +++ b/arch/riscv/mm/cacheflush.c
+>> @@ -84,7 +84,8 @@ void flush_icache_pte(pte_t pte)
+>> =A0 {
+>> =A0=A0=A0=A0=A0 struct page *page =3D3D pte_page(pte);
+>>
+>> -=A0=A0=A0 if (!test_and_set_bit(PG_dcache_clean, &page->flags))
+>> +=A0=A0=A0 if (!pfn_valid(pte_pfn(pte)) ||
+>> +=A0=A0=A0=A0=A0=A0=A0 !test_and_set_bit(PG_dcache_clean, &page->flags)=
+)
+>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 flush_icache_all();
+>> =A0 }
+>> =A0 #endif /* CONFIG_MMU */
+>> =3D2D-
+>> 2.16.4
+>>
+>>
+>
+> When did you encounter such a situation ? i.e. executable code that is
+> not backed by struct page ?
+>
+> Riscv uses the generic implementation of ioremap and the way
+> _PAGE_IOREMAP is defined does not allow to map executable memory region
+> using ioremap, so I'm interested to understand how we end up in
+> flush_icache_pte for an executable region not backed by any struct page.
 
-When it does not exist, the files in DEFCONFIG_LIST are searched in this
-order and loaded if found.
+You can create executable mappings of memory that Linux does not
+initially consider as RAM via ioremap_prot or ioremap_page_range. We are
+using that in Jailhouse to load the hypervisor code into reserved memory
+that is ioremapped for the purpose. Works fine on x86, arm and arm64.
 
-I do not see much sense in the last two entries in DEFCONFIG_LIST.
-
-[1] ARCH_DEFCONFIG
-
-The entry for DEFCONFIG_LIST is guarded by 'depends on !UML'. So, the
-ARCH_DEFCONFIG definition in arch/x86/um/Kconfig is meaningless.
-
-arch/{sh,sparc,x86}/Kconfig define ARCH_DEFCONFIG depending on 32 or 64
-bit variant symbols. This is a little bit strange; ARCH_DEFCONFIG should
-be a fixed string because the base config file is loaded before the symbol
-evaluation stage.
-
-Using KBUILD_DEFCONFIG is saner because it is fixed before Kconfig is
-invoked. Fortunately, arch/{sh,sparc,x86}/Makefile define it in the
-same way, and it works as expected. Hence, replace ARCH_DEFCONFIG with
-"arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG)".
-
-[2] arch/$(ARCH)/defconfig
-
-This file path is no longer valid. The defconfig files are always located
-in the arch configs/ directories.
-
-  $ find arch -name defconfig | sort
-  arch/alpha/configs/defconfig
-  arch/arm64/configs/defconfig
-  arch/csky/configs/defconfig
-  arch/nds32/configs/defconfig
-  arch/riscv/configs/defconfig
-  arch/s390/configs/defconfig
-  arch/unicore32/configs/defconfig
-
-The path arch/*/configs/defconfig is already covered by
-"arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG)". So, this file path is
-not necessary.
-
-Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
----
-
- arch/sh/Kconfig     | 5 -----
- arch/sparc/Kconfig  | 5 -----
- arch/x86/Kconfig    | 5 -----
- arch/x86/um/Kconfig | 5 -----
- init/Kconfig        | 3 +--
- 5 files changed, 1 insertion(+), 22 deletions(-)
-
-diff --git a/arch/sh/Kconfig b/arch/sh/Kconfig
-index 9ece111b0254..b4f0e37b83eb 100644
---- a/arch/sh/Kconfig
-+++ b/arch/sh/Kconfig
-@@ -87,11 +87,6 @@ config SUPERH64
- 	select HAVE_EXIT_THREAD
- 	select KALLSYMS
- 
--config ARCH_DEFCONFIG
--	string
--	default "arch/sh/configs/shx3_defconfig" if SUPERH32
--	default "arch/sh/configs/cayman_defconfig" if SUPERH64
--
- config GENERIC_BUG
- 	def_bool y
- 	depends on BUG && SUPERH32
-diff --git a/arch/sparc/Kconfig b/arch/sparc/Kconfig
-index c1dd6dd642f4..0de15380d1fc 100644
---- a/arch/sparc/Kconfig
-+++ b/arch/sparc/Kconfig
-@@ -95,11 +95,6 @@ config SPARC64
- 	select PCI_DOMAINS if PCI
- 	select ARCH_HAS_GIGANTIC_PAGE
- 
--config ARCH_DEFCONFIG
--	string
--	default "arch/sparc/configs/sparc32_defconfig" if SPARC32
--	default "arch/sparc/configs/sparc64_defconfig" if SPARC64
--
- config ARCH_PROC_KCORE_TEXT
- 	def_bool y
- 
-diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index beea77046f9b..98935f4387f9 100644
---- a/arch/x86/Kconfig
-+++ b/arch/x86/Kconfig
-@@ -240,11 +240,6 @@ config OUTPUT_FORMAT
- 	default "elf32-i386" if X86_32
- 	default "elf64-x86-64" if X86_64
- 
--config ARCH_DEFCONFIG
--	string
--	default "arch/x86/configs/i386_defconfig" if X86_32
--	default "arch/x86/configs/x86_64_defconfig" if X86_64
--
- config LOCKDEP_SUPPORT
- 	def_bool y
- 
-diff --git a/arch/x86/um/Kconfig b/arch/x86/um/Kconfig
-index a8985e1f7432..95d26a69088b 100644
---- a/arch/x86/um/Kconfig
-+++ b/arch/x86/um/Kconfig
-@@ -27,11 +27,6 @@ config X86_64
- 	def_bool 64BIT
- 	select MODULES_USE_ELF_RELA
- 
--config ARCH_DEFCONFIG
--	string
--	default "arch/um/configs/i386_defconfig" if X86_32
--	default "arch/um/configs/x86_64_defconfig" if X86_64
--
- config 3_LEVEL_PGTABLES
- 	bool "Three-level pagetables" if !64BIT
- 	default 64BIT
-diff --git a/init/Kconfig b/init/Kconfig
-index 452bc1835cd4..6ccdb168dee5 100644
---- a/init/Kconfig
-+++ b/init/Kconfig
-@@ -6,8 +6,7 @@ config DEFCONFIG_LIST
- 	default "/lib/modules/$(shell,uname -r)/.config"
- 	default "/etc/kernel-config"
- 	default "/boot/config-$(shell,uname -r)"
--	default ARCH_DEFCONFIG
--	default "arch/$(ARCH)/defconfig"
-+	default "arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG)"
- 
- config CC_IS_GCC
- 	def_bool $(success,$(CC) --version | head -n 1 | grep -q gcc)
--- 
-2.17.1
-
+Jan
 
