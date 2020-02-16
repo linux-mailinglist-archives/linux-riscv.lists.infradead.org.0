@@ -2,77 +2,64 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB0B716045F
-	for <lists+linux-riscv@lfdr.de>; Sun, 16 Feb 2020 15:43:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F0FA160497
+	for <lists+linux-riscv@lfdr.de>; Sun, 16 Feb 2020 16:46:42 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=esdA/kFFjqubsj1lZxuW/qOwDTTAXGZUQRZsAidH4dY=; b=c5wlrEYAiLky8b
-	W34uG/Hqmn9QD6/CP0vn9Xj997INl3mGgirHCbUJNzhssdyFC8tzRnWquknr/GeE2l5fo4FDVneDx
-	BbQyLdnYaUlib/X/PJdGvm7vl4dhzbAdxaAVp7LrOMb8MX5WrKJ4L9JdsXxtGPqxsNuK9OjqyNToh
-	4Q9kh/QcaF3G7o7gpmnE9TAztaz0yTK/xFjGts4ImkWoTvYAGt+vhBXTRDIjAzY9uAXuNqCh+pPt6
-	rMhqPG2TjislC1odR4nYg6uVS85qwIna4A+43oJVuVn9xidj5REkWF5w5hO8uQiguhwfNrxp1qM8I
-	Echag+GeP84ArbcONb9A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=os9TnsjNHpEscmQ/pIjImR92ghmPlhtFserBXlIXFJQ=; b=FvHXjjx6nfUTFUyZgHsSu+2USu
+	tzWU1l4cz/nMlUEFczYf44UgHrIZeCVU882Sj33YMoJvU0M2jS1o1yl73FMyCMYOTXzo59G9ee8Zl
+	5FYtA+Wo43PfQaTGH5uCotPw9ODSiWhgx0mhtlApyvr2M/G5noh+pjOK1Vh2xQcOIkBoouH9RfKjd
+	Rro317+IB63LSPzCTnjC4QVpHxM4a6s4Lvdh7ORa3Rl1H7kXHMjPvuDA6I5iJ5++Tg44YXBT0mpkT
+	A2TOdhiHP+fQZ3Xlb6bDRjDHEFt9O01bKNiABQlBlg7AuIIb+iD2/IVn9E3vnvq2/Uvb87YAsajA4
+	jDJqBXBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3L8d-0006dZ-TF; Sun, 16 Feb 2020 14:43:15 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1j3M7v-0000uB-HZ; Sun, 16 Feb 2020 15:46:35 +0000
+Received: from conuserg-11.nifty.com ([210.131.2.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3L8b-0006dO-Sd
- for linux-riscv@bombadil.infradead.org; Sun, 16 Feb 2020 14:43:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=esdA/kFFjqubsj1lZxuW/qOwDTTAXGZUQRZsAidH4dY=; b=C4Hp3Njtuu9HQzT8Hf6z+jquKT
- LDBKIaiUxDhqUvx8t+1EY+KErASuA/lAtR6Ax0JBEj2OwsoMq3EJhSCGIdO+iTlkHp0fnfOuIuRWF
- +KSyRRTnNRSUPdjT1AJc/bgC9+5NEXf6m7eI/IjWNO5eEzN+z7SlN2ue9VXzMXUYmZRdoR61gkaxB
- 0avAAMcCJ+qa77nbR1dDRRwXLvG6+Eh6LaleucLClXc6G3HDiaCg24GZVEXVG+6x3ZeCYrsrfnKnT
- Fpp74J/J7cfW+Xy2/nGsiE06TNWNFPkXwkTC54o0ZJXkqVNvV9Qb+w0Snz8bqfN5Db400xCvkaUsG
- aMLR1Oig==;
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3L8V-000857-Nz
- for linux-riscv@lists.infradead.org; Sun, 16 Feb 2020 14:43:12 +0000
-X-Originating-IP: 79.86.19.127
-Received: from [192.168.0.12] (127.19.86.79.rev.sfr.net [79.86.19.127])
- (Authenticated sender: alex@ghiti.fr)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id DFF67C0007;
- Sun, 16 Feb 2020 14:42:17 +0000 (UTC)
-Subject: Re: [PATCH v2 2/3] riscv: End kernel region search in setup_bootmem
- earlier
-To: Jan Kiszka <jan.kiszka@web.de>, Paul Walmsley <paul.walmsley@sifive.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
- linux-riscv@lists.infradead.org
-References: <cover.1581767384.git.jan.kiszka@web.de>
- <b11898805c2f9f01b10867a05701aa0fafeaa886.1581767384.git.jan.kiszka@web.de>
-From: Alex Ghiti <alex@ghiti.fr>
-Message-ID: <8f0ddf1f-1ea9-8bde-76a0-ba60788c2a2d@ghiti.fr>
-Date: Sun, 16 Feb 2020 09:42:17 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
-MIME-Version: 1.0
-In-Reply-To: <b11898805c2f9f01b10867a05701aa0fafeaa886.1581767384.git.jan.kiszka@web.de>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+ id 1j3M7q-0000th-2j; Sun, 16 Feb 2020 15:46:32 +0000
+Received: from grover.flets-west.jp (softbank126093102113.bbtec.net
+ [126.93.102.113]) (authenticated)
+ by conuserg-11.nifty.com with ESMTP id 01GFj6eR026453;
+ Mon, 17 Feb 2020 00:45:06 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conuserg-11.nifty.com 01GFj6eR026453
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1581867908;
+ bh=os9TnsjNHpEscmQ/pIjImR92ghmPlhtFserBXlIXFJQ=;
+ h=From:To:Cc:Subject:Date:From;
+ b=yt2PJNXS2jXuA2jslkc3CMA95DynuZt62vxxsh0mm0pLwhD+Cle/RxDx0WvakAUns
+ 3L03ZOArSyhVFVY3pW5RYd1tl6wmGrzrkdGkU26yAC/9qdZrJNtrPg6mm+O9UWqC+A
+ 0UBZkbRAbVRMZU5g7rHIMxDaN/i5IM5++7O+AGOfn2N90lb2r+uATEV+HSK199wIjG
+ oCaNRj3MbevSo/S5QUwfpyUV3wFEzDraNeNs8rvAs73pa57MbGm7YTRfdtfbEbNyYn
+ Mfb35c7ytnmcckc+WiZ42aa668ZHiOAniV9v/3sUPYhYjoQ90eOEnmlb+zPq+BwXwq
+ JuBx/z5uSY91g==
+X-Nifty-SrcIP: [126.93.102.113]
+From: Masahiro Yamada <masahiroy@kernel.org>
+To: linux-kbuild@vger.kernel.org
+Subject: [PATCH] kbuild: use KBUILD_DEFCONFIG as the fallback for
+ DEFCONFIG_LIST
+Date: Mon, 17 Feb 2020 00:45:02 +0900
+Message-Id: <20200216154502.26478-1-masahiroy@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200216_144308_421771_716CB831 
-X-CRM114-Status: GOOD (  15.10  )
-X-Spam-Score: -2.6 (--)
-X-Spam-Report: SpamAssassin version 3.4.3 on casper.infradead.org summary:
- Content analysis details:   (-2.6 points, 5.0 required)
+X-CRM114-CacheID: sfid-20200216_074630_466163_D5FD4189 
+X-CRM114-Status: GOOD (  11.77  )
+X-Spam-Score: 1.0 (+)
+X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
+ Content analysis details:   (1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
- [score: 0.0000]
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.198 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [210.131.2.78 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,57 +71,153 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org
+Cc: Rich Felker <dalias@libc.org>, linux-sh@vger.kernel.org,
+ Guo Ren <guoren@kernel.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Vincent Chen <deanbo422@gmail.com>,
+ Anton Ivanov <anton.ivanov@cambridgegreys.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Richard Weinberger <richard@nod.at>, Masahiro Yamada <masahiroy@kernel.org>,
+ x86@kernel.org, Ingo Molnar <mingo@redhat.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Jeff Dike <jdike@addtoit.com>,
+ linux-um@lists.infradead.org, Borislav Petkov <bp@alien8.de>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Nick Hu <nickhu@andestech.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ "David S. Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Jan,
+Most of the Kconfig commands (except defconfig and all*config) read the
+.config file as a base set of CONFIG options.
 
-On 2/15/20 6:49 AM, Jan Kiszka wrote:
-> From: Jan Kiszka <jan.kiszka@siemens.com>
-> 
-> No need to look further when that single region is found.
-> 
-> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-> =2D--
->   arch/riscv/mm/init.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index aec39a56d6cf..a774547e9021 100644
-> =2D-- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -160,6 +160,8 @@ void __init setup_bootmem(void)
->   			if (reg->base + mem_size < end)
->   				memblock_remove(reg->base + mem_size,
->   						end - reg->base - mem_size);
-> +
-> +			break;
->   		}
->   	}
->   	BUG_ON(mem_size =3D=3D 0);
-> =2D-
-> 2.16.4
-> 
-> 
+When it does not exist, the files in DEFCONFIG_LIST are searched in this
+order and loaded if found.
 
-I was looking at the test above that determines if the current memblock 
-contains the kernel:
+I do not see much sense in the last two entries in DEFCONFIG_LIST.
 
-if (reg->base <= vmlinux_end && vmlinux_end <= end)
+[1] ARCH_DEFCONFIG
 
-Shouldn't it be:
+The entry for DEFCONFIG_LIST is guarded by 'depends on !UML'. So, the
+ARCH_DEFCONFIG definition in arch/x86/um/Kconfig is meaningless.
 
-if (reg->base <= vmlinux_start && vmlinux_end <= end)
+arch/{sh,sparc,x86}/Kconfig define ARCH_DEFCONFIG depending on 32 or 64
+bit variant symbols. This is a little bit strange; ARCH_DEFCONFIG should
+be a fixed string because the base config file is loaded before the symbol
+evaluation stage.
 
-?
+Using KBUILD_DEFCONFIG is saner because it is fixed before Kconfig is
+invoked. Fortunately, arch/{sh,sparc,x86}/Makefile define it in the
+same way, and it works as expected. Hence, replace ARCH_DEFCONFIG with
+"arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG)".
 
-Otherwise, we can indeed stop as soon as we found the region containing 
-the kernel, so feel free to add:
+[2] arch/$(ARCH)/defconfig
 
-Reviewed-by: Alexandre Ghiti <alex@ghiti.fr>
+This file path is no longer valid. The defconfig files are always located
+in the arch configs/ directories.
 
-Thanks,
+  $ find arch -name defconfig | sort
+  arch/alpha/configs/defconfig
+  arch/arm64/configs/defconfig
+  arch/csky/configs/defconfig
+  arch/nds32/configs/defconfig
+  arch/riscv/configs/defconfig
+  arch/s390/configs/defconfig
+  arch/unicore32/configs/defconfig
 
-Alex
+The path arch/*/configs/defconfig is already covered by
+"arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG)". So, this file path is
+not necessary.
+
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+---
+
+ arch/sh/Kconfig     | 5 -----
+ arch/sparc/Kconfig  | 5 -----
+ arch/x86/Kconfig    | 5 -----
+ arch/x86/um/Kconfig | 5 -----
+ init/Kconfig        | 3 +--
+ 5 files changed, 1 insertion(+), 22 deletions(-)
+
+diff --git a/arch/sh/Kconfig b/arch/sh/Kconfig
+index 9ece111b0254..b4f0e37b83eb 100644
+--- a/arch/sh/Kconfig
++++ b/arch/sh/Kconfig
+@@ -87,11 +87,6 @@ config SUPERH64
+ 	select HAVE_EXIT_THREAD
+ 	select KALLSYMS
+ 
+-config ARCH_DEFCONFIG
+-	string
+-	default "arch/sh/configs/shx3_defconfig" if SUPERH32
+-	default "arch/sh/configs/cayman_defconfig" if SUPERH64
+-
+ config GENERIC_BUG
+ 	def_bool y
+ 	depends on BUG && SUPERH32
+diff --git a/arch/sparc/Kconfig b/arch/sparc/Kconfig
+index c1dd6dd642f4..0de15380d1fc 100644
+--- a/arch/sparc/Kconfig
++++ b/arch/sparc/Kconfig
+@@ -95,11 +95,6 @@ config SPARC64
+ 	select PCI_DOMAINS if PCI
+ 	select ARCH_HAS_GIGANTIC_PAGE
+ 
+-config ARCH_DEFCONFIG
+-	string
+-	default "arch/sparc/configs/sparc32_defconfig" if SPARC32
+-	default "arch/sparc/configs/sparc64_defconfig" if SPARC64
+-
+ config ARCH_PROC_KCORE_TEXT
+ 	def_bool y
+ 
+diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
+index beea77046f9b..98935f4387f9 100644
+--- a/arch/x86/Kconfig
++++ b/arch/x86/Kconfig
+@@ -240,11 +240,6 @@ config OUTPUT_FORMAT
+ 	default "elf32-i386" if X86_32
+ 	default "elf64-x86-64" if X86_64
+ 
+-config ARCH_DEFCONFIG
+-	string
+-	default "arch/x86/configs/i386_defconfig" if X86_32
+-	default "arch/x86/configs/x86_64_defconfig" if X86_64
+-
+ config LOCKDEP_SUPPORT
+ 	def_bool y
+ 
+diff --git a/arch/x86/um/Kconfig b/arch/x86/um/Kconfig
+index a8985e1f7432..95d26a69088b 100644
+--- a/arch/x86/um/Kconfig
++++ b/arch/x86/um/Kconfig
+@@ -27,11 +27,6 @@ config X86_64
+ 	def_bool 64BIT
+ 	select MODULES_USE_ELF_RELA
+ 
+-config ARCH_DEFCONFIG
+-	string
+-	default "arch/um/configs/i386_defconfig" if X86_32
+-	default "arch/um/configs/x86_64_defconfig" if X86_64
+-
+ config 3_LEVEL_PGTABLES
+ 	bool "Three-level pagetables" if !64BIT
+ 	default 64BIT
+diff --git a/init/Kconfig b/init/Kconfig
+index 452bc1835cd4..6ccdb168dee5 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -6,8 +6,7 @@ config DEFCONFIG_LIST
+ 	default "/lib/modules/$(shell,uname -r)/.config"
+ 	default "/etc/kernel-config"
+ 	default "/boot/config-$(shell,uname -r)"
+-	default ARCH_DEFCONFIG
+-	default "arch/$(ARCH)/defconfig"
++	default "arch/$(SRCARCH)/configs/$(KBUILD_DEFCONFIG)"
+ 
+ config CC_IS_GCC
+ 	def_bool $(success,$(CC) --version | head -n 1 | grep -q gcc)
+-- 
+2.17.1
+
 
