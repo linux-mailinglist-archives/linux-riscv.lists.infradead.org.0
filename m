@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 698F9160D59
+	by mail.lfdr.de (Postfix) with ESMTPS id 83B17160D5A
 	for <lists+linux-riscv@lfdr.de>; Mon, 17 Feb 2020 09:32:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
@@ -10,73 +10,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PEjz/RcQS+U/YywRSqm0sa6mFOHzzBZkMLYn0qcUgSA=; b=EoXQ3SusiWbi3E
-	N/G2fhgDVxS6YOmXUx3BbFq9bDBwmBJa+igPVGL8sW8q545cM2KHFDlnJgkoGgS1eL4kPomiG1p+o
-	OjcCWkJQFuWuIVitMccSAoqAWZRAM5XSay9i3GZMpRJCsY7Sx1XHz6tRuSRVPnee2SqCkpF/JPGEQ
-	zzsV2A8u8VIkp+y/OAzMMIaCeiQDNojdR6pci+J9YSiofPWOL0QxMzBb9y6OhS3xFauSiPhrwGkbZ
-	dq3bPOCbcXDs1hUxLs5OvNBAj3I0GXGNwrl0k3a50GCIR2GoPIR5qmnyHxmvXl0MHL8Clo233v1Su
-	Qd+o5nAKWlg+I3xSY0vA==;
+	List-Owner; bh=QV05nl1zAojbiLTVKnGFtXrM2l5IHlEM0aaK8Qpllr0=; b=kj8rvt02LX6lnl
+	9Pu37xo2L1LNj2lfPZyDjgG4eghqEAeoWugiNq2cMrDnFdkrweEXQNr79/MtFYwluvDyWPgWUXnT0
+	BZobIAEzqLKCcys7nAUEH5mSTPON2EcNSmSMa3mJrtUCUiVB/v/Zpkl81TFzSzOzF++Un/qvTvb+D
+	Lumyt/18vV+8h6TH4CjPtcxNGSL5Hev2mHzYziyCjjHIo32tWuHJnANKX1BoKopfh14RY8dbSnYv7
+	3IyBiETSDZRcgIB2osHce9eUhScjH/aQ5qMMliJKzFXjsEbb+RheNz9RpQ6s8v+4Z6GJ0gLLRxYtL
+	5HZGeF+0c/OECv5Qu9Hg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3bpT-0005bY-Aw; Mon, 17 Feb 2020 08:32:35 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1j3bpV-0005eU-Lu; Mon, 17 Feb 2020 08:32:37 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3bpP-0005a1-Pm
- for linux-riscv@lists.infradead.org; Mon, 17 Feb 2020 08:32:33 +0000
-Received: by mail-pf1-x441.google.com with SMTP id p14so8447626pfn.4
- for <linux-riscv@lists.infradead.org>; Mon, 17 Feb 2020 00:32:31 -0800 (PST)
+ id 1j3bpR-0005aL-3V
+ for linux-riscv@lists.infradead.org; Mon, 17 Feb 2020 08:32:34 +0000
+Received: by mail-pl1-x641.google.com with SMTP id c23so6411403plz.4
+ for <linux-riscv@lists.infradead.org>; Mon, 17 Feb 2020 00:32:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PEjz/RcQS+U/YywRSqm0sa6mFOHzzBZkMLYn0qcUgSA=;
- b=VJuw6P+7+i90JIaL0Udtqg6ehfR8sKg7rXYXaRE6x8BGSosYjV8zjme9062MmtGWW0
- zUM3xjCDwZG4OvoTOnsX/Cmu5oDcd69h7VMSLr5QhL5+DYTHgDSYaK4h+27T8JbD3ScN
- dFQl6QJgkbl99r14MdaiQlxpYAznhGA9ctWUi6rKuC0T/1s7SZ2I19AmmDcjpn4szt1D
- R7rzbQh3rbYsNOkOd/0R6/sdj0fEiEQuOnCZmWQIT9EnG5EFC5Tlc0zM0KpQJcmFgmqQ
- uAT4OgjzlB3fFJRgdxX1oIH2cT/kOpz8XNOSiCWW/gzFSYrS3gXUm/70UlFp2O9WRIcO
- TxfQ==
+ bh=QV05nl1zAojbiLTVKnGFtXrM2l5IHlEM0aaK8Qpllr0=;
+ b=BNGkX/+PNF9RrOz6P/Y6buFJK2xKWgREEdOZvQ+I1uGvbmA6GCcw5m7IrkzMBUJwab
+ KJpUCn9lE8gwmhWqZI/C/5Xao5cBTD/fPTfRhvMN0pXBmxWTDI84GO7oHsXURPJsu2TF
+ ym4mvOQdmPj9/utlRvsanB8cgN9dD6seW49s14szKlYozUXNR0MJY9zqJ5y5enlWJsdk
+ Bs4WhCnozkqTT6VcA3pJkCeX6sYW1e8zDO0BCAkMeNuZrD7mgPZK8EKxyZoKMmy6CyLG
+ axVCXifesrfol+pHH6KaJlfQvSYpuRy64DeAwabzTfFZ5WLxxlwM2AZoNU2P4/IhSTwq
+ M2NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=PEjz/RcQS+U/YywRSqm0sa6mFOHzzBZkMLYn0qcUgSA=;
- b=A0zKwg1sdon2EjmYayQUAq51IAbTEw1p9f1nI3pBWMG4Z719ZgeBCh1Ua6l2ZcsNDU
- SL6lhgG/GCwcicEqJ71w6roEINIqfkU8e/k2a0ZT79ivP5pLzcJbBVIIzPtwPYN7U+8a
- sW6UqxkoJxgNTlPQFjSTGRgiO2dHDQOhGjluhJP3OuGdWgAvn/VJmE/RafU1BqeEFU+M
- 1Xwo9HVBEfG0b2PL7kkM/vDUT7d7jD9l8ThXtUaYEHpfUkmSF4W4LBegkTFwXbQpZUSf
- 18jjfTDZbaFPMj7FHrQztAVaqnRX6y7MBv5bU9CHBBim/d/fDRZPMumtHveY4VFi9aqk
- k4yw==
-X-Gm-Message-State: APjAAAVpMowFORTuuNretRgv0O5AmzKMqRlE1xhyZQpe514o1bubzKXO
- 8EAH8M8dBu7OTGZJKB9q/wRprg==
-X-Google-Smtp-Source: APXvYqxYmnaM1gp5pUEdAQHgfU9DzdvPX4pAff7S8MyIOb0LNOrBHGVhStkLitt+87HFa2x5OcY0VA==
-X-Received: by 2002:a63:5848:: with SMTP id i8mr16271948pgm.438.1581928350891; 
- Mon, 17 Feb 2020 00:32:30 -0800 (PST)
+ bh=QV05nl1zAojbiLTVKnGFtXrM2l5IHlEM0aaK8Qpllr0=;
+ b=PTtKo6HOSwrr/IsEledYDx73y9lK2S2+0/CPmR0DhmT4+A3A1QVTE9IRKL/lb/QjPr
+ sbhin0kAfXezIPhHUnCUAzUKtTdUMIFSUuzcjt1+1esE68c5tozY+8xGd3GP1AZmK++E
+ 7fKfmfEZbEldQENTlYjXs0/6frplajHFGjX6hVxzRPhHnqkjtyhy1Y8IIxqrLOffjsJS
+ wmEBgW4/Ihy6ALjmbQrfyouBLgA/7uRBOWQ2nSVar1ARAFCk8QamjAeqr44CHkOa++7o
+ wWAn7AZG2ewGsodV9ug6TMal+I+J+PIsJIRb0KhJBoPhSyt90ZBYDaLMiy7FtC585am6
+ vdTA==
+X-Gm-Message-State: APjAAAUcnJewiJzW4NAnuNdcsywa44EB805zZJpBgXJNe+WYK8pchnw9
+ umtE8WtgNRArBWdzuimvL1u+N73EU2g=
+X-Google-Smtp-Source: APXvYqydROiyBhUZtlVN72Fe7TPNNBjcp6x58zxguFrmVQMWPOO9xgPGygDk/r8mmo8ephQKtYQ0gA==
+X-Received: by 2002:a17:90a:191:: with SMTP id
+ 17mr18926233pjc.88.1581928352545; 
+ Mon, 17 Feb 2020 00:32:32 -0800 (PST)
 Received: from hsinchu02.internal.sifive.com
  (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id z10sm16989319pgz.88.2020.02.17.00.32.29
+ by smtp.gmail.com with ESMTPSA id z10sm16989319pgz.88.2020.02.17.00.32.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Feb 2020 00:32:30 -0800 (PST)
+ Mon, 17 Feb 2020 00:32:32 -0800 (PST)
 From: Zong Li <zong.li@sifive.com>
 To: paul.walmsley@sifive.com, palmer@dabbelt.com, aou@eecs.berkeley.edu,
  linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/8] riscv: add ARCH_HAS_SET_MEMORY support
-Date: Mon, 17 Feb 2020 16:32:16 +0800
-Message-Id: <20200217083223.2011-2-zong.li@sifive.com>
+Subject: [PATCH 2/8] riscv: add ARCH_HAS_SET_DIRECT_MAP support
+Date: Mon, 17 Feb 2020 16:32:17 +0800
+Message-Id: <20200217083223.2011-3-zong.li@sifive.com>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200217083223.2011-1-zong.li@sifive.com>
 References: <20200217083223.2011-1-zong.li@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200217_003231_841322_5FCE4E87 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20200217_003233_141586_6297DE96 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -102,225 +104,73 @@ Cc: Zong Li <zong.li@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add set_memory_ro/rw/x/nx architecture hooks to change the page
-attribution.
-
-Use own set_memory.h rather than generic set_memory.h
-(i.e. include/asm-generic/set_memory.h), because we want to add other
-function prototypes here.
+Add set_direct_map_*() functions for setting the direct map alias for
+the page to its default permissions and to an invalid state that cannot
+be cached in a TLB. (See d253ca0c ("x86/mm/cpa: Add set_direct_map_*()
+functions")) Add a similar implementation for RISC-V.
 
 Signed-off-by: Zong Li <zong.li@sifive.com>
 ---
- arch/riscv/Kconfig                  |   1 +
- arch/riscv/include/asm/set_memory.h |  17 ++++
- arch/riscv/mm/Makefile              |   1 +
- arch/riscv/mm/pageattr.c            | 150 ++++++++++++++++++++++++++++
- 4 files changed, 169 insertions(+)
- create mode 100644 arch/riscv/include/asm/set_memory.h
- create mode 100644 arch/riscv/mm/pageattr.c
+ arch/riscv/Kconfig                  |  1 +
+ arch/riscv/include/asm/set_memory.h |  3 +++
+ arch/riscv/mm/pageattr.c            | 24 ++++++++++++++++++++++++
+ 3 files changed, 28 insertions(+)
 
 diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 6e81da55b5e4..76ed36543b3a 100644
+index 76ed36543b3a..07bf1a7c0dd2 100644
 --- a/arch/riscv/Kconfig
 +++ b/arch/riscv/Kconfig
 @@ -60,6 +60,7 @@ config RISCV
  	select HAVE_EBPF_JIT if 64BIT
  	select EDAC_SUPPORT
  	select ARCH_HAS_GIGANTIC_PAGE
-+	select ARCH_HAS_SET_MEMORY
++	select ARCH_HAS_SET_DIRECT_MAP
+ 	select ARCH_HAS_SET_MEMORY
  	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
  	select SPARSEMEM_STATIC if 32BIT
- 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
 diff --git a/arch/riscv/include/asm/set_memory.h b/arch/riscv/include/asm/set_memory.h
-new file mode 100644
-index 000000000000..936f08063566
---- /dev/null
+index 936f08063566..a9783a878dca 100644
+--- a/arch/riscv/include/asm/set_memory.h
 +++ b/arch/riscv/include/asm/set_memory.h
-@@ -0,0 +1,17 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2019 SiFive
-+ */
-+
-+#ifndef _ASM_RISCV_SET_MEMORY_H
-+#define _ASM_RISCV_SET_MEMORY_H
-+
-+/*
-+ * Functions to change memory attributes.
-+ */
-+int set_memory_ro(unsigned long addr, int numpages);
-+int set_memory_rw(unsigned long addr, int numpages);
-+int set_memory_x(unsigned long addr, int numpages);
-+int set_memory_nx(unsigned long addr, int numpages);
-+
-+#endif /* _ASM_RISCV_SET_MEMORY_H */
-diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-index 814e16a8d68a..b94643aee84c 100644
---- a/arch/riscv/mm/Makefile
-+++ b/arch/riscv/mm/Makefile
-@@ -10,6 +10,7 @@ obj-y += extable.o
- obj-$(CONFIG_MMU) += fault.o
- obj-y += cacheflush.o
- obj-y += context.o
-+obj-y += pageattr.o
+@@ -14,4 +14,7 @@ int set_memory_rw(unsigned long addr, int numpages);
+ int set_memory_x(unsigned long addr, int numpages);
+ int set_memory_nx(unsigned long addr, int numpages);
  
- ifeq ($(CONFIG_MMU),y)
- obj-$(CONFIG_SMP) += tlbflush.o
++int set_direct_map_invalid_noflush(struct page *page);
++int set_direct_map_default_noflush(struct page *page);
++
+ #endif /* _ASM_RISCV_SET_MEMORY_H */
 diff --git a/arch/riscv/mm/pageattr.c b/arch/riscv/mm/pageattr.c
-new file mode 100644
-index 000000000000..fcd59ef2835b
---- /dev/null
+index fcd59ef2835b..7be6cd67e2ef 100644
+--- a/arch/riscv/mm/pageattr.c
 +++ b/arch/riscv/mm/pageattr.c
-@@ -0,0 +1,150 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) 2019 SiFive
-+ */
+@@ -148,3 +148,27 @@ int set_memory_nx(unsigned long addr, int numpages)
+ {
+ 	return __set_memory(addr, numpages, __pgprot(0), __pgprot(_PAGE_EXEC));
+ }
 +
-+#include <linux/pagewalk.h>
-+#include <asm/pgtable.h>
-+#include <asm/tlbflush.h>
-+#include <asm/bitops.h>
-+
-+struct pageattr_masks {
-+	pgprot_t set_mask;
-+	pgprot_t clear_mask;
-+};
-+
-+static unsigned long set_pageattr_masks(unsigned long val, struct mm_walk *walk)
++int set_direct_map_invalid_noflush(struct page *page)
 +{
-+	struct pageattr_masks *masks = walk->private;
-+	unsigned long new_val = val;
-+
-+	new_val &= ~(pgprot_val(masks->clear_mask));
-+	new_val |= (pgprot_val(masks->set_mask));
-+
-+	return new_val;
-+}
-+
-+static int pageattr_pgd_entry(pgd_t *pgd, unsigned long addr,
-+			      unsigned long next, struct mm_walk *walk)
-+{
-+	pgd_t val = READ_ONCE(*pgd);
-+
-+	if (pgd_leaf(val)) {
-+		val = __pgd(set_pageattr_masks(pgd_val(val), walk));
-+		set_pgd(pgd, val);
-+	}
-+
-+	return 0;
-+}
-+
-+static int pageattr_p4d_entry(p4d_t *p4d, unsigned long addr,
-+			      unsigned long next, struct mm_walk *walk)
-+{
-+	p4d_t val = READ_ONCE(*p4d);
-+
-+	if (p4d_leaf(val)) {
-+		val = __p4d(set_pageattr_masks(p4d_val(val), walk));
-+		set_p4d(p4d, val);
-+	}
-+
-+	return 0;
-+}
-+
-+static int pageattr_pud_entry(pud_t *pud, unsigned long addr,
-+			      unsigned long next, struct mm_walk *walk)
-+{
-+	pud_t val = READ_ONCE(*pud);
-+
-+	if (pud_leaf(val)) {
-+		val = __pud(set_pageattr_masks(pud_val(val), walk));
-+		set_pud(pud, val);
-+	}
-+
-+	return 0;
-+}
-+
-+static int pageattr_pmd_entry(pmd_t *pmd, unsigned long addr,
-+			      unsigned long next, struct mm_walk *walk)
-+{
-+	pmd_t val = READ_ONCE(*pmd);
-+
-+	if (pmd_leaf(val)) {
-+		val = __pmd(set_pageattr_masks(pmd_val(val), walk));
-+		set_pmd(pmd, val);
-+	}
-+
-+	return 0;
-+}
-+
-+static int pageattr_pte_entry(pte_t *pte, unsigned long addr,
-+			      unsigned long next, struct mm_walk *walk)
-+{
-+	pte_t val = READ_ONCE(*pte);
-+
-+	val = __pte(set_pageattr_masks(pte_val(val), walk));
-+	set_pte(pte, val);
-+
-+	return 0;
-+}
-+
-+static int pageattr_pte_hole(unsigned long addr, unsigned long next,
-+			     int depth, struct mm_walk *walk)
-+{
-+	/* Nothing to do here */
-+	return 0;
-+}
-+
-+const static struct mm_walk_ops pageattr_ops = {
-+	.pgd_entry = pageattr_pgd_entry,
-+	.p4d_entry = pageattr_p4d_entry,
-+	.pud_entry = pageattr_pud_entry,
-+	.pmd_entry = pageattr_pmd_entry,
-+	.pte_entry = pageattr_pte_entry,
-+	.pte_hole = pageattr_pte_hole,
-+};
-+
-+static int __set_memory(unsigned long addr, int numpages, pgprot_t set_mask,
-+			pgprot_t clear_mask)
-+{
-+	int ret;
-+	unsigned long start = addr;
-+	unsigned long end = start + PAGE_SIZE * numpages;
++	unsigned long start = (unsigned long)page_address(page);
++	unsigned long end = start + PAGE_SIZE;
 +	struct pageattr_masks masks = {
-+		.set_mask = set_mask,
-+		.clear_mask = clear_mask
++		.set_mask = __pgprot(0),
++		.clear_mask = __pgprot(_PAGE_PRESENT)
 +	};
 +
-+	if (!numpages)
-+		return 0;
-+
-+	down_read(&init_mm.mmap_sem);
-+	ret =  walk_page_range_novma(&init_mm, start, end, &pageattr_ops, NULL,
-+				     &masks);
-+	up_read(&init_mm.mmap_sem);
-+
-+	flush_tlb_kernel_range(start, end);
-+
-+	return ret;
++	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
 +}
 +
-+int set_memory_ro(unsigned long addr, int numpages)
++int set_direct_map_default_noflush(struct page *page)
 +{
-+	return __set_memory(addr, numpages, __pgprot(_PAGE_READ),
-+			    __pgprot(_PAGE_WRITE));
-+}
++	unsigned long start = (unsigned long)page_address(page);
++	unsigned long end = start + PAGE_SIZE;
++	struct pageattr_masks masks = {
++		.set_mask = PAGE_KERNEL,
++		.clear_mask = __pgprot(0)
++	};
 +
-+int set_memory_rw(unsigned long addr, int numpages)
-+{
-+	return __set_memory(addr, numpages, __pgprot(_PAGE_READ | _PAGE_WRITE),
-+			    __pgprot(0));
-+}
-+
-+int set_memory_x(unsigned long addr, int numpages)
-+{
-+	return __set_memory(addr, numpages, __pgprot(_PAGE_EXEC), __pgprot(0));
-+}
-+
-+int set_memory_nx(unsigned long addr, int numpages)
-+{
-+	return __set_memory(addr, numpages, __pgprot(0), __pgprot(_PAGE_EXEC));
++	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
 +}
 -- 
 2.25.0
