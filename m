@@ -2,133 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 654FD165281
-	for <lists+linux-riscv@lfdr.de>; Wed, 19 Feb 2020 23:28:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25E8D1652A2
+	for <lists+linux-riscv@lfdr.de>; Wed, 19 Feb 2020 23:43:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tlBM9nKY6dJReZldQlfzrMhiVFEJ4FTeKjBA3BVRPGA=; b=H89R0R52jfUHuq
-	AnXjOP5g0JCKJBerd9I1OglYjcz/WKbavE3xnzdoNNDfmpq0DLKNgxLE8HOpO7QcpNOCMqOH5RnDq
-	KJsjd4cD9qaQcl4uo0G4Ezfsu5S+/S0/2w4q+lRxzvP0UQN5gjWca1NmC7cjobCy/N7yZPqqdSUk8
-	11D43Lwf8xMEqDd0lQAFbZLZYjBH1jd6iSU3M59kmjlNE9eXoPLu7kWzK+kPzVBSx/LTvVq3m6OV3
-	7AzDgbiUlOOa991eg+gnn1KF48t3C8aazXKFNHTf+j1UNoy1dmcY8QJr6TsX+YBNmpJSnBcQ4DHBH
-	mhk91l+1eAoCJ1zBWtTg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=X6VeUaE8E7keYi1jG1YEB7T6CEALZPfDLK0QSciKeos=; b=JIUpwVCSPNxNsuUYMe+usqeSV
+	g476BHZdH/ek8aP4G7QFFhSx6mFsRQ3Ssf9XJcxFTAKGf1+9RNOBsPuFeiFy2JguAACmkQO8gXQFF
+	AtQ9uLLFAett1fO6SKaZquGUj5cYta03Rg/r76eR9N7TiGd+PWRbtXNaMxuqEbQTr6MRwgLoF9Qgm
+	anZKG19k/zA6X9qOJyNuCFUzv4tMLPjWqs3ow0RL6NJrAZsQSiF3L5ND9AxGCJaGGGIE2wSQvcFWo
+	a3OHf6KfBqwf2Hiatdf9UWg+q3LavYiFjfedM2o3HpgUwhWMcUiSRos7JTNoL2fRiqQ1BoUZ/A5/Q
+	/yMPxqWEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4XpF-0000ts-5B; Wed, 19 Feb 2020 22:28:13 +0000
-Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
+	id 1j4Y42-0007KY-Kq; Wed, 19 Feb 2020 22:43:30 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4XpB-0000tW-7o
- for linux-riscv@lists.infradead.org; Wed, 19 Feb 2020 22:28:10 +0000
-Received: by mail-qt1-x842.google.com with SMTP id i14so1451010qtv.13
- for <linux-riscv@lists.infradead.org>; Wed, 19 Feb 2020 14:28:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tlBM9nKY6dJReZldQlfzrMhiVFEJ4FTeKjBA3BVRPGA=;
- b=ZJV18g7W7K/uquJ8RQ2Ytbo/TUbDTq34PFoYDMhO5pstZs0HLM2t9mV8rU+57xVbon
- +SDuwcANKUTCX/Y9VR1kwZiEWl2tWQgrS3vxycfxpFI830VHSlir4nM4S2xOZiIG3cxY
- VUJ6TrEVbek/p9LHjbMW1tZqq9a/Q+UO20LVYVl4huDM7FTP3fQZOg5Ugn1r1ZNjM6bE
- zqAeJimcoRGIX72eV/9JnhV/BihzdA3xmm31FCwSRfPWg7vp5T8zIqmgsnXFV6WjuuAq
- NrobMxBaEEu2ePdk7gyue1zVi6w9XdufypAcxZ+ihdqF4j9e73w5qd1Z6Iwit7+ME5vb
- 0iPA==
+ id 1j4Y3z-0007Jt-GB
+ for linux-riscv@lists.infradead.org; Wed, 19 Feb 2020 22:43:29 +0000
+Received: by mail-ot1-x344.google.com with SMTP id r27so1800634otc.8
+ for <linux-riscv@lists.infradead.org>; Wed, 19 Feb 2020 14:43:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=carlosedp-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=X6VeUaE8E7keYi1jG1YEB7T6CEALZPfDLK0QSciKeos=;
+ b=BL4tvCHFxZlzYd9jeo7Y+YLsjYN4Bl6sHf2/+WkuC9kxLToOt3vHHC51KkrsE9BkiL
+ b4BW9ix2o13wQFNQDHmyPwAIjKvwvjlclbPqr1+n9I2GZ1cePDoCNu9/xUqBEKiNVvNf
+ phm0B+Nu7DatELRcVFMl+bdYRmll6j3yPo/lrtnK2JEn9105Sr2UKU52H4Y/J4ZJFrUp
+ P7CzvRDb1g3URO0A9LKT3lFRVADn0NgffxQKEVgH+Mczbd/Bm31Zddqp36YE0G8L1QVK
+ Y4fzm8pl/EwRzqxlJkyS/JuN9HAy6rXlMMVaMHevluEttVomAFEEZLZnx1udt3ZmbVR+
+ grLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=tlBM9nKY6dJReZldQlfzrMhiVFEJ4FTeKjBA3BVRPGA=;
- b=d3PXeoQ1jVXU7DbeMICv1q+HEfJG8iZPL8dgrXFUk/mL71QZZwpS5MhF9eSthm2Z7e
- xxFa8Mn7iT7ut3mTJpe+tqbWaoncGqInyGg/kTxg/GUQYX6yZBjfTN+EhG8cZvyUfDeO
- dQLZHyL32MQu9793znL2wR9ZrDIykJiov28/4qLLBHTI4fjbidznrST3csPmPCm1qRsH
- I6ygG2Xc6rHaepHBJTniNU2G45dC5SRt2n8z1u0JY44HkFncnM9dFwxpxg7YDvdU1uHU
- cIB5uX0j53FY/2aqn2i3TBm5WOMXS45xIDIhF5X5iA+KwGkN0Em4/2J4X0M84NqS1UT1
- E3mQ==
-X-Gm-Message-State: APjAAAWIMOnvLwIHLgKF/QRQanL1Gi65MnkR8cPklk5/95icSJ7fGOdn
- dXKbcwgjnZBF7m/RfKvrTeM=
-X-Google-Smtp-Source: APXvYqzhOEp6jPa66kkaGxjJLjDwYrKNEkCzMvhIrF/Rlso30C+XQwwvI0+VJyRltEI29Ii093fS4w==
-X-Received: by 2002:ac8:6f22:: with SMTP id i2mr24684286qtv.350.1582151286234; 
- Wed, 19 Feb 2020 14:28:06 -0800 (PST)
-Received: from [192.168.1.117] ([75.102.135.197])
- by smtp.googlemail.com with ESMTPSA id t2sm579123qkc.62.2020.02.19.14.28.05
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=X6VeUaE8E7keYi1jG1YEB7T6CEALZPfDLK0QSciKeos=;
+ b=EjrnIIOZuEH8VRxsvCCh/JBrUeQM9COitCFD6sbIFar/vQ7xyLFVBvyNgygodCSRUB
+ BbH5ym7ZdBOHprYjsUZ63OoG0ZNmj1zqcDJMUH2gg6h9hVvRhMB2uyOEAnEDlJdbjJ4Y
+ ptj7zSY5+qlMZPYY/PDvjS7XHEAXk4rmBDa3A55egFW1YwXbGlB/tE1he3zWViQjE2Ox
+ JtsFhY8y17lu8WuKdK67+PX9UQD2RbhzmIOpmg7hbV3+k1vFnPNcWOvshFb50qdqba9c
+ wAUz2fZFr4QE+94AboDSNFKM98fyV5LuqINP9Rw4JOToW6/FCTtUXFJTLjxpKb+/sner
+ ZMyg==
+X-Gm-Message-State: APjAAAXm2L/7svb2DzP5FQw23ofweVCbheTDlAQb1Gf2t1CN0kx9+Bt5
+ mi2F/m+XFZqCtbqLFsVqmyk2qTVFonljSw==
+X-Google-Smtp-Source: APXvYqyfj/fautSChIRF1qdnFWd6tiJHgVT9MgKUR3fDNwl6150cP6eJAIIHgHSfytCA8f5lIFhN8Q==
+X-Received: by 2002:a9d:6e9a:: with SMTP id a26mr20381133otr.344.1582152203683; 
+ Wed, 19 Feb 2020 14:43:23 -0800 (PST)
+Received: from mail-oi1-f178.google.com (mail-oi1-f178.google.com.
+ [209.85.167.178])
+ by smtp.gmail.com with ESMTPSA id f37sm408362otb.33.2020.02.19.14.43.22
+ for <linux-riscv@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 19 Feb 2020 14:28:05 -0800 (PST)
-Subject: Re: [PATCH 08/10] riscv: Add Kendryte K210 device tree
-To: "Wladimir J. van der Laan" <laanwj@gmail.com>,
- Carlos Eduardo de Paula <me@carlosedp.com>
-References: <20200212103432.660256-9-damien.lemoal@wdc.com>
- <48e10b3d-12f3-a65c-8017-99c780c63040@gmail.com>
- <BYAPR04MB581671F46D3FE67FD3C8B2B7E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
- <bd74c841-2447-2f11-f924-a501230b3927@gmail.com>
- <BYAPR04MB5816ED294439828E562EB085E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
- <CADnnUqe3AbTStJg9LS4qupH-OnBDGjuEFbnX8EXW8MUr4kwoGQ@mail.gmail.com>
- <19e78a77-4b7f-a057-eb6e-7384f3fc67c1@gmail.com>
- <CADnnUqfSq5sNXMQLktU0R_XLvYrf00nqMG5UPkTwaeL-Cy1m_A@mail.gmail.com>
- <8108cb8e-a909-24b0-f1c4-24a5bebf4e65@gmail.com>
- <CADnnUqenadntSrngNGjnu40inxZWK1Nm3T64BnyY114hEwC_Og@mail.gmail.com>
- <20200219090612.7onbaoygy6waumnw@aurora.visucore.com>
-From: Sean Anderson <seanga2@gmail.com>
-Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
- mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
- 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
- lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
- GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
- F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
- AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
- AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
- bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
- +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
- Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
- N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
- SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
- w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
- w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
- OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
- zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
- z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
- 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
- ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
- vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
- EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
- zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
- iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
- S5hN3/mP5UeooFHb
-Message-ID: <cabd9527-3df3-4e5a-4669-5c14ed44e94d@gmail.com>
-Date: Wed, 19 Feb 2020 17:28:04 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Wed, 19 Feb 2020 14:43:23 -0800 (PST)
+Received: by mail-oi1-f178.google.com with SMTP id q84so25559729oic.4
+ for <linux-riscv@lists.infradead.org>; Wed, 19 Feb 2020 14:43:22 -0800 (PST)
+X-Received: by 2002:a05:6808:b39:: with SMTP id
+ t25mr6186053oij.71.1582152202526; 
+ Wed, 19 Feb 2020 14:43:22 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200219090612.7onbaoygy6waumnw@aurora.visucore.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+References: <1582097304-5547-1-git-send-email-vincent.chen@sifive.com>
+ <1582097304-5547-2-git-send-email-vincent.chen@sifive.com>
+ <b58183d5-a7db-3902-100f-8f4f0d06c148@ghiti.fr>
+In-Reply-To: <b58183d5-a7db-3902-100f-8f4f0d06c148@ghiti.fr>
+From: Carlos Eduardo de Paula <me@carlosedp.com>
+Date: Wed, 19 Feb 2020 19:43:11 -0300
+X-Gmail-Original-Message-ID: <CADnnUqcnOw1svnEYhb0O-q_TvTJQH3MuR2o8nrqNedQogoQbbg@mail.gmail.com>
+Message-ID: <CADnnUqcnOw1svnEYhb0O-q_TvTJQH3MuR2o8nrqNedQogoQbbg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] riscv: avoid the PIC offset of static percpu data in
+ module beyond 2G limits
+To: Alexandre Ghiti <alex@ghiti.fr>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200219_142809_283548_43FAD306 
-X-CRM114-Status: GOOD (  18.44  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200219_144327_680470_D4B1EAFC 
+X-CRM114-Status: GOOD (  23.40  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [seanga2[at]gmail.com]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [seanga2[at]gmail.com]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,72 +102,116 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Vincent Chen <vincent.chen@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>, deanbo422@gmail.com,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2/19/20 4:06 AM, Wladimir J. van der Laan wrote:
-> On Tue, Feb 18, 2020 at 04:26:17PM -0300, Carlos Eduardo de Paula wrote=
-:
->> On Tue, Feb 18, 2020 at 2:48 PM Sean Anderson <seanga2@gmail.com> wrot=
-e:
->>>
->>> So the LCD connector is supposed to be for a ST7789V controller, but
->>> there doesn't appear to be a driver in Linux for it. I don't have an
->>> appropriate LCD screen, so I will not be able to write a driver.
->>>
->>
->> Actually there is a driver and config DRM_PANEL_SITRONIX_ST7789V, in
->> gpu/drm/panel/panel-sitronix-st7789v.c and also FB_TFT_ST7789V and
->> CONFIG_FB_TFT_ST7789V with the driver a in
->> staging/fbtft/fb_st7789v.c. Might be easier :)
+On Wed, Feb 19, 2020 at 2:53 PM Alexandre Ghiti <alex@ghiti.fr> wrote:
+>
+> Hi Vincent,
+>
+> On 2/19/20 8:28 AM, Vincent Chen wrote:
+> > The compiler uses the PIC-relative method to access static variables
+> > instead of GOT when the code model is PIC. Therefore, the limitation of
+> > the access range from the instruction to the symbol address is +-2GB.
+> > Under this circumstance, the kernel cannot load a kernel module if this
+> > module has static per-CPU symbols declared by DEFINE_PER_CPU(). The reason
+> > is that kernel relocates the .data..percpu section of the kernel module to
+> > the end of kernel's .data..percpu. Hence, the distance between the per-CPU
+> > symbols and the instruction will exceed the 2GB limits. To solve this
+> > problem, the kernel should place the loaded module in the memory area
+> > [&_end-2G, VMALLOC_END].
+> >
+> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> > Suggested-by: Alex Ghiti <alex@ghiti.fr>
+> > Suggested-by: Anup Patel <anup@brainfault.org>
+> >
+> > ---
+> >   arch/riscv/kernel/module.c | 18 ++++++++++++++++++
+> >   1 file changed, 18 insertions(+)
+> >
+> > diff --git a/arch/riscv/kernel/module.c b/arch/riscv/kernel/module.c
+> > index b7401858d872..c498beb82369 100644
+> > --- a/arch/riscv/kernel/module.c
+> > +++ b/arch/riscv/kernel/module.c
+> > @@ -8,6 +8,10 @@
+> >   #include <linux/err.h>
+> >   #include <linux/errno.h>
+> >   #include <linux/moduleloader.h>
+> > +#include <linux/vmalloc.h>
+> > +#include <linux/sizes.h>
+> > +#include <asm/pgtable.h>
+> > +#include <asm/sections.h>
+> >
+> >   static int apply_r_riscv_32_rela(struct module *me, u32 *location, Elf_Addr v)
+> >   {
+> > @@ -386,3 +390,17 @@ int apply_relocate_add(Elf_Shdr *sechdrs, const char *strtab,
+> >
+> >       return 0;
+> >   }
+> > +#if defined(CONFIG_MMU) && defined(CONFIG_64BIT)
+> > +#ifdef CONFIG_MAXPHYSMEM_2GB
+> > +#define VMALLOC_MODULE_START \
+> > +     max(PFN_ALIGN((unsigned long)&_end - SZ_2G), VMALLOC_START)
+> > +#else
+> > +#define VMALLOC_MODULE_START PFN_ALIGN((unsigned long)&_end - SZ_2G)
+> > +#endif
+>
+> I would use the same definition for both cases:
+>
+> #define VMALLOC_MODULE_START \
+>         max(PFN_ALIGN((unsigned long)&_end - SZ_2G), VMALLOC_START)
+>
+> as it avoids ifdefs and amounts to the same. And maybe you can avoid the
+> definition of VMALLOC_MODULE_START at the same time.
+>
+> > +void *module_alloc(unsigned long size)
+> > +{
+> > +     return __vmalloc_node_range(size, 1, VMALLOC_MODULE_START,
+> > +     VMALLOC_END, GFP_KERNEL, PAGE_KERNEL_EXEC, 0, NUMA_NO_NODE,
+> > +     __builtin_return_address(0));
+> > +}
+> > +#endif
+> >
+>
+> It's weird checkpatch does not complain about the alignment of those lines.
+>
+> Otherwise, I have just tested it and it works, so you can add:
+>
+> Tested-by: Alexandre Ghiti <alex@ghiti.fr>
+>
+> Thanks,
+>
+> Alex
+>
 
-Ah, I didn't notice that, thanks.
+Thanks for the patch, applied on v5.5.0 and v5.6.0-rc2. Worked fine on
+Qemu and Unleashed:
 
->>
->> Weird that the Kendryte SDK refers to the LCD as NT35310
->> (https://github.com/kendryte/kendryte-standalone-demo/tree/develop/lcd=
-).
->=20
-> I remember checking the datasheet for both a while ago and NT35310 and =
-ST7789V
-> seem to be more or less compatible, with only register differences
-> for more obscure functionality.
->=20
-> The more involved part is likely to adapt the spi-dw driver, apart from=
- making the
-> ctrlr0 shifts configurable, there's the "OCTAL" mode that is used and e=
-xtra
-> register that isn't set in the Linux driver (spi_ctrlr0 / 0xf4) concern=
-ing
-> "instruction address translation mode" and other things that needs to
-> be set correctly for LCD transfers to work.
->=20
->>> There is no need for GPIOs. The datasheet shows SPI0 as hooked up to =
-the
->>> SD card, but the default pinconf doesn't have it hooked up. In additi=
-on,
->>> the dedicated SPI0 data lines are already connected to the LCD. For
->=20
-> Yes - apparently only if you set sysctl spi_dvp_data_enable to route th=
-e
-> SPI0_0-7 pins to to the LCD data pins (bypassing FPIOA).
->=20
-> BTW speaking of which, does anyone know what's up with the K210's DMA
-> controller? It looks like it can only transfer 32-bit values from and t=
-o
-> peripherals? At least the kendryte-standalone-sdk goes to great lengths=
- to
-> first allocate a 32-bit buffer then manually copy it to say, bytes or 1=
-6-bit
-> words. Seems quite a silly workaround with a lot of overhead.
+root@debian10-riscv64:~# sudo modprobe openvswitch
+[  124.257220] openvswitch: Open vSwitch switching datapath
 
-Do you have a link to that section?
+root@debian10-riscv64:~# modprobe br_netfilter
+[  193.168269] Bridge firewalling registered
 
---Sean
+root@debian10-riscv64:~# lsmod
+Module                  Size  Used by
+br_netfilter           23054  0
+bridge                217063  2 br_netfilter
+stp                     2891  1 bridge
+llc                     5968  2 bridge,stp
+openvswitch           197057  0
+nsh                     3501  1 openvswitch
+nf_conncount           11362  1 openvswitch
+nf_nat                 39088  1 openvswitch
+nf_conntrack          143270  3 nf_nat,openvswitch,nf_conncount
+nf_defrag_ipv6         10091  2 nf_conntrack,openvswitch
+nf_defrag_ipv4          2410  1 nf_conntrack
+ip_tables              16409  0
 
+If desired, add:
 
+Tested-by: Carlos de Paula <me@carlosedp.com>
 
