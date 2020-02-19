@@ -2,111 +2,106 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A59B163BA7
-	for <lists+linux-riscv@lfdr.de>; Wed, 19 Feb 2020 04:49:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 26C30163BB1
+	for <lists+linux-riscv@lfdr.de>; Wed, 19 Feb 2020 04:56:36 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:Message-Id:Date:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=8ahr4tQbi/LZROCj5Y+IuRVr/GQUX/dF5s4CeWPm/90=; b=iK5
-	PfizKP9AFqShSJm03JGa2Gi0p7RF3j2UiiWE0eXGzSfdm56Qw7tJgAlmxmBr7btntm5Soka1bB9zJ
-	y4Eqk1w905WjX3qVJyyqN/gmKLRDgkCuAv8D/H7tSo+35jq6gmrGIRg1jL2/IigVSBqh3YNFcPiXr
-	BHYKrwcCqQroAARgqUoPrq5LGiFpr0feVaAa8Qv0AYxNrtnSXsaxw3BM3ky8xQLKsWXyE4uwkpSWr
-	lPpXqe1Pt5Tx39zLcFnxPk2tOD5oM/qRaNz+nCEDFRNRlhJOnh/Jl4OUnvD0AW5FzSKoUhtScKYvF
-	kGd7ffpA7Y2gw1McinmArHvNA0ZMd5Q==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=zq0gMWiivnFZ8GVllBaPAKHz3ODuc4JRmtx0IHEy7tg=; b=Iiu2KWwtyT1ZVreFxHWO3uoYG
+	Uh07vOVjzBGwFso1VJVblLd8D+iz9Nil/MhEbYN8e4mxt6FDdeEmnvFfqfoXRDUVLr78RiTqWvsbR
+	0y15rhFnrrzlZ4iQY0zkOpYeLKh+tw/3qSGLA2IBtZg3+5A+fk0pyt1f7mFvxbwS12CMx1p3bXkVL
+	+eJDC8qGRCXICinWZ26pnapoEnS6yaLAAMi06BvdU/qhJ2hWfpuAeU8WyFqAeMsRCoBQWUab3S8wO
+	0xRTgWe91J0TEC5EdtkdOHzvK6NoEs+d+NuUxFfN0H8SrvmMYRdojRFdD/mY/HJjz/YmoZ7Py/LkX
+	MVdxi35MA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4GMf-00029U-Id; Wed, 19 Feb 2020 03:49:33 +0000
-Received: from mail-dm6nam11on2056.outbound.protection.outlook.com
- ([40.107.223.56] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1j4GTQ-00050B-2V; Wed, 19 Feb 2020 03:56:32 +0000
+Received: from mail-bn7nam10on2047.outbound.protection.outlook.com
+ ([40.107.92.47] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4GMc-00028b-DS
- for linux-riscv@lists.infradead.org; Wed, 19 Feb 2020 03:49:31 +0000
+ id 1j4GTM-0004zU-2x
+ for linux-riscv@lists.infradead.org; Wed, 19 Feb 2020 03:56:30 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mO6Z+kIeVlh8rh94rX8mEt4qo6mVZvaVfJ3nKzcxB2b8xg7jftMYzSLsr9tsLeIuSLLHqGdtzpfv2ISp2X0Bp7n+JAja/VEkgFTYGaDHjxbeO9lL9qebRsCXpVHnP9dO4kA7qw+leElWmNsI2qshShdcR8w+BhbwnCiICA7aU+YFXX1jBSr8AVe2v9XYFPSgZBNoOB7Vk1pUQ1CXFCoKjwK1c0szW4KvvePG72ceuAUALMmkchE+WL8PGHJDcyTN9Pdqd0A5MobGps8M6NZJHHenl4OxezJos+b3NEqfFur4Q0lco0Ge74z1YTRoN4kwLLpyq8xCQqK/IdlsbYBjjg==
+ b=jj6PPIehTOsyJV9ZwjPELaPuGX/5zNex4KtvEDY9EVfSkg84C4mCOs7wmLP7brsOn5btSicvZWO0O5kKq0GbN0tuPoV5Iz5RESY2pzsa1Alx0Do5hE0PhpxVGt3nAv+2F8Tf+h4VIQ/FkOxKinwx3GCc0Lp0jLs7TrEIoCzkcAcAcbt5l+f7wtTFV/hC3mJ3WtrBdbKd8tZbOcR4bSJy14cK4/Q1Tiig7p42Sk6yWs0DlD2Yr3Jr138PFuit4sM2iNX2P86pfCmkG2wpluGIhvJXkX/iZDY0Am0PJWmciGFNAvKtjZd6m9c9onEyEl3q6LPDFXnxIP6buRdyKNgI6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8ahr4tQbi/LZROCj5Y+IuRVr/GQUX/dF5s4CeWPm/90=;
- b=V+ofTY90V7dyj/vJWVlqrVliCN2qlhGjQgH0cwRvlQfX77YH3tlCrzE9b1GwGtGN1/L7e/FKHAlIVwrSu/GCM2KdrIv/tA4xqWi0VBcUr2D/04hEtw/CUSgxMcVF7cQnZbD2utzAR7cNGVabEErBOHVakxBeTjSIi4UOxCTlXQK22Wwh8nnas7Lu/23JVAxyF/DLeZTcR9rpoKKZZilL6R+lCxmuiSUcJr/1XYUPBhmtHHQ/PMrDZMcxZ4r9QTKtX0Y9EoiQQ++8EbaxMIWKjGNAy12HWXiB7wsrcXgqAPljMb9qfLLeBRCVUwMXsdGJBeHOkqA0ATM2fZAF51Cb4Q==
+ bh=zq0gMWiivnFZ8GVllBaPAKHz3ODuc4JRmtx0IHEy7tg=;
+ b=jvSteHfpFXCZLA1eJsv5E6V2YQauyeFLTVX4BHx+Ob02CNJpedzFGpygsk1b0pHyKecYdFYVbECDYL1zUyT/RN3wCH4AOz+w1Z16mrRT9K5ukViPLTOeuewpxNVvuYiRbBwnnTvgp3bAq53lgwVqtXG82ylqnKAg3ybBkXSGBaXUt/7W3bN67PdSKyPk45Z6jLYecLt6BEuiQbF0PtjCiss+EFB2azSOs8CHkQjS1OVKeJ5HP/NNJ9CKnkujXW5dvXnoYS2YTM2xMe08JxMun1AwTacmzNsYNrkgnSuMpHWZ0aziLC4O58UtSyxBsSykMRiQFEIX5q72z8IO8Fio6Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
  dkim=pass header.d=sifive.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8ahr4tQbi/LZROCj5Y+IuRVr/GQUX/dF5s4CeWPm/90=;
- b=S1RlRDFeo9bMaHcLhcncn/RCL2Ue3aYbI+Pf0cm9lqiAQcg0lti/d2uQaQ8aC+gWHAlkgr84kY4czZ26fhuIpo2Z07RMyYI5Sj80xvN/tjJ/UtjQpXk3Sj7vb/ZH1UqNzTle0lip9p/8Lw6/B21IPNxiDvxgC+jSuH8Cj5wy8bs=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=yash.shah@sifive.com; 
+ bh=zq0gMWiivnFZ8GVllBaPAKHz3ODuc4JRmtx0IHEy7tg=;
+ b=Om4hIBf/hYqe5JEElzACRURVpIlmdv84dwEQy2WHA3kDuoqMbydiLBeB5xflxAXaRUWvyV/TP3eg5bz1GJMGaep0VgLuq/jRxBCclCgtWKWRqph/bvN/cdISO4/yJevkS8rF/uCrZ2EqUp4pxxeJgkr+PP7uolw61BMHAdLLZs0=
 Received: from CH2PR13MB3368.namprd13.prod.outlook.com (52.132.246.90) by
  CH2PR13MB3704.namprd13.prod.outlook.com (20.180.15.151) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2750.9; Wed, 19 Feb 2020 03:49:24 +0000
+ 15.20.2750.9; Wed, 19 Feb 2020 03:56:22 +0000
 Received: from CH2PR13MB3368.namprd13.prod.outlook.com
  ([fe80::55a5:5dab:67de:b5d8]) by CH2PR13MB3368.namprd13.prod.outlook.com
  ([fe80::55a5:5dab:67de:b5d8%5]) with mapi id 15.20.2750.016; Wed, 19 Feb 2020
- 03:49:24 +0000
+ 03:56:22 +0000
 From: Yash Shah <yash.shah@sifive.com>
-To: robh+dt@kernel.org, mark.rutland@arm.com, palmer@dabbelt.com,
- paul.walmsley@sifive.com
-Subject: [PATCH] riscv: dts: Add GPIO reboot method to HiFive Unleashed DTS
- file
-Date: Wed, 19 Feb 2020 09:19:07 +0530
-Message-Id: <1582084147-24516-1-git-send-email-yash.shah@sifive.com>
-X-Mailer: git-send-email 2.7.4
-Content-Type: text/plain
-X-ClientProxiedBy: SG2PR02CA0030.apcprd02.prod.outlook.com
- (2603:1096:3:18::18) To CH2PR13MB3368.namprd13.prod.outlook.com
- (2603:10b6:610:2c::26)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from osubuntu003.open-silicon.com (159.117.144.156) by
- SG2PR02CA0030.apcprd02.prod.outlook.com (2603:1096:3:18::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.20.2750.17 via Frontend Transport; Wed, 19 Feb 2020 03:49:21 +0000
-X-Mailer: git-send-email 2.7.4
-X-Originating-IP: [159.117.144.156]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: bd056562-d682-453f-84c2-08d7b4eeb5bc
-X-MS-TrafficTypeDiagnostic: CH2PR13MB3704:
-X-LD-Processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <CH2PR13MB37041D379B5AD2BC160803D88C100@CH2PR13MB3704.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4125;
-X-Forefront-PRVS: 0318501FAE
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10009020)(6029001)(366004)(396003)(376002)(346002)(136003)(39850400004)(199004)(189003)(81156014)(36756003)(81166006)(478600001)(8676002)(2906002)(66556008)(66476007)(6666004)(8936002)(66946007)(52116002)(6636002)(6512007)(86362001)(107886003)(4326008)(5660300002)(956004)(4744005)(316002)(6486002)(6506007)(186003)(26005)(16526019)(44832011)(2616005);
+To: JaeJoon Jung <rgbi3307@gmail.com>
+Subject: RE: [bug report] GPIO & Hierarchy IRQ support for HiFive Unleashed
+Thread-Topic: [bug report] GPIO & Hierarchy IRQ support for HiFive Unleashed
+Thread-Index: AQHV14ivX/FRhacFv0GKvkbGUecmyqgiAcuw
+Date: Wed, 19 Feb 2020 03:56:21 +0000
+Message-ID: <CH2PR13MB33684ED58B945BF678D508908C100@CH2PR13MB3368.namprd13.prod.outlook.com>
+References: <CAHOvCC4y8x6_fBSAug3ecN+4QFiNJCooUt7Py9=J+NnBd4J8dQ@mail.gmail.com>
+In-Reply-To: <CAHOvCC4y8x6_fBSAug3ecN+4QFiNJCooUt7Py9=J+NnBd4J8dQ@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=yash.shah@sifive.com; 
+x-originating-ip: [114.143.65.226]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 464084df-591d-49c9-6ea8-08d7b4efaef4
+x-ms-traffictypediagnostic: CH2PR13MB3704:
+x-microsoft-antispam-prvs: <CH2PR13MB370405D4C7F1B360D62BB78C8C100@CH2PR13MB3704.namprd13.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-forefront-prvs: 0318501FAE
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(6029001)(39850400004)(136003)(346002)(366004)(396003)(376002)(189003)(199004)(52536014)(5660300002)(9686003)(4326008)(33656002)(86362001)(7696005)(55016002)(44832011)(53546011)(6506007)(316002)(6916009)(186003)(26005)(71200400001)(81156014)(81166006)(478600001)(8676002)(4001150100001)(66476007)(64756008)(66946007)(8936002)(66556008)(2906002)(66446008)(76116006);
  DIR:OUT; SFP:1101; SCL:1; SRVR:CH2PR13MB3704;
  H:CH2PR13MB3368.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-Received-SPF: None (protection.outlook.com: sifive.com does not designate
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: sifive.com does not designate
  permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: gVKTZMsQcmnajmnRbKDu6EZLOcooU79AhgG3Lo37V+5XTdH5AP6VSyeY5zFZAzlXz8ibHJd/BDfzpXx+o/UsEQtoMYIhXxhrcEEkOCWnIeF/SGQrCSecqc1oAU9peFvqIny3xJ4QXy0zwAEs4NTvYm/RVB/OVFTMRarAp+YCs2V5nQ/jfyu4G9QBSkasgMJkhOiQo3v6mXUZBcYZtSPo3LStESN2ojJaPm8wBZAf9+awCtTNwwklUCLP0tVltbM5cNZhuDRo/YAHGLs4CdcY+0hTHug6l0Cg2VN+trtSeuUZMObwaIVrxy9bhxGW30Cb94YBd4T+OL5bUSzWWfZ8ydGFtT/ruEQP1LRwoeOaKNaZDVECg9vSnkpzLTY1Pe4XQYdoa/mMqBL9mlekBPEZdEJ9LCOPibznjKGHYFn8YFJBb2y4ZK4Fc59PlDJiGbOI
-X-MS-Exchange-AntiSpam-MessageData: rLn//ekM0RwrOyjTpZSApbqJVSKCGS8NZY8PQcsZN6z0pnPBc9ZyU0l8te8pF68Dm/CFWrnsJSLg/xI1nn7z6FUb/LcCUXWfmoSqiLjDwX8MmuTNstjPxcZvbnop3+B9TCyKEKZEVL3fTOes47V1kg==
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: YY30XTbCeyEXIXkQc82qD2DMsszHRZCBQ/Caffmuu0+F5aXLmvF2XkXTcCUCJQj8dmjau+F2qi8G1t0qGDTQFqxmuutydD/0o6ZtntcnyQVTnEMS7pZihyOrl/zdBPzeVX7+12aTAeWS1PTa1dIHXu8vXx9t7EjDcj+sgNod+xaZdN9Q6lEwEKBNusab0sBAS+0HYv54jHFIBIXnihA5EyAIj78O7NND4CvlZyM1niM/Hv/rsMRAL/o3yb7IYmuy9vRKL5fkK3aSeH+6Mhvzx0nDILOT+Ti5wRW4tSw9+QnV7+lR1WFz2oI3bQtIn80jz01zW7R/k2Ckb6ejF6lLZFWkwZxiCVtc68+MUXYgmRFhK9DdtdMBg0VYbgXr9XBV78cqWsU1yaxwBu6gupIrYOZho2AFo0tsHzSoxGiPj8A7VyG2l7q/hWzq7NO1P/Qz
+x-ms-exchange-antispam-messagedata: O3zbmzjL8TWel+oe/igg0RqiFeGTXMHRm1Ya1DIp5tvnJNfrvDyxrfDPjWFfcsF25SGBF4xgou7qJmWA4LQ3KhQ2+qx5mB0d4bEAPb0TniZS5Sg271nFUBAklQ/5EEgi5rr4ZtnFw18/JImlqh5WGQ==
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
 X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bd056562-d682-453f-84c2-08d7b4eeb5bc
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Feb 2020 03:49:24.4859 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: nPV4MC2VYmxDKuSODXS34wiLFYANryNvhXH3xrCjF+dHtdT1PbqcOEZeCV+jk/4cWd01PIGWuLFjg5k6uDgDYw==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 464084df-591d-49c9-6ea8-08d7b4efaef4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Feb 2020 03:56:22.0013 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: bM+YYFwFwkHbeYAMJQrNiXu+oDxaCg2jdYjaQyg9GS0HQRUgTlnoQyRLFsmnnx2s3g80UuYrnJClDMNGOkHckg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3704
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200218_194930_523406_2987758A 
-X-CRM114-Status: UNSURE (   6.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200218_195628_142797_A13688D9 
+X-CRM114-Status: GOOD (  12.39  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.223.56 listed in list.dnswl.org]
+ no trust [40.107.92.47 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -116,7 +111,6 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,43 +122,40 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
- linux-kernel@vger.kernel.org, atish.patra@wdc.com,
- Yash Shah <yash.shah@sifive.com>, linux-riscv@lists.infradead.org
+Cc: linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add the ability to reboot the HiFive Unleashed board via GPIO.
-
-Signed-off-by: Yash Shah <yash.shah@sifive.com>
----
- arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-index 609198c..4a2729f 100644
---- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-+++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-@@ -2,6 +2,7 @@
- /* Copyright (c) 2018-2019 SiFive, Inc */
- 
- #include "fu540-c000.dtsi"
-+#include <dt-bindings/gpio/gpio.h>
- 
- /* Clock frequency (in Hz) of the PCB crystal for rtcclk */
- #define RTCCLK_FREQ		1000000
-@@ -41,6 +42,10 @@
- 		clock-frequency = <RTCCLK_FREQ>;
- 		clock-output-names = "rtcclk";
- 	};
-+	gpio-restart {
-+		compatible = "gpio-restart";
-+		gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
-+	};
- };
- 
- &uart0 {
--- 
-2.7.4
-
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBKYWVKb29uIEp1bmcgPHJnYmkz
+MzA3QGdtYWlsLmNvbT4NCj4gU2VudDogMzAgSmFudWFyeSAyMDIwIDIxOjQ3DQo+IFRvOiBZYXNo
+IFNoYWggPHlhc2guc2hhaEBzaWZpdmUuY29tPg0KPiBDYzogbGludXgtcmlzY3YgPGxpbnV4LXJp
+c2N2QGxpc3RzLmluZnJhZGVhZC5vcmc+DQo+IFN1YmplY3Q6IFtidWcgcmVwb3J0XSBHUElPICYg
+SGllcmFyY2h5IElSUSBzdXBwb3J0IGZvciBIaUZpdmUgVW5sZWFzaGVkDQo+IA0KPiBIZWxsbyBZ
+YXNoIFNoYWgsDQo+IA0KPiBJIGFtIHRlc3RpbmcgdGhlIHlvdXIgcGF0Y2g6DQo+IFtQQVRDSCB2
+NCAwLzZdIEdQSU8gJiBIaWVyYXJjaHkgSVJRIHN1cHBvcnQgZm9yIEhpRml2ZSBVbmxlYXNoZWQg
+ZnJvbQ0KPiAyMDE5LTEyLTEwIDExOjExIFlhc2ggU2hhaA0KPiANCj4gSSBmb3VuZCBvdXQgdGhh
+dCB5b3UgcmVwYWlyZWQgdGhlIGdlbmVyaWMgR1BJTyB1c2luZyBiZ3Bpb19pbml0KC4uLikgQVBJ
+Lg0KPiBiZ3Bpb19pbml0KCkgaGFzIDkgcGFyYW1ldGVycywgYW5kIHRoZSBsYXN0IGlzIGZsYWdz
+Lg0KPiBUaGUgZmxhZyBnZXR0aW5nIHRvIGJncGlvX2luaXQoKSBpcyBtdXN0IGJlIEJHUElPRl9S
+RUFEX09VVFBVVF9SRUdfU0VULg0KPiANCj4gQmVjYXVzZSBGVTU0MCBHUElPcyBoYXZlIGRpZmZl
+cmVudCBpbnB1dC9vdXRwdXQgcmVnaXN0ZXIsIElmIEdQSU8gZGlyZWN0aW9uDQo+IGlzIGlucHV0
+KFNJRklWRV9HUElPX0lOUFVUX1ZBTCksIGl0IG11c3QgYmUgcmVhZCBpbnB1dA0KPiB2YWx1ZShT
+SUZJVkVfR1BJT19JTlBVVF9FTikuDQo+IElmIEdQSU8gZGlyZWN0aW9uIGlzIG91dHB1dChTSUZJ
+VkVfR1BJT19PVVRQVVRfVkFMKSwgaXQgbXVzdCBiZSByZWFkDQo+IG91dHB1dCB2YWx1ZShTSUZJ
+VkVfR1BJT19PVVRQVVRfRU4pLg0KPiANCj4gSWYgVGhlIGZsYWcgaXMgMCwgR1BJTyBvdXRwdXQg
+dmFsdWUgaXMgYmVpbmcgcmVzZXQgYW5kIHRoZSB2YWx1ZSBpcyByZWFkaW5nIDANCj4gYWx3YXlz
+Lg0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3Bpby9ncGlvLXNpZml2ZS5jIGIvZHJpdmVy
+cy9ncGlvL2dwaW8tc2lmaXZlLmMgaW5kZXgNCj4gMjNkNWUyMjY5NGQxLi4xZGUxYWY0NTJmY2Ig
+MTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXNpZml2ZS5jDQo+ICsrKyBiL2RyaXZl
+cnMvZ3Bpby9ncGlvLXNpZml2ZS5jDQo+IEBAIC0yMDYsNyArMjA2LDcgQEAgc3RhdGljIGludCBz
+aWZpdmVfZ3Bpb19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlDQo+ICpwZGV2KQ0KPiAgICAg
+ICAgICAgICAgICAgICAgICAgICAgTlVMTCwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgIGNo
+aXAtPmJhc2UgKyBTSUZJVkVfR1BJT19PVVRQVVRfRU4sDQo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgICBjaGlwLT5iYXNlICsgU0lGSVZFX0dQSU9fSU5QVVRfRU4sDQo+IC0gICAgICAgICAgICAg
+ICAgICAgICAgICAwKTsNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgIEJHUElPRl9SRUFEX09V
+VFBVVF9SRUdfU0VUKTsNCj4gICAgICAgICBpZiAocmV0KSB7DQo+ICAgICAgICAgICAgICAgICBk
+ZXZfZXJyKGRldiwgInVuYWJsZSB0byBpbml0IGdlbmVyaWMgR1BJT1xuIik7DQo+ICAgICAgICAg
+ICAgICAgICByZXR1cm4gcmV0Ow0KPiANCj4gWW91cnMsDQo+IEphZUpvb24gSnVuZw0KDQpUaGFu
+a3MgZm9yIHRoZSBidWcgcmVwb3J0LiBJIHdpbGwgbG9vayBpbnRvIHRoaXMgYW5kIHNlbmQgYSBm
+aXguDQoNCi0gWWFzaA0K
 
