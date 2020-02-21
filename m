@@ -2,86 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC663166C03
-	for <lists+linux-riscv@lfdr.de>; Fri, 21 Feb 2020 01:45:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66FD2166D1A
+	for <lists+linux-riscv@lfdr.de>; Fri, 21 Feb 2020 03:48:28 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QvjEv7+3JN+sRQilJO4YmKYJ/F972qq1/cIXcZQtCvk=; b=RgPg+fzIgtxuDr
-	MqUKiJHcuS21FADAZYfD3i4AhgUCngVYEiSM3I/bviVqhCJ7calnmATpcG1IC+pei8CrVWjPFVyT3
-	ROza6eZNuyuAza1q/upp1m3rbOVhdeHQU9Voybu/H/81zhJvBxtG16yrh1jMrg46PlnbxhaIi0neP
-	c6dX10LKmgXlG3UEZ5a+K2qHiIRqvCZqyfG64k2FJpgZviE29USMfXaSylx+UVU7+tkB5kWqyE30b
-	a1u72fkRD/fzmLhKn0EYsI2qylkRpb4+I1kkEZuNVqiQB0kbE3OTJTC+gvIEL2t/a145cdbE9wnWT
-	OvF1w3VRy9crZqR+8HFA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qSX2UQu5IIhqMnlLqXpGYvxqIimPf5Ry/x+uqa3y+Jc=; b=Djac/37JCZPUYD
+	vma7uCuNCDKVa6eaCT8vIWZVey3Hzcig+XhwTDGBtco6jJu6Oo6gCfQv2JL+L/gA1e96wLZbw3RhA
+	ahARzkilMNfnxmfQOHK/jJXLL4DGcppSbpm8q6JlAwA+/HC//dkmxoTrx4CKZDzA2IUDkSTetqWD8
+	yckER7DS5M6ilc09LHccSCNxWpEYBChNLWLysSjIwLT4tsetvCRu7gKISwHcZ7JAYlOYSBULRvrLs
+	ky53y50/MCrSMgvr8vWe+viwTLaO2Rv6smxyLvQDYRIu63A25BJ3rA9LgXc++HTUADFDhF/g7HkbZ
+	wIIlX+Xr+bfWnkr+1oIA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4wRk-0006Up-0x; Fri, 21 Feb 2020 00:45:36 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1j4yMW-00068w-2g; Fri, 21 Feb 2020 02:48:20 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4wRC-0004Pt-Ak
- for linux-riscv@lists.infradead.org; Fri, 21 Feb 2020 00:45:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1582245926; x=1613781926;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=zauByF+unia1xt0CTcHhbFkLtPm1qJJUe5iAcp7OYgY=;
- b=c60Su/AyYc/Wl84XQAOmBT6YyrVGT+ZnKo3bhux/bwLYb2IGYcgzujpt
- ZOBQkdoVPY+tt7N9w9OegbuoKXYRXigSb2YG3orQ/3UnjPyTonwdEDgJn
- LYnNOFX/G6/Srkb0kfs/t4pxcc0KwmgRWxoojQa424QdxWV/m59pSRsfw
- o1NaZ+RNY/ajsFJXD/IsKYNv713ZyW7kpHf0XOQEi/TcMVvgVCG5lALKW
- JrMXabFriyUVNYFlCr+KIuDWp+13rfGDKCPwqKbfc5pz1O2luZ8fO8fJ+
- SL1ew2ERmZXlWL1lQamzPLEo9nkYK4hbLFcHdAu0xRFS20PHknLCZQWEa A==;
-IronPort-SDR: d+KvQStgQ/nA9zRh7ithOwEXevDKYoc4CXWnWEM2j+SYTtIV097wyUFgIvxVFK5pMSUCL7W+vL
- MxPslHs7Q0RjatgUzHYfhpRUHWo8rIlm3YCd+94RbsIGVimYvao6KhLsiHBSnHJfBPVq4bah9y
- 4/zM7PSJQJr9+BXE7U85O4nqaSsSmJSz2bf8ZHPJiMZ6NHsr54X3cu63SptqKdoU6cnXnXW+Rj
- E6hIg96FTnD0VLG+3RGxW2dmjgLbrfwCNL5+U0KtfZDSdfQdJJRd3LQ4ovVDBB4Q8bqql57VaZ
- /2Q=
-X-IronPort-AV: E=Sophos;i="5.70,466,1574092800"; d="scan'208";a="232211089"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 21 Feb 2020 08:45:10 +0800
-IronPort-SDR: W1VvVeIAuNkOfS9qZQRnOuKe7Glmj1k9nRaiy4kOBftqXlI/GWM4snrP4Gc/t2zf33Qr8MClWz
- 29I/NJYg3uZgs01x0yzkJlR62zL9q8jIrLoXqL9nvZS8oWSPN1a0O+zetJxsx7W7Jx2JOJI1NN
- X6N2bWEKldoPY+oReD4DaRAjf7o/Y7bGrHgKo7POSl3yklF7GTrumAu2DBZvQfhf8cJsrVbs1F
- zVlpOatWeITgy96A+JvjaEsdVDDyiwJXUg08lvdmuIVlhLPnmNBOjz7BiMd+3esJ5VEf3BLIIr
- 0OlElkro/SzQOEnZWdl9kgoq
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2020 16:37:25 -0800
-IronPort-SDR: mGqmtO4WvmnGdjt7Re0dJPbbwF0EOZsZXWkpQQKyaKAE7LJ7riPDNpffdnEIBg6iqbm/Yz+Qfa
- 16liW72fuKinmBTP+m/9S/CLu559Adyn0/xikgQeZOzIA7Avq0Z+0GUdY2dQDO/kz3H6CqV6Sm
- YmcRpq0L0YuUwigFh7QCo74cn60YCqSg9z3G4Iy+Rp2pI2F8S+wx/k5MzKmIP3lv+0AcItFFKH
- udthT6A83YL3yxM4olbpJaqDTXEKFgA+0nZo+CpdExO3kJYDcP+m2e/ZAe+g7qa8KYTn+5fq3V
- w9Q=
-WDCIronportException: Internal
-Received: from yoda.sdcorp.global.sandisk.com (HELO yoda.int.fusionio.com)
- ([10.196.158.80])
- by uls-op-cesaip01.wdc.com with ESMTP; 20 Feb 2020 16:44:50 -0800
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v9 12/12] irqchip/sifive-plic: Initialize the plic handler
- when cpu comes online
-Date: Thu, 20 Feb 2020 16:44:13 -0800
-Message-Id: <20200221004413.12869-13-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.25.0
-In-Reply-To: <20200221004413.12869-1-atish.patra@wdc.com>
-References: <20200221004413.12869-1-atish.patra@wdc.com>
+ id 1j4yMS-00068N-9g
+ for linux-riscv@lists.infradead.org; Fri, 21 Feb 2020 02:48:17 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id m13so87032pjb.2
+ for <linux-riscv@lists.infradead.org>; Thu, 20 Feb 2020 18:48:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qSX2UQu5IIhqMnlLqXpGYvxqIimPf5Ry/x+uqa3y+Jc=;
+ b=MlB7DS0OMKms2cMMv3cMMV2YROR1Xm/OhKtpxaoecilkrWlLmYbVRRGe8freMcA59/
+ u1JVUP4BQnFjPpJkasHLEuqbSMmXZb8/9dEOBgasMGOjMRhMix1EVG5K4BhVnAmy/CTx
+ Dk8phtV0UTw9g3yUq5SMxDFbd5AXyYAqZ5dca1tuvtjH2CX+xUfvClhXlEJTRonelbPM
+ HOhz2W322Jfm8MV9SQWWgd4SOLUSInmo8sf1FMMmlzMhecuQscnrgVAhmE9fsGA4Ap6y
+ lk8yihWpRLrCyH8aAfPBpCKWh3dayruNgApaHeCD0qzEDv+9UfKV/WADtdL+Xx99F+wD
+ qZVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qSX2UQu5IIhqMnlLqXpGYvxqIimPf5Ry/x+uqa3y+Jc=;
+ b=WGbGA9ve0KNRX8s2mP+zpXvMg9TY1UFX7c9R1TlU2qVNHCWCalGh2RmV0LDssgoIMK
+ GofoNAQutq6ANzkYFqB9sCaLi9P+wubHS5U8tvzVlIzLd7LTZOlUhyH3zMOqf89wM1fb
+ MAd9Kuvqzx2r4tYmFUIW9zvtWny7M0Sk4rq2QJOhG7AD9i63mj8EYcYkwbQCtMUgOxS/
+ oOKBY30YNM8mg3SS7Sk+E14Z70ux4tmH6Nqfu0x2pZCoGzG0/OOUMMWFcFGdEOLBuq85
+ Fiu0ZIAmhJCvxNKLWh4uPs9hluFkd8MjfAdMkRtxitXpY2Yc2wV0BEH+lL9XNlXiRaao
+ 2i9w==
+X-Gm-Message-State: APjAAAVJxz69r8PA5ZpvoEV6HZ+sTcisUUe/6AHRw/hdK7227vyvhMOG
+ PTpeobBDHlW61NldJOH1obF278f/475G2Q==
+X-Google-Smtp-Source: APXvYqyWZRmaSzd4oe2BIZ8IWN9MjeQCE9nXqWiFqtH/nVo5BWBMD+KDbaKl0ebM/QGwsWh5vgtifg==
+X-Received: by 2002:a17:90a:f492:: with SMTP id
+ bx18mr340292pjb.118.1582253295329; 
+ Thu, 20 Feb 2020 18:48:15 -0800 (PST)
+Received: from VincentChen-ThinkPad-T480s.internal.sifive.com
+ (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
+ by smtp.gmail.com with ESMTPSA id 28sm618810pgl.42.2020.02.20.18.48.13
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Thu, 20 Feb 2020 18:48:14 -0800 (PST)
+From: Vincent Chen <vincent.chen@sifive.com>
+To: paul.walmsley@sifive.com,
+	palmer@dabbelt.com
+Subject: [PATCH 0/2] solve static percpu symbol issue in module and refine
+ code model of module
+Date: Fri, 21 Feb 2020 10:47:53 +0800
+Message-Id: <1582253275-28181-1-git-send-email-vincent.chen@sifive.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200220_164503_104617_E4E34476 
-X-CRM114-Status: GOOD (  15.18  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200220_184816_370670_8285C762 
+X-CRM114-Status: GOOD (  11.49  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -102,150 +96,42 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, Albert Ou <aou@eecs.berkeley.edu>,
- Jason Cooper <jason@lakedaemon.net>, Nick Hu <nickhu@andestech.com>,
- Vincent Chen <vincent.chen@sifive.com>, Anup Patel <anup@brainfault.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Mike Rapoport <rppt@linux.ibm.com>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- Atish Patra <atish.patra@wdc.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
- "Eric W. Biederman" <ebiederm@xmission.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, linux-riscv@lists.infradead.org,
- Borislav Petkov <bp@suse.de>, Thomas Gleixner <tglx@linutronix.de>,
- Mao Han <han_mao@c-sky.com>, Kees Cook <keescook@chromium.org>
+Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org,
+ deanbo422@gmail.com
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Currently, plic threshold and priority are only initialized once in the
-beginning. However, threshold can be set to disabled if cpu is marked
-offline with cpu hotplug feature. This will not allow to change the
-irq affinity to a cpu that just came online.
+The compiler uses the PIC-relative method to access static variables
+instead of GOT when the code model is PIC. Therefore, the limitation of
+the access range from the instruction to the symbol address is +-2GB.
+Under this circumstance, the kernel cannot load a kernel module if this
+module has static per-CPU symbols declared by DEFINE_PER_CPU(). The reason
+is that kernel relocates the .data..percpu section of the kernel module to
+the end of kernel's .data..percpu. Hence, the distance between the per-CPU
+symbols and the instruction will exceed the 2GB limits. To solve this
+problem, the kernel should place the loaded module in the memory area
+[&_end-2G, VMALLOC_END].
 
-Add plic specific cpu hotplug callback and initialize the per cpu handler
-when cpu comes online.
+Because the loaded module locates in the region [＆_end-2G，VMALLOC_END]
+at runtime, the distance from the module start to the end of the kernel
+image does not exceed 2GB. Hence, the second patch changes the code model
+of the kernel module from PIC to medany to improve the performance of data
+access.
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- arch/riscv/kernel/traps.c         |  2 +-
- drivers/irqchip/irq-sifive-plic.c | 38 +++++++++++++++++++++++++++----
- include/linux/cpuhotplug.h        |  1 +
- 3 files changed, 36 insertions(+), 5 deletions(-)
+Changes from v1->v2
+1. Unify the definition of VMALLOC_MODULE_START
+2. Modify the indent  
 
-diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
-index 8e13ad45ccaa..16c59807da6a 100644
---- a/arch/riscv/kernel/traps.c
-+++ b/arch/riscv/kernel/traps.c
-@@ -157,5 +157,5 @@ void trap_init(void)
- 	/* Set the exception vector address */
- 	csr_write(CSR_TVEC, &handle_exception);
- 	/* Enable interrupts */
--	csr_write(CSR_IE, IE_SIE | IE_EIE);
-+	csr_write(CSR_IE, IE_SIE);
- }
-diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index aa4af886e43a..7c7f37393f99 100644
---- a/drivers/irqchip/irq-sifive-plic.c
-+++ b/drivers/irqchip/irq-sifive-plic.c
-@@ -4,6 +4,7 @@
-  * Copyright (C) 2018 Christoph Hellwig
-  */
- #define pr_fmt(fmt) "plic: " fmt
-+#include <linux/cpu.h>
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/irq.h>
-@@ -55,6 +56,9 @@
- #define     CONTEXT_THRESHOLD		0x00
- #define     CONTEXT_CLAIM		0x04
- 
-+#define	PLIC_DISABLE_THRESHOLD		0xf
-+#define	PLIC_ENABLE_THRESHOLD		0
-+
- static void __iomem *plic_regs;
- 
- struct plic_handler {
-@@ -230,6 +234,32 @@ static int plic_find_hart_id(struct device_node *node)
- 	return -1;
- }
- 
-+static void plic_set_threshold(struct plic_handler *handler, u32 threshold)
-+{
-+	/* priority must be > threshold to trigger an interrupt */
-+	writel(threshold, handler->hart_base + CONTEXT_THRESHOLD);
-+}
-+
-+static int plic_dying_cpu(unsigned int cpu)
-+{
-+	struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-+
-+	csr_clear(CSR_IE, IE_EIE);
-+	plic_set_threshold(handler, PLIC_DISABLE_THRESHOLD);
-+
-+	return 0;
-+}
-+
-+static int plic_starting_cpu(unsigned int cpu)
-+{
-+	struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-+
-+	csr_set(CSR_IE, IE_EIE);
-+	plic_set_threshold(handler, PLIC_ENABLE_THRESHOLD);
-+
-+	return 0;
-+}
-+
- static int __init plic_init(struct device_node *node,
- 		struct device_node *parent)
- {
-@@ -267,7 +297,6 @@ static int __init plic_init(struct device_node *node,
- 		struct plic_handler *handler;
- 		irq_hw_number_t hwirq;
- 		int cpu, hartid;
--		u32 threshold = 0;
- 
- 		if (of_irq_parse_one(node, i, &parent)) {
- 			pr_err("failed to parse parent for context %d.\n", i);
-@@ -301,7 +330,7 @@ static int __init plic_init(struct device_node *node,
- 		handler = per_cpu_ptr(&plic_handlers, cpu);
- 		if (handler->present) {
- 			pr_warn("handler already present for context %d.\n", i);
--			threshold = 0xffffffff;
-+			plic_set_threshold(handler, PLIC_DISABLE_THRESHOLD);
- 			goto done;
- 		}
- 
-@@ -313,13 +342,14 @@ static int __init plic_init(struct device_node *node,
- 			plic_regs + ENABLE_BASE + i * ENABLE_PER_HART;
- 
- done:
--		/* priority must be > threshold to trigger an interrupt */
--		writel(threshold, handler->hart_base + CONTEXT_THRESHOLD);
- 		for (hwirq = 1; hwirq <= nr_irqs; hwirq++)
- 			plic_toggle(handler, hwirq, 0);
- 		nr_handlers++;
- 	}
- 
-+	cpuhp_setup_state(CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
-+				  "irqchip/sifive/plic:starting",
-+				  plic_starting_cpu, plic_dying_cpu);
- 	pr_info("mapped %d interrupts with %d handlers for %d contexts.\n",
- 		nr_irqs, nr_handlers, nr_contexts);
- 	set_handle_irq(plic_handle_irq);
-diff --git a/include/linux/cpuhotplug.h b/include/linux/cpuhotplug.h
-index d37c17e68268..77d70b633531 100644
---- a/include/linux/cpuhotplug.h
-+++ b/include/linux/cpuhotplug.h
-@@ -102,6 +102,7 @@ enum cpuhp_state {
- 	CPUHP_AP_IRQ_ARMADA_XP_STARTING,
- 	CPUHP_AP_IRQ_BCM2836_STARTING,
- 	CPUHP_AP_IRQ_MIPS_GIC_STARTING,
-+	CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
- 	CPUHP_AP_ARM_MVEBU_COHERENCY,
- 	CPUHP_AP_MICROCODE_LOADER,
- 	CPUHP_AP_PERF_X86_AMD_UNCORE_STARTING,
+Vincent Chen (2):
+  riscv: avoid the PIC offset of static percpu data in module beyond 2G
+    limits
+  riscv: Replace PIC with medany to improve data accessing in module
+
+ arch/riscv/Makefile        |  6 ++++--
+ arch/riscv/kernel/module.c | 18 ++++++++++++++++++
+ 2 files changed, 22 insertions(+), 2 deletions(-)
+
 -- 
-2.25.0
+2.7.4
 
 
