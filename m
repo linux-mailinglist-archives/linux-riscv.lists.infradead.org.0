@@ -2,104 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7D3D169175
-	for <lists+linux-riscv@lfdr.de>; Sat, 22 Feb 2020 20:07:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EAA01698CB
+	for <lists+linux-riscv@lfdr.de>; Sun, 23 Feb 2020 18:18:16 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hUcpnSLEn+YLhIPVmeEuGnNNkTS3APInXZoS9Ntpa9k=; b=hRmziBx4dTlSbSB5u2XunZUMa
-	B3hMJQyD6E+NzJ7P/iijACAhIKJmotGcdYioBhYMC2hyLaigwOBpdvkLfikYtDqEFL5D+OSBGXgao
-	81aYBIZgRNqJ3nZLF7o4ScxU4ANMN0Ap3t2b0wGFTBz+WU5Sbv9z+G7g2pNnG7aTqBX/YuDkRpwhQ
-	yM/gw9VTXYwkTDJgk4H1sEKgh6ZhAPEJSE1yKL59GF0GS89xcUtNGfTlcHOGPORqMKNzWrtsEutq+
-	iYYpNSPDqKlZcot8wKxdEgQ1Yv2qfJwbt5/8gWcGoN43tpGcRElbdRsgPtWWXNzsr/VzVEEQV8huV
-	XSRuNkHbg==;
+	 bh=7SmTtNPBn2T+cb23Q+tOWXTb1iD23pHN7RwXvfrkL9o=; b=g9OWYdiRKT0W6zQiK2O1+0AMP
+	q0UDMvjLreQDZpKYV2XtTTvH6yQTmLJ5WsFZ+IPNrIdVxOZITtxO82CDqmvp406tOfkMyZW0Emxbo
+	0+kars3X35TuunVz4bgsfdh0u0i6MDxnsup5os4kdtrbP7vx0ljLvOlTwL7AKms+5P3lJPy5uiHBE
+	dIZZsupZMCQ2hItS0igCuH8rPa9/97rcii/uJOE2i20+TOzg4f6BGrn1jlQRBiWgYxFGM17iTO/YV
+	b33x1lMfbFMRZqp9/1oo5fU89L7/GQHKNhEkw6e1q55tzLjxvZ6TkIPFFW+cx+MzK3B1+sGfMZAWD
+	a7MneAymQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j5a7p-0001tC-HR; Sat, 22 Feb 2020 19:07:41 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1j5utG-0003dC-KF; Sun, 23 Feb 2020 17:18:02 +0000
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j5a7k-0001sq-Ux
- for linux-riscv@lists.infradead.org; Sat, 22 Feb 2020 19:07:39 +0000
-Received: by mail-wr1-x443.google.com with SMTP id n10so5758434wrm.1
- for <linux-riscv@lists.infradead.org>; Sat, 22 Feb 2020 11:07:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1j5utD-0003ct-I8
+ for linux-riscv@lists.infradead.org; Sun, 23 Feb 2020 17:18:00 +0000
+Received: by mail-il1-x142.google.com with SMTP id s85so5770741ill.11
+ for <linux-riscv@lists.infradead.org>; Sun, 23 Feb 2020 09:17:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tycho-ws.20150623.gappssmtp.com; s=20150623;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=hUcpnSLEn+YLhIPVmeEuGnNNkTS3APInXZoS9Ntpa9k=;
- b=et+d0OWPbMtJ8Xphz2xq3pVxrhb1EYui2SOTDSR1IFSAvQ8awjSMCnu72Fm/MFRQpV
- anU86e/cWbLAUHkYhsT7jwKzaEZb1r9X8cYaG77Q9/gie3+XvRmjxpqDNDMNxHOiF49K
- bDH6tY9U6hySDUDz+KoT7/laMpEA3WgM2u1EQW64xwUZg205moeqCosrwyyxgnlzTriX
- +FZtUgrim7jyYMj+Sd1MM7boDCOuyNdropx6Oim26lEHo4Sn6imoqiaH0yIgLvbomZ6q
- JW0gQqyJIIn9DMDrfzNUIlVy/ARvya3BuPBeNLld+RSHpm9FLsFwB/E1dHYmLc4n7WhZ
- n54w==
+ :content-disposition:in-reply-to:user-agent;
+ bh=7SmTtNPBn2T+cb23Q+tOWXTb1iD23pHN7RwXvfrkL9o=;
+ b=ZnXU0AiYUqDbHSfyrXM/7uT2bHICmi3a4U4nFQldVTYotEN+5e57QiIPpx2j2zSfOD
+ 3zHezfkmTwch9bXv9L7qNVZUISXIL0ZasnOGiPhmqKXqeiIVBh77ikdN889zLXA/s20t
+ kIe3/boDVkpoKbgdUfDmkRZ+yGN7pFsLsC7uPiX5c6B+IT72iz4zcMTO2mqIXA6QSpG0
+ 3IzPiqyfGN/L0Zek8hJCWHEYpx2GRaDD6PYYsl7XSj9fzpSniygzvpB35hW3mOvkoSUQ
+ R3ro9r1cbIxool1PKW0MSGoomdwH8lDS3G2/ySGB76ZVesjXakuXvUgH4TbBHPkGAURr
+ ZpjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=hUcpnSLEn+YLhIPVmeEuGnNNkTS3APInXZoS9Ntpa9k=;
- b=CnePvJHa/WTf74/rU7TBYZJdL3Toca23Rj/YOE172Pmzu2IYJS0cueoV8ActYXSOxU
- PgOlpOxiGXziXav1KY7hcWjNnGMiJXkHIjQRcxBNpL5SaLPAXXL2UIg9Bqcl0GvPNhfl
- EBpjU/Bip97VzF6UQKIRk+NLTiNEqr11KWeBsKGMvqtEqZr4rVSfJ97O2sLPZ2nztRcx
- jC/1HuDB78jE5qf4yeqB5+5D8vQU5fqvGbyJmU8cGBoF6iwRUuNzLsToVidpUh1/JYb+
- hyTQmEYaUySH/5bOtgWUPsB7OlvI3AjL12AsNTcDX1NAXDWD7agzBS68z9TILcMS9WEL
- XWWA==
-X-Gm-Message-State: APjAAAXmyy1udnEXawdfgjNpOvvTfan3Unj7aca03WA4gKlV0ieJzzCx
- 7eJhuexNkp62KE7ibNG5jIw=
-X-Google-Smtp-Source: APXvYqzdXKRUuL30mVRDZU/hskKyYjlVq6KShPLNY2HtCwoksIrvuWAgJSGSw2C9MAWzNKlK9x26Ag==
-X-Received: by 2002:a05:6000:192:: with SMTP id
- p18mr55186224wrx.218.1582398454468; 
- Sat, 22 Feb 2020 11:07:34 -0800 (PST)
-Received: from aurora.visucore.com (92-110-144-95.cable.dynamic.v4.ziggo.nl.
- [92.110.144.95])
- by smtp.gmail.com with ESMTPSA id n3sm9985429wrs.8.2020.02.22.11.07.32
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 22 Feb 2020 11:07:33 -0800 (PST)
-Date: Sat, 22 Feb 2020 20:07:31 +0100
-From: "Wladimir J. van der Laan" <laanwj@gmail.com>
-To: Carlos Eduardo de Paula <me@carlosedp.com>
-Subject: Re: [PATCH 08/10] riscv: Add Kendryte K210 device tree
-Message-ID: <20200222190731.27vulbrqj37obeq6@aurora.visucore.com>
-References: <48e10b3d-12f3-a65c-8017-99c780c63040@gmail.com>
- <BYAPR04MB581671F46D3FE67FD3C8B2B7E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
- <bd74c841-2447-2f11-f924-a501230b3927@gmail.com>
- <BYAPR04MB5816ED294439828E562EB085E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
- <CADnnUqe3AbTStJg9LS4qupH-OnBDGjuEFbnX8EXW8MUr4kwoGQ@mail.gmail.com>
- <19e78a77-4b7f-a057-eb6e-7384f3fc67c1@gmail.com>
- <CADnnUqfSq5sNXMQLktU0R_XLvYrf00nqMG5UPkTwaeL-Cy1m_A@mail.gmail.com>
- <8108cb8e-a909-24b0-f1c4-24a5bebf4e65@gmail.com>
- <CADnnUqenadntSrngNGjnu40inxZWK1Nm3T64BnyY114hEwC_Og@mail.gmail.com>
- <20200219090612.7onbaoygy6waumnw@aurora.visucore.com>
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=7SmTtNPBn2T+cb23Q+tOWXTb1iD23pHN7RwXvfrkL9o=;
+ b=rVY884Kbb3xita1ph8z2A5o7ehip3CmNzfjSaTIO/zR19TFZHmPHUm4ICIFQOVmrf6
+ 3Taocy/u8zkQRGqXlTQaMjbrfYAmQmoW04NG/0G/kQAkX/zYtkmKZPOhNFaJfGSOhiW4
+ w09Pchia+pfoBU7iojwJbhH6QdTf/yInIp4Zzt/B6U21uyW3824eafVNALZlbMqsgcsW
+ 3ytGt7Jb9/7kVNnwB2IdZTjRJ4FzR/N50W2rfEff31ovz94BbesR+ZkJFPIwCCozr5ao
+ Af11jUtQOUzgaRuFlmbAF+Waa9TmRY38KICd/LNbI1iGHBR9HQmALbhUdlP7EX3TXO43
+ 8A+g==
+X-Gm-Message-State: APjAAAWol/nqYj52mDIzlzWrPSu4hmWtaGEGTqg2SGcGH34a7IiDJJCa
+ mjGBgikRR139iBp4RXVU0U5WGg==
+X-Google-Smtp-Source: APXvYqw63W2EK7XZYK5s2ZWoKQ8ad6sFR+En3xfuokU2Dmq5tIeMmY7/FNGj8fKk5l4fl6ybs2iYuw==
+X-Received: by 2002:a92:9a47:: with SMTP id t68mr50874060ili.155.1582478278014; 
+ Sun, 23 Feb 2020 09:17:58 -0800 (PST)
+Received: from cisco ([2601:282:902:b340:8001:28d8:b4a3:8673])
+ by smtp.gmail.com with ESMTPSA id q1sm2430745iog.8.2020.02.23.09.17.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 23 Feb 2020 09:17:57 -0800 (PST)
+Date: Sun, 23 Feb 2020 10:17:57 -0700
+From: Tycho Andersen <tycho@tycho.ws>
+To: linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org
+Subject: Re: [PATCH] riscv: fix seccomp reject syscall code path
+Message-ID: <20200223171757.GB22040@cisco>
+References: <20200208151817.12383-1-tycho@tycho.ws>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200219090612.7onbaoygy6waumnw@aurora.visucore.com>
+In-Reply-To: <20200208151817.12383-1-tycho@tycho.ws>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200222_110736_999538_A2A02442 
-X-CRM114-Status: GOOD (  13.04  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200223_091759_743323_38E9BB02 
+X-CRM114-Status: UNSURE (   5.52  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.3 URIBL_RHS_DOB          Contains an URI of a new domain (Day Old Bread)
- [URIs: kendryte.com]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:142 listed in]
  [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [laanwj[at]gmail.com]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,38 +95,16 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
- Sean Anderson <seanga2@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: Andy Lutomirski <luto@amacapital.net>, Oleg Nesterov <oleg@redhat.com>,
+ Kees Cook <keescook@chromium.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Sat, Feb 08, 2020 at 08:18:17AM -0700, Tycho Andersen wrote:
+> ...
 
-> > > So the LCD connector is supposed to be for a ST7789V controller, but
-> > > there doesn't appear to be a driver in Linux for it. I don't have an
-> > > appropriate LCD screen, so I will not be able to write a driver.
-> > >
-> > 
-> > Actually there is a driver and config DRM_PANEL_SITRONIX_ST7789V, in
-> > gpu/drm/panel/panel-sitronix-st7789v.c and also FB_TFT_ST7789V and
-> > CONFIG_FB_TFT_ST7789V with the driver a in
-> > staging/fbtft/fb_st7789v.c. Might be easier :)
-> > 
-> > Weird that the Kendryte SDK refers to the LCD as NT35310
-> > (https://github.com/kendryte/kendryte-standalone-demo/tree/develop/lcd).
-> 
-> I remember checking the datasheet for both a while ago and NT35310 and ST7789V
-> seem to be more or less compatible, with only register differences
-> for more obscure functionality.
+Ping, any risc-v people have thoughts on this?
 
-I just stumbled on this:
-https://forum.kendryte.com/topic/68/a-guide-to-adapt-kendryte-kd233-kpu-demo-to-sipeed-m1
-under "LCD Driver".
-
-So it looks like the K233 uses a nt35310, while Sipeed M1 uses st7789. This is
-a likely explanation for them mentioning both chips in the SDKs.
-
-Kind regards,
-Wladimir
+Tycho
 
