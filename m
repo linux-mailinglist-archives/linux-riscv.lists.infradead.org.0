@@ -2,88 +2,58 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EAA01698CB
-	for <lists+linux-riscv@lfdr.de>; Sun, 23 Feb 2020 18:18:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4385169C0E
+	for <lists+linux-riscv@lfdr.de>; Mon, 24 Feb 2020 02:59:18 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7SmTtNPBn2T+cb23Q+tOWXTb1iD23pHN7RwXvfrkL9o=; b=g9OWYdiRKT0W6zQiK2O1+0AMP
-	q0UDMvjLreQDZpKYV2XtTTvH6yQTmLJ5WsFZ+IPNrIdVxOZITtxO82CDqmvp406tOfkMyZW0Emxbo
-	0+kars3X35TuunVz4bgsfdh0u0i6MDxnsup5os4kdtrbP7vx0ljLvOlTwL7AKms+5P3lJPy5uiHBE
-	dIZZsupZMCQ2hItS0igCuH8rPa9/97rcii/uJOE2i20+TOzg4f6BGrn1jlQRBiWgYxFGM17iTO/YV
-	b33x1lMfbFMRZqp9/1oo5fU89L7/GQHKNhEkw6e1q55tzLjxvZ6TkIPFFW+cx+MzK3B1+sGfMZAWD
-	a7MneAymQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TFW6vjNaokUC5G9bNX5lwkVylRSLlJL7AqEJ/bBCrps=; b=DjassRWfF7SogD
+	X+lsIjXDxmvXqGGp/OL23NSpbFWllgeVPy9ok1HUoZ2iX8qRkIGoIekEGxVvCo3cpZEhyow1I1z17
+	+3GCmOfh/UQt1F4SjaXtaNvLivZz1VHDBHMcggiZywooYjXkbp5Jjc6IRIoavFBM3YTYixeQbUSqC
+	yd2pLM8rcdP8eMTvLhChHLTITtZIUEuWfMEqFmnt28g2QMHNGRrVQRmOf33e2N2cKO62rLdv4Uldr
+	eOkZo9t0I/V6S6IumTPYWK4/UNEZdFqzMHaAR8v7BTksgGdV2vSafJBZnEeP+0NQQjWAKMmiwXlGX
+	M34mzerHkIXFzkPu7dOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j5utG-0003dC-KF; Sun, 23 Feb 2020 17:18:02 +0000
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j5utD-0003ct-I8
- for linux-riscv@lists.infradead.org; Sun, 23 Feb 2020 17:18:00 +0000
-Received: by mail-il1-x142.google.com with SMTP id s85so5770741ill.11
- for <linux-riscv@lists.infradead.org>; Sun, 23 Feb 2020 09:17:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=tycho-ws.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=7SmTtNPBn2T+cb23Q+tOWXTb1iD23pHN7RwXvfrkL9o=;
- b=ZnXU0AiYUqDbHSfyrXM/7uT2bHICmi3a4U4nFQldVTYotEN+5e57QiIPpx2j2zSfOD
- 3zHezfkmTwch9bXv9L7qNVZUISXIL0ZasnOGiPhmqKXqeiIVBh77ikdN889zLXA/s20t
- kIe3/boDVkpoKbgdUfDmkRZ+yGN7pFsLsC7uPiX5c6B+IT72iz4zcMTO2mqIXA6QSpG0
- 3IzPiqyfGN/L0Zek8hJCWHEYpx2GRaDD6PYYsl7XSj9fzpSniygzvpB35hW3mOvkoSUQ
- R3ro9r1cbIxool1PKW0MSGoomdwH8lDS3G2/ySGB76ZVesjXakuXvUgH4TbBHPkGAURr
- ZpjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=7SmTtNPBn2T+cb23Q+tOWXTb1iD23pHN7RwXvfrkL9o=;
- b=rVY884Kbb3xita1ph8z2A5o7ehip3CmNzfjSaTIO/zR19TFZHmPHUm4ICIFQOVmrf6
- 3Taocy/u8zkQRGqXlTQaMjbrfYAmQmoW04NG/0G/kQAkX/zYtkmKZPOhNFaJfGSOhiW4
- w09Pchia+pfoBU7iojwJbhH6QdTf/yInIp4Zzt/B6U21uyW3824eafVNALZlbMqsgcsW
- 3ytGt7Jb9/7kVNnwB2IdZTjRJ4FzR/N50W2rfEff31ovz94BbesR+ZkJFPIwCCozr5ao
- Af11jUtQOUzgaRuFlmbAF+Waa9TmRY38KICd/LNbI1iGHBR9HQmALbhUdlP7EX3TXO43
- 8A+g==
-X-Gm-Message-State: APjAAAWol/nqYj52mDIzlzWrPSu4hmWtaGEGTqg2SGcGH34a7IiDJJCa
- mjGBgikRR139iBp4RXVU0U5WGg==
-X-Google-Smtp-Source: APXvYqw63W2EK7XZYK5s2ZWoKQ8ad6sFR+En3xfuokU2Dmq5tIeMmY7/FNGj8fKk5l4fl6ybs2iYuw==
-X-Received: by 2002:a92:9a47:: with SMTP id t68mr50874060ili.155.1582478278014; 
- Sun, 23 Feb 2020 09:17:58 -0800 (PST)
-Received: from cisco ([2601:282:902:b340:8001:28d8:b4a3:8673])
- by smtp.gmail.com with ESMTPSA id q1sm2430745iog.8.2020.02.23.09.17.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Feb 2020 09:17:57 -0800 (PST)
-Date: Sun, 23 Feb 2020 10:17:57 -0700
-From: Tycho Andersen <tycho@tycho.ws>
-To: linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org
-Subject: Re: [PATCH] riscv: fix seccomp reject syscall code path
-Message-ID: <20200223171757.GB22040@cisco>
-References: <20200208151817.12383-1-tycho@tycho.ws>
+	id 1j631Z-0001p4-M8; Mon, 24 Feb 2020 01:59:09 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j631M-0001ft-Rd; Mon, 24 Feb 2020 01:58:58 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E20D41FB;
+ Sun, 23 Feb 2020 17:58:53 -0800 (PST)
+Received: from [10.162.16.95] (p8cg001049571a15.blr.arm.com [10.162.16.95])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 97E1F3F6CF;
+ Sun, 23 Feb 2020 17:58:46 -0800 (PST)
+Subject: Re: [PATCH V14] mm/debug: Add tests validating architecture page
+ table helpers
+To: linux-mm@kvack.org
+References: <1581909460-19148-1-git-send-email-anshuman.khandual@arm.com>
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+Message-ID: <fac4f03a-0cd3-29ad-b5e2-9aca2dd07b39@arm.com>
+Date: Mon, 24 Feb 2020 07:28:46 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200208151817.12383-1-tycho@tycho.ws>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <1581909460-19148-1-git-send-email-anshuman.khandual@arm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200223_091759_743323_38E9BB02 
-X-CRM114-Status: UNSURE (   5.52  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200223_175856_939307_9ACEF481 
+X-CRM114-Status: GOOD (  15.32  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:142 listed in]
- [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,16 +65,56 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Andy Lutomirski <luto@amacapital.net>, Oleg Nesterov <oleg@redhat.com>,
- Kees Cook <keescook@chromium.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- David Abdurachmanov <david.abdurachmanov@gmail.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Paul Mackerras <paulus@samba.org>,
+ "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
+ x86@kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ linux-snps-arc@lists.infradead.org, Vasily Gorbik <gor@linux.ibm.com>,
+ Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Christophe Leroy <christophe.leroy@c-s.fr>, Vineet Gupta <vgupta@synopsys.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Feb 08, 2020 at 08:18:17AM -0700, Tycho Andersen wrote:
-> ...
+On 02/17/2020 08:47 AM, Anshuman Khandual wrote:
+> This adds a test validation for architecture exported page table helpers.
+> Patch adds basic transformation tests at various levels of the page table.
+> 
+> This test was originally suggested by Catalin during arm64 THP migration
+> RFC discussion earlier. Going forward it can include more specific tests
+> with respect to various generic MM functions like THP, HugeTLB etc and
+> platform specific tests.
+> 
+> https://lore.kernel.org/linux-mm/20190628102003.GA56463@arrakis.emea.arm.com/
+> 
+> Needs to be applied on linux V5.6-rc2
+> 
+> Changes in V14:
+> 
+> - Disabled DEBUG_VM_PGFLAGS for IA64 and ARM (32 Bit) per Andrew and Christophe
+> - Updated DEBUG_VM_PGFLAGS documentation wrt EXPERT and disabled platforms
+> - Updated RANDOM_[OR|NZ]VALUE open encodings with GENMASK() per Catalin
+> - Updated s390 constraint bits from 12 to 4 (S390_MASK_BITS) per Gerald
+> - Updated in-code documentation for RANDOM_ORVALUE per Gerald
+> - Updated pxx_basic_tests() to use invert functions first per Catalin
+> - Dropped ARCH_HAS_4LEVEL_HACK check from pud_basic_tests()
+> - Replaced __ARCH_HAS_[4|5]LEVEL_HACK with __PAGETABLE_[PUD|P4D]_FOLDED per Catalin
+> - Trimmed the CC list on the commit message per Catalin
 
-Ping, any risc-v people have thoughts on this?
+Hello Andrew,
 
-Tycho
+As there are no further comments on this patch from last week, wondering
+if you would possibly consider this patch. But if you feel there is still
+something which need to be taken care here, please do let me know.
+
+Thank you.
+
+- Anshuman
 
