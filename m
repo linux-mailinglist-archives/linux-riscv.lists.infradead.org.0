@@ -2,70 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30AAE16B315
-	for <lists+linux-riscv@lfdr.de>; Mon, 24 Feb 2020 22:47:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAFCE16B6D6
+	for <lists+linux-riscv@lfdr.de>; Tue, 25 Feb 2020 01:42:26 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iNtRJwz9wlMRsiahuz/KF1yWpwEFtdXT3kziG8T5g6o=; b=gNOESGRzSWrxgG9l1CXdLNM++
-	zFJZLNPA1he5izeyeFKMc0pbZUklBygrJ2wb7knfqlZXFT3ScJ5PyNAWD2q37MEMWY/9F3T6I1YZk
-	7S4S0FUVoMFfndA9tm5zycNUD7VDTucNgogmCWj48fpSs0PJGIJvFoviIvJUloxObRT6FJfyD5CAu
-	VM9yKudLOEoNfSZdjML3O0+9RziuOlRwkAtBjnK+qw5ZbtcqOCG7u2SolPG2LfRqAbMcMisWKr0Zv
-	4DI7eFGOqggToJzexLHJTwQOOxbRyx0A81uGZ95VAfOkA5vSIRFHhdZskLAIJQeaSfphc3XtL1GX1
-	jPEzlPz0Q==;
+	 bh=lA69AZrelbjB6ZozmKLqS29rj9UvPNFt448gKkt1TTU=; b=PyEx4gYkJr4aiU0sC0DHEtKrg
+	QBoLA+FPeb0b19ZEUPrsjerGVplvDNoGcHVXd+6ACpk+Ctbksx+9WVVwvRgXwT0Ru8zsa/YZLGd08
+	7HcTL+Eu9HuJYXVZ/w/jiXkuAGIG8OOaUFIHYPVK/ahHCk0XX6lR2kXUVFgbVwvkS75TbHgqgMenx
+	sArIDY7ybDUZM6Gwgyn1c0sKhywOF36kZvvxx7yzWO/mFXDfQVDcnZtReWgqlwN9j+0DW5Eor7JIV
+	o4sc4eMG8rLm2rDN4trFuKOitT46fpzHwacOKxUEW6m/1fY7tKmHRCyLo6+QNpvhIxIh1KABO/TWE
+	VSbIn/T2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6LZH-0001Oy-7X; Mon, 24 Feb 2020 21:47:11 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1j6OIo-0004cN-4V; Tue, 25 Feb 2020 00:42:22 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6LZE-0001OI-8T
- for linux-riscv@lists.infradead.org; Mon, 24 Feb 2020 21:47:09 +0000
-Received: from mail-lf1-f48.google.com (mail-lf1-f48.google.com
- [209.85.167.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1B7DE21927
- for <linux-riscv@lists.infradead.org>; Mon, 24 Feb 2020 21:47:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1582580827;
- bh=iNtRJwz9wlMRsiahuz/KF1yWpwEFtdXT3kziG8T5g6o=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=WMg+aYz1pqfBf40N7HwxHgQpeCL0z5WsTj4AbdBOu5Qf4JPsNW4o/ftranmD03CLS
- 3aQ4zGauKMZhe6n6sPY8dsd/Lv4qk4vcsHr8kdnVV5e98E3ApwKd3g2YjZ2Vc86bsS
- 3N4Gd+iAZnwNydBCjMv7weJyQcdqMV8pTKKZVIPg=
-Received: by mail-lf1-f48.google.com with SMTP id n30so7145663lfh.6
- for <linux-riscv@lists.infradead.org>; Mon, 24 Feb 2020 13:47:07 -0800 (PST)
-X-Gm-Message-State: APjAAAVdQmdplLIJELymUwzSrP3Qqjq82btoyhfuF5GLo9QFh7JPTuFw
- UvRrLgbIdci+CJgFvOmlfcxEohsUw6UldmJliZ0=
-X-Google-Smtp-Source: APXvYqzaaG/6z/a+I+9wcWjT9K03hUBnD02phL7AqptSQe39nY1F/hXEGG8n2WvCSqtYN3l8Vad/TDDs2i+ojPEZagA=
-X-Received: by 2002:ac2:5682:: with SMTP id 2mr12461494lfr.138.1582580825266; 
- Mon, 24 Feb 2020 13:47:05 -0800 (PST)
+ id 1j6OIl-0004bX-5e
+ for linux-riscv@lists.infradead.org; Tue, 25 Feb 2020 00:42:20 +0000
+Received: by mail-lj1-x244.google.com with SMTP id r19so12136960ljg.3
+ for <linux-riscv@lists.infradead.org>; Mon, 24 Feb 2020 16:42:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lA69AZrelbjB6ZozmKLqS29rj9UvPNFt448gKkt1TTU=;
+ b=eWN2NQqF8H9E8iqjqcRhAq8mfdZexJPS1qljBBJW/NanjLjXH13l3200u1FuzAjoyL
+ VBbxFpMlaktno1iR8LaitoQ5SMoL8z1IKpmZGUNxFtO0xooZbzNro0XQ+pewMzZ3fpXq
+ l45crp+4x0h8MHSrpEgwmtWS7DsYswQ1C5oj7YA5WT+4TOpZrcytr2Qb6H50XyWcwHeC
+ rxejTHWxkmDV8kWcUMkX4lmaxyoBAk0cpIAEFYbwK19zbo3DovYMTVmm1ieixbmP1elf
+ SB1pcrX2hHVCktYdG39FwrFlH+X5BFN6nTKBnnhzs1yYtyR+LCIDvCtPMavkR7G2URJf
+ TQlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lA69AZrelbjB6ZozmKLqS29rj9UvPNFt448gKkt1TTU=;
+ b=kDohsreoQrlx+EySDerzMuVRddZdHBNQx5bTzAWDA5iQF//G8dwxYEZhZ91CnQaiar
+ PTdBpTcqcomzRgNA5z6OGnZ2wmQCE5WvXevYloRtdDVd8lnxN8Dr/I2DkbF6xUEuypXY
+ AZmmF/2OQMueliTUqzvpMMPwOEe9EHnmgDChMlaucLGCossHEiVcuZVSpR/sDueM5z2+
+ iyrMnOvXMTGTP6644mBdOAfR8nyWfyeu5STpd2WSz31Ywcsj2x4njkApkv3YM9MMRmCM
+ SXTOAEeHXq2VN3Zx4C+qCkum5CEu6waMOaZiBnjBDJiCdcsVCNcDqUUoVh63dWiBSA6P
+ r1Tg==
+X-Gm-Message-State: APjAAAXWAuHHo+emiapdpBmAmTBI7jG+Erv4/vHvNVorxoxUZ6dcfHai
+ eiTASUGXN9JQYN6o0ETB3zGOIDYqGtt8JFS2w90=
+X-Google-Smtp-Source: APXvYqzXfk38ncOBiqWLLtL3ANUuqOkZ6lI3WcgNsksE+wsyFWFQjVmFwXajjHPeQu9ShCfoYJJd1T9Z1h6M1+72y8I=
+X-Received: by 2002:a2e:a404:: with SMTP id p4mr32991570ljn.234.1582591336526; 
+ Mon, 24 Feb 2020 16:42:16 -0800 (PST)
 MIME-Version: 1.0
 References: <20200220041608.30289-1-lukenels@cs.washington.edu>
 In-Reply-To: <20200220041608.30289-1-lukenels@cs.washington.edu>
-From: Song Liu <song@kernel.org>
-Date: Mon, 24 Feb 2020 13:46:54 -0800
-X-Gmail-Original-Message-ID: <CAPhsuW6c9g9QRKZWVLXZN27SKOxMBM2tPV3F+QM5sb6mtvseow@mail.gmail.com>
-Message-ID: <CAPhsuW6c9g9QRKZWVLXZN27SKOxMBM2tPV3F+QM5sb6mtvseow@mail.gmail.com>
+From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Date: Mon, 24 Feb 2020 16:42:05 -0800
+Message-ID: <CAADnVQJTtNu5a2oM=8poe6FHXeQttG44S+7XvuqQtv1Cgui8tg@mail.gmail.com>
 Subject: Re: [PATCH v3 bpf-next] RV32G eBPF JIT
 To: Luke Nelson <lukenels@cs.washington.edu>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_134708_321730_3F35A3AB 
-X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-CacheID: sfid-20200224_164219_212357_CC7D84CA 
+X-CRM114-Status: UNSURE (   8.02  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [alexei.starovoitov[at]gmail.com]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:244 listed in]
+ [list.dnswl.org]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -73,7 +82,6 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,7 +97,8 @@ Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
  Daniel Borkmann <daniel@iogearbox.net>, Jiong Wang <jiong.wang@netronome.com>,
  =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
  Alexei Starovoitov <ast@kernel.org>, linux-riscv@lists.infradead.org,
- open list <linux-kernel@vger.kernel.org>, Networking <netdev@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ Network Development <netdev@vger.kernel.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
  Yonghong Song <yhs@fb.com>, bpf <bpf@vger.kernel.org>,
  Andrii Nakryiko <andriin@fb.com>, Martin KaFai Lau <kafai@fb.com>,
@@ -97,14 +106,29 @@ Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Feb 19, 2020 at 8:21 PM Luke Nelson <lukenels@cs.washington.edu> wrote:
+On Wed, Feb 19, 2020 at 8:20 PM Luke Nelson <lukenels@cs.washington.edu> wrote:
 >
 > This is an eBPF JIT for RV32G, adapted from the JIT for RV64G and
 > the 32-bit ARM JIT.
+...
+> v2 -> v3:
+>   * Added support for far jumps / branches similar to RV64 JIT.
+>   * Added support for tail calls.
+>   * Cleaned up code with more optimizations and comments.
+>   * Removed special zero-extension instruction from BPF_ALU64
+>     case, pointed out by Jiong Wang.
+>
+> v1 -> v2:
+>   * Added support for far conditional branches.
+>   * Added the zero-extension optimization pointed out by Jiong Wang.
+>   * Added more optimizations for operations with an immediate operand.
+>
+> Cc: Jiong Wang <jiong.wang@netronome.com>
+> Co-developed-by: Xi Wang <xi.wang@gmail.com>
+> Signed-off-by: Xi Wang <xi.wang@gmail.com>
+> Signed-off-by: Luke Nelson <lukenels@cs.washington.edu>
 
-I found a lot of common code between RV32G and RV64G. Can we move
-these code into a header file?
+Bjorn,
 
-Thanks,
-Song
+please review.
 
