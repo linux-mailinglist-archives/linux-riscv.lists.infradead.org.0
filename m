@@ -2,82 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1AB5170184
-	for <lists+linux-riscv@lfdr.de>; Wed, 26 Feb 2020 15:46:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BCAC017032C
+	for <lists+linux-riscv@lfdr.de>; Wed, 26 Feb 2020 16:52:31 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BEQC+OIkud+eji3D9C1xajaOV2PnlEzJtZsCBcvukA0=; b=Pelamc/sbICT4V
-	wP0x+JzALy4+w4RUNUYp7wmkMI/jAj1fGUC5L9cRfpC3uchslCB5fG+p9Zl1z/egTvGgDHNKygjsU
-	ZjpR5KSnceQEUMLlANXE+GPDujU5LGnfFsRCnFVt5jy4m4halbZxGzgYxe4c5+bnfLkpnRtg2Z9Iv
-	Weph2BNVAYQH3armY9cP85cBqh3whKbISSNSZB3nG9XISNE0K03Kg/Wzvx2lw8l1rG2tqgNlx5pSE
-	kswCM/oQ1t/d8hnCI/z/KzSWCtMnOnYhIoRP4rgAQZiQGQTq8LI0c4n//4W+O3MC5yFUpJIOJ+YZN
-	/iaVkRLYEQt055gMLqVQ==;
+	Content-Transfer-Encoding:Mime-Version:Content-Type:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4GYwlf0Xa2QHt1cHVU8f4uTPVQEe66S6tW8iKIjB1EY=; b=IbJ24XZjOujnm1
+	7SYbiu4Gay4WkTgC8HidJapXZMOy2K9WHQ61/pbmWskp4/eWgz62XxsJaIzmnqaiR88uMrPCrd2cf
+	4uP9Ii1ceGdF7rdcd1yyj8HhT82G5MeIW/I3KgSBhkQ7+XFUsBgsnKRALa20WesnioxcA+RJVvCvo
+	dVv+RhNz0LCTRJ1A0exbxDhPjEcJyhR9uBfXVkVdq7oQS3gbnp6Ynlr9XtlAWykS+7bYCYqLm409F
+	gHtznhhCnW3tNNvCbAoT3rqsthS87l1vsXluYQnjAjyWdclK9NYFvhKkEGNB5Gt62lhcktB+2DLsx
+	Xpy/1+470nKuUx4V3qlw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6xx8-0003I6-5M; Wed, 26 Feb 2020 14:46:22 +0000
-Received: from pegase1.c-s.fr ([93.17.236.30])
+	id 1j6yz0-00069J-0W; Wed, 26 Feb 2020 15:52:22 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6xwq-00037z-Il; Wed, 26 Feb 2020 14:46:06 +0000
-Received: from localhost (mailhub1-int [192.168.12.234])
- by localhost (Postfix) with ESMTP id 48SJWh2b55z9tyg4;
- Wed, 26 Feb 2020 15:45:52 +0100 (CET)
-Authentication-Results: localhost; dkim=pass
- reason="1024-bit key; insecure key"
- header.d=c-s.fr header.i=@c-s.fr header.b=kZ5bMkLJ; dkim-adsp=pass;
- dkim-atps=neutral
-X-Virus-Scanned: Debian amavisd-new at c-s.fr
-Received: from pegase1.c-s.fr ([192.168.12.234])
- by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
- with ESMTP id piYm9Kq-bip3; Wed, 26 Feb 2020 15:45:52 +0100 (CET)
-Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
- by pegase1.c-s.fr (Postfix) with ESMTP id 48SJWh1L1mz9tyg0;
- Wed, 26 Feb 2020 15:45:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=c-s.fr; s=mail;
- t=1582728352; bh=BEQC+OIkud+eji3D9C1xajaOV2PnlEzJtZsCBcvukA0=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=kZ5bMkLJJRmtE/zBn7tAG22RVlZ+eB59QhJ/5515+FA1qAhZsJh2OjTNrixj9vTDj
- g9hhT1i5/9dal9tTCQtAXzKPCb1/TtYD/lHCsid2jxvbbY8kYL0AVDIy3f2yCgUqIz
- SvUkhU4c68nXEu7I9g1qKkvWUZk1WgTaY/zVbTdo=
-Received: from localhost (localhost [127.0.0.1])
- by messagerie.si.c-s.fr (Postfix) with ESMTP id 93C978B858;
- Wed, 26 Feb 2020 15:45:53 +0100 (CET)
-X-Virus-Scanned: amavisd-new at c-s.fr
-Received: from messagerie.si.c-s.fr ([127.0.0.1])
- by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
- with ESMTP id AccKIxhc_qaM; Wed, 26 Feb 2020 15:45:53 +0100 (CET)
-Received: from [192.168.4.90] (unknown [192.168.4.90])
- by messagerie.si.c-s.fr (Postfix) with ESMTP id 75D1B8B776;
- Wed, 26 Feb 2020 15:45:51 +0100 (CET)
+ id 1j6yyl-0005ya-3K
+ for linux-riscv@lists.infradead.org; Wed, 26 Feb 2020 15:52:08 +0000
+Received: by mail-qk1-x741.google.com with SMTP id 11so3093951qkd.1
+ for <linux-riscv@lists.infradead.org>; Wed, 26 Feb 2020 07:52:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=4GYwlf0Xa2QHt1cHVU8f4uTPVQEe66S6tW8iKIjB1EY=;
+ b=PEkBC2gGo9Wp0CTNFzcX/uGLGqh45la2h+234pEbgb0JKCTWiVwR5CK2qWd8o7GV9+
+ vZ0V3mJmWDxwpkokIiWuE2AK5D0JvSuKri12uT1Y5ZmnM2+2x1lk6TfjQrITZNEH8kqT
+ OpLenMqGsrmR+s2Jh+PZTctbpw7UkSpOJj3m46DAs7sTe9V+A8PrxIZxTU0Jx2ozkU+h
+ l2FfR5Vf/ZZGO7KqofRi3aS6TzSV2SHQoTpS42nUl+B16nz+oN/qYJaqXNzKW0WQZswg
+ b+O0gHwTc4Y9Ju+CjJy1uD3JRDYV9kySWYvBERLoM4RJvQwJnkBJANxBmrBhZlFtAjqz
+ NmYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=4GYwlf0Xa2QHt1cHVU8f4uTPVQEe66S6tW8iKIjB1EY=;
+ b=FnUNtoBu89ZPok5QxHiXGyfcnhCEbcjoaSMe3kg7Uo7Sq5Ccin30bdGLmb81Y9ulpD
+ jLfL99kE/hh9dnYqvaMt5fxdjnaDQQV5nse11FH3c67dTg91DnAPk5L0E1lGXgdgpAfk
+ D6gqQ0kHm2K4PpOdE4pdLdrAXTQK+S2Ua+rJcLGCff/4sMvQzCCsKo59O7zVHGy4SnW9
+ XbVxu00hWlK8upSGMMM7dwk8d2cPcTUFQjIpD6p6xDFWNZXiGz6pm6briwWhxDL87J5Z
+ GdsRIWFbvmRmJn+bk43/rbnPo+neqcGGZv06ZgdEuZ54iFmUN4bOrlrPMeocSjP5m9S1
+ fwaw==
+X-Gm-Message-State: APjAAAUXhQi1Dn/RYCUjRJiOSqjUmDRrS/wN5gxnRNGGPSrckRdkrw9g
+ MYZMfJsQ9vJplH9Wdv4ozD8JGw==
+X-Google-Smtp-Source: APXvYqxycYwltSMF6mRZHm7TjXsCzQqI/GC2y1t3waZQf56agLdqkPAjaYu5yvSrjxUQYf0tQtgA0w==
+X-Received: by 2002:a37:64cb:: with SMTP id y194mr5808427qkb.364.1582732321799; 
+ Wed, 26 Feb 2020 07:52:01 -0800 (PST)
+Received: from dhcp-41-57.bos.redhat.com (nat-pool-bos-t.redhat.com.
+ [66.187.233.206])
+ by smtp.gmail.com with ESMTPSA id 3sm1332599qte.59.2020.02.26.07.51.59
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 26 Feb 2020 07:52:01 -0800 (PST)
+Message-ID: <1582732318.7365.129.camel@lca.pw>
 Subject: Re: [PATCH V14] mm/debug: Add tests validating architecture page
  table helpers
-To: Qian Cai <cai@lca.pw>, Anshuman Khandual <anshuman.khandual@arm.com>,
- linux-mm@kvack.org
+From: Qian Cai <cai@lca.pw>
+To: Christophe Leroy <christophe.leroy@c-s.fr>, Anshuman Khandual
+ <anshuman.khandual@arm.com>, linux-mm@kvack.org
+Date: Wed, 26 Feb 2020 10:51:58 -0500
+In-Reply-To: <7c707b7f-ce3d-993b-8042-44fdc1ed28bf@c-s.fr>
 References: <1581909460-19148-1-git-send-email-anshuman.khandual@arm.com>
  <1582726182.7365.123.camel@lca.pw>
-From: Christophe Leroy <christophe.leroy@c-s.fr>
-Message-ID: <7c707b7f-ce3d-993b-8042-44fdc1ed28bf@c-s.fr>
-Date: Wed, 26 Feb 2020 15:45:44 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <1582726182.7365.123.camel@lca.pw>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
+ <7c707b7f-ce3d-993b-8042-44fdc1ed28bf@c-s.fr>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.22.6 (3.22.6-10.el7) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_064604_915532_013B47AE 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20200226_075207_175374_DC7BBBDF 
+X-CRM114-Status: GOOD (  18.44  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [93.17.236.30 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -116,49 +120,51 @@ Cc: Catalin Marinas <catalin.marinas@arm.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
-
-Le 26/02/2020 à 15:09, Qian Cai a écrit :
-> On Mon, 2020-02-17 at 08:47 +0530, Anshuman Khandual wrote:
->> This adds tests which will validate architecture page table helpers and
->> other accessors in their compliance with expected generic MM semantics.
->> This will help various architectures in validating changes to existing
->> page table helpers or addition of new ones.
->>
->> This test covers basic page table entry transformations including but not
->> limited to old, young, dirty, clean, write, write protect etc at various
->> level along with populating intermediate entries with next page table page
->> and validating them.
->>
->> Test page table pages are allocated from system memory with required size
->> and alignments. The mapped pfns at page table levels are derived from a
->> real pfn representing a valid kernel text symbol. This test gets called
->> inside kernel_init() right after async_synchronize_full().
->>
->> This test gets built and run when CONFIG_DEBUG_VM_PGTABLE is selected. Any
->> architecture, which is willing to subscribe this test will need to select
->> ARCH_HAS_DEBUG_VM_PGTABLE. For now this is limited to arc, arm64, x86, s390
->> and ppc32 platforms where the test is known to build and run successfully.
->> Going forward, other architectures too can subscribe the test after fixing
->> any build or runtime problems with their page table helpers. Meanwhile for
->> better platform coverage, the test can also be enabled with CONFIG_EXPERT
->> even without ARCH_HAS_DEBUG_VM_PGTABLE.
->>
->> Folks interested in making sure that a given platform's page table helpers
->> conform to expected generic MM semantics should enable the above config
->> which will just trigger this test during boot. Any non conformity here will
->> be reported as an warning which would need to be fixed. This test will help
->> catch any changes to the agreed upon semantics expected from generic MM and
->> enable platforms to accommodate it thereafter.
+On Wed, 2020-02-26 at 15:45 +0100, Christophe Leroy wrote:
 > 
-> How useful is this that straightly crash the powerpc?
+> Le 26/02/2020 à 15:09, Qian Cai a écrit :
+> > On Mon, 2020-02-17 at 08:47 +0530, Anshuman Khandual wrote:
+> > > This adds tests which will validate architecture page table helpers and
+> > > other accessors in their compliance with expected generic MM semantics.
+> > > This will help various architectures in validating changes to existing
+> > > page table helpers or addition of new ones.
+> > > 
+> > > This test covers basic page table entry transformations including but not
+> > > limited to old, young, dirty, clean, write, write protect etc at various
+> > > level along with populating intermediate entries with next page table page
+> > > and validating them.
+> > > 
+> > > Test page table pages are allocated from system memory with required size
+> > > and alignments. The mapped pfns at page table levels are derived from a
+> > > real pfn representing a valid kernel text symbol. This test gets called
+> > > inside kernel_init() right after async_synchronize_full().
+> > > 
+> > > This test gets built and run when CONFIG_DEBUG_VM_PGTABLE is selected. Any
+> > > architecture, which is willing to subscribe this test will need to select
+> > > ARCH_HAS_DEBUG_VM_PGTABLE. For now this is limited to arc, arm64, x86, s390
+> > > and ppc32 platforms where the test is known to build and run successfully.
+> > > Going forward, other architectures too can subscribe the test after fixing
+> > > any build or runtime problems with their page table helpers. Meanwhile for
+> > > better platform coverage, the test can also be enabled with CONFIG_EXPERT
+> > > even without ARCH_HAS_DEBUG_VM_PGTABLE.
+> > > 
+> > > Folks interested in making sure that a given platform's page table helpers
+> > > conform to expected generic MM semantics should enable the above config
+> > > which will just trigger this test during boot. Any non conformity here will
+> > > be reported as an warning which would need to be fixed. This test will help
+> > > catch any changes to the agreed upon semantics expected from generic MM and
+> > > enable platforms to accommodate it thereafter.
+> > 
+> > How useful is this that straightly crash the powerpc?
+> > 
+> > [   23.263425][    T1] debug_vm_pgtable: debug_vm_pgtable: Validating
+> > architecture page table helpers
+> > [   23.263625][    T1] ------------[ cut here ]------------
+> > [   23.263649][    T1] kernel BUG at arch/powerpc/mm/pgtable.c:274!
 > 
-> [   23.263425][    T1] debug_vm_pgtable: debug_vm_pgtable: Validating
-> architecture page table helpers
-> [   23.263625][    T1] ------------[ cut here ]------------
-> [   23.263649][    T1] kernel BUG at arch/powerpc/mm/pgtable.c:274!
+> The problem on PPC64 is known and has to be investigated and fixed.
 
-The problem on PPC64 is known and has to be investigated and fixed.
-
-Christophe
+It might be interesting to hear what powerpc64 maintainers would say about it
+and if it is actually worth "fixing" in the arch code, but that BUG_ON() was
+there since 2009 and had not been exposed until this patch comes alone?
 
