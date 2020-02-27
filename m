@@ -2,82 +2,120 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F7F61715FD
-	for <lists+linux-riscv@lfdr.de>; Thu, 27 Feb 2020 12:30:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2692B1728E0
+	for <lists+linux-riscv@lfdr.de>; Thu, 27 Feb 2020 20:43:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cSI6qGFMowtMxdtcFr5RdCkA5PjkZpSoEJInX7gJyOA=; b=ZbrcwF4tAs0vqm
-	ydb4h4AvDc0iYdofmoQavbQigzA8OZZCJjTY96xEveRrumRUiq0YHar9/LjSvImF+zkq+RZ7epGj+
-	A2e6/Cxwla77L8m4149VV8u7jhNHpFFOaLOGAm0LWE8L6gz1GSettjbOX72XWw22DrtF6TL/nHHNj
-	iLxf0SiwIm1gQePAz8HcA1X+DPwSOrjxA8U0RCA7UJEx20MyeNHodsUo+V1C4rIyU1lv8tkpluHJb
-	bxIqO4xT/U6Bc1vRx6vJvUSW7/xmJFNcKFOPgWJiby740CyRaLgKZ18TtgVFBkFdFJ1g94CBlQxBY
-	9Je+vzdv3VVmCqEmWPNA==;
+	List-Owner; bh=PgJHcVldZYe0ihjMCHMM6SMuh47kdOLu6dpCbpHogu0=; b=CawoO1T6d/g1XC
+	n6n0YAGCrr8413czWKfbA7rg+uGLdeA8SRr+IER8uIHB2C8kv3hntdjUxBq5aJduLYEfFC7pQ1kZ6
+	juep9fPi6bVUh1wtZRMkNeq6oGCWK+9Rx7Z3kIToR4XY+95uojBJX/+eEE14pHhvo+8OzReTg7NHy
+	afw3rGnprc70yHsFnGW5Q1DqiZ5CBRXLybYcdiKlmMPh8kxHAx76EY0EhChfq6rISIdG+UPjxd8kW
+	knRBZXRUslsQOdHOnLK7cBKWdzbroUE5/dJJ6NZthtVgdoU3L0ACAPJr6RvHTgwaIqGyGXnq2XxlT
+	wmBSI1o7ilqdQJ4Yu8Dw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7HND-0005gJ-I2; Thu, 27 Feb 2020 11:30:35 +0000
-Received: from pegase1.c-s.fr ([93.17.236.30])
+	id 1j7P4R-00076x-ID; Thu, 27 Feb 2020 19:43:43 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7HMx-0005Wl-Is; Thu, 27 Feb 2020 11:30:22 +0000
-Received: from localhost (mailhub1-int [192.168.12.234])
- by localhost (Postfix) with ESMTP id 48Sr7B6tBLz9tyj6;
- Thu, 27 Feb 2020 12:29:58 +0100 (CET)
-Authentication-Results: localhost; dkim=pass
- reason="1024-bit key; insecure key"
- header.d=c-s.fr header.i=@c-s.fr header.b=sY3j0RR2; dkim-adsp=pass;
- dkim-atps=neutral
-X-Virus-Scanned: Debian amavisd-new at c-s.fr
-Received: from pegase1.c-s.fr ([192.168.12.234])
- by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
- with ESMTP id sfhDOp5RFM3X; Thu, 27 Feb 2020 12:29:58 +0100 (CET)
-Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
- by pegase1.c-s.fr (Postfix) with ESMTP id 48Sr7B4647z9tyj5;
- Thu, 27 Feb 2020 12:29:58 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=c-s.fr; s=mail;
- t=1582802998; bh=cSI6qGFMowtMxdtcFr5RdCkA5PjkZpSoEJInX7gJyOA=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=sY3j0RR2PBOXScM+F70jPRR5SxVcVDFz0l9cHThPMZEFG4kwr/KMeE6VWEPUahfIn
- stgDHcxIlh/cqkU0a9UVkTMnUuLut2yXP0L0Dm55YwuYS/UqGWC8iW7Anz1GPG/C7N
- /DkcT6MALkhHEAKH1kk8i8jKmlO7tqgL2dHPUsnY=
-Received: from localhost (localhost [127.0.0.1])
- by messagerie.si.c-s.fr (Postfix) with ESMTP id A42DC8B872;
- Thu, 27 Feb 2020 12:29:59 +0100 (CET)
-X-Virus-Scanned: amavisd-new at c-s.fr
-Received: from messagerie.si.c-s.fr ([127.0.0.1])
- by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
- with ESMTP id rIACHu_5xv6N; Thu, 27 Feb 2020 12:29:59 +0100 (CET)
-Received: from [192.168.4.90] (unknown [192.168.4.90])
- by messagerie.si.c-s.fr (Postfix) with ESMTP id 3C9888B799;
- Thu, 27 Feb 2020 12:29:57 +0100 (CET)
-Subject: Re: [PATCH] mm/debug: Add tests validating arch page table helpers
- for core features
-To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org
-References: <1582799637-11786-1-git-send-email-anshuman.khandual@arm.com>
-From: Christophe Leroy <christophe.leroy@c-s.fr>
-Message-ID: <2be41c29-500c-50af-f915-1493846ae9e5@c-s.fr>
-Date: Thu, 27 Feb 2020 12:29:57 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ id 1j7P4O-00076W-0A
+ for linux-riscv@lists.infradead.org; Thu, 27 Feb 2020 19:43:41 +0000
+Received: by mail-qk1-x741.google.com with SMTP id 145so626479qkl.2
+ for <linux-riscv@lists.infradead.org>; Thu, 27 Feb 2020 11:43:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PgJHcVldZYe0ihjMCHMM6SMuh47kdOLu6dpCbpHogu0=;
+ b=POwsT56/FTfrOW9R194KO+S/qAfloxLhcXLTg5jBMiZT6AWKbQPen9SXZMtAYAwzGo
+ VMSoyhnnGPrROMStCU0T4xNLywMQHIv/nbtNjYVVcXKAYpQvUM1lyJZK/MEoFl/JGPUg
+ U6lMpza4LTQfngSYwY2vVrP9WZOtNtR4Bz3GwyMOd4a6veC08MF1hHWEBSLKRjI0SYBH
+ 9sU1Ghlyy660ehTAzI8xX7zwG6BBGHm5NixszeDsdVvqurChT6RT2CV7fd02pEpnhPv8
+ aFP0WWh3Lu++gfcAqoxvO9WU+ly8cIyValjJjgXlOkYUhO5DV4L6faV2timByVluHgig
+ /2iA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=PgJHcVldZYe0ihjMCHMM6SMuh47kdOLu6dpCbpHogu0=;
+ b=DfpE/2jGjrYzkwtqyjCH8mp2BmextVmIsN6lirmUpqNrUr88VDkirVUZQqOImcuLS8
+ t85MvAhlYFqt9XSMHLSc5LZfUC2kOiDuWWhxgqOAkzHt1N4t7qg+8ru6TR9C3FFHIdIY
+ fMNSieD0ZMWLzzZsfoS64K0deuj3g6Jkti+NMArCgWd8yS3jHjFYnrvux1qX6ceY7Hai
+ ou+1PwX/Serf/zhJeUyoSQhyNnNVZlNSzIzDtlRPPIAr8wsDZSNjiTdwXSjhIa8eg0tV
+ Xf+fra+ogljeg9DaBGmrg9yJVQajK1l5Tmh8ITBt4e91FlLOZ+/R46Xb8xhn50k4DrZ1
+ sd0Q==
+X-Gm-Message-State: APjAAAUZQNMwMO6gaOKsdzSdaL8MWZvW0UJP/5yLKg2NHytpPIB6m46m
+ rqsIbBjzlDQjUj9umdrdbnQ=
+X-Google-Smtp-Source: APXvYqzDqWbm4QchjC//XIOXkTcV659JoG2mAJzoGQV82IFqU5oTUQ3zKeheuc78b7L+88Y38Uu87g==
+X-Received: by 2002:ae9:e202:: with SMTP id c2mr1096997qkc.224.1582832616263; 
+ Thu, 27 Feb 2020 11:43:36 -0800 (PST)
+Received: from [192.168.1.117] ([75.102.135.197])
+ by smtp.googlemail.com with ESMTPSA id a17sm2031517qtj.48.2020.02.27.11.43.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Feb 2020 11:43:35 -0800 (PST)
+Subject: Re: [PATCH 08/10] riscv: Add Kendryte K210 device tree
+To: Damien Le Moal <Damien.LeMoal@wdc.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>
+References: <20200212103432.660256-1-damien.lemoal@wdc.com>
+ <20200212103432.660256-9-damien.lemoal@wdc.com>
+ <48e10b3d-12f3-a65c-8017-99c780c63040@gmail.com>
+ <BYAPR04MB581671F46D3FE67FD3C8B2B7E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+From: Sean Anderson <seanga2@gmail.com>
+Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
+ mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
+ 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
+ lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
+ GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
+ F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
+ AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
+ AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
+ bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
+ +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
+ Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
+ N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
+ SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
+ w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
+ w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
+ OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
+ zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
+ z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
+ 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
+ ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
+ vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
+ EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
+ zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
+ iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
+ S5hN3/mP5UeooFHb
+Message-ID: <cb91a53d-412f-119b-e8a3-329162749572@gmail.com>
+Date: Thu, 27 Feb 2020 14:43:34 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <1582799637-11786-1-git-send-email-anshuman.khandual@arm.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <BYAPR04MB581671F46D3FE67FD3C8B2B7E7140@BYAPR04MB5816.namprd04.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200227_033019_922368_63929D02 
-X-CRM114-Status: GOOD (  23.88  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200227_114340_044880_B6E957F9 
+X-CRM114-Status: GOOD (  11.21  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [93.17.236.30 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [seanga2[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [seanga2[at]gmail.com]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -96,554 +134,27 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Paul Mackerras <paulus@samba.org>,
- "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, x86@kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- linux-snps-arc@lists.infradead.org, Vasily Gorbik <gor@linux.ibm.com>,
- Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Vineet Gupta <vgupta@synopsys.com>, linux-kernel@vger.kernel.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org
+Cc: Anup Patel <Anup.Patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
-
-Le 27/02/2020 à 11:33, Anshuman Khandual a écrit :
-> This adds new tests validating arch page table helpers for these following
-> core memory features. These tests create and test specific mapping types at
-> various page table levels.
+On 2/14/20 9:34 PM, Damien Le Moal wrote:
+> On 2020/02/15 5:51, Sean Anderson wrote:
+>> On 2/12/20 5:34 AM, Damien Le Moal wrote:
+>>> +	soc {
+>>> +		#address-cells = <1>;
+>>> +		#size-cells = <1>;
+>>> +		compatible = "kendryte,k210-soc", "simple-bus";
+>>
+>> Should the -soc suffix be here? I saw it was absent from the fu540
+>> device tree.
 > 
-> * SPECIAL mapping
-> * PROTNONE mapping
-> * DEVMAP mapping
-> * SOFTDIRTY mapping
-> * SWAP mapping
-> * MIGRATION mapping
-> * HUGETLB mapping
-> * THP mapping
-> 
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Mike Rapoport <rppt@linux.ibm.com>
-> Cc: Vineet Gupta <vgupta@synopsys.com>
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Will Deacon <will@kernel.org>
-> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-> Cc: Paul Mackerras <paulus@samba.org>
-> Cc: Michael Ellerman <mpe@ellerman.id.au>
-> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
-> Cc: Vasily Gorbik <gor@linux.ibm.com>
-> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-> Cc: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Ingo Molnar <mingo@redhat.com>
-> Cc: Borislav Petkov <bp@alien8.de>
-> Cc: "H. Peter Anvin" <hpa@zytor.com>
-> Cc: Kirill A. Shutemov <kirill@shutemov.name>
-> Cc: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: linux-snps-arc@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linuxppc-dev@lists.ozlabs.org
-> Cc: linux-s390@vger.kernel.org
-> Cc: linux-riscv@lists.infradead.org
-> Cc: x86@kernel.org
-> Cc: linux-arch@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
-> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
-> ---
-> Tested on arm64 and x86 platforms without any test failures. But this has
-> only been built tested on several other platforms. Individual tests need
-> to be verified on all current enabling platforms for the test i.e s390,
-> ppc32, arc etc.
-> 
-> This patch must be applied on v5.6-rc3 after these patches
-> 
-> 1. https://patchwork.kernel.org/patch/11385057/
-> 2. https://patchwork.kernel.org/patch/11407715/
-> 
-> OR
-> 
-> This patch must be applied on linux-next (next-20200227) after this patch
-> 
-> 2. https://patchwork.kernel.org/patch/11407715/
-> 
->   mm/debug_vm_pgtable.c | 310 +++++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 309 insertions(+), 1 deletion(-)
-> 
-> diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
-> index 96dd7d574cef..3fb90d5b604e 100644
-> --- a/mm/debug_vm_pgtable.c
-> +++ b/mm/debug_vm_pgtable.c
-> @@ -41,6 +41,44 @@
->    * wrprotect(entry)		= A write protected and not a write entry
->    * pxx_bad(entry)		= A mapped and non-table entry
->    * pxx_same(entry1, entry2)	= Both entries hold the exact same value
-> + *
-> + * Specific feature operations
-> + *
-> + * pte_mkspecial(entry)		= Creates a special entry at PTE level
-> + * pte_special(entry)		= Tests a special entry at PTE level
-> + *
-> + * pte_protnone(entry)		= Tests a no access entry at PTE level
-> + * pmd_protnone(entry)		= Tests a no access entry at PMD level
-> + *
-> + * pte_mkdevmap(entry)		= Creates a device entry at PTE level
-> + * pmd_mkdevmap(entry)		= Creates a device entry at PMD level
-> + * pud_mkdevmap(entry)		= Creates a device entry at PUD level
-> + * pte_devmap(entry)		= Tests a device entry at PTE level
-> + * pmd_devmap(entry)		= Tests a device entry at PMD level
-> + * pud_devmap(entry)		= Tests a device entry at PUD level
-> + *
-> + * pte_mksoft_dirty(entry)	= Creates a soft dirty entry at PTE level
-> + * pmd_mksoft_dirty(entry)	= Creates a soft dirty entry at PMD level
-> + * pte_swp_mksoft_dirty(entry)	= Creates a soft dirty swap entry at PTE level
-> + * pmd_swp_mksoft_dirty(entry)	= Creates a soft dirty swap entry at PMD level
-> + * pte_soft_dirty(entry)	= Tests a soft dirty entry at PTE level
-> + * pmd_soft_dirty(entry)	= Tests a soft dirty entry at PMD level
-> + * pte_swp_soft_dirty(entry)	= Tests a soft dirty swap entry at PTE level
-> + * pmd_swp_soft_dirty(entry)	= Tests a soft dirty swap entry at PMD level
-> + * pte_clear_soft_dirty(entry)	   = Clears a soft dirty entry at PTE level
-> + * pmd_clear_soft_dirty(entry)	   = Clears a soft dirty entry at PMD level
-> + * pte_swp_clear_soft_dirty(entry) = Clears a soft dirty swap entry at PTE level
-> + * pmd_swp_clear_soft_dirty(entry) = Clears a soft dirty swap entry at PMD level
-> + *
-> + * pte_mkhuge(entry)		= Creates a HugeTLB entry at given level
-> + * pte_huge(entry)		= Tests a HugeTLB entry at given level
-> + *
-> + * pmd_trans_huge(entry)	= Tests a trans huge page at PMD level
-> + * pud_trans_huge(entry)	= Tests a trans huge page at PUD level
-> + * pmd_present(entry)		= Tests an entry points to memory at PMD level
-> + * pud_present(entry)		= Tests an entry points to memory at PUD level
-> + * pmd_mknotpresent(entry)	= Invalidates an PMD entry for MMU
-> + * pud_mknotpresent(entry)	= Invalidates an PUD entry for MMU
->    */
->   #define VMFLAGS	(VM_READ|VM_WRITE|VM_EXEC)
->   
-> @@ -287,6 +325,233 @@ static void __init pmd_populate_tests(struct mm_struct *mm, pmd_t *pmdp,
->   	WARN_ON(pmd_bad(pmd));
->   }
->   
-> +#ifdef CONFIG_ARCH_HAS_PTE_SPECIAL
+> Yes, I guess it can be removed.
 
-Can we avoid ifdefs unless necessary ?
+Actually, I think it is removed from the fu540 bits beccause sifive has
+different names for the cores (rocket, U54, etc.) and the SoC (FU540).
+Since for this chip there is no separate name, we should probably keep
+the SoC suffix.
 
-In mm/memory.c I see things like the following, it means pte_special() 
-always exist and a #ifdef is not necessary.
-
-	if (IS_ENABLED(CONFIG_ARCH_HAS_PTE_SPECIAL)) {
-		if (likely(!pte_special(pte)))
-			goto check_pfn;
-		if (vma->vm_ops && vma->vm_ops->find_special_page)
-			return vma->vm_ops->find_special_page(vma, addr);
-		if (vma->vm_flags & (VM_PFNMAP | VM_MIXEDMAP))
-			return NULL;
-		if (is_zero_pfn(pfn))
-			return NULL;
-		if (pte_devmap(pte))
-			return NULL;
-
-		print_bad_pte(vma, addr, pte, NULL);
-		return NULL;
-	}
-
-> +static void __init pte_special_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pte_t pte = pfn_pte(pfn, prot);
-> +
-> +	WARN_ON(!pte_special(pte_mkspecial(pte)));
-> +}
-> +#else
-> +static void __init pte_special_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +
-> +#ifdef CONFIG_NUMA_BALANCING
-
-Same here, this ifdef shouldn't be necessary because in 
-/include/asm-generic/pgtable.h we have the following, so a if 
-(IS_ENABLED()) should be enough.
-
-#ifndef CONFIG_NUMA_BALANCING
-/*
-  * Technically a PTE can be PROTNONE even when not doing NUMA balancing but
-  * the only case the kernel cares is for NUMA balancing and is only 
-ever set
-  * when the VMA is accessible. For PROT_NONE VMAs, the PTEs are not marked
-  * _PAGE_PROTNONE so by by default, implement the helper as "always no". It
-  * is the responsibility of the caller to distinguish between PROT_NONE
-  * protections and NUMA hinting fault protections.
-  */
-static inline int pte_protnone(pte_t pte)
-{
-	return 0;
-}
-
-static inline int pmd_protnone(pmd_t pmd)
-{
-	return 0;
-}
-#endif /* CONFIG_NUMA_BALANCING */
-
-> +static void __init pte_protnone_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pte_t pte = pfn_pte(pfn, prot);
-> +
-> +	WARN_ON(!pte_protnone(pte));
-> +	WARN_ON(!pte_present(pte));
-> +}
-> +
-> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pmd_t pmd = pfn_pmd(pfn, prot);
-> +
-> +	WARN_ON(!pmd_protnone(pmd));
-> +	WARN_ON(!pmd_present(pmd));
-> +}
-> +#else
-> +static void __init pte_protnone_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +
-> +#ifdef CONFIG_ARCH_HAS_PTE_DEVMAP
-
-Same here, in include/linux/mm.h we have:
-
-#ifndef CONFIG_ARCH_HAS_PTE_DEVMAP
-static inline int pte_devmap(pte_t pte)
-{
-	return 0;
-}
-#endif
-
-
-> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pte_t pte = pfn_pte(pfn, prot);
-> +
-> +	WARN_ON(!pte_devmap(pte_mkdevmap(pte)));
-> +}
-> +
-> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
-
-Same. In inlude/asm-generic/pgtables.h you have:
-
-#if !defined(CONFIG_ARCH_HAS_PTE_DEVMAP) || 
-!defined(CONFIG_TRANSPARENT_HUGEPAGE)
-static inline int pmd_devmap(pmd_t pmd)
-{
-	return 0;
-}
-static inline int pud_devmap(pud_t pud)
-{
-	return 0;
-}
-static inline int pgd_devmap(pgd_t pgd)
-{
-	return 0;
-}
-#endif
-
-> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pmd_t pmd = pfn_pmd(pfn, prot);
-> +
-> +	WARN_ON(!pmd_devmap(pmd_mkdevmap(pmd)));
-> +}
-> +
-> +#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
-
-Same, see above
-
-> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pud_t pud = pfn_pud(pfn, prot);
-> +
-> +	WARN_ON(!pud_devmap(pud_mkdevmap(pud)));
-> +}
-> +#else
-> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +#else
-> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +#else
-> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +
-> +#ifdef CONFIG_MEM_SOFT_DIRTY
-
-Same, they always exist, see include/asm-generic/pgtable.h
-
-> +static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pte_t pte = pfn_pte(pfn, prot);
-> +
-> +	WARN_ON(!pte_soft_dirty(pte_mksoft_dirty(pte)));
-> +	WARN_ON(pte_soft_dirty(pte_clear_soft_dirty(pte)));
-> +}
-> +
-> +static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pte_t pte = pfn_pte(pfn, prot);
-> +
-> +	WARN_ON(!pte_swp_soft_dirty(pte_swp_mksoft_dirty(pte)));
-> +	WARN_ON(pte_swp_soft_dirty(pte_swp_clear_soft_dirty(pte)));
-> +}
-> +
-> +#ifdef CONFIG_ARCH_ENABLE_THP_MIGRATION
-
-Same
-
-> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pmd_t pmd = pfn_pmd(pfn, prot);
-> +
-> +	WARN_ON(!pmd_soft_dirty(pmd_mksoft_dirty(pmd)));
-> +	WARN_ON(pmd_soft_dirty(pmd_clear_soft_dirty(pmd)));
-> +}
-> +
-> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pmd_t pmd = pfn_pmd(pfn, prot);
-> +
-> +	WARN_ON(!pmd_swp_soft_dirty(pmd_swp_mksoft_dirty(pmd)));
-> +	WARN_ON(pmd_swp_soft_dirty(pmd_swp_clear_soft_dirty(pmd)));
-> +}
-> +#else
-> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +}
-> +#endif
-> +#else
-> +static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +}
-> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +}
-> +#endif
-> +
-> +static void __init pte_swap_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	swp_entry_t swp;
-> +	pte_t pte;
-> +
-> +	pte = pfn_pte(pfn, prot);
-> +	swp = __pte_to_swp_entry(pte);
-> +	WARN_ON(!pte_same(pte, __swp_entry_to_pte(swp)));
-> +}
-> +
-> +#ifdef CONFIG_ARCH_ENABLE_THP_MIGRATION
-> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	swp_entry_t swp;
-> +	pmd_t pmd;
-> +
-> +	pmd = pfn_pmd(pfn, prot);
-> +	swp = __pmd_to_swp_entry(pmd);
-> +	WARN_ON(!pmd_same(pmd, __swp_entry_to_pmd(swp)));
-> +}
-> +#else
-> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +
-> +#ifdef CONFIG_MIGRATION
-
-Same. See include/linux/swapops.h
-
-> +static void __init swap_migration_tests(struct page *page)
-> +{
-> +	swp_entry_t swp;
-> +
-> +	/*
-> +	 * make_migration_entry() expects given page to be
-> +	 * locked, otherwise it stumbles upon a BUG_ON().
-> +	 */
-> +	__SetPageLocked(page);
-> +	swp = make_migration_entry(page, 1);
-> +	WARN_ON(!is_migration_entry(swp));
-> +	WARN_ON(!is_write_migration_entry(swp));
-> +
-> +	make_migration_entry_read(&swp);
-> +	WARN_ON(!is_migration_entry(swp));
-> +	WARN_ON(is_write_migration_entry(swp));
-> +
-> +	swp = make_migration_entry(page, 0);
-> +	WARN_ON(!is_migration_entry(swp));
-> +	WARN_ON(is_write_migration_entry(swp));
-> +	__ClearPageLocked(page);
-> +}
-> +#else
-> +static void __init swap_migration_tests(struct page *page) { }
-> +#endif
-> +
-> +#ifdef CONFIG_HUGETLB_PAGE
-> +static void __init hugetlb_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +#ifdef CONFIG_ARCH_WANT_GENERAL_HUGETLB
-> +	pte_t pte = pfn_pte(pfn, prot);
-> +
-> +	WARN_ON(!pte_huge(pte_mkhuge(pte)));
-
-We also need tests on hugepd stuff
-
-> +#endif
-> +}
-> +#else
-> +static void __init hugetlb_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +
-> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
-
-Same, see include/asm-generic/pgtable.h
-
-> +static void __init pmd_thp_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pmd_t pmd;
-> +
-> +	/*
-> +	 * pmd_trans_huge() and pmd_present() must return negative
-> +	 * after MMU invalidation with pmd_mknotpresent().
-> +	 */
-> +	pmd = pfn_pmd(pfn, prot);
-> +	WARN_ON(!pmd_trans_huge(pmd_mkhuge(pmd)));
-> +
-> +	/*
-> +	 * Though platform specific test exclusions are not ideal,
-> +	 * in this case S390 does not define pmd_mknotpresent()
-> +	 * which should be tested on other platforms enabling THP.
-> +	 */
-> +#ifndef CONFIG_S390
-> +	WARN_ON(pmd_trans_huge(pmd_mknotpresent(pmd)));
-> +	WARN_ON(pmd_present(pmd_mknotpresent(pmd)));
-> +#endif
-
-Can we add a stub on S390 instead ?
-
-> +}
-> +
-> +#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
-
-Same ?
-
-> +static void __init pud_thp_tests(unsigned long pfn, pgprot_t prot)
-> +{
-> +	pud_t pud;
-> +
-> +	/*
-> +	 * pud_trans_huge() and pud_present() must return negative
-> +	 * after MMU invalidation with pud_mknotpresent().
-> +	 */
-> +	pud = pfn_pud(pfn, prot);
-> +	WARN_ON(!pud_trans_huge(pud_mkhuge(pud)));
-> +	WARN_ON(pud_trans_huge(pud_mknotpresent(pud)));
-> +	WARN_ON(pud_present(pud_mknotpresent(pud)));
-> +}
-> +#else
-> +static void __init pud_thp_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +#else
-> +static void __init pmd_thp_tests(unsigned long pfn, pgprot_t prot) { }
-> +static void __init pud_thp_tests(unsigned long pfn, pgprot_t prot) { }
-> +#endif
-> +
->   static unsigned long __init get_random_vaddr(void)
->   {
->   	unsigned long random_vaddr, random_pages, total_user_pages;
-> @@ -302,13 +567,14 @@ static unsigned long __init get_random_vaddr(void)
->   void __init debug_vm_pgtable(void)
->   {
->   	struct mm_struct *mm;
-> +	struct page *page;
->   	pgd_t *pgdp;
->   	p4d_t *p4dp, *saved_p4dp;
->   	pud_t *pudp, *saved_pudp;
->   	pmd_t *pmdp, *saved_pmdp, pmd;
->   	pte_t *ptep;
->   	pgtable_t saved_ptep;
-> -	pgprot_t prot;
-> +	pgprot_t prot, protnone;
->   	phys_addr_t paddr;
->   	unsigned long vaddr, pte_aligned, pmd_aligned;
->   	unsigned long pud_aligned, p4d_aligned, pgd_aligned;
-> @@ -322,6 +588,25 @@ void __init debug_vm_pgtable(void)
->   		return;
->   	}
->   
-> +	/*
-> +	 * swap_migration_tests() requires a dedicated page as it needs to
-> +	 * be locked before creating a migration entry from it. Locking the
-> +	 * page that actually maps kernel text ('start_kernel') can be real
-> +	 * problematic. Lets allocate a dedicated page explicitly for this
-> +	 * purpose that will be freed later.
-> +	 */
-> +	page = alloc_page(GFP_KERNEL);
-
-Can we do the page allocation and freeing in swap_migration_tests() 
-instead ?
-
-
-> +	if (!page) {
-> +		pr_err("page allocation failed\n");
-> +		return;
-> +	}
-> +
-> +	/*
-> +	 * __P000 (or even __S000) will help create page table entries with
-> +	 * PROT_NONE permission as required for pxx_protnone_tests().
-> +	 */
-> +	protnone = __P000;
-> +
->   	/*
->   	 * PFN for mapping at PTE level is determined from a standard kernel
->   	 * text symbol. But pfns for higher page table levels are derived by
-> @@ -377,11 +662,34 @@ void __init debug_vm_pgtable(void)
->   	p4d_populate_tests(mm, p4dp, saved_pudp);
->   	pgd_populate_tests(mm, pgdp, saved_p4dp);
->   
-> +	pte_special_tests(pte_aligned, prot);
-> +	pte_protnone_tests(pte_aligned, protnone);
-> +	pmd_protnone_tests(pmd_aligned, protnone);
-> +
-> +	pte_devmap_tests(pte_aligned, prot);
-> +	pmd_devmap_tests(pmd_aligned, prot);
-> +	pud_devmap_tests(pud_aligned, prot);
-> +
-> +	pte_soft_dirty_tests(pte_aligned, prot);
-> +	pmd_soft_dirty_tests(pmd_aligned, prot);
-> +	pte_swap_soft_dirty_tests(pte_aligned, prot);
-> +	pmd_swap_soft_dirty_tests(pmd_aligned, prot);
-> +
-> +	pte_swap_tests(pte_aligned, prot);
-> +	pmd_swap_tests(pmd_aligned, prot);
-> +
-> +	swap_migration_tests(page);
-> +	hugetlb_tests(pte_aligned, prot);
-> +
-> +	pmd_thp_tests(pmd_aligned, prot);
-> +	pud_thp_tests(pud_aligned, prot);
-> +
->   	p4d_free(mm, saved_p4dp);
->   	pud_free(mm, saved_pudp);
->   	pmd_free(mm, saved_pmdp);
->   	pte_free(mm, saved_ptep);
->   
-> +	__free_page(page);
->   	mm_dec_nr_puds(mm);
->   	mm_dec_nr_pmds(mm);
->   	mm_dec_nr_ptes(mm);
-> 
-
-Christophe
+--Sean
 
