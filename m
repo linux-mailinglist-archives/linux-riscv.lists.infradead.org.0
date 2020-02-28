@@ -2,82 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0468C1741E9
-	for <lists+linux-riscv@lfdr.de>; Fri, 28 Feb 2020 23:20:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45BD8174328
+	for <lists+linux-riscv@lfdr.de>; Sat, 29 Feb 2020 00:31:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oupcBBMzkVkZ/IoOMguzUGYed0hV634MFJNr2ddg34I=; b=Oyl4ISprq0/qQ1
-	SRMxO2cdJ8sh5K2d/Cqf4WPawmgHIR2xNMdEPIurnZbwpU4eFzta17eBlRiO1vFsETEnaUaCouz0A
-	aV45pGtNCQ+BiXc5+4jG8u9TdIqn5hOaUOe6B1dzcLX0S656SgOVSK/IQpZTtGvJRU7WsJa2pFhtL
-	6iBKUmkSed+vAhJPIYv2AmN3tD+S3fsScXOsD6NZY3ATEOwJFlNc1BLOeXPhYpGoerDfPGInr2dX4
-	NqiiTiQBATZ8SQ9xI+82+C8AyPv+nVywtxRJv7M7oNgBJOFtzNkE7sgFqAVGvgJsNEZ4JqdGQ5las
-	gI7mpfu7xDt5IWioQqUg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0qEnQNDgP8LJynRt0m/ZmXhR+8sikFtnuLmVPIQx31w=; b=te0wHLPpwATjfBaVTnb6osOzo
+	zxiP53sTeZixn/C7Vkqyg91LFi+IedF2zRgWRlP7ZVmAmHW1Z0HMG8m8t3Mw4oi3sZuwMDoyj5xuy
+	of0cXYO5zCxOT5zeyPj6Q2z2AFH6HQlFefhcW99L32q/HeNMxFGrcn7c3Pl31bOLPjnBoGfbg2f/T
+	qKqZZEryJHxRGRTUJIev2aaFuXtRfOMg1rm2sWMzhcfDWh/A34PONyyh0Ur6Ae/sZPGB/AWqiEwcL
+	HIR6tqIxudLBN08z4vgb380U7ZlyFKOswWtXPyecIJXayf/BtnEMe9kp3s3GCIpD57urVK/qTVGgB
+	B0FCvqo8w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7nzk-00059t-7u; Fri, 28 Feb 2020 22:20:32 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1j7p6Q-0001td-HL; Fri, 28 Feb 2020 23:31:30 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7nzg-000595-KF
- for linux-riscv@lists.infradead.org; Fri, 28 Feb 2020 22:20:29 +0000
-Received: by mail-io1-xd43.google.com with SMTP id z190so5234646iof.1
- for <linux-riscv@lists.infradead.org>; Fri, 28 Feb 2020 14:20:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cs.washington.edu; s=goo201206;
+ id 1j7p6M-0001sh-VU
+ for linux-riscv@lists.infradead.org; Fri, 28 Feb 2020 23:31:28 +0000
+Received: by mail-pg1-x544.google.com with SMTP id y30so2262274pga.13
+ for <linux-riscv@lists.infradead.org>; Fri, 28 Feb 2020 15:31:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=oupcBBMzkVkZ/IoOMguzUGYed0hV634MFJNr2ddg34I=;
- b=ZepahZwIUeF3xf2pSgqJtC+C8FNfJcpunG9ymLMAOgpy/DumhVN1QFSRYjquUNkYPG
- VWiL/PQPCcKK/I5We1TfbQpN9B4IX1fTqUWAljn7CWQefOiGcSUpRct4y/FkjGsHtGoW
- B2OkpiVEi4Z69fyjPREGb2YNKfDXZePcAtPy0=
+ :cc; bh=0qEnQNDgP8LJynRt0m/ZmXhR+8sikFtnuLmVPIQx31w=;
+ b=ka2sNPSZKEsOZQVDkpUr0tRQzHXiIU3qQVAxFe/mbu9RINpadUTVv3jAPCnWBQzs6b
+ nRVS6wmmSOzG+WaWzNP1zeuT9pLIRhNdLwWAcOP89sWRCv/5lCkttkfSFqBT6kLdqtKz
+ DTvf354hrkEQQ10KxYlvZmMBo+GchNkjg7eV0+br4cR2YqG8ciC9XbK9tRyvZxsR9uuv
+ 3l9ZsISYop85HRWgNv3UlpTGgMCC6FSOYURJXOgoiGwRRFaSCLQB3aC5G0BHRpvvImWb
+ yPj+CWowB5dvshSQq1hIANbQyqyLK1AWac/Xy64EASS11DSEJuLaOwk49QeSblFpkWBz
+ 0I9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=oupcBBMzkVkZ/IoOMguzUGYed0hV634MFJNr2ddg34I=;
- b=OfEVGxegqS1UbNCGREcUww2yTobbMlvnPSWUmZXsislYY+8WmQNYN21mtAr6EVwYOS
- x64z1vT9zA8qu+r67XzjOqgbjeqmqbgyWJiVtI22WP4aPeHhLg1moiczK7yvmKC4U3+Y
- X3WTT7jbkywDzXwBL7sRDk/6ML7dj3aaN1AfbIBH+qVM+7TNq5gXrOLGOyS3HdPmwnfE
- s7VHZ6bLELrZ46dsG3Rov5g2WsNIZ1rKwxMdp95iQk43nMDI0/z++wrG89mZ8KiWyJyg
- HsnPV8Q2KLJgOT3cDHNwfVdpsrWkKGc+QuBIOWitWUD7H+EBpIFkj/H3yyvRtIXs6ELA
- 4n2Q==
-X-Gm-Message-State: APjAAAV9hsR6wc+NETQlQFckKZ1fo0Ikj//mFxG3EKwQi7afKBtfMeub
- 94rGrxqUo/nTJHSxylPcsKp0zcShrM1dBqzeP6+WvlxPBvOIWw==
-X-Google-Smtp-Source: APXvYqzUA63UJ/ZftjR3xpzQk6KLVrxHNtqrOc2EL/UgVChIcEyqw1voIGCsw/vz/kUAbG6Uz78EKhPVsnvIyCSy6ko=
-X-Received: by 2002:a6b:fb02:: with SMTP id h2mr5156666iog.126.1582928422602; 
- Fri, 28 Feb 2020 14:20:22 -0800 (PST)
+ :message-id:subject:to:cc;
+ bh=0qEnQNDgP8LJynRt0m/ZmXhR+8sikFtnuLmVPIQx31w=;
+ b=kJvcL9wGzI26F6i2r8Qy6G3Vm5UysYnX2YeAcasrzshlk+WUItZDpOcZ+qphsEdBcE
+ 9ZWH4e+8wU6bf5t/u9zWmILJv0Vv0JMboyudD65P9PbbLiliSoh2cWmsBuiW+7GRuM0R
+ dbnJLfxKezMhZkBYBXyS0LDN2TTXGtcikWvIesJ+bS+6HcdsyGJWZ+v/RrsyKWjnT1Kl
+ x55l2b9gN/dvCvF0GIlOb9CvsW4745NpO9bCQilGKpXl82vGZNto5ijnSE8cPbg96tQG
+ uIJIpijAW2VS42tzyfO5SEkYwgJRFw4YQ0gXkKZxEgwWF/NFxl7vd70sUVDmTBpBJt9T
+ dlGQ==
+X-Gm-Message-State: APjAAAWvSLTMq5bqOSCD0ag9zlRBmOTv/9v1s2VFjDMIISK63ovUh9X/
+ SrxBCsAXVOlBAQE7FdjgktKNjtb/hxcQB4t5yuZH5z6o
+X-Google-Smtp-Source: APXvYqwLoxZG4PjQqTMI5TG92NFMtF0pbxDsIXEI70KM2S+luu+lmbsL4X/vOvr8P/+UepVwgSa54tkbXjngn8mCk3Q=
+X-Received: by 2002:a63:4e22:: with SMTP id c34mr7112819pgb.263.1582932684269; 
+ Fri, 28 Feb 2020 15:31:24 -0800 (PST)
 MIME-Version: 1.0
-References: <20200220041608.30289-1-lukenels@cs.washington.edu>
- <CAJ+HfNiOoLWpQAPhKL6cUVTZ0vTwuSabZzypzAmbRThD3ChGzA@mail.gmail.com>
-In-Reply-To: <CAJ+HfNiOoLWpQAPhKL6cUVTZ0vTwuSabZzypzAmbRThD3ChGzA@mail.gmail.com>
-From: Luke Nelson <lukenels@cs.washington.edu>
-Date: Fri, 28 Feb 2020 14:20:11 -0800
-Message-ID: <CADasFoAB8PNRTQifs6-dapGWY=0J2usYNCYqg5g--jYG37rybQ@mail.gmail.com>
-Subject: Re: [PATCH v3 bpf-next] RV32G eBPF JIT
-To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+References: <20200227213450.87194-1-palmer@dabbelt.com>
+In-Reply-To: <20200227213450.87194-1-palmer@dabbelt.com>
+From: Nick Desaulniers <ndesaulniers@google.com>
+Date: Fri, 28 Feb 2020 15:31:13 -0800
+Message-ID: <CAKwvOdkgpvxCfBQNDaaZ7BpGsQqwkoukp=nAUhnoLC_nZTR5gg@mail.gmail.com>
+Subject: Re: RISC-V: Fix the build on LLVM-based toolchains
+To: Palmer Dabbelt <palmer@dabbelt.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200228_142028_666067_696B9E3D 
-X-CRM114-Status: GOOD (  16.77  )
-X-Spam-Score: -0.1 (/)
+X-CRM114-CacheID: sfid-20200228_153127_033144_33BF9909 
+X-CRM114-Status: GOOD (  15.89  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.1 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,68 +96,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Daniel Borkmann <daniel@iogearbox.net>, Jiong Wang <jiong.wang@netronome.com>,
- Netdev <netdev@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>,
- linux-riscv@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Yonghong Song <yhs@fb.com>, bpf <bpf@vger.kernel.org>,
- Andrii Nakryiko <andriin@fb.com>, Martin KaFai Lau <kafai@fb.com>,
- Xi Wang <xi.wang@gmail.com>
+Cc: clang-built-linux <clang-built-linux@googlegroups.com>,
+ linux-riscv@lists.infradead.org, kernel-team <kernel-team@android.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Feb 28, 2020 at 6:25 AM Bj=C3=B6rn T=C3=B6pel <bjorn.topel@gmail.co=
-m> wrote:
+On Thu, Feb 27, 2020 at 1:35 PM Palmer Dabbelt <palmer@dabbelt.com> wrote:
 >
-> Luke/Xi, apologies for the slow reponse. (All my RV work is done on
-> non-payed time, so that's that. :-)) Very nice that you're still
-> working on it!
-
-No worries, thanks for reviewing!
-
-> >
-> > - ALU64 DIV/MOD: Requires loops to implement on 32-bit hardware.
+> The RISC-V LLVM port has progressed to the point where it should be able to use
+> it to compile Linux.  Unfortunately we ended up with a few GNU-isms in our port
+> so that doesn't work out of the box, but I don't think the code without them is
+> any uglier than the code with them so I'm happy to support both toolchains.
+> There are still some issues using the GNU assembler to compile clang's assembly
+> (at least got_pcrel_hi, but there may be others).  I'm going to call those
+> binutils bugs, though, and chase them around over there.
 >
-> Even though it requires loops, JIT support would be nice. OTOH, arm
-> doesn't support that either...
-
-We could probably implement this by calling into a helper function
-for BPF_ALU64 | BPF_DIV/BPF_MOD, but none of the other JITs (e.g.,
-arm,x86) for 32-bit architectures do this. We could add support to
-rv32 and other architectures in a future patch.
-
-> > - BPF_XADD | BPF_DW: Requires either an 8-byte atomic instruction
-> >   in the target (which doesn't exist in RV32), or acqusition of
-> >   locks in generated code.
-> >
+> While the first one could be considered a bug fix, I think the bug is unlikely
+> enough to manifst that I'm going to wait for the merge window for these.  I'm
+> going to preemptively drop them on for-next now, but as I haven't really
+> started building that branch they'll be rebased (my current plan is to start
+> taking 5.7 patches on top of rc4, as it seems like things are shaping up to be
+> fairly solid on our end).  If there are any comments I'll handle them as part
+> of the rebase, but I'd like the various autobuilders to start chewing on these.
 >
-> Any ideas how this could be addressed for RV32G?
+> Unfortunately the kernel compiled with LLVM doesn't boot for me.
 
-I don't believe there is a simple way to correctly implement BPF_XADD
-| BPF_DW without hardware support for 64-bit atomic operations,
-like for other 32-bit JITs.
+Thanks for the series! In general, our approach for bringing various
+architectures online has been:
+1. get it building
+2. get it booting
+3. get it running well
 
-> In general I agree with Song; It would be good if the 64/32 bit
-> variants would share more code. RISC-V 64/32 *are* very similar, and
-> we should be able to benefit from that codewise.
->
-> Pull out all functions are that common -- most of the emit_*, the
-> parts of the registers, the branch relaxation, and context
-> structs. Hopefully, the acutal RV32/64 specfic parts will be pretty
-> small.
+For most architectures, 1 included 2 (per chance).  Mips was a notable
+case of 1 not including 2 due to undefined behavior we found and
+removed.  There's always a chance of compiler bugs, too. With the
+above series, we should now be able to start digging into 2.
 
-Thanks for the suggestion. I'll factor out the common functionality
-into a header for the next revision.
-
-> Finally; There are some checkpatch issues: run 'checkpatch.pl --strict'.
-> [...]
-
-I'll fix the rest of the issues you found in the next revision.
-
-> Thanks for the hard work! I'll take it for a spin, with help from the
-> guide above, this weekend!
-
-Thanks again!
-- Luke
+-- 
+Thanks,
+~Nick Desaulniers
 
