@@ -2,80 +2,133 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 214A11739C8
-	for <lists+linux-riscv@lfdr.de>; Fri, 28 Feb 2020 15:25:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A461173F76
+	for <lists+linux-riscv@lfdr.de>; Fri, 28 Feb 2020 19:23:39 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xm0bX30wRiWs3NOT1/N8ewNa+TY2rHUs/RpsQvOvuGk=; b=AiOy+VDC5ZXgRn
-	O3As/xyhhGLB7KeWO7m31w0e7XNcXUhUwhxxP2dx/tuquTABQEQBkDknDzqnueMhitIHszyYX56LO
-	iVa0bK5zIv1JaarRw36d9DcVQtf+7lSGuVsSVpjm/JmWLwAbTlxUJIn+EQsiWEfIjuqfe3o59+OQL
-	wCWoCwDYjRVZUQFNJo3YnO9adQPYMozl5WU+jXAuSl8Z9TCl7pbgddica9rdxDJ2q5iaL1dVe7EBM
-	AdpEpZJUPcffQYfTmTZn4wN3GQ6mEaTPVfQEm2w7C3v6Sco+ozQNjNjcohJr8idoR2pWLl8Z9LiTr
-	mMQmiQnmr+7fzHtcR5ug==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=j0h3Ym/yI5RfZEB6Y+W9V8VGyNvlCJFWzzmkq15nu4w=; b=g77WBzkUI5IWawGI09YIhjE4B
+	YV4kXL9sAihtkyS8+aueoN65526mOROjRLva80PJ5BqKyrusxNsbQUafJSa3XRY73+hoFDZGM072G
+	AtVj/+q3fvDmIJOu2J2nSjJLpAVtUju7Li2zkHZNfiPm7ycVCvZioIwBDnMv7221E7M2yA8tDyD1V
+	juEN2VYd09JKxZUUlbR3lFqFY1Ag54rCjSY0jv4SAm+cKOWUAH7cE+P767FXCuwAH37DdW4EiFedR
+	raioah5aRoNwyJOCz0BK6COLsoOJ6FM3MitcqqsvzOCjimyauo7kNVjhJmEDU7jU0VF0/eE4g+s8t
+	fxkMm/pHw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7gZg-0002zb-Aw; Fri, 28 Feb 2020 14:25:08 +0000
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
+	id 1j7kIP-0003Js-HI; Fri, 28 Feb 2020 18:23:33 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7gZa-0002L1-EI
- for linux-riscv@lists.infradead.org; Fri, 28 Feb 2020 14:25:04 +0000
-Received: by mail-qk1-x744.google.com with SMTP id m9so3081637qke.4
- for <linux-riscv@lists.infradead.org>; Fri, 28 Feb 2020 06:25:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=xm0bX30wRiWs3NOT1/N8ewNa+TY2rHUs/RpsQvOvuGk=;
- b=YvedHgItGn+wVIRODuBPkzBnGZMzSDF2R0QwlHx4CNi+Lj2Y06tC5nvalNwy72WLRR
- goPdDVMHD83/emzPYGsOKoMrCGeSva55emZd5ylddloOP5cVG/0Ko3iXOWsTSqYP10GC
- H4ay9LFkbd5BgzEWwftsGToxeteGZwZBJYhoBrtAms+Di0UC7mkgBbrjw8i0+zPCTdJ3
- pOfb3xbp8dRbZCM7D4RBKkgLIml+9icsq5ICV5kk5VfZqaF0Q4fkwG5ak9b0KIiVQq3Y
- 1Di44gkxgbVKEsi6C0JIT9ztlh1D0bS2A96hrA2C0+VH+kLqU8s/trRZCptJNxV/zL6B
- QBEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=xm0bX30wRiWs3NOT1/N8ewNa+TY2rHUs/RpsQvOvuGk=;
- b=nFOu2/TPi+QTfxFCjJg421+vKXbwrsGjbyNQHwetPyEbcTM8njZtC4MaMHZEI/95iy
- OMaR6UkTdWgv1hCEelYrtu/ZvdGPizuyyFpdVYpcgttH23mu/WLtw2W/4f8s4HiHjQmY
- 69C5jficA4gfjEp+jjPVYigZKK4JnqvAysh7747fqUN7rMCDRbNOB25FIihy1VXFz8Dv
- 39BC71AbGQRF0pi7PHbKrRk02FcSPzK2CaF1tkU+eihRJIW9f9DsltY6oinYT4Tc0XTI
- XyaiqkX8UIJIv1rfoRc9doCEUv9eNVJ+Kb35L2RMv1ZTN+zdBtSJDmRy0KuJcjse0BQ+
- ni9g==
-X-Gm-Message-State: APjAAAWiaiXeSeIxeVgRhXSHSUJF/8O5ThXR8aq1zrZrLPyYvUWP7WLw
- lAo57kiYKfRY/x2qf0VSsKILBwhJty/YikaGdag=
-X-Google-Smtp-Source: APXvYqxKjEYaCwxKJ+J3Otf+GUgn0gfx7mI4u7SRA0O4ZxEmL9uxCRSXrT5A5bNyUxh5pOD2QAR44l+5xc9UGWzKLj8=
-X-Received: by 2002:a05:620a:1210:: with SMTP id
- u16mr3345023qkj.493.1582899900001; 
- Fri, 28 Feb 2020 06:25:00 -0800 (PST)
+ id 1j7kIL-0003JR-AT
+ for linux-riscv@lists.infradead.org; Fri, 28 Feb 2020 18:23:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1582914209; x=1614450209;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=j0h3Ym/yI5RfZEB6Y+W9V8VGyNvlCJFWzzmkq15nu4w=;
+ b=Pgug1YUeE99TDwXoY7m0yxQtLIiIZ8+nGV0MTePVdZ3nxUb+lyZHy3Zx
+ dWLz6/V8Z36uyLdC2SvfrNdhjjbBuPLWoOZO+coCo3cRSluyyiRad95NX
+ G8stiKHF1ZgIds2xBy8LLI+QWFEAf3YZMWXtZa9McR5lQNBeH0lMjBlif
+ wkPaxH+mlnmc7kgKbgXjq1t9AZ5H9j5n9+QADHIbHgsiPMmm+L2jgimIZ
+ JaWT4DgrIp47gx0Ry1Ck2TH718TwpiAK8VERc1Z2AfKGXPuXV8xasO09m
+ IpiamSgKAdtruAd5eNWESwTZMyQ67wvSqADHkph5Lqsv60XOnpqHGCIzz A==;
+IronPort-SDR: HCG4Y8G9/kRNFMKjxZEnBcqMHtgudRij+mLBlI3AHseZyPs3A6zfiKnSvfOpJtON4Sz5KGAKQV
+ 7JitLOZ4b+KYABuGg90TNZ4V/q2lTCq3dHad+lJB+Pg0zJY0ayeWz+GVaRtgoY1stfBYnxxgGt
+ P1LVa3b3lI9uoS00NrzBhRODuEb3H84aYBGOdqIqNJWiOVVYMsGDzKq3yQbJ/xr3onikIOdLxV
+ ThFJqvBj/LWVvqwejXsFCsdVOnhZenjbCTNgUZ/4xb1OFUMix7K6IIspq+706ZzyZtTL7m0y04
+ wEQ=
+X-IronPort-AV: E=Sophos;i="5.70,497,1574092800"; d="scan'208";a="135422865"
+Received: from mail-dm6nam10lp2109.outbound.protection.outlook.com (HELO
+ NAM10-DM6-obe.outbound.protection.outlook.com) ([104.47.58.109])
+ by ob1.hgst.iphmx.com with ESMTP; 29 Feb 2020 02:23:26 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jKF+HXCe1Hr3a1Ar0fWd3oWFqpgUDM6Hw13peqxTF0PLtGHY9p1si/xcuqeJR3f6RFZQFa90uTcHBXgDhzsyvKEy+EWfb893slI0Tj6iY8H6Q99mNcC76apJhdKCDtwhPq65/mGniGrRvhcNHHa9QhQacq8XgSj5jHifcA0ZSq4EkFjRTvZysJTRsDHMsvoAxaWUD9k6SR9TmafddPtYkoNQqgrB6ZdXDcDkaDLoWvvAdjbe9FJBDBxhkvrRd4/l0UTfc5xgkOfzGkY288o2OL5ROZrq4QJJneG0uAI235Blp/BnmXL+qrYwNEYq8kV0pbWBejkCfhatKWFfT2VMcw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=j0h3Ym/yI5RfZEB6Y+W9V8VGyNvlCJFWzzmkq15nu4w=;
+ b=IiOEVkYyCBGZlOfG9p1pu01SHSPEu88yKQq9Tr8Bebw2yrL5q0cV5pwej96mCh8RU7cJ1Kwwh6rKIXPe1Kl4ACRi0fU3E4sVWfdt6JJ+w9jqItLy+WNpns1Q+jsYEmz5VG6lsMhIKY1v2IOd1N+2baL29wAuxDUci12nLDy8VWkV4JteEzzHu4s8e8gV6Xc2ysYKplQvbsaUEu30NIuivHvR2iqiF9BtZ/oZORulFVRv3da9gjYEfV0Twv/cARZ1mkb1LP0KyhS0rKrugpUYUCg7M6hhvhOEg5DleUmbI20voioUU/7Lghn5A/mJgEHU2Saj5eTu3GU6gQiUQGCikA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=j0h3Ym/yI5RfZEB6Y+W9V8VGyNvlCJFWzzmkq15nu4w=;
+ b=HRojE8aWeCF8cbTFXTnjer06+5e8rSdBf6tfRR5516EMoZ78tcmsETHfTS6c51Y99eflrsjE3oxXSANmT1ubOpq315Vr29gpsFUj85T4OtPXVvV+FtJiDZ/OejlWroJo5UjvtpZj2zSTi1g+ugi+NSx2BaOq3Ja7E1dM6Mt0KmE=
+Received: from BYAPR04MB3990.namprd04.prod.outlook.com (2603:10b6:a02:ae::29)
+ by BYAPR04MB5320.namprd04.prod.outlook.com (2603:10b6:a03:c6::32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.21; Fri, 28 Feb
+ 2020 18:23:25 +0000
+Received: from BYAPR04MB3990.namprd04.prod.outlook.com
+ ([fe80::ecfa:6b6b:1612:c46e]) by BYAPR04MB3990.namprd04.prod.outlook.com
+ ([fe80::ecfa:6b6b:1612:c46e%6]) with mapi id 15.20.2772.012; Fri, 28 Feb 2020
+ 18:23:25 +0000
+From: Atish Patra <Atish.Patra@wdc.com>
+To: "anup@brainfault.org" <anup@brainfault.org>, "palmerdabbelt@google.com"
+ <palmerdabbelt@google.com>
+Subject: Re: [PATCH] RISC-V: Move all address space definition macros to one
+ place
+Thread-Topic: [PATCH] RISC-V: Move all address space definition macros to one
+ place
+Thread-Index: AQHV60l1Ynmf//GryEGHQr4gb9XCAagwAtyAgADu5AA=
+Date: Fri, 28 Feb 2020 18:23:24 +0000
+Message-ID: <95cd92ce598762402d7da9262060148f0055ca92.camel@wdc.com>
+References: <20200224193436.26860-1-atish.patra@wdc.com>
+ <CAAhSdy0FH_89dQhWbLJmLsMQV6Lyd8+WE=Ks13Nx88j_dy_b7g@mail.gmail.com>
+In-Reply-To: <CAAhSdy0FH_89dQhWbLJmLsMQV6Lyd8+WE=Ks13Nx88j_dy_b7g@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Atish.Patra@wdc.com; 
+x-originating-ip: [98.248.240.128]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 12548262-8a12-4992-57b5-08d7bc7b4ccc
+x-ms-traffictypediagnostic: BYAPR04MB5320:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BYAPR04MB5320788D658D9BB58D5A6C4DFAE80@BYAPR04MB5320.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:4714;
+x-forefront-prvs: 0327618309
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(396003)(346002)(366004)(39860400002)(376002)(136003)(189003)(199004)(7416002)(5660300002)(53546011)(66556008)(86362001)(66946007)(76116006)(66476007)(64756008)(6506007)(2616005)(66446008)(26005)(186003)(2906002)(110136005)(54906003)(71200400001)(4326008)(8676002)(36756003)(8936002)(6512007)(6486002)(478600001)(81166006)(81156014)(316002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5320;
+ H:BYAPR04MB3990.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: YfbMBl8CNjCpxHI5rHvRJPEj7V5V+wSI0gWr5FuxJeflprDMjINGDkbniii5trEdZ7HSaFkrVt3QVCFPcctQp8oopTpWdMAXZOSPyVuHTzz392BEohaiPLYthDgwzbOlSWs8aeDa3seeekrcd2wd0tolCMFUL9dB1QmjMlwYVOIKtBSKUaVSRqVKvWFfU+0tHwK0WbhNWXsQEV9c0Rox8Croi7QVto38GtrWrrz0GrbUm2SBsYxfvEEbBt5p7IuwiAwtb22FIP/GI+1DANFhPgFW5tbE8DLzIF6OeHkgK8MuTdf8CPzUcqRyFcRPmPzCrz2uRugif3fml8Oz7QpKx4KW0FJFHS4PS5atis6YYK/bkI5KWcQMznkjxXN0ioIC7Pa0dmOovwWmEk382303LJDmU67sfsFEbBy9HZjnpgfTQ3rj2GsOORRV6JsPfd/8
+x-ms-exchange-antispam-messagedata: NhzZPdLaNN6QPa8YXUHuIZilSLgC58+YWNBHI5Cl1neOgg7DsrWix7HdMje4ItLNPwGCjf+vaDm49dJZJRWnj8d7BpqTTOp+a9VQtf6J/YDqjCfodxFBaJuQfpkToQq7w/0skNMPvyuj72P/Huyxmw==
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <4CCEBDB3F634AD4C917EB1D6B3996845@namprd04.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20200220041608.30289-1-lukenels@cs.washington.edu>
-In-Reply-To: <20200220041608.30289-1-lukenels@cs.washington.edu>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Fri, 28 Feb 2020 15:24:48 +0100
-Message-ID: <CAJ+HfNiOoLWpQAPhKL6cUVTZ0vTwuSabZzypzAmbRThD3ChGzA@mail.gmail.com>
-Subject: Re: [PATCH v3 bpf-next] RV32G eBPF JIT
-To: Luke Nelson <lukenels@cs.washington.edu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 12548262-8a12-4992-57b5-08d7bc7b4ccc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2020 18:23:25.0004 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Dxw11HfKyDe/bidne5cySAhHEnsA/xHDXmsEUI1TxRbT/GpfGMn4922o8tZro/6LjiIXiVwil2ayXdsizJr93g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5320
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200228_062502_520974_72809E12 
-X-CRM114-Status: GOOD (  28.18  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200228_102329_476337_F3EF040F 
+X-CRM114-Status: GOOD (  24.68  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:744 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.153.141 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [bjorn.topel[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -95,371 +148,123 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Daniel Borkmann <daniel@iogearbox.net>, Jiong Wang <jiong.wang@netronome.com>,
- Netdev <netdev@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>,
- linux-riscv@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Yonghong Song <yhs@fb.com>, bpf <bpf@vger.kernel.org>,
- Andrii Nakryiko <andriin@fb.com>, Martin KaFai Lau <kafai@fb.com>,
- Xi Wang <xi.wang@gmail.com>
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "nickhu@andestech.com" <nickhu@andestech.com>,
+ "david.abdurachmanov@gmail.com" <david.abdurachmanov@gmail.com>,
+ "bjorn.topel@gmail.com" <bjorn.topel@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ "rppt@linux.ibm.com" <rppt@linux.ibm.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "greentime.hu@sifive.com" <greentime.hu@sifive.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 20 Feb 2020 at 05:20, Luke Nelson <lukenels@cs.washington.edu> wrot=
-e:
->
-[...]
-> This is an eBPF JIT for RV32G, adapted from the JIT for RV64G and
-> the 32-bit ARM JIT.
->
-
-Luke/Xi, apologies for the slow reponse. (All my RV work is done on
-non-payed time, so that's that. :-)) Very nice that you're still
-working on it!
-
-> There are two main changes required for this to work compared to
-> the RV64 JIT.
->
-> First, eBPF registers are 64-bit, while RV32G registers are 32-bit.
-> BPF registers either map directly to 2 RISC-V registers, or reside
-> in stack scratch space and are saved and restored when used.
->
-> Second, many 64-bit ALU operations do not trivially map to 32-bit
-> operations. Operations that move bits between high and low words,
-> such as ADD, LSH, MUL, and others must emulate the 64-bit behavior
-> in terms of 32-bit instructions.
->
-> Supported features:
->
-> This JIT supports the same features and instructions as RV64, with the
-> following exceptions:
->
-> - ALU64 DIV/MOD: Requires loops to implement on 32-bit hardware.
->
-
-Even though it requires loops, JIT support would be nice. OTOH, arm
-doesn't support that either...
-
-> - BPF_XADD | BPF_DW: Requires either an 8-byte atomic instruction
->   in the target (which doesn't exist in RV32), or acqusition of
->   locks in generated code.
->
-> These features are also unsupported on other BPF JITs for 32-bit
-> architectures.
->
-
-Any ideas how this could be addressed for RV32G?
-
-> Testing:
->
-> - lib/test_bpf.c
-> test_bpf: Summary: 378 PASSED, 0 FAILED, [349/366 JIT'ed]
-> test_bpf: test_skb_segment: Summary: 2 PASSED, 0 FAILED
->
-> - tools/testing/selftests/bpf/test_verifier.c
-> Summary: 1415 PASSED, 122 SKIPPED, 43 FAILED
->
-> This is the same set of tests that pass using the BPF interpreter with
-> the JIT disabled.
->
-> Running the BPF kernel tests / selftests on riscv32 is non-trivial,
-> to help others reproduce the test results I made a guide here:
-> https://github.com/lukenels/meta-linux-utils/tree/master/rv32-linux
->
-> Verification and synthesis:
->
-> We developed this JIT using our verification tool that we have used
-> in the past to verify patches to the RV64 JIT.  We also used the
-> tool to superoptimize the resulting code through program synthesis.
->
-> You can find the tool and a guide to the approach and results here:
-> https://github.com/uw-unsat/bpf-jit-verif
->
-
-Nice!
-
-> Changelog:
->
-> v2 -> v3:
->   * Added support for far jumps / branches similar to RV64 JIT.
->   * Added support for tail calls.
->   * Cleaned up code with more optimizations and comments.
->   * Removed special zero-extension instruction from BPF_ALU64
->     case, pointed out by Jiong Wang.
->
-> v1 -> v2:
->   * Added support for far conditional branches.
->   * Added the zero-extension optimization pointed out by Jiong Wang.
->   * Added more optimizations for operations with an immediate operand.
->
-> Cc: Jiong Wang <jiong.wang@netronome.com>
-
-Jiong is no longer at netronome.
-
-> Co-developed-by: Xi Wang <xi.wang@gmail.com>
-> Signed-off-by: Xi Wang <xi.wang@gmail.com>
-> Signed-off-by: Luke Nelson <lukenels@cs.washington.edu>
-
-In general I agree with Song; It would be good if the 64/32 bit
-variants would share more code. RISC-V 64/32 *are* very similar, and
-we should be able to benefit from that codewise.
-
-Pull out all functions are that common -- most of the emit_*, the
-parts of the registers, the branch relaxation, and context
-structs. Hopefully, the acutal RV32/64 specfic parts will be pretty
-small.
-
-Finally; There are some checkpatch issues: run 'checkpatch.pl --strict'.
-
-[...]
-> +
-> +static s8 hi(const s8 *r)
-
-Everywhere else "const s8 r[]" is used, except in hi()/lo().
-
-> +{
-> +    return r[0];
-> +}
-> +
-> +static s8 lo(const s8 *r)
-
-Likewise.
-
-> +{
-> +    return r[1];
-> +}
-> +
-> +struct rv_jit_context {
-> +    struct bpf_prog *prog;
-> +    u32 *insns; /* RV insns */
-> +    int ninsns;
-> +    int epilogue_offset;
-> +    int *offset; /* BPF to RV */
-> +    unsigned long flags;
-> +    int stack_size;
-> +};
-
-Can be shared!
-
-> +
-> +struct rv_jit_data {
-> +    struct bpf_binary_header *header;
-> +    u8 *image;
-> +    struct rv_jit_context ctx;
-> +};
-
-...and this...
-
-> +
-> +static void emit(const u32 insn, struct rv_jit_context *ctx)
-
-...and most of the emit/encoding code!
-
-[...]
-> +    switch (code) {
-> +    case BPF_ALU64 | BPF_MOV | BPF_X:
-> +
-> +    case BPF_ALU64 | BPF_ADD | BPF_X:
-> +    case BPF_ALU64 | BPF_ADD | BPF_K:
-> +
-> +    case BPF_ALU64 | BPF_SUB | BPF_X:
-> +    case BPF_ALU64 | BPF_SUB | BPF_K:
-> +
-> +    case BPF_ALU64 | BPF_AND | BPF_X:
-> +    case BPF_ALU64 | BPF_OR | BPF_X:
-> +    case BPF_ALU64 | BPF_XOR | BPF_X:
-> +
-> +    case BPF_ALU64 | BPF_MUL | BPF_X:
-> +    case BPF_ALU64 | BPF_MUL | BPF_K:
-> +
-> +    case BPF_ALU64 | BPF_LSH | BPF_X:
-> +    case BPF_ALU64 | BPF_RSH | BPF_X:
-> +    case BPF_ALU64 | BPF_ARSH | BPF_X:
-> +        if (BPF_SRC(code) =3D=3D BPF_K) {
-> +            emit_imm32(tmp2, imm, ctx);
-> +            src =3D tmp2;
-> +        }
-> +        emit_rv32_alu_r64(dst, src, ctx, BPF_OP(code));
-> +        break;
-> +
-> +    case BPF_ALU64 | BPF_NEG:
-> +        emit_rv32_alu_r64(dst, tmp2, ctx, BPF_OP(code));
-> +        break;
-
-This is neat; I should do it like this for RV64.
-
-[...]
-> +    case BPF_ALU | BPF_END | BPF_FROM_BE:
-> +    {
-> +        const s8 *rd =3D rv32_bpf_get_reg64(dst, tmp1, ctx);
-> +
-> +        switch (imm) {
-> +        case 16:
-> +            emit_rv32_rev16(lo(rd), ctx);
-> +            if (!ctx->prog->aux->verifier_zext)
-> +                emit(rv_addi(hi(rd), RV_REG_ZERO, 0), ctx);
-> +            break;
-> +        case 32:
-> +            emit_rv32_rev32(lo(rd), ctx);
-> +            if (!ctx->prog->aux->verifier_zext)
-> +                emit(rv_addi(hi(rd), RV_REG_ZERO, 0), ctx);
-> +            break;
-> +        case 64:
-> +            /* Swap upper and lower halves. */
-> +            emit(rv_addi(RV_REG_T0, lo(rd), 0), ctx);
-> +            emit(rv_addi(lo(rd), hi(rd), 0), ctx);
-> +            emit(rv_addi(hi(rd), RV_REG_T0, 0), ctx);
-> +
-> +            /* Swap each half. */
-> +            emit_rv32_rev32(lo(rd), ctx);
-> +            emit_rv32_rev32(hi(rd), ctx);
-
-Waiting for that B-ext to be ratified? ;-)
-
-[...]
-> +    case BPF_JMP32 | BPF_JSET | BPF_K:
-> +        rvoff =3D rv_offset(i, off, ctx);
-> +        if (BPF_SRC(code) =3D=3D BPF_K) {
-> +            s =3D ctx->ninsns;
-> +            emit_imm32(tmp2, imm, ctx);
-> +            src =3D tmp2;
-> +            e =3D ctx->ninsns;
-> +            rvoff -=3D (e - s) << 2;
-> +        }
-> +
-> +        if (is64) {
-> +            emit_rv32_branch_r64(dst, src, rvoff, ctx, BPF_OP(code));
-> +        } else {
-> +            emit_rv32_branch_r32(dst, src, rvoff, ctx, BPF_OP(code));
-> +        }
-
-No need for {} here.
-
-[...]
-> +    case BPF_STX | BPF_XADD | BPF_DW:
-> +        goto notsupported;
-
-The goto is not needed here.
-
-> +
-> +notsupported:
-> +        pr_info_once("*** NOT SUPPORTED: opcode %02x ***\n", code);
-
-A bit inconsistent, compared to the pr_err messages. The errors are
-"bpf-jit" prefixed.
-
-> +        return -EFAULT;
-> +
-> +    default:
-> +        pr_err("bpf-jit: unknown opcode %02x\n", code);
-> +        return -EINVAL;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static void build_prologue(struct rv_jit_context *ctx)
-> +{
-> +    int stack_adjust =3D 4 * 9, store_offset, bpf_stack_adjust;
-
-A comment why the magic number 4 * 9 is there would help future
-readers.
-
-> +
-> +    bpf_stack_adjust =3D round_up(ctx->prog->aux->stack_depth, 16);
-> +    stack_adjust +=3D bpf_stack_adjust;
-> +
-> +    store_offset =3D stack_adjust - 4;
-> +
-> +    stack_adjust +=3D 4 * BPF_JIT_SCRATCH_REGS;
-> +
-> +    /* First instruction sets tail-call-counter,
-> +     * skipped by tail call.
-> +     */
-> +    emit(rv_addi(RV_REG_TCC, RV_REG_ZERO, MAX_TAIL_CALL_CNT), ctx);
-> +
-> +    emit(rv_addi(RV_REG_SP, RV_REG_SP, -stack_adjust), ctx);
-> +
-> +    /* Save callee-save registers. */
-> +    emit(rv_sw(RV_REG_SP, store_offset - 0, RV_REG_RA), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 4, RV_REG_FP), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 8, RV_REG_S1), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 12, RV_REG_S2), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 16, RV_REG_S3), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 20, RV_REG_S4), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 24, RV_REG_S5), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 28, RV_REG_S6), ctx);
-> +    emit(rv_sw(RV_REG_SP, store_offset - 32, RV_REG_S7), ctx);
-> +
-> +    /* Set fp: used as the base address for stacked BPF registers. */
-> +    emit(rv_addi(RV_REG_FP, RV_REG_SP, stack_adjust), ctx);
-> +
-> +    /* Set up BPF stack pointer. */
-> +    emit(rv_addi(lo(bpf2rv32[BPF_REG_FP]), RV_REG_SP, bpf_stack_adjust),=
- ctx);
-> +    emit(rv_addi(hi(bpf2rv32[BPF_REG_FP]), RV_REG_ZERO, 0), ctx);
-> +
-> +    /* Set up context pointer. */
-> +    emit(rv_addi(lo(bpf2rv32[BPF_REG_1]), RV_REG_A0, 0), ctx);
-> +    emit(rv_addi(hi(bpf2rv32[BPF_REG_1]), RV_REG_ZERO, 0), ctx);
-> +
-> +    ctx->stack_size =3D stack_adjust;
-> +}
-> +
-> +static int build_body(struct rv_jit_context *ctx, bool extra_pass, int *=
-offset)
-> +{
-> +    const struct bpf_prog *prog =3D ctx->prog;
-> +    int i;
-> +
-> +    for (i =3D 0; i < prog->len; i++) {
-> +        const struct bpf_insn *insn =3D &prog->insnsi[i];
-> +        int ret;
-> +
-> +        ret =3D emit_insn(insn, ctx, extra_pass);
-> +        if (ret > 0)
-> +            /* BPF_LD | BPF_IMM | BPF_DW:
-> +             * Skip next instruction.
-> +             */
-> +            i++;
-> +        if (offset)
-> +            offset[i] =3D ctx->ninsns;
-> +        if (ret < 0)
-> +            return ret;
-> +    }
-> +    return 0;
-> +}
-
-Can be shared! ...and I think this version is better than the RV64
-one! :-)
-
-> +
-> +static void bpf_fill_ill_insns(void *area, unsigned int size)
-> +{
-> +    memset(area, 0, size);
-> +}
-> +
-> +static void bpf_flush_icache(void *start, void *end)
-> +{
-> +    flush_icache_range((unsigned long)start, (unsigned long)end);
-> +}
-> +
-> +bool bpf_jit_needs_zext(void)
-> +{
-> +    return true;
-> +}
-> +
-> +struct bpf_prog *bpf_int_jit_compile(struct bpf_prog *prog)
-
-The functions above can be shared with RV64 as well, right?
-
-[...]
-
-Thanks for the hard work! I'll take it for a spin, with help from the
-guide above, this weekend!
-
-
-Cheers,
-Bj=C3=B6rn
+T24gRnJpLCAyMDIwLTAyLTI4IGF0IDA5OjM4ICswNTMwLCBBbnVwIFBhdGVsIHdyb3RlOg0KPiBP
+biBUdWUsIEZlYiAyNSwgMjAyMCBhdCAxOjA0IEFNIEF0aXNoIFBhdHJhIDxhdGlzaC5wYXRyYUB3
+ZGMuY29tPg0KPiB3cm90ZToNCj4gPiBJZiBib3RoIENPTkZJR19LQVNBTiBhbmQgQ09ORklHX1NQ
+QVJTRU1FTV9WTUVNTUFQIGFyZSBzZXQsIHdlIGdldA0KPiA+IHRoZQ0KPiA+IGZvbGxvd2luZyBj
+b21waWxhdGlvbiBlcnJvci4NCj4gPiANCj4gPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gPiAuL2FyY2gvcmlzY3YvaW5j
+bHVkZS9hc20vcGd0YWJsZS02NC5oOiBJbiBmdW5jdGlvbiDigJhwdWRfcGFnZeKAmToNCj4gPiAu
+L2luY2x1ZGUvYXNtLWdlbmVyaWMvbWVtb3J5X21vZGVsLmg6NTQ6Mjk6IGVycm9yOiDigJh2bWVt
+bWFw4oCZDQo+ID4gdW5kZWNsYXJlZA0KPiA+IChmaXJzdCB1c2UgaW4gdGhpcyBmdW5jdGlvbik7
+IGRpZCB5b3UgbWVhbiDigJhtZW1fbWFw4oCZPw0KPiA+ICAjZGVmaW5lIF9fcGZuX3RvX3BhZ2Uo
+cGZuKSAodm1lbW1hcCArIChwZm4pKQ0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+Xn5+fn5+fg0KPiA+IC4vaW5jbHVkZS9hc20tZ2VuZXJpYy9tZW1vcnlfbW9kZWwuaDo4MjoyMTog
+bm90ZTogaW4gZXhwYW5zaW9uIG9mDQo+ID4gbWFjcm8g4oCYX19wZm5fdG9fcGFnZeKAmQ0KPiA+
+IA0KPiA+ICAjZGVmaW5lIHBmbl90b19wYWdlIF9fcGZuX3RvX3BhZ2UNCj4gPiAgICAgICAgICAg
+ICAgICAgICAgICBefn5+fn5+fn5+fn5+DQo+ID4gLi9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3Bn
+dGFibGUtNjQuaDo3MDo5OiBub3RlOiBpbiBleHBhbnNpb24gb2YNCj4gPiBtYWNybw0KPiA+IOKA
+mHBmbl90b19wYWdl4oCZDQo+ID4gICByZXR1cm4gcGZuX3RvX3BhZ2UocHVkX3ZhbChwdWQpID4+
+IF9QQUdFX1BGTl9TSElGVCk7DQo+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4gDQo+ID4gRml4IHRoZSBjb21wbGlh
+dGlvbiBlcnJvcnMgYnkgbW92aW5nIGFsbCB0aGUgYWRkcmVzcyBzcGFjZQ0KPiA+IGRlZmluaXRp
+b24NCj4gPiBtYWNyb3MgYmVmb3JlIGluY2x1ZGluZyBwZ3RhYmxlLTY0LmguDQo+ID4gDQo+ID4g
+Q2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcNCj4gPiBGaXhlczogOGFkOGI3MjcyMWQwIChyaXNj
+djogQWRkIEtBU0FOIHN1cHBvcnQpDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogQXRpc2ggUGF0
+cmEgPGF0aXNoLnBhdHJhQHdkYy5jb20+DQo+ID4gLS0tDQo+ID4gIGFyY2gvcmlzY3YvaW5jbHVk
+ZS9hc20vcGd0YWJsZS5oIHwgNzggKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLQ0KPiA+IC0t
+LS0NCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDQxIGluc2VydGlvbnMoKyksIDM3IGRlbGV0aW9ucygt
+KQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9hcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL3BndGFibGUu
+aA0KPiA+IGIvYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9wZ3RhYmxlLmgNCj4gPiBpbmRleCA0NTNh
+ZmIwYTU3MGEuLjRmNmVlNDhhNDJlOCAxMDA2NDQNCj4gPiAtLS0gYS9hcmNoL3Jpc2N2L2luY2x1
+ZGUvYXNtL3BndGFibGUuaA0KPiA+ICsrKyBiL2FyY2gvcmlzY3YvaW5jbHVkZS9hc20vcGd0YWJs
+ZS5oDQo+ID4gQEAgLTE5LDYgKzE5LDQ3IEBADQo+ID4gICNpbmNsdWRlIDxhc20vdGxiZmx1c2gu
+aD4NCj4gPiAgI2luY2x1ZGUgPGxpbnV4L21tX3R5cGVzLmg+DQo+ID4gDQo+ID4gKyNpZmRlZiBD
+T05GSUdfTU1VDQo+ID4gKw0KPiA+ICsjZGVmaW5lIFZNQUxMT0NfU0laRSAgICAgKEtFUk5fVklS
+VF9TSVpFID4+IDEpDQo+ID4gKyNkZWZpbmUgVk1BTExPQ19FTkQgICAgICAoUEFHRV9PRkZTRVQg
+LSAxKQ0KPiA+ICsjZGVmaW5lIFZNQUxMT0NfU1RBUlQgICAgKFBBR0VfT0ZGU0VUIC0gVk1BTExP
+Q19TSVpFKQ0KPiA+ICsNCj4gPiArI2RlZmluZSBCUEZfSklUX1JFR0lPTl9TSVpFICAgIChTWl8x
+MjhNKQ0KPiA+ICsjZGVmaW5lIEJQRl9KSVRfUkVHSU9OX1NUQVJUICAgKFBBR0VfT0ZGU0VUIC0g
+QlBGX0pJVF9SRUdJT05fU0laRSkNCj4gPiArI2RlZmluZSBCUEZfSklUX1JFR0lPTl9FTkQgICAg
+IChWTUFMTE9DX0VORCkNCj4gPiArDQo+ID4gKy8qDQo+ID4gKyAqIFJvdWdobHkgc2l6ZSB0aGUg
+dm1lbW1hcCBzcGFjZSB0byBiZSBsYXJnZSBlbm91Z2ggdG8gZml0IGVub3VnaA0KPiA+ICsgKiBz
+dHJ1Y3QgcGFnZXMgdG8gbWFwIGhhbGYgdGhlIHZpcnR1YWwgYWRkcmVzcyBzcGFjZS4gVGhlbg0K
+PiA+ICsgKiBwb3NpdGlvbiB2bWVtbWFwIGRpcmVjdGx5IGJlbG93IHRoZSBWTUFMTE9DIHJlZ2lv
+bi4NCj4gPiArICovDQo+ID4gKyNkZWZpbmUgVk1FTU1BUF9TSElGVCBcDQo+ID4gKyAgICAgICAo
+Q09ORklHX1ZBX0JJVFMgLSBQQUdFX1NISUZUIC0gMSArIFNUUlVDVF9QQUdFX01BWF9TSElGVCkN
+Cj4gPiArI2RlZmluZSBWTUVNTUFQX1NJWkUgICBCSVQoVk1FTU1BUF9TSElGVCkNCj4gPiArI2Rl
+ZmluZSBWTUVNTUFQX0VORCAgICAoVk1BTExPQ19TVEFSVCAtIDEpDQo+ID4gKyNkZWZpbmUgVk1F
+TU1BUF9TVEFSVCAgKFZNQUxMT0NfU1RBUlQgLSBWTUVNTUFQX1NJWkUpDQo+ID4gKw0KPiA+ICsv
+Kg0KPiA+ICsgKiBEZWZpbmUgdm1lbW1hcCBmb3IgcGZuX3RvX3BhZ2UgJiBwYWdlX3RvX3BmbiBj
+YWxscy4gTmVlZGVkIGlmDQo+ID4ga2VybmVsDQo+ID4gKyAqIGlzIGNvbmZpZ3VyZWQgd2l0aCBD
+T05GSUdfU1BBUlNFTUVNX1ZNRU1NQVAgZW5hYmxlZC4NCj4gPiArICovDQo+ID4gKyNkZWZpbmUg
+dm1lbW1hcCAgICAgICAgICAgICAgICAoKHN0cnVjdCBwYWdlICopVk1FTU1BUF9TVEFSVCkNCj4g
+PiArDQo+ID4gKyNkZWZpbmUgUENJX0lPX1NJWkUgICAgICBTWl8xNk0NCj4gPiArI2RlZmluZSBQ
+Q0lfSU9fRU5EICAgICAgIFZNRU1NQVBfU1RBUlQNCj4gPiArI2RlZmluZSBQQ0lfSU9fU1RBUlQg
+ICAgIChQQ0lfSU9fRU5EIC0gUENJX0lPX1NJWkUpDQo+ID4gKw0KPiA+ICsjZGVmaW5lIEZJWEFE
+RFJfVE9QICAgICAgUENJX0lPX1NUQVJUDQo+ID4gKyNpZmRlZiBDT05GSUdfNjRCSVQNCj4gPiAr
+I2RlZmluZSBGSVhBRERSX1NJWkUgICAgIFBNRF9TSVpFDQo+ID4gKyNlbHNlDQo+ID4gKyNkZWZp
+bmUgRklYQUREUl9TSVpFICAgICBQR0RJUl9TSVpFDQo+ID4gKyNlbmRpZg0KPiA+ICsjZGVmaW5l
+IEZJWEFERFJfU1RBUlQgICAgKEZJWEFERFJfVE9QIC0gRklYQUREUl9TSVpFKQ0KPiA+ICsNCj4g
+PiArI2VuZGlmDQo+ID4gKw0KPiA+ICAjaWZkZWYgQ09ORklHXzY0QklUDQo+ID4gICNpbmNsdWRl
+IDxhc20vcGd0YWJsZS02NC5oPg0KPiA+ICAjZWxzZQ0KPiA+IEBAIC05MCwzMSArMTMxLDYgQEAg
+ZXh0ZXJuIHBnZF90IHN3YXBwZXJfcGdfZGlyW107DQo+ID4gICNkZWZpbmUgX19TMTEwIFBBR0Vf
+U0hBUkVEX0VYRUMNCj4gPiAgI2RlZmluZSBfX1MxMTEgUEFHRV9TSEFSRURfRVhFQw0KPiA+IA0K
+PiA+IC0jZGVmaW5lIFZNQUxMT0NfU0laRSAgICAgKEtFUk5fVklSVF9TSVpFID4+IDEpDQo+ID4g
+LSNkZWZpbmUgVk1BTExPQ19FTkQgICAgICAoUEFHRV9PRkZTRVQgLSAxKQ0KPiA+IC0jZGVmaW5l
+IFZNQUxMT0NfU1RBUlQgICAgKFBBR0VfT0ZGU0VUIC0gVk1BTExPQ19TSVpFKQ0KPiA+IC0NCj4g
+PiAtI2RlZmluZSBCUEZfSklUX1JFR0lPTl9TSVpFICAgIChTWl8xMjhNKQ0KPiA+IC0jZGVmaW5l
+IEJQRl9KSVRfUkVHSU9OX1NUQVJUICAgKFBBR0VfT0ZGU0VUIC0gQlBGX0pJVF9SRUdJT05fU0la
+RSkNCj4gPiAtI2RlZmluZSBCUEZfSklUX1JFR0lPTl9FTkQgICAgIChWTUFMTE9DX0VORCkNCj4g
+PiAtDQo+ID4gLS8qDQo+ID4gLSAqIFJvdWdobHkgc2l6ZSB0aGUgdm1lbW1hcCBzcGFjZSB0byBi
+ZSBsYXJnZSBlbm91Z2ggdG8gZml0IGVub3VnaA0KPiA+IC0gKiBzdHJ1Y3QgcGFnZXMgdG8gbWFw
+IGhhbGYgdGhlIHZpcnR1YWwgYWRkcmVzcyBzcGFjZS4gVGhlbg0KPiA+IC0gKiBwb3NpdGlvbiB2
+bWVtbWFwIGRpcmVjdGx5IGJlbG93IHRoZSBWTUFMTE9DIHJlZ2lvbi4NCj4gPiAtICovDQo+ID4g
+LSNkZWZpbmUgVk1FTU1BUF9TSElGVCBcDQo+ID4gLSAgICAgICAoQ09ORklHX1ZBX0JJVFMgLSBQ
+QUdFX1NISUZUIC0gMSArIFNUUlVDVF9QQUdFX01BWF9TSElGVCkNCj4gPiAtI2RlZmluZSBWTUVN
+TUFQX1NJWkUgICBCSVQoVk1FTU1BUF9TSElGVCkNCj4gPiAtI2RlZmluZSBWTUVNTUFQX0VORCAg
+ICAoVk1BTExPQ19TVEFSVCAtIDEpDQo+ID4gLSNkZWZpbmUgVk1FTU1BUF9TVEFSVCAgKFZNQUxM
+T0NfU1RBUlQgLSBWTUVNTUFQX1NJWkUpDQo+ID4gLQ0KPiA+IC0vKg0KPiA+IC0gKiBEZWZpbmUg
+dm1lbW1hcCBmb3IgcGZuX3RvX3BhZ2UgJiBwYWdlX3RvX3BmbiBjYWxscy4gTmVlZGVkIGlmDQo+
+ID4ga2VybmVsDQo+ID4gLSAqIGlzIGNvbmZpZ3VyZWQgd2l0aCBDT05GSUdfU1BBUlNFTUVNX1ZN
+RU1NQVAgZW5hYmxlZC4NCj4gPiAtICovDQo+ID4gLSNkZWZpbmUgdm1lbW1hcCAgICAgICAgICAg
+ICAgICAoKHN0cnVjdCBwYWdlICopVk1FTU1BUF9TVEFSVCkNCj4gPiAtDQo+ID4gIHN0YXRpYyBp
+bmxpbmUgaW50IHBtZF9wcmVzZW50KHBtZF90IHBtZCkNCj4gPiAgew0KPiA+ICAgICAgICAgcmV0
+dXJuIChwbWRfdmFsKHBtZCkgJiAoX1BBR0VfUFJFU0VOVCB8IF9QQUdFX1BST1RfTk9ORSkpOw0K
+PiA+IEBAIC00NTIsMTggKzQ2OCw2IEBAIHN0YXRpYyBpbmxpbmUgaW50DQo+ID4gcHRlcF9jbGVh
+cl9mbHVzaF95b3VuZyhzdHJ1Y3Qgdm1fYXJlYV9zdHJ1Y3QgKnZtYSwNCj4gPiAgI2RlZmluZSBf
+X3B0ZV90b19zd3BfZW50cnkocHRlKSAgICAgICAgKChzd3BfZW50cnlfdCkgew0KPiA+IHB0ZV92
+YWwocHRlKSB9KQ0KPiA+ICAjZGVmaW5lIF9fc3dwX2VudHJ5X3RvX3B0ZSh4KSAgKChwdGVfdCkg
+eyAoeCkudmFsIH0pDQo+ID4gDQo+ID4gLSNkZWZpbmUgUENJX0lPX1NJWkUgICAgICBTWl8xNk0N
+Cj4gPiAtI2RlZmluZSBQQ0lfSU9fRU5EICAgICAgIFZNRU1NQVBfU1RBUlQNCj4gPiAtI2RlZmlu
+ZSBQQ0lfSU9fU1RBUlQgICAgIChQQ0lfSU9fRU5EIC0gUENJX0lPX1NJWkUpDQo+ID4gLQ0KPiA+
+IC0jZGVmaW5lIEZJWEFERFJfVE9QICAgICAgUENJX0lPX1NUQVJUDQo+ID4gLSNpZmRlZiBDT05G
+SUdfNjRCSVQNCj4gPiAtI2RlZmluZSBGSVhBRERSX1NJWkUgICAgIFBNRF9TSVpFDQo+ID4gLSNl
+bHNlDQo+ID4gLSNkZWZpbmUgRklYQUREUl9TSVpFICAgICBQR0RJUl9TSVpFDQo+ID4gLSNlbmRp
+Zg0KPiA+IC0jZGVmaW5lIEZJWEFERFJfU1RBUlQgICAgKEZJWEFERFJfVE9QIC0gRklYQUREUl9T
+SVpFKQ0KPiA+IC0NCj4gPiAgLyoNCj4gPiAgICogVGFzayBzaXplIGlzIDB4NDAwMDAwMDAwMCBm
+b3IgUlY2NCBvciAweDlmYzAwMDAwIGZvciBSVjMyLg0KPiA+ICAgKiBOb3RlIHRoYXQgUEdESVJf
+U0laRSBtdXN0IGV2ZW5seSBkaXZpZGUgVEFTS19TSVpFLg0KPiA+IC0tDQo+ID4gMi4yNS4wDQo+
+ID4gDQo+IA0KPiBMb29rcyBnb29kIHRvIG1lLiBBdCBsZWFzdCBub3cgYWxsIHZpcnR1YWwgbWVt
+b3J5IGxheW91dCByZWxhdGVkDQo+IGRlZmluZXMgYXJlIGluIG9uZSBwbGFjZS4NCj4gDQo+IFJl
+dmlld2VkLWJ5OiBBbnVwIFBhdGVsIDxhbnVwQGJyYWluZmF1bHQub3JnPg0KPiANCj4gUmVnYXJk
+cywNCj4gQW51cA0KPiANCg0KSGkgUGFsbWVyLA0KSSB0aGluayB0aGlzIHBhdGNoIGlzIGEgUkMg
+Y2FuZGlkYXRlLiBDYW4gdGhpcyBiZSBpbmNsdWRlZCBpbiBuZXh0IFBSID8NCg0KLS0gDQpSZWdh
+cmRzLA0KQXRpc2gNCg==
 
