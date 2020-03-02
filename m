@@ -2,70 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4ED0175297
-	for <lists+linux-riscv@lfdr.de>; Mon,  2 Mar 2020 05:18:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 627E117529A
+	for <lists+linux-riscv@lfdr.de>; Mon,  2 Mar 2020 05:21:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8aaMcENVmMBjpe8prTUeuib5Y9XP42NIGkClgnl3Tcs=; b=HDifN3qKJj0z26
-	R0Impwon0r1DdtRdesqh2sjenMfAVN1/2UZIYPuwjDVEfxeK4i7rdjgZcluDzszUq7TZNqeC0ppLs
-	Veavl+5Bgfas++DK2AiPlnlCdDrGr6wR8r0uk7mIXfG4jJ5kPM1FsyUAE0Z3sItAsFyxsEc8hgPNS
-	etCZqs0OjozT7Gjfo5ISCt/IFAN/qfjVbk+WFveszYp3x5D6xSKNrjVkd59eyL4r25mlfcq5leO6o
-	txNvEi9+STgB9f8AJXT5+jv5+5GsegnTkC7PBHkPxQWTARkUDzbj4nqElAIysQ13tCrSrgdCYH4Ue
-	KTakPZNacHGR4ArluW6Q==;
+	List-Owner; bh=U9zyJaI84VJfbl4voMzIdaqE8FwXPjOiCX4SKnfegMw=; b=WrsOhCN5MlyUAG
+	IoD1dv/m3SvXT5lxfpO6Rcpw9ohWmv/QFXMwhdSos7GX6bMtney1odTvKg+M5E2d5+GOx/c3tWPNd
+	KBAR45XkRcBlmzr7u4UgQMkH9swe5m1JqDTTVsEdA44dJ3Ld1BQS7J6gCc40uZlC714oqc9eT9g/k
+	DMhkjxsNFkKruVJIB0TroErmqk6SZBRb2Y1u1wmRj+2tqNd8cHg+WxUyHlK0jBozx3UB+qw/A7IMX
+	RINCyPYTaIGq8Sw63K8eW855fT3uxRq6nSEhJdil0sBvsBxpMkxPvHIzojq8vxn9S9xQ1ESd9UOt2
+	femKS9y/uq0/EVo7cJgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8cXb-0002K8-E2; Mon, 02 Mar 2020 04:18:51 +0000
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
+	id 1j8caA-0003fp-Ij; Mon, 02 Mar 2020 04:21:30 +0000
+Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8cXY-0002Jm-87
- for linux-riscv@lists.infradead.org; Mon, 02 Mar 2020 04:18:49 +0000
-Received: by mail-qk1-x741.google.com with SMTP id p62so6106635qkb.0
- for <linux-riscv@lists.infradead.org>; Sun, 01 Mar 2020 20:18:45 -0800 (PST)
+ id 1j8ca7-0003fQ-WF
+ for linux-riscv@lists.infradead.org; Mon, 02 Mar 2020 04:21:29 +0000
+Received: by mail-qv1-xf44.google.com with SMTP id u10so4273523qvi.2
+ for <linux-riscv@lists.infradead.org>; Sun, 01 Mar 2020 20:21:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8aaMcENVmMBjpe8prTUeuib5Y9XP42NIGkClgnl3Tcs=;
- b=u1U5TMA/02c9gWVe1qaV9bN+dJmJPa4jRHsaPNHYHpeNzatCixBXAOa1SezTkFKS1l
- JX2iVoEKNvdufmc9r8RK+6IXv/FgLeTrEfc/joUQRFMi+bNy3kGtuY3tOgXs08YOVyHx
- hiOCoRNWM+wRts8t3aYUVzc43SyNGjErAr/rGotLri+VkmHrcE2qJGq0j/CwrpqbIab0
- OpXCh0cDHoX4t9sUzl70mPxZJ87+iInVmhDQMTPthI/7HZ6hsHd0VtF45pXTiA5Tlmxi
- D2cLcJ5IJJmLwg0DSWJrA3bjXdH/6iznRmOIrjTTWT7Yt2Uqeak/nZXaHlF+cSqvle8p
- AIgw==
+ bh=U9zyJaI84VJfbl4voMzIdaqE8FwXPjOiCX4SKnfegMw=;
+ b=KkaivCAwUX4In0ApYEscldAS8Qc6EAejDJDjD20eWo31Zs3F2gL5/J/XskUt5Qm1S8
+ KN//qSar3uDrJpG5LzH4FjzJPwAf15rEXLlfyJ2vD3PBjM1RmSPlNcrHvUhLGi0g7mz1
+ Hgy+fA6NbAgbXSLrhkmH8nlBnIL4jqDTZxqQDR1pXnzFcOrnMEvL8ftqnyTWr4JPjM1n
+ HZRPjXgwEQyKwKurMQGmgtds+yt+XtJN1w2PU9rBgzyX9P6h3KeB0xw/pGB/d/i//FEk
+ 6dAcbkIa4Eomez5GeE7ny9tGp6udC6759/lWBhana47qmdIDoAfJ5RrgDVthTjLV85DE
+ L9Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=8aaMcENVmMBjpe8prTUeuib5Y9XP42NIGkClgnl3Tcs=;
- b=TatSQXoicPvytzCOacvuj46EIT3Q6a4S3jdwAnuDC9CNPmZaAKCEO3Bu5SwyYC+kgj
- 0d+cCFssxVr0e1nFYWkdFChGth34q1oLkhcXzqegGKSNpxfJ1C7e2UkkpKfDkA1trz0E
- fVXEG7J7mmFfmDSm/BRaL0Zg4wAZvzn0e72I+OjeJCFwoYWTVQe7BKhLsvqh0BlQ4nkg
- Lj0J3mvJw/ivQMDHc28h8wXJRgNsdllEzxG7oJsSbXJWG9bR8s6RV9V+as7n5JJ04mZY
- 0EJHUfpNlI9wbHEn9w5m4Tb9dqucGPGZYRbXj53pC2gpuT05ZKb2EEC3jY8LRmVlnTjj
- Kjag==
-X-Gm-Message-State: APjAAAXKjpJDrqq6gtZrLLW1m4paeB/3mQDGrk51e4xdotEaFeuxXF/i
- KO1Aflq982ba6a2xvJc/BTBW3emvllQ=
-X-Google-Smtp-Source: APXvYqwG9uKsnLlFEYpZpusbZ8HdeNu1MbS1RuRkd7E59IvU3MnhiJvu/CHaHiY+qRwKrGw+rutNXQ==
-X-Received: by 2002:a05:620a:210f:: with SMTP id
- l15mr15036443qkl.474.1583122724864; 
- Sun, 01 Mar 2020 20:18:44 -0800 (PST)
+ bh=U9zyJaI84VJfbl4voMzIdaqE8FwXPjOiCX4SKnfegMw=;
+ b=sDGHHA7dJ1p5LNG4WtY7bL6YL03BkelVi2mcqKabtpuHYoow8E9q+2VcTQYMpHcct6
+ Xe/EKS+01iR06LVdxFIvsRDBGP/hjMpH0ML9BzcJ4MdYN+cMBPz4Bnr6/6elPLfRje8M
+ 3sm33YJwNDWCnX0dhXB8Pmdf2XSvsBlcSnmBd2GgLTU18jeWiPDlfFODuCLgYj8VfUjh
+ T+cz7CAeUbnF4qlUrdpwJvFqoEsiSvSWIACtY+OS2f7XcWuxhcHLSm9Tgdt3lT8g3cWJ
+ gDOv1bXg8/Cg/ggQNXGlUmNRaYK1kmRHLMWtWV9CEgrzjlaWgTHBIRWzRgo4NmQM5RyL
+ qXEQ==
+X-Gm-Message-State: APjAAAXPrFjkhXLkVXOIg92E3WMtKbl+3Dy6JBNLMQr3IOJXL0EX689o
+ ZD9gYwB5h+KDNcNi3aD+JeA=
+X-Google-Smtp-Source: APXvYqzKb8tjOeoCI8AzsO+4z++dPP/ULaQZp6gr6h6r6es6IvQkp36J1xiKdLzhEeJLLjCw/FoCqA==
+X-Received: by 2002:ad4:57b1:: with SMTP id g17mr13352866qvx.167.1583122886348; 
+ Sun, 01 Mar 2020 20:21:26 -0800 (PST)
 Received: from [192.168.1.117] ([75.102.135.197])
- by smtp.googlemail.com with ESMTPSA id c13sm3541206qtv.37.2020.03.01.20.18.43
+ by smtp.googlemail.com with ESMTPSA id z6sm9567814qto.86.2020.03.01.20.21.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 01 Mar 2020 20:18:44 -0800 (PST)
+ Sun, 01 Mar 2020 20:21:25 -0800 (PST)
 Subject: Re: [PATCH 00/10] Kendryte k210 SoC boards support
-To: Damien Le Moal <Damien.LeMoal@wdc.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>
+To: Anup Patel <anup@brainfault.org>
 References: <20200212103432.660256-1-damien.lemoal@wdc.com>
  <5be71201-962c-5db6-c330-f30a770c4034@gmail.com>
  <BYAPR04MB581679CF61DF51E1588D7960E7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
  <789d9de4-8b76-19ff-15bc-eaef6d274173@gmail.com>
- <BYAPR04MB5816207C9B451E1C663B1986E7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <CAAhSdy3+WU31NtXyrYmfSRhhD2k1Rv8tk2pLe+ESYTpj=+LnGA@mail.gmail.com>
 From: Sean Anderson <seanga2@gmail.com>
 Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
  mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
@@ -92,25 +89,25 @@ Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
  zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
  iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
  S5hN3/mP5UeooFHb
-Message-ID: <d5851a09-6ffa-884d-ffcb-b30a2377f2f5@gmail.com>
-Date: Sun, 1 Mar 2020 23:18:43 -0500
+Message-ID: <97ac252d-cf89-f259-55d5-49651068bddd@gmail.com>
+Date: Sun, 1 Mar 2020 23:21:24 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <BYAPR04MB5816207C9B451E1C663B1986E7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+In-Reply-To: <CAAhSdy3+WU31NtXyrYmfSRhhD2k1Rv8tk2pLe+ESYTpj=+LnGA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200301_201848_316293_F3C0C380 
-X-CRM114-Status: GOOD (  20.83  )
+X-CRM114-CacheID: sfid-20200301_202128_038534_A1928BA3 
+X-CRM114-Status: GOOD (  16.59  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:f44 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -136,76 +133,47 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <Anup.Patel@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 3/1/20 11:11 PM, Damien Le Moal wrote:
-> On 2020/03/02 12:53, Sean Anderson wrote:
+On 3/1/20 11:17 PM, Anup Patel wrote:
+> On Mon, Mar 2, 2020 at 9:23 AM Sean Anderson <seanga2@gmail.com> wrote:
+>>
 >> On 3/1/20 10:01 PM, Damien Le Moal wrote:
 >>> On 2020/02/29 5:32, Sean Anderson wrote:
 >>>> Hi,
 >>>>
->>>> When booting from U-Boot I get an OOM. Perhaps this is related to th=
-e
+>>>> When booting from U-Boot I get an OOM. Perhaps this is related to the
 >>>> second cpu not coming up?
 >>>
 >>> Unlikely. It looks like your user space needs 2MB per shell (order 9
->>> allocation). Since you have only 5.5MB free, that may explain the all=
-ocation
+>>> allocation). Since you have only 5.5MB free, that may explain the allocation
 >>> failure (if init is forking another shell especially).
 >>
->> This should be before init comes up; when comparing this to your syslo=
-g
+>> This should be before init comes up; when comparing this to your syslog
 >> output there are several more messages before init gets started.
->=20
-> Ah, yes. Your log shows:
-> [    1.899086] Mem-Info:
-> [    1.901072] active_anon:0 inactive_anon:0 isolated_anon:0
-> [    1.901072]  active_file:0 inactive_file:0 isolated_file:0
-> [    1.901072]  unevictable:705 dirty:0 writeback:0 unstable:0
-> [    1.901072]  slab_reclaimable:0 slab_unreclaimable:215
-> [    1.901072]  mapped:0 shmem:0 pagetables:0 bounce:0
-> [    1.901072]  free:417 free_pcp:0 free_cma:0
->=20
-> so only 417 free pages, but awapper is asking for 512 pages allocation.=
-=2E. Weird.
-> Did you use the k210 default config ? Something using too much memory f=
-or the
-> board has been added to the config I think.
-
-I am using the default config. I thought it might be the initramfs
-taking too much space on decompression, but I got the same problem when
-using an uncompressed initramfs.
-
->>> For the second core not coming up, an IPI needs to be sent to the non=
--boot core
->>> to wake it up. A Kendryte thing. U-boot should probably do it before =
-jumping to
->>> the kernel. I thought I had that in the kernel though. Will check aga=
-in.
 >>
->> I think it's a RISC-V thing. I should have U-Boot set up to start linu=
-x
+>>> For the second core not coming up, an IPI needs to be sent to the non-boot core
+>>> to wake it up. A Kendryte thing. U-boot should probably do it before jumping to
+>>> the kernel. I thought I had that in the kernel though. Will check again.
+>>
+>> I think it's a RISC-V thing. I should have U-Boot set up to start linux
 >> on both cores, but something may be misconfigured on that end.
->=20
-> May be. I would need to check the specs again :)
-> I think that normally, the rom boot stage is normally bringing up all c=
-ores ?
-> And the kendryte one does not ? Hence the need to explicitly do it for =
-direct
-> boot (in the kernel) or in u-boot ?
+> 
+> You have to booti or bootm on U-Boot M-mode to make all CPUs jump to
+> Linux NOMMU.
 
-The Kendryte rom brings up all the cores. However, that means that all
-cores are executing the same code at the same time. So (in U-Boot) there
-is a "hart lottery", which picks a hart to do booting from. All the
-other harts instead jump to a loop where they wait for an IPI to tell
-them what to execute. This same process also happened in the Kendryte
-ROM, and will happen again when Linux comes up. The problem could be
-related to my usage of the "go" command vs the full bootm process... I
-will check to see if I have the same problem if I boot directly to
-Linux.
+Ah, I used just "go" for this test since bootm was having some problems
+finding a place for the device tree. Perhaps I should try booting this
+as a legacy standalone image...
+
+> Based on you log, it seems the second CPU is still spinning in U-Boot
+> M-mode and when Linux NOMMU tries to touch memory where second
+> CPU is spinning everything gets corrupted.
 
 --Sean
-
 
