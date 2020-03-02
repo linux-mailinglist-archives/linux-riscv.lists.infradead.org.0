@@ -2,76 +2,96 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E4941755E9
-	for <lists+linux-riscv@lfdr.de>; Mon,  2 Mar 2020 09:23:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91C3017642C
+	for <lists+linux-riscv@lfdr.de>; Mon,  2 Mar 2020 20:41:08 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cNjwUjeyqSUMReZ1hj8pk3fvMoKCAR8VkF8kU/CEAmI=; b=QkVk7+KkB2x6711V81E8Fefyq
-	qIFIcLFjn5oEYWmEUUlCry1SRVOmLIQPdd09emZPmCwCJr/v0+yTTR6mRrUU7xrdpLP2F7y3fSBLB
-	X5o6367oD2Zfp5DdNx3eGPBCuUEwODOwqDeUWp+VDoos+NjGaidioKDqBFMP2RDqbgH7obGDdeaVE
-	GgjYI0OmMrjYsr56/rCAy16JCxapSat9lXAOIC6VSQ1QJztzdsQhbSl98FHPLi1jwDd6hCBS2c8uS
-	8y8zzdKH786hmm7iYt2vaiPuhCb0E1ypcPGDsxiU7rjY92B2fY5WSwVti1ArSUSmZWugEj1wGSM2O
-	WjfHOeagQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Mime-Version:Content-Type:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Fpur9odzhdIzgZKAdXT5OufUWZiXDywyFJGHnsjLJuo=; b=f+8juKIrLdgqqu
+	3tzrhahKmtt4XkWqHM3pyJSriqgI23ympRe2rNWoZhE4W4ZjhPRqWUc6esnZB0FDbBLCUmOWqGScV
+	IO3N8PWybob/ORkJWXQ9VOY+pfiug9SWvLwygYx5PuK3T8BQtQ910z7qDhqzYUyA2S0eOoQmRdjEy
+	lJjPDGkwSMqlp8nsqBbGOCQUiu+wU379qqIr79W1QoebEGVqbikIVb3FmCza9ssSV2PzG3Rv0rJB0
+	DM8quEEWBmY6qWJfJzdTi1xlYg0cVNVlpFttlqhvnTykX7EARz+2mcO58GPfW/23gUy1RG9rKzDNR
+	HLVzF6cOPqp+GPlwl82w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8gLw-0001KE-Tx; Mon, 02 Mar 2020 08:23:04 +0000
-Received: from mail-oi1-f195.google.com ([209.85.167.195])
+	id 1j8qvz-000743-5k; Mon, 02 Mar 2020 19:40:59 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8gLm-0001AM-2Y; Mon, 02 Mar 2020 08:22:55 +0000
-Received: by mail-oi1-f195.google.com with SMTP id i1so9452460oie.8;
- Mon, 02 Mar 2020 00:22:53 -0800 (PST)
+ id 1j8qvq-0006wz-QO
+ for linux-riscv@lists.infradead.org; Mon, 02 Mar 2020 19:40:52 +0000
+Received: by mail-qk1-x742.google.com with SMTP id 11so942035qkd.1
+ for <linux-riscv@lists.infradead.org>; Mon, 02 Mar 2020 11:40:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Fpur9odzhdIzgZKAdXT5OufUWZiXDywyFJGHnsjLJuo=;
+ b=dWCEq9TbdtlIn4IlSjT7wsgDMqKSoAKLzae3C569gQfG+p+Vk79gjYDp0p50OXn9hR
+ Xm7x5cNfSGrA7pZOqbIyHB6YbB5olZ4ep8KMLse+bohRCUq99hLzFTyhfizQ0g1MVv9z
+ PDB5fH+ahTLkKU8vUdes9sSXGelGjiIZoAKN6HTkKzUfig+h5pTHRYeWb9NP7s3wdS9t
+ Tt4WNgQv8yFdtznernPNmQzDX+ip0C+UgbaM/+RzUP5kH1SCJgpVi8ZPrt/2QDdNj0Vc
+ NTeqpeeYYjJCxNEWEDDoAqM078dLwnuNGGPGzRM4Bt0EmoCaK9xyew4usRNSVcQzIQqy
+ 2SAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cNjwUjeyqSUMReZ1hj8pk3fvMoKCAR8VkF8kU/CEAmI=;
- b=gGWGdmCCUVV2NjdtY5+gCUa2PtjQQ0jgU2RZaq3b96JgyQ/M8B6uXA+R1jzjbqh5RH
- QtprIMZ4F8WtRFK2u2vmFiKsbAu7w+fFCEaEl/U8XeN+uVucm4vDdT49wd8sLnyZXEu2
- HkGHTvVkA9z8MW5Tv8XZ8+MebFTy9jpQcmkffo0mtOMRjWXW7v4+WYWcM6o86zmcjXSq
- u1Y3aGe7Ieo9kfIsuaUlWfASTv+WPTQujK6OfhsPwLMBOH5+r65UOykTgPbqNSl4T7Eu
- u3pYQeL8HJAFFFtMdukpJH7HARnuj5H90pq7BVgUbNG5gMA2twe8mv2X9Q/wmr86hkFX
- cezQ==
-X-Gm-Message-State: APjAAAVFV7mgsy85L+8LXz1OCrlOH4ijBO8T9Bz1tkWS3jjxEU+i7orv
- 7Nmtco/PGxCqxAN6U1H2MxW1Z98OD2mTdLTcJjg=
-X-Google-Smtp-Source: APXvYqxOxJxSBMm4mxQtyQaE+vbuwqLPCHyyR1SXxHSga4s6HjiXJaifhzoYpNbqmVOhS7uE1qHfAQr6kjTf+c7mdpQ=
-X-Received: by 2002:aca:b4c3:: with SMTP id
- d186mr10506660oif.131.1583137372687; 
- Mon, 02 Mar 2020 00:22:52 -0800 (PST)
-MIME-Version: 1.0
-References: <1583131666-15531-1-git-send-email-anshuman.khandual@arm.com>
- <1583131666-15531-2-git-send-email-anshuman.khandual@arm.com>
-In-Reply-To: <1583131666-15531-2-git-send-email-anshuman.khandual@arm.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 2 Mar 2020 09:22:41 +0100
-Message-ID: <CAMuHMdUfm0X3cgEDzzF6fs0HQj83OPR=xVjQaT7uVDi2WbtHog@mail.gmail.com>
-Subject: Re: [RFC 1/3] mm/vma: Define a default value for VM_DATA_DEFAULT_FLAGS
-To: Anshuman Khandual <anshuman.khandual@arm.com>
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Fpur9odzhdIzgZKAdXT5OufUWZiXDywyFJGHnsjLJuo=;
+ b=oBrdc1A2TBVJd2w7UjqVZhTcVpeioNJEMwYX9B4/FhYkQLaYNs8itjL9tMBqvtnI8t
+ 0QQYkDNl18nPsvE+BPOUZfecO4p1rna4eBAuy0PzOs+xtq21P/rfeTb4qrht1/aZLrJQ
+ +7hN3SkizawCSNLQ5eEdF5d0e4Vh+aCCNd7l7/6zclyGHJbCHPRTYlu4BEbxt7W2acsb
+ NnEl6FM27Sxdit61ss+qhMoB7a8G7MgoUDTfzgmY4YjVjE9gA+iI9IoKuGZJTGSiKVEn
+ D3oD/WONhCZtjaP5UfQUtO98Zad5I6FutqJPXPkWdCtWCc73YV554w9j8cTGb9xsj1pc
+ +2+w==
+X-Gm-Message-State: ANhLgQ23wfdHIlhxBqtZjwccvEmVIMVgZdhVj9JbFknYl1B703ecFEdg
+ mz85iHCrUBUr71iHbIzzQzwQqw==
+X-Google-Smtp-Source: ADFU+vvIre6Pknx1npljKo6V/87YN9X3Pm++i6mQcGcNAIn71bgolvXPcuZTIRGu9NVtwEvKfxAUQw==
+X-Received: by 2002:ae9:f205:: with SMTP id m5mr857097qkg.152.1583178047563;
+ Mon, 02 Mar 2020 11:40:47 -0800 (PST)
+Received: from dhcp-41-57.bos.redhat.com (nat-pool-bos-t.redhat.com.
+ [66.187.233.206])
+ by smtp.gmail.com with ESMTPSA id s139sm6748558qke.70.2020.03.02.11.40.42
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 02 Mar 2020 11:40:46 -0800 (PST)
+Message-ID: <1583178042.7365.146.camel@lca.pw>
+Subject: Re: [PATCH V14] mm/debug: Add tests validating architecture page
+ table helpers
+From: Qian Cai <cai@lca.pw>
+To: Christophe Leroy <christophe.leroy@c-s.fr>, Anshuman Khandual
+ <anshuman.khandual@arm.com>, linux-mm@kvack.org
+Date: Mon, 02 Mar 2020 14:40:42 -0500
+In-Reply-To: <1582732318.7365.129.camel@lca.pw>
+References: <1581909460-19148-1-git-send-email-anshuman.khandual@arm.com>
+ <1582726182.7365.123.camel@lca.pw>
+ <7c707b7f-ce3d-993b-8042-44fdc1ed28bf@c-s.fr>
+ <1582732318.7365.129.camel@lca.pw>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.22.6 (3.22.6-10.el7) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200302_002254_116816_88BC08B5 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.2 (-)
+X-CRM114-CacheID: sfid-20200302_114050_859593_89FE6048 
+X-CRM114-Status: GOOD (  23.33  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-1.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [geert.uytterhoeven[at]gmail.com]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.195 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -1.5 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.195 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,65 +103,127 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>,
- "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
- Linux-sh list <linux-sh@vger.kernel.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mips@vger.kernel.org,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Linux MM <linux-mm@kvack.org>, Guo Ren <guoren@kernel.org>,
- sparclinux <sparclinux@vger.kernel.org>,
- "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
- linux-riscv@lists.infradead.org, Jonas Bonn <jonas@southpole.se>,
- linux-s390 <linux-s390@vger.kernel.org>,
- arcml <linux-snps-arc@lists.infradead.org>, linux-c6x-dev@linux-c6x.org,
- Brian Cain <bcain@codeaurora.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Parisc List <linux-parisc@vger.kernel.org>, Mark Salter <msalter@redhat.com>,
- Paul Burton <paulburton@kernel.org>,
- "moderated list:H8/300 ARCHITECTURE" <uclinux-h8-devel@lists.sourceforge.jp>,
- "open list:TENSILICA XTENSA PORT \(xtensa\)" <linux-xtensa@linux-xtensa.org>,
- Jeff Dike <jdike@addtoit.com>, linux-um <linux-um@lists.infradead.org>,
- linux-m68k <linux-m68k@lists.linux-m68k.org>,
- Openrisc <openrisc@lists.librecores.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Guan Xuetao <gxt@pku.edu.cn>, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Richard Henderson <rth@twiddle.net>, Chris Zankel <chris@zankel.net>,
- Michal Simek <monstr@monstr.eu>, Tony Luck <tony.luck@intel.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- Vineet Gupta <vgupta@synopsys.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Ralf Baechle <ralf@linux-mips.org>, alpha <linux-alpha@vger.kernel.org>,
- nios2-dev@lists.rocketboards.org, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Paul Mackerras <paulus@samba.org>,
+ "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
+ x86@kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ linux-snps-arc@lists.infradead.org, Vasily Gorbik <gor@linux.ibm.com>,
+ Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Vineet Gupta <vgupta@synopsys.com>, linux-kernel@vger.kernel.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Mar 2, 2020 at 7:48 AM Anshuman Khandual
-<anshuman.khandual@arm.com> wrote:
-> There are many platforms with exact same value for VM_DATA_DEFAULT_FLAGS
-> This creates a default value for VM_DATA_DEFAULT_FLAGS in line with the
-> existing VM_STACK_DEFAULT_FLAGS. While here, also define some more macros
-> with standard VMA access flag combinations that are used frequently across
-> many platforms. Apart from simplification, this reduces code duplication
-> as well.
+On Wed, 2020-02-26 at 10:51 -0500, Qian Cai wrote:
+> On Wed, 2020-02-26 at 15:45 +0100, Christophe Leroy wrote:
+> > 
+> > Le 26/02/2020 à 15:09, Qian Cai a écrit :
+> > > On Mon, 2020-02-17 at 08:47 +0530, Anshuman Khandual wrote:
+> > > > This adds tests which will validate architecture page table helpers and
+> > > > other accessors in their compliance with expected generic MM semantics.
+> > > > This will help various architectures in validating changes to existing
+> > > > page table helpers or addition of new ones.
+> > > > 
+> > > > This test covers basic page table entry transformations including but not
+> > > > limited to old, young, dirty, clean, write, write protect etc at various
+> > > > level along with populating intermediate entries with next page table page
+> > > > and validating them.
+> > > > 
+> > > > Test page table pages are allocated from system memory with required size
+> > > > and alignments. The mapped pfns at page table levels are derived from a
+> > > > real pfn representing a valid kernel text symbol. This test gets called
+> > > > inside kernel_init() right after async_synchronize_full().
+> > > > 
+> > > > This test gets built and run when CONFIG_DEBUG_VM_PGTABLE is selected. Any
+> > > > architecture, which is willing to subscribe this test will need to select
+> > > > ARCH_HAS_DEBUG_VM_PGTABLE. For now this is limited to arc, arm64, x86, s390
+> > > > and ppc32 platforms where the test is known to build and run successfully.
+> > > > Going forward, other architectures too can subscribe the test after fixing
+> > > > any build or runtime problems with their page table helpers. Meanwhile for
+> > > > better platform coverage, the test can also be enabled with CONFIG_EXPERT
+> > > > even without ARCH_HAS_DEBUG_VM_PGTABLE.
+> > > > 
+> > > > Folks interested in making sure that a given platform's page table helpers
+> > > > conform to expected generic MM semantics should enable the above config
+> > > > which will just trigger this test during boot. Any non conformity here will
+> > > > be reported as an warning which would need to be fixed. This test will help
+> > > > catch any changes to the agreed upon semantics expected from generic MM and
+> > > > enable platforms to accommodate it thereafter.
+> > > 
+> > > How useful is this that straightly crash the powerpc?
+> > > 
+> > > [   23.263425][    T1] debug_vm_pgtable: debug_vm_pgtable: Validating
+> > > architecture page table helpers
+> > > [   23.263625][    T1] ------------[ cut here ]------------
+> > > [   23.263649][    T1] kernel BUG at arch/powerpc/mm/pgtable.c:274!
+> > 
+> > The problem on PPC64 is known and has to be investigated and fixed.
+> 
+> It might be interesting to hear what powerpc64 maintainers would say about it
+> and if it is actually worth "fixing" in the arch code, but that BUG_ON() was
+> there since 2009 and had not been exposed until this patch comes alone?
 
-> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+This patch below makes it works on powerpc64 in order to dodge the BUG_ON()s in 
+assert_pte_locked() triggered by pte_clear_tests().
 
->  arch/m68k/include/asm/page.h       |  3 ---
 
-For m68k:
-Acked-by: Geert Uytterhoeven <geert@linux-m68k.org>
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
+index 96dd7d574cef..50b385233971 100644
+--- a/mm/debug_vm_pgtable.c
++++ b/mm/debug_vm_pgtable.c
+@@ -55,6 +55,8 @@
+ #define RANDOM_ORVALUE	GENMASK(BITS_PER_LONG - 1, S390_MASK_BITS)
+ #define RANDOM_NZVALUE	GENMASK(7, 0)
+ 
++unsigned long vaddr;
++
+ static void __init pte_basic_tests(unsigned long pfn, pgprot_t prot)
+ {
+ 	pte_t pte = pfn_pte(pfn, prot);
+@@ -256,7 +258,7 @@ static void __init pte_clear_tests(struct mm_struct *mm,
+pte_t *ptep)
+ 
+ 	pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
+ 	WRITE_ONCE(*ptep, pte);
+-	pte_clear(mm, 0, ptep);
++	pte_clear(mm, vaddr, ptep);
+ 	pte = READ_ONCE(*ptep);
+ 	WARN_ON(!pte_none(pte));
+ }
+@@ -310,8 +312,9 @@ void __init debug_vm_pgtable(void)
+ 	pgtable_t saved_ptep;
+ 	pgprot_t prot;
+ 	phys_addr_t paddr;
+-	unsigned long vaddr, pte_aligned, pmd_aligned;
++	unsigned long pte_aligned, pmd_aligned;
+ 	unsigned long pud_aligned, p4d_aligned, pgd_aligned;
++	spinlock_t *ptl;
+ 
+ 	pr_info("Validating architecture page table helpers\n");
+ 	prot = vm_get_page_prot(VMFLAGS);
+@@ -344,7 +347,7 @@ void __init debug_vm_pgtable(void)
+ 	p4dp = p4d_alloc(mm, pgdp, vaddr);
+ 	pudp = pud_alloc(mm, p4dp, vaddr);
+ 	pmdp = pmd_alloc(mm, pudp, vaddr);
+-	ptep = pte_alloc_map(mm, pmdp, vaddr);
++	ptep = pte_alloc_map_lock(mm, pmdp, vaddr, &ptl);
+ 
+ 	/*
+ 	 * Save all the page table page addresses as the page table
+@@ -370,7 +373,7 @@ void __init debug_vm_pgtable(void)
+ 	p4d_clear_tests(mm, p4dp);
+ 	pgd_clear_tests(mm, pgdp);
+ 
+-	pte_unmap(ptep);
++	pte_unmap_unlock(ptep, ptl);
+ 
+ 	pmd_populate_tests(mm, pmdp, saved_ptep);
+ 	pud_populate_tests(mm, pudp, saved_pmdp);
 
