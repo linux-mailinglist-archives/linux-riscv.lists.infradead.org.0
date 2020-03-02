@@ -2,59 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F270175213
-	for <lists+linux-riscv@lfdr.de>; Mon,  2 Mar 2020 04:23:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6971175264
+	for <lists+linux-riscv@lfdr.de>; Mon,  2 Mar 2020 04:49:20 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:To:Subject:From:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JsBOGn+dA9jiHLS7Ht6dG2JMGAl+7hzCwbUMPLlyHPs=; b=WwU5AVEkdgmCV+
-	CMu3NoYhUJXIXLr630z6bTt4rs/852UqSQL1H0hI0Wu3LFn6395tx/q/UNsCYjlkcSSMVQNXrk+zj
-	6c1Fk50f3Y6K4CAwqxW4oPgUZhNr4gMiAASTC5GaFn7zp3BO1EdaSbYH6NzpQ38YayB1LLyABlR4t
-	hag7MbiZiUcYzWYcYyqtVO9FhV0C9Ej4hIerT/DB+2X0S3/3x2PpdQsmPWnDuZVT7mJBbylbXbvfu
-	LP+cTU+Ho14B7AS0MSCMNRJBFpTcQnfd7kJzy/uWA/iC7FX2KWzYKd+P0YUWRd7Sqi85g76hKb+U8
-	Otmr79h5C9yds9JcwLqw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=KYlGv+qa38/0hm1EdbcftOoa0phay5E3DEbDcdHqiqc=; b=k5z+prRis14exSf+s2gbU5x4J
+	r9L5wkxgVGXVN8+Tn3SaEyppX07lqXh+VJ9ZpzPjRR7zuIKuIVOxfMP0Ei+KCvkzpYRiVmGyGYS0J
+	KFy0YFJ1lhvPepMYN7AoWww9+rirzeYt8qUuyGYZCSfD7GSwHtZCWJcKibX7l9p9AFAn00Vge0Nsm
+	vm4J5eoBgIPrrEndXqijOdoJPQkNCWSsmCwZ31A+453VS5pQiHtg8jgXuzrZCNMy3deqT3JP7CZvw
+	rsGQ+2p/l7z9rSXnaCpqXFxvyEg8uesB4qId3YzS9Rh38ZdJXb4ihAiOeM3Y8C2K0Gw4jYcwCgBAR
+	0uLrCj/Qw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8bfu-0000ej-Ll; Mon, 02 Mar 2020 03:23:22 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8bfa-0000Ti-6Y; Mon, 02 Mar 2020 03:23:04 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 259AEFEC;
- Sun,  1 Mar 2020 19:22:59 -0800 (PST)
-Received: from [10.163.1.119] (unknown [10.163.1.119])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BBB5D3F6CF;
- Sun,  1 Mar 2020 19:22:50 -0800 (PST)
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Subject: Re: [PATCH] mm/debug: Add tests validating arch page table helpers
- for core features
-To: Christophe Leroy <christophe.leroy@c-s.fr>, linux-mm@kvack.org
-References: <1582799637-11786-1-git-send-email-anshuman.khandual@arm.com>
- <2be41c29-500c-50af-f915-1493846ae9e5@c-s.fr>
-Message-ID: <4343eda9-7df2-a13c-0125-cf784c81ce14@arm.com>
-Date: Mon, 2 Mar 2020 08:52:52 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+	id 1j8c4x-0001Ei-Au; Mon, 02 Mar 2020 03:49:15 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j8c4u-0001Dv-D9
+ for linux-riscv@lists.infradead.org; Mon, 02 Mar 2020 03:49:13 +0000
+Received: by mail-wr1-x442.google.com with SMTP id j16so10713674wrt.3
+ for <linux-riscv@lists.infradead.org>; Sun, 01 Mar 2020 19:49:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KYlGv+qa38/0hm1EdbcftOoa0phay5E3DEbDcdHqiqc=;
+ b=N0daixAtB8YrFBQB4W8h71U3eU7SH67jheuBRmI9kGgyZOsguPFIgOzqw+AYgNV1aw
+ uEuaiqIVEOCXtvedgDkFByKirb1yCvt57hl5yTMW2FKeKwxZ6ol1fOFE9WAAFP7a3d6r
+ cnfk8C5XnEkDaoBAs4TE+n6G4DQI7Isf3geEwEmEmULLCST4TEleWHiJNqSev9kcaVX8
+ y92qp+FiE0WgarZS5798swL330+cWgbLfQcB4LF+Yjbu3TGqxaDyKs6wfZ7Sy36Qkfz6
+ Of6KSiRiorTIbxJKvK4SFwAc2PfFnNfkTZG4FwdrR27pbjdzJ3dv768dKtAYxFB2kOjD
+ C0wQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KYlGv+qa38/0hm1EdbcftOoa0phay5E3DEbDcdHqiqc=;
+ b=FsaF0UYVpQYOBNQvn/Kv1cgqIc+v13SyyRTSleIscQR4vgsdWFz6GfAlzW6bRSlT01
+ x18s1tgryiL3pWC+XE8tbOELg5k6arsnv3M52UCBKWcsPbeGkAUYUIMhRm4LGpMsUchA
+ GBJdiw7XkroiQUv8oG22usjRUwmAXZjzraIqtVh5IHjJZfQLvdACTO9G/Kb8h07tuMDo
+ n76YPjrEODsX0huN422c28xivnd2KYX+couifrijLcP50kjOyfg3hhCiPh0vIMRuU1oD
+ VrCp065BDupgP4X4ZRCBelLofzzZJ/JVKJtYFADJUaFjSc/q7nnlzz0/zKt27cOfE6yV
+ zukA==
+X-Gm-Message-State: APjAAAUNZzSnCVanSaTk3HYH0iOMHeJO1CWC/5Z7uVaCoZiuPikAjD/L
+ 4Ka76GdtiZF69oIdm82VgfKl+KJWdGfjh1EE6VvIPA==
+X-Google-Smtp-Source: APXvYqxJ5AwItaG2AHFvFibSyAI9WJ/gwyMjkRQnB2JrIfz5VYnR3DS/FWpP8lu5ZRIuejRvsBRB7cUIxF0+zlv4neM=
+X-Received: by 2002:a5d:4b50:: with SMTP id w16mr19366924wrs.230.1583120949635; 
+ Sun, 01 Mar 2020 19:49:09 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <2be41c29-500c-50af-f915-1493846ae9e5@c-s.fr>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+References: <20200212103432.660256-1-damien.lemoal@wdc.com>
+ <20200212103432.660256-3-damien.lemoal@wdc.com>
+In-Reply-To: <20200212103432.660256-3-damien.lemoal@wdc.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Mon, 2 Mar 2020 09:18:58 +0530
+Message-ID: <CAAhSdy1eAfuaBo-KG=2pb8jX4O+XdVy4hNm0kaoo6b6kmWQYPA@mail.gmail.com>
+Subject: Re: [PATCH 02/10] riscv: Force flat memory model with no-mmu
+To: Damien Le Moal <damien.lemoal@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200301_192302_335624_0FC3D4C9 
-X-CRM114-Status: GOOD (  26.21  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200301_194912_587373_570EE088 
+X-CRM114-Status: GOOD (  12.84  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,542 +88,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Paul Mackerras <paulus@samba.org>,
- "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, x86@kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- linux-snps-arc@lists.infradead.org, Vasily Gorbik <gor@linux.ibm.com>,
- Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Vineet Gupta <vgupta@synopsys.com>, linux-kernel@vger.kernel.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 02/27/2020 04:59 PM, Christophe Leroy wrote:
-> 
-> 
-> Le 27/02/2020 à 11:33, Anshuman Khandual a écrit :
->> This adds new tests validating arch page table helpers for these following
->> core memory features. These tests create and test specific mapping types at
->> various page table levels.
->>
->> * SPECIAL mapping
->> * PROTNONE mapping
->> * DEVMAP mapping
->> * SOFTDIRTY mapping
->> * SWAP mapping
->> * MIGRATION mapping
->> * HUGETLB mapping
->> * THP mapping
->>
->> Cc: Andrew Morton <akpm@linux-foundation.org>
->> Cc: Mike Rapoport <rppt@linux.ibm.com>
->> Cc: Vineet Gupta <vgupta@synopsys.com>
->> Cc: Catalin Marinas <catalin.marinas@arm.com>
->> Cc: Will Deacon <will@kernel.org>
->> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
->> Cc: Paul Mackerras <paulus@samba.org>
->> Cc: Michael Ellerman <mpe@ellerman.id.au>
->> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
->> Cc: Vasily Gorbik <gor@linux.ibm.com>
->> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
->> Cc: Thomas Gleixner <tglx@linutronix.de>
->> Cc: Ingo Molnar <mingo@redhat.com>
->> Cc: Borislav Petkov <bp@alien8.de>
->> Cc: "H. Peter Anvin" <hpa@zytor.com>
->> Cc: Kirill A. Shutemov <kirill@shutemov.name>
->> Cc: Paul Walmsley <paul.walmsley@sifive.com>
->> Cc: Palmer Dabbelt <palmer@dabbelt.com>
->> Cc: linux-snps-arc@lists.infradead.org
->> Cc: linux-arm-kernel@lists.infradead.org
->> Cc: linuxppc-dev@lists.ozlabs.org
->> Cc: linux-s390@vger.kernel.org
->> Cc: linux-riscv@lists.infradead.org
->> Cc: x86@kernel.org
->> Cc: linux-arch@vger.kernel.org
->> Cc: linux-kernel@vger.kernel.org
->> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
->> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
->> ---
->> Tested on arm64 and x86 platforms without any test failures. But this has
->> only been built tested on several other platforms. Individual tests need
->> to be verified on all current enabling platforms for the test i.e s390,
->> ppc32, arc etc.
->>
->> This patch must be applied on v5.6-rc3 after these patches
->>
->> 1. https://patchwork.kernel.org/patch/11385057/
->> 2. https://patchwork.kernel.org/patch/11407715/
->>
->> OR
->>
->> This patch must be applied on linux-next (next-20200227) after this patch
->>
->> 2. https://patchwork.kernel.org/patch/11407715/
->>
->>   mm/debug_vm_pgtable.c | 310 +++++++++++++++++++++++++++++++++++++++++-
->>   1 file changed, 309 insertions(+), 1 deletion(-)
->>
->> diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
->> index 96dd7d574cef..3fb90d5b604e 100644
->> --- a/mm/debug_vm_pgtable.c
->> +++ b/mm/debug_vm_pgtable.c
->> @@ -41,6 +41,44 @@
->>    * wrprotect(entry)        = A write protected and not a write entry
->>    * pxx_bad(entry)        = A mapped and non-table entry
->>    * pxx_same(entry1, entry2)    = Both entries hold the exact same value
->> + *
->> + * Specific feature operations
->> + *
->> + * pte_mkspecial(entry)        = Creates a special entry at PTE level
->> + * pte_special(entry)        = Tests a special entry at PTE level
->> + *
->> + * pte_protnone(entry)        = Tests a no access entry at PTE level
->> + * pmd_protnone(entry)        = Tests a no access entry at PMD level
->> + *
->> + * pte_mkdevmap(entry)        = Creates a device entry at PTE level
->> + * pmd_mkdevmap(entry)        = Creates a device entry at PMD level
->> + * pud_mkdevmap(entry)        = Creates a device entry at PUD level
->> + * pte_devmap(entry)        = Tests a device entry at PTE level
->> + * pmd_devmap(entry)        = Tests a device entry at PMD level
->> + * pud_devmap(entry)        = Tests a device entry at PUD level
->> + *
->> + * pte_mksoft_dirty(entry)    = Creates a soft dirty entry at PTE level
->> + * pmd_mksoft_dirty(entry)    = Creates a soft dirty entry at PMD level
->> + * pte_swp_mksoft_dirty(entry)    = Creates a soft dirty swap entry at PTE level
->> + * pmd_swp_mksoft_dirty(entry)    = Creates a soft dirty swap entry at PMD level
->> + * pte_soft_dirty(entry)    = Tests a soft dirty entry at PTE level
->> + * pmd_soft_dirty(entry)    = Tests a soft dirty entry at PMD level
->> + * pte_swp_soft_dirty(entry)    = Tests a soft dirty swap entry at PTE level
->> + * pmd_swp_soft_dirty(entry)    = Tests a soft dirty swap entry at PMD level
->> + * pte_clear_soft_dirty(entry)       = Clears a soft dirty entry at PTE level
->> + * pmd_clear_soft_dirty(entry)       = Clears a soft dirty entry at PMD level
->> + * pte_swp_clear_soft_dirty(entry) = Clears a soft dirty swap entry at PTE level
->> + * pmd_swp_clear_soft_dirty(entry) = Clears a soft dirty swap entry at PMD level
->> + *
->> + * pte_mkhuge(entry)        = Creates a HugeTLB entry at given level
->> + * pte_huge(entry)        = Tests a HugeTLB entry at given level
->> + *
->> + * pmd_trans_huge(entry)    = Tests a trans huge page at PMD level
->> + * pud_trans_huge(entry)    = Tests a trans huge page at PUD level
->> + * pmd_present(entry)        = Tests an entry points to memory at PMD level
->> + * pud_present(entry)        = Tests an entry points to memory at PUD level
->> + * pmd_mknotpresent(entry)    = Invalidates an PMD entry for MMU
->> + * pud_mknotpresent(entry)    = Invalidates an PUD entry for MMU
->>    */
->>   #define VMFLAGS    (VM_READ|VM_WRITE|VM_EXEC)
->>   @@ -287,6 +325,233 @@ static void __init pmd_populate_tests(struct mm_struct *mm, pmd_t *pmdp,
->>       WARN_ON(pmd_bad(pmd));
->>   }
->>   +#ifdef CONFIG_ARCH_HAS_PTE_SPECIAL
-> 
-> Can we avoid ifdefs unless necessary ?
-> 
-> In mm/memory.c I see things like the following, it means pte_special() always exist and a #ifdef is not necessary.
+On Wed, Feb 12, 2020 at 4:04 PM Damien Le Moal <damien.lemoal@wdc.com> wrote:
+>
+> Compilation errors trigger if ARCH_SPARSEMEM_ENABLE is enabled for
+> a nommu kernel. Since the sparsemem model does not make sense anyway
+> for the nommu case, do not allow selecting this option to always use
+> the flatmem model.
+>
+> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
 
-True, #ifdef here can be dropped here, done.
+LGTM.
 
-> 
->     if (IS_ENABLED(CONFIG_ARCH_HAS_PTE_SPECIAL)) {
->         if (likely(!pte_special(pte)))
->             goto check_pfn;
->         if (vma->vm_ops && vma->vm_ops->find_special_page)
->             return vma->vm_ops->find_special_page(vma, addr);
->         if (vma->vm_flags & (VM_PFNMAP | VM_MIXEDMAP))
->             return NULL;
->         if (is_zero_pfn(pfn))
->             return NULL;
->         if (pte_devmap(pte))
->             return NULL;
-> 
->         print_bad_pte(vma, addr, pte, NULL);
->         return NULL;
->     }
-> 
->> +static void __init pte_special_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pte_t pte = pfn_pte(pfn, prot);
->> +
->> +    WARN_ON(!pte_special(pte_mkspecial(pte)));
->> +}
->> +#else
->> +static void __init pte_special_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +
->> +#ifdef CONFIG_NUMA_BALANCING
-> 
-> Same here, this ifdef shouldn't be necessary because in /include/asm-generic/pgtable.h we have the following, so a if (IS_ENABLED()) should be enough.
-> 
-> #ifndef CONFIG_NUMA_BALANCING
-> /*
->  * Technically a PTE can be PROTNONE even when not doing NUMA balancing but
->  * the only case the kernel cares is for NUMA balancing and is only ever set
->  * when the VMA is accessible. For PROT_NONE VMAs, the PTEs are not marked
->  * _PAGE_PROTNONE so by by default, implement the helper as "always no". It
->  * is the responsibility of the caller to distinguish between PROT_NONE
->  * protections and NUMA hinting fault protections.
->  */
-> static inline int pte_protnone(pte_t pte)
-> {
->     return 0;
-> }
-> 
-> static inline int pmd_protnone(pmd_t pmd)
-> {
->     return 0;
-> }
-> #endif /* CONFIG_NUMA_BALANCING */
+Reviewed-by: Anup Patel <anup@brainfault.org>
 
-True,  #ifdef here can be dropped, done. There is something I had missed
-before, pfn_pmd() requires #ifdef CONFIG_TRANSPARENT_HUGEPAGE instead. We
-need a pmd_t here with given prot. We cannot go via pfn_pte() followed by
-pte_pmd(), as the later is platform specific and not available in general.
+Regards,
+Anup
 
-> 
->> +static void __init pte_protnone_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pte_t pte = pfn_pte(pfn, prot);
->> +
->> +    WARN_ON(!pte_protnone(pte));
->> +    WARN_ON(!pte_present(pte));
->> +}
->> +
->> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pmd_t pmd = pfn_pmd(pfn, prot);
->> +
->> +    WARN_ON(!pmd_protnone(pmd));
->> +    WARN_ON(!pmd_present(pmd));
->> +}
->> +#else
->> +static void __init pte_protnone_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +
->> +#ifdef CONFIG_ARCH_HAS_PTE_DEVMAP
-> 
-> Same here, in include/linux/mm.h we have:
-> 
-> #ifndef CONFIG_ARCH_HAS_PTE_DEVMAP
-> static inline int pte_devmap(pte_t pte)
-> {
->     return 0;
-> }
-> #endif
-> 
-> 
->> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pte_t pte = pfn_pte(pfn, prot);
->> +
->> +    WARN_ON(!pte_devmap(pte_mkdevmap(pte)));
->> +}
->> +
->> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
-> 
-> Same. In inlude/asm-generic/pgtables.h you have:
-> 
-> #if !defined(CONFIG_ARCH_HAS_PTE_DEVMAP) || !defined(CONFIG_TRANSPARENT_HUGEPAGE)
-> static inline int pmd_devmap(pmd_t pmd)
-> {
->     return 0;
-> }
-> static inline int pud_devmap(pud_t pud)
-> {
->     return 0;
-> }
-> static inline int pgd_devmap(pgd_t pgd)
-> {
->     return 0;
-> }
-> #endif
-> 
->> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pmd_t pmd = pfn_pmd(pfn, prot);
->> +
->> +    WARN_ON(!pmd_devmap(pmd_mkdevmap(pmd)));
->> +}
->> +
->> +#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
-> 
-> Same, see above
-
-Even though pxx_devmap() fallback definitions are present, pxx_mkdevmap()
-ones are still missing. We will have to add them first as a pre-requisite
-patch (which might not be popular without any non-debug use case) in order
-to drop these #ifdefs here.
-
-> 
->> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pud_t pud = pfn_pud(pfn, prot);
->> +
->> +    WARN_ON(!pud_devmap(pud_mkdevmap(pud)));
->> +}
->> +#else
->> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +#else
->> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +#else
->> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +
->> +#ifdef CONFIG_MEM_SOFT_DIRTY
-> 
-> Same, they always exist, see include/asm-generic/pgtable.h
-
-Yeah, this can be dropped. Though will have to again add TRANSPARENT_HUGEPAGE
-to protect pfn_pmd() as explained before.
-
-> 
->> +static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pte_t pte = pfn_pte(pfn, prot);
->> +
->> +    WARN_ON(!pte_soft_dirty(pte_mksoft_dirty(pte)));
->> +    WARN_ON(pte_soft_dirty(pte_clear_soft_dirty(pte)));
->> +}
->> +
->> +static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pte_t pte = pfn_pte(pfn, prot);
->> +
->> +    WARN_ON(!pte_swp_soft_dirty(pte_swp_mksoft_dirty(pte)));
->> +    WARN_ON(pte_swp_soft_dirty(pte_swp_clear_soft_dirty(pte)));
->> +}
->> +
->> +#ifdef CONFIG_ARCH_ENABLE_THP_MIGRATION
-> 
-> Same
-
-True, #ifdef here can be dropped, done.
-
-> 
->> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pmd_t pmd = pfn_pmd(pfn, prot);
->> +
->> +    WARN_ON(!pmd_soft_dirty(pmd_mksoft_dirty(pmd)));
->> +    WARN_ON(pmd_soft_dirty(pmd_clear_soft_dirty(pmd)));
->> +}
->> +
->> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pmd_t pmd = pfn_pmd(pfn, prot);
->> +
->> +    WARN_ON(!pmd_swp_soft_dirty(pmd_swp_mksoft_dirty(pmd)));
->> +    WARN_ON(pmd_swp_soft_dirty(pmd_swp_clear_soft_dirty(pmd)));
->> +}
->> +#else
->> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +}
->> +#endif
->> +#else
->> +static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +}
->> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +}
->> +#endif
->> +
->> +static void __init pte_swap_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    swp_entry_t swp;
->> +    pte_t pte;
->> +
->> +    pte = pfn_pte(pfn, prot);
->> +    swp = __pte_to_swp_entry(pte);
->> +    WARN_ON(!pte_same(pte, __swp_entry_to_pte(swp)));
->> +}
->> +
->> +#ifdef CONFIG_ARCH_ENABLE_THP_MIGRATION
->> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    swp_entry_t swp;
->> +    pmd_t pmd;
->> +
->> +    pmd = pfn_pmd(pfn, prot);
->> +    swp = __pmd_to_swp_entry(pmd);
->> +    WARN_ON(!pmd_same(pmd, __swp_entry_to_pmd(swp)));
->> +}
->> +#else
->> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +
->> +#ifdef CONFIG_MIGRATION
-> 
-> Same. See include/linux/swapops.h
-
-True, #ifdef here can be dropped, done. Though will have to again add
-back TRANSPARENT_HUGEPAGE to protect pfn_pmd() as explained before.
-
-> 
->> +static void __init swap_migration_tests(struct page *page)
->> +{
->> +    swp_entry_t swp;
->> +
->> +    /*
->> +     * make_migration_entry() expects given page to be
->> +     * locked, otherwise it stumbles upon a BUG_ON().
->> +     */
->> +    __SetPageLocked(page);
->> +    swp = make_migration_entry(page, 1);
->> +    WARN_ON(!is_migration_entry(swp));
->> +    WARN_ON(!is_write_migration_entry(swp));
->> +
->> +    make_migration_entry_read(&swp);
->> +    WARN_ON(!is_migration_entry(swp));
->> +    WARN_ON(is_write_migration_entry(swp));
->> +
->> +    swp = make_migration_entry(page, 0);
->> +    WARN_ON(!is_migration_entry(swp));
->> +    WARN_ON(is_write_migration_entry(swp));
->> +    __ClearPageLocked(page);
->> +}
->> +#else
->> +static void __init swap_migration_tests(struct page *page) { }
->> +#endif
->> +
->> +#ifdef CONFIG_HUGETLB_PAGE
->> +static void __init hugetlb_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +#ifdef CONFIG_ARCH_WANT_GENERAL_HUGETLB
->> +    pte_t pte = pfn_pte(pfn, prot);
->> +
->> +    WARN_ON(!pte_huge(pte_mkhuge(pte)));
-> 
-> We also need tests on hugepd stuff
-
-Sure, but lets discuss this on the other thread.
-
-> 
->> +#endif
->> +}
->> +#else
->> +static void __init hugetlb_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +
->> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
-> 
-> Same, see include/asm-generic/pgtable.h
-
-This is required to protect pxx_mknotpresent() which does not have a
-fall back and pfn_pmd()/pfn_pud() helpers have similar situation as
-well.
-
-> 
->> +static void __init pmd_thp_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pmd_t pmd;
->> +
->> +    /*
->> +     * pmd_trans_huge() and pmd_present() must return negative
->> +     * after MMU invalidation with pmd_mknotpresent().
->> +     */
->> +    pmd = pfn_pmd(pfn, prot);
->> +    WARN_ON(!pmd_trans_huge(pmd_mkhuge(pmd)));
->> +
->> +    /*
->> +     * Though platform specific test exclusions are not ideal,
->> +     * in this case S390 does not define pmd_mknotpresent()
->> +     * which should be tested on other platforms enabling THP.
->> +     */
->> +#ifndef CONFIG_S390
->> +    WARN_ON(pmd_trans_huge(pmd_mknotpresent(pmd)));
->> +    WARN_ON(pmd_present(pmd_mknotpresent(pmd)));
->> +#endif
-> 
-> Can we add a stub on S390 instead ?
-
-Actually we dont have to. pmd_mknotpresent() is required for platforms
-that do not have __HAVE_ARCH_PMDP_INVALIDATE. Hence can wrap this code
-with !__HAVE_ARCH_PMDP_INVALIDATE to prevent build failures on such
-platforms like s390.
-
-> 
->> +}
->> +
->> +#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
-> 
-> Same ?
-
-The problem is, neither pud_mknotpresent() nor pfn_pud() have a generic
-fallback definition. So will have to keep this #ifdef.
-
-> 
->> +static void __init pud_thp_tests(unsigned long pfn, pgprot_t prot)
->> +{
->> +    pud_t pud;
->> +
->> +    /*
->> +     * pud_trans_huge() and pud_present() must return negative
->> +     * after MMU invalidation with pud_mknotpresent().
->> +     */
->> +    pud = pfn_pud(pfn, prot);
->> +    WARN_ON(!pud_trans_huge(pud_mkhuge(pud)));
->> +    WARN_ON(pud_trans_huge(pud_mknotpresent(pud)));
->> +    WARN_ON(pud_present(pud_mknotpresent(pud)));
->> +}
->> +#else
->> +static void __init pud_thp_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +#else
->> +static void __init pmd_thp_tests(unsigned long pfn, pgprot_t prot) { }
->> +static void __init pud_thp_tests(unsigned long pfn, pgprot_t prot) { }
->> +#endif
->> +
->>   static unsigned long __init get_random_vaddr(void)
->>   {
->>       unsigned long random_vaddr, random_pages, total_user_pages;
->> @@ -302,13 +567,14 @@ static unsigned long __init get_random_vaddr(void)
->>   void __init debug_vm_pgtable(void)
->>   {
->>       struct mm_struct *mm;
->> +    struct page *page;
->>       pgd_t *pgdp;
->>       p4d_t *p4dp, *saved_p4dp;
->>       pud_t *pudp, *saved_pudp;
->>       pmd_t *pmdp, *saved_pmdp, pmd;
->>       pte_t *ptep;
->>       pgtable_t saved_ptep;
->> -    pgprot_t prot;
->> +    pgprot_t prot, protnone;
->>       phys_addr_t paddr;
->>       unsigned long vaddr, pte_aligned, pmd_aligned;
->>       unsigned long pud_aligned, p4d_aligned, pgd_aligned;
->> @@ -322,6 +588,25 @@ void __init debug_vm_pgtable(void)
->>           return;
->>       }
->>   +    /*
->> +     * swap_migration_tests() requires a dedicated page as it needs to
->> +     * be locked before creating a migration entry from it. Locking the
->> +     * page that actually maps kernel text ('start_kernel') can be real
->> +     * problematic. Lets allocate a dedicated page explicitly for this
->> +     * purpose that will be freed later.
->> +     */
->> +    page = alloc_page(GFP_KERNEL);
-> 
-> Can we do the page allocation and freeing in swap_migration_tests() instead ?
-
-Although all the resources used in the helpers have been allocated in the main
-function itself before being passed down and later freed. But may be just an
-exception could be made for swap_migration_tests() function as the allocated
-page is being exclusively used here. Later on if we need this page for some
-other future tests, then will have to move it back to debug_vm_pgtable().
+> ---
+>  arch/riscv/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index 73f029eae0cc..1a3b5a5276be 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -121,6 +121,7 @@ config ARCH_FLATMEM_ENABLE
+>
+>  config ARCH_SPARSEMEM_ENABLE
+>         def_bool y
+> +       depends on MMU
+>         select SPARSEMEM_VMEMMAP_ENABLE
+>
+>  config ARCH_SELECT_MEMORY_MODEL
+> --
+> 2.24.1
+>
+>
 
