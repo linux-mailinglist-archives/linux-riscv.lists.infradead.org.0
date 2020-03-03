@@ -2,62 +2,93 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42FB2176F00
-	for <lists+linux-riscv@lfdr.de>; Tue,  3 Mar 2020 06:56:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D58D176F0B
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Mar 2020 07:00:17 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wHN7XVzRv0Ok6FQPkedBc4qpZcuBYDDr9N2E8ZiowQI=; b=Sf9NQm3G7OAIoc
-	HRM7tQ0wh3CbqI5Ca11Z2WFw5SSLKdttGckQcTzPkaQDAA+VzxafZsMBgUa7WIfGtsJr6EdXsLxXc
-	5JLIzBW+A1ODB4wWjM7wDeQoXuAAXP2p2QO/hk4FLmGir8/e2ZVDv5heDKkQXx3lJlSWGUOx3ZtQf
-	NMVYcFNGq8oZpbC7w9ZycSUJ3iFPtUFGD+p8qRetrbxBXGCJBouo5FtW4SEGtlqRQCDk28uE849JB
-	OK4IvpCrjgIDyWZwXwYMG88bpZUKHGdOM1QA741E4wVOzC1sa33wM2C/DGbigb/+10ROuiJZrUnzG
-	jOaSkgSmj/PGUVDGgcQg==;
+	List-Owner; bh=ocYA26gERwg/bGzKOX6R9AQoOaFWREyAef/Kd9zo+5s=; b=Hqd0b+Ga+ek2YL
+	Kz9MjKyyFGI3ldcDB+Qyv1ZjheaVZxLrjTUhtV5ELYGBE0aY5C35+Rui07l8j6VkHcAdV87qM/sGP
+	Mo5XNfGDU9et7lsPnOZ75EAgck39Lp/G2oYFmcRmLdBbL0Ce2R9S96cjGtl+FIV6ecLGcn/qGvMoY
+	Pm1DMNpFovFfnmhhI3DmK2HSJUgKRwWW0mPO+pVXJHr/S277BzFtJoM3rnfFIwOUtBUUm1xCXNuB+
+	zeaHmRo7tAHh6nsSOtbvAAeJNSCrsGxWIIOhqKUsOf+OZ42Nz3nCyZqlUlWBkPeNQNqjmU6QJe4P9
+	isn6UmIHXihyRlW7ckpg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j90X8-0000Fw-In; Tue, 03 Mar 2020 05:55:58 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j90Wz-00008V-Qw; Tue, 03 Mar 2020 05:55:51 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8AFF62F;
- Mon,  2 Mar 2020 21:55:46 -0800 (PST)
-Received: from [10.162.16.51] (p8cg001049571a15.blr.arm.com [10.162.16.51])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 88AF23F6CF;
- Mon,  2 Mar 2020 21:55:39 -0800 (PST)
+	id 1j90bC-0000kx-LA; Tue, 03 Mar 2020 06:00:11 +0000
+Received: from pegase1.c-s.fr ([93.17.236.30])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j90ar-0000b8-Lx; Tue, 03 Mar 2020 05:59:52 +0000
+Received: from localhost (mailhub1-int [192.168.12.234])
+ by localhost (Postfix) with ESMTP id 48WmYt2NC7z9tyyX;
+ Tue,  3 Mar 2020 06:59:46 +0100 (CET)
+Authentication-Results: localhost; dkim=pass
+ reason="1024-bit key; insecure key"
+ header.d=c-s.fr header.i=@c-s.fr header.b=sXKIwD1R; dkim-adsp=pass;
+ dkim-atps=neutral
+X-Virus-Scanned: Debian amavisd-new at c-s.fr
+Received: from pegase1.c-s.fr ([192.168.12.234])
+ by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
+ with ESMTP id UVZtmD4b7vsp; Tue,  3 Mar 2020 06:59:46 +0100 (CET)
+Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
+ by pegase1.c-s.fr (Postfix) with ESMTP id 48WmYt108kz9tyyS;
+ Tue,  3 Mar 2020 06:59:46 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=c-s.fr; s=mail;
+ t=1583215186; bh=ocYA26gERwg/bGzKOX6R9AQoOaFWREyAef/Kd9zo+5s=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=sXKIwD1RD3BLfW6HS5aTsLH2zDt5HeqokUB+K7FsxVkoJhvVgR9r7Ff79VBf3fPhg
+ IjF4WeUvoHflMO8+N2ifkTwV8WIp6KloKV0XCSvcbUBFZYWyK3co0cvATpqgmD7E3m
+ B5ViAb14Ei63PR4Qy3/Ndcwn06LEcho6L0JaXjUc=
+Received: from localhost (localhost [127.0.0.1])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id D1E5C8B79A;
+ Tue,  3 Mar 2020 06:59:46 +0100 (CET)
+X-Virus-Scanned: amavisd-new at c-s.fr
+Received: from messagerie.si.c-s.fr ([127.0.0.1])
+ by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
+ with ESMTP id b_l-0DSpkXO5; Tue,  3 Mar 2020 06:59:46 +0100 (CET)
+Received: from [192.168.4.90] (unknown [192.168.4.90])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id 081278B755;
+ Tue,  3 Mar 2020 06:59:44 +0100 (CET)
 Subject: Re: [PATCH V14] mm/debug: Add tests validating architecture page
  table helpers
-To: Qian Cai <cai@lca.pw>, Christophe Leroy <christophe.leroy@c-s.fr>,
+To: Qian Cai <cai@lca.pw>, Anshuman Khandual <anshuman.khandual@arm.com>,
  linux-mm@kvack.org
 References: <1581909460-19148-1-git-send-email-anshuman.khandual@arm.com>
  <1582726182.7365.123.camel@lca.pw>
  <7c707b7f-ce3d-993b-8042-44fdc1ed28bf@c-s.fr>
  <1582732318.7365.129.camel@lca.pw> <1583178042.7365.146.camel@lca.pw>
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Message-ID: <e8516497-f1b9-b222-e219-73b68880ac75@arm.com>
-Date: Tue, 3 Mar 2020 11:25:37 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+From: Christophe Leroy <christophe.leroy@c-s.fr>
+Message-ID: <6757aa1d-7951-69ef-de93-50a7b7b172e0@c-s.fr>
+Date: Tue, 3 Mar 2020 06:59:39 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
 In-Reply-To: <1583178042.7365.146.camel@lca.pw>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200302_215549_964881_43F3B950 
-X-CRM114-Status: GOOD (  24.87  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200302_215950_021492_2D6B1CF3 
+X-CRM114-Status: GOOD (  19.41  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [93.17.236.30 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,7 +120,7 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 
 
-On 03/03/2020 01:10 AM, Qian Cai wrote:
+Le 02/03/2020 à 20:40, Qian Cai a écrit :
 > On Wed, 2020-02-26 at 10:51 -0500, Qian Cai wrote:
 >> On Wed, 2020-02-26 at 15:45 +0100, Christophe Leroy wrote:
 >>>
@@ -139,7 +170,7 @@ On 03/03/2020 01:10 AM, Qian Cai wrote:
 >> and if it is actually worth "fixing" in the arch code, but that BUG_ON() was
 >> there since 2009 and had not been exposed until this patch comes alone?
 > 
-> This patch below makes it works on powerpc64 in order to dodge the BUG_ON()s in 
+> This patch below makes it works on powerpc64 in order to dodge the BUG_ON()s in
 > assert_pte_locked() triggered by pte_clear_tests().
 > 
 > 
@@ -148,117 +179,61 @@ On 03/03/2020 01:10 AM, Qian Cai wrote:
 > --- a/mm/debug_vm_pgtable.c
 > +++ b/mm/debug_vm_pgtable.c
 > @@ -55,6 +55,8 @@
->  #define RANDOM_ORVALUE	GENMASK(BITS_PER_LONG - 1, S390_MASK_BITS)
->  #define RANDOM_NZVALUE	GENMASK(7, 0)
->  
+>   #define RANDOM_ORVALUE	GENMASK(BITS_PER_LONG - 1, S390_MASK_BITS)
+>   #define RANDOM_NZVALUE	GENMASK(7, 0)
+>   
 > +unsigned long vaddr;
 > +
->  static void __init pte_basic_tests(unsigned long pfn, pgprot_t prot)
->  {
->  	pte_t pte = pfn_pte(pfn, prot);
+
+Can we avoid global var ?
+
+>   static void __init pte_basic_tests(unsigned long pfn, pgprot_t prot)
+>   {
+>   	pte_t pte = pfn_pte(pfn, prot);
 > @@ -256,7 +258,7 @@ static void __init pte_clear_tests(struct mm_struct *mm,
 > pte_t *ptep)
->  
->  	pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
->  	WRITE_ONCE(*ptep, pte);
+>   
+>   	pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
+>   	WRITE_ONCE(*ptep, pte);
 > -	pte_clear(mm, 0, ptep);
 > +	pte_clear(mm, vaddr, ptep);
->  	pte = READ_ONCE(*ptep);
->  	WARN_ON(!pte_none(pte));
->  }
+>   	pte = READ_ONCE(*ptep);
+>   	WARN_ON(!pte_none(pte));
+>   }
 > @@ -310,8 +312,9 @@ void __init debug_vm_pgtable(void)
->  	pgtable_t saved_ptep;
->  	pgprot_t prot;
->  	phys_addr_t paddr;
+>   	pgtable_t saved_ptep;
+>   	pgprot_t prot;
+>   	phys_addr_t paddr;
 > -	unsigned long vaddr, pte_aligned, pmd_aligned;
+
+Can we pass local vaddr to pte_clear_tests() instead of making it a 
+global var ?
+
 > +	unsigned long pte_aligned, pmd_aligned;
->  	unsigned long pud_aligned, p4d_aligned, pgd_aligned;
+>   	unsigned long pud_aligned, p4d_aligned, pgd_aligned;
 > +	spinlock_t *ptl;
->  
->  	pr_info("Validating architecture page table helpers\n");
->  	prot = vm_get_page_prot(VMFLAGS);
+>   
+>   	pr_info("Validating architecture page table helpers\n");
+>   	prot = vm_get_page_prot(VMFLAGS);
 > @@ -344,7 +347,7 @@ void __init debug_vm_pgtable(void)
->  	p4dp = p4d_alloc(mm, pgdp, vaddr);
->  	pudp = pud_alloc(mm, p4dp, vaddr);
->  	pmdp = pmd_alloc(mm, pudp, vaddr);
+>   	p4dp = p4d_alloc(mm, pgdp, vaddr);
+>   	pudp = pud_alloc(mm, p4dp, vaddr);
+>   	pmdp = pmd_alloc(mm, pudp, vaddr);
 > -	ptep = pte_alloc_map(mm, pmdp, vaddr);
 > +	ptep = pte_alloc_map_lock(mm, pmdp, vaddr, &ptl);
->  
->  	/*
->  	 * Save all the page table page addresses as the page table
+>   
+>   	/*
+>   	 * Save all the page table page addresses as the page table
 > @@ -370,7 +373,7 @@ void __init debug_vm_pgtable(void)
->  	p4d_clear_tests(mm, p4dp);
->  	pgd_clear_tests(mm, pgdp);
->  
+>   	p4d_clear_tests(mm, p4dp);
+>   	pgd_clear_tests(mm, pgdp);
+>   
 > -	pte_unmap(ptep);
 > +	pte_unmap_unlock(ptep, ptl);
->  
->  	pmd_populate_tests(mm, pmdp, saved_ptep);
->  	pud_populate_tests(mm, pudp, saved_pmdp);
+>   
+>   	pmd_populate_tests(mm, pmdp, saved_ptep);
+>   	pud_populate_tests(mm, pudp, saved_pmdp);
 > 
 
-Below is slightly modified version of your change above and should still
-prevent the bug on powerpc. Will it be possible for you to re-test this
-? Once confirmed, will send a patch enabling this test on powerpc64
-keeping your authorship. Thank you.
-
- mm/debug_vm_pgtable.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
-
-diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
-index 96dd7d574cef..c310f52c2b80 100644
---- a/mm/debug_vm_pgtable.c
-+++ b/mm/debug_vm_pgtable.c
-@@ -250,13 +250,14 @@ static void __init pgd_populate_tests(struct mm_struct *mm, pgd_t *pgdp,
- }
- #endif
-
--static void __init pte_clear_tests(struct mm_struct *mm, pte_t *ptep)
-+static void __init pte_clear_tests(struct mm_struct *mm, pte_t *ptep,
-+                                  unsigned long vaddr)
- {
-        pte_t pte = READ_ONCE(*ptep);
-
-        pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
-        WRITE_ONCE(*ptep, pte);
--       pte_clear(mm, 0, ptep);
-+       pte_clear(mm, vaddr, ptep);
-        pte = READ_ONCE(*ptep);
-        WARN_ON(!pte_none(pte));
- }
-@@ -302,6 +303,7 @@ static unsigned long __init get_random_vaddr(void)
- void __init debug_vm_pgtable(void)
- {
-        struct mm_struct *mm;
-+       spinlock_t *uninitialized_var(ptl);
-        pgd_t *pgdp;
-        p4d_t *p4dp, *saved_p4dp;
-        pud_t *pudp, *saved_pudp;
-@@ -344,7 +346,7 @@ void __init debug_vm_pgtable(void)
-        p4dp = p4d_alloc(mm, pgdp, vaddr);
-        pudp = pud_alloc(mm, p4dp, vaddr);
-        pmdp = pmd_alloc(mm, pudp, vaddr);
--       ptep = pte_alloc_map(mm, pmdp, vaddr);
-+       ptep = pte_alloc_map_lock(mm, pmdp, vaddr, &ptl);
-
-        /*
-         * Save all the page table page addresses as the page table
-@@ -364,13 +366,13 @@ void __init debug_vm_pgtable(void)
-        p4d_basic_tests(p4d_aligned, prot);
-        pgd_basic_tests(pgd_aligned, prot);
-
--       pte_clear_tests(mm, ptep);
-+       pte_clear_tests(mm, ptep, vaddr);
-        pmd_clear_tests(mm, pmdp);
-        pud_clear_tests(mm, pudp);
-        p4d_clear_tests(mm, p4dp);
-        pgd_clear_tests(mm, pgdp);
-
--       pte_unmap(ptep);
-+       pte_unmap_unlock(ptep, ptl);
-
-        pmd_populate_tests(mm, pmdp, saved_ptep);
-        pud_populate_tests(mm, pudp, saved_pmdp);
--- 
-2.20.1
+Christophe
 
