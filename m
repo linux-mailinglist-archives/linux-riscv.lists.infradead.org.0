@@ -2,66 +2,59 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D130F177363
-	for <lists+linux-riscv@lfdr.de>; Tue,  3 Mar 2020 11:02:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CA5F177D67
+	for <lists+linux-riscv@lfdr.de>; Tue,  3 Mar 2020 18:25:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EkKVIZ3wFZsrArW4uvlls8vPVMedxGwxRyIqgamlvbU=; b=dJtgv1iMBdaXKLiZ6vlEhJ+mc
-	J9EbjFui+yFR5gnbwFnA468rYVjXfynNH7VGqad5IJQlYPgPTH4oCfI8Vu+k0a0xz1hJzxi9g1DNi
-	cE1ypeRobzxYjHPYvwjdkZ3o5A2IhzSZjUGaO5QrEbFK9eDLDY9FaLL/CZUtOx9uyDhP9bZVhKCyO
-	oxVO4xCcQJ+uRTI/xB7+BYTfAXQjClztigv3TAZOmNQ9BrOL78teo1Aq/TDV/W99Y4IJq7sHbdp5C
-	5Fs865e4WM/UGHPLFTgVigWlV0/CNzO6GbeP3J4+4GjQ4SB0KTgq+FnyvKUc+6yvMJfwmwdjPn/XE
-	8lva335Sw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LGj/4Ngdidz3j9hoWEq0ozFcQVED1dXYgkvl4Gtzsks=; b=saN+50F0Ff/OD+
+	Urx6HaescrYHSvr9gH3H19Ed5CbRWAlCEw4JpT39kkBwlCxzFXhK1WtanhwX+aazv2bJkYjd/dtNx
+	8RsgYL1FmP4rkPjo4KqjUFys1/sSZetP3uwDsqh4ygRBAFMaBqvjUojPhCWLps26MImn8/9AKaHos
+	caAiZ6nES0H9lruMwJ+hDi8M2BBDn/hGVhntra5FKTpnLi21I1cYItTlIxeYjpuNNfTr16qqX/tZP
+	SiykshJBh5pJezKS1ZxHCPwKD92nKi8A4ZRd1SCVx1vUHmTDVZSfH88S2xPVVkQAhDpWjiRfPOlUK
+	ofWxq+1hDQQxcVkEIeOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j94Nw-0006iI-TT; Tue, 03 Mar 2020 10:02:44 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1j9BIV-0001Nf-Pv; Tue, 03 Mar 2020 17:25:35 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j94Ns-0006hL-QN
- for linux-riscv@lists.infradead.org; Tue, 03 Mar 2020 10:02:42 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2020 02:02:34 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,510,1574150400"; d="scan'208";a="412691972"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga005.jf.intel.com with ESMTP; 03 Mar 2020 02:02:27 -0800
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1j94Ng-006W6Q-A9; Tue, 03 Mar 2020 12:02:28 +0200
-Date: Tue, 3 Mar 2020 12:02:28 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Luke Nelson <lukenels@cs.washington.edu>
-Subject: Re: [PATCH bpf-next v4 4/4] MAINTAINERS: Add entry for RV32G BPF JIT
-Message-ID: <20200303100228.GJ1224808@smile.fi.intel.com>
-References: <20200303005035.13814-1-luke.r.nels@gmail.com>
- <20200303005035.13814-5-luke.r.nels@gmail.com>
+ id 1j9BIL-0001FM-75; Tue, 03 Mar 2020 17:25:27 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id BED26ACB8;
+ Tue,  3 Mar 2020 17:25:16 +0000 (UTC)
+Subject: Re: [RFC 1/3] mm/vma: Define a default value for VM_DATA_DEFAULT_FLAGS
+To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org
+References: <1583131666-15531-1-git-send-email-anshuman.khandual@arm.com>
+ <1583131666-15531-2-git-send-email-anshuman.khandual@arm.com>
+From: Vlastimil Babka <vbabka@suse.cz>
+Message-ID: <b243be54-7b5e-c6e9-fb68-46369d7d7aa4@suse.cz>
+Date: Tue, 3 Mar 2020 18:25:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200303005035.13814-5-luke.r.nels@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <1583131666-15531-2-git-send-email-anshuman.khandual@arm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_020240_868321_C57C1666 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200303_092525_552611_A054EF5A 
+X-CRM114-Status: GOOD (  16.93  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.43 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [195.135.220.15 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,63 +66,124 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, linux-doc@vger.kernel.org,
- Yonghong Song <yhs@fb.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Alexei Starovoitov <ast@kernel.org>, netdev@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Rob Herring <robh@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
- Jakub Kicinski <kuba@kernel.org>, Andrii Nakryiko <andriin@fb.com>,
- Xi Wang <xi.wang@gmail.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Luke Nelson <luke.r.nels@gmail.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>,
- linux-kernel@vger.kernel.org, Martin KaFai Lau <kafai@fb.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, bpf@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mips@vger.kernel.org,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Guo Ren <guoren@kernel.org>, sparclinux@vger.kernel.org,
+ linux-hexagon@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Jonas Bonn <jonas@southpole.se>, linux-s390@vger.kernel.org,
+ linux-snps-arc@lists.infradead.org, linux-c6x-dev@linux-c6x.org,
+ Brian Cain <bcain@codeaurora.org>, Michael Ellerman <mpe@ellerman.id.au>,
+ Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, linux-parisc@vger.kernel.org,
+ Mark Salter <msalter@redhat.com>, Paul Burton <paulburton@kernel.org>,
+ uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
+ Jeff Dike <jdike@addtoit.com>, linux-um@lists.infradead.org,
+ linux-m68k@lists.linux-m68k.org, openrisc@lists.librecores.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Guan Xuetao <gxt@pku.edu.cn>, linux-arm-kernel@lists.infradead.org,
+ Richard Henderson <rth@twiddle.net>, Chris Zankel <chris@zankel.net>,
+ Michal Simek <monstr@monstr.eu>, Tony Luck <tony.luck@intel.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
+ Vineet Gupta <vgupta@synopsys.com>, linux-kernel@vger.kernel.org,
+ Ralf Baechle <ralf@linux-mips.org>, linux-alpha@vger.kernel.org,
+ nios2-dev@lists.rocketboards.org, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Mar 02, 2020 at 04:50:35PM -0800, Luke Nelson wrote:
+On 3/2/20 7:47 AM, Anshuman Khandual wrote:
+> There are many platforms with exact same value for VM_DATA_DEFAULT_FLAGS
+> This creates a default value for VM_DATA_DEFAULT_FLAGS in line with the
+> existing VM_STACK_DEFAULT_FLAGS. While here, also define some more macros
+> with standard VMA access flag combinations that are used frequently across
+> many platforms. Apart from simplification, this reduces code duplication
+> as well.
+> 
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: Vineet Gupta <vgupta@synopsys.com>
+> Cc: Russell King <linux@armlinux.org.uk>
+> Cc: Catalin Marinas <catalin.marinas@arm.com>
+> Cc: Mark Salter <msalter@redhat.com>
+> Cc: Guo Ren <guoren@kernel.org>
+> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+> Cc: Brian Cain <bcain@codeaurora.org>
+> Cc: Tony Luck <tony.luck@intel.com>
+> Cc: Geert Uytterhoeven <geert@linux-m68k.org>
+> Cc: Michal Simek <monstr@monstr.eu>
+> Cc: Ralf Baechle <ralf@linux-mips.org>
+> Cc: Paul Burton <paulburton@kernel.org>
+> Cc: Nick Hu <nickhu@andestech.com>
+> Cc: Ley Foon Tan <ley.foon.tan@intel.com>
+> Cc: Jonas Bonn <jonas@southpole.se>
+> Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
+> Cc: Michael Ellerman <mpe@ellerman.id.au>
+> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+> Cc: Rich Felker <dalias@libc.org>
+> Cc: "David S. Miller" <davem@davemloft.net>
+> Cc: Guan Xuetao <gxt@pku.edu.cn>
+> Cc: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Jeff Dike <jdike@addtoit.com>
+> Cc: Chris Zankel <chris@zankel.net>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Cc: linux-alpha@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-snps-arc@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-c6x-dev@linux-c6x.org
+> Cc: uclinux-h8-devel@lists.sourceforge.jp
+> Cc: linux-hexagon@vger.kernel.org
+> Cc: linux-ia64@vger.kernel.org
+> Cc: linux-m68k@lists.linux-m68k.org
+> Cc: linux-mips@vger.kernel.org
+> Cc: nios2-dev@lists.rocketboards.org
+> Cc: openrisc@lists.librecores.org
+> Cc: linux-parisc@vger.kernel.org
+> Cc: linuxppc-dev@lists.ozlabs.org
+> Cc: linux-riscv@lists.infradead.org
+> Cc: linux-s390@vger.kernel.org
+> Cc: linux-sh@vger.kernel.org
+> Cc: sparclinux@vger.kernel.org
+> Cc: linux-um@lists.infradead.org
+> Cc: linux-xtensa@linux-xtensa.org
+> Cc: linux-mm@kvack.org
+> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com
+Reviewed-by: Vlastimil Babka <vbabka@suse.cz>
 
-Commit message?
+Nit:
 
-> Cc: Björn Töpel <bjorn.topel@gmail.com>
-> Signed-off-by: Xi Wang <xi.wang@gmail.com>
-> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
-
-> @@ -3213,11 +3213,20 @@ L:	bpf@vger.kernel.org
->  S:	Maintained
->  F:	arch/powerpc/net/
+> diff --git a/include/linux/mm.h b/include/linux/mm.h
+> index b0e53ef13ff1..7a764ae6ab68 100644
+> --- a/include/linux/mm.h
+> +++ b/include/linux/mm.h
+> @@ -342,6 +342,21 @@ extern unsigned int kobjsize(const void *objp);
+>  /* Bits set in the VMA until the stack is in its final location */
+>  #define VM_STACK_INCOMPLETE_SETUP	(VM_RAND_READ | VM_SEQ_READ)
 >  
-> -BPF JIT for RISC-V (RV64G)
-> +BPF JIT for 32-bit RISC-V (RV32G)
-> +M:	Luke Nelson <luke.r.nels@gmail.com>
-> +M:	Xi Wang <xi.wang@gmail.com>
-> +L:	bpf@vger.kernel.org
-> +S:	Maintained
-> +F:	arch/riscv/net/
-> +X:	arch/riscv/net/bpf_jit_comp.c
+> +#define TASK_EXEC ((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0)
 > +
-> +BPF JIT for 64-bit RISC-V (RV64G)
->  M:	Björn Töpel <bjorn.topel@gmail.com>
-> -L:	netdev@vger.kernel.org
-> +L:	bpf@vger.kernel.org
->  S:	Maintained
->  F:	arch/riscv/net/
-> +X:	arch/riscv/net/bpf_jit_comp32.c
+> +/* Common data flag combinations */
+> +#define VM_DATA_FLAGS_TSK_EXEC	(VM_READ | VM_WRITE | TASK_EXEC | \
+> +				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
+> +#define VM_DATA_FLAGS_NON_EXEC	(VM_READ | VM_WRITE | VM_MAYREAD | \
+> +				 VM_MAYWRITE | VM_MAYEXEC)
+> +#define VM_DATA_FLAGS_EXEC	(VM_READ | VM_WRITE | VM_EXEC | \
+> +				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
+> +
+> +#ifndef VM_DATA_DEFAULT_FLAGS		/* arch can override this */
+> +#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
+> +				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
 
-Obviously this breaks an order. Please, fix.
-Hint: run parse-maintainers.pl after the change.
+Should you use VM_DATA_FLAGS_EXEC here? Yeah one more macro to expand, but it's
+right above this.
 
->  BPF JIT for S390
->  M:	Ilya Leoshkevich <iii@linux.ibm.com>
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+> +#endif
+> +
+>  #ifndef VM_STACK_DEFAULT_FLAGS		/* arch can override this */
+>  #define VM_STACK_DEFAULT_FLAGS VM_DATA_DEFAULT_FLAGS
+>  #endif
+> 
 
 
