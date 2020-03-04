@@ -2,82 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADC72178E4D
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Mar 2020 11:22:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3285C178F91
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Mar 2020 12:29:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I473f1xOp0xcoMWJcjpZgjb3E6lfpmms9lzoIFvnCxw=; b=GTS6Tht839l4Vv
-	MtQIvDNcYJuW/d8pjUq9JsV9bDDk6Dd7NfaLrMMHmWHutWdcAyH6Mpoe41aPEsYO68n5AXN3gPi5q
-	h3Op2VMCksqE2jWTnvYAlec7y2QR5tQ3dgCCMVkPrhwcAt1AXDxgdqYwZEp2a5hYDMX8Z6O+PPN2E
-	re8gNFFeY18d5AXKB1YBxSI6BrPBsxQIgtuoR6XXOkgTAOIzdfmwuF2vkNrvdpwk848wmNME0spMj
-	rNlOtr1AHDTSBVw8Rxj1oA1LWwFQevSJ6HwzeyEE/uRfZTyCUtgwGHyCh1+/U04xgXmPaTDe5aHjj
-	Ek7Im5mmhF37ViOAs0fA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Message-Id:Date:Subject:Mime-Version:From:
+	Content-Transfer-Encoding:Content-Type:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Jx+iSwpjH1MMUgtvqiqrwQ2sYugCQ9UmLyXay35eB1Q=; b=RFQ64rRptkz8zosggSw6w4Kksa
+	2ogRElnmuqFnlm80i+SBLFLFGza8XNR9DHp9v+2NfaPLoq2F7ELbBgZRXDqXLyYHBPEHcVdx82LVi
+	OjgIYZnWxPU99Daqwc5F5ZNgx0hDrf0OlPEHsrsDubemnNIzfVbKBqfC6kcH3qxAviE3509JdRzEb
+	ru25ikPIhpj158RW4a1b/gL41Vl9fxeFLyvq5K3EDmb6O88MYzyp8TDZFFZh+Fd+CnsM61qI84hQC
+	EZ11SWkVmn8TJfT9UxjX+fi0GsO1CQYe1v9utLFnXdnnHnybdnEuQ1OevVgwr9AsqAf7XC4K31U1x
+	e2FEUvnw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9RAB-0008Bv-Vl; Wed, 04 Mar 2020 10:22:03 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1j9SDc-0000j3-6Q; Wed, 04 Mar 2020 11:29:40 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9RA8-0008BS-KZ
- for linux-riscv@lists.infradead.org; Wed, 04 Mar 2020 10:22:02 +0000
-Received: by mail-pg1-x542.google.com with SMTP id b1so777927pgm.8
- for <linux-riscv@lists.infradead.org>; Wed, 04 Mar 2020 02:21:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=I473f1xOp0xcoMWJcjpZgjb3E6lfpmms9lzoIFvnCxw=;
- b=oBPRt+y4oU6gnbNSeAk4XBIEVcAjxjMq228H+/Kf1FVzxqZPtbXDx2lA2jlKcj/biY
- fG/RGMGcmrEFCg9dDC7ty3/HE0WtyL19YMCDaBKexJvIsCgBtG6nDkvJMeA0UcAa4Yat
- mlT8AjN/Ihe6sSztMgQILbSACeIXn0r4gKZbjjQxtn4uKXukNLwGp2cIHOB4tQMWi1O8
- /q5EcQTNJfhWWrmLgM+tfHSDgF1zxInkynQDfYwyiI+Jfuv7S9MpK/hMrxKPsooH7ES9
- l9OR5F3KSOAuQxuGccvg9gZxHVJspJxKWvjARF6aTmNR/nHxtUUSX8a1rY+uIlnzblVe
- cqPw==
+ id 1j9SDP-0000Z6-9a
+ for linux-riscv@lists.infradead.org; Wed, 04 Mar 2020 11:29:31 +0000
+Received: by mail-qk1-x743.google.com with SMTP id m9so1184709qke.4
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Mar 2020 03:29:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
+ h=content-transfer-encoding:from:mime-version:subject:date:message-id
+ :references:cc:in-reply-to:to;
+ bh=Jx+iSwpjH1MMUgtvqiqrwQ2sYugCQ9UmLyXay35eB1Q=;
+ b=qUya1I+ID7bIC0Bkj4Q0zp0EdHdSdO6ykJWvMXw4HKDFjWyXV8ds3Bs9MArm+vdQdc
+ RpunjqglWR6mGJe2Lv7g9advYS1SvRo9LA3gCW5QqI/AMIgsHiHRUFAsdYeij2rtzyTk
+ sNSh4wHESGW+6lSzw7OKW4psbfNeqxjoimBZufpM/BoHmrYBRoQNs3Xc2GtPgWnsfXPf
+ igl3aC/5VPWbzpP3KfCNQ0wpC8Mh4VlwHq19u+9gw6f3Ulw8FCMZG8YCqNbscon2aj4Z
+ WYfZ5PGzedI3tG7vyVtTX+unDExTi5VMHoWYOeG+xlDzhECpmkCqkM7aufo6LUVMsIwj
+ NApA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=I473f1xOp0xcoMWJcjpZgjb3E6lfpmms9lzoIFvnCxw=;
- b=PCr8OA2DyHRZumz5T+jyqGBSnmqzBPvvPdi1R9V5TqeUPRw3bPGealXFCbSm4NELqL
- GcgGYxA7CLRRRqXzWyfHklBvdVXzgyQ9d7wxnLsfYEhZlgU+1bCWDUg9MVHLJR5yUD1j
- RDwlbj6m7CngTaeW4VVRQCKjR2hp4HGx4au+vRwjr0/THzJV6RgVSzafmV4g36Vfz4CH
- 6+r7d8N2QM9GiXY5AhfaHvMpxAyFdhXvh//5NBK4QhhHTKz1PQWYfkL12UOCOyZupL0l
- 4O4GlUZx9L7zXRjUQMfLVibOoFko2Ge5TM0tsyHX1w3F/kNzqGrsdkpheOfqnVlt7EvM
- ZxqA==
-X-Gm-Message-State: ANhLgQ2fLSj66B+Gh90zPe45LIE7ZR3qEhnuYKktoxctgswFnSyc9WKA
- MNp9cJ9BGN1aZfMix/2FaXAwbJGPiMC13nDHv8o=
-X-Google-Smtp-Source: ADFU+vsSfrM9BQwFeyP+XfNzdF7yaI72ARkLmWTSOk+5nI1rJvvwH2iEy8/o/nVhEv9EKoIYE2/Tn2seuagHTt0BorI=
-X-Received: by 2002:a63:1246:: with SMTP id 6mr1947203pgs.4.1583317319277;
- Wed, 04 Mar 2020 02:21:59 -0800 (PST)
-MIME-Version: 1.0
-References: <20200303005035.13814-1-luke.r.nels@gmail.com>
- <20200303005035.13814-5-luke.r.nels@gmail.com>
- <20200303100228.GJ1224808@smile.fi.intel.com>
- <CADasFoCq7S2KRYg+ghAKt1e+hELzEMJaNH74sGdjM7E=z3KcnQ@mail.gmail.com>
-In-Reply-To: <CADasFoCq7S2KRYg+ghAKt1e+hELzEMJaNH74sGdjM7E=z3KcnQ@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 4 Mar 2020 12:21:51 +0200
-Message-ID: <CAHp75VezOTk4kURAkS6OQqPjdiYsPE292ix+WHAPvs8vGpCfGg@mail.gmail.com>
-Subject: Re: [PATCH bpf-next v4 4/4] MAINTAINERS: Add entry for RV32G BPF JIT
-To: Luke Nelson <lukenels@cs.washington.edu>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:content-transfer-encoding:from:mime-version
+ :subject:date:message-id:references:cc:in-reply-to:to;
+ bh=Jx+iSwpjH1MMUgtvqiqrwQ2sYugCQ9UmLyXay35eB1Q=;
+ b=NJIVG+DuI88vooXj9hZqyfVniu3rVnU57vvtaVk7sVFhhcSKzOlTQzXKVP2frMJOM9
+ C0lffEVcobsC7e5rruprxbRy5bhtzN+ZnAQBMYuGyBfKmawmaVJyjeIreQDgLF9Bwfbz
+ rR/nCgFy4XNZLvB43wJ7ILNz1Y0OyQc23jc8v5zCcR2NsmcpaX7B5wida8/uJEcVFjYZ
+ 9YVN350WKdp9g+x0n63M6abuCB9v8kPexNhTrPplKiE/ZuoHBZ0MIkfaaehL2MQiaGdo
+ nAtHZUUUWI6w3BxkyOIpZnWAM7SZcd+e75LNXKdpmt7btKABH/bOT7FootZu0BpkmoIi
+ w1MA==
+X-Gm-Message-State: ANhLgQ3fYKbl4SSxseR8tvcbQnZ2IZOdDdCZAbCel/YkjGByjtCkW0EQ
+ Xvf2WyRxJn/TaZ5qQbAA2GEUsyx0CE0zbw==
+X-Google-Smtp-Source: ADFU+vsraAELUldtqJkt+JLHLEkp9XWZWryntOEccYsrwg70reKk2W+439zfYVSLClVswo3lxz5LLw==
+X-Received: by 2002:a37:6115:: with SMTP id v21mr2464683qkb.105.1583321365177; 
+ Wed, 04 Mar 2020 03:29:25 -0800 (PST)
+Received: from [192.168.1.183] (pool-71-184-117-43.bstnma.fios.verizon.net.
+ [71.184.117.43])
+ by smtp.gmail.com with ESMTPSA id u48sm85943qtc.79.2020.03.04.03.29.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Mar 2020 03:29:24 -0800 (PST)
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
+From: Qian Cai <cai@lca.pw>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH V14] mm/debug: Add tests validating architecture page
+ table helpers
+Date: Wed, 4 Mar 2020 06:29:23 -0500
+Message-Id: <11F41980-97CF-411F-8120-41287DC1A382@lca.pw>
+References: <c022e863-0807-fab1-cd41-3c320381f448@c-s.fr>
+In-Reply-To: <c022e863-0807-fab1-cd41-3c320381f448@c-s.fr>
+To: Christophe Leroy <christophe.leroy@c-s.fr>
+X-Mailer: iPhone Mail (17D50)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_022200_679498_D3607942 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20200304_032927_340731_39762AF2 
+X-CRM114-Status: UNSURE (   6.99  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:743 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [andy.shevchenko[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -97,61 +101,37 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>,
- Linux Documentation List <linux-doc@vger.kernel.org>,
- Yonghong Song <yhs@fb.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Alexei Starovoitov <ast@kernel.org>, Netdev <netdev@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Rob Herring <robh@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
- Jakub Kicinski <kuba@kernel.org>, Andrii Nakryiko <andriin@fb.com>,
- Xi Wang <xi.wang@gmail.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Luke Nelson <luke.r.nels@gmail.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
- LKML <linux-kernel@vger.kernel.org>, Martin KaFai Lau <kafai@fb.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
+ linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ the arch/x86 maintainers <x86@kernel.org>, Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ Anshuman Khandual <Anshuman.Khandual@arm.com>, Borislav Petkov <bp@alien8.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Vineet Gupta <vgupta@synopsys.com>, LKML <linux-kernel@vger.kernel.org>,
  Palmer Dabbelt <palmer@dabbelt.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, bpf <bpf@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+ "Aneesh Kumar K.V" <aneesh.kumar@linux.ibm.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Mar 4, 2020 at 4:34 AM Luke Nelson <lukenels@cs.washington.edu> wro=
+
+
+> On Mar 4, 2020, at 1:49 AM, Christophe Leroy <christophe.leroy@c-s.fr> wro=
 te:
-> On Tue, Mar 3, 2020 at 2:02 AM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > > -BPF JIT for RISC-V (RV64G)
-> > > +BPF JIT for 32-bit RISC-V (RV32G)
-> > > +M:   Luke Nelson <luke.r.nels@gmail.com>
-> > > +M:   Xi Wang <xi.wang@gmail.com>
-> > > +L:   bpf@vger.kernel.org
-> > > +S:   Maintained
-> > > +F:   arch/riscv/net/
-> > > +X:   arch/riscv/net/bpf_jit_comp.c
-> > > +
-> > > +BPF JIT for 64-bit RISC-V (RV64G)
-> > >  M:   Bj=C3=B6rn T=C3=B6pel <bjorn.topel@gmail.com>
-> > > -L:   netdev@vger.kernel.org
-> > > +L:   bpf@vger.kernel.org
-> > >  S:   Maintained
-> > >  F:   arch/riscv/net/
-> > > +X:   arch/riscv/net/bpf_jit_comp32.c
-> >
-> > Obviously this breaks an order. Please, fix.
-> > Hint: run parse-maintainers.pl after the change.
+>=20
+> AFAIU, you are not taking an interrupt here. You are stuck in the pte_upda=
+te(), most likely due to nested locks. Try with LOCKDEP ?
 
-> Thanks for the comment!
->
-> I'll change the entry names in v5 to be "BPF JIT for RISC-V (32-bit)"
-> and "BPF JIT for RISC-V (64-bit)", similar to the x86 JIT entries.
-> This will pass parse-maintainers.pl and the entries are still in
-> order.
-
-Thank you!
-
---=20
-With Best Regards,
-Andy Shevchenko
+Not exactly sure what did you mean here, but the kernel has all lockdep enab=
+led and did not flag anything here.=
 
