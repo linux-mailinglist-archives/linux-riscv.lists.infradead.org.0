@@ -2,79 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6380B178B41
-	for <lists+linux-riscv@lfdr.de>; Wed,  4 Mar 2020 08:24:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A2402178B71
+	for <lists+linux-riscv@lfdr.de>; Wed,  4 Mar 2020 08:31:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+0StPfC8X5r/f0uwQzYAuENN0Fy4oQ3SfFfmaNBTQnc=; b=mtXDJmqpZTUL/FseWMKBUYiJj
-	RQPqFZUs9r4oknRXhBXaELO68ascaq5mPfcEl+WpBMQBum15xZl0Z6gW+uiXD64g+JjJu2AOHLLnH
-	4GpokzByBuFoRiBi0IgF1hz677Ui9NgqZRc1i3IoLec76H/XPTG/om3JC7Gx5KyhWyC5cDomuYZAQ
-	6+RB7LCXToY2tMWD8jOMY3XjBCqrYZlr6ARi4AESd3OR/o7IjYXkvzmwc+URUN2kbCCE3LPMZL4/D
-	pexFfzoM/4MFlDghFjH6MZI5eXc2nXAYIFOg8KjCbvGpW/6tg7n5wSytxkS8B2cCrDFiDaXGuklWU
-	JbFRM8tSA==;
+	 bh=qkMWJliOasS6m7G9zTsL6mGdu7EBIcNevaHOgfItqMY=; b=jOy7v1Vtqpgk184lQj/f2vkj8
+	YyVKw0K+WHYy6iiQj2mrh6V24Vl8kygnSEShzc2T++OcEwB3pJ8jZ6lvOEKvwSQlNBmFbKdSOZcLG
+	J/nQnKJyqt8VlZIt7IDjWI8Dccvh6CnAkfNjkwF/xq8Inp5Z47cBuHoe6zFU25QhJRw2dv9YnU6Hj
+	ZppoEW0PzVCK3ZUpAEIH7htWQak4oULUZ6TmVy78I/hX+2KkN74w//rsw+bc1GRmq4++idxnqDLGP
+	z7J3HRdxskrKqhGS2oIpN7P60Sy8J+gVxQ7oPjlyHS4Y4Zyz9rZENDR2BdAxpHPHgCYe83LoXUHfw
+	8wMcBKgWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9OOP-00063O-3q; Wed, 04 Mar 2020 07:24:33 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1j9OVO-0000Yw-UY; Wed, 04 Mar 2020 07:31:46 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9OOM-00062r-2r
- for linux-riscv@lists.infradead.org; Wed, 04 Mar 2020 07:24:31 +0000
-Received: by mail-io1-xd43.google.com with SMTP id x21so1237850iox.13
- for <linux-riscv@lists.infradead.org>; Tue, 03 Mar 2020 23:24:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cs.washington.edu; s=goo201206;
+ id 1j9OVL-0000Y5-9I
+ for linux-riscv@lists.infradead.org; Wed, 04 Mar 2020 07:31:44 +0000
+Received: by mail-qk1-x741.google.com with SMTP id u124so636734qkh.13
+ for <linux-riscv@lists.infradead.org>; Tue, 03 Mar 2020 23:31:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+0StPfC8X5r/f0uwQzYAuENN0Fy4oQ3SfFfmaNBTQnc=;
- b=X5H4VtDyPvqJAdUJVPRhTnJNzg0cr0lXQnBxXOFBn70TvIaxwS7X1BhYAA6rW6iMx/
- 2KL8fW6WmM9hvIfkxJ9HJLlSveCUGVutVFlbs/Dn3AB07u+7H4rIDUAkprO6clAYF+fk
- Yp/tkE8C0hW1UN84pzTDY8f0QLod+qUSCGqHc=
+ :cc; bh=qkMWJliOasS6m7G9zTsL6mGdu7EBIcNevaHOgfItqMY=;
+ b=psI7HBiXBCiFAgJ/vpaFL2NAsyMefHvUJxo3v8Gtgz6+L22ohbGLARsGYkkY+5IgKV
+ Ch5RCV0PUEpKl7/BKY1zZBUD5swgetFRWpkEH5vKYqyBon+5pxZdyNepB2PGJKDa6qf1
+ lLACbVhFZWZM0JsidP6bg5WFp8SHPCjVU/9S0cuFae9/8NzYgbxG0Yf7TTOBj1lSmaR9
+ Qv460EDDFpmN8dhm93vARd5jI8jEe7oUKCI7RGfhVfpflEv8/aA+TuCSIT0wg5srgoEK
+ WIGTQI4T9VlUsirDQsKEIz3KbnjmZnnLb4b4n3I5a4yZaz0a7XigkEQRvKAV17ee6qYe
+ i+Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=+0StPfC8X5r/f0uwQzYAuENN0Fy4oQ3SfFfmaNBTQnc=;
- b=Inuh8FoFSBEb+3c5gcLNK9LIdyewFvHT7/oqRwuAuhe+9+sCNAj388AtCnOpw0N4gn
- 2mh1PfBXxHoKKtA0jyiwdPB+aZ9GJfc90ee6r9QypgA29iR5ljjA3RswTVPwPZtD3TWS
- O58s6kCjHuaJM0PLqWb9L0y3jIsPRqPNTYMvbQn/tWSpIXd1DvI+mEgTXk9rXbSvHooJ
- HBk0mh0cXsbAyEIrdbjiY3rnCo6Fdiv1u1xBWxGUWnsjM1CENI0KWz1OJ4UZwCtFc5dW
- NdhwhaWmyh/iAaaWXfSXWr/eCtEyjFXiio88u5LnX/uBYRRpfnJ7ZSA8NH1bZjL0lHSJ
- NjOg==
-X-Gm-Message-State: ANhLgQ17Qg5HoyftZKbKWcjkA5wkFIhdOLnVreEK1fRRRytBzBmPU1AW
- pWbdZDwNf/SM3eT7ipIuunN/y/Of/KukI3B8WPwlng==
-X-Google-Smtp-Source: ADFU+vtDP7J5I0uMr20ywNsGyuaqUtek9TyRHdnutO5YfvwGkuTKwFkRZeZRpw6nW1oXLNcQ+vXM+/g2FixK4+iaGBM=
-X-Received: by 2002:a02:a1c9:: with SMTP id o9mr1543147jah.33.1583306668640;
- Tue, 03 Mar 2020 23:24:28 -0800 (PST)
+ bh=qkMWJliOasS6m7G9zTsL6mGdu7EBIcNevaHOgfItqMY=;
+ b=qtcgyjq5UPupMICEJPRJ65IAT7CnUEC5DlkWpDwbkH6VLhqCSwpUpQ0uycjY1JjyIJ
+ 0Ve0FwfM2tlp6V8O9cJCkHOCLjUlrHAinC61tFSTTXXxwifRlEm4eOpfg1i1FnrDGmET
+ 7h4YKLbOWT+c0NjalmSbMpetGncmLQHAM9uxGkhAi+LJ+vcXlr3z6xH7FCHaUqeIWF5e
+ GaiiiDMYfk0uN01WfYOwMhoycm8ub9zbntXKmPh3Xn71xGf/1PTGLXGegIJgm3Df1Ofb
+ hrKyscPrt9SGAapRAvJU1RrOV9v+4GMzc3y8+A2U7DHbRbqI7EsOPsRZm/UdVKf0yrJb
+ vzuQ==
+X-Gm-Message-State: ANhLgQ1ay9+GflXYSnra1aBF07BAGmItgvxerDOBITIusILYb0cludWV
+ MfSehqjWzygXyq12dEMyOG1USRbcKdnHI4E/vis=
+X-Google-Smtp-Source: ADFU+vtmFe8ms+kUvpLPs106J8DquTipJEGnoqmpInk431AayhopE039Qccw/oubaPH5rPz3vZGzsIOHE2sF8sFKaBY=
+X-Received: by 2002:a37:8046:: with SMTP id b67mr1685972qkd.218.1583307100884; 
+ Tue, 03 Mar 2020 23:31:40 -0800 (PST)
 MIME-Version: 1.0
 References: <20200303005035.13814-1-luke.r.nels@gmail.com>
  <20200303005035.13814-3-luke.r.nels@gmail.com>
  <CAJ+HfNjgwVnxnyCTk5j+JCpxz+zmeEBYbj=_SueR750aAuoz=A@mail.gmail.com>
  <CADasFoBODSbgHHXU+iA-32=oKNs6n0Ff_UDU3063uiyGjx1xXg@mail.gmail.com>
  <CAJ+HfNhOp_Rbcqer0K=mZ8h+uswYSv4hSa3wCTdjjxH26HUTCw@mail.gmail.com>
-In-Reply-To: <CAJ+HfNhOp_Rbcqer0K=mZ8h+uswYSv4hSa3wCTdjjxH26HUTCw@mail.gmail.com>
-From: Luke Nelson <lukenels@cs.washington.edu>
-Date: Tue, 3 Mar 2020 23:24:17 -0800
-Message-ID: <CADasFoA3JN7PkvnVAmFZOFeDo2WgWzViankpwwRRWcjebSx+DQ@mail.gmail.com>
+ <CADasFoA3JN7PkvnVAmFZOFeDo2WgWzViankpwwRRWcjebSx+DQ@mail.gmail.com>
+In-Reply-To: <CADasFoA3JN7PkvnVAmFZOFeDo2WgWzViankpwwRRWcjebSx+DQ@mail.gmail.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Wed, 4 Mar 2020 08:31:29 +0100
+Message-ID: <CAJ+HfNjkMe2kM3V+jytmSbwoN6wnBXGGTknsEeS7EV314eG+Dg@mail.gmail.com>
 Subject: Re: [PATCH bpf-next v4 2/4] riscv, bpf: add RV32G eBPF JIT
-To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+To: Luke Nelson <lukenels@cs.washington.edu>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_232430_127757_E0C36F03 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.1 (/)
+X-CRM114-CacheID: sfid-20200303_233143_327999_BDD94010 
+X-CRM114-Status: GOOD (  13.93  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.1 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d43 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:741 listed in]
  [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [bjorn.topel[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -110,43 +116,49 @@ Cc: Song Liu <songliubraving@fb.com>, linux-doc@vger.kernel.org,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-> I like that, but keep the first patch as a refactoring patch only, and
-> then in a *new* patch 2 you add the rv32 specific code (sltu and
-> pseudo instructions + the xlen preprocessor check + copyright-things
-> ;-)).  Patch 3 will be the old patch 2. Wdyt?
+On Wed, 4 Mar 2020 at 08:24, Luke Nelson <lukenels@cs.washington.edu> wrote:
+>
+> > I like that, but keep the first patch as a refactoring patch only, and
+> > then in a *new* patch 2 you add the rv32 specific code (sltu and
+> > pseudo instructions + the xlen preprocessor check + copyright-things
+> > ;-)).  Patch 3 will be the old patch 2. Wdyt?
+>
+> Thanks! I'll make sure that patch 1 is for renaming bpf_jit_comp.c
+> and factoring code out. Do you think it's reasonable to add the
+> RV32-specific code to the header in the same patch that adds the
+> RV32 JIT implementation (patch 2)? It might make sense to commit
+> them together.
+>
+> The full plan for v5 would be:
+>
+> Patch 1
+>
+> - Refactor existing code to bpf_jit.h and bpf_jit_core.c
+>   + Including the minor modifications to build_body() and
+>   bpf_int_jit_compile() (These are unrelated to RV32 and we could
+>   forego these tweaks).
+>   + Also making emit_insn and build_{prologue,epilogue} non-static
+>   and renaming them to be prefixed with "bpf_jit_".
+> - Rename bpf_jit_comp.c to bpf_jit_comp64.c
+>
+> Patch 2
+>
+> - Add the RV32 BPF JIT implementation to bpf_jit_comp32.c and
+> RV32-specific changes to bpf_jit.h.
+>
+> Patch 3
+>
+> - Update documentation.
+>
+> Patch 4
+>
+> - Update MAINTAINERS.
+>
+> Thanks again,
+>
 
-Thanks! I'll make sure that patch 1 is for renaming bpf_jit_comp.c
-and factoring code out. Do you think it's reasonable to add the
-RV32-specific code to the header in the same patch that adds the
-RV32 JIT implementation (patch 2)? It might make sense to commit
-them together.
+Perfect! Thank you!
 
-The full plan for v5 would be:
 
-Patch 1
-
-- Refactor existing code to bpf_jit.h and bpf_jit_core.c
-  + Including the minor modifications to build_body() and
-  bpf_int_jit_compile() (These are unrelated to RV32 and we could
-  forego these tweaks).
-  + Also making emit_insn and build_{prologue,epilogue} non-static
-  and renaming them to be prefixed with "bpf_jit_".
-- Rename bpf_jit_comp.c to bpf_jit_comp64.c
-
-Patch 2
-
-- Add the RV32 BPF JIT implementation to bpf_jit_comp32.c and
-RV32-specific changes to bpf_jit.h.
-
-Patch 3
-
-- Update documentation.
-
-Patch 4
-
-- Update MAINTAINERS.
-
-Thanks again,
-
-Luke
+> Luke
 
