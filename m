@@ -2,73 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67738179D18
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 01:58:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9040E179D1C
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 01:58:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
 	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=r1cjoiRs5yfI/5ZwZNPh4J3Hd5wrkW8j/pkn8QIoYoI=; b=rPhd8/q+hn9rJA
-	1X7NqzfH+lbQwxEYFmRMEAvwzb8R7p3aEkgCrISp1ua99MHHPCUgDDyW6+VKRtMqNYvz5afZg5uab
-	v5LnMG02O0PAaUwOInvvlfa3rHtUsflqFZNGHe+JOBZCMnAiMj+VsNx9zaGdNekcb16OYoPricKjA
-	+IpIQiS1aQTbfEsz7LhwoyZjSAEA3w1enS3B0hWeKkUS0XZfV0dGvgTRfM9U0Vni8g9EaLuYR78Sn
-	V+m3+KstCapCEBp0gnTKKrzeGpB2jxSpUzckjTohbxKShESiWLdMBBBXV/vaWykOYxCVpe1q3yf7l
-	/4WwRsY9/agYCvztHIMQ==;
+	List-Owner; bh=HhIcP1OmX7KCJe/LzPGyLrrs+To5FwKg4wadhbBvhh0=; b=Tv8ryVVnpnFcgd
+	KSNrN22bYBep0UZ32e+ce2NC+iD0RlXfSj/lvZ3jc08d3UcXI86FOzf+vm0mMjjqfNf3DEvqDbDFN
+	pkkMWKZrG6feMEtedx9xZePu/gEKQOKHaYuJoBYBjYMFKrQ5x9dSx+eJCh/8JE0P4WZIqiDoKFthC
+	fLzf4ZWAvsQrubMkrrRZdCaFdIhLNclDXMQj8vsCkfGHyv6akleth5mxJbdr0QLzmdmRbCXSji0kg
+	VQIs16IuTdlf8tBuOJIlaL0xicKRqvuG33ScQS9JxnY5dtPLCnOpsBnnJb9VrVdtr3qp00atBMsKu
+	VCKLDVnN9QzfRjTnJoDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9eps-0006ig-3H; Thu, 05 Mar 2020 00:58:00 +0000
+	id 1j9eqf-0006s1-Im; Thu, 05 Mar 2020 00:58:49 +0000
 Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9eph-0006Zn-Qe
- for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 00:57:51 +0000
-Received: by mail-pf1-x444.google.com with SMTP id z65so1389446pfz.8
- for <linux-riscv@lists.infradead.org>; Wed, 04 Mar 2020 16:57:49 -0800 (PST)
+ id 1j9eqc-0006rg-Hg
+ for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 00:58:47 +0000
+Received: by mail-pf1-x444.google.com with SMTP id o24so1875201pfp.13
+ for <linux-riscv@lists.infradead.org>; Wed, 04 Mar 2020 16:58:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=r1cjoiRs5yfI/5ZwZNPh4J3Hd5wrkW8j/pkn8QIoYoI=;
- b=GyV8uU9CINptKvdryE//p4TelPw6MzQUvY0bQByDvwZ36sulOY/unL5MnrAv9wv8jp
- dbCtNJhdZqzKmlo0IJ3Ul5yzSPYC8JXWX7j022XR/Tlu2e/kdZZe4XozYLMywRja+sF1
- /3S2SXr8G95/JN7RR0FkKRCfuymTF+nfmrPoYGO5rY+iPCmyiJ0rUGBe9I/CHqjqFV5z
- xDi4kO9e4crpRXoqNb+7p82JDdnwLS1k7ei3KxeLySG8zxUiIF/Smw5JVRePLbGi5L8s
- dLQmYA6DTO7lmSou9AkGpr5T2HqzJ6Sm+hg2fPXh5wXMTasN9sIlzXFIGFL1uSzJPQcZ
- 6f6A==
+ bh=HhIcP1OmX7KCJe/LzPGyLrrs+To5FwKg4wadhbBvhh0=;
+ b=Aq2qqLvbqlU5Kjj4F0+/BOA9infgEg+KgkHaarF5Qd364tds3v0rBe1kM6S1n+VRFQ
+ KMbfEg959bSsq+g+BpJ+T5+0ObvEBeIPAd68I1k5uwjBYzsS1RX/pM6xaA4Wlf0etwy9
+ z0ZF3cd9owkVC8se+XXBMIhOnUaUIEbNAptYSZMYxA+LoO4r04W9v8y8hw5xP2vV2fSd
+ QB2nUS0hM9b3vsJeSeCh6VUmJcY2DSKkaubpIE1gdKZOmxvydMTwAUx5NWgbQSgfUfBs
+ B39SyxjVf2MrSiaU02IvghnrbuCMuy2SW3FUPjkTeMYflYtZC8xIAFCvW3aTW2GnVUjm
+ JFJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=r1cjoiRs5yfI/5ZwZNPh4J3Hd5wrkW8j/pkn8QIoYoI=;
- b=Ij3t8Jx9kW1QUmTgzTljplTHzXb/OCMqKVrHUDO2Lyg/Fu+pE9P0EBi7cVuy138Ym0
- LG8I4xmyiaNI9Y1sbmAi84rLmHhljcO1ib/w+NYvLRrp3kc/WG0alRPZv9RoPTsuTz8Y
- bieuaPJpYTH9X7QxTInsZghHXSJH6HzfBU0WJoCaCHq2s4ncKYp/bSxnQEDYM0ajcSpF
- 6uQpjThlHnjRKzO7/cz5USFB96E1VIkAZQNwfGNv5TAmJGRrF9Oqw2QhijeIjSW93XSU
- nPImruVW0Ips2Fs/lW9xBEkGSTAiWh7t3jKx2LipAlTSgGmG/Y6iWdxem/P3pnB5g+nf
- YFeQ==
-X-Gm-Message-State: ANhLgQ0sFIc1apAlkAH96vV/W6qC7xqryYUgTOkfDesVrBuuuVwJpfRV
- GWgdMPWm+qo7voFEnkt13Ym3sA==
-X-Google-Smtp-Source: ADFU+vsMu+SCwaGiTvNt7q5D3Z8AxBmHq9uvSeqYl34akVxe8tr0UJLcPLA5uAY0m8LsDJcoJulbmA==
-X-Received: by 2002:a62:a206:: with SMTP id m6mr5912639pff.254.1583369868705; 
- Wed, 04 Mar 2020 16:57:48 -0800 (PST)
+ bh=HhIcP1OmX7KCJe/LzPGyLrrs+To5FwKg4wadhbBvhh0=;
+ b=DAc39vaPWKuDl6y8tAiP7YuHxSTclnuUYPrK8MmagHERpvHN/XlsSyLhtg/8hgS5BM
+ rmtZL+YHaOzV4MRnbIjW5wz1a+douYuR7E3RJL2vVuhmHSExBChaZCYdC1oN6U6HbV4N
+ SN/vJ//gXWCw7Jq2XQJ0O9TV2Geix9jcTkMnGHCRfWPHRkGpHUhBwSg39Y4JWDVaiP0Y
+ wTMQtQHptvs8B8lk0UR1iLvVS9ZFLhj1v/QjZK0Ic3aYV+A79mO4r3ntVpKYJj0H9OMx
+ ZyFYZA+ocbB5rW8DYum6+9zr+Q52WnhTuX4Gt0uSTayFsy57dzlHZ920byaROkFj9liB
+ yfqg==
+X-Gm-Message-State: ANhLgQ2kbkJE9WZsgEf5N863Pu0TKYDxLG1QqCJEson/wfzrkiowxkGQ
+ ddfamLxaugWW14wjpZu737kfdcJq0QM=
+X-Google-Smtp-Source: ADFU+vvZlYvK0bH3igAzK6gimmXeABOtAKPRA5V8gdnRj1XWlcgdFrUaO6kH5XRHYEs1TUASkniV5g==
+X-Received: by 2002:aa7:8687:: with SMTP id d7mr5703217pfo.164.1583369925861; 
+ Wed, 04 Mar 2020 16:58:45 -0800 (PST)
 Received: from localhost ([2620:0:1000:2514:23a5:d584:6a92:3e3c])
- by smtp.gmail.com with ESMTPSA id w17sm24466490pfg.33.2020.03.04.16.57.47
+ by smtp.gmail.com with ESMTPSA id e9sm3910889pjt.16.2020.03.04.16.58.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Mar 2020 16:57:48 -0800 (PST)
-Date: Wed, 04 Mar 2020 16:57:48 -0800 (PST)
-X-Google-Original-Date: Wed, 04 Mar 2020 16:56:49 PST (-0800)
-Subject: Re: [PATCH 4/8] riscv: move exception table immediately after RO_DATA
-In-Reply-To: <20200217083223.2011-5-zong.li@sifive.com>
+ Wed, 04 Mar 2020 16:58:45 -0800 (PST)
+Date: Wed, 04 Mar 2020 16:58:45 -0800 (PST)
+X-Google-Original-Date: Wed, 04 Mar 2020 16:58:05 PST (-0800)
+Subject: Re: [PATCH 5/8] riscv: add alignment for text,
+ rodata and data sections
+In-Reply-To: <20200217083223.2011-6-zong.li@sifive.com>
 From: Palmer Dabbelt <palmer@dabbelt.com>
 To: zong.li@sifive.com
-Message-ID: <mhng-6a94c49b-419b-4b5a-a11d-dda1fb0aa896@palmerdabbelt-glaptop1>
+Message-ID: <mhng-fa489ba7-f1c7-459c-aae0-0dc68c826635@palmerdabbelt-glaptop1>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_165749_933862_9F92E77B 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20200304_165846_588558_A57A375E 
+X-CRM114-Status: GOOD (  20.01  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -99,58 +100,80 @@ Cc: linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 17 Feb 2020 00:32:19 PST (-0800), zong.li@sifive.com wrote:
-> Move EXCEPTION_TABLE immediately after RO_DATA. Make it easy to set the
-> attribution of the sections which should be read-only at a time.
-> Move .sdata to indicate the start of data section with write permission.
+On Mon, 17 Feb 2020 00:32:20 PST (-0800), zong.li@sifive.com wrote:
+> The kernel mapping will tried to optimize its mapping by using bigger
+> size. In rv64, it tries to use PMD_SIZE, and tryies to use PGDIR_SIZE in
+> rv32. To ensure that the start address of these sections could fit the
+> mapping entry size, make them align to the biggest alignment.
+>
+> Define a macro SECTION_ALIGN because the HPAGE_SIZE or PMD_SIZE, etc.,
+> are invisible in linker script.
+>
 > This patch is prepared for STRICT_KERNEL_RWX support.
 >
 > Signed-off-by: Zong Li <zong.li@sifive.com>
 > ---
->  arch/riscv/kernel/vmlinux.lds.S | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>  arch/riscv/include/asm/set_memory.h | 13 +++++++++++++
+>  arch/riscv/kernel/vmlinux.lds.S     |  4 +++-
+>  2 files changed, 16 insertions(+), 1 deletion(-)
 >
+> diff --git a/arch/riscv/include/asm/set_memory.h b/arch/riscv/include/asm/set_memory.h
+> index a9783a878dca..a91f192063c2 100644
+> --- a/arch/riscv/include/asm/set_memory.h
+> +++ b/arch/riscv/include/asm/set_memory.h
+> @@ -6,6 +6,7 @@
+>  #ifndef _ASM_RISCV_SET_MEMORY_H
+>  #define _ASM_RISCV_SET_MEMORY_H
+>
+> +#ifndef __ASSEMBLY__
+>  /*
+>   * Functions to change memory attributes.
+>   */
+> @@ -17,4 +18,16 @@ int set_memory_nx(unsigned long addr, int numpages);
+>  int set_direct_map_invalid_noflush(struct page *page);
+>  int set_direct_map_default_noflush(struct page *page);
+>
+> +#endif /* __ASSEMBLY__ */
+> +
+> +#ifdef CONFIG_ARCH_HAS_STRICT_KERNEL_RWX
+> +#ifdef CONFIG_64BIT
+> +#define SECTION_ALIGN (1 << 21)
+> +#else
+> +#define SECTION_ALIGN (1 << 22)
+> +#endif
+> +#else /* !CONFIG_ARCH_HAS_STRICT_KERNEL_RWX */
+> +#define SECTION_ALIGN L1_CACHE_BYTES
+> +#endif /* CONFIG_ARCH_HAS_STRICT_KERNEL_RWX */
+> +
+>  #endif /* _ASM_RISCV_SET_MEMORY_H */
 > diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
-> index 1e0193ded420..4ba8a5397e8b 100644
+> index 4ba8a5397e8b..0b145b9c1778 100644
 > --- a/arch/riscv/kernel/vmlinux.lds.S
 > +++ b/arch/riscv/kernel/vmlinux.lds.S
-> @@ -9,6 +9,7 @@
->  #include <asm/page.h>
->  #include <asm/cache.h>
->  #include <asm/thread_info.h>
-> +#include <asm/set_memory.h>
+> @@ -37,6 +37,7 @@ SECTIONS
+>  	PERCPU_SECTION(L1_CACHE_BYTES)
+>  	__init_end = .;
 >
->  OUTPUT_ARCH(riscv)
->  ENTRY(_start)
-> @@ -52,12 +53,15 @@ SECTIONS
+> +	. = ALIGN(SECTION_ALIGN);
+>  	.text : {
+>  		_text = .;
+>  		_stext = .;
+> @@ -53,13 +54,14 @@ SECTIONS
 >  	}
 >
 >  	/* Start of data section */
-> -	_sdata = .;
->  	RO_DATA(L1_CACHE_BYTES)
+> -	RO_DATA(L1_CACHE_BYTES)
+> +	RO_DATA(SECTION_ALIGN)
 >  	.srodata : {
 >  		*(.srodata*)
 >  	}
 >
-> +	EXCEPTION_TABLE(0x10)
-> +
-> +	_sdata = .;
-> +
+>  	EXCEPTION_TABLE(0x10)
+>
+> +	. = ALIGN(SECTION_ALIGN);
+>  	_sdata = .;
+>
 >  	RW_DATA(L1_CACHE_BYTES, PAGE_SIZE, THREAD_SIZE)
->  	.sdata : {
->  		__global_pointer$ = . + 0x800;
-> @@ -69,8 +73,6 @@ SECTIONS
->
->  	BSS_SECTION(PAGE_SIZE, PAGE_SIZE, 0)
->
-> -	EXCEPTION_TABLE(0x10)
-> -
->  	.rel.dyn : {
->  		*(.rel.dyn*)
->  	}
 
-As far as I can tell this is OK: core_kernel_data() explicitly says that RODATA
-may or may not be between _sdata and _edata.  That said, I think we should add
-__start_rodata and __end_rodata atomicly with this change (around RO_DATA and
-.srodata).
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
