@@ -2,47 +2,47 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77A4D17AB56
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 18:13:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 443E317AB57
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 18:13:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1xN3+LuAK0zgUL8q4qCmMC2Noh57ogC836eSOXo8XSs=; b=nwoSfnH0jRCRS+
-	06XGibgSkutwnhRjYd45qN1fZsRNj+ikFecyCeCprdL23neXO6hweE57kOmCoMozGSlaoeIMWuLB5
-	Ohgf5NeLA55K4n8xXQCji9p7SHlu2RGeHf21e+QDIbu42E0HFq/OggM1wzbLBs5hX/NuSMk5+rJB+
-	I9gq3iuO/Q7Gs42b0JJNDD11xnM3TBssXLlzUjX6r7i5/NFOcX6SJ/AGyqAaGD8xtt79WuV6FXy4Y
-	cZDhVNVL6uW7NXfGAIbVQ80SCQ0m/67BRo8WCIomA2vreLerINKu8xGYeNJ5O62Z24Jlp2tt2opPX
-	n2G4GD47ionaOCscvK0w==;
+	List-Owner; bh=xBmeQZ8vTZfcdTT07Glxj1f2n3RFDB6aDMG+Qo2OhSU=; b=BmZvuJu1DII6XZ
+	FusPjscFLhCzDv3pyXYZm7BUC1vmRupd7YMv1eBpLTEsZ0pjV2MrI7Hluq+eryIRpnuTgrDnUePZt
+	bpExYpWRstyOsgsuiINgGYWFxemAhHpD+avN7FZElHjTCkUVjfJAB9itKon2BHNev7CL1g8eh43EE
+	MhesIGp0cnIZD6YJsuhXF5WV2s/bTIrrj71XJXO3NLBhnzClFJxHxLHzmMVo+W+cZbdrM1DrtH6lw
+	VAW6nMnEoHT1ky5K75h4JsHvq1RePwJZvSXCALTVloYiLezAUg+v6FDdwlD8etj+Dwm9UYN6kTDgz
+	ILDA8Jf7KABk1ny0TY0Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9u42-00024E-Qz; Thu, 05 Mar 2020 17:13:38 +0000
+	id 1j9u44-00025R-B4; Thu, 05 Mar 2020 17:13:40 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9u40-00023E-0b
+ id 1j9u40-00023o-H7
  for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 17:13:37 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 467BE20870;
- Thu,  5 Mar 2020 17:13:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6D6DF21556;
+ Thu,  5 Mar 2020 17:13:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583428415;
- bh=Eqxcwe6hqlaj8Q4EMkWE8eXCmsUaeSppDr69o8tGO8c=;
+ s=default; t=1583428416;
+ bh=BhyIfmtJjmMPuNVk8eJ8v3alPCrVguYeSygPeKGfx1Q=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Hu5Cpqt9MrLQlTT4RCmJzQUq5IHIRtjrFunEQtIK+4Al5RUHwWLFCIWNwH81l1qLK
- kWyjW8CpdRttXrTQ1ZrDol6EL4RBpTrTFtElENJ7hZQHHIb+ase0RIKfjUWy5YlxQW
- dZwK+i3rWcWw6AOUVWAlv50f4zOqOl4+9WDe1lLk=
+ b=uT5Tryw1uX7mfyLsNfwExEo+YmWtvlKwjjMzOlIt1ZKliN6mYss8r/NOTjkHY6Wqw
+ NzyXJI9c9LU+/upBOxlj7CqIyDyNPTi6oThwDFOjbQ5f34jD+U6UDSSumfOgB1vdL0
+ Or0SNZIlBxB+bWXevU9PYhR0dO72ByXJMxU0A4TI=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.5 18/67] riscv: set pmp configuration if kernel is
- running in M-mode
-Date: Thu,  5 Mar 2020 12:12:19 -0500
-Message-Id: <20200305171309.29118-18-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.5 19/67] RISC-V: Don't enable all interrupts in
+ trap_init()
+Date: Thu,  5 Mar 2020 12:12:20 -0500
+Message-Id: <20200305171309.29118-19-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200305171309.29118-1-sashal@kernel.org>
 References: <20200305171309.29118-1-sashal@kernel.org>
@@ -51,8 +51,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_091336_076279_1CCB9D4B 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20200305_091336_583374_74F502F8 
+X-CRM114-Status: GOOD (  10.35  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -81,78 +81,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Greentime Hu <greentime.hu@sifive.com>,
- linux-riscv@lists.infradead.org, Palmer Dabbelt <palmerdabbelt@google.com>
+Cc: Palmer Dabbelt <palmerdabbelt@google.com>,
+ Atish Patra <atish.patra@wdc.com>, linux-riscv@lists.infradead.org,
+ Anup Patel <anup.patel@wdc.com>, Sasha Levin <sashal@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Greentime Hu <greentime.hu@sifive.com>
+From: Anup Patel <anup.patel@wdc.com>
 
-[ Upstream commit c68a9032299e837b56d356de9250c93094f7e0e3 ]
+[ Upstream commit 6a1ce99dc4bde564e4a072936f9d41f4a439140e ]
 
-When the kernel is running in S-mode, the expectation is that the
-bootloader or SBI layer will configure the PMP to allow the kernel to
-access physical memory.  But, when the kernel is running in M-mode and is
-started with the ELF "loader", there's probably no bootloader or SBI layer
-involved to configure the PMP.  Thus, we need to configure the PMP
-ourselves to enable the kernel to access all regions.
+Historically, we have been enabling all interrupts for each
+HART in trap_init(). Ideally, we should only enable M-mode
+interrupts for M-mode kernel and S-mode interrupts for S-mode
+kernel in trap_init().
 
-Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+Currently, we get suprious S-mode interrupts on Kendryte K210
+board running M-mode NO-MMU kernel because we are enabling all
+interrupts in trap_init(). To fix this, we only enable software
+and external interrupt in trap_init(). In future, trap_init()
+will only enable software interrupt and PLIC driver will enable
+external interrupt using CPU notifiers.
+
+Fixes: a4c3733d32a7 ("riscv: abstract out CSR names for supervisor vs machine mode")
+Signed-off-by: Anup Patel <anup.patel@wdc.com>
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
+Tested-by: Palmer Dabbelt <palmerdabbelt@google.com> [QMEU virt machine with SMP]
+[Palmer: Move the Fixes up to a newer commit]
 Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/riscv/include/asm/csr.h | 12 ++++++++++++
- arch/riscv/kernel/head.S     |  6 ++++++
- 2 files changed, 18 insertions(+)
+ arch/riscv/kernel/traps.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/riscv/include/asm/csr.h b/arch/riscv/include/asm/csr.h
-index 435b65532e294..8e18d2c64399d 100644
---- a/arch/riscv/include/asm/csr.h
-+++ b/arch/riscv/include/asm/csr.h
-@@ -72,6 +72,16 @@
- #define EXC_LOAD_PAGE_FAULT	13
- #define EXC_STORE_PAGE_FAULT	15
- 
-+/* PMP configuration */
-+#define PMP_R			0x01
-+#define PMP_W			0x02
-+#define PMP_X			0x04
-+#define PMP_A			0x18
-+#define PMP_A_TOR		0x08
-+#define PMP_A_NA4		0x10
-+#define PMP_A_NAPOT		0x18
-+#define PMP_L			0x80
-+
- /* symbolic CSR names: */
- #define CSR_CYCLE		0xc00
- #define CSR_TIME		0xc01
-@@ -100,6 +110,8 @@
- #define CSR_MCAUSE		0x342
- #define CSR_MTVAL		0x343
- #define CSR_MIP			0x344
-+#define CSR_PMPCFG0		0x3a0
-+#define CSR_PMPADDR0		0x3b0
- #define CSR_MHARTID		0xf14
- 
- #ifdef CONFIG_RISCV_M_MODE
-diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-index a4242be66966b..e4d9baf973232 100644
---- a/arch/riscv/kernel/head.S
-+++ b/arch/riscv/kernel/head.S
-@@ -58,6 +58,12 @@ _start_kernel:
- 	/* Reset all registers except ra, a0, a1 */
- 	call reset_regs
- 
-+	/* Setup a PMP to permit access to all of memory. */
-+	li a0, -1
-+	csrw CSR_PMPADDR0, a0
-+	li a0, (PMP_A_NAPOT | PMP_R | PMP_W | PMP_X)
-+	csrw CSR_PMPCFG0, a0
-+
- 	/*
- 	 * The hartid in a0 is expected later on, and we have no firmware
- 	 * to hand it to us.
+diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
+index f4cad5163bf2c..ffb3d94bf0cc2 100644
+--- a/arch/riscv/kernel/traps.c
++++ b/arch/riscv/kernel/traps.c
+@@ -156,6 +156,6 @@ void __init trap_init(void)
+ 	csr_write(CSR_SCRATCH, 0);
+ 	/* Set the exception vector address */
+ 	csr_write(CSR_TVEC, &handle_exception);
+-	/* Enable all interrupts */
+-	csr_write(CSR_IE, -1);
++	/* Enable interrupts */
++	csr_write(CSR_IE, IE_SIE | IE_EIE);
+ }
 -- 
 2.20.1
 
