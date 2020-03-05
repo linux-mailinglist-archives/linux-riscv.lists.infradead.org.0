@@ -2,52 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBCC117A03A
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 07:51:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44C4417A115
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 09:18:34 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TF7FLPf6Wfkjft7Ny+Js4un/iLjgriPpAYfUjMSZYlM=; b=JiLroxaC/eXuW5
-	Y8sgGEiu6zg3Yc6YMRCPr8f69lZ5IZZtO4zPvQgnT4556ox0/Wu2I9Tn0yzwSdAcfrlsbPk7a4ERH
-	pXvje8Pbi+Z/p7pgqJ6vtmK8dB7y9RjLl4ShTz6zuB/ydfQ/YN+BV4g2BW7AFEPWBNirSgbCBW9X5
-	0D8Okl9RW/KBxof1Vwon7FIDY451mrEwZ4umEz+tsas4iCz0sg5MrHZJq1Rpxhmqm/9nnYZ+Dgywp
-	rxQqo/ChmFxx73Lm3ra8Qf2lZ+h/hUxA/CMgkRyLwZ3IYHAMfZzOKKHqjOD5QTeQ6FgVZTER6bdKS
-	On+yvOVyjVb89QIntXKw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=qQP4aXg4Avt/ab0fH75qYetX5y7RdbS0Ia7+Hz3mIVo=; b=u2MFamouV8M2bduQNkC+nYTD0
+	QClB1j/0BBpAZGw9H9rbvadTAKdOvnRr86rubpte/qzgko+SutWup1xGqnkPVpJNyolvIoLESbu3+
+	jpxxmvc+WPU65bkveMj1r+J9WxaIUXpPYxXqs578gfSMXLewpdKsIiJ3+aIFLZhpCIueomX8ZOvKk
+	42HthjjaKKYH/UX979jL1IR+UZKfNxIXFiLBLX0ZC2v8/mNjpe5P1avsmtmRkg7sPHwC9qLM19SE0
+	Kz8dNrDap+HfwvPMuvV6USvvHCzXtGMWpnbOEwulp9r+IEmgePh1Htmr7gHWOJxAR0qYnK7jFLy2g
+	eRjdP5eQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9kLT-0008KI-Vv; Thu, 05 Mar 2020 06:50:59 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9kLM-0008GU-MI; Thu, 05 Mar 2020 06:50:55 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3F9941FB;
- Wed,  4 Mar 2020 22:50:51 -0800 (PST)
-Received: from p8cg001049571a15.arm.com (unknown [10.163.1.88])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id B5EE33F534;
- Wed,  4 Mar 2020 22:54:31 -0800 (PST)
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-To: linux-mm@kvack.org
-Subject: [PATCH 1/2] mm/vma: Define a default value for VM_DATA_DEFAULT_FLAGS
-Date: Thu,  5 Mar 2020 12:20:13 +0530
-Message-Id: <1583391014-8170-2-git-send-email-anshuman.khandual@arm.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1583391014-8170-1-git-send-email-anshuman.khandual@arm.com>
-References: <1583391014-8170-1-git-send-email-anshuman.khandual@arm.com>
+	id 1j9li8-0003tC-PD; Thu, 05 Mar 2020 08:18:28 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j9li4-0003sZ-VM
+ for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 08:18:27 +0000
+Received: by mail-wm1-x342.google.com with SMTP id i9so5129141wml.4
+ for <linux-riscv@lists.infradead.org>; Thu, 05 Mar 2020 00:18:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qQP4aXg4Avt/ab0fH75qYetX5y7RdbS0Ia7+Hz3mIVo=;
+ b=GgW/M+MGu4PCk/OTsUWe+7PSWksq4E+iKIYk9WRYbTApJnBjh/6tGZ1pSOMbR+VTSJ
+ QcMxTbG/npr21hJwIKdIndWQTVrzrA+R4lKCYH/oZDKhb/1FD6Jc5QFQANYSOfxCCiUA
+ kV+Xcfs2un8cGJrRRkV5m1Tz/YbTAvoMrQDDHjxxRR5HL/2vYJS49LxNqa39q3Agm8n1
+ OWYQ1rV5bKaPTcmcp4ej+xF7jsXKSUz4jFNZkWMd8p7DYEOGEFnH69QjHsE2HLQjqCwz
+ KBgCi7lbjOYtijY9tKWmxVGuMUPQiUdh13oNlS8KgjHQ5vo65JdQAz6mvRjkX2lFTeYV
+ v6OA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qQP4aXg4Avt/ab0fH75qYetX5y7RdbS0Ia7+Hz3mIVo=;
+ b=mO1PghwEp0v6xTy5PkINZTI6ZhfUeszrit//6naH1XezN1sAxPNmbIlpYVUVbN7oF3
+ MLlxsrf7q6Ebp9JuaPaiZHGytG15LIXpjIQeRh0W0HRcrP6r3jM92difU1cAhUMq7KNW
+ HLho6+xbhZ15Tl6yHhC0UR8puc5K8sNvsS197l5DRXVvrCBUkMgKPHtWNP2km6GAFEj4
+ NsPyLDRNi34t8CjNQdGsGwK7I5mH5gmrEIVKn5BGifSYhm9Q3Brw0zHDUjBhLDT2jZ/W
+ DcxjxnUki98fl66Au36msZXcgQvjkf0UWHHKehyzLS5loUTBrDgRj+CBkjZlZLO+ajSx
+ ABVw==
+X-Gm-Message-State: ANhLgQ1r2fH72DPLEQ54BBxtBlYJzTiMD0ASZyRVMY8H/cpmr/jn9aoR
+ lLD8gfeJ64+JA5mUTZV0s+o8KiTisq4liVA7B+aZ
+X-Google-Smtp-Source: ADFU+vsXfaqgu9oOxwGt0wGx2GyuwkzaS5wDC10AqKEkOAJtMfIZLzaPqKMMCPW8Bc7s2ycoIjoCEwY52ISLpaNaCSg=
+X-Received: by 2002:a05:600c:14d5:: with SMTP id
+ i21mr4200968wmh.186.1583396303191; 
+ Thu, 05 Mar 2020 00:18:23 -0800 (PST)
+MIME-Version: 1.0
+References: <20200212103432.660256-5-damien.lemoal@wdc.com>
+ <mhng-c45590f0-38f8-42db-a746-e9970c62e25d@palmerdabbelt-glaptop1>
+ <MN2PR04MB6061D77B37B5BFD3851F661F8DE20@MN2PR04MB6061.namprd04.prod.outlook.com>
+ <BYAPR04MB5816059C01B77CE5D7E02E40E7E20@BYAPR04MB5816.namprd04.prod.outlook.com>
+In-Reply-To: <BYAPR04MB5816059C01B77CE5D7E02E40E7E20@BYAPR04MB5816.namprd04.prod.outlook.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Thu, 5 Mar 2020 00:18:12 -0800
+Message-ID: <CAOnJCUJYcuvyHywV0vEzMcgUJaoUHfuLbWjp1bxDw2t-OJXOQw@mail.gmail.com>
+Subject: Re: [PATCH 04/10] riscv: Add BUILTIN_DTB support
+To: Damien Le Moal <Damien.LeMoal@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_225052_843367_EE7EFFAB 
-X-CRM114-Status: GOOD (  12.27  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200305_001825_425503_1413306F 
+X-CRM114-Status: GOOD (  39.50  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,555 +95,230 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mips@vger.kernel.org,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Guo Ren <guoren@kernel.org>, linux-parisc@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, Jonas Bonn <jonas@southpole.se>,
- linux-s390@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-c6x-dev@linux-c6x.org, Brian Cain <bcain@codeaurora.org>,
- Michael Ellerman <mpe@ellerman.id.au>, hughd@google.com,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
- Paul Burton <paulburton@kernel.org>, uclinux-h8-devel@lists.sourceforge.jp,
- linux-xtensa@linux-xtensa.org, Anshuman Khandual <anshuman.khandual@arm.com>,
- Jeff Dike <jdike@addtoit.com>, linux-um@lists.infradead.org,
- linux-m68k@lists.linux-m68k.org, openrisc@lists.librecores.org,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Guan Xuetao <gxt@pku.edu.cn>, vbabka@suse.cz,
- Richard Henderson <rth@twiddle.net>, Chris Zankel <chris@zankel.net>,
- Michal Simek <monstr@monstr.eu>, Tony Luck <tony.luck@intel.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- Vineet Gupta <vgupta@synopsys.com>, linux-kernel@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>, linux-alpha@vger.kernel.org,
- nios2-dev@lists.rocketboards.org, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-There are many platforms with exact same value for VM_DATA_DEFAULT_FLAGS
-This creates a default value for VM_DATA_DEFAULT_FLAGS in line with the
-existing VM_STACK_DEFAULT_FLAGS. While here, also define some more macros
-with standard VMA access flag combinations that are used frequently across
-many platforms. Apart from simplification, this reduces code duplication
-as well.
+On Wed, Mar 4, 2020 at 9:14 PM Damien Le Moal <Damien.LeMoal@wdc.com> wrote:
+>
+> On 2020/03/05 13:58, Anup Patel wrote:
+> >
+> >
+> >> -----Original Message-----
+> >> From: Palmer Dabbelt <palmer@dabbelt.com>
+> >> Sent: 05 March 2020 00:59
+> >> To: Damien Le Moal <Damien.LeMoal@wdc.com>
+> >> Cc: linux-riscv@lists.infradead.org; Paul Walmsley
+> >> <paul.walmsley@sifive.com>; Anup Patel <Anup.Patel@wdc.com>
+> >> Subject: Re: [PATCH 04/10] riscv: Add BUILTIN_DTB support
+> >>
+> >> On Wed, 12 Feb 2020 02:34:26 PST (-0800), Damien Le Moal wrote:
+> >>> Enable a kernel builtin dtb for boards not capable of providing a
+> >>> device tree to the kernel.
+> >>
+> >> I'd prefer if we picked a mechanism that allows a single kernel binary to be
+> >> run on multiple systems.  I think there's two use cases here:
+> >
+> > I strongly support "single kernel binary for multiple systems" but it's for
+> > different purpose here.
+> >
+> >>
+> >> * Bootloaders that provide no DTB at all.
+> >> * Bootloaders that provied a DTB that, for some reason, isn't usable.
+>
+> Sure, but as Anup mentions below, the current use case it to not even use any
+> bootloader at all for the K210 since that brings no value at all (in my
+> opinion). More on this below.
+>
+> >>
+> >> Given those constraints, could we do something similar to the early fixups?
+> >> I'm thinking we could build a mapping between a hardware identifier and a
+> >> DTB, then look up the DTB we want to use.  Users that want a kernel that
+> >> only runs on a single device can do so by configuring only a single DTB, users
+> >> that want a more portable kernel can select a bunch -- that's essentially the
+> >> same as how we're treating everything else (for example, the
+> >> CONFIG_SOC_* stuff).
+> >
+> > There is no bootloader on Kendryte K210. The Linux RISC-V NOMMU kernel
+> > boots directly. The BUILTIN_DTB is only applicable to cases where there is
+> > no bootloader before kernel.
+> >
+> > The Linux RISC-V NOMMU will tend be used in cases where:
+> > 1. There is no bootloader and kernel boots directly hence we need
+> > builtin DTB feature.
+> > 2. There is very less RAM so we will have to build kernel specific to
+> > a particular platform with bare minimum drivers. Due to this, we will
+> > have separate defconfig for NOMMU platforms.
+> >
+> > I think point1 can be tackled if we enforce having bootloader (such as U-Boot)
+> > for NOMMU systems and drop this patch.
+>
+> But that would go against point 2 as that will use more memory... By "drop this
+> patch", may be you meant to say "not use this config option" ?
+>
+> > For point2 above, we don't have much alternatives other than reducing
+> > kernel binary size by disabling unwanted drivers.
+>
+> And not using a boot loader. Sean got U-boot working with Kendryte, so it is not
+> that we cannot make it work. It is only that it may be less optimal due to the
+> memory used by the boot loader itself. Unless we can recover it if the kernel
+> relocate itself over it ? Surely doable, but it does sound to me like an
+> overkill for this particular use case, i.e. a tiny, hyper-embedded board where
+> running Linux is probably not the best choice in the first place, at least when
+> looking at real applications. The story is different for "hobbyist" level. My
+> on-going 6 DoF robotic arm project controlled with Linux on K210 is a valid use
+> case after all :)
+>
 
-Cc: Richard Henderson <rth@twiddle.net>
-Cc: Vineet Gupta <vgupta@synopsys.com>
-Cc: Russell King <linux@armlinux.org.uk>
-Cc: Catalin Marinas <catalin.marinas@arm.com>
-Cc: Mark Salter <msalter@redhat.com>
-Cc: Guo Ren <guoren@kernel.org>
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-Cc: Brian Cain <bcain@codeaurora.org>
-Cc: Tony Luck <tony.luck@intel.com>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Michal Simek <monstr@monstr.eu>
-Cc: Ralf Baechle <ralf@linux-mips.org>
-Cc: Paul Burton <paulburton@kernel.org>
-Cc: Nick Hu <nickhu@andestech.com>
-Cc: Ley Foon Tan <ley.foon.tan@intel.com>
-Cc: Jonas Bonn <jonas@southpole.se>
-Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
-Cc: Michael Ellerman <mpe@ellerman.id.au>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
-Cc: Rich Felker <dalias@libc.org>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: Guan Xuetao <gxt@pku.edu.cn>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Jeff Dike <jdike@addtoit.com>
-Cc: Chris Zankel <chris@zankel.net>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-alpha@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-snps-arc@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-c6x-dev@linux-c6x.org
-Cc: uclinux-h8-devel@lists.sourceforge.jp
-Cc: linux-hexagon@vger.kernel.org
-Cc: linux-ia64@vger.kernel.org
-Cc: linux-m68k@lists.linux-m68k.org
-Cc: linux-mips@vger.kernel.org
-Cc: nios2-dev@lists.rocketboards.org
-Cc: openrisc@lists.librecores.org
-Cc: linux-parisc@vger.kernel.org
-Cc: linuxppc-dev@lists.ozlabs.org
-Cc: linux-riscv@lists.infradead.org
-Cc: linux-s390@vger.kernel.org
-Cc: linux-sh@vger.kernel.org
-Cc: sparclinux@vger.kernel.org
-Cc: linux-um@lists.infradead.org
-Cc: linux-xtensa@linux-xtensa.org
-Cc: linux-mm@kvack.org
-Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
-Acked-by: Geert Uytterhoeven <geert@linux-m68k.org>
-Reviewed-by: Vlastimil Babka <vbabka@suse.cz>
----
- arch/alpha/include/asm/page.h      |  3 ---
- arch/arc/include/asm/page.h        |  2 +-
- arch/arm/include/asm/page.h        |  4 +---
- arch/arm64/include/asm/page.h      |  4 +---
- arch/c6x/include/asm/page.h        |  5 +----
- arch/csky/include/asm/page.h       |  3 ---
- arch/h8300/include/asm/page.h      |  2 --
- arch/hexagon/include/asm/page.h    |  3 +--
- arch/ia64/include/asm/page.h       |  5 +----
- arch/m68k/include/asm/page.h       |  3 ---
- arch/microblaze/include/asm/page.h |  2 --
- arch/mips/include/asm/page.h       |  5 +----
- arch/nds32/include/asm/page.h      |  3 ---
- arch/nios2/include/asm/page.h      |  3 +--
- arch/openrisc/include/asm/page.h   |  5 -----
- arch/parisc/include/asm/page.h     |  3 ---
- arch/powerpc/include/asm/page.h    |  9 ++-------
- arch/powerpc/include/asm/page_64.h |  7 ++-----
- arch/riscv/include/asm/page.h      |  3 +--
- arch/s390/include/asm/page.h       |  3 +--
- arch/sh/include/asm/page.h         |  3 ---
- arch/sparc/include/asm/page_32.h   |  3 ---
- arch/sparc/include/asm/page_64.h   |  3 ---
- arch/unicore32/include/asm/page.h  |  3 ---
- arch/x86/include/asm/page_types.h  |  4 +---
- arch/x86/um/asm/vm-flags.h         | 10 ++--------
- arch/xtensa/include/asm/page.h     |  3 ---
- include/linux/mm.h                 | 14 ++++++++++++++
- 28 files changed, 31 insertions(+), 89 deletions(-)
+Just a thought: How about keeping the loader out of kernel as a
+separate project as a tinyloader ?
+That tinyloader project can host the DTB and pass it to kernel in a1
+register. This tinyloader can be used for
+any M-mode only platforms with memory constraints.  If platform has
+sufficient memory and supports U-boot, users can use that as well.
+That will allow single kernel image to boot all the platforms and we
+can mandate one booting protocol for all platforms.
+Otherwise, we have to specify different booting protocol for
+M-Mode/NoMMU linux and S-mode Linux.
+In future, there may be more platforms with Builtin DTB request as well.
 
-diff --git a/arch/alpha/include/asm/page.h b/arch/alpha/include/asm/page.h
-index f3fb2848470a..e241bd88880f 100644
---- a/arch/alpha/include/asm/page.h
-+++ b/arch/alpha/include/asm/page.h
-@@ -90,9 +90,6 @@ typedef struct page *pgtable_t;
- #define virt_addr_valid(kaddr)	pfn_valid(__pa(kaddr) >> PAGE_SHIFT)
- #endif /* CONFIG_DISCONTIGMEM */
- 
--#define VM_DATA_DEFAULT_FLAGS		(VM_READ | VM_WRITE | VM_EXEC | \
--					 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
- 
-diff --git a/arch/arc/include/asm/page.h b/arch/arc/include/asm/page.h
-index 0a32e8cfd074..b0dfed0f12be 100644
---- a/arch/arc/include/asm/page.h
-+++ b/arch/arc/include/asm/page.h
-@@ -102,7 +102,7 @@ typedef pte_t * pgtable_t;
- #define virt_addr_valid(kaddr)  pfn_valid(virt_to_pfn(kaddr))
- 
- /* Default Permissions for stack/heaps pages (Non Executable) */
--#define VM_DATA_DEFAULT_FLAGS   (VM_READ | VM_WRITE | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_NON_EXEC
- 
- #define WANT_PAGE_VIRTUAL   1
- 
-diff --git a/arch/arm/include/asm/page.h b/arch/arm/include/asm/page.h
-index c2b75cba26df..11b058a72a5b 100644
---- a/arch/arm/include/asm/page.h
-+++ b/arch/arm/include/asm/page.h
-@@ -161,9 +161,7 @@ extern int pfn_valid(unsigned long);
- 
- #endif /* !__ASSEMBLY__ */
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0) | \
--	 VM_READ | VM_WRITE | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #include <asm-generic/getorder.h>
- 
-diff --git a/arch/arm64/include/asm/page.h b/arch/arm64/include/asm/page.h
-index d39ddb258a04..cb4e1e6ca385 100644
---- a/arch/arm64/include/asm/page.h
-+++ b/arch/arm64/include/asm/page.h
-@@ -32,9 +32,7 @@ extern int pfn_valid(unsigned long);
- 
- #endif /* !__ASSEMBLY__ */
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0) | \
--	 VM_READ | VM_WRITE | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #include <asm-generic/getorder.h>
- 
-diff --git a/arch/c6x/include/asm/page.h b/arch/c6x/include/asm/page.h
-index 70db1e7632bc..40079899084d 100644
---- a/arch/c6x/include/asm/page.h
-+++ b/arch/c6x/include/asm/page.h
-@@ -2,10 +2,7 @@
- #ifndef _ASM_C6X_PAGE_H
- #define _ASM_C6X_PAGE_H
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(VM_READ | VM_WRITE | \
--	((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0) | \
--		 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #include <asm-generic/page.h>
- 
-diff --git a/arch/csky/include/asm/page.h b/arch/csky/include/asm/page.h
-index 9738eacefdc7..9b98bf31d57c 100644
---- a/arch/csky/include/asm/page.h
-+++ b/arch/csky/include/asm/page.h
-@@ -85,9 +85,6 @@ extern unsigned long va_pa_offset;
- 				 PHYS_OFFSET_OFFSET)
- #define virt_to_page(x)	(mem_map + MAP_NR(x))
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #define pfn_to_kaddr(x)	__va(PFN_PHYS(x))
- 
- #include <asm-generic/memory_model.h>
-diff --git a/arch/h8300/include/asm/page.h b/arch/h8300/include/asm/page.h
-index 8da5124ad344..53e037544239 100644
---- a/arch/h8300/include/asm/page.h
-+++ b/arch/h8300/include/asm/page.h
-@@ -6,8 +6,6 @@
- #include <linux/types.h>
- 
- #define MAP_NR(addr) (((uintptr_t)(addr)-PAGE_OFFSET) >> PAGE_SHIFT)
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
- 
- #ifndef __ASSEMBLY__
- extern unsigned long rom_length;
-diff --git a/arch/hexagon/include/asm/page.h b/arch/hexagon/include/asm/page.h
-index ee31f36f48f3..7cbf719c578e 100644
---- a/arch/hexagon/include/asm/page.h
-+++ b/arch/hexagon/include/asm/page.h
-@@ -93,8 +93,7 @@ struct page;
- #define virt_to_page(kaddr) pfn_to_page(PFN_DOWN(__pa(kaddr)))
- 
- /* Default vm area behavior is non-executable.  */
--#define VM_DATA_DEFAULT_FLAGS (VM_READ | VM_WRITE | \
--				VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_NON_EXEC
- 
- #define pfn_valid(pfn) ((pfn) < max_mapnr)
- #define virt_addr_valid(kaddr) pfn_valid(__pa(kaddr) >> PAGE_SHIFT)
-diff --git a/arch/ia64/include/asm/page.h b/arch/ia64/include/asm/page.h
-index 5798bd2b462c..b69a5499d75b 100644
---- a/arch/ia64/include/asm/page.h
-+++ b/arch/ia64/include/asm/page.h
-@@ -218,10 +218,7 @@ get_order (unsigned long size)
- 
- #define PAGE_OFFSET			RGN_BASE(RGN_KERNEL)
- 
--#define VM_DATA_DEFAULT_FLAGS		(VM_READ | VM_WRITE |					\
--					 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC |		\
--					 (((current->personality & READ_IMPLIES_EXEC) != 0)	\
--					  ? VM_EXEC : 0))
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #define GATE_ADDR		RGN_BASE(RGN_GATE)
- 
-diff --git a/arch/m68k/include/asm/page.h b/arch/m68k/include/asm/page.h
-index 05e1e1e77a9a..9d2ef0a51720 100644
---- a/arch/m68k/include/asm/page.h
-+++ b/arch/m68k/include/asm/page.h
-@@ -55,9 +55,6 @@ extern unsigned long _ramend;
- #define __phys_to_pfn(paddr)	((unsigned long)((paddr) >> PAGE_SHIFT))
- #define __pfn_to_phys(pfn)	PFN_PHYS(pfn)
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/getorder.h>
- 
- #endif /* _M68K_PAGE_H */
-diff --git a/arch/microblaze/include/asm/page.h b/arch/microblaze/include/asm/page.h
-index f4b44b24b02e..43bd560b7b67 100644
---- a/arch/microblaze/include/asm/page.h
-+++ b/arch/microblaze/include/asm/page.h
-@@ -197,8 +197,6 @@ extern int page_is_ram(unsigned long pfn);
- 
- #ifdef CONFIG_MMU
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
- #endif /* CONFIG_MMU */
- 
- #endif /* __KERNEL__ */
-diff --git a/arch/mips/include/asm/page.h b/arch/mips/include/asm/page.h
-index 0ba4ce6e2bf3..e2f503fc7a84 100644
---- a/arch/mips/include/asm/page.h
-+++ b/arch/mips/include/asm/page.h
-@@ -253,10 +253,7 @@ extern bool __virt_addr_valid(const volatile void *kaddr);
- #define virt_addr_valid(kaddr)						\
- 	__virt_addr_valid((const volatile void *) (kaddr))
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(VM_READ | VM_WRITE | \
--	 ((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0) | \
--	 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
-diff --git a/arch/nds32/include/asm/page.h b/arch/nds32/include/asm/page.h
-index 86b32014c5f9..add33a7f02c8 100644
---- a/arch/nds32/include/asm/page.h
-+++ b/arch/nds32/include/asm/page.h
-@@ -59,9 +59,6 @@ typedef struct page *pgtable_t;
- 
- #endif /* !__ASSEMBLY__ */
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #endif /* __KERNEL__ */
- 
- #endif
-diff --git a/arch/nios2/include/asm/page.h b/arch/nios2/include/asm/page.h
-index 79fcac61f6ef..6a989819a7c1 100644
---- a/arch/nios2/include/asm/page.h
-+++ b/arch/nios2/include/asm/page.h
-@@ -98,8 +98,7 @@ static inline bool pfn_valid(unsigned long pfn)
- # define virt_to_page(vaddr)	pfn_to_page(PFN_DOWN(virt_to_phys(vaddr)))
- # define virt_addr_valid(vaddr)	pfn_valid(PFN_DOWN(virt_to_phys(vaddr)))
- 
--# define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+# define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_NON_EXEC
- 
- #include <asm-generic/memory_model.h>
- 
-diff --git a/arch/openrisc/include/asm/page.h b/arch/openrisc/include/asm/page.h
-index 01069db59454..aab6e64d6db4 100644
---- a/arch/openrisc/include/asm/page.h
-+++ b/arch/openrisc/include/asm/page.h
-@@ -86,11 +86,6 @@ typedef struct page *pgtable_t;
- 
- #endif /* __ASSEMBLY__ */
- 
--
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
--
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
- 
-diff --git a/arch/parisc/include/asm/page.h b/arch/parisc/include/asm/page.h
-index 796ae29e9b9a..6b3f6740a6a6 100644
---- a/arch/parisc/include/asm/page.h
-+++ b/arch/parisc/include/asm/page.h
-@@ -180,9 +180,6 @@ extern int npmem_ranges;
- #define page_to_phys(page)	(page_to_pfn(page) << PAGE_SHIFT)
- #define virt_to_page(kaddr)     pfn_to_page(__pa(kaddr) >> PAGE_SHIFT)
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
- #include <asm/pdc.h>
-diff --git a/arch/powerpc/include/asm/page.h b/arch/powerpc/include/asm/page.h
-index 080a0bf8e54b..3ee8df0f66e0 100644
---- a/arch/powerpc/include/asm/page.h
-+++ b/arch/powerpc/include/asm/page.h
-@@ -240,13 +240,8 @@ static inline bool pfn_valid(unsigned long pfn)
-  * and needs to be executable.  This means the whole heap ends
-  * up being executable.
-  */
--#define VM_DATA_DEFAULT_FLAGS32 \
--	(((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0) | \
--				 VM_READ | VM_WRITE | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
--#define VM_DATA_DEFAULT_FLAGS64	(VM_READ | VM_WRITE | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS32	VM_DATA_FLAGS_TSK_EXEC
-+#define VM_DATA_DEFAULT_FLAGS64	VM_DATA_FLAGS_NON_EXEC
- 
- #ifdef __powerpc64__
- #include <asm/page_64.h>
-diff --git a/arch/powerpc/include/asm/page_64.h b/arch/powerpc/include/asm/page_64.h
-index 5962797f784a..79a9b7c6a132 100644
---- a/arch/powerpc/include/asm/page_64.h
-+++ b/arch/powerpc/include/asm/page_64.h
-@@ -94,11 +94,8 @@ extern u64 ppc64_pft_size;
-  * stack by default, so in the absence of a PT_GNU_STACK program header
-  * we turn execute permission off.
-  */
--#define VM_STACK_DEFAULT_FLAGS32	(VM_READ | VM_WRITE | VM_EXEC | \
--					 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
--#define VM_STACK_DEFAULT_FLAGS64	(VM_READ | VM_WRITE | \
--					 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_STACK_DEFAULT_FLAGS32	VM_DATA_FLAGS_EXEC
-+#define VM_STACK_DEFAULT_FLAGS64	VM_DATA_FLAGS_NON_EXEC
- 
- #define VM_STACK_DEFAULT_FLAGS \
- 	(is_32bit_task() ? \
-diff --git a/arch/riscv/include/asm/page.h b/arch/riscv/include/asm/page.h
-index 8ca1930caa44..2d50f76efe48 100644
---- a/arch/riscv/include/asm/page.h
-+++ b/arch/riscv/include/asm/page.h
-@@ -137,8 +137,7 @@ extern phys_addr_t __phys_addr_symbol(unsigned long x);
- 
- #define virt_addr_valid(vaddr)	(pfn_valid(virt_to_pfn(vaddr)))
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_NON_EXEC
- 
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
-diff --git a/arch/s390/include/asm/page.h b/arch/s390/include/asm/page.h
-index 1019efd85b9d..089f49230966 100644
---- a/arch/s390/include/asm/page.h
-+++ b/arch/s390/include/asm/page.h
-@@ -176,8 +176,7 @@ static inline int devmem_is_allowed(unsigned long pfn)
- 
- #define virt_addr_valid(kaddr)	pfn_valid(__pa(kaddr) >> PAGE_SHIFT)
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_NON_EXEC
- 
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
-diff --git a/arch/sh/include/asm/page.h b/arch/sh/include/asm/page.h
-index 5eef8be3e59f..ea8d68f58e39 100644
---- a/arch/sh/include/asm/page.h
-+++ b/arch/sh/include/asm/page.h
-@@ -182,9 +182,6 @@ typedef struct page *pgtable_t;
- #endif
- #define virt_addr_valid(kaddr)	pfn_valid(__pa(kaddr) >> PAGE_SHIFT)
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
- 
-diff --git a/arch/sparc/include/asm/page_32.h b/arch/sparc/include/asm/page_32.h
-index b76d59edec8c..478260002836 100644
---- a/arch/sparc/include/asm/page_32.h
-+++ b/arch/sparc/include/asm/page_32.h
-@@ -133,9 +133,6 @@ extern unsigned long pfn_base;
- #define pfn_valid(pfn)		(((pfn) >= (pfn_base)) && (((pfn)-(pfn_base)) < max_mapnr))
- #define virt_addr_valid(kaddr)	((((unsigned long)(kaddr)-PAGE_OFFSET)>>PAGE_SHIFT) < max_mapnr)
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/memory_model.h>
- #include <asm-generic/getorder.h>
- 
-diff --git a/arch/sparc/include/asm/page_64.h b/arch/sparc/include/asm/page_64.h
-index e80f2d5bf62f..254dffd85fb1 100644
---- a/arch/sparc/include/asm/page_64.h
-+++ b/arch/sparc/include/asm/page_64.h
-@@ -158,9 +158,6 @@ extern unsigned long PAGE_OFFSET;
- 
- #endif /* !(__ASSEMBLY__) */
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/getorder.h>
- 
- #endif /* _SPARC64_PAGE_H */
-diff --git a/arch/unicore32/include/asm/page.h b/arch/unicore32/include/asm/page.h
-index 8a89335673f9..96d6bdf180bd 100644
---- a/arch/unicore32/include/asm/page.h
-+++ b/arch/unicore32/include/asm/page.h
-@@ -69,9 +69,6 @@ extern int pfn_valid(unsigned long);
- 
- #endif /* !__ASSEMBLY__ */
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(VM_READ | VM_WRITE | VM_EXEC | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/getorder.h>
- 
- #endif
-diff --git a/arch/x86/include/asm/page_types.h b/arch/x86/include/asm/page_types.h
-index c85e15010f48..e27aa6be6320 100644
---- a/arch/x86/include/asm/page_types.h
-+++ b/arch/x86/include/asm/page_types.h
-@@ -35,9 +35,7 @@
- 
- #define PAGE_OFFSET		((unsigned long)__PAGE_OFFSET)
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0 ) | \
--	 VM_READ | VM_WRITE | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #define __PHYSICAL_START	ALIGN(CONFIG_PHYSICAL_START, \
- 				      CONFIG_PHYSICAL_ALIGN)
-diff --git a/arch/x86/um/asm/vm-flags.h b/arch/x86/um/asm/vm-flags.h
-index 7c297e9e2413..df7a3896f5dd 100644
---- a/arch/x86/um/asm/vm-flags.h
-+++ b/arch/x86/um/asm/vm-flags.h
-@@ -9,17 +9,11 @@
- 
- #ifdef CONFIG_X86_32
- 
--#define VM_DATA_DEFAULT_FLAGS \
--	(VM_READ | VM_WRITE | \
--	((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0 ) | \
--		 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_DEFAULT_FLAGS	VM_DATA_FLAGS_TSK_EXEC
- 
- #else
- 
--#define VM_DATA_DEFAULT_FLAGS (VM_READ | VM_WRITE | VM_EXEC | \
--	VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--#define VM_STACK_DEFAULT_FLAGS (VM_GROWSDOWN | VM_READ | VM_WRITE | \
--	VM_EXEC | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_STACK_DEFAULT_FLAGS (VM_GROWSDOWN | VM_DATA_FLAGS_EXEC)
- 
- #endif
- #endif
-diff --git a/arch/xtensa/include/asm/page.h b/arch/xtensa/include/asm/page.h
-index f4771c29c7e9..37ce25ef92d6 100644
---- a/arch/xtensa/include/asm/page.h
-+++ b/arch/xtensa/include/asm/page.h
-@@ -203,8 +203,5 @@ static inline unsigned long ___pa(unsigned long va)
- 
- #endif /* __ASSEMBLY__ */
- 
--#define VM_DATA_DEFAULT_FLAGS	(VM_READ | VM_WRITE | VM_EXEC | \
--				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
--
- #include <asm-generic/memory_model.h>
- #endif /* _XTENSA_PAGE_H */
-diff --git a/include/linux/mm.h b/include/linux/mm.h
-index b0e53ef13ff1..3861524368a4 100644
---- a/include/linux/mm.h
-+++ b/include/linux/mm.h
-@@ -342,6 +342,20 @@ extern unsigned int kobjsize(const void *objp);
- /* Bits set in the VMA until the stack is in its final location */
- #define VM_STACK_INCOMPLETE_SETUP	(VM_RAND_READ | VM_SEQ_READ)
- 
-+#define TASK_EXEC ((current->personality & READ_IMPLIES_EXEC) ? VM_EXEC : 0)
-+
-+/* Common data flag combinations */
-+#define VM_DATA_FLAGS_TSK_EXEC	(VM_READ | VM_WRITE | TASK_EXEC | \
-+				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_FLAGS_NON_EXEC	(VM_READ | VM_WRITE | VM_MAYREAD | \
-+				 VM_MAYWRITE | VM_MAYEXEC)
-+#define VM_DATA_FLAGS_EXEC	(VM_READ | VM_WRITE | VM_EXEC | \
-+				 VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC)
-+
-+#ifndef VM_DATA_DEFAULT_FLAGS		/* arch can override this */
-+#define VM_DATA_DEFAULT_FLAGS  VM_DATA_FLAGS_EXEC
-+#endif
-+
- #ifndef VM_STACK_DEFAULT_FLAGS		/* arch can override this */
- #define VM_STACK_DEFAULT_FLAGS VM_DATA_DEFAULT_FLAGS
- #endif
+> >
+> >>
+> >> For the hardware ID, could we do something like:
+> >>
+> >> * Check for the top-level DT compatible string, on systems where we have a
+> >>   provided DTB.
+> >> * Check for a matching mimpid/marchid/mvendorid tuple, maybe with some
+> >> sort of
+> >>   masking functionality if we later need one.  These are availiable via SBI
+> >>   calls, but I'd be inclined to restrict them to M-mode boot and just say the
+> >>   SBI must provide a device tree with at least a suitable compatible string.
+> >>
+> >> While I suppose we could put together a tool for generating these tables, for
+> >> now we could probably just stick the mappings in a table for now given that
+> >> there's only one of them.
+> >>
+> >> That said, I'm not sure what to do about the different Kendryte boards -- is
+> >> there any way to poke the hardware to see which is which?
+> >
+> > I am sure there are two three different boards out there. Don't know exact
+> > differences between these boards.
+>
+> As far as I can tell, all the boards use the exact same SoC. No differences that
+> I can detect nor aware of. What differs between the different flavors of boards
+> are the perypherals attached: some have WiFi, different LCDs and different
+> cameras. The device tree is able to describe that of course, but the core dtsi
+> part for the SoC itself seem to be OK at least for the 4 different boards I have
+> (Kendryte KD233, Sipeed MAIXDUINO, MAIX Go and Dan Dock).
+>
+> >
+> > Regards,
+> > Anup
+> >
+> >>
+> >>> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
+> >>> ---
+> >>>  arch/riscv/Kbuild            |  1 +
+> >>>  arch/riscv/Kconfig           | 18 ++++++++++++++++++
+> >>>  arch/riscv/boot/dts/Makefile |  4 ++++
+> >>>  arch/riscv/kernel/setup.c    |  6 ++++++
+> >>>  arch/riscv/mm/init.c         |  4 ++++
+> >>>  5 files changed, 33 insertions(+)
+> >>>
+> >>> diff --git a/arch/riscv/Kbuild b/arch/riscv/Kbuild index
+> >>> d1d0aa70fdf1..988804e430e4 100644
+> >>> --- a/arch/riscv/Kbuild
+> >>> +++ b/arch/riscv/Kbuild
+> >>> @@ -1,3 +1,4 @@
+> >>>  # SPDX-License-Identifier: GPL-2.0-only
+> >>>
+> >>>  obj-y += kernel/ mm/ net/
+> >>> +obj-$(CONFIG_USE_BUILTIN_DTB)      += boot/dts/
+> >>> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig index
+> >>> 1a3b5a5276be..28899e15f548 100644
+> >>> --- a/arch/riscv/Kconfig
+> >>> +++ b/arch/riscv/Kconfig
+> >>> @@ -355,6 +355,24 @@ config CMDLINE_FORCE
+> >>>
+> >>>  endchoice
+> >>>
+> >>> +config USE_BUILTIN_DTB
+> >>> +   bool "Use builtin DTB"
+> >>> +   help
+> >>> +     Link a device tree blob for particular hardware into the kernel,
+> >>> +     suppressing use of the DTB pointer provided by the bootloader.
+> >>> +     This option should only be used with hardware or bootloaders that
+> >>> +     are not capable of providing a DTB to the kernel, or for
+> >>> +     experimental hardware without stable device tree bindings.
+> >>> +
+> >>> +config BUILTIN_DTB_SOURCE
+> >>> +   string "Source file for builtin DTB"
+> >>> +   default ""
+> >>> +   depends on USE_BUILTIN_DTB
+> >>> +   help
+> >>> +     Base name (without suffix, relative to arch/riscv/boot/dts) for
+> >>> +     the a DTS file that will be used to produce the DTB linked into
+> >>> +     the kernel.
+> >>> +
+> >>>  endmenu
+> >>>
+> >>>  menu "Power management options"
+> >>> diff --git a/arch/riscv/boot/dts/Makefile
+> >>> b/arch/riscv/boot/dts/Makefile index dcc3ada78455..0bf2669aa12d 100644
+> >>> --- a/arch/riscv/boot/dts/Makefile
+> >>> +++ b/arch/riscv/boot/dts/Makefile
+> >>> @@ -1,2 +1,6 @@
+> >>>  # SPDX-License-Identifier: GPL-2.0
+> >>> +ifneq ($(CONFIG_BUILTIN_DTB_SOURCE),"")
+> >>> +obj-$(CONFIG_USE_BUILTIN_DTB) += $(patsubst
+> >>> +"%",%,$(CONFIG_BUILTIN_DTB_SOURCE)).dtb.o
+> >>> +else
+> >>>  subdir-y += sifive
+> >>> +endif
+> >>> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+> >>> index 0a6d415b0a5a..3e89be9d888c 100644
+> >>> --- a/arch/riscv/kernel/setup.c
+> >>> +++ b/arch/riscv/kernel/setup.c
+> >>> @@ -68,7 +68,13 @@ void __init setup_arch(char **cmdline_p)
+> >>>
+> >>>     setup_bootmem();
+> >>>     paging_init();
+> >>> +
+> >>> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
+> >>> +   unflatten_and_copy_device_tree();
+> >>> +#else
+> >>>     unflatten_device_tree();
+> >>> +#endif
+> >>> +
+> >>>     clint_init_boot_cpu();
+> >>>
+> >>>  #ifdef CONFIG_SWIOTLB
+> >>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c index
+> >>> 965a8cf4829c..1274e889d008 100644
+> >>> --- a/arch/riscv/mm/init.c
+> >>> +++ b/arch/riscv/mm/init.c
+> >>> @@ -480,7 +480,11 @@ static void __init setup_vm_final(void)  #else
+> >>> asmlinkage void __init setup_vm(uintptr_t dtb_pa)  {
+> >>> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
+> >>> +   dtb_early_va = __dtb_start;
+> >>> +#else
+> >>>     dtb_early_va = (void *)dtb_pa;
+> >>> +#endif
+> >>>  }
+> >>>
+> >>>  static inline void setup_vm_final(void)
+> >
+>
+>
+> --
+> Damien Le Moal
+> Western Digital Research
+>
+
+
 -- 
-2.20.1
-
+Regards,
+Atish
 
