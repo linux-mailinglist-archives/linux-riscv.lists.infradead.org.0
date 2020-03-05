@@ -2,81 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3869817AAF8
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 17:53:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 77A4D17AB56
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 18:13:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=npcqK+CtPgKOdYKCLUdw238cgWR2tdAWLJ+s57xZf+Y=; b=BAg1YANC5I9FDUB3ofedkgXKb
-	QtDW6INlIOxj/dJopdyGoPbifXbop0mMTz95blDq5hDWgpm5YN8dzLBpQ9JpKfJes8Li0H+ToG283
-	iMwUEHcVqq/K+Wbh9fT6auGWg3I6t3b29UkngobQfYTh28ga3H06NJXUJpoOZCKRwVKSkzR30RVS9
-	TXWmkoBiqAL0gZqTgiAXMAgyciGkq7p23cLHw003c98OH+KRd2gimB6gh2gcop94yx1ZHExdT6YRg
-	9em5XTqm73hzc7RcR5bg9PZpShoSn67wvW2JOOIxPwYmrNPVtu4bkuiZcono7P5FGcBmBK+IKZUcx
-	spaEaaEEg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1xN3+LuAK0zgUL8q4qCmMC2Noh57ogC836eSOXo8XSs=; b=nwoSfnH0jRCRS+
+	06XGibgSkutwnhRjYd45qN1fZsRNj+ikFecyCeCprdL23neXO6hweE57kOmCoMozGSlaoeIMWuLB5
+	Ohgf5NeLA55K4n8xXQCji9p7SHlu2RGeHf21e+QDIbu42E0HFq/OggM1wzbLBs5hX/NuSMk5+rJB+
+	I9gq3iuO/Q7Gs42b0JJNDD11xnM3TBssXLlzUjX6r7i5/NFOcX6SJ/AGyqAaGD8xtt79WuV6FXy4Y
+	cZDhVNVL6uW7NXfGAIbVQ80SCQ0m/67BRo8WCIomA2vreLerINKu8xGYeNJ5O62Z24Jlp2tt2opPX
+	n2G4GD47ionaOCscvK0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9tka-00040S-N2; Thu, 05 Mar 2020 16:53:32 +0000
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44])
+	id 1j9u42-00024E-Qz; Thu, 05 Mar 2020 17:13:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9tkX-00040A-8G
- for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 16:53:30 +0000
-Received: by mail-qv1-xf44.google.com with SMTP id fc12so2722150qvb.6
- for <linux-riscv@lists.infradead.org>; Thu, 05 Mar 2020 08:53:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=npcqK+CtPgKOdYKCLUdw238cgWR2tdAWLJ+s57xZf+Y=;
- b=jFX60U1lxCSBOa8t/1PdSfb/kdQVkSZh8Mk5VzCBsZTJbt2yo44hS6AtFCV/WHqQpx
- 3qbwM6aYWdIajwbaZZ5EhZp4fO+lmJ1e4PZSf/j6PN0nf0VFxyZEKSkBZx3DVD+I9MKa
- xrM4cZ6xC9OoiW7EkAZUI7RYde5/gJi4Mth4cQLIcHl+rewqFyoNnoJMhOUqzbaKaPI2
- U9VBpWGRHvk3QJh6QzrxxibeO+VwGGg4y40MpCL6actTzyPTm1TwfNkLyxEg/XuARz3Q
- Rsa0amnG5coKjjJlF+LpckLtPCNZqvxeoTWlNxc+YliNEl9N/xcqn//D1T2pO8COBC+9
- d6Vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=npcqK+CtPgKOdYKCLUdw238cgWR2tdAWLJ+s57xZf+Y=;
- b=QcO751e9qjf2t4nCbN+eHoq+a2pTDKuoDKOSx2bU10O1TBxgsOHUhg7nSk1JpmVdn6
- uKSz9z7u9BxeU0TS4xbpMD+uWtg1+oGUbjTIWgFf0hn+4SmMDGHn8kl+nIfQ1CcGWAgm
- ujiEfg1wXoLt98IW9chvFjWH7KqrcYthj3jP0P77aqa1LJLc+r06Nt57+wuBtOrJUqtu
- 0WPTgMtxLyWEcImNvEmlB21UXSRjL+CwHeJAx4IuwnFEGrPouJSf6w4AOKc23/50PvBB
- CqCjN6LXD6abvsEOEalnzhZTacZWUAM644ANn+CbWu5Z6y5mVOF6lj4Grnlcew1mx8wj
- 8C0w==
-X-Gm-Message-State: ANhLgQ087R93oA53d4eH36KjxX8c0dPG+yTyJx0nrGoeSQuRWfPI+HDt
- c6ZZeVgOv7R06gmU2v/MVLcZNOs+TxG5Jc0zK+M=
-X-Google-Smtp-Source: ADFU+vviwKS4MeppDNv2kpImVhSonDJ24hNChwGak/JUqVXaYc2hp5YiGqyd8YCmOP3NKhW87RY1O4IxPy8g8zMdixs=
-X-Received: by 2002:a0c:f985:: with SMTP id t5mr7387374qvn.127.1583427207904; 
- Thu, 05 Mar 2020 08:53:27 -0800 (PST)
+ id 1j9u40-00023E-0b
+ for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 17:13:37 +0000
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 467BE20870;
+ Thu,  5 Mar 2020 17:13:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1583428415;
+ bh=Eqxcwe6hqlaj8Q4EMkWE8eXCmsUaeSppDr69o8tGO8c=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Hu5Cpqt9MrLQlTT4RCmJzQUq5IHIRtjrFunEQtIK+4Al5RUHwWLFCIWNwH81l1qLK
+ kWyjW8CpdRttXrTQ1ZrDol6EL4RBpTrTFtElENJ7hZQHHIb+ase0RIKfjUWy5YlxQW
+ dZwK+i3rWcWw6AOUVWAlv50f4zOqOl4+9WDe1lLk=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.5 18/67] riscv: set pmp configuration if kernel is
+ running in M-mode
+Date: Thu,  5 Mar 2020 12:12:19 -0500
+Message-Id: <20200305171309.29118-18-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200305171309.29118-1-sashal@kernel.org>
+References: <20200305171309.29118-1-sashal@kernel.org>
 MIME-Version: 1.0
-References: <20200305050207.4159-1-luke.r.nels@gmail.com>
- <CAJ+HfNjrUxVqpBgC-WLHbZX7_7Gd-Lk7ghrmASTmaNySuXVUfg@mail.gmail.com>
- <4633123d-dc61-ab79-d2ee-e0cef66e4cea@iogearbox.net>
-In-Reply-To: <4633123d-dc61-ab79-d2ee-e0cef66e4cea@iogearbox.net>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Thu, 5 Mar 2020 17:53:16 +0100
-Message-ID: <CAJ+HfNg_cP8DC+C0UGHnumde6+YhqBoTB909A9XwFMPv82tqWw@mail.gmail.com>
-Subject: Re: [PATCH bpf-next v5 0/4] eBPF JIT for RV32G
-To: Daniel Borkmann <daniel@iogearbox.net>
-Content-Type: text/plain; charset="UTF-8"
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_085329_318007_2626E94B 
-X-CRM114-Status: UNSURE (   7.63  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200305_091336_076279_1CCB9D4B 
+X-CRM114-Status: GOOD (  11.17  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:f44 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [bjorn.topel[at]gmail.com]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -84,6 +69,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,33 +81,79 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, linux-doc@vger.kernel.org,
- Yonghong Song <yhs@fb.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- linux-riscv@lists.infradead.org, Rob Herring <robh@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Jakub Kicinski <kuba@kernel.org>,
- Andrii Nakryiko <andriin@fb.com>, Xi Wang <xi.wang@gmail.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Luke Nelson <luke.r.nels@gmail.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, Martin KaFai Lau <kafai@fb.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
- Luke Nelson <lukenels@cs.washington.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Netdev <netdev@vger.kernel.org>, bpf <bpf@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Sasha Levin <sashal@kernel.org>, Greentime Hu <greentime.hu@sifive.com>,
+ linux-riscv@lists.infradead.org, Palmer Dabbelt <palmerdabbelt@google.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 5 Mar 2020 at 16:19, Daniel Borkmann <daniel@iogearbox.net> wrote:
->
-[...]
-> Applied, thanks everyone!
->
-> P.s.: I fixed the MAINTAINERS entry in the last one to have both netdev and bpf
-> to be consistent with all the other JIT entries there.
+From: Greentime Hu <greentime.hu@sifive.com>
 
-Ah, I asked specifically Xi and Luke to *remove* the netdev entry, due
-to the bpf_devel_QA.rst change. :-)
+[ Upstream commit c68a9032299e837b56d356de9250c93094f7e0e3 ]
+
+When the kernel is running in S-mode, the expectation is that the
+bootloader or SBI layer will configure the PMP to allow the kernel to
+access physical memory.  But, when the kernel is running in M-mode and is
+started with the ELF "loader", there's probably no bootloader or SBI layer
+involved to configure the PMP.  Thus, we need to configure the PMP
+ourselves to enable the kernel to access all regions.
+
+Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/riscv/include/asm/csr.h | 12 ++++++++++++
+ arch/riscv/kernel/head.S     |  6 ++++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/arch/riscv/include/asm/csr.h b/arch/riscv/include/asm/csr.h
+index 435b65532e294..8e18d2c64399d 100644
+--- a/arch/riscv/include/asm/csr.h
++++ b/arch/riscv/include/asm/csr.h
+@@ -72,6 +72,16 @@
+ #define EXC_LOAD_PAGE_FAULT	13
+ #define EXC_STORE_PAGE_FAULT	15
+ 
++/* PMP configuration */
++#define PMP_R			0x01
++#define PMP_W			0x02
++#define PMP_X			0x04
++#define PMP_A			0x18
++#define PMP_A_TOR		0x08
++#define PMP_A_NA4		0x10
++#define PMP_A_NAPOT		0x18
++#define PMP_L			0x80
++
+ /* symbolic CSR names: */
+ #define CSR_CYCLE		0xc00
+ #define CSR_TIME		0xc01
+@@ -100,6 +110,8 @@
+ #define CSR_MCAUSE		0x342
+ #define CSR_MTVAL		0x343
+ #define CSR_MIP			0x344
++#define CSR_PMPCFG0		0x3a0
++#define CSR_PMPADDR0		0x3b0
+ #define CSR_MHARTID		0xf14
+ 
+ #ifdef CONFIG_RISCV_M_MODE
+diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+index a4242be66966b..e4d9baf973232 100644
+--- a/arch/riscv/kernel/head.S
++++ b/arch/riscv/kernel/head.S
+@@ -58,6 +58,12 @@ _start_kernel:
+ 	/* Reset all registers except ra, a0, a1 */
+ 	call reset_regs
+ 
++	/* Setup a PMP to permit access to all of memory. */
++	li a0, -1
++	csrw CSR_PMPADDR0, a0
++	li a0, (PMP_A_NAPOT | PMP_R | PMP_W | PMP_X)
++	csrw CSR_PMPCFG0, a0
++
+ 	/*
+ 	 * The hartid in a0 is expected later on, and we have no firmware
+ 	 * to hand it to us.
+-- 
+2.20.1
+
 
