@@ -2,73 +2,72 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13E7317AFB2
-	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 21:29:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0026A17B058
+	for <lists+linux-riscv@lfdr.de>; Thu,  5 Mar 2020 22:15:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
 	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=HmV0FbbTWHLNbEk18HRKmUQTmdvAb4GvXJNWIO8inpU=; b=JYb80z6cBizADH
-	BBDgZ4ZEpUupPUODbjT5gdcoDUwgXvnd5RXiYV0c4vxkILN3E0lxhxEamaj+W5BtTkQsaXfR6+MUf
-	jufs5+sizEGqjJVfFTMEC1X0Utp02OX/p07kwVzbKQhlfpUWqYSnJfJE+2DQDCbOtf1zoTjmQ5bM1
-	V1BfhQjDQHV0MbmL4CBc1Y3kUsQ1PigaGceVyuwkKtpKcDK6+W4/gvOQiIwewdFbkf0yshuWIfhQE
-	OB2AL8xEYPSey6pAP2UBvkiusCFExr6Ves5A212u2gCyMRL0WIxSAaLlX3BkmrlR4j5JtdIvPDUHw
-	VsDbIScKb1KSr6yUjGQw==;
+	List-Owner; bh=9+1EhWPpss4QhNZrOlX7kurqpoCphQTt/H2TjuPYl1Q=; b=bsB42bAcEgufqf
+	ubp/ATnELzH7lAZLlLcz/oxTWoAgGcw4z0+0CZt6hWo64nFpLzSIiCAfSoXRvlYm3aBpNSJ82cdGA
+	fn7WkcyoJYksY2j/MzXSx+zi65Wig43vK/IemHeU4XYjjqdqcmsGDOFT9wCeuOdnHpEWM2D8c+LNZ
+	MmkU38T+Obm1CYDEIpMCAtwwwWlm5PWHGa9DH4K++l5R7e3gWSxrdknvAoYYqV9+Wuwu7CWYa6uqc
+	Uospwagdxr+rdugd0GTJKgdxRHTuZUlljeHbOdQhxkdFQ6h7FNcR/+9khqvMxFNcXGDtTQi+5985/
+	6SB4QEXBcpYce5cv/WXw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9x7A-0007D9-AX; Thu, 05 Mar 2020 20:29:04 +0000
+	id 1j9xqK-0000ix-OT; Thu, 05 Mar 2020 21:15:44 +0000
 Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9x77-0007CS-CY
- for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 20:29:02 +0000
-Received: by mail-pg1-x543.google.com with SMTP id h8so3281892pgs.9
- for <linux-riscv@lists.infradead.org>; Thu, 05 Mar 2020 12:28:55 -0800 (PST)
+ id 1j9xqH-0000iS-1o
+ for linux-riscv@lists.infradead.org; Thu, 05 Mar 2020 21:15:43 +0000
+Received: by mail-pg1-x543.google.com with SMTP id n24so10468pgk.11
+ for <linux-riscv@lists.infradead.org>; Thu, 05 Mar 2020 13:15:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=HmV0FbbTWHLNbEk18HRKmUQTmdvAb4GvXJNWIO8inpU=;
- b=WnwAb5d1RStcMvL3G6qv4iE1QY1aQtZjztVhcUwHLiYbgE5zZ0JXszDfD3lwrVqyEu
- Kdm5SRwXEzXdgyWsmnnf2qpUZv8e9Pp3337mPcRc+FO/qa61nUpE5JNAeC3uIl6Sk7aZ
- zEScB88mw8C1wc8IlERsLazES/1iiv6dwlrGBRDCwRAihk9DCNz/UKEVMAc/KIeo8bCg
- X5vvpK01hbb4iaXxC+iHsO9iPBxBtQwUjk/WduX/3jJiXiIYFEiS7Ymakdm2kpN+svRh
- NPnjd+56lWMHdDiscVAMwx4SjrFfc6nX8RgUgJyoNS0YwDdRICHgGGuRnUlaq9IHgGUE
- sPMA==
+ bh=9+1EhWPpss4QhNZrOlX7kurqpoCphQTt/H2TjuPYl1Q=;
+ b=ULgqtRG/k56Nm9/C+oQS1iM+7iougmuOf6uGVDm8ZKNfCMzHQlgvfah02EoKzwxfZx
+ RqnZqhrww3Wb90uOhyw3TlUOgkDEFh51Qrqn1Zf0bobDidGXMWwvmjiWeC+njkQJOf7N
+ w3wcqQ6mFFpQo0ZGB+6TVzKIzUoE9EbdWNAhoby1aFj/wCLyYxl/Gzbp9+W6bZdMJGJX
+ mUGz1RqHvD+4eKfCAeGLCWM4iSa1A+xHawoR1E6heG0FipTKWerUfeTCQmLIYQ4xMDtZ
+ HYne9SBwz7D+ZXLeWk8VPb5XjTq5t+J0zFza7lvEvBno5kLtj8PwYVrkyXukD3Puj5Aq
+ MeJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=HmV0FbbTWHLNbEk18HRKmUQTmdvAb4GvXJNWIO8inpU=;
- b=UIM5SNycMqddgfyg+v40SuTlCNwJxJO4T4mlYuXPvEkNTF1s/9a58JjeuNie/xDgNX
- 60nndFS9T2MEsmMS/RhermURLI3pesXS0MFfetFjpTE54M4KfnlI/eJmjSs/MyCai8Br
- v6oJV/6sYyROBXS9t84S5u1l0bVB16Oc71y4Bz/4cZ+uBQCHNJn2jGB64azYctmPgztQ
- gxWNqqBtZLfpQWxYcH8NNEHJE90O1WNpaAxHKkeBkfIbcapF95V8EURXZehLSPDpHWtx
- KnN3I1VxA1qrT5OV1dblGypF7AtbieyRSbRc5vQl7Oxc29rZ524YWHX+sE/Nlz6J/ksR
- YYbA==
-X-Gm-Message-State: ANhLgQ0w4nBRh2qDz9osC9if8GXIaWVuxn0B3ObQFJOAJmcxMeUUPlP4
- PUZgf1i/LdiAbCsRA/9PX3l35w==
-X-Google-Smtp-Source: ADFU+vuDn2wW8R29ceg7yGU4g1TMD8aF53aa5zyxzy79BYqzrEg5t0wg3/ksTytImORhH9AfXvij9w==
-X-Received: by 2002:a62:25c3:: with SMTP id l186mr151830pfl.52.1583440135288; 
- Thu, 05 Mar 2020 12:28:55 -0800 (PST)
+ bh=9+1EhWPpss4QhNZrOlX7kurqpoCphQTt/H2TjuPYl1Q=;
+ b=KLzwcTQ3LGZ4VlR9W+i7XdPu6KaZqcYImYKeQxRYDB8qdXy0JrTajGOQTW85rmvGQM
+ 2K4oW5CAx8PXs+I4fqlDvA9m44PphgbX0wJTFt/YQsU6+fE9N7iEIMMdtf1bk0T4w12W
+ H4fhUVK77qDXpvVl3fE7eJWvBIQ9pqGBN8NP2OguqoPR6HJZn7uHI+5oijmHYoS+yFOr
+ bDgQuJpkKzcHUTMGTguCUWm8Ov2YfvgqbPMYAZi1qG/Nccj/SjW0X5ZkXEdeL7t26bjQ
+ DjgxzO5VuubsiYCyZI5B5z019JSlcuUYO0Pj7RuQsWMG/j0lCUIkH5YCpWz2T73lFARC
+ KcFA==
+X-Gm-Message-State: ANhLgQ2hPszdeL+KGekjFVLGKaTosbK/CN1GLfyi3+PcJCtj+ta4ZV8k
+ ojOg7k9a7gRsqdtQI78RoRBk+Q==
+X-Google-Smtp-Source: ADFU+vsbZynI+R8e3jLSyig5XUAieRLdXVzdDbgFtNnMb7/UmNXkF1SMhG1Unke/mdJNVMUjK9dDpw==
+X-Received: by 2002:a62:7784:: with SMTP id s126mr298249pfc.23.1583442939943; 
+ Thu, 05 Mar 2020 13:15:39 -0800 (PST)
 Received: from localhost ([2620:0:1000:2514:23a5:d584:6a92:3e3c])
- by smtp.gmail.com with ESMTPSA id y5sm33080681pfr.169.2020.03.05.12.28.54
+ by smtp.gmail.com with ESMTPSA id 188sm29333161pfa.62.2020.03.05.13.15.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2020 12:28:54 -0800 (PST)
-Date: Thu, 05 Mar 2020 12:28:54 -0800 (PST)
-X-Google-Original-Date: Thu, 05 Mar 2020 12:28:24 PST (-0800)
-Subject: Re: [PATCH] riscv: dts: Add GPIO reboot method to HiFive Unleashed
- DTS file
-In-Reply-To: <1582084147-24516-1-git-send-email-yash.shah@sifive.com>
+ Thu, 05 Mar 2020 13:15:39 -0800 (PST)
+Date: Thu, 05 Mar 2020 13:15:39 -0800 (PST)
+X-Google-Original-Date: Thu, 05 Mar 2020 13:10:06 PST (-0800)
+Subject: Re: [PATCH] riscv: Use p*d_leaf macros to define p*d_huge
+In-Reply-To: <20200220061023.958-1-alex@ghiti.fr>
 From: Palmer Dabbelt <palmer@dabbelt.com>
-To: yash.shah@sifive.com
-Message-ID: <mhng-96dfac99-10d0-466f-8119-fbca6a67fa22@palmerdabbelt-glaptop1>
+To: alex@ghiti.fr
+Message-ID: <mhng-e9025d02-f23d-486a-bbbf-083fe0932619@palmerdabbelt-glaptop1>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_122901_426490_8C22745B 
+X-CRM114-CacheID: sfid-20200305_131541_315377_BB5D971B 
 X-CRM114-Status: GOOD (  15.55  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
@@ -94,45 +93,44 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, aou@eecs.berkeley.edu,
- linux-kernel@vger.kernel.org, Atish Patra <Atish.Patra@wdc.com>,
- yash.shah@sifive.com, robh+dt@kernel.org,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
+ alex@ghiti.fr, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 18 Feb 2020 19:49:07 PST (-0800), yash.shah@sifive.com wrote:
-> Add the ability to reboot the HiFive Unleashed board via GPIO.
+On Wed, 19 Feb 2020 22:10:23 PST (-0800), alex@ghiti.fr wrote:
+> The newly introduced p*d_leaf macros allow to check if an entry of the
+> page table map to a physical page instead of the next level. To avoid
+> duplication of code, use those macros to determine if a page table entry
+> points to a hugepage.
 >
-> Signed-off-by: Yash Shah <yash.shah@sifive.com>
+> Suggested-by: Paul Walmsley <paul.walmsley@sifive.com>
+> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
 > ---
->  arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts | 5 +++++
->  1 file changed, 5 insertions(+)
+>  arch/riscv/mm/hugetlbpage.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 >
-> diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> index 609198c..4a2729f 100644
-> --- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> +++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
-> @@ -2,6 +2,7 @@
->  /* Copyright (c) 2018-2019 SiFive, Inc */
+> diff --git a/arch/riscv/mm/hugetlbpage.c b/arch/riscv/mm/hugetlbpage.c
+> index 0d4747e9d5b5..a6189ed36c5f 100644
+> --- a/arch/riscv/mm/hugetlbpage.c
+> +++ b/arch/riscv/mm/hugetlbpage.c
+> @@ -4,14 +4,12 @@
 >
->  #include "fu540-c000.dtsi"
-> +#include <dt-bindings/gpio/gpio.h>
+>  int pud_huge(pud_t pud)
+>  {
+> -	return pud_present(pud) &&
+> -		(pud_val(pud) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
+> +	return pud_leaf(pud);
+>  }
 >
->  /* Clock frequency (in Hz) of the PCB crystal for rtcclk */
->  #define RTCCLK_FREQ		1000000
-> @@ -41,6 +42,10 @@
->  		clock-frequency = <RTCCLK_FREQ>;
->  		clock-output-names = "rtcclk";
->  	};
-> +	gpio-restart {
-> +		compatible = "gpio-restart";
-> +		gpios = <&gpio 10 GPIO_ACTIVE_LOW>;
-> +	};
->  };
+>  int pmd_huge(pmd_t pmd)
+>  {
+> -	return pmd_present(pmd) &&
+> -		(pmd_val(pmd) & (_PAGE_READ | _PAGE_WRITE | _PAGE_EXEC));
+> +	return pmd_leaf(pmd);
+>  }
 >
->  &uart0 {
+>  static __init int setup_hugepagesz(char *opt)
 
-Thanks, this is on fixes -- I figure that given it's just a DT change there's
-no reason to delay it.
+Thanks, this is on for-next.
 
