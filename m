@@ -2,59 +2,129 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2705317C95C
-	for <lists+linux-riscv@lfdr.de>; Sat,  7 Mar 2020 01:03:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2095017C99A
+	for <lists+linux-riscv@lfdr.de>; Sat,  7 Mar 2020 01:18:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OzPLIfTD7SGmIGhpUzhus7cMyTkyeetRotvYXtmGPik=; b=RY9CaCkB0Ygm6S
-	CKlXcVyrzk4fKJWvoL841p7p2mYhyFg/fdWiZu6FM6dAP8/avzAEPonyl5GVsu7oy58RyuTKV0GOk
-	VjK8jPOol+a6WoIaacHftOHa1GX1GMIWLf6hEp5IQjV7/l2n6WkaYxPPHfd06ncpioVuOqzrQs0Es
-	6/OdcB3cv34Vc/0hSKTEaPIf2317aKHgBlmJvPqaWMPhbzA76c7uZM2Wtwg5EoFGG3LoNYiuut7QY
-	NoENfUW/aNNyZf4n6ROd79M8+ZDdkaVxYibbGhPyYbA0/8VRFWkyT9VwPNTxs8CPLImH/iBeP/x+j
-	cEhCB6myUq5kpI4Xsk/Q==;
+	List-Owner; bh=W0Dd5sxkOdM61ojDYc54Y/+Kqlx4NJ8aEVs+xait3og=; b=ojbFuP60lf3Zz0
+	pGJafZgC/HPmTDWf/2OE4v22NVxlHJRQqgBV++7GK8sk7veRwWmthPXzwCKVNn9zjW0Qw3adgkR01
+	66pMHQgARtiLdh5WEHHcNOFE1Pk4bF7U5ds2PqHC61vdO3Ya3ErCH/CqR2gOaDISnckMctNl+nrcm
+	i20Ng+BjPblICpPVU5qXNLTt3L0BxSnmpw78RX/Nc27H6ifmcZcIHX54kQHKblvN3X+t6qiDoP5S+
+	AJYA66SbBSVgp+oMsm9WP9YiNItMnL0aGdoavLRCRcXW+ENgHc6gnbdZn20dsJ5XibMdLfmYN/vZh
+	jek7515XaolO6Nq0W1dw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAMwT-0000CA-F6; Sat, 07 Mar 2020 00:03:45 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAMwG-0008R9-Uo; Sat, 07 Mar 2020 00:03:34 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9A3A530E;
- Fri,  6 Mar 2020 16:03:26 -0800 (PST)
-Received: from [10.163.1.59] (unknown [10.163.1.59])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 689F93F237;
- Fri,  6 Mar 2020 16:03:17 -0800 (PST)
-Subject: Re: [PATCH V15] mm/debug: Add tests validating architecture page
- table helpers
-To: Qian Cai <cai@lca.pw>, linux-mm@kvack.org
-References: <1583452659-11801-1-git-send-email-anshuman.khandual@arm.com>
- <1583527481.7365.165.camel@lca.pw>
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Message-ID: <61250cdc-f80b-2e50-5168-2ec67ec6f1e6@arm.com>
-Date: Sat, 7 Mar 2020 05:33:15 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+	id 1jANAz-0006lj-J6; Sat, 07 Mar 2020 00:18:45 +0000
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jANAv-0006l8-RY
+ for linux-riscv@lists.infradead.org; Sat, 07 Mar 2020 00:18:43 +0000
+Received: by mail-qt1-x844.google.com with SMTP id e20so3101838qto.5
+ for <linux-riscv@lists.infradead.org>; Fri, 06 Mar 2020 16:18:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=W0Dd5sxkOdM61ojDYc54Y/+Kqlx4NJ8aEVs+xait3og=;
+ b=aUAX0IajeEQhDjYh/xIBSRhWX/AGRfe7q+yF8DlpmArmTYqY1MOUjCqdFiXLF/4Nfr
+ pba9Q5cRV3vP9eYBHKojfMh8HIbR4rlOvJPVBbIBjlV2nCpqsALayRzOxW6b4dU5RaSJ
+ ByW41CyS9uuYTmNj13RU7i7MFmNUVbNO5L5v6xwaA9fEwfHKHdu+/e+PI4d1eTWaMJo7
+ 1zgzRL0QXpsosYoRaoYgff0V+gTI+fo66W0V0uUgwnSYsq1IfRePppATpehMH++4lL/T
+ Jkfd6hPXtFPDkiiZ7J9o7018N35nTyT6j2UK03688ny+H++W+BJionq2p5+TMxg+A3/Y
+ J/zQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=W0Dd5sxkOdM61ojDYc54Y/+Kqlx4NJ8aEVs+xait3og=;
+ b=g6g6rH4vNpIbDJwrZFsxZ/6ikcRoQ9PTZA4rGbJEN0yx9ySs2ybVlma2Jb/M3Om3G0
+ ipVJ29+xdYekBnYVVY5aGPkmF/sbxHDTokmCSRI1n+xWx6k5h3LHiU7U42vWJGQ8Hb38
+ AzoRpMjUqWG0bcW14wJBsEJN2wm7A4fhoKfUUj3THU59PDoGoH5p/6L6NhvccCm/oG4d
+ pSmJBUef6wrTNou3QkR8HytxD01AXHcWbIVWyRy4kqsfXJRvvxGZurjACtD2mtJGk7c1
+ LWLY5rST8PBqkRo0rmEzCDhL91gObAfTnlRKWuKSFQQm3e5T546UtYda9MMzxer9eGR7
+ nejg==
+X-Gm-Message-State: ANhLgQ3gUmvfSXt9wi4vqt0kdjstQxtdpfk8AD5MtnA579es9sLOBH/I
+ L4Gp+hYyUG9a2Q0WFcAllo8LyDZ4hKA=
+X-Google-Smtp-Source: ADFU+vvAqY4rntS5Djw3UdhyZbWr4OVUdJ3rjB7s3MtfxPxgOdfPe12LctyYIhk17ycLTG9Eeo0wtQ==
+X-Received: by 2002:ac8:18f3:: with SMTP id o48mr4439874qtk.368.1583540319461; 
+ Fri, 06 Mar 2020 16:18:39 -0800 (PST)
+Received: from [192.168.1.117] ([75.102.135.197])
+ by smtp.googlemail.com with ESMTPSA id r6sm6572726qkf.71.2020.03.06.16.18.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Mar 2020 16:18:38 -0800 (PST)
+Subject: Re: [PATCH 08/10] riscv: Add Kendryte K210 device tree
+To: Damien Le Moal <Damien.LeMoal@wdc.com>, Anup Patel <anup@brainfault.org>
+References: <20200212103432.660256-1-damien.lemoal@wdc.com>
+ <20200212103432.660256-9-damien.lemoal@wdc.com>
+ <CAAhSdy2sP5L2ijtOC3wcYZVcf=0KfAobHzKC+CrAYLvmAO9cTg@mail.gmail.com>
+ <BYAPR04MB581624CE07B742A7D1B1F53DE7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <CAAhSdy0Owsfa6wGyBnHoOONN3uc93YwXpnGto_U5OE3tTwnGYw@mail.gmail.com>
+ <BYAPR04MB5816A2497FA764FB145D350FE7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <CAAhSdy2eGOifb6Ov6hfy=-QsjvFCKgZqqX1tiq1Z=wFrLpz9CA@mail.gmail.com>
+ <BYAPR04MB58160D1A2B74D22332E498C1E7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+From: Sean Anderson <seanga2@gmail.com>
+Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
+ mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
+ 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
+ lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
+ GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
+ F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
+ AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
+ AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
+ bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
+ +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
+ Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
+ N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
+ SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
+ w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
+ w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
+ OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
+ zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
+ z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
+ 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
+ ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
+ vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
+ EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
+ zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
+ iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
+ S5hN3/mP5UeooFHb
+Message-ID: <c8197767-c76a-efc2-1fe2-250840bee605@gmail.com>
+Date: Fri, 6 Mar 2020 19:18:38 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <1583527481.7365.165.camel@lca.pw>
+In-Reply-To: <BYAPR04MB58160D1A2B74D22332E498C1E7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200306_160333_080305_25F9C9BD 
-X-CRM114-Status: GOOD (  19.18  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200306_161841_894551_58EF58C0 
+X-CRM114-Status: GOOD (  20.12  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:844 listed in]
+ [list.dnswl.org]
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [seanga2[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [seanga2[at]gmail.com]
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,111 +136,135 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Paul Mackerras <paulus@samba.org>,
- "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
- x86@kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- linux-snps-arc@lists.infradead.org, Vasily Gorbik <gor@linux.ibm.com>,
- Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Christophe Leroy <christophe.leroy@c-s.fr>, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On 3/2/20 12:08 AM, Damien Le Moal wrote:
+> On 2020/03/02 14:05, Anup Patel wrote:
+>> On Mon, Mar 2, 2020 at 10:21 AM Damien Le Moal <Damien.LeMoal@wdc.com>=
+ wrote:
+>>>
+>>> On 2020/03/02 13:22, Anup Patel wrote:
+>>>> On Mon, Mar 2, 2020 at 9:46 AM Damien Le Moal <Damien.LeMoal@wdc.com=
+> wrote:
+>>>>>
+>>>>> On 2020/03/02 13:07, Anup Patel wrote:
+>>>>> [...]
+>>>>>>> +       sram0: memory@80000000 {
+>>>>>>> +               device_type =3D "memory";
+>>>>>>> +               reg =3D <0x80000000 0x400000>;
+>>>>>>> +       };
+>>>>>>> +
+>>>>>>> +       sram1: memory@80400000 {
+>>>>>>> +               device_type =3D "memory";
+>>>>>>> +               reg =3D <0x80400000 0x200000>;
+>>>>>>> +       };
+>>>>>>> +
+>>>>>>> +       kpu_sram: memory@80600000 {
+>>>>>>> +               device_type =3D "memory";
+>>>>>>> +               reg =3D <0x80600000 0x200000>;
+>>>>>>> +       };
+>>>>>>
+>>>>>> No need to have separate DT node for each RAM bank. This can be
+>>>>>> express as single DT node as follows:
+>>>>>>
+>>>>>> sram: memory@80000000 {
+>>>>>>         device_type =3D "memory";
+>>>>>>         reg =3D <0x80000000 0x400000>,
+>>>>>>                   <0x80400000 0x200000>,
+>>>>>>                   <0x80600000 0x200000>;
+>>>>>> };
+>>>>>
+>>>>> This is to match the U-boot device tree that Sean wrote. So I would=
+ rather keep
+>>>>> it like this. And strictly speaking, if one wants to add a driver f=
+or the KPU,
+>>>>> having the kpu memory segment for it separate makes it easy to refe=
+rence it from
+>>>>> a kpu device entry. But granted, the two sram segments can be decla=
+red with a
+>>>>> single memory entry.
 
+There is no clear documentation on how to do this, so I have been mostly
+just trying things until they work. In U-Boot, separate memory device
+nodes are treated as different "banks".
 
-On 03/07/2020 02:14 AM, Qian Cai wrote:
-> On Fri, 2020-03-06 at 05:27 +0530, Anshuman Khandual wrote:
->> This adds tests which will validate architecture page table helpers and
->> other accessors in their compliance with expected generic MM semantics.
->> This will help various architectures in validating changes to existing
->> page table helpers or addition of new ones.
+>>>>
+>>>> But, that's not the preferred way of describing memory banks on the
+>>>> same machine.
+>>>> Usually, we create multiple memory DT nodes for NUMA systems.
+>>>>
+>>>> You can also refer various ARM/ARM64 DTS files.
+>>>
+>>> Oops... Sent an answer to this to the wrong email... Here it is again=
+:
+>>>
+>>> Yes, I understand. But in the case of the K210, that last 2MB segment=
+ is really
+>>> special as by default it is not usable as regular SRAM. I think it ma=
+y be better
+>>> to reflect that in the device tree. The K210 soc_early_init() call ba=
+ck can
+>>> probe for that special entry too to see if it has to be turned on for=
+ use as
+>>> regular memory or not (i.e. if a kpu driver will use it).
+>>>
+>>> Since booting Linux with 6MB of memory will be even more challenging =
+than with
+>>> 8, I agree that we may never see the case of a kpu driver being used.=
+ But I
+>>> personally like making that special case clear in the device tree. No=
+ strong
+>>> objection to your simplification though. So if you really object, I w=
+ill go with it.
+>>>
 >>
->> This test covers basic page table entry transformations including but not
->> limited to old, young, dirty, clean, write, write protect etc at various
->> level along with populating intermediate entries with next page table page
->> and validating them.
+>> I understand that it is helping you to distinguish last 2MB segment bu=
+t this is
+>> also possible using with single memory DT node as follows:
 >>
->> Test page table pages are allocated from system memory with required size
->> and alignments. The mapped pfns at page table levels are derived from a
->> real pfn representing a valid kernel text symbol. This test gets called
->> inside kernel_init() right after async_synchronize_full().
+>> sram: memory@80000000 {
+>>         device_type =3D "memory";
+>>         reg =3D <0x80000000 0x400000>,
+>>                   <0x80400000 0x200000>,
+>>                   <0x80600000 0x200000>;
+>>         reg-names =3D "sram0", "sram1", "kpu_sram";
+>> };
+>=20
+> Nice trick. I did not know about it. Will use that then !
 >>
->> This test gets built and run when CONFIG_DEBUG_VM_PGTABLE is selected. Any
->> architecture, which is willing to subscribe this test will need to select
->> ARCH_HAS_DEBUG_VM_PGTABLE. For now this is limited to arc, arm64, x86, s390
->> and ppc32 platforms where the test is known to build and run successfully.
->> Going forward, other architectures too can subscribe the test after fixing
->> any build or runtime problems with their page table helpers. Meanwhile for
->> better platform coverage, the test can also be enabled with CONFIG_EXPERT
->> even without ARCH_HAS_DEBUG_VM_PGTABLE.
+>> The K210 soc_early_init() can do the following:
+>> 1. Find memory DT node having device_type =3D "memory"
+>> 2. Find bank number for "kpu_sram" based on "reg-names DT property
+>> 3. Get based address of KPU SRAM from "reg" property based on bank
+>> number found in step2 above.
 >>
->> Folks interested in making sure that a given platform's page table helpers
->> conform to expected generic MM semantics should enable the above config
->> which will just trigger this test during boot. Any non conformity here will
->> be reported as an warning which would need to be fixed. This test will help
->> catch any changes to the agreed upon semantics expected from generic MM and
->> enable platforms to accommodate it thereafter.
-> 
-> OK, I get this working on powerpc hash MMU as well, so this?
-> 
-> diff --git a/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
-> b/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
-> index 64d0f9b15c49..c527d05c0459 100644
-> --- a/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
-> +++ b/Documentation/features/debug/debug-vm-pgtable/arch-support.txt
-> @@ -22,8 +22,7 @@
->      |       nios2: | TODO |
->      |    openrisc: | TODO |
->      |      parisc: | TODO |
-> -    |  powerpc/32: |  ok  |
-> -    |  powerpc/64: | TODO |
-> +    |     powerpc: |  ok  |
->      |       riscv: | TODO |
->      |        s390: |  ok  |
->      |          sh: | TODO |
-> diff --git a/arch/powerpc/Kconfig b/arch/powerpc/Kconfig
-> index 2e7eee523ba1..176930f40e07 100644
-> --- a/arch/powerpc/Kconfig
-> +++ b/arch/powerpc/Kconfig
-> @@ -116,7 +116,7 @@ config PPC
->  	#
->  	select ARCH_32BIT_OFF_T if PPC32
->  	select ARCH_HAS_DEBUG_VIRTUAL
-> -	select ARCH_HAS_DEBUG_VM_PGTABLE if PPC32
-> +	select ARCH_HAS_DEBUG_VM_PGTABLE
->  	select ARCH_HAS_DEVMEM_IS_ALLOWED
->  	select ARCH_HAS_ELF_RANDOMIZE
->  	select ARCH_HAS_FORTIFY_SOURCE
-> diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
-> index 96a91bda3a85..98990a515268 100644
-> --- a/mm/debug_vm_pgtable.c
-> +++ b/mm/debug_vm_pgtable.c
-> @@ -256,7 +256,8 @@ static void __init pte_clear_tests(struct mm_struct *mm,
-> pte_t *ptep,
->  	pte_t pte = READ_ONCE(*ptep);
->  
->  	pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
-> -	WRITE_ONCE(*ptep, pte);
-> +	set_pte_at(mm, vaddr, ptep, pte);
+>> The reg-names is a standard DT property used to distinguish multiple
+>> memory regions of device. Same can be used to distinguish multiple
+>> banks of memory DT node.
+>>
+>> I am not adamant on having single memory DT node but just wanted
+>> to let you know that this is not a preferred way for non-NUMA system.
 
-Hmm, set_pte_at() function is not preferred here for these tests. The idea
-is to avoid or atleast minimize TLB/cache flushes triggered from these sort
-of 'static' tests. set_pte_at() is platform provided and could/might trigger
-these flushes or some other platform specific synchronization stuff. Just
-wondering is there specific reason with respect to the soft lock up problem
-making it necessary to use set_pte_at() rather than a simple WRITE_ONCE() ?
+Anup, do you have any suggestions on how to describe clocks for each
+bank? I think the kpu sram may need some clock manipulation to work
+properly. Perhaps something like
 
-> +	barrier();
->  	pte_clear(mm, vaddr, ptep);
->  	pte = READ_ONCE(*ptep);
->  	WARN_ON(!pte_none(pte));
-> 
+sram: memory@80000000 {
+	device_type =3D "memory";
+	reg =3D <0x80000000 0x400000>,
+	      <0x80400000 0x200000>,
+	      <0x80600000 0x200000>;
+	reg-names =3D "sram0", "sram1", "kpu_sram";
+	clocks =3D <&sysclk K210_CLK_SRAM0>,
+		 <&sysclk K210_CLK_SRAM1>,
+		 <&sysclk K210_CLK_PLL1>;
+	clock-names =3D "sram0", "sram1", "kpu";
+};
+
+--Sean
+
 
