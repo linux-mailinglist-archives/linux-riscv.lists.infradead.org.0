@@ -2,131 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FB2617CAA5
-	for <lists+linux-riscv@lfdr.de>; Sat,  7 Mar 2020 03:09:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C70A17CBE0
+	for <lists+linux-riscv@lfdr.de>; Sat,  7 Mar 2020 05:11:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tls2mNE0mgH/m72ejfEiFKbFJFZUwvBxbASjV8o6WPs=; b=jZqXZthJRBduHu
-	zIX5qHRskoei2K8m5WPlUR1CxATKKLT5ouVOsEMRv9m52Yrkr6/KMJX/q4mEqtvm59nIuzA5UWjSr
-	fZMQposDrDYzfkX+s115hXnhdJanrpuM6yxK7n+YOxQEa7ta3UjfO1tEWCI5MST0Ky5Y0AcylA/0e
-	oINoHdHN3AgC6LbAwOC9Fh/GIIH+JWMIbv2vLroG7iBF+focwlRoux5lnJr+lT+WvkvSnrGZky/py
-	H/1N1qmBc78MxLqYM9G3cTPYZzFPA0TqXhyAzLTJ+ctw5G4BJwGBkp5aovv5XQUO1HeoXttuK3uQu
-	zAtkFXMB8B0jn8bW33eA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=SSZsDGhSerIIDmdwfHH/fp67wbrGstkqSnkD4VLOqfg=; b=J2gYTzoQ7CShgsR2A35C4Q2Dj
+	+3389wnxtz/DtVSg16uhGelVy9dhRdrne/giHNozuWA3xqB/oDHf7blHLweXZHdjvoLohT73zDpIS
+	nyPgD1zaTWoIBWFtIOBdZ6pYsuXvDl9dUzxzvt/SIhsSKPF8iYdIEzxUpdSGz2cnwvC0jA2dK5gz6
+	K0jMOLSgxS1EB1xxCFM2I5D+3s03K4lfQg0gXODscPSexbr+i8lIevShFvfYi2kJ73ig+/3ed1ygV
+	z5t4TFzzu5WQ4U1lSH2jxI/2LL9ch196oqMIpunx75ZeEvKyxZ8WqkvbqpnYmrgN/DXSmvk9x73pY
+	0tSkclz7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAOti-0005p0-Cy; Sat, 07 Mar 2020 02:09:02 +0000
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
+	id 1jAQo4-0007FQ-TU; Sat, 07 Mar 2020 04:11:20 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAOte-0005oR-SW
- for linux-riscv@lists.infradead.org; Sat, 07 Mar 2020 02:09:00 +0000
-Received: by mail-qk1-x744.google.com with SMTP id 145so4250213qkl.2
- for <linux-riscv@lists.infradead.org>; Fri, 06 Mar 2020 18:08:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tls2mNE0mgH/m72ejfEiFKbFJFZUwvBxbASjV8o6WPs=;
- b=T6Px7hIOxXa/zQPsJE3eWp4BzBTZB4WjXOjxL+ucDCduGt8dLKABQEN3eiWugAhxvz
- Ttod90HZDrPnnO9aBSL/MOjZEMPEq26jdOHmDKpYXwLC210CGTUSkAfRM9kDhQ3f4P7+
- T1iGJMnZb5apc6WpIG/mPy0Iq3pw3871t0xH56uQLUtjWTovGuSyrCPfuCgzzSd8Cytz
- woSZ5UX1qcNE0cZHhwy89FmswWqhF+4ZDQ8ccMNOH23lTzOsaeI0yIAuz4LLalFUOJ1V
- uYz389dvjMtlW1bzofpr1DT4/tWHQeWvU+erfP1bxsmWR8EXPhlIwz0PCDczH8u5l408
- Hg8A==
+ id 1jAQo1-0007Ez-PV
+ for linux-riscv@lists.infradead.org; Sat, 07 Mar 2020 04:11:19 +0000
+Received: by mail-wm1-x341.google.com with SMTP id f7so23306wml.4
+ for <linux-riscv@lists.infradead.org>; Fri, 06 Mar 2020 20:11:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SSZsDGhSerIIDmdwfHH/fp67wbrGstkqSnkD4VLOqfg=;
+ b=zHH9ODWpEEjd7VAR28iSRqlGtRioLOYQUWUFGlv4o8+dLQOhk5VjziTn1f+E95ihhb
+ CTERTcdNiiil33dQ1nNUy9M37n0v2q+FUTEvLW6XzzRU7PErlamDzt6ztMmJw7GERTDK
+ Ly14NpgrafuJ+nF9qGPwv+yA/iJTqVlzp1jxFOuM8RO87aNhnjPXqBmVFYI4PRmHq0Ck
+ QcV08z84jE0EPt/VC4E2S9kT6OpAURsyD990yPBbHZcDBN/38/CdtacGitKJkGAPtbPh
+ gDPPD6/P4utab3N7jeqYCsNN6fZ34z5VVxKuXdcSAUArFey0UtWU/mT0PnuRchZBzFUX
+ rrgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=tls2mNE0mgH/m72ejfEiFKbFJFZUwvBxbASjV8o6WPs=;
- b=V8r/dANdRCqR5sp3Ri4UtRdiHfMFlVsBGtKAqFnaWuPs1zcQE5WyhzoBakEl5YN0pN
- H30BR9IWx2+5DEsIvAYoH5g4/7/PE8GyxFpYEftjSuDVCp365dDXDB8+fRbt/QYKznn5
- EW2Q+MvfGEV4GIlsm4H+6EKM8+e63UtGCMncfb00GtJkErFSq8r0BcC9uv+xLQA9ipcu
- Zj+Et7nvS6vb1/Znlo0GxmMTabqHqFd578rPZPkhSyTDCMIHT/hT7RUnf9I9nltEPQnO
- gO9onv7JVE93H9bojChubBnURARxu3vTczEtIaBoT1QJf9BDm60BBsILVs6r5ozjvvFy
- 8ZZQ==
-X-Gm-Message-State: ANhLgQ357P6V/fsC4UiK9WMranYHM5sKLJ7aUviHa2W9Qa3gIAlHza+X
- DhnutrewihqkgIJnG+IZXXA=
-X-Google-Smtp-Source: ADFU+vvafL9jqo2dqHuGg5s7tyuupp+aJW5n3S925P/LquFC4aL3mqqiPvNQ5cy5njMUXOryAd2mZg==
-X-Received: by 2002:a05:620a:994:: with SMTP id
- x20mr5386731qkx.489.1583546935378; 
- Fri, 06 Mar 2020 18:08:55 -0800 (PST)
-Received: from [192.168.1.117] ([75.102.135.197])
- by smtp.googlemail.com with ESMTPSA id b11sm1056745qtp.82.2020.03.06.18.08.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Mar 2020 18:08:54 -0800 (PST)
-Subject: Re: [PATCH 04/10] riscv: Add BUILTIN_DTB support
-To: Atish Patra <Atish.Patra@wdc.com>,
- "atishp@atishpatra.org" <atishp@atishpatra.org>,
- Damien Le Moal <Damien.LeMoal@wdc.com>
-References: <20200212103432.660256-5-damien.lemoal@wdc.com>
- <mhng-c45590f0-38f8-42db-a746-e9970c62e25d@palmerdabbelt-glaptop1>
- <MN2PR04MB6061D77B37B5BFD3851F661F8DE20@MN2PR04MB6061.namprd04.prod.outlook.com>
- <BYAPR04MB5816059C01B77CE5D7E02E40E7E20@BYAPR04MB5816.namprd04.prod.outlook.com>
- <CAOnJCUJYcuvyHywV0vEzMcgUJaoUHfuLbWjp1bxDw2t-OJXOQw@mail.gmail.com>
- <c84b632a-9372-fcbf-de3d-be016d36a970@gmail.com>
- <38c188169a59df88bafc2ade4eb4f642dbe07582.camel@wdc.com>
-From: Sean Anderson <seanga2@gmail.com>
-Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
- mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
- 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
- lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
- GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
- F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
- AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
- AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
- bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
- +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
- Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
- N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
- SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
- w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
- w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
- OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
- zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
- z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
- 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
- ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
- vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
- EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
- zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
- iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
- S5hN3/mP5UeooFHb
-Message-ID: <809903a7-1a34-0d2c-fbfe-a92d321d8b81@gmail.com>
-Date: Fri, 6 Mar 2020 21:08:53 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SSZsDGhSerIIDmdwfHH/fp67wbrGstkqSnkD4VLOqfg=;
+ b=LFBYicTQJZo/cJzHxZkxIKGJ6fV1hEuX6Ka4KIjNe5CFAMnJsiOXcgan+ppQucaKT+
+ a/IuBL8kGN2lOxE3ynIEZ2oA4Cf7wPqquj+AzBc6Ir3BDUbhfJz9WUBVKvCxd3Pj6cDI
+ 0Qvc1ZQwLA+eepZSB2D9vW8O+VVIDBhUfKG/bHK1fDu1cgoU587PYaIefddgww6ogEO+
+ xY0F9DosjJkk2SY7X/Keq01yoVCgxnk5resXw9ni8Pe181luGg4S5LFL+eDpvxyGghtS
+ GoW4b3b+1dIopmNdzjlg70S35gulJoeqa097YgyJLFBmUYqTas7Ft+//A3V+rbVQ5xpb
+ Ra0A==
+X-Gm-Message-State: ANhLgQ0VE7xZaE6rXtDh+Wi4E/MWW5Zn7xQ2ltC2zZGpyuFAbGpWqvn8
+ 43rjdrkEAES2InhB0ng+qsZm3geAMv7TunvnyqdtWg==
+X-Google-Smtp-Source: ADFU+vtqaA0F9Q60uXR+uM5+FlPCBnDvI1tJu7lU8g6uNTE65nqEwqd5TdxO1AkmYCXDwzcHn5PVIFhHg0uPHipYsww=
+X-Received: by 2002:a1c:9c87:: with SMTP id f129mr7708658wme.26.1583554275520; 
+ Fri, 06 Mar 2020 20:11:15 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <38c188169a59df88bafc2ade4eb4f642dbe07582.camel@wdc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <20200212103432.660256-1-damien.lemoal@wdc.com>
+ <20200212103432.660256-9-damien.lemoal@wdc.com>
+ <CAAhSdy2sP5L2ijtOC3wcYZVcf=0KfAobHzKC+CrAYLvmAO9cTg@mail.gmail.com>
+ <BYAPR04MB581624CE07B742A7D1B1F53DE7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <CAAhSdy0Owsfa6wGyBnHoOONN3uc93YwXpnGto_U5OE3tTwnGYw@mail.gmail.com>
+ <BYAPR04MB5816A2497FA764FB145D350FE7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <CAAhSdy2eGOifb6Ov6hfy=-QsjvFCKgZqqX1tiq1Z=wFrLpz9CA@mail.gmail.com>
+ <BYAPR04MB58160D1A2B74D22332E498C1E7E70@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <c8197767-c76a-efc2-1fe2-250840bee605@gmail.com>
+In-Reply-To: <c8197767-c76a-efc2-1fe2-250840bee605@gmail.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Sat, 7 Mar 2020 09:41:03 +0530
+Message-ID: <CAAhSdy1bfg3hT=VuRTtGNA9PZT-hGQ30Ty7kLGVVuvQFQ8kC8w@mail.gmail.com>
+Subject: Re: [PATCH 08/10] riscv: Add Kendryte K210 device tree
+To: Sean Anderson <seanga2@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200306_180858_947909_96DD4E17 
-X-CRM114-Status: GOOD (  16.13  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200306_201117_882892_E2B9BA7D 
+X-CRM114-Status: GOOD (  27.73  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:744 listed in]
- [list.dnswl.org]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [seanga2[at]gmail.com]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [seanga2[at]gmail.com]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,41 +95,129 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Anup Patel <Anup.Patel@wdc.com>, "palmer@dabbelt.com" <palmer@dabbelt.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Sat, Mar 7, 2020 at 5:48 AM Sean Anderson <seanga2@gmail.com> wrote:
+>
+> On 3/2/20 12:08 AM, Damien Le Moal wrote:
+> > On 2020/03/02 14:05, Anup Patel wrote:
+> >> On Mon, Mar 2, 2020 at 10:21 AM Damien Le Moal <Damien.LeMoal@wdc.com> wrote:
+> >>>
+> >>> On 2020/03/02 13:22, Anup Patel wrote:
+> >>>> On Mon, Mar 2, 2020 at 9:46 AM Damien Le Moal <Damien.LeMoal@wdc.com> wrote:
+> >>>>>
+> >>>>> On 2020/03/02 13:07, Anup Patel wrote:
+> >>>>> [...]
+> >>>>>>> +       sram0: memory@80000000 {
+> >>>>>>> +               device_type = "memory";
+> >>>>>>> +               reg = <0x80000000 0x400000>;
+> >>>>>>> +       };
+> >>>>>>> +
+> >>>>>>> +       sram1: memory@80400000 {
+> >>>>>>> +               device_type = "memory";
+> >>>>>>> +               reg = <0x80400000 0x200000>;
+> >>>>>>> +       };
+> >>>>>>> +
+> >>>>>>> +       kpu_sram: memory@80600000 {
+> >>>>>>> +               device_type = "memory";
+> >>>>>>> +               reg = <0x80600000 0x200000>;
+> >>>>>>> +       };
+> >>>>>>
+> >>>>>> No need to have separate DT node for each RAM bank. This can be
+> >>>>>> express as single DT node as follows:
+> >>>>>>
+> >>>>>> sram: memory@80000000 {
+> >>>>>>         device_type = "memory";
+> >>>>>>         reg = <0x80000000 0x400000>,
+> >>>>>>                   <0x80400000 0x200000>,
+> >>>>>>                   <0x80600000 0x200000>;
+> >>>>>> };
+> >>>>>
+> >>>>> This is to match the U-boot device tree that Sean wrote. So I would rather keep
+> >>>>> it like this. And strictly speaking, if one wants to add a driver for the KPU,
+> >>>>> having the kpu memory segment for it separate makes it easy to reference it from
+> >>>>> a kpu device entry. But granted, the two sram segments can be declared with a
+> >>>>> single memory entry.
+>
+> There is no clear documentation on how to do this, so I have been mostly
+> just trying things until they work. In U-Boot, separate memory device
+> nodes are treated as different "banks".
+>
+> >>>>
+> >>>> But, that's not the preferred way of describing memory banks on the
+> >>>> same machine.
+> >>>> Usually, we create multiple memory DT nodes for NUMA systems.
+> >>>>
+> >>>> You can also refer various ARM/ARM64 DTS files.
+> >>>
+> >>> Oops... Sent an answer to this to the wrong email... Here it is again:
+> >>>
+> >>> Yes, I understand. But in the case of the K210, that last 2MB segment is really
+> >>> special as by default it is not usable as regular SRAM. I think it may be better
+> >>> to reflect that in the device tree. The K210 soc_early_init() call back can
+> >>> probe for that special entry too to see if it has to be turned on for use as
+> >>> regular memory or not (i.e. if a kpu driver will use it).
+> >>>
+> >>> Since booting Linux with 6MB of memory will be even more challenging than with
+> >>> 8, I agree that we may never see the case of a kpu driver being used. But I
+> >>> personally like making that special case clear in the device tree. No strong
+> >>> objection to your simplification though. So if you really object, I will go with it.
+> >>>
+> >>
+> >> I understand that it is helping you to distinguish last 2MB segment but this is
+> >> also possible using with single memory DT node as follows:
+> >>
+> >> sram: memory@80000000 {
+> >>         device_type = "memory";
+> >>         reg = <0x80000000 0x400000>,
+> >>                   <0x80400000 0x200000>,
+> >>                   <0x80600000 0x200000>;
+> >>         reg-names = "sram0", "sram1", "kpu_sram";
+> >> };
+> >
+> > Nice trick. I did not know about it. Will use that then !
+> >>
+> >> The K210 soc_early_init() can do the following:
+> >> 1. Find memory DT node having device_type = "memory"
+> >> 2. Find bank number for "kpu_sram" based on "reg-names DT property
+> >> 3. Get based address of KPU SRAM from "reg" property based on bank
+> >> number found in step2 above.
+> >>
+> >> The reg-names is a standard DT property used to distinguish multiple
+> >> memory regions of device. Same can be used to distinguish multiple
+> >> banks of memory DT node.
+> >>
+> >> I am not adamant on having single memory DT node but just wanted
+> >> to let you know that this is not a preferred way for non-NUMA system.
+>
+> Anup, do you have any suggestions on how to describe clocks for each
+> bank? I think the kpu sram may need some clock manipulation to work
+> properly. Perhaps something like
+>
+> sram: memory@80000000 {
+>         device_type = "memory";
+>         reg = <0x80000000 0x400000>,
+>               <0x80400000 0x200000>,
+>               <0x80600000 0x200000>;
+>         reg-names = "sram0", "sram1", "kpu_sram";
+>         clocks = <&sysclk K210_CLK_SRAM0>,
+>                  <&sysclk K210_CLK_SRAM1>,
+>                  <&sysclk K210_CLK_PLL1>;
+>         clock-names = "sram0", "sram1", "kpu";
 
-> Just to avoid confusion: SBI is the specification and OpenSBI is the
-> implementation. I think you meant OpenSBI here. It is possible but the
-> question is whether it should be done by OpenSBI. Because OpenSBI is
-> supposed to provide the SBI implementation. As NOMMU Linux doesn't need
-> any of the SBI, I think it would be unnecessary to keep the OpenSBI
-> code resident after Linux boots.
+Yes, using "clock-names" to distinguish different clocks
+of same device is the right way.
 
-I mean OpenSBI when I talk about it having support. I mean SBI when I
-talk about setting up the MMU. You're right that M-mode linux doesn't
-need it, though these are some issues we will need to deal with when
-looking at an S-mode port.
+Regards,
+Anup
 
-> 
-> I think U-Boot or a separate loader is an ideal solution but I see
-> your U-Boot patches mention that loading an Image still is an issue.
-
-Yeah, I suspect it's just a memory layout problem. Hopefully I can
-figure out how to get everything working.
-
-> However, everybody needs to agree that booting single Linux kernel
-> image on all boards(at least supported in upstream Linux)
-> can be documented as a hard requirement before we discuss more on this
-> topic. If that is possible, it is easier to enforce booting protocol
-> (a0 - hartid, a1 - DTB and no builtin DTB) as well. I am not sure if
-> that is the best approach but that's what we have currently.
-
-I think it is a good goal to have one kernel for all the K210 boards,
-and just have different device trees.
-
---Sean
+> };
+>
+> --Sean
+>
 
