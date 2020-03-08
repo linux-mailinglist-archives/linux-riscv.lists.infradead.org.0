@@ -2,60 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0135517CD9C
-	for <lists+linux-riscv@lfdr.de>; Sat,  7 Mar 2020 11:16:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF7AF17D205
+	for <lists+linux-riscv@lfdr.de>; Sun,  8 Mar 2020 07:11:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CPsKDxpilFRiEOhSFzpN2EO60L3PwOvVIriK+6Kv7DE=; b=aWa4BKftGL4754
-	UsycpeQGG3qmSwbJ2F28MRCE4Ty0vXI9VCa8THMxqhbd6S312pJMNg5sfl60EQSYQBM6Yn/oiqyVf
-	CLbPGTwnQpjbrUthZ0nOY+NEwAwOHr/qrUxASI5blg70JMXeTqo2AIzwNot5wI1pxXozEWFdWq2B+
-	26HcldbisXmvsuvrEXqZB9MGJ8lbNyOrdLMCaRZz8fPIqOqmEUfxxY2i/atDZqERl/pn+QCKahAEF
-	mVjmWhLULQbkGNxncd8FrjPpMXlHFIx0J94QV1e4hLNMskCW243Oxt2LNTDhOF+w3SgOBC83z5uEG
-	KTM2/gVG1gDH2lUntaHQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=uDt+L+yEuOv31rL29R183p50z58Axm5w9sglfxoFFwA=; b=nSzasA80SZcDmwRpqunSAxmmJ
+	wq8E4udRxSUJY9oe2r1wUZ4lUBWOxKg58ts285NQ/DWW8PRRHF3ld4v2C9lSgH3KG+NnHwXjP4GuG
+	T+NFPOretT7DNhrgWo9RGe0tEkdEsXjbJ4O9n0bAyCM/9y/6a5KV1ryECuLAMJ90x3xpjN8BvsE92
+	m5+32m/MHgmOrBjDnF/uUGv1irAOvlJnV8dlY7Jbslp7yTL75E5IkN8ZFJgMo4ipsW+rpORnS7HFw
+	cLaKIZj6nxaaQ0X7OCndEIXe9ja+eOzX8h0bFiAbS0LX5j/yJ7adT4RG5kAiXtAkisQz6c2MwlAJC
+	Bzmz/WJmw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAWVV-0000fm-Ld; Sat, 07 Mar 2020 10:16:33 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1jAp9Z-00050r-4N; Sun, 08 Mar 2020 06:11:09 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAWVR-0000f6-Qq
- for linux-riscv@lists.infradead.org; Sat, 07 Mar 2020 10:16:32 +0000
-X-Originating-IP: 79.86.19.127
-Received: from [192.168.0.12] (127.19.86.79.rev.sfr.net [79.86.19.127])
- (Authenticated sender: alex@ghiti.fr)
- by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id 0B741240003;
- Sat,  7 Mar 2020 10:16:07 +0000 (UTC)
-Subject: Re: [PATCH RESEND v2] riscv: Introduce CONFIG_RELOCATABLE
-To: Palmer Dabbelt <palmer@dabbelt.com>
-References: <mhng-346cdebc-e24d-49db-bb2e-0d4fa8d57030@palmerdabbelt-glaptop1>
-From: Alex Ghiti <alex@ghiti.fr>
-Message-ID: <64d78857-0c12-2cbb-ea14-b0363f65297e@ghiti.fr>
-Date: Sat, 7 Mar 2020 05:16:07 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+ id 1jAp9V-00050K-CJ
+ for linux-riscv@lists.infradead.org; Sun, 08 Mar 2020 06:11:07 +0000
+Received: by mail-wm1-x341.google.com with SMTP id x3so7248177wmj.1
+ for <linux-riscv@lists.infradead.org>; Sat, 07 Mar 2020 22:11:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uDt+L+yEuOv31rL29R183p50z58Axm5w9sglfxoFFwA=;
+ b=TjxR6APawnYdp1DKGBt72rvPZJJ5peiO/h5WDpoxAZdUySvaDXpWUcb/FSYKFjEY2V
+ Z1kXWHZoJInqoZWf0m84cCe2mhIuYW5R+HkhUWFIw7wf93J4ex4i6t0SmcqVHwM0eJvq
+ CtrBsz8t81oqdn7okpf5C+BP8fV1sv/qaTlNiZdt0UvHminhF3Yd2wi+1ba5SxRw5l9R
+ nn9Ch2XcPsnrzx6gnLVspxCJaU1uCfL5MwSeGzkIeTqLPoTb2biv4jODc8WzylzPceq3
+ E/W7j+psaPkf7Bs16jT/4gGWMpkBnfijlA1Mjf6xf1tRy9MLJRdzldCWQgXh18TgCdcD
+ YW0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uDt+L+yEuOv31rL29R183p50z58Axm5w9sglfxoFFwA=;
+ b=ee2x/HvDLt4MoJs6D5SNGGWqplRWG3M5g2/16bT/A4Zaypvqpm5rxgqnPjZZew7kqM
+ zWpL4oAoQbFze2cLyOPW6rs97n2Psh0yuuVp130P8VwSAGdSSpC9jBfZnEKMY+0Gwn4Q
+ 4mAH6i3zK3S82mpUBw/yL3nY0P1pwJuKF3eeMGPu2zXmMP+HVTTHxvQoW/axjiUFRTAW
+ COqMAmnOL6rLagG5oznZqAe5EUinvfqEzKHLoEgZ3bYkpMAlnZOAZ8/jwF9ej8U4+OV1
+ NNWV2YO8a8UYyUge2rQWrC5l49hWmgnkjBdG3zgHvv0+tk/TamsZAoK64f5FAbkjaqzm
+ szKg==
+X-Gm-Message-State: ANhLgQ2xZQohdmD5DwpEVwwgvTWZMHDbCU4t8nDHyO2lOp+1SREsA0DU
+ GjlJqStnY48ylHuPlSZGASXGje4QmZ5hiDbT11FH8g==
+X-Google-Smtp-Source: ADFU+vvSlthDUXWXFMesXAxRu2yJoxlB4r/8PNXbrAjw17JiyfG0L+laTv+COAqeCgr6VeUZtxP3YF2IMQYdXJ8dTv0=
+X-Received: by 2002:a05:600c:2201:: with SMTP id
+ z1mr13141060wml.120.1583647863027; 
+ Sat, 07 Mar 2020 22:11:03 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <mhng-346cdebc-e24d-49db-bb2e-0d4fa8d57030@palmerdabbelt-glaptop1>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+References: <20200212103432.660256-5-damien.lemoal@wdc.com>
+ <mhng-c45590f0-38f8-42db-a746-e9970c62e25d@palmerdabbelt-glaptop1>
+ <MN2PR04MB6061D77B37B5BFD3851F661F8DE20@MN2PR04MB6061.namprd04.prod.outlook.com>
+ <BYAPR04MB5816059C01B77CE5D7E02E40E7E20@BYAPR04MB5816.namprd04.prod.outlook.com>
+ <MN2PR04MB6061B382AF9F875B61B863978DE20@MN2PR04MB6061.namprd04.prod.outlook.com>
+ <BYAPR04MB5816280119C3A35ACF968DF2E7E20@BYAPR04MB5816.namprd04.prod.outlook.com>
+In-Reply-To: <BYAPR04MB5816280119C3A35ACF968DF2E7E20@BYAPR04MB5816.namprd04.prod.outlook.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Sun, 8 Mar 2020 11:40:50 +0530
+Message-ID: <CAAhSdy39FDH5rrutVDMXN1JYratUd171+vx9Uie__Xkww_q8Ug@mail.gmail.com>
+Subject: Re: [PATCH 04/10] riscv: Add BUILTIN_DTB support
+To: Damien Le Moal <Damien.LeMoal@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200307_021630_143823_E4C86F4C 
-X-CRM114-Status: GOOD (  33.19  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20200307_221105_564698_E39D1323 
+X-CRM114-Status: GOOD (  41.69  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.193 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ [list.dnswl.org]
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [217.70.183.193 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,415 +93,271 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: anup@brainfault.org, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, zong.li@sifive.com,
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
  Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Palmer,
+On Thu, Mar 5, 2020 at 11:43 AM Damien Le Moal <Damien.LeMoal@wdc.com> wrote:
+>
+> On 2020/03/05 14:37, Anup Patel wrote:
+> >
+> >
+> >> -----Original Message-----
+> >> From: Damien Le Moal
+> >> Sent: 05 March 2020 10:44
+> >> To: Anup Patel <Anup.Patel@wdc.com>; Palmer Dabbelt
+> >> <palmer@dabbelt.com>
+> >> Cc: linux-riscv@lists.infradead.org; Paul Walmsley
+> >> <paul.walmsley@sifive.com>
+> >> Subject: Re: [PATCH 04/10] riscv: Add BUILTIN_DTB support
+> >>
+> >> On 2020/03/05 13:58, Anup Patel wrote:
+> >>>
+> >>>
+> >>>> -----Original Message-----
+> >>>> From: Palmer Dabbelt <palmer@dabbelt.com>
+> >>>> Sent: 05 March 2020 00:59
+> >>>> To: Damien Le Moal <Damien.LeMoal@wdc.com>
+> >>>> Cc: linux-riscv@lists.infradead.org; Paul Walmsley
+> >>>> <paul.walmsley@sifive.com>; Anup Patel <Anup.Patel@wdc.com>
+> >>>> Subject: Re: [PATCH 04/10] riscv: Add BUILTIN_DTB support
+> >>>>
+> >>>> On Wed, 12 Feb 2020 02:34:26 PST (-0800), Damien Le Moal wrote:
+> >>>>> Enable a kernel builtin dtb for boards not capable of providing a
+> >>>>> device tree to the kernel.
+> >>>>
+> >>>> I'd prefer if we picked a mechanism that allows a single kernel
+> >>>> binary to be run on multiple systems.  I think there's two use cases here:
+> >>>
+> >>> I strongly support "single kernel binary for multiple systems" but
+> >>> it's for different purpose here.
+> >>>
+> >>>>
+> >>>> * Bootloaders that provide no DTB at all.
+> >>>> * Bootloaders that provied a DTB that, for some reason, isn't usable.
+> >>
+> >> Sure, but as Anup mentions below, the current use case it to not even use
+> >> any bootloader at all for the K210 since that brings no value at all (in my
+> >> opinion). More on this below.
+> >>
+> >>>>
+> >>>> Given those constraints, could we do something similar to the early
+> >> fixups?
+> >>>> I'm thinking we could build a mapping between a hardware identifier
+> >>>> and a DTB, then look up the DTB we want to use.  Users that want a
+> >>>> kernel that only runs on a single device can do so by configuring
+> >>>> only a single DTB, users that want a more portable kernel can select
+> >>>> a bunch -- that's essentially the same as how we're treating
+> >>>> everything else (for example, the
+> >>>> CONFIG_SOC_* stuff).
+> >>>
+> >>> There is no bootloader on Kendryte K210. The Linux RISC-V NOMMU kernel
+> >>> boots directly. The BUILTIN_DTB is only applicable to cases where
+> >>> there is no bootloader before kernel.
+> >>>
+> >>> The Linux RISC-V NOMMU will tend be used in cases where:
+> >>> 1. There is no bootloader and kernel boots directly hence we need
+> >>> builtin DTB feature.
+> >>> 2. There is very less RAM so we will have to build kernel specific to
+> >>> a particular platform with bare minimum drivers. Due to this, we will
+> >>> have separate defconfig for NOMMU platforms.
+> >>>
+> >>> I think point1 can be tackled if we enforce having bootloader (such as
+> >>> U-Boot) for NOMMU systems and drop this patch.
+> >>
+> >> But that would go against point 2 as that will use more memory... By "drop
+> >> this patch", may be you meant to say "not use this config option" ?
+> >
+> > I meant to use U-Boot on Kendryte to launch kernel.
+> >
+> >>
+> >>> For point2 above, we don't have much alternatives other than reducing
+> >>> kernel binary size by disabling unwanted drivers.
+> >>
+> >> And not using a boot loader. Sean got U-boot working with Kendryte, so it is
+> >> not that we cannot make it work. It is only that it may be less optimal due to
+> >> the memory used by the boot loader itself. Unless we can recover it if the
+> >> kernel relocate itself over it ? Surely doable, but it does sound to me like an
+> >> overkill for this particular use case, i.e. a tiny, hyper-embedded board where
+> >> running Linux is probably not the best choice in the first place, at least when
+> >> looking at real applications. The story is different for "hobbyist" level. My on-
+> >> going 6 DoF robotic arm project controlled with Linux on K210 is a valid use
+> >> case after all :)
+> >
+> > Dropping BUILTIN DTB feature will be more like a Linux RISC-V policy thingy.
+> > My suggestion was more about discouraging Linux S-mode users to use the
+> > BUILTIN DTB feature.
+>
+> Got it. For now, we could tie BUILTIN DTB config to !MMU case only. If there is
+> a valid use case that pops up for regular MMU/S-mode Linux, it is easy to change.
+>
+> > I agree that it is difficult to fit a proper boot-flow (having proper bootloader)
+> > due to limited RAM. If we don't link DTB to Linux RISC-V NOMMU then some
+> > thing else need to provide it hence bootloader suggestion.
+>
+> OK. Understood and I agree.
+>
+> >
+> > Apart from the Linux RISC-V NOMMU use-case, the BUILTIN DTB feature can
+> > be useful in environments such as FPGAs/Palladium where proper bootloader
+> > is not available.
+>
+> OK. But we do not have to enable it for this right away, no ? So should I just
+> not allow BUILTIN DTB for MMU==true case for now ?
 
-On 3/6/20 12:58 PM, Palmer Dabbelt wrote:
-> On Mon, 02 Mar 2020 21:44:37 PST (-0800), alex@ghiti.fr wrote:
->> This config allows to compile the kernel as PIE and to relocate it at any
->> virtual address at runtime: this paves the way to KASLR and to 4-level
->> page table folding at runtime. Runtime relocation is possible since
->> relocation metadata are embedded into the kernel.
->>
->> Note that relocating at runtime introduces an overhead even if the kernel
->> is loaded at the same address it was linked at and that the compiler
->> options are those used in arm64 which uses the same RELA relocation 
->> format.
->>
->> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
->> Reviewed-by: Zong Li <zong.li@sifive.com>
->> Reviewed-by: Anup Patel <anup@brainfault.org>
->> Tested-by: Zong Li <zong.li@sifive.com>
->> ---
->> Changes in v2:
->> - Make RELOCATABLE depend on MMU as suggested by Anup
->> - Rename kernel_load_addr into kernel_virt_addr as suggested by Anup
->> - Use __pa_symbol instead of __pa, as suggested by Zong
->> - Rebased on top of v5.6-rc3
->> - Tested with sv48 patchset
->> - Add Reviewed/Tested-by from Zong and Anup
->>
->>  arch/riscv/Kconfig              | 12 +++++
->>  arch/riscv/Makefile             |  5 +-
->>  arch/riscv/boot/loader.lds.S    |  2 +-
->>  arch/riscv/include/asm/page.h   |  5 +-
->>  arch/riscv/kernel/head.S        |  3 +-
->>  arch/riscv/kernel/vmlinux.lds.S | 10 ++--
->>  arch/riscv/mm/Makefile          |  4 ++
->>  arch/riscv/mm/init.c            | 92 ++++++++++++++++++++++++++++-----
->>  8 files changed, 111 insertions(+), 22 deletions(-)
->>
->> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
->> index 73f029eae0cc..f5f3d474504d 100644
->> --- a/arch/riscv/Kconfig
->> +++ b/arch/riscv/Kconfig
->> @@ -163,6 +163,18 @@ config PGTABLE_LEVELS
->>      default 3 if 64BIT
->>      default 2
->>
->> +config RELOCATABLE
->> +    bool
->> +    depends on MMU
->> +    help
->> +          This builds a kernel as a Position Independent Executable 
->> (PIE),
->> +          which retains all relocation metadata required to relocate the
->> +          kernel binary at runtime to a different virtual address 
->> than the
->> +          address it was linked at.
->> +          Since RISCV uses the RELA relocation format, this requires a
->> +          relocation pass at runtime even if the kernel is loaded at the
->> +          same address it was linked at.
->> +
->>  source "arch/riscv/Kconfig.socs"
->>
->>  menu "Platform type"
->> diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
->> index b9009a2fbaf5..5a115cf6a9c1 100644
->> --- a/arch/riscv/Makefile
->> +++ b/arch/riscv/Makefile
->> @@ -9,7 +9,10 @@
->>  #
->>
->>  OBJCOPYFLAGS    := -O binary
->> -LDFLAGS_vmlinux :=
->> +ifeq ($(CONFIG_RELOCATABLE),y)
->> +LDFLAGS_vmlinux := -shared -Bsymbolic -z notext -z norelro
->> +KBUILD_CFLAGS += -fPIE
->> +endif
->>  ifeq ($(CONFIG_DYNAMIC_FTRACE),y)
->>      LDFLAGS_vmlinux := --no-relax
->>  endif
->> diff --git a/arch/riscv/boot/loader.lds.S b/arch/riscv/boot/loader.lds.S
->> index 47a5003c2e28..a9ed218171aa 100644
->> --- a/arch/riscv/boot/loader.lds.S
->> +++ b/arch/riscv/boot/loader.lds.S
->> @@ -7,7 +7,7 @@ ENTRY(_start)
->>
->>  SECTIONS
->>  {
->> -    . = PAGE_OFFSET;
->> +    . = CONFIG_PAGE_OFFSET;
->>
->>      .payload : {
->>          *(.payload)
->> diff --git a/arch/riscv/include/asm/page.h 
->> b/arch/riscv/include/asm/page.h
->> index 8ca1930caa44..af5810f9aebd 100644
->> --- a/arch/riscv/include/asm/page.h
->> +++ b/arch/riscv/include/asm/page.h
->> @@ -31,9 +31,9 @@
->>   * When not using MMU this corresponds to the first free page in
->>   * physical memory (aligned on a page boundary).
->>   */
->> -#define PAGE_OFFSET        _AC(CONFIG_PAGE_OFFSET, UL)
->> +#define PAGE_OFFSET        kernel_virt_addr
-> 
-> I assume we want to keep PAGE_OFFSET a constant for the non-relocatable
-> systems.  As it currently stands this is imposing a performance hit even 
-> when
+Making kconfig option BUILTIN_DTB depends on !MMU looks reasonable
+to me. Maybe you can send v2 with this change ?
 
-Ok I can do that, thanks.
+Regards,
+Anup
 
->> -#define KERN_VIRT_SIZE (-PAGE_OFFSET)
->> +#define KERN_VIRT_SIZE        (-_AC(CONFIG_PAGE_OFFSET, UL))
-> 
-> This seems like it would cause issues if the kernel is relocated to high 
-> enough
-> addresses that "kernel_virt_addr+KERN_VIRT_SIZE" overflows.
-
-KERN_VIRT_SIZE is only used to define the size of VMALLOC zone and 
-VMALLOC zone must aligned on 2MB (size of PMD page): so I simply used 
-CONFIG_PAGE_OFFSET that guarantees that (since aligned on 1GB).
-
-But I should define KERN_VIRT_SIZE by using kernel_virt_addr and make 
-sure that VMALLOC zone is aligned on 2MB.
-
-Ok I'll fix that in v3, thanks.
-
-> 
->>  #ifndef __ASSEMBLY__
->>
->> @@ -97,6 +97,7 @@ extern unsigned long pfn_base;
->>  #define ARCH_PFN_OFFSET        (PAGE_OFFSET >> PAGE_SHIFT)
->>  #endif /* CONFIG_MMU */
->>
->> +extern unsigned long kernel_virt_addr;
->>  extern unsigned long max_low_pfn;
->>  extern unsigned long min_low_pfn;
->>
->> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
->> index 271860fc2c3f..d792912c2da3 100644
->> --- a/arch/riscv/kernel/head.S
->> +++ b/arch/riscv/kernel/head.S
->> @@ -131,7 +131,8 @@ clear_bss_done:
->>  #ifdef CONFIG_MMU
->>  relocate:
->>      /* Relocate return address */
->> -    li a1, PAGE_OFFSET
->> +    la a1, kernel_virt_addr
->> +    REG_L a1, 0(a1)
->>      la a2, _start
->>      sub a1, a1, a2
->>      add ra, ra, a1
->> diff --git a/arch/riscv/kernel/vmlinux.lds.S 
->> b/arch/riscv/kernel/vmlinux.lds.S
->> index 1e0193ded420..5bf69e9b91e6 100644
->> --- a/arch/riscv/kernel/vmlinux.lds.S
->> +++ b/arch/riscv/kernel/vmlinux.lds.S
->> @@ -4,7 +4,7 @@
->>   * Copyright (C) 2017 SiFive
->>   */
->>
->> -#define LOAD_OFFSET PAGE_OFFSET
->> +#define LOAD_OFFSET CONFIG_PAGE_OFFSET
->>  #include <asm/vmlinux.lds.h>
->>  #include <asm/page.h>
->>  #include <asm/cache.h>
->> @@ -71,9 +71,11 @@ SECTIONS
->>
->>      EXCEPTION_TABLE(0x10)
->>
->> -    .rel.dyn : {
->> -        *(.rel.dyn*)
->> -    }
->> +        .rela.dyn : ALIGN(8) {
->> +        __rela_dyn_start = .;
->> +                *(.rela .rela*)
->> +        __rela_dyn_end = .;
->> +        }
-> 
-> It looks like the indentation is screwed up here: I see a mix of 
-> tabs/spaces
-> that doesn't match the rest of the file.
-> 
-
-Thanks, I'll fix it.
-
->>
->>      _end = .;
->>
->> diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
->> index 50b7af58c566..27593d362248 100644
->> --- a/arch/riscv/mm/Makefile
->> +++ b/arch/riscv/mm/Makefile
->> @@ -1,6 +1,10 @@
->>  # SPDX-License-Identifier: GPL-2.0-only
->>
->>  CFLAGS_init.o := -mcmodel=medany
->> +ifdef CONFIG_RELOCATABLE
->> +CFLAGS_init.o += -fno-pie
->> +endif
->> +
->>  ifdef CONFIG_FTRACE
->>  CFLAGS_REMOVE_init.o = -pg
->>  endif
->> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
->> index 965a8cf4829c..428aee2669aa 100644
->> --- a/arch/riscv/mm/init.c
->> +++ b/arch/riscv/mm/init.c
->> @@ -12,6 +12,9 @@
->>  #include <linux/sizes.h>
->>  #include <linux/of_fdt.h>
->>  #include <linux/libfdt.h>
->> +#ifdef CONFIG_RELOCATABLE
->> +#include <linux/elf.h>
->> +#endif
->>
->>  #include <asm/fixmap.h>
->>  #include <asm/tlbflush.h>
->> @@ -28,6 +31,9 @@ EXPORT_SYMBOL(empty_zero_page);
->>  extern char _start[];
->>  void *dtb_early_va;
->>
->> +unsigned long kernel_virt_addr = _AC(CONFIG_PAGE_OFFSET, UL);
->> +EXPORT_SYMBOL(kernel_virt_addr);
->> +
->>  static void __init zone_sizes_init(void)
->>  {
->>      unsigned long max_zone_pfns[MAX_NR_ZONES] = { 0, };
->> @@ -132,7 +138,8 @@ void __init setup_bootmem(void)
->>          phys_addr_t end = reg->base + reg->size;
->>
->>          if (reg->base <= vmlinux_end && vmlinux_end <= end) {
->> -            mem_size = min(reg->size, (phys_addr_t)-PAGE_OFFSET);
->> +            mem_size = min(reg->size,
->> +                       (phys_addr_t)-kernel_virt_addr);
-> 
-> PAGE_OFFSET is kernel_virt_addr, so I don't see any reason to change 
-> these --
-> they account for a significant fraction of the diff.
-
-You are totally right, those are leftovers from a previous version. 
-Thanks for catching that, that greatly simplifies this patch.
-
-> 
->>              /*
->>               * Remove memblock from the end of usable area to the
->> @@ -269,7 +276,7 @@ static phys_addr_t __init alloc_pmd(uintptr_t va)
->>      if (mmu_enabled)
->>          return memblock_phys_alloc(PAGE_SIZE, PAGE_SIZE);
->>
->> -    pmd_num = (va - PAGE_OFFSET) >> PGDIR_SHIFT;
->> +    pmd_num = (va - kernel_virt_addr) >> PGDIR_SHIFT;
->>      BUG_ON(pmd_num >= NUM_EARLY_PMDS);
->>      return (uintptr_t)&early_pmd[pmd_num * PTRS_PER_PMD];
->>  }
->> @@ -370,6 +377,54 @@ static uintptr_t __init best_map_size(phys_addr_t 
->> base, phys_addr_t size)
->>  #error "setup_vm() is called from head.S before relocate so it should 
->> not use absolute addressing."
->>  #endif
->>
->> +#ifdef CONFIG_RELOCATABLE
->> +extern unsigned long __rela_dyn_start, __rela_dyn_end;
->> +
->> +#ifdef CONFIG_64BIT
->> +#define Elf_Rela Elf64_Rela
->> +#define Elf_Addr Elf64_Addr
->> +#else
->> +#define Elf_Rela Elf32_Rela
->> +#define Elf_Addr Elf32_Addr
->> +#endif
->> +
->> +void __init relocate_kernel(uintptr_t load_pa)
->> +{
->> +    Elf_Rela *rela = (Elf_Rela *)&__rela_dyn_start;
->> +    uintptr_t link_addr = _AC(CONFIG_PAGE_OFFSET, UL);
->> +    /*
->> +     * This holds the offset between the linked virtual address and the
->> +     * relocated virtual address.
->> +     */
->> +    uintptr_t reloc_offset = kernel_virt_addr - link_addr;
->> +    /*
->> +     * This holds the offset between linked virtual address and physical
->> +     * address whereas va_pa_offset holds the offset between relocated
->> +     * virtual address and physical address.
->> +     */
->> +    uintptr_t va_link_pa_offset = link_addr - load_pa;
->> +
->> +    for ( ; rela < (Elf_Rela *)&__rela_dyn_end; rela++) {
->> +        Elf_Addr addr = (rela->r_offset - va_link_pa_offset);
->> +        Elf_Addr relocated_addr = rela->r_addend;
->> +
->> +        if (rela->r_info != R_RISCV_RELATIVE)
->> +            continue;
-> 
-> This should at least provide a warning when it encounters an unresolvable
-> relocation.  Is it currently stands this just ignores all other runtime
-> relocations, and while I can buy the argument there shouldn't be any 
-> (though
-> I'd expect R_RISCV_{32,64} to show up?) we certainly shouldn't just 
-> silently
-> skip them.
-> 
-
-It's hard to warn that early in the boot process: what about we do like 
-powerpc and warns at compile time ? In addition, it would be better that 
-way since we can eliminate false-positive like in 43e76cd368fb (because 
-the only R_RISCV_64 relocations are indeed false-positive).
-
->> +
->> +        /*
->> +         * Make sure to not relocate vdso symbols like rt_sigreturn
->> +         * which are linked from the address 0 in vmlinux since
->> +         * vdso symbol addresses are actually used as an offset from
->> +         * mm->context.vdso in VDSO_OFFSET macro.
->> +         */
->> +        if (relocated_addr >= link_addr)
->> +            relocated_addr += reloc_offset;
->> +
->> +        *(Elf_Addr *)addr = relocated_addr;
->> +    }
->> +}
->> +#endif
->> +
->>  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>  {
->>      uintptr_t va, end_va;
->> @@ -377,9 +432,20 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>      uintptr_t load_sz = (uintptr_t)(&_end) - load_pa;
->>      uintptr_t map_size = best_map_size(load_pa, MAX_EARLY_MAPPING_SIZE);
->>
->> -    va_pa_offset = PAGE_OFFSET - load_pa;
->> +    va_pa_offset = kernel_virt_addr - load_pa;
->>      pfn_base = PFN_DOWN(load_pa);
->>
->> +#ifdef CONFIG_RELOCATABLE
->> +    /*
->> +     * Early page table uses only one PGDIR, which makes it possible
->> +     * to map 1GB aligned on 1GB: if the relocation offset makes the 
->> kernel
->> +     * cross over a 1G boundary, raise a bug since a part of the kernel
->> +     * would not get mapped.
->> +     */
->> +    BUG_ON(SZ_1G - (kernel_virt_addr & (SZ_1G - 1)) < load_sz);
->> +    relocate_kernel(load_pa);
->> +#endif
->> +
->>      /*
->>       * Enforce boot alignment requirements of RV32 and
->>       * RV64 by only allowing PMD or PGD mappings.
->> @@ -387,7 +453,7 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>      BUG_ON(map_size == PAGE_SIZE);
->>
->>      /* Sanity check alignment and size */
->> -    BUG_ON((PAGE_OFFSET % PGDIR_SIZE) != 0);
->> +    BUILD_BUG_ON((_AC(CONFIG_PAGE_OFFSET, UL) % PGDIR_SIZE) != 0);
->>      BUG_ON((load_pa % map_size) != 0);
->>      BUG_ON(load_sz > MAX_EARLY_MAPPING_SIZE);
->>
->> @@ -400,13 +466,13 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>      create_pmd_mapping(fixmap_pmd, FIXADDR_START,
->>                 (uintptr_t)fixmap_pte, PMD_SIZE, PAGE_TABLE);
->>      /* Setup trampoline PGD and PMD */
->> -    create_pgd_mapping(trampoline_pg_dir, PAGE_OFFSET,
->> +    create_pgd_mapping(trampoline_pg_dir, kernel_virt_addr,
->>                 (uintptr_t)trampoline_pmd, PGDIR_SIZE, PAGE_TABLE);
->> -    create_pmd_mapping(trampoline_pmd, PAGE_OFFSET,
->> +    create_pmd_mapping(trampoline_pmd, kernel_virt_addr,
->>                 load_pa, PMD_SIZE, PAGE_KERNEL_EXEC);
->>  #else
->>      /* Setup trampoline PGD */
->> -    create_pgd_mapping(trampoline_pg_dir, PAGE_OFFSET,
->> +    create_pgd_mapping(trampoline_pg_dir, kernel_virt_addr,
->>                 load_pa, PGDIR_SIZE, PAGE_KERNEL_EXEC);
->>  #endif
->>
->> @@ -415,10 +481,10 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>       * us to reach paging_init(). We map all memory banks later
->>       * in setup_vm_final() below.
->>       */
->> -    end_va = PAGE_OFFSET + load_sz;
->> -    for (va = PAGE_OFFSET; va < end_va; va += map_size)
->> +    end_va = kernel_virt_addr + load_sz;
->> +    for (va = kernel_virt_addr; va < end_va; va += map_size)
->>          create_pgd_mapping(early_pg_dir, va,
->> -                   load_pa + (va - PAGE_OFFSET),
->> +                   load_pa + (va - kernel_virt_addr),
->>                     map_size, PAGE_KERNEL_EXEC);
->>
->>      /* Create fixed mapping for early FDT parsing */
->> @@ -457,9 +523,9 @@ static void __init setup_vm_final(void)
->>              break;
->>          if (memblock_is_nomap(reg))
->>              continue;
->> -        if (start <= __pa(PAGE_OFFSET) &&
->> -            __pa(PAGE_OFFSET) < end)
->> -            start = __pa(PAGE_OFFSET);
->> +        if (start <= __pa_symbol(kernel_virt_addr) &&
->> +            __pa(kernel_virt_addr) < end)
->> +            start = __pa_symbol(kernel_virt_addr);
->>
->>          map_size = best_map_size(start, end - start);
->>          for (pa = start; pa < end; pa += map_size) {
-
-Thanks Palmer,
-
-Alex
+>
+> >
+> > Regards,
+> > Anup
+> >
+> >>
+> >>>
+> >>>>
+> >>>> For the hardware ID, could we do something like:
+> >>>>
+> >>>> * Check for the top-level DT compatible string, on systems where we
+> >> have a
+> >>>>   provided DTB.
+> >>>> * Check for a matching mimpid/marchid/mvendorid tuple, maybe with
+> >>>> some sort of
+> >>>>   masking functionality if we later need one.  These are availiable via SBI
+> >>>>   calls, but I'd be inclined to restrict them to M-mode boot and just say the
+> >>>>   SBI must provide a device tree with at least a suitable compatible string.
+> >>>>
+> >>>> While I suppose we could put together a tool for generating these
+> >>>> tables, for now we could probably just stick the mappings in a table
+> >>>> for now given that there's only one of them.
+> >>>>
+> >>>> That said, I'm not sure what to do about the different Kendryte
+> >>>> boards -- is there any way to poke the hardware to see which is which?
+> >>>
+> >>> I am sure there are two three different boards out there. Don't know
+> >>> exact differences between these boards.
+> >>
+> >> As far as I can tell, all the boards use the exact same SoC. No differences that
+> >> I can detect nor aware of. What differs between the different flavors of
+> >> boards are the perypherals attached: some have WiFi, different LCDs and
+> >> different cameras. The device tree is able to describe that of course, but the
+> >> core dtsi part for the SoC itself seem to be OK at least for the 4 different
+> >> boards I have (Kendryte KD233, Sipeed MAIXDUINO, MAIX Go and Dan
+> >> Dock).
+> >>
+> >>>
+> >>> Regards,
+> >>> Anup
+> >>>
+> >>>>
+> >>>>> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
+> >>>>> ---
+> >>>>>  arch/riscv/Kbuild            |  1 +
+> >>>>>  arch/riscv/Kconfig           | 18 ++++++++++++++++++
+> >>>>>  arch/riscv/boot/dts/Makefile |  4 ++++
+> >>>>>  arch/riscv/kernel/setup.c    |  6 ++++++
+> >>>>>  arch/riscv/mm/init.c         |  4 ++++
+> >>>>>  5 files changed, 33 insertions(+)
+> >>>>>
+> >>>>> diff --git a/arch/riscv/Kbuild b/arch/riscv/Kbuild index
+> >>>>> d1d0aa70fdf1..988804e430e4 100644
+> >>>>> --- a/arch/riscv/Kbuild
+> >>>>> +++ b/arch/riscv/Kbuild
+> >>>>> @@ -1,3 +1,4 @@
+> >>>>>  # SPDX-License-Identifier: GPL-2.0-only
+> >>>>>
+> >>>>>  obj-y += kernel/ mm/ net/
+> >>>>> +obj-$(CONFIG_USE_BUILTIN_DTB)    += boot/dts/
+> >>>>> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig index
+> >>>>> 1a3b5a5276be..28899e15f548 100644
+> >>>>> --- a/arch/riscv/Kconfig
+> >>>>> +++ b/arch/riscv/Kconfig
+> >>>>> @@ -355,6 +355,24 @@ config CMDLINE_FORCE
+> >>>>>
+> >>>>>  endchoice
+> >>>>>
+> >>>>> +config USE_BUILTIN_DTB
+> >>>>> + bool "Use builtin DTB"
+> >>>>> + help
+> >>>>> +   Link a device tree blob for particular hardware into the kernel,
+> >>>>> +   suppressing use of the DTB pointer provided by the bootloader.
+> >>>>> +   This option should only be used with hardware or bootloaders that
+> >>>>> +   are not capable of providing a DTB to the kernel, or for
+> >>>>> +   experimental hardware without stable device tree bindings.
+> >>>>> +
+> >>>>> +config BUILTIN_DTB_SOURCE
+> >>>>> + string "Source file for builtin DTB"
+> >>>>> + default ""
+> >>>>> + depends on USE_BUILTIN_DTB
+> >>>>> + help
+> >>>>> +   Base name (without suffix, relative to arch/riscv/boot/dts) for
+> >>>>> +   the a DTS file that will be used to produce the DTB linked into
+> >>>>> +   the kernel.
+> >>>>> +
+> >>>>>  endmenu
+> >>>>>
+> >>>>>  menu "Power management options"
+> >>>>> diff --git a/arch/riscv/boot/dts/Makefile
+> >>>>> b/arch/riscv/boot/dts/Makefile index dcc3ada78455..0bf2669aa12d
+> >>>>> 100644
+> >>>>> --- a/arch/riscv/boot/dts/Makefile
+> >>>>> +++ b/arch/riscv/boot/dts/Makefile
+> >>>>> @@ -1,2 +1,6 @@
+> >>>>>  # SPDX-License-Identifier: GPL-2.0
+> >>>>> +ifneq ($(CONFIG_BUILTIN_DTB_SOURCE),"")
+> >>>>> +obj-$(CONFIG_USE_BUILTIN_DTB) += $(patsubst
+> >>>>> +"%",%,$(CONFIG_BUILTIN_DTB_SOURCE)).dtb.o
+> >>>>> +else
+> >>>>>  subdir-y += sifive
+> >>>>> +endif
+> >>>>> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+> >>>>> index 0a6d415b0a5a..3e89be9d888c 100644
+> >>>>> --- a/arch/riscv/kernel/setup.c
+> >>>>> +++ b/arch/riscv/kernel/setup.c
+> >>>>> @@ -68,7 +68,13 @@ void __init setup_arch(char **cmdline_p)
+> >>>>>
+> >>>>>   setup_bootmem();
+> >>>>>   paging_init();
+> >>>>> +
+> >>>>> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
+> >>>>> + unflatten_and_copy_device_tree();
+> >>>>> +#else
+> >>>>>   unflatten_device_tree();
+> >>>>> +#endif
+> >>>>> +
+> >>>>>   clint_init_boot_cpu();
+> >>>>>
+> >>>>>  #ifdef CONFIG_SWIOTLB
+> >>>>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c index
+> >>>>> 965a8cf4829c..1274e889d008 100644
+> >>>>> --- a/arch/riscv/mm/init.c
+> >>>>> +++ b/arch/riscv/mm/init.c
+> >>>>> @@ -480,7 +480,11 @@ static void __init setup_vm_final(void)  #else
+> >>>>> asmlinkage void __init setup_vm(uintptr_t dtb_pa)  {
+> >>>>> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
+> >>>>> + dtb_early_va = __dtb_start;
+> >>>>> +#else
+> >>>>>   dtb_early_va = (void *)dtb_pa;
+> >>>>> +#endif
+> >>>>>  }
+> >>>>>
+> >>>>>  static inline void setup_vm_final(void)
+> >>>
+> >>
+> >>
+> >> --
+> >> Damien Le Moal
+> >> Western Digital Research
+> >
+>
+>
+> --
+> Damien Le Moal
+> Western Digital Research
+>
 
