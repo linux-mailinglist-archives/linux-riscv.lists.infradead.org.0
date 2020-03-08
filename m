@@ -2,53 +2,51 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9422217D314
-	for <lists+linux-riscv@lfdr.de>; Sun,  8 Mar 2020 10:53:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C622A17D31A
+	for <lists+linux-riscv@lfdr.de>; Sun,  8 Mar 2020 10:53:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
 	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rMKxALUwyOMVndfQXG15RHAEjsV2Gcmbl8qMptjH1MI=; b=sDCPyskto4s4Pk
-	j3r8UnWpZjANJZi3zTN4z2UpBkB26aCsUiViRfIH5iaiuHnxa4lKRnrLms94+EU9yuWXoZdh6KFZA
-	FGC+0YHbjLMUY+NBSS+zCvPbG028orycyLTT7V+TFQ+T+I4dfUXbyvSEsuL/uWZlJGlQWLVPP21fx
-	3gcT+vigfcjl0h6oQEnezCRBk9eo2Iuth1/jIo/VcRlW8m/Qe0mc8dBae3m9NsDM2/Nv8ib79yw6q
-	DRFjSVpuAnIhkNtx4shDfYdk4VvMJYQnVQ1Bzcs5kpKzZsxYU4aSHrb6icGU32A+Bva6EFl3iBfPT
-	9TZBU7a0I3QiYtFB4KCA==;
+	List-Owner; bh=iLuZ0oSq0fPa3gvA6u3ctfRN4FS3E7gHyXlfOitsTSs=; b=Ggd56Qz3h+Qb6H
+	bxqU4vU6kGh9+syjWcX4SNsIy4vDRr1HSaIxsJvxyZKW20hhAIrSkaAlQAvahso1BIvyXBNd4gH+A
+	35CB7m9ZZNTXJGIjIeSPAtaeMIi2V+W6x4D+ChN0NyYczv879TryS6ARwQN+KSi8HqJGOOsE8Qsam
+	CHZysj1mj7lDq3dyU0a3lS3CFZ+nGXw8oFUxiGJGY7IxjpELK9SmtkEiC6adDzi+Ny+85qnEAAGQG
+	9IEU4AYobBZcMJ4jki+c4XdgPug4am72c6oZYCIQ/uzuGdAEVIh+oA3wlVdPyywfS8p02C8gVwThj
+	By0dVhN23jJ3ATjs4xdA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAsd4-0002sT-17; Sun, 08 Mar 2020 09:53:50 +0000
+	id 1jAsd7-0002w4-5A; Sun, 08 Mar 2020 09:53:53 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAscu-0002hT-GW
- for linux-riscv@lists.infradead.org; Sun, 08 Mar 2020 09:53:42 +0000
+ id 1jAscw-0002lJ-UJ
+ for linux-riscv@lists.infradead.org; Sun, 08 Mar 2020 09:53:44 +0000
 Received: from localhost.localdomain (unknown [89.208.247.74])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E6A772084E;
- Sun,  8 Mar 2020 09:53:37 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 79D6E20866;
+ Sun,  8 Mar 2020 09:53:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583661220;
- bh=LB0h4IFc1qwE1iv1u6+ZDIwXQ329UaCIfCGOBL0zwiI=;
+ s=default; t=1583661222;
+ bh=V7gPdzyeicVBf+c/v7Jw8A8D52Ma7QKNk/3pIdn8KqU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=x7Ujd3tlPo/9hRYlvGHCkKNKRv6tSptS0EMGGMEs1puPS1NP7TH4tB5RySBbTHQDs
- nSFpIx75cjhodH62cDfwD5YObQzBdoDqVLGM6KA8pwPLpZrpYxS4gExBMc+ov4IlXH
- I+OHAjMmdpcOKY/1fRnS07AEhp/o1tWI3fdLE/io=
+ b=C6pZOHM0oy0/0mT7hpajF2+Xb7Ke8PgZuYX9lLQsQGVGiXup5yxCQWUz3zrAIP2h1
+ ggHFs+FN1t0dMrUeu8ckbZBM6IBJ6VYzc/a8A4BYJ8VEN64CUFPHyQvUCzu58UfekY
+ +SQHUAfqhrTOIOvnR38mNjvlGXwUswJTuQtwFqdo=
 From: guoren@kernel.org
 To: paul.walmsley@sifive.com, palmer@dabbelt.com, Anup.Patel@wdc.com,
  greentime.hu@sifive.com
-Subject: [RFC PATCH V3 08/11] riscv: Add vector struct and assembler
- definitions
-Date: Sun,  8 Mar 2020 17:49:51 +0800
-Message-Id: <20200308094954.13258-9-guoren@kernel.org>
+Subject: [RFC PATCH V3 09/11] riscv: Add task switch support for VECTOR
+Date: Sun,  8 Mar 2020 17:49:52 +0800
+Message-Id: <20200308094954.13258-10-guoren@kernel.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20200308094954.13258-1-guoren@kernel.org>
 References: <20200308094954.13258-1-guoren@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200308_015340_608624_7DA60B33 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200308_015343_032867_69D6B6D1 
+X-CRM114-Status: GOOD (  15.30  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -85,253 +83,208 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Guo Ren <guoren@linux.alibaba.com>
 
-Add vector state context struct in struct thread and asm-offsets.c
-definitions.
+This patch add task switch and task create for VECTOR, and now
+the applications with vector instructions wouldn't be broken by
+linux task switch.
 
 Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
 ---
- arch/riscv/include/asm/processor.h   |   1 +
- arch/riscv/include/uapi/asm/ptrace.h |   9 ++
- arch/riscv/kernel/asm-offsets.c      | 187 +++++++++++++++++++++++++++
- 3 files changed, 197 insertions(+)
+ arch/riscv/include/asm/switch_to.h | 48 +++++++++++++++++
+ arch/riscv/kernel/Makefile         |  1 +
+ arch/riscv/kernel/process.c        | 10 ++++
+ arch/riscv/kernel/vector.S         | 84 ++++++++++++++++++++++++++++++
+ 4 files changed, 143 insertions(+)
+ create mode 100644 arch/riscv/kernel/vector.S
 
-diff --git a/arch/riscv/include/asm/processor.h b/arch/riscv/include/asm/processor.h
-index 3ddb798264f1..217273375cfb 100644
---- a/arch/riscv/include/asm/processor.h
-+++ b/arch/riscv/include/asm/processor.h
-@@ -32,6 +32,7 @@ struct thread_struct {
- 	unsigned long sp;	/* Kernel mode stack */
- 	unsigned long s[12];	/* s[0]: frame pointer */
- 	struct __riscv_d_ext_state fstate;
-+	struct __riscv_v_state vstate;
- };
+diff --git a/arch/riscv/include/asm/switch_to.h b/arch/riscv/include/asm/switch_to.h
+index b9234e7178d0..6e1c7fa599be 100644
+--- a/arch/riscv/include/asm/switch_to.h
++++ b/arch/riscv/include/asm/switch_to.h
+@@ -63,6 +63,52 @@ extern bool has_fpu;
+ #define __switch_to_fpu(__prev, __next) do { } while (0)
+ #endif
  
- #define INIT_THREAD {					\
-diff --git a/arch/riscv/include/uapi/asm/ptrace.h b/arch/riscv/include/uapi/asm/ptrace.h
-index 882547f6bd5c..d913e8949b87 100644
---- a/arch/riscv/include/uapi/asm/ptrace.h
-+++ b/arch/riscv/include/uapi/asm/ptrace.h
-@@ -71,6 +71,15 @@ struct __riscv_q_ext_state {
- 	__u32 reserved[3];
- };
- 
-+struct __riscv_v_state {
-+	__uint128_t v[32];
-+	unsigned long vstart;
-+	unsigned long vxsat;
-+	unsigned long vxrm;
-+	unsigned long vl;
-+	unsigned long vtype;
-+};
++#ifdef CONFIG_VECTOR
++extern void __vstate_save(struct task_struct *save_to);
++extern void __vstate_restore(struct task_struct *restore_from);
 +
- union __riscv_fp_state {
- 	struct __riscv_f_ext_state f;
- 	struct __riscv_d_ext_state d;
-diff --git a/arch/riscv/kernel/asm-offsets.c b/arch/riscv/kernel/asm-offsets.c
-index 07cb9c10de4e..ab6eae41c2ad 100644
---- a/arch/riscv/kernel/asm-offsets.c
-+++ b/arch/riscv/kernel/asm-offsets.c
-@@ -70,6 +70,44 @@ void asm_offsets(void)
- 	OFFSET(TASK_THREAD_F31, task_struct, thread.fstate.f[31]);
- 	OFFSET(TASK_THREAD_FCSR, task_struct, thread.fstate.fcsr);
- 
-+	OFFSET(TASK_THREAD_V0,  task_struct, thread.vstate.v[0]);
-+	OFFSET(TASK_THREAD_V1,  task_struct, thread.vstate.v[1]);
-+	OFFSET(TASK_THREAD_V2,  task_struct, thread.vstate.v[2]);
-+	OFFSET(TASK_THREAD_V3,  task_struct, thread.vstate.v[3]);
-+	OFFSET(TASK_THREAD_V4,  task_struct, thread.vstate.v[4]);
-+	OFFSET(TASK_THREAD_V5,  task_struct, thread.vstate.v[5]);
-+	OFFSET(TASK_THREAD_V6,  task_struct, thread.vstate.v[6]);
-+	OFFSET(TASK_THREAD_V7,  task_struct, thread.vstate.v[7]);
-+	OFFSET(TASK_THREAD_V8,  task_struct, thread.vstate.v[8]);
-+	OFFSET(TASK_THREAD_V9,  task_struct, thread.vstate.v[9]);
-+	OFFSET(TASK_THREAD_V10, task_struct, thread.vstate.v[10]);
-+	OFFSET(TASK_THREAD_V11, task_struct, thread.vstate.v[11]);
-+	OFFSET(TASK_THREAD_V12, task_struct, thread.vstate.v[12]);
-+	OFFSET(TASK_THREAD_V13, task_struct, thread.vstate.v[13]);
-+	OFFSET(TASK_THREAD_V14, task_struct, thread.vstate.v[14]);
-+	OFFSET(TASK_THREAD_V15, task_struct, thread.vstate.v[15]);
-+	OFFSET(TASK_THREAD_V16, task_struct, thread.vstate.v[16]);
-+	OFFSET(TASK_THREAD_V17, task_struct, thread.vstate.v[17]);
-+	OFFSET(TASK_THREAD_V18, task_struct, thread.vstate.v[18]);
-+	OFFSET(TASK_THREAD_V19, task_struct, thread.vstate.v[19]);
-+	OFFSET(TASK_THREAD_V20, task_struct, thread.vstate.v[20]);
-+	OFFSET(TASK_THREAD_V21, task_struct, thread.vstate.v[21]);
-+	OFFSET(TASK_THREAD_V22, task_struct, thread.vstate.v[22]);
-+	OFFSET(TASK_THREAD_V23, task_struct, thread.vstate.v[23]);
-+	OFFSET(TASK_THREAD_V24, task_struct, thread.vstate.v[24]);
-+	OFFSET(TASK_THREAD_V25, task_struct, thread.vstate.v[25]);
-+	OFFSET(TASK_THREAD_V26, task_struct, thread.vstate.v[26]);
-+	OFFSET(TASK_THREAD_V27, task_struct, thread.vstate.v[27]);
-+	OFFSET(TASK_THREAD_V28, task_struct, thread.vstate.v[28]);
-+	OFFSET(TASK_THREAD_V29, task_struct, thread.vstate.v[29]);
-+	OFFSET(TASK_THREAD_V30, task_struct, thread.vstate.v[30]);
-+	OFFSET(TASK_THREAD_V31, task_struct, thread.vstate.v[31]);
-+	OFFSET(TASK_THREAD_VSTART, task_struct, thread.vstate.vstart);
-+	OFFSET(TASK_THREAD_VXSAT, task_struct, thread.vstate.vxsat);
-+	OFFSET(TASK_THREAD_VXRM, task_struct, thread.vstate.vxrm);
-+	OFFSET(TASK_THREAD_VL, task_struct, thread.vstate.vl);
-+	OFFSET(TASK_THREAD_VTYPE, task_struct, thread.vstate.vtype);
++static inline void __vstate_clean(struct pt_regs *regs)
++{
++	regs->status |= (regs->status & ~(SR_VS)) | SR_VS_CLEAN;
++}
 +
- 	DEFINE(PT_SIZE, sizeof(struct pt_regs));
- 	OFFSET(PT_EPC, pt_regs, epc);
- 	OFFSET(PT_RA, pt_regs, ra);
-@@ -304,6 +342,155 @@ void asm_offsets(void)
- 		- offsetof(struct task_struct, thread.fstate.f[0])
- 	);
- 
-+	DEFINE(TASK_THREAD_V0_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[0])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V1_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[1])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V2_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[2])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V3_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[3])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V4_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[4])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V5_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[5])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V6_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[6])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V7_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[7])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V8_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[8])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V9_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[9])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V10_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[10])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V11_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[11])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V12_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[12])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V13_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[13])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V14_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[14])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V15_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[15])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V16_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[16])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V17_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[17])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V18_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[18])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V19_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[19])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V20_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[20])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V21_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[21])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V22_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[22])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V23_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[23])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V24_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[24])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V25_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[25])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V26_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[26])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V27_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[27])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V28_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[28])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V29_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[29])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V30_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[30])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_V31_V0,
-+		  offsetof(struct task_struct, thread.vstate.v[31])
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_VSTART_V0,
-+		  offsetof(struct task_struct, thread.vstate.vstart)
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_VXSAT_V0,
-+		  offsetof(struct task_struct, thread.vstate.vxsat)
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_VXRM_V0,
-+		  offsetof(struct task_struct, thread.vstate.vxrm)
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_VL_V0,
-+		  offsetof(struct task_struct, thread.vstate.vl)
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
-+	DEFINE(TASK_THREAD_VTYPE_V0,
-+		  offsetof(struct task_struct, thread.vstate.vtype)
-+		- offsetof(struct task_struct, thread.vstate.v[0])
-+	);
++static inline void vstate_save(struct task_struct *task,
++			       struct pt_regs *regs)
++{
++	if ((regs->status & SR_VS) == SR_VS_DIRTY) {
++		__vstate_save(task);
++		__vstate_clean(regs);
++	}
++}
 +
- 	/*
- 	 * We allocate a pt_regs on the stack when entering the kernel.  This
- 	 * ensures the alignment is sane.
++static inline void vstate_restore(struct task_struct *task,
++				  struct pt_regs *regs)
++{
++	if ((regs->status & SR_VS) != SR_VS_OFF) {
++		__vstate_restore(task);
++		__vstate_clean(regs);
++	}
++}
++
++static inline void __switch_to_vector(struct task_struct *prev,
++				   struct task_struct *next)
++{
++	struct pt_regs *regs;
++
++	regs = task_pt_regs(prev);
++	if (unlikely(regs->status & SR_SD))
++		vstate_save(prev, regs);
++	vstate_restore(next, task_pt_regs(next));
++}
++
++extern bool has_vector;
++#else
++#define has_vector false
++#define vstate_save(task, regs) do { } while (0)
++#define vstate_restore(task, regs) do { } while (0)
++#define __switch_to_vector(__prev, __next) do { } while (0)
++#endif
++
+ extern struct task_struct *__switch_to(struct task_struct *,
+ 				       struct task_struct *);
+ 
+@@ -72,6 +118,8 @@ do {							\
+ 	struct task_struct *__next = (next);		\
+ 	if (has_fpu)					\
+ 		__switch_to_fpu(__prev, __next);	\
++	if (has_vector)					\
++		__switch_to_vector(__prev, __next);	\
+ 	((last) = __switch_to(__prev, __next));		\
+ } while (0)
+ 
+diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+index f40205cb9a22..e5276c3bdffc 100644
+--- a/arch/riscv/kernel/Makefile
++++ b/arch/riscv/kernel/Makefile
+@@ -30,6 +30,7 @@ obj-$(CONFIG_MMU) += vdso.o vdso/
+ 
+ obj-$(CONFIG_RISCV_M_MODE)	+= clint.o
+ obj-$(CONFIG_FPU)		+= fpu.o
++obj-$(CONFIG_VECTOR)		+= vector.o
+ obj-$(CONFIG_SMP)		+= smpboot.o
+ obj-$(CONFIG_SMP)		+= smp.o
+ obj-$(CONFIG_MODULES)		+= module.o
+diff --git a/arch/riscv/kernel/process.c b/arch/riscv/kernel/process.c
+index 817cf7b0974c..c572557701b4 100644
+--- a/arch/riscv/kernel/process.c
++++ b/arch/riscv/kernel/process.c
+@@ -74,6 +74,16 @@ void start_thread(struct pt_regs *regs, unsigned long pc,
+ 		 */
+ 		fstate_restore(current, regs);
+ 	}
++
++	if (has_vector) {
++		regs->status |= SR_VS_INITIAL;
++		/*
++		 * Restore the initial value to the vector register
++		 * before starting the user program.
++		 */
++		vstate_restore(current, regs);
++	}
++
+ 	regs->epc = pc;
+ 	regs->sp = sp;
+ 	set_fs(USER_DS);
+diff --git a/arch/riscv/kernel/vector.S b/arch/riscv/kernel/vector.S
+new file mode 100644
+index 000000000000..dbe1989fa9d7
+--- /dev/null
++++ b/arch/riscv/kernel/vector.S
+@@ -0,0 +1,84 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2012 Regents of the University of California
++ * Copyright (C) 2017 SiFive
++ * Copyright (C) 2019 Alibaba Group Holding Limited
++ *
++ *   This program is free software; you can redistribute it and/or
++ *   modify it under the terms of the GNU General Public License
++ *   as published by the Free Software Foundation, version 2.
++ *
++ *   This program is distributed in the hope that it will be useful,
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *   GNU General Public License for more details.
++ */
++
++#include <linux/linkage.h>
++
++#include <asm/asm.h>
++#include <asm/csr.h>
++#include <asm/asm-offsets.h>
++
++ENTRY(__vstate_save)
++	li	a2,  TASK_THREAD_V0
++	add	a0,  a0, a2
++
++	li	t1, (SR_VS | SR_FS)
++	csrs	sstatus, t1
++
++	csrr	t0,  CSR_VSTART
++	sd	t0,  TASK_THREAD_VSTART_V0(a0)
++	csrr	t0,  CSR_VXSAT
++	sd	t0,  TASK_THREAD_VXSAT_V0(a0)
++	csrr	t0,  CSR_VXRM
++	sd	t0,  TASK_THREAD_VXRM_V0(a0)
++	csrr	t0,  CSR_VL
++	sd	t0,  TASK_THREAD_VL_V0(a0)
++	csrr	t0,  CSR_VTYPE
++	sd	t0,  TASK_THREAD_VTYPE_V0(a0)
++
++	vsetvli	t0, x0, e8,m8
++	vsb.v	v0,  (a0)
++	addi	a0, a0, 128*8
++	vsb.v	v8,  (a0)
++	addi	a0, a0, 128*8
++	vsb.v	v16, (a0)
++	addi	a0, a0, 128*8
++	vsb.v	v24, (a0)
++
++	csrc	sstatus, t1
++	ret
++ENDPROC(__vstate_save)
++
++ENTRY(__vstate_restore)
++	li	a2,  TASK_THREAD_V0
++	add	a0,  a0, a2
++	mv	t2,  a0
++
++	li	t1, (SR_VS | SR_FS)
++	csrs	sstatus, t1
++
++	vsetvli	t0, x0, e8,m8
++	vlb.v	v0,  (a0)
++	addi	a0, a0, 128*8
++	vlb.v	v8,  (a0)
++	addi	a0, a0, 128*8
++	vlb.v	v16, (a0)
++	addi	a0, a0, 128*8
++	vlb.v	v24, (a0)
++
++	mv	a0,  t2
++	ld	t0,  TASK_THREAD_VSTART_V0(a0)
++	csrw	CSR_VSTART, t0
++	ld	t0,  TASK_THREAD_VXSAT_V0(a0)
++	csrw	CSR_VXSAT, t0
++	ld	t0,  TASK_THREAD_VXRM_V0(a0)
++	csrw	CSR_VXRM, t0
++	ld	t0,  TASK_THREAD_VL_V0(a0)
++	ld	t2,  TASK_THREAD_VTYPE_V0(a0)
++	vsetvl	t0, t0, t2
++
++	csrc	sstatus, t1
++	ret
++ENDPROC(__vstate_restore)
 -- 
 2.17.0
 
