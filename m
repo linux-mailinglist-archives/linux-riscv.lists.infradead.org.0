@@ -2,65 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A07CF17E08F
-	for <lists+linux-riscv@lfdr.de>; Mon,  9 Mar 2020 13:50:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CBA717E090
+	for <lists+linux-riscv@lfdr.de>; Mon,  9 Mar 2020 13:50:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ahl0EJWmHoMRLY0eSXQXA7ej/NnhxNTEll1BqcWKc48=; b=FFXSA6REauXnBqfxuFtZ+hevT
-	FNDZJ8I28EktxAWrfwRv7uSIn21zlmqwQo0u8KLnyPLGgLLX0Rah2J6Va5j9ak0Bk9aIXRCDHpmtq
-	tMNqIUoYLYYcU9hcgrSi5ukgnl9vmmpSmadJMN/WrtR8GELokl51cAya4MmxUIVzHcUiO571hwC96
-	Px68te6SWl/hJza+V9ZUnBpT2HbUQHNAQ4P7+jN/NjCUbLcEjfNA36ipruqvOUjZ68d0jRFuQbJIH
-	NonLLG5NpNmtav6FgoQQbRMbiVD/o3NT702kRblDMWUqXKlJskEb5WsAzA3sRFIiUqCDKxmjHPEVx
-	riZKcOD/g==;
+	 bh=zaxjBAuTx2YELL1LGQEhXTbhZfnooO5vHnkOStLbQ70=; b=fZG6Gct7zAP2XlsUtviaT/t0D
+	Va2sLmVzBq/56HBj5qvjVTqGbh7vKxNDvyJJqHh0qh9cjeYs75O48h2AdvWS36CnyVOwDnTkhWkYs
+	tWg8KmeOJNuZ3PEMxzggTVjS7bI1oolG6GtBIVPmcozQMxwKsMnLbklHV2LAbCCgecm7+jg++B+ni
+	BFni6Tf8IlFrEaSFLNQaxDQV2FNf8pro91rOIrLjhV+cQfaeMwWbVirXcWXfV1ge5GsfcdnY6lgMB
+	wSKFB+iwqCEz0w3YykEZ/KDRost5p6zUAhKvEoE/F833kEGJ8TvC56x8iiCSgNOVYqBuRkNvNvQWH
+	1wYsS09gw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBHrj-0000P8-1D; Mon, 09 Mar 2020 12:50:39 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1jBHrh-0000Np-OY; Mon, 09 Mar 2020 12:50:37 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBHrd-0000Mt-H4
+ id 1jBHrd-0000Ms-6K
  for linux-riscv@lists.infradead.org; Mon, 09 Mar 2020 12:50:35 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  09 Mar 2020 05:50:31 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.70,533,1574150400"; 
- d="gz'50?scan'50,208,50";a="353360605"
+ d="gz'50?scan'50,208,50";a="241960515"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 09 Mar 2020 05:50:29 -0700
+ by orsmga003.jf.intel.com with ESMTP; 09 Mar 2020 05:50:29 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jBHrY-000Hhk-Rt; Mon, 09 Mar 2020 20:50:28 +0800
-Date: Mon, 9 Mar 2020 20:49:40 +0800
+ id 1jBHrY-000Hgs-L0; Mon, 09 Mar 2020 20:50:28 +0800
+Date: Mon, 9 Mar 2020 20:50:19 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Zong Li <zong.li@sifive.com>
-Subject: Re: [PATCH v2 8/9] riscv: introduce interfaces to patch kernel code
-Message-ID: <202003092006.4aw3aHrv%lkp@intel.com>
-References: <e2a42afbce47b364bf790b4cf8edf76235e48d53.1583741997.git.zong.li@sifive.com>
+Subject: Re: [PATCH v2 1/9] riscv: add ARCH_HAS_SET_MEMORY support
+Message-ID: <202003092056.iAw8Vovm%lkp@intel.com>
+References: <b050081f7d30130cad20216b1e65380851915b95.1583741997.git.zong.li@sifive.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="BOKacYhQ+x31HxR3"
+Content-Type: multipart/mixed; boundary="FCuugMFkClbJLl1L"
 Content-Disposition: inline
-In-Reply-To: <e2a42afbce47b364bf790b4cf8edf76235e48d53.1583741997.git.zong.li@sifive.com>
+In-Reply-To: <b050081f7d30130cad20216b1e65380851915b95.1583741997.git.zong.li@sifive.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_055033_636492_AEAE2B36 
-X-CRM114-Status: UNSURE (   6.04  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200309_055033_289521_81A89C48 
+X-CRM114-Status: GOOD (  12.24  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.126 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [134.134.136.24 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [134.134.136.24 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,23 +81,23 @@ Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 
---BOKacYhQ+x31HxR3
+--FCuugMFkClbJLl1L
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Zong,
 
-Thank you for the patch! Perhaps something to improve:
+Thank you for the patch! Yet something to improve:
 
-[auto build test WARNING on v5.6-rc5]
-[also build test WARNING on next-20200306]
+[auto build test ERROR on v5.6-rc5]
+[also build test ERROR on next-20200306]
 [if your patch is applied to the wrong git tree, please drop us a note to help
 improve the system. BTW, we also suggest to use '--base' option to specify the
 base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
 
 url:    https://github.com/0day-ci/linux/commits/Zong-Li/Support-strict-kernel-memory-permissions-for-security/20200309-172554
 base:    2c523b344dfa65a3738e7039832044aa133c75fb
-config: riscv-allnoconfig (attached as .config)
+config: riscv-nommu_virt_defconfig (attached as .config)
 compiler: riscv64-linux-gcc (GCC) 7.5.0
 reproduce:
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
@@ -106,227 +108,183 @@ reproduce:
 If you fix the issue, kindly add following tag
 Reported-by: kbuild test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   In file included from include/linux/spinlock.h:318:0,
-                    from arch/riscv/kernel/patch.c:6:
-   arch/riscv/kernel/patch.c: In function 'riscv_insn_write':
-   arch/riscv/kernel/patch.c:63:25: error: 'patch_lock' undeclared (first use in this function); did you mean 'patch_map'?
-     raw_spin_lock_irqsave(&patch_lock, flags);
-                            ^
-   include/linux/spinlock_api_up.h:28:32: note: in definition of macro '___LOCK'
-      do { __acquire(lock); (void)(lock); } while (0)
-                                   ^~~~
->> include/linux/spinlock_api_up.h:40:31: note: in expansion of macro '__LOCK'
-      do { local_irq_save(flags); __LOCK(lock); } while (0)
-                                  ^~~~~~
->> include/linux/spinlock_api_up.h:68:45: note: in expansion of macro '__LOCK_IRQSAVE'
-    #define _raw_spin_lock_irqsave(lock, flags) __LOCK_IRQSAVE(lock, flags)
-                                                ^~~~~~~~~~~~~~
->> include/linux/spinlock.h:272:3: note: in expansion of macro '_raw_spin_lock_irqsave'
-      _raw_spin_lock_irqsave(lock, flags); \
-      ^~~~~~~~~~~~~~~~~~~~~~
->> arch/riscv/kernel/patch.c:63:2: note: in expansion of macro 'raw_spin_lock_irqsave'
-     raw_spin_lock_irqsave(&patch_lock, flags);
-     ^~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/patch.c:63:25: note: each undeclared identifier is reported only once for each function it appears in
-     raw_spin_lock_irqsave(&patch_lock, flags);
-                            ^
-   include/linux/spinlock_api_up.h:28:32: note: in definition of macro '___LOCK'
-      do { __acquire(lock); (void)(lock); } while (0)
-                                   ^~~~
->> include/linux/spinlock_api_up.h:40:31: note: in expansion of macro '__LOCK'
-      do { local_irq_save(flags); __LOCK(lock); } while (0)
-                                  ^~~~~~
->> include/linux/spinlock_api_up.h:68:45: note: in expansion of macro '__LOCK_IRQSAVE'
-    #define _raw_spin_lock_irqsave(lock, flags) __LOCK_IRQSAVE(lock, flags)
-                                                ^~~~~~~~~~~~~~
->> include/linux/spinlock.h:272:3: note: in expansion of macro '_raw_spin_lock_irqsave'
-      _raw_spin_lock_irqsave(lock, flags); \
-      ^~~~~~~~~~~~~~~~~~~~~~
->> arch/riscv/kernel/patch.c:63:2: note: in expansion of macro 'raw_spin_lock_irqsave'
-     raw_spin_lock_irqsave(&patch_lock, flags);
-     ^~~~~~~~~~~~~~~~~~~~~
-   arch/riscv/kernel/patch.c:66:25: error: 'FIX_TEXT_POKE1' undeclared (first use in this function)
-      patch_map(addr + len, FIX_TEXT_POKE1);
-                            ^~~~~~~~~~~~~~
-   arch/riscv/kernel/patch.c:68:26: error: 'FIX_TEXT_POKE0' undeclared (first use in this function); did you mean 'FIX_TEXT_POKE1'?
-     waddr = patch_map(addr, FIX_TEXT_POKE0);
-                             ^~~~~~~~~~~~~~
-                             FIX_TEXT_POKE1
---
-   In file included from include/linux/spinlock.h:318:0,
-                    from arch/riscv//kernel/patch.c:6:
-   arch/riscv//kernel/patch.c: In function 'riscv_insn_write':
-   arch/riscv//kernel/patch.c:63:25: error: 'patch_lock' undeclared (first use in this function); did you mean 'patch_map'?
-     raw_spin_lock_irqsave(&patch_lock, flags);
-                            ^
-   include/linux/spinlock_api_up.h:28:32: note: in definition of macro '___LOCK'
-      do { __acquire(lock); (void)(lock); } while (0)
-                                   ^~~~
->> include/linux/spinlock_api_up.h:40:31: note: in expansion of macro '__LOCK'
-      do { local_irq_save(flags); __LOCK(lock); } while (0)
-                                  ^~~~~~
->> include/linux/spinlock_api_up.h:68:45: note: in expansion of macro '__LOCK_IRQSAVE'
-    #define _raw_spin_lock_irqsave(lock, flags) __LOCK_IRQSAVE(lock, flags)
-                                                ^~~~~~~~~~~~~~
->> include/linux/spinlock.h:272:3: note: in expansion of macro '_raw_spin_lock_irqsave'
-      _raw_spin_lock_irqsave(lock, flags); \
-      ^~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv//kernel/patch.c:63:2: note: in expansion of macro 'raw_spin_lock_irqsave'
-     raw_spin_lock_irqsave(&patch_lock, flags);
-     ^~~~~~~~~~~~~~~~~~~~~
-   arch/riscv//kernel/patch.c:63:25: note: each undeclared identifier is reported only once for each function it appears in
-     raw_spin_lock_irqsave(&patch_lock, flags);
-                            ^
-   include/linux/spinlock_api_up.h:28:32: note: in definition of macro '___LOCK'
-      do { __acquire(lock); (void)(lock); } while (0)
-                                   ^~~~
->> include/linux/spinlock_api_up.h:40:31: note: in expansion of macro '__LOCK'
-      do { local_irq_save(flags); __LOCK(lock); } while (0)
-                                  ^~~~~~
->> include/linux/spinlock_api_up.h:68:45: note: in expansion of macro '__LOCK_IRQSAVE'
-    #define _raw_spin_lock_irqsave(lock, flags) __LOCK_IRQSAVE(lock, flags)
-                                                ^~~~~~~~~~~~~~
->> include/linux/spinlock.h:272:3: note: in expansion of macro '_raw_spin_lock_irqsave'
-      _raw_spin_lock_irqsave(lock, flags); \
-      ^~~~~~~~~~~~~~~~~~~~~~
-   arch/riscv//kernel/patch.c:63:2: note: in expansion of macro 'raw_spin_lock_irqsave'
-     raw_spin_lock_irqsave(&patch_lock, flags);
-     ^~~~~~~~~~~~~~~~~~~~~
-   arch/riscv//kernel/patch.c:66:25: error: 'FIX_TEXT_POKE1' undeclared (first use in this function)
-      patch_map(addr + len, FIX_TEXT_POKE1);
-                            ^~~~~~~~~~~~~~
-   arch/riscv//kernel/patch.c:68:26: error: 'FIX_TEXT_POKE0' undeclared (first use in this function); did you mean 'FIX_TEXT_POKE1'?
-     waddr = patch_map(addr, FIX_TEXT_POKE0);
-                             ^~~~~~~~~~~~~~
-                             FIX_TEXT_POKE1
+   arch/riscv/mm/pageattr.c: In function 'pageattr_pmd_entry':
+>> arch/riscv/mm/pageattr.c:73:3: error: implicit declaration of function 'set_pmd'; did you mean 'set_pud'? [-Werror=implicit-function-declaration]
+      set_pmd(pmd, val);
+      ^~~~~~~
+      set_pud
+   arch/riscv/mm/pageattr.c: In function 'pageattr_pte_entry':
+>> arch/riscv/mm/pageattr.c:85:2: error: implicit declaration of function 'set_pte'; did you mean 'set_pud'? [-Werror=implicit-function-declaration]
+     set_pte(pte, val);
+     ^~~~~~~
+     set_pud
+   cc1: some warnings being treated as errors
 
-vim +/_raw_spin_lock_irqsave +272 include/linux/spinlock.h
+vim +73 arch/riscv/mm/pageattr.c
 
-b8e6ec865fd1d8 Linus Torvalds  2006-11-26  268  
-c2f21ce2e31286 Thomas Gleixner 2009-12-02  269  #define raw_spin_lock_irqsave(lock, flags)		\
-3f307891ce0e7b Steven Rostedt  2008-07-25  270  	do {						\
-3f307891ce0e7b Steven Rostedt  2008-07-25  271  		typecheck(unsigned long, flags);	\
-9c1721aa4994f6 Thomas Gleixner 2009-12-03 @272  		_raw_spin_lock_irqsave(lock, flags);	\
-3f307891ce0e7b Steven Rostedt  2008-07-25  273  	} while (0)
-ef12f10994281e Thomas Gleixner 2009-11-07  274  
-
-:::::: The code at line 272 was first introduced by commit
-:::::: 9c1721aa4994f6625decbd915241f3a94ee2fe67 locking: Cleanup the name space completely
-
-:::::: TO: Thomas Gleixner <tglx@linutronix.de>
-:::::: CC: Thomas Gleixner <tglx@linutronix.de>
+    65	
+    66	static int pageattr_pmd_entry(pmd_t *pmd, unsigned long addr,
+    67				      unsigned long next, struct mm_walk *walk)
+    68	{
+    69		pmd_t val = READ_ONCE(*pmd);
+    70	
+    71		if (pmd_leaf(val)) {
+    72			val = __pmd(set_pageattr_masks(pmd_val(val), walk));
+  > 73			set_pmd(pmd, val);
+    74		}
+    75	
+    76		return 0;
+    77	}
+    78	
+    79	static int pageattr_pte_entry(pte_t *pte, unsigned long addr,
+    80				      unsigned long next, struct mm_walk *walk)
+    81	{
+    82		pte_t val = READ_ONCE(*pte);
+    83	
+    84		val = __pte(set_pageattr_masks(pte_val(val), walk));
+  > 85		set_pte(pte, val);
+    86	
+    87		return 0;
+    88	}
+    89	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---BOKacYhQ+x31HxR3
+--FCuugMFkClbJLl1L
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-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
-TvNzdtmDpIwJyf4XIjd2QhJKAAA=
+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
+j+1UuDg//QvAxf8ZHl8AAA==
 
---BOKacYhQ+x31HxR3--
+--FCuugMFkClbJLl1L--
 
