@@ -2,87 +2,144 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB8AC17F11A
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 08:39:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 186E717F152
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 08:57:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0dFLdP85Y9Q8awZvmKHn54zR0u+MbjrnH2r4/T/oqTM=; b=OcFLwR0pxvfUHeArIlVyw2qyv
-	Iau27RrufYMkDmvP14Cla8AVG0LikS7FylqhajO2xwdx9pXVBN/aXsYCosVxA3PNY4k91VxmTpVGK
-	N/+SrP1vuVpoqwySmejHGGQ80H8zIUMdaAdVeuHu3W37a2cyOzU78VPKDxEB9D9O+CYbicfM2fEBc
-	KhqSuVDsNIdwa5+nEsXTlZk80HnZDZERLSBAQCeFTu/iuusqHQU0L9TulOIbSojF6dJNCeZJaUTOC
-	URT8S8SavZQ48Td4OpMN3aAxe4grbgwY45+3YDG6/N/IRo31tS04cMBMjUD9ZpUxOnCEARqsYp/kX
-	Zd27WtV1w==;
+	 bh=jppQhjiwVqrEQqlrs9t0ukiEGDcChGuQa/VtEc05HdQ=; b=oeMy/kWyK6QukSH6d5RAyaL+F
+	hqZ+I/nmLpR7SW3bx3GJX1iqTu4WpQ9y2XMXKy24VInrKvVesNWN3Hv7DAo/BhqC1dUL2lmv9D3Jt
+	voXNm7YPBQ4bswDKD2ZBgr7Bm0CHidTrWEZuIK29nx+24Rxj1Ig/tNgJnDEKghIrCIWXwES0kGOx6
+	4P2SavD/PlKTbjFNIWySbscRtbyWfr9SgGf4Rvj4Z/5mDDZllqBzGlsR5I6JDFbMiUx+O5hga542w
+	VhGTNDs0iHRazPQxMn4kM/a/XK6NeV1wEvUSbSTYy/wlxOHqcerynln2MHUa+CKD+equhtL4VwB23
+	lBuBN8GDw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBZTb-0008Ak-4e; Tue, 10 Mar 2020 07:38:55 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jBZlo-0007i4-Am; Tue, 10 Mar 2020 07:57:44 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBZTX-0008A5-Pd
- for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 07:38:53 +0000
-Received: by mail-wr1-x444.google.com with SMTP id t11so14464044wrw.5
- for <linux-riscv@lists.infradead.org>; Tue, 10 Mar 2020 00:38:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=0dFLdP85Y9Q8awZvmKHn54zR0u+MbjrnH2r4/T/oqTM=;
- b=QCZknUtyKW1Tlu+z26Lyf3hzOfJ8dbBwlDj43PxnSWzU1ew+4lXbTeLry/MG/ijeFi
- ghy+DoOd2lzneoouNvWg0GgTXU+J9C4W9L6smg9xJx4pTzL5QHW/if1YZ9X6Lw7B6TOO
- H6AdrxwAMuLzgt77HZp2Zn1c5A9TrG/NSUFo+lJ9gDFVTfF98QFh0pj4Rc69wxsE/OzF
- AOOT1T2GK2Es4FsxLpfWHTbbXQgXP+aaMtnFUuC8C2/DTdOeqD0N6IqjbgtRlGJLWBxB
- w6++FB+X/z3cm1GQl5SQQYULo4lY1rsxC45mq2zweY3bjd3J4upsH8SP3RSRX8SXiES2
- djnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=0dFLdP85Y9Q8awZvmKHn54zR0u+MbjrnH2r4/T/oqTM=;
- b=Png5y52rwn4MZoIxAfdwtGGHQw+1QyDuiR4wuq4GdY7+CJehXb//ZB2/ikDo3YYnTj
- om0Lky9Pgc/zab4wWY1wij18pI+iOYSHROcjMprSRc/27LzhF+0YCvE3UXt9zLObYmgR
- wB05bFlw1Fi+xi+miUqRCMatKC+txNeMXfVwcpiMiVHm+ofR8hfjQbpmpdHgz+ngs0M6
- R7oaG36YfU7vu2Zfz3DhdM7JllP/aU2NqTvQTzqMOEx7x2pF+gmg43bHn/Pkksl6zLY3
- C88E6AMigbYPfpZl+KiBIMZXuJ6oudMsXhxqQKV/xmVEVT3OPC9uUvghPCWWZiTcQHQn
- 35Xw==
-X-Gm-Message-State: ANhLgQ1rqIKvwkFabz0k4B7lcMS62CbtQK+ocySLH9Kfu9ggayHqUczV
- Ox+V9MTcnJpc7V4qB60JLesljvi69Sl5Q888YGGM7g==
-X-Google-Smtp-Source: ADFU+vtkDemeCtgwrmDObfWc/zs49KPzuQUFPvhXvrdL+aQHzY5iKeS7LyinR8U/P7wWJnFaZ0dGFEZkh4vMj7q/yrE=
-X-Received: by 2002:adf:f309:: with SMTP id i9mr16812426wro.0.1583825930137;
- Tue, 10 Mar 2020 00:38:50 -0700 (PDT)
+ id 1jBZlk-0007eZ-AL
+ for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 07:57:42 +0000
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 02A7sE2E169969
+ for <linux-riscv@lists.infradead.org>; Tue, 10 Mar 2020 03:56:40 -0400
+Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ym7abmwtx-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Tue, 10 Mar 2020 03:56:39 -0400
+Received: from localhost
+ by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <borntraeger@de.ibm.com>;
+ Tue, 10 Mar 2020 07:56:36 -0000
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+ by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Tue, 10 Mar 2020 07:56:31 -0000
+Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 02A7uUE356819760
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 10 Mar 2020 07:56:31 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D63B642041;
+ Tue, 10 Mar 2020 07:56:30 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7E58342049;
+ Tue, 10 Mar 2020 07:56:30 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.152.224.141])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 10 Mar 2020 07:56:30 +0000 (GMT)
+Subject: Re: [linux-next:master 7003/7050] include/linux/virtio_config.h:113:
+ undefined reference to `page_reporting_unregister'
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>
+References: <202003091047.yO0wlUGy%lkp@intel.com>
+ <CAKgT0UcHjPqF-djZWYXBg=vqkBfp295QihvPrWn6xq_jY4NNYg@mail.gmail.com>
+ <20200310015958-mutt-send-email-mst@kernel.org>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
+ 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
+ nS4h0HDFPrrp1C2EMVYIQrMokWvlFZbCpsdYbBI=
+Date: Tue, 10 Mar 2020 08:56:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200226011037.7179-1-atish.patra@wdc.com>
- <20200226011037.7179-6-atish.patra@wdc.com>
- <CAKv+Gu_iAzQ6et13aACarqns8-xzQ+YSqj+m3mVGGy=ny8GJBg@mail.gmail.com>
- <26172d39fdb5ecd951ade0a89566c010f6166a03.camel@wdc.com>
- <CAKv+Gu8i93gM0dMqzbhvNbqsgd9dHCMGzX7E47uusrUvv6xRJA@mail.gmail.com>
- <46e9873e288134f638cd8726a2c15c9ca63860ce.camel@wdc.com>
- <CAKv+Gu_2dCj74VvCMRQ9yFgBtJRENasBbEV0bwcfqLQwuaj0=A@mail.gmail.com>
- <CAOnJCU+zBgYo0ez2ExiAbGttwpVq302vGrZJ3Y9g+S=SHTMuiw@mail.gmail.com>
-In-Reply-To: <CAOnJCU+zBgYo0ez2ExiAbGttwpVq302vGrZJ3Y9g+S=SHTMuiw@mail.gmail.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Tue, 10 Mar 2020 13:08:38 +0530
-Message-ID: <CAAhSdy3tT5TgRy1g=aMX1k+m7j13eo4exM0jvgt8mDS4bZ94YA@mail.gmail.com>
-Subject: Re: [RFC PATCH 5/5] RISC-V: Add EFI stub support.
-To: Atish Patra <atishp@atishpatra.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20200310015958-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+x-cbid: 20031007-0008-0000-0000-0000035B0DDF
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 20031007-0009-0000-0000-00004A7C4FFD
+Message-Id: <7358a9ad-8475-06c8-3b1b-71b022af7b84@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.572
+ definitions=2020-03-10_03:2020-03-09,
+ 2020-03-10 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ mlxlogscore=999 malwarescore=0 bulkscore=0 spamscore=0 suspectscore=0
+ adultscore=0 impostorscore=0 mlxscore=0 phishscore=0 priorityscore=1501
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2001150001 definitions=main-2003100052
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_003851_920749_2C7BF524 
-X-CRM114-Status: GOOD (  35.84  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200310_005740_483056_D02A66FB 
+X-CRM114-Status: GOOD (  26.72  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,262 +151,90 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "daniel.schaefer@hpe.com" <daniel.schaefer@hpe.com>,
- "linux-efi@vger.kernel.org" <linux-efi@vger.kernel.org>,
- "abner.chang@hpe.com" <abner.chang@hpe.com>, Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- Atish Patra <Atish.Patra@wdc.com>, "agraf@csgraf.de" <agraf@csgraf.de>,
- "palmer@dabbelt.com" <palmer@dabbelt.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "leif@nuviainc.com" <leif@nuviainc.com>, Ard Biesheuvel <ardb@kernel.org>
+Cc: anup.patel@wdc.com, kbuild test robot <lkp@intel.com>,
+ Linux Memory Management List <linux-mm@kvack.org>, palmerdabbelt@google.com,
+ atish.patra@wdc.com, alistair.francis@wdc.com, linux-riscv@lists.infradead.org,
+ Andrew Morton <akpm@linux-foundation.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Mar 10, 2020 at 12:39 PM Atish Patra <atishp@atishpatra.org> wrote:
->
-> On Thu, Feb 27, 2020 at 10:57 PM Ard Biesheuvel <ardb@kernel.org> wrote:
-> >
-> > On Fri, 28 Feb 2020 at 02:05, Atish Patra <Atish.Patra@wdc.com> wrote:
-> > >
-> > > On Thu, 2020-02-27 at 20:59 +0100, Ard Biesheuvel wrote:
-> > > > On Thu, 27 Feb 2020 at 20:53, Atish Patra <Atish.Patra@wdc.com>
-> > > > wrote:
-> > > > > On Wed, 2020-02-26 at 08:28 +0100, Ard Biesheuvel wrote:
-> > > > > > On Wed, 26 Feb 2020 at 02:10, Atish Patra <atish.patra@wdc.com>
-> > > > > > wrote:
-> > > > > > > Add a RISC-V architecture specific stub code that actually
-> > > > > > > copies
-> > > > > > > the
-> > > > > > > actual kernel image to a valid address and jump to it after
-> > > > > > > boot
-> > > > > > > services
-> > > > > > > are terminated. Enable UEFI related kernel configs as well for
-> > > > > > > RISC-V.
-> > > > > > >
-> > > > > > > Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> > > > > > > ---
-> > > > > > >  arch/riscv/Kconfig                        |  20 ++++
-> > > > > > >  arch/riscv/Makefile                       |   1 +
-> > > > > > >  arch/riscv/configs/defconfig              |   1 +
-> > > > > > >  drivers/firmware/efi/libstub/Makefile     |   8 ++
-> > > > > > >  drivers/firmware/efi/libstub/riscv-stub.c | 135
-> > > > > > > ++++++++++++++++++++++
-> > > > > > >  5 files changed, 165 insertions(+)
-> > > > > > >  create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
-> > > > > > >
-> > > > > > > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> > > > > > > index 42c122170cfd..68b1d565e51d 100644
-> > > > > > > --- a/arch/riscv/Kconfig
-> > > > > > > +++ b/arch/riscv/Kconfig
-> > > > > > > @@ -372,10 +372,30 @@ config CMDLINE_FORCE
-> > > > > > >
-> > > > > > >  endchoice
-> > > > > > >
-> > > > > > > +config EFI_STUB
-> > > > > > > +       bool
-> > > > > > > +
-> > > > > > > +config EFI
-> > > > > > > +       bool "UEFI runtime support"
-> > > > > > > +       depends on OF
-> > > > > > > +       select LIBFDT
-> > > > > > > +       select UCS2_STRING
-> > > > > > > +       select EFI_PARAMS_FROM_FDT
-> > > > > > > +       select EFI_STUB
-> > > > > > > +       select EFI_GENERIC_ARCH_STUB
-> > > > > > > +       default y
-> > > > > > > +       help
-> > > > > > > +         This option provides support for runtime services
-> > > > > > > provided
-> > > > > > > +         by UEFI firmware (such as non-volatile variables,
-> > > > > > > realtime
-> > > > > > > +          clock, and platform reset). A UEFI stub is also
-> > > > > > > provided
-> > > > > > > to
-> > > > > > > +         allow the kernel to be booted as an EFI application.
-> > > > > > > This
-> > > > > > > +         is only useful on systems that have UEFI firmware.
-> > > > > > > +
-> > > > > > >  endmenu
-> > > > > > >
-> > > > > > >  menu "Power management options"
-> > > > > > >
-> > > > > > >  source "kernel/power/Kconfig"
-> > > > > > > +source "drivers/firmware/Kconfig"
-> > > > > > >
-> > > > > > >  endmenu
-> > > > > > > diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-> > > > > > > index b9009a2fbaf5..0afaa89ba9ad 100644
-> > > > > > > --- a/arch/riscv/Makefile
-> > > > > > > +++ b/arch/riscv/Makefile
-> > > > > > > @@ -78,6 +78,7 @@ head-y := arch/riscv/kernel/head.o
-> > > > > > >  core-y += arch/riscv/
-> > > > > > >
-> > > > > > >  libs-y += arch/riscv/lib/
-> > > > > > > +core-$(CONFIG_EFI_STUB) +=
-> > > > > > > $(objtree)/drivers/firmware/efi/libstub/lib.a
-> > > > > > >
-> > > > > > >  PHONY += vdso_install
-> > > > > > >  vdso_install:
-> > > > > > > diff --git a/arch/riscv/configs/defconfig
-> > > > > > > b/arch/riscv/configs/defconfig
-> > > > > > > index e2ff95cb3390..0a5d3578f51e 100644
-> > > > > > > --- a/arch/riscv/configs/defconfig
-> > > > > > > +++ b/arch/riscv/configs/defconfig
-> > > > > > > @@ -125,3 +125,4 @@ CONFIG_DEBUG_BLOCK_EXT_DEVT=y
-> > > > > > >  # CONFIG_FTRACE is not set
-> > > > > > >  # CONFIG_RUNTIME_TESTING_MENU is not set
-> > > > > > >  CONFIG_MEMTEST=y
-> > > > > > > +CONFIG_EFI=y
-> > > > > > > diff --git a/drivers/firmware/efi/libstub/Makefile
-> > > > > > > b/drivers/firmware/efi/libstub/Makefile
-> > > > > > > index 2c5b76787126..38facb61745b 100644
-> > > > > > > --- a/drivers/firmware/efi/libstub/Makefile
-> > > > > > > +++ b/drivers/firmware/efi/libstub/Makefile
-> > > > > > > @@ -21,6 +21,8 @@ cflags-$(CONFIG_ARM64)                :=
-> > > > > > > $(subst
-> > > > > > > $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
-> > > > > > >  cflags-$(CONFIG_ARM)           := $(subst
-> > > > > > > $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
-> > > > > > >                                    -fno-builtin -fpic \
-> > > > > > >                                    $(call cc-option,-mno-
-> > > > > > > single-
-> > > > > > > pic-base)
-> > > > > > > +cflags-$(CONFIG_RISCV)         := $(subst
-> > > > > > > $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
-> > > > > > > +                                  -fpic
-> > > > > > >
-> > > > > > >  cflags-$(CONFIG_EFI_GENERIC_ARCH_STUB) +=
-> > > > > > > -I$(srctree)/scripts/dtc/libfdt
-> > > > > > >
-> > > > > > > @@ -55,6 +57,7 @@ lib-
-> > > > > > > $(CONFIG_EFI_GENERIC_ARCH_STUB)           +=
-> > > > > > > efi-stub.o fdt.o string.o \
-> > > > > > >  lib-$(CONFIG_ARM)              += arm32-stub.o
-> > > > > > >  lib-$(CONFIG_ARM64)            += arm64-stub.o
-> > > > > > >  lib-$(CONFIG_X86)              += x86-stub.o
-> > > > > > > +lib-$(CONFIG_RISCV)            += riscv-stub.o
-> > > > > > >  CFLAGS_arm32-stub.o            := -DTEXT_OFFSET=$(TEXT_OFFSET)
-> > > > > > >  CFLAGS_arm64-stub.o            := -DTEXT_OFFSET=$(TEXT_OFFSET)
-> > > > > > >
-> > > > > > > @@ -79,6 +82,11 @@ STUBCOPY_FLAGS-$(CONFIG_ARM64)       += --
-> > > > > > > prefix-alloc-sections=.init \
-> > > > > > >                                    --prefix-symbols=__efistub_
-> > > > > > >  STUBCOPY_RELOC-$(CONFIG_ARM64) := R_AARCH64_ABS
-> > > > > > >
-> > > > > > > +STUBCOPY_FLAGS-$(CONFIG_RISCV) += --prefix-alloc-
-> > > > > > > sections=.init \
-> > > > > > > +                                  --prefix-symbols=__efistub_
-> > > > > > > +STUBCOPY_RELOC-$(CONFIG_RISCV) := R_RISCV_HI20
-> > > > > > > +
-> > > > > > > +
-> > > > > > >  $(obj)/%.stub.o: $(obj)/%.o FORCE
-> > > > > > >         $(call if_changed,stubcopy)
-> > > > > > >
-> > > > > > > diff --git a/drivers/firmware/efi/libstub/riscv-stub.c
-> > > > > > > b/drivers/firmware/efi/libstub/riscv-stub.c
-> > > > > > > new file mode 100644
-> > > > > > > index 000000000000..3935b29ea93a
-> > > > > > > --- /dev/null
-> > > > > > > +++ b/drivers/firmware/efi/libstub/riscv-stub.c
-> > > > > > > @@ -0,0 +1,135 @@
-> > > > > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > > > > +/*
-> > > > > > > + * Copyright (C) 2013, 2014 Linaro Ltd;  <roy.franz@linaro.org
-> > > > > > > >
-> > > > > > > + * Copyright (C) 2020 Western Digital Corporation or its
-> > > > > > > affiliates.
-> > > > > > > + *
-> > > > > > > + * This file implements the EFI boot stub for the RISC-V
-> > > > > > > kernel.
-> > > > > > > + * Adapted from ARM64 version at
-> > > > > > > drivers/firmware/efi/libstub/arm64-stub.c.
-> > > > > > > + */
-> > > > > > > +
-> > > > > > > +#include <linux/efi.h>
-> > > > > > > +#include <linux/libfdt.h>
-> > > > > > > +#include <linux/libfdt_env.h>
-> > > > > > > +#include <asm/efi.h>
-> > > > > > > +#include <asm/sections.h>
-> > > > > > > +
-> > > > > > > +#include "efistub.h"
-> > > > > > > +/*
-> > > > > > > + * RISCV requires the kernel image to placed TEXT_OFFSET bytes
-> > > > > > > beyond a 2 MB
-> > > > > > > + * aligned base for 64 bit and 4MB for 32 bit.
-> > > > > > > + */
-> > > > > > > +#if IS_ENABLED(CONFIG_64BIT)
-> > > > > >
-> > > > > > You can use #ifdef here
-> > > > > >
-> > > > >
-> > > > > ok.
-> > > > >
-> > > > > > > +#define MIN_KIMG_ALIGN SZ_2M
-> > > > > > > +#else
-> > > > > > > +#define MIN_KIMG_ALIGN SZ_4M
-> > > > > > > +#endif
-> > > > > > > +/*
-> > > > > > > + * TEXT_OFFSET ensures that we don't overwrite the firmware
-> > > > > > > that
-> > > > > > > probably sits
-> > > > > > > + * at the beginning of the DRAM.
-> > > > > > > + */
-> > > > > >
-> > > > > > Ugh. Really? On an EFI system, that memory should be reserved in
-> > > > > > some
-> > > > > > way, we shouldn't be able to stomp on it like that.
-> > > > > >
-> > > > >
-> > > > > Currently, we reserve the initial 128KB for run time firmware(only
-> > > > > openSBI for now, EDK2 later) by using PMP (physical memory
-> > > > > protection).
-> > > > > Any acess to that region from supervisor mode (i.e. U-Boot) will
-> > > > > result
-> > > > > in a fault.
-> > > > >
-> > > > > Is it mandatory for UEFI to reserve the beginning of the DRAM ?
-> > > > >
-> > > >
-> > > > It is mandatory to describe which memory is usable and which memory
-> > > > is
-> > > > reserved. If this memory is not usable, you either describe it as
-> > > > reserved, or not describe it at all. Describing it as usable memory,
-> > > > allocating it for the kernel but with a hidden agreement that it is
-> > > > reserved is highly likely to cause problems down the road.
-> > > >
-> > >
-> > > I completely agree with you on this. We have been talking to have a
-> > > booting guide and memory map document for RISC-V Linux to document all
-> > > the idiosyncries of RISC-V. But that has not happend until now.
-> > > Once, the ordered booting patches are merged, I will try to take a stab
-> > > at it.
-> > >
-> > > Other than that, do we need to describe it somewhere in U-boot wrt to
-> > > UEFI so that it doesn't allocate memory from that region ?
-> > >
-> >
-> > It is an idiosyncrasy that the firmware should hide from the OS.
-> >
-> > What if GRUB comes along and attempts to allocate that memory? Do we
-> > also have to teach it that the first 128 KB memory of free memory are
-> > magic and should not be touched?
-> >
-> > So the answer is to mark it as reserved. This way, no UEFI tools,
-> > bootloaders etc will ever try to use it.
->
-> Sounds good to me. We are currently discussing the best approach to
-> provide reserved memory
-> information to U-Boot/EDK2. The idea is to U-Boot/EDK2 may have to
-> update the DT with
-> reserved-memory node so that Linux is aware of the reservation as well.
 
-The discussion is happening on Github at:
-https://github.com/riscv/riscv-sbi-doc/pull/37
+On 10.03.20 07:08, Michael S. Tsirkin wrote:
+> On Mon, Mar 09, 2020 at 07:19:51PM -0700, Alexander Duyck wrote:
+>> On Sun, Mar 8, 2020 at 7:54 PM kbuild test robot <lkp@intel.com> wrote:
+>>>
+>>> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+>>> head:   b86a6a241b7c60ca7a6ca4fb3c0d2aedbbf2c1b6
+>>> commit: 120359931943d2b801ce51a1a045dcc0a5d1a55b [7003/7050] Merge branch 'akpm-current/current'
+>>> config: riscv-randconfig-a001-20200308 (attached as .config)
+>>> compiler: riscv64-linux-gcc (GCC) 7.5.0
+>>> reproduce:
+>>>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>>>         chmod +x ~/bin/make.cross
+>>>         git checkout 120359931943d2b801ce51a1a045dcc0a5d1a55b
+>>>         # save the attached .config to linux build tree
+>>>         GCC_VERSION=7.5.0 make.cross ARCH=riscv
+>>>
+>>> If you fix the issue, kindly add following tag
+>>> Reported-by: kbuild test robot <lkp@intel.com>
+>>>
+>>> All errors (new ones prefixed by >>):
+>>>
+>>>    drivers/virtio/virtio_balloon.o: In function `leak_balloon':
+>>>    drivers/virtio/virtio_balloon.c:281: undefined reference to `balloon_page_dequeue'
+>>>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
+>>>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_unregister'
+>>>    drivers/virtio/virtio_balloon.o: In function `virtio_cread32':
+>>>    include/linux/virtio_config.h:423: undefined reference to `balloon_page_alloc'
+>>>    drivers/virtio/virtio_balloon.o: In function `fill_balloon':
+>>>>> drivers/virtio/virtio_balloon.c:233: undefined reference to `balloon_page_enqueue'
+>>>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
+>>>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_register'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_remove':
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:139: undefined reference to `drm_dev_unplug'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:140: undefined reference to `drm_atomic_helper_shutdown'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:141: undefined reference to `drm_dev_put'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_probe':
+>>
+>> It looks like somehow the config has CONFIG_VIRTIO_BALLOON enabled,
+>> but didn't select CONFIG_MEMORY_BALLOON nor CONFIG_PAGE_REPORTING That
+>> shouldn't be possible since in drivers/virtio/Kconfig we have the
+>> following:
+>> config VIRTIO_BALLOON
+>>         tristate "Virtio balloon driver"
+>>         depends on VIRTIO
+>>         select MEMORY_BALLOON
+>>         select PAGE_REPORTING
+>>
+>> I think I traced the problem down. It looks like it is related to this patch:
+>>     RISC-V: Add kconfig option for QEMU virt machine
+>>
+>>     We add kconfig option for QEMU virt machine and select all
+>>     required VIRTIO drivers using this kconfig option.
+>>
+>>     Signed-off-by: Anup Patel <anup.patel@wdc.com>
+>>     Reviewed-by: Atish Patra <atish.patra@wdc.com>
+>>     Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>>     Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>>     Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>>
+>>
+>> The problem is it is using select to enable things that have
+>> dependencies, and as a result it is enabling things without enabling
+>> the bits needed to support them. That isn't recommended and is
+>> actually called out to something to avoid in the kconfig-language
+>> documentation:
+>> https://elixir.bootlin.com/linux/latest/source/Documentation/kbuild/kconfig-language.rst#L143
+> 
+> 
+> I agree. And when we change virtio we likely won't remember to fix up RISC-V.
+> So please don't poke at it from arches.
+> The right way to do this IMHO is via ARCH_DEFCONFIG, and using
+> a defconfig per board.
+> And I think the same applies to s390 and virtio console.
+> Christian?
 
-Feel free to share your views in above mentioned Github link.
+Right. The select of VIRTIO_CONSOLE in S390_GUEST ĺooks more like a historic relic.
+Will fix. 
 
-Regards,
-Anup
 
