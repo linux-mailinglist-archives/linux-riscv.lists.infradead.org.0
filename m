@@ -2,88 +2,61 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFF8B17EE7F
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 03:20:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10CCE17EE9B
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 03:32:24 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=L6pCXyqDcdFgwMbY6i5R+BKWlatqyMzumWd/kP/8VIQ=; b=tgvfnA+hbCytOc5PbkydUZ64o
-	RorXLQYOX/cRa0L4DwlGwWSX4CyB+RsukJj4qrrDYZXI+7U/5SRdtrtPRYT12ETfGUAkJOHa171ln
-	IeNUN/BwOymJeJu3QMceyufwgVrqYbbNPX3BVeASRobuzbExCQ+QLPW7NDsjecTvnMYJx5N1Sq6iG
-	cpoR6n+u68ePsfYDvJYEDZSN4iKJ+Lqtie0GQW+7CyhJTbngARdJ3S1jiiqJYKeRtHHFm5J3ldf7E
-	uqLdXStXIYBi9Wd6+FF8ctfJbFbFhW7nUvXtvz/exEb3TDZ3ePWOjZz+cruxONZwkJYN6+enq4dlq
-	Ce9BiOxjw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3y84yqZRugayEnPuj4WmyCRbsqiJlfr9qmjJyOyF0wE=; b=GMamTeChMvxGav
+	RK4/NvMtj8EJGsOJVrr4cgTOLcmUZ7MpgZtu9Bu47xosSCcK85kRJiw/dmMONuMiZmVRx/MfxLyhZ
+	asSUl27ilOJaYKtLXWKKgID2XEO2tBFB0bGoH38qP9y7XihQPq13bHKgENx1SkgltpxIczMerW2GG
+	HSPsE+mNH3+RuYWCpiRay4f5+47YqhGBmK0vCVbscQq7ZWQ58ttVr1QYdrXUb1cYoWQT9lmJbfvvk
+	jBJgRfbNHqE4q8xB/zBBE63yFPBQNr22qeNNbkGcRK3IOmv/6jXabVmwnWg6JYb1SI7Lg0f+Dgdum
+	HqjbRDTFTWStGoorl2JA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBUVC-00063E-1p; Tue, 10 Mar 2020 02:20:14 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBUV7-000586-Dn
- for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 02:20:11 +0000
-Received: by mail-il1-x143.google.com with SMTP id p1so6622765ils.12
- for <linux-riscv@lists.infradead.org>; Mon, 09 Mar 2020 19:20:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=L6pCXyqDcdFgwMbY6i5R+BKWlatqyMzumWd/kP/8VIQ=;
- b=UNlcB2rLgG6pr5mr7Qkp5QgEXXpD9BF8/+1CpOOUiOkIrbAMfJy8nz+CaQEc3vBHZ0
- ekiwRkHzNxtaySBL0Kku6lqnJ2vWFGyKBaawroWq9miobOATOBTs3R/vQ3qsUdQu2nPi
- MiOSO4d08txXpOviwvUEapqMTOgzqHEFJkTn9vgl6R3HbKOhMpmABvRblo6XMm7GtZL7
- GNWRbnbznjeuWfGR3wONAPqe3eFcHMmUw5RkwEZttZ/UCPm39XCAmwvzEiKvsvTuFDqE
- a0YN+aivcAh11jBmKLpceitwspyh5/ZYml3/gl6xxE3DEGhpZUpmpYeWvnx/YhQzx9rh
- RUcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=L6pCXyqDcdFgwMbY6i5R+BKWlatqyMzumWd/kP/8VIQ=;
- b=Ny3YW1CQ33jIBBHZdpgrB5xOyfEG74o41ufz+KITXKM2oNHhyHbqzF9dFNFu7xkvLU
- RPHRnws48+DPSad9rpoKNtens+jTu24Gxd/fErbrHIt2FacQYg92OA/DIo57QJa9Mkgi
- 4tbenTx0kyE9JCUrXnupRAE0nYd0vviumIpmVsFPGYdAbipyHrXWGMpgI3HQix0hTcUB
- coJ7F9bLBqiULKagoTu9ys4TEsOWqTN6SnfLN37e+PYhF0KygBzMrWZiPLqGzwlA1ghm
- E1/2CdgRIpua68yfNiZG+NcFibJLrc5OzpuRvTcH6z7IcCJe02WwLoWCG9Ftciw7E4Tm
- jdEA==
-X-Gm-Message-State: ANhLgQ2iB9BxnQrM3Rv3KfGmRHPhlit+34PQswvue461mDyzFXP4rrDA
- 84/paAWV047UThx0F1DioHGYRQeAhH4ZR4g6Qv4=
-X-Google-Smtp-Source: ADFU+vvIrTlf8Gh1C40sGbrVNezt1ZTTHbHdjDa7x7F5WsoEPaoIZFLWBKwq+XlT5L9+QUvgzv6uuKw/vRHavmi/Dk4=
-X-Received: by 2002:a92:8f91:: with SMTP id r17mr16485609ilk.97.1583806803111; 
- Mon, 09 Mar 2020 19:20:03 -0700 (PDT)
+	id 1jBUgs-0001bF-OW; Tue, 10 Mar 2020 02:32:18 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jBUgf-0001Te-5j; Tue, 10 Mar 2020 02:32:06 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C538730E;
+ Mon,  9 Mar 2020 19:32:02 -0700 (PDT)
+Received: from [10.163.1.203] (unknown [10.163.1.203])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E46843F67D;
+ Mon,  9 Mar 2020 19:31:53 -0700 (PDT)
+Subject: Re: [PATCH V15] mm/debug: Add tests validating architecture page
+ table helpers
+To: Christophe Leroy <christophe.leroy@c-s.fr>, Qian Cai <cai@lca.pw>
+References: <61250cdc-f80b-2e50-5168-2ec67ec6f1e6@arm.com>
+ <CEEAD95E-D468-4C58-A65B-7E8AED91168A@lca.pw>
+ <a45834bc-e6f2-ac21-de9e-1aff67d12797@arm.com>
+ <c40d907a-b64b-ae0d-e58f-33dddf0e8edc@c-s.fr>
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+Message-ID: <2d950d8c-4b23-741e-591f-e22e857c0755@arm.com>
+Date: Tue, 10 Mar 2020 08:01:51 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <202003091047.yO0wlUGy%lkp@intel.com>
-In-Reply-To: <202003091047.yO0wlUGy%lkp@intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Mon, 9 Mar 2020 19:19:51 -0700
-Message-ID: <CAKgT0UcHjPqF-djZWYXBg=vqkBfp295QihvPrWn6xq_jY4NNYg@mail.gmail.com>
-Subject: Re: [linux-next:master 7003/7050] include/linux/virtio_config.h:113:
- undefined reference to `page_reporting_unregister'
-To: kbuild test robot <lkp@intel.com>, linux-riscv@lists.infradead.org,
- anup.patel@wdc.com, 
- atish.patra@wdc.com, palmerdabbelt@google.com, alistair.francis@wdc.com
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <c40d907a-b64b-ae0d-e58f-33dddf0e8edc@c-s.fr>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_192009_502904_C41D4830 
-X-CRM114-Status: GOOD (  12.92  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200309_193205_301046_5272BC31 
+X-CRM114-Status: GOOD (  17.63  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:143 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [alexander.duyck[at]gmail.com]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,74 +68,100 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Linux Memory Management List <linux-mm@kvack.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
+ linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
+ Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
+ Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Vineet Gupta <vgupta@synopsys.com>, linux-kernel@vger.kernel.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Mar 8, 2020 at 7:54 PM kbuild test robot <lkp@intel.com> wrote:
->
-> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-> head:   b86a6a241b7c60ca7a6ca4fb3c0d2aedbbf2c1b6
-> commit: 120359931943d2b801ce51a1a045dcc0a5d1a55b [7003/7050] Merge branch 'akpm-current/current'
-> config: riscv-randconfig-a001-20200308 (attached as .config)
-> compiler: riscv64-linux-gcc (GCC) 7.5.0
-> reproduce:
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         git checkout 120359931943d2b801ce51a1a045dcc0a5d1a55b
->         # save the attached .config to linux build tree
->         GCC_VERSION=7.5.0 make.cross ARCH=riscv
->
-> If you fix the issue, kindly add following tag
-> Reported-by: kbuild test robot <lkp@intel.com>
->
-> All errors (new ones prefixed by >>):
->
->    drivers/virtio/virtio_balloon.o: In function `leak_balloon':
->    drivers/virtio/virtio_balloon.c:281: undefined reference to `balloon_page_dequeue'
->    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
-> >> include/linux/virtio_config.h:113: undefined reference to `page_reporting_unregister'
->    drivers/virtio/virtio_balloon.o: In function `virtio_cread32':
->    include/linux/virtio_config.h:423: undefined reference to `balloon_page_alloc'
->    drivers/virtio/virtio_balloon.o: In function `fill_balloon':
-> >> drivers/virtio/virtio_balloon.c:233: undefined reference to `balloon_page_enqueue'
->    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
-> >> include/linux/virtio_config.h:113: undefined reference to `page_reporting_register'
->    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_remove':
->    drivers/gpu/drm/virtio/virtgpu_drv.c:139: undefined reference to `drm_dev_unplug'
->    drivers/gpu/drm/virtio/virtgpu_drv.c:140: undefined reference to `drm_atomic_helper_shutdown'
->    drivers/gpu/drm/virtio/virtgpu_drv.c:141: undefined reference to `drm_dev_put'
->    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_probe':
-
-It looks like somehow the config has CONFIG_VIRTIO_BALLOON enabled,
-but didn't select CONFIG_MEMORY_BALLOON nor CONFIG_PAGE_REPORTING That
-shouldn't be possible since in drivers/virtio/Kconfig we have the
-following:
-config VIRTIO_BALLOON
-        tristate "Virtio balloon driver"
-        depends on VIRTIO
-        select MEMORY_BALLOON
-        select PAGE_REPORTING
-
-I think I traced the problem down. It looks like it is related to this patch:
-    RISC-V: Add kconfig option for QEMU virt machine
-
-    We add kconfig option for QEMU virt machine and select all
-    required VIRTIO drivers using this kconfig option.
-
-    Signed-off-by: Anup Patel <anup.patel@wdc.com>
-    Reviewed-by: Atish Patra <atish.patra@wdc.com>
-    Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
-    Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-    Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
 
-The problem is it is using select to enable things that have
-dependencies, and as a result it is enabling things without enabling
-the bits needed to support them. That isn't recommended and is
-actually called out to something to avoid in the kconfig-language
-documentation:
-https://elixir.bootlin.com/linux/latest/source/Documentation/kbuild/kconfig-language.rst#L143
+On 03/07/2020 12:35 PM, Christophe Leroy wrote:
+> 
+> 
+> Le 07/03/2020 à 01:56, Anshuman Khandual a écrit :
+>>
+>>
+>> On 03/07/2020 06:04 AM, Qian Cai wrote:
+>>>
+>>>
+>>>> On Mar 6, 2020, at 7:03 PM, Anshuman Khandual <Anshuman.Khandual@arm.com> wrote:
+>>>>
+>>>> Hmm, set_pte_at() function is not preferred here for these tests. The idea
+>>>> is to avoid or atleast minimize TLB/cache flushes triggered from these sort
+>>>> of 'static' tests. set_pte_at() is platform provided and could/might trigger
+>>>> these flushes or some other platform specific synchronization stuff. Just
+>>>
+>>> Why is that important for this debugging option?
+>>
+>> Primarily reason is to avoid TLB/cache flush instructions on the system
+>> during these tests that only involve transforming different page table
+>> level entries through helpers. Unless really necessary, why should it
+>> emit any TLB/cache flush instructions ?
+> 
+> What's the problem with thoses flushes ?
+> 
+>>
+>>>
+>>>> wondering is there specific reason with respect to the soft lock up problem
+>>>> making it necessary to use set_pte_at() rather than a simple WRITE_ONCE() ?
+>>>
+>>> Looks at the s390 version of set_pte_at(), it has this comment,
+>>> vmaddr);
+>>>
+>>> /*
+>>>   * Certain architectures need to do special things when PTEs
+>>>   * within a page table are directly modified.  Thus, the following
+>>>   * hook is made available.
+>>>   */
+>>>
+>>> I can only guess that powerpc  could be the same here.
+>>
+>> This comment is present in multiple platforms while defining set_pte_at().
+>> Is not 'barrier()' here alone good enough ? Else what exactly set_pte_at()
+>> does as compared to WRITE_ONCE() that avoids the soft lock up, just trying
+>> to understand.
+>>
+> 
+> 
+> Argh ! I didn't realise that you were writing directly into the page tables. When it works, that's only by chance I guess.
+> 
+> To properly set the page table entries, set_pte_at() has to be used:
+> - On powerpc 8xx, with 16k pages, the page table entry must be copied four times. set_pte_at() does it, WRITE_ONCE() doesn't.
+> - On powerpc book3s/32 (hash MMU), the flag _PAGE_HASHPTE must be preserved among writes. set_pte_at() preserves it, WRITE_ONCE() doesn't.
+> 
+> set_pte_at() also does a few other mandatory things, like calling pte_mkpte()
+> 
+> So, the WRITE_ONCE() must definitely become a set_pte_at()
+
+Sure, will do. These are part of the clear tests that populates a given
+entry with a non zero value before clearing and testing it with pxx_none().
+In that context, WRITE_ONCE() seemed sufficient. But pte_clear() might be
+closely tied with proper page table entry update and hence a preceding
+set_pte_at() will be better.
+
+There are still more WRITE_ONCE() for other page table levels during these
+clear tests. set_pmd_at() and set_pud_at() are defined on platforms that
+support (and enable) THP and PUD based THP respectively. Hence they could
+not be used for clear tests as remaining helpers pmd_clear(), pud_clear(),
+p4d_clear() and pgd_clear() still need to be validated with or without
+THP support and enablement. We should just leave all other WRITE_ONCE()
+instances unchanged. Please correct me if I am missing something here.
+
+> 
+> Christophe
+> 
 
