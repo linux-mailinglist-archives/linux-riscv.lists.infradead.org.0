@@ -2,126 +2,90 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBABB17F72E
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 13:13:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCB3517F73A
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 13:16:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N/4jJba7vZ4RyIqYhUQcynnb2YOAPUYi80mdw/lW/kU=; b=KZgzy3cifMQdaC
-	SPRc+77sJxW9qYmTabkNMxTsmiCWHJrR1iwGiNwvLfUQVmiYSrBZY/GPOwkrzz+Zbn6HuW6KRRIBL
-	1R0B9GwE2XSR3APy5TTs0S7MJurQ2cSOkwXdBhrU93sq96Rddb0fgwOWSMpD2qvsUSkbduTkACXpX
-	Btbs+yrywNszE4M5c98DIHAYpTtfAqwZySZoFwCzhGqZ19L/ntvI612fReQ+SQ9iVp8TJaJF8QVa7
-	mk7qplZQZFJTY0ef/1ktXnJENJgYmFHpqFuPk+dNENw5A91KBl+uAQs5Subah1N8EoTwyXKBVY+7i
-	bv9ohUs/f2ZRkw8HNy+Q==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Wcr+N1rBV4EZFNJ5w07gXgC+QgoYoCPNpbNPH7fWcyE=; b=Zk9PXb2l0eaNNM
+	50npfq5sstLuhpjH9AQu7AEIm+H5pqTIX7ZB5atDEwZtYTEOUuPhMOtP8vEp8fk9nBz/ijRAeZwXh
+	gBC3JWnmreEt4j2XEZtgCkf79TAJqEUshOFzaxVODsR9PcZ6DS5kjDKoniyLmMzPZwPEfwF5RIjUE
+	yWTyCxn25/hPcyZ5E5SfDs5agIlVA619mwXCr1sePR6+uCKgL4ttulVsAvi1UWEKpyK6pJ6D0Glbk
+	G5qrBc+r2W9td8QDEIvxFN04jIULoUdjk9eFhi0mOIecXP8lYq9YjQQ2zd6/BqDt1PugQtLvi8wW5
+	2JjDPgCzsl5AIa3qFUPQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBdlX-0003s6-UF; Tue, 10 Mar 2020 12:13:43 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+	id 1jBdod-0005ec-Bf; Tue, 10 Mar 2020 12:16:55 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
  helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBdlT-0003rc-R9
- for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 12:13:41 +0000
+ id 1jBdoY-0005du-IA
+ for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 12:16:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583842418;
+ s=mimecast20190719; t=1583842609;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=N/4jJba7vZ4RyIqYhUQcynnb2YOAPUYi80mdw/lW/kU=;
- b=XusSz5PVxuWsH/mft9/2o3orVQzVkuUIBWTY1yecTuZ7l3/2EmNfs3H1v3NFvFg/nK9NVq
- RoRMHpg9032bVb1jw+n/PzfQuF38Tk+FwNAAiAiPVOpLvVCY1w+ZsYNudk7GSFyYjhvfPi
- MeEiCiPjdOYJb53q+uC8HN0wBBH/PHo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-207-lfz5ZNJiMSqZXOjop43NFA-1; Tue, 10 Mar 2020 08:13:25 -0400
-X-MC-Unique: lfz5ZNJiMSqZXOjop43NFA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 084C0189DF7F;
- Tue, 10 Mar 2020 12:13:23 +0000 (UTC)
-Received: from [10.36.118.8] (unknown [10.36.118.8])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A61697389F;
- Tue, 10 Mar 2020 12:13:20 +0000 (UTC)
-Subject: Re: [linux-next:master 7003/7050] include/linux/virtio_config.h:113:
- undefined reference to `page_reporting_unregister'
-To: Anup Patel <anup@brainfault.org>
-References: <202003091047.yO0wlUGy%lkp@intel.com>
- <CAKgT0UcHjPqF-djZWYXBg=vqkBfp295QihvPrWn6xq_jY4NNYg@mail.gmail.com>
- <293bcd25-934f-dd57-3314-bbcf00833e51@redhat.com>
- <4932d976-1fff-db01-7e79-bd79ad18d96e@redhat.com>
- <CAAhSdy3EztLWJz8rt1K9xTnfUagn9kHGzD6qB8kneZ4UNQfZ_Q@mail.gmail.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <8373ea85-40d8-972c-fb45-dcfc9142f13b@redhat.com>
-Date: Tue, 10 Mar 2020 13:13:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ in-reply-to:in-reply-to:references:references;
+ bh=Wcr+N1rBV4EZFNJ5w07gXgC+QgoYoCPNpbNPH7fWcyE=;
+ b=hLTnHA3cB9u8lMWHnKXN97WAKbTcOpAVE4x/AkhqXrVlUcEC1mwY4Sza8i/4vftyKXoYlp
+ XVUWoFvRTgPkASSGnnlNAWKlYjQbR3lrugIiTajCCUY0dWW8tKVtlg+CG1SXL+oGO/pUoj
+ hpoCaeLRviuTbxvPrLJrTwmeowu4l1g=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-472-BGVwOyWvOVKijb-bedN9Ww-1; Tue, 10 Mar 2020 08:16:47 -0400
+X-MC-Unique: BGVwOyWvOVKijb-bedN9Ww-1
+Received: by mail-qk1-f198.google.com with SMTP id x21so9515766qkn.18
+ for <linux-riscv@lists.infradead.org>; Tue, 10 Mar 2020 05:16:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=HBJ5h02t1XBacqVRLa8/tjxigZnxj6mvBCIXpcgjcyM=;
+ b=j6kemaI5xmoD9RysJaHsa6kZRPPjuftXSjgViIg02L8ZBb2w7gTUan9B7A8IR2xGlX
+ F6p87dk2MvqPFikROetI5aUdc/VknQzoc6vVJYpxkm4XQgF7I3gtfN5XZPKNeTu3hoOm
+ M579gBXeRBQ/FG14DMbLbyGUGQCilPwPNJrS1P3PYUxoApGji3qXdXLsDX/kotLh0A0R
+ ia5QvXSeEyJ15TBu+lILNf1coBhjF/FAelirm3+N9df1B6o14XHsohdF/Vv9DNMPtlJC
+ QJvON/StA57A0NYxnAfGOjr6BxlThyHTJz/w0WKEKBorV/Z+mipYCos2My+1E/0+Tcsv
+ tmpg==
+X-Gm-Message-State: ANhLgQ0CkY079WKgGOvxaxhT3bIlyHsyJyrebCjUjzMMZQSZCSY/Jbyi
+ b6PMEf59ae3kzBkYGnmCqvUDgSSgNvs3K6nax5cy1/C62dNfTtZ2BRVpKdYQMrbiPF8foK5aZyM
+ 4LcJwSjc0Mg63cvrOEVbVmVKFxwFc
+X-Received: by 2002:ac8:4e91:: with SMTP id 17mr19204537qtp.133.1583842605228; 
+ Tue, 10 Mar 2020 05:16:45 -0700 (PDT)
+X-Google-Smtp-Source: ADFU+vsTFMO2DVmVDOKBX1ZKtKCIPsKMKeNIFpQSDDWYB39XUebWYbZ7eXcfC4GZXS3KFds1h10ZRw==
+X-Received: by 2002:ac8:4e91:: with SMTP id 17mr19204480qtp.133.1583842604637; 
+ Tue, 10 Mar 2020 05:16:44 -0700 (PDT)
+Received: from redhat.com (bzq-79-178-2-19.red.bezeqint.net. [79.178.2.19])
+ by smtp.gmail.com with ESMTPSA id d22sm4226347qte.93.2020.03.10.05.16.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Mar 2020 05:16:43 -0700 (PDT)
+Date: Tue, 10 Mar 2020 08:16:38 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Anup Patel <anup.patel@wdc.com>
+Subject: Re: [PATCH] RISC-V: Only select essential drivers for SOC_VIRT config
+Message-ID: <20200310081558-mutt-send-email-mst@kernel.org>
+References: <20200310115925.126174-1-anup.patel@wdc.com>
 MIME-Version: 1.0
-In-Reply-To: <CAAhSdy3EztLWJz8rt1K9xTnfUagn9kHGzD6qB8kneZ4UNQfZ_Q@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+In-Reply-To: <20200310115925.126174-1-anup.patel@wdc.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_051339_960279_CAE152B8 
-X-CRM114-Status: GOOD (  15.89  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200310_051651_263646_78D0AA59 
+X-CRM114-Status: GOOD (  11.83  )
+X-Spam-Score: 0.6 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.6 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.211.31.120 listed in list.dnswl.org]
+ no trust [205.139.110.120 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -131,6 +95,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ 0.8 UPPERCASE_50_75        message body is 50-75% uppercase
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -143,94 +108,215 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup.patel@wdc.com>, kbuild test robot <lkp@intel.com>,
- Linux Memory Management List <linux-mm@kvack.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, Atish Patra <atish.patra@wdc.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Andrew Morton <akpm@linux-foundation.org>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
+ linux-kernel@vger.kernel.org, Atish Patra <atish.patra@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 10.03.20 13:02, Anup Patel wrote:
-> On Tue, Mar 10, 2020 at 3:56 PM David Hildenbrand <david@redhat.com> wrote:
->>
->> On 10.03.20 11:22, David Hildenbrand wrote:
->>> On 10.03.20 03:19, Alexander Duyck wrote:
->>>> On Sun, Mar 8, 2020 at 7:54 PM kbuild test robot <lkp@intel.com> wrote:
->>>>>
->>>>> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
->>>>> head:   b86a6a241b7c60ca7a6ca4fb3c0d2aedbbf2c1b6
->>>>> commit: 120359931943d2b801ce51a1a045dcc0a5d1a55b [7003/7050] Merge branch 'akpm-current/current'
->>>>> config: riscv-randconfig-a001-20200308 (attached as .config)
->>>>> compiler: riscv64-linux-gcc (GCC) 7.5.0
->>>>> reproduce:
->>>>>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->>>>>         chmod +x ~/bin/make.cross
->>>>>         git checkout 120359931943d2b801ce51a1a045dcc0a5d1a55b
->>>>>         # save the attached .config to linux build tree
->>>>>         GCC_VERSION=7.5.0 make.cross ARCH=riscv
->>>>>
->>>>> If you fix the issue, kindly add following tag
->>>>> Reported-by: kbuild test robot <lkp@intel.com>
->>>>>
->>>>> All errors (new ones prefixed by >>):
->>>>>
->>>>>    drivers/virtio/virtio_balloon.o: In function `leak_balloon':
->>>>>    drivers/virtio/virtio_balloon.c:281: undefined reference to `balloon_page_dequeue'
->>>>>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
->>>>>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_unregister'
->>>>>    drivers/virtio/virtio_balloon.o: In function `virtio_cread32':
->>>>>    include/linux/virtio_config.h:423: undefined reference to `balloon_page_alloc'
->>>>>    drivers/virtio/virtio_balloon.o: In function `fill_balloon':
->>>>>>> drivers/virtio/virtio_balloon.c:233: undefined reference to `balloon_page_enqueue'
->>>>>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
->>>>>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_register'
->>>>>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_remove':
->>>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:139: undefined reference to `drm_dev_unplug'
->>>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:140: undefined reference to `drm_atomic_helper_shutdown'
->>>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:141: undefined reference to `drm_dev_put'
->>>>>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_probe':
->>>>
->>>> It looks like somehow the config has CONFIG_VIRTIO_BALLOON enabled,
->>>> but didn't select CONFIG_MEMORY_BALLOON nor CONFIG_PAGE_REPORTING That
->>>> shouldn't be possible since in drivers/virtio/Kconfig we have the
->>>> following:
->>>> config VIRTIO_BALLOON
->>>>         tristate "Virtio balloon driver"
->>>>         depends on VIRTIO
->>>>         select MEMORY_BALLOON
->>>>         select PAGE_REPORTING
->>>
->>> IMHO that's perfectly valid. You might want to have ballooning without
->>> page compaction (MEMORY_BALLOON). Same with PAGE_REPORTING.
->>>
->>> AFAIK, "select" will still allow you to disable these things - which
->>> used to work fine with MEMORY_BALLOON (did that myself when debugging a
->>> compaction issue).
->>>
->>
->> Correction: I disabled BALLOON_COMPACTION back then ... so ignore my
->> comment regarding that :)
->>
->> But we should be able to build VIRTIO_BALLOON without PAGE_REPORTING
->> somehow IMHO.
-> 
-> I have moved all VIRTIO driver selection to defconfigs for RISC-V which was
-> the case before.
-> 
-> Here's the patch:
-> https://patchwork.kernel.org/patch/11429217/
+On Tue, Mar 10, 2020 at 05:29:25PM +0530, Anup Patel wrote:
+> The kconfig select causes build failues for SOC_VIRT config becaus
+> we are selecting lot of VIRTIO drivers without selecting all required
+> dependencies.
+>=20
+> Better approach is to only select essential drivers from SOC_VIRT
+> config option and enable required VIRTIO drivers using defconfigs.
+>=20
+> Fixes: 759bdc168181 ("RISC-V: Add kconfig option for QEMU virt machine")
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
 
-Make perfect sense. Still I think we might want to have the option to
-build without page reporting in the future, similar to building without
-balloon compaction (which is another discussion).
+Yea makes sense.
 
--- 
-Thanks,
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-David / dhildenb
+> ---
+>  arch/riscv/Kconfig.socs           | 14 --------------
+>  arch/riscv/configs/defconfig      | 16 +++++++++++++++-
+>  arch/riscv/configs/rv32_defconfig | 16 +++++++++++++++-
+>  3 files changed, 30 insertions(+), 16 deletions(-)
+>=20
+> diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
+> index 3078b2de0b2d..a131174a0a77 100644
+> --- a/arch/riscv/Kconfig.socs
+> +++ b/arch/riscv/Kconfig.socs
+> @@ -12,20 +12,6 @@ config SOC_SIFIVE
+> =20
+>  config SOC_VIRT
+>         bool "QEMU Virt Machine"
+> -       select VIRTIO_PCI
+> -       select VIRTIO_BALLOON
+> -       select VIRTIO_MMIO
+> -       select VIRTIO_CONSOLE
+> -       select VIRTIO_NET
+> -       select NET_9P_VIRTIO
+> -       select VIRTIO_BLK
+> -       select SCSI_VIRTIO
+> -       select DRM_VIRTIO_GPU
+> -       select HW_RANDOM_VIRTIO
+> -       select RPMSG_CHAR
+> -       select RPMSG_VIRTIO
+> -       select CRYPTO_DEV_VIRTIO
+> -       select VIRTIO_INPUT
+>         select POWER_RESET_SYSCON
+>         select POWER_RESET_SYSCON_POWEROFF
+>         select GOLDFISH
+> diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+> index c8f084203067..2557c5372a25 100644
+> --- a/arch/riscv/configs/defconfig
+> +++ b/arch/riscv/configs/defconfig
+> @@ -31,6 +31,7 @@ CONFIG_IP_PNP_BOOTP=3Dy
+>  CONFIG_IP_PNP_RARP=3Dy
+>  CONFIG_NETLINK_DIAG=3Dy
+>  CONFIG_NET_9P=3Dy
+> +CONFIG_NET_9P_VIRTIO=3Dy
+>  CONFIG_PCI=3Dy
+>  CONFIG_PCIEPORTBUS=3Dy
+>  CONFIG_PCI_HOST_GENERIC=3Dy
+> @@ -38,12 +39,15 @@ CONFIG_PCIE_XILINX=3Dy
+>  CONFIG_DEVTMPFS=3Dy
+>  CONFIG_DEVTMPFS_MOUNT=3Dy
+>  CONFIG_BLK_DEV_LOOP=3Dy
+> +CONFIG_VIRTIO_BLK=3Dy
+>  CONFIG_BLK_DEV_SD=3Dy
+>  CONFIG_BLK_DEV_SR=3Dy
+> +CONFIG_SCSI_VIRTIO=3Dy
+>  CONFIG_ATA=3Dy
+>  CONFIG_SATA_AHCI=3Dy
+>  CONFIG_SATA_AHCI_PLATFORM=3Dy
+>  CONFIG_NETDEVICES=3Dy
+> +CONFIG_VIRTIO_NET=3Dy
+>  CONFIG_MACB=3Dy
+>  CONFIG_E1000E=3Dy
+>  CONFIG_R8169=3Dy
+> @@ -54,13 +58,16 @@ CONFIG_SERIAL_8250_CONSOLE=3Dy
+>  CONFIG_SERIAL_OF_PLATFORM=3Dy
+>  CONFIG_SERIAL_EARLYCON_RISCV_SBI=3Dy
+>  CONFIG_HVC_RISCV_SBI=3Dy
+> +CONFIG_VIRTIO_CONSOLE=3Dy
+>  CONFIG_HW_RANDOM=3Dy
+> +CONFIG_HW_RANDOM_VIRTIO=3Dy
+>  CONFIG_SPI=3Dy
+>  CONFIG_SPI_SIFIVE=3Dy
+>  # CONFIG_PTP_1588_CLOCK is not set
+>  CONFIG_POWER_RESET=3Dy
+>  CONFIG_DRM=3Dy
+>  CONFIG_DRM_RADEON=3Dy
+> +CONFIG_DRM_VIRTIO_GPU=3Dy
+>  CONFIG_FRAMEBUFFER_CONSOLE=3Dy
+>  CONFIG_USB=3Dy
+>  CONFIG_USB_XHCI_HCD=3Dy
+> @@ -74,6 +81,12 @@ CONFIG_USB_UAS=3Dy
+>  CONFIG_MMC=3Dy
+>  CONFIG_MMC_SPI=3Dy
+>  CONFIG_RTC_CLASS=3Dy
+> +CONFIG_VIRTIO_PCI=3Dy
+> +CONFIG_VIRTIO_BALLOON=3Dy
+> +CONFIG_VIRTIO_INPUT=3Dy
+> +CONFIG_VIRTIO_MMIO=3Dy
+> +CONFIG_RPMSG_CHAR=3Dy
+> +CONFIG_RPMSG_VIRTIO=3Dy
+>  CONFIG_EXT4_FS=3Dy
+>  CONFIG_EXT4_FS_POSIX_ACL=3Dy
+>  CONFIG_AUTOFS4_FS=3Dy
+> @@ -88,16 +101,17 @@ CONFIG_NFS_V4_2=3Dy
+>  CONFIG_ROOT_NFS=3Dy
+>  CONFIG_9P_FS=3Dy
+>  CONFIG_CRYPTO_USER_API_HASH=3Dy
+> +CONFIG_CRYPTO_DEV_VIRTIO=3Dy
+>  CONFIG_PRINTK_TIME=3Dy
+>  CONFIG_DEBUG_FS=3Dy
+>  CONFIG_DEBUG_PAGEALLOC=3Dy
+> +CONFIG_SCHED_STACK_END_CHECK=3Dy
+>  CONFIG_DEBUG_VM=3Dy
+>  CONFIG_DEBUG_VM_PGFLAGS=3Dy
+>  CONFIG_DEBUG_MEMORY_INIT=3Dy
+>  CONFIG_DEBUG_PER_CPU_MAPS=3Dy
+>  CONFIG_SOFTLOCKUP_DETECTOR=3Dy
+>  CONFIG_WQ_WATCHDOG=3Dy
+> -CONFIG_SCHED_STACK_END_CHECK=3Dy
+>  CONFIG_DEBUG_TIMEKEEPING=3Dy
+>  CONFIG_DEBUG_RT_MUTEXES=3Dy
+>  CONFIG_DEBUG_SPINLOCK=3Dy
+> diff --git a/arch/riscv/configs/rv32_defconfig b/arch/riscv/configs/rv32_=
+defconfig
+> index a844920a261f..0292879a9690 100644
+> --- a/arch/riscv/configs/rv32_defconfig
+> +++ b/arch/riscv/configs/rv32_defconfig
+> @@ -31,6 +31,7 @@ CONFIG_IP_PNP_BOOTP=3Dy
+>  CONFIG_IP_PNP_RARP=3Dy
+>  CONFIG_NETLINK_DIAG=3Dy
+>  CONFIG_NET_9P=3Dy
+> +CONFIG_NET_9P_VIRTIO=3Dy
+>  CONFIG_PCI=3Dy
+>  CONFIG_PCIEPORTBUS=3Dy
+>  CONFIG_PCI_HOST_GENERIC=3Dy
+> @@ -38,12 +39,15 @@ CONFIG_PCIE_XILINX=3Dy
+>  CONFIG_DEVTMPFS=3Dy
+>  CONFIG_DEVTMPFS_MOUNT=3Dy
+>  CONFIG_BLK_DEV_LOOP=3Dy
+> +CONFIG_VIRTIO_BLK=3Dy
+>  CONFIG_BLK_DEV_SD=3Dy
+>  CONFIG_BLK_DEV_SR=3Dy
+> +CONFIG_SCSI_VIRTIO=3Dy
+>  CONFIG_ATA=3Dy
+>  CONFIG_SATA_AHCI=3Dy
+>  CONFIG_SATA_AHCI_PLATFORM=3Dy
+>  CONFIG_NETDEVICES=3Dy
+> +CONFIG_VIRTIO_NET=3Dy
+>  CONFIG_MACB=3Dy
+>  CONFIG_E1000E=3Dy
+>  CONFIG_R8169=3Dy
+> @@ -54,11 +58,14 @@ CONFIG_SERIAL_8250_CONSOLE=3Dy
+>  CONFIG_SERIAL_OF_PLATFORM=3Dy
+>  CONFIG_SERIAL_EARLYCON_RISCV_SBI=3Dy
+>  CONFIG_HVC_RISCV_SBI=3Dy
+> +CONFIG_VIRTIO_CONSOLE=3Dy
+>  CONFIG_HW_RANDOM=3Dy
+> +CONFIG_HW_RANDOM_VIRTIO=3Dy
+>  # CONFIG_PTP_1588_CLOCK is not set
+>  CONFIG_POWER_RESET=3Dy
+>  CONFIG_DRM=3Dy
+>  CONFIG_DRM_RADEON=3Dy
+> +CONFIG_DRM_VIRTIO_GPU=3Dy
+>  CONFIG_FRAMEBUFFER_CONSOLE=3Dy
+>  CONFIG_USB=3Dy
+>  CONFIG_USB_XHCI_HCD=3Dy
+> @@ -70,6 +77,12 @@ CONFIG_USB_OHCI_HCD_PLATFORM=3Dy
+>  CONFIG_USB_STORAGE=3Dy
+>  CONFIG_USB_UAS=3Dy
+>  CONFIG_RTC_CLASS=3Dy
+> +CONFIG_VIRTIO_PCI=3Dy
+> +CONFIG_VIRTIO_BALLOON=3Dy
+> +CONFIG_VIRTIO_INPUT=3Dy
+> +CONFIG_VIRTIO_MMIO=3Dy
+> +CONFIG_RPMSG_CHAR=3Dy
+> +CONFIG_RPMSG_VIRTIO=3Dy
+>  CONFIG_EXT4_FS=3Dy
+>  CONFIG_EXT4_FS_POSIX_ACL=3Dy
+>  CONFIG_AUTOFS4_FS=3Dy
+> @@ -84,16 +97,17 @@ CONFIG_NFS_V4_2=3Dy
+>  CONFIG_ROOT_NFS=3Dy
+>  CONFIG_9P_FS=3Dy
+>  CONFIG_CRYPTO_USER_API_HASH=3Dy
+> +CONFIG_CRYPTO_DEV_VIRTIO=3Dy
+>  CONFIG_PRINTK_TIME=3Dy
+>  CONFIG_DEBUG_FS=3Dy
+>  CONFIG_DEBUG_PAGEALLOC=3Dy
+> +CONFIG_SCHED_STACK_END_CHECK=3Dy
+>  CONFIG_DEBUG_VM=3Dy
+>  CONFIG_DEBUG_VM_PGFLAGS=3Dy
+>  CONFIG_DEBUG_MEMORY_INIT=3Dy
+>  CONFIG_DEBUG_PER_CPU_MAPS=3Dy
+>  CONFIG_SOFTLOCKUP_DETECTOR=3Dy
+>  CONFIG_WQ_WATCHDOG=3Dy
+> -CONFIG_SCHED_STACK_END_CHECK=3Dy
+>  CONFIG_DEBUG_TIMEKEEPING=3Dy
+>  CONFIG_DEBUG_RT_MUTEXES=3Dy
+>  CONFIG_DEBUG_SPINLOCK=3Dy
+> --=20
+> 2.17.1
+>=20
+>=20
 
 
