@@ -2,60 +2,61 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C856017F4F8
-	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 11:22:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A43617F502
+	for <lists+linux-riscv@lfdr.de>; Tue, 10 Mar 2020 11:26:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	Message-ID:References:To:From:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UuSqM+YbfcbJXXqxp51QaWoHE3fifPmdJKwklx9WuuI=; b=SyNBa5xgW11pCP
-	MH0Ar/4gk5g4eWiiUrikbh5vpbGIiOCStZefGHznlRI8OSkIy0eodxVU9vJ2CFMg5mv0/woIZZiOH
-	lvUlCu6iWuyikOnQ1F/eLBA8kXjNr7PVrM+8WOwfbjVY51AnMO8L1hrSr1NStplWnEGXaYJL5Ycdy
-	HWTh/L4ggH5TVtf4mtLWfjveOkF0ynayUrdopbmq1UvI0yCYZ9pmoz3y0ARAZlPLzEX2N5Pvqy49z
-	8xz3YhlleroWUI82eTPY3VXi1WOmM0HRjRxR7s/+/kiLdNcCnX09prWJwmlVZNa6ZtdbPHW7csZI1
-	TvMhC33uD4xp/zz7mbfA==;
+	List-Owner; bh=ZZStgMOTneRkiMhjr1Rdeo8SnS89HJZObkbSIURPjP4=; b=Qz7xLciT7ut6IP
+	hX4bHLVAS8FrtOMb2E2PhgQx7GfE5b4qVqMFjrCeWaJuyaJ3j+JJvZo7UnD4wIziq8DqsOkGloLyK
+	AROHfHlpvxWjhHMQgKNPE4lq+u8b4NI4o8UHMJ+E2zqqkT7ELNr0FVsoGjgHeYfgHCTh6CBJFILnZ
+	YnIES0gcGQYh6rVdIcO6UEfhN32WD2885eTZkMsfHEZRYVKZR+5QpgrdcqWB4KGDB0ewszZnzfKFy
+	FBLf38zIaJ7V2hP5yMgCbUWYhZTeYzyoJJsDxJ1TL0Dd7WPbV7CV9+3U09mlp4F/XEuWMOW6/hi//
+	7bWMnaqtrVq/0wTz8Jlw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBc1y-0001IL-Ap; Tue, 10 Mar 2020 10:22:34 +0000
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]
- helo=us-smtp-delivery-1.mimecast.com)
+	id 1jBc65-00039s-16; Tue, 10 Mar 2020 10:26:49 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+ helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBc1t-0001HQ-ME
- for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 10:22:31 +0000
+ id 1jBc61-000391-1D
+ for linux-riscv@lists.infradead.org; Tue, 10 Mar 2020 10:26:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1583835747;
+ s=mimecast20190719; t=1583836003;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=UuSqM+YbfcbJXXqxp51QaWoHE3fifPmdJKwklx9WuuI=;
- b=YO1Fbvbwtk1GcIrdpNqKbXgP2AQ05U6NYCb6hDtofe6Qcu8N+W+8NicjLsR3IcAmwm5kBF
- rKwBKBQYNwiXqD7yz1gI2OoLAscQ0rK6iuHe7OnLKWBAsnOoDWnJJQ/kIdXQIoXD4WYoyJ
- gHbuuBlv+cDsb8u6zxCXDEVyR92b9cM=
+ bh=ZZStgMOTneRkiMhjr1Rdeo8SnS89HJZObkbSIURPjP4=;
+ b=fJ+foOl8929vEHI6mtq6q2jtY7tlj46wdVwrC2cAkevu5ZehKXMPYS8DaocDzxyMQptARe
+ EAQogdMx8FkEzFMjfKWy6Ji+eAcLK3mcFKjCtYdJoeszmMZISRy6Lb75/nUcP3jzPdldYW
+ gWwZjYG3kATx5P9jkE8oWjJKzN8u4pI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-457-gcj1XgS8NTOw6aqxUYs18g-1; Tue, 10 Mar 2020 06:22:24 -0400
-X-MC-Unique: gcj1XgS8NTOw6aqxUYs18g-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-237-zIONGwUXN5Kd3Kz7rkefuQ-1; Tue, 10 Mar 2020 06:26:41 -0400
+X-MC-Unique: zIONGwUXN5Kd3Kz7rkefuQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1F9281922027;
- Tue, 10 Mar 2020 10:22:22 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A64EB1922023;
+ Tue, 10 Mar 2020 10:26:39 +0000 (UTC)
 Received: from [10.36.118.8] (unknown [10.36.118.8])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CFFE48D569;
- Tue, 10 Mar 2020 10:22:17 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 887437389F;
+ Tue, 10 Mar 2020 10:26:34 +0000 (UTC)
 Subject: Re: [linux-next:master 7003/7050] include/linux/virtio_config.h:113:
  undefined reference to `page_reporting_unregister'
+From: David Hildenbrand <david@redhat.com>
 To: Alexander Duyck <alexander.duyck@gmail.com>,
  kbuild test robot <lkp@intel.com>, linux-riscv@lists.infradead.org,
  anup.patel@wdc.com, atish.patra@wdc.com, palmerdabbelt@google.com,
  alistair.francis@wdc.com
 References: <202003091047.yO0wlUGy%lkp@intel.com>
  <CAKgT0UcHjPqF-djZWYXBg=vqkBfp295QihvPrWn6xq_jY4NNYg@mail.gmail.com>
-From: David Hildenbrand <david@redhat.com>
+ <293bcd25-934f-dd57-3314-bbcf00833e51@redhat.com>
 Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
  dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
@@ -100,28 +101,28 @@ Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  njnuI31KBiLUks+paRkHQlFcgS2N3gkRBzH7xSZ+t7Re3jvXdXEzKBbQ+dC3lpJB0wPnyMcX
  FOTT3aZT7IgePkt5iC/BKBk3hqKteTnJFeVIT7EC+a6YUFg=
 Organization: Red Hat GmbH
-Message-ID: <293bcd25-934f-dd57-3314-bbcf00833e51@redhat.com>
-Date: Tue, 10 Mar 2020 11:22:16 +0100
+Message-ID: <4932d976-1fff-db01-7e79-bd79ad18d96e@redhat.com>
+Date: Tue, 10 Mar 2020 11:26:33 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAKgT0UcHjPqF-djZWYXBg=vqkBfp295QihvPrWn6xq_jY4NNYg@mail.gmail.com>
+In-Reply-To: <293bcd25-934f-dd57-3314-bbcf00833e51@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_032229_806777_9B117577 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20200310_032645_167603_EEE0F9FC 
+X-CRM114-Status: GOOD (  14.84  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.211.31.81 listed in list.dnswl.org]
+ no trust [207.211.31.120 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -149,58 +150,66 @@ Cc: Linux Memory Management List <linux-mm@kvack.org>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 10.03.20 03:19, Alexander Duyck wrote:
-> On Sun, Mar 8, 2020 at 7:54 PM kbuild test robot <lkp@intel.com> wrote:
+On 10.03.20 11:22, David Hildenbrand wrote:
+> On 10.03.20 03:19, Alexander Duyck wrote:
+>> On Sun, Mar 8, 2020 at 7:54 PM kbuild test robot <lkp@intel.com> wrote:
+>>>
+>>> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+>>> head:   b86a6a241b7c60ca7a6ca4fb3c0d2aedbbf2c1b6
+>>> commit: 120359931943d2b801ce51a1a045dcc0a5d1a55b [7003/7050] Merge branch 'akpm-current/current'
+>>> config: riscv-randconfig-a001-20200308 (attached as .config)
+>>> compiler: riscv64-linux-gcc (GCC) 7.5.0
+>>> reproduce:
+>>>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>>>         chmod +x ~/bin/make.cross
+>>>         git checkout 120359931943d2b801ce51a1a045dcc0a5d1a55b
+>>>         # save the attached .config to linux build tree
+>>>         GCC_VERSION=7.5.0 make.cross ARCH=riscv
+>>>
+>>> If you fix the issue, kindly add following tag
+>>> Reported-by: kbuild test robot <lkp@intel.com>
+>>>
+>>> All errors (new ones prefixed by >>):
+>>>
+>>>    drivers/virtio/virtio_balloon.o: In function `leak_balloon':
+>>>    drivers/virtio/virtio_balloon.c:281: undefined reference to `balloon_page_dequeue'
+>>>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
+>>>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_unregister'
+>>>    drivers/virtio/virtio_balloon.o: In function `virtio_cread32':
+>>>    include/linux/virtio_config.h:423: undefined reference to `balloon_page_alloc'
+>>>    drivers/virtio/virtio_balloon.o: In function `fill_balloon':
+>>>>> drivers/virtio/virtio_balloon.c:233: undefined reference to `balloon_page_enqueue'
+>>>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
+>>>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_register'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_remove':
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:139: undefined reference to `drm_dev_unplug'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:140: undefined reference to `drm_atomic_helper_shutdown'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.c:141: undefined reference to `drm_dev_put'
+>>>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_probe':
 >>
->> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
->> head:   b86a6a241b7c60ca7a6ca4fb3c0d2aedbbf2c1b6
->> commit: 120359931943d2b801ce51a1a045dcc0a5d1a55b [7003/7050] Merge branch 'akpm-current/current'
->> config: riscv-randconfig-a001-20200308 (attached as .config)
->> compiler: riscv64-linux-gcc (GCC) 7.5.0
->> reproduce:
->>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->>         chmod +x ~/bin/make.cross
->>         git checkout 120359931943d2b801ce51a1a045dcc0a5d1a55b
->>         # save the attached .config to linux build tree
->>         GCC_VERSION=7.5.0 make.cross ARCH=riscv
->>
->> If you fix the issue, kindly add following tag
->> Reported-by: kbuild test robot <lkp@intel.com>
->>
->> All errors (new ones prefixed by >>):
->>
->>    drivers/virtio/virtio_balloon.o: In function `leak_balloon':
->>    drivers/virtio/virtio_balloon.c:281: undefined reference to `balloon_page_dequeue'
->>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
->>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_unregister'
->>    drivers/virtio/virtio_balloon.o: In function `virtio_cread32':
->>    include/linux/virtio_config.h:423: undefined reference to `balloon_page_alloc'
->>    drivers/virtio/virtio_balloon.o: In function `fill_balloon':
->>>> drivers/virtio/virtio_balloon.c:233: undefined reference to `balloon_page_enqueue'
->>    drivers/virtio/virtio_balloon.o: In function `__virtio_test_bit':
->>>> include/linux/virtio_config.h:113: undefined reference to `page_reporting_register'
->>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_remove':
->>    drivers/gpu/drm/virtio/virtgpu_drv.c:139: undefined reference to `drm_dev_unplug'
->>    drivers/gpu/drm/virtio/virtgpu_drv.c:140: undefined reference to `drm_atomic_helper_shutdown'
->>    drivers/gpu/drm/virtio/virtgpu_drv.c:141: undefined reference to `drm_dev_put'
->>    drivers/gpu/drm/virtio/virtgpu_drv.o: In function `virtio_gpu_probe':
+>> It looks like somehow the config has CONFIG_VIRTIO_BALLOON enabled,
+>> but didn't select CONFIG_MEMORY_BALLOON nor CONFIG_PAGE_REPORTING That
+>> shouldn't be possible since in drivers/virtio/Kconfig we have the
+>> following:
+>> config VIRTIO_BALLOON
+>>         tristate "Virtio balloon driver"
+>>         depends on VIRTIO
+>>         select MEMORY_BALLOON
+>>         select PAGE_REPORTING
 > 
-> It looks like somehow the config has CONFIG_VIRTIO_BALLOON enabled,
-> but didn't select CONFIG_MEMORY_BALLOON nor CONFIG_PAGE_REPORTING That
-> shouldn't be possible since in drivers/virtio/Kconfig we have the
-> following:
-> config VIRTIO_BALLOON
->         tristate "Virtio balloon driver"
->         depends on VIRTIO
->         select MEMORY_BALLOON
->         select PAGE_REPORTING
+> IMHO that's perfectly valid. You might want to have ballooning without
+> page compaction (MEMORY_BALLOON). Same with PAGE_REPORTING.
+> 
+> AFAIK, "select" will still allow you to disable these things - which
+> used to work fine with MEMORY_BALLOON (did that myself when debugging a
+> compaction issue).
+> 
 
-IMHO that's perfectly valid. You might want to have ballooning without
-page compaction (MEMORY_BALLOON). Same with PAGE_REPORTING.
+Correction: I disabled BALLOON_COMPACTION back then ... so ignore my
+comment regarding that :)
 
-AFAIK, "select" will still allow you to disable these things - which
-used to work fine with MEMORY_BALLOON (did that myself when debugging a
-compaction issue).
+But we should be able to build VIRTIO_BALLOON without PAGE_REPORTING
+somehow IMHO.
 
 -- 
 Thanks,
