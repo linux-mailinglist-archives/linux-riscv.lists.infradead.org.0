@@ -2,115 +2,98 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EDF31817E9
-	for <lists+linux-riscv@lfdr.de>; Wed, 11 Mar 2020 13:22:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 593D9181C78
+	for <lists+linux-riscv@lfdr.de>; Wed, 11 Mar 2020 16:38:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ERRAudjHVGjnDjF+mvJRryzoiMROt5zPxRgvGuUPDl4=; b=SJIeqqeQtlAD+Z002NMkA8Dc5
-	aXcJ6kE5TfWIqFmFxZbdJJmnUr6eLM+gJef2KTcnDmzU9z5HjWtfe74h+Z3GrQ3jvlgDRG+1X62Vu
-	sdDNOfl8q+C0zknS1WYFhLAPRPLMaAwbb6CMgq/HGFCnvceIoYDcePD8IKmB47aZGOtxYyN4KecvG
-	iE8g9Y9eyGOdBBdzIqkMIEFXLRW9TL8uPl80JTs7cFDvIGtaP5V4iic2yNi2Gxg9Sa4Hl1sFzjfJr
-	+UbQL1MUjduLdQOXUqdcGKFkEwupC/OnRD59r5ALpvpbWV5eR8CtdAv1PbfsaowLWNJfY/aKn1a0/
-	iGrOCBkvw==;
+	 bh=D8BodzdGHAF9vC4EoJc5QmOXpSdhZymF/8h60nkw3/o=; b=WEYUNGhd905P8aYuWGQg0HlK6
+	4e/nssywsxmAfUmeXp0fKd9flyLRvvFuOcyeVZLW1q7RNucOV5M1r+UjyfhRFddsT6Vtq5edVxkjU
+	HJmtLuY3Y1K+073dEkgClAuC4nwgmlGvo6FIpqP7sowBKtd9J+CREfFZ3osM9I7DFE+u/DUNr/DcJ
+	2x/lUpzHloFQl8YhjQVjlltL4Qu+Aehc4hQW1PiDTgKoYIsquFEPdA2YhFgE3/ySRv5Pz8m4I2Gz6
+	ZVQXZ1Zm4P8szZcQ02LqYGfESoo4vQfV8SMiBpfgu0osxpcH1WUnq1V0Ilty/1xFzvNBBUf6+uFz4
+	wIYznaxsg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jC0NH-0006EO-CP; Wed, 11 Mar 2020 12:22:11 +0000
-Received: from mail-dm6nam11on20628.outbound.protection.outlook.com
- ([2a01:111:f400:7eaa::628]
- helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1jC3RY-0002LZ-5G; Wed, 11 Mar 2020 15:38:48 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jC0ND-0006D2-TM
- for linux-riscv@lists.infradead.org; Wed, 11 Mar 2020 12:22:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cbqnRtdF6lsAVO8vMUDq+GKDWPid9LHY47HAIGrE2+0UB+SNzKG2To1xglgaJtU+mA44CjBe7N2r6slqHqgHM/reh0fqxo9s6yU3HI3toDEURs/y4axQ2Cuddh9/U76CijcLMDtaj8vZgOp4xfF1QiRl29NpS7Tij53mOJVhirwulgwOJfI1fubk8vuoVXTI3nlzj/q1RkL8oM9H9gU0SJ0QHrrkbmGjEmahjTxtQFIDNeLoEBoa5b/7CxmV4E/KvvVL0RPhG/ggE126YsCDGsWp/W/VbQOD+X1TtPXsFLhmGGjGeNi3BBCL6dpBbRn/L37XbylR/t12rrhoC7LItA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ERRAudjHVGjnDjF+mvJRryzoiMROt5zPxRgvGuUPDl4=;
- b=ldWF6kjZYqQqw/jh4h14c4J+H5iSgqad5UXls/p3ViNmhucwShYmqZu5KF6FS7Mtwb5DUGuRH2nzYloZotnR957DkMjIeAmIzKVOJUdH46x3oVWixjJ/TALAciktQMp1H8SZDixb90cVqE86zZN6a+SsvCZgW7l9ZdB+BQHgPrPk2kkj9RFQg4KjEG7C95N3GoC+fI1etIhfL9ZyQnJUhyDxhEs0cJ98W8hhnSGaqq+usfC5E5Z4TvVikA8iIouyV4t39cm8d1RFDLsPgaxoLWuDYDHvOPbb1dVWbZqZSDsEJRJzWec3IdtjHRJ4ymm+Nb0cwntQXiZDwUfBFEUyrA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
- dkim=pass header.d=sifive.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ERRAudjHVGjnDjF+mvJRryzoiMROt5zPxRgvGuUPDl4=;
- b=Bw/ZDauFq0U0kg50j3SshhVyllH6E7c7imDNVbZx/K6aKf0/HvC5KUJB+gol1NTARQAWCRSMF5VHvhwmVS7Y+T0v95Yn4+AXvyzv0yVatJdRYo4Ccd0lIHtd8zLVql1quDFu3/zKOBkjvwLqflxM/Q6vijMRrMVmMiEFA/vnXxI=
-Received: from MN2PR13MB3552.namprd13.prod.outlook.com (2603:10b6:208:16f::22)
- by MN2PR13MB2734.namprd13.prod.outlook.com (2603:10b6:208:f3::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.7; Wed, 11 Mar
- 2020 12:22:04 +0000
-Received: from MN2PR13MB3552.namprd13.prod.outlook.com
- ([fe80::c8a2:5e5e:9769:6a8a]) by MN2PR13MB3552.namprd13.prod.outlook.com
- ([fe80::c8a2:5e5e:9769:6a8a%7]) with mapi id 15.20.2814.007; Wed, 11 Mar 2020
- 12:22:04 +0000
-From: Yash Shah <yash.shah@sifive.com>
-To: Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley
- <paul.walmsley@sifive.com>
-Subject: RE: [PATCH] tty: sifive: Finish transmission before changing the clock
-Thread-Topic: [PATCH] tty: sifive: Finish transmission before changing the
- clock
-Thread-Index: AQHV9DjmyxKWiUuFkUuyXFb+1DKKS6hDUOug
-Date: Wed, 11 Mar 2020 12:22:04 +0000
-Message-ID: <MN2PR13MB3552C9E76C003A8A302540808CFC0@MN2PR13MB3552.namprd13.prod.outlook.com>
-References: <20200307042637.83728-1-palmer@dabbelt.com>
-In-Reply-To: <20200307042637.83728-1-palmer@dabbelt.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=yash.shah@sifive.com; 
-x-originating-ip: [120.138.124.57]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 364698b5-4faa-47d1-6285-08d7c5b6cf0c
-x-ms-traffictypediagnostic: MN2PR13MB2734:
-x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR13MB2734ACBC6B7E6D00D3176E818CFC0@MN2PR13MB2734.namprd13.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 0339F89554
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(39850400004)(136003)(366004)(396003)(346002)(199004)(86362001)(81166006)(4326008)(53546011)(6506007)(478600001)(8676002)(33656002)(9686003)(55016002)(52536014)(5660300002)(64756008)(66946007)(107886003)(81156014)(66556008)(6636002)(66476007)(76116006)(66446008)(186003)(26005)(54906003)(316002)(7696005)(8936002)(110136005)(71200400001)(44832011)(2906002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR13MB2734;
- H:MN2PR13MB3552.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
-received-spf: None (protection.outlook.com: sifive.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: RZbUl1TiVKXNuR8olEEh38+m8w1uDJhzr3EeG2XUBJo4qbg9Gqgcdo73WKgcfmXz45WurETQCPLd4TYHLKl+UOqsSqbLS5UDhb9mXxOVr9jeWossfN7RRAv34nqdcw4KuW7gZu3eSSrRvLf/qn/A6sxdBEu9UZWyCBDawBblYPDiyWUpT3ieVnioMuzr66EHpjc06+RcDHn7AOMqcvLxJDBNdzKgBaxF8YtQ/HD3kwoqTY4e4pWWOgSYsGJWpynh41e+AP+j7pBDOChSvfafzPyAftBa08yPEF9o8Z7bNiQsABkQu3xEHA2u4kJnN/wyQXV3ZiYW+kNZK5jCgH7F/KOPTtUY9yCQ3V9D+caMfN3J4OKvsnAvsDvuk6DvYYktp13ALJfslprcOI91gPxICnF5Yn072kyR4njVDW8CIpo3p4F8gIAR1sRNI6D31y3q
-x-ms-exchange-antispam-messagedata: J+AvgJTPFJu9znJZTpHDJFQ1OffbVbXMxB42zlBeadWHnEwVcWjbytuq9jcP86ItYmVE4N8t0yALkxDvaR0+SozCSx3RnWgFSnUGb6nrgxlghnxMGvChJbvd7K0Dzc4ZwwKfz/YhkGjpwexu0psp9g==
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ id 1jC3RV-0002L9-19
+ for linux-riscv@lists.infradead.org; Wed, 11 Mar 2020 15:38:46 +0000
+Received: by mail-ot1-x343.google.com with SMTP id 111so2392018oth.13
+ for <linux-riscv@lists.infradead.org>; Wed, 11 Mar 2020 08:38:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=carlosedp-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=D8BodzdGHAF9vC4EoJc5QmOXpSdhZymF/8h60nkw3/o=;
+ b=wJGv9XI/5d0qje3BEMRzuO+VRdWv2jDj+4Tq2Izsu20lyk+SsSxAFIpAoKurIYC8rF
+ KY7L99lSGa2nVkAfk9k2bqamyuUtocrKS2XICXg0Ves9K5amkHkADZtLQAa/wrriCtOm
+ JdL3eYTZFOlZ6F9ftmMKfFbAT9ynY+6H/kRYtGNwyxgMN/+TEkiD229YmvpA8NeoID3t
+ GnanUmJfjAd98ZQvW8m8GCAiRuvLOCLGMYMJOqG8YoLyAsKa6WZzMWOFbdWBWb0mCbPz
+ cwFk1bqrQd2SxAWjQlvi4iYg32txF8irGsLoyJZ2lnNAuvqv2GwgJsYNWK2eL3K2wGBV
+ cy2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=D8BodzdGHAF9vC4EoJc5QmOXpSdhZymF/8h60nkw3/o=;
+ b=WbFM79vDryA1N6fVQoA1JrJsTrhGW+/j+v/CBzbh1A+UpPIvwjG2jEHkJgNK/kq2Vb
+ wIPO/h1LgxMPpHX/8k8gFRs/f9lFsIUuTxK2CTqcuMKRQdlX48tHgzdRR5JzucVr5vfm
+ jBl+ngL+RtQfdaGG5dmj1aCMlXsmUTwwDvmzf9AoXFFReX4c6ENlnQM9iWYUcwr1dTbC
+ q3uJ+QwcPHovUbjxFHR8EZ6deI0XPUCh2G2jrM8/hZLS0tGrMtYgUi2mPXfcmk+lL8jm
+ OObk8hMCmj+/haq5aLzS2LgCgo3O0ov7HLvq76mG9TlstsdrjNA8rg2czzGi8l+ma7VY
+ LIeg==
+X-Gm-Message-State: ANhLgQ0fv5/t86wfg1V91CG81e4fnb9lHFQjyezARieej/J64oLQ/kpW
+ mVmOUteMxKM9aoKaQC6/MIMCwThchEU43Q==
+X-Google-Smtp-Source: ADFU+vs6A0umEX92NAflVde74j2QO6U1RZ1hR68J+eUHZv3DFaYlmFYn9ftyyLviMKnLBYBZf/Qo+Q==
+X-Received: by 2002:a4a:be8b:: with SMTP id o11mr698744oop.27.1583941122284;
+ Wed, 11 Mar 2020 08:38:42 -0700 (PDT)
+Received: from mail-oi1-f176.google.com (mail-oi1-f176.google.com.
+ [209.85.167.176])
+ by smtp.gmail.com with ESMTPSA id l8sm395923oom.30.2020.03.11.08.38.41
+ for <linux-riscv@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Mar 2020 08:38:41 -0700 (PDT)
+Received: by mail-oi1-f176.google.com with SMTP id r7so2332464oij.0
+ for <linux-riscv@lists.infradead.org>; Wed, 11 Mar 2020 08:38:41 -0700 (PDT)
+X-Received: by 2002:aca:ac89:: with SMTP id v131mr2417890oie.7.1583941120759; 
+ Wed, 11 Mar 2020 08:38:40 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 364698b5-4faa-47d1-6285-08d7c5b6cf0c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2020 12:22:04.1671 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cagPcr2urqiWRqKNuuwhp/sm6z5rtW7KJtRhgCaAjKloLJbJXYYSXcfotfgWHD7RguwRHok/kHL4rz208bP4Jw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR13MB2734
+References: <CADnnUqfDnkvCJVqBkDw+gV7_zs5Q_Mb3anQTu+UujjJ8bBk+ng@mail.gmail.com>
+ <CAEn-LTrSXHdfp9OPGRSoJCfi8D8Cg8FqS=_-JYpDatAT0X5C0w@mail.gmail.com>
+ <CADnnUqciAtweH6KqxvK7Z5ZL-uqOQHujWQBrt+aj2y+31BpuHQ@mail.gmail.com>
+ <CADnnUqe1GrqJ5EUQQoPp063bs9SqQkHUSqK_hcWqpkJQcxySTg@mail.gmail.com>
+ <CAOnJCULxNeuS3v1UEFAC_uG4heQfR3QCK-STv48LCK1pbH-18A@mail.gmail.com>
+ <94ee0543-e0e6-2be4-9168-e0c8a55ca92a@williamgrant.id.au>
+ <CADnnUqduWL2gMBASF=8OX8huALW9Z2tWz73kcjDK5GL+xHtsbw@mail.gmail.com>
+ <40bc5468-21e8-f6ac-fcb6-eff2efa7fd13@williamgrant.id.au>
+ <CAOnJCUKTDTjB8rAov8XLkfT+PAymstcy6y4A75ijRstK6y202A@mail.gmail.com>
+ <CADnnUqfJ=YvFSkpsCMDd9owAE_Pwxkn=mzJ8S2YvYqRff60xxA@mail.gmail.com>
+In-Reply-To: <CADnnUqfJ=YvFSkpsCMDd9owAE_Pwxkn=mzJ8S2YvYqRff60xxA@mail.gmail.com>
+From: Carlos Eduardo de Paula <me@carlosedp.com>
+Date: Wed, 11 Mar 2020 12:38:29 -0300
+X-Gmail-Original-Message-ID: <CADnnUqeBrJ9MwwDTY2rBkboAJHSwivuZ_Rk69C0sNGSRw1UR3Q@mail.gmail.com>
+Message-ID: <CADnnUqeBrJ9MwwDTY2rBkboAJHSwivuZ_Rk69C0sNGSRw1UR3Q@mail.gmail.com>
+Subject: Re: Errors and segmentation fault while building Golang on Kernel
+ after v5.4-rc3
+To: Atish Patra <atishp@atishpatra.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_052208_026531_FC30ADC9 
-X-CRM114-Status: GOOD (  30.79  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200311_083845_123762_ACEF6E61 
+X-CRM114-Status: GOOD (  15.69  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -125,167 +108,68 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greg KH <gregkh@linuxfoundation.org>,
+Cc: David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>,
  Palmer Dabbelt <palmerdabbelt@google.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Sachin Ghadi <sachin.ghadi@sifive.com>,
- "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, "jslaby@suse.com" <jslaby@suse.com>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "kernel-team@android.com" <kernel-team@android.com>
+ William Grant <me@williamgrant.id.au>, Joel Sing <joel@sing.id.au>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-> -----Original Message-----
-> From: linux-riscv <linux-riscv-bounces@lists.infradead.org> On Behalf Of
-> Palmer Dabbelt
-> Sent: 07 March 2020 09:57
-> To: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt <palmerdabbelt@google.com>; Greg KH
-> <gregkh@linuxfoundation.org>; jslaby@suse.com; linux-
-> kernel@vger.kernel.org; Palmer Dabbelt <palmer@dabbelt.com>; linux-
-> serial@vger.kernel.org; Paul Walmsley <paul.walmsley@sifive.com>; linux-
-> riscv@lists.infradead.org; kernel-team@android.com
-> Subject: [PATCH] tty: sifive: Finish transmission before changing the clo=
-ck
->=20
-> From: Palmer Dabbelt <palmerdabbelt@google.com>
->=20
-> SiFive's UART has a software controller clock divider that produces the f=
-inal
-> baud rate clock.  Whenever the clock that drives the UART is changed this
-> divider must be updated accordingly, and given that these two events are
-> controlled by software they cannot be done atomically.
-> During the period between updating the UART's driving clock and internal
-> divider the UART will transmit a different baud rate than what the user h=
-as
-> configured, which will probably result in a corrupted transmission stream=
-.
->=20
-> The SiFive UART has a FIFO, but due to an issue with the programming
-> interface there is no way to directly determine when the UART has finishe=
-d
-> transmitting.  We're essentially restricted to dead reckoning in order to=
- figure
-> that out: we can use the FIFO's TX busy register to figure out when the l=
-ast
-> frame has begun transmission and just delay for a long enough that the la=
-st
-> frame is guaranteed to get out.
->=20
-> As far as the actual implementation goes: I've modified the existing exis=
-ting
-> clock notifier function to drain both the FIFO and the shift register in =
-on
-> PRE_RATE_CHANGE.  As far as I know there is no hardware flow control in
-> this UART, so there's no good way to ask the other end to stop transmissi=
-on
-> while we can't receive (inserting software flow control messages seems li=
-ke a
-> bad idea here).
->=20
-> Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
-> ---
-> I have not tested this, as I don't have any hardware.  I'm also not even
-> remotely familiar with the serial subsystem, so I don't know if there's a
-> better way of going about this.  I'm specifically worried about a udelay(=
-) that
-> could be quite long.  Maybe some sort of "delay for short times, sleep fo=
-r
-> long times" approach would be better?
->=20
-> I don't know if this manifests in practice on existing hardware when runn=
-ing
-> real workloads, but I'd be willing to bet that it would be possible to tr=
-igger
-> the bug on purpose as by my calculations there's about a 10k cycle window=
- in
-> which the clock can't change.  IIRC there's a lot of instability when cha=
-nging
-> the clock frequency on the HiFive Unleashed so I doubt people are going t=
-o
-> stumble across the issue regularly in practice.
->=20
->  drivers/tty/serial/sifive.c | 28 ++++++++++++++++++++++++----
->  1 file changed, 24 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/tty/serial/sifive.c b/drivers/tty/serial/sifive.c in=
-dex
-> d5f81b98e4d7..d34031e842d0 100644
-> --- a/drivers/tty/serial/sifive.c
-> +++ b/drivers/tty/serial/sifive.c
-> @@ -618,10 +618,10 @@ static void sifive_serial_shutdown(struct uart_port
-> *port)
->   *
->   * On the V0 SoC, the UART IP block is derived from the CPU clock source
->   * after a synchronous divide-by-two divider, so any CPU clock rate chan=
-ge
-> - * requires the UART baud rate to be updated.  This presumably could
-> corrupt any
-> - * serial word currently being transmitted or received.  It would probab=
-ly
-> - * be better to stop receives and transmits, then complete the baud rate
-> - * change, then re-enable them.
-> + * requires the UART baud rate to be updated.  This presumably corrupts
-> + any
-> + * serial word currently being transmitted or received.  In order to
-> + avoid
-> + * corrupting the output data stream, we drain the transmit queue
-> + before
-> + * allowing the clock's rate to be changed.
->   */
->  static int sifive_serial_clk_notifier(struct notifier_block *nb,
->  				      unsigned long event, void *data) @@ -
-> 629,6 +629,26 @@ static int sifive_serial_clk_notifier(struct notifier_bl=
-ock
-> *nb,
->  	struct clk_notifier_data *cnd =3D data;
->  	struct sifive_serial_port *ssp =3D notifier_to_sifive_serial_port(nb);
->=20
-> +	if (event =3D=3D PRE_RATE_CHANGE) {
-> +		/*
-> +		 * The TX watermark is always set to 1 by this driver, which
-> +		 * means that the TX busy bit will lower when there are 0
-> bytes
-> +		 * left in the TX queue -- in other words, when the TX FIFO is
-> +		 * empty.
-> +		 */
-> +		__ssp_wait_for_xmitr(ssp);
-> +		/*
-> +		 * On the cycle the TX FIFO goes empty there is still a full
-> +		 * UART frame left to be transmitted in the shift register.
-> +		 * The UART provides no way for software to directly
-> determine
-> +		 * when that last frame has been transmitted, so we just
-> sleep
-> +		 * here instead.  As we're not tracking the number of stop
-> bits
-> +		 * they're just worst cased here.  The rest of the serial
-> +		 * framing parameters aren't configurable by software.
-> +		 */
-> +		udelay(DIV_ROUND_UP(12 * 1000 * 1000, ssp->baud_rate));
-> +	}
-> +
->  	if (event =3D=3D POST_RATE_CHANGE && ssp->clkin_rate !=3D cnd-
-> >new_rate) {
->  		ssp->clkin_rate =3D cnd->new_rate;
->  		__ssp_update_div(ssp);
-> --
-> 2.25.1.481.gfbce0eb801-goog
->=20
+On Mon, Feb 3, 2020 at 12:06 PM Carlos Eduardo de Paula
+<me@carlosedp.com> wrote:
+>
+> On Sun, Feb 2, 2020 at 9:30 AM Atish Patra <atishp@atishpatra.org> wrote:
+> >
+> > On Sat, Feb 1, 2020 at 3:37 PM William Grant <me@williamgrant.id.au> wrote:
+> > >
+> > > On 2/2/20 5:58 am, Carlos Eduardo de Paula wrote:
+> > > > Hi Atish, I've added that patch to latest OpenSBI from master, dd'ed
+> > > > it to my mmcblk0p3 partition but still got problems building Golang
+> > > > using kernel v5.5.
+> > > >
+> > > > [... snip ...]
+> > > >
+> > > > Did it worked for you William?
+> > > >
+> > > > Carlos
+> > >
+> > > Ah, sorry, I didn't actually test Atish's patch. It's not quite right,
+> > > since .tlb_range_flush_limit = 0 implies the default is used. I think
+> > > setting it to 1 should work,
+> >
+> > My bad. That's what happens when you are jet lagged and sent a patch
+> > at 5AM without testing :(.
+> > Ideally, it should be set to zero. I have fixed the issue in platform
+> > header and sent a patch series.
+> >
+> > http://lists.infradead.org/pipermail/opensbi/2020-February/001060.html
+> >
+> > --
+> > Regards,
+> > Atish
+>
+>
+> No worries Atish :)
+>
+> I've changed the parameter to "1" and confirm that it works.
+>
+> Built and tested Golang on v5.5.
+> Carlos
 
-A quick test on HiFive Unleashed board showed some improvements.
-Prior to this patch, I have been observing some random corrupted characters=
- on serial console when continuously changing the CPU clock rate.
-After applying this patch I don't see those corrupted characters anymore wh=
-ile changing the clock rate.
+Atish, the correction of the TLB flush sent previously will be
+upstreamed into OpenSBI or is something that should be patched
+off-tree?
 
-Tested-by: Yash Shah <yash.shah@sifive.com>
+Thanks
 
-This observation is based on a quick initial test on HiFive Unleashed. I am=
- planning to further test it by inducing the error on purpose. Will try to =
-update the result soon.
-
-- Yash
-
+-- 
+________________________________________
+Carlos Eduardo de Paula
+me@carlosedp.com
+http://carlosedp.com
+http://twitter.com/carlosedp
+Linkedin
+________________________________________
 
