@@ -2,75 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7316E1839D0
-	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 20:50:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 53975183A22
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 21:03:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+UY82/DVd3i7NdUMSKJVr8Je0G6LdA3Ml9SBPsppXPA=; b=JF7+ID1JqRpQ5IZLrrYZdq2dB
-	TRclnW1CpP9pXXHQ2MN1HS9DmOgAyX/qQVlk5SVUpEKg1EPgSF/QaeW3xzHbSlPQSqL4AZriDJBut
-	ZRqSyAye0TRFBE34OWc8Nxba4LNdXJcvPOR99K+iAGGO9qIYwhPoGA9soXa4/Y0H/9qiz7dAmAP52
-	l8Tt5KYSgYYv2pxof510aLU6Z7FR/OZwH8uO/jEX4YGcva3lCMWw/upy/G76816JGsvIk9YXWKqyW
-	z3gPKoYcb07XhAR/tnR4bPs5YJe3KINhLeiIY7BBTLWkD3FRUx7MQfuaJhPSrbeoSvWjVW0p+Gq1S
-	IYAKjySxw==;
+	 bh=QFwikrnp95KnH4qstGZpMtFjVhkG1Jik8Eal1Y8yAlk=; b=cOfyZ1nU3V5e0hAor0pgiw7kN
+	TpoMKtw1c5858/+djxmy4x7kULyU8kn1gJt8+C5kzNX8A0o6vann/Au/myrMswGx1raK+6nHXf77N
+	A4B4JeIZ5auuyCSxkF8hFYJxAQnmEGU7HTzGRBg8YQ9DD3N9j5bVh5Q3zLotpN9K4WqrQpaGaFS+B
+	tVjetxJQYi2lj2JVe+Zk9V5fTTaJPv5KILCcsLRuvEso6r7nHviVNcvXJnQwvZhepB74ZVSlYXx81
+	yt+sDvU9WAdsSMYPcU/WPjC1beFUe2fNq0Sa+NHXTy9QqcB+E5KsmEQ815MafZvULwboDNy7Xf1KF
+	MUoZgBr3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCTr0-0000Cm-3C; Thu, 12 Mar 2020 19:50:50 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jCU3U-0004ON-P6; Thu, 12 Mar 2020 20:03:44 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCTqw-0000CH-7I
- for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 19:50:47 +0000
-Received: by mail-wr1-x443.google.com with SMTP id x11so4325950wrv.5
- for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 12:50:45 -0700 (PDT)
+ id 1jCU3R-0004NV-AL
+ for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 20:03:42 +0000
+Received: by mail-wr1-x441.google.com with SMTP id s5so9170155wrg.3
+ for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 13:03:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+UY82/DVd3i7NdUMSKJVr8Je0G6LdA3Ml9SBPsppXPA=;
- b=LD7QEzOR1Napw0ehQOtI2REj9UV0MCBbe2P/OnSwi+yxjCgoPogVHWs/NoWgeGjdgt
- 9dAPgK4a8Go5TguLJlQYWdkgOtMZ8npvBgunfhmDBfLuQYuwwQ05q+myxYI5S8MgnMwx
- y97FJ//Xb8tQvyLv6lC/37U7Mw2jNlIEBTGzlzcLzAJYraKbMa5AzL7EksmWb5dkD09t
- 22Vk61dgHjgiFRy+WNIdK12+75lGEC4qOLX6PgcZJiViqgLCCC+xNs3XpiJp/Dj/xKhi
- PT85WvUFBlpQSgjz/0zBHjpshwltYwx5QqtVyl/bLKpJGSSWR1Z8DKFheOej1oGLV+3A
- 7FFg==
+ :cc; bh=QFwikrnp95KnH4qstGZpMtFjVhkG1Jik8Eal1Y8yAlk=;
+ b=VOvtVWovquSyPqY4CEdZyDVAvgqT7z6Ksm0asra71I0CERHvPvtiLjCK3E9xqrEWAU
+ 9V5oOgeIegrCqvFgf52wriqwwm9zsPAC3UBmacxTG7gZnMWmFk4xelKQQy9AXRvcsCob
+ FtYD+NFLc8xDbdeL8jRsM/jHstPib5wRLZjRlyB/mUFYJqAStfwjs6VQXjyveCEt12VO
+ JaQ19vpbmgCRuu9XsrpktIRioRygsR46atkvledwoD6W90bwV34HePvuUY3KlR33lrnP
+ HBb4UHd2ToX1jG12sgZ84W22vr/GL2tcpEEEfD0jFBF2EsjhJZzkTsb7S01IzIDW7fQG
+ AD8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=+UY82/DVd3i7NdUMSKJVr8Je0G6LdA3Ml9SBPsppXPA=;
- b=hLDwqA6nzuEa9mmywJp2egqC2A3ZK8R0AkGcMXEwPkfZQACDDJjIFRljXCaWJaIKT2
- LGUiXeRUygfUmlvDBNNLWTetoohj8bBLeN6+bSZ21Y+zKoq4dD4KqWPqJYGYu+EUo/yz
- NpEMwtiPM+Sc+gnMUlpqBf+CoDeDdhMr+RW4/DZt2IVyzjDT365+CREQM1kSaP6KFfDp
- dxGm4zUfqaZoraBdSnVrEjYBgUrwIatZpIJvZddJPcOqKSQpiCUsWlwd6rzC2cW13hGY
- 6ghsi+WAqDq+YtM4v9XrbZgfmB9u/EbNBvPxx8cwc1xZNF/vFhzeoeiZ84cc31bazee1
- SyTQ==
-X-Gm-Message-State: ANhLgQ2uoiwUgV9z00WcgBx6QgBpI1yq4HzeBfRuvMeQ+45xPg03XIbt
- l48WfdJHr5vDvYR5bZvlGyGNRAwV1zFdCr8hLy/C/Is=
-X-Google-Smtp-Source: ADFU+vvlTPRZpLO1RYHYYdqyYoz67KxRAejWICGPb3HGMTFJAVoIfmhQeuEjDwFkQzaye62NbCLyLQo+yvSfzFhCG+I=
-X-Received: by 2002:adf:f584:: with SMTP id f4mr13223492wro.77.1584042644624; 
- Thu, 12 Mar 2020 12:50:44 -0700 (PDT)
+ bh=QFwikrnp95KnH4qstGZpMtFjVhkG1Jik8Eal1Y8yAlk=;
+ b=R5pE54VLqHMksycwMDGcg7qoaoPCqf3502bhqbZ10XUOlJVVVpLEU3xHIDkN8TYJ9H
+ P9+wzXP7P8u7zkciXfOTGUcc/DZXNK74BOr7ZpaOMzbZuMKnQ7p/j+qpJl90CaNJq9W5
+ GBL1nD2JUXF8ZEVGdf63KxTndNmEui98BJWj5OrWy03n0hpaiF9AE4DfgCp0ZsnVGASk
+ j2NctKOF6uzoJfg63JBshRDl9FoiPvQkg+/I5QdeiX9Zl9petraxO4fGlqs9fj4VZXcp
+ Sn6z/2I5Pamka1gH6wFgJ0ZIvzdwzSgNCe9rnzGX8zSV85wZcw/kLT2KtP304ubNuQBi
+ Mg7w==
+X-Gm-Message-State: ANhLgQ39PeRNBi/p4XHeUGx8Q0kEiZADsE/1kBrDZlyFa+Qlek+nBtWz
+ Nzyr5SBSUvfU2P9gq7KVd4cBeWlsQ0F0XKk5ro2Rc50=
+X-Google-Smtp-Source: ADFU+vv4Qqm+Jd3zog2uI9YQ/eAaIlwvVs15z1Wk22X1Ef8sLYMinLmGSCInI812VIfjOqD4S0oqxrueVuCG1QXyAFU=
+X-Received: by 2002:a5d:474d:: with SMTP id o13mr12475470wrs.162.1584043418309; 
+ Thu, 12 Mar 2020 13:03:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200312051107.1454880-1-damien.lemoal@wdc.com>
- <20200312051107.1454880-4-damien.lemoal@wdc.com>
-In-Reply-To: <20200312051107.1454880-4-damien.lemoal@wdc.com>
+ <20200312051107.1454880-3-damien.lemoal@wdc.com>
+In-Reply-To: <20200312051107.1454880-3-damien.lemoal@wdc.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 12 Mar 2020 12:50:33 -0700
-Message-ID: <CAOnJCUK4bTRXHRPihwPaGozov5EoJ0ye5JSHRSmP6EXAijS_VQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/9] riscv: Add SOC early init support
+Date: Thu, 12 Mar 2020 13:03:27 -0700
+Message-ID: <CAOnJCULGMDOreN61x+mUHzFR=Qiey06506Ge1R5mDHO9EKuqEA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/9] riscv: Add BUILTIN_DTB support
 To: Damien Le Moal <damien.lemoal@wdc.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_125046_269154_05861F16 
-X-CRM114-Status: GOOD (  21.58  )
+X-CRM114-CacheID: sfid-20200312_130341_359771_33254B91 
+X-CRM114-Status: GOOD (  15.21  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:441 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -99,154 +99,110 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Wed, Mar 11, 2020 at 10:11 PM Damien Le Moal <damien.lemoal@wdc.com> wrote:
 >
-> Add a mechanism for early SoC initialization for platforms that need
-> additional hardware initialization not possible through the regular
-> device tree and drivers mechanism. With this, a SoC specific
-> initialization function can be called very early, before DTB parsing
-> is done by parse_dtb() in Linux RISC-V kernel setup code.
->
-> This can be very useful for early hardware initialization for No-MMU
-> kernels booted directly in M-mode because it is quite likely that no
-> other booting stage exist prior to the No-MMU kernel.
->
-> Example use of a SoC early initialization is as follows:
->
-> static void vendor_abc_early_init(const void *fdt)
-> {
->         /*
->          * some early init code here that can use simple matches
->          * against the flat device tree file.
->          */
-> }
-> SOC_EARLY_INIT_DECLARE("vendor,abc", abc_early_init);
->
-> This early initialization function is executed only if the flat device
-> tree for the board has a 'compatible = "vendor,abc"' entry;
+> For the NOMMU case, enable a kernel builtin dtb to allow direct kernel
+> loading without a bootloader. This option also allows booting on boards
+> not capable of providing a device tree to the bootloader.
 >
 > Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 > ---
->  arch/riscv/include/asm/soc.h    | 23 +++++++++++++++++++++++
->  arch/riscv/kernel/Makefile      |  1 +
->  arch/riscv/kernel/head.S        |  1 +
->  arch/riscv/kernel/soc.c         | 28 ++++++++++++++++++++++++++++
->  arch/riscv/kernel/vmlinux.lds.S |  6 ++++++
->  5 files changed, 59 insertions(+)
->  create mode 100644 arch/riscv/include/asm/soc.h
->  create mode 100644 arch/riscv/kernel/soc.c
+>  arch/riscv/Kbuild            |  1 +
+>  arch/riscv/Kconfig           | 19 +++++++++++++++++++
+>  arch/riscv/boot/dts/Makefile |  4 ++++
+>  arch/riscv/kernel/setup.c    |  6 ++++++
+>  arch/riscv/mm/init.c         |  4 ++++
+>  5 files changed, 34 insertions(+)
 >
-> diff --git a/arch/riscv/include/asm/soc.h b/arch/riscv/include/asm/soc.h
-> new file mode 100644
-> index 000000000000..9b8c332cbe76
-> --- /dev/null
-> +++ b/arch/riscv/include/asm/soc.h
-> @@ -0,0 +1,23 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +/*
-> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-> + */
+> diff --git a/arch/riscv/Kbuild b/arch/riscv/Kbuild
+> index d1d0aa70fdf1..988804e430e4 100644
+> --- a/arch/riscv/Kbuild
+> +++ b/arch/riscv/Kbuild
+> @@ -1,3 +1,4 @@
+>  # SPDX-License-Identifier: GPL-2.0-only
+>
+>  obj-y += kernel/ mm/ net/
+> +obj-$(CONFIG_USE_BUILTIN_DTB)  += boot/dts/
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index 1a3b5a5276be..025f5ba1dd68 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -355,6 +355,25 @@ config CMDLINE_FORCE
+>
+>  endchoice
+>
+> +config USE_BUILTIN_DTB
+> +       bool "Use builtin DTB"
+> +       depends on !MMU
+> +       help
+> +         Link a device tree blob for particular hardware into the kernel,
+> +         suppressing use of the DTB pointer provided by the bootloader.
+> +         This option should only be used with hardware or bootloaders that
+> +         are not capable of providing a DTB to the kernel, or for
+> +         experimental hardware without stable device tree bindings.
 > +
-> +#ifndef _ASM_RISCV_SOC_H
-> +#define _ASM_RISCV_SOC_H
+> +config BUILTIN_DTB_SOURCE
+> +       string "Source file for builtin DTB"
+> +       default ""
+> +       depends on USE_BUILTIN_DTB
+> +       help
+> +         Base name (without suffix, relative to arch/riscv/boot/dts) for
+> +         the a DTS file that will be used to produce the DTB linked into
+> +         the kernel.
 > +
-> +#include <linux/of.h>
-> +#include <linux/linkage.h>
-> +#include <linux/types.h>
+>  endmenu
+>
+>  menu "Power management options"
+> diff --git a/arch/riscv/boot/dts/Makefile b/arch/riscv/boot/dts/Makefile
+> index dcc3ada78455..0bf2669aa12d 100644
+> --- a/arch/riscv/boot/dts/Makefile
+> +++ b/arch/riscv/boot/dts/Makefile
+> @@ -1,2 +1,6 @@
+>  # SPDX-License-Identifier: GPL-2.0
+> +ifneq ($(CONFIG_BUILTIN_DTB_SOURCE),"")
+> +obj-$(CONFIG_USE_BUILTIN_DTB) += $(patsubst "%",%,$(CONFIG_BUILTIN_DTB_SOURCE)).dtb.o
+> +else
+>  subdir-y += sifive
+> +endif
+> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+> index 0a6d415b0a5a..3e89be9d888c 100644
+> --- a/arch/riscv/kernel/setup.c
+> +++ b/arch/riscv/kernel/setup.c
+> @@ -68,7 +68,13 @@ void __init setup_arch(char **cmdline_p)
+>
+>         setup_bootmem();
+>         paging_init();
 > +
-> +#define SOC_EARLY_INIT_DECLARE(compat, fn)                             \
-> +       static const struct of_device_id __soc_early_init               \
-> +               __used __section(__soc_early_init_table)                \
-> +                = { .compatible = compat, .data = fn  }
-> +
-> +void soc_early_init(void);
-> +
-> +extern unsigned long __soc_early_init_table_start;
-> +extern unsigned long __soc_early_init_table_end;
-> +
+> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
+> +       unflatten_and_copy_device_tree();
+> +#else
+>         unflatten_device_tree();
 > +#endif
-> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-> index 97d0c35f8b37..e4a22999dbc6 100644
-> --- a/arch/riscv/kernel/Makefile
-> +++ b/arch/riscv/kernel/Makefile
-> @@ -10,6 +10,7 @@ endif
->  extra-y += head.o
->  extra-y += vmlinux.lds
->
-> +obj-y  += soc.o
->  obj-y  += cpu.o
->  obj-y  += cpufeature.o
->  obj-y  += entry.o
-> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
-> index 85f2073e7fe4..52ed11b4fda6 100644
-> --- a/arch/riscv/kernel/head.S
-> +++ b/arch/riscv/kernel/head.S
-> @@ -131,6 +131,7 @@ clear_bss_done:
->         call kasan_early_init
->  #endif
->         /* Start the kernel */
-> +       call soc_early_init
->         call parse_dtb
->         tail start_kernel
->
-> diff --git a/arch/riscv/kernel/soc.c b/arch/riscv/kernel/soc.c
-> new file mode 100644
-> index 000000000000..0b3b3dc9ad0f
-> --- /dev/null
-> +++ b/arch/riscv/kernel/soc.c
-> @@ -0,0 +1,28 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +/*
-> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-> + */
-> +#include <linux/init.h>
-> +#include <linux/libfdt.h>
-> +#include <asm/pgtable.h>
-> +#include <asm/soc.h>
 > +
-> +/*
-> + * This is called extremly early, before parse_dtb(), to allow initializing
-> + * SoC hardware before memory or any device driver initialization.
-> + */
-> +void __init soc_early_init(void)
-> +{
-> +       void (*early_fn)(const void *fdt);
-> +       const struct of_device_id *s;
-> +       const void *fdt = dtb_early_va;
-> +
-> +       for (s = (void *)&__soc_early_init_table_start;
-> +            (void *)s < (void *)&__soc_early_init_table_end; s++) {
-> +               if (!fdt_node_check_compatible(fdt, 0, s->compatible)) {
-> +                       early_fn = s->data;
-> +                       early_fn(fdt);
-> +                       return;
-> +               }
-> +       }
-> +}
-> diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
-> index 1e0193ded420..32b160942f40 100644
-> --- a/arch/riscv/kernel/vmlinux.lds.S
-> +++ b/arch/riscv/kernel/vmlinux.lds.S
-> @@ -24,6 +24,12 @@ SECTIONS
->         HEAD_TEXT_SECTION
->         INIT_TEXT_SECTION(PAGE_SIZE)
->         INIT_DATA_SECTION(16)
-> +       . = ALIGN(8);
-> +       __soc_early_init_table : {
-> +               __soc_early_init_table_start = .;
-> +               KEEP(*(__soc_early_init_table))
-> +               __soc_early_init_table_end = .;
-> +       }
->         /* we have to discard exit text and such at runtime, not link time */
->         .exit.text :
->         {
+>         clint_init_boot_cpu();
+>
+>  #ifdef CONFIG_SWIOTLB
+> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> index fab855963c73..51f1ee0a24a6 100644
+> --- a/arch/riscv/mm/init.c
+> +++ b/arch/riscv/mm/init.c
+> @@ -480,7 +480,11 @@ static void __init setup_vm_final(void)
+>  #else
+>  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>  {
+> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
+> +       dtb_early_va = __dtb_start;
+> +#else
+>         dtb_early_va = (void *)dtb_pa;
+> +#endif
+>  }
+>
+>  static inline void setup_vm_final(void)
 > --
 > 2.24.1
 >
 >
 
-
 Reviewed-by: Atish Patra <atish.patra@wdc.com>
+
 -- 
 Regards,
 Atish
