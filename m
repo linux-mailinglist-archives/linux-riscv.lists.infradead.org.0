@@ -2,83 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D6A5182863
-	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 06:25:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 145991828A0
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 06:58:15 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tLMa9FsJebnuKbVz+EJjJRD4n31GwTauUCn1VeWqoQk=; b=P2im616+JXpXW3
-	TYc5k6kgVxHZK2XNv3twh64xAqF3S605rng/ANXdn+AhGV0oxoYcuPiwbX5npa7EqPaB0mGTsP/9k
-	L2ruU2i1ocMdN1Qhy780x/H6BaJYkR4FhwN6+3WovVBZJi2rmQXr+SZeL9rJMfrmb9SGVyJ67zxKG
-	SDZ/gfKMDNIn6ug2YTCB8Y+/Pe00G8hslSVeKwvL5TuLSSRqhmvT8+vh8FaexGeegfzRmzd2q9MfT
-	jIKSfnR+RfSDlGwSrbKXssZmUYnSuhRBGIOwTD9zCFiwUFjYR+t5K/3gMHRP9ILDgnHYNDkH94wPf
-	vzEmLbrX3faLpNWxN3UA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Bn1hg/+PtzTsKNpb+Ce5m6JSgVn+95BJXkA8A4DMiPc=; b=CvYper5AEDhEYCG8ZXg3XgsO+
+	a+BYdYYfPucMrv6s8iu2lKyaLggtrQ0yiEeW2H31j/RVA1buTS8EMPhU+s5h/zQ6TxjCJt0ae/zdm
+	KSPjHOm9VqcKES9RuG1weY3p4WQJEwbmUPcVbYRb5EnakzvFUaGg6g/1eRLflzrdQZJw5USTDWTP2
+	LI2dG/c9Qsbr5KqlleDzZ1n7gMBvTjInCH3BYiLXDtg/MT20AzQmbKbTJ1R/J0f2w6Y196lE7jVXK
+	nx0G5XRE+LUXj4VX/qn/dFNSaKEQcme5ZhAR14LVGSYPLQgjITzarxPZ75wFAvD0D7P9+2FoFvqQh
+	t+EvVmokg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCGLu-0006kL-Ow; Thu, 12 Mar 2020 05:25:50 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1jCGrB-0000gl-D6; Thu, 12 Mar 2020 05:58:09 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCGLq-0006jk-Gx
- for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 05:25:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1583990747; x=1615526747;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ZyOyTeXLL7SrGDIXsO2hZW707nBNjfgtA9NV1kWm7zo=;
- b=Y4OZXR08o0PNDCep1FyqkCx+BRgJuoIGfds4RvQloQQowe+t6E9sLO7z
- s/8WkWLUmZFCqjOO25gfgCpesGfQ/thx0joqKQaX+8DOl1Mr0di/fIQfh
- f+1wz8cJ5ayQvoKTDdCP1YoVyTnxWUisc0hJ1sstl/3FNQ2Nw+FtpaGpw
- PBbqjYNoxDFv8UR601OD8SbxuYcdgaqWNjHITzYQjpfKn0mVKKYa5TnIc
- eZCTq7QE/M2JzTwMMFEEEHptAtqM3rz3ufQ7jQCcazCuDpKsdp8F/RTQ+
- 6xWKRiO03A/2x/QKuCN/v2V6lmJJmtznVmCtZU+I3OOixH2/ceU5eShqv Q==;
-IronPort-SDR: iQ8TGA4p9P4N0ekdMYqVx1VJbVRoDcBNxQwciHM0HvPVcVIhNN6xr+pXUpJKV8AM7Dy/NN04c7
- gqMVBCuLgWtJVeXcxRRXQXIn8HQ6g3o+lHsR3/NxjdxNua3QK9POaa9CDFlbHYvcxmyewAkLYp
- u6kkupdRktHgv0rgXBw31y13VUamQhdxyUMbBa42WMdtDop7ak2FmIRK3l1m4EWTv2L5wNx8uZ
- AReRwNkb2MJz/KOTkQW1XdDif2Abi8sPeuo3sjGKj1QkdDWp2GHAHhQ+opefsr5Fesr2xZIQ3R
- hF8=
-X-IronPort-AV: E=Sophos;i="5.70,543,1574092800"; d="scan'208";a="132712288"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 12 Mar 2020 13:25:47 +0800
-IronPort-SDR: 196bk5t5+9xFHDr6CT472YMXuOdFr0SCbO08r7OqIr1wrIOLH8lXy6DHmqcD4GnlSpWGnmldra
- iRyH1f7paGRfK21bO0Yw6PmvGaxXvnTPF08l8edqOF6ZgKmCQKX535YHU4ZrafPNUH5k8lNUgo
- JGKHVty55A+09OCobiVxaZE+4uNj6GGvB9HfmOmymZdX0y2g6zwdpYYXaRdUnyzt2nHenrzi0Q
- bxI7DvCnK4iBLM6iyDoDMmE5Keqxgnhexu+dBixCPTGw1gHYyOgcyeauktCekYwBCaeLr9QyoF
- pDVZzkFASr74v6S4IFwn3lu0
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2020 22:17:23 -0700
-IronPort-SDR: ys4qcFyRiynodhlPjbazA4CzP+k5K1nIw1+xAic/3z7xxeDdMYoW1mWeJ9FpmwgYES6TKDzTjQ
- xE7R5kKYjJMJRPMKQEvuR5k3ZZIiSQa9rcMwmdXHw2Ey0/OmZK4BqOef+/Iic70jqnCpPV2Bl4
- EBtSaSfDupK+AhGjsWzEa3XUu1YV6xnBHNxTEMLaokcXIxuVIdvtKHxzpjjKjszTgXjVCyq6Au
- isWVS3jHRvPUI5U6ozLL8aUbS/dALwpiPxKSMQnmomPI14GosSGWlGTxwHatn5gEioT5vCAUgf
- 1dc=
-WDCIronportException: Internal
-Received: from washi.fujisawa.hgst.com ([10.149.53.254])
- by uls-op-cesaip01.wdc.com with ESMTP; 11 Mar 2020 22:25:45 -0700
-From: Damien Le Moal <damien.lemoal@wdc.com>
-To: linux-riscv@lists.infradead.org,
-	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH v2 0/9] Kendryte k210 SoC boards support
-Date: Thu, 12 Mar 2020 14:25:44 +0900
-Message-Id: <20200312052544.1456953-1-damien.lemoal@wdc.com>
-X-Mailer: git-send-email 2.24.1
+ id 1jCGr7-0000gE-Fu
+ for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 05:58:07 +0000
+Received: by mail-oi1-x244.google.com with SMTP id g6so4374663oiy.1
+ for <linux-riscv@lists.infradead.org>; Wed, 11 Mar 2020 22:58:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Bn1hg/+PtzTsKNpb+Ce5m6JSgVn+95BJXkA8A4DMiPc=;
+ b=CIc/RH60Iz3c1UBDBhEfsp4G27ouwBp+0Cl2CZ6BOGGts7w71kjT3VN6Z3TrI6+nAs
+ sS211Q6PMK+X2V6hTiWFSxHxCUbIs9+W/Wz24mbDm+lHzxwDB09LzBzMeGVnT83OLr1U
+ aoCavsEXtMLKRL/LcM1XZ4rkpPCtB5Szuejz08zeY/QRRc8bcxn2SbdWZqJUJZEhcnq7
+ 3St2nNDnEqBTs8+01QfsxmSEFd8Vgmb49D+p8pROKCy3xAA7z8tKEQEuQ6g9tB3tU0Z0
+ lLaMqNMIbJM3bsbBbcy+13iWkq7BQH7sd34wkbtXAuX/0ONvOBGKKz64hpnuPnO3O+uw
+ RgQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Bn1hg/+PtzTsKNpb+Ce5m6JSgVn+95BJXkA8A4DMiPc=;
+ b=ereu3Adu1z2XN6lygNcHMdrY0g7r+B3QLJJPtDmXGcyLjHdtgncmowphQU2lJchlpK
+ CVZpF/V7KjBpxs3gWI0pmnZlfXCTCcsIr3cwGkx9G8ULd+7eP8PhSIznClNJoABAIwAA
+ FSeJQVKm9bguXvMN2uSLh46lg0P2z8m5Z959KZ3y6sS9HjUdTzzTRP+1DOVPdgc26OV7
+ Dge0nCtUKcKk3Rh/2Z0Fui/pclU0cdAl9uci13NPwgW889r+ahOxpf75QZ47a73k+FRT
+ yuYyt7YWn7kvLLlpoam5dyPzf6jXVk4r5t5g6VEPykIiBTMwNlVizpgOHnzg5CeIvVMr
+ 3/aQ==
+X-Gm-Message-State: ANhLgQ0mzyznFBcPG78zV2yjE1zj0aae8aiOkNp26zMUM8bkqVXiZive
+ StJR9e+73SJGWTNhtD+nkQV8xsqGWihKT50O6MOrvg==
+X-Google-Smtp-Source: ADFU+vsMvyofqBnJoHR6vy8xgHA39d+khqv33FK27ksvDLfAygtUQztZFg7E6bYyG+UOaF0XTGt8780bAIQyv4vwvIc=
+X-Received: by 2002:a05:6808:56:: with SMTP id
+ v22mr1415109oic.116.1583992683910; 
+ Wed, 11 Mar 2020 22:58:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20200303054437.650-1-alex@ghiti.fr>
+ <mhng-346cdebc-e24d-49db-bb2e-0d4fa8d57030@palmerdabbelt-glaptop1>
+In-Reply-To: <mhng-346cdebc-e24d-49db-bb2e-0d4fa8d57030@palmerdabbelt-glaptop1>
+From: Zong Li <zong.li@sifive.com>
+Date: Thu, 12 Mar 2020 13:57:53 +0800
+Message-ID: <CANXhq0rvnuzgSxF9b8emkYKLnTwuK90XG3=5-pPFW9a9_5BS3w@mail.gmail.com>
+Subject: Re: [PATCH RESEND v2] riscv: Introduce CONFIG_RELOCATABLE
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_222546_616584_CA8DC615 
-X-CRM114-Status: GOOD (  19.91  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200311_225805_598854_24E10558 
+X-CRM114-Status: GOOD (  39.18  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:244 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -99,229 +92,394 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <Anup.Patel@wdc.com>
+Cc: Anup Patel <anup@brainfault.org>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Alexandre Ghiti <alex@ghiti.fr>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-[Added changelog]
+On Sat, Mar 7, 2020 at 1:58 AM Palmer Dabbelt <palmer@dabbelt.com> wrote:
+>
+> On Mon, 02 Mar 2020 21:44:37 PST (-0800), alex@ghiti.fr wrote:
+> > This config allows to compile the kernel as PIE and to relocate it at any
+> > virtual address at runtime: this paves the way to KASLR and to 4-level
+> > page table folding at runtime. Runtime relocation is possible since
+> > relocation metadata are embedded into the kernel.
+> >
+> > Note that relocating at runtime introduces an overhead even if the kernel
+> > is loaded at the same address it was linked at and that the compiler
+> > options are those used in arm64 which uses the same RELA relocation format.
+> >
+> > Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+> > Reviewed-by: Zong Li <zong.li@sifive.com>
+> > Reviewed-by: Anup Patel <anup@brainfault.org>
+> > Tested-by: Zong Li <zong.li@sifive.com>
+> > ---
+> > Changes in v2:
+> > - Make RELOCATABLE depend on MMU as suggested by Anup
+> > - Rename kernel_load_addr into kernel_virt_addr as suggested by Anup
+> > - Use __pa_symbol instead of __pa, as suggested by Zong
+> > - Rebased on top of v5.6-rc3
+> > - Tested with sv48 patchset
+> > - Add Reviewed/Tested-by from Zong and Anup
+> >
+> >  arch/riscv/Kconfig              | 12 +++++
+> >  arch/riscv/Makefile             |  5 +-
+> >  arch/riscv/boot/loader.lds.S    |  2 +-
+> >  arch/riscv/include/asm/page.h   |  5 +-
+> >  arch/riscv/kernel/head.S        |  3 +-
+> >  arch/riscv/kernel/vmlinux.lds.S | 10 ++--
+> >  arch/riscv/mm/Makefile          |  4 ++
+> >  arch/riscv/mm/init.c            | 92 ++++++++++++++++++++++++++++-----
+> >  8 files changed, 111 insertions(+), 22 deletions(-)
+> >
+> > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> > index 73f029eae0cc..f5f3d474504d 100644
+> > --- a/arch/riscv/Kconfig
+> > +++ b/arch/riscv/Kconfig
+> > @@ -163,6 +163,18 @@ config PGTABLE_LEVELS
+> >       default 3 if 64BIT
+> >       default 2
+> >
+> > +config RELOCATABLE
+> > +     bool
+> > +     depends on MMU
+> > +     help
+> > +          This builds a kernel as a Position Independent Executable (PIE),
+> > +          which retains all relocation metadata required to relocate the
+> > +          kernel binary at runtime to a different virtual address than the
+> > +          address it was linked at.
+> > +          Since RISCV uses the RELA relocation format, this requires a
+> > +          relocation pass at runtime even if the kernel is loaded at the
+> > +          same address it was linked at.
+> > +
+> >  source "arch/riscv/Kconfig.socs"
+> >
+> >  menu "Platform type"
+> > diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
+> > index b9009a2fbaf5..5a115cf6a9c1 100644
+> > --- a/arch/riscv/Makefile
+> > +++ b/arch/riscv/Makefile
+> > @@ -9,7 +9,10 @@
+> >  #
+> >
+> >  OBJCOPYFLAGS    := -O binary
+> > -LDFLAGS_vmlinux :=
+> > +ifeq ($(CONFIG_RELOCATABLE),y)
+> > +LDFLAGS_vmlinux := -shared -Bsymbolic -z notext -z norelro
+> > +KBUILD_CFLAGS += -fPIE
+> > +endif
+> >  ifeq ($(CONFIG_DYNAMIC_FTRACE),y)
+> >       LDFLAGS_vmlinux := --no-relax
+> >  endif
+> > diff --git a/arch/riscv/boot/loader.lds.S b/arch/riscv/boot/loader.lds.S
+> > index 47a5003c2e28..a9ed218171aa 100644
+> > --- a/arch/riscv/boot/loader.lds.S
+> > +++ b/arch/riscv/boot/loader.lds.S
+> > @@ -7,7 +7,7 @@ ENTRY(_start)
+> >
+> >  SECTIONS
+> >  {
+> > -     . = PAGE_OFFSET;
+> > +     . = CONFIG_PAGE_OFFSET;
+> >
+> >       .payload : {
+> >               *(.payload)
+> > diff --git a/arch/riscv/include/asm/page.h b/arch/riscv/include/asm/page.h
+> > index 8ca1930caa44..af5810f9aebd 100644
+> > --- a/arch/riscv/include/asm/page.h
+> > +++ b/arch/riscv/include/asm/page.h
+> > @@ -31,9 +31,9 @@
+> >   * When not using MMU this corresponds to the first free page in
+> >   * physical memory (aligned on a page boundary).
+> >   */
+> > -#define PAGE_OFFSET          _AC(CONFIG_PAGE_OFFSET, UL)
+> > +#define PAGE_OFFSET          kernel_virt_addr
+>
+> I assume we want to keep PAGE_OFFSET a constant for the non-relocatable
+> systems.  As it currently stands this is imposing a performance hit even when
+>
 
-This series adds support to boot nommu Linux on Kendryte K210 SoC based
-boards. This is all based on initial work done by Christoph Hellwig.
+I had almost done the KASLR implementation on top of this patch.
+Actually, PAGE_OFFSET change is unnecessary in KASLR , because we
+would move kernel image to a random physical address as well, so the
+$pc will go to the relevant random virtual address. We need
+kernel_virt_addr to record the new destination, but keep PAGE_OFFSET
+to be CONFIG_PAGE_OFFSET is enough.
 
-Patch 1 adds unaligned load/store trap handlers for M-mode.
+> > -#define KERN_VIRT_SIZE (-PAGE_OFFSET)
+> > +#define KERN_VIRT_SIZE               (-_AC(CONFIG_PAGE_OFFSET, UL))
+>
+> This seems like it would cause issues if the kernel is relocated to high enough
+> addresses that "kernel_virt_addr+KERN_VIRT_SIZE" overflows.
+>
 
-Patch 2 enables a builtin DTB to allow passing a device tree to the
-kernel when the board bootchain is not able to pass one. This option
-can be used only for NOMMU kernels for now
+Based on the same reason, keep KERN_VIRT_SIZE to be -PAGE_OFFSET is good.
 
-Patch 3 introduces an early SoC initialization enabling very early
-hardware initialization not possible with device tree entries pointing
-to drivers. This is used in patch 6 which introduces a sysctl driver for
-the K210 SoC. The early SoC initialization is used to enable the
-additional 2MB of SRAM normally reserved to the SoC AI chip.
+> >  #ifndef __ASSEMBLY__
+> >
+> > @@ -97,6 +97,7 @@ extern unsigned long pfn_base;
+> >  #define ARCH_PFN_OFFSET              (PAGE_OFFSET >> PAGE_SHIFT)
+> >  #endif /* CONFIG_MMU */
+> >
+> > +extern unsigned long kernel_virt_addr;
+> >  extern unsigned long max_low_pfn;
+> >  extern unsigned long min_low_pfn;
+> >
+> > diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> > index 271860fc2c3f..d792912c2da3 100644
+> > --- a/arch/riscv/kernel/head.S
+> > +++ b/arch/riscv/kernel/head.S
+> > @@ -131,7 +131,8 @@ clear_bss_done:
+> >  #ifdef CONFIG_MMU
+> >  relocate:
+> >       /* Relocate return address */
+> > -     li a1, PAGE_OFFSET
+> > +     la a1, kernel_virt_addr
+> > +     REG_L a1, 0(a1)
+> >       la a2, _start
+> >       sub a1, a1, a2
+> >       add ra, ra, a1
+> > diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
+> > index 1e0193ded420..5bf69e9b91e6 100644
+> > --- a/arch/riscv/kernel/vmlinux.lds.S
+> > +++ b/arch/riscv/kernel/vmlinux.lds.S
+> > @@ -4,7 +4,7 @@
+> >   * Copyright (C) 2017 SiFive
+> >   */
+> >
+> > -#define LOAD_OFFSET PAGE_OFFSET
+> > +#define LOAD_OFFSET CONFIG_PAGE_OFFSET
+> >  #include <asm/vmlinux.lds.h>
+> >  #include <asm/page.h>
+> >  #include <asm/cache.h>
+> > @@ -71,9 +71,11 @@ SECTIONS
+> >
+> >       EXCEPTION_TABLE(0x10)
+> >
+> > -     .rel.dyn : {
+> > -             *(.rel.dyn*)
+> > -     }
+> > +        .rela.dyn : ALIGN(8) {
+> > +             __rela_dyn_start = .;
+> > +                *(.rela .rela*)
+> > +             __rela_dyn_end = .;
+> > +        }
+>
+> It looks like the indentation is screwed up here: I see a mix of tabs/spaces
+> that doesn't match the rest of the file.
+>
+> >
+> >       _end = .;
+> >
+> > diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
+> > index 50b7af58c566..27593d362248 100644
+> > --- a/arch/riscv/mm/Makefile
+> > +++ b/arch/riscv/mm/Makefile
+> > @@ -1,6 +1,10 @@
+> >  # SPDX-License-Identifier: GPL-2.0-only
+> >
+> >  CFLAGS_init.o := -mcmodel=medany
+> > +ifdef CONFIG_RELOCATABLE
+> > +CFLAGS_init.o += -fno-pie
+> > +endif
+> > +
+> >  ifdef CONFIG_FTRACE
+> >  CFLAGS_REMOVE_init.o = -pg
+> >  endif
+> > diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> > index 965a8cf4829c..428aee2669aa 100644
+> > --- a/arch/riscv/mm/init.c
+> > +++ b/arch/riscv/mm/init.c
+> > @@ -12,6 +12,9 @@
+> >  #include <linux/sizes.h>
+> >  #include <linux/of_fdt.h>
+> >  #include <linux/libfdt.h>
+> > +#ifdef CONFIG_RELOCATABLE
+> > +#include <linux/elf.h>
+> > +#endif
+> >
+> >  #include <asm/fixmap.h>
+> >  #include <asm/tlbflush.h>
+> > @@ -28,6 +31,9 @@ EXPORT_SYMBOL(empty_zero_page);
+> >  extern char _start[];
+> >  void *dtb_early_va;
+> >
+> > +unsigned long kernel_virt_addr = _AC(CONFIG_PAGE_OFFSET, UL);
+> > +EXPORT_SYMBOL(kernel_virt_addr);
+> > +
+> >  static void __init zone_sizes_init(void)
+> >  {
+> >       unsigned long max_zone_pfns[MAX_NR_ZONES] = { 0, };
+> > @@ -132,7 +138,8 @@ void __init setup_bootmem(void)
+> >               phys_addr_t end = reg->base + reg->size;
+> >
+> >               if (reg->base <= vmlinux_end && vmlinux_end <= end) {
+> > -                     mem_size = min(reg->size, (phys_addr_t)-PAGE_OFFSET);
+> > +                     mem_size = min(reg->size,
+> > +                                    (phys_addr_t)-kernel_virt_addr);
+>
+> PAGE_OFFSET is kernel_virt_addr, so I don't see any reason to change these --
+> they account for a significant fraction of the diff.
+>
 
-Patch 4 to 9 add necessary Kconfig changes, a defconfig, a generic
-device tree suitable for many K210 boards and compilation of a bootable
-image file (bin file) that can be used to flash on K210 board ROM.
+kernel_virt_addr would be assigned to a random destination by KASLR,
+but here still should be PAGE_OFFSET rather than kernel_virt_addr as
+mentioned above.
 
-Finally, patch 9 disables PMP initialization for K210 SoCs.
+> >                       /*
+> >                        * Remove memblock from the end of usable area to the
+> > @@ -269,7 +276,7 @@ static phys_addr_t __init alloc_pmd(uintptr_t va)
+> >       if (mmu_enabled)
+> >               return memblock_phys_alloc(PAGE_SIZE, PAGE_SIZE);
+> >
+> > -     pmd_num = (va - PAGE_OFFSET) >> PGDIR_SHIFT;
+> > +     pmd_num = (va - kernel_virt_addr) >> PGDIR_SHIFT;
 
-This series was tested on the Kendryte KD233 development board, the
-Sipeed MAIX dan dock board and the Sipeed MAIXDUINO board. The userspace
-used was built using a modified buildroot tree for the toolchain part
-and an unmodified busybox tree for the initramfs image (embedded in the
-kernel as a cpio file). The folowwing github project contains the
-modified buildroot tree:
+Here is the same, please use PAGE_OFFSET instead of kernel_virt_addr.
 
-https://github.com/damien-lemoal/riscv64-nommu-buildroot
+> >       BUG_ON(pmd_num >= NUM_EARLY_PMDS);
+> >       return (uintptr_t)&early_pmd[pmd_num * PTRS_PER_PMD];
+> >  }
+> > @@ -370,6 +377,54 @@ static uintptr_t __init best_map_size(phys_addr_t base, phys_addr_t size)
+> >  #error "setup_vm() is called from head.S before relocate so it should not use absolute addressing."
+> >  #endif
+> >
+> > +#ifdef CONFIG_RELOCATABLE
+> > +extern unsigned long __rela_dyn_start, __rela_dyn_end;
+> > +
+> > +#ifdef CONFIG_64BIT
+> > +#define Elf_Rela Elf64_Rela
+> > +#define Elf_Addr Elf64_Addr
+> > +#else
+> > +#define Elf_Rela Elf32_Rela
+> > +#define Elf_Addr Elf32_Addr
+> > +#endif
+> > +
+> > +void __init relocate_kernel(uintptr_t load_pa)
+> > +{
+> > +     Elf_Rela *rela = (Elf_Rela *)&__rela_dyn_start;
+> > +     uintptr_t link_addr = _AC(CONFIG_PAGE_OFFSET, UL);
+> > +     /*
+> > +      * This holds the offset between the linked virtual address and the
+> > +      * relocated virtual address.
+> > +      */
+> > +     uintptr_t reloc_offset = kernel_virt_addr - link_addr;
+> > +     /*
+> > +      * This holds the offset between linked virtual address and physical
+> > +      * address whereas va_pa_offset holds the offset between relocated
+> > +      * virtual address and physical address.
+> > +      */
+> > +     uintptr_t va_link_pa_offset = link_addr - load_pa;
+> > +
+> > +     for ( ; rela < (Elf_Rela *)&__rela_dyn_end; rela++) {
+> > +             Elf_Addr addr = (rela->r_offset - va_link_pa_offset);
+> > +             Elf_Addr relocated_addr = rela->r_addend;
+> > +
+> > +             if (rela->r_info != R_RISCV_RELATIVE)
+> > +                     continue;
+>
+> This should at least provide a warning when it encounters an unresolvable
+> relocation.  Is it currently stands this just ignores all other runtime
+> relocations, and while I can buy the argument there shouldn't be any (though
+> I'd expect R_RISCV_{32,64} to show up?) we certainly shouldn't just silently
+> skip them.
+>
+> > +
+> > +             /*
+> > +              * Make sure to not relocate vdso symbols like rt_sigreturn
+> > +              * which are linked from the address 0 in vmlinux since
+> > +              * vdso symbol addresses are actually used as an offset from
+> > +              * mm->context.vdso in VDSO_OFFSET macro.
+> > +              */
+> > +             if (relocated_addr >= link_addr)
+> > +                     relocated_addr += reloc_offset;
+> > +
+> > +             *(Elf_Addr *)addr = relocated_addr;
+> > +     }
+> > +}
+> > +#endif
+> > +
+> >  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+> >  {
+> >       uintptr_t va, end_va;
+> > @@ -377,9 +432,20 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+> >       uintptr_t load_sz = (uintptr_t)(&_end) - load_pa;
+> >       uintptr_t map_size = best_map_size(load_pa, MAX_EARLY_MAPPING_SIZE);
+> >
+> > -     va_pa_offset = PAGE_OFFSET - load_pa;
+> > +     va_pa_offset = kernel_virt_addr - load_pa;
+> >       pfn_base = PFN_DOWN(load_pa);
+> >
+> > +#ifdef CONFIG_RELOCATABLE
+> > +     /*
+> > +      * Early page table uses only one PGDIR, which makes it possible
+> > +      * to map 1GB aligned on 1GB: if the relocation offset makes the kernel
+> > +      * cross over a 1G boundary, raise a bug since a part of the kernel
+> > +      * would not get mapped.
+> > +      */
+> > +     BUG_ON(SZ_1G - (kernel_virt_addr & (SZ_1G - 1)) < load_sz);
+> > +     relocate_kernel(load_pa);
+> > +#endif
+> > +
+> >       /*
+> >        * Enforce boot alignment requirements of RV32 and
+> >        * RV64 by only allowing PMD or PGD mappings.
+> > @@ -387,7 +453,7 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+> >       BUG_ON(map_size == PAGE_SIZE);
+> >
+> >       /* Sanity check alignment and size */
+> > -     BUG_ON((PAGE_OFFSET % PGDIR_SIZE) != 0);
+> > +     BUILD_BUG_ON((_AC(CONFIG_PAGE_OFFSET, UL) % PGDIR_SIZE) != 0);
+> >       BUG_ON((load_pa % map_size) != 0);
+> >       BUG_ON(load_sz > MAX_EARLY_MAPPING_SIZE);
+> >
+> > @@ -400,13 +466,13 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+> >       create_pmd_mapping(fixmap_pmd, FIXADDR_START,
+> >                          (uintptr_t)fixmap_pte, PMD_SIZE, PAGE_TABLE);
+> >       /* Setup trampoline PGD and PMD */
+> > -     create_pgd_mapping(trampoline_pg_dir, PAGE_OFFSET,
+> > +     create_pgd_mapping(trampoline_pg_dir, kernel_virt_addr,
+> >                          (uintptr_t)trampoline_pmd, PGDIR_SIZE, PAGE_TABLE);
+> > -     create_pmd_mapping(trampoline_pmd, PAGE_OFFSET,
+> > +     create_pmd_mapping(trampoline_pmd, kernel_virt_addr,
+> >                          load_pa, PMD_SIZE, PAGE_KERNEL_EXEC);
+> >  #else
+> >       /* Setup trampoline PGD */
+> > -     create_pgd_mapping(trampoline_pg_dir, PAGE_OFFSET,
+> > +     create_pgd_mapping(trampoline_pg_dir, kernel_virt_addr,
+> >                          load_pa, PGDIR_SIZE, PAGE_KERNEL_EXEC);
+> >  #endif
+> >
+> > @@ -415,10 +481,10 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+> >        * us to reach paging_init(). We map all memory banks later
+> >        * in setup_vm_final() below.
+> >        */
+> > -     end_va = PAGE_OFFSET + load_sz;
+> > -     for (va = PAGE_OFFSET; va < end_va; va += map_size)
+> > +     end_va = kernel_virt_addr + load_sz;
+> > +     for (va = kernel_virt_addr; va < end_va; va += map_size)
+> >               create_pgd_mapping(early_pg_dir, va,
+> > -                                load_pa + (va - PAGE_OFFSET),
+> > +                                load_pa + (va - kernel_virt_addr),
+> >                                  map_size, PAGE_KERNEL_EXEC);
+> >
+> >       /* Create fixed mapping for early FDT parsing */
+> > @@ -457,9 +523,9 @@ static void __init setup_vm_final(void)
+> >                       break;
+> >               if (memblock_is_nomap(reg))
+> >                       continue;
+> > -             if (start <= __pa(PAGE_OFFSET) &&
+> > -                 __pa(PAGE_OFFSET) < end)
+> > -                     start = __pa(PAGE_OFFSET);
+> > +             if (start <= __pa_symbol(kernel_virt_addr) &&
+> > +                 __pa(kernel_virt_addr) < end)
+> > +                     start = __pa_symbol(kernel_virt_addr);
 
-This is based on work from Christoph Hellwig, with additional changes
-and updates to the latest upstream versions for buildroot and uClibc.
+Here is the same, please use PAGE_OFFSET instead of kernel_virt_addr.
 
-Precompiled versions of the toolchain (gcc 9.2) and initramfs file tree
-and cpio file can be found in this project under the directory:
-
-buildroot/riscv64-uclibc-nommu/
-
-Flashing the file arch/riscv/boot/loader.bin to a board can be done
-using the Sipeed kflash.py tool with the command:
-
-kflash.py/kflash.py -p /dev/ttyUSB0 -b 1500000 -t loader.bin
-
-The kflash.py tool can be found here:
-
-https://github.com/sipeed/kflash.py
-
-For reference, using the Sipeed MAIXDUINO board, here is the boot
-output:
-
-[INFO] Rebooting... 
---- forcing DTR inactive
---- forcing RTS inactive
---- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
---- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
-[    0.000000] Linux version 5.6.0-rc1-00011-ga2b5be1c4374 (damien@yyy) (gcc version 8.2.0 (Buildroot 2018.11-rc2-00003-ga0787e9)) #610 SMP Wed Feb 12 18:53:50 JST 2020
-[    0.000000] earlycon: sifive0 at MMIO 0x0000000038000000 (options '')
-[    0.000000] printk: bootconsole [sifive0] enabled
-[    0.000000] initrd not found or empty - disabling initrd
-[    0.000000] Zone ranges:
-[    0.000000]   DMA32    [mem 0x0000000080000000-0x00000000807fffff]
-[    0.000000]   Normal   empty
-[    0.000000] Movable zone start for each node
-[    0.000000] Early memory node ranges
-[    0.000000]   node   0: [mem 0x0000000080000000-0x00000000807fffff]
-[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x00000000807fffff]
-[    0.000000] elf_hwcap is 0x112d
-[    0.000000] percpu: max_distance=0x18000 too large for vmalloc space 0x0
-[    0.000000] percpu: Embedded 12 pages/cpu s18272 r0 d30880 u49152
-[    0.000000] Built 1 zonelists, mobility grouping off.  Total pages: 2020
-[    0.000000] Kernel command line: earlycon console=ttySIF0
-[    0.000000] Dentry cache hash table entries: 1024 (order: 1, 8192 bytes, linear)
-[    0.000000] Inode-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
-[    0.000000] Sorting __ex_table...
-[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
-[    0.000000] Memory: 6328K/8192K available (924K kernel code, 110K rwdata, 164K rodata, 321K init, 91K bss, 1864K reserved, 0K cma-reserved)
-[    0.000000] rcu: Hierarchical RCU implementation.
-[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
-[    0.000000] NR_IRQS: 0, nr_irqs: 0, preallocated irqs: 0
-[    0.000000] plic: mapped 65 interrupts with 2 handlers for 4 contexts.
-[    0.000000] riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [0]
-[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x3990be68b, max_idle_ns: 881590404272 ns
-[    0.000014] sched_clock: 64 bits at 7MHz, resolution 128ns, wraps every 4398046511054ns
-[    0.008232] Console: colour dummy device 80x25
-[    0.012474] Calibrating delay loop (skipped), value calculated using timer frequency.. 15.60 BogoMIPS (lpj=31200)
-[    0.022678] pid_max: default: 4096 minimum: 301
-[    0.027288] Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
-[    0.034414] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
-[    0.044796] rcu: Hierarchical SRCU implementation.
-[    0.049602] smp: Bringing up secondary CPUs ...
-[    0.054746] smp: Brought up 1 node, 2 CPUs
-[    0.059093] devtmpfs: initialized
-[    0.065523] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-[    0.074544] futex hash table entries: 16 (order: -2, 1024 bytes, linear)
-[    0.082512] Kendryte K210 SoC sysctl
-[    0.096010] clocksource: Switched to clocksource riscv_clocksource
-[    0.178581] workingset: timestamp_bits=62 max_order=11 bucket_order=0
-[    0.185846] 38000000.serial: ttySIF0 at MMIO 0x38000000 (irq = 1, base_baud = 0) is a SiFive UART v0
-[    0.194344] printk: console [ttySIF0] enabled
-[    0.194344] printk: console [ttySIF0] enabled
-[    0.202929] printk: bootconsole [sifive0] disabled
-[    0.202929] printk: bootconsole [sifive0] disabled
-[    0.214853] random: get_random_bytes called from 0x0000000080055178 with crng_init=0
-[    0.223606] devtmpfs: mounted
-[    0.226861] Freeing unused kernel memory: 320K
-[    0.230574] This architecture does not have kernel memory protection.
-[    0.236987] Run /sbin/init as init process
-[    0.241181] Run /etc/init as init process
-[    0.245178] Run /bin/init as init process
-
------------------------------
-| Kendryte K210 NOMMU Linux |
------------------------------
-Mounting /proc
-Starting shell
-
-
-BusyBox v1.32.0.git (2020-02-12 17:51:45 JST) hush - the humble shell
-Enter 'help' for a list of built-in commands.
-
-/ # cat /proc/cpuinfo 
-processor	: 0
-hart		: 0
-isa		: rv64imafdc
-
-processor	: 1
-hart		: 1
-isa		: rv64imafdc
-
-/ # 
-/ # ls -l /
-drwxrwxr-x    2 1000     1000             0 Feb 12  2020 bin
-drwxr-xr-x    2 0        0                0 Jan  1 00:00 dev
-drwxrwxr-x    2 1000     1000             0 Feb 12  2020 etc
-dr-xr-xr-x   58 0        0                0 Jan  1 00:00 proc
-drwxrwxr-x    2 1000     1000             0 Feb 12  2020 root
-drwxrwxr-x    2 1000     1000             0 Feb 12  2020 sbin
-drwxrwxr-x    2 1000     1000             0 Feb 12  2020 sys
-drwxrwxr-x    2 1000     1000             0 Feb 12  2020 tmp
-drwxrwxr-x    4 1000     1000             0 Feb 12  2020 usr
-/ # 
-/ # cat /proc/vmstat 
-nr_free_pages 1148
-...
-/ #
-
-The K210 SoC has more devices (GPIO, SD-card, LCD, etc) that likely can
-be enabled and used. For this, the sysctl driver will need further
-improvements as each device uses a different clock. To share the fun,
-supporting these is left as an exercise for the hobbyist and hackers
-interested in this SoC/boards :)
-
-
-Changes from v1:
-* Rebased on rc5 kernel
-* Fixed misaligned trap handling (removed static dependency on
-  __riscv_compressed)
-* Cleanup device tree:
-  - Single memory node for all memory banks
-  - Added clock IDs
-  - More commonality with Sean latest v7 U-Boot device tree
-* Added last patch to avoid board crash on boot due to out-of-spec PMP
-  on K210 SoC.
-
-
-Christoph Hellwig (2):
-  riscv: Add Kendryte K210 SoC support
-  riscv: create a loader.bin boot image for Kendryte SoC
-
-Damien Le Moal (7):
-  riscv: Unaligned load/store handling for M_MODE
-  riscv: Add BUILTIN_DTB support
-  riscv: Add SOC early init support
-  riscv: Select required drivers for Kendryte SOC
-  riscv: Add Kendryte K210 device tree
-  riscv: Kendryte K210 default config
-  riscv: Do not initialize PMP on Kendryte SoC
-
- arch/riscv/Kbuild                       |   1 +
- arch/riscv/Kconfig                      |  19 ++
- arch/riscv/Kconfig.socs                 |  10 +
- arch/riscv/Makefile                     |   6 +-
- arch/riscv/boot/Makefile                |   3 +
- arch/riscv/boot/dts/Makefile            |   5 +
- arch/riscv/boot/dts/kendryte/Makefile   |   2 +
- arch/riscv/boot/dts/kendryte/k210.dts   |  23 ++
- arch/riscv/boot/dts/kendryte/k210.dtsi  | 117 ++++++++
- arch/riscv/configs/nommu_k210_defconfig |  68 +++++
- arch/riscv/include/asm/soc.h            |  23 ++
- arch/riscv/kernel/Makefile              |   3 +-
- arch/riscv/kernel/head.S                |   9 +-
- arch/riscv/kernel/setup.c               |   6 +
- arch/riscv/kernel/soc.c                 |  28 ++
- arch/riscv/kernel/traps.c               |  27 +-
- arch/riscv/kernel/traps_misaligned.c    | 370 ++++++++++++++++++++++++
- arch/riscv/kernel/vmlinux.lds.S         |   6 +
- arch/riscv/mm/init.c                    |   4 +
- drivers/soc/Kconfig                     |   1 +
- drivers/soc/Makefile                    |   1 +
- drivers/soc/kendryte/Kconfig            |  14 +
- drivers/soc/kendryte/Makefile           |   3 +
- drivers/soc/kendryte/k210-sysctl.c      | 245 ++++++++++++++++
- include/dt-bindings/clock/k210-clk.h    |  20 ++
- 25 files changed, 1006 insertions(+), 8 deletions(-)
- create mode 100644 arch/riscv/boot/dts/kendryte/Makefile
- create mode 100644 arch/riscv/boot/dts/kendryte/k210.dts
- create mode 100644 arch/riscv/boot/dts/kendryte/k210.dtsi
- create mode 100644 arch/riscv/configs/nommu_k210_defconfig
- create mode 100644 arch/riscv/include/asm/soc.h
- create mode 100644 arch/riscv/kernel/soc.c
- create mode 100644 arch/riscv/kernel/traps_misaligned.c
- create mode 100644 drivers/soc/kendryte/Kconfig
- create mode 100644 drivers/soc/kendryte/Makefile
- create mode 100644 drivers/soc/kendryte/k210-sysctl.c
- create mode 100644 include/dt-bindings/clock/k210-clk.h
-
--- 
-2.24.1
-
+> >
+> >               map_size = best_map_size(start, end - start);
+> >               for (pa = start; pa < end; pa += map_size) {
 
