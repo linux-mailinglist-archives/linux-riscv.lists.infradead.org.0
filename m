@@ -2,81 +2,121 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D74E1838B3
-	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 19:29:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DC7D1838FA
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 19:49:17 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GC1hJ0DiMLggaOOzuLUWT5Y1sQSCC8CLXzsGF7PTNaw=; b=bs3JHEmYKbdEsw9PetIOiGX7x
-	gGtd42EY4AYKEevrWEIYagUnM4P46PuPscazWSBLxkhKyvL/ZCI/6qhNxuJNd4tk18S7n+HFSmhYl
-	HZdZLsZVGe1fvHXKXPkTPoouteeFx8v0+dLG4lYphyKrvZaGnU4WvVrec5R2OkcA1ilVsvN7OJ+rl
-	6h7sL64jOxOBKjQZfrw2rDI4sX0NhMtGENvnjeYOlITSOS6mN0RzDGGRP8gOUEwDRajnE9jSnOFTv
-	QsZlgsD08F93m7YcfIMQcTsFHh1HSVQ0P+7KjLYIekPPvhhECEz27NBOIt83vtXhPOa23H0pJZ1d6
-	1Gohb6lww==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lWQGvu4+yH7TBmk0aHvaKcrevut9G5yrQv4e/+q0uYE=; b=gO/XuMcPe1ss4z
+	uFbVDUg8HUjEgw0/i+nq1DSNfFvB1d33Ktr+ZkpdwLBCauTLMmHuQj9dQZUb0Oi3Tf0h4bqWImdrZ
+	SWf2Bpn/L10l/imDRIFje7hyp/BPqUvOnvfdjqZdXgsLGhNjNOeuVlT+3YEnOThfZXAJ5utmiOpdS
+	BMjRP7wCVZbJiqQ6zB6JalCNpeycmuR4D0kQ8A37nxiL1cUMWPfz2cE1rx07r4sl4B5LsdIE6OySe
+	U3rowAmGetZXDxyiFSIpmFFU3TN04kppK4P7VnKMVL3gKVJQKAArb1LKg2VvbMB2V5TOfGLXbKwPT
+	+GAQssJmnT8BzLaL5+pA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCSaQ-0008PB-Rf; Thu, 12 Mar 2020 18:29:38 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jCStK-0008Gc-Dr; Thu, 12 Mar 2020 18:49:10 +0000
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCSaN-0008O9-1J
- for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 18:29:36 +0000
-Received: by mail-wm1-x344.google.com with SMTP id f7so7496003wml.4
- for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 11:29:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=atishpatra.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GC1hJ0DiMLggaOOzuLUWT5Y1sQSCC8CLXzsGF7PTNaw=;
- b=No2CoXKWyyXJfBP/s7eCianbaDn0WKBYKtzHZlqcHx0lNrk3oWIHtXs/OsWWL9/cuR
- qqi/shI2ZQduoOWyVcj2InfUiWoKCwpsMmBJ7/Q1Suh00vZTYgGJ8o7+U8N4U8Plo7hE
- zrZZgISXLg71kvufW0TLpkokJLfdtQVijN1GRj37Nf+Za+1BHBXUBLtkGAaguPZ9cU1g
- 4rEXbYWHPyW/0oGDxq7JZCIjveZWrZP2R/O+P7E9o5lrEw+blnqHKsnZ11Sr5zhUXKrz
- 5CD5TqsTUW1XNptSyybr5yiCoASs17zgxBdHxJQ1qhRQr2rJaM422GqEgxkiMwEq9RZU
- s9aQ==
+ id 1jCStG-0008G1-Vd
+ for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 18:49:08 +0000
+Received: by mail-qt1-x844.google.com with SMTP id n5so5274015qtv.7
+ for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 11:49:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=lWQGvu4+yH7TBmk0aHvaKcrevut9G5yrQv4e/+q0uYE=;
+ b=kDKs+TA5CEnVI7CHIRu2OdAvgLnej+sygZP3loqdHeOHXd7Spnt11h469XUkz8pHw9
+ q/YKn5KRO2DqYUnldLB36k90Y+rDjf0OtUF5wP2g86DiEDJ1VZTAWd/eEhf8nndoQ9tE
+ gIERSxZ7U9XvEigZdNlDQugKfgHdUQKfh53gPJbiE4LegogmcTAHc67OL/VUCFtzNLg6
+ F9XBI93ydXsqDaXJNpb7Do6ddactO2bjZwDfiKRtt3Xw5VUYXG65uAUEy6Ecnn4plqrS
+ LjHaSN+xG/G81tg6K4kGoWd6gujBRM5jWzJLqpChKzjgdb4IxRBo6P0+DjJFtvRBDGak
+ vnvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GC1hJ0DiMLggaOOzuLUWT5Y1sQSCC8CLXzsGF7PTNaw=;
- b=nx7yZias2LLtdKpZ3y1Ga591bsLSyGsFz1z/E5ceI2NTvN+8alxSXJwhrhLHY9U+k6
- NbtYMxQYA5sx6A6WJ1LnHYST+6+gmN6VU3B6VHX4l51Vf5+WAizjQ43PcX/UAO+ugsRs
- +HVRcl9HlUd48A9sgQ3o1P96F02JAedZ/e3Zkw9twmHw0zPQf/5jKJw6rULMOOQJpgAG
- AjgOZphwOJaZ4fzjdfq13oE+ptfWnqFKVpIQEtd/AbPekL8H4o8JSTbeun6yGSftj8uE
- DluGnxcwFVuH/6nqRMenh8uQx93sMKmUvGSUjVBZpqsUhfFSODPWR369PLHZOVC2Oviv
- cIsA==
-X-Gm-Message-State: ANhLgQ3lbPX+bNX6XBNzqh0O/+HD8LBimheozN2Xi3eYnpS8RQgbawWW
- UOundMtoI38X5yJLrRA8Fa208SJavVqqx0ZtBiOW
-X-Google-Smtp-Source: ADFU+vtpwFvavhqnJ9voxET/cqJzGc+A4siwYSqn0Tn0/lc/1pu0NurLqX61T0lZ0BbJZHUNAknvpzPXP+5hAutOzAI=
-X-Received: by 2002:a7b:c391:: with SMTP id s17mr4858935wmj.55.1584037773015; 
- Thu, 12 Mar 2020 11:29:33 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=lWQGvu4+yH7TBmk0aHvaKcrevut9G5yrQv4e/+q0uYE=;
+ b=p7bToijK2eIG9c/mK6AjNwgj82AZONctZgJvtBEtEB6Iiafs/G75cv3JPRHjRKJDbn
+ q2k0tGlTtB9cdSA8hzR35qPwbY7IILDw3An4QpUToRTmmMScG5xSRFzi3VNLfg3BfL+G
+ +g+mpnxLwbcp3vD1lgP8WOrsZ7pfLmzzeiqu2yZRlrFuZM/Omnqv1wOANYeWAmmL1roT
+ RlDFZzxGDNQ00abUDOLFS/89h9bn+17ZOvXe2KKoazyaZCt2BCI8JD2U2cUKYQSmwudv
+ Jqv9Ii08MS9MrATDpGJARPuFepn0wBdGRTefNP01zSKKik5TiQHiMdx5cpyj2aqHbWSm
+ MKMA==
+X-Gm-Message-State: ANhLgQ3acJPdHtBPnwvMXFw7XSkpc7wVNQBf82DBTZJ94A4gQToRl4k2
+ mC3DI1/tDi/+braCcAFzfsI=
+X-Google-Smtp-Source: ADFU+vtyyf3hk/BFeH8+K6PQpMVyQwrX6dTDwSriY3zopIP6sy4xLtFxo4LR30nC4J8b2zRPLbcl0A==
+X-Received: by 2002:ac8:4e25:: with SMTP id d5mr8642215qtw.361.1584038942332; 
+ Thu, 12 Mar 2020 11:49:02 -0700 (PDT)
+Received: from [192.168.1.201] (pool-71-163-33-7.washdc.fios.verizon.net.
+ [71.163.33.7])
+ by smtp.googlemail.com with ESMTPSA id z18sm3794685qtz.77.2020.03.12.11.49.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Mar 2020 11:49:01 -0700 (PDT)
+Subject: Re: [PATCH v2 9/9] riscv: Do not initialize PMP on Kendryte SoC
+To: Atish Patra <atishp@atishpatra.org>
 References: <20200312051107.1454880-1-damien.lemoal@wdc.com>
  <20200312051107.1454880-10-damien.lemoal@wdc.com>
  <47a2207d-6c16-b007-4c35-7c1a0649ecc0@gmail.com>
  <CAOnJCUJjLB2fwW+ZAKc9nixUeJJm7pg8KxuOkqF5pvY1c0nRsw@mail.gmail.com>
  <3e2ae3be-6269-acbd-6283-16c50cd119af@gmail.com>
-In-Reply-To: <3e2ae3be-6269-acbd-6283-16c50cd119af@gmail.com>
-From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 12 Mar 2020 11:29:21 -0700
-Message-ID: <CAOnJCUK15kiMohMoqfPUNE43Yq+BTW=kY4AHYjyKkdr9Htg-ug@mail.gmail.com>
-Subject: Re: [PATCH v2 9/9] riscv: Do not initialize PMP on Kendryte SoC
-To: Sean Anderson <seanga2@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+ <CAOnJCUK15kiMohMoqfPUNE43Yq+BTW=kY4AHYjyKkdr9Htg-ug@mail.gmail.com>
+From: Sean Anderson <seanga2@gmail.com>
+Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
+ mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
+ 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
+ lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
+ GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
+ F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
+ AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
+ AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
+ bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
+ +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
+ Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
+ N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
+ SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
+ w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
+ w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
+ OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
+ zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
+ z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
+ 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
+ ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
+ vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
+ EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
+ zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
+ iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
+ S5hN3/mP5UeooFHb
+Message-ID: <e7835ca3-0754-8143-33cd-bac97878a0ad@gmail.com>
+Date: Thu, 12 Mar 2020 14:49:01 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <CAOnJCUK15kiMohMoqfPUNE43Yq+BTW=kY4AHYjyKkdr9Htg-ug@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_112935_079378_2E64751B 
-X-CRM114-Status: GOOD (  10.28  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200312_114907_044041_4F5E8BC9 
+X-CRM114-Status: GOOD (  15.94  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [seanga2[at]gmail.com]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:844 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [seanga2[at]gmail.com]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -100,31 +140,64 @@ Cc: linux-riscv <linux-riscv@lists.infradead.org>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Mar 12, 2020 at 11:14 AM Sean Anderson <seanga2@gmail.com> wrote:
->
->
-> > I don't think supporting old specs in Linux is a good idea. As per the
-> > patch guideline
-> > for RISC-V Linux, patches for only "frozen" or "ratified"
-> > specifications are allowed.
-> >
->
-> Well this CPU follows the v1.9 spec. It's real hardware, if it is to be
-> be supported, then the 1.9 spec needs to be as well.
->
+On 3/12/20 2:29 PM, Atish Patra wrote:
+> On Thu, Mar 12, 2020 at 11:14 AM Sean Anderson <seanga2@gmail.com> wrot=
+e:
+>>
+>>
+>>> I don't think supporting old specs in Linux is a good idea. As per th=
+e
+>>> patch guideline
+>>> for RISC-V Linux, patches for only "frozen" or "ratified"
+>>> specifications are allowed.
+>>>
+>>
+>> Well this CPU follows the v1.9 spec. It's real hardware, if it is to b=
+e
+>> be supported, then the 1.9 spec needs to be as well.
+>>
+>=20
+> As RISC-V is an open ISA and it's continuously evolving, there will be
+> some hardware
+> that will implement old specifications or non-backward compatible featu=
+res.
+> I fear the number of hardware with such features/implementations will
+> grow in the future.
+> If Linux is going to support all of them, it may be a maintenance night=
+mare.
 
-As RISC-V is an open ISA and it's continuously evolving, there will be
-some hardware
-that will implement old specifications or non-backward compatible features.
-I fear the number of hardware with such features/implementations will
-grow in the future.
-If Linux is going to support all of them, it may be a maintenance nightmare.
+I agree. There is also no standard way to communicate the implemented
+privileged spec level e.g. in the device tree. The base integer
+instruction set version can be specified in the riscv,isa property, such
+as
 
-> --Sean
+riscv,isa =3D "rv64i2p1..."
 
+However, there is no "extension" for the privileged specification.
+A method to specify this would be helpful, especially since the
+bootloader may need to enable the MMU before loading Linux since there
+is no way to enable it from S-mode until v1.10.
 
+On the other hand, there is relatively little changed from v1.9 to the
+current revision. The following list has the differences from the
+current spec:
 
--- 
-Regards,
-Atish
+* The PMP has flipped polarity
+* The mcounteren CSRs are split
+* sfence.vma is sfence.vm (though this should be handled by the sbi
+  anyway)
+* satp has a different name, and mode no longer exists in the top four
+  bits. Since these bits used to be part of ASID, it's fine to write the
+  mode to those bits. If linux never switches from (e.g.) sv39 to
+  something else, there will be no observed difference either.
+
+Everything else is mostly forwards-compatible, as far as I can tell.
+That is, assuming new behaviour on old hardware won't cause problems.
+
+A sufficiently smart kernel could even detect the version at runtime by
+intentionally triggering behaviour which is illegal depending on the
+privileged version, and then checking for an exception.
+
+--Sean
+
 
