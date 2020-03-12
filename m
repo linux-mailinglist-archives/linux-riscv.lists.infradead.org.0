@@ -2,80 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7507D183945
-	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 20:13:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7316E1839D0
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 20:50:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y8YLSD/iC+jeohN29M4Qn28/pKlq+WgFxsRFAr0eroM=; b=q/ngQFByvspkYmpi0CmYArmDb
-	WP924hShm1ExvVL8dGnbLbIGkFQfn86tZnQ6xa3vNed5XQS7oy4kMSKbHQP1a5dUEHua8R30YvRGZ
-	6w7PN4S4+5dUz/FKPnPxplbOn93Y5ZPmroTu6zrMzmF2pYYOKEz8ArT9+vTj8pAZupCqqQrsJMueG
-	JVZwpe9vk1DNQoguKed90JcTe6Aa2NrwbOvdornX/+Gb9A7c79PFr32h9I2FbF+4Vf+a+PjrNtQh6
-	Gymhj/sJ4F/jBO4aI1vBjup2g/ZX4owxVwm9kWLxcoLwgITt083GR3KmYS8izeGGWCpUuygFGeA3v
-	FY/AyNt3Q==;
+	 bh=+UY82/DVd3i7NdUMSKJVr8Je0G6LdA3Ml9SBPsppXPA=; b=JF7+ID1JqRpQ5IZLrrYZdq2dB
+	TRclnW1CpP9pXXHQ2MN1HS9DmOgAyX/qQVlk5SVUpEKg1EPgSF/QaeW3xzHbSlPQSqL4AZriDJBut
+	ZRqSyAye0TRFBE34OWc8Nxba4LNdXJcvPOR99K+iAGGO9qIYwhPoGA9soXa4/Y0H/9qiz7dAmAP52
+	l8Tt5KYSgYYv2pxof510aLU6Z7FR/OZwH8uO/jEX4YGcva3lCMWw/upy/G76816JGsvIk9YXWKqyW
+	z3gPKoYcb07XhAR/tnR4bPs5YJe3KINhLeiIY7BBTLWkD3FRUx7MQfuaJhPSrbeoSvWjVW0p+Gq1S
+	IYAKjySxw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCTGU-0002BA-Iz; Thu, 12 Mar 2020 19:13:06 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jCTr0-0000Cm-3C; Thu, 12 Mar 2020 19:50:50 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCTGS-0002AR-1S
- for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 19:13:05 +0000
-Received: by mail-wm1-x344.google.com with SMTP id g62so7659533wme.1
- for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 12:13:03 -0700 (PDT)
+ id 1jCTqw-0000CH-7I
+ for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 19:50:47 +0000
+Received: by mail-wr1-x443.google.com with SMTP id x11so4325950wrv.5
+ for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 12:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Y8YLSD/iC+jeohN29M4Qn28/pKlq+WgFxsRFAr0eroM=;
- b=FCpLbipB0X7V5etHLODI9gmShOmN0ym9gH3UesNMObSO/KRK6Tp5Yfm2q5K3jZ/ezX
- lO73KN195/XnFS+8QhyNKFEUdpPSHwc1yEDRu+9K155aq4CbZUzkX+229ehsveI+4Ktm
- wL8r3LkgZFC9tvPgQupsaxoe2owTkgpWQfaoF8gCIK2FGNugvqOBLI8FvkCQb/1r9Phc
- CXO9f10fxdOBlCDwHpgQxSAkFKwjq6i4ww8bGRamBfgQ1SSSd0/RIstrt2nJUNK4ffNf
- k+0fAbmalnwXFuCVOhGAl7XElYe+s6kKF9AVu/MVfeyOn/NXASl926dJt997c2aOFi0G
- lwHQ==
+ :cc; bh=+UY82/DVd3i7NdUMSKJVr8Je0G6LdA3Ml9SBPsppXPA=;
+ b=LD7QEzOR1Napw0ehQOtI2REj9UV0MCBbe2P/OnSwi+yxjCgoPogVHWs/NoWgeGjdgt
+ 9dAPgK4a8Go5TguLJlQYWdkgOtMZ8npvBgunfhmDBfLuQYuwwQ05q+myxYI5S8MgnMwx
+ y97FJ//Xb8tQvyLv6lC/37U7Mw2jNlIEBTGzlzcLzAJYraKbMa5AzL7EksmWb5dkD09t
+ 22Vk61dgHjgiFRy+WNIdK12+75lGEC4qOLX6PgcZJiViqgLCCC+xNs3XpiJp/Dj/xKhi
+ PT85WvUFBlpQSgjz/0zBHjpshwltYwx5QqtVyl/bLKpJGSSWR1Z8DKFheOej1oGLV+3A
+ 7FFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Y8YLSD/iC+jeohN29M4Qn28/pKlq+WgFxsRFAr0eroM=;
- b=N5WEAu9+D3S1KsSsMMMlM1ufvXgQ+n5tDYd+PMT+kMCA80/K2DYola6iTG5I5QwyWw
- B/TUjBtKvUd4c99rGSI57aQRXIOcHAV4fEsNn0i8olv1N6PCHDCEvjvI/VAnY2qExI5S
- 8oADeHlbuzMkWsDXAM7eEDkdtbdS4vanr5uX2tXD4dteyp3ejxCaXVqAQC/5z4wKucO2
- vKCdLn7ggzl/CGVcxTrQGCBola7nrwX1X7IY6LGn8Q5QaTki8JtGPXHgNlgcdBm6MPGM
- UGzbA/yuf99ULiza6z25zEI2hm+a/znwdH3tTXTXiKahxofV2vr0udSYOz286suOfVYS
- ndNA==
-X-Gm-Message-State: ANhLgQ1YYWaff0/j9MuMMr9tDTdRk5O2kTEVwoYkc8warbYB3GQsHaJe
- 2aR/oL0XxE6WSKo1CPy7z5FM02+A5Qd/lO2nLNY/wfQFvA==
-X-Google-Smtp-Source: ADFU+vsh9RBqNwjFeKwZzoRlq1+mEet5gldMQDxvg5+lEF4UbzH7tcGgoNSGblozfmhiYSCtnsZJ6kACuItiOEPsZmo=
-X-Received: by 2002:a7b:c391:: with SMTP id s17mr5024726wmj.55.1584040382383; 
- Thu, 12 Mar 2020 12:13:02 -0700 (PDT)
+ bh=+UY82/DVd3i7NdUMSKJVr8Je0G6LdA3Ml9SBPsppXPA=;
+ b=hLDwqA6nzuEa9mmywJp2egqC2A3ZK8R0AkGcMXEwPkfZQACDDJjIFRljXCaWJaIKT2
+ LGUiXeRUygfUmlvDBNNLWTetoohj8bBLeN6+bSZ21Y+zKoq4dD4KqWPqJYGYu+EUo/yz
+ NpEMwtiPM+Sc+gnMUlpqBf+CoDeDdhMr+RW4/DZt2IVyzjDT365+CREQM1kSaP6KFfDp
+ dxGm4zUfqaZoraBdSnVrEjYBgUrwIatZpIJvZddJPcOqKSQpiCUsWlwd6rzC2cW13hGY
+ 6ghsi+WAqDq+YtM4v9XrbZgfmB9u/EbNBvPxx8cwc1xZNF/vFhzeoeiZ84cc31bazee1
+ SyTQ==
+X-Gm-Message-State: ANhLgQ2uoiwUgV9z00WcgBx6QgBpI1yq4HzeBfRuvMeQ+45xPg03XIbt
+ l48WfdJHr5vDvYR5bZvlGyGNRAwV1zFdCr8hLy/C/Is=
+X-Google-Smtp-Source: ADFU+vvlTPRZpLO1RYHYYdqyYoz67KxRAejWICGPb3HGMTFJAVoIfmhQeuEjDwFkQzaye62NbCLyLQo+yvSfzFhCG+I=
+X-Received: by 2002:adf:f584:: with SMTP id f4mr13223492wro.77.1584042644624; 
+ Thu, 12 Mar 2020 12:50:44 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200312051107.1454880-1-damien.lemoal@wdc.com>
- <20200312051107.1454880-10-damien.lemoal@wdc.com>
- <47a2207d-6c16-b007-4c35-7c1a0649ecc0@gmail.com>
- <CAOnJCUJjLB2fwW+ZAKc9nixUeJJm7pg8KxuOkqF5pvY1c0nRsw@mail.gmail.com>
- <3e2ae3be-6269-acbd-6283-16c50cd119af@gmail.com>
- <CAOnJCUK15kiMohMoqfPUNE43Yq+BTW=kY4AHYjyKkdr9Htg-ug@mail.gmail.com>
- <e7835ca3-0754-8143-33cd-bac97878a0ad@gmail.com>
-In-Reply-To: <e7835ca3-0754-8143-33cd-bac97878a0ad@gmail.com>
+ <20200312051107.1454880-4-damien.lemoal@wdc.com>
+In-Reply-To: <20200312051107.1454880-4-damien.lemoal@wdc.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 12 Mar 2020 12:12:51 -0700
-Message-ID: <CAOnJCUK5bY8tbPLOCdTzzNMcy2yjK7rHL4jiM=0j=waBo1y-Pw@mail.gmail.com>
-Subject: Re: [PATCH v2 9/9] riscv: Do not initialize PMP on Kendryte SoC
-To: Sean Anderson <seanga2@gmail.com>
+Date: Thu, 12 Mar 2020 12:50:33 -0700
+Message-ID: <CAOnJCUK4bTRXHRPihwPaGozov5EoJ0ye5JSHRSmP6EXAijS_VQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/9] riscv: Add SOC early init support
+To: Damien Le Moal <damien.lemoal@wdc.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_121304_084782_C7227A6C 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20200312_125046_269154_05861F16 
+X-CRM114-Status: GOOD (  21.58  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -98,79 +93,160 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Damien Le Moal <Damien.LeMoal@wdc.com>
+ Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Mar 12, 2020 at 11:49 AM Sean Anderson <seanga2@gmail.com> wrote:
+On Wed, Mar 11, 2020 at 10:11 PM Damien Le Moal <damien.lemoal@wdc.com> wrote:
 >
-> On 3/12/20 2:29 PM, Atish Patra wrote:
-> > On Thu, Mar 12, 2020 at 11:14 AM Sean Anderson <seanga2@gmail.com> wrote:
-> >>
-> >>
-> >>> I don't think supporting old specs in Linux is a good idea. As per the
-> >>> patch guideline
-> >>> for RISC-V Linux, patches for only "frozen" or "ratified"
-> >>> specifications are allowed.
-> >>>
-> >>
-> >> Well this CPU follows the v1.9 spec. It's real hardware, if it is to be
-> >> be supported, then the 1.9 spec needs to be as well.
-> >>
-> >
-> > As RISC-V is an open ISA and it's continuously evolving, there will be
-> > some hardware
-> > that will implement old specifications or non-backward compatible features.
-> > I fear the number of hardware with such features/implementations will
-> > grow in the future.
-> > If Linux is going to support all of them, it may be a maintenance nightmare.
+> Add a mechanism for early SoC initialization for platforms that need
+> additional hardware initialization not possible through the regular
+> device tree and drivers mechanism. With this, a SoC specific
+> initialization function can be called very early, before DTB parsing
+> is done by parse_dtb() in Linux RISC-V kernel setup code.
 >
-> I agree. There is also no standard way to communicate the implemented
-> privileged spec level e.g. in the device tree. The base integer
-> instruction set version can be specified in the riscv,isa property, such
-> as
+> This can be very useful for early hardware initialization for No-MMU
+> kernels booted directly in M-mode because it is quite likely that no
+> other booting stage exist prior to the No-MMU kernel.
 >
-> riscv,isa = "rv64i2p1..."
+> Example use of a SoC early initialization is as follows:
 >
-> However, there is no "extension" for the privileged specification.
-> A method to specify this would be helpful, especially since the
-> bootloader may need to enable the MMU before loading Linux since there
-> is no way to enable it from S-mode until v1.10.
+> static void vendor_abc_early_init(const void *fdt)
+> {
+>         /*
+>          * some early init code here that can use simple matches
+>          * against the flat device tree file.
+>          */
+> }
+> SOC_EARLY_INIT_DECLARE("vendor,abc", abc_early_init);
 >
-> On the other hand, there is relatively little changed from v1.9 to the
-> current revision. The following list has the differences from the
-> current spec:
+> This early initialization function is executed only if the flat device
+> tree for the board has a 'compatible = "vendor,abc"' entry;
 >
-> * The PMP has flipped polarity
-> * The mcounteren CSRs are split
-> * sfence.vma is sfence.vm (though this should be handled by the sbi
->   anyway)
-> * satp has a different name, and mode no longer exists in the top four
->   bits. Since these bits used to be part of ASID, it's fine to write the
->   mode to those bits. If linux never switches from (e.g.) sv39 to
->   something else, there will be no observed difference either.
+> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
+> Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+> ---
+>  arch/riscv/include/asm/soc.h    | 23 +++++++++++++++++++++++
+>  arch/riscv/kernel/Makefile      |  1 +
+>  arch/riscv/kernel/head.S        |  1 +
+>  arch/riscv/kernel/soc.c         | 28 ++++++++++++++++++++++++++++
+>  arch/riscv/kernel/vmlinux.lds.S |  6 ++++++
+>  5 files changed, 59 insertions(+)
+>  create mode 100644 arch/riscv/include/asm/soc.h
+>  create mode 100644 arch/riscv/kernel/soc.c
 >
-> Everything else is mostly forwards-compatible, as far as I can tell.
-> That is, assuming new behaviour on old hardware won't cause problems.
+> diff --git a/arch/riscv/include/asm/soc.h b/arch/riscv/include/asm/soc.h
+> new file mode 100644
+> index 000000000000..9b8c332cbe76
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/soc.h
+> @@ -0,0 +1,23 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +/*
+> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
+> + */
+> +
+> +#ifndef _ASM_RISCV_SOC_H
+> +#define _ASM_RISCV_SOC_H
+> +
+> +#include <linux/of.h>
+> +#include <linux/linkage.h>
+> +#include <linux/types.h>
+> +
+> +#define SOC_EARLY_INIT_DECLARE(compat, fn)                             \
+> +       static const struct of_device_id __soc_early_init               \
+> +               __used __section(__soc_early_init_table)                \
+> +                = { .compatible = compat, .data = fn  }
+> +
+> +void soc_early_init(void);
+> +
+> +extern unsigned long __soc_early_init_table_start;
+> +extern unsigned long __soc_early_init_table_end;
+> +
+> +#endif
+> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> index 97d0c35f8b37..e4a22999dbc6 100644
+> --- a/arch/riscv/kernel/Makefile
+> +++ b/arch/riscv/kernel/Makefile
+> @@ -10,6 +10,7 @@ endif
+>  extra-y += head.o
+>  extra-y += vmlinux.lds
 >
-Even if the changes are minimal and we can easily hide under macro magic,
-it will create a bad precedent for the future. What if somebody sends
-a patch for
-a non-standard extension and cites kendryte support as an example.
+> +obj-y  += soc.o
+>  obj-y  += cpu.o
+>  obj-y  += cpufeature.o
+>  obj-y  += entry.o
+> diff --git a/arch/riscv/kernel/head.S b/arch/riscv/kernel/head.S
+> index 85f2073e7fe4..52ed11b4fda6 100644
+> --- a/arch/riscv/kernel/head.S
+> +++ b/arch/riscv/kernel/head.S
+> @@ -131,6 +131,7 @@ clear_bss_done:
+>         call kasan_early_init
+>  #endif
+>         /* Start the kernel */
+> +       call soc_early_init
+>         call parse_dtb
+>         tail start_kernel
+>
+> diff --git a/arch/riscv/kernel/soc.c b/arch/riscv/kernel/soc.c
+> new file mode 100644
+> index 000000000000..0b3b3dc9ad0f
+> --- /dev/null
+> +++ b/arch/riscv/kernel/soc.c
+> @@ -0,0 +1,28 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
+> + */
+> +#include <linux/init.h>
+> +#include <linux/libfdt.h>
+> +#include <asm/pgtable.h>
+> +#include <asm/soc.h>
+> +
+> +/*
+> + * This is called extremly early, before parse_dtb(), to allow initializing
+> + * SoC hardware before memory or any device driver initialization.
+> + */
+> +void __init soc_early_init(void)
+> +{
+> +       void (*early_fn)(const void *fdt);
+> +       const struct of_device_id *s;
+> +       const void *fdt = dtb_early_va;
+> +
+> +       for (s = (void *)&__soc_early_init_table_start;
+> +            (void *)s < (void *)&__soc_early_init_table_end; s++) {
+> +               if (!fdt_node_check_compatible(fdt, 0, s->compatible)) {
+> +                       early_fn = s->data;
+> +                       early_fn(fdt);
+> +                       return;
+> +               }
+> +       }
+> +}
+> diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
+> index 1e0193ded420..32b160942f40 100644
+> --- a/arch/riscv/kernel/vmlinux.lds.S
+> +++ b/arch/riscv/kernel/vmlinux.lds.S
+> @@ -24,6 +24,12 @@ SECTIONS
+>         HEAD_TEXT_SECTION
+>         INIT_TEXT_SECTION(PAGE_SIZE)
+>         INIT_DATA_SECTION(16)
+> +       . = ALIGN(8);
+> +       __soc_early_init_table : {
+> +               __soc_early_init_table_start = .;
+> +               KEEP(*(__soc_early_init_table))
+> +               __soc_early_init_table_end = .;
+> +       }
+>         /* we have to discard exit text and such at runtime, not link time */
+>         .exit.text :
+>         {
+> --
+> 2.24.1
+>
+>
 
-> A sufficiently smart kernel could even detect the version at runtime by
-> intentionally triggering behaviour which is illegal depending on the
-> privileged version, and then checking for an exception.
->
-That's the maintenance nightmare I was talking about. For kendryte, it
-is only few incompatible changes
-in privilege specification but what if some hardware implements a
-variation of hypervisor spec or vector extension.
 
-> --Sean
->
-
-
+Reviewed-by: Atish Patra <atish.patra@wdc.com>
 -- 
 Regards,
 Atish
