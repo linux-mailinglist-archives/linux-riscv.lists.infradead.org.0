@@ -2,78 +2,123 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53975183A22
-	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 21:03:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FC2A183A5C
+	for <lists+linux-riscv@lfdr.de>; Thu, 12 Mar 2020 21:09:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QFwikrnp95KnH4qstGZpMtFjVhkG1Jik8Eal1Y8yAlk=; b=cOfyZ1nU3V5e0hAor0pgiw7kN
-	TpoMKtw1c5858/+djxmy4x7kULyU8kn1gJt8+C5kzNX8A0o6vann/Au/myrMswGx1raK+6nHXf77N
-	A4B4JeIZ5auuyCSxkF8hFYJxAQnmEGU7HTzGRBg8YQ9DD3N9j5bVh5Q3zLotpN9K4WqrQpaGaFS+B
-	tVjetxJQYi2lj2JVe+Zk9V5fTTaJPv5KILCcsLRuvEso6r7nHviVNcvXJnQwvZhepB74ZVSlYXx81
-	yt+sDvU9WAdsSMYPcU/WPjC1beFUe2fNq0Sa+NHXTy9QqcB+E5KsmEQ815MafZvULwboDNy7Xf1KF
-	MUoZgBr3w==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BsjWLGneedsB+MEwFv0a7OCMyl4EcWykXahLDpm9SIA=; b=IPbjDoOqkJWnx+
+	mkIWb2OzKtc+fVSzpRDaz94hjglzpzbO85/oY54nmKO7TVONvAArrMPC+kAz4HTNoohEWDhMcxBxe
+	6WNLhnz+dbIn7uzhg54BpJ/PWWko+AIr+K1DFYENmYyh/GJAK94rVkv5RHJCr7x7+Hej7tiE4KIYn
+	gXzrGBlzh1tOmGhYowyo6HI2j1DGucZQjbL8v++pcn/YsZ6/bjbTqtqC9IV/AUPEhfVQB+Wf0oBXN
+	c9JlHu6K2e5hc52ZKcf/oLis+qE3NZ8mndJk4MB6nWeOrw+ezz0L7SPgciXnYw9yR4F8FwQMBp8JD
+	M0s8icFFWyy4TWBZq+kQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCU3U-0004ON-P6; Thu, 12 Mar 2020 20:03:44 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jCU9D-0006cY-TZ; Thu, 12 Mar 2020 20:09:39 +0000
+Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCU3R-0004NV-AL
- for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 20:03:42 +0000
-Received: by mail-wr1-x441.google.com with SMTP id s5so9170155wrg.3
- for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 13:03:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=atishpatra.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QFwikrnp95KnH4qstGZpMtFjVhkG1Jik8Eal1Y8yAlk=;
- b=VOvtVWovquSyPqY4CEdZyDVAvgqT7z6Ksm0asra71I0CERHvPvtiLjCK3E9xqrEWAU
- 9V5oOgeIegrCqvFgf52wriqwwm9zsPAC3UBmacxTG7gZnMWmFk4xelKQQy9AXRvcsCob
- FtYD+NFLc8xDbdeL8jRsM/jHstPib5wRLZjRlyB/mUFYJqAStfwjs6VQXjyveCEt12VO
- JaQ19vpbmgCRuu9XsrpktIRioRygsR46atkvledwoD6W90bwV34HePvuUY3KlR33lrnP
- HBb4UHd2ToX1jG12sgZ84W22vr/GL2tcpEEEfD0jFBF2EsjhJZzkTsb7S01IzIDW7fQG
- AD8w==
+ id 1jCU99-0006bl-Lm
+ for linux-riscv@lists.infradead.org; Thu, 12 Mar 2020 20:09:37 +0000
+Received: by mail-qt1-x843.google.com with SMTP id d22so5536449qtn.0
+ for <linux-riscv@lists.infradead.org>; Thu, 12 Mar 2020 13:09:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=BsjWLGneedsB+MEwFv0a7OCMyl4EcWykXahLDpm9SIA=;
+ b=O0itTfXHZTL6Xh2T/dw34aMbWMpfG+/nue1s8qnRghjSQ4tlD+PtPqbKFFHbkAVUp7
+ 3dBiH3s/QTRQo3h0Orssp/aEJZDtZZhfpyigs8kG9FZb1Hy3pmznB+ZUtZlpeLZg3nfv
+ p0zpEgv2h7Ft46lkelaTHpjuv9rojPTtlb5O7GzLB4E3ttXu38CDMxoXWRaT1S/2iPSr
+ LmV6ZuJGSzrqCjTeyC6uWfcG2OqdQpdhRm2owPRXgbxSzncVVJ1flbeG0VLW3FyASBFr
+ HmGf861gi7xgwONSaPz9hWLBBle2dij1eX7m4kaDN4gThWXpEwVktZFuyAO/rFeBAw6L
+ D20Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QFwikrnp95KnH4qstGZpMtFjVhkG1Jik8Eal1Y8yAlk=;
- b=R5pE54VLqHMksycwMDGcg7qoaoPCqf3502bhqbZ10XUOlJVVVpLEU3xHIDkN8TYJ9H
- P9+wzXP7P8u7zkciXfOTGUcc/DZXNK74BOr7ZpaOMzbZuMKnQ7p/j+qpJl90CaNJq9W5
- GBL1nD2JUXF8ZEVGdf63KxTndNmEui98BJWj5OrWy03n0hpaiF9AE4DfgCp0ZsnVGASk
- j2NctKOF6uzoJfg63JBshRDl9FoiPvQkg+/I5QdeiX9Zl9petraxO4fGlqs9fj4VZXcp
- Sn6z/2I5Pamka1gH6wFgJ0ZIvzdwzSgNCe9rnzGX8zSV85wZcw/kLT2KtP304ubNuQBi
- Mg7w==
-X-Gm-Message-State: ANhLgQ39PeRNBi/p4XHeUGx8Q0kEiZADsE/1kBrDZlyFa+Qlek+nBtWz
- Nzyr5SBSUvfU2P9gq7KVd4cBeWlsQ0F0XKk5ro2Rc50=
-X-Google-Smtp-Source: ADFU+vv4Qqm+Jd3zog2uI9YQ/eAaIlwvVs15z1Wk22X1Ef8sLYMinLmGSCInI812VIfjOqD4S0oqxrueVuCG1QXyAFU=
-X-Received: by 2002:a5d:474d:: with SMTP id o13mr12475470wrs.162.1584043418309; 
- Thu, 12 Mar 2020 13:03:38 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=BsjWLGneedsB+MEwFv0a7OCMyl4EcWykXahLDpm9SIA=;
+ b=toiQgSuWsICECKp6+cCjV6OYFYC/lE1zi0TZoR9H4Fld+PMswcq3I9t1f8eDOPd5gz
+ uJfmxYxfa+e/K56wad3NzuQ2/RLADpcvLmedkCjZNUqnT8dmRUagnB/LyqJDOGBt+HV0
+ Bg/GMQNQvhmr+pNv8iRv5NjEy/QC9Wd5JrjRNxiGNdTHwy2JKZj1cFu5D5st5sf6YTiQ
+ wZNWRB5rqzgcpJ2L3uVK5IHqsL1z25/cSUtF9vwbAGccmV+6nWCKQtAePusTlzwTThFi
+ 9wp051vzszzki6Ji/Lp8MaqbyA6sO3xiG8/Ma+EM4vahaXvYCsSNaA96wjjBgLEOgtZG
+ upZQ==
+X-Gm-Message-State: ANhLgQ2lLBoYQCrOuTE3LeI6k++W5RIPKgWHe9HG5NVz4cMNbCk5nL6o
+ lRrTDgHbM9oBMudruW7S8gE=
+X-Google-Smtp-Source: ADFU+vtTjZXZO5yBzV+ozFQHE6YNhdXaeC6gWGoutvbUYiiLXCZaHn17sqLjb9PtJ7UW3FwPtktMfA==
+X-Received: by 2002:aed:2625:: with SMTP id z34mr3207282qtc.276.1584043773217; 
+ Thu, 12 Mar 2020 13:09:33 -0700 (PDT)
+Received: from [192.168.1.201] (pool-71-163-33-7.washdc.fios.verizon.net.
+ [71.163.33.7]) by smtp.googlemail.com with ESMTPSA id
+ x188sm18895881qka.53.2020.03.12.13.09.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Mar 2020 13:09:32 -0700 (PDT)
+Subject: Re: [PATCH v2 9/9] riscv: Do not initialize PMP on Kendryte SoC
+To: Atish Patra <atishp@atishpatra.org>
 References: <20200312051107.1454880-1-damien.lemoal@wdc.com>
- <20200312051107.1454880-3-damien.lemoal@wdc.com>
-In-Reply-To: <20200312051107.1454880-3-damien.lemoal@wdc.com>
-From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 12 Mar 2020 13:03:27 -0700
-Message-ID: <CAOnJCULGMDOreN61x+mUHzFR=Qiey06506Ge1R5mDHO9EKuqEA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/9] riscv: Add BUILTIN_DTB support
-To: Damien Le Moal <damien.lemoal@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
+ <20200312051107.1454880-10-damien.lemoal@wdc.com>
+ <47a2207d-6c16-b007-4c35-7c1a0649ecc0@gmail.com>
+ <CAOnJCUJjLB2fwW+ZAKc9nixUeJJm7pg8KxuOkqF5pvY1c0nRsw@mail.gmail.com>
+ <3e2ae3be-6269-acbd-6283-16c50cd119af@gmail.com>
+ <CAOnJCUK15kiMohMoqfPUNE43Yq+BTW=kY4AHYjyKkdr9Htg-ug@mail.gmail.com>
+ <e7835ca3-0754-8143-33cd-bac97878a0ad@gmail.com>
+ <CAOnJCUK5bY8tbPLOCdTzzNMcy2yjK7rHL4jiM=0j=waBo1y-Pw@mail.gmail.com>
+From: Sean Anderson <seanga2@gmail.com>
+Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
+ mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
+ 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
+ lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
+ GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
+ F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
+ AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
+ AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
+ bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
+ +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
+ Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
+ N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
+ SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
+ w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
+ w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
+ OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
+ zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
+ z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
+ 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
+ ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
+ vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
+ EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
+ zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
+ iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
+ S5hN3/mP5UeooFHb
+Message-ID: <f691a251-1317-1ee8-78dd-8103dd14b339@gmail.com>
+Date: Thu, 12 Mar 2020 16:09:31 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <CAOnJCUK5bY8tbPLOCdTzzNMcy2yjK7rHL4jiM=0j=waBo1y-Pw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_130341_359771_33254B91 
-X-CRM114-Status: GOOD (  15.21  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200312_130935_725118_886FCAB3 
+X-CRM114-Status: GOOD (  22.61  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:843 listed in]
  [list.dnswl.org]
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [seanga2[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [seanga2[at]gmail.com]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -93,117 +138,119 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>
+ Palmer Dabbelt <palmer@dabbelt.com>, Damien Le Moal <Damien.LeMoal@wdc.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Mar 11, 2020 at 10:11 PM Damien Le Moal <damien.lemoal@wdc.com> wrote:
->
-> For the NOMMU case, enable a kernel builtin dtb to allow direct kernel
-> loading without a bootloader. This option also allows booting on boards
-> not capable of providing a device tree to the bootloader.
->
-> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
-> ---
->  arch/riscv/Kbuild            |  1 +
->  arch/riscv/Kconfig           | 19 +++++++++++++++++++
->  arch/riscv/boot/dts/Makefile |  4 ++++
->  arch/riscv/kernel/setup.c    |  6 ++++++
->  arch/riscv/mm/init.c         |  4 ++++
->  5 files changed, 34 insertions(+)
->
-> diff --git a/arch/riscv/Kbuild b/arch/riscv/Kbuild
-> index d1d0aa70fdf1..988804e430e4 100644
-> --- a/arch/riscv/Kbuild
-> +++ b/arch/riscv/Kbuild
-> @@ -1,3 +1,4 @@
->  # SPDX-License-Identifier: GPL-2.0-only
->
->  obj-y += kernel/ mm/ net/
-> +obj-$(CONFIG_USE_BUILTIN_DTB)  += boot/dts/
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 1a3b5a5276be..025f5ba1dd68 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -355,6 +355,25 @@ config CMDLINE_FORCE
->
->  endchoice
->
-> +config USE_BUILTIN_DTB
-> +       bool "Use builtin DTB"
-> +       depends on !MMU
-> +       help
-> +         Link a device tree blob for particular hardware into the kernel,
-> +         suppressing use of the DTB pointer provided by the bootloader.
-> +         This option should only be used with hardware or bootloaders that
-> +         are not capable of providing a DTB to the kernel, or for
-> +         experimental hardware without stable device tree bindings.
-> +
-> +config BUILTIN_DTB_SOURCE
-> +       string "Source file for builtin DTB"
-> +       default ""
-> +       depends on USE_BUILTIN_DTB
-> +       help
-> +         Base name (without suffix, relative to arch/riscv/boot/dts) for
-> +         the a DTS file that will be used to produce the DTB linked into
-> +         the kernel.
-> +
->  endmenu
->
->  menu "Power management options"
-> diff --git a/arch/riscv/boot/dts/Makefile b/arch/riscv/boot/dts/Makefile
-> index dcc3ada78455..0bf2669aa12d 100644
-> --- a/arch/riscv/boot/dts/Makefile
-> +++ b/arch/riscv/boot/dts/Makefile
-> @@ -1,2 +1,6 @@
->  # SPDX-License-Identifier: GPL-2.0
-> +ifneq ($(CONFIG_BUILTIN_DTB_SOURCE),"")
-> +obj-$(CONFIG_USE_BUILTIN_DTB) += $(patsubst "%",%,$(CONFIG_BUILTIN_DTB_SOURCE)).dtb.o
-> +else
->  subdir-y += sifive
-> +endif
-> diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
-> index 0a6d415b0a5a..3e89be9d888c 100644
-> --- a/arch/riscv/kernel/setup.c
-> +++ b/arch/riscv/kernel/setup.c
-> @@ -68,7 +68,13 @@ void __init setup_arch(char **cmdline_p)
->
->         setup_bootmem();
->         paging_init();
-> +
-> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
-> +       unflatten_and_copy_device_tree();
-> +#else
->         unflatten_device_tree();
-> +#endif
-> +
->         clint_init_boot_cpu();
->
->  #ifdef CONFIG_SWIOTLB
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index fab855963c73..51f1ee0a24a6 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -480,7 +480,11 @@ static void __init setup_vm_final(void)
->  #else
->  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->  {
-> +#if IS_ENABLED(CONFIG_USE_BUILTIN_DTB)
-> +       dtb_early_va = __dtb_start;
-> +#else
->         dtb_early_va = (void *)dtb_pa;
-> +#endif
->  }
->
->  static inline void setup_vm_final(void)
-> --
-> 2.24.1
->
->
+On 3/12/20 3:12 PM, Atish Patra wrote:
+> On Thu, Mar 12, 2020 at 11:49 AM Sean Anderson <seanga2@gmail.com> wrot=
+e:
+>>
+>> On 3/12/20 2:29 PM, Atish Patra wrote:
+>>> On Thu, Mar 12, 2020 at 11:14 AM Sean Anderson <seanga2@gmail.com> wr=
+ote:
+>>>>
+>>>>
+>>>>> I don't think supporting old specs in Linux is a good idea. As per =
+the
+>>>>> patch guideline
+>>>>> for RISC-V Linux, patches for only "frozen" or "ratified"
+>>>>> specifications are allowed.
+>>>>>
+>>>>
+>>>> Well this CPU follows the v1.9 spec. It's real hardware, if it is to=
+ be
+>>>> be supported, then the 1.9 spec needs to be as well.
+>>>>
+>>>
+>>> As RISC-V is an open ISA and it's continuously evolving, there will b=
+e
+>>> some hardware
+>>> that will implement old specifications or non-backward compatible fea=
+tures.
+>>> I fear the number of hardware with such features/implementations will=
 
-Reviewed-by: Atish Patra <atish.patra@wdc.com>
+>>> grow in the future.
+>>> If Linux is going to support all of them, it may be a maintenance nig=
+htmare.
+>>
+>> I agree. There is also no standard way to communicate the implemented
+>> privileged spec level e.g. in the device tree. The base integer
+>> instruction set version can be specified in the riscv,isa property, su=
+ch
+>> as
+>>
+>> riscv,isa =3D "rv64i2p1..."
+>>
+>> However, there is no "extension" for the privileged specification.
+>> A method to specify this would be helpful, especially since the
+>> bootloader may need to enable the MMU before loading Linux since there=
 
--- 
-Regards,
-Atish
+>> is no way to enable it from S-mode until v1.10.
+>>
+>> On the other hand, there is relatively little changed from v1.9 to the=
+
+>> current revision. The following list has the differences from the
+>> current spec:
+>>
+>> * The PMP has flipped polarity
+>> * The mcounteren CSRs are split
+>> * sfence.vma is sfence.vm (though this should be handled by the sbi
+>>   anyway)
+>> * satp has a different name, and mode no longer exists in the top four=
+
+>>   bits. Since these bits used to be part of ASID, it's fine to write t=
+he
+>>   mode to those bits. If linux never switches from (e.g.) sv39 to
+>>   something else, there will be no observed difference either.
+>>
+>> Everything else is mostly forwards-compatible, as far as I can tell.
+>> That is, assuming new behaviour on old hardware won't cause problems.
+>>
+> Even if the changes are minimal and we can easily hide under macro magi=
+c,
+> it will create a bad precedent for the future. What if somebody sends
+> a patch for
+> a non-standard extension and cites kendryte support as an example.
+
+I think there are substantial differences between a non-standard
+extension, and what we would need for the K210. First, the changes we
+would need are for the official specification. At the time this chip was
+designed, this was *the* authritative privileged spec. I think if a
+hardware vendor makes the effort to comply with the specification as it
+exists at the time, then we should support that.
+
+In addition, the incompatibilities are within the core boot process.
+Most non-standard extensions will be optional extras which can be
+completely ignored. For example, the GAP8 processor has a non-standard
+extension which adds some instructions for complex number arithmetic
+(and other operations). These instructions have no effect on the usual
+boot process, and (if there was an MMU) Linux could run fine on that
+board with no knowledge of these extensions.
+
+Lastly, these non-standard instructions can be documented in a standard
+way through the isa version string. This incompatibility in the spec has
+no standard way to be documented.
+
+>> A sufficiently smart kernel could even detect the version at runtime b=
+y
+>> intentionally triggering behaviour which is illegal depending on the
+>> privileged version, and then checking for an exception.
+>>
+> That's the maintenance nightmare I was talking about. For kendryte, it
+> is only few incompatible changes
+> in privilege specification but what if some hardware implements a
+> variation of hypervisor spec or vector extension.
+
+Hopefully that will not happen, but I think given the long development
+period of the vector spec, it is inevitable that a chip will be released
+with some subtle (or not-so-subtle) incompatibilities. As far as I can
+tell, the restriction on non-ratified extensions is to prevent work
+towards experimental specifications which may never have real hardware
+which uses them. However, I think if real hardware is incompatible small
+but fundamental way, then we should make the effort to support it,
+especially when the patches already exist.
+
+--Sean
+
 
