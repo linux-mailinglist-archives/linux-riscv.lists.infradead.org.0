@@ -2,133 +2,113 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DD2B1840AF
-	for <lists+linux-riscv@lfdr.de>; Fri, 13 Mar 2020 06:52:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96EFD1840BC
+	for <lists+linux-riscv@lfdr.de>; Fri, 13 Mar 2020 07:03:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qOLDpU4FtHQBxjf0+5i/5jGDoBMD5vi3Fm9uKfGtTC4=; b=YUrcQXNt2p6RFt4GGXqMenY8S
-	i81apev49I50XSJhIDFBD0/nmFhxfJn+7efzkHvhdIfEI0TJk2AWEBG7QIDXORdjYEbJHz2YMqqRc
-	yC09GmVz9fbrOCqEHUSOsF5mku2d9leSiGT3cLAa4HpAlRujQp8aWXv6+2bJwJbrD6qp4FXWbPbJy
-	RcVax6R6OnwhnYsdCEIS1iMyjAV6wnDNx+udeG2gQiQuahGCjK0jQzndBgRUX7F+5J9A0EVL5/KA7
-	iGPdHcfnOIAVwgAWBEOQHw6Zy2RdV+d0ZlgqAOrsup4ycFEfYMctz/OjL+IhPuEw5NyaoaIDOha3Y
-	up1oKJWWA==;
+	 bh=3walBZMtsMuImfJYoHGRfANXf1L7lmgZvKNGQhx5CFo=; b=jJyRsGeD1YfGcKZpSMxs1TKdA
+	NMGy6JBzpdqnJnqOsehOwndxr86ZsHoHt3CM5F+IGIiaMu4+FMi7cHXiZp6bcPMr2TGb0EfbeSD9+
+	+a2PWivNbV7r+ZeYMAYvC9mV/74Zt3smK7DT+apIqnb9WzC5UYdsBYX0z0/UMgosrKuvC8YOj80lF
+	RewRpyt7arvJ04hUqvenTKH+jP2aUUz8FM9kIq+OSsKKkRruqmnsaIUy98IRI3Mlx/oKMZOP3Hv5e
+	N3Jkzk6v2vRGAz9vMZTupAKuv/TdkxYzq/rt93RSGmIOHRw64V66F0oInbSouua/T7qu64hf7Qg2U
+	E3n7F5i5A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCdFa-0006Dl-7p; Fri, 13 Mar 2020 05:52:50 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jCdQ7-0001aB-Ul; Fri, 13 Mar 2020 06:03:43 +0000
+Received: from mail-dm6nam11on2066.outbound.protection.outlook.com
+ ([40.107.223.66] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCdFV-0006AU-G2
- for linux-riscv@lists.infradead.org; Fri, 13 Mar 2020 05:52:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1584078765; x=1615614765;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=qOLDpU4FtHQBxjf0+5i/5jGDoBMD5vi3Fm9uKfGtTC4=;
- b=QSbSlFz3o6rDvlI0MljN42/wDzDtKKV9RmSuNZ+u6f6vEV5zJo6HmG/k
- sNm7ItkRO9vuln8OrnSv/NLrZWmfsXpF3PXiDFdb9M60WlqwpO9nOhjI4
- Zle5gU8/qwUZeXQu3IwWGvGvDpRltxE5Pb6hTZe/so5hIuw0gOylo29Ms
- ksTLZD5h7cIzCvE5JRz29VkEYDrB+YwF+gdMedCEjW5cueitFNH4+1UrU
- qQ9RwEa9gKGNbCnBhUO2GUUS7kHH4IEUipecR5upT0tb9kr2iBQQzvwme
- SKBBkBPJgjZnpE90qtE0qskkRMt47vMbGtL1jjonmNHFsnJZd83EseDOJ w==;
-IronPort-SDR: c9WDFZNVb5TwUegInISqvQHMkwJ/y1TCdX0EAFq9sUWlmQu1/JFnaaql/aDRk7cn4dwjlTruUP
- 5N/3xEiflJcn5SWXO7yqXj3GVHywDKq+w1jJeCCoFHGcfLtKZaAjEyDa5Os/i5o7j2nFmRpF2f
- Ib0aT5SuGMPtyLN5aFalDdoOQ9Um+W0HiDpr8yZ//aDVr6rB6e4+ScD2ksrmo9ItpX9eWbq/yd
- f7sicld7igUZKOaIQ4qYiArA7aufUqfooj3q0meVAqbUEiN+OIbSacB7KYYsd0EmMmkcNDOry7
- wj4=
-X-IronPort-AV: E=Sophos;i="5.70,547,1574092800"; d="scan'208";a="240653170"
-Received: from mail-dm6nam11lp2171.outbound.protection.outlook.com (HELO
- NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.171])
- by ob1.hgst.iphmx.com with ESMTP; 13 Mar 2020 13:52:44 +0800
+ id 1jCdQ3-0001Wb-M6
+ for linux-riscv@lists.infradead.org; Fri, 13 Mar 2020 06:03:41 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jmLaVlY7UNM9Veu17kDOYildotEj4T6+4S3wXhjcZttaBamb52Z3Kzj3denbmaS1vwLQ92XZJv5g4slsHjQ0fGZRx1aDJcPrTz3IwLW0AyqGQbtOjEb0QfpT1WW+8rPqLNHK29GfS42gsUdEbFnx1aluveG2MrePKTbSXaNBJl3HQJPDUtzdU/ZWy2ZkezM2yvGVQWt2hl8Lw6krAbZ20OzNewYYX6TxxN67bFQshfFrPUoWgcCvUL8SlSmBvFYi/7tSISBx0IlhpOtQI/YTT8iugr279Rmcsrq3b+NQYNsLL20fYMFnG/O8Xw3PIJsWikDWQkCk1r/sn2HvX9suyQ==
+ b=mPiMu5RREhHdvBFtwJBY4OKp51ImdsWYdp6VRwgZubnevjN4ug2bUujZYYEYep0xaeHI7Zmo1h2bwzwUTQ6xBLGRbWUE7hR1JwPT/ua3njqEt57dUax82Uikk5+RDUfjN0xz0/BV//TOLMRc7NgI1absOeGIof+GXqCPaUQDNzMQq+IuDMNVyc1H6YFCBLpTNqxwVN3V4QMLJsE/2jTVQmDU5oR/2yAufNZrtBJybImd3H5CwjNIYfqKMyAaBzMcvAOUKKtPMDot9jjQm9DMRkfn/0ISlKCXjX/Knx2b2tbOV/lJ0X+/iZv+9sr2bW5s2iWv7l+z9sGjV1IHodyKaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qOLDpU4FtHQBxjf0+5i/5jGDoBMD5vi3Fm9uKfGtTC4=;
- b=iI7rBsllJj1+pxpLqdcxFZ8VqTkZqtV8mKAg7NAqSoEQwknBqReKO7IZA+vAarr/T62vB+zLN+/yYQp2ZrAbj5TtVbs0w5H3CcpYs5+kO2ar4YUPANcDuasJnMSx576AxqVC0NGzVMs4FQWncF56sqzTxSHy/xT/0l5pm5iF5o5hv8TJEWj08Q0TcN/MK/i7rT3IOAlaPvxqwLemjL6sOI3vogoOLMxYm1eLvrHjqyVVJrM1h0t+QcOcUaVD/46NrXrGG4ea3u8FSbTmpwuiFs+Py8RcHIByUMAkln+5O9AgDAPqTp4epkGclJPsCaC9U+eKRUea6WpJ6vykFJIUBQ==
+ bh=3walBZMtsMuImfJYoHGRfANXf1L7lmgZvKNGQhx5CFo=;
+ b=Tfh0GoT0HKSIZKlLNhxlkDDIngbx4QBokHCrrXFk8l7RwOaBOd4nRIG79tOBfZdNLTPEpfqdRZm25HO5cgCH57+tFDu0ByJDjlci1louJrl7cs8j/JI6HUC8DW7K98hrQ8LFZAaQWTPbQWASZ2RJTMwIV+33irCwLVYxyDiQJnSi3m834OpKeZBnf90aDQyqUB2IkgWqLgunauVi80m0rt7ch386IbcHAKMFQGU2eBls1l+Dw78YTv3boAHkSnltPK1UBirMaMdUMSOoAR3AOzEI4InA0TCFkPevuNN9lrlfg7oecXUh4Rq/Q6lgEsvBlKHvamk7cJmUbLCg++Vqrg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
+ dkim=pass header.d=sifive.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qOLDpU4FtHQBxjf0+5i/5jGDoBMD5vi3Fm9uKfGtTC4=;
- b=Vsas+T3fS4KnhAIJac01kycTrdz7h1hYTtRR5U91g9kYVdrCJqprb4jjaVh4cc62skEOwkMuHN57uUshDjG5pLaZxt7Jx8wDoGAWMqQX46lxk5T73JkxNPOBGBgo4rsQSMtp5fE5prfmTJRi8dchpBg5Q1zvuosyrqezbbD+uv8=
-Received: from CO2PR04MB2343.namprd04.prod.outlook.com (2603:10b6:102:12::9)
- by CO2PR04MB2216.namprd04.prod.outlook.com (2603:10b6:102:d::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.18; Fri, 13 Mar
- 2020 05:52:43 +0000
-Received: from CO2PR04MB2343.namprd04.prod.outlook.com
- ([fe80::c1a:6c0f:8207:580b]) by CO2PR04MB2343.namprd04.prod.outlook.com
- ([fe80::c1a:6c0f:8207:580b%7]) with mapi id 15.20.2814.007; Fri, 13 Mar 2020
- 05:52:43 +0000
-From: Damien Le Moal <Damien.LeMoal@wdc.com>
-To: "atishp@atishpatra.org" <atishp@atishpatra.org>
-Subject: Re: [PATCH v2 7/9] riscv: Kendryte K210 default config
-Thread-Topic: [PATCH v2 7/9] riscv: Kendryte K210 default config
-Thread-Index: AQHV+KD2WJHquimP4U6p10GnSjyNu6hGBfYA
-Date: Fri, 13 Mar 2020 05:52:43 +0000
-Message-ID: <35457143bfab033d5807d0c189ff64404e9a99bf.camel@wdc.com>
-References: <20200312051107.1454880-1-damien.lemoal@wdc.com>
- <20200312051107.1454880-8-damien.lemoal@wdc.com>
- <CAOnJCUKqfQ7qvWUpEsPWPH9ViXD6xrNpR2Gq9=0idPoWwvGx7Q@mail.gmail.com>
-In-Reply-To: <CAOnJCUKqfQ7qvWUpEsPWPH9ViXD6xrNpR2Gq9=0idPoWwvGx7Q@mail.gmail.com>
+ bh=3walBZMtsMuImfJYoHGRfANXf1L7lmgZvKNGQhx5CFo=;
+ b=cwKDEo4l4PnMKx3Lqd/3vt51HKjBL7nX9kA01f9IuJs0pTv/ING0y62N5KXT6oN8NwK5MXSJNYj9x7MQbHaED0GkAmYvoIKNaZxaR5HRODZC1nDlLrh6eyhMazBl71azYaVMK0cNzIMXAB6kiTbWxTvkZLu42WC8AD8jMNc5mvQ=
+Received: from MN2PR13MB3552.namprd13.prod.outlook.com (2603:10b6:208:16f::22)
+ by MN2PR13MB2814.namprd13.prod.outlook.com (2603:10b6:208:f5::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.9; Fri, 13 Mar
+ 2020 06:03:37 +0000
+Received: from MN2PR13MB3552.namprd13.prod.outlook.com
+ ([fe80::c8a2:5e5e:9769:6a8a]) by MN2PR13MB3552.namprd13.prod.outlook.com
+ ([fe80::c8a2:5e5e:9769:6a8a%7]) with mapi id 15.20.2835.003; Fri, 13 Mar 2020
+ 06:03:37 +0000
+From: Yash Shah <yash.shah@sifive.com>
+To: "palmer@dabbelt.com" <palmer@dabbelt.com>, Paul Walmsley
+ <paul.walmsley@sifive.com>
+Subject: RE: [PATCH v5 0/2] cacheinfo support to read no. of L2 cache ways
+ enabled
+Thread-Topic: [PATCH v5 0/2] cacheinfo support to read no. of L2 cache ways
+ enabled
+Thread-Index: AQHV56zMBsn2T2H8dE+TYqjF1YFIfKhGKqMw
+Date: Fri, 13 Mar 2020 06:03:36 +0000
+Message-ID: <MN2PR13MB3552ADB09621545F67A914E28CFA0@MN2PR13MB3552.namprd13.prod.outlook.com>
+References: <1582175719-7401-1-git-send-email-yash.shah@sifive.com>
+In-Reply-To: <1582175719-7401-1-git-send-email-yash.shah@sifive.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.34.4 (3.34.4-1.fc31) 
 authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Damien.LeMoal@wdc.com; 
-x-originating-ip: [199.255.47.11]
+ smtp.mailfrom=yash.shah@sifive.com; 
+x-originating-ip: [120.138.124.57]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: f5953a5b-4f17-4526-0ea3-08d7c712bfe0
-x-ms-traffictypediagnostic: CO2PR04MB2216:
+x-ms-office365-filtering-correlation-id: 9b5d3a46-20f6-4ea3-1efa-08d7c714452e
+x-ms-traffictypediagnostic: MN2PR13MB2814:
+x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <CO2PR04MB221685832A3428DC1FAFA9B2E7FA0@CO2PR04MB2216.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
+x-microsoft-antispam-prvs: <MN2PR13MB28144008C5C122272CE1FF1E8CFA0@MN2PR13MB2814.namprd13.prod.outlook.com>
 x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-forefront-prvs: 034119E4F6
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(136003)(39860400002)(376002)(366004)(396003)(199004)(8936002)(8676002)(4326008)(36756003)(316002)(6486002)(81166006)(81156014)(54906003)(2616005)(53546011)(478600001)(2906002)(5660300002)(6916009)(6512007)(76116006)(91956017)(186003)(71200400001)(66446008)(64756008)(66556008)(66946007)(86362001)(66476007)(26005)(6506007);
- DIR:OUT; SFP:1102; SCL:1; SRVR:CO2PR04MB2216;
- H:CO2PR04MB2343.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ SFS:(10009020)(376002)(136003)(346002)(366004)(39840400004)(396003)(199004)(8676002)(6636002)(19627235002)(7696005)(316002)(966005)(110136005)(186003)(44832011)(26005)(54906003)(52536014)(64756008)(66556008)(478600001)(9686003)(33656002)(55016002)(86362001)(6506007)(71200400001)(4326008)(53546011)(8936002)(81166006)(66946007)(66446008)(81156014)(76116006)(5660300002)(66476007)(107886003)(2906002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR13MB2814;
+ H:MN2PR13MB3552.namprd13.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; 
+received-spf: None (protection.outlook.com: sifive.com does not designate
+ permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: JiBSrDPN4IfftQ11d+2ceJJ5px8rx0rnGD9Lyqxqn5n+RjqVBCuco8gmKg1G0HBQWm6Oq0JDervKW2acSaTJliil2DLnodIvw2MEtO/dhbyoNI0SE7EzTjcng8ylSx+MtCESA08YWYrPpRo392WHL7sjfqbj+kkBhT1FuTmrcx1skr/+ZdyvOJnbMqsm23ahjaBn60AgwEdhDmt8RO3fTwC7OQMmjUdoh4FVskzbrlTKAcKKeQuKw8yKfZ2nA5ST5agh1YYcENZZ2ZQXQwj2YOEqs2XN6AoKJATuKExjTcLpoUZINGwHTEkVrH8q3zQgF13nQAzVtR8xo2iTba0gLSz3Dy6qDjh1eC1YDvuvidSBvsy+0ZUINtdEr9Hiw6T4QbR/M86fuRgeUMM8iIMCBVwkVbqJNfbRAZ12g49uD3V1gIXKTPSMt/vjrm9x13hT
-x-ms-exchange-antispam-messagedata: Nw2csZKrLzNHl5L5GtMCTvFvPlf3G0duxvgRHB5OJ11zmMtQPmqdHyZttF/iaphLyGFom2HGQJn9mrLd3FMPvKBBWTMMHlD9NQ+U+IjuJfiy5FORkGaU3Qi7CRFk7BS+9rYBSh2xjRW3HYhKTzJT+g==
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <EDCA838906BEE54EBC2E33B32922A58F@namprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
+x-microsoft-antispam-message-info: VbG4pyzsfDSEU79EQyzB+6obtAuS+MGzbFgMdmWKBTtulkvp5uI+vQwbMSldut+RMHZJO4SKH5t3n6udo8lEELSZ5IX71LIg6y9wvFSLL1tiuJhwHRs6JqqZumBX5Hh5QjJ4u76FGcPG4BCDe5+WC6ww+Pdmw2SzgteqrQX0kCkms4dUjmJhFfWU6/oNSHBCicibfXulh/SqgFSs4CmszY9kH3sxAL9l/lML6aZO+Pwztb/c1DI338Igb+y4RPSrNbgvVji7vSJ1IYfdDwaXNJqOzX+IMxrkedDjtnECzihE05HBUavS3BOuxgGfqCu3ar5ZZNvEgKHSYONcx/t42/E3vI3iQv2XsoJGt0AhvGSuPDVe6gnLBhpXE4sraWlr5PS+vNpxpg2HajTzdGHK8xhAbpqU14eA3WSdfvZxLMzSvNxmCjH8ioYDGahd4ZFL7+/rJx1SVVKA3z3i4+ipmzFYLSYMhtwXmrgpMfDqD9ifyvMFNkQroHZEXQDSdR1EPv8tbE19g4/BmTnp0DSGGw==
+x-ms-exchange-antispam-messagedata: Zo2QwQCCR9JS5w4DXVtUpikww45zTV6v7DhBQ1rt0YQqzWK/nFxoIgnoM/+hxk+YEb/C0OBJ5cfgWebuYt1M5UyQYXXMTRwFdAt5hCRPblq3mI5m15xqJXjpfCqS0Q9DU+vLZ7VlhLZWiMKTBvi/uA==
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f5953a5b-4f17-4526-0ea3-08d7c712bfe0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Mar 2020 05:52:43.6636 (UTC)
+X-OriginatorOrg: sifive.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9b5d3a46-20f6-4ea3-1efa-08d7c714452e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Mar 2020 06:03:36.8319 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KAMl41P1GvDVNWgk/SGEytfSXaGiw1NSMs8IWc3Tg9+uf5DXNVTtr4CYTiFGvk6Gxrllz7fPwqFhc/KMUP9zQA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO2PR04MB2216
+X-MS-Exchange-CrossTenant-userprincipalname: zAN4kTb6qhBGP9uOdfwmUqKmrGenAD1143LR7nEGLUC4lZO8sCr7KjQbEB3/WmSSlzCz2la8D8XPoSeVpFwjFQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR13MB2814
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_225245_622143_8840A795 
-X-CRM114-Status: GOOD (  20.88  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200312_230340_050381_7B86D56F 
+X-CRM114-Status: GOOD (  15.97  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.223.66 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -147,75 +127,83 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- Anup Patel <Anup.Patel@wdc.com>, "palmer@dabbelt.com" <palmer@dabbelt.com>
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ Sachin Ghadi <sachin.ghadi@sifive.com>,
+ "anup@brainfault.org" <anup@brainfault.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "alexios.zavras@intel.com" <alexios.zavras@intel.com>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "tglx@linutronix.de" <tglx@linutronix.de>, "bp@suse.de" <bp@suse.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gVGh1LCAyMDIwLTAzLTEyIGF0IDEyOjAzIC0wNzAwLCBBdGlzaCBQYXRyYSB3cm90ZToNCj4g
-T24gV2VkLCBNYXIgMTEsIDIwMjAgYXQgMTA6MTEgUE0gRGFtaWVuIExlIE1vYWwgPGRhbWllbi5s
-ZW1vYWxAd2RjLmNvbT4gd3JvdGU6DQo+ID4gVGhpcyBwYXRjaCBhZGRzIGEgZGVmY29uZmlnIGZp
-bGUgdG8gYnVpbGQgTm8tTU1VIGtlcm5lbHMgbWVhbnQgZm9yDQo+ID4gYm9hcmRzIGJhc2VkIG9u
-IHRoZSBLZW5kcnl0ZSBLMjEwIFNvQy4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBEYW1pZW4g
-TGUgTW9hbCA8ZGFtaWVuLmxlbW9hbEB3ZGMuY29tPg0KPiA+IFJldmlld2VkLWJ5OiBBbnVwIFBh
-dGVsIDxhbnVwQGJyYWluZmF1bHQub3JnPg0KPiA+IFJldmlld2VkLWJ5OiBQYWxtZXIgRGFiYmVs
-dCA8cGFsbWVyZGFiYmVsdEBnb29nbGUuY29tPg0KPiA+IC0tLQ0KPiA+ICBhcmNoL3Jpc2N2L2Nv
-bmZpZ3Mvbm9tbXVfazIxMF9kZWZjb25maWcgfCA2OCArKysrKysrKysrKysrKysrKysrKysrKysr
-DQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA2OCBpbnNlcnRpb25zKCspDQo+ID4gIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBhcmNoL3Jpc2N2L2NvbmZpZ3Mvbm9tbXVfazIxMF9kZWZjb25maWcNCj4gPiANCj4g
-PiBkaWZmIC0tZ2l0IGEvYXJjaC9yaXNjdi9jb25maWdzL25vbW11X2syMTBfZGVmY29uZmlnIGIv
-YXJjaC9yaXNjdi9jb25maWdzL25vbW11X2syMTBfZGVmY29uZmlnDQo+ID4gbmV3IGZpbGUgbW9k
-ZSAxMDA2NDQNCj4gPiBpbmRleCAwMDAwMDAwMDAwMDAuLjAwZGVkOGYwYmM1NQ0KPiA+IC0tLSAv
-ZGV2L251bGwNCj4gPiArKysgYi9hcmNoL3Jpc2N2L2NvbmZpZ3Mvbm9tbXVfazIxMF9kZWZjb25m
-aWcNCj4gPiBAQCAtMCwwICsxLDY4IEBADQo+ID4gKyMgQ09ORklHX0NQVV9JU09MQVRJT04gaXMg
-bm90IHNldA0KPiA+ICtDT05GSUdfTE9HX0JVRl9TSElGVD0xNQ0KPiA+ICtDT05GSUdfUFJJTlRL
-X1NBRkVfTE9HX0JVRl9TSElGVD0xMg0KPiA+ICtDT05GSUdfQkxLX0RFVl9JTklUUkQ9eQ0KPiA+
-ICtDT05GSUdfSU5JVFJBTUZTX1NPVVJDRT0iazIxMC5jcGlvIg0KPiANCj4gSSBkb24ndCB0aGlu
-ayBpdCBpcyBhIGNvbW1vbiBwcmFjdGljZSB0byBwcm92aWRlIGEgZGVmYXVsdCByb290ZnMgZmls
-ZQ0KPiBpbiBkZWZjb25maWcgaWYgaXQgaXMgbm90DQo+IHBhcnQgb2YgdGhlIGtlcm5lbC4gSSBt
-YXkgYmUgd3JvbmcgYnV0IEkgaGF2ZSBub3Qgc2VlbiBhbiBleGFtcGxlIGJlZm9yZS4NCj4gSXQg
-aXMgZXhwZWN0ZWQgdGhhdCBkZXZlbG9wZXJzIHdpbGwgZ2VuZXJhdGUgdGhlaXIgb3duIHJvb3Rm
-cyBhbmQNCj4gbW9kaWZ5IGl0IGhlcmUuDQo+IA0KPiBJdCBtYXkgYWxzbyByYWlzZSBjb21waWxl
-ciBlcnJvcnMgZm9yIGF1dG8gYnVpbGRlcnMgaW4gYWJzZW5jZSBvZiBrMjEwLmNwaW8uDQoNCkdv
-b2QgcG9pbnQuIFdpbGwgcmVtb3ZlIGl0Lg0KDQo+IA0KPiA+ICtDT05GSUdfSU5JVFJBTUZTX0ZP
-UkNFPXkNCj4gPiArIyBDT05GSUdfUkRfQlpJUDIgaXMgbm90IHNldA0KPiA+ICsjIENPTkZJR19S
-RF9MWk1BIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfUkRfWFogaXMgbm90IHNldA0KPiA+ICsj
-IENPTkZJR19SRF9MWk8gaXMgbm90IHNldA0KPiA+ICsjIENPTkZJR19SRF9MWjQgaXMgbm90IHNl
-dA0KPiA+ICsjIENPTkZJR19CT09UX0NPTkZJRyBpcyBub3Qgc2V0DQo+ID4gK0NPTkZJR19DQ19P
-UFRJTUlaRV9GT1JfU0laRT15DQo+ID4gKyMgQ09ORklHX1NZU0ZTX1NZU0NBTEwgaXMgbm90IHNl
-dA0KPiA+ICsjIENPTkZJR19GSEFORExFIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfQkFTRV9G
-VUxMIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfRVBPTEwgaXMgbm90IHNldA0KPiA+ICsjIENP
-TkZJR19TSUdOQUxGRCBpcyBub3Qgc2V0DQo+ID4gKyMgQ09ORklHX1RJTUVSRkQgaXMgbm90IHNl
-dA0KPiA+ICsjIENPTkZJR19FVkVOVEZEIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfQUlPIGlz
-IG5vdCBzZXQNCj4gPiArIyBDT05GSUdfSU9fVVJJTkcgaXMgbm90IHNldA0KPiA+ICsjIENPTkZJ
-R19BRFZJU0VfU1lTQ0FMTFMgaXMgbm90IHNldA0KPiA+ICsjIENPTkZJR19NRU1CQVJSSUVSIGlz
-IG5vdCBzZXQNCj4gPiArIyBDT05GSUdfS0FMTFNZTVMgaXMgbm90IHNldA0KPiA+ICtDT05GSUdf
-RU1CRURERUQ9eQ0KPiA+ICsjIENPTkZJR19WTV9FVkVOVF9DT1VOVEVSUyBpcyBub3Qgc2V0DQo+
-ID4gKyMgQ09ORklHX0NPTVBBVF9CUksgaXMgbm90IHNldA0KPiA+ICtDT05GSUdfU0xPQj15DQo+
-ID4gKyMgQ09ORklHX1NMQUJfTUVSR0VfREVGQVVMVCBpcyBub3Qgc2V0DQo+ID4gKyMgQ09ORklH
-X01NVSBpcyBub3Qgc2V0DQo+ID4gK0NPTkZJR19TT0NfS0VORFJZVEU9eQ0KPiA+ICtDT05GSUdf
-TUFYUEhZU01FTV8yR0I9eQ0KPiA+ICtDT05GSUdfU01QPXkNCj4gPiArQ09ORklHX05SX0NQVVM9
-Mg0KPiA+ICtDT05GSUdfQ01ETElORT0iZWFybHljb24gY29uc29sZT10dHlTSUYwIg0KPiA+ICtD
-T05GSUdfQ01ETElORV9GT1JDRT15DQo+ID4gK0NPTkZJR19VU0VfQlVJTFRJTl9EVEI9eQ0KPiA+
-ICtDT05GSUdfQlVJTFRJTl9EVEJfU09VUkNFPSJrZW5kcnl0ZS9rMjEwIg0KPiA+ICsjIENPTkZJ
-R19CTE9DSyBpcyBub3Qgc2V0DQo+ID4gK0NPTkZJR19CSU5GTVRfRkxBVD15DQo+ID4gKyMgQ09O
-RklHX0NPUkVEVU1QIGlzIG5vdCBzZXQNCj4gPiArQ09ORklHX0RFVlRNUEZTPXkNCj4gPiArQ09O
-RklHX0RFVlRNUEZTX01PVU5UPXkNCj4gPiArIyBDT05GSUdfRldfTE9BREVSIGlzIG5vdCBzZXQN
-Cj4gPiArIyBDT05GSUdfQUxMT1dfREVWX0NPUkVEVU1QIGlzIG5vdCBzZXQNCj4gPiArIyBDT05G
-SUdfSU5QVVRfS0VZQk9BUkQgaXMgbm90IHNldA0KPiA+ICsjIENPTkZJR19JTlBVVF9NT1VTRSBp
-cyBub3Qgc2V0DQo+ID4gKyMgQ09ORklHX1NFUklPIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdf
-TEVHQUNZX1BUWVMgaXMgbm90IHNldA0KPiA+ICsjIENPTkZJR19MRElTQ19BVVRPTE9BRCBpcyBu
-b3Qgc2V0DQo+ID4gKyMgQ09ORklHX0RFVk1FTSBpcyBub3Qgc2V0DQo+ID4gKyMgQ09ORklHX0hX
-X1JBTkRPTSBpcyBub3Qgc2V0DQo+ID4gKyMgQ09ORklHX0hXTU9OIGlzIG5vdCBzZXQNCj4gPiAr
-IyBDT05GSUdfVkdBX0NPTlNPTEUgaXMgbm90IHNldA0KPiA+ICsjIENPTkZJR19ISUQgaXMgbm90
-IHNldA0KPiA+ICsjIENPTkZJR19VU0JfU1VQUE9SVCBpcyBub3Qgc2V0DQo+ID4gKyMgQ09ORklH
-X1ZJUlRJT19NRU5VIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfRE5PVElGWSBpcyBub3Qgc2V0
-DQo+ID4gKyMgQ09ORklHX0lOT1RJRllfVVNFUiBpcyBub3Qgc2V0DQo+ID4gKyMgQ09ORklHX01J
-U0NfRklMRVNZU1RFTVMgaXMgbm90IHNldA0KPiA+ICtDT05GSUdfTFNNPSJbXSINCj4gPiArQ09O
-RklHX1BSSU5US19USU1FPXkNCj4gPiArIyBDT05GSUdfREVCVUdfTUlTQyBpcyBub3Qgc2V0DQo+
-ID4gKyMgQ09ORklHX1NDSEVEX0RFQlVHIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfUkNVX1RS
-QUNFIGlzIG5vdCBzZXQNCj4gPiArIyBDT05GSUdfRlRSQUNFIGlzIG5vdCBzZXQNCj4gPiArIyBD
-T05GSUdfUlVOVElNRV9URVNUSU5HX01FTlUgaXMgbm90IHNldA0KPiA+IC0tDQo+ID4gMi4yNC4x
-DQo+ID4gDQo+ID4gDQo+IA0KPiANCg0KLS0gDQpEYW1pZW4gTGUgTW9hbA0KV2VzdGVybiBEaWdp
-dGFsIFJlc2VhcmNoDQo=
+Any comments or updates on this series?
+
+- Yash
+
+> -----Original Message-----
+> From: Yash Shah <yash.shah@sifive.com>
+> Sent: 20 February 2020 10:45
+> To: palmer@dabbelt.com; Paul Walmsley ( Sifive)
+> <paul.walmsley@sifive.com>
+> Cc: aou@eecs.berkeley.edu; anup@brainfault.org;
+> gregkh@linuxfoundation.org; alexios.zavras@intel.com; tglx@linutronix.de;
+> bp@suse.de; linux-riscv@lists.infradead.org; linux-kernel@vger.kernel.org=
+;
+> Sachin Ghadi <sachin.ghadi@sifive.com>; Yash Shah
+> <yash.shah@sifive.com>
+> Subject: [PATCH v5 0/2] cacheinfo support to read no. of L2 cache ways
+> enabled
+>=20
+> The patchset includes 2 patches. Patch 1 implements cache_get_priv_group
+> which make use of a generic ops structure to return a private attribute g=
+roup
+> for custom cacheinfo. Patch 2 implements a private attribute named
+> "number_of_ways_enabled" in the cacheinfo framework. Reading this
+> attribute returns the number of L2 cache ways enabled at runtime,
+>=20
+> This patchset is based on Linux v5.6-rc2 and tested on HiFive Unleashed
+> board.
+>=20
+> v5:
+> - Since WayEnable is 8bits, mask out and return only the last 8 bit in
+>   l2_largest_wayenabled()
+> - Rebased on Linux v5.6-rc2
+>=20
+> v4:
+> - Rename "sifive_l2_largest_wayenabled" to "l2_largest_wayenabled" and
+>   make it a static function
+>=20
+> v3:
+> - As per Anup Patel's suggestion[0], implement a new approach which uses
+>   generic ops structure. Hence addition of patch 1 to this series and
+>   corresponding changes to patch 2.
+> - Dropped "riscv: dts: Add DT support for SiFive L2 cache controller"
+>   patch since it is already merged
+> - Rebased on Linux v5.5-rc6
+>=20
+> Changes in v2:
+> - Rebase the series on v5.5-rc3
+> - Remove the reserved-memory node from DT
+>=20
+> [0]: https://lore.kernel.org/linux-
+> riscv/CAAhSdy0CXde5s_ya=3D4YvmA4UQ5f5gLU-
+> Z_FaOr8LPni+s_615Q@mail.gmail.com/
+>=20
+> Yash Shah (2):
+>   riscv: cacheinfo: Implement cache_get_priv_group with a generic ops
+>     structure
+>   riscv: Add support to determine no. of L2 cache way enabled
+>=20
+>  arch/riscv/include/asm/cacheinfo.h   | 15 ++++++++++++++
+>  arch/riscv/kernel/cacheinfo.c        | 17 ++++++++++++++++
+>  drivers/soc/sifive/sifive_l2_cache.c | 38
+> ++++++++++++++++++++++++++++++++++++
+>  3 files changed, 70 insertions(+)
+>  create mode 100644 arch/riscv/include/asm/cacheinfo.h
+>=20
+> --
+> 2.7.4
+
 
