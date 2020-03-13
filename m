@@ -2,81 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 373721841C2
-	for <lists+linux-riscv@lfdr.de>; Fri, 13 Mar 2020 08:53:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D8AA31841C5
+	for <lists+linux-riscv@lfdr.de>; Fri, 13 Mar 2020 08:53:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Type:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o2MO+pNVTGhfQHncGwC2iRlM8Z70M503X3V3OHDCjZ8=; b=bBJ+5FibAOOmrLeoBEyOCnj9P
-	Uz8fz5hsxWgMpCMbL3NNGidWLlF2cyS6dTRwb3nHBADhpa95f0Q43hakp59Rq5elAeb1qZsVv6tPo
-	zikDsHO/nFtA+wfryslaCRbDkfty5wPiwuJoDjztejtDCZ4rGW4XFDnPYiyC25tn/Hku8lgZrjG/I
-	jvM5YpEj+qUY5JlrJnCIIDl8ZKwIZv6+VRpoqPP5s1D379jStKpGELyPQvgRxXtqVCyzluxwv/gko
-	ogSSRoMEnCT4kh7g00qK97HZ4ZD/VDydAPXeluvenyhvgC+eVx/ZJ/rP0vS9AwUVV+QGbxcBfktuz
-	H43PCW2xw==;
+	 bh=UeupZ5za/8D4buwto3UqZ0ChAeK7XLNkBlF6aE20YoE=; b=Z9X28OXSIdsd54i/XU0+HD4m2
+	dmss+lwduOTlAiKg+2uEX8F5Yup9t/0MZJvcNKJ9aClPuq8QNmbL1qA2Gwc1IASYp6sZ8uWvIID8z
+	TfjDIX6JPZCYJsw2Dih+7rRuhF73U7rw9lcwtrG6Acg2VmEUWOPHZ7PobVKREa/n+iJjMKCKviy0i
+	t+F1xQ8GGdPFP0sg+hswLtCaWBlhMGGqnxR99mPAiA2WHdZeR/HbicqOI3xpJfx2eIUnvJw5sr16n
+	o6zizSu893BbKYfyw33tdXuYH7PM/8jSHe8qOKtWAv+j56VUdbaB7j6PYAw2Tl/okC4pOUNrLScge
+	Zo+5UwEHA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCf8U-00006z-TC; Fri, 13 Mar 2020 07:53:38 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1jCf8a-0000Bq-Ci; Fri, 13 Mar 2020 07:53:44 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCf8R-000063-1B; Fri, 13 Mar 2020 07:53:36 +0000
+ id 1jCf8W-00009M-4W; Fri, 13 Mar 2020 07:53:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1584086015; x=1615622015;
+ t=1584086019; x=1615622019;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=VzbtfCv0+v3UpQ1c6VZC9sCK2uORkqaX0W2/L7bKdDM=;
- b=j1WjpUwMwaF5/6HY++GPKeoqDxVKaS/ziq2EZ13PK7TIPm+/bIhiYhPT
- J1Rxg4EMl92k5I7ZUvr6UNQUOcwMV1GS5BvUJqLOOUFcop1mYbsJmtlxr
- hycTqVsajjQOcVeBKecgQeSCdUpmkN71CGR8YkjyACvCTAqhum9kuhiKp
- rHGJBTF7sacxkMA/ekcG3qIS0nDTUhyNOzmuEzreQBOT1hZwWyA7oc4GK
- gvsR+Kd/o0bQ8ljSbmjre2Gv6/HU6D4wvgQqApwcc4mPEnrbkk1t34I6W
- rdvViOWsH2AiBghwPp9ZgCfl9V8FPf+7Rm2e31CVyK0379LtaE3y5abI7 A==;
-IronPort-SDR: doPZgvi6EXQKQ8kQz/Lm43Y9pYqWcnHtkC2wcOoGL2yMYUVlD+Zsqn6C1yzmvOm0s+1XVZ+Rh9
- oNrDqIUtKcN1AxjhVVlTp6WCaFfkX48MHi5BiWkQZdXXvYWcp62rs+nxHBHIEtgRRGzz61A2Qf
- qJvR9ZSFbL17lOWc9UM6odcGHP5tlRH5iiR9ksRBKRqkC5PaC2W+tc9dAaL5A60mIKdNtYvOF+
- se+L5S/Xs2JGM6F/x2kD9fPDGQ3+eT5ilj+MU3pyzcyEe3Q/olOEzDXJRUhM1ZA8AFJ3WTxxUp
- ZSM=
-X-IronPort-AV: E=Sophos;i="5.70,547,1574092800"; d="scan'208";a="132827555"
-Received: from mail-bn8nam11lp2171.outbound.protection.outlook.com (HELO
- NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.171])
- by ob1.hgst.iphmx.com with ESMTP; 13 Mar 2020 15:53:26 +0800
+ bh=xaxXPMrIsfuL0yrFV+LAnWNnEsCUOjyQn8sL5gmqPg8=;
+ b=DDbUUeJPupaY9FILQ9bRQCo25KGCr3HOpMz2TYTtikjDNpvsDI5Oq/3p
+ g1hFpdToUHIpYHnfT/GUgQTsI+EJC9aV8RY8N0FDsxv9srUtKCc9chHxU
+ VG+YlWi5iHUQkO2FtfxTOQQqtzElE3Hpcmt8lPJ+iXvonHNkMCiRa56CW
+ 2yDNYgqMHWbmB/jZGvF7D3Z6Fw44KG85NYSGVkbkJvisAj+YdVcz0bc2e
+ E9wmIDY7WFbfjOHUt8q5QqBuECR6AhWIZEq2xQ+ushHg5YcDGH1vRWheq
+ Fd+R+ElvkgYPYvjlFCSeqtcrDBNv1CCTmAdVrV2fGDSpWD2u1bzc+dFuY Q==;
+IronPort-SDR: Kk+Ayjx7zEU9gRgmn4u6DoFJjzl/2pk1OF4kgIY+AS3QBTEL3TPlT5cxo122NHMjesJ1Cj2F1/
+ A0l2kX2ut+eqyZVgqNM8YufqqzCKmc86x0+2LcECl1mTVMFDW6JOmcscnWGUz8f6KJuq3xy4tZ
+ XQ3TVbe7m3tapq01XTfOdX1dvcR8nOEigJ9BbT8C7zNnARvAHbMRseangddSohuxmp9tn5CETN
+ 7r8057UnZRgNFcg6C5/hbHWTJtuUtHk5kHIKkyZzSvMTHqkmIVSXvLVQpN3EGuF5Dae/SQCABn
+ DQk=
+X-IronPort-AV: E=Sophos;i="5.70,547,1574092800"; d="scan'208";a="132374563"
+Received: from mail-sn1nam04lp2055.outbound.protection.outlook.com (HELO
+ NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.55])
+ by ob1.hgst.iphmx.com with ESMTP; 13 Mar 2020 15:53:38 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YycXnYiRIMecX34zj3GBYu1qW3+hzEPBCU4D8y+LQM78hfUHn2ZniOPVfYYIT85XzX2i3zSbDP9DVIeWKrc+xw0Gta+gGKa4rgHxTPdPnm2HaQueRjtMGdX4hPyoe8kCDl7UGdCVnysA0fEXF2PHCmv0FH88JI5ZhMFwGGaLsS/wPDFVrcvniowJ9r808vlIqHLjwmNMfR3lB2EuyUWWIuBOp9FiGHdOFDJ9+FCmtgAYRJIqAdjs7ZZNTXKjAs99orRwaQk1ANJPGeW5Wqel3a111+SJbWuHPKS5nHVH795kujbfjg5nRepRgvx9LakX2j/x+EUWjPgf4c1CaiIkWQ==
+ b=mSZFOn8ii1aI6vUEI93woHtkHXXL8t34gkv05FBPYRArFf2605Dczxc5R70qKYgy4dmZebOkkr8e0J/q+ejfWLMZT+WDkaZbt67sWeNTS2aeBVY3WpGWf65YT/lUFSeLmoy7WjJveALlxFsl1RN2jsUy3VJvulgDIEphGaYQUGVvapWf9Uv2WkzeBU5o9ce2KbjP2LMaaaDSl51YZ8FJT1qsRtprNT9gqS+WVUgCQc6cWHx4/h3PfYmrLRM6SQW7+VI02phRbgLVqELzQpXQ+AVda9J01Y03nwKxg4LVC9f+SVxprNvRffTu/elJ61UOECKa1Ph1Muzc5VtbZLnNWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=o2MO+pNVTGhfQHncGwC2iRlM8Z70M503X3V3OHDCjZ8=;
- b=DjPJSYWk7gLurfkSAhUbHkjUUWcfk421YszSvzHuOyTSHxha8D1EvC+HonRXWPDnqOGDVg4UljO6HTH1zioRRCBpuk1Gfb3SPeDOEz/y7FK/dDcdmdFR5MFalOkxIkPCIbD6jfFoslITnphFWm+MQxbfavjwQRT7LXLjrqwIO/jqn+OzRAgT+ZxMQeN7Edh5/FU747JjheRguOF3F5fxs/7sx54MBOEB+mrEVBTgPQkdPBYYuvlo7zYPKe/ct7HjoFowPaaQ+EIApFjwLzVbKTalg/07ZTBSyIYp0E5uOzbtr8gWNP0W25SMTz9u0cFNhXLwhgYHHlQ5AzbuAsS9FQ==
+ bh=UeupZ5za/8D4buwto3UqZ0ChAeK7XLNkBlF6aE20YoE=;
+ b=EmRpmt4y3QdP2SJbLYWtAEyFbcRLiCAzc7Wl7YE5qmyWqGu7lOlm9zHZwa4difi5IHD1f0uucPBAOrnOiJK8mt+btJ+v+RkI3L0n8+M1GYcQldllCel12QJFaUY5cqFE/I5CopISfTjobub8p9YcC8frrptTL03U2tTQZ3+TjhS7sC3m6PcvhzufkeMG9n6YP/TwgrIkWGxzKdBMUpqPB8qh7G2hHEpq+uqjm9TkQsd/X0ti3NuAGXXRdbl7qrQFuAoyWBo8dXJ1lyc1o5cu1G9fw7AWf0k/MGsAmzFhTClxdTMuo0txPgdg458hwDSlw3PDpv268sZTuqg+v6Xs5A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=o2MO+pNVTGhfQHncGwC2iRlM8Z70M503X3V3OHDCjZ8=;
- b=m+/EIU+8/jri64ySiHRG+OowE4QFBvqC4CE1jPa8wXKC4/vMIWtUPkDA8hEP0Ta/rkXfB//ESdJj4w8NnRQHozdr9zLAOFHKfO7MNEMmN/Qk8KJnwKBDkxXNQe4Dgi//B9t2ebqFkYIExFfd1BAnWjr7d5rA6cmlS1Zozbeawig=
+ bh=UeupZ5za/8D4buwto3UqZ0ChAeK7XLNkBlF6aE20YoE=;
+ b=LviXpm3eQfhQNtepEFzoc3xFOIgIe6YrNN6svNZ2c8wNoIgxN7uMCuWMsi/KHEVwr3Zq1CDa+j7lmTf3dPxuy/nzB9We1lkT6MOkO+APiGwF5kBwvJJrGIUE4iYrcpvGggBQCXUNAeFAJbdo8bnTGNrAAd3OUJ7MHBzxukjapSk=
 Authentication-Results: spf=none (sender IP is )
  smtp.mailfrom=Anup.Patel@wdc.com; 
 Received: from MN2PR04MB6061.namprd04.prod.outlook.com (2603:10b6:208:d8::15)
  by MN2PR04MB6637.namprd04.prod.outlook.com (2603:10b6:208:1ef::14)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.16; Fri, 13 Mar
- 2020 07:53:25 +0000
+ 2020 07:53:38 +0000
 Received: from MN2PR04MB6061.namprd04.prod.outlook.com
  ([fe80::159d:10c9:f6df:64c8]) by MN2PR04MB6061.namprd04.prod.outlook.com
  ([fe80::159d:10c9:f6df:64c8%6]) with mapi id 15.20.2814.018; Fri, 13 Mar 2020
- 07:53:25 +0000
+ 07:53:37 +0000
 From: Anup Patel <anup.patel@wdc.com>
 To: Palmer Dabbelt <palmer@dabbelt.com>,
  Paul Walmsley <paul.walmsley@sifive.com>,
  Albert Ou <aou@eecs.berkeley.edu>, Paolo Bonzini <pbonzini@redhat.com>,
  Radim K <rkrcmar@redhat.com>
-Subject: [PATCH v11 01/20] RISC-V: Export riscv_cpuid_to_hartid_mask() API
-Date: Fri, 13 Mar 2020 13:21:12 +0530
-Message-Id: <20200313075131.69837-2-anup.patel@wdc.com>
+Subject: [PATCH v11 02/20] RISC-V: Add bitmap reprensenting ISA features
+ common across CPUs
+Date: Fri, 13 Mar 2020 13:21:13 +0530
+Message-Id: <20200313075131.69837-3-anup.patel@wdc.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200313075131.69837-1-anup.patel@wdc.com>
 References: <20200313075131.69837-1-anup.patel@wdc.com>
@@ -90,46 +91,45 @@ Received: from wdc.com (1.39.129.91) by
  MA1PR0101CA0057.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:20::19) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.14 via Frontend
- Transport; Fri, 13 Mar 2020 07:52:55 +0000
+ Transport; Fri, 13 Mar 2020 07:53:29 +0000
 X-Mailer: git-send-email 2.17.1
 X-Originating-IP: [1.39.129.91]
 X-MS-PublicTrafficType: Email
 X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: c95151df-1e13-4ab4-5867-08d7c7239ba8
+X-MS-Office365-Filtering-Correlation-Id: 4fcd1629-db75-4365-1bb7-08d7c723a2ad
 X-MS-TrafficTypeDiagnostic: MN2PR04MB6637:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MN2PR04MB663794CA88D170E0CEC898928DFA0@MN2PR04MB6637.namprd04.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <MN2PR04MB6637515788C7CB4AA57756C88DFA0@MN2PR04MB6637.namprd04.prod.outlook.com>
 WDCIPOUTBOUND: EOP-TRUE
-X-MS-Oob-TLC-OOBClassifiers: OLM:3968;
+X-MS-Oob-TLC-OOBClassifiers: OLM:317;
 X-Forefront-PRVS: 034119E4F6
 X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(4636009)(39860400002)(346002)(376002)(136003)(396003)(366004)(199004)(6666004)(1006002)(4326008)(8886007)(8676002)(81156014)(478600001)(7696005)(5660300002)(8936002)(36756003)(81166006)(52116002)(1076003)(44832011)(66476007)(26005)(4744005)(316002)(66946007)(956004)(55016002)(186003)(2616005)(16526019)(54906003)(2906002)(7416002)(66556008)(86362001)(110136005)(36456003)(42976004);
+ SFS:(10019020)(4636009)(39860400002)(346002)(376002)(136003)(396003)(366004)(199004)(6666004)(1006002)(4326008)(8886007)(8676002)(81156014)(478600001)(7696005)(5660300002)(8936002)(36756003)(81166006)(52116002)(1076003)(44832011)(66476007)(26005)(316002)(66946007)(956004)(55016002)(186003)(2616005)(16526019)(54906003)(2906002)(7416002)(66556008)(86362001)(110136005)(36456003)(42976004);
  DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6637;
  H:MN2PR04MB6061.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; 
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ICP5Ol+j6pAsVUiM9XBkTg+DMe/GC1q6Agmqm+oG9M4CnOXQ6JxZ/TyK7UvQqV2Slp+eLVnZdAeAzjcYjZkjcAF9JtYwNLxiYcvWN318X6Gm/hznPeDIFe6fqQdRLIKApWlxx1w+/fZeOEsP8Vas5laQF5qVsz+In5jfaYfEvMmjzyFo1yI4Xo9jl10sYkGVmFKsksP5JWEKucRxXaal2PVMpVjO4OlyztLgbBL+mUwlSd26S5/7Nhis9f+FNnWgBeW74+Yr9ghk/9sqvuI3FiOByKkZxWp9uwTL7FF+todIigLcFVPsrEPWE+Y0JURvdI+tFAdiFm3QiuGvk4N0BpLuc1t4EOQn5LqiqRaOTPXr1rAN0g9IZNm5yHukeVwn7TImSJWlj+zYt0Ku4aVmcNo7Gz999bU5qALPumDoBZfRlk733lAcYrnHzaqHA7JRB8YOICD7UtHWlUHtSNOUbn9LEHwFYBohr8LHtFlzBa6RcPoTNsX1cy/xteKV+FKFfCTCpoUsEIsaI+hczkB1JQ==
-X-MS-Exchange-AntiSpam-MessageData: hybDEmOmMVxEZi1bAp2P9aA//0zXYwkNMGlJo6ureCPbkT9XOzjO1mc598DSIGUFk5y6BjFfIYj8BJm2WSwRHt2eVs9mGu7McE3a4qePI+Dz/NRq9m4K/IOmKM2DjlCyp4Rx9h9ptpa7QMm1GtV6Iw==
+X-Microsoft-Antispam-Message-Info: qH5IzVpVtHKe+/rtD0T2Gmzxy0airvWiks6q6z+Xg8jCrTp+w7BlgXKCJ+E6AYpjYYli7aY5n+dgDL13wUwmQfynDRpvrxsu+3aoLIQ0hY0Da0v6tSM2XP+Ws2EhNaIX+24o+eRkBpsLhjRZBAb3EUNEliWnP/eMMwqvgPLp8rH8Hk73mC+ydHSeZpboyl+eheO/hTy0pZZ5snQMwerSc597lVOtoLle5eD71hGYB8act8MKgXqiLAKp8HhhNBnObTMwQ8BSFkr1hzf3Jdy01V5w54uRSwLzVON96jwXhXM2PGt6NmEgURpzyleNA/34q1bomtP7inE9RJMBEmn6mOTOsxflrtdqkW+NDgH7MOTeRVElKnvqr6u2tpkJNweCkjRyJT445gjLS9MDRx62IBRvBBreI6IFS4oS++E+ZcdUS7FRPRreU0/Ww2pj78khXg+Nnp+7y0IE4ekGflQjQ8WBbL+aayMZDA9d8pfcCC8ev831jOns9i2iltELZgK06ug0jPkwWvNuALFi+uK95g==
+X-MS-Exchange-AntiSpam-MessageData: ba8E/mohIVsdSwp57srm2MqF4FW+W0jp6TyE1RBrYEcmUKx8hEi8825MHj+G6jTAhYCFbQiZCLbvBG0hSZljkEq5KydIoK1O9y++uSZUsdx3ancwAEceyutx+zC3OmXl4XGQM7DBRYRRR41jHbSxuQ==
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c95151df-1e13-4ab4-5867-08d7c7239ba8
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2020 07:53:24.9786 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4fcd1629-db75-4365-1bb7-08d7c723a2ad
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2020 07:53:37.9022 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1+BnRAKISxzCyN8PHN/s/coQ+610BWKbH9EUOtseMCF2lu8zUUM8K1M6ctmuDY4dyYcqv76/V42r/iD7rciZQw==
+X-MS-Exchange-CrossTenant-UserPrincipalName: dy4OtL9f4fFMG6tbU47jYSwBfWSB/UL6g7dvNa7fsaXTRs3t5syot1zKUCfekuNffeHsqUqBZpx7oNAL1mMyqQ==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6637
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_005335_088304_17A1C2FF 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200313_005340_220856_84D691A0 
+X-CRM114-Status: GOOD (  16.03  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -159,35 +159,207 @@ Cc: Damien Le Moal <damien.lemoal@wdc.com>, kvm@vger.kernel.org,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The riscv_cpuid_to_hartid_mask() API should be exported to allow
-building KVM RISC-V as loadable module.
+This patch adds riscv_isa bitmap which represents Host ISA features
+common across all Host CPUs. The riscv_isa is not same as elf_hwcap
+because elf_hwcap will only have ISA features relevant for user-space
+apps whereas riscv_isa will have ISA features relevant to both kernel
+and user-space apps.
+
+One of the use-case for riscv_isa bitmap is in KVM hypervisor where
+we will use it to do following operations:
+
+1. Check whether hypervisor extension is available
+2. Find ISA features that need to be virtualized (e.g. floating
+   point support, vector extension, etc.)
 
 Signed-off-by: Anup Patel <anup.patel@wdc.com>
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+Reviewed-by: Alexander Graf <graf@amazon.com>
 ---
- arch/riscv/kernel/smp.c | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/riscv/include/asm/hwcap.h | 22 +++++++++
+ arch/riscv/kernel/cpufeature.c | 83 ++++++++++++++++++++++++++++++++--
+ 2 files changed, 102 insertions(+), 3 deletions(-)
 
-diff --git a/arch/riscv/kernel/smp.c b/arch/riscv/kernel/smp.c
-index eb878abcaaf8..6fc7828d41e4 100644
---- a/arch/riscv/kernel/smp.c
-+++ b/arch/riscv/kernel/smp.c
-@@ -10,6 +10,7 @@
+diff --git a/arch/riscv/include/asm/hwcap.h b/arch/riscv/include/asm/hwcap.h
+index 1bb0cd04aec3..5ce50468aff1 100644
+--- a/arch/riscv/include/asm/hwcap.h
++++ b/arch/riscv/include/asm/hwcap.h
+@@ -8,6 +8,7 @@
+ #ifndef _ASM_RISCV_HWCAP_H
+ #define _ASM_RISCV_HWCAP_H
  
- #include <linux/cpu.h>
- #include <linux/interrupt.h>
-+#include <linux/module.h>
- #include <linux/profile.h>
- #include <linux/smp.h>
- #include <linux/sched.h>
-@@ -63,6 +64,7 @@ void riscv_cpuid_to_hartid_mask(const struct cpumask *in, struct cpumask *out)
- 	for_each_cpu(cpu, in)
- 		cpumask_set_cpu(cpuid_to_hartid_map(cpu), out);
- }
-+EXPORT_SYMBOL_GPL(riscv_cpuid_to_hartid_mask);
++#include <linux/bits.h>
+ #include <uapi/asm/hwcap.h>
  
- bool arch_match_cpu_phys_id(int cpu, u64 phys_id)
+ #ifndef __ASSEMBLY__
+@@ -22,6 +23,27 @@ enum {
+ };
+ 
+ extern unsigned long elf_hwcap;
++
++#define RISCV_ISA_EXT_a		('a' - 'a')
++#define RISCV_ISA_EXT_c		('c' - 'a')
++#define RISCV_ISA_EXT_d		('d' - 'a')
++#define RISCV_ISA_EXT_f		('f' - 'a')
++#define RISCV_ISA_EXT_h		('h' - 'a')
++#define RISCV_ISA_EXT_i		('i' - 'a')
++#define RISCV_ISA_EXT_m		('m' - 'a')
++#define RISCV_ISA_EXT_s		('s' - 'a')
++#define RISCV_ISA_EXT_u		('u' - 'a')
++
++#define RISCV_ISA_EXT_MAX	64
++
++unsigned long riscv_isa_extension_base(const unsigned long *isa_bitmap);
++
++#define riscv_isa_extension_mask(ext) BIT_MASK(RISCV_ISA_EXT_##ext)
++
++bool __riscv_isa_extension_available(const unsigned long *isa_bitmap, int bit);
++#define riscv_isa_extension_available(isa_bitmap, ext)	\
++	__riscv_isa_extension_available(isa_bitmap, RISCV_ISA_EXT_##ext)
++
+ #endif
+ 
+ #endif /* _ASM_RISCV_HWCAP_H */
+diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
+index a5ad00043104..ac202f44a670 100644
+--- a/arch/riscv/kernel/cpufeature.c
++++ b/arch/riscv/kernel/cpufeature.c
+@@ -6,6 +6,7 @@
+  * Copyright (C) 2017 SiFive
+  */
+ 
++#include <linux/bitmap.h>
+ #include <linux/of.h>
+ #include <asm/processor.h>
+ #include <asm/hwcap.h>
+@@ -13,15 +14,57 @@
+ #include <asm/switch_to.h>
+ 
+ unsigned long elf_hwcap __read_mostly;
++
++/* Host ISA bitmap */
++static DECLARE_BITMAP(riscv_isa, RISCV_ISA_EXT_MAX) __read_mostly;
++
+ #ifdef CONFIG_FPU
+ bool has_fpu __read_mostly;
+ #endif
+ 
++/**
++ * riscv_isa_extension_base() - Get base extension word
++ *
++ * @isa_bitmap: ISA bitmap to use
++ * Return: base extension word as unsigned long value
++ *
++ * NOTE: If isa_bitmap is NULL then Host ISA bitmap will be used.
++ */
++unsigned long riscv_isa_extension_base(const unsigned long *isa_bitmap)
++{
++	if (!isa_bitmap)
++		return riscv_isa[0];
++	return isa_bitmap[0];
++}
++EXPORT_SYMBOL_GPL(riscv_isa_extension_base);
++
++/**
++ * __riscv_isa_extension_available() - Check whether given extension
++ * is available or not
++ *
++ * @isa_bitmap: ISA bitmap to use
++ * @bit: bit position of the desired extension
++ * Return: true or false
++ *
++ * NOTE: If isa_bitmap is NULL then Host ISA bitmap will be used.
++ */
++bool __riscv_isa_extension_available(const unsigned long *isa_bitmap, int bit)
++{
++	const unsigned long *bmap = (isa_bitmap) ? isa_bitmap : riscv_isa;
++
++	if (bit >= RISCV_ISA_EXT_MAX)
++		return false;
++
++	return test_bit(bit, bmap) ? true : false;
++}
++EXPORT_SYMBOL_GPL(__riscv_isa_extension_available);
++
+ void riscv_fill_hwcap(void)
  {
+ 	struct device_node *node;
+ 	const char *isa;
+-	size_t i;
++	char print_str[BITS_PER_LONG + 1];
++	size_t i, j, isa_len;
+ 	static unsigned long isa2hwcap[256] = {0};
+ 
+ 	isa2hwcap['i'] = isa2hwcap['I'] = COMPAT_HWCAP_ISA_I;
+@@ -33,8 +76,11 @@ void riscv_fill_hwcap(void)
+ 
+ 	elf_hwcap = 0;
+ 
++	bitmap_zero(riscv_isa, RISCV_ISA_EXT_MAX);
++
+ 	for_each_of_cpu_node(node) {
+ 		unsigned long this_hwcap = 0;
++		unsigned long this_isa = 0;
+ 
+ 		if (riscv_of_processor_hartid(node) < 0)
+ 			continue;
+@@ -44,8 +90,24 @@ void riscv_fill_hwcap(void)
+ 			continue;
+ 		}
+ 
+-		for (i = 0; i < strlen(isa); ++i)
++		i = 0;
++		isa_len = strlen(isa);
++#if IS_ENABLED(CONFIG_32BIT)
++		if (!strncmp(isa, "rv32", 4))
++			i += 4;
++#elif IS_ENABLED(CONFIG_64BIT)
++		if (!strncmp(isa, "rv64", 4))
++			i += 4;
++#endif
++		for (; i < isa_len; ++i) {
+ 			this_hwcap |= isa2hwcap[(unsigned char)(isa[i])];
++			/*
++			 * TODO: X, Y and Z extension parsing for Host ISA
++			 * bitmap will be added in-future.
++			 */
++			if ('a' <= isa[i] && isa[i] < 'x')
++				this_isa |= (1UL << (isa[i] - 'a'));
++		}
+ 
+ 		/*
+ 		 * All "okay" hart should have same isa. Set HWCAP based on
+@@ -56,6 +118,11 @@ void riscv_fill_hwcap(void)
+ 			elf_hwcap &= this_hwcap;
+ 		else
+ 			elf_hwcap = this_hwcap;
++
++		if (riscv_isa[0])
++			riscv_isa[0] &= this_isa;
++		else
++			riscv_isa[0] = this_isa;
+ 	}
+ 
+ 	/* We don't support systems with F but without D, so mask those out
+@@ -65,7 +132,17 @@ void riscv_fill_hwcap(void)
+ 		elf_hwcap &= ~COMPAT_HWCAP_ISA_F;
+ 	}
+ 
+-	pr_info("elf_hwcap is 0x%lx\n", elf_hwcap);
++	memset(print_str, 0, sizeof(print_str));
++	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
++		if (riscv_isa[0] & BIT_MASK(i))
++			print_str[j++] = (char)('a' + i);
++	pr_info("riscv: ISA extensions %s\n", print_str);
++
++	memset(print_str, 0, sizeof(print_str));
++	for (i = 0, j = 0; i < BITS_PER_LONG; i++)
++		if (elf_hwcap & BIT_MASK(i))
++			print_str[j++] = (char)('a' + i);
++	pr_info("riscv: ELF capabilities %s\n", print_str);
+ 
+ #ifdef CONFIG_FPU
+ 	if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
 -- 
 2.17.1
 
