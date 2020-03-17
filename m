@@ -2,155 +2,132 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CBEE188A36
-	for <lists+linux-riscv@lfdr.de>; Tue, 17 Mar 2020 17:27:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65BB7188AFC
+	for <lists+linux-riscv@lfdr.de>; Tue, 17 Mar 2020 17:46:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EIzOciiFpPp1sQzpGEUBr6eHXjX2bEc2vxNCrPI5zN4=; b=URJDTeTNJCkP6RS7JtpfjGw/J
-	TDuqr6v8tIl1N3Rq2xYwECAQFR2+m2DLdq+YOLfOq2A4Ehcz+oUMMixFJpJGUcDbSP2W1lG/HRPHy
-	jjHYN1HXJUj0VBGwt0oefNucm/xCtw8U9i3qOIbJqOjarOxcjgwfE/ewJbkM7O2gHljeCAsdGx6ly
-	+oWHscnKWp7mA95KgW5zuOdGTvphiT5KArHDGeG8mWY4wORaTuLdt/4gEdQkWlREA9OiE2pMODNBg
-	pgmYWQ62Xl+JSTg9K+22hyz/Gk9mhX7ouCGRh3rTmyKI4DjpWTq07elihgqa39kfSfW0qCdtQK13m
-	fwZtXzsyA==;
+	 bh=Gm6ch8xR8b3H1sbgs0W8m2O59cJyjN8XfUoPDBtfv7w=; b=uoz4bc+AK3TDTQR0YffQ35L7i
+	pRohLGnkkqnr+tMJe1bbg2nuDi5m4nCZuw+Ce3bGwZeK6CbpKbbxarcCTT20+3cytemGbXlXu0vhJ
+	KxjmH+2nOF/HiP2Wqk+LWmURvgujco8206Jyj9Ldeocyeenh52OBt2rK6r98nQuwKyYaKcBuyXOOU
+	lCHjUac/nEsThIM/rx14rAMWSsFaAz33yl7Y+5vKexpBL0SxAm6KKLdkXQfH5WJh3+FHUNK3DzZfI
+	NOsJ0gB3ZK8e0cEj2DT/DWwulTOvH0s3BEwPppyB+S0Wc22MzUyxAg4ic4P04dm7tw2D0/hU/I+a3
+	r0tdIUy7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEF3o-00080c-RJ; Tue, 17 Mar 2020 16:27:20 +0000
-Received: from esa6.microchip.iphmx.com ([216.71.154.253])
+	id 1jEFMa-0001H5-Je; Tue, 17 Mar 2020 16:46:44 +0000
+Received: from mail-vi1eur05on2091.outbound.protection.outlook.com
+ ([40.107.21.91] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEF3Y-0007qz-WB; Tue, 17 Mar 2020 16:27:08 +0000
-Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
- Claudiu.Beznea@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
- envelope-from="Claudiu.Beznea@microchip.com";
- x-sender="Claudiu.Beznea@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa6.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
- envelope-from="Claudiu.Beznea@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa6.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Claudiu.Beznea@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: hiZgdZ5wt/s+H4xus3clYlfc8H3Oq+kIGETbH0Vmd1tCk+1PeKx6wDgeGGKGGEBhNzSGIdgNSG
- vP5XXb6SsLhYakhhXl/cHRj9L+ed0wQQe/9DqTGxjx6GGoefl+QLHXp1fQjp7M2o59K0MMjM5N
- 7I/EBXuUNPxtgBIkV/PGGCo4R+8uyojo/0sPpG3cmZfIWkGryIUZP55CsiXAPsX3NieX175ejF
- R/ErTnG095oMB9vPF44NN7II+WesfyYp+gC2rHqioOAmMsi3MUcH8Ar53x2IQDXnztyMRKPBtL
- pBE=
-X-IronPort-AV: E=Sophos;i="5.70,565,1574146800"; 
-   d="scan'208";a="5953021"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 17 Mar 2020 09:26:53 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 17 Mar 2020 09:26:53 -0700
-Received: from NAM02-BL2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Tue, 17 Mar 2020 09:26:53 -0700
+ id 1jEFMF-0000z2-1S; Tue, 17 Mar 2020 16:46:24 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KlEFxC+IfhHDXhsVgPEoqQcELVi/QrCc+hvIMCDhmw96PZgqgRpuxM7NVYxB++C12paY48UZfJw5y9uf76yRbT0DgtgQGexKG2+hzpio08DneFotLXDR3oSwcCgSfRryeCdCpb3pCsNGU18O7GJzmfxPueR27nSqWLr0w8EiRhIqllPLwstoSAKt7dNKe6KUI9UFJw5X0dWG/1zd8ludmrsTDHd9LtfiQkw0cHZumhhVEHtArz/qdnI2hMvril1r8iuv98eR6THaBw6Do3Zb6FLP1Iyxx5MaA3k2eKxH4a16NRj59Mb2qVthqEpPyxIAeYuUeWvnUXSUp2SMgrJnug==
+ b=mrvvEqP2ygVb+Sd0YTwao/vWLbzJGQWL01F0VwUM1XQdNghGuIhfKBa6eXHje/eP6z1wsAP0E+MQox2YP4a//kQcATTduGfZzMYkUIhkyi+a3AX+4wV+vAB55VzXGb07bXFRemJ3eqhZk9Oqlfp+71NqVDmopUZbIvx6LFrk/okwpQ7JcxOTvijIrubpFmAtMkXdpQj/TXb6sftsBGP238c9Fn5ufR9d2UebaQCAPvm+VGyfnJ6MNNyjciPB94/YZcfejUrEaeD2VyYSbZ5bd1CB/t8l45rNy+4bTpLIrnRZY46r8C93Nr1x8cA6H3gqQbm/aCNTIRUHxd/JtSg+Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EIzOciiFpPp1sQzpGEUBr6eHXjX2bEc2vxNCrPI5zN4=;
- b=HN+SCIe79XvpnJf/w0UsIQJZgCFdrWHo8wOyY3QiY/3V7wJ8kr1JuvQkD5xtt9d4YH6bh+eqofoGvV2cmqI6EzQU9PZgifTD+OkqoPT4gib4Zub4qcUAUaCbjo4LkNlDEHBwq24KapBEXuQNAgr2QQ7yqNqPGH/G1AQRt6qSk9h0rR640ZnN96GlMCgccBcpTXxVnzgC+qMTS7m0zxf9JVd/YfnYDwzfVdZaaVyRn3h+T23vvF6HN5J/2iRAbi7OiwsMYT7p7U7Tp2awzNvd8uR5F5+PZIPWIerhXjrQbOnC/MuOj8Blz2AnaXfQJf/nO0+hLWKc1UDuEMNRebm0lg==
+ bh=Gm6ch8xR8b3H1sbgs0W8m2O59cJyjN8XfUoPDBtfv7w=;
+ b=O4y0g0MRXbJl2AkAE17pnwznX25xU6lSF91G+rB4/JZmo40rDb/ObCBraJhzpCPiRPQSFVpsCjLpsCNMh6pchdePBgJtl8d8jMNTDhaL11v0jsrmST/5xjWNhm6fpNC4qa6feovaBMJvY0FQqcXoFLNIgWeJJQiCjae7gekciOO02P1ZgAP+ZF4S5biFwLzSN7XRUQK/e3blQGUuLF9qko/YQOoL+55h44enn8fG66qAa/XzuVZg+9x5Ocz94SHvHDqhzUe/0m+Zwc9FQNIpovAt6ogwJ6Cu8hw61yp33g9rPNN39PdGtTW2h5lXMY1bIodBkU9RG+eR/3oJZm2VJw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
+ smtp.mailfrom=toradex.com; dmarc=pass action=none header.from=toradex.com;
+ dkim=pass header.d=toradex.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=toradex.com;
+ s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EIzOciiFpPp1sQzpGEUBr6eHXjX2bEc2vxNCrPI5zN4=;
- b=b5Uaan6Ik2ujIYO18GUWOiuu/64lzJSiEGQlSr80Ssd9Vzxfh54A9rRsUbn9saMg2Tc5KRnz9zrG5W1sAQ1DQelNwbU2KcGhHdk+kHvBNxc6SqQ2UGDusxS93JTHYofFcOuv1jrrZeSXvIo9LeW3Sy27fh9Bhc7AZN+N/3gbgdM=
-Received: from DM6PR11MB3225.namprd11.prod.outlook.com (2603:10b6:5:5b::32) by
- DM6PR11MB2603.namprd11.prod.outlook.com (2603:10b6:5:c6::21) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2814.13; Tue, 17 Mar 2020 16:26:50 +0000
-Received: from DM6PR11MB3225.namprd11.prod.outlook.com
- ([fe80::dc6b:1191:3a76:8b6a]) by DM6PR11MB3225.namprd11.prod.outlook.com
- ([fe80::dc6b:1191:3a76:8b6a%7]) with mapi id 15.20.2793.023; Tue, 17 Mar 2020
- 16:26:50 +0000
-From: <Claudiu.Beznea@microchip.com>
-To: <oleksandr.suvorov@toradex.com>, <devicetree@vger.kernel.org>,
- <linux-pwm@vger.kernel.org>
-Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Thread-Topic: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Thread-Index: AQHV/Hjcr8D0wJ1/KU6yOYf2aNcyvA==
-Date: Tue, 17 Mar 2020 16:26:50 +0000
-Message-ID: <f281a6a0-a150-514d-ef02-4e51192031d7@microchip.com>
+ bh=Gm6ch8xR8b3H1sbgs0W8m2O59cJyjN8XfUoPDBtfv7w=;
+ b=CZnXsEPPC1j7crjvgwSuh0B0u8sCzbMPoIlCRc7SuySkxI3zFW411zkDGg0kpneFRTEB9eBlzEAiD2MYVi1N3v+k9DiZX0eMDSFTWlkIN+eFLqeZ87dDjELcQC1ihdParMqlJ1frxB7h/ZBeo5FHLilUmy2nKh7fZ9gLjhQpKSI=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=oleksandr.suvorov@toradex.com; 
+Received: from VI1PR05MB3279.eurprd05.prod.outlook.com (10.170.238.24) by
+ VI1PR05MB6608.eurprd05.prod.outlook.com (20.178.204.223) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2814.23; Tue, 17 Mar 2020 16:46:20 +0000
+Received: from VI1PR05MB3279.eurprd05.prod.outlook.com
+ ([fe80::7cdd:4feb:a8b6:a6d2]) by VI1PR05MB3279.eurprd05.prod.outlook.com
+ ([fe80::7cdd:4feb:a8b6:a6d2%7]) with mapi id 15.20.2814.021; Tue, 17 Mar 2020
+ 16:46:20 +0000
+X-Gm-Message-State: ANhLgQ3xrTFYzx0s2caDK0w4GTYBPLlk5i3HaRO5R0c0/vX/8Xpn2/Oz
+ IxzODnviwQ7mrXIQ7BAt+mVjhy6QYtiN25Kk2AI=
+X-Google-Smtp-Source: ADFU+vs5IiH5xOxAVk1tazaO0nIxfpUiMfX+F2pIOjfJJXHSK1Aww98AZOBwwAUZz85BhDppVfRRsQImlnrWq2Voyv0=
+X-Received: by 2002:a0c:c389:: with SMTP id o9mr5577qvi.232.1584463209922;
+ Tue, 17 Mar 2020 09:40:09 -0700 (PDT)
 References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
  <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
-In-Reply-To: <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-x-originating-ip: [86.126.9.245]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ce6ecb69-76b3-43f3-fb04-08d7ca8fff34
-x-ms-traffictypediagnostic: DM6PR11MB2603:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB2603160B4E2BA59142F59D8A87F60@DM6PR11MB2603.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:218;
-x-forefront-prvs: 0345CFD558
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(366004)(396003)(346002)(136003)(39860400002)(376002)(199004)(31696002)(4326008)(31686004)(2906002)(91956017)(76116006)(71200400001)(6486002)(66446008)(81166006)(86362001)(66946007)(7416002)(64756008)(66556008)(7406005)(66476007)(110136005)(81156014)(186003)(54906003)(478600001)(8676002)(26005)(8936002)(2616005)(6512007)(5660300002)(53546011)(4744005)(36756003)(6506007)(316002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR11MB2603;
- H:DM6PR11MB3225.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: IHpw69mXXcfgiHzurM7j01zyT8PYjuTWrFBX/Z+gK4W2ArC6phY+due3PiwxkDWUKv/aNKTQhFbBtghnhHYeBL5PubIL31sYMPlaJR0E9mplKTQoCIY2SeuJ7Ghi3QLD9FEfW9i4EVjWTK5b3ZnhqWZmtVMRxKY/exnutU1ZGu3R41Obz5uraoM8L1Co9dHcRUprgyJKwujk318niv5n6yapwJDmtw3d7+KPEah5uAkKugV5tuvQSf1a/4q5SpChMBmVksNQYKVwt852WaA0QXFJnLFoGt2/hzO7nvYV6qlL8foEirpb2w6aajECFP4jJM7Y5Wcv+xdOvaB1ANPGwMmtsbQu+1+3bP1boerYTjirIZX+gaeGrgL0m7lgWI7IjDWLj4iwLhp6IColBaaWVP1rTCGJ7H9WcHk89yiFI25c920UA9dAIZZ5Y3qoPKXf
-x-ms-exchange-antispam-messagedata: kVDFYKtTgbeYS4/dP8kT/ISXT3ss3Uh/024uKSW7TRN49m9cQG7UYpys52grIkIpPfeeaRiBY+rVggypZOr9Co1NuNWfPkthVNm35X2Ufv1xkSZ5+GtjTlgfbdYjWY/U1cRDlCzXSUKU09pZS+YTPw==
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <5888E88EB76E8649A10DB864BB54BC2E@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ <f281a6a0-a150-514d-ef02-4e51192031d7@microchip.com>
+In-Reply-To: <f281a6a0-a150-514d-ef02-4e51192031d7@microchip.com>
+From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Date: Tue, 17 Mar 2020 18:39:58 +0200
+X-Gmail-Original-Message-ID: <CAGgjyvE9+fHDKiua=BWBaTRGaChsOvnUnG6RGA9Q4V4uPuPEhQ@mail.gmail.com>
+Message-ID: <CAGgjyvE9+fHDKiua=BWBaTRGaChsOvnUnG6RGA9Q4V4uPuPEhQ@mail.gmail.com>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+To: Claudiu.Beznea@microchip.com
+Content-Type: text/plain; charset="UTF-8"
+X-ClientProxiedBy: MWHPR12CA0029.namprd12.prod.outlook.com
+ (2603:10b6:301:2::15) To VI1PR05MB3279.eurprd05.prod.outlook.com
+ (2603:10a6:802:1c::24)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: ce6ecb69-76b3-43f3-fb04-08d7ca8fff34
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Mar 2020 16:26:50.4921 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oNuGH8X6o35HIT2auDm4AePv5WhlN/Nxi9h7VsR/67IG1IIPszVehpt5idm0n1GLnIy3StHKTYF9jnzRxgboUWfeMkSaUoF+2w+zrflDOhI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB2603
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mail-pl1-f179.google.com (209.85.214.179) by
+ MWHPR12CA0029.namprd12.prod.outlook.com (2603:10b6:301:2::15) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2814.21 via Frontend Transport; Tue, 17 Mar 2020 16:46:19 +0000
+Received: by mail-pl1-f179.google.com with SMTP id b22so9849341pls.12;
+ Tue, 17 Mar 2020 09:46:19 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ3xrTFYzx0s2caDK0w4GTYBPLlk5i3HaRO5R0c0/vX/8Xpn2/Oz
+ IxzODnviwQ7mrXIQ7BAt+mVjhy6QYtiN25Kk2AI=
+X-Google-Smtp-Source: ADFU+vs5IiH5xOxAVk1tazaO0nIxfpUiMfX+F2pIOjfJJXHSK1Aww98AZOBwwAUZz85BhDppVfRRsQImlnrWq2Voyv0=
+X-Received: by 2002:a0c:c389:: with SMTP id o9mr5577qvi.232.1584463209922;
+ Tue, 17 Mar 2020 09:40:09 -0700 (PDT)
+X-Gmail-Original-Message-ID: <CAGgjyvE9+fHDKiua=BWBaTRGaChsOvnUnG6RGA9Q4V4uPuPEhQ@mail.gmail.com>
+X-Originating-IP: [209.85.214.179]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 50907ea5-5b99-4d99-d01c-08d7ca92b7f0
+X-MS-TrafficTypeDiagnostic: VI1PR05MB6608:
+X-Microsoft-Antispam-PRVS: <VI1PR05MB66087C0DBCFD1E4912A3BD7EF9F60@VI1PR05MB6608.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
+X-Forefront-PRVS: 0345CFD558
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(4636009)(366004)(199004)(9686003)(4744005)(53546011)(34206002)(8936002)(81166006)(81156014)(5660300002)(54906003)(66556008)(52116002)(66946007)(8676002)(66476007)(86362001)(55446002)(186003)(42186006)(44832011)(498600001)(6666004)(2906002)(450100002)(26005)(4326008);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:VI1PR05MB6608;
+ H:VI1PR05MB3279.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; 
+Received-SPF: None (protection.outlook.com: toradex.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: xr+ozUwOk9IQP1uXqg/AGsLK/4bagC4G/kDPgZuaG5yBAJH55dPMOgTJXC6LEacqqH9fCb9X1H51pFkoCoIMpAh4Yo/7tdq1YF+vBH7/7rHjH3i7aVEUGs2aebUlr8k7wZhDBQBd69QNxDAoORVnEoFDI+VXDg+LeKyArJHQfmgTbJ5Ohg9mFRpCaOmfj1qcVGf5gC66mh0Hdfde/bezsgZ3UuZpd5PFuLIo27WLL3oJOq3eOYzWRY4MN4uXibxi2zNwfEyX1LDGB8VdkGx2BuwGBzEXLGanTVows0ik2L+y6VXBR4g73kXT+8AUxLRV5Nl1rKT1jlVosta3m72iArACXzIR2XQ7p2sD+K+bpXJ0dBY1uFAt/wrRDZG12KTihlzCjhtta2gp5/azyc8bA4tVPcK9A8twBkefJSo21qdW7HzupF9g7gDrttZtzQte
+X-MS-Exchange-AntiSpam-MessageData: tW8/58qT4nzdQjHyCzLk2noGBVvhkadG9KoaPvXYg3CqVEv49oHCQkiKQw2cAEFAa8Tnz5m3cnZX5DTMxcP9y/O08CTH1pvzDzw9prNm7CfYVf4pw0RXzrOW8BqYMyYR5HbQ/rWrNqxwV2tWeYqmLA==
+X-OriginatorOrg: toradex.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 50907ea5-5b99-4d99-d01c-08d7ca92b7f0
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2020 16:46:19.8491 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: d9995866-0d9b-4251-8315-093f062abab4
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +FKNS/wVduTGI98t1nTVOKigIuga1za9ADvehVMQqg+WH/vxf7GWpO6VYmRw+6YFo7/QCG8QJyCeblxLjP5H7TkqBumhAyqfV2873n5oupo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR05MB6608
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_092705_072575_A2A57985 
-X-CRM114-Status: UNSURE (   7.02  )
+X-CRM114-CacheID: sfid-20200317_094623_093501_B4FB7E67 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.253 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.21.91 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,27 +139,56 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, heiko@sntech.de, marcel.ziswiler@toradex.com,
- linux-kernel@vger.kernel.org, paul@crapouillou.net, thierry.reding@gmail.com,
- laurent.pinchart@ideasonboard.com, linux-riscv@lists.infradead.org,
- festevam@gmail.com, f.fainelli@gmail.com, khilman@baylibre.com, wens@csie.org,
+Cc: alexandre.belloni@bootlin.com, heiko@sntech.de, linux-pwm@vger.kernel.org,
+ Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
+ paul@crapouillou.net, Thierry Reding <thierry.reding@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
+ f.fainelli@gmail.com, khilman@baylibre.com, wens@csie.org,
  linux-rockchip@lists.infradead.org, Ludovic.Desroches@microchip.com,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- u.kleine-koenig@pengutronix.de, rjui@broadcom.com, s.hauer@pengutronix.de,
- mripard@kernel.org, philippe.schenker@toradex.com, pbarker@konsulko.com,
- paul.walmsley@sifive.com, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, igor.opaniuk@toradex.com,
- sbranden@broadcom.com, Nicolas.Ferre@microchip.com, linux@prisktech.co.nz,
- palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ devicetree@vger.kernel.org, rjui@broadcom.com,
+ Sascha Hauer <s.hauer@pengutronix.de>, mripard@kernel.org,
+ Philippe Schenker <philippe.schenker@toradex.com>,
+ Paul Barker <pbarker@konsulko.com>, paul.walmsley@sifive.com,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Igor Opaniuk <igor.opaniuk@toradex.com>, sbranden@broadcom.com,
+ Nicolas.Ferre@microchip.com, linux@prisktech.co.nz, palmer@dabbelt.com,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-DQoNCk9uIDE3LjAzLjIwMjAgMTQ6MzIsIE9sZWtzYW5kciBTdXZvcm92IHdyb3RlOg0KPiBAQCAt
-MTg3LDcgKzE4Nyw3IEBAIHN0YXRpYyBzc2l6ZV90IHBvbGFyaXR5X3N0b3JlKHN0cnVjdCBkZXZp
-Y2UgKmNoaWxkLA0KPiAgICAgICAgIGlmIChzeXNmc19zdHJlcShidWYsICJub3JtYWwiKSkNCj4g
-ICAgICAgICAgICAgICAgIHBvbGFyaXR5ID0gUFdNX1BPTEFSSVRZX05PUk1BTDsNCj4gICAgICAg
-ICBlbHNlIGlmIChzeXNmc19zdHJlcShidWYsICJpbnZlcnNlZCIpKQ0KDQpZb3UgbWF5IGFsc28g
-Y29uc2lkZXIgdGhpcyBzdHJpbmcgICAgIF4NCg0KPiAtICAgICAgICAgICAgICAgcG9sYXJpdHkg
-PSBQV01fUE9MQVJJVFlfSU5WRVJTRUQ7DQo+ICsgICAgICAgICAgICAgICBwb2xhcml0eSA9IFBX
-TV9QT0xBUklUWV9JTlZFUlRFRDs=
+On Tue, Mar 17, 2020 at 6:27 PM <Claudiu.Beznea@microchip.com> wrote:
+>
+>
+>
+> On 17.03.2020 14:32, Oleksandr Suvorov wrote:
+> > @@ -187,7 +187,7 @@ static ssize_t polarity_store(struct device *child,
+> >         if (sysfs_streq(buf, "normal"))
+> >                 polarity = PWM_POLARITY_NORMAL;
+> >         else if (sysfs_streq(buf, "inversed"))
+>
+> You may also consider this string     ^
+
+Thanks for the feedback, Claudiu.
+
+I thought about it and decided not to change the ABI, as this change
+can impact lots of user-land applications.
+As a minimum, I can push this change as a separate patch to be able to
+revert the change of ABI only.
+What do you think?
+
+> > -               polarity = PWM_POLARITY_INVERSED;
+> > +               polarity = PWM_POLARITY_INVERTED;
+
+
+
+-- 
+Best regards
+Oleksandr Suvorov
+
+Toradex AG
+Ebenaustrasse 10 | 6048 Horw | Switzerland | T: +41 41 500 48 00
 
