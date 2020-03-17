@@ -2,108 +2,110 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7C30188438
-	for <lists+linux-riscv@lfdr.de>; Tue, 17 Mar 2020 13:32:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CB9C18844E
+	for <lists+linux-riscv@lfdr.de>; Tue, 17 Mar 2020 13:33:27 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X1kzIb4eTW5m19cXA3bGGxxlI19Ra1xshRUwlCjvXDI=; b=YG461msll6goHXjooDrHI4sswy
-	2PE3ttGBaYMlYIcPL9gh2Pva14v+fpOnFsnjgtEtsYAAzDnGhXbVfC0BmpQYLTYVnzBF/qhKQJMqb
-	4MA564hz/31bl9LwLbd/WT0kFq6EVXPLnMELDZJQKWBms/5RMQAAY5q7deG+a+JS0xiQl7nJfQNI2
-	/OgBRjMfU5RPuU+MjccuL2ZYYmVIEgBSJBHMUAPothLcPNfab5seEMMwOcg2LWH9DUEvylKVa/P+n
-	uubuPuGRg3eSK1S4y6orEbgzlshboO8+2GQyrTkaYCX1mJ8894KKF8ULIuTzInzYYiSffLhow762f
-	SLt8DJ7w==;
+	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=dkOpXbfEsrx2JDVAxzgw7MYQQX1XpkB/vwv/kBPthzc=; b=hZ7arS8l7tJc7mlxjsgj1CDav
+	a8jqr1Ydmv2VB8zRiAQ7iBuqwhJWQqB/jIaYra1Ynd38fOYbEaq5kKsoPhUG7E5QIaSKsHrsoE9eZ
+	GZ3RCIs0TuuL+Q0PtK+ja1hOciblyLU6XKv5EKNRqfj8yxJe3LLyVur9KkHDIJa9nC83P/H4Po3mp
+	fz5VR2UnYKg9ktuMiSrvyXrMNekfm099fgOSAmkuQ5xUeiu7Qsompc8ZQCGZcKZ4PTT6UOY7RnCAl
+	FKsvNEi6NIG3ozW68olmjRT7MlxSqUS5mQWhoiV4CsHrquDGor5vedC8whDnxE3Dj4jabyfi0X3jY
+	vqucXvBBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEBOs-0007nB-WB; Tue, 17 Mar 2020 12:32:51 +0000
-Received: from mail-db8eur05on2108.outbound.protection.outlook.com
- ([40.107.20.108] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1jEBPN-00085R-Hi; Tue, 17 Mar 2020 12:33:21 +0000
+Received: from mail-db8eur05hn2240.outbound.protection.outlook.com
+ ([52.101.150.240] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEBOo-0007mK-7m; Tue, 17 Mar 2020 12:32:48 +0000
+ id 1jEBOt-0007nX-Kw; Tue, 17 Mar 2020 12:32:54 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ESHqWtOC3v9sz0JPkxqO79IZBKaoNM51srksC0wJGcsxZjkPiGYNLWQOxzNmnEj3U8IYC8jEGaeXwV8+1Qc4RigZ0XhE/3vqCg4iH192snDdyLuG6kg3v1dqBjam4NAdxjaN7GxNRNIYFc7Bv27+gfsnSpZw7M3gDFFhBGrnPz2qMyd53F7utzdEcYWZ6O+3dV21ap4I0zpUo9HAVytF47E8fRbA4Spco3nrYa3CqM6cN7a68G8f1W3Ygi5T5nM9gmA3GtIZu1vVzCvDcoD5vTmg2s7fClXFtsdZt5dnecd4nQ5WnO+Wqms5FSDuRkOOmjnviHOTN2ECbYhExA9Xsg==
+ b=T1YnhbQFmyrkEEw3Kl/38xyOXsvsrBLUM7YfcMmMgO8K09STLg5K996+yyfuNrGaYFN9UqmSJzHsQwwzsytg0eeekGSqbiWTtZT63tGdGR6KhbtDMcaOpWO/asHmoWVVY2tehECCpmo2rPql192rOOT1TcYhrBrpdaUrqp/RmVuNa1GwPmvwIleiiPUximzFvgL3OFtSFAP+IZgfEGTkHHMRd00+JBaedsW+iI85SM3pYWplLtW15Ao9SHTKN6DwwXhYq6h3SyXMfa4KEiCC77GmAy7SsF0ExuSS/saMzJ+z2MYYJUF+ldjVNKMFk1CZpv7Mh1lkFwmvPF0g+i4Q5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X1kzIb4eTW5m19cXA3bGGxxlI19Ra1xshRUwlCjvXDI=;
- b=UXrQUOvRbZeXEw4JUIHXIPd5AfDQhTJbznX6sSq43KvLbVWwZbCC54aXH46nA2Eq8sG+2q4GCiSMyAUk1RLzCsFE4uRk6dHB8HgVrsPHHLdaNKVn0UwEcphB5UVxvGNR6GIwGJpWRzn31HCCupA14HSliflNcPQCEED63v+xl0dJ3iaNfsnHfRAXimNaG3abnC8+l91diDgB7PFtzNDQHpf3Tg+YM27MbyBnXsewQptiTkUQlSuOYWl46+4MH9AZ3yTnXGOvIdS7pot5PtUDb53gDtgsmHTVOorem3arAFZWgP43OZxSSe2j3345vDyToCG7KLtaKLNFTywNrx/aQg==
+ bh=dkOpXbfEsrx2JDVAxzgw7MYQQX1XpkB/vwv/kBPthzc=;
+ b=V9/eIsgHfyCaW24XSRlwhTv8j6cBetVeR1HcTIyg6tYzl0XAJ7ukZUmioBPpLfNivhXoR72KfZFxe3yZ4FXyWjrO1DBFihdlk1g+1ym/knvD81KNzvM7KbLosrfvf2bEA4Zq4/ptcRRMNXR7Dqi7Sngyu6twmXOEgWdgR+JA0Q6mBHenmaZGuiF0AIoHC6jfPtNEx1ULtgfMBJFXcWtsUULJo25GJharIlj4n4lk6cpPIlE3kuzRf7E5aR6nzDFHZyr7s9jaCRW/7EkZn7xuELXwZPsvv8yxvgEwkwdl1ZAVG8kDX0Wn8UwUYXnmcNqwDd+xKe5ar3kowpEcyIRHfw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=toradex.com; dmarc=pass action=none header.from=toradex.com;
  dkim=pass header.d=toradex.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=toradex.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X1kzIb4eTW5m19cXA3bGGxxlI19Ra1xshRUwlCjvXDI=;
- b=IPrQWPEh1VoNYW1WO4BEA4b8yJysWW4tcL6hPJy+tvk0w7u9u+T7GbKaFqSroB5bjduhN/zfrnW8DNEidg82S42mh69wp+X9e0o+ERSQNZi1pmtDz6309NhXL/pfB1LnppoYUfxu99iseCIJl1GRkT+q6oZEilcwcsQ8zCmGMTk=
+ bh=dkOpXbfEsrx2JDVAxzgw7MYQQX1XpkB/vwv/kBPthzc=;
+ b=GsmlHKTCp8JaXnyiUzD9WLs6fK8ozf3mTY82DGYhLAv/LNLgHyj1w9BkXNK/HqlxX7QLBn+mK8oy5d8N61+Sxun+jF5RQo0ytExxj7tYwBgco6YW6zyvKRoJ18aYH8GSVBAIanAFEmy+VdjYl8bQlZM40AvahZFtnbznnSGEP5U=
 Authentication-Results: spf=none (sender IP is )
  smtp.mailfrom=oleksandr.suvorov@toradex.com; 
 Received: from VI1PR05MB3279.eurprd05.prod.outlook.com (10.170.238.24) by
  VI1PR05MB4462.eurprd05.prod.outlook.com (10.171.182.156) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2814.13; Tue, 17 Mar 2020 12:32:40 +0000
+ 15.20.2814.13; Tue, 17 Mar 2020 12:32:42 +0000
 Received: from VI1PR05MB3279.eurprd05.prod.outlook.com
  ([fe80::7cdd:4feb:a8b6:a6d2]) by VI1PR05MB3279.eurprd05.prod.outlook.com
  ([fe80::7cdd:4feb:a8b6:a6d2%7]) with mapi id 15.20.2814.021; Tue, 17 Mar 2020
- 12:32:40 +0000
+ 12:32:42 +0000
 From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
 To: devicetree@vger.kernel.org,
 	linux-pwm@vger.kernel.org
-Subject: [RFC PATCH 0/7] Rework PWM_POLARITY_* flags
-Date: Tue, 17 Mar 2020 14:32:24 +0200
-Message-Id: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+Subject: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Date: Tue, 17 Mar 2020 14:32:25 +0200
+Message-Id: <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
 X-Mailer: git-send-email 2.24.1
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: PR0P264CA0058.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1d::22) To VI1PR05MB3279.eurprd05.prod.outlook.com
+Content-Type: text/plain
+X-ClientProxiedBy: GVAP278CA0018.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:710:20::28) To VI1PR05MB3279.eurprd05.prod.outlook.com
  (2603:10a6:802:1c::24)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from localhost (82.193.109.226) by
- PR0P264CA0058.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1d::22) with Microsoft
+ GVAP278CA0018.CHEP278.PROD.OUTLOOK.COM (2603:10a6:710:20::28) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2814.16 via Frontend Transport; Tue, 17 Mar 2020 12:32:39 +0000
+ 15.20.2814.16 via Frontend Transport; Tue, 17 Mar 2020 12:32:41 +0000
 X-Mailer: git-send-email 2.24.1
 X-Originating-IP: [82.193.109.226]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 92f24b8f-5335-4211-67f5-08d7ca6f484d
-X-MS-TrafficTypeDiagnostic: VI1PR05MB4462:
+X-MS-Office365-Filtering-Correlation-Id: be0ba24e-535c-4972-f67c-08d7ca6f4996
+X-MS-TrafficTypeDiagnostic: VI1PR05MB4462:|VI1PR05MB4462:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <VI1PR05MB44628731F18F14F7CEA38AA8F9F60@VI1PR05MB4462.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:5516;
+X-Microsoft-Antispam-PRVS: <VI1PR05MB44628BA94C831DFB12839431F9F60@VI1PR05MB4462.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
 X-Forefront-PRVS: 0345CFD558
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(4636009)(39850400004)(396003)(136003)(366004)(346002)(376002)(199004)(66946007)(6666004)(66476007)(66556008)(5660300002)(7406005)(36756003)(7416002)(7336002)(1076003)(4326008)(7366002)(26005)(6496006)(44832011)(52116002)(54906003)(81166006)(81156014)(2906002)(8676002)(55236004)(316002)(186003)(8936002)(956004)(478600001)(2616005)(6486002)(86362001)(16526019);
- DIR:OUT; SFP:1102; SCL:1; SRVR:VI1PR05MB4462;
+X-Forefront-Antispam-Report: SFV:SPM;
+ SFS:(10019020)(4636009)(39850400004)(396003)(136003)(366004)(346002)(376002)(199004)(66946007)(6666004)(66476007)(66556008)(5660300002)(7406005)(36756003)(7416002)(30864003)(1076003)(4326008)(26005)(6496006)(44832011)(52116002)(54906003)(81166006)(81156014)(2906002)(8676002)(55236004)(316002)(186003)(8936002)(956004)(478600001)(2616005)(6486002)(86362001)(16526019)(23200700001);
+ DIR:OUT; SFP:1501; SCL:5; SRVR:VI1PR05MB4462;
  H:VI1PR05MB3279.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
+ PTR:InfoNoRecords; A:1; CAT:OSPM; 
 Received-SPF: None (protection.outlook.com: toradex.com does not designate
  permitted sender hosts)
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ajbru8RbLQmgjKwD+95r2KCid79cKzjDo03netdLt+HAWjyngf9jw0cT51IHD8agmsUDBreJ48OzhG/PgghyhnuDmqqo0bg7m17hlhuUw9lDdeUlgdoL2nwzxrsTai0nDxktojNfKmImYoa8l1gGtJPkCt7BTyNIPqRMjFYsvGuljdurMwIVSVB0/z3c5DGSrIG0+/Wh0JyZghswX077mjVbbza7x3w/N+Zs+8y64d4lKxJhYgwBhehNxonij18bq6EdzWxNEpI3dupulYhX9PXr6zd8b/DhM0a3c8B7KSv1PUb5UThx0V708z6YmC4Z/FB4D90C7/KrtW7ZNem61ZRCVvtS0/lA22b/HHkPsD/0qeNNOTUtTwofLO+g96hiY+h17UPa/Sjis0uL+DDVe4qI1b/LGKhB8vDBtCGad8NVe4ZUlsZBOROxpes+fb4v
-X-MS-Exchange-AntiSpam-MessageData: EGpmD3tLLdvnd4GrcyLclYhQyBBCFMZozHtqfPv08FPrjYoImY0rCyhXl9vJrzDuzQVqeLBY3PUx1gp6qYRGhtjlE181vtIV6NbaS9AaSM1ABLzDumIqvbvN7buNZzplJQk8/gANax6tTTT7LWlO5Q==
+X-Microsoft-Antispam-Message-Info: EKwjJwMtCbT0qB6uHo2W3N1yUCiIdc5nmUv967uPXIU80ZxOjvJsH5ykbLupQiehROqYa8eVpbpqzbFxQf5n37P5TcyqMzzcaYuAk5U+Ck/NqY9iwUZnGCVRcDuOiwnvcbd0eO6fVEzcwDX3xdq0vsUkX3exzGtU/h6BEj8o+U94T1HvjwqoFmD1WMZmUA2qA+iBrz2H9vq4csG+pMTP9h1sU8GsVRCg+b5GbE6h3CJQfMKGBiipEZSUE2qJ75pERlkx5E3vKuybbmnHlOvjZj1L6xg/SWJxXycO5inzcwcdxO7EKT8YxIHLUgH9p5L80W4FCRSdXiEeYawerCCh3KZ0qIhGQYknBLr5YAgu3II5dHMV8nwdMbl7GuoyChDlWSCdRfLjZUtbW424UxhPOcZ3PM2CebxrkiEiI5gy1f582QlT8MIF4Tx2YxWKEZABznC+huZ1eGD35FFpGhqrsvDDttp+xuIn5h9qqh2cQTbko5ulW8WaXGQ8HRfbFngJXyiCK/kEGDWXJKgum5BzcV7h24dvsHuI+lYF+rC33lLam/Afe2NqqGcWZXDP8JcjSeknh2vVA6Ha50kDvJHAh+KesneLM009quV+6vj6YjcxyOYO+jdBcXb7CiNA/1xw2jJ926oqQQIzzDUZb3n6wuiMXnDEEVyKtaXLw7VbotdHzjmOiS5gDild+vscGHMrttb15Jns0ecQXAEUUP4vPIoYqiGT2ntCX6WXE3hejvVuLeFQUAld6rdP/Vv5R+74+8NFCOwgYxj4XQlkUenlMQ==
+X-MS-Exchange-AntiSpam-MessageData: EoXL4Voa82WgTb5jsz4ke7fJVXDC7Tjuk8pn1fulsAViM780JD2E2w/4Pa725SSjY2xsF7uQsdqNSui3nosZMsi3NL/7Ysz5dyndQq8DvpK7EhIDKYD7wYDKqg4HtHP0dydEFoZPKlgHcxZKW0hoJA==
 X-OriginatorOrg: toradex.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 92f24b8f-5335-4211-67f5-08d7ca6f484d
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2020 12:32:40.1226 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: be0ba24e-535c-4972-f67c-08d7ca6f4996
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2020 12:32:42.2234 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: d9995866-0d9b-4251-8315-093f062abab4
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Zz/FEFsAObuiUoMoYiFwvs6Kups5z5Shlju/DdLCfKiNEjs2mBSiP8Jdf+YqLwOq8INbIuD82e6zXBWoCcfGWfkknYHoK8UuJGXlnD7L0ZM=
+X-MS-Exchange-CrossTenant-UserPrincipalName: Wgw8qU60Nk0LDiSfLzr0GRa87GnXFq8tI7kCSlOGh8apt7vLmcqal7VZKx8yLvp5qaFPzYxYL0J+AxH/SYjc3qWAaBDje/dGKHiFTOqsP40=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR05MB4462
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_053246_475836_48A2180D 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20200317_053251_912106_2026133F 
+X-CRM114-Status: GOOD (  14.60  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.20.108 listed in list.dnswl.org]
+ no trust [52.101.150.240 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -125,222 +127,541 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Marcel Ziswiler <marcel.ziswiler@toradex.com>, Sekhar Nori <nsekhar@ti.com>,
- dri-devel@lists.freedesktop.org, Soeren Moch <smoch@web.de>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Hugh Cole-Baker <sigmaris@gmail.com>, linux-stm32@st-md-mailman.stormreply.com,
- linux-samsung-soc@vger.kernel.org,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Katsuhiro Suzuki <katsuhiro@katsuster.net>,
- Kevin Hilman <khilman@baylibre.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- NXP Linux Team <linux-imx@nxp.com>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, linux-omap@vger.kernel.org,
- Alex Elder <elder@kernel.org>, Scott Branden <sbranden@broadcom.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Jingoo Han <jingoohan1@gmail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Kever Yang <kever.yang@rock-chips.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Magnus Damm <magnus.damm@gmail.com>, linux-rockchip@lists.infradead.org,
- Kukjin Kim <kgene@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, Maxime Ripard <mripard@kernel.org>,
- greybus-dev@lists.linaro.org, linux-rpi-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>,
- Fabrice Gasnier <fabrice.gasnier@st.com>, linux-arm-kernel@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
- Christoph Muellner <christoph.muellner@theobroma-systems.com>,
- linux-fbdev@vger.kernel.org, Stefan Agner <stefan@agner.ch>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Philipp Tomsich <philipp.tomsich@theobroma-systems.com>,
- Fabio Estevam <festevam@gmail.com>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, bcm-kernel-feedback-list@broadcom.com,
- Nick Xie <nick@khadas.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Ray Jui <rjui@broadcom.com>, Steven Rostedt <rostedt@goodmis.org>,
- Vladimir Zapolskiy <vz@mleia.com>, Paul Barker <pbarker@konsulko.com>,
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
  Paul Cercueil <paul@crapouillou.net>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Shawn Guo <shawnguo@kernel.org>, Peter Rosin <peda@axentia.se>,
- Milo Kim <milo.kim@ti.com>, Tony Lindgren <tony@atomide.com>,
- Oleksandr Suvorov <oleksandr.suvorov@toradex.com>,
- linux-riscv@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- devel@driverdev.osuosl.org, Marc Zyngier <maz@kernel.org>,
- Markus Reichl <m.reichl@fivetechno.de>, Ingo Molnar <mingo@redhat.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- David Lechner <david@lechnology.com>, Johan Hovold <johan@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
+ Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Maxime Ripard <mripard@kernel.org>,
  Philippe Schenker <philippe.schenker@toradex.com>,
- Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>,
- Igor Opaniuk <igor.opaniuk@toradex.com>,
+ Paul Barker <pbarker@konsulko.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Oleksandr Suvorov <oleksandr.suvorov@toradex.com>,
+ Igor Opaniuk <igor.opaniuk@toradex.com>, Scott Branden <sbranden@broadcom.com>,
  Nicolas Ferre <nicolas.ferre@microchip.com>,
- Tony Prisk <linux@prisktech.co.nz>,
- Jisheng Zhang <Jisheng.Zhang@synaptics.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- =?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
- Robin Murphy <robin.murphy@arm.com>
+ Tony Prisk <linux@prisktech.co.nz>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
+Rename it to PWM_POLARITY_INVERTED.
 
-PWM_POLARITY_* flags were defined in include/linux/pwm.h as a enum and
-in include/dt-bindings/pwm/pwm.h as macros.
+Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+---
 
-This patchset fixes duplication and introduces using PWM_POLARITY_NORMAL
-flag instead of '0' constant in DT files.
+ drivers/pwm/core.c             |  4 ++--
+ drivers/pwm/pwm-atmel-hlcdc.c  |  2 +-
+ drivers/pwm/pwm-atmel-tcb.c    | 16 ++++++++--------
+ drivers/pwm/pwm-atmel.c        |  2 +-
+ drivers/pwm/pwm-bcm-iproc.c    |  2 +-
+ drivers/pwm/pwm-bcm-kona.c     |  2 +-
+ drivers/pwm/pwm-ep93xx.c       |  2 +-
+ drivers/pwm/pwm-fsl-ftm.c      |  2 +-
+ drivers/pwm/pwm-hibvt.c        |  2 +-
+ drivers/pwm/pwm-imx-tpm.c      |  2 +-
+ drivers/pwm/pwm-imx27.c        |  4 ++--
+ drivers/pwm/pwm-jz4740.c       |  2 +-
+ drivers/pwm/pwm-meson.c        |  6 +++---
+ drivers/pwm/pwm-omap-dmtimer.c |  4 ++--
+ drivers/pwm/pwm-renesas-tpu.c  |  6 +++---
+ drivers/pwm/pwm-rockchip.c     |  4 ++--
+ drivers/pwm/pwm-sifive.c       |  4 ++--
+ drivers/pwm/pwm-sun4i.c        |  2 +-
+ drivers/pwm/pwm-tiecap.c       |  2 +-
+ drivers/pwm/pwm-tiehrpwm.c     |  4 ++--
+ drivers/pwm/pwm-vt8500.c       |  2 +-
+ drivers/pwm/pwm-zx.c           |  4 ++--
+ drivers/pwm/sysfs.c            |  4 ++--
+ include/linux/pwm.h            |  4 ++--
+ 24 files changed, 44 insertions(+), 44 deletions(-)
 
-
-Oleksandr Suvorov (7):
-  pwm: rename the PWM_POLARITY_INVERSED enum
-  dt-bindings: pwm: document the PWM polarity flag
-  dt-bindings: pwm: add normal PWM polarity flag
-  dt-bindings: pwm: add description of PWM polarity
-  pwm: replace polarity enum with macros
-  arm64: dts: pwm: replace polarity constant with macro
-  arm: dts: pwm: replace polarity constant with macro
-
- Documentation/devicetree/bindings/pwm/pwm.txt |  1 +
- arch/arm/boot/dts/am335x-cm-t335.dts          |  2 +-
- arch/arm/boot/dts/am335x-evm.dts              |  2 +-
- arch/arm/boot/dts/am3517-evm.dts              |  2 +-
- arch/arm/boot/dts/at91-dvk_su60_somc_lcm.dtsi |  2 +-
- arch/arm/boot/dts/at91-kizbox2-common.dtsi    |  6 ++--
- arch/arm/boot/dts/at91-kizbox3_common.dtsi    |  8 ++---
- arch/arm/boot/dts/at91-kizboxmini-common.dtsi |  6 ++--
- arch/arm/boot/dts/at91-nattis-2-natte-2.dts   |  2 +-
- arch/arm/boot/dts/at91-sama5d4_ma5d4evk.dts   |  2 +-
- arch/arm/boot/dts/at91sam9n12ek.dts           |  2 +-
- arch/arm/boot/dts/at91sam9x5dm.dtsi           |  2 +-
- .../boot/dts/berlin2cd-google-chromecast.dts  |  4 +--
- arch/arm/boot/dts/da850-evm.dts               |  2 +-
- arch/arm/boot/dts/da850-lego-ev3.dts          |  4 +--
- arch/arm/boot/dts/exynos4412-midas.dtsi       |  2 +-
- arch/arm/boot/dts/exynos4412-odroidu3.dts     |  2 +-
- arch/arm/boot/dts/exynos5250-snow-common.dtsi |  2 +-
- arch/arm/boot/dts/exynos5410-odroidxu.dts     |  2 +-
- arch/arm/boot/dts/exynos5420-peach-pit.dts    |  2 +-
- arch/arm/boot/dts/exynos5422-odroidhc1.dts    |  2 +-
- .../boot/dts/exynos5422-odroidxu3-common.dtsi |  2 +-
- arch/arm/boot/dts/exynos5422-odroidxu4.dts    |  2 +-
- .../boot/dts/exynos54xx-odroidxu-leds.dtsi    |  4 +--
- arch/arm/boot/dts/exynos5800-peach-pi.dts     |  2 +-
- arch/arm/boot/dts/imx53-tx53-x13x.dts         |  5 ++--
- arch/arm/boot/dts/imx6dl-tx6dl-comtft.dts     |  2 +-
- arch/arm/boot/dts/imx6q-display5.dtsi         |  2 +-
- arch/arm/boot/dts/imx6q-tx6q-1010-comtft.dts  |  2 +-
- arch/arm/boot/dts/imx6q-tx6q-1020-comtft.dts  |  2 +-
- arch/arm/boot/dts/imx6qdl-tx6-lvds.dtsi       |  4 +--
- arch/arm/boot/dts/imx7-colibri.dtsi           |  4 ++-
- arch/arm/boot/dts/imx7d-nitrogen7.dts         |  3 +-
- arch/arm/boot/dts/imx7d-pico.dtsi             |  3 +-
- arch/arm/boot/dts/imx7d-sdb.dts               |  3 +-
- arch/arm/boot/dts/imx7ulp-evk.dts             |  3 +-
- arch/arm/boot/dts/iwg20d-q7-common.dtsi       |  2 +-
- .../boot/dts/logicpd-torpedo-baseboard.dtsi   |  2 +-
- arch/arm/boot/dts/meson8b-ec100.dts           |  4 +--
- arch/arm/boot/dts/meson8b-mxq.dts             |  4 +--
- arch/arm/boot/dts/meson8b-odroidc1.dts        |  4 +--
- .../boot/dts/motorola-mapphone-common.dtsi    |  3 +-
- arch/arm/boot/dts/omap3-gta04.dtsi            |  2 +-
- arch/arm/boot/dts/omap3-n900.dts              |  2 +-
- arch/arm/boot/dts/rk3288-veyron-edp.dtsi      |  2 +-
- arch/arm/boot/dts/rk3288-veyron.dtsi          |  2 +-
- arch/arm/boot/dts/rv1108-evb.dts              |  2 +-
- arch/arm/boot/dts/s3c6410-mini6410.dts        |  2 +-
- arch/arm/boot/dts/s5pv210-aries.dtsi          |  2 +-
- arch/arm/boot/dts/s5pv210-smdkv210.dts        |  2 +-
- arch/arm/boot/dts/sun5i-gr8-evb.dts           |  2 +-
- arch/arm/boot/dts/vf-colibri.dtsi             |  4 ++-
- .../dts/allwinner/sun50i-a64-pinebook.dts     |  2 +-
- .../boot/dts/allwinner/sun50i-a64-teres-i.dts |  2 +-
- .../arm64/boot/dts/amlogic/meson-axg-s400.dts |  3 +-
- arch/arm64/boot/dts/amlogic/meson-axg.dtsi    |  1 +
- .../boot/dts/amlogic/meson-g12-common.dtsi    |  1 +
- .../boot/dts/amlogic/meson-g12a-sei510.dts    |  5 ++--
- .../boot/dts/amlogic/meson-g12a-u200.dts      |  2 +-
- .../boot/dts/amlogic/meson-g12a-x96-max.dts   |  5 ++--
- .../dts/amlogic/meson-g12b-khadas-vim3.dtsi   |  4 +--
- .../boot/dts/amlogic/meson-g12b-odroid-n2.dts |  4 +--
- .../boot/dts/amlogic/meson-g12b-ugoos-am6.dts |  7 +++--
- .../boot/dts/amlogic/meson-gx-p23x-q20x.dtsi  |  3 +-
- arch/arm64/boot/dts/amlogic/meson-gx.dtsi     |  1 +
- .../boot/dts/amlogic/meson-gxbb-nanopi-k2.dts |  3 +-
- .../dts/amlogic/meson-gxbb-nexbox-a95x.dts    |  3 +-
- .../boot/dts/amlogic/meson-gxbb-p20x.dtsi     |  3 +-
- .../boot/dts/amlogic/meson-gxbb-vega-s95.dtsi |  3 +-
- .../boot/dts/amlogic/meson-gxbb-wetek.dtsi    |  3 +-
- .../boot/dts/amlogic/meson-gxl-s805x-p241.dts |  3 +-
- .../meson-gxl-s905x-hwacom-amazetv.dts        |  3 +-
- .../amlogic/meson-gxl-s905x-khadas-vim.dts    |  2 +-
- .../amlogic/meson-gxl-s905x-nexbox-a95x.dts   |  3 +-
- .../dts/amlogic/meson-gxl-s905x-p212.dtsi     |  3 +-
- .../dts/amlogic/meson-gxm-khadas-vim2.dts     |  5 ++--
- .../boot/dts/amlogic/meson-gxm-rbox-pro.dts   |  3 +-
- .../boot/dts/amlogic/meson-khadas-vim3.dtsi   |  4 ++-
- .../dts/amlogic/meson-sm1-khadas-vim3l.dts    |  2 +-
- .../boot/dts/amlogic/meson-sm1-sei610.dts     |  7 +++--
- .../dts/exynos/exynos5433-tm2-common.dtsi     |  3 +-
- arch/arm64/boot/dts/rockchip/px30-evb.dts     |  2 +-
- arch/arm64/boot/dts/rockchip/px30.dtsi        |  1 +
- .../arm64/boot/dts/rockchip/rk3308-roc-cc.dts |  2 +-
- arch/arm64/boot/dts/rockchip/rk3308.dtsi      |  1 +
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts   |  4 +--
- .../boot/dts/rockchip/rk3399-firefly.dts      |  2 +-
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  2 +-
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  4 +--
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi  |  6 ++--
- .../boot/dts/rockchip/rk3399-khadas-edge.dtsi |  2 +-
- .../boot/dts/rockchip/rk3399-nanopc-t4.dts    |  2 +-
- .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |  2 +-
- .../boot/dts/rockchip/rk3399-rockpro64.dtsi   |  2 +-
- .../rockchip/rk3399-sapphire-excavator.dts    |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  1 +
- drivers/pwm/core.c                            |  6 ++--
- drivers/pwm/pwm-atmel-hlcdc.c                 |  2 +-
- drivers/pwm/pwm-atmel-tcb.c                   | 24 +++++++--------
- drivers/pwm/pwm-atmel.c                       |  2 +-
- drivers/pwm/pwm-bcm-iproc.c                   |  2 +-
- drivers/pwm/pwm-bcm-kona.c                    |  4 +--
- drivers/pwm/pwm-bcm2835.c                     |  2 +-
- drivers/pwm/pwm-berlin.c                      |  2 +-
- drivers/pwm/pwm-ep93xx.c                      |  4 +--
- drivers/pwm/pwm-fsl-ftm.c                     |  2 +-
- drivers/pwm/pwm-hibvt.c                       |  4 +--
- drivers/pwm/pwm-imx-tpm.c                     |  2 +-
- drivers/pwm/pwm-imx27.c                       |  4 +--
- drivers/pwm/pwm-jz4740.c                      |  2 +-
- drivers/pwm/pwm-lpc18xx-sct.c                 |  2 +-
- drivers/pwm/pwm-meson.c                       |  6 ++--
- drivers/pwm/pwm-omap-dmtimer.c                |  6 ++--
- drivers/pwm/pwm-renesas-tpu.c                 | 10 +++----
- drivers/pwm/pwm-rockchip.c                    |  4 +--
- drivers/pwm/pwm-samsung.c                     |  2 +-
- drivers/pwm/pwm-sifive.c                      |  4 +--
- drivers/pwm/pwm-stm32.c                       |  2 +-
- drivers/pwm/pwm-sun4i.c                       |  2 +-
- drivers/pwm/pwm-tiecap.c                      |  4 +--
- drivers/pwm/pwm-tiehrpwm.c                    |  8 ++---
- drivers/pwm/pwm-vt8500.c                      |  4 +--
- drivers/pwm/pwm-zx.c                          |  4 +--
- drivers/pwm/sysfs.c                           |  6 ++--
- drivers/staging/greybus/pwm.c                 |  2 +-
- drivers/video/backlight/lp8788_bl.c           |  2 +-
- include/dt-bindings/pwm/pwm.h                 | 10 +++++++
- include/linux/mfd/lp8788.h                    |  2 +-
- include/linux/pwm.h                           | 29 +++++--------------
- include/trace/events/pwm.h                    |  2 +-
- 130 files changed, 239 insertions(+), 205 deletions(-)
-
+diff --git a/drivers/pwm/core.c b/drivers/pwm/core.c
+index 5a7f6598c05f..08afbb5b98aa 100644
+--- a/drivers/pwm/core.c
++++ b/drivers/pwm/core.c
+@@ -152,7 +152,7 @@ of_pwm_xlate_with_flags(struct pwm_chip *pc, const struct of_phandle_args *args)
+ 	pwm->args.polarity = PWM_POLARITY_NORMAL;
+ 
+ 	if (args->args_count > 2 && args->args[2] & PWM_POLARITY_INVERTED)
+-		pwm->args.polarity = PWM_POLARITY_INVERSED;
++		pwm->args.polarity = PWM_POLARITY_INVERTED;
+ 
+ 	return pwm;
+ }
+@@ -819,7 +819,7 @@ static struct pwm_device *acpi_pwm_get(struct fwnode_handle *fwnode)
+ 	pwm->args.polarity = PWM_POLARITY_NORMAL;
+ 
+ 	if (args.nargs > 2 && args.args[2] & PWM_POLARITY_INVERTED)
+-		pwm->args.polarity = PWM_POLARITY_INVERSED;
++		pwm->args.polarity = PWM_POLARITY_INVERTED;
+ #endif
+ 
+ 	return pwm;
+diff --git a/drivers/pwm/pwm-atmel-hlcdc.c b/drivers/pwm/pwm-atmel-hlcdc.c
+index dcbc0489dfd4..b53a188479b0 100644
+--- a/drivers/pwm/pwm-atmel-hlcdc.c
++++ b/drivers/pwm/pwm-atmel-hlcdc.c
+@@ -270,7 +270,7 @@ static int atmel_hlcdc_pwm_probe(struct platform_device *pdev)
+ 	chip->chip.of_xlate = of_pwm_xlate_with_flags;
+ 	chip->chip.of_pwm_n_cells = 3;
+ 
+-	ret = pwmchip_add_with_polarity(&chip->chip, PWM_POLARITY_INVERSED);
++	ret = pwmchip_add_with_polarity(&chip->chip, PWM_POLARITY_INVERTED);
+ 	if (ret) {
+ 		clk_disable_unprepare(hlcdc->periph_clk);
+ 		return ret;
+diff --git a/drivers/pwm/pwm-atmel-tcb.c b/drivers/pwm/pwm-atmel-tcb.c
+index 85c53701958c..98526a286347 100644
+--- a/drivers/pwm/pwm-atmel-tcb.c
++++ b/drivers/pwm/pwm-atmel-tcb.c
+@@ -152,7 +152,7 @@ static void atmel_tcb_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+ 	/*
+ 	 * If duty is 0 the timer will be stopped and we have to
+ 	 * configure the output correctly on software trigger:
+-	 *  - set output to high if PWM_POLARITY_INVERSED
++	 *  - set output to high if PWM_POLARITY_INVERTED
+ 	 *  - set output to low if PWM_POLARITY_NORMAL
+ 	 *
+ 	 * This is why we're reverting polarity in this case.
+@@ -166,13 +166,13 @@ static void atmel_tcb_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
+ 	/* flush old setting and set the new one */
+ 	if (index == 0) {
+ 		cmr &= ~ATMEL_TC_ACMR_MASK;
+-		if (polarity == PWM_POLARITY_INVERSED)
++		if (polarity == PWM_POLARITY_INVERTED)
+ 			cmr |= ATMEL_TC_ASWTRG_CLEAR;
+ 		else
+ 			cmr |= ATMEL_TC_ASWTRG_SET;
+ 	} else {
+ 		cmr &= ~ATMEL_TC_BCMR_MASK;
+-		if (polarity == PWM_POLARITY_INVERSED)
++		if (polarity == PWM_POLARITY_INVERTED)
+ 			cmr |= ATMEL_TC_BSWTRG_CLEAR;
+ 		else
+ 			cmr |= ATMEL_TC_BSWTRG_SET;
+@@ -211,7 +211,7 @@ static int atmel_tcb_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
+ 	/*
+ 	 * If duty is 0 the timer will be stopped and we have to
+ 	 * configure the output correctly on software trigger:
+-	 *  - set output to high if PWM_POLARITY_INVERSED
++	 *  - set output to high if PWM_POLARITY_INVERTED
+ 	 *  - set output to low if PWM_POLARITY_NORMAL
+ 	 *
+ 	 * This is why we're reverting polarity in this case.
+@@ -229,13 +229,13 @@ static int atmel_tcb_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
+ 		cmr &= ~ATMEL_TC_ACMR_MASK;
+ 
+ 		/* Set CMR flags according to given polarity */
+-		if (polarity == PWM_POLARITY_INVERSED)
++		if (polarity == PWM_POLARITY_INVERTED)
+ 			cmr |= ATMEL_TC_ASWTRG_CLEAR;
+ 		else
+ 			cmr |= ATMEL_TC_ASWTRG_SET;
+ 	} else {
+ 		cmr &= ~ATMEL_TC_BCMR_MASK;
+-		if (polarity == PWM_POLARITY_INVERSED)
++		if (polarity == PWM_POLARITY_INVERTED)
+ 			cmr |= ATMEL_TC_BSWTRG_CLEAR;
+ 		else
+ 			cmr |= ATMEL_TC_BSWTRG_SET;
+@@ -249,12 +249,12 @@ static int atmel_tcb_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
+ 	 */
+ 	if (tcbpwm->duty != tcbpwm->period && tcbpwm->duty > 0) {
+ 		if (index == 0) {
+-			if (polarity == PWM_POLARITY_INVERSED)
++			if (polarity == PWM_POLARITY_INVERTED)
+ 				cmr |= ATMEL_TC_ACPA_SET | ATMEL_TC_ACPC_CLEAR;
+ 			else
+ 				cmr |= ATMEL_TC_ACPA_CLEAR | ATMEL_TC_ACPC_SET;
+ 		} else {
+-			if (polarity == PWM_POLARITY_INVERSED)
++			if (polarity == PWM_POLARITY_INVERTED)
+ 				cmr |= ATMEL_TC_BCPB_SET | ATMEL_TC_BCPC_CLEAR;
+ 			else
+ 				cmr |= ATMEL_TC_BCPB_CLEAR | ATMEL_TC_BCPC_SET;
+diff --git a/drivers/pwm/pwm-atmel.c b/drivers/pwm/pwm-atmel.c
+index 6161e7e3e9ac..2d42f97e4b81 100644
+--- a/drivers/pwm/pwm-atmel.c
++++ b/drivers/pwm/pwm-atmel.c
+@@ -329,7 +329,7 @@ static void atmel_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	}
+ 
+ 	if (cmr & PWM_CMR_CPOL)
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 	else
+ 		state->polarity = PWM_POLARITY_NORMAL;
+ }
+diff --git a/drivers/pwm/pwm-bcm-iproc.c b/drivers/pwm/pwm-bcm-iproc.c
+index 1f829edd8ee7..574bec61e0ac 100644
+--- a/drivers/pwm/pwm-bcm-iproc.c
++++ b/drivers/pwm/pwm-bcm-iproc.c
+@@ -97,7 +97,7 @@ static void iproc_pwmc_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	if (value & BIT(IPROC_PWM_CTRL_POLARITY_SHIFT(pwm->hwpwm)))
+ 		state->polarity = PWM_POLARITY_NORMAL;
+ 	else
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 
+ 	value = readl(ip->base + IPROC_PWM_PRESCALE_OFFSET);
+ 	prescale = value >> IPROC_PWM_PRESCALE_SHIFT(pwm->hwpwm);
+diff --git a/drivers/pwm/pwm-bcm-kona.c b/drivers/pwm/pwm-bcm-kona.c
+index 81da91df2529..02da511814f1 100644
+--- a/drivers/pwm/pwm-bcm-kona.c
++++ b/drivers/pwm/pwm-bcm-kona.c
+@@ -303,7 +303,7 @@ static int kona_pwmc_probe(struct platform_device *pdev)
+ 
+ 	clk_disable_unprepare(kp->clk);
+ 
+-	ret = pwmchip_add_with_polarity(&kp->chip, PWM_POLARITY_INVERSED);
++	ret = pwmchip_add_with_polarity(&kp->chip, PWM_POLARITY_INVERTED);
+ 	if (ret < 0)
+ 		dev_err(&pdev->dev, "failed to add PWM chip: %d\n", ret);
+ 
+diff --git a/drivers/pwm/pwm-ep93xx.c b/drivers/pwm/pwm-ep93xx.c
+index 4bab73073ad7..02345b6f9fe8 100644
+--- a/drivers/pwm/pwm-ep93xx.c
++++ b/drivers/pwm/pwm-ep93xx.c
+@@ -124,7 +124,7 @@ static int ep93xx_pwm_polarity(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	if (ret)
+ 		return ret;
+ 
+-	if (polarity == PWM_POLARITY_INVERSED)
++	if (polarity == PWM_POLARITY_INVERTED)
+ 		writew(0x1, ep93xx_pwm->base + EP93XX_PWMx_INVERT);
+ 	else
+ 		writew(0x0, ep93xx_pwm->base + EP93XX_PWMx_INVERT);
+diff --git a/drivers/pwm/pwm-fsl-ftm.c b/drivers/pwm/pwm-fsl-ftm.c
+index 59272a920479..75dc30978c19 100644
+--- a/drivers/pwm/pwm-fsl-ftm.c
++++ b/drivers/pwm/pwm-fsl-ftm.c
+@@ -287,7 +287,7 @@ static int fsl_pwm_apply_config(struct fsl_pwm_chip *fpc,
+ 	regmap_write(fpc->regmap, FTM_CV(pwm->hwpwm), duty);
+ 
+ 	reg_polarity = 0;
+-	if (newstate->polarity == PWM_POLARITY_INVERSED)
++	if (newstate->polarity == PWM_POLARITY_INVERTED)
+ 		reg_polarity = BIT(pwm->hwpwm);
+ 
+ 	regmap_update_bits(fpc->regmap, FTM_POL, BIT(pwm->hwpwm), reg_polarity);
+diff --git a/drivers/pwm/pwm-hibvt.c b/drivers/pwm/pwm-hibvt.c
+index ad205fdad372..c57a94e7da0f 100644
+--- a/drivers/pwm/pwm-hibvt.c
++++ b/drivers/pwm/pwm-hibvt.c
+@@ -120,7 +120,7 @@ static void hibvt_pwm_set_polarity(struct pwm_chip *chip,
+ {
+ 	struct hibvt_pwm_chip *hi_pwm_chip = to_hibvt_pwm_chip(chip);
+ 
+-	if (polarity == PWM_POLARITY_INVERSED)
++	if (polarity == PWM_POLARITY_INVERTED)
+ 		hibvt_pwm_set_bits(hi_pwm_chip->base, PWM_CTRL_ADDR(pwm->hwpwm),
+ 				PWM_POLARITY_MASK, (0x1 << PWM_POLARITY_SHIFT));
+ 	else
+diff --git a/drivers/pwm/pwm-imx-tpm.c b/drivers/pwm/pwm-imx-tpm.c
+index 9145f6160649..461ab2c08616 100644
+--- a/drivers/pwm/pwm-imx-tpm.c
++++ b/drivers/pwm/pwm-imx-tpm.c
+@@ -156,7 +156,7 @@ static void pwm_imx_tpm_get_state(struct pwm_chip *chip,
+ 	/* get polarity */
+ 	val = readl(tpm->base + PWM_IMX_TPM_CnSC(pwm->hwpwm));
+ 	if ((val & PWM_IMX_TPM_CnSC_ELS) == PWM_IMX_TPM_CnSC_ELS_INVERSED)
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 	else
+ 		/*
+ 		 * Assume reserved values (2b00 and 2b11) to yield
+diff --git a/drivers/pwm/pwm-imx27.c b/drivers/pwm/pwm-imx27.c
+index 35a7ac42269c..33d344445254 100644
+--- a/drivers/pwm/pwm-imx27.c
++++ b/drivers/pwm/pwm-imx27.c
+@@ -146,7 +146,7 @@ static void pwm_imx27_get_state(struct pwm_chip *chip,
+ 		state->polarity = PWM_POLARITY_NORMAL;
+ 		break;
+ 	case MX3_PWMCR_POUTC_INVERTED:
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 		break;
+ 	default:
+ 		dev_warn(chip->dev, "can't set polarity, output disconnected");
+@@ -280,7 +280,7 @@ static int pwm_imx27_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	     FIELD_PREP(MX3_PWMCR_CLKSRC, MX3_PWMCR_CLKSRC_IPG_HIGH) |
+ 	     MX3_PWMCR_DBGEN;
+ 
+-	if (state->polarity == PWM_POLARITY_INVERSED)
++	if (state->polarity == PWM_POLARITY_INVERTED)
+ 		cr |= FIELD_PREP(MX3_PWMCR_POUTC,
+ 				MX3_PWMCR_POUTC_INVERTED);
+ 
+diff --git a/drivers/pwm/pwm-jz4740.c b/drivers/pwm/pwm-jz4740.c
+index 9d78cc21cb12..67075d18561f 100644
+--- a/drivers/pwm/pwm-jz4740.c
++++ b/drivers/pwm/pwm-jz4740.c
+@@ -130,7 +130,7 @@ static int jz4740_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	case PWM_POLARITY_NORMAL:
+ 		ctrl &= ~JZ_TIMER_CTRL_PWM_ACTIVE_LOW;
+ 		break;
+-	case PWM_POLARITY_INVERSED:
++	case PWM_POLARITY_INVERTED:
+ 		ctrl |= JZ_TIMER_CTRL_PWM_ACTIVE_LOW;
+ 		break;
+ 	}
+diff --git a/drivers/pwm/pwm-meson.c b/drivers/pwm/pwm-meson.c
+index 6245bbdb6e6c..2d368bfc680d 100644
+--- a/drivers/pwm/pwm-meson.c
++++ b/drivers/pwm/pwm-meson.c
+@@ -8,7 +8,7 @@
+  * N cycles for the first half period.
+  * The hardware has no "polarity" setting. This driver reverses the period
+  * cycles (the low length is inverted with the high length) for
+- * PWM_POLARITY_INVERSED. This means that .get_state cannot read the polarity
++ * PWM_POLARITY_INVERTED. This means that .get_state cannot read the polarity
+  * from the hardware.
+  * Setting the duty cycle will disable and re-enable the PWM output.
+  * Disabling the PWM stops the output immediately (without waiting for the
+@@ -168,7 +168,7 @@ static int meson_pwm_calc(struct meson_pwm *meson, struct pwm_device *pwm,
+ 	duty = state->duty_cycle;
+ 	period = state->period;
+ 
+-	if (state->polarity == PWM_POLARITY_INVERSED)
++	if (state->polarity == PWM_POLARITY_INVERTED)
+ 		duty = period - duty;
+ 
+ 	fin_freq = clk_get_rate(channel->clk);
+@@ -275,7 +275,7 @@ static int meson_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return -EINVAL;
+ 
+ 	if (!state->enabled) {
+-		if (state->polarity == PWM_POLARITY_INVERSED) {
++		if (state->polarity == PWM_POLARITY_INVERTED) {
+ 			/*
+ 			 * This IP block revision doesn't have an "always high"
+ 			 * setting which we can use for "inverted disabled".
+diff --git a/drivers/pwm/pwm-omap-dmtimer.c b/drivers/pwm/pwm-omap-dmtimer.c
+index 88a3c5690fea..082ccec93133 100644
+--- a/drivers/pwm/pwm-omap-dmtimer.c
++++ b/drivers/pwm/pwm-omap-dmtimer.c
+@@ -190,7 +190,7 @@ static int pwm_omap_dmtimer_config(struct pwm_chip *chip,
+ 		load_value, load_value,	match_value, match_value);
+ 
+ 	omap->pdata->set_pwm(omap->dm_timer,
+-			      pwm_get_polarity(pwm) == PWM_POLARITY_INVERSED,
++			      pwm_get_polarity(pwm) == PWM_POLARITY_INVERTED,
+ 			      true,
+ 			      PWM_OMAP_DMTIMER_TRIGGER_OVERFLOW_AND_COMPARE);
+ 
+@@ -220,7 +220,7 @@ static int pwm_omap_dmtimer_set_polarity(struct pwm_chip *chip,
+ 	 */
+ 	mutex_lock(&omap->mutex);
+ 	omap->pdata->set_pwm(omap->dm_timer,
+-			      polarity == PWM_POLARITY_INVERSED,
++			      polarity == PWM_POLARITY_INVERTED,
+ 			      true,
+ 			      PWM_OMAP_DMTIMER_TRIGGER_OVERFLOW_AND_COMPARE);
+ 	mutex_unlock(&omap->mutex);
+diff --git a/drivers/pwm/pwm-renesas-tpu.c b/drivers/pwm/pwm-renesas-tpu.c
+index 4a855a21b782..32beeb93ade1 100644
+--- a/drivers/pwm/pwm-renesas-tpu.c
++++ b/drivers/pwm/pwm-renesas-tpu.c
+@@ -108,17 +108,17 @@ static void tpu_pwm_set_pin(struct tpu_pwm_device *pwm,
+ 	switch (state) {
+ 	case TPU_PIN_INACTIVE:
+ 		tpu_pwm_write(pwm, TPU_TIORn,
+-			      pwm->polarity == PWM_POLARITY_INVERSED ?
++			      pwm->polarity == PWM_POLARITY_INVERTED ?
+ 			      TPU_TIOR_IOA_1 : TPU_TIOR_IOA_0);
+ 		break;
+ 	case TPU_PIN_PWM:
+ 		tpu_pwm_write(pwm, TPU_TIORn,
+-			      pwm->polarity == PWM_POLARITY_INVERSED ?
++			      pwm->polarity == PWM_POLARITY_INVERTED ?
+ 			      TPU_TIOR_IOA_0_SET : TPU_TIOR_IOA_1_CLR);
+ 		break;
+ 	case TPU_PIN_ACTIVE:
+ 		tpu_pwm_write(pwm, TPU_TIORn,
+-			      pwm->polarity == PWM_POLARITY_INVERSED ?
++			      pwm->polarity == PWM_POLARITY_INVERTED ?
+ 			      TPU_TIOR_IOA_0 : TPU_TIOR_IOA_1);
+ 		break;
+ 	}
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index 73352e6fbccb..c6158d559790 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -91,7 +91,7 @@ static void rockchip_pwm_get_state(struct pwm_chip *chip,
+ 				 true : false;
+ 
+ 	if (pc->data->supports_polarity && !(val & PWM_DUTY_POSITIVE))
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 	else
+ 		state->polarity = PWM_POLARITY_NORMAL;
+ 
+@@ -135,7 +135,7 @@ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 
+ 	if (pc->data->supports_polarity) {
+ 		ctrl &= ~PWM_POLARITY_MASK;
+-		if (state->polarity == PWM_POLARITY_INVERSED)
++		if (state->polarity == PWM_POLARITY_INVERTED)
+ 			ctrl |= PWM_DUTY_NEGATIVE | PWM_INACTIVE_POSITIVE;
+ 		else
+ 			ctrl |= PWM_DUTY_POSITIVE | PWM_INACTIVE_NEGATIVE;
+diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
+index cc63f9baa481..409123405a11 100644
+--- a/drivers/pwm/pwm-sifive.c
++++ b/drivers/pwm/pwm-sifive.c
+@@ -124,7 +124,7 @@ static void pwm_sifive_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	state->period = ddata->real_period;
+ 	state->duty_cycle =
+ 		(u64)duty * ddata->real_period >> PWM_SIFIVE_CMPWIDTH;
+-	state->polarity = PWM_POLARITY_INVERSED;
++	state->polarity = PWM_POLARITY_INVERTED;
+ }
+ 
+ static int pwm_sifive_enable(struct pwm_chip *chip, bool enable)
+@@ -157,7 +157,7 @@ static int pwm_sifive_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	int ret = 0;
+ 	u32 frac;
+ 
+-	if (state->polarity != PWM_POLARITY_INVERSED)
++	if (state->polarity != PWM_POLARITY_INVERTED)
+ 		return -EINVAL;
+ 
+ 	ret = clk_enable(ddata->clk);
+diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
+index 3e3efa6c768f..7ddcdefd2a97 100644
+--- a/drivers/pwm/pwm-sun4i.c
++++ b/drivers/pwm/pwm-sun4i.c
+@@ -149,7 +149,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
+ 	if (val & BIT_CH(PWM_ACT_STATE, pwm->hwpwm))
+ 		state->polarity = PWM_POLARITY_NORMAL;
+ 	else
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 
+ 	if ((val & BIT_CH(PWM_CLK_GATING | PWM_EN, pwm->hwpwm)) ==
+ 	    BIT_CH(PWM_CLK_GATING | PWM_EN, pwm->hwpwm))
+diff --git a/drivers/pwm/pwm-tiecap.c b/drivers/pwm/pwm-tiecap.c
+index ab38c8203b79..b96b388f0969 100644
+--- a/drivers/pwm/pwm-tiecap.c
++++ b/drivers/pwm/pwm-tiecap.c
+@@ -118,7 +118,7 @@ static int ecap_pwm_set_polarity(struct pwm_chip *chip, struct pwm_device *pwm,
+ 
+ 	value = readw(pc->mmio_base + ECCTL2);
+ 
+-	if (polarity == PWM_POLARITY_INVERSED)
++	if (polarity == PWM_POLARITY_INVERTED)
+ 		/* Duty cycle defines LOW period of PWM */
+ 		value |= ECCTL2_APWM_POL_LOW;
+ 	else
+diff --git a/drivers/pwm/pwm-tiehrpwm.c b/drivers/pwm/pwm-tiehrpwm.c
+index 7b4c770ce9d6..71c337443dd5 100644
+--- a/drivers/pwm/pwm-tiehrpwm.c
++++ b/drivers/pwm/pwm-tiehrpwm.c
+@@ -193,7 +193,7 @@ static void configure_polarity(struct ehrpwm_pwm_chip *pc, int chan)
+ 		aqctl_reg = AQCTLB;
+ 		aqctl_mask = AQCTL_CBU_MASK;
+ 
+-		if (pc->polarity[chan] == PWM_POLARITY_INVERSED)
++		if (pc->polarity[chan] == PWM_POLARITY_INVERTED)
+ 			aqctl_val = AQCTL_CHANB_POLINVERSED;
+ 		else
+ 			aqctl_val = AQCTL_CHANB_POLNORMAL;
+@@ -201,7 +201,7 @@ static void configure_polarity(struct ehrpwm_pwm_chip *pc, int chan)
+ 		aqctl_reg = AQCTLA;
+ 		aqctl_mask = AQCTL_CAU_MASK;
+ 
+-		if (pc->polarity[chan] == PWM_POLARITY_INVERSED)
++		if (pc->polarity[chan] == PWM_POLARITY_INVERTED)
+ 			aqctl_val = AQCTL_CHANA_POLINVERSED;
+ 		else
+ 			aqctl_val = AQCTL_CHANA_POLNORMAL;
+diff --git a/drivers/pwm/pwm-vt8500.c b/drivers/pwm/pwm-vt8500.c
+index 11d45e56a923..fc434965c5ed 100644
+--- a/drivers/pwm/pwm-vt8500.c
++++ b/drivers/pwm/pwm-vt8500.c
+@@ -165,7 +165,7 @@ static int vt8500_pwm_set_polarity(struct pwm_chip *chip,
+ 
+ 	val = readl(vt8500->base + REG_CTRL(pwm->hwpwm));
+ 
+-	if (polarity == PWM_POLARITY_INVERSED)
++	if (polarity == PWM_POLARITY_INVERTED)
+ 		val |= CTRL_INVERT;
+ 	else
+ 		val &= ~CTRL_INVERT;
+diff --git a/drivers/pwm/pwm-zx.c b/drivers/pwm/pwm-zx.c
+index e2c21cc34a96..dc7d20e52c52 100644
+--- a/drivers/pwm/pwm-zx.c
++++ b/drivers/pwm/pwm-zx.c
+@@ -75,7 +75,7 @@ static void zx_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	if (value & ZX_PWM_POLAR)
+ 		state->polarity = PWM_POLARITY_NORMAL;
+ 	else
+-		state->polarity = PWM_POLARITY_INVERSED;
++		state->polarity = PWM_POLARITY_INVERTED;
+ 
+ 	if (value & ZX_PWM_EN)
+ 		state->enabled = true;
+@@ -158,7 +158,7 @@ static int zx_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 
+ 	if (state->polarity != cstate.polarity)
+ 		zx_pwm_set_mask(zpc, pwm->hwpwm, ZX_PWM_MODE, ZX_PWM_POLAR,
+-				(state->polarity == PWM_POLARITY_INVERSED) ?
++				(state->polarity == PWM_POLARITY_INVERTED) ?
+ 				 0 : ZX_PWM_POLAR);
+ 
+ 	if (state->period != cstate.period ||
+diff --git a/drivers/pwm/sysfs.c b/drivers/pwm/sysfs.c
+index 2389b8669846..769ac09c56c2 100644
+--- a/drivers/pwm/sysfs.c
++++ b/drivers/pwm/sysfs.c
+@@ -166,7 +166,7 @@ static ssize_t polarity_show(struct device *child,
+ 		polarity = "normal";
+ 		break;
+ 
+-	case PWM_POLARITY_INVERSED:
++	case PWM_POLARITY_INVERTED:
+ 		polarity = "inversed";
+ 		break;
+ 	}
+@@ -187,7 +187,7 @@ static ssize_t polarity_store(struct device *child,
+ 	if (sysfs_streq(buf, "normal"))
+ 		polarity = PWM_POLARITY_NORMAL;
+ 	else if (sysfs_streq(buf, "inversed"))
+-		polarity = PWM_POLARITY_INVERSED;
++		polarity = PWM_POLARITY_INVERTED;
+ 	else
+ 		return -EINVAL;
+ 
+diff --git a/include/linux/pwm.h b/include/linux/pwm.h
+index 0ef808d925bb..38b7ed8ef913 100644
+--- a/include/linux/pwm.h
++++ b/include/linux/pwm.h
+@@ -16,13 +16,13 @@ struct pwm_chip;
+  * @PWM_POLARITY_NORMAL: a high signal for the duration of the duty-
+  * cycle, followed by a low signal for the remainder of the pulse
+  * period
+- * @PWM_POLARITY_INVERSED: a low signal for the duration of the duty-
++ * @PWM_POLARITY_INVERTED: a low signal for the duration of the duty-
+  * cycle, followed by a high signal for the remainder of the pulse
+  * period
+  */
+ enum pwm_polarity {
+ 	PWM_POLARITY_NORMAL,
+-	PWM_POLARITY_INVERSED,
++	PWM_POLARITY_INVERTED,
+ };
+ 
+ /**
 -- 
 2.24.1
 
