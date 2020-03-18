@@ -2,87 +2,103 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1368718A212
-	for <lists+linux-riscv@lfdr.de>; Wed, 18 Mar 2020 19:03:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 227EA18A7A3
+	for <lists+linux-riscv@lfdr.de>; Wed, 18 Mar 2020 23:08:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=+eM9a9W2vn4WlLm8RIK9kwfFrKjYpl0TGuyjyC6IJgo=; b=tSgTqaWJCbbHpv
-	S2AkrwcmWs99YOKiqwsH/Dl2GkGeKxaW5spHPKEuBjAKEOgLFtqAgyKROj9UTKJPKFJFrdXMrmMHT
-	JWt7X3hvjNX1U60p6U0DZb6i5Ly9N44MvWi9LFaN6QN7HsHLm2kGvGYGwAHyVPxvJavdvv9AVue/M
-	lAph71ehnrMS9cpFBOrC00W3GN0KP7ZB6Mq+mF8kCRdixBsHflLEofy0hSagu0x60Ls4W/8++H5Y4
-	bGdBP76F3Lgi1gKdxG5kgAzX54wKnmcRf86YECbh9jv6oFn4hZzMlq2UCRDNllb31p6ENWjYrkfc3
-	req+z+T1SlRLInSUQHIw==;
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=s1pMLzutcA2e/hf3OvlXjDnIfQPhs95bJayfMQOUxME=; b=jwZlFrj/czLyEU
+	kPm17JfEgyzFtHwkhSsUvH3rvM1UD/c6v+KbNkpeawDdc4t1xiUnDC2YahFqQo0b3ZGUHYOjFAUvG
+	NrUGrfv0hXnJ9ImCJODMeM26mS8j8oc/YRO9ccKmP9Vg6jY3jwUtF3VEdpkzO6iXyz9DXnOWATAbD
+	MYIid1so2jXtLKSZ7HkxySx4sLQWhPu5ARKIBxB/KKzNqTqGdFkc1VsNLpoOsxBI5NUelYnZQguxV
+	o095GUATm7UlhznxEXRb3m8PomHZdMQK/rlD7Xg94gYW9wbuTpz7Z5RbGHW/2S/B33bWRQBAfp2ka
+	af/O1Kg5CfUGuDPAgztg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEd2R-0005zH-B9; Wed, 18 Mar 2020 18:03:31 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1jEgr8-0005Pc-Oi; Wed, 18 Mar 2020 22:08:06 +0000
+Received: from userp2120.oracle.com ([156.151.31.85])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEd2N-0005yp-FG
- for linux-riscv@lists.infradead.org; Wed, 18 Mar 2020 18:03:29 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id q16so1332061pje.1
- for <linux-riscv@lists.infradead.org>; Wed, 18 Mar 2020 11:03:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=+eM9a9W2vn4WlLm8RIK9kwfFrKjYpl0TGuyjyC6IJgo=;
- b=TQ4vvSRHjfw0ztqFIOdjMIULpDidGu4tlLnCZMkGpebg19wsHIF76ItRD7BT/QLpnr
- CcOfP7pAJC8M6pE3U/SZx0FDUq7QjU1b/pxzuD9NzeBHx5HddS41x2b89+JB5r/r2StD
- t+gwJ0Z7V1WtEAYuP4HlIpyLSgSw1xf7ICuQXGCV6xspEAshMzq7VFxHyZP4op0rALur
- PK9co4Nk0sL6L7+FY4V3NvDPiHHZvjCSH/g9M5M3dPhZf2d1U4g5bVBaKq6ol73RlRLY
- x2aSWbP+1CRVvN5ie5nfhX3k70atmGmAhAv9LpFSiZ9M6sVJUg3Re38Fm8VUZNG7UO+i
- QLNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=+eM9a9W2vn4WlLm8RIK9kwfFrKjYpl0TGuyjyC6IJgo=;
- b=TK9M9ugVENorSKXArXcTdoKOQWXcKgIKLMWEGuuveQW+IRVsDnS82TYyg/E+EuiIpU
- B6MD53yKWmKq6uHr4dFmop/xnZgS0xbT+EnV5nkAkCFkadlUtrINsyzN6fxgqtTzeY88
- giJphRzhnExh7V+e34LIwSffX3B1rUlF5LcKcKJ+8i6p42Zf7k+1mh6H0fqjwqg3zY4c
- mRxD0d02194o/VxkhzAc2RSS/GjBMxSVu3Y8GHlaYY/mxkS+yow7DYHSJbr1yQVWAKND
- /x/jiNNRC/6vqP3m5/V3tuLjVi1Te8inCKyU9qt7HIfi67+aIUIktVXfBCBJeeMCMaZh
- jc5w==
-X-Gm-Message-State: ANhLgQ2rRrNdalbGpNX37aMVw+GkZhbAgz9JlQRVvoQis4lwsuSkG4iR
- 1VTHnDlHM3uuktkJgfMB7tG7hA==
-X-Google-Smtp-Source: ADFU+vtxf8uer2iHkDwG5t0VNkx7ErzNHbyv2jFSMSBDIgV65AZlPIcLPKge2X6sjaRdnytbtfj3Jw==
-X-Received: by 2002:a17:902:9a03:: with SMTP id
- v3mr1016462plp.223.1584554606031; 
- Wed, 18 Mar 2020 11:03:26 -0700 (PDT)
-Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
- by smtp.gmail.com with ESMTPSA id z7sm62477pfz.24.2020.03.18.11.03.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Mar 2020 11:03:25 -0700 (PDT)
-Date: Wed, 18 Mar 2020 11:03:25 -0700 (PDT)
-X-Google-Original-Date: Wed, 18 Mar 2020 10:32:24 PDT (-0700)
-Subject: Re: [PATCH 1/5] kgdb: Add kgdb_has_hit_break function
-In-Reply-To: <1583225220-26137-1-git-send-email-vincent.chen@sifive.com>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: vincent.chen@sifive.com
-Message-ID: <mhng-a17f59fc-9e51-4c9d-9b4b-4c707825c459@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
+ id 1jEgqS-0004nE-Ln; Wed, 18 Mar 2020 22:07:27 +0000
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02ILvmT0077845;
+ Wed, 18 Mar 2020 22:06:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=corp-2020-01-29; bh=s1pMLzutcA2e/hf3OvlXjDnIfQPhs95bJayfMQOUxME=;
+ b=FGED8sOeZH7vZegY5KTbymmNwi6RTCwH53GlXQ5Z8MkOBREidu2uKWXTr9CUnP2UU50v
+ 3g9pxzX4LX+mJxpPSPbLQc/izyIzA+fNY73oaab+Qz5r/bAQFXTgx7cVJEFa7/X0KB78
+ XCnEHj9Ydk/Ic9oK6rnyT2aVqigXRKtHnH2paGht1i7rne7tnwM1R80+f2oxcif+foMT
+ rDa8RNHkxhUPTR8az1yINaNjXPsCSt/u24S704F9NM/VuprmE4UEARi6ZiQ9V6Z3VHvK
+ DrZ9+i2u4c/OlxO+oxKkLXRY5Ilry1YPhe97NfHJpEnRTeflyxsWz/1/Z+NyJJskqQfv jg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 2yub2753n1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 18 Mar 2020 22:06:49 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02ILuqsD058502;
+ Wed, 18 Mar 2020 22:06:48 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2ys8tutekx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 18 Mar 2020 22:06:48 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02IM6fZG003470;
+ Wed, 18 Mar 2020 22:06:41 GMT
+Received: from monkey.oracle.com (/71.63.128.209)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 18 Mar 2020 15:06:41 -0700
+From: Mike Kravetz <mike.kravetz@oracle.com>
+To: linux-mm@kvack.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
+ linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org,
+ sparclinux@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: [PATCH 0/4] Clean up hugetlb boot command line processing
+Date: Wed, 18 Mar 2020 15:06:30 -0700
+Message-Id: <20200318220634.32100-1-mike.kravetz@oracle.com>
+X-Mailer: git-send-email 2.24.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9564
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0 mlxscore=0
+ malwarescore=0 suspectscore=0 mlxlogscore=999 spamscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003180094
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9564
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ impostorscore=0
+ mlxlogscore=999 mlxscore=0 phishscore=0 adultscore=0 suspectscore=0
+ clxscore=1011 priorityscore=1501 lowpriorityscore=0 bulkscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003180094
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_110327_649615_B659342A 
-X-CRM114-Status: GOOD (  15.53  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200318_150724_795013_DBFE2794 
+X-CRM114-Status: GOOD (  17.17  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:1043 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.85 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,48 +110,64 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: daniel.thompson@linaro.org, Paul Walmsley <paul.walmsley@sifive.com>,
- dianders@chromium.org, vincent.chen@sifive.com, jason.wessel@windriver.com,
- linux-riscv@lists.infradead.org
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Andrew Morton <akpm@linux-foundation.org>, Vasily Gorbik <gor@linux.ibm.com>,
+ Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Paul Mackerras <paulus@samba.org>, Thomas Gleixner <tglx@linutronix.de>,
+ Longpeng <longpeng2@huawei.com>, Will Deacon <will@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>,
+ Mike Kravetz <mike.kravetz@oracle.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 03 Mar 2020 00:47:00 PST (-0800), vincent.chen@sifive.com wrote:
-> The break instruction in RISC-V does not have an immediate value field, so
-> the kernel cannot identify the purpose of each trap exception through the
-> opcode. This makes the existing identification schemes in other
-> architecture unsuitable for the RISC-V kernel. To solve this problem, this
-> patch adds kgdb_has_hit_break(), which can help RISC-V kernel identify
-> the KGDB trap exception.
->
-> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> ---
->  kernel/debug/debug_core.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->
-> diff --git a/kernel/debug/debug_core.c b/kernel/debug/debug_core.c
-> index 2b7c9b67931d..01bc3eea3d4d 100644
-> --- a/kernel/debug/debug_core.c
-> +++ b/kernel/debug/debug_core.c
-> @@ -417,6 +417,18 @@ int kgdb_isremovedbreak(unsigned long addr)
->  	return 0;
->  }
->
-> +int kgdb_has_hit_break(unsigned long addr)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < KGDB_MAX_BREAKPOINTS; i++) {
-> +		if (kgdb_break[i].state == BP_ACTIVE &&
-> +		    kgdb_break[i].bpt_addr == addr)
-> +			return 1;
-> +	}
-> +	return 0;
-> +}
-> +
->  int dbg_remove_all_break(void)
->  {
->  	int error;
+Longpeng(Mike) reported a weird message from hugetlb command line processing
+and proposed a solution [1].  While the proposed patch does address the
+specific issue, there are other related issues in command line processing.
+As hugetlbfs evolved, updates to command line processing have been made to
+meet immediate needs and not necessarily in a coordinated manner.  The result
+is that some processing is done in arch specific code, some is done in arch
+independent code and coordination is problematic.  Semantics can vary between
+architectures.
 
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+The following patch series does the following:
+- Define arch specific arch_hugetlb_valid_size routine used to validate
+  passed huge page sizes.
+- Move hugepagesz= command line parsing out of arch specific code and into
+  an arch independent routine.
+- Clean up command line processing to follow desired semantics and
+  document those semantics.
+
+[1] https://lore.kernel.org/linux-mm/20200305033014.1152-1-longpeng2@huawei.com
+
+Mike Kravetz (4):
+  hugetlbfs: add arch_hugetlb_valid_size
+  hugetlbfs: move hugepagesz= parsing to arch independent code
+  hugetlbfs: remove hugetlb_add_hstate() warning for existing hstate
+  hugetlbfs: clean up command line processing
+
+ Documentation/admin-guide/mm/hugetlbpage.rst |  26 ++++
+ arch/arm64/include/asm/hugetlb.h             |   2 +
+ arch/arm64/mm/hugetlbpage.c                  |  30 ++---
+ arch/powerpc/include/asm/hugetlb.h           |   3 +
+ arch/powerpc/mm/hugetlbpage.c                |  30 ++---
+ arch/riscv/include/asm/hugetlb.h             |   3 +
+ arch/riscv/mm/hugetlbpage.c                  |  24 ++--
+ arch/s390/include/asm/hugetlb.h              |   3 +
+ arch/s390/mm/hugetlbpage.c                   |  24 ++--
+ arch/sparc/include/asm/hugetlb.h             |   3 +
+ arch/sparc/mm/init_64.c                      |  42 ++-----
+ arch/x86/include/asm/hugetlb.h               |   3 +
+ arch/x86/mm/hugetlbpage.c                    |  23 ++--
+ include/linux/hugetlb.h                      |   8 +-
+ mm/hugetlb.c                                 | 126 ++++++++++++++-----
+ 15 files changed, 198 insertions(+), 152 deletions(-)
+
+-- 
+2.24.1
+
 
