@@ -2,93 +2,132 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D85A189398
-	for <lists+linux-riscv@lfdr.de>; Wed, 18 Mar 2020 02:12:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9AAF1189B62
+	for <lists+linux-riscv@lfdr.de>; Wed, 18 Mar 2020 12:54:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PoO4uQ6oeT/xpcHMw8utFMw07vfqlgkhROmamBarBGI=; b=I+vrFDnl1Mkikk
-	v5Jqqdwq+rRKzBqkfPctur4dWctF8Bl1tWZt8T6PiDo42o49kxnKBuhXJq+Q6Qp+PUoHEUKIvO6OI
-	wWJZ7CYPHN5Uwb6dj2ZQfMVUeVAwVAK0+p9HdIm3wolOML0P8jvNrHq6Vm8zz9rGb1XCbO9SA9p7Q
-	YGnw+SJjec0RPhyGEAlT7+7YZtMKZ4lrUSZQ4Ugy0lP16D/XqIV93Z5i28AZsmk9Frn2HJ5DfSWup
-	NEFJ0wq3CVQuzhrOI/C8CyY383Vt+ppU2tEjZEYacci/x1pWGh0y0Vhcl0Xp6I7/Rc7mD9OKhCmPl
-	oJt72zfi26ToDfQ84MVw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=lP8agbcq2AYAILADyUgk5nJ/czwsxA8ATaSe+V6FyBs=; b=rRO6bFPzyeVdE0IgLogkxi978
+	Z86pYdA6X9opOYAd65yH1RMrw7aZVEXFPIJ+4Pwwy96M8mXqlKtuUAlEqzpUpMKDIrn5K/cmRVjOY
+	lt7Q24yLYxzYVX949YR80syeKGODt5Ys6ylO6bcxvCNiG5D8+HqyIofa5qnVEkLFNYgXMsbd5xiiK
+	DU0ErGVX3p+AM9wljqXYk/WBzGlPWnsy9vD1P8WrFXltkrxe3OvLQ5wI1Xdd5GLIa3baYgMQmNPYN
+	EdNV5+zjWYtTSc/OCB34JABKb4WcYZ0Yc/TyORzFZxXX2rqszY9d7HhRYiNydgAD5kdEIBw9as9Mp
+	M3UnPKTHg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jENG8-0007dJ-Cw; Wed, 18 Mar 2020 01:12:36 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1jEXGw-0007d7-CZ; Wed, 18 Mar 2020 11:54:06 +0000
+Received: from mail-eopbgr70129.outbound.protection.outlook.com
+ ([40.107.7.129] helo=EUR04-HE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jENFi-0006us-Q6
- for linux-riscv@lists.infradead.org; Wed, 18 Mar 2020 01:12:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1584493931; x=1616029931;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=eRIBcr08/pEJPAvQBJlZqxk+2XFeGl+SuS8rcKG5tKQ=;
- b=bOTM0QKuuf8QoS/dCdV69HRPX5NS4/7gzzEG/WDAMQEDiihhPahIfdzT
- aKzfsTOsDtQUmWuVV1n69hDsWjV+aLzQowTp39tsWX+quPV/jS8DtE/sA
- KGbzSCrYBqgeZm6MHV93ycOeO6fcgezbAe+AitC+SFkFvUXXb8qA3SS1Y
- T2ajh+mq+ecIq8KtTjCL6hbajuHEmktusEtT7oPU7hcUDQ9rnbcJhUuK/
- /kzudW2RYn0RUHc/CJxjw2Lbo+fg239NvSwplzgk+C058ITvvZyzy0zPm
- ttNtGmMG4rxYUqReDQmYAzjR+afZAsG/jCqcLI53qDU2j+Qy+0JbGxIA8 g==;
-IronPort-SDR: GS+SPJhlFbgg52u19Zuaf3z0djPiCvr5CMWMcGHyioUtb54YXUcTMjh5xG9xAQRzJd78kvFH3g
- hWnm/GkvuI60Saqx/1T2AsA5xemtdDiNVWV+kFbAf54mNKgtP6RkVFtQd5t6S01TkVQ4A0EsgT
- pjqnP227036ahj3sCpJmffAvYSOh8vj3ICZLvzWBGwmgYaGd4VEBHQPzoNOAEAD4r5VtoKJtfj
- IcXBHSANU9QsGMDLGtKmO7hmjymrw0xtwHv5VpQAL/TgMayfPImFCeZkYUz5+RFrTY0h+yT4Vf
- WYY=
-X-IronPort-AV: E=Sophos;i="5.70,565,1574092800"; d="scan'208";a="134242176"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 18 Mar 2020 09:12:02 +0800
-IronPort-SDR: tfu9BkHjVuXcnevQenX6qpAzTLjpSB3CzSpu66bp4uXb8yrgqDmn9ePRAoPDeIt+52HPMSmq8v
- UXd+ObJ4nDn70Aaod+Lho10QyQEOqzEu1yZzgb2MRKq9kW8HEkF+taTp3fayBF3U9V0ixFR6tZ
- 8D2QNcTvKPe4RPJB0RR91y2QQoicKvy5RWKuh6ae/eCsAOwRUEP+djZWDS9tBYsVbOIZzMzmmi
- Jma1PhYK9e+6s6IxnjUolJyj3qwVjXxlG7yIeU51rFkMuxLZa+sKaueO9ZUwlG/2XkqE25z0nA
- CaR9r8iKBlZ9y86iLcIYVkRL
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2020 18:03:29 -0700
-IronPort-SDR: clNaC5M7dCm60dPiKWGH5cON7Dc675lLb5FkVokEyXl/6+0xhEz+UFEQUx802c9CdKn3wUzKDu
- OW+qVrfRLhg9UFH29s500YMS17ueNHZlsl/h46sacufPuW0tpTA0wMPU1uoKNw4c4QmzAEdU52
- /fyewY5BCcnqhHEgSBa2jsHLLMdFZMbvyQp+u2oh9IOcKj9x3W0fa/WSR0nw/Fc2wAHVXItfIj
- DVHZWaroNO3VhmC8yU1mg4y8qYvLkbzf4J4EhSEH5rJ8JFC9AcWjvkc0Ma/HSkb+vkTteXdRM8
- 3WY=
-WDCIronportException: Internal
-Received: from mccorma-lt.ad.shared (HELO yoda.hgst.com) ([10.86.54.125])
- by uls-op-cesaip01.wdc.com with ESMTP; 17 Mar 2020 18:12:02 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v11 11/11] RISC-V: Support cpu hotplug
-Date: Tue, 17 Mar 2020 18:11:44 -0700
-Message-Id: <20200318011144.91532-12-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200318011144.91532-1-atish.patra@wdc.com>
-References: <20200318011144.91532-1-atish.patra@wdc.com>
+ id 1jEXGC-0006pl-NI; Wed, 18 Mar 2020 11:53:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Dtzs2GW7vy0UmZRmF+m72Fpo4YleF9VH/w+g52Ued9FukFS2RmJIYi+MHnDyOFCD6ME27sKc8eaUUVLyC7IN2oGZ5qoe7h2rB7jMDulrsWTLEBmxthue2D4qazrjKxKq1zcDUVe5ETbIzhzYuiqEErj5K41VdaK2QpeV8qvCQMI9cMU7ovbPoAMHjNgsGCZ2h2gpT1da/kqWYWLCwv+MIaX7A/KKqV8yKpUqWlkBD6U7B1a8+cwk/zpxNPusCT+0D5KSumtr9IYJfFCTpUCsg4miBRyYx4vnHh+yq2n/1mxablP6G1eocVX25hLz/trvMgSQ5HTX85JS1z3/fcEzNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lP8agbcq2AYAILADyUgk5nJ/czwsxA8ATaSe+V6FyBs=;
+ b=BNZiGUHM1VYccOLplqeqjFdv9LGeVzXOaJ5ZQN1tz80pYeWdJYqMP7lG0qAtXZmt6KoRcAGJQ81NNKdkQEYvnnPaOwzpQCRNz2b8pcSACK9uZZQArJQI/7XjBUr09SQrL7Wua9H676/tZTjNkj+oxqkvwhVhuJi+4tybgbITEYhCkXCCb/dX+kX2313Pkw15DD76S6E5pnDG378ETKXe6TmZGlTBrSU3/YPPHyXf4SAy55mQ/8cRWzjw/DLsDauowhOpP5FB/w5gUJrHecvclx764TRgM5oTBcOB+G4Jq4Nn8UFrBHHzAWFQFHQ6ezW5cvhSIGIxXcHQi5HchEi3kw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=toradex.com; dmarc=pass action=none header.from=toradex.com;
+ dkim=pass header.d=toradex.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=toradex.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lP8agbcq2AYAILADyUgk5nJ/czwsxA8ATaSe+V6FyBs=;
+ b=raY6hGar69e12FrP/DIAVhCgnGos7uAR2lTW4uDkqcWc/mgg4e2cr3ZnjZXXAKaFGShfWzoVMH7P4dK2yxgyxSEOq9lF5sBH2+BgKOegmuEBACHawoTcAlCnIfXB/rZ2boE6fCJklSeCyPn8mOGKr1Y7N+grjcDUhLflPnZj+gM=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=oleksandr.suvorov@toradex.com; 
+Received: from VI1PR05MB3279.eurprd05.prod.outlook.com (10.170.238.24) by
+ VI1PR05MB5456.eurprd05.prod.outlook.com (20.177.201.11) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2835.18; Wed, 18 Mar 2020 11:53:16 +0000
+Received: from VI1PR05MB3279.eurprd05.prod.outlook.com
+ ([fe80::7cdd:4feb:a8b6:a6d2]) by VI1PR05MB3279.eurprd05.prod.outlook.com
+ ([fe80::7cdd:4feb:a8b6:a6d2%7]) with mapi id 15.20.2814.021; Wed, 18 Mar 2020
+ 11:53:16 +0000
+X-Gm-Message-State: ANhLgQ3k/yH4oRhxZ5LnJMKIrp3699GUzrkm2GcF+QNZ7p6c9OlWFnF0
+ rt3N5Dc5A0bJhw4DkqwZ5TRePU2ZoDStZ9NMP1s=
+X-Google-Smtp-Source: ADFU+vuIN9vi3EnzahwoHqBu0uZg9qdX6KincFfsWht2IbWF+j4fV2L42M4aXtG7Pv38JtpTaFmsRwkNpHNmxW/8YWA=
+X-Received: by 2002:a37:4fd4:: with SMTP id d203mr3613801qkb.249.1584532071685; 
+ Wed, 18 Mar 2020 04:47:51 -0700 (PDT)
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+In-Reply-To: <20200317174043.GA1464607@ulmo>
+From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Date: Wed, 18 Mar 2020 13:47:40 +0200
+X-Gmail-Original-Message-ID: <CAGgjyvGDTD=ZgEjU540HLApQXCoM1a8bk_-eQbS44sge+GpeAg@mail.gmail.com>
+Message-ID: <CAGgjyvGDTD=ZgEjU540HLApQXCoM1a8bk_-eQbS44sge+GpeAg@mail.gmail.com>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+To: Thierry Reding <thierry.reding@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-ClientProxiedBy: MN2PR16CA0064.namprd16.prod.outlook.com
+ (2603:10b6:208:234::33) To VI1PR05MB3279.eurprd05.prod.outlook.com
+ (2603:10a6:802:1c::24)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mail-qt1-f175.google.com (209.85.160.175) by
+ MN2PR16CA0064.namprd16.prod.outlook.com (2603:10b6:208:234::33) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.21 via Frontend
+ Transport; Wed, 18 Mar 2020 11:53:15 +0000
+Received: by mail-qt1-f175.google.com with SMTP id z8so16934014qto.12;
+ Wed, 18 Mar 2020 04:53:15 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ3k/yH4oRhxZ5LnJMKIrp3699GUzrkm2GcF+QNZ7p6c9OlWFnF0
+ rt3N5Dc5A0bJhw4DkqwZ5TRePU2ZoDStZ9NMP1s=
+X-Google-Smtp-Source: ADFU+vuIN9vi3EnzahwoHqBu0uZg9qdX6KincFfsWht2IbWF+j4fV2L42M4aXtG7Pv38JtpTaFmsRwkNpHNmxW/8YWA=
+X-Received: by 2002:a37:4fd4:: with SMTP id
+ d203mr3613801qkb.249.1584532071685; Wed, 18 Mar 2020 04:47:51 -0700 (PDT)
+X-Gmail-Original-Message-ID: <CAGgjyvGDTD=ZgEjU540HLApQXCoM1a8bk_-eQbS44sge+GpeAg@mail.gmail.com>
+X-Originating-IP: [209.85.160.175]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: aad552e2-1dec-4d8f-aab6-08d7cb32f17b
+X-MS-TrafficTypeDiagnostic: VI1PR05MB5456:
+X-Microsoft-Antispam-PRVS: <VI1PR05MB545678DD6EDA9D3BA9E04BF9F9F70@VI1PR05MB5456.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-Forefront-PRVS: 03468CBA43
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(4636009)(366004)(136003)(39850400004)(376002)(396003)(346002)(199004)(66556008)(66476007)(26005)(52116002)(42186006)(478600001)(54906003)(66946007)(53546011)(2906002)(55236004)(6666004)(81156014)(9686003)(55446002)(450100002)(5660300002)(186003)(8936002)(316002)(44832011)(8676002)(4326008)(6862004)(81166006)(86362001);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:VI1PR05MB5456;
+ H:VI1PR05MB3279.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; 
+Received-SPF: None (protection.outlook.com: toradex.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: acF67KKwhF3KUaL0msz+cdXq1x0VSn6OCAssSb4Levcd+1jOP3+Ymn0jscm3VqQdBkmko2nYvXNFmRWTL+aM7Nk0a1SlST2Z5h3YPP/hdP6jsZd/M+lBaXI0UjMRfr3NwKmeq6tIa0AJ/LWOQY3FfoBOEWevPPUtCMjxmCvILf4mGh1IkpKz+N3qkccTowAsvH15FzH0Sx//Gv0x+DO8Q2DDuNBda88Kk/NALgLqivNXPbZSuA9DowzhTX49Z0GPwK+jz3T7yIY50OqWJUxB4FwlDdoZSDIRcq9Q1Ck6cm1OOdcTYD/28qur68/Viiubrx7JycaNS4gewuYooYsObJi3R/xdkz34JQ/QQxGP2x9MbkAtVye78zZ0X0oEBqBLakO6TpBnZP8RU/LzhfBlD3G2w50Jopb+lFZo4Nlm8v5r2PQpOPgvodwsBRrnAjRt
+X-MS-Exchange-AntiSpam-MessageData: s95irvv0uP4QK4Cns697H0ZBHq1kXuHSH+Q6r/4LHWf/57y1jXLsLN06LrViJVZPNWqia4nb30i3qRU7uerPhaR2JdRcKD9ZHJcTnfyl23QZemJ4XbvdMiYUyb1BzCtMms3CZa7QT8lIOKthuUsqfg==
+X-OriginatorOrg: toradex.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: aad552e2-1dec-4d8f-aab6-08d7cb32f17b
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2020 11:53:16.0089 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: d9995866-0d9b-4251-8315-093f062abab4
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: lMFQJGCK2KoxTqEGrjBAuaQ5kUVbaKklBCjCmsUOcvowxvIO1pG50bZBnOxEPNXEPsd5ogiGbMKy2lT6H05YlMwaEIAGbaez3rYuXI4/G+A=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR05MB5456
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_181210_892890_E99B0E0F 
-X-CRM114-Status: GOOD (  24.00  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200318_045320_768598_EFC73CBE 
+X-CRM114-Status: GOOD (  16.41  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.7.129 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,415 +139,73 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Zong Li <zong.li@sifive.com>,
- Nick Hu <nickhu@andestech.com>, Vincent Chen <vincent.chen@sifive.com>,
- Anup Patel <anup@brainfault.org>, Mike Rapoport <rppt@linux.ibm.com>,
- Atish Patra <atish.patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Gary Guo <gary@garyguo.net>, Paul Walmsley <paul.walmsley@sifive.com>,
- Greentime Hu <greentime.hu@sifive.com>, linux-riscv@lists.infradead.org,
- Bin Meng <bmeng.cn@gmail.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mao Han <han_mao@c-sky.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
+ Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
+ Paul Cercueil <paul@crapouillou.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
+ Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
+ Philippe Schenker <philippe.schenker@toradex.com>,
+ Paul Barker <pbarker@konsulko.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Igor Opaniuk <igor.opaniuk@toradex.com>, Scott Branden <sbranden@broadcom.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Tony Prisk <linux@prisktech.co.nz>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch enable support for cpu hotplug in RISC-V. It uses SBI HSM
-extension to online/offline any hart. As a result, the harts are
-returned to firmware once they are offline. If the harts are brought
-online afterwards, they re-enter Linux kernel as if a secondary hart
-booted for the first time. All booting requirements are honored during
-this process.
+On Tue, Mar 17, 2020 at 7:41 PM Thierry Reding <thierry.reding@gmail.com> wrote:
+>
+> On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
+> > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
+> > Rename it to PWM_POLARITY_INVERTED.
+>
+> It isn't misspelled. "inversed" is a synonym for "inverted". Both
+> spellings are correct.
 
-Tested both on QEMU and HighFive Unleashed board with. Test result follows.
+> And as you noted in the cover letter, there's a conflict between the
+> macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
+> in the wrong order you'll get a compile error.
 
----------------------------------------------------
-Offline cpu 2
----------------------------------------------------
-$ echo 0 > /sys/devices/system/cpu/cpu2/online
-[   32.828684] CPU2: off
-$ cat /proc/cpuinfo
-processor       : 0
-hart            : 0
-isa             : rv64imafdcsu
-mmu             : sv48
+This patch is a part of the patchset, which in result removes enum at all,
+so there will be no definition conflict.
 
-processor       : 1
-hart            : 1
-isa             : rv64imafdcsu
-mmu             : sv48
+> The enum was named this way on purpose to make it separate from the
+> definition for the DT bindings. Note that DT bindings are an ABI and can
+> never change, whereas the enum pwm_polarity is part of a Linux internal
+> API and doesn't have the same restrictions as an ABI.
 
-processor       : 3
-hart            : 3
-isa             : rv64imafdcsu
-mmu             : sv48
+AFAIU, DTS files are not a part of ABI.
 
-processor       : 4
-hart            : 4
-isa             : rv64imafdcsu
-mmu             : sv48
+I understand that enums are better than macros for some reasons.
+However, I think it is dangerous to use duplicate definitions in
+different places when values of these definitions use in the same
+code.
+So, given that the enum cannot be used in DT, I left only macros.
 
-processor       : 5
-hart            : 5
-isa             : rv64imafdcsu
-mmu             : sv48
+You personally wrote that the enum pwm_polarity can change, so the
+desynchronization I quite possible.
 
-processor       : 6
-hart            : 6
-isa             : rv64imafdcsu
-mmu             : sv48
+> As far as I'm concerned this is completely unnecessary churn that's
+> potentially going to come back and bite us, so I see no reason to accept
+> this.
 
-processor       : 7
-hart            : 7
-isa             : rv64imafdcsu
-mmu             : sv48
 
----------------------------------------------------
-online cpu 2
----------------------------------------------------
-$ echo 1 > /sys/devices/system/cpu/cpu2/online
-$ cat /proc/cpuinfo
-processor       : 0
-hart            : 0
-isa             : rv64imafdcsu
-mmu             : sv48
+>
+> Thierry
+--
+Best regards
+Oleksandr Suvorov
 
-processor       : 1
-hart            : 1
-isa             : rv64imafdcsu
-mmu             : sv48
-
-processor       : 2
-hart            : 2
-isa             : rv64imafdcsu
-mmu             : sv48
-
-processor       : 3
-hart            : 3
-isa             : rv64imafdcsu
-mmu             : sv48
-
-processor       : 4
-hart            : 4
-isa             : rv64imafdcsu
-mmu             : sv48
-
-processor       : 5
-hart            : 5
-isa             : rv64imafdcsu
-mmu             : sv48
-
-processor       : 6
-hart            : 6
-isa             : rv64imafdcsu
-mmu             : sv48
-
-processor       : 7
-hart            : 7
-isa             : rv64imafdcsu
-mmu             : sv48
-
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
-Reviewed-by: Anup Patel <anup@brainfault.org>
----
- arch/riscv/Kconfig               | 12 ++++-
- arch/riscv/include/asm/cpu_ops.h | 12 +++++
- arch/riscv/include/asm/smp.h     | 17 +++++++
- arch/riscv/kernel/Makefile       |  1 +
- arch/riscv/kernel/cpu-hotplug.c  | 87 ++++++++++++++++++++++++++++++++
- arch/riscv/kernel/cpu_ops_sbi.c  | 34 +++++++++++++
- arch/riscv/kernel/setup.c        | 19 ++++++-
- 7 files changed, 180 insertions(+), 2 deletions(-)
- create mode 100644 arch/riscv/kernel/cpu-hotplug.c
-
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 20c6191399ea..b3daadd116ec 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -20,7 +20,6 @@ config RISCV
- 	select CLONE_BACKWARDS
- 	select COMMON_CLK
- 	select GENERIC_CLOCKEVENTS
--	select GENERIC_CPU_DEVICES
- 	select GENERIC_IRQ_SHOW
- 	select GENERIC_PCI_IOMAP
- 	select GENERIC_SCHED_CLOCK
-@@ -248,6 +247,17 @@ config NR_CPUS
- 	depends on SMP
- 	default "8"
- 
-+config HOTPLUG_CPU
-+	bool "Support for hot-pluggable CPUs"
-+	depends on SMP
-+	select GENERIC_IRQ_MIGRATION
-+	help
-+
-+	  Say Y here to experiment with turning CPUs off and on.  CPUs
-+	  can be controlled through /sys/devices/system/cpu.
-+
-+	  Say N if you want to disable CPU hotplug.
-+
- choice
- 	prompt "CPU Tuning"
- 	default TUNE_GENERIC
-diff --git a/arch/riscv/include/asm/cpu_ops.h b/arch/riscv/include/asm/cpu_ops.h
-index 5ce81a28e1d9..a8ec3c5c1bd2 100644
---- a/arch/riscv/include/asm/cpu_ops.h
-+++ b/arch/riscv/include/asm/cpu_ops.h
-@@ -18,12 +18,24 @@
-  *			is a mechanism for doing so, tests whether it is
-  *			possible to boot the given HART.
-  * @cpu_start:		Boots a cpu into the kernel.
-+ * @cpu_disable:	Prepares a cpu to die. May fail for some
-+ *			mechanism-specific reason, which will cause the hot
-+ *			unplug to be aborted. Called from the cpu to be killed.
-+ * @cpu_stop:		Makes a cpu leave the kernel. Must not fail. Called from
-+ *			the cpu being stopped.
-+ * @cpu_is_stopped:	Ensures a cpu has left the kernel. Called from another
-+ *			cpu.
-  */
- struct cpu_operations {
- 	const char	*name;
- 	int		(*cpu_prepare)(unsigned int cpu);
- 	int		(*cpu_start)(unsigned int cpu,
- 				     struct task_struct *tidle);
-+#ifdef CONFIG_HOTPLUG_CPU
-+	int		(*cpu_disable)(unsigned int cpu);
-+	void		(*cpu_stop)(void);
-+	int		(*cpu_is_stopped)(unsigned int cpu);
-+#endif
- };
- 
- extern const struct cpu_operations *cpu_ops[NR_CPUS];
-diff --git a/arch/riscv/include/asm/smp.h b/arch/riscv/include/asm/smp.h
-index 023f74fb8b3b..f4c7cfda6b7f 100644
---- a/arch/riscv/include/asm/smp.h
-+++ b/arch/riscv/include/asm/smp.h
-@@ -43,6 +43,13 @@ void riscv_cpuid_to_hartid_mask(const struct cpumask *in, struct cpumask *out);
-  */
- #define raw_smp_processor_id() (current_thread_info()->cpu)
- 
-+#if defined CONFIG_HOTPLUG_CPU
-+int __cpu_disable(void);
-+void __cpu_die(unsigned int cpu);
-+void cpu_stop(void);
-+#else
-+#endif /* CONFIG_HOTPLUG_CPU */
-+
- #else
- 
- static inline void show_ipi_stats(struct seq_file *p, int prec)
-@@ -69,4 +76,14 @@ static inline void riscv_cpuid_to_hartid_mask(const struct cpumask *in,
- }
- 
- #endif /* CONFIG_SMP */
-+
-+#if defined(CONFIG_HOTPLUG_CPU) && (CONFIG_SMP)
-+bool cpu_has_hotplug(unsigned int cpu);
-+#else
-+static inline bool cpu_has_hotplug(unsigned int cpu)
-+{
-+	return false;
-+}
-+#endif
-+
- #endif /* _ASM_RISCV_SMP_H */
-diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-index a0be34b96846..9601ac907f70 100644
---- a/arch/riscv/kernel/Makefile
-+++ b/arch/riscv/kernel/Makefile
-@@ -47,5 +47,6 @@ obj-$(CONFIG_RISCV_SBI)		+= sbi.o
- ifeq ($(CONFIG_RISCV_SBI), y)
- obj-$(CONFIG_SMP) += cpu_ops_sbi.o
- endif
-+obj-$(CONFIG_HOTPLUG_CPU)	+= cpu-hotplug.o
- 
- clean:
-diff --git a/arch/riscv/kernel/cpu-hotplug.c b/arch/riscv/kernel/cpu-hotplug.c
-new file mode 100644
-index 000000000000..df84e0c13db1
---- /dev/null
-+++ b/arch/riscv/kernel/cpu-hotplug.c
-@@ -0,0 +1,87 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-+ */
-+
-+#include <linux/kernel.h>
-+#include <linux/mm.h>
-+#include <linux/sched.h>
-+#include <linux/err.h>
-+#include <linux/irq.h>
-+#include <linux/cpu.h>
-+#include <linux/sched/hotplug.h>
-+#include <asm/irq.h>
-+#include <asm/cpu_ops.h>
-+#include <asm/sbi.h>
-+
-+void cpu_stop(void);
-+void arch_cpu_idle_dead(void)
-+{
-+	cpu_stop();
-+}
-+
-+bool cpu_has_hotplug(unsigned int cpu)
-+{
-+	if (cpu_ops[cpu]->cpu_stop)
-+		return true;
-+
-+	return false;
-+}
-+
-+/*
-+ * __cpu_disable runs on the processor to be shutdown.
-+ */
-+int __cpu_disable(void)
-+{
-+	int ret = 0;
-+	unsigned int cpu = smp_processor_id();
-+
-+	if (!cpu_ops[cpu] || !cpu_ops[cpu]->cpu_stop)
-+		return -EOPNOTSUPP;
-+
-+	if (cpu_ops[cpu]->cpu_disable)
-+		ret = cpu_ops[cpu]->cpu_disable(cpu);
-+
-+	if (ret)
-+		return ret;
-+
-+	remove_cpu_topology(cpu);
-+	set_cpu_online(cpu, false);
-+	irq_migrate_all_off_this_cpu();
-+
-+	return ret;
-+}
-+
-+/*
-+ * Called on the thread which is asking for a CPU to be shutdown.
-+ */
-+void __cpu_die(unsigned int cpu)
-+{
-+	int ret = 0;
-+
-+	if (!cpu_wait_death(cpu, 5)) {
-+		pr_err("CPU %u: didn't die\n", cpu);
-+		return;
-+	}
-+	pr_notice("CPU%u: off\n", cpu);
-+
-+	/* Verify from the firmware if the cpu is really stopped*/
-+	if (cpu_ops[cpu]->cpu_is_stopped)
-+		ret = cpu_ops[cpu]->cpu_is_stopped(cpu);
-+	if (ret)
-+		pr_warn("CPU%d may not have stopped: %d\n", cpu, ret);
-+}
-+
-+/*
-+ * Called from the idle thread for the CPU which has been shutdown.
-+ */
-+void cpu_stop(void)
-+{
-+	idle_task_exit();
-+
-+	(void)cpu_report_death();
-+
-+	cpu_ops[smp_processor_id()]->cpu_stop();
-+	/* It should never reach here */
-+	BUG();
-+}
-diff --git a/arch/riscv/kernel/cpu_ops_sbi.c b/arch/riscv/kernel/cpu_ops_sbi.c
-index 66f3cded91f5..685fae72b7f5 100644
---- a/arch/riscv/kernel/cpu_ops_sbi.c
-+++ b/arch/riscv/kernel/cpu_ops_sbi.c
-@@ -74,8 +74,42 @@ static int sbi_cpu_prepare(unsigned int cpuid)
- 	return 0;
- }
- 
-+#ifdef CONFIG_HOTPLUG_CPU
-+static int sbi_cpu_disable(unsigned int cpuid)
-+{
-+	if (!cpu_ops_sbi.cpu_stop)
-+		return -EOPNOTSUPP;
-+	return 0;
-+}
-+
-+static void sbi_cpu_stop(void)
-+{
-+	int ret;
-+
-+	ret = sbi_hsm_hart_stop();
-+	pr_crit("Unable to stop the cpu %u (%d)\n", smp_processor_id(), ret);
-+}
-+
-+static int sbi_cpu_is_stopped(unsigned int cpuid)
-+{
-+	int rc;
-+	int hartid = cpuid_to_hartid_map(cpuid);
-+
-+	rc = sbi_hsm_hart_get_status(hartid);
-+
-+	if (rc == SBI_HSM_HART_STATUS_STOPPED)
-+		return 0;
-+	return rc;
-+}
-+#endif
-+
- const struct cpu_operations cpu_ops_sbi = {
- 	.name		= "sbi",
- 	.cpu_prepare	= sbi_cpu_prepare,
- 	.cpu_start	= sbi_cpu_start,
-+#ifdef CONFIG_HOTPLUG_CPU
-+	.cpu_disable	= sbi_cpu_disable,
-+	.cpu_stop	= sbi_cpu_stop,
-+	.cpu_is_stopped	= sbi_cpu_is_stopped,
-+#endif
- };
-diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
-index 44ac4ddf60ab..1d2f66579b94 100644
---- a/arch/riscv/kernel/setup.c
-+++ b/arch/riscv/kernel/setup.c
-@@ -16,12 +16,13 @@
- #include <linux/of_platform.h>
- #include <linux/sched/task.h>
- #include <linux/swiotlb.h>
-+#include <linux/smp.h>
- 
- #include <asm/clint.h>
-+#include <asm/cpu_ops.h>
- #include <asm/setup.h>
- #include <asm/sections.h>
- #include <asm/pgtable.h>
--#include <asm/smp.h>
- #include <asm/sbi.h>
- #include <asm/tlbflush.h>
- #include <asm/thread_info.h>
-@@ -43,6 +44,7 @@ struct screen_info screen_info = {
- /* The lucky hart to first increment this variable will boot the other cores */
- atomic_t hart_lottery;
- unsigned long boot_cpu_hartid;
-+static DEFINE_PER_CPU(struct cpu, cpu_devices);
- 
- void __init parse_dtb(void)
- {
-@@ -90,3 +92,18 @@ void __init setup_arch(char **cmdline_p)
- 
- 	riscv_fill_hwcap();
- }
-+
-+static int __init topology_init(void)
-+{
-+	int i;
-+
-+	for_each_possible_cpu(i) {
-+		struct cpu *cpu = &per_cpu(cpu_devices, i);
-+
-+		cpu->hotpluggable = cpu_has_hotplug(i);
-+		register_cpu(cpu, i);
-+	}
-+
-+	return 0;
-+}
-+subsys_initcall(topology_init);
--- 
-2.25.1
-
+Toradex AG
+Ebenaustrasse 10 | 6048 Horw | Switzerland | T: +41 41 500 48 00
 
