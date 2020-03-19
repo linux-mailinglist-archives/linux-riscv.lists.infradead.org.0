@@ -2,87 +2,112 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E64318BE22
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 18:34:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C320C18BF3A
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 19:19:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=QmnwDpN4BEcbQz1dvHMuGMkntZTx07WfjVanIL1v/UQ=; b=DNBXlU1iss6d9n
-	ZYDrumJHC3RnuUbzCIb0jrBfJXawYjngfIzJZ2qsauuY5y3M5kyEc78T5TB+rqEzlb+Ml6a7OWNNN
-	CHMW2zcStJfi+W0noaq5xfMNhp8p+yl0SFARuAnhm/Y7G7JwV3NKwwK5vMPKct44XtKSLFRyYUMUK
-	dZ7T8tSbpOGRxf74SBENGBJlsjUF6XjVg+VAmOpLD0vYyGyq/MI6YR6DI10P29miE0/jz3JYRdeOk
-	mJ09spInW+Z8ywtzH+b8beHevLMwUzLN4fjE0rh1DtxHeSRRRo3REEVAMM1fNb/Mc2U0dZwXAcMX4
-	/FnzTSMDxVTDDzX6hUrw==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HXvLR8/3np/VEn4lQcPgfkQDXtCeUG1sWXEv4yIwMjg=; b=hE6JVixDry6cX9
+	WASeeIp+ErfgUaEzpa+MYDEEdPzKceD2tjrgwJ5Jcw/Qg90K+nCOMY+HIAHvqq82Iku3pNCx2zKRT
+	TcK2M/BRSg8he1V6yJqBU+ym1TIwxijxW1Q8P3u8UuSDOSQfVi8ESKZWRTPKVp918KHGD+rwx6ko+
+	8xeN1JMfM37ZcqrSuNEkSJL7SLwTOfbUyZUggrzQpSiJImCF6tk2DftKKFe0J/mGNcDuv9sKbt21w
+	/LX/p76p4mX3M2pIGmmGdaDgQyPaY5EEi8fwVHdpSZPNYBk/bRkbyJ8ISUNhO7OMq3L3/FDcj/ALu
+	0ERz5Kw2vQxu9P5DysoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEz4H-0004ax-3J; Thu, 19 Mar 2020 17:34:53 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1jEzlJ-0005dD-Kl; Thu, 19 Mar 2020 18:19:21 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEz3z-0004M5-8b
- for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 17:34:37 +0000
-Received: by mail-pl1-x641.google.com with SMTP id b9so1338866pls.12
- for <linux-riscv@lists.infradead.org>; Thu, 19 Mar 2020 10:34:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=QmnwDpN4BEcbQz1dvHMuGMkntZTx07WfjVanIL1v/UQ=;
- b=AtCgR8e3nzAU4Sa7VitEYUr9YZX4mGudIDQFnoYM6cMWyMKU/+YXfkUINtHjpE7q/N
- BDMy5Ww4zI7jQ1AhDrNwxb1CXBBKmsZFTBIsnKnYt6ODB2AKS/U3msh1RTnjl1Q87Kpz
- 5PN7UjveGsNvu8jm1ui7ytD9R9SSln5ytpTmgstPHQjYC6BzPA4Vsg/33f6HY5kFZtqc
- 8knoBCQv+8RG2bMNwebYmyhbNMA+nh9f8g+IhXHK7Ght1PPUh8HybzqOoGpNs+Es31PM
- H2Jk/5wTLo97LoyTuF8RyNYJmugb77fbfEE5oAwjRrUKtt3VavBmfXnvOMrVY9GEdbaf
- vatA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=QmnwDpN4BEcbQz1dvHMuGMkntZTx07WfjVanIL1v/UQ=;
- b=U7NFOz5o04hNKuD5K+6xQQTiCU0yFJksRu5XaTEx0Vvyp3LpBBFCj/D3O3URf5XNA/
- cBbwAvFdp30bo29t8aqvCLQYDqCnmYGbO9SJm7gPjgq/KVP9Dhmbqv8+R5ZibSnQlfGD
- qdkzuu/bks1ydI70gbYK/a+/9U2G9/w7kqkw9J7LBaazm4thVf9M3W3hs/muwpUcbueB
- b4jXX1VJeN2EMFfylI8kORDHHE/PsiKdlh6GYMCrrvQngtEU3HJO3N2dXbfwODUc4TOo
- ycWa8H3k0rI/EvSBWnpXs7I5lG3EI8J3MwR7wqe7j1iD4G0xLrrKVCRexJOCqPJ7n96m
- woKw==
-X-Gm-Message-State: ANhLgQ1Hg7JMJzGPHBPdt5vuKKJKcMKAwUJ+LtI/YaKK6y0kw8cB2/5Y
- sr2LVbhmL6Wk6609Vcc4cHHKLA==
-X-Google-Smtp-Source: ADFU+vtWjXxvI/5OQNruqTkEr0kcIUxrFfrYwg3MX4Vi/gcXJRKELUx8s3VS6ORm9ClPo7uWYyZkaw==
-X-Received: by 2002:a17:90b:19ca:: with SMTP id
- nm10mr4934522pjb.157.1584639274062; 
- Thu, 19 Mar 2020 10:34:34 -0700 (PDT)
-Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
- by smtp.gmail.com with ESMTPSA id l125sm2401132pgl.57.2020.03.19.10.34.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Mar 2020 10:34:33 -0700 (PDT)
-Date: Thu, 19 Mar 2020 10:34:33 -0700 (PDT)
-X-Google-Original-Date: Thu, 19 Mar 2020 10:34:24 PDT (-0700)
-Subject: Re: [PATCH 1/5] kgdb: Add kgdb_has_hit_break function
-In-Reply-To: <20200319114032.376mvrq3npyxej5q@holly.lan>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: daniel.thompson@linaro.org
-Message-ID: <mhng-2a35854d-fb2f-484b-aa28-8f858631bce3@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
+ id 1jEzl6-0005JH-G3; Thu, 19 Mar 2020 18:19:10 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02JI8wHq080123;
+ Thu, 19 Mar 2020 18:17:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=HXvLR8/3np/VEn4lQcPgfkQDXtCeUG1sWXEv4yIwMjg=;
+ b=rmpVyB3d0/cWvHtU9RvF5VWb6i7rdQSOdwNYMXZ5oeoLYOUo/sWN/JFVznP4TARCd8/j
+ IOZcupF92YGaCAal0s1483+WIxGL9ohqg+S6vn4mv0ZLtI6i+73jqJUxy/++kh21IAx6
+ psTm0iugjrftvG1vtreP8z/8AhtmTionvoNYc5FGURy0BlrOXCHHWs6w8IOKxIXmgPsA
+ tqY9g4VPq5KdtvZmjA7fhcxui2F7jvT92/u+ESkjswUWFiQ6i3uOitEqbhB1XvsjWMBY
+ YJa5yi8fzQ+JWcuU6zZ3KN4HO7sVh44X2X+NQ5wlD/8IIDNn78qOXnLf6dnarU3i3pwi Ew== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2yrq7m9tpb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 19 Mar 2020 18:17:55 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02JIGdv1032600;
+ Thu, 19 Mar 2020 18:17:54 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3030.oracle.com with ESMTP id 2ys8rmsrj4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 19 Mar 2020 18:17:54 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02JIHoi9022986;
+ Thu, 19 Mar 2020 18:17:50 GMT
+Received: from [192.168.1.206] (/71.63.128.209)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 19 Mar 2020 11:17:49 -0700
+Subject: Re: [PATCH 1/4] hugetlbfs: add arch_hugetlb_valid_size
+To: Christophe Leroy <christophe.leroy@c-s.fr>, linux-mm@kvack.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org,
+ linux-s390@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-doc@vger.kernel.org
+References: <20200318220634.32100-1-mike.kravetz@oracle.com>
+ <20200318220634.32100-2-mike.kravetz@oracle.com>
+ <c3071359-c5d3-4247-7f16-6f61b2fa0756@c-s.fr>
+From: Mike Kravetz <mike.kravetz@oracle.com>
+Message-ID: <c60fe230-462c-aa8c-be50-61c92840d7b7@oracle.com>
+Date: Thu, 19 Mar 2020 11:17:47 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <c3071359-c5d3-4247-7f16-6f61b2fa0756@c-s.fr>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9565
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ bulkscore=0 phishscore=0
+ malwarescore=0 mlxscore=0 mlxlogscore=999 adultscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003190077
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9565
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 suspectscore=0
+ adultscore=0 bulkscore=0 mlxlogscore=999 priorityscore=1501 clxscore=1015
+ malwarescore=0 mlxscore=0 phishscore=0 impostorscore=0 spamscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003190076
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200319_103435_380747_6E83BF86 
-X-CRM114-Status: GOOD (  26.74  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200319_111908_636749_A7E8971A 
+X-CRM114-Status: GOOD (  31.85  )
+X-Spam-Score: -0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
- [list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [141.146.126.78 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 2.0 PDS_OTHER_BAD_TLD      Untrustworthy TLDs
+ [URI: openpower.xyz (xyz)]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,115 +119,223 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
- jason.wessel@windriver.com, dianders@chromium.org,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Vasily Gorbik <gor@linux.ibm.com>,
+ Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>,
+ "David S.Miller" <davem@davemloft.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Paul Mackerras <paulus@samba.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Longpeng <longpeng2@huawei.com>, Will Deacon <will@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 19 Mar 2020 04:40:32 PDT (-0700), daniel.thompson@linaro.org wrote:
-> On Wed, Mar 18, 2020 at 11:03:25AM -0700, Palmer Dabbelt wrote:
->> On Tue, 03 Mar 2020 00:47:00 PST (-0800), vincent.chen@sifive.com wrote:
->> > The break instruction in RISC-V does not have an immediate value field, so
->> > the kernel cannot identify the purpose of each trap exception through the
->> > opcode. This makes the existing identification schemes in other
->> > architecture unsuitable for the RISC-V kernel. To solve this problem, this
->> > patch adds kgdb_has_hit_break(), which can help RISC-V kernel identify
->> > the KGDB trap exception.
->> >
->> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
->> > ---
->> >  kernel/debug/debug_core.c | 12 ++++++++++++
->> >  1 file changed, 12 insertions(+)
->> >
->> > diff --git a/kernel/debug/debug_core.c b/kernel/debug/debug_core.c
->> > index 2b7c9b67931d..01bc3eea3d4d 100644
->> > --- a/kernel/debug/debug_core.c
->> > +++ b/kernel/debug/debug_core.c
->> > @@ -417,6 +417,18 @@ int kgdb_isremovedbreak(unsigned long addr)
->> >  	return 0;
->> >  }
->> >
->> > +int kgdb_has_hit_break(unsigned long addr)
->> > +{
->> > +	int i;
->> > +
->> > +	for (i = 0; i < KGDB_MAX_BREAKPOINTS; i++) {
->> > +		if (kgdb_break[i].state == BP_ACTIVE &&
->> > +		    kgdb_break[i].bpt_addr == addr)
->> > +			return 1;
->> > +	}
->> > +	return 0;
->> > +}
->> > +
->> >  int dbg_remove_all_break(void)
->> >  {
->> >  	int error;
+On 3/19/20 12:00 AM, Christophe Leroy wrote:
+> 
+> Le 18/03/2020 à 23:06, Mike Kravetz a écrit :
+>> The architecture independent routine hugetlb_default_setup sets up
+>> the default huge pages size.  It has no way to verify if the passed
+>> value is valid, so it accepts it and attempts to validate at a later
+>> time.  This requires undocumented cooperation between the arch specific
+>> and arch independent code.
 >>
->> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
->
-> I've been slow to review this because I wanted to take a closer
-> look at whether this issue is unique to RV or whether one of the
-> other architectures solved it a different way so, out of interest,
-> did you do any investigations in this direction?
+>> For architectures that support more than one huge page size, provide
+>> a routine arch_hugetlb_valid_size to validate a huge page size.
+>> hugetlb_default_setup can use this to validate passed values.
+>>
+>> arch_hugetlb_valid_size will also be used in a subsequent patch to
+>> move processing of the "hugepagesz=" in arch specific code to a common
+>> routine in arch independent code.
+>>
+>> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
+>> ---
+>>   arch/arm64/include/asm/hugetlb.h   |  2 ++
+>>   arch/arm64/mm/hugetlbpage.c        | 19 ++++++++++++++-----
+>>   arch/powerpc/include/asm/hugetlb.h |  3 +++
+>>   arch/powerpc/mm/hugetlbpage.c      | 20 +++++++++++++-------
+>>   arch/riscv/include/asm/hugetlb.h   |  3 +++
+>>   arch/riscv/mm/hugetlbpage.c        | 28 ++++++++++++++++++----------
+>>   arch/s390/include/asm/hugetlb.h    |  3 +++
+>>   arch/s390/mm/hugetlbpage.c         | 18 +++++++++++++-----
+>>   arch/sparc/include/asm/hugetlb.h   |  3 +++
+>>   arch/sparc/mm/init_64.c            | 23 ++++++++++++++++-------
+>>   arch/x86/include/asm/hugetlb.h     |  3 +++
+>>   arch/x86/mm/hugetlbpage.c          | 21 +++++++++++++++------
+>>   include/linux/hugetlb.h            |  7 +++++++
+>>   mm/hugetlb.c                       | 16 +++++++++++++---
+>>   14 files changed, 126 insertions(+), 43 deletions(-)
+>>
+> 
+> [snip]
+> 
+>> diff --git a/arch/powerpc/include/asm/hugetlb.h b/arch/powerpc/include/asm/hugetlb.h
+>> index bd6504c28c2f..3b5939016955 100644
+>> --- a/arch/powerpc/include/asm/hugetlb.h
+>> +++ b/arch/powerpc/include/asm/hugetlb.h
+>> @@ -64,6 +64,9 @@ static inline void arch_clear_hugepage_flags(struct page *page)
+>>   {
+>>   }
+>>   +#define arch_hugetlb_valid_size arch_hugetlb_valid_size
+>> +extern bool __init arch_hugetlb_valid_size(unsigned long long size);
+> 
+> Don't add 'extern' keyword, it is irrelevant for a function declaration.
+> 
 
-Not specifically in the context of KGDB implementations, but we've been chasing
-these issues around in the rest of the debug stack for years now (I also
-maintain the RISC-V GDB port, though much less actively than I used to).  For
-many projects we've solved this by adding an ABI restriction that defines a
-two-instruction pairing for certain types of breakpoints that looks something
-like
+Will do.  One of the other arch's did this and I got into a bad habit.
 
-   addi x0, x0, MAGIC
-   ebreak
+> checkpatch --strict doesn't like it either (https://openpower.xyz/job/snowpatch/job/snowpatch-linux-checkpatch/12318//artifact/linux/checkpatch.log)
+> 
+>> +
+>>   #include <asm-generic/hugetlb.h>
+>>     #else /* ! CONFIG_HUGETLB_PAGE */
+>> diff --git a/arch/powerpc/mm/hugetlbpage.c b/arch/powerpc/mm/hugetlbpage.c
+>> index 33b3461d91e8..b78f660252f3 100644
+>> --- a/arch/powerpc/mm/hugetlbpage.c
+>> +++ b/arch/powerpc/mm/hugetlbpage.c
+>> @@ -558,7 +558,7 @@ unsigned long vma_mmu_pagesize(struct vm_area_struct *vma)
+>>       return vma_kernel_pagesize(vma);
+>>   }
+>>   -static int __init add_huge_page_size(unsigned long long size)
+>> +bool __init arch_hugetlb_valid_size(unsigned long long size)
+>>   {
+>>       int shift = __ffs(size);
+>>       int mmu_psize;
+>> @@ -566,20 +566,26 @@ static int __init add_huge_page_size(unsigned long long size)
+>>       /* Check that it is a page size supported by the hardware and
+>>        * that it fits within pagetable and slice limits. */
+>>       if (size <= PAGE_SIZE || !is_power_of_2(size))
+>> -        return -EINVAL;
+>> +        return false;
+>>         mmu_psize = check_and_get_huge_psize(shift);
+>>       if (mmu_psize < 0)
+>> -        return -EINVAL;
+>> +        return false;
+>>         BUG_ON(mmu_psize_defs[mmu_psize].shift != shift);
+>>   -    /* Return if huge page size has already been setup */
+>> -    if (size_to_hstate(size))
+>> -        return 0;
+>> +    return true;
+>> +}
+>>   -    hugetlb_add_hstate(shift - PAGE_SHIFT);
+>> +static int __init add_huge_page_size(unsigned long long size)
+>> +{
+>> +    int shift = __ffs(size);
+>> +
+>> +    if (!arch_hugetlb_valid_size(size))
+>> +        return -EINVAL;
+>>   +    if (!size_to_hstate(size))
+>> +        hugetlb_add_hstate(shift - PAGE_SHIFT);
+>>       return 0;
+>>   }
+>>   
+> 
+> [snip]
+> 
+>> diff --git a/arch/x86/mm/hugetlbpage.c b/arch/x86/mm/hugetlbpage.c
+>> index 5bfd5aef5378..51e6208fdeec 100644
+>> --- a/arch/x86/mm/hugetlbpage.c
+>> +++ b/arch/x86/mm/hugetlbpage.c
+>> @@ -181,16 +181,25 @@ hugetlb_get_unmapped_area(struct file *file, unsigned long addr,
+>>   #endif /* CONFIG_HUGETLB_PAGE */
+>>     #ifdef CONFIG_X86_64
+>> +bool __init arch_hugetlb_valid_size(unsigned long long size)
+>> +{
+>> +    if (size == PMD_SIZE)
+>> +        return true;
+>> +    else if (size == PUD_SIZE && boot_cpu_has(X86_FEATURE_GBPAGES))
+>> +        return true;
+>> +    else
+>> +        return false;
+>> +}
+>> +
+>>   static __init int setup_hugepagesz(char *opt)
+>>   {
+>> -    unsigned long ps = memparse(opt, &opt);
+>> -    if (ps == PMD_SIZE) {
+>> -        hugetlb_add_hstate(PMD_SHIFT - PAGE_SHIFT);
+>> -    } else if (ps == PUD_SIZE && boot_cpu_has(X86_FEATURE_GBPAGES)) {
+>> -        hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
+>> +    unsigned long long ps = memparse(opt, &opt);
+>> +
+>> +    if (arch_hugetlb_valid_size(ps)) {
+>> +        hugetlb_add_hstate(ilog2(ps) - PAGE_SHIFT);
+>>       } else {
+>>           hugetlb_bad_size();
+>> -        printk(KERN_ERR "hugepagesz: Unsupported page size %lu M\n",
+>> +        printk(KERN_ERR "hugepagesz: Unsupported page size %llu M\n",
+>>               ps >> 20);
+> 
+> Nowadays we use pr_err() instead of printk.
+> 
+> It would also likely allow you to have everything fit on a single line.
 
-I generally prefer the approach here, as it doesn't impose an ABI restriction,
-but we've had to shoehorn it into so many projects I just kind of pattern
-matched KGDB into the same bin.
+I may just leave this 'as is' as it will be removed in a later patch.
 
-Looking through "find -name "*kgdb*" | grep arch", I see that most
-architectures that have KGDB support also have immediates in their breakpoints.
-I'm just going to assume they're all differentiating between their types of
-breakpoints based on the immediate:
+>>           return 0;
+>>       }
+>> diff --git a/include/linux/hugetlb.h b/include/linux/hugetlb.h
+>> index b831e9fa1a26..33343eb980d0 100644
+>> --- a/include/linux/hugetlb.h
+>> +++ b/include/linux/hugetlb.h
+>> @@ -678,6 +678,13 @@ static inline spinlock_t *huge_pte_lockptr(struct hstate *h,
+>>       return &mm->page_table_lock;
+>>   }
+>>   +#ifndef arch_hugetlb_valid_size
+>> +static inline bool arch_hugetlb_valid_size(unsigned long long size)
+>> +{
+>> +    return (size == HPAGE_SIZE);
+> 
+> Not sure the ( ) are necessary.
 
-* Microblaze has a "brki" instruction, presumably the immediate indicates it's
-  a KGDB breakpoint.  I think they spin on BUG().
-* arm64 has a "brk" insturction with an immediate.  They're using 0 for BUG(),
-  0x401 for KDB.
-* PPC uses "twge r2, r2".  I can't find it in the ISA manual, but they have
-  other traps with immediates and there seems to be more than sufficient
-  information to differentiate between the types of traps.  They use "twi 31,
-  0, 0" for BUG.
-* ARC uses "trap_s   0x4", and they appear to use different immediates for
-  different purposes (0 for a user breakpoint).  They use __builtin_trap() for
-  BUG(), which I'm assuming is the same as the user breakpoint.
-* H8 uses "trapa #2", and they're using "trapa #3" for userspace breakpoints.
-  As far as I can tell they're spinning on BUG().
-* SPARC64 uses "ta 0x72".  That matches too many things for me to grep, though
-  :).  They're using __builtin_trap() for BUG.
-* PA-RISC doesn't name the instruciton, but they have two that appear to differ
-  by an immediate and use different ones for KGDB and BUG.
-* NIOS uses "trap 30", which goes directly to a KGDB handler.  I think they
-  spin on BUG().
-* SH uses "trapa #0x3c" for KGDB and other immediates for other breakpoints.
-  Looks like they use 0x3C for BUG(), and while there's some tables being built
-  I don't think those are to differentiate between KGDB and BUG.
-* ARM uses an undefined instruction, which needs to be hooked into the
-  undefined instruction trap handler.  I think it's a unique undefined
-  instruction for kgdb, though.
+Likely not.  I will look at removing.
 
-The only architecture that doesn't work this way is Hexagon.  Hexagon uses
-"trap0(#0xDB)" for both, just switching on whether the trap came from user mode
-or kernel mode.  Breakpoint traps from user mode cause SIGBREAK, those from
-kernel mode go to KGDB.  They don't have a bug.h, which I think means they're
-just spinning on BUG().  We use ebreak for BUG(), so we need something to
-differentiate between BUG() and KGDB.  I guess we could build up the tables in
-BUG(), but given that KGDB already knows the breakpoints this seems simpler --
-I'd prefer to avoid having BUG rely on the sanity of the kernel image :).
+> 
+>> +}
+>> +#endif
+>> +
+>>   #ifndef hugepages_supported
+>>   /*
+>>    * Some platform decide whether they support huge pages at boot
+>> diff --git a/mm/hugetlb.c b/mm/hugetlb.c
+>> index d8ebd876871d..2f99359b93af 100644
+>> --- a/mm/hugetlb.c
+>> +++ b/mm/hugetlb.c
+>> @@ -3224,12 +3224,22 @@ static int __init hugetlb_nrpages_setup(char *s)
+>>   }
+>>   __setup("hugepages=", hugetlb_nrpages_setup);
+>>   -static int __init hugetlb_default_setup(char *s)
+>> +static int __init default_hugepagesz_setup(char *s)
+>>   {
+>> -    default_hstate_size = memparse(s, &s);
+>> +    unsigned long long size;
+> 
+> Why unsigned long long ?
+> 
+> default_hstate_size is long.
 
-Presumably this mechanism could be used for H8, microblaze, and NIOS.
+Only because memparse is defined as unsigned long long.  I actually took
+this from the existing powerpc hugetlb setup code.  There are no compiler
+warnings/issues assigning unsigned long long to long on 64 bit builds.
+Thought there would be on 32 bit platformes.
 
->
->
-> Daniel.
+That was also the reason for making the argument to arch_hugetlb_valid_size
+be unsigned long long.  So that it would match the type from memparse.
+I suppose making these unsigned long and casting would be OK based on the
+expected sizes.
+
+> 
+> I can't imagine 32 bits platforms having a hugepage with a 64 bits size.
+> 
+>> +    char *saved_s = s;
+>> +
+>> +    size = memparse(s, &s);
+> 
+> The updated s is not reused after that so you can pass NULL instead of &s and then you don't need the saved_s.
+> 
+
+Thanks for this and all the comments.  I will incorporate in v2.
+-- 
+Mike Kravetz
 
