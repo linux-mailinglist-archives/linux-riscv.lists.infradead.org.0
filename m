@@ -2,126 +2,84 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59DE918B284
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 12:47:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EDE0618B272
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 12:40:44 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=X1JMdCzgSmxnlUslDXemgsBTKCWxeoCXEBHNe8q40zU=; b=UzePS72efDP2s17ZjzRe0wnX7
-	GzJrCzWUkhb9fa0S8S1j04lqfMsBcI1C6fuLwwo9dAX9iQGtMDw5/CQxvw6O6MHf8K9M63Bqlbe3S
-	E1ogmjp3KNKAm1uKQDGXXm9w738xx5uW1/guZjHuzUX2oEWHaQFyqEExUiRj3d1qMh3JnRSoztmIg
-	Gn9euXKDFhE4uM/H6GQdPw+SYIVgmU/LdgPAZKlNHTCv7VjqnloCEGotYyiMJ1A8W78NCxtAwWFNa
-	wetkZjZ5k8fhhVSD3yYmfBmH4KEJn8bD5nAI6eYWWj1PSP8NaR3gJ+tPdfc35ZHK4JU9pD44ZoVR6
-	iwgV8r+pQ==;
+	 bh=A3n5HQfAPYhacpHt1pBvMGxFwbVk6uUHLfhwxrmOEsQ=; b=JrsSu0RrJx5Vo9Fc6/ng6C4D6
+	5UeXxfdhIkHIJ4yzhTrsvwGsKP6A1zXxQF/ANV0ysLX/bvhnneqH1KBkmkn9IakZcws9uyA/si8H/
+	5UgQRc7Bo/NSnN3OkllNQv1siJ1/DJmfrWfC0b6L+sAvp/V3SVs4X+tdluTzRtZw6hVqTgQWQjWeu
+	5w5b0RVzzw7Cbd68RD2CqQdXvQs5HSFUQsIH0PaKvXGfxSlK0GTtGnBOpSwfBWClb+5kHNjR9gkvI
+	tpK63RHy8ewkCrPznP3zkL3olDrZVW4dxeJhebZyoD8FJ+i/cVwWeDsAwoDE8C82mljUjWOC8Ko1E
+	h6UFtwT/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEtdk-00052y-Lk; Thu, 19 Mar 2020 11:47:08 +0000
-Received: from mail-eopbgr140092.outbound.protection.outlook.com
- ([40.107.14.92] helo=EUR01-VE1-obe.outbound.protection.outlook.com)
+	id 1jEtXU-00031F-Lv; Thu, 19 Mar 2020 11:40:40 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEtdR-0004pG-MB; Thu, 19 Mar 2020 11:46:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fGNgbY9Ta49flkaM2nIjgTt+NYq9wLh41R5lAD9EyRj46jaCMvge+TE5MVNVpZdq4kwfQEL+3R9J2XhlKVvznxhXshMar9hld7kRpPgnYZQehkWr84VCrs2MkkUWuFN7XjFAuF8Yb3EAmv6tcT1AuxkeeftHg5fl7MVfvvDCzwTBhlgRFmT/mcZuXrIfKGmSwN0WJSDgHOrGge0GZfk5sXOs3uq1w1ngPWcuouott2Nd8li7NkcxZkFOaWN8mjoWbJdOKMP1MSeMMpEyBpqRgiU69FQk/aSjtFzZPrE3QKt99altXM5AFX67CELH47ohplqUP06CEm8U55moIvnBoQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X1JMdCzgSmxnlUslDXemgsBTKCWxeoCXEBHNe8q40zU=;
- b=cXvUH43rBxWxJsyA3MT7D8Mo9qr2P0Mfy+spXSRY4npnGF8dQKPVF4O5FWGUpbsdYQlmzYhlksMv6SCDWbZb4bOZ6VlAR+KCM92CyOkbsp7M7Udcg3k/zGgbQ+dLSp9mrvSRvuXaEOoj046N5hCNNV4OGcA8A6Qn3MUclYivs6qez6y7YY4KgOVV22IgZPVlDD4p7EeKqaA0ES+szSl6LTeVcB29Kl0kDhsAkUxgi/0jo7ML/1laLl4oitwctfM6CToXE8uPuw3oYrzPtIKxYYqZoQx8WvEPhhUbiv0Dlr5XgejhA3rmc3ECUhgbK2hcwDE4jpy1+9y8WWRoVsJ2WA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=toradex.com; dmarc=pass action=none header.from=toradex.com;
- dkim=pass header.d=toradex.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=toradex.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X1JMdCzgSmxnlUslDXemgsBTKCWxeoCXEBHNe8q40zU=;
- b=E0mc/8xaX/FcUVsqgbRpopylcTiIiw5Ht59oE3jGK0P4PXh/Ll4Fow+Ty0SpQuTWt4BnPuHaJemesI5Ajr/kEx9chxqziPZlNL06SdaBuTau7iEkHvEuDTBZhQ1CY9+QaKqaV/CXW16wyuUWE9hqwkuGo3+a/lBTjdzgdH9twbM=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=oleksandr.suvorov@toradex.com; 
-Received: from VI1PR05MB3279.eurprd05.prod.outlook.com (10.170.238.24) by
- VI1SPR01MB0382.eurprd05.prod.outlook.com (20.178.81.160) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2835.18; Thu, 19 Mar 2020 11:46:39 +0000
-Received: from VI1PR05MB3279.eurprd05.prod.outlook.com
- ([fe80::7cdd:4feb:a8b6:a6d2]) by VI1PR05MB3279.eurprd05.prod.outlook.com
- ([fe80::7cdd:4feb:a8b6:a6d2%7]) with mapi id 15.20.2814.021; Thu, 19 Mar 2020
- 11:46:39 +0000
-X-Gm-Message-State: ANhLgQ3zHyD2OEhn5bggFA+fhjHDRVA0j4ZoK4Tcod3kQARymcFuqXjY
- 7tmliO94qjVl2cLhxuG40iHIBp+/mgDcG/lKi/I=
-X-Google-Smtp-Source: ADFU+vtIv9WWiUZDY1zK2/5Xskt2zIX9VTS8I1COHPgUfpZpdDX7VDSalNnvt8sXvRj9YOkAdKw03F1mQyy6mpu0nPY=
-X-Received: by 2002:ad4:54d4:: with SMTP id j20mr2405410qvx.75.1584618039943; 
- Thu, 19 Mar 2020 04:40:39 -0700 (PDT)
-References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
- <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
- <20200317174043.GA1464607@ulmo>
- <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
- <20200318225953.GA2874972@ulmo>
-In-Reply-To: <20200318225953.GA2874972@ulmo>
-From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
-Date: Thu, 19 Mar 2020 13:40:28 +0200
-X-Gmail-Original-Message-ID: <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
-Message-ID: <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-To: Thierry Reding <thierry.reding@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-ClientProxiedBy: CO2PR18CA0049.namprd18.prod.outlook.com
- (2603:10b6:104:2::17) To VI1PR05MB3279.eurprd05.prod.outlook.com
- (2603:10a6:802:1c::24)
+ id 1jEtXQ-00030i-Kt
+ for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 11:40:38 +0000
+Received: by mail-wr1-x442.google.com with SMTP id h6so2483447wrs.6
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Mar 2020 04:40:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=A3n5HQfAPYhacpHt1pBvMGxFwbVk6uUHLfhwxrmOEsQ=;
+ b=GW9+bN7qUqH6AyWKrgklPpt1PV4gVh6RgYbh38xaft+F140Y6tmwjblzq6npZmKns3
+ c+BP+9l08lWdWLCB9ELEHWRE638mF2a64OGisPoXGoyoj+39LdeNfS19hv/tMY5ITl/9
+ T38AGxUuZ4A/MhZ43LbNoEWtwTKte7QZefiAroS5pKjtmMZTiJhLbbklb8Jyh66JeJ+y
+ Iw9MXiu2qoQG+Q5jEC45yeH7sT4f0Od0IWnSFKATak3vDzi8PdTjdm3PeUkDW/JYZBdC
+ pYDTQDXdkhf0j7lNd+mWcEq4u0ZjNmbInE6qXa5kAmMmG+wrSFvggAYBoZJZcEjzkDRg
+ UsNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=A3n5HQfAPYhacpHt1pBvMGxFwbVk6uUHLfhwxrmOEsQ=;
+ b=OF1VJ9u6FiuzPcPBnl0dHSU3xesZJ7EyFvQpdkPTgsvPUMhzS+dZ3pwdPnCtEF3KHS
+ rxx9mnG8wzlQxavJIxLfSj9xontEtdBMkqx2/R7J/AMMYYUSWx1L6HGsX3UNdqM3hd3j
+ N70Lm9r0/PPt9kkW+Yz8ubJ+J/J9yzBkC7S59SVMSDVdQrDSBj9c/tBi9Av90m+8lb1d
+ k+DA3221M0pJ16G0zgGKWml5CrXOQhDitAN1hdOZBOZCGBViZmP7QnNjBrqd7CJzv9yp
+ AZIz7TvTTOfmvEwg9KywJwcFcLtLPmGWtvoP3erQizaFinBvSUSJ4ShOun42RFPnuuZg
+ s8mA==
+X-Gm-Message-State: ANhLgQ2GjPOmNJriu3zhpXAVqho4jfzBLmeIqFvqIYqlr9F+kLAAATs+
+ CwQpxjneOw8J5PGLn9gLOzTSXQ==
+X-Google-Smtp-Source: ADFU+vu0NWDkNtw4yHvKAHJzK7TkDmodjw3izSk2RENJ5VFjY+6uuVO/38JfIeH34pBJAABjA7wzNA==
+X-Received: by 2002:adf:d1a9:: with SMTP id w9mr3656518wrc.17.1584618034288;
+ Thu, 19 Mar 2020 04:40:34 -0700 (PDT)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id q13sm3038952wrs.91.2020.03.19.04.40.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Mar 2020 04:40:33 -0700 (PDT)
+Date: Thu, 19 Mar 2020 11:40:32 +0000
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 1/5] kgdb: Add kgdb_has_hit_break function
+Message-ID: <20200319114032.376mvrq3npyxej5q@holly.lan>
+References: <1583225220-26137-1-git-send-email-vincent.chen@sifive.com>
+ <mhng-a17f59fc-9e51-4c9d-9b4b-4c707825c459@palmerdabbelt-glaptop1>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from mail-pl1-f172.google.com (209.85.214.172) by
- CO2PR18CA0049.namprd18.prod.outlook.com (2603:10b6:104:2::17) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2814.21 via Frontend Transport; Thu, 19 Mar 2020 11:46:39 +0000
-Received: by mail-pl1-f172.google.com with SMTP id w3so958793plz.5;
- Thu, 19 Mar 2020 04:46:39 -0700 (PDT)
-X-Gm-Message-State: ANhLgQ3zHyD2OEhn5bggFA+fhjHDRVA0j4ZoK4Tcod3kQARymcFuqXjY
- 7tmliO94qjVl2cLhxuG40iHIBp+/mgDcG/lKi/I=
-X-Google-Smtp-Source: ADFU+vtIv9WWiUZDY1zK2/5Xskt2zIX9VTS8I1COHPgUfpZpdDX7VDSalNnvt8sXvRj9YOkAdKw03F1mQyy6mpu0nPY=
-X-Received: by 2002:ad4:54d4:: with SMTP id j20mr2405410qvx.75.1584618039943; 
- Thu, 19 Mar 2020 04:40:39 -0700 (PDT)
-X-Gmail-Original-Message-ID: <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
-X-Originating-IP: [209.85.214.172]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: d16fd174-65b5-4826-5ae1-08d7cbfb2fc0
-X-MS-TrafficTypeDiagnostic: VI1SPR01MB0382:
-X-Microsoft-Antispam-PRVS: <VI1SPR01MB038234994FADDC08B7AD49A2F9F40@VI1SPR01MB0382.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-Forefront-PRVS: 0347410860
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(4636009)(366004)(39850400004)(376002)(346002)(396003)(136003)(199004)(6666004)(54906003)(8936002)(2906002)(8676002)(81156014)(66476007)(81166006)(186003)(66574012)(26005)(66556008)(66946007)(44832011)(5660300002)(53546011)(316002)(52116002)(42186006)(966005)(86362001)(9686003)(4326008)(6862004)(55446002)(450100002)(478600001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:VI1SPR01MB0382;
- H:VI1PR05MB3279.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
-Received-SPF: None (protection.outlook.com: toradex.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: F+5HjOxkcKlK8Pva+vyKzWztLAS7pPo8prOnvsDVPAN4Q7faD001APCFslDIeOYAejp/QBbgFl3g+Prk3An+tBMmPm4rBMRAW9b235lLz2/laXeXJRbwRNaJ0Pc2TuHFiXzqtcY+2+N6h+r4Wf2uGoCtfbr8cYTcP9T/bXTo4aiqg3LlQiElkK8sg87GVaAntMIHM1xOFgvTbZAP5FdfFufSK8r4Ol3gtysIoDh7btXE6l0p0saZttTSyr1Gv4JvWTdxOCSbHtXTos6W5FwnO8OxMVgvDPNkUMFJrrNU/Y4/2RRPa/F/upywSl+8lH0VlUCux1LRGBitUfvy0j2NtG0QLuB+ub0m/pSFWAARJ/RtCaPTgzO5N+Ukk4b6dS0SDQFY9V5/CW5HtbffJir9R7MacvLrM83dEAnx8ZzqdpVePZbODSBOiZep5Hoq7HXr3KDWK9wb1U65y86I/AINWe8kMHAzPUJddDdStW0KX67e2bYtV6JpilrpctueCkpWckfDFfsqCg554QA/WdJuew==
-X-MS-Exchange-AntiSpam-MessageData: N2HouI0fIBc+1Twp0n8yH6R1iNUb3i0JQHqHjusZ9YpCiIVKRepfL7BtU5j4YufIk0OcEZ2T7WdZkZWO7AjzscfvF+mUxGXEXMggY2lMTrmr1ce42Do008JYxogmkKadeVvXk8DdZM8EAm92jJ9AHw==
-X-OriginatorOrg: toradex.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d16fd174-65b5-4826-5ae1-08d7cbfb2fc0
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Mar 2020 11:46:39.7627 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: d9995866-0d9b-4251-8315-093f062abab4
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: M2DKc/uetUm16sIWJazQlH/+p9UdLAxSgCIOH8e93ShF++wlc0OqmzZqA0iRyU9UMvPjUBJOULa6J9uv1ZvrjLlUvKSRH5HIRNkYwmDuLzg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1SPR01MB0382
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <mhng-a17f59fc-9e51-4c9d-9b4b-4c707825c459@palmerdabbelt-glaptop1>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200319_044649_730071_77CAE38C 
-X-CRM114-Status: GOOD (  28.21  )
+X-CRM114-CacheID: sfid-20200319_044036_693503_C23804AD 
+X-CRM114-Status: GOOD (  17.20  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.14.92 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -129,7 +87,6 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,146 +98,57 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
- Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
- Paul Cercueil <paul@crapouillou.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
- Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
- Philippe Schenker <philippe.schenker@toradex.com>,
- Paul Barker <pbarker@konsulko.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Igor Opaniuk <igor.opaniuk@toradex.com>, Scott Branden <sbranden@broadcom.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Tony Prisk <linux@prisktech.co.nz>, Palmer Dabbelt <palmer@dabbelt.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
+Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
+ jason.wessel@windriver.com, dianders@chromium.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Mar 19, 2020 at 1:00 AM Thierry Reding <thierry.reding@gmail.com> w=
-rote:
->
-> On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-K=C3=B6nig wrote:
-> > Hello,
-> >
-> > On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
-> > > On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
-> > > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
-> > > > Rename it to PWM_POLARITY_INVERTED.
-> > >
-> > > It isn't misspelled. "inversed" is a synonym for "inverted". Both
-> > > spellings are correct.
-> >
-> > Some time ago I stumbled about "inversed", too. My spell checker doesn'=
-t
-> > know it and I checked some dictionaries and none of them knew that word=
-:
-> >
-> > https://www.lexico.com/search?utf8=3D%E2%9C%93&filter=3Ddictionary&dict=
-ionary=3Den&query=3Dinversed
-> > https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
-> > https://dictionary.cambridge.org/spellcheck/english-german/?q=3Dinverse=
-d
-> >
-> > https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a ver=
-b
-> > having "inversed" as past participle.
->
-> Here are the first three results from a Google query:
->
->         https://www.yourdictionary.com/inversed
->         https://www.dictionary.com/browse/inversed
->         https://en.wiktionary.org/wiki/inversed
->
-> > Having said this I think (independent of the question if "inversed"
-> > exists) using two similar terms for the same thing just results in
-> > confusion. I hit that in the past already and I like it being addressed=
-.
->
-> I don't know. It's pretty common to use different words for the same
-> thing. They're called synonyms.
->
-> > > And as you noted in the cover letter, there's a conflict between the
-> > > macro defined in dt-bindings/pwm/pwm.txt. If they end up being includ=
-ed
-> > > in the wrong order you'll get a compile error.
-> >
-> > There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
-> > first to come to my mind). I'm not aware of any problems related to
-> > these. What am I missing?
->
-> There's currently no problem, obviously. But if for some reason the
-> include files end up being included in a different order (i.e. the
-> dt-bindings header is included before linux/pwm.h) then the macro will
-> be evaluated and result in something like:
->
->         enum pwm_polarity {
->                 PWM_POLARITY_NORMAL,
->                 1,
->         };
->
-> and that's not valid C, so will cause a build error.
->
-> > > The enum was named this way on purpose to make it separate from the
-> > > definition for the DT bindings.
-> >
-> > Then please let's make it different by picking a different prefix or
-> > something like that.
->
-> Again, seems to me like unnecessary churn. Feel free to propose
-> something, but I recall being in the same position at the time and this
-> was the best I could come up with.
->
-> > > Note that DT bindings are an ABI and can
-> > > never change, whereas the enum pwm_polarity is part of a Linux intern=
-al
-> > > API and doesn't have the same restrictions as an ABI.
-> >
-> > I thought only binary device trees (dtb) are supposed to be ABI.
->
-> Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
-> which basically makes it ABI as well. Yes, the symbol name may not be
-> part of the ABI, but changing the symbol becomes very inconvenient
-> because everyone that depends on it would have to change. Why bother?
->
-> My point is that enum pwm_polarity is an API in the kernel and hence its
-> easy to change or extend. But since that is not the same for the DTB, we
-> need to be careful what from the internal kernel API leaks into the DTB.
-> That's why they are different symbols, so that it is clear that what's
-> in dt-bindings/pwm/pwm.h is the ABI.
+On Wed, Mar 18, 2020 at 11:03:25AM -0700, Palmer Dabbelt wrote:
+> On Tue, 03 Mar 2020 00:47:00 PST (-0800), vincent.chen@sifive.com wrote:
+> > The break instruction in RISC-V does not have an immediate value field, so
+> > the kernel cannot identify the purpose of each trap exception through the
+> > opcode. This makes the existing identification schemes in other
+> > architecture unsuitable for the RISC-V kernel. To solve this problem, this
+> > patch adds kgdb_has_hit_break(), which can help RISC-V kernel identify
+> > the KGDB trap exception.
+> > 
+> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> > ---
+> >  kernel/debug/debug_core.c | 12 ++++++++++++
+> >  1 file changed, 12 insertions(+)
+> > 
+> > diff --git a/kernel/debug/debug_core.c b/kernel/debug/debug_core.c
+> > index 2b7c9b67931d..01bc3eea3d4d 100644
+> > --- a/kernel/debug/debug_core.c
+> > +++ b/kernel/debug/debug_core.c
+> > @@ -417,6 +417,18 @@ int kgdb_isremovedbreak(unsigned long addr)
+> >  	return 0;
+> >  }
+> > 
+> > +int kgdb_has_hit_break(unsigned long addr)
+> > +{
+> > +	int i;
+> > +
+> > +	for (i = 0; i < KGDB_MAX_BREAKPOINTS; i++) {
+> > +		if (kgdb_break[i].state == BP_ACTIVE &&
+> > +		    kgdb_break[i].bpt_addr == addr)
+> > +			return 1;
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> >  int dbg_remove_all_break(void)
+> >  {
+> >  	int error;
+> 
+> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
-Thierry, I see the PWM core converts the bit field "third cell" into
-the polarity variable.
-Now I probably understand your sight and agree that we shouldn't give
-the same names to bits in bitfield (dts) and values of a variable.
+I've been slow to review this because I wanted to take a closer
+look at whether this issue is unique to RV or whether one of the
+other architectures solved it a different way so, out of interest,
+did you do any investigations in this direction?
 
-But there are lots of useless "0" values of third cell of "pwms"
-option in dts files.
 
-I see 2 ways now:
-- just remove all "0" "third cell" from "pwms" options in dts files. I
-see this "0" confuses some people.
-- convert pwm_state.polarity into pwm_state.flags and use bitfield
-directly from dtb.
-  It simplifies the parsing logic and makes adding new flags easier.
-
-What do think?
-
->
-> Thierry
-
---=20
-Best regards
-Oleksandr Suvorov
-
-Toradex AG
-Ebenaustrasse 10 | 6048 Horw | Switzerland | T: +41 41 500 48 00
+Daniel.
 
