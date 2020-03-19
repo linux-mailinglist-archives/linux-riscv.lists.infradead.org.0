@@ -2,66 +2,95 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7598218AD05
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 07:51:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 980A818AD10
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 08:01:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KmCbsXPwJ2tkaJLM+oqwVsYG5FPUeKmQxGASUfM2Y+k=; b=mBR/YrJjz1yvrGH8Pv/bF0RKe
-	+flCb71F0GJKGLxQCyJ17d2HBQpvIxzQdSVrX8oSmKB1l5Q6tqbLBS9DHxuEKLWqxnjN1kQPrS1LQ
-	v2r8RLuLiSVj9HxLhtJPNXih+QdGhX4Md2H9XgPfsjv0966+6D7yWNDVbKvy1nCVTRrci1PpIoLgz
-	Z8wOXlW6ya9VSC5hyY3mcvifuZgSexr/o7JA6dyzp3TRm//cgjmOjLP+aXQdn0DKLlenRTThOIv4J
-	/Z0PbfL8HUkB5SC1q3OjuUwtYKEDcJ/MA0RKliykNBBFv8P1go7Iaqg/WOJEmnIJLl81hjB7tj/VH
-	oHGsRDcRQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f1YwOhdxX26Y+wBuzZ6KcmY62u5y/+8Hvgm0wH6ueYs=; b=Mli1PGNbr5OkKB
+	xE3uX2ydcuVwQm7eLLzwWnS8hPjaNkOnIk2ni70gvR1kBnyaA4X7nztGWJ9GgV1tyLVSJ9W8pNOch
+	++2hcB1q/rOn6rvQBv2V+903HGGqKd/gxpCMbPOkVVjZF47mInU2+rMgPvHmc0RWXHezQbqoZB3Xm
+	4AfpTsHEy6EJsMVuriwOx8hivVY8L58NNCN/9JZkBH/bkYhi19ddLa6CquD+A0COfyUuwfEhF/WyT
+	Gv53jI++Mop283UHR+J8q3HMVNCEi/WQgpuH7O8YbQCElqBhWDSYysrv959krqQzDLq3SpCjBPiwP
+	FaglFfGq8ayJZZ1Vo1xQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEp1f-0002pQ-Uj; Thu, 19 Mar 2020 06:51:31 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1jEpBF-0006PB-0o; Thu, 19 Mar 2020 07:01:25 +0000
+Received: from pegase1.c-s.fr ([93.17.236.30])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEp1U-0002fb-Dt
- for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 06:51:22 +0000
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1jEp0w-0005WC-FG; Thu, 19 Mar 2020 07:50:46 +0100
-Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <ukl@pengutronix.de>)
- id 1jEp0p-0002ri-RB; Thu, 19 Mar 2020 07:50:39 +0100
-Date: Thu, 19 Mar 2020 07:50:39 +0100
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Message-ID: <20200319065039.szhh5dm6v3ejwijd@pengutronix.de>
-References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
- <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
- <20200317174043.GA1464607@ulmo>
- <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
- <20200318225953.GA2874972@ulmo>
+ id 1jEpB4-0006H6-TE; Thu, 19 Mar 2020 07:01:17 +0000
+Received: from localhost (mailhub1-int [192.168.12.234])
+ by localhost (Postfix) with ESMTP id 48jd9D5Wspz9v1Md;
+ Thu, 19 Mar 2020 08:01:04 +0100 (CET)
+Authentication-Results: localhost; dkim=pass
+ reason="1024-bit key; insecure key"
+ header.d=c-s.fr header.i=@c-s.fr header.b=kSCCxuWg; dkim-adsp=pass;
+ dkim-atps=neutral
+X-Virus-Scanned: Debian amavisd-new at c-s.fr
+Received: from pegase1.c-s.fr ([192.168.12.234])
+ by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
+ with ESMTP id a91KdXxJSw9z; Thu, 19 Mar 2020 08:01:04 +0100 (CET)
+Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
+ by pegase1.c-s.fr (Postfix) with ESMTP id 48jd9D4MMFz9v1Mc;
+ Thu, 19 Mar 2020 08:01:04 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=c-s.fr; s=mail;
+ t=1584601264; bh=f1YwOhdxX26Y+wBuzZ6KcmY62u5y/+8Hvgm0wH6ueYs=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=kSCCxuWg89EGpfCGJFvQQEKaoHe/kCd5TGb/eJd9YNW4o9nMza+I2DetAh60y0OYl
+ jNWoevB3fgK3oMJ2kFYnvfR61+Z0w2UWeOnoIyGuiPFaUDv3CG1pmdSv9t5BVLTXov
+ N7ub0KXLdsT/u4I32YAoSgYf0fhvDN90dndC0kTk=
+Received: from localhost (localhost [127.0.0.1])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id 784F58B769;
+ Thu, 19 Mar 2020 08:01:05 +0100 (CET)
+X-Virus-Scanned: amavisd-new at c-s.fr
+Received: from messagerie.si.c-s.fr ([127.0.0.1])
+ by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
+ with ESMTP id MWrtuWx18n7g; Thu, 19 Mar 2020 08:01:05 +0100 (CET)
+Received: from [192.168.4.90] (unknown [192.168.4.90])
+ by messagerie.si.c-s.fr (Postfix) with ESMTP id DFB5B8B798;
+ Thu, 19 Mar 2020 08:01:03 +0100 (CET)
+Subject: Re: [PATCH 1/4] hugetlbfs: add arch_hugetlb_valid_size
+To: Mike Kravetz <mike.kravetz@oracle.com>, linux-mm@kvack.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org,
+ linux-s390@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-doc@vger.kernel.org
+References: <20200318220634.32100-1-mike.kravetz@oracle.com>
+ <20200318220634.32100-2-mike.kravetz@oracle.com>
+From: Christophe Leroy <christophe.leroy@c-s.fr>
+Message-ID: <c3071359-c5d3-4247-7f16-6f61b2fa0756@c-s.fr>
+Date: Thu, 19 Mar 2020 08:00:59 +0100
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20200318220634.32100-2-mike.kravetz@oracle.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200318225953.GA2874972@ulmo>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_235120_480460_97EAA4A4 
-X-CRM114-Status: GOOD (  30.05  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200319_000115_243536_9558B18C 
+X-CRM114-Status: GOOD (  25.16  )
+X-Spam-Score: 1.8 (+)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (1.8 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [93.17.236.30 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 2.0 PDS_OTHER_BAD_TLD      Untrustworthy TLDs
+ [URI: openpower.xyz (xyz)]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,152 +102,231 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
- Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
- Oleksandr Suvorov <oleksandr.suvorov@toradex.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
- Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
- devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
- Philippe Schenker <philippe.schenker@toradex.com>,
- Paul Barker <pbarker@konsulko.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Paul Cercueil <paul@crapouillou.net>, Igor Opaniuk <igor.opaniuk@toradex.com>,
- Scott Branden <sbranden@broadcom.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Vasily Gorbik <gor@linux.ibm.com>,
+ Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Paul Mackerras <paulus@samba.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Longpeng <longpeng2@huawei.com>, Will Deacon <will@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 
-[Dropped Tony Prisk from recipients as the address bounces]
 
-Hello,
-
-On Wed, Mar 18, 2020 at 11:59:53PM +0100, Thierry Reding wrote:
-> On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-König wrote:
-> > Hello,
-> > 
-> > On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
-> > > On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
-> > > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
-> > > > Rename it to PWM_POLARITY_INVERTED.
-> > > 
-> > > It isn't misspelled. "inversed" is a synonym for "inverted". Both
-> > > spellings are correct.
-> > 
-> > Some time ago I stumbled about "inversed", too. My spell checker doesn't
-> > know it and I checked some dictionaries and none of them knew that word:
-> > 
-> > https://www.lexico.com/search?utf8=%E2%9C%93&filter=dictionary&dictionary=en&query=inversed
-> > https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
-> > https://dictionary.cambridge.org/spellcheck/english-german/?q=inversed
-> > 
-> > https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a verb
-> > having "inversed" as past participle.
+Le 18/03/2020 Ã  23:06, Mike Kravetz a Ã©critÂ :
+> The architecture independent routine hugetlb_default_setup sets up
+> the default huge pages size.  It has no way to verify if the passed
+> value is valid, so it accepts it and attempts to validate at a later
+> time.  This requires undocumented cooperation between the arch specific
+> and arch independent code.
 > 
-> Here are the first three results from a Google query:
+> For architectures that support more than one huge page size, provide
+> a routine arch_hugetlb_valid_size to validate a huge page size.
+> hugetlb_default_setup can use this to validate passed values.
 > 
-> 	https://www.yourdictionary.com/inversed
-
-There is something fishy. In the Verb section it says indeed, that it is
-the past participle and simple past of inverse. The entry for inverse
-however only has sections that identify this word as adjective or noun;
-not a verb.
-
-> 	https://www.dictionary.com/browse/inversed
-
-Not sure I'd count this as hint that inversed exists. The entry shown to
-me under this URL is about "inverse" and it has
-
-	verb (used with object), in·versed, in·vers·ing.
-		? to invert.
-
-Does this mean: "Did you mean invert instead?"
-
-> 	https://en.wiktionary.org/wiki/inversed
-
-Yeah, that's the one I found, too.
-
-I still have the impression that "inversed" is in use because people
-don't know better and understand the intended meaning. And this results
-in leaking of this word into the references.
-
-> > Having said this I think (independent of the question if "inversed"
-> > exists) using two similar terms for the same thing just results in
-> > confusion. I hit that in the past already and I like it being addressed.
+> arch_hugetlb_valid_size will also be used in a subsequent patch to
+> move processing of the "hugepagesz=" in arch specific code to a common
+> routine in arch independent code.
 > 
-> I don't know. It's pretty common to use different words for the same
-> thing. They're called synonyms.
-
-In literature yes, I agree. In a novel it is annoying to repeat the same
-words over and over again and some variation is good. In programming
-however the goal is a different one. There the goal should be to be
-precise and consistent.
-
-> > > And as you noted in the cover letter, there's a conflict between the
-> > > macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
-> > > in the wrong order you'll get a compile error.
-> > 
-> > There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
-> > first to come to my mind). I'm not aware of any problems related to
-> > these. What am I missing?
+> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
+> ---
+>   arch/arm64/include/asm/hugetlb.h   |  2 ++
+>   arch/arm64/mm/hugetlbpage.c        | 19 ++++++++++++++-----
+>   arch/powerpc/include/asm/hugetlb.h |  3 +++
+>   arch/powerpc/mm/hugetlbpage.c      | 20 +++++++++++++-------
+>   arch/riscv/include/asm/hugetlb.h   |  3 +++
+>   arch/riscv/mm/hugetlbpage.c        | 28 ++++++++++++++++++----------
+>   arch/s390/include/asm/hugetlb.h    |  3 +++
+>   arch/s390/mm/hugetlbpage.c         | 18 +++++++++++++-----
+>   arch/sparc/include/asm/hugetlb.h   |  3 +++
+>   arch/sparc/mm/init_64.c            | 23 ++++++++++++++++-------
+>   arch/x86/include/asm/hugetlb.h     |  3 +++
+>   arch/x86/mm/hugetlbpage.c          | 21 +++++++++++++++------
+>   include/linux/hugetlb.h            |  7 +++++++
+>   mm/hugetlb.c                       | 16 +++++++++++++---
+>   14 files changed, 126 insertions(+), 43 deletions(-)
 > 
-> There's currently no problem, obviously. But if for some reason the
-> include files end up being included in a different order (i.e. the
-> dt-bindings header is included before linux/pwm.h) then the macro will
-> be evaluated and result in something like:
+
+[snip]
+
+> diff --git a/arch/powerpc/include/asm/hugetlb.h b/arch/powerpc/include/asm/hugetlb.h
+> index bd6504c28c2f..3b5939016955 100644
+> --- a/arch/powerpc/include/asm/hugetlb.h
+> +++ b/arch/powerpc/include/asm/hugetlb.h
+> @@ -64,6 +64,9 @@ static inline void arch_clear_hugepage_flags(struct page *page)
+>   {
+>   }
+>   
+> +#define arch_hugetlb_valid_size arch_hugetlb_valid_size
+> +extern bool __init arch_hugetlb_valid_size(unsigned long long size);
+
+Don't add 'extern' keyword, it is irrelevant for a function declaration.
+
+checkpatch --strict doesn't like it either 
+(https://openpower.xyz/job/snowpatch/job/snowpatch-linux-checkpatch/12318//artifact/linux/checkpatch.log)
+
+> +
+>   #include <asm-generic/hugetlb.h>
+>   
+>   #else /* ! CONFIG_HUGETLB_PAGE */
+> diff --git a/arch/powerpc/mm/hugetlbpage.c b/arch/powerpc/mm/hugetlbpage.c
+> index 33b3461d91e8..b78f660252f3 100644
+> --- a/arch/powerpc/mm/hugetlbpage.c
+> +++ b/arch/powerpc/mm/hugetlbpage.c
+> @@ -558,7 +558,7 @@ unsigned long vma_mmu_pagesize(struct vm_area_struct *vma)
+>   	return vma_kernel_pagesize(vma);
+>   }
+>   
+> -static int __init add_huge_page_size(unsigned long long size)
+> +bool __init arch_hugetlb_valid_size(unsigned long long size)
+>   {
+>   	int shift = __ffs(size);
+>   	int mmu_psize;
+> @@ -566,20 +566,26 @@ static int __init add_huge_page_size(unsigned long long size)
+>   	/* Check that it is a page size supported by the hardware and
+>   	 * that it fits within pagetable and slice limits. */
+>   	if (size <= PAGE_SIZE || !is_power_of_2(size))
+> -		return -EINVAL;
+> +		return false;
+>   
+>   	mmu_psize = check_and_get_huge_psize(shift);
+>   	if (mmu_psize < 0)
+> -		return -EINVAL;
+> +		return false;
+>   
+>   	BUG_ON(mmu_psize_defs[mmu_psize].shift != shift);
+>   
+> -	/* Return if huge page size has already been setup */
+> -	if (size_to_hstate(size))
+> -		return 0;
+> +	return true;
+> +}
+>   
+> -	hugetlb_add_hstate(shift - PAGE_SHIFT);
+> +static int __init add_huge_page_size(unsigned long long size)
+> +{
+> +	int shift = __ffs(size);
+> +
+> +	if (!arch_hugetlb_valid_size(size))
+> +		return -EINVAL;
+>   
+> +	if (!size_to_hstate(size))
+> +		hugetlb_add_hstate(shift - PAGE_SHIFT);
+>   	return 0;
+>   }
+>   
+
+[snip]
+
+> diff --git a/arch/x86/mm/hugetlbpage.c b/arch/x86/mm/hugetlbpage.c
+> index 5bfd5aef5378..51e6208fdeec 100644
+> --- a/arch/x86/mm/hugetlbpage.c
+> +++ b/arch/x86/mm/hugetlbpage.c
+> @@ -181,16 +181,25 @@ hugetlb_get_unmapped_area(struct file *file, unsigned long addr,
+>   #endif /* CONFIG_HUGETLB_PAGE */
+>   
+>   #ifdef CONFIG_X86_64
+> +bool __init arch_hugetlb_valid_size(unsigned long long size)
+> +{
+> +	if (size == PMD_SIZE)
+> +		return true;
+> +	else if (size == PUD_SIZE && boot_cpu_has(X86_FEATURE_GBPAGES))
+> +		return true;
+> +	else
+> +		return false;
+> +}
+> +
+>   static __init int setup_hugepagesz(char *opt)
+>   {
+> -	unsigned long ps = memparse(opt, &opt);
+> -	if (ps == PMD_SIZE) {
+> -		hugetlb_add_hstate(PMD_SHIFT - PAGE_SHIFT);
+> -	} else if (ps == PUD_SIZE && boot_cpu_has(X86_FEATURE_GBPAGES)) {
+> -		hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
+> +	unsigned long long ps = memparse(opt, &opt);
+> +
+> +	if (arch_hugetlb_valid_size(ps)) {
+> +		hugetlb_add_hstate(ilog2(ps) - PAGE_SHIFT);
+>   	} else {
+>   		hugetlb_bad_size();
+> -		printk(KERN_ERR "hugepagesz: Unsupported page size %lu M\n",
+> +		printk(KERN_ERR "hugepagesz: Unsupported page size %llu M\n",
+>   			ps >> 20);
+
+Nowadays we use pr_err() instead of printk.
+
+It would also likely allow you to have everything fit on a single line.
+
+>   		return 0;
+>   	}
+> diff --git a/include/linux/hugetlb.h b/include/linux/hugetlb.h
+> index b831e9fa1a26..33343eb980d0 100644
+> --- a/include/linux/hugetlb.h
+> +++ b/include/linux/hugetlb.h
+> @@ -678,6 +678,13 @@ static inline spinlock_t *huge_pte_lockptr(struct hstate *h,
+>   	return &mm->page_table_lock;
+>   }
+>   
+> +#ifndef arch_hugetlb_valid_size
+> +static inline bool arch_hugetlb_valid_size(unsigned long long size)
+> +{
+> +	return (size == HPAGE_SIZE);
+
+Not sure the ( ) are necessary.
+
+> +}
+> +#endif
+> +
+>   #ifndef hugepages_supported
+>   /*
+>    * Some platform decide whether they support huge pages at boot
+> diff --git a/mm/hugetlb.c b/mm/hugetlb.c
+> index d8ebd876871d..2f99359b93af 100644
+> --- a/mm/hugetlb.c
+> +++ b/mm/hugetlb.c
+> @@ -3224,12 +3224,22 @@ static int __init hugetlb_nrpages_setup(char *s)
+>   }
+>   __setup("hugepages=", hugetlb_nrpages_setup);
+>   
+> -static int __init hugetlb_default_setup(char *s)
+> +static int __init default_hugepagesz_setup(char *s)
+>   {
+> -	default_hstate_size = memparse(s, &s);
+> +	unsigned long long size;
+
+Why unsigned long long ?
+
+default_hstate_size is long.
+
+I can't imagine 32 bits platforms having a hugepage with a 64 bits size.
+
+> +	char *saved_s = s;
+> +
+> +	size = memparse(s, &s);
+
+The updated s is not reused after that so you can pass NULL instead of 
+&s and then you don't need the saved_s.
+
+> +
+> +	if (!arch_hugetlb_valid_size(size)) {
+> +		pr_err("HugeTLB: unsupported default_hugepagesz %s\n", saved_s);
+> +		return 0;
+> +	}
+> +
+> +	default_hstate_size = size;
+>   	return 1;
+>   }
+> -__setup("default_hugepagesz=", hugetlb_default_setup);
+> +__setup("default_hugepagesz=", default_hugepagesz_setup);
+>   
+>   static unsigned int cpuset_mems_nr(unsigned int *array)
+>   {
 > 
-> 	enum pwm_polarity {
-> 		PWM_POLARITY_NORMAL,
-> 		1,
-> 	};
-> 
-> and that's not valid C, so will cause a build error.
 
-I admit I didn't look closely here and I assume you are right. If I
-understand Oleksandr right this is only an intermediate step and when
-the series is applied completely this issue is gone. Still it might be
-worth to improve the series here.
 
-My original question was about similar problems with GPIO_ACTIVE_HIGH.
-Are you aware of problems there?
-
-> > > Note that DT bindings are an ABI and can
-> > > never change, whereas the enum pwm_polarity is part of a Linux internal
-> > > API and doesn't have the same restrictions as an ABI.
-> > 
-> > I thought only binary device trees (dtb) are supposed to be ABI.
-> 
-> Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
-> which basically makes it ABI as well.
-
-We disagree here. With this argument you could fix quite some things as
-ABI.
-
-> Yes, the symbol name may not be part of the ABI, but changing the
-> symbol becomes very inconvenient because everyone that depends on it
-> would have to change.
-
-Oleksandr adapted all in-tree users, so it only affects out-of-tree
-users. In my book this is fine.
-
-> Why bother?
-
-To make the API more precise and consistent. That's a good goal in my
-eyes.
-
-Best regards
-Uwe
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+Christophe
 
