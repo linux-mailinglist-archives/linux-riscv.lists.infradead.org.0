@@ -2,91 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDE0618B272
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 12:40:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7103A18B30B
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 13:11:25 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A3n5HQfAPYhacpHt1pBvMGxFwbVk6uUHLfhwxrmOEsQ=; b=JrsSu0RrJx5Vo9Fc6/ng6C4D6
-	5UeXxfdhIkHIJ4yzhTrsvwGsKP6A1zXxQF/ANV0ysLX/bvhnneqH1KBkmkn9IakZcws9uyA/si8H/
-	5UgQRc7Bo/NSnN3OkllNQv1siJ1/DJmfrWfC0b6L+sAvp/V3SVs4X+tdluTzRtZw6hVqTgQWQjWeu
-	5w5b0RVzzw7Cbd68RD2CqQdXvQs5HSFUQsIH0PaKvXGfxSlK0GTtGnBOpSwfBWClb+5kHNjR9gkvI
-	tpK63RHy8ewkCrPznP3zkL3olDrZVW4dxeJhebZyoD8FJ+i/cVwWeDsAwoDE8C82mljUjWOC8Ko1E
-	h6UFtwT/g==;
+	 bh=0p87ZJN1QHbM51zdR5CXEGxyZoN6gAWE6joWuEbzvHQ=; b=Z0DkjWYnSOPr8Ckxks5vGAhJS
+	ht1qGRJ7KeR2aUE/wFszRZZK8bWMf7BWJAZn7ZI0oPDg00yHgBtGzjTVabeGuIvy1uYUVt/kb68WP
+	uFhbjzKKu0S6Lrlen2HOPYhCe6VOcy2PDuHJNsvlSOownh49oLsxQvLy8PVzFp73xxc0I1Ax3EFMD
+	YtaoprhHjVu0Ny19wMRq/wVN7CHB3+O5gV6UoXs7V30o3IkcDR7If6LP2QPAuG4hfQHoZn1fJIDFI
+	7+8boWpbZVkRFdd7q9m53zVDji+uboSMfD0L/q4sKchOvaooYdre72A7XK6n9j/3q/eZgvTWvsFUS
+	d7H050+6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEtXU-00031F-Lv; Thu, 19 Mar 2020 11:40:40 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jEu19-00070J-0K; Thu, 19 Mar 2020 12:11:19 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEtXQ-00030i-Kt
- for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 11:40:38 +0000
-Received: by mail-wr1-x442.google.com with SMTP id h6so2483447wrs.6
- for <linux-riscv@lists.infradead.org>; Thu, 19 Mar 2020 04:40:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=A3n5HQfAPYhacpHt1pBvMGxFwbVk6uUHLfhwxrmOEsQ=;
- b=GW9+bN7qUqH6AyWKrgklPpt1PV4gVh6RgYbh38xaft+F140Y6tmwjblzq6npZmKns3
- c+BP+9l08lWdWLCB9ELEHWRE638mF2a64OGisPoXGoyoj+39LdeNfS19hv/tMY5ITl/9
- T38AGxUuZ4A/MhZ43LbNoEWtwTKte7QZefiAroS5pKjtmMZTiJhLbbklb8Jyh66JeJ+y
- Iw9MXiu2qoQG+Q5jEC45yeH7sT4f0Od0IWnSFKATak3vDzi8PdTjdm3PeUkDW/JYZBdC
- pYDTQDXdkhf0j7lNd+mWcEq4u0ZjNmbInE6qXa5kAmMmG+wrSFvggAYBoZJZcEjzkDRg
- UsNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=A3n5HQfAPYhacpHt1pBvMGxFwbVk6uUHLfhwxrmOEsQ=;
- b=OF1VJ9u6FiuzPcPBnl0dHSU3xesZJ7EyFvQpdkPTgsvPUMhzS+dZ3pwdPnCtEF3KHS
- rxx9mnG8wzlQxavJIxLfSj9xontEtdBMkqx2/R7J/AMMYYUSWx1L6HGsX3UNdqM3hd3j
- N70Lm9r0/PPt9kkW+Yz8ubJ+J/J9yzBkC7S59SVMSDVdQrDSBj9c/tBi9Av90m+8lb1d
- k+DA3221M0pJ16G0zgGKWml5CrXOQhDitAN1hdOZBOZCGBViZmP7QnNjBrqd7CJzv9yp
- AZIz7TvTTOfmvEwg9KywJwcFcLtLPmGWtvoP3erQizaFinBvSUSJ4ShOun42RFPnuuZg
- s8mA==
-X-Gm-Message-State: ANhLgQ2GjPOmNJriu3zhpXAVqho4jfzBLmeIqFvqIYqlr9F+kLAAATs+
- CwQpxjneOw8J5PGLn9gLOzTSXQ==
-X-Google-Smtp-Source: ADFU+vu0NWDkNtw4yHvKAHJzK7TkDmodjw3izSk2RENJ5VFjY+6uuVO/38JfIeH34pBJAABjA7wzNA==
-X-Received: by 2002:adf:d1a9:: with SMTP id w9mr3656518wrc.17.1584618034288;
- Thu, 19 Mar 2020 04:40:34 -0700 (PDT)
-Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
- [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id q13sm3038952wrs.91.2020.03.19.04.40.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Mar 2020 04:40:33 -0700 (PDT)
-Date: Thu, 19 Mar 2020 11:40:32 +0000
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH 1/5] kgdb: Add kgdb_has_hit_break function
-Message-ID: <20200319114032.376mvrq3npyxej5q@holly.lan>
-References: <1583225220-26137-1-git-send-email-vincent.chen@sifive.com>
- <mhng-a17f59fc-9e51-4c9d-9b4b-4c707825c459@palmerdabbelt-glaptop1>
+ id 1jEu0s-0006mI-Ch
+ for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 12:11:03 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1jEu0L-0007Yc-KU; Thu, 19 Mar 2020 13:10:29 +0100
+Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1jEu0I-0006oX-6J; Thu, 19 Mar 2020 13:10:26 +0100
+Date: Thu, 19 Mar 2020 13:10:26 +0100
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+To: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Message-ID: <20200319121026.3rzcxdknfyhtkryi@pengutronix.de>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+ <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+ <20200318225953.GA2874972@ulmo>
+ <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <mhng-a17f59fc-9e51-4c9d-9b4b-4c707825c459@palmerdabbelt-glaptop1>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200319_044036_693503_C23804AD 
-X-CRM114-Status: GOOD (  17.20  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200319_051102_430866_468A253F 
+X-CRM114-Status: GOOD (  13.60  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,57 +74,64 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
- jason.wessel@windriver.com, dianders@chromium.org,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
+ Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
+ Paul Cercueil <paul@crapouillou.net>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
+ Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
+ Philippe Schenker <philippe.schenker@toradex.com>,
+ Paul Barker <pbarker@konsulko.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Igor Opaniuk <igor.opaniuk@toradex.com>, Scott Branden <sbranden@broadcom.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Mar 18, 2020 at 11:03:25AM -0700, Palmer Dabbelt wrote:
-> On Tue, 03 Mar 2020 00:47:00 PST (-0800), vincent.chen@sifive.com wrote:
-> > The break instruction in RISC-V does not have an immediate value field, so
-> > the kernel cannot identify the purpose of each trap exception through the
-> > opcode. This makes the existing identification schemes in other
-> > architecture unsuitable for the RISC-V kernel. To solve this problem, this
-> > patch adds kgdb_has_hit_break(), which can help RISC-V kernel identify
-> > the KGDB trap exception.
-> > 
-> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> > ---
-> >  kernel/debug/debug_core.c | 12 ++++++++++++
-> >  1 file changed, 12 insertions(+)
-> > 
-> > diff --git a/kernel/debug/debug_core.c b/kernel/debug/debug_core.c
-> > index 2b7c9b67931d..01bc3eea3d4d 100644
-> > --- a/kernel/debug/debug_core.c
-> > +++ b/kernel/debug/debug_core.c
-> > @@ -417,6 +417,18 @@ int kgdb_isremovedbreak(unsigned long addr)
-> >  	return 0;
-> >  }
-> > 
-> > +int kgdb_has_hit_break(unsigned long addr)
-> > +{
-> > +	int i;
-> > +
-> > +	for (i = 0; i < KGDB_MAX_BREAKPOINTS; i++) {
-> > +		if (kgdb_break[i].state == BP_ACTIVE &&
-> > +		    kgdb_break[i].bpt_addr == addr)
-> > +			return 1;
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> >  int dbg_remove_all_break(void)
-> >  {
-> >  	int error;
+Hello,
+
+[dropping Tony Prisk <linux@prisktech.co.nz> from recipients]
+
+On Thu, Mar 19, 2020 at 01:40:28PM +0200, Oleksandr Suvorov wrote:
+> Thierry, I see the PWM core converts the bit field "third cell" into
+> the polarity variable.
+> Now I probably understand your sight and agree that we shouldn't give
+> the same names to bits in bitfield (dts) and values of a variable.
 > 
-> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+> But there are lots of useless "0" values of third cell of "pwms"
+> option in dts files.
+> 
+> I see 2 ways now:
+> - just remove all "0" "third cell" from "pwms" options in dts files. I
+> see this "0" confuses some people.
 
-I've been slow to review this because I wanted to take a closer
-look at whether this issue is unique to RV or whether one of the
-other architectures solved it a different way so, out of interest,
-did you do any investigations in this direction?
+Then you have to overwrite pwm-cells of the provider. If there are two
+PWMs used from the same provider and only one is inverted this won't
+work. (Not entirely sure I understood your suggestion.) So I don't like
+this suggestion.
 
+And also in my eyes this isn't clearer, just more complicated to use.
 
-Daniel.
+> - convert pwm_state.polarity into pwm_state.flags and use bitfield
+>   directly from dtb.
+>   It simplifies the parsing logic and makes adding new flags easier.
+
+*shrug*, I don't care much.
+
+Best regards
+Uwe
+
+-- 
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
