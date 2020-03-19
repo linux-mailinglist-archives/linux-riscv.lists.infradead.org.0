@@ -2,68 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5681C18BE0E
-	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 18:31:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E64318BE22
+	for <lists+linux-riscv@lfdr.de>; Thu, 19 Mar 2020 18:34:56 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=E4zdo5A5W1/vL2XHPh1fuZjTzAOMqREs2Cx4EiVbgNs=; b=TQ1qMGvFoyVJofjOwvAeaYzeD
-	Xey7PQOkf6i4ehDIZx76TEiyyAsYib5IIAIh4sQm3Qxe6E7PppxCXoSVIzVdcR/U1d8xPb+dxDL3e
-	1ExICqt6JCi+/FiAYAkz6zA6+vQjOOH8fXJasJir9/KuBdjr0mM0O00LjXqYkgKyAuVmRWZ61+zqT
-	bmMkTVJu74ZeO7zbHk49xPObTnCv87VpwmyWnYI5B8KdXG28ZZa4kxG/Y3x6GelY4C2nCAWFUTW+C
-	rS6aWIAIkEjt8OOYlluOIR5afjdBAc/2aKN0b+KeW2ZNyLUz+qLDr5n+PDgcDLWDiyS/XwT1VzRLQ
-	bRTUyp+aA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=QmnwDpN4BEcbQz1dvHMuGMkntZTx07WfjVanIL1v/UQ=; b=DNBXlU1iss6d9n
+	ZYDrumJHC3RnuUbzCIb0jrBfJXawYjngfIzJZ2qsauuY5y3M5kyEc78T5TB+rqEzlb+Ml6a7OWNNN
+	CHMW2zcStJfi+W0noaq5xfMNhp8p+yl0SFARuAnhm/Y7G7JwV3NKwwK5vMPKct44XtKSLFRyYUMUK
+	dZ7T8tSbpOGRxf74SBENGBJlsjUF6XjVg+VAmOpLD0vYyGyq/MI6YR6DI10P29miE0/jz3JYRdeOk
+	mJ09spInW+Z8ywtzH+b8beHevLMwUzLN4fjE0rh1DtxHeSRRRo3REEVAMM1fNb/Mc2U0dZwXAcMX4
+	/FnzTSMDxVTDDzX6hUrw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEz18-0003kv-9G; Thu, 19 Mar 2020 17:31:38 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1jEz4H-0004ax-3J; Thu, 19 Mar 2020 17:34:53 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEz0r-0003Xi-Om
- for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 17:31:24 +0000
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1jEz0K-0003KX-8i; Thu, 19 Mar 2020 18:30:48 +0100
-Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <ukl@pengutronix.de>)
- id 1jEz0H-0003li-AB; Thu, 19 Mar 2020 18:30:45 +0100
-Date: Thu, 19 Mar 2020 18:30:45 +0100
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Message-ID: <20200319173045.ystpijvwtyvil2vq@pengutronix.de>
-References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
- <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
- <20200317174043.GA1464607@ulmo>
- <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
- <20200318225953.GA2874972@ulmo>
- <20200319065039.szhh5dm6v3ejwijd@pengutronix.de>
- <20200319163700.GA3354541@ulmo>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ id 1jEz3z-0004M5-8b
+ for linux-riscv@lists.infradead.org; Thu, 19 Mar 2020 17:34:37 +0000
+Received: by mail-pl1-x641.google.com with SMTP id b9so1338866pls.12
+ for <linux-riscv@lists.infradead.org>; Thu, 19 Mar 2020 10:34:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QmnwDpN4BEcbQz1dvHMuGMkntZTx07WfjVanIL1v/UQ=;
+ b=AtCgR8e3nzAU4Sa7VitEYUr9YZX4mGudIDQFnoYM6cMWyMKU/+YXfkUINtHjpE7q/N
+ BDMy5Ww4zI7jQ1AhDrNwxb1CXBBKmsZFTBIsnKnYt6ODB2AKS/U3msh1RTnjl1Q87Kpz
+ 5PN7UjveGsNvu8jm1ui7ytD9R9SSln5ytpTmgstPHQjYC6BzPA4Vsg/33f6HY5kFZtqc
+ 8knoBCQv+8RG2bMNwebYmyhbNMA+nh9f8g+IhXHK7Ght1PPUh8HybzqOoGpNs+Es31PM
+ H2Jk/5wTLo97LoyTuF8RyNYJmugb77fbfEE5oAwjRrUKtt3VavBmfXnvOMrVY9GEdbaf
+ vatA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=QmnwDpN4BEcbQz1dvHMuGMkntZTx07WfjVanIL1v/UQ=;
+ b=U7NFOz5o04hNKuD5K+6xQQTiCU0yFJksRu5XaTEx0Vvyp3LpBBFCj/D3O3URf5XNA/
+ cBbwAvFdp30bo29t8aqvCLQYDqCnmYGbO9SJm7gPjgq/KVP9Dhmbqv8+R5ZibSnQlfGD
+ qdkzuu/bks1ydI70gbYK/a+/9U2G9/w7kqkw9J7LBaazm4thVf9M3W3hs/muwpUcbueB
+ b4jXX1VJeN2EMFfylI8kORDHHE/PsiKdlh6GYMCrrvQngtEU3HJO3N2dXbfwODUc4TOo
+ ycWa8H3k0rI/EvSBWnpXs7I5lG3EI8J3MwR7wqe7j1iD4G0xLrrKVCRexJOCqPJ7n96m
+ woKw==
+X-Gm-Message-State: ANhLgQ1Hg7JMJzGPHBPdt5vuKKJKcMKAwUJ+LtI/YaKK6y0kw8cB2/5Y
+ sr2LVbhmL6Wk6609Vcc4cHHKLA==
+X-Google-Smtp-Source: ADFU+vtWjXxvI/5OQNruqTkEr0kcIUxrFfrYwg3MX4Vi/gcXJRKELUx8s3VS6ORm9ClPo7uWYyZkaw==
+X-Received: by 2002:a17:90b:19ca:: with SMTP id
+ nm10mr4934522pjb.157.1584639274062; 
+ Thu, 19 Mar 2020 10:34:34 -0700 (PDT)
+Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
+ by smtp.gmail.com with ESMTPSA id l125sm2401132pgl.57.2020.03.19.10.34.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Mar 2020 10:34:33 -0700 (PDT)
+Date: Thu, 19 Mar 2020 10:34:33 -0700 (PDT)
+X-Google-Original-Date: Thu, 19 Mar 2020 10:34:24 PDT (-0700)
+Subject: Re: [PATCH 1/5] kgdb: Add kgdb_has_hit_break function
+In-Reply-To: <20200319114032.376mvrq3npyxej5q@holly.lan>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: daniel.thompson@linaro.org
+Message-ID: <mhng-2a35854d-fb2f-484b-aa28-8f858631bce3@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200319163700.GA3354541@ulmo>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200319_103122_003761_2642987E 
-X-CRM114-Status: GOOD (  40.98  )
+X-CRM114-CacheID: sfid-20200319_103435_380747_6E83BF86 
+X-CRM114-Status: GOOD (  26.74  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,194 +94,115 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org,
- Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org,
- Oleksandr Suvorov <oleksandr.suvorov@toradex.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
- Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
- devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
- Philippe Schenker <philippe.schenker@toradex.com>,
- Paul Barker <pbarker@konsulko.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Paul Cercueil <paul@crapouillou.net>, Igor Opaniuk <igor.opaniuk@toradex.com>,
- Scott Branden <sbranden@broadcom.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea <claudiu.beznea@microchip.com>
+Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
+ jason.wessel@windriver.com, dianders@chromium.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hello,
+On Thu, 19 Mar 2020 04:40:32 PDT (-0700), daniel.thompson@linaro.org wrote:
+> On Wed, Mar 18, 2020 at 11:03:25AM -0700, Palmer Dabbelt wrote:
+>> On Tue, 03 Mar 2020 00:47:00 PST (-0800), vincent.chen@sifive.com wrote:
+>> > The break instruction in RISC-V does not have an immediate value field, so
+>> > the kernel cannot identify the purpose of each trap exception through the
+>> > opcode. This makes the existing identification schemes in other
+>> > architecture unsuitable for the RISC-V kernel. To solve this problem, this
+>> > patch adds kgdb_has_hit_break(), which can help RISC-V kernel identify
+>> > the KGDB trap exception.
+>> >
+>> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+>> > ---
+>> >  kernel/debug/debug_core.c | 12 ++++++++++++
+>> >  1 file changed, 12 insertions(+)
+>> >
+>> > diff --git a/kernel/debug/debug_core.c b/kernel/debug/debug_core.c
+>> > index 2b7c9b67931d..01bc3eea3d4d 100644
+>> > --- a/kernel/debug/debug_core.c
+>> > +++ b/kernel/debug/debug_core.c
+>> > @@ -417,6 +417,18 @@ int kgdb_isremovedbreak(unsigned long addr)
+>> >  	return 0;
+>> >  }
+>> >
+>> > +int kgdb_has_hit_break(unsigned long addr)
+>> > +{
+>> > +	int i;
+>> > +
+>> > +	for (i = 0; i < KGDB_MAX_BREAKPOINTS; i++) {
+>> > +		if (kgdb_break[i].state == BP_ACTIVE &&
+>> > +		    kgdb_break[i].bpt_addr == addr)
+>> > +			return 1;
+>> > +	}
+>> > +	return 0;
+>> > +}
+>> > +
+>> >  int dbg_remove_all_break(void)
+>> >  {
+>> >  	int error;
+>>
+>> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>
+> I've been slow to review this because I wanted to take a closer
+> look at whether this issue is unique to RV or whether one of the
+> other architectures solved it a different way so, out of interest,
+> did you do any investigations in this direction?
 
-On Thu, Mar 19, 2020 at 05:37:00PM +0100, Thierry Reding wrote:
-> On Thu, Mar 19, 2020 at 07:50:39AM +0100, Uwe Kleine-König wrote:
-> > On Wed, Mar 18, 2020 at 11:59:53PM +0100, Thierry Reding wrote:
-> > > On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-König wrote:
-> > > > Having said this I think (independent of the question if "inversed"
-> > > > exists) using two similar terms for the same thing just results in
-> > > > confusion. I hit that in the past already and I like it being addressed.
-> > > 
-> > > I don't know. It's pretty common to use different words for the same
-> > > thing. They're called synonyms.
-> > 
-> > In literature yes, I agree. In a novel it is annoying to repeat the same
-> > words over and over again and some variation is good. In programming
-> > however the goal is a different one. There the goal should be to be
-> > precise and consistent.
-> 
-> We also need to make sure that things don't break.
+Not specifically in the context of KGDB implementations, but we've been chasing
+these issues around in the rest of the debug stack for years now (I also
+maintain the RISC-V GDB port, though much less actively than I used to).  For
+many projects we've solved this by adding an ABI restriction that defines a
+two-instruction pairing for certain types of breakpoints that looks something
+like
 
-And I'm entirely on your side here.
+   addi x0, x0, MAGIC
+   ebreak
 
-> It's a very bad idea to have a macro with the same name as an enum
-> value for reasons I stated before. I think that's the most important
-> thing here.
+I generally prefer the approach here, as it doesn't impose an ABI restriction,
+but we've had to shoehorn it into so many projects I just kind of pattern
+matched KGDB into the same bin.
 
-You might have missed it, but that's OK for me, too. And note that after
-applying the whole series the enum is gone and so the problem. (First
-hunk of include/linux/pwm.h in patch 5.)
+Looking through "find -name "*kgdb*" | grep arch", I see that most
+architectures that have KGDB support also have immediates in their breakpoints.
+I'm just going to assume they're all differentiating between their types of
+breakpoints based on the immediate:
 
-> Also, if inversed is a synonym of inverted, we don't loose any precision
-> at all.
+* Microblaze has a "brki" instruction, presumably the immediate indicates it's
+  a KGDB breakpoint.  I think they spin on BUG().
+* arm64 has a "brk" insturction with an immediate.  They're using 0 for BUG(),
+  0x401 for KDB.
+* PPC uses "twge r2, r2".  I can't find it in the ISA manual, but they have
+  other traps with immediates and there seems to be more than sufficient
+  information to differentiate between the types of traps.  They use "twi 31,
+  0, 0" for BUG.
+* ARC uses "trap_s   0x4", and they appear to use different immediates for
+  different purposes (0 for a user breakpoint).  They use __builtin_trap() for
+  BUG(), which I'm assuming is the same as the user breakpoint.
+* H8 uses "trapa #2", and they're using "trapa #3" for userspace breakpoints.
+  As far as I can tell they're spinning on BUG().
+* SPARC64 uses "ta 0x72".  That matches too many things for me to grep, though
+  :).  They're using __builtin_trap() for BUG.
+* PA-RISC doesn't name the instruciton, but they have two that appear to differ
+  by an immediate and use different ones for KGDB and BUG.
+* NIOS uses "trap 30", which goes directly to a KGDB handler.  I think they
+  spin on BUG().
+* SH uses "trapa #0x3c" for KGDB and other immediates for other breakpoints.
+  Looks like they use 0x3C for BUG(), and while there's some tables being built
+  I don't think those are to differentiate between KGDB and BUG.
+* ARM uses an undefined instruction, which needs to be hooked into the
+  undefined instruction trap handler.  I think it's a unique undefined
+  instruction for kgdb, though.
 
-grep doesn't know about synonyms, so if I grep for stuff about inverted
-PWMs in the kernel I completely miss one half as it's called inversed
-there. (Yeah sure, I can also grep for "inversed|inverted", but therefor
-I have to know first that both are used interchangable here.)
+The only architecture that doesn't work this way is Hexagon.  Hexagon uses
+"trap0(#0xDB)" for both, just switching on whether the trap came from user mode
+or kernel mode.  Breakpoint traps from user mode cause SIGBREAK, those from
+kernel mode go to KGDB.  They don't have a bug.h, which I think means they're
+just spinning on BUG().  We use ebreak for BUG(), so we need something to
+differentiate between BUG() and KGDB.  I guess we could build up the tables in
+BUG(), but given that KGDB already knows the breakpoints this seems simpler --
+I'd prefer to avoid having BUG rely on the sanity of the kernel image :).
 
-That's a bit like a schematic that has "RESET#" in one place and
-"nRESET" in an other. If you stumble about that you wonder if they are
-two different names for the same signal or if they are actually two
-different ones.
+Presumably this mechanism could be used for H8, microblaze, and NIOS.
 
-Have you ever read a specification that described some property, gave it
-a name and then later used a synonym to describe it? In my eyes that's a
-bad idea.
-
-> All you have to remember is that you're dealing with a device
-> tree constant in one case and an API enumeration in the other.
-
-Everything you need to remember (or learn) about a subsystem makes it
-harder work with it.
- 
-> So I think the current form is actually more precise, though I guess it
-> could be confusing if you don't care about the difference.
-
-If there is a technical need to have different names that's one thing.
-But using synonyms to differentiate them is not optimal. Then please
-let's have names where looking at the identifier makes it obvious which
-is for the device trees and which for the API enum.
-
-> > > > > And as you noted in the cover letter, there's a conflict between the
-> > > > > macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
-> > > > > in the wrong order you'll get a compile error.
-> > > > 
-> > > > There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
-> > > > first to come to my mind). I'm not aware of any problems related to
-> > > > these. What am I missing?
-> > > 
-> > > There's currently no problem, obviously. But if for some reason the
-> > > include files end up being included in a different order (i.e. the
-> > > dt-bindings header is included before linux/pwm.h) then the macro will
-> > > be evaluated and result in something like:
-> > > 
-> > > 	enum pwm_polarity {
-> > > 		PWM_POLARITY_NORMAL,
-> > > 		1,
-> > > 	};
-> > > 
-> > > and that's not valid C, so will cause a build error.
-> > 
-> > I admit I didn't look closely here and I assume you are right. If I
-> > understand Oleksandr right this is only an intermediate step and when
-> > the series is applied completely this issue is gone. Still it might be
-> > worth to improve the series here.
-> 
-> 	$ gcc -o /dev/null -x c - <<- EOF
-> 	>     #define PWM_POLARITY_INVERTED (1 << 0)
-> 	>
-> 	>     enum pwm_polarity {
-> 	>         PWM_POLARITY_NORMAL,
-> 	>         PWM_POLARITY_INVERTED,
-> 	>     };
-> 	> EOF
-> 	<stdin>:1:35: error: expected identifier before ‘(’ token
-> 	<stdin>:5:9: note: in expansion of macro ‘PWM_POLARITY_INVERTED’
-> 
-> Q.E.D.
-
-I don't understand why you proved something here. I didn't doubt this.
-
-> > My original question was about similar problems with GPIO_ACTIVE_HIGH.
-> > Are you aware of problems there?
-> 
-> The problem exists there equally. We're probably not running into it
-> because drivers don't end up including dt-bindings/gpio/gpio.h and
-> include/linux/gpio/machine.h at the same time. Or they end up always
-> including them in the right order.
-
-Oh, that's worse than I expected. There are two .c files that include
-dt-bindings/gpio/gpio.h:
-
-	drivers/rtc/rtc-omap.c
-	drivers/tty/serial/omap-serial.c
-
-So the definition isn't even used in the gpio core to parse dt-stuff.
-(And both files don't use any definition of that file :-|)
-
-> For PWM the situation is slightly more complicated because we only have
-> one header for the kernel API, so the likelihood of including it along
-> with the dt-bindings header is increased compared to GPIO.
-
-If a consumer or provider includes the dt-bindings file there is
-something fishy. (Still catching this with a compiler message better
-than "expected identifier before ‘(’ token" would be good.)
- 
-> > > > > Note that DT bindings are an ABI and can
-> > > > > never change, whereas the enum pwm_polarity is part of a Linux internal
-> > > > > API and doesn't have the same restrictions as an ABI.
-> > > > 
-> > > > I thought only binary device trees (dtb) are supposed to be ABI.
-> > > 
-> > > Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
-> > > which basically makes it ABI as well.
-> > 
-> > We disagree here. With this argument you could fix quite some things as
-> > ABI.
-> 
-> I don't understand what you're trying to say.
-
-I don't want to follow your argument that dt-bindings/pwm/pwm.h is ABI
-as well. device tree binaries follow an ABI (similar to machine code),
-but the compiler and the source code (including headers) are not.
-
-> > > Yes, the symbol name may not be part of the ABI, but changing the
-> > > symbol becomes very inconvenient because everyone that depends on it
-> > > would have to change.
-> > 
-> > Oleksandr adapted all in-tree users, so it only affects out-of-tree
-> > users. In my book this is fine.
-> 
-> There used to be a time when it was assumed that eventually device tree
-> sources would live outside of the kernel tree. Given that they are a HW
-> description, they really ought not to be relying on the Linux kernel
-> tree as a way of keeping them consistent. That's really only out of
-> convenience.
-
-The other way round however is fine, isn't it? So use the dt definition
-in the kernel should be ok.
-
-Best regards
-Uwe
-
--- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+>
+>
+> Daniel.
 
