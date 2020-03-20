@@ -2,91 +2,59 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1B4818CDD8
-	for <lists+linux-riscv@lfdr.de>; Fri, 20 Mar 2020 13:24:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15C6D18D55D
+	for <lists+linux-riscv@lfdr.de>; Fri, 20 Mar 2020 18:09:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P9FGEgOAfhZlBc/XacSwIrzHCsoMEro42zO9AhjeszQ=; b=Vq7s5HsRyTlWVc3z5r92E0ic4
-	iN8Cn7/qZdU1qWtMcmj+zW5IpqlSXdV2p+djJPXSXx32LxJ2wsJL1lowhEPJ/8/4qj4OKY8stduWv
-	6/7LXiw/3/sB/Rn+A7Bq6RWKT6kgT/nRgyJ4GF4EYy+GsOD8pLo5n08T3uvBeKUZ/3pJqX0Zw9+6L
-	ajHCuxbos5kyVmRExMeOD+cpHXTR1XggSgazPV0XjSFM8LSbv9yL9cn2UelrtnYHsMaAjmp4Tickx
-	86ydYxSG/KoAbIeGaEdr2MDn2Vnwe87/g0FgnzJ0JbdlHkDddB11ZDFHj4qmKVqNGkbyyIUMhAQUD
-	JD9N6KxWA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sI0azXhwfggUs4vo8eCMPAIBYg5uqmWJu89VQwh1sGE=; b=g177Y/gqQM3T2J
+	JGqnktZwqqHEtisXtX4m5i83oIx7Pxyt/W8VuKaPyOwUKHKOBBK9ZSibWWWSEVU78/EhrBLeygDLQ
+	u1hF6UjXxHGVXD/T5lu0TtMrvoiQUXWWHbJDum5JWt47eemuiNXvzdJzpW02KJQisENUbrX5Pzdvy
+	p7nJMuBVDK//87Ou07yk9hsFqkDtqHHDl50jF2F1Mcgh16CSe+O7FoncA+GjrCHXalq6MtK55mQRp
+	puIlqUBcET3fxHA4VBQex4bhLvxN1/HlV9AKd2Z7Ny4yJ8l9eFe1j6Dy+UK9Zq9bL8GVFzQMarYAr
+	Q5YRgn3L1tNWcKmTWyuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFGh6-00048P-OT; Fri, 20 Mar 2020 12:24:08 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFGh1-00047r-Mo
- for linux-riscv@lists.infradead.org; Fri, 20 Mar 2020 12:24:06 +0000
-Received: by mail-wr1-x442.google.com with SMTP id j17so3776752wru.13
- for <linux-riscv@lists.infradead.org>; Fri, 20 Mar 2020 05:24:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=P9FGEgOAfhZlBc/XacSwIrzHCsoMEro42zO9AhjeszQ=;
- b=lt0RjWJCMYrQNn5DVfBeFcHQT4MQUy8RZO3hbRsNwh+AQMzx2cEziX6QhdVXEtmpPJ
- 75CnCpcDwjzzTiyTURPPTQClOeZJeVm+Yw4lJ+r/r7ktyppBWK2E4teJeMUBTk0NqiM2
- hObxie+r8RLlvGM01QRmeMSiYrSxEEPMzrflwRzYIfx2OskEC+TtZCaiu+dxOBdaITUN
- 3VDZlSFnNRoRea2CABKOB40j6jTII/f0DuHq5UXoNY+xSee39JAH0YmgvqjHyN2nMNLY
- JHgQEAJ/hpTzcurw+nJ/+FerfPHMOiKg8xs1oJx38sOAigZe68L7NnGCXuZPYwuPMa3Q
- ybbQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=P9FGEgOAfhZlBc/XacSwIrzHCsoMEro42zO9AhjeszQ=;
- b=a9Kp7QzNwsjCSgnGC/Qb97AwIyRB70CCxUGZdzd6qwI9r0d4+J26ekt2oR2DB1k75z
- pFyXdpzdkELyFfY/BEW7mUa3BHFHlR0wSAz93NCP2pgTAHh5E8o2ii2EzOIZw8tzhI6W
- fMAQifXWEOhDeOcjEcAdK66nK2tbKvGBFzDmtBdP/tD7xiw7HRivbg1DkznjOmZpVT5e
- yQAKYrQEusXvu740mCOQGulCxSOwajsG/6xX3ddfd/HK+e2wglZIxeAj8yTgBa0UdWWL
- 8g+Dw/vuJTIGqahUCWB4wIEmaCt6vJL95NPLT2q5dAsHDPYhtxYGvjDnnNEDvZGkS0gt
- aNlw==
-X-Gm-Message-State: ANhLgQ3ZD7p/haBcYYSiAu/r3OPzRZdZusp6BDrzQivnkxtNxpBztPxb
- DAfWuC3tuJE/fom0PhLz46GkGQ==
-X-Google-Smtp-Source: ADFU+vvjjWmAxAHsZLa2RZx9qbbKk8Hav1XxXrmaPSE4Ey3RcK/rSL+sm11U6c0A3URK0ySDjVkm9w==
-X-Received: by 2002:adf:82f7:: with SMTP id 110mr10517139wrc.373.1584707040616; 
- Fri, 20 Mar 2020 05:24:00 -0700 (PDT)
-Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
- [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id a11sm7930243wrx.54.2020.03.20.05.23.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2020 05:24:00 -0700 (PDT)
-Date: Fri, 20 Mar 2020 12:23:58 +0000
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH 1/5] kgdb: Add kgdb_has_hit_break function
-Message-ID: <20200320122358.3yjxglibgiedvmt6@holly.lan>
-References: <20200319114032.376mvrq3npyxej5q@holly.lan>
- <mhng-2a35854d-fb2f-484b-aa28-8f858631bce3@palmerdabbelt-glaptop1>
+	id 1jFL8y-00034m-N4; Fri, 20 Mar 2020 17:09:12 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jFL8h-0002wq-0Y; Fri, 20 Mar 2020 17:08:56 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8C3041FB;
+ Fri, 20 Mar 2020 10:08:51 -0700 (PDT)
+Received: from [192.168.1.123] (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E69003F305;
+ Fri, 20 Mar 2020 10:08:46 -0700 (PDT)
+Subject: Re: [PATCH V2 1/2] mm/sparsemem: Enable vmem_altmap support in
+ vmemmap_populate_basepages()
+To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org
+References: <1583331030-7335-1-git-send-email-anshuman.khandual@arm.com>
+ <1583331030-7335-2-git-send-email-anshuman.khandual@arm.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <5e1bad9b-11d7-344c-766f-162f7a779941@arm.com>
+Date: Fri, 20 Mar 2020 17:08:31 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <mhng-2a35854d-fb2f-484b-aa28-8f858631bce3@palmerdabbelt-glaptop1>
+In-Reply-To: <1583331030-7335-2-git-send-email-anshuman.khandual@arm.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_052403_777250_E79CAF2A 
-X-CRM114-Status: GOOD (  32.84  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200320_100855_148928_316E465A 
+X-CRM114-Status: GOOD (  35.86  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,129 +66,323 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
- jason.wessel@windriver.com, dianders@chromium.org,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>,
+ linux-ia64@vger.kernel.org, David Hildenbrand <david@redhat.com>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
+ x86@kernel.org, "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
+ Mike Rapoport <rppt@linux.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Fenghua Yu <fenghua.yu@intel.com>, Pavel Tatashin <pasha.tatashin@soleen.com>,
+ Andy Lutomirski <luto@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org,
+ Tony Luck <tony.luck@intel.com>, linux-kernel@vger.kernel.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
+ "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Mar 19, 2020 at 10:34:33AM -0700, Palmer Dabbelt wrote:
-> On Thu, 19 Mar 2020 04:40:32 PDT (-0700), daniel.thompson@linaro.org wrote:
-> > On Wed, Mar 18, 2020 at 11:03:25AM -0700, Palmer Dabbelt wrote:
-> > > On Tue, 03 Mar 2020 00:47:00 PST (-0800), vincent.chen@sifive.com wrote:
-> > > > The break instruction in RISC-V does not have an immediate value field, so
-> > > > the kernel cannot identify the purpose of each trap exception through the
-> > > > opcode. This makes the existing identification schemes in other
-> > > > architecture unsuitable for the RISC-V kernel. To solve this problem, this
-> > > > patch adds kgdb_has_hit_break(), which can help RISC-V kernel identify
-> > > > the KGDB trap exception.
-> > > >
-> > > > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> > > > ---
-> > > >  kernel/debug/debug_core.c | 12 ++++++++++++
-> > > >  1 file changed, 12 insertions(+)
-> > > >
-> > > > diff --git a/kernel/debug/debug_core.c b/kernel/debug/debug_core.c
-> > > > index 2b7c9b67931d..01bc3eea3d4d 100644
-> > > > --- a/kernel/debug/debug_core.c
-> > > > +++ b/kernel/debug/debug_core.c
-> > > > @@ -417,6 +417,18 @@ int kgdb_isremovedbreak(unsigned long addr)
-> > > >  	return 0;
-> > > >  }
-> > > >
-> > > > +int kgdb_has_hit_break(unsigned long addr)
-> > > > +{
-> > > > +	int i;
-> > > > +
-> > > > +	for (i = 0; i < KGDB_MAX_BREAKPOINTS; i++) {
-> > > > +		if (kgdb_break[i].state == BP_ACTIVE &&
-> > > > +		    kgdb_break[i].bpt_addr == addr)
-> > > > +			return 1;
-> > > > +	}
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > >  int dbg_remove_all_break(void)
-> > > >  {
-> > > >  	int error;
-> > > 
-> > > Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
-> > 
-> > I've been slow to review this because I wanted to take a closer
-> > look at whether this issue is unique to RV or whether one of the
-> > other architectures solved it a different way so, out of interest,
-> > did you do any investigations in this direction?
+On 2020-03-04 2:10 pm, Anshuman Khandual wrote:
+> vmemmap_populate_basepages() is used across platforms to allocate backing
+> memory for vmemmap mapping. This is used as a standard default choice or
+> as a fallback when intended huge pages allocation fails. This just creates
+> entire vmemmap mapping with base pages (PAGE_SIZE).
 > 
-> Not specifically in the context of KGDB implementations, but we've been chasing
-> these issues around in the rest of the debug stack for years now (I also
-> maintain the RISC-V GDB port, though much less actively than I used to).  For
-> many projects we've solved this by adding an ABI restriction that defines a
-> two-instruction pairing for certain types of breakpoints that looks something
-> like
+> On arm64 platforms, vmemmap_populate_basepages() is called instead of the
+> platform specific vmemmap_populate() when ARM64_SWAPPER_USES_SECTION_MAPS
+> is not enabled as in case for ARM64_16K_PAGES and ARM64_64K_PAGES configs.
 > 
->   addi x0, x0, MAGIC
->   ebreak
+> At present vmemmap_populate_basepages() does not support allocating from
+> driver defined struct vmem_altmap while trying to create vmemmap mapping
+> for a device memory range. It prevents ARM64_16K_PAGES and ARM64_64K_PAGES
+> configs on arm64 from supporting device memory with vmemap_altmap request.
 > 
-> I generally prefer the approach here, as it doesn't impose an ABI restriction,
-> but we've had to shoehorn it into so many projects I just kind of pattern
-> matched KGDB into the same bin.
+> This enables vmem_altmap support in vmemmap_populate_basepages() unlocking
+> device memory allocation for vmemap mapping on arm64 platforms with 16K or
+> 64K base page configs.
 > 
-> Looking through "find -name "*kgdb*" | grep arch", I see that most
-> architectures that have KGDB support also have immediates in their breakpoints.
-> I'm just going to assume they're all differentiating between their types of
-> breakpoints based on the immediate:
+> Each architecture should evaluate and decide on subscribing device memory
+> based base page allocation through vmemmap_populate_basepages(). Hence lets
+> keep it disabled on all archs in order to preserve the existing semantics.
+> A subsequent patch enables it on arm64.
 
-Many thanks for the summary here.
+I guess buy-in for this change largely depends on whether any other 
+architectures are likely to want to share it. The existing altmap users 
+don't look like they would, so that's probably more a question for the 
+likes of S390 and RISC-V.
 
-The implementation looked fine... I just wanted to be sure that there
-wasn't a second solution to the same problem lurking in one of the less
-common architectures!
+Failing that, simply decoupling arm64 from vmemmap_populate_basepages() 
+seems viable - I tried hacking up a quick proof-of-concept (attached at 
+the end) and it doesn't come out looking *too* disgusting.
 
-Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
-
-
-Daniel.
-
-
+> Cc: Catalin Marinas <catalin.marinas@arm.com>
+> Cc: Will Deacon <will@kernel.org>
+> Cc: Mark Rutland <mark.rutland@arm.com>
+> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+> Cc: Tony Luck <tony.luck@intel.com>
+> Cc: Fenghua Yu <fenghua.yu@intel.com>
+> Cc: Dave Hansen <dave.hansen@linux.intel.com>
+> Cc: Andy Lutomirski <luto@kernel.org>
+> Cc: Peter Zijlstra <peterz@infradead.org>
+> Cc: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Ingo Molnar <mingo@redhat.com>
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Mike Rapoport <rppt@linux.ibm.com>
+> Cc: Michal Hocko <mhocko@suse.com>
+> Cc: "Matthew Wilcox (Oracle)" <willy@infradead.org>
+> Cc: "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Cc: Dan Williams <dan.j.williams@intel.com>
+> Cc: Pavel Tatashin <pasha.tatashin@soleen.com>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-ia64@vger.kernel.org
+> Cc: linux-riscv@lists.infradead.org
+> Cc: x86@kernel.org
+> Cc: linux-kernel@vger.kernel.org
 > 
-> * Microblaze has a "brki" instruction, presumably the immediate indicates it's
->  a KGDB breakpoint.  I think they spin on BUG().
-> * arm64 has a "brk" insturction with an immediate.  They're using 0 for BUG(),
->  0x401 for KDB.
-> * PPC uses "twge r2, r2".  I can't find it in the ISA manual, but they have
->  other traps with immediates and there seems to be more than sufficient
->  information to differentiate between the types of traps.  They use "twi 31,
->  0, 0" for BUG.
-> * ARC uses "trap_s   0x4", and they appear to use different immediates for
->  different purposes (0 for a user breakpoint).  They use __builtin_trap() for
->  BUG(), which I'm assuming is the same as the user breakpoint.
-> * H8 uses "trapa #2", and they're using "trapa #3" for userspace breakpoints.
->  As far as I can tell they're spinning on BUG().
-> * SPARC64 uses "ta 0x72".  That matches too many things for me to grep, though
->  :).  They're using __builtin_trap() for BUG.
-> * PA-RISC doesn't name the instruciton, but they have two that appear to differ
->  by an immediate and use different ones for KGDB and BUG.
-> * NIOS uses "trap 30", which goes directly to a KGDB handler.  I think they
->  spin on BUG().
-> * SH uses "trapa #0x3c" for KGDB and other immediates for other breakpoints.
->  Looks like they use 0x3C for BUG(), and while there's some tables being built
->  I don't think those are to differentiate between KGDB and BUG.
-> * ARM uses an undefined instruction, which needs to be hooked into the
->  undefined instruction trap handler.  I think it's a unique undefined
->  instruction for kgdb, though.
+> Acked-by: Will Deacon <will@kernel.org>
+> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+> ---
+>   arch/arm64/mm/mmu.c      |  2 +-
+>   arch/ia64/mm/discontig.c |  2 +-
+>   arch/riscv/mm/init.c     |  2 +-
+>   arch/x86/mm/init_64.c    |  6 +++---
+>   include/linux/mm.h       |  5 +++--
+>   mm/sparse-vmemmap.c      | 16 +++++++++++-----
+>   6 files changed, 20 insertions(+), 13 deletions(-)
 > 
-> The only architecture that doesn't work this way is Hexagon.  Hexagon uses
-> "trap0(#0xDB)" for both, just switching on whether the trap came from user mode
-> or kernel mode.  Breakpoint traps from user mode cause SIGBREAK, those from
-> kernel mode go to KGDB.  They don't have a bug.h, which I think means they're
-> just spinning on BUG().  We use ebreak for BUG(), so we need something to
-> differentiate between BUG() and KGDB.  I guess we could build up the tables in
-> BUG(), but given that KGDB already knows the breakpoints this seems simpler --
-> I'd prefer to avoid having BUG rely on the sanity of the kernel image :).
+> diff --git a/arch/arm64/mm/mmu.c b/arch/arm64/mm/mmu.c
+> index 9b08f7c7e6f0..27cb95c471eb 100644
+> --- a/arch/arm64/mm/mmu.c
+> +++ b/arch/arm64/mm/mmu.c
+> @@ -1036,7 +1036,7 @@ static void free_empty_tables(unsigned long addr, unsigned long end,
+>   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
+>   		struct vmem_altmap *altmap)
+>   {
+> -	return vmemmap_populate_basepages(start, end, node);
+> +	return vmemmap_populate_basepages(start, end, node, NULL);
+>   }
+>   #else	/* !ARM64_SWAPPER_USES_SECTION_MAPS */
+>   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
+> diff --git a/arch/ia64/mm/discontig.c b/arch/ia64/mm/discontig.c
+> index 4f33f6e7e206..20409f3afea8 100644
+> --- a/arch/ia64/mm/discontig.c
+> +++ b/arch/ia64/mm/discontig.c
+> @@ -656,7 +656,7 @@ void arch_refresh_nodedata(int update_node, pg_data_t *update_pgdat)
+>   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
+>   		struct vmem_altmap *altmap)
+>   {
+> -	return vmemmap_populate_basepages(start, end, node);
+> +	return vmemmap_populate_basepages(start, end, node, NULL);
+>   }
+>   
+>   void vmemmap_free(unsigned long start, unsigned long end,
+> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> index 965a8cf4829c..1d7451c91982 100644
+> --- a/arch/riscv/mm/init.c
+> +++ b/arch/riscv/mm/init.c
+> @@ -501,6 +501,6 @@ void __init paging_init(void)
+>   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
+>   			       struct vmem_altmap *altmap)
+>   {
+> -	return vmemmap_populate_basepages(start, end, node);
+> +	return vmemmap_populate_basepages(start, end, node, NULL);
+>   }
+>   #endif
+> diff --git a/arch/x86/mm/init_64.c b/arch/x86/mm/init_64.c
+> index abbdecb75fad..3272fe0d844a 100644
+> --- a/arch/x86/mm/init_64.c
+> +++ b/arch/x86/mm/init_64.c
+> @@ -1471,7 +1471,7 @@ static int __meminit vmemmap_populate_hugepages(unsigned long start,
+>   			vmemmap_verify((pte_t *)pmd, node, addr, next);
+>   			continue;
+>   		}
+> -		if (vmemmap_populate_basepages(addr, next, node))
+> +		if (vmemmap_populate_basepages(addr, next, node, NULL))
+>   			return -ENOMEM;
+>   	}
+>   	return 0;
+> @@ -1483,7 +1483,7 @@ int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
+>   	int err;
+>   
+>   	if (end - start < PAGES_PER_SECTION * sizeof(struct page))
+> -		err = vmemmap_populate_basepages(start, end, node);
+> +		err = vmemmap_populate_basepages(start, end, node, NULL);
+>   	else if (boot_cpu_has(X86_FEATURE_PSE))
+>   		err = vmemmap_populate_hugepages(start, end, node, altmap);
+>   	else if (altmap) {
+> @@ -1491,7 +1491,7 @@ int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
+>   				__func__);
+>   		err = -ENOMEM;
+>   	} else
+> -		err = vmemmap_populate_basepages(start, end, node);
+> +		err = vmemmap_populate_basepages(start, end, node, NULL);
+>   	if (!err)
+>   		sync_global_pgds(start, end - 1);
+>   	return err;
+> diff --git a/include/linux/mm.h b/include/linux/mm.h
+> index 52269e56c514..42f99c8d63c0 100644
+> --- a/include/linux/mm.h
+> +++ b/include/linux/mm.h
+> @@ -2780,14 +2780,15 @@ pgd_t *vmemmap_pgd_populate(unsigned long addr, int node);
+>   p4d_t *vmemmap_p4d_populate(pgd_t *pgd, unsigned long addr, int node);
+>   pud_t *vmemmap_pud_populate(p4d_t *p4d, unsigned long addr, int node);
+>   pmd_t *vmemmap_pmd_populate(pud_t *pud, unsigned long addr, int node);
+> -pte_t *vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node);
+> +pte_t *vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node,
+> +			    struct vmem_altmap *altmap);
+>   void *vmemmap_alloc_block(unsigned long size, int node);
+>   struct vmem_altmap;
+>   void *vmemmap_alloc_block_buf(unsigned long size, int node);
+>   void *altmap_alloc_block_buf(unsigned long size, struct vmem_altmap *altmap);
+>   void vmemmap_verify(pte_t *, int, unsigned long, unsigned long);
+>   int vmemmap_populate_basepages(unsigned long start, unsigned long end,
+> -			       int node);
+> +			       int node, struct vmem_altmap *altmap);
+>   int vmemmap_populate(unsigned long start, unsigned long end, int node,
+>   		struct vmem_altmap *altmap);
+>   void vmemmap_populate_print_last(void);
+> diff --git a/mm/sparse-vmemmap.c b/mm/sparse-vmemmap.c
+> index 200aef686722..a407abc9b46c 100644
+> --- a/mm/sparse-vmemmap.c
+> +++ b/mm/sparse-vmemmap.c
+> @@ -140,12 +140,18 @@ void __meminit vmemmap_verify(pte_t *pte, int node,
+>   			start, end - 1);
+>   }
+>   
+> -pte_t * __meminit vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node)
+> +pte_t * __meminit vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node,
+> +				       struct vmem_altmap *altmap)
+>   {
+>   	pte_t *pte = pte_offset_kernel(pmd, addr);
+>   	if (pte_none(*pte)) {
+>   		pte_t entry;
+> -		void *p = vmemmap_alloc_block_buf(PAGE_SIZE, node);
+> +		void *p;
+> +
+> +		if (altmap)
+> +			p = altmap_alloc_block_buf(PAGE_SIZE, altmap);
+> +		else
+> +			p = vmemmap_alloc_block_buf(PAGE_SIZE, node);
+
+This pattern ends up appearing a number of times by the end - if we do 
+go down the generic code route, might it be worth pushing it down into 
+vmmemmap_alloc_block_buf() itself to make it automatic? (possibly even 
+including the powerpc fallback behaviour too?)
+
+Robin.
+
+>   		if (!p)
+>   			return NULL;
+>   		entry = pfn_pte(__pa(p) >> PAGE_SHIFT, PAGE_KERNEL);
+> @@ -213,8 +219,8 @@ pgd_t * __meminit vmemmap_pgd_populate(unsigned long addr, int node)
+>   	return pgd;
+>   }
+>   
+> -int __meminit vmemmap_populate_basepages(unsigned long start,
+> -					 unsigned long end, int node)
+> +int __meminit vmemmap_populate_basepages(unsigned long start, unsigned long end,
+> +					 int node, struct vmem_altmap *altmap)
+>   {
+>   	unsigned long addr = start;
+>   	pgd_t *pgd;
+> @@ -236,7 +242,7 @@ int __meminit vmemmap_populate_basepages(unsigned long start,
+>   		pmd = vmemmap_pmd_populate(pud, addr, node);
+>   		if (!pmd)
+>   			return -ENOMEM;
+> -		pte = vmemmap_pte_populate(pmd, addr, node);
+> +		pte = vmemmap_pte_populate(pmd, addr, node, altmap);
+>   		if (!pte)
+>   			return -ENOMEM;
+>   		vmemmap_verify(pte, node, addr, addr + PAGE_SIZE);
 > 
-> Presumably this mechanism could be used for H8, microblaze, and NIOS.
-> 
-> > 
-> > 
-> > Daniel.
+
+----->8-----
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH] arm64/mm: Consolidate vmemmap_populate()
+
+Since we already have a custom vmemmap_populate() implementation, fold
+the non-section-map case into that as well, so that we can easily add
+altmap support for both cases without having to mess with core code.
+
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+  arch/arm64/mm/mmu.c | 34 +++++++++++++++++++++-------------
+  1 file changed, 21 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm64/mm/mmu.c b/arch/arm64/mm/mmu.c
+index 128f70852bf3..e250fd414b2b 100644
+--- a/arch/arm64/mm/mmu.c
++++ b/arch/arm64/mm/mmu.c
+@@ -725,13 +725,6 @@ int kern_addr_valid(unsigned long addr)
+  	return pfn_valid(pte_pfn(pte));
+  }
+  #ifdef CONFIG_SPARSEMEM_VMEMMAP
+-#if !ARM64_SWAPPER_USES_SECTION_MAPS
+-int __meminit vmemmap_populate(unsigned long start, unsigned long end, 
+int node,
+-		struct vmem_altmap *altmap)
+-{
+-	return vmemmap_populate_basepages(start, end, node);
+-}
+-#else	/* !ARM64_SWAPPER_USES_SECTION_MAPS */
+  int __meminit vmemmap_populate(unsigned long start, unsigned long end, 
+int node,
+  		struct vmem_altmap *altmap)
+  {
+@@ -740,6 +733,7 @@ int __meminit vmemmap_populate(unsigned long start, 
+unsigned long end, int node,
+  	pgd_t *pgdp;
+  	pud_t *pudp;
+  	pmd_t *pmdp;
++	pte_t *ptep;
+
+  	do {
+  		next = pmd_addr_end(addr, end);
+@@ -752,22 +746,36 @@ int __meminit vmemmap_populate(unsigned long 
+start, unsigned long end, int node,
+  		if (!pudp)
+  			return -ENOMEM;
+
++#if ARM64_SWAPPER_USES_SECTION_MAPS
+  		pmdp = pmd_offset(pudp, addr);
+  		if (pmd_none(READ_ONCE(*pmdp))) {
+-			void *p = NULL;
+-
+-			p = vmemmap_alloc_block_buf(PMD_SIZE, node);
++			void *p = vmemmap_alloc_block_buf(PMD_SIZE, node);
+  			if (!p)
+  				return -ENOMEM;
+
+  			pmd_set_huge(pmdp, __pa(p), __pgprot(PROT_SECT_NORMAL));
+-		} else
+-			vmemmap_verify((pte_t *)pmdp, node, addr, next);
++			continue;
++		}
++#else
++		pmdp = vmemmap_pmd_populate(pmdp, addr, node);
++		if (!pmdp)
++			return -ENOMEM;
++
++		ptep = pte_offset_kernel(pmdp, addr);
++		if (pte_none(READ_ONCE(*ptep))) {
++			void *p = vmemmap_alloc_block_buf(PAGE_SIZE, node);
++			if (!p)
++				return -ENOMEM;
++
++			set_pte(ptep, pfn_pte(__pa(p) >> PAGE_SHIFT, PAGE_KERNEL));
++		}
++#endif
++		vmemmap_verify((pte_t *)pmdp, node, addr, next);
+  	} while (addr = next, addr != end);
+
+  	return 0;
+  }
+-#endif	/* !ARM64_SWAPPER_USES_SECTION_MAPS */
++
+  void vmemmap_free(unsigned long start, unsigned long end,
+  		struct vmem_altmap *altmap)
+  {
 
