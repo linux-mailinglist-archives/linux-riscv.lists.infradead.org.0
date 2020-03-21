@@ -2,59 +2,104 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15C6D18D55D
-	for <lists+linux-riscv@lfdr.de>; Fri, 20 Mar 2020 18:09:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E78018E0CE
+	for <lists+linux-riscv@lfdr.de>; Sat, 21 Mar 2020 12:48:20 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sI0azXhwfggUs4vo8eCMPAIBYg5uqmWJu89VQwh1sGE=; b=g177Y/gqQM3T2J
-	JGqnktZwqqHEtisXtX4m5i83oIx7Pxyt/W8VuKaPyOwUKHKOBBK9ZSibWWWSEVU78/EhrBLeygDLQ
-	u1hF6UjXxHGVXD/T5lu0TtMrvoiQUXWWHbJDum5JWt47eemuiNXvzdJzpW02KJQisENUbrX5Pzdvy
-	p7nJMuBVDK//87Ou07yk9hsFqkDtqHHDl50jF2F1Mcgh16CSe+O7FoncA+GjrCHXalq6MtK55mQRp
-	puIlqUBcET3fxHA4VBQex4bhLvxN1/HlV9AKd2Z7Ny4yJ8l9eFe1j6Dy+UK9Zq9bL8GVFzQMarYAr
-	Q5YRgn3L1tNWcKmTWyuA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=cG4JXcZAVh9Gi0w3mJTlvTYTNIZBARS522tS5FIJwUc=; b=W45RiuEQLw+J7E69VyoAZUm81
+	UDBYFYYov7FaItLEw28Pt7J+pIBDtv9ekzAvHQnj9xkqAZrlCw49oit8UGbgJjKHVImuclsMXA8as
+	cZt2KViPReHWDbYQOvTs0ctKzzr+JV2LENCIhGpq+kSktr2t1jr38fAszqto+LFetePo5HNLGV1UY
+	md869Df4cX5zREy4tSP170kLTusl3VwuKDpgNptgmC2Z96Ti/FzqvCgiAr6q606H7kv6JOiM7+omm
+	wBPBb7BEx7UqnuyPfkM60l8FVi04DReWA20HkV+WMxQBJk0R/cPA9DJCIMveYIaShFFDHYKZMSl+x
+	vMFpuQRRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFL8y-00034m-N4; Fri, 20 Mar 2020 17:09:12 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFL8h-0002wq-0Y; Fri, 20 Mar 2020 17:08:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8C3041FB;
- Fri, 20 Mar 2020 10:08:51 -0700 (PDT)
-Received: from [192.168.1.123] (unknown [172.31.20.19])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E69003F305;
- Fri, 20 Mar 2020 10:08:46 -0700 (PDT)
-Subject: Re: [PATCH V2 1/2] mm/sparsemem: Enable vmem_altmap support in
- vmemmap_populate_basepages()
-To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org
-References: <1583331030-7335-1-git-send-email-anshuman.khandual@arm.com>
- <1583331030-7335-2-git-send-email-anshuman.khandual@arm.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <5e1bad9b-11d7-344c-766f-162f7a779941@arm.com>
-Date: Fri, 20 Mar 2020 17:08:31 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+	id 1jFcbs-0000d8-NY; Sat, 21 Mar 2020 11:48:12 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jFcbo-0000ci-QG
+ for linux-riscv@lists.infradead.org; Sat, 21 Mar 2020 11:48:10 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02LBgri4061731;
+ Sat, 21 Mar 2020 11:47:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=cG4JXcZAVh9Gi0w3mJTlvTYTNIZBARS522tS5FIJwUc=;
+ b=W1b/mbzOE8q1fnIbWLYsLh43h5rJObNNd5QQA32legWNozrt3D7RE+j2EbIQ1Ck0p6U0
+ YmG6U1N2xPoZW4wD3ObSKMVk4+/lNcVpvtBHwVvFuscOhZoTkZXI/oN/Jpje73KXYy6k
+ BkML7bAleU51IfAHM7RQqS23ZzexwyOOsdMlCM+DOJ998HdhFTUqkOSNLA4RtGHHiCMo
+ wEJAE6pfdlzGr5gD28uIYwJBbhbWubMk8qr9oJkSUxot3LosTuEfwu0QF2e/f4sN/ilr
+ 2u8WJqUY5rD+GNBegMEKvFtEfDNMp5lMuoqkIeR6JX44hm50Q3tUDWcv7pqzn7vRgMgT 1g== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 2ywavkrs2h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 21 Mar 2020 11:47:51 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02LBkniK146809;
+ Sat, 21 Mar 2020 11:47:51 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2yw8y8wj8h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 21 Mar 2020 11:47:51 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02LBlRY5027349;
+ Sat, 21 Mar 2020 11:47:28 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Sat, 21 Mar 2020 04:47:27 -0700
+Date: Sat, 21 Mar 2020 14:47:03 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Guru Das Srinagesh <gurus@codeaurora.org>
+Subject: Re: [PATCH v10 00/12] Convert PWM period and duty cycle to u64
+Message-ID: <20200321114703.GB4672@kadam>
+References: <cover.1584650604.git.gurus@codeaurora.org>
 MIME-Version: 1.0
-In-Reply-To: <1583331030-7335-2-git-send-email-anshuman.khandual@arm.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-GB
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1584650604.git.gurus@codeaurora.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9566
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ phishscore=0
+ mlxlogscore=999 bulkscore=0 malwarescore=0 adultscore=0 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003210070
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9566
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ malwarescore=0
+ priorityscore=1501 mlxscore=0 bulkscore=0 clxscore=1011 impostorscore=0
+ phishscore=0 suspectscore=0 mlxlogscore=999 spamscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003210069
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_100855_148928_316E465A 
-X-CRM114-Status: GOOD (  35.86  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200321_044808_931987_7BC32DA0 
+X-CRM114-Status: GOOD (  11.42  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ medium trust [141.146.126.78 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,323 +111,55 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>,
- linux-ia64@vger.kernel.org, David Hildenbrand <david@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
- x86@kernel.org, "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Fenghua Yu <fenghua.yu@intel.com>, Pavel Tatashin <pasha.tatashin@soleen.com>,
- Andy Lutomirski <luto@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org,
- Tony Luck <tony.luck@intel.com>, linux-kernel@vger.kernel.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
- "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ Daniel Vetter <daniel@ffwll.ch>, linux-fbdev@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, "Wesley W. Terpstra" <wesley@sifive.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Kamil Debski <kamil@wypas.org>, dri-devel@lists.freedesktop.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Atish Patra <atish.patra@wdc.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ linux-riscv@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-clk@vger.kernel.org,
+ Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Daniel Thompson <daniel.thompson@linaro.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Axel Lin <axel.lin@ingics.com>,
+ Arnd Bergmann <arnd@arndb.de>, Alexander Shiyan <shc_work@mail.ru>,
+ Fabio Estevam <festevam@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ NXP Linux Team <linux-imx@nxp.com>, Mukesh Ojha <mojha@codeaurora.org>,
+ Gerald Baeza <gerald.baeza@st.com>, intel-gfx@lists.freedesktop.org,
+ Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <uwe@kleine-koenig.org>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mark Brown <broonie@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Subbaraman Narayanamurthy <subbaram@codeaurora.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
+ Ding Xiang <dingxiang@cmss.chinamobile.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Allison Randal <allison@lohutok.net>, linux-hwmon@vger.kernel.org,
+ Chris Wilson <chris@chris-wilson.co.uk>, Anson Huang <Anson.Huang@nxp.com>,
+ Richard Fontana <rfontana@redhat.com>, Stephen Boyd <sboyd@kernel.org>,
+ Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org,
+ Yash Shah <yash.shah@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2020-03-04 2:10 pm, Anshuman Khandual wrote:
-> vmemmap_populate_basepages() is used across platforms to allocate backing
-> memory for vmemmap mapping. This is used as a standard default choice or
-> as a fallback when intended huge pages allocation fails. This just creates
-> entire vmemmap mapping with base pages (PAGE_SIZE).
-> 
-> On arm64 platforms, vmemmap_populate_basepages() is called instead of the
-> platform specific vmemmap_populate() when ARM64_SWAPPER_USES_SECTION_MAPS
-> is not enabled as in case for ARM64_16K_PAGES and ARM64_64K_PAGES configs.
-> 
-> At present vmemmap_populate_basepages() does not support allocating from
-> driver defined struct vmem_altmap while trying to create vmemmap mapping
-> for a device memory range. It prevents ARM64_16K_PAGES and ARM64_64K_PAGES
-> configs on arm64 from supporting device memory with vmemap_altmap request.
-> 
-> This enables vmem_altmap support in vmemmap_populate_basepages() unlocking
-> device memory allocation for vmemap mapping on arm64 platforms with 16K or
-> 64K base page configs.
-> 
-> Each architecture should evaluate and decide on subscribing device memory
-> based base page allocation through vmemmap_populate_basepages(). Hence lets
-> keep it disabled on all archs in order to preserve the existing semantics.
-> A subsequent patch enables it on arm64.
+This is a giant CC list.
 
-I guess buy-in for this change largely depends on whether any other 
-architectures are likely to want to share it. The existing altmap users 
-don't look like they would, so that's probably more a question for the 
-likes of S390 and RISC-V.
+There was one version where you CC'd me on patch 6/12 but after that you
+just CC'd me on the cover page.  Something is messed up in your scripts
+because Cc'ing me on just the cover is pointless.
 
-Failing that, simply decoupling arm64 from vmemmap_populate_basepages() 
-seems viable - I tried hacking up a quick proof-of-concept (attached at 
-the end) and it doesn't come out looking *too* disgusting.
+regards,
+dan carpenter
 
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Will Deacon <will@kernel.org>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: Tony Luck <tony.luck@intel.com>
-> Cc: Fenghua Yu <fenghua.yu@intel.com>
-> Cc: Dave Hansen <dave.hansen@linux.intel.com>
-> Cc: Andy Lutomirski <luto@kernel.org>
-> Cc: Peter Zijlstra <peterz@infradead.org>
-> Cc: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Ingo Molnar <mingo@redhat.com>
-> Cc: David Hildenbrand <david@redhat.com>
-> Cc: Mike Rapoport <rppt@linux.ibm.com>
-> Cc: Michal Hocko <mhocko@suse.com>
-> Cc: "Matthew Wilcox (Oracle)" <willy@infradead.org>
-> Cc: "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Dan Williams <dan.j.williams@intel.com>
-> Cc: Pavel Tatashin <pasha.tatashin@soleen.com>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-ia64@vger.kernel.org
-> Cc: linux-riscv@lists.infradead.org
-> Cc: x86@kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> 
-> Acked-by: Will Deacon <will@kernel.org>
-> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
-> ---
->   arch/arm64/mm/mmu.c      |  2 +-
->   arch/ia64/mm/discontig.c |  2 +-
->   arch/riscv/mm/init.c     |  2 +-
->   arch/x86/mm/init_64.c    |  6 +++---
->   include/linux/mm.h       |  5 +++--
->   mm/sparse-vmemmap.c      | 16 +++++++++++-----
->   6 files changed, 20 insertions(+), 13 deletions(-)
-> 
-> diff --git a/arch/arm64/mm/mmu.c b/arch/arm64/mm/mmu.c
-> index 9b08f7c7e6f0..27cb95c471eb 100644
-> --- a/arch/arm64/mm/mmu.c
-> +++ b/arch/arm64/mm/mmu.c
-> @@ -1036,7 +1036,7 @@ static void free_empty_tables(unsigned long addr, unsigned long end,
->   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
->   		struct vmem_altmap *altmap)
->   {
-> -	return vmemmap_populate_basepages(start, end, node);
-> +	return vmemmap_populate_basepages(start, end, node, NULL);
->   }
->   #else	/* !ARM64_SWAPPER_USES_SECTION_MAPS */
->   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
-> diff --git a/arch/ia64/mm/discontig.c b/arch/ia64/mm/discontig.c
-> index 4f33f6e7e206..20409f3afea8 100644
-> --- a/arch/ia64/mm/discontig.c
-> +++ b/arch/ia64/mm/discontig.c
-> @@ -656,7 +656,7 @@ void arch_refresh_nodedata(int update_node, pg_data_t *update_pgdat)
->   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
->   		struct vmem_altmap *altmap)
->   {
-> -	return vmemmap_populate_basepages(start, end, node);
-> +	return vmemmap_populate_basepages(start, end, node, NULL);
->   }
->   
->   void vmemmap_free(unsigned long start, unsigned long end,
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index 965a8cf4829c..1d7451c91982 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -501,6 +501,6 @@ void __init paging_init(void)
->   int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
->   			       struct vmem_altmap *altmap)
->   {
-> -	return vmemmap_populate_basepages(start, end, node);
-> +	return vmemmap_populate_basepages(start, end, node, NULL);
->   }
->   #endif
-> diff --git a/arch/x86/mm/init_64.c b/arch/x86/mm/init_64.c
-> index abbdecb75fad..3272fe0d844a 100644
-> --- a/arch/x86/mm/init_64.c
-> +++ b/arch/x86/mm/init_64.c
-> @@ -1471,7 +1471,7 @@ static int __meminit vmemmap_populate_hugepages(unsigned long start,
->   			vmemmap_verify((pte_t *)pmd, node, addr, next);
->   			continue;
->   		}
-> -		if (vmemmap_populate_basepages(addr, next, node))
-> +		if (vmemmap_populate_basepages(addr, next, node, NULL))
->   			return -ENOMEM;
->   	}
->   	return 0;
-> @@ -1483,7 +1483,7 @@ int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
->   	int err;
->   
->   	if (end - start < PAGES_PER_SECTION * sizeof(struct page))
-> -		err = vmemmap_populate_basepages(start, end, node);
-> +		err = vmemmap_populate_basepages(start, end, node, NULL);
->   	else if (boot_cpu_has(X86_FEATURE_PSE))
->   		err = vmemmap_populate_hugepages(start, end, node, altmap);
->   	else if (altmap) {
-> @@ -1491,7 +1491,7 @@ int __meminit vmemmap_populate(unsigned long start, unsigned long end, int node,
->   				__func__);
->   		err = -ENOMEM;
->   	} else
-> -		err = vmemmap_populate_basepages(start, end, node);
-> +		err = vmemmap_populate_basepages(start, end, node, NULL);
->   	if (!err)
->   		sync_global_pgds(start, end - 1);
->   	return err;
-> diff --git a/include/linux/mm.h b/include/linux/mm.h
-> index 52269e56c514..42f99c8d63c0 100644
-> --- a/include/linux/mm.h
-> +++ b/include/linux/mm.h
-> @@ -2780,14 +2780,15 @@ pgd_t *vmemmap_pgd_populate(unsigned long addr, int node);
->   p4d_t *vmemmap_p4d_populate(pgd_t *pgd, unsigned long addr, int node);
->   pud_t *vmemmap_pud_populate(p4d_t *p4d, unsigned long addr, int node);
->   pmd_t *vmemmap_pmd_populate(pud_t *pud, unsigned long addr, int node);
-> -pte_t *vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node);
-> +pte_t *vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node,
-> +			    struct vmem_altmap *altmap);
->   void *vmemmap_alloc_block(unsigned long size, int node);
->   struct vmem_altmap;
->   void *vmemmap_alloc_block_buf(unsigned long size, int node);
->   void *altmap_alloc_block_buf(unsigned long size, struct vmem_altmap *altmap);
->   void vmemmap_verify(pte_t *, int, unsigned long, unsigned long);
->   int vmemmap_populate_basepages(unsigned long start, unsigned long end,
-> -			       int node);
-> +			       int node, struct vmem_altmap *altmap);
->   int vmemmap_populate(unsigned long start, unsigned long end, int node,
->   		struct vmem_altmap *altmap);
->   void vmemmap_populate_print_last(void);
-> diff --git a/mm/sparse-vmemmap.c b/mm/sparse-vmemmap.c
-> index 200aef686722..a407abc9b46c 100644
-> --- a/mm/sparse-vmemmap.c
-> +++ b/mm/sparse-vmemmap.c
-> @@ -140,12 +140,18 @@ void __meminit vmemmap_verify(pte_t *pte, int node,
->   			start, end - 1);
->   }
->   
-> -pte_t * __meminit vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node)
-> +pte_t * __meminit vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node,
-> +				       struct vmem_altmap *altmap)
->   {
->   	pte_t *pte = pte_offset_kernel(pmd, addr);
->   	if (pte_none(*pte)) {
->   		pte_t entry;
-> -		void *p = vmemmap_alloc_block_buf(PAGE_SIZE, node);
-> +		void *p;
-> +
-> +		if (altmap)
-> +			p = altmap_alloc_block_buf(PAGE_SIZE, altmap);
-> +		else
-> +			p = vmemmap_alloc_block_buf(PAGE_SIZE, node);
-
-This pattern ends up appearing a number of times by the end - if we do 
-go down the generic code route, might it be worth pushing it down into 
-vmmemmap_alloc_block_buf() itself to make it automatic? (possibly even 
-including the powerpc fallback behaviour too?)
-
-Robin.
-
->   		if (!p)
->   			return NULL;
->   		entry = pfn_pte(__pa(p) >> PAGE_SHIFT, PAGE_KERNEL);
-> @@ -213,8 +219,8 @@ pgd_t * __meminit vmemmap_pgd_populate(unsigned long addr, int node)
->   	return pgd;
->   }
->   
-> -int __meminit vmemmap_populate_basepages(unsigned long start,
-> -					 unsigned long end, int node)
-> +int __meminit vmemmap_populate_basepages(unsigned long start, unsigned long end,
-> +					 int node, struct vmem_altmap *altmap)
->   {
->   	unsigned long addr = start;
->   	pgd_t *pgd;
-> @@ -236,7 +242,7 @@ int __meminit vmemmap_populate_basepages(unsigned long start,
->   		pmd = vmemmap_pmd_populate(pud, addr, node);
->   		if (!pmd)
->   			return -ENOMEM;
-> -		pte = vmemmap_pte_populate(pmd, addr, node);
-> +		pte = vmemmap_pte_populate(pmd, addr, node, altmap);
->   		if (!pte)
->   			return -ENOMEM;
->   		vmemmap_verify(pte, node, addr, addr + PAGE_SIZE);
-> 
-
------>8-----
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH] arm64/mm: Consolidate vmemmap_populate()
-
-Since we already have a custom vmemmap_populate() implementation, fold
-the non-section-map case into that as well, so that we can easily add
-altmap support for both cases without having to mess with core code.
-
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
-  arch/arm64/mm/mmu.c | 34 +++++++++++++++++++++-------------
-  1 file changed, 21 insertions(+), 13 deletions(-)
-
-diff --git a/arch/arm64/mm/mmu.c b/arch/arm64/mm/mmu.c
-index 128f70852bf3..e250fd414b2b 100644
---- a/arch/arm64/mm/mmu.c
-+++ b/arch/arm64/mm/mmu.c
-@@ -725,13 +725,6 @@ int kern_addr_valid(unsigned long addr)
-  	return pfn_valid(pte_pfn(pte));
-  }
-  #ifdef CONFIG_SPARSEMEM_VMEMMAP
--#if !ARM64_SWAPPER_USES_SECTION_MAPS
--int __meminit vmemmap_populate(unsigned long start, unsigned long end, 
-int node,
--		struct vmem_altmap *altmap)
--{
--	return vmemmap_populate_basepages(start, end, node);
--}
--#else	/* !ARM64_SWAPPER_USES_SECTION_MAPS */
-  int __meminit vmemmap_populate(unsigned long start, unsigned long end, 
-int node,
-  		struct vmem_altmap *altmap)
-  {
-@@ -740,6 +733,7 @@ int __meminit vmemmap_populate(unsigned long start, 
-unsigned long end, int node,
-  	pgd_t *pgdp;
-  	pud_t *pudp;
-  	pmd_t *pmdp;
-+	pte_t *ptep;
-
-  	do {
-  		next = pmd_addr_end(addr, end);
-@@ -752,22 +746,36 @@ int __meminit vmemmap_populate(unsigned long 
-start, unsigned long end, int node,
-  		if (!pudp)
-  			return -ENOMEM;
-
-+#if ARM64_SWAPPER_USES_SECTION_MAPS
-  		pmdp = pmd_offset(pudp, addr);
-  		if (pmd_none(READ_ONCE(*pmdp))) {
--			void *p = NULL;
--
--			p = vmemmap_alloc_block_buf(PMD_SIZE, node);
-+			void *p = vmemmap_alloc_block_buf(PMD_SIZE, node);
-  			if (!p)
-  				return -ENOMEM;
-
-  			pmd_set_huge(pmdp, __pa(p), __pgprot(PROT_SECT_NORMAL));
--		} else
--			vmemmap_verify((pte_t *)pmdp, node, addr, next);
-+			continue;
-+		}
-+#else
-+		pmdp = vmemmap_pmd_populate(pmdp, addr, node);
-+		if (!pmdp)
-+			return -ENOMEM;
-+
-+		ptep = pte_offset_kernel(pmdp, addr);
-+		if (pte_none(READ_ONCE(*ptep))) {
-+			void *p = vmemmap_alloc_block_buf(PAGE_SIZE, node);
-+			if (!p)
-+				return -ENOMEM;
-+
-+			set_pte(ptep, pfn_pte(__pa(p) >> PAGE_SHIFT, PAGE_KERNEL));
-+		}
-+#endif
-+		vmemmap_verify((pte_t *)pmdp, node, addr, next);
-  	} while (addr = next, addr != end);
-
-  	return 0;
-  }
--#endif	/* !ARM64_SWAPPER_USES_SECTION_MAPS */
-+
-  void vmemmap_free(unsigned long start, unsigned long end,
-  		struct vmem_altmap *altmap)
-  {
 
