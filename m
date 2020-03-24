@@ -2,74 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78CE4190651
-	for <lists+linux-riscv@lfdr.de>; Tue, 24 Mar 2020 08:31:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D413F190652
+	for <lists+linux-riscv@lfdr.de>; Tue, 24 Mar 2020 08:31:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eR+uDkZlwayIbsgbPeyhEUp7doO9+jBvD/Fsht7osWo=; b=BftXFfJUvh4QQz
-	UfUCETdkiBdQvW1U0nldC6C+wL1jPiHBewp4CtfLCWKS1BLI7JQZ0yRu26TvwHkImxWUjOtw3hNU5
-	OhX4n1/ZOaP2Qg7mIt4LYa49nc2piq/9xJviHxL2JLVVnP8TYKsodPf6VtnsWy/xEyk8dhGmhiEQD
-	dp+bF7UNAqPmY8Z0vfKYRznc5ypOAG7aWKswPxGujDyhf1AdbI4Lwlbco19Hqnq9hYDwgA02jBkI1
-	bGob2dGtl0ole/VJW+PbS0dZOii2aEPR5O2DLwTo2bNQCoQRwgZs7YgTuG1J/hKAREvJClQN1o6fm
-	J61NbASYGFiMOAMg24rw==;
+	List-Owner; bh=54p31XcZy9VY/uTSVV1VAo6tqKUeT0iaZ8T4Yx3sR7Y=; b=P9nePPC5lxgNTY
+	qssfxOG1CX69iuq//Oi+xbLw6kc7FejrDLPwQaG03u41CQbXczfbKcEy/1a+YdSPV4+0nYnlKr6mS
+	AoQB9Yj477RK6LGkngOgo+6iWINSKok5lj8IiI1seSM17sNl0FlG69Gz+gf2JO8cf+S3h+xQgeLTz
+	i5tlCFHVOtYpIipVCCjLHwLgyrsLnaIEUyfgNIhZu+eSjp0WYeZ5nA1jDpD4H7nB6jTsZ5RZC4gCt
+	ixl0qg+cAeFSlcMD+Dlt+y3UcsSrHVnb5/GxtbKMSGmecWeuVZA2ky+lXJJO+rVUp8OHhRa0PRK4D
+	OOqTHaKSpxVUjwcxF65Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGe1x-0004By-QA; Tue, 24 Mar 2020 07:31:21 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1jGe21-0004Fo-Jg; Tue, 24 Mar 2020 07:31:25 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGe1m-0003xy-Av
- for linux-riscv@lists.infradead.org; Tue, 24 Mar 2020 07:31:11 +0000
-Received: by mail-pg1-x543.google.com with SMTP id x7so8604295pgh.5
- for <linux-riscv@lists.infradead.org>; Tue, 24 Mar 2020 00:31:10 -0700 (PDT)
+ id 1jGe1o-00040E-A9
+ for linux-riscv@lists.infradead.org; Tue, 24 Mar 2020 07:31:13 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id l36so1091901pjb.3
+ for <linux-riscv@lists.infradead.org>; Tue, 24 Mar 2020 00:31:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=eR+uDkZlwayIbsgbPeyhEUp7doO9+jBvD/Fsht7osWo=;
- b=XoVHwOunlnnbXskW9yEXFl7rJ9ssINpRGhRVPBNdeKX2ubyzIqYnH7eOAuSMPP47WM
- vpKFBPcMqG36hjx5V9ijQ5XnCZZkQIWI1tZjd3oRZHyBNBWUi8pl2Gt2hBTYwifQ6ftG
- GYYAaKaGAfU6znHtAwVS6nk59jizZ8IkH8NR3GC2jDw2RAP+PoQIb66l7GXWxPSDOk6X
- t86QXLZ+el4hQ8fIoCNxLsTKPO8lBNpFPmrg8J/tRYBogRjl6D83lkUa6ICTHiT9t0Pp
- Qnpj/UoH5ouKUI08kBZfOPHpXugMxTI5KFE/nG2KOA+7/RRz8rf7p8QYWs/H0b7RkqFM
- J+QA==
+ bh=54p31XcZy9VY/uTSVV1VAo6tqKUeT0iaZ8T4Yx3sR7Y=;
+ b=iEXF+9cxq8xsvBHmABzfWbJjn41vgvA6oKrfEkKliYoY7j4OI83K0ywdq9cODsiA2Z
+ v6OCCQIEj68L96a+WLVMjjt6ALm+CsD3j0D4KebwyuwLrDSgVo6P9mlbgoXk12+g8hYq
+ h3HZjhPy1S8gcvtOkooUJKx59NBgXDGs9v2+7xxixk90ggSaHgyDTC4fWJPtMQM6OEfo
+ 1wP2sr8P3cQdvqRJvgyEiw6sOtpJrqjA4X1skfY4hFk5KMDcO1X3+K0WPyoE+Y3vNWP+
+ 0/At0OSgtSowO8eLWPmOYfifL5cMVVVHKwjfRwnTsOBdpeyiYvdATTYSilWaUKS0Ndx7
+ 0slw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=eR+uDkZlwayIbsgbPeyhEUp7doO9+jBvD/Fsht7osWo=;
- b=mx8vzt6o0dfuKAoO6ow5OyTEPEOwP9fnotIkxgjuwjSvTOxfFNoqoWWrrEFdptmMSD
- hOQbkbGKjBJGozoeH3wZcBjyfAqAyMlwDwzyCb+DyXe5qGswldf9wwQXf1dLrd15Twri
- jkVD4qtzBIh2ewLd3jzLQ3e1it6mpmtLXuGfTI656VHqCpugWVpD4h9ixM3tBwoAONm0
- oSfXOPfctPoJ30Mt7e8Yk5Ic0ixvBNJXgTyeLfK3R5CceX6jAJg7fchby/f2zoe+6I1D
- u1YiEESGnlY0JvXOTRRZ+bYvwbBMjkknVEN8XfqdoDiG8KUNzuF4Gfe9J5y+xDv6cI+i
- S/nw==
-X-Gm-Message-State: ANhLgQ3hIVvmndOaWijwWHJK+OK5e0Z6xew/uGV+T74dKXrb+Cf52VaJ
- fvoFAW1VNLylis0J7y9FaMUR3g==
-X-Google-Smtp-Source: ADFU+vtQyavi3WiglYVqrQnZDp3eiLFu1j+s5c3PNQLghbIos9mzlMX/psPU7J6BV8na+AKAN5ODnQ==
-X-Received: by 2002:a63:ff4e:: with SMTP id s14mr26364986pgk.269.1585035069344; 
- Tue, 24 Mar 2020 00:31:09 -0700 (PDT)
+ bh=54p31XcZy9VY/uTSVV1VAo6tqKUeT0iaZ8T4Yx3sR7Y=;
+ b=VOgq6uyxPUA6Hc8BlzB6txrbMHQJlOeapw1aR5ca/EFrcOflOLsOdBDEW1EWo2IYmm
+ KCiXixrfaGe47Rv3OICOQNGIFm2J4W0NMx4fn5R0sHGeBZlg4n0IToWLIBwrfEBmKCSp
+ JwRyBqV0GGMlzbDNSQOVWgIgYqUTV8JlZbldOdY3c5q28svRIw3LFxyiX3lNLUva5+7C
+ jiA9bKmtpWNC8t0hZKXq2QvQyqYcgTM2xxATCuGiXyMpK0sNFH2l2Ep+IaE99GpaccYp
+ gCQ8Jz3Pb7KWBM6Zdhin6SDgdY9ZW9RUMucmXquj6yLw1Lhia97qo9/XJFLrFQWdDjoA
+ W7ZA==
+X-Gm-Message-State: ANhLgQ0ESjh0we+M/LNJVdIJoxNdJ4bEiDVbw9lqwVA7zyyXxAtD9n2n
+ H++onPHFcrw/ckSUjV+ggVEdOg==
+X-Google-Smtp-Source: ADFU+vv2b4TrS7mtJtADgnbvhx9fw/lDSwAZQDta7SAXFjV1VN2AFgelMDsi76samQ/8v1L0pkUKOA==
+X-Received: by 2002:a17:90a:cc14:: with SMTP id
+ b20mr3916243pju.75.1585035071082; 
+ Tue, 24 Mar 2020 00:31:11 -0700 (PDT)
 Received: from hsinchu02.internal.sifive.com
  (220-132-236-182.HINET-IP.hinet.net. [220.132.236.182])
- by smtp.gmail.com with ESMTPSA id i187sm15124648pfg.33.2020.03.24.00.31.07
+ by smtp.gmail.com with ESMTPSA id i187sm15124648pfg.33.2020.03.24.00.31.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2020 00:31:09 -0700 (PDT)
+ Tue, 24 Mar 2020 00:31:10 -0700 (PDT)
 From: Zong Li <zong.li@sifive.com>
 To: palmer@dabbelt.com, paul.walmsley@sifive.com, alex@ghiti.fr,
  linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH RFC 7/8] riscv/kaslr: add cmdline support to disable KASLR
-Date: Tue, 24 Mar 2020 15:30:52 +0800
-Message-Id: <292e5511fff99d564c947c9ee71be367be947f55.1584352425.git.zong.li@sifive.com>
+Subject: [PATCH RFC 8/8] riscv/kaslr: dump out kernel offset information on
+ panic
+Date: Tue, 24 Mar 2020 15:30:53 +0800
+Message-Id: <ea7c01b7c969ddc269a8f94cc9646fc48b7ff790.1584352425.git.zong.li@sifive.com>
 X-Mailer: git-send-email 2.25.2
 In-Reply-To: <cover.1584352425.git.zong.li@sifive.com>
 References: <cover.1584352425.git.zong.li@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_003110_401528_3A2E70ED 
-X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-CacheID: sfid-20200324_003112_393406_AA7572FD 
+X-CRM114-Status: UNSURE (   7.69  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
@@ -77,7 +79,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1043 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -103,65 +105,44 @@ Cc: Zong Li <zong.li@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Provide a cmdline parameter 'nokaslr' to disable KASLR.
+Dump out the kernel offset when panic to help debug kernel.
 
 Signed-off-by: Zong Li <zong.li@sifive.com>
 ---
- arch/riscv/kernel/kaslr.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ arch/riscv/kernel/setup.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
-index 0bd30831c455..6920727e4b4a 100644
---- a/arch/riscv/kernel/kaslr.c
-+++ b/arch/riscv/kernel/kaslr.c
-@@ -156,6 +156,36 @@ static __init u64 kaslr_get_seed(void)
- 	return ret;
+diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
+index 913d25e4b9fa..3ce50bf628ba 100644
+--- a/arch/riscv/kernel/setup.c
++++ b/arch/riscv/kernel/setup.c
+@@ -85,3 +85,26 @@ void __init setup_arch(char **cmdline_p)
+ 
+ 	riscv_fill_hwcap();
  }
- 
-+static __init const u8 *kaslr_get_cmdline(void)
++
++static int dump_kernel_offset(struct notifier_block *self, unsigned long v,
++			      void *p)
 +{
-+	static const u8 default_cmdline[] __initconst = CONFIG_CMDLINE;
++	pr_emerg("Kernel Offset: 0x%lx from 0x%lx\n",
++		 get_kaslr_offset(), PAGE_OFFSET);
 +
-+	if (!IS_ENABLED(CONFIG_CMDLINE_FORCE)) {
-+		int node;
-+		const u8 *prop;
-+
-+		node = fdt_path_offset(dtb_early_va, "/chosen");
-+		if (node < 0)
-+			goto out;
-+
-+		prop = fdt_getprop(dtb_early_va, node, "bootargs", NULL);
-+		if (!prop)
-+			goto out;
-+
-+		return prop;
-+	}
-+
-+out:
-+	return default_cmdline;
++	return 0;
 +}
 +
-+static __init bool kaslr_is_disabled(void)
++static struct notifier_block kernel_offset_notifier = {
++	.notifier_call = dump_kernel_offset
++};
++
++static int __init register_kernel_offset_dumper(void)
 +{
-+	const u8 *cmdline = kaslr_get_cmdline();
++	if (IS_ENABLED(CONFIG_RANDOMIZE_BASE) && get_kaslr_offset() > 0)
++		atomic_notifier_chain_register(&panic_notifier_list,
++					       &kernel_offset_notifier);
 +
-+	return strstr(cmdline, "nokaslr") != NULL;
++	return 0;
 +}
-+
- static __init bool is_overlap(uintptr_t s1, uintptr_t e1, uintptr_t s2,
- 			      uintptr_t e2)
- {
-@@ -379,6 +409,10 @@ uintptr_t __init kaslr_early_init(void)
- 	if (!seed)
- 		return 0;
- 
-+	/* Check whether disable kaslr by cmdline. */
-+	if (kaslr_is_disabled())
-+		return 0;
-+
- 	/* Get the random number for kaslr offset. */
- 	kaslr_offset = get_random_offset(seed, kernel_size);
- 
++__initcall(register_kernel_offset_dumper);
 -- 
 2.25.1
 
