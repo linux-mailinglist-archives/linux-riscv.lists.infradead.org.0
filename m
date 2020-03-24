@@ -2,81 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E554F190301
-	for <lists+linux-riscv@lfdr.de>; Tue, 24 Mar 2020 01:43:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E538A1903E6
+	for <lists+linux-riscv@lfdr.de>; Tue, 24 Mar 2020 04:42:18 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5XccjSmzQSYluJiyPzbiNHYe0YLLyvddDurt0q9/XDU=; b=Ehyk4Xvt6M4s+so5EFO8x2eLF
-	Ea+bbhSmcyoykHSjFsFWM06J0Gab1WeAJRUSJUtqedCBHqe1CtpGMPsgdLfUBFObmtT1o4o+yxG6l
-	PtOw9d7L689qhT+QFPmq2ce8BSf15Q6qPw/GyMZdvBqR4dr8peCnmCxQdlONl9sUkMy87AprkP+mL
-	DIoX0dbXdfZm2dHOIqh2v1OVyUQ4fWViqNp4BE8h1LJzYsaTtNfrnUQOSqwX5JDTlsa2PVdcOHVMu
-	NRWaCCGd8JFO6tvR26cbiEEoOqUEj5wZHQEJRlYdTbrwGsih1rbNaUL5Tr8tjM2bJFdPGr5AETQu5
-	c2P+18w7Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wTDuayLx6ioghEsfR5reEeU94/F6Nc42mXv/smgh6Zk=; b=o2csF66/3fxOWF
+	4PDztkdYp1m+glVTqN4cnKSIDUovP46/EuWXqjDmS7IzLL/OV5VpJOUv76ziGaWBJ41+cDImmLpcc
+	GWc6HSPRnZOFgzMbDhU4YcJYyC2Camw0MOh75J7JWGEuh4NOw9cDtzZ9vfEXMQmZtdxNQSczNgVcX
+	pOx6rGlL5jPDt9QLxaF2BhP17NPll3chy1SX0Bj+Q5MIh2u1dEy5GSA4cE5bNCt33jA07+2CkMhIR
+	R0RQG3t2Wqk0p4XUu9ngq+acYTYoLRFOCIrSfI2PCTWIjpeFl+ZZMQB1D1wlXCfHunNjsomwNwzJJ
+	yTWLBdj0CPUsiXxqZQww==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGXf5-0007w0-Pd; Tue, 24 Mar 2020 00:43:19 +0000
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
+	id 1jGaSC-0001on-MN; Tue, 24 Mar 2020 03:42:12 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGXf1-0007v3-IA
- for linux-riscv@lists.infradead.org; Tue, 24 Mar 2020 00:43:17 +0000
-Received: by mail-oi1-x241.google.com with SMTP id e4so3294216oig.9
- for <linux-riscv@lists.infradead.org>; Mon, 23 Mar 2020 17:43:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5XccjSmzQSYluJiyPzbiNHYe0YLLyvddDurt0q9/XDU=;
- b=i0k4De3b34CqM8gnM5JGiwY0ry7/ZrLpmzktSW0KiYPpha1vXvZ6wse2JF4KOZxVnD
- EvQKDMJyxbQBAohPuAtor1+p5fdwNmCCleq9CZv5MH/K0Typsq6VX/h+HiBxyMSITLFI
- 1zE9FFUnbH8lRcKH3LGjUdaDuM7j39TaZnPdg+9Irg+53LlaHdNuQO8FXCXwTEJNtQWf
- Hx25W6E5EVV7YjtXB8bV9UsFQXdrV3gzCscw1XOQnO5vKf2wtgnduAlQ6d/npzVosWTQ
- wsFC0bSpKMWWzljnO8WmBULkYUJ3j2VxltB1tjkDBKGyMg3Di8aGhK8E+knTKXDDf4ds
- 2eRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5XccjSmzQSYluJiyPzbiNHYe0YLLyvddDurt0q9/XDU=;
- b=UvyHNjK5BytPL1+BLjB8quls/RxTpJ1oK3IcKFPLb70I0xgT2yu8cQT451sw3ONeyF
- LXnZPfI9Uj7J7br5Q/bEVj/t/WseuRjmaWjNZg0eycFzeiHc362JGwFsjWEny8LAkEDs
- LbP5BxvuqWz8uNrBa0Z5D+zY55kVpe35tvwGbL8oDtfdwFreCNbBsdYcWGMsh20bswMC
- 0PnFFiavqe5bdcWNz4XdY2liH2QhWnmjIksNG2i412hUiZcBfJDmadZsxiRrN122BmRt
- wiDcUIWpI61rWrlmbkEGRkVdMdJe/AlekC7nNjL6maP6lAEQEgXrZw/unrvadbZcYcYc
- xytA==
-X-Gm-Message-State: ANhLgQ2Zqrs7U8siXm5/lZQMdcdfwGVh/sjUNmDHEwRKUDZVzgXH3ruy
- aI6yYPtwM3Vl8qaUBTuuM6vAyWdRJsVU/9LhGQv9Lw==
-X-Google-Smtp-Source: ADFU+vtYBVk3tWWGsOMAMHUFEJFhvxQroU9ZV5f98ByE8nUcZKV6aGcbbi70XDgVtV9LxWY6a+Fz0IqYMsBbQbFZO5E=
-X-Received: by 2002:aca:a857:: with SMTP id r84mr1597815oie.65.1585010593973; 
- Mon, 23 Mar 2020 17:43:13 -0700 (PDT)
+ id 1jGaS8-0001nX-4y
+ for linux-riscv@lists.infradead.org; Tue, 24 Mar 2020 03:42:09 +0000
+Received: from mail-lf1-f44.google.com (mail-lf1-f44.google.com
+ [209.85.167.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 09DE820769
+ for <linux-riscv@lists.infradead.org>; Tue, 24 Mar 2020 03:42:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585021324;
+ bh=eD/7lez5RjSHbjSw0Y5Fm/cZ09IMXDWA/PZJtTGKvnc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=XYbiXo5VhGGG8CzR45gwZ6KNn6ygtZOLlh4YxI+GYWbFIDRYRSBOR+yzUqUHyeNnL
+ M+esO/DlPfVrfNKTcKAQgy7ZchK0fW8V4Wv6D9OvxcrDCIjllj6TZUpZMtXXYHpk6u
+ n/TGP8X/Bg5TQBt2k9yhiOFQ59JDPyN1GRPF10TY=
+Received: by mail-lf1-f44.google.com with SMTP id v4so8338294lfo.12
+ for <linux-riscv@lists.infradead.org>; Mon, 23 Mar 2020 20:42:03 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ2xgcePtn4zDSCM2xRutg55szyiiIrw0QKPp9WsgbtpaqHeMsGo
+ 4s6kNjRRq7tuc5miaGqys+2lIaHZ3WXK40JvX5g=
+X-Google-Smtp-Source: ADFU+vvWDrrUv0O+Q0dLmjy3S2LM0kVDmOFhPTHIEcXZlEzWAMg7stKCAQZDaF+oz4yOQjcuPfRqFc4bmbaWQU2qgkA=
+X-Received: by 2002:ac2:4858:: with SMTP id 24mr5708012lfy.135.1585021322056; 
+ Mon, 23 Mar 2020 20:42:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200318220634.32100-1-mike.kravetz@oracle.com>
- <20200318220634.32100-5-mike.kravetz@oracle.com>
-In-Reply-To: <20200318220634.32100-5-mike.kravetz@oracle.com>
-From: Mina Almasry <almasrymina@google.com>
-Date: Mon, 23 Mar 2020 17:43:03 -0700
-Message-ID: <CAHS8izOhjvNVDXsx_SqP_oUQhCw-i_xcG9hxbvV86fFDeY_SAw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] hugetlbfs: clean up command line processing
-To: Mike Kravetz <mike.kravetz@oracle.com>
+References: <20200308094954.13258-1-guoren@kernel.org>
+ <CAHCEehKrzv0TozP7x9Vaq1t+Utpvqfgt=wo7eXXp0HRUKFO=WQ@mail.gmail.com>
+In-Reply-To: <CAHCEehKrzv0TozP7x9Vaq1t+Utpvqfgt=wo7eXXp0HRUKFO=WQ@mail.gmail.com>
+From: Guo Ren <guoren@kernel.org>
+Date: Tue, 24 Mar 2020 11:41:50 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTRspXLhj1-_y6Rye7sbk2hZDEFf_AM3jcAc-=qKPru=VA@mail.gmail.com>
+Message-ID: <CAJF2gTRspXLhj1-_y6Rye7sbk2hZDEFf_AM3jcAc-=qKPru=VA@mail.gmail.com>
+Subject: Re: [RFC PATCH V3 00/11] riscv: Add vector ISA support
+To: Greentime Hu <greentime.hu@sifive.com>, Dave Martin <Dave.Martin@arm.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200323_174315_630942_E3E4050D 
-X-CRM114-Status: GOOD (  33.11  )
-X-Spam-Score: -15.7 (---------------)
+X-CRM114-CacheID: sfid-20200323_204208_234374_4CB68243 
+X-CRM114-Status: GOOD (  19.95  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-15.7 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:241 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
- -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
- white-list
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -84,8 +74,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
- Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,267 +86,133 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Linux-MM <linux-mm@kvack.org>,
- Paul Mackerras <paulus@samba.org>, sparclinux@vger.kernel.org,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Vasily Gorbik <gor@linux.ibm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- open list <linux-kernel@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- "David S . Miller" <davem@davemloft.net>
+Cc: linux-arch <linux-arch@vger.kernel.org>, Guo Ren <guoren@linux.alibaba.com>,
+ Arnd Bergmann <arnd@arndb.de>, Anup Patel <Anup.Patel@wdc.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-csky@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Liu Zhiwei <zhiwei_liu@c-sky.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Mar 18, 2020 at 3:07 PM Mike Kravetz <mike.kravetz@oracle.com> wrote:
->
-> With all hugetlb page processing done in a single file clean up code.
+Hi Greentime,
 
-Now that all hugepage page processing is done in a single file, clean
-up the code.
+On Mon, Mar 23, 2020 at 12:00 PM Greentime Hu <greentime.hu@sifive.com> wro=
+te:
+>
+> <guoren@kernel.org> =E6=96=BC 2020=E5=B9=B43=E6=9C=888=E6=97=A5 =E9=80=B1=
+=E6=97=A5 =E4=B8=8B=E5=8D=885:50=E5=AF=AB=E9=81=93=EF=BC=9A
+> >
+> > From: Guo Ren <guoren@linux.alibaba.com>
+> >
+> > The implementation follow the RISC-V "V" Vector Extension draft v0.8 wi=
+th
+> > 128bit-vlen and it's based on linux-5.6-rc3 and tested with qemu [1].
+> >
+> > The patch implement basic context switch, sigcontext save/restore and
+> > ptrace interface with a new regset NT_RISCV_VECTOR. Only fixed 128bit-v=
+len
+> > is implemented. We need to discuss about vlen-size for libc sigcontext =
+and
+> > ptrace (the maximum size of vlen is unlimited in spec).
+> >
+> > Puzzle:
+> > Dave Martin has talked "Growing CPU register state without breaking ABI=
+" [2]
+> > before, and riscv also met vlen size problem. Let's discuss the common =
+issue
+> > for all architectures and we need a better solution for unlimited vlen.
+> >
+> > Any help are welcomed :)
+> >
+> >  1: https://github.com/romanheros/qemu.git branch:vector-upstream-v3
+> >  2: https://blog.linuxplumbersconf.org/2017/ocw/sessions/4671.html
+> >
+>
+> Hi Ren,
+>
+> Thanks for the patch. I have some ideas about the vlen and sigcontext.
+> Since vlen may not be fixed of each RISC-V cores and it could be super
+> big, it means we have to allocate the memory dynamically.
+> In kernel space, we may use a pointer in the context data structure.
+> Something like https://github.com/torvalds/linux/blob/master/arch/arm64/k=
+ernel/fpsimd.c#L498
+> In user space, we need to let user space know the length of vector
+> registers. We may create a special header in sigcontext. Something
+> like https://github.com/torvalds/linux/blob/master/arch/arm64/include/uap=
+i/asm/sigcontext.h#L36
+> https://github.com/torvalds/linux/blob/master/arch/arm64/include/uapi/asm=
+/sigcontext.h#L127
 
-> - Make code match desired semantics
->   - Update documentation with semantics
-> - Make all warnings and errors messages start with 'HugeTLB:'.
-> - Consistently name command line parsing routines.
-> - Add comments to code
->   - Describe some of the subtle interactions
->   - Describe semantics of command line arguments
->
-> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
-> ---
->  Documentation/admin-guide/mm/hugetlbpage.rst | 26 +++++++
->  mm/hugetlb.c                                 | 78 +++++++++++++++-----
->  2 files changed, 87 insertions(+), 17 deletions(-)
->
-> diff --git a/Documentation/admin-guide/mm/hugetlbpage.rst b/Documentation/admin-guide/mm/hugetlbpage.rst
-> index 1cc0bc78d10e..afc8888f33c3 100644
-> --- a/Documentation/admin-guide/mm/hugetlbpage.rst
-> +++ b/Documentation/admin-guide/mm/hugetlbpage.rst
-> @@ -100,6 +100,32 @@ with a huge page size selection parameter "hugepagesz=<size>".  <size> must
->  be specified in bytes with optional scale suffix [kKmMgG].  The default huge
->  page size may be selected with the "default_hugepagesz=<size>" boot parameter.
->
-> +Hugetlb boot command line parameter semantics
-> +hugepagesz - Specify a huge page size.  Used in conjunction with hugepages
-> +       parameter to preallocate a number of huge pages of the specified
-> +       size.  Hence, hugepagesz and hugepages are typically specified in
-> +       pairs such as:
-> +               hugepagesz=2M hugepages=512
-> +       hugepagesz can only be specified once on the command line for a
-> +       specific huge page size.  Valid huge page sizes are architecture
-> +       dependent.
-> +hugepages - Specify the number of huge pages to preallocate.  This typically
-> +       follows a valid hugepagesz parameter.  However, if hugepages is the
-> +       first or only hugetlb command line parameter it specifies the number
-> +       of huge pages of default size to allocate.  The number of huge pages
-> +       of default size specified in this manner can be overwritten by a
-> +       hugepagesz,hugepages parameter pair for the default size.
-> +       For example, on an architecture with 2M default huge page size:
-> +               hugepages=256 hugepagesz=2M hugepages=512
-> +       will result in 512 2M huge pages being allocated.  If a hugepages
-> +       parameter is preceded by an invalid hugepagesz parameter, it will
-> +       be ignored.
-> +default_hugepagesz - Specify the default huge page size.  This parameter can
-> +       only be specified on the command line.  No other hugetlb command line
-> +       parameter is associated with default_hugepagesz.  Therefore, it can
-> +       appear anywhere on the command line.  Valid default huge page size is
-> +       architecture dependent.
+As you've mentioned codes above, arm64 use a fixed pre-allocate
+sigcontext with a large space:
 
-Maybe specify what happens/should happen in a case like:
+struct sigcontext {
+        __u64 fault_address;
+        /* AArch64 registers */
+        __u64 regs[31];
+        __u64 sp;
+        __u64 pc;
+        __u64 pstate;
+        /* 4K reserved for FP/SIMD state and future expansion */
+        __u8 __reserved[4096] __attribute__((__aligned__(16)));
+};
 
-hugepages=100 default_hugepagesz=1G
+There are several contexts in the space above: fpsimd, esr, sve, extra
+__reserved[4096]:
+ *      0x210           fpsimd_context
+ *       0x10           esr_context
+ *      0x8a0           sve_context (vl <=3D 64) (optional)
+ *       0x20           extra_context (optional)
+ *       0x10           terminator (null _aarch64_ctx)
+ *      0x510           (reserved for future allocation)
 
-Does that allocate 100 2MB pages or 100 1G pages? Assuming the default
-size is 2MB.
+0x210 + 0x10 + 0x8a0 + 0x20 + 0x10 + 0x510 =3D 4096
 
-Also, regarding Randy's comment. It may be nice to keep these docs in
-one place only, so we don't have to maintain 2 docs in sync.
+The max vl is 64 in arm sve, but for riscv want an unlimited size
+solution and more extensible/flexible solution, such as dynamic
+allocating user-space context with hwinfo. But there is no ref
+solution around all arches.
 
+There is a choice puzzle for me:
+1) A pre-allocated&limited reserved size of sigcontext, the solution
+has been practiced and we just need to determine the size.
+2) Dynamically allocated/unlimited size of sigcontext, but may deal
+with glibc, libgcc infrastructure on abi view.
 
-> +
->  When multiple huge page sizes are supported, ``/proc/sys/vm/nr_hugepages``
->  indicates the current number of pre-allocated huge pages of the default size.
->  Thus, one can use the following command to dynamically allocate/deallocate
-> diff --git a/mm/hugetlb.c b/mm/hugetlb.c
-> index cc85b4f156ca..2b9bf01db2b6 100644
-> --- a/mm/hugetlb.c
-> +++ b/mm/hugetlb.c
-> @@ -2954,7 +2954,7 @@ static void __init hugetlb_sysfs_init(void)
->                 err = hugetlb_sysfs_add_hstate(h, hugepages_kobj,
->                                          hstate_kobjs, &hstate_attr_group);
->                 if (err)
-> -                       pr_err("Hugetlb: Unable to add hstate %s", h->name);
-> +                       pr_err("HugeTLB: Unable to add hstate %s", h->name);
->         }
->  }
->
-> @@ -3058,7 +3058,7 @@ static void hugetlb_register_node(struct node *node)
->                                                 nhs->hstate_kobjs,
->                                                 &per_node_hstate_attr_group);
->                 if (err) {
-> -                       pr_err("Hugetlb: Unable to add hstate %s for node %d\n",
-> +                       pr_err("HugeTLB: Unable to add hstate %s for node %d\n",
->                                 h->name, node->dev.id);
->                         hugetlb_unregister_node(node);
->                         break;
-> @@ -3109,19 +3109,35 @@ static int __init hugetlb_init(void)
->         if (!hugepages_supported())
->                 return 0;
->
-> -       if (!size_to_hstate(default_hstate_size)) {
-> -               if (default_hstate_size != 0) {
-> -                       pr_err("HugeTLB: unsupported default_hugepagesz %lu. Reverting to %lu\n",
-> -                              default_hstate_size, HPAGE_SIZE);
-> -               }
-> -
-> +       /*
-> +        * Make sure HPAGE_SIZE (HUGETLB_PAGE_ORDER) hstate exists.  Some
-> +        * architectures depend on setup being done here.
-> +        *
-> +        * If a valid default huge page size was specified on the command line,
-> +        * add associated hstate if necessary.  If not, set default_hstate_size
-> +        * to default size.  default_hstate_idx is used at runtime to identify
-> +        * the default huge page size/hstate.
-> +        */
-> +       hugetlb_add_hstate(HUGETLB_PAGE_ORDER);
-> +       if (default_hstate_size)
-> +               hugetlb_add_hstate(ilog2(default_hstate_size) - PAGE_SHIFT);
-> +       else
->                 default_hstate_size = HPAGE_SIZE;
-> -               hugetlb_add_hstate(HUGETLB_PAGE_ORDER);
-> -       }
->         default_hstate_idx = hstate_index(size_to_hstate(default_hstate_size));
-> +
-> +       /*
-> +        * default_hstate_max_huge_pages != 0 indicates a count (hugepages=)
-> +        * specified before a size (hugepagesz=).  Use this count for the
-> +        * default huge page size, unless a specific value was specified for
-> +        * this size in a hugepagesz/hugepages pair.
-> +        */
->         if (default_hstate_max_huge_pages) {
->                 if (!default_hstate.max_huge_pages)
-> -                       default_hstate.max_huge_pages = default_hstate_max_huge_pages;
-> +                       default_hstate.max_huge_pages =
-> +                               default_hstate_max_huge_pages;
-> +               else
-> +                       pr_warn("HugeTLB: First hugepages=%lu kB ignored\n",
-> +                               default_hstate_max_huge_pages);
->         }
->
->         hugetlb_init_hstates();
-> @@ -3174,20 +3190,27 @@ void __init hugetlb_add_hstate(unsigned int order)
->         parsed_hstate = h;
->  }
->
-> -static int __init hugetlb_nrpages_setup(char *s)
-> +/*
-> + * hugepages command line processing
-> + * hugepages must normally follows a valid hugepagsz specification.  If not,
+Before the next stage of work, we need to choose the direction and
+it's also a common puzzle for all architectures with extending
+vector/simd like co-processor solutions.
 
-'hugepages must' or 'hugepages normally follows'
-> + * ignore the hugepages value.  hugepages can also be the first huge page
-> + * command line option in which case it specifies the number of huge pages
-> + * for the default size.
-> + */
-> +static int __init hugepages_setup(char *s)
->  {
->         unsigned long *mhp;
->         static unsigned long *last_mhp;
->
->         if (!parsed_valid_hugepagesz) {
-> -               pr_warn("hugepages = %s preceded by "
-> +               pr_warn("HugeTLB: hugepages = %s preceded by "
->                         "an unsupported hugepagesz, ignoring\n", s);
->                 parsed_valid_hugepagesz = true;
->                 return 1;
->         }
->         /*
-> -        * !hugetlb_max_hstate means we haven't parsed a hugepagesz= parameter yet,
-> -        * so this hugepages= parameter goes to the "default hstate".
-> +        * !hugetlb_max_hstate means we haven't parsed a hugepagesz= parameter
-> +        * yet, so this hugepages= parameter goes to the "default hstate".
->          */
->         else if (!hugetlb_max_hstate)
->                 mhp = &default_hstate_max_huge_pages;
+ps:
+Have a look on Dave's patch, he just follow the arm64 fixed
+pre-allocate limited sigcontext infrastructure:
+(I don't think it's a proper example for riscv vector design.)
 
-We don't set parsed_valid_hugepagesz to false at the end of this
-function, shouldn't we? Parsing a hugepages= value should 'consume' a
-previously defined hugepagesz= value, so that this is invalid IIUC:
+commit d0b8cd3187889476144bd9b13bf36a932c3e7952
+Author: Dave Martin <Dave.Martin@arm.com>
+Date:   Tue Oct 31 15:51:03 2017 +0000
 
-hugepagesz=x hugepages=z hugepages=y
+arm64/sve: Signal frame and context structure definition
 
-> @@ -3195,7 +3218,8 @@ static int __init hugetlb_nrpages_setup(char *s)
->                 mhp = &parsed_hstate->max_huge_pages;
 >
->         if (mhp == last_mhp) {
-> -               pr_warn("hugepages= specified twice without interleaving hugepagesz=, ignoring\n");
-> +               pr_warn("HugeTLB: hugepages= specified twice without interleaving hugepagesz=, ignoring hugepages=%s\n",
-> +                       s);
->                 return 1;
->         }
+> For the implementation in makecontext, swapcontext, getcontext,
+> setcontext of glibc, we may not need to port because it seems to be
+> deprecated?
+> https://stackoverflow.com/questions/4298986/is-there-something-to-replace=
+-the-ucontext-h-functions
+Agree, we needn't deal with them at beginning.
+
 >
-> @@ -3214,8 +3238,15 @@ static int __init hugetlb_nrpages_setup(char *s)
->
->         return 1;
->  }
-> -__setup("hugepages=", hugetlb_nrpages_setup);
-> +__setup("hugepages=", hugepages_setup);
->
-> +/*
-> + * hugepagesz command line processing
-> + * A specific huge page size can only be specified once with hugepagesz.
-> + * hugepagesz is followed by hugepages on the commnad line.  The global
-> + * variable 'parsed_valid_hugepagesz' is used to determine if prior
-> + * hugepagesz argument was valid.
-> + */
->  static int __init hugepagesz_setup(char *s)
->  {
->         unsigned long long size;
-> @@ -3230,16 +3261,23 @@ static int __init hugepagesz_setup(char *s)
->         }
->
->         if (size_to_hstate(size)) {
-> +               parsed_valid_hugepagesz = false;
->                 pr_warn("HugeTLB: hugepagesz %s specified twice, ignoring\n",
->                         saved_s);
->                 return 0;
->         }
->
-> +       parsed_valid_hugepagesz = true;
->         hugetlb_add_hstate(ilog2(size) - PAGE_SHIFT);
->         return 1;
->  }
->  __setup("hugepagesz=", hugepagesz_setup);
->
-> +/*
-> + * default_hugepagesz command line input
-> + * Only one instance of default_hugepagesz allowed on command line.  Do not
-> + * add hstate here as that will confuse hugepagesz/hugepages processing.
-> + */
->  static int __init default_hugepagesz_setup(char *s)
->  {
->         unsigned long long size;
-> @@ -3252,6 +3290,12 @@ static int __init default_hugepagesz_setup(char *s)
->                 return 0;
->         }
->
-> +       if (default_hstate_size) {
-> +               pr_err("HugeTLB: default_hugepagesz previously specified, ignoring %s\n",
-> +                       saved_s);
-> +               return 0;
-> +       }
-> +
->         default_hstate_size = size;
->         return 1;
->  }
-> --
-> 2.24.1
->
->
+> For the unwinding implementation of libgcc since it needs to know the
+> meaning of data structure is  changed. It also need to be port.
+Yes, it'll break the abi and such as the elf with -fexception compiled
+will be broken.
+
+--=20
+Best Regards
+ Guo Ren
+
+ML: https://lore.kernel.org/linux-csky/
 
