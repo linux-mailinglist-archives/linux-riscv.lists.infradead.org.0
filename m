@@ -2,68 +2,152 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A29EE191F7C
-	for <lists+linux-riscv@lfdr.de>; Wed, 25 Mar 2020 03:59:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ACB6192457
+	for <lists+linux-riscv@lfdr.de>; Wed, 25 Mar 2020 10:39:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CEo4kIh+b9n9aigulsQ/uh/LmvPOPG1TWQ5TR7NDDBU=; b=bYl94IyNuD8AQe
-	xfrHeBAVEt9aoOwXJ47uZngEBKOt5s0DOjpzYgBKAulx60ozHTXf6tlQ4TRyXDa5SKkPcW1HOI0YR
-	c/JNFosA9G0ymDj/ijFv3tWS6xnCyjNNd4P61nYdF5pn9nCpHkLn7qdEt0OEtouR+JK6jRzrdRtOM
-	ttQC/Mqg/9NivoSwypGFscfRCPX0gf1JbyVYt27Zvg4r+iStkgKUQnBELUPoMrcp3a5djQb66FwJI
-	AA9JCCO0o9zLC/l5k9UJHlAGAwk2Z4m94EdlmykhpitBaeV69u+jznNPDyF1Lr4juhGQHIAGDhCB0
-	ndI+I51Wscj/OsW/944g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4EAaMb3DPj4Ty+ZQwXMVuoFa0x4GGovqsmNd1ko0IuI=; b=M17M4IIOU6BiCVMmaVMbAyFK1
+	0cAmVNdEF3T8ZKCZeoJ3SBTMD+lH46LOy8UJZysNQW/o7Xr6WPEYGOS6r1qyi9T3AX0Y0fz/vLEl4
+	OAF/g/bs/fMgykcUTrPNLYGNHL/eWLQ5cVM0cg06X662YueflHAxmq9N+ERjpc5Ingg7zW2I2h1M4
+	1gDsgVVLW5XRIuCW0kjkin79F2UwLaBV1IW5mN4h2Yn2HtoFRJ214yav/lfWCyq5WJxUySEGwwPG7
+	ZFVLRcb43c+gQ8n80CzW1yj0BweFyL8pL77DP6uiVgtb8DJmExoER/T4q17nhEtss5ItPtGKbXq53
+	lSjyzLaXQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGwG5-0007EZ-SW; Wed, 25 Mar 2020 02:59:09 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
+	id 1jH2V2-0000wd-HT; Wed, 25 Mar 2020 09:39:00 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGwFr-00074k-Nq; Wed, 25 Mar 2020 02:58:57 +0000
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 2FC8EC61B4371320B3C4;
- Wed, 25 Mar 2020 10:58:52 +0800 (CST)
-Received: from [10.173.228.124] (10.173.228.124) by smtp.huawei.com
- (10.3.19.211) with Microsoft SMTP Server (TLS) id 14.3.487.0; Wed, 25 Mar
- 2020 10:58:47 +0800
+ id 1jH2Uy-0000vS-9J
+ for linux-riscv@lists.infradead.org; Wed, 25 Mar 2020 09:38:57 +0000
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 02P9atgW017380
+ for <linux-riscv@lists.infradead.org>; Wed, 25 Mar 2020 05:38:54 -0400
+Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2ywf2j25xq-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Wed, 25 Mar 2020 05:38:54 -0400
+Received: from localhost
+ by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <borntraeger@de.ibm.com>;
+ Wed, 25 Mar 2020 09:38:49 -0000
+Received: from b06avi18626390.portsmouth.uk.ibm.com (9.149.26.192)
+ by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Wed, 25 Mar 2020 09:38:43 -0000
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id 02P9bglF50790860
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 25 Mar 2020 09:37:42 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C0E794C04E;
+ Wed, 25 Mar 2020 09:38:44 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 846CB4C046;
+ Wed, 25 Mar 2020 09:38:41 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.145.106.7])
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Wed, 25 Mar 2020 09:38:41 +0000 (GMT)
 Subject: Re: [PATCH 1/4] hugetlbfs: add arch_hugetlb_valid_size
-To: Mike Kravetz <mike.kravetz@oracle.com>, Dave Hansen
- <dave.hansen@intel.com>, <linux-mm@kvack.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linuxppc-dev@lists.ozlabs.org>, <linux-riscv@lists.infradead.org>,
- <linux-s390@vger.kernel.org>, <sparclinux@vger.kernel.org>,
- <linux-doc@vger.kernel.org>
+To: "Longpeng (Mike, Cloud Infrastructure Service Product Dept.)"
+ <longpeng2@huawei.com>, Mike Kravetz <mike.kravetz@oracle.com>,
+ Dave Hansen <dave.hansen@intel.com>, linux-mm@kvack.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org,
+ linux-s390@vger.kernel.org, sparclinux@vger.kernel.org,
+ linux-doc@vger.kernel.org
 References: <20200318220634.32100-1-mike.kravetz@oracle.com>
  <20200318220634.32100-2-mike.kravetz@oracle.com>
  <831a0773-1ba6-4d72-44b9-7472123b8528@intel.com>
  <5aceea6a-8dc0-a44b-80c6-94511b5c75ca@oracle.com>
-From: "Longpeng (Mike, Cloud Infrastructure Service Product Dept.)"
- <longpeng2@huawei.com>
-Message-ID: <5ea6313e-ec4f-a043-632b-ef2901ce2cc9@huawei.com>
-Date: Wed, 25 Mar 2020 10:58:46 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ <5ea6313e-ec4f-a043-632b-ef2901ce2cc9@huawei.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
+ 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
+ nS4h0HDFPrrp1C2EMVYIQrMokWvlFZbCpsdYbBI=
+Date: Wed, 25 Mar 2020 10:38:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <5aceea6a-8dc0-a44b-80c6-94511b5c75ca@oracle.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <5ea6313e-ec4f-a043-632b-ef2901ce2cc9@huawei.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.228.124]
-X-CFilter-Loop: Reflected
+X-TM-AS-GCONF: 00
+x-cbid: 20032509-0008-0000-0000-000003638BC7
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 20032509-0009-0000-0000-00004A84FAF9
+Message-Id: <505b3d0a-b754-ba56-0b98-b7551ef414be@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.645
+ definitions=2020-03-25_01:2020-03-23,
+ 2020-03-25 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 impostorscore=0
+ suspectscore=0 adultscore=0 priorityscore=1501 spamscore=0 phishscore=0
+ malwarescore=0 mlxlogscore=860 clxscore=1015 mlxscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2003250077
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_195855_947760_75767271 
-X-CRM114-Status: GOOD (  15.58  )
-X-Spam-Score: -2.3 (--)
-X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+X-CRM114-CacheID: sfid-20200325_023856_493698_6002A526 
+X-CRM114-Status: GOOD (  21.51  )
+X-Spam-Score: -0.7 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [45.249.212.190 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,8 +164,7 @@ Cc: Albert Ou <aou@eecs.berkeley.edu>,
  Andrew Morton <akpm@linux-foundation.org>, Vasily Gorbik <gor@linux.ibm.com>,
  Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>,
  Dave Hansen <dave.hansen@linux.intel.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Christian
- Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
  Paul Mackerras <paulus@samba.org>, Thomas Gleixner <tglx@linutronix.de>,
  Will Deacon <will@kernel.org>, "David S.Miller" <davem@davemloft.net>
@@ -90,74 +173,30 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 
 
-On 2020/3/19 6:52, Mike Kravetz wrote:
-> On 3/18/20 3:15 PM, Dave Hansen wrote:
->> Hi Mike,
->>
->> The series looks like a great idea to me.  One nit on the x86 bits,
->> though...
->>
->>> diff --git a/arch/x86/mm/hugetlbpage.c b/arch/x86/mm/hugetlbpage.c
->>> index 5bfd5aef5378..51e6208fdeec 100644
->>> --- a/arch/x86/mm/hugetlbpage.c
->>> +++ b/arch/x86/mm/hugetlbpage.c
->>> @@ -181,16 +181,25 @@ hugetlb_get_unmapped_area(struct file *file, unsigned long addr,
->>>  #endif /* CONFIG_HUGETLB_PAGE */
->>>  
->>>  #ifdef CONFIG_X86_64
->>> +bool __init arch_hugetlb_valid_size(unsigned long long size)
->>> +{
->>> +	if (size == PMD_SIZE)
->>> +		return true;
->>> +	else if (size == PUD_SIZE && boot_cpu_has(X86_FEATURE_GBPAGES))
->>> +		return true;
->>> +	else
->>> +		return false;
->>> +}
->>
->> I'm pretty sure it's possible to have a system without 2M/PMD page
->> support.  We even have a handy-dandy comment about it in
->> arch/x86/include/asm/required-features.h:
->>
->> 	#ifdef CONFIG_X86_64
->> 	#ifdef CONFIG_PARAVIRT
->> 	/* Paravirtualized systems may not have PSE or PGE available */
->> 	#define NEED_PSE        0
->> 	...
->>
->> I *think* you need an X86_FEATURE_PSE check here to be totally correct.
->>
->> 	if (size == PMD_SIZE && cpu_feature_enabled(X86_FEATURE_PSE))
->> 		return true;
->>
->> BTW, I prefer cpu_feature_enabled() to boot_cpu_has() because it
->> includes disabled-features checking.  I don't think any of it matters
->> for these specific features, but I generally prefer it on principle.
+On 25.03.20 03:58, Longpeng (Mike, Cloud Infrastructure Service Product Dept.) wrote:
+[...]
+> Hi Mike,
 > 
-> Sounds good.  I'll incorporate those changes into a v2, unless someone
-> else with has a different opinion.
+> Inspired by Dave's opinion, it seems the x86-specific hugepages_supported should
+> also need to use cpu_feature_enabled instead.
 > 
-> BTW, this patch should not really change the way the code works today.
-> It is mostly a movement of code.  Unless I am missing something, the
-> existing code will always allow setup of PMD_SIZE hugetlb pages.
+> Also, I wonder if the hugepages_supported is correct ? There're two arch
+> specific hugepages_supported:
+> x86:
+> #define hugepages_supported() boot_cpu_has(X86_FEATURE_PSE)
+> and
+> s390:
+> #define hugepages_supported() (MACHINE_HAS_EDAT1)
 > 
-Hi Mike,
+> Is it possible that x86 has X86_FEATURE_GBPAGES but hasn't X86_FEATURE_GBPAGES
+> or s390 has MACHINE_HAS_EDAT2 but hasn't MACHINE_HAS_EDAT1 ?
 
-Inspired by Dave's opinion, it seems the x86-specific hugepages_supported should
-also need to use cpu_feature_enabled instead.
+The s390 architecture says that 
 
-Also, I wonder if the hugepages_supported is correct ? There're two arch
-specific hugepages_supported:
-x86:
-#define hugepages_supported() boot_cpu_has(X86_FEATURE_PSE)
-and
-s390:
-#define hugepages_supported() (MACHINE_HAS_EDAT1)
+When EDAT-2 applies, the following function is available in the DAT process:
+ - EDAT-1 applies.
+[..]
 
-Is it possible that x86 has X86_FEATURE_GBPAGES but hasn't X86_FEATURE_GBPAGES
-or s390 has MACHINE_HAS_EDAT2 but hasn't MACHINE_HAS_EDAT1 ?
+So if the machine has EDAT-2 it also has EDAT-1.
 
----
-Regards,
-Longpeng(Mike)
 
