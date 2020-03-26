@@ -2,83 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E9FE194421
-	for <lists+linux-riscv@lfdr.de>; Thu, 26 Mar 2020 17:17:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18AD2194465
+	for <lists+linux-riscv@lfdr.de>; Thu, 26 Mar 2020 17:37:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:References:
-	In-Reply-To:Message-ID:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yfGF8y3/6vcwYWjtaZyIkK6AJFhIURCxE/sEYU8BVHM=; b=fLwNeXk6nbKjzF
-	0b/MkgWHzCwNUY4EFGdzxJu1xhiSD9vLo8iAYafUbTxeR5i75UvOibE/Qx5WbHvjtjGyy+W/LDNN4
-	UMWQkxgUoxZHl70UQyC6+HZq6YDI935qzWeCfXDQhVh4+A3oFV5cybnk9dEk11Z1IfMzRhejuE6EY
-	sHSdV3M1ZhTZErmv71jF1DwSUkkm1cDMXaWoRw16wqmJNZ0wb8EaHVdzASBMVTzmY/EILdyu2yFNq
-	XaQWgRyhgQQf+Ja/ohc/sOFc5Nh3Q1W1XfGR2Zj1sQ3DWZ/bRj5IlL6Y5qnA8oOG1+Wkj/qYX+xWX
-	cxZ2Z5inYbCD+2ZMUajg==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=Z52Q+C+NI5sRvzCwNZXwgTHsc/eFf849vvv2BFT3moo=; b=mUTlNEQGQSNMIV
+	aqtJZjB4Pd4c0usewdMiUttXdtS8cePDKQ5QOiYQH0CS7tJ/OGEMOpc8d8pS4Bz2xCNqasGvtfJSp
+	EuBHre4PElrJdzi00KThrt37lrKZBoIt133HueVYu729g/UnWFXU25ySfaIu9ZZOakxwns9QjCpGo
+	uUGvHqYnko61d0VAhP2lbkP6IeLWSaprgGf21TRdDDVVjL8mrQB/6zwY6qLAOhIka2AOtKkpa0toS
+	12odZUOMMh2PssS+6n/FPxoYNJ8/AAd0q5R1RFgXUtd06oH58VBfeFLT7zWf0EzqWXLpoQljUon1H
+	JqMGnvO+XRzydAonVp+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHVBw-0003C2-G5; Thu, 26 Mar 2020 16:17:12 +0000
-Received: from mail.efficios.com ([167.114.26.124])
+	id 1jHVVv-0003sV-Aj; Thu, 26 Mar 2020 16:37:51 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHVBt-0003BB-21
- for linux-riscv@lists.infradead.org; Thu, 26 Mar 2020 16:17:10 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.efficios.com (Postfix) with ESMTP id 3EF6F278187;
- Thu, 26 Mar 2020 12:17:07 -0400 (EDT)
-Received: from mail.efficios.com ([127.0.0.1])
- by localhost (mail03.efficios.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id OhHjHl1pXjeQ; Thu, 26 Mar 2020 12:17:07 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mail.efficios.com (Postfix) with ESMTP id F3D5C278186;
- Thu, 26 Mar 2020 12:17:06 -0400 (EDT)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.efficios.com F3D5C278186
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=efficios.com;
- s=default; t=1585239427;
- bh=yfGF8y3/6vcwYWjtaZyIkK6AJFhIURCxE/sEYU8BVHM=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=VrkzUYw7ljYE9ZaynEDEZSKCkvSslxsNn7fbwTiQ4EXYQhTJrj8Y8QNql9pH4r4MC
- 4V+VIeXD0L5XNxKi1YYFSJWF2ea+6iq9uXxuWm5MriWRvg9+xBLzd5yftW5otrxDPs
- Sm7wAKVIsQ4Y/WYCNNbrbJ6XyGm4HPa4lHA3T1sKzGJpWzOQ5hwOnRW6anX6LgDe/B
- xZ8e40oOR04qFXczRTzzD637M2yiehRUfYCxc6YgbfcjcwAuCoqd7B66jt9HsRh7Rr
- /yO2IyMVoDo969+6NgK8dpiw88htGlteLMsB5YXivF0LQ1XaCq06ZRvRC/JZB1VETd
- ygvLkRXYj68Tw==
-X-Virus-Scanned: amavisd-new at efficios.com
-Received: from mail.efficios.com ([127.0.0.1])
- by localhost (mail03.efficios.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 8cLdYGRVPu8v; Thu, 26 Mar 2020 12:17:06 -0400 (EDT)
-Received: from mail03.efficios.com (mail03.efficios.com [167.114.26.124])
- by mail.efficios.com (Postfix) with ESMTP id E80ED278112;
- Thu, 26 Mar 2020 12:17:06 -0400 (EDT)
-Date: Thu, 26 Mar 2020 12:17:06 -0400 (EDT)
-From: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Message-ID: <490218026.13345.1585239426829.JavaMail.zimbra@efficios.com>
-In-Reply-To: <mhng-e1457171-db30-49be-9e98-298f4d1453ed@palmerdabbelt-glaptop1>
-References: <mhng-e1457171-db30-49be-9e98-298f4d1453ed@palmerdabbelt-glaptop1>
-Subject: Re: [PATCH V2 3/3] rseq/selftests: Add support for riscv
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [167.114.26.124]
-X-Mailer: Zimbra 8.8.15_GA_3918 (ZimbraWebClient - FF74 (Linux)/8.8.15_GA_3895)
-Thread-Topic: rseq/selftests: Add support for riscv
-Thread-Index: YI3KdsKu7N2vjVdS5o5Dpon/zWRp1A==
+ id 1jHVVp-0003r0-Tv
+ for linux-riscv@lists.infradead.org; Thu, 26 Mar 2020 16:37:47 +0000
+Received: by mail-pl1-x644.google.com with SMTP id s23so2326982plq.13
+ for <linux-riscv@lists.infradead.org>; Thu, 26 Mar 2020 09:37:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Z52Q+C+NI5sRvzCwNZXwgTHsc/eFf849vvv2BFT3moo=;
+ b=DqAELuZErWTZ9hBELLMJ53oDN2Sud960uYRXs/thckf6EyZUJQdCpntPZ6YiACA6UE
+ Z+zCiJTaK/dRm8nt5AoEc7YoZ5imYsqSlKYoSpqCPMovTb0u1k15+TbbzLhdajQ8qzhW
+ OWqkLfZiJbn/ZbhDQGa5fg8J4mkBd2U6uIPDZ0o2huMMiFXD5eJAnGIuqz3DGKfFExWi
+ JzaoAb3syFAjg4Ltucnzc4IBecoILolIB6T2fW9YHLlPPSjYSY/SHZEd8WQAaJUSfB2u
+ FOwPTq3FOp2ZK8SjreYNkEhj3iqF/scAGPPJugkbCXYt5q/kwcrWUOwH68ZYKAIUdpse
+ qc+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=Z52Q+C+NI5sRvzCwNZXwgTHsc/eFf849vvv2BFT3moo=;
+ b=TmVXntpUShJDtvr2dusDgmP0qSp6nwx7q/3pA/7YjH9Ccp3lnTBeaMw65t4CN4fAjJ
+ 7Yjz3tx6FB552LxFSZgpEDDzbTaX+hdkdJxAOkcHhm7fB7cbClTdqKybXsZ+1Y8O05vf
+ Nfvr0andfmoJsfI+Cfm5rpduy8yjml0j9k+S2Rd65b4LddESgmr9iSM3aQSg0saZUFCZ
+ TrqssBuECmFSj99VH8RXTXC3KFC4jn9WAVr9boRfWbgiHTimfohfZ4v0UXYNWWKfTMVQ
+ TsKnurDDW9/d+bOyBmY0NFuuj8HcABJ5g+mPwOK7XTSNHLtJ+FF0Da3E0D6tb3BBxnaP
+ ABOQ==
+X-Gm-Message-State: ANhLgQ2IBH+YshED8Y3HyFjhU7HxEhdVNvuc1YNzMy5e09QIyvcBeKpV
+ konTHQAn1xrZkXyhM5tE/cWkXg==
+X-Google-Smtp-Source: ADFU+vtpKTz44UaLjK5rWW1p85dRlUFtlNTouBjZDGVUSoB5dNYxtvMdL9b/q3M0sgc1U6XZSte2wQ==
+X-Received: by 2002:a17:902:6b48:: with SMTP id
+ g8mr8800403plt.149.1585240665030; 
+ Thu, 26 Mar 2020 09:37:45 -0700 (PDT)
+Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
+ by smtp.gmail.com with ESMTPSA id t60sm2053163pjb.9.2020.03.26.09.37.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Mar 2020 09:37:43 -0700 (PDT)
+Date: Thu, 26 Mar 2020 09:37:43 -0700 (PDT)
+X-Google-Original-Date: Thu, 26 Mar 2020 09:37:16 PDT (-0700)
+Subject: Re: [PATCH v7 08/13] pwm: sifive: Use 64-bit division macros for
+ period and duty cycle
+In-Reply-To: <4212f82b8711b2b33f0e71142526d5a7575564e9.1583782035.git.gurus@codeaurora.org>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: gurus@codeaurora.org
+Message-ID: <mhng-29ba8348-64c8-4113-ac65-1e81c0a1da70@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_091709_174596_E629B407 
-X-CRM114-Status: UNSURE (   5.67  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200326_093745_959546_8CA2209C 
+X-CRM114-Status: GOOD (  16.29  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -93,44 +95,59 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org,
- linux-kselftest <linux-kselftest@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: gurus@codeaurora.org, uwe@kleine-koenig.org, linux-pwm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Atish Patra <Atish.Patra@wdc.com>,
+ yash.shah@sifive.com, thierry.reding@gmail.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, subbaram@codeaurora.org,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
------ On Mar 26, 2020, at 11:49 AM, Palmer Dabbelt palmer@dabbelt.com wrote:
+On Mon, 09 Mar 2020 12:35:11 PDT (-0700), gurus@codeaurora.org wrote:
+> Because period and duty cycle are defined in the PWM framework structs
+> as ints with units of nanoseconds, the maximum time duration that can be
+> set is limited to ~2.147 seconds. Redefining them as u64 values will
+> enable larger time durations to be set.
+>
+> As a first step, prepare drivers to handle the switch to u64 period and
+> duty_cycle by replacing division operations involving pwm period and duty cycle
+> with their 64-bit equivalents as appropriate. The actual switch to u64 period
+> and duty_cycle follows as a separate patch.
+>
+> Where the dividend is 64-bit but the divisor is 32-bit, use *_ULL
+> macros:
+> - DIV_ROUND_UP_ULL
+> - DIV_ROUND_CLOSEST_ULL
+> - div_u64
+>
+> Where the divisor is 64-bit (dividend may be 32-bit or 64-bit), use
+> DIV64_* macros:
+> - DIV64_U64_ROUND_CLOSEST
+> - div64_u64
+>
+> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: linux-riscv@lists.infradead.org
+> Cc: Yash Shah <yash.shah@sifive.com>
+> Cc: Atish Patra <atish.patra@wdc.com>
+>
+> Signed-off-by: Guru Das Srinagesh <gurus@codeaurora.org>
+> ---
+>  drivers/pwm/pwm-sifive.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
+> index cc63f9b..62de0bb 100644
+> --- a/drivers/pwm/pwm-sifive.c
+> +++ b/drivers/pwm/pwm-sifive.c
+> @@ -181,7 +181,7 @@ static int pwm_sifive_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+>  	 * consecutively
+>  	 */
+>  	num = (u64)duty_cycle * (1U << PWM_SIFIVE_CMPWIDTH);
+> -	frac = DIV_ROUND_CLOSEST_ULL(num, state->period);
+> +	frac = DIV64_U64_ROUND_CLOSEST(num, state->period);
+>  	/* The hardware cannot generate a 100% duty cycle */
+>  	frac = min(frac, (1U << PWM_SIFIVE_CMPWIDTH) - 1);
 
-> On Sun, 08 Mar 2020 22:59:52 PDT (-0700), vincent.chen@sifive.com wrote:
->> Add support for risc-v in the rseq selftests, which covers both
->> 64-bit and 32-bit ISA with little endian mode.
->>
->> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
->> ---
->>  tools/testing/selftests/rseq/param_test.c |  23 ++
->>  tools/testing/selftests/rseq/rseq-riscv.h | 622 ++++++++++++++++++++++++++++++
->>  tools/testing/selftests/rseq/rseq.h       |   2 +
->>  3 files changed, 647 insertions(+)
->>  create mode 100644 tools/testing/selftests/rseq/rseq-riscv.h
-> 
-> There are a ton of checkpatch errors in here.
-
-Is it just my mail client or the main issue is:
-
-ERROR: DOS line endings
-
-?
-
-As far as other issues are concerned, I know there are a few checkpatch
-false-positives that trigger for my rseq-{$ARCH}.h header, from which rseq-riscv.h
-is derived, because it has issues with extensive use of inline assembly.
-
-Thanks,
-
-Mathieu
-
--- 
-Mathieu Desnoyers
-EfficiOS Inc.
-http://www.efficios.com
+Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
