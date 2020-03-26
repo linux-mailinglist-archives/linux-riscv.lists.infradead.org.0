@@ -2,77 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3337819451B
-	for <lists+linux-riscv@lfdr.de>; Thu, 26 Mar 2020 18:08:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B5612194AD1
+	for <lists+linux-riscv@lfdr.de>; Thu, 26 Mar 2020 22:43:45 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BwfOtD07idSpmJyy+vvL0tN3O7NJQEs+p7kB7u/XKe0=; b=hdapAYMWs+xrKcpN80BcUBTk3
-	KZGo9YwzwtbKJ7tPcfFzI+znX4QiBT1j0m65TBCNgvChH+JYEuoXMdeP4O/YPbRmzPRoaGavcY1gk
-	rare5+ZyvuEJYk4a2yuwgEWimpDxa2Ck7O1jeJge8XsyWFJGM4VPjyPjEmaFR9aCINXCll0FGY2WN
-	GcPEVn0F6Lq+iuu/yK6jBXsTtfPfuIwCevbWAaNh1tDEC0Nno30hQVQr7hn+bHGpx321mBCMOJfp+
-	8SjYQnltwj60X3hN0VJWEkBa4OgXtBLTv5HLYq/SjCQYX5oDlfrTz9ZpXTyryPaWzO6P3wfdtneKy
-	SAg5JYovQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=f1NDn439r2NKX2oz5ZXFZ71Km/k0SiSxc8ZOwV4UNkM=; b=ixpFh7T2HPLHbg
+	v6hAn668TsiEl5TWKe3fdkU+aboVKPDAakNhv8Cttx2b5h02cTufDFV+WmV+meM9LxS2g78a6E5Hj
+	5B0R2jfhzmPU/5JsPCINQDnXzdq/Z+dQjcb78dpxS5t7ZgvNJxG6XfuNnckFGZrwUbJWCvIJ4xbjC
+	4oUVSVaUfMrroODAWzZUJNSaX6gy1+fLhPrV/AqViwMvOHsBAVBFQFBFkEdp0NxFG8k6+dEI4ppDe
+	vNWEBoyaqyaBghJKHOeDtA91AQcN0EiPpXVkNnIHcSfphRl3XSt+9LeqKQ+bXbunIho8nNngDyfnz
+	I84u3F+1JN690rzPvOgA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHVzu-0001Hk-2r; Thu, 26 Mar 2020 17:08:50 +0000
-Received: from hqnvemgate25.nvidia.com ([216.228.121.64])
+	id 1jHaHo-0004e8-II; Thu, 26 Mar 2020 21:43:36 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHVzp-0001Gr-Gt; Thu, 26 Mar 2020 17:08:47 +0000
-Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
- hqnvemgate25.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
- id <B5e7ce16a0001>; Thu, 26 Mar 2020 10:07:55 -0700
-Received: from hqmail.nvidia.com ([172.20.161.6])
- by hqpgpgate101.nvidia.com (PGP Universal service);
- Thu, 26 Mar 2020 10:08:41 -0700
-X-PGP-Universal: processed;
- by hqpgpgate101.nvidia.com on Thu, 26 Mar 2020 10:08:41 -0700
-Received: from [10.2.169.181] (172.20.13.39) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Thu, 26 Mar
- 2020 17:08:37 +0000
-From: Zi Yan <ziy@nvidia.com>
-To: Anshuman Khandual <anshuman.khandual@arm.com>
-Subject: Re: [PATCH V2 1/3] mm/debug: Add tests validating arch page table
- helpers for core features
-Date: Thu, 26 Mar 2020 13:08:34 -0400
-X-Mailer: MailMate (1.13.1r5680)
-Message-ID: <CEB780BF-ECB6-4304-8C04-3DCBAF931492@nvidia.com>
-In-Reply-To: <5b188e44-73d5-673c-8df1-f2c42b556cf9@arm.com>
-References: <1585027375-9997-1-git-send-email-anshuman.khandual@arm.com>
- <1585027375-9997-2-git-send-email-anshuman.khandual@arm.com>
- <89E72C74-A32F-4A5B-B5F3-8A63428507A5@nvidia.com>
- <5b188e44-73d5-673c-8df1-f2c42b556cf9@arm.com>
+ id 1jHaHl-0004dn-0n
+ for linux-riscv@lists.infradead.org; Thu, 26 Mar 2020 21:43:35 +0000
+Received: by mail-wm1-x343.google.com with SMTP id z18so8927174wmk.2
+ for <linux-riscv@lists.infradead.org>; Thu, 26 Mar 2020 14:43:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=f1NDn439r2NKX2oz5ZXFZ71Km/k0SiSxc8ZOwV4UNkM=;
+ b=OjCourkV/MTqGFeOswaVFQKQOplgKPa1zgys4mGBsxi9hAycFeq4i7NQjVeYvQYYIl
+ Z5C2H5mjphkQ+Nzq2zlU7T2vv8LZ/NSe84Rr6iRA3IieJSPTBIV+JoDOcG6K4wpyQoRZ
+ J/de/gJN5I9LMtrwEK6Or+ioTpGm8lNkGQ4HCR0llDNYMPMqWxVKs6jmh/+jHxnwzP7L
+ cw0COxWs9e/U1bP2id4ENhz6rqKaqFx/0xAWfHGEsXqI5cEg9y5EHkmEHrW3QMCSlPzM
+ 2ssLLxfTvxst3538bmc6yz2LSgwjSFKx6gc+tyKcSTosPXYfo5Ni3KfomzX3a+kPJ9d1
+ 9MEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=f1NDn439r2NKX2oz5ZXFZ71Km/k0SiSxc8ZOwV4UNkM=;
+ b=GNS2TIfgishLI+hcA3EyUYOBTO7VAZIAqCZ+zBpphH+eLgrlMsc8cHSchcl07fvFY1
+ 4t9Nww3pPf1zwDzEpmmFj5eq/suntiC8l11kx5R8Ug/8bm50+aTgX4UFTwdcAI0w7D89
+ mblZUG2cP2QqZUpTTjUXpDD+jYyrPmjklebcBPOguW40qSc4VbTbuDAFa+zFt1AsGUyp
+ Q7LJ9lrG2npzZL+7BwOzRd36+/W2hFUSCGQT3blcwjUAXw65TDozZH+2y8KjoQMNnD3i
+ tduQhCxMdoRw7mxz0iu4B+TSOZH/EqPnIUWtXZcWa3/x1lpqfwEUXPaWu15JL7TI3+sf
+ k1JQ==
+X-Gm-Message-State: ANhLgQ3eYYd0dZY8Tq5u6VfLTSsqHMQuNEuVKo/pm3W8GVUzYYr1wPLj
+ P+G7aU4IiokLkpUxfJHtF/dVP+Wj9C0vIOpWaTE0
+X-Google-Smtp-Source: ADFU+vtd+d+BeyjdXRco3BnmIUGbwN18p+gYCa+hvrOkYjQFzeB/QMBSlWf+/g2wWZKCyOEOqWoJhGQRRup/idE8gng=
+X-Received: by 2002:adf:e807:: with SMTP id o7mr12050229wrm.77.1585259011235; 
+ Thu, 26 Mar 2020 14:43:31 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [172.20.13.39]
-X-ClientProxiedBy: HQMAIL107.nvidia.com (172.20.187.13) To
- HQMAIL107.nvidia.com (172.20.187.13)
-Content-Type: multipart/signed;
- boundary="=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
- t=1585242475; bh=BwfOtD07idSpmJyy+vvL0tN3O7NJQEs+p7kB7u/XKe0=;
- h=X-PGP-Universal:From:To:CC:Subject:Date:X-Mailer:Message-ID:
- In-Reply-To:References:MIME-Version:X-Originating-IP:
- X-ClientProxiedBy:Content-Type;
- b=XCHGyHXTrciWgn4hhrAArAkDizTNQ5oimD1MYGqqCVi9MwP/e19yTLd9sETkgDpy2
- WwCCnIGl9XY8oUofP95CbGwz2gKEai3i7yvHL1kHCCaq/F8xviikO3AlcQHDhNXWZV
- NYAiYM5+39HNU5efw66SB9d2cP8AGoA/RF6a1dplpFgnVpyNLDhH3VHdKLxE0sEWTO
- w2IdcvddX5jqXCtLrXpfEM/mC8ozh0jWxzjuKGVcFOrFpyYIPhTm/4EqSYZgcrMUoe
- TnZjOk7iVlWLNX83evNjzYxARN+95+Wb0QtZtoYqpT+Q1lqgp+0WEMVBgu4LQWk80n
- 4jMAPs7pUcNUw==
+References: <20200224193436.26860-1-atish.patra@wdc.com>
+ <mhng-a36eb560-2fbf-4fba-8416-8181a2c8ad5b@palmerdabbelt-glaptop1>
+ <CAEn-LTo=GP5OMZiaBi8BL1etLcGrCyofQrtQ4-JOo5zcpCLu8A@mail.gmail.com>
+ <CAEn-LTokKZXgoNgDi2e5XW2WgL5O+e5UVs7wX2ndqecCdPnN4g@mail.gmail.com>
+In-Reply-To: <CAEn-LTokKZXgoNgDi2e5XW2WgL5O+e5UVs7wX2ndqecCdPnN4g@mail.gmail.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Thu, 26 Mar 2020 14:43:20 -0700
+Message-ID: <CAOnJCUL4BcAFXd6HyOW_eq6mm7PWFNW6yP1srkvTO+=W67AJ-A@mail.gmail.com>
+Subject: Re: [PATCH] RISC-V: Move all address space definition macros to one
+ place
+To: David Abdurachmanov <david.abdurachmanov@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_100845_573588_2A5A2E3B 
-X-CRM114-Status: GOOD (  20.03  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200326_144333_480320_7F382D2C 
+X-CRM114-Status: GOOD (  26.17  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [216.228.121.64 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -82,7 +86,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,435 +97,218 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
- Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
- Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
- Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
+Cc: Palmer Dabbelt <palmerdabbelt@google.com>, akpm@linux-foundation.org,
+ Nick Hu <nickhu@andestech.com>, Bjorn Topel <bjorn.topel@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ stable@vger.kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Atish Patra <Atish.Patra@wdc.com>, Albert Ou <aou@eecs.berkeley.edu>,
  Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+ Greentime Hu <greentime.hu@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Thomas Gleixner <tglx@linutronix.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
---=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Mon, Mar 23, 2020 at 3:32 AM David Abdurachmanov
+<david.abdurachmanov@gmail.com> wrote:
+>
+> On Sat, Mar 21, 2020 at 10:29 PM David Abdurachmanov
+> <david.abdurachmanov@gmail.com> wrote:
+> >
+> > On Fri, Mar 6, 2020 at 2:20 AM Palmer Dabbelt <palmerdabbelt@google.com=
+> wrote:
+> > >
+> > > On Mon, 24 Feb 2020 11:34:36 PST (-0800), Atish Patra wrote:
+> > > > If both CONFIG_KASAN and CONFIG_SPARSEMEM_VMEMMAP are set, we get t=
+he
+> > > > following compilation error.
+> > > >
+> > > > ---------------------------------------------------------------
+> > > > ./arch/riscv/include/asm/pgtable-64.h: In function =E2=80=98pud_pag=
+e=E2=80=99:
+> > > > ./include/asm-generic/memory_model.h:54:29: error: =E2=80=98vmemmap=
+=E2=80=99 undeclared
+> > > > (first use in this function); did you mean =E2=80=98mem_map=E2=80=
+=99?
+> > > >  #define __pfn_to_page(pfn) (vmemmap + (pfn))
+> > > >                              ^~~~~~~
+> > > > ./include/asm-generic/memory_model.h:82:21: note: in expansion of
+> > > > macro =E2=80=98__pfn_to_page=E2=80=99
+> > > >
+> > > >  #define pfn_to_page __pfn_to_page
+> > > >                      ^~~~~~~~~~~~~
+> > > > ./arch/riscv/include/asm/pgtable-64.h:70:9: note: in expansion of m=
+acro
+> > > > =E2=80=98pfn_to_page=E2=80=99
+> > > >   return pfn_to_page(pud_val(pud) >> _PAGE_PFN_SHIFT);
+> > > > ---------------------------------------------------------------
+> > > >
+> > > > Fix the compliation errors by moving all the address space definiti=
+on
+> > > > macros before including pgtable-64.h.
+> > > >
+> > > > Cc: stable@vger.kernel.org
+> > > > Fixes: 8ad8b72721d0 (riscv: Add KASAN support)
+> > > >
+> > > > Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> > > > ---
+> > > >  arch/riscv/include/asm/pgtable.h | 78 +++++++++++++++++-----------=
+----
+> > > >  1 file changed, 41 insertions(+), 37 deletions(-)
+> > > >
+> > > > diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/=
+asm/pgtable.h
+> > > > index 453afb0a570a..4f6ee48a42e8 100644
+> > > > --- a/arch/riscv/include/asm/pgtable.h
+> > > > +++ b/arch/riscv/include/asm/pgtable.h
+> > > > @@ -19,6 +19,47 @@
+> > > >  #include <asm/tlbflush.h>
+> > > >  #include <linux/mm_types.h>
+> > > >
+> > > > +#ifdef CONFIG_MMU
+> > > > +
+> > > > +#define VMALLOC_SIZE     (KERN_VIRT_SIZE >> 1)
+> > > > +#define VMALLOC_END      (PAGE_OFFSET - 1)
+> > > > +#define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
+> > > > +
+> > > > +#define BPF_JIT_REGION_SIZE  (SZ_128M)
+> > > > +#define BPF_JIT_REGION_START (PAGE_OFFSET - BPF_JIT_REGION_SIZE)
+> > > > +#define BPF_JIT_REGION_END   (VMALLOC_END)
+> > > > +
+> > > > +/*
+> > > > + * Roughly size the vmemmap space to be large enough to fit enough
+> > > > + * struct pages to map half the virtual address space. Then
+> > > > + * position vmemmap directly below the VMALLOC region.
+> > > > + */
+> > > > +#define VMEMMAP_SHIFT \
+> > > > +     (CONFIG_VA_BITS - PAGE_SHIFT - 1 + STRUCT_PAGE_MAX_SHIFT)
+> > > > +#define VMEMMAP_SIZE BIT(VMEMMAP_SHIFT)
+> > > > +#define VMEMMAP_END  (VMALLOC_START - 1)
+> > > > +#define VMEMMAP_START        (VMALLOC_START - VMEMMAP_SIZE)
+> > > > +
+> > > > +/*
+> > > > + * Define vmemmap for pfn_to_page & page_to_pfn calls. Needed if k=
+ernel
+> > > > + * is configured with CONFIG_SPARSEMEM_VMEMMAP enabled.
+> > > > + */
+> > > > +#define vmemmap              ((struct page *)VMEMMAP_START)
+> > > > +
+> > > > +#define PCI_IO_SIZE      SZ_16M
+> > > > +#define PCI_IO_END       VMEMMAP_START
+> > > > +#define PCI_IO_START     (PCI_IO_END - PCI_IO_SIZE)
+> > > > +
+> > > > +#define FIXADDR_TOP      PCI_IO_START
+> > > > +#ifdef CONFIG_64BIT
+> > > > +#define FIXADDR_SIZE     PMD_SIZE
+> > > > +#else
+> > > > +#define FIXADDR_SIZE     PGDIR_SIZE
+> > > > +#endif
+> > > > +#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
+> > > > +
+> > > > +#endif
+> > > > +
+> > > >  #ifdef CONFIG_64BIT
+> > > >  #include <asm/pgtable-64.h>
+> > > >  #else
+> > > > @@ -90,31 +131,6 @@ extern pgd_t swapper_pg_dir[];
+> > > >  #define __S110       PAGE_SHARED_EXEC
+> > > >  #define __S111       PAGE_SHARED_EXEC
+> > > >
+> > > > -#define VMALLOC_SIZE     (KERN_VIRT_SIZE >> 1)
+> > > > -#define VMALLOC_END      (PAGE_OFFSET - 1)
+> > > > -#define VMALLOC_START    (PAGE_OFFSET - VMALLOC_SIZE)
+> > > > -
+> > > > -#define BPF_JIT_REGION_SIZE  (SZ_128M)
+> > > > -#define BPF_JIT_REGION_START (PAGE_OFFSET - BPF_JIT_REGION_SIZE)
+> > > > -#define BPF_JIT_REGION_END   (VMALLOC_END)
+> > > > -
+> > > > -/*
+> > > > - * Roughly size the vmemmap space to be large enough to fit enough
+> > > > - * struct pages to map half the virtual address space. Then
+> > > > - * position vmemmap directly below the VMALLOC region.
+> > > > - */
+> > > > -#define VMEMMAP_SHIFT \
+> > > > -     (CONFIG_VA_BITS - PAGE_SHIFT - 1 + STRUCT_PAGE_MAX_SHIFT)
+> > > > -#define VMEMMAP_SIZE BIT(VMEMMAP_SHIFT)
+> > > > -#define VMEMMAP_END  (VMALLOC_START - 1)
+> > > > -#define VMEMMAP_START        (VMALLOC_START - VMEMMAP_SIZE)
+> > > > -
+> > > > -/*
+> > > > - * Define vmemmap for pfn_to_page & page_to_pfn calls. Needed if k=
+ernel
+> > > > - * is configured with CONFIG_SPARSEMEM_VMEMMAP enabled.
+> > > > - */
+> > > > -#define vmemmap              ((struct page *)VMEMMAP_START)
+> > > > -
+> > > >  static inline int pmd_present(pmd_t pmd)
+> > > >  {
+> > > >       return (pmd_val(pmd) & (_PAGE_PRESENT | _PAGE_PROT_NONE));
+> > > > @@ -452,18 +468,6 @@ static inline int ptep_clear_flush_young(struc=
+t vm_area_struct *vma,
+> > > >  #define __pte_to_swp_entry(pte)      ((swp_entry_t) { pte_val(pte)=
+ })
+> > > >  #define __swp_entry_to_pte(x)        ((pte_t) { (x).val })
+> > > >
+> > > > -#define PCI_IO_SIZE      SZ_16M
+> > > > -#define PCI_IO_END       VMEMMAP_START
+> > > > -#define PCI_IO_START     (PCI_IO_END - PCI_IO_SIZE)
+> > > > -
+> > > > -#define FIXADDR_TOP      PCI_IO_START
+> > > > -#ifdef CONFIG_64BIT
+> > > > -#define FIXADDR_SIZE     PMD_SIZE
+> > > > -#else
+> > > > -#define FIXADDR_SIZE     PGDIR_SIZE
+> > > > -#endif
+> > > > -#define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
+> > > > -
+> > > >  /*
+> > > >   * Task size is 0x4000000000 for RV64 or 0x9fc00000 for RV32.
+> > > >   * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
+> > >
+> > > While this isn't technically a fix, I'm inclined to target it for the=
+ RCs just
+> > > to avoid conflicts.  I've put it on for-next now so the builders have=
+ some time
+> > > to chew on things, as I don't want to put in a non-fix too quickly.
+> >
+> > I hit the same issue in Fedora/RISCV while building kernel-5.6.0-0.rc6,=
+ and
+> > we don't have KASAN selected. We do have CONFIG_SPARSEMEM_VMEMMAP
+> > selected.
+> >
 
-On 25 Mar 2020, at 22:18, Anshuman Khandual wrote:
+Yes. I just verified that. CONFIG_SPARSEMEM_VMEMMAP is enough to
+trigger the build error.
+The code that raises the compilation error is added by kasan patchset,
+but it is not dependent upon kasan.
 
-> External email: Use caution opening links or attachments
+--- a/arch/riscv/include/asm/pgtable-64.h
++++ b/arch/riscv/include/asm/pgtable-64.h
+@@ -58,6 +58,11 @@ static inline unsigned long pud_page_vaddr(pud_t pud)
+        return (unsigned long)pfn_to_virt(pud_val(pud) >> _PAGE_PFN_SHIFT);
+ }
+
++static inline struct page *pud_page(pud_t pud)
++{
++       return pfn_to_page(pud_val(pud) >> _PAGE_PFN_SHIFT);
++}
++
+
+@palmer: I am not sure if it is too late for an RC-fix. If not, can
+you send it as an RC-fix ?
+
+Let me know if you want me to respin the patch editing the commit text.
+
+> > I will try this patch tomorrow.
+> >
+> Confirmed to solve my build errors with kernel in Fedora/RISCV.
 >
->
-> On 03/24/2020 06:59 PM, Zi Yan wrote:
->> On 24 Mar 2020, at 1:22, Anshuman Khandual wrote:
->>
->>> This adds new tests validating arch page table helpers for these foll=
-owing
->>> core memory features. These tests create and test specific mapping ty=
-pes at
->>> various page table levels.
->>>
->>> 1. SPECIAL mapping
->>> 2. PROTNONE mapping
->>> 3. DEVMAP mapping
->>> 4. SOFTDIRTY mapping
->>> 5. SWAP mapping
->>> 6. MIGRATION mapping
->>> 7. HUGETLB mapping
->>> 8. THP mapping
->>>
->>> Cc: Andrew Morton <akpm@linux-foundation.org>
->>> Cc: Mike Rapoport <rppt@linux.ibm.com>
->>> Cc: Vineet Gupta <vgupta@synopsys.com>
->>> Cc: Catalin Marinas <catalin.marinas@arm.com>
->>> Cc: Will Deacon <will@kernel.org>
->>> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
->>> Cc: Paul Mackerras <paulus@samba.org>
->>> Cc: Michael Ellerman <mpe@ellerman.id.au>
->>> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
->>> Cc: Vasily Gorbik <gor@linux.ibm.com>
->>> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
->>> Cc: Thomas Gleixner <tglx@linutronix.de>
->>> Cc: Ingo Molnar <mingo@redhat.com>
->>> Cc: Borislav Petkov <bp@alien8.de>
->>> Cc: "H. Peter Anvin" <hpa@zytor.com>
->>> Cc: Kirill A. Shutemov <kirill@shutemov.name>
->>> Cc: Paul Walmsley <paul.walmsley@sifive.com>
->>> Cc: Palmer Dabbelt <palmer@dabbelt.com>
->>> Cc: linux-snps-arc@lists.infradead.org
->>> Cc: linux-arm-kernel@lists.infradead.org
->>> Cc: linuxppc-dev@lists.ozlabs.org
->>> Cc: linux-s390@vger.kernel.org
->>> Cc: linux-riscv@lists.infradead.org
->>> Cc: x86@kernel.org
->>> Cc: linux-arch@vger.kernel.org
->>> Cc: linux-kernel@vger.kernel.org
->>> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
->>> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
->>> ---
->>>  mm/debug_vm_pgtable.c | 291 ++++++++++++++++++++++++++++++++++++++++=
-+-
->>>  1 file changed, 290 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
->>> index 98990a515268..15055a8f6478 100644
->>> --- a/mm/debug_vm_pgtable.c
->>> +++ b/mm/debug_vm_pgtable.c
->>> @@ -289,6 +289,267 @@ static void __init pmd_populate_tests(struct mm=
-_struct *mm, pmd_t *pmdp,
->>>      WARN_ON(pmd_bad(pmd));
->>>  }
->>>
->>> +static void __init pte_special_tests(unsigned long pfn, pgprot_t pro=
-t)
->>> +{
->>> +    pte_t pte =3D pfn_pte(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_ARCH_HAS_PTE_SPECIAL))
->>> +            return;
->>> +
->>> +    WARN_ON(!pte_special(pte_mkspecial(pte)));
->>> +}
->>> +
->>> +static void __init pte_protnone_tests(unsigned long pfn, pgprot_t pr=
-ot)
->>> +{
->>> +    pte_t pte =3D pfn_pte(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_NUMA_BALANCING))
->>> +            return;
->>> +
->>> +    WARN_ON(!pte_protnone(pte));
->>> +    WARN_ON(!pte_present(pte));
->>> +}
->>> +
->>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
->>> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t pr=
-ot)
->>> +{
->>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_NUMA_BALANCING))
->>> +            return;
->>> +
->>> +    WARN_ON(!pmd_protnone(pmd));
->>> +    WARN_ON(!pmd_present(pmd));
->>> +}
->>> +#else
->>> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t pr=
-ot) { }
->>> +#endif
->>> +
->>> +#ifdef CONFIG_ARCH_HAS_PTE_DEVMAP
->>> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot=
-)
->>> +{
->>> +    pte_t pte =3D pfn_pte(pfn, prot);
->>> +
->>> +    WARN_ON(!pte_devmap(pte_mkdevmap(pte)));
->>> +}
->>> +
->>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
->>> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot=
-)
->>> +{
->>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
->>> +
->>> +    WARN_ON(!pmd_devmap(pmd_mkdevmap(pmd)));
->>> +}
->>> +
->>> +#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
->>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
-)
->>> +{
->>> +    pud_t pud =3D pfn_pud(pfn, prot);
->>> +
->>> +    WARN_ON(!pud_devmap(pud_mkdevmap(pud)));
->>> +}
->>> +#else
->>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
-) { }
->>> +#endif
->>> +#else
->>> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot=
-) { }
->>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
-) { }
->>> +#endif
->>> +#else
->>> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot=
-) { }
->>> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot=
-) { }
->>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
-) { }
->>> +#endif
->>> +
->>> +static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t =
-prot)
->>> +{
->>> +    pte_t pte =3D pfn_pte(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
->>> +            return;
->>> +
->>> +    WARN_ON(!pte_soft_dirty(pte_mksoft_dirty(pte)));
->>> +    WARN_ON(pte_soft_dirty(pte_clear_soft_dirty(pte)));
->>> +}
->>> +
->>> +static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgpr=
-ot_t prot)
->>> +{
->>> +    pte_t pte =3D pfn_pte(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
->>> +            return;
->>> +
->>> +    WARN_ON(!pte_swp_soft_dirty(pte_swp_mksoft_dirty(pte)));
->>> +    WARN_ON(pte_swp_soft_dirty(pte_swp_clear_soft_dirty(pte)));
->>> +}
->>> +
->>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
->>> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t =
-prot)
->>> +{
->>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
->>> +            return;
->>> +
->>> +    WARN_ON(!pmd_soft_dirty(pmd_mksoft_dirty(pmd)));
->>> +    WARN_ON(pmd_soft_dirty(pmd_clear_soft_dirty(pmd)));
->>> +}
->>> +
->>> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgpr=
-ot_t prot)
->>> +{
->>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
->>> +
->>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY) ||
->>> +            !IS_ENABLED(CONFIG_ARCH_ENABLE_THP_MIGRATION))
->>> +            return;
->>> +
->>> +    WARN_ON(!pmd_swp_soft_dirty(pmd_swp_mksoft_dirty(pmd)));
->>> +    WARN_ON(pmd_swp_soft_dirty(pmd_swp_clear_soft_dirty(pmd)));
->>> +}
->>> +#else
->>> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t =
-prot) { }
->>> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgpr=
-ot_t prot)
->>> +{
->>> +}
->>> +#endif
->>> +
->>> +static void __init pte_swap_tests(unsigned long pfn, pgprot_t prot)
->>> +{
->>> +    swp_entry_t swp;
->>> +    pte_t pte;
->>> +
->>> +    pte =3D pfn_pte(pfn, prot);
->>> +    swp =3D __pte_to_swp_entry(pte);
->>> +    WARN_ON(!pte_same(pte, __swp_entry_to_pte(swp)));
->>> +}
->>> +
->>> +#ifdef CONFIG_ARCH_ENABLE_THP_MIGRATION
->>> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot)
->>> +{
->>> +    swp_entry_t swp;
->>> +    pmd_t pmd;
->>> +
->>> +    pmd =3D pfn_pmd(pfn, prot);
->>> +    swp =3D __pmd_to_swp_entry(pmd);
->>> +    WARN_ON(!pmd_same(pmd, __swp_entry_to_pmd(swp)));
->>> +}
->>> +#else
->>> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot) =
-{ }
->>> +#endif
->>> +
->>> +static void __init swap_migration_tests(void)
->>> +{
->>> +    struct page *page;
->>> +    swp_entry_t swp;
->>> +
->>> +    if (!IS_ENABLED(CONFIG_MIGRATION))
->>> +            return;
->>> +    /*
->>> +     * swap_migration_tests() requires a dedicated page as it needs =
-to
->>> +     * be locked before creating a migration entry from it. Locking =
-the
->>> +     * page that actually maps kernel text ('start_kernel') can be r=
-eal
->>> +     * problematic. Lets allocate a dedicated page explicitly for th=
-is
->>> +     * purpose that will be freed subsequently.
->>> +     */
->>> +    page =3D alloc_page(GFP_KERNEL);
->>> +    if (!page) {
->>> +            pr_err("page allocation failed\n");
->>> +            return;
->>> +    }
->>> +
->>> +    /*
->>> +     * make_migration_entry() expects given page to be
->>> +     * locked, otherwise it stumbles upon a BUG_ON().
->>> +     */
->>> +    __SetPageLocked(page);
->>> +    swp =3D make_migration_entry(page, 1);
->>> +    WARN_ON(!is_migration_entry(swp));
->>> +    WARN_ON(!is_write_migration_entry(swp));
->>> +
->>> +    make_migration_entry_read(&swp);
->>> +    WARN_ON(!is_migration_entry(swp));
->>> +    WARN_ON(is_write_migration_entry(swp));
->>> +
->>> +    swp =3D make_migration_entry(page, 0);
->>> +    WARN_ON(!is_migration_entry(swp));
->>> +    WARN_ON(is_write_migration_entry(swp));
->>> +    __ClearPageLocked(page);
->>> +    __free_page(page);
->>> +}
->>> +
->>> +#ifdef CONFIG_HUGETLB_PAGE
->>> +static void __init hugetlb_basic_tests(unsigned long pfn, pgprot_t p=
-rot)
->>> +{
->>> +    struct page *page;
->>> +    pte_t pte;
->>> +
->>> +    /*
->>> +     * Accessing the page associated with the pfn is safe here,
->>> +     * as it was previously derived from a real kernel symbol.
->>> +     */
->>> +    page =3D pfn_to_page(pfn);
->>> +    pte =3D mk_huge_pte(page, prot);
->>> +
->>> +    WARN_ON(!huge_pte_dirty(huge_pte_mkdirty(pte)));
->>> +    WARN_ON(!huge_pte_write(huge_pte_mkwrite(huge_pte_wrprotect(pte)=
-)));
->>> +    WARN_ON(huge_pte_write(huge_pte_wrprotect(huge_pte_mkwrite(pte))=
-));
->>> +
->>> +#ifdef CONFIG_ARCH_WANT_GENERAL_HUGETLB
->>> +    pte =3D pfn_pte(pfn, prot);
->>> +
->>> +    WARN_ON(!pte_huge(pte_mkhuge(pte)));
->>> +#endif
->>> +}
->>> +#else
->>> +static void __init hugetlb_basic_tests(unsigned long pfn, pgprot_t p=
-rot) { }
->>> +#endif
->>> +
->>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
->>> +static void __init pmd_thp_tests(unsigned long pfn, pgprot_t prot)
->>> +{
->>> +    pmd_t pmd;
->>> +
->>> +    /*
->>> +     * pmd_trans_huge() and pmd_present() must return positive
->>> +     * after MMU invalidation with pmd_mknotpresent().
->>> +     */
->>> +    pmd =3D pfn_pmd(pfn, prot);
->>> +    WARN_ON(!pmd_trans_huge(pmd_mkhuge(pmd)));
->>> +
->>> +#ifndef __HAVE_ARCH_PMDP_INVALIDATE
->>> +    WARN_ON(!pmd_trans_huge(pmd_mknotpresent(pmd_mkhuge(pmd))));
->>> +    WARN_ON(!pmd_present(pmd_mknotpresent(pmd_mkhuge(pmd))));
->>> +#endif
->>
->> I think we need a better comment here, because requiring pmd_trans_hug=
-e() and
->> pmd_present() returning true after pmd_mknotpresent() is not straightf=
-orward.
->
-> Thats right.
->
->>
->> According to Andrea Arcangeli=E2=80=99s email (https://lore.kernel.org=
-/linux-mm/20181017020930.GN30832@redhat.com/),
->> This behavior is an optimization for transparent huge page.
->> pmd_trans_huge() must be true if pmd_page() returns you a valid THP to=
- avoid
->> taking the pmd_lock when others walk over non transhuge pmds (i.e. the=
-re are no
->> THP allocated). Especially when we split a THP, removing the present b=
-it from
->> the pmd, pmd_trans_huge() still needs to return true. pmd_present() sh=
-ould
->> be true whenever pmd_trans_huge() returns true.
->
-> Sure, will modify the existing comment here like this.
->
->         /*
->          * pmd_trans_huge() and pmd_present() must return positive afte=
-r
->          * MMU invalidation with pmd_mknotpresent(). This behavior is a=
-n
->          * optimization for transparent huge page. pmd_trans_huge() mus=
-t
->          * be true if pmd_page() returns a valid THP to avoid taking th=
-e
->          * pmd_lock when others walk over non transhuge pmds (i.e. ther=
-e
->          * are no THP allocated). Especially when splitting a THP and
->          * removing the present bit from the pmd, pmd_trans_huge() stil=
-l
->          * needs to return true. pmd_present() should be true whenever
->          * pmd_trans_huge() returns true.
->          */
->
->>
->> I think it is also worth either putting Andres=E2=80=99s email or the =
-link to it
->> in the rst file in your 3rd patch. It is a good documentation for this=
- special
->> case.
->
-> Makes sense. Will update Andrea's email link in the .rst file as well.
+> david
 >
 
-Look good to me. Thanks.
 
-Reviewed-by: Zi Yan <ziy@nvidia.com>
-
-=E2=80=94
-Best Regards,
-Yan Zi
-
---=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJDBAEBCgAtFiEEh7yFAW3gwjwQ4C9anbJR82th+ooFAl584ZIPHHppeUBudmlk
-aWEuY29tAAoJEJ2yUfNrYfqKdy4P/3ofw7nekR6lj+F67bUoA1kamVe7nB1GPlMF
-gplxJACEyMz8W/H+UrHswz53iUk5KgB1Bbi1M2ZPJ7iYPGj0CvHyNTKqCMHHz0aW
-Bokl7IHbH04B5ISX11DtWPe6BJvH0VU8rVoLAI4HIASjFm3MpyJ/ZfeO9b4/LInH
-1P2gusknbYf2e8L7e5vm9miYGny0a9Tab2PQHB3CNRAORcyYUOON8z2Y3hZpuuXY
-pZDvALP7JzmSlZVsvQvPzfnefIqj7tTOD5/lTEHC3Y1HDbwMKqzmTWqgehHm2nux
-IkVja3DFoDDkRxxSYSH2hiBl5x0Z+qluDV9SAMZD6Jj3XGkpVrjgNAhlah6SXjGp
-UjW1XnXCrsCGvF+UykRAVT02MopL+VdNBv4r66+Z8OEAV2olX3V2TdHzxwdITf7a
-GL/dQ+I8di+wjOCqKHnfKBoqSHbP1P1P7UtRogKsXU47Fn4or1Uxqj/XB6TyYCYB
-I0A1cIFWyIPO4TuvpGsHXM1IewapQWf4Pv4T4xPG0Fs9Gk4dKBstEbfxrATQ1wNr
-OTliq9iSeRIhXnsAgENPcZjk1ZBGCw7ZdZ71eI5kZYmanGAoha+mONcnixD6aVQ8
-mCyt/2qwFsNJ2ZmCGjvGHYbf6u0fkPSSVGzarakQyrkVfdfCy6LGBC1GIcP18lOD
-ySDekypB
-=GWeO
------END PGP SIGNATURE-----
-
---=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=--
+--=20
+Regards,
+Atish
 
