@@ -2,88 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18AD2194465
-	for <lists+linux-riscv@lfdr.de>; Thu, 26 Mar 2020 17:37:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3337819451B
+	for <lists+linux-riscv@lfdr.de>; Thu, 26 Mar 2020 18:08:56 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=Z52Q+C+NI5sRvzCwNZXwgTHsc/eFf849vvv2BFT3moo=; b=mUTlNEQGQSNMIV
-	aqtJZjB4Pd4c0usewdMiUttXdtS8cePDKQ5QOiYQH0CS7tJ/OGEMOpc8d8pS4Bz2xCNqasGvtfJSp
-	EuBHre4PElrJdzi00KThrt37lrKZBoIt133HueVYu729g/UnWFXU25ySfaIu9ZZOakxwns9QjCpGo
-	uUGvHqYnko61d0VAhP2lbkP6IeLWSaprgGf21TRdDDVVjL8mrQB/6zwY6qLAOhIka2AOtKkpa0toS
-	12odZUOMMh2PssS+6n/FPxoYNJ8/AAd0q5R1RFgXUtd06oH58VBfeFLT7zWf0EzqWXLpoQljUon1H
-	JqMGnvO+XRzydAonVp+A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=BwfOtD07idSpmJyy+vvL0tN3O7NJQEs+p7kB7u/XKe0=; b=hdapAYMWs+xrKcpN80BcUBTk3
+	KZGo9YwzwtbKJ7tPcfFzI+znX4QiBT1j0m65TBCNgvChH+JYEuoXMdeP4O/YPbRmzPRoaGavcY1gk
+	rare5+ZyvuEJYk4a2yuwgEWimpDxa2Ck7O1jeJge8XsyWFJGM4VPjyPjEmaFR9aCINXCll0FGY2WN
+	GcPEVn0F6Lq+iuu/yK6jBXsTtfPfuIwCevbWAaNh1tDEC0Nno30hQVQr7hn+bHGpx321mBCMOJfp+
+	8SjYQnltwj60X3hN0VJWEkBa4OgXtBLTv5HLYq/SjCQYX5oDlfrTz9ZpXTyryPaWzO6P3wfdtneKy
+	SAg5JYovQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHVVv-0003sV-Aj; Thu, 26 Mar 2020 16:37:51 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1jHVzu-0001Hk-2r; Thu, 26 Mar 2020 17:08:50 +0000
+Received: from hqnvemgate25.nvidia.com ([216.228.121.64])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHVVp-0003r0-Tv
- for linux-riscv@lists.infradead.org; Thu, 26 Mar 2020 16:37:47 +0000
-Received: by mail-pl1-x644.google.com with SMTP id s23so2326982plq.13
- for <linux-riscv@lists.infradead.org>; Thu, 26 Mar 2020 09:37:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=Z52Q+C+NI5sRvzCwNZXwgTHsc/eFf849vvv2BFT3moo=;
- b=DqAELuZErWTZ9hBELLMJ53oDN2Sud960uYRXs/thckf6EyZUJQdCpntPZ6YiACA6UE
- Z+zCiJTaK/dRm8nt5AoEc7YoZ5imYsqSlKYoSpqCPMovTb0u1k15+TbbzLhdajQ8qzhW
- OWqkLfZiJbn/ZbhDQGa5fg8J4mkBd2U6uIPDZ0o2huMMiFXD5eJAnGIuqz3DGKfFExWi
- JzaoAb3syFAjg4Ltucnzc4IBecoILolIB6T2fW9YHLlPPSjYSY/SHZEd8WQAaJUSfB2u
- FOwPTq3FOp2ZK8SjreYNkEhj3iqF/scAGPPJugkbCXYt5q/kwcrWUOwH68ZYKAIUdpse
- qc+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=Z52Q+C+NI5sRvzCwNZXwgTHsc/eFf849vvv2BFT3moo=;
- b=TmVXntpUShJDtvr2dusDgmP0qSp6nwx7q/3pA/7YjH9Ccp3lnTBeaMw65t4CN4fAjJ
- 7Yjz3tx6FB552LxFSZgpEDDzbTaX+hdkdJxAOkcHhm7fB7cbClTdqKybXsZ+1Y8O05vf
- Nfvr0andfmoJsfI+Cfm5rpduy8yjml0j9k+S2Rd65b4LddESgmr9iSM3aQSg0saZUFCZ
- TrqssBuECmFSj99VH8RXTXC3KFC4jn9WAVr9boRfWbgiHTimfohfZ4v0UXYNWWKfTMVQ
- TsKnurDDW9/d+bOyBmY0NFuuj8HcABJ5g+mPwOK7XTSNHLtJ+FF0Da3E0D6tb3BBxnaP
- ABOQ==
-X-Gm-Message-State: ANhLgQ2IBH+YshED8Y3HyFjhU7HxEhdVNvuc1YNzMy5e09QIyvcBeKpV
- konTHQAn1xrZkXyhM5tE/cWkXg==
-X-Google-Smtp-Source: ADFU+vtpKTz44UaLjK5rWW1p85dRlUFtlNTouBjZDGVUSoB5dNYxtvMdL9b/q3M0sgc1U6XZSte2wQ==
-X-Received: by 2002:a17:902:6b48:: with SMTP id
- g8mr8800403plt.149.1585240665030; 
- Thu, 26 Mar 2020 09:37:45 -0700 (PDT)
-Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
- by smtp.gmail.com with ESMTPSA id t60sm2053163pjb.9.2020.03.26.09.37.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Mar 2020 09:37:43 -0700 (PDT)
-Date: Thu, 26 Mar 2020 09:37:43 -0700 (PDT)
-X-Google-Original-Date: Thu, 26 Mar 2020 09:37:16 PDT (-0700)
-Subject: Re: [PATCH v7 08/13] pwm: sifive: Use 64-bit division macros for
- period and duty cycle
-In-Reply-To: <4212f82b8711b2b33f0e71142526d5a7575564e9.1583782035.git.gurus@codeaurora.org>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: gurus@codeaurora.org
-Message-ID: <mhng-29ba8348-64c8-4113-ac65-1e81c0a1da70@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ id 1jHVzp-0001Gr-Gt; Thu, 26 Mar 2020 17:08:47 +0000
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqnvemgate25.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5e7ce16a0001>; Thu, 26 Mar 2020 10:07:55 -0700
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Thu, 26 Mar 2020 10:08:41 -0700
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Thu, 26 Mar 2020 10:08:41 -0700
+Received: from [10.2.169.181] (172.20.13.39) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Thu, 26 Mar
+ 2020 17:08:37 +0000
+From: Zi Yan <ziy@nvidia.com>
+To: Anshuman Khandual <anshuman.khandual@arm.com>
+Subject: Re: [PATCH V2 1/3] mm/debug: Add tests validating arch page table
+ helpers for core features
+Date: Thu, 26 Mar 2020 13:08:34 -0400
+X-Mailer: MailMate (1.13.1r5680)
+Message-ID: <CEB780BF-ECB6-4304-8C04-3DCBAF931492@nvidia.com>
+In-Reply-To: <5b188e44-73d5-673c-8df1-f2c42b556cf9@arm.com>
+References: <1585027375-9997-1-git-send-email-anshuman.khandual@arm.com>
+ <1585027375-9997-2-git-send-email-anshuman.khandual@arm.com>
+ <89E72C74-A32F-4A5B-B5F3-8A63428507A5@nvidia.com>
+ <5b188e44-73d5-673c-8df1-f2c42b556cf9@arm.com>
+MIME-Version: 1.0
+X-Originating-IP: [172.20.13.39]
+X-ClientProxiedBy: HQMAIL107.nvidia.com (172.20.187.13) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+Content-Type: multipart/signed;
+ boundary="=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1585242475; bh=BwfOtD07idSpmJyy+vvL0tN3O7NJQEs+p7kB7u/XKe0=;
+ h=X-PGP-Universal:From:To:CC:Subject:Date:X-Mailer:Message-ID:
+ In-Reply-To:References:MIME-Version:X-Originating-IP:
+ X-ClientProxiedBy:Content-Type;
+ b=XCHGyHXTrciWgn4hhrAArAkDizTNQ5oimD1MYGqqCVi9MwP/e19yTLd9sETkgDpy2
+ WwCCnIGl9XY8oUofP95CbGwz2gKEai3i7yvHL1kHCCaq/F8xviikO3AlcQHDhNXWZV
+ NYAiYM5+39HNU5efw66SB9d2cP8AGoA/RF6a1dplpFgnVpyNLDhH3VHdKLxE0sEWTO
+ w2IdcvddX5jqXCtLrXpfEM/mC8ozh0jWxzjuKGVcFOrFpyYIPhTm/4EqSYZgcrMUoe
+ TnZjOk7iVlWLNX83evNjzYxARN+95+Wb0QtZtoYqpT+Q1lqgp+0WEMVBgu4LQWk80n
+ 4jMAPs7pUcNUw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_093745_959546_8CA2209C 
-X-CRM114-Status: GOOD (  16.29  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200326_100845_573588_2A5A2E3B 
+X-CRM114-Status: GOOD (  20.03  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [216.228.121.64 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,59 +94,435 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: gurus@codeaurora.org, uwe@kleine-koenig.org, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, Atish Patra <Atish.Patra@wdc.com>,
- yash.shah@sifive.com, thierry.reding@gmail.com,
- Paul Walmsley <paul.walmsley@sifive.com>, subbaram@codeaurora.org,
- linux-riscv@lists.infradead.org
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
+ linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
+ Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
+ Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 09 Mar 2020 12:35:11 PDT (-0700), gurus@codeaurora.org wrote:
-> Because period and duty cycle are defined in the PWM framework structs
-> as ints with units of nanoseconds, the maximum time duration that can be
-> set is limited to ~2.147 seconds. Redefining them as u64 values will
-> enable larger time durations to be set.
->
-> As a first step, prepare drivers to handle the switch to u64 period and
-> duty_cycle by replacing division operations involving pwm period and duty cycle
-> with their 64-bit equivalents as appropriate. The actual switch to u64 period
-> and duty_cycle follows as a separate patch.
->
-> Where the dividend is 64-bit but the divisor is 32-bit, use *_ULL
-> macros:
-> - DIV_ROUND_UP_ULL
-> - DIV_ROUND_CLOSEST_ULL
-> - div_u64
->
-> Where the divisor is 64-bit (dividend may be 32-bit or 64-bit), use
-> DIV64_* macros:
-> - DIV64_U64_ROUND_CLOSEST
-> - div64_u64
->
-> Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: linux-riscv@lists.infradead.org
-> Cc: Yash Shah <yash.shah@sifive.com>
-> Cc: Atish Patra <atish.patra@wdc.com>
->
-> Signed-off-by: Guru Das Srinagesh <gurus@codeaurora.org>
-> ---
->  drivers/pwm/pwm-sifive.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
-> index cc63f9b..62de0bb 100644
-> --- a/drivers/pwm/pwm-sifive.c
-> +++ b/drivers/pwm/pwm-sifive.c
-> @@ -181,7 +181,7 @@ static int pwm_sifive_apply(struct pwm_chip *chip, struct pwm_device *pwm,
->  	 * consecutively
->  	 */
->  	num = (u64)duty_cycle * (1U << PWM_SIFIVE_CMPWIDTH);
-> -	frac = DIV_ROUND_CLOSEST_ULL(num, state->period);
-> +	frac = DIV64_U64_ROUND_CLOSEST(num, state->period);
->  	/* The hardware cannot generate a 100% duty cycle */
->  	frac = min(frac, (1U << PWM_SIFIVE_CMPWIDTH) - 1);
+--=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
+On 25 Mar 2020, at 22:18, Anshuman Khandual wrote:
+
+> External email: Use caution opening links or attachments
+>
+>
+> On 03/24/2020 06:59 PM, Zi Yan wrote:
+>> On 24 Mar 2020, at 1:22, Anshuman Khandual wrote:
+>>
+>>> This adds new tests validating arch page table helpers for these foll=
+owing
+>>> core memory features. These tests create and test specific mapping ty=
+pes at
+>>> various page table levels.
+>>>
+>>> 1. SPECIAL mapping
+>>> 2. PROTNONE mapping
+>>> 3. DEVMAP mapping
+>>> 4. SOFTDIRTY mapping
+>>> 5. SWAP mapping
+>>> 6. MIGRATION mapping
+>>> 7. HUGETLB mapping
+>>> 8. THP mapping
+>>>
+>>> Cc: Andrew Morton <akpm@linux-foundation.org>
+>>> Cc: Mike Rapoport <rppt@linux.ibm.com>
+>>> Cc: Vineet Gupta <vgupta@synopsys.com>
+>>> Cc: Catalin Marinas <catalin.marinas@arm.com>
+>>> Cc: Will Deacon <will@kernel.org>
+>>> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+>>> Cc: Paul Mackerras <paulus@samba.org>
+>>> Cc: Michael Ellerman <mpe@ellerman.id.au>
+>>> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+>>> Cc: Vasily Gorbik <gor@linux.ibm.com>
+>>> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+>>> Cc: Thomas Gleixner <tglx@linutronix.de>
+>>> Cc: Ingo Molnar <mingo@redhat.com>
+>>> Cc: Borislav Petkov <bp@alien8.de>
+>>> Cc: "H. Peter Anvin" <hpa@zytor.com>
+>>> Cc: Kirill A. Shutemov <kirill@shutemov.name>
+>>> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+>>> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+>>> Cc: linux-snps-arc@lists.infradead.org
+>>> Cc: linux-arm-kernel@lists.infradead.org
+>>> Cc: linuxppc-dev@lists.ozlabs.org
+>>> Cc: linux-s390@vger.kernel.org
+>>> Cc: linux-riscv@lists.infradead.org
+>>> Cc: x86@kernel.org
+>>> Cc: linux-arch@vger.kernel.org
+>>> Cc: linux-kernel@vger.kernel.org
+>>> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+>>> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+>>> ---
+>>>  mm/debug_vm_pgtable.c | 291 ++++++++++++++++++++++++++++++++++++++++=
++-
+>>>  1 file changed, 290 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
+>>> index 98990a515268..15055a8f6478 100644
+>>> --- a/mm/debug_vm_pgtable.c
+>>> +++ b/mm/debug_vm_pgtable.c
+>>> @@ -289,6 +289,267 @@ static void __init pmd_populate_tests(struct mm=
+_struct *mm, pmd_t *pmdp,
+>>>      WARN_ON(pmd_bad(pmd));
+>>>  }
+>>>
+>>> +static void __init pte_special_tests(unsigned long pfn, pgprot_t pro=
+t)
+>>> +{
+>>> +    pte_t pte =3D pfn_pte(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_ARCH_HAS_PTE_SPECIAL))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pte_special(pte_mkspecial(pte)));
+>>> +}
+>>> +
+>>> +static void __init pte_protnone_tests(unsigned long pfn, pgprot_t pr=
+ot)
+>>> +{
+>>> +    pte_t pte =3D pfn_pte(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_NUMA_BALANCING))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pte_protnone(pte));
+>>> +    WARN_ON(!pte_present(pte));
+>>> +}
+>>> +
+>>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
+>>> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t pr=
+ot)
+>>> +{
+>>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_NUMA_BALANCING))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pmd_protnone(pmd));
+>>> +    WARN_ON(!pmd_present(pmd));
+>>> +}
+>>> +#else
+>>> +static void __init pmd_protnone_tests(unsigned long pfn, pgprot_t pr=
+ot) { }
+>>> +#endif
+>>> +
+>>> +#ifdef CONFIG_ARCH_HAS_PTE_DEVMAP
+>>> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot=
+)
+>>> +{
+>>> +    pte_t pte =3D pfn_pte(pfn, prot);
+>>> +
+>>> +    WARN_ON(!pte_devmap(pte_mkdevmap(pte)));
+>>> +}
+>>> +
+>>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
+>>> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot=
+)
+>>> +{
+>>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
+>>> +
+>>> +    WARN_ON(!pmd_devmap(pmd_mkdevmap(pmd)));
+>>> +}
+>>> +
+>>> +#ifdef CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD
+>>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
+)
+>>> +{
+>>> +    pud_t pud =3D pfn_pud(pfn, prot);
+>>> +
+>>> +    WARN_ON(!pud_devmap(pud_mkdevmap(pud)));
+>>> +}
+>>> +#else
+>>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
+) { }
+>>> +#endif
+>>> +#else
+>>> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot=
+) { }
+>>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
+) { }
+>>> +#endif
+>>> +#else
+>>> +static void __init pte_devmap_tests(unsigned long pfn, pgprot_t prot=
+) { }
+>>> +static void __init pmd_devmap_tests(unsigned long pfn, pgprot_t prot=
+) { }
+>>> +static void __init pud_devmap_tests(unsigned long pfn, pgprot_t prot=
+) { }
+>>> +#endif
+>>> +
+>>> +static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t =
+prot)
+>>> +{
+>>> +    pte_t pte =3D pfn_pte(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pte_soft_dirty(pte_mksoft_dirty(pte)));
+>>> +    WARN_ON(pte_soft_dirty(pte_clear_soft_dirty(pte)));
+>>> +}
+>>> +
+>>> +static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgpr=
+ot_t prot)
+>>> +{
+>>> +    pte_t pte =3D pfn_pte(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pte_swp_soft_dirty(pte_swp_mksoft_dirty(pte)));
+>>> +    WARN_ON(pte_swp_soft_dirty(pte_swp_clear_soft_dirty(pte)));
+>>> +}
+>>> +
+>>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
+>>> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t =
+prot)
+>>> +{
+>>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pmd_soft_dirty(pmd_mksoft_dirty(pmd)));
+>>> +    WARN_ON(pmd_soft_dirty(pmd_clear_soft_dirty(pmd)));
+>>> +}
+>>> +
+>>> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgpr=
+ot_t prot)
+>>> +{
+>>> +    pmd_t pmd =3D pfn_pmd(pfn, prot);
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY) ||
+>>> +            !IS_ENABLED(CONFIG_ARCH_ENABLE_THP_MIGRATION))
+>>> +            return;
+>>> +
+>>> +    WARN_ON(!pmd_swp_soft_dirty(pmd_swp_mksoft_dirty(pmd)));
+>>> +    WARN_ON(pmd_swp_soft_dirty(pmd_swp_clear_soft_dirty(pmd)));
+>>> +}
+>>> +#else
+>>> +static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t =
+prot) { }
+>>> +static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgpr=
+ot_t prot)
+>>> +{
+>>> +}
+>>> +#endif
+>>> +
+>>> +static void __init pte_swap_tests(unsigned long pfn, pgprot_t prot)
+>>> +{
+>>> +    swp_entry_t swp;
+>>> +    pte_t pte;
+>>> +
+>>> +    pte =3D pfn_pte(pfn, prot);
+>>> +    swp =3D __pte_to_swp_entry(pte);
+>>> +    WARN_ON(!pte_same(pte, __swp_entry_to_pte(swp)));
+>>> +}
+>>> +
+>>> +#ifdef CONFIG_ARCH_ENABLE_THP_MIGRATION
+>>> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot)
+>>> +{
+>>> +    swp_entry_t swp;
+>>> +    pmd_t pmd;
+>>> +
+>>> +    pmd =3D pfn_pmd(pfn, prot);
+>>> +    swp =3D __pmd_to_swp_entry(pmd);
+>>> +    WARN_ON(!pmd_same(pmd, __swp_entry_to_pmd(swp)));
+>>> +}
+>>> +#else
+>>> +static void __init pmd_swap_tests(unsigned long pfn, pgprot_t prot) =
+{ }
+>>> +#endif
+>>> +
+>>> +static void __init swap_migration_tests(void)
+>>> +{
+>>> +    struct page *page;
+>>> +    swp_entry_t swp;
+>>> +
+>>> +    if (!IS_ENABLED(CONFIG_MIGRATION))
+>>> +            return;
+>>> +    /*
+>>> +     * swap_migration_tests() requires a dedicated page as it needs =
+to
+>>> +     * be locked before creating a migration entry from it. Locking =
+the
+>>> +     * page that actually maps kernel text ('start_kernel') can be r=
+eal
+>>> +     * problematic. Lets allocate a dedicated page explicitly for th=
+is
+>>> +     * purpose that will be freed subsequently.
+>>> +     */
+>>> +    page =3D alloc_page(GFP_KERNEL);
+>>> +    if (!page) {
+>>> +            pr_err("page allocation failed\n");
+>>> +            return;
+>>> +    }
+>>> +
+>>> +    /*
+>>> +     * make_migration_entry() expects given page to be
+>>> +     * locked, otherwise it stumbles upon a BUG_ON().
+>>> +     */
+>>> +    __SetPageLocked(page);
+>>> +    swp =3D make_migration_entry(page, 1);
+>>> +    WARN_ON(!is_migration_entry(swp));
+>>> +    WARN_ON(!is_write_migration_entry(swp));
+>>> +
+>>> +    make_migration_entry_read(&swp);
+>>> +    WARN_ON(!is_migration_entry(swp));
+>>> +    WARN_ON(is_write_migration_entry(swp));
+>>> +
+>>> +    swp =3D make_migration_entry(page, 0);
+>>> +    WARN_ON(!is_migration_entry(swp));
+>>> +    WARN_ON(is_write_migration_entry(swp));
+>>> +    __ClearPageLocked(page);
+>>> +    __free_page(page);
+>>> +}
+>>> +
+>>> +#ifdef CONFIG_HUGETLB_PAGE
+>>> +static void __init hugetlb_basic_tests(unsigned long pfn, pgprot_t p=
+rot)
+>>> +{
+>>> +    struct page *page;
+>>> +    pte_t pte;
+>>> +
+>>> +    /*
+>>> +     * Accessing the page associated with the pfn is safe here,
+>>> +     * as it was previously derived from a real kernel symbol.
+>>> +     */
+>>> +    page =3D pfn_to_page(pfn);
+>>> +    pte =3D mk_huge_pte(page, prot);
+>>> +
+>>> +    WARN_ON(!huge_pte_dirty(huge_pte_mkdirty(pte)));
+>>> +    WARN_ON(!huge_pte_write(huge_pte_mkwrite(huge_pte_wrprotect(pte)=
+)));
+>>> +    WARN_ON(huge_pte_write(huge_pte_wrprotect(huge_pte_mkwrite(pte))=
+));
+>>> +
+>>> +#ifdef CONFIG_ARCH_WANT_GENERAL_HUGETLB
+>>> +    pte =3D pfn_pte(pfn, prot);
+>>> +
+>>> +    WARN_ON(!pte_huge(pte_mkhuge(pte)));
+>>> +#endif
+>>> +}
+>>> +#else
+>>> +static void __init hugetlb_basic_tests(unsigned long pfn, pgprot_t p=
+rot) { }
+>>> +#endif
+>>> +
+>>> +#ifdef CONFIG_TRANSPARENT_HUGEPAGE
+>>> +static void __init pmd_thp_tests(unsigned long pfn, pgprot_t prot)
+>>> +{
+>>> +    pmd_t pmd;
+>>> +
+>>> +    /*
+>>> +     * pmd_trans_huge() and pmd_present() must return positive
+>>> +     * after MMU invalidation with pmd_mknotpresent().
+>>> +     */
+>>> +    pmd =3D pfn_pmd(pfn, prot);
+>>> +    WARN_ON(!pmd_trans_huge(pmd_mkhuge(pmd)));
+>>> +
+>>> +#ifndef __HAVE_ARCH_PMDP_INVALIDATE
+>>> +    WARN_ON(!pmd_trans_huge(pmd_mknotpresent(pmd_mkhuge(pmd))));
+>>> +    WARN_ON(!pmd_present(pmd_mknotpresent(pmd_mkhuge(pmd))));
+>>> +#endif
+>>
+>> I think we need a better comment here, because requiring pmd_trans_hug=
+e() and
+>> pmd_present() returning true after pmd_mknotpresent() is not straightf=
+orward.
+>
+> Thats right.
+>
+>>
+>> According to Andrea Arcangeli=E2=80=99s email (https://lore.kernel.org=
+/linux-mm/20181017020930.GN30832@redhat.com/),
+>> This behavior is an optimization for transparent huge page.
+>> pmd_trans_huge() must be true if pmd_page() returns you a valid THP to=
+ avoid
+>> taking the pmd_lock when others walk over non transhuge pmds (i.e. the=
+re are no
+>> THP allocated). Especially when we split a THP, removing the present b=
+it from
+>> the pmd, pmd_trans_huge() still needs to return true. pmd_present() sh=
+ould
+>> be true whenever pmd_trans_huge() returns true.
+>
+> Sure, will modify the existing comment here like this.
+>
+>         /*
+>          * pmd_trans_huge() and pmd_present() must return positive afte=
+r
+>          * MMU invalidation with pmd_mknotpresent(). This behavior is a=
+n
+>          * optimization for transparent huge page. pmd_trans_huge() mus=
+t
+>          * be true if pmd_page() returns a valid THP to avoid taking th=
+e
+>          * pmd_lock when others walk over non transhuge pmds (i.e. ther=
+e
+>          * are no THP allocated). Especially when splitting a THP and
+>          * removing the present bit from the pmd, pmd_trans_huge() stil=
+l
+>          * needs to return true. pmd_present() should be true whenever
+>          * pmd_trans_huge() returns true.
+>          */
+>
+>>
+>> I think it is also worth either putting Andres=E2=80=99s email or the =
+link to it
+>> in the rst file in your 3rd patch. It is a good documentation for this=
+ special
+>> case.
+>
+> Makes sense. Will update Andrea's email link in the .rst file as well.
+>
+
+Look good to me. Thanks.
+
+Reviewed-by: Zi Yan <ziy@nvidia.com>
+
+=E2=80=94
+Best Regards,
+Yan Zi
+
+--=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJDBAEBCgAtFiEEh7yFAW3gwjwQ4C9anbJR82th+ooFAl584ZIPHHppeUBudmlk
+aWEuY29tAAoJEJ2yUfNrYfqKdy4P/3ofw7nekR6lj+F67bUoA1kamVe7nB1GPlMF
+gplxJACEyMz8W/H+UrHswz53iUk5KgB1Bbi1M2ZPJ7iYPGj0CvHyNTKqCMHHz0aW
+Bokl7IHbH04B5ISX11DtWPe6BJvH0VU8rVoLAI4HIASjFm3MpyJ/ZfeO9b4/LInH
+1P2gusknbYf2e8L7e5vm9miYGny0a9Tab2PQHB3CNRAORcyYUOON8z2Y3hZpuuXY
+pZDvALP7JzmSlZVsvQvPzfnefIqj7tTOD5/lTEHC3Y1HDbwMKqzmTWqgehHm2nux
+IkVja3DFoDDkRxxSYSH2hiBl5x0Z+qluDV9SAMZD6Jj3XGkpVrjgNAhlah6SXjGp
+UjW1XnXCrsCGvF+UykRAVT02MopL+VdNBv4r66+Z8OEAV2olX3V2TdHzxwdITf7a
+GL/dQ+I8di+wjOCqKHnfKBoqSHbP1P1P7UtRogKsXU47Fn4or1Uxqj/XB6TyYCYB
+I0A1cIFWyIPO4TuvpGsHXM1IewapQWf4Pv4T4xPG0Fs9Gk4dKBstEbfxrATQ1wNr
+OTliq9iSeRIhXnsAgENPcZjk1ZBGCw7ZdZ71eI5kZYmanGAoha+mONcnixD6aVQ8
+mCyt/2qwFsNJ2ZmCGjvGHYbf6u0fkPSSVGzarakQyrkVfdfCy6LGBC1GIcP18lOD
+ySDekypB
+=GWeO
+-----END PGP SIGNATURE-----
+
+--=_MailMate_2ACBE892-258B-474F-BA87-40148258F45E_=--
 
