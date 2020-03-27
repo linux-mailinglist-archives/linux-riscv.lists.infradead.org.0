@@ -2,84 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0CB91952F8
-	for <lists+linux-riscv@lfdr.de>; Fri, 27 Mar 2020 09:34:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A380195D30
+	for <lists+linux-riscv@lfdr.de>; Fri, 27 Mar 2020 18:53:39 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fAYVGJNIimAyG00gFMc1jxfAVQANq/okPzu47LrIvdk=; b=H5EwGjTYjGigfd8C+WsLwBkoF
-	TY5is55lmwLeACedpKm0vF/hVVk4pUFu1t/HuoxvXrj3qdG6E89GTnroEnJprePGlj/SAyxa6IISl
-	Y0+hSIeAIhTrV/o2QZMrlXHIkSUTTpAJHf8Sve/f78uLQjGcHzqKaq2mIHILrgulki/OEvgENHIEY
-	GVExxqbzNTyTECMJ0YTEwSJvytHevZuXJap8cgij7o0GFIv5L32DEl9hUCqjcg1Bjh9SKSBBPwBxT
-	jakRt11rrSw5LU+eXpDIGiN3DzLNPC4z0DbkD5jbqyoliwFpSF1aQAoXNPEe4Hlkf40ZlQOKsL5q6
-	VwV/3BhJA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:To:From:
+	Subject:Date:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Mkw52LsZ6nlRtEJ4Q5T/LK/F7/IwJaCpYdC0S/qED7M=; b=VwRljlVrXS6dXZi69nbRqwgsjk
+	cXNaNrIY5/sutH8qfif97egjfWC8duLt/4rDm+/KBivHzB2e7zMBn5zJ2lpne2qeoTozWE+E/xIQf
+	zurRQIna6xUr8mIGGjTsXQKD28OddGf8emCt700Emyfm7PqaqYcSIBW+/178UOtD0h3xWzFNWZ+uN
+	mNKL+L7phsjnlONQ7i3MENTduj+NEZpI63MCeDt1rFaEXuAPgsqGlKosX2Px0Urkha/f8dAsO7Q0N
+	EAkevqcguzHa2VGAL/7tSyMYXYjOpS3m9B8UeLnFOxUS6WtI7Em9DO2x8A5Hep1k8oQ8L0Ej+Qaur
+	xfFReycw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHkRA-0007lI-Tr; Fri, 27 Mar 2020 08:33:56 +0000
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42])
+	id 1jHtAh-0002lo-1h; Fri, 27 Mar 2020 17:53:31 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHkR6-0007kk-NP
- for linux-riscv@lists.infradead.org; Fri, 27 Mar 2020 08:33:54 +0000
-Received: by mail-qv1-xf42.google.com with SMTP id m2so4467126qvu.13
- for <linux-riscv@lists.infradead.org>; Fri, 27 Mar 2020 01:33:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fAYVGJNIimAyG00gFMc1jxfAVQANq/okPzu47LrIvdk=;
- b=aSLLT2aiCiyT3qNnTz/nl0SvyNz3QnnYJ8suTwEx3GnNhhp4vsumG51eT8w9cgpho2
- 7hqJznfoLhTQHiLfhU9I3htfbM5E02qcqCEFRZLZOiDtumaL/T/awkMTdkC4CInsbsNf
- GQrYJfVue/nZTypSbkcATS84xvPV3RDaFcn+UKq/qg3BQd+PntbpfZgKy1J2OROdbl9y
- jyo1Q4g/q/ovSZbk6vQGfDzocimrFE/BMEQajmgzCfz9NLCJIlgGNgq5yJGtSLqq7zFo
- dkVBPMpoMEO1ol1OL56cHlqqDPLz97XCpxOKkbbwSj7OG1ATDe7T4wVSeKbbN6Rn0+rn
- ADYQ==
+ id 1jHtAY-0002dI-JL
+ for linux-riscv@lists.infradead.org; Fri, 27 Mar 2020 17:53:26 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id ng8so4177843pjb.2
+ for <linux-riscv@lists.infradead.org>; Fri, 27 Mar 2020 10:53:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:cc:from:to:message-id;
+ bh=Mkw52LsZ6nlRtEJ4Q5T/LK/F7/IwJaCpYdC0S/qED7M=;
+ b=gQqx9TCDA3CS4l5CXZeRA7PlcZd2Fhx1miA/bBkPZi1g4bcF+GRzy7QwsdaAxAOJoy
+ MQsz07VWidxMup4R1X2YJ7+kZM/OZZ7pSkuaY8+0gE1fPuPMjxMOV9Io64MYcIxvVwLH
+ jpOgmIO9zZ8vBtNpwRQdPOL0/yomu7/lbA71RxL5GD6RmEQua2puGLTfTkfJ3+vV504p
+ 7+TgWTZcUVQmpWsExjo91TS3MG9aUg9OtVy45s2GVytXkHcKWEi1pQ4dleuFrOy9SmNj
+ nC5AgC+YcFZ8XJb8qLC/jzMrStdD7lSrIT/gcghDgb1UQ9O/BCnNZwlP26emYc35Fggb
+ w6Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fAYVGJNIimAyG00gFMc1jxfAVQANq/okPzu47LrIvdk=;
- b=WQab/wCdbbHZCFdwNsy2L4bvIgfuf0FqmlsJAOzKgOO6D/Ur+FoOU9/Mb3zrFz/XAT
- 8BgsrgcYGyx0/pLdJ+mNRQvtUK8/y1Qp6MchR+M4OyjNq+KS/ffQoUgF8IG+hL+a06dC
- 9I7JK7iblQHxCcdROD7sPsl/xOMh14wxnAI2GL9fTlzK161g8IXPp5QCtiSl5ZTWWX+7
- aSpE1jj0qmliYtdNU9xMpCLwj+ewytS/+85D2yJaKRMUp43n4etP85dwQK28K3gEDcVp
- MV+jB5kKevVVJzvsv5xSNm985j7bYRgjgwfHZlPZ6sZgH8wOC/dg6Jn04ptBv4ufJ49x
- 0eTA==
-X-Gm-Message-State: ANhLgQ2ECvUpcob8TeejnHZdBbmNDlQ9VMdNEEc/lCP1hgxU1xx2QcT1
- Eglmb8Z81rZbnVWUn+a5HsEbe6LkdP+L0EqfOWa2uQgfpdg=
-X-Google-Smtp-Source: ADFU+vvE52CTVRilfTa8ea9ItaixmNf/QhWnMRWAXsNH420m4FxufAIGwjr2bNvFMvlmlHHao5HjBqH7Yg39QgQKITg=
-X-Received: by 2002:ad4:5429:: with SMTP id g9mr12159726qvt.134.1585298031096; 
- Fri, 27 Mar 2020 01:33:51 -0700 (PDT)
-MIME-Version: 1.0
-References: <mhng-e1457171-db30-49be-9e98-298f4d1453ed@palmerdabbelt-glaptop1>
- <490218026.13345.1585239426829.JavaMail.zimbra@efficios.com>
-In-Reply-To: <490218026.13345.1585239426829.JavaMail.zimbra@efficios.com>
-From: Vincent Chen <vincent.chen@sifive.com>
-Date: Fri, 27 Mar 2020 16:33:40 +0800
-Message-ID: <CABvJ_xiGzFY6mUAx7xZDUuk=bUWt3SDsDyzFFODmtuXA28NQzg@mail.gmail.com>
-Subject: Re: [PATCH V2 3/3] rseq/selftests: Add support for riscv
-To: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:date:subject:cc:from:to:message-id;
+ bh=Mkw52LsZ6nlRtEJ4Q5T/LK/F7/IwJaCpYdC0S/qED7M=;
+ b=lbgil+mXnrlqdZEDuhvYhJ8IH0QQ1y665xSJqV/BpIVMAjmSYSiPLnHHf5C0zhWIH6
+ aEba7zuYWYxrUho/8gsKQkkl7Ie3zewwIiq7BwIxePn3Kbptmrv/3CzHlJ+LWCpVDa2s
+ GMfqSlRqo4cKjo1x5+WLayE3cTb+D3Xta6yXCW2Wpny9ejS5MHZjkIh8crM9+j4LSgxc
+ CTgJhF/YcL2b7E57whEc7o4x8LxJwLq2DeQGT4AIhZ4sxenJGhQp2GYlxj7WEj56LImT
+ C8gY+EgwkVumBRGXc8owfiGg4Qh/F0wXBPikSdbYFm+k7S6n7S6ppzMRUWmLi9x/2yWc
+ N0tw==
+X-Gm-Message-State: ANhLgQ1fWN6R0sjRWCOZxe9jX0x22hSyj/qncgnX1H0kD2mynqMsmXkK
+ JjAzyf+TktqKPdazqUoABi/jI3PYwx0=
+X-Google-Smtp-Source: ADFU+vvIc6Wjf8WOqjm9jzVUju2DkpVUYn57NK9O8ZTO+11p6gf0eYMgun2tKb/kqam7mst7Q8jYqg==
+X-Received: by 2002:a17:902:9889:: with SMTP id
+ s9mr222750plp.252.1585331598822; 
+ Fri, 27 Mar 2020 10:53:18 -0700 (PDT)
+Received: from localhost (c-67-161-15-180.hsd1.ca.comcast.net. [67.161.15.180])
+ by smtp.gmail.com with ESMTPSA id m9sm4545957pff.93.2020.03.27.10.53.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 Mar 2020 10:53:16 -0700 (PDT)
+Date: Fri, 27 Mar 2020 10:53:16 -0700 (PDT)
+X-Google-Original-Date: Fri, 27 Mar 2020 10:52:27 PDT (-0700)
+Subject: [GIT PULL] Last Minute RISC-V Patches for 5.6
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Message-ID: <mhng-06e46f55-fd4f-48ab-b741-cf487976999b@palmerdabbelt-glaptop1>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_013352_793402_5F991048 
-X-CRM114-Status: GOOD (  17.76  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200327_105322_693240_8A3859A5 
+X-CRM114-Status: GOOD (  11.69  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:f42 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,83 +88,52 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- linux-kselftest <linux-kselftest@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, Mar 27, 2020 at 12:17 AM Mathieu Desnoyers
-<mathieu.desnoyers@efficios.com> wrote:
->
-> ----- On Mar 26, 2020, at 11:49 AM, Palmer Dabbelt palmer@dabbelt.com wrote:
->
-> > On Sun, 08 Mar 2020 22:59:52 PDT (-0700), vincent.chen@sifive.com wrote:
-> >> Add support for risc-v in the rseq selftests, which covers both
-> >> 64-bit and 32-bit ISA with little endian mode.
-> >>
-> >> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> >> ---
-> >>  tools/testing/selftests/rseq/param_test.c |  23 ++
-> >>  tools/testing/selftests/rseq/rseq-riscv.h | 622 ++++++++++++++++++++++++++++++
-> >>  tools/testing/selftests/rseq/rseq.h       |   2 +
-> >>  3 files changed, 647 insertions(+)
-> >>  create mode 100644 tools/testing/selftests/rseq/rseq-riscv.h
-> >
-> > There are a ton of checkpatch errors in here.
->
-> Is it just my mail client or the main issue is:
->
-> ERROR: DOS line endings
->
-> ?
-I am not sure, but I did not run into this error in my environment.
+The following changes since commit fb33c6510d5595144d585aa194d377cf74d31911:
 
->
-> As far as other issues are concerned, I know there are a few checkpatch
-> false-positives that trigger for my rseq-{$ARCH}.h header, from which rseq-riscv.h
-> is derived, because it has issues with extensive use of inline assembly.
->
-> Thanks,
->
-> Mathieu
->
-Thank Mathieu for your explanation.
+  Linux 5.6-rc6 (2020-03-15 15:01:23 -0700)
 
-The errors reported by checkpatch.pl can be categorized into two
-cases. The first one is "need consistent spacing around %". such as
-ERROR: need consistent spacing around '%' (ctx:WxV)
-#628: FILE: tools/testing/selftests/rseq/rseq-riscv.h:572:
-+       RSEQ_ASM_DEFINE_EXIT_POINT(2f, %l[error2])
-where RSEQ_ASM_DEFINE_EXIT_POINT is defined as below
-#define RSEQ_ASM_DEFINE_EXIT_POINT(start_ip, exit_ip) \
-    ".pushsection __rseq_exit_point_array, \"aw\"\n"        \
-    ".quad " __rseq_str(start_ip) ", " __rseq_str(exit_ip) "\n"  \
-    ".popsection\n"
+are available in the Git repository at:
 
-These errors were mainly found in the rseq-riscv.h. As Mathieu
-mentioned, the RSEQ_ASM_DEFINE_EXIT_POINT macro is used in the inline
-assembly, which the second argument %l[error2] indicates the error2 is
-a label and it locates outside of the inline assembly. To obey the
-syntax, I cannot add a space after % to fix this bug.
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv-for-linus-5.6
 
-The second kind of error is "Macros with complex values should be
-enclosed in parentheses" such as
-ERROR: Macros with complex values should be enclosed in parentheses
-#27: FILE: tools/testing/selftests/rseq/param_test.c:210:
-+#define RSEQ_INJECT_INPUT \
-+       , [loop_cnt_1]"m"(loop_cnt[1]) \
-+       , [loop_cnt_2]"m"(loop_cnt[2]) \
-+       , [loop_cnt_3]"m"(loop_cnt[3]) \
-+       , [loop_cnt_4]"m"(loop_cnt[4]) \
-+       , [loop_cnt_5]"m"(loop_cnt[5]) \
-+       , [loop_cnt_6]"m"(loop_cnt[6])
-In this case, it was a input operand list of inline assembly, so I
-could not add parentheses to enclose them. Except for these two kinds
-of error, there are two erros could be solved by adding parentheses. I
-also checked it and I think it would be safe. So, I mimic the
-implementations of other architecture without using parenthese. If
-needed, I think can add the parenthese to solve these two errors.
-Thanks
+for you to fetch changes up to 2191b4f298fa360f2d1d967c2c7db565bea2c32e:
+
+  RISC-V: Move all address space definition macros to one place (2020-03-26 19:26:11 -0700)
+
+----------------------------------------------------------------
+Last Minute RISC-V Patches for 5.6
+
+Sorry for the last minute patches, but a few things fell through the cracks
+recently.  I was on the fence about sending a late PR just for the M-mode
+fixes, as we don't really have any users, but the last patch fixes the build
+for Fedora which I consider pretty important.  Given that the M-mode fixes
+should be very low risk, I figured it's worth sending them along as well.
+
+This passes my standard "boot in QEMU" test.
+
+----------------------------------------------------------------
+Anup Patel (1):
+      RISC-V: Only select essential drivers for SOC_VIRT config
+
+Atish Patra (1):
+      RISC-V: Move all address space definition macros to one place
+
+Greentime Hu (2):
+      riscv: uaccess should be used in nommu mode
+      riscv: fix the IPI missing issue in nommu mode
+
+ arch/riscv/Kconfig                |  1 -
+ arch/riscv/Kconfig.socs           | 14 -------
+ arch/riscv/configs/defconfig      | 16 +++++++-
+ arch/riscv/configs/rv32_defconfig | 16 +++++++-
+ arch/riscv/include/asm/clint.h    |  8 ++--
+ arch/riscv/include/asm/pgtable.h  | 78 ++++++++++++++++++++-------------------
+ arch/riscv/include/asm/uaccess.h  | 36 +++++++++---------
+ arch/riscv/kernel/smp.c           |  2 +-
+ arch/riscv/lib/Makefile           |  2 +-
+ 9 files changed, 95 insertions(+), 78 deletions(-)
 
