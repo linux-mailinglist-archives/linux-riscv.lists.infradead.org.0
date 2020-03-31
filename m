@@ -2,83 +2,94 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABC29199B70
-	for <lists+linux-riscv@lfdr.de>; Tue, 31 Mar 2020 18:28:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A97CB1999F6
+	for <lists+linux-riscv@lfdr.de>; Tue, 31 Mar 2020 17:40:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xmejv1WCFjjBIgLzMgbivb8GEaT8ygX9pEG6om1gl3E=; b=GDANXTxBWJ4J2j
-	ssdmpfYT0W85KW2D9vjViQQtX6/nqfg4i2FtbiISUdoRqv7i5esjPgdVbNhEIyJSAJXswP5QXZIbQ
-	jFqvLqgj4Z88FIK3l2TQqoIb9ALFpQZ8qd/zAMDlFA5qW2ylr/oPbKDLPsksQCEOTwvn9S37OM3pC
-	d47Q4M3HVdSx6nr6c8EYi+d3T613RHJjkYmSxz9rq6JH3IinSyclLD59+revQkCrfIKak8vHKLWEP
-	clIfflBR/Vl70JIv0Z6t3DtSqkRNfo1WSvWT1kBibxAfrfYQEnULctP0f6vSgq1983a3bL/oEeUUD
-	XhB8QqCGgEe13ep8tPGQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=laYdX8SYLKwokEzwLodIvxGl4rv4+SIsd0vubo9f6sU=; b=dLUD3uwmoGGi/3htSclslf5T6
+	KlukbiJS9SwWDrrP1xWB9PHp6GLgt6uTKvMl4CG+HPn4PVqNaGMRZlwwx/+XwRXdScJqhWYZgPdk5
+	WonAh2656a+dL+OwjPal5OctmKRE35AEceFFJAM7JE3yGWijFbr7sB720rB7m3py1CPnKAtolfAEU
+	HCkAwk59PzGj9BPQ784E9lbsa509xsivPwWhHjiAJK94DcL0geqBVUse46p/Lk8SIBOmUCc2sPSB7
+	n3zwrTjLRv9U6wapB8V4UCuEYgsgxmTj+vbnKxsgIlsaofixGWjY4e5gYFUC4tnUYbiz+oY7xCYCv
+	VZoXow5yA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJJk4-0007ol-I7; Tue, 31 Mar 2020 16:27:56 +0000
-Received: from merlin.infradead.org ([205.233.59.134])
+	id 1jJJ0N-00074q-MA; Tue, 31 Mar 2020 15:40:43 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJJjC-00074j-Ul
- for linux-riscv@bombadil.infradead.org; Tue, 31 Mar 2020 16:27:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:From:Date:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=Xmejv1WCFjjBIgLzMgbivb8GEaT8ygX9pEG6om1gl3E=; b=P+LOj/3+/pEYciirsQwuQbQkxP
- rQxSNwGgYPIQjABzslFBvOnQbCKnoD5qWnbCy86dJfGyfOuLzzeUd/U8QmdQJFjUvHbl2M4n8h0jh
- 7Y6nezk8qStDzrZk7oUo+WgnlOx8+Aob2KufQbEVCSR88QjAnZ+iUV8s5vICSiZemP/3tvsKdOtQE
- L50/lSaU/lyztXVD52tSAXN1EBKhZhkh1XI+ip5RNy1wXKTKu/WN/H4fkn6gRnwTIOILoTfx0ZvOl
- UQnCxN4aZDdLAe1kCaNp07gfDAxGxkwPNOB/47dacUnOc/Y1SZSvuhueK9Wldvi+FpGVdFcaofddY
- ekYQV+gg==;
-Received: from mail.kernel.org ([198.145.29.99])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJH0m-0002E1-Hm
- for linux-riscv@lists.infradead.org; Tue, 31 Mar 2020 13:33:01 +0000
-Received: from devnote2 (NE2965lan1.rev.em-net.ne.jp [210.141.244.193])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 47A652071A;
- Tue, 31 Mar 2020 13:32:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585661578;
- bh=xjsNuevst2hdoei+2YBbw5AgZ2uz8egnJHzxF30a8nE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=AKHoXwoa7Zff+4XX9H7YktH1P5TqfcvSPOjj3q5b12fvv7S5USQRJJavhLGvPoq1r
- v2jq3btdOo7/KW9kO57RD6C7jxevyGTT5TsbRizoP7pFIC44Pi0ZZUz11qzo34gefh
- WUZq/LzvwaNl+ty9qjxc3W99SMtO0ucdw+uQt5KQ=
-Date: Tue, 31 Mar 2020 22:32:54 +0900
-From: Masami Hiramatsu <mhiramat@kernel.org>
-To: Zong Li <zong.li@sifive.com>
-Subject: Re: [PATCH v3 0/9] Support strict kernel memory permissions for
- security
-Message-Id: <20200331223254.919b92750962fefed5a6646f@kernel.org>
-In-Reply-To: <cover.1583772574.git.zong.li@sifive.com>
-References: <cover.1583772574.git.zong.li@sifive.com>
-X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Spam-Note: CRM114 invocation failed
-X-Spam-Score: -5.4 (-----)
-X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
- Content analysis details:   (-5.4 points)
+ id 1jJJ0I-0006zv-Hk
+ for linux-riscv@lists.infradead.org; Tue, 31 Mar 2020 15:40:40 +0000
+Received: by mail-wm1-x344.google.com with SMTP id 11so1879492wmi.2
+ for <linux-riscv@lists.infradead.org>; Tue, 31 Mar 2020 08:40:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=laYdX8SYLKwokEzwLodIvxGl4rv4+SIsd0vubo9f6sU=;
+ b=KAsoI0+ee6qrMG/GK3qGzIOQZiFmb1UlAzTF+vx4sKRB7hV4NdcmkyMjXegZ+Wf+GW
+ jNe+DPxQDMBJhFQYPxHvEg8FvLATvx/AJQpTnOBjGkLXaZvApbMCDur7nkBjXbSh4OQu
+ ZwfpVLsnQEB232+mKzbPYABGmSnSg/GeoW/SUvP31zJepNBCZs8mQeOmoBLg9/YQg2Ub
+ 5WI7kL5wnPiuthj808OT5+SYqJQX6cL6xkYHq7DYcEbk9n36sAyXn55ItE2/T/R03iuF
+ P83esGL//YfzvdyRkeyo4e4qPxiIiZxfWICDAk7damLOOrqmr0/mwql2n5+KyDFEGq0V
+ r0Hw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=laYdX8SYLKwokEzwLodIvxGl4rv4+SIsd0vubo9f6sU=;
+ b=e/l0G8w0dJ+apAy1d7Df9cJo6zH92PmvEaQnER2PFW3YFp1xlbjwM8mz1xct1WYEDJ
+ tg2DuFmv1LLU9kZy7jIcifEKLtf3CX2xUKs6yfU77gB8Ya4FBmDMVmnsTqle1h5E0dub
+ MIju/uQrTJhUMghxY/Qd24C9/QhZ1IDsuVX+hLkCT3kYukybGVIIKnCZTod4na/vVnfQ
+ x97f1cmWT4AfD3iKuujprNHboUYZMZCkW9ic2pycTQVhtggqW4P5uFxdFGi8k00H43Bx
+ fymOFiQPRN1J8yOkDHscuRhmEkeZrzjFAaujMEtrT8uuWFR2QGpusGObngC0eq/s0O6C
+ z9vA==
+X-Gm-Message-State: ANhLgQ09QaqQMQ/azNF1BFm1lkd12N6SPz23soU2rY1aFQshkC6Ba+Ll
+ 1xhHquazzmg2Ml1wdl5wzMdCvy0FQOJiyhdB
+X-Google-Smtp-Source: ADFU+vtWlastqoLteS210RbEXN0iDWNiyv+TlLVc7yqALe7NaemPCdM/9rCwUXyGtP+jZ7EGnESSKA==
+X-Received: by 2002:a1c:7d88:: with SMTP id y130mr3774026wmc.5.1585662489028; 
+ Tue, 31 Mar 2020 06:48:09 -0700 (PDT)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id u16sm27335524wro.23.2020.03.31.06.48.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Mar 2020 06:48:08 -0700 (PDT)
+Date: Tue, 31 Mar 2020 14:48:04 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Guru Das Srinagesh <gurus@codeaurora.org>
+Subject: Re: [PATCH v10 00/12] Convert PWM period and duty cycle to u64
+Message-ID: <20200331134804.xxrjaestztcazalc@holly.lan>
+References: <cover.1584650604.git.gurus@codeaurora.org>
+ <20200321114703.GB4672@kadam>
+ <20200330191506.GA29534@codeaurora.org>
+ <20200330202636.njjo4savgzf3g6yx@holly.lan>
+ <20200330210012.GA27611@codeaurora.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200330210012.GA27611@codeaurora.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200331_084038_606257_D92B0753 
+X-CRM114-Status: GOOD (  19.40  )
+X-Spam-Score: -0.2 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,77 +101,90 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu, palmer@dabbelt.com,
- linux-kernel@vger.kernel.org, paul.walmsley@sifive.com
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ Daniel Vetter <daniel@ffwll.ch>, linux-fbdev@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, "Wesley W. Terpstra" <wesley@sifive.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Kamil Debski <kamil@wypas.org>, dri-devel@lists.freedesktop.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Atish Patra <atish.patra@wdc.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ linux-riscv@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-clk@vger.kernel.org,
+ Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Axel Lin <axel.lin@ingics.com>,
+ Arnd Bergmann <arnd@arndb.de>, Alexander Shiyan <shc_work@mail.ru>,
+ Fabio Estevam <festevam@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ NXP Linux Team <linux-imx@nxp.com>, Mukesh Ojha <mojha@codeaurora.org>,
+ Gerald Baeza <gerald.baeza@st.com>, intel-gfx@lists.freedesktop.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mark Brown <broonie@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Subbaraman Narayanamurthy <subbaram@codeaurora.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
+ Ding Xiang <dingxiang@cmss.chinamobile.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Allison Randal <allison@lohutok.net>, linux-hwmon@vger.kernel.org,
+ Chris Wilson <chris@chris-wilson.co.uk>, Anson Huang <Anson.Huang@nxp.com>,
+ Richard Fontana <rfontana@redhat.com>, Stephen Boyd <sboyd@kernel.org>,
+ Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org,
+ Yash Shah <yash.shah@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Zong,
+On Mon, Mar 30, 2020 at 02:00:12PM -0700, Guru Das Srinagesh wrote:
+> On Mon, Mar 30, 2020 at 09:26:36PM +0100, Daniel Thompson wrote:
+> > On Mon, Mar 30, 2020 at 12:15:07PM -0700, Guru Das Srinagesh wrote:
+> > > On Sat, Mar 21, 2020 at 02:47:03PM +0300, Dan Carpenter wrote:
+> > > > This is a giant CC list.
+> > > 
+> > > Yes, this is because I received feedback [1] on an earlier patchset
+> > > directing me to add the reviewers of patches to the cover letter as
+> > > well so that they get some context for the patch.
+> > > ...
+> > > [1] https://www.spinics.net/lists/linux-pwm/msg11735.html
+> > 
+> > Strictly speaking I only asked for backlight maintainers to be Cc:ed.
+> > I was fairly careful to be specific since I'm aware there are a variety
+> > of differing habits when putting together the Cc: list for covering
+> > letters.
+> > 
+> > With the original patch header the purpose of the patch I was Cc:ed on
+> > was impossible to determine without the covering letter.
+> 
+> I suspect this might be the case for all the other reviewers as well -
+> that they also would appreciate context for the specific patch they are
+> being added to review.
+> 
+> I wasn't entirely sure what the convention was, so I applied your
+> suggestion to all the files. How do you suggest I handle this in my next
+> patchset? I fully agree that such a large CC list does look really
+> ungainly.
 
-On Tue, 10 Mar 2020 00:55:35 +0800
-Zong Li <zong.li@sifive.com> wrote:
+IHMO there should not be a mechanical convention. Instead your goal
+needs to be how to make it as easy as possible to review your patches.
 
-> The main purpose of this patch series is changing the kernel mapping permission
-> , make sure that code is not writeable, data is not executable, and read-only
-> data is neither writable nor executable.
-> 
-> This patch series also supports the relevant implementations such as
-> ARCH_HAS_SET_MEMORY, ARCH_HAS_SET_DIRECT_MAP,
-> ARCH_SUPPORTS_DEBUG_PAGEALLOC and DEBUG_WX.
+Think about it this way: Each person in the To: of a patch (and maybe
+also Cc: depending on how you construct things) is a person you are
+asking to review and comment on the patch. If that person will find it
+easier to review the patch if they are included in the cover letter then
+either they should be included or you should improve the patch
+description of the patch itself (sometimes both).
 
-The order of the patches seems a bit strange. Since the first 7 patches
-makes kernel read-only, at that point ftrace is broken and it is fixed
-by the last 2 patches. That is not bisect-friendly. Can you move the
-last 2 patches to the top?
-
-Thank you,
-
-> 
-> Changes in v3:
->  - Fix build error on nommu configuration. We already support nommu on
->    RISC-V, so we should consider nommu case and test not only rv32/64,
->    but also nommu.
-> 
-> Changes in v2:
->  - Use _data to specify the start of data section with write permission.
->  - Change ftrace patch text implementaion.
->  - Separate DEBUG_WX patch to another patchset.
-> 
-> Zong Li (9):
->   riscv: add ARCH_HAS_SET_MEMORY support
->   riscv: add ARCH_HAS_SET_DIRECT_MAP support
->   riscv: add ARCH_SUPPORTS_DEBUG_PAGEALLOC support
->   riscv: move exception table immediately after RO_DATA
->   riscv: add alignment for text, rodata and data sections
->   riscv: add STRICT_KERNEL_RWX support
->   riscv: add macro to get instruction length
->   riscv: introduce interfaces to patch kernel code
->   riscv: patch code by fixmap mapping
-> 
->  arch/riscv/Kconfig                  |   6 +
->  arch/riscv/include/asm/bug.h        |   8 ++
->  arch/riscv/include/asm/fixmap.h     |   2 +
->  arch/riscv/include/asm/patch.h      |  12 ++
->  arch/riscv/include/asm/set_memory.h |  48 +++++++
->  arch/riscv/kernel/Makefile          |   4 +-
->  arch/riscv/kernel/ftrace.c          |  13 +-
->  arch/riscv/kernel/patch.c           | 120 ++++++++++++++++++
->  arch/riscv/kernel/traps.c           |   3 +-
->  arch/riscv/kernel/vmlinux.lds.S     |  11 +-
->  arch/riscv/mm/Makefile              |   2 +-
->  arch/riscv/mm/init.c                |  44 +++++++
->  arch/riscv/mm/pageattr.c            | 187 ++++++++++++++++++++++++++++
->  13 files changed, 445 insertions(+), 15 deletions(-)
->  create mode 100644 arch/riscv/include/asm/patch.h
->  create mode 100644 arch/riscv/include/asm/set_memory.h
->  create mode 100644 arch/riscv/kernel/patch.c
->  create mode 100644 arch/riscv/mm/pageattr.c
-> 
-> -- 
-> 2.25.1
-> 
+Either way it is about optimizing the patchset for readability. More
+people read them than write them.
 
 
--- 
-Masami Hiramatsu <mhiramat@kernel.org>
+Daniel.
 
