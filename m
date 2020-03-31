@@ -2,40 +2,40 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 003A0199261
-	for <lists+linux-riscv@lfdr.de>; Tue, 31 Mar 2020 11:38:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60ABC199252
+	for <lists+linux-riscv@lfdr.de>; Tue, 31 Mar 2020 11:34:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OUlrZC/jATrdMXw10aZ5qI0/2xnwzogUsRtOAkexaQE=; b=btw06Uzx8ELhiLoVKeEAlfMRy
-	jK9IDipb7A1pktbY1oOiazuE+lwsppYPenF2xFUFwnrme2xsYD9ou5MnhGBwJK8oZdjtmanIILV5e
-	ih8+iKTGRXFYO1J9grVDxd6JyKvASxIo5fYektttIvwyj26hN7VchqCxHeJ37Hcry5i0a2eYaR/Pe
-	QjUUlJHMxMnctsXyrZxaFfmMmqLDXRDoHOT30fCl+m1gCszNTkl9jm4DOgWOS0ccJ0InhsjYVTP69
-	hN3kQI/G3Mqc9Ufpf1ey9ZVg1caO0kalwShg2CNP2a1HyDyTUkbsLbeWxlzsoD29849JJpv/qClwh
-	6Ui8aGjdg==;
+	 bh=6+GA6TPn1/jyf3of6CTm6UByCblZrDhZ24yjKpPpfxA=; b=dIIgpmDvoCg8ozlL6aAl/ru4q
+	ufIu9ua8FIyy3tbjKFcrT0immJ9/DXglZYiLsV1nI9gJ992cCzx3U7stQFujiusvl6s1zhNqVV2aq
+	x5A2TaCPgJuhFPL999aEuYikLkbtU/B90Qko+fynDspyJTLUoaItiROrVBYknv19ZHCT64yrjaeQX
+	5FCRM59BOXnBYXJaNPgIKCxF/OY4gszI9K+oybZ/r4bFdoNUFbWsQ5AZdVHT40x0X1UfOJHxhVkb5
+	qU9AtemjbFLGD78A/FlCSXYd50E9WapWxlyeEgf2AHU5vHcwoBq2Wi6YgLaX46kOYfq2wTpQYLFmg
+	IozB6QXxA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJDLN-00060Z-LA; Tue, 31 Mar 2020 09:38:01 +0000
+	id 1jJDHZ-0003nY-V5; Tue, 31 Mar 2020 09:34:05 +0000
 Received: from 59-120-53-16.hinet-ip.hinet.net ([59.120.53.16]
  helo=ATCSQR.andestech.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJDLJ-0005ze-9C
- for linux-riscv@lists.infradead.org; Tue, 31 Mar 2020 09:37:58 +0000
+ id 1jJDHV-0003mK-B9
+ for linux-riscv@lists.infradead.org; Tue, 31 Mar 2020 09:34:03 +0000
 Received: from mail.andestech.com (atcpcs16.andestech.com [10.0.1.222])
- by ATCSQR.andestech.com with ESMTP id 02V9WGga065487;
- Tue, 31 Mar 2020 17:32:16 +0800 (GMT-8)
+ by ATCSQR.andestech.com with ESMTP id 02V9WLWb065506;
+ Tue, 31 Mar 2020 17:32:21 +0800 (GMT-8)
  (envelope-from tesheng@andestech.com)
 Received: from atcsqa06.andestech.com (10.0.15.65) by ATCPCS16.andestech.com
  (10.0.1.222) with Microsoft SMTP Server id 14.3.123.3; Tue, 31 Mar 2020
- 17:33:08 +0800
+ 17:33:15 +0800
 From: Eric Lin <tesheng@andestech.com>
 To: <linux-riscv@lists.infradead.org>
-Subject: [PATCH 2/3] riscv/mm: Implement kmap() and kmap_atomic()
-Date: Tue, 31 Mar 2020 17:32:40 +0800
-Message-ID: <20200331093241.3728-3-tesheng@andestech.com>
+Subject: [PATCH 3/3] riscv/mm: Add pkmap in print_vm_layout()
+Date: Tue, 31 Mar 2020 17:32:41 +0800
+Message-ID: <20200331093241.3728-4-tesheng@andestech.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20200331093241.3728-1-tesheng@andestech.com>
 References: <20200331093241.3728-1-tesheng@andestech.com>
@@ -43,10 +43,11 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.0.15.65]
 X-DNSRBL: 
-X-MAIL: ATCSQR.andestech.com 02V9WGga065487
+X-MAIL: ATCSQR.andestech.com 02V9WLWb065506
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_023757_582439_B951A3D3 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20200331_023401_643334_26B5A4F7 
+X-CRM114-Status: UNSURE (   5.90  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.4 points)
@@ -78,208 +79,51 @@ Cc: aou@eecs.berkeley.edu, gary@garyguo.net, alex@ghiti.fr,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Both kmap() and kmap_atomic() help kernel to create
-temporary mappings from a highmem page.
+When enabling CONFIG_HIGHMEM, lowmem will before pkmap
+region and the memory layout will be like as below:
 
-Be aware that use kmap() might put calling function to sleep
-and it cannot use in interrupt context. kmap_atomic() is an
-atomic version of kmap() which can be used in interrupt context
-and it is faster than kmap() because it doesn't hold a lock.
-
-Here we preserve some memory slots from fixmap region for
-kmap_atomic() and kmap() will use pkmap region.
+Virtual kernel memory layout:
+      lowmem : 0xc0000000 - 0xf5400000   ( 852 MB)
+       pkmap : 0xf5600000 - 0xf5800000   (   2 MB)
+      fixmap : 0xf5800000 - 0xf5c00000   (4096 kB)
+      pci io : 0xf5c00000 - 0xf6c00000   (  16 MB)
+     vmemmap : 0xf6c00000 - 0xf7bfffff   (  15 MB)
+     vmalloc : 0xf7c00000 - 0xffc00000   ( 128 MB)
 
 Signed-off-by: Eric Lin <tesheng@andestech.com>
 Cc: Alan Kao <alankao@andestech.com>
 ---
- arch/riscv/include/asm/fixmap.h  |  9 +++-
- arch/riscv/include/asm/highmem.h | 30 +++++++++++++
- arch/riscv/include/asm/pgtable.h |  5 +++
- arch/riscv/mm/Makefile           |  1 +
- arch/riscv/mm/highmem.c          | 74 ++++++++++++++++++++++++++++++++
- 5 files changed, 118 insertions(+), 1 deletion(-)
- create mode 100644 arch/riscv/mm/highmem.c
+ arch/riscv/mm/init.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
-index 42d2c42f3cc9..8dedc2bf2917 100644
---- a/arch/riscv/include/asm/fixmap.h
-+++ b/arch/riscv/include/asm/fixmap.h
-@@ -1,6 +1,7 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- /*
-  * Copyright (C) 2019 Western Digital Corporation or its affiliates.
-+ * Copyright (C) 2020 Andes Technology Corporation
-  */
- 
- #ifndef _ASM_RISCV_FIXMAP_H
-@@ -10,6 +11,7 @@
- #include <linux/sizes.h>
- #include <asm/page.h>
- #include <asm/pgtable.h>
-+#include <asm/kmap_types.h>
- 
- #ifdef CONFIG_MMU
- /*
-@@ -28,7 +30,12 @@ enum fixed_addresses {
- 	FIX_PTE,
- 	FIX_PMD,
- 	FIX_EARLYCON_MEM_BASE,
--	__end_of_fixed_addresses
-+#ifdef CONFIG_HIGHMEM
-+	FIX_KMAP_RESERVED,
-+	FIX_KMAP_BEGIN,
-+	FIX_KMAP_END = FIX_KMAP_BEGIN + (KM_TYPE_NR * NR_CPUS),
-+#endif
-+	__end_of_fixed_addresses,
- };
- 
- #define FIXMAP_PAGE_IO		PAGE_KERNEL
-diff --git a/arch/riscv/include/asm/highmem.h b/arch/riscv/include/asm/highmem.h
-index 7fc79e58f607..ec7c83d55830 100644
---- a/arch/riscv/include/asm/highmem.h
-+++ b/arch/riscv/include/asm/highmem.h
-@@ -17,3 +17,33 @@
- #define PKMAP_NR(virt)	(((virt) - (PKMAP_BASE)) >> PAGE_SHIFT)
- #define PKMAP_ADDR(nr)	(PKMAP_BASE + ((nr) << PAGE_SHIFT))
- #define kmap_prot		PAGE_KERNEL
-+
-+static inline void flush_cache_kmaps(void)
-+{
-+	flush_cache_all();
-+}
-+
-+/* Declarations for highmem.c */
-+extern unsigned long highstart_pfn, highend_pfn;
-+
-+extern pte_t *pkmap_page_table;
-+
-+extern void *kmap_high(struct page *page);
-+extern void kunmap_high(struct page *page);
-+
-+extern void kmap_init(void);
-+
-+/*
-+ * The following functions are already defined by <linux/highmem.h>
-+ * when CONFIG_HIGHMEM is not set.
-+ */
-+#ifdef CONFIG_HIGHMEM
-+extern void *kmap(struct page *page);
-+extern void kunmap(struct page *page);
-+extern void *kmap_atomic(struct page *page);
-+extern void __kunmap_atomic(void *kvaddr);
-+extern void *kmap_atomic_pfn(unsigned long pfn);
-+extern struct page *kmap_atomic_to_page(void *ptr);
-+#endif
-+
-+#endif
-diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-index d9a3769f1f4e..1a774d5a8bbc 100644
---- a/arch/riscv/include/asm/pgtable.h
-+++ b/arch/riscv/include/asm/pgtable.h
-@@ -200,6 +200,11 @@ static inline pgd_t *pgd_offset(const struct mm_struct *mm, unsigned long addr)
- /* Locate an entry in the kernel page global directory */
- #define pgd_offset_k(addr)      pgd_offset(&init_mm, (addr))
- 
-+#ifdef CONFIG_HIGHMEM
-+/* Locate an entry in the second-level page table */
-+#define pmd_off_k(addr)  pmd_offset((pud_t *)pgd_offset_k(addr), addr)
-+#endif
-+
- static inline struct page *pmd_page(pmd_t pmd)
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index 59afb479176a..b32d558e3f99 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -80,6 +80,12 @@ static inline void print_mlm(char *name, unsigned long b, unsigned long t)
+ static void print_vm_layout(void)
  {
- 	return pfn_to_page(pmd_val(pmd) >> _PAGE_PFN_SHIFT);
-diff --git a/arch/riscv/mm/Makefile b/arch/riscv/mm/Makefile
-index 50b7af58c566..6f9305afc632 100644
---- a/arch/riscv/mm/Makefile
-+++ b/arch/riscv/mm/Makefile
-@@ -16,6 +16,7 @@ obj-$(CONFIG_SMP) += tlbflush.o
- endif
- obj-$(CONFIG_HUGETLB_PAGE) += hugetlbpage.o
- obj-$(CONFIG_KASAN)   += kasan_init.o
-+obj-$(CONFIG_HIGHMEM) += highmem.o
- 
- ifdef CONFIG_KASAN
- KASAN_SANITIZE_kasan_init.o := n
-diff --git a/arch/riscv/mm/highmem.c b/arch/riscv/mm/highmem.c
-new file mode 100644
-index 000000000000..b01ebe34619e
---- /dev/null
-+++ b/arch/riscv/mm/highmem.c
-@@ -0,0 +1,74 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2005-2020 Andes Technology Corporation
-+ */
-+
-+#include <linux/export.h>
-+#include <linux/highmem.h>
-+#include <linux/sched.h>
-+#include <linux/smp.h>
-+#include <linux/interrupt.h>
-+#include <asm/fixmap.h>
-+#include <asm/pgtable.h>
-+#include <asm/tlbflush.h>
-+
-+void *kmap(struct page *page)
-+{
-+	unsigned long vaddr;
-+
-+	might_sleep();
-+	if (!PageHighMem(page))
-+		return page_address(page);
-+	vaddr = (unsigned long)kmap_high(page);
-+	return (void *)vaddr;
-+}
-+EXPORT_SYMBOL(kmap);
-+
-+void kunmap(struct page *page)
-+{
-+	BUG_ON(in_interrupt());
-+	if (!PageHighMem(page))
-+		return;
-+	kunmap_high(page);
-+}
-+EXPORT_SYMBOL(kunmap);
-+
-+void *kmap_atomic(struct page *page)
-+{
-+	unsigned int idx;
-+	unsigned long vaddr;
-+	int type;
-+	pte_t *ptep;
-+
-+	preempt_disable();
-+	pagefault_disable();
-+
-+	if (!PageHighMem(page))
-+		return page_address(page);
-+
-+	type = kmap_atomic_idx_push();
-+
-+	idx = type + KM_TYPE_NR * smp_processor_id();
-+	vaddr = __fix_to_virt(FIX_KMAP_BEGIN + idx);
-+
-+	ptep = pte_offset_kernel(pmd_off_k(vaddr), vaddr);
-+	set_pte(ptep, mk_pte(page, kmap_prot));
-+
-+	return (void *)vaddr;
-+}
-+EXPORT_SYMBOL(kmap_atomic);
-+
-+void __kunmap_atomic(void *kvaddr)
-+{
-+	if (kvaddr >= (void *)FIXADDR_START && kvaddr < (void *)FIXADDR_TOP) {
-+		unsigned long vaddr = (unsigned long)kvaddr;
-+		pte_t *ptep;
-+
-+		kmap_atomic_idx_pop();
-+		ptep = pte_offset_kernel(pmd_off_k(vaddr), vaddr);
-+		set_pte(ptep, __pte(0));
-+	}
-+	pagefault_enable();
-+	preempt_enable();
-+}
-+EXPORT_SYMBOL(__kunmap_atomic);
+ 	pr_notice("Virtual kernel memory layout:\n");
++#ifdef CONFIG_HIGHMEM
++	print_mlm("lowmem", (unsigned long)PAGE_OFFSET,
++		  (unsigned long)high_memory);
++	print_mlm("pkmap", (unsigned long)PKMAP_BASE,
++		  (unsigned long)FIXADDR_START);
++#endif
+ 	print_mlk("fixmap", (unsigned long)FIXADDR_START,
+ 		  (unsigned long)FIXADDR_TOP);
+ 	print_mlm("pci io", (unsigned long)PCI_IO_START,
+@@ -88,8 +94,10 @@ static void print_vm_layout(void)
+ 		  (unsigned long)VMEMMAP_END);
+ 	print_mlm("vmalloc", (unsigned long)VMALLOC_START,
+ 		  (unsigned long)VMALLOC_END);
++#ifndef CONFIG_HIGHMEM
+ 	print_mlm("lowmem", (unsigned long)PAGE_OFFSET,
+ 		  (unsigned long)high_memory);
++#endif
+ }
+ #else
+ static void print_vm_layout(void) { }
 -- 
 2.17.0
 
