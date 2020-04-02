@@ -2,86 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1063019BE3C
-	for <lists+linux-riscv@lfdr.de>; Thu,  2 Apr 2020 10:56:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F25BF19BEB3
+	for <lists+linux-riscv@lfdr.de>; Thu,  2 Apr 2020 11:32:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h09wq+dScd3G1lPfYna5Eel+LXgpSjdYtjatbyrFm9Y=; b=MMZg+ykGrR6UlulmiO3CnJmMCL
-	vKRrnJ40ptoRg+tN8+EGgnvz0kRErviQneSGw1idQ6i7EzI/wtYCz2g78SfJrme6SggY+oSitvoKQ
-	ZlZ6hdp5Fawp5GAYon82RorxkqSY/F/JN0MZu2HEQsHNQVeVeoeoRptn9c9em8cDW08p72tzSQSOQ
-	vMiVJPYZiOHE6CVa80AoyUK18gzzrcjMY0kTRCM/yprkplkyP31tNR9pz33QVNRYEZJv/xO3XYWft
-	X86vX9/xrc4j1dmKU2gGyPC0sT9uMrSrN6qoMtLxTHZ/m87XzZQdjTCZJWUO8eWHgn17X6scmtJ74
-	GSc8q1rw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jyLGy4wIa9YpfvGIOZu1h8jBq1vT93tHHQe1KR3dfrU=; b=cVGmEaSbHhkwAwcHLMIp5QMf7
+	/V1W8sRPS6Qk5eH/yoTSDYtQjRQfqtdmujkj9u2GxlA90afh5CP6pAiTddj5XBrw0wc1FycX0EVKv
+	la8LJQazhkgTI+omyGDo05QAIzS86qR8ari6RCHN8NLnIdoaanTeSr2qODSjjIciWo2adEAeofdME
+	vADEa1FD8zfcIXzfBIlV2zd1ZplfS265zi9C3qCJk4jVJqtVe/Ix0A8k95isi6LEBtygIVV8Ty4+F
+	tw0oQLfXwG+C/NvnhsqOcI1ptQMzlXgrK8gjy7O+PCSr97PV7O/7pv+hRYiaV1l/4oa6ywcfp0C47
+	UuW/N5f4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJve3-0004Vf-9t; Thu, 02 Apr 2020 08:56:15 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jJwCf-0003Nj-J0; Thu, 02 Apr 2020 09:32:01 +0000
+Received: from mout.kundenserver.de ([212.227.126.134])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJve0-0004Ul-5D
- for linux-riscv@lists.infradead.org; Thu, 02 Apr 2020 08:56:13 +0000
-Received: by mail-wr1-x441.google.com with SMTP id j17so3125446wru.13
- for <linux-riscv@lists.infradead.org>; Thu, 02 Apr 2020 01:56:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=h09wq+dScd3G1lPfYna5Eel+LXgpSjdYtjatbyrFm9Y=;
- b=ToyxyR6+tOkJxOTHMZv3d5Qb5+mQdfAOof0Vp8dfanGw8N76L7Huem7/hA7fdphMPS
- HGqdvYzXRv86MFBimMv05fkMfaEKTugmYcDLdWlUw/ny+vDi+SqxVhym19IXMfGC+wcB
- TcmKMFniB0pqLJU6VUzLedGpy2W60Yxs+WtTK+Nqgp06K+D4N+K4nBh0dpeJopANlCc+
- cqa7qv4GNoIBODZxs5gDqwapCqnkxHbibY+wj+1BpnkzK815iAJJLbXh+ESDxSmnYhor
- sTfW8+l07QY2T5l0WzSg6sMhyJU2SSyITsE46M+fpv2JdLH6YxhJ2VJZjKQT2tBQNDPN
- BJPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=h09wq+dScd3G1lPfYna5Eel+LXgpSjdYtjatbyrFm9Y=;
- b=HQvDiQ7hzgCwWLADwxvx5F3FtB5DmsZnxsDdndIk/2U3n/DhGOdP/V21sAAb53jPws
- No3Sr+WgBLUUTNck6q5emh62nMmbn5ZgaLZOajtfy604gKN0/wAloJ+IQdSOwOIKd2CP
- SCjS3DKd38JoAq/LEre0D0WdOCat/ngdAdkmzDrIDkcGHowIIm6ua6gCE8/n4v3O0RcK
- HIioob8ycnY6C8fzP9wv8QvymOIRcZM8VfOwfykQRMw1yUCD30DEBktuU2Sc9Bi2F0vy
- BajYc9GU8beZgVHyiq5yRyqEhnz3g13xaY5et/3G8Wq0vjf6FTzLQtaEvbOX7npkaXv7
- 3slw==
-X-Gm-Message-State: AGi0PuYs3C4ENyb4WkWY9wbTdL7g6aeoB24TxSKpAUOSw2opV0za6uY9
- YcY2CsnEsuA9+8qRj6oY/aJEXqUQCjiwxA==
-X-Google-Smtp-Source: APiQypKl86CrZn5pUtD9lMTnWvTthMdnWBaQefQSi+3SzDQqpRPQowm6dU88P08O/2Oe9p1b5nQkTQ==
-X-Received: by 2002:a5d:6b8b:: with SMTP id n11mr2259268wrx.379.1585817768538; 
- Thu, 02 Apr 2020 01:56:08 -0700 (PDT)
-Received: from localhost.localdomain ([2a02:a58:8532:8700:29b9:31c4:8247:2806])
- by smtp.gmail.com with ESMTPSA id a13sm6584160wrh.80.2020.04.02.01.56.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2020 01:56:07 -0700 (PDT)
-From: Ilie Halip <ilie.halip@gmail.com>
-To: linux-riscv@lists.infradead.org
-Subject: [PATCH] riscv: fix vdso build with lld
-Date: Thu,  2 Apr 2020 11:55:58 +0300
-Message-Id: <20200402085559.24865-1-ilie.halip@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ id 1jJwCb-0003My-Ee
+ for linux-riscv@lists.infradead.org; Thu, 02 Apr 2020 09:31:59 +0000
+Received: from mail-qt1-f174.google.com ([209.85.160.174]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.129]) with ESMTPSA (Nemesis)
+ id 1Mo7Bb-1j0EeP3szr-00pfqw for <linux-riscv@lists.infradead.org>; Thu, 02
+ Apr 2020 11:31:55 +0200
+Received: by mail-qt1-f174.google.com with SMTP id 14so2417580qtp.1
+ for <linux-riscv@lists.infradead.org>; Thu, 02 Apr 2020 02:31:54 -0700 (PDT)
+X-Gm-Message-State: AGi0PuY30XEfisa0KLOPpASlKihs9FtOj4+05UZGar1qpqTj8Pr9/yWs
+ 6DB5649QfSrpJq6QmEdth3wat48J0wSu7cSVgBI=
+X-Google-Smtp-Source: APiQypIyue+WNACvV18x6JnZkYlMs/gOnvsaV2sZZDOWo0BguT88H770dmf7hJplDaKl5fSsfEZ3gDVMPZpGGw8NTyc=
+X-Received: by 2002:ac8:7292:: with SMTP id v18mr1898092qto.304.1585819913839; 
+ Thu, 02 Apr 2020 02:31:53 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200331093241.3728-1-tesheng@andestech.com>
+In-Reply-To: <20200331093241.3728-1-tesheng@andestech.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Thu, 2 Apr 2020 11:31:37 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a3LokurC0n9XiwtPQh9ZgQcswMKY4b+TEsQh1VgYDNeWA@mail.gmail.com>
+Message-ID: <CAK8P3a3LokurC0n9XiwtPQh9ZgQcswMKY4b+TEsQh1VgYDNeWA@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Highmem support for 32-bit RISC-V
+To: Eric Lin <tesheng@andestech.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Provags-ID: V03:K1:oHisjB768uoO6+hM3A7PqzK3LDT6mGufBYYAJ3TqTg2eXdnp1hJ
+ CWRku+d36P1NhGARQu8iMIhQODHqVBo/stOUau/LEEKBfu7oAlqAJ0RjUqNKTGv5/UNKetY
+ uyZgutnTqF2BfmkQIPwr86M3x1yYhBr/Uqs38sltWQpZNX0QlIXZYnOGgQUtzcri7dm9lcp
+ QvTCBA+IxMoWyVlZAo9JA==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ztG0u1FNqFE=:UC+Lvwq1nCJcdwafSfPIx8
+ RrGRDLwhGj9i6qGAqEoWfOh8jQEiW0VsGe0nJVhwzDQMt6LAJZtJgVgdM63olLB8u8xl9sw2A
+ NdrKSSOgYvljetP6gFiwCqrw+kn0ZyHjhjR1/gn93RRTdL0+nrj0Fp3k3UZqRDvvoMxns4cSx
+ M8cEpCaNuIkqVsJDUf0ZC0OejLSxi2GudT4I030fv74vvu9dXax8O/wAAWypKOuwUKD4y5RC0
+ KlN0LdeZK1QpmvWbsXkEMJG0kkXSZurHXbo8js3rA9ey3Kto06Vm3kttDdXwFkoPvenvmI9lx
+ QKfeCra0o3f4WEiO3okUN9pQwXvvOpJbKLNtq09PdB8JlNUasdjfgo98tXUe1cGYhqc5LvYiJ
+ EHbJWGv5hK27KeiVAKGPQv8uatOJ/LhVTWWs/L4OVWGPod8JUPXBjnQ224aGE+5AX5sLN5CN3
+ RFJn0sZf8gPyMTc7vfD4yfBZkOLjQducoue5ettH2Wi9tD3T5BODvB0keQK4rVepgtuYZlYwE
+ OIHmshLe1Fvo5Cl323f0xWtYaHl7UR24QOc0yZAgbGkrcVhoNluEIwUbtzNn7mDpET0abYc8i
+ FkKA+JjFotvYv+7b80hzLAOtLaLlg4NCazH1O9UHh/bTQgKjXX5wQ51sJCaUVMnJGpkIMUoim
+ L8r/DGQ86G0nNchTTGHPuI/oCvGpNdtZ4RxEtYpWn+DFi9MHkfG7fm+wE2JJNa89VgOWoJEDn
+ 29X6eytnooCMUlAZtOqK+gpUO2qGGCFns74iFp3R/IK7/ZcBZvLowS5j0rocRiwHQSwNPt9jr
+ hgmZ3AOCKR/EI4WAnNJoBdOJP1YfFo7f/sxNk8me+X3EJtyBxo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_015612_226702_38770124 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200402_023157_781509_977A128D 
+X-CRM114-Status: GOOD (  13.31  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ no trust [212.227.126.134 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [ilie.halip[at]gmail.com]
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,46 +85,64 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Ilie Halip <ilie.halip@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Mao Han <han_mao@c-sky.com>
+Cc: Borislav Petkov <bp@suse.de>, Albert Ou <aou@eecs.berkeley.edu>,
+ Thomas Gleixner <tglx@linutronix.de>, zong.li@sifive.com, alex@ghiti.fr,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Steven Price <steven.price@arm.com>, atish.patra@wdc.com, yash.shah@sifive.com,
+ Palmer Dabbelt <palmer@dabbelt.com>, Greentime Hu <green.hu@gmail.com>,
+ Gary Guo <gary@garyguo.net>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Logan Gunthorpe <logang@deltatee.com>,
+ Andrew Morton <akpm@linux-foundation.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-When building with the LLVM linker this error occurrs:
-    LD      arch/riscv/kernel/vdso/vdso-syms.o
-  ld.lld: error: no input files
+On Tue, Mar 31, 2020 at 11:34 AM Eric Lin <tesheng@andestech.com> wrote:
+>
+> With Highmem support, the kernel can map more than 1GB physical memory.
+>
+> This patchset implements Highmem for RV32, referencing to mostly nds32
+> and others like arm and mips, and it has been tested on Andes A25MP platform.
 
-This happens because the lld treats -R as an alias to -rpath, as opposed
-to ld where -R means --just-symbols.
+I would much prefer to not see highmem added to new architectures at all
+if possible, see https://lwn.net/Articles/813201/ for some background.
 
-Use the long option name for compatibility between the two.
+For the arm32 architecture, we are thinking about implementing a
+VMPLIT_4G_4G option to replace highmem in the long run. The most
+likely way this would turn out at the moment looks like:
 
-Link: https://github.com/ClangBuiltLinux/linux/issues/805
-Reported-by: Dmitry Golovin <dima@golovin.in>
-Signed-off-by: Ilie Halip <ilie.halip@gmail.com>
----
- arch/riscv/kernel/vdso/Makefile | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+- have a 256MB region for vmalloc space at the top of the 4GB address
+  space, containing vmlinux, module, mmio mappings and vmalloc
+  allocations
 
-diff --git a/arch/riscv/kernel/vdso/Makefile b/arch/riscv/kernel/vdso/Makefile
-index 33b16f4212f7..19f7b9ea10ab 100644
---- a/arch/riscv/kernel/vdso/Makefile
-+++ b/arch/riscv/kernel/vdso/Makefile
-@@ -41,7 +41,8 @@ SYSCFLAGS_vdso.so.dbg = -shared -s -Wl,-soname=linux-vdso.so.1 \
- $(obj)/vdso-dummy.o: $(src)/vdso.lds $(obj)/rt_sigreturn.o FORCE
- 	$(call if_changed,vdsold)
- 
--LDFLAGS_vdso-syms.o := -r -R
-+# lld aliases -R to -rpath; use the longer option name
-+LDFLAGS_vdso-syms.o := -r --just-symbols
- $(obj)/vdso-syms.o: $(obj)/vdso-dummy.o FORCE
- 	$(call if_changed,ld)
- 
--- 
-2.17.1
+- have 3.75GB starting at address zero for either user space or the
+  linear map.
 
+- reserve one address space ID for kernel mappings to avoid tlb flushes
+  during normal context switches
+
+- On any kernel entry, switch the page table to the one with the linear
+  mapping, and back to the user page table before returning to user space
+
+- add a generic copy_from_user/copy_to_user implementation based
+  on get_user_pages() in asm-generic/uaccess.h, using memcpy()
+  to copy from/to the page in the linear map.
+
+- possible have architectures override get_user/put_user to use a
+  cheaper access based on a page table switch to read individual
+  words if that is cheaper than get_user_pages().
+
+There was an implementation of this for x86 a long time ago, but
+it never got merged, mainly because there were no ASIDs on x86
+at the time and the TLB flushing during context switch were really
+expensive. As far as I can tell, all of the modern embedded cores
+do have ASIDs, and unlike x86, most do not support more than 4GB
+of physical RAM, so this scheme can work to replace highmem
+in most of the remaining cases, and provide additional benefits
+(larger user address range, higher separate of kernel/user addresses)
+at a relatively small performance cost.
+
+       Arnd
 
