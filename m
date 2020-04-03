@@ -2,78 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC56B19D31B
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 11:05:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 35D5E19D48F
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 12:04:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=k3k/FHfRrWrYtfi+UJknDJkxs4/RbdowOhFZ8Z2iWdM=; b=sVw7P2SE33UDtQS07MfvqaC/X
-	i5egrDuZ8zKFPtYwH4lB841EzCJamE9XEkDuO/SsPq5WfONJcgpEU4jDh2H1658pyRzDZC8gdIgrk
-	g7edDdA5gObBW2eeLhzRCUUvjHNKAwhNZVCFxY/pcXsOO9Rg00DY6AdLfNY5RjLG5cTOrF7oAXWp7
-	hpRvk8XwI6tCojiUFMCSDJ+zwWoXO3XM7SAI8LtzAHiCQXru8lAM9hnlTrNgFYNGdqpr8N3bihxzd
-	jvJAVhbXxy6g55G4FzsXSvrXsiDcBTT13IFGiyr63UaAUiB76apBy+HD6lnoGkc70A8BpOjrCG//z
-	2NHAz7gHA==;
+	 bh=k1BfTzLG9BZEhuBWzr/Ifd9fEiBfI2PJHmMsiQ63iBc=; b=UDQ74nRAaBHYIbeYLWE5+nEKt
+	x3HDBFPL3UcaOF2oc60O1nDwB3s/fUI2GulwzqpvW5M+hIBH0S4UKLBekvxfAoTgj6jufGKI2ZL9G
+	RLrEwaVSJi2gTLoGba788Eh5M6qXSqy4sbM27xSuKY4qCLL6KhbKknv7l65UxkYDGE+F5+fvfON1Y
+	yFBS7rldIRzSFVDtwSsZbD80I4TFG3kh4CrGRelI52Q7Thif8mw1jQ2mgcbTC0v10tTkp21qUQUFq
+	UP0fD1Ph8S+YUaE78DFMWqGZKYwTO6Riv/CWomgXnXVKMf3UqN3473pw6ZuD+Bp9uvT80Pua6XsbQ
+	2GBkbZ63A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKIGU-0001Jh-SI; Fri, 03 Apr 2020 09:05:26 +0000
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
+	id 1jKJBC-0001dL-KI; Fri, 03 Apr 2020 10:04:02 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKIGA-00076z-01
- for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 09:05:11 +0000
-Received: by mail-oi1-x241.google.com with SMTP id d3so5532701oic.1
- for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 02:05:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k3k/FHfRrWrYtfi+UJknDJkxs4/RbdowOhFZ8Z2iWdM=;
- b=cGHwfv2DRr36j1c2rTxyvR/MF3X2vakyJoCIVMx8L1kaZ4RlB6abpoa7W57bNztggz
- lgHpay/LPc54nWXoD03Wa2l3QIxm0xDS7zrWfRLnKCB8r5aj3/4HRam8GxCxnP6cIdzD
- HVkXi84hVEERv7nK7ttIFp/xLCTRWbfg0c7z3gdqMyb8r1Wa9yCMp8JyXLDZsMsflUJr
- urBA40BCxuFoQn9IAEwYrt7AWUpb78QdyoYTGri24sF0lRBmNajO2+4DFiGhfs1GjeNz
- tl6CqDDFNs9mdIF3RIvg7+qax2xWXiZV2tIj5gneVVEdI9xLMw4LRA1Mw/YlDy0A4SPT
- hAhw==
+ id 1jKJB7-0001bA-Tc
+ for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 10:04:00 +0000
+Received: by mail-wm1-x344.google.com with SMTP id d202so7058652wmd.1
+ for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 03:03:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=k1BfTzLG9BZEhuBWzr/Ifd9fEiBfI2PJHmMsiQ63iBc=;
+ b=K8xx12nLC+ENHZKLpugZ0HKjwh4KsjoylTPDEYJVWx2s5pkVXhW+qDr2ZEObxMC/6Y
+ /jewgo2GTpGQOAXxh09wIMRBO/Mw6e82C9IP3Gs/2mzMUqAUm7qYkb2zgWVDy/MGwQRA
+ gbUP7D1EuoDQlat86sJvTWyetiMTq+if8vX/jhd4a811eUTEKjk+9zke3teg08uG/az9
+ haJBvE8FUy9bYJyFI4ZqqTfqN9wB1/QV+cD1j9upK8QhfI+wT6pF8DnNmyGZzt9nnOYF
+ 1K8kE3vPakOpM08RVJZ/TfgfLbdq6Aad0D8qBqJQIhU9o24rzKuMZ+5yEQHx4l96WmUW
+ lqAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=k3k/FHfRrWrYtfi+UJknDJkxs4/RbdowOhFZ8Z2iWdM=;
- b=NXGSeC6p5+O+ICTvVmxvsuOLSIVLFZjhTxjNRYBPqsswKE2qBDRsb7/FgZwleJkkN2
- 3lEdSzScGsixFqP4uciLYJcXwg3San8oW6MQYWw4/mW1UAJJZhitzLayOipTP7luiMdH
- 8pd/OOj7B5ayLonAaoYJ/6p5cQ2a8ygS2YrlK4RxTn80Q2sYsec8Azox/vTGxwCx8t13
- Ly3gGpdldZCZS7UeOtfKI4n60TGZVUpomH9s+2/y7+BB1NkMPjDJxJQWbfzu2UZ0Shsh
- ssLbdns9gt6GsZHwS1BJOhh0iYkhjqGqMWCmmIx714RM1V7dhkvplFcqOZ+QlFo3io7j
- u/Ig==
-X-Gm-Message-State: AGi0Pub3Yg0bPJtdHXSh2I2Yi2MK+1MHKpaesDx185D6o+tcBvK7xVjp
- bqK7hz7M6MLEGw1QqXPDQhFSNbXBDeu9wAlw3Xnd4g==
-X-Google-Smtp-Source: APiQypLJkK1zH27grwowlEcFnZKIjtrS5UOymajuwVuRhdv8zbBnEYOztvC6rsjZ5gT1NfB3qFwWbdVa5VF0A8thQ9w=
-X-Received: by 2002:a05:6808:56:: with SMTP id
- v22mr2110639oic.116.1585904701421; 
- Fri, 03 Apr 2020 02:05:01 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=k1BfTzLG9BZEhuBWzr/Ifd9fEiBfI2PJHmMsiQ63iBc=;
+ b=QbKBsOAps2p+zwAq1YFsRSd/AveTYPsvwOIjsh8mgVasAcSOHRTt2sF2yIlWk9F/Nu
+ SERFdbv9/dVCwpVSen4KB1UeKP3AweFcJVob+d3kBA4KApV8FzYl4Y1MPGL/B1NA6ZcJ
+ fmD1KnpiBW9MCpmyaLCdMNgyL631yv6gifblNNKOTVLGnCLT1cWzwqvFGMjl6ViwsEMD
+ sgyu5MqY0j1OWgGrF8Fpw7lQuiyki4CxU/27UKLcTh223q2kKAj16RAq/pTCtHV1oYxq
+ d71XFMwD8Pz8L6GB4IDjsFVm4bWT9/x+P8zjZFZZaxZr7ZYbde03k/x68sHkTG+XlMTv
+ R3sg==
+X-Gm-Message-State: AGi0PuaUeLN5EQTlHsHK5AlwmFydrgd21nvXjTgAplTzWho+Nk9q04Fh
+ k4M28EI2eVvlR7mgjeZVWa7gOg==
+X-Google-Smtp-Source: APiQypJ4ACNraeEoEe/+ew+Aoc+4aXqNhIiAGky7riI+uZI6LzliyENQuc/5SC9KbR4I1hwYwrDCgQ==
+X-Received: by 2002:a1c:a145:: with SMTP id k66mr7735195wme.26.1585908235959; 
+ Fri, 03 Apr 2020 03:03:55 -0700 (PDT)
+Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
+ [86.9.19.6])
+ by smtp.gmail.com with ESMTPSA id y20sm2096347wmi.31.2020.04.03.03.03.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Apr 2020 03:03:55 -0700 (PDT)
+Date: Fri, 3 Apr 2020 11:03:53 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: Vincent Chen <vincent.chen@sifive.com>
+Subject: Re: [PATCH v2 3/5] kgdb: enable arch to support XML packet support.
+Message-ID: <20200403100353.szkaovdjajjwtqvq@holly.lan>
+References: <1585668191-16287-1-git-send-email-vincent.chen@sifive.com>
+ <1585668191-16287-4-git-send-email-vincent.chen@sifive.com>
 MIME-Version: 1.0
-References: <cover.1583772574.git.zong.li@sifive.com>
- <d27d9e68491e1df67dbee6c22df6a72ff95bab18.1583772574.git.zong.li@sifive.com>
- <20200401003233.17fe4b6f7075e5b8f0ed5114@kernel.org>
- <CANXhq0ra3o+mgenbYLq_q0eZY2KiXNpWmo2V0amD0cFDqCQkXw@mail.gmail.com>
- <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
-In-Reply-To: <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
-From: Zong Li <zong.li@sifive.com>
-Date: Fri, 3 Apr 2020 17:04:51 +0800
-Message-ID: <CANXhq0rMbkNxQ3_qqYEKe8DSbL-vfQku6V9a81Hy9cxW4LaW9g@mail.gmail.com>
-Subject: Re: [PATCH v3 8/9] riscv: introduce interfaces to patch kernel code
-To: Masami Hiramatsu <mhiramat@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1585668191-16287-4-git-send-email-vincent.chen@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_020506_756747_7A268D8D 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20200403_030358_492068_7A510688 
+X-CRM114-Status: GOOD (  18.30  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:241 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -95,145 +98,106 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: kgdb-bugreport@lists.sourceforge.net, jason.wessel@windriver.com,
+ dianders@chromium.org, palmer@dabbelt.com, paul.walmsley@sifive.com,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Apr 2, 2020 at 9:17 AM Masami Hiramatsu <mhiramat@kernel.org> wrote:
->
-> Hi,
->
-> On Wed, 1 Apr 2020 15:42:30 +0800
-> Zong Li <zong.li@sifive.com> wrote:
->
-> > > > +
-> > > > +static int __kprobes riscv_insn_write(void *addr, const void *insn, size_t len)
-> > >
-> > > Why would you add "riscv_" prefix for those functions? It seems a bit odd.
-> >
-> > There is no particular reason, I just was used to adding a prefix for
-> > arch-related stuff. I have no preference here, it's OK to me to remove
-> > the prefix of these functions, do you think we need to remove them?
->
-> Yeah, it will be better, unless it can mixed up with arch-independent
-> functions.
+On Tue, Mar 31, 2020 at 11:23:09PM +0800, Vincent Chen wrote:
+> The XML packet could be supported by required architecture if the
+> architecture defines CONFIG_ACRH_SUPPORTS_GDB_XML and implement its own
+> arch_handle_qxfer_pkt(). Except for the arch_handle_qxfer_pkt(), the
+> architecture also needs to record the feature supported by gdb stub into
+> the arch_gdb_stub_feature, and these features will be reported to host gdb
+> when gdb stub receives the qSupported packet.
+> 
+> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> ---
+>  include/linux/kgdb.h   |  9 +++++++++
+>  kernel/debug/gdbstub.c | 13 +++++++++++++
+>  lib/Kconfig.kgdb       |  5 +++++
+>  3 files changed, 27 insertions(+)
+> 
+> diff --git a/include/linux/kgdb.h b/include/linux/kgdb.h
+> index b072aeb1fd78..ee9109d2f056 100644
+> --- a/include/linux/kgdb.h
+> +++ b/include/linux/kgdb.h
+> @@ -177,6 +177,15 @@ kgdb_arch_handle_exception(int vector, int signo, int err_code,
+>  			   struct pt_regs *regs);
+>  
+>  /**
+> + *	arch_handle_qxfer_pkt - Handle architecture specific GDB XML packets.
+> + *	@remcom_in_buffer: The buffer of the packet we have read.
+> + *	@remcom_out_buffer: The buffer of %BUFMAX bytes to write a packet into.
+> + */
+> +
+> +extern void
+> +arch_handle_qxfer_pkt(char *remcom_in_buffer, char *remcom_out_buffer);
 
-OK. I'll remove it and use NOKPROBE_SYMBOL() instead of __kprobes annotation.
+This should be prefixed kgdb_ like the other arch functions.
 
->
-> > > > +{
-> > > > +     void *waddr = addr;
-> > > > +     bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
-> > > > +     unsigned long flags = 0;
-> > > > +     int ret;
-> > > > +
-> > > > +     raw_spin_lock_irqsave(&patch_lock, flags);
-> > >
-> > > This looks a bit odd since stop_machine() is protected by its own mutex,
-> > > and also the irq is already disabled here.
-> >
-> > We need it because we don't always enter the riscv_patch_text_nosync()
-> > through stop_machine mechanism. If we call the
-> > riscv_patch_text_nosync() directly, we need a lock to protect the
-> > page.
->
-> Oh, OK, but it leads another question. Is that safe to patch the
-> text without sync? Would you use it for UP system?
-> I think it is better to clarify "in what case user can call _nosync()"
-> and add a comment on it.
 
-The ftrace is one of the cases, as documentation of ftrace said, when
-dynamic ftrace is initialized, it calls kstop_machine to make the
-machine act like a uniprocessor so that it can freely modify code
-without worrying about other processors executing that same code. So
-the ftrace called the _nosync interface here directly.
+> +
+> +/**
+>   *	kgdb_call_nmi_hook - Call kgdb_nmicallback() on the current CPU
+>   *	@ignored: This parameter is only here to match the prototype.
+>   *
+> diff --git a/kernel/debug/gdbstub.c b/kernel/debug/gdbstub.c
+> index 4b280fc7dd67..d6b1b630a7e7 100644
+> --- a/kernel/debug/gdbstub.c
+> +++ b/kernel/debug/gdbstub.c
+> @@ -792,6 +792,19 @@ static void gdb_cmd_query(struct kgdb_state *ks)
+>  		}
+>  		break;
+>  #endif
+> +#ifdef CONFIG_ACRH_SUPPORTS_GDB_XML
 
->
-> Thank you,
->
-> >
-> > >
-> > > Thank you,
-> > >
-> > > > +
-> > > > +     if (across_pages)
-> > > > +             patch_map(addr + len, FIX_TEXT_POKE1);
-> > > > +
-> > > > +     waddr = patch_map(addr, FIX_TEXT_POKE0);
-> > > > +
-> > > > +     ret = probe_kernel_write(waddr, insn, len);
-> > > > +
-> > > > +     patch_unmap(FIX_TEXT_POKE0);
-> > > > +
-> > > > +     if (across_pages)
-> > > > +             patch_unmap(FIX_TEXT_POKE1);
-> > > > +
-> > > > +     raw_spin_unlock_irqrestore(&patch_lock, flags);
-> > > > +
-> > > > +     return ret;
-> > > > +}
-> > > > +#else
-> > > > +static int __kprobes riscv_insn_write(void *addr, const void *insn, size_t len)
-> > > > +{
-> > > > +     return probe_kernel_write(addr, insn, len);
-> > > > +}
-> > > > +#endif /* CONFIG_MMU */
-> > > > +
-> > > > +int __kprobes riscv_patch_text_nosync(void *addr, const void *insns, size_t len)
-> > > > +{
-> > > > +     u32 *tp = addr;
-> > > > +     int ret;
-> > > > +
-> > > > +     ret = riscv_insn_write(tp, insns, len);
-> > > > +
-> > > > +     if (!ret)
-> > > > +             flush_icache_range((uintptr_t) tp, (uintptr_t) tp + len);
-> > > > +
-> > > > +     return ret;
-> > > > +}
-> > > > +
-> > > > +static int __kprobes riscv_patch_text_cb(void *data)
-> > > > +{
-> > > > +     struct riscv_insn_patch *patch = data;
-> > > > +     int ret = 0;
-> > > > +
-> > > > +     if (atomic_inc_return(&patch->cpu_count) == 1) {
-> > > > +             ret =
-> > > > +                 riscv_patch_text_nosync(patch->addr, &patch->insn,
-> > > > +                                         GET_INSN_LENGTH(patch->insn));
-> > > > +             atomic_inc(&patch->cpu_count);
-> > > > +     } else {
-> > > > +             while (atomic_read(&patch->cpu_count) <= num_online_cpus())
-> > > > +                     cpu_relax();
-> > > > +             smp_mb();
-> > > > +     }
-> > > > +
-> > > > +     return ret;
-> > > > +}
-> > > > +
-> > > > +int __kprobes riscv_patch_text(void *addr, u32 insn)
-> > > > +{
-> > > > +     struct riscv_insn_patch patch = {
-> > > > +             .addr = addr,
-> > > > +             .insn = insn,
-> > > > +             .cpu_count = ATOMIC_INIT(0),
-> > > > +     };
-> > > > +
-> > > > +     return stop_machine_cpuslocked(riscv_patch_text_cb,
-> > > > +                                    &patch, cpu_online_mask);
-> > > > +}
-> > > > --
-> > > > 2.25.1
-> > > >
-> > >
-> > >
-> > > --
-> > > Masami Hiramatsu <mhiramat@kernel.org>
->
->
-> --
-> Masami Hiramatsu <mhiramat@kernel.org>
+Typo (and perhaps insufficient testing ;-) ).
+
+Additional the naming of the CONFIG option looks wrong because it
+describes why you added it, not what it actually does. Something
+like CONFIG_HAVE_ARCH_KGDB_QXFER_PKT is more descriptive.
+
+
+> +	case 'S':
+> +		if (!strncmp(remcom_in_buffer, "qSupported:", 11))
+> +			strcpy(remcom_out_buffer, arch_gdb_stub_feature);
+
+Has this been declared anywhere? I cannot find it.
+
+This might also benefit from a kgdb_ prefix.
+
+
+> +		break;
+> +	case 'X':
+> +		if (!strncmp(remcom_in_buffer, "qXfer:", 6))
+> +			arch_handle_qxfer_pkt(remcom_in_buffer,
+> +					      remcom_out_buffer);
+> +		break;
+> +#endif
+> +	default:
+> +		break;
+>  	}
+>  }
+>  
+> diff --git a/lib/Kconfig.kgdb b/lib/Kconfig.kgdb
+> index 933680b59e2d..5b586a3bba90 100644
+> --- a/lib/Kconfig.kgdb
+> +++ b/lib/Kconfig.kgdb
+> @@ -3,6 +3,11 @@
+>  config HAVE_ARCH_KGDB
+>  	bool
+>  
+> +# set if architecture implemented the arch_handle_qxfer_pkt function
+> +# to enable gdb stub to address XML packet sent from GDB.
+> +config ARCH_SUPPORTS_GDB_XML
+> +	bool
+> +
+>  menuconfig KGDB
+>  	bool "KGDB: kernel debugger"
+>  	depends on HAVE_ARCH_KGDB
+> -- 
+> 2.7.4
+> 
 
