@@ -2,81 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35D5E19D48F
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 12:04:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FA2519D4B6
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 12:12:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=k1BfTzLG9BZEhuBWzr/Ifd9fEiBfI2PJHmMsiQ63iBc=; b=UDQ74nRAaBHYIbeYLWE5+nEKt
-	x3HDBFPL3UcaOF2oc60O1nDwB3s/fUI2GulwzqpvW5M+hIBH0S4UKLBekvxfAoTgj6jufGKI2ZL9G
-	RLrEwaVSJi2gTLoGba788Eh5M6qXSqy4sbM27xSuKY4qCLL6KhbKknv7l65UxkYDGE+F5+fvfON1Y
-	yFBS7rldIRzSFVDtwSsZbD80I4TFG3kh4CrGRelI52Q7Thif8mw1jQ2mgcbTC0v10tTkp21qUQUFq
-	UP0fD1Ph8S+YUaE78DFMWqGZKYwTO6Riv/CWomgXnXVKMf3UqN3473pw6ZuD+Bp9uvT80Pua6XsbQ
-	2GBkbZ63A==;
+	 bh=fxWD5xD1kw2v28yDVrvDJkghPKBx/ATy5cWQRGW6rXI=; b=ceSA2yTJ/Q/v0Id6GLiWO+kRu
+	5A08+KFO7LCqNYW0jrrXhjhXQlJBmZWmZiUjezWeKEQIsLQaoqvHZ5IStQyp56riQrsfK9GnSnUav
+	tTeXkS/NoxV2VvuMiiVTAxjtGFBvVxd1BwEXWU8fev+s7upfj32SainKv0SJdS5NYByj01nxiOiQa
+	+Mq7xiDQGKAMPQm9VVoEyPPdCamUBree9WwQ0BGO73qM+KpIC5UMqPD69ngvVzVcr0ZT8gbqW19BZ
+	QcxlArkDiEAtmEsfJfBQ2K26fSVr+lBWsQVi/omm4NAyB+z14kKYWwBdAOnZtCbiqs3Eojo9Sce0J
+	PNqbysRbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKJBC-0001dL-KI; Fri, 03 Apr 2020 10:04:02 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jKJJU-0007Os-22; Fri, 03 Apr 2020 10:12:36 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKJB7-0001bA-Tc
- for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 10:04:00 +0000
-Received: by mail-wm1-x344.google.com with SMTP id d202so7058652wmd.1
- for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 03:03:57 -0700 (PDT)
+ id 1jKJJP-0007OC-OK
+ for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 10:12:33 +0000
+Received: by mail-wr1-x444.google.com with SMTP id j17so7747315wru.13
+ for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 03:12:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=k1BfTzLG9BZEhuBWzr/Ifd9fEiBfI2PJHmMsiQ63iBc=;
- b=K8xx12nLC+ENHZKLpugZ0HKjwh4KsjoylTPDEYJVWx2s5pkVXhW+qDr2ZEObxMC/6Y
- /jewgo2GTpGQOAXxh09wIMRBO/Mw6e82C9IP3Gs/2mzMUqAUm7qYkb2zgWVDy/MGwQRA
- gbUP7D1EuoDQlat86sJvTWyetiMTq+if8vX/jhd4a811eUTEKjk+9zke3teg08uG/az9
- haJBvE8FUy9bYJyFI4ZqqTfqN9wB1/QV+cD1j9upK8QhfI+wT6pF8DnNmyGZzt9nnOYF
- 1K8kE3vPakOpM08RVJZ/TfgfLbdq6Aad0D8qBqJQIhU9o24rzKuMZ+5yEQHx4l96WmUW
- lqAw==
+ bh=fxWD5xD1kw2v28yDVrvDJkghPKBx/ATy5cWQRGW6rXI=;
+ b=zDi0W/4zhSRQ0MrYET/k3kVIY1ln6S7n48qg1chJSVbqXW9yM/0IO5KFqJXYvy1ui9
+ nf9YRLVhQbIaWBmc9xUvv0qn1pILp21V0Fdf304KGSTUUKZ8FW58CvJxyaK4ZkvvKKEC
+ FqTepxF7OruGicK7sanOHdsTPgd7RleiokbMA85TIq0s/k+HMXj8Vefvh7EvHhFETjlF
+ 7bx4WyTujIZq6muwzmH/ZsMWFf30gYKlBzBA+hpbXC27ypEy4NeuDQiRaE7F1aYV4b5x
+ O8wIfqx+i8bpYDygsJsBJ7RjVAs+fxX+ry5Y28U63bvqtCMFuQNGenb/yvNYXMbn7Gmk
+ NoSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=k1BfTzLG9BZEhuBWzr/Ifd9fEiBfI2PJHmMsiQ63iBc=;
- b=QbKBsOAps2p+zwAq1YFsRSd/AveTYPsvwOIjsh8mgVasAcSOHRTt2sF2yIlWk9F/Nu
- SERFdbv9/dVCwpVSen4KB1UeKP3AweFcJVob+d3kBA4KApV8FzYl4Y1MPGL/B1NA6ZcJ
- fmD1KnpiBW9MCpmyaLCdMNgyL631yv6gifblNNKOTVLGnCLT1cWzwqvFGMjl6ViwsEMD
- sgyu5MqY0j1OWgGrF8Fpw7lQuiyki4CxU/27UKLcTh223q2kKAj16RAq/pTCtHV1oYxq
- d71XFMwD8Pz8L6GB4IDjsFVm4bWT9/x+P8zjZFZZaxZr7ZYbde03k/x68sHkTG+XlMTv
- R3sg==
-X-Gm-Message-State: AGi0PuaUeLN5EQTlHsHK5AlwmFydrgd21nvXjTgAplTzWho+Nk9q04Fh
- k4M28EI2eVvlR7mgjeZVWa7gOg==
-X-Google-Smtp-Source: APiQypJ4ACNraeEoEe/+ew+Aoc+4aXqNhIiAGky7riI+uZI6LzliyENQuc/5SC9KbR4I1hwYwrDCgQ==
-X-Received: by 2002:a1c:a145:: with SMTP id k66mr7735195wme.26.1585908235959; 
- Fri, 03 Apr 2020 03:03:55 -0700 (PDT)
+ bh=fxWD5xD1kw2v28yDVrvDJkghPKBx/ATy5cWQRGW6rXI=;
+ b=EWPOxNCdmDlzMJGaawp7Bbytg4rvv/C5p/Faax52iNNxckrajJccd5+YzTnr3RXxF/
+ qZN3pq0mqZLLTnPzJBHDYawhOUc+unfTsgH9B5aojmUxOcidvKfcydhOV7fHa95CYNnX
+ vyXRr8L9yhD2lO6oOCyakCq74bDrHy65LTwTBUbpiQ+oh5BAZMRGP7ihQFivpTyw+L1Y
+ BRMIc7hNr5LHmbR7LRiNwZFzoo3zUNF4Zy5KXuaY0lAMftA++gkosPqA/gDUojUOiloq
+ 5Np9uIvwt+o8nUbmP5ARd6ZR3RC8eeKtcmlUdnsphrcUMqFidKnoHXqV5HYwJ1wsgxFN
+ uPlg==
+X-Gm-Message-State: AGi0PuYSxpvQVMjtnpn4BYVxU41GcDdoR3mecMb7YoHePhEz75r/ehhj
+ S7NcDHm0GuGbOZxC1h3gJhsrag==
+X-Google-Smtp-Source: APiQypIsfyXgVfhNO1vKd2FVpsPOslYIorcaKsbXxLEGP23BeSTs1ok53J13wfnFfwKRwXOL1o63ZQ==
+X-Received: by 2002:adf:a48d:: with SMTP id g13mr8758646wrb.38.1585908750118; 
+ Fri, 03 Apr 2020 03:12:30 -0700 (PDT)
 Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
  [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id y20sm2096347wmi.31.2020.04.03.03.03.54
+ by smtp.gmail.com with ESMTPSA id 98sm11779642wrk.52.2020.04.03.03.12.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 03:03:55 -0700 (PDT)
-Date: Fri, 3 Apr 2020 11:03:53 +0100
+ Fri, 03 Apr 2020 03:12:29 -0700 (PDT)
+Date: Fri, 3 Apr 2020 11:12:27 +0100
 From: Daniel Thompson <daniel.thompson@linaro.org>
 To: Vincent Chen <vincent.chen@sifive.com>
-Subject: Re: [PATCH v2 3/5] kgdb: enable arch to support XML packet support.
-Message-ID: <20200403100353.szkaovdjajjwtqvq@holly.lan>
+Subject: Re: [PATCH v2 0/5] riscv: Add KGDB and KDB support
+Message-ID: <20200403101227.74abwoyxzx4rlake@holly.lan>
 References: <1585668191-16287-1-git-send-email-vincent.chen@sifive.com>
- <1585668191-16287-4-git-send-email-vincent.chen@sifive.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1585668191-16287-4-git-send-email-vincent.chen@sifive.com>
+In-Reply-To: <1585668191-16287-1-git-send-email-vincent.chen@sifive.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_030358_492068_7A510688 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20200403_031231_862747_696C5318 
+X-CRM114-Status: GOOD (  16.76  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -104,99 +103,67 @@ Cc: kgdb-bugreport@lists.sourceforge.net, jason.wessel@windriver.com,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Mar 31, 2020 at 11:23:09PM +0800, Vincent Chen wrote:
-> The XML packet could be supported by required architecture if the
-> architecture defines CONFIG_ACRH_SUPPORTS_GDB_XML and implement its own
-> arch_handle_qxfer_pkt(). Except for the arch_handle_qxfer_pkt(), the
-> architecture also needs to record the feature supported by gdb stub into
-> the arch_gdb_stub_feature, and these features will be reported to host gdb
-> when gdb stub receives the qSupported packet.
+On Tue, Mar 31, 2020 at 11:23:06PM +0800, Vincent Chen wrote:
+> This patch set implements required ports to enable RISC-V kernel to support
+> KGDB and KDB features. Because there is no immediate value in the RISC-V
+> trap instruction, the kernel cannot identify the purpose of each trap
+> exception through the opcode. This makes the existing identification
+> schemes in other architecture unsuitable for the RISC-V kernel. In order
+> to solve this problem, this patch adds the kgdb_has_hit_break() to kgdb.c
+> to help the RISC-V kernel identify the KGDB trap exception. In addition,
+> the XML target description was introduced in this patch set to enable KGDB
+> to report the contents of the status, cause and steal registers.
+>  
+> This patchset has passed the kgdbts test suite provided by Linux kernel on
+> HiFive unleashed board and QEMU.
+
+Can you share the defconfig and qemu boot lines used for testing.
+
+I'd like to see if they can easily be integrated into kgdbtest. Normally
+figuring out the qemu boot line is the hardest bit of adding support for
+an architecture one is not familar with.
+
+
+Daniel.
+
+
+PS At the moment it helps kgdbtest a lot if qemu is configured with two
+   serial ports but I really should get round to relaxing that!
+
 > 
-> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> ---
->  include/linux/kgdb.h   |  9 +++++++++
->  kernel/debug/gdbstub.c | 13 +++++++++++++
->  lib/Kconfig.kgdb       |  5 +++++
->  3 files changed, 27 insertions(+)
+> Changes since v1:
+> 1. Replace the magic number with macro when filling the gdb_regs[].
+> 2. Only support GDB XML packet instead of all query packets.
+> 3. Move the macros used to parse instrcuton to parse_asm.h
 > 
-> diff --git a/include/linux/kgdb.h b/include/linux/kgdb.h
-> index b072aeb1fd78..ee9109d2f056 100644
-> --- a/include/linux/kgdb.h
-> +++ b/include/linux/kgdb.h
-> @@ -177,6 +177,15 @@ kgdb_arch_handle_exception(int vector, int signo, int err_code,
->  			   struct pt_regs *regs);
->  
->  /**
-> + *	arch_handle_qxfer_pkt - Handle architecture specific GDB XML packets.
-> + *	@remcom_in_buffer: The buffer of the packet we have read.
-> + *	@remcom_out_buffer: The buffer of %BUFMAX bytes to write a packet into.
-> + */
-> +
-> +extern void
-> +arch_handle_qxfer_pkt(char *remcom_in_buffer, char *remcom_out_buffer);
-
-This should be prefixed kgdb_ like the other arch functions.
-
-
-> +
-> +/**
->   *	kgdb_call_nmi_hook - Call kgdb_nmicallback() on the current CPU
->   *	@ignored: This parameter is only here to match the prototype.
->   *
-> diff --git a/kernel/debug/gdbstub.c b/kernel/debug/gdbstub.c
-> index 4b280fc7dd67..d6b1b630a7e7 100644
-> --- a/kernel/debug/gdbstub.c
-> +++ b/kernel/debug/gdbstub.c
-> @@ -792,6 +792,19 @@ static void gdb_cmd_query(struct kgdb_state *ks)
->  		}
->  		break;
->  #endif
-> +#ifdef CONFIG_ACRH_SUPPORTS_GDB_XML
-
-Typo (and perhaps insufficient testing ;-) ).
-
-Additional the naming of the CONFIG option looks wrong because it
-describes why you added it, not what it actually does. Something
-like CONFIG_HAVE_ARCH_KGDB_QXFER_PKT is more descriptive.
-
-
-> +	case 'S':
-> +		if (!strncmp(remcom_in_buffer, "qSupported:", 11))
-> +			strcpy(remcom_out_buffer, arch_gdb_stub_feature);
-
-Has this been declared anywhere? I cannot find it.
-
-This might also benefit from a kgdb_ prefix.
-
-
-> +		break;
-> +	case 'X':
-> +		if (!strncmp(remcom_in_buffer, "qXfer:", 6))
-> +			arch_handle_qxfer_pkt(remcom_in_buffer,
-> +					      remcom_out_buffer);
-> +		break;
-> +#endif
-> +	default:
-> +		break;
->  	}
->  }
->  
-> diff --git a/lib/Kconfig.kgdb b/lib/Kconfig.kgdb
-> index 933680b59e2d..5b586a3bba90 100644
-> --- a/lib/Kconfig.kgdb
-> +++ b/lib/Kconfig.kgdb
-> @@ -3,6 +3,11 @@
->  config HAVE_ARCH_KGDB
->  	bool
->  
-> +# set if architecture implemented the arch_handle_qxfer_pkt function
-> +# to enable gdb stub to address XML packet sent from GDB.
-> +config ARCH_SUPPORTS_GDB_XML
-> +	bool
-> +
->  menuconfig KGDB
->  	bool "KGDB: kernel debugger"
->  	depends on HAVE_ARCH_KGDB
+> 
+> Vincent Chen (5):
+>   kgdb: Add kgdb_has_hit_break function
+>   riscv: Add KGDB support
+>   kgdb: enable arch to support XML packet support.
+>   riscv: Use the XML target descriptions to report 3 system registers
+>   riscv: Add SW single-step support for KDB
+> 
+>  arch/riscv/Kconfig                 |   2 +
+>  arch/riscv/include/asm/Kbuild      |   1 -
+>  arch/riscv/include/asm/gdb_xml.h   | 117 ++++++++++++
+>  arch/riscv/include/asm/kdebug.h    |  12 ++
+>  arch/riscv/include/asm/kgdb.h      | 113 +++++++++++
+>  arch/riscv/include/asm/parse_asm.h | 214 +++++++++++++++++++++
+>  arch/riscv/kernel/Makefile         |   1 +
+>  arch/riscv/kernel/kgdb.c           | 382 +++++++++++++++++++++++++++++++++++++
+>  arch/riscv/kernel/traps.c          |   5 +
+>  include/linux/kgdb.h               |   9 +
+>  kernel/debug/debug_core.c          |  12 ++
+>  kernel/debug/gdbstub.c             |  13 ++
+>  lib/Kconfig.kgdb                   |   5 +
+>  13 files changed, 885 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/riscv/include/asm/gdb_xml.h
+>  create mode 100644 arch/riscv/include/asm/kdebug.h
+>  create mode 100644 arch/riscv/include/asm/kgdb.h
+>  create mode 100644 arch/riscv/include/asm/parse_asm.h
+>  create mode 100644 arch/riscv/kernel/kgdb.c
+> 
 > -- 
 > 2.7.4
 > 
