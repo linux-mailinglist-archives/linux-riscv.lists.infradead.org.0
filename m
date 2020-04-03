@@ -2,82 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6861B19CE50
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 03:46:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC56B19D31B
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 11:05:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Cih+hn03up9st3RS65QpZFbWvs3Zege+0uDG2KPZoUU=; b=f6E1MTNh2/d+uW
-	ZR4V5cqZCGZjxnv06jC66wKbTbvKm+Tipj42d4bJZ5q4Q315K7agzUqNvs0CMMcKAMCc+ZzfI4KJ5
-	BKsP6OZ3V717XliPD7b0zGgk7tFgrmd0KXz7EQsKxZSwCsoxWo61CNPdRA+aQK0ATz5JyMbZlTfkP
-	bvjhRW0h4BUAS2SQT9urdVmWwwyBeGwrM2NKLfIDATP8y5k7XElauHmy3DYQfD2nAZKQdwEOL1wRo
-	0wTkCkzU8AhxRj9vFtd+kSFoAW/CKlERjUnWY/AwULMMj2AC9synrHYso1j4c+PmkCNk2GzPrQDoY
-	XBs9FjxBd29aX6FzzL3Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=k3k/FHfRrWrYtfi+UJknDJkxs4/RbdowOhFZ8Z2iWdM=; b=sVw7P2SE33UDtQS07MfvqaC/X
+	i5egrDuZ8zKFPtYwH4lB841EzCJamE9XEkDuO/SsPq5WfONJcgpEU4jDh2H1658pyRzDZC8gdIgrk
+	g7edDdA5gObBW2eeLhzRCUUvjHNKAwhNZVCFxY/pcXsOO9Rg00DY6AdLfNY5RjLG5cTOrF7oAXWp7
+	hpRvk8XwI6tCojiUFMCSDJ+zwWoXO3XM7SAI8LtzAHiCQXru8lAM9hnlTrNgFYNGdqpr8N3bihxzd
+	jvJAVhbXxy6g55G4FzsXSvrXsiDcBTT13IFGiyr63UaAUiB76apBy+HD6lnoGkc70A8BpOjrCG//z
+	2NHAz7gHA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKBPU-0006hq-TK; Fri, 03 Apr 2020 01:46:16 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1jKIGU-0001Jh-SI; Fri, 03 Apr 2020 09:05:26 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKBPR-0006gl-Km
- for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 01:46:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1585878373; x=1617414373;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=sXzY6X7y/HJOV8eyJ7EyKZ7Q9GvaNwIs3iD8jdW9I3A=;
- b=dlHXw1la+t1ReYaAEOijMFkTPf6ad9R9zFGrxT+ehddAOMyoPEFfv3qx
- mjDRSwMTOhuUYWmiJDa/CaG/NRJrpjjSN5VUTEHk0609KfBRBbpwduwnh
- T1zKYyEFY3ALw3vJWK3z+b/Bd3pc99eWyBnTC8q90B7gDaBpID6JhqEZd
- n1T32p6SyrdQ6eBOb/LbhcB5e3Txt7do6HazsncjL+ICOi/xc6jSKFG6U
- ZVN7jMACEshmaN0YGqBVo5kxrsJxzwk33i/P1tGkP0gcfbF/DTX+pilko
- +30FBeWm38hSuzo0ob1HPVIyNWFZq/ga8OuPa1v7cYYhFduAPmkySJqOw A==;
-IronPort-SDR: FAZjmbuCE4fB0QpBbEqHkuAhDbTZ4cQEeFclWTTJKG1YmjXI5j/TB0uY9pLoxamxBt1m5EepZP
- 18ShvtgFJePlS9LDRC5yVVtr1MlPD3dRFa9JBhmu16Zo2+NGLlJef8B9R2zZ4RBGzzLH70l1i2
- yOkBH1rEe/cugjLk6UFftD/y1MjZ4FJ7oAx/ZYcPOTaEPdpQzOtT7kg0DbplyGHpd5d92qBPxd
- IcKQembUrY2a/KogbLQ45U68TTzu/hcdF/P1zXxFCcP5GXmtVlZhA2BYFRwQjKWBLnN/IvoqXv
- aGg=
-X-IronPort-AV: E=Sophos;i="5.72,337,1580745600"; d="scan'208";a="135917736"
-Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 03 Apr 2020 09:46:10 +0800
-IronPort-SDR: FnIWn7yi+YTu3NC8P1CXIz9ZrFi80vuYzZXhGd8Uv8epL3U1GN4RF6a3RPU049V1m7ORr7pjp/
- umXn+hBvrAWmqDUCyxJUX1JUsOfLPL0ShFM76RlNZxHBn/sZn7xqxAPx+c8DuzB7y2OFmscgDJ
- 2Mi9o4c/2agDBvoannb278sttbWZKxpMNX61hppUJLJ37w163Tg3QMKJ7oH3Wkip2bujnLGoUw
- lq0TIZDoNcNqDkVCV4FIgVstFgi0SUk39I+xNPCkT+p5MnYNgdZEW29fUiqfOu2tKa9cTtUrld
- Ggp4MNberJY4/0l3GYGU4dXg
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2020 18:37:01 -0700
-IronPort-SDR: ZAP/86deKbIkcrM7fGbTYi3JBhvMWizQVQ+sVBUZ+C9VlVOhubJ5WIm8d89j3VAGd0ilAEJ70s
- g9qEgSzrNx/ZvR/3xNdL9yT4Z2jkaZxnyMGv9VkGzF2J3yS7Sii8aR6/ckOAHG10e32sqzV4zb
- +t3u6OJe5ZBIHaqO6wLNuy/GaLFQ+DhtzNzFRZFfHZyQPaeo5bDi2dWoGjyiz38k1NxbMcFQZR
- Bp1Yueq5YC1cuW83W8C4eDtvKvpUGtTcChQJZjIUGooois9pihtCB8WjR8mlczKVkSHvx49mdh
- O/8=
-WDCIronportException: Internal
-Received: from usa002249.ad.shared (HELO yoda.hgst.com) ([10.86.55.19])
- by uls-op-cesaip02.wdc.com with ESMTP; 02 Apr 2020 18:46:10 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] irqchip/sifive-plic: Fix maximum priority threshold value
-Date: Thu,  2 Apr 2020 18:46:09 -0700
-Message-Id: <20200403014609.71831-1-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.25.1
+ id 1jKIGA-00076z-01
+ for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 09:05:11 +0000
+Received: by mail-oi1-x241.google.com with SMTP id d3so5532701oic.1
+ for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 02:05:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=k3k/FHfRrWrYtfi+UJknDJkxs4/RbdowOhFZ8Z2iWdM=;
+ b=cGHwfv2DRr36j1c2rTxyvR/MF3X2vakyJoCIVMx8L1kaZ4RlB6abpoa7W57bNztggz
+ lgHpay/LPc54nWXoD03Wa2l3QIxm0xDS7zrWfRLnKCB8r5aj3/4HRam8GxCxnP6cIdzD
+ HVkXi84hVEERv7nK7ttIFp/xLCTRWbfg0c7z3gdqMyb8r1Wa9yCMp8JyXLDZsMsflUJr
+ urBA40BCxuFoQn9IAEwYrt7AWUpb78QdyoYTGri24sF0lRBmNajO2+4DFiGhfs1GjeNz
+ tl6CqDDFNs9mdIF3RIvg7+qax2xWXiZV2tIj5gneVVEdI9xLMw4LRA1Mw/YlDy0A4SPT
+ hAhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=k3k/FHfRrWrYtfi+UJknDJkxs4/RbdowOhFZ8Z2iWdM=;
+ b=NXGSeC6p5+O+ICTvVmxvsuOLSIVLFZjhTxjNRYBPqsswKE2qBDRsb7/FgZwleJkkN2
+ 3lEdSzScGsixFqP4uciLYJcXwg3San8oW6MQYWw4/mW1UAJJZhitzLayOipTP7luiMdH
+ 8pd/OOj7B5ayLonAaoYJ/6p5cQ2a8ygS2YrlK4RxTn80Q2sYsec8Azox/vTGxwCx8t13
+ Ly3gGpdldZCZS7UeOtfKI4n60TGZVUpomH9s+2/y7+BB1NkMPjDJxJQWbfzu2UZ0Shsh
+ ssLbdns9gt6GsZHwS1BJOhh0iYkhjqGqMWCmmIx714RM1V7dhkvplFcqOZ+QlFo3io7j
+ u/Ig==
+X-Gm-Message-State: AGi0Pub3Yg0bPJtdHXSh2I2Yi2MK+1MHKpaesDx185D6o+tcBvK7xVjp
+ bqK7hz7M6MLEGw1QqXPDQhFSNbXBDeu9wAlw3Xnd4g==
+X-Google-Smtp-Source: APiQypLJkK1zH27grwowlEcFnZKIjtrS5UOymajuwVuRhdv8zbBnEYOztvC6rsjZ5gT1NfB3qFwWbdVa5VF0A8thQ9w=
+X-Received: by 2002:a05:6808:56:: with SMTP id
+ v22mr2110639oic.116.1585904701421; 
+ Fri, 03 Apr 2020 02:05:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <cover.1583772574.git.zong.li@sifive.com>
+ <d27d9e68491e1df67dbee6c22df6a72ff95bab18.1583772574.git.zong.li@sifive.com>
+ <20200401003233.17fe4b6f7075e5b8f0ed5114@kernel.org>
+ <CANXhq0ra3o+mgenbYLq_q0eZY2KiXNpWmo2V0amD0cFDqCQkXw@mail.gmail.com>
+ <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
+In-Reply-To: <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
+From: Zong Li <zong.li@sifive.com>
+Date: Fri, 3 Apr 2020 17:04:51 +0800
+Message-ID: <CANXhq0rMbkNxQ3_qqYEKe8DSbL-vfQku6V9a81Hy9cxW4LaW9g@mail.gmail.com>
+Subject: Re: [PATCH v3 8/9] riscv: introduce interfaces to patch kernel code
+To: Masami Hiramatsu <mhiramat@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_184613_739013_F794B42B 
-X-CRM114-Status: GOOD (  12.69  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200403_020506_756747_7A268D8D 
+X-CRM114-Status: GOOD (  21.49  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:241 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -98,39 +95,145 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Anup Patel <anup@brainfault.org>,
- linux-riscv@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-As per the PLIC specification, maximum priority threshold value is 0x7
-not 0xF. Even though it doesn't cause any error in qemu/hifive unleashed,
-there may be some implementation which checks the upper bound resulting in
-an illegal access.
+On Thu, Apr 2, 2020 at 9:17 AM Masami Hiramatsu <mhiramat@kernel.org> wrote:
+>
+> Hi,
+>
+> On Wed, 1 Apr 2020 15:42:30 +0800
+> Zong Li <zong.li@sifive.com> wrote:
+>
+> > > > +
+> > > > +static int __kprobes riscv_insn_write(void *addr, const void *insn, size_t len)
+> > >
+> > > Why would you add "riscv_" prefix for those functions? It seems a bit odd.
+> >
+> > There is no particular reason, I just was used to adding a prefix for
+> > arch-related stuff. I have no preference here, it's OK to me to remove
+> > the prefix of these functions, do you think we need to remove them?
+>
+> Yeah, it will be better, unless it can mixed up with arch-independent
+> functions.
 
-Fixes: ccbe80bad571 (irqchip/sifive-plic: Enable/Disable external
-		     interrupts upon cpu online/offline)
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- drivers/irqchip/irq-sifive-plic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+OK. I'll remove it and use NOKPROBE_SYMBOL() instead of __kprobes annotation.
 
-diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index c34fb3ae0ff8..d0a71febdadc 100644
---- a/drivers/irqchip/irq-sifive-plic.c
-+++ b/drivers/irqchip/irq-sifive-plic.c
-@@ -56,7 +56,7 @@
- #define     CONTEXT_THRESHOLD		0x00
- #define     CONTEXT_CLAIM		0x04
- 
--#define	PLIC_DISABLE_THRESHOLD		0xf
-+#define	PLIC_DISABLE_THRESHOLD		0x7
- #define	PLIC_ENABLE_THRESHOLD		0
- 
- struct plic_priv {
--- 
-2.25.1
+>
+> > > > +{
+> > > > +     void *waddr = addr;
+> > > > +     bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
+> > > > +     unsigned long flags = 0;
+> > > > +     int ret;
+> > > > +
+> > > > +     raw_spin_lock_irqsave(&patch_lock, flags);
+> > >
+> > > This looks a bit odd since stop_machine() is protected by its own mutex,
+> > > and also the irq is already disabled here.
+> >
+> > We need it because we don't always enter the riscv_patch_text_nosync()
+> > through stop_machine mechanism. If we call the
+> > riscv_patch_text_nosync() directly, we need a lock to protect the
+> > page.
+>
+> Oh, OK, but it leads another question. Is that safe to patch the
+> text without sync? Would you use it for UP system?
+> I think it is better to clarify "in what case user can call _nosync()"
+> and add a comment on it.
 
+The ftrace is one of the cases, as documentation of ftrace said, when
+dynamic ftrace is initialized, it calls kstop_machine to make the
+machine act like a uniprocessor so that it can freely modify code
+without worrying about other processors executing that same code. So
+the ftrace called the _nosync interface here directly.
+
+>
+> Thank you,
+>
+> >
+> > >
+> > > Thank you,
+> > >
+> > > > +
+> > > > +     if (across_pages)
+> > > > +             patch_map(addr + len, FIX_TEXT_POKE1);
+> > > > +
+> > > > +     waddr = patch_map(addr, FIX_TEXT_POKE0);
+> > > > +
+> > > > +     ret = probe_kernel_write(waddr, insn, len);
+> > > > +
+> > > > +     patch_unmap(FIX_TEXT_POKE0);
+> > > > +
+> > > > +     if (across_pages)
+> > > > +             patch_unmap(FIX_TEXT_POKE1);
+> > > > +
+> > > > +     raw_spin_unlock_irqrestore(&patch_lock, flags);
+> > > > +
+> > > > +     return ret;
+> > > > +}
+> > > > +#else
+> > > > +static int __kprobes riscv_insn_write(void *addr, const void *insn, size_t len)
+> > > > +{
+> > > > +     return probe_kernel_write(addr, insn, len);
+> > > > +}
+> > > > +#endif /* CONFIG_MMU */
+> > > > +
+> > > > +int __kprobes riscv_patch_text_nosync(void *addr, const void *insns, size_t len)
+> > > > +{
+> > > > +     u32 *tp = addr;
+> > > > +     int ret;
+> > > > +
+> > > > +     ret = riscv_insn_write(tp, insns, len);
+> > > > +
+> > > > +     if (!ret)
+> > > > +             flush_icache_range((uintptr_t) tp, (uintptr_t) tp + len);
+> > > > +
+> > > > +     return ret;
+> > > > +}
+> > > > +
+> > > > +static int __kprobes riscv_patch_text_cb(void *data)
+> > > > +{
+> > > > +     struct riscv_insn_patch *patch = data;
+> > > > +     int ret = 0;
+> > > > +
+> > > > +     if (atomic_inc_return(&patch->cpu_count) == 1) {
+> > > > +             ret =
+> > > > +                 riscv_patch_text_nosync(patch->addr, &patch->insn,
+> > > > +                                         GET_INSN_LENGTH(patch->insn));
+> > > > +             atomic_inc(&patch->cpu_count);
+> > > > +     } else {
+> > > > +             while (atomic_read(&patch->cpu_count) <= num_online_cpus())
+> > > > +                     cpu_relax();
+> > > > +             smp_mb();
+> > > > +     }
+> > > > +
+> > > > +     return ret;
+> > > > +}
+> > > > +
+> > > > +int __kprobes riscv_patch_text(void *addr, u32 insn)
+> > > > +{
+> > > > +     struct riscv_insn_patch patch = {
+> > > > +             .addr = addr,
+> > > > +             .insn = insn,
+> > > > +             .cpu_count = ATOMIC_INIT(0),
+> > > > +     };
+> > > > +
+> > > > +     return stop_machine_cpuslocked(riscv_patch_text_cb,
+> > > > +                                    &patch, cpu_online_mask);
+> > > > +}
+> > > > --
+> > > > 2.25.1
+> > > >
+> > >
+> > >
+> > > --
+> > > Masami Hiramatsu <mhiramat@kernel.org>
+>
+>
+> --
+> Masami Hiramatsu <mhiramat@kernel.org>
 
