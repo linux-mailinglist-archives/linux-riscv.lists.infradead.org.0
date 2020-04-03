@@ -2,83 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14F7919DAA1
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 17:53:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 932EC19DABE
+	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 18:03:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
 	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=ZfG/HEpqhA3MzgbPqFWg+BXYNFgu6A6b9QFElDn5ySA=; b=KPGGAL8nopWe8m
-	I/HTqCD+4pSKY/vkvOo9m5YzJ2YeBcwaGsn8fKy8xilz5Y2cZhdtgbyAVKWs/ito2jP/M0MR7UvGq
-	mqSvCjGjhR8gqHoDQqsuRY+RIyQDbkJauEm7cJ38j6aiz8TU15zUyVM477a4SuI4ItSibEy/mUUd/
-	SF1ztrRy3QvVcjhdYA2c0lTECGTkDeOQVsgv0iR1cGZCMi3jQcLtjuvrAfYUYiI46rdJetHW5KlzK
-	+/FaWnNhcFhcUOQtYf2NyiWlPRNZkELX68C+By3sTlxZgIj7Tjr3vkdd4bLImGDIS4DBpG1zwaC/7
-	YioQNPXaUEduy89UuTmA==;
+	List-Owner; bh=DTKHsm8Q5bJhu3UTT4PCRZaQwVAbDrF/ulx8WyttahM=; b=XdnL/2jPUK8KIS
+	stx8O8BrRZxt6Zsp3WTbmu/cez9ZdbhdFZ+3EruAyx5rKfLtwVNrcKiIPqQiZOrs7akNo1GAp7LY5
+	hjrP9ivYO1OZDQaps8UVojhC1ygLC98Wub3CRgxXebg5SSLNWr/2+c5yFaE5uu/LHvsT/NKv/WWi1
+	ff2K4hVIJwrjPBeXVrFvPRS5hmjoS5vwN2dYWyApcwOaxZkJlQYZQ8478qO58veJWeW/8Ya6Pe8OA
+	fR6Hb0mXgJUFvtT55lPjaZ9u3kNYdPdtxyoahXkvfFDVTQHHq5buKCu+hO6hmJqkNLmIJ8j8xh/zx
+	jIS+jELUwucldQVdbHjQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKOdM-0006Vz-FM; Fri, 03 Apr 2020 15:53:28 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1jKOnA-0004Wc-LF; Fri, 03 Apr 2020 16:03:36 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKOdG-0006PX-Or
- for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 15:53:24 +0000
-Received: by mail-pl1-x643.google.com with SMTP id w3so2833525plz.5
- for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 08:53:22 -0700 (PDT)
+ id 1jKOn7-0004WE-Ep
+ for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 16:03:34 +0000
+Received: by mail-pf1-x442.google.com with SMTP id a13so3685726pfa.2
+ for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 09:03:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=ZfG/HEpqhA3MzgbPqFWg+BXYNFgu6A6b9QFElDn5ySA=;
- b=zmlVrOV4U6GylZVEDZ/ygdUdYk/Mge0hHPKwyECljiOx96v/ROmb1SHJBB9GtwAZBj
- l5Xfiy592UC8ZDWXqj+Yj0gcjKTZQydzV6W5PfmDobTD9gITspP4ttvdk/zC+YGfB7Vp
- h45ETzIoQLGJLJKF6PerEV9TNu++gUBsznslsO1RpZo418bVcE+3nYJ7q35fIEAIPm94
- x1SU6HEY43c42A3UATWv3mn271ShGdYzu8boGCsTSJiwZT3Kooj+PgvLKbCQn+nJT1PN
- MZlFKoszWaqz2pkrs36cKgUibijldDKQpTEm4Ong82kCK1fEeYODGi948KB4AY4UNar1
- mxCw==
+ bh=DTKHsm8Q5bJhu3UTT4PCRZaQwVAbDrF/ulx8WyttahM=;
+ b=madpdA2IZsdgOJo7MhH9aIn36WnyTvf608VJNjKU4iQQnucZhT80EAfp8b5iaHLY33
+ LSYMLiu30MGYQ2eY6huT6/vbDK2QXwsRGx2IDE0vfuf628W+WPHsUFyRcOyxzWNEkEb/
+ cKNLyPO2tHnPFQ0gvQ+EAz+FeGw8lYU4LyeH9kS2XjJgi6fCfhK4gNYNoniPuc2Z9o61
+ UmT0irwwMz67xe5HPJeTVth2tZl5jbMI/1MSsKLPl+NPmIckAnS1WRuMKKI333Y2bOMM
+ sLiczLpvNYRE+J+kFgg7/AnUK+ylht12j4YFpVxc/15pFgZll6Mpx1TnmpQYNwhU2puc
+ Tf1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=ZfG/HEpqhA3MzgbPqFWg+BXYNFgu6A6b9QFElDn5ySA=;
- b=lEwf2fOxoRFJKW/CmTItggAcdwZs+tz/Q6TnypmtBvM1/QjZiDb/Zrb7zkrqkrJfrc
- SCFfivYcsMGbX+DA/NlavId7qXAimcTiv0THRpD7q6s9vfTTcXPAKbh/I0VRb5MgZua+
- Uuak1Yv/oa1CbWq9DSNW6mgAPQWTYuUr+fqG7NyMCYZ9mKn18fwiHaBjiIJtIKsTMlmp
- ViVg4cbL+ic7DUf4sDw9RikeZfprIGbb+CI1xbXFCs4lB+xcJh/vWslrlH3zgDVjzvOT
- 4MDwsSYXVpOB6H9MnEBGvK8xMRO5NUOske2Abkww7pIVGVMPU2vSiHa7WH3v+26+PNvM
- 1yiQ==
-X-Gm-Message-State: AGi0PuYJqHTtD8AnY80b7KA4MVQfGg19PtGA51Lg1dnoFck2x31AFpF8
- WqIoObqeEB3wt5wBgJKMESMoQY3+4RM=
-X-Google-Smtp-Source: APiQypLIdx8+bzx7igbQi4YQ7pK0wEv8aLth3Xj8y5QXe5i6NJjZArjRddIE7SsYOpnndrd6uQmz/A==
-X-Received: by 2002:a17:90b:254:: with SMTP id
- fz20mr10705848pjb.27.1585929201970; 
- Fri, 03 Apr 2020 08:53:21 -0700 (PDT)
+ bh=DTKHsm8Q5bJhu3UTT4PCRZaQwVAbDrF/ulx8WyttahM=;
+ b=WL/eUehrJl1OQDmNsw0gss78K2BkDjkCyNDWZlbppF43qnNVX/dtjqN706psPuYXA6
+ GvM2ZjhiCvGacRn3/MWAzZfAW/9AMW5dybhKwavmTrvLxSJkkhV/Gm+yJMffN1H+Fxu5
+ 7jl29C/pZRY2jnBAVtMdo37+/jaRTmvJTTAm9gPHAybWMFCauy/7TAdqPDDPZ3XMH0zO
+ LbuV1mx5oIY7QdZDzORJY6eBXhmYw41/o7tU5CoRCBYJoGM/Rd/CmMgG9piEyVo6YQlJ
+ rm7vYMej2EWE4tH2e6YXmeUqATaGXPEpupzV7a8NWPOhj9+4X3PXryMwd4B8qQUV7KPG
+ 2+JA==
+X-Gm-Message-State: AGi0PubHQZ7wY0Tnlbf38ZVyIUYkG5bahlFpEbl7QDT8ndg0pKJCMkKA
+ jJDYLL5MV9MTYCqSs/NFyIqiVQ==
+X-Google-Smtp-Source: APiQypLwNtCv00HA9e0S6QvIOb3nB6LJV0niSjYaoe896vIwkyMM8yAXAWSWnXGBB9z28MtkIAFODQ==
+X-Received: by 2002:a65:5a87:: with SMTP id c7mr8682833pgt.237.1585929812310; 
+ Fri, 03 Apr 2020 09:03:32 -0700 (PDT)
 Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
  [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id s22sm5954001pfd.123.2020.04.03.08.53.20
+ by smtp.gmail.com with ESMTPSA id l9sm4212358pff.16.2020.04.03.09.03.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 08:53:21 -0700 (PDT)
-Date: Fri, 03 Apr 2020 08:53:21 -0700 (PDT)
-X-Google-Original-Date: Fri, 03 Apr 2020 08:53:04 PDT (-0700)
-Subject: Re: [RFC PATCH 7/7] riscv: Explicit comment about user virtual
- address space size
-In-Reply-To: <20200322110028.18279-8-alex@ghiti.fr>
+ Fri, 03 Apr 2020 09:03:31 -0700 (PDT)
+Date: Fri, 03 Apr 2020 09:03:31 -0700 (PDT)
+X-Google-Original-Date: Fri, 03 Apr 2020 09:03:23 PDT (-0700)
+Subject: Re: [PATCH] riscv: mm: synchronize MMU after page table update
+In-Reply-To: <20200324054945.26733-1-nickhu@andestech.com>
 From: Palmer Dabbelt <palmer@dabbelt.com>
-To: alex@ghiti.fr
-Message-ID: <mhng-85bee1c4-d1ea-4370-8940-2e35c5eb6d4b@palmerdabbelt-glaptop1>
+To: nickhu@andestech.com
+Message-ID: <mhng-3d02c4a1-effd-4074-a3e0-de38c04ec8d7@palmerdabbelt-glaptop1>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_085322_824743_788ED2B9 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20200403_090333_497353_76D25495 
+X-CRM114-Status: GOOD (  17.15  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -96,44 +94,69 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: alex@ghiti.fr, anup@brainfault.org, linux-kernel@vger.kernel.org,
- zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>
+Cc: mark.rutland@arm.com, aou@eecs.berkeley.edu, alankao@andestech.com,
+ nickhu@andestech.com, anup@brainfault.org, linux-kernel@vger.kernel.org,
+ npiggin@gmail.com, rppt@linux.ibm.com, alexios.zavras@intel.com,
+ linux-riscv@lists.infradead.org, guoren@kernel.org, zong.li@sifive.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, akpm@linux-foundation.org,
+ nylon7@andestech.com, tglx@linutronix.de
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, 22 Mar 2020 04:00:28 PDT (-0700), alex@ghiti.fr wrote:
-> Define precisely the size of the user accessible virtual space size
-> for sv32/39/48 mmu types and explain why the whole virtual address
-> space is split into 2 equal chunks between kernel and user space.
+On Mon, 23 Mar 2020 22:49:45 PDT (-0700), nickhu@andestech.com wrote:
+> Similar to commit bf587caae305 ("riscv: mm: synchronize MMU after pte change")
 >
-> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+> For those riscv implementations whose TLB cannot synchronize with dcache,
+> an SFENCE.VMA is necessary after page table update.
+> This patch fixed two functions:
+>
+> 1. pgd_alloc
+> During fork, a parent process prepares pgd for its child and updates satp
+> later, but they may not run on the same core. Adding a remote SFENCE.VMA to
+> invalidate TLB in other cores is needed. Thus use flush_tlb_all() instead
+> of local_flush_tlb_all() here.
+> Similar approaches can be found in arm and csky.
+>
+> 2. __set_fixmap
+> Add a SFENCE.VMA after fixmap pte update.
+> Similar approaches can be found in arm and sh.
+>
+> Signed-off-by: Nick Hu <nickhu@andestech.com>
+> Signed-off-by: Nylon Chen <nylon7@andestech.com>
+> Cc: Alan Kao <alankao@andestech.com>
 > ---
->  arch/riscv/include/asm/pgtable.h | 11 +++++++++--
->  1 file changed, 9 insertions(+), 2 deletions(-)
+>  arch/riscv/include/asm/pgalloc.h | 1 +
+>  arch/riscv/mm/init.c             | 2 +-
+>  2 files changed, 2 insertions(+), 1 deletion(-)
 >
-> diff --git a/arch/riscv/include/asm/pgtable.h b/arch/riscv/include/asm/pgtable.h
-> index 06361db3f486..be117a0b4ea1 100644
-> --- a/arch/riscv/include/asm/pgtable.h
-> +++ b/arch/riscv/include/asm/pgtable.h
-> @@ -456,8 +456,15 @@ static inline int ptep_clear_flush_young(struct vm_area_struct *vma,
->  #define FIXADDR_START    (FIXADDR_TOP - FIXADDR_SIZE)
+> diff --git a/arch/riscv/include/asm/pgalloc.h b/arch/riscv/include/asm/pgalloc.h
+> index 3f601ee8233f..071468fa14b7 100644
+> --- a/arch/riscv/include/asm/pgalloc.h
+> +++ b/arch/riscv/include/asm/pgalloc.h
+> @@ -51,6 +51,7 @@ static inline pgd_t *pgd_alloc(struct mm_struct *mm)
+>  		memcpy(pgd + USER_PTRS_PER_PGD,
+>  			init_mm.pgd + USER_PTRS_PER_PGD,
+>  			(PTRS_PER_PGD - USER_PTRS_PER_PGD) * sizeof(pgd_t));
+> +		flush_tlb_all();
+>  	}
+>  	return pgd;
+>  }
+> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> index fab855963c73..a7f329503ed0 100644
+> --- a/arch/riscv/mm/init.c
+> +++ b/arch/riscv/mm/init.c
+> @@ -203,8 +203,8 @@ void __set_fixmap(enum fixed_addresses idx, phys_addr_t phys, pgprot_t prot)
+>  		set_pte(ptep, pfn_pte(phys >> PAGE_SHIFT, prot));
+>  	} else {
+>  		pte_clear(&init_mm, addr, ptep);
+> -		local_flush_tlb_page(addr);
+>  	}
+> +	local_flush_tlb_page(addr);
+>  }
 >
->  /*
-> - * Task size is 0x4000000000 for RV64 or 0x9fc00000 for RV32.
-> - * Note that PGDIR_SIZE must evenly divide TASK_SIZE.
-> + * Task size is:
-> + * -     0x9fc00000 (~2.5GB) for RV32.
-> + * -   0x4000000000 ( 256GB) for RV64 using SV39 mmu
-> + * - 0x800000000000 ( 128TB) for RV64 using SV48 mmu
-> + *
-> + * Note that PGDIR_SIZE must evenly divide TASK_SIZE since "RISC-V
-> + * Instruction Set Manual Volume II: Privileged Architecture" states that
-> + * "load and store effective addresses, which are 64bits, must have bits
-> + * 63–48 all equal to bit 47, or else a page-fault exception will occur."
->   */
->  #ifdef CONFIG_64BIT
->  #define TASK_SIZE (PGDIR_SIZE * PTRS_PER_PGD / 2)
+>  static pte_t *__init get_pte_virt(phys_addr_t pa)
 
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+As a general rule, any fences are supposed to have a comment describing why
+they're there.  The generic fences will be caught by checkpatch, but I don't
+remember if these are.
 
