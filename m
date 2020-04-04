@@ -2,88 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19C9819DCD7
-	for <lists+linux-riscv@lfdr.de>; Fri,  3 Apr 2020 19:35:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78E0419E270
+	for <lists+linux-riscv@lfdr.de>; Sat,  4 Apr 2020 05:14:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=e1Jz3mW1+kHVFV4bKHsCQgpmGnhsmI5d7p4GD2NK6Jw=; b=b2AsaE3MRghYad
-	IQJziNjmfrAIxrIIFMdaffd+V+f9irAlRRnuMUOIAGNFtGI7778fnzt5SlmDdBUlX43xos7JlQSS5
-	R9k8BW3QOTwURTCIklaAsXi6EtT8es8bD5lLAQt0kg2OsupOLLAqzOA6uuHoKmR5LO+YHwWe0wWwf
-	p4lnWKGUnnGK4zUNbhLREIujOLY7JJDyZ/7xXSdydIdbqDKj13jAXC+B0hIRFOUul8iixzll/zTWy
-	M98lJO8MbNi2/gWQ3vjZPaVLETrGso8H9LR21JEFk54Sp0zlcX3wKzm3H9+BdvVRbEMlmqWHIETN6
-	HusA8zh0VS6FLbCOAyPQ==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HQzIJIpQMelVal6iTR5y6Y7xPjfkwcDxzcUjZCqcKEU=; b=rZDqgoilMPppti
+	Ds5m+UNJw/q8nXXFG/o5B/l/HhnypDD4zm7tumVJF42XZRUiVGcQdDtUVFFFUKqrf45VIq802Odsi
+	SiB+UPZBolDV9mpNE/yjNc1d8Cg43UNcYMpDO7phZSAMB3CidCA/0L3cZy5i++XlyfCgYhPqkXzrD
+	xroSpn5cytee6rCm6AXr6bIsuxjxVTVpwZknAYllMKLWkIBWT6x1lZwIznUW7jvan5IH6N9c7UoPg
+	n9E+1g7QoInLDIEKcp3pgB/Pq0Ie/FTuVRrlH0PhieOCQv953tIkm2hiLGMiMxmUn7RpfnyQl6JIq
+	uSZSFfhP0lb+ijjEcRjQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKQE3-0006n5-IS; Fri, 03 Apr 2020 17:35:27 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1jKZGY-0004Pp-JE; Sat, 04 Apr 2020 03:14:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKQE0-0006mN-UC
- for linux-riscv@lists.infradead.org; Fri, 03 Apr 2020 17:35:26 +0000
-Received: by mail-pl1-x643.google.com with SMTP id d24so2965177pll.8
- for <linux-riscv@lists.infradead.org>; Fri, 03 Apr 2020 10:35:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=e1Jz3mW1+kHVFV4bKHsCQgpmGnhsmI5d7p4GD2NK6Jw=;
- b=EBPVsvsta0srvEAqWr0fr9qfSkkqs/Q2Phqf+lsxoEouUCBM7iFiGcn+D0wWwrXWmK
- sM0Ie9ZOun633qfoO6u9ev2P16CWrDdNYIK4M4XC067sskeZ4mw8MEyD6HlzOiGifD0z
- yJmSiyQrSCYYTFu8ksLLcoyM0E2SmgvG1AURzHufcfoMtWrmfWdV+Ss5WnGGPwDfB0g0
- ihbuiF3e/yYBT01jU0M2mpObapZXX/VAyL+LocCHiS4iUuffzxWE5oae3cgKYGb8a7+L
- j8f5YU8upiQ0Wyr05mO5dFCJgvYyOcb5ETelpyca02QMnwS/X5TDW768mov35o1Onzcw
- fYiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=e1Jz3mW1+kHVFV4bKHsCQgpmGnhsmI5d7p4GD2NK6Jw=;
- b=sY7TQ/z35KM5CFH6IxUOp/R/MWN2hL1G0/WvEQTncxEw5Ctzb8WUKI6cDNPRG84yrc
- mEp2/8RALLSOMANusPAPn5ioFbKXsBvImId6Q0MrM6TIoi7RGExCGe5lhfzDcxqQINPF
- mVJoWnHTxn0TJhVC+Ypv+qGUgHRATr/HPGTWYkYPguzStihx28td8a7Kph1Lcg7pY8Z8
- he0w/yVNCNlgvpFQidWLEHWIqfXoyEU8RfYiM2lOj+TXdG/3q1Z/dq5MPDzqmZL717Rf
- FfiZtabj1QYiVeLI9NTbl9if5M3iQQKY88RpLXXFBaipxRzpbwfUQbfe+68fi/rP/FX/
- 7znQ==
-X-Gm-Message-State: AGi0PuablIVV7oHfY7Xnwy7OVTNJw5x5CY0cB6ilXfq3762fXzweXh3r
- ttQiaq5WPCo1nrFn/JR34EQd6QI2wjs=
-X-Google-Smtp-Source: APiQypI+Q3WGK6zfJo3SW55+gzzq9kj6/3qS+R1T7GxurnRzKhshzL99vBmf8fn+reyTSWbMUvbZ6A==
-X-Received: by 2002:a17:902:a40e:: with SMTP id
- p14mr8976298plq.295.1585935321438; 
- Fri, 03 Apr 2020 10:35:21 -0700 (PDT)
-Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
- [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id b11sm4824679pfr.155.2020.04.03.10.35.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 10:35:20 -0700 (PDT)
-Date: Fri, 03 Apr 2020 10:35:20 -0700 (PDT)
-X-Google-Original-Date: Fri, 03 Apr 2020 10:35:13 PDT (-0700)
-Subject: Re: Kendryte K210 support v4
-In-Reply-To: <CO2PR04MB2343F5DC42542E7FC9268FF2E7CC0@CO2PR04MB2343.namprd04.prod.outlook.com>
-From: Palmer Dabbelt <palmerdabbelt@google.com>
-To: Damien Le Moal <Damien.LeMoal@wdc.com>
-Message-ID: <mhng-10bc8cda-b6c0-4561-b3d4-0336fdb6e41d@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ id 1jKZGV-0004P9-Ss
+ for linux-riscv@lists.infradead.org; Sat, 04 Apr 2020 03:14:37 +0000
+Received: from devnote2 (NE2965lan1.rev.em-net.ne.jp [210.141.244.193])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8B200206E2;
+ Sat,  4 Apr 2020 03:14:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585970074;
+ bh=4Lmz+/S7SlPMvBnfl+eEEwjVNnxHk+Bjv+KwNBduwyc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=kyIC+9GaonW5ruza0M6g0/ynePvKYZ0yHSqC7gusaQwnIP3H5nakQfDkWHbmmKFTB
+ tOxRT39pzl2KMlmDZaYr2Rv4qpbSUY8Kz55Zmrk8Uo4oSmae23hSxxgHIyE7i5ijU2
+ nqN9TPh+A0SMorxTDUt97QNxDzS86cp0h9ydJhHA=
+Date: Sat, 4 Apr 2020 12:14:28 +0900
+From: Masami Hiramatsu <mhiramat@kernel.org>
+To: Zong Li <zong.li@sifive.com>
+Subject: Re: [PATCH v3 8/9] riscv: introduce interfaces to patch kernel code
+Message-Id: <20200404121428.596911ba5653f8b18a80eab2@kernel.org>
+In-Reply-To: <CANXhq0rMbkNxQ3_qqYEKe8DSbL-vfQku6V9a81Hy9cxW4LaW9g@mail.gmail.com>
+References: <cover.1583772574.git.zong.li@sifive.com>
+ <d27d9e68491e1df67dbee6c22df6a72ff95bab18.1583772574.git.zong.li@sifive.com>
+ <20200401003233.17fe4b6f7075e5b8f0ed5114@kernel.org>
+ <CANXhq0ra3o+mgenbYLq_q0eZY2KiXNpWmo2V0amD0cFDqCQkXw@mail.gmail.com>
+ <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
+ <CANXhq0rMbkNxQ3_qqYEKe8DSbL-vfQku6V9a81Hy9cxW4LaW9g@mail.gmail.com>
+X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_103524_995049_4C3CADDC 
-X-CRM114-Status: GOOD (  24.67  )
-X-Spam-Score: -15.7 (---------------)
+X-CRM114-CacheID: sfid-20200403_201435_955466_4F81166B 
+X-CRM114-Status: GOOD (  15.95  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-15.7 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
- [list.dnswl.org]
- -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
- white-list
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -91,8 +70,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
- Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,69 +82,54 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 26 Mar 2020 17:38:50 PDT (-0700), Damien Le Moal wrote:
->> On 2020/03/27 8:59, Palmer Dabbelt wrote:
->> On Thu, 26 Mar 2020 16:40:34 PDT (-0700), Damien Le Moal wrote:
->>> On 2020/03/27 7:09, Palmer Dabbelt wrote:
->>> On Mon, 23 Mar 2020 21:19:05 PDT (-0700), Damien Le Moal wrote:
->>>>> Palmer,
->>>>
->>>> Ping ?
->>>>
->>>> It would be great to get this series in 5.7.
->>>
->>> Well, the real issue here is that the new series don't appear to address the
->>> fundamental issue I had with the patch set (kernel binaries that only run on
->>> one system).  As a result it's gone on the list of things I need to go fix,
->>> which is quite a bit longer than the review queue.
->>>
->> 
->> I do not understand... Are you referring to the compressed instruction #ifdef
->> that was in the unaligned load/store handler ? The latest v4 removed that and I
->> actuall tested all 4 combinations of kernel and user space being compiled with
->> and without compressed instructions. All worked fine.
->> 
->> We had the same problem in OpenSBI by the way and we fixed it there too.
->> 
->> It's the BUILTIN_DTB issue -- this should look up the DTB to use based on some
->> sort of SOC unique identifier, either something unique in the device tree that
->> was provided (assuming whatever loads Linux on the Kendryte provides one) or
->> mvendorid+marchid+mimpid (probably with some sort of masking).
+Hi Zong,
+
+On Fri, 3 Apr 2020 17:04:51 +0800
+Zong Li <zong.li@sifive.com> wrote:
+
+> > > > > +{
+> > > > > +     void *waddr = addr;
+> > > > > +     bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
+> > > > > +     unsigned long flags = 0;
+> > > > > +     int ret;
+> > > > > +
+> > > > > +     raw_spin_lock_irqsave(&patch_lock, flags);
+> > > >
+> > > > This looks a bit odd since stop_machine() is protected by its own mutex,
+> > > > and also the irq is already disabled here.
+> > >
+> > > We need it because we don't always enter the riscv_patch_text_nosync()
+> > > through stop_machine mechanism. If we call the
+> > > riscv_patch_text_nosync() directly, we need a lock to protect the
+> > > page.
+> >
+> > Oh, OK, but it leads another question. Is that safe to patch the
+> > text without sync? Would you use it for UP system?
+> > I think it is better to clarify "in what case user can call _nosync()"
+> > and add a comment on it.
 > 
-> Hmmm. Yes, that would be nice. However, an SoC identifier is not the same as a
-> board identifier, and since the device tree describes not just the SoC, I am not
-> sure this would in the end be a unique enough ID and so not improve anything.
+> The ftrace is one of the cases, as documentation of ftrace said, when
+> dynamic ftrace is initialized, it calls kstop_machine to make the
+> machine act like a uniprocessor so that it can freely modify code
+> without worrying about other processors executing that same code. So
+> the ftrace called the _nosync interface here directly.
 
-IIRC there's only one DT for this platform anyway, so it at least fixes the
-issue here.
+Hmm, even though, since it already running under kstop_machine(), no
+other thread will run. 
+Could you consider to use text_mutex instead of that? The text_mutex
+is already widely used in x86 and kernel/kprobes.c etc.
 
-> The other problem with this I think is that this does not improve in any way the
-> "bad" case where none of the embedded DTBs available match the hardware. What to
-> do then ? At that point, the kernel code is such in an early stage that it
-> cannot even display anything. That is the same situation with the current single
-> BUILTIN dtb: if the dtb is wrong, the kernel will likely not boot.
->
-> The current BUILTIN_DTB approach comes from other arch where that already
-> exists. Nothing new here, and it looks like other arch at least didn't mind the
-> end-result special kernel-for-this-paltform-only approach. We are talking about
-> a tiny hardware/super embedded thing here. I sure would not want to use BUILTIN
-> DTB for anything bigger then the Kendryte boards and this may be where we can
-> improve using KConfig: allow selecting BUILTIN DTB only if the KENDRYTE SOC is
-> selected ?
+(Hmm, it seems except for x86, alternative code don't care about
+ racing...)
 
-Well, the ARM stuff has a whole bunch of compile-time issues with supporting
-multiple vendors' SOCs at the same time.  That's proving to be a big headache.
-
-> 
-> In the end, I would really like to see this series in 5.7 to enable all the
-> hobbyist and hackers out there to more easily contribute improvements in this
-> area. I do not see much problem with starting with the BUILTIN DTB as it is and
-> improve on it as we go. There will not be any "backward compatibility" problems
-> that I can see.
-
-OK, I'll just go fix it.
+Thank you,
+-- 
+Masami Hiramatsu <mhiramat@kernel.org>
 
