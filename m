@@ -2,7 +2,7 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C03EE19EC00
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EEEA19EBFF
 	for <lists+linux-riscv@lfdr.de>; Sun,  5 Apr 2020 16:37:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
@@ -10,66 +10,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=H+0oq6gi0wf3iq8XzzSoBVpcUbwLNgP9dCzzwQG51v8=; b=Mt3+Qt0pabLZnOIGTldQQVeqA
-	TgSX1xdHSLZXw1p5vsZ8gagpO8KO3WX0TRVPuqkp9KwJaecWVQ9xIttiuNarwx90mHbFQS9o1FP3/
-	2akNKQTcZP6gP/2tY0mdC1kn48Cn5how1iuhn5OgCoekYwhDhnbBU2gjnvI8zk4lPp8tWPyvMyaeO
-	yPHDmxODxa/U6j/oJlYBvE11i5asWs075guOKjnD3gfxq0Tkp6krObwfeoz/4N1wtGceJy28iLi1M
-	gtfSsbhdWIqaiwsd3XdHSlMa8zy54d6ivVLnSlWbUB66YQHPV+ggQCRo7sQ+CZuzq46ShVR1DyW+G
-	sc0ouaY2Q==;
+	 bh=iq7bhlEuP87tC6Doi+ny260jw1k9nQHO7+JOk7S3IkY=; b=Pm+k9/G325HP7hDPuE6n2HkDP
+	eNv1w7xdPY6pJdbrRr4yACNubYONF0rRyWsdQT07yUePeuCz3j56FVaBMqq/fMDQitCTNCrbpu2YF
+	FX1Cmv8f8dcJQriVENnN1XVc1plND0ER+Xnt08HhfCjDmq1JjYS2MuQxFV0UXksEsdzRFYCDXjoYo
+	5tBtevf5V58e8N8awY1MQiAuoaB2Yry1mTwrqqmjqUQe1ZC4v4EH8ibKrnBBsUweMdg8YTgRCfiBh
+	VLZnLHwnd2+C0INEMbs+MvLW2F0bqW/ZJNxv9TKEPsC3p17nyblHPQwV4jNbbmgUCcpd427tf8wOI
+	qEPkO/OFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jL6OY-00041j-Sd; Sun, 05 Apr 2020 14:37:06 +0000
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42])
+	id 1jL6Oa-00043p-U8; Sun, 05 Apr 2020 14:37:08 +0000
+Received: from mail-yb1-xb44.google.com ([2607:f8b0:4864:20::b44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jL6OW-000417-2S
- for linux-riscv@lists.infradead.org; Sun, 05 Apr 2020 14:37:05 +0000
-Received: by mail-yb1-xb42.google.com with SMTP id n2so7275126ybg.4
- for <linux-riscv@lists.infradead.org>; Sun, 05 Apr 2020 07:37:02 -0700 (PDT)
+ id 1jL6OY-00041Z-37
+ for linux-riscv@lists.infradead.org; Sun, 05 Apr 2020 14:37:07 +0000
+Received: by mail-yb1-xb44.google.com with SMTP id 11so7240886ybj.11
+ for <linux-riscv@lists.infradead.org>; Sun, 05 Apr 2020 07:37:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=H+0oq6gi0wf3iq8XzzSoBVpcUbwLNgP9dCzzwQG51v8=;
- b=Qy0QItI/Sxccq8Mx6NyTNju0X63Ern+3yjPAQzPZ3PZnd5zwCCU73bRsjl8J3KjMPK
- +ksBj+1poYsE1qaKzkXWwjGu/t6HMYFh78NpvlNWNoxQcBnHkJMMtzBrRcbLcKu+Uiue
- DFIM7Oi0kjRjIc9nP1OYGNP32mJYulYNkJY05GncZ17Bmxy/GBzEIVgEPjPiYhbEAm8z
- D+gE1Zuzolkuhsj6iwpHOoHFO2SHX79F4EzpkX6vM8Nt7KwFo0gavGCUij2B3rndq6Zo
- t6mo+wlQNzu8nUtYdIfuuUA80XkWGDTCLF1W7PQ7vHD71yFlEWemoU2c7n1LjAYUPLLr
- 6fdg==
+ :cc; bh=iq7bhlEuP87tC6Doi+ny260jw1k9nQHO7+JOk7S3IkY=;
+ b=ceoJ45Knn9Zl8eU0DnsRGTYDGS/rlw59aWGmmu4eKd7i+po8bbRfvj35jP480FpTik
+ +dv7MMJyUBYx9tvSzv4Ur+3QXjnxBxvee3eCTh/znJDHI/At3sWu1GFiGsLAsO7RXS8t
+ uVSULXAHxbwXrttJxRz60IX+IVJ6OxEO9Ynjab00ggtC09tELS2JFRWXSkzsRHRDBBXd
+ oANpCMHo4In+LXHYG1uwnaTVbHKuE+wB4S15wFRhVp6lUQWhGd5uwWeWu6Xoi33UpWXr
+ cODrBQJzQC0EsFwp6o4npxr+cARk7fzU6Usf7v9uAt9+NEOfKp1fpfEVKBBFTdOT/q4K
+ RnBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=H+0oq6gi0wf3iq8XzzSoBVpcUbwLNgP9dCzzwQG51v8=;
- b=i/wdJC2YYKeRY0EkRp/10oDbP0tPA4LUri3w16j4DNlAAmAd9ubvZb9VjHneNd2sDC
- BsMBdfp40zgWvfl5oZFdl/QizMFAJovjWWUqZewD+8tI9R5FlGh+/RzMT82qJKZdC047
- HvSVa+wuoq6g4tfc0Nh2x8X+fZnARBNJ1UrVixNzfJsfida8+oYc2RTL04P7WD2dI96A
- sybLapczJBNtm1q7dUs4kpZYEFe7X6eVo6csUeDoObuFf2a9w3hepGL92kT+NixCrQPz
- 56UdIasciIM42MIohnz5J9B6AZtu4ZzcZopHmj0yqs3St4ZI+BjZWodnKSsdTmxPsXvp
- B5Ig==
-X-Gm-Message-State: AGi0PuaVmd2TBHBTjEbKGaCBeGJD9oPed1WT3VaKqfBgfSLzxp3udcbX
- 07To49swXVc/oCmhnHg7FcY5SdQOcaRfBRKM+gA=
-X-Google-Smtp-Source: APiQypIZ0P+jq5CeAviX1igg1e/s/YixfBJUfL7aJ2yu+ryeRm83nd3f9MCaMX4yJ/auCG4qVzendli5XOUEhd4fg0E=
-X-Received: by 2002:a25:5e03:: with SMTP id s3mr30139069ybb.203.1586097421687; 
- Sun, 05 Apr 2020 07:37:01 -0700 (PDT)
+ bh=iq7bhlEuP87tC6Doi+ny260jw1k9nQHO7+JOk7S3IkY=;
+ b=PN0/1KrnLs6aZUl+louQLTvXN2xgGaobY4O2BbD18EsnonQVkwsCMQXSLsCjxYBqnb
+ LN2DZOY+58nva22gmVukYSzhjvjoqh8MT6KbuySh8oc9xfhk21WoxpZMYN4DcRqDZwcA
+ tTyv1W/I1z74Pv1JSxRFirjv0KCKtXWKZHUskMjB73O+8mtqgRg6E2a7mlWYhZ4jBi0S
+ 1vA7vs+icHsTp4iWbBeY6NaZg5cwppTC6uLh5V6qiJ+BnaB0tY6TZyif6sfJy4P3JH28
+ QLoI90tjEtssT+L9IgxOWFYaQvg/KAeiKTth7cPtK9cxgDRwg3BiPfbsNbf56qAfQ7+g
+ zdvQ==
+X-Gm-Message-State: AGi0PuYdLM2BKIRdopB9v+Z3EnGXxsl+jzAIs43jEaZylMv2tF/+QKJ/
+ kT0nDD0yjkUqOg6P9H1H6RLiGZEUx00sL+yHT7g=
+X-Google-Smtp-Source: APiQypLYFc4hPKnBc3SI599uWHHdT62VKldY45eeM+yxx81Vkxo1ZqqvUh4Ibry1DdjGmKA319R54ohKQmegiUiein8=
+X-Received: by 2002:a05:6902:686:: with SMTP id
+ i6mr25980689ybt.56.1586097425185; 
+ Sun, 05 Apr 2020 07:37:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200318011144.91532-1-atish.patra@wdc.com>
- <20200318011144.91532-2-atish.patra@wdc.com>
-In-Reply-To: <20200318011144.91532-2-atish.patra@wdc.com>
+ <20200318011144.91532-3-atish.patra@wdc.com>
+In-Reply-To: <20200318011144.91532-3-atish.patra@wdc.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sun, 5 Apr 2020 22:36:50 +0800
-Message-ID: <CAEUhbmW3tkOxu99VHhMCOSFoonp7Z9TuNsN22JBhYT7a+2vk8A@mail.gmail.com>
-Subject: Re: [PATCH v11 01/11] RISC-V: Mark existing SBI as 0.1 SBI.
+Date: Sun, 5 Apr 2020 22:36:53 +0800
+Message-ID: <CAEUhbmXH0GP_=r-jUHNCB9wPkSoh6_BNWtUG1SN57QPgLCtDNg@mail.gmail.com>
+Subject: Re: [PATCH v11 02/11] RISC-V: Add basic support for SBI v0.2
 To: Atish Patra <atish.patra@wdc.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200405_073704_118824_70EB09FF 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20200405_073706_129380_A0C15F0A 
+X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:b42 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:b44 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [bmeng.cn[at]gmail.com]
@@ -108,27 +110,22 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Wed, Mar 18, 2020 at 9:11 AM Atish Patra <atish.patra@wdc.com> wrote:
 >
-> As per the new SBI specification, current SBI implementation version
-> is defined as 0.1 and will be removed/replaced in future. Each of the
-> function call in 0.1 is defined as a separate extension which makes
-> easier to replace them one at a time.
+> The SBI v0.2 introduces a base extension which is backward compatible
+> with v0.1. Implement all helper functions and minimum required SBI
+> calls from v0.2 for now. All other base extension function will be
+> added later as per need.
+> As v0.2 calling convention is backward compatible with v0.1, remove
+> the v0.1 helper functions and just use v0.2 calling convention.
 >
-> Rename existing implementation to reflect that. This patch is just
-> a preparatory patch for SBI v0.2 and doesn't introduce any functional
-> changes.
->
-
-nits: remove the ending period in the commit title
-
 > Signed-off-by: Atish Patra <atish.patra@wdc.com>
 > Reviewed-by: Anup Patel <anup@brainfault.org>
 > Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 > ---
->  arch/riscv/include/asm/sbi.h | 41 +++++++++++++++++++-----------------
->  1 file changed, 22 insertions(+), 19 deletions(-)
+>  arch/riscv/include/asm/sbi.h | 139 ++++++++++----------
+>  arch/riscv/kernel/sbi.c      | 243 ++++++++++++++++++++++++++++++++++-
+>  arch/riscv/kernel/setup.c    |   5 +
+>  3 files changed, 314 insertions(+), 73 deletions(-)
+>
 
-[snip]
-
-Other than that,
 Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
 
