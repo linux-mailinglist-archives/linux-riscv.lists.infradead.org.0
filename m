@@ -2,58 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B39D019EC26
-	for <lists+linux-riscv@lfdr.de>; Sun,  5 Apr 2020 16:49:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C04D919EEF1
+	for <lists+linux-riscv@lfdr.de>; Mon,  6 Apr 2020 02:42:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nXH4d2ZrGxmOvTzCuOhkAYVCOKWY45ePsV8jvbvmK94=; b=JRGxIFPAQg90NP
-	3ecMIojlaRPw69YWh0cVthUAlPiudb4hp1Vy6KLoDgGH8liPMJ8NU103Uwk85C2Hs9hyGSlwLAopw
-	FSeg7VdtDtKBOphwMnTdJPMuqi96d4yVqKve3OHgIBsj21u7wtlRABwBo/04uxqUaf2zquJ8Z/RVS
-	Vdu1+qdkUGw/bQGvTfG9vvP8jzdcPgYetGMUKC3BFZgdTcXjYQMuBpaWJibiKPyulUEjrAEQ2Wfqr
-	ce9zPD0nTvIbzxAz7skN9Lm/9XuiDkCe+ZLcd7QbeIyForJnjAsjwHEXFcLaSWd6xnKFLC3aMEIgZ
-	8a2ZF13Pi1sjHkIJBUMg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=nRwtpAe/SaXgFTw9DNk+qemSVp8LrFTj/+VL0HITjJU=; b=kZ8hcbnyjXYX8MUb8s/n2eQvS
+	Smlouvwo1734sLEattepVbq7ffd16rPZBHbEj+O5yKXDBM48s1GNfB0/KhD/h2QOWjc/+uyKLfEEm
+	/23lNw5qMq6Yar3kZtjueCNyZZaK3z9L7SgyophnhD1G6OgcNWJCUro/Nu7iV2P1q3FweS9Kniqif
+	hUuvJuLF6Nhb3d445COdYYlDcptJCjqrTP7ghz8gz1EeCvO0SeGn93vSiFJ0DHN7KcWk+yAvKN0vT
+	Rxdkj07bykcEdYOEmgNdr5/kBzx6p35ej+2OHUmXw23JGyqesfexWP3NC7AJ/gxRNeWW/Yc+omwJl
+	E19fh5qWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jL6aq-0002VK-Ly; Sun, 05 Apr 2020 14:49:48 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jL6aZ-0002Kg-Po; Sun, 05 Apr 2020 14:49:33 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B6F6331B;
- Sun,  5 Apr 2020 07:49:30 -0700 (PDT)
-Received: from [10.163.1.2] (unknown [10.163.1.2])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7CCD73F52E;
- Sun,  5 Apr 2020 07:49:21 -0700 (PDT)
-Subject: Re: [mm/debug] f675f2f91d:
- WARNING:at_mm/debug_vm_pgtable.c:#debug_vm_pgtable
-To: kernel test robot <rong.a.chen@intel.com>
-References: <20200330085636.GG11705@shao2-debian>
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Message-ID: <282deb38-8ce1-3980-2549-4413c33b6062@arm.com>
-Date: Sun, 5 Apr 2020 20:19:12 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+	id 1jLFqV-0003Ap-JA; Mon, 06 Apr 2020 00:42:35 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jLFqS-0003AM-Bf
+ for linux-riscv@lists.infradead.org; Mon, 06 Apr 2020 00:42:34 +0000
+Received: by mail-qk1-x742.google.com with SMTP id i186so5669184qke.1
+ for <linux-riscv@lists.infradead.org>; Sun, 05 Apr 2020 17:42:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nRwtpAe/SaXgFTw9DNk+qemSVp8LrFTj/+VL0HITjJU=;
+ b=NXVSssbNfhsIUwDNjjrgfayy6crT8Hc8jrDbUYXUOtvcrCDb47PaeHUGglnfRVx+ek
+ 4r3Ws5Va/xomeabxnOlOIUtnrMih+jsouFGgjuYFZb8CRr56kTxAPzy+42lezxUndNgL
+ wyzAEGNjfYINuxItq1PYX4bZfEVj6DtdYpKRVyA+nSSfEavn5k/TJaAoec/wxMS7kbUU
+ zJMcDDwXkPvnfntwHBVxxmyNe/HfHxvEeZW+xOKIEKMFW8zA+90txHhpgOFgYAWwnslm
+ LZqFvoIE7FwVSh7+PQCFfkNCxky63FjXvzvNCceNRB+MgjpzP7IFW+gxigsONzJDxOsv
+ 8K6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nRwtpAe/SaXgFTw9DNk+qemSVp8LrFTj/+VL0HITjJU=;
+ b=oFALS4KMZ0Em85MafyxNDaeZftI/RuNPVhbvPpUBdWs6esu6T1q1je6TTjCZNw7vpF
+ vTbXiBHhfIB6sSmOxObrckOgL5E0zTfALByIzlFjw7ScKhgBUXPgAROG31lwRHKIhwEg
+ UxaqZ7LpUuWJ3ZB+Zm8w8E+uHdqlhKbiIeQU+pyWFWCYzkebWt6dtN5FExTyilEJCNzb
+ S3TNpUCVk48Kdcf6XkhrZXGJhEQb1lmOq3qcjNUxh5StnD7b5jEAIi0Vs484G9Vb7zXJ
+ IKZ1t20e0pPAFNv//gYlK9l8a0ANLgozy9z6f9SKzyvReoZeoCli/BFxdmCLcIZguTT8
+ NCnQ==
+X-Gm-Message-State: AGi0PuaIamuiCPXz68wsKG/bfdsUwYKRFEDczqYMl+28a8clnTFXBvBE
+ Ef7blFcpBSNU3fzCcpfGish4AtaTsxUSbI1RSVpS9A==
+X-Google-Smtp-Source: APiQypI4c/oB+fQaWbjY5asExUxOB9ixUg/6qX+UXAP+RvnOhSiojque2JJIc4wulN2xoGz12Q5k2+FvEHuyvhd4J8w=
+X-Received: by 2002:a05:620a:1189:: with SMTP id
+ b9mr19013740qkk.236.1586133744291; 
+ Sun, 05 Apr 2020 17:42:24 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200330085636.GG11705@shao2-debian>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <1585668191-16287-1-git-send-email-vincent.chen@sifive.com>
+ <1585668191-16287-4-git-send-email-vincent.chen@sifive.com>
+ <20200403100353.szkaovdjajjwtqvq@holly.lan>
+In-Reply-To: <20200403100353.szkaovdjajjwtqvq@holly.lan>
+From: Vincent Chen <vincent.chen@sifive.com>
+Date: Mon, 6 Apr 2020 08:42:13 +0800
+Message-ID: <CABvJ_xgS0dvXDqTGvmV+AhBt0tRxbF+ZvyuLzoCprErorxqKuQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/5] kgdb: enable arch to support XML packet support.
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200405_074931_924943_1BAB9DB7 
-X-CRM114-Status: GOOD (  11.89  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200405_174232_565878_46A5D51A 
+X-CRM114-Status: GOOD (  21.22  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,98 +93,124 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
- Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
- Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
- Vasily Gorbik <gor@linux.ibm.com>, lkp@lists.01.org,
- Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+Cc: kgdb-bugreport@lists.sourceforge.net, jason.wessel@windriver.com,
+ Douglas Anderson <dianders@chromium.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 03/30/2020 02:26 PM, kernel test robot wrote:
-> [  283.486118] WARNING: CPU: 1 PID: 1 at mm/debug_vm_pgtable.c:371 debug_vm_pgtable+0x4dc/0x7e3
-> [  283.487342] Modules linked in:
-> [  283.487752] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 5.6.0-rc7-next-20200323-00001-gf675f2f91d045 #1
-> [  283.488817] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.12.0-1 04/01/2014
-> [  283.489794] RIP: 0010:debug_vm_pgtable+0x4dc/0x7e3
-> [  283.490361] Code: b5 fd 48 8b 7d d0 be 20 01 00 00 e8 3d 9f b5 fd 48 8b 75 c8 48 8b 7d d0 e8 30 9f b5 fd 48 8b 75 c8 48 8b 7d d0 e8 23 9f b5 fd <0f> 0b 48 8b 75 c8 48 8b 7d d0 e8 14 9f b5 fd 0f 0b 48 8b 75 c8 48
-> [  283.492577] RSP: 0000:ffff888236493ed8 EFLAGS: 00010202
-> [  283.493235] RAX: 00000001e1d31025 RBX: ffff88823e7f6cd8 RCX: ffffffffffffffff
-> [  283.494135] RDX: 0000000000000000 RSI: 0000000000000025 RDI: 00000001e1d31000
-> [  283.495002] RBP: ffff888236493f38 R08: 0000000000000001 R09: 0000000000000001
-> [  283.495858] R10: 0000000000000001 R11: 0000000000000000 R12: ffff88821d907000
-> [  283.496748] R13: ffff88821d8fc498 R14: ffff88821d8fda90 R15: ffff88821d8fc000
-> [  283.497614] FS:  0000000000000000(0000) GS:ffff888237800000(0000) knlGS:0000000000000000
-> [  283.498585] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  283.499290] CR2: 00000000ffffffff CR3: 00000001e1222000 CR4: 00000000000406e0
-> [  283.500165] Call Trace:
-> [  283.500499]  ? rest_init+0x240/0x240
-> [  283.500985]  kernel_init+0x13/0x110
-> [  283.501433]  ret_from_fork+0x24/0x30
-> [  283.501907] irq event stamp: 4760776
-> [  283.502366] hardirqs last  enabled at (4760775): [<ffffffffb481e34d>] _raw_spin_unlock_irqrestore+0x4d/0x60
-> [  283.511686] hardirqs last disabled at (4760776): [<ffffffffb3c038d4>] trace_hardirqs_off_thunk+0x1a/0x1c
-> [  283.512914] softirqs last  enabled at (4760748): [<ffffffffb4c002cf>] __do_softirq+0x2cf/0x4ad
-> [  283.514086] softirqs last disabled at (4760741): [<ffffffffb3cf4f4d>] irq_exit+0xcd/0xe0
-> [  283.515114] ---[ end trace 7e3383c4261f8faa ]---
+On Fri, Apr 3, 2020 at 6:03 PM Daniel Thompson
+<daniel.thompson@linaro.org> wrote:
+>
+> On Tue, Mar 31, 2020 at 11:23:09PM +0800, Vincent Chen wrote:
+> > The XML packet could be supported by required architecture if the
+> > architecture defines CONFIG_ACRH_SUPPORTS_GDB_XML and implement its own
+> > arch_handle_qxfer_pkt(). Except for the arch_handle_qxfer_pkt(), the
+> > architecture also needs to record the feature supported by gdb stub into
+> > the arch_gdb_stub_feature, and these features will be reported to host gdb
+> > when gdb stub receives the qSupported packet.
+> >
+> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> > ---
+> >  include/linux/kgdb.h   |  9 +++++++++
+> >  kernel/debug/gdbstub.c | 13 +++++++++++++
+> >  lib/Kconfig.kgdb       |  5 +++++
+> >  3 files changed, 27 insertions(+)
+> >
+> > diff --git a/include/linux/kgdb.h b/include/linux/kgdb.h
+> > index b072aeb1fd78..ee9109d2f056 100644
+> > --- a/include/linux/kgdb.h
+> > +++ b/include/linux/kgdb.h
+> > @@ -177,6 +177,15 @@ kgdb_arch_handle_exception(int vector, int signo, int err_code,
+> >                          struct pt_regs *regs);
+> >
+> >  /**
+> > + *   arch_handle_qxfer_pkt - Handle architecture specific GDB XML packets.
+> > + *   @remcom_in_buffer: The buffer of the packet we have read.
+> > + *   @remcom_out_buffer: The buffer of %BUFMAX bytes to write a packet into.
+> > + */
+> > +
+> > +extern void
+> > +arch_handle_qxfer_pkt(char *remcom_in_buffer, char *remcom_out_buffer);
+>
+> This should be prefixed kgdb_ like the other arch functions.
+>
 
-The above failure here and the one on the other thread can be solved with
-the following change. The failure is caused by the fact that even though
-the soft dirty helpers are defined within CONFIG_HAVE_ARCH_SOFT_DIRTY, the
-required PTE bits (_PAGE_SOFT_DIRTY and _PAGE_SWP_SOFT_DIRTY) are available
-only when CONFIG_MEM_SOFT_DIRTY is enabled. Hence these tests should not
-proceed unless CONFIG_MEM_SOFT_DIRTY is enabled. Similar situation exists
-in s390 (_PAGE_SOFT_DIRTY and _SEGMENT_ENTRY_SOFT_DIRTY) and powerpc (at
-least with _PAGE_SWP_SOFT_DIRTY).
+Ok, I will add the prefixed kgdb_ to the arch_handle_qxfer_pkt().
 
-diff --git a/mm/debug_vm_pgtable.c b/mm/debug_vm_pgtable.c
-index 87b4b495333b..2a75a51fed06 100644
---- a/mm/debug_vm_pgtable.c
-+++ b/mm/debug_vm_pgtable.c
-@@ -589,7 +589,7 @@ static void __init pte_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
- {
-        pte_t pte = pfn_pte(pfn, prot);
- 
--       if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
-+       if (!IS_ENABLED(CONFIG_MEM_SOFT_DIRTY))
-                return;
- 
-        WARN_ON(!pte_soft_dirty(pte_mksoft_dirty(pte)));
-@@ -600,7 +600,7 @@ static void __init pte_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
- {
-        pte_t pte = pfn_pte(pfn, prot);
- 
--       if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
-+       if (!IS_ENABLED(CONFIG_MEM_SOFT_DIRTY))
-                return;
- 
-        WARN_ON(!pte_swp_soft_dirty(pte_swp_mksoft_dirty(pte)));
-@@ -612,7 +612,7 @@ static void __init pmd_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
- {
-        pmd_t pmd = pfn_pmd(pfn, prot);
- 
--       if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY))
-+       if (!IS_ENABLED(CONFIG_MEM_SOFT_DIRTY))
-                return;
- 
-        WARN_ON(!pmd_soft_dirty(pmd_mksoft_dirty(pmd)));
-@@ -623,7 +623,7 @@ static void __init pmd_swap_soft_dirty_tests(unsigned long pfn, pgprot_t prot)
- {
-        pmd_t pmd = pfn_pmd(pfn, prot);
- 
--       if (!IS_ENABLED(CONFIG_HAVE_ARCH_SOFT_DIRTY) ||
-+       if (!IS_ENABLED(CONFIG_MEM_SOFT_DIRTY) ||
-                !IS_ENABLED(CONFIG_ARCH_ENABLE_THP_MIGRATION))
-                return;
+>
+> > +
+> > +/**
+> >   *   kgdb_call_nmi_hook - Call kgdb_nmicallback() on the current CPU
+> >   *   @ignored: This parameter is only here to match the prototype.
+> >   *
+> > diff --git a/kernel/debug/gdbstub.c b/kernel/debug/gdbstub.c
+> > index 4b280fc7dd67..d6b1b630a7e7 100644
+> > --- a/kernel/debug/gdbstub.c
+> > +++ b/kernel/debug/gdbstub.c
+> > @@ -792,6 +792,19 @@ static void gdb_cmd_query(struct kgdb_state *ks)
+> >               }
+> >               break;
+> >  #endif
+> > +#ifdef CONFIG_ACRH_SUPPORTS_GDB_XML
+>
+> Typo (and perhaps insufficient testing ;-) ).
+>
+> Additional the naming of the CONFIG option looks wrong because it
+> describes why you added it, not what it actually does. Something
+> like CONFIG_HAVE_ARCH_KGDB_QXFER_PKT is more descriptive.
+>
+
+OK, I will modify it.
+
+>
+> > +     case 'S':
+> > +             if (!strncmp(remcom_in_buffer, "qSupported:", 11))
+> > +                     strcpy(remcom_out_buffer, arch_gdb_stub_feature);
+>
+> Has this been declared anywhere? I cannot find it.
+>
+> This might also benefit from a kgdb_ prefix.
+>
+
+I think the supported functions depend on the implementation of the
+architectures.
+Therefore, I define arch_gdb_stub_feature[] in the
+arch/riscv/include/asm/gdb_xml.h.
+OK, I will add the kgdb_ prefix to arch_gdb_stub_feature[].
+Thanks
+
+>
+> > +             break;
+> > +     case 'X':
+> > +             if (!strncmp(remcom_in_buffer, "qXfer:", 6))
+> > +                     arch_handle_qxfer_pkt(remcom_in_buffer,
+> > +                                           remcom_out_buffer);
+> > +             break;
+> > +#endif
+> > +     default:
+> > +             break;
+> >       }
+> >  }
+> >
+> > diff --git a/lib/Kconfig.kgdb b/lib/Kconfig.kgdb
+> > index 933680b59e2d..5b586a3bba90 100644
+> > --- a/lib/Kconfig.kgdb
+> > +++ b/lib/Kconfig.kgdb
+> > @@ -3,6 +3,11 @@
+> >  config HAVE_ARCH_KGDB
+> >       bool
+> >
+> > +# set if architecture implemented the arch_handle_qxfer_pkt function
+> > +# to enable gdb stub to address XML packet sent from GDB.
+> > +config ARCH_SUPPORTS_GDB_XML
+> > +     bool
+> > +
+> >  menuconfig KGDB
+> >       bool "KGDB: kernel debugger"
+> >       depends on HAVE_ARCH_KGDB
+> > --
+> > 2.7.4
+> >
 
