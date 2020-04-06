@@ -2,81 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B23719F3A3
-	for <lists+linux-riscv@lfdr.de>; Mon,  6 Apr 2020 12:37:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C13F1A00ED
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 00:16:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YnUc67zZ/CRLBeX19uteUhR1k0R3ljqlsHXrgc36ZpM=; b=LU5kw2ZuY77KC675HVcKZBERI
-	Vm+v2VvluNQo6DrbOt8Rfvrlxgos/4V3+vIU7rnHS0HizAQJKIjOfQOTOI8YS2RNmWi1adpt+jxEb
-	5lnnssEUI8oENPM0mCraIucxYftsuB9ikfWa0QstiLsHSHp5F4lnxO2lWzGJvtSCsO2unrxSLPPXI
-	aXTBwcxnHXeB05osOV1hrI+4nEl2jOKjd2SFhOYduReuMaKeSM3jzAK+YmZ3CmVr+AvBA2O6rndn6
-	xURB5ppNOkE8Zq+tR2MeEgc3asn00P1koRcUX7QVUvgC2oHA50Vtd7eSEef4PMlX8Z9sIV9x/lDh2
-	bCxs5f81Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I8Ag8RJmxCZk7aftpHG1/aOT8pIgsaZRRBMA74l4szs=; b=gHJMMEsD1FM1fM6dQJzpqpXJGI
+	E4SkjXupRo7EzD2PYMkX6iGnGyNnuO2h707pVrN3nt/G1dGRWJRndxCeiAALOqJ6Q3YmRfqfwtMBf
+	xoH8QSWHd6g45In6iACsK0iG3/kD5edqmvDsC9PWGhVjpbxI8+oJxKRy3WbQ++cJUuFqzspVgYRDU
+	v5xK/ypRRn7U0NCniISq/8rkF/cl639EWTFWtgzUcTlNBjjyV/2sCk1vvNVY9O7PZVq4Nj21/AwHM
+	UB1WyiH+WTnKncamnaGIztsTj9yJV7KV74BOv+xnPo+MpKqr+f7wk/6wzjqGMFat9rLv3svjWSisl
+	hNMVQ10g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLP7i-0006Ok-Jc; Mon, 06 Apr 2020 10:36:58 +0000
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
+	id 1jLa2n-0002z2-C7; Mon, 06 Apr 2020 22:16:37 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLP7d-0006O1-SL
- for linux-riscv@lists.infradead.org; Mon, 06 Apr 2020 10:36:55 +0000
-Received: by mail-oi1-x241.google.com with SMTP id q204so12574726oia.13
- for <linux-riscv@lists.infradead.org>; Mon, 06 Apr 2020 03:36:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YnUc67zZ/CRLBeX19uteUhR1k0R3ljqlsHXrgc36ZpM=;
- b=IhbJ0oUwADR2fgaEWeRMV48PrcMNnHViNOtP1JgRPDQBa9YPacnyR+DsYyzDGxhmPu
- Ap+6eKiQtZ7sciCLyzIlpXBqJU77ClQ4yVwBeiXS48W7BI2wDhiKRp6mOVeyivrhv0JX
- yDtMkr/uNfLm+rotKNnjhheKA9F84+eUuJmGZEDFsG7c4EO8lbULSRTIUUaQvQ/CqyoP
- s/lBySbL07cwsHZU0J6c1zhTMj3edWxmtrvHuzURQIHZQ4rk5Zs/x7zfTWtWN3aOIpZ5
- AACYUMpZ+x6rMqY6GYJ9R2Of++CWq+oO3fC5s4Djxr3GBniWL2MezWmr3NOyfkxsMtTP
- kUxw==
+ id 1jLa2j-0002xt-MH
+ for linux-riscv@lists.infradead.org; Mon, 06 Apr 2020 22:16:35 +0000
+Received: by mail-pg1-x544.google.com with SMTP id g32so717146pgb.6
+ for <linux-riscv@lists.infradead.org>; Mon, 06 Apr 2020 15:16:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cs.washington.edu; s=goo201206;
+ h=from:to:cc:subject:date:message-id;
+ bh=I8Ag8RJmxCZk7aftpHG1/aOT8pIgsaZRRBMA74l4szs=;
+ b=M8J8NhOnd6VsGu2mROnqMiucZGBJHkCFpdPuRUXTHrWBoiRpSX/zdOAAme47f8IpmO
+ LbxP9RDtmYBA4sFMzviQSaX6l/c2ApCo5J9ZISFFgE3ic036efVrwB2nD7wkS1aBm/gE
+ pEWLs6KKpMP1482IJ5rRxQ3ubJH7OiJ35zFuM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YnUc67zZ/CRLBeX19uteUhR1k0R3ljqlsHXrgc36ZpM=;
- b=mo1YY65F7ZxpwX0J4nxDpj3wr7QqJVGntp9LCasGwmBE84yAc+mEE799FUNVR0O9Yl
- vZmjse9vEUQIz8sy1mxZjaaRUgJvJlJyUwQPI7tKyjf5RuAdXxOPeCKrLh3imYWYSCkE
- FbUqjNNnA1sgLTUozJnAR/HZPK3psI8eJF38tyDdDZ0kP6JeP46MLjzeWbSGPJdblzDI
- MZ4MwYA5Jjv1nJr8vkqziHld1elNFv1Qy9W+qwlg1z9tPJ6OFvp+VQu1B8s7m8YlNQH5
- MouThSHw7bvGSw4kJ3OsrIjDqwbBkgIs3qeA7wzTu+eoEVZ8cFDKXp4E1oWVVVnEHS8m
- QgXA==
-X-Gm-Message-State: AGi0PuYzY0Y3pIZHerN4sX7NJbAn+3SpGuBJWWtxJroNRPlh2ED3uf/F
- xeo+eNDtwZHfWS/W+ZakwUPOz0eGzYgE3Mb0O/q4hg==
-X-Google-Smtp-Source: APiQypIkvAa/Z6iNoR5Ipeze6p/8TgwGtMmW1cKIGCS+3DI3TnGLwPkip6UEEdHQPIB3pNKQE3lCwZ2IBAdcIXfzNDI=
-X-Received: by 2002:a05:6808:a08:: with SMTP id
- n8mr12485794oij.91.1586169412277; 
- Mon, 06 Apr 2020 03:36:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1583772574.git.zong.li@sifive.com>
- <d27d9e68491e1df67dbee6c22df6a72ff95bab18.1583772574.git.zong.li@sifive.com>
- <20200401003233.17fe4b6f7075e5b8f0ed5114@kernel.org>
- <CANXhq0ra3o+mgenbYLq_q0eZY2KiXNpWmo2V0amD0cFDqCQkXw@mail.gmail.com>
- <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
- <CANXhq0rMbkNxQ3_qqYEKe8DSbL-vfQku6V9a81Hy9cxW4LaW9g@mail.gmail.com>
- <20200404121428.596911ba5653f8b18a80eab2@kernel.org>
- <CANXhq0rc+6jor7CMaa-zqSn3vNBdJhj3gD5wGxPkXAtVVHDHdQ@mail.gmail.com>
-In-Reply-To: <CANXhq0rc+6jor7CMaa-zqSn3vNBdJhj3gD5wGxPkXAtVVHDHdQ@mail.gmail.com>
-From: Zong Li <zong.li@sifive.com>
-Date: Mon, 6 Apr 2020 18:36:42 +0800
-Message-ID: <CANXhq0psUB4OaFuoTu-VuQNdaVOBs2UCv5kjx1Oad6rwajA1_Q@mail.gmail.com>
-Subject: Re: [PATCH v3 8/9] riscv: introduce interfaces to patch kernel code
-To: Masami Hiramatsu <mhiramat@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=I8Ag8RJmxCZk7aftpHG1/aOT8pIgsaZRRBMA74l4szs=;
+ b=pEZEehhp18LFeN+3VQsTNru0rpFPAGURdvfcA5blKwY1QpSHYUcBIeIn4Npv6uimQg
+ fwQOHhcLjjnWuM7lZD88PpyVILlBSpyMrw40UKXuhbNmXVKpmUH6GjRxTliXif7lxlBC
+ 1H4TY6FghX6QHPS2IVdN1ZV7jdMyGJkrWRm9f0P7VKIL16BE9HUWIbb2fzdq21/rJ35L
+ l/eMAgEr1s2UHDtRVIdnXJi2bw8L0TTXtiy6kIOOIuJH7YW+6V6jK8Dbrc1Qn3YzEMLS
+ 8Yfv0tVMx5mOxdhC2jvvMOugynBi5OLp/D4bQlaNc5RmVpq67aG+IunM7ecKPFFoocnW
+ FHLA==
+X-Gm-Message-State: AGi0PuaHPJifzvYDGq4hhbJfytz7Qsvy9uXFQqPQLB60UTH6RN/jrPgK
+ gKRReBI8WZPS2mA5fAVBEeOGlw==
+X-Google-Smtp-Source: APiQypLGxqHjlTUmIKxBeT61WxtzGWT1x2WVVzwD4uK2qvte99BMAMa7HumrAI/VX29+HNxtKillxg==
+X-Received: by 2002:a63:dd09:: with SMTP id t9mr1182732pgg.432.1586211388598; 
+ Mon, 06 Apr 2020 15:16:28 -0700 (PDT)
+Received: from localhost.localdomain (c-73-53-94-119.hsd1.wa.comcast.net.
+ [73.53.94.119])
+ by smtp.gmail.com with ESMTPSA id s12sm11714998pgi.38.2020.04.06.15.16.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Apr 2020 15:16:28 -0700 (PDT)
+From: Luke Nelson <lukenels@cs.washington.edu>
+X-Google-Original-From: Luke Nelson <luke.r.nels@gmail.com>
+To: bpf@vger.kernel.org
+Subject: [PATCH bpf] riscv,
+ bpf: Fix offset range checking for auipc+jalr on RV64
+Date: Mon,  6 Apr 2020 22:16:04 +0000
+Message-Id: <20200406221604.18547-1-luke.r.nels@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_033654_432838_E967CFE8 
-X-CRM114-Status: GOOD (  22.38  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200406_151633_748884_6AD19C26 
+X-CRM114-Status: GOOD (  15.90  )
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:241 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -85,8 +78,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,95 +89,162 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Daniel Borkmann <daniel@iogearbox.net>, Luke Nelson <luke.r.nels@gmail.com>,
+ =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ KP Singh <kpsingh@chromium.org>, Yonghong Song <yhs@fb.com>,
+ linux-riscv@lists.infradead.org, Andrii Nakryiko <andriin@fb.com>,
+ Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Apr 4, 2020 at 8:12 PM Zong Li <zong.li@sifive.com> wrote:
->
-> On Sat, Apr 4, 2020 at 11:14 AM Masami Hiramatsu <mhiramat@kernel.org> wrote:
-> >
-> > Hi Zong,
-> >
-> > On Fri, 3 Apr 2020 17:04:51 +0800
-> > Zong Li <zong.li@sifive.com> wrote:
-> >
-> > > > > > > +{
-> > > > > > > +     void *waddr = addr;
-> > > > > > > +     bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
-> > > > > > > +     unsigned long flags = 0;
-> > > > > > > +     int ret;
-> > > > > > > +
-> > > > > > > +     raw_spin_lock_irqsave(&patch_lock, flags);
-> > > > > >
-> > > > > > This looks a bit odd since stop_machine() is protected by its own mutex,
-> > > > > > and also the irq is already disabled here.
-> > > > >
-> > > > > We need it because we don't always enter the riscv_patch_text_nosync()
-> > > > > through stop_machine mechanism. If we call the
-> > > > > riscv_patch_text_nosync() directly, we need a lock to protect the
-> > > > > page.
-> > > >
-> > > > Oh, OK, but it leads another question. Is that safe to patch the
-> > > > text without sync? Would you use it for UP system?
-> > > > I think it is better to clarify "in what case user can call _nosync()"
-> > > > and add a comment on it.
-> > >
-> > > The ftrace is one of the cases, as documentation of ftrace said, when
-> > > dynamic ftrace is initialized, it calls kstop_machine to make the
-> > > machine act like a uniprocessor so that it can freely modify code
-> > > without worrying about other processors executing that same code. So
-> > > the ftrace called the _nosync interface here directly.
-> >
-> > Hmm, even though, since it already running under kstop_machine(), no
-> > other thread will run.
-> > Could you consider to use text_mutex instead of that? The text_mutex
-> > is already widely used in x86 and kernel/kprobes.c etc.
-> >
-> > (Hmm, it seems except for x86, alternative code don't care about
-> >  racing...)
-> >
+The existing code in emit_call on RV64 checks that the PC-relative offset
+to the function fits in 32 bits before calling emit_jump_and_link to emit
+an auipc+jalr pair. However, this check is incorrect because offsets in
+the range [2^31 - 2^11, 2^31 - 1] cannot be encoded using auipc+jalr on
+RV64 (see discussion [1]). The RISC-V spec has recently been updated
+to reflect this fact [2, 3].
 
-The mutex_lock doesn't seem to work in ftrace context, I think it
-might be the reason why other architectures didn't use text_mutex in
-somewhere.
+This patch fixes the problem by moving the check on the offset into
+emit_jump_and_link and modifying it to the correct range of encodable
+offsets, which is [-2^31 - 2^11, 2^31 - 2^11). This also enforces the
+check on the offset to other uses of emit_jump_and_link (e.g., BPF_JA)
+as well.
 
-# echo function > current_tracer
-[   28.198070] BUG: sleeping function called from invalid context at
-kernel/locking/mutex.c:281
-[   28.198663] in_atomic(): 1, irqs_disabled(): 1, non_block: 0, pid:
-11, name: migration/0
-[   28.199491] CPU: 0 PID: 11 Comm: migration/0 Not tainted
-5.6.0-00012-gd6f56a7a4be2-dirty #10
-[   28.200330] Call Trace:
-[   28.200798] [<ffffffe00060319a>] walk_stackframe+0x0/0xcc
-[   28.201395] [<ffffffe000603442>] show_stack+0x3c/0x46
-[   28.200798] [<ffffffe00060319a>] walk_stackframe+0x0/0xcc
-[   28.201395] [<ffffffe000603442>] show_stack+0x3c/0x46
-[   28.201898] [<ffffffe000d498b0>] dump_stack+0x76/0x90
-[   28.202329] [<ffffffe00062c3f0>] ___might_sleep+0x100/0x10e
-[   28.202720] [<ffffffe00062c448>] __might_sleep+0x4a/0x78
-[   28.203033] [<ffffffe000d61622>] mutex_lock+0x2c/0x54
-[   28.203397] [<ffffffe00060393e>] patch_insn_write+0x32/0xd8
-[   28.203780] [<ffffffe000603a94>] patch_text_nosync+0x10/0x32
-[   28.204139] [<ffffffe0006051b0>] __ftrace_modify_call+0x5c/0x6c
-[   28.204497] [<ffffffe0006052c6>] ftrace_update_ftrace_func+0x20/0x4a
-[   28.204919] [<ffffffe000697742>] ftrace_modify_all_code+0xa0/0x148
-[   28.205378] [<ffffffe0006977fc>] __ftrace_modify_code+0x12/0x1c
-[   28.205793] [<ffffffe0006924b6>] multi_cpu_stop+0xa2/0x158
-[   28.206147] [<ffffffe0006921b0>] cpu_stopper_thread+0xa4/0x13a
-[   28.206510] [<ffffffe000629f38>] smpboot_thread_fn+0xf8/0x1da
-[   28.206868] [<ffffffe000625f36>] kthread+0xfa/0x12a
-[   28.207201] [<ffffffe0006017e2>] ret_from_exception+0x0/0xc
+Currently, this bug is unlikely to be triggered, because the memory
+region from which JITed images are allocated is close enough to kernel
+text for the offsets to not become too large; and because the bounds on
+BPF program size are small enough. This patch prevents this problem from
+becoming an issue if either of these change.
 
->
-> Yes, text_mutex seems to be great. I'll change to use text_mutex in
-> the next version if it works fine after testing. Thanks.
->
-> > Thank you,
-> > --
-> > Masami Hiramatsu <mhiramat@kernel.org>
+[1]: https://groups.google.com/a/groups.riscv.org/forum/#!topic/isa-dev/bwWFhBnnZFQ
+[2]: https://github.com/riscv/riscv-isa-manual/commit/b1e42e09ac55116dbf9de5e4fb326a5a90e4a993
+[3]: https://github.com/riscv/riscv-isa-manual/commit/4c1b2066ebd2965a422e41eb262d0a208a7fea07
+
+Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
+---
+ arch/riscv/net/bpf_jit_comp64.c | 49 +++++++++++++++++++++------------
+ 1 file changed, 32 insertions(+), 17 deletions(-)
+
+diff --git a/arch/riscv/net/bpf_jit_comp64.c b/arch/riscv/net/bpf_jit_comp64.c
+index cc1985d8750a..d208a9fd6c52 100644
+--- a/arch/riscv/net/bpf_jit_comp64.c
++++ b/arch/riscv/net/bpf_jit_comp64.c
+@@ -110,6 +110,16 @@ static bool is_32b_int(s64 val)
+ 	return -(1L << 31) <= val && val < (1L << 31);
+ }
+ 
++static bool in_auipc_jalr_range(s64 val)
++{
++	/*
++	 * auipc+jalr can reach any signed PC-relative offset in the range
++	 * [-2^31 - 2^11, 2^31 - 2^11).
++	 */
++	return (-(1L << 31) - (1L << 11)) <= val &&
++		val < ((1L << 31) - (1L << 11));
++}
++
+ static void emit_imm(u8 rd, s64 val, struct rv_jit_context *ctx)
+ {
+ 	/* Note that the immediate from the add is sign-extended,
+@@ -380,20 +390,24 @@ static void emit_sext_32_rd(u8 *rd, struct rv_jit_context *ctx)
+ 	*rd = RV_REG_T2;
+ }
+ 
+-static void emit_jump_and_link(u8 rd, s64 rvoff, bool force_jalr,
+-			       struct rv_jit_context *ctx)
++static int emit_jump_and_link(u8 rd, s64 rvoff, bool force_jalr,
++			      struct rv_jit_context *ctx)
+ {
+ 	s64 upper, lower;
+ 
+ 	if (rvoff && is_21b_int(rvoff) && !force_jalr) {
+ 		emit(rv_jal(rd, rvoff >> 1), ctx);
+-		return;
++		return 0;
++	} else if (in_auipc_jalr_range(rvoff)) {
++		upper = (rvoff + (1 << 11)) >> 12;
++		lower = rvoff & 0xfff;
++		emit(rv_auipc(RV_REG_T1, upper), ctx);
++		emit(rv_jalr(rd, RV_REG_T1, lower), ctx);
++		return 0;
+ 	}
+ 
+-	upper = (rvoff + (1 << 11)) >> 12;
+-	lower = rvoff & 0xfff;
+-	emit(rv_auipc(RV_REG_T1, upper), ctx);
+-	emit(rv_jalr(rd, RV_REG_T1, lower), ctx);
++	pr_err("bpf-jit: target offset 0x%llx is out of range\n", rvoff);
++	return -ERANGE;
+ }
+ 
+ static bool is_signed_bpf_cond(u8 cond)
+@@ -407,18 +421,16 @@ static int emit_call(bool fixed, u64 addr, struct rv_jit_context *ctx)
+ 	s64 off = 0;
+ 	u64 ip;
+ 	u8 rd;
++	int ret;
+ 
+ 	if (addr && ctx->insns) {
+ 		ip = (u64)(long)(ctx->insns + ctx->ninsns);
+ 		off = addr - ip;
+-		if (!is_32b_int(off)) {
+-			pr_err("bpf-jit: target call addr %pK is out of range\n",
+-			       (void *)addr);
+-			return -ERANGE;
+-		}
+ 	}
+ 
+-	emit_jump_and_link(RV_REG_RA, off, !fixed, ctx);
++	ret = emit_jump_and_link(RV_REG_RA, off, !fixed, ctx);
++	if (ret)
++		return ret;
+ 	rd = bpf_to_rv_reg(BPF_REG_0, ctx);
+ 	emit(rv_addi(rd, RV_REG_A0, 0), ctx);
+ 	return 0;
+@@ -429,7 +441,7 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ {
+ 	bool is64 = BPF_CLASS(insn->code) == BPF_ALU64 ||
+ 		    BPF_CLASS(insn->code) == BPF_JMP;
+-	int s, e, rvoff, i = insn - ctx->prog->insnsi;
++	int s, e, rvoff, ret, i = insn - ctx->prog->insnsi;
+ 	struct bpf_prog_aux *aux = ctx->prog->aux;
+ 	u8 rd = -1, rs = -1, code = insn->code;
+ 	s16 off = insn->off;
+@@ -699,7 +711,9 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	/* JUMP off */
+ 	case BPF_JMP | BPF_JA:
+ 		rvoff = rv_offset(i, off, ctx);
+-		emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx);
++		ret = emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx);
++		if (ret)
++			return ret;
+ 		break;
+ 
+ 	/* IF (dst COND src) JUMP off */
+@@ -801,7 +815,6 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 	case BPF_JMP | BPF_CALL:
+ 	{
+ 		bool fixed;
+-		int ret;
+ 		u64 addr;
+ 
+ 		mark_call(ctx);
+@@ -826,7 +839,9 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, struct rv_jit_context *ctx,
+ 			break;
+ 
+ 		rvoff = epilogue_offset(ctx);
+-		emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx);
++		ret = emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx);
++		if (ret)
++			return ret;
+ 		break;
+ 
+ 	/* dst = imm64 */
+-- 
+2.17.1
+
 
