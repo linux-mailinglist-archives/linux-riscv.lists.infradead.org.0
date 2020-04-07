@@ -2,76 +2,68 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16C371A0CB8
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 13:18:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC2931A0D8F
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 14:29:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bZAVo9+HNGe4MaXXVl9xUc8s9QKfb+sT+eiPhTxTG5U=; b=rwc92HMmtkhRSyCtEM18adZYY
-	7JEEn2zoYzS8PPq32gnBkkUVWFXpwmTQUlM6MRjCISsMkT7ffjK7j1/LnbUw38oAAyIA/sEx8/eFH
-	+y0Nc/3/L4LR5kzTyK1zPtDBr+Ul5efKV88je5Idd4j9TD8a6RVcwR5wHD9zHXiZl1oyW+PN+7zrV
-	+ByluD90q+onZM4VC4a/fa5XWydZepfEK4aqXaplnILqcKheQJn4KCQCSfXU6ohqo3tYes7Ot4AeC
-	pZlTvLWfDPDxGfedE8QPv5M7a0CNoVBUY73h1PytimM+AibD5p207f4DjHZbkRZJzGQBq5cL+jnkN
-	hSRgskrsA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bXbNYpMYQORbKDlgfoLvrDMjtp6TrFePij4Cjrr5Dpo=; b=j3AS0pMmEjg/dN
+	XNuWWKXBWqXUJYzjKFInZau1IzxSUYR06fE65qV1YvJCVJazXHv6Idcf3vYatmlw0t/NirhVAz04u
+	MyThquwtElbNB8tDorv0p/ZgSNdHSyKEqCAatV17RoOXthCiqx2ESI3yEXRheB1g7/QhzrNlsmjAe
+	izTFn7LpM0p1EFo3dvoUrbEC4NIKWeSLD12qRVPTvu/nBdb5bJyHgxIKdaDo0uemGZWTQUQ5tid/5
+	WCCoGkBU1ltjTeKgRdlQhDp/D7gjjGSzUJh3vRya5SzzkY15R7oecBCKBN0ZqB4Np7O01qskH8aI+
+	QxP8sXlLc1GPdlVBB4Fg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLmFQ-0006XU-H5; Tue, 07 Apr 2020 11:18:28 +0000
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
+	id 1jLnM7-0007bR-OM; Tue, 07 Apr 2020 12:29:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLmFM-0006Wf-TB
- for linux-riscv@lists.infradead.org; Tue, 07 Apr 2020 11:18:26 +0000
-Received: by mail-ot1-x341.google.com with SMTP id a49so2644875otc.11
- for <linux-riscv@lists.infradead.org>; Tue, 07 Apr 2020 04:18:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bZAVo9+HNGe4MaXXVl9xUc8s9QKfb+sT+eiPhTxTG5U=;
- b=XV0GW62ciOqxEETw8wJv6Oth2eGmlatDGNuw+gZqKoXVLI0RdbpFprrdp2eOiMxVtD
- 4pZ07DrxYK9YxDqOpTeTPV/ovg3FC1qGZWPmAqadgyfUj9DiBMRlf1qrjEfuo5NJa4zF
- YiDl7Rz8+r88yxSKZFahLRSiIaBbkP0rnwbBDRWnT2qGgt4Fq/8dkdBTtI5kAHhpuw1k
- sn2BV0WhqcRnAEHX6q5fd0AkSnlGIX3Zo9nD+T7cZAbF4cDE2kQtpIjSm3tvNleGCUim
- 5YZ7Px3HssWPlVK5TEFw7PXU9LC0kpxLsJ6WrwCw9pJUYLPrkC4keuKxO45HmgQ6Y8iE
- dEiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bZAVo9+HNGe4MaXXVl9xUc8s9QKfb+sT+eiPhTxTG5U=;
- b=ch/ey4o/i8Zc2X3fxXNJTGHYZmMRMIGs5OKDdG2skCdIBTf1WsTgdOJeuKW2ND8/Pk
- b6ulrtZu/aarhPIs/CI32THcrVQUA1oQj0ZnSXzpxAw0zlCmjH/cHpC3pLY10Nx2YdRJ
- BA2IveMlYjmTtoTaNsEIs2ctULjpjb+Q42wR6VnQ//0S/ZYfg16edHubq2/erDRA4rkF
- GjgWgztgSst9qz8eWrs2X6LP/8qv/71XD74w+IJXONwH+7gcUMBEM4l28a1Kro7pqazg
- 9zAqqN5eYRl6MRdqq6mDKCcdt7WrdnNGXZ9bBQjv7L2Di/IAXsLZmmVOijozI8TvuiIR
- GsZQ==
-X-Gm-Message-State: AGi0PuabczW67vqapJPuGpu4GclWQFKW1QBD5QclqCTEwvy8HdP4paX9
- ZvFmWIjOPJftymyg3ZwQlMIjfAivEmERjoN8OCGaDA==
-X-Google-Smtp-Source: APiQypJLVHhoj0UjmeuSiOx0Fd7uW4nYXpoS78J4JE3Q2ljIgCGZnkHAgJj9uGwfTHEAykkog+Y/elCqe2KnloqIBOk=
-X-Received: by 2002:a9d:2002:: with SMTP id n2mr1147351ota.127.1586258303389; 
- Tue, 07 Apr 2020 04:18:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1584352425.git.zong.li@sifive.com>
- <8373a9d18958b99b72ed9499786dffe45adf9617.1584352425.git.zong.li@sifive.com>
- <772ee8e0-f5ff-cf40-4e84-3f703953cd08@ghiti.fr>
-In-Reply-To: <772ee8e0-f5ff-cf40-4e84-3f703953cd08@ghiti.fr>
-From: Zong Li <zong.li@sifive.com>
-Date: Tue, 7 Apr 2020 19:18:12 +0800
-Message-ID: <CANXhq0p7A2HeyFDRQaw5brzembsFM0-v3kPwQKvFZuyeCm6tsg@mail.gmail.com>
-Subject: Re: [PATCH RFC 6/8] riscv/kaslr: clear the original kernel image
-To: Alex Ghiti <alex@ghiti.fr>
-Content-Type: text/plain; charset="UTF-8"
+ id 1jLnM4-0007ap-9h
+ for linux-riscv@lists.infradead.org; Tue, 07 Apr 2020 12:29:25 +0000
+Received: from devnote2 (NE2965lan1.rev.em-net.ne.jp [210.141.244.193])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 50D0F2051A;
+ Tue,  7 Apr 2020 12:29:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586262562;
+ bh=hrXJIm2yARS2f7WqTD+GSOvFj12Qjg9tKPNB5u2C4Zw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=kUGwajbMjegrZ9/FXEfvB/C/P+YdB3LOk1YwoNOBffm+Plv2nIpa/cAVirE/B3fGw
+ V2yjSVgwFPyr9GPyB0RsXD2GdCV4E2PYH7lMIfzcrtsGMJbG00wMWvVY/7AGuIoJ6I
+ fwU5Z+J4ITndAyObWgHa4x5VUu35POgDzptHveRk=
+Date: Tue, 7 Apr 2020 21:29:18 +0900
+From: Masami Hiramatsu <mhiramat@kernel.org>
+To: Zong Li <zong.li@sifive.com>
+Subject: Re: [PATCH v3 8/9] riscv: introduce interfaces to patch kernel code
+Message-Id: <20200407212918.235324cbc82e9e4deb839b14@kernel.org>
+In-Reply-To: <CANXhq0psUB4OaFuoTu-VuQNdaVOBs2UCv5kjx1Oad6rwajA1_Q@mail.gmail.com>
+References: <cover.1583772574.git.zong.li@sifive.com>
+ <d27d9e68491e1df67dbee6c22df6a72ff95bab18.1583772574.git.zong.li@sifive.com>
+ <20200401003233.17fe4b6f7075e5b8f0ed5114@kernel.org>
+ <CANXhq0ra3o+mgenbYLq_q0eZY2KiXNpWmo2V0amD0cFDqCQkXw@mail.gmail.com>
+ <20200402101733.1ef240faeaeada6e4d38ae80@kernel.org>
+ <CANXhq0rMbkNxQ3_qqYEKe8DSbL-vfQku6V9a81Hy9cxW4LaW9g@mail.gmail.com>
+ <20200404121428.596911ba5653f8b18a80eab2@kernel.org>
+ <CANXhq0rc+6jor7CMaa-zqSn3vNBdJhj3gD5wGxPkXAtVVHDHdQ@mail.gmail.com>
+ <CANXhq0psUB4OaFuoTu-VuQNdaVOBs2UCv5kjx1Oad6rwajA1_Q@mail.gmail.com>
+X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_041825_481435_A6D6290E 
-X-CRM114-Status: GOOD (  24.49  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200407_052924_383229_E7DD76F3 
+X-CRM114-Status: GOOD (  24.75  )
+X-Spam-Score: -5.4 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.4 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:341 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -81,6 +73,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,125 +86,108 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
  "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
  Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Apr 7, 2020 at 1:11 PM Alex Ghiti <alex@ghiti.fr> wrote:
->
-> On 3/24/20 3:30 AM, Zong Li wrote:
-> > After completing final page table, we can clear original kernel image
-> > and remove executable permission.
-> >
-> > Signed-off-by: Zong Li <zong.li@sifive.com>
-> > ---
-> >   arch/riscv/include/asm/kaslr.h | 12 ++++++++++++
-> >   arch/riscv/kernel/kaslr.c      | 12 ++++++++++++
-> >   arch/riscv/mm/init.c           |  6 ++++++
-> >   3 files changed, 30 insertions(+)
-> >   create mode 100644 arch/riscv/include/asm/kaslr.h
-> >
-> > diff --git a/arch/riscv/include/asm/kaslr.h b/arch/riscv/include/asm/kaslr.h
-> > new file mode 100644
-> > index 000000000000..b165fe71dd4a
-> > --- /dev/null
-> > +++ b/arch/riscv/include/asm/kaslr.h
-> > @@ -0,0 +1,12 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/*
-> > + * Copyright (C) 2020 SiFive
-> > + * Copyright (C) 2020 Zong Li <zong.li@sifive.com>
-> > + */
-> > +
-> > +#ifndef _ASM_RISCV_KASLR_H
-> > +#define _ASM_RISCV_KASLR_H
-> > +
-> > +void __init kaslr_late_init(void);
-> > +
-> > +#endif /* _ASM_RISCV_KASLR_H */
-> > diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
-> > index 59001d6fdfc3..0bd30831c455 100644
-> > --- a/arch/riscv/kernel/kaslr.c
-> > +++ b/arch/riscv/kernel/kaslr.c
-> > @@ -356,6 +356,18 @@ static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
-> >       return get_legal_offset(random, kernel_size_align);
-> >   }
-> >
-> > +void __init kaslr_late_init(void)
-> > +{
-> > +     uintptr_t kernel_size;
-> > +
-> > +     /* Clear original kernel image. */
-> > +     if (kaslr_offset) {
-> > +             kernel_size = (uintptr_t) _end - (uintptr_t) _start;
->
-> kernel_size = (uintptr_t) _end - (uintptr_t) _start + 1;
+On Mon, 6 Apr 2020 18:36:42 +0800
+Zong Li <zong.li@sifive.com> wrote:
 
-OK, change it in the next version. Thanks.
-
->
-> > +             memset((void *)PAGE_OFFSET, 0, kernel_size);
->
-> I have been thinking again about our discussion regarding PAGE_OFFSET:
-> PAGE_OFFSET actually points to the address where the kernel was loaded,
-> not the beginning of memory, that's a bit weird.
->
-> Just saying that here, because it took me a few seconds to remember that
-> and understand what you were doing here.
-
-In non-kaslr case, we load the kernel to PAGE_OFFSET which points to,
-so we clear the old kernel image through PAGE_OFFSET here. Certainly,
-we could use a symbol to record the start address of the old kernel
-image instead of PAGE_OFFSET here. I don't see other architectures
-changing PAGE_OFFSET after copying the kernel to the new location in
-kaslr. If you think the PAGE_OFFSET needs to be changed, we need to
-give another way to make the page table could create the mappings for
-the whole memory and memblock/buddy system could see the whole memory
-after the kernel moves.
-
->
-> > +             set_memory_nx(PAGE_OFFSET, kaslr_offset >> PAGE_SHIFT);
->
-> Again, I certainly missed something but when do you use old kernel
-> mappings ?
-
-We use old kernel mappings when KASLR calculates the random offset, at
-that moment, kernel is running on old kernel location.
-
->
-> > +     }
-> > +}
-> > +
-> >   uintptr_t __init kaslr_early_init(void)
-> >   {
-> >       u64 seed;
-> > diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> > index 34c6ecf2c599..08e2ce170533 100644
-> > --- a/arch/riscv/mm/init.c
-> > +++ b/arch/riscv/mm/init.c
-> > @@ -15,6 +15,7 @@
-> >   #include <linux/set_memory.h>
-> >   #ifdef CONFIG_RELOCATABLE
-> >   #include <linux/elf.h>
-> > +#include <asm/kaslr.h>
-> >   #endif
+> On Sat, Apr 4, 2020 at 8:12 PM Zong Li <zong.li@sifive.com> wrote:
 > >
-> >   #include <asm/fixmap.h>
-> > @@ -649,6 +650,11 @@ static void __init setup_vm_final(void)
-> >       /* Move to swapper page table */
-> >       csr_write(CSR_SATP, PFN_DOWN(__pa_symbol(swapper_pg_dir)) | SATP_MODE);
-> >       local_flush_tlb_all();
-> > +
-> > +#ifdef CONFIG_RANDOMIZE_BASE
-> > +     /* Clear orignial kernel image and set the right permission. */
-> > +     kaslr_late_init();
-> > +#endif
-> >   }
+> > On Sat, Apr 4, 2020 at 11:14 AM Masami Hiramatsu <mhiramat@kernel.org> wrote:
+> > >
+> > > Hi Zong,
+> > >
+> > > On Fri, 3 Apr 2020 17:04:51 +0800
+> > > Zong Li <zong.li@sifive.com> wrote:
+> > >
+> > > > > > > > +{
+> > > > > > > > +     void *waddr = addr;
+> > > > > > > > +     bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
+> > > > > > > > +     unsigned long flags = 0;
+> > > > > > > > +     int ret;
+> > > > > > > > +
+> > > > > > > > +     raw_spin_lock_irqsave(&patch_lock, flags);
+> > > > > > >
+> > > > > > > This looks a bit odd since stop_machine() is protected by its own mutex,
+> > > > > > > and also the irq is already disabled here.
+> > > > > >
+> > > > > > We need it because we don't always enter the riscv_patch_text_nosync()
+> > > > > > through stop_machine mechanism. If we call the
+> > > > > > riscv_patch_text_nosync() directly, we need a lock to protect the
+> > > > > > page.
+> > > > >
+> > > > > Oh, OK, but it leads another question. Is that safe to patch the
+> > > > > text without sync? Would you use it for UP system?
+> > > > > I think it is better to clarify "in what case user can call _nosync()"
+> > > > > and add a comment on it.
+> > > >
+> > > > The ftrace is one of the cases, as documentation of ftrace said, when
+> > > > dynamic ftrace is initialized, it calls kstop_machine to make the
+> > > > machine act like a uniprocessor so that it can freely modify code
+> > > > without worrying about other processors executing that same code. So
+> > > > the ftrace called the _nosync interface here directly.
+> > >
+> > > Hmm, even though, since it already running under kstop_machine(), no
+> > > other thread will run.
+> > > Could you consider to use text_mutex instead of that? The text_mutex
+> > > is already widely used in x86 and kernel/kprobes.c etc.
+> > >
+> > > (Hmm, it seems except for x86, alternative code don't care about
+> > >  racing...)
+> > >
+> 
+> The mutex_lock doesn't seem to work in ftrace context, I think it
+> might be the reason why other architectures didn't use text_mutex in
+> somewhere.
+
+Yes, you need to implement ftrace_arch_code_modify_prepare() and
+ftrace_arch_code_modify_post_process() in arch/riscv/kernel/ftrace.c.
+Please see arch/x86/kernel/ftrace.c.
+
+Thank you,
+
+> 
+> # echo function > current_tracer
+> [   28.198070] BUG: sleeping function called from invalid context at
+> kernel/locking/mutex.c:281
+> [   28.198663] in_atomic(): 1, irqs_disabled(): 1, non_block: 0, pid:
+> 11, name: migration/0
+> [   28.199491] CPU: 0 PID: 11 Comm: migration/0 Not tainted
+> 5.6.0-00012-gd6f56a7a4be2-dirty #10
+> [   28.200330] Call Trace:
+> [   28.200798] [<ffffffe00060319a>] walk_stackframe+0x0/0xcc
+> [   28.201395] [<ffffffe000603442>] show_stack+0x3c/0x46
+> [   28.200798] [<ffffffe00060319a>] walk_stackframe+0x0/0xcc
+> [   28.201395] [<ffffffe000603442>] show_stack+0x3c/0x46
+> [   28.201898] [<ffffffe000d498b0>] dump_stack+0x76/0x90
+> [   28.202329] [<ffffffe00062c3f0>] ___might_sleep+0x100/0x10e
+> [   28.202720] [<ffffffe00062c448>] __might_sleep+0x4a/0x78
+> [   28.203033] [<ffffffe000d61622>] mutex_lock+0x2c/0x54
+> [   28.203397] [<ffffffe00060393e>] patch_insn_write+0x32/0xd8
+> [   28.203780] [<ffffffe000603a94>] patch_text_nosync+0x10/0x32
+> [   28.204139] [<ffffffe0006051b0>] __ftrace_modify_call+0x5c/0x6c
+> [   28.204497] [<ffffffe0006052c6>] ftrace_update_ftrace_func+0x20/0x4a
+> [   28.204919] [<ffffffe000697742>] ftrace_modify_all_code+0xa0/0x148
+> [   28.205378] [<ffffffe0006977fc>] __ftrace_modify_code+0x12/0x1c
+> [   28.205793] [<ffffffe0006924b6>] multi_cpu_stop+0xa2/0x158
+> [   28.206147] [<ffffffe0006921b0>] cpu_stopper_thread+0xa4/0x13a
+> [   28.206510] [<ffffffe000629f38>] smpboot_thread_fn+0xf8/0x1da
+> [   28.206868] [<ffffffe000625f36>] kthread+0xfa/0x12a
+> [   28.207201] [<ffffffe0006017e2>] ret_from_exception+0x0/0xc
+> 
 > >
-> >   void free_initmem(void)
+> > Yes, text_mutex seems to be great. I'll change to use text_mutex in
+> > the next version if it works fine after testing. Thanks.
 > >
->
-> Alex
+> > > Thank you,
+> > > --
+> > > Masami Hiramatsu <mhiramat@kernel.org>
+
+
+-- 
+Masami Hiramatsu <mhiramat@kernel.org>
 
