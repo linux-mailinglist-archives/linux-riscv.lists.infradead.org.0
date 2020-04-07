@@ -2,51 +2,51 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEFEB1A061E
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 07:11:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3684A1A0623
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 07:11:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:References:To:Subject:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:
+	Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=61SbMYoeo0OI3W06xxi1TeUueoXsFirvrqy0R2BI43k=; b=BhUHMg6JazJxCcGRpaA50zFBCn
-	sGtOhVG6/NoXzuPH8oCD4hYo5r96EbHklToyfM1+eG6vFoCd5VcwaqfiMFbm5/Iv0xnYwdkQ9SwtZ
-	0flcthpW69jI3s1fCr6TdL+BE9H1P+6ponKfffSyOIRPEuSTvVTl6hkXLlvBjhxddJJYMVFZbrHhF
-	cqJRPv0JWpYMCKKnA7MfUgOqnHk+/8E7AYATaYWaZEjwXG8yS91mR98jmhy7cshy4oobL1B8fdknj
-	NRhHqc2NMW4lr2K4G69cTWcji/GJeW8ZVslswgknROfRC+k51KdBiBxqy7tFIXx/cACb3P5ihz0PQ
-	hnGt8mDA==;
+	bh=ZoZfmJT37kGR5rQt8lLJFWs/S1Gai4wOM4m/qOLx60Y=; b=jGacLJWerZDSFvj3Qed7PA4WUA
+	+Nt9h/j3GU6c38Gu2xoxEEbUisDWk1AxBeLLaXlIyKkOx7XQ8BSENZQBwlpr4c4hAUmHQasJsyaFn
+	EJVXvTM5iuAJPOAvJnLVeBS4qxm58eUi+a6KOnHxRDQQC8JZceaGeBzfkBHQS1vFooVH1EhMRv6We
+	aVXNCCB60+OYRsgjogbAEh1vyv7TrlqiN0DoDoSs7o94p90Pp6Mcx01dOUUSE8bnyyAWfoFjAwPAD
+	xMPXK+NXeYXLkNjlobURgqc0iZpXvavH3qpwKu4S6nECuW4VUENT7zl/iVRoXLdn1AJpEKBXepb84
+	l8iKWP6Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLgW5-0000PG-Nn; Tue, 07 Apr 2020 05:11:17 +0000
+	id 1jLgWg-0000Vs-2h; Tue, 07 Apr 2020 05:11:54 +0000
 Received: from relay6-d.mail.gandi.net ([217.70.183.198])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLgW2-0000Om-6g
- for linux-riscv@lists.infradead.org; Tue, 07 Apr 2020 05:11:16 +0000
+ id 1jLgWc-0000VF-S6
+ for linux-riscv@lists.infradead.org; Tue, 07 Apr 2020 05:11:52 +0000
 X-Originating-IP: 2.7.45.25
 Received: from [192.168.1.101] (lfbn-lyo-1-453-25.w2-7.abo.wanadoo.fr
  [2.7.45.25]) (Authenticated sender: alex@ghiti.fr)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id E0927C0003;
- Tue,  7 Apr 2020 05:11:10 +0000 (UTC)
-From: Alex Ghiti <alex@ghiti.fr>
-Subject: Re: [PATCH RFC 4/8] riscv/kaslr: randomize the kernel image offset
+ by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 753ADC0003;
+ Tue,  7 Apr 2020 05:11:48 +0000 (UTC)
+Subject: Re: [PATCH RFC 6/8] riscv/kaslr: clear the original kernel image
 To: Zong Li <zong.li@sifive.com>, palmer@dabbelt.com,
  paul.walmsley@sifive.com, linux-riscv@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <cover.1584352425.git.zong.li@sifive.com>
- <16924c3f07b142688a3c0562d229cd67dc7bf8e6.1584352425.git.zong.li@sifive.com>
-Message-ID: <71cc2070-e867-17e1-cc64-66b634e3f48e@ghiti.fr>
-Date: Tue, 7 Apr 2020 01:11:10 -0400
+ <8373a9d18958b99b72ed9499786dffe45adf9617.1584352425.git.zong.li@sifive.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <772ee8e0-f5ff-cf40-4e84-3f703953cd08@ghiti.fr>
+Date: Tue, 7 Apr 2020 01:11:48 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.0
 MIME-Version: 1.0
-In-Reply-To: <16924c3f07b142688a3c0562d229cd67dc7bf8e6.1584352425.git.zong.li@sifive.com>
+In-Reply-To: <8373a9d18958b99b72ed9499786dffe45adf9617.1584352425.git.zong.li@sifive.com>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_221114_515953_941C12E1 
-X-CRM114-Status: GOOD (  29.45  )
+X-CRM114-CacheID: sfid-20200406_221151_043518_1E079875 
+X-CRM114-Status: GOOD (  18.68  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
@@ -70,359 +70,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-
 On 3/24/20 3:30 AM, Zong Li wrote:
-> Entropy is derived from the banner and timer, it is better than nothing
-> but not enough secure, so previous stage may pass entropy via the device
-> tree /chosen/kaslr-seed node.
+> After completing final page table, we can clear original kernel image
+> and remove executable permission.
 > 
-> We limit randomization range within 1GB, so we can exploit early page
-> table to map new destination of kernel image. Additionally, the kernel
-> offset need 2M alignment to ensure it's good in PMD page table.
-> 
-> We also checks the kernel offset whether it's safe by avoiding to
-> overlaps with dtb, initrd and reserved memory regions.
-> 
-
-That maybe changes the way my sv48 patchset will be implemented: I can't 
-get user preference (3-level or 4-level) by any means, device-tree or 
-kernel parameter.
-
-But I don't see how you could get a random offset without info from the 
-device tree anyway (reserved memory regions especially), so maybe I 
-could parse dtb for allowing the user to choose. I'll move this 
-discussion to the sv48 introduction.
-
 > Signed-off-by: Zong Li <zong.li@sifive.com>
 > ---
->   arch/riscv/kernel/kaslr.c | 274 +++++++++++++++++++++++++++++++++++++-
->   arch/riscv/mm/init.c      |   2 +-
->   2 files changed, 273 insertions(+), 3 deletions(-)
+>   arch/riscv/include/asm/kaslr.h | 12 ++++++++++++
+>   arch/riscv/kernel/kaslr.c      | 12 ++++++++++++
+>   arch/riscv/mm/init.c           |  6 ++++++
+>   3 files changed, 30 insertions(+)
+>   create mode 100644 arch/riscv/include/asm/kaslr.h
 > 
+> diff --git a/arch/riscv/include/asm/kaslr.h b/arch/riscv/include/asm/kaslr.h
+> new file mode 100644
+> index 000000000000..b165fe71dd4a
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/kaslr.h
+> @@ -0,0 +1,12 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (C) 2020 SiFive
+> + * Copyright (C) 2020 Zong Li <zong.li@sifive.com>
+> + */
+> +
+> +#ifndef _ASM_RISCV_KASLR_H
+> +#define _ASM_RISCV_KASLR_H
+> +
+> +void __init kaslr_late_init(void);
+> +
+> +#endif /* _ASM_RISCV_KASLR_H */
 > diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
-> index 281b5fcca5c8..9ec2b608eb7f 100644
+> index 59001d6fdfc3..0bd30831c455 100644
 > --- a/arch/riscv/kernel/kaslr.c
 > +++ b/arch/riscv/kernel/kaslr.c
-> @@ -11,23 +11,293 @@
->   #include <asm/cacheflush.h>
+> @@ -356,6 +356,18 @@ static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
+>   	return get_legal_offset(random, kernel_size_align);
+>   }
 >   
->   extern char _start[], _end[];
-> +extern void *dtb_early_va;
-> +extern phys_addr_t dtb_early_pa;
->   extern void secondary_random_target(void);
->   extern void kaslr_create_page_table(uintptr_t start, uintptr_t end);
->   
->   uintptr_t secondary_next_target __initdata;
->   static uintptr_t kaslr_offset __initdata;
->   
-> +static const __init u32 *get_reg_address(int root_cells,
-> +					 const u32 *value, u64 *result)
+> +void __init kaslr_late_init(void)
 > +{
-> +	int cell;
-> +	*result = 0;
+> +	uintptr_t kernel_size;
 > +
-> +	for (cell = root_cells; cell > 0; --cell)
-> +		*result = (*result << 32) + fdt32_to_cpu(*value++);
-> +
-> +	return value;
-> +}
-> +
-> +static __init int get_node_addr_size_cells(const char *path, int *addr_cell,
-> +					   int *size_cell)
-> +{
-> +	int node = fdt_path_offset(dtb_early_va, path);
-> +	fdt64_t *prop;
-> +
-> +	if (node < 0)
-> +		return -EINVAL;
-> +
-> +	prop = fdt_getprop_w(dtb_early_va, node, "#address-cells", NULL);
-> +	if (!prop)
-> +		return -EINVAL;
-> +	*addr_cell = fdt32_to_cpu(*prop);
-> +
-> +	prop = fdt_getprop_w(dtb_early_va, node, "#size-cells", NULL);
-> +	if (!prop)
-> +		return -EINVAL;
-> +	*size_cell = fdt32_to_cpu(*prop);
-> +
-> +	return node;
-> +}
-> +
-> +static __init void kaslr_get_mem_info(uintptr_t *mem_start,
-> +				      uintptr_t *mem_size)
-> +{
-> +	int node, root, addr_cells, size_cells;
-> +	u64 base, size;
-> +
-> +	/* Get root node's address cells and size cells. */
-> +	root = get_node_addr_size_cells("/", &addr_cells, &size_cells);
-> +	if (root < 0)
-> +		return;
-> +
-> +	/* Get memory base address and size. */
-> +	fdt_for_each_subnode(node, dtb_early_va, root) {
-> +		const char *dev_type;
-> +		const u32 *reg;
-> +
-> +		dev_type = fdt_getprop(dtb_early_va, node, "device_type", NULL);
-> +		if (!dev_type)
-> +			continue;
-> +
-> +		if (!strcmp(dev_type, "memory")) {
-> +			reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
-> +			if (!reg)
-> +				return;
-> +
-> +			reg = get_reg_address(addr_cells, reg, &base);
-> +			reg = get_reg_address(size_cells, reg, &size);
-> +
-> +			*mem_start = base;
-> +			*mem_size = size;
-> +
-> +			break;
-> +		}
+> +	/* Clear original kernel image. */
+> +	if (kaslr_offset) {
+> +		kernel_size = (uintptr_t) _end - (uintptr_t) _start;
+
+kernel_size = (uintptr_t) _end - (uintptr_t) _start + 1;
+
+> +		memset((void *)PAGE_OFFSET, 0, kernel_size);
+
+I have been thinking again about our discussion regarding PAGE_OFFSET: 
+PAGE_OFFSET actually points to the address where the kernel was loaded, 
+not the beginning of memory, that's a bit weird.
+
+Just saying that here, because it took me a few seconds to remember that 
+and understand what you were doing here.
+
+> +		set_memory_nx(PAGE_OFFSET, kaslr_offset >> PAGE_SHIFT);
+
+Again, I certainly missed something but when do you use old kernel 
+mappings ?
+
 > +	}
-> +}
-> +
-> +/* Return a default seed if there is no HW generator. */
-> +static u64 kaslr_default_seed = ULL(-1);
-> +static __init u64 kaslr_get_seed(void)
-> +{
-> +	int node, len;
-> +	fdt64_t *prop;
-> +	u64 ret;
-> +
-> +	node = fdt_path_offset(dtb_early_va, "/chosen");
-> +	if (node < 0)
-> +		return kaslr_default_seed++;
-> +
-> +	prop = fdt_getprop_w(dtb_early_va, node, "kaslr-seed", &len);
-> +	if (!prop || len != sizeof(u64))
-> +		return kaslr_default_seed++;
-> +
-> +	ret = fdt64_to_cpu(*prop);
-> +
-> +	/* Re-write to zero for checking whether get seed at second time */
-> +	*prop = 0;
-> +
-> +	return ret;
-> +}
-> +
-> +static __init bool is_overlap(uintptr_t s1, uintptr_t e1, uintptr_t s2,
-> +			      uintptr_t e2)
-> +{
-> +	return e1 >= s2 && e2 >= s1;
-> +}
-
-Inline this function or use a macro maybe.
-
-> +
-> +static __init bool is_overlap_reserved_mem(uintptr_t start_addr,
-> +					   uintptr_t end_addr)
-> +{
-> +	int node, rsv_mem, addr_cells, size_cells;
-> +
-> +	/* Get the reserved-memory node. */
-> +	rsv_mem = get_node_addr_size_cells("/reserved-memory",
-> +					   &addr_cells,
-> +					   &size_cells);
-> +	if (rsv_mem < 0)
-> +		return false;
-> +
-> +	/* Get memory base address and size. */
-> +	fdt_for_each_subnode(node, dtb_early_va, rsv_mem) {
-> +		uint64_t base, size;
-> +		const uint32_t *reg;
-> +
-> +		reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
-> +		if (!reg)
-> +			return 0;
-> +
-> +		reg = get_reg_address(addr_cells, reg, &base);
-> +		reg = get_reg_address(size_cells, reg, &size);
-> +
-> +		if (is_overlap(start_addr, end_addr, base, base + size))
-> +			return true;
-> +	}
-> +
-> +	return false;
-> +}
-> +
-> +static __init bool is_overlap_initrd(uintptr_t start_addr, uintptr_t end_addr)
-> +{
-> +	int node;
-> +	uintptr_t initrd_start, initrd_end;
-> +	fdt64_t *prop;
-> +
-> +	node = fdt_path_offset(dtb_early_va, "/chosen");
-> +	if (node < 0)
-> +		return false;
-> +
-> +	prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-start", NULL);
-> +	if (!prop)
-> +		return false;
-> +
-> +	initrd_start = fdt64_to_cpu(*prop);
-> +
-> +	prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-end", NULL);
-> +	if (!prop)
-> +		return false;
-> +
-> +	initrd_end = fdt64_to_cpu(*prop);
-> +
-> +	return is_overlap(start_addr, end_addr, initrd_start, initrd_end);
-> +}
-> +
-> +static __init bool is_overlap_dtb(uintptr_t start_addr, uintptr_t end_addr)
-> +{
-> +	uintptr_t dtb_start = dtb_early_pa;
-> +	uintptr_t dtb_end = dtb_start + fdt_totalsize(dtb_early_va);
-> +
-> +	return is_overlap(start_addr, end_addr, dtb_start, dtb_end);
-> +}
-> +
-> +static __init bool has_regions_overlapping(uintptr_t start_addr,
-> +					   uintptr_t end_addr)
-> +{
-> +	if (is_overlap_dtb(start_addr, end_addr))
-> +		return true;
-> +
-> +	if (is_overlap_initrd(start_addr, end_addr))
-> +		return true;
-> +
-> +	if (is_overlap_reserved_mem(start_addr, end_addr))
-> +		return true;
-> +
-> +	return false;
-> +}
-> +
-> +static inline __init unsigned long get_legal_offset(int random_index,
-> +						    int max_index,
-> +						    uintptr_t mem_start,
-> +						    uintptr_t kernel_size)
-> +{
-> +	uintptr_t start_addr, end_addr;
-> +	int idx, stop_idx;
-> +
-> +	idx = stop_idx = random_index;
-> +
-> +	do {
-> +		start_addr = mem_start + idx * SZ_2M + kernel_size;
-> +		end_addr = start_addr + kernel_size;
-> +
-> +		/* Check overlap to other regions. */
-> +		if (!has_regions_overlapping(start_addr, end_addr))
-> +			return idx * SZ_2M + kernel_size;
-> +
-> +		if (idx-- < 0)
-> +			idx = max_index;
-
-Isn't the fallback to max_index a security breach ? Because at some 
-point, the kernel will be loaded at this specific address.
-
-> +
-> +	} while (idx != stop_idx);
-> +
-> +	return 0;
-> +}
-> +
-> +static inline __init u64 rotate_xor(u64 hash, const void *area, size_t size)
-> +{
-> +	size_t i;
-> +	uintptr_t *ptr = (uintptr_t *) area;
-> +
-> +	for (i = 0; i < size / sizeof(hash); i++) {
-> +		/* Rotate by odd number of bits and XOR. */
-> +		hash = (hash << ((sizeof(hash) * 8) - 7)) | (hash >> 7);
-> +		hash ^= ptr[i];
-> +	}
-> +
-> +	return hash;
-> +}
-> +
-> +#define MEM_RESERVE_START	__pa(PAGE_OFFSET)
-> +static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
-> +{
-> +	uintptr_t mem_start = 0, mem_size= 0, random_size;
-> +	uintptr_t kernel_size_align = round_up(kernel_size, SZ_2M);
-> +	int index;
-> +	u64 random = 0;
-> +	cycles_t time_base;
-> +
-> +	/* Attempt to create a simple but unpredictable starting entropy */
-> +	random = rotate_xor(random, linux_banner, strlen(linux_banner));
-> +
-> +	/*
-> +	 * If there is no HW random number generator, use timer to get a random
-> +	 * number. This is better than nothing but not enough secure.
-> +	 */
-> +	time_base = get_cycles() << 32;
-> +	time_base ^= get_cycles();
-> +	random = rotate_xor(random, &time_base, sizeof(time_base));
-> +
-> +	if (seed)
-> +		random = rotate_xor(random, &seed, sizeof(seed));
-> +
-> +	kaslr_get_mem_info(&mem_start, &mem_size);
-> +	if (!mem_size)
-> +		return 0;
-> +
-> +	if (mem_start < MEM_RESERVE_START) {
-> +		mem_size -= MEM_RESERVE_START - mem_start;
-> +		mem_start = MEM_RESERVE_START;
-> +	}
-> +
-> +	/*
-> +	 * Limit randomization range within 1G, so we can exploit
-> +	 * early_pmd/early_pte during early page table phase.
-> +	 */
-> +	random_size = min_t(u64,
-> +			    mem_size - (kernel_size_align * 2),
-> +			    SZ_1G - (kernel_size_align * 2));
-
-pgdir size is 30 bits in sv39, but it's 39 bits in sv48, you should use 
-PGDIR_SIZE macro here.
-
-> +
-> +	/* The index of 2M block in whole avaliable region */
-> +	index = random % (random_size / SZ_2M);
-> +
-> +	return get_legal_offset(index, random_size / SZ_2M,
-> +				mem_start, kernel_size_align);
 > +}
 > +
 >   uintptr_t __init kaslr_early_init(void)
 >   {
-> +	u64 seed;
->   	uintptr_t dest_start, dest_end;
->   	uintptr_t kernel_size = (uintptr_t) _end - (uintptr_t) _start;
->   
->   	/* Get zero value at second time to avoid doing randomization again. */
-> -	if (kaslr_offset)
-> +	seed = kaslr_get_seed();
-> +	if (!seed)
->   		return 0;
->   
->   	/* Get the random number for kaslr offset. */
-> -	kaslr_offset = 0x10000000;
-> +	kaslr_offset = get_random_offset(seed, kernel_size);
->   
->   	/* Update kernel_virt_addr for get_kaslr_offset. */
->   	kernel_virt_addr += kaslr_offset;
+>   	u64 seed;
 > diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index 2f5b25f02b6c..34c6ecf2c599 100644
+> index 34c6ecf2c599..08e2ce170533 100644
 > --- a/arch/riscv/mm/init.c
 > +++ b/arch/riscv/mm/init.c
-> @@ -125,7 +125,7 @@ static void __init setup_initrd(void)
+> @@ -15,6 +15,7 @@
+>   #include <linux/set_memory.h>
+>   #ifdef CONFIG_RELOCATABLE
+>   #include <linux/elf.h>
+> +#include <asm/kaslr.h>
+>   #endif
+>   
+>   #include <asm/fixmap.h>
+> @@ -649,6 +650,11 @@ static void __init setup_vm_final(void)
+>   	/* Move to swapper page table */
+>   	csr_write(CSR_SATP, PFN_DOWN(__pa_symbol(swapper_pg_dir)) | SATP_MODE);
+>   	local_flush_tlb_all();
+> +
+> +#ifdef CONFIG_RANDOMIZE_BASE
+> +	/* Clear orignial kernel image and set the right permission. */
+> +	kaslr_late_init();
+> +#endif
 >   }
->   #endif /* CONFIG_BLK_DEV_INITRD */
 >   
-> -static phys_addr_t dtb_early_pa __initdata;
-> +phys_addr_t dtb_early_pa __initdata;
->   
->   void __init setup_bootmem(void)
->   {
+>   void free_initmem(void)
 > 
 
 Alex
