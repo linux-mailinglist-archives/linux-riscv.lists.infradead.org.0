@@ -2,96 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4BD01A10BB
-	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 17:55:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CA481A10D2
+	for <lists+linux-riscv@lfdr.de>; Tue,  7 Apr 2020 17:59:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=w4ikfm8QhYh6nR9GhNo4/qCSugkX5G7xhs+sge1bwLU=; b=ojhYzHdomiOF0jhPba9p2TD5o
-	UvPJDGNbGucbIglGu4wHGNxmY7cE6JRL6v2i3hVP9lfABZNuZ6fnq50zlydenx3nC7Qqu/k+75QTD
-	LJ72vsSdTO50ph5iK4EAZAJLpLGMPTqJ2uJp34S6eKQzCyCntxnhXVwpH7LSVEvc4IC7tjUBL0kXC
-	O/QMBZOptsBrZm+bskgVDbPfNFV/P4Pz//fopnb/Q/tR8rJwd1T46c4aLhAqZy6C37uv1jb0kbdMq
-	i64iUTdS4WdukhYTJ+6XS4xKy6wE5B8nZZiGk4KT0CYbeCjkrHAtSLgTfcideZvm61KLZE7zSdtxY
-	F+Ys5xmvw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bXgMJBusfo86+CUHUlPhtFlA/KYheQWetqFPrWl5jYQ=; b=Gt5IgggXQGMqxj
+	GKIzwKFbKZ5maKMkJUwMKYFTLluMX75pjM6UAz/CdDrGh5F992cgxktB3zcciRo/+AHC24mAMMh59
+	ebIcxy4rGVMbW+tGhhUyl7KbxPU+XKQaFNFequOvsqKK5z3Xfnt3sBJsIDO8gTUq+ll5vNFYXqHcY
+	hepZmNVvV6zQ0vZUihTe2uR8byRLYhYhJbY0q3VTnTvJtC11Ah+ufInNA7qSoi9hgdbCAkandC7Zy
+	9vpnqg6lrZzawKKv0mfn9ikBIArC47LnIPCAeQjTKdwzE4FXo05HtNT4Fmjf9ZJ9xNBdtf0aHIvw3
+	CP4M8EI+KWfPLMu4OMFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLqZ3-0002ML-7L; Tue, 07 Apr 2020 15:55:01 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
- helo=mx0a-001b2d01.pphosted.com)
+	id 1jLqct-0005dk-CA; Tue, 07 Apr 2020 15:58:59 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLqYz-0002K5-9E
- for linux-riscv@lists.infradead.org; Tue, 07 Apr 2020 15:54:59 +0000
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 037FYMuU070543
- for <linux-riscv@lists.infradead.org>; Tue, 7 Apr 2020 11:54:54 -0400
-Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
- by mx0b-001b2d01.pphosted.com with ESMTP id 308eu8f4gu-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-riscv@lists.infradead.org>; Tue, 07 Apr 2020 11:54:53 -0400
-Received: from localhost
- by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <linux-riscv@lists.infradead.org> from <gerald.schaefer@de.ibm.com>;
- Tue, 7 Apr 2020 16:54:39 +0100
-Received: from b06cxnps4075.portsmouth.uk.ibm.com (9.149.109.197)
- by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Tue, 7 Apr 2020 16:54:32 +0100
-Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
- [9.149.105.232])
- by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 037Fshw958654742
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 7 Apr 2020 15:54:43 GMT
-Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 17FFE52059;
- Tue,  7 Apr 2020 15:54:43 +0000 (GMT)
-Received: from thinkpad (unknown [9.145.186.71])
- by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id 2847C52050;
- Tue,  7 Apr 2020 15:54:42 +0000 (GMT)
-Date: Tue, 7 Apr 2020 17:54:40 +0200
-From: Gerald Schaefer <gerald.schaefer@de.ibm.com>
-To: Anshuman Khandual <anshuman.khandual@arm.com>
-Subject: Re: [PATCH V2 0/3] mm/debug: Add more arch page table helper tests
-In-Reply-To: <e3e35885-6852-16aa-3889-e22750a0cc87@arm.com>
-References: <1585027375-9997-1-git-send-email-anshuman.khandual@arm.com>
- <20200331143059.29fca8fa@thinkpad>
- <e3e35885-6852-16aa-3889-e22750a0cc87@arm.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
+ id 1jLqcq-0005dD-9O
+ for linux-riscv@lists.infradead.org; Tue, 07 Apr 2020 15:58:57 +0000
+Received: from devnote2 (NE2965lan1.rev.em-net.ne.jp [210.141.244.193])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0A1C92072A;
+ Tue,  7 Apr 2020 15:58:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586275135;
+ bh=ltIOImB02Z71XhE+ab4AZjqWho6FXnB/SdX/vjB8BxA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=dmp90ubmZP2czndVvQXWl03wmMM9mO/JPcATNHy2z9xFFl+W4sASxc89XShQvJ65d
+ 4xBUn2UodHNybm6HuKbb4TjlB2WCP09XP22hvEsQ/aWcT7vXtKseuW/MtYicFijNS1
+ GJpAlD3EXfNGs7i9RmNFzytbek/t01G3FwTWAehI=
+Date: Wed, 8 Apr 2020 00:58:50 +0900
+From: Masami Hiramatsu <mhiramat@kernel.org>
+To: Zong Li <zong.li@sifive.com>
+Subject: Re: [PATCH v4 2/9] riscv: introduce interfaces to patch kernel code
+Message-Id: <20200408005850.5e1a7666013f080ff60020e2@kernel.org>
+In-Reply-To: <a491ce48973a0b4f0eed3fe4e97d6a07cb6d6ae8.1586265122.git.zong.li@sifive.com>
+References: <cover.1586265122.git.zong.li@sifive.com>
+ <a491ce48973a0b4f0eed3fe4e97d6a07cb6d6ae8.1586265122.git.zong.li@sifive.com>
+X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 20040715-0012-0000-0000-000003A01446
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 20040715-0013-0000-0000-000021DD3634
-Message-Id: <20200407175440.41cc00a5@thinkpad>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-04-07_07:2020-04-07,
- 2020-04-07 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 malwarescore=0
- clxscore=1015 priorityscore=1501 impostorscore=0 spamscore=0
- mlxlogscore=999 suspectscore=0 lowpriorityscore=0 adultscore=0 mlxscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004070128
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_085457_443073_5BC0559C 
-X-CRM114-Status: GOOD (  49.63  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20200407_085856_365254_2663C7B4 
+X-CRM114-Status: GOOD (  20.19  )
+X-Spam-Score: -5.4 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-5.4 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.158.5 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,213 +78,235 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
- Paul Mackerras <paulus@samba.org>, "H. Peter
- Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
- Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
- Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+Cc: linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu, palmer@dabbelt.com,
+ linux-kernel@vger.kernel.org, paul.walmsley@sifive.com
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, 5 Apr 2020 17:58:14 +0530
-Anshuman Khandual <anshuman.khandual@arm.com> wrote:
+Hi Zong,
 
-[...]
-> > 
-> > Could be fixed like this (the first de-reference is a bit special,
-> > because at that point *ptep does not really point to a large (pmd) entry
-> > yet, it is initially an invalid pte entry, which breaks our huge_ptep_get()  
+On Tue,  7 Apr 2020 22:46:47 +0800
+Zong Li <zong.li@sifive.com> wrote:
+
+> On strict kernel memory permission, we couldn't patch code without
+> writable permission. Preserve two holes in fixmap area, so we can map
+> the kernel code temporarily to fixmap area, then patch the instructions.
 > 
-> There seems to be an inconsistency on s390 platform. Even though it defines
-> a huge_ptep_get() override, it does not subscribe __HAVE_ARCH_HUGE_PTEP_GET
-> which should have forced it fallback on generic huge_ptep_get() but it does
-> not :) Then I realized that __HAVE_ARCH_HUGE_PTEP_GET only makes sense when
-> an arch uses <asm-generic/hugetlb.h>. s390 does not use that and hence gets
-> away with it's own huge_ptep_get() without __HAVE_ARCH_HUGE_PTEP_GET. Sounds
-> confusing ? But I might not have the entire context here.
-
-Yes, that sounds very confusing. Also a bit ironic, since huge_ptep_get()
-was initially introduced because of s390, and now we don't select
-__HAVE_ARCH_HUGE_PTEP_GET...
-
-As you realized, I guess this is because we do not use generic hugetlb.h.
-And when __HAVE_ARCH_HUGE_PTEP_GET was introduced with commit 544db7597ad
-("hugetlb: introduce generic version of huge_ptep_get"), that was probably
-the reason why we did not get our share of __HAVE_ARCH_HUGE_PTEP_GET.
-
-Nothing really wrong with that, but yes, very confusing. Maybe we could
-also select it for s390, even though it wouldn't have any functional
-impact (so far), just for less confusion. Maybe also thinking about
-using the generic hugetlb.h, not sure if the original reasons for not
-doing so would still apply. Now I only need to find the time...
-
+> We need two pages here because we support the compressed instruction, so
+> the instruction might be align to 2 bytes. When patching the 32-bit
+> length instruction which is 2 bytes alignment, it will across two pages.
 > 
-> > conversion logic. I also added PMD_MASK alignment for RANDOM_ORVALUE,
-> > because we do have some special bits there in our large pmds. It seems
-> > to also work w/o that alignment, but it feels a bit wrong):  
+> Introduce two interfaces to patch kernel code:
+> riscv_patch_text_nosync:
+>  - patch code without synchronization, it's caller's responsibility to
+>    synchronize all CPUs if needed.
+> riscv_patch_text:
+>  - patch code and always synchronize with stop_machine()
 > 
-> Sure, we can accommodate that.
+> Signed-off-by: Zong Li <zong.li@sifive.com>
+> Suggested-by: Masami Hiramatsu <mhiramat@kernel.org>
+> ---
+>  arch/riscv/include/asm/fixmap.h |   2 +
+>  arch/riscv/include/asm/patch.h  |  12 ++++
+>  arch/riscv/kernel/Makefile      |   4 +-
+>  arch/riscv/kernel/patch.c       | 120 ++++++++++++++++++++++++++++++++
+>  4 files changed, 137 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/riscv/include/asm/patch.h
+>  create mode 100644 arch/riscv/kernel/patch.c
 > 
-> > 
-> > @@ -731,26 +731,26 @@ static void __init hugetlb_advanced_test
-> >                                           unsigned long vaddr, pgprot_t prot)
-> >  {
-> >         struct page *page = pfn_to_page(pfn);
-> > -       pte_t pte = READ_ONCE(*ptep);
-> > +       pte_t pte;
-> > 
-> > -       pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
-> > +       pte = pte_mkhuge(mk_pte_phys(RANDOM_ORVALUE & PMD_MASK, prot));  
+> diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
+> index 42d2c42f3cc9..2368d49eb4ef 100644
+> --- a/arch/riscv/include/asm/fixmap.h
+> +++ b/arch/riscv/include/asm/fixmap.h
+> @@ -27,6 +27,8 @@ enum fixed_addresses {
+>  	FIX_FDT = FIX_FDT_END + FIX_FDT_SIZE / PAGE_SIZE - 1,
+>  	FIX_PTE,
+>  	FIX_PMD,
+> +	FIX_TEXT_POKE1,
+> +	FIX_TEXT_POKE0,
+>  	FIX_EARLYCON_MEM_BASE,
+>  	__end_of_fixed_addresses
+>  };
+> diff --git a/arch/riscv/include/asm/patch.h b/arch/riscv/include/asm/patch.h
+> new file mode 100644
+> index 000000000000..9a7d7346001e
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/patch.h
+> @@ -0,0 +1,12 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (C) 2020 SiFive
+> + */
+> +
+> +#ifndef _ASM_RISCV_PATCH_H
+> +#define _ASM_RISCV_PATCH_H
+> +
+> +int patch_text_nosync(void *addr, const void *insns, size_t len);
+> +int patch_text(void *addr, u32 insn);
+> +
+> +#endif /* _ASM_RISCV_PATCH_H */
+> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> index f40205cb9a22..d189bd3d8501 100644
+> --- a/arch/riscv/kernel/Makefile
+> +++ b/arch/riscv/kernel/Makefile
+> @@ -4,7 +4,8 @@
+>  #
+>  
+>  ifdef CONFIG_FTRACE
+> -CFLAGS_REMOVE_ftrace.o = -pg
+> +CFLAGS_REMOVE_ftrace.o	= -pg
+> +CFLAGS_REMOVE_patch.o	= -pg
+>  endif
+>  
+>  extra-y += head.o
+> @@ -26,6 +27,7 @@ obj-y	+= traps.o
+>  obj-y	+= riscv_ksyms.o
+>  obj-y	+= stacktrace.o
+>  obj-y	+= cacheinfo.o
+> +obj-y	+= patch.o
+>  obj-$(CONFIG_MMU) += vdso.o vdso/
+>  
+>  obj-$(CONFIG_RISCV_M_MODE)	+= clint.o
+> diff --git a/arch/riscv/kernel/patch.c b/arch/riscv/kernel/patch.c
+> new file mode 100644
+> index 000000000000..5b4f0d37097f
+> --- /dev/null
+> +++ b/arch/riscv/kernel/patch.c
+> @@ -0,0 +1,120 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (C) 2020 SiFive
+> + */
+> +
+> +#include <linux/spinlock.h>
+> +#include <linux/mm.h>
+> +#include <linux/uaccess.h>
+> +#include <linux/stop_machine.h>
+> +#include <asm/kprobes.h>
+> +#include <asm/cacheflush.h>
+> +#include <asm/fixmap.h>
+> +
+> +struct patch_insn_patch {
+> +	void *addr;
+> +	u32 insn;
+> +	atomic_t cpu_count;
+> +};
+> +
+> +#ifdef CONFIG_MMU
+> +static void *patch_map(void *addr, int fixmap)
+> +{
+> +	uintptr_t uintaddr = (uintptr_t) addr;
+> +	struct page *page;
+> +
+> +	if (core_kernel_text(uintaddr))
+> +		page = phys_to_page(__pa_symbol(addr));
+> +	else if (IS_ENABLED(CONFIG_STRICT_MODULE_RWX))
+> +		page = vmalloc_to_page(addr);
+> +	else
+> +		return addr;
+> +
+> +	BUG_ON(!page);
+> +
+> +	return (void *)set_fixmap_offset(fixmap, page_to_phys(page) +
+> +					 (uintaddr & ~PAGE_MASK));
+> +}
+> +NOKPROBE_SYMBOL(patch_map);
+> +
+> +static void patch_unmap(int fixmap)
+> +{
+> +	clear_fixmap(fixmap);
+> +}
+> +NOKPROBE_SYMBOL(patch_unmap);
+> +
+
+Please leave a comment here about text_mutex,
+
+> +static int patch_insn_write(void *addr, const void *insn, size_t len)
+> +{
+> +	void *waddr = addr;
+> +	bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
+> +	int ret;
+
+Or use lockdep_assert_held(&text_mutex); here so that user can easily
+understand they have to lock the text_mutex before calling this.
+
+Thank you,
+
+> +
+> +	if (across_pages)
+> +		patch_map(addr + len, FIX_TEXT_POKE1);
+> +
+> +	waddr = patch_map(addr, FIX_TEXT_POKE0);
+> +
+> +	ret = probe_kernel_write(waddr, insn, len);
+> +
+> +	patch_unmap(FIX_TEXT_POKE0);
+> +
+> +	if (across_pages)
+> +		patch_unmap(FIX_TEXT_POKE1);
+> +
+> +	return ret;
+> +}
+> +NOKPROBE_SYMBOL(patch_insn_write);
+> +#else
+> +static int patch_insn_write(void *addr, const void *insn, size_t len)
+> +{
+> +	return probe_kernel_write(addr, insn, len);
+> +}
+> +NOKPROBE_SYMBOL(patch_insn_write);
+> +#endif /* CONFIG_MMU */
+> +
+> +int patch_text_nosync(void *addr, const void *insns, size_t len)
+> +{
+> +	u32 *tp = addr;
+> +	int ret;
+> +
+> +	ret = patch_insn_write(tp, insns, len);
+> +
+> +	if (!ret)
+> +		flush_icache_range((uintptr_t) tp, (uintptr_t) tp + len);
+> +
+> +	return ret;
+> +}
+> +NOKPROBE_SYMBOL(patch_text_nosync);
+> +
+> +static int patch_text_cb(void *data)
+> +{
+> +	struct patch_insn_patch *patch = data;
+> +	int ret = 0;
+> +
+> +	if (atomic_inc_return(&patch->cpu_count) == 1) {
+> +		ret =
+> +		    patch_text_nosync(patch->addr, &patch->insn,
+> +					    GET_INSN_LENGTH(patch->insn));
+> +		atomic_inc(&patch->cpu_count);
+> +	} else {
+> +		while (atomic_read(&patch->cpu_count) <= num_online_cpus())
+> +			cpu_relax();
+> +		smp_mb();
+> +	}
+> +
+> +	return ret;
+> +}
+> +NOKPROBE_SYMBOL(patch_text_cb);
+> +
+> +int patch_text(void *addr, u32 insn)
+> +{
+> +	struct patch_insn_patch patch = {
+> +		.addr = addr,
+> +		.insn = insn,
+> +		.cpu_count = ATOMIC_INIT(0),
+> +	};
+> +
+> +	return stop_machine_cpuslocked(patch_text_cb,
+> +				       &patch, cpu_online_mask);
+> +}
+> +NOKPROBE_SYMBOL(patch_text);
+> -- 
+> 2.26.0
 > 
-> So that keeps the existing value in 'ptep' pointer at bay and instead
-> construct a PTE from scratch. I would rather have READ_ONCE(*ptep) at
-> least provide the seed that can be ORed with RANDOM_ORVALUE before
-> being masked with PMD_MASK. Do you see any problem ?
 
-Yes, unfortunately. The problem is that the resulting pte is not marked
-as present. The conversion pte -> (huge) pmd, which is done in
-set_huge_pte_at() for s390, will establish an empty pmd for non-present
-ptes, all the RANDOM_ORVALUE stuff is lost. And a subsequent
-huge_ptep_get() will not result in the same original pte value. If you
-want to preserve and check the RANDOM_ORVALUE, it has to be a present
-pte, hence the mk_pte(_phys).
 
-> 
-> Some thing like this instead.
-> 
-> pte_t pte = READ_ONCE(*ptep);
-> pte = pte_mkhuge(__pte((pte_val(pte) | RANDOM_ORVALUE) & PMD_MASK));
-> 
-> We cannot use mk_pte_phys() as it is defined only on some platforms
-> without any generic fallback for others.
-
-Oh, didn't know that, sorry. What about using mk_pte() instead, at least
-it would result in a present pte:
-
-pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));
-
-And if you also want to do some with the existing value, which seems
-to be an empty pte, then maybe just check if writing and reading that
-value with set_huge_pte_at() / huge_ptep_get() returns the same,
-i.e. initially w/o RANDOM_ORVALUE.
-
-So, in combination, like this (BTW, why is the barrier() needed, it
-is not used for the other set_huge_pte_at() calls later?):
-
-@@ -733,24 +733,28 @@ static void __init hugetlb_advanced_test
-        struct page *page = pfn_to_page(pfn);
-        pte_t pte = READ_ONCE(*ptep);
- 
--       pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
-+       set_huge_pte_at(mm, vaddr, ptep, pte);
-+       WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
-+
-+       pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));
-        set_huge_pte_at(mm, vaddr, ptep, pte);
-        barrier();
-        WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
-
-This would actually add a new test "write empty pte with
-set_huge_pte_at(), then verify with huge_ptep_get()", which happens
-to trigger a warning on s390 :-)
-
-That (new) warning actually points to misbehavior on s390, we do not
-write a correct empty pmd in this case, but one that is empty and also
-marked as large. huge_ptep_get() will then not correctly recognize it
-as empty and do wrong conversion. It is also not consistent with
-huge_ptep_get_and_clear(), where we write the empty pmd w/o marking
-as large. Last but not least it would also break our pmd_protnone()
-logic (see below). Another nice finding on s390 :-)
-
-I don't think this has any effect in practice (yet), but I will post a
-fix for that, just in case you will add / change this test.
-
-> 
-> >         set_huge_pte_at(mm, vaddr, ptep, pte);
-> >         barrier();
-> >         WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
-> >         huge_pte_clear(mm, vaddr, ptep, PMD_SIZE);
-> > -       pte = READ_ONCE(*ptep);
-> > +       pte = huge_ptep_get(ptep);
-> >         WARN_ON(!huge_pte_none(pte));
-> >  
-> >         pte = mk_huge_pte(page, prot);
-> >         set_huge_pte_at(mm, vaddr, ptep, pte);
-> >         huge_ptep_set_wrprotect(mm, vaddr, ptep);
-> > -       pte = READ_ONCE(*ptep);
-> > +       pte = huge_ptep_get(ptep);
-> >         WARN_ON(huge_pte_write(pte));
-> >  
-> >         pte = mk_huge_pte(page, prot);
-> >         set_huge_pte_at(mm, vaddr, ptep, pte);
-> >         huge_ptep_get_and_clear(mm, vaddr, ptep);
-> > -       pte = READ_ONCE(*ptep);
-> > +       pte = huge_ptep_get(ptep);
-> >         WARN_ON(!huge_pte_none(pte));
-> >  
-> >         pte = mk_huge_pte(page, prot);
-> > @@ -759,7 +759,7 @@ static void __init hugetlb_advanced_test
-> >         pte = huge_pte_mkwrite(pte);
-> >         pte = huge_pte_mkdirty(pte);
-> >         huge_ptep_set_access_flags(vma, vaddr, ptep, pte, 1);
-> > -       pte = READ_ONCE(*ptep);
-> > +       pte = huge_ptep_get(ptep);
-> >         WARN_ON(!(huge_pte_write(pte) && huge_pte_dirty(pte)));
-> >  }
-> >  #else
-> > 
-> > 3) The pmd_protnone_tests() has an issue, because it passes a pmd to
-> > pmd_protnone() which has not been marked as large. We check for large
-> > pmd in the s390 implementation of pmd_protnone(), and will fail if a
-> > pmd is not large. We had similar issues before, in other helpers, where
-> > I changed the logic on s390 to not require the pmd large check, but I'm
-> > not so sure in this case. Is there a valid use case for doing
-> > pmd_protnone() on "normal" pmds? Or could this be changed like this:  
-> 
-> That is a valid question. IIUC, all existing callers for pmd_protnone()
-> ensure that it is indeed a huge PMD. But even assuming otherwise should
-> not the huge PMD requirement get checked in the caller itself rather than
-> in the arch helper which is just supposed to check the existence of the
-> dedicated PTE bit(s) for this purpose. Purely from a helper perspective
-> pmd_protnone() should not really care about being large even though it
-> might never get used without one.
-> 
-> Also all platforms (except s390) derive the pmd_protnone() from their
-> respective pte_protnone(). I wonder why should s390 be any different
-> unless it is absolutely necessary.
-
-This is again because of our different page table entry layouts for
-pte/pmd and (large) pmd. The bits we check for pmd_protnone() are
-not valid for normal pmd/pte, and we would return undefined result for
-normal entries.
-
-Of course, we could rely on nobody calling pmd_protnone() on normal
-pmds, but in this case we also use pmd_large() check in pmd_protnone()
-for indication if the pmd is present. W/o that, we would return
-true for empty pmds, that doesn't sound right. Not sure if we also
-want to rely on nobody calling pmd_protnone() on empty pmds.
-
-Anyway, if in practice it is not correct to use pmd_protnone()
-on normal pmds, then I would suggest that your tests should also
-not do / test it. And I strongly assume that it is not correct, at
-least I cannot think of a valid case, and of course s390 would
-already be broken if there was such a case.
-
-Regards,
-Gerald
-
+-- 
+Masami Hiramatsu <mhiramat@kernel.org>
 
