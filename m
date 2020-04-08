@@ -2,100 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E426F1A2181
-	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 14:15:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 52ED21A2434
+	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 16:40:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yM9JPiBSwOE/0o+X9LbizdeU2DOlsSezFdGTp79rFf4=; b=Lu7S/1iFchMCulKlo3A7L6BW6
-	2tDkBMknqs5VnE4fHnfvw1e9inaWDkZ7mnMeGCsmVa4CylLmizRF+HlK49Pp3+7BUdG+9wkuQA81X
-	5s3nPs7cnfjOIk2/aLx0bKlKh4Vng/k2f5wUypIofaD63A4yRfzA0yix1NRoj+t37RYZe3lMTpVE4
-	vzF2MN3JA6RAPHBGIyxELtuGzF0OIuupvasvRX30jGCEdObfOfW0+8QSKKoPRQ7T8pqDx+mUQeyUH
-	jXeO89jZy2S8hVBidVRM1NkXeWVoY6Eojz7H53QmanQnIZQUxeHXd1yUDyI3QlYXrBum8sdl+aTzN
-	38ovdaSmA==;
+	 bh=fZfWIflrG/P0RSKmpE9xkFU0bVUa4sXmQ44pEpqzBR4=; b=b/yYK5+0XApJ3SDOWPUH+AoOv
+	WXKj6Vy1LYny8PGGnBp2gH16MGzpGTZeWbQ3cmP1TQmUBkBi3inIVF057R/j9ol5j3Qx7z5hp6Fx0
+	dTYd4j0zlPtWuNbHxjvrED/SuOmRlPyoiq5rLYH1jMPra6gaJuayXCbh3tIEpMh36yJqcyannm0GM
+	uVj7T6OBTuWNe50NDSkT9GR61s8GSIZXTrVHS1V/ww28mQVMpm0v+vEXOqqJ/KUsobN2+pBk0YOKI
+	GJnEFauAIyuq3fGP3BXRqhC1GlbsGsKp1Z2US4pfMZyy0iTzsedvJrLDRiWMXmgspVOSKD3n0jtr8
+	aw5F46M2w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM9cC-0004YA-QR; Wed, 08 Apr 2020 12:15:32 +0000
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+	id 1jMBsj-0000pS-5J; Wed, 08 Apr 2020 14:40:45 +0000
+Received: from mout.kundenserver.de ([212.227.126.134])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM9bw-0004J8-Dr
- for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 12:15:19 +0000
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 038C4QoD045782
- for <linux-riscv@lists.infradead.org>; Wed, 8 Apr 2020 08:15:15 -0400
-Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
- by mx0a-001b2d01.pphosted.com with ESMTP id 3091yktkyu-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-riscv@lists.infradead.org>; Wed, 08 Apr 2020 08:15:15 -0400
-Received: from localhost
- by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <linux-riscv@lists.infradead.org> from <gerald.schaefer@de.ibm.com>;
- Wed, 8 Apr 2020 13:15:00 +0100
-Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
- by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Wed, 8 Apr 2020 13:14:51 +0100
-Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
- [9.149.105.60])
- by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 038CF24e50987260
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 8 Apr 2020 12:15:02 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C021542052;
- Wed,  8 Apr 2020 12:15:02 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DB5164203F;
- Wed,  8 Apr 2020 12:15:01 +0000 (GMT)
-Received: from thinkpad (unknown [9.145.23.121])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Wed,  8 Apr 2020 12:15:01 +0000 (GMT)
-Date: Wed, 8 Apr 2020 14:15:00 +0200
-From: Gerald Schaefer <gerald.schaefer@de.ibm.com>
-To: Anshuman Khandual <anshuman.khandual@arm.com>
-Subject: Re: [PATCH V2 0/3] mm/debug: Add more arch page table helper tests
-In-Reply-To: <253cf5c8-e43e-5737-24e8-3eda3b6ba7b3@arm.com>
-References: <1585027375-9997-1-git-send-email-anshuman.khandual@arm.com>
- <20200331143059.29fca8fa@thinkpad>
- <e3e35885-6852-16aa-3889-e22750a0cc87@arm.com>
- <20200407175440.41cc00a5@thinkpad>
- <253cf5c8-e43e-5737-24e8-3eda3b6ba7b3@arm.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ id 1jMBse-0000oR-Nd
+ for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 14:40:42 +0000
+Received: from mail-lj1-f170.google.com ([209.85.208.170]) by
+ mrelayeu.kundenserver.de (mreue011 [212.227.15.129]) with ESMTPSA (Nemesis)
+ id 1MUGuZ-1jml8a0wEN-00RFTR for <linux-riscv@lists.infradead.org>; Wed, 08
+ Apr 2020 16:40:35 +0200
+Received: by mail-lj1-f170.google.com with SMTP id k21so7900954ljh.2
+ for <linux-riscv@lists.infradead.org>; Wed, 08 Apr 2020 07:40:35 -0700 (PDT)
+X-Gm-Message-State: AGi0PuYSNnJyu/lMciCuienhTFJ1AGqPLktD0nbJiT6T4QqxTBvgKrR9
+ ZCSPoq9ianfwnoFAvvOe5fTfT+46s0W3Ey7cYzE=
+X-Google-Smtp-Source: APiQypLewTqfZcv6F/HmA6qKyW+AsRQU8geLrryZL5eYVp+qfIlNJmLNmarm8H7M8ujqQhceSXEm+lDo7WEA2aWGkDA=
+X-Received: by 2002:a2e:9395:: with SMTP id g21mr5492407ljh.8.1586356834608;
+ Wed, 08 Apr 2020 07:40:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 20040812-0012-0000-0000-000003A0A8D6
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 20040812-0013-0000-0000-000021DDCDD9
-Message-Id: <20200408141500.75b2e1a7@thinkpad>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-04-07_10:2020-04-07,
- 2020-04-07 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 bulkscore=0
- clxscore=1015 malwarescore=0 phishscore=0 adultscore=0 impostorscore=0
- lowpriorityscore=0 suspectscore=0 priorityscore=1501 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004080097
+References: <20200331093241.3728-1-tesheng@andestech.com>
+ <CAK8P3a3LokurC0n9XiwtPQh9ZgQcswMKY4b+TEsQh1VgYDNeWA@mail.gmail.com>
+ <20200408035118.GA1451@andestech.com>
+In-Reply-To: <20200408035118.GA1451@andestech.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Wed, 8 Apr 2020 16:40:17 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a1JS3_2fWrhNTZx0eTWjJa-GTb4AscTPqydpSP5EB15Yw@mail.gmail.com>
+Message-ID: <CAK8P3a1JS3_2fWrhNTZx0eTWjJa-GTb4AscTPqydpSP5EB15Yw@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Highmem support for 32-bit RISC-V
+To: Alan Kao <alankao@andestech.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Provags-ID: V03:K1:D3GN8soiGee1GqpVsBpF2k/TFsT8VT7h42qwcFTzYe2gXCWfoj/
+ xTZU0QTSFou8/462R0YerdNHWUsuLkWMR8tnXXEWs0FUehbLEtNNW3aEEQyc3HKALvRNdzl
+ Xn3DyELfatneKGr78reNoJRKgZ0YYYqC/WGY5cI2XkNRLdZBgJGBTSDUrJMpzfZ8YrD1C9t
+ oeWXvvfuyNsLRWj5qqNMg==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8YbSFV/eEh8=:dIZxNdWW1mx82OPN0ExLDi
+ ragHeo0yINBdSfb95/aW6h2UNngB+vsui6391aLjtQpir2kDxTaqGmZ1ACSD0/rbIwz+rg6m2
+ aL7INN+bGnX28fQ8OZtXGMj7GWlVSmNYX5hu23E2K8T/nwBa5uxTZ+GVTraB9g+ki529wHAr5
+ 4A0+GZkHZxaIi95NxJTXr5F2JDFtUyNj/mmEvUOSnJi5qdbi0fNCoP2D16IJJjbg3YjKhwFDp
+ ol6jzqrCRB3FPxZbw1eoBLgv6/0byHtrwsMc3AN6+lGe1utJf6tgaRfFeWtBBQdYKnXzr09I1
+ RLaiRw/unmxM57bc3eYGsPWLLm/BGvgI9Kx4HwfenglFLxDhPAo8C8NgnxJ7vObpNZVlA1dAX
+ qz3xUFritfuAVEoDZdh+kXKt3RGC54wwAHnYWfYpBQbnuhV4aTsQMpYW4F/LOLQ7ysI4JA+gB
+ rBakGg/jPUpN0lptemj5ILIvyyA67k74FYbqT9ySDHM3rR6mb2O16zkueFQAjxms7Vdc30rYp
+ /fkQ52QgoLyTkz7snuzDz+wdzjwVUfGIbBI9ilvu7HCCEx54YJPavE8GIFWZVBz5ry+N1RJac
+ Yxh72NzNsMyXADe2H31+GrX5r8K2Sc7nWKsBB3O6gJ6RFcnHHv2USzME6zCJ8YTE/A2MhCOVA
+ 8kOq0IeoDvozfExvq+Uxp3cObVL3MbRUZlS5Pl/b0coQqJAD/n3VoB95qQevSGe9hFsyBGl3m
+ eopQYm7+OoAH7p/GEJz3IBP8mVz7nNVrPDFHBRU+4U0l8r72OATtmuDa+n4zVfjO/zB6VQfsE
+ YKwmiDG+aiIxTeEmYZXNUhZ7C0spBTaHmdemU4Mu84EH97FJXk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_051516_478369_13BA2973 
-X-CRM114-Status: GOOD (  33.40  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20200408_074041_065887_972D6D4D 
+X-CRM114-Status: GOOD (  25.49  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.156.1 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [212.227.126.134 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,126 +87,132 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
- Paul Mackerras <paulus@samba.org>, "H. Peter
- Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
- Mike Rapoport <rppt@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
- Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- "Kirill A . Shutemov" <kirill@shutemov.name>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
+Cc: Borislav Petkov <bp@suse.de>, Eric Lin <tesheng@andestech.com>,
+ zong.li@sifive.com, alex@ghiti.fr,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linux-riscv@lists.infradead.org, Steven Price <steven.price@arm.com>,
+ atish.patra@wdc.com, yash.shah@sifive.com, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Greentime Hu <green.hu@gmail.com>,
+ Gary Guo <gary@garyguo.net>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport <rppt@linux.ibm.com>,
+ Logan Gunthorpe <logang@deltatee.com>, Thomas Gleixner <tglx@linutronix.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 8 Apr 2020 12:41:51 +0530
-Anshuman Khandual <anshuman.khandual@arm.com> wrote:
+On Wed, Apr 8, 2020 at 5:52 AM Alan Kao <alankao@andestech.com> wrote:
+> On Thu, Apr 02, 2020 at 11:31:37AM +0200, Arnd Bergmann wrote:
+> > On Tue, Mar 31, 2020 at 11:34 AM Eric Lin <tesheng@andestech.com> wrote:
+> > For the arm32 architecture, we are thinking about implementing a
+> > VMPLIT_4G_4G option to replace highmem in the long run. The most
+> > likely way this would turn out at the moment looks like:
+> >
+>
+> Thanks for sharing the status from ARM32.  Is there any available branch
+> already?  It would be good to have a reference implementation.
 
-[...]
-> >   
-> >>
-> >> Some thing like this instead.
-> >>
-> >> pte_t pte = READ_ONCE(*ptep);
-> >> pte = pte_mkhuge(__pte((pte_val(pte) | RANDOM_ORVALUE) & PMD_MASK));
-> >>
-> >> We cannot use mk_pte_phys() as it is defined only on some platforms
-> >> without any generic fallback for others.  
-> > 
-> > Oh, didn't know that, sorry. What about using mk_pte() instead, at least
-> > it would result in a present pte:
-> > 
-> > pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));  
-> 
-> Lets use mk_pte() here but can we do this instead
-> 
-> paddr = (__pfn_to_phys(pfn) | RANDOM_ORVALUE) & PMD_MASK;
-> pte = pte_mkhuge(mk_pte(phys_to_page(paddr), prot));
-> 
+No code yet, so far not much more than the ideas that I listed. We
+are currently looking for someone interested in doing the work
+or maybe sponsoring it if they have a strong interest.
 
-Sure, that will also work.
+If someone does it for RISC-V first, that would of course also help on ARM ;-)
 
-BTW, this RANDOM_ORVALUE is not really very random, the way it is
-defined. For s390 we already changed it to mask out some arch bits,
-but I guess there are other archs and bits that would always be
-set with this "not so random" value, and I wonder if/how that would
-affect all the tests using this value, see also below.
+> > - have a 256MB region for vmalloc space at the top of the 4GB address
+> >   space, containing vmlinux, module, mmio mappings and vmalloc
+> >   allocations
+> >
+> > - have 3.75GB starting at address zero for either user space or the
+> >   linear map.
+> >
+> > - reserve one address space ID for kernel mappings to avoid tlb flushes
+> >   during normal context switches
+> >
+> > - On any kernel entry, switch the page table to the one with the linear
+> >   mapping, and back to the user page table before returning to user space
+> >
+>
+> After some survey I found previous disccusion
+> (https://lkml.org/lkml/2019/4/24/2110). The 5.2-based patch ended up not
+> being merged.  But at least we will have something to start if we want to.
 
-> > 
-> > And if you also want to do some with the existing value, which seems
-> > to be an empty pte, then maybe just check if writing and reading that
-> > value with set_huge_pte_at() / huge_ptep_get() returns the same,
-> > i.e. initially w/o RANDOM_ORVALUE.
-> > 
-> > So, in combination, like this (BTW, why is the barrier() needed, it
-> > is not used for the other set_huge_pte_at() calls later?):  
-> 
-> Ahh missed, will add them. Earlier we faced problem without it after
-> set_pte_at() for a test on powerpc (64) platform. Hence just added it
-> here to be extra careful.
-> 
-> > 
-> > @@ -733,24 +733,28 @@ static void __init hugetlb_advanced_test
-> >         struct page *page = pfn_to_page(pfn);
-> >         pte_t pte = READ_ONCE(*ptep);
-> >  
-> > -       pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
-> > +       set_huge_pte_at(mm, vaddr, ptep, pte);
-> > +       WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
-> > +
-> > +       pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));
-> >         set_huge_pte_at(mm, vaddr, ptep, pte);
-> >         barrier();
-> >         WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
-> > 
-> > This would actually add a new test "write empty pte with
-> > set_huge_pte_at(), then verify with huge_ptep_get()", which happens
-> > to trigger a warning on s390 :-)  
-> 
-> On arm64 as well which checks for pte_present() in set_huge_pte_at().
-> But PTE present check is not really present in each set_huge_pte_at()
-> implementation especially without __HAVE_ARCH_HUGE_SET_HUGE_PTE_AT.
-> Hence wondering if we should add this new test here which will keep
-> giving warnings on s390 and arm64 (at the least).
+Ah, I see. What is the current requirement for ASIDs in hardware
+implementations? If support for more than one address space is
+optional, that would make the VMSPLIT_4G support fairly expensive
+as it requires a full TLB flush for each context switch.
 
-Hmm, interesting. I forgot about huge swap / migration, which is not
-(and probably cannot be) supported on s390. The pte_present() check
-on arm64 seems to check for such huge swap / migration entries,
-according to the comment.
+> Also interestingly, there was a PR for privileged spec that separates
+> addressing modes (https://github.com/riscv/riscv-isa-manual/pull/128) as
+> Sdas extension, but there was no progress afterwards.
 
-The new test "write empty pte with set_huge_pte_at(), then verify
-with huge_ptep_get()" would then probably trigger the
-WARN_ON(!pte_present(pte)) in arm64 code. So I guess "writing empty
-ptes with set_huge_pte_at()" is not really a valid use case in practice,
-or else you would have seen this warning before. In that case, it
-might not be a good idea to add this test.
+Right, this sounds like the ideal implementation. This is what is done
+in arch/s390 and probably a few of the others.
 
-I also do wonder now, why the original test with
-"pte = __pte(pte_val(pte) | RANDOM_ORVALUE);"
-did not also trigger that warning on arm64. On s390 this test failed
-exactly because the constructed pte was not present (initially empty,
-or'ing RANDOM_ORVALUE does not make it present for s390). I guess this
-just worked by chance on arm64, because the bits from RANDOM_ORVALUE
-also happened to mark the pte present for arm64.
+> Not very related to this thread, but there were some discussion about
+> ASID design in RISC-V (https://github.com/riscv/riscv-isa-manual/issues/348).
+> It is now in ratified 1.11 privileged spec.
 
-This brings us back to the question above, regarding the "randomness"
-of RANDOM_ORVALUE. Not really sure what the intention behind that was,
-but maybe it would make sense to restrict this RANDOM_ORVALUE to
-non-arch-specific bits, i.e. only bits that would be part of the
-address value within a page table entry? Or was it intentionally
-chosen to also mess with other bits?
+Ok, so I suppose that would apply to about half the 32-bit implementations
+and most of the future ones, but not the ones implementing the 1.10 spec
+or earlier, right?
 
-Regards,
-Gerald
+> It seems to me that VMSPLIT_4G_4G is quite different from other VMSPLITs,
+> because it requires much more changes.
+>
+> Thanks for showing the stance of kernel community against HIGHMEM support.
+> The cited discussion thread is comprehensive and clear.  Despite that RV32
+> users cannot get upstream support for their large memory, mechnisms like
+> VMSPLIT_4G_4G seems to be a promising way to go.  That being said, to
+> support the theoretical 16G physical memory, eventually kmap* will still
+> be needed.
 
+I had not realized that Sv32 supports more than 4GB physical address
+space at all. I agree that if someone puts that much RAM into a machine,
+there are few alternatives to highmem (in theory one could use the
+extra RAM for zswap/zram, but that's not a good replacement).
+
+OTOH actually using more than 1GB or 2GB of physical memory on a
+32-bit core is something that I expect to become completely obscure
+in the future, as this is where using 32-bit cores tends to get
+uneconomical. The situation that I observe across the currently supported
+32-bit architectures in the kernel is that:
+
+- There is an incentive to run 32-bit on machines with 1GB of RAM  or less
+  if you have the choice, because of higher memory  consumption and
+  cache utilization on 64-bit code. On systems  with 2GB or more, the
+  cost of managing that memory using 32-bit  code usually outweighs
+  the benefits and you should run at least a 64-bit kernel.
+
+- The high end 32-bit cores (Arm Cortex-A15/A17, MIPS P5600,
+  PowerPC 750, Intel Pentium 4, Andes A15/D15, ...) are all obsolete
+  after the follow-on products use 64-bit cores on a smaller process
+  node, which end up being more capable, faster *and* cheaper.
+
+- The 32-bit cores that do survive are based on simpler in-order
+  pipelines that are cheaper and can still beat the 64-bit cores in
+  terms of cost (mostly chip area, sometimes royalties), but not
+  performance. This includes Arm Cortex-A7, MIPS 24k and typical
+  RV32 cores.
+
+- On an SoC with a cheap and simple CPU core, there is no point
+  in spending a lot of money/area/complexity on a high-end memory
+  controller. On single-core 32-bit SoCs, you usually end up with single
+  16 or 32-bit wide DDR2 memory controller, on an SMP system like
+  most quad-Cortex-A7, you have a 32-bit wide DDR3 controller, but no
+  DDR4 or LP-DDR3/4.
+
+- The largest economical memory configuration on a 32-bit DDR3
+  controller is to have two 256Mx16 chips for a total of 1GB. You can
+  get 2GB with four chips using dual-channel controllers or 512Mx8
+  memory, but anything beyond that is much more expensive than
+  upgrading to a 64-bit SoC with LP-DDR4.
+
+This is unlikely to change over time as 64-bit chips are also getting
+cheaper and may replace more of the 32-bit chips we see today.
+In particular, I expect to see multi-core chips moving to mostly
+64-bit cores over time, while 32-bit chips keep using one or
+occasionally two cores, further reducing the need for large and/or
+fast memory.
+
+        Arnd
 
