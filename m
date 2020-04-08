@@ -2,93 +2,100 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40E6D1A1CF2
-	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 09:57:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E426F1A2181
+	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 14:15:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E4WIiXeGbKDxs9UbyyfZOjVgyCJTWA/AduHG+mw3Ozg=; b=IwGDa8hMbArYAv
-	jElh/cwS297LhR0injtc9o/6yyLkFXJHbV7BfFbNuSrNRCeSWP4e9z0KZNXeY8MheVLZh0/mtCRqQ
-	hBDkTBW1dNEztVkouruFNGqZMscMSZ/Md5GkKkvM2wEVj5HUWzhYhO1DjAaWZelrMXwzVDqhqAzhC
-	uGjXdaqsEXY83k7hUd9KuiIfzVNfRwrbLYIgR6jZyrLxO7e3zHOEs4+ZK0lW2lThb4MxEUzsxUQoB
-	vI7ezuh5Fk8lc3vzp+jVV5ocfqIWr6syILwQtnkhlZNUuISmmyfTzpGJo1/G0b/IIkndscVpqE1bW
-	niQJ0ekrNCY5wQ8Hu5vw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=yM9JPiBSwOE/0o+X9LbizdeU2DOlsSezFdGTp79rFf4=; b=Lu7S/1iFchMCulKlo3A7L6BW6
+	2tDkBMknqs5VnE4fHnfvw1e9inaWDkZ7mnMeGCsmVa4CylLmizRF+HlK49Pp3+7BUdG+9wkuQA81X
+	5s3nPs7cnfjOIk2/aLx0bKlKh4Vng/k2f5wUypIofaD63A4yRfzA0yix1NRoj+t37RYZe3lMTpVE4
+	vzF2MN3JA6RAPHBGIyxELtuGzF0OIuupvasvRX30jGCEdObfOfW0+8QSKKoPRQ7T8pqDx+mUQeyUH
+	jXeO89jZy2S8hVBidVRM1NkXeWVoY6Eojz7H53QmanQnIZQUxeHXd1yUDyI3QlYXrBum8sdl+aTzN
+	38ovdaSmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM5ab-0007w6-RO; Wed, 08 Apr 2020 07:57:37 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1jM9cC-0004YA-QR; Wed, 08 Apr 2020 12:15:32 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM5aR-0007iW-91
- for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 07:57:28 +0000
-Received: by mail-pl1-x641.google.com with SMTP id s23so2218089plq.13
- for <linux-riscv@lists.infradead.org>; Wed, 08 Apr 2020 00:57:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=E4WIiXeGbKDxs9UbyyfZOjVgyCJTWA/AduHG+mw3Ozg=;
- b=TOZYTN0ZmTo7tkdrjh0d1AhqQRXNkDEiNfrJu4HSuIaIiOkXzgv343+X9uduChlxuH
- 5GPD/mmxsXBoBB14GTJKfsYkmdbX+iUL+dCVfbt+u75yXYegqNi1SrMLOcTYAi4T88lv
- qtT4EPWIizz8lTpXFwCmAj5VEUJfA30aJ5B+himyfvXRvcepspXbnZEigEMTMyxBRsI1
- rCfbOUbOO2fuhdV2fehBFtONQJoNk61FccNMvakWX+2TCphrgANZ1IFSPA42eCeWa9OG
- M+RbsCIz3G7evFBUt61IGLqkg9rI5gPYiJuMTj5URYLiZTZW/IrnKhHTcL/h5ex2W4c1
- 2vRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=E4WIiXeGbKDxs9UbyyfZOjVgyCJTWA/AduHG+mw3Ozg=;
- b=fCEaTQqjO7tb0x3uj0he3oC9RigFQyMsbJFnAwjIq5Z0y3IiqMrChYVuPmE2iKoyP3
- y7hyyRAxLVka40PWtPQ+cf+WuBDBlNbECwN8ran2FOsGIjpq4E+Qs5VZZiXX6gsS5tlA
- 5iOnSiNDXbSCL7oHS64dRonhCObqlrBwGRqNkx7zi4LeWlDV5cNHcaH4ImXoohPT6yqk
- tk55qI318kFXoMvNwSrU2EWH5Ucf2b0Xv340mZAZC/EiqA7cHo9LytmSiZeXDCY2CcEW
- keMuShZLMpXR9IFSGTjc1mtJFZlLYSCaOPR8ROW944cP18XU3a0uNR1soHtylyGYoP0f
- UDDw==
-X-Gm-Message-State: AGi0PuZ3RTH+EmJ7bSoSidlG7C8BXpzqKNLBjZhcOP1U+vdS+Wk8PjKV
- qrUt9phQa7UabDeFNPT4mha/PWiBpW0w1A==
-X-Google-Smtp-Source: APiQypIgaMKX49GV/U1HjE4l3Up0jhdZCobmLhyfkuxFpjq9sh+MzskfqRAcr1tN8QgE7gggnLep2w==
-X-Received: by 2002:a17:90a:714b:: with SMTP id
- g11mr3741642pjs.17.1586332646601; 
- Wed, 08 Apr 2020 00:57:26 -0700 (PDT)
-Received: from hsinchu02.internal.sifive.com
- (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id d85sm485599pfd.157.2020.04.08.00.57.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Apr 2020 00:57:26 -0700 (PDT)
-From: Zong Li <zong.li@sifive.com>
-To: palmer@dabbelt.com, paul.walmsley@sifive.com, aou@eecs.berkeley.edu,
- mhiramat@kernel.org, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v5 9/9] riscv: add STRICT_KERNEL_RWX support
-Date: Wed,  8 Apr 2020 15:57:04 +0800
-Message-Id: <100e739c5fd722a96fcc640c8ee0c82fe34fcb6a.1586332296.git.zong.li@sifive.com>
-X-Mailer: git-send-email 2.26.0
-In-Reply-To: <cover.1586332296.git.zong.li@sifive.com>
-References: <cover.1586332296.git.zong.li@sifive.com>
+ id 1jM9bw-0004J8-Dr
+ for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 12:15:19 +0000
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 038C4QoD045782
+ for <linux-riscv@lists.infradead.org>; Wed, 8 Apr 2020 08:15:15 -0400
+Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 3091yktkyu-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Wed, 08 Apr 2020 08:15:15 -0400
+Received: from localhost
+ by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <gerald.schaefer@de.ibm.com>;
+ Wed, 8 Apr 2020 13:15:00 +0100
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+ by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Wed, 8 Apr 2020 13:14:51 +0100
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 038CF24e50987260
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 8 Apr 2020 12:15:02 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C021542052;
+ Wed,  8 Apr 2020 12:15:02 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DB5164203F;
+ Wed,  8 Apr 2020 12:15:01 +0000 (GMT)
+Received: from thinkpad (unknown [9.145.23.121])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Wed,  8 Apr 2020 12:15:01 +0000 (GMT)
+Date: Wed, 8 Apr 2020 14:15:00 +0200
+From: Gerald Schaefer <gerald.schaefer@de.ibm.com>
+To: Anshuman Khandual <anshuman.khandual@arm.com>
+Subject: Re: [PATCH V2 0/3] mm/debug: Add more arch page table helper tests
+In-Reply-To: <253cf5c8-e43e-5737-24e8-3eda3b6ba7b3@arm.com>
+References: <1585027375-9997-1-git-send-email-anshuman.khandual@arm.com>
+ <20200331143059.29fca8fa@thinkpad>
+ <e3e35885-6852-16aa-3889-e22750a0cc87@arm.com>
+ <20200407175440.41cc00a5@thinkpad>
+ <253cf5c8-e43e-5737-24e8-3eda3b6ba7b3@arm.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 20040812-0012-0000-0000-000003A0A8D6
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 20040812-0013-0000-0000-000021DDCDD9
+Message-Id: <20200408141500.75b2e1a7@thinkpad>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-07_10:2020-04-07,
+ 2020-04-07 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxlogscore=999 bulkscore=0
+ clxscore=1015 malwarescore=0 phishscore=0 adultscore=0 impostorscore=0
+ lowpriorityscore=0 suspectscore=0 priorityscore=1501 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004080097
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_005727_332797_EC408AB7 
-X-CRM114-Status: GOOD (  10.82  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200408_051516_478369_13BA2973 
+X-CRM114-Status: GOOD (  33.40  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
- [list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.156.1 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,123 +107,126 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Zong Li <zong.li@sifive.com>
+Cc: linux-doc@vger.kernel.org,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
+ Paul Mackerras <paulus@samba.org>, "H. Peter
+ Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
+ Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
+ Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The commit contains that make text section as non-writable, rodata
-section as read-only, and data section as non-executable.
+On Wed, 8 Apr 2020 12:41:51 +0530
+Anshuman Khandual <anshuman.khandual@arm.com> wrote:
 
-The init section should be changed to non-executable.
+[...]
+> >   
+> >>
+> >> Some thing like this instead.
+> >>
+> >> pte_t pte = READ_ONCE(*ptep);
+> >> pte = pte_mkhuge(__pte((pte_val(pte) | RANDOM_ORVALUE) & PMD_MASK));
+> >>
+> >> We cannot use mk_pte_phys() as it is defined only on some platforms
+> >> without any generic fallback for others.  
+> > 
+> > Oh, didn't know that, sorry. What about using mk_pte() instead, at least
+> > it would result in a present pte:
+> > 
+> > pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));  
+> 
+> Lets use mk_pte() here but can we do this instead
+> 
+> paddr = (__pfn_to_phys(pfn) | RANDOM_ORVALUE) & PMD_MASK;
+> pte = pte_mkhuge(mk_pte(phys_to_page(paddr), prot));
+> 
 
-Signed-off-by: Zong Li <zong.li@sifive.com>
----
- arch/riscv/Kconfig                  |  1 +
- arch/riscv/include/asm/set_memory.h |  8 ++++++
- arch/riscv/mm/init.c                | 44 +++++++++++++++++++++++++++++
- 3 files changed, 53 insertions(+)
+Sure, that will also work.
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 1e1efc998baf..58b556167d59 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -61,6 +61,7 @@ config RISCV
- 	select ARCH_HAS_GIGANTIC_PAGE
- 	select ARCH_HAS_SET_DIRECT_MAP
- 	select ARCH_HAS_SET_MEMORY
-+	select ARCH_HAS_STRICT_KERNEL_RWX
- 	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
- 	select SPARSEMEM_STATIC if 32BIT
- 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
-diff --git a/arch/riscv/include/asm/set_memory.h b/arch/riscv/include/asm/set_memory.h
-index 4c5bae7ca01c..c38df4771c09 100644
---- a/arch/riscv/include/asm/set_memory.h
-+++ b/arch/riscv/include/asm/set_memory.h
-@@ -22,6 +22,14 @@ static inline int set_memory_x(unsigned long addr, int numpages) { return 0; }
- static inline int set_memory_nx(unsigned long addr, int numpages) { return 0; }
- #endif
- 
-+#ifdef CONFIG_STRICT_KERNEL_RWX
-+void set_kernel_text_ro(void);
-+void set_kernel_text_rw(void);
-+#else
-+static inline void set_kernel_text_ro(void) { }
-+static inline void set_kernel_text_rw(void) { }
-+#endif
-+
- int set_direct_map_invalid_noflush(struct page *page);
- int set_direct_map_default_noflush(struct page *page);
- 
-diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-index fab855963c73..b55be44ff9bd 100644
---- a/arch/riscv/mm/init.c
-+++ b/arch/riscv/mm/init.c
-@@ -12,6 +12,7 @@
- #include <linux/sizes.h>
- #include <linux/of_fdt.h>
- #include <linux/libfdt.h>
-+#include <linux/set_memory.h>
- 
- #include <asm/fixmap.h>
- #include <asm/tlbflush.h>
-@@ -477,6 +478,17 @@ static void __init setup_vm_final(void)
- 	csr_write(CSR_SATP, PFN_DOWN(__pa_symbol(swapper_pg_dir)) | SATP_MODE);
- 	local_flush_tlb_all();
- }
-+
-+void free_initmem(void)
-+{
-+	unsigned long init_begin = (unsigned long)__init_begin;
-+	unsigned long init_end = (unsigned long)__init_end;
-+
-+	/* Make the region as non-execuatble. */
-+	set_memory_nx(init_begin, (init_end - init_begin) >> PAGE_SHIFT);
-+	free_initmem_default(POISON_FREE_INITMEM);
-+}
-+
- #else
- asmlinkage void __init setup_vm(uintptr_t dtb_pa)
- {
-@@ -488,6 +500,38 @@ static inline void setup_vm_final(void)
- }
- #endif /* CONFIG_MMU */
- 
-+#ifdef CONFIG_STRICT_KERNEL_RWX
-+void set_kernel_text_rw(void)
-+{
-+	unsigned long text_start = (unsigned long)_text;
-+	unsigned long text_end = (unsigned long)_etext;
-+
-+	set_memory_rw(text_start, (text_end - text_start) >> PAGE_SHIFT);
-+}
-+
-+void set_kernel_text_ro(void)
-+{
-+	unsigned long text_start = (unsigned long)_text;
-+	unsigned long text_end = (unsigned long)_etext;
-+
-+	set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
-+}
-+
-+void mark_rodata_ro(void)
-+{
-+	unsigned long text_start = (unsigned long)_text;
-+	unsigned long text_end = (unsigned long)_etext;
-+	unsigned long rodata_start = (unsigned long)__start_rodata;
-+	unsigned long data_start = (unsigned long)_data;
-+	unsigned long max_low = (unsigned long)(__va(PFN_PHYS(max_low_pfn)));
-+
-+	set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
-+	set_memory_ro(rodata_start, (data_start - rodata_start) >> PAGE_SHIFT);
-+	set_memory_nx(rodata_start, (data_start - rodata_start) >> PAGE_SHIFT);
-+	set_memory_nx(data_start, (max_low - data_start) >> PAGE_SHIFT);
-+}
-+#endif
-+
- void __init paging_init(void)
- {
- 	setup_vm_final();
--- 
-2.26.0
+BTW, this RANDOM_ORVALUE is not really very random, the way it is
+defined. For s390 we already changed it to mask out some arch bits,
+but I guess there are other archs and bits that would always be
+set with this "not so random" value, and I wonder if/how that would
+affect all the tests using this value, see also below.
+
+> > 
+> > And if you also want to do some with the existing value, which seems
+> > to be an empty pte, then maybe just check if writing and reading that
+> > value with set_huge_pte_at() / huge_ptep_get() returns the same,
+> > i.e. initially w/o RANDOM_ORVALUE.
+> > 
+> > So, in combination, like this (BTW, why is the barrier() needed, it
+> > is not used for the other set_huge_pte_at() calls later?):  
+> 
+> Ahh missed, will add them. Earlier we faced problem without it after
+> set_pte_at() for a test on powerpc (64) platform. Hence just added it
+> here to be extra careful.
+> 
+> > 
+> > @@ -733,24 +733,28 @@ static void __init hugetlb_advanced_test
+> >         struct page *page = pfn_to_page(pfn);
+> >         pte_t pte = READ_ONCE(*ptep);
+> >  
+> > -       pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
+> > +       set_huge_pte_at(mm, vaddr, ptep, pte);
+> > +       WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
+> > +
+> > +       pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));
+> >         set_huge_pte_at(mm, vaddr, ptep, pte);
+> >         barrier();
+> >         WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
+> > 
+> > This would actually add a new test "write empty pte with
+> > set_huge_pte_at(), then verify with huge_ptep_get()", which happens
+> > to trigger a warning on s390 :-)  
+> 
+> On arm64 as well which checks for pte_present() in set_huge_pte_at().
+> But PTE present check is not really present in each set_huge_pte_at()
+> implementation especially without __HAVE_ARCH_HUGE_SET_HUGE_PTE_AT.
+> Hence wondering if we should add this new test here which will keep
+> giving warnings on s390 and arm64 (at the least).
+
+Hmm, interesting. I forgot about huge swap / migration, which is not
+(and probably cannot be) supported on s390. The pte_present() check
+on arm64 seems to check for such huge swap / migration entries,
+according to the comment.
+
+The new test "write empty pte with set_huge_pte_at(), then verify
+with huge_ptep_get()" would then probably trigger the
+WARN_ON(!pte_present(pte)) in arm64 code. So I guess "writing empty
+ptes with set_huge_pte_at()" is not really a valid use case in practice,
+or else you would have seen this warning before. In that case, it
+might not be a good idea to add this test.
+
+I also do wonder now, why the original test with
+"pte = __pte(pte_val(pte) | RANDOM_ORVALUE);"
+did not also trigger that warning on arm64. On s390 this test failed
+exactly because the constructed pte was not present (initially empty,
+or'ing RANDOM_ORVALUE does not make it present for s390). I guess this
+just worked by chance on arm64, because the bits from RANDOM_ORVALUE
+also happened to mark the pte present for arm64.
+
+This brings us back to the question above, regarding the "randomness"
+of RANDOM_ORVALUE. Not really sure what the intention behind that was,
+but maybe it would make sense to restrict this RANDOM_ORVALUE to
+non-arch-specific bits, i.e. only bits that would be part of the
+address value within a page table entry? Or was it intentionally
+chosen to also mess with other bits?
+
+Regards,
+Gerald
 
 
