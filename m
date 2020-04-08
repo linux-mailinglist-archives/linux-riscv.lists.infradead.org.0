@@ -2,83 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C2ED1A1CF0
-	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 09:57:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40E6D1A1CF2
+	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 09:57:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=geDMvpdyp4eREUjGenxPiMAgszPzsf8hdgTrRUcyDVI=; b=nfidC9TYl14okL
-	9r0yRics/fqbGsaaeAIfypVzwuAORsmplrqja0cKARXEQYx/63IXtSmpUD851Qf6Itm7Cb4Lj3tti
-	0zNhNDM2BN5YaogSespZuOjMrYH9S1qHejNq2yzqfIVoVPT+TaWREgW7DgKmbZl/MUEDGuJnI2SEp
-	paVdi7mXd5toKISgk2SPNsbR56PR6wsgNPLXfOxzbwKNZnO6S8NNPZVb3xpcMWcVnzkxPvFl1+TR2
-	BgnM/vz37166FgCUHqnFjKyGLG1kLcHTQiR3s02U6lDlkoz9LeLl/GHgf0I8RzW55NqDkjyeWFyao
-	fbWfMdLdNJVOriAqQeBw==;
+	List-Owner; bh=E4WIiXeGbKDxs9UbyyfZOjVgyCJTWA/AduHG+mw3Ozg=; b=IwGDa8hMbArYAv
+	jElh/cwS297LhR0injtc9o/6yyLkFXJHbV7BfFbNuSrNRCeSWP4e9z0KZNXeY8MheVLZh0/mtCRqQ
+	hBDkTBW1dNEztVkouruFNGqZMscMSZ/Md5GkKkvM2wEVj5HUWzhYhO1DjAaWZelrMXwzVDqhqAzhC
+	uGjXdaqsEXY83k7hUd9KuiIfzVNfRwrbLYIgR6jZyrLxO7e3zHOEs4+ZK0lW2lThb4MxEUzsxUQoB
+	vI7ezuh5Fk8lc3vzp+jVV5ocfqIWr6syILwQtnkhlZNUuISmmyfTzpGJo1/G0b/IIkndscVpqE1bW
+	niQJ0ekrNCY5wQ8Hu5vw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM5aX-0007pT-LD; Wed, 08 Apr 2020 07:57:33 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1jM5ab-0007w6-RO; Wed, 08 Apr 2020 07:57:37 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM5aP-0007fw-9g
- for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 07:57:26 +0000
-Received: by mail-pl1-x643.google.com with SMTP id d24so2232668pll.8
- for <linux-riscv@lists.infradead.org>; Wed, 08 Apr 2020 00:57:25 -0700 (PDT)
+ id 1jM5aR-0007iW-91
+ for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 07:57:28 +0000
+Received: by mail-pl1-x641.google.com with SMTP id s23so2218089plq.13
+ for <linux-riscv@lists.infradead.org>; Wed, 08 Apr 2020 00:57:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=geDMvpdyp4eREUjGenxPiMAgszPzsf8hdgTrRUcyDVI=;
- b=S5QTx2CFt98Mt0i/C+3txkabVRmjPH9b1pHlRJMR81mtdW58kYh3qyK64Fxh3p+xSf
- aAW3UKDWwCxdsOUs10tw5Ieny0e/pYI/NixKjBtIvtsme6hq16mKn0ItpbINHGIfLrgl
- ahuZAlc1+dGCD+d7DCjrGl9v4lTLPWjkH+eMkZ2iyLMgWUlGt93OeiLRRj5jrflGGofw
- K+B3X0TIF3SIYc19ebpPfRZ0nORpsN0mnJSbba8ZifizsOIGjzaTmsoSA6e1xANjcnWr
- C2IZ5SKoe/ACv7Ijz+iMtf02S2kQM754MH/kuVyZkMTV6803o5EHrqrVFleBcaWMTS8a
- lPDA==
+ bh=E4WIiXeGbKDxs9UbyyfZOjVgyCJTWA/AduHG+mw3Ozg=;
+ b=TOZYTN0ZmTo7tkdrjh0d1AhqQRXNkDEiNfrJu4HSuIaIiOkXzgv343+X9uduChlxuH
+ 5GPD/mmxsXBoBB14GTJKfsYkmdbX+iUL+dCVfbt+u75yXYegqNi1SrMLOcTYAi4T88lv
+ qtT4EPWIizz8lTpXFwCmAj5VEUJfA30aJ5B+himyfvXRvcepspXbnZEigEMTMyxBRsI1
+ rCfbOUbOO2fuhdV2fehBFtONQJoNk61FccNMvakWX+2TCphrgANZ1IFSPA42eCeWa9OG
+ M+RbsCIz3G7evFBUt61IGLqkg9rI5gPYiJuMTj5URYLiZTZW/IrnKhHTcL/h5ex2W4c1
+ 2vRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=geDMvpdyp4eREUjGenxPiMAgszPzsf8hdgTrRUcyDVI=;
- b=chsQdDlkAJSlgt6f5slA8JY75W9BqNq5zKtjABbu/wyOdLzgrarFsFrhyLnrkeukD1
- 34bP8AKHQ1jPYdw54dfjcVbur8yXSQhnqaF6VOqa0JWxVRuet9xUJgaFpNuBtrm5pwKL
- 7FPjJ/ppxkoFSyLROx1qg6Al8sZhOThr164D3Vxmbpllp0n2ACsj1qp5b/0fF2d4KSoS
- +i2SXgoG9Nb8HEjPp0XcuM/RstShqWbXn81b8lYDSALr5TaigNjvt0cEVDiQZDMGoSFS
- v/lNTwzazsB7tgkP/rzx0lqfa5YIn1Lx5lorvns4A0ZVIySrSR/c8OX3cNykQFECoRlu
- cg/A==
-X-Gm-Message-State: AGi0Pubu2hm/x9DmtDXIKABhdOSuXeYMr2E/XMImnpx9ruYR1hnkrKnB
- R0Jh/1Vbug132yc4yumsen9wxA==
-X-Google-Smtp-Source: APiQypI5ixhPVxiaOZYKBPMsxFPDPz2i1VrQzUF3bngypFXRTDQ8GJzp3IxjnJPFrgBfCklRUsc91A==
-X-Received: by 2002:a17:90a:1b6b:: with SMTP id
- q98mr3859791pjq.107.1586332644756; 
- Wed, 08 Apr 2020 00:57:24 -0700 (PDT)
+ bh=E4WIiXeGbKDxs9UbyyfZOjVgyCJTWA/AduHG+mw3Ozg=;
+ b=fCEaTQqjO7tb0x3uj0he3oC9RigFQyMsbJFnAwjIq5Z0y3IiqMrChYVuPmE2iKoyP3
+ y7hyyRAxLVka40PWtPQ+cf+WuBDBlNbECwN8ran2FOsGIjpq4E+Qs5VZZiXX6gsS5tlA
+ 5iOnSiNDXbSCL7oHS64dRonhCObqlrBwGRqNkx7zi4LeWlDV5cNHcaH4ImXoohPT6yqk
+ tk55qI318kFXoMvNwSrU2EWH5Ucf2b0Xv340mZAZC/EiqA7cHo9LytmSiZeXDCY2CcEW
+ keMuShZLMpXR9IFSGTjc1mtJFZlLYSCaOPR8ROW944cP18XU3a0uNR1soHtylyGYoP0f
+ UDDw==
+X-Gm-Message-State: AGi0PuZ3RTH+EmJ7bSoSidlG7C8BXpzqKNLBjZhcOP1U+vdS+Wk8PjKV
+ qrUt9phQa7UabDeFNPT4mha/PWiBpW0w1A==
+X-Google-Smtp-Source: APiQypIgaMKX49GV/U1HjE4l3Up0jhdZCobmLhyfkuxFpjq9sh+MzskfqRAcr1tN8QgE7gggnLep2w==
+X-Received: by 2002:a17:90a:714b:: with SMTP id
+ g11mr3741642pjs.17.1586332646601; 
+ Wed, 08 Apr 2020 00:57:26 -0700 (PDT)
 Received: from hsinchu02.internal.sifive.com
  (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id d85sm485599pfd.157.2020.04.08.00.57.22
+ by smtp.gmail.com with ESMTPSA id d85sm485599pfd.157.2020.04.08.00.57.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Apr 2020 00:57:24 -0700 (PDT)
+ Wed, 08 Apr 2020 00:57:26 -0700 (PDT)
 From: Zong Li <zong.li@sifive.com>
 To: palmer@dabbelt.com, paul.walmsley@sifive.com, aou@eecs.berkeley.edu,
  mhiramat@kernel.org, linux-riscv@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v5 8/9] riscv: add alignment for text, rodata and data sections
-Date: Wed,  8 Apr 2020 15:57:03 +0800
-Message-Id: <d78c601d553dde791057b54252064221f960546e.1586332296.git.zong.li@sifive.com>
+Subject: [PATCH v5 9/9] riscv: add STRICT_KERNEL_RWX support
+Date: Wed,  8 Apr 2020 15:57:04 +0800
+Message-Id: <100e739c5fd722a96fcc640c8ee0c82fe34fcb6a.1586332296.git.zong.li@sifive.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <cover.1586332296.git.zong.li@sifive.com>
 References: <cover.1586332296.git.zong.li@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_005725_360140_B896A741 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20200408_005727_332797_EC408AB7 
+X-CRM114-Status: GOOD (  10.82  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -100,92 +100,122 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Palmer Dabbelt <palmerdabbelt@google.com>, Zong Li <zong.li@sifive.com>
+Cc: Zong Li <zong.li@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The kernel mapping will tried to optimize its mapping by using bigger
-size. In rv64, it tries to use PMD_SIZE, and tryies to use PGDIR_SIZE in
-rv32. To ensure that the start address of these sections could fit the
-mapping entry size, make them align to the biggest alignment.
+The commit contains that make text section as non-writable, rodata
+section as read-only, and data section as non-executable.
 
-Define a macro SECTION_ALIGN because the HPAGE_SIZE or PMD_SIZE, etc.,
-are invisible in linker script.
-
-This patch is prepared for STRICT_KERNEL_RWX support.
+The init section should be changed to non-executable.
 
 Signed-off-by: Zong Li <zong.li@sifive.com>
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 ---
- arch/riscv/include/asm/set_memory.h | 13 +++++++++++++
- arch/riscv/kernel/vmlinux.lds.S     |  5 ++++-
- 2 files changed, 17 insertions(+), 1 deletion(-)
+ arch/riscv/Kconfig                  |  1 +
+ arch/riscv/include/asm/set_memory.h |  8 ++++++
+ arch/riscv/mm/init.c                | 44 +++++++++++++++++++++++++++++
+ 3 files changed, 53 insertions(+)
 
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 1e1efc998baf..58b556167d59 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -61,6 +61,7 @@ config RISCV
+ 	select ARCH_HAS_GIGANTIC_PAGE
+ 	select ARCH_HAS_SET_DIRECT_MAP
+ 	select ARCH_HAS_SET_MEMORY
++	select ARCH_HAS_STRICT_KERNEL_RWX
+ 	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
+ 	select SPARSEMEM_STATIC if 32BIT
+ 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
 diff --git a/arch/riscv/include/asm/set_memory.h b/arch/riscv/include/asm/set_memory.h
-index 620d81c372d9..4c5bae7ca01c 100644
+index 4c5bae7ca01c..c38df4771c09 100644
 --- a/arch/riscv/include/asm/set_memory.h
 +++ b/arch/riscv/include/asm/set_memory.h
-@@ -6,6 +6,7 @@
- #ifndef _ASM_RISCV_SET_MEMORY_H
- #define _ASM_RISCV_SET_MEMORY_H
+@@ -22,6 +22,14 @@ static inline int set_memory_x(unsigned long addr, int numpages) { return 0; }
+ static inline int set_memory_nx(unsigned long addr, int numpages) { return 0; }
+ #endif
  
-+#ifndef __ASSEMBLY__
- /*
-  * Functions to change memory attributes.
-  */
-@@ -24,4 +25,16 @@ static inline int set_memory_nx(unsigned long addr, int numpages) { return 0; }
++#ifdef CONFIG_STRICT_KERNEL_RWX
++void set_kernel_text_ro(void);
++void set_kernel_text_rw(void);
++#else
++static inline void set_kernel_text_ro(void) { }
++static inline void set_kernel_text_rw(void) { }
++#endif
++
  int set_direct_map_invalid_noflush(struct page *page);
  int set_direct_map_default_noflush(struct page *page);
  
-+#endif /* __ASSEMBLY__ */
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index fab855963c73..b55be44ff9bd 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -12,6 +12,7 @@
+ #include <linux/sizes.h>
+ #include <linux/of_fdt.h>
+ #include <linux/libfdt.h>
++#include <linux/set_memory.h>
+ 
+ #include <asm/fixmap.h>
+ #include <asm/tlbflush.h>
+@@ -477,6 +478,17 @@ static void __init setup_vm_final(void)
+ 	csr_write(CSR_SATP, PFN_DOWN(__pa_symbol(swapper_pg_dir)) | SATP_MODE);
+ 	local_flush_tlb_all();
+ }
 +
-+#ifdef CONFIG_ARCH_HAS_STRICT_KERNEL_RWX
-+#ifdef CONFIG_64BIT
-+#define SECTION_ALIGN (1 << 21)
-+#else
-+#define SECTION_ALIGN (1 << 22)
++void free_initmem(void)
++{
++	unsigned long init_begin = (unsigned long)__init_begin;
++	unsigned long init_end = (unsigned long)__init_end;
++
++	/* Make the region as non-execuatble. */
++	set_memory_nx(init_begin, (init_end - init_begin) >> PAGE_SHIFT);
++	free_initmem_default(POISON_FREE_INITMEM);
++}
++
+ #else
+ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+ {
+@@ -488,6 +500,38 @@ static inline void setup_vm_final(void)
+ }
+ #endif /* CONFIG_MMU */
+ 
++#ifdef CONFIG_STRICT_KERNEL_RWX
++void set_kernel_text_rw(void)
++{
++	unsigned long text_start = (unsigned long)_text;
++	unsigned long text_end = (unsigned long)_etext;
++
++	set_memory_rw(text_start, (text_end - text_start) >> PAGE_SHIFT);
++}
++
++void set_kernel_text_ro(void)
++{
++	unsigned long text_start = (unsigned long)_text;
++	unsigned long text_end = (unsigned long)_etext;
++
++	set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
++}
++
++void mark_rodata_ro(void)
++{
++	unsigned long text_start = (unsigned long)_text;
++	unsigned long text_end = (unsigned long)_etext;
++	unsigned long rodata_start = (unsigned long)__start_rodata;
++	unsigned long data_start = (unsigned long)_data;
++	unsigned long max_low = (unsigned long)(__va(PFN_PHYS(max_low_pfn)));
++
++	set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
++	set_memory_ro(rodata_start, (data_start - rodata_start) >> PAGE_SHIFT);
++	set_memory_nx(rodata_start, (data_start - rodata_start) >> PAGE_SHIFT);
++	set_memory_nx(data_start, (max_low - data_start) >> PAGE_SHIFT);
++}
 +#endif
-+#else /* !CONFIG_ARCH_HAS_STRICT_KERNEL_RWX */
-+#define SECTION_ALIGN L1_CACHE_BYTES
-+#endif /* CONFIG_ARCH_HAS_STRICT_KERNEL_RWX */
 +
- #endif /* _ASM_RISCV_SET_MEMORY_H */
-diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
-index 02e948b620af..ef87deea0350 100644
---- a/arch/riscv/kernel/vmlinux.lds.S
-+++ b/arch/riscv/kernel/vmlinux.lds.S
-@@ -9,6 +9,7 @@
- #include <asm/page.h>
- #include <asm/cache.h>
- #include <asm/thread_info.h>
-+#include <asm/set_memory.h>
- 
- OUTPUT_ARCH(riscv)
- ENTRY(_start)
-@@ -36,6 +37,7 @@ SECTIONS
- 	PERCPU_SECTION(L1_CACHE_BYTES)
- 	__init_end = .;
- 
-+	. = ALIGN(SECTION_ALIGN);
- 	.text : {
- 		_text = .;
- 		_stext = .;
-@@ -53,13 +55,14 @@ SECTIONS
- 
- 	/* Start of data section */
- 	_sdata = .;
--	RO_DATA(L1_CACHE_BYTES)
-+	RO_DATA(SECTION_ALIGN)
- 	.srodata : {
- 		*(.srodata*)
- 	}
- 
- 	EXCEPTION_TABLE(0x10)
- 
-+	. = ALIGN(SECTION_ALIGN);
- 	_data = .;
- 
- 	RW_DATA(L1_CACHE_BYTES, PAGE_SIZE, THREAD_SIZE)
+ void __init paging_init(void)
+ {
+ 	setup_vm_final();
 -- 
 2.26.0
 
