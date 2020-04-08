@@ -2,88 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A8201A1B92
-	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 07:39:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C67C1A1C65
+	for <lists+linux-riscv@lfdr.de>; Wed,  8 Apr 2020 09:12:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Okc82vqS7N+cAm2fC1T1A+xd/pJAgTWbJlOtDSH21Rg=; b=TG8vM8qvpzwmkB
-	DrgMPIVzMyC3QJpyn220wM/YuEVNJ2p3T2oKwr7quMSu95uvAQ7OS6BB4jAlhmE74zRmR0We47Cpk
-	GX2UptnTRyXo1xTntPeaNYAvPNDqFEAfrFTFbntgXSWBSsVk/Qaf2GHQCO5r7WnLL/a2JZAuno/dL
-	J4FuWCY3KZ/PhPqz9hatM4qruEvaB7XqWruEAfuUCFXjA48Aabt3bBdVpp6+zdt0G8rYq9nP2dYKo
-	V6w6XizDIf1DXwnJPDZ3rS3huXeKXGK6GlMZm3GxetcZkIhrhwAd4QqGgtuvAFeqswW2eTFxySHjY
-	rJq1Pm3OdXLnVrePsZRQ==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:References:To:Subject:From:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HYF4RYFG5PbMBkwvuJujnTuX/38406sgQlfdy/uPaf4=; b=TgYJngAg0gyH/h
+	5sejnZMk/kPMgprOBkQIQif+VgvmnleoaLzwX+BYsX/yRbVyrvIYrvyH23hFcy46rbBQ3+9NSSvSL
+	UPkQ9uVBR+VsncvswNN0JZ9HNa9so+pLFWvn9L01A2CWfrZdsVtt0OZtHYt363QcoPzGSVw0oVw7y
+	B662g4XXKKWBD7lsXGxss5fM0IDaVemu6n2T9FEj2cLWOUcuioXCPdrVjaH+u3w6hsQnaw4up2wTq
+	+szsX4gRctE6VGUelDpdu/iQroyroqts7cbW3emaNdb+KOR+bTeVpC6RfLBS5qf7POA0TEUKU0fGw
+	qLTjTmwNpridktuHrnxQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM3Qq-0005ED-0Y; Wed, 08 Apr 2020 05:39:24 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM3Qm-0005Dt-DK
- for linux-riscv@lists.infradead.org; Wed, 08 Apr 2020 05:39:22 +0000
-Received: by mail-wr1-x441.google.com with SMTP id c15so6275830wro.11
- for <linux-riscv@lists.infradead.org>; Tue, 07 Apr 2020 22:39:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Okc82vqS7N+cAm2fC1T1A+xd/pJAgTWbJlOtDSH21Rg=;
- b=NGjPIN3pcaFl/PAoh+/QRIXJUQi67BRhQXiHheHL6FKEhBjcg638Yd5wqiN9Z9yzop
- VLX4y+CU3TUGzKxd8u21ww8cA32q/2uUZi0Cb1Q8BljyD929VSo2RJhuzsIYGiZdPyjB
- AsvH2uHEv5ygVlRkUV4j/sLvRQpwKXZg4ZLiJXe1mNE51phrSZiYTEkF9RXoZSI/Se5u
- yFcRuXDwtrW75zBa3E30rmV0IP3CLT89nbijAfeh41UmSpnCjOF95CUO8S8pvom+6INC
- kbu1Cj8SB3XQNOie8ZrjVMD2doQGnMkae6fol4+qmN3s7SYNyj/FEPmx+4bsWwMTZW4D
- +4Bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Okc82vqS7N+cAm2fC1T1A+xd/pJAgTWbJlOtDSH21Rg=;
- b=Gs/s/nHlB1SHxqz57Ea9YhFAIBu4JV1Gr1PpDeSPUqBfkV0WvY2i5nWyIYuESI4rKg
- xWjW7UsaYknSAIlQ/V+OinG9TVUEj6QtwazHRMxNdz+8WOis31tNxwiZ216i/U6kj3pY
- Dw1OkVYv5vsbT84daiuiAiTWyUz2Zd49gaBPmzRDNwxAMN+d/3OC/gHM3KZcjlb/VgRK
- Cp+hGcaXMkYM+tfAwLo1sTnw6HhHqcwbxEsSIU3w8xoEZjapTTijr1Zhc8+dTEseXHh7
- T+YE81AfcsnoDPdmOY9O4+I5OEZ102Lb5B+sfNa1hm7b4Y/uSm76G1HXY5fDj3mwMQHe
- wafQ==
-X-Gm-Message-State: AGi0PubVIrPYh03AL25I3U7Dlys23uoKrqnknmZXNZPQoD/sXUfgPNLu
- cQS85RnNDO3R7f+rCR0ajC9XWlsD5+L+Q2CGynU=
-X-Google-Smtp-Source: APiQypJITdWG6cr8CDIiyQl/5qm7RlFhsLVBSSSISjnWZ2rvwBgjWu9u8DR1q3ID4FGyCHEUXNbHgfHuDChal9IuBWM=
-X-Received: by 2002:a5d:4988:: with SMTP id r8mr6283912wrq.248.1586324357903; 
- Tue, 07 Apr 2020 22:39:17 -0700 (PDT)
+	id 1jM4st-000309-4u; Wed, 08 Apr 2020 07:12:27 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jM4sj-0002vK-Lq; Wed, 08 Apr 2020 07:12:19 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9AED131B;
+ Wed,  8 Apr 2020 00:12:15 -0700 (PDT)
+Received: from [10.163.1.2] (unknown [10.163.1.2])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 246B63F68F;
+ Wed,  8 Apr 2020 00:16:17 -0700 (PDT)
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+Subject: Re: [PATCH V2 0/3] mm/debug: Add more arch page table helper tests
+To: Gerald Schaefer <gerald.schaefer@de.ibm.com>
+References: <1585027375-9997-1-git-send-email-anshuman.khandual@arm.com>
+ <20200331143059.29fca8fa@thinkpad>
+ <e3e35885-6852-16aa-3889-e22750a0cc87@arm.com>
+ <20200407175440.41cc00a5@thinkpad>
+Message-ID: <253cf5c8-e43e-5737-24e8-3eda3b6ba7b3@arm.com>
+Date: Wed, 8 Apr 2020 12:41:51 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <20200406221604.18547-1-luke.r.nels@gmail.com>
-In-Reply-To: <20200406221604.18547-1-luke.r.nels@gmail.com>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Wed, 8 Apr 2020 07:39:06 +0200
-Message-ID: <CAJ+HfNh=VDeXJQ3iYHDEXAd1xB_YPShnJyqsW4OmRE=VLAMuuw@mail.gmail.com>
-Subject: Re: [PATCH bpf] riscv, bpf: Fix offset range checking for auipc+jalr
- on RV64
-To: Luke Nelson <lukenels@cs.washington.edu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200407175440.41cc00a5@thinkpad>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_223920_475753_0127C9C9 
-X-CRM114-Status: GOOD (  23.35  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200408_001217_800534_94D46558 
+X-CRM114-Status: GOOD (  45.32  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [bjorn.topel[at]gmail.com]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,186 +67,256 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Daniel Borkmann <daniel@iogearbox.net>, Luke Nelson <luke.r.nels@gmail.com>,
- Netdev <netdev@vger.kernel.org>, John Fastabend <john.fastabend@gmail.com>,
- Alexei Starovoitov <ast@kernel.org>, linux-riscv@lists.infradead.org,
- LKML <linux-kernel@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, KP Singh <kpsingh@chromium.org>,
- Yonghong Song <yhs@fb.com>, bpf <bpf@vger.kernel.org>,
- Andrii Nakryiko <andriin@fb.com>, Martin KaFai Lau <kafai@fb.com>,
- Xi Wang <xi.wang@gmail.com>
+Cc: linux-doc@vger.kernel.org,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
+ linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>, Michael Ellerman <mpe@ellerman.id.au>,
+ x86@kernel.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
+ Vasily Gorbik <gor@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 7 Apr 2020 at 00:16, Luke Nelson <lukenels@cs.washington.edu> wrote=
-:
->
-> The existing code in emit_call on RV64 checks that the PC-relative offset
-> to the function fits in 32 bits before calling emit_jump_and_link to emit
-> an auipc+jalr pair. However, this check is incorrect because offsets in
-> the range [2^31 - 2^11, 2^31 - 1] cannot be encoded using auipc+jalr on
-> RV64 (see discussion [1]). The RISC-V spec has recently been updated
-> to reflect this fact [2, 3].
->
-> This patch fixes the problem by moving the check on the offset into
-> emit_jump_and_link and modifying it to the correct range of encodable
-> offsets, which is [-2^31 - 2^11, 2^31 - 2^11). This also enforces the
-> check on the offset to other uses of emit_jump_and_link (e.g., BPF_JA)
-> as well.
->
-> Currently, this bug is unlikely to be triggered, because the memory
-> region from which JITed images are allocated is close enough to kernel
-> text for the offsets to not become too large; and because the bounds on
-> BPF program size are small enough. This patch prevents this problem from
-> becoming an issue if either of these change.
->
-> [1]: https://groups.google.com/a/groups.riscv.org/forum/#!topic/isa-dev/b=
-wWFhBnnZFQ
-> [2]: https://github.com/riscv/riscv-isa-manual/commit/b1e42e09ac55116dbf9=
-de5e4fb326a5a90e4a993
-> [3]: https://github.com/riscv/riscv-isa-manual/commit/4c1b2066ebd2965a422=
-e41eb262d0a208a7fea07
->
 
-Wow! Interesting! Thanks for fixing this!
+On 04/07/2020 09:24 PM, Gerald Schaefer wrote:
+> On Sun, 5 Apr 2020 17:58:14 +0530
+> Anshuman Khandual <anshuman.khandual@arm.com> wrote:
+> 
+> [...]
+>>>
+>>> Could be fixed like this (the first de-reference is a bit special,
+>>> because at that point *ptep does not really point to a large (pmd) entry
+>>> yet, it is initially an invalid pte entry, which breaks our huge_ptep_get()  
+>>
+>> There seems to be an inconsistency on s390 platform. Even though it defines
+>> a huge_ptep_get() override, it does not subscribe __HAVE_ARCH_HUGE_PTEP_GET
+>> which should have forced it fallback on generic huge_ptep_get() but it does
+>> not :) Then I realized that __HAVE_ARCH_HUGE_PTEP_GET only makes sense when
+>> an arch uses <asm-generic/hugetlb.h>. s390 does not use that and hence gets
+>> away with it's own huge_ptep_get() without __HAVE_ARCH_HUGE_PTEP_GET. Sounds
+>> confusing ? But I might not have the entire context here.
+> 
+> Yes, that sounds very confusing. Also a bit ironic, since huge_ptep_get()
+> was initially introduced because of s390, and now we don't select
+> __HAVE_ARCH_HUGE_PTEP_GET...
+> 
+> As you realized, I guess this is because we do not use generic hugetlb.h.
+> And when __HAVE_ARCH_HUGE_PTEP_GET was introduced with commit 544db7597ad
+> ("hugetlb: introduce generic version of huge_ptep_get"), that was probably
+> the reason why we did not get our share of __HAVE_ARCH_HUGE_PTEP_GET.
 
-Too late to Ack, but still:
+Understood.
 
-Acked-by: Bj=C3=B6rn T=C3=B6pel <bjorn.topel@gmail.com>
+> 
+> Nothing really wrong with that, but yes, very confusing. Maybe we could
+> also select it for s390, even though it wouldn't have any functional
+> impact (so far), just for less confusion. Maybe also thinking about
+> using the generic hugetlb.h, not sure if the original reasons for not
+> doing so would still apply. Now I only need to find the time...
 
-> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
-> ---
->  arch/riscv/net/bpf_jit_comp64.c | 49 +++++++++++++++++++++------------
->  1 file changed, 32 insertions(+), 17 deletions(-)
->
-> diff --git a/arch/riscv/net/bpf_jit_comp64.c b/arch/riscv/net/bpf_jit_com=
-p64.c
-> index cc1985d8750a..d208a9fd6c52 100644
-> --- a/arch/riscv/net/bpf_jit_comp64.c
-> +++ b/arch/riscv/net/bpf_jit_comp64.c
-> @@ -110,6 +110,16 @@ static bool is_32b_int(s64 val)
->         return -(1L << 31) <=3D val && val < (1L << 31);
->  }
->
-> +static bool in_auipc_jalr_range(s64 val)
-> +{
-> +       /*
-> +        * auipc+jalr can reach any signed PC-relative offset in the rang=
-e
-> +        * [-2^31 - 2^11, 2^31 - 2^11).
-> +        */
-> +       return (-(1L << 31) - (1L << 11)) <=3D val &&
-> +               val < ((1L << 31) - (1L << 11));
-> +}
+Seems like something worth to explore if we could remove this confusion.
+
+> 
+>>
+>>> conversion logic. I also added PMD_MASK alignment for RANDOM_ORVALUE,
+>>> because we do have some special bits there in our large pmds. It seems
+>>> to also work w/o that alignment, but it feels a bit wrong):  
+>>
+>> Sure, we can accommodate that.
+>>
+>>>
+>>> @@ -731,26 +731,26 @@ static void __init hugetlb_advanced_test
+>>>                                           unsigned long vaddr, pgprot_t prot)
+>>>  {
+>>>         struct page *page = pfn_to_page(pfn);
+>>> -       pte_t pte = READ_ONCE(*ptep);
+>>> +       pte_t pte;
+>>>
+>>> -       pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
+>>> +       pte = pte_mkhuge(mk_pte_phys(RANDOM_ORVALUE & PMD_MASK, prot));  
+>>
+>> So that keeps the existing value in 'ptep' pointer at bay and instead
+>> construct a PTE from scratch. I would rather have READ_ONCE(*ptep) at
+>> least provide the seed that can be ORed with RANDOM_ORVALUE before
+>> being masked with PMD_MASK. Do you see any problem ?
+> 
+> Yes, unfortunately. The problem is that the resulting pte is not marked
+> as present. The conversion pte -> (huge) pmd, which is done in
+> set_huge_pte_at() for s390, will establish an empty pmd for non-present
+> ptes, all the RANDOM_ORVALUE stuff is lost. And a subsequent
+> huge_ptep_get() will not result in the same original pte value. If you
+
+Ohh.
+
+> want to preserve and check the RANDOM_ORVALUE, it has to be a present
+> pte, hence the mk_pte(_phys).
+
+Understood and mk_pte() is also available on all platforms.
+
+> 
+>>
+>> Some thing like this instead.
+>>
+>> pte_t pte = READ_ONCE(*ptep);
+>> pte = pte_mkhuge(__pte((pte_val(pte) | RANDOM_ORVALUE) & PMD_MASK));
+>>
+>> We cannot use mk_pte_phys() as it is defined only on some platforms
+>> without any generic fallback for others.
+> 
+> Oh, didn't know that, sorry. What about using mk_pte() instead, at least
+> it would result in a present pte:
+> 
+> pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));
+
+Lets use mk_pte() here but can we do this instead
+
+paddr = (__pfn_to_phys(pfn) | RANDOM_ORVALUE) & PMD_MASK;
+pte = pte_mkhuge(mk_pte(phys_to_page(paddr), prot));
+
+> 
+> And if you also want to do some with the existing value, which seems
+> to be an empty pte, then maybe just check if writing and reading that
+> value with set_huge_pte_at() / huge_ptep_get() returns the same,
+> i.e. initially w/o RANDOM_ORVALUE.
+> 
+> So, in combination, like this (BTW, why is the barrier() needed, it
+> is not used for the other set_huge_pte_at() calls later?):
+
+Ahh missed, will add them. Earlier we faced problem without it after
+set_pte_at() for a test on powerpc (64) platform. Hence just added it
+here to be extra careful.
+
+> 
+> @@ -733,24 +733,28 @@ static void __init hugetlb_advanced_test
+>         struct page *page = pfn_to_page(pfn);
+>         pte_t pte = READ_ONCE(*ptep);
+>  
+> -       pte = __pte(pte_val(pte) | RANDOM_ORVALUE);
+> +       set_huge_pte_at(mm, vaddr, ptep, pte);
+> +       WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
 > +
->  static void emit_imm(u8 rd, s64 val, struct rv_jit_context *ctx)
->  {
->         /* Note that the immediate from the add is sign-extended,
-> @@ -380,20 +390,24 @@ static void emit_sext_32_rd(u8 *rd, struct rv_jit_c=
-ontext *ctx)
->         *rd =3D RV_REG_T2;
->  }
->
-> -static void emit_jump_and_link(u8 rd, s64 rvoff, bool force_jalr,
-> -                              struct rv_jit_context *ctx)
-> +static int emit_jump_and_link(u8 rd, s64 rvoff, bool force_jalr,
-> +                             struct rv_jit_context *ctx)
->  {
->         s64 upper, lower;
->
->         if (rvoff && is_21b_int(rvoff) && !force_jalr) {
->                 emit(rv_jal(rd, rvoff >> 1), ctx);
-> -               return;
-> +               return 0;
-> +       } else if (in_auipc_jalr_range(rvoff)) {
-> +               upper =3D (rvoff + (1 << 11)) >> 12;
-> +               lower =3D rvoff & 0xfff;
-> +               emit(rv_auipc(RV_REG_T1, upper), ctx);
-> +               emit(rv_jalr(rd, RV_REG_T1, lower), ctx);
-> +               return 0;
->         }
->
-> -       upper =3D (rvoff + (1 << 11)) >> 12;
-> -       lower =3D rvoff & 0xfff;
-> -       emit(rv_auipc(RV_REG_T1, upper), ctx);
-> -       emit(rv_jalr(rd, RV_REG_T1, lower), ctx);
-> +       pr_err("bpf-jit: target offset 0x%llx is out of range\n", rvoff);
-> +       return -ERANGE;
->  }
->
->  static bool is_signed_bpf_cond(u8 cond)
-> @@ -407,18 +421,16 @@ static int emit_call(bool fixed, u64 addr, struct r=
-v_jit_context *ctx)
->         s64 off =3D 0;
->         u64 ip;
->         u8 rd;
-> +       int ret;
->
->         if (addr && ctx->insns) {
->                 ip =3D (u64)(long)(ctx->insns + ctx->ninsns);
->                 off =3D addr - ip;
-> -               if (!is_32b_int(off)) {
-> -                       pr_err("bpf-jit: target call addr %pK is out of r=
-ange\n",
-> -                              (void *)addr);
-> -                       return -ERANGE;
-> -               }
->         }
->
-> -       emit_jump_and_link(RV_REG_RA, off, !fixed, ctx);
-> +       ret =3D emit_jump_and_link(RV_REG_RA, off, !fixed, ctx);
-> +       if (ret)
-> +               return ret;
->         rd =3D bpf_to_rv_reg(BPF_REG_0, ctx);
->         emit(rv_addi(rd, RV_REG_A0, 0), ctx);
->         return 0;
-> @@ -429,7 +441,7 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, st=
-ruct rv_jit_context *ctx,
->  {
->         bool is64 =3D BPF_CLASS(insn->code) =3D=3D BPF_ALU64 ||
->                     BPF_CLASS(insn->code) =3D=3D BPF_JMP;
-> -       int s, e, rvoff, i =3D insn - ctx->prog->insnsi;
-> +       int s, e, rvoff, ret, i =3D insn - ctx->prog->insnsi;
->         struct bpf_prog_aux *aux =3D ctx->prog->aux;
->         u8 rd =3D -1, rs =3D -1, code =3D insn->code;
->         s16 off =3D insn->off;
-> @@ -699,7 +711,9 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, st=
-ruct rv_jit_context *ctx,
->         /* JUMP off */
->         case BPF_JMP | BPF_JA:
->                 rvoff =3D rv_offset(i, off, ctx);
-> -               emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx);
-> +               ret =3D emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx=
-);
-> +               if (ret)
-> +                       return ret;
->                 break;
->
->         /* IF (dst COND src) JUMP off */
-> @@ -801,7 +815,6 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, st=
-ruct rv_jit_context *ctx,
->         case BPF_JMP | BPF_CALL:
->         {
->                 bool fixed;
-> -               int ret;
->                 u64 addr;
->
->                 mark_call(ctx);
-> @@ -826,7 +839,9 @@ int bpf_jit_emit_insn(const struct bpf_insn *insn, st=
-ruct rv_jit_context *ctx,
->                         break;
->
->                 rvoff =3D epilogue_offset(ctx);
-> -               emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx);
-> +               ret =3D emit_jump_and_link(RV_REG_ZERO, rvoff, false, ctx=
-);
-> +               if (ret)
-> +                       return ret;
->                 break;
->
->         /* dst =3D imm64 */
-> --
-> 2.17.1
->
+> +       pte = pte_mkhuge(mk_pte(phys_to_page(RANDOM_ORVALUE & PMD_MASK), prot));
+>         set_huge_pte_at(mm, vaddr, ptep, pte);
+>         barrier();
+>         WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
+> 
+> This would actually add a new test "write empty pte with
+> set_huge_pte_at(), then verify with huge_ptep_get()", which happens
+> to trigger a warning on s390 :-)
+
+On arm64 as well which checks for pte_present() in set_huge_pte_at().
+But PTE present check is not really present in each set_huge_pte_at()
+implementation especially without __HAVE_ARCH_HUGE_SET_HUGE_PTE_AT.
+Hence wondering if we should add this new test here which will keep
+giving warnings on s390 and arm64 (at the least).
+
+> 
+> That (new) warning actually points to misbehavior on s390, we do not
+> write a correct empty pmd in this case, but one that is empty and also
+> marked as large. huge_ptep_get() will then not correctly recognize it
+> as empty and do wrong conversion. It is also not consistent with
+> huge_ptep_get_and_clear(), where we write the empty pmd w/o marking
+> as large. Last but not least it would also break our pmd_protnone()
+> logic (see below). Another nice finding on s390 :-)
+
+:) 
+
+> 
+> I don't think this has any effect in practice (yet), but I will post a
+> fix for that, just in case you will add / change this test.
+
+Okay.
+
+> 
+>>
+>>>         set_huge_pte_at(mm, vaddr, ptep, pte);
+>>>         barrier();
+>>>         WARN_ON(!pte_same(pte, huge_ptep_get(ptep)));
+>>>         huge_pte_clear(mm, vaddr, ptep, PMD_SIZE);
+>>> -       pte = READ_ONCE(*ptep);
+>>> +       pte = huge_ptep_get(ptep);
+>>>         WARN_ON(!huge_pte_none(pte));
+>>>  
+>>>         pte = mk_huge_pte(page, prot);
+>>>         set_huge_pte_at(mm, vaddr, ptep, pte);
+>>>         huge_ptep_set_wrprotect(mm, vaddr, ptep);
+>>> -       pte = READ_ONCE(*ptep);
+>>> +       pte = huge_ptep_get(ptep);
+>>>         WARN_ON(huge_pte_write(pte));
+>>>  
+>>>         pte = mk_huge_pte(page, prot);
+>>>         set_huge_pte_at(mm, vaddr, ptep, pte);
+>>>         huge_ptep_get_and_clear(mm, vaddr, ptep);
+>>> -       pte = READ_ONCE(*ptep);
+>>> +       pte = huge_ptep_get(ptep);
+>>>         WARN_ON(!huge_pte_none(pte));
+>>>  
+>>>         pte = mk_huge_pte(page, prot);
+>>> @@ -759,7 +759,7 @@ static void __init hugetlb_advanced_test
+>>>         pte = huge_pte_mkwrite(pte);
+>>>         pte = huge_pte_mkdirty(pte);
+>>>         huge_ptep_set_access_flags(vma, vaddr, ptep, pte, 1);
+>>> -       pte = READ_ONCE(*ptep);
+>>> +       pte = huge_ptep_get(ptep);
+>>>         WARN_ON(!(huge_pte_write(pte) && huge_pte_dirty(pte)));
+>>>  }
+>>>  #else
+>>>
+>>> 3) The pmd_protnone_tests() has an issue, because it passes a pmd to
+>>> pmd_protnone() which has not been marked as large. We check for large
+>>> pmd in the s390 implementation of pmd_protnone(), and will fail if a
+>>> pmd is not large. We had similar issues before, in other helpers, where
+>>> I changed the logic on s390 to not require the pmd large check, but I'm
+>>> not so sure in this case. Is there a valid use case for doing
+>>> pmd_protnone() on "normal" pmds? Or could this be changed like this:  
+>>
+>> That is a valid question. IIUC, all existing callers for pmd_protnone()
+>> ensure that it is indeed a huge PMD. But even assuming otherwise should
+>> not the huge PMD requirement get checked in the caller itself rather than
+>> in the arch helper which is just supposed to check the existence of the
+>> dedicated PTE bit(s) for this purpose. Purely from a helper perspective
+>> pmd_protnone() should not really care about being large even though it
+>> might never get used without one.
+>>
+>> Also all platforms (except s390) derive the pmd_protnone() from their
+>> respective pte_protnone(). I wonder why should s390 be any different
+>> unless it is absolutely necessary.
+> 
+> This is again because of our different page table entry layouts for
+> pte/pmd and (large) pmd. The bits we check for pmd_protnone() are
+> not valid for normal pmd/pte, and we would return undefined result for
+> normal entries.
+> 
+> Of course, we could rely on nobody calling pmd_protnone() on normal
+> pmds, but in this case we also use pmd_large() check in pmd_protnone()
+> for indication if the pmd is present. W/o that, we would return
+> true for empty pmds, that doesn't sound right. Not sure if we also
+> want to rely on nobody calling pmd_protnone() on empty pmds.
+
+That might be problematic.
+
+> 
+> Anyway, if in practice it is not correct to use pmd_protnone()
+> on normal pmds, then I would suggest that your tests should also
+> not do / test it. And I strongly assume that it is not correct, at
+> least I cannot think of a valid case, and of course s390 would
+> already be broken if there was such a case.
+
+Okay, will use huge PMD here as you had suggested earlier.
+
+> 
+> Regards,
+> Gerald
+> 
+> 
 
