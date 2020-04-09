@@ -2,61 +2,128 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 634741A2D37
-	for <lists+linux-riscv@lfdr.de>; Thu,  9 Apr 2020 03:13:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 131821A2D92
+	for <lists+linux-riscv@lfdr.de>; Thu,  9 Apr 2020 04:20:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HZNygAdDyze41zEMgXS+Rl5FVegsQH7BsRnE747mhy4=; b=t2Tla4A5a/MyKr
-	HpIp6LLOLaeCkKofwDtTESRFaeJKInunwrG2tUsN+D/9WTKDcUl4azs/fqM3HMVvVmfMzSMoGdgSm
-	glruBteRE4F1+m+pp42x3QrqUbt1sF9k1mUAsCDAYbY8FE+VtQ2CNMQibtqy53+zzoZJQRwVJKkG9
-	GeP3MebMyKvPbcOklULUZIWUU5oQ35OnjAyhcQ1abYalMFcc1Jc+izFCEI+mzZaNBQjPL0qFyShEQ
-	3d0tKz+DnuuthmzF+rBYpfiNmhu52h6xPVyVZco/GCQ1uAo/VbFenzoerH/F4hEydT9wgps8Ir2NE
-	mXKfi+6SBKjZn6jdTKoQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	 bh=OyYmchljSrYwFWsPWw3T6qqG/SvqdD9msdv6KSY0t0k=; b=dSELYQjSv/2/LYIzUvd+8alNT
+	5sx9/okcu7r29RxYBKt7T8Fo644Embmeqp8rwBFnPnbhEtmZl+hUMHvi7xFU+iIQ41L/skZllAnay
+	jr9QXBtJ2JqUnEjihO5RoKG7RqJKoqonM4ed0f6h92ih1a9jbh5Ggh6E/tfZxTgtiGq1BNYXV6AeB
+	i53IGQD4vVkoEV0Q6I61EFzLhOgtYbtJuh0jWrWxzvgFYIs4w7rbycuSav2ed4TxGjvKocXcFDjMj
+	4GPyMLW4HWWtofT8z10JRRvWTxfi020SQ7W6w4DsQf8wi5ZaZmWsBlWj9FpLpFcr9wI6WYfqoMzlY
+	ZotHnCBKw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMLkZ-0005jK-A5; Thu, 09 Apr 2020 01:12:59 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jMMnT-0000Qx-Tr; Thu, 09 Apr 2020 02:20:03 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMLkV-0005iv-G4
- for linux-riscv@lists.infradead.org; Thu, 09 Apr 2020 01:12:57 +0000
-Received: from devnote2 (NE2965lan1.rev.em-net.ne.jp [210.141.244.193])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A6B9820857;
- Thu,  9 Apr 2020 01:12:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586394774;
- bh=2zHKbO+Qsg+s3myu/Dctq5cWqHCIJBg0kO1iky7QXUo=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=UX3gqTpZOI9MYmL0qiIW7VaH1bhW0NX8Dmp38ScnlkF4PnEkXzJiNqgafCx2SSn8G
- pDQiIW+Tz7eGLBFzj82BSuPDtQ4DKly7skQgNZRpw63NYgQOg1wjFzTSQrC95GqwWO
- hAla2cAViXndNZvKEaEe0HBwMEDgqbgL/k4y/0oA=
-Date: Thu, 9 Apr 2020 10:12:50 +0900
-From: Masami Hiramatsu <mhiramat@kernel.org>
-To: Zong Li <zong.li@sifive.com>
-Subject: Re: [PATCH v5 2/9] riscv: introduce interfaces to patch kernel code
-Message-Id: <20200409101250.211b698d63d9dade595aaac8@kernel.org>
-In-Reply-To: <6f145470ffdf83b303ecd83db4f6e06477b61220.1586332296.git.zong.li@sifive.com>
-References: <cover.1586332296.git.zong.li@sifive.com>
- <6f145470ffdf83b303ecd83db4f6e06477b61220.1586332296.git.zong.li@sifive.com>
-X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+ id 1jMMnP-0000KI-FS
+ for linux-riscv@lists.infradead.org; Thu, 09 Apr 2020 02:20:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1586398799; x=1617934799;
+ h=from:to:cc:subject:date:message-id:references:
+ content-transfer-encoding:mime-version;
+ bh=YzG7rmqxbgo+xOn9Z51LT88OwKxkgShlhlycuEX6tw4=;
+ b=mgOVLnQ2JG4qB6O3WgL3vW5CfnleL7HkPfpO3g5eENfc8pHq4ucW2AjL
+ 5+y1mQQbKd7LCDLr+f1VCkZM9TC3M9/vCFIf6rWOJzFXKs2aZap+kRKje
+ dRSTOkkP6q3+qo/pjsufYHASlFsOO5i1SsXodQlsicxzPzHEBwlQFDdGk
+ aO6jWmsJJ2ecJfdPRGdnYxCd3UZDxzgg8VTJQWVFgZvJxVbXV6rZ3YA/2
+ 4gv9Q9n8uA6wJFraSXP9+BF287/AG5jh8B6hWxwUFCDtUTsD8Vt47yZWq
+ SPCUB3+1IYG1nRyUijd5V8iGUX4nTuwV5BvShALKsQfhDzl0H4lD+MkLh Q==;
+IronPort-SDR: BJs8kYPdsJspfDFtEJEJ8hSkuyizcrK/Jw34ddHXvbOHEoC/b74gZmDYTIwAqded6sSt8naRbG
+ KpO98S/CG4qTJ+ps4wOYdfkaSg51SJwz1kNOWEXxcaPxAqPj7hgJZ6maCVuOWDeCEAHKeu0S0R
+ tUdqpHStSZhqCdzv1RuFuZtvWXx8szfS6+Fuse4X01urqDFmNjqrbWV3Gif+iKkyRvLUjq+hgq
+ 8cKKNnHMuyeIKOxJhZCePCQKr7prZGyyLe8iwfbrhmnKAfQSXV2q6e1/nG16jLJv+T68w3iF/B
+ Wk0=
+X-IronPort-AV: E=Sophos;i="5.72,361,1580745600"; d="scan'208";a="243485008"
+Received: from mail-bn8nam11lp2174.outbound.protection.outlook.com (HELO
+ NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.174])
+ by ob1.hgst.iphmx.com with ESMTP; 09 Apr 2020 10:19:50 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jjJ0TlwpRKQ+CUxeccR0PfOZC7PjWgW/xrYKZlaxHTVn3HQ2YSGLhuK9yXsMPZA9O71EeEkxMMJfDx9Xq/tfUC4PhYnD3KKEcw3CO7zixmC1fRuo7O0+XVue8Q0NGC05nPWlGqLQRgNFN3DYBqYZfd4zlS2YinmGo4eyxEtzVCFGOZncbIZ7VaZnfR4pAMEHRWXUxQ55wg+1zhIWKVdjN2KvJ/Lp7E+Lf2Z0L7YKfmkRBQ985QSMqgHJsokTtLluBe9rgr9/KeUBnma19MnbziYevyOSexFkLiJatCY/6Y9JdZJc3QqkWHrirT9BIs+KytpSlsd4X1f4h5RXfc0GuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OyYmchljSrYwFWsPWw3T6qqG/SvqdD9msdv6KSY0t0k=;
+ b=AaD+kQ0SRWP3uVo0I7dc7LVieLobVJuP7RN4VdoBTL43rO8/Z46L7zyXP9yVOsUhvIyqVOPAtrKNixI3N++wWE0mHOqpl3wOHCWZscqzUPSSxI1MgXTRGlKGpTsTrQv/Tu4yfA68UtE+F5dNMjSkcSG1+hOjnUSH+dZ+lZ5gVw10sMSlQy38ZWRFBnaGABFalKeyPGR1oJB79exvRL9ZN6BQuws6nxQEXX33XrUeSnpqRnX03a6b6L7ZBmHsJg/okO1NJBbzT7+GhQkhFrvl+xyRxYv6WNhlx45WIYF75x+KjukKGSf0FOzF/i7MRt2SOoAUe1Sfg4j2GhRD+ZI/aA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OyYmchljSrYwFWsPWw3T6qqG/SvqdD9msdv6KSY0t0k=;
+ b=DjRO6oCCuhZ0/T06yI+x5yBg9akL1Ivndy6cdaoWg+k1wfsxjS9J5Ezc/h6hkji6rSkaITh/r7tlOsorxwCu54GMsxJLY8an/rjyDpZ/W4ht0v3eezmzYkx+WszCSZjLx3hkabrLjaiP8GqYwtT9ZtdT8L6HfcxUFKIn4EqIRS4=
+Received: from BY5PR04MB6900.namprd04.prod.outlook.com (2603:10b6:a03:229::20)
+ by BY5PR04MB6551.namprd04.prod.outlook.com (2603:10b6:a03:1c6::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15; Thu, 9 Apr
+ 2020 02:19:49 +0000
+Received: from BY5PR04MB6900.namprd04.prod.outlook.com
+ ([fe80::b574:3071:da2f:7606]) by BY5PR04MB6900.namprd04.prod.outlook.com
+ ([fe80::b574:3071:da2f:7606%5]) with mapi id 15.20.2900.015; Thu, 9 Apr 2020
+ 02:19:49 +0000
+From: Damien Le Moal <Damien.LeMoal@wdc.com>
+To: Palmer Dabbelt <palmer@dabbelt.com>, "linux-riscv@lists.infradead.org"
+ <linux-riscv@lists.infradead.org>
+Subject: Re: [PATCH 2/3] RISC-V: K210: Add a built-in device tree
+Thread-Topic: [PATCH 2/3] RISC-V: K210: Add a built-in device tree
+Thread-Index: AQHWDcb9T8HSxiRZJkuoT6lhoGWhdA==
+Date: Thu, 9 Apr 2020 02:19:49 +0000
+Message-ID: <BY5PR04MB6900B93ACA9029A404485BBFE7C10@BY5PR04MB6900.namprd04.prod.outlook.com>
+References: <20200408165802.167546-1-palmer@dabbelt.com>
+ <20200408165802.167546-3-palmer@dabbelt.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Damien.LeMoal@wdc.com; 
+x-originating-ip: [129.253.182.57]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 132dc69e-cb7e-4f18-859a-08d7dc2c7ac8
+x-ms-traffictypediagnostic: BY5PR04MB6551:
+x-microsoft-antispam-prvs: <BY5PR04MB65518EA40212729CD52C6D95E7C10@BY5PR04MB6551.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:3383;
+x-forefront-prvs: 0368E78B5B
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6900.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(4636009)(376002)(366004)(346002)(39860400002)(396003)(136003)(7696005)(316002)(33656002)(53546011)(2906002)(8676002)(86362001)(8936002)(110136005)(4326008)(81156014)(81166007)(66946007)(71200400001)(76116006)(64756008)(66556008)(66446008)(66476007)(6506007)(478600001)(186003)(26005)(52536014)(9686003)(55016002)(5660300002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Bfl5PiU7ahNxXMXnUrXAcDZHXbwNdH0KRk97DPeK4BhIay74kfbqIwSvqeawc2dvtjHR3NV1XyYSptJISFAPENubi0yyD42kBH5S/qbNyg9Glj1E2C6ZqQoY5eY9wHB6Ui545CMuOeVtx4tTUtVW4SHokTCsW8GcdtnXMqIK8BxniOEAYKhqgdV2r3iuMXoH73cPI25vrm0zuiaO3RcS6FKCBIOMftMV+oRhESuP1QI2Po48bZF0JI1dTKsSsC66kXSbuORipg9BOh0IkPbzSu9TD1e+IQy9YXmFwilyQMcamC81daHMdNBPDM27dOjWjTZgjzr9vzz00pdw3lIDt7IRe2pVd8B9bQNkW0V9fu3EHYZi2j5083N5tddKDCaD04HuyUAgcqT+An3dAHqTX5ZIOenuoX54NOu0f2soV5iVMBCRJ5RWxYzGjZIkK9Bf
+x-ms-exchange-antispam-messagedata: dMpVNlxcO8HP8Yzzf7XHSllUBm5psC5QkKM5SVSob+gQik82RFFdVt5qd3G4CvIWyZkBPB7eoKen+0kCvCy08FmThJVv5Q0hkA6rxpzkyC0xnuZF5B0XpN3z2OLCWO+H5T19PFAxIT7N0scriDdHQQ==
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 132dc69e-cb7e-4f18-859a-08d7dc2c7ac8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Apr 2020 02:19:49.0767 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: vEDJJAd8vvNNhrjqT3Om+I6ATMUI4Ya+3LH5+PP6AQVnSU0O8rplyEOGTMEl4WogoVhPzzUoRtKtrLv+YIVlCg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6551
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_181255_578936_A02CD94E 
-X-CRM114-Status: GOOD (  21.23  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200408_191959_613043_C99D3159 
+X-CRM114-Status: GOOD (  15.35  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [68.232.141.245 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -66,7 +133,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,239 +144,111 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu, palmer@dabbelt.com,
- linux-kernel@vger.kernel.org, paul.walmsley@sifive.com
+Cc: Palmer Dabbelt <palmerdabbelt@google.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed,  8 Apr 2020 15:56:57 +0800
-Zong Li <zong.li@sifive.com> wrote:
-
-> On strict kernel memory permission, we couldn't patch code without
-> writable permission. Preserve two holes in fixmap area, so we can map
-> the kernel code temporarily to fixmap area, then patch the instructions.
-> 
-> We need two pages here because we support the compressed instruction, so
-> the instruction might be align to 2 bytes. When patching the 32-bit
-> length instruction which is 2 bytes alignment, it will across two pages.
-> 
-> Introduce two interfaces to patch kernel code:
-> riscv_patch_text_nosync:
->  - patch code without synchronization, it's caller's responsibility to
->    synchronize all CPUs if needed.
-> riscv_patch_text:
->  - patch code and always synchronize with stop_machine()
-> 
-
-Looks good to me.
-
-Reviewed-by: Masami Hiramatsu <mhiramat@kernel.org>
-
-Thank you,
-
-> Signed-off-by: Zong Li <zong.li@sifive.com>
-> Suggested-by: Masami Hiramatsu <mhiramat@kernel.org>
-> ---
->  arch/riscv/include/asm/fixmap.h |   2 +
->  arch/riscv/include/asm/patch.h  |  12 +++
->  arch/riscv/kernel/Makefile      |   4 +-
->  arch/riscv/kernel/patch.c       | 128 ++++++++++++++++++++++++++++++++
->  4 files changed, 145 insertions(+), 1 deletion(-)
->  create mode 100644 arch/riscv/include/asm/patch.h
->  create mode 100644 arch/riscv/kernel/patch.c
-> 
-> diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
-> index 42d2c42f3cc9..2368d49eb4ef 100644
-> --- a/arch/riscv/include/asm/fixmap.h
-> +++ b/arch/riscv/include/asm/fixmap.h
-> @@ -27,6 +27,8 @@ enum fixed_addresses {
->  	FIX_FDT = FIX_FDT_END + FIX_FDT_SIZE / PAGE_SIZE - 1,
->  	FIX_PTE,
->  	FIX_PMD,
-> +	FIX_TEXT_POKE1,
-> +	FIX_TEXT_POKE0,
->  	FIX_EARLYCON_MEM_BASE,
->  	__end_of_fixed_addresses
->  };
-> diff --git a/arch/riscv/include/asm/patch.h b/arch/riscv/include/asm/patch.h
-> new file mode 100644
-> index 000000000000..9a7d7346001e
-> --- /dev/null
-> +++ b/arch/riscv/include/asm/patch.h
-> @@ -0,0 +1,12 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (C) 2020 SiFive
-> + */
-> +
-> +#ifndef _ASM_RISCV_PATCH_H
-> +#define _ASM_RISCV_PATCH_H
-> +
-> +int patch_text_nosync(void *addr, const void *insns, size_t len);
-> +int patch_text(void *addr, u32 insn);
-> +
-> +#endif /* _ASM_RISCV_PATCH_H */
-> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-> index f40205cb9a22..d189bd3d8501 100644
-> --- a/arch/riscv/kernel/Makefile
-> +++ b/arch/riscv/kernel/Makefile
-> @@ -4,7 +4,8 @@
->  #
->  
->  ifdef CONFIG_FTRACE
-> -CFLAGS_REMOVE_ftrace.o = -pg
-> +CFLAGS_REMOVE_ftrace.o	= -pg
-> +CFLAGS_REMOVE_patch.o	= -pg
->  endif
->  
->  extra-y += head.o
-> @@ -26,6 +27,7 @@ obj-y	+= traps.o
->  obj-y	+= riscv_ksyms.o
->  obj-y	+= stacktrace.o
->  obj-y	+= cacheinfo.o
-> +obj-y	+= patch.o
->  obj-$(CONFIG_MMU) += vdso.o vdso/
->  
->  obj-$(CONFIG_RISCV_M_MODE)	+= clint.o
-> diff --git a/arch/riscv/kernel/patch.c b/arch/riscv/kernel/patch.c
-> new file mode 100644
-> index 000000000000..f16466123947
-> --- /dev/null
-> +++ b/arch/riscv/kernel/patch.c
-> @@ -0,0 +1,128 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (C) 2020 SiFive
-> + */
-> +
-> +#include <linux/mm.h>
-> +#include <linux/memory.h>
-> +#include <linux/uaccess.h>
-> +#include <linux/spinlock.h>
-> +#include <linux/stop_machine.h>
-> +#include <asm/fixmap.h>
-> +#include <asm/kprobes.h>
-> +#include <asm/cacheflush.h>
-> +
-> +struct patch_insn_patch {
-> +	void *addr;
-> +	u32 insn;
-> +	atomic_t cpu_count;
-> +};
-> +
-> +#ifdef CONFIG_MMU
-> +static void *patch_map(void *addr, int fixmap)
-> +{
-> +	uintptr_t uintaddr = (uintptr_t) addr;
-> +	struct page *page;
-> +
-> +	if (core_kernel_text(uintaddr))
-> +		page = phys_to_page(__pa_symbol(addr));
-> +	else if (IS_ENABLED(CONFIG_STRICT_MODULE_RWX))
-> +		page = vmalloc_to_page(addr);
-> +	else
-> +		return addr;
-> +
-> +	BUG_ON(!page);
-> +
-> +	return (void *)set_fixmap_offset(fixmap, page_to_phys(page) +
-> +					 (uintaddr & ~PAGE_MASK));
-> +}
-> +NOKPROBE_SYMBOL(patch_map);
-> +
-> +static void patch_unmap(int fixmap)
-> +{
-> +	clear_fixmap(fixmap);
-> +}
-> +NOKPROBE_SYMBOL(patch_unmap);
-> +
-> +static int patch_insn_write(void *addr, const void *insn, size_t len)
-> +{
-> +	void *waddr = addr;
-> +	bool across_pages = (((uintptr_t) addr & ~PAGE_MASK) + len) > PAGE_SIZE;
-> +	int ret;
-> +
-> +	/*
-> +	 * Before reaching here, it was expected to lock the text_mutex
-> +	 * already, so we don't need to give another lock here and could
-> +	 * ensure that it was safe between each cores.
-> +	 */
-> +	lockdep_assert_held(&text_mutex);
-> +
-> +	if (across_pages)
-> +		patch_map(addr + len, FIX_TEXT_POKE1);
-> +
-> +	waddr = patch_map(addr, FIX_TEXT_POKE0);
-> +
-> +	ret = probe_kernel_write(waddr, insn, len);
-> +
-> +	patch_unmap(FIX_TEXT_POKE0);
-> +
-> +	if (across_pages)
-> +		patch_unmap(FIX_TEXT_POKE1);
-> +
-> +	return ret;
-> +}
-> +NOKPROBE_SYMBOL(patch_insn_write);
-> +#else
-> +static int patch_insn_write(void *addr, const void *insn, size_t len)
-> +{
-> +	return probe_kernel_write(addr, insn, len);
-> +}
-> +NOKPROBE_SYMBOL(patch_insn_write);
-> +#endif /* CONFIG_MMU */
-> +
-> +int patch_text_nosync(void *addr, const void *insns, size_t len)
-> +{
-> +	u32 *tp = addr;
-> +	int ret;
-> +
-> +	ret = patch_insn_write(tp, insns, len);
-> +
-> +	if (!ret)
-> +		flush_icache_range((uintptr_t) tp, (uintptr_t) tp + len);
-> +
-> +	return ret;
-> +}
-> +NOKPROBE_SYMBOL(patch_text_nosync);
-> +
-> +static int patch_text_cb(void *data)
-> +{
-> +	struct patch_insn_patch *patch = data;
-> +	int ret = 0;
-> +
-> +	if (atomic_inc_return(&patch->cpu_count) == 1) {
-> +		ret =
-> +		    patch_text_nosync(patch->addr, &patch->insn,
-> +					    GET_INSN_LENGTH(patch->insn));
-> +		atomic_inc(&patch->cpu_count);
-> +	} else {
-> +		while (atomic_read(&patch->cpu_count) <= num_online_cpus())
-> +			cpu_relax();
-> +		smp_mb();
-> +	}
-> +
-> +	return ret;
-> +}
-> +NOKPROBE_SYMBOL(patch_text_cb);
-> +
-> +int patch_text(void *addr, u32 insn)
-> +{
-> +	struct patch_insn_patch patch = {
-> +		.addr = addr,
-> +		.insn = insn,
-> +		.cpu_count = ATOMIC_INIT(0),
-> +	};
-> +
-> +	return stop_machine_cpuslocked(patch_text_cb,
-> +				       &patch, cpu_online_mask);
-> +}
-> +NOKPROBE_SYMBOL(patch_text);
-> -- 
-> 2.26.0
-> 
-
-
--- 
-Masami Hiramatsu <mhiramat@kernel.org>
+On 2020/04/09 1:58, Palmer Dabbelt wrote:=0A=
+> From: Palmer Dabbelt <palmerdabbelt@google.com>=0A=
+> =0A=
+> The K210's bootloader doesn't provide a device tree, so we must provide=
+=0A=
+> our own.=0A=
+> =0A=
+> FIXME: I don't actually know the unique IDs on the K210.=0A=
+=0A=
+OK. I will test.=0A=
+=0A=
+> =0A=
+> Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>=0A=
+> ---=0A=
+>  arch/riscv/Kconfig.socs               | 13 ++++++++++++-=0A=
+>  arch/riscv/boot/dts/kendryte/Makefile |  2 +-=0A=
+>  arch/riscv/kernel/builtin-dtb-table.c |  5 +++++=0A=
+>  arch/riscv/kernel/builtin-dtb.S       |  6 ++++++=0A=
+>  4 files changed, 24 insertions(+), 2 deletions(-)=0A=
+> =0A=
+> diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs=0A=
+> index a843100124ae..49e953f45e1f 100644=0A=
+> --- a/arch/riscv/Kconfig.socs=0A=
+> +++ b/arch/riscv/Kconfig.socs=0A=
+> @@ -37,11 +37,22 @@ config SOC_VIRT=0A=
+>  config SOC_KENDRYTE=0A=
+>  	bool "Kendryte K210 SoC"=0A=
+>  	depends on !MMU=0A=
+> -	select BUILTIN_DTB=0A=
+=0A=
+Since SOC_KENDRYTE_K210_DTB_BUILTIN depends on BUILTIN_DTB, you need to kee=
+p=0A=
+this select, no ?=0A=
+=0A=
+>  	select SERIAL_SIFIVE if TTY=0A=
+>  	select SERIAL_SIFIVE_CONSOLE if TTY=0A=
+>  	select SIFIVE_PLIC=0A=
+> +	select SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
+>  	help=0A=
+>  	  This enables support for Kendryte K210 SoC platform hardware.=0A=
+>  =0A=
+> +config SOC_KENDRYTE_K210_DTB=0A=
+> +	def_bool y=0A=
+> +	depends on OF=0A=
+=0A=
+This one is used only in the makefile. Why not use SOC_KENDRYTE_K210_DTB_BU=
+ILTIN=0A=
+directly and drop this SOC_KENDRYTE_K210_DTB ?=0A=
+=0A=
+> +=0A=
+> +config SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
+> +	bool "Builtin device tree for the Kendryte K210"=0A=
+> +	depends on BUILTIN_DTB=0A=
+> +	select SOC_KENDRYTE_K210_DTB=0A=
+> +	help=0A=
+> +	  Builds a device tree for the Kendryte K210 into the Linux image.=0A=
+> +=0A=
+>  endmenu=0A=
+> diff --git a/arch/riscv/boot/dts/kendryte/Makefile b/arch/riscv/boot/dts/=
+kendryte/Makefile=0A=
+> index 815444e69e89..01d7eb15673f 100644=0A=
+> --- a/arch/riscv/boot/dts/kendryte/Makefile=0A=
+> +++ b/arch/riscv/boot/dts/kendryte/Makefile=0A=
+> @@ -1,2 +1,2 @@=0A=
+>  # SPDX-License-Identifier: GPL-2.0=0A=
+> -dtb-$(CONFIG_SOC_KENDRYTE) +=3D k210.dtb=0A=
+> +dtb-$(CONFIG_SOC_KENDRYTE_K210_DTB) +=3D k210.dtb=0A=
+> diff --git a/arch/riscv/kernel/builtin-dtb-table.c b/arch/riscv/kernel/bu=
+iltin-dtb-table.c=0A=
+> index 7ad6fe93b8a6..203174ba6f22 100644=0A=
+> --- a/arch/riscv/kernel/builtin-dtb-table.c=0A=
+> +++ b/arch/riscv/kernel/builtin-dtb-table.c=0A=
+> @@ -4,3 +4,8 @@=0A=
+>   */=0A=
+>  =0A=
+>  #include <asm/soc.h>=0A=
+> +=0A=
+> +#ifdef CONFIG_SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
+> +extern void *kendryte_k210_dtb;=0A=
+> +SOC_BUILTIN_DTB_DECLARE(kendryte_k210, 0x0, 0x0, 0x0, kendryte_k210_dtb)=
+;=0A=
+> +#endif=0A=
+> diff --git a/arch/riscv/kernel/builtin-dtb.S b/arch/riscv/kernel/builtin-=
+dtb.S=0A=
+> index 3d459ad86948..b0fd5ca231d7 100644=0A=
+> --- a/arch/riscv/kernel/builtin-dtb.S=0A=
+> +++ b/arch/riscv/kernel/builtin-dtb.S=0A=
+> @@ -1,3 +1,9 @@=0A=
+>  /* SPDX-License-Identifier: GPL-2.0 */=0A=
+>  =0A=
+>  .section .dtb.init.rodata,"a"=0A=
+> +=0A=
+> +#ifdef CONFIG_SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
+> +.global kendryte_k210_dtb=0A=
+> +kendryte_k210_dtb:=0A=
+> +	.incbin "arch/riscv/boot/dts/kendryte/k210.dtb"=0A=
+> +#endif=0A=
+> =0A=
+=0A=
+=0A=
+-- =0A=
+Damien Le Moal=0A=
+Western Digital Research=0A=
 
