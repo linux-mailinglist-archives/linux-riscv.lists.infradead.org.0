@@ -2,137 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 131821A2D92
-	for <lists+linux-riscv@lfdr.de>; Thu,  9 Apr 2020 04:20:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D576D1A2EDC
+	for <lists+linux-riscv@lfdr.de>; Thu,  9 Apr 2020 07:52:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	 bh=OyYmchljSrYwFWsPWw3T6qqG/SvqdD9msdv6KSY0t0k=; b=dSELYQjSv/2/LYIzUvd+8alNT
-	5sx9/okcu7r29RxYBKt7T8Fo644Embmeqp8rwBFnPnbhEtmZl+hUMHvi7xFU+iIQ41L/skZllAnay
-	jr9QXBtJ2JqUnEjihO5RoKG7RqJKoqonM4ed0f6h92ih1a9jbh5Ggh6E/tfZxTgtiGq1BNYXV6AeB
-	i53IGQD4vVkoEV0Q6I61EFzLhOgtYbtJuh0jWrWxzvgFYIs4w7rbycuSav2ed4TxGjvKocXcFDjMj
-	4GPyMLW4HWWtofT8z10JRRvWTxfi020SQ7W6w4DsQf8wi5ZaZmWsBlWj9FpLpFcr9wI6WYfqoMzlY
-	ZotHnCBKw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6Z8RNyudVWRLxFxnbODWGjogEwxc5zKWN5dBUEv80Zk=; b=WP9Uweieh0dAKu
+	OjbCOfenbsUIL7x/l1EyC9CUovMudME8xU25k7ZJ2PHZuWYsyAOd+Mi1UHczxEh5fv6y1ywg77vXc
+	8eyqCCSKgL9Y7a+HVpKQ05ImQ97hZPd4gO2b9OghH//U+FxAgxw9pOX2WRjJH6yRIvbWKk+idsmSX
+	KyEyOKd78A7kD2+ZtL075E5hZJAlL057iFZvACcgATs7YVExJ2NLJdjptk1uGUpABuRBx6mK9azrn
+	qUE36baueML0+Fmh7YiVHcNtVF1ap2dASUS0exEEiogMHDtow9iNIfHb4xaH9uCnLACds1x50eOS7
+	E8HNrfM3bLay14z2tUSA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMMnT-0000Qx-Tr; Thu, 09 Apr 2020 02:20:03 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jMQ6V-00071O-76; Thu, 09 Apr 2020 05:51:55 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMMnP-0000KI-FS
- for linux-riscv@lists.infradead.org; Thu, 09 Apr 2020 02:20:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1586398799; x=1617934799;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=YzG7rmqxbgo+xOn9Z51LT88OwKxkgShlhlycuEX6tw4=;
- b=mgOVLnQ2JG4qB6O3WgL3vW5CfnleL7HkPfpO3g5eENfc8pHq4ucW2AjL
- 5+y1mQQbKd7LCDLr+f1VCkZM9TC3M9/vCFIf6rWOJzFXKs2aZap+kRKje
- dRSTOkkP6q3+qo/pjsufYHASlFsOO5i1SsXodQlsicxzPzHEBwlQFDdGk
- aO6jWmsJJ2ecJfdPRGdnYxCd3UZDxzgg8VTJQWVFgZvJxVbXV6rZ3YA/2
- 4gv9Q9n8uA6wJFraSXP9+BF287/AG5jh8B6hWxwUFCDtUTsD8Vt47yZWq
- SPCUB3+1IYG1nRyUijd5V8iGUX4nTuwV5BvShALKsQfhDzl0H4lD+MkLh Q==;
-IronPort-SDR: BJs8kYPdsJspfDFtEJEJ8hSkuyizcrK/Jw34ddHXvbOHEoC/b74gZmDYTIwAqded6sSt8naRbG
- KpO98S/CG4qTJ+ps4wOYdfkaSg51SJwz1kNOWEXxcaPxAqPj7hgJZ6maCVuOWDeCEAHKeu0S0R
- tUdqpHStSZhqCdzv1RuFuZtvWXx8szfS6+Fuse4X01urqDFmNjqrbWV3Gif+iKkyRvLUjq+hgq
- 8cKKNnHMuyeIKOxJhZCePCQKr7prZGyyLe8iwfbrhmnKAfQSXV2q6e1/nG16jLJv+T68w3iF/B
- Wk0=
-X-IronPort-AV: E=Sophos;i="5.72,361,1580745600"; d="scan'208";a="243485008"
-Received: from mail-bn8nam11lp2174.outbound.protection.outlook.com (HELO
- NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.174])
- by ob1.hgst.iphmx.com with ESMTP; 09 Apr 2020 10:19:50 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jjJ0TlwpRKQ+CUxeccR0PfOZC7PjWgW/xrYKZlaxHTVn3HQ2YSGLhuK9yXsMPZA9O71EeEkxMMJfDx9Xq/tfUC4PhYnD3KKEcw3CO7zixmC1fRuo7O0+XVue8Q0NGC05nPWlGqLQRgNFN3DYBqYZfd4zlS2YinmGo4eyxEtzVCFGOZncbIZ7VaZnfR4pAMEHRWXUxQ55wg+1zhIWKVdjN2KvJ/Lp7E+Lf2Z0L7YKfmkRBQ985QSMqgHJsokTtLluBe9rgr9/KeUBnma19MnbziYevyOSexFkLiJatCY/6Y9JdZJc3QqkWHrirT9BIs+KytpSlsd4X1f4h5RXfc0GuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OyYmchljSrYwFWsPWw3T6qqG/SvqdD9msdv6KSY0t0k=;
- b=AaD+kQ0SRWP3uVo0I7dc7LVieLobVJuP7RN4VdoBTL43rO8/Z46L7zyXP9yVOsUhvIyqVOPAtrKNixI3N++wWE0mHOqpl3wOHCWZscqzUPSSxI1MgXTRGlKGpTsTrQv/Tu4yfA68UtE+F5dNMjSkcSG1+hOjnUSH+dZ+lZ5gVw10sMSlQy38ZWRFBnaGABFalKeyPGR1oJB79exvRL9ZN6BQuws6nxQEXX33XrUeSnpqRnX03a6b6L7ZBmHsJg/okO1NJBbzT7+GhQkhFrvl+xyRxYv6WNhlx45WIYF75x+KjukKGSf0FOzF/i7MRt2SOoAUe1Sfg4j2GhRD+ZI/aA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OyYmchljSrYwFWsPWw3T6qqG/SvqdD9msdv6KSY0t0k=;
- b=DjRO6oCCuhZ0/T06yI+x5yBg9akL1Ivndy6cdaoWg+k1wfsxjS9J5Ezc/h6hkji6rSkaITh/r7tlOsorxwCu54GMsxJLY8an/rjyDpZ/W4ht0v3eezmzYkx+WszCSZjLx3hkabrLjaiP8GqYwtT9ZtdT8L6HfcxUFKIn4EqIRS4=
-Received: from BY5PR04MB6900.namprd04.prod.outlook.com (2603:10b6:a03:229::20)
- by BY5PR04MB6551.namprd04.prod.outlook.com (2603:10b6:a03:1c6::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15; Thu, 9 Apr
- 2020 02:19:49 +0000
-Received: from BY5PR04MB6900.namprd04.prod.outlook.com
- ([fe80::b574:3071:da2f:7606]) by BY5PR04MB6900.namprd04.prod.outlook.com
- ([fe80::b574:3071:da2f:7606%5]) with mapi id 15.20.2900.015; Thu, 9 Apr 2020
- 02:19:49 +0000
-From: Damien Le Moal <Damien.LeMoal@wdc.com>
-To: Palmer Dabbelt <palmer@dabbelt.com>, "linux-riscv@lists.infradead.org"
- <linux-riscv@lists.infradead.org>
-Subject: Re: [PATCH 2/3] RISC-V: K210: Add a built-in device tree
-Thread-Topic: [PATCH 2/3] RISC-V: K210: Add a built-in device tree
-Thread-Index: AQHWDcb9T8HSxiRZJkuoT6lhoGWhdA==
-Date: Thu, 9 Apr 2020 02:19:49 +0000
-Message-ID: <BY5PR04MB6900B93ACA9029A404485BBFE7C10@BY5PR04MB6900.namprd04.prod.outlook.com>
-References: <20200408165802.167546-1-palmer@dabbelt.com>
- <20200408165802.167546-3-palmer@dabbelt.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Damien.LeMoal@wdc.com; 
-x-originating-ip: [129.253.182.57]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 132dc69e-cb7e-4f18-859a-08d7dc2c7ac8
-x-ms-traffictypediagnostic: BY5PR04MB6551:
-x-microsoft-antispam-prvs: <BY5PR04MB65518EA40212729CD52C6D95E7C10@BY5PR04MB6551.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:3383;
-x-forefront-prvs: 0368E78B5B
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6900.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(4636009)(376002)(366004)(346002)(39860400002)(396003)(136003)(7696005)(316002)(33656002)(53546011)(2906002)(8676002)(86362001)(8936002)(110136005)(4326008)(81156014)(81166007)(66946007)(71200400001)(76116006)(64756008)(66556008)(66446008)(66476007)(6506007)(478600001)(186003)(26005)(52536014)(9686003)(55016002)(5660300002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Bfl5PiU7ahNxXMXnUrXAcDZHXbwNdH0KRk97DPeK4BhIay74kfbqIwSvqeawc2dvtjHR3NV1XyYSptJISFAPENubi0yyD42kBH5S/qbNyg9Glj1E2C6ZqQoY5eY9wHB6Ui545CMuOeVtx4tTUtVW4SHokTCsW8GcdtnXMqIK8BxniOEAYKhqgdV2r3iuMXoH73cPI25vrm0zuiaO3RcS6FKCBIOMftMV+oRhESuP1QI2Po48bZF0JI1dTKsSsC66kXSbuORipg9BOh0IkPbzSu9TD1e+IQy9YXmFwilyQMcamC81daHMdNBPDM27dOjWjTZgjzr9vzz00pdw3lIDt7IRe2pVd8B9bQNkW0V9fu3EHYZi2j5083N5tddKDCaD04HuyUAgcqT+An3dAHqTX5ZIOenuoX54NOu0f2soV5iVMBCRJ5RWxYzGjZIkK9Bf
-x-ms-exchange-antispam-messagedata: dMpVNlxcO8HP8Yzzf7XHSllUBm5psC5QkKM5SVSob+gQik82RFFdVt5qd3G4CvIWyZkBPB7eoKen+0kCvCy08FmThJVv5Q0hkA6rxpzkyC0xnuZF5B0XpN3z2OLCWO+H5T19PFAxIT7N0scriDdHQQ==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ id 1jMQ6P-000710-RC
+ for linux-riscv@lists.infradead.org; Thu, 09 Apr 2020 05:51:52 +0000
+X-Originating-IP: 2.7.45.25
+Received: from [192.168.1.101] (lfbn-lyo-1-453-25.w2-7.abo.wanadoo.fr
+ [2.7.45.25]) (Authenticated sender: alex@ghiti.fr)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 3655820002;
+ Thu,  9 Apr 2020 05:51:40 +0000 (UTC)
+Subject: Re: [PATCH RFC 4/8] riscv/kaslr: randomize the kernel image offset
+To: Zong Li <zong.li@sifive.com>
+References: <cover.1584352425.git.zong.li@sifive.com>
+ <16924c3f07b142688a3c0562d229cd67dc7bf8e6.1584352425.git.zong.li@sifive.com>
+ <71cc2070-e867-17e1-cc64-66b634e3f48e@ghiti.fr>
+ <CANXhq0rQ_YqmBBDEgOCcu8vr+5NWqNdnfZ+EX8ofaaD6PuBAFQ@mail.gmail.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <69a9ecc5-550e-24a0-6f91-d65af3e00f18@ghiti.fr>
+Date: Thu, 9 Apr 2020 01:51:39 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 132dc69e-cb7e-4f18-859a-08d7dc2c7ac8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Apr 2020 02:19:49.0767 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: vEDJJAd8vvNNhrjqT3Om+I6ATMUI4Ya+3LH5+PP6AQVnSU0O8rplyEOGTMEl4WogoVhPzzUoRtKtrLv+YIVlCg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6551
+In-Reply-To: <CANXhq0rQ_YqmBBDEgOCcu8vr+5NWqNdnfZ+EX8ofaaD6PuBAFQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_191959_613043_C99D3159 
-X-CRM114-Status: GOOD (  15.35  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200408_225150_150539_128F3292 
+X-CRM114-Status: GOOD (  30.45  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.183.200 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,111 +67,400 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Palmer Dabbelt <palmerdabbelt@google.com>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2020/04/09 1:58, Palmer Dabbelt wrote:=0A=
-> From: Palmer Dabbelt <palmerdabbelt@google.com>=0A=
-> =0A=
-> The K210's bootloader doesn't provide a device tree, so we must provide=
-=0A=
-> our own.=0A=
-> =0A=
-> FIXME: I don't actually know the unique IDs on the K210.=0A=
-=0A=
-OK. I will test.=0A=
-=0A=
-> =0A=
-> Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>=0A=
-> ---=0A=
->  arch/riscv/Kconfig.socs               | 13 ++++++++++++-=0A=
->  arch/riscv/boot/dts/kendryte/Makefile |  2 +-=0A=
->  arch/riscv/kernel/builtin-dtb-table.c |  5 +++++=0A=
->  arch/riscv/kernel/builtin-dtb.S       |  6 ++++++=0A=
->  4 files changed, 24 insertions(+), 2 deletions(-)=0A=
-> =0A=
-> diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs=0A=
-> index a843100124ae..49e953f45e1f 100644=0A=
-> --- a/arch/riscv/Kconfig.socs=0A=
-> +++ b/arch/riscv/Kconfig.socs=0A=
-> @@ -37,11 +37,22 @@ config SOC_VIRT=0A=
->  config SOC_KENDRYTE=0A=
->  	bool "Kendryte K210 SoC"=0A=
->  	depends on !MMU=0A=
-> -	select BUILTIN_DTB=0A=
-=0A=
-Since SOC_KENDRYTE_K210_DTB_BUILTIN depends on BUILTIN_DTB, you need to kee=
-p=0A=
-this select, no ?=0A=
-=0A=
->  	select SERIAL_SIFIVE if TTY=0A=
->  	select SERIAL_SIFIVE_CONSOLE if TTY=0A=
->  	select SIFIVE_PLIC=0A=
-> +	select SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
->  	help=0A=
->  	  This enables support for Kendryte K210 SoC platform hardware.=0A=
->  =0A=
-> +config SOC_KENDRYTE_K210_DTB=0A=
-> +	def_bool y=0A=
-> +	depends on OF=0A=
-=0A=
-This one is used only in the makefile. Why not use SOC_KENDRYTE_K210_DTB_BU=
-ILTIN=0A=
-directly and drop this SOC_KENDRYTE_K210_DTB ?=0A=
-=0A=
-> +=0A=
-> +config SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
-> +	bool "Builtin device tree for the Kendryte K210"=0A=
-> +	depends on BUILTIN_DTB=0A=
-> +	select SOC_KENDRYTE_K210_DTB=0A=
-> +	help=0A=
-> +	  Builds a device tree for the Kendryte K210 into the Linux image.=0A=
-> +=0A=
->  endmenu=0A=
-> diff --git a/arch/riscv/boot/dts/kendryte/Makefile b/arch/riscv/boot/dts/=
-kendryte/Makefile=0A=
-> index 815444e69e89..01d7eb15673f 100644=0A=
-> --- a/arch/riscv/boot/dts/kendryte/Makefile=0A=
-> +++ b/arch/riscv/boot/dts/kendryte/Makefile=0A=
-> @@ -1,2 +1,2 @@=0A=
->  # SPDX-License-Identifier: GPL-2.0=0A=
-> -dtb-$(CONFIG_SOC_KENDRYTE) +=3D k210.dtb=0A=
-> +dtb-$(CONFIG_SOC_KENDRYTE_K210_DTB) +=3D k210.dtb=0A=
-> diff --git a/arch/riscv/kernel/builtin-dtb-table.c b/arch/riscv/kernel/bu=
-iltin-dtb-table.c=0A=
-> index 7ad6fe93b8a6..203174ba6f22 100644=0A=
-> --- a/arch/riscv/kernel/builtin-dtb-table.c=0A=
-> +++ b/arch/riscv/kernel/builtin-dtb-table.c=0A=
-> @@ -4,3 +4,8 @@=0A=
->   */=0A=
->  =0A=
->  #include <asm/soc.h>=0A=
-> +=0A=
-> +#ifdef CONFIG_SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
-> +extern void *kendryte_k210_dtb;=0A=
-> +SOC_BUILTIN_DTB_DECLARE(kendryte_k210, 0x0, 0x0, 0x0, kendryte_k210_dtb)=
-;=0A=
-> +#endif=0A=
-> diff --git a/arch/riscv/kernel/builtin-dtb.S b/arch/riscv/kernel/builtin-=
-dtb.S=0A=
-> index 3d459ad86948..b0fd5ca231d7 100644=0A=
-> --- a/arch/riscv/kernel/builtin-dtb.S=0A=
-> +++ b/arch/riscv/kernel/builtin-dtb.S=0A=
-> @@ -1,3 +1,9 @@=0A=
->  /* SPDX-License-Identifier: GPL-2.0 */=0A=
->  =0A=
->  .section .dtb.init.rodata,"a"=0A=
-> +=0A=
-> +#ifdef CONFIG_SOC_KENDRYTE_K210_DTB_BUILTIN=0A=
-> +.global kendryte_k210_dtb=0A=
-> +kendryte_k210_dtb:=0A=
-> +	.incbin "arch/riscv/boot/dts/kendryte/k210.dtb"=0A=
-> +#endif=0A=
-> =0A=
-=0A=
-=0A=
--- =0A=
-Damien Le Moal=0A=
-Western Digital Research=0A=
+
+
+On 4/7/20 6:53 AM, Zong Li wrote:
+> On Tue, Apr 7, 2020 at 1:11 PM Alex Ghiti <alex@ghiti.fr> wrote:
+>>
+>>
+>> On 3/24/20 3:30 AM, Zong Li wrote:
+>>> Entropy is derived from the banner and timer, it is better than nothing
+>>> but not enough secure, so previous stage may pass entropy via the device
+>>> tree /chosen/kaslr-seed node.
+>>>
+>>> We limit randomization range within 1GB, so we can exploit early page
+>>> table to map new destination of kernel image. Additionally, the kernel
+>>> offset need 2M alignment to ensure it's good in PMD page table.
+>>>
+>>> We also checks the kernel offset whether it's safe by avoiding to
+>>> overlaps with dtb, initrd and reserved memory regions.
+>>>
+>>
+>> That maybe changes the way my sv48 patchset will be implemented: I can't
+>> get user preference (3-level or 4-level) by any means, device-tree or
+>> kernel parameter.
+>>
+>> But I don't see how you could get a random offset without info from the
+>> device tree anyway (reserved memory regions especially), so maybe I
+>> could parse dtb for allowing the user to choose. I'll move this
+>> discussion to the sv48 introduction.
+> 
+> Maybe I'm a little bit misunderstanding here, but I think I got the
+> random offset through some information by parsing dtb.
+> 
+
+I was just saying that I may use the dtb too in sv48 patchset to make it 
+possible for users to choose sv39 even if sv48 is supported by hardware 
+(which is not the case in my current patchset).
+
+>>
+>>> Signed-off-by: Zong Li <zong.li@sifive.com>
+>>> ---
+>>>    arch/riscv/kernel/kaslr.c | 274 +++++++++++++++++++++++++++++++++++++-
+>>>    arch/riscv/mm/init.c      |   2 +-
+>>>    2 files changed, 273 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
+>>> index 281b5fcca5c8..9ec2b608eb7f 100644
+>>> --- a/arch/riscv/kernel/kaslr.c
+>>> +++ b/arch/riscv/kernel/kaslr.c
+>>> @@ -11,23 +11,293 @@
+>>>    #include <asm/cacheflush.h>
+>>>
+>>>    extern char _start[], _end[];
+>>> +extern void *dtb_early_va;
+>>> +extern phys_addr_t dtb_early_pa;
+>>>    extern void secondary_random_target(void);
+>>>    extern void kaslr_create_page_table(uintptr_t start, uintptr_t end);
+>>>
+>>>    uintptr_t secondary_next_target __initdata;
+>>>    static uintptr_t kaslr_offset __initdata;
+>>>
+>>> +static const __init u32 *get_reg_address(int root_cells,
+>>> +                                      const u32 *value, u64 *result)
+>>> +{
+>>> +     int cell;
+>>> +     *result = 0;
+>>> +
+>>> +     for (cell = root_cells; cell > 0; --cell)
+>>> +             *result = (*result << 32) + fdt32_to_cpu(*value++);
+>>> +
+>>> +     return value;
+>>> +}
+>>> +
+>>> +static __init int get_node_addr_size_cells(const char *path, int *addr_cell,
+>>> +                                        int *size_cell)
+>>> +{
+>>> +     int node = fdt_path_offset(dtb_early_va, path);
+>>> +     fdt64_t *prop;
+>>> +
+>>> +     if (node < 0)
+>>> +             return -EINVAL;
+>>> +
+>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#address-cells", NULL);
+>>> +     if (!prop)
+>>> +             return -EINVAL;
+>>> +     *addr_cell = fdt32_to_cpu(*prop);
+>>> +
+>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#size-cells", NULL);
+>>> +     if (!prop)
+>>> +             return -EINVAL;
+>>> +     *size_cell = fdt32_to_cpu(*prop);
+>>> +
+>>> +     return node;
+>>> +}
+>>> +
+>>> +static __init void kaslr_get_mem_info(uintptr_t *mem_start,
+>>> +                                   uintptr_t *mem_size)
+>>> +{
+>>> +     int node, root, addr_cells, size_cells;
+>>> +     u64 base, size;
+>>> +
+>>> +     /* Get root node's address cells and size cells. */
+>>> +     root = get_node_addr_size_cells("/", &addr_cells, &size_cells);
+>>> +     if (root < 0)
+>>> +             return;
+>>> +
+>>> +     /* Get memory base address and size. */
+>>> +     fdt_for_each_subnode(node, dtb_early_va, root) {
+>>> +             const char *dev_type;
+>>> +             const u32 *reg;
+>>> +
+>>> +             dev_type = fdt_getprop(dtb_early_va, node, "device_type", NULL);
+>>> +             if (!dev_type)
+>>> +                     continue;
+>>> +
+>>> +             if (!strcmp(dev_type, "memory")) {
+>>> +                     reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
+>>> +                     if (!reg)
+>>> +                             return;
+>>> +
+>>> +                     reg = get_reg_address(addr_cells, reg, &base);
+>>> +                     reg = get_reg_address(size_cells, reg, &size);
+>>> +
+>>> +                     *mem_start = base;
+>>> +                     *mem_size = size;
+>>> +
+>>> +                     break;
+>>> +             }
+>>> +     }
+>>> +}
+>>> +
+>>> +/* Return a default seed if there is no HW generator. */
+>>> +static u64 kaslr_default_seed = ULL(-1);
+>>> +static __init u64 kaslr_get_seed(void)
+>>> +{
+>>> +     int node, len;
+>>> +     fdt64_t *prop;
+>>> +     u64 ret;
+>>> +
+>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
+>>> +     if (node < 0)
+>>> +             return kaslr_default_seed++;
+>>> +
+>>> +     prop = fdt_getprop_w(dtb_early_va, node, "kaslr-seed", &len);
+>>> +     if (!prop || len != sizeof(u64))
+>>> +             return kaslr_default_seed++;
+>>> +
+>>> +     ret = fdt64_to_cpu(*prop);
+>>> +
+>>> +     /* Re-write to zero for checking whether get seed at second time */
+>>> +     *prop = 0;
+>>> +
+>>> +     return ret;
+>>> +}
+>>> +
+>>> +static __init bool is_overlap(uintptr_t s1, uintptr_t e1, uintptr_t s2,
+>>> +                           uintptr_t e2)
+>>> +{
+>>> +     return e1 >= s2 && e2 >= s1;
+>>> +}
+>>
+>> Inline this function or use a macro maybe.
+> 
+> Yes, sure. Thanks.
+> 
+>>
+>>> +
+>>> +static __init bool is_overlap_reserved_mem(uintptr_t start_addr,
+>>> +                                        uintptr_t end_addr)
+>>> +{
+>>> +     int node, rsv_mem, addr_cells, size_cells;
+>>> +
+>>> +     /* Get the reserved-memory node. */
+>>> +     rsv_mem = get_node_addr_size_cells("/reserved-memory",
+>>> +                                        &addr_cells,
+>>> +                                        &size_cells);
+>>> +     if (rsv_mem < 0)
+>>> +             return false;
+>>> +
+>>> +     /* Get memory base address and size. */
+>>> +     fdt_for_each_subnode(node, dtb_early_va, rsv_mem) {
+>>> +             uint64_t base, size;
+>>> +             const uint32_t *reg;
+>>> +
+>>> +             reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
+>>> +             if (!reg)
+>>> +                     return 0;
+>>> +
+>>> +             reg = get_reg_address(addr_cells, reg, &base);
+>>> +             reg = get_reg_address(size_cells, reg, &size);
+>>> +
+>>> +             if (is_overlap(start_addr, end_addr, base, base + size))
+>>> +                     return true;
+>>> +     }
+>>> +
+>>> +     return false;
+>>> +}
+>>> +
+>>> +static __init bool is_overlap_initrd(uintptr_t start_addr, uintptr_t end_addr)
+>>> +{
+>>> +     int node;
+>>> +     uintptr_t initrd_start, initrd_end;
+>>> +     fdt64_t *prop;
+>>> +
+>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
+>>> +     if (node < 0)
+>>> +             return false;
+>>> +
+>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-start", NULL);
+>>> +     if (!prop)
+>>> +             return false;
+>>> +
+>>> +     initrd_start = fdt64_to_cpu(*prop);
+>>> +
+>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-end", NULL);
+>>> +     if (!prop)
+>>> +             return false;
+>>> +
+>>> +     initrd_end = fdt64_to_cpu(*prop);
+>>> +
+>>> +     return is_overlap(start_addr, end_addr, initrd_start, initrd_end);
+>>> +}
+>>> +
+>>> +static __init bool is_overlap_dtb(uintptr_t start_addr, uintptr_t end_addr)
+>>> +{
+>>> +     uintptr_t dtb_start = dtb_early_pa;
+>>> +     uintptr_t dtb_end = dtb_start + fdt_totalsize(dtb_early_va);
+>>> +
+>>> +     return is_overlap(start_addr, end_addr, dtb_start, dtb_end);
+>>> +}
+>>> +
+>>> +static __init bool has_regions_overlapping(uintptr_t start_addr,
+>>> +                                        uintptr_t end_addr)
+>>> +{
+>>> +     if (is_overlap_dtb(start_addr, end_addr))
+>>> +             return true;
+>>> +
+>>> +     if (is_overlap_initrd(start_addr, end_addr))
+>>> +             return true;
+>>> +
+>>> +     if (is_overlap_reserved_mem(start_addr, end_addr))
+>>> +             return true;
+>>> +
+>>> +     return false;
+>>> +}
+>>> +
+>>> +static inline __init unsigned long get_legal_offset(int random_index,
+>>> +                                                 int max_index,
+>>> +                                                 uintptr_t mem_start,
+>>> +                                                 uintptr_t kernel_size)
+>>> +{
+>>> +     uintptr_t start_addr, end_addr;
+>>> +     int idx, stop_idx;
+>>> +
+>>> +     idx = stop_idx = random_index;
+>>> +
+>>> +     do {
+>>> +             start_addr = mem_start + idx * SZ_2M + kernel_size;
+>>> +             end_addr = start_addr + kernel_size;
+>>> +
+>>> +             /* Check overlap to other regions. */
+>>> +             if (!has_regions_overlapping(start_addr, end_addr))
+>>> +                     return idx * SZ_2M + kernel_size;
+>>> +
+>>> +             if (idx-- < 0)
+>>> +                     idx = max_index;
+>>
+>> Isn't the fallback to max_index a security breach ? Because at some
+>> point, the kernel will be loaded at this specific address.
+> 
+> The max_index is the maximum safe index for destination of new kernel
+> image. Could you give more explain here?
+> 
+
+But max_index is not random at all. I really don't know if that's a 
+problem, I just found intriguing the fact the kernel could be loaded at 
+some specific location. Would it be more secure, instead of picking 
+max_index as fallback when reaching 0, to pick another random number 
+between random_index and max_index ?
+
+Alex
+
+>>
+>>> +
+>>> +     } while (idx != stop_idx);
+>>> +
+>>> +     return 0;
+>>> +}
+>>> +
+>>> +static inline __init u64 rotate_xor(u64 hash, const void *area, size_t size)
+>>> +{
+>>> +     size_t i;
+>>> +     uintptr_t *ptr = (uintptr_t *) area;
+>>> +
+>>> +     for (i = 0; i < size / sizeof(hash); i++) {
+>>> +             /* Rotate by odd number of bits and XOR. */
+>>> +             hash = (hash << ((sizeof(hash) * 8) - 7)) | (hash >> 7);
+>>> +             hash ^= ptr[i];
+>>> +     }
+>>> +
+>>> +     return hash;
+>>> +}
+>>> +
+>>> +#define MEM_RESERVE_START    __pa(PAGE_OFFSET)
+>>> +static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
+>>> +{
+>>> +     uintptr_t mem_start = 0, mem_size= 0, random_size;
+>>> +     uintptr_t kernel_size_align = round_up(kernel_size, SZ_2M);
+>>> +     int index;
+>>> +     u64 random = 0;
+>>> +     cycles_t time_base;
+>>> +
+>>> +     /* Attempt to create a simple but unpredictable starting entropy */
+>>> +     random = rotate_xor(random, linux_banner, strlen(linux_banner));
+>>> +
+>>> +     /*
+>>> +      * If there is no HW random number generator, use timer to get a random
+>>> +      * number. This is better than nothing but not enough secure.
+>>> +      */
+>>> +     time_base = get_cycles() << 32;
+>>> +     time_base ^= get_cycles();
+>>> +     random = rotate_xor(random, &time_base, sizeof(time_base));
+>>> +
+>>> +     if (seed)
+>>> +             random = rotate_xor(random, &seed, sizeof(seed));
+>>> +
+>>> +     kaslr_get_mem_info(&mem_start, &mem_size);
+>>> +     if (!mem_size)
+>>> +             return 0;
+>>> +
+>>> +     if (mem_start < MEM_RESERVE_START) {
+>>> +             mem_size -= MEM_RESERVE_START - mem_start;
+>>> +             mem_start = MEM_RESERVE_START;
+>>> +     }
+>>> +
+>>> +     /*
+>>> +      * Limit randomization range within 1G, so we can exploit
+>>> +      * early_pmd/early_pte during early page table phase.
+>>> +      */
+>>> +     random_size = min_t(u64,
+>>> +                         mem_size - (kernel_size_align * 2),
+>>> +                         SZ_1G - (kernel_size_align * 2));
+>>
+>> pgdir size is 30 bits in sv39, but it's 39 bits in sv48, you should use
+>> PGDIR_SIZE macro here.
+> 
+> OK, change it in the next version. Thanks.
+> 
+>>
+>>> +
+>>> +     /* The index of 2M block in whole avaliable region */
+>>> +     index = random % (random_size / SZ_2M);
+>>> +
+>>> +     return get_legal_offset(index, random_size / SZ_2M,
+>>> +                             mem_start, kernel_size_align);
+>>> +}
+>>> +
+>>>    uintptr_t __init kaslr_early_init(void)
+>>>    {
+>>> +     u64 seed;
+>>>        uintptr_t dest_start, dest_end;
+>>>        uintptr_t kernel_size = (uintptr_t) _end - (uintptr_t) _start;
+>>>
+>>>        /* Get zero value at second time to avoid doing randomization again. */
+>>> -     if (kaslr_offset)
+>>> +     seed = kaslr_get_seed();
+>>> +     if (!seed)
+>>>                return 0;
+>>>
+>>>        /* Get the random number for kaslr offset. */
+>>> -     kaslr_offset = 0x10000000;
+>>> +     kaslr_offset = get_random_offset(seed, kernel_size);
+>>>
+>>>        /* Update kernel_virt_addr for get_kaslr_offset. */
+>>>        kernel_virt_addr += kaslr_offset;
+>>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+>>> index 2f5b25f02b6c..34c6ecf2c599 100644
+>>> --- a/arch/riscv/mm/init.c
+>>> +++ b/arch/riscv/mm/init.c
+>>> @@ -125,7 +125,7 @@ static void __init setup_initrd(void)
+>>>    }
+>>>    #endif /* CONFIG_BLK_DEV_INITRD */
+>>>
+>>> -static phys_addr_t dtb_early_pa __initdata;
+>>> +phys_addr_t dtb_early_pa __initdata;
+>>>
+>>>    void __init setup_bootmem(void)
+>>>    {
+>>>
+>>
+>> Alex
 
