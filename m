@@ -2,91 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8B451A4B34
-	for <lists+linux-riscv@lfdr.de>; Fri, 10 Apr 2020 22:38:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91A7C1A4CB0
+	for <lists+linux-riscv@lfdr.de>; Sat, 11 Apr 2020 01:42:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NbZtSWGHYkYykhJa3nHZnqGVMYbY5rNmBx2gQTV+dPQ=; b=DyeIdliv/zsf1x
-	BY/UBOdTY2UTgSBQ8CU11L5i2+/2yTQWd2cy+L1dH8oLfKaO0QMZMn2LF/jPXxLm8uKZxg09tpM2a
-	GaKvpsLAd4EMqUn+qoAuY972IYJQRLJcwzEsNG1alOXprGBcq/lIbF8WlUBx8FZ/pY8QAhJR5qsvb
-	EkgsxwVj1+Y9+MXF2Ojz9R90vcu0i1BRk8a0qap43f2M2pZPpPb0Z9i61x2gQ045QuAoqSfWn/PsA
-	V3r0ie8gJTXOJZkZxv67sLx98e9A7swgdTptoD8xLQrs9BrotyuBczoeC7hIUzE2HzmMp8mfs0ehA
-	tPe9oNOA0SNkAeDiO5Og==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=yH7CZBgnz1B1/ZHbifibHf0BF6579gmm7i+Y/fqUA94=; b=idcp2M2sdi8QyS8icTyxleXXR
+	mPhLp/r4t2bWCvjlfZGfhllHAT/ppJFhFLxxT3+fF7wnRJ342Ek30xo2SrKaQbtKK5eKPp3yCtmOg
+	+cp6wiMEnKIktDrtRBfulw6ElHHVC+GHHRB8kmrY5PEGlQQ9ihqXmSrYCod3Io4DEBUdUtadyR/Rb
+	8FQwq9j333xuHyx+i8xJo7+oS6SSG10cSAPSZU1Gj5Kzu6AB4QG35i2mI5vuab64yZtwGfR+3TjTH
+	bsXE9rlFquHt6Mdi+np1AtxbQoenRZVbwWBL9IaimrNrloHTP7Tqpa8/VTMFOoHao2dfpg2z/StOJ
+	+0hVRbwtA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jN0PX-0005xX-6F; Fri, 10 Apr 2020 20:37:59 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
+	id 1jN3Ho-0006Hh-TJ; Fri, 10 Apr 2020 23:42:12 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jN0PS-0005vQ-BQ
- for linux-riscv@lists.infradead.org; Fri, 10 Apr 2020 20:37:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586551070;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NbZtSWGHYkYykhJa3nHZnqGVMYbY5rNmBx2gQTV+dPQ=;
- b=JWGR15YvbhC6qoFhJ65jTMZjIukqqzpXQecAEqW3buxQlmpbZjQC2+PeAevWRrxN+4CkbK
- os5a0Tonhgwl2U4mo+HF0fPVoh3ejU0FswgTDM7vby85x6aB0NJSd8A6NyCvPzHEyTsCOS
- rgzLLh4ZLxofIQBH6pRngDZ45cSFp/Q=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-336-nqEdl7EjMECSiSNA3HYYDg-1; Fri, 10 Apr 2020 16:37:35 -0400
-X-MC-Unique: nqEdl7EjMECSiSNA3HYYDg-1
-Received: by mail-qv1-f69.google.com with SMTP id d2so2544723qve.11
- for <linux-riscv@lists.infradead.org>; Fri, 10 Apr 2020 13:37:35 -0700 (PDT)
+ id 1jN3Hl-0006HD-IF
+ for linux-riscv@lists.infradead.org; Fri, 10 Apr 2020 23:42:11 +0000
+Received: by mail-wm1-x343.google.com with SMTP id t203so4026290wmt.2
+ for <linux-riscv@lists.infradead.org>; Fri, 10 Apr 2020 16:42:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yH7CZBgnz1B1/ZHbifibHf0BF6579gmm7i+Y/fqUA94=;
+ b=NmDocq9xf4iTu+8VxZwFnEXtaJin/895/EhohKVpOyU+U7u2LhW+Cxf5EF1j47WNoG
+ CtxNkVi+DBemEgnRKYdAEDll2ZD4po8rPaMqPyo1dfhF+MptiItI08T338tzwp9VUQg2
+ 4aQ0+/ncYQY85HjArYWNe1FLWoBpXqZ79SQTE9bbYk6+tWGZWe031TifluS9AWjZv07J
+ XBDllwML8pvSduTrzbU4O4ZE7P4oVtAIng9dTzStDwjU8zikM30mljMfzIorzafRhGPa
+ O32vt5Q8zvlftlWYY5S77yUwYELvXQ7TgOXrTa8aqSBF7cWZOFUx8sX9vONmTQ+Ida6T
+ nH6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=gxVWpsXehd2QnBfZarZHdPBRSEJgDnwVxfyLVCB52Cg=;
- b=fcY9LzgoxNu5t0tHL6IezKIdo6f52mz1Ip0RzaAYTmbAwNMJXr5MTNTXzGFHDYYbAs
- bRwlgKJyxF7zwMFzVFkXCBetU+66anronDIN5y+omMl04KaodmzfHkbHesFw5OXzXrKi
- 3l0rAOuHrW0b5jiqj9zE9MkhHR6oOjDfzFVZKIoCDfu0SuNU2ih0qKN2U7twKpy0++vy
- HvjW09dWIXh3BPturlJffWHy9zyilvWIFIqsHx42E0FnUTfNHM3wyw4k5rGxyLlX519o
- OEbjUqBuj6d1EHKOFGd2grDTgtx4eq5qni73nxE4KtyV/WOEY/AVjg95mjtlPRGirKRV
- JJow==
-X-Gm-Message-State: AGi0PubnksSRAjl8w8J2DTa6zvXgtYzbYb8YmQUPLwdMOQ3rcm8hRYA+
- PeiJPyAG2ztPAPkjbCojNbeaSFeoA8SoT/THt8Jew44oNg5JsNlH1Mcbtkj7fuFuvtv04Dykbzl
- /TC2MZG/0+0zD/tW6IlvzLqYhHzT3
-X-Received: by 2002:ae9:ddc6:: with SMTP id r189mr5788963qkf.14.1586551054418; 
- Fri, 10 Apr 2020 13:37:34 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKe1Sv+Hd4b/FUayP6izEe7bnm61J6Oc94zAFW0+VR9QiXHYnIfFRzLD5HEv6QSI8ArYT1KGg==
-X-Received: by 2002:ae9:ddc6:: with SMTP id r189mr5788910qkf.14.1586551053840; 
- Fri, 10 Apr 2020 13:37:33 -0700 (PDT)
-Received: from xz-x1 ([2607:9880:19c0:32::2])
- by smtp.gmail.com with ESMTPSA id a62sm2370236qkb.134.2020.04.10.13.37.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Apr 2020 13:37:33 -0700 (PDT)
-Date: Fri, 10 Apr 2020 16:37:30 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Mike Kravetz <mike.kravetz@oracle.com>
-Subject: Re: [PATCH v2 4/4] hugetlbfs: clean up command line processing
-Message-ID: <20200410203730.GG3172@xz-x1>
-References: <20200401183819.20647-1-mike.kravetz@oracle.com>
- <20200401183819.20647-5-mike.kravetz@oracle.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yH7CZBgnz1B1/ZHbifibHf0BF6579gmm7i+Y/fqUA94=;
+ b=DtoTBtasc5BYazurWF0IztBizmlL8FDrk70SsALRIaUOSmzjPdPwffGQWbRzyzOcL+
+ ZFHX0LT3nKp1BRaVjEZHfzttHsYrCI7tIvmHfPNIUcAZffheMZOv1W4UY20zfnY5rj9h
+ 5MaWLTAYj+fXPMESDn+3UFOuh7emKEB3RGk8P7auenH2P5G927iTUv6duClTfJLolwF/
+ QbR4xEnumbOPLZJw3d8+LN7yNE+eJ+L8S/jmMDRYvwClsDHtGH8pgGQqlavo/fcmKMBr
+ hcvzWuwlboo07KWRlVuU8a2lRTFt7u2ZQlc+eTgSMdRJH/Ildxcx6AwuMJZsSxDMW/jp
+ CstA==
+X-Gm-Message-State: AGi0PuaAHUO+gYrXHcZndGGBg2AfO0Ei1I5is575jYOgmwU7vWWpDsQb
+ /KcFxsgjWgD3k7AzaU6QcVk1XvKle2ZFfhEa/g1/
+X-Google-Smtp-Source: APiQypJNFxgKt0wVb7sZvaaTFuOJTLou3F00J4Ynxv9xQwmyP0/eODnPZaDSE8M3/7Ioq2MrFCda8aXthkedleECbmM=
+X-Received: by 2002:a7b:c38b:: with SMTP id s11mr7304528wmj.55.1586562126185; 
+ Fri, 10 Apr 2020 16:42:06 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200401183819.20647-5-mike.kravetz@oracle.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+References: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
+In-Reply-To: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Fri, 10 Apr 2020 16:41:54 -0700
+Message-ID: <CAOnJCUL1mR=FPYUHOHaqisHpP6b2hwfWaWNXfCiKc0i42ina=g@mail.gmail.com>
+Subject: Re: [RFC] riscv: use vDSO common flow to reduce the latency of the
+ time-related functions
+To: Vincent Chen <vincent.chen@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_133754_556613_A6FC59CD 
-X-CRM114-Status: GOOD (  34.69  )
+X-CRM114-CacheID: sfid-20200410_164209_680747_22BEA510 
+X-CRM114-Status: GOOD (  26.36  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [205.139.110.120 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -96,7 +81,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,423 +92,376 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mm@kvack.org,
- Paul Mackerras <paulus@samba.org>, sparclinux@vger.kernel.org,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- Mina Almasry <almasrymina@google.com>, linux-s390@vger.kernel.org,
- Jonathan Corbet <corbet@lwn.net>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Vasily Gorbik <gor@linux.ibm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Christophe Leroy <christophe.leroy@c-s.fr>, linux-kernel@vger.kernel.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, "David S . Miller" <davem@davemloft.net>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Apr 01, 2020 at 11:38:19AM -0700, Mike Kravetz wrote:
-> With all hugetlb page processing done in a single file clean up code.
-> - Make code match desired semantics
->   - Update documentation with semantics
-> - Make all warnings and errors messages start with 'HugeTLB:'.
-> - Consistently name command line parsing routines.
-> - Check for hugepages_supported() before processing parameters.
-> - Add comments to code
->   - Describe some of the subtle interactions
->   - Describe semantics of command line arguments
->=20
-> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
+On Mon, Apr 6, 2020 at 9:07 PM Vincent Chen <vincent.chen@sifive.com> wrote:
+>
+> Even if RISC-V has supported the vDSO feature, the latency of the functions
+> for obtaining the system time is still expensive. It is because these
+> functions still trigger a corresponding system call in the process, which
+> slows down the response time. If we want to remove the system call to
+> reduce the latency, the kernel should have the ability to output the system
+> clock information to userspace. This patch introduces the vDSO common flow
+> to enable the kernel to achieve the above feature and uses "rdtime"
+> instruction to obtain the current time in the user space. Under this
+> condition, the latency cost by the ecall from U-mode to S-mode can be
+> eliminated. After applying this patch, the latency of gettimeofday()
+> measured on the HiFive unleashed board can be reduced by %61.
+>
+
+That's great.
+
+> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
 > ---
->  .../admin-guide/kernel-parameters.txt         | 35 ++++---
->  Documentation/admin-guide/mm/hugetlbpage.rst  | 44 +++++++++
->  mm/hugetlb.c                                  | 96 +++++++++++++++----
->  3 files changed, 142 insertions(+), 33 deletions(-)
->=20
-> diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentat=
-ion/admin-guide/kernel-parameters.txt
-> index 1bd5454b5e5f..de653cfe1726 100644
-> --- a/Documentation/admin-guide/kernel-parameters.txt
-> +++ b/Documentation/admin-guide/kernel-parameters.txt
-> @@ -832,12 +832,15 @@
->  =09=09=09See also Documentation/networking/decnet.txt.
-> =20
->  =09default_hugepagesz=3D
-> -=09=09=09[same as hugepagesz=3D] The size of the default
-> -=09=09=09HugeTLB page size. This is the size represented by
-> -=09=09=09the legacy /proc/ hugepages APIs, used for SHM, and
-> -=09=09=09default size when mounting hugetlbfs filesystems.
-> -=09=09=09Defaults to the default architecture's huge page size
-> -=09=09=09if not specified.
-> +=09=09=09[HW] The size of the default HugeTLB page size. This
-
-Could I ask what's "HW"?  Sorry this is not a comment at all but
-really a pure question I wanted to ask... :)
-
-> +=09=09=09is the size represented by the legacy /proc/ hugepages
-> +=09=09=09APIs.  In addition, this is the default hugetlb size
-> +=09=09=09used for shmget(), mmap() and mounting hugetlbfs
-> +=09=09=09filesystems.  If not specified, defaults to the
-> +=09=09=09architecture's default huge page size.  Huge page
-> +=09=09=09sizes are architecture dependent.  See also
-> +=09=09=09Documentation/admin-guide/mm/hugetlbpage.rst.
-> +=09=09=09Format: size[KMG]
-> =20
->  =09deferred_probe_timeout=3D
->  =09=09=09[KNL] Debugging option to set a timeout in seconds for
-> @@ -1480,13 +1483,19 @@
->  =09=09=09If enabled, boot-time allocation of gigantic hugepages
->  =09=09=09is skipped.
-> =20
-> -=09hugepages=3D=09[HW,X86-32,IA-64] HugeTLB pages to allocate at boot.
-> -=09hugepagesz=3D=09[HW,IA-64,PPC,X86-64] The size of the HugeTLB pages.
-> -=09=09=09On x86-64 and powerpc, this option can be specified
-> -=09=09=09multiple times interleaved with hugepages=3D to reserve
-> -=09=09=09huge pages of different sizes. Valid pages sizes on
-> -=09=09=09x86-64 are 2M (when the CPU supports "pse") and 1G
-> -=09=09=09(when the CPU supports the "pdpe1gb" cpuinfo flag).
-> +=09hugepages=3D=09[HW] Number of HugeTLB pages to allocate at boot.
-> +=09=09=09If this follows hugepagesz (below), it specifies
-> +=09=09=09the number of pages of hugepagesz to be allocated.
-
-"... Otherwise it specifies the number of pages to allocate for the
-default huge page size." ?
-
-> +=09=09=09Format: <integer>
-
-How about add a new line here?
-
-> +=09hugepagesz=3D
-> +=09=09=09[HW] The size of the HugeTLB pages.  This is used in
-> +=09=09=09conjunction with hugepages (above) to allocate huge
-> +=09=09=09pages of a specific size at boot.  The pair
-> +=09=09=09hugepagesz=3DX hugepages=3DY can be specified once for
-> +=09=09=09each supported huge page size. Huge page sizes are
-> +=09=09=09architecture dependent.  See also
-> +=09=09=09Documentation/admin-guide/mm/hugetlbpage.rst.
-> +=09=09=09Format: size[KMG]
-> =20
->  =09hung_task_panic=3D
->  =09=09=09[KNL] Should the hung task detector generate panics.
-> diff --git a/Documentation/admin-guide/mm/hugetlbpage.rst b/Documentation=
-/admin-guide/mm/hugetlbpage.rst
-> index 1cc0bc78d10e..de340c586995 100644
-> --- a/Documentation/admin-guide/mm/hugetlbpage.rst
-> +++ b/Documentation/admin-guide/mm/hugetlbpage.rst
-> @@ -100,6 +100,50 @@ with a huge page size selection parameter "hugepages=
-z=3D<size>".  <size> must
->  be specified in bytes with optional scale suffix [kKmMgG].  The default =
-huge
->  page size may be selected with the "default_hugepagesz=3D<size>" boot pa=
-rameter.
-> =20
-> +Hugetlb boot command line parameter semantics
-> +hugepagesz - Specify a huge page size.  Used in conjunction with hugepag=
-es
-> +=09parameter to preallocate a number of huge pages of the specified
-> +=09size.  Hence, hugepagesz and hugepages are typically specified in
-> +=09pairs such as:
-> +=09=09hugepagesz=3D2M hugepages=3D512
-> +=09hugepagesz can only be specified once on the command line for a
-> +=09specific huge page size.  Valid huge page sizes are architecture
-> +=09dependent.
-> +hugepages - Specify the number of huge pages to preallocate.  This typic=
-ally
-> +=09follows a valid hugepagesz parameter.  However, if hugepages is the
-> +=09first or only hugetlb command line parameter it specifies the number
-> +=09of huge pages of default size to allocate.  The number of huge pages
-> +=09of default size specified in this manner can be overwritten by a
-> +=09hugepagesz,hugepages parameter pair for the default size.
-> +=09For example, on an architecture with 2M default huge page size:
-> +=09=09hugepages=3D256 hugepagesz=3D2M hugepages=3D512
-> +=09will result in 512 2M huge pages being allocated.  If a hugepages
-> +=09parameter is preceded by an invalid hugepagesz parameter, it will
-> +=09be ignored.
-> +default_hugepagesz - Specify the default huge page size.  This parameter=
- can
-> +=09only be specified once on the command line.  No other hugetlb command
-> +=09line parameter is associated with default_hugepagesz.  Therefore, it
-> +=09can appear anywhere on the command line.  If hugepages=3D is the firs=
-t
-> +=09hugetlb command line parameter, the specified number of huge pages
-> +=09will apply to the default huge page size specified with
-> +=09default_hugepagesz.  For example,
-> +=09=09hugepages=3D512 default_hugepagesz=3D2M
-
-No strong opinion, but considering to the special case of gigantic
-huge page mentioned below, I'm thinking maybe it's easier to just ask
-the user to always use "hugepagesz=3DX hugepages=3DY" pair when people
-want to reserve huge pages.
-
-For example, some user might start to use this after this series
-legally:
-
-    default_hugepagesz=3D2M hugepages=3D1024
-
-Then the user thinks, hmm, maybe it's good to use 1G pages, by just
-changing some numbers:
-
-    default_hugepagesz=3D1G hugepages=3D2
-
-Then if it stops working it could really confuse the user.
-
-(Besides, it could be an extra maintainaince burden for linux itself)
-
-> +=09will result in 512 2M huge pages being allocated.  However, specifyin=
-g
-> +=09the number of default huge pages in this manner will not apply to
-> +=09gigantic huge pages.  For example,
-> +=09=09hugepages=3D10 default_hugepagesz=3D1G
-> +=09=09=09=09or
-> +=09=09default_hugepagesz=3D1G hugepages=3D10
-> +=09will NOT result in the allocation of 10 1G huge pages.  In order to
-> +=09preallocate gigantic huge pages, there must be hugepagesz, hugepages
-> +=09parameter pair.  For example,
-> +=09=09hugepagesz=3D1G hugepages=3D10 default_hugepagesz=3D1G
-> +=09=09=09=09or
-> +=09=09default_hugepagesz=3D1G hugepagesz=3D1G hugepages=3D10
-> +=09will result 10 1G huge pages being allocated and the default huge
-> +=09page size will be set to 1G.  Valid default huge page size is
-> +=09architecture dependent.
-> +
->  When multiple huge page sizes are supported, ``/proc/sys/vm/nr_hugepages=
-``
->  indicates the current number of pre-allocated huge pages of the default =
-size.
->  Thus, one can use the following command to dynamically allocate/dealloca=
-te
-> diff --git a/mm/hugetlb.c b/mm/hugetlb.c
-> index 72a4343509d5..74ef53f7c5a7 100644
-> --- a/mm/hugetlb.c
-> +++ b/mm/hugetlb.c
-> @@ -3054,7 +3054,7 @@ static void __init hugetlb_sysfs_init(void)
->  =09=09err =3D hugetlb_sysfs_add_hstate(h, hugepages_kobj,
->  =09=09=09=09=09 hstate_kobjs, &hstate_attr_group);
->  =09=09if (err)
-> -=09=09=09pr_err("Hugetlb: Unable to add hstate %s", h->name);
-> +=09=09=09pr_err("HugeTLB: Unable to add hstate %s", h->name);
->  =09}
->  }
-> =20
-> @@ -3158,7 +3158,7 @@ static void hugetlb_register_node(struct node *node=
-)
->  =09=09=09=09=09=09nhs->hstate_kobjs,
->  =09=09=09=09=09=09&per_node_hstate_attr_group);
->  =09=09if (err) {
-> -=09=09=09pr_err("Hugetlb: Unable to add hstate %s for node %d\n",
-> +=09=09=09pr_err("HugeTLB: Unable to add hstate %s for node %d\n",
->  =09=09=09=09h->name, node->dev.id);
->  =09=09=09hugetlb_unregister_node(node);
->  =09=09=09break;
-> @@ -3209,19 +3209,35 @@ static int __init hugetlb_init(void)
->  =09if (!hugepages_supported())
->  =09=09return 0;
-> =20
-> -=09if (!size_to_hstate(default_hstate_size)) {
-> -=09=09if (default_hstate_size !=3D 0) {
-> -=09=09=09pr_err("HugeTLB: unsupported default_hugepagesz %lu. Reverting =
-to %lu\n",
-> -=09=09=09       default_hstate_size, HPAGE_SIZE);
-> -=09=09}
+>  arch/riscv/Kconfig                         |  3 ++
+>  arch/riscv/include/asm/vdso.h              |  3 --
+>  arch/riscv/include/asm/vdso/gettimeofday.h | 73 ++++++++++++++++++++++++++++++
+>  arch/riscv/include/asm/vdso/vsyscall.h     | 27 +++++++++++
+>  arch/riscv/kernel/vdso.c                   |  4 +-
+>  arch/riscv/kernel/vdso/Makefile            | 12 +++--
+>  arch/riscv/kernel/vdso/clock_getres.S      | 18 --------
+>  arch/riscv/kernel/vdso/clock_gettime.S     | 18 --------
+>  arch/riscv/kernel/vdso/gettimeofday.S      | 18 --------
+>  arch/riscv/kernel/vdso/vdso.lds.S          |  2 +
+>  arch/riscv/kernel/vdso/vgettimeofday.c     | 25 ++++++++++
+>  11 files changed, 141 insertions(+), 62 deletions(-)
+>  create mode 100644 arch/riscv/include/asm/vdso/gettimeofday.h
+>  create mode 100644 arch/riscv/include/asm/vdso/vsyscall.h
+>  delete mode 100644 arch/riscv/kernel/vdso/clock_getres.S
+>  delete mode 100644 arch/riscv/kernel/vdso/clock_gettime.S
+>  delete mode 100644 arch/riscv/kernel/vdso/gettimeofday.S
+>  create mode 100644 arch/riscv/kernel/vdso/vgettimeofday.c
+>
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index ded32979d33d..028b48c14c4e 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -68,6 +68,9 @@ config RISCV
+>         select HAVE_ARCH_KASAN if MMU && 64BIT
+>         select HAVE_REGS_AND_STACK_ACCESS_API
+>         select HAVE_RSEQ
+> +       select HAVE_GENERIC_VDSO
+> +       select GENERIC_TIME_VSYSCALL
+> +       select GENERIC_GETTIMEOFDAY
+>
+>  config ARCH_MMAP_RND_BITS_MIN
+>         default 18 if 64BIT
+> diff --git a/arch/riscv/include/asm/vdso.h b/arch/riscv/include/asm/vdso.h
+> index 7a7fce63c474..05689eab4083 100644
+> --- a/arch/riscv/include/asm/vdso.h
+> +++ b/arch/riscv/include/asm/vdso.h
+> @@ -10,9 +10,6 @@
+>
+>  #include <linux/types.h>
+>
+> -struct vdso_data {
+> -};
 > -
-> +=09/*
-> +=09 * Make sure HPAGE_SIZE (HUGETLB_PAGE_ORDER) hstate exists.  Some
-> +=09 * architectures depend on setup being done here.
-> +=09 *
-> +=09 * If a valid default huge page size was specified on the command lin=
-e,
-> +=09 * add associated hstate if necessary.  If not, set default_hstate_si=
-ze
-> +=09 * to default size.  default_hstate_idx is used at runtime to identif=
-y
-> +=09 * the default huge page size/hstate.
-> +=09 */
-> +=09hugetlb_add_hstate(HUGETLB_PAGE_ORDER);
-> +=09if (default_hstate_size)
-> +=09=09hugetlb_add_hstate(ilog2(default_hstate_size) - PAGE_SHIFT);
-> +=09else
->  =09=09default_hstate_size =3D HPAGE_SIZE;
-> -=09=09hugetlb_add_hstate(HUGETLB_PAGE_ORDER);
-> -=09}
->  =09default_hstate_idx =3D hstate_index(size_to_hstate(default_hstate_siz=
-e));
+>  /*
+>   * The VDSO symbols are mapped into Linux so we can just use regular symbol
+>   * addressing to get their offsets in userspace.  The symbols are mapped at an
+> diff --git a/arch/riscv/include/asm/vdso/gettimeofday.h b/arch/riscv/include/asm/vdso/gettimeofday.h
+> new file mode 100644
+> index 000000000000..087fc01fd288
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/vdso/gettimeofday.h
+> @@ -0,0 +1,73 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#ifndef __ASM_VDSO_GETTIMEOFDAY_H
+> +#define __ASM_VDSO_GETTIMEOFDAY_H
 > +
-> +=09/*
-> +=09 * default_hstate_max_huge_pages !=3D 0 indicates a count (hugepages=
-=3D)
-> +=09 * specified before a size (hugepagesz=3D).  Use this count for the
-> +=09 * default huge page size, unless a specific value was specified for
-> +=09 * this size in a hugepagesz/hugepages pair.
-> +=09 */
->  =09if (default_hstate_max_huge_pages) {
+> +#ifndef __ASSEMBLY__
+> +
+> +#include <asm/unistd.h>
+> +#include <uapi/linux/time.h>
+> +
+> +#define VDSO_HAS_CLOCK_GETRES  1
+> +
+> +static __always_inline
+> +int gettimeofday_fallback(struct __kernel_old_timeval *_tv,
+> +                         struct timezone *_tz)
+> +{
+> +       register struct __kernel_old_timeval *tv asm("a0") = _tv;
+> +       register struct timezone *tz asm("a1") = _tz;
+> +       register long ret asm("a0");
+> +       register long nr asm("a7") = __NR_gettimeofday;
+> +
+> +       asm volatile ("ecall\n"
+> +                     : "=r" (ret)
+> +                     : "r"(tv), "r"(tz), "r"(nr)
+> +                     : "memory");
+> +
+> +       return ret;
+> +}
+> +
+> +static __always_inline
+> +long clock_gettime_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
+> +{
+> +       register clockid_t clkid asm("a0") = _clkid;
+> +       register struct __kernel_timespec *ts asm("a1") = _ts;
+> +       register long ret asm("a0");
+> +       register long nr asm("a7") = __NR_clock_gettime;
+> +
+> +       asm volatile ("ecall\n"
+> +                     : "=r" (ret)
+> +                     : "r"(clkid), "r"(ts), "r"(nr)
+> +                     : "memory");
+> +
+> +       return ret;
+> +}
+> +
+> +static __always_inline
+> +int clock_getres_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
+> +{
+> +       register clockid_t clkid asm("a0") = _clkid;
+> +       register struct __kernel_timespec *ts asm("a1") = _ts;
+> +       register long ret asm("a0");
+> +       register long nr asm("a7") = __NR_clock_getres;
+> +
+> +       asm volatile ("ecall\n"
+> +                     : "=r" (ret)
+> +                     : "r"(clkid), "r"(ts), "r"(nr)
+> +                     : "memory");
+> +
+> +       return ret;
+> +}
+> +
+> +static __always_inline u64 __arch_get_hw_counter(s32 clock_mode)
+> +{
+> +       return csr_read(CSR_TIME);
+> +}
+> +
 
-Since we're refactoring this - Could default_hstate_max_huge_pages be
-dropped directly (in hugepages=3D we can create the default hstate, then
-we set max_huge_pages of the default hstate there)?  Or did I miss
-anything important?
+How will it work on RV32 ?
 
->  =09=09if (!default_hstate.max_huge_pages)
-> -=09=09=09default_hstate.max_huge_pages =3D default_hstate_max_huge_pages=
-;
-> +=09=09=09default_hstate.max_huge_pages =3D
-> +=09=09=09=09default_hstate_max_huge_pages;
-> +=09=09else
-> +=09=09=09pr_warn("HugeTLB: First hugepages=3D%lu ignored\n",
-> +=09=09=09=09default_hstate_max_huge_pages);
->  =09}
-> =20
->  =09hugetlb_init_hstates();
-> @@ -3274,20 +3290,31 @@ void __init hugetlb_add_hstate(unsigned int order=
-)
->  =09parsed_hstate =3D h;
->  }
-> =20
-> -static int __init hugetlb_nrpages_setup(char *s)
+> +static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
+> +{
+> +       return _vdso_data;
+> +}
+> +
+> +#endif /* !__ASSEMBLY__ */
+> +
+> +#endif /* __ASM_VDSO_GETTIMEOFDAY_H */
+> diff --git a/arch/riscv/include/asm/vdso/vsyscall.h b/arch/riscv/include/asm/vdso/vsyscall.h
+> new file mode 100644
+> index 000000000000..82fd5d83bd60
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/vdso/vsyscall.h
+> @@ -0,0 +1,27 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#ifndef __ASM_VDSO_VSYSCALL_H
+> +#define __ASM_VDSO_VSYSCALL_H
+> +
+> +#ifndef __ASSEMBLY__
+> +
+> +#include <linux/timekeeper_internal.h>
+> +#include <vdso/datapage.h>
+> +
+> +extern struct vdso_data *vdso_data;
+> +
 > +/*
-> + * hugepages command line processing
-> + * hugepages normally follows a valid hugepagsz specification.  If not, =
-ignore
-> + * the hugepages value.  hugepages can also be the first huge page comma=
-nd line
-> + * option in which case it specifies the number of huge pages for the de=
-fault
-> + * size.
+> + * Update the vDSO data page to keep in sync with kernel timekeeping.
 > + */
-> +static int __init hugepages_setup(char *s)
->  {
->  =09unsigned long *mhp;
->  =09static unsigned long *last_mhp;
-> =20
-> +=09if (!hugepages_supported()) {
-> +=09=09pr_warn("HugeTLB: huge pages not supported, ignoring hugepages =3D=
- %s\n", s);
-> +=09=09return 0;
-> +=09}
+> +static __always_inline struct vdso_data *__riscv_get_k_vdso_data(void)
+> +{
+> +       return vdso_data;
+> +}
 > +
->  =09if (!parsed_valid_hugepagesz) {
-> -=09=09pr_warn("hugepages =3D %s preceded by "
-> -=09=09=09"an unsupported hugepagesz, ignoring\n", s);
-> +=09=09pr_warn("HugeTLB: hugepages =3D %s preceded by an unsupported huge=
-pagesz, ignoring\n", s);
-
-s/preceded/is preceded/?
-
->  =09=09parsed_valid_hugepagesz =3D true;
-> -=09=09return 1;
-> +=09=09return 0;
->  =09}
->  =09/*
-> -=09 * !hugetlb_max_hstate means we haven't parsed a hugepagesz=3D parame=
-ter yet,
-> -=09 * so this hugepages=3D parameter goes to the "default hstate".
-> +=09 * !hugetlb_max_hstate means we haven't parsed a hugepagesz=3D parame=
-ter
-> +=09 * yet, so this hugepages=3D parameter goes to the "default hstate".
->  =09 */
->  =09else if (!hugetlb_max_hstate)
->  =09=09mhp =3D &default_hstate_max_huge_pages;
-> @@ -3295,8 +3322,8 @@ static int __init hugetlb_nrpages_setup(char *s)
->  =09=09mhp =3D &parsed_hstate->max_huge_pages;
-> =20
->  =09if (mhp =3D=3D last_mhp) {
-> -=09=09pr_warn("hugepages=3D specified twice without interleaving hugepag=
-esz=3D, ignoring\n");
-> -=09=09return 1;
-> +=09=09pr_warn("HugeTLB: hugepages=3D specified twice without interleavin=
-g hugepagesz=3D, ignoring hugepages=3D%s\n", s);
-> +=09=09return 0;
->  =09}
-> =20
->  =09if (sscanf(s, "%lu", mhp) <=3D 0)
-> @@ -3314,12 +3341,24 @@ static int __init hugetlb_nrpages_setup(char *s)
-> =20
->  =09return 1;
->  }
-> -__setup("hugepages=3D", hugetlb_nrpages_setup);
-> +__setup("hugepages=3D", hugepages_setup);
-> =20
+> +#define __arch_get_k_vdso_data __riscv_get_k_vdso_data
+> +
+> +/* The asm-generic header needs to be included after the definitions above */
+> +#include <asm-generic/vdso/vsyscall.h>
+> +
+> +#endif /* !__ASSEMBLY__ */
+> +
+> +#endif /* __ASM_VDSO_VSYSCALL_H */
+> diff --git a/arch/riscv/kernel/vdso.c b/arch/riscv/kernel/vdso.c
+> index 484d95a70907..1495af602f00 100644
+> --- a/arch/riscv/kernel/vdso.c
+> +++ b/arch/riscv/kernel/vdso.c
+> @@ -11,8 +11,8 @@
+>  #include <linux/slab.h>
+>  #include <linux/binfmts.h>
+>  #include <linux/err.h>
+> +#include <vdso/datapage.h>
+>
+> -#include <asm/vdso.h>
+>
+>  extern char vdso_start[], vdso_end[];
+>
+> @@ -26,7 +26,7 @@ static union {
+>         struct vdso_data        data;
+>         u8                      page[PAGE_SIZE];
+>  } vdso_data_store __page_aligned_data;
+> -static struct vdso_data *vdso_data = &vdso_data_store.data;
+> +struct vdso_data *vdso_data = &vdso_data_store.data;
+>
+>  static int __init vdso_init(void)
+>  {
+> diff --git a/arch/riscv/kernel/vdso/Makefile b/arch/riscv/kernel/vdso/Makefile
+> index 33b16f4212f7..9ad681e94ebe 100644
+> --- a/arch/riscv/kernel/vdso/Makefile
+> +++ b/arch/riscv/kernel/vdso/Makefile
+> @@ -1,12 +1,14 @@
+>  # SPDX-License-Identifier: GPL-2.0-only
+>  # Copied from arch/tile/kernel/vdso/Makefile
+>
+> +# Absolute relocation type $(ARCH_REL_TYPE_ABS) needs to be defined before
+> +# the inclusion of generic Makefile.
+> +ARCH_REL_TYPE_ABS := R_RISCV_32|R_RISCV_64|R_RISCV_JUMP_SLOT
+> +include $(srctree)/lib/vdso/Makefile
+>  # Symbols present in the vdso
+>  vdso-syms  = rt_sigreturn
+>  ifdef CONFIG_64BIT
+> -vdso-syms += gettimeofday
+> -vdso-syms += clock_gettime
+> -vdso-syms += clock_getres
+> +vdso-syms += vgettimeofday
+>  endif
+>  vdso-syms += getcpu
+>  vdso-syms += flush_icache
+> @@ -14,6 +16,10 @@ vdso-syms += flush_icache
+>  # Files to link into the vdso
+>  obj-vdso = $(patsubst %, %.o, $(vdso-syms))
+>
+> +ifneq ($(c-gettimeofday-y),)
+> +  CFLAGS_vgettimeofday.o += -include $(c-gettimeofday-y)
+> +endif
+> +
+>  # Build rules
+>  targets := $(obj-vdso) vdso.so vdso.so.dbg vdso.lds vdso-dummy.o
+>  obj-vdso := $(addprefix $(obj)/, $(obj-vdso))
+> diff --git a/arch/riscv/kernel/vdso/clock_getres.S b/arch/riscv/kernel/vdso/clock_getres.S
+> deleted file mode 100644
+> index 91378a52eb22..000000000000
+> --- a/arch/riscv/kernel/vdso/clock_getres.S
+> +++ /dev/null
+> @@ -1,18 +0,0 @@
+> -/* SPDX-License-Identifier: GPL-2.0-only */
+> -/*
+> - * Copyright (C) 2017 SiFive
+> - */
+> -
+> -#include <linux/linkage.h>
+> -#include <asm/unistd.h>
+> -
+> -       .text
+> -/* int __vdso_clock_getres(clockid_t clock_id, struct timespec *res); */
+> -ENTRY(__vdso_clock_getres)
+> -       .cfi_startproc
+> -       /* For now, just do the syscall. */
+> -       li a7, __NR_clock_getres
+> -       ecall
+> -       ret
+> -       .cfi_endproc
+> -ENDPROC(__vdso_clock_getres)
+> diff --git a/arch/riscv/kernel/vdso/clock_gettime.S b/arch/riscv/kernel/vdso/clock_gettime.S
+> deleted file mode 100644
+> index 5371fd9bc01f..000000000000
+> --- a/arch/riscv/kernel/vdso/clock_gettime.S
+> +++ /dev/null
+> @@ -1,18 +0,0 @@
+> -/* SPDX-License-Identifier: GPL-2.0-only */
+> -/*
+> - * Copyright (C) 2017 SiFive
+> - */
+> -
+> -#include <linux/linkage.h>
+> -#include <asm/unistd.h>
+> -
+> -       .text
+> -/* int __vdso_clock_gettime(clockid_t clock_id, struct timespec *tp); */
+> -ENTRY(__vdso_clock_gettime)
+> -       .cfi_startproc
+> -       /* For now, just do the syscall. */
+> -       li a7, __NR_clock_gettime
+> -       ecall
+> -       ret
+> -       .cfi_endproc
+> -ENDPROC(__vdso_clock_gettime)
+> diff --git a/arch/riscv/kernel/vdso/gettimeofday.S b/arch/riscv/kernel/vdso/gettimeofday.S
+> deleted file mode 100644
+> index e6fb8af88632..000000000000
+> --- a/arch/riscv/kernel/vdso/gettimeofday.S
+> +++ /dev/null
+> @@ -1,18 +0,0 @@
+> -/* SPDX-License-Identifier: GPL-2.0-only */
+> -/*
+> - * Copyright (C) 2017 SiFive
+> - */
+> -
+> -#include <linux/linkage.h>
+> -#include <asm/unistd.h>
+> -
+> -       .text
+> -/* int __vdso_gettimeofday(struct timeval *tv, struct timezone *tz); */
+> -ENTRY(__vdso_gettimeofday)
+> -       .cfi_startproc
+> -       /* For now, just do the syscall. */
+> -       li a7, __NR_gettimeofday
+> -       ecall
+> -       ret
+> -       .cfi_endproc
+> -ENDPROC(__vdso_gettimeofday)
+> diff --git a/arch/riscv/kernel/vdso/vdso.lds.S b/arch/riscv/kernel/vdso/vdso.lds.S
+> index f66a091cb890..e6f558bca71b 100644
+> --- a/arch/riscv/kernel/vdso/vdso.lds.S
+> +++ b/arch/riscv/kernel/vdso/vdso.lds.S
+> @@ -2,11 +2,13 @@
+>  /*
+>   * Copyright (C) 2012 Regents of the University of California
+>   */
+> +#include <asm/page.h>
+>
+>  OUTPUT_ARCH(riscv)
+>
+>  SECTIONS
+>  {
+> +       PROVIDE(_vdso_data = . + PAGE_SIZE);
+>         . = SIZEOF_HEADERS;
+>
+>         .hash           : { *(.hash) }                  :text
+> diff --git a/arch/riscv/kernel/vdso/vgettimeofday.c b/arch/riscv/kernel/vdso/vgettimeofday.c
+> new file mode 100644
+> index 000000000000..d264943e2e47
+> --- /dev/null
+> +++ b/arch/riscv/kernel/vdso/vgettimeofday.c
+> @@ -0,0 +1,25 @@
+> +// SPDX-License-Identifier: GPL-2.0
 > +/*
-> + * hugepagesz command line processing
-> + * A specific huge page size can only be specified once with hugepagesz.
-> + * hugepagesz is followed by hugepages on the command line.  The global
-> + * variable 'parsed_valid_hugepagesz' is used to determine if prior
-> + * hugepagesz argument was valid.
+> + * Copied from arch/arm64/kernel/vdso/vgettimeofday.c
+> + *
+> + * Copyright (C) 2018 ARM Ltd.
+> + * Copyright (C) 2020 SiFive
 > + */
->  static int __init hugepagesz_setup(char *s)
->  {
->  =09unsigned long size;
-> =20
-> +=09if (!hugepages_supported()) {
-> +=09=09pr_warn("HugeTLB: huge pages not supported, ignoring hugepagesz =
-=3D %s\n", s);
-> +=09=09return 0;
-> +=09}
 > +
->  =09size =3D (unsigned long)memparse(s, NULL);
-> =20
->  =09if (!arch_hugetlb_valid_size(size)) {
-> @@ -3329,19 +3368,31 @@ static int __init hugepagesz_setup(char *s)
->  =09}
-> =20
->  =09if (size_to_hstate(size)) {
-> +=09=09parsed_valid_hugepagesz =3D false;
->  =09=09pr_warn("HugeTLB: hugepagesz %s specified twice, ignoring\n", s);
->  =09=09return 0;
->  =09}
-> =20
-> +=09parsed_valid_hugepagesz =3D true;
->  =09hugetlb_add_hstate(ilog2(size) - PAGE_SHIFT);
->  =09return 1;
->  }
->  __setup("hugepagesz=3D", hugepagesz_setup);
-> =20
-> +/*
-> + * default_hugepagesz command line input
-> + * Only one instance of default_hugepagesz allowed on command line.  Do =
-not
-> + * add hstate here as that will confuse hugepagesz/hugepages processing.
-> + */
->  static int __init default_hugepagesz_setup(char *s)
->  {
->  =09unsigned long size;
-> =20
-> +=09if (!hugepages_supported()) {
-> +=09=09pr_warn("HugeTLB: huge pages not supported, ignoring default_hugep=
-agesz =3D %s\n", s);
-> +=09=09return 0;
-> +=09}
+> +#include <linux/time.h>
+> +#include <linux/types.h>
 > +
->  =09size =3D (unsigned long)memparse(s, NULL);
-> =20
->  =09if (!arch_hugetlb_valid_size(size)) {
-> @@ -3349,6 +3400,11 @@ static int __init default_hugepagesz_setup(char *s=
-)
->  =09=09return 0;
->  =09}
-> =20
-> +=09if (default_hstate_size) {
-> +=09=09pr_err("HugeTLB: default_hugepagesz previously specified, ignoring=
- %s\n", s);
-> +=09=09return 0;
-> +=09}
-
-Nitpick: ideally this can be moved before memparse().
-
-Thanks,
-
+> +int __vdso_clock_gettime(clockid_t clock, struct __kernel_timespec *ts)
+> +{
+> +       return __cvdso_clock_gettime(clock, ts);
+> +}
 > +
->  =09default_hstate_size =3D size;
->  =09return 1;
->  }
-> --=20
-> 2.25.1
->=20
->=20
+> +int __vdso_gettimeofday(struct __kernel_old_timeval *tv, struct timezone *tz)
+> +{
+> +       return __cvdso_gettimeofday(tv, tz);
+> +}
+> +
+> +int __vdso_clock_getres(clockid_t clock_id, struct __kernel_timespec *res)
+> +{
+> +       return __cvdso_clock_getres(clock_id, res);
+> +}
+> --
+> 2.7.4
+>
+>
 
---=20
-Peter Xu
 
+-- 
+Regards,
+Atish
 
