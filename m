@@ -2,92 +2,93 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 565CB1A4A66
-	for <lists+linux-riscv@lfdr.de>; Fri, 10 Apr 2020 21:27:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 311E01A4A7E
+	for <lists+linux-riscv@lfdr.de>; Fri, 10 Apr 2020 21:34:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=egTRqYjBdzetC6Rav2slWK+++8cSaJtQCNbovjaGoc8=; b=uqCNywEajy9uLl
-	Nn6b9gPA3Q+UXKTX/OasBa5afBzloneLcFJzn64yEae+tC0hZ7+PxLwQJ4Vy0okH3gMCKvKDhwoU2
-	YCbJi2Xg6+Q1Dz6pTtpU5Qc2XRhUqw9bJZk6kwEkXUzlL53d+Ntw/VdVQHqaRsKrnmrOz4UNT2cH2
-	4FfRnepoeMImtLAJ5LYVHCiaRhfKL5AndhfxFsOBAKznN8hPV76au0hsALfbW4zjrVzkRtVm5WfNS
-	6TgKoP3i4H49CAHpOCcZvIya7yZJpqZcmexbwWHJjxiDwcwZySvVrzT1a0jkGqdjM8zLyUplKJplP
-	iNLpmDzNUZjRY2Ln/2CQ==;
+	List-Owner; bh=pSDLH5WsDUY0Ls+Yi5DMpK6wFwspuCJoAo5jQ7V/Ijc=; b=Ny++SZ5XtA6FpA
+	gLN5WLs+0rxT4gAgOxnb5Kx0KEng0O0l4u/vzbxwMJTHS6FkpvJvnE70bxVzOG/kDfcmv9qbbzNgG
+	2zvE6liHx05isgqyNn3HkiuPja537QPcjm7tGcX0Z3zRwDZKUngMvfuYs/VpPG5NaGM3GvtxpfDwJ
+	k9mOyB/R2MlHoI7rdGOGckVsfDKXmkhL+yUSxVvZdonYMFAHIzM62W02lNlxWMQILiz7rmvT9iZOf
+	uN/t19Pe/OsLhbyoI47zPlVwDi3H45XqZzKFFF/H22tF29E81Jsx578ly3jC7iXDduGnb/B8URG8E
+	om30yVWeFlMdkyXp4Gzw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMzIy-0007zj-Dl; Fri, 10 Apr 2020 19:27:08 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+	id 1jMzQ8-0002nI-0u; Fri, 10 Apr 2020 19:34:32 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
  helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMzIu-0007y9-SF
- for linux-riscv@lists.infradead.org; Fri, 10 Apr 2020 19:27:06 +0000
+ id 1jMzQ3-0002ls-8w
+ for linux-riscv@lists.infradead.org; Fri, 10 Apr 2020 19:34:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586546822;
+ s=mimecast20190719; t=1586547265;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=egTRqYjBdzetC6Rav2slWK+++8cSaJtQCNbovjaGoc8=;
- b=GcfgONn4XaHWe5LZKohORDPRkoly8L0FK9eLsVPvVPvXOwI961gPynIlhjo7dV5hfVE5qV
- yZcoN/6b09F22GU5Ttbby0oh6U2jAlvqzUbCpZAMKpIrInsidH1achRW0bTEvoIVeMo5go
- 1EjvCmgF0/Ga6xmL/EUpmc6HYi5gCFI=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-441-2NeBhHvsNkuj2M4JVFaKvQ-1; Fri, 10 Apr 2020 15:27:00 -0400
-X-MC-Unique: 2NeBhHvsNkuj2M4JVFaKvQ-1
-Received: by mail-qt1-f198.google.com with SMTP id m4so2671951qth.12
- for <linux-riscv@lists.infradead.org>; Fri, 10 Apr 2020 12:27:00 -0700 (PDT)
+ bh=pSDLH5WsDUY0Ls+Yi5DMpK6wFwspuCJoAo5jQ7V/Ijc=;
+ b=HTjtrTCPCtqlucaZeYXO9hdRWKKNAckT7ekZDJXF4mJhpipaNA9I2CNaZ2kSj9hZ8JMDfd
+ x8O+SqhSx6dStv8V30+AeWP2e15nVJrSHFhqsats/yWfEKX2i5V8jL8upV5bG1UT+dmM/5
+ 7kohKTXNMLmKBR1LDF3Ev3cAOymTgN8=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-350-PlY-P95PPnqEMV4gQshsIQ-1; Fri, 10 Apr 2020 15:34:23 -0400
+X-MC-Unique: PlY-P95PPnqEMV4gQshsIQ-1
+Received: by mail-qv1-f72.google.com with SMTP id z16so2438874qvo.4
+ for <linux-riscv@lists.infradead.org>; Fri, 10 Apr 2020 12:34:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=ddNmEkCT3NuYAPr19Gh+8RyFM7t2I+OUmUTTKHVjsXQ=;
- b=MIYUY6tVvq0Uhs8kdfkxcLmKWFL6qplNXE6zNy+VB7H3PoY1Ym8zMGM/+g9kWbYLfk
- Ci5d/NT9Y0f32J2xWxNeZWY+R5hUy+9lvkk6PTQBK7/V5y21skvNdVKSWLgWJanH5JpC
- GDLVemwENJj6QqGry7SavXHPJlcoeT0Ff4AahNw9vOxkPEEP80dCJWwcgOLZckZQT8q3
- adebe5DjZ5tz95LuwYNoHa4xZ8qwf0x1C4BLpgpX0+jERGZ6iGfWNHXHPNzCwM40K+fi
- 8OKRK45ow4KVvgpR4Oo48oIGQdX3JQ34jNW9vSiMNCSJUBW+0GIGIUjMT7XxlpQwGwBn
- kz8w==
-X-Gm-Message-State: AGi0PuYC8ksTYhFBQ41rE0KpVzADnMAsE/4XJNGkHT+Y+mSZ1uW4IBpP
- Y8LWspQfJgHxAIdGYRbI2WVkZS2YWoDMUfveukydhHvsha4oW6Rs15QYH9W1r7xSgmisQ3wfFsZ
- jlDaIBuuESlwhS0RfmBZm7nOohRJt
-X-Received: by 2002:ac8:2c66:: with SMTP id e35mr769602qta.188.1586546820322; 
- Fri, 10 Apr 2020 12:27:00 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJUBND9mw4a79BsRjlZQBzcyo9K+K4n4uLp4F1mRayVM5WnYx0Zu2cY7436wozu46yjuIupKQ==
-X-Received: by 2002:ac8:2c66:: with SMTP id e35mr769568qta.188.1586546820098; 
- Fri, 10 Apr 2020 12:27:00 -0700 (PDT)
+ bh=dR0pnT92lTl7PiXH1/vycyqLlKqG/upjftJ1HpISkMA=;
+ b=lyIDLtkRgC25lXIqoINg4HM+ww+3svH+KAOnpfSJMhUVM9FuQYDoqu1dTzFwh5yz6K
+ VK3C4WyqnhVYRqg+45oYgaJPoPFKx44JkA49BODI7YywYsGIR8fNVkOJR4qO9u2EzoX3
+ qJVl+FelQ1NAgwo5X0mGQUly/fsbxGJhHn/CUUxBml+/as+ty9ckG3aASODne9BHhYLo
+ hGw0vcVXif99gdCLP1qb552kJnMZe8tJ4RraTsU51wkpPyXySeOzgcys8QChRVTNpdvc
+ 0zFyhdSrUM1t/R5qxTnuQ0f/IOQ9VmoAVDtSG2FkNc0SemMeNrH/Imr5ruZMTPnTh5Mo
+ k2cg==
+X-Gm-Message-State: AGi0PuaRFUXFnckH4dOzM4HUHLyhKFMulw6UT+sbXif7nlTzBX50bLTk
+ EKFLj4NZI0qd2PAcG3TXX9pX6eWOfiF0bN7ZKCIZknURvqLMNBtzmFJauVANolSCvAvLvz2mJwx
+ uLjUMvDuss9VshfFEDYnbTRX2F27G
+X-Received: by 2002:ac8:6d06:: with SMTP id o6mr768751qtt.165.1586547263230;
+ Fri, 10 Apr 2020 12:34:23 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKE+9gdKAAzqM7E075abKl7yEhzpSisddiPAFgdbjLHprLwAVDEdymEnBo0qMB8GT4NFqVJjg==
+X-Received: by 2002:ac8:6d06:: with SMTP id o6mr768725qtt.165.1586547263017;
+ Fri, 10 Apr 2020 12:34:23 -0700 (PDT)
 Received: from xz-x1 ([2607:9880:19c0:32::2])
- by smtp.gmail.com with ESMTPSA id o33sm2321940qtj.62.2020.04.10.12.26.57
+ by smtp.gmail.com with ESMTPSA id m11sm2214328qkg.130.2020.04.10.12.34.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Apr 2020 12:26:59 -0700 (PDT)
-Date: Fri, 10 Apr 2020 15:26:56 -0400
+ Fri, 10 Apr 2020 12:34:22 -0700 (PDT)
+Date: Fri, 10 Apr 2020 15:34:19 -0400
 From: Peter Xu <peterx@redhat.com>
 To: Mike Kravetz <mike.kravetz@oracle.com>
-Subject: Re: [PATCH v2 2/4] hugetlbfs: move hugepagesz= parsing to arch
- independent code
-Message-ID: <20200410192656.GE3172@xz-x1>
+Subject: Re: [PATCH v2 3/4] hugetlbfs: remove hugetlb_add_hstate() warning
+ for existing hstate
+Message-ID: <20200410193419.GF3172@xz-x1>
 References: <20200401183819.20647-1-mike.kravetz@oracle.com>
- <20200401183819.20647-3-mike.kravetz@oracle.com>
+ <20200401183819.20647-4-mike.kravetz@oracle.com>
 MIME-Version: 1.0
-In-Reply-To: <20200401183819.20647-3-mike.kravetz@oracle.com>
+In-Reply-To: <20200401183819.20647-4-mike.kravetz@oracle.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_122704_994885_22076142 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20200410_123427_388129_9DDC6C35 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.211.31.120 listed in list.dnswl.org]
+ no trust [205.139.110.120 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -127,25 +128,20 @@ Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Apr 01, 2020 at 11:38:17AM -0700, Mike Kravetz wrote:
-> Now that architectures provide arch_hugetlb_valid_size(), parsing
-> of "hugepagesz=3D" can be done in architecture independent code.
-> Create a single routine to handle hugepagesz=3D parsing and remove
-> all arch specific routines.  We can also remove the interface
-> hugetlb_bad_size() as this is no longer used outside arch independent
-> code.
->=20
-> This also provides consistent behavior of hugetlbfs command line
-> options.  The hugepagesz=3D option should only be specified once for
-> a specific size, but some architectures allow multiple instances.
-> This appears to be more of an oversight when code was added by some
-> architectures to set up ALL huge pages sizes.
->=20
-> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
+On Wed, Apr 01, 2020 at 11:38:18AM -0700, Mike Kravetz wrote:
 
-This could change the error messages for a wrong setup on archs, but I
-guess it's not a big deal, assuming even to capture error people will
-majorly still look for error lines in general..
+[...]
+
+> @@ -3255,7 +3254,6 @@ void __init hugetlb_add_hstate(unsigned int order)
+>  =09unsigned long i;
+> =20
+>  =09if (size_to_hstate(PAGE_SIZE << order)) {
+> -=09=09pr_warn("hugepagesz=3D specified twice, ignoring\n");
+>  =09=09return;
+>  =09}
+
+Nitpick: I think the brackets need to be removed to follow linux
+coding style.  With that:
 
 Reviewed-by: Peter Xu <peterx@redhat.com>
 
