@@ -2,68 +2,69 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91A7C1A4CB0
-	for <lists+linux-riscv@lfdr.de>; Sat, 11 Apr 2020 01:42:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61C051A4D32
+	for <lists+linux-riscv@lfdr.de>; Sat, 11 Apr 2020 03:26:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yH7CZBgnz1B1/ZHbifibHf0BF6579gmm7i+Y/fqUA94=; b=idcp2M2sdi8QyS8icTyxleXXR
-	mPhLp/r4t2bWCvjlfZGfhllHAT/ppJFhFLxxT3+fF7wnRJ342Ek30xo2SrKaQbtKK5eKPp3yCtmOg
-	+cp6wiMEnKIktDrtRBfulw6ElHHVC+GHHRB8kmrY5PEGlQQ9ihqXmSrYCod3Io4DEBUdUtadyR/Rb
-	8FQwq9j333xuHyx+i8xJo7+oS6SSG10cSAPSZU1Gj5Kzu6AB4QG35i2mI5vuab64yZtwGfR+3TjTH
-	bsXE9rlFquHt6Mdi+np1AtxbQoenRZVbwWBL9IaimrNrloHTP7Tqpa8/VTMFOoHao2dfpg2z/StOJ
-	+0hVRbwtA==;
+	 bh=fGyivi60XNHI5+oBu+ayGN8mGCdZW4sTPpBcocKHnio=; b=mkcfMY6/ezf6hC7uC7Xup7d14
+	yhm7nt6x1Jv1yYQtiS6FVP9VetMfZQGR0dzEy5m3na2dqILgeTLjq+Uz7zyIK7mh1HltX+SsnPQM7
+	7NCsuCxImcnLsXsnhEnjXzOjOMP2y7FG4uSRxNy6635VHCC2bxRyIIE0yG9YpwPHk/EmVv36AJ9ZE
+	6ruKvhkKdxXLTYWIKyZ7jr7Capj0umeh2LJjSpdIuikN+IT/Iy/68Owzvv4eOvf3hZlach72F44eD
+	mgqWgJC2rTX0+jNynl9P7rQ4aVjWDnYNPQgkGs/RyFLNn+SJmWyOjV/7RoQEBnu8BpAwqxd0XuipS
+	M5HGvT5iQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jN3Ho-0006Hh-TJ; Fri, 10 Apr 2020 23:42:12 +0000
+	id 1jN4uC-0004u0-JZ; Sat, 11 Apr 2020 01:25:56 +0000
 Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jN3Hl-0006HD-IF
- for linux-riscv@lists.infradead.org; Fri, 10 Apr 2020 23:42:11 +0000
-Received: by mail-wm1-x343.google.com with SMTP id t203so4026290wmt.2
- for <linux-riscv@lists.infradead.org>; Fri, 10 Apr 2020 16:42:07 -0700 (PDT)
+ id 1jN4u8-0004tT-PS
+ for linux-riscv@lists.infradead.org; Sat, 11 Apr 2020 01:25:54 +0000
+Received: by mail-wm1-x343.google.com with SMTP id x4so4154348wmj.1
+ for <linux-riscv@lists.infradead.org>; Fri, 10 Apr 2020 18:25:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yH7CZBgnz1B1/ZHbifibHf0BF6579gmm7i+Y/fqUA94=;
- b=NmDocq9xf4iTu+8VxZwFnEXtaJin/895/EhohKVpOyU+U7u2LhW+Cxf5EF1j47WNoG
- CtxNkVi+DBemEgnRKYdAEDll2ZD4po8rPaMqPyo1dfhF+MptiItI08T338tzwp9VUQg2
- 4aQ0+/ncYQY85HjArYWNe1FLWoBpXqZ79SQTE9bbYk6+tWGZWe031TifluS9AWjZv07J
- XBDllwML8pvSduTrzbU4O4ZE7P4oVtAIng9dTzStDwjU8zikM30mljMfzIorzafRhGPa
- O32vt5Q8zvlftlWYY5S77yUwYELvXQ7TgOXrTa8aqSBF7cWZOFUx8sX9vONmTQ+Ida6T
- nH6w==
+ :cc; bh=fGyivi60XNHI5+oBu+ayGN8mGCdZW4sTPpBcocKHnio=;
+ b=J1MAqiqYEBj1Ptldf+sXZHLhYffALMafTH1+rdvY5pQHA/pvBix5oD7Pjc1a9HZno/
+ 4lZSAUUj66iNePvo3vD0N/8Kf+zvClnd5aLdxAOVyFT2cICiOZ2Yfw46x0bpUMMQFDeu
+ EbB/2q3xJumN1rXRTFBl/VXlje1R0bLOYPGSm02oNknGNC8N2DCx9CIz036Cb19SqLBL
+ jOdBwDXIlVioVra1Y7vPDEKjEtYqunIUqWlX9s3asBXxFNBQEghpvv0ErSZNijcQesH/
+ RcCoAaYtXJ6xokHk5A2Hc62fG5zx01BFqsYh3AnjgPwuIugWiMjn8icuAZVBjIO9Eqrp
+ CZqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yH7CZBgnz1B1/ZHbifibHf0BF6579gmm7i+Y/fqUA94=;
- b=DtoTBtasc5BYazurWF0IztBizmlL8FDrk70SsALRIaUOSmzjPdPwffGQWbRzyzOcL+
- ZFHX0LT3nKp1BRaVjEZHfzttHsYrCI7tIvmHfPNIUcAZffheMZOv1W4UY20zfnY5rj9h
- 5MaWLTAYj+fXPMESDn+3UFOuh7emKEB3RGk8P7auenH2P5G927iTUv6duClTfJLolwF/
- QbR4xEnumbOPLZJw3d8+LN7yNE+eJ+L8S/jmMDRYvwClsDHtGH8pgGQqlavo/fcmKMBr
- hcvzWuwlboo07KWRlVuU8a2lRTFt7u2ZQlc+eTgSMdRJH/Ildxcx6AwuMJZsSxDMW/jp
- CstA==
-X-Gm-Message-State: AGi0PuaAHUO+gYrXHcZndGGBg2AfO0Ei1I5is575jYOgmwU7vWWpDsQb
- /KcFxsgjWgD3k7AzaU6QcVk1XvKle2ZFfhEa/g1/
-X-Google-Smtp-Source: APiQypJNFxgKt0wVb7sZvaaTFuOJTLou3F00J4Ynxv9xQwmyP0/eODnPZaDSE8M3/7Ioq2MrFCda8aXthkedleECbmM=
-X-Received: by 2002:a7b:c38b:: with SMTP id s11mr7304528wmj.55.1586562126185; 
- Fri, 10 Apr 2020 16:42:06 -0700 (PDT)
+ bh=fGyivi60XNHI5+oBu+ayGN8mGCdZW4sTPpBcocKHnio=;
+ b=i0LzSmwKvgwepdHTBWBwzHZX9a5tOZQf1Ze0OTvseAFVOTs9IPEdjcz9STfdRjoJbt
+ pt4tJDYHIwgc4/pdi93l6vlleVLBUzPrSpFeHiR8NwUqXDb2NduNFg50hExEzHcjHCaU
+ GlhoBdB6W5kWBD+aIYYgSBL/qXTpyY/w2W91ja1unA0V2ta+LDrV1Qs7wImt9VvOeyI8
+ zRVfmQyECItHoBpFact2bXPLLFgRG22IbzysHNW3qVI6Z5KW2swaCgDuuWfI+ouYDMa8
+ B8scApRslYQvrvAC4TSeIV5oG3MTd7JnydDpt50c3ugaP9KN/2/8e5/FwYOyBIfP5gVb
+ XBtA==
+X-Gm-Message-State: AGi0PuYqPsrrOrxGh7HCMbLxXFWY4a5jnWBy+Q22xoMZX7VWiAb2gDaA
+ MciEH+EMFgmXmpM9LAfbwCpGuJUWSYN22rFcUOc+
+X-Google-Smtp-Source: APiQypJE5lFwOQI+fOHoL3ljHrYkvJpJ5UG4QZWuEGsJM9B1YWcRXagk7TCJisBMLXRhKUkFhK5lcUYOs1915PLKsBA=
+X-Received: by 2002:a05:600c:4152:: with SMTP id
+ h18mr4936825wmm.31.1586568349022; 
+ Fri, 10 Apr 2020 18:25:49 -0700 (PDT)
 MIME-Version: 1.0
 References: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
 In-Reply-To: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Fri, 10 Apr 2020 16:41:54 -0700
-Message-ID: <CAOnJCUL1mR=FPYUHOHaqisHpP6b2hwfWaWNXfCiKc0i42ina=g@mail.gmail.com>
+Date: Fri, 10 Apr 2020 18:25:37 -0700
+Message-ID: <CAOnJCUJ9apfBGtXsSGLECTo=BX51mCg+dZQ-t9ZoKTL9hdKuoQ@mail.gmail.com>
 Subject: Re: [RFC] riscv: use vDSO common flow to reduce the latency of the
  time-related functions
 To: Vincent Chen <vincent.chen@sifive.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_164209_680747_22BEA510 
-X-CRM114-Status: GOOD (  26.36  )
+X-CRM114-CacheID: sfid-20200410_182553_031796_6EAC56AB 
+X-CRM114-Status: GOOD (  25.80  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -111,9 +112,6 @@ On Mon, Apr 6, 2020 at 9:07 PM Vincent Chen <vincent.chen@sifive.com> wrote:
 > eliminated. After applying this patch, the latency of gettimeofday()
 > measured on the HiFive unleashed board can be reduced by %61.
 >
-
-That's great.
-
 > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
 > ---
 >  arch/riscv/Kconfig                         |  3 ++
@@ -235,7 +233,9 @@ That's great.
 > +}
 > +
 
-How will it work on RV32 ?
+Looking at other arch implementations, do we need to surround it with
+instruction fences ?
+(Assuming that future platforms will implements time CSR access in hardware)
 
 > +static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
 > +{
