@@ -2,63 +2,66 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 720721A5D1E
-	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 08:54:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B286E1A6013
+	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 21:49:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W/FhcvG4D5hnreRY9tkY2Ov4oq2IyDmTbU+Hd3ckTEA=; b=B69NCP31EOI/Ex
-	jf7hhdU+i90Do6sFA6luGXR3UotoXOXQmK9Ozs06Iyu0dGexULGNMqUU6uCnoX2u3KxCMMb6jr1VG
-	ZwFTIjmQ0r1ar0udBXIZCJ43YbnLEiB+4jEGVojXsYVvB1EkUoUHkK59hoOY0dntxao2qBm/sKHmv
-	qPrKIHwgQzKvVn0+zBo05/o0CNKa2dPqll8a3cXl2mvqrpqoG57fpxUQEw+oQmWbxKsF07UHxuT3T
-	zLQ+V7rTqtrkSspj0ABUXV8WOQVnGorpr9I94tfL+vM8LzWQ5gXipk8pBOd1FHbBMCsvOy1srr6KT
-	w6YBjCQWcVjRgMJhrrUg==;
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r767d/McObOAeCeGmuRc7mft50UcDnxE8kRvY9Wo/xA=; b=RTCyi+rrgP0UtG
+	ce6KsVfeCsGXFkrny09PoHM21Lbl1ARxmPdDZV1ZXJJmwMA10YRCcR1dVWOMs/4qiToQ2uQebFJC7
+	wIZWzAA6OWkCh3nfetl8D31dFh4Q/Uvnt6ZahcyW2WIMvGbHDMg5LL+T80TbpiL0XJ0Hm2bt7mivG
+	gV2kC/+bntOSrO1YD2kWMDN2ZeafOqE1DvorW1sZwmUS8APpuy0Kfz4Wm0WW44hypGYvysBm91DnP
+	qbkkUNnMMp1g+ByigM3/vscqKtLAw70IVezb3Dloc31QcE0ZNjTvdupZtVDM/bG51u78GaicKe24Q
+	/DeMHg9a/nizeSTsZmZw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNWVI-0001cG-LB; Sun, 12 Apr 2020 06:54:04 +0000
-Received: from relay10.mail.gandi.net ([217.70.178.230])
+	id 1jNibk-0008VO-SU; Sun, 12 Apr 2020 19:49:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNWVD-0001b8-F9
- for linux-riscv@lists.infradead.org; Sun, 12 Apr 2020 06:54:02 +0000
-Received: from [192.168.1.11] (lfbn-gre-1-325-105.w90-112.abo.wanadoo.fr
- [90.112.45.105]) (Authenticated sender: alex@ghiti.fr)
- by relay10.mail.gandi.net (Postfix) with ESMTPSA id A8422240006;
- Sun, 12 Apr 2020 06:53:51 +0000 (UTC)
-Subject: Re: [PATCH RFC 4/8] riscv/kaslr: randomize the kernel image offset
-To: Zong Li <zong.li@sifive.com>
-References: <cover.1584352425.git.zong.li@sifive.com>
- <16924c3f07b142688a3c0562d229cd67dc7bf8e6.1584352425.git.zong.li@sifive.com>
- <71cc2070-e867-17e1-cc64-66b634e3f48e@ghiti.fr>
- <CANXhq0rQ_YqmBBDEgOCcu8vr+5NWqNdnfZ+EX8ofaaD6PuBAFQ@mail.gmail.com>
- <69a9ecc5-550e-24a0-6f91-d65af3e00f18@ghiti.fr>
- <CANXhq0q62t3nZgqbYJzW9p1ntaNAFFX5LQFB65fkO5KCCv-RHA@mail.gmail.com>
- <c68dacf1-eca1-9d28-3c04-dd6793fe3274@ghiti.fr>
- <CANXhq0q6xNLzUAetQ6hHR5y_h5iZarcxyvSo3YAbprO=5LZomA@mail.gmail.com>
-From: Alex Ghiti <alex@ghiti.fr>
-Message-ID: <6dd04bc5-b0e8-6dbc-d4c5-9d19db5081dd@ghiti.fr>
-Date: Sun, 12 Apr 2020 02:53:51 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+ id 1jNibg-0008UP-9H; Sun, 12 Apr 2020 19:49:29 +0000
+Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A6730206C3;
+ Sun, 12 Apr 2020 19:49:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586720963;
+ bh=OSu9vVJom8pttJXFBXq0V1ybKX1HhPDF+fLlz2wy5xI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=pzr405/sWsHeV+I0WSYKIfQH3Iki5tkWQ3vSpkcy3jLFmiNnyI/eda0N2NUmgZtnR
+ l3O2adzA1dSQtugzjfjHGGA3GsDeypmHf/4OrsS+cNbGt6rZeLXwX4/3PhxId9WiOU
+ LPuYippu6RejjfEEtGLiXQy4TZZTaIgGGKFg4lLA=
+From: Mike Rapoport <rppt@kernel.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH 00/21] mm: rework free_area_init*() funcitons
+Date: Sun, 12 Apr 2020 22:48:38 +0300
+Message-Id: <20200412194859.12663-1-rppt@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <CANXhq0q6xNLzUAetQ6hHR5y_h5iZarcxyvSo3YAbprO=5LZomA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200411_235359_785763_3490D0D9 
-X-CRM114-Status: GOOD (  32.00  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20200412_124928_361601_A650F543 
+X-CRM114-Status: GOOD (  13.57  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.178.230 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,453 +73,154 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
+ linux-csky@vger.kernel.org, linux-parisc@vger.kernel.org,
+ sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Mike Rapoport <rppt@linux.ibm.com>,
+ Greg Ungerer <gerg@linux-m68k.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
+ Baoquan He <bhe@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ linux-sh@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
+ Helge Deller <deller@gmx.de>, x86@kernel.org,
+ Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
+ Matt Turner <mattst88@gmail.com>, linux-snps-arc@lists.infradead.org,
+ uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
+ linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
+ linux-m68k@lists.linux-m68k.org, Tony Luck <tony.luck@intel.com>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
+ Hoan Tran <Hoan@os.amperecomputing.com>, Michal Simek <monstr@monstr.eu>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Brian Cain <bcain@codeaurora.org>, Nick Hu <nickhu@andestech.com>,
+ linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
+ linux-mips@vger.kernel.org, openrisc@lists.librecores.org,
+ Richard Weinberger <richard@nod.at>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>,
+ Mike Rapoport <rppt@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+From: Mike Rapoport <rppt@linux.ibm.com>
 
+Hi,
 
-On 4/11/20 4:20 AM, Zong Li wrote:
-> On Fri, Apr 10, 2020 at 11:58 PM Alex Ghiti <alex@ghiti.fr> wrote:
->>
->> Hi Zong,
->>
->> On 4/9/20 6:31 AM, Zong Li wrote:
->>> On Thu, Apr 9, 2020 at 1:51 PM Alex Ghiti <alex@ghiti.fr> wrote:
->>>>
->>>>
->>>>
->>>> On 4/7/20 6:53 AM, Zong Li wrote:
->>>>> On Tue, Apr 7, 2020 at 1:11 PM Alex Ghiti <alex@ghiti.fr> wrote:
->>>>>>
->>>>>>
->>>>>> On 3/24/20 3:30 AM, Zong Li wrote:
->>>>>>> Entropy is derived from the banner and timer, it is better than nothing
->>>>>>> but not enough secure, so previous stage may pass entropy via the device
->>>>>>> tree /chosen/kaslr-seed node.
->>>>>>>
->>>>>>> We limit randomization range within 1GB, so we can exploit early page
->>>>>>> table to map new destination of kernel image. Additionally, the kernel
->>>>>>> offset need 2M alignment to ensure it's good in PMD page table.
->>>>>>>
->>>>>>> We also checks the kernel offset whether it's safe by avoiding to
->>>>>>> overlaps with dtb, initrd and reserved memory regions.
->>>>>>>
->>>>>>
->>>>>> That maybe changes the way my sv48 patchset will be implemented: I can't
->>>>>> get user preference (3-level or 4-level) by any means, device-tree or
->>>>>> kernel parameter.
->>>>>>
->>>>>> But I don't see how you could get a random offset without info from the
->>>>>> device tree anyway (reserved memory regions especially), so maybe I
->>>>>> could parse dtb for allowing the user to choose. I'll move this
->>>>>> discussion to the sv48 introduction.
->>>>>
->>>>> Maybe I'm a little bit misunderstanding here, but I think I got the
->>>>> random offset through some information by parsing dtb.
->>>>>
->>>>
->>>> I was just saying that I may use the dtb too in sv48 patchset to make it
->>>> possible for users to choose sv39 even if sv48 is supported by hardware
->>>> (which is not the case in my current patchset).
->>>>
->>>>>>
->>>>>>> Signed-off-by: Zong Li <zong.li@sifive.com>
->>>>>>> ---
->>>>>>>      arch/riscv/kernel/kaslr.c | 274 +++++++++++++++++++++++++++++++++++++-
->>>>>>>      arch/riscv/mm/init.c      |   2 +-
->>>>>>>      2 files changed, 273 insertions(+), 3 deletions(-)
->>>>>>>
->>>>>>> diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
->>>>>>> index 281b5fcca5c8..9ec2b608eb7f 100644
->>>>>>> --- a/arch/riscv/kernel/kaslr.c
->>>>>>> +++ b/arch/riscv/kernel/kaslr.c
->>>>>>> @@ -11,23 +11,293 @@
->>>>>>>      #include <asm/cacheflush.h>
->>>>>>>
->>>>>>>      extern char _start[], _end[];
->>>>>>> +extern void *dtb_early_va;
->>>>>>> +extern phys_addr_t dtb_early_pa;
->>>>>>>      extern void secondary_random_target(void);
->>>>>>>      extern void kaslr_create_page_table(uintptr_t start, uintptr_t end);
->>>>>>>
->>>>>>>      uintptr_t secondary_next_target __initdata;
->>>>>>>      static uintptr_t kaslr_offset __initdata;
->>>>>>>
->>>>>>> +static const __init u32 *get_reg_address(int root_cells,
->>>>>>> +                                      const u32 *value, u64 *result)
->>>>>>> +{
->>>>>>> +     int cell;
->>>>>>> +     *result = 0;
->>>>>>> +
->>>>>>> +     for (cell = root_cells; cell > 0; --cell)
->>>>>>> +             *result = (*result << 32) + fdt32_to_cpu(*value++);
->>>>>>> +
->>>>>>> +     return value;
->>>>>>> +}
->>>>>>> +
->>>>>>> +static __init int get_node_addr_size_cells(const char *path, int *addr_cell,
->>>>>>> +                                        int *size_cell)
->>>>>>> +{
->>>>>>> +     int node = fdt_path_offset(dtb_early_va, path);
->>>>>>> +     fdt64_t *prop;
->>>>>>> +
->>>>>>> +     if (node < 0)
->>>>>>> +             return -EINVAL;
->>>>>>> +
->>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#address-cells", NULL);
->>>>>>> +     if (!prop)
->>>>>>> +             return -EINVAL;
->>>>>>> +     *addr_cell = fdt32_to_cpu(*prop);
->>>>>>> +
->>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#size-cells", NULL);
->>>>>>> +     if (!prop)
->>>>>>> +             return -EINVAL;
->>>>>>> +     *size_cell = fdt32_to_cpu(*prop);
->>>>>>> +
->>>>>>> +     return node;
->>>>>>> +}
->>>>>>> +
->>>>>>> +static __init void kaslr_get_mem_info(uintptr_t *mem_start,
->>>>>>> +                                   uintptr_t *mem_size)
->>>>>>> +{
->>>>>>> +     int node, root, addr_cells, size_cells;
->>>>>>> +     u64 base, size;
->>>>>>> +
->>>>>>> +     /* Get root node's address cells and size cells. */
->>>>>>> +     root = get_node_addr_size_cells("/", &addr_cells, &size_cells);
->>>>>>> +     if (root < 0)
->>>>>>> +             return;
->>>>>>> +
->>>>>>> +     /* Get memory base address and size. */
->>>>>>> +     fdt_for_each_subnode(node, dtb_early_va, root) {
->>>>>>> +             const char *dev_type;
->>>>>>> +             const u32 *reg;
->>>>>>> +
->>>>>>> +             dev_type = fdt_getprop(dtb_early_va, node, "device_type", NULL);
->>>>>>> +             if (!dev_type)
->>>>>>> +                     continue;
->>>>>>> +
->>>>>>> +             if (!strcmp(dev_type, "memory")) {
->>>>>>> +                     reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
->>>>>>> +                     if (!reg)
->>>>>>> +                             return;
->>>>>>> +
->>>>>>> +                     reg = get_reg_address(addr_cells, reg, &base);
->>>>>>> +                     reg = get_reg_address(size_cells, reg, &size);
->>>>>>> +
->>>>>>> +                     *mem_start = base;
->>>>>>> +                     *mem_size = size;
->>>>>>> +
->>>>>>> +                     break;
->>>>>>> +             }
->>>>>>> +     }
->>>>>>> +}
->>>>>>> +
->>>>>>> +/* Return a default seed if there is no HW generator. */
->>>>>>> +static u64 kaslr_default_seed = ULL(-1);
->>>>>>> +static __init u64 kaslr_get_seed(void)
->>>>>>> +{
->>>>>>> +     int node, len;
->>>>>>> +     fdt64_t *prop;
->>>>>>> +     u64 ret;
->>>>>>> +
->>>>>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
->>>>>>> +     if (node < 0)
->>>>>>> +             return kaslr_default_seed++;
->>>>>>> +
->>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "kaslr-seed", &len);
->>>>>>> +     if (!prop || len != sizeof(u64))
->>>>>>> +             return kaslr_default_seed++;
->>>>>>> +
->>>>>>> +     ret = fdt64_to_cpu(*prop);
->>>>>>> +
->>>>>>> +     /* Re-write to zero for checking whether get seed at second time */
->>>>>>> +     *prop = 0;
->>>>>>> +
->>>>>>> +     return ret;
->>>>>>> +}
->>>>>>> +
->>>>>>> +static __init bool is_overlap(uintptr_t s1, uintptr_t e1, uintptr_t s2,
->>>>>>> +                           uintptr_t e2)
->>>>>>> +{
->>>>>>> +     return e1 >= s2 && e2 >= s1;
->>>>>>> +}
->>>>>>
->>>>>> Inline this function or use a macro maybe.
->>>>>
->>>>> Yes, sure. Thanks.
->>>>>
->>>>>>
->>>>>>> +
->>>>>>> +static __init bool is_overlap_reserved_mem(uintptr_t start_addr,
->>>>>>> +                                        uintptr_t end_addr)
->>>>>>> +{
->>>>>>> +     int node, rsv_mem, addr_cells, size_cells;
->>>>>>> +
->>>>>>> +     /* Get the reserved-memory node. */
->>>>>>> +     rsv_mem = get_node_addr_size_cells("/reserved-memory",
->>>>>>> +                                        &addr_cells,
->>>>>>> +                                        &size_cells);
->>>>>>> +     if (rsv_mem < 0)
->>>>>>> +             return false;
->>>>>>> +
->>>>>>> +     /* Get memory base address and size. */
->>>>>>> +     fdt_for_each_subnode(node, dtb_early_va, rsv_mem) {
->>>>>>> +             uint64_t base, size;
->>>>>>> +             const uint32_t *reg;
->>>>>>> +
->>>>>>> +             reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
->>>>>>> +             if (!reg)
->>>>>>> +                     return 0;
->>>>>>> +
->>>>>>> +             reg = get_reg_address(addr_cells, reg, &base);
->>>>>>> +             reg = get_reg_address(size_cells, reg, &size);
->>>>>>> +
->>>>>>> +             if (is_overlap(start_addr, end_addr, base, base + size))
->>>>>>> +                     return true;
->>>>>>> +     }
->>>>>>> +
->>>>>>> +     return false;
->>>>>>> +}
->>>>>>> +
->>>>>>> +static __init bool is_overlap_initrd(uintptr_t start_addr, uintptr_t end_addr)
->>>>>>> +{
->>>>>>> +     int node;
->>>>>>> +     uintptr_t initrd_start, initrd_end;
->>>>>>> +     fdt64_t *prop;
->>>>>>> +
->>>>>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
->>>>>>> +     if (node < 0)
->>>>>>> +             return false;
->>>>>>> +
->>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-start", NULL);
->>>>>>> +     if (!prop)
->>>>>>> +             return false;
->>>>>>> +
->>>>>>> +     initrd_start = fdt64_to_cpu(*prop);
->>>>>>> +
->>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-end", NULL);
->>>>>>> +     if (!prop)
->>>>>>> +             return false;
->>>>>>> +
->>>>>>> +     initrd_end = fdt64_to_cpu(*prop);
->>>>>>> +
->>>>>>> +     return is_overlap(start_addr, end_addr, initrd_start, initrd_end);
->>>>>>> +}
->>>>>>> +
->>>>>>> +static __init bool is_overlap_dtb(uintptr_t start_addr, uintptr_t end_addr)
->>>>>>> +{
->>>>>>> +     uintptr_t dtb_start = dtb_early_pa;
->>>>>>> +     uintptr_t dtb_end = dtb_start + fdt_totalsize(dtb_early_va);
->>>>>>> +
->>>>>>> +     return is_overlap(start_addr, end_addr, dtb_start, dtb_end);
->>>>>>> +}
->>>>>>> +
->>>>>>> +static __init bool has_regions_overlapping(uintptr_t start_addr,
->>>>>>> +                                        uintptr_t end_addr)
->>>>>>> +{
->>>>>>> +     if (is_overlap_dtb(start_addr, end_addr))
->>>>>>> +             return true;
->>>>>>> +
->>>>>>> +     if (is_overlap_initrd(start_addr, end_addr))
->>>>>>> +             return true;
->>>>>>> +
->>>>>>> +     if (is_overlap_reserved_mem(start_addr, end_addr))
->>>>>>> +             return true;
->>>>>>> +
->>>>>>> +     return false;
->>>>>>> +}
->>>>>>> +
->>>>>>> +static inline __init unsigned long get_legal_offset(int random_index,
->>>>>>> +                                                 int max_index,
->>>>>>> +                                                 uintptr_t mem_start,
->>>>>>> +                                                 uintptr_t kernel_size)
->>>>>>> +{
->>>>>>> +     uintptr_t start_addr, end_addr;
->>>>>>> +     int idx, stop_idx;
->>>>>>> +
->>>>>>> +     idx = stop_idx = random_index;
->>>>>>> +
->>>>>>> +     do {
->>>>>>> +             start_addr = mem_start + idx * SZ_2M + kernel_size;
->>>>>>> +             end_addr = start_addr + kernel_size;
->>>>>>> +
->>>>>>> +             /* Check overlap to other regions. */
->>>>>>> +             if (!has_regions_overlapping(start_addr, end_addr))
->>>>>>> +                     return idx * SZ_2M + kernel_size;
->>>>>>> +
->>>>>>> +             if (idx-- < 0)
->>>>>>> +                     idx = max_index;
->>>>>>
->>>>>> Isn't the fallback to max_index a security breach ? Because at some
->>>>>> point, the kernel will be loaded at this specific address.
->>>>>
->>>>> The max_index is the maximum safe index for destination of new kernel
->>>>> image. Could you give more explain here?
->>>>>
->>>>
->>>> But max_index is not random at all. I really don't know if that's a
->>>> problem, I just found intriguing the fact the kernel could be loaded at
->>>> some specific location. Would it be more secure, instead of picking
->>>> max_index as fallback when reaching 0, to pick another random number
->>>> between random_index and max_index ?
->>>
->>> ok, I can get your point. The original idea here is that we get a
->>> random index first, then we decrease the index to retry to find a good
->>> place if there are overlapping with other regions. A bit like the ring
->>> buffer, the end of index traversing is not zero, but the random_index
->>> - 1, we might consider it as continuity, so we don't know where is the
->>> end point because the start point is random, whether we stop at zero
->>> or random_index - 1.
->>>
->>> Pick another random number is more secure when occurring overlapping,
->>> but I a little bit worry that it would take very long time to retry
->>> many times in the worst case. for example, there is just only one
->>> index could fit kernel image in (except for original location). In the
->>> meantime, we don't need to wait the index being decreased to zero,
->>> because it seems to me that they are the same to stop at zero or
->>> random_index - 1, so if we decide to re-calculate a new random number,
->>> maybe we could remove the index decreasing here.
->>
->> But you're right that it could take some time before converging to a
->> "good" index. Maybe we could restrict the index range to indexes that we
->> know for sure will be good ?
->>
-> 
-> Yes, it would be good for ensuring that we only need to get the random
-> number just once, but there are some points need to be discussed. The
-> first one is that we couldn't dynamically allocate a memory space at
-> that moment, because the memblock is not ready, so we might need to
-> declare a enough big array at static time to collect all good indexes.
-> Maybe CONFIG_MAXPHYSMEM_2GB and CONFIG_MAXPHYSMEM_128GB could be used
-> to decide the number of elements of this array. The second one is that
-> we always need to take the time to traverse the whole memory and check
-> the overlapping for all indexes no matter what the cases are. I'm not
-> sure whether it is good because this way increases the time and space
-> cost, but it would be more secure. Do you have any idea?
-> 
+After the discussion [1] about removal of CONFIG_NODES_SPAN_OTHER_NODES and
+CONFIG_HAVE_MEMBLOCK_NODE_MAP options, I took it a bit further and updated
+the node/zone initialization. 
 
-What about simply finding the biggest range of contiguous non-reserved 
-memory and getting an index from there ?
+Since all architectures have memblock, it is possible to use only the newer
+version of free_area_init_node() that calculates the zone and node
+boundaries based on memblock node mapping and architectural limits on
+possible zone PFNs. 
 
-> 
->> Alex
->>
->>>
->>>>
->>>> Alex
->>>>
->>>>>>
->>>>>>> +
->>>>>>> +     } while (idx != stop_idx);
->>>>>>> +
->>>>>>> +     return 0;
->>>>>>> +}
->>>>>>> +
->>>>>>> +static inline __init u64 rotate_xor(u64 hash, const void *area, size_t size)
->>>>>>> +{
->>>>>>> +     size_t i;
->>>>>>> +     uintptr_t *ptr = (uintptr_t *) area;
->>>>>>> +
->>>>>>> +     for (i = 0; i < size / sizeof(hash); i++) {
->>>>>>> +             /* Rotate by odd number of bits and XOR. */
->>>>>>> +             hash = (hash << ((sizeof(hash) * 8) - 7)) | (hash >> 7);
->>>>>>> +             hash ^= ptr[i];
->>>>>>> +     }
->>>>>>> +
->>>>>>> +     return hash;
->>>>>>> +}
->>>>>>> +
->>>>>>> +#define MEM_RESERVE_START    __pa(PAGE_OFFSET)
->>>>>>> +static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
->>>>>>> +{
->>>>>>> +     uintptr_t mem_start = 0, mem_size= 0, random_size;
->>>>>>> +     uintptr_t kernel_size_align = round_up(kernel_size, SZ_2M);
->>>>>>> +     int index;
->>>>>>> +     u64 random = 0;
->>>>>>> +     cycles_t time_base;
->>>>>>> +
->>>>>>> +     /* Attempt to create a simple but unpredictable starting entropy */
->>>>>>> +     random = rotate_xor(random, linux_banner, strlen(linux_banner));
->>>>>>> +
->>>>>>> +     /*
->>>>>>> +      * If there is no HW random number generator, use timer to get a random
->>>>>>> +      * number. This is better than nothing but not enough secure.
->>>>>>> +      */
->>>>>>> +     time_base = get_cycles() << 32;
->>>>>>> +     time_base ^= get_cycles();
->>>>>>> +     random = rotate_xor(random, &time_base, sizeof(time_base));
->>>>>>> +
->>>>>>> +     if (seed)
->>>>>>> +             random = rotate_xor(random, &seed, sizeof(seed));
->>>>>>> +
->>>>>>> +     kaslr_get_mem_info(&mem_start, &mem_size);
->>>>>>> +     if (!mem_size)
->>>>>>> +             return 0;
->>>>>>> +
->>>>>>> +     if (mem_start < MEM_RESERVE_START) {
->>>>>>> +             mem_size -= MEM_RESERVE_START - mem_start;
->>>>>>> +             mem_start = MEM_RESERVE_START;
->>>>>>> +     }
->>>>>>> +
->>>>>>> +     /*
->>>>>>> +      * Limit randomization range within 1G, so we can exploit
->>>>>>> +      * early_pmd/early_pte during early page table phase.
->>>>>>> +      */
->>>>>>> +     random_size = min_t(u64,
->>>>>>> +                         mem_size - (kernel_size_align * 2),
->>>>>>> +                         SZ_1G - (kernel_size_align * 2));
->>>>>>
->>>>>> pgdir size is 30 bits in sv39, but it's 39 bits in sv48, you should use
->>>>>> PGDIR_SIZE macro here.
->>>>>
->>>>> OK, change it in the next version. Thanks.
->>>>>
->>>>>>
->>>>>>> +
->>>>>>> +     /* The index of 2M block in whole avaliable region */
->>>>>>> +     index = random % (random_size / SZ_2M);
->>>>>>> +
->>>>>>> +     return get_legal_offset(index, random_size / SZ_2M,
->>>>>>> +                             mem_start, kernel_size_align);
->>>>>>> +}
->>>>>>> +
->>>>>>>      uintptr_t __init kaslr_early_init(void)
->>>>>>>      {
->>>>>>> +     u64 seed;
->>>>>>>          uintptr_t dest_start, dest_end;
->>>>>>>          uintptr_t kernel_size = (uintptr_t) _end - (uintptr_t) _start;
->>>>>>>
->>>>>>>          /* Get zero value at second time to avoid doing randomization again. */
->>>>>>> -     if (kaslr_offset)
->>>>>>> +     seed = kaslr_get_seed();
->>>>>>> +     if (!seed)
->>>>>>>                  return 0;
->>>>>>>
->>>>>>>          /* Get the random number for kaslr offset. */
->>>>>>> -     kaslr_offset = 0x10000000;
->>>>>>> +     kaslr_offset = get_random_offset(seed, kernel_size);
->>>>>>>
->>>>>>>          /* Update kernel_virt_addr for get_kaslr_offset. */
->>>>>>>          kernel_virt_addr += kaslr_offset;
->>>>>>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
->>>>>>> index 2f5b25f02b6c..34c6ecf2c599 100644
->>>>>>> --- a/arch/riscv/mm/init.c
->>>>>>> +++ b/arch/riscv/mm/init.c
->>>>>>> @@ -125,7 +125,7 @@ static void __init setup_initrd(void)
->>>>>>>      }
->>>>>>>      #endif /* CONFIG_BLK_DEV_INITRD */
->>>>>>>
->>>>>>> -static phys_addr_t dtb_early_pa __initdata;
->>>>>>> +phys_addr_t dtb_early_pa __initdata;
->>>>>>>
->>>>>>>      void __init setup_bootmem(void)
->>>>>>>      {
->>>>>>>
->>>>>>
->>>>>> Alex
+The architectures that still determined zone and hole sizes can be switched
+to the generic code and the old code that took those zone and hole sizes
+can be simply removed.
+
+And, since it all started from the removal of
+CONFIG_NODES_SPAN_OTHER_NODES, the memmap_init() is now updated to iterate
+over memblocks and so it does not need to perform early_pfn_to_nid() query
+for every PFN.
+
+--
+Sincerely yours,
+Mike.
+
+[1] https://lore.kernel.org/lkml/1585420282-25630-1-git-send-email-Hoan@os.amperecomputing.com
+
+Baoquan He (1):
+  mm: memmap_init: iterate over memblock regions rather that check each PFN
+
+Mike Rapoport (20):
+  mm: memblock: replace dereferences of memblock_region.nid with API calls
+  mm: make early_pfn_to_nid() and related defintions close to each other
+  mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option
+  mm: free_area_init: use maximal zone PFNs rather than zone sizes
+  mm: use free_area_init() instead of free_area_init_nodes()
+  alpha: simplify detection of memory zone boundaries
+  arm: simplify detection of memory zone boundaries
+  arm64: simplify detection of memory zone boundaries for UMA configs
+  csky: simplify detection of memory zone boundaries
+  m68k: mm: simplify detection of memory zone boundaries
+  parisc: simplify detection of memory zone boundaries
+  sparc32: simplify detection of memory zone boundaries
+  unicore32: simplify detection of memory zone boundaries
+  xtensa: simplify detection of memory zone boundaries
+  mm: remove early_pfn_in_nid() and CONFIG_NODES_SPAN_OTHER_NODES
+  mm: free_area_init: allow defining max_zone_pfn in descending order
+  mm: rename free_area_init_node() to free_area_init_memoryless_node()
+  mm: clean up free_area_init_node() and its helpers
+  mm: simplify find_min_pfn_with_active_regions()
+  docs/vm: update memory-models documentation
+
+ .../vm/numa-memblock/arch-support.txt         |  34 ---
+ Documentation/vm/memory-model.rst             |   9 +-
+ arch/alpha/mm/init.c                          |  16 +-
+ arch/alpha/mm/numa.c                          |  22 +-
+ arch/arc/mm/init.c                            |  36 +--
+ arch/arm/mm/init.c                            |  66 +----
+ arch/arm64/Kconfig                            |   1 -
+ arch/arm64/mm/init.c                          |  56 +---
+ arch/arm64/mm/numa.c                          |   9 +-
+ arch/c6x/mm/init.c                            |   8 +-
+ arch/csky/kernel/setup.c                      |  26 +-
+ arch/h8300/mm/init.c                          |   6 +-
+ arch/hexagon/mm/init.c                        |   6 +-
+ arch/ia64/Kconfig                             |   1 -
+ arch/ia64/mm/contig.c                         |   2 +-
+ arch/ia64/mm/discontig.c                      |   2 +-
+ arch/m68k/mm/init.c                           |   6 +-
+ arch/m68k/mm/mcfmmu.c                         |   9 +-
+ arch/m68k/mm/motorola.c                       |  15 +-
+ arch/m68k/mm/sun3mmu.c                        |  10 +-
+ arch/microblaze/Kconfig                       |   1 -
+ arch/microblaze/mm/init.c                     |   2 +-
+ arch/mips/Kconfig                             |   1 -
+ arch/mips/loongson64/numa.c                   |   2 +-
+ arch/mips/mm/init.c                           |   2 +-
+ arch/mips/sgi-ip27/ip27-memory.c              |   2 +-
+ arch/nds32/mm/init.c                          |  11 +-
+ arch/nios2/mm/init.c                          |   8 +-
+ arch/openrisc/mm/init.c                       |   9 +-
+ arch/parisc/mm/init.c                         |  22 +-
+ arch/powerpc/Kconfig                          |  10 -
+ arch/powerpc/mm/mem.c                         |   2 +-
+ arch/riscv/Kconfig                            |   1 -
+ arch/riscv/mm/init.c                          |   2 +-
+ arch/s390/Kconfig                             |   1 -
+ arch/s390/mm/init.c                           |   2 +-
+ arch/sh/Kconfig                               |   1 -
+ arch/sh/mm/init.c                             |   2 +-
+ arch/sparc/Kconfig                            |  10 -
+ arch/sparc/mm/init_64.c                       |   2 +-
+ arch/sparc/mm/srmmu.c                         |  21 +-
+ arch/um/kernel/mem.c                          |  12 +-
+ arch/unicore32/include/asm/memory.h           |   2 +-
+ arch/unicore32/include/mach/memory.h          |   6 +-
+ arch/unicore32/kernel/pci.c                   |  14 +-
+ arch/unicore32/mm/init.c                      |  43 +--
+ arch/x86/Kconfig                              |  10 -
+ arch/x86/mm/init.c                            |   2 +-
+ arch/x86/mm/numa.c                            |  11 +-
+ arch/xtensa/mm/init.c                         |   8 +-
+ include/linux/memblock.h                      |   8 +-
+ include/linux/mm.h                            |  30 +-
+ include/linux/mmzone.h                        |  11 +-
+ mm/Kconfig                                    |   3 -
+ mm/memblock.c                                 |  19 +-
+ mm/memory_hotplug.c                           |   4 -
+ mm/page_alloc.c                               | 262 +++++++-----------
+ 57 files changed, 249 insertions(+), 650 deletions(-)
+ delete mode 100644 Documentation/features/vm/numa-memblock/arch-support.txt
+
+-- 
+2.25.1
+
 
