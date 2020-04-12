@@ -2,78 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A57A01A5BDA
-	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 03:43:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59E921A5BF7
+	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 04:09:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0U51hutSksQWEHdR18ehp2fYxpUUPe+QnTYlRU5DmFY=; b=FioDeZ9bEaY4ma
-	F8z4gmPtxkiUUnKl/zhyRBIIdX+SC8KzjS945ypinLojVBJ2qvCG9yJnEbk8uB7c/ieHrTEVxy3dm
-	PQ485K6TcZH2vO00LvM9z+r58N0jDZyZWs46wfWmcCZr3m0YcIZ8aZBekv5ua9MF097p9F4LQbbiD
-	yXGjb2FdeDzftA35OZD0TWnPKDkUT8L4IaauuCkAeVCrMrQvx0zRbUirxImPFzRZMeT9lxHUbb/ie
-	wiPxToTg9b1+o96OT1VpYHImWipX1mkKo0lD6X18UcDdlSL1iuC//0gLSr5nMIUaeEFKxx7GIuzY/
-	mDTWpElB2+rBBWO22hSg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=+JInvVY3VJfb/QRP96/kqjnYp2vnMGWPhVG1eXe3E14=; b=ucz8w4S8fqiFOeEzBeexQ/HFX
+	D2L6sGqs6IZP3C+5cdONCk4dx5Crns1DXu0qQ6L1Z2cO7voP4G+3EUu9kZSCQYNxmJ/IkjFET5MWx
+	TaurQq+q2yGKy5aJeSfNLWdxTI/9Zn2Lx/0xua7xVYg8tXxTAGep4E6ZO0miUpincpwyRD/32PeTO
+	HC2966tWfKUYQTWsXIuLjD2BZx4qPjiioIm+/WCrxvCt9EUH9gOHuuDHWcSwT00nOdu7BgUJEb//t
+	2CyWXx/V1oR+lK9oB/v1fNrFK+KpeDI3Q8bW0P18FMK+V6qQjf+6R9B+0E4+MErEvP022g0pQZyrV
+	5pMSIh5pw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNReB-0004Fj-JL; Sun, 12 Apr 2020 01:42:55 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1jNS3P-0002vz-3O; Sun, 12 Apr 2020 02:08:59 +0000
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNRe2-000493-TT
- for linux-riscv@lists.infradead.org; Sun, 12 Apr 2020 01:42:49 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id z9so2380278pjd.2
- for <linux-riscv@lists.infradead.org>; Sat, 11 Apr 2020 18:42:46 -0700 (PDT)
+ id 1jNS3J-0002vf-RD
+ for linux-riscv@lists.infradead.org; Sun, 12 Apr 2020 02:08:56 +0000
+Received: by mail-qt1-x842.google.com with SMTP id s30so4659773qth.2
+ for <linux-riscv@lists.infradead.org>; Sat, 11 Apr 2020 19:08:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=0U51hutSksQWEHdR18ehp2fYxpUUPe+QnTYlRU5DmFY=;
- b=Ls3z2xXo0ix4nQJWvL3ycriVUBFaeFnbXnaviUbS1dGoTg2PRbw1SLE4KR4blxNHBm
- 869kqBxDBVj6XCzwvR+CcQvjp0CmiCr4UEwEOtCRrgQoQs3RiSxXlHRWD1dfuQzOhX4S
- l3Jl5Kb5KWMuq9hY/qi+W8rtMPWrGgnzSEGCHsgaa09ZxdnLth9CKuQnOHRILxyFVLzm
- wgsm+VsZFOlduVHxeC+K3z5xE4Ag0uGPXXA7iT48e3VBeXvd7WDgLcXMyiYZ6WxS+uzR
- zBFh4C2mxxC/LXarDh7stuUFJ8yMFCVo0weYXAK5nPeRTQJmpTQT07sdLhYi7iN7GG6y
- KWdg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+JInvVY3VJfb/QRP96/kqjnYp2vnMGWPhVG1eXe3E14=;
+ b=lYc5nFX/tXg5b0U4vFjpJKqLLwONhSo27o6PQlDx0fdcBMmzQFZnFOPvkorN8kFM1U
+ zwp58IIqXhHJ7da3dbI1WjMaxsqJPa1yUkjvTyUsXwpxAtIaGis9bCOCJzKoZ1SFxpNZ
+ 99nVDpguImJv8LSVkI6M9DE310T1sPuzZtETo4BuJKBrWXCTCp35uvuqTLuOFOCvgOou
+ 7sSK0UoVWwEZWJO/SREeFa4bJyG8xuZN90Yvi9NbNpmZy36o2lCSdBJgcF95a4jRe394
+ f9nq5pBtsRZBIx1xPxl+VA9AOTK8ITSdTYY4fG6bXEzMb1JUpmMKHiONVZitplBggCi5
+ N4sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=0U51hutSksQWEHdR18ehp2fYxpUUPe+QnTYlRU5DmFY=;
- b=fRV3l9i+cFY6LD+4hTqrlEaDkz7mxGvqKoyIzXg++JKy0vB2V0XIziOFJ8ebGGWCaA
- 4acAACYwnQOHcDIt6kww0CAAYjemlpwJmqq+7/6E4Kx1cjjH4vn7gMvRvwY8IZhr8Rcc
- P7Ijfq0eGg4MafxwkZQzdQvgA/UG3jbtuNECxLqvB0EmlvAthS/woo1K3Aoqc/zss1Fa
- OZwvNhhoN842/bm2cbrfpngxTZjVXHhO5lq1mjNLwshdZcOa+/vCPsDkvZeE8pouWf/c
- azLZBl/laB4KVB0ntRUGChuX/leTt9Nxrj6Wyv5aa/oezsJofnu77FYcFdvmUTQm2PPc
- Nn9A==
-X-Gm-Message-State: AGi0PuYa5N1iSOL4oDZZbYPBuZMgi3zmI2q84awDmeoGNz9TqcTw6zQK
- lpk2OGjXt+W3TjoWculWxpdJXEJANS4=
-X-Google-Smtp-Source: APiQypLtAGfHadyoOL574zD/EPZ+X5fqmvM0tz04vjrQg8B2LUqOHHz0YUigXQNWmM5cMrnGqjSWRw==
-X-Received: by 2002:a17:90a:3086:: with SMTP id
- h6mr14238572pjb.49.1586655765569; 
- Sat, 11 Apr 2020 18:42:45 -0700 (PDT)
-Received: from localhost.localdomain (123-195-35-41.dynamic.kbronet.com.tw.
- [123.195.35.41])
- by smtp.gmail.com with ESMTPSA id w90sm5252900pjj.2.2020.04.11.18.42.43
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 11 Apr 2020 18:42:45 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+JInvVY3VJfb/QRP96/kqjnYp2vnMGWPhVG1eXe3E14=;
+ b=GlPj3OEVP8h2d2RRyEYhXD6avUmqNgZQ4IYZGXcRowmAMsqNXfIs6b5MKizaQtgfzV
+ 5Vn524g6vMqNtNRhScGV+rSvGjgj5sIJGngPApqxVwS+WWIu0TPKVeRlOYK0y6gRc1ZI
+ lYkts0I3IiTdh8oT6WubBwswrSyyviSeben6vUxpay+rlrWZjqkGuCZRE0TsRxZerXiB
+ jZEZ8sDlOZDxMB/I4SJebVpLBeSmPqrZ/Ocmau6s+dX2p5k5YZftaVcgngviqvuVwuvd
+ wpJ8foxdj9bd1KNPxcAuuJ7f6kYznwGfBimymtOAEnIjTUFUX16+gMDWWieKyvGAnL07
+ QNNw==
+X-Gm-Message-State: AGi0PubOu7J/cw95Rl4omMReQWCPU2efGzOl5oyBCr8CSNuAGWFXpd0W
+ xCU/yrK2K9O6RDrKM1NmSR2A78z5NLL76tKspoTW9kPPiq0=
+X-Google-Smtp-Source: APiQypL/5yHG47gyZBTwsH9VUpMwGbMDuDcgWduTOZLj15OAUmta+daPjE2+BduRXT4R7r3LodFLM0vzpXfQNL6XLFE=
+X-Received: by 2002:ac8:18c3:: with SMTP id o3mr5950896qtk.49.1586657332499;
+ Sat, 11 Apr 2020 19:08:52 -0700 (PDT)
+MIME-Version: 1.0
+References: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
+ <CAOnJCUL1mR=FPYUHOHaqisHpP6b2hwfWaWNXfCiKc0i42ina=g@mail.gmail.com>
+In-Reply-To: <CAOnJCUL1mR=FPYUHOHaqisHpP6b2hwfWaWNXfCiKc0i42ina=g@mail.gmail.com>
 From: Vincent Chen <vincent.chen@sifive.com>
-To: daniel.thompson@linaro.org, paul.walmsley@sifive.com, palmer@dabbelt.com
-Subject: [PATCH v3 5/5] riscv: Add SW single-step support for KDB
-Date: Sun, 12 Apr 2020 09:42:01 +0800
-Message-Id: <1586655721-22567-6-git-send-email-vincent.chen@sifive.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1586655721-22567-1-git-send-email-vincent.chen@sifive.com>
-References: <1586655721-22567-1-git-send-email-vincent.chen@sifive.com>
+Date: Sun, 12 Apr 2020 10:08:41 +0800
+Message-ID: <CABvJ_xgPPn6=de+UqqSY+WQ+UsfQGPA6Sk3DQ5RTrf3oeUVPvg@mail.gmail.com>
+Subject: Re: [RFC] riscv: use vDSO common flow to reduce the latency of the
+ time-related functions
+To: Atish Patra <atishp@atishpatra.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200411_184247_529122_89267BFB 
-X-CRM114-Status: GOOD (  17.12  )
-X-Spam-Score: 3.3 (+++)
+X-CRM114-CacheID: sfid-20200411_190854_366917_536A8EDE 
+X-CRM114-Status: GOOD (  28.88  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (3.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -84,8 +81,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 1.3 DRUGS_ERECTILE_OBFU    Obfuscated reference to an erectile drug
- 2.2 DRUGS_ERECTILE         Refers to an erectile drug
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,478 +92,384 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: kgdb-bugreport@lists.sourceforge.net, linux-riscv@lists.infradead.org,
- Vincent Chen <vincent.chen@sifive.com>
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-In KGDB, the GDB in the host is responsible for the single-step operation
-of the software. In other words, KGDB does not need to derive the next pc
-address when performing a software single-step operation. KGDB just inserts
-the break instruction at the indicated address according to the GDB
-instructions. This approach does not work in KDB because the GDB does not
-involve the KDB process. Therefore, this patch provides KDB a software
-single-step mechanism to use.
+On Sat, Apr 11, 2020 at 7:42 AM Atish Patra <atishp@atishpatra.org> wrote:
+>
+> On Mon, Apr 6, 2020 at 9:07 PM Vincent Chen <vincent.chen@sifive.com> wrote:
+> >
+> > Even if RISC-V has supported the vDSO feature, the latency of the functions
+> > for obtaining the system time is still expensive. It is because these
+> > functions still trigger a corresponding system call in the process, which
+> > slows down the response time. If we want to remove the system call to
+> > reduce the latency, the kernel should have the ability to output the system
+> > clock information to userspace. This patch introduces the vDSO common flow
+> > to enable the kernel to achieve the above feature and uses "rdtime"
+> > instruction to obtain the current time in the user space. Under this
+> > condition, the latency cost by the ecall from U-mode to S-mode can be
+> > eliminated. After applying this patch, the latency of gettimeofday()
+> > measured on the HiFive unleashed board can be reduced by %61.
+> >
+>
+> That's great.
+>
+> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> > ---
+> >  arch/riscv/Kconfig                         |  3 ++
+> >  arch/riscv/include/asm/vdso.h              |  3 --
+> >  arch/riscv/include/asm/vdso/gettimeofday.h | 73 ++++++++++++++++++++++++++++++
+> >  arch/riscv/include/asm/vdso/vsyscall.h     | 27 +++++++++++
+> >  arch/riscv/kernel/vdso.c                   |  4 +-
+> >  arch/riscv/kernel/vdso/Makefile            | 12 +++--
+> >  arch/riscv/kernel/vdso/clock_getres.S      | 18 --------
+> >  arch/riscv/kernel/vdso/clock_gettime.S     | 18 --------
+> >  arch/riscv/kernel/vdso/gettimeofday.S      | 18 --------
+> >  arch/riscv/kernel/vdso/vdso.lds.S          |  2 +
+> >  arch/riscv/kernel/vdso/vgettimeofday.c     | 25 ++++++++++
+> >  11 files changed, 141 insertions(+), 62 deletions(-)
+> >  create mode 100644 arch/riscv/include/asm/vdso/gettimeofday.h
+> >  create mode 100644 arch/riscv/include/asm/vdso/vsyscall.h
+> >  delete mode 100644 arch/riscv/kernel/vdso/clock_getres.S
+> >  delete mode 100644 arch/riscv/kernel/vdso/clock_gettime.S
+> >  delete mode 100644 arch/riscv/kernel/vdso/gettimeofday.S
+> >  create mode 100644 arch/riscv/kernel/vdso/vgettimeofday.c
+> >
+> > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> > index ded32979d33d..028b48c14c4e 100644
+> > --- a/arch/riscv/Kconfig
+> > +++ b/arch/riscv/Kconfig
+> > @@ -68,6 +68,9 @@ config RISCV
+> >         select HAVE_ARCH_KASAN if MMU && 64BIT
+> >         select HAVE_REGS_AND_STACK_ACCESS_API
+> >         select HAVE_RSEQ
+> > +       select HAVE_GENERIC_VDSO
+> > +       select GENERIC_TIME_VSYSCALL
+> > +       select GENERIC_GETTIMEOFDAY
+> >
+> >  config ARCH_MMAP_RND_BITS_MIN
+> >         default 18 if 64BIT
+> > diff --git a/arch/riscv/include/asm/vdso.h b/arch/riscv/include/asm/vdso.h
+> > index 7a7fce63c474..05689eab4083 100644
+> > --- a/arch/riscv/include/asm/vdso.h
+> > +++ b/arch/riscv/include/asm/vdso.h
+> > @@ -10,9 +10,6 @@
+> >
+> >  #include <linux/types.h>
+> >
+> > -struct vdso_data {
+> > -};
+> > -
+> >  /*
+> >   * The VDSO symbols are mapped into Linux so we can just use regular symbol
+> >   * addressing to get their offsets in userspace.  The symbols are mapped at an
+> > diff --git a/arch/riscv/include/asm/vdso/gettimeofday.h b/arch/riscv/include/asm/vdso/gettimeofday.h
+> > new file mode 100644
+> > index 000000000000..087fc01fd288
+> > --- /dev/null
+> > +++ b/arch/riscv/include/asm/vdso/gettimeofday.h
+> > @@ -0,0 +1,73 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +#ifndef __ASM_VDSO_GETTIMEOFDAY_H
+> > +#define __ASM_VDSO_GETTIMEOFDAY_H
+> > +
+> > +#ifndef __ASSEMBLY__
+> > +
+> > +#include <asm/unistd.h>
+> > +#include <uapi/linux/time.h>
+> > +
+> > +#define VDSO_HAS_CLOCK_GETRES  1
+> > +
+> > +static __always_inline
+> > +int gettimeofday_fallback(struct __kernel_old_timeval *_tv,
+> > +                         struct timezone *_tz)
+> > +{
+> > +       register struct __kernel_old_timeval *tv asm("a0") = _tv;
+> > +       register struct timezone *tz asm("a1") = _tz;
+> > +       register long ret asm("a0");
+> > +       register long nr asm("a7") = __NR_gettimeofday;
+> > +
+> > +       asm volatile ("ecall\n"
+> > +                     : "=r" (ret)
+> > +                     : "r"(tv), "r"(tz), "r"(nr)
+> > +                     : "memory");
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static __always_inline
+> > +long clock_gettime_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
+> > +{
+> > +       register clockid_t clkid asm("a0") = _clkid;
+> > +       register struct __kernel_timespec *ts asm("a1") = _ts;
+> > +       register long ret asm("a0");
+> > +       register long nr asm("a7") = __NR_clock_gettime;
+> > +
+> > +       asm volatile ("ecall\n"
+> > +                     : "=r" (ret)
+> > +                     : "r"(clkid), "r"(ts), "r"(nr)
+> > +                     : "memory");
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static __always_inline
+> > +int clock_getres_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
+> > +{
+> > +       register clockid_t clkid asm("a0") = _clkid;
+> > +       register struct __kernel_timespec *ts asm("a1") = _ts;
+> > +       register long ret asm("a0");
+> > +       register long nr asm("a7") = __NR_clock_getres;
+> > +
+> > +       asm volatile ("ecall\n"
+> > +                     : "=r" (ret)
+> > +                     : "r"(clkid), "r"(ts), "r"(nr)
+> > +                     : "memory");
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static __always_inline u64 __arch_get_hw_counter(s32 clock_mode)
+> > +{
+> > +       return csr_read(CSR_TIME);
+> > +}
+> > +
+>
+> How will it work on RV32 ?
+>
 
-Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
----
- arch/riscv/include/asm/parse_asm.h | 219 +++++++++++++++++++++++++++++++++++++
- arch/riscv/kernel/kgdb.c           | 179 +++++++++++++++++++++++++++++-
- 2 files changed, 396 insertions(+), 2 deletions(-)
- create mode 100644 arch/riscv/include/asm/parse_asm.h
+Currently, these vDSO time-related functions are not supported on RV32.
+(Arnd Bergmann added this restriction in commit d4c08b9776b39)
+In addition, I hope this patch focuses on modifying the current
+mechanism, so I prefer to use another patch to add RV32 support.
 
-diff --git a/arch/riscv/include/asm/parse_asm.h b/arch/riscv/include/asm/parse_asm.h
-new file mode 100644
-index 000000000000..f36368de839f
---- /dev/null
-+++ b/arch/riscv/include/asm/parse_asm.h
-@@ -0,0 +1,219 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2020 SiFive
-+ */
-+
-+#include <linux/bits.h>
-+
-+/* The bit field of immediate value in I-type instruction */
-+#define I_IMM_SIGN_OPOFF	31
-+#define I_IMM_11_0_OPOFF	20
-+#define I_IMM_SIGN_OFF		12
-+#define I_IMM_11_0_OFF		0
-+#define I_IMM_11_0_MASK		GENMASK(11, 0)
-+
-+/* The bit field of immediate value in J-type instruction */
-+#define J_IMM_SIGN_OPOFF	31
-+#define J_IMM_10_1_OPOFF	21
-+#define J_IMM_11_OPOFF		20
-+#define J_IMM_19_12_OPOFF	12
-+#define J_IMM_SIGN_OFF		20
-+#define J_IMM_10_1_OFF		1
-+#define J_IMM_11_OFF		11
-+#define J_IMM_19_12_OFF		12
-+#define J_IMM_10_1_MASK		GENMASK(9, 0)
-+#define J_IMM_11_MASK		GENMASK(0, 0)
-+#define J_IMM_19_12_MASK	GENMASK(7, 0)
-+
-+/* The bit field of immediate value in B-type instruction */
-+#define B_IMM_SIGN_OPOFF	31
-+#define B_IMM_10_5_OPOFF	25
-+#define B_IMM_4_1_OPOFF		8
-+#define B_IMM_11_OPOFF		7
-+#define B_IMM_SIGN_OFF		12
-+#define B_IMM_10_5_OFF		5
-+#define B_IMM_4_1_OFF		1
-+#define B_IMM_11_OFF		11
-+#define B_IMM_10_5_MASK		GENMASK(5, 0)
-+#define B_IMM_4_1_MASK		GENMASK(3, 0)
-+#define B_IMM_11_MASK		GENMASK(0, 0)
-+
-+/* The register offset in RVG instruction */
-+#define RVG_RS1_OPOFF		15
-+#define RVG_RS2_OPOFF		20
-+#define RVG_RD_OPOFF		7
-+
-+/* The bit field of immediate value in RVC J instruction */
-+#define RVC_J_IMM_SIGN_OPOFF	12
-+#define RVC_J_IMM_4_OPOFF	11
-+#define RVC_J_IMM_9_8_OPOFF	9
-+#define RVC_J_IMM_10_OPOFF	8
-+#define RVC_J_IMM_6_OPOFF	7
-+#define RVC_J_IMM_7_OPOFF	6
-+#define RVC_J_IMM_3_1_OPOFF	3
-+#define RVC_J_IMM_5_OPOFF	2
-+#define RVC_J_IMM_SIGN_OFF	11
-+#define RVC_J_IMM_4_OFF		4
-+#define RVC_J_IMM_9_8_OFF	8
-+#define RVC_J_IMM_10_OFF	10
-+#define RVC_J_IMM_6_OFF		6
-+#define RVC_J_IMM_7_OFF		7
-+#define RVC_J_IMM_3_1_OFF	1
-+#define RVC_J_IMM_5_OFF		5
-+#define RVC_J_IMM_4_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_9_8_MASK	GENMASK(1, 0)
-+#define RVC_J_IMM_10_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_6_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_7_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_3_1_MASK	GENMASK(2, 0)
-+#define RVC_J_IMM_5_MASK	GENMASK(0, 0)
-+
-+/* The bit field of immediate value in RVC B instruction */
-+#define RVC_B_IMM_SIGN_OPOFF	12
-+#define RVC_B_IMM_4_3_OPOFF	10
-+#define RVC_B_IMM_7_6_OPOFF	5
-+#define RVC_B_IMM_2_1_OPOFF	3
-+#define RVC_B_IMM_5_OPOFF	2
-+#define RVC_B_IMM_SIGN_OFF	8
-+#define RVC_B_IMM_4_3_OFF	3
-+#define RVC_B_IMM_7_6_OFF	6
-+#define RVC_B_IMM_2_1_OFF	1
-+#define RVC_B_IMM_5_OFF		5
-+#define RVC_B_IMM_4_3_MASK	GENMASK(1, 0)
-+#define RVC_B_IMM_7_6_MASK	GENMASK(1, 0)
-+#define RVC_B_IMM_2_1_MASK	GENMASK(1, 0)
-+#define RVC_B_IMM_5_MASK	GENMASK(0, 0)
-+
-+/* The register offset in RVC op=C0 instruction */
-+#define RVC_C0_RS1_OPOFF	7
-+#define RVC_C0_RS2_OPOFF	2
-+#define RVC_C0_RD_OPOFF		2
-+
-+/* The register offset in RVC op=C1 instruction */
-+#define RVC_C1_RS1_OPOFF	7
-+#define RVC_C1_RS2_OPOFF	2
-+#define RVC_C1_RD_OPOFF		7
-+
-+/* The register offset in RVC op=C2 instruction */
-+#define RVC_C2_RS1_OPOFF	7
-+#define RVC_C2_RS2_OPOFF	2
-+#define RVC_C2_RD_OPOFF		7
-+
-+/* parts of opcode for RVG*/
-+#define OPCODE_BRANCH		0x63
-+#define OPCODE_JALR		0x67
-+#define OPCODE_JAL		0x6f
-+#define OPCODE_SYSTEM		0x73
-+
-+/* parts of opcode for RVC*/
-+#define OPCODE_C_0		0x0
-+#define OPCODE_C_1		0x1
-+#define OPCODE_C_2		0x2
-+
-+/* parts of funct3 code for I, M, A extension*/
-+#define FUNCT3_JALR		0x0
-+#define FUNCT3_BEQ		0x0
-+#define FUNCT3_BNE		0x1000
-+#define FUNCT3_BLT		0x4000
-+#define FUNCT3_BGE		0x5000
-+#define FUNCT3_BLTU		0x6000
-+#define FUNCT3_BGEU		0x7000
-+
-+/* parts of funct3 code for C extension*/
-+#define FUNCT3_C_BEQZ		0xc000
-+#define FUNCT3_C_BNEZ		0xe000
-+#define FUNCT3_C_J		0xa000
-+#define FUNCT3_C_JAL		0x2000
-+#define FUNCT4_C_JR		0x8000
-+#define FUNCT4_C_JALR		0xf000
-+
-+#define FUNCT12_SRET		0x10200000
-+
-+#define MATCH_JALR		(FUNCT3_JALR | OPCODE_JALR)
-+#define MATCH_JAL		(OPCODE_JAL)
-+#define MATCH_BEQ		(FUNCT3_BEQ | OPCODE_BRANCH)
-+#define MATCH_BNE		(FUNCT3_BNE | OPCODE_BRANCH)
-+#define MATCH_BLT		(FUNCT3_BLT | OPCODE_BRANCH)
-+#define MATCH_BGE		(FUNCT3_BGE | OPCODE_BRANCH)
-+#define MATCH_BLTU		(FUNCT3_BLTU | OPCODE_BRANCH)
-+#define MATCH_BGEU		(FUNCT3_BGEU | OPCODE_BRANCH)
-+#define MATCH_SRET		(FUNCT12_SRET | OPCODE_SYSTEM)
-+#define MATCH_C_BEQZ		(FUNCT3_C_BEQZ | OPCODE_C_1)
-+#define MATCH_C_BNEZ		(FUNCT3_C_BNEZ | OPCODE_C_1)
-+#define MATCH_C_J		(FUNCT3_C_J | OPCODE_C_1)
-+#define MATCH_C_JAL		(FUNCT3_C_JAL | OPCODE_C_1)
-+#define MATCH_C_JR		(FUNCT4_C_JR | OPCODE_C_2)
-+#define MATCH_C_JALR		(FUNCT4_C_JALR | OPCODE_C_2)
-+
-+#define MASK_JALR		0x707f
-+#define MASK_JAL		0x7f
-+#define MASK_C_JALR		0xf07f
-+#define MASK_C_JR		0xf07f
-+#define MASK_C_JAL		0xe003
-+#define MASK_C_J		0xe003
-+#define MASK_BEQ		0x707f
-+#define MASK_BNE		0x707f
-+#define MASK_BLT		0x707f
-+#define MASK_BGE		0x707f
-+#define MASK_BLTU		0x707f
-+#define MASK_BGEU		0x707f
-+#define MASK_C_BEQZ		0xe003
-+#define MASK_C_BNEZ		0xe003
-+#define MASK_SRET		0xffffffff
-+
-+#define __INSN_LENGTH_MASK	_UL(0x3)
-+#define __INSN_LENGTH_GE_32	_UL(0x3)
-+#define __INSN_OPCODE_MASK	_UL(0x7F)
-+#define __INSN_BRANCH_OPCODE	_UL(OPCODE_BRANCH)
-+
-+/* Define a series of is_XXX_insn functions to check if the value INSN
-+ * is an instance of instruction XXX.
-+ */
-+#define DECLARE_INSN(INSN_NAME, INSN_MATCH, INSN_MASK) \
-+static inline bool is_ ## INSN_NAME ## _insn(long insn) \
-+{ \
-+	return (insn & (INSN_MASK)) == (INSN_MATCH); \
-+}
-+
-+#define RV_IMM_SIGN(x) (-(((x) >> 31) & 1))
-+#define RVC_IMM_SIGN(x) (-(((x) >> 12) & 1))
-+#define RV_X(X, s, mask)  (((X) >> (s)) & (mask))
-+#define RVC_X(X, s, mask) RV_X(X, s, mask)
-+
-+#define EXTRACT_JTYPE_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RV_X(x_, J_IMM_10_1_OPOFF, J_IMM_10_1_MASK) << J_IMM_10_1_OFF) | \
-+	(RV_X(x_, J_IMM_11_OPOFF, J_IMM_11_MASK) << J_IMM_11_OFF) | \
-+	(RV_X(x_, J_IMM_19_12_OPOFF, J_IMM_19_12_MASK) << J_IMM_19_12_OFF) | \
-+	(RV_IMM_SIGN(x_) << J_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_ITYPE_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RV_X(x_, I_IMM_11_0_OPOFF, I_IMM_11_0_MASK)) | \
-+	(RV_IMM_SIGN(x_) << I_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_BTYPE_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RV_X(x_, B_IMM_4_1_OPOFF, B_IMM_4_1_MASK) << B_IMM_4_1_OFF) | \
-+	(RV_X(x_, B_IMM_10_5_OPOFF, B_IMM_10_5_MASK) << B_IMM_10_5_OFF) | \
-+	(RV_X(x_, B_IMM_11_OPOFF, B_IMM_11_MASK) << B_IMM_11_OFF) | \
-+	(RV_IMM_SIGN(x_) << B_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_RVC_J_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RVC_X(x_, RVC_J_IMM_3_1_OPOFF, RVC_J_IMM_3_1_MASK) << RVC_J_IMM_3_1_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_4_OPOFF, RVC_J_IMM_4_MASK) << RVC_J_IMM_4_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_5_OPOFF, RVC_J_IMM_5_MASK) << RVC_J_IMM_5_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_6_OPOFF, RVC_J_IMM_6_MASK) << RVC_J_IMM_6_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_7_OPOFF, RVC_J_IMM_7_MASK) << RVC_J_IMM_7_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_9_8_OPOFF, RVC_J_IMM_9_8_MASK) << RVC_J_IMM_9_8_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_10_OPOFF, RVC_J_IMM_10_MASK) << RVC_J_IMM_10_OFF) | \
-+	(RVC_IMM_SIGN(x_) << RVC_J_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_RVC_B_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RVC_X(x_, RVC_B_IMM_2_1_OPOFF, RVC_B_IMM_2_1_MASK) << RVC_B_IMM_2_1_OFF) | \
-+	(RVC_X(x_, RVC_B_IMM_4_3_OPOFF, RVC_B_IMM_4_3_MASK) << RVC_B_IMM_4_3_OFF) | \
-+	(RVC_X(x_, RVC_B_IMM_5_OPOFF, RVC_B_IMM_5_MASK) << RVC_B_IMM_5_OFF) | \
-+	(RVC_X(x_, RVC_B_IMM_7_6_OPOFF, RVC_B_IMM_7_6_MASK) << RVC_B_IMM_7_6_OFF) | \
-+	(RVC_IMM_SIGN(x_) << RVC_B_IMM_SIGN_OFF); })
-diff --git a/arch/riscv/kernel/kgdb.c b/arch/riscv/kernel/kgdb.c
-index eb1afab47679..f16ade84a11f 100644
---- a/arch/riscv/kernel/kgdb.c
-+++ b/arch/riscv/kernel/kgdb.c
-@@ -11,13 +11,179 @@
- #include <linux/string.h>
- #include <asm/cacheflush.h>
- #include <asm/gdb_xml.h>
-+#include <asm/parse_asm.h>
- 
- enum {
- 	NOT_KGDB_BREAK = 0,
- 	KGDB_SW_BREAK,
- 	KGDB_COMPILED_BREAK,
-+	KGDB_SW_SINGLE_STEP
- };
- 
-+static unsigned long stepped_address;
-+static unsigned int stepped_opcode;
-+
-+#if __riscv_xlen == 32
-+/* C.JAL is an RV32C-only instruction */
-+DECLARE_INSN(c_jal, MATCH_C_JAL, MASK_C_JAL)
-+#else
-+#define is_c_jal_insn(opcode) 0
-+#endif
-+DECLARE_INSN(jalr, MATCH_JALR, MASK_JALR)
-+DECLARE_INSN(jal, MATCH_JAL, MASK_JAL)
-+DECLARE_INSN(c_jr, MATCH_C_JR, MASK_C_JR)
-+DECLARE_INSN(c_jalr, MATCH_C_JALR, MASK_C_JALR)
-+DECLARE_INSN(c_j, MATCH_C_J, MASK_C_J)
-+DECLARE_INSN(beq, MATCH_BEQ, MASK_BEQ)
-+DECLARE_INSN(bne, MATCH_BNE, MASK_BNE)
-+DECLARE_INSN(blt, MATCH_BLT, MASK_BLT)
-+DECLARE_INSN(bge, MATCH_BGE, MASK_BGE)
-+DECLARE_INSN(bltu, MATCH_BLTU, MASK_BLTU)
-+DECLARE_INSN(bgeu, MATCH_BGEU, MASK_BGEU)
-+DECLARE_INSN(c_beqz, MATCH_C_BEQZ, MASK_C_BEQZ)
-+DECLARE_INSN(c_bnez, MATCH_C_BNEZ, MASK_C_BNEZ)
-+DECLARE_INSN(sret, MATCH_SRET, MASK_SRET)
-+
-+int decode_register_index(unsigned long opcode, int offset)
-+{
-+	return (opcode >> offset) & 0x1F;
-+}
-+
-+int decode_register_index_short(unsigned long opcode, int offset)
-+{
-+	return ((opcode >> offset) & 0x7) + 8;
-+}
-+
-+/* Calculate the new address for after a step */
-+int get_step_address(struct pt_regs *regs, unsigned long *next_addr)
-+{
-+	unsigned long pc = regs->epc;
-+	unsigned long *regs_ptr = (unsigned long *)regs;
-+	unsigned int rs1_num, rs2_num;
-+	int op_code;
-+
-+	if (probe_kernel_address((void *)pc, op_code))
-+		return -EINVAL;
-+	if ((op_code & __INSN_LENGTH_MASK) != __INSN_LENGTH_GE_32) {
-+		if (is_c_jalr_insn(op_code) || is_c_jr_insn(op_code)) {
-+			rs1_num = decode_register_index(op_code, RVC_C2_RS1_OPOFF);
-+			*next_addr = regs_ptr[rs1_num];
-+		} else if (is_c_j_insn(op_code) || is_c_jal_insn(op_code)) {
-+			*next_addr = EXTRACT_RVC_J_IMM(op_code) + pc;
-+		} else if (is_c_beqz_insn(op_code)) {
-+			rs1_num = decode_register_index_short(op_code,
-+							      RVC_C1_RS1_OPOFF);
-+			if (!rs1_num || regs_ptr[rs1_num] == 0)
-+				*next_addr = EXTRACT_RVC_B_IMM(op_code) + pc;
-+			else
-+				*next_addr = pc + 2;
-+		} else if (is_c_bnez_insn(op_code)) {
-+			rs1_num =
-+			    decode_register_index_short(op_code, RVC_C1_RS1_OPOFF);
-+			if (rs1_num && regs_ptr[rs1_num] != 0)
-+				*next_addr = EXTRACT_RVC_B_IMM(op_code) + pc;
-+			else
-+				*next_addr = pc + 2;
-+		} else {
-+			*next_addr = pc + 2;
-+		}
-+	} else {
-+		if ((op_code & __INSN_OPCODE_MASK) == __INSN_BRANCH_OPCODE) {
-+			bool result = false;
-+			long imm = EXTRACT_BTYPE_IMM(op_code);
-+			unsigned long rs1_val = 0, rs2_val = 0;
-+
-+			rs1_num = decode_register_index(op_code, RVG_RS1_OPOFF);
-+			rs2_num = decode_register_index(op_code, RVG_RS2_OPOFF);
-+			if (rs1_num)
-+				rs1_val = regs_ptr[rs1_num];
-+			if (rs2_num)
-+				rs2_val = regs_ptr[rs2_num];
-+
-+			if (is_beq_insn(op_code))
-+				result = (rs1_val == rs2_val) ? true : false;
-+			else if (is_bne_insn(op_code))
-+				result = (rs1_val != rs2_val) ? true : false;
-+			else if (is_blt_insn(op_code))
-+				result =
-+				    ((long)rs1_val <
-+				     (long)rs2_val) ? true : false;
-+			else if (is_bge_insn(op_code))
-+				result =
-+				    ((long)rs1_val >=
-+				     (long)rs2_val) ? true : false;
-+			else if (is_bltu_insn(op_code))
-+				result = (rs1_val < rs2_val) ? true : false;
-+			else if (is_bgeu_insn(op_code))
-+				result = (rs1_val >= rs2_val) ? true : false;
-+			if (result)
-+				*next_addr = imm + pc;
-+			else
-+				*next_addr = pc + 4;
-+		} else if (is_jal_insn(op_code)) {
-+			*next_addr = EXTRACT_JTYPE_IMM(op_code) + pc;
-+		} else if (is_jalr_insn(op_code)) {
-+			rs1_num = decode_register_index(op_code, RVG_RS1_OPOFF);
-+			if (rs1_num)
-+				*next_addr = ((unsigned long *)regs)[rs1_num];
-+			*next_addr += EXTRACT_ITYPE_IMM(op_code);
-+		} else if (is_sret_insn(op_code)) {
-+			*next_addr = pc;
-+		} else {
-+			*next_addr = pc + 4;
-+		}
-+	}
-+	return 0;
-+}
-+
-+int do_single_step(struct pt_regs *regs)
-+{
-+	/* Determine where the target instruction will send us to */
-+	unsigned long addr = 0;
-+	int error = get_step_address(regs, &addr);
-+
-+	if (error)
-+		return error;
-+
-+	/* Store the op code in the stepped address */
-+	error = probe_kernel_address((void *)addr, stepped_opcode);
-+	if (error)
-+		return error;
-+
-+	stepped_address = addr;
-+
-+	/* Replace the op code with the break instruction */
-+	error = probe_kernel_write((void *)stepped_address,
-+				   arch_kgdb_ops.gdb_bpt_instr,
-+				   BREAK_INSTR_SIZE);
-+	/* Flush and return */
-+	if (!error) {
-+		flush_icache_range(addr, addr + BREAK_INSTR_SIZE);
-+		kgdb_single_step = 1;
-+		atomic_set(&kgdb_cpu_doing_single_step,
-+			   raw_smp_processor_id());
-+	} else {
-+		stepped_address = 0;
-+		stepped_opcode = 0;
-+	}
-+	return error;
-+}
-+
-+/* Undo a single step */
-+static void undo_single_step(struct pt_regs *regs)
-+{
-+	if (stepped_opcode != 0) {
-+		probe_kernel_write((void *)stepped_address,
-+				   (void *)&stepped_opcode, BREAK_INSTR_SIZE);
-+		flush_icache_range(stepped_address,
-+				   stepped_address + BREAK_INSTR_SIZE);
-+	}
-+	stepped_address = 0;
-+	stepped_opcode = 0;
-+	kgdb_single_step = 0;
-+	atomic_set(&kgdb_cpu_doing_single_step, -1);
-+}
-+
- struct dbg_reg_def_t dbg_reg_def[DBG_MAX_REG_NUM] = {
- 	{DBG_REG_ZERO, GDB_SIZEOF_REG, -1},
- 	{DBG_REG_RA, GDB_SIZEOF_REG, offsetof(struct pt_regs, ra)},
-@@ -135,6 +301,8 @@ int kgdb_arch_handle_exception(int vector, int signo, int err_code,
- {
- 	int err = 0;
- 
-+	undo_single_step(regs);
-+
- 	switch (remcom_in_buffer[0]) {
- 	case 'c':
- 	case 'D':
-@@ -142,15 +310,20 @@ int kgdb_arch_handle_exception(int vector, int signo, int err_code,
- 		if (remcom_in_buffer[0] == 'c')
- 			kgdb_arch_update_addr(regs, remcom_in_buffer);
- 		break;
-+	case 's':
-+		kgdb_arch_update_addr(regs, remcom_in_buffer);
-+		err = do_single_step(regs);
-+		break;
- 	default:
- 		err = -1;
- 	}
--
- 	return err;
- }
- 
- int kgdb_riscv_kgdbbreak(unsigned long addr)
- {
-+	if (stepped_address == addr)
-+		return KGDB_SW_SINGLE_STEP;
- 	if (atomic_read(&kgdb_setting_breakpoint))
- 		if (addr == (unsigned long)&kgdb_compiled_break)
- 			return KGDB_COMPILED_BREAK;
-@@ -174,7 +347,9 @@ static int kgdb_riscv_notify(struct notifier_block *self, unsigned long cmd,
- 		return NOTIFY_DONE;
- 
- 	local_irq_save(flags);
--	if (kgdb_handle_exception(1, args->signr, cmd, regs))
-+
-+	if (kgdb_handle_exception(type == KGDB_SW_SINGLE_STEP ? 0 : 1,
-+				  args->signr, cmd, regs))
- 		return NOTIFY_DONE;
- 
- 	if (type == KGDB_COMPILED_BREAK)
--- 
-2.7.4
-
+> > +static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
+> > +{
+> > +       return _vdso_data;
+> > +}
+> > +
+> > +#endif /* !__ASSEMBLY__ */
+> > +
+> > +#endif /* __ASM_VDSO_GETTIMEOFDAY_H */
+> > diff --git a/arch/riscv/include/asm/vdso/vsyscall.h b/arch/riscv/include/asm/vdso/vsyscall.h
+> > new file mode 100644
+> > index 000000000000..82fd5d83bd60
+> > --- /dev/null
+> > +++ b/arch/riscv/include/asm/vdso/vsyscall.h
+> > @@ -0,0 +1,27 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +#ifndef __ASM_VDSO_VSYSCALL_H
+> > +#define __ASM_VDSO_VSYSCALL_H
+> > +
+> > +#ifndef __ASSEMBLY__
+> > +
+> > +#include <linux/timekeeper_internal.h>
+> > +#include <vdso/datapage.h>
+> > +
+> > +extern struct vdso_data *vdso_data;
+> > +
+> > +/*
+> > + * Update the vDSO data page to keep in sync with kernel timekeeping.
+> > + */
+> > +static __always_inline struct vdso_data *__riscv_get_k_vdso_data(void)
+> > +{
+> > +       return vdso_data;
+> > +}
+> > +
+> > +#define __arch_get_k_vdso_data __riscv_get_k_vdso_data
+> > +
+> > +/* The asm-generic header needs to be included after the definitions above */
+> > +#include <asm-generic/vdso/vsyscall.h>
+> > +
+> > +#endif /* !__ASSEMBLY__ */
+> > +
+> > +#endif /* __ASM_VDSO_VSYSCALL_H */
+> > diff --git a/arch/riscv/kernel/vdso.c b/arch/riscv/kernel/vdso.c
+> > index 484d95a70907..1495af602f00 100644
+> > --- a/arch/riscv/kernel/vdso.c
+> > +++ b/arch/riscv/kernel/vdso.c
+> > @@ -11,8 +11,8 @@
+> >  #include <linux/slab.h>
+> >  #include <linux/binfmts.h>
+> >  #include <linux/err.h>
+> > +#include <vdso/datapage.h>
+> >
+> > -#include <asm/vdso.h>
+> >
+> >  extern char vdso_start[], vdso_end[];
+> >
+> > @@ -26,7 +26,7 @@ static union {
+> >         struct vdso_data        data;
+> >         u8                      page[PAGE_SIZE];
+> >  } vdso_data_store __page_aligned_data;
+> > -static struct vdso_data *vdso_data = &vdso_data_store.data;
+> > +struct vdso_data *vdso_data = &vdso_data_store.data;
+> >
+> >  static int __init vdso_init(void)
+> >  {
+> > diff --git a/arch/riscv/kernel/vdso/Makefile b/arch/riscv/kernel/vdso/Makefile
+> > index 33b16f4212f7..9ad681e94ebe 100644
+> > --- a/arch/riscv/kernel/vdso/Makefile
+> > +++ b/arch/riscv/kernel/vdso/Makefile
+> > @@ -1,12 +1,14 @@
+> >  # SPDX-License-Identifier: GPL-2.0-only
+> >  # Copied from arch/tile/kernel/vdso/Makefile
+> >
+> > +# Absolute relocation type $(ARCH_REL_TYPE_ABS) needs to be defined before
+> > +# the inclusion of generic Makefile.
+> > +ARCH_REL_TYPE_ABS := R_RISCV_32|R_RISCV_64|R_RISCV_JUMP_SLOT
+> > +include $(srctree)/lib/vdso/Makefile
+> >  # Symbols present in the vdso
+> >  vdso-syms  = rt_sigreturn
+> >  ifdef CONFIG_64BIT
+> > -vdso-syms += gettimeofday
+> > -vdso-syms += clock_gettime
+> > -vdso-syms += clock_getres
+> > +vdso-syms += vgettimeofday
+> >  endif
+> >  vdso-syms += getcpu
+> >  vdso-syms += flush_icache
+> > @@ -14,6 +16,10 @@ vdso-syms += flush_icache
+> >  # Files to link into the vdso
+> >  obj-vdso = $(patsubst %, %.o, $(vdso-syms))
+> >
+> > +ifneq ($(c-gettimeofday-y),)
+> > +  CFLAGS_vgettimeofday.o += -include $(c-gettimeofday-y)
+> > +endif
+> > +
+> >  # Build rules
+> >  targets := $(obj-vdso) vdso.so vdso.so.dbg vdso.lds vdso-dummy.o
+> >  obj-vdso := $(addprefix $(obj)/, $(obj-vdso))
+> > diff --git a/arch/riscv/kernel/vdso/clock_getres.S b/arch/riscv/kernel/vdso/clock_getres.S
+> > deleted file mode 100644
+> > index 91378a52eb22..000000000000
+> > --- a/arch/riscv/kernel/vdso/clock_getres.S
+> > +++ /dev/null
+> > @@ -1,18 +0,0 @@
+> > -/* SPDX-License-Identifier: GPL-2.0-only */
+> > -/*
+> > - * Copyright (C) 2017 SiFive
+> > - */
+> > -
+> > -#include <linux/linkage.h>
+> > -#include <asm/unistd.h>
+> > -
+> > -       .text
+> > -/* int __vdso_clock_getres(clockid_t clock_id, struct timespec *res); */
+> > -ENTRY(__vdso_clock_getres)
+> > -       .cfi_startproc
+> > -       /* For now, just do the syscall. */
+> > -       li a7, __NR_clock_getres
+> > -       ecall
+> > -       ret
+> > -       .cfi_endproc
+> > -ENDPROC(__vdso_clock_getres)
+> > diff --git a/arch/riscv/kernel/vdso/clock_gettime.S b/arch/riscv/kernel/vdso/clock_gettime.S
+> > deleted file mode 100644
+> > index 5371fd9bc01f..000000000000
+> > --- a/arch/riscv/kernel/vdso/clock_gettime.S
+> > +++ /dev/null
+> > @@ -1,18 +0,0 @@
+> > -/* SPDX-License-Identifier: GPL-2.0-only */
+> > -/*
+> > - * Copyright (C) 2017 SiFive
+> > - */
+> > -
+> > -#include <linux/linkage.h>
+> > -#include <asm/unistd.h>
+> > -
+> > -       .text
+> > -/* int __vdso_clock_gettime(clockid_t clock_id, struct timespec *tp); */
+> > -ENTRY(__vdso_clock_gettime)
+> > -       .cfi_startproc
+> > -       /* For now, just do the syscall. */
+> > -       li a7, __NR_clock_gettime
+> > -       ecall
+> > -       ret
+> > -       .cfi_endproc
+> > -ENDPROC(__vdso_clock_gettime)
+> > diff --git a/arch/riscv/kernel/vdso/gettimeofday.S b/arch/riscv/kernel/vdso/gettimeofday.S
+> > deleted file mode 100644
+> > index e6fb8af88632..000000000000
+> > --- a/arch/riscv/kernel/vdso/gettimeofday.S
+> > +++ /dev/null
+> > @@ -1,18 +0,0 @@
+> > -/* SPDX-License-Identifier: GPL-2.0-only */
+> > -/*
+> > - * Copyright (C) 2017 SiFive
+> > - */
+> > -
+> > -#include <linux/linkage.h>
+> > -#include <asm/unistd.h>
+> > -
+> > -       .text
+> > -/* int __vdso_gettimeofday(struct timeval *tv, struct timezone *tz); */
+> > -ENTRY(__vdso_gettimeofday)
+> > -       .cfi_startproc
+> > -       /* For now, just do the syscall. */
+> > -       li a7, __NR_gettimeofday
+> > -       ecall
+> > -       ret
+> > -       .cfi_endproc
+> > -ENDPROC(__vdso_gettimeofday)
+> > diff --git a/arch/riscv/kernel/vdso/vdso.lds.S b/arch/riscv/kernel/vdso/vdso.lds.S
+> > index f66a091cb890..e6f558bca71b 100644
+> > --- a/arch/riscv/kernel/vdso/vdso.lds.S
+> > +++ b/arch/riscv/kernel/vdso/vdso.lds.S
+> > @@ -2,11 +2,13 @@
+> >  /*
+> >   * Copyright (C) 2012 Regents of the University of California
+> >   */
+> > +#include <asm/page.h>
+> >
+> >  OUTPUT_ARCH(riscv)
+> >
+> >  SECTIONS
+> >  {
+> > +       PROVIDE(_vdso_data = . + PAGE_SIZE);
+> >         . = SIZEOF_HEADERS;
+> >
+> >         .hash           : { *(.hash) }                  :text
+> > diff --git a/arch/riscv/kernel/vdso/vgettimeofday.c b/arch/riscv/kernel/vdso/vgettimeofday.c
+> > new file mode 100644
+> > index 000000000000..d264943e2e47
+> > --- /dev/null
+> > +++ b/arch/riscv/kernel/vdso/vgettimeofday.c
+> > @@ -0,0 +1,25 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copied from arch/arm64/kernel/vdso/vgettimeofday.c
+> > + *
+> > + * Copyright (C) 2018 ARM Ltd.
+> > + * Copyright (C) 2020 SiFive
+> > + */
+> > +
+> > +#include <linux/time.h>
+> > +#include <linux/types.h>
+> > +
+> > +int __vdso_clock_gettime(clockid_t clock, struct __kernel_timespec *ts)
+> > +{
+> > +       return __cvdso_clock_gettime(clock, ts);
+> > +}
+> > +
+> > +int __vdso_gettimeofday(struct __kernel_old_timeval *tv, struct timezone *tz)
+> > +{
+> > +       return __cvdso_gettimeofday(tv, tz);
+> > +}
+> > +
+> > +int __vdso_clock_getres(clockid_t clock_id, struct __kernel_timespec *res)
+> > +{
+> > +       return __cvdso_clock_getres(clock_id, res);
+> > +}
+> > --
+> > 2.7.4
+> >
+> >
+>
+>
+> --
+> Regards,
+> Atish
 
