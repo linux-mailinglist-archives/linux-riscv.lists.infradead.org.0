@@ -2,77 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 460711A5C07
-	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 04:45:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ABC11A5C08
+	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 04:48:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uzO8OFwxSZ+ckkS0RktDybz3UcwVj+CuQ1zIw02LYf8=; b=k8DJ1QmGlsxIMwVW2WEItRcQy
-	AFtsz1saKA5hBrEh3ZulynbLnRVgjWwEh97MLmvHn2NOxH82sjqS75pQsFJA1wweMGUwCD2PDe7eQ
-	VBf0aIIO5M6M3IJuHrx1ckADkObUTNP/xP9Q3wlE45GjEOxLGhagwFl2lhmH5S5nY4Hq3HcjTQWgx
-	Txg8jdAsd2PlEGJDstQLmbuVeqBFn04fpizJS3mYl2SbyG50t2wLAN/CTy0HBh0cU1ZFBOQIcrLVh
-	9jFYw+2w4zpAqY2dPZuNg3texfKSQZEzsRbV3ci/Fu4sdxwtROc9q2PR8Y6SxRf1cRhYV772lIii1
-	YYX9FxVaw==;
+	 bh=e5dKCri0kjAdRMVwLZi46KU0dwP4xOpcio9bwka3zYk=; b=Otxt5BwgaAKG4NPKwi8viJZS6
+	J5pvr7aLe1KX0ZH51gqkVimxNfBZog+yuVnRlFaDB5ni3flqdVshgK8o07qqqdyCuHLn81T01A25f
+	4rUNFR1tALsWSBuGRdDFQxL9TpNuOVqjsP+RZePvhXSjdzJEA5iS2kpnpx3IB1LnwGGMoAUi6AQS5
+	6oFKRRDJh7W17icar71Vr+VXfFizKFtfsBq3Wwty/FFk7JvPnhk0neP6d1+vZ5Fau2qchxnkXPFLc
+	8tMoccn3LMnYvt6iUiLHWYLyL0fhWKhhyzqS3UcsfcGj2Eco8ZstLFf1ZmWmN7QIfgokNq5ShQiZ7
+	q8WkqlTjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNScn-0007Nk-UV; Sun, 12 Apr 2020 02:45:33 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jNSfW-0007Zu-Ca; Sun, 12 Apr 2020 02:48:22 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNScj-0007NG-3x
- for linux-riscv@lists.infradead.org; Sun, 12 Apr 2020 02:45:31 +0000
-Received: by mail-wm1-x341.google.com with SMTP id v8so7601066wma.0
- for <linux-riscv@lists.infradead.org>; Sat, 11 Apr 2020 19:45:27 -0700 (PDT)
+ id 1jNSfS-0007ZS-AV
+ for linux-riscv@lists.infradead.org; Sun, 12 Apr 2020 02:48:20 +0000
+Received: by mail-wm1-x342.google.com with SMTP id h2so6301551wmb.4
+ for <linux-riscv@lists.infradead.org>; Sat, 11 Apr 2020 19:48:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uzO8OFwxSZ+ckkS0RktDybz3UcwVj+CuQ1zIw02LYf8=;
- b=Ng9d4CnZmLekkDQKXkaWO+StGtzsCvKwbrgVNNhpJsbMRDQZt6SCslF6IjO6OmqQLa
- iKzNyg5YitWJDfUy3m48Fjr39vmrwmM3di3mrWlvxqMPfqYU0R7MyFFGYw5r6XE0TW0x
- c/uQWsBs7nApNbIdiI2JpGq6EIBaZZdorE34y3fHVlH8ywTvhrrfkeh0sVXDhNeZg+JL
- 2cv/Hi21hMcnR9ov4qqMzNMmbu/7MKcZ7fgx2LGVpyybgw82RtsJp1PgdaS8h6n22XR8
- 51tTwwYQweiWLLMq6f9jmetyKVAH/QzP1ctD4Z1Do4kiE40Y8eBJpOCu57RSQJ4XSTu5
- 06vA==
+ :cc; bh=e5dKCri0kjAdRMVwLZi46KU0dwP4xOpcio9bwka3zYk=;
+ b=MZv3AnhIAZ31mfBboBvSDzNwX2vJ9oIZAJWdTc+368W0HMuO9NJnnhVSAs68go8SiC
+ PrbHISsYRwkffzhQZQt7+HrPXguBwenHQRzCGYw54p58qJTtgjX7MSdc4EV6lUbOYuee
+ aNoGnVkXU6gw6ucxic5KsB7DiBMiPcgHRD4ZqgYsmvJ74bTlj6gi3Lrc0e3FKPscUxTF
+ 2l3FJ5nLwBP4g3tWYIYohZs9k3rDA5CsyvHzkGSK0hwVvi4aqWQwFXvdna5K7VQ03QCL
+ wpb1lniIamcWMxd0j/4geRgZCJYPOqw98YW2Pgr9qKnlSdui3dfaaJdGK5M4LcedcmVk
+ XlkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=uzO8OFwxSZ+ckkS0RktDybz3UcwVj+CuQ1zIw02LYf8=;
- b=pt1AcsCcS/lVqERSjTHzoCT3uakad6AmNl2LyodMAljgKLJBPEK6TnY7+iLx7iJ1vh
- bQL+6PYPV0QYhWXX3uE36JydjcxSpwIy5LpaLVihjsbOyGooKlVwNeahpy+GWTPs85r6
- hzERJPzXSeaUECpOlCWdvAv+RfsvZS5dLQ+q/ls0KQ7kNlNic2LrkjFvCKzsHXZWO1jc
- FQ6RLfXLA3hQPvO8QsOcJHr2nHSn0yjsh4ehHt9xanE6NwLpnlcphLISGTK6ha/m84x3
- sI8ENAPHBcIoVoHJ0Y8SneszTfp7JvU4uD/Ov2hHaZg8JF96RyKR4v5o3D+/XGietR4O
- 8zkA==
-X-Gm-Message-State: AGi0PuYKvYM3kp2EaQvLCSLXXZUBpSjAmF2sO2Feegk6BjX8dQQVxrVh
- 4Hnzaq+Q+XhfB1rcx3xxgBxbDtHJ9njm9S0BZvrQhPs=
-X-Google-Smtp-Source: APiQypJSGMeA9Sn3xng0QlaJIapYLGhp+rZkhNyg+CmnIZJ9/U7RpVpLNQgwELR06Z/fp6w0sscm/A7QgkjVmt8GDqI=
-X-Received: by 2002:a7b:c38b:: with SMTP id s11mr12230096wmj.55.1586659525958; 
- Sat, 11 Apr 2020 19:45:25 -0700 (PDT)
+ bh=e5dKCri0kjAdRMVwLZi46KU0dwP4xOpcio9bwka3zYk=;
+ b=aiLgvS8O27JgZdDgkz4OwoGTmqc/jM2YeyywknfNQ9QODcp7zDQiX7jA50l72GoSKv
+ uP2mFXkOif3ztCT3MLDSICLqJcbtDsUTR/kaPlFsjC2fexP6a6D5S8oHsNbpNgEWo8RM
+ yUsvYyii/jsLXs5He2nlRtiawe+WUh/OcLjkkt4zl1+LsaqXubqlE27EGW2ZhDuARFou
+ V6y8DwxinXGCb2uvEDxS6STDqrnwayyp/lp+F1qUaUepx2nLgRmq5H3NQWK15x0zaKEd
+ MSThwg44ROoq5B0kRn644HIq6RNtXpC1UGdWdcXScqFyVm1OBh1uXPTJe6XaToCJzWjn
+ UPVg==
+X-Gm-Message-State: AGi0Pub4YzGrLVdl+aS0mAZIP5qrEOgR1JAZlJyhxU6oBq6b+Xbx1+G/
+ iUtQV4q3utJRvvpMupMpf0VFiaI7RAvYbotS1u5t
+X-Google-Smtp-Source: APiQypLLLEW8Y21vAEk9daw+bhoEARrLwM/2tZAmciaJGGz1AvfHX/szw2dH+NpSNz6T/6I/t8DgCuUxIZhdoW14MY4=
+X-Received: by 2002:a7b:c10d:: with SMTP id w13mr11935294wmi.78.1586659696500; 
+ Sat, 11 Apr 2020 19:48:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
- <CAOnJCUL1mR=FPYUHOHaqisHpP6b2hwfWaWNXfCiKc0i42ina=g@mail.gmail.com>
- <CABvJ_xgPPn6=de+UqqSY+WQ+UsfQGPA6Sk3DQ5RTrf3oeUVPvg@mail.gmail.com>
-In-Reply-To: <CABvJ_xgPPn6=de+UqqSY+WQ+UsfQGPA6Sk3DQ5RTrf3oeUVPvg@mail.gmail.com>
+ <CAOnJCUJ9apfBGtXsSGLECTo=BX51mCg+dZQ-t9ZoKTL9hdKuoQ@mail.gmail.com>
+ <CABvJ_xiL8RDckQfwDVSkVTYdnjPxC+ixO6THHQPHM9=fZFyRxg@mail.gmail.com>
+In-Reply-To: <CABvJ_xiL8RDckQfwDVSkVTYdnjPxC+ixO6THHQPHM9=fZFyRxg@mail.gmail.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Sat, 11 Apr 2020 19:45:15 -0700
-Message-ID: <CAOnJCULDwYqtM9k6Bx7t9zbu26Vr4b=7Vh8pw2dD=zLkWU_9+Q@mail.gmail.com>
+Date: Sat, 11 Apr 2020 19:48:05 -0700
+Message-ID: <CAOnJCUJEkoMJd72O3zRrt9aOojW2ALooJzwwtFZkeTF4Tqd13Q@mail.gmail.com>
 Subject: Re: [RFC] riscv: use vDSO common flow to reduce the latency of the
  time-related functions
 To: Vincent Chen <vincent.chen@sifive.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200411_194529_234200_B6032B97 
-X-CRM114-Status: GOOD (  30.27  )
+X-CRM114-CacheID: sfid-20200411_194818_369549_C1482A0E 
+X-CRM114-Status: GOOD (  30.89  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -99,9 +99,9 @@ Cc: linux-riscv <linux-riscv@lists.infradead.org>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Apr 11, 2020 at 7:08 PM Vincent Chen <vincent.chen@sifive.com> wrote:
+On Sat, Apr 11, 2020 at 7:21 PM Vincent Chen <vincent.chen@sifive.com> wrote:
 >
-> On Sat, Apr 11, 2020 at 7:42 AM Atish Patra <atishp@atishpatra.org> wrote:
+> On Sat, Apr 11, 2020 at 9:25 AM Atish Patra <atishp@atishpatra.org> wrote:
 > >
 > > On Mon, Apr 6, 2020 at 9:07 PM Vincent Chen <vincent.chen@sifive.com> wrote:
 > > >
@@ -117,9 +117,6 @@ On Sat, Apr 11, 2020 at 7:08 PM Vincent Chen <vincent.chen@sifive.com> wrote:
 > > > eliminated. After applying this patch, the latency of gettimeofday()
 > > > measured on the HiFive unleashed board can be reduced by %61.
 > > >
-> >
-> > That's great.
-> >
 > > > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
 > > > ---
 > > >  arch/riscv/Kconfig                         |  3 ++
@@ -241,17 +238,21 @@ On Sat, Apr 11, 2020 at 7:08 PM Vincent Chen <vincent.chen@sifive.com> wrote:
 > > > +}
 > > > +
 > >
-> > How will it work on RV32 ?
+> > Looking at other arch implementations, do we need to surround it with
+> > instruction fences ?
+> > (Assuming that future platforms will implements time CSR access in hardware)
+>
+> For the current case, I think the using scenario here is the same as
+> the riscv's get_cycles(), so I didn't add fence instruction around it.
+> If we need to access the time CSR implemented on the platform, I think
+> the fence instructions are needed.
+>
+Qemu provides emulated timer access via goldfish RTC now.
+I think we should add fence instruction now so that any future
+platform doesn't get tripped by this.
+or If you don't prefer that, at least we should leave a comment.
+
 > >
->
-> Currently, these vDSO time-related functions are not supported on RV32.
-> (Arnd Bergmann added this restriction in commit d4c08b9776b39)
-> In addition, I hope this patch focuses on modifying the current
-> mechanism, so I prefer to use another patch to add RV32 support.
->
-
-Sure. That works.
-
 > > > +static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
 > > > +{
 > > > +       return _vdso_data;
