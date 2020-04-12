@@ -2,52 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43CE31A6049
-	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 21:53:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16EE91A604F
+	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 21:53:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yBLg5dB/QPJjFjm1sTnv/69GhgwtLrYOuU9Kn7jRKYc=; b=bHSXJJr1oEv0QI
-	p1url1Q+gs8vw0Y8GVGKVicL+phoJ3s7kaH+KiOA9UUbLrCvyWYNNzzysIu/h3ydeM+Nnti6j4O3C
-	264645LsR0AA4V+NQ4M8gm0qVNqhv++Fi8beJt74C21eh1JTnclQY+igHPrW8oXZA7WU/T7tQrpcw
-	wtdoscQyC1vRB1YAYNfXaCde/9lKi7L0L3QnVs7oalECc9YW/e+USp2s6/FH8e2uX7zx65+cizj4o
-	aWq2IdRJidyd/+NIcSWEEocQBpvkGXWotdm1oCYzzP7cpYxHr9BUQJC6SDp8BEneE0s5SuKtAPq+S
-	1ZdPacuXBW4Tmbw6yYZQ==;
+	List-Owner; bh=8EkWgHkorWAyL7XJi8BgIxW7FW+rJwhdvnWOtgeh2jg=; b=tTmdg4CW4d6cQR
+	Z2Q9Rot7INkD9j7yR/t6eVnYg3rAw0BN/0+ReFfKBHWjueyhBPs+0TGrLAny+p4QFnCHpOi2lFcFc
+	Ld4P9zA9gmqq/dtFtKBsfXP21nHqcvtdow+c5kmA8f3TK4iOmQLcIGFJSvp3Z+FPYCX7G1C00rzn7
+	pHNY3bUmmE+kxuTCL/umkhHtIeINwSg9eIjkAOTNZFfJBGSE7fnyitlavyI+61Sa5IErgDSmd3b+o
+	ziZfq8vioILgOOv+eWnvuKU89c7lfOPcb83F/jll6mXzCDgtVjbAUrn+ARMKH4KR36uo5LxpUjuLx
+	zVn6Rts78e/72GVMNoMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNifg-0004rb-8L; Sun, 12 Apr 2020 19:53:36 +0000
+	id 1jNift-00053a-ME; Sun, 12 Apr 2020 19:53:49 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNifa-0004ml-5b; Sun, 12 Apr 2020 19:53:31 +0000
+ id 1jNifo-00051z-9m; Sun, 12 Apr 2020 19:53:46 +0000
 Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6129420936;
- Sun, 12 Apr 2020 19:53:15 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 023F32078B;
+ Sun, 12 Apr 2020 19:53:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586721209;
- bh=BO4q+W2NnpsFFIV9298SlJ1S2n+gwnsfw0xJWPd6Dwg=;
+ s=default; t=1586721224;
+ bh=sN78lZotguCKrttDOIWOXxlcWe+0MryDvjqyKOvrJC4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=exuQgzAHeeeiXpFA0RkeGhsuW8e/kbqxWnpPLs/dsdEsZaega5WSKKJKpuQOKPPYn
- oYSyxFKfMvP/ab/l20DMXDTeNJ//Fb6Jm92AMxjD4o+/hF8FzpZTbpbX9TG+ez2a4u
- g3nkwvty/3rgBQjWArk4Bb+QZhm9whFijB9NTO7k=
+ b=mqfR2DMwYn+chyzSwl2PMMuM6ya1F6cOxPQ66C/OorDG9P01ERaxgUj4H7lJsHBl1
+ W2m2rygfbnMWfD3CAJC6UfVy/F6xLgPaslZv1hk7hAlQ7H9VTsVKCl5jX69EwuPblu
+ SAkziTW6zISS6COGyW6ck4eOZRdPQ0kPXFj7r2/M=
 From: Mike Rapoport <rppt@kernel.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 17/21] mm: free_area_init: allow defining max_zone_pfn in
- descending order
-Date: Sun, 12 Apr 2020 22:48:55 +0300
-Message-Id: <20200412194859.12663-18-rppt@kernel.org>
+Subject: [PATCH 18/21] mm: rename free_area_init_node() to
+ free_area_init_memoryless_node()
+Date: Sun, 12 Apr 2020 22:48:56 +0300
+Message-Id: <20200412194859.12663-19-rppt@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200412194859.12663-1-rppt@kernel.org>
 References: <20200412194859.12663-1-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200412_125330_288795_9FCEADAE 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20200412_125344_418251_BA44214E 
+X-CRM114-Status: GOOD (  11.51  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -112,149 +112,82 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Mike Rapoport <rppt@linux.ibm.com>
 
-Some architectures (e.g. ARC) have the ZONE_HIGHMEM zone below the
-ZONE_NORMAL. Allowing free_area_init() parse max_zone_pfn array even it is
-sorted in descending order allows using free_area_init() on such
-architectures.
-
-Add top -> down traversal of max_zone_pfn array in free_area_init() and use
-the latter in ARC node/zone initialization.
+The free_area_init_node() is only used by x86 to initialize a memory-less
+nodes.
+Make its name reflect this and drop all the function parameters except node
+ID as they are anyway zero.
 
 Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 ---
- arch/arc/mm/init.c | 36 +++++++-----------------------------
- mm/page_alloc.c    | 24 +++++++++++++++++++-----
- 2 files changed, 26 insertions(+), 34 deletions(-)
+ arch/x86/mm/numa.c | 5 +----
+ include/linux/mm.h | 9 +++------
+ mm/page_alloc.c    | 7 ++-----
+ 3 files changed, 6 insertions(+), 15 deletions(-)
 
-diff --git a/arch/arc/mm/init.c b/arch/arc/mm/init.c
-index 0920c969c466..41eb9be1653c 100644
---- a/arch/arc/mm/init.c
-+++ b/arch/arc/mm/init.c
-@@ -63,11 +63,13 @@ void __init early_init_dt_add_memory_arch(u64 base, u64 size)
+diff --git a/arch/x86/mm/numa.c b/arch/x86/mm/numa.c
+index fe024b2ac796..8ee952038c80 100644
+--- a/arch/x86/mm/numa.c
++++ b/arch/x86/mm/numa.c
+@@ -737,12 +737,9 @@ void __init x86_numa_init(void)
  
- 		low_mem_sz = size;
- 		in_use = 1;
-+		memblock_add_node(base, size, 0);
- 	} else {
- #ifdef CONFIG_HIGHMEM
- 		high_mem_start = base;
- 		high_mem_sz = size;
- 		in_use = 1;
-+		memblock_add_node(base, size, 1);
- #endif
- 	}
- 
-@@ -83,8 +85,7 @@ void __init early_init_dt_add_memory_arch(u64 base, u64 size)
-  */
- void __init setup_arch_memory(void)
+ static void __init init_memory_less_node(int nid)
  {
--	unsigned long zones_size[MAX_NR_ZONES];
--	unsigned long zones_holes[MAX_NR_ZONES];
-+	unsigned long max_zone_pfn[MAX_NR_ZONES] = { 0 };
- 
- 	init_mm.start_code = (unsigned long)_text;
- 	init_mm.end_code = (unsigned long)_etext;
-@@ -115,7 +116,6 @@ void __init setup_arch_memory(void)
- 	 * the crash
- 	 */
- 
--	memblock_add_node(low_mem_start, low_mem_sz, 0);
- 	memblock_reserve(CONFIG_LINUX_LINK_BASE,
- 			 __pa(_end) - CONFIG_LINUX_LINK_BASE);
- 
-@@ -133,22 +133,7 @@ void __init setup_arch_memory(void)
- 	memblock_dump_all();
- 
- 	/*----------------- node/zones setup --------------------------*/
--	memset(zones_size, 0, sizeof(zones_size));
--	memset(zones_holes, 0, sizeof(zones_holes));
+-	unsigned long zones_size[MAX_NR_ZONES] = {0};
+-	unsigned long zholes_size[MAX_NR_ZONES] = {0};
 -
--	zones_size[ZONE_NORMAL] = max_low_pfn - min_low_pfn;
--	zones_holes[ZONE_NORMAL] = 0;
--
--	/*
--	 * We can't use the helper free_area_init(zones[]) because it uses
--	 * PAGE_OFFSET to compute the @min_low_pfn which would be wrong
--	 * when our kernel doesn't start at PAGE_OFFSET, i.e.
--	 * PAGE_OFFSET != CONFIG_LINUX_RAM_BASE
--	 */
--	free_area_init_node(0,			/* node-id */
--			    zones_size,		/* num pages per zone */
--			    min_low_pfn,	/* first pfn of node */
--			    zones_holes);	/* holes */
-+	max_zone_pfn[ZONE_NORMAL] = max_low_pfn;
+ 	/* Allocate and initialize node data. Memory-less node is now online.*/
+ 	alloc_node_data(nid);
+-	free_area_init_node(nid, zones_size, 0, zholes_size);
++	free_area_init_memoryless_node(nid);
  
- #ifdef CONFIG_HIGHMEM
  	/*
-@@ -168,20 +153,13 @@ void __init setup_arch_memory(void)
- 	min_high_pfn = PFN_DOWN(high_mem_start);
- 	max_high_pfn = PFN_DOWN(high_mem_start + high_mem_sz);
- 
--	zones_size[ZONE_NORMAL] = 0;
--	zones_holes[ZONE_NORMAL] = 0;
--
--	zones_size[ZONE_HIGHMEM] = max_high_pfn - min_high_pfn;
--	zones_holes[ZONE_HIGHMEM] = 0;
--
--	free_area_init_node(1,			/* node-id */
--			    zones_size,		/* num pages per zone */
--			    min_high_pfn,	/* first pfn of node */
--			    zones_holes);	/* holes */
-+	max_zone_pfn[ZONE_HIGHMEM] = max_high_pfn;
- 
- 	high_memory = (void *)(min_high_pfn << PAGE_SHIFT);
- 	kmap_init();
- #endif
-+
-+	free_area_init(max_zone_pfn);
+ 	 * All zonelists will be built later in start_kernel() after per cpu
+diff --git a/include/linux/mm.h b/include/linux/mm.h
+index 1c2ecb42e043..27660f6cf26e 100644
+--- a/include/linux/mm.h
++++ b/include/linux/mm.h
+@@ -2272,8 +2272,7 @@ static inline spinlock_t *pud_lock(struct mm_struct *mm, pud_t *pud)
  }
  
+ extern void __init pagecache_init(void);
+-extern void __init free_area_init_node(int nid, unsigned long * zones_size,
+-		unsigned long zone_start_pfn, unsigned long *zholes_size);
++extern void __init free_area_init_memoryless_node(int nid);
+ extern void free_initmem(void);
+ 
  /*
+@@ -2345,10 +2344,8 @@ static inline unsigned long get_num_physpages(void)
+ 
+ /*
+  * Using memblock node mappings, an architecture may initialise its
+- * zones, allocate the backing mem_map and account for memory holes in a more
+- * architecture independent manner. This is a substitute for creating the
+- * zone_sizes[] and zholes_size[] arrays and passing them to
+- * free_area_init_node()
++ * zones, allocate the backing mem_map and account for memory holes in an
++ * architecture independent manner.
+  *
+  * An architecture is expected to register range of page frames backed by
+  * physical memory with memblock_add[_node]() before calling
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 343d87b8697d..376434c7a78b 100644
+index 376434c7a78b..e46232ec4849 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -7429,7 +7429,8 @@ static void check_for_memory(pg_data_t *pgdat, int nid)
- void __init free_area_init(unsigned long *max_zone_pfn)
+@@ -6979,12 +6979,9 @@ static void __init __free_area_init_node(int nid, unsigned long *zones_size,
+ 	free_area_init_core(pgdat);
+ }
+ 
+-void __init free_area_init_node(int nid, unsigned long *zones_size,
+-				unsigned long node_start_pfn,
+-				unsigned long *zholes_size)
++void __init free_area_init_memoryless_node(int nid)
  {
- 	unsigned long start_pfn, end_pfn;
--	int i, nid;
-+	int i, nid, zone;
-+	bool descending = false;
+-	__free_area_init_node(nid, zones_size, node_start_pfn, zholes_size,
+-			      true);
++	__free_area_init_node(nid, NULL, 0, NULL, false);
+ }
  
- 	/* Record where the zone boundaries are */
- 	memset(arch_zone_lowest_possible_pfn, 0,
-@@ -7439,13 +7440,26 @@ void __init free_area_init(unsigned long *max_zone_pfn)
- 
- 	start_pfn = find_min_pfn_with_active_regions();
- 
-+	/*
-+	 * Some architecturs, e.g. ARC may have ZONE_HIGHMEM below
-+	 * ZONE_NORMAL. For such cases we allow max_zone_pfn sorted in the
-+	 * descending order
-+	 */
-+	if (MAX_NR_ZONES > 1 && max_zone_pfn[0] > max_zone_pfn[1])
-+		descending = true;
-+
- 	for (i = 0; i < MAX_NR_ZONES; i++) {
--		if (i == ZONE_MOVABLE)
-+		if (descending)
-+			zone = MAX_NR_ZONES - i - 1;
-+		else
-+			zone = i;
-+
-+		if (zone == ZONE_MOVABLE)
- 			continue;
- 
--		end_pfn = max(max_zone_pfn[i], start_pfn);
--		arch_zone_lowest_possible_pfn[i] = start_pfn;
--		arch_zone_highest_possible_pfn[i] = end_pfn;
-+		end_pfn = max(max_zone_pfn[zone], start_pfn);
-+		arch_zone_lowest_possible_pfn[zone] = start_pfn;
-+		arch_zone_highest_possible_pfn[zone] = end_pfn;
- 
- 		start_pfn = end_pfn;
- 	}
+ #if !defined(CONFIG_FLAT_NODE_MEM_MAP)
 -- 
 2.25.1
 
