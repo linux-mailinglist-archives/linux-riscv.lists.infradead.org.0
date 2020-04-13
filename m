@@ -2,58 +2,127 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B93A1A6058
-	for <lists+linux-riscv@lfdr.de>; Sun, 12 Apr 2020 21:54:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F43A1A6160
+	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 03:45:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tuS5UI67A1rBqSJI9ZRj4stYXKeJAZRcCKVAlne/6GY=; b=PF0HVdQd6P5iM1
-	c6kxjrVNIkHOlf40iY4pkZPrnOEtko0pN55qoAi79ilSQ/NSBr95EpAGmwDEQpHbdirnnTvVg6XtK
-	udy7oYKdkJyARasnHdSu2abjeUL9VbA43wisnFW0x9XMXFV0GFOHAtNjFHCnt0EJ+6nU06ROs0D8a
-	b4sjHJr68PQ1Uql975ca7Ji5BCL0lSIOoT9SKwQxL5fNmJNi2mPo625QATUKLwPF5tE7G4pyshlAf
-	G5U0/kOJBnCPDNXjQRgZlywa6RiI31BI/WCq5YkfWud5orG2uutUF/eZgtoUBHme2lhmg80purpkc
-	6/f5M23o/WnY7nGX53KQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	 bh=GxoY5c1tLMExR8t3ViE57V/SKlZ1VN8+UFqZLQkI9x0=; b=VCwZEopzop26/yeZRUyufIaeg
+	75aKwPtLmn5/GFeDw8oKmJ6cuinCvka2XlwPxtl2YF67HCZqT5381GpC1Y8jyh/Fu699aVfDqIbig
+	8q395pDeYCGeo2NY3oD1A7oZBLDlx6bomNswencRjuoasL7R8D5nJJAfxhhv6RRkYnPImnco9/qYP
+	NOy5/5ydiAmWv/qlk9yniVnuYpuiis0jM/+GVPzdxXcq6FrW45uV8irjRam+nFeJOpV8X8PM9bvfX
+	9RtNGWZ/mjtS/nArypwLkpPByzwiAl/paDXbhnZsYZc27s+sZXUgdBNJozPEzv908Dr2u3AtM4luA
+	LJo4vzqNg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNigZ-0005Nj-QG; Sun, 12 Apr 2020 19:54:31 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jNoAT-0000is-7c; Mon, 13 Apr 2020 01:45:45 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNigW-0005N5-2s; Sun, 12 Apr 2020 19:54:29 +0000
-Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B2DF521569;
- Sun, 12 Apr 2020 19:54:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586721267;
- bh=1RVcfnAVVy1AOFZedJzROhTSSnKRoGcShhyioeaCXqE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=u+cDL9Ay57g0t0AmxzSf1s9ge6PHXPdoiABBA+FnntFugxZQ3ay62Fn/wxvhA46ys
- LvgHJZQQQMChrWXoV7Loga6rBUNnWEZZY/bl8oZkZda++jqcfs7SGJJqgA6ZnwPRPa
- Szh9qdEAYeTz2OcNdts2q+xOIGjdhJ6Uok1Jog6A=
-From: Mike Rapoport <rppt@kernel.org>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH 21/21] docs/vm: update memory-models documentation
-Date: Sun, 12 Apr 2020 22:48:59 +0300
-Message-Id: <20200412194859.12663-22-rppt@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200412194859.12663-1-rppt@kernel.org>
-References: <20200412194859.12663-1-rppt@kernel.org>
+ id 1jNoAP-0000iL-CZ
+ for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 01:45:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1586742341; x=1618278341;
+ h=from:to:cc:subject:date:message-id:references:
+ content-transfer-encoding:mime-version;
+ bh=V8zJ4/EK+h5w8PveNuR1C/LeMBFXlsi3l/GvxD/zCtw=;
+ b=OUD1xtnhPidGEBAFb/aGzC4gk/HpAe9PYABLDEOoBOvuA6xZ17dS8ecZ
+ K/su8gveyQRU3L1g0pPorvOgegxIcL63W6U6VEnSRFECTknX4tG/z9K2I
+ x3H2k/vkmyYfiySHJjb1qLHpTbLwXigHaPPGFO4gzuSNJbzwQ19OlFyui
+ g3zmfBDcUMDVtWwf4ShTTjEpjJpobBQYMTSI14aPeHAZcJTncesmjPSbh
+ 39nI0qM1u9TSxEikpu2M2IiyZEGfUA9wh3Vd6KehQ8Xn9k/fnyf7AvOdx
+ uihO5BxcZ9+tit2KKlp7f44LMnA3qNUbiPndTeI/BgCQcmnJJz26gunEa Q==;
+IronPort-SDR: xN/a0LQDTMZ/Q/7dXu/nY47CL0ZQuPMoWk3PV6OLkQvk0ZfTo7crILdVYiFvJYcypoUleaOGTo
+ B2Xnk5H1R7dSj0RWbET1nsm+fhorVnkNGr0FVmFmVhJS7nejxwdBzwPgQoKWf3mIjwYAB40Y71
+ Pqa8UbchVyqZcmEaduQAuIUaObNhT0FUszuhk7qshZQmeLqxxkGF4ojSIySfv1/0oXHJ3bf/gQ
+ h8Y+up5clGBguDE2PfGXIUrJVGqLhnm++NM4+3oeev8zYdH24jIFkDcQXe75Et41A5l04nDL1w
+ Cpo=
+X-IronPort-AV: E=Sophos;i="5.72,375,1580745600"; d="scan'208";a="136611165"
+Received: from mail-co1nam11lp2169.outbound.protection.outlook.com (HELO
+ NAM11-CO1-obe.outbound.protection.outlook.com) ([104.47.56.169])
+ by ob1.hgst.iphmx.com with ESMTP; 13 Apr 2020 09:45:34 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mn/Wla7ysxfObyNfhLy0pJXfGFHChQ0XFYzXVUlpzfxGuqYiSCx/Hc4kUZMQizvhQZ1v4MgKcTWf9WtmpOR2ZREvxvhG3Hea9ZZJJQWCD9DEwQl4VUGa0DgaGPtlIyZ1ElAEXH/R75zZ8z+eOobg9hQL8Ysc+XZg3eeDs2D3uPc2GFE4VCv568EU7O01BxixwnjrXXibM5ohVA7SjGQmiJVSvIj+JPuN6S8G/I+GSRQf5Ubf4ypyZ5r9OlW8eWVDQr/NJpt7qJlO2K6Cg3QINDG+aVnGxlcsvUGtdTGzmyeFJVufbmYo0pOFSV2HqzRhBr8MCoWCOhocV5NQlLGX5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GxoY5c1tLMExR8t3ViE57V/SKlZ1VN8+UFqZLQkI9x0=;
+ b=CBNMr6u/YSWikXU2UxjhkmNxg3pG6ceydGanZVXmfWlM0m2Dhvrh8t8j87Ywd8U14b+E1AI/UQ0zU2DL87Rfps9R9t8muH1Gd9HtrzJwykGVBogpPbXRgHCWbHMfYt4rUX/S1rzcGnuGSDGAb9eXaduMCuSnD07/kwkmQ1DFNY8BU/J6VtulPaMQSzlCtKjhvGE4529GjUPnMyyejOIyigzUIUm6Jc2S58aAwvr2raAMRfPx8dyPqFJKuIDxY6hdichY21IXKv1y+h07/g91Tmhw6Ue4015612/t1sJofA5jmBO90OyBCJXPjB5+v9eZwJxcpU9epE+nOhUP2I+s5Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GxoY5c1tLMExR8t3ViE57V/SKlZ1VN8+UFqZLQkI9x0=;
+ b=0G47bf29tfYeOMoc9Jum3AwfupycF7+q8aL6CaYj7vcZsreJZOZqQKzcZaRcYbQo5kXSm2/MGjyySXFYxuDD9ZhlUL9gRN0zxxhuu5/ZgiJ+/uukRKVYa4ZjEqwvt/whAc2xnhqZTBYOZxrrTEoxKvQMUpRl3YdzaGy5Fy88ntE=
+Received: from BY5PR04MB6900.namprd04.prod.outlook.com (2603:10b6:a03:229::20)
+ by BY5PR04MB6279.namprd04.prod.outlook.com (2603:10b6:a03:1f2::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2900.26; Mon, 13 Apr
+ 2020 01:45:33 +0000
+Received: from BY5PR04MB6900.namprd04.prod.outlook.com
+ ([fe80::b574:3071:da2f:7606]) by BY5PR04MB6900.namprd04.prod.outlook.com
+ ([fe80::b574:3071:da2f:7606%5]) with mapi id 15.20.2900.028; Mon, 13 Apr 2020
+ 01:45:33 +0000
+From: Damien Le Moal <Damien.LeMoal@wdc.com>
+To: Palmer Dabbelt <palmer@dabbelt.com>, "linux-riscv@lists.infradead.org"
+ <linux-riscv@lists.infradead.org>
+Subject: Re: More K210 Support
+Thread-Topic: More K210 Support
+Thread-Index: AQHWDcb76GCscyiYn0akBatA+Yggcg==
+Date: Mon, 13 Apr 2020 01:45:33 +0000
+Message-ID: <BY5PR04MB6900E87C1FBBC6B50006627FE7DD0@BY5PR04MB6900.namprd04.prod.outlook.com>
+References: <20200408165802.167546-1-palmer@dabbelt.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Damien.LeMoal@wdc.com; 
+x-originating-ip: [60.117.181.124]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: a7cefbe0-2d4e-4f7f-7069-08d7df4c5b0b
+x-ms-traffictypediagnostic: BY5PR04MB6279:
+x-microsoft-antispam-prvs: <BY5PR04MB627903CBF6E232D3755E6DDEE7DD0@BY5PR04MB6279.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-forefront-prvs: 037291602B
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6900.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(4636009)(136003)(396003)(366004)(346002)(376002)(39860400002)(110136005)(8676002)(86362001)(316002)(26005)(53546011)(91956017)(7696005)(81156014)(6506007)(478600001)(8936002)(7116003)(76116006)(55016002)(5660300002)(33656002)(71200400001)(4326008)(66556008)(66946007)(2906002)(66476007)(186003)(64756008)(66446008)(52536014)(9686003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: w65o8OEN6EvVbi97idYe3Y7ljU3YrKAqHQTOib8ROspXK7h5bWZ/m4Sj16C9pJ5yjAJv5IcAzoEERFc0zGn66dDy9gXh4IaUWM/dCY3qhW/zpTmW6FJ3RQBW/pKjeZ1Pa1XaGUzLrfr3YGwe6o/IlBFdiMkCMU/pVqrqVuzGOn5CNfEEd/MRjAkHiOecxMypO+6fJt2qAjZ2lFEWlAJUqNW58/7QY348mzBzC1iKwAmtc1nKKKQO/L1D0HqILep0aTXBICsKixZFY1c6ax5Qk+AnlR9jho2PCR5oV/MZ3M05pX2anc8cg5ZBvimXWaXBns6QjYMin7dhNs0QtnI0W1M9d010AI9/PPlChypZwXPajcu3BwL143whdHKCF01QmwYMOYOY/qG+I84lh5zml1PyPuqg+5OyPeRfsqJMwDmCWjQm+mLQrfe8/ev8INlT
+x-ms-exchange-antispam-messagedata: 9T0MkF7k72eTd+TuAJvcgD6ec9tpR6d4J97jtbdW0WQ04HgWXoRnUVM/++4IzG3ppxKiCs0ePs0LNKILuSdaWCw1pG/AogUFIrDOjZFEiW58mKwdrtUArtTCWspv8Br30TKYiav7cKUiWNOeTPR1Pw==
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a7cefbe0-2d4e-4f7f-7069-08d7df4c5b0b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Apr 2020 01:45:33.2885 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WFcIPomTRiKPemozUwoy9yeRaMEE+MRymmE4sFeZKTEtKyYjPd4Bg1rIrJ8L7JC4S4oOSQ8DcrtSD8FAAJP6QA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6279
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200412_125428_167106_C4E80781 
-X-CRM114-Status: GOOD (  10.77  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200412_184541_596833_093AC452 
+X-CRM114-Status: GOOD (  12.78  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -63,7 +132,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,70 +143,49 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- linux-csky@vger.kernel.org, linux-parisc@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, Mike Rapoport <rppt@linux.ibm.com>,
- Greg Ungerer <gerg@linux-m68k.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
- Baoquan He <bhe@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
- linux-sh@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
- Helge Deller <deller@gmx.de>, x86@kernel.org,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
- Matt Turner <mattst88@gmail.com>, linux-snps-arc@lists.infradead.org,
- uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
- linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
- linux-m68k@lists.linux-m68k.org, Tony Luck <tony.luck@intel.com>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- Hoan Tran <Hoan@os.amperecomputing.com>, Michal Simek <monstr@monstr.eu>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Brian Cain <bcain@codeaurora.org>, Nick Hu <nickhu@andestech.com>,
- linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
- linux-mips@vger.kernel.org, openrisc@lists.librecores.org,
- Richard Weinberger <richard@nod.at>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>,
- Mike Rapoport <rppt@kernel.org>
+Cc: "kernel-team@android.com" <kernel-team@android.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Mike Rapoport <rppt@linux.ibm.com>
-
-to reflect the updates to free_area_init() family of functions.
-
-Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
----
- Documentation/vm/memory-model.rst | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/Documentation/vm/memory-model.rst b/Documentation/vm/memory-model.rst
-index 58a12376b7df..91228044ed16 100644
---- a/Documentation/vm/memory-model.rst
-+++ b/Documentation/vm/memory-model.rst
-@@ -46,11 +46,10 @@ maps the entire physical memory. For most architectures, the holes
- have entries in the `mem_map` array. The `struct page` objects
- corresponding to the holes are never fully initialized.
- 
--To allocate the `mem_map` array, architecture specific setup code
--should call :c:func:`free_area_init_node` function or its convenience
--wrapper :c:func:`free_area_init`. Yet, the mappings array is not
--usable until the call to :c:func:`memblock_free_all` that hands all
--the memory to the page allocator.
-+To allocate the `mem_map` array, architecture specific setup code should
-+call :c:func:`free_area_init` function. Yet, the mappings array is not
-+usable until the call to :c:func:`memblock_free_all` that hands all the
-+memory to the page allocator.
- 
- If an architecture enables `CONFIG_ARCH_HAS_HOLES_MEMORYMODEL` option,
- it may free parts of the `mem_map` array that do not cover the
--- 
-2.25.1
-
+On 2020/04/09 1:58, Palmer Dabbelt wrote:=0A=
+> * Builds a table of device trees, keyed by mvendorid/marchid/mimpid.  Thi=
+s=0A=
+>   allows multiple device trees to be built into the kernel.  I don't real=
+ly=0A=
+>   like maintaining the two lists (one in C and one in assembly) or having=
+ that=0A=
+>   function in the table, but it's the best I could come up with.=0A=
+> * "handles" PMP traps by just skipping the PMP setup phase.=0A=
+> =0A=
+> I don't actually have a K210 so I can't test any of this.  I also couldn'=
+t find=0A=
+> the K210 identifiers listed anywhere online, so someone will have to dig =
+them=0A=
+> out of the board.=0A=
+> =0A=
+> I also didn't spend any time thinking through how we free these device tr=
+ees,=0A=
+> but given that .dtb.init.rodata already exists as a section I'm just gues=
+sing=0A=
+> that's were we're supposed to put them.=0A=
+=0A=
+I cannot test anything yet. Something funky is going on with boot objcopy/I=
+mage=0A=
+size: I end up with an Image file (and loader/loader.bin) that are 8.5MB in=
+stead=0A=
+of the 1.4MB I had before pulling in Linus tree. rc1 as of this morning sti=
+ll=0A=
+shows the same problem. vmlinux is 1.8MB vs 1.9 MB before.=0A=
+=0A=
+To check if my toolchain is broken, I recompiled the 5.6 tree I used for=0A=
+developing the series and I end up with a loader.bin file of 1.4 MB. All lo=
+oking=0A=
+good. But there are changes to the vmlinux elf section headers which likely=
+=0A=
+cause the huge final size I am seeing. Will try to dig into this.=0A=
+=0A=
+=0A=
+-- =0A=
+Damien Le Moal=0A=
+Western Digital Research=0A=
 
