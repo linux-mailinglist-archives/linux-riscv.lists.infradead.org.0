@@ -2,80 +2,91 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B0351A651E
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 12:21:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63C1A1A6981
+	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 18:12:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bgrG8Rz4fsNQffOWSldyXCj4ATmulmgHR2HIG47QRZI=; b=H/bdk8CYsKEzgprAo6nmEldbj
-	Qxan9vZATGgTFhYxvzVlt+wkWNnRPD/3tofC30OgH+7QiSY9ZjgQU2RawxEh1ZsgiWyr5cV9oRu/a
-	OPalh57xXNSFQkL4pGKZ0EF2V20Ljw1Cwyx+OBW2v053kPQRPmLpsqp4BjPoz0tRj0hPNmx4ERWQK
-	v0AXoCy4Gzgi1juf+GT0OAkwFcY45cds+hzJ6tD8dUdR4i/9mFrXOabliYunHtewIUy14/muNz6lx
-	YC7CvnxbMHN1qJSSZyyou927ymk6eEw8aBU1qfRZnSzDeOhXExc8ok9/AuuRpkjNl3XaUtz4G39pa
-	tXiR8o7MA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fDNE3d6mNUJZ48JEkXp4cIY6H74jiPrBKw5gp9a7Fs8=; b=M9wP/cMK3kZUpgkkcAninUE/qv
+	qGNyhJvob6LJ+H1w6eD/1TzeL7eIV+if9fRXRocCtbEUAdfcL7qY1Mn5JVG57VHNMnGUAqGxZKI77
+	xHCgdjPVPOCicp2zyw4YUtrO5RSfOuRP/vNzCkhJz5pCY9nxw0YDTOiaMZIeMptVI3wKNmQE1WHZT
+	mPUCW0r2XSb/dh/pLdiliCm6lKbaStAWrN3bFnwQWS0tIeWOmf3yYLgLCft91Z0qzpGKady/0cY/V
+	pySPwVTG7dLYHYuOOJK9XnOE3UOmqSrNbVo1uLgUdKcOXBx3j8TMs1NuEv2R4sMV0kv9FTgOAIfgi
+	13eayYJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNwDd-0007a4-KD; Mon, 13 Apr 2020 10:21:33 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jO1hS-0001vM-CW; Mon, 13 Apr 2020 16:12:42 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNwDa-0007Za-QZ
- for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 10:21:32 +0000
-Received: by mail-wm1-x342.google.com with SMTP id h2so8875367wmb.4
- for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 03:21:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bgrG8Rz4fsNQffOWSldyXCj4ATmulmgHR2HIG47QRZI=;
- b=Zu3fymzEG6ffBnOfA4OlRI0wvOeSXIKq7LhnMLYwwKyS0Ydrx2N5baWqGWX07OdqL9
- za3Sanfn8HhqNSKlU8/7J6wezDbIuhTwwPJyBaG1qx/Q/zbnAbq/xSPtH2a8zqmu9sP1
- 2RBMsJ2BdsD/Vw2DxOMxVv/EYlSsKFDTho2bMTvDsScw7JWBHvWJKwxlqGasWqngKDzp
- Bz6Z9yvrBzWSfANbmgk8+B9DJZSc4hFH5OyeKMQfMh2q5wyqgy5TulDPUV+a3bvKHYFj
- 1jMhvpg/1UcN7AuDSEZJ4j13ThKYsbvImidnFedZB7E0vtzdkQ3Oj5wWwTn1EaujJGai
- R6ow==
+ id 1jO1hO-0001ua-9X
+ for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 16:12:39 +0000
+Received: by mail-pl1-x643.google.com with SMTP id k18so3538127pll.6
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 09:12:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id;
+ bh=fDNE3d6mNUJZ48JEkXp4cIY6H74jiPrBKw5gp9a7Fs8=;
+ b=I1Z5+kKh4OG4NI0RnJGh4hAXQSmKixqK0/ZtT+V/E1y/JONoKSMxkXDmwXpAfVUz9r
+ HCq5fTUca2UWzaCsujqnOn3cHKcVMzGblJQff89Fg7EH3KDqO6DIVF1otfjCeMdQBaD6
+ KalcJIn4NMTl2ImQ+5hoV6y+UX3RTtYPk9B0bw6zpyhoI9hA/tkcwcgcw4P0Ga187lUj
+ Jg6tkz81l7gS6mPJD2417aQ7CrsgOVbP+drlbhUTMHf/V1EKJVXODgFTGOYR51pYO9z6
+ 9X7tuOo1wCT4rMAYQZO3Y5NiUPyd6ZADPhOYiTCDYn+4N/Esyx98Z9VllCXYO1QCuFXY
+ gIpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bgrG8Rz4fsNQffOWSldyXCj4ATmulmgHR2HIG47QRZI=;
- b=MFlTFMqSwYa/fIwAGg2O8ilBoNI9B2nVTR1cIpGz8M+rPQCO6CtjhTJ9/T6f9OJpWW
- Crjp9A1iq+OgKR97ag3angNalVUB9jDHPAo6zDaSz/IVPFAfsfem2Wxi2jLJABdIrbys
- UI9gGkGsTnou3MGC0QigyRTTMJ6BmrmdsH0NtpBrcFEm+oJggXuF9b0y22tSsjfOsVpJ
- bI/vdQuqGV414FJGrRGg+K7NunR2jjgyhfAZu3jk+VVBnpJKhUaYijZayLFpDc7qkaNi
- AZL+2yR8isrvWQtUiCijqc49XfGwzRLgoRterfMgHJSqTiHO2XafX4Afw+bh6sH/DOib
- 0tXw==
-X-Gm-Message-State: AGi0PuYYf2lRti7Bp5xeQSXtwu8fuSQO34lYN9o/1CPpWM4RbMi2KKkA
- IItKYBkQUbnQFhxToq2RICTHnf54bhcxOHhZvt4KdkJW
-X-Google-Smtp-Source: APiQypIcUKoroazeCYaf3HYPRLFCiTAQiX8iA/GebsWWZZgWi+E+U5qm4ZSXUR7fcNzy9E4Jc2jC/NZNIUGE7ldWz7U=
-X-Received: by 2002:a1c:9d0d:: with SMTP id g13mr14002765wme.102.1586773288714; 
- Mon, 13 Apr 2020 03:21:28 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200413090449.36777-1-damien.lemoal@wdc.com>
-In-Reply-To: <20200413090449.36777-1-damien.lemoal@wdc.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Mon, 13 Apr 2020 15:51:16 +0530
-Message-ID: <CAAhSdy3o69RfVDu1XwNWMnpk6twLe7TM_UTT4OHAar70VtR4tg@mail.gmail.com>
-Subject: Re: [PATCH] riscv: select ARCH_HAS_STRICT_KERNEL_RWX only if MMU
-To: Damien Le Moal <damien.lemoal@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+ bh=fDNE3d6mNUJZ48JEkXp4cIY6H74jiPrBKw5gp9a7Fs8=;
+ b=SFUDChyp9PoiTgdgxDf32MxkJnsW51/O6NeStElLWTtxuH2bls+p2UOkn4JdTN4hJw
+ GH8jl3S2FWD+PuecKj3UEA36OFkmwWaG/upql3q5gC+X+nAI8135MPkuH6UzmiNl1JyA
+ gXb8l6TRFw69s9sRse8nkEV4brfr6E6cAJx9c94nhHOCB+xa/RlyfAqwIOHXflsSiNmx
+ pf7ectIqXx6/OSLSH2pGTsUztElBRaPLXB/v2fTENzBaPftXsgiKnAjKGOuvKJYl402O
+ mpHfPGlCzlD4wDUEuTdNyso3MCr1TyCL9B9zZrXB1/K3NzYGFzAgFJShCAowSmsDiof3
+ L2xg==
+X-Gm-Message-State: AGi0Pub6pNEgVTj34+2RjFAWLwEncTDZUEqCo+Rga2iOt9r+CX8EZoZ0
+ qTHTTc5zUwEs7hXAqvBUUk6cuVB9
+X-Google-Smtp-Source: APiQypIGgX8jar649ulqr3NbnDbLLAjHgdD2FwNMz8+gXeP4m4l0ak10Ae1rKAmbur6uSwcAvJB7kQ==
+X-Received: by 2002:a17:90a:8c83:: with SMTP id
+ b3mr21876434pjo.141.1586794356873; 
+ Mon, 13 Apr 2020 09:12:36 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id u15sm4415133pjm.47.2020.04.13.09.12.35
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 13 Apr 2020 09:12:36 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: [PATCH] RISC-V: stacktrace: Declare sp_in_global outside ifdef
+Date: Mon, 13 Apr 2020 09:12:34 -0700
+Message-Id: <20200413161234.78346-1-linux@roeck-us.net>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_032130_930031_A3352258 
-X-CRM114-Status: GOOD (  12.44  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200413_091238_330656_956FF102 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.6 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (0.6 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [groeck7[at]gmail.com]
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [groeck7[at]gmail.com]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,46 +98,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Anup Patel <Anup.Patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmerdabbelt@google.com>, linux-kernel@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ Guenter Roeck <linux@roeck-us.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Apr 13, 2020 at 2:35 PM Damien Le Moal <damien.lemoal@wdc.com> wrote:
->
-> ARCH_HAS_STRICT_KERNEL_RWX is not useful for NO-MMU systems.
-> Furthermore, has this option leads to very large boot image files on
-> 64bits architectures, do not enable this option to allow supporting
-> no-mmu platforms such as the Kendryte K210 SoC based boards.
->
-> Fixes: 00cb41d5ad31 ("riscv: add alignment for text, rodata and data sections")
-> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
-> ---
->  arch/riscv/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index a197258595ef..47691a9e3fd0 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -60,7 +60,7 @@ config RISCV
->         select ARCH_HAS_GIGANTIC_PAGE
->         select ARCH_HAS_SET_DIRECT_MAP
->         select ARCH_HAS_SET_MEMORY
-> -       select ARCH_HAS_STRICT_KERNEL_RWX
-> +       select ARCH_HAS_STRICT_KERNEL_RWX if MMU
->         select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
->         select SPARSEMEM_STATIC if 32BIT
->         select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
-> --
-> 2.25.2
->
->
+riscv:allnoconfig and riscv:tinyconfig fail to compile.
 
-Looks good to me.
+arch/riscv/kernel/stacktrace.c: In function 'walk_stackframe':
+arch/riscv/kernel/stacktrace.c:78:8: error: 'sp_in_global' undeclared
 
-Reviewed-by: Anup Patel <anup@brainfault.org>
+sp_in_global is declared inside CONFIG_FRAME_POINTER but used outside
+of it.
 
-Regards,
-Anup
+Fixes: 52e7c52d2ded ("RISC-V: Stop relying on GCC's register allocator's hueristics")
+Cc: Palmer Dabbelt <palmerdabbelt@google.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+Apologies for the noise if this has already been fixed somewhere.
+
+ arch/riscv/kernel/stacktrace.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/riscv/kernel/stacktrace.c b/arch/riscv/kernel/stacktrace.c
+index 02087fe539c6..6c854875ac74 100644
+--- a/arch/riscv/kernel/stacktrace.c
++++ b/arch/riscv/kernel/stacktrace.c
+@@ -12,6 +12,8 @@
+ #include <linux/stacktrace.h>
+ #include <linux/ftrace.h>
+ 
++register unsigned long sp_in_global __asm__("sp");
++
+ #ifdef CONFIG_FRAME_POINTER
+ 
+ struct stackframe {
+@@ -19,8 +21,6 @@ struct stackframe {
+ 	unsigned long ra;
+ };
+ 
+-register unsigned long sp_in_global __asm__("sp");
+-
+ void notrace walk_stackframe(struct task_struct *task, struct pt_regs *regs,
+ 			     bool (*fn)(unsigned long, void *), void *arg)
+ {
+-- 
+2.17.1
+
 
