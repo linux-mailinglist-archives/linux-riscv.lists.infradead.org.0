@@ -2,77 +2,75 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F1041A61D2
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 05:50:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25CFA1A6374
+	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 09:17:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Z5DL3ydxWnZsOET7tLCtMfbSustqKvwa99EIBLStxlk=; b=KGQqsf8tLho/NGsS3NPT5QdWX
-	Z76RtSkOkDIv4UDTAHxEQVQzmcas5E1ZHosIK/RObxe+239vFVZvI5oeNuWes/Bq7woQ0qTsALj4v
-	mWOYCc/rwuyckg3SXkCXnd0cC8/vII5ew5/r1Nt3/NTq+BNdUJUuUxwggGaD+5vJphrDAqVNCEWnl
-	+0e+Lk1VhWXU9VBJpG6QT66ELU+vyCcBGGOmYCUc/7TCPfeurwvm/N2lnACFsWJVBZsuPAYfYoaFy
-	SHu6oth3jkTYp6ywb9T+c/MwvEBt30dmA7XkWwbp4h/jbFvQ9FtriLXg1LKR8xYcdpWJ/9bRHgh+r
-	waDyQWarA==;
+	 bh=6bpjMW+GzYcPR9daW21i+rWw6xTJ7uzEt7yYYDWZye8=; b=NMnE/9294aHGYaFC0zABtmo+G
+	4LREvAVacfnFEdH+ovQKWq8c130+Qmj8/Rfkv9osBe3rPzYpHBUpL16dNCC/DKjfAWIvDo2UIszHq
+	aJ+Mo6QddGVi4O6sQe6rJQDadmEGTaAIlm3ekoDTwK3rzCa4pujTr5oKISYGpNm0GXU9X2DSmaAAU
+	sX/SgTOLwzZkd/b1oHSeZJ60V5WZX5JtqkK592GIg918X5UKOSe1kSHQsg7RYBWrnJnkc/QAtmIue
+	L2TjWrbNHgGu7+bp9zhEG9kwOq16ckcUSbOODkZzZI9YbnBKAECr/AihQgq1cFQP4eQCcT9tx+S9r
+	sOjVAjt/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNq76-0006F2-Ea; Mon, 13 Apr 2020 03:50:24 +0000
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841])
+	id 1jNtLB-0002Xr-J9; Mon, 13 Apr 2020 07:17:09 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNq72-0006EZ-Np
- for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 03:50:22 +0000
-Received: by mail-qt1-x841.google.com with SMTP id b10so6237341qtt.9
- for <linux-riscv@lists.infradead.org>; Sun, 12 Apr 2020 20:50:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ id 1jNtL8-0002XL-Ad
+ for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 07:17:07 +0000
+Received: by mail-wm1-x342.google.com with SMTP id x25so8547121wmc.0
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 00:17:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Z5DL3ydxWnZsOET7tLCtMfbSustqKvwa99EIBLStxlk=;
- b=f/pfGMwL+TEoQXM0/AwPT963yqpmcKSl+h11XcEbPjCsJjYziRMapMnLQzv86jnA0h
- iACn1xcFBPtLYY3zUuYSsyogV8ebPrKVo7uMN1yKYZ+jvUfuSXZESRoscAfnjkvMOEMD
- ss9wXmKnBKFrVHL5BdRJ/xmY12alNBxLyYDAbpJXJzpekqmrRgoC2wUxGXt943IQrNiY
- YyJLA9DuBfOZrrK/gyHOBO8illur6wLyCuPcphFpFGZIBiJqRQhrxYmLMHhV7rY/0CAY
- voTn27at2lkkS2vKYcNQPMOz2+MjIzM2oigfPIDaG77SkpCW7oSOwrfkiRp73TjrU+kr
- dijA==
+ :cc; bh=6bpjMW+GzYcPR9daW21i+rWw6xTJ7uzEt7yYYDWZye8=;
+ b=d+Yd08MhDy3n8uPAj61nMpr6ym0sQVpFn9ynW2A0zRLpEMdwd/dsjtXGr3CvZmqP8x
+ c/a6V17JRXiNYECZoGXbC4MAz73FGaWzN85B2hCki5r7INf5tJhtDs1r/ylqQAplwnob
+ Gepqu5Eexv/gu+4QyOV6VbGL6spp+v/OC94z7OdhM8a2vqrnHphuzIKEBrg+ncZk7U0Q
+ UeADtyYBuxTAURI5pSSYJMxyjJ5Ett033nAdFiZ4JAK8EoPAg6w29GeWBFMq+//HuOSp
+ wGiOLsNGAuwxERm8Vx8kakGYf+UYJ91V71tqR8k1egAGH0foE/BXeOBpTurqvQv23lob
+ 1Deg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Z5DL3ydxWnZsOET7tLCtMfbSustqKvwa99EIBLStxlk=;
- b=L/0UV/KY1zFJuBE88BOQSO7J8RkZyFubRli4WcCwZnc3tqYMNGrYXusf3qto0eXhH5
- UGiZnhnvxiiGnrB6NWjUfKEaA9B6AytNBEBYD9nyBKjRSaIEhno3S353BDkH2/yTKBEE
- AY3Qbrrgz/DMtS0QVQaMxKj+PgUiW5BaHkaLupGnkmnYS4CtHAFlXpCE1L7MbEolZZTz
- A55+SK8fGEep29yLxYPEXTpoThB6IJHyqodWw14DSFZ240VnFtbRU7oI97XLaHf2DJqf
- OJCf98eq9aU6XEd+c67QdmX2GXO3uSlLaCwAE6Ah2jZhdwwarxLVoS46RM5FI23lZCQ/
- hkqg==
-X-Gm-Message-State: AGi0PuY8G5q5oo7Amc+fCdlCMf4nF2o9Gc/QOst+o9KfhaB2LwRJQr31
- 8fhmEQR5t8kvSf6H9w3UKEwBO+COdclzneAvV/b3jA==
-X-Google-Smtp-Source: APiQypITBg/oAwx9+MMEkVd/sAOSxLtyWqEGvVBZgXFSRIdK3qW2gtXb5i9pGeDVFRrtSXXJ1uTiivfk/ECI3R9H8qg=
-X-Received: by 2002:ac8:7199:: with SMTP id w25mr9675878qto.86.1586749817576; 
- Sun, 12 Apr 2020 20:50:17 -0700 (PDT)
+ bh=6bpjMW+GzYcPR9daW21i+rWw6xTJ7uzEt7yYYDWZye8=;
+ b=jUv22iiiEAOfQKzwXiJSuMnihrfOWnqHv/zdn3JbtHLI8zsgy6xv7DNlGTijoTKdEk
+ eecONHq1uxT3lPvGXqzX/vPZZmIxLEK3gCpqPm/XtNoV8VDq0CaP/8YPdjB3qVGMtGvE
+ a5fly0w8I7o9TTZkjzStko30EEe7xpMP7B2p8/QxWsr1DMQ85Rj0RRkXElxmVY9jTYj5
+ mvUuWer7N84sRItX0yB7cptGMSl0oIC/x/u+DFmN3SJ0JP6mN2f8Uv65vxIGPWtYms1v
+ sLp63x/W2RlUfL68KbkaY6weXe5ZrBOX1Iy5HE5/5kgh+yN5bwHA4qVChJarpiMbTbZa
+ k/Aw==
+X-Gm-Message-State: AGi0PuYCc43FaNdpa0frMMQSX8ZSpv6YS3FEsyQhVvKTHwOthLADHydQ
+ RuExD3F8Hq7wfUpvuEL1NTCruiCSy89eNrTKvRTY
+X-Google-Smtp-Source: APiQypI9nvk1IhbIpRM+ZnkxURJZCjtr6zR4g2ZnYcmJZqyKuoof/HH794rUfdXRFaYSW06NnIFLJmnuzBYyoAvb3mU=
+X-Received: by 2002:a7b:c10d:: with SMTP id w13mr16952860wmi.78.1586762223184; 
+ Mon, 13 Apr 2020 00:17:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <1586232452-8998-1-git-send-email-vincent.chen@sifive.com>
- <CAOnJCUJ9apfBGtXsSGLECTo=BX51mCg+dZQ-t9ZoKTL9hdKuoQ@mail.gmail.com>
- <CABvJ_xiL8RDckQfwDVSkVTYdnjPxC+ixO6THHQPHM9=fZFyRxg@mail.gmail.com>
- <CAOnJCUJEkoMJd72O3zRrt9aOojW2ALooJzwwtFZkeTF4Tqd13Q@mail.gmail.com>
-In-Reply-To: <CAOnJCUJEkoMJd72O3zRrt9aOojW2ALooJzwwtFZkeTF4Tqd13Q@mail.gmail.com>
-From: Vincent Chen <vincent.chen@sifive.com>
-Date: Mon, 13 Apr 2020 11:50:06 +0800
-Message-ID: <CABvJ_xid4Q0n=TaOYpEpNqWRiaLPVQcbR9rBSqNvm3zbi0pqTg@mail.gmail.com>
-Subject: Re: [RFC] riscv: use vDSO common flow to reduce the latency of the
- time-related functions
-To: Atish Patra <atishp@atishpatra.org>
+References: <20200403014609.71831-1-atish.patra@wdc.com>
+ <20200411115919.32fc0455@why>
+In-Reply-To: <20200411115919.32fc0455@why>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Mon, 13 Apr 2020 00:16:51 -0700
+Message-ID: <CAOnJCUK=mvru3J_KrE0viazGTintbBJEPDT=kcUgpktKb5X3tQ@mail.gmail.com>
+Subject: Re: [PATCH] irqchip/sifive-plic: Fix maximum priority threshold value
+To: Marc Zyngier <maz@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200412_205020_941354_7F6687AF 
-X-CRM114-Status: GOOD (  28.66  )
+X-CRM114-CacheID: sfid-20200413_001706_568508_266060BA 
+X-CRM114-Status: GOOD (  16.00  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:841 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -94,168 +92,71 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Jason Cooper <jason@lakedaemon.net>, Anup Patel <anup@brainfault.org>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Atish Patra <atish.patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Thomas Gleixner <tglx@linutronix.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Apr 12, 2020 at 10:48 AM Atish Patra <atishp@atishpatra.org> wrote:
+On Sat, Apr 11, 2020 at 3:59 AM Marc Zyngier <maz@kernel.org> wrote:
 >
-> On Sat, Apr 11, 2020 at 7:21 PM Vincent Chen <vincent.chen@sifive.com> wrote:
-> >
-> > On Sat, Apr 11, 2020 at 9:25 AM Atish Patra <atishp@atishpatra.org> wrote:
-> > >
-> > > On Mon, Apr 6, 2020 at 9:07 PM Vincent Chen <vincent.chen@sifive.com> wrote:
-> > > >
-> > > > Even if RISC-V has supported the vDSO feature, the latency of the functions
-> > > > for obtaining the system time is still expensive. It is because these
-> > > > functions still trigger a corresponding system call in the process, which
-> > > > slows down the response time. If we want to remove the system call to
-> > > > reduce the latency, the kernel should have the ability to output the system
-> > > > clock information to userspace. This patch introduces the vDSO common flow
-> > > > to enable the kernel to achieve the above feature and uses "rdtime"
-> > > > instruction to obtain the current time in the user space. Under this
-> > > > condition, the latency cost by the ecall from U-mode to S-mode can be
-> > > > eliminated. After applying this patch, the latency of gettimeofday()
-> > > > measured on the HiFive unleashed board can be reduced by %61.
-> > > >
-> > > > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> > > > ---
-> > > >  arch/riscv/Kconfig                         |  3 ++
-> > > >  arch/riscv/include/asm/vdso.h              |  3 --
-> > > >  arch/riscv/include/asm/vdso/gettimeofday.h | 73 ++++++++++++++++++++++++++++++
-> > > >  arch/riscv/include/asm/vdso/vsyscall.h     | 27 +++++++++++
-> > > >  arch/riscv/kernel/vdso.c                   |  4 +-
-> > > >  arch/riscv/kernel/vdso/Makefile            | 12 +++--
-> > > >  arch/riscv/kernel/vdso/clock_getres.S      | 18 --------
-> > > >  arch/riscv/kernel/vdso/clock_gettime.S     | 18 --------
-> > > >  arch/riscv/kernel/vdso/gettimeofday.S      | 18 --------
-> > > >  arch/riscv/kernel/vdso/vdso.lds.S          |  2 +
-> > > >  arch/riscv/kernel/vdso/vgettimeofday.c     | 25 ++++++++++
-> > > >  11 files changed, 141 insertions(+), 62 deletions(-)
-> > > >  create mode 100644 arch/riscv/include/asm/vdso/gettimeofday.h
-> > > >  create mode 100644 arch/riscv/include/asm/vdso/vsyscall.h
-> > > >  delete mode 100644 arch/riscv/kernel/vdso/clock_getres.S
-> > > >  delete mode 100644 arch/riscv/kernel/vdso/clock_gettime.S
-> > > >  delete mode 100644 arch/riscv/kernel/vdso/gettimeofday.S
-> > > >  create mode 100644 arch/riscv/kernel/vdso/vgettimeofday.c
-> > > >
-> > > > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> > > > index ded32979d33d..028b48c14c4e 100644
-> > > > --- a/arch/riscv/Kconfig
-> > > > +++ b/arch/riscv/Kconfig
-> > > > @@ -68,6 +68,9 @@ config RISCV
-> > > >         select HAVE_ARCH_KASAN if MMU && 64BIT
-> > > >         select HAVE_REGS_AND_STACK_ACCESS_API
-> > > >         select HAVE_RSEQ
-> > > > +       select HAVE_GENERIC_VDSO
-> > > > +       select GENERIC_TIME_VSYSCALL
-> > > > +       select GENERIC_GETTIMEOFDAY
-> > > >
-> > > >  config ARCH_MMAP_RND_BITS_MIN
-> > > >         default 18 if 64BIT
-> > > > diff --git a/arch/riscv/include/asm/vdso.h b/arch/riscv/include/asm/vdso.h
-> > > > index 7a7fce63c474..05689eab4083 100644
-> > > > --- a/arch/riscv/include/asm/vdso.h
-> > > > +++ b/arch/riscv/include/asm/vdso.h
-> > > > @@ -10,9 +10,6 @@
-> > > >
-> > > >  #include <linux/types.h>
-> > > >
-> > > > -struct vdso_data {
-> > > > -};
-> > > > -
-> > > >  /*
-> > > >   * The VDSO symbols are mapped into Linux so we can just use regular symbol
-> > > >   * addressing to get their offsets in userspace.  The symbols are mapped at an
-> > > > diff --git a/arch/riscv/include/asm/vdso/gettimeofday.h b/arch/riscv/include/asm/vdso/gettimeofday.h
-> > > > new file mode 100644
-> > > > index 000000000000..087fc01fd288
-> > > > --- /dev/null
-> > > > +++ b/arch/riscv/include/asm/vdso/gettimeofday.h
-> > > > @@ -0,0 +1,73 @@
-> > > > +/* SPDX-License-Identifier: GPL-2.0 */
-> > > > +#ifndef __ASM_VDSO_GETTIMEOFDAY_H
-> > > > +#define __ASM_VDSO_GETTIMEOFDAY_H
-> > > > +
-> > > > +#ifndef __ASSEMBLY__
-> > > > +
-> > > > +#include <asm/unistd.h>
-> > > > +#include <uapi/linux/time.h>
-> > > > +
-> > > > +#define VDSO_HAS_CLOCK_GETRES  1
-> > > > +
-> > > > +static __always_inline
-> > > > +int gettimeofday_fallback(struct __kernel_old_timeval *_tv,
-> > > > +                         struct timezone *_tz)
-> > > > +{
-> > > > +       register struct __kernel_old_timeval *tv asm("a0") = _tv;
-> > > > +       register struct timezone *tz asm("a1") = _tz;
-> > > > +       register long ret asm("a0");
-> > > > +       register long nr asm("a7") = __NR_gettimeofday;
-> > > > +
-> > > > +       asm volatile ("ecall\n"
-> > > > +                     : "=r" (ret)
-> > > > +                     : "r"(tv), "r"(tz), "r"(nr)
-> > > > +                     : "memory");
-> > > > +
-> > > > +       return ret;
-> > > > +}
-> > > > +
-> > > > +static __always_inline
-> > > > +long clock_gettime_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
-> > > > +{
-> > > > +       register clockid_t clkid asm("a0") = _clkid;
-> > > > +       register struct __kernel_timespec *ts asm("a1") = _ts;
-> > > > +       register long ret asm("a0");
-> > > > +       register long nr asm("a7") = __NR_clock_gettime;
-> > > > +
-> > > > +       asm volatile ("ecall\n"
-> > > > +                     : "=r" (ret)
-> > > > +                     : "r"(clkid), "r"(ts), "r"(nr)
-> > > > +                     : "memory");
-> > > > +
-> > > > +       return ret;
-> > > > +}
-> > > > +
-> > > > +static __always_inline
-> > > > +int clock_getres_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
-> > > > +{
-> > > > +       register clockid_t clkid asm("a0") = _clkid;
-> > > > +       register struct __kernel_timespec *ts asm("a1") = _ts;
-> > > > +       register long ret asm("a0");
-> > > > +       register long nr asm("a7") = __NR_clock_getres;
-> > > > +
-> > > > +       asm volatile ("ecall\n"
-> > > > +                     : "=r" (ret)
-> > > > +                     : "r"(clkid), "r"(ts), "r"(nr)
-> > > > +                     : "memory");
-> > > > +
-> > > > +       return ret;
-> > > > +}
-> > > > +
-> > > > +static __always_inline u64 __arch_get_hw_counter(s32 clock_mode)
-> > > > +{
-> > > > +       return csr_read(CSR_TIME);
-> > > > +}
-> > > > +
-> > >
-> > > Looking at other arch implementations, do we need to surround it with
-> > > instruction fences ?
-> > > (Assuming that future platforms will implements time CSR access in hardware)
-> >
-> > For the current case, I think the using scenario here is the same as
-> > the riscv's get_cycles(), so I didn't add fence instruction around it.
-> > If we need to access the time CSR implemented on the platform, I think
-> > the fence instructions are needed.
-> >
-> Qemu provides emulated timer access via goldfish RTC now.
-> I think we should add fence instruction now so that any future
-> platform doesn't get tripped by this.
-> or If you don't prefer that, at least we should leave a comment.
+> On Thu,  2 Apr 2020 18:46:09 -0700
+> Atish Patra <atish.patra@wdc.com> wrote:
 >
-If it does not pose any risk to the current system, I do not prefer to
-add fence instructions here.
-I will follow your suggestion to add a comment here.
-Thanks for your feedback.
+> > As per the PLIC specification, maximum priority threshold value is 0x7
+> > not 0xF. Even though it doesn't cause any error in qemu/hifive unleashed,
+> > there may be some implementation which checks the upper bound resulting in
+> > an illegal access.
+> >
+> > Fixes: ccbe80bad571 (irqchip/sifive-plic: Enable/Disable external
+> >                    interrupts upon cpu online/offline)
+>
+> Small nit: please write the "Fixes:" tag as documented in
+> process/submitting-patches.rst:
+>
+> Fixes: ccbe80bad571 ("irqchip/sifive-plic: Enable/Disable external interrupts upon cpu online/offline")
+>
+> (with quotes, and on a single line), as it otherwise breaks with the
+> lore-scrapping tooling which a bunch of us are now using.
+>
+
+Ahh Sorry for that. I will keep that in mind. I broke it into two
+lines fearing a checkpatch warning.
+But I guess I unleashed a bigger monster unknowingly ;)
+
+> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> > ---
+> >  drivers/irqchip/irq-sifive-plic.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+> > index c34fb3ae0ff8..d0a71febdadc 100644
+> > --- a/drivers/irqchip/irq-sifive-plic.c
+> > +++ b/drivers/irqchip/irq-sifive-plic.c
+> > @@ -56,7 +56,7 @@
+> >  #define     CONTEXT_THRESHOLD                0x00
+> >  #define     CONTEXT_CLAIM            0x04
+> >
+> > -#define      PLIC_DISABLE_THRESHOLD          0xf
+> > +#define      PLIC_DISABLE_THRESHOLD          0x7
+> >  #define      PLIC_ENABLE_THRESHOLD           0
+> >
+> >  struct plic_priv {
+>
+> Queued for post -rc1.
+>
+> Thanks,
+>
+>         M.
+> --
+> Jazz is not dead. It just smells funny...
+>
+
+
+-- 
+Regards,
+Atish
 
