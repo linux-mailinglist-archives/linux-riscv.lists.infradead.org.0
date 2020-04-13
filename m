@@ -2,75 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25CFA1A6374
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 09:17:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF6E11A637D
+	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 09:20:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6bpjMW+GzYcPR9daW21i+rWw6xTJ7uzEt7yYYDWZye8=; b=NMnE/9294aHGYaFC0zABtmo+G
-	4LREvAVacfnFEdH+ovQKWq8c130+Qmj8/Rfkv9osBe3rPzYpHBUpL16dNCC/DKjfAWIvDo2UIszHq
-	aJ+Mo6QddGVi4O6sQe6rJQDadmEGTaAIlm3ekoDTwK3rzCa4pujTr5oKISYGpNm0GXU9X2DSmaAAU
-	sX/SgTOLwzZkd/b1oHSeZJ60V5WZX5JtqkK592GIg918X5UKOSe1kSHQsg7RYBWrnJnkc/QAtmIue
-	L2TjWrbNHgGu7+bp9zhEG9kwOq16ckcUSbOODkZzZI9YbnBKAECr/AihQgq1cFQP4eQCcT9tx+S9r
-	sOjVAjt/w==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t4+Oynrvxpbn1cTyMb6c6QepycJGK1H6+/qghK76Oig=; b=al3nMbgN5lfB6owLLNwT11j79+
+	taMiIeWJ+Ib6zDZv+tmxZ0DmFI7MMMR8K+PjnhjW4k7/HT10s1IWpI/DjiocCf5mKx9q4uVPXxQFb
+	58mde5/CpzXM+XKXP97QQmP1sVG82+B9dxTNMzagT3oMi+Vrn3e7EyIxkaVFwXVBqq8Oqe115bTvn
+	IyaalnW8GGz7dy47rAmNlsPVD4NS2XIiQ5KSCBXfMG9IX9P224RA7av/L3tolpn/iYUt9SvkJgUoc
+	WTGZkykT8S/Z1br28j41ufYmmKq518NdPIyT0EdwYZmg07Tjvi9Qb+Sk0md4NmLrtSUuew8MaPmOb
+	Gi52h2PA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNtLB-0002Xr-J9; Mon, 13 Apr 2020 07:17:09 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jNtO9-00057B-Dp; Mon, 13 Apr 2020 07:20:13 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNtL8-0002XL-Ad
- for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 07:17:07 +0000
-Received: by mail-wm1-x342.google.com with SMTP id x25so8547121wmc.0
- for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 00:17:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=atishpatra.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6bpjMW+GzYcPR9daW21i+rWw6xTJ7uzEt7yYYDWZye8=;
- b=d+Yd08MhDy3n8uPAj61nMpr6ym0sQVpFn9ynW2A0zRLpEMdwd/dsjtXGr3CvZmqP8x
- c/a6V17JRXiNYECZoGXbC4MAz73FGaWzN85B2hCki5r7INf5tJhtDs1r/ylqQAplwnob
- Gepqu5Eexv/gu+4QyOV6VbGL6spp+v/OC94z7OdhM8a2vqrnHphuzIKEBrg+ncZk7U0Q
- UeADtyYBuxTAURI5pSSYJMxyjJ5Ett033nAdFiZ4JAK8EoPAg6w29GeWBFMq+//HuOSp
- wGiOLsNGAuwxERm8Vx8kakGYf+UYJ91V71tqR8k1egAGH0foE/BXeOBpTurqvQv23lob
- 1Deg==
+ id 1jNtO4-00049F-3B
+ for linux-riscv@lists.infradead.org; Mon, 13 Apr 2020 07:20:11 +0000
+Received: by mail-pf1-x443.google.com with SMTP id r20so2483330pfh.9
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 00:20:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=t4+Oynrvxpbn1cTyMb6c6QepycJGK1H6+/qghK76Oig=;
+ b=f3jhDKF8cBIo2mDLn1HYqQvlXL87Grs+4n58ODY04khoJyGH0AvRUmIehbVj+Oh2yO
+ ikCCqdtxr2uwEG7/NTZkKQIXpkW2sBVKUJSnu6Q05vmTUn3W4d+C2ljTgJKyY0BxNOVP
+ Zu/y606z8+zPDIrdzNCTfopdBNutc72GmLSwi0EQ0PANbiB7twltdrkR1mm37MIpgeMZ
+ vGqPOmiQkZMFdA2nAXTKu2v9d//auGvbV+/1BrwJFdhTlOMMohsu1lMd6GyY7223DrOk
+ 4zxs37RrLnXhoFJakjleBYU+Fp2gLWDP0ZsR74WVX90bI5m65qi285x6YIP11tTY4b0V
+ c8Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6bpjMW+GzYcPR9daW21i+rWw6xTJ7uzEt7yYYDWZye8=;
- b=jUv22iiiEAOfQKzwXiJSuMnihrfOWnqHv/zdn3JbtHLI8zsgy6xv7DNlGTijoTKdEk
- eecONHq1uxT3lPvGXqzX/vPZZmIxLEK3gCpqPm/XtNoV8VDq0CaP/8YPdjB3qVGMtGvE
- a5fly0w8I7o9TTZkjzStko30EEe7xpMP7B2p8/QxWsr1DMQ85Rj0RRkXElxmVY9jTYj5
- mvUuWer7N84sRItX0yB7cptGMSl0oIC/x/u+DFmN3SJ0JP6mN2f8Uv65vxIGPWtYms1v
- sLp63x/W2RlUfL68KbkaY6weXe5ZrBOX1Iy5HE5/5kgh+yN5bwHA4qVChJarpiMbTbZa
- k/Aw==
-X-Gm-Message-State: AGi0PuYCc43FaNdpa0frMMQSX8ZSpv6YS3FEsyQhVvKTHwOthLADHydQ
- RuExD3F8Hq7wfUpvuEL1NTCruiCSy89eNrTKvRTY
-X-Google-Smtp-Source: APiQypI9nvk1IhbIpRM+ZnkxURJZCjtr6zR4g2ZnYcmJZqyKuoof/HH794rUfdXRFaYSW06NnIFLJmnuzBYyoAvb3mU=
-X-Received: by 2002:a7b:c10d:: with SMTP id w13mr16952860wmi.78.1586762223184; 
- Mon, 13 Apr 2020 00:17:03 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200403014609.71831-1-atish.patra@wdc.com>
- <20200411115919.32fc0455@why>
-In-Reply-To: <20200411115919.32fc0455@why>
-From: Atish Patra <atishp@atishpatra.org>
-Date: Mon, 13 Apr 2020 00:16:51 -0700
-Message-ID: <CAOnJCUK=mvru3J_KrE0viazGTintbBJEPDT=kcUgpktKb5X3tQ@mail.gmail.com>
-Subject: Re: [PATCH] irqchip/sifive-plic: Fix maximum priority threshold value
-To: Marc Zyngier <maz@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=t4+Oynrvxpbn1cTyMb6c6QepycJGK1H6+/qghK76Oig=;
+ b=s9ghAqHG3tJkeyDx3poQgqIyyPu3QngJmn2+SOrFRBmuUrOme8rK/f135zx0igROLL
+ bLTA4cdgfdsTjTqYlEgaWuEJ+5q5h1zQ9gqRu4TlnWlhFDamI7j+pHARnUEIJ64L1+yf
+ 1+ZMt1fa/vmCSVxeoaaHlrm8qCK4sObdOd+V9BsUT/m+Sh7FMQoFKTdaWok7Si0TYZVa
+ 7M1r/zCJgLY4kIPE4t5VFXYXRmVD0MFHNsGJV8K9c5KAsuYrquFem2zAkf4RvVUGel0e
+ k4dYi4S6CIiT6FODALYHla7QpocAuMdUZLYDrg5e2dl3/xNPaUN0WtVxrJwgP6gyW/Ul
+ EO3Q==
+X-Gm-Message-State: AGi0PuauJnyWt1YvOcy2jsS92U5MNh0/tsxvjknknKRjY6Wu5hW0FSqW
+ TzoINeb7OsCJ79qdcUply+tEVJ5FPH8=
+X-Google-Smtp-Source: APiQypLCHiU44pp8DfPOdk2Cf4vA8hS51uLQrMDU0Y+9dfWs2GxavzslhkMzy5GpKjUXZeUPOR4tug==
+X-Received: by 2002:aa7:8429:: with SMTP id q9mr1165187pfn.308.1586762406456; 
+ Mon, 13 Apr 2020 00:20:06 -0700 (PDT)
+Received: from VincentChen-ThinkPad-T480s.internal.sifive.com
+ (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
+ by smtp.gmail.com with ESMTPSA id s137sm8118583pfs.45.2020.04.13.00.20.04
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 13 Apr 2020 00:20:05 -0700 (PDT)
+From: Vincent Chen <vincent.chen@sifive.com>
+To: paul.walmsley@sifive.com, palmer@dabbelt.com, daniel.lezcano@linaro.org,
+ tglx@linutronix.de
+Subject: [PATCH] riscv: use vDSO common flow to reduce the latency of the
+ time-related functions
+Date: Mon, 13 Apr 2020 15:20:01 +0800
+Message-Id: <1586762401-15697-1-git-send-email-vincent.chen@sifive.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_001706_568508_266060BA 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20200413_002008_223347_2629F565 
+X-CRM114-Status: GOOD (  21.76  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -92,71 +93,469 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Jason Cooper <jason@lakedaemon.net>, Anup Patel <anup@brainfault.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Thomas Gleixner <tglx@linutronix.de>
+Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sat, Apr 11, 2020 at 3:59 AM Marc Zyngier <maz@kernel.org> wrote:
->
-> On Thu,  2 Apr 2020 18:46:09 -0700
-> Atish Patra <atish.patra@wdc.com> wrote:
->
-> > As per the PLIC specification, maximum priority threshold value is 0x7
-> > not 0xF. Even though it doesn't cause any error in qemu/hifive unleashed,
-> > there may be some implementation which checks the upper bound resulting in
-> > an illegal access.
-> >
-> > Fixes: ccbe80bad571 (irqchip/sifive-plic: Enable/Disable external
-> >                    interrupts upon cpu online/offline)
->
-> Small nit: please write the "Fixes:" tag as documented in
-> process/submitting-patches.rst:
->
-> Fixes: ccbe80bad571 ("irqchip/sifive-plic: Enable/Disable external interrupts upon cpu online/offline")
->
-> (with quotes, and on a single line), as it otherwise breaks with the
-> lore-scrapping tooling which a bunch of us are now using.
->
+Even if RISC-V has supported the vDSO feature, the latency of the functions
+for obtaining the system time is still expensive. It is because these
+functions still trigger a corresponding system call in the process, which
+slows down the response time. If we want to remove the system call to
+reduce the latency, the kernel should have the ability to output the system
+clock information to userspace. This patch introduces the vDSO common flow
+to enable the kernel to achieve the above feature and uses "rdtime"
+instruction to obtain the current time in the user space. Under this
+condition, the latency cost by the ecall from U-mode to S-mode can be
+eliminated. After applying this patch, the latency of gettimeofday()
+measured on the HiFive unleashed board can be reduced by %61.
 
-Ahh Sorry for that. I will keep that in mind. I broke it into two
-lines fearing a checkpatch warning.
-But I guess I unleashed a bigger monster unknowingly ;)
+Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+---
+ arch/riscv/Kconfig                         |  3 ++
+ arch/riscv/include/asm/clocksource.h       |  7 +++
+ arch/riscv/include/asm/processor.h         | 12 +----
+ arch/riscv/include/asm/vdso.h              |  3 --
+ arch/riscv/include/asm/vdso/clocksource.h  |  8 +++
+ arch/riscv/include/asm/vdso/gettimeofday.h | 79 ++++++++++++++++++++++++++++++
+ arch/riscv/include/asm/vdso/processor.h    | 19 +++++++
+ arch/riscv/include/asm/vdso/vsyscall.h     | 27 ++++++++++
+ arch/riscv/kernel/vdso.c                   |  4 +-
+ arch/riscv/kernel/vdso/Makefile            | 12 +++--
+ arch/riscv/kernel/vdso/clock_getres.S      | 18 -------
+ arch/riscv/kernel/vdso/clock_gettime.S     | 18 -------
+ arch/riscv/kernel/vdso/gettimeofday.S      | 18 -------
+ arch/riscv/kernel/vdso/vdso.lds.S          |  2 +
+ arch/riscv/kernel/vdso/vgettimeofday.c     | 25 ++++++++++
+ drivers/clocksource/timer-riscv.c          |  1 +
+ 16 files changed, 184 insertions(+), 72 deletions(-)
+ create mode 100644 arch/riscv/include/asm/clocksource.h
+ create mode 100644 arch/riscv/include/asm/vdso/clocksource.h
+ create mode 100644 arch/riscv/include/asm/vdso/gettimeofday.h
+ create mode 100644 arch/riscv/include/asm/vdso/processor.h
+ create mode 100644 arch/riscv/include/asm/vdso/vsyscall.h
+ delete mode 100644 arch/riscv/kernel/vdso/clock_getres.S
+ delete mode 100644 arch/riscv/kernel/vdso/clock_gettime.S
+ delete mode 100644 arch/riscv/kernel/vdso/gettimeofday.S
+ create mode 100644 arch/riscv/kernel/vdso/vgettimeofday.c
 
-> > Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> > ---
-> >  drivers/irqchip/irq-sifive-plic.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> > index c34fb3ae0ff8..d0a71febdadc 100644
-> > --- a/drivers/irqchip/irq-sifive-plic.c
-> > +++ b/drivers/irqchip/irq-sifive-plic.c
-> > @@ -56,7 +56,7 @@
-> >  #define     CONTEXT_THRESHOLD                0x00
-> >  #define     CONTEXT_CLAIM            0x04
-> >
-> > -#define      PLIC_DISABLE_THRESHOLD          0xf
-> > +#define      PLIC_DISABLE_THRESHOLD          0x7
-> >  #define      PLIC_ENABLE_THRESHOLD           0
-> >
-> >  struct plic_priv {
->
-> Queued for post -rc1.
->
-> Thanks,
->
->         M.
-> --
-> Jazz is not dead. It just smells funny...
->
-
-
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index a197258595ef..059ef492fa7f 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -68,6 +68,9 @@ config RISCV
+ 	select ARCH_HAS_GCOV_PROFILE_ALL
+ 	select HAVE_COPY_THREAD_TLS
+ 	select HAVE_ARCH_KASAN if MMU && 64BIT
++	select HAVE_GENERIC_VDSO
++	select GENERIC_TIME_VSYSCALL
++	select GENERIC_GETTIMEOFDAY
+ 
+ config ARCH_MMAP_RND_BITS_MIN
+ 	default 18 if 64BIT
+diff --git a/arch/riscv/include/asm/clocksource.h b/arch/riscv/include/asm/clocksource.h
+new file mode 100644
+index 000000000000..482185566b0c
+--- /dev/null
++++ b/arch/riscv/include/asm/clocksource.h
+@@ -0,0 +1,7 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef _ASM_CLOCKSOURCE_H
++#define _ASM_CLOCKSOURCE_H
++
++#include <asm/vdso/clocksource.h>
++
++#endif
+diff --git a/arch/riscv/include/asm/processor.h b/arch/riscv/include/asm/processor.h
+index 3ddb798264f1..d6117b316e2b 100644
+--- a/arch/riscv/include/asm/processor.h
++++ b/arch/riscv/include/asm/processor.h
+@@ -8,6 +8,8 @@
+ 
+ #include <linux/const.h>
+ 
++#include <vdso/processor.h>
++
+ #include <asm/ptrace.h>
+ 
+ /*
+@@ -58,16 +60,6 @@ static inline void release_thread(struct task_struct *dead_task)
+ extern unsigned long get_wchan(struct task_struct *p);
+ 
+ 
+-static inline void cpu_relax(void)
+-{
+-#ifdef __riscv_muldiv
+-	int dummy;
+-	/* In lieu of a halt instruction, induce a long-latency stall. */
+-	__asm__ __volatile__ ("div %0, %0, zero" : "=r" (dummy));
+-#endif
+-	barrier();
+-}
+-
+ static inline void wait_for_interrupt(void)
+ {
+ 	__asm__ __volatile__ ("wfi");
+diff --git a/arch/riscv/include/asm/vdso.h b/arch/riscv/include/asm/vdso.h
+index 7a7fce63c474..05689eab4083 100644
+--- a/arch/riscv/include/asm/vdso.h
++++ b/arch/riscv/include/asm/vdso.h
+@@ -10,9 +10,6 @@
+ 
+ #include <linux/types.h>
+ 
+-struct vdso_data {
+-};
+-
+ /*
+  * The VDSO symbols are mapped into Linux so we can just use regular symbol
+  * addressing to get their offsets in userspace.  The symbols are mapped at an
+diff --git a/arch/riscv/include/asm/vdso/clocksource.h b/arch/riscv/include/asm/vdso/clocksource.h
+new file mode 100644
+index 000000000000..df6ea65c1dec
+--- /dev/null
++++ b/arch/riscv/include/asm/vdso/clocksource.h
+@@ -0,0 +1,8 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef __ASM_VDSOCLOCKSOURCE_H
++#define __ASM_VDSOCLOCKSOURCE_H
++
++#define VDSO_ARCH_CLOCKMODES	\
++	VDSO_CLOCKMODE_ARCHTIMER
++
++#endif
+diff --git a/arch/riscv/include/asm/vdso/gettimeofday.h b/arch/riscv/include/asm/vdso/gettimeofday.h
+new file mode 100644
+index 000000000000..c8e818688ec1
+--- /dev/null
++++ b/arch/riscv/include/asm/vdso/gettimeofday.h
+@@ -0,0 +1,79 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef __ASM_VDSO_GETTIMEOFDAY_H
++#define __ASM_VDSO_GETTIMEOFDAY_H
++
++#ifndef __ASSEMBLY__
++
++#include <asm/unistd.h>
++#include <asm/csr.h>
++#include <uapi/linux/time.h>
++
++#define VDSO_HAS_CLOCK_GETRES	1
++
++static __always_inline
++int gettimeofday_fallback(struct __kernel_old_timeval *_tv,
++			  struct timezone *_tz)
++{
++	register struct __kernel_old_timeval *tv asm("a0") = _tv;
++	register struct timezone *tz asm("a1") = _tz;
++	register long ret asm("a0");
++	register long nr asm("a7") = __NR_gettimeofday;
++
++	asm volatile ("ecall\n"
++		      : "=r" (ret)
++		      : "r"(tv), "r"(tz), "r"(nr)
++		      : "memory");
++
++	return ret;
++}
++
++static __always_inline
++long clock_gettime_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
++{
++	register clockid_t clkid asm("a0") = _clkid;
++	register struct __kernel_timespec *ts asm("a1") = _ts;
++	register long ret asm("a0");
++	register long nr asm("a7") = __NR_clock_gettime;
++
++	asm volatile ("ecall\n"
++		      : "=r" (ret)
++		      : "r"(clkid), "r"(ts), "r"(nr)
++		      : "memory");
++
++	return ret;
++}
++
++static __always_inline
++int clock_getres_fallback(clockid_t _clkid, struct __kernel_timespec *_ts)
++{
++	register clockid_t clkid asm("a0") = _clkid;
++	register struct __kernel_timespec *ts asm("a1") = _ts;
++	register long ret asm("a0");
++	register long nr asm("a7") = __NR_clock_getres;
++
++	asm volatile ("ecall\n"
++		      : "=r" (ret)
++		      : "r"(clkid), "r"(ts), "r"(nr)
++		      : "memory");
++
++	return ret;
++}
++
++static __always_inline u64 __arch_get_hw_counter(s32 clock_mode)
++{
++	/*
++	 * The purpose of csr_read(CSR_TIME) is to trap the system into
++	 * M-mode to obtain the value of CSR_TIME. Hence, unlike other
++	 * architecture, no fence instructions surround the csr_read()
++	 */
++	return csr_read(CSR_TIME);
++}
++
++static __always_inline const struct vdso_data *__arch_get_vdso_data(void)
++{
++	return _vdso_data;
++}
++
++#endif /* !__ASSEMBLY__ */
++
++#endif /* __ASM_VDSO_GETTIMEOFDAY_H */
+diff --git a/arch/riscv/include/asm/vdso/processor.h b/arch/riscv/include/asm/vdso/processor.h
+new file mode 100644
+index 000000000000..82a5693b1861
+--- /dev/null
++++ b/arch/riscv/include/asm/vdso/processor.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++#ifndef __ASM_VDSO_PROCESSOR_H
++#define __ASM_VDSO_PROCESSOR_H
++
++#ifndef __ASSEMBLY__
++
++static inline void cpu_relax(void)
++{
++#ifdef __riscv_muldiv
++	int dummy;
++	/* In lieu of a halt instruction, induce a long-latency stall. */
++	__asm__ __volatile__ ("div %0, %0, zero" : "=r" (dummy));
++#endif
++	barrier();
++}
++
++#endif /* __ASSEMBLY__ */
++
++#endif /* __ASM_VDSO_PROCESSOR_H */
+diff --git a/arch/riscv/include/asm/vdso/vsyscall.h b/arch/riscv/include/asm/vdso/vsyscall.h
+new file mode 100644
+index 000000000000..82fd5d83bd60
+--- /dev/null
++++ b/arch/riscv/include/asm/vdso/vsyscall.h
+@@ -0,0 +1,27 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef __ASM_VDSO_VSYSCALL_H
++#define __ASM_VDSO_VSYSCALL_H
++
++#ifndef __ASSEMBLY__
++
++#include <linux/timekeeper_internal.h>
++#include <vdso/datapage.h>
++
++extern struct vdso_data *vdso_data;
++
++/*
++ * Update the vDSO data page to keep in sync with kernel timekeeping.
++ */
++static __always_inline struct vdso_data *__riscv_get_k_vdso_data(void)
++{
++	return vdso_data;
++}
++
++#define __arch_get_k_vdso_data __riscv_get_k_vdso_data
++
++/* The asm-generic header needs to be included after the definitions above */
++#include <asm-generic/vdso/vsyscall.h>
++
++#endif /* !__ASSEMBLY__ */
++
++#endif /* __ASM_VDSO_VSYSCALL_H */
+diff --git a/arch/riscv/kernel/vdso.c b/arch/riscv/kernel/vdso.c
+index 484d95a70907..1495af602f00 100644
+--- a/arch/riscv/kernel/vdso.c
++++ b/arch/riscv/kernel/vdso.c
+@@ -11,8 +11,8 @@
+ #include <linux/slab.h>
+ #include <linux/binfmts.h>
+ #include <linux/err.h>
++#include <vdso/datapage.h>
+ 
+-#include <asm/vdso.h>
+ 
+ extern char vdso_start[], vdso_end[];
+ 
+@@ -26,7 +26,7 @@ static union {
+ 	struct vdso_data	data;
+ 	u8			page[PAGE_SIZE];
+ } vdso_data_store __page_aligned_data;
+-static struct vdso_data *vdso_data = &vdso_data_store.data;
++struct vdso_data *vdso_data = &vdso_data_store.data;
+ 
+ static int __init vdso_init(void)
+ {
+diff --git a/arch/riscv/kernel/vdso/Makefile b/arch/riscv/kernel/vdso/Makefile
+index 33b16f4212f7..9ad681e94ebe 100644
+--- a/arch/riscv/kernel/vdso/Makefile
++++ b/arch/riscv/kernel/vdso/Makefile
+@@ -1,12 +1,14 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ # Copied from arch/tile/kernel/vdso/Makefile
+ 
++# Absolute relocation type $(ARCH_REL_TYPE_ABS) needs to be defined before
++# the inclusion of generic Makefile.
++ARCH_REL_TYPE_ABS := R_RISCV_32|R_RISCV_64|R_RISCV_JUMP_SLOT
++include $(srctree)/lib/vdso/Makefile
+ # Symbols present in the vdso
+ vdso-syms  = rt_sigreturn
+ ifdef CONFIG_64BIT
+-vdso-syms += gettimeofday
+-vdso-syms += clock_gettime
+-vdso-syms += clock_getres
++vdso-syms += vgettimeofday
+ endif
+ vdso-syms += getcpu
+ vdso-syms += flush_icache
+@@ -14,6 +16,10 @@ vdso-syms += flush_icache
+ # Files to link into the vdso
+ obj-vdso = $(patsubst %, %.o, $(vdso-syms))
+ 
++ifneq ($(c-gettimeofday-y),)
++  CFLAGS_vgettimeofday.o += -include $(c-gettimeofday-y)
++endif
++
+ # Build rules
+ targets := $(obj-vdso) vdso.so vdso.so.dbg vdso.lds vdso-dummy.o
+ obj-vdso := $(addprefix $(obj)/, $(obj-vdso))
+diff --git a/arch/riscv/kernel/vdso/clock_getres.S b/arch/riscv/kernel/vdso/clock_getres.S
+deleted file mode 100644
+index 91378a52eb22..000000000000
+--- a/arch/riscv/kernel/vdso/clock_getres.S
++++ /dev/null
+@@ -1,18 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0-only */
+-/*
+- * Copyright (C) 2017 SiFive
+- */
+-
+-#include <linux/linkage.h>
+-#include <asm/unistd.h>
+-
+-	.text
+-/* int __vdso_clock_getres(clockid_t clock_id, struct timespec *res); */
+-ENTRY(__vdso_clock_getres)
+-	.cfi_startproc
+-	/* For now, just do the syscall. */
+-	li a7, __NR_clock_getres
+-	ecall
+-	ret
+-	.cfi_endproc
+-ENDPROC(__vdso_clock_getres)
+diff --git a/arch/riscv/kernel/vdso/clock_gettime.S b/arch/riscv/kernel/vdso/clock_gettime.S
+deleted file mode 100644
+index 5371fd9bc01f..000000000000
+--- a/arch/riscv/kernel/vdso/clock_gettime.S
++++ /dev/null
+@@ -1,18 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0-only */
+-/*
+- * Copyright (C) 2017 SiFive
+- */
+-
+-#include <linux/linkage.h>
+-#include <asm/unistd.h>
+-
+-	.text
+-/* int __vdso_clock_gettime(clockid_t clock_id, struct timespec *tp); */
+-ENTRY(__vdso_clock_gettime)
+-	.cfi_startproc
+-	/* For now, just do the syscall. */
+-	li a7, __NR_clock_gettime
+-	ecall
+-	ret
+-	.cfi_endproc
+-ENDPROC(__vdso_clock_gettime)
+diff --git a/arch/riscv/kernel/vdso/gettimeofday.S b/arch/riscv/kernel/vdso/gettimeofday.S
+deleted file mode 100644
+index e6fb8af88632..000000000000
+--- a/arch/riscv/kernel/vdso/gettimeofday.S
++++ /dev/null
+@@ -1,18 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0-only */
+-/*
+- * Copyright (C) 2017 SiFive
+- */
+-
+-#include <linux/linkage.h>
+-#include <asm/unistd.h>
+-
+-	.text
+-/* int __vdso_gettimeofday(struct timeval *tv, struct timezone *tz); */
+-ENTRY(__vdso_gettimeofday)
+-	.cfi_startproc
+-	/* For now, just do the syscall. */
+-	li a7, __NR_gettimeofday
+-	ecall
+-	ret
+-	.cfi_endproc
+-ENDPROC(__vdso_gettimeofday)
+diff --git a/arch/riscv/kernel/vdso/vdso.lds.S b/arch/riscv/kernel/vdso/vdso.lds.S
+index f66a091cb890..e6f558bca71b 100644
+--- a/arch/riscv/kernel/vdso/vdso.lds.S
++++ b/arch/riscv/kernel/vdso/vdso.lds.S
+@@ -2,11 +2,13 @@
+ /*
+  * Copyright (C) 2012 Regents of the University of California
+  */
++#include <asm/page.h>
+ 
+ OUTPUT_ARCH(riscv)
+ 
+ SECTIONS
+ {
++	PROVIDE(_vdso_data = . + PAGE_SIZE);
+ 	. = SIZEOF_HEADERS;
+ 
+ 	.hash		: { *(.hash) }			:text
+diff --git a/arch/riscv/kernel/vdso/vgettimeofday.c b/arch/riscv/kernel/vdso/vgettimeofday.c
+new file mode 100644
+index 000000000000..d264943e2e47
+--- /dev/null
++++ b/arch/riscv/kernel/vdso/vgettimeofday.c
+@@ -0,0 +1,25 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copied from arch/arm64/kernel/vdso/vgettimeofday.c
++ *
++ * Copyright (C) 2018 ARM Ltd.
++ * Copyright (C) 2020 SiFive
++ */
++
++#include <linux/time.h>
++#include <linux/types.h>
++
++int __vdso_clock_gettime(clockid_t clock, struct __kernel_timespec *ts)
++{
++	return __cvdso_clock_gettime(clock, ts);
++}
++
++int __vdso_gettimeofday(struct __kernel_old_timeval *tv, struct timezone *tz)
++{
++	return __cvdso_gettimeofday(tv, tz);
++}
++
++int __vdso_clock_getres(clockid_t clock_id, struct __kernel_timespec *res)
++{
++	return __cvdso_clock_getres(clock_id, res);
++}
+diff --git a/drivers/clocksource/timer-riscv.c b/drivers/clocksource/timer-riscv.c
+index c4f15c4068c0..adfef2736222 100644
+--- a/drivers/clocksource/timer-riscv.c
++++ b/drivers/clocksource/timer-riscv.c
+@@ -67,6 +67,7 @@ static struct clocksource riscv_clocksource = {
+ 	.mask		= CLOCKSOURCE_MASK(64),
+ 	.flags		= CLOCK_SOURCE_IS_CONTINUOUS,
+ 	.read		= riscv_clocksource_rdtime,
++	.vdso_clock_mode = VDSO_CLOCKMODE_ARCHTIMER,
+ };
+ 
+ static int riscv_timer_starting_cpu(unsigned int cpu)
 -- 
-Regards,
-Atish
+2.7.4
+
 
