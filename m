@@ -2,77 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69A2E1A6E4B
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 23:30:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 696201A6E4F
+	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 23:30:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=goyVmJe+J57iQdmkUJbsbckf52hUGMFdwPN6KGpPCvA=; b=mRSV6WBQcDqMm3
-	qnCGyxQLX1sfBkT86UlkCpeLN+419D/vDI7krL7lkJ49gIGbcIReT/MvBhmv/IZxC7Sj6RUxnonsG
-	ZhJyVEdhngYhUbiSZOPB/lKEcrLQtLynJrwpKRkP7qn9DM58cBmbW+f84yYNe9GBfTx/ycrwIEbJr
-	eBRcsB4R2LZgu/ZtN7jyj6APE7alOGNynuiMGhUa48Ubv4vlQxqxvFPCUbHqxRiZ2jMRlaQyhdJTW
-	xbJEvySDRue0azHvfFLCsLIjaNbCam/FxQkJNSRmgLDDQV6iHrvePkA3zQ9rJkEjPOA9vK0Tf6BiD
-	7qJrX2fsnWPhcDJFlzpA==;
+	List-Owner; bh=tttd728ZR7pfChiGqdkLPg42rQ3qB92mFJUxcj2QtZ0=; b=Hzof8Xj4Z9IA6V
+	BGUTS4oTuzBhZ/CWA7fdFPd/ODqXdveVQ7ePejHUDlwMvd0GyF03s/UAqNqXFMCbc/jOTNtYg8Sxj
+	Xv+Nk8q6qejIn6XfAS6zqkFLFx0YrHXAVx0G/8eelbPJ9C80CylFEfMG4AupTN9jF5ZgdGsmwxcsJ
+	f7tpfuNhCgPYM3Br2HB4nt2LIO79V2OiBp4M/4DJLwt0MBElfb8cFiY+fK4f5WpyRTwCl1HO+sRcZ
+	rEzTACBIeIn2QWw37OUg0GWw6pChhcu25adiVHZaPQTpcM5OWjXr7I0PegUiUiqBmo14tN0P6zlof
+	jwbxspYIMS1P3D1H6hkA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jO6eq-00034I-Qk; Mon, 13 Apr 2020 21:30:20 +0000
+	id 1jO6fM-0003dZ-QE; Mon, 13 Apr 2020 21:30:52 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jO6eP-0000Mo-1c; Mon, 13 Apr 2020 21:29:54 +0000
+ id 1jO6eQ-0000Mo-Er; Mon, 13 Apr 2020 21:29:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1586813393; x=1618349393;
+ t=1586813395; x=1618349395;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=qT9c7eXt7ksLkS8LTzuMlCHOyGGyAUacpIVqI65fctQ=;
- b=gJO2e+DOYddsatohsRtltnPsAEwVr7Y8wufkkcqNYEz4Ylk4Q2FoP7Z7
- AqB4ecWblap7uGovXP1mDiLL83ke1G/p3MlTqbjrypppJKtyJS+QhCHJ8
- v8NdwiGwnCXFc/gHnceyk6J1SswQw662JuRcAH+ntzxn0LHR/XtcKn7nB
- ZLWgH8Zax1QfdfHeNYBBTwTpNSW/Pk/HaSnboZRXcpGLkBThxLubRpK0z
- 5bAQ8SG2N40D9OUCeCvZQlx+j4i9mSXRrxoX20OoPaBo+QEJMqdZ0DKus
- IayPeJzUVPArt1zenTrJDQFl4QTE0y3SrYqI2+3NHuxgkqUoLBzHAmFFy A==;
-IronPort-SDR: 1UJautKLb1k12Uzc+P5ZgHQECyKYy8Z5VdrZC5eMIPYIA1zSmRamgztJMpzyxDnEhhRLsx0iIh
- YjPYBHzDKf0FoU4rlPlYv50YiPtyN4LoU1ncznExvdktXIDZQ2ODho+Q1F6mDPeH5cKIzJfvlW
- nIzPCBQP27b2i8apxopCzz1jng1ULEeJ1TMqDg6bXSFu9soQXwy5Uzr13C6JT7tp4t2ykgXxgp
- 1P51sjZlxLPpoHJlbva2hQ+NcYSu2NTLuRshO0fqy36kxj9mw0ze1+5Y2/KTXqW5eyFRKhbbXE
- 0rw=
-X-IronPort-AV: E=Sophos;i="5.72,380,1580745600"; d="scan'208";a="136683326"
+ bh=I/GiEGyOV5rt1rc9GnsBz8XcyhOtNk7wcIG4+FIGGnk=;
+ b=jpbJvhFQ+fvafcLylwFillSNZ5NNaCpXKXEA7xpjxkwzgNkNQxUpjlGJ
+ QLbjYKAzgA0ok7RddA6x0vPgCLBm6jyJUA3DBqRms7S5LYVo30kOkoEDY
+ Vh3uHfkSbg1nxP0wKFNKONKrbiJFwGujMMSrQ0YPhtxBXh4bhjoY1biLO
+ XIM6BwvSBXnQC2qDxTUTRQtS+z7Lti70zku7yownkKpjq2/P8FIu7pyqw
+ 3ObO0v4o7jHBKDtS9TENz+VJe0pQKR+CD23n+/ZS+lV68PvihEIoZOwg4
+ hPi4dE5HuvnfXUF4IK1NIVelAXqNyMdOXdE8mWhcZf99dqzcsMFMFSnhw g==;
+IronPort-SDR: S1iCwSe8/X09jFNxsNUPZLhyCYmp5YUr8iibGCUyhGbdWEb/UlqgKWGw8iJoTC2H6EdaBLe6FB
+ uSEZSZzBnjPhbymp85PDdDCQdOmtkQhssLKjdwznXA3V4kK3H4Tg5g6cW0K6gLvpswhQJTeX56
+ FFhlG9lpSQ4fU1R2CIJjoYg1XxcF4VWuB5qqoIRO7xa0SQAX2eTcvZdGAbVe08UY+g18OWSUuf
+ JKyYTy5tVbMUmM6BaaGA4KIOYygM3ysOQIGXb5YC3Btoz+t5/4BKt118/oJXMBkXRz+72vgDQn
+ nC4=
+X-IronPort-AV: E=Sophos;i="5.72,380,1580745600"; d="scan'208";a="136683328"
 Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
  by ob1.hgst.iphmx.com with ESMTP; 14 Apr 2020 05:29:31 +0800
-IronPort-SDR: MYi5FKiSU7uanKvCK8Q6Bi5W9YMEw8xWpDCL/oOoQInptcGJQ+IL4epx3Yjjj/+I5SxvfDxgMC
- iK0ypsdFVKO5Qk4vWRAR16vXULQM/2rcEwJ5fnQigXfJgc2/P0O9iBA+Pu3tK4fpxXUoN2TcSU
- HhFlQVPCzln/+f0peJt7P4cDW7Ub8QuqXfcto4VnAQZx4V+zQMsWBvvdfBWDX6Ae12yzmRVLYs
- KJWrFhZRSd3AJnkN9Ud4SLqrmjSnRL8aCS/WhsXZAUVupUv72SCYO8IjYjl+8DRvtHJ3m+ElEj
- pQ2nkwjfqOUJov2FdrRWvoC7
+IronPort-SDR: 4q8ic4vz0+q+XNeLS/BpY+K06h8jcucBal6OD64PQ0uIvFFm6nNnLyC2pev7Eb3OjnofEzKQB8
+ PvCiDuf3Hj60hbhsrHyCGOLf2gNVHGsOwlEkDCDqr6qYvVWxjmZ+vQDsZcp6OHKlPpdw1tFOtQ
+ ujSvYc1dtdhAbuDkTRYhCU/r6WCRmwRwf7wQHmk9h5rpGxY+ZylTIZwx1dyWWtLrskTUvQ3gM+
+ SRaPpp75d9gK1Gv+Ot9LorDb+nXbinwGcZX4DT0HbjBM9B192Zhvg4oMi+kVtl574d+TdzdP9J
+ 2D26SyKPzHPD/UGen5RFuPCA
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  13 Apr 2020 14:20:02 -0700
-IronPort-SDR: 9G9nj2p0GT4YHZw2NCS5Fuwgbl/gAoRjzgFyJNSm5Lcn1NpB/1a46z/Nv8AljWcfv1LEgthoiw
- HQ4OPpp3BFp/21DWwQGdRZ5V26kUUtMlkny8vEd+BlAHg/uN/7p6R+m3zx7loxswaqt/FnF/Oe
- P6ZRbX+r7QcCgxG0UovpYsZJW9k4AUDuSdvPxf4ta9+KGGxh/Zmy97/uxm4CYNjPYg6ZRc+BAr
- 4gFQSVSiWGzxgCQ9Lk6/bwB90WBZZvPSQ5Mrl+frU+xteloZJgUJ8ArkHvwex4rdexUtILiskv
- Xqs=
+IronPort-SDR: BseMmEGbdr0tCYWbKQphuB1iCB2ANCvg+j86bIbB8nd/xBtv73df2iAf1kOIAk5mlOsLuUo43g
+ SeaVOSRUDO6VTRZAjJ/kv7HT+qXUBbJAIkDUCSAEDyyGXFztvYsUvXRcA4n0vm2AJiwtpNVdEq
+ +9reJHs+lT5r40PSoQustcMlul/5Wq9D+KyjZYOboxtWIaqc8NrJQFapg28YEtFYjCqlxTgeHS
+ +zVA+KcUN0I+volZI6cqbVJfG+23HjpXQvxKOw57rKVH6lwAAKj8Oe/OXnFJYWc8vM8TXNYNCP
+ zvA=
 WDCIronportException: Internal
 Received: from 9dg4l72.ad.shared (HELO jedi-01.hgst.com) ([10.86.55.26])
- by uls-op-cesaip01.wdc.com with ESMTP; 13 Apr 2020 14:29:30 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 13 Apr 2020 14:29:31 -0700
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [v2 PATCH 2/5] include: pe.h: Add RISC-V related PE definition
-Date: Mon, 13 Apr 2020 14:29:04 -0700
-Message-Id: <20200413212907.29244-3-atish.patra@wdc.com>
+Subject: [v2 PATCH 3/5] RISC-V: Define fixmap bindings for generic early
+ ioremap support
+Date: Mon, 13 Apr 2020 14:29:05 -0700
+Message-Id: <20200413212907.29244-4-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <20200413212907.29244-1-atish.patra@wdc.com>
 References: <20200413212907.29244-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_142953_139975_0EDEDE82 
-X-CRM114-Status: UNSURE (   9.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200413_142954_544155_C099E515 
+X-CRM114-Status: GOOD (  13.03  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -110,28 +110,82 @@ Cc: linux-efi@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Define RISC-V related machine types.
+UEFI uses early IO or memory mappings for runtime services before
+normal ioremap() is usable. This patch only adds minimum necessary
+fixmap bindings and headers for generic ioremap support to work.
 
 Signed-off-by: Atish Patra <atish.patra@wdc.com>
-Reviewed-by: Ard Biesheuvel <ardb@kernel.org>
+Acked-by: Ard Biesheuvel <ardb@kernel.org>
 ---
- include/linux/pe.h | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/riscv/Kconfig              |  1 +
+ arch/riscv/include/asm/Kbuild   |  1 +
+ arch/riscv/include/asm/fixmap.h | 18 ++++++++++++++++++
+ arch/riscv/include/asm/io.h     |  1 +
+ 4 files changed, 21 insertions(+)
 
-diff --git a/include/linux/pe.h b/include/linux/pe.h
-index 8ad71d763a77..daf09ffffe38 100644
---- a/include/linux/pe.h
-+++ b/include/linux/pe.h
-@@ -55,6 +55,9 @@
- #define	IMAGE_FILE_MACHINE_POWERPC	0x01f0
- #define	IMAGE_FILE_MACHINE_POWERPCFP	0x01f1
- #define	IMAGE_FILE_MACHINE_R4000	0x0166
-+#define	IMAGE_FILE_MACHINE_RISCV32	0x5032
-+#define	IMAGE_FILE_MACHINE_RISCV64	0x5064
-+#define	IMAGE_FILE_MACHINE_RISCV128	0x5128
- #define	IMAGE_FILE_MACHINE_SH3		0x01a2
- #define	IMAGE_FILE_MACHINE_SH3DSP	0x01a3
- #define	IMAGE_FILE_MACHINE_SH3E		0x01a4
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index a197258595ef..f39e326a7a42 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -68,6 +68,7 @@ config RISCV
+ 	select ARCH_HAS_GCOV_PROFILE_ALL
+ 	select HAVE_COPY_THREAD_TLS
+ 	select HAVE_ARCH_KASAN if MMU && 64BIT
++	select GENERIC_EARLY_IOREMAP
+ 
+ config ARCH_MMAP_RND_BITS_MIN
+ 	default 18 if 64BIT
+diff --git a/arch/riscv/include/asm/Kbuild b/arch/riscv/include/asm/Kbuild
+index 3d9410bb4de0..59dd7be55005 100644
+--- a/arch/riscv/include/asm/Kbuild
++++ b/arch/riscv/include/asm/Kbuild
+@@ -1,4 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0
++generic-y += early_ioremap.h
+ generic-y += extable.h
+ generic-y += flat.h
+ generic-y += kvm_para.h
+diff --git a/arch/riscv/include/asm/fixmap.h b/arch/riscv/include/asm/fixmap.h
+index 2368d49eb4ef..ba5096d65fb0 100644
+--- a/arch/riscv/include/asm/fixmap.h
++++ b/arch/riscv/include/asm/fixmap.h
+@@ -30,6 +30,24 @@ enum fixed_addresses {
+ 	FIX_TEXT_POKE1,
+ 	FIX_TEXT_POKE0,
+ 	FIX_EARLYCON_MEM_BASE,
++	/*
++	 * Make sure that it is 2MB aligned.
++	 */
++#define NR_FIX_SZ_2M	(SZ_2M / PAGE_SIZE)
++	FIX_THOLE = NR_FIX_SZ_2M - FIX_PMD - 1,
++
++	__end_of_permanent_fixed_addresses,
++	/*
++	 * Temporary boot-time mappings, used by early_ioremap(),
++	 * before ioremap() is functional.
++	 */
++#define NR_FIX_BTMAPS		(SZ_256K / PAGE_SIZE)
++#define FIX_BTMAPS_SLOTS	7
++#define TOTAL_FIX_BTMAPS	(NR_FIX_BTMAPS * FIX_BTMAPS_SLOTS)
++
++	FIX_BTMAP_END = __end_of_permanent_fixed_addresses,
++	FIX_BTMAP_BEGIN = FIX_BTMAP_END + TOTAL_FIX_BTMAPS - 1,
++
+ 	__end_of_fixed_addresses
+ };
+ 
+diff --git a/arch/riscv/include/asm/io.h b/arch/riscv/include/asm/io.h
+index 0f477206a4ed..047f414b6948 100644
+--- a/arch/riscv/include/asm/io.h
++++ b/arch/riscv/include/asm/io.h
+@@ -14,6 +14,7 @@
+ #include <linux/types.h>
+ #include <asm/mmiowb.h>
+ #include <asm/pgtable.h>
++#include <asm/early_ioremap.h>
+ 
+ /*
+  * MMIO access functions are separated out to break dependency cycles
 -- 
 2.24.0
 
