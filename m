@@ -2,83 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 631221A6E4D
-	for <lists+linux-riscv@lfdr.de>; Mon, 13 Apr 2020 23:30:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D8691A712D
+	for <lists+linux-riscv@lfdr.de>; Tue, 14 Apr 2020 04:47:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fFV1Wv1laDc/uxBzvjywezF/XDILsc38dvlbeld2/N0=; b=WvZb0dbIZWw4JO
-	SEFTsDOO5BPBH4T6Ulq15xB6/2Ld/QFRB1apLeEZumPJ5YkrvZ25DBHiDfOsRlGPJtgMKWepX63mm
-	RWqGfYHdOMQNq3pOlkATBS7A/AcnVfQBKHekm2sH9SHgX3El8BRmN+AY2nfYNvlAOaf/1rRJfv412
-	MsBn6bwW0y1DyjlqFRuBhm6RfL+hQKCXx6w8UrVIB70HpuAPxrkXIPXsuwUTZkXCGPpSYxMldQM9U
-	9VACevlzVf2BCDsJiHjR730ji0FNpniUvr4+zo1uRXbCKwPX18S0ET+cIYLaRa8LWfwIpAKJEyUu2
-	j2I2Z8UkfC/0suiE/Lpg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=c3LF/reoKA7BSZrGeXxLYF9/PpiaCTJyorwndSEWS1U=; b=VQqP8icMMWIWLmaT/rPAJuPxd
+	T3RfrIaZhEZQxsL4f2MxmOtyek6gjDVaSWMGpwll3hjWvtyGBu/yfBTAkRqAC+n+N+VTjjgs86OUp
+	SqW4qpmLsilKlJ3kSz6DY4dtgtN7JPv14oC/0oYxXAHiGdtRpPLQRYMKocUVst+UpaqzAEB+kF1pY
+	zPOru9/Ju4g4ZGuTrFMQS2stCARc/YCBxudNT//+CqLW3UrywfxLm3XSqNWAqyTBH4AHT+eIKv339
+	pD4D213MQOtqJG6YnC7EstjM3Ra4rqXo3L+cU70QjqgUKQ0JwT9zFXNCb0gY7pe6PCIGggHq4JvnP
+	hIkxScPRQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jO6f7-0003Mg-IF; Mon, 13 Apr 2020 21:30:37 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1jOBbU-0004R5-Kj; Tue, 14 Apr 2020 02:47:12 +0000
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jO6eP-0000NS-7n; Mon, 13 Apr 2020 21:29:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1586813394; x=1618349394;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=0f2ExrBOHSi6JWzrG2+CPU/JStpL/wqXhkbpv3XY90M=;
- b=Bb9GmEBJQOPBNCJtuVHxK3wZyG+k6zheDyLNd4C7umALPEDn9QGjz+7L
- VcNO1mkriE6q6uILZlZUOvrljqdCQYHN16zaF/2lHkjz7VE1f1DFDX3q2
- vwhVtKzFE1thvrHvRP9C3qmkb2Pfq8DWvGU3LZ/vLJgs1O4YQp80pdQxA
- /F0YEg5DqeY/K9Mhpm7G77UebahJeoied27RM7ILfO1VaQggKS0jJuCim
- C6nUynOccHqG9GGYa4dCnkYnqVfItLNm2iTD+CxCarToWy+PLNsIPC9lt
- SqLI74P1Nmxd9XUdMG+fWrp9wdxE+iI307csXhklqbBhx+3/MF/fYTSby Q==;
-IronPort-SDR: jxkVbaGQgw+1NDEq8dd3o9AC42aR6aRwLmqSH+pISbjsYyoITpawvC2eMW+euxA7FTV/mD9qZA
- R9oDYlVzoVECw9WVz1NwuXWoWO1wDOLmP53TXBVUwLlR1uNtRsrxoO/eDw/mZYUTLdxHiIPSTi
- 31oQijWRoCwoVtxhIaJAP101FL9JUJTIUMXHEJa2dZZ+SHcWjCmQ8RNzRdRR3J/aJ6pEmABj0Y
- s6S+eFvKvVW73VuPiKEdKHsLTnDEkPODkVfiko7Zr4wVGvzdG6qyojR9T6oxZWaXu8sEYCy+8B
- gTY=
-X-IronPort-AV: E=Sophos;i="5.72,380,1580745600"; d="scan'208";a="136683332"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 14 Apr 2020 05:29:32 +0800
-IronPort-SDR: mPP8eogtU34Vk5BT6DJmnuBK67ZFk+oXgUxFpcJ+fM6sh7h/m+PDTNjg/wjCAlKV7XNR+8fZsu
- bJs/An/CQX/7THvcd+jO2fntl8qoN43qZCYKiRY1rtcn4upzCkGTqD6Cn9TXlzSr/Y+CA4QHUb
- 0vSJclEbvjcXUzazzByfoyOf+ksQqyKqh9ySlejSvZ6m/QKLjBMp6g6qT6TgW8Z8BeKDCLK/97
- jWlwCry8fgdR6hL6n4wP/FkB16rR4yH4L4mq07EVKXOX8Y3zUA9QUD7H3/IV5oZpJFjF50kPDI
- zCSSU6EktnXunh2FPc4Qb216
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2020 14:20:03 -0700
-IronPort-SDR: HUSqYi5vSgglAB48tTHXiwXFEgGzTWu3xQT+gNZyviZvsIWsIl1ManBsmjK4ODlmAAKSnUSQBX
- hPDdajhF35I1QInTkpa3Ac8Wq0rhLhW8seTLPNql7GQ146e8b2vx0z2Jui44bhns3BMTAuDjki
- Q/fp9GfGLieHsPCPGOTmdoTr3eVMtsrp3a8vYA2V9BPATnUKUKnn3r7/W6PjpzuSalyEopt+W4
- 0ofmyQIRC5f/xIiPTuAaa5zHT5qFtFbLNH7gppKhYlhweK9b7tSopYGN6YikYTiu0/eGi9xkGp
- Noo=
-WDCIronportException: Internal
-Received: from 9dg4l72.ad.shared (HELO jedi-01.hgst.com) ([10.86.55.26])
- by uls-op-cesaip01.wdc.com with ESMTP; 13 Apr 2020 14:29:32 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [v2 PATCH 5/5] RISC-V: Add EFI stub support.
-Date: Mon, 13 Apr 2020 14:29:07 -0700
-Message-Id: <20200413212907.29244-6-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20200413212907.29244-1-atish.patra@wdc.com>
-References: <20200413212907.29244-1-atish.patra@wdc.com>
+ id 1jOBbO-0004QO-Sr
+ for linux-riscv@lists.infradead.org; Tue, 14 Apr 2020 02:47:11 +0000
+Received: by mail-ot1-x342.google.com with SMTP id i27so8444290ota.7
+ for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 19:47:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=c3LF/reoKA7BSZrGeXxLYF9/PpiaCTJyorwndSEWS1U=;
+ b=JGeHzfn5cdE8C5En0FqPz2Lo93ftjVmiFFoiyjOpZu21pDeKes+rsaYhs/ucd8OQzb
+ Kt4ZWdL1StaRimr3NDO+J106J9/5pLyAWv5r6xQhARbFlanlvD91/xMP14YLsAJM//zf
+ 3MHS6E6emzANlb9EHMG6EWfMcFxwKytrclcXLkeGc9PZrdWOz3iXHdphAnx2YO8ZYS/n
+ qhqzHNfLq5imtIXSY2xBsiTXyjkMbPodZiO/tBXtweTfPMU53g77bQeXLTy4DuvGgW3w
+ eW8mcCeP2VAZgE0FknhhWt2wuKJqmOgH3gdAleQ2f8j4ShIo3bTZq1yFdpC/ch3sL07l
+ Cihg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=c3LF/reoKA7BSZrGeXxLYF9/PpiaCTJyorwndSEWS1U=;
+ b=RAQVWqtLWgEUrfojguO73zBUAocjFlgbvnj32Qqylq52t0S+bwh3VFQX5tbL5B8cgV
+ oTemf0nipL2D0xqjCB7aGv7J+flq24KeQqkAT4Ejiev4VkEB6YRPq7w3pm827BfCSYDW
+ BOJ6sKx4urvipUCblAaP4/ixjbnWDlvgtaldNUIskhPm9DYsgIPeRULbM3qFU4dh+h3B
+ obl4YVY2AMjgAKcnW/hQfV3ZobgTkHJzgWvJolXOCvj8vkqZLgV94gITjyBJ5wieNFCQ
+ 3OIVQDf0otKlbm08rZYWrC+X5Cw60IYc5WGnrUoDeglUv+XcpygjJqjzMzEdWw9QqNku
+ y59w==
+X-Gm-Message-State: AGi0Pub9Jr/3UEHFPjLBcdZOoTUtaeJ6cXnUw4Q8XT2SILhtUuSUJTuK
+ YDWEe6ZJTT2RXF+cQKFvQhqDt5JzfuL6YjYe5B/1yg==
+X-Google-Smtp-Source: APiQypKStxMs8xwLtMmCR6K/vKpKzh+yAGrYpfLeNlt/cMygFvbxvnUyU1o0WuhL7zdshob9MEqjzKnBXSfWeSneNDc=
+X-Received: by 2002:a4a:c28e:: with SMTP id b14mr16480277ooq.39.1586832424106; 
+ Mon, 13 Apr 2020 19:47:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <cover.1584352425.git.zong.li@sifive.com>
+ <16924c3f07b142688a3c0562d229cd67dc7bf8e6.1584352425.git.zong.li@sifive.com>
+ <71cc2070-e867-17e1-cc64-66b634e3f48e@ghiti.fr>
+ <CANXhq0rQ_YqmBBDEgOCcu8vr+5NWqNdnfZ+EX8ofaaD6PuBAFQ@mail.gmail.com>
+ <69a9ecc5-550e-24a0-6f91-d65af3e00f18@ghiti.fr>
+ <CANXhq0q62t3nZgqbYJzW9p1ntaNAFFX5LQFB65fkO5KCCv-RHA@mail.gmail.com>
+ <c68dacf1-eca1-9d28-3c04-dd6793fe3274@ghiti.fr>
+ <CANXhq0q6xNLzUAetQ6hHR5y_h5iZarcxyvSo3YAbprO=5LZomA@mail.gmail.com>
+ <6dd04bc5-b0e8-6dbc-d4c5-9d19db5081dd@ghiti.fr>
+In-Reply-To: <6dd04bc5-b0e8-6dbc-d4c5-9d19db5081dd@ghiti.fr>
+From: Zong Li <zong.li@sifive.com>
+Date: Tue, 14 Apr 2020 10:46:53 +0800
+Message-ID: <CANXhq0pcmUigMEFXpEBv_NanLJ-0+tOL9QM-p7LB+mBAFLvKDA@mail.gmail.com>
+Subject: Re: [PATCH RFC 4/8] riscv/kaslr: randomize the kernel image offset
+To: Alex Ghiti <alex@ghiti.fr>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_142953_327784_DF37C691 
-X-CRM114-Status: GOOD (  27.01  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200413_194707_766678_C4B12378 
+X-CRM114-Status: GOOD (  30.60  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -99,324 +98,466 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-efi@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Masahiro Yamada <masahiroy@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Ard Biesheuvel <ardb@kernel.org>, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Catalin Marinas <catalin.marinas@arm.com>,
- linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
- Ingo Molnar <mingo@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add a RISC-V architecture specific stub code that actually copies the
-actual kernel image to a valid address and jump to it after boot services
-are terminated. Enable UEFI related kernel configs as well for RISC-V.
+On Sun, Apr 12, 2020 at 2:53 PM Alex Ghiti <alex@ghiti.fr> wrote:
+>
+>
+>
+> On 4/11/20 4:20 AM, Zong Li wrote:
+> > On Fri, Apr 10, 2020 at 11:58 PM Alex Ghiti <alex@ghiti.fr> wrote:
+> >>
+> >> Hi Zong,
+> >>
+> >> On 4/9/20 6:31 AM, Zong Li wrote:
+> >>> On Thu, Apr 9, 2020 at 1:51 PM Alex Ghiti <alex@ghiti.fr> wrote:
+> >>>>
+> >>>>
+> >>>>
+> >>>> On 4/7/20 6:53 AM, Zong Li wrote:
+> >>>>> On Tue, Apr 7, 2020 at 1:11 PM Alex Ghiti <alex@ghiti.fr> wrote:
+> >>>>>>
+> >>>>>>
+> >>>>>> On 3/24/20 3:30 AM, Zong Li wrote:
+> >>>>>>> Entropy is derived from the banner and timer, it is better than nothing
+> >>>>>>> but not enough secure, so previous stage may pass entropy via the device
+> >>>>>>> tree /chosen/kaslr-seed node.
+> >>>>>>>
+> >>>>>>> We limit randomization range within 1GB, so we can exploit early page
+> >>>>>>> table to map new destination of kernel image. Additionally, the kernel
+> >>>>>>> offset need 2M alignment to ensure it's good in PMD page table.
+> >>>>>>>
+> >>>>>>> We also checks the kernel offset whether it's safe by avoiding to
+> >>>>>>> overlaps with dtb, initrd and reserved memory regions.
+> >>>>>>>
+> >>>>>>
+> >>>>>> That maybe changes the way my sv48 patchset will be implemented: I can't
+> >>>>>> get user preference (3-level or 4-level) by any means, device-tree or
+> >>>>>> kernel parameter.
+> >>>>>>
+> >>>>>> But I don't see how you could get a random offset without info from the
+> >>>>>> device tree anyway (reserved memory regions especially), so maybe I
+> >>>>>> could parse dtb for allowing the user to choose. I'll move this
+> >>>>>> discussion to the sv48 introduction.
+> >>>>>
+> >>>>> Maybe I'm a little bit misunderstanding here, but I think I got the
+> >>>>> random offset through some information by parsing dtb.
+> >>>>>
+> >>>>
+> >>>> I was just saying that I may use the dtb too in sv48 patchset to make it
+> >>>> possible for users to choose sv39 even if sv48 is supported by hardware
+> >>>> (which is not the case in my current patchset).
+> >>>>
+> >>>>>>
+> >>>>>>> Signed-off-by: Zong Li <zong.li@sifive.com>
+> >>>>>>> ---
+> >>>>>>>      arch/riscv/kernel/kaslr.c | 274 +++++++++++++++++++++++++++++++++++++-
+> >>>>>>>      arch/riscv/mm/init.c      |   2 +-
+> >>>>>>>      2 files changed, 273 insertions(+), 3 deletions(-)
+> >>>>>>>
+> >>>>>>> diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
+> >>>>>>> index 281b5fcca5c8..9ec2b608eb7f 100644
+> >>>>>>> --- a/arch/riscv/kernel/kaslr.c
+> >>>>>>> +++ b/arch/riscv/kernel/kaslr.c
+> >>>>>>> @@ -11,23 +11,293 @@
+> >>>>>>>      #include <asm/cacheflush.h>
+> >>>>>>>
+> >>>>>>>      extern char _start[], _end[];
+> >>>>>>> +extern void *dtb_early_va;
+> >>>>>>> +extern phys_addr_t dtb_early_pa;
+> >>>>>>>      extern void secondary_random_target(void);
+> >>>>>>>      extern void kaslr_create_page_table(uintptr_t start, uintptr_t end);
+> >>>>>>>
+> >>>>>>>      uintptr_t secondary_next_target __initdata;
+> >>>>>>>      static uintptr_t kaslr_offset __initdata;
+> >>>>>>>
+> >>>>>>> +static const __init u32 *get_reg_address(int root_cells,
+> >>>>>>> +                                      const u32 *value, u64 *result)
+> >>>>>>> +{
+> >>>>>>> +     int cell;
+> >>>>>>> +     *result = 0;
+> >>>>>>> +
+> >>>>>>> +     for (cell = root_cells; cell > 0; --cell)
+> >>>>>>> +             *result = (*result << 32) + fdt32_to_cpu(*value++);
+> >>>>>>> +
+> >>>>>>> +     return value;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static __init int get_node_addr_size_cells(const char *path, int *addr_cell,
+> >>>>>>> +                                        int *size_cell)
+> >>>>>>> +{
+> >>>>>>> +     int node = fdt_path_offset(dtb_early_va, path);
+> >>>>>>> +     fdt64_t *prop;
+> >>>>>>> +
+> >>>>>>> +     if (node < 0)
+> >>>>>>> +             return -EINVAL;
+> >>>>>>> +
+> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#address-cells", NULL);
+> >>>>>>> +     if (!prop)
+> >>>>>>> +             return -EINVAL;
+> >>>>>>> +     *addr_cell = fdt32_to_cpu(*prop);
+> >>>>>>> +
+> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#size-cells", NULL);
+> >>>>>>> +     if (!prop)
+> >>>>>>> +             return -EINVAL;
+> >>>>>>> +     *size_cell = fdt32_to_cpu(*prop);
+> >>>>>>> +
+> >>>>>>> +     return node;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static __init void kaslr_get_mem_info(uintptr_t *mem_start,
+> >>>>>>> +                                   uintptr_t *mem_size)
+> >>>>>>> +{
+> >>>>>>> +     int node, root, addr_cells, size_cells;
+> >>>>>>> +     u64 base, size;
+> >>>>>>> +
+> >>>>>>> +     /* Get root node's address cells and size cells. */
+> >>>>>>> +     root = get_node_addr_size_cells("/", &addr_cells, &size_cells);
+> >>>>>>> +     if (root < 0)
+> >>>>>>> +             return;
+> >>>>>>> +
+> >>>>>>> +     /* Get memory base address and size. */
+> >>>>>>> +     fdt_for_each_subnode(node, dtb_early_va, root) {
+> >>>>>>> +             const char *dev_type;
+> >>>>>>> +             const u32 *reg;
+> >>>>>>> +
+> >>>>>>> +             dev_type = fdt_getprop(dtb_early_va, node, "device_type", NULL);
+> >>>>>>> +             if (!dev_type)
+> >>>>>>> +                     continue;
+> >>>>>>> +
+> >>>>>>> +             if (!strcmp(dev_type, "memory")) {
+> >>>>>>> +                     reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
+> >>>>>>> +                     if (!reg)
+> >>>>>>> +                             return;
+> >>>>>>> +
+> >>>>>>> +                     reg = get_reg_address(addr_cells, reg, &base);
+> >>>>>>> +                     reg = get_reg_address(size_cells, reg, &size);
+> >>>>>>> +
+> >>>>>>> +                     *mem_start = base;
+> >>>>>>> +                     *mem_size = size;
+> >>>>>>> +
+> >>>>>>> +                     break;
+> >>>>>>> +             }
+> >>>>>>> +     }
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +/* Return a default seed if there is no HW generator. */
+> >>>>>>> +static u64 kaslr_default_seed = ULL(-1);
+> >>>>>>> +static __init u64 kaslr_get_seed(void)
+> >>>>>>> +{
+> >>>>>>> +     int node, len;
+> >>>>>>> +     fdt64_t *prop;
+> >>>>>>> +     u64 ret;
+> >>>>>>> +
+> >>>>>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
+> >>>>>>> +     if (node < 0)
+> >>>>>>> +             return kaslr_default_seed++;
+> >>>>>>> +
+> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "kaslr-seed", &len);
+> >>>>>>> +     if (!prop || len != sizeof(u64))
+> >>>>>>> +             return kaslr_default_seed++;
+> >>>>>>> +
+> >>>>>>> +     ret = fdt64_to_cpu(*prop);
+> >>>>>>> +
+> >>>>>>> +     /* Re-write to zero for checking whether get seed at second time */
+> >>>>>>> +     *prop = 0;
+> >>>>>>> +
+> >>>>>>> +     return ret;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static __init bool is_overlap(uintptr_t s1, uintptr_t e1, uintptr_t s2,
+> >>>>>>> +                           uintptr_t e2)
+> >>>>>>> +{
+> >>>>>>> +     return e1 >= s2 && e2 >= s1;
+> >>>>>>> +}
+> >>>>>>
+> >>>>>> Inline this function or use a macro maybe.
+> >>>>>
+> >>>>> Yes, sure. Thanks.
+> >>>>>
+> >>>>>>
+> >>>>>>> +
+> >>>>>>> +static __init bool is_overlap_reserved_mem(uintptr_t start_addr,
+> >>>>>>> +                                        uintptr_t end_addr)
+> >>>>>>> +{
+> >>>>>>> +     int node, rsv_mem, addr_cells, size_cells;
+> >>>>>>> +
+> >>>>>>> +     /* Get the reserved-memory node. */
+> >>>>>>> +     rsv_mem = get_node_addr_size_cells("/reserved-memory",
+> >>>>>>> +                                        &addr_cells,
+> >>>>>>> +                                        &size_cells);
+> >>>>>>> +     if (rsv_mem < 0)
+> >>>>>>> +             return false;
+> >>>>>>> +
+> >>>>>>> +     /* Get memory base address and size. */
+> >>>>>>> +     fdt_for_each_subnode(node, dtb_early_va, rsv_mem) {
+> >>>>>>> +             uint64_t base, size;
+> >>>>>>> +             const uint32_t *reg;
+> >>>>>>> +
+> >>>>>>> +             reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
+> >>>>>>> +             if (!reg)
+> >>>>>>> +                     return 0;
+> >>>>>>> +
+> >>>>>>> +             reg = get_reg_address(addr_cells, reg, &base);
+> >>>>>>> +             reg = get_reg_address(size_cells, reg, &size);
+> >>>>>>> +
+> >>>>>>> +             if (is_overlap(start_addr, end_addr, base, base + size))
+> >>>>>>> +                     return true;
+> >>>>>>> +     }
+> >>>>>>> +
+> >>>>>>> +     return false;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static __init bool is_overlap_initrd(uintptr_t start_addr, uintptr_t end_addr)
+> >>>>>>> +{
+> >>>>>>> +     int node;
+> >>>>>>> +     uintptr_t initrd_start, initrd_end;
+> >>>>>>> +     fdt64_t *prop;
+> >>>>>>> +
+> >>>>>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
+> >>>>>>> +     if (node < 0)
+> >>>>>>> +             return false;
+> >>>>>>> +
+> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-start", NULL);
+> >>>>>>> +     if (!prop)
+> >>>>>>> +             return false;
+> >>>>>>> +
+> >>>>>>> +     initrd_start = fdt64_to_cpu(*prop);
+> >>>>>>> +
+> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-end", NULL);
+> >>>>>>> +     if (!prop)
+> >>>>>>> +             return false;
+> >>>>>>> +
+> >>>>>>> +     initrd_end = fdt64_to_cpu(*prop);
+> >>>>>>> +
+> >>>>>>> +     return is_overlap(start_addr, end_addr, initrd_start, initrd_end);
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static __init bool is_overlap_dtb(uintptr_t start_addr, uintptr_t end_addr)
+> >>>>>>> +{
+> >>>>>>> +     uintptr_t dtb_start = dtb_early_pa;
+> >>>>>>> +     uintptr_t dtb_end = dtb_start + fdt_totalsize(dtb_early_va);
+> >>>>>>> +
+> >>>>>>> +     return is_overlap(start_addr, end_addr, dtb_start, dtb_end);
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static __init bool has_regions_overlapping(uintptr_t start_addr,
+> >>>>>>> +                                        uintptr_t end_addr)
+> >>>>>>> +{
+> >>>>>>> +     if (is_overlap_dtb(start_addr, end_addr))
+> >>>>>>> +             return true;
+> >>>>>>> +
+> >>>>>>> +     if (is_overlap_initrd(start_addr, end_addr))
+> >>>>>>> +             return true;
+> >>>>>>> +
+> >>>>>>> +     if (is_overlap_reserved_mem(start_addr, end_addr))
+> >>>>>>> +             return true;
+> >>>>>>> +
+> >>>>>>> +     return false;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static inline __init unsigned long get_legal_offset(int random_index,
+> >>>>>>> +                                                 int max_index,
+> >>>>>>> +                                                 uintptr_t mem_start,
+> >>>>>>> +                                                 uintptr_t kernel_size)
+> >>>>>>> +{
+> >>>>>>> +     uintptr_t start_addr, end_addr;
+> >>>>>>> +     int idx, stop_idx;
+> >>>>>>> +
+> >>>>>>> +     idx = stop_idx = random_index;
+> >>>>>>> +
+> >>>>>>> +     do {
+> >>>>>>> +             start_addr = mem_start + idx * SZ_2M + kernel_size;
+> >>>>>>> +             end_addr = start_addr + kernel_size;
+> >>>>>>> +
+> >>>>>>> +             /* Check overlap to other regions. */
+> >>>>>>> +             if (!has_regions_overlapping(start_addr, end_addr))
+> >>>>>>> +                     return idx * SZ_2M + kernel_size;
+> >>>>>>> +
+> >>>>>>> +             if (idx-- < 0)
+> >>>>>>> +                     idx = max_index;
+> >>>>>>
+> >>>>>> Isn't the fallback to max_index a security breach ? Because at some
+> >>>>>> point, the kernel will be loaded at this specific address.
+> >>>>>
+> >>>>> The max_index is the maximum safe index for destination of new kernel
+> >>>>> image. Could you give more explain here?
+> >>>>>
+> >>>>
+> >>>> But max_index is not random at all. I really don't know if that's a
+> >>>> problem, I just found intriguing the fact the kernel could be loaded at
+> >>>> some specific location. Would it be more secure, instead of picking
+> >>>> max_index as fallback when reaching 0, to pick another random number
+> >>>> between random_index and max_index ?
+> >>>
+> >>> ok, I can get your point. The original idea here is that we get a
+> >>> random index first, then we decrease the index to retry to find a good
+> >>> place if there are overlapping with other regions. A bit like the ring
+> >>> buffer, the end of index traversing is not zero, but the random_index
+> >>> - 1, we might consider it as continuity, so we don't know where is the
+> >>> end point because the start point is random, whether we stop at zero
+> >>> or random_index - 1.
+> >>>
+> >>> Pick another random number is more secure when occurring overlapping,
+> >>> but I a little bit worry that it would take very long time to retry
+> >>> many times in the worst case. for example, there is just only one
+> >>> index could fit kernel image in (except for original location). In the
+> >>> meantime, we don't need to wait the index being decreased to zero,
+> >>> because it seems to me that they are the same to stop at zero or
+> >>> random_index - 1, so if we decide to re-calculate a new random number,
+> >>> maybe we could remove the index decreasing here.
+> >>
+> >> But you're right that it could take some time before converging to a
+> >> "good" index. Maybe we could restrict the index range to indexes that we
+> >> know for sure will be good ?
+> >>
+> >
+> > Yes, it would be good for ensuring that we only need to get the random
+> > number just once, but there are some points need to be discussed. The
+> > first one is that we couldn't dynamically allocate a memory space at
+> > that moment, because the memblock is not ready, so we might need to
+> > declare a enough big array at static time to collect all good indexes.
+> > Maybe CONFIG_MAXPHYSMEM_2GB and CONFIG_MAXPHYSMEM_128GB could be used
+> > to decide the number of elements of this array. The second one is that
+> > we always need to take the time to traverse the whole memory and check
+> > the overlapping for all indexes no matter what the cases are. I'm not
+> > sure whether it is good because this way increases the time and space
+> > cost, but it would be more secure. Do you have any idea?
+> >
+>
+> What about simply finding the biggest range of contiguous non-reserved
+> memory and getting an index from there ?
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- arch/riscv/Kconfig                        |  20 ++++
- arch/riscv/Makefile                       |   1 +
- arch/riscv/configs/defconfig              |   1 +
- arch/riscv/include/asm/efi.h              |  45 ++++++++
- drivers/firmware/efi/Kconfig              |   2 +-
- drivers/firmware/efi/libstub/Makefile     |   8 ++
- drivers/firmware/efi/libstub/riscv-stub.c | 131 ++++++++++++++++++++++
- 7 files changed, 207 insertions(+), 1 deletion(-)
- create mode 100644 arch/riscv/include/asm/efi.h
- create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
+This needs something like mentioned above, we need a big enough array
+to collect these index of the biggest range, and check all indexes
+whether they are safe, and it would limit and reduce the random range
+of we could use. On original way, the value of max_index won't be the
+end of traversing index, it would continue to decrease the index to
+find a good place until the index becoming random_offset again, so
+kernel doesn't be loaded to the specific location which max_index
+specify to, it seems to me that there isn't the worry of you
+mentioned.
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index f39e326a7a42..eb4f41c8f3ce 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -379,10 +379,30 @@ config CMDLINE_FORCE
- 
- endchoice
- 
-+config EFI_STUB
-+	bool
-+
-+config EFI
-+	bool "UEFI runtime support"
-+	depends on OF
-+	select LIBFDT
-+	select UCS2_STRING
-+	select EFI_PARAMS_FROM_FDT
-+	select EFI_STUB
-+	select EFI_GENERIC_STUB
-+	default y
-+	help
-+	  This option provides support for runtime services provided
-+	  by UEFI firmware (such as non-volatile variables, realtime
-+          clock, and platform reset). A UEFI stub is also provided to
-+	  allow the kernel to be booted as an EFI application. This
-+	  is only useful on systems that have UEFI firmware.
-+
- endmenu
- 
- menu "Power management options"
- 
- source "kernel/power/Kconfig"
-+source "drivers/firmware/Kconfig"
- 
- endmenu
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index fb6e37db836d..079435804d6d 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -80,6 +80,7 @@ head-y := arch/riscv/kernel/head.o
- core-y += arch/riscv/
- 
- libs-y += arch/riscv/lib/
-+core-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
- 
- PHONY += vdso_install
- vdso_install:
-diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-index 4da4886246a4..ae69e12d306a 100644
---- a/arch/riscv/configs/defconfig
-+++ b/arch/riscv/configs/defconfig
-@@ -129,3 +129,4 @@ CONFIG_DEBUG_BLOCK_EXT_DEVT=y
- # CONFIG_RUNTIME_TESTING_MENU is not set
- CONFIG_MEMTEST=y
- # CONFIG_SYSFS_SYSCALL is not set
-+CONFIG_EFI=y
-diff --git a/arch/riscv/include/asm/efi.h b/arch/riscv/include/asm/efi.h
-new file mode 100644
-index 000000000000..ba0a6d35cc15
---- /dev/null
-+++ b/arch/riscv/include/asm/efi.h
-@@ -0,0 +1,45 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-+ * Based on arch/arm64/include/asm/efi.h
-+ */
-+#ifndef _ASM_EFI_H
-+#define _ASM_EFI_H
-+
-+#include <asm/io.h>
-+#include <asm/mmu_context.h>
-+#include <asm/ptrace.h>
-+#include <asm/tlbflush.h>
-+
-+#define VA_BITS_MIN 39
-+
-+/* on RISC-V, the FDT may be located anywhere in system RAM */
-+static inline unsigned long efi_get_max_fdt_addr(unsigned long dram_base)
-+{
-+	return ULONG_MAX;
-+}
-+
-+/* Load initrd at enough distance from DRAM start */
-+static inline unsigned long efi_get_max_initrd_addr(unsigned long dram_base,
-+						    unsigned long image_addr)
-+{
-+	return dram_base + SZ_256M;
-+}
-+
-+#define efi_bs_call(func, ...)	efi_system_table()->boottime->func(__VA_ARGS__)
-+#define efi_rt_call(func, ...)	efi_system_table()->runtime->func(__VA_ARGS__)
-+#define efi_is_native()		(true)
-+
-+#define efi_table_attr(inst, attr)	(inst->attr)
-+
-+#define efi_call_proto(inst, func, ...) inst->func(inst, ##__VA_ARGS__)
-+
-+#define alloc_screen_info(x...)		(&screen_info)
-+extern char stext_offset[];
-+
-+static inline void free_screen_info(struct screen_info *si)
-+{
-+}
-+#define EFI_ALLOC_ALIGN		SZ_64K
-+
-+#endif /* _ASM_EFI_H */
-diff --git a/drivers/firmware/efi/Kconfig b/drivers/firmware/efi/Kconfig
-index 2a2b2b96a1dc..fcdc789d3f87 100644
---- a/drivers/firmware/efi/Kconfig
-+++ b/drivers/firmware/efi/Kconfig
-@@ -111,7 +111,7 @@ config EFI_GENERIC_STUB
- 
- config EFI_ARMSTUB_DTB_LOADER
- 	bool "Enable the DTB loader"
--	depends on EFI_GENERIC_STUB
-+	depends on EFI_GENERIC_STUB && !RISCV
- 	default y
- 	help
- 	  Select this config option to add support for the dtb= command
-diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
-index d590504541f6..b1db3a793c43 100644
---- a/drivers/firmware/efi/libstub/Makefile
-+++ b/drivers/firmware/efi/libstub/Makefile
-@@ -22,6 +22,8 @@ cflags-$(CONFIG_ARM64)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- cflags-$(CONFIG_ARM)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- 				   -fno-builtin -fpic \
- 				   $(call cc-option,-mno-single-pic-base)
-+cflags-$(CONFIG_RISCV)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
-+				   -fpic
- 
- cflags-$(CONFIG_EFI_GENERIC_STUB)	+= -I$(srctree)/scripts/dtc/libfdt
- 
-@@ -56,6 +58,7 @@ lib-$(CONFIG_EFI_GENERIC_STUB)		+= efi-stub.o fdt.o string.o \
- lib-$(CONFIG_ARM)		+= arm32-stub.o
- lib-$(CONFIG_ARM64)		+= arm64-stub.o
- lib-$(CONFIG_X86)		+= x86-stub.o
-+lib-$(CONFIG_RISCV)		+= riscv-stub.o
- CFLAGS_arm32-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- CFLAGS_arm64-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- 
-@@ -80,6 +83,11 @@ STUBCOPY_FLAGS-$(CONFIG_ARM64)	+= --prefix-alloc-sections=.init \
- 				   --prefix-symbols=__efistub_
- STUBCOPY_RELOC-$(CONFIG_ARM64)	:= R_AARCH64_ABS
- 
-+STUBCOPY_FLAGS-$(CONFIG_RISCV)	+= --prefix-alloc-sections=.init \
-+				   --prefix-symbols=__efistub_
-+STUBCOPY_RELOC-$(CONFIG_RISCV)	:= R_RISCV_HI20
-+
-+
- $(obj)/%.stub.o: $(obj)/%.o FORCE
- 	$(call if_changed,stubcopy)
- 
-diff --git a/drivers/firmware/efi/libstub/riscv-stub.c b/drivers/firmware/efi/libstub/riscv-stub.c
-new file mode 100644
-index 000000000000..acb69eae187a
---- /dev/null
-+++ b/drivers/firmware/efi/libstub/riscv-stub.c
-@@ -0,0 +1,131 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2013, 2014 Linaro Ltd;  <roy.franz@linaro.org>
-+ * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-+ *
-+ * This file implements the EFI boot stub for the RISC-V kernel.
-+ * Adapted from ARM64 version at drivers/firmware/efi/libstub/arm64-stub.c.
-+ */
-+
-+#include <linux/efi.h>
-+#include <linux/libfdt.h>
-+#include <linux/libfdt_env.h>
-+#include <asm/efi.h>
-+#include <asm/sections.h>
-+
-+#include "efistub.h"
-+/*
-+ * RISCV requires the kernel image to placed TEXT_OFFSET bytes beyond a 2 MB
-+ * aligned base for 64 bit and 4MB for 32 bit.
-+ */
-+#ifdef CONFIG_64BIT
-+#define MIN_KIMG_ALIGN	SZ_2M
-+#else
-+#define MIN_KIMG_ALIGN	SZ_4M
-+#endif
-+/*
-+ * TEXT_OFFSET ensures that we don't overwrite the firmware that probably sits
-+ * at the beginning of the DRAM.
-+ */
-+#define TEXT_OFFSET MIN_KIMG_ALIGN
-+
-+typedef __attribute__((noreturn)) void (*jump_kernel_func)(unsigned int,
-+							   unsigned long);
-+efi_status_t check_platform_features(void)
-+{
-+	return EFI_SUCCESS;
-+}
-+
-+static u32 get_boot_hartid_from_fdt(unsigned long fdt)
-+{
-+	int chosen_node, len;
-+	const fdt32_t *prop;
-+
-+	chosen_node = fdt_path_offset((void *)fdt, "/chosen");
-+	if (chosen_node < 0)
-+		return U32_MAX;
-+	prop = fdt_getprop((void *)fdt, chosen_node, "boot-hartid", &len);
-+	if (!prop || len != sizeof(u32))
-+		return U32_MAX;
-+
-+	return fdt32_to_cpu(*prop);
-+}
-+
-+/*
-+ * Jump to real kernel here with following constraints.
-+ * 1. MMU should be disabled.
-+ * 2. a0 should contain hartid
-+ * 3. a1 should DT address
-+ */
-+void __noreturn efi_enter_kernel(unsigned long entrypoint, unsigned long fdt,
-+				 unsigned long fdt_size)
-+{
-+	unsigned long kernel_entry = entrypoint + (unsigned long)stext_offset;
-+	jump_kernel_func jump_kernel = (void (*)(unsigned int, unsigned long))kernel_entry;
-+	u32 hartid = get_boot_hartid_from_fdt(fdt);
-+
-+	if (hartid == U32_MAX)
-+		/* We can not use panic or BUG at this point */
-+		__asm__ __volatile__ ("ebreak");
-+	/* Disable MMU */
-+	csr_write(CSR_SATP, 0);
-+	jump_kernel(hartid, fdt);
-+}
-+
-+efi_status_t handle_kernel_image(unsigned long *image_addr,
-+				 unsigned long *image_size,
-+				 unsigned long *reserve_addr,
-+				 unsigned long *reserve_size,
-+				 unsigned long dram_base,
-+				 efi_loaded_image_t *image)
-+{
-+	efi_status_t status;
-+	unsigned long kernel_size, kernel_memsize = 0;
-+	unsigned long preferred_offset;
-+
-+	/*
-+	 * The preferred offset of the kernel Image is TEXT_OFFSET bytes beyond
-+	 * a KIMG_ALIGN aligned base.
-+	 */
-+	preferred_offset = round_up(dram_base, MIN_KIMG_ALIGN) + TEXT_OFFSET;
-+
-+	kernel_size = _edata - _start;
-+	kernel_memsize = kernel_size + (_end - _edata);
-+
-+	/*
-+	 * Try a straight allocation at the preferred offset. It will also
-+	 * ensure that, on platforms where the [dram_base, dram_base + TEXT_OFFSET)
-+	 * interval is partially occupied by the firmware we can still place
-+	 * the kernel at the address 'dram_base + TEXT_OFFSET'. If the straight
-+	 * allocation fails, efi_low_alloc tries allocate memory from the lowest
-+	 * available LOADER_DATA mapped memory as long as address and size meet
-+	 * the alignment constraints.
-+	 */
-+	if (*image_addr == preferred_offset)
-+		return EFI_SUCCESS;
-+
-+	*image_addr = *reserve_addr = preferred_offset;
-+	*reserve_size = round_up(kernel_memsize, EFI_ALLOC_ALIGN);
-+
-+	status = efi_bs_call(allocate_pages, EFI_ALLOCATE_ADDRESS,
-+				EFI_LOADER_DATA,
-+				*reserve_size / EFI_PAGE_SIZE,
-+				(efi_physical_addr_t *)reserve_addr);
-+
-+	if (status != EFI_SUCCESS) {
-+		pr_efi("straight allocation failed do a low alloc\n");
-+		*reserve_size = kernel_memsize + TEXT_OFFSET;
-+		status = efi_low_alloc(*reserve_size, MIN_KIMG_ALIGN,
-+				       reserve_addr);
-+
-+		if (status != EFI_SUCCESS) {
-+			pr_efi_err("Failed to relocate kernel\n");
-+			*reserve_size = 0;
-+			return status;
-+		}
-+		*image_addr = *reserve_addr + TEXT_OFFSET;
-+	}
-+	memcpy((void *)*image_addr, image->image_base, kernel_size);
-+
-+	return EFI_SUCCESS;
-+}
--- 
-2.24.0
-
+>
+> >
+> >> Alex
+> >>
+> >>>
+> >>>>
+> >>>> Alex
+> >>>>
+> >>>>>>
+> >>>>>>> +
+> >>>>>>> +     } while (idx != stop_idx);
+> >>>>>>> +
+> >>>>>>> +     return 0;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +static inline __init u64 rotate_xor(u64 hash, const void *area, size_t size)
+> >>>>>>> +{
+> >>>>>>> +     size_t i;
+> >>>>>>> +     uintptr_t *ptr = (uintptr_t *) area;
+> >>>>>>> +
+> >>>>>>> +     for (i = 0; i < size / sizeof(hash); i++) {
+> >>>>>>> +             /* Rotate by odd number of bits and XOR. */
+> >>>>>>> +             hash = (hash << ((sizeof(hash) * 8) - 7)) | (hash >> 7);
+> >>>>>>> +             hash ^= ptr[i];
+> >>>>>>> +     }
+> >>>>>>> +
+> >>>>>>> +     return hash;
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>> +#define MEM_RESERVE_START    __pa(PAGE_OFFSET)
+> >>>>>>> +static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
+> >>>>>>> +{
+> >>>>>>> +     uintptr_t mem_start = 0, mem_size= 0, random_size;
+> >>>>>>> +     uintptr_t kernel_size_align = round_up(kernel_size, SZ_2M);
+> >>>>>>> +     int index;
+> >>>>>>> +     u64 random = 0;
+> >>>>>>> +     cycles_t time_base;
+> >>>>>>> +
+> >>>>>>> +     /* Attempt to create a simple but unpredictable starting entropy */
+> >>>>>>> +     random = rotate_xor(random, linux_banner, strlen(linux_banner));
+> >>>>>>> +
+> >>>>>>> +     /*
+> >>>>>>> +      * If there is no HW random number generator, use timer to get a random
+> >>>>>>> +      * number. This is better than nothing but not enough secure.
+> >>>>>>> +      */
+> >>>>>>> +     time_base = get_cycles() << 32;
+> >>>>>>> +     time_base ^= get_cycles();
+> >>>>>>> +     random = rotate_xor(random, &time_base, sizeof(time_base));
+> >>>>>>> +
+> >>>>>>> +     if (seed)
+> >>>>>>> +             random = rotate_xor(random, &seed, sizeof(seed));
+> >>>>>>> +
+> >>>>>>> +     kaslr_get_mem_info(&mem_start, &mem_size);
+> >>>>>>> +     if (!mem_size)
+> >>>>>>> +             return 0;
+> >>>>>>> +
+> >>>>>>> +     if (mem_start < MEM_RESERVE_START) {
+> >>>>>>> +             mem_size -= MEM_RESERVE_START - mem_start;
+> >>>>>>> +             mem_start = MEM_RESERVE_START;
+> >>>>>>> +     }
+> >>>>>>> +
+> >>>>>>> +     /*
+> >>>>>>> +      * Limit randomization range within 1G, so we can exploit
+> >>>>>>> +      * early_pmd/early_pte during early page table phase.
+> >>>>>>> +      */
+> >>>>>>> +     random_size = min_t(u64,
+> >>>>>>> +                         mem_size - (kernel_size_align * 2),
+> >>>>>>> +                         SZ_1G - (kernel_size_align * 2));
+> >>>>>>
+> >>>>>> pgdir size is 30 bits in sv39, but it's 39 bits in sv48, you should use
+> >>>>>> PGDIR_SIZE macro here.
+> >>>>>
+> >>>>> OK, change it in the next version. Thanks.
+> >>>>>
+> >>>>>>
+> >>>>>>> +
+> >>>>>>> +     /* The index of 2M block in whole avaliable region */
+> >>>>>>> +     index = random % (random_size / SZ_2M);
+> >>>>>>> +
+> >>>>>>> +     return get_legal_offset(index, random_size / SZ_2M,
+> >>>>>>> +                             mem_start, kernel_size_align);
+> >>>>>>> +}
+> >>>>>>> +
+> >>>>>>>      uintptr_t __init kaslr_early_init(void)
+> >>>>>>>      {
+> >>>>>>> +     u64 seed;
+> >>>>>>>          uintptr_t dest_start, dest_end;
+> >>>>>>>          uintptr_t kernel_size = (uintptr_t) _end - (uintptr_t) _start;
+> >>>>>>>
+> >>>>>>>          /* Get zero value at second time to avoid doing randomization again. */
+> >>>>>>> -     if (kaslr_offset)
+> >>>>>>> +     seed = kaslr_get_seed();
+> >>>>>>> +     if (!seed)
+> >>>>>>>                  return 0;
+> >>>>>>>
+> >>>>>>>          /* Get the random number for kaslr offset. */
+> >>>>>>> -     kaslr_offset = 0x10000000;
+> >>>>>>> +     kaslr_offset = get_random_offset(seed, kernel_size);
+> >>>>>>>
+> >>>>>>>          /* Update kernel_virt_addr for get_kaslr_offset. */
+> >>>>>>>          kernel_virt_addr += kaslr_offset;
+> >>>>>>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> >>>>>>> index 2f5b25f02b6c..34c6ecf2c599 100644
+> >>>>>>> --- a/arch/riscv/mm/init.c
+> >>>>>>> +++ b/arch/riscv/mm/init.c
+> >>>>>>> @@ -125,7 +125,7 @@ static void __init setup_initrd(void)
+> >>>>>>>      }
+> >>>>>>>      #endif /* CONFIG_BLK_DEV_INITRD */
+> >>>>>>>
+> >>>>>>> -static phys_addr_t dtb_early_pa __initdata;
+> >>>>>>> +phys_addr_t dtb_early_pa __initdata;
+> >>>>>>>
+> >>>>>>>      void __init setup_bootmem(void)
+> >>>>>>>      {
+> >>>>>>>
+> >>>>>>
+> >>>>>> Alex
 
