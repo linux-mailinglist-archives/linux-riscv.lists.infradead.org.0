@@ -2,91 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D8691A712D
-	for <lists+linux-riscv@lfdr.de>; Tue, 14 Apr 2020 04:47:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 432D21A7205
+	for <lists+linux-riscv@lfdr.de>; Tue, 14 Apr 2020 05:52:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c3LF/reoKA7BSZrGeXxLYF9/PpiaCTJyorwndSEWS1U=; b=VQqP8icMMWIWLmaT/rPAJuPxd
-	T3RfrIaZhEZQxsL4f2MxmOtyek6gjDVaSWMGpwll3hjWvtyGBu/yfBTAkRqAC+n+N+VTjjgs86OUp
-	SqW4qpmLsilKlJ3kSz6DY4dtgtN7JPv14oC/0oYxXAHiGdtRpPLQRYMKocUVst+UpaqzAEB+kF1pY
-	zPOru9/Ju4g4ZGuTrFMQS2stCARc/YCBxudNT//+CqLW3UrywfxLm3XSqNWAqyTBH4AHT+eIKv339
-	pD4D213MQOtqJG6YnC7EstjM3Ra4rqXo3L+cU70QjqgUKQ0JwT9zFXNCb0gY7pe6PCIGggHq4JvnP
-	hIkxScPRQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tpHV8AoQYK4ODD4Rv537D00CyvZIguCFqmQYU+5jFwg=; b=YhPtIyV70uT1pR
+	48W7QfparpIMWjBcOycBYXRd/GMs4CSnLyxiSdt9V0lwU7e/eExorr9UdPJVKFatGiXPjFYUAegpQ
+	IKj+ymw/t6vq0RkHjuFPTUJCBHR/dmN7YF4e7tC2vvHWs+tlw4NPw6P+drQeTwZBx3JMquHyXn8l2
+	oi1TZKqge55bQplRNNlBi3fiFHl0Th46JB5/NCUu4cKSVJ8WfgFPHkFcs8CoeBw4gdPaZc7/z3Zhe
+	vpcR3SyMucqKb/8QzdpFNOH+DSYgOQdrJPigijJRspWebaurgzNZ+82mhkJProt3ZeDPWBZOw6fEt
+	pwz256Et+utfN9L/5pQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOBbU-0004R5-Kj; Tue, 14 Apr 2020 02:47:12 +0000
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
+	id 1jOCce-0002W8-Us; Tue, 14 Apr 2020 03:52:28 +0000
+Received: from mailgate-2.ics.forth.gr ([139.91.1.5])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOBbO-0004QO-Sr
- for linux-riscv@lists.infradead.org; Tue, 14 Apr 2020 02:47:11 +0000
-Received: by mail-ot1-x342.google.com with SMTP id i27so8444290ota.7
- for <linux-riscv@lists.infradead.org>; Mon, 13 Apr 2020 19:47:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=c3LF/reoKA7BSZrGeXxLYF9/PpiaCTJyorwndSEWS1U=;
- b=JGeHzfn5cdE8C5En0FqPz2Lo93ftjVmiFFoiyjOpZu21pDeKes+rsaYhs/ucd8OQzb
- Kt4ZWdL1StaRimr3NDO+J106J9/5pLyAWv5r6xQhARbFlanlvD91/xMP14YLsAJM//zf
- 3MHS6E6emzANlb9EHMG6EWfMcFxwKytrclcXLkeGc9PZrdWOz3iXHdphAnx2YO8ZYS/n
- qhqzHNfLq5imtIXSY2xBsiTXyjkMbPodZiO/tBXtweTfPMU53g77bQeXLTy4DuvGgW3w
- eW8mcCeP2VAZgE0FknhhWt2wuKJqmOgH3gdAleQ2f8j4ShIo3bTZq1yFdpC/ch3sL07l
- Cihg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=c3LF/reoKA7BSZrGeXxLYF9/PpiaCTJyorwndSEWS1U=;
- b=RAQVWqtLWgEUrfojguO73zBUAocjFlgbvnj32Qqylq52t0S+bwh3VFQX5tbL5B8cgV
- oTemf0nipL2D0xqjCB7aGv7J+flq24KeQqkAT4Ejiev4VkEB6YRPq7w3pm827BfCSYDW
- BOJ6sKx4urvipUCblAaP4/ixjbnWDlvgtaldNUIskhPm9DYsgIPeRULbM3qFU4dh+h3B
- obl4YVY2AMjgAKcnW/hQfV3ZobgTkHJzgWvJolXOCvj8vkqZLgV94gITjyBJ5wieNFCQ
- 3OIVQDf0otKlbm08rZYWrC+X5Cw60IYc5WGnrUoDeglUv+XcpygjJqjzMzEdWw9QqNku
- y59w==
-X-Gm-Message-State: AGi0Pub9Jr/3UEHFPjLBcdZOoTUtaeJ6cXnUw4Q8XT2SILhtUuSUJTuK
- YDWEe6ZJTT2RXF+cQKFvQhqDt5JzfuL6YjYe5B/1yg==
-X-Google-Smtp-Source: APiQypKStxMs8xwLtMmCR6K/vKpKzh+yAGrYpfLeNlt/cMygFvbxvnUyU1o0WuhL7zdshob9MEqjzKnBXSfWeSneNDc=
-X-Received: by 2002:a4a:c28e:: with SMTP id b14mr16480277ooq.39.1586832424106; 
- Mon, 13 Apr 2020 19:47:04 -0700 (PDT)
+ id 1jOCca-0002UT-8c
+ for linux-riscv@lists.infradead.org; Tue, 14 Apr 2020 03:52:27 +0000
+Received: from av3.ics.forth.gr (av3in [139.91.1.77])
+ by mailgate-2.ics.forth.gr (8.14.4/ICS-FORTH/V10-1.8-GATE) with ESMTP id
+ 03E3pnbx031580; Tue, 14 Apr 2020 03:51:51 GMT
+X-AuditID: 8b5b014d-257ff700000045c5-a7-5e953355255f
+Received: from enigma.ics.forth.gr (enigma.ics.forth.gr [139.91.151.35])
+ by av3.ics.forth.gr (Symantec Messaging Gateway) with SMTP id
+ 4E.25.17861.553359E5; Tue, 14 Apr 2020 06:51:49 +0300 (EEST)
+X-ICS-AUTH-INFO: Authenticated user: mick@ics.forth.gr at ics.forth.gr
+From: Nick Kossifidis <mick@ics.forth.gr>
+To: linux-riscv@lists.infradead.org
+Subject: [PATCH v2] RISC-V: Add kexec support
+Date: Tue, 14 Apr 2020 06:51:28 +0300
+Message-Id: <20200414035128.506534-1-mick@ics.forth.gr>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-References: <cover.1584352425.git.zong.li@sifive.com>
- <16924c3f07b142688a3c0562d229cd67dc7bf8e6.1584352425.git.zong.li@sifive.com>
- <71cc2070-e867-17e1-cc64-66b634e3f48e@ghiti.fr>
- <CANXhq0rQ_YqmBBDEgOCcu8vr+5NWqNdnfZ+EX8ofaaD6PuBAFQ@mail.gmail.com>
- <69a9ecc5-550e-24a0-6f91-d65af3e00f18@ghiti.fr>
- <CANXhq0q62t3nZgqbYJzW9p1ntaNAFFX5LQFB65fkO5KCCv-RHA@mail.gmail.com>
- <c68dacf1-eca1-9d28-3c04-dd6793fe3274@ghiti.fr>
- <CANXhq0q6xNLzUAetQ6hHR5y_h5iZarcxyvSo3YAbprO=5LZomA@mail.gmail.com>
- <6dd04bc5-b0e8-6dbc-d4c5-9d19db5081dd@ghiti.fr>
-In-Reply-To: <6dd04bc5-b0e8-6dbc-d4c5-9d19db5081dd@ghiti.fr>
-From: Zong Li <zong.li@sifive.com>
-Date: Tue, 14 Apr 2020 10:46:53 +0800
-Message-ID: <CANXhq0pcmUigMEFXpEBv_NanLJ-0+tOL9QM-p7LB+mBAFLvKDA@mail.gmail.com>
-Subject: Re: [PATCH RFC 4/8] riscv/kaslr: randomize the kernel image offset
-To: Alex Ghiti <alex@ghiti.fr>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprILMWRmVeSWpSXmKPExsXSHT1dWTfUeGqcwcInvBYtH96xWixa8Z3F
+ YsvhR8wW2z63sFk0vzvHbvHycg+zRdssfgd2j6m/z7B4vHn5ksXj4aZLTB6bl9R7XGq+zu7R
+ fqCbKYAtissmJTUnsyy1SN8ugStj15GJTAXPSio2v9/K1sD4NaaLkZNDQsBEYt+tS2xdjFwc
+ QgJHGSVWt59mhEi4Sdy+v5MVxGYT0JSYf+kgSxcjB4eIgLLE/HuuIPXMAhsZJU7+PsgEUiMs
+ oCux594SdhCbRUBVomcWRJxXwFxi6pUPUDPlJbZ++8QKEReUODnzCQuIzQwUb946m3kCI88s
+ JKlZSFILGJlWMQoklhnrZSYX66XlF5Vk6KUXbWIEhxqj7w7G25vf6h1iZOJgPMQowcGsJML7
+ pHxinBBvSmJlVWpRfnxRaU5q8SFGaQ4WJXHePO7lsUIC6YklqdmpqQWpRTBZJg5OqQamZSsn
+ aC4602TyZ2bKnQMHa57+uRrw70LuDxFeVouqXwd28Kizix5lfaH4Yrv/kX/blzHEL1HzyzSz
+ cffLu770RdIMDTu/rjtf80UP2PFsqMqbJS13dEpgp+zxOLaUqXOX7ZHJ/lXl2Pqau9NKuN32
+ 5KZZl3WO9c6PPjq76EG70rRpDue+v+d98f+N5NT7k0wr3plOrd3YevLwEaHO4uTOyZKVYguU
+ y3WFjDasP909eVbZy4fvDfi2RU0Nbzs0rcxmVvOr14fdnn6wfxamYL/lW7FYu/OvDqN1U3Vi
+ 7zwp/tsqpnuivX8O+/4Pf8yXpls9CT+zdfrKiWuXMvFP3bXCJlj+X0L+RcuiDC2FUqXImUos
+ xRmJhlrMRcWJAOfZK5+kAgAA
+X-Greylist: inspected by milter-greylist-4.6.2 (mailgate-2.ics.forth.gr
+ [139.91.1.5]);
+ Tue, 14 Apr 2020 03:51:51 +0000 (GMT) for IP:'139.91.1.77' DOMAIN:'av3in'
+ HELO:'av3.ics.forth.gr' FROM:'mick@ics.forth.gr' RCPT:''
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mailgate-2.ics.forth.gr [139.91.1.5]); Tue, 14 Apr 2020 03:51:51 +0000 (GMT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_194707_766678_C4B12378 
-X-CRM114-Status: GOOD (  30.60  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200413_205224_859573_0CA03A9A 
+X-CRM114-Status: GOOD (  32.06  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:342 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [139.91.1.5 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,466 +81,517 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: david.abdurachmanov@sifive.com, anup@brainfault.org, atish.patra@wdc.com,
+ palmer@dabbelt.com, paul.walmsley@sifive.com,
+ Nick Kossifidis <mick@ics.forth.gr>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Apr 12, 2020 at 2:53 PM Alex Ghiti <alex@ghiti.fr> wrote:
->
->
->
-> On 4/11/20 4:20 AM, Zong Li wrote:
-> > On Fri, Apr 10, 2020 at 11:58 PM Alex Ghiti <alex@ghiti.fr> wrote:
-> >>
-> >> Hi Zong,
-> >>
-> >> On 4/9/20 6:31 AM, Zong Li wrote:
-> >>> On Thu, Apr 9, 2020 at 1:51 PM Alex Ghiti <alex@ghiti.fr> wrote:
-> >>>>
-> >>>>
-> >>>>
-> >>>> On 4/7/20 6:53 AM, Zong Li wrote:
-> >>>>> On Tue, Apr 7, 2020 at 1:11 PM Alex Ghiti <alex@ghiti.fr> wrote:
-> >>>>>>
-> >>>>>>
-> >>>>>> On 3/24/20 3:30 AM, Zong Li wrote:
-> >>>>>>> Entropy is derived from the banner and timer, it is better than nothing
-> >>>>>>> but not enough secure, so previous stage may pass entropy via the device
-> >>>>>>> tree /chosen/kaslr-seed node.
-> >>>>>>>
-> >>>>>>> We limit randomization range within 1GB, so we can exploit early page
-> >>>>>>> table to map new destination of kernel image. Additionally, the kernel
-> >>>>>>> offset need 2M alignment to ensure it's good in PMD page table.
-> >>>>>>>
-> >>>>>>> We also checks the kernel offset whether it's safe by avoiding to
-> >>>>>>> overlaps with dtb, initrd and reserved memory regions.
-> >>>>>>>
-> >>>>>>
-> >>>>>> That maybe changes the way my sv48 patchset will be implemented: I can't
-> >>>>>> get user preference (3-level or 4-level) by any means, device-tree or
-> >>>>>> kernel parameter.
-> >>>>>>
-> >>>>>> But I don't see how you could get a random offset without info from the
-> >>>>>> device tree anyway (reserved memory regions especially), so maybe I
-> >>>>>> could parse dtb for allowing the user to choose. I'll move this
-> >>>>>> discussion to the sv48 introduction.
-> >>>>>
-> >>>>> Maybe I'm a little bit misunderstanding here, but I think I got the
-> >>>>> random offset through some information by parsing dtb.
-> >>>>>
-> >>>>
-> >>>> I was just saying that I may use the dtb too in sv48 patchset to make it
-> >>>> possible for users to choose sv39 even if sv48 is supported by hardware
-> >>>> (which is not the case in my current patchset).
-> >>>>
-> >>>>>>
-> >>>>>>> Signed-off-by: Zong Li <zong.li@sifive.com>
-> >>>>>>> ---
-> >>>>>>>      arch/riscv/kernel/kaslr.c | 274 +++++++++++++++++++++++++++++++++++++-
-> >>>>>>>      arch/riscv/mm/init.c      |   2 +-
-> >>>>>>>      2 files changed, 273 insertions(+), 3 deletions(-)
-> >>>>>>>
-> >>>>>>> diff --git a/arch/riscv/kernel/kaslr.c b/arch/riscv/kernel/kaslr.c
-> >>>>>>> index 281b5fcca5c8..9ec2b608eb7f 100644
-> >>>>>>> --- a/arch/riscv/kernel/kaslr.c
-> >>>>>>> +++ b/arch/riscv/kernel/kaslr.c
-> >>>>>>> @@ -11,23 +11,293 @@
-> >>>>>>>      #include <asm/cacheflush.h>
-> >>>>>>>
-> >>>>>>>      extern char _start[], _end[];
-> >>>>>>> +extern void *dtb_early_va;
-> >>>>>>> +extern phys_addr_t dtb_early_pa;
-> >>>>>>>      extern void secondary_random_target(void);
-> >>>>>>>      extern void kaslr_create_page_table(uintptr_t start, uintptr_t end);
-> >>>>>>>
-> >>>>>>>      uintptr_t secondary_next_target __initdata;
-> >>>>>>>      static uintptr_t kaslr_offset __initdata;
-> >>>>>>>
-> >>>>>>> +static const __init u32 *get_reg_address(int root_cells,
-> >>>>>>> +                                      const u32 *value, u64 *result)
-> >>>>>>> +{
-> >>>>>>> +     int cell;
-> >>>>>>> +     *result = 0;
-> >>>>>>> +
-> >>>>>>> +     for (cell = root_cells; cell > 0; --cell)
-> >>>>>>> +             *result = (*result << 32) + fdt32_to_cpu(*value++);
-> >>>>>>> +
-> >>>>>>> +     return value;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static __init int get_node_addr_size_cells(const char *path, int *addr_cell,
-> >>>>>>> +                                        int *size_cell)
-> >>>>>>> +{
-> >>>>>>> +     int node = fdt_path_offset(dtb_early_va, path);
-> >>>>>>> +     fdt64_t *prop;
-> >>>>>>> +
-> >>>>>>> +     if (node < 0)
-> >>>>>>> +             return -EINVAL;
-> >>>>>>> +
-> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#address-cells", NULL);
-> >>>>>>> +     if (!prop)
-> >>>>>>> +             return -EINVAL;
-> >>>>>>> +     *addr_cell = fdt32_to_cpu(*prop);
-> >>>>>>> +
-> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "#size-cells", NULL);
-> >>>>>>> +     if (!prop)
-> >>>>>>> +             return -EINVAL;
-> >>>>>>> +     *size_cell = fdt32_to_cpu(*prop);
-> >>>>>>> +
-> >>>>>>> +     return node;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static __init void kaslr_get_mem_info(uintptr_t *mem_start,
-> >>>>>>> +                                   uintptr_t *mem_size)
-> >>>>>>> +{
-> >>>>>>> +     int node, root, addr_cells, size_cells;
-> >>>>>>> +     u64 base, size;
-> >>>>>>> +
-> >>>>>>> +     /* Get root node's address cells and size cells. */
-> >>>>>>> +     root = get_node_addr_size_cells("/", &addr_cells, &size_cells);
-> >>>>>>> +     if (root < 0)
-> >>>>>>> +             return;
-> >>>>>>> +
-> >>>>>>> +     /* Get memory base address and size. */
-> >>>>>>> +     fdt_for_each_subnode(node, dtb_early_va, root) {
-> >>>>>>> +             const char *dev_type;
-> >>>>>>> +             const u32 *reg;
-> >>>>>>> +
-> >>>>>>> +             dev_type = fdt_getprop(dtb_early_va, node, "device_type", NULL);
-> >>>>>>> +             if (!dev_type)
-> >>>>>>> +                     continue;
-> >>>>>>> +
-> >>>>>>> +             if (!strcmp(dev_type, "memory")) {
-> >>>>>>> +                     reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
-> >>>>>>> +                     if (!reg)
-> >>>>>>> +                             return;
-> >>>>>>> +
-> >>>>>>> +                     reg = get_reg_address(addr_cells, reg, &base);
-> >>>>>>> +                     reg = get_reg_address(size_cells, reg, &size);
-> >>>>>>> +
-> >>>>>>> +                     *mem_start = base;
-> >>>>>>> +                     *mem_size = size;
-> >>>>>>> +
-> >>>>>>> +                     break;
-> >>>>>>> +             }
-> >>>>>>> +     }
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +/* Return a default seed if there is no HW generator. */
-> >>>>>>> +static u64 kaslr_default_seed = ULL(-1);
-> >>>>>>> +static __init u64 kaslr_get_seed(void)
-> >>>>>>> +{
-> >>>>>>> +     int node, len;
-> >>>>>>> +     fdt64_t *prop;
-> >>>>>>> +     u64 ret;
-> >>>>>>> +
-> >>>>>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
-> >>>>>>> +     if (node < 0)
-> >>>>>>> +             return kaslr_default_seed++;
-> >>>>>>> +
-> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "kaslr-seed", &len);
-> >>>>>>> +     if (!prop || len != sizeof(u64))
-> >>>>>>> +             return kaslr_default_seed++;
-> >>>>>>> +
-> >>>>>>> +     ret = fdt64_to_cpu(*prop);
-> >>>>>>> +
-> >>>>>>> +     /* Re-write to zero for checking whether get seed at second time */
-> >>>>>>> +     *prop = 0;
-> >>>>>>> +
-> >>>>>>> +     return ret;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static __init bool is_overlap(uintptr_t s1, uintptr_t e1, uintptr_t s2,
-> >>>>>>> +                           uintptr_t e2)
-> >>>>>>> +{
-> >>>>>>> +     return e1 >= s2 && e2 >= s1;
-> >>>>>>> +}
-> >>>>>>
-> >>>>>> Inline this function or use a macro maybe.
-> >>>>>
-> >>>>> Yes, sure. Thanks.
-> >>>>>
-> >>>>>>
-> >>>>>>> +
-> >>>>>>> +static __init bool is_overlap_reserved_mem(uintptr_t start_addr,
-> >>>>>>> +                                        uintptr_t end_addr)
-> >>>>>>> +{
-> >>>>>>> +     int node, rsv_mem, addr_cells, size_cells;
-> >>>>>>> +
-> >>>>>>> +     /* Get the reserved-memory node. */
-> >>>>>>> +     rsv_mem = get_node_addr_size_cells("/reserved-memory",
-> >>>>>>> +                                        &addr_cells,
-> >>>>>>> +                                        &size_cells);
-> >>>>>>> +     if (rsv_mem < 0)
-> >>>>>>> +             return false;
-> >>>>>>> +
-> >>>>>>> +     /* Get memory base address and size. */
-> >>>>>>> +     fdt_for_each_subnode(node, dtb_early_va, rsv_mem) {
-> >>>>>>> +             uint64_t base, size;
-> >>>>>>> +             const uint32_t *reg;
-> >>>>>>> +
-> >>>>>>> +             reg = fdt_getprop(dtb_early_va, node, "reg", NULL);
-> >>>>>>> +             if (!reg)
-> >>>>>>> +                     return 0;
-> >>>>>>> +
-> >>>>>>> +             reg = get_reg_address(addr_cells, reg, &base);
-> >>>>>>> +             reg = get_reg_address(size_cells, reg, &size);
-> >>>>>>> +
-> >>>>>>> +             if (is_overlap(start_addr, end_addr, base, base + size))
-> >>>>>>> +                     return true;
-> >>>>>>> +     }
-> >>>>>>> +
-> >>>>>>> +     return false;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static __init bool is_overlap_initrd(uintptr_t start_addr, uintptr_t end_addr)
-> >>>>>>> +{
-> >>>>>>> +     int node;
-> >>>>>>> +     uintptr_t initrd_start, initrd_end;
-> >>>>>>> +     fdt64_t *prop;
-> >>>>>>> +
-> >>>>>>> +     node = fdt_path_offset(dtb_early_va, "/chosen");
-> >>>>>>> +     if (node < 0)
-> >>>>>>> +             return false;
-> >>>>>>> +
-> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-start", NULL);
-> >>>>>>> +     if (!prop)
-> >>>>>>> +             return false;
-> >>>>>>> +
-> >>>>>>> +     initrd_start = fdt64_to_cpu(*prop);
-> >>>>>>> +
-> >>>>>>> +     prop = fdt_getprop_w(dtb_early_va, node, "linux,initrd-end", NULL);
-> >>>>>>> +     if (!prop)
-> >>>>>>> +             return false;
-> >>>>>>> +
-> >>>>>>> +     initrd_end = fdt64_to_cpu(*prop);
-> >>>>>>> +
-> >>>>>>> +     return is_overlap(start_addr, end_addr, initrd_start, initrd_end);
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static __init bool is_overlap_dtb(uintptr_t start_addr, uintptr_t end_addr)
-> >>>>>>> +{
-> >>>>>>> +     uintptr_t dtb_start = dtb_early_pa;
-> >>>>>>> +     uintptr_t dtb_end = dtb_start + fdt_totalsize(dtb_early_va);
-> >>>>>>> +
-> >>>>>>> +     return is_overlap(start_addr, end_addr, dtb_start, dtb_end);
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static __init bool has_regions_overlapping(uintptr_t start_addr,
-> >>>>>>> +                                        uintptr_t end_addr)
-> >>>>>>> +{
-> >>>>>>> +     if (is_overlap_dtb(start_addr, end_addr))
-> >>>>>>> +             return true;
-> >>>>>>> +
-> >>>>>>> +     if (is_overlap_initrd(start_addr, end_addr))
-> >>>>>>> +             return true;
-> >>>>>>> +
-> >>>>>>> +     if (is_overlap_reserved_mem(start_addr, end_addr))
-> >>>>>>> +             return true;
-> >>>>>>> +
-> >>>>>>> +     return false;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static inline __init unsigned long get_legal_offset(int random_index,
-> >>>>>>> +                                                 int max_index,
-> >>>>>>> +                                                 uintptr_t mem_start,
-> >>>>>>> +                                                 uintptr_t kernel_size)
-> >>>>>>> +{
-> >>>>>>> +     uintptr_t start_addr, end_addr;
-> >>>>>>> +     int idx, stop_idx;
-> >>>>>>> +
-> >>>>>>> +     idx = stop_idx = random_index;
-> >>>>>>> +
-> >>>>>>> +     do {
-> >>>>>>> +             start_addr = mem_start + idx * SZ_2M + kernel_size;
-> >>>>>>> +             end_addr = start_addr + kernel_size;
-> >>>>>>> +
-> >>>>>>> +             /* Check overlap to other regions. */
-> >>>>>>> +             if (!has_regions_overlapping(start_addr, end_addr))
-> >>>>>>> +                     return idx * SZ_2M + kernel_size;
-> >>>>>>> +
-> >>>>>>> +             if (idx-- < 0)
-> >>>>>>> +                     idx = max_index;
-> >>>>>>
-> >>>>>> Isn't the fallback to max_index a security breach ? Because at some
-> >>>>>> point, the kernel will be loaded at this specific address.
-> >>>>>
-> >>>>> The max_index is the maximum safe index for destination of new kernel
-> >>>>> image. Could you give more explain here?
-> >>>>>
-> >>>>
-> >>>> But max_index is not random at all. I really don't know if that's a
-> >>>> problem, I just found intriguing the fact the kernel could be loaded at
-> >>>> some specific location. Would it be more secure, instead of picking
-> >>>> max_index as fallback when reaching 0, to pick another random number
-> >>>> between random_index and max_index ?
-> >>>
-> >>> ok, I can get your point. The original idea here is that we get a
-> >>> random index first, then we decrease the index to retry to find a good
-> >>> place if there are overlapping with other regions. A bit like the ring
-> >>> buffer, the end of index traversing is not zero, but the random_index
-> >>> - 1, we might consider it as continuity, so we don't know where is the
-> >>> end point because the start point is random, whether we stop at zero
-> >>> or random_index - 1.
-> >>>
-> >>> Pick another random number is more secure when occurring overlapping,
-> >>> but I a little bit worry that it would take very long time to retry
-> >>> many times in the worst case. for example, there is just only one
-> >>> index could fit kernel image in (except for original location). In the
-> >>> meantime, we don't need to wait the index being decreased to zero,
-> >>> because it seems to me that they are the same to stop at zero or
-> >>> random_index - 1, so if we decide to re-calculate a new random number,
-> >>> maybe we could remove the index decreasing here.
-> >>
-> >> But you're right that it could take some time before converging to a
-> >> "good" index. Maybe we could restrict the index range to indexes that we
-> >> know for sure will be good ?
-> >>
-> >
-> > Yes, it would be good for ensuring that we only need to get the random
-> > number just once, but there are some points need to be discussed. The
-> > first one is that we couldn't dynamically allocate a memory space at
-> > that moment, because the memblock is not ready, so we might need to
-> > declare a enough big array at static time to collect all good indexes.
-> > Maybe CONFIG_MAXPHYSMEM_2GB and CONFIG_MAXPHYSMEM_128GB could be used
-> > to decide the number of elements of this array. The second one is that
-> > we always need to take the time to traverse the whole memory and check
-> > the overlapping for all indexes no matter what the cases are. I'm not
-> > sure whether it is good because this way increases the time and space
-> > cost, but it would be more secure. Do you have any idea?
-> >
->
-> What about simply finding the biggest range of contiguous non-reserved
-> memory and getting an index from there ?
+This patch adds support for kexec on RISC-V. On SMP systems it depends
+on HOTPLUG_CPU in order to be able to bring up all harts after kexec.
+It also needs a recent OpenSBI version that supports the HSM extension.
+I tested it on riscv64 QEMU on both an smp and a non-smp system.
 
-This needs something like mentioned above, we need a big enough array
-to collect these index of the biggest range, and check all indexes
-whether they are safe, and it would limit and reduce the random range
-of we could use. On original way, the value of max_index won't be the
-end of traversing index, it would continue to decrease the index to
-find a good place until the index becoming random_offset again, so
-kernel doesn't be loaded to the specific location which max_index
-specify to, it seems to me that there isn't the worry of you
-mentioned.
+Note that on my tests although all harts seem to go down properly,
+when using more than 2 harts on qemu, they don't seem to come back
+as expected. I tried various ways of doing this, including using
+the new smp_shutdown_nonboot_cpus() but the result is the same.
 
->
-> >
-> >> Alex
-> >>
-> >>>
-> >>>>
-> >>>> Alex
-> >>>>
-> >>>>>>
-> >>>>>>> +
-> >>>>>>> +     } while (idx != stop_idx);
-> >>>>>>> +
-> >>>>>>> +     return 0;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +static inline __init u64 rotate_xor(u64 hash, const void *area, size_t size)
-> >>>>>>> +{
-> >>>>>>> +     size_t i;
-> >>>>>>> +     uintptr_t *ptr = (uintptr_t *) area;
-> >>>>>>> +
-> >>>>>>> +     for (i = 0; i < size / sizeof(hash); i++) {
-> >>>>>>> +             /* Rotate by odd number of bits and XOR. */
-> >>>>>>> +             hash = (hash << ((sizeof(hash) * 8) - 7)) | (hash >> 7);
-> >>>>>>> +             hash ^= ptr[i];
-> >>>>>>> +     }
-> >>>>>>> +
-> >>>>>>> +     return hash;
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>> +#define MEM_RESERVE_START    __pa(PAGE_OFFSET)
-> >>>>>>> +static __init uintptr_t get_random_offset(u64 seed, uintptr_t kernel_size)
-> >>>>>>> +{
-> >>>>>>> +     uintptr_t mem_start = 0, mem_size= 0, random_size;
-> >>>>>>> +     uintptr_t kernel_size_align = round_up(kernel_size, SZ_2M);
-> >>>>>>> +     int index;
-> >>>>>>> +     u64 random = 0;
-> >>>>>>> +     cycles_t time_base;
-> >>>>>>> +
-> >>>>>>> +     /* Attempt to create a simple but unpredictable starting entropy */
-> >>>>>>> +     random = rotate_xor(random, linux_banner, strlen(linux_banner));
-> >>>>>>> +
-> >>>>>>> +     /*
-> >>>>>>> +      * If there is no HW random number generator, use timer to get a random
-> >>>>>>> +      * number. This is better than nothing but not enough secure.
-> >>>>>>> +      */
-> >>>>>>> +     time_base = get_cycles() << 32;
-> >>>>>>> +     time_base ^= get_cycles();
-> >>>>>>> +     random = rotate_xor(random, &time_base, sizeof(time_base));
-> >>>>>>> +
-> >>>>>>> +     if (seed)
-> >>>>>>> +             random = rotate_xor(random, &seed, sizeof(seed));
-> >>>>>>> +
-> >>>>>>> +     kaslr_get_mem_info(&mem_start, &mem_size);
-> >>>>>>> +     if (!mem_size)
-> >>>>>>> +             return 0;
-> >>>>>>> +
-> >>>>>>> +     if (mem_start < MEM_RESERVE_START) {
-> >>>>>>> +             mem_size -= MEM_RESERVE_START - mem_start;
-> >>>>>>> +             mem_start = MEM_RESERVE_START;
-> >>>>>>> +     }
-> >>>>>>> +
-> >>>>>>> +     /*
-> >>>>>>> +      * Limit randomization range within 1G, so we can exploit
-> >>>>>>> +      * early_pmd/early_pte during early page table phase.
-> >>>>>>> +      */
-> >>>>>>> +     random_size = min_t(u64,
-> >>>>>>> +                         mem_size - (kernel_size_align * 2),
-> >>>>>>> +                         SZ_1G - (kernel_size_align * 2));
-> >>>>>>
-> >>>>>> pgdir size is 30 bits in sv39, but it's 39 bits in sv48, you should use
-> >>>>>> PGDIR_SIZE macro here.
-> >>>>>
-> >>>>> OK, change it in the next version. Thanks.
-> >>>>>
-> >>>>>>
-> >>>>>>> +
-> >>>>>>> +     /* The index of 2M block in whole avaliable region */
-> >>>>>>> +     index = random % (random_size / SZ_2M);
-> >>>>>>> +
-> >>>>>>> +     return get_legal_offset(index, random_size / SZ_2M,
-> >>>>>>> +                             mem_start, kernel_size_align);
-> >>>>>>> +}
-> >>>>>>> +
-> >>>>>>>      uintptr_t __init kaslr_early_init(void)
-> >>>>>>>      {
-> >>>>>>> +     u64 seed;
-> >>>>>>>          uintptr_t dest_start, dest_end;
-> >>>>>>>          uintptr_t kernel_size = (uintptr_t) _end - (uintptr_t) _start;
-> >>>>>>>
-> >>>>>>>          /* Get zero value at second time to avoid doing randomization again. */
-> >>>>>>> -     if (kaslr_offset)
-> >>>>>>> +     seed = kaslr_get_seed();
-> >>>>>>> +     if (!seed)
-> >>>>>>>                  return 0;
-> >>>>>>>
-> >>>>>>>          /* Get the random number for kaslr offset. */
-> >>>>>>> -     kaslr_offset = 0x10000000;
-> >>>>>>> +     kaslr_offset = get_random_offset(seed, kernel_size);
-> >>>>>>>
-> >>>>>>>          /* Update kernel_virt_addr for get_kaslr_offset. */
-> >>>>>>>          kernel_virt_addr += kaslr_offset;
-> >>>>>>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> >>>>>>> index 2f5b25f02b6c..34c6ecf2c599 100644
-> >>>>>>> --- a/arch/riscv/mm/init.c
-> >>>>>>> +++ b/arch/riscv/mm/init.c
-> >>>>>>> @@ -125,7 +125,7 @@ static void __init setup_initrd(void)
-> >>>>>>>      }
-> >>>>>>>      #endif /* CONFIG_BLK_DEV_INITRD */
-> >>>>>>>
-> >>>>>>> -static phys_addr_t dtb_early_pa __initdata;
-> >>>>>>> +phys_addr_t dtb_early_pa __initdata;
-> >>>>>>>
-> >>>>>>>      void __init setup_bootmem(void)
-> >>>>>>>      {
-> >>>>>>>
-> >>>>>>
-> >>>>>> Alex
+The patch for kexec-tools can be found at:
+http://riscv.ics.forth.gr/kexec-tools.patch
+
+The older version of this patch can be found at:
+https://patchwork.kernel.org/patch/10902945/
+
+v2:
+ * Pass needed parameters as arguments to riscv_kexec_relocate
+   instead of using global variables.
+ * Use kimage_arch to hold the fdt address of the included fdt.
+ * Use SYM_* macros on kexec_relocate.S.
+ * Compatibility with STRICT_KERNEL_RWX.
+ * Compatibility with HOTPLUG_CPU for SMP
+ * Small cleanups
+
+Signed-off-by: Nick Kossifidis <mick@ics.forth.gr>
+---
+ arch/riscv/Kconfig                 |  14 +++
+ arch/riscv/include/asm/kexec.h     |  47 +++++++
+ arch/riscv/kernel/Makefile         |   1 +
+ arch/riscv/kernel/kexec_relocate.S | 157 +++++++++++++++++++++++
+ arch/riscv/kernel/machine_kexec.c  | 196 +++++++++++++++++++++++++++++
+ include/uapi/linux/kexec.h         |   1 +
+ 6 files changed, 416 insertions(+)
+ create mode 100644 arch/riscv/include/asm/kexec.h
+ create mode 100644 arch/riscv/kernel/kexec_relocate.S
+ create mode 100644 arch/riscv/kernel/machine_kexec.c
+
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index bc713666f..acbef6ee6 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -331,6 +331,20 @@ config RISCV_SBI_V01
+ 	help
+ 	  This config allows kernel to use SBI v0.1 APIs. This will be
+ 	  deprecated in future once legacy M-mode software are no longer in use.
++
++config KEXEC
++	bool "Kexec system call"
++	select KEXEC_CORE
++	select HOTPLUG_CPU if SMP
++	help
++	  kexec is a system call that implements the ability to shutdown your
++	  current kernel, and to start another kernel. It is like a reboot
++	  but it is independent of the system firmware. And like a reboot
++	  you can start any kernel with it, not just Linux.
++
++	  The name comes from the similarity to the exec system call.
++
++
+ endmenu
+ 
+ menu "Boot options"
+diff --git a/arch/riscv/include/asm/kexec.h b/arch/riscv/include/asm/kexec.h
+new file mode 100644
+index 000000000..edff8a84a
+--- /dev/null
++++ b/arch/riscv/include/asm/kexec.h
+@@ -0,0 +1,47 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2019 FORTH-ICS/CARV
++ *		       Nick Kossifidis <mick@ics.forth.gr>
++ */
++
++#ifndef _RISCV_KEXEC_H
++#define _RISCV_KEXEC_H
++
++/* Maximum physical address we can use pages from */
++#define KEXEC_SOURCE_MEMORY_LIMIT (-1UL)
++
++/* Maximum address we can reach in physical address mode */
++#define KEXEC_DESTINATION_MEMORY_LIMIT (-1UL)
++
++/* Maximum address we can use for the control code buffer */
++#define KEXEC_CONTROL_MEMORY_LIMIT (-1UL)
++
++/* Reserve a page for the control code buffer */
++#define KEXEC_CONTROL_PAGE_SIZE 4096
++
++#define KEXEC_ARCH KEXEC_ARCH_RISCV
++
++static inline void
++crash_setup_regs(struct pt_regs *newregs,
++		 struct pt_regs *oldregs)
++{
++	/* Dummy implementation for now */
++}
++
++
++#define ARCH_HAS_KIMAGE_ARCH
++
++struct kimage_arch {
++	unsigned long fdt_addr;
++};
++
++const extern unsigned char riscv_kexec_relocate[];
++const extern unsigned int riscv_kexec_relocate_size;
++
++typedef void (*riscv_kexec_do_relocate)(unsigned long first_ind_entry,
++					unsigned long jump_addr,
++					unsigned long fdt_addr,
++					unsigned long hartid,
++					unsigned long va_pa_off);
++
++#endif
+diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+index 86c830810..28dccbbe6 100644
+--- a/arch/riscv/kernel/Makefile
++++ b/arch/riscv/kernel/Makefile
+@@ -51,5 +51,6 @@ ifeq ($(CONFIG_RISCV_SBI), y)
+ obj-$(CONFIG_SMP) += cpu_ops_sbi.o
+ endif
+ obj-$(CONFIG_HOTPLUG_CPU)	+= cpu-hotplug.o
++obj-${CONFIG_KEXEC}		+= kexec_relocate.o machine_kexec.o
+ 
+ clean:
+diff --git a/arch/riscv/kernel/kexec_relocate.S b/arch/riscv/kernel/kexec_relocate.S
+new file mode 100644
+index 000000000..957f63242
+--- /dev/null
++++ b/arch/riscv/kernel/kexec_relocate.S
+@@ -0,0 +1,157 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2019 FORTH-ICS/CARV
++ *		       Nick Kossifidis <mick@ics.forth.gr>
++ */
++
++#include <asm/asm.h>	/* For RISCV_* and REG_* macros */
++#include <asm/page.h>	/* For PAGE_SHIFT */
++#include <linux/linkage.h> /* For SYM_* macros */
++
++SYM_CODE_START(riscv_kexec_relocate)
++
++	/*
++	 * s0: Pointer to the current entry
++	 * s1: (const) Phys address to jump to after relocation
++	 * s2: (const) Phys address of the FDT image
++	 * s3: (const) The hartid of the current hart
++	 * s4: Pointer to the destination address for the relocation
++	 * s5: (const) Number of words per page
++	 * s6: (const) 1, used for subtraction
++	 * s7: (const) va_pa_offset, used when switching MMU off
++	 * s8: (const) Physical address of the main loop
++	 * s9: (debug) indirection page counter
++	 * s10: (debug) entry counter
++	 * s11: (debug) copied words counter
++	 */
++	mv	s0, a0
++	mv	s1, a1
++	mv	s2, a2
++	mv	s3, a3
++	mv	s4, zero
++	li	s5, ((1 << PAGE_SHIFT) / RISCV_SZPTR)
++	li	s6, 1
++	mv	s7, a4
++	mv	s8, zero
++	mv	s9, zero
++	mv	s10, zero
++	mv	s11, zero
++
++	/* Disable / cleanup interrupts */
++	csrw	sie, zero
++	csrw	sip, zero
++
++	/*
++	 * When we switch SATP.MODE to "Bare" we'll only
++	 * play with physical addresses. However the first time
++	 * we try to jump somewhere, the offset on the jump
++	 * will be relative to pc which will still be on VA. To
++	 * deal with this we set stvec to the physical address at
++	 * the start of the loop below so that we jump there in
++	 * any case.
++	 */
++	la	s8, 1f
++	sub	s8, s8, s7
++	csrw	stvec, s8
++
++	/* Process entries in a loop */
++1:
++	addi	s10, s10, 1
++	REG_L	t0, 0(s0)		/* t0 = *image->entry */
++	addi	s0, s0, RISCV_SZPTR	/* image->entry++ */
++
++	/* IND_DESTINATION entry ? -> save destination address */
++	andi	t1, t0, 0x1
++	beqz	t1, 2f
++	andi	s4, t0, ~0x1
++	j	1b
++
++2:
++	/* IND_INDIRECTION entry ? -> update next entry ptr (PA) */
++	andi	t1, t0, 0x2
++	beqz	t1, 2f
++	andi	s0, t0, ~0x2
++	addi	s9, s9, 1
++	csrw	sptbr, zero
++	jalr	zero, s8, 0
++
++2:
++	/* IND_DONE entry ? -> jump to done label */
++	andi	t1, t0, 0x4
++	beqz	t1, 2f
++	j	4f
++
++2:
++	/*
++	 * IND_SOURCE entry ? -> copy page word by word to the
++	 * destination address we got from IND_DESTINATION
++	 */
++	andi	t1, t0, 0x8
++	beqz	t1, 1b		/* Unknown entry type, ignore it */
++	andi	t0, t0, ~0x8
++	mv	t3, s5		/* i = num words per page */
++3:	/* copy loop */
++	REG_L	t1, (t0)	/* t1 = *src_ptr */
++	REG_S	t1, (s4)	/* *dst_ptr = *src_ptr */
++	addi	t0, t0, RISCV_SZPTR /* stc_ptr++ */
++	addi	s4, s4, RISCV_SZPTR /* dst_ptr++ */
++	sub	t3, t3, s6	/* i-- */
++	addi	s11, s11, 1	/* c++ */
++	beqz	t3, 1b		/* copy done ? */
++	j	3b
++
++4:
++	/* Wait for the relocation to be visible by other harts */
++	fence	w,w
++
++	/* Pass the arguments to the next kernel  / Cleanup*/
++	mv	a0, s3
++	mv	a1, s2
++	mv	a2, s1
++
++	/* Cleanup */
++	mv	a3, zero
++	mv	a4, zero
++	mv	a5, zero
++	mv	a6, zero
++	mv	a7, zero
++
++	mv	s0, zero
++	mv	s1, zero
++	mv	s2, zero
++	mv	s3, zero
++	mv	s4, zero
++	mv	s5, zero
++	mv	s6, zero
++	mv	s7, zero
++	mv	s8, zero
++	mv	s9, zero
++	mv	s10, zero
++	mv	s11, zero
++
++	mv	t0, zero
++	mv	t1, zero
++	mv	t2, zero
++	mv	t3, zero
++	mv	t4, zero
++	mv	t5, zero
++	mv	t6, zero
++	csrw	sepc, zero
++	csrw	scause, zero
++	csrw	sscratch, zero
++
++	/*
++	 * Make sure the relocated code is visible
++	 * and jump to the new kernel
++	 */
++	fence.i
++
++	jalr	zero, a2, 0
++
++SYM_CODE_END(riscv_kexec_relocate)
++riscv_kexec_relocate_end:
++
++	.section ".rodata"
++SYM_DATA(riscv_kexec_relocate_size,
++	.long riscv_kexec_relocate_end - riscv_kexec_relocate)
++
+diff --git a/arch/riscv/kernel/machine_kexec.c b/arch/riscv/kernel/machine_kexec.c
+new file mode 100644
+index 000000000..d38aa75f7
+--- /dev/null
++++ b/arch/riscv/kernel/machine_kexec.c
+@@ -0,0 +1,196 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2019 FORTH-ICS/CARV
++ *		       Nick Kossifidis <mick@ics.forth.gr>
++ */
++
++#include <linux/kexec.h>
++#include <asm/kexec.h>		/* For riscv_kexec_* symbol defines */
++#include <linux/smp.h>		/* For smp_send_stop () */
++#include <asm/cacheflush.h>	/* For local_flush_icache_all() */
++#include <asm/barrier.h>	/* For smp_wmb() */
++#include <asm/page.h>		/* For PAGE_MASK */
++#include <linux/libfdt.h>	/* For fdt_check_header() */
++#include <asm/set_memory.h>	/* For set_memory_x() */
++#include <linux/compiler.h>	/* For unreachable() */
++#include <linux/cpu.h>		/* For cpu_down() */
++
++/**
++ * kexec_image_info - Print received image details
++ */
++static void
++kexec_image_info(const struct kimage *image)
++{
++	unsigned long i;
++
++	pr_debug("Kexec image info:\n");
++	pr_debug("\ttype:        %d\n", image->type);
++	pr_debug("\tstart:       %lx\n", image->start);
++	pr_debug("\thead:        %lx\n", image->head);
++	pr_debug("\tnr_segments: %lu\n", image->nr_segments);
++
++	for (i = 0; i < image->nr_segments; i++) {
++		pr_debug("\t    segment[%lu]: %016lx - %016lx", i,
++			image->segment[i].mem,
++			image->segment[i].mem + image->segment[i].memsz);
++		pr_debug("\t\t0x%lx bytes, %lu pages\n",
++			(unsigned long) image->segment[i].memsz,
++			(unsigned long) image->segment[i].memsz /  PAGE_SIZE);
++	}
++}
++
++/**
++ * machine_kexec_prepare - Initialize kexec
++ *
++ * This function is called from do_kexec_load, when the user has
++ * provided us with an image to be loaded. Its goal is to validate
++ * the image and prepare the control code buffer as needed.
++ * Note that kimage_alloc_init has already been called and the
++ * control buffer has already been allocated.
++ */
++int
++machine_kexec_prepare(struct kimage *image)
++{
++	struct kimage_arch *internal = &image->arch;
++	struct fdt_header fdt = {0};
++	void *control_code_buffer = NULL;
++	int i = 0;
++
++	kexec_image_info(image);
++
++	if (image->type == KEXEC_TYPE_CRASH) {
++		pr_warn("Loading a crash kernel is unsupported for now.\n");
++		return -EINVAL;
++	}
++
++	/* Find the Flattened Device Tree and save its physical address */
++	for (i = 0; i < image->nr_segments; i++) {
++		if (image->segment[i].memsz <= sizeof(fdt))
++			continue;
++
++		if (copy_from_user(&fdt, image->segment[i].buf, sizeof(fdt)))
++			continue;
++
++		if (fdt_check_header(&fdt))
++			continue;
++
++		internal->fdt_addr = (unsigned long) image->segment[i].mem;
++		break;
++	}
++
++	if (!internal->fdt_addr) {
++		pr_err("Device tree not included in the provided image\n");
++		return -EINVAL;
++	}
++
++	/* Copy the assembler code for relocation to the control page */
++	control_code_buffer = page_address(image->control_code_page);
++	memcpy(control_code_buffer, riscv_kexec_relocate,
++		riscv_kexec_relocate_size);
++
++	/* Mark the control page executable */
++	set_memory_x((unsigned long) control_code_buffer, 1);
++
++#ifdef CONFIG_SMP
++	/*
++	 * Make sure other harts see the copied data
++	 * if they try to read the control buffer
++	 */
++	smp_wmb();
++#endif
++
++	return 0;
++}
++
++
++/**
++ * machine_kexec_cleanup - Cleanup any leftovers from
++ *			   machine_kexec_prepare
++ *
++ * This function is called by kimage_free to handle any arch-specific
++ * allocations done on machine_kexec_prepare. Since we didn't do any
++ * allocations there, this is just an empty function. Note that the
++ * control buffer is freed by kimage_free.
++ */
++void
++machine_kexec_cleanup(struct kimage *image)
++{
++}
++
++
++/*
++ * machine_shutdown - Prepare for a kexec reboot
++ *
++ * This function is called by kernel_kexec just before machine_kexec
++ * below. Its goal is to prepare the rest of the system (the other
++ * harts and possibly devices etc) for a kexec reboot.
++ */
++void machine_shutdown(void)
++{
++#if defined(CONFIG_HOTPLUG_CPU) && (CONFIG_SMP)
++	cpumask_t mask;
++	int cpu;
++#endif
++	/*
++	 * No more interrupts on this hart
++	 * until we are back up.
++	 */
++	local_irq_disable();
++
++#if defined(CONFIG_HOTPLUG_CPU) && (CONFIG_SMP)
++	cpumask_copy(&mask, cpu_online_mask);
++	cpumask_clear_cpu(smp_processor_id(), &mask);
++
++	for_each_cpu(cpu, &mask)
++		cpu_down(cpu);
++#endif
++}
++
++/**
++ * machine_crash_shutdown - Prepare to kexec after a kernel crash
++ *
++ * This function is called by crash_kexec just before machine_kexec
++ * below and its goal is similar to machine_shutdown, but in case of
++ * a kernel crash. Since we don't handle such cases yet, this function
++ * is empty.
++ */
++void
++machine_crash_shutdown(struct pt_regs *regs)
++{
++}
++
++/**
++ * machine_kexec - Jump to the loaded kimage
++ *
++ * This function is called by kernel_kexec which is called by the
++ * reboot system call when the reboot cmd is LINUX_REBOOT_CMD_KEXEC,
++ * or by crash_kernel which is called by the kernel's arch-specific
++ * trap handler in case of a kernel panic. It's the final stage of
++ * the kexec process where the pre-loaded kimage is ready to be
++ * executed. We assume at this point that all other harts are
++ * suspended and this hart will be the new boot hart.
++ */
++void __noreturn
++machine_kexec(struct kimage *image)
++{
++	struct kimage_arch *internal = &image->arch;
++	unsigned long jump_addr = (unsigned long) image->start;
++	unsigned long first_ind_entry = (unsigned long) &image->head;
++	unsigned long this_hart_id = raw_smp_processor_id();
++	unsigned long fdt_addr = internal->fdt_addr;
++	void *control_code_buffer = page_address(image->control_code_page);
++	riscv_kexec_do_relocate do_relocate = control_code_buffer;
++
++	pr_notice("Will call new kernel at %08lx from hart id %lx\n",
++		  jump_addr, this_hart_id);
++	pr_notice("FDT image at %08lx\n", fdt_addr);
++
++	/* Make sure the relocation code is visible to the hart */
++	local_flush_icache_all();
++
++	/* Jump to the relocation code */
++	pr_notice("Bye...\n");
++	do_relocate(first_ind_entry, jump_addr, fdt_addr,
++		    this_hart_id, va_pa_offset);
++	unreachable();
++}
+diff --git a/include/uapi/linux/kexec.h b/include/uapi/linux/kexec.h
+index 05669c87a..778dc191c 100644
+--- a/include/uapi/linux/kexec.h
++++ b/include/uapi/linux/kexec.h
+@@ -42,6 +42,7 @@
+ #define KEXEC_ARCH_MIPS_LE (10 << 16)
+ #define KEXEC_ARCH_MIPS    ( 8 << 16)
+ #define KEXEC_ARCH_AARCH64 (183 << 16)
++#define KEXEC_ARCH_RISCV   (243 << 16)
+ 
+ /* The artificial cap on the number of segments passed to kexec_load. */
+ #define KEXEC_SEGMENT_MAX 16
+-- 
+2.24.1
+
 
