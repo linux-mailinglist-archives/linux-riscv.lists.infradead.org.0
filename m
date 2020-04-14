@@ -2,79 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2F101A72B6
-	for <lists+linux-riscv@lfdr.de>; Tue, 14 Apr 2020 06:43:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 487C41A72B7
+	for <lists+linux-riscv@lfdr.de>; Tue, 14 Apr 2020 06:43:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RDWZn+DpYQgWwrjAr0UugWPWNt6EI0s2QcDRiCa9pm8=; b=HPOZIDYq4uuWZO
-	Ikl6+SDo71RfZASweZ6cn+LT6ISgCkMGaThAQGZ3Qg2OAM9dEF34C3Sv2yXpalET2WTWQEGBNzMC6
-	4Ky9qLeqfDll/TLXwPgWTKSM02gf7bTVWyZXz+i6YxORk2zLo4z59QqaoGW8JPG3KUklPmZ/BzCi4
-	0hhI5ldOYBvV3CCoVlatEZU38oxH7juH2bnc9feSwPdfNCSWPk51RnB+ghTEquR7oGcLBB63kTWyT
-	s5fhwK3iXd7FzlXfTRSKMi42/zkBl0424VJfZvN5Kr2OiSyjft6tVCqbWN4fbCKR+z3nkboZxqrB3
-	J9jcntHV+I5SSFUKDFsQ==;
+	List-Owner; bh=6JfbJtHABBXHE6qR413llpn3Hhg+bqqtz4ITGGvoBrU=; b=s1f+LCBkrwrDfk
+	DhjeNtzpONwdLhMS8VgP1Hong1p6eZFZIKe8UzyqblsUzgpyXsdEgT7VDkcStwLPZ/XLHY+ThzlSX
+	pE+JTv/2t/kXorKgtpZIuUkXBe9PsPt+WP26rQ34Ry4RZ1IYZNxSVk5Osnt80YAI2UihB2vsCFnnv
+	aDlXFeF0Gc60V7SrjzFgG6SBZA9w5U9NSoLhIc8+0zA34SGWYVDF5EPb72T4BdIGwdxqCBygQ0i3E
+	YZkp2HTOdQYj76xgLMVJ/jrTG/ctzYbtA1dOyhvOalaIdJ+r5ixXXHjO7DIM7+7BJWSdeALLZQYoi
+	XBQNRxJGBUQi8+cglEZg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jODQB-00079D-P5; Tue, 14 Apr 2020 04:43:39 +0000
+	id 1jODQ9-00076a-RG; Tue, 14 Apr 2020 04:43:37 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jODQ5-00071l-CM
+ id 1jODQ5-00072H-E7
  for linux-riscv@lists.infradead.org; Tue, 14 Apr 2020 04:43:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
  t=1586839414; x=1618375414;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Njx1pS3jquAeWUtvIn121j0sJ97hwflk1//V1bPhxzY=;
- b=Ta5DVYtekEZD5vUBCXmk2FwPpOnqvYmezLMg/pwS+Mc45/YvSv6GkBPl
- PjSRsFDBr+Km4x9JEQAyowe3H/oLxW8kG7maqihmGcJLI+n9KqQ8gRROz
- WuTwRwplh4oPwAMCn7E7Po0G+nem+KBSZHa+oT3UgVJZQBnf20vp2xO2d
- XrlfPi2iVJ3gJNq2FJYWPpd5tol1gAX12trUtGU7xwvIZ5PkLXYvOCyrW
- 2jIAPqCj7lNyzOcYaXtst++7NdY4hOzhCDMtNrxOpJ0pZbyIC6yNtyGzf
- AznKDOKpNZ985l8lDftX24yW+pM/nP+dITW7/hDwNX4f5dLzoybdZJ/08 A==;
-IronPort-SDR: ZKeeut/Khj1IHk1wPWN+meBsJTXJY7m66+Ff3pdtYNbGoywKtkYeSkztTfJQsrINohIDYb3U+y
- QYshA6UtdFgELDgdjXfiG1z671txPVQ3GrYgJAti5UN25y72dv9SUx0apFi2FNf3poAeubH+eu
- 47mBsJZawNJqQShGQ+0fshRp1TaOdSfGDgZsakSsmb5449M/dmr3mOrXfeufvotJvGeZyaDQZV
- n35yiWf/58D32/1oxH5ADhvXS9NWyd0eC41kBWr2LmpdSAGmgrXWwE+hNQgChKnBaOpeSeyeSN
- j+0=
-X-IronPort-AV: E=Sophos;i="5.72,381,1580745600"; d="scan'208";a="139605674"
+ bh=Q6cpFpMWgjzh+DSkjj6zUf2NaqPMK+dE/DiaoecEbIY=;
+ b=dDPuc9UhJvI0qwmtYc4/9ZsmIJuR1JKGtLmKbJPvwzRJM+ebc+ps5KHo
+ fScxNf9DoysT7dkRR709pUThYYmqCqosPWag575jo4CdCETbYgLYZwsuf
+ iPsVcIisi6RucECkYcOUiZrZEGZsNkAIUK7yLHZeditBiyVrePwLB0meD
+ qcIxDipNinEHtR9kE0IEUFVSnviOb5ID/ZLwQlC6D9PJW76dmyXDgYllc
+ LrKnlsS/bKmSCgmA5xzPnYQsJyOWCgl87sSqYoTm1wo/YZ+hTkRafohok
+ rYOPqfC/Nq8mTn2KMdGM0HPYSzmOY1mV3A3x5ZbnxjkQri6j2BFAI3+IG w==;
+IronPort-SDR: LcEvThFTo8sAQV50ajdYf8ADD56TgoeSE9UIwuGvsdUbY0A725EO0i7Gs6JOP6SDR/4Iuu85UE
+ fcj9KLjPCil3zeRl3q+sASzRFY2z/g2Qb5JoYm7GchKpIjOR5PxAAhofozXi2xISQefSmIOS2T
+ OBTbBhv7Gd1+g8k93Jag7DrQ8mEP8fAvVuCTg3OPRJrGZBBwbxDa8AfHcBTiLxFoU4NzYgmF0M
+ 8d79K+71aeBx8Brxbo/uxLB8sVjrPRjy6PZHceQTf65vzbkmOety8jHAB39igf0bPxFzyrIaX+
+ 1s8=
+X-IronPort-AV: E=Sophos;i="5.72,381,1580745600"; d="scan'208";a="139605675"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 14 Apr 2020 12:43:30 +0800
-IronPort-SDR: TOjnJgykLqumGJF+rQkNSAJdpnCgbJcFu3hD+/kwcNa4x/llkuf9ou748sajKjoaCm0RpXgkp3
- SmG081de48UsciQZmO3DQt4zdnhVE3Caowf6bqOgD0uOoBFR5QZ14paqp6aPThYogMFp7ADfGm
- j8doIplP6gBRPtCw3mKFwKVltd7vpjVJGXb1zVjAEsI6bS/UzEdIFnLqfNRc+ZtJ0B9ss8Bhlz
- QlXCNtfUdzR5R7jQ4lOPmHZIqaDLg7RuemydVoisvIKDOSE0stN4ZVsYnJUUmpBDdrgDbSd+OE
- 9UpLIWIJpUKa56AFBfcmte2c
+ by ob1.hgst.iphmx.com with ESMTP; 14 Apr 2020 12:43:31 +0800
+IronPort-SDR: pBj36UGoBa8ladolp4I0LVdEBfMCiiCE3K90yoFitZANrDfzt0Niv1ogNTFW2Fzbq9phhmS6tK
+ eO9bY+oLQlclzEsKLsoFODOqJYRnXp62IPHH5s9PHkT/w5+3UURIHIVj6MPXGA6ySOpHxx9deN
+ C5U+JEWGgQfaR4N9ODIN6w7bpA4Wqlwi1elGXNfZk6Cf9MrIA5L6/NbcIxmhYXxtiehU1yIaXK
+ gDmMZkhfSnBSrXYp1TJ+iXJCsSSkjDV0uTcLqqOJbrn+OFPM9WDZyUvMuEiAWber/Y5OrHMdCH
+ +p9q9Bo3JI70ieTVSaEpRCIa
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2020 21:34:01 -0700
-IronPort-SDR: DvJNdRQYdJz5ElyB22G/9KgBFXGAFBc0aA7ocQhvzUyFsaC+jOe/wWi0gY/DQhnHTsifU50i//
- GDwf4HxDnOZxn1YphKwRLjDAA1m3N+G6bU8gfEQ+gz2B0O7MuD2NH1XrrQOffHVBbE0lUTu/FB
- khWTfcdyscjqYSwpfM6YuuW1YVT3BPQdhgmLtRYe2UikoLsrM2K5/ud3cJp5kAwuft1pMuZ2mQ
- 8dq5vE5Eph6YxOv7cgcnVg7omiGuM8T6zCtjnuZQJszytXHTQyrHJ0Uo/Bw9naw6PcWcTGUUww
- EX4=
+ 13 Apr 2020 21:34:02 -0700
+IronPort-SDR: 2LiaIeh3Np9PAPm4v9SmdHG6hDj9iHs3ok56T0arkn7Xd6FJ5WISqHzQxW2uvpUCWh3NmwXkta
+ 6t90d0ubqqV4cCQYDU7yluOrEcmYwwz+k6z7OOrq9pw0VP3l+CvEUIesvYhTtsGRlU2dztY0Re
+ F7VyE75IPzvut70QB9vUWaJtEYiPdeIPQ1ovfjruCcXqAwFjukbsqbS4cCss/S5kFFof2JcjKz
+ bvKH9O1T6URi8ewwDQXA6xBFDJNL4RCN5BHorLO6jmtsvy93UGd3EwUhHMb0wHae8i0fb3af6m
+ ZCo=
 WDCIronportException: Internal
 Received: from 2768r8lbtd9.hitachigst.global (HELO localhost.hgst.com)
  ([10.84.70.38])
- by uls-op-cesaip02.wdc.com with ESMTP; 13 Apr 2020 21:43:29 -0700
+ by uls-op-cesaip02.wdc.com with ESMTP; 13 Apr 2020 21:43:30 -0700
 From: Damien Le Moal <damien.lemoal@wdc.com>
 To: linux-riscv@lists.infradead.org,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 2/3] riscv: K210: Add a built-in device tree
-Date: Tue, 14 Apr 2020 13:43:25 +0900
-Message-Id: <20200414044326.103884-3-damien.lemoal@wdc.com>
+Subject: [PATCH 3/3] riscv: K210: Update defconfig
+Date: Tue, 14 Apr 2020 13:43:26 +0900
+Message-Id: <20200414044326.103884-4-damien.lemoal@wdc.com>
 X-Mailer: git-send-email 2.25.2
 In-Reply-To: <20200414044326.103884-1-damien.lemoal@wdc.com>
 References: <20200414044326.103884-1-damien.lemoal@wdc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_214333_429457_C83C8C8B 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20200413_214333_516888_543A38AD 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -106,100 +107,60 @@ Cc: Anup Patel <Anup.Patel@wdc.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Palmer Dabbelt <palmerdabbelt@google.com>
+Update the Kendryte K210 default kernel configuration file
+nommu_k210_defconfig to enable builtin DTB by default.
 
-The K210's bootloader does not provide a device tree. Give the ability
-to providea builtin one with the SOC_KENDRYTE_K210_BUILTIN_DTB option.
-If selected, this option result in the definition of a builtin DTB
-entry in the k210 sysctl driver.
-
-If defined, the builtin DTB entry points to the default k210.dts device
-tree file and is keyed with the vendor ID 0x4B5, the arch ID
-0xE59889E6A5A04149 ("Canaan AI" in UTF-8 coded Chinese) and the impl ID
-0x4D41495832303030 ("MAIX200"). These values are reported by the SiPEED
-MAIXDUINO board, the SiPEED MAIX Go board and the SiPEED Dan Dock board.
-
-Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
 Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
 ---
- arch/riscv/Kconfig.socs               | 17 ++++++++++++++++-
- arch/riscv/boot/dts/Makefile          |  2 ++
- arch/riscv/boot/dts/kendryte/Makefile |  4 +++-
- drivers/soc/kendryte/k210-sysctl.c    | 12 ++++++++++++
- 4 files changed, 33 insertions(+), 2 deletions(-)
+ arch/riscv/configs/nommu_k210_defconfig | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
-index 216286db81c9..4b2303ca20b9 100644
---- a/arch/riscv/Kconfig.socs
-+++ b/arch/riscv/Kconfig.socs
-@@ -23,11 +23,26 @@ config SOC_VIRT
- config SOC_KENDRYTE
- 	bool "Kendryte K210 SoC"
- 	depends on !MMU
--	select BUILTIN_DTB
- 	select SERIAL_SIFIVE if TTY
- 	select SERIAL_SIFIVE_CONSOLE if TTY
- 	select SIFIVE_PLIC
- 	help
- 	  This enables support for Kendryte K210 SoC platform hardware.
- 
-+config SOC_KENDRYTE_K210_DTB
-+	def_bool y
-+	depends on SOC_KENDRYTE_K210_DTB_BUILTIN
-+
-+config SOC_KENDRYTE_K210_DTB_BUILTIN
-+	bool "Builtin device tree for the Kendryte K210"
-+	depends on SOC_KENDRYTE
-+	default y
-+	select OF
-+	select BUILTIN_DTB
-+	select SOC_KENDRYTE_K210_DTB
-+	help
-+	  Builds a device tree for the Kendryte K210 into the Linux image.
-+	  This option should be selected if no bootloader is being used.
-+	  If unsure, say Y.
-+
- endmenu
-diff --git a/arch/riscv/boot/dts/Makefile b/arch/riscv/boot/dts/Makefile
-index 557f0b519c8e..ca1f8cbd78c0 100644
---- a/arch/riscv/boot/dts/Makefile
-+++ b/arch/riscv/boot/dts/Makefile
-@@ -1,3 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0
- subdir-y += sifive
- subdir-y += kendryte
-+
-+obj-$(CONFIG_BUILTIN_DTB) := $(addsuffix /, $(subdir-y))
-diff --git a/arch/riscv/boot/dts/kendryte/Makefile b/arch/riscv/boot/dts/kendryte/Makefile
-index 815444e69e89..1a88e616f18e 100644
---- a/arch/riscv/boot/dts/kendryte/Makefile
-+++ b/arch/riscv/boot/dts/kendryte/Makefile
-@@ -1,2 +1,4 @@
- # SPDX-License-Identifier: GPL-2.0
--dtb-$(CONFIG_SOC_KENDRYTE) += k210.dtb
-+dtb-$(CONFIG_SOC_KENDRYTE_K210_DTB) += k210.dtb
-+
-+obj-$(CONFIG_SOC_KENDRYTE_K210_DTB_BUILTIN) += $(addsuffix .o, $(dtb-y))
-diff --git a/drivers/soc/kendryte/k210-sysctl.c b/drivers/soc/kendryte/k210-sysctl.c
-index 4608fbca20e1..707019223dd8 100644
---- a/drivers/soc/kendryte/k210-sysctl.c
-+++ b/drivers/soc/kendryte/k210-sysctl.c
-@@ -246,3 +246,15 @@ static void __init k210_soc_early_init(const void *fdt)
- 	iounmap(regs);
- }
- SOC_EARLY_INIT_DECLARE(generic_k210, "kendryte,k210", k210_soc_early_init);
-+
-+#ifdef CONFIG_SOC_KENDRYTE_K210_DTB_BUILTIN
-+/*
-+ * Generic entry for the default k210.dtb embedded DTB for boards with:
-+ *   - Vendor ID: 0x4B5
-+ *   - Arch ID: 0xE59889E6A5A04149 (= "Canaan AI" in UTF-8 encoded Chinese)
-+ *   - Impl ID:	0x4D41495832303030 (= "MAIX2000")
-+ * These values are reported by the SiPEED MAXDUINO, SiPEED MAIX GO and
-+ * SiPEED Dan dock boards.
-+ */
-+SOC_BUILTIN_DTB_DECLARE(k210, 0x4B5, 0xE59889E6A5A04149, 0x4D41495832303030);
-+#endif
+diff --git a/arch/riscv/configs/nommu_k210_defconfig b/arch/riscv/configs/nommu_k210_defconfig
+index 632aa2f95e57..b48138e329ea 100644
+--- a/arch/riscv/configs/nommu_k210_defconfig
++++ b/arch/riscv/configs/nommu_k210_defconfig
+@@ -2,14 +2,12 @@
+ CONFIG_LOG_BUF_SHIFT=15
+ CONFIG_PRINTK_SAFE_LOG_BUF_SHIFT=12
+ CONFIG_BLK_DEV_INITRD=y
+-CONFIG_INITRAMFS_SOURCE=""
+ CONFIG_INITRAMFS_FORCE=y
+ # CONFIG_RD_BZIP2 is not set
+ # CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+-# CONFIG_BOOT_CONFIG is not set
+ CONFIG_CC_OPTIMIZE_FOR_SIZE=y
+ # CONFIG_SYSFS_SYSCALL is not set
+ # CONFIG_FHANDLE is not set
+@@ -35,8 +33,6 @@ CONFIG_SMP=y
+ CONFIG_NR_CPUS=2
+ CONFIG_CMDLINE="earlycon console=ttySIF0"
+ CONFIG_CMDLINE_FORCE=y
+-CONFIG_USE_BUILTIN_DTB=y
+-CONFIG_BUILTIN_DTB_SOURCE="kendryte/k210"
+ # CONFIG_BLOCK is not set
+ CONFIG_BINFMT_FLAT=y
+ # CONFIG_COREDUMP is not set
+@@ -49,8 +45,8 @@ CONFIG_DEVTMPFS_MOUNT=y
+ # CONFIG_SERIO is not set
+ # CONFIG_LEGACY_PTYS is not set
+ # CONFIG_LDISC_AUTOLOAD is not set
+-# CONFIG_DEVMEM is not set
+ # CONFIG_HW_RANDOM is not set
++# CONFIG_DEVMEM is not set
+ # CONFIG_HWMON is not set
+ # CONFIG_VGA_CONSOLE is not set
+ # CONFIG_HID is not set
+@@ -62,6 +58,7 @@ CONFIG_DEVTMPFS_MOUNT=y
+ CONFIG_LSM="[]"
+ CONFIG_PRINTK_TIME=y
+ # CONFIG_DEBUG_MISC is not set
++CONFIG_PANIC_ON_OOPS=y
+ # CONFIG_SCHED_DEBUG is not set
+ # CONFIG_RCU_TRACE is not set
+ # CONFIG_FTRACE is not set
 -- 
 2.25.2
 
