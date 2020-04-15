@@ -2,76 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31AE51AB217
-	for <lists+linux-riscv@lfdr.de>; Wed, 15 Apr 2020 21:54:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4842F1AB21B
+	for <lists+linux-riscv@lfdr.de>; Wed, 15 Apr 2020 21:55:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2uGqdcx6YILRVSAwfgDsYPFRNtG8sQ3iocQr323HHY=; b=KbWqPvUM5hAWUv
-	TYodDj42FBYE6g+guGqpmb8FwV0joleGIu2fwn3MaapKNVuYnwfymLYhDxFzPHdjuM26bjiJ6INvZ
-	WwjCiDNqbEaEUfxY7q5AV48fbuW9SdyiPj1l5NnyI29/mVUi14p2EkFOUZwF0qcYEUplC5BLytnUk
-	JPGTjiXGZKwndW1lkIsyThdtXtcFeyMrH7qL0PT/6xFoMQyZALMQKjzYiaaDPdC6pVD1cbyl6Oh0b
-	CnROxu5FW0r/ZLyfFmkjj05dXd3K1dIPAXwTzlq4VwNK0/X40e9GqATC3A5bcI1YXMrjMfhbEbOwQ
-	VQttsdoSzgq9yfL5h8EQ==;
+	List-Owner; bh=goyVmJe+J57iQdmkUJbsbckf52hUGMFdwPN6KGpPCvA=; b=eKJz9O7Ik/0rkz
+	wUVCPwKgQo/QdG5VwRvah+trZhWurIzjopYuInYjUvnwDsjge12xONi8uWdbin4WOZ0mhc44MESCt
+	bYcq2KOMnzN894S6S4VBVxzXFCaeVtCj6oXy1l7+lQ6MiG5el14nGvCarrU33uqyBb3/gGiB8VSFo
+	5xnXHY9hEemw12Oey7siAMAHv7iwEgcO6v1Vx2l4bICd38aDuTSMv6xUS4IKtye3Egx93Tv93Ccrj
+	nAesIGf6F2tTZXulSHxIfEwW0UtZESRD1WqvjhcbXiWWxGq9wWxaGXp5qz1Y5iySfP/p0TgjPJ4hq
+	gvajIOsmDY/FHuyqoPMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOo7T-0007Xg-OD; Wed, 15 Apr 2020 19:54:47 +0000
+	id 1jOo8B-00028B-1z; Wed, 15 Apr 2020 19:55:31 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOo7Q-0007WM-MX; Wed, 15 Apr 2020 19:54:46 +0000
+ id 1jOo7S-0007WM-HN; Wed, 15 Apr 2020 19:54:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1586980484; x=1618516484;
+ t=1586980486; x=1618516486;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Djqlg8Cv1gfYTZdwhPlUmPWsMdIBfQD89t54SYqYujA=;
- b=BzmRUYqEYLf0iiCWLIJfg7euvXJPMPVC4QVXxp6Ry/IvFAiG2kn5cyAv
- 9FBBpb3udxWNVxyBdbNq+UZqkV5dg10Q1wqPKIzxnDVEExojZSeqJr7hD
- ojx1XA0MOK9vC/L4KPgfBweFUbknEX1ZyO7oMoAp7f956MeNuZHjrmdi9
- EXuPPy3JHZ6j5zTij9/ll92b1LJ+uZ5hm3sffFuU9pF2+4i9H1zdXjstQ
- 3LWzStAGnuVyWo7hnC/DsVfPirqnUpvsVJzMfXoo3JkTre7ucx1B91Yqr
- 7nmaV+b6DhckjSzM/YseNkMKuiYKDTVHszUG5+82P6BGcjMF56HerGX2S A==;
-IronPort-SDR: 3dC3dQPENfpaw4wsp9D8yKNGNeLflUUS2jIBOFBvapdTPI9EFN1VJ97RgZV+fXC0F88X2HGtZY
- J5foz9GTI4uOM+qq1G21SOerZDYjTOqIbiUeGSNEOEO/WJeVyeESvPXGFaBU4dc+OLfPOv67qd
- YAyqXLob6umsZ8yvPf15bz5OvTAWkeEiCG96APYmguEK1/laoiq5MNq7pGiuRWVBMZvpJEknfP
- jpTxHL7L9ksQc78liR/+X85cSmUWknXceea44I0M5EYDxuwjoGQ80Z497pLRgioX1t5Iueqvxb
- KJ8=
-X-IronPort-AV: E=Sophos;i="5.72,388,1580745600"; d="scan'208";a="136848622"
+ bh=qT9c7eXt7ksLkS8LTzuMlCHOyGGyAUacpIVqI65fctQ=;
+ b=SKJk+u5OwhWxxCvwwISVxkXMiaNQ6beU7M2vsvT6FVgWFqa6HH5aHgyE
+ 9DYDgGnvNzSHID7WEkUuaPQjpnWyP/lQ5MFN6P3HFYsI1GvHcv6xWnl8n
+ no9ERQL51Em7aHxI/dtWaHUkAHBpEfBPHciaVRny0XO4bBCF8GVpXp0OY
+ L2/U0amNhtHa/y6CmeL2UI3fhYFGvEFANcTkeSUMhzr/fVbTYkZ1DlYIn
+ YyuuquW+yZYQynKtWjk1sTTDey/EmtIOEPls2NP1rdKpZMKFu+6VaVQiv
+ Hb0/zXAJCeKioWZCmDPCWTq9POvV//BuGTtpNuZLjo/9pKYTUcT5G3tjc Q==;
+IronPort-SDR: 9wVKyrLUShmzEjfkxIlXfnOBLZJHEFy1zTQdFHpk9wxhMv7drlPSA4BRFLNEQUERhhd3mXwQ70
+ vv7b1AyE9isHKpNYHjlfFTBq9XcqICYItOVfcwUo0VsZg+wvQMiar1jTt69iJyU+YWjMZhgefy
+ CAU93LFQdPpneIPTeT0NB/R2hBtLb6rgik3RhJd1+zrsX7yvbixANp1Tfvdx8uuDhuGw9LA130
+ KanGJ6YxV/5MTjTqZwdIKkPHEa2cy/YpY5S+pdFx6PWiJKRp7Y5AhayNAJ9N6E6Cy5mk3UZYjs
+ 25Q=
+X-IronPort-AV: E=Sophos;i="5.72,388,1580745600"; d="scan'208";a="136848623"
 Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 16 Apr 2020 03:54:40 +0800
-IronPort-SDR: oAWTmSe3ER941Q3FBhJeUx7fdXXskrbOgaEBxFKA5XSB4H2TqzVGKj5WbOOqW/5f5f0DQ7xH2m
- lD/SUXu5X0+Pv6V6nHhnzwl/MYTNT70ih0SYWSSdwC0/rveCIROe2uYhb2TBdv7enbFgzZn5Ck
- 6oOrg2lu75tcpGc91lDlmjcoMzXftexoJJzLrA7ADH5fyACpVlwWAwUdsmFX6IV7X6QylM5j2h
- yqgxBHhxQfBcccErOC5gkMwnEtfdZ8N2fcXudAyG2JLFLoWHcOK25UWNwwV3W9wZQ5O5bphf7t
- fKqYMJn0lgvXPHXTT0H2sVR4
+ by ob1.hgst.iphmx.com with ESMTP; 16 Apr 2020 03:54:41 +0800
+IronPort-SDR: xqHQ9saiQSRdtdSVSrd33cvHxJtOuGRzv7RcooHw6fN8Dp/xMCclaWNgSG+NEG8W0ufJbmoQHy
+ N++VfpdlZktkOwAcH/40ef4plk89cg95J9culC05PEMb3abE93vbySOju9riXZzX1aogUNqfmx
+ 1J48Wj+jld7N7n1sMYUZz6Lc4YL3oocnHVZ+C+3O7g2MpnOfbbOTwdDmBbn//vHGDeEjjiLN+j
+ PwR37VsaAtGEFA6WkpL4vrFWu4w9M/gD/EKKnycJaZOgFtXPYTg4wm9K5R54PrQ781SDB6Gd2p
+ /2w/Y1cjr7uNNAVBWwevTb5u
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2020 12:45:08 -0700
-IronPort-SDR: nSxPAvAlQJjzhHxPbWNQxGt8iiqTRn/CFCJkP1IW2hN5kyO5x8A0nRolmARO8ejzgeKfne+XP+
- YhJ4lrEiUZ37oaoV0GyXFhQYDJ03SuhpCh0NrV2VvwhAhUgoNRfuHaBpEE/l/USJX50yxiOqJy
- YTTxdcr6U/EaTqWNrfb+QPwLTSOhaX7knnoFdhHsKeiBV4tKN+5T0zEH4dBF0qLaMALMgKuIbZ
- 7HNCWtfgqizgzP0T4PThCN2aQ7PrhPH4yMg4hhf5fq9zYKTHHBylCByOHlSkTlfb6aJV+U9QcM
- MVE=
+ 15 Apr 2020 12:45:09 -0700
+IronPort-SDR: knJxDpysSdXz1GAUcRumT6u3DQfuJKc6iXGu46uVx6L6yak8+KA0bLmLArXQGY0922X1ngMzDf
+ vQnhFvlOMK4Bvry2PcsKAh2GOXYccYAGxa2yalQ+SUmw8/tqPAan7ZDULyBafUl6HbGby4Cwnb
+ tiolgXLVo+J7AD1a2FBjHkCWFs81lfxedUY5YC+Wjl6qq52YwIvKJVv2/Xu+UR57l/VjRwSBMb
+ rowNC+ZGuUjXkUKTuXO2prpj+3tXkmss1t6HXEnniWbkBOd9jx5mXLEWgLaJqN3QXAem8bXeTX
+ 53w=
 WDCIronportException: Internal
 Received: from 6hj08h2.ad.shared (HELO jedi-01.hgst.com) ([10.86.55.244])
- by uls-op-cesaip02.wdc.com with ESMTP; 15 Apr 2020 12:54:40 -0700
+ by uls-op-cesaip02.wdc.com with ESMTP; 15 Apr 2020 12:54:41 -0700
 From: Atish Patra <atish.patra@wdc.com>
 To: linux-kernel@vger.kernel.org
-Subject: [v3 PATCH 1/5] efi: Move arm-stub to a common file
-Date: Wed, 15 Apr 2020 12:54:18 -0700
-Message-Id: <20200415195422.19866-2-atish.patra@wdc.com>
+Subject: [v3 PATCH 2/5] include: pe.h: Add RISC-V related PE definition
+Date: Wed, 15 Apr 2020 12:54:19 -0700
+Message-Id: <20200415195422.19866-3-atish.patra@wdc.com>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <20200415195422.19866-1-atish.patra@wdc.com>
 References: <20200415195422.19866-1-atish.patra@wdc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200415_125444_834208_CF08146C 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20200415_125446_661488_CB67A2C2 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -109,112 +110,28 @@ Cc: linux-efi@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Most of the arm-stub code is written in an architecture independent manner.
-As a result, RISC-V can reuse most of the arm-stub code.
-
-Rename the arm-stub.c to efi-stub.c so that ARM, ARM64 and RISC-V can use it.
-This patch doesn't introduce any functional changes.
+Define RISC-V related machine types.
 
 Signed-off-by: Atish Patra <atish.patra@wdc.com>
+Reviewed-by: Ard Biesheuvel <ardb@kernel.org>
 ---
- arch/arm/Kconfig                                     |  2 +-
- arch/arm64/Kconfig                                   |  2 +-
- drivers/firmware/efi/Kconfig                         |  4 ++--
- drivers/firmware/efi/libstub/Makefile                | 12 ++++++------
- .../firmware/efi/libstub/{arm-stub.c => efi-stub.c}  |  0
- 5 files changed, 10 insertions(+), 10 deletions(-)
- rename drivers/firmware/efi/libstub/{arm-stub.c => efi-stub.c} (100%)
+ include/linux/pe.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 66a04f6f4775..165987aa5bcd 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -1954,7 +1954,7 @@ config EFI
- 	select UCS2_STRING
- 	select EFI_PARAMS_FROM_FDT
- 	select EFI_STUB
--	select EFI_ARMSTUB
-+	select EFI_GENERIC_STUB
- 	select EFI_RUNTIME_WRAPPERS
- 	---help---
- 	  This option provides support for runtime services provided
-diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
-index 40fb05d96c60..32d818c5ccda 100644
---- a/arch/arm64/Kconfig
-+++ b/arch/arm64/Kconfig
-@@ -1785,7 +1785,7 @@ config EFI
- 	select EFI_PARAMS_FROM_FDT
- 	select EFI_RUNTIME_WRAPPERS
- 	select EFI_STUB
--	select EFI_ARMSTUB
-+	select EFI_GENERIC_STUB
- 	default y
- 	help
- 	  This option provides support for runtime services provided
-diff --git a/drivers/firmware/efi/Kconfig b/drivers/firmware/efi/Kconfig
-index 613828d3f106..2a2b2b96a1dc 100644
---- a/drivers/firmware/efi/Kconfig
-+++ b/drivers/firmware/efi/Kconfig
-@@ -106,12 +106,12 @@ config EFI_PARAMS_FROM_FDT
- config EFI_RUNTIME_WRAPPERS
- 	bool
- 
--config EFI_ARMSTUB
-+config EFI_GENERIC_STUB
- 	bool
- 
- config EFI_ARMSTUB_DTB_LOADER
- 	bool "Enable the DTB loader"
--	depends on EFI_ARMSTUB
-+	depends on EFI_GENERIC_STUB
- 	default y
- 	help
- 	  Select this config option to add support for the dtb= command
-diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
-index 2dbe4394f818..2b4e09bf987c 100644
---- a/drivers/firmware/efi/libstub/Makefile
-+++ b/drivers/firmware/efi/libstub/Makefile
-@@ -23,7 +23,7 @@ cflags-$(CONFIG_ARM)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- 				   -fno-builtin -fpic \
- 				   $(call cc-option,-mno-single-pic-base)
- 
--cflags-$(CONFIG_EFI_ARMSTUB)	+= -I$(srctree)/scripts/dtc/libfdt
-+cflags-$(CONFIG_EFI_GENERIC_STUB)	+= -I$(srctree)/scripts/dtc/libfdt
- 
- KBUILD_CFLAGS			:= $(cflags-y) -DDISABLE_BRANCH_PROFILING \
- 				   -include $(srctree)/drivers/firmware/efi/libstub/hidden.h \
-@@ -46,13 +46,13 @@ lib-y				:= efi-stub-helper.o gop.o secureboot.o tpm.o \
- 				   alignedmem.o relocate.o
- 
- # include the stub's generic dependencies from lib/ when building for ARM/arm64
--arm-deps-y := fdt_rw.c fdt_ro.c fdt_wip.c fdt.c fdt_empty_tree.c fdt_sw.c
-+efi-deps-y := fdt_rw.c fdt_ro.c fdt_wip.c fdt.c fdt_empty_tree.c fdt_sw.c
- 
- $(obj)/lib-%.o: $(srctree)/lib/%.c FORCE
- 	$(call if_changed_rule,cc_o_c)
- 
--lib-$(CONFIG_EFI_ARMSTUB)	+= arm-stub.o fdt.o string.o \
--				   $(patsubst %.c,lib-%.o,$(arm-deps-y))
-+lib-$(CONFIG_EFI_GENERIC_STUB)		+= efi-stub.o fdt.o string.o \
-+				   $(patsubst %.c,lib-%.o,$(efi-deps-y))
- 
- lib-$(CONFIG_ARM)		+= arm32-stub.o
- lib-$(CONFIG_ARM64)		+= arm64-stub.o
-@@ -74,8 +74,8 @@ CFLAGS_arm64-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- # a verification pass to see if any absolute relocations exist in any of the
- # object files.
- #
--extra-$(CONFIG_EFI_ARMSTUB)	:= $(lib-y)
--lib-$(CONFIG_EFI_ARMSTUB)	:= $(patsubst %.o,%.stub.o,$(lib-y))
-+extra-$(CONFIG_EFI_GENERIC_STUB)	:= $(lib-y)
-+lib-$(CONFIG_EFI_GENERIC_STUB)	:= $(patsubst %.o,%.stub.o,$(lib-y))
- 
- STUBCOPY_FLAGS-$(CONFIG_ARM64)	+= --prefix-alloc-sections=.init \
- 				   --prefix-symbols=__efistub_
-diff --git a/drivers/firmware/efi/libstub/arm-stub.c b/drivers/firmware/efi/libstub/efi-stub.c
-similarity index 100%
-rename from drivers/firmware/efi/libstub/arm-stub.c
-rename to drivers/firmware/efi/libstub/efi-stub.c
+diff --git a/include/linux/pe.h b/include/linux/pe.h
+index 8ad71d763a77..daf09ffffe38 100644
+--- a/include/linux/pe.h
++++ b/include/linux/pe.h
+@@ -55,6 +55,9 @@
+ #define	IMAGE_FILE_MACHINE_POWERPC	0x01f0
+ #define	IMAGE_FILE_MACHINE_POWERPCFP	0x01f1
+ #define	IMAGE_FILE_MACHINE_R4000	0x0166
++#define	IMAGE_FILE_MACHINE_RISCV32	0x5032
++#define	IMAGE_FILE_MACHINE_RISCV64	0x5064
++#define	IMAGE_FILE_MACHINE_RISCV128	0x5128
+ #define	IMAGE_FILE_MACHINE_SH3		0x01a2
+ #define	IMAGE_FILE_MACHINE_SH3DSP	0x01a3
+ #define	IMAGE_FILE_MACHINE_SH3E		0x01a4
 -- 
 2.24.0
 
