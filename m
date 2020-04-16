@@ -2,77 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 553CD1AC651
-	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 16:38:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B8BE1AD02A
+	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 21:12:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Lr+ToSK/mNppvSY7Aze/38BkhDtXW9HYWseMl+TcpEc=; b=on9KL3GeP8yJuhcIcW7hDF4IZ
-	SXSZXWNYru3I1ugVCwbAuIf+2zc6HRIUFBPesUoa8KeG3CDzVdc0x/TZ4A0n9e4rNnJoy9FiTWGrV
-	Gy19P8tnCF9aQwNPdkKjNfOqd2amaUaxWNH0lqYInBYxmQIhzS0qmTa3U68rQ1HTWQfWSgHV9CORL
-	xOpuMOvx3ix1f3kZVRkoCAdNTk8rOvV+iyp/GXtXCz8jP7zOTu0UFkAxxSvmdn6+d5rz0jR6YM7Sm
-	5Y7Xm+HRLYuo9PdiDPYnDdy5w2T+anMh2ilqVdm/VAiUsHXIRVvOq05TVhnSCn+QW2a+uML6rKOb8
-	3mlZoXbaA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=8isCzhDtgEMidCzVcVcieXb42R1qlOmhDYjuQQ4xGPM=; b=Np+bGJzLhgrZqp
+	Mduxm/tGbavB2Rgpejlb2Mvjdi+gDShQ0qu2i+ggUFCeK8gA/wq7aNCxBh8pFvH1/qjapiSNtnrzm
+	gXtJzzOT9KyA2pGDtMw4/jA0f6f5rJlfQHgCwoIGL12MDuLwrr/Hu9riTPRYLLVYws+qfWIGaRkak
+	8W+xDTiDlPvzsVFWJyaRwxofECdjIvKaapq6d90bL8lAX943dwfwneCvd4CSkiINFtvqwZBksoPao
+	TG4moKYtXPNpSN1zZWG6aKukLwke8nUxFSm7lyXOebAjtwMBPi5KZxvPu2jtskHAEYpl7V00s1zn2
+	VR7ya/VCRZVfZRX7m2Sg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jP5en-0001Cu-LT; Thu, 16 Apr 2020 14:38:21 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jP9vu-0004Hd-GI; Thu, 16 Apr 2020 19:12:18 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jP5eW-0000yq-4Z; Thu, 16 Apr 2020 14:38:05 +0000
-Received: from mail-qt1-f176.google.com (mail-qt1-f176.google.com
- [209.85.160.176])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A8FBA22242;
- Thu, 16 Apr 2020 14:38:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587047883;
- bh=MMYlJuOL0lJfSjjO9OZrF5NfvXGQobqN9Rg04mTNFAM=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=UpLjGQfNJ7AhEjZREeHuVboKWCCQCByhNFkhI3WqLPo8Mlcf5oIw7jZd/2OdH9yBT
- aIZAbAKEnJu3xdtXVBzL/qPq3GoSs/S1q0m4B9Y5XFUKpQPqq24X4l78b+Pj+tLnJg
- NtrdiAaH0zhwyAYQB4MpxL0IotfCh/UB+NTCxFbM=
-Received: by mail-qt1-f176.google.com with SMTP id b10so16495324qtt.9;
- Thu, 16 Apr 2020 07:38:03 -0700 (PDT)
-X-Gm-Message-State: AGi0PuZRQRpdtjVxSG/WcnWoZdy9B0cECg2uyMQoTWvOfTS2/Inp0gjU
- T1Oqak5zz79+3Ymr7xU5yrb52en+pdvZHIIshQ==
-X-Google-Smtp-Source: APiQypKfVD+tFYP8p52n1yv1KvQa1nwC0OwG10Vnv04PQ+j0umFoj6sJCylT4GddENC8rGvDyZyW05FDoL7hFDARgK8=
-X-Received: by 2002:ac8:39e5:: with SMTP id v92mr26657152qte.224.1587047882719; 
- Thu, 16 Apr 2020 07:38:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200416005549.9683-1-robh@kernel.org>
- <20200416124359.GB5785@ravnborg.org>
-In-Reply-To: <20200416124359.GB5785@ravnborg.org>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 16 Apr 2020 09:37:50 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqKYTRh-cgMQSD=DHS2aud9TnLjKepqd9z0F9Wj2oe=jDg@mail.gmail.com>
-Message-ID: <CAL_JsqKYTRh-cgMQSD=DHS2aud9TnLjKepqd9z0F9Wj2oe=jDg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: Clean-up schema indentation formatting
-To: Sam Ravnborg <sam@ravnborg.org>
-Content-Type: text/plain; charset="UTF-8"
+ id 1jP9vp-0004H2-Tu
+ for linux-riscv@lists.infradead.org; Thu, 16 Apr 2020 19:12:16 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id cl8so1813403pjb.3
+ for <linux-riscv@lists.infradead.org>; Thu, 16 Apr 2020 12:12:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8isCzhDtgEMidCzVcVcieXb42R1qlOmhDYjuQQ4xGPM=;
+ b=gci/aD/YroS0ZeGRF0CR4C8D3NixO9qofN/7pQ0Hwk1sYzVKLnPPXUnblD1Gpc+IM7
+ aRqV8V/jxqlY1f+Hvz62yBfaYBQRA4GQlKjTLFmPQC7lZdDHCAHbBSnMDSioJ8/yDmze
+ HGlZ2RhDIeRaWzGWwsVqRT51rFwFWONvy+zqgJt1QZwMc9GgZ8YgaGaOBiLVjekm4Ihe
+ 5wUXwTJ7xdE5c0ScC3DKp4F6Kh312vj6xIIigqdhtc4o+yx17OcvLdz/wNTiaydh/hm4
+ fEHtM8xgoREyDuTQzGO9ChdNZY7TU9yl0xA+k5uQi6wFEUOdjHzEPp7Rd41A5p13gQh7
+ JTiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=8isCzhDtgEMidCzVcVcieXb42R1qlOmhDYjuQQ4xGPM=;
+ b=m/2k3SoCqbMeJlh6Ewpk+XLR6VgYTY9ZTv8nua0462jarTlJEUrJvQ6HQjKUd0Unpb
+ +GwPmOD+dj6KmNzQHKSdVpb8nr4+DQJteoYlNLwzuii9hXKK+1XBRWtY+gQcX5uebYwv
+ pSFTzisTAUS34xVp7CxohVfDE0/JVNzraj1oyGXVnPbLCrEgFCKMm7TgJ1cmnCNNqizt
+ QoiFMJaTOY0P5TkCX6QAsgA5/8Nc4xAARHr6iZXLDgF/P3raMdvWtol2c/NnCyPb6kkg
+ CXt8WJ24v4sJfzPMkIF809DIib3PjNaM5zLwH0KpVKdlUQjwiKbW2uTyRCsrRZ41CT44
+ ontw==
+X-Gm-Message-State: AGi0Pub6eIgITmtEI//AWUjWLc6DGp8VKvYOSHLP830nT8fSEeEdYK+j
+ wxdGHGbF49jYKvimrerJIZfoZA==
+X-Google-Smtp-Source: APiQypLkajFbxmO74SIGOJP5GgpNv+oAo4IL/RxeIXMWZ+KLOdF+0TR06Z2B66kakx2ZbQ/9Yi+6+A==
+X-Received: by 2002:a17:90a:2004:: with SMTP id
+ n4mr7008446pjc.190.1587064331839; 
+ Thu, 16 Apr 2020 12:12:11 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id q97sm3505687pjb.7.2020.04.16.12.12.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Apr 2020 12:12:11 -0700 (PDT)
+Date: Thu, 16 Apr 2020 12:12:11 -0700 (PDT)
+X-Google-Original-Date: Thu, 16 Apr 2020 12:12:08 PDT (-0700)
+Subject: Re: [PATCH v2 4/5] riscv: Use the XML target descriptions to report 3
+ system registers
+In-Reply-To: <1585668191-16287-5-git-send-email-vincent.chen@sifive.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: vincent.chen@sifive.com
+Message-ID: <mhng-062ce9f5-ddff-43e4-8fc9-1ebaeead969c@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200416_073804_224826_895FBEB1 
-X-CRM114-Status: GOOD (  29.49  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200416_121214_027589_16611B25 
+X-CRM114-Status: GOOD (  20.49  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:1043 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,176 +96,239 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Linux PWM List <linux-pwm@vger.kernel.org>,
- "open list:IIO SUBSYSTEM AND DRIVERS" <linux-iio@vger.kernel.org>,
- PCI <linux-pci@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, Pavel Machek <pavel@ucw.cz>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Fabio Estevam <festevam@gmail.com>, linux-clk <linux-clk@vger.kernel.org>,
- Linux LED Subsystem <linux-leds@vger.kernel.org>,
- "open list:REAL TIME CLOCK \(RTC\) SUBSYSTEM" <linux-rtc@vger.kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- Linux Input <linux-input@vger.kernel.org>, Guenter Roeck <linux@roeck-us.net>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- devicetree@vger.kernel.org, Alexandre Torgue <alexandre.torgue@st.com>,
- Linux-ALSA <alsa-devel@alsa-project.org>, Maxime Ripard <mripard@kernel.org>,
- linux-can@vger.kernel.org,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Mark Brown <broonie@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Linux HWMON List <linux-hwmon@vger.kernel.org>,
- Stephen Boyd <sboyd@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-mmc <linux-mmc@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Amit Kucheria <amit.kucheria@linaro.org>,
- linux-spi <linux-spi@vger.kernel.org>, Vinod Koul <vkoul@kernel.org>,
- netdev <netdev@vger.kernel.org>, Jonathan Cameron <jic23@kernel.org>
+Cc: daniel.thompson@linaro.org, kgdb-bugreport@lists.sourceforge.net,
+ jason.wessel@windriver.com, dianders@chromium.org, vincent.chen@sifive.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Apr 16, 2020 at 7:44 AM Sam Ravnborg <sam@ravnborg.org> wrote:
+On Tue, 31 Mar 2020 08:23:10 PDT (-0700), vincent.chen@sifive.com wrote:
+> The $sstatus, $badaddr, and $scause registers belong to the thread context,
+> so KGDB can obtain their contents from pt_regs in each trap. However, the
+> sequential number of these registers in the gdb register list is far from
+> the general-purpose registers. If riscv port uses the existing method to
+> report these three registers, many trivial registers with sequence numbers
+> in the middle of them will also be packaged to the reply packets. To solve
+> this problem, the riscv port wants to introduce the GDB target description
+> mechanism to customize the reported register list. By the list, the KGDB
+> can ignore the intermediate registers and just reports the general-purpose
+> registers and these three system registers.
 >
-> Hi Rob.
+> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+> ---
+>  arch/riscv/Kconfig               |   1 +
+>  arch/riscv/include/asm/gdb_xml.h | 117 +++++++++++++++++++++++++++++++++++++++
+>  arch/riscv/include/asm/kgdb.h    |   8 ++-
+>  arch/riscv/kernel/kgdb.c         |  14 +++++
+>  4 files changed, 139 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/riscv/include/asm/gdb_xml.h
 >
-> On Wed, Apr 15, 2020 at 07:55:48PM -0500, Rob Herring wrote:
-> > Fix various inconsistencies in schema indentation. Most of these are
-> > list indentation which should be 2 spaces more than the start of the
-> > enclosing keyword. This doesn't matter functionally, but affects running
-> > scripts which do transforms on the schema files.
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index 108794f4aa45..94b6f301007c 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -67,6 +67,7 @@ config RISCV
+>  	select HAVE_COPY_THREAD_TLS
+>  	select HAVE_ARCH_KASAN if MMU && 64BIT
+>  	select HAVE_ARCH_KGDB
+> +	select ARCH_SUPPORTS_GDB_XML
 >
-> Are there any plans to improve the tooling so we get warnigns for this?
-
-I've been experimenting with yamllint some. I haven't figured out how
-to best integrate it in. Probably need to start with something minimal
-and warning free for the tree and then add to it.
-
-There's also yaml-format in the dtschema repo which just reads in and
-writes out a yaml file using ruamel round trip yaml parser. That's
-what I used here.
-
-> Otherwise I am afraid we will see a lot of patches that gets this wrong.
+>  config ARCH_MMAP_RND_BITS_MIN
+>  	default 18 if 64BIT
+> diff --git a/arch/riscv/include/asm/gdb_xml.h b/arch/riscv/include/asm/gdb_xml.h
+> new file mode 100644
+> index 000000000000..1d1459d06a1b
+> --- /dev/null
+> +++ b/arch/riscv/include/asm/gdb_xml.h
+> @@ -0,0 +1,117 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +
+> +#ifndef __ASM_GDB_XML_H_
+> +#define __ASM_GDB_XML_H_
+> +
+> +#define arch_gdb_stub_feature riscv_gdb_stub_feature
+> +static const char riscv_gdb_stub_feature[64] =
+> +			"PacketSize=800;qXfer:features:read+;";
+> +
+> +static const char gdb_xfer_read_target[31] = "qXfer:features:read:target.xml:";
+> +
+> +#ifdef CONFIG_64BIT
+> +static const char gdb_xfer_read_cpuxml[39] =
+> +			"qXfer:features:read:riscv-64bit-cpu.xml";
+> +
+> +static const char riscv_gdb_stub_target_desc[256] =
+> +"l<?xml version=\"1.0\"?>"
+> +"<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
+> +"<target>"
+> +"<xi:include href=\"riscv-64bit-cpu.xml\"/>"
+> +"</target>";
+> +
+> +static const char riscv_gdb_stub_cpuxml[2048] =
+> +"l<?xml version=\"1.0\"?>"
+> +"<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">"
+> +"<feature name=\"org.gnu.gdb.riscv.cpu\">"
+> +"<reg name=\""DBG_REG_ZERO"\" bitsize=\"64\" type=\"int\" regnum=\"0\"/>"
+> +"<reg name=\""DBG_REG_RA"\" bitsize=\"64\" type=\"code_ptr\"/>"
+> +"<reg name=\""DBG_REG_SP"\" bitsize=\"64\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_GP"\" bitsize=\"64\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_TP"\" bitsize=\"64\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_T0"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T1"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T2"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_FP"\" bitsize=\"64\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_S1"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A0"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A1"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A2"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A3"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A4"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A5"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A6"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A7"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S2"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S3"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S4"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S5"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S6"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S7"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S8"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S9"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S10"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S11"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T3"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T4"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T5"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T6"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_EPC"\" bitsize=\"64\" type=\"code_ptr\"/>"
+> +"<reg name=\""DBG_REG_STATUS"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_BADADDR"\" bitsize=\"64\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_CAUSE"\" bitsize=\"64\" type=\"int\"/>"
+> +"</feature>";
+> +#else
+> +static const char gdb_xfer_read_cpuxml[39] =
+> +			"qXfer:features:read:riscv-32bit-cpu.xml";
+> +
+> +static const char riscv_gdb_stub_target_desc[256] =
+> +"l<?xml version=\"1.0\"?>"
+> +"<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
+> +"<target>"
+> +"<xi:include href=\"riscv-32bit-cpu.xml\"/>"
+> +"</target>";
+> +
+> +static const char riscv_gdb_stub_cpuxml[2048] =
+> +"l<?xml version=\"1.0\"?>"
+> +"<!DOCTYPE feature SYSTEM \"gdb-target.dtd\">"
+> +"<feature name=\"org.gnu.gdb.riscv.cpu\">"
+> +"<reg name=\""DBG_REG_ZERO"\" bitsize=\"32\" type=\"int\" regnum=\"0\"/>"
+> +"<reg name=\""DBG_REG_RA"\" bitsize=\"32\" type=\"code_ptr\"/>"
+> +"<reg name=\""DBG_REG_SP"\" bitsize=\"32\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_GP"\" bitsize=\"32\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_TP"\" bitsize=\"32\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_T0"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T1"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T2"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_FP"\" bitsize=\"32\" type=\"data_ptr\"/>"
+> +"<reg name=\""DBG_REG_S1"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A0"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A1"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A2"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A3"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A4"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A5"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A6"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_A7"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S2"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S3"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S4"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S5"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S6"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S7"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S8"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S9"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S10"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_S11"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T3"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T4"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T5"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_T6"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_EPC"\" bitsize=\"32\" type=\"code_ptr\"/>"
+> +"<reg name=\""DBG_REG_STATUS"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_BADADDR"\" bitsize=\"32\" type=\"int\"/>"
+> +"<reg name=\""DBG_REG_CAUSE"\" bitsize=\"32\" type=\"int\"/>"
+> +"</feature>";
+> +#endif
+> +#endif
+> diff --git a/arch/riscv/include/asm/kgdb.h b/arch/riscv/include/asm/kgdb.h
+> index 69bc6a03081d..6c35a853940d 100644
+> --- a/arch/riscv/include/asm/kgdb.h
+> +++ b/arch/riscv/include/asm/kgdb.h
+> @@ -7,7 +7,7 @@
 >
-> As a follow-up patch it would be good if example-schema.yaml
-> could gain some comments about the correct indentions.
-
-Sure, I can do that.
-
+>  #define GDB_SIZEOF_REG sizeof(unsigned long)
 >
-> Some comments in the following.
+> -#define DBG_MAX_REG_NUM (33)
+> +#define DBG_MAX_REG_NUM (36)
+>  #define NUMREGBYTES ((DBG_MAX_REG_NUM) * GDB_SIZEOF_REG)
+>  #define CACHE_FLUSH_IS_SAFE     1
+>  #define BUFMAX                  2048
+> @@ -66,6 +66,9 @@ static inline void arch_kgdb_breakpoint(void)
+>  #define DBG_REG_T5 "t5"
+>  #define DBG_REG_T6 "t6"
+>  #define DBG_REG_EPC "pc"
+> +#define DBG_REG_STATUS "sstatus"
+> +#define DBG_REG_BADADDR "stval"
+> +#define DBG_REG_CAUSE "scause"
 >
-> > diff --git a/Documentation/devicetree/bindings/arm/altera.yaml b/Documentation/devicetree/bindings/arm/altera.yaml
-> > index 49e0362ddc11..b388c5aa7984 100644
-> > --- a/Documentation/devicetree/bindings/arm/altera.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/altera.yaml
-> > @@ -13,8 +13,8 @@ properties:
-> >    compatible:
-> >      items:
-> >        - enum:
-> > -        - altr,socfpga-cyclone5
-> > -        - altr,socfpga-arria5
-> > -        - altr,socfpga-arria10
-> > +          - altr,socfpga-cyclone5
-> > +          - altr,socfpga-arria5
-> > +          - altr,socfpga-arria10
-> >        - const: altr,socfpga
+>  #define DBG_REG_ZERO_OFF 0
+>  #define DBG_REG_RA_OFF 1
+> @@ -103,5 +106,8 @@ static inline void arch_kgdb_breakpoint(void)
+>  #define DBG_REG_STATUS_OFF 33
+>  #define DBG_REG_BADADDR_OFF 34
+>  #define DBG_REG_CAUSE_OFF 35
+> +
+> +#include <asm/gdb_xml.h>
+> +
+>  #endif
+>  #endif
+> diff --git a/arch/riscv/kernel/kgdb.c b/arch/riscv/kernel/kgdb.c
+> index e3b1075c3935..86d891b7ea2c 100644
+> --- a/arch/riscv/kernel/kgdb.c
+> +++ b/arch/riscv/kernel/kgdb.c
+> @@ -7,6 +7,7 @@
+>  #include <linux/irqflags.h>
+>  #include <linux/string.h>
+>  #include <asm/cacheflush.h>
+> +#include <asm/gdb_xml.h>
 >
-> So here "- enum" do not need the extra indent.
-> Is it because this is not a list?
-
-Right. Indentation is 2 more spaces than the parent keyword ignoring
-any hyphen in the parent.
-
-> > diff --git a/Documentation/devicetree/bindings/arm/amlogic/amlogic,meson-gx-ao-secure.yaml b/Documentation/devicetree/bindings/arm/amlogic/amlogic,meson-gx-ao-secure.yaml
-> > index 66213bd95e6e..6cc74523ebfd 100644
-> > --- a/Documentation/devicetree/bindings/arm/amlogic/amlogic,meson-gx-ao-secure.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/amlogic/amlogic,meson-gx-ao-secure.yaml
-> > @@ -25,7 +25,7 @@ select:
-> >
-> >  properties:
-> >    compatible:
-> > -   items:
-> > +    items:
-> >        - const: amlogic,meson-gx-ao-secure
-> >        - const: syscon
+>  enum {
+>  	NOT_KGDB_BREAK = 0,
+> @@ -48,6 +49,9 @@ struct dbg_reg_def_t dbg_reg_def[DBG_MAX_REG_NUM] = {
+>  	{DBG_REG_T5, GDB_SIZEOF_REG, offsetof(struct pt_regs, t5)},
+>  	{DBG_REG_T6, GDB_SIZEOF_REG, offsetof(struct pt_regs, t6)},
+>  	{DBG_REG_EPC, GDB_SIZEOF_REG, offsetof(struct pt_regs, epc)},
+> +	{DBG_REG_STATUS, GDB_SIZEOF_REG, offsetof(struct pt_regs, status)},
+> +	{DBG_REG_BADADDR, GDB_SIZEOF_REG, offsetof(struct pt_regs, badaddr)},
+> +	{DBG_REG_CAUSE, GDB_SIZEOF_REG, offsetof(struct pt_regs, cause)},
+>  };
 >
-> This is something I had expected the tooling to notice.
-> I had expected the two "- const" to be indented with 4 spaces, not two.
-> So there is something I do not understand.
-
-As above, correct indenting is 2 spaces from the parent not counting
-any '-' in the parent, but the '-' counts for indenting the children.
-
-Arguably, this style is inconsistent that sometimes the '-' counts and
-sometimes it doesn't. However, I think this style is better because it
-distinguishes lists vs. dicts more clearly. It's easy to miss the '-'
-when the indentation is the same:
-
-- foo:
-  - bar
-  - baz
-
-- foo:
-    bar
-    baz
-
-Or worse:
-
-- foo:
-  - bar
-    baz
-
-Both styles are valid. It's just a tabs vs. spaces debate, and I just
-picked one.
-
-
-> > diff --git a/Documentation/devicetree/bindings/arm/nxp/lpc32xx.yaml b/Documentation/devicetree/bindings/arm/nxp/lpc32xx.yaml
-> > index 07f39d3eee7e..f7f024910e71 100644
-> > --- a/Documentation/devicetree/bindings/arm/nxp/lpc32xx.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/nxp/lpc32xx.yaml
-> > @@ -17,9 +17,8 @@ properties:
-> >            - nxp,lpc3230
-> >            - nxp,lpc3240
-> >        - items:
-> > -        - enum:
-> > -            - ea,ea3250
-> > -            - phytec,phy3250
-> > -        - const: nxp,lpc3250
-> > -
-> > +          - enum:
-> > +              - ea,ea3250
-> > +              - phytec,phy3250
-> > +          - const: nxp,lpc3250
-> >  ...
+>  char *dbg_get_reg(int regno, void *mem, struct pt_regs *regs)
+> @@ -100,6 +104,16 @@ void kgdb_arch_set_pc(struct pt_regs *regs, unsigned long pc)
+>  	regs->epc = pc;
+>  }
 >
-> And here "- enum" receive extra indent.
->
-> I trust you know what you are doing - but I do not get it.
->
-> Some pointers or examples for the correct indention would be great.
+> +void arch_handle_qxfer_pkt(char *remcom_in_buffer, char *remcom_out_buffer)
+> +{
+> +	if (!strncmp(remcom_in_buffer, gdb_xfer_read_target,
+> +		     sizeof(gdb_xfer_read_target)))
+> +		strcpy(remcom_out_buffer, riscv_gdb_stub_target_desc);
+> +	else if (!strncmp(remcom_in_buffer, gdb_xfer_read_cpuxml,
+> +			  sizeof(gdb_xfer_read_cpuxml)))
+> +		strcpy(remcom_out_buffer, riscv_gdb_stub_cpuxml);
+> +}
+> +
+>  static inline void kgdb_arch_update_addr(struct pt_regs *regs,
+>  					 char *remcom_in_buffer)
+>  {
 
-With this patch, the tree is all correct examples. :)
-
-> I cannot review this patch as long as I do not know the rules.
->
-> My request to update example-schema.yaml was one way to teach me.
-> (Some people will say that is difficult/impossible to teach me,
-> but thats another story:-) ).
->
->         Sam
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
