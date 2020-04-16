@@ -2,51 +2,53 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 151431ABACD
-	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 10:07:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 50EC61ABAD2
+	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 10:07:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xu7Pv8nQ5dv8MRAdzhufz837M+bKSkU5LaTJz9xpGgY=; b=mxwMYet8hw8desgi9SIJxUlu7
-	/8B5/2+PI5Pp0k504ip6DPoSqVHsZ0j2UmceinuQ2MazIpwZ3gVXSPllSOXJLtBhrLPQ6H2qfzCKT
-	gXNhputHPOl6EAzmqqywN0nn6/hn0p+UdYPel2KtoJT5T5FfSjEEI2oWHWzu4vPYsaPmVLVefU1Ae
-	y3FkZEjMOryZ4BkvsIVXOmm8jRjadm1iHopA6mIrZNh0tnG7is9RQFAlzO5C68jVAa3W58Kc6MX//
-	ri4A2710jfOQNZQkQW76otc7+ssrY4f3ZJYoPfVF1PZUsEObqRSDtTZ3OQCWAwyx/hNRwJit61Quo
-	cdCQrJk6Q==;
+	 bh=GSl9x+aJzhdFJxvr/awkvz9shxhwDPYjUFJODjlaYWU=; b=m+G+RFrBEpUK45hmWI+xoRpqr
+	TAWhtgoStX2PUEISw6sT3vnpX5ikOZP3B4t8nlSD8umki0ldGiMv0HLpeOgE9FADDO/yyzldzTaWn
+	RjwY4BRU+ZroHPrhxDYBzm/bmEgQzecnoWC7Ggru5PnFPABEXnPkSM/tP3l+qYnf3+LpcWIoF+Fjj
+	psU9WQkqPAXXRmBnURNRTVRS7Z19Erw/npsGZGhqciFoPWZaMu9Hnb1+brMn4Zr/0TouYHaOYbfAr
+	RubhLIe+wAHwaVpplarSmnDqgJ+zmJ61+sQg9yTgwLDy771XcmYC42eN9Cwejc3DVqO2UQ8iDK8Os
+	xITFnlgCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOzYU-0000j9-NF; Thu, 16 Apr 2020 08:07:26 +0000
+	id 1jOzYt-00010B-0K; Thu, 16 Apr 2020 08:07:51 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOzYJ-0000aI-3m; Thu, 16 Apr 2020 08:07:16 +0000
+ id 1jOzYg-0000s5-ND; Thu, 16 Apr 2020 08:07:39 +0000
 Received: from localhost (unknown [223.235.195.235])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 69F85206E9;
- Thu, 16 Apr 2020 08:07:13 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1D38A206B9;
+ Thu, 16 Apr 2020 08:07:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587024434;
- bh=6kwbxJH2RDveXqsZesbfmy1W3FzqE56YVY6CxJmBpFo=;
+ s=default; t=1587024458;
+ bh=+AtB2qrsVxt1QWCAagtuBV0iMzA+FqM4hoS9ArXVBXI=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=O1d6NWlKFfnyKMYlp3FSfoZyP6WL58llnMOPAcukWE4NK15IAgUmTc9Oy1CJfBrQJ
- FzFh77ntmk81ok6QNhBa7Fsxt0mRWxySPBmmQLISyBFjZXKruM2zAQoNUgGwtCZMXr
- hATzQxclu6p7VFesf/GI28sOVbjEiU4zdOe4G2WA=
-Date: Thu, 16 Apr 2020 13:37:10 +0530
+ b=2SDVAHMhpWjl2KgmMtDeMa4mCSN5E7syFhtD6nl+7e+uOtdm92iHSJh7of/HWeSKy
+ HDPx9eDy3/ziMPBERearhYxolH1rzEwouN2J1vLT/RYfJAdCvbbfyQVciDd7LjXhj3
+ Rm7XEVuyXLSwCmFC9enIFNjzAhrkqZPWIGTVc9wk=
+Date: Thu, 16 Apr 2020 13:37:34 +0530
 From: Vinod Koul <vkoul@kernel.org>
 To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: Clean-up schema indentation formatting
-Message-ID: <20200416080710.GI72691@vkoul-mobl>
+Subject: Re: [PATCH 2/2] dt-bindings: Remove cases of 'allOf' containing a
+ '$ref'
+Message-ID: <20200416080734.GJ72691@vkoul-mobl>
 References: <20200416005549.9683-1-robh@kernel.org>
+ <20200416005549.9683-2-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200416005549.9683-1-robh@kernel.org>
+In-Reply-To: <20200416005549.9683-2-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200416_010715_208647_BBF5313C 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20200416_010738_787390_BC159759 
+X-CRM114-Status: GOOD (  13.37  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -108,38 +110,31 @@ Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On 15-04-20, 19:55, Rob Herring wrote:
-> Fix various inconsistencies in schema indentation. Most of these are
-> list indentation which should be 2 spaces more than the start of the
-> enclosing keyword. This doesn't matter functionally, but affects running
-> scripts which do transforms on the schema files.
+> json-schema versions draft7 and earlier have a weird behavior in that
+> any keywords combined with a '$ref' are ignored (silently). The correct
+> form was to put a '$ref' under an 'allOf'. This behavior is now changed
+> in the 2019-09 json-schema spec and '$ref' can be mixed with other
+> keywords. The json-schema library doesn't yet support this, but the
+> tooling now does a fixup for this and either way works.
+> 
+> This has been a constant source of review comments, so let's change this
+> treewide so everyone copies the simpler syntax.
 > 
 > Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->  .../devicetree/bindings/arm/altera.yaml       |  6 +-
->  .../amlogic/amlogic,meson-gx-ao-secure.yaml   |  2 +-
->  .../devicetree/bindings/arm/bitmain.yaml      |  2 +-
->  .../devicetree/bindings/arm/nxp/lpc32xx.yaml  |  9 ++-
->  .../bindings/arm/socionext/uniphier.yaml      | 26 ++++----
->  .../bindings/arm/stm32/st,mlahb.yaml          |  2 +-
->  .../bindings/arm/stm32/st,stm32-syscon.yaml   |  6 +-
->  .../bindings/ata/faraday,ftide010.yaml        |  4 +-
->  .../bindings/bus/allwinner,sun8i-a23-rsb.yaml |  4 +-
->  .../clock/allwinner,sun4i-a10-gates-clk.yaml  |  8 +--
->  .../devicetree/bindings/clock/fsl,plldig.yaml | 17 +++--
->  .../devicetree/bindings/clock/qcom,mmcc.yaml  | 16 ++---
->  .../bindings/connector/usb-connector.yaml     |  6 +-
->  .../crypto/allwinner,sun4i-a10-crypto.yaml    | 14 ++--
->  .../bindings/crypto/allwinner,sun8i-ce.yaml   | 16 ++---
->  .../bindings/crypto/amlogic,gxl-crypto.yaml   |  2 +-
->  .../display/allwinner,sun4i-a10-hdmi.yaml     | 40 ++++++------
->  .../display/allwinner,sun4i-a10-tcon.yaml     | 58 ++++++++---------
->  .../display/allwinner,sun6i-a31-mipi-dsi.yaml | 28 ++++----
->  .../display/allwinner,sun8i-a83t-dw-hdmi.yaml | 10 +--
->  .../bindings/display/bridge/lvds-codec.yaml   | 18 +++---
->  .../display/panel/sony,acx424akp.yaml         |  2 +-
->  .../display/panel/xinpeng,xpp055c272.yaml     |  4 +-
->  .../bindings/display/renesas,cmm.yaml         | 16 ++---
->  .../devicetree/bindings/dma/ti/k3-udma.yaml   |  8 +--
+>  .../devicetree/bindings/arm/cpus.yaml         |  81 +++---
+>  .../devicetree/bindings/arm/l2c2x0.yaml       |  87 +++---
+>  .../devicetree/bindings/arm/psci.yaml         |  15 +-
+>  .../bindings/arm/samsung/exynos-chipid.yaml   |   5 +-
+>  .../bus/allwinner,sun50i-a64-de2.yaml         |   5 +-
+>  .../bindings/clock/fixed-factor-clock.yaml    |   5 +-
+>  .../bindings/connector/usb-connector.yaml     |  28 +-
+>  .../bindings/crypto/st,stm32-hash.yaml        |   9 +-
+>  .../allwinner,sun4i-a10-display-engine.yaml   |   7 +-
+>  .../display/allwinner,sun4i-a10-tcon.yaml     |   5 +-
+>  .../bindings/display/panel/panel-common.yaml  |   5 +-
+>  .../devicetree/bindings/dma/dma-common.yaml   |   3 +-
+>  .../devicetree/bindings/dma/ti/k3-udma.yaml   |  18 +-
 
 Acked-By: Vinod Koul <vkoul@kernel.org>
 
