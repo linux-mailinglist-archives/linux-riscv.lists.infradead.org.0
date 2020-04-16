@@ -2,32 +2,35 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8E881AD282
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 00:01:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 871491AD283
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 00:01:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=14Ju6mOxlL9LJIOW/FTdgj6GivNAEkcDFvA+NJF0hh4=; b=S1UNlrEr8ym5Fr
-	8GXy7vrEQwDRTM62e0CMq691u5NLjEzIUrewMzQTITdXUAGtBjS8IvdKhE+F/PtoX6l0zd6vzjEya
-	bnE171M0fK6FzVPSIAdIODsO1i57ocyS0S1WeDdevEcZ4DqyhPbh/Aa/OOBRHMMRZtEmmjeO2+R/0
-	jJxSEV94nkfRr5Zvr1lgaPYtPZBKEi3D7L5+CXyfoI1XBaFpbaEKhB0G+dvKbXNnXvaGdUwk7opJi
-	0j4maoobw/1LSRr18XweRw8/kG54WQUGqYnk3IwVVWXSvA/1eyr0DlJYKMVHy51S5AbJOsxcvd+sh
-	ZADz3p84CkjaQunwVOmw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7eAIqFXSDQFiyBAhlUDSnkB/PjfNj7n3kLMRm+bVFLI=; b=RsiCBhcZVAh4ZZ
+	0N6tDVY3r4Yh+/JzGLubxzBbjB8xtRJmeTyuVSUzZ+Lh08csWOtjTOF2FLXCZhAnY06/wEdRHOHH9
+	Bc6nsLi4VuKLglV0eaTVQa/QZEH5MxcGbOVfoEDgBIKQ/ornptBxUhObv+H6xUh7DLJPxH56vucFR
+	bhxKSp9r47GNxsGdXDSQ9UEB1/jleJVlcTgh31h7Uqmk9OiRFO4LD8KkI05oW5J3M/BzM/Qf9QrIa
+	ZLyG5wMADuHzl+4j8cqri+h9A43JKJSYeeVP+i+RxNpMHl9DxL/O6QMUbS4cljjpALMuL2WHO1gBq
+	iWhnI8pO+aUT+kJUZ9Yg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPCZj-0003Vf-7P; Thu, 16 Apr 2020 22:01:35 +0000
+	id 1jPCZk-0003Ws-L6; Thu, 16 Apr 2020 22:01:36 +0000
 Received: from willy by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1jPCZg-0003U8-Ca; Thu, 16 Apr 2020 22:01:32 +0000
+ Hat Linux)) id 1jPCZg-0003UR-Hw; Thu, 16 Apr 2020 22:01:32 +0000
 From: Matthew Wilcox <willy@infradead.org>
 To: linux-mm@kvack.org,
 	linux-fsdevel@vger.kernel.org
-Subject: [PATCH v3 00/11] Make PageWriteback use the PageLocked optimisation
-Date: Thu, 16 Apr 2020 15:01:19 -0700
-Message-Id: <20200416220130.13343-1-willy@infradead.org>
+Subject: [PATCH v3 05/11] riscv: Add clear_bit_unlock_is_negative_byte
+ implementation
+Date: Thu, 16 Apr 2020 15:01:24 -0700
+Message-Id: <20200416220130.13343-6-willy@infradead.org>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200416220130.13343-1-willy@infradead.org>
+References: <20200416220130.13343-1-willy@infradead.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -41,64 +44,46 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, linux-ia64@vger.kernel.org,
- linux-mips@vger.kernel.org, "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- linux-m68k@lists.linux-m68k.org, linux-alpha@vger.kernel.org,
- linux-riscv@lists.infradead.org
+Cc: linux-riscv@lists.infradead.org, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: "Matthew Wilcox (Oracle)" <willy@infradead.org>
 
-PageWaiters is used by PageWriteback and PageLocked (and no other page
-flags), so it makes sense to use the same codepaths that have already been
-optimised for PageLocked, even if there's probably no real performance
-benefit to be had.
+This is the generic implementation.  I can't figure out an optimised
+implementation for riscv.
 
-Unfortunately, clear_bit_unlock_is_negative_byte() isn't present on every
-architecture, and the default implementation is only available in filemap.c
-while I want to use it in page-writeback.c.  Rather than move the default
-implementation to a header file, I've done optimised implementations for
-alpha and ia64.  I can't figure out optimised implementations for m68k,
-mips, riscv and s390, so I've just replicated the effect of the generic
-implementation in them.  I leave it to the experts to fix that (... or
-convert over to using asm-generic/bitops/lock.h ...)
+Signed-off-by: Matthew Wilcox (Oracle) <willy@infradead.org>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Albert Ou <aou@eecs.berkeley.edu>
+Cc: linux-riscv@lists.infradead.org
+---
+ arch/riscv/include/asm/bitops.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-v3:
- - Added implementations of clear_bit_unlock_is_negative_byte()
-   to architectures which need it
-
-v2: Rebased to 5.7-rc1
- - Split up patches better
- - Moved the BUG() from end_page_writeback() to __clear_page_writeback()
-   as requested by Jan Kara.
- - Converted the BUG() to WARN_ON()
- - Removed TestClearPageWriteback
-
-Matthew Wilcox (Oracle) (11):
-  alpha: Add clear_bit_unlock_is_negative_byte implementation
-  ia64: Add clear_bit_unlock_is_negative_byte implementation
-  m68k: Add clear_bit_unlock_is_negative_byte implementation
-  mips: Add clear_bit_unlock_is_negative_byte implementation
-  riscv: Add clear_bit_unlock_is_negative_byte implementation
-  s390: Add clear_bit_unlock_is_negative_byte implementation
-  mm: Remove definition of clear_bit_unlock_is_negative_byte
-  mm: Move PG_writeback into the bottom byte
-  mm: Convert writeback BUG to WARN_ON
-  mm: Use clear_bit_unlock_is_negative_byte for PageWriteback
-  mm: Remove TestClearPageWriteback
-
- arch/alpha/include/asm/bitops.h | 23 ++++++++++++++++++
- arch/ia64/include/asm/bitops.h  | 20 ++++++++++++++++
- arch/m68k/include/asm/bitops.h  |  7 ++++++
- arch/mips/include/asm/bitops.h  |  7 ++++++
- arch/riscv/include/asm/bitops.h |  7 ++++++
- arch/s390/include/asm/bitops.h  |  9 +++++++
- include/linux/page-flags.h      |  8 +++----
- mm/filemap.c                    | 41 ++++----------------------------
- mm/page-writeback.c             | 42 ++++++++++++++++++++-------------
- 9 files changed, 107 insertions(+), 57 deletions(-)
-
+diff --git a/arch/riscv/include/asm/bitops.h b/arch/riscv/include/asm/bitops.h
+index 396a3303c537..f2060c126a34 100644
+--- a/arch/riscv/include/asm/bitops.h
++++ b/arch/riscv/include/asm/bitops.h
+@@ -171,6 +171,13 @@ static inline void clear_bit_unlock(
+ 	__op_bit_ord(and, __NOT, nr, addr, .rl);
+ }
+ 
++static inline bool clear_bit_unlock_is_negative_byte(unsigned int nr,
++						volatile unsigned long *p)
++{
++	clear_bit_unlock(nr, p);
++	return test_bit(7, p);
++}
++
+ /**
+  * __clear_bit_unlock - Clear a bit in memory, for unlock
+  * @nr: the bit to set
 -- 
 2.25.1
+
 
