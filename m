@@ -2,79 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 786E51AB5F5
-	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 04:39:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40AE61AB847
+	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 08:43:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0U51hutSksQWEHdR18ehp2fYxpUUPe+QnTYlRU5DmFY=; b=GCa7jRWIHY5ijh
-	FA5b0ijYJTzdfwiqVA8i5Fbk/N6ki5hCYDJWTkfbQ+3tpzd6WRX6BtQIaTtI+0MCwe+gNly6QRNJJ
-	vQdVQ1DFITeg7kLiDqmVyQBgMhYfLc7dga9m/JsLLcumg6GQUXnBmFRBp6dUEzEV12g27aeo2IkJn
-	FAGGFi+pp8VH4cfdCPRD48WnWxeQICV6LZ5VSblxm/v+RypYjmW/KBQ5B2giurYDE8VcQ1lhP2vw2
-	Ef62GVjGvlyuS/w9ScNcSt/piNmH3+ddqaWo0LzGBCYlLL0KB8uIlVwW1CQSzXbRYnNHJq3dBzEER
-	s4XFakhtgOTVlpS7BiKw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=qCRyzl00MQBivzL68vkel39NEbd7kC6dFuyLRxBAey0=; b=TeqA4Ou8/JYXY58KCytZINert
+	d9U9tzL/EBxJoaHxZ8bjeumgBX6UMOlRh6e0Fadyz/qjneI0vdMGtW6fmc3liVH0bJ3GXhh9Qcadz
+	9WZ6bz+i3mJ8YO0Ogchq2irDgMpXywqeV4VPwYMmJrfvc6H3f7mrYqPf7eJM8DI/WwsU6SID7x6FG
+	/c74XYJqJJ0yJ/GOVdtPG9xSbB1Xtk/1y6Wah3B74ILIdGuCSB1/crFZMblJ5eZ1gBQVx7ErgEtqr
+	/LSmW0+JTNESqWGqbxBJ+j4U4QHzqfBHfsE53RJGUWxqXUQuNyTXmVmopdpstm7Nwj0fy29kxnG7f
+	Y4cAbgITw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOuQd-0000KQ-1c; Thu, 16 Apr 2020 02:38:59 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1jOyEt-0007ki-0N; Thu, 16 Apr 2020 06:43:07 +0000
+Received: from wnew1-smtp.messagingengine.com ([64.147.123.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOuQL-0008UA-KN
- for linux-riscv@lists.infradead.org; Thu, 16 Apr 2020 02:38:44 +0000
-Received: by mail-pf1-x442.google.com with SMTP id n10so986925pff.3
- for <linux-riscv@lists.infradead.org>; Wed, 15 Apr 2020 19:38:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=0U51hutSksQWEHdR18ehp2fYxpUUPe+QnTYlRU5DmFY=;
- b=SnyS2djtd2CMChfsyocA4bMAgjAy9TORhNtb6HCkEp7V94YWh82bCElCicV8UVqdNp
- priy7dQD09uWr8XmXZWhgXdBdjJ9kmhUBxsfrtljGsJL0aKBRR1ujsurIlmZHP41+Ys9
- TpGQ45KWOH3geXRjQemLUfP93vPArSdw0z0TEof189e8xybqzxGziAYyC6pg2FBGrHmN
- 7v6BPAd7KSOWf78MsaC/zvIdi+MiTvK7lEpVKNKUZl0cOaljwtklz3Dr/VgjxeYIqiXa
- 85nZGYEQXpXEjythaz+vlZEAqvIOsnmXMxqiYxh7HRF0Xqv3bIFD6i4U4VJBYUwHds4/
- mvSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=0U51hutSksQWEHdR18ehp2fYxpUUPe+QnTYlRU5DmFY=;
- b=W5/uhKqHgwVcW4oGxndiLVNMZwFuGvmze8Qtlulzf9WCeXcowCrgpHzQSp4nis19Xy
- 9O6Y2o5DvJ20JFzf3xaLQLXmX2n7cr8EfddIV72ffIPGu2EUrxTC8kmLF7n9sFmwwN/O
- 0eJvzCQdz2PHPr6cWcfQBMEtLKGYlKek1ix/kmsiosRyChitZuO8elxLi9INIdAMXRov
- lpIDuvVzgND3lIFmfgzxhgdqdF2vf/mOqMdPGMH7QKAKGPkFK0ltHLnwb3pZGMqoexxI
- j6EWcd598/GYduVSlvqCxVWQpjC4/qQ3PrXPsvRhF89PtkvhfGFsQTOhzxdczWCnWPZJ
- I+SA==
-X-Gm-Message-State: AGi0PuYsIXjpXGHqOytYVpMUG5f6QaLVJ/ypLz95MN2NnyC5hWMsxL0E
- zA1IXRzG9RqzRaZ5nYCYaQXeEg==
-X-Google-Smtp-Source: APiQypKiuSmhULsXQO7ig6uZXx4DJM2BxddPKRcevdEcttTWDxkZYIigcUuaKGGmgvhnOeGwiZFJUw==
-X-Received: by 2002:a62:520e:: with SMTP id g14mr7694472pfb.216.1587004720443; 
- Wed, 15 Apr 2020 19:38:40 -0700 (PDT)
-Received: from VincentChen-ThinkPad-T480s.internal.sifive.com
- (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id i25sm11347536pfd.140.2020.04.15.19.38.38
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 15 Apr 2020 19:38:39 -0700 (PDT)
-From: Vincent Chen <vincent.chen@sifive.com>
-To: paul.walmsley@sifive.com, palmer@dabbelt.com, daniel.thompson@linaro.org
-Subject: [PATCH v4 5/5] riscv: Add SW single-step support for KDB
-Date: Thu, 16 Apr 2020 10:38:08 +0800
-Message-Id: <1587004688-19788-6-git-send-email-vincent.chen@sifive.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1587004688-19788-1-git-send-email-vincent.chen@sifive.com>
-References: <1587004688-19788-1-git-send-email-vincent.chen@sifive.com>
+ id 1jOyEh-0007Wx-Id; Thu, 16 Apr 2020 06:42:57 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.west.internal (Postfix) with ESMTP id BE3AB7D6;
+ Thu, 16 Apr 2020 02:42:47 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Thu, 16 Apr 2020 02:42:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm2; bh=qCRyzl00MQBivzL68vkel39NEbd
+ 7kC6dFuyLRxBAey0=; b=Mz6xjOhoyl6u3JLJF3XNH/WDRWC0mCT6w/uiIwB8GXd
+ UpxsH9oudz3X48RMKQfGJbGVDAHug8ZXney1LdfZdZRq90LqW1W0/A6iVYMtK1mN
+ EU59olTzwMNiYltMNJBPysQF0H63fbn5e/tsDm+LApzpl9Y1Sw18AZHKdzIsmaEf
+ 9+M1vvWOyW669ZVwQQ7awZo8Cj7vc6UYa6yBhQm8s+v3rqgHnFf6xakj6sV5HtJy
+ j8vNj53XWuWvnoqroGZji7jvJbTKs9v3cgxRMfEEZdJgii7uQdjwtKHH0A6lf3I6
+ 8ffKsfT/ph6VFQvi+fA3JKKLi4LFnglOMoqGVSlscBQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=qCRyzl
+ 00MQBivzL68vkel39NEbd7kC6dFuyLRxBAey0=; b=eMPRhPF78n2AJHUnF3n8N7
+ nDj6R2uaCMywF1zqUJb8H41DWXRLIqM1X1ixKQ+5du5Sep0O62e5Zg70DW4miS5c
+ q+6UZlgUneRQ5zBCZRQTn2+qXHpcWSINUMIVtTQcMv4fBlmNQ0cDxvod+yis2IMy
+ Qn9LgZrrIPxvZU1tIvrIvajwPmKsY2XzJGObIt+ux8BDMn9VQLisIuN1sQagIjTc
+ 2yVfkg9fn7+7uqJ5UWxMBZLYc2drb5gpFG/CrUVannsfz1vkv8nOhZz7tV+2yvw0
+ Ini85WXCVW9bOz1VY1ANTmk22DTeHV41NcnSM3ax/Ybs4KlWFUPVQUigEqOYYq4Q
+ ==
+X-ME-Sender: <xms:ZP6XXpgBOuLk6y78w-8QXnLsPxfPb8tJCQV-nhCw3w9E3J6Z_6umzA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrfeeggdduudduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
+ vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecukfhppeeltd
+ drkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghi
+ lhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:ZP6XXlHUnHhPoyiEoNq4uvG-eeIU9F7rJ3L8YM4tBAlhX9jwZlg92Q>
+ <xmx:ZP6XXgxO_UPW-eCgOnJDSb4q6E6_zvBdAp-UhPR4OHFshAivUQ-klg>
+ <xmx:ZP6XXkq3F6zITJzf5EbL-eKRftc0jlz2H_3d673Bq8y2Zr17XFw4_g>
+ <xmx:Z_6XXi9WoWOt_JDiBWjK2eTP19mseq86rp4c8pS9eo_D669xJmpieNKZPV8>
+Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
+ [90.89.68.76])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 59AE0328005E;
+ Thu, 16 Apr 2020 02:42:44 -0400 (EDT)
+Date: Thu, 16 Apr 2020 08:42:42 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: Clean-up schema indentation formatting
+Message-ID: <20200416064242.azdjulo76ymwgpfq@gilmour.lan>
+References: <20200416005549.9683-1-robh@kernel.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="s675c5ai5d6avmtq"
+Content-Disposition: inline
+In-Reply-To: <20200416005549.9683-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200415_193841_689294_006EBFDA 
-X-CRM114-Status: GOOD (  16.80  )
-X-Spam-Score: 3.3 (+++)
+X-CRM114-CacheID: sfid-20200415_234255_858820_01AC28E6 
+X-CRM114-Status: GOOD (  10.31  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (3.3 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [64.147.123.26 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -83,8 +93,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 2.2 DRUGS_ERECTILE         Refers to an erectile drug
- 1.3 DRUGS_ERECTILE_OBFU    Obfuscated reference to an erectile drug
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,478 +104,66 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: kgdb-bugreport@lists.sourceforge.net, linux-riscv@lists.infradead.org,
- Vincent Chen <vincent.chen@sifive.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sam Ravnborg <sam@ravnborg.org>,
+ linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ linux-remoteproc@vger.kernel.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-mtd@lists.infradead.org,
+ linux-i2c@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
+ linux-riscv@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
+ linux-rtc@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
+ Fabio Estevam <festevam@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-serial@vger.kernel.org,
+ linux-input@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Alexandre Torgue <alexandre.torgue@st.com>, alsa-devel@alsa-project.org,
+ linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Amit Kucheria <amit.kucheria@linaro.org>,
+ linux-spi@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+ netdev@vger.kernel.org, Jonathan Cameron <jic23@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-In KGDB, the GDB in the host is responsible for the single-step operation
-of the software. In other words, KGDB does not need to derive the next pc
-address when performing a software single-step operation. KGDB just inserts
-the break instruction at the indicated address according to the GDB
-instructions. This approach does not work in KDB because the GDB does not
-involve the KDB process. Therefore, this patch provides KDB a software
-single-step mechanism to use.
 
-Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
----
- arch/riscv/include/asm/parse_asm.h | 219 +++++++++++++++++++++++++++++++++++++
- arch/riscv/kernel/kgdb.c           | 179 +++++++++++++++++++++++++++++-
- 2 files changed, 396 insertions(+), 2 deletions(-)
- create mode 100644 arch/riscv/include/asm/parse_asm.h
+--s675c5ai5d6avmtq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/arch/riscv/include/asm/parse_asm.h b/arch/riscv/include/asm/parse_asm.h
-new file mode 100644
-index 000000000000..f36368de839f
---- /dev/null
-+++ b/arch/riscv/include/asm/parse_asm.h
-@@ -0,0 +1,219 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2020 SiFive
-+ */
-+
-+#include <linux/bits.h>
-+
-+/* The bit field of immediate value in I-type instruction */
-+#define I_IMM_SIGN_OPOFF	31
-+#define I_IMM_11_0_OPOFF	20
-+#define I_IMM_SIGN_OFF		12
-+#define I_IMM_11_0_OFF		0
-+#define I_IMM_11_0_MASK		GENMASK(11, 0)
-+
-+/* The bit field of immediate value in J-type instruction */
-+#define J_IMM_SIGN_OPOFF	31
-+#define J_IMM_10_1_OPOFF	21
-+#define J_IMM_11_OPOFF		20
-+#define J_IMM_19_12_OPOFF	12
-+#define J_IMM_SIGN_OFF		20
-+#define J_IMM_10_1_OFF		1
-+#define J_IMM_11_OFF		11
-+#define J_IMM_19_12_OFF		12
-+#define J_IMM_10_1_MASK		GENMASK(9, 0)
-+#define J_IMM_11_MASK		GENMASK(0, 0)
-+#define J_IMM_19_12_MASK	GENMASK(7, 0)
-+
-+/* The bit field of immediate value in B-type instruction */
-+#define B_IMM_SIGN_OPOFF	31
-+#define B_IMM_10_5_OPOFF	25
-+#define B_IMM_4_1_OPOFF		8
-+#define B_IMM_11_OPOFF		7
-+#define B_IMM_SIGN_OFF		12
-+#define B_IMM_10_5_OFF		5
-+#define B_IMM_4_1_OFF		1
-+#define B_IMM_11_OFF		11
-+#define B_IMM_10_5_MASK		GENMASK(5, 0)
-+#define B_IMM_4_1_MASK		GENMASK(3, 0)
-+#define B_IMM_11_MASK		GENMASK(0, 0)
-+
-+/* The register offset in RVG instruction */
-+#define RVG_RS1_OPOFF		15
-+#define RVG_RS2_OPOFF		20
-+#define RVG_RD_OPOFF		7
-+
-+/* The bit field of immediate value in RVC J instruction */
-+#define RVC_J_IMM_SIGN_OPOFF	12
-+#define RVC_J_IMM_4_OPOFF	11
-+#define RVC_J_IMM_9_8_OPOFF	9
-+#define RVC_J_IMM_10_OPOFF	8
-+#define RVC_J_IMM_6_OPOFF	7
-+#define RVC_J_IMM_7_OPOFF	6
-+#define RVC_J_IMM_3_1_OPOFF	3
-+#define RVC_J_IMM_5_OPOFF	2
-+#define RVC_J_IMM_SIGN_OFF	11
-+#define RVC_J_IMM_4_OFF		4
-+#define RVC_J_IMM_9_8_OFF	8
-+#define RVC_J_IMM_10_OFF	10
-+#define RVC_J_IMM_6_OFF		6
-+#define RVC_J_IMM_7_OFF		7
-+#define RVC_J_IMM_3_1_OFF	1
-+#define RVC_J_IMM_5_OFF		5
-+#define RVC_J_IMM_4_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_9_8_MASK	GENMASK(1, 0)
-+#define RVC_J_IMM_10_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_6_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_7_MASK	GENMASK(0, 0)
-+#define RVC_J_IMM_3_1_MASK	GENMASK(2, 0)
-+#define RVC_J_IMM_5_MASK	GENMASK(0, 0)
-+
-+/* The bit field of immediate value in RVC B instruction */
-+#define RVC_B_IMM_SIGN_OPOFF	12
-+#define RVC_B_IMM_4_3_OPOFF	10
-+#define RVC_B_IMM_7_6_OPOFF	5
-+#define RVC_B_IMM_2_1_OPOFF	3
-+#define RVC_B_IMM_5_OPOFF	2
-+#define RVC_B_IMM_SIGN_OFF	8
-+#define RVC_B_IMM_4_3_OFF	3
-+#define RVC_B_IMM_7_6_OFF	6
-+#define RVC_B_IMM_2_1_OFF	1
-+#define RVC_B_IMM_5_OFF		5
-+#define RVC_B_IMM_4_3_MASK	GENMASK(1, 0)
-+#define RVC_B_IMM_7_6_MASK	GENMASK(1, 0)
-+#define RVC_B_IMM_2_1_MASK	GENMASK(1, 0)
-+#define RVC_B_IMM_5_MASK	GENMASK(0, 0)
-+
-+/* The register offset in RVC op=C0 instruction */
-+#define RVC_C0_RS1_OPOFF	7
-+#define RVC_C0_RS2_OPOFF	2
-+#define RVC_C0_RD_OPOFF		2
-+
-+/* The register offset in RVC op=C1 instruction */
-+#define RVC_C1_RS1_OPOFF	7
-+#define RVC_C1_RS2_OPOFF	2
-+#define RVC_C1_RD_OPOFF		7
-+
-+/* The register offset in RVC op=C2 instruction */
-+#define RVC_C2_RS1_OPOFF	7
-+#define RVC_C2_RS2_OPOFF	2
-+#define RVC_C2_RD_OPOFF		7
-+
-+/* parts of opcode for RVG*/
-+#define OPCODE_BRANCH		0x63
-+#define OPCODE_JALR		0x67
-+#define OPCODE_JAL		0x6f
-+#define OPCODE_SYSTEM		0x73
-+
-+/* parts of opcode for RVC*/
-+#define OPCODE_C_0		0x0
-+#define OPCODE_C_1		0x1
-+#define OPCODE_C_2		0x2
-+
-+/* parts of funct3 code for I, M, A extension*/
-+#define FUNCT3_JALR		0x0
-+#define FUNCT3_BEQ		0x0
-+#define FUNCT3_BNE		0x1000
-+#define FUNCT3_BLT		0x4000
-+#define FUNCT3_BGE		0x5000
-+#define FUNCT3_BLTU		0x6000
-+#define FUNCT3_BGEU		0x7000
-+
-+/* parts of funct3 code for C extension*/
-+#define FUNCT3_C_BEQZ		0xc000
-+#define FUNCT3_C_BNEZ		0xe000
-+#define FUNCT3_C_J		0xa000
-+#define FUNCT3_C_JAL		0x2000
-+#define FUNCT4_C_JR		0x8000
-+#define FUNCT4_C_JALR		0xf000
-+
-+#define FUNCT12_SRET		0x10200000
-+
-+#define MATCH_JALR		(FUNCT3_JALR | OPCODE_JALR)
-+#define MATCH_JAL		(OPCODE_JAL)
-+#define MATCH_BEQ		(FUNCT3_BEQ | OPCODE_BRANCH)
-+#define MATCH_BNE		(FUNCT3_BNE | OPCODE_BRANCH)
-+#define MATCH_BLT		(FUNCT3_BLT | OPCODE_BRANCH)
-+#define MATCH_BGE		(FUNCT3_BGE | OPCODE_BRANCH)
-+#define MATCH_BLTU		(FUNCT3_BLTU | OPCODE_BRANCH)
-+#define MATCH_BGEU		(FUNCT3_BGEU | OPCODE_BRANCH)
-+#define MATCH_SRET		(FUNCT12_SRET | OPCODE_SYSTEM)
-+#define MATCH_C_BEQZ		(FUNCT3_C_BEQZ | OPCODE_C_1)
-+#define MATCH_C_BNEZ		(FUNCT3_C_BNEZ | OPCODE_C_1)
-+#define MATCH_C_J		(FUNCT3_C_J | OPCODE_C_1)
-+#define MATCH_C_JAL		(FUNCT3_C_JAL | OPCODE_C_1)
-+#define MATCH_C_JR		(FUNCT4_C_JR | OPCODE_C_2)
-+#define MATCH_C_JALR		(FUNCT4_C_JALR | OPCODE_C_2)
-+
-+#define MASK_JALR		0x707f
-+#define MASK_JAL		0x7f
-+#define MASK_C_JALR		0xf07f
-+#define MASK_C_JR		0xf07f
-+#define MASK_C_JAL		0xe003
-+#define MASK_C_J		0xe003
-+#define MASK_BEQ		0x707f
-+#define MASK_BNE		0x707f
-+#define MASK_BLT		0x707f
-+#define MASK_BGE		0x707f
-+#define MASK_BLTU		0x707f
-+#define MASK_BGEU		0x707f
-+#define MASK_C_BEQZ		0xe003
-+#define MASK_C_BNEZ		0xe003
-+#define MASK_SRET		0xffffffff
-+
-+#define __INSN_LENGTH_MASK	_UL(0x3)
-+#define __INSN_LENGTH_GE_32	_UL(0x3)
-+#define __INSN_OPCODE_MASK	_UL(0x7F)
-+#define __INSN_BRANCH_OPCODE	_UL(OPCODE_BRANCH)
-+
-+/* Define a series of is_XXX_insn functions to check if the value INSN
-+ * is an instance of instruction XXX.
-+ */
-+#define DECLARE_INSN(INSN_NAME, INSN_MATCH, INSN_MASK) \
-+static inline bool is_ ## INSN_NAME ## _insn(long insn) \
-+{ \
-+	return (insn & (INSN_MASK)) == (INSN_MATCH); \
-+}
-+
-+#define RV_IMM_SIGN(x) (-(((x) >> 31) & 1))
-+#define RVC_IMM_SIGN(x) (-(((x) >> 12) & 1))
-+#define RV_X(X, s, mask)  (((X) >> (s)) & (mask))
-+#define RVC_X(X, s, mask) RV_X(X, s, mask)
-+
-+#define EXTRACT_JTYPE_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RV_X(x_, J_IMM_10_1_OPOFF, J_IMM_10_1_MASK) << J_IMM_10_1_OFF) | \
-+	(RV_X(x_, J_IMM_11_OPOFF, J_IMM_11_MASK) << J_IMM_11_OFF) | \
-+	(RV_X(x_, J_IMM_19_12_OPOFF, J_IMM_19_12_MASK) << J_IMM_19_12_OFF) | \
-+	(RV_IMM_SIGN(x_) << J_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_ITYPE_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RV_X(x_, I_IMM_11_0_OPOFF, I_IMM_11_0_MASK)) | \
-+	(RV_IMM_SIGN(x_) << I_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_BTYPE_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RV_X(x_, B_IMM_4_1_OPOFF, B_IMM_4_1_MASK) << B_IMM_4_1_OFF) | \
-+	(RV_X(x_, B_IMM_10_5_OPOFF, B_IMM_10_5_MASK) << B_IMM_10_5_OFF) | \
-+	(RV_X(x_, B_IMM_11_OPOFF, B_IMM_11_MASK) << B_IMM_11_OFF) | \
-+	(RV_IMM_SIGN(x_) << B_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_RVC_J_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RVC_X(x_, RVC_J_IMM_3_1_OPOFF, RVC_J_IMM_3_1_MASK) << RVC_J_IMM_3_1_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_4_OPOFF, RVC_J_IMM_4_MASK) << RVC_J_IMM_4_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_5_OPOFF, RVC_J_IMM_5_MASK) << RVC_J_IMM_5_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_6_OPOFF, RVC_J_IMM_6_MASK) << RVC_J_IMM_6_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_7_OPOFF, RVC_J_IMM_7_MASK) << RVC_J_IMM_7_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_9_8_OPOFF, RVC_J_IMM_9_8_MASK) << RVC_J_IMM_9_8_OFF) | \
-+	(RVC_X(x_, RVC_J_IMM_10_OPOFF, RVC_J_IMM_10_MASK) << RVC_J_IMM_10_OFF) | \
-+	(RVC_IMM_SIGN(x_) << RVC_J_IMM_SIGN_OFF); })
-+
-+#define EXTRACT_RVC_B_IMM(x) \
-+	({typeof(x) x_ = (x); \
-+	(RVC_X(x_, RVC_B_IMM_2_1_OPOFF, RVC_B_IMM_2_1_MASK) << RVC_B_IMM_2_1_OFF) | \
-+	(RVC_X(x_, RVC_B_IMM_4_3_OPOFF, RVC_B_IMM_4_3_MASK) << RVC_B_IMM_4_3_OFF) | \
-+	(RVC_X(x_, RVC_B_IMM_5_OPOFF, RVC_B_IMM_5_MASK) << RVC_B_IMM_5_OFF) | \
-+	(RVC_X(x_, RVC_B_IMM_7_6_OPOFF, RVC_B_IMM_7_6_MASK) << RVC_B_IMM_7_6_OFF) | \
-+	(RVC_IMM_SIGN(x_) << RVC_B_IMM_SIGN_OFF); })
-diff --git a/arch/riscv/kernel/kgdb.c b/arch/riscv/kernel/kgdb.c
-index eb1afab47679..f16ade84a11f 100644
---- a/arch/riscv/kernel/kgdb.c
-+++ b/arch/riscv/kernel/kgdb.c
-@@ -11,13 +11,179 @@
- #include <linux/string.h>
- #include <asm/cacheflush.h>
- #include <asm/gdb_xml.h>
-+#include <asm/parse_asm.h>
- 
- enum {
- 	NOT_KGDB_BREAK = 0,
- 	KGDB_SW_BREAK,
- 	KGDB_COMPILED_BREAK,
-+	KGDB_SW_SINGLE_STEP
- };
- 
-+static unsigned long stepped_address;
-+static unsigned int stepped_opcode;
-+
-+#if __riscv_xlen == 32
-+/* C.JAL is an RV32C-only instruction */
-+DECLARE_INSN(c_jal, MATCH_C_JAL, MASK_C_JAL)
-+#else
-+#define is_c_jal_insn(opcode) 0
-+#endif
-+DECLARE_INSN(jalr, MATCH_JALR, MASK_JALR)
-+DECLARE_INSN(jal, MATCH_JAL, MASK_JAL)
-+DECLARE_INSN(c_jr, MATCH_C_JR, MASK_C_JR)
-+DECLARE_INSN(c_jalr, MATCH_C_JALR, MASK_C_JALR)
-+DECLARE_INSN(c_j, MATCH_C_J, MASK_C_J)
-+DECLARE_INSN(beq, MATCH_BEQ, MASK_BEQ)
-+DECLARE_INSN(bne, MATCH_BNE, MASK_BNE)
-+DECLARE_INSN(blt, MATCH_BLT, MASK_BLT)
-+DECLARE_INSN(bge, MATCH_BGE, MASK_BGE)
-+DECLARE_INSN(bltu, MATCH_BLTU, MASK_BLTU)
-+DECLARE_INSN(bgeu, MATCH_BGEU, MASK_BGEU)
-+DECLARE_INSN(c_beqz, MATCH_C_BEQZ, MASK_C_BEQZ)
-+DECLARE_INSN(c_bnez, MATCH_C_BNEZ, MASK_C_BNEZ)
-+DECLARE_INSN(sret, MATCH_SRET, MASK_SRET)
-+
-+int decode_register_index(unsigned long opcode, int offset)
-+{
-+	return (opcode >> offset) & 0x1F;
-+}
-+
-+int decode_register_index_short(unsigned long opcode, int offset)
-+{
-+	return ((opcode >> offset) & 0x7) + 8;
-+}
-+
-+/* Calculate the new address for after a step */
-+int get_step_address(struct pt_regs *regs, unsigned long *next_addr)
-+{
-+	unsigned long pc = regs->epc;
-+	unsigned long *regs_ptr = (unsigned long *)regs;
-+	unsigned int rs1_num, rs2_num;
-+	int op_code;
-+
-+	if (probe_kernel_address((void *)pc, op_code))
-+		return -EINVAL;
-+	if ((op_code & __INSN_LENGTH_MASK) != __INSN_LENGTH_GE_32) {
-+		if (is_c_jalr_insn(op_code) || is_c_jr_insn(op_code)) {
-+			rs1_num = decode_register_index(op_code, RVC_C2_RS1_OPOFF);
-+			*next_addr = regs_ptr[rs1_num];
-+		} else if (is_c_j_insn(op_code) || is_c_jal_insn(op_code)) {
-+			*next_addr = EXTRACT_RVC_J_IMM(op_code) + pc;
-+		} else if (is_c_beqz_insn(op_code)) {
-+			rs1_num = decode_register_index_short(op_code,
-+							      RVC_C1_RS1_OPOFF);
-+			if (!rs1_num || regs_ptr[rs1_num] == 0)
-+				*next_addr = EXTRACT_RVC_B_IMM(op_code) + pc;
-+			else
-+				*next_addr = pc + 2;
-+		} else if (is_c_bnez_insn(op_code)) {
-+			rs1_num =
-+			    decode_register_index_short(op_code, RVC_C1_RS1_OPOFF);
-+			if (rs1_num && regs_ptr[rs1_num] != 0)
-+				*next_addr = EXTRACT_RVC_B_IMM(op_code) + pc;
-+			else
-+				*next_addr = pc + 2;
-+		} else {
-+			*next_addr = pc + 2;
-+		}
-+	} else {
-+		if ((op_code & __INSN_OPCODE_MASK) == __INSN_BRANCH_OPCODE) {
-+			bool result = false;
-+			long imm = EXTRACT_BTYPE_IMM(op_code);
-+			unsigned long rs1_val = 0, rs2_val = 0;
-+
-+			rs1_num = decode_register_index(op_code, RVG_RS1_OPOFF);
-+			rs2_num = decode_register_index(op_code, RVG_RS2_OPOFF);
-+			if (rs1_num)
-+				rs1_val = regs_ptr[rs1_num];
-+			if (rs2_num)
-+				rs2_val = regs_ptr[rs2_num];
-+
-+			if (is_beq_insn(op_code))
-+				result = (rs1_val == rs2_val) ? true : false;
-+			else if (is_bne_insn(op_code))
-+				result = (rs1_val != rs2_val) ? true : false;
-+			else if (is_blt_insn(op_code))
-+				result =
-+				    ((long)rs1_val <
-+				     (long)rs2_val) ? true : false;
-+			else if (is_bge_insn(op_code))
-+				result =
-+				    ((long)rs1_val >=
-+				     (long)rs2_val) ? true : false;
-+			else if (is_bltu_insn(op_code))
-+				result = (rs1_val < rs2_val) ? true : false;
-+			else if (is_bgeu_insn(op_code))
-+				result = (rs1_val >= rs2_val) ? true : false;
-+			if (result)
-+				*next_addr = imm + pc;
-+			else
-+				*next_addr = pc + 4;
-+		} else if (is_jal_insn(op_code)) {
-+			*next_addr = EXTRACT_JTYPE_IMM(op_code) + pc;
-+		} else if (is_jalr_insn(op_code)) {
-+			rs1_num = decode_register_index(op_code, RVG_RS1_OPOFF);
-+			if (rs1_num)
-+				*next_addr = ((unsigned long *)regs)[rs1_num];
-+			*next_addr += EXTRACT_ITYPE_IMM(op_code);
-+		} else if (is_sret_insn(op_code)) {
-+			*next_addr = pc;
-+		} else {
-+			*next_addr = pc + 4;
-+		}
-+	}
-+	return 0;
-+}
-+
-+int do_single_step(struct pt_regs *regs)
-+{
-+	/* Determine where the target instruction will send us to */
-+	unsigned long addr = 0;
-+	int error = get_step_address(regs, &addr);
-+
-+	if (error)
-+		return error;
-+
-+	/* Store the op code in the stepped address */
-+	error = probe_kernel_address((void *)addr, stepped_opcode);
-+	if (error)
-+		return error;
-+
-+	stepped_address = addr;
-+
-+	/* Replace the op code with the break instruction */
-+	error = probe_kernel_write((void *)stepped_address,
-+				   arch_kgdb_ops.gdb_bpt_instr,
-+				   BREAK_INSTR_SIZE);
-+	/* Flush and return */
-+	if (!error) {
-+		flush_icache_range(addr, addr + BREAK_INSTR_SIZE);
-+		kgdb_single_step = 1;
-+		atomic_set(&kgdb_cpu_doing_single_step,
-+			   raw_smp_processor_id());
-+	} else {
-+		stepped_address = 0;
-+		stepped_opcode = 0;
-+	}
-+	return error;
-+}
-+
-+/* Undo a single step */
-+static void undo_single_step(struct pt_regs *regs)
-+{
-+	if (stepped_opcode != 0) {
-+		probe_kernel_write((void *)stepped_address,
-+				   (void *)&stepped_opcode, BREAK_INSTR_SIZE);
-+		flush_icache_range(stepped_address,
-+				   stepped_address + BREAK_INSTR_SIZE);
-+	}
-+	stepped_address = 0;
-+	stepped_opcode = 0;
-+	kgdb_single_step = 0;
-+	atomic_set(&kgdb_cpu_doing_single_step, -1);
-+}
-+
- struct dbg_reg_def_t dbg_reg_def[DBG_MAX_REG_NUM] = {
- 	{DBG_REG_ZERO, GDB_SIZEOF_REG, -1},
- 	{DBG_REG_RA, GDB_SIZEOF_REG, offsetof(struct pt_regs, ra)},
-@@ -135,6 +301,8 @@ int kgdb_arch_handle_exception(int vector, int signo, int err_code,
- {
- 	int err = 0;
- 
-+	undo_single_step(regs);
-+
- 	switch (remcom_in_buffer[0]) {
- 	case 'c':
- 	case 'D':
-@@ -142,15 +310,20 @@ int kgdb_arch_handle_exception(int vector, int signo, int err_code,
- 		if (remcom_in_buffer[0] == 'c')
- 			kgdb_arch_update_addr(regs, remcom_in_buffer);
- 		break;
-+	case 's':
-+		kgdb_arch_update_addr(regs, remcom_in_buffer);
-+		err = do_single_step(regs);
-+		break;
- 	default:
- 		err = -1;
- 	}
--
- 	return err;
- }
- 
- int kgdb_riscv_kgdbbreak(unsigned long addr)
- {
-+	if (stepped_address == addr)
-+		return KGDB_SW_SINGLE_STEP;
- 	if (atomic_read(&kgdb_setting_breakpoint))
- 		if (addr == (unsigned long)&kgdb_compiled_break)
- 			return KGDB_COMPILED_BREAK;
-@@ -174,7 +347,9 @@ static int kgdb_riscv_notify(struct notifier_block *self, unsigned long cmd,
- 		return NOTIFY_DONE;
- 
- 	local_irq_save(flags);
--	if (kgdb_handle_exception(1, args->signr, cmd, regs))
-+
-+	if (kgdb_handle_exception(type == KGDB_SW_SINGLE_STEP ? 0 : 1,
-+				  args->signr, cmd, regs))
- 		return NOTIFY_DONE;
- 
- 	if (type == KGDB_COMPILED_BREAK)
--- 
-2.7.4
+On Wed, Apr 15, 2020 at 07:55:48PM -0500, Rob Herring wrote:
+> Fix various inconsistencies in schema indentation. Most of these are
+> list indentation which should be 2 spaces more than the start of the
+> enclosing keyword. This doesn't matter functionally, but affects running
+> scripts which do transforms on the schema files.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
+For allwinner,
+Acked-by: Maxime Ripard <mripard@kernel.org>
+
+Thanks!
+Maxime
+
+--s675c5ai5d6avmtq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXpf+YgAKCRDj7w1vZxhR
+xZmqAPwLCqvPnd6KBgcsRgWmwe8BxcsE0xhduyc59wNSaliiHQEAhUMizDtya0EL
+yGrmpfvuS8/nRsvbMHGM2twyMWfc6QE=
+=F+e6
+-----END PGP SIGNATURE-----
+
+--s675c5ai5d6avmtq--
 
