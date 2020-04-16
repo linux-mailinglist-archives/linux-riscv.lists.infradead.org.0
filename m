@@ -2,81 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FFF71AB997
-	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 09:19:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47D8B1AB9B7
+	for <lists+linux-riscv@lfdr.de>; Thu, 16 Apr 2020 09:21:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3AEaWn5XeJ7hcX74F4NzwZbogUqZr77xLF5d73BlBfw=; b=L1wKebV2RuZtGjyCjRjQhh/5d
-	RsF/sQ1gHYKP9CfHsYbOGqbbM68tMnwkRHHiOOChebC3MZiCM8ZSA1TsAJal/U3TSTO27V/qY4v9N
-	r2MVxrWAcebt/hXrWaT/Yd6Klleiic1FiYI+/fguwDDNeiMAFVINUH+zPJwEzW1LfVS9miaq2Vy6q
-	tkdP8lXxYL2ZIfuujaLBr3RSlRmtRbk1iv2Gl84k07Z+nd73PQC8xOInBEFAcAePlQXdXWR/Cn1kg
-	alb/zc63NH6QUCK4Yp7EIMKiN0iuUmtxckloUcE4nnCfMLnLbcwvXGBY6qjIBugIc0dBCASGScZnf
-	ZbOY/FMpw==;
+	 bh=PfcEIjHVOwJJoI3IG1yq+hLuJEPuCeMcpBtriOzJSVE=; b=VZXpnTf9VCc6kkmlKiZA2KwlN
+	3PoRKw64x91qlVE7WDg54SKxeykZTCCO2aDSxENxslYAQbq+YCf5KiuO6twydIeTuaX2RZ0Frkmy/
+	A3vjuR6A6J7EDwnLFxfWcKoDQCdvde6eG8XUhRxQSnx8ZK4w8fbDW5rClqxC7vjPaXMmGL4KFOCxm
+	oAvyShv8BPKbNOwgRKJbGaeVCE1+ppo2oTIB+VFW9nnCx6AdSveu1sTlSIZKc243l75+fkPZ852g+
+	OZduxSpa6c/gWhooyRJnsRlBMp6DqTMZlluy/NZwwPHKc+qiayXil7I9Z8QVZ+Byz/lnMGlB78rpv
+	x23T5q3Hg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOynz-0004Sc-Ko; Thu, 16 Apr 2020 07:19:23 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jOyqJ-0007lc-Sp; Thu, 16 Apr 2020 07:21:47 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOynw-0004RX-37
- for linux-riscv@lists.infradead.org; Thu, 16 Apr 2020 07:19:22 +0000
-Received: by mail-wr1-x444.google.com with SMTP id f13so3489834wrm.13
- for <linux-riscv@lists.infradead.org>; Thu, 16 Apr 2020 00:19:19 -0700 (PDT)
+ id 1jOyq6-0007KM-If
+ for linux-riscv@lists.infradead.org; Thu, 16 Apr 2020 07:21:37 +0000
+Received: by mail-wm1-x342.google.com with SMTP id a201so3646289wme.1
+ for <linux-riscv@lists.infradead.org>; Thu, 16 Apr 2020 00:21:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to;
- bh=3AEaWn5XeJ7hcX74F4NzwZbogUqZr77xLF5d73BlBfw=;
- b=x+7x1SRD1y/LTZJxHdO7NBoPBhyXEErUVgwIai9Txb2aqME7MbBYVN8PkA7MmFMlG/
- +PTNeDQuJeOieuyql513BpDrE+TR0fX/mGtYOkCA4N6z7VRTvWgnydlKHHjdN1pHbDi6
- FcrLT7q9Xm6W6XF2DKy+sVxRvrx2e8zXuCLbQfQ8d2nPd/iJ34SsziQVe8hgIZhAVDz1
- X39oeCEgZoTyWJybNtbP4u4Ik4a22WiM6sS1Gf+7ektT/jxfmy4EaiaU+raISKCA976c
- DL5uziLMISTg53DG/aGMYXA9DS9lwHatzi8LUvPjSHKrnZk+uf82Nr0GKjoaC8YAX62l
- Ovyw==
+ bh=PfcEIjHVOwJJoI3IG1yq+hLuJEPuCeMcpBtriOzJSVE=;
+ b=fWro629AKCHe7c1PY8qWNnc/MO1FUAtCQOwruVmdsj4Kyvr1SDGr9Xgc/VGuT4Ao08
+ aszgwv1hJNkmDxBtLtWK7K2S9mv6z5/c8TCmg4n+kwj4eAnnvC2Dt4pvdKuMnlfnbcGf
+ puxMyauwUmvCn/LNyQLnyjFrS1Kzkios1/MsF6m/I4GPnRVdRC2+tstnjmmO650ZwQzj
+ 4aWRTSNgkZKvvDPkpZ/B7oqv4O1vvl2M0bRRRPUNQCjnZDrbzcP/JjjuClCaNvbDFuVJ
+ cZP/dedvaVFsRZKmIeGsiWSNvkLi9aAZR4c6U1deMU+GHzWLDixE4IBaBhe7BLuqYxXC
+ CRaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=3AEaWn5XeJ7hcX74F4NzwZbogUqZr77xLF5d73BlBfw=;
- b=LhbGNXIZFJe7wJQKfWCzMAhJ/Q4r2c9Z/fG+Tbe533jHSvKGXzFEKjbvpZt2nhgvfC
- Om+E8fd8NvXcZh2avtfhJSLNcJNCHLIKRGPthf1vqy4BLtbq4jVZS2rrmidGHP09w2sm
- lHm6z3ePECvf5yVMtLIo2oT//6RkstG2Ii9vyfsxCYM5azHwzPcEnvdcc6F1VgqwIgD7
- diCPxVzUx9Xa3KE1A0Py/FWxl6lr5+f0/kSnSKSSRKoAwjopnSijoHMP7Yn9oGvst/S+
- ZDcBLx4sWq33TnpxgJDgIH8Z/WUJDiJ8OcqYVYfI5QImZ/nQOlO4u37f3VF96SJZK2N/
- fcdQ==
-X-Gm-Message-State: AGi0Pub9HxG6lwMhPMyFvhsESvYrYzRORnIgQv67I6TlNEukLkdQ5R2W
- N8Z4eEAIZd2POG/8A3trGJ1Vvg==
-X-Google-Smtp-Source: APiQypLCNVZBL4RMlNf7UZFX5oU2xDT6SF7MjxuD7BsWZie9pUbnFA9tcL+f+7W6lePE+UdiJ1fBjg==
-X-Received: by 2002:adf:e4cc:: with SMTP id v12mr8967305wrm.106.1587021558557; 
- Thu, 16 Apr 2020 00:19:18 -0700 (PDT)
+ bh=PfcEIjHVOwJJoI3IG1yq+hLuJEPuCeMcpBtriOzJSVE=;
+ b=oyhQ17HfT33nQvC+y65BSqIMx49aaEY+CVNs3VkoqLh6jyEGGM8LWJx7Yfvwlm4FQM
+ ZK0B/bLtU1ABA6Q2zMXdaUZGTkJFiRItqD17uWXwgEwPr1A8su8MT9uYjgIkpIgKl+rm
+ EME8qFZiDzRczvygGNXUqQDBz/Y+Cg8Qoxrs1nzzuhI2BWnIKraApFKVYEtZIyKZdmRh
+ qyEV+3UluaXEaPEX+qMVIymLk3lxbj/N/lpcoz6irkrkuGALGMKwwA9D+mEAMwudlYCp
+ c3xIyTXhL0yQIn0nKMxcLO7TPdWAx1JIszT4/eBPW+BIJoYOeH4PpFzHwL6ezhBRZ58L
+ 7fXQ==
+X-Gm-Message-State: AGi0Pub358i3yXs3OFEvMarvDf+l0w0KVEZM+3zVLbZWkJBCRfvXwq0d
+ enMsH+TQ6d6oqccSyDFLFar62g==
+X-Google-Smtp-Source: APiQypKxoroogYo0WPMcKERsdRMrzAoaU5nNn92qAMbIpRzZIzICMY0kveTYaemzAUSe6fR6V9LLBA==
+X-Received: by 2002:a1c:990d:: with SMTP id b13mr3217540wme.179.1587021691888; 
+ Thu, 16 Apr 2020 00:21:31 -0700 (PDT)
 Received: from dell ([95.149.164.124])
- by smtp.gmail.com with ESMTPSA id p16sm19943946wro.21.2020.04.16.00.19.16
+ by smtp.gmail.com with ESMTPSA id h188sm2608116wme.8.2020.04.16.00.21.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Apr 2020 00:19:17 -0700 (PDT)
-Date: Thu, 16 Apr 2020 08:20:18 +0100
+ Thu, 16 Apr 2020 00:21:31 -0700 (PDT)
+Date: Thu, 16 Apr 2020 08:22:31 +0100
 From: Lee Jones <lee.jones@linaro.org>
 To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: Clean-up schema indentation formatting
-Message-ID: <20200416072018.GS2167633@dell>
+Subject: Re: [PATCH 2/2] dt-bindings: Remove cases of 'allOf' containing a
+ '$ref'
+Message-ID: <20200416072231.GT2167633@dell>
 References: <20200416005549.9683-1-robh@kernel.org>
+ <20200416005549.9683-2-robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200416005549.9683-1-robh@kernel.org>
+In-Reply-To: <20200416005549.9683-2-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200416_001920_661829_977920CF 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20200416_002134_627516_E05559EC 
+X-CRM114-Status: GOOD (  15.27  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -131,95 +133,114 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Wed, 15 Apr 2020, Rob Herring wrote:
 
-> Fix various inconsistencies in schema indentation. Most of these are
-> list indentation which should be 2 spaces more than the start of the
-> enclosing keyword. This doesn't matter functionally, but affects running
-> scripts which do transforms on the schema files.
+> json-schema versions draft7 and earlier have a weird behavior in that
+> any keywords combined with a '$ref' are ignored (silently). The correct
+> form was to put a '$ref' under an 'allOf'. This behavior is now changed
+> in the 2019-09 json-schema spec and '$ref' can be mixed with other
+> keywords. The json-schema library doesn't yet support this, but the
+> tooling now does a fixup for this and either way works.
+> 
+> This has been a constant source of review comments, so let's change this
+> treewide so everyone copies the simpler syntax.
 > 
 > Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->  .../devicetree/bindings/arm/altera.yaml       |  6 +-
->  .../amlogic/amlogic,meson-gx-ao-secure.yaml   |  2 +-
->  .../devicetree/bindings/arm/bitmain.yaml      |  2 +-
->  .../devicetree/bindings/arm/nxp/lpc32xx.yaml  |  9 ++-
->  .../bindings/arm/socionext/uniphier.yaml      | 26 ++++----
->  .../bindings/arm/stm32/st,mlahb.yaml          |  2 +-
->  .../bindings/arm/stm32/st,stm32-syscon.yaml   |  6 +-
->  .../bindings/ata/faraday,ftide010.yaml        |  4 +-
->  .../bindings/bus/allwinner,sun8i-a23-rsb.yaml |  4 +-
->  .../clock/allwinner,sun4i-a10-gates-clk.yaml  |  8 +--
->  .../devicetree/bindings/clock/fsl,plldig.yaml | 17 +++--
->  .../devicetree/bindings/clock/qcom,mmcc.yaml  | 16 ++---
->  .../bindings/connector/usb-connector.yaml     |  6 +-
->  .../crypto/allwinner,sun4i-a10-crypto.yaml    | 14 ++--
->  .../bindings/crypto/allwinner,sun8i-ce.yaml   | 16 ++---
->  .../bindings/crypto/amlogic,gxl-crypto.yaml   |  2 +-
->  .../display/allwinner,sun4i-a10-hdmi.yaml     | 40 ++++++------
->  .../display/allwinner,sun4i-a10-tcon.yaml     | 58 ++++++++---------
->  .../display/allwinner,sun6i-a31-mipi-dsi.yaml | 28 ++++----
->  .../display/allwinner,sun8i-a83t-dw-hdmi.yaml | 10 +--
->  .../bindings/display/bridge/lvds-codec.yaml   | 18 +++---
->  .../display/panel/sony,acx424akp.yaml         |  2 +-
->  .../display/panel/xinpeng,xpp055c272.yaml     |  4 +-
->  .../bindings/display/renesas,cmm.yaml         | 16 ++---
->  .../devicetree/bindings/dma/ti/k3-udma.yaml   |  8 +--
->  .../bindings/gpio/brcm,xgs-iproc-gpio.yaml    |  2 +-
->  .../bindings/gpu/arm,mali-midgard.yaml        | 18 +++---
->  .../devicetree/bindings/gpu/vivante,gc.yaml   |  2 +-
->  .../devicetree/bindings/i2c/i2c-rk3x.yaml     | 10 +--
->  .../bindings/iio/adc/adi,ad7124.yaml          |  4 +-
->  .../bindings/iio/adc/lltc,ltc2496.yaml        |  6 +-
->  .../input/allwinner,sun4i-a10-lradc-keys.yaml |  4 +-
->  .../bindings/input/touchscreen/goodix.yaml    |  2 +-
->  .../bindings/interconnect/qcom,msm8916.yaml   |  4 +-
->  .../bindings/interconnect/qcom,msm8974.yaml   |  4 +-
->  .../bindings/interconnect/qcom,qcs404.yaml    |  4 +-
->  .../allwinner,sun7i-a20-sc-nmi.yaml           | 12 ++--
->  .../intel,ixp4xx-interrupt.yaml               |  8 +--
->  .../interrupt-controller/st,stm32-exti.yaml   | 12 ++--
->  .../bindings/iommu/samsung,sysmmu.yaml        | 10 +--
->  .../bindings/mailbox/st,stm32-ipcc.yaml       |  2 +-
->  .../media/allwinner,sun4i-a10-csi.yaml        | 28 ++++----
->  .../bindings/media/amlogic,gx-vdec.yaml       | 14 ++--
->  .../bindings/media/renesas,ceu.yaml           | 28 ++++----
->  .../bindings/media/renesas,vin.yaml           |  8 +--
->  .../devicetree/bindings/media/ti,vpe.yaml     |  2 +-
->  .../memory-controllers/fsl/imx8m-ddrc.yaml    |  6 +-
+>  .../devicetree/bindings/arm/cpus.yaml         |  81 +++---
+>  .../devicetree/bindings/arm/l2c2x0.yaml       |  87 +++---
+>  .../devicetree/bindings/arm/psci.yaml         |  15 +-
+>  .../bindings/arm/samsung/exynos-chipid.yaml   |   5 +-
+>  .../bus/allwinner,sun50i-a64-de2.yaml         |   5 +-
+>  .../bindings/clock/fixed-factor-clock.yaml    |   5 +-
+>  .../bindings/connector/usb-connector.yaml     |  28 +-
+>  .../bindings/crypto/st,stm32-hash.yaml        |   9 +-
+>  .../allwinner,sun4i-a10-display-engine.yaml   |   7 +-
+>  .../display/allwinner,sun4i-a10-tcon.yaml     |   5 +-
+>  .../bindings/display/panel/panel-common.yaml  |   5 +-
+>  .../devicetree/bindings/dma/dma-common.yaml   |   3 +-
+>  .../devicetree/bindings/dma/ti/k3-udma.yaml   |  18 +-
+>  .../devicetree/bindings/eeprom/at24.yaml      |  11 +-
+>  .../devicetree/bindings/example-schema.yaml   |  17 +-
+>  .../bindings/hwmon/adi,ltc2947.yaml           |  32 +--
+>  .../devicetree/bindings/hwmon/ti,tmp513.yaml  |  21 +-
+>  .../devicetree/bindings/i2c/st,stm32-i2c.yaml |   9 +-
+>  .../bindings/iio/adc/adi,ad7124.yaml          |   5 +-
+>  .../bindings/iio/adc/lltc,ltc2496.yaml        |   3 +-
+>  .../bindings/iio/adc/microchip,mcp3911.yaml   |   7 +-
+>  .../bindings/iio/adc/st,stm32-dfsdm-adc.yaml  |  31 +-
+>  .../bindings/iio/light/tsl2772.yaml           |  13 +-
+>  .../bindings/iio/temperature/adi,ltc2983.yaml |  56 ++--
+>  .../input/allwinner,sun4i-a10-lradc-keys.yaml |   5 +-
+>  .../devicetree/bindings/input/input.yaml      |   9 +-
+>  .../interrupt-controller/arm,gic-v3.yaml      |  39 ++-
+>  .../devicetree/bindings/iommu/arm,smmu.yaml   |   3 +-
+>  .../devicetree/bindings/leds/common.yaml      |  13 +-
+>  .../devicetree/bindings/leds/leds-gpio.yaml   |   3 +-
+>  .../bindings/leds/rohm,bd71828-leds.yaml      |  10 +-
+>  .../bindings/mailbox/st,stm32-ipcc.yaml       |   5 +-
+>  .../bindings/media/amlogic,gx-vdec.yaml       |   6 +-
+>  .../media/amlogic,meson-gx-ao-cec.yaml        |   3 +-
+>  .../devicetree/bindings/media/rc.yaml         | 265 +++++++++---------
+>  .../bindings/media/renesas,vin.yaml           |   7 +-
+>  .../memory-controllers/exynos-srom.yaml       |  14 +-
+>  .../nvidia,tegra124-emc.yaml                  |   9 +-
+>  .../nvidia,tegra124-mc.yaml                   |   3 +-
+>  .../nvidia,tegra30-emc.yaml                   |   9 +-
+>  .../memory-controllers/nvidia,tegra30-mc.yaml |   3 +-
 
->  .../bindings/mfd/st,stm32-lptimer.yaml        |  4 +-
->  .../bindings/mfd/st,stm32-timers.yaml         |  4 +-
->  .../devicetree/bindings/mfd/syscon.yaml       | 12 ++--
+>  .../bindings/mfd/allwinner,sun4i-a10-ts.yaml  |  20 +-
+>  .../bindings/mfd/st,stm32-timers.yaml         |  33 ++-
+>  .../devicetree/bindings/mfd/st,stpmic1.yaml   |   9 +-
+>  .../devicetree/bindings/mfd/syscon.yaml       |   5 +-
 
 Acked-by: Lee Jones <lee.jones@linaro.org>
 
->  .../devicetree/bindings/mmc/cdns,sdhci.yaml   |  2 +-
->  .../bindings/mmc/rockchip-dw-mshc.yaml        | 16 ++---
->  .../bindings/mmc/socionext,uniphier-sd.yaml   | 14 ++--
->  .../devicetree/bindings/mtd/denali,nand.yaml  |  4 +-
->  .../net/allwinner,sun8i-a83t-emac.yaml        |  4 +-
->  .../bindings/net/can/bosch,m_can.yaml         | 52 +++++++--------
->  .../bindings/net/renesas,ether.yaml           |  4 +-
->  .../bindings/net/ti,cpsw-switch.yaml          | 12 ++--
->  .../bindings/net/ti,davinci-mdio.yaml         | 27 ++++----
->  .../bindings/phy/intel,lgm-emmc-phy.yaml      |  2 +-
->  .../devicetree/bindings/pwm/pwm-samsung.yaml  | 16 ++---
->  .../bindings/remoteproc/st,stm32-rproc.yaml   |  2 +-
->  .../reset/brcm,bcm7216-pcie-sata-rescal.yaml  |  4 +-
->  .../devicetree/bindings/rtc/st,stm32-rtc.yaml | 38 +++++------
->  .../bindings/serial/amlogic,meson-uart.yaml   | 16 ++---
->  .../devicetree/bindings/serial/rs485.yaml     | 17 ++---
->  .../bindings/soc/amlogic/amlogic,canvas.yaml  | 10 +--
->  .../bindings/sound/renesas,fsi.yaml           | 16 ++---
->  .../bindings/spi/qcom,spi-qcom-qspi.yaml      | 10 +--
->  .../devicetree/bindings/spi/renesas,hspi.yaml |  4 +-
->  .../devicetree/bindings/spi/spi-pl022.yaml    |  2 +-
->  .../bindings/spi/st,stm32-qspi.yaml           |  4 +-
->  .../allwinner,sun4i-a10-system-control.yaml   | 64 +++++++++----------
->  .../bindings/thermal/amlogic,thermal.yaml     | 10 +--
->  .../bindings/timer/arm,arch_timer.yaml        |  4 +-
->  .../bindings/timer/arm,arch_timer_mmio.yaml   |  4 +-
->  .../devicetree/bindings/usb/dwc2.yaml         |  8 +--
->  77 files changed, 450 insertions(+), 450 deletions(-)
+>  .../devicetree/bindings/mmc/aspeed,sdhci.yaml |   4 +-
+>  .../devicetree/bindings/mmc/cdns,sdhci.yaml   |  77 +++--
+>  .../bindings/mmc/mmc-controller.yaml          |  37 ++-
+>  .../bindings/mmc/rockchip-dw-mshc.yaml        |   6 +-
+>  .../bindings/mmc/synopsys-dw-mshc-common.yaml |  14 +-
+>  .../mtd/allwinner,sun4i-a10-nand.yaml         |  13 +-
+>  .../bindings/mtd/nand-controller.yaml         |  27 +-
+>  .../bindings/net/can/bosch,m_can.yaml         |  59 ++--
+>  .../bindings/net/ethernet-controller.yaml     |  34 +--
+>  .../devicetree/bindings/net/qca,ar803x.yaml   |  17 +-
+>  .../devicetree/bindings/net/snps,dwmac.yaml   |  22 +-
+>  .../bindings/net/ti,cpsw-switch.yaml          |   3 +-
+>  .../bindings/net/ti,davinci-mdio.yaml         |   7 +-
+>  .../bindings/pci/intel-gw-pcie.yaml           |   7 +-
+>  .../pinctrl/allwinner,sun4i-a10-pinctrl.yaml  |  12 +-
+>  .../pinctrl/aspeed,ast2400-pinctrl.yaml       |  37 ++-
+>  .../pinctrl/aspeed,ast2500-pinctrl.yaml       |  45 ++-
+>  .../pinctrl/aspeed,ast2600-pinctrl.yaml       | 108 ++++---
+>  .../bindings/pinctrl/fsl,imx8mp-pinctrl.yaml  |  31 +-
+>  .../bindings/pinctrl/intel,lgm-io.yaml        |   4 +-
+>  .../bindings/pinctrl/pinmux-node.yaml         |   3 +-
+>  .../bindings/pinctrl/st,stm32-pinctrl.yaml    |  56 ++--
+>  .../bindings/power/amlogic,meson-ee-pwrc.yaml |   3 +-
+>  .../devicetree/bindings/pwm/pwm-samsung.yaml  |  11 +-
+>  .../bindings/regulator/gpio-regulator.yaml    |  35 ++-
+>  .../bindings/regulator/mps,mpq7920.yaml       |  31 +-
+>  .../bindings/regulator/regulator.yaml         |   5 +-
+>  .../regulator/rohm,bd71828-regulator.yaml     |  34 +--
+>  .../bindings/regulator/st,stm32-booster.yaml  |   3 +-
+>  .../regulator/st,stm32mp1-pwr-reg.yaml        |   3 +-
+>  .../bindings/remoteproc/st,stm32-rproc.yaml   |   9 +-
+>  .../bindings/reset/intel,rcu-gw.yaml          |   3 +-
+>  .../devicetree/bindings/riscv/cpus.yaml       |  20 +-
+>  .../devicetree/bindings/rtc/st,stm32-rtc.yaml |   9 +-
+>  .../devicetree/bindings/serial/pl011.yaml     |  10 +-
+>  .../devicetree/bindings/serial/rs485.yaml     |  26 +-
+>  .../bindings/serial/samsung_uart.yaml         |   5 +-
+>  .../bindings/sound/adi,adau7118.yaml          |  20 +-
+>  .../sound/allwinner,sun4i-a10-codec.yaml      |  41 ++-
+>  .../bindings/sound/qcom,wcd934x.yaml          |   3 +-
+>  .../bindings/spi/renesas,sh-msiof.yaml        |  42 ++-
+>  .../bindings/spi/spi-controller.yaml          |  14 +-
+>  .../devicetree/bindings/spi/spi-pl022.yaml    |  55 ++--
+>  .../devicetree/bindings/spi/spi-sifive.yaml   |  14 +-
+>  .../bindings/thermal/qcom-tsens.yaml          |   7 +-
+>  .../bindings/timer/arm,arch_timer_mmio.yaml   |   7 +-
+>  91 files changed, 881 insertions(+), 1103 deletions(-)
 
 -- 
 Lee Jones [李琼斯]
