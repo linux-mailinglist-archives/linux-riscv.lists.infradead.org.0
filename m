@@ -2,40 +2,40 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 242911ADCF9
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 14:11:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E9C961ADCF8
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 14:11:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=haLa4hYj8h6BU8HmQ49Pw6Y/ytTHs+zwx1N1WWfthdE=; b=CGHZ//AYcp9S3hXnw81PAH3Rt
-	WYgtJCkYHTtyPKp43D4g7C5sWxMI8qAiHBG4BvCBlDM7xiIncHoMZAZ6mvbmTHMB0YuvhQGeHYzKM
-	iY0+J9AtFIdpbybvvkro10RyJFyKgu/0k3hfZ6Hbi4dTOM3SYlEJLtDNksdWkmVfGD6XsgGh54uJB
-	9izEuU+DvuJMXCWYjZw7fherWIklkyNUgYCHMjz3xUkblEc8Gz+B6XhFvv2dp2LEmZgesKUm50/A5
-	gP31TUAaoRjb+f4DzWinzFcbuxzTRlKZT9549i6vI7xCn4Lc6n/OU6UqqRU/r6ToAnJWnvScIo/px
-	y4YtoyJoA==;
+	 bh=OW/veivYz8ZKWPuu2zYUbg/pdGGB7HhUQV0WhWZdFOc=; b=LqOj02MXAtaXMG7/u5fy0K09q
+	LyPhS398lBIQReMvgOf4qvJENdeoyC63P6cBYfqcOhVd1TGGMCC17w66/xhE2AXY2axIJJGCvQMNq
+	DyIABoJXxWBy0SATYYnGe3qpZDmXgpxd2f3isWEiqAbtgZnWje/aDMO2ltc3ndBY2cOpNg7OFRlkO
+	v29nJ1SAdrHILdy8GXiCUq0jXW0Eee1acySKxaBK5l0wvwUcgVlTgvBg8EMleQ/+vwX0xU+0Y7ODd
+	DbE6Uur4GLM2ZKZgTTTWmgF1WHY2IzCQENYr4nzqgzaz18skIyinuf/yapCvKwCH2nST2iHsMVRAs
+	Q6f0RpETQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPPpo-0002hX-88; Fri, 17 Apr 2020 12:11:04 +0000
+	id 1jPPpm-0002fZ-6H; Fri, 17 Apr 2020 12:11:02 +0000
 Received: from szxga05-in.huawei.com ([45.249.212.191] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPPpg-0002cq-LY
- for linux-riscv@lists.infradead.org; Fri, 17 Apr 2020 12:10:59 +0000
+ id 1jPPpg-0002cf-LF
+ for linux-riscv@lists.infradead.org; Fri, 17 Apr 2020 12:10:58 +0000
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id A0C9FB52C93129D961C4;
+ by Forcepoint Email with ESMTP id 95E8E8E4E9CB12F4DE12;
  Fri, 17 Apr 2020 20:10:44 +0800 (CST)
 Received: from localhost.localdomain.localdomain (10.175.113.25) by
  DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 17 Apr 2020 20:10:36 +0800
+ 14.3.487.0; Fri, 17 Apr 2020 20:10:37 +0800
 From: Kefeng Wang <wangkefeng.wang@huawei.com>
 To: <atish.patra@wdc.com>, Paul Walmsley <paul.walmsley@sifive.com>, "Palmer
  Dabbelt" <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
  <linux-kernel@vger.kernel.org>, <linux-riscv@lists.infradead.org>
-Subject: [PATCH 2/3] tty: riscv: Using RISCV_SBI_V01 instead of RISCV_SBI
-Date: Fri, 17 Apr 2020 20:12:21 +0800
-Message-ID: <20200417121222.156422-2-wangkefeng.wang@huawei.com>
+Subject: [PATCH 3/3] riscv: sbi: Fix undefined reference to sbi_shutdown
+Date: Fri, 17 Apr 2020 20:12:22 +0800
+Message-ID: <20200417121222.156422-3-wangkefeng.wang@huawei.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200417121222.156422-1-wangkefeng.wang@huawei.com>
 References: <20200417121222.156422-1-wangkefeng.wang@huawei.com>
@@ -45,8 +45,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.175.113.25]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200417_051057_258242_E27F116D 
-X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-CacheID: sfid-20200417_051056_864308_E2897FF6 
+X-CRM114-Status: UNSURE (   9.57  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -72,44 +72,61 @@ Cc: Kefeng Wang <wangkefeng.wang@huawei.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-As shown in SBI v0.2, the legacy console SBI functions (sbi_console_getchar()
-and sbi_console_putchar()) are expected to be deprecated; they have no replacement.
+There is no shutdown call in SBI v0.2, only set pm_power_off
+when RISCV_SBI_V01 enabled to fix following build error,
 
-Let's HVC_RISCV_SBI and SERIAL_EARLYCON_RISCV_SBI depends on RISCV_SBI_V01.
+riscv64-linux-ld: arch/riscv/kernel/sbi.o: in function `sbi_power_off':
+sbi.c:(.text+0xe): undefined reference to `sbi_shutdown
 
 Fixes: efca13989250 ("RISC-V: Introduce a new config for SBI v0.1")
 Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
 ---
- drivers/tty/hvc/Kconfig    | 2 +-
- drivers/tty/serial/Kconfig | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/riscv/kernel/sbi.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/tty/hvc/Kconfig b/drivers/tty/hvc/Kconfig
-index 31b7e1b03749..d1b27b0522a3 100644
---- a/drivers/tty/hvc/Kconfig
-+++ b/drivers/tty/hvc/Kconfig
-@@ -88,7 +88,7 @@ config HVC_DCC
+diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
+index 62b10a16c8d7..f383ef5672b2 100644
+--- a/arch/riscv/kernel/sbi.c
++++ b/arch/riscv/kernel/sbi.c
+@@ -167,6 +167,11 @@ static int __sbi_rfence_v01(int fid, const unsigned long *hart_mask,
  
- config HVC_RISCV_SBI
- 	bool "RISC-V SBI console support"
--	depends on RISCV_SBI
-+	depends on RISCV_SBI_V01
- 	select HVC_DRIVER
- 	help
- 	  This enables support for console output via RISC-V SBI calls, which
-diff --git a/drivers/tty/serial/Kconfig b/drivers/tty/serial/Kconfig
-index 0aea76cd67ff..adf9e80e7dc9 100644
---- a/drivers/tty/serial/Kconfig
-+++ b/drivers/tty/serial/Kconfig
-@@ -86,7 +86,7 @@ config SERIAL_EARLYCON_ARM_SEMIHOST
+ 	return result;
+ }
++
++static void sbi_set_power_off(void)
++{
++	pm_power_off = sbi_shutdown;
++}
+ #else
+ static void __sbi_set_timer_v01(uint64_t stime_value)
+ {
+@@ -191,6 +196,8 @@ static int __sbi_rfence_v01(int fid, const unsigned long *hart_mask,
  
- config SERIAL_EARLYCON_RISCV_SBI
- 	bool "Early console using RISC-V SBI"
--	depends on RISCV_SBI
-+	depends on RISCV_SBI_V01
- 	select SERIAL_CORE
- 	select SERIAL_CORE_CONSOLE
- 	select SERIAL_EARLYCON
+ 	return 0;
+ }
++
++static void sbi_set_power_off(void) {}
+ #endif /* CONFIG_RISCV_SBI_V01 */
+ 
+ static void __sbi_set_timer_v02(uint64_t stime_value)
+@@ -540,16 +547,12 @@ static inline long sbi_get_firmware_version(void)
+ 	return __sbi_base_ecall(SBI_EXT_BASE_GET_IMP_VERSION);
+ }
+ 
+-static void sbi_power_off(void)
+-{
+-	sbi_shutdown();
+-}
+ 
+ int __init sbi_init(void)
+ {
+ 	int ret;
+ 
+-	pm_power_off = sbi_power_off;
++	sbi_set_power_off();
+ 	ret = sbi_get_spec_version();
+ 	if (ret > 0)
+ 		sbi_spec_version = ret;
 -- 
 2.20.1
 
