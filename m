@@ -2,81 +2,103 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 547C81ADD90
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 14:45:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0560E1AE536
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 20:54:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9on5+5lpNxJgwFWzLnkmkylDuiiGUxKSYSVr2bz7/yM=; b=IyiersciNnSJGc/25hHmmOfWp
-	eUF5TZrO2+CJR3CAPVwBaY81HljyDsCt+hiUiV13fiwW6S9jUWWj64UUtfkfXFuvzzJj3VWFCTpa4
-	fEJXzPPLddjZek+tERIrbxihGN0A1xAqcziKzlr0RQCE3Dp81GulfIBDVdUzupoF1f/fjleRs7c9B
-	2T23yzlmFTV67ku9d7IukcUZwZplNNwpaf2ETYMhXlB3DsxJ1DCLOLY6gqHuDRXmFvvWTSc1S6Rmw
-	oDPiBP2Ccg89T5Aoi8XLLzLcf4OtxA+esVOEjIQrs0EBfpy3WW/oPRiNIMiSw6V/7qxJJJZ/0T+Cq
-	7+XjRqAeQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gYVwjW9uIr3S+PxyOOpBOdl7Nnodqy4JmhYGCNmfQWM=; b=fBLgQejghya/tH
+	Mhfnw6V+EpERt6GIwib3/LnN1n7CryTwKk197pfTNKtsuMy33ONqNazVlePHBIsccx1wLgAKsYxvB
+	rxsPAWuRhT1vuFSLYWUkMOR8I4xEr7Q3zjLMZ4btpfLNlOa2bdxQ7b7VJ8x+RJEiTHwvAVon2iC6H
+	r2uORHiSgbNk9en0oj2kbdtnEzZEs5pn68NMoa+d4cV+lGb3Y6N/GbA4jRsb6CNnRU4vig3bKKjVX
+	WE5S+Ldjg0sQjXcTLy4uVvx0Amqe+kf+f2CN3BFLk8Qdd5bYBLYCLPw5Fw8qsWw6F8sWPsmy+gsHe
+	f3AfUUXm5OdQEMJ6+8GQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPQNR-0003EB-TN; Fri, 17 Apr 2020 12:45:49 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jPW7m-0007Sb-Qx; Fri, 17 Apr 2020 18:54:02 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPQNN-0003DM-8m
- for linux-riscv@lists.infradead.org; Fri, 17 Apr 2020 12:45:47 +0000
-Received: by mail-wr1-x442.google.com with SMTP id x18so2923643wrq.2
- for <linux-riscv@lists.infradead.org>; Fri, 17 Apr 2020 05:45:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9on5+5lpNxJgwFWzLnkmkylDuiiGUxKSYSVr2bz7/yM=;
- b=mOoRWKBdm67E3FAJ3DEX+Qw2+iErYIXvmILi/JWws25atSZul/HaIaONNDygW6Nx6a
- 3O0rOhlkGtrTy0C+OfusT1AvDWLgsQ7r5F2QR8wmS4HWV4pGaBDrFYN+Atk3Osfb0Iuq
- vBV+STinzXMrFkzai/9gMYLTbxRSmDgkZ5kUo5bLqJ16bTtINxhLIklblGb70LELQxGN
- Tqi4iPEslvcBJVrhd+kKeRFEUXFVCQCtHlkFeIFzaJo0NxTBH57koIa0kIR8gA5FNCVU
- XmwrVtoWI277XCrI5uCEpJZMIGn/QZiGnLaosq3KS/ErAJV+FkLqTRuXXiU64fBNLwXK
- ItZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9on5+5lpNxJgwFWzLnkmkylDuiiGUxKSYSVr2bz7/yM=;
- b=cMCh9tcKAzNHvvFGhFIzO84vHKG3dTx0UvKQjDtzztAeRHMTM4BSk0YHDKK0vQK3TN
- /jSR239CmzwStsCETHjKrKJaKKoi7wdlytiM5sSkboDxSRiYynD+F07oHreSmdkaWhPD
- F08vDk+nVVEnIu396t4rvTIqsPfCQOJibQ3YWXlwg2Dk1SK5Z9vj0dxY5aLHuLDNvGDd
- YD48JTbixt92n7Tah4SISh90SOSouC4diVORbQyqEXSLIAKjwzLWf1STlPf+8Z17Ou05
- k1KFLEc1swXDhG/ox4+llV0Sz0tx4Z5aj1l7wNMxxHwkMEAd0IRRw6BdaFKcTk2JNzzV
- ltrA==
-X-Gm-Message-State: AGi0PubaGAZKahx5xJ/hITW0UP5LuVVBpxJtVDJ9R32QgwwwRNYgCg0G
- zIe6vvC95dn1NT2nNIun3OCQiFkbaqunQpjoIP+CRw==
-X-Google-Smtp-Source: APiQypI/D3p33lEkzA+kVo1mX/CMk5SXSOkQLZF9mmfVBGlpbkf+LZBTpQZGduaFqx4Dhur/Yxata1fWxhyYckSEk+s=
-X-Received: by 2002:adf:b35c:: with SMTP id k28mr3739709wrd.61.1587127543554; 
- Fri, 17 Apr 2020 05:45:43 -0700 (PDT)
+ id 1jPW7V-0007GC-F6; Fri, 17 Apr 2020 18:53:47 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03HIqHgt124145;
+ Fri, 17 Apr 2020 18:53:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding;
+ s=corp-2020-01-29; bh=gYVwjW9uIr3S+PxyOOpBOdl7Nnodqy4JmhYGCNmfQWM=;
+ b=PCK2CWPBOxDZpbIRlSU/o+jYUMdyVvyKxjAMbW+oUxjYTSaHIambzyU7BFyZHbzeF4L9
+ jaKxiLm80n8l4nnHnZPGPepMUpf+V4l11YuMmLQTgL/OLSY2Mz2vAHKWucWhtfR0llkY
+ l6FnrY9EjQzQknGNZpicgor/igM+VAitMhMbeYS+Ljh1G29ma/aYl84zvZNDQqNvFV1T
+ I0DqNzDqA385q7pXjl+nwBs8ea8SGWdQYBnLwrPWWfNbrGTBulSYfDmkAUXiA0aLipGE
+ aN2SOyDIr6aERMsWJLNV0utldXu2OdLE9KOASoTm/CY2HsDa4VHth5atxrHeASpUqunP xw== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 30e0aae8rg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 17 Apr 2020 18:53:11 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03HIcJ0Z118535;
+ Fri, 17 Apr 2020 18:51:10 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 30dn9ks84n-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 17 Apr 2020 18:51:10 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 03HIotrG025242;
+ Fri, 17 Apr 2020 18:50:55 GMT
+Received: from monkey.oracle.com (/71.63.128.209)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 17 Apr 2020 11:50:55 -0700
+From: Mike Kravetz <mike.kravetz@oracle.com>
+To: linux-mm@kvack.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
+ linux-riscv@lists.infradead.org, linux-s390@vger.kernel.org,
+ sparclinux@vger.kernel.org, linux-doc@vger.kernel.org
+Subject: [PATCH v3 0/4] Clean up hugetlb boot command line processing
+Date: Fri, 17 Apr 2020 11:50:45 -0700
+Message-Id: <20200417185049.275845-1-mike.kravetz@oracle.com>
+X-Mailer: git-send-email 2.25.2
 MIME-Version: 1.0
-References: <20200313075131.69837-1-anup.patel@wdc.com>
-In-Reply-To: <20200313075131.69837-1-anup.patel@wdc.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Fri, 17 Apr 2020 18:15:31 +0530
-Message-ID: <CAAhSdy32E_aTPqij3Lgs3mekMWcHw0VfXSwFc=0K8j+GrC+Kug@mail.gmail.com>
-Subject: Re: [PATCH v11 00/20] KVM RISC-V Support
-To: Palmer Dabbelt <palmer@dabbelt.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9594
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ mlxscore=0 adultscore=0
+ spamscore=0 phishscore=0 bulkscore=0 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004170142
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9594
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ clxscore=1015
+ impostorscore=0 mlxlogscore=999 mlxscore=0 lowpriorityscore=0
+ suspectscore=0 adultscore=0 spamscore=0 malwarescore=0 phishscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004170142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200417_054545_314862_3E895CAC 
-X-CRM114-Status: GOOD (  18.35  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200417_115345_632490_87C3AB72 
+X-CRM114-Status: GOOD (  17.55  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.86 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,237 +110,83 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>,
- Albert Ou <aou@eecs.berkeley.edu>, KVM General <kvm@vger.kernel.org>,
- Radim K <rkrcmar@redhat.com>, Anup Patel <anup.patel@wdc.com>,
- Damien Le Moal <damien.lemoal@wdc.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Alexander Graf <graf@amazon.com>,
- kvm-riscv@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- linux-riscv <linux-riscv@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Paul Mackerras <paulus@samba.org>, Will Deacon <will@kernel.org>,
+ Mina Almasry <almasrymina@google.com>, Jonathan Corbet <corbet@lwn.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Longpeng <longpeng2@huawei.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Vasily Gorbik <gor@linux.ibm.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Christophe Leroy <christophe.leroy@c-s.fr>,
+ Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
+ "David S . Miller" <davem@davemloft.net>,
+ Mike Kravetz <mike.kravetz@oracle.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Palmer,
+v3 -
+   Used weak attribute method of defining arch_hugetlb_valid_size.
+     This eliminates changes to arch specific hugetlb.h files (Peter)
+   Updated documentation (Peter, Randy)
+   Fixed handling of implicitly specified gigantic page preallocation
+     in existing code and removed documentation of such.  There is now
+     no difference between handling of gigantic and non-gigantic pages.
+     (Peter, Nitesh).
+     This requires the most review as there is a small change to
+     undocumented behavior.  See patch 4 commit message for details.
+   Added Acks and Reviews (Mina, Peter)
 
-On Fri, Mar 13, 2020 at 1:22 PM Anup Patel <anup.patel@wdc.com> wrote:
->
-> This series adds initial KVM RISC-V support. Currently, we are able to boot
-> RISC-V 64bit Linux Guests with multiple VCPUs.
->
-> Few key aspects of KVM RISC-V added by this series are:
-> 1. Minimal possible KVM world-switch which touches only GPRs and few CSRs.
-> 2. Full Guest/VM switch is done via vcpu_get/vcpu_put infrastructure.
-> 3. KVM ONE_REG interface for VCPU register access from user-space.
-> 4. PLIC emulation is done in user-space.
-> 5. Timer and IPI emuation is done in-kernel.
-> 6. MMU notifiers supported.
-> 7. FP lazy save/restore supported.
-> 8. SBI v0.1 emulation for KVM Guest available.
-> 9. Forward unhandled SBI calls to KVM userspace.
-> 10. Hugepage support for Guest/VM
->
-> Here's a brief TODO list which we will work upon after this series:
-> 1. SBI v0.2 emulation in-kernel
-> 2. SBI v0.2 hart state management emulation in-kernel
-> 3. In-kernel PLIC emulation
-> 4. ..... and more .....
->
-> This series can be found in riscv_kvm_v11 branch at:
-> https//github.com/avpatel/linux.git
->
-> Our work-in-progress KVMTOOL RISC-V port can be found in riscv_v2 branch
-> at: https//github.com/avpatel/kvmtool.git
->
-> The QEMU RISC-V hypervisor emulation is done by Alistair and is available
-> in mainline/anup/riscv-hyp-ext-v0.5.3 branch at:
-> https://github.com/kvm-riscv/qemu.git
->
-> To play around with KVM RISC-V, refer KVM RISC-V wiki at:
-> https://github.com/kvm-riscv/howto/wiki
-> https://github.com/kvm-riscv/howto/wiki/KVM-RISCV64-on-QEMU
->
-> Changes since v10:
->  - Rebased patches on Linux-5.6-rc5
->  - Reduce RISCV_ISA_EXT_MAX from 256 to 64
->  - Separate PATCH for removing N-extension related defines
->  - Added comments as requested by Palmer
->  - Fixed HIDELEG CSR programming
->
-> Changes since v9:
->  - Squash PATCH19 and PATCH20 into PATCH5
->  - Squash PATCH18 into PATCH11
->  - Squash PATCH17 into PATCH16
->  - Added ONE_REG interface for VCPU timer in PATCH13
->  - Use HTIMEDELTA for VCPU timer in PATCH13
->  - Updated KVM RISC-V mailing list in MAINTAINERS entry
->  - Update KVM kconfig option to depend on RISCV_SBI and MMU
->  - Check for SBI v0.2 and SBI v0.2 RFENCE extension at boot-time
->  - Use SBI v0.2 RFENCE extension in VMID implementation
->  - Use SBI v0.2 RFENCE extension in Stage2 MMU implementation
->  - Use SBI v0.2 RFENCE extension in SBI implementation
->  - Moved to RISC-V Hypervisor v0.5 draft spec
->  - Updated Documentation/virt/kvm/api.txt for timer ONE_REG interface
->  - Rebased patches on Linux-5.5-rc3
->
-> Changes since v8:
->  - Rebased series on Linux-5.4-rc3 and Atish's SBI v0.2 patches
->  - Use HRTIMER_MODE_REL instead of HRTIMER_MODE_ABS in timer emulation
->  - Fixed kvm_riscv_stage2_map() to handle hugepages
->  - Added patch to forward unhandled SBI calls to user-space
->  - Added patch for iterative/recursive stage2 page table programming
->  - Added patch to remove per-CPU vsip_shadow variable
->  - Added patch to fix race-condition in kvm_riscv_vcpu_sync_interrupts()
->
-> Changes since v7:
-> - Rebased series on Linux-5.4-rc1 and Atish's SBI v0.2 patches
-> - Removed PATCH1, PATCH3, and PATCH20 because these already merged
-> - Use kernel doc style comments for ISA bitmap functions
-> - Don't parse X, Y, and Z extension in riscv_fill_hwcap() because it will
->   be added in-future
-> - Mark KVM RISC-V kconfig option as EXPERIMENTAL
-> - Typo fix in commit description of PATCH6 of v7 series
-> - Use separate structs for CORE and CSR registers of ONE_REG interface
-> - Explicitly include asm/sbi.h in kvm/vcpu_sbi.c
-> - Removed implicit switch-case fall-through in kvm_riscv_vcpu_exit()
-> - No need to set VSSTATUS.MXR bit in kvm_riscv_vcpu_unpriv_read()
-> - Removed register for instruction length in kvm_riscv_vcpu_unpriv_read()
-> - Added defines for checking/decoding instruction length
-> - Added separate patch to forward unhandled SBI calls to userspace tool
->
-> Changes since v6:
-> - Rebased patches on Linux-5.3-rc7
-> - Added "return_handled" in struct kvm_mmio_decode to ensure that
->   kvm_riscv_vcpu_mmio_return() updates SEPC only once
-> - Removed trap_stval parameter from kvm_riscv_vcpu_unpriv_read()
-> - Updated git repo URL in MAINTAINERS entry
->
-> Changes since v5:
-> - Renamed KVM_REG_RISCV_CONFIG_TIMEBASE register to
->   KVM_REG_RISCV_CONFIG_TBFREQ register in ONE_REG interface
-> - Update SPEC in kvm_riscv_vcpu_mmio_return() for MMIO exits
-> - Use switch case instead of illegal instruction opcode table for simplicity
-> - Improve comments in stage2_remote_tlb_flush() for a potential remote TLB
->   flush optimization
-> - Handle all unsupported SBI calls in default case of
->   kvm_riscv_vcpu_sbi_ecall() function
-> - Fixed kvm_riscv_vcpu_sync_interrupts() for software interrupts
-> - Improved unprivilege reads to handle traps due to Guest stage1 page table
-> - Added separate patch to document RISC-V specific things in
->   Documentation/virt/kvm/api.txt
->
-> Changes since v4:
-> - Rebased patches on Linux-5.3-rc5
-> - Added Paolo's Acked-by and Reviewed-by
-> - Updated mailing list in MAINTAINERS entry
->
-> Changes since v3:
-> - Moved patch for ISA bitmap from KVM prep series to this series
-> - Make vsip_shadow as run-time percpu variable instead of compile-time
-> - Flush Guest TLBs on all Host CPUs whenever we run-out of VMIDs
->
-> Changes since v2:
-> - Removed references of KVM_REQ_IRQ_PENDING from all patches
-> - Use kvm->srcu within in-kernel KVM run loop
-> - Added percpu vsip_shadow to track last value programmed in VSIP CSR
-> - Added comments about irqs_pending and irqs_pending_mask
-> - Used kvm_arch_vcpu_runnable() in-place-of kvm_riscv_vcpu_has_interrupt()
->   in system_opcode_insn()
-> - Removed unwanted smp_wmb() in kvm_riscv_stage2_vmid_update()
-> - Use kvm_flush_remote_tlbs() in kvm_riscv_stage2_vmid_update()
-> - Use READ_ONCE() in kvm_riscv_stage2_update_hgatp() for vmid
->
-> Changes since v1:
-> - Fixed compile errors in building KVM RISC-V as module
-> - Removed unused kvm_riscv_halt_guest() and kvm_riscv_resume_guest()
-> - Set KVM_CAP_SYNC_MMU capability only after MMU notifiers are implemented
-> - Made vmid_version as unsigned long instead of atomic
-> - Renamed KVM_REQ_UPDATE_PGTBL to KVM_REQ_UPDATE_HGATP
-> - Renamed kvm_riscv_stage2_update_pgtbl() to kvm_riscv_stage2_update_hgatp()
-> - Configure HIDELEG and HEDELEG in kvm_arch_hardware_enable()
-> - Updated ONE_REG interface for CSR access to user-space
-> - Removed irqs_pending_lock and use atomic bitops instead
-> - Added separate patch for FP ONE_REG interface
-> - Added separate patch for updating MAINTAINERS file
->
-> Anup Patel (16):
->   RISC-V: Export riscv_cpuid_to_hartid_mask() API
->   RISC-V: Add bitmap reprensenting ISA features common across CPUs
->   RISC-V: Remove N-extension related defines
->   RISC-V: Add hypervisor extension related CSR defines
->   RISC-V: Add initial skeletal KVM support
->   RISC-V: KVM: Implement VCPU create, init and destroy functions
->   RISC-V: KVM: Implement VCPU interrupts and requests handling
->   RISC-V: KVM: Implement KVM_GET_ONE_REG/KVM_SET_ONE_REG ioctls
->   RISC-V: KVM: Implement VCPU world-switch
->   RISC-V: KVM: Handle MMIO exits for VCPU
->   RISC-V: KVM: Handle WFI exits for VCPU
->   RISC-V: KVM: Implement VMID allocator
->   RISC-V: KVM: Implement stage2 page table programming
->   RISC-V: KVM: Implement MMU notifiers
->   RISC-V: KVM: Document RISC-V specific parts of KVM API
->   RISC-V: KVM: Add MAINTAINERS entry
->
-> Atish Patra (4):
->   RISC-V: KVM: Add timer functionality
->   RISC-V: KVM: FP lazy save/restore
->   RISC-V: KVM: Implement ONE REG interface for FP registers
->   RISC-V: KVM: Add SBI v0.1 support
->
->  Documentation/virt/kvm/api.rst          | 193 ++++-
->  MAINTAINERS                             |  11 +
->  arch/riscv/Kconfig                      |   2 +
->  arch/riscv/Makefile                     |   2 +
->  arch/riscv/include/asm/csr.h            |  78 +-
->  arch/riscv/include/asm/hwcap.h          |  22 +
->  arch/riscv/include/asm/kvm_host.h       | 264 +++++++
->  arch/riscv/include/asm/kvm_vcpu_timer.h |  44 ++
->  arch/riscv/include/asm/pgtable-bits.h   |   1 +
->  arch/riscv/include/uapi/asm/kvm.h       | 127 +++
->  arch/riscv/kernel/asm-offsets.c         | 148 ++++
->  arch/riscv/kernel/cpufeature.c          |  83 +-
->  arch/riscv/kernel/smp.c                 |   2 +
->  arch/riscv/kvm/Kconfig                  |  34 +
->  arch/riscv/kvm/Makefile                 |  14 +
->  arch/riscv/kvm/main.c                   |  97 +++
->  arch/riscv/kvm/mmu.c                    | 762 ++++++++++++++++++
->  arch/riscv/kvm/tlb.S                    |  43 +
->  arch/riscv/kvm/vcpu.c                   | 997 ++++++++++++++++++++++++
->  arch/riscv/kvm/vcpu_exit.c              | 639 +++++++++++++++
->  arch/riscv/kvm/vcpu_sbi.c               | 171 ++++
->  arch/riscv/kvm/vcpu_switch.S            | 382 +++++++++
->  arch/riscv/kvm/vcpu_timer.c             | 225 ++++++
->  arch/riscv/kvm/vm.c                     |  86 ++
->  arch/riscv/kvm/vmid.c                   | 120 +++
->  drivers/clocksource/timer-riscv.c       |   8 +
->  include/clocksource/timer-riscv.h       |  16 +
->  include/uapi/linux/kvm.h                |   8 +
->  28 files changed, 4564 insertions(+), 15 deletions(-)
->  create mode 100644 arch/riscv/include/asm/kvm_host.h
->  create mode 100644 arch/riscv/include/asm/kvm_vcpu_timer.h
->  create mode 100644 arch/riscv/include/uapi/asm/kvm.h
->  create mode 100644 arch/riscv/kvm/Kconfig
->  create mode 100644 arch/riscv/kvm/Makefile
->  create mode 100644 arch/riscv/kvm/main.c
->  create mode 100644 arch/riscv/kvm/mmu.c
->  create mode 100644 arch/riscv/kvm/tlb.S
->  create mode 100644 arch/riscv/kvm/vcpu.c
->  create mode 100644 arch/riscv/kvm/vcpu_exit.c
->  create mode 100644 arch/riscv/kvm/vcpu_sbi.c
->  create mode 100644 arch/riscv/kvm/vcpu_switch.S
->  create mode 100644 arch/riscv/kvm/vcpu_timer.c
->  create mode 100644 arch/riscv/kvm/vm.c
->  create mode 100644 arch/riscv/kvm/vmid.c
->  create mode 100644 include/clocksource/timer-riscv.h
->
-> --
-> 2.17.1
->
+v2 -
+   Fix build errors with patch 1 (Will)
+   Change arch_hugetlb_valid_size arg to unsigned long and remove
+     irrelevant 'extern' keyword (Christophe)
+   Documentation and other misc changes (Randy, Christophe, Mina)
+   Do not process command line options if !hugepages_supported()
+     (Dave, but it sounds like we may want to additional changes to
+      hugepages_supported() for x86?  If that is needed I would prefer
+      a separate patch.)
 
-Can you please consider PATCH1, PATCH2, and PATCH3 of
-this series for Linux-5.7-rcX ??
+Longpeng(Mike) reported a weird message from hugetlb command line processing
+and proposed a solution [1].  While the proposed patch does address the
+specific issue, there are other related issues in command line processing.
+As hugetlbfs evolved, updates to command line processing have been made to
+meet immediate needs and not necessarily in a coordinated manner.  The result
+is that some processing is done in arch specific code, some is done in arch
+independent code and coordination is problematic.  Semantics can vary between
+architectures.
 
-Regards,
-Anup
+The patch series does the following:
+- Define arch specific arch_hugetlb_valid_size routine used to validate
+  passed huge page sizes.
+- Move hugepagesz= command line parsing out of arch specific code and into
+  an arch independent routine.
+- Clean up command line processing to follow desired semantics and
+  document those semantics.
+
+[1] https://lore.kernel.org/linux-mm/20200305033014.1152-1-longpeng2@huawei.com
+
+Mike Kravetz (4):
+  hugetlbfs: add arch_hugetlb_valid_size
+  hugetlbfs: move hugepagesz= parsing to arch independent code
+  hugetlbfs: remove hugetlb_add_hstate() warning for existing hstate
+  hugetlbfs: clean up command line processing
+
+ .../admin-guide/kernel-parameters.txt         |  40 ++--
+ Documentation/admin-guide/mm/hugetlbpage.rst  |  35 ++++
+ arch/arm64/mm/hugetlbpage.c                   |  30 +--
+ arch/powerpc/mm/hugetlbpage.c                 |  30 +--
+ arch/riscv/mm/hugetlbpage.c                   |  24 +--
+ arch/s390/mm/hugetlbpage.c                    |  24 +--
+ arch/sparc/mm/init_64.c                       |  43 +---
+ arch/x86/mm/hugetlbpage.c                     |  23 +--
+ include/linux/hugetlb.h                       |   2 +-
+ mm/hugetlb.c                                  | 190 +++++++++++++++---
+ 10 files changed, 271 insertions(+), 170 deletions(-)
+
+-- 
+2.25.2
+
 
