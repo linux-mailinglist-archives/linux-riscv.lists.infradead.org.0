@@ -2,68 +2,68 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6598A1ADD80
-	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 14:40:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A2331ADD81
+	for <lists+linux-riscv@lfdr.de>; Fri, 17 Apr 2020 14:41:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Hw3zBq2iflGKeF6TIA06foptPhPCqmQ4gALSXVPDoYo=; b=Of7DoHM+54vxAonQyoRdfakDS
-	qJX59TpiNoEcvBh1lCnL7P2+DvQLXC/X7I2ABCTtGUTgRPnhq7kn88F0j/vRWQrdlDwZX8hDuQ2mI
-	WDiXuz++m71stH4qX9MHn2uxLFqMjaIfSaUfxmn+OlfMb4KmizxCyoqJlGxBberIeU+A5hB7F2ds3
-	fAAzcH47LT+pdpgqlBvdncFuowRUpOuivMD0TCwjI3lhU6MkIGXgl6EpRtA10TCQOgCpiKwYh7nH0
-	bUuo7UTaCyLL1WboIP7Nabpd6axVBKXq3HB9jtXrHWCfTMnX+hROJQBOcOCDbJ/Tn9A14xT2bzOqq
-	YjO/QNEKw==;
+	 bh=5d/+Mz/K41+l5nHe9+HnUq2CLogiiEQD3UQf60PXu/k=; b=YdUrpOB5BJL2BNbhVmg4ibtUg
+	NXM6lkwnIbWq/DMVtkagkB6R5bZWmSrBX42ZAmPhht1ziapdf1xbaTXaGL0MsCmHEnzhRRytQZ7/n
+	ErBzUCcxbT5QDfTDbHtqTut+fJJoN6UDf4WytOKBn6uSrXxJSOs8kZhxQ9G+rCNcUSIAPX69XyiZs
+	TGZIGSqeHTBtg+9BMVUJVqhZovxHwS7dYlStClp0SglHZC4g+610WxFAzseAfb5oP84dE6lc0yuKT
+	YXeNWzgJOsggxNOGaQ640PUZab1E4uCPf8TY6PT8Db42uza7aP4jVia0uH6/WAfZok/2uSyPj5jZu
+	7KRTdBkRg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPQId-0000BX-38; Fri, 17 Apr 2020 12:40:51 +0000
+	id 1jPQIv-0000GL-2N; Fri, 17 Apr 2020 12:41:09 +0000
 Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPQIZ-0000Ai-Eo
- for linux-riscv@lists.infradead.org; Fri, 17 Apr 2020 12:40:49 +0000
-Received: by mail-wr1-x442.google.com with SMTP id g13so839401wrb.8
- for <linux-riscv@lists.infradead.org>; Fri, 17 Apr 2020 05:40:46 -0700 (PDT)
+ id 1jPQIr-0000Fw-Ac
+ for linux-riscv@lists.infradead.org; Fri, 17 Apr 2020 12:41:06 +0000
+Received: by mail-wr1-x442.google.com with SMTP id i10so2851249wrv.10
+ for <linux-riscv@lists.infradead.org>; Fri, 17 Apr 2020 05:41:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Hw3zBq2iflGKeF6TIA06foptPhPCqmQ4gALSXVPDoYo=;
- b=jJaoNQrEIBPf8c+ShjvPCVr441gyQQerRqJv93mnrEQA3Xj+pLqdOzATk/Rn2d6mM5
- 3QOcSW4fe/9UKaVuVYEHRDrU8RkNrG9QOrLRxAsWHkQQi2tSBQ13I+XF0EQBrqVA3bra
- sIKelGB72/XTdlKCQox25CECzSE17EDwMta1XSkH2DLt217o/7jDjJROmpFDxwtrWNRU
- vHF1nnsGUxzPphnUY7UhD+m7rnI2dyvzQLLjsrqI69ekVOfd3E2mdhSIIQIbXbKphLkq
- I9wQtMALwtQYIyiBTVn0d8qzFf20+E0n3CIBqQ4Ea2FXzt3wIoqvj5evJQ7B3R6Hcd/A
- QQjQ==
+ :cc; bh=5d/+Mz/K41+l5nHe9+HnUq2CLogiiEQD3UQf60PXu/k=;
+ b=rI7NENBDqfn/fQ7qMbOy7mITJfkQZEgaC2hsDwXL+0KFHV3dDjMAv2g3Jg61nEmyy6
+ 8ANMlYPUB/U1teG3lMdroPrkMNaHEAcZuqQlz64TkXMTB23LkwaBwjJgSomws8ogA52Z
+ XO0/dACcTP0sFZuFnhLB94gL5IKx/+KKdwRGWoQ41L43VgH1XL0sk7TJnEyVHMgQX4l5
+ CmweALmDi9EHLblVMek5HkyTylDkLdtzDp4iDrvtL1t7/rmTD3clnDBLUD80BVmdOQre
+ cCI2lzKvXTlC7kQHsFC/qUAtpETJqhlMaMkes8BMTqNdcFQUjXfz11aWAldnMRu9F/dG
+ 6Mmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Hw3zBq2iflGKeF6TIA06foptPhPCqmQ4gALSXVPDoYo=;
- b=YBu9L3Xms+KE7IL5zHQCetWr771j7Jb6uInJXGbFZO/g7//F/BPR8bDX0Gr4CvFZ5B
- Rkj0J3ueJ4cIB/PztDa1weebyiBjup4PbT8lrd/tlNihwd9pU05JQrgS9tVCI9D1NMei
- 7S27v+HnxsWqzIs5pbRel8ePaxJhMoPy65dhFx1DsKNccBo7Oz3uu26C06wW3T1Kmwor
- R0gm0ukMPoribux7IQG6Wr3JIxir36qbx+OcJ5xbIxEIeoGFUZv+6Nj8lx5cR0IDN1LP
- M/d8d3r41WdPxJD3ISb0klHo377Eo1iywT+0E83xrVUMUhR1lIO7TliuH3d2h4EgKLXk
- mYNA==
-X-Gm-Message-State: AGi0PubE66th0gqs0KXWFzH6Eh5OfySrqIwt79L3J53YKSktuzw+Z+UF
- OVTaA0SVYv1aC7fG0EO/SjZNafQp23gq2U4wWQXmUw==
-X-Google-Smtp-Source: APiQypJN6AKoUZezns2JYdhqA8iYyC3VPzV6Le8z1oI9oshNNiKtXSuZACI1oSLtIfdlgPsUtMjg1TAGYQBxVtgnw8M=
-X-Received: by 2002:adf:b35c:: with SMTP id k28mr3718749wrd.61.1587127244899; 
- Fri, 17 Apr 2020 05:40:44 -0700 (PDT)
+ bh=5d/+Mz/K41+l5nHe9+HnUq2CLogiiEQD3UQf60PXu/k=;
+ b=sQIz6m/y13X3rjwSFYiLopEbY2ZVOdfnBDzM88ECPqLIimzwggY7zc7p0lju7ZqsYO
+ idtGBrj+5jobQO00JAS0SqKfWtp3QFfX2l36cL1jUq4cKSurgSwd3KsqgbgHRV+NLzzN
+ xVGJ0tTVbypGSwOSG69EQrpkjZF5FtG5onr0z+pYg38g1rcls3lFiFMjS7ZVgzaKdnqO
+ uwL387R8bDshRwo0+vqe1l06hbtYujesVWGZOL3KHPYVVrfDQvX7hX0qw1w1Q1gv2SIJ
+ XMys6Xqja4bDUkgorKZFeb32B6uxcgQE/wZnCCaUnS9IQ/mbtprNxwp9HYqS/GZTP+JA
+ Tl1g==
+X-Gm-Message-State: AGi0PuYe7CAM8tZ91aYBsG93DdymZXbiNErL3smec3aH7Er3VzOgvRlO
+ LVJLNknpUWixB0v2iTEXY/pxHYWup+xB2l7/FwWxCg==
+X-Google-Smtp-Source: APiQypINgiS8TdVKf+DZcpqWM6CnJsqHx/bwUe303I5G+wpdbKEuPCqn6K1HfP0lC0KGhWUgUZW/5cGLYE2KWBl1U5E=
+X-Received: by 2002:adf:c601:: with SMTP id n1mr3534017wrg.381.1587127264046; 
+ Fri, 17 Apr 2020 05:41:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200417121222.156422-1-wangkefeng.wang@huawei.com>
-In-Reply-To: <20200417121222.156422-1-wangkefeng.wang@huawei.com>
+ <20200417121222.156422-2-wangkefeng.wang@huawei.com>
+In-Reply-To: <20200417121222.156422-2-wangkefeng.wang@huawei.com>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 17 Apr 2020 18:10:32 +0530
-Message-ID: <CAAhSdy2cFnYM4Q03nCUof33KwtfDhefvZVc044ukcjSa+CaYZw@mail.gmail.com>
-Subject: Re: [PATCH 1/3] riscv: sbi: Correct sbi_shutdown() and
- sbi_clear_ipi() export
+Date: Fri, 17 Apr 2020 18:10:51 +0530
+Message-ID: <CAAhSdy3_0-rLZQUv_u-Drdxy_nw4xzM85gN_Qo_WcXC8aGDhzw@mail.gmail.com>
+Subject: Re: [PATCH 2/3] tty: riscv: Using RISCV_SBI_V01 instead of RISCV_SBI
 To: Kefeng Wang <wangkefeng.wang@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200417_054047_566955_0E005D66 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20200417_054105_366991_54D65B3D 
+X-CRM114-Status: GOOD (  13.12  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -98,36 +98,44 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Fri, Apr 17, 2020 at 5:40 PM Kefeng Wang <wangkefeng.wang@huawei.com> wrote:
 >
-> Fix incorrect EXPORT_SYMBOL().
+> As shown in SBI v0.2, the legacy console SBI functions (sbi_console_getchar()
+> and sbi_console_putchar()) are expected to be deprecated; they have no replacement.
+>
+> Let's HVC_RISCV_SBI and SERIAL_EARLYCON_RISCV_SBI depends on RISCV_SBI_V01.
 >
 > Fixes: efca13989250 ("RISC-V: Introduce a new config for SBI v0.1")
 > Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
 > ---
->  arch/riscv/kernel/sbi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/tty/hvc/Kconfig    | 2 +-
+>  drivers/tty/serial/Kconfig | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/arch/riscv/kernel/sbi.c b/arch/riscv/kernel/sbi.c
-> index 7c24da59bccf..62b10a16c8d7 100644
-> --- a/arch/riscv/kernel/sbi.c
-> +++ b/arch/riscv/kernel/sbi.c
-> @@ -102,7 +102,7 @@ void sbi_shutdown(void)
->  {
->         sbi_ecall(SBI_EXT_0_1_SHUTDOWN, 0, 0, 0, 0, 0, 0, 0);
->  }
-> -EXPORT_SYMBOL(sbi_set_timer);
-> +EXPORT_SYMBOL(sbi_shutdown);
+> diff --git a/drivers/tty/hvc/Kconfig b/drivers/tty/hvc/Kconfig
+> index 31b7e1b03749..d1b27b0522a3 100644
+> --- a/drivers/tty/hvc/Kconfig
+> +++ b/drivers/tty/hvc/Kconfig
+> @@ -88,7 +88,7 @@ config HVC_DCC
 >
->  /**
->   * sbi_clear_ipi() - Clear any pending IPIs for the calling hart.
-> @@ -113,7 +113,7 @@ void sbi_clear_ipi(void)
->  {
->         sbi_ecall(SBI_EXT_0_1_CLEAR_IPI, 0, 0, 0, 0, 0, 0, 0);
->  }
-> -EXPORT_SYMBOL(sbi_shutdown);
-> +EXPORT_SYMBOL(sbi_clear_ipi);
+>  config HVC_RISCV_SBI
+>         bool "RISC-V SBI console support"
+> -       depends on RISCV_SBI
+> +       depends on RISCV_SBI_V01
+>         select HVC_DRIVER
+>         help
+>           This enables support for console output via RISC-V SBI calls, which
+> diff --git a/drivers/tty/serial/Kconfig b/drivers/tty/serial/Kconfig
+> index 0aea76cd67ff..adf9e80e7dc9 100644
+> --- a/drivers/tty/serial/Kconfig
+> +++ b/drivers/tty/serial/Kconfig
+> @@ -86,7 +86,7 @@ config SERIAL_EARLYCON_ARM_SEMIHOST
 >
->  /**
->   * sbi_set_timer_v01() - Program the timer for next timer event.
+>  config SERIAL_EARLYCON_RISCV_SBI
+>         bool "Early console using RISC-V SBI"
+> -       depends on RISCV_SBI
+> +       depends on RISCV_SBI_V01
+>         select SERIAL_CORE
+>         select SERIAL_CORE_CONSOLE
+>         select SERIAL_EARLYCON
 > --
 > 2.20.1
 >
