@@ -2,62 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BC471AF216
-	for <lists+linux-riscv@lfdr.de>; Sat, 18 Apr 2020 18:04:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8924C1AF439
+	for <lists+linux-riscv@lfdr.de>; Sat, 18 Apr 2020 21:20:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VfVAAE6uouTjoGbwVjBNw+/yWPoKOfLhvoVja6z6S2A=; b=AYE7pNQymdR8O9
-	jnqeUu9UghsmXM96VlX0OOxYfXxgxXcSt3uP84MgxtQzXmAXB5W2YfZI4IWowZA09axCkkSFwoHO5
-	/01XTIQUa3SVhOd7wGENq+armor58s+lj5+XAOOS+3McEfP3uW26v0maoxJrmz9A9Anchuo/ZGTaK
-	Dw8dacXyxNfknUSeAIe6sYMOY4qt8dBtNbaLCrF6ry/AiO0ZTpLMf4tZzw6+5droHXNrWGOGZ8AT7
-	TsgQbMEBZjdd/hnIXK6CuCWUprkMO5/YbGeXiJ53uoIdAdWYJdi1DAcWT7b9n3Z7Ox6sDHsMtKKKe
-	9f40AUv24Ua/d4mhagyg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=09AMIYxpDLT7RP8O+1RK9/8lqoWsc6BTMIUYAh5UqYw=; b=tLTPKTblUe1+5gmLeR64/KDAm
+	1mJtQNTgDiYO808ot2mTONW5oaRtlhZabYIYqJJJAjkHQJTW6WW7B8NALubc20JDLIaOSef5P+4cL
+	tuh+6J3wtIQF8bbFE/F6yb+cIJrzfyeMti6L92Bh97nbt6rjnRAoutyQBOFNINmbPil0BLsDhsRQp
+	FjllxQzmTt8PpQHo3iKoOeXQ+rBdQ8skkDqWxN7til/kndhsZX4bYIn6lzkWVvqJIqI5xoYTG7DfS
+	zTKhY1wwkyiK9BOk+Dmj64jgvbea7Hxlv7CyhoYgbqMYvvyth0czO/4fpXztzkXQ8FNypFK4V1Vrv
+	45dr7ybCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPpwj-00030g-KK; Sat, 18 Apr 2020 16:03:57 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jPt0S-0006U1-FN; Sat, 18 Apr 2020 19:20:00 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPpwT-0002q1-9D; Sat, 18 Apr 2020 16:03:43 +0000
-Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
- [82.4.196.95])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 265E021D93;
- Sat, 18 Apr 2020 16:03:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587225820;
- bh=1De5fPfA8NlpQyTocewa07h9s/10o7DRNH2qDVFvqA8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=hCjq0MAZUj3JKbCWIjnXWIz9oU3vpGOMvk/gvn814KBjM6utN9lAFJL+B2m6MmgOb
- k0FKGfq6P773PBXkOofNwvIhcReneAEe9NcOSIdyxXFv35zQTjjLRM7pO4ATd9ITv9
- kAdnoppSvnbrv7agegq0zfHzkamIw7ZjHlwMbaT8=
-Date: Sat, 18 Apr 2020 17:03:30 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 2/2] dt-bindings: Remove cases of 'allOf' containing a
- '$ref'
-Message-ID: <20200418170330.65bff80c@archlinux>
-In-Reply-To: <20200416005549.9683-2-robh@kernel.org>
-References: <20200416005549.9683-1-robh@kernel.org>
- <20200416005549.9683-2-robh@kernel.org>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1jPt0G-0006NE-2f
+ for linux-riscv@lists.infradead.org; Sat, 18 Apr 2020 19:19:50 +0000
+Received: by mail-wr1-x443.google.com with SMTP id f13so6994410wrm.13
+ for <linux-riscv@lists.infradead.org>; Sat, 18 Apr 2020 12:19:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=09AMIYxpDLT7RP8O+1RK9/8lqoWsc6BTMIUYAh5UqYw=;
+ b=ZjdSAAJfbeRQQKt/kQHGw7QwOhAMOu1VjZ/wBzgotvgH6ROaVrGUnnnUN0iWsqiCaA
+ IrkdBKs97o9Xz2PObc9xRoCX+X1pDrXCMsSmtY5sexTctnLwQE3qd+oGs7RCx5ZSKaEz
+ +hMaIpCSjN2fb76+BwFgYXEZJPn2q1M2chjZPV30ZkBfk+5ZZlpw1wkTkkOsTzUK3aOB
+ RjCPP0I/AHOrBFfZtvVdil0ZmjkBxE8SpgL4LEeIEntubJe2Cc7Km9B+FQgR9dIT9Oxx
+ Gl8R+9h6zi0CeWWE6ZoOpsc/eyH4fPtrOCbA9drxQzsUmL3HojXzqyCrRs35z7qx6aXg
+ 9MLA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=09AMIYxpDLT7RP8O+1RK9/8lqoWsc6BTMIUYAh5UqYw=;
+ b=NLar0hTh3CvxDpVLdF6dGck7H3u13/SIw35FQMCQAkS35cfRkiwXZzM9hR226gjkFT
+ Q9qDbHYSH9CG4WO0hqbfM4GbkBRr+QvCp8fwLlg0CU1SszFzrp5HgK8xXUZDAC37lpZP
+ NECH+R0LZf4bYjHeDPMUgeU4DYwK351wtIGq90IK85q9W/WkTgJrayNsKgVYalRVzM0P
+ YoL4ncHkPb6ylLloP4u4y7BXFbwRwZ5dlOs20TNKHqCsXBy9XrZsVGbU6LH+Ru7C+HMv
+ wBNVWTr3wiFnnc1DCmaBUnwB8jFwXP7vDRa0ZMO7sd9pykU7JG+i8vhDqnJPSjCwqs39
+ 36Wg==
+X-Gm-Message-State: AGi0PuavzhfTL6VdVEUucuHQdz8BMITZJvfXXj3ndTSPFRMshbwUYETR
+ B6JDTABiA6naF0jpvr+7iN2P8KAUmyqFIET27SUi
+X-Google-Smtp-Source: APiQypJTYinjHJFi+YR/Fjde7vXhM9I4v2tuHGut1/hg8bps0zCgka7iVKaqanJQE8XhFi7n5XoPAsTZ+jxMjeJ4BqU=
+X-Received: by 2002:a5d:4443:: with SMTP id x3mr9994447wrr.162.1587237586271; 
+ Sat, 18 Apr 2020 12:19:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+References: <20200415195422.19866-1-atish.patra@wdc.com>
+ <20200415195422.19866-6-atish.patra@wdc.com>
+ <CAMj1kXFRqTYr7_M_j6oN1-xnQ6V4uCYK49yAbjvrf1BB823Cng@mail.gmail.com>
+ <CAOnJCUK3fqsR93ewYMUkanh+x1EJN_3QwkFjSDDZZr2MjzpnUQ@mail.gmail.com>
+ <CAMj1kXFOkARJ9k81pu-LuHEd7H7AZRRrquzVN-WQ3J239JUZTw@mail.gmail.com>
+ <CAMj1kXGv8XrXJ=Tx88O38a9UYM3iuBevg5NXRpMrny1XJZGB7A@mail.gmail.com>
+In-Reply-To: <CAMj1kXGv8XrXJ=Tx88O38a9UYM3iuBevg5NXRpMrny1XJZGB7A@mail.gmail.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Sat, 18 Apr 2020 12:19:35 -0700
+Message-ID: <CAOnJCUJOY_84eesRreVyEQKjL2awkehcFi5ydMv0USNeaFHd6A@mail.gmail.com>
+Subject: Re: [v3 PATCH 5/5] RISC-V: Add EFI stub support.
+To: Ard Biesheuvel <ardb@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200418_090341_369527_A3EC3913 
-X-CRM114-Status: GOOD (  25.35  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200418_121948_191932_E490A82B 
+X-CRM114-Status: GOOD (  33.06  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -67,7 +85,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,451 +96,363 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sam Ravnborg <sam@ravnborg.org>,
- linux-pwm@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
- linux-remoteproc@vger.kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>, linux-mtd@lists.infradead.org,
- linux-i2c@vger.kernel.org, Pavel Machek <pavel@ucw.cz>,
- linux-riscv@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
- linux-rtc@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
- Fabio Estevam <festevam@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-serial@vger.kernel.org,
- linux-input@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@st.com>, alsa-devel@alsa-project.org,
- Maxime Ripard <mripard@kernel.org>, linux-can@vger.kernel.org,
- linux-gpio@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-hwmon@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>,
+Cc: linux-efi <linux-efi@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Masahiro Yamada <masahiroy@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Russell King <linux@armlinux.org.uk>, Atish Patra <atish.patra@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, Amit Kucheria <amit.kucheria@linaro.org>,
- linux-spi@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
- netdev@vger.kernel.org
+ linux-riscv <linux-riscv@lists.infradead.org>, Will Deacon <will@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 15 Apr 2020 19:55:49 -0500
-Rob Herring <robh@kernel.org> wrote:
+On Sat, Apr 18, 2020 at 5:39 AM Ard Biesheuvel <ardb@kernel.org> wrote:
+>
+> On Sat, 18 Apr 2020 at 12:51, Ard Biesheuvel <ardb@kernel.org> wrote:
+> >
+> > On Sat, 18 Apr 2020 at 05:03, Atish Patra <atishp@atishpatra.org> wrote:
+> > >
+> > > On Thu, Apr 16, 2020 at 12:41 AM Ard Biesheuvel <ardb@kernel.org> wrote:
+> > > >
+> > > > On Wed, 15 Apr 2020 at 21:54, Atish Patra <atish.patra@wdc.com> wrote:
+> > > > >
+> > > > > Add a RISC-V architecture specific stub code that actually copies the
+> > > > > actual kernel image to a valid address and jump to it after boot services
+> > > > > are terminated. Enable UEFI related kernel configs as well for RISC-V.
+> > > > >
+> > > > > Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> > > > > ---
+> > > > >  arch/riscv/Kconfig                        |  20 ++++
+> > > > >  arch/riscv/Makefile                       |   1 +
+> > > > >  arch/riscv/configs/defconfig              |   1 +
+> > > > >  arch/riscv/include/asm/efi.h              |  44 +++++++++
+> > > > >  drivers/firmware/efi/Kconfig              |   2 +-
+> > > > >  drivers/firmware/efi/libstub/Makefile     |   7 ++
+> > > > >  drivers/firmware/efi/libstub/riscv-stub.c | 111 ++++++++++++++++++++++
+> > > > >  7 files changed, 185 insertions(+), 1 deletion(-)
+> > > > >  create mode 100644 arch/riscv/include/asm/efi.h
+> > > > >  create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
+> > > > >
+> > > > > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> > > > > index f39e326a7a42..eb4f41c8f3ce 100644
+> > > > > --- a/arch/riscv/Kconfig
+> > > > > +++ b/arch/riscv/Kconfig
+> > > > > @@ -379,10 +379,30 @@ config CMDLINE_FORCE
+> > > > >
+> > > > >  endchoice
+> > > > >
+> > > > > +config EFI_STUB
+> > > > > +       bool
+> > > > > +
+> > > > > +config EFI
+> > > > > +       bool "UEFI runtime support"
+> > > > > +       depends on OF
+> > > > > +       select LIBFDT
+> > > > > +       select UCS2_STRING
+> > > > > +       select EFI_PARAMS_FROM_FDT
+> > > > > +       select EFI_STUB
+> > > > > +       select EFI_GENERIC_STUB
+> > > > > +       default y
+> > > > > +       help
+> > > > > +         This option provides support for runtime services provided
+> > > > > +         by UEFI firmware (such as non-volatile variables, realtime
+> > > > > +          clock, and platform reset). A UEFI stub is also provided to
+> > > > > +         allow the kernel to be booted as an EFI application. This
+> > > > > +         is only useful on systems that have UEFI firmware.
+> > > > > +
+> > > > >  endmenu
+> > > > >
+> > > > >  menu "Power management options"
+> > > > >
+> > > > >  source "kernel/power/Kconfig"
+> > > > > +source "drivers/firmware/Kconfig"
+> > > > >
+> > > > >  endmenu
+> > > > > diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
+> > > > > index fb6e37db836d..079435804d6d 100644
+> > > > > --- a/arch/riscv/Makefile
+> > > > > +++ b/arch/riscv/Makefile
+> > > > > @@ -80,6 +80,7 @@ head-y := arch/riscv/kernel/head.o
+> > > > >  core-y += arch/riscv/
+> > > > >
+> > > > >  libs-y += arch/riscv/lib/
+> > > > > +core-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
+> > > > >
+> > > > >  PHONY += vdso_install
+> > > > >  vdso_install:
+> > > > > diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+> > > > > index 4da4886246a4..ae69e12d306a 100644
+> > > > > --- a/arch/riscv/configs/defconfig
+> > > > > +++ b/arch/riscv/configs/defconfig
+> > > > > @@ -129,3 +129,4 @@ CONFIG_DEBUG_BLOCK_EXT_DEVT=y
+> > > > >  # CONFIG_RUNTIME_TESTING_MENU is not set
+> > > > >  CONFIG_MEMTEST=y
+> > > > >  # CONFIG_SYSFS_SYSCALL is not set
+> > > > > +CONFIG_EFI=y
+> > > > > diff --git a/arch/riscv/include/asm/efi.h b/arch/riscv/include/asm/efi.h
+> > > > > new file mode 100644
+> > > > > index 000000000000..62d7d5eafed8
+> > > > > --- /dev/null
+> > > > > +++ b/arch/riscv/include/asm/efi.h
+> > > > > @@ -0,0 +1,44 @@
+> > > > > +/* SPDX-License-Identifier: GPL-2.0 */
+> > > > > +/*
+> > > > > + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
+> > > > > + * Based on arch/arm64/include/asm/efi.h
+> > > > > + */
+> > > > > +#ifndef _ASM_EFI_H
+> > > > > +#define _ASM_EFI_H
+> > > > > +
+> > > > > +#include <asm/io.h>
+> > > > > +#include <asm/mmu_context.h>
+> > > > > +#include <asm/ptrace.h>
+> > > > > +#include <asm/tlbflush.h>
+> > > > > +
+> > > > > +#define VA_BITS_MIN 39
+> > > > > +
+> > > > > +/* on RISC-V, the FDT may be located anywhere in system RAM */
+> > > > > +static inline unsigned long efi_get_max_fdt_addr(unsigned long dram_base)
+> > > > > +{
+> > > > > +       return ULONG_MAX;
+> > > > > +}
+> > > > > +
+> > > > > +/* Load initrd at enough distance from DRAM start */
+> > > > > +static inline unsigned long efi_get_max_initrd_addr(unsigned long dram_base,
+> > > > > +                                                   unsigned long image_addr)
+> > > > > +{
+> > > > > +       return dram_base + SZ_256M;
+> > > > > +}
+> > > > > +
+> > > > > +#define efi_bs_call(func, ...) efi_system_table()->boottime->func(__VA_ARGS__)
+> > > > > +#define efi_rt_call(func, ...) efi_system_table()->runtime->func(__VA_ARGS__)
+> > > > > +#define efi_is_native()                (true)
+> > > > > +
+> > > > > +#define efi_table_attr(inst, attr)     (inst->attr)
+> > > > > +
+> > > > > +#define efi_call_proto(inst, func, ...) inst->func(inst, ##__VA_ARGS__)
+> > > > > +
+> > > > > +#define alloc_screen_info(x...)                (&screen_info)
+> > > > > +extern char stext_offset[];
+> > > > > +
+> > > > > +static inline void free_screen_info(struct screen_info *si)
+> > > > > +{
+> > > > > +}
+> > > > > +
+> > > > > +#endif /* _ASM_EFI_H */
+> > > > > diff --git a/drivers/firmware/efi/Kconfig b/drivers/firmware/efi/Kconfig
+> > > > > index 2a2b2b96a1dc..fcdc789d3f87 100644
+> > > > > --- a/drivers/firmware/efi/Kconfig
+> > > > > +++ b/drivers/firmware/efi/Kconfig
+> > > > > @@ -111,7 +111,7 @@ config EFI_GENERIC_STUB
+> > > > >
+> > > > >  config EFI_ARMSTUB_DTB_LOADER
+> > > > >         bool "Enable the DTB loader"
+> > > > > -       depends on EFI_GENERIC_STUB
+> > > > > +       depends on EFI_GENERIC_STUB && !RISCV
+> > > > >         default y
+> > > > >         help
+> > > > >           Select this config option to add support for the dtb= command
+> > > > > diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
+> > > > > index 2b4e09bf987c..7d46b70b51f2 100644
+> > > > > --- a/drivers/firmware/efi/libstub/Makefile
+> > > > > +++ b/drivers/firmware/efi/libstub/Makefile
+> > > > > @@ -22,6 +22,8 @@ cflags-$(CONFIG_ARM64)                := $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
+> > > > >  cflags-$(CONFIG_ARM)           := $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
+> > > > >                                    -fno-builtin -fpic \
+> > > > >                                    $(call cc-option,-mno-single-pic-base)
+> > > > > +cflags-$(CONFIG_RISCV)         := $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
+> > > > > +                                  -fpic
+> > > > >
+> > > > >  cflags-$(CONFIG_EFI_GENERIC_STUB)      += -I$(srctree)/scripts/dtc/libfdt
+> > > > >
+> > > > > @@ -57,6 +59,7 @@ lib-$(CONFIG_EFI_GENERIC_STUB)                += efi-stub.o fdt.o string.o \
+> > > > >  lib-$(CONFIG_ARM)              += arm32-stub.o
+> > > > >  lib-$(CONFIG_ARM64)            += arm64-stub.o
+> > > > >  lib-$(CONFIG_X86)              += x86-stub.o
+> > > > > +lib-$(CONFIG_RISCV)            += riscv-stub.o
+> > > > >  CFLAGS_arm32-stub.o            := -DTEXT_OFFSET=$(TEXT_OFFSET)
+> > > > >  CFLAGS_arm64-stub.o            := -DTEXT_OFFSET=$(TEXT_OFFSET)
+> > > > >
+> > > > > @@ -81,6 +84,10 @@ STUBCOPY_FLAGS-$(CONFIG_ARM64)       += --prefix-alloc-sections=.init \
+> > > > >                                    --prefix-symbols=__efistub_
+> > > > >  STUBCOPY_RELOC-$(CONFIG_ARM64) := R_AARCH64_ABS
+> > > > >
+> > > > > +STUBCOPY_FLAGS-$(CONFIG_RISCV) += --prefix-alloc-sections=.init \
+> > > > > +                                  --prefix-symbols=__efistub_
+> > > > > +STUBCOPY_RELOC-$(CONFIG_RISCV) := R_RISCV_HI20
+> > > > > +
+> > > > >  $(obj)/%.stub.o: $(obj)/%.o FORCE
+> > > > >         $(call if_changed,stubcopy)
+> > > > >
+> > > > > diff --git a/drivers/firmware/efi/libstub/riscv-stub.c b/drivers/firmware/efi/libstub/riscv-stub.c
+> > > > > new file mode 100644
+> > > > > index 000000000000..69d13e0ebaea
+> > > > > --- /dev/null
+> > > > > +++ b/drivers/firmware/efi/libstub/riscv-stub.c
+> > > > > @@ -0,0 +1,111 @@
+> > > > > +// SPDX-License-Identifier: GPL-2.0
+> > > > > +/*
+> > > > > + * Copyright (C) 2013, 2014 Linaro Ltd;  <roy.franz@linaro.org>
+> > > > > + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
+> > > > > + *
+> > > > > + * This file implements the EFI boot stub for the RISC-V kernel.
+> > > > > + * Adapted from ARM64 version at drivers/firmware/efi/libstub/arm64-stub.c.
+> > > > > + */
+> > > > > +
+> > > > > +#include <linux/efi.h>
+> > > > > +#include <linux/libfdt.h>
+> > > > > +#include <linux/libfdt_env.h>
+> > > > > +#include <asm/efi.h>
+> > > > > +#include <asm/sections.h>
+> > > > > +
+> > > > > +#include "efistub.h"
+> > > > > +/*
+> > > > > + * RISCV requires the kernel image to placed TEXT_OFFSET bytes beyond a 2 MB
+> > > > > + * aligned base for 64 bit and 4MB for 32 bit.
+> > > > > + */
+> > >
+> > > Fixed the comment.
+> > >
+> > > > > +#ifdef CONFIG_64BIT
+> > > > > +#define MIN_KIMG_ALIGN SZ_2M
+> > > > > +#else
+> > > > > +#define MIN_KIMG_ALIGN SZ_4M
+> > > > > +#endif
+> > > > > +
+> > > > > +typedef __attribute__((noreturn)) void (*jump_kernel_func)(unsigned int,
+> > > > > +                                                          unsigned long);
+> > > > > +efi_status_t check_platform_features(void)
+> > > > > +{
+> > > > > +       return EFI_SUCCESS;
+> > > > > +}
+> > > > > +
+> > > > > +static u32 get_boot_hartid_from_fdt(unsigned long fdt)
+> > > > > +{
+> > > > > +       int chosen_node, len;
+> > > > > +       const fdt32_t *prop;
+> > > > > +
+> > > > > +       chosen_node = fdt_path_offset((void *)fdt, "/chosen");
+> > > > > +       if (chosen_node < 0)
+> > > > > +               return U32_MAX;
+> > > > > +       prop = fdt_getprop((void *)fdt, chosen_node, "boot-hartid", &len);
+> > > > > +       if (!prop || len != sizeof(u32))
+> > > > > +               return U32_MAX;
+> > > > > +
+> > > > > +       return fdt32_to_cpu(*prop);
+> > > > > +}
+> > > > > +
+> > > > > +/*
+> > > > > + * Jump to real kernel here with following constraints.
+> > > > > + * 1. MMU should be disabled.
+> > > > > + * 2. a0 should contain hartid
+> > > > > + * 3. a1 should DT address
+> > > > > + */
+> > > > > +void __noreturn efi_enter_kernel(unsigned long entrypoint, unsigned long fdt,
+> > > > > +                                unsigned long fdt_size)
+> > > > > +{
+> > > > > +       unsigned long kernel_entry = entrypoint + (unsigned long)stext_offset;
+> > > > > +       jump_kernel_func jump_kernel = (jump_kernel_func) kernel_entry;
+> > > > > +       u32 hartid = get_boot_hartid_from_fdt(fdt);
+> > > > > +
+> > > > > +       if (hartid == U32_MAX)
+> > > > > +               /* We can not use panic or BUG at this point */
+> > > > > +               __asm__ __volatile__ ("ebreak");
+> > > > > +       /* Disable MMU */
+> > > > > +       csr_write(CSR_SATP, 0);
+> > > > > +       jump_kernel(hartid, fdt);
+> > > > > +}
+> > > > > +
+> > > > > +efi_status_t handle_kernel_image(unsigned long *image_addr,
+> > > > > +                                unsigned long *image_size,
+> > > > > +                                unsigned long *reserve_addr,
+> > > > > +                                unsigned long *reserve_size,
+> > > > > +                                unsigned long dram_base,
+> > > > > +                                efi_loaded_image_t *image)
+> > > > > +{
+> > > > > +       efi_status_t status;
+> > > > > +       unsigned long kernel_size, kernel_memsize = 0;
+> > > > > +       unsigned long max_alloc_address;
+> > > > > +
+> > > > > +       if (image->image_base != _start)
+> > > > > +               pr_efi_err("FIRMWARE BUG: efi_loaded_image_t::image_base has bogus value\n");
+> > > > > +
+> > > >
+> > > > I don't think you need this.
+> > > >
+> > >
+> > > Sure. I will remove it. I guess ARM64 code has the error print for
+> > > legacy loader code ?
+> > >
+> >
+> > No, for broken distro versions of GRUB
+> >
+> > > > > +       kernel_size = _edata - _start;
+> > > > > +       kernel_memsize = kernel_size + (_end - _edata);
+> > > > > +       max_alloc_address = round_up(dram_base, MIN_KIMG_ALIGN) +
+> > > > > +                           kernel_memsize;
+> > > > > +
+> > > >
+> > > > You said the kernel could be anywhere in memory, as long as it is
+> > > > aligned correctly, right?
+> > >
+> > > Sorry I was wrong about this. RISC-V kernel maps PAGE_OFFSET virtual
+> > > address to the
+> > > physical address <xyz> where it is booted. That means memory between
+> > > dram start and and <xyz> address
+> > > will be unusable.
+> > >
+> >
+> > OK
+> >
+> > > I also realized that the above computing max_address as above also
+> > > won't work for the following reason.
+> > > efi_allocate_pages_aligned actually ALIGN_DOWN the max_address. Thus,
+> > > efi won't find enough
+> > > free memory in this case if the max_address is computed from the dram_base.
+> > >
+> > > Is there an implicit requirement for efi_allocate_pages_aligned or
+> > > efi_low_alloc_above should be tried in case of failure?
+> > >
+> >
+> > No not really. What ever works for your particular use case is acceptable to me.
+> >
+> > > > In that case, you don't need this, you can simply pass ULONG_MAX as
+> > > > the max address.
+> > > >
+> > > As RISC-V should allocate memory as low as possible to avoid memory
+> > > wastage, I think the following should work.
+> > >
+> > > efi_low_alloc_above(*reserve_size, MIN_KIMG_ALIGN, reserve_addr, dram_base);
+> > >
+> > > If this looks okay to you, efi_low_alloc_above should be moved back to
+> > > mem.c from relocate.c.
+> > > Should I do it in a separate patch or the original patch should be
+> > > modified so that efi_low_alloc_above was never moved to relocate.c
+> > >
+> >
+> > No, please keep efi_low_alloc_above() where it is, but drop the
+> > static, and put back the declaration in efistub.h
+> >
+>
+> Alternatively, can you check whether efi_relocate_kernel() already
+> does what you need?
 
-> json-schema versions draft7 and earlier have a weird behavior in that
-> any keywords combined with a '$ref' are ignored (silently). The correct
-> form was to put a '$ref' under an 'allOf'. This behavior is now changed
-> in the 2019-09 json-schema spec and '$ref' can be mixed with other
-> keywords. The json-schema library doesn't yet support this, but the
-> tooling now does a fixup for this and either way works.
->=20
-> This has been a constant source of review comments, so let's change this
-> treewide so everyone copies the simpler syntax.
->=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Yeah. efi_relocate_kernel works too. It's just that
+efi_relocate_kernel expects a preferred address
+which RISC-V doesn't care about. I can pass ULONG_MAX so that
+efi_bs_call will fail and
+efi_low_alloc_above will be invoked eventually.
 
-A few unrelated white space changes in enums in the IIO chunks.
+I am also thinking to put a check in relocate_kernel for preferred
+address != ULONG_MAX to avoid
+an extra efi_bs_call. The extra call doesn't actually create an issue,
+just a minor optimization.
+But if that is not acceptable for generic code, that is fine as well.
 
-Don't suppose they matter but maybe need the description to mention there
-may be some minor formatting changes as well in some cases.
-
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com> #for-iio
-
-> ---
->  .../devicetree/bindings/arm/cpus.yaml         |  81 +++---
->  .../devicetree/bindings/arm/l2c2x0.yaml       |  87 +++---
->  .../devicetree/bindings/arm/psci.yaml         |  15 +-
->  .../bindings/arm/samsung/exynos-chipid.yaml   |   5 +-
->  .../bus/allwinner,sun50i-a64-de2.yaml         |   5 +-
->  .../bindings/clock/fixed-factor-clock.yaml    |   5 +-
->  .../bindings/connector/usb-connector.yaml     |  28 +-
->  .../bindings/crypto/st,stm32-hash.yaml        |   9 +-
->  .../allwinner,sun4i-a10-display-engine.yaml   |   7 +-
->  .../display/allwinner,sun4i-a10-tcon.yaml     |   5 +-
->  .../bindings/display/panel/panel-common.yaml  |   5 +-
->  .../devicetree/bindings/dma/dma-common.yaml   |   3 +-
->  .../devicetree/bindings/dma/ti/k3-udma.yaml   |  18 +-
->  .../devicetree/bindings/eeprom/at24.yaml      |  11 +-
->  .../devicetree/bindings/example-schema.yaml   |  17 +-
->  .../bindings/hwmon/adi,ltc2947.yaml           |  32 +--
->  .../devicetree/bindings/hwmon/ti,tmp513.yaml  |  21 +-
->  .../devicetree/bindings/i2c/st,stm32-i2c.yaml |   9 +-
->  .../bindings/iio/adc/adi,ad7124.yaml          |   5 +-
->  .../bindings/iio/adc/lltc,ltc2496.yaml        |   3 +-
->  .../bindings/iio/adc/microchip,mcp3911.yaml   |   7 +-
->  .../bindings/iio/adc/st,stm32-dfsdm-adc.yaml  |  31 +-
->  .../bindings/iio/light/tsl2772.yaml           |  13 +-
->  .../bindings/iio/temperature/adi,ltc2983.yaml |  56 ++--
-
-...
-
-> diff --git a/Documentation/devicetree/bindings/iio/adc/adi,ad7124.yaml b/=
-Documentation/devicetree/bindings/iio/adc/adi,ad7124.yaml
-> index 97087a45ce54..deb34deff0e8 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/adi,ad7124.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/adi,ad7124.yaml
-> @@ -83,9 +83,8 @@ patternProperties:
->            1: REFIN2(+)/REFIN2(=E2=88=92).
->            3: AVDD
->            If this field is left empty, internal reference is selected.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> -          - enum: [0, 1, 3]
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        enum: [0, 1, 3]
->=20
->        diff-channels:
->          description: see Documentation/devicetree/bindings/iio/adc/adc.t=
-xt
-> diff --git a/Documentation/devicetree/bindings/iio/adc/lltc,ltc2496.yaml =
-b/Documentation/devicetree/bindings/iio/adc/lltc,ltc2496.yaml
-> index 97f521d654ea..6a991e9f78e2 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/lltc,ltc2496.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/lltc,ltc2496.yaml
-> @@ -18,8 +18,7 @@ properties:
->=20
->    vref-supply:
->      description: phandle to an external regulator providing the referenc=
-e voltage
-> -    allOf:
-> -      - $ref: /schemas/types.yaml#/definitions/phandle
-> +    $ref: /schemas/types.yaml#/definitions/phandle
->=20
->    reg:
->      description: spi chipselect number according to the usual spi bindin=
-gs
-> diff --git a/Documentation/devicetree/bindings/iio/adc/microchip,mcp3911.=
-yaml b/Documentation/devicetree/bindings/iio/adc/microchip,mcp3911.yaml
-> index 8ffeceb6abae..95ab285f4eba 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/microchip,mcp3911.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/microchip,mcp3911.yaml
-> @@ -38,10 +38,9 @@ properties:
->=20
->    microchip,device-addr:
->      description: Device address when multiple MCP3911 chips are present =
-on the same SPI bus.
-> -    allOf:
-> -      - $ref: /schemas/types.yaml#/definitions/uint32
-> -      - enum: [0, 1, 2, 3]
-> -      - default: 0
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    enum: [0, 1, 2, 3]
-> +    default: 0
->=20
->    vref-supply:
->      description: |
-> diff --git a/Documentation/devicetree/bindings/iio/adc/st,stm32-dfsdm-adc=
-.yaml b/Documentation/devicetree/bindings/iio/adc/st,stm32-dfsdm-adc.yaml
-> index b1627441a0b2..d69ca492d020 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/st,stm32-dfsdm-adc.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/st,stm32-dfsdm-adc.yaml
-> @@ -95,16 +95,14 @@ patternProperties:
->            On stm32h7 and stm32mp1:
->            - For st,stm32-dfsdm-adc: up to 8 channels numbered from 0 to =
-7.
->            - For st,stm32-dfsdm-dmic: 1 channel numbered from 0 to 7.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32-array
-> -          - items:
-> -              minimum: 0
-> -              maximum: 7
-> +        $ref: /schemas/types.yaml#/definitions/uint32-array
-> +        items:
-> +          minimum: 0
-> +          maximum: 7
->=20
->        st,adc-channel-names:
->          description: List of single-ended channel names.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/string-array
-> +        $ref: /schemas/types.yaml#/definitions/string-array
->=20
->        st,filter-order:
->          description: |
-> @@ -112,11 +110,10 @@ patternProperties:
->            - 0: FastSinC
->            - [1-5]: order 1 to 5.
->            For audio purpose it is recommended to use order 3 to 5.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> -          - items:
-> -              minimum: 0
-> -              maximum: 5
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        items:
-> +          minimum: 0
-> +          maximum: 5
->=20
->        "#io-channel-cells":
->          const: 1
-> @@ -129,9 +126,8 @@ patternProperties:
->            - "MANCH_R": manchester codec, rising edge =3D logic 0, fallin=
-g edge =3D logic 1
->            - "MANCH_F": manchester codec, rising edge =3D logic 1, fallin=
-g edge =3D logic 0
->          items:
-> -          enum: [ SPI_R, SPI_F, MANCH_R, MANCH_F ]
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/non-unique-string-arr=
-ay
-> +          enum: [SPI_R, SPI_F, MANCH_R, MANCH_F]
-
-I don't suppose it matters much but unrelated change.
-
-> +        $ref: /schemas/types.yaml#/definitions/non-unique-string-array
->=20
->        st,adc-channel-clk-src:
->          description: |
-> @@ -141,9 +137,8 @@ patternProperties:
->            - "CLKOUT_F": internal SPI clock divided by 2 (falling edge).
->            - "CLKOUT_R": internal SPI clock divided by 2 (rising edge).
->          items:
-> -          enum: [ CLKIN, CLKOUT, CLKOUT_F, CLKOUT_R ]
-
-Unrelated change.
-
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/non-unique-string-arr=
-ay
-> +          enum: [CLKIN, CLKOUT, CLKOUT_F, CLKOUT_R]
-> +        $ref: /schemas/types.yaml#/definitions/non-unique-string-array
->=20
->        st,adc-alt-channel:
->          description:
-> diff --git a/Documentation/devicetree/bindings/iio/light/tsl2772.yaml b/D=
-ocumentation/devicetree/bindings/iio/light/tsl2772.yaml
-> index e8f7d1ada57b..d81229857944 100644
-> --- a/Documentation/devicetree/bindings/iio/light/tsl2772.yaml
-> +++ b/Documentation/devicetree/bindings/iio/light/tsl2772.yaml
-> @@ -33,13 +33,12 @@ properties:
->=20
->    amstaos,proximity-diodes:
->      description: Proximity diodes to enable
-> -    allOf:
-> -      - $ref: /schemas/types.yaml#/definitions/uint32-array
-> -      - minItems: 1
-> -        maxItems: 2
-> -        items:
-> -          minimum: 0
-> -          maximum: 1
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> +    minItems: 1
-> +    maxItems: 2
-> +    items:
-> +      minimum: 0
-> +      maximum: 1
->=20
->    interrupts:
->      maxItems: 1
-> diff --git a/Documentation/devicetree/bindings/iio/temperature/adi,ltc298=
-3.yaml b/Documentation/devicetree/bindings/iio/temperature/adi,ltc2983.yaml
-> index 8fb46de6641d..9480ede59c37 100644
-> --- a/Documentation/devicetree/bindings/iio/temperature/adi,ltc2983.yaml
-> +++ b/Documentation/devicetree/bindings/iio/temperature/adi,ltc2983.yaml
-> @@ -42,10 +42,9 @@ properties:
->        0 - 50/60Hz rejection
->        1 - 60Hz rejection
->        2 - 50Hz rejection
-> -    allOf:
-> -      - $ref: /schemas/types.yaml#/definitions/uint32
-> -      - minimum: 0
-> -        maximum: 2
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    minimum: 0
-> +    maximum: 2
->=20
->    '#address-cells':
->      const: 1
-> @@ -91,8 +90,7 @@ patternProperties:
->            7 - Type T Thermocouple
->            8 - Type B Thermocouple
->            9 - Custom Thermocouple
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> +        $ref: /schemas/types.yaml#/definitions/uint32
->          minimum: 1
->          maximum: 9
->=20
-> @@ -121,8 +119,7 @@ patternProperties:
->            more details look at table 69 and 70.
->            Note should be signed, but dtc doesn't currently maintain the
->            sign.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint64-matrix
-> +        $ref: /schemas/types.yaml#/definitions/uint64-matrix
->          minItems: 3
->          maxItems: 64
->          items:
-> @@ -138,8 +135,7 @@ patternProperties:
->      properties:
->        adi,sensor-type:
->          description: Identifies the sensor as a diode.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> +        $ref: /schemas/types.yaml#/definitions/uint32
->          const: 28
->=20
->        adi,single-ended:
-> @@ -196,8 +192,7 @@ patternProperties:
->            16 - RTD PT-1000 (0.00375)
->            17 - RTD NI-120
->            18 - RTD Custom
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> +        $ref: /schemas/types.yaml#/definitions/uint32
->          minimum: 10
->          maximum: 18
->=20
-> @@ -210,9 +205,8 @@ patternProperties:
->          description:
->            Identifies the number of wires used by the RTD. Setting this
->            property to 5 means 4 wires with Kelvin Rsense.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> -          - enum: [2, 3, 4, 5]
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        enum: [2, 3, 4, 5]
->=20
->        adi,rsense-share:
->          description:
-> @@ -237,18 +231,16 @@ patternProperties:
->          description:
->            This property set the RTD curve used and the corresponding
->            Callendar-VanDusen constants. Look at table 30 of the datashee=
-t.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> -          - minimum: 0
-> -            maximum: 3
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        minimum: 0
-> +        maximum: 3
->=20
->        adi,custom-rtd:
->          description:
->            This is a table, where each entry should be a pair of
->            resistance(ohm)-temperature(K). The entries added here are in =
-uohm
->            and uK. For more details values look at table 74 and 75.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint64-matrix
-> +        $ref: /schemas/types.yaml#/definitions/uint64-matrix
->          items:
->            minItems: 3
->            maxItems: 64
-> @@ -280,8 +272,7 @@ patternProperties:
->            25 - Thermistor Spectrum 1003k 1kohm
->            26 - Thermistor Custom Steinhart-Hart
->            27 - Custom Thermistor
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> +        $ref: /schemas/types.yaml#/definitions/uint32
->          minimum: 19
->          maximum: 27
->=20
-> @@ -314,10 +305,9 @@ patternProperties:
->            This property controls the magnitude of the excitation current
->            applied to the thermistor. Value 0 set's the sensor in auto-ra=
-nge
->            mode.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> -          - enum: [0, 250, 500, 1000, 5000, 10000, 25000, 50000, 100000,
-> -                   250000, 500000, 1000000]
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        enum: [0, 250, 500, 1000, 5000, 10000, 25000, 50000, 100000, 250=
-000,
-> +          500000, 1000000]
->=20
->        adi,custom-thermistor:
->          description:
-> @@ -325,8 +315,7 @@ patternProperties:
->            resistance(ohm)-temperature(K). The entries added here are in =
-uohm
->            and uK only for custom thermistors. For more details look at t=
-able
->            78 and 79.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint64-matrix
-> +        $ref: /schemas/types.yaml#/definitions/uint64-matrix
->          minItems: 3
->          maxItems: 64
->          items:
-> @@ -339,8 +328,7 @@ patternProperties:
->            be programmed into the device memory using this property. For
->            Steinhart sensors the coefficients are given in the raw
->            format. Look at table 82 for more information.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32-array
-> +        $ref: /schemas/types.yaml#/definitions/uint32-array
->          items:
->            minItems: 6
->            maxItems: 6
-> @@ -358,8 +346,7 @@ patternProperties:
->      properties:
->        adi,sensor-type:
->          description: Identifies the sensor as a direct adc.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> +        $ref: /schemas/types.yaml#/definitions/uint32
->          const: 30
->=20
->        adi,single-ended:
-> @@ -379,8 +366,7 @@ patternProperties:
->=20
->        adi,sensor-type:
->          description: Identifies the sensor as a rsense.
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> +        $ref: /schemas/types.yaml#/definitions/uint32
->          const: 29
->=20
->        adi,rsense-val-milli-ohms:
-> diff --git a/Documentation/devicetree/bindings/input/allwinner,sun4i-a10-=
-lradc-keys.yaml b/Documentation/devicetree/bindings/input/allwinner,sun4i-a=
-10-lradc-keys.yaml
-> index 512a6af5aa42..cffd02028d02 100644
-> --- a/Documentation/devicetree/bindings/input/allwinner,sun4i-a10-lradc-k=
-eys.yaml
-> +++ b/Documentation/devicetree/bindings/input/allwinner,sun4i-a10-lradc-k=
-eys.yaml
-> @@ -42,9 +42,8 @@ patternProperties:
->          description: Keycode to emit
->=20
->        channel:
-> -        allOf:
-> -          - $ref: /schemas/types.yaml#/definitions/uint32
-> -          - enum: [0, 1]
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        enum: [0, 1]
->          description: ADC Channel this key is attached to
->=20
->        voltage:
-> diff --git a/Documentation/devicetree/bindings/input/input.yaml b/Documen=
-tation/devicetree/bindings/input/input.yaml
-> index 6d519046b3af..8edcb3c31270 100644
-> --- a/Documentation/devicetree/bindings/input/input.yaml
-> +++ b/Documentation/devicetree/bindings/input/input.yaml
-> @@ -18,11 +18,10 @@ properties:
->      description:
->        Specifies an array of numeric keycode values to be used for report=
-ing
->        button presses.
-> -    allOf:
-> -      - $ref: /schemas/types.yaml#/definitions/uint32-array
-> -      - items:
-> -          minimum: 0
-> -          maximum: 0xff
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> +    items:
-> +      minimum: 0
-> +      maximum: 0xff
->=20
->    poll-interval:
->      description: Poll interval time in milliseconds.
-...
+Thanks for your suggestions and time.
+-- 
+Regards,
+Atish
 
