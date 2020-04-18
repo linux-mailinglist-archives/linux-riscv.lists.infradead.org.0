@@ -2,81 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C18B71AF499
-	for <lists+linux-riscv@lfdr.de>; Sat, 18 Apr 2020 22:20:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BD811AF49A
+	for <lists+linux-riscv@lfdr.de>; Sat, 18 Apr 2020 22:20:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jZu2SG2CC0n9e6bY0OW4NrZkgCkX838M7bfDqNvau2s=; b=nRxLbMo5v+V4VD
-	vaSqoA3DoWs2Ep+ilGdhA34SZai3ZRwfrmxKJZQ7w4SMxySa+BoEeLsXu+gB+2iWftraKUAeiZc9G
-	VQSsdZE9m47qNC6AGD/Bz5Gbf4c7zbiZuzfrSnD1kVR3aK4IOof0+d4xqLSshfSUw52qjvnR8iNNG
-	X0nWTsGYb5+KFuz/fJAdM22LllsiI51dwzLB84BlVlFNZpVai1MEsD11Uj23PA3p9AZEuuj4nDj1l
-	yr/JsnmY2FdNney04inZhdnm0m3xMeL17228wgsLs3VQlA9mK/KkA+Q0SCa0qsR9HkDPg2Ig+p6d5
-	X94uiod4v7kotQumsI3w==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w9JXp3Rhu7cLwrTpzSGBlYRihxWrREylPnANLGxW8+A=; b=CXjnD4AaelMW0G
+	QGBy7MQX9XWADhU386UDjuugm5RQhmLyvRdx64BIwe/s7/j3hbc4y2ywQUP6NvFNdrpgjfQHPReny
+	MTVEYiN1Dio63g8q+i8tK7CKv0xmepYVAdEmJkQlK/3Ma2DqaF1MWaQ6OpDwa8TnjJ/3niHhBXS6e
+	ySvRhjyXBrKSPQAWE/Rac+2db6JAvkLyS+gnZycePuAa3u58AZ9LFlJEoXIC8qrNK+qezgTWtaET0
+	HJHK7ND+1obwSoYxWaUAXTqKJRsBYEQDVZFlRAaFFjJLLXebTbM570o+V2A14A9R9ggaqmIQLne7G
+	LMVS2JWVImr+k68fbF9g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPtwV-0001Uj-MO; Sat, 18 Apr 2020 20:19:59 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jPtwe-0001W2-Mo; Sat, 18 Apr 2020 20:20:08 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPtwO-0001RT-Hi
- for linux-riscv@lists.infradead.org; Sat, 18 Apr 2020 20:19:56 +0000
-Received: by mail-wm1-x341.google.com with SMTP id 188so352937wmc.2
- for <linux-riscv@lists.infradead.org>; Sat, 18 Apr 2020 13:19:51 -0700 (PDT)
+ id 1jPtwP-0001RX-OH
+ for linux-riscv@lists.infradead.org; Sat, 18 Apr 2020 20:19:57 +0000
+Received: by mail-wr1-x444.google.com with SMTP id b11so7162855wrs.6
+ for <linux-riscv@lists.infradead.org>; Sat, 18 Apr 2020 13:19:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=arista.com; s=googlenew;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jZu2SG2CC0n9e6bY0OW4NrZkgCkX838M7bfDqNvau2s=;
- b=NtWMGxm5Z5KL60IcA5G6+HePF4i0/+hybqLX4fP2XMV4pk2XK/oJgFwY9QTP7vjDcS
- 5rwxVW1+vHKUvZUBrN7R1Jm5os3oCs5jvHX41VQ5J2K9Y+GI66NfmYOUEkhyxC+rjZg7
- 2GfsY1ICyicOKD9p22ci+KNPTEheYKJMkOJUNpoxfOXV+MY7Nfvt7+EMftdBGU8cAV7Z
- Hc5O1LA9T9GP/asJoaPI+CZlJFXlG6W/t2lsj8SpH+N8Lys5LxM4YnccVfQhfWVsNDrM
- t9gj0wsuKk0zluKdzjzbtHVloZk5oDJD4LvQFErIsDvme+gEa5teq5SfPrxjPtC9exZQ
- O63A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=w9JXp3Rhu7cLwrTpzSGBlYRihxWrREylPnANLGxW8+A=;
+ b=JbKBnVI0U7UxcxtT3faWRBiszj2XDgDFNgOzl43LDvQOtUFOB6w3E5B95JQ02ihE5Q
+ CbjPeHs/PbFRpvn3MkULt1q6O8tUFrOWCxovRBPgBd4kwLLHY7nf/Yvg4WhOPXZxa6RJ
+ xO1U5xUK6+wnn6/Q6sRBP+4RKsvgM3VuJjlyvvwHcMQUNvbTyT/P/UFWc8Hnhaxpc2Uy
+ 3899B03P/bo6pEn9hVyvWffjs203ik5r1iuxI33XXtIqIL5AO9dPWGDc7UR7/5w0lpm+
+ y8seH4ZRgOz2SS7aRfsJaESdsBpp5+p5pSKfxGy5ed0qVUN3qKeKg//OOcvqalgGE90G
+ gGEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=jZu2SG2CC0n9e6bY0OW4NrZkgCkX838M7bfDqNvau2s=;
- b=tGPHKCDg13R9869a8JCmqu79CSr1jc0qsP94ywGrxpEsIcQ2A7Rfikc4rPLOTw4aRK
- ZkYrtfqv5tW9hiICOh1BlvfyT1DZv28QHm70u9pjqQnTHDG3wZ3jAm1DcRcZxklJoD4g
- 5I7619AhM9gHxu267B3UXof9K26bkKpowUmWloZfiTiwZXQYQ6SSvT5zf2Ooti5Ekae2
- IS9DwAroN9VxzHkZgKSv4v2fkGxDOwrTeQMyD44hTdttwra5/TaGv2jkENj7LPOK5mE5
- eMfdDEzPPZfW1oizYl0wqEriupxHN0y0XzSv3jhbNfraJatS4V8358RKQBeYoF8s3+dB
- 6AEg==
-X-Gm-Message-State: AGi0PuaeETSCWcK6aoAVTPyKwWnbP0iuqZiq05N2R9aX6s0wY9T7lUuw
- Gh0XnKi6pXOxIfZ7w5mrnSjeKQ==
-X-Google-Smtp-Source: APiQypIu9Ehl1Z9anj4NXd+uZnvSgH6ch0y3g33ZANXWX1DjUHPmY1LH5q1VbQfnVR586X/qqwr8lw==
-X-Received: by 2002:a05:600c:210c:: with SMTP id
- u12mr10004137wml.135.1587241189836; 
- Sat, 18 Apr 2020 13:19:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=w9JXp3Rhu7cLwrTpzSGBlYRihxWrREylPnANLGxW8+A=;
+ b=kVXe8cto3dIodigCHsFZTb/m2cEG8btqnvM1Wcv/vWMDCR+jtQ2DUzteWsS02ar1V5
+ a3TYod+Htt+PWC5whBgUsXVRh8TXHvrWddnA3KoGzRdVaC8aEYJNNPpxedTRw5PrNCcz
+ 022/xCn0uWimKr2Jntb65xFEa0UYfJWyASGrimAK5d90J1JVXS1WRA6lX8c7xBfaUJGm
+ XJ0/gn5g5yDvpFc+O4HC8K4ReOXzlpFW9TEkIfOo0oSQh2RPewSxNc5+rOK9DI8KJ/YC
+ Ko3Nt8NhHv1ZpwfXySx9SIk3aa1Q0j/88zAqkI7xSwEcYn8GqrNGcRHU2HkDSsI719gv
+ GCcg==
+X-Gm-Message-State: AGi0PuY514F93bvZlYVxQ8TtqlmE9Ln/UUeXp0ayuHS00kQj0PZZ/APr
+ u+N2OvlF3fcwx0/UR+skADw30g==
+X-Google-Smtp-Source: APiQypIDuM3/Wd2F8zlmlHEJK4d/GC19+42X9SoC5sMfPvE3cHV9j61KFyhaLVuETxKlplewtcxzwA==
+X-Received: by 2002:adf:c442:: with SMTP id a2mr10309363wrg.110.1587241191939; 
+ Sat, 18 Apr 2020 13:19:51 -0700 (PDT)
 Received: from localhost.localdomain ([2a02:8084:e84:2480:228:f8ff:fe6f:83a8])
  by smtp.gmail.com with ESMTPSA id
- m1sm31735255wro.64.2020.04.18.13.19.45
+ m1sm31735255wro.64.2020.04.18.13.19.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 Apr 2020 13:19:48 -0700 (PDT)
+ Sat, 18 Apr 2020 13:19:51 -0700 (PDT)
 From: Dmitry Safonov <dima@arista.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCHv3 00/50] Add log level to show_stack()
-Date: Sat, 18 Apr 2020 21:18:54 +0100
-Message-Id: <20200418201944.482088-1-dima@arista.com>
+Subject: [PATCHv3 01/50] kallsyms/printk: Add loglvl to print_ip_sym()
+Date: Sat, 18 Apr 2020 21:18:55 +0100
+Message-Id: <20200418201944.482088-2-dima@arista.com>
 X-Mailer: git-send-email 2.26.0
+In-Reply-To: <20200418201944.482088-1-dima@arista.com>
+References: <20200418201944.482088-1-dima@arista.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200418_131952_752716_D1E18E73 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20200418_131953_787639_A1D9284F 
+X-CRM114-Status: GOOD (  16.05  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -99,248 +99,256 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>, linux-sh@vger.kernel.org,
- Catalin Marinas <catalin.marinas@arm.com>, Ben Segall <bsegall@google.com>,
- Guo Ren <guoren@kernel.org>, Pavel Machek <pavel@ucw.cz>,
- Vincent Guittot <vincent.guittot@linaro.org>,
+Cc: Juri Lelli <juri.lelli@redhat.com>,
+ Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
+ James Hogan <jhogan@kernel.org>, Dmitry Safonov <0x7f454c46@gmail.com>,
+ Ben Segall <bsegall@google.com>, linux-riscv@lists.infradead.org,
+ Vincent Chen <deanbo422@gmail.com>, Will Deacon <will@kernel.org>,
+ Ingo Molnar <mingo@kernel.org>, Vincent Guittot <vincent.guittot@linaro.org>,
  Paul Burton <paulburton@kernel.org>, Dmitry Safonov <dima@arista.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Geert Uytterhoeven <geert@linux-m68k.org>, Mel Gorman <mgorman@suse.de>,
- Jiri Slaby <jslaby@suse.com>, Matt Turner <mattst88@gmail.com>,
- uclinux-h8-devel@lists.sourceforge.jp, Len Brown <len.brown@intel.com>,
- linux-pm@vger.kernel.org, Heiko Carstens <heiko.carstens@de.ibm.com>,
- linux-um@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Richard Henderson <rth@twiddle.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Ralf Baechle <ralf@linux-mips.org>,
- Paul Mackerras <paulus@samba.org>, Andrew Morton <akpm@linux-foundation.org>,
- linux-ia64@vger.kernel.org, Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
- James Hogan <jhogan@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Vincent Chen <deanbo422@gmail.com>,
- Ingo Molnar <mingo@kernel.org>, linux-s390@vger.kernel.org,
- linux-c6x-dev@linux-c6x.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- linux-hexagon@vger.kernel.org, Helge Deller <deller@gmx.de>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- linux-xtensa@linux-xtensa.org, Vasily Gorbik <gor@linux.ibm.com>,
- Aurelien Jacquiot <jacquiot.aurelien@gmail.com>,
- linux-m68k@lists.linux-m68k.org, Stafford Horne <shorne@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Chris Zankel <chris@zankel.net>,
- Tony Luck <tony.luck@intel.com>, Douglas Anderson <dianders@chromium.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dmitry Safonov <0x7f454c46@gmail.com>, Will Deacon <will@kernel.org>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Brian Cain <bcain@codeaurora.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- kgdb-bugreport@lists.sourceforge.net, linux-snps-arc@lists.infradead.org,
- Fenghua Yu <fenghua.yu@intel.com>, Borislav Petkov <bp@alien8.de>,
- Jeff Dike <jdike@addtoit.com>, Steven Rostedt <rostedt@goodmis.org>,
- Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Greentime Hu <green.hu@gmail.com>,
- Guan Xuetao <gxt@pku.edu.cn>, linux-parisc@vger.kernel.org,
- linux-alpha@vger.kernel.org, Ley Foon Tan <lftan@altera.com>,
- "David S. Miller" <davem@davemloft.net>, Rich Felker <dalias@libc.org>,
- Petr Mladek <pmladek@suse.com>, Peter Zijlstra <peterz@infradead.org>,
- "H. Peter Anvin" <hpa@zytor.com>, sparclinux@vger.kernel.org,
- linux-riscv@lists.infradead.org,
- Anton Ivanov <anton.ivanov@cambridgegreys.com>,
- Jonas Bonn <jonas@southpole.se>, Richard Weinberger <richard@nod.at>,
- x86@kernel.org, Russell King <linux@armlinux.org.uk>,
- clang-built-linux@googlegroups.com, Ingo Molnar <mingo@redhat.com>,
- Mark Salter <msalter@redhat.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>,
- openrisc@lists.librecores.org, Paul Walmsley <paul.walmsley@sifive.com>,
- Michal Simek <monstr@monstr.eu>, Vineet Gupta <vgupta@synopsys.com>,
- linux-mips@vger.kernel.org, Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Jason Wessel <jason.wessel@windriver.com>,
- nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org
+ Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
+ Mel Gorman <mgorman@suse.de>, Jiri Slaby <jslaby@suse.com>,
+ Petr Mladek <pmladek@suse.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Steven Rostedt <rostedt@goodmis.org>, Greentime Hu <green.hu@gmail.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>, Michal Simek <monstr@monstr.eu>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
+ Ralf Baechle <ralf@linux-mips.org>,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Changes to v3:
-- Collected more architectual Acks and Reviewed-by
-- Fixed compilation on sparc64
+print_ip_sym() needs to have a log level parameter to comply with other
+parts being printed. Otherwise, half of the expected backtrace would be
+printed and other may be missing with some logging level.
 
-Changes to v2:
-- Removed excessive pr_cont("\n") (nits by Senozhatsky)
-- Leave backtrace debugging messages with pr_debug()
-  (noted by Russell King and Will Deacon)
-- Correct microblaze_unwind_inner() declaration
-  (Thanks to Michal Simek and kbuild test robot)
-- Fix copy'n'paste typo in show_stack_loglvl() for sparc
-  (kbuild robot)
-- Fix backtrace output on xtensa
-  (Thanks Max Filippov)
-- Add loglevel to show_stack() on s390 (kbuild robot)
-- Collected all Reviewed-by and Acked-by (thanks!)
+The following callee(s) are using now the adjusted log level:
+- microblaze/unwind: the same level as headers & userspace unwind.
+  Note that pr_debug()'s there are for debugging the unwinder itself.
+- nds32/traps: symbol addresses are printed with the same log level
+  as backtrace headers.
+- lockdep: ip for locking issues is printed with the same log level
+  as other part of the warning.
+- sched: ip where preemption was disabled is printed as error like
+  the rest part of the message.
+- ftrace: bug reports are now consistent in the log level being used.
 
-v2: https://lore.kernel.org/linux-riscv/20200316143916.195608-1-dima@arista.com/
-v1: https://lore.kernel.org/linux-riscv/20191106030542.868541-1-dima@arista.com/
-
-Add log level argument to show_stack().
-Done in three stages:
-1. Introducing show_stack_loglvl() for every architecture
-2. Migrating old users with an explicit log level
-3. Renaming show_stack_loglvl() into show_stack()
-
-Justification:
-o It's a design mistake to move a business-logic decision
-  into platform realization detail.
-o I have currently two patches sets that would benefit from this work:
-  Removing console_loglevel jumps in sysrq driver [1]
-  Hung task warning before panic [2] - suggested by Tetsuo (but he
-  probably didn't realise what it would involve).
-o While doing (1), (2) the backtraces were adjusted to headers
-  and other messages for each situation - so there won't be a situation
-  when the backtrace is printed, but the headers are missing because
-  they have lesser log level (or the reverse).
-o As the result in (2) plays with console_loglevel for kdb are removed.
-
-The least important for upstream, but maybe still worth to note that
-every company I've worked in so far had an off-list patch to print
-backtrace with the needed log level (but only for the architecture they
-cared about).
-If you have other ideas how you will benefit from show_stack() with
-a log level - please, reply to this cover letter.
-
-See also discussion on v1:
-https://lore.kernel.org/linux-riscv/20191106083538.z5nlpuf64cigxigh@pathway.suse.cz/
-
-Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Albert Ou <aou@eecs.berkeley.edu>
+Cc: Ben Segall <bsegall@google.com>
+Cc: Dietmar Eggemann <dietmar.eggemann@arm.com>
+Cc: Greentime Hu <green.hu@gmail.com>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Ingo Molnar <mingo@kernel.org>
-Cc: Jiri Slaby <jslaby@suse.com>
-Cc: Petr Mladek <pmladek@suse.com>
-Cc: Sergey Senozhatsky <sergey.senozhatsky@gmail.com>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: James Hogan <jhogan@kernel.org>
+Cc: Juri Lelli <juri.lelli@redhat.com>
+Cc: Mel Gorman <mgorman@suse.de>
+Cc: Michal Simek <monstr@monstr.eu>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Paul Burton <paulburton@kernel.org>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Ralf Baechle <ralf@linux-mips.org>
 Cc: Steven Rostedt <rostedt@goodmis.org>
-Cc: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Vincent Chen <deanbo422@gmail.com>
+Cc: Vincent Guittot <vincent.guittot@linaro.org>
+Cc: Will Deacon <will@kernel.org>
+Cc: linux-mips@vger.kernel.org
+Cc: linux-riscv@lists.infradead.org
+Acked-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
+Signed-off-by: Dmitry Safonov <dima@arista.com>
+---
+ arch/microblaze/kernel/unwind.c | 2 +-
+ arch/mips/kernel/traps.c        | 4 ++--
+ arch/nds32/kernel/traps.c       | 4 ++--
+ arch/riscv/kernel/stacktrace.c  | 2 +-
+ include/linux/kallsyms.h        | 4 ++--
+ kernel/locking/lockdep.c        | 4 ++--
+ kernel/sched/core.c             | 6 ++----
+ kernel/trace/ftrace.c           | 8 ++++----
+ tools/include/linux/kallsyms.h  | 2 +-
+ 9 files changed, 17 insertions(+), 19 deletions(-)
 
-Thanks,
-Dmitry
-
-[1]: https://lore.kernel.org/lkml/20190528002412.1625-1-dima@arista.com/T/#u
-[2]: https://lkml.kernel.org/r/41fd7652-df1f-26f6-aba0-b87ebae07db6@i-love.sakura.ne.jp
-
-Dmitry Safonov (50):
-  kallsyms/printk: Add loglvl to print_ip_sym()
-  alpha: Add show_stack_loglvl()
-  arc: Add show_stack_loglvl()
-  arm/asm: Add loglvl to c_backtrace()
-  arm: Add loglvl to unwind_backtrace()
-  arm: Add loglvl to dump_backtrace()
-  arm: Wire up dump_backtrace_{entry,stm}
-  arm: Add show_stack_loglvl()
-  arm64: Add loglvl to dump_backtrace()
-  arm64: Add show_stack_loglvl()
-  c6x: Add show_stack_loglvl()
-  csky: Add show_stack_loglvl()
-  h8300: Add show_stack_loglvl()
-  hexagon: Add show_stack_loglvl()
-  ia64: Pass log level as arg into ia64_do_show_stack()
-  ia64: Add show_stack_loglvl()
-  m68k: Add show_stack_loglvl()
-  microblaze: Add loglvl to microblaze_unwind_inner()
-  microblaze: Add loglvl to microblaze_unwind()
-  microblaze: Add show_stack_loglvl()
-  mips: Add show_stack_loglvl()
-  nds32: Add show_stack_loglvl()
-  nios2: Add show_stack_loglvl()
-  openrisc: Add show_stack_loglvl()
-  parisc: Add show_stack_loglvl()
-  powerpc: Add show_stack_loglvl()
-  riscv: Add show_stack_loglvl()
-  s390: Add show_stack_loglvl()
-  sh: Add loglvl to dump_mem()
-  sh: Remove needless printk()
-  sh: Add loglvl to printk_address()
-  sh: Add loglvl to show_trace()
-  sh: Add show_stack_loglvl()
-  sparc: Add show_stack_loglvl()
-  um/sysrq: Remove needless variable sp
-  um: Add show_stack_loglvl()
-  unicore32: Remove unused pmode argument in c_backtrace()
-  unicore32: Add loglvl to c_backtrace()
-  unicore32: Add show_stack_loglvl()
-  x86: Add missing const qualifiers for log_lvl
-  x86: Add show_stack_loglvl()
-  xtensa: Add loglvl to show_trace()
-  xtensa: Add show_stack_loglvl()
-  sysrq: Use show_stack_loglvl()
-  x86/amd_gart: Print stacktrace for a leak with KERN_ERR
-  power: Use show_stack_loglvl()
-  kdb: Don't play with console_loglevel
-  sched: Print stack trace with KERN_INFO
-  kernel: Use show_stack_loglvl()
-  kernel: Rename show_stack_loglvl() => show_stack()
-
- arch/alpha/kernel/traps.c            | 22 +++++++--------
- arch/arc/include/asm/bug.h           |  3 ++-
- arch/arc/kernel/stacktrace.c         | 17 +++++++-----
- arch/arc/kernel/troubleshoot.c       |  2 +-
- arch/arm/include/asm/bug.h           |  3 ++-
- arch/arm/include/asm/traps.h         |  3 ++-
- arch/arm/include/asm/unwind.h        |  3 ++-
- arch/arm/kernel/traps.c              | 39 +++++++++++++++------------
- arch/arm/kernel/unwind.c             |  5 ++--
- arch/arm/lib/backtrace-clang.S       |  9 +++++--
- arch/arm/lib/backtrace.S             | 14 +++++++---
- arch/arm64/include/asm/stacktrace.h  |  3 ++-
- arch/arm64/kernel/process.c          |  2 +-
- arch/arm64/kernel/traps.c            | 17 ++++++------
- arch/c6x/kernel/traps.c              | 16 ++++++-----
- arch/csky/kernel/dumpstack.c         |  9 ++++---
- arch/csky/kernel/ptrace.c            |  4 +--
- arch/h8300/kernel/traps.c            | 12 ++++-----
- arch/hexagon/kernel/traps.c          | 25 ++++++++---------
- arch/ia64/include/asm/ptrace.h       |  1 -
- arch/ia64/kernel/mca.c               |  2 +-
- arch/ia64/kernel/process.c           | 17 ++++++------
- arch/m68k/kernel/traps.c             | 13 ++++-----
- arch/microblaze/include/asm/unwind.h |  3 ++-
- arch/microblaze/kernel/stacktrace.c  |  4 +--
- arch/microblaze/kernel/traps.c       | 12 ++++-----
- arch/microblaze/kernel/unwind.c      | 40 +++++++++++++++++-----------
- arch/mips/kernel/traps.c             | 35 ++++++++++++------------
- arch/nds32/kernel/traps.c            | 15 ++++++-----
- arch/nios2/kernel/traps.c            | 17 ++++++------
- arch/openrisc/kernel/traps.c         | 12 +++++----
- arch/parisc/kernel/traps.c           | 24 ++++++++---------
- arch/powerpc/kernel/process.c        | 15 ++++++-----
- arch/powerpc/kernel/stacktrace.c     |  2 +-
- arch/riscv/kernel/stacktrace.c       |  9 ++++---
- arch/s390/kernel/dumpstack.c         | 13 ++++-----
- arch/sh/include/asm/kdebug.h         |  6 +++--
- arch/sh/include/asm/processor_32.h   |  2 +-
- arch/sh/kernel/dumpstack.c           | 36 ++++++++++++-------------
- arch/sh/kernel/process_32.c          |  2 +-
- arch/sh/kernel/process_64.c          |  3 +--
- arch/sh/kernel/traps.c               |  4 +--
- arch/sh/mm/fault.c                   |  2 +-
- arch/sparc/kernel/process_32.c       | 10 +++----
- arch/sparc/kernel/process_64.c       |  2 +-
- arch/sparc/kernel/traps_64.c         |  9 ++++---
- arch/um/drivers/mconsole_kern.c      |  2 +-
- arch/um/kernel/sysrq.c               | 23 ++++++++--------
- arch/unicore32/kernel/setup.h        |  2 +-
- arch/unicore32/kernel/traps.c        | 34 +++++++++++------------
- arch/unicore32/lib/backtrace.S       | 24 +++++++++++------
- arch/x86/include/asm/stacktrace.h    |  2 +-
- arch/x86/kernel/amd_gart_64.c        |  2 +-
- arch/x86/kernel/dumpstack.c          |  9 ++++---
- arch/xtensa/kernel/traps.c           | 22 ++++++++-------
- drivers/base/power/main.c            |  2 +-
- drivers/tty/sysrq.c                  |  2 +-
- include/linux/kallsyms.h             |  4 +--
- include/linux/sched/debug.h          |  3 ++-
- kernel/debug/kdb/kdb_bt.c            | 15 ++++++-----
- kernel/locking/lockdep.c             |  4 +--
- kernel/locking/rtmutex-debug.c       |  2 +-
- kernel/sched/core.c                  |  8 +++---
- kernel/trace/ftrace.c                |  8 +++---
- lib/dump_stack.c                     |  2 +-
- tools/include/linux/kallsyms.h       |  2 +-
- 66 files changed, 375 insertions(+), 315 deletions(-)
-
+diff --git a/arch/microblaze/kernel/unwind.c b/arch/microblaze/kernel/unwind.c
+index 34c270cb11fc..4241cdd28ee7 100644
+--- a/arch/microblaze/kernel/unwind.c
++++ b/arch/microblaze/kernel/unwind.c
+@@ -254,7 +254,7 @@ static void microblaze_unwind_inner(struct task_struct *task,
+ 					task->comm);
+ 				break;
+ 			} else
+-				print_ip_sym(pc);
++				print_ip_sym(KERN_INFO, pc);
+ 		}
+ 
+ 		/* Stop when we reach anything not part of the kernel */
+diff --git a/arch/mips/kernel/traps.c b/arch/mips/kernel/traps.c
+index 31968cbd6464..de05503c680c 100644
+--- a/arch/mips/kernel/traps.c
++++ b/arch/mips/kernel/traps.c
+@@ -123,7 +123,7 @@ static void show_raw_backtrace(unsigned long reg29)
+ 			break;
+ 		}
+ 		if (__kernel_text_address(addr))
+-			print_ip_sym(addr);
++			print_ip_sym(KERN_DEFAULT, addr);
+ 	}
+ 	printk("\n");
+ }
+@@ -153,7 +153,7 @@ static void show_backtrace(struct task_struct *task, const struct pt_regs *regs)
+ 	}
+ 	printk("Call Trace:\n");
+ 	do {
+-		print_ip_sym(pc);
++		print_ip_sym(KERN_DEFAULT, pc);
+ 		pc = unwind_stack(task, &sp, pc, &ra);
+ 	} while (pc);
+ 	pr_cont("\n");
+diff --git a/arch/nds32/kernel/traps.c b/arch/nds32/kernel/traps.c
+index f4d386b52622..40625760a125 100644
+--- a/arch/nds32/kernel/traps.c
++++ b/arch/nds32/kernel/traps.c
+@@ -108,7 +108,7 @@ static void __dump(struct task_struct *tsk, unsigned long *base_reg)
+ 			if (__kernel_text_address(ret_addr)) {
+ 				ret_addr = ftrace_graph_ret_addr(
+ 						tsk, &graph, ret_addr, NULL);
+-				print_ip_sym(ret_addr);
++				print_ip_sym(KERN_EMERG, ret_addr);
+ 			}
+ 			if (--cnt < 0)
+ 				break;
+@@ -124,7 +124,7 @@ static void __dump(struct task_struct *tsk, unsigned long *base_reg)
+ 
+ 				ret_addr = ftrace_graph_ret_addr(
+ 						tsk, &graph, ret_addr, NULL);
+-				print_ip_sym(ret_addr);
++				print_ip_sym(KERN_EMERG, ret_addr);
+ 			}
+ 			if (--cnt < 0)
+ 				break;
+diff --git a/arch/riscv/kernel/stacktrace.c b/arch/riscv/kernel/stacktrace.c
+index 02087fe539c6..eeee844fb93d 100644
+--- a/arch/riscv/kernel/stacktrace.c
++++ b/arch/riscv/kernel/stacktrace.c
+@@ -99,7 +99,7 @@ static void notrace walk_stackframe(struct task_struct *task,
+ 
+ static bool print_trace_address(unsigned long pc, void *arg)
+ {
+-	print_ip_sym(pc);
++	print_ip_sym(KERN_DEFAULT, pc);
+ 	return false;
+ }
+ 
+diff --git a/include/linux/kallsyms.h b/include/linux/kallsyms.h
+index 657a83b943f0..98338dc6b5d2 100644
+--- a/include/linux/kallsyms.h
++++ b/include/linux/kallsyms.h
+@@ -165,9 +165,9 @@ static inline int kallsyms_show_value(void)
+ 
+ #endif /*CONFIG_KALLSYMS*/
+ 
+-static inline void print_ip_sym(unsigned long ip)
++static inline void print_ip_sym(const char *loglvl, unsigned long ip)
+ {
+-	printk("[<%px>] %pS\n", (void *) ip, (void *) ip);
++	printk("%s[<%px>] %pS\n", loglvl, (void *) ip, (void *) ip);
+ }
+ 
+ #endif /*_LINUX_KALLSYMS_H*/
+diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
+index ac10db66cc63..079e251fdb4a 100644
+--- a/kernel/locking/lockdep.c
++++ b/kernel/locking/lockdep.c
+@@ -4399,7 +4399,7 @@ static void print_unlock_imbalance_bug(struct task_struct *curr,
+ 		curr->comm, task_pid_nr(curr));
+ 	print_lockdep_cache(lock);
+ 	pr_cont(") at:\n");
+-	print_ip_sym(ip);
++	print_ip_sym(KERN_WARNING, ip);
+ 	pr_warn("but there are no more locks to release!\n");
+ 	pr_warn("\nother info that might help us debug this:\n");
+ 	lockdep_print_held_locks(curr);
+@@ -5050,7 +5050,7 @@ static void print_lock_contention_bug(struct task_struct *curr,
+ 		curr->comm, task_pid_nr(curr));
+ 	print_lockdep_cache(lock);
+ 	pr_cont(") at:\n");
+-	print_ip_sym(ip);
++	print_ip_sym(KERN_WARNING, ip);
+ 	pr_warn("but there are no locks held!\n");
+ 	pr_warn("\nother info that might help us debug this:\n");
+ 	lockdep_print_held_locks(curr);
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index 3a61a3b8eaa9..e6ea7c17a362 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -3864,8 +3864,7 @@ static noinline void __schedule_bug(struct task_struct *prev)
+ 	if (IS_ENABLED(CONFIG_DEBUG_PREEMPT)
+ 	    && in_atomic_preempt_off()) {
+ 		pr_err("Preemption disabled at:");
+-		print_ip_sym(preempt_disable_ip);
+-		pr_cont("\n");
++		print_ip_sym(KERN_ERR, preempt_disable_ip);
+ 	}
+ 	if (panic_on_warn)
+ 		panic("scheduling while atomic\n");
+@@ -6800,8 +6799,7 @@ void ___might_sleep(const char *file, int line, int preempt_offset)
+ 	if (IS_ENABLED(CONFIG_DEBUG_PREEMPT)
+ 	    && !preempt_count_equals(preempt_offset)) {
+ 		pr_err("Preemption disabled at:");
+-		print_ip_sym(preempt_disable_ip);
+-		pr_cont("\n");
++		print_ip_sym(KERN_ERR, preempt_disable_ip);
+ 	}
+ 	dump_stack();
+ 	add_taint(TAINT_WARN, LOCKDEP_STILL_OK);
+diff --git a/kernel/trace/ftrace.c b/kernel/trace/ftrace.c
+index 041694a1eb74..120b4b7f927c 100644
+--- a/kernel/trace/ftrace.c
++++ b/kernel/trace/ftrace.c
+@@ -2031,12 +2031,12 @@ void ftrace_bug(int failed, struct dyn_ftrace *rec)
+ 	case -EFAULT:
+ 		FTRACE_WARN_ON_ONCE(1);
+ 		pr_info("ftrace faulted on modifying ");
+-		print_ip_sym(ip);
++		print_ip_sym(KERN_INFO, ip);
+ 		break;
+ 	case -EINVAL:
+ 		FTRACE_WARN_ON_ONCE(1);
+ 		pr_info("ftrace failed to modify ");
+-		print_ip_sym(ip);
++		print_ip_sym(KERN_INFO, ip);
+ 		print_ip_ins(" actual:   ", (unsigned char *)ip);
+ 		pr_cont("\n");
+ 		if (ftrace_expected) {
+@@ -2047,12 +2047,12 @@ void ftrace_bug(int failed, struct dyn_ftrace *rec)
+ 	case -EPERM:
+ 		FTRACE_WARN_ON_ONCE(1);
+ 		pr_info("ftrace faulted on writing ");
+-		print_ip_sym(ip);
++		print_ip_sym(KERN_INFO, ip);
+ 		break;
+ 	default:
+ 		FTRACE_WARN_ON_ONCE(1);
+ 		pr_info("ftrace faulted on unknown error ");
+-		print_ip_sym(ip);
++		print_ip_sym(KERN_INFO, ip);
+ 	}
+ 	print_bug_type();
+ 	if (rec) {
+diff --git a/tools/include/linux/kallsyms.h b/tools/include/linux/kallsyms.h
+index 89ca6fe257cc..efb6c3f5f2a9 100644
+--- a/tools/include/linux/kallsyms.h
++++ b/tools/include/linux/kallsyms.h
+@@ -20,7 +20,7 @@ static inline const char *kallsyms_lookup(unsigned long addr,
+ 
+ #include <execinfo.h>
+ #include <stdlib.h>
+-static inline void print_ip_sym(unsigned long ip)
++static inline void print_ip_sym(const char *loglvl, unsigned long ip)
+ {
+ 	char **name;
+ 
 -- 
 2.26.0
 
