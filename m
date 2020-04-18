@@ -2,81 +2,81 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BD811AF49A
-	for <lists+linux-riscv@lfdr.de>; Sat, 18 Apr 2020 22:20:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C44591AF4D1
+	for <lists+linux-riscv@lfdr.de>; Sat, 18 Apr 2020 22:22:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9JXp3Rhu7cLwrTpzSGBlYRihxWrREylPnANLGxW8+A=; b=CXjnD4AaelMW0G
-	QGBy7MQX9XWADhU386UDjuugm5RQhmLyvRdx64BIwe/s7/j3hbc4y2ywQUP6NvFNdrpgjfQHPReny
-	MTVEYiN1Dio63g8q+i8tK7CKv0xmepYVAdEmJkQlK/3Ma2DqaF1MWaQ6OpDwa8TnjJ/3niHhBXS6e
-	ySvRhjyXBrKSPQAWE/Rac+2db6JAvkLyS+gnZycePuAa3u58AZ9LFlJEoXIC8qrNK+qezgTWtaET0
-	HJHK7ND+1obwSoYxWaUAXTqKJRsBYEQDVZFlRAaFFjJLLXebTbM570o+V2A14A9R9ggaqmIQLne7G
-	LMVS2JWVImr+k68fbF9g==;
+	List-Owner; bh=ybffadE8dqAJo382dZkDBzwR2ts70k1w2gIXA5Uhhzw=; b=G3Z/LC4R4eI+WN
+	RO+h3AUBCkEof7fKT4MSWEgBFylE5DEkEIe/NoBpt/6o4dtg14oOvNkANxnGSJ8w8i5ZzoGGIfLQP
+	iUmpxmEV99A0gzLL2ZEpiOIhAh8lJykjFRAiL5fIJSOfuUlpdbRGlKmZCV6C6oVAWZeF8iFmOqXOO
+	8+cxze86CYc1y3oeC5JmShEPsJTInLd6ONVBXh0yZzHPkNNY+sM7gRNPtA/WRqbH1Fsr708WG+DsU
+	gJ+hdsoy2W1/dPjhHSlRhnIziIVigFB7l8qFc7eBfuaiePNTsjTI/hBVOqSycT03Px5MYNRHvnhP3
+	FP8QctVFFmy7P7hIhntg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPtwe-0001W2-Mo; Sat, 18 Apr 2020 20:20:08 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jPtyw-00062r-IX; Sat, 18 Apr 2020 20:22:30 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPtwP-0001RX-OH
- for linux-riscv@lists.infradead.org; Sat, 18 Apr 2020 20:19:57 +0000
-Received: by mail-wr1-x444.google.com with SMTP id b11so7162855wrs.6
- for <linux-riscv@lists.infradead.org>; Sat, 18 Apr 2020 13:19:53 -0700 (PDT)
+ id 1jPtwy-0004CW-EX
+ for linux-riscv@lists.infradead.org; Sat, 18 Apr 2020 20:20:30 +0000
+Received: by mail-wr1-x442.google.com with SMTP id k1so7186245wrx.4
+ for <linux-riscv@lists.infradead.org>; Sat, 18 Apr 2020 13:20:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=arista.com; s=googlenew;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=w9JXp3Rhu7cLwrTpzSGBlYRihxWrREylPnANLGxW8+A=;
- b=JbKBnVI0U7UxcxtT3faWRBiszj2XDgDFNgOzl43LDvQOtUFOB6w3E5B95JQ02ihE5Q
- CbjPeHs/PbFRpvn3MkULt1q6O8tUFrOWCxovRBPgBd4kwLLHY7nf/Yvg4WhOPXZxa6RJ
- xO1U5xUK6+wnn6/Q6sRBP+4RKsvgM3VuJjlyvvwHcMQUNvbTyT/P/UFWc8Hnhaxpc2Uy
- 3899B03P/bo6pEn9hVyvWffjs203ik5r1iuxI33XXtIqIL5AO9dPWGDc7UR7/5w0lpm+
- y8seH4ZRgOz2SS7aRfsJaESdsBpp5+p5pSKfxGy5ed0qVUN3qKeKg//OOcvqalgGE90G
- gGEw==
+ bh=ybffadE8dqAJo382dZkDBzwR2ts70k1w2gIXA5Uhhzw=;
+ b=iZHz5P399RHWKayzJ9qhD1e4JsSZ67BJPWz35fMSi+5VfWXH3u7MezAMmPUnrNInK6
+ V9gYot/f+iEEBeTzY9MiRQifCbNvawCYDgFzi26hgPhMjiBZBVEDIKiu9aVk8DxJJ4y9
+ KxHw6gAG3Dz9EbMNGQ3nl+xzWbuKYXLOJP6iV4RC+JDPcSVIcqKv6OY4J53IYVqeXCBy
+ oryOCx51hk7QYCd3Dyjnl2pTaotPog1JhIQW5lsCot1Z5vSuQAv7N/Rs6WQ/BNAz9qrc
+ 0yyk1FdT+UCgcn4cAEENMdOcrXCRrK/83CGuTNUvEDIqJEEWouhjGPwJgVaR8jsuepKC
+ GalA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=w9JXp3Rhu7cLwrTpzSGBlYRihxWrREylPnANLGxW8+A=;
- b=kVXe8cto3dIodigCHsFZTb/m2cEG8btqnvM1Wcv/vWMDCR+jtQ2DUzteWsS02ar1V5
- a3TYod+Htt+PWC5whBgUsXVRh8TXHvrWddnA3KoGzRdVaC8aEYJNNPpxedTRw5PrNCcz
- 022/xCn0uWimKr2Jntb65xFEa0UYfJWyASGrimAK5d90J1JVXS1WRA6lX8c7xBfaUJGm
- XJ0/gn5g5yDvpFc+O4HC8K4ReOXzlpFW9TEkIfOo0oSQh2RPewSxNc5+rOK9DI8KJ/YC
- Ko3Nt8NhHv1ZpwfXySx9SIk3aa1Q0j/88zAqkI7xSwEcYn8GqrNGcRHU2HkDSsI719gv
- GCcg==
-X-Gm-Message-State: AGi0PuY514F93bvZlYVxQ8TtqlmE9Ln/UUeXp0ayuHS00kQj0PZZ/APr
- u+N2OvlF3fcwx0/UR+skADw30g==
-X-Google-Smtp-Source: APiQypIDuM3/Wd2F8zlmlHEJK4d/GC19+42X9SoC5sMfPvE3cHV9j61KFyhaLVuETxKlplewtcxzwA==
-X-Received: by 2002:adf:c442:: with SMTP id a2mr10309363wrg.110.1587241191939; 
- Sat, 18 Apr 2020 13:19:51 -0700 (PDT)
+ bh=ybffadE8dqAJo382dZkDBzwR2ts70k1w2gIXA5Uhhzw=;
+ b=ZrazGJZ4a+js8KDpnzRb1PQsYW7EC6ct298cp51PlpvEl9nP6pfwU6X6TyUs9ZmW/2
+ SMZlp4UVY0bu2SVei8n7XY0sE8oPP2mpyKzjxoAUc4c2mNIIGCd9/27x1xIuurrCzybE
+ EWG3kf4FSIWoSvQnhhLj474e+qfEsXl7bIK/nd76kP8K84I7ziZwpE/qB78O5piWJpXM
+ 83/N0yUSXSu8U0ejOOzBKsSZ1CKDw/emHaksOc0WyGwhbz2DZ1btlz1wXUtRoOVoTKIY
+ yKpHvmUvTDrm1Q8texvghmym5yM39DLVlh6QcQfwhpAdAEq9U8kpP8+Fou9O6fmB6F55
+ aRcA==
+X-Gm-Message-State: AGi0Pubo+RH7pJOdRvEwYHOQqf6niRrTVXLUUYYvxRdi4Lj2t64gQUV+
+ O3A9QVVTX09i/Bu2VQuRxjtr+Q==
+X-Google-Smtp-Source: APiQypIe0nED3rMPLTQENe6HaS/vs2AUCMRZNrcnsR+mudM1rommFYQcpSXtLZ73oHRLDO4iH1Z8YA==
+X-Received: by 2002:adf:ce0a:: with SMTP id p10mr10089157wrn.89.1587241227000; 
+ Sat, 18 Apr 2020 13:20:27 -0700 (PDT)
 Received: from localhost.localdomain ([2a02:8084:e84:2480:228:f8ff:fe6f:83a8])
  by smtp.gmail.com with ESMTPSA id
- m1sm31735255wro.64.2020.04.18.13.19.50
+ m1sm31735255wro.64.2020.04.18.13.20.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 Apr 2020 13:19:51 -0700 (PDT)
+ Sat, 18 Apr 2020 13:20:26 -0700 (PDT)
 From: Dmitry Safonov <dima@arista.com>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCHv3 01/50] kallsyms/printk: Add loglvl to print_ip_sym()
-Date: Sat, 18 Apr 2020 21:18:55 +0100
-Message-Id: <20200418201944.482088-2-dima@arista.com>
+Subject: [PATCHv3 27/50] riscv: Add show_stack_loglvl()
+Date: Sat, 18 Apr 2020 21:19:21 +0100
+Message-Id: <20200418201944.482088-28-dima@arista.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200418201944.482088-1-dima@arista.com>
 References: <20200418201944.482088-1-dima@arista.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200418_131953_787639_A1D9284F 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20200418_132028_556187_B7A88137 
+X-CRM114-Status: GOOD (  10.86  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -99,256 +99,79 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Juri Lelli <juri.lelli@redhat.com>,
+Cc: Petr Mladek <pmladek@suse.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Dmitry Safonov <dima@arista.com>,
  Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
- James Hogan <jhogan@kernel.org>, Dmitry Safonov <0x7f454c46@gmail.com>,
- Ben Segall <bsegall@google.com>, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Will Deacon <will@kernel.org>,
- Ingo Molnar <mingo@kernel.org>, Vincent Guittot <vincent.guittot@linaro.org>,
- Paul Burton <paulburton@kernel.org>, Dmitry Safonov <dima@arista.com>,
- Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
- Mel Gorman <mgorman@suse.de>, Jiri Slaby <jslaby@suse.com>,
- Petr Mladek <pmladek@suse.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Steven Rostedt <rostedt@goodmis.org>, Greentime Hu <green.hu@gmail.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>, Michal Simek <monstr@monstr.eu>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
- Ralf Baechle <ralf@linux-mips.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Dmitry Safonov <0x7f454c46@gmail.com>, Steven Rostedt <rostedt@goodmis.org>,
  Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>
+ linux-riscv@lists.infradead.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Jiri Slaby <jslaby@suse.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Ingo Molnar <mingo@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-print_ip_sym() needs to have a log level parameter to comply with other
-parts being printed. Otherwise, half of the expected backtrace would be
-printed and other may be missing with some logging level.
+Currently, the log-level of show_stack() depends on a platform
+realization. It creates situations where the headers are printed with
+lower log level or higher than the stacktrace (depending on
+a platform or user).
 
-The following callee(s) are using now the adjusted log level:
-- microblaze/unwind: the same level as headers & userspace unwind.
-  Note that pr_debug()'s there are for debugging the unwinder itself.
-- nds32/traps: symbol addresses are printed with the same log level
-  as backtrace headers.
-- lockdep: ip for locking issues is printed with the same log level
-  as other part of the warning.
-- sched: ip where preemption was disabled is printed as error like
-  the rest part of the message.
-- ftrace: bug reports are now consistent in the log level being used.
+Furthermore, it forces the logic decision from user to an architecture
+side. In result, some users as sysrq/kdb/etc are doing tricks with
+temporary rising console_loglevel while printing their messages.
+And in result it not only may print unwanted messages from other CPUs,
+but also omit printing at all in the unlucky case where the printk()
+was deferred.
+
+Introducing log-level parameter and KERN_UNSUPPRESSED [1] seems
+an easier approach than introducing more printk buffers.
+Also, it will consolidate printings with headers.
+
+Introduce show_stack_loglvl(), that eventually will substitute
+show_stack().
 
 Cc: Albert Ou <aou@eecs.berkeley.edu>
-Cc: Ben Segall <bsegall@google.com>
-Cc: Dietmar Eggemann <dietmar.eggemann@arm.com>
-Cc: Greentime Hu <green.hu@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Ingo Molnar <mingo@redhat.com>
-Cc: James Hogan <jhogan@kernel.org>
-Cc: Juri Lelli <juri.lelli@redhat.com>
-Cc: Mel Gorman <mgorman@suse.de>
-Cc: Michal Simek <monstr@monstr.eu>
 Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Paul Burton <paulburton@kernel.org>
 Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Cc: Ralf Baechle <ralf@linux-mips.org>
-Cc: Steven Rostedt <rostedt@goodmis.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Vincent Chen <deanbo422@gmail.com>
-Cc: Vincent Guittot <vincent.guittot@linaro.org>
-Cc: Will Deacon <will@kernel.org>
-Cc: linux-mips@vger.kernel.org
 Cc: linux-riscv@lists.infradead.org
-Acked-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
+[1]: https://lore.kernel.org/lkml/20190528002412.1625-1-dima@arista.com/T/#u
 Signed-off-by: Dmitry Safonov <dima@arista.com>
 ---
- arch/microblaze/kernel/unwind.c | 2 +-
- arch/mips/kernel/traps.c        | 4 ++--
- arch/nds32/kernel/traps.c       | 4 ++--
- arch/riscv/kernel/stacktrace.c  | 2 +-
- include/linux/kallsyms.h        | 4 ++--
- kernel/locking/lockdep.c        | 4 ++--
- kernel/sched/core.c             | 6 ++----
- kernel/trace/ftrace.c           | 8 ++++----
- tools/include/linux/kallsyms.h  | 2 +-
- 9 files changed, 17 insertions(+), 19 deletions(-)
+ arch/riscv/kernel/stacktrace.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/arch/microblaze/kernel/unwind.c b/arch/microblaze/kernel/unwind.c
-index 34c270cb11fc..4241cdd28ee7 100644
---- a/arch/microblaze/kernel/unwind.c
-+++ b/arch/microblaze/kernel/unwind.c
-@@ -254,7 +254,7 @@ static void microblaze_unwind_inner(struct task_struct *task,
- 					task->comm);
- 				break;
- 			} else
--				print_ip_sym(pc);
-+				print_ip_sym(KERN_INFO, pc);
- 		}
- 
- 		/* Stop when we reach anything not part of the kernel */
-diff --git a/arch/mips/kernel/traps.c b/arch/mips/kernel/traps.c
-index 31968cbd6464..de05503c680c 100644
---- a/arch/mips/kernel/traps.c
-+++ b/arch/mips/kernel/traps.c
-@@ -123,7 +123,7 @@ static void show_raw_backtrace(unsigned long reg29)
- 			break;
- 		}
- 		if (__kernel_text_address(addr))
--			print_ip_sym(addr);
-+			print_ip_sym(KERN_DEFAULT, addr);
- 	}
- 	printk("\n");
- }
-@@ -153,7 +153,7 @@ static void show_backtrace(struct task_struct *task, const struct pt_regs *regs)
- 	}
- 	printk("Call Trace:\n");
- 	do {
--		print_ip_sym(pc);
-+		print_ip_sym(KERN_DEFAULT, pc);
- 		pc = unwind_stack(task, &sp, pc, &ra);
- 	} while (pc);
- 	pr_cont("\n");
-diff --git a/arch/nds32/kernel/traps.c b/arch/nds32/kernel/traps.c
-index f4d386b52622..40625760a125 100644
---- a/arch/nds32/kernel/traps.c
-+++ b/arch/nds32/kernel/traps.c
-@@ -108,7 +108,7 @@ static void __dump(struct task_struct *tsk, unsigned long *base_reg)
- 			if (__kernel_text_address(ret_addr)) {
- 				ret_addr = ftrace_graph_ret_addr(
- 						tsk, &graph, ret_addr, NULL);
--				print_ip_sym(ret_addr);
-+				print_ip_sym(KERN_EMERG, ret_addr);
- 			}
- 			if (--cnt < 0)
- 				break;
-@@ -124,7 +124,7 @@ static void __dump(struct task_struct *tsk, unsigned long *base_reg)
- 
- 				ret_addr = ftrace_graph_ret_addr(
- 						tsk, &graph, ret_addr, NULL);
--				print_ip_sym(ret_addr);
-+				print_ip_sym(KERN_EMERG, ret_addr);
- 			}
- 			if (--cnt < 0)
- 				break;
 diff --git a/arch/riscv/kernel/stacktrace.c b/arch/riscv/kernel/stacktrace.c
-index 02087fe539c6..eeee844fb93d 100644
+index eeee844fb93d..05bf537310a8 100644
 --- a/arch/riscv/kernel/stacktrace.c
 +++ b/arch/riscv/kernel/stacktrace.c
-@@ -99,7 +99,7 @@ static void notrace walk_stackframe(struct task_struct *task,
+@@ -99,16 +99,23 @@ static void notrace walk_stackframe(struct task_struct *task,
  
  static bool print_trace_address(unsigned long pc, void *arg)
  {
--	print_ip_sym(pc);
-+	print_ip_sym(KERN_DEFAULT, pc);
+-	print_ip_sym(KERN_DEFAULT, pc);
++	const char *loglvl = arg;
++
++	print_ip_sym(loglvl, pc);
  	return false;
  }
  
-diff --git a/include/linux/kallsyms.h b/include/linux/kallsyms.h
-index 657a83b943f0..98338dc6b5d2 100644
---- a/include/linux/kallsyms.h
-+++ b/include/linux/kallsyms.h
-@@ -165,9 +165,9 @@ static inline int kallsyms_show_value(void)
- 
- #endif /*CONFIG_KALLSYMS*/
- 
--static inline void print_ip_sym(unsigned long ip)
-+static inline void print_ip_sym(const char *loglvl, unsigned long ip)
+-void show_stack(struct task_struct *task, unsigned long *sp)
++void show_stack_loglvl(struct task_struct *task, unsigned long *sp,
++		       const char *loglvl)
  {
--	printk("[<%px>] %pS\n", (void *) ip, (void *) ip);
-+	printk("%s[<%px>] %pS\n", loglvl, (void *) ip, (void *) ip);
+ 	pr_cont("Call Trace:\n");
+-	walk_stackframe(task, NULL, print_trace_address, NULL);
++	walk_stackframe(task, NULL, print_trace_address, (void *)loglvl);
  }
  
- #endif /*_LINUX_KALLSYMS_H*/
-diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
-index ac10db66cc63..079e251fdb4a 100644
---- a/kernel/locking/lockdep.c
-+++ b/kernel/locking/lockdep.c
-@@ -4399,7 +4399,7 @@ static void print_unlock_imbalance_bug(struct task_struct *curr,
- 		curr->comm, task_pid_nr(curr));
- 	print_lockdep_cache(lock);
- 	pr_cont(") at:\n");
--	print_ip_sym(ip);
-+	print_ip_sym(KERN_WARNING, ip);
- 	pr_warn("but there are no more locks to release!\n");
- 	pr_warn("\nother info that might help us debug this:\n");
- 	lockdep_print_held_locks(curr);
-@@ -5050,7 +5050,7 @@ static void print_lock_contention_bug(struct task_struct *curr,
- 		curr->comm, task_pid_nr(curr));
- 	print_lockdep_cache(lock);
- 	pr_cont(") at:\n");
--	print_ip_sym(ip);
-+	print_ip_sym(KERN_WARNING, ip);
- 	pr_warn("but there are no locks held!\n");
- 	pr_warn("\nother info that might help us debug this:\n");
- 	lockdep_print_held_locks(curr);
-diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 3a61a3b8eaa9..e6ea7c17a362 100644
---- a/kernel/sched/core.c
-+++ b/kernel/sched/core.c
-@@ -3864,8 +3864,7 @@ static noinline void __schedule_bug(struct task_struct *prev)
- 	if (IS_ENABLED(CONFIG_DEBUG_PREEMPT)
- 	    && in_atomic_preempt_off()) {
- 		pr_err("Preemption disabled at:");
--		print_ip_sym(preempt_disable_ip);
--		pr_cont("\n");
-+		print_ip_sym(KERN_ERR, preempt_disable_ip);
- 	}
- 	if (panic_on_warn)
- 		panic("scheduling while atomic\n");
-@@ -6800,8 +6799,7 @@ void ___might_sleep(const char *file, int line, int preempt_offset)
- 	if (IS_ENABLED(CONFIG_DEBUG_PREEMPT)
- 	    && !preempt_count_equals(preempt_offset)) {
- 		pr_err("Preemption disabled at:");
--		print_ip_sym(preempt_disable_ip);
--		pr_cont("\n");
-+		print_ip_sym(KERN_ERR, preempt_disable_ip);
- 	}
- 	dump_stack();
- 	add_taint(TAINT_WARN, LOCKDEP_STILL_OK);
-diff --git a/kernel/trace/ftrace.c b/kernel/trace/ftrace.c
-index 041694a1eb74..120b4b7f927c 100644
---- a/kernel/trace/ftrace.c
-+++ b/kernel/trace/ftrace.c
-@@ -2031,12 +2031,12 @@ void ftrace_bug(int failed, struct dyn_ftrace *rec)
- 	case -EFAULT:
- 		FTRACE_WARN_ON_ONCE(1);
- 		pr_info("ftrace faulted on modifying ");
--		print_ip_sym(ip);
-+		print_ip_sym(KERN_INFO, ip);
- 		break;
- 	case -EINVAL:
- 		FTRACE_WARN_ON_ONCE(1);
- 		pr_info("ftrace failed to modify ");
--		print_ip_sym(ip);
-+		print_ip_sym(KERN_INFO, ip);
- 		print_ip_ins(" actual:   ", (unsigned char *)ip);
- 		pr_cont("\n");
- 		if (ftrace_expected) {
-@@ -2047,12 +2047,12 @@ void ftrace_bug(int failed, struct dyn_ftrace *rec)
- 	case -EPERM:
- 		FTRACE_WARN_ON_ONCE(1);
- 		pr_info("ftrace faulted on writing ");
--		print_ip_sym(ip);
-+		print_ip_sym(KERN_INFO, ip);
- 		break;
- 	default:
- 		FTRACE_WARN_ON_ONCE(1);
- 		pr_info("ftrace faulted on unknown error ");
--		print_ip_sym(ip);
-+		print_ip_sym(KERN_INFO, ip);
- 	}
- 	print_bug_type();
- 	if (rec) {
-diff --git a/tools/include/linux/kallsyms.h b/tools/include/linux/kallsyms.h
-index 89ca6fe257cc..efb6c3f5f2a9 100644
---- a/tools/include/linux/kallsyms.h
-+++ b/tools/include/linux/kallsyms.h
-@@ -20,7 +20,7 @@ static inline const char *kallsyms_lookup(unsigned long addr,
++void show_stack(struct task_struct *task, unsigned long *sp)
++{
++	show_stack_loglvl(task, sp, KERN_DEFAULT);
++}
  
- #include <execinfo.h>
- #include <stdlib.h>
--static inline void print_ip_sym(unsigned long ip)
-+static inline void print_ip_sym(const char *loglvl, unsigned long ip)
+ static bool save_wchan(unsigned long pc, void *arg)
  {
- 	char **name;
- 
 -- 
 2.26.0
 
