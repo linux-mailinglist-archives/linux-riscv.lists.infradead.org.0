@@ -2,105 +2,89 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0FFA1B1461
-	for <lists+linux-riscv@lfdr.de>; Mon, 20 Apr 2020 20:22:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89C7F1B1478
+	for <lists+linux-riscv@lfdr.de>; Mon, 20 Apr 2020 20:27:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6b/iIEwamf7pHkazXYyFGaUjD4rBlltoOoTUlAlxESY=; b=MwC5HPvJYyUqao
-	S2I6fWp0ujqh0p4ZqP+IZlrloLkrTQNqqtTx7J7f21EHKFLqX2ZP+TDCBPJvptwlyZ3fXddxVosPx
-	EYqT1HL7rpXYB06eNN9uhTu5yzyb/vUahL0qXXIfEHcEqepLKOGXJJj3Kww3PracBDAXC+qtXP95a
-	J71/BlCESMr61J556DgCSnRTCmUlIic7vtUU2G3byXk38PPPejxKTzoMn6e80Mt6YqAr2Av0iqRDw
-	AWqT+8NOXNtsLWEus2UIEL/r3kIl8BFOOfl2YzNiAfrDgyniQNkBBVcKyJ0h25XQSscpdG4nC5Bqv
-	VVeUyN5bvkjJGqzMVNzw==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=3j7I+GwBPTWoE/gepMWkNd8iIKlyP+O5Cvl6ddDtBIE=; b=tiLruN/fwtO4SS
+	vIHIz58v9Y0ZOulZRxio0dj3AWq7WOt4Na9d0fz2pWFmlQsXwoWULe/M7PKLPD8zUxWQBAo5UiNUA
+	yxpxH2bnTGw/xC0mg3k3JrK5R1+5jjerDB68B3v6CApKR1x+nkcj1nCI8lpYiQdfwDsWsbZF8YITj
+	gPSVaF3vW9oecT/nhidDHYQWg3AwkCPr39s9JdO8ePpNtthU31qTzj8WBcjWXpBQ8Eb0Hf7TA6cbi
+	IF46bKgWxwG+4o/Y8zOD8N6/51rZCuNGEORf3wwiFLXOwzh0++XNGJ8x7s7nrTtBa7CALDmwiCo5C
+	rE1zFohQ4L2IWQNI6dSw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQb45-0005mx-7i; Mon, 20 Apr 2020 18:22:41 +0000
-Received: from aserp2120.oracle.com ([141.146.126.78])
+	id 1jQb90-0000cJ-Hv; Mon, 20 Apr 2020 18:27:46 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQb40-0005mO-S1; Mon, 20 Apr 2020 18:22:38 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03KIIac3092955;
- Mon, 20 Apr 2020 18:20:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=6b/iIEwamf7pHkazXYyFGaUjD4rBlltoOoTUlAlxESY=;
- b=gsrW0Xy8imYbMgUhIwDTctqPrjznB6WPriWKwtM8tA/ViqR5LJ7nXrRo6zKPnOn6au/F
- XsvRr1X2TitSM9LY8T/2kzWejhj67bMNDWhUiZqrX5UOcyFbZ9SktX9AVm4tGKaKxtsS
- GOZ/M1AoL7AgJRrO+hD23+N3dyEAipkUUaYWDlGyObSHDJDQUCK5UDdvD/hJdYPtDtGA
- rF7cJnLKk4a2TQSzHij+K3EQC6K5pkbsF+ARKXcRYPencr3rEYSZpGa5oaV2k4g86ofi
- IqYHqXDYKKmd4aEimc1Bn/UrVfz9eCqjPauGpqXrd5PZtLQUpmq6TOgp57USW/Y8Ttgc Lg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 30fsgkrxjn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 20 Apr 2020 18:20:41 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03KICA4L007534;
- Mon, 20 Apr 2020 18:20:40 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 30gb1dtw7b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 20 Apr 2020 18:20:40 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 03KIKRfO021197;
- Mon, 20 Apr 2020 18:20:27 GMT
-Received: from [192.168.2.157] (/71.63.128.209)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 20 Apr 2020 11:20:26 -0700
-Subject: Re: [PATCH v3 0/4] Clean up hugetlb boot command line processing
-To: Qian Cai <cai@lca.pw>
-References: <20200417185049.275845-1-mike.kravetz@oracle.com>
- <5E312000-05D8-4C5D-A7C0-DDDE1842CB0E@lca.pw>
-From: Mike Kravetz <mike.kravetz@oracle.com>
-Message-ID: <4c36c6ce-3774-78fa-abc4-b7346bf24348@oracle.com>
-Date: Mon, 20 Apr 2020 11:20:23 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-MIME-Version: 1.0
-In-Reply-To: <5E312000-05D8-4C5D-A7C0-DDDE1842CB0E@lca.pw>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9597
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- suspectscore=2 spamscore=0
- mlxlogscore=999 mlxscore=0 malwarescore=0 bulkscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2004200147
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9597
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- priorityscore=1501
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1015
- spamscore=0 bulkscore=0 phishscore=0 suspectscore=2 impostorscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004200147
+ id 1jQb8x-0000bG-DZ
+ for linux-riscv@lists.infradead.org; Mon, 20 Apr 2020 18:27:44 +0000
+Received: by mail-pg1-x544.google.com with SMTP id n16so5485709pgb.7
+ for <linux-riscv@lists.infradead.org>; Mon, 20 Apr 2020 11:27:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3j7I+GwBPTWoE/gepMWkNd8iIKlyP+O5Cvl6ddDtBIE=;
+ b=poQyuPWbKffKCW0Q6nE3FUGjjj9O/c5xdGoYcp6Es73N4nBCmfEhbhBe9jR2mPg6Yt
+ eZc8KCC3HNbKl6zWcLIWEBbW5fhYpWz5Tx3EoUtDDDWtr0sils+CHfTYihCyub8miFXp
+ DPAkJSzeD/1MHdDblb7jequuMEp03aKqh6jLw5bvOFt6Wipo6KxdUpIFzTREmLR5rkGE
+ Q40qX3K/Npci9Q3C5tWYBV7tywXIWei2BqN+55DoPd/dI/bYFqn4yECk6iYdWV3GCEHF
+ vLq39hy0+y3aEEuJRCQEQ4KKMmPFSo/au3pJv9k4CoSJVMxlxRjuF6q0umQFRScR23p1
+ JeeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=3j7I+GwBPTWoE/gepMWkNd8iIKlyP+O5Cvl6ddDtBIE=;
+ b=BG/Lb1VljoLLcGBMdFP5kA/13EdXiEj21SO/kdjY21DUqfnswCkedX1DzRvyKr6xke
+ Q9uHIXPFvJmEvk3bZDNoiqB+4nirF/RNS9dJp8mmRybLV4GRCGJ19UJtVV4DXvYiP2fB
+ 1WVHQFv4mKMprwBK0Rm1EdGmov4Tn3QzpSV+P8hzCDpdon71mNwuE9yf6rKX/44mfPN3
+ BQ0ZV7dhpwN499Cn0jRfTSEcsGdN/kudjc4CW/B+lbsSDI+fvcAhJkAI08w+77hlfK+x
+ oOybNWOQn9mSb/NwLfiXzQ+MLEmVYS5m5J6igmbtr9RWTWxB3ecuZqq4PnrvzyxQXC6l
+ aSng==
+X-Gm-Message-State: AGi0PuaMIMoKien4Nf7eK2jejKa30gtp1bziUWTZ6Zt0I9aakCetQLp7
+ xBPAp6hUPUdqqss9++S1squAJg==
+X-Google-Smtp-Source: APiQypLv50XPkHoI7VnUU30/Sn6iEsoPmL7NIe1/tSUt4S/CGGJSca5v0TQ7gj9mPAYJYoPVl9vRNw==
+X-Received: by 2002:a63:62c1:: with SMTP id
+ w184mr16558626pgb.296.1587407262240; 
+ Mon, 20 Apr 2020 11:27:42 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id j7sm61576pjy.9.2020.04.20.11.27.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Apr 2020 11:27:40 -0700 (PDT)
+Date: Mon, 20 Apr 2020 11:27:40 -0700 (PDT)
+X-Google-Original-Date: Mon, 20 Apr 2020 11:23:07 PDT (-0700)
+Subject: Re: [PATCH v5 0/9] Support strict kernel memory permissions for
+ security
+In-Reply-To: <cover.1586332296.git.zong.li@sifive.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: zong.li@sifive.com
+Message-ID: <mhng-103aea95-cf25-47c5-8e8d-56534f40c570@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_112236_999703_A872FCEC 
-X-CRM114-Status: GOOD (  25.82  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200420_112743_479719_0E86D376 
+X-CRM114-Status: GOOD (  19.79  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [141.146.126.78 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,121 +96,72 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
- Linux-MM <linux-mm@kvack.org>, Paul Mackerras <paulus@samba.org>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, Mina Almasry <almasrymina@google.com>,
- linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Vasily Gorbik <gor@linux.ibm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Christophe Leroy <christophe.leroy@c-s.fr>,
- Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- "David S.Miller" <davem@davemloft.net>
+Cc: aou@eecs.berkeley.edu, linux-kernel@vger.kernel.org, mhiramat@kernel.org,
+ zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 4/20/20 8:34 AM, Qian Cai wrote:
-> 
-> 
->> On Apr 17, 2020, at 2:50 PM, Mike Kravetz <mike.kravetz@oracle.com> wrote:
->>
->> Longpeng(Mike) reported a weird message from hugetlb command line processing
->> and proposed a solution [1].  While the proposed patch does address the
->> specific issue, there are other related issues in command line processing.
->> As hugetlbfs evolved, updates to command line processing have been made to
->> meet immediate needs and not necessarily in a coordinated manner.  The result
->> is that some processing is done in arch specific code, some is done in arch
->> independent code and coordination is problematic.  Semantics can vary between
->> architectures.
->>
->> The patch series does the following:
->> - Define arch specific arch_hugetlb_valid_size routine used to validate
->>  passed huge page sizes.
->> - Move hugepagesz= command line parsing out of arch specific code and into
->>  an arch independent routine.
->> - Clean up command line processing to follow desired semantics and
->>  document those semantics.
->>
->> [1] https://lore.kernel.org/linux-mm/20200305033014.1152-1-longpeng2@huawei.com
->>
->> Mike Kravetz (4):
->>  hugetlbfs: add arch_hugetlb_valid_size
->>  hugetlbfs: move hugepagesz= parsing to arch independent code
->>  hugetlbfs: remove hugetlb_add_hstate() warning for existing hstate
->>  hugetlbfs: clean up command line processing
-> 
-> Reverted this series fixed many undefined behaviors on arm64 with the config,
-> 
-> https://raw.githubusercontent.com/cailca/linux-mm/master/arm64.config
-> 
-> [   54.172683][    T1] UBSAN: shift-out-of-bounds in ./include/linux/hugetlb.h:555:34
-> [   54.180411][    T1] shift exponent 4294967285 is too large for 64-bit type 'unsigned long'
-> [   54.188885][    T1] CPU: 130 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc2-next-20200420 #1
-> [   54.197284][    T1] Hardware name: HPE Apollo 70             /C01_APACHE_MB         , BIOS L50_5.13_1.11 06/18/2019
-> [   54.207888][    T1] Call trace:
-> [   54.211100][    T1]  dump_backtrace+0x0/0x224
-> [   54.215565][    T1]  show_stack+0x20/0x2c
-> [   54.219651][    T1]  dump_stack+0xfc/0x184
-> [   54.223829][    T1]  __ubsan_handle_shift_out_of_bounds+0x304/0x344
-> [   54.230204][    T1]  hugetlb_add_hstate+0x3ec/0x414
-> huge_page_size at include/linux/hugetlb.h:555
-> (inlined by) hugetlb_add_hstate at mm/hugetlb.c:3301
-> [   54.235191][    T1]  hugetlbpage_init+0x14/0x30
-> [   54.239824][    T1]  do_one_initcall+0x6c/0x144
-> [   54.244446][    T1]  do_initcall_level+0x158/0x1c4
-> [   54.249336][    T1]  do_initcalls+0x68/0xb0
-> [   54.253597][    T1]  do_basic_setup+0x28/0x30
-> [   54.258049][    T1]  kernel_init_freeable+0x19c/0x228
-> [   54.263188][    T1]  kernel_init+0x14/0x208
-> [   54.267473][    T1]  ret_from_fork+0x10/0x18
+On Wed, 08 Apr 2020 00:56:55 PDT (-0700), zong.li@sifive.com wrote:
+> The main purpose of this patch series is changing the kernel mapping permission
+> , make sure that code is not writeable, data is not executable, and read-only
+> data is neither writable nor executable.
+>
+> This patch series also supports the relevant implementations such as
+> ARCH_HAS_SET_MEMORY, ARCH_HAS_SET_DIRECT_MAP,
+> ARCH_SUPPORTS_DEBUG_PAGEALLOC and DEBUG_WX.
+>
+> Changes in v5:
+>  - Add lockdep_assert_held and more comments for text_mutex.
+>
+> Changes in v4:
+>  - Use NOKPROBE_SYMBOL instead of __kprobe annotation
+>  - Use text_mutex instead of patch_lock
+>  - Remove 'riscv_' prefix of function name
+>
+> Changes in v3:
+>  - Fix build error on nommu configuration. We already support nommu on
+>    RISC-V, so we should consider nommu case and test not only rv32/64,
+>    but also nommu.
+>
+> Changes in v2:
+>  - Use _data to specify the start of data section with write permission.
+>  - Change ftrace patch text implementaion.
+>  - Separate DEBUG_WX patch to another patchset.
+>
+> Zong Li (9):
+>   riscv: add macro to get instruction length
+>   riscv: introduce interfaces to patch kernel code
+>   riscv: patch code by fixmap mapping
+>   riscv: add ARCH_HAS_SET_MEMORY support
+>   riscv: add ARCH_HAS_SET_DIRECT_MAP support
+>   riscv: add ARCH_SUPPORTS_DEBUG_PAGEALLOC support
+>   riscv: move exception table immediately after RO_DATA
+>   riscv: add alignment for text, rodata and data sections
+>   riscv: add STRICT_KERNEL_RWX support
+>
+>  arch/riscv/Kconfig                  |   6 +
+>  arch/riscv/include/asm/bug.h        |   8 ++
+>  arch/riscv/include/asm/fixmap.h     |   2 +
+>  arch/riscv/include/asm/patch.h      |  12 ++
+>  arch/riscv/include/asm/set_memory.h |  48 +++++++
+>  arch/riscv/kernel/Makefile          |   4 +-
+>  arch/riscv/kernel/ftrace.c          |  26 ++--
+>  arch/riscv/kernel/patch.c           | 128 +++++++++++++++++++
+>  arch/riscv/kernel/traps.c           |   3 +-
+>  arch/riscv/kernel/vmlinux.lds.S     |  11 +-
+>  arch/riscv/mm/Makefile              |   2 +-
+>  arch/riscv/mm/init.c                |  44 +++++++
+>  arch/riscv/mm/pageattr.c            | 187 ++++++++++++++++++++++++++++
+>  13 files changed, 466 insertions(+), 15 deletions(-)
+>  create mode 100644 arch/riscv/include/asm/patch.h
+>  create mode 100644 arch/riscv/include/asm/set_memory.h
+>  create mode 100644 arch/riscv/kernel/patch.c
+>  create mode 100644 arch/riscv/mm/pageattr.c
 
-While rearranging the code (patch 3 in series), I made the incorrect
-assumption that CONT_XXX_SIZE == (1UL << CONT_XXX_SHIFT).  However,
-this is not the case.  Does the following patch fix these issues?
+Looks like there are quite a few conflicts here.  Do you mind re-spinning the
+patch set for me?  It's a bit early to spin off for-next right now so there
+might be some more conflicts, but hopefully not too many.
 
-From b75cb4a0852e208bee8c4eb347dc076fcaa88859 Mon Sep 17 00:00:00 2001
-From: Mike Kravetz <mike.kravetz@oracle.com>
-Date: Mon, 20 Apr 2020 10:41:18 -0700
-Subject: [PATCH] arm64/hugetlb: fix hugetlb initialization
-
-When calling hugetlb_add_hstate() to initialize a new hugetlb size,
-be sure to use correct huge pages size order.
-
-Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
----
- arch/arm64/mm/hugetlbpage.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/mm/hugetlbpage.c b/arch/arm64/mm/hugetlbpage.c
-index 9ca840527296..a02411a1f19a 100644
---- a/arch/arm64/mm/hugetlbpage.c
-+++ b/arch/arm64/mm/hugetlbpage.c
-@@ -453,11 +453,11 @@ void huge_ptep_clear_flush(struct vm_area_struct *vma,
- static int __init hugetlbpage_init(void)
- {
- #ifdef CONFIG_ARM64_4K_PAGES
--	hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
-+	hugetlb_add_hstate(ilog2(PUD_SIZE) - PAGE_SHIFT);
- #endif
--	hugetlb_add_hstate(CONT_PMD_SHIFT - PAGE_SHIFT);
--	hugetlb_add_hstate(PMD_SHIFT - PAGE_SHIFT);
--	hugetlb_add_hstate(CONT_PTE_SHIFT - PAGE_SHIFT);
-+	hugetlb_add_hstate(ilog2(CONT_PMD_SIZE) - PAGE_SHIFT);
-+	hugetlb_add_hstate(ilog2(PMD_SIZE) - PAGE_SHIFT);
-+	hugetlb_add_hstate(ilog2(CONT_PTE_SIZE) - PAGE_SHIFT);
- 
- 	return 0;
- }
--- 
-2.25.2
-
-
+Thanks!
 
