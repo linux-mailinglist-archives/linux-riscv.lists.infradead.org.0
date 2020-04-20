@@ -2,79 +2,97 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC3521B13A0
-	for <lists+linux-riscv@lfdr.de>; Mon, 20 Apr 2020 19:55:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D0FFA1B1461
+	for <lists+linux-riscv@lfdr.de>; Mon, 20 Apr 2020 20:22:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Xa3ffUL/3oZwz76o4zov9TTjdum+NM9p5sdpZM9Qhg4=; b=Wc5KnMqfv87bbI9EG8HRMyLUw
-	Y47EDJLZj+s4efkU3qFNNxsYWxhv24mQZL1SGAphaRA7Q9AwiAGksowxj2tGAKqbWcvHPB4kUMlYz
-	S0WSzPPQ5LntiyfJSfmV7ClIyMdtclVj/jut5ZAZEDdR9CLtM0kkZlu28Xv7Bvq5/tgpmbGlXFC39
-	KmJ1ebQKolPoQI8fNHYSqc7efsw9P0Rloq7QHDs18CTonBK1tcjC7/qa2Qj03GzxiCbpBRjCRkX+3
-	R3daDLDxnOCJho6W4l22hDKzJgfOxtGIe8dr7fNJBCX4vCQTC7/diJSkr20v0WDmBhL6TaFLx8Qbw
-	fN4SS93ww==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6b/iIEwamf7pHkazXYyFGaUjD4rBlltoOoTUlAlxESY=; b=MwC5HPvJYyUqao
+	S2I6fWp0ujqh0p4ZqP+IZlrloLkrTQNqqtTx7J7f21EHKFLqX2ZP+TDCBPJvptwlyZ3fXddxVosPx
+	EYqT1HL7rpXYB06eNN9uhTu5yzyb/vUahL0qXXIfEHcEqepLKOGXJJj3Kww3PracBDAXC+qtXP95a
+	J71/BlCESMr61J556DgCSnRTCmUlIic7vtUU2G3byXk38PPPejxKTzoMn6e80Mt6YqAr2Av0iqRDw
+	AWqT+8NOXNtsLWEus2UIEL/r3kIl8BFOOfl2YzNiAfrDgyniQNkBBVcKyJ0h25XQSscpdG4nC5Bqv
+	VVeUyN5bvkjJGqzMVNzw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQadR-0008Ak-FI; Mon, 20 Apr 2020 17:55:09 +0000
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43])
+	id 1jQb45-0005mx-7i; Mon, 20 Apr 2020 18:22:41 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQadL-0006mV-U0
- for linux-riscv@lists.infradead.org; Mon, 20 Apr 2020 17:55:05 +0000
-Received: by mail-qv1-xf43.google.com with SMTP id bu9so5140357qvb.13
- for <linux-riscv@lists.infradead.org>; Mon, 20 Apr 2020 10:55:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Xa3ffUL/3oZwz76o4zov9TTjdum+NM9p5sdpZM9Qhg4=;
- b=qG/4hdDkpGWO8+kBfG35sHTNuc83MMAZ794J95gYxinNoEZzrToqLmf5P0PCx1EvpY
- s0uvoobXrcPXiQHGUxtASJ0nXiy0IhWgbd9S0WBIvALw3ZN6qDwuxU9iNeWAADe44+rY
- Sp9f25Rh3wOCKnsHWV7zJIpprDV3Yb8rQEFZNuG1fqk8zT9dKf8NSFjg7LCjEzjhVF8E
- XYLpMbMhTq3WEvNznhT3328+2zGT2amfqUq+VeULnpjLeqgrkUa4DSA9iLTPlIbVsmSX
- DYkGUz0a1xClxsFrYxba2EorQzp5c6Ak3voB02N8/aCRH4D4h0dwQAxHRU6DDcpejsdo
- 7ihA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Xa3ffUL/3oZwz76o4zov9TTjdum+NM9p5sdpZM9Qhg4=;
- b=Q4k7d5pR5htw5PHa3X/iTRLs6pvsU33DpAzg5wJ7idxNn6vzhoZJN94hrFQFQTFsmo
- uCdEEODFfzKvMrvzzOYutcHs+n+LV0vKglWfO/om0838/+wr7Ot80BO8e/tMEjndyFrp
- gQDSXX+nOxERaaDtrd1NfG/Q4+TexZ3EqFYsom9MyHawBzuP+WK9Hq573+E5PF0XQmMj
- Bt3JFaaZeaoV8o7mvoYoztO8WBxfSRbtb3EJm+d3iOgc4MdTzjtuY5ZlYe1l9/cLw+4H
- ocT553+OFJIe6gtADvXKJVs3iGP4LGnHAZG4O7JVuvEheqte2lbvQuJrc1v22uZ+ovT+
- JUrw==
-X-Gm-Message-State: AGi0PuYWg+q2oaUHWBd7ba+wQgADlMH6xAHcInCWotz7ayJu/jQ3FIcZ
- RDEpQdZb8wu2ymKq/7YKQeIgMNtZZNRbvNfXdrX4AlFk
-X-Google-Smtp-Source: APiQypJfhV3cYqDLmyP74ToZe/Y1UlhaPwuuGR6/PBNhCM3GozsFkA8WVmcNI0vs4CoLfpyqbD1UNuUwBTPHoww5Nd0=
-X-Received: by 2002:a0c:a9c2:: with SMTP id c2mr3423067qvb.23.1587405301268;
- Mon, 20 Apr 2020 10:55:01 -0700 (PDT)
+ id 1jQb40-0005mO-S1; Mon, 20 Apr 2020 18:22:38 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03KIIac3092955;
+ Mon, 20 Apr 2020 18:20:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=6b/iIEwamf7pHkazXYyFGaUjD4rBlltoOoTUlAlxESY=;
+ b=gsrW0Xy8imYbMgUhIwDTctqPrjznB6WPriWKwtM8tA/ViqR5LJ7nXrRo6zKPnOn6au/F
+ XsvRr1X2TitSM9LY8T/2kzWejhj67bMNDWhUiZqrX5UOcyFbZ9SktX9AVm4tGKaKxtsS
+ GOZ/M1AoL7AgJRrO+hD23+N3dyEAipkUUaYWDlGyObSHDJDQUCK5UDdvD/hJdYPtDtGA
+ rF7cJnLKk4a2TQSzHij+K3EQC6K5pkbsF+ARKXcRYPencr3rEYSZpGa5oaV2k4g86ofi
+ IqYHqXDYKKmd4aEimc1Bn/UrVfz9eCqjPauGpqXrd5PZtLQUpmq6TOgp57USW/Y8Ttgc Lg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 30fsgkrxjn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 20 Apr 2020 18:20:41 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03KICA4L007534;
+ Mon, 20 Apr 2020 18:20:40 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 30gb1dtw7b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 20 Apr 2020 18:20:40 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 03KIKRfO021197;
+ Mon, 20 Apr 2020 18:20:27 GMT
+Received: from [192.168.2.157] (/71.63.128.209)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 20 Apr 2020 11:20:26 -0700
+Subject: Re: [PATCH v3 0/4] Clean up hugetlb boot command line processing
+To: Qian Cai <cai@lca.pw>
+References: <20200417185049.275845-1-mike.kravetz@oracle.com>
+ <5E312000-05D8-4C5D-A7C0-DDDE1842CB0E@lca.pw>
+From: Mike Kravetz <mike.kravetz@oracle.com>
+Message-ID: <4c36c6ce-3774-78fa-abc4-b7346bf24348@oracle.com>
+Date: Mon, 20 Apr 2020 11:20:23 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <20200420060730.GA20374@APC301.andestech.com>
-In-Reply-To: <20200420060730.GA20374@APC301.andestech.com>
-From: Khem Raj <raj.khem@gmail.com>
-Date: Mon, 20 Apr 2020 10:54:35 -0700
-Message-ID: <CAMKF1spVuXxERRz8p8hNsmYR7Cmzhm6nGg3S2FTUNGjKf1eZqw@mail.gmail.com>
-Subject: Re: The concern about RV32 Linux ABI stability raised by musl-libc's
- maintainer
-To: Ruinland ChuanTzu Tsai <ruinland@andestech.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <5E312000-05D8-4C5D-A7C0-DDDE1842CB0E@lca.pw>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9597
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ suspectscore=2 spamscore=0
+ mlxlogscore=999 mlxscore=0 malwarescore=0 bulkscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004200147
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9597
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ priorityscore=1501
+ lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1015
+ spamscore=0 bulkscore=0 phishscore=0 suspectscore=2 impostorscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004200147
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_105503_998762_0A3C94A2 
-X-CRM114-Status: GOOD (  31.60  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200420_112236_999703_A872FCEC 
+X-CRM114-Status: GOOD (  25.82  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:f43 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [141.146.126.78 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [raj.khem[at]gmail.com]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -82,6 +100,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,136 +112,121 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, RISC-V SW Dev <sw-dev@groups.riscv.org>
+Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Linux-MM <linux-mm@kvack.org>, Paul Mackerras <paulus@samba.org>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, Mina Almasry <almasrymina@google.com>,
+ linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Vasily Gorbik <gor@linux.ibm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Christophe Leroy <christophe.leroy@c-s.fr>,
+ Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ "David S.Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Apr 19, 2020 at 11:07 PM Ruinland ChuanTzu Tsai
-<ruinland@andestech.com> wrote:
->
-> Dear RISC-V developers,
-> Sorry for dropping this mail out of the blue.
->
-> A couple of weeks ago, I was porting Alpine, a musl-libc based Linux
-> distro, to a RV32 platform named LiteX/VexRiscv . Since the support
-> for RV32 musl-libc was blocked whereas RV64 support got accepted back in
-> May 2019, I asked Rich Felker, the maintainer of musl-libc, about his
-> concern which blocks the RV32 port.
->
-> He said, and I quote, "kernel has not declared it (RV32 Linux) a stable
-> ABI yet."
->
-> He added some comments on this issue in the follow-up e-mail :
-> " I don't know the official statement of kernel policy, but my
-> understanding of it is just that the normal kernel stability policy
-> (that they can't "break userspace", including changing type
-> definitions that are part of user-kernel ABI, removing syscalls, etc.)
-> doesn't apply yet for RV32. I'd welcome a clarification from anyone
-> who can provide one on whether this is still the case, and if so, what
-> needs to happen to get past that. "
->
-> To the best of my recollection, I don't recall there's any official
-> statements to declare the stability of RV64 kernel or any kind of ABI
-> freeze.
->
-> I've been asking around my collegaues; they don't remember such kind of
-> annoucement either.
->
-> Yet I believe that to some degree, there's a rough transition point
-> when we all came to agree " not to touch RV64 kernel <=> user interface
-> (i.e. stuffs under arch/riscv/include/asm) too much from now on. "
->
-> As my own experience, we (Andes Tech) have been distributing RV32 kernel
-> to our customers without having ABI breakage for a long time.
->
+On 4/20/20 8:34 AM, Qian Cai wrote:
+> 
+> 
+>> On Apr 17, 2020, at 2:50 PM, Mike Kravetz <mike.kravetz@oracle.com> wrote:
+>>
+>> Longpeng(Mike) reported a weird message from hugetlb command line processing
+>> and proposed a solution [1].  While the proposed patch does address the
+>> specific issue, there are other related issues in command line processing.
+>> As hugetlbfs evolved, updates to command line processing have been made to
+>> meet immediate needs and not necessarily in a coordinated manner.  The result
+>> is that some processing is done in arch specific code, some is done in arch
+>> independent code and coordination is problematic.  Semantics can vary between
+>> architectures.
+>>
+>> The patch series does the following:
+>> - Define arch specific arch_hugetlb_valid_size routine used to validate
+>>  passed huge page sizes.
+>> - Move hugepagesz= command line parsing out of arch specific code and into
+>>  an arch independent routine.
+>> - Clean up command line processing to follow desired semantics and
+>>  document those semantics.
+>>
+>> [1] https://lore.kernel.org/linux-mm/20200305033014.1152-1-longpeng2@huawei.com
+>>
+>> Mike Kravetz (4):
+>>  hugetlbfs: add arch_hugetlb_valid_size
+>>  hugetlbfs: move hugepagesz= parsing to arch independent code
+>>  hugetlbfs: remove hugetlb_add_hstate() warning for existing hstate
+>>  hugetlbfs: clean up command line processing
+> 
+> Reverted this series fixed many undefined behaviors on arm64 with the config,
+> 
+> https://raw.githubusercontent.com/cailca/linux-mm/master/arm64.config
+> 
+> [   54.172683][    T1] UBSAN: shift-out-of-bounds in ./include/linux/hugetlb.h:555:34
+> [   54.180411][    T1] shift exponent 4294967285 is too large for 64-bit type 'unsigned long'
+> [   54.188885][    T1] CPU: 130 PID: 1 Comm: swapper/0 Not tainted 5.7.0-rc2-next-20200420 #1
+> [   54.197284][    T1] Hardware name: HPE Apollo 70             /C01_APACHE_MB         , BIOS L50_5.13_1.11 06/18/2019
+> [   54.207888][    T1] Call trace:
+> [   54.211100][    T1]  dump_backtrace+0x0/0x224
+> [   54.215565][    T1]  show_stack+0x20/0x2c
+> [   54.219651][    T1]  dump_stack+0xfc/0x184
+> [   54.223829][    T1]  __ubsan_handle_shift_out_of_bounds+0x304/0x344
+> [   54.230204][    T1]  hugetlb_add_hstate+0x3ec/0x414
+> huge_page_size at include/linux/hugetlb.h:555
+> (inlined by) hugetlb_add_hstate at mm/hugetlb.c:3301
+> [   54.235191][    T1]  hugetlbpage_init+0x14/0x30
+> [   54.239824][    T1]  do_one_initcall+0x6c/0x144
+> [   54.244446][    T1]  do_initcall_level+0x158/0x1c4
+> [   54.249336][    T1]  do_initcalls+0x68/0xb0
+> [   54.253597][    T1]  do_basic_setup+0x28/0x30
+> [   54.258049][    T1]  kernel_init_freeable+0x19c/0x228
+> [   54.263188][    T1]  kernel_init+0x14/0x208
+> [   54.267473][    T1]  ret_from_fork+0x10/0x18
 
-are you carrying local patches for kernel that change UAPIs?
+While rearranging the code (patch 3 in series), I made the incorrect
+assumption that CONT_XXX_SIZE == (1UL << CONT_XXX_SHIFT).  However,
+this is not the case.  Does the following patch fix these issues?
 
-> Does anyone here also feels the same for RV32 ?
->
+From b75cb4a0852e208bee8c4eb347dc076fcaa88859 Mon Sep 17 00:00:00 2001
+From: Mike Kravetz <mike.kravetz@oracle.com>
+Date: Mon, 20 Apr 2020 10:41:18 -0700
+Subject: [PATCH] arm64/hugetlb: fix hugetlb initialization
 
-it has to be upstream in Linux kernel and 4.15 is when all needed UAPI
-headers for Linux were made
-available for rv64, I am not sure if that has happened yet for rv32.
-And glibc port is also not accepted yet
-so kernel userspace is still in flux fo rv32 imo
+When calling hugetlb_add_hstate() to initialize a new hugetlb size,
+be sure to use correct huge pages size order.
+
+Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
+---
+ arch/arm64/mm/hugetlbpage.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/mm/hugetlbpage.c b/arch/arm64/mm/hugetlbpage.c
+index 9ca840527296..a02411a1f19a 100644
+--- a/arch/arm64/mm/hugetlbpage.c
++++ b/arch/arm64/mm/hugetlbpage.c
+@@ -453,11 +453,11 @@ void huge_ptep_clear_flush(struct vm_area_struct *vma,
+ static int __init hugetlbpage_init(void)
+ {
+ #ifdef CONFIG_ARM64_4K_PAGES
+-	hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
++	hugetlb_add_hstate(ilog2(PUD_SIZE) - PAGE_SHIFT);
+ #endif
+-	hugetlb_add_hstate(CONT_PMD_SHIFT - PAGE_SHIFT);
+-	hugetlb_add_hstate(PMD_SHIFT - PAGE_SHIFT);
+-	hugetlb_add_hstate(CONT_PTE_SHIFT - PAGE_SHIFT);
++	hugetlb_add_hstate(ilog2(CONT_PMD_SIZE) - PAGE_SHIFT);
++	hugetlb_add_hstate(ilog2(PMD_SIZE) - PAGE_SHIFT);
++	hugetlb_add_hstate(ilog2(CONT_PTE_SIZE) - PAGE_SHIFT);
+ 
+ 	return 0;
+ }
+-- 
+2.25.2
 
 
-> If that's the case, then we might be able to ease Rich's concern about
-> RV32 kernel's ABI stability.
->
-> Or if that's not the case, please enlighten me a bit so we could work it
-> out together :-)
->
-> A spinning tiny cog,
-> Ruinland ChuanTzu Tasi
->
-> ----- Forwarded message from Rich Felker <dalias@libc.org> -----
->
-> Date: Wed, 1 Apr 2020 09:40:01 -0400
-> From: Rich Felker <dalias@libc.org>
-> To: musl@lists.openwall.com
-> Subject: Re: [musl] About "stable ABI" for riscv32 kernel issue and Alpine port
-> User-Agent: Mutt/1.5.21 (2010-09-15)
->
-> On Wed, Apr 01, 2020 at 02:18:27PM +0800, Ruinland ChuanTzu Tsai wrote:
-> > Hi Rich and All,
-> >
-> > Back in 13th Mar, Rich has stated that "kernel has not declared it
-> > (RV32 Linux) a stable ABI yet." I'm wondering whether Rich could kindly
-> > elaborate a little bit more details about this concern ?
->
-> I don't know the official statement of kernel policy, but my
-> understanding of it is just that the normal kernel stability policy
-> (that they can't "break userspace", including changing type
-> definitions that are part of user-kernel ABI, removing syscalls, etc.)
-> doesn't apply yet for RV32. I'd welcome a clarification from anyone
-> who can provide one on whether this is still the case, and if so, what
-> needs to happen to get past that.
->
-> > Since my employer, Andes Tech, is one of the founding plantium memeber
-> > of RISC-V Foundation and we're shipping a considerable amount of
-> > Linux-running RV32 products at the time we're speaking, we will be
-> > happy to help on the kernel side and make it more stablized and secured.
->
-> It's not a matter of secure or "stable" in the sense of not crashing.
-> It's a matter of "stable" in the sense of "not changing out from under
-> you".
->
-> > During my pastime, I've ported Alpine Linux with musl 1.2.0 to a
-> > publicily available and open-sourced platform, LiteX/VexRiscv[1], which
-> > could be synthesized and "burnt" to a Lattice ECP5-5G Versa Evaluation
-> > Board with completely FOSS toolchain without any closed source
-> > component. [2]
-> >
-> > And here's the footage of booting :
-> > https://asciinema.org/a/315205
-> >
-> > Unfortunately, since my musl 1.2.0 is an inhouse work and we are still
-> > polishing and preparing it for upstreaming, please excuse me from not
-> > releasing the cpio image and stuffs at this time being.
-> >
-> > P.S.
-> > Regarding the last mail:
-> > https://www.openwall.com/lists/musl/2020/03/13/4
-> > I'm not really qualified to answer the reason/profit of lacking LR/SC
-> > pair. Yet just a rough hunch that LR/SC is much stronger in atomicity
-> > than other AMOs.
->
-> Yes, LR/SC is a slightly stronger primitive in some sense, but at the
-> same time it's far easier to fake an implementation on single-core
-> designs.
->
-> In any case if there are chips people want to run Linux/musl on that
-> lack LR/SC then we need to know what the intended way to get atomics
-> is. Does kernel trap and emulate? Do we have to make a syscall? Is
-> there a function kernel exports to userspace like kuser_helper on
-> pre-v6 ARM that establishes a contract of cooperation between kernel
-> and userspace to restart interrupted atomics? What are you doing with
-> your WIP port?
->
-> Rich
->
-> ----- End forwarded message -----
->
 
