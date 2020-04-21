@@ -2,78 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81F561B1CE7
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 05:35:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B17421B1D5B
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 06:23:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/uyAxoaJSQkQigH5UIYI36N7hqL0nSRQ2yN/rSySI30=; b=CAvhp4IwJ257E7
-	VHK1Tw6Ixr8L0Xgm5zCFlZVxhQ296ryGKZqLlpBLlRVPT25hTdTqd6Ypjm9eWmDi/k21t7IPQUh0L
-	IheEqiGYn4qH50rVYmKhpWlL6O5a7U6/gCzzhFEJQUXaunN+DzKNTa28lHeOWLUMnAqyt7YPDMusP
-	eD0QTV5BmS+rXRZhJaUrWB00FL1dlzhsyH7cS51E7q4N6tpbs4NtRWylfYlYN0YyGY+f7gCdi6GGB
-	fydc7PPN6FBtd5cqXhZ8V2vW+3q0wvamvPgkishVbTfZsWreD9uftKw7WvdPlOfgfYb/1cVd4bCPH
-	RygJwDFq43j4ica8fx1Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=JaieFtrynku5iULCPSegJfHOzOMnZqOFIqChb4nr18M=; b=Glj4iUG9a07j0IZjMLNP1jLh6
+	UPC5eJ3L8nD2btEYBs2OCxDXPOxT8EEZB3DlOo8JCQMCnablU5mz5AJbjTm2FMbUrTTWTSmw4pJgv
+	bgNkiRAdTKI2xVOY6QckVKUEvPFYWEmNevKmhCKO+btzKnPooVttSW3pawLjUzOzchytLAatyp4uf
+	0YOi/4fOdoC1gZYwePygnOOWWfkMeAh+TK08HaAwCut0p2qY7CBv9eEVrZMun3hu6RkFh+bBRqGhY
+	0qbShyS8GwHMSj5oxN6rxy0lwQT5s/UG531NkK+ImnFUlmlbKPWtSz038N74WpvVty55IPUgBNLv3
+	5LM5Db3oA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQjgY-0005Tr-4P; Tue, 21 Apr 2020 03:34:58 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jQkRk-0007Rs-JL; Tue, 21 Apr 2020 04:23:44 +0000
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]
+ helo=us-smtp-delivery-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQjgQ-0005Hj-JY
- for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 03:34:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1587440090; x=1618976090;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=tJnNH5jB5LYvd4sUzHq0FJMX11DGIdD0e04H+JXXoQo=;
- b=P8hprfmxITEGolpeSWakGdaIoQZ7rAa83WlQD8AG/H+u6iv2Dwv3knEd
- EqStAvWC4j0/1Rllof38XqwoJG3z94OG4+tJdbf6MnK4mvoNi9Cs6Vsgd
- wd3eRdotlfiHUsj1e2JayPit1NuMsXtMYoTroOBDoVCsMRrnXkmceP7d/
- m8EL4MyzS/RYiKSjIrNmTLvUm9pSK8GvGNr94M2NtVM0e1LbsXl7qk4Wu
- Wbrs4nPkjeZZcTtm5IrEVpM1WjUUl4/6Phv8r5oaos59VjjFPUnf+7Hgt
- r5YK7URZ1/1sd3fFHTiWAT2uvUefGw3t1gfaemvseAzCnDEJUIP83gog4 g==;
-IronPort-SDR: irP3i84dMCHzsmqIpnTR/N0G8qXI9OPLkGsjZncj88IxP8C/BGYi/P+7Io0ZNq1mvmIK67+NoV
- 7RtgOpU3nsMsRus8IG5GJ7DhJIimZ6Q0MxH1CG8Z52BRcpjdUzPSLzXmyedm8q2lZmw/ecDl0k
- +q+cmkBB2Pcl0A6D8C2Y0nXN0o5VEhN/eaZkdfIbwuL4JwuJ6Sdw99WAXNNmy5+fI1f10eg2xP
- Up2uwioCuCGNiU993t2bR5zCrTQCY1z3x2Vmw1CgYdZJ0uE4DFpmVq3lb6VMFi3W2unMYXmjSa
- SYo=
-X-IronPort-AV: E=Sophos;i="5.72,408,1580745600"; d="scan'208";a="244467804"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 21 Apr 2020 11:34:41 +0800
-IronPort-SDR: Fg1R4OHVYPQuOoJszyLD9ofpv2jCSpNd2ExO02o9/WT41xvsAr2AZsDd7j1WW4TYYXM0Ms/4ZR
- BDR8XBMj0ooTCxeS7CO+0a7/I6BLpRihY=
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Apr 2020 20:25:33 -0700
-IronPort-SDR: COuMV9HYbF4USsGsyykA2YMeSPiVjylaMfhthnkLeYFnyMK73n7wWfoSNEgxorgf1cKP/z89cg
- M4RskHavfXeA==
-WDCIronportException: Internal
-Received: from hqe220030.ad.shared (HELO jedi-01.hgst.com) ([10.86.56.34])
- by uls-op-cesaip01.wdc.com with ESMTP; 20 Apr 2020 20:34:42 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [v4 PATCH 3/3] RISC-V: Add EFI stub support.
-Date: Mon, 20 Apr 2020 20:33:36 -0700
-Message-Id: <20200421033336.9663-4-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20200421033336.9663-1-atish.patra@wdc.com>
-References: <20200421033336.9663-1-atish.patra@wdc.com>
+ id 1jQkRg-0007PT-2L
+ for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 04:23:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587443018;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=JaieFtrynku5iULCPSegJfHOzOMnZqOFIqChb4nr18M=;
+ b=hou0/G3hjxMsovSWTbA2YtOzZvfxbmIVq++obiJzXe+JaA2w3K/YUr5pQYjTGBRZHepNFO
+ K3cXQmD5K3Umt/fbiy2kZKWj1P+XnM83ArzxarOGGxKXq3e5kFhzBfiHEAZoZa+EJoNlqF
+ V/X3a3hk7M0NilfngHqRKDkIz7kpHoE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-30-7AL0EMq3NX6ay4HJGU29Lg-1; Tue, 21 Apr 2020 00:23:36 -0400
+X-MC-Unique: 7AL0EMq3NX6ay4HJGU29Lg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ABAEF1005509;
+ Tue, 21 Apr 2020 04:23:23 +0000 (UTC)
+Received: from localhost (ovpn-12-34.pek2.redhat.com [10.72.12.34])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C21715DA76;
+ Tue, 21 Apr 2020 04:23:20 +0000 (UTC)
+Date: Tue, 21 Apr 2020 12:23:16 +0800
+From: Baoquan He <bhe@redhat.com>
+To: Mike Rapoport <rppt@kernel.org>
+Subject: Re: [PATCH 03/21] mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option
+Message-ID: <20200421042316.GQ4247@MiWiFi-R3L-srv>
+References: <20200412194859.12663-1-rppt@kernel.org>
+ <20200412194859.12663-4-rppt@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200412194859.12663-4-rppt@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_203450_670688_B60EA942 
-X-CRM114-Status: GOOD (  23.22  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200420_212340_266511_AF17F499 
+X-CRM114-Status: GOOD (  28.94  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [205.139.110.61 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -83,6 +78,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,297 +90,521 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-efi@vger.kernel.org, Heinrich Schuchardt <xypron.glpk@gmx.de>,
- Masahiro Yamada <masahiroy@kernel.org>, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, linux-riscv@lists.infradead.org,
- Ard Biesheuvel <ardb@kernel.org>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
+ "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
+ linux-csky@vger.kernel.org, linux-parisc@vger.kernel.org,
+ sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Greg Ungerer <gerg@linux-m68k.org>,
+ linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ linux-snps-arc@lists.infradead.org, linux-c6x-dev@linux-c6x.org,
+ Brian Cain <bcain@codeaurora.org>, Jonathan Corbet <corbet@lwn.net>,
+ linux-sh@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
+ Helge Deller <deller@gmx.de>, x86@kernel.org,
+ Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
+ Mike Rapoport <rppt@linux.ibm.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
+ Matt Turner <mattst88@gmail.com>, linux-mips@vger.kernel.org,
+ uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
+ linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
+ linux-m68k@lists.linux-m68k.org, Tony Luck <tony.luck@intel.com>,
+ Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
+ Hoan Tran <Hoan@os.amperecomputing.com>, Michal Simek <monstr@monstr.eu>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
+ linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
+ linux-kernel@vger.kernel.org, openrisc@lists.librecores.org,
+ Richard Weinberger <richard@nod.at>, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Add a RISC-V architecture specific stub code that actually copies the
-actual kernel image to a valid address and jump to it after boot services
-are terminated. Enable UEFI related kernel configs as well for RISC-V.
+On 04/12/20 at 10:48pm, Mike Rapoport wrote:
+> From: Mike Rapoport <rppt@linux.ibm.com>
+> 
+> The CONFIG_HAVE_MEMBLOCK_NODE_MAP is used to differentiate initialization
+> of nodes and zones structures between the systems that have region to node
+> mapping in memblock and those that don't.
+> 
+> Currently all the NUMA architectures enable this option and for the
+> non-NUMA systems we can presume that all the memory belongs to node 0 and
+> therefore the compile time configuration option is not required.
+> 
+> The remaining few architectures that use DISCONTIGMEM without NUMA are
+> easily updated to use memblock_add_node() instead of memblock_add() and
+> thus have proper correspondence of memblock regions to NUMA nodes.
+> 
+> Still, free_area_init_node() must have a backward compatible version
+> because its semantics with and without CONFIG_HAVE_MEMBLOCK_NODE_MAP is
+> different. Once all the architectures will use the new semantics, the
+> entire compatibility layer can be dropped.
+> 
+> To avoid addition of extra run time memory to store node id for
+> architectures that keep memblock but have only a single node, the node id
+> field of the memblock_region is guarded by CONFIG_NEED_MULTIPLE_NODES and
+> the corresponding accessors presume that in those cases it is always 0.
+> 
+> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
+> ---
+...
+> diff --git a/include/linux/memblock.h b/include/linux/memblock.h
+> index 6bc37a731d27..45abfc54da37 100644
+> --- a/include/linux/memblock.h
+> +++ b/include/linux/memblock.h
+> @@ -50,7 +50,7 @@ struct memblock_region {
+>  	phys_addr_t base;
+>  	phys_addr_t size;
+>  	enum memblock_flags flags;
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  	int nid;
+>  #endif
+>  };
+> @@ -215,7 +215,6 @@ static inline bool memblock_is_nomap(struct memblock_region *m)
+>  	return m->flags & MEMBLOCK_NOMAP;
+>  }
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  int memblock_search_pfn_nid(unsigned long pfn, unsigned long *start_pfn,
+>  			    unsigned long  *end_pfn);
+>  void __next_mem_pfn_range(int *idx, int nid, unsigned long *out_start_pfn,
+> @@ -234,7 +233,6 @@ void __next_mem_pfn_range(int *idx, int nid, unsigned long *out_start_pfn,
+>  #define for_each_mem_pfn_range(i, nid, p_start, p_end, p_nid)		\
+>  	for (i = -1, __next_mem_pfn_range(&i, nid, p_start, p_end, p_nid); \
+>  	     i >= 0; __next_mem_pfn_range(&i, nid, p_start, p_end, p_nid))
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+>  
+>  #ifdef CONFIG_DEFERRED_STRUCT_PAGE_INIT
+>  void __next_mem_pfn_range_in_zone(u64 *idx, struct zone *zone,
+> @@ -310,10 +308,10 @@ void __next_mem_pfn_range_in_zone(u64 *idx, struct zone *zone,
+>  	for_each_mem_range_rev(i, &memblock.memory, &memblock.reserved,	\
+>  			       nid, flags, p_start, p_end, p_nid)
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  int memblock_set_node(phys_addr_t base, phys_addr_t size,
+>  		      struct memblock_type *type, int nid);
+>  
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  static inline void memblock_set_region_node(struct memblock_region *r, int nid)
+>  {
+>  	r->nid = nid;
+> @@ -332,7 +330,7 @@ static inline int memblock_get_region_node(const struct memblock_region *r)
+>  {
+>  	return 0;
+>  }
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+> +#endif /* CONFIG_NEED_MULTIPLE_NODES */
+>  
+>  /* Flags for memblock allocation APIs */
+>  #define MEMBLOCK_ALLOC_ANYWHERE	(~(phys_addr_t)0)
+> diff --git a/include/linux/mm.h b/include/linux/mm.h
+> index a404026d14d4..5903bbbdb336 100644
+> --- a/include/linux/mm.h
+> +++ b/include/linux/mm.h
+> @@ -2344,9 +2344,8 @@ static inline unsigned long get_num_physpages(void)
+>  	return phys_pages;
+>  }
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  /*
+> - * With CONFIG_HAVE_MEMBLOCK_NODE_MAP set, an architecture may initialise its
+> + * Using memblock node mappings, an architecture may initialise its
+>   * zones, allocate the backing mem_map and account for memory holes in a more
+>   * architecture independent manner. This is a substitute for creating the
+>   * zone_sizes[] and zholes_size[] arrays and passing them to
+> @@ -2367,9 +2366,6 @@ static inline unsigned long get_num_physpages(void)
+>   * registered physical page range.  Similarly
+>   * sparse_memory_present_with_active_regions() calls memory_present() for
+>   * each range when SPARSEMEM is enabled.
+> - *
+> - * See mm/page_alloc.c for more information on each function exposed by
+> - * CONFIG_HAVE_MEMBLOCK_NODE_MAP.
+>   */
+>  extern void free_area_init_nodes(unsigned long *max_zone_pfn);
+>  unsigned long node_map_pfn_alignment(void);
+> @@ -2384,13 +2380,9 @@ extern void free_bootmem_with_active_regions(int nid,
+>  						unsigned long max_low_pfn);
+>  extern void sparse_memory_present_with_active_regions(int nid);
+>  
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+> -
+> -#if !defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP) && \
+> -    !defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID)
+> +#ifndef CONFIG_NEED_MULTIPLE_NODES
+>  static inline int early_pfn_to_nid(unsigned long pfn)
+>  {
+> -	BUILD_BUG_ON(IS_ENABLED(CONFIG_NUMA));
+>  	return 0;
+>  }
+>  #else
+> diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
+> index 7b5b6eba402f..ffc2a3d6036b 100644
+> --- a/include/linux/mmzone.h
+> +++ b/include/linux/mmzone.h
+> @@ -874,7 +874,7 @@ extern int movable_zone;
+>  #ifdef CONFIG_HIGHMEM
+>  static inline int zone_movable_is_highmem(void)
+>  {
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  	return movable_zone == ZONE_HIGHMEM;
+>  #else
+>  	return (ZONE_MOVABLE - 1) == ZONE_HIGHMEM;
 
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- arch/riscv/Kconfig                        |  20 ++++
- arch/riscv/Makefile                       |   1 +
- arch/riscv/configs/defconfig              |   1 +
- arch/riscv/include/asm/efi.h              |  44 +++++++++
- drivers/firmware/efi/Kconfig              |   2 +-
- drivers/firmware/efi/libstub/Makefile     |  10 ++
- drivers/firmware/efi/libstub/riscv-stub.c | 106 ++++++++++++++++++++++
- 7 files changed, 183 insertions(+), 1 deletion(-)
- create mode 100644 arch/riscv/include/asm/efi.h
- create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
+If CONFIG_HIGHMEM is enabled, the above judgement is always true,
+wondering what's the purpose we have to do like this. It's not related
+to this patch though.
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index f39e326a7a42..eb4f41c8f3ce 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -379,10 +379,30 @@ config CMDLINE_FORCE
- 
- endchoice
- 
-+config EFI_STUB
-+	bool
-+
-+config EFI
-+	bool "UEFI runtime support"
-+	depends on OF
-+	select LIBFDT
-+	select UCS2_STRING
-+	select EFI_PARAMS_FROM_FDT
-+	select EFI_STUB
-+	select EFI_GENERIC_STUB
-+	default y
-+	help
-+	  This option provides support for runtime services provided
-+	  by UEFI firmware (such as non-volatile variables, realtime
-+          clock, and platform reset). A UEFI stub is also provided to
-+	  allow the kernel to be booted as an EFI application. This
-+	  is only useful on systems that have UEFI firmware.
-+
- endmenu
- 
- menu "Power management options"
- 
- source "kernel/power/Kconfig"
-+source "drivers/firmware/Kconfig"
- 
- endmenu
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index fb6e37db836d..079435804d6d 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -80,6 +80,7 @@ head-y := arch/riscv/kernel/head.o
- core-y += arch/riscv/
- 
- libs-y += arch/riscv/lib/
-+core-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
- 
- PHONY += vdso_install
- vdso_install:
-diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-index 4da4886246a4..ae69e12d306a 100644
---- a/arch/riscv/configs/defconfig
-+++ b/arch/riscv/configs/defconfig
-@@ -129,3 +129,4 @@ CONFIG_DEBUG_BLOCK_EXT_DEVT=y
- # CONFIG_RUNTIME_TESTING_MENU is not set
- CONFIG_MEMTEST=y
- # CONFIG_SYSFS_SYSCALL is not set
-+CONFIG_EFI=y
-diff --git a/arch/riscv/include/asm/efi.h b/arch/riscv/include/asm/efi.h
-new file mode 100644
-index 000000000000..62d7d5eafed8
---- /dev/null
-+++ b/arch/riscv/include/asm/efi.h
-@@ -0,0 +1,44 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-+ * Based on arch/arm64/include/asm/efi.h
-+ */
-+#ifndef _ASM_EFI_H
-+#define _ASM_EFI_H
-+
-+#include <asm/io.h>
-+#include <asm/mmu_context.h>
-+#include <asm/ptrace.h>
-+#include <asm/tlbflush.h>
-+
-+#define VA_BITS_MIN 39
-+
-+/* on RISC-V, the FDT may be located anywhere in system RAM */
-+static inline unsigned long efi_get_max_fdt_addr(unsigned long dram_base)
-+{
-+	return ULONG_MAX;
-+}
-+
-+/* Load initrd at enough distance from DRAM start */
-+static inline unsigned long efi_get_max_initrd_addr(unsigned long dram_base,
-+						    unsigned long image_addr)
-+{
-+	return dram_base + SZ_256M;
-+}
-+
-+#define efi_bs_call(func, ...)	efi_system_table()->boottime->func(__VA_ARGS__)
-+#define efi_rt_call(func, ...)	efi_system_table()->runtime->func(__VA_ARGS__)
-+#define efi_is_native()		(true)
-+
-+#define efi_table_attr(inst, attr)	(inst->attr)
-+
-+#define efi_call_proto(inst, func, ...) inst->func(inst, ##__VA_ARGS__)
-+
-+#define alloc_screen_info(x...)		(&screen_info)
-+extern char stext_offset[];
-+
-+static inline void free_screen_info(struct screen_info *si)
-+{
-+}
-+
-+#endif /* _ASM_EFI_H */
-diff --git a/drivers/firmware/efi/Kconfig b/drivers/firmware/efi/Kconfig
-index 2a2b2b96a1dc..fcdc789d3f87 100644
---- a/drivers/firmware/efi/Kconfig
-+++ b/drivers/firmware/efi/Kconfig
-@@ -111,7 +111,7 @@ config EFI_GENERIC_STUB
- 
- config EFI_ARMSTUB_DTB_LOADER
- 	bool "Enable the DTB loader"
--	depends on EFI_GENERIC_STUB
-+	depends on EFI_GENERIC_STUB && !RISCV
- 	default y
- 	help
- 	  Select this config option to add support for the dtb= command
-diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
-index 0f57293d777e..eb365c55c0fe 100644
---- a/drivers/firmware/efi/libstub/Makefile
-+++ b/drivers/firmware/efi/libstub/Makefile
-@@ -22,6 +22,8 @@ cflags-$(CONFIG_ARM64)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- cflags-$(CONFIG_ARM)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- 				   -fno-builtin -fpic \
- 				   $(call cc-option,-mno-single-pic-base)
-+cflags-$(CONFIG_RISCV)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
-+				   -fpic
- 
- cflags-$(CONFIG_EFI_GENERIC_STUB) += -I$(srctree)/scripts/dtc/libfdt
- 
-@@ -57,6 +59,7 @@ lib-$(CONFIG_EFI_GENERIC_STUB)	+= efi-stub.o fdt.o string.o \
- lib-$(CONFIG_ARM)		+= arm32-stub.o
- lib-$(CONFIG_ARM64)		+= arm64-stub.o
- lib-$(CONFIG_X86)		+= x86-stub.o
-+lib-$(CONFIG_RISCV)		+= riscv-stub.o
- CFLAGS_arm32-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- CFLAGS_arm64-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- 
-@@ -100,6 +103,13 @@ STUBCOPY_FLAGS-$(CONFIG_X86)	+= --rename-section .bss=.bss.efistub,load,alloc
- STUBCOPY_RELOC-$(CONFIG_X86_32)	:= R_386_32
- STUBCOPY_RELOC-$(CONFIG_X86_64)	:= R_X86_64_64
- 
-+# For RISC-V, we don't need anything special other than arm64. Keep all the
-+# symbols in .init section and make sure that no absolute symbols references
-+# doesn't exist.
-+STUBCOPY_FLAGS-$(CONFIG_RISCV)	+= --prefix-alloc-sections=.init \
-+				   --prefix-symbols=__efistub_
-+STUBCOPY_RELOC-$(CONFIG_RISCV)	:= R_RISCV_HI20
-+
- $(obj)/%.stub.o: $(obj)/%.o FORCE
- 	$(call if_changed,stubcopy)
- 
-diff --git a/drivers/firmware/efi/libstub/riscv-stub.c b/drivers/firmware/efi/libstub/riscv-stub.c
-new file mode 100644
-index 000000000000..bd1d6fed8754
---- /dev/null
-+++ b/drivers/firmware/efi/libstub/riscv-stub.c
-@@ -0,0 +1,106 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2013, 2014 Linaro Ltd;  <roy.franz@linaro.org>
-+ * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-+ *
-+ * This file implements the EFI boot stub for the RISC-V kernel.
-+ * Adapted from ARM64 version at drivers/firmware/efi/libstub/arm64-stub.c.
-+ */
-+
-+#include <linux/efi.h>
-+#include <linux/libfdt.h>
-+#include <linux/libfdt_env.h>
-+#include <asm/efi.h>
-+#include <asm/sections.h>
-+
-+#include "efistub.h"
-+/*
-+ * RISC-V requires the kernel image to placed 2 MB aligned base for 64 bit and
-+ * 4MB for 32 bit.
-+ */
-+#ifdef CONFIG_64BIT
-+#define MIN_KIMG_ALIGN	SZ_2M
-+#else
-+#define MIN_KIMG_ALIGN	SZ_4M
-+#endif
-+
-+typedef __attribute__((noreturn)) void (*jump_kernel_func)(unsigned int,
-+							   unsigned long);
-+efi_status_t check_platform_features(void)
-+{
-+	return EFI_SUCCESS;
-+}
-+
-+static u32 get_boot_hartid_from_fdt(unsigned long fdt)
-+{
-+	int chosen_node, len;
-+	const fdt32_t *prop;
-+
-+	chosen_node = fdt_path_offset((void *)fdt, "/chosen");
-+	if (chosen_node < 0)
-+		return U32_MAX;
-+	prop = fdt_getprop((void *)fdt, chosen_node, "boot-hartid", &len);
-+	if (!prop || len != sizeof(u32))
-+		return U32_MAX;
-+
-+	return fdt32_to_cpu(*prop);
-+}
-+
-+/*
-+ * Jump to real kernel here with following constraints.
-+ * 1. MMU should be disabled.
-+ * 2. a0 should contain hartid
-+ * 3. a1 should DT address
-+ */
-+void __noreturn efi_enter_kernel(unsigned long entrypoint, unsigned long fdt,
-+				 unsigned long fdt_size)
-+{
-+	unsigned long kernel_entry = entrypoint + (unsigned long)stext_offset;
-+	jump_kernel_func jump_kernel = (jump_kernel_func) kernel_entry;
-+	u32 hartid = get_boot_hartid_from_fdt(fdt);
-+
-+	if (hartid == U32_MAX)
-+		/* We can not use panic or BUG at this point */
-+		__asm__ __volatile__ ("ebreak");
-+	/* Disable MMU */
-+	csr_write(CSR_SATP, 0);
-+	jump_kernel(hartid, fdt);
-+}
-+
-+efi_status_t handle_kernel_image(unsigned long *image_addr,
-+				 unsigned long *image_size,
-+				 unsigned long *reserve_addr,
-+				 unsigned long *reserve_size,
-+				 unsigned long dram_base,
-+				 efi_loaded_image_t *image)
-+{
-+	efi_status_t status;
-+	unsigned long kernel_size = 0;
-+	unsigned long preferred_addr;
-+
-+	kernel_size = _edata - _start;
-+	*reserve_size = kernel_size + (_end - _edata);
-+	*image_addr = (unsigned long)_start;
-+
-+	/*
-+	 * RISC-V kernel maps PAGE_OFFSET virtual address to the same physical
-+	 * address where kernel is booted. That's why kernel should boot from
-+	 * as low as possible to avoid wastage of memory. Currently, dram_base
-+	 * is occupied by the firmware. So the preferred address for kernel to
-+	 * boot is next aligned address. If preferred address is not available,
-+	 * relocate_kernel will fall back to efi_low_alloc_above to allocate
-+	 * lowest possible memory region as long as the address and size meets
-+	 * the alignment constraints.
-+	 */
-+	preferred_addr = round_up(dram_base, MIN_KIMG_ALIGN) + MIN_KIMG_ALIGN;
-+	status = efi_relocate_kernel(image_addr, kernel_size, *reserve_size,
-+				     preferred_addr, MIN_KIMG_ALIGN, dram_base);
-+
-+	if (status != EFI_SUCCESS) {
-+		pr_efi_err("Failed to relocate kernel\n");
-+		*reserve_size = 0;
-+		return status;
-+	}
-+
-+	return EFI_SUCCESS;
-+}
--- 
-2.24.0
+> diff --git a/mm/Kconfig b/mm/Kconfig
+> index c1acc34c1c35..aaa5bdaa1c8a 100644
+> --- a/mm/Kconfig
+> +++ b/mm/Kconfig
+> @@ -126,9 +126,6 @@ config SPARSEMEM_VMEMMAP
+>  	  pfn_to_page and page_to_pfn operations.  This is the most
+>  	  efficient option when sufficient kernel resources are available.
+>  
+> -config HAVE_MEMBLOCK_NODE_MAP
+> -	bool
+> -
+>  config HAVE_MEMBLOCK_PHYS_MAP
+>  	bool
+>  
+> diff --git a/mm/memblock.c b/mm/memblock.c
+> index 43e2fd3006c1..743659d88fc4 100644
+> --- a/mm/memblock.c
+> +++ b/mm/memblock.c
+> @@ -620,7 +620,7 @@ static int __init_memblock memblock_add_range(struct memblock_type *type,
+>  		 * area, insert that portion.
+>  		 */
+>  		if (rbase > base) {
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  			WARN_ON(nid != memblock_get_region_node(rgn));
+>  #endif
+>  			WARN_ON(flags != rgn->flags);
+> @@ -1197,7 +1197,6 @@ void __init_memblock __next_mem_range_rev(u64 *idx, int nid,
+>  	*idx = ULLONG_MAX;
+>  }
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  /*
+>   * Common iterator interface used to define for_each_mem_pfn_range().
+>   */
+> @@ -1247,6 +1246,7 @@ void __init_memblock __next_mem_pfn_range(int *idx, int nid,
+>  int __init_memblock memblock_set_node(phys_addr_t base, phys_addr_t size,
+>  				      struct memblock_type *type, int nid)
+>  {
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  	int start_rgn, end_rgn;
+>  	int i, ret;
+>  
+> @@ -1258,9 +1258,10 @@ int __init_memblock memblock_set_node(phys_addr_t base, phys_addr_t size,
+>  		memblock_set_region_node(&type->regions[i], nid);
+>  
+>  	memblock_merge_regions(type);
+> +#endif
+>  	return 0;
+>  }
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+> +
+>  #ifdef CONFIG_DEFERRED_STRUCT_PAGE_INIT
+>  /**
+>   * __next_mem_pfn_range_in_zone - iterator for for_each_*_range_in_zone()
+> @@ -1799,7 +1800,6 @@ bool __init_memblock memblock_is_map_memory(phys_addr_t addr)
+>  	return !memblock_is_nomap(&memblock.memory.regions[i]);
+>  }
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  int __init_memblock memblock_search_pfn_nid(unsigned long pfn,
+>  			 unsigned long *start_pfn, unsigned long *end_pfn)
+>  {
+> @@ -1814,7 +1814,6 @@ int __init_memblock memblock_search_pfn_nid(unsigned long pfn,
+>  
+>  	return memblock_get_region_node(&type->regions[mid]);
+>  }
+> -#endif
+>  
+>  /**
+>   * memblock_is_region_memory - check if a region is a subset of memory
+> @@ -1905,7 +1904,7 @@ static void __init_memblock memblock_dump(struct memblock_type *type)
+>  		size = rgn->size;
+>  		end = base + size - 1;
+>  		flags = rgn->flags;
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  		if (memblock_get_region_node(rgn) != MAX_NUMNODES)
+>  			snprintf(nid_buf, sizeof(nid_buf), " on node %d",
+>  				 memblock_get_region_node(rgn));
+> diff --git a/mm/memory_hotplug.c b/mm/memory_hotplug.c
+> index fc0aad0bc1f5..e67dc501576a 100644
+> --- a/mm/memory_hotplug.c
+> +++ b/mm/memory_hotplug.c
+> @@ -1372,11 +1372,7 @@ check_pages_isolated_cb(unsigned long start_pfn, unsigned long nr_pages,
+>  
+>  static int __init cmdline_parse_movable_node(char *p)
+>  {
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  	movable_node_enabled = true;
+> -#else
+> -	pr_warn("movable_node parameter depends on CONFIG_HAVE_MEMBLOCK_NODE_MAP to work properly\n");
+> -#endif
+
+Wondering if this change will impact anything. Before, those ARCHes with
+CONFIG_HAVE_MEMBLOCK_NODE_MAP support movable_node. With this patch
+applied, those ARCHes which don't support CONFIG_HAVE_MEMBLOCK_NODE_MAP
+can also have 'movable_node' specified in kernel cmdline.
+
+>  	return 0;
+>  }
+>  early_param("movable_node", cmdline_parse_movable_node);
+> diff --git a/mm/page_alloc.c b/mm/page_alloc.c
+> index 1ac775bfc9cf..4530e9cfd9f7 100644
+> --- a/mm/page_alloc.c
+> +++ b/mm/page_alloc.c
+> @@ -335,7 +335,6 @@ static unsigned long nr_kernel_pages __initdata;
+>  static unsigned long nr_all_pages __initdata;
+>  static unsigned long dma_reserve __initdata;
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  static unsigned long arch_zone_lowest_possible_pfn[MAX_NR_ZONES] __initdata;
+>  static unsigned long arch_zone_highest_possible_pfn[MAX_NR_ZONES] __initdata;
+>  static unsigned long required_kernelcore __initdata;
+
+Does it mean those ARCHes which don't support
+CONFIG_HAVE_MEMBLOCK_NODE_MAP before, will have 'kernelcore=' and
+'movablecore=' now, and will have MOVABLE zone?
+
+> @@ -348,7 +347,6 @@ static bool mirrored_kernelcore __meminitdata;
+>  /* movable_zone is the "real" zone pages in ZONE_MOVABLE are taken from */
+>  int movable_zone;
+>  EXPORT_SYMBOL(movable_zone);
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+>  
+>  #if MAX_NUMNODES > 1
+>  unsigned int nr_node_ids __read_mostly = MAX_NUMNODES;
+> @@ -1499,8 +1497,7 @@ void __free_pages_core(struct page *page, unsigned int order)
+>  	__free_pages(page, order);
+>  }
+>  
+> -#if defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID) || \
+> -	defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP)
+> +#ifdef CONFIG_NEED_MULTIPLE_NODES
+>  
+>  static struct mminit_pfnnid_cache early_pfnnid_cache __meminitdata;
+>  
+> @@ -1542,7 +1539,7 @@ int __meminit early_pfn_to_nid(unsigned long pfn)
+>  
+>  	return nid;
+>  }
+> -#endif
+> +#endif /* CONFIG_NEED_MULTIPLE_NODES */
+>  
+>  #ifdef CONFIG_NODES_SPAN_OTHER_NODES
+>  /* Only safe to use early in boot when initialisation is single-threaded */
+> @@ -5924,7 +5921,6 @@ void __ref build_all_zonelists(pg_data_t *pgdat)
+>  static bool __meminit
+>  overlap_memmap_init(unsigned long zone, unsigned long *pfn)
+>  {
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+>  	static struct memblock_region *r;
+>  
+>  	if (mirrored_kernelcore && zone == ZONE_MOVABLE) {
+> @@ -5940,7 +5936,6 @@ overlap_memmap_init(unsigned long zone, unsigned long *pfn)
+>  			return true;
+>  		}
+>  	}
+> -#endif
+>  	return false;
+>  }
+>  
+> @@ -6573,8 +6568,7 @@ static unsigned long __init zone_absent_pages_in_node(int nid,
+>  	return nr_absent;
+>  }
+>  
+> -#else /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+> -static inline unsigned long __init zone_spanned_pages_in_node(int nid,
+> +static inline unsigned long __init compat_zone_spanned_pages_in_node(int nid,
+
+Is it compact zone which has continuous memory region, and the
+compat here is typo? Or it's compatible zone? The name seems a little
+confusing, or I miss something.
+
+>  					unsigned long zone_type,
+>  					unsigned long node_start_pfn,
+>  					unsigned long node_end_pfn,
+> @@ -6593,7 +6587,7 @@ static inline unsigned long __init zone_spanned_pages_in_node(int nid,
+>  	return zones_size[zone_type];
+>  }
+>  
+> -static inline unsigned long __init zone_absent_pages_in_node(int nid,
+> +static inline unsigned long __init compat_zone_absent_pages_in_node(int nid,
+>  						unsigned long zone_type,
+>  						unsigned long node_start_pfn,
+>  						unsigned long node_end_pfn,
+> @@ -6605,13 +6599,12 @@ static inline unsigned long __init zone_absent_pages_in_node(int nid,
+>  	return zholes_size[zone_type];
+>  }
+>  
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+> -
+>  static void __init calculate_node_totalpages(struct pglist_data *pgdat,
+>  						unsigned long node_start_pfn,
+>  						unsigned long node_end_pfn,
+>  						unsigned long *zones_size,
+> -						unsigned long *zholes_size)
+> +						unsigned long *zholes_size,
+> +						bool compat)
+>  {
+>  	unsigned long realtotalpages = 0, totalpages = 0;
+>  	enum zone_type i;
+> @@ -6619,17 +6612,38 @@ static void __init calculate_node_totalpages(struct pglist_data *pgdat,
+>  	for (i = 0; i < MAX_NR_ZONES; i++) {
+>  		struct zone *zone = pgdat->node_zones + i;
+>  		unsigned long zone_start_pfn, zone_end_pfn;
+> +		unsigned long spanned, absent;
+>  		unsigned long size, real_size;
+>  
+> -		size = zone_spanned_pages_in_node(pgdat->node_id, i,
+> -						  node_start_pfn,
+> -						  node_end_pfn,
+> -						  &zone_start_pfn,
+> -						  &zone_end_pfn,
+> -						  zones_size);
+> -		real_size = size - zone_absent_pages_in_node(pgdat->node_id, i,
+> -						  node_start_pfn, node_end_pfn,
+> -						  zholes_size);
+> +		if (compat) {
+> +			spanned = compat_zone_spanned_pages_in_node(
+> +						pgdat->node_id, i,
+> +						node_start_pfn,
+> +						node_end_pfn,
+> +						&zone_start_pfn,
+> +						&zone_end_pfn,
+> +						zones_size);
+> +			absent = compat_zone_absent_pages_in_node(
+> +						pgdat->node_id, i,
+> +						node_start_pfn,
+> +						node_end_pfn,
+> +						zholes_size);
+> +		} else {
+> +			spanned = zone_spanned_pages_in_node(pgdat->node_id, i,
+> +						node_start_pfn,
+> +						node_end_pfn,
+> +						&zone_start_pfn,
+> +						&zone_end_pfn,
+> +						zones_size);
+> +			absent = zone_absent_pages_in_node(pgdat->node_id, i,
+> +						node_start_pfn,
+> +						node_end_pfn,
+> +						zholes_size);
+> +		}
+> +
+> +		size = spanned;
+> +		real_size = size - absent;
+> +
+>  		if (size)
+>  			zone->zone_start_pfn = zone_start_pfn;
+>  		else
+> @@ -6929,10 +6943,8 @@ static void __ref alloc_node_mem_map(struct pglist_data *pgdat)
+>  	 */
+>  	if (pgdat == NODE_DATA(0)) {
+>  		mem_map = NODE_DATA(0)->node_mem_map;
+> -#if defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP) || defined(CONFIG_FLATMEM)
+>  		if (page_to_pfn(mem_map) != pgdat->node_start_pfn)
+>  			mem_map -= offset;
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+>  	}
+>  #endif
+>  }
+> @@ -6949,9 +6961,10 @@ static inline void pgdat_set_deferred_range(pg_data_t *pgdat)
+>  static inline void pgdat_set_deferred_range(pg_data_t *pgdat) {}
+>  #endif
+>  
+> -void __init free_area_init_node(int nid, unsigned long *zones_size,
+> -				   unsigned long node_start_pfn,
+> -				   unsigned long *zholes_size)
+> +static void __init __free_area_init_node(int nid, unsigned long *zones_size,
+> +					 unsigned long node_start_pfn,
+> +					 unsigned long *zholes_size,
+> +					 bool compat)
+>  {
+>  	pg_data_t *pgdat = NODE_DATA(nid);
+>  	unsigned long start_pfn = 0;
+> @@ -6963,16 +6976,16 @@ void __init free_area_init_node(int nid, unsigned long *zones_size,
+>  	pgdat->node_id = nid;
+>  	pgdat->node_start_pfn = node_start_pfn;
+>  	pgdat->per_cpu_nodestats = NULL;
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> -	get_pfn_range_for_nid(nid, &start_pfn, &end_pfn);
+> -	pr_info("Initmem setup node %d [mem %#018Lx-%#018Lx]\n", nid,
+> -		(u64)start_pfn << PAGE_SHIFT,
+> -		end_pfn ? ((u64)end_pfn << PAGE_SHIFT) - 1 : 0);
+> -#else
+> -	start_pfn = node_start_pfn;
+> -#endif
+> +	if (!compat) {
+> +		get_pfn_range_for_nid(nid, &start_pfn, &end_pfn);
+> +		pr_info("Initmem setup node %d [mem %#018Lx-%#018Lx]\n", nid,
+> +			(u64)start_pfn << PAGE_SHIFT,
+> +			end_pfn ? ((u64)end_pfn << PAGE_SHIFT) - 1 : 0);
+> +	} else {
+> +		start_pfn = node_start_pfn;
+> +	}
+>  	calculate_node_totalpages(pgdat, start_pfn, end_pfn,
+> -				  zones_size, zholes_size);
+> +				  zones_size, zholes_size, compat);
+>  
+>  	alloc_node_mem_map(pgdat);
+>  	pgdat_set_deferred_range(pgdat);
+> @@ -6980,6 +6993,14 @@ void __init free_area_init_node(int nid, unsigned long *zones_size,
+>  	free_area_init_core(pgdat);
+>  }
+>  
+> +void __init free_area_init_node(int nid, unsigned long *zones_size,
+> +				unsigned long node_start_pfn,
+> +				unsigned long *zholes_size)
+> +{
+> +	__free_area_init_node(nid, zones_size, node_start_pfn, zholes_size,
+> +			      true);
+> +}
+> +
+>  #if !defined(CONFIG_FLAT_NODE_MEM_MAP)
+>  /*
+>   * Initialize all valid struct pages in the range [spfn, epfn) and mark them
+> @@ -7063,8 +7084,6 @@ static inline void __init init_unavailable_mem(void)
+>  }
+>  #endif /* !CONFIG_FLAT_NODE_MEM_MAP */
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> -
+>  #if MAX_NUMNODES > 1
+>  /*
+>   * Figure out the number of possible node ids.
+> @@ -7493,8 +7512,8 @@ void __init free_area_init_nodes(unsigned long *max_zone_pfn)
+>  	init_unavailable_mem();
+>  	for_each_online_node(nid) {
+>  		pg_data_t *pgdat = NODE_DATA(nid);
+> -		free_area_init_node(nid, NULL,
+> -				find_min_pfn_for_node(nid), NULL);
+> +		__free_area_init_node(nid, NULL,
+> +				      find_min_pfn_for_node(nid), NULL, false);
+>  
+>  		/* Any memory on that node */
+>  		if (pgdat->node_present_pages)
+> @@ -7559,8 +7578,6 @@ static int __init cmdline_parse_movablecore(char *p)
+>  early_param("kernelcore", cmdline_parse_kernelcore);
+>  early_param("movablecore", cmdline_parse_movablecore);
+>  
+> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
+> -
+>  void adjust_managed_page_count(struct page *page, long count)
+>  {
+>  	atomic_long_add(count, &page_zone(page)->managed_pages);
+> -- 
+> 2.25.1
+> 
 
 
