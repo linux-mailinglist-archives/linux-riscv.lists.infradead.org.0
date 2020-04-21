@@ -2,80 +2,63 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 762741B1EC6
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 08:29:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D377D1B1F55
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 08:59:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RvESK7CglgiS5xErjdXAyAHVMUUWew15wYnWDQZ4CeU=; b=WP1y3oQp8mjcqn
-	QI/jhq0h9ch//Jfqs7H74F9sCEofMpAb6jlJLBbWZR3zJbw0+fWjsU9GlvivUkQiFUAS9gVf5tT0a
-	TzlfhTq6PvfClo2R+8Sh7OweacWOwhknX5j6H45zlP5CTMetLd35dA1F1CBwqhK0wcHLO7fR8HKe5
-	8ObhzTvFoA3JHI2uHHow+IbWoMWoDgcinFIUyj/L6xrDHdf5JEnzQ1sLyv47IHRcgVGPqz4rkpn9e
-	sEhTLuH+wE8SQ7zsFm5td0ZYazyOiyIDkB8GOvv6EZiQrAnF0MPq4HPaPXq7oJVyDrlWTk6myST/M
-	7FZQ/Ll1N9Blfud65Tzw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6P8shjSruP+Jbh0ZqugzN5fC26tEIX5ILDg3M+VmMhc=; b=Tvc3XYxsH2CftIanxXGWdl8Ln
+	oy2PPEnBbxsfAHNmX5Tq9j4FbmLTcdNBJwYcOd4hsKBpoYJs2rFhG7u5AmBa6xKeCuTVWCkQKKKMH
+	cFoyrrX7CrMFbSXpNpxMrlDATW9HZZHfjM+8kSxjXNnRh8Ykm6G9thICmN6VcxcBFmODrLvkYHZvs
+	znbkqtbpU7HpVkURdsCHT5npLFd2FakvE8JfnvjxChNTeOM7XQHhIjhk9/R3D3H4c0Mb8bhlPh4QV
+	Z/BMJq7Y6fRgThCiABps+rkeki1tF4g9eHA0cyY335R+inUMr50QA7Iqu8e31f8wnIae8C57FwsK6
+	CS3d4FmXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQmPN-00024F-34; Tue, 21 Apr 2020 06:29:25 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1jQmrx-00018U-5T; Tue, 21 Apr 2020 06:58:57 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQmPG-000232-8A
- for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 06:29:22 +0000
-Received: by mail-oi1-x243.google.com with SMTP id k133so11133580oih.12
- for <linux-riscv@lists.infradead.org>; Mon, 20 Apr 2020 23:29:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=RvESK7CglgiS5xErjdXAyAHVMUUWew15wYnWDQZ4CeU=;
- b=bR5C37TQrYaaMJpuPVERI7GydgZMs9DM5ra0WXlGWnTCoSr7fcQ78d7xG4mgAHxlDN
- pmLauJGUwJdpHRGc23LQedt7MUvcn8A1t+qfDj9Lkg0WVAM2g/BUNyaMos9NIcVKZ9eD
- OhUNyO6YB6WOlBdnCI/orD5bE0/XokTWtgV+YGOSGdvQLXjtb9G/qM3m5ZCY1YedVUtW
- HiWEcfcG5fOB+4cXDbu0I5hsz2BTY3R8Am/+gob3w8dQYCeZTpU+tQ224Fskojs+7pzP
- Pi/qsD8NYHkX/tjsTqoIoPB/ad/xKO1b44/e7mL1yM+YSFFtecg3v+zCODdWeWChCt5O
- ciwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=RvESK7CglgiS5xErjdXAyAHVMUUWew15wYnWDQZ4CeU=;
- b=RxsXmgDpdbHXHIdv3JR86DDW2kbwyg4xpcVoCGQRe7OdeMxV/tj2R8FvO2Q9ULd9Fq
- oO0RV/kcUXDASHyW3Y7sBEDqBp14ykjvhuuoakiRxhMJlJsvq7sCrZTlGI8haUstYAzE
- /3rl/+LF14ThNMPMk7Nr28km1O+mec6NIv2utFhwanQUWgvsmCyW1K7tHuVjftnncRwR
- O3F8Yt6MzVxfr2QTKbBTz1i0wztwQsM6UX5ky4/SX7DbvgrUN0BWOHzlCJpwHJ5Aaoiy
- qRtCvRIh8hHoAiROCBdOYjMPolTnE3TSLroohDCr0/IbRgaQZtj1u99UBbPWbmApLO3j
- kQHQ==
-X-Gm-Message-State: AGi0PuYI7ZEamDFh9V3MmhBnxipS0tmJ5hSXG/yWj4MTweEl+4j69XNU
- ZOA4b8n8vZyNssGG2xyQQJBFfnPURSgrFF950tTDuw==
-X-Google-Smtp-Source: APiQypJSFz/5DbvUSS7U4ehQSnfk38alSu2zkVD61gbfZJFdakjx8CyUtFAU5Fuz8uKJuebMCGrJDdBqqmC8mq8JKeY=
-X-Received: by 2002:aca:3283:: with SMTP id y125mr2163575oiy.91.1587450555283; 
- Mon, 20 Apr 2020 23:29:15 -0700 (PDT)
+ id 1jQmrm-0000yu-9V; Tue, 21 Apr 2020 06:58:47 +0000
+Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B1A8C206A5;
+ Tue, 21 Apr 2020 06:58:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1587452325;
+ bh=zSEWmKynQKWmz0IUSm5ihu6tEO3dWhXZaB1lMRy7jqQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=u/UKJNZHEKIupjB7ZBsUtiiYe7I6nCSpdDQbmHIZGClUxVmUlZIUfiPEZIzRHYUn6
+ g6qnj51G9uRyRFpu8kN44be1pro4HTNJ141yDBBMvK2ulYFktfLaQWDGM/4efuHYdD
+ p/+dw+DK48euKA47LcgpoqVY6ox6mMphLQl6q9NI=
+Date: Tue, 21 Apr 2020 07:58:37 +0100
+From: Will Deacon <will@kernel.org>
+To: Mike Kravetz <mike.kravetz@oracle.com>
+Subject: Re: [PATCH v3 0/4] Clean up hugetlb boot command line processing
+Message-ID: <20200421065836.GA14448@willie-the-truck>
+References: <20200417185049.275845-1-mike.kravetz@oracle.com>
+ <5E312000-05D8-4C5D-A7C0-DDDE1842CB0E@lca.pw>
+ <4c36c6ce-3774-78fa-abc4-b7346bf24348@oracle.com>
+ <CADYN=9+=tCDmddTYGY44onvrzbg7yrbacMDSxd4hhD+=b=Yeiw@mail.gmail.com>
+ <86333853-0648-393f-db96-d581ee114d2b@oracle.com>
 MIME-Version: 1.0
-References: <cover.1586332296.git.zong.li@sifive.com>
- <mhng-103aea95-cf25-47c5-8e8d-56534f40c570@palmerdabbelt-glaptop1>
- <CA+ZOyajXsNYZZwQgdV9Y2szN+=QbHu7GDA6Lc5iLk+92yx1WSw@mail.gmail.com>
- <CAAhSdy3K2+72FJs1hj1G5qWD4cYAoumHuf7UhMcQM3EeMrVpzw@mail.gmail.com>
-In-Reply-To: <CAAhSdy3K2+72FJs1hj1G5qWD4cYAoumHuf7UhMcQM3EeMrVpzw@mail.gmail.com>
-From: Zong Li <zong.li@sifive.com>
-Date: Tue, 21 Apr 2020 14:29:03 +0800
-Message-ID: <CANXhq0oYKb35YVOk=fsg_djWCkS2Vs_E5y0+AotLt1i1GTaPYA@mail.gmail.com>
-Subject: Re: [PATCH v5 0/9] Support strict kernel memory permissions for
- security
-To: Anup Patel <anup@brainfault.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <86333853-0648-393f-db96-d581ee114d2b@oracle.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_232918_808960_21E4B9C3 
-X-CRM114-Status: GOOD (  26.35  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200420_235846_370042_EE2F997E 
+X-CRM114-Status: GOOD (  20.92  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -85,6 +68,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,108 +80,92 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Zong Li <zongbox@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Masami Hiramatsu <mhiramat@kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Linux-MM <linux-mm@kvack.org>, Paul Mackerras <paulus@samba.org>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Mina Almasry <almasrymina@google.com>, linux-s390@vger.kernel.org,
+ Anders Roxell <anders.roxell@linaro.org>, Jonathan Corbet <corbet@lwn.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Vasily Gorbik <gor@linux.ibm.com>, Qian Cai <cai@lca.pw>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Christophe Leroy <christophe.leroy@c-s.fr>,
+ Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
+ "David S.Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Apr 21, 2020 at 2:20 PM Anup Patel <anup@brainfault.org> wrote:
->
-> On Tue, Apr 21, 2020 at 11:06 AM Zong Li <zongbox@gmail.com> wrote:
-> >
-> > Palmer Dabbelt <palmer@dabbelt.com> =E6=96=BC 2020=E5=B9=B44=E6=9C=8821=
-=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8A=E5=8D=882:27=E5=AF=AB=E9=81=93=EF=BC=
-=9A
-> > >
-> > > On Wed, 08 Apr 2020 00:56:55 PDT (-0700), zong.li@sifive.com wrote:
-> > > > The main purpose of this patch series is changing the kernel mappin=
-g permission
-> > > > , make sure that code is not writeable, data is not executable, and=
- read-only
-> > > > data is neither writable nor executable.
-> > > >
-> > > > This patch series also supports the relevant implementations such a=
-s
-> > > > ARCH_HAS_SET_MEMORY, ARCH_HAS_SET_DIRECT_MAP,
-> > > > ARCH_SUPPORTS_DEBUG_PAGEALLOC and DEBUG_WX.
-> > > >
-> > > > Changes in v5:
-> > > >  - Add lockdep_assert_held and more comments for text_mutex.
-> > > >
-> > > > Changes in v4:
-> > > >  - Use NOKPROBE_SYMBOL instead of __kprobe annotation
-> > > >  - Use text_mutex instead of patch_lock
-> > > >  - Remove 'riscv_' prefix of function name
-> > > >
-> > > > Changes in v3:
-> > > >  - Fix build error on nommu configuration. We already support nommu=
- on
-> > > >    RISC-V, so we should consider nommu case and test not only rv32/=
-64,
-> > > >    but also nommu.
-> > > >
-> > > > Changes in v2:
-> > > >  - Use _data to specify the start of data section with write permis=
-sion.
-> > > >  - Change ftrace patch text implementaion.
-> > > >  - Separate DEBUG_WX patch to another patchset.
-> > > >
-> > > > Zong Li (9):
-> > > >   riscv: add macro to get instruction length
-> > > >   riscv: introduce interfaces to patch kernel code
-> > > >   riscv: patch code by fixmap mapping
-> > > >   riscv: add ARCH_HAS_SET_MEMORY support
-> > > >   riscv: add ARCH_HAS_SET_DIRECT_MAP support
-> > > >   riscv: add ARCH_SUPPORTS_DEBUG_PAGEALLOC support
-> > > >   riscv: move exception table immediately after RO_DATA
-> > > >   riscv: add alignment for text, rodata and data sections
-> > > >   riscv: add STRICT_KERNEL_RWX support
-> > > >
-> > > >  arch/riscv/Kconfig                  |   6 +
-> > > >  arch/riscv/include/asm/bug.h        |   8 ++
-> > > >  arch/riscv/include/asm/fixmap.h     |   2 +
-> > > >  arch/riscv/include/asm/patch.h      |  12 ++
-> > > >  arch/riscv/include/asm/set_memory.h |  48 +++++++
-> > > >  arch/riscv/kernel/Makefile          |   4 +-
-> > > >  arch/riscv/kernel/ftrace.c          |  26 ++--
-> > > >  arch/riscv/kernel/patch.c           | 128 +++++++++++++++++++
-> > > >  arch/riscv/kernel/traps.c           |   3 +-
-> > > >  arch/riscv/kernel/vmlinux.lds.S     |  11 +-
-> > > >  arch/riscv/mm/Makefile              |   2 +-
-> > > >  arch/riscv/mm/init.c                |  44 +++++++
-> > > >  arch/riscv/mm/pageattr.c            | 187 ++++++++++++++++++++++++=
-++++
-> > > >  13 files changed, 466 insertions(+), 15 deletions(-)
-> > > >  create mode 100644 arch/riscv/include/asm/patch.h
-> > > >  create mode 100644 arch/riscv/include/asm/set_memory.h
-> > > >  create mode 100644 arch/riscv/kernel/patch.c
-> > > >  create mode 100644 arch/riscv/mm/pageattr.c
-> > >
-> > > Looks like there are quite a few conflicts here.  Do you mind re-spin=
-ning the
-> > > patch set for me?  It's a bit early to spin off for-next right now so=
- there
-> > > might be some more conflicts, but hopefully not too many.
-> > >
-> >
-> > Sure, let me rebase it and send the next version. Thanks.
->
-> This series is already merged in Linux kernel and it is available
-> in Linux-5.7-rc2.
->
-> I don't see the point in rebasing this series or commenting on
-> this series.
->
-> If you have fixes then send as separate patches based on
-> latest Linux-5.7-rcX release.
->
+On Mon, Apr 20, 2020 at 02:40:05PM -0700, Mike Kravetz wrote:
+> On 4/20/20 1:29 PM, Anders Roxell wrote:
+> > On Mon, 20 Apr 2020 at 20:23, Mike Kravetz <mike.kravetz@oracle.com> wrote:
+> >> On 4/20/20 8:34 AM, Qian Cai wrote:
+> >>>
+> >>> Reverted this series fixed many undefined behaviors on arm64 with the config,
+> >> While rearranging the code (patch 3 in series), I made the incorrect
+> >> assumption that CONT_XXX_SIZE == (1UL << CONT_XXX_SHIFT).  However,
+> >> this is not the case.  Does the following patch fix these issues?
+> >>
+> >> From b75cb4a0852e208bee8c4eb347dc076fcaa88859 Mon Sep 17 00:00:00 2001
+> >> From: Mike Kravetz <mike.kravetz@oracle.com>
+> >> Date: Mon, 20 Apr 2020 10:41:18 -0700
+> >> Subject: [PATCH] arm64/hugetlb: fix hugetlb initialization
+> >>
+> >> When calling hugetlb_add_hstate() to initialize a new hugetlb size,
+> >> be sure to use correct huge pages size order.
+> >>
+> >> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
+> >> ---
+> >>  arch/arm64/mm/hugetlbpage.c | 8 ++++----
+> >>  1 file changed, 4 insertions(+), 4 deletions(-)
+> >>
+> >> diff --git a/arch/arm64/mm/hugetlbpage.c b/arch/arm64/mm/hugetlbpage.c
+> >> index 9ca840527296..a02411a1f19a 100644
+> >> --- a/arch/arm64/mm/hugetlbpage.c
+> >> +++ b/arch/arm64/mm/hugetlbpage.c
+> >> @@ -453,11 +453,11 @@ void huge_ptep_clear_flush(struct vm_area_struct *vma,
+> >>  static int __init hugetlbpage_init(void)
+> >>  {
+> >>  #ifdef CONFIG_ARM64_4K_PAGES
+> >> -       hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
+> >> +       hugetlb_add_hstate(ilog2(PUD_SIZE) - PAGE_SHIFT);
+> >>  #endif
+> >> -       hugetlb_add_hstate(CONT_PMD_SHIFT - PAGE_SHIFT);
+> >> -       hugetlb_add_hstate(PMD_SHIFT - PAGE_SHIFT);
+> >> -       hugetlb_add_hstate(CONT_PTE_SHIFT - PAGE_SHIFT);
+> >> +       hugetlb_add_hstate(ilog2(CONT_PMD_SIZE) - PAGE_SHIFT);
+> >> +       hugetlb_add_hstate(ilog2(PMD_SIZE) - PAGE_SHIFT);
+> >> +       hugetlb_add_hstate(ilog2(CONT_PTE_SIZE) - PAGE_SHIFT);
+> >>
+> >>         return 0;
+> >>  }
+> > 
+> > I build this for an arm64 kernel and ran it in qemu and it worked.
+> 
+> Thanks for testing Anders!
+> 
+> Will, here is an updated version of the patch based on your suggestion.
+> I added the () for emphasis but that may just be noise for some.  Also,
+> the naming differences and values for CONT_PTE may make some people
+> look twice.  Not sure if being consistent here helps?
 
-Yes, I would send the separate patches for the difference from the
-merged version. Thanks.
+Cheers, thanks for this. I think being consistent is worthwhile, as it's
+the definitions themselves that are weird and we can conceivably clean
+that up as a separate patch.
 
-> Regards,
-> Anup
+So,
+
+Acked-by: Will Deacon <will@kernel.org>
+
+Looks like Andrew already picked it up (thanks!)
+
+Thanks,
+
+Will
 
