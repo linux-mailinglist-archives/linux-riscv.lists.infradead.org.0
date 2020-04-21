@@ -2,56 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D377D1B1F55
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 08:59:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 732D81B1FBA
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 09:24:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6P8shjSruP+Jbh0ZqugzN5fC26tEIX5ILDg3M+VmMhc=; b=Tvc3XYxsH2CftIanxXGWdl8Ln
-	oy2PPEnBbxsfAHNmX5Tq9j4FbmLTcdNBJwYcOd4hsKBpoYJs2rFhG7u5AmBa6xKeCuTVWCkQKKKMH
-	cFoyrrX7CrMFbSXpNpxMrlDATW9HZZHfjM+8kSxjXNnRh8Ykm6G9thICmN6VcxcBFmODrLvkYHZvs
-	znbkqtbpU7HpVkURdsCHT5npLFd2FakvE8JfnvjxChNTeOM7XQHhIjhk9/R3D3H4c0Mb8bhlPh4QV
-	Z/BMJq7Y6fRgThCiABps+rkeki1tF4g9eHA0cyY335R+inUMr50QA7Iqu8e31f8wnIae8C57FwsK6
-	CS3d4FmXA==;
+	 bh=NVh2e6/ifTcXX26EUZlsLHFUZWJInI/s/oH8jutqP40=; b=syczsUxgsDKXVgDbkLDyhm/ou
+	S2ODPP4aqHvaSWVPEAc5kUZw65BidewHSm2caEjwNW5FqmwMg91y+ajvcRJHEVSQd0KZqiL4sxntt
+	xs9V4OoInTovLXa+LNeA1k3u+leis1BJNx7OdFd+IyQvZbzKuoNFuDYHaYbTWMOVhyPst0jOocv/q
+	4u76YQaagw/KPbdQJyLSH85mku1HiBC6CFp6OSwFQs34U7yOzO0zrG5acn+lRWi+eEX6UMeEQgHud
+	eP1r01UNZ9FCUbwMY7lOJo6k+mSxTA/X3u/kNcWvyjO7GVCU0v+b6A7tDEHpf+iwCcvAPJJiasPQb
+	pBD7u6+xQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQmrx-00018U-5T; Tue, 21 Apr 2020 06:58:57 +0000
+	id 1jQnGW-00043i-O3; Tue, 21 Apr 2020 07:24:20 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQmrm-0000yu-9V; Tue, 21 Apr 2020 06:58:47 +0000
-Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B1A8C206A5;
- Tue, 21 Apr 2020 06:58:40 +0000 (UTC)
+ id 1jQnGT-00042d-4O
+ for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 07:24:19 +0000
+Received: from mail-io1-f52.google.com (mail-io1-f52.google.com
+ [209.85.166.52])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 510A82074B
+ for <linux-riscv@lists.infradead.org>; Tue, 21 Apr 2020 07:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587452325;
- bh=zSEWmKynQKWmz0IUSm5ihu6tEO3dWhXZaB1lMRy7jqQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=u/UKJNZHEKIupjB7ZBsUtiiYe7I6nCSpdDQbmHIZGClUxVmUlZIUfiPEZIzRHYUn6
- g6qnj51G9uRyRFpu8kN44be1pro4HTNJ141yDBBMvK2ulYFktfLaQWDGM/4efuHYdD
- p/+dw+DK48euKA47LcgpoqVY6ox6mMphLQl6q9NI=
-Date: Tue, 21 Apr 2020 07:58:37 +0100
-From: Will Deacon <will@kernel.org>
-To: Mike Kravetz <mike.kravetz@oracle.com>
-Subject: Re: [PATCH v3 0/4] Clean up hugetlb boot command line processing
-Message-ID: <20200421065836.GA14448@willie-the-truck>
-References: <20200417185049.275845-1-mike.kravetz@oracle.com>
- <5E312000-05D8-4C5D-A7C0-DDDE1842CB0E@lca.pw>
- <4c36c6ce-3774-78fa-abc4-b7346bf24348@oracle.com>
- <CADYN=9+=tCDmddTYGY44onvrzbg7yrbacMDSxd4hhD+=b=Yeiw@mail.gmail.com>
- <86333853-0648-393f-db96-d581ee114d2b@oracle.com>
+ s=default; t=1587453856;
+ bh=6zceOSWqwAhK0DKj/24rioNk8lT8HlLw+8jDXzMcwu4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=ZhKfsthw72RYzNNwt/UQWcOXo5c6OTyhBhIs+q+IZ3lQ/X8hwX/9GVV9KVKGKdZky
+ ttGLRzjR4PGtnOMUEmEfP+DmkjqbBPpl981HAjr8bk/B7mpWg9hKApfYRHTpQkv5AW
+ BStXSzf/nkAbo2uRyrnWwz4e7+4yyxwy1oL+CkS8=
+Received: by mail-io1-f52.google.com with SMTP id o127so13995803iof.0
+ for <linux-riscv@lists.infradead.org>; Tue, 21 Apr 2020 00:24:16 -0700 (PDT)
+X-Gm-Message-State: AGi0PuY0lGkYRAejind9g2d1TorMVuArlo8OkCUWzjWzZm5Ua8Vg2PA4
+ Z03w4iBnWxXu6eLzbKIfPeZvP+SWapRvCMsfWW8=
+X-Google-Smtp-Source: APiQypLLHbqrAD1vb/WetErR87p9iw/49ROjWxRdn0kjV+DQlfDNrQQnbn+LbFZuM8xMBV08/FbGIw1Y0KIeou/Aw6Y=
+X-Received: by 2002:a6b:5904:: with SMTP id n4mr19828247iob.142.1587453855746; 
+ Tue, 21 Apr 2020 00:24:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <86333853-0648-393f-db96-d581ee114d2b@oracle.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20200421033336.9663-1-atish.patra@wdc.com>
+In-Reply-To: <20200421033336.9663-1-atish.patra@wdc.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Tue, 21 Apr 2020 09:24:04 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXEXTq8RhD-AM4i3ZmXRcLDTW8waNDbWNa0V8V1nz4zb_A@mail.gmail.com>
+Message-ID: <CAMj1kXEXTq8RhD-AM4i3ZmXRcLDTW8waNDbWNa0V8V1nz4zb_A@mail.gmail.com>
+Subject: Re: [v4 PATCH 0/3] Add UEFI support for RISC-V
+To: Atish Patra <atish.patra@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_235846_370042_EE2F997E 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20200421_002417_211394_8B0E484A 
+X-CRM114-Status: GOOD (  23.28  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -80,92 +84,101 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
- Linux-MM <linux-mm@kvack.org>, Paul Mackerras <paulus@samba.org>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Mina Almasry <almasrymina@google.com>, linux-s390@vger.kernel.org,
- Anders Roxell <anders.roxell@linaro.org>, Jonathan Corbet <corbet@lwn.net>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Vasily Gorbik <gor@linux.ibm.com>, Qian Cai <cai@lca.pw>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Christophe Leroy <christophe.leroy@c-s.fr>,
- Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- "David S.Miller" <davem@davemloft.net>
+Cc: linux-efi <linux-efi@vger.kernel.org>,
+ Heinrich Schuchardt <xypron.glpk@gmx.de>,
+ Masahiro Yamada <masahiroy@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Apr 20, 2020 at 02:40:05PM -0700, Mike Kravetz wrote:
-> On 4/20/20 1:29 PM, Anders Roxell wrote:
-> > On Mon, 20 Apr 2020 at 20:23, Mike Kravetz <mike.kravetz@oracle.com> wrote:
-> >> On 4/20/20 8:34 AM, Qian Cai wrote:
-> >>>
-> >>> Reverted this series fixed many undefined behaviors on arm64 with the config,
-> >> While rearranging the code (patch 3 in series), I made the incorrect
-> >> assumption that CONT_XXX_SIZE == (1UL << CONT_XXX_SHIFT).  However,
-> >> this is not the case.  Does the following patch fix these issues?
-> >>
-> >> From b75cb4a0852e208bee8c4eb347dc076fcaa88859 Mon Sep 17 00:00:00 2001
-> >> From: Mike Kravetz <mike.kravetz@oracle.com>
-> >> Date: Mon, 20 Apr 2020 10:41:18 -0700
-> >> Subject: [PATCH] arm64/hugetlb: fix hugetlb initialization
-> >>
-> >> When calling hugetlb_add_hstate() to initialize a new hugetlb size,
-> >> be sure to use correct huge pages size order.
-> >>
-> >> Signed-off-by: Mike Kravetz <mike.kravetz@oracle.com>
-> >> ---
-> >>  arch/arm64/mm/hugetlbpage.c | 8 ++++----
-> >>  1 file changed, 4 insertions(+), 4 deletions(-)
-> >>
-> >> diff --git a/arch/arm64/mm/hugetlbpage.c b/arch/arm64/mm/hugetlbpage.c
-> >> index 9ca840527296..a02411a1f19a 100644
-> >> --- a/arch/arm64/mm/hugetlbpage.c
-> >> +++ b/arch/arm64/mm/hugetlbpage.c
-> >> @@ -453,11 +453,11 @@ void huge_ptep_clear_flush(struct vm_area_struct *vma,
-> >>  static int __init hugetlbpage_init(void)
-> >>  {
-> >>  #ifdef CONFIG_ARM64_4K_PAGES
-> >> -       hugetlb_add_hstate(PUD_SHIFT - PAGE_SHIFT);
-> >> +       hugetlb_add_hstate(ilog2(PUD_SIZE) - PAGE_SHIFT);
-> >>  #endif
-> >> -       hugetlb_add_hstate(CONT_PMD_SHIFT - PAGE_SHIFT);
-> >> -       hugetlb_add_hstate(PMD_SHIFT - PAGE_SHIFT);
-> >> -       hugetlb_add_hstate(CONT_PTE_SHIFT - PAGE_SHIFT);
-> >> +       hugetlb_add_hstate(ilog2(CONT_PMD_SIZE) - PAGE_SHIFT);
-> >> +       hugetlb_add_hstate(ilog2(PMD_SIZE) - PAGE_SHIFT);
-> >> +       hugetlb_add_hstate(ilog2(CONT_PTE_SIZE) - PAGE_SHIFT);
-> >>
-> >>         return 0;
-> >>  }
-> > 
-> > I build this for an arm64 kernel and ran it in qemu and it worked.
-> 
-> Thanks for testing Anders!
-> 
-> Will, here is an updated version of the patch based on your suggestion.
-> I added the () for emphasis but that may just be noise for some.  Also,
-> the naming differences and values for CONT_PTE may make some people
-> look twice.  Not sure if being consistent here helps?
+On Tue, 21 Apr 2020 at 05:34, Atish Patra <atish.patra@wdc.com> wrote:
+>
+> This series adds UEFI support for RISC-V. Currently, only boot time
+> services have been added. Runtime services will be added in a separate
+> series. This series depends on some core EFI patches
+> present in current in efi-next and following other patches.
+>
+> U-Boot: Adds the boot hartid under chosen node.
+> https://lists.denx.de/pipermail/u-boot/2020-April/405726.html
+>
+> Linux kernel: 5.7-rc1
+>
+> OpenSBI: master
+>
+> Patch 1 just moves arm-stub code to a generic code so that it can be used
+> across different architecture.
+>
+> Patch 3 adds fixmap bindings so that CONFIG_EFI can be compiled and we do not
+> have create separate config to enable boot time services.
+> As runtime services are not enabled at this time, full generic early ioremap
+> support is also not added in this series.
+>
+> Patch 4 and 5 adds the PE/COFF header and EFI stub code support for RISC-V
+> respectively.
+>
+> The patches can also be found in following git repo.
+>
+> https://github.com/atishp04/linux/tree/wip_uefi_riscv_v4
+>
+> The patches have been verified on Qemu using bootefi command in U-Boot.
+>
+> Changes from v3->v4:
+> 1. Rebased on top of efi-next.
+> 2. Dropped patch 1 & 2 from this series as it is already queued in efi-next.
+> Changes from v2->v3:
+> 3. Improved handle_kernel_image() for RISC-V.
+>
 
-Cheers, thanks for this. I think being consistent is worthwhile, as it's
-the definitions themselves that are weird and we can conceivably clean
-that up as a separate patch.
+Thanks Atish. This looks nice and simple now.
 
-So,
+I will need an ack from the RISC-V maintainers on these, and it is up
+to them to consider whether the changes to core kconfigs and makefiles
+are likely to cause trouble or not. If so, I am happy to work out a
+way to merge this via a shared stable branch.
 
-Acked-by: Will Deacon <will@kernel.org>
 
-Looks like Andrew already picked it up (thanks!)
 
-Thanks,
-
-Will
+> Changes from v1->v2:
+> 1. Rebased on 5.7-rc1.
+> 2. Fixed minor typos and removed redundant macros/comments.
+>
+> Changes from previous version:
+> 1. Renamed to the generic efi stub macro.
+> 2. Address all redundant comments.
+> 3. Supported EFI kernel image with normal booti command.
+> 4. Removed runtime service related macro defines.
+>
+> Atish Patra (3):
+> RISC-V: Define fixmap bindings for generic early ioremap support
+> RISC-V: Add PE/COFF header for EFI stub
+> RISC-V: Add EFI stub support.
+>
+> arch/riscv/Kconfig                        |  21 +++++
+> arch/riscv/Makefile                       |   1 +
+> arch/riscv/configs/defconfig              |   1 +
+> arch/riscv/include/asm/Kbuild             |   1 +
+> arch/riscv/include/asm/efi.h              |  44 +++++++++
+> arch/riscv/include/asm/fixmap.h           |  18 ++++
+> arch/riscv/include/asm/io.h               |   1 +
+> arch/riscv/include/asm/sections.h         |  13 +++
+> arch/riscv/kernel/Makefile                |   4 +
+> arch/riscv/kernel/efi-header.S            |  99 ++++++++++++++++++++
+> arch/riscv/kernel/head.S                  |  16 ++++
+> arch/riscv/kernel/image-vars.h            |  53 +++++++++++
+> arch/riscv/kernel/vmlinux.lds.S           |  20 +++-
+> drivers/firmware/efi/Kconfig              |   2 +-
+> drivers/firmware/efi/libstub/Makefile     |  10 ++
+> drivers/firmware/efi/libstub/riscv-stub.c | 106 ++++++++++++++++++++++
+> 16 files changed, 407 insertions(+), 3 deletions(-)
+> create mode 100644 arch/riscv/include/asm/efi.h
+> create mode 100644 arch/riscv/include/asm/sections.h
+> create mode 100644 arch/riscv/kernel/efi-header.S
+> create mode 100644 arch/riscv/kernel/image-vars.h
+> create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
+>
+> --
+> 2.24.0
+>
 
