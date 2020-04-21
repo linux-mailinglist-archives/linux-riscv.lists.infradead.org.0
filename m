@@ -2,75 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B17421B1D5B
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 06:23:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13B8A1B1D96
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 06:30:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JaieFtrynku5iULCPSegJfHOzOMnZqOFIqChb4nr18M=; b=Glj4iUG9a07j0IZjMLNP1jLh6
-	UPC5eJ3L8nD2btEYBs2OCxDXPOxT8EEZB3DlOo8JCQMCnablU5mz5AJbjTm2FMbUrTTWTSmw4pJgv
-	bgNkiRAdTKI2xVOY6QckVKUEvPFYWEmNevKmhCKO+btzKnPooVttSW3pawLjUzOzchytLAatyp4uf
-	0YOi/4fOdoC1gZYwePygnOOWWfkMeAh+TK08HaAwCut0p2qY7CBv9eEVrZMun3hu6RkFh+bBRqGhY
-	0qbShyS8GwHMSj5oxN6rxy0lwQT5s/UG531NkK+ImnFUlmlbKPWtSz038N74WpvVty55IPUgBNLv3
-	5LM5Db3oA==;
+	 bh=JaRV6n7+ccaKT0v01yd0l6B+jTgUwBzSELbdheC0Jd8=; b=Tj2YkDUtocIwO75MF5Bn7K9UU
+	RblaowVe7+xRUH38talnqItMyFH+E1zSHzKgbdL5F1TclgY6vaK7tLj5L/Ksrs4lUMLP6m/MBoAZP
+	JCTBcZXcTBPxHVCuT0RqhCPIMi6ABTM/UfeVyoc82x0vb9VI89efU1YDDxXGtsymw0fnx+BoaQuWP
+	A48Z5B4VLmjnvPMdUjLp56wTVz5K1zLiGCGhY/qP6BUxn0nkw99dUmOMTDdEmpOjczrjoIp96UnSh
+	kE3wupyOJAVRq9327/BtMTHMXfGA/d+ZH8tCgSw/L+55t2zDIetw8Sb0YC1DgYC9IDNzvtxvAcdgu
+	6QUJ9c75A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQkRk-0007Rs-JL; Tue, 21 Apr 2020 04:23:44 +0000
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]
- helo=us-smtp-delivery-1.mimecast.com)
+	id 1jQkYF-0005ce-7h; Tue, 21 Apr 2020 04:30:27 +0000
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQkRg-0007PT-2L
- for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 04:23:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587443018;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=JaieFtrynku5iULCPSegJfHOzOMnZqOFIqChb4nr18M=;
- b=hou0/G3hjxMsovSWTbA2YtOzZvfxbmIVq++obiJzXe+JaA2w3K/YUr5pQYjTGBRZHepNFO
- K3cXQmD5K3Umt/fbiy2kZKWj1P+XnM83ArzxarOGGxKXq3e5kFhzBfiHEAZoZa+EJoNlqF
- V/X3a3hk7M0NilfngHqRKDkIz7kpHoE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-30-7AL0EMq3NX6ay4HJGU29Lg-1; Tue, 21 Apr 2020 00:23:36 -0400
-X-MC-Unique: 7AL0EMq3NX6ay4HJGU29Lg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ABAEF1005509;
- Tue, 21 Apr 2020 04:23:23 +0000 (UTC)
-Received: from localhost (ovpn-12-34.pek2.redhat.com [10.72.12.34])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C21715DA76;
- Tue, 21 Apr 2020 04:23:20 +0000 (UTC)
-Date: Tue, 21 Apr 2020 12:23:16 +0800
-From: Baoquan He <bhe@redhat.com>
-To: Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 03/21] mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option
-Message-ID: <20200421042316.GQ4247@MiWiFi-R3L-srv>
-References: <20200412194859.12663-1-rppt@kernel.org>
- <20200412194859.12663-4-rppt@kernel.org>
+ id 1jQkYC-0005bt-FM
+ for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 04:30:25 +0000
+Received: by mail-ej1-x644.google.com with SMTP id re23so9916382ejb.4
+ for <linux-riscv@lists.infradead.org>; Mon, 20 Apr 2020 21:30:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JaRV6n7+ccaKT0v01yd0l6B+jTgUwBzSELbdheC0Jd8=;
+ b=M+nksk/9z+RBAC/I+whdt3ySMp6DprA4BX9reQA7ke7Rsc7Z+/wcR9fz6hLIKMACy0
+ rfjojAJJNUgt0MSj4Zt86k6z/lqrP2ZmVeo8C47lOEOcFHZTMsdszEdjvkMZ4AsWbjZh
+ D2yG/CmZkwds3D4UdU7ep8UJTORTr005UADm4mucoywmSXm4j/CgV2rTcc8lm3jVTJWh
+ 7qSnStnVOeEhOkAjqGz/s/WYA9KHz0n5Ctx8Oj6oegvZ4GNGS/SX+QrgZNI1Nnt6+13Z
+ iaoAsdxUH76ViyzBVepub1KNUmaaGTVbeYD9/YHXKDFWlcBro4g908b2QhkHpqw0AulI
+ xtQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JaRV6n7+ccaKT0v01yd0l6B+jTgUwBzSELbdheC0Jd8=;
+ b=XjJck1BlfhWh6nApjG88Szk0fEInZeWDBTLGw+Z8nuKQJexpAPl6ylQ69fAoSWsI6j
+ eaknT4PDdVYlAn6bsIEwQWTO7NNjv+EUDSCntYtTS5Yx+mr5Z+AiLRV2CIHgh2dmMEQy
+ f55ultb0DCsRQGmNKYX3liBYdOu4UQC9lm4BK9ExMn0meAw5De7PM54gxEo3Mgd0hCLA
+ ORbe5z8vX//GCfkahOhgbTZ7GzK6w0x4nxwbC8K5yOeT5PRdpwJeE6+YSA4WEwqhzY4s
+ Sj47RN/S3J5+Y+w+mEboxjzeaYUE2btGsDw644YgdF9SnzvsH8MtzPI7V2reaXFeU4KI
+ 1Jdg==
+X-Gm-Message-State: AGi0PuYcYeEVRkyWCuxZn6IIhpEoZ+nkMMQODyTyKZ4ZetirawFnPKrn
+ uWQS65Z0h9BcxnGwD9jDAgQODO6VyV2t8quHw58=
+X-Google-Smtp-Source: APiQypIMD70EtNdPatK85IUSaKOTriZ1+IxiJ4MjqkYjKGaWAZbX9pp08uyo1mYe6AKdkLOTgUPU0VUJcjgu3hKmZzw=
+X-Received: by 2002:a17:906:54cd:: with SMTP id
+ c13mr18570001ejp.307.1587443422405; 
+ Mon, 20 Apr 2020 21:30:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200412194859.12663-4-rppt@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+References: <20200421002804.5118-1-luke.r.nels@gmail.com>
+In-Reply-To: <20200421002804.5118-1-luke.r.nels@gmail.com>
+From: Xi Wang <xi.wang@gmail.com>
+Date: Mon, 20 Apr 2020 21:29:46 -0700
+Message-ID: <CAKU6vyYZqw2JgPXwQUps7SMAcT=7PRaa37yXnHCbCoK0Yt6D5Q@mail.gmail.com>
+Subject: Re: [PATCH bpf] bpf, riscv: Fix tail call count off by one in RV32
+ BPF JIT
+To: Luke Nelson <lukenels@cs.washington.edu>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_212340_266511_AF17F499 
-X-CRM114-Status: GOOD (  28.94  )
+X-CRM114-CacheID: sfid-20200420_213024_540326_A89E6929 
+X-CRM114-Status: GOOD (  13.84  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [205.139.110.61 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [xi.wang[at]gmail.com]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -78,7 +80,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,521 +91,50 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- linux-csky@vger.kernel.org, linux-parisc@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, Greg Ungerer <gerg@linux-m68k.org>,
- linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-snps-arc@lists.infradead.org, linux-c6x-dev@linux-c6x.org,
- Brian Cain <bcain@codeaurora.org>, Jonathan Corbet <corbet@lwn.net>,
- linux-sh@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
- Helge Deller <deller@gmx.de>, x86@kernel.org,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Mike Rapoport <rppt@linux.ibm.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
- linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
- Matt Turner <mattst88@gmail.com>, linux-mips@vger.kernel.org,
- uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
- linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
- linux-m68k@lists.linux-m68k.org, Tony Luck <tony.luck@intel.com>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- Hoan Tran <Hoan@os.amperecomputing.com>, Michal Simek <monstr@monstr.eu>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, openrisc@lists.librecores.org,
- Richard Weinberger <richard@nod.at>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Daniel Borkmann <daniel@iogearbox.net>, Luke Nelson <luke.r.nels@gmail.com>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, KP Singh <kpsingh@chromium.org>,
+ Yonghong Song <yhs@fb.com>, bpf@vger.kernel.org,
+ Andrii Nakryiko <andriin@fb.com>, Martin KaFai Lau <kafai@fb.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 04/12/20 at 10:48pm, Mike Rapoport wrote:
-> From: Mike Rapoport <rppt@linux.ibm.com>
-> 
-> The CONFIG_HAVE_MEMBLOCK_NODE_MAP is used to differentiate initialization
-> of nodes and zones structures between the systems that have region to node
-> mapping in memblock and those that don't.
-> 
-> Currently all the NUMA architectures enable this option and for the
-> non-NUMA systems we can presume that all the memory belongs to node 0 and
-> therefore the compile time configuration option is not required.
-> 
-> The remaining few architectures that use DISCONTIGMEM without NUMA are
-> easily updated to use memblock_add_node() instead of memblock_add() and
-> thus have proper correspondence of memblock regions to NUMA nodes.
-> 
-> Still, free_area_init_node() must have a backward compatible version
-> because its semantics with and without CONFIG_HAVE_MEMBLOCK_NODE_MAP is
-> different. Once all the architectures will use the new semantics, the
-> entire compatibility layer can be dropped.
-> 
-> To avoid addition of extra run time memory to store node id for
-> architectures that keep memblock but have only a single node, the node id
-> field of the memblock_region is guarded by CONFIG_NEED_MULTIPLE_NODES and
-> the corresponding accessors presume that in those cases it is always 0.
-> 
-> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
+On Mon, Apr 20, 2020 at 5:28 PM Luke Nelson <lukenels@cs.washington.edu> wrote:
+> This patch fixes an off by one error in the RV32 JIT handling for BPF
+> tail call. Currently, the code decrements TCC before checking if it
+> is less than zero. This limits the maximum number of tail calls to 32
+> instead of 33 as in other JITs. The fix is to instead check the old
+> value of TCC before decrementing.
+>
+> Fixes: 5f316b65e99f ("riscv, bpf: Add RV32G eBPF JIT")
+> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
 > ---
-...
-> diff --git a/include/linux/memblock.h b/include/linux/memblock.h
-> index 6bc37a731d27..45abfc54da37 100644
-> --- a/include/linux/memblock.h
-> +++ b/include/linux/memblock.h
-> @@ -50,7 +50,7 @@ struct memblock_region {
->  	phys_addr_t base;
->  	phys_addr_t size;
->  	enum memblock_flags flags;
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  	int nid;
->  #endif
->  };
-> @@ -215,7 +215,6 @@ static inline bool memblock_is_nomap(struct memblock_region *m)
->  	return m->flags & MEMBLOCK_NOMAP;
->  }
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  int memblock_search_pfn_nid(unsigned long pfn, unsigned long *start_pfn,
->  			    unsigned long  *end_pfn);
->  void __next_mem_pfn_range(int *idx, int nid, unsigned long *out_start_pfn,
-> @@ -234,7 +233,6 @@ void __next_mem_pfn_range(int *idx, int nid, unsigned long *out_start_pfn,
->  #define for_each_mem_pfn_range(i, nid, p_start, p_end, p_nid)		\
->  	for (i = -1, __next_mem_pfn_range(&i, nid, p_start, p_end, p_nid); \
->  	     i >= 0; __next_mem_pfn_range(&i, nid, p_start, p_end, p_nid))
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
->  
->  #ifdef CONFIG_DEFERRED_STRUCT_PAGE_INIT
->  void __next_mem_pfn_range_in_zone(u64 *idx, struct zone *zone,
-> @@ -310,10 +308,10 @@ void __next_mem_pfn_range_in_zone(u64 *idx, struct zone *zone,
->  	for_each_mem_range_rev(i, &memblock.memory, &memblock.reserved,	\
->  			       nid, flags, p_start, p_end, p_nid)
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  int memblock_set_node(phys_addr_t base, phys_addr_t size,
->  		      struct memblock_type *type, int nid);
->  
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  static inline void memblock_set_region_node(struct memblock_region *r, int nid)
->  {
->  	r->nid = nid;
-> @@ -332,7 +330,7 @@ static inline int memblock_get_region_node(const struct memblock_region *r)
->  {
->  	return 0;
->  }
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> +#endif /* CONFIG_NEED_MULTIPLE_NODES */
->  
->  /* Flags for memblock allocation APIs */
->  #define MEMBLOCK_ALLOC_ANYWHERE	(~(phys_addr_t)0)
-> diff --git a/include/linux/mm.h b/include/linux/mm.h
-> index a404026d14d4..5903bbbdb336 100644
-> --- a/include/linux/mm.h
-> +++ b/include/linux/mm.h
-> @@ -2344,9 +2344,8 @@ static inline unsigned long get_num_physpages(void)
->  	return phys_pages;
->  }
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  /*
-> - * With CONFIG_HAVE_MEMBLOCK_NODE_MAP set, an architecture may initialise its
-> + * Using memblock node mappings, an architecture may initialise its
->   * zones, allocate the backing mem_map and account for memory holes in a more
->   * architecture independent manner. This is a substitute for creating the
->   * zone_sizes[] and zholes_size[] arrays and passing them to
-> @@ -2367,9 +2366,6 @@ static inline unsigned long get_num_physpages(void)
->   * registered physical page range.  Similarly
->   * sparse_memory_present_with_active_regions() calls memory_present() for
->   * each range when SPARSEMEM is enabled.
-> - *
-> - * See mm/page_alloc.c for more information on each function exposed by
-> - * CONFIG_HAVE_MEMBLOCK_NODE_MAP.
->   */
->  extern void free_area_init_nodes(unsigned long *max_zone_pfn);
->  unsigned long node_map_pfn_alignment(void);
-> @@ -2384,13 +2380,9 @@ extern void free_bootmem_with_active_regions(int nid,
->  						unsigned long max_low_pfn);
->  extern void sparse_memory_present_with_active_regions(int nid);
->  
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> -
-> -#if !defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP) && \
-> -    !defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID)
-> +#ifndef CONFIG_NEED_MULTIPLE_NODES
->  static inline int early_pfn_to_nid(unsigned long pfn)
->  {
-> -	BUILD_BUG_ON(IS_ENABLED(CONFIG_NUMA));
->  	return 0;
->  }
->  #else
-> diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-> index 7b5b6eba402f..ffc2a3d6036b 100644
-> --- a/include/linux/mmzone.h
-> +++ b/include/linux/mmzone.h
-> @@ -874,7 +874,7 @@ extern int movable_zone;
->  #ifdef CONFIG_HIGHMEM
->  static inline int zone_movable_is_highmem(void)
->  {
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  	return movable_zone == ZONE_HIGHMEM;
->  #else
->  	return (ZONE_MOVABLE - 1) == ZONE_HIGHMEM;
+>  arch/riscv/net/bpf_jit_comp32.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/riscv/net/bpf_jit_comp32.c b/arch/riscv/net/bpf_jit_comp32.c
+> index 302934177760..11083d4d5f2d 100644
+> --- a/arch/riscv/net/bpf_jit_comp32.c
+> +++ b/arch/riscv/net/bpf_jit_comp32.c
+> @@ -770,12 +770,13 @@ static int emit_bpf_tail_call(int insn, struct rv_jit_context *ctx)
+>         emit_bcc(BPF_JGE, lo(idx_reg), RV_REG_T1, off, ctx);
+>
+>         /*
+> -        * if ((temp_tcc = tcc - 1) < 0)
+> +        * temp_tcc = tcc - 1;
+> +        * if (tcc < 0)
+>          *   goto out;
+>          */
+>         emit(rv_addi(RV_REG_T1, RV_REG_TCC, -1), ctx);
+>         off = (tc_ninsn - (ctx->ninsns - start_insn)) << 2;
+> -       emit_bcc(BPF_JSLT, RV_REG_T1, RV_REG_ZERO, off, ctx);
+> +       emit_bcc(BPF_JSLT, RV_REG_TCC, RV_REG_ZERO, off, ctx);
 
-If CONFIG_HIGHMEM is enabled, the above judgement is always true,
-wondering what's the purpose we have to do like this. It's not related
-to this patch though.
+Nice catch!
 
-> diff --git a/mm/Kconfig b/mm/Kconfig
-> index c1acc34c1c35..aaa5bdaa1c8a 100644
-> --- a/mm/Kconfig
-> +++ b/mm/Kconfig
-> @@ -126,9 +126,6 @@ config SPARSEMEM_VMEMMAP
->  	  pfn_to_page and page_to_pfn operations.  This is the most
->  	  efficient option when sufficient kernel resources are available.
->  
-> -config HAVE_MEMBLOCK_NODE_MAP
-> -	bool
-> -
->  config HAVE_MEMBLOCK_PHYS_MAP
->  	bool
->  
-> diff --git a/mm/memblock.c b/mm/memblock.c
-> index 43e2fd3006c1..743659d88fc4 100644
-> --- a/mm/memblock.c
-> +++ b/mm/memblock.c
-> @@ -620,7 +620,7 @@ static int __init_memblock memblock_add_range(struct memblock_type *type,
->  		 * area, insert that portion.
->  		 */
->  		if (rbase > base) {
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  			WARN_ON(nid != memblock_get_region_node(rgn));
->  #endif
->  			WARN_ON(flags != rgn->flags);
-> @@ -1197,7 +1197,6 @@ void __init_memblock __next_mem_range_rev(u64 *idx, int nid,
->  	*idx = ULLONG_MAX;
->  }
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  /*
->   * Common iterator interface used to define for_each_mem_pfn_range().
->   */
-> @@ -1247,6 +1246,7 @@ void __init_memblock __next_mem_pfn_range(int *idx, int nid,
->  int __init_memblock memblock_set_node(phys_addr_t base, phys_addr_t size,
->  				      struct memblock_type *type, int nid)
->  {
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  	int start_rgn, end_rgn;
->  	int i, ret;
->  
-> @@ -1258,9 +1258,10 @@ int __init_memblock memblock_set_node(phys_addr_t base, phys_addr_t size,
->  		memblock_set_region_node(&type->regions[i], nid);
->  
->  	memblock_merge_regions(type);
-> +#endif
->  	return 0;
->  }
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> +
->  #ifdef CONFIG_DEFERRED_STRUCT_PAGE_INIT
->  /**
->   * __next_mem_pfn_range_in_zone - iterator for for_each_*_range_in_zone()
-> @@ -1799,7 +1800,6 @@ bool __init_memblock memblock_is_map_memory(phys_addr_t addr)
->  	return !memblock_is_nomap(&memblock.memory.regions[i]);
->  }
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  int __init_memblock memblock_search_pfn_nid(unsigned long pfn,
->  			 unsigned long *start_pfn, unsigned long *end_pfn)
->  {
-> @@ -1814,7 +1814,6 @@ int __init_memblock memblock_search_pfn_nid(unsigned long pfn,
->  
->  	return memblock_get_region_node(&type->regions[mid]);
->  }
-> -#endif
->  
->  /**
->   * memblock_is_region_memory - check if a region is a subset of memory
-> @@ -1905,7 +1904,7 @@ static void __init_memblock memblock_dump(struct memblock_type *type)
->  		size = rgn->size;
->  		end = base + size - 1;
->  		flags = rgn->flags;
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  		if (memblock_get_region_node(rgn) != MAX_NUMNODES)
->  			snprintf(nid_buf, sizeof(nid_buf), " on node %d",
->  				 memblock_get_region_node(rgn));
-> diff --git a/mm/memory_hotplug.c b/mm/memory_hotplug.c
-> index fc0aad0bc1f5..e67dc501576a 100644
-> --- a/mm/memory_hotplug.c
-> +++ b/mm/memory_hotplug.c
-> @@ -1372,11 +1372,7 @@ check_pages_isolated_cb(unsigned long start_pfn, unsigned long nr_pages,
->  
->  static int __init cmdline_parse_movable_node(char *p)
->  {
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  	movable_node_enabled = true;
-> -#else
-> -	pr_warn("movable_node parameter depends on CONFIG_HAVE_MEMBLOCK_NODE_MAP to work properly\n");
-> -#endif
-
-Wondering if this change will impact anything. Before, those ARCHes with
-CONFIG_HAVE_MEMBLOCK_NODE_MAP support movable_node. With this patch
-applied, those ARCHes which don't support CONFIG_HAVE_MEMBLOCK_NODE_MAP
-can also have 'movable_node' specified in kernel cmdline.
-
->  	return 0;
->  }
->  early_param("movable_node", cmdline_parse_movable_node);
-> diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-> index 1ac775bfc9cf..4530e9cfd9f7 100644
-> --- a/mm/page_alloc.c
-> +++ b/mm/page_alloc.c
-> @@ -335,7 +335,6 @@ static unsigned long nr_kernel_pages __initdata;
->  static unsigned long nr_all_pages __initdata;
->  static unsigned long dma_reserve __initdata;
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  static unsigned long arch_zone_lowest_possible_pfn[MAX_NR_ZONES] __initdata;
->  static unsigned long arch_zone_highest_possible_pfn[MAX_NR_ZONES] __initdata;
->  static unsigned long required_kernelcore __initdata;
-
-Does it mean those ARCHes which don't support
-CONFIG_HAVE_MEMBLOCK_NODE_MAP before, will have 'kernelcore=' and
-'movablecore=' now, and will have MOVABLE zone?
-
-> @@ -348,7 +347,6 @@ static bool mirrored_kernelcore __meminitdata;
->  /* movable_zone is the "real" zone pages in ZONE_MOVABLE are taken from */
->  int movable_zone;
->  EXPORT_SYMBOL(movable_zone);
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
->  
->  #if MAX_NUMNODES > 1
->  unsigned int nr_node_ids __read_mostly = MAX_NUMNODES;
-> @@ -1499,8 +1497,7 @@ void __free_pages_core(struct page *page, unsigned int order)
->  	__free_pages(page, order);
->  }
->  
-> -#if defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID) || \
-> -	defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP)
-> +#ifdef CONFIG_NEED_MULTIPLE_NODES
->  
->  static struct mminit_pfnnid_cache early_pfnnid_cache __meminitdata;
->  
-> @@ -1542,7 +1539,7 @@ int __meminit early_pfn_to_nid(unsigned long pfn)
->  
->  	return nid;
->  }
-> -#endif
-> +#endif /* CONFIG_NEED_MULTIPLE_NODES */
->  
->  #ifdef CONFIG_NODES_SPAN_OTHER_NODES
->  /* Only safe to use early in boot when initialisation is single-threaded */
-> @@ -5924,7 +5921,6 @@ void __ref build_all_zonelists(pg_data_t *pgdat)
->  static bool __meminit
->  overlap_memmap_init(unsigned long zone, unsigned long *pfn)
->  {
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
->  	static struct memblock_region *r;
->  
->  	if (mirrored_kernelcore && zone == ZONE_MOVABLE) {
-> @@ -5940,7 +5936,6 @@ overlap_memmap_init(unsigned long zone, unsigned long *pfn)
->  			return true;
->  		}
->  	}
-> -#endif
->  	return false;
->  }
->  
-> @@ -6573,8 +6568,7 @@ static unsigned long __init zone_absent_pages_in_node(int nid,
->  	return nr_absent;
->  }
->  
-> -#else /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> -static inline unsigned long __init zone_spanned_pages_in_node(int nid,
-> +static inline unsigned long __init compat_zone_spanned_pages_in_node(int nid,
-
-Is it compact zone which has continuous memory region, and the
-compat here is typo? Or it's compatible zone? The name seems a little
-confusing, or I miss something.
-
->  					unsigned long zone_type,
->  					unsigned long node_start_pfn,
->  					unsigned long node_end_pfn,
-> @@ -6593,7 +6587,7 @@ static inline unsigned long __init zone_spanned_pages_in_node(int nid,
->  	return zones_size[zone_type];
->  }
->  
-> -static inline unsigned long __init zone_absent_pages_in_node(int nid,
-> +static inline unsigned long __init compat_zone_absent_pages_in_node(int nid,
->  						unsigned long zone_type,
->  						unsigned long node_start_pfn,
->  						unsigned long node_end_pfn,
-> @@ -6605,13 +6599,12 @@ static inline unsigned long __init zone_absent_pages_in_node(int nid,
->  	return zholes_size[zone_type];
->  }
->  
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> -
->  static void __init calculate_node_totalpages(struct pglist_data *pgdat,
->  						unsigned long node_start_pfn,
->  						unsigned long node_end_pfn,
->  						unsigned long *zones_size,
-> -						unsigned long *zholes_size)
-> +						unsigned long *zholes_size,
-> +						bool compat)
->  {
->  	unsigned long realtotalpages = 0, totalpages = 0;
->  	enum zone_type i;
-> @@ -6619,17 +6612,38 @@ static void __init calculate_node_totalpages(struct pglist_data *pgdat,
->  	for (i = 0; i < MAX_NR_ZONES; i++) {
->  		struct zone *zone = pgdat->node_zones + i;
->  		unsigned long zone_start_pfn, zone_end_pfn;
-> +		unsigned long spanned, absent;
->  		unsigned long size, real_size;
->  
-> -		size = zone_spanned_pages_in_node(pgdat->node_id, i,
-> -						  node_start_pfn,
-> -						  node_end_pfn,
-> -						  &zone_start_pfn,
-> -						  &zone_end_pfn,
-> -						  zones_size);
-> -		real_size = size - zone_absent_pages_in_node(pgdat->node_id, i,
-> -						  node_start_pfn, node_end_pfn,
-> -						  zholes_size);
-> +		if (compat) {
-> +			spanned = compat_zone_spanned_pages_in_node(
-> +						pgdat->node_id, i,
-> +						node_start_pfn,
-> +						node_end_pfn,
-> +						&zone_start_pfn,
-> +						&zone_end_pfn,
-> +						zones_size);
-> +			absent = compat_zone_absent_pages_in_node(
-> +						pgdat->node_id, i,
-> +						node_start_pfn,
-> +						node_end_pfn,
-> +						zholes_size);
-> +		} else {
-> +			spanned = zone_spanned_pages_in_node(pgdat->node_id, i,
-> +						node_start_pfn,
-> +						node_end_pfn,
-> +						&zone_start_pfn,
-> +						&zone_end_pfn,
-> +						zones_size);
-> +			absent = zone_absent_pages_in_node(pgdat->node_id, i,
-> +						node_start_pfn,
-> +						node_end_pfn,
-> +						zholes_size);
-> +		}
-> +
-> +		size = spanned;
-> +		real_size = size - absent;
-> +
->  		if (size)
->  			zone->zone_start_pfn = zone_start_pfn;
->  		else
-> @@ -6929,10 +6943,8 @@ static void __ref alloc_node_mem_map(struct pglist_data *pgdat)
->  	 */
->  	if (pgdat == NODE_DATA(0)) {
->  		mem_map = NODE_DATA(0)->node_mem_map;
-> -#if defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP) || defined(CONFIG_FLATMEM)
->  		if (page_to_pfn(mem_map) != pgdat->node_start_pfn)
->  			mem_map -= offset;
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
->  	}
->  #endif
->  }
-> @@ -6949,9 +6961,10 @@ static inline void pgdat_set_deferred_range(pg_data_t *pgdat)
->  static inline void pgdat_set_deferred_range(pg_data_t *pgdat) {}
->  #endif
->  
-> -void __init free_area_init_node(int nid, unsigned long *zones_size,
-> -				   unsigned long node_start_pfn,
-> -				   unsigned long *zholes_size)
-> +static void __init __free_area_init_node(int nid, unsigned long *zones_size,
-> +					 unsigned long node_start_pfn,
-> +					 unsigned long *zholes_size,
-> +					 bool compat)
->  {
->  	pg_data_t *pgdat = NODE_DATA(nid);
->  	unsigned long start_pfn = 0;
-> @@ -6963,16 +6976,16 @@ void __init free_area_init_node(int nid, unsigned long *zones_size,
->  	pgdat->node_id = nid;
->  	pgdat->node_start_pfn = node_start_pfn;
->  	pgdat->per_cpu_nodestats = NULL;
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> -	get_pfn_range_for_nid(nid, &start_pfn, &end_pfn);
-> -	pr_info("Initmem setup node %d [mem %#018Lx-%#018Lx]\n", nid,
-> -		(u64)start_pfn << PAGE_SHIFT,
-> -		end_pfn ? ((u64)end_pfn << PAGE_SHIFT) - 1 : 0);
-> -#else
-> -	start_pfn = node_start_pfn;
-> -#endif
-> +	if (!compat) {
-> +		get_pfn_range_for_nid(nid, &start_pfn, &end_pfn);
-> +		pr_info("Initmem setup node %d [mem %#018Lx-%#018Lx]\n", nid,
-> +			(u64)start_pfn << PAGE_SHIFT,
-> +			end_pfn ? ((u64)end_pfn << PAGE_SHIFT) - 1 : 0);
-> +	} else {
-> +		start_pfn = node_start_pfn;
-> +	}
->  	calculate_node_totalpages(pgdat, start_pfn, end_pfn,
-> -				  zones_size, zholes_size);
-> +				  zones_size, zholes_size, compat);
->  
->  	alloc_node_mem_map(pgdat);
->  	pgdat_set_deferred_range(pgdat);
-> @@ -6980,6 +6993,14 @@ void __init free_area_init_node(int nid, unsigned long *zones_size,
->  	free_area_init_core(pgdat);
->  }
->  
-> +void __init free_area_init_node(int nid, unsigned long *zones_size,
-> +				unsigned long node_start_pfn,
-> +				unsigned long *zholes_size)
-> +{
-> +	__free_area_init_node(nid, zones_size, node_start_pfn, zholes_size,
-> +			      true);
-> +}
-> +
->  #if !defined(CONFIG_FLAT_NODE_MEM_MAP)
->  /*
->   * Initialize all valid struct pages in the range [spfn, epfn) and mark them
-> @@ -7063,8 +7084,6 @@ static inline void __init init_unavailable_mem(void)
->  }
->  #endif /* !CONFIG_FLAT_NODE_MEM_MAP */
->  
-> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> -
->  #if MAX_NUMNODES > 1
->  /*
->   * Figure out the number of possible node ids.
-> @@ -7493,8 +7512,8 @@ void __init free_area_init_nodes(unsigned long *max_zone_pfn)
->  	init_unavailable_mem();
->  	for_each_online_node(nid) {
->  		pg_data_t *pgdat = NODE_DATA(nid);
-> -		free_area_init_node(nid, NULL,
-> -				find_min_pfn_for_node(nid), NULL);
-> +		__free_area_init_node(nid, NULL,
-> +				      find_min_pfn_for_node(nid), NULL, false);
->  
->  		/* Any memory on that node */
->  		if (pgdat->node_present_pages)
-> @@ -7559,8 +7578,6 @@ static int __init cmdline_parse_movablecore(char *p)
->  early_param("kernelcore", cmdline_parse_kernelcore);
->  early_param("movablecore", cmdline_parse_movablecore);
->  
-> -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> -
->  void adjust_managed_page_count(struct page *page, long count)
->  {
->  	atomic_long_add(count, &page_zone(page)->managed_pages);
-> -- 
-> 2.25.1
-> 
-
+Acked-by: Xi Wang <xi.wang@gmail.com>
 
