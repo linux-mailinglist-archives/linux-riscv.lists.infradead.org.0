@@ -2,84 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BF521B215E
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 10:18:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25FAA1B2167
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 10:18:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qCOK+HxEBj2bh5BFlG2zt/46BhY0DW9NF3gypZJ6i18=; b=XLpZvERakU08v8
-	ODtZRXNHwfXVUjTCcOjQdy3KyVu9JXSkl0TYjnWjcjwya8kZbHFi1pjy7t8a2OyG/gBuV9pkGpeXE
-	Sdmh6PbrZgQK3lzb7m/VmfupjCcnBNSfZNQ6AAGvtGD10v5Jfg/aJOvdh0g43UzVmiXBl08HCZ5de
-	8Us7zfnDDtr/NEyAOAXyqCvZG+TKQcYLEv+aJCYerWcm1Tt9SgyZOYNYQCkGW+jwPbakJ785o6l7n
-	B3kciFgnXvO6FPUFH5ID/d0gbn0jwJQtiOb4+GPdaGWeG8jozMa4j3A1J4Ye2ytoefJ+sO6kHxjQU
-	yVdGGRPnUoppyXgP1htA==;
+	List-Owner; bh=x1q1dIc4oOXMLuGJhmG405YIgkstM/KJ0hlFL0aEcs0=; b=F2D4UL5C+tPZUc
+	mYAM4q/JOjPB7d2m8V8sos+GzMkK/Y3UFh8ee3b3xsfVeJcTopEIRKJ1k7pekfonINMTmBik2OlTS
+	rUUFdeR+ndcOYy8W2hqgLrZSeLyJlElJLs/NWMVqr4DBYrZaNCEzOCQSzuqbfBnJCCOLba1o09b7w
+	NoWX+dYYmlpWOgRPYh5yEjoIHbru1cOmsbb/jplWPkObewHEFBOZqvvNS0n/YbRZKEjNCSfpnasux
+	TXTa4GJZhvr+hsUIt1HczZn8gZtlBrbrUDXDjYoErqLRyMVQuG9dwUoixEw2Jurn8bbT+xW5ZuqJL
+	pIqCmo5HGTfLZugxixGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQo6c-0007zX-Mm; Tue, 21 Apr 2020 08:18:10 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1jQo71-0008LK-6b; Tue, 21 Apr 2020 08:18:35 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQo5x-0007Sv-DC
- for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 08:17:30 +0000
-Received: by mail-pf1-x443.google.com with SMTP id b8so6278368pfp.8
- for <linux-riscv@lists.infradead.org>; Tue, 21 Apr 2020 01:17:29 -0700 (PDT)
+ id 1jQo61-0007Vk-Kg
+ for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 08:17:35 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id t40so1051753pjb.3
+ for <linux-riscv@lists.infradead.org>; Tue, 21 Apr 2020 01:17:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qCOK+HxEBj2bh5BFlG2zt/46BhY0DW9NF3gypZJ6i18=;
- b=cj0aBop907dm+mkl5z5Mfm3dfJHK382iyGGadBdhXTU4SezE2MCsVNmjWKHydO1MeY
- hFpq9McPFpfy4rmx7G+Ad1j8hWL2TnkmF0IkMCtKAGmpU+zQZ6aqaTdmOppP8E8jMoFd
- Fk88jdQI+8R4LkqajRqwVMi8EwnmwqLx6QnbQ8a9F0T2Mu69VHyd9ana73iFO3tfR1QY
- WOG8lsevniXIBle/Wpw32M1HPnUM/cXVhVfyULOzUIUxNwMYRjXLGcKHakrVVhIkdCst
- HcA/EUYHskjCRFk4RGeoZHsmrSkm/oL6EadoBmaeDy9n6/Ei3y51wlw/4DW50BwDLHDj
- 41mw==
+ bh=x1q1dIc4oOXMLuGJhmG405YIgkstM/KJ0hlFL0aEcs0=;
+ b=JRJeJlPbvECowqMMqAqWbzZ8nqW0b1fVx207l4nQs0G9+u8AyrE8inMOe8Uu+Z6mGj
+ oEOZzr8Klh+dWRbsfgOaINRJsKMd/aRX3NBYE5XqzRJkaxfMatym5xIbV3ooZL9jnaaM
+ +HNfMZHP/TNdCf+PfqN1VPRK3J4JEGjE/ewraiaQV5Hg6+Ddm8v+G1yXlEhe/L1wUJsC
+ baY1iJBav4DXjyhX63v9oHhvFi0vhSpYSODaovIkLUeCbp0OKzfU1xWU0XnbBOC1jzjx
+ sc81wyIHXiBh5pXITuvhWZg3AI1x327mOGasYIohrkBPXI/7uBC/YKfXZ3fW0DizX8rC
+ IIvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qCOK+HxEBj2bh5BFlG2zt/46BhY0DW9NF3gypZJ6i18=;
- b=nMptsqhvBactgZf6Ine5lMYuLJ1lhHTWjMwnLbCLOJnqq9hgcgaClNGcRhqOe6ZGEZ
- SwRzN7MxM87WfFhd9QYFI59FwE+9G7+Gu0pUo3rCA5DMMaTl76EtQLxDAtQpVE+F4LVs
- KA6wHYl7cr/IPGt98DY4LhyNmKZZHrhi0zGF/Xc3IR1jxXwP8LZENwqw9UJ02NUQFFK3
- 5t/GYXIGfzXH5mVRjORRkt4H/E4jkH+05puZreRLPOeBpU8mcRyt8tIZ4ZTf8jMz+qqQ
- p87ff4JNCbNzwiCWtdCT2ElE1wNmRM5kcFNfKG3/5rNKN1Q290r1sgk5qj0HcA3w3fu8
- OMbQ==
-X-Gm-Message-State: AGi0PuaJWAndIMcitZAoY1y9C4Rg5nNA52gIr1VTpkO+fc0F8EKH11C5
- yNkl9teDT9qRvHL8Un6AoIIlaw==
-X-Google-Smtp-Source: APiQypLl5oCj7vFGv7zZNaxGJsgDSRmBearvlFa0TCQKMUrRrSskifrV8HFOIzfmSxRHB+7OBiCjMA==
-X-Received: by 2002:a62:18c8:: with SMTP id 191mr21232603pfy.255.1587457048276; 
- Tue, 21 Apr 2020 01:17:28 -0700 (PDT)
+ bh=x1q1dIc4oOXMLuGJhmG405YIgkstM/KJ0hlFL0aEcs0=;
+ b=neyhz+QzThAv5nFCwPuGwceZEA+icKIKaZKY6FKw/fOBGpTwfobAZPdxFTiodGrj9u
+ 5rx8erXqOWOX2OahVzBFcLU9udnIeY5RtLzkag0KVohP8RY4thFiY72EQndecq4y5Xt/
+ VJG8RzbYTHn2wctacM7P0E21InIYznYRpiQiX3P2ei8fZDF+QXSxMCL84OeMi0V4irvC
+ rXtpYnYoSzS8HHX5/skIAdWo3KNNnpmZfBQCCOlRKTqxSIj5KRmbUfuKSbrijqFSycQR
+ jwTAFOTPibqurXiW7q9ZrwwniY3ZBTP11nXvc5huPEKPd2B2y0W2HuisDm63r55BxjR7
+ uCsQ==
+X-Gm-Message-State: AGi0Pub745s2atzopHOtfRdJQijr8Hs/qbl3g66/iQsj3ZWX6W4HnoW2
+ y6InzjF6N6YVPb+cw8Dsc8SWbQ==
+X-Google-Smtp-Source: APiQypJ6TDv1BUeEjsdzkZkCUKbnTrPG7TD+P1kqLfxoAk/M5KRTxIjpkFX2KILsnIQRT2ae8Ou8Jw==
+X-Received: by 2002:a17:90a:1da6:: with SMTP id
+ v35mr4465596pjv.44.1587457051158; 
+ Tue, 21 Apr 2020 01:17:31 -0700 (PDT)
 Received: from hsinchu02.internal.sifive.com
  (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id v9sm1610067pju.3.2020.04.21.01.17.25
+ by smtp.gmail.com with ESMTPSA id v9sm1610067pju.3.2020.04.21.01.17.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 01:17:27 -0700 (PDT)
+ Tue, 21 Apr 2020 01:17:30 -0700 (PDT)
 From: Zong Li <zong.li@sifive.com>
 To: akpm@linux-foundation.org, linux-mm@kvack.org,
  linux-kernel@vger.kernel.org, paul.walmsley@sifive.com, palmer@dabbelt.com,
  linux-riscv@lists.infradead.org, tglx@linutronix.de, mingo@redhat.com,
  bp@alien8.de, x86@kernel.org, hpa@zytor.com, catalin.marinas@arm.com,
  will@kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 1/4] mm: add DEBUG_WX support
-Date: Tue, 21 Apr 2020 16:17:12 +0800
-Message-Id: <23980cd0f0e5d79e24a92169116407c75bcc650d.1587455584.git.zong.li@sifive.com>
+Subject: [PATCH 2/4] riscv: support DEBUG_WX
+Date: Tue, 21 Apr 2020 16:17:13 +0800
+Message-Id: <282e266311bced080bc6f7c255b92f87c1eb65d6.1587455584.git.zong.li@sifive.com>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <cover.1587455584.git.zong.li@sifive.com>
 References: <cover.1587455584.git.zong.li@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_011729_462522_C94330A6 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20200421_011733_714544_BB287BBA 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -105,58 +107,63 @@ Cc: Zong Li <zong.li@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Some architectures support DEBUG_WX function, it's verbatim from each
-others. Extract to mm/Kconfig.debug for shared use.
+Support DEBUG_WX to check whether there are mapping with write and
+execute permission at the same time.
 
 Signed-off-by: Zong Li <zong.li@sifive.com>
-Suggested-by: Palmer Dabbelt <palmer@dabbelt.com>
 ---
- mm/Kconfig.debug | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ arch/riscv/Kconfig              | 1 +
+ arch/riscv/include/asm/ptdump.h | 6 ++++++
+ arch/riscv/mm/init.c            | 3 +++
+ 3 files changed, 10 insertions(+)
 
-diff --git a/mm/Kconfig.debug b/mm/Kconfig.debug
-index 0271b22e063f..077458ad968d 100644
---- a/mm/Kconfig.debug
-+++ b/mm/Kconfig.debug
-@@ -118,6 +118,39 @@ config DEBUG_RODATA_TEST
-     ---help---
-       This option enables a testcase for the setting rodata read-only.
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 62f7bfeb709e..612bf0a258d0 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -68,6 +68,7 @@ config RISCV
+ 	select ARCH_HAS_GCOV_PROFILE_ALL
+ 	select HAVE_COPY_THREAD_TLS
+ 	select HAVE_ARCH_KASAN if MMU && 64BIT
++	select ARCH_HAS_DEBUG_WX
  
-+config ARCH_HAS_DEBUG_WX
-+	bool
+ config ARCH_MMAP_RND_BITS_MIN
+ 	default 18 if 64BIT
+diff --git a/arch/riscv/include/asm/ptdump.h b/arch/riscv/include/asm/ptdump.h
+index e29af7191909..eb2a1cc5f22c 100644
+--- a/arch/riscv/include/asm/ptdump.h
++++ b/arch/riscv/include/asm/ptdump.h
+@@ -8,4 +8,10 @@
+ 
+ void ptdump_check_wx(void);
+ 
++#ifdef CONFIG_DEBUG_WX
++#define debug_checkwx() ptdump_check_wx()
++#else
++#define debug_checkwx() do { } while (0)
++#endif
 +
-+config DEBUG_WX
-+	bool "Warn on W+X mappings at boot"
-+	depends on ARCH_HAS_DEBUG_WX
-+	select PTDUMP_CORE
-+	help
-+	  Generate a warning if any W+X mappings are found at boot.
+ #endif /* _ASM_RISCV_PTDUMP_H */
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index b55be44ff9bd..86606e4d1860 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -19,6 +19,7 @@
+ #include <asm/sections.h>
+ #include <asm/pgtable.h>
+ #include <asm/io.h>
++#include <asm/ptdump.h>
+ 
+ #include "../kernel/head.h"
+ 
+@@ -529,6 +530,8 @@ void mark_rodata_ro(void)
+ 	set_memory_ro(rodata_start, (data_start - rodata_start) >> PAGE_SHIFT);
+ 	set_memory_nx(rodata_start, (data_start - rodata_start) >> PAGE_SHIFT);
+ 	set_memory_nx(data_start, (max_low - data_start) >> PAGE_SHIFT);
 +
-+	  This is useful for discovering cases where the kernel is leaving
-+	  W+X mappings after applying NX, as such mappings are a security risk.
-+	  This check also includes UXN, which should be set on all kernel
-+	  mappings.
-+
-+	  Look for a message in dmesg output like this:
-+
-+	    <arch>/mm: Checked W+X mappings: passed, no W+X pages found.
-+
-+	  or like this, if the check failed:
-+
-+	    <arch>/mm: Checked W+X mappings: failed, <N> W+X pages found.
-+
-+	  Note that even if the check fails, your kernel is possibly
-+	  still fine, as W+X mappings are not a security hole in
-+	  themselves, what they do is that they make the exploitation
-+	  of other unfixed kernel bugs easier.
-+
-+	  There is no runtime or memory usage effect of this option
-+	  once the kernel has booted up - it's a one time check.
-+
-+	  If in doubt, say "Y".
-+
- config GENERIC_PTDUMP
- 	bool
++	debug_checkwx();
+ }
+ #endif
  
 -- 
 2.26.1
