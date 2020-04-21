@@ -2,85 +2,97 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A398B1B2324
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 11:45:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80F051B28EF
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 16:02:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7YlUzjQkLo0H5BYCcvwstFbEoHwY4ih6fNxbEHyBvX0=; b=thlDwxkK+k0U+5NLWSUHDb4vA
-	W2snn7l804ebTnwizi1E9vFFO9q19vt1lS6NmAm615qZk7MJfMPuxJZ6dI2taE5jjGHsX84hWnXSF
-	pq3rQiob7YDVtxo/XWTBEBZA4eLZAZRyb8+f5m4CxUyhxaLLa0hTQ9x1kD9je7SKgkK2xa6ivpKuh
-	cHWEysTK2KHVByw4tt1QpJu5IwKbQSJIBrz4orjXHRmXSGy8+fMDSPnSpLookkFC37j/rWCTybm6F
-	8pNiVOSGh+coCB4iR76x6badLcMmfXP5FOFQPuxr2IIGH4dxDzYAYFpRSDsbEQMzVeNVjzssGxuEC
-	hK4uB2ucA==;
+	 bh=4dg632YBDu/3Jn4Sej4w0t06c9e6boAlYtbCb+AEtt8=; b=WLhQ/cvRGaYOHGkZssWIUmMKP
+	NDTeUwvPgz6DtZtODC3bP+h3dP/hQILKwTgnpvUiHmpymGoEM1op+y8FDFYmMHk9qC0IBsZmI5Qse
+	YWhio7uYl5p1f/Sn4Fpp/muTiIHBPoRxvheMZz3yUl2seeWFXmDMpVsxWHMoBl5HXqrrdGZn2FP9y
+	ByIa32uECfL1rXRM4Vi9tVSnnpBeUpOhROouj/gOmAyL/+skDUDQbwOePMqczsE8X+vGrUznvLQqE
+	G3RsfevxViivyD8RD9+NlNBZkCG+Aymxznvp7YIpRPZvvVYS85DyGhnCP6xHHAk0mKQUVzL0rwX1m
+	6Nw+rrtEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQpTT-0000lX-DT; Tue, 21 Apr 2020 09:45:51 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
+	id 1jQtTu-0005bz-2h; Tue, 21 Apr 2020 14:02:34 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQpTO-0000jJ-D5
- for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 09:45:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587462344;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7YlUzjQkLo0H5BYCcvwstFbEoHwY4ih6fNxbEHyBvX0=;
- b=atP9ejV6+7ImGI2CQjkNd+hjE4h9niqedtb9W+X951SScJgC4xa2WDwSHc/fUeQWEPfGI9
- F89Vl1Ff1sbbdf/ONqEzATdrWg6Sprq0L1wzB5NGepR8o9ESUWzJUy6D61jNYwVfMTaLsm
- 6eANUeh8XmySQJ6IDIzF3navxM0OrDQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-310-NpLGHwzBPpWwI4QPRhx8dw-1; Tue, 21 Apr 2020 05:45:41 -0400
-X-MC-Unique: NpLGHwzBPpWwI4QPRhx8dw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E26281005509;
- Tue, 21 Apr 2020 09:45:35 +0000 (UTC)
-Received: from localhost (ovpn-12-34.pek2.redhat.com [10.72.12.34])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2C3A51001938;
- Tue, 21 Apr 2020 09:45:33 +0000 (UTC)
-Date: Tue, 21 Apr 2020 17:45:30 +0800
-From: Baoquan He <bhe@redhat.com>
-To: Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 03/21] mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option
-Message-ID: <20200421094530.GB29658@MiWiFi-R3L-srv>
-References: <20200412194859.12663-1-rppt@kernel.org>
- <20200412194859.12663-4-rppt@kernel.org>
- <20200421042316.GQ4247@MiWiFi-R3L-srv>
- <20200421090908.GC14260@kernel.org>
+ id 1jQtTf-0005QJ-T9
+ for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 14:02:21 +0000
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 03LDYu7B087810
+ for <linux-riscv@lists.infradead.org>; Tue, 21 Apr 2020 10:02:16 -0400
+Received: from e06smtp01.uk.ibm.com (e06smtp01.uk.ibm.com [195.75.94.97])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 30ggr2j9bs-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-riscv@lists.infradead.org>; Tue, 21 Apr 2020 10:02:16 -0400
+Received: from localhost
+ by e06smtp01.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <linux-riscv@lists.infradead.org> from <gerald.schaefer@de.ibm.com>;
+ Tue, 21 Apr 2020 15:01:30 +0100
+Received: from b06cxnps3075.portsmouth.uk.ibm.com (9.149.109.195)
+ by e06smtp01.uk.ibm.com (192.168.101.131) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Tue, 21 Apr 2020 15:01:21 +0100
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+ [9.149.105.59])
+ by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 03LE24dv53608476
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 21 Apr 2020 14:02:04 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0AFD5A4057;
+ Tue, 21 Apr 2020 14:02:04 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2FEB3A405B;
+ Tue, 21 Apr 2020 14:02:03 +0000 (GMT)
+Received: from thinkpad (unknown [9.145.65.41])
+ by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 21 Apr 2020 14:02:03 +0000 (GMT)
+Date: Tue, 21 Apr 2020 16:02:01 +0200
+From: Gerald Schaefer <gerald.schaefer@de.ibm.com>
+To: Mike Kravetz <mike.kravetz@oracle.com>
+Subject: Re: [PATCH v3 0/4] Clean up hugetlb boot command line processing
+In-Reply-To: <20200417185049.275845-1-mike.kravetz@oracle.com>
+References: <20200417185049.275845-1-mike.kravetz@oracle.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200421090908.GC14260@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 20042114-4275-0000-0000-000003C3FB90
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 20042114-4276-0000-0000-000038D9805D
+Message-Id: <20200421160201.0ddb9763@thinkpad>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-21_05:2020-04-20,
+ 2020-04-21 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 mlxlogscore=999
+ spamscore=0 impostorscore=0 malwarescore=0 suspectscore=0 mlxscore=0
+ clxscore=1015 lowpriorityscore=0 bulkscore=0 phishscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004210104
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_024546_611701_94276DAA 
-X-CRM114-Status: GOOD (  29.12  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200421_070220_251523_4D8AF097 
+X-CRM114-Status: GOOD (  29.48  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [205.139.110.120 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,331 +104,92 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- linux-csky@vger.kernel.org, linux-parisc@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, Greg Ungerer <gerg@linux-m68k.org>,
- linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-snps-arc@lists.infradead.org, linux-c6x-dev@linux-c6x.org,
- Brian Cain <bcain@codeaurora.org>, Jonathan Corbet <corbet@lwn.net>,
- linux-sh@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
- Helge Deller <deller@gmx.de>, x86@kernel.org,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Mike Rapoport <rppt@linux.ibm.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
- linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
- Matt Turner <mattst88@gmail.com>, linux-mips@vger.kernel.org,
- uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
- linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
- linux-m68k@lists.linux-m68k.org, Tony Luck <tony.luck@intel.com>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- Hoan Tran <Hoan@os.amperecomputing.com>, Michal Simek <monstr@monstr.eu>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, openrisc@lists.librecores.org,
- Richard Weinberger <richard@nod.at>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
+ linux-mm@kvack.org, Paul Mackerras <paulus@samba.org>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, Mina Almasry <almasrymina@google.com>,
+ linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Vasily Gorbik <gor@linux.ibm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Christophe Leroy <christophe.leroy@c-s.fr>,
+ Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
+ "David S . Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 04/21/20 at 12:09pm, Mike Rapoport wrote:
-> > > diff --git a/mm/memory_hotplug.c b/mm/memory_hotplug.c
-> > > index fc0aad0bc1f5..e67dc501576a 100644
-> > > --- a/mm/memory_hotplug.c
-> > > +++ b/mm/memory_hotplug.c
-> > > @@ -1372,11 +1372,7 @@ check_pages_isolated_cb(unsigned long start_pfn, unsigned long nr_pages,
-> > >  
-> > >  static int __init cmdline_parse_movable_node(char *p)
-> > >  {
-> > > -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> > >  	movable_node_enabled = true;
-> > > -#else
-> > > -	pr_warn("movable_node parameter depends on CONFIG_HAVE_MEMBLOCK_NODE_MAP to work properly\n");
-> > > -#endif
-> > 
-> > Wondering if this change will impact anything. Before, those ARCHes with
-> > CONFIG_HAVE_MEMBLOCK_NODE_MAP support movable_node. With this patch
-> > applied, those ARCHes which don't support CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> > can also have 'movable_node' specified in kernel cmdline.
-> > 
-> > >  	return 0;
-> > >  }
-> > >  early_param("movable_node", cmdline_parse_movable_node);
-> > > diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-> > > index 1ac775bfc9cf..4530e9cfd9f7 100644
-> > > --- a/mm/page_alloc.c
-> > > +++ b/mm/page_alloc.c
-> > > @@ -335,7 +335,6 @@ static unsigned long nr_kernel_pages __initdata;
-> > >  static unsigned long nr_all_pages __initdata;
-> > >  static unsigned long dma_reserve __initdata;
-> > >  
-> > > -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> > >  static unsigned long arch_zone_lowest_possible_pfn[MAX_NR_ZONES] __initdata;
-> > >  static unsigned long arch_zone_highest_possible_pfn[MAX_NR_ZONES] __initdata;
-> > >  static unsigned long required_kernelcore __initdata;
-> > 
-> > Does it mean those ARCHes which don't support
-> > CONFIG_HAVE_MEMBLOCK_NODE_MAP before, will have 'kernelcore=' and
-> > 'movablecore=' now, and will have MOVABLE zone?
-> 
-> I hesitated a lot about whether to hide the kernelcore/movablecore and
-> related code behind an #ifdef.
-> In the end I've decided to keep the code compiled unconditionally as it
-> is anyway __init and no sane person would pass "kernelcore=" to the
-> kernel on a UMA system.
+On Fri, 17 Apr 2020 11:50:45 -0700
+Mike Kravetz <mike.kravetz@oracle.com> wrote:
 
-I see. Then maybe can do something if someone complains about it
-in the future, e.g warn out with a message in
-cmdline_parse_movable_node(), cmdline_parse_kernelcore().
+> v3 -
+>    Used weak attribute method of defining arch_hugetlb_valid_size.
+>      This eliminates changes to arch specific hugetlb.h files (Peter)
+>    Updated documentation (Peter, Randy)
+>    Fixed handling of implicitly specified gigantic page preallocation
+>      in existing code and removed documentation of such.  There is now
+>      no difference between handling of gigantic and non-gigantic pages.
+>      (Peter, Nitesh).
+>      This requires the most review as there is a small change to
+>      undocumented behavior.  See patch 4 commit message for details.
+>    Added Acks and Reviews (Mina, Peter)
+> 
+> v2 -
+>    Fix build errors with patch 1 (Will)
+>    Change arch_hugetlb_valid_size arg to unsigned long and remove
+>      irrelevant 'extern' keyword (Christophe)
+>    Documentation and other misc changes (Randy, Christophe, Mina)
+>    Do not process command line options if !hugepages_supported()
+>      (Dave, but it sounds like we may want to additional changes to
+>       hugepages_supported() for x86?  If that is needed I would prefer
+>       a separate patch.)
+> 
+> Longpeng(Mike) reported a weird message from hugetlb command line processing
+> and proposed a solution [1].  While the proposed patch does address the
+> specific issue, there are other related issues in command line processing.
+> As hugetlbfs evolved, updates to command line processing have been made to
+> meet immediate needs and not necessarily in a coordinated manner.  The result
+> is that some processing is done in arch specific code, some is done in arch
+> independent code and coordination is problematic.  Semantics can vary between
+> architectures.
+> 
+> The patch series does the following:
+> - Define arch specific arch_hugetlb_valid_size routine used to validate
+>   passed huge page sizes.
+> - Move hugepagesz= command line parsing out of arch specific code and into
+>   an arch independent routine.
+> - Clean up command line processing to follow desired semantics and
+>   document those semantics.
+> 
+> [1] https://lore.kernel.org/linux-mm/20200305033014.1152-1-longpeng2@huawei.com
+> 
+> Mike Kravetz (4):
+>   hugetlbfs: add arch_hugetlb_valid_size
+>   hugetlbfs: move hugepagesz= parsing to arch independent code
+>   hugetlbfs: remove hugetlb_add_hstate() warning for existing hstate
+>   hugetlbfs: clean up command line processing
+> 
+>  .../admin-guide/kernel-parameters.txt         |  40 ++--
+>  Documentation/admin-guide/mm/hugetlbpage.rst  |  35 ++++
+>  arch/arm64/mm/hugetlbpage.c                   |  30 +--
+>  arch/powerpc/mm/hugetlbpage.c                 |  30 +--
+>  arch/riscv/mm/hugetlbpage.c                   |  24 +--
+>  arch/s390/mm/hugetlbpage.c                    |  24 +--
+>  arch/sparc/mm/init_64.c                       |  43 +---
+>  arch/x86/mm/hugetlbpage.c                     |  23 +--
+>  include/linux/hugetlb.h                       |   2 +-
+>  mm/hugetlb.c                                  | 190 +++++++++++++++---
+>  10 files changed, 271 insertions(+), 170 deletions(-)
+> 
 
-> 
-> > > @@ -348,7 +347,6 @@ static bool mirrored_kernelcore __meminitdata;
-> > >  /* movable_zone is the "real" zone pages in ZONE_MOVABLE are taken from */
-> > >  int movable_zone;
-> > >  EXPORT_SYMBOL(movable_zone);
-> > > -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> > >  
-> > >  #if MAX_NUMNODES > 1
-> > >  unsigned int nr_node_ids __read_mostly = MAX_NUMNODES;
-> > > @@ -1499,8 +1497,7 @@ void __free_pages_core(struct page *page, unsigned int order)
-> > >  	__free_pages(page, order);
-> > >  }
-> > >  
-> > > -#if defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID) || \
-> > > -	defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP)
-> > > +#ifdef CONFIG_NEED_MULTIPLE_NODES
-> > >  
-> > >  static struct mminit_pfnnid_cache early_pfnnid_cache __meminitdata;
-> > >  
-> > > @@ -1542,7 +1539,7 @@ int __meminit early_pfn_to_nid(unsigned long pfn)
-> > >  
-> > >  	return nid;
-> > >  }
-> > > -#endif
-> > > +#endif /* CONFIG_NEED_MULTIPLE_NODES */
-> > >  
-> > >  #ifdef CONFIG_NODES_SPAN_OTHER_NODES
-> > >  /* Only safe to use early in boot when initialisation is single-threaded */
-> > > @@ -5924,7 +5921,6 @@ void __ref build_all_zonelists(pg_data_t *pgdat)
-> > >  static bool __meminit
-> > >  overlap_memmap_init(unsigned long zone, unsigned long *pfn)
-> > >  {
-> > > -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> > >  	static struct memblock_region *r;
-> > >  
-> > >  	if (mirrored_kernelcore && zone == ZONE_MOVABLE) {
-> > > @@ -5940,7 +5936,6 @@ overlap_memmap_init(unsigned long zone, unsigned long *pfn)
-> > >  			return true;
-> > >  		}
-> > >  	}
-> > > -#endif
-> > >  	return false;
-> > >  }
-> > >  
-> > > @@ -6573,8 +6568,7 @@ static unsigned long __init zone_absent_pages_in_node(int nid,
-> > >  	return nr_absent;
-> > >  }
-> > >  
-> > > -#else /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> > > -static inline unsigned long __init zone_spanned_pages_in_node(int nid,
-> > > +static inline unsigned long __init compat_zone_spanned_pages_in_node(int nid,
-> > 
-> > Is it compact zone which has continuous memory region, and the
-> > compat here is typo? Or it's compatible zone? The name seems a little
-> > confusing, or I miss something.
-> 
-> It's 'compat' from 'compatibility'. This is kinda "the old way" and the
-> version that was defined when CONFIG_HAVE_MEMBLOCK_NODE_MAP=y is the
-> "new way", so I picked 'compat' for backwards compatibility. 
-> Anyway, it will go away later in pacth 19. 
+Looks good and works fine for s390, thanks for cleaning up!
 
-Got it, thanks for telling.
-
-> 
-> > >  					unsigned long zone_type,
-> > >  					unsigned long node_start_pfn,
-> > >  					unsigned long node_end_pfn,
-> > > @@ -6593,7 +6587,7 @@ static inline unsigned long __init zone_spanned_pages_in_node(int nid,
-> > >  	return zones_size[zone_type];
-> > >  }
-> > >  
-> > > -static inline unsigned long __init zone_absent_pages_in_node(int nid,
-> > > +static inline unsigned long __init compat_zone_absent_pages_in_node(int nid,
-> > >  						unsigned long zone_type,
-> > >  						unsigned long node_start_pfn,
-> > >  						unsigned long node_end_pfn,
-> > > @@ -6605,13 +6599,12 @@ static inline unsigned long __init zone_absent_pages_in_node(int nid,
-> > >  	return zholes_size[zone_type];
-> > >  }
-> > >  
-> > > -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> > > -
-> > >  static void __init calculate_node_totalpages(struct pglist_data *pgdat,
-> > >  						unsigned long node_start_pfn,
-> > >  						unsigned long node_end_pfn,
-> > >  						unsigned long *zones_size,
-> > > -						unsigned long *zholes_size)
-> > > +						unsigned long *zholes_size,
-> > > +						bool compat)
-> > >  {
-> > >  	unsigned long realtotalpages = 0, totalpages = 0;
-> > >  	enum zone_type i;
-> > > @@ -6619,17 +6612,38 @@ static void __init calculate_node_totalpages(struct pglist_data *pgdat,
-> > >  	for (i = 0; i < MAX_NR_ZONES; i++) {
-> > >  		struct zone *zone = pgdat->node_zones + i;
-> > >  		unsigned long zone_start_pfn, zone_end_pfn;
-> > > +		unsigned long spanned, absent;
-> > >  		unsigned long size, real_size;
-> > >  
-> > > -		size = zone_spanned_pages_in_node(pgdat->node_id, i,
-> > > -						  node_start_pfn,
-> > > -						  node_end_pfn,
-> > > -						  &zone_start_pfn,
-> > > -						  &zone_end_pfn,
-> > > -						  zones_size);
-> > > -		real_size = size - zone_absent_pages_in_node(pgdat->node_id, i,
-> > > -						  node_start_pfn, node_end_pfn,
-> > > -						  zholes_size);
-> > > +		if (compat) {
-> > > +			spanned = compat_zone_spanned_pages_in_node(
-> > > +						pgdat->node_id, i,
-> > > +						node_start_pfn,
-> > > +						node_end_pfn,
-> > > +						&zone_start_pfn,
-> > > +						&zone_end_pfn,
-> > > +						zones_size);
-> > > +			absent = compat_zone_absent_pages_in_node(
-> > > +						pgdat->node_id, i,
-> > > +						node_start_pfn,
-> > > +						node_end_pfn,
-> > > +						zholes_size);
-> > > +		} else {
-> > > +			spanned = zone_spanned_pages_in_node(pgdat->node_id, i,
-> > > +						node_start_pfn,
-> > > +						node_end_pfn,
-> > > +						&zone_start_pfn,
-> > > +						&zone_end_pfn,
-> > > +						zones_size);
-> > > +			absent = zone_absent_pages_in_node(pgdat->node_id, i,
-> > > +						node_start_pfn,
-> > > +						node_end_pfn,
-> > > +						zholes_size);
-> > > +		}
-> > > +
-> > > +		size = spanned;
-> > > +		real_size = size - absent;
-> > > +
-> > >  		if (size)
-> > >  			zone->zone_start_pfn = zone_start_pfn;
-> > >  		else
-> > > @@ -6929,10 +6943,8 @@ static void __ref alloc_node_mem_map(struct pglist_data *pgdat)
-> > >  	 */
-> > >  	if (pgdat == NODE_DATA(0)) {
-> > >  		mem_map = NODE_DATA(0)->node_mem_map;
-> > > -#if defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP) || defined(CONFIG_FLATMEM)
-> > >  		if (page_to_pfn(mem_map) != pgdat->node_start_pfn)
-> > >  			mem_map -= offset;
-> > > -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> > >  	}
-> > >  #endif
-> > >  }
-> > > @@ -6949,9 +6961,10 @@ static inline void pgdat_set_deferred_range(pg_data_t *pgdat)
-> > >  static inline void pgdat_set_deferred_range(pg_data_t *pgdat) {}
-> > >  #endif
-> > >  
-> > > -void __init free_area_init_node(int nid, unsigned long *zones_size,
-> > > -				   unsigned long node_start_pfn,
-> > > -				   unsigned long *zholes_size)
-> > > +static void __init __free_area_init_node(int nid, unsigned long *zones_size,
-> > > +					 unsigned long node_start_pfn,
-> > > +					 unsigned long *zholes_size,
-> > > +					 bool compat)
-> > >  {
-> > >  	pg_data_t *pgdat = NODE_DATA(nid);
-> > >  	unsigned long start_pfn = 0;
-> > > @@ -6963,16 +6976,16 @@ void __init free_area_init_node(int nid, unsigned long *zones_size,
-> > >  	pgdat->node_id = nid;
-> > >  	pgdat->node_start_pfn = node_start_pfn;
-> > >  	pgdat->per_cpu_nodestats = NULL;
-> > > -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> > > -	get_pfn_range_for_nid(nid, &start_pfn, &end_pfn);
-> > > -	pr_info("Initmem setup node %d [mem %#018Lx-%#018Lx]\n", nid,
-> > > -		(u64)start_pfn << PAGE_SHIFT,
-> > > -		end_pfn ? ((u64)end_pfn << PAGE_SHIFT) - 1 : 0);
-> > > -#else
-> > > -	start_pfn = node_start_pfn;
-> > > -#endif
-> > > +	if (!compat) {
-> > > +		get_pfn_range_for_nid(nid, &start_pfn, &end_pfn);
-> > > +		pr_info("Initmem setup node %d [mem %#018Lx-%#018Lx]\n", nid,
-> > > +			(u64)start_pfn << PAGE_SHIFT,
-> > > +			end_pfn ? ((u64)end_pfn << PAGE_SHIFT) - 1 : 0);
-> > > +	} else {
-> > > +		start_pfn = node_start_pfn;
-> > > +	}
-> > >  	calculate_node_totalpages(pgdat, start_pfn, end_pfn,
-> > > -				  zones_size, zholes_size);
-> > > +				  zones_size, zholes_size, compat);
-> > >  
-> > >  	alloc_node_mem_map(pgdat);
-> > >  	pgdat_set_deferred_range(pgdat);
-> > > @@ -6980,6 +6993,14 @@ void __init free_area_init_node(int nid, unsigned long *zones_size,
-> > >  	free_area_init_core(pgdat);
-> > >  }
-> > >  
-> > > +void __init free_area_init_node(int nid, unsigned long *zones_size,
-> > > +				unsigned long node_start_pfn,
-> > > +				unsigned long *zholes_size)
-> > > +{
-> > > +	__free_area_init_node(nid, zones_size, node_start_pfn, zholes_size,
-> > > +			      true);
-> > > +}
-> > > +
-> > >  #if !defined(CONFIG_FLAT_NODE_MEM_MAP)
-> > >  /*
-> > >   * Initialize all valid struct pages in the range [spfn, epfn) and mark them
-> > > @@ -7063,8 +7084,6 @@ static inline void __init init_unavailable_mem(void)
-> > >  }
-> > >  #endif /* !CONFIG_FLAT_NODE_MEM_MAP */
-> > >  
-> > > -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
-> > > -
-> > >  #if MAX_NUMNODES > 1
-> > >  /*
-> > >   * Figure out the number of possible node ids.
-> > > @@ -7493,8 +7512,8 @@ void __init free_area_init_nodes(unsigned long *max_zone_pfn)
-> > >  	init_unavailable_mem();
-> > >  	for_each_online_node(nid) {
-> > >  		pg_data_t *pgdat = NODE_DATA(nid);
-> > > -		free_area_init_node(nid, NULL,
-> > > -				find_min_pfn_for_node(nid), NULL);
-> > > +		__free_area_init_node(nid, NULL,
-> > > +				      find_min_pfn_for_node(nid), NULL, false);
-> > >  
-> > >  		/* Any memory on that node */
-> > >  		if (pgdat->node_present_pages)
-> > > @@ -7559,8 +7578,6 @@ static int __init cmdline_parse_movablecore(char *p)
-> > >  early_param("kernelcore", cmdline_parse_kernelcore);
-> > >  early_param("movablecore", cmdline_parse_movablecore);
-> > >  
-> > > -#endif /* CONFIG_HAVE_MEMBLOCK_NODE_MAP */
-> > > -
-> > >  void adjust_managed_page_count(struct page *page, long count)
-> > >  {
-> > >  	atomic_long_add(count, &page_zone(page)->managed_pages);
-> > > -- 
-> > > 2.25.1
-> > > 
-> > 
-> 
-> -- 
-> Sincerely yours,
-> Mike.
-> 
+Acked-by: Gerald Schaefer <gerald.schaefer@de.ibm.com> # s390
 
 
