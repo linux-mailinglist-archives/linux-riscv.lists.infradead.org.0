@@ -2,67 +2,67 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DEA01B1B8A
-	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 04:06:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 39BFE1B1BD2
+	for <lists+linux-riscv@lfdr.de>; Tue, 21 Apr 2020 04:25:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NeOgQkZsDdoMNz10q5IMbsxGpqUOFvMFdq6FjujHkZg=; b=ZqG1EMdqFl337mdngh5Sw9Y9p
-	9U7ZcOjubiJ6lOryU58FM4LvM6dMsfVuMA6c5Yav/5xYQXo7y1TCMu3lK5Ym8x6tP3jyLq2VyAV7V
-	7eUsccIZBRUmjxlsTgPFNZWJiBpx2d7lf3mxGtRU2i5c3wkpsbEmfBicqQ9Ap4PDS875SMvIzcmTJ
-	6LGl6dsOvBj2hSGvvCJ3KFjvCP9Ax6MrrDCnXKVnHXjX6/MIjAyXrlvrFugYxfN1bBiyhyi5w8U3c
-	ONQao7KhcPBj+EVmmi1LqVzVBRwM7DnC+lVk02UXwZmLHxdVdZviofuH0J3ZgI963D0iCNFZ0KJdG
-	ClEY+BpxA==;
+	 bh=Muw3THJhE6mXPlOA/UgJHfU1SluTy1QDua9Qwu1ZGDs=; b=tx2FS/qk6/rfdtUTc3bXVKYgP
+	kO8t18uufgXHew2sXZYKp2LRTGgv2XJlhMTCFDI84A1QDfMINflyiE8ZBd3/Us+itiunwdC5u6PJ+
+	7c3AGcsXStCl3tJAsX7sWGbcmCqLadjwLM9XNOB8W0vVBrILAR8Y/od7NQd3wwtH/ckyybVVGvFhg
+	F5ry34AZx+YNUsirq3JGMgyk0rDQkl05wbwcx4t2YkRqOuEU0Qs3UlQa583KGn4wYnrhLvmCkM6US
+	P840+kFnn/Vaema3nSketHo6UhEi8XshEzKLQODA9k51bmA0Xa4f+JiHPDaO0NalB3OcBRjhrShLd
+	0Y6OzBCMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQiIw-0002oj-Id; Tue, 21 Apr 2020 02:06:30 +0000
+	id 1jQial-0000xT-B8; Tue, 21 Apr 2020 02:24:55 +0000
 Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
  helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQiIr-0002jx-B7
- for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 02:06:28 +0000
+ id 1jQiag-0000vV-Ul
+ for linux-riscv@lists.infradead.org; Tue, 21 Apr 2020 02:24:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587434782;
+ s=mimecast20190719; t=1587435889;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=NeOgQkZsDdoMNz10q5IMbsxGpqUOFvMFdq6FjujHkZg=;
- b=SaCdoY7l299J9vjZ35BwGG6/62d0fDj48GmbWnFzq8cbXVK4pHkiJuhl7lc0OPUUtZ54GO
- jZsHZi8lSDwXNHAQqfQ+G8D8qG2Cn4EccagjrkE1Z3kjpxURi9+h1QfMVrCG6VEqWrhKGf
- Ke73MnEvD7BL9e0prQg4TkD4PfLzWgA=
+ bh=Muw3THJhE6mXPlOA/UgJHfU1SluTy1QDua9Qwu1ZGDs=;
+ b=Pi6jeKp1fro4josAGSxfofUlP0YxX96NGDpQdGjFKPWBCxi2tohLHaS4zlXl3A1I3EZekC
+ kagw2L2uGeyKzo5TQO/7YsgKWXIGDuzqma6/ejZ8a5S7zwqIi7uFVTIrCFISwGq/sb6bo4
+ CItvxaaJ6CowaBED3Q8pfAK0dlhfBm8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-177-MsTbvPRrM-CWA6xKfn_0bw-1; Mon, 20 Apr 2020 22:06:20 -0400
-X-MC-Unique: MsTbvPRrM-CWA6xKfn_0bw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-249-M7FU_cShM9S7GfjktLA04w-1; Mon, 20 Apr 2020 22:24:48 -0400
+X-MC-Unique: M7FU_cShM9S7GfjktLA04w-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E29813FE;
- Tue, 21 Apr 2020 02:06:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C109A107ACC9;
+ Tue, 21 Apr 2020 02:24:41 +0000 (UTC)
 Received: from localhost (ovpn-12-34.pek2.redhat.com [10.72.12.34])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B9AE6A18A0;
- Tue, 21 Apr 2020 02:06:05 +0000 (UTC)
-Date: Tue, 21 Apr 2020 10:06:03 +0800
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 470B65DA76;
+ Tue, 21 Apr 2020 02:24:37 +0000 (UTC)
+Date: Tue, 21 Apr 2020 10:24:35 +0800
 From: Baoquan He <bhe@redhat.com>
 To: Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 01/21] mm: memblock: replace dereferences of
- memblock_region.nid with API calls
-Message-ID: <20200421020603.GO4247@MiWiFi-R3L-srv>
+Subject: Re: [PATCH 02/21] mm: make early_pfn_to_nid() and related defintions
+ close to each other
+Message-ID: <20200421022435.GP4247@MiWiFi-R3L-srv>
 References: <20200412194859.12663-1-rppt@kernel.org>
- <20200412194859.12663-2-rppt@kernel.org>
+ <20200412194859.12663-3-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200412194859.12663-2-rppt@kernel.org>
+In-Reply-To: <20200412194859.12663-3-rppt@kernel.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_190625_484507_0E441682 
-X-CRM114-Status: GOOD (  20.37  )
+X-CRM114-CacheID: sfid-20200420_192451_068206_BA07D5E5 
+X-CRM114-Status: GOOD (  21.07  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -126,126 +126,142 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 On 04/12/20 at 10:48pm, Mike Rapoport wrote:
 > From: Mike Rapoport <rppt@linux.ibm.com>
 > 
-> There are several places in the code that directly dereference
-> memblock_region.nid despite this field being defined only when
-> CONFIG_HAVE_MEMBLOCK_NODE_MAP=y.
+> The early_pfn_to_nid() and it's helper __early_pfn_to_nid() are spread
+> around include/linux/mm.h, include/linux/mmzone.h and mm/page_alloc.c.
 > 
-> Replace these with calls to memblock_get_region_nid() to improve code
-> robustness and to avoid possible breakage when
-> CONFIG_HAVE_MEMBLOCK_NODE_MAP will be removed.
+> Drop unused stub for __early_pfn_to_nid() and move its actual generic
+> implementation close to its users.
 > 
 > Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 > ---
->  arch/arm64/mm/numa.c | 9 ++++++---
->  arch/x86/mm/numa.c   | 6 ++++--
->  mm/memblock.c        | 8 +++++---
->  mm/page_alloc.c      | 4 ++--
->  4 files changed, 17 insertions(+), 10 deletions(-)
+>  include/linux/mm.h     |  4 ++--
+>  include/linux/mmzone.h |  9 --------
+>  mm/page_alloc.c        | 51 +++++++++++++++++++++---------------------
+>  3 files changed, 27 insertions(+), 37 deletions(-)
 > 
-> diff --git a/arch/arm64/mm/numa.c b/arch/arm64/mm/numa.c
-> index 4decf1659700..aafcee3e3f7e 100644
-> --- a/arch/arm64/mm/numa.c
-> +++ b/arch/arm64/mm/numa.c
-> @@ -350,13 +350,16 @@ static int __init numa_register_nodes(void)
->  	struct memblock_region *mblk;
+> diff --git a/include/linux/mm.h b/include/linux/mm.h
+> index 5a323422d783..a404026d14d4 100644
+> --- a/include/linux/mm.h
+> +++ b/include/linux/mm.h
+> @@ -2388,9 +2388,9 @@ extern void sparse_memory_present_with_active_regions(int nid);
 >  
->  	/* Check that valid nid is set to memblks */
-> -	for_each_memblock(memory, mblk)
-> -		if (mblk->nid == NUMA_NO_NODE || mblk->nid >= MAX_NUMNODES) {
-> +	for_each_memblock(memory, mblk) {
-> +		int mblk_nid = memblock_get_region_node(mblk);
-> +
-> +		if (mblk_nid == NUMA_NO_NODE || mblk_nid >= MAX_NUMNODES) {
->  			pr_warn("Warning: invalid memblk node %d [mem %#010Lx-%#010Lx]\n",
-> -				mblk->nid, mblk->base,
-> +				mblk_nid, mblk->base,
->  				mblk->base + mblk->size - 1);
->  			return -EINVAL;
->  		}
-> +	}
->  
->  	/* Finally register nodes. */
->  	for_each_node_mask(nid, numa_nodes_parsed) {
-> diff --git a/arch/x86/mm/numa.c b/arch/x86/mm/numa.c
-> index 59ba008504dc..fe024b2ac796 100644
-> --- a/arch/x86/mm/numa.c
-> +++ b/arch/x86/mm/numa.c
-> @@ -517,8 +517,10 @@ static void __init numa_clear_kernel_node_hotplug(void)
->  	 *   reserve specific pages for Sandy Bridge graphics. ]
->  	 */
->  	for_each_memblock(reserved, mb_region) {
-> -		if (mb_region->nid != MAX_NUMNODES)
-> -			node_set(mb_region->nid, reserved_nodemask);
-> +		int nid = memblock_get_region_node(mb_region);
-> +
-> +		if (nid != MAX_NUMNODES)
-> +			node_set(nid, reserved_nodemask);
->  	}
->  
->  	/*
-> diff --git a/mm/memblock.c b/mm/memblock.c
-> index c79ba6f9920c..43e2fd3006c1 100644
-> --- a/mm/memblock.c
-> +++ b/mm/memblock.c
-> @@ -1207,13 +1207,15 @@ void __init_memblock __next_mem_pfn_range(int *idx, int nid,
+>  #if !defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP) && \
+>      !defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID)
+> -static inline int __early_pfn_to_nid(unsigned long pfn,
+> -					struct mminit_pfnnid_cache *state)
+> +static inline int early_pfn_to_nid(unsigned long pfn)
 >  {
->  	struct memblock_type *type = &memblock.memory;
->  	struct memblock_region *r;
-> +	int r_nid;
->  
->  	while (++*idx < type->cnt) {
->  		r = &type->regions[*idx];
-> +		r_nid = memblock_get_region_node(r);
->  
->  		if (PFN_UP(r->base) >= PFN_DOWN(r->base + r->size))
->  			continue;
-> -		if (nid == MAX_NUMNODES || nid == r->nid)
-> +		if (nid == MAX_NUMNODES || nid == r_nid)
->  			break;
->  	}
->  	if (*idx >= type->cnt) {
-> @@ -1226,7 +1228,7 @@ void __init_memblock __next_mem_pfn_range(int *idx, int nid,
->  	if (out_end_pfn)
->  		*out_end_pfn = PFN_DOWN(r->base + r->size);
->  	if (out_nid)
-> -		*out_nid = r->nid;
-> +		*out_nid = r_nid;
+> +	BUILD_BUG_ON(IS_ENABLED(CONFIG_NUMA));
+>  	return 0;
 >  }
->  
->  /**
-> @@ -1810,7 +1812,7 @@ int __init_memblock memblock_search_pfn_nid(unsigned long pfn,
->  	*start_pfn = PFN_DOWN(type->regions[mid].base);
->  	*end_pfn = PFN_DOWN(type->regions[mid].base + type->regions[mid].size);
->  
-> -	return type->regions[mid].nid;
-> +	return memblock_get_region_node(&type->regions[mid]);
->  }
+
+It's better to make a separate patch to drop __early_pfn_to_nid() here.
+
+>  #else
+> diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
+> index 1b9de7d220fb..7b5b6eba402f 100644
+> --- a/include/linux/mmzone.h
+> +++ b/include/linux/mmzone.h
+> @@ -1078,15 +1078,6 @@ static inline struct zoneref *first_zones_zonelist(struct zonelist *zonelist,
+>  #include <asm/sparsemem.h>
 >  #endif
 >  
+> -#if !defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID) && \
+> -	!defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP)
+> -static inline unsigned long early_pfn_to_nid(unsigned long pfn)
+> -{
+> -	BUILD_BUG_ON(IS_ENABLED(CONFIG_NUMA));
+> -	return 0;
+> -}
+> -#endif
+> -
+>  #ifdef CONFIG_FLATMEM
+>  #define pfn_to_nid(pfn)		(0)
+>  #endif
 > diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-> index 69827d4fa052..0d012eda1694 100644
+> index 0d012eda1694..1ac775bfc9cf 100644
 > --- a/mm/page_alloc.c
 > +++ b/mm/page_alloc.c
-> @@ -7208,7 +7208,7 @@ static void __init find_zone_movable_pfns_for_nodes(void)
->  			if (!memblock_is_hotpluggable(r))
->  				continue;
->  
-> -			nid = r->nid;
-> +			nid = memblock_get_region_node(r);
->  
->  			usable_startpfn = PFN_DOWN(r->base);
->  			zone_movable_pfn[nid] = zone_movable_pfn[nid] ?
-> @@ -7229,7 +7229,7 @@ static void __init find_zone_movable_pfns_for_nodes(void)
->  			if (memblock_is_mirror(r))
->  				continue;
->  
-> -			nid = r->nid;
-> +			nid = memblock_get_region_node(r);
->  
->  			usable_startpfn = memblock_region_memory_base_pfn(r);
+> @@ -1504,6 +1504,31 @@ void __free_pages_core(struct page *page, unsigned int order)
 
-Looks good to me.
+#if defined(CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID) || \
+        defined(CONFIG_HAVE_MEMBLOCK_NODE_MAP)
+
+This is the upper layer of ifdeffery scope.
+>  
+>  static struct mminit_pfnnid_cache early_pfnnid_cache __meminitdata;
+>  
+> +#ifndef CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID
+
+Moving __early_pfn_to_nid() here makes the upper layer of ifdeferry
+scope a little werid. But seems no better way to optimize it.
+
+Otherwise, this patch looks good to me.
 
 Reviewed-by: Baoquan He <bhe@redhat.com>
+
+> +
+> +/*
+> + * Required by SPARSEMEM. Given a PFN, return what node the PFN is on.
+> + */
+> +int __meminit __early_pfn_to_nid(unsigned long pfn,
+> +					struct mminit_pfnnid_cache *state)
+> +{
+> +	unsigned long start_pfn, end_pfn;
+> +	int nid;
+> +
+> +	if (state->last_start <= pfn && pfn < state->last_end)
+> +		return state->last_nid;
+> +
+> +	nid = memblock_search_pfn_nid(pfn, &start_pfn, &end_pfn);
+> +	if (nid != NUMA_NO_NODE) {
+> +		state->last_start = start_pfn;
+> +		state->last_end = end_pfn;
+> +		state->last_nid = nid;
+> +	}
+> +
+> +	return nid;
+> +}
+> +#endif /* CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID */
+> +
+>  int __meminit early_pfn_to_nid(unsigned long pfn)
+>  {
+>  	static DEFINE_SPINLOCK(early_pfn_lock);
+> @@ -6298,32 +6323,6 @@ void __meminit init_currently_empty_zone(struct zone *zone,
+>  	zone->initialized = 1;
+>  }
+>  
+> -#ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+> -#ifndef CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID
+> -
+> -/*
+> - * Required by SPARSEMEM. Given a PFN, return what node the PFN is on.
+> - */
+> -int __meminit __early_pfn_to_nid(unsigned long pfn,
+> -					struct mminit_pfnnid_cache *state)
+> -{
+> -	unsigned long start_pfn, end_pfn;
+> -	int nid;
+> -
+> -	if (state->last_start <= pfn && pfn < state->last_end)
+> -		return state->last_nid;
+> -
+> -	nid = memblock_search_pfn_nid(pfn, &start_pfn, &end_pfn);
+> -	if (nid != NUMA_NO_NODE) {
+> -		state->last_start = start_pfn;
+> -		state->last_end = end_pfn;
+> -		state->last_nid = nid;
+> -	}
+> -
+> -	return nid;
+> -}
+> -#endif /* CONFIG_HAVE_ARCH_EARLY_PFN_TO_NID */
+> -
+>  /**
+>   * free_bootmem_with_active_regions - Call memblock_free_early_nid for each active range
+>   * @nid: The node to free memory on. If MAX_NUMNODES, all nodes are freed.
+> -- 
+> 2.25.1
+> 
 
 
