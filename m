@@ -2,69 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9EE11B4AB2
-	for <lists+linux-riscv@lfdr.de>; Wed, 22 Apr 2020 18:39:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 992011B4B12
+	for <lists+linux-riscv@lfdr.de>; Wed, 22 Apr 2020 18:56:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cvWobKdpz5yLo5xmbq4pZI4GJbJveXVdGZHqLrOQStc=; b=l4XjIRgKowGxb/vO6mNCH7dHJ
-	LvrNYVKlOaK6Ow7w4dfX1nw1QIiBF0gwykHnUJwEKkNbqoDyG41wYDbef+UIUcimo9pXhZfSEeqeZ
-	JVGHhVWuqUY/QulIMzkhsTYB8UgycT1s3rzFkMAFcAjrbelMsL1JmpdJQtM3lyH3QQOErjSy8qj0I
-	PPuF38gcva/PV0E0CAtifnECB/roJRKrZ97iQ60YQsim+yRg+ewjF7bS6wwNCPB+fxhN6cVQsxbqQ
-	hKdHyxPEFTLy476wdbYDn70KVd3dFuMnH06jK+nCCbTMxK+655PjUGgz4wc4hCpCSK037pLJvJyqU
-	vr/iyxlDw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ccup9s4TMsPoGSqQ7E5OueomskUIx+Hkkn8jfkY9+Ms=; b=eeYnro9oxzuKH3YufQ7nOIZJdD
+	8nm2orNdUmvX+Vsf9GuWxVRNW858Y2m44loLmnlRyl0SfebVTZJvkaW5jnOySfuipBJHNik65lL9F
+	aryz6K5cx7Z+aRKIPK30I0Lmy+A7kOCyn6erdYFZ7pmt0zQ5c4v945j755/IRq/+5QFl3xcAIKuQ5
+	LHMIUGzM50DNHRXL04mzcTOPFs6NpHOWlpj5HHH3N9fdM8VvJ9vlmc4+HxNizox8mwdCoGazxZKhP
+	EwTeqT07k8+ob3gKCl3+/MLU1NkaCaVpZcm41DBpDu6CpLwxpDCuufjNWD8qWXgrQGIl97Ps2GC/q
+	hazMLZFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRIPM-0003o5-EI; Wed, 22 Apr 2020 16:39:32 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jRIfV-0001sB-Nv; Wed, 22 Apr 2020 16:56:13 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRIPJ-0003nJ-K2
- for linux-riscv@lists.infradead.org; Wed, 22 Apr 2020 16:39:31 +0000
-Received: from mail-il1-f176.google.com (mail-il1-f176.google.com
- [209.85.166.176])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2FFCA2082E
- for <linux-riscv@lists.infradead.org>; Wed, 22 Apr 2020 16:39:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587573569;
- bh=2rmDWww6rHau1JQr0OtwOsytcBhyKnLhZgMaxwDb5pk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=IDdy+xsDxWGQDq0yE5KuRWhZLri9WYXQm5wMtacNPEfeTJVbqvsyJa4Z6tIQpURno
- LEQLMMHaMdO9C85oQhOYCV1F+Rj4+wBrIp4m6jtOLH+0ivmx/Qk19CUqc3QXZ2N649
- QA19N8U8TVbIdywAO21NstaMQ1l7XYQj8hKFMJDo=
-Received: by mail-il1-f176.google.com with SMTP id i16so2538714ils.12
- for <linux-riscv@lists.infradead.org>; Wed, 22 Apr 2020 09:39:29 -0700 (PDT)
-X-Gm-Message-State: AGi0PuY92RmuFOHD/AYAWBswuZlV80t4JI6Qn3IiV2pgDgHbmttfVi1N
- nWbtBbRPKCuxQevbPUJc+anIaDtkH4npHaDaDuc=
-X-Google-Smtp-Source: APiQypKyqgCn3vKrlX0X8msYPbgz4jhNTQCAHufT+5l+uzBP2FrPCjFC+hPYuzn8+fMuaBgej1tcbMGsnUpTH2pprh0=
-X-Received: by 2002:a92:aa0f:: with SMTP id j15mr27302801ili.211.1587573568568; 
- Wed, 22 Apr 2020 09:39:28 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAMj1kXEXTq8RhD-AM4i3ZmXRcLDTW8waNDbWNa0V8V1nz4zb_A@mail.gmail.com>
- <mhng-2320bbe6-c880-40f4-914e-a6209d0f2f95@palmerdabbelt-glaptop1>
-In-Reply-To: <mhng-2320bbe6-c880-40f4-914e-a6209d0f2f95@palmerdabbelt-glaptop1>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Wed, 22 Apr 2020 18:39:17 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXG6KG7L5kopUMyY-DCkURfRZYDvOVU9+U=+eiktXfhrvg@mail.gmail.com>
-Message-ID: <CAMj1kXG6KG7L5kopUMyY-DCkURfRZYDvOVU9+U=+eiktXfhrvg@mail.gmail.com>
-Subject: Re: [v4 PATCH 0/3] Add UEFI support for RISC-V
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Content-Type: text/plain; charset="UTF-8"
+ id 1jRIfT-0001qk-1L
+ for linux-riscv@lists.infradead.org; Wed, 22 Apr 2020 16:56:12 +0000
+Received: by mail-wm1-x343.google.com with SMTP id u127so3256160wmg.1
+ for <linux-riscv@lists.infradead.org>; Wed, 22 Apr 2020 09:56:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=ccup9s4TMsPoGSqQ7E5OueomskUIx+Hkkn8jfkY9+Ms=;
+ b=Zgys1W/8lYMwcQKBAbZ4FqaTnJ8XjvUEe2Mb1uIuhDqTztgew1WDsBpoua3OLZC7iz
+ igs0NvDR77QXJ5mEyxxhH2YBZuKI/QSxAEyr59Ycv5Z0ff5EF/7nlhaaHp2eu65spTSe
+ l/qL2NLsh2l+a5aZBojH2uwfcrE+KoAfFHrOiToTuF5JUlQ3Co09UHcDc3JTxi39MJRW
+ LSOBie6N/+IwXihFFMrVZkUx8uV/BY2Dc9lWo4rQF5B1EEpQlusln841HdkrGVfSHB+P
+ suXuLi8JnaLEvooh0U+Dt3uMmuCAuqX7fq+AtR2jQZH2FHt8TfXjvzOXZtWmD/Ev6oXi
+ IqaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=ccup9s4TMsPoGSqQ7E5OueomskUIx+Hkkn8jfkY9+Ms=;
+ b=r2DjnGJL2jMuBFkWfVcJNZs7vAN5tuII9J8DXIyISk7oWf+SxibBUNTaeNYb9141eu
+ Yd6iOXSxAVTUbGI6ACGVNp8sRAePICt53WlQSWbc2kV2VXO/lYVICpGyZLMNSCJdhqjG
+ 6ltMDn6xUNGRgxaMd28ScdpaNDT6S6MWkEkr3VFK1a64Ot9B7eT6Lvehe7HTcNBade1t
+ /8trNEb0GkfzXJ48Joc8uSFhjS/Bxf2+RqqagiwU+up24nGVxGIZyh5XNXR79bq8A9em
+ tuJhrHekaY9LK10HfVnLB5G/kHcT5ZoP9D0osgh/BxyXMSH8D+LWPh3n5LKE4MWSPr5o
+ w2Zw==
+X-Gm-Message-State: AGi0PubIs+WpMOVeB17VJ6YGrIx3fpgm0otEyRp2WmcL48wRsqUnXwAK
+ z52BGRmXXOFgri0sw8FV+TUjLFhk
+X-Google-Smtp-Source: APiQypLfxbo1dl04eM+WbGeSeuqR2xnV1J9XsjWAoXc+r0E1Thzy+N1jwKJH2hTcNIDH3xJtfNCldw==
+X-Received: by 2002:a1c:96c6:: with SMTP id
+ y189mr12194273wmd.106.1587574565875; 
+ Wed, 22 Apr 2020 09:56:05 -0700 (PDT)
+Received: from aurora.lan (92-110-144-95.cable.dynamic.v4.ziggo.nl.
+ [92.110.144.95])
+ by smtp.gmail.com with ESMTPSA id h10sm9185903wrq.33.2020.04.22.09.56.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Apr 2020 09:56:05 -0700 (PDT)
+From: "Wladimir J. van der Laan" <laanwj@gmail.com>
+To: linux-riscv <linux-riscv@lists.infradead.org>
+Subject: [PATCH] riscv: disable ARCH_HAS_STRICT_KERNEL_RWX for nommu builds
+Date: Wed, 22 Apr 2020 18:55:37 +0200
+Message-Id: <20200422165537.26883-1-laanwj@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_093929_698851_D03C10AD 
-X-CRM114-Status: GOOD (  24.95  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200422_095611_102566_D9F61141 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [laanwj[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -73,7 +84,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,84 +95,33 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-efi <linux-efi@vger.kernel.org>,
- Heinrich Schuchardt <xypron.glpk@gmx.de>,
- Masahiro Yamada <masahiroy@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: "Wladimir J. van der Laan" <laanwj@protonmail.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 21 Apr 2020 at 22:59, Palmer Dabbelt <palmer@dabbelt.com> wrote:
->
-> On Tue, 21 Apr 2020 00:24:04 PDT (-0700), ardb@kernel.org wrote:
-> > On Tue, 21 Apr 2020 at 05:34, Atish Patra <atish.patra@wdc.com> wrote:
-> >>
-> >> This series adds UEFI support for RISC-V. Currently, only boot time
-> >> services have been added. Runtime services will be added in a separate
-> >> series. This series depends on some core EFI patches
-> >> present in current in efi-next and following other patches.
-> >>
-> >> U-Boot: Adds the boot hartid under chosen node.
-> >> https://lists.denx.de/pipermail/u-boot/2020-April/405726.html
-> >>
-> >> Linux kernel: 5.7-rc1
-> >>
-> >> OpenSBI: master
-> >>
-> >> Patch 1 just moves arm-stub code to a generic code so that it can be used
-> >> across different architecture.
-> >>
-> >> Patch 3 adds fixmap bindings so that CONFIG_EFI can be compiled and we do not
-> >> have create separate config to enable boot time services.
-> >> As runtime services are not enabled at this time, full generic early ioremap
-> >> support is also not added in this series.
-> >>
-> >> Patch 4 and 5 adds the PE/COFF header and EFI stub code support for RISC-V
-> >> respectively.
-> >>
-> >> The patches can also be found in following git repo.
-> >>
-> >> https://github.com/atishp04/linux/tree/wip_uefi_riscv_v4
-> >>
-> >> The patches have been verified on Qemu using bootefi command in U-Boot.
-> >>
-> >> Changes from v3->v4:
-> >> 1. Rebased on top of efi-next.
-> >> 2. Dropped patch 1 & 2 from this series as it is already queued in efi-next.
-> >> Changes from v2->v3:
-> >> 3. Improved handle_kernel_image() for RISC-V.
-> >>
-> >
-> > Thanks Atish. This looks nice and simple now.
-> >
-> > I will need an ack from the RISC-V maintainers on these, and it is up
-> > to them to consider whether the changes to core kconfigs and makefiles
-> > are likely to cause trouble or not. If so, I am happy to work out a
-> > way to merge this via a shared stable branch.
->
-> Sorry it took me a while to get around to these, but they're essentially good
-> with me.  There's some comments about needing ISA_C/c.li, but that's pretty
-> trivial.  In terms of mechanics: I don't really ever understand how to do these
-> multi-tree merges.  In an ideal world I'd like to have the arch/riscv/ stuff
-> stay in riscv/for-next, both because I don't want to deal with merge conflicts
-> and because that's where the RISC-V autobuilders look.
->
-> The best I can come up with is to split #3 up such that drivers/firmware/efi/
-> is its own patch and then send that up along with the PE header definitions
-> into an RC.  It'd be unused code at that point, but at least it'd break the
-> dependency between the trees and it'll be getting tested in riscv/for-next so
-> it won't rot.  We can ARMSTUB->GENERIC_STUB by just having the RISC-V support
-> select woth ARMSTUB and GENERIC_STUB, with a cleanup going in after everything
-> is merged.
->
-> That said, I'm happy if there's a better way to do this...
->
+From: "Wladimir J. van der Laan" <laanwj@protonmail.com>
 
-I'll reshuffle the code a bit, and send out an updated series. If we
-are all happy with that, I will stick the first 2 patches on a shared
-tag that you can pull into your branch, and you can apply the
-remaining 4 patches on top of that. Are you ok with a tag based on
-v5.7-rc2?
+For non-MMU systems, which tend to be low-memory SoCs such as the K210,
+it's expensive to align sections to 2MB. Besides that, the security
+guarantees cannot be made anyway.
+---
+ arch/riscv/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+index 62f7bfeb709eb1cdabaccce261320dd0191b3c48..74f82cf4f7816b99fc54155fd40dcf4d40cbf956 100644
+--- a/arch/riscv/Kconfig
++++ b/arch/riscv/Kconfig
+@@ -60,7 +60,7 @@ config RISCV
+ 	select ARCH_HAS_GIGANTIC_PAGE
+ 	select ARCH_HAS_SET_DIRECT_MAP
+ 	select ARCH_HAS_SET_MEMORY
+-	select ARCH_HAS_STRICT_KERNEL_RWX
++	select ARCH_HAS_STRICT_KERNEL_RWX if MMU
+ 	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
+ 	select SPARSEMEM_STATIC if 32BIT
+ 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
+-- 
+2.17.1
+
 
