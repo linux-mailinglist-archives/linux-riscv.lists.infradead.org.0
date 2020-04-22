@@ -2,51 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70BA21B4BA6
-	for <lists+linux-riscv@lfdr.de>; Wed, 22 Apr 2020 19:25:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 969331B4BAB
+	for <lists+linux-riscv@lfdr.de>; Wed, 22 Apr 2020 19:26:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YLVvOLVHz2zguc/up9zceOW/jwtjDWX2ug/Aev+tOLU=; b=SXfeMsMBRH06gP
-	8uSMRK4q6Y0KrgiyFz7V7Kq8AmOO5MS++t79tqWs2HOl6Rm5VgnJP0LgHYvuAD1GbPwVkjOl8VeEa
-	9njf8RYOW86BRe2yeSO89Nmus8x68V7IMGlftEjA+tMTQXGIRhVq4E9tPbb5DumBhFdeIVwHqF+9+
-	LT7r+8B3Ql8hPPSAGyNQo8peONAm8fmDX8hXJhbaxhJR5n4vT/CcxsiZFKuRCpiFKjz/993KMkN5r
-	CcV5nv7L8k1pYCPgFX6a7sBiWHhf5naw45WNZDKXz39qu2w2aWVzo7G3pnsH8ZKQcAB3cP7KuiXrr
-	iV330DZ/tcQzU6fzN98A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=xCBiL4UeKrv7hAKUKJgAhkl/9W+XzwM+RZ7hgiggjLA=; b=pvQIMOJztmuukfg0d3o3icLkO
+	ppS3mlmJWztc+fPXYyLDpQk7F69nB0ywM/p3v+/61GDMsAhAoEYEyIRAyfOCTvrBQecfvSAWZv7S4
+	R05WP4XZIa+pDeyLWkuLtrRNl5No/yr+qB4TXAKwFIIFnL/squYJcVRFPIKiW4Gn+R5/J/rAiQli4
+	w//chXeZqPWvgI9zhjjD/cAii5xXyB8xi5sHdeKFEFacHgGvH8+OKImueavDY0YyeSPpYa9J09CW/
+	ThwGimgIgtl+CeAD/GFTr0ZFay96vxCfnmH6q6c4ixxsmcUiF9cDpKY5SiQOO4o5huJ08u+zeZgF0
+	9ylMuQQfg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRJ7e-00060e-7X; Wed, 22 Apr 2020 17:25:18 +0000
+	id 1jRJ8S-0007NB-C3; Wed, 22 Apr 2020 17:26:08 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRJ7G-0004ac-42
- for linux-riscv@lists.infradead.org; Wed, 22 Apr 2020 17:24:56 +0000
-Received: from cam-smtp0.cambridge.arm.com (fw-tnat.cambridge.arm.com
- [217.140.96.140])
+ id 1jRJ8O-0007MD-UL
+ for linux-riscv@lists.infradead.org; Wed, 22 Apr 2020 17:26:06 +0000
+Received: from mail-io1-f46.google.com (mail-io1-f46.google.com
+ [209.85.166.46])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A35242082E;
- Wed, 22 Apr 2020 17:24:51 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 904AC2098B
+ for <linux-riscv@lists.infradead.org>; Wed, 22 Apr 2020 17:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587576293;
- bh=kz4O1qVm+IAz0chYEA+quutaWYNcaCi6Naczckjp39Y=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fnxoJPRrguPR3aHjSxXsJzUbF/90MEMF6xhUGopyKYuzsq975u0Z8HZCwpakrqhuL
- YnZ3yZvN6aOm7cd/I/5UUnfxUOCYfEZY/TToMRZS3ax0VWLz5EsxMWpF9Am8I0JhPS
- ayVZfmVnBLlrp/lkFItAhE72M378ButpKjd46lqw=
-From: Ard Biesheuvel <ardb@kernel.org>
-To: linux-efi@vger.kernel.org
-Subject: [PATCH v5 7/7] RISC-V: Add EFI stub support.
-Date: Wed, 22 Apr 2020 19:24:14 +0200
-Message-Id: <20200422172414.6662-8-ardb@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200422172414.6662-1-ardb@kernel.org>
+ s=default; t=1587576364;
+ bh=xCBiL4UeKrv7hAKUKJgAhkl/9W+XzwM+RZ7hgiggjLA=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=OR8qtC+sAwprVmhowaRIZpLS27rtT8PE0VCGE2PJtkAU2z+cYEmQMD24DVQTnYRbx
+ VmvWdTi5uurvMkkiKUVOP48yivOwotOobsc3mngIaMNPbhv7h06FX4/LotgOrelpe+
+ 1jFlc/LiaxwUnkO6CaQ+0re8Mbw6EHQZVEdFfQOA=
+Received: by mail-io1-f46.google.com with SMTP id p10so3250826ioh.7
+ for <linux-riscv@lists.infradead.org>; Wed, 22 Apr 2020 10:26:04 -0700 (PDT)
+X-Gm-Message-State: AGi0PuZHXw+j1c61KmFBhtO012mp6a1DtNTjPFOcPmDnc7i5qudn8Js5
+ rNz2nO0ZKoyC7/qehVfjQX6rnhxXPTD4zozKJMw=
+X-Google-Smtp-Source: APiQypKgnUrxsoKaubXK1VqoevgVi/hWnfek7JkKhHrnbkHUsrr60pTcGH2Q0pqPhP6G2yqnoPOpaAi1zdTCcoFFkEM=
+X-Received: by 2002:a5d:8b57:: with SMTP id c23mr26587932iot.161.1587576363980; 
+ Wed, 22 Apr 2020 10:26:03 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200422172414.6662-1-ardb@kernel.org>
+In-Reply-To: <20200422172414.6662-1-ardb@kernel.org>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Wed, 22 Apr 2020 19:25:52 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXGswTWFggax=xV8d6VSpWm9FnLQSLt7E+67L6dbmYEOpg@mail.gmail.com>
+Message-ID: <CAMj1kXGswTWFggax=xV8d6VSpWm9FnLQSLt7E+67L6dbmYEOpg@mail.gmail.com>
+Subject: Re: [PATCH v5 0/7] Add UEFI support for RISC-V
+To: linux-efi <linux-efi@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_102454_253089_9BE3076D 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20200422_102604_995573_07EC8FCE 
+X-CRM114-Status: GOOD (  11.46  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -75,262 +84,29 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org, Ard Biesheuvel <ardb@kernel.org>
+Cc: Atish Patra <atish.patra@wdc.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Atish Patra <atish.patra@wdc.com>
+On Wed, 22 Apr 2020 at 19:24, Ard Biesheuvel <ardb@kernel.org> wrote:
+>
+> This is a rework of Atish's series [0] to add EFI stub loader support
+> to the RISC-V port. The purpose is to split the code in a way that makes
+> it amenable to being merged via different trees during the same cycle.
+> While at it, I added a patch to disable initrd= loading for new ports,
+> given that it is deprecated and replaced with a method based on a
+> special UEFI device path.
+>
+> My changes are logged in the individual patches.
+>
+> I propose to take the first four patches via the EFI tree, and expose
+> them via a stable tag so that the RISC-V maintainers can merge it before
+> applying the remaining patches. That will ensure that both trees remain
+> in a buildable state, with working EFI stub support on the riscv branch.
+>
 
-Add a RISC-V architecture specific stub code that actually copies the
-actual kernel image to a valid address and jump to it after boot services
-are terminated. Enable UEFI related kernel configs as well for RISC-V.
-
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
-Link: https://lore.kernel.org/r/20200421033336.9663-4-atish.patra@wdc.com
-[ardb: - move hartid fetch into check_platform_features()
-       - use image_size not reserve_size
-       - moved asm/efi.h addition into separate patch ]
-Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
----
- arch/riscv/Kconfig                        |  20 ++++
- arch/riscv/Makefile                       |   1 +
- arch/riscv/configs/defconfig              |   1 +
- drivers/firmware/efi/Kconfig              |   4 +-
- drivers/firmware/efi/libstub/Makefile     |  10 ++
- drivers/firmware/efi/libstub/riscv-stub.c | 109 ++++++++++++++++++++
- 6 files changed, 143 insertions(+), 2 deletions(-)
-
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index f05dd09acd48..54c78cafcd35 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -379,10 +379,30 @@ config CMDLINE_FORCE
- 
- endchoice
- 
-+config EFI_STUB
-+	bool
-+
-+config EFI
-+	bool "UEFI runtime support"
-+	depends on OF
-+	select LIBFDT
-+	select UCS2_STRING
-+	select EFI_PARAMS_FROM_FDT
-+	select EFI_STUB
-+	select EFI_GENERIC_STUB
-+	default y
-+	help
-+	  This option provides support for runtime services provided
-+	  by UEFI firmware (such as non-volatile variables, realtime
-+	  clock, and platform reset). A UEFI stub is also provided to
-+	  allow the kernel to be booted as an EFI application. This
-+	  is only useful on systems that have UEFI firmware.
-+
- endmenu
- 
- menu "Power management options"
- 
- source "kernel/power/Kconfig"
-+source "drivers/firmware/Kconfig"
- 
- endmenu
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index fb6e37db836d..079435804d6d 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -80,6 +80,7 @@ head-y := arch/riscv/kernel/head.o
- core-y += arch/riscv/
- 
- libs-y += arch/riscv/lib/
-+core-$(CONFIG_EFI_STUB) += $(objtree)/drivers/firmware/efi/libstub/lib.a
- 
- PHONY += vdso_install
- vdso_install:
-diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
-index 4da4886246a4..ae69e12d306a 100644
---- a/arch/riscv/configs/defconfig
-+++ b/arch/riscv/configs/defconfig
-@@ -129,3 +129,4 @@ CONFIG_DEBUG_BLOCK_EXT_DEVT=y
- # CONFIG_RUNTIME_TESTING_MENU is not set
- CONFIG_MEMTEST=y
- # CONFIG_SYSFS_SYSCALL is not set
-+CONFIG_EFI=y
-diff --git a/drivers/firmware/efi/Kconfig b/drivers/firmware/efi/Kconfig
-index 4e788dd55b03..8bfc17381b29 100644
---- a/drivers/firmware/efi/Kconfig
-+++ b/drivers/firmware/efi/Kconfig
-@@ -111,7 +111,7 @@ config EFI_GENERIC_STUB
- 
- config EFI_ARMSTUB_DTB_LOADER
- 	bool "Enable the DTB loader"
--	depends on EFI_GENERIC_STUB
-+	depends on EFI_GENERIC_STUB && !RISCV
- 	default y
- 	help
- 	  Select this config option to add support for the dtb= command
-@@ -126,7 +126,7 @@ config EFI_ARMSTUB_DTB_LOADER
- 
- config EFI_GENERIC_STUB_INITRD_CMDLINE_LOADER
- 	bool "Enable the command line initrd loader"
--	depends on EFI_GENERIC_STUB
-+	depends on EFI_GENERIC_STUB && !RISCV
- 	default y
- 	help
- 	  Select this config option to add support for the initrd= command
-diff --git a/drivers/firmware/efi/libstub/Makefile b/drivers/firmware/efi/libstub/Makefile
-index 75cb2c3a1519..a4fd1b048e8c 100644
---- a/drivers/firmware/efi/libstub/Makefile
-+++ b/drivers/firmware/efi/libstub/Makefile
-@@ -22,6 +22,8 @@ cflags-$(CONFIG_ARM64)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- cflags-$(CONFIG_ARM)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
- 				   -fno-builtin -fpic \
- 				   $(call cc-option,-mno-single-pic-base)
-+cflags-$(CONFIG_RISCV)		:= $(subst $(CC_FLAGS_FTRACE),,$(KBUILD_CFLAGS)) \
-+				   -fpic
- 
- cflags-$(CONFIG_EFI_GENERIC_STUB) += -I$(srctree)/scripts/dtc/libfdt
- 
-@@ -56,6 +58,7 @@ lib-$(CONFIG_EFI_GENERIC_STUB)	+= efi-stub.o fdt.o string.o \
- lib-$(CONFIG_ARM)		+= arm32-stub.o
- lib-$(CONFIG_ARM64)		+= arm64-stub.o
- lib-$(CONFIG_X86)		+= x86-stub.o
-+lib-$(CONFIG_RISCV)		+= riscv-stub.o
- CFLAGS_arm32-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- CFLAGS_arm64-stub.o		:= -DTEXT_OFFSET=$(TEXT_OFFSET)
- 
-@@ -80,6 +83,13 @@ STUBCOPY_FLAGS-$(CONFIG_ARM64)	+= --prefix-alloc-sections=.init \
- 				   --prefix-symbols=__efistub_
- STUBCOPY_RELOC-$(CONFIG_ARM64)	:= R_AARCH64_ABS
- 
-+# For RISC-V, we don't need anything special other than arm64. Keep all the
-+# symbols in .init section and make sure that no absolute symbols references
-+# doesn't exist.
-+STUBCOPY_FLAGS-$(CONFIG_RISCV)	+= --prefix-alloc-sections=.init \
-+				   --prefix-symbols=__efistub_
-+STUBCOPY_RELOC-$(CONFIG_RISCV)	:= R_RISCV_HI20
-+
- $(obj)/%.stub.o: $(obj)/%.o FORCE
- 	$(call if_changed,stubcopy)
- 
-diff --git a/drivers/firmware/efi/libstub/riscv-stub.c b/drivers/firmware/efi/libstub/riscv-stub.c
-new file mode 100644
-index 000000000000..349646928e9b
---- /dev/null
-+++ b/drivers/firmware/efi/libstub/riscv-stub.c
-@@ -0,0 +1,109 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-+ */
-+
-+#include <linux/efi.h>
-+#include <linux/libfdt.h>
-+
-+#include <asm/efi.h>
-+#include <asm/sections.h>
-+
-+#include "efistub.h"
-+
-+/*
-+ * RISC-V requires the kernel image to placed 2 MB aligned base for 64 bit and
-+ * 4MB for 32 bit.
-+ */
-+#ifdef CONFIG_64BIT
-+#define MIN_KIMG_ALIGN		SZ_2M
-+#else
-+#define MIN_KIMG_ALIGN		SZ_4M
-+#endif
-+
-+typedef void __noreturn (*jump_kernel_func)(unsigned int, unsigned long);
-+
-+static u32 hartid;
-+
-+static u32 get_boot_hartid_from_fdt(void)
-+{
-+	const void *fdt;
-+	int chosen_node, len;
-+	const fdt32_t *prop;
-+
-+	fdt = get_efi_config_table(DEVICE_TREE_GUID);
-+	if (!fdt)
-+		return U32_MAX;
-+
-+	chosen_node = fdt_path_offset(fdt, "/chosen");
-+	if (chosen_node < 0)
-+		return U32_MAX;
-+
-+	prop = fdt_getprop((void *)fdt, chosen_node, "boot-hartid", &len);
-+	if (!prop || len != sizeof(u32))
-+		return U32_MAX;
-+
-+	return fdt32_to_cpu(*prop);
-+}
-+
-+efi_status_t check_platform_features(void)
-+{
-+	hartid = get_boot_hartid_from_fdt();
-+	if (hartid == U32_MAX) {
-+		pr_efi_err("/chosen/boot-hartid missing or invalid!\n");
-+		return EFI_UNSUPPORTED;
-+	}
-+	return EFI_SUCCESS;
-+}
-+
-+void __noreturn efi_enter_kernel(unsigned long entrypoint, unsigned long fdt,
-+				 unsigned long fdt_size)
-+{
-+	unsigned long kernel_entry = entrypoint + (unsigned long)stext_offset;
-+	jump_kernel_func jump_kernel = (jump_kernel_func)kernel_entry;
-+
-+	/*
-+	 * Jump to real kernel here with following constraints.
-+	 * 1. MMU should be disabled.
-+	 * 2. a0 should contain hartid
-+	 * 3. a1 should DT address
-+	 */
-+	csr_write(CSR_SATP, 0);
-+	jump_kernel(hartid, fdt);
-+}
-+
-+efi_status_t handle_kernel_image(unsigned long *image_addr,
-+				 unsigned long *image_size,
-+				 unsigned long *reserve_addr,
-+				 unsigned long *reserve_size,
-+				 unsigned long dram_base,
-+				 efi_loaded_image_t *image)
-+{
-+	unsigned long kernel_size = 0;
-+	unsigned long preferred_addr;
-+	efi_status_t status;
-+
-+	kernel_size = _edata - _start;
-+	*image_addr = (unsigned long)_start;
-+	*image_size = kernel_size + (_end - _edata);
-+
-+	/*
-+	 * RISC-V kernel maps PAGE_OFFSET virtual address to the same physical
-+	 * address where kernel is booted. That's why kernel should boot from
-+	 * as low as possible to avoid wastage of memory. Currently, dram_base
-+	 * is occupied by the firmware. So the preferred address for kernel to
-+	 * boot is next aligned address. If preferred address is not available,
-+	 * relocate_kernel will fall back to efi_low_alloc_above to allocate
-+	 * lowest possible memory region as long as the address and size meets
-+	 * the alignment constraints.
-+	 */
-+	preferred_addr = round_up(dram_base, MIN_KIMG_ALIGN) + MIN_KIMG_ALIGN;
-+	status = efi_relocate_kernel(image_addr, kernel_size, *image_size,
-+				     preferred_addr, MIN_KIMG_ALIGN, dram_base);
-+
-+	if (status != EFI_SUCCESS) {
-+		pr_efi_err("Failed to relocate kernel\n");
-+		*image_size = 0;
-+	}
-+	return status;
-+}
--- 
-2.17.1
-
+[0] https://lore.kernel.org/linux-efi/20200421033336.9663-1-atish.patra@wdc.com/
 
