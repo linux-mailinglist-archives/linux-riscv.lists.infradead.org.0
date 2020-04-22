@@ -2,139 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F4CD1B4CDE
-	for <lists+linux-riscv@lfdr.de>; Wed, 22 Apr 2020 20:50:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3043C1B50E6
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 Apr 2020 01:38:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OmwtvO4luEPNqsyee2cplGR8BqF71SRCHvPRo0z1JwA=; b=ioZWvN3IBgOXQplzTruR2c+5e
-	mwoWQYfYLMJ6h0jP8e2VgJyQYwguUysD6Imt2Qe7xkudOMpej4eqLeCWZWHcn9/ecQ8bsshRcv6Oz
-	FPokJ4FV5K0ezxR0wo8CL5c/tMNgAgQh9XZrPXDFdtFrqSznGvzTSMzHIg+zC8VYPYjSZXJoItsX6
-	wWcW/CDd7ORUsMbDbGMsV1meR8KXmknZfHm6QVddOfBiD0uwDdRIrJEj/VzIK1rrkXyf5UJIXhujj
-	D7Ldai9uVcsKdKf2xIGZM2kc+8oCSVcj6AsRBxlNsEojQALnF6P4diR6glNTkjrAM7fSYib4ZU0RN
-	cmW3whCIg==;
+	 bh=fVNiplVe58sJkPzhqy8WRRNgSyhr6jgvEDfpNk4rCCM=; b=PiP/uUwb4F8qtVeiO2QaoyyFX
+	MUQnRRTzSTPL4t4aetNeKazJetfIaPru8QJdbzHDMKGxtIzco4DkZW8drs11figtHK/Ll9BZsiuo7
+	6Uhs7r9xzm72dc70DWENji73aTOwUMkEBaumaiyyPNwdYn+Bj3Y6EGUgT7X/I5HsXtLA3h6lCbwmc
+	fsVtm0NBafsJ5eXqX4Vr0W8sX5JWm2xUM+CwhdhWSl6Cd2aXm14xHK4O1UpLmCtrZGzLEI+R5TPc9
+	KEdYkDtEqDA6ct1Ir7K96okQCnRsiCaJVHva9pFNfDZmfrbTQalJDkuCDbnL59b69NfHDla8//yc9
+	HL5zCZNtA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRKRy-0002U9-VD; Wed, 22 Apr 2020 18:50:22 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1jROwN-00014D-TN; Wed, 22 Apr 2020 23:38:03 +0000
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRKRu-0002TC-Vv
- for linux-riscv@lists.infradead.org; Wed, 22 Apr 2020 18:50:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1587581418; x=1619117418;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=OmwtvO4luEPNqsyee2cplGR8BqF71SRCHvPRo0z1JwA=;
- b=hcysLcS9HvERQzyvrQPOK8hMnmyThCeYtJUPa9zgrFETEDR3WWLfLRik
- 8ZPvdVCfDV2sopwtiH9LAAEeMPm9mGJsxzKaVbfH1QxhTl9O6V9fBZFQJ
- lUF15gVC5muMTxlH7EoTuL9LOQKWkhTaKr1o0jT+3crywRKCVLotul+NP
- AzAXZLhHPEa5HKOQtY1TjlCujESOMr7QVTmpSsmv3geQRb+7FgQAeqA4R
- dPgm28BYQN/Yc0Tv5jPR+aI6dQXfnynG+6MCd2bv/dYIsRVgu6MHdxIAi
- LsgNZg6BhuSGY3B69k7Qo/4ZuTY69izrnobEoGd3QdFKbTH5vr7uAts76 w==;
-IronPort-SDR: Ynml9VY8JB9oX/W82ui5/HDnM5E/A+TntykF9/Mac9lz/fN0chXtmQij4zQ9XMVRhF97EN/B6T
- EOWz4c0OpMmmU1MXgcbwwTD/KN3seLVuVkTzdaUUDLyy9k+nYBXgaqasme4wEw8sKafDirKFTJ
- 0refyZzJGgfqvB4UxdCUXXW5wCLSFxn/t1Ukva0gLk9CH0o6EiB7wChm3iQTLPVxXJGpQFAHSq
- tSUu8LZg89I684f0HaeaadggRe78RYaUZxkEw83GURPBXYZpd6lVjkB2I566yd2pMfTv/Re1ON
- M6w=
-X-IronPort-AV: E=Sophos;i="5.73,304,1583164800"; d="scan'208";a="135908006"
-Received: from mail-bn8nam11lp2174.outbound.protection.outlook.com (HELO
- NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.174])
- by ob1.hgst.iphmx.com with ESMTP; 23 Apr 2020 02:50:17 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JwN2Q4NwljS0gR5HoilmkKALG7VxBlyOqHPtDdnyNZ7zYGqkl3eSq3LZyLmETj2Ax5RaMSdFwa/0WhJlw+W5Emn6rfK19HGFA7TS9U3agKinTckSX/y54RkQUSZENEx4bva5AoBxKo5OddvtPH1JSN7mUbtCyslkQY2av9x/0KtMVmuw8kZzzJrPYYQBWmHOb7k9TIyLHcVr7DjRGxTVA9NbySdzfwvHqDDktpj7QbpTpRhCexjkvb6D7lvMmHek+ccO84WaBYUDRFVrXJcausaGEGgkv0wxjjEZY7hyK9fxZAEKy1lU1FFtaGFyFDibTrK8r4rNXCygiQslM2UNSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OmwtvO4luEPNqsyee2cplGR8BqF71SRCHvPRo0z1JwA=;
- b=YPE0zRms5e5Espagjez2zE5tWp2CwmXaiiplLzeNP6eiKw+6gDTaLKmtLltilA5iLT4m+6FdC7s0zYGXJmP2nY19Tgro2pwKhmzza0gjC9XujiqlJt8vv+qL4jKXCbU0GHDWtxObElG3QIjC6QAZNbmdPt1Ch7WWRv2PiwV2PkxfyMmeRxQ2DSo5USvnw3JS2NsQqFHreCNaZtOWu8qt5rjkyLWeyKSUxfR5KgfGOVKdjjWf065x1tTMh32F8Z20UNW6PCpElu/CBJzyax3YGjIOHmreWgqX+zPQGOnSeCsPnfhxhTPNq5jphv/uO5HCDfeCHoR0s5m+791t/WWhLg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OmwtvO4luEPNqsyee2cplGR8BqF71SRCHvPRo0z1JwA=;
- b=OsdnCcIx8sQxhTQyAtkRlxhyBxDJsspwK2NPSf6/jVRB6WUVKDnQkF+CInEmVnaW6sAj1c1QW5flU/nwUV75ajKQW/41GLpBglm4g90FZx6XDHmil3ASyRw+Doc6DTuYK6yw3NvtuT7FKU3fwCffC9Bveu12R+Ncn+OwIxZt1Zo=
-Received: from BY5PR04MB6724.namprd04.prod.outlook.com (2603:10b6:a03:219::15)
- by BY5PR04MB6850.namprd04.prod.outlook.com (2603:10b6:a03:21a::24)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.25; Wed, 22 Apr
- 2020 18:50:16 +0000
-Received: from BY5PR04MB6724.namprd04.prod.outlook.com
- ([fe80::5591:a2e7:4fad:6b0c]) by BY5PR04MB6724.namprd04.prod.outlook.com
- ([fe80::5591:a2e7:4fad:6b0c%6]) with mapi id 15.20.2921.030; Wed, 22 Apr 2020
- 18:50:16 +0000
-From: Atish Patra <Atish.Patra@wdc.com>
-To: "linux-efi@vger.kernel.org" <linux-efi@vger.kernel.org>, "ardb@kernel.org"
- <ardb@kernel.org>
-Subject: Re: [PATCH v5 0/7] Add UEFI support for RISC-V
-Thread-Topic: [PATCH v5 0/7] Add UEFI support for RISC-V
-Thread-Index: AQHWGMrn9ZdKlaq/Ok+3rminiCbba6iFfCKA
-Date: Wed, 22 Apr 2020 18:50:15 +0000
-Message-ID: <533a6e58dce4dd8ccdac9e14b59327a25517a392.camel@wdc.com>
-References: <20200422172414.6662-1-ardb@kernel.org>
-In-Reply-To: <20200422172414.6662-1-ardb@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.34.4 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Atish.Patra@wdc.com; 
-x-originating-ip: [98.248.240.128]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 80f05b3a-d072-4992-41b6-08d7e6edff51
-x-ms-traffictypediagnostic: BY5PR04MB6850:
-x-microsoft-antispam-prvs: <BY5PR04MB6850CB083B54D869E3DFC5B4FAD20@BY5PR04MB6850.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 03818C953D
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6724.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(4636009)(366004)(71200400001)(36756003)(6512007)(8676002)(26005)(186003)(54906003)(86362001)(6486002)(5660300002)(110136005)(2616005)(4326008)(6506007)(76116006)(2906002)(81156014)(8936002)(66476007)(498600001)(66946007)(66446008)(64756008)(66556008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: /zzEozdDvK34FufxkIo+GBPjwm5yb+kFiJJDl4hfkP4aDbim+vbejand43/oNlfwbnde0CCeVTi2TqNC/QOpvnl3Kk5dm07m8zdRD1l6GsTCBEP6bGW4UrNcVRRdr+kShz1Qp5UtC3Bk5yZxMsi07bZWh2IBrGwkSJHl/XU0AXinww9W9AZmS1t8DMADUtgBhVaDRv47pmRYCv4B/oUxY2UlWW8MADlg/PW63M1Vh+JgnT4wwZCXDxSzhCguxtvETnKdtf/GAmEYfYdNP3SlCwaqyCBzs3w2P35FXdxjnbmvzlLkHynhGyH+00SCQy4oOH08PMLeQfe2AjNICmEILW/bvWMb7d8YZHjHaSydJNyuc6RNxkct13tz7tjOubKxA4pNHFNa7s7dMM23wfWRq4I6PdYflwv9N6mY66l+AyZ/LeXav5w+xuh665h4ZpEm
-x-ms-exchange-antispam-messagedata: 3GcHGfd7O8G3t7rJUifym5eH/VxB7mAdsPCqnodl6MePqH8rxt/8x0vfx4k5At/ia5GGSXkaJLTkq4uTAVM/MOwMWRe09nEaoSifrgps+jdYHgAJ0Idq0/Vt537Ccr/7L30vaUoRXnuvbvs7knYoXw==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <211E0C7EB483E04BA3082378CC0D5E63@namprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ id 1jROwK-000131-Ha
+ for linux-riscv@lists.infradead.org; Wed, 22 Apr 2020 23:38:02 +0000
+Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
+ by alexa-out-sd-01.qualcomm.com with ESMTP; 22 Apr 2020 16:37:56 -0700
+Received: from gurus-linux.qualcomm.com ([10.46.162.81])
+ by ironmsg03-sd.qualcomm.com with ESMTP; 22 Apr 2020 16:37:55 -0700
+Received: by gurus-linux.qualcomm.com (Postfix, from userid 383780)
+ id 38ACE4C87; Wed, 22 Apr 2020 16:37:55 -0700 (PDT)
+Date: Wed, 22 Apr 2020 16:37:55 -0700
+From: Guru Das Srinagesh <gurus@codeaurora.org>
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Subject: Re: [PATCH v13 00/11] Convert PWM period and duty cycle to u64
+Message-ID: <20200422233755.GA11597@codeaurora.org>
+References: <cover.1587523702.git.gurus@codeaurora.org>
+ <20200422084934.ajh6yzs5mkzzvop4@holly.lan>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80f05b3a-d072-4992-41b6-08d7e6edff51
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Apr 2020 18:50:15.9833 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MecBnpON+eWy0K6jlwHVkSH5Mpv4ytwBvx36fEFscQ216BRD0i7nMiI9qa+E5bBj61YNeUpW1DmGtKEUAlwhFA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6850
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200422084934.ajh6yzs5mkzzvop4@holly.lan>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_115019_069237_58F8DD93 
-X-CRM114-Status: GOOD (  20.35  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200422_163800_672686_F595D9CE 
+X-CRM114-Status: GOOD (  14.83  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ medium trust [199.106.114.38 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,71 +64,61 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
- "palmer@dabbelt.com" <palmer@dabbelt.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>
+Cc: Kate Stewart <kstewart@linuxfoundation.org>, linux-fbdev@vger.kernel.org,
+ David Collins <collinsd@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Kamil Debski <kamil@wypas.org>, dri-devel@lists.freedesktop.org,
+ Chris Wilson <chris@chris-wilson.co.uk>, Atish Patra <atish.patra@wdc.com>,
+ Thierry Reding <thierry.reding@gmail.com>, linux-riscv@lists.infradead.org,
+ Fabio Estevam <festevam@gmail.com>, linux-clk@vger.kernel.org,
+ Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Alexander Shiyan <shc_work@mail.ru>, Lee Jones <lee.jones@linaro.org>,
+ Chen-Yu Tsai <wens@csie.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
+ linux-pwm@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, Arnd Bergmann <arnd@arndb.de>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ intel-gfx@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>,
+ Mark Brown <broonie@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Subbaraman Narayanamurthy <subbaram@codeaurora.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Allison Randal <allison@lohutok.net>, linux-hwmon@vger.kernel.org,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Richard Fontana <rfontana@redhat.com>, Stephen Boyd <sboyd@kernel.org>,
+ Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org,
+ Yash Shah <yash.shah@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Joe Perches <joe@perches.com>, Shawn Guo <shawnguo@kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-T24gV2VkLCAyMDIwLTA0LTIyIGF0IDE5OjI0ICswMjAwLCBBcmQgQmllc2hldXZlbCB3cm90ZToN
-Cj4gVGhpcyBpcyBhIHJld29yayBvZiBBdGlzaCdzIHNlcmllcyBbMF0gdG8gYWRkIEVGSSBzdHVi
-IGxvYWRlciBzdXBwb3J0DQo+IHRvIHRoZSBSSVNDLVYgcG9ydC4gVGhlIHB1cnBvc2UgaXMgdG8g
-c3BsaXQgdGhlIGNvZGUgaW4gYSB3YXkgdGhhdA0KPiBtYWtlcw0KPiBpdCBhbWVuYWJsZSB0byBi
-ZWluZyBtZXJnZWQgdmlhIGRpZmZlcmVudCB0cmVlcyBkdXJpbmcgdGhlIHNhbWUNCj4gY3ljbGUu
-DQo+IFdoaWxlIGF0IGl0LCBJIGFkZGVkIGEgcGF0Y2ggdG8gZGlzYWJsZSBpbml0cmQ9IGxvYWRp
-bmcgZm9yIG5ldw0KPiBwb3J0cywNCj4gZ2l2ZW4gdGhhdCBpdCBpcyBkZXByZWNhdGVkIGFuZCBy
-ZXBsYWNlZCB3aXRoIGEgbWV0aG9kIGJhc2VkIG9uIGEgDQo+IHNwZWNpYWwgVUVGSSBkZXZpY2Ug
-cGF0aC4NCj4gDQoNClRoYW5rcyBmb3IgcmVmYWN0b3JpbmcgdGhlIHNlcmllcy4gSSBkaWQgbm90
-IHNlZSB0aGlzIG9uZSBhbmQgcmVwbGllZA0KdG8gdGhlIG9yaWdpbmFsIGNvbW1lbnRzIDooLiBF
-dmVyeXRoaW5nIGxvb2tzIGdvb2QgdG8gbWUgZXhjZXB0IHRoZQ0Kc2VsZWN0aW5nIHRoZSBSSVND
-Vl9JU0FfQyBiaXQuDQoNCj4gTXkgY2hhbmdlcyBhcmUgbG9nZ2VkIGluIHRoZSBpbmRpdmlkdWFs
-IHBhdGNoZXMuDQo+IA0KPiBJIHByb3Bvc2UgdG8gdGFrZSB0aGUgZmlyc3QgZm91ciBwYXRjaGVz
-IHZpYSB0aGUgRUZJIHRyZWUsIGFuZCBleHBvc2UNCj4gdGhlbSB2aWEgYSBzdGFibGUgdGFnIHNv
-IHRoYXQgdGhlIFJJU0MtViBtYWludGFpbmVycyBjYW4gbWVyZ2UgaXQNCj4gYmVmb3JlDQo+IGFw
-cGx5aW5nIHRoZSByZW1haW5pbmcgcGF0Y2hlcy4gVGhhdCB3aWxsIGVuc3VyZSB0aGF0IGJvdGgg
-dHJlZXMNCj4gcmVtYWluDQo+IGluIGEgYnVpbGRhYmxlIHN0YXRlLCB3aXRoIHdvcmtpbmcgRUZJ
-IHN0dWIgc3VwcG9ydCBvbiB0aGUgcmlzY3YNCj4gYnJhbmNoLg0KPiANCg0KR3JlYXQuDQoNCj4g
-Q2M6IEF0aXNoIFBhdHJhIDxhdGlzaC5wYXRyYUB3ZGMuY29tPg0KPiBDYzogUGFsbWVyIERhYmJl
-bHQgPHBhbG1lckBkYWJiZWx0LmNvbT4NCj4gQ2M6IFBhdWwgV2FsbXNsZXkgPHBhdWwud2FsbXNs
-ZXlAc2lmaXZlLmNvbT4NCj4gQ2M6IEFsYmVydCBPdSA8YW91QGVlY3MuYmVya2VsZXkuZWR1Pg0K
-PiBDYzogbGludXgtcmlzY3ZAbGlzdHMuaW5mcmFkZWFkLm9yZw0KPiANCj4gQXJkIEJpZXNoZXV2
-ZWwgKDEpOg0KPiAgIGVmaS9saWJzdHViOiBNYWtlIGluaXRyZCBmaWxlIGxvYWRlciBjb25maWd1
-cmFibGUNCj4gDQo+IEF0aXNoIFBhdHJhICg2KToNCj4gICBlZmkvbGlic3R1YjogTW92ZSBhcm0t
-c3R1YiB0byBhIGNvbW1vbiBmaWxlDQo+ICAgZWZpL2xpYnN0dWIvcmlzY3Y6IGFkZCBhcmNoIHNw
-ZWNpZmljIGVmaS5oIGhlYWRlciBmaWxlDQo+ICAgaW5jbHVkZTogcGUuaDogQWRkIFJJU0MtViBy
-ZWxhdGVkIFBFIGRlZmluaXRpb24NCj4gICBSSVNDLVY6IERlZmluZSBmaXhtYXAgYmluZGluZ3Mg
-Zm9yIGdlbmVyaWMgZWFybHkgaW9yZW1hcCBzdXBwb3J0DQo+ICAgUklTQy1WOiBBZGQgUEUvQ09G
-RiBoZWFkZXIgZm9yIEVGSSBzdHViDQo+ICAgUklTQy1WOiBBZGQgRUZJIHN0dWIgc3VwcG9ydC4N
-Cj4gDQo+ICBhcmNoL2FybS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAg
-IDIgKy0NCj4gIGFyY2gvYXJtNjQvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
-ICAgMiArLQ0KPiAgYXJjaC9yaXNjdi9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgIDIxICsrKysNCj4gIGFyY2gvcmlzY3YvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAg
-ICAgICB8ICAgMSArDQo+ICBhcmNoL3Jpc2N2L2NvbmZpZ3MvZGVmY29uZmlnICAgICAgICAgICAg
-ICAgICAgfCAgIDEgKw0KPiAgYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9LYnVpbGQgICAgICAgICAg
-ICAgICAgIHwgICAxICsNCj4gIGFyY2gvcmlzY3YvaW5jbHVkZS9hc20vZWZpLmggICAgICAgICAg
-ICAgICAgICB8ICA0MSArKysrKysrDQo+ICBhcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL2ZpeG1hcC5o
-ICAgICAgICAgICAgICAgfCAgMTggKysrDQo+ICBhcmNoL3Jpc2N2L2luY2x1ZGUvYXNtL2lvLmgg
-ICAgICAgICAgICAgICAgICAgfCAgIDEgKw0KPiAgYXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9zZWN0
-aW9ucy5oICAgICAgICAgICAgIHwgIDEzICsrKw0KPiAgYXJjaC9yaXNjdi9rZXJuZWwvTWFrZWZp
-bGUgICAgICAgICAgICAgICAgICAgIHwgICA0ICsNCj4gIGFyY2gvcmlzY3Yva2VybmVsL2VmaS1o
-ZWFkZXIuUyAgICAgICAgICAgICAgICB8IDEwMCArKysrKysrKysrKysrKysrDQo+ICBhcmNoL3Jp
-c2N2L2tlcm5lbC9oZWFkLlMgICAgICAgICAgICAgICAgICAgICAgfCAgMTYgKysrDQo+ICBhcmNo
-L3Jpc2N2L2tlcm5lbC9pbWFnZS12YXJzLmggICAgICAgICAgICAgICAgfCAgNTMgKysrKysrKysr
-DQo+ICBhcmNoL3Jpc2N2L2tlcm5lbC92bWxpbnV4Lmxkcy5TICAgICAgICAgICAgICAgfCAgMjIg
-KysrLQ0KPiAgZHJpdmVycy9maXJtd2FyZS9lZmkvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwg
-IDE1ICsrLQ0KPiAgZHJpdmVycy9maXJtd2FyZS9lZmkvbGlic3R1Yi9NYWtlZmlsZSAgICAgICAg
-IHwgIDIyICsrKy0NCj4gIC4uLi9lZmkvbGlic3R1Yi97YXJtLXN0dWIuYyA9PiBlZmktc3R1Yi5j
-fSAgICB8ICAgMA0KPiAgZHJpdmVycy9maXJtd2FyZS9lZmkvbGlic3R1Yi9maWxlLmMgICAgICAg
-ICAgIHwgICAzICsNCj4gIGRyaXZlcnMvZmlybXdhcmUvZWZpL2xpYnN0dWIvcmlzY3Ytc3R1Yi5j
-ICAgICB8IDEwOQ0KPiArKysrKysrKysrKysrKysrKysNCj4gIGluY2x1ZGUvbGludXgvcGUuaCAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMyArDQo+ICAyMSBmaWxlcyBjaGFuZ2VkLCA0
-MzYgaW5zZXJ0aW9ucygrKSwgMTIgZGVsZXRpb25zKC0pDQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
-YXJjaC9yaXNjdi9pbmNsdWRlL2FzbS9lZmkuaA0KPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gv
-cmlzY3YvaW5jbHVkZS9hc20vc2VjdGlvbnMuaA0KPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gv
-cmlzY3Yva2VybmVsL2VmaS1oZWFkZXIuUw0KPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvcmlz
-Y3Yva2VybmVsL2ltYWdlLXZhcnMuaA0KPiAgcmVuYW1lIGRyaXZlcnMvZmlybXdhcmUvZWZpL2xp
-YnN0dWIve2FybS1zdHViLmMgPT4gZWZpLXN0dWIuY30NCj4gKDEwMCUpDQo+ICBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9maXJtd2FyZS9lZmkvbGlic3R1Yi9yaXNjdi1zdHViLmMNCj4gDQoN
-Ci0tIA0KUmVnYXJkcywNCkF0aXNoDQo=
+On Wed, Apr 22, 2020 at 09:49:34AM +0100, Daniel Thompson wrote:
+> On Tue, Apr 21, 2020 at 07:57:12PM -0700, Guru Das Srinagesh wrote:
+> > [REQUEST]
+> > 
+> > Would it be possible for the patches that have already received Acked-by's in
+> > this series to be accepted and applied to the tree? I lost an Acked-by (in
+> > intel-panel.c) because it had a merge conflict with a new change that came in
+> > after I rebased to tip. I wasn't sure earlier about accepting single patches as
+> > opposed to the entire series en masse, but this event has got me thinking.
+> 
+> Has there been a positive maintainer review of patch 11 at any point in
+> the thread (most of the people you are asking to commit patches have
+> not been able to see the discussion about the actual feature these
+> patches are preparing for)?
+
+Yes. Uwe had this to say [1] about a previous patchset (v5) of patch 11
+which is essentially unchanged in this patchset save the dropping of the
+pwm_capture change.
+
+[1] https://www.spinics.net/lists/linux-pwm/msg11536.html
+
+Thank you.
+
+Guru Das.
 
