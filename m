@@ -2,57 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E107F1B53FC
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 Apr 2020 07:11:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E045B1B543F
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 Apr 2020 07:29:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GQOse9hB0t+K70/jnTnd98X5m9YT3pNtskCYHmrUrF8=; b=j2xub+apygJKHf
-	lu9grjJRibJbsx0OEyd9ZOEZ0IF8krFyZVMnytLtKBZxwJKhU3oFiRrS9p2mcRTdz5PSQ01x7P/Q0
-	iwC469jJq86NIRhQoLJbkfEcwNNGBt9Edf9t3I/i3gfGw+ts+7LB4MyvLa5MTM77LJpLZSeGpirWo
-	ZwwJJG3613A2QQeg5PTGx7gr/iGvXN9jwyoYowmaxX2tIXrB6JQxVo07XJ8TdtdUgBpuXBQ59g7/R
-	OIIn5AtdaVV1j5FCLbeV345LknYpSPoqWp9SgQ18itCsHIBbq/9BAk1ZV7tNv8qXbn+bFJkMltP5E
-	gXYp6Hhfu6r9X4WVWhTQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=OvwANZ50BYHbdM53cjg6Ie9KQxCh8TcIYuZW9bMZWgo=; b=few8zysIL1S9NNMsEvmiod7Gv
+	baj1LoIJmAZn8ODQDkwkIbUKStoBnkF9O7LTsNuLTYVFCnCwrhBkd2iJPmrirRAxC0r4TiYE1X92N
+	ZsuFDf7+srabyt/mtrIVT5N8Zkm/yRGfT4r8rFUGpuQA7xpHeedwDNPYIppZ3lTZy05uXO0OL4Eyt
+	agXv/lMUCRsz3oa1HFZ+g8XKGYskAl+NMrtrAfXeXEzlkuSua1jM907OXoT87uTv3x9bAay6N8UFi
+	iEjRdyouSZvUK94jhQGoegDjcohZTfqjv+GGgXppUwrKXwfbH0SwTH50aRz9r0VhK+jc6U2TMm2hG
+	Jp2nKWg8A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRU8w-0004Wc-E8; Thu, 23 Apr 2020 05:11:22 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRU8l-0004Pc-T9; Thu, 23 Apr 2020 05:11:13 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 42B421FB;
- Wed, 22 Apr 2020 22:11:07 -0700 (PDT)
-Received: from [10.163.1.9] (unknown [10.163.1.9])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 60FD33F6CF;
- Wed, 22 Apr 2020 22:10:56 -0700 (PDT)
-Subject: Re: [PATCH V3 0/3] arm64: Enable vmemmap mapping from device memory
-To: linux-mm@kvack.org
-References: <1585631387-18819-1-git-send-email-anshuman.khandual@arm.com>
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Message-ID: <ff29a6a3-a75d-878d-75a0-2c458be429f4@arm.com>
-Date: Thu, 23 Apr 2020 10:40:44 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+	id 1jRUQL-0007lF-D8; Thu, 23 Apr 2020 05:29:21 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jRUQH-0007kA-VX
+ for linux-riscv@lists.infradead.org; Thu, 23 Apr 2020 05:29:19 +0000
+Received: by mail-lf1-x142.google.com with SMTP id j14so3690979lfg.9
+ for <linux-riscv@lists.infradead.org>; Wed, 22 Apr 2020 22:29:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OvwANZ50BYHbdM53cjg6Ie9KQxCh8TcIYuZW9bMZWgo=;
+ b=GApN3mpnXSsQdVgpO16HhRHm9D1UrgLe4GItyxL85AvES2eFwsurcz7JqpuGO/QpE6
+ vwo0YNln1qG9Rb1IROFKqgw61A9NT2O6ewlrXGb1fVRAlPK0oMBzdLgRdIrK2206nwiX
+ KuWFclv+4jA8Qf8wf1ZmvRYjcnq9L/gjn5POj884T7Fm7B4TKyBNjd88fpoe+FguYTW3
+ oQRbRtKdSCB7eaq+X8QwHHOgltPd5VIMjTVBr1HAE7czIyi3YSxYwH7nCKoqJsWccHMW
+ LzdaUYmlTijiYs7vIxTPGms8+t7V2bLK6MRZCDccD+lKuIA6iFg2pZrehKsdAmxoFHwF
+ 8/Sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OvwANZ50BYHbdM53cjg6Ie9KQxCh8TcIYuZW9bMZWgo=;
+ b=pHHD+pJTdXNBTQ0CUyL6G4BksQF/cckWB6oYId/RpZdVPSjqgUzgrI6skKxfV1ZM5q
+ 9m1my/SnlqvxjgszjBrSdg1ld7p0TMhzTuxd488UPSkt2/nV/STjK509KcyTpiTphSrX
+ s7tc2mW2GDqMgFp3tJ3CNXKqZ4MYO//E9y2RCCe3CdgwVU3le179EubnL2objufEoGmf
+ 7AElxirsRXWgjLrFOwNZoA49qROgQKVfFyJNukYSF/GmWwb3KGn7p7OOq1m21OR7KxzK
+ X1xQKfle9j2IT+PXE5P+Fyfuh9dBIJWKZDACX48X8EcVhYB3I26NPy39YSXU33IXctIp
+ i4uQ==
+X-Gm-Message-State: AGi0PuZu8kiC/0KlDQRuP1OW4Be3P0c+JCLbKVyp+BClqL0X/sy2ct4j
+ y7ZDn2AUkYACh+suQr79dxVyUq9EqpxPQWUTzw0=
+X-Google-Smtp-Source: APiQypIBAfdsfyIcYH5jTMKcB5AikSQ0/9NuwH9FYspTBf/i9YuCKHSBz8UMRJTv1vpiZ1TqZIdKEthn4AXRo5ktzXc=
+X-Received: by 2002:ac2:569b:: with SMTP id 27mr1280515lfr.134.1587619755739; 
+ Wed, 22 Apr 2020 22:29:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1585631387-18819-1-git-send-email-anshuman.khandual@arm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <20200421002804.5118-1-luke.r.nels@gmail.com>
+In-Reply-To: <20200421002804.5118-1-luke.r.nels@gmail.com>
+From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Date: Wed, 22 Apr 2020 22:29:04 -0700
+Message-ID: <CAADnVQ+taVOr+Zr44eGgOoHXD6y-T-KBKco4KbFZ26jAOsa90A@mail.gmail.com>
+Subject: Re: [PATCH bpf] bpf, riscv: Fix tail call count off by one in RV32
+ BPF JIT
+To: Luke Nelson <lukenels@cs.washington.edu>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_221111_978520_DEE065ED 
-X-CRM114-Status: GOOD (  16.29  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200422_222918_036151_84EAD7F8 
+X-CRM114-Status: UNSURE (   7.72  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:142 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [alexei.starovoitov[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,55 +94,29 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>,
- Thomas Gleixner <tglx@linutronix.de>, David Hildenbrand <david@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, Paul Mackerras <paulus@samba.org>,
- linux-ia64@vger.kernel.org, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, jgg@mellanox.com, aneesh.kumar@linux.ibm.com,
- x86@kernel.org, "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Fenghua Yu <fenghua.yu@intel.com>, rcampbell@nvidia.com,
- Pavel Tatashin <pasha.tatashin@soleen.com>, jglisse@redhat.com,
- Andy Lutomirski <luto@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- dan.j.williams@intel.com, linux-arm-kernel@lists.infradead.org,
- Tony Luck <tony.luck@intel.com>, linuxppc-dev@lists.ozlabs.org,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Andrew Morton <akpm@linux-foundation.org>, robin.murphy@arm.com,
- "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
+Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Daniel Borkmann <daniel@iogearbox.net>, Luke Nelson <luke.r.nels@gmail.com>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-riscv@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
+ Network Development <netdev@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ KP Singh <kpsingh@chromium.org>, Yonghong Song <yhs@fb.com>,
+ bpf <bpf@vger.kernel.org>, Andrii Nakryiko <andriin@fb.com>,
+ Martin KaFai Lau <kafai@fb.com>, Xi Wang <xi.wang@gmail.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Mon, Apr 20, 2020 at 5:28 PM Luke Nelson <lukenels@cs.washington.edu> wrote:
+>
+> This patch fixes an off by one error in the RV32 JIT handling for BPF
+> tail call. Currently, the code decrements TCC before checking if it
+> is less than zero. This limits the maximum number of tail calls to 32
+> instead of 33 as in other JITs. The fix is to instead check the old
+> value of TCC before decrementing.
+>
+> Fixes: 5f316b65e99f ("riscv, bpf: Add RV32G eBPF JIT")
+> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
 
-On 03/31/2020 10:39 AM, Anshuman Khandual wrote:
-> This series enables vmemmap backing memory allocation from device memory
-> ranges on arm64. But before that, it enables vmemmap_populate_basepages()
-> and vmemmap_alloc_block_buf() to accommodate struct vmem_altmap based
-> alocation requests.
-> 
-> This series applies after latest (v14) arm64 memory hot remove series
-> (https://lkml.org/lkml/2020/3/3/1746) on Linux 5.6.
-> 
-> Pending Question:
-> 
-> altmap_alloc_block_buf() does not have any other remaining users in the
-> tree after this change. Should it be converted into a static function and
-> it's declaration be dropped from the header (include/linux/mm.h). Avoided
-> doing so because I was not sure if there are any off-tree users or not.
-> 
-> Changes in V3:
-> 
-> - Dropped comment from free_hotplug_page_range() per Robin
-> - Modified comment in unmap_hotplug_range() per Robin
-> - Enabled altmap support in vmemmap_alloc_block_buf() per Robin
-
-Just a gentle ping. Any updates on this series ? In particular, is there
-any comments or suggestions or concerns with respect to the first two
-patches here that change the core MM and relevant call sites on some
-platforms. Thank you.
-
-- Anshuman
+Applied. Thanks
 
