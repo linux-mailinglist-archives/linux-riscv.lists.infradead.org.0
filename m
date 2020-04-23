@@ -2,74 +2,126 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 493A61B51B2
-	for <lists+linux-riscv@lfdr.de>; Thu, 23 Apr 2020 03:13:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4650D1B528B
+	for <lists+linux-riscv@lfdr.de>; Thu, 23 Apr 2020 04:30:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2i5M2ycjs3rlosl36wEuRNmxANDiCG1t4SjA8z/n0gs=; b=GAKIM4WD9SM74dm6rRWCNJegG
-	PzpctPNlBdnGdemMla544JEUXjgwoJliWGga0Hf1KXYKcHOXYPUIY4Sd5G/LqFae3QVuxlT0wbuD2
-	UY0NIso6P4b4Gqpr5ZoqKsOevoe0pBw+JGRurRzcL7JquygPJfIheMh8lflQmSHBRJ3g3gJil65Qr
-	nxvewy+l9OYKrd4EpMcNdY9dcGYGczfLnaZr7+AYA9IaMYos3G9PfHg2Rq4JYL7KCT97yelA4CljY
-	LQ1rY3wMQCwX1RMpv5Roz8NDM8tMVtSbk/tY8q9JEilwqhcaKBU2u0vTHvoIvbFfHoxZyN7ffBu4r
-	B9OkBS/2A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	 bh=x6BV12i3S3iPseXlP34X228fqownpc0d9H2J9YGhN3w=; b=NfNNJWtNbpxNbtoVM7uok3z1p
+	dA+7bLUIbHnoks2hGQSdBC3eI1kBN5UcoE/vpNOSX52NgVqzwdVTArtSaO88W+xs+RF75GfFjKZwf
+	3V9dCoaoFoI0L3EW3DdwI1K9DQhN4mVyy/j+EU7rRukveGdCrARlQx7w3jEw6kDAt2y/prGfl2FQW
+	GWCQkFxCRs3BlR/p7zvZ5YDYAXs2lygyTEXR/wbZBCN8vnVah6/5ne0CvPAlx2pHylQ33rpl+uvUm
+	UWglgIMTK+Xejb89SVJEXG4lF2JPBAEiR+9jRO2MY+qW/ggWWySyBhQIz1qFSN5yqKSIZe970811S
+	ZMBDGvC0Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRQQs-0000Zp-SC; Thu, 23 Apr 2020 01:13:38 +0000
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]
- helo=us-smtp-delivery-1.mimecast.com)
+	id 1jRRd7-0005I3-0O; Thu, 23 Apr 2020 02:30:21 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRQQn-0000XE-LZ
- for linux-riscv@lists.infradead.org; Thu, 23 Apr 2020 01:13:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587604411;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2i5M2ycjs3rlosl36wEuRNmxANDiCG1t4SjA8z/n0gs=;
- b=R6e10Uhs5Yo958u1WHMs5QxFhLnIkQrzgv/gqwubCiTzjo+qQv+3rEr6rCO/RKpd1izZEZ
- x24S3n4zFpoI/WXQ1BBxeGzzZrN5KHURQ4sKVx9C6ff9fQ8O0r6OpP0KlGd5TJQDHtOy4n
- oZO2v0B9WoclAwf1F2826RhcInHgPBY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-74-BEzLYa-fNc2wMeSdUgUC6Q-1; Wed, 22 Apr 2020 21:13:30 -0400
-X-MC-Unique: BEzLYa-fNc2wMeSdUgUC6Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 55EDD8017F3;
- Thu, 23 Apr 2020 01:13:23 +0000 (UTC)
-Received: from localhost (ovpn-12-37.pek2.redhat.com [10.72.12.37])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 820715D706;
- Thu, 23 Apr 2020 01:13:15 +0000 (UTC)
-Date: Thu, 23 Apr 2020 09:13:12 +0800
-From: Baoquan He <bhe@redhat.com>
-To: Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 16/21] mm: remove early_pfn_in_nid() and
- CONFIG_NODES_SPAN_OTHER_NODES
-Message-ID: <20200423011312.GY4247@MiWiFi-R3L-srv>
-References: <20200412194859.12663-1-rppt@kernel.org>
- <20200412194859.12663-17-rppt@kernel.org>
+ id 1jRRd1-0004E8-8E
+ for linux-riscv@lists.infradead.org; Thu, 23 Apr 2020 02:30:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1587609015; x=1619145015;
+ h=from:to:cc:subject:date:message-id:references:
+ content-transfer-encoding:mime-version;
+ bh=hR7Q00PmvUHpiOTO546zx2xFGhYHv5Y6sgs0WLkzQ9E=;
+ b=VmuauVMi1sJM7XHoy3WBx+T/t/APY5wbm+irW7qW5oWw06Qngjjxfo2U
+ IfptELvWTs6aoum7MdjLzQOqz2XDyShQgl21HU7OoC7/atDQDkAxFn+k9
+ ObvNax7hN6wTc7f+zk9GO5/bjG1WxKDp7ELQwV5lB35gowwa9cKsT/OZt
+ A25VrOOtDV++ULAZjSFHCk8QYBg6csOv5ybtbkNd68i3spM0mTUGNxhMq
+ M1AB+AjMDSvW57sQur6ozyGIOFmU2T+xZ14/UkAVRRs/w5gaaTxxwJudk
+ sJY+aTW+cV3NFUr8aPQyMH87j7EyRnWF2/2UJf/20SNSrb1UKVqXFnVd4 A==;
+IronPort-SDR: OtfLVdN3xDt1Jr6OYWyAmwziTqSZk1qNWFJTrwWEUtIz3/6ztALwhLo7eT57I7GbTwtsvWZOco
+ GNko2IrI9oknusP+7iNug8EDY2HJaXDAw8ffh0+BT/6k7ybIAbif/KNbd5IU0HAdKrcMO7/ttm
+ c6CRIF6V/106xS5wGSF+gBASEE24k8q45eB1aC/XMOh0Xnzb7nZYriJ1BGf1AFHDqBDmBfoxTo
+ 586B6V4jwSgWZhww5VdlojDGRleQA1JRu56g+8iwNfqyfR4iy+v6Vw88P3TwEYT/mUnYPNykpT
+ 2/k=
+X-IronPort-AV: E=Sophos;i="5.73,305,1583164800"; d="scan'208";a="135938343"
+Received: from mail-mw2nam12lp2042.outbound.protection.outlook.com (HELO
+ NAM12-MW2-obe.outbound.protection.outlook.com) ([104.47.66.42])
+ by ob1.hgst.iphmx.com with ESMTP; 23 Apr 2020 10:30:03 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eSfJfpctD1v4lLxYf2Z7zIHYpOm6NspA7cVrJALGqrwqYwec2xaPLVXXBoNkkzJ1LYG2wCby5HP4CpI0ZbQsVMhhfDRC5MpJcb7Us6xLTNUIQTQzYNg1H7PNcxxfiWG+FQh8k9USq+tGzPfJglrKjCQvSe/wgZW06727n3mO6J8L6loh8enQRqLalYDOFnVi6fs/0Pz82vUqRvJrJWfOvF9R+5sAS/RluLiyWIPtnbY56qUSkBzGLj6RL2M7fLz4y89ek+olNm+/pXb010HgwEzVfUTaEbbkhT/Qk5JPpoJSshrroLnSpCk7fvavmxig7NSuOUH6Rty2iaLTt2eeZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=x6BV12i3S3iPseXlP34X228fqownpc0d9H2J9YGhN3w=;
+ b=AKEcYGhmuf8S/FeOdpN6QExYZf+jJibWtc1fPLH651O6x6f7SeY5VbjN+dpw1Ke/Fi8UIorZrz0mkerqwTQHkS4V2V14Pxh+jxjXi3VGilFRQ6p0DSSGV4kyRVkIadih2FEZyPdWfaif3UFpAf+FbnMpcXaJayVTuXONjOioFGINVKsfIOaZ0/NOZsazrrNdFd0P5lVtq8tZz7hCQT5WhZxhBxyYiIexldVwTl/e2ruxlT+aYhg8oH+NudwDs13dARrtURv0m8KA7OnNIZZ13tjzyjNnXiM/k3xIf2haRkP29iBMbsw+vhGjR8OYaSI85ry5FgxpkODKD6mglKMUEw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=x6BV12i3S3iPseXlP34X228fqownpc0d9H2J9YGhN3w=;
+ b=VinQz49PPzu8Nd7g3+YYqvbaEP9wiz/rdVjYY/loh5dQhMtnF4Hq20qTYc2R4hK8gKOasCIVqGBthZeO+GqF8th0tHi2XtkESJGPXGKPI0bJf4CWkJZPCp/GdqapVhIDDToZzQ+dYOrkooBAfgVEpT+wnc1vw4J7FyVHvqLZiLs=
+Received: from BY5PR04MB6900.namprd04.prod.outlook.com (2603:10b6:a03:229::20)
+ by BY5PR04MB6723.namprd04.prod.outlook.com (2603:10b6:a03:226::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.13; Thu, 23 Apr
+ 2020 02:30:02 +0000
+Received: from BY5PR04MB6900.namprd04.prod.outlook.com
+ ([fe80::b574:3071:da2f:7606]) by BY5PR04MB6900.namprd04.prod.outlook.com
+ ([fe80::b574:3071:da2f:7606%8]) with mapi id 15.20.2937.012; Thu, 23 Apr 2020
+ 02:30:02 +0000
+From: Damien Le Moal <Damien.LeMoal@wdc.com>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 0/3] K210 support fixes
+Thread-Topic: [PATCH 0/3] K210 support fixes
+Thread-Index: AQHWGCujIRwnV4bwO0empZd8no3pRA==
+Date: Thu, 23 Apr 2020 02:30:02 +0000
+Message-ID: <BY5PR04MB69006DFD0CFA33250B845EC1E7D30@BY5PR04MB6900.namprd04.prod.outlook.com>
+References: <mhng-14ad9472-18bb-49a3-99f2-a87d176ad9c4@palmerdabbelt-glaptop1>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Damien.LeMoal@wdc.com; 
+x-originating-ip: [129.253.182.57]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 0b89b2bc-db38-4ed2-d4fa-08d7e72e3a42
+x-ms-traffictypediagnostic: BY5PR04MB6723:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BY5PR04MB6723124DE140BB3580B513FBE7D30@BY5PR04MB6723.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-forefront-prvs: 03827AF76E
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6900.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(136003)(346002)(376002)(39860400002)(396003)(366004)(66556008)(316002)(54906003)(6916009)(33656002)(478600001)(55016002)(8936002)(9686003)(4326008)(186003)(81156014)(52536014)(8676002)(71200400001)(66476007)(66946007)(66446008)(76116006)(64756008)(53546011)(26005)(86362001)(2906002)(6506007)(5660300002)(7696005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: NjFCuitfsqgTKPEAcGKmLbbSup1Hq8o/+qu1vUp6o6hw/17Pp1oMZ/hO7rNDSuhM1jLMKD3J2BSAouSuVF+Bt1gx2JnTPyqivBOikH1kTcRzcf3Ee4GIyOgEZSi4m/9QR+5cv4d31Nso1YK44ffM/BufPFTuA8Zp7IacUaMkEHu+9lAfyZ4K891sjL1WI9B3Akv93DxyKGVktbHUj0ojjoFvGPdkED+eXbpeZvIbamf9AmJiMfdQY/JmAS3gXu9bIb941aDqGpK8QpQqNOCOrUUYd0GNLDa1n5r8F0OZZ2gvTXrgCVEfp1QM/tTVBtp8ceNuA1Y1urRQu1HznjWKxGgDXaa8f5Kraw9jMGxtW8dzZzipI0tcQBEHAU8jV609Kfj0BfcaPKKh39DciomVf0f1QMlo0gPPhGGshQ6ocCd7twYNrxE8A1NxqVL4pK8r
+x-ms-exchange-antispam-messagedata: ixLx8VpmRYzbaa8Le6tvSOVLfoj0SJnL9KjQyii0nytkYAk5c3VvlauBbW3j+YYHh8llKVGgtuSIXrW9jtvTCBYCpWZwXqX4WY1IsnLCMV1z9CKw6qqnWpokkkkK2OQdUT8rEME5Mi3nW4NRJVZA5w==
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200412194859.12663-17-rppt@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0b89b2bc-db38-4ed2-d4fa-08d7e72e3a42
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2020 02:30:02.7378 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OJUADHwK3Xzxhp1A9qYG7NQrTZxLLN7T0PaC/y5+XzmKRgES/Voo2BDovBqF5L1cjU9ks0YCM0/051Nc/NstXQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB6723
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_181333_796425_49A8982E 
-X-CRM114-Status: GOOD (  20.02  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200422_193015_361271_2F5ADF16 
+X-CRM114-Status: GOOD (  10.84  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [205.139.110.61 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -79,7 +131,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,164 +142,61 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, Michal Hocko <mhocko@kernel.org>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- linux-csky@vger.kernel.org, linux-parisc@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-hexagon@vger.kernel.org,
- linux-riscv@lists.infradead.org, Greg Ungerer <gerg@linux-m68k.org>,
- linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-snps-arc@lists.infradead.org, linux-c6x-dev@linux-c6x.org,
- Brian Cain <bcain@codeaurora.org>, Jonathan Corbet <corbet@lwn.net>,
- linux-sh@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
- Helge Deller <deller@gmx.de>, x86@kernel.org,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Mike Rapoport <rppt@linux.ibm.com>, Geert Uytterhoeven <geert@linux-m68k.org>,
- linux-arm-kernel@lists.infradead.org, Mark Salter <msalter@redhat.com>,
- Matt Turner <mattst88@gmail.com>, linux-mips@vger.kernel.org,
- uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
- linux-alpha@vger.kernel.org, linux-um@lists.infradead.org,
- linux-m68k@lists.linux-m68k.org, Tony Luck <tony.luck@intel.com>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- Hoan Tran <Hoan@os.amperecomputing.com>, Michal Simek <monstr@monstr.eu>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, openrisc@lists.librecores.org,
- Richard Weinberger <richard@nod.at>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Anup Patel <Anup.Patel@wdc.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 04/12/20 at 10:48pm, Mike Rapoport wrote:
-> From: Mike Rapoport <rppt@linux.ibm.com>
-> 
-> The commit f47ac088c406 ("mm: memmap_init: iterate over memblock regions
-
-This commit id should be a temporary one, will be changed when merged
-into maintainer's tree and linus's tree. Only saying last patch plus the
-patch subject is OK?
-
-> rather that check each PFN") made early_pfn_in_nid() obsolete and since
-> CONFIG_NODES_SPAN_OTHER_NODES is only used to pick a stub or a real
-> implementation of early_pfn_in_nid() it is also not needed anymore.
-> 
-> Remove both early_pfn_in_nid() and the CONFIG_NODES_SPAN_OTHER_NODES.
-> 
-> Co-developed-by: Hoan Tran <Hoan@os.amperecomputing.com>
-> Signed-off-by: Hoan Tran <Hoan@os.amperecomputing.com>
-> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
-> ---
->  arch/powerpc/Kconfig |  9 ---------
->  arch/sparc/Kconfig   |  9 ---------
->  arch/x86/Kconfig     |  9 ---------
->  mm/page_alloc.c      | 20 --------------------
->  4 files changed, 47 deletions(-)
-> 
-> diff --git a/arch/powerpc/Kconfig b/arch/powerpc/Kconfig
-> index 5f86b22b7d2c..74f316deeae1 100644
-> --- a/arch/powerpc/Kconfig
-> +++ b/arch/powerpc/Kconfig
-> @@ -685,15 +685,6 @@ config ARCH_MEMORY_PROBE
->  	def_bool y
->  	depends on MEMORY_HOTPLUG
->  
-> -# Some NUMA nodes have memory ranges that span
-> -# other nodes.  Even though a pfn is valid and
-> -# between a node's start and end pfns, it may not
-> -# reside on that node.  See memmap_init_zone()
-> -# for details.
-> -config NODES_SPAN_OTHER_NODES
-> -	def_bool y
-> -	depends on NEED_MULTIPLE_NODES
-> -
->  config STDBINUTILS
->  	bool "Using standard binutils settings"
->  	depends on 44x
-> diff --git a/arch/sparc/Kconfig b/arch/sparc/Kconfig
-> index 795206b7b552..0e4f3891b904 100644
-> --- a/arch/sparc/Kconfig
-> +++ b/arch/sparc/Kconfig
-> @@ -286,15 +286,6 @@ config NODES_SHIFT
->  	  Specify the maximum number of NUMA Nodes available on the target
->  	  system.  Increases memory reserved to accommodate various tables.
->  
-> -# Some NUMA nodes have memory ranges that span
-> -# other nodes.  Even though a pfn is valid and
-> -# between a node's start and end pfns, it may not
-> -# reside on that node.  See memmap_init_zone()
-> -# for details.
-> -config NODES_SPAN_OTHER_NODES
-> -	def_bool y
-> -	depends on NEED_MULTIPLE_NODES
-> -
->  config ARCH_SPARSEMEM_ENABLE
->  	def_bool y if SPARC64
->  	select SPARSEMEM_VMEMMAP_ENABLE
-> diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-> index 9d3e95b4fb85..37dac095659e 100644
-> --- a/arch/x86/Kconfig
-> +++ b/arch/x86/Kconfig
-> @@ -1581,15 +1581,6 @@ config X86_64_ACPI_NUMA
->  	---help---
->  	  Enable ACPI SRAT based node topology detection.
->  
-> -# Some NUMA nodes have memory ranges that span
-> -# other nodes.  Even though a pfn is valid and
-> -# between a node's start and end pfns, it may not
-> -# reside on that node.  See memmap_init_zone()
-> -# for details.
-> -config NODES_SPAN_OTHER_NODES
-> -	def_bool y
-> -	depends on X86_64_ACPI_NUMA
-> -
->  config NUMA_EMU
->  	bool "NUMA emulation"
->  	depends on NUMA
-> diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-> index c43ce8709457..343d87b8697d 100644
-> --- a/mm/page_alloc.c
-> +++ b/mm/page_alloc.c
-> @@ -1541,26 +1541,6 @@ int __meminit early_pfn_to_nid(unsigned long pfn)
->  }
->  #endif /* CONFIG_NEED_MULTIPLE_NODES */
->  
-> -#ifdef CONFIG_NODES_SPAN_OTHER_NODES
-> -/* Only safe to use early in boot when initialisation is single-threaded */
-> -static inline bool __meminit early_pfn_in_nid(unsigned long pfn, int node)
-> -{
-> -	int nid;
-> -
-> -	nid = __early_pfn_to_nid(pfn, &early_pfnnid_cache);
-> -	if (nid >= 0 && nid != node)
-> -		return false;
-> -	return true;
-> -}
-> -
-> -#else
-> -static inline bool __meminit early_pfn_in_nid(unsigned long pfn, int node)
-> -{
-> -	return true;
-> -}
-> -#endif
-
-And macro early_pfn_valid() is not needed either, we may need remove it
-too. 
-
-Otherwise, removing NODES_SPAN_OTHER_NODES in this patch looks good.
-
-Reviewed-by: Baoquan He <bhe@redhat.com>
-
-> -
-> -
->  void __init memblock_free_pages(struct page *page, unsigned long pfn,
->  							unsigned int order)
->  {
-> -- 
-> 2.25.1
-> 
-
+On 2020/04/22 7:24, Palmer Dabbelt wrote:=0A=
+> On Mon, 13 Apr 2020 21:43:23 PDT (-0700), Damien Le Moal wrote:=0A=
+>> Palmer,=0A=
+>>=0A=
+>> The first 2 patches of this series are your patches for the builtin DTB=
+=0A=
+>> fixed up and tested. The third patch adds necessary updates to the=0A=
+>> K210 defconfig. Please review.=0A=
+>>=0A=
+>> Damien Le Moal (1):=0A=
+>>   riscv: K210: Update defconfig=0A=
+>>=0A=
+>> Palmer Dabbelt (2):=0A=
+>>   riscv: Allow device trees to be built into the kernel=0A=
+>>   riscv: K210: Add a built-in device tree=0A=
+>>=0A=
+>>  arch/riscv/Kbuild                       |  1 +=0A=
+>>  arch/riscv/Kconfig                      |  5 ++++=0A=
+>>  arch/riscv/Kconfig.socs                 | 17 ++++++++++-=0A=
+>>  arch/riscv/boot/dts/Makefile            |  2 ++=0A=
+>>  arch/riscv/boot/dts/kendryte/Makefile   |  4 ++-=0A=
+>>  arch/riscv/configs/nommu_k210_defconfig |  7 ++---=0A=
+>>  arch/riscv/include/asm/soc.h            | 39 +++++++++++++++++++++++++=
+=0A=
+>>  arch/riscv/kernel/setup.c               |  4 +++=0A=
+>>  arch/riscv/kernel/soc.c                 | 27 +++++++++++++++++=0A=
+>>  arch/riscv/kernel/vmlinux.lds.S         |  5 ++++=0A=
+>>  arch/riscv/mm/init.c                    |  9 ++++++=0A=
+>>  drivers/soc/kendryte/k210-sysctl.c      | 12 ++++++++=0A=
+>>  12 files changed, 125 insertions(+), 7 deletions(-)=0A=
+> =0A=
+> Is that PMP thing necessary as well?=0A=
+> =0A=
+> I've put these (along with the PMP fix) on for-next.=0A=
+=0A=
+Is your for-next branch for the next 5.8 merge window ? Or is it for 5.7.0-=
+rcX=0A=
+fixes ?=0A=
+=0A=
+These patches complete the K210 support. We should have that in 5.7 instead=
+ of=0A=
+leaving the half backed k210 support in that version...=0A=
+=0A=
+=0A=
+> =0A=
+> Thanks!=0A=
+> =0A=
+=0A=
+=0A=
+-- =0A=
+Damien Le Moal=0A=
+Western Digital Research=0A=
 
