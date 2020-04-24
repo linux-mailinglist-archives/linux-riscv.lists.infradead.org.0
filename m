@@ -2,76 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1B541B7C7B
-	for <lists+linux-riscv@lfdr.de>; Fri, 24 Apr 2020 19:13:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3C121B7DE5
+	for <lists+linux-riscv@lfdr.de>; Fri, 24 Apr 2020 20:32:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xapoJs4m/WZhJG2TZ1NYDyunMNrcWXcQKm7kNEAuI24=; b=tryt8csfp3B0DV
-	RlaIoSJEmnDZlBcsT6eZQCrIMC2+8EoxIoy5AqucjhgtQZfE3qt0hOR2AGOHPpLVkOhvTwrSIIoKl
-	2bLrU9XWBbRn+5PDVmGn/S6XEdEDfMMlb7jbPBs3TBDW9HsbiLBR7CIgdmRGr9EmdV6RgrLj15dGK
-	71VPaMceE8Ly7TB1GixshOMJJ7M2MAvi2x859Ci9EDbCRuOgaA9NATJmSBON9gSuR+tnmK/SYynsO
-	WvOOXz5DFQhr/eLpbIHRP5aLoysJbY0LaWcqsLwfwP1YIb7uUziddlAvO+prsp545z8hFRk08tvy4
-	nNsPZRDakh/TbNgZhtDw==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=j5yVmSZ49+Dlk+HvtGPX6bkjfOI3FaXkEm/kQbGP+aE=; b=sxhP3ZDW/v9i2m
+	KJAzp0n28yB11QmQGLQ5edea4NHtgnMIG0oLyyv3nGSO+QBmOQfrBzQLmAn/6sOWBmS9f+TUJRJBJ
+	wmoWhfo1liAm7d0CE4ExHhTgORow1uJsrqa6Cl24KRevUfvoKwYnWiQy8EKI3l4BzOR83BziuqkT0
+	eYkvIrBHloB1dKZd5k8BbRyU1G6TES6INa/ozt1yvS5G6YjWZUliAGpWnyxZgfax/Q1tBc2Mg8bar
+	oowSYYgc8u/sIpaa34hXLe1IANLC+trMmcBBrdNOvJ/SHK1pYMwVQ9WwpCIBy2sLs0fuu0qgGafm1
+	qj2Rno7X58mm43+mar7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jS1sl-0004Lc-OE; Fri, 24 Apr 2020 17:12:55 +0000
-Received: from mailgate-2.ics.forth.gr ([139.91.1.5])
+	id 1jS37M-0007BX-96; Fri, 24 Apr 2020 18:32:04 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jS1si-0004JQ-6U
- for linux-riscv@lists.infradead.org; Fri, 24 Apr 2020 17:12:54 +0000
-Received: from av3.ics.forth.gr (av3in [139.91.1.77])
- by mailgate-2.ics.forth.gr (8.14.4/ICS-FORTH/V10-1.8-GATE) with ESMTP id
- 03OHCN0W020368; Fri, 24 Apr 2020 17:12:25 GMT
-X-AuditID: 8b5b014d-241ff700000045c5-bf-5ea31df70979
-Received: from enigma.ics.forth.gr (enigma-2.ics.forth.gr [139.91.151.35])
- by av3.ics.forth.gr (Symantec Messaging Gateway) with SMTP id
- 78.23.17861.7FD13AE5; Fri, 24 Apr 2020 20:12:23 +0300 (EEST)
-X-ICS-AUTH-INFO: Authenticated user: mick@ics.forth.gr at ics.forth.gr
-From: Nick Kossifidis <mick@ics.forth.gr>
-To: linux-riscv@lists.infradead.org
-Subject: [PATCH 3/3] RISC-V: Add crash kernel support
-Date: Fri, 24 Apr 2020 20:12:14 +0300
-Message-Id: <20200424171214.1515457-4-mick@ics.forth.gr>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200424171214.1515457-1-mick@ics.forth.gr>
-References: <20200424171214.1515457-1-mick@ics.forth.gr>
-MIME-Version: 1.0
+ id 1jS37I-0007AX-Jx
+ for linux-riscv@lists.infradead.org; Fri, 24 Apr 2020 18:32:01 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id 7so4883939pjo.0
+ for <linux-riscv@lists.infradead.org>; Fri, 24 Apr 2020 11:31:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=j5yVmSZ49+Dlk+HvtGPX6bkjfOI3FaXkEm/kQbGP+aE=;
+ b=KqlfvrAVypLEpCuU1bJQmCZIXtuEjRz0Wf4p+o9TfUTYa5oYpea2peY0U+Vt/flNWY
+ nvHcbh8fuZMuYbdMdZy+Z9sT3k44ZxkqkYt93FDG3H1AseWnvN0Mx9igq4Pu/q9JAQ9e
+ e2BZvSo7WYSAGD7KBHoxMLDYGch2RmkJlRvtYj+W9NgWpV4CiRhDzlvYGlRsCyEQPsGq
+ XxxwveE0MsxpyT7wO1sj1EnUVb4HK1R7eKZ9KCsYoAif8VeEmkEdMzZ1t+13+SiZni3y
+ clNiozmoY8RETci4AEJHv7stkI2Llbr4ahNfRg5jOBnslQ/XT9JsN8w7ZEs3GN8DRspX
+ 9f9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=j5yVmSZ49+Dlk+HvtGPX6bkjfOI3FaXkEm/kQbGP+aE=;
+ b=eej3URq85hqK6zHUP0mugShq/Wo/X+Xal/6RiFmUsHHyRNXglw0cZrfIalWi/LK0md
+ 53meM0szRFYIPyahJPMJt86yiRed3qCam1RY6C8QpW22CeF3ucBZ5CsQSzyjQu1A/WlZ
+ 9qYOqG9ItVC8W+pPnLCQ6o5nHyspJVLsUHO3F+oI0xhaqcuRZVdKSI7grzzETX2Mq9dI
+ +4mIohzLcm4kppTKSny/0WBEnYcXWsxfxcJlSHAQxhAyURTLhxFN7aXCBYop+VBpx9N3
+ W2vviBL8oVgvduDg89V8I78cDhvmgTSRg6Fk9KVNT21A6B27ua/Iqv9IcqgQ2rcVNoFI
+ WbpQ==
+X-Gm-Message-State: AGi0PuZd2mJ+ghSENw3ui/7iOJSVHq3RV92Rqx+MWmw3K0gGoB32G0zE
+ bwfShlunZcG/VkEyvCfZ3HhL7WKD3C9TdA==
+X-Google-Smtp-Source: APiQypJ2lNi86K1D12Q6C61CR08+CH6Rrg/SJADHvMD0civYXQGZsTNGMj5QApjivqEDiROWc7FZPg==
+X-Received: by 2002:a17:90a:1f8f:: with SMTP id
+ x15mr7664378pja.76.1587753118835; 
+ Fri, 24 Apr 2020 11:31:58 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id a142sm6416357pfa.6.2020.04.24.11.31.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Apr 2020 11:31:58 -0700 (PDT)
+Date: Fri, 24 Apr 2020 11:31:58 -0700 (PDT)
+X-Google-Original-Date: Fri, 24 Apr 2020 11:30:31 PDT (-0700)
+Subject: Re: More K210 Support
+In-Reply-To: <BY5PR04MB6900F96F2F8DD4B91EC8AFDDE7D40@BY5PR04MB6900.namprd04.prod.outlook.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: Damien Le Moal <Damien.LeMoal@wdc.com>
+Message-ID: <mhng-de46ca9b-d989-4513-b110-867a2885c3fe@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrELMWRmVeSWpSXmKPExsXSHT1dWfe77OI4g9X3tCxaPrxjtVi04juL
- xZbDj5gttn1uYbNofneO3eLl5R5mi7ZZ/BZNL64zO3B4TP19hsWj68cMVo83L1+yeDzcdInJ
- Y/OSeo9LzdfZPdoPdDMFsEdx2aSk5mSWpRbp2yVwZbSc7GcveOZc0XVSoIHxrnkXIyeHhICJ
- xNcdE1m6GLk4hASOM0o8PniOHSLhJnH7/k5WEJtNQFNi/qWDQEUcHCICyhLz77mC1DMLHGOU
- 2LNiPhNIjbCAqcTLua8ZQWwWAVWJBdc3MoPYvAIWEs/et7BCzJSX2PrtE5jNKWApMWfuHBYQ
- Wwio5szBvewQ9YISJ2c+AYszA9U3b53NPIGRbxaS1CwkqQWMTKsYBRLLjPUyk4v10vKLSjL0
- 0os2MYKDldF3B+PtzW/1DjEycTAeYpTgYFYS4Y0pWRQnxJuSWFmVWpQfX1Sak1p8iFGag0VJ
- nDePe3mskEB6YklqdmpqQWoRTJaJg1OqgenEhvcHt8wWafpV/y5h0YmG/0vzXUPf2e7d6CSk
- oL5FfafMP54ij4M7lp5WOsvaz6vmpO1+9LXgv5WO+6YIbouPLpnf6nxk1TyL2iPaBnvdt5px
- B1/u17ddY3DgrfKqnVYqUVvWvX44yZ7v6PJPZzhNQ/d6cgZt1L9XUnGR66xr4zTRoql3mvOm
- 1bjKPZx3+tviBfGvVBP7J07izduSwLhQ+vvU+Q+XTqo+IWIdzXuuYcucOyt+d5ZVTZLi9opp
- FPJaVCQc9b/DuSyy9zxf4e/KHbPyLxoL5SzS5w7auLkkWHR+LGeP2lbDL1VG368FKHolHl6z
- fEvX7Xqxrcu3nwztP3yx/aa12vyF0QKV/6YqsRRnJBpqMRcVJwIAEDQOdMUCAAA=
-X-Greylist: inspected by milter-greylist-4.6.2 (mailgate-2.ics.forth.gr
- [139.91.1.5]);
- Fri, 24 Apr 2020 17:12:25 +0000 (GMT) for IP:'139.91.1.77' DOMAIN:'av3in'
- HELO:'av3.ics.forth.gr' FROM:'mick@ics.forth.gr' RCPT:''
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mailgate-2.ics.forth.gr [139.91.1.5]); Fri, 24 Apr 2020 17:12:25 +0000 (GMT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200424_101252_609207_1620CC57 
-X-CRM114-Status: GOOD (  21.76  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200424_113200_704381_6AB4281C 
+X-CRM114-Status: GOOD (  12.69  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [139.91.1.5 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,284 +95,44 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: david.abdurachmanov@sifive.com, anup@brainfault.org, atish.patra@wdc.com,
- yibin_liu@c-sky.com, palmer@dabbelt.com, paul.walmsley@sifive.com,
- Nick Kossifidis <mick@ics.forth.gr>
+Cc: linux-riscv@lists.infradead.org, kernel-team@android.com
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch allows Linux to act as a crash kernel for use with
-kdump. Userspace will let the crash kernel know about the
-memory region it can use through linux,usable-memory-range
-property, and about the memory region where the elf core
-header of the previous kernel is saved, through the
-linux,elfcorehdr property (both on /chosen). These dtb bindings
-are also used on arm64.
+On Mon, 20 Apr 2020 15:25:33 PDT (-0700), Damien Le Moal wrote:
+> On 2020/04/21 5:29, Palmer Dabbelt wrote:
+>> On Sun, 12 Apr 2020 18:45:33 PDT (-0700), Damien Le Moal wrote:
+>>>> On 2020/04/09 1:58, Palmer Dabbelt wrote:
+>>>> * Builds a table of device trees, keyed by mvendorid/marchid/mimpid.  This
+>>>>   allows multiple device trees to be built into the kernel.  I don't really
+>>>>   like maintaining the two lists (one in C and one in assembly) or having that
+>>>>   function in the table, but it's the best I could come up with.
+>>>> * "handles" PMP traps by just skipping the PMP setup phase.
+>>>>
+>>>> I don't actually have a K210 so I can't test any of this.  I also couldn't find
+>>>> the K210 identifiers listed anywhere online, so someone will have to dig them
+>>>> out of the board.
+>>>>
+>>>> I also didn't spend any time thinking through how we free these device trees,
+>>>> but given that .dtb.init.rodata already exists as a section I'm just guessing
+>>>> that's were we're supposed to put them.
+>>>
+>>> I cannot test anything yet. Something funky is going on with boot objcopy/Image
+>>> size: I end up with an Image file (and loader/loader.bin) that are 8.5MB instead
+>>> of the 1.4MB I had before pulling in Linus tree. rc1 as of this morning still
+>>> shows the same problem. vmlinux is 1.8MB vs 1.9 MB before.
+>>>
+>>> To check if my toolchain is broken, I recompiled the 5.6 tree I used for
+>>> developing the series and I end up with a loader.bin file of 1.4 MB. All looking
+>>> good. But there are changes to the vmlinux elf section headers which likely
+>>> cause the huge final size I am seeing. Will try to dig into this.
+>>
+>> Thanks!
+>
+> I sent you fixed patches already. Please review them.
+> The large image size was due to the strict RWX alignment of elf sections, which
+> can be disabled for no mmu case since there is no RW protection anyway.
 
-I tested this on riscv64 qemu and it works as expected, you
-may test it by retrieving the dmesg of the previous kernel
-through /proc/vmcore, using the vmcore-dmesg utility from
-kexec-tools.
-
-Signed-off-by: Nick Kossifidis <mick@ics.forth.gr>
----
- arch/riscv/Kconfig             | 10 ++++
- arch/riscv/kernel/Makefile     |  4 +-
- arch/riscv/kernel/crash_dump.c | 46 ++++++++++++++++
- arch/riscv/kernel/setup.c      | 13 +++++
- arch/riscv/mm/init.c           | 97 +++++++++++++++++++++++++++++++++-
- 5 files changed, 167 insertions(+), 3 deletions(-)
- create mode 100644 arch/riscv/kernel/crash_dump.c
-
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 4934b2f62..3802c8888 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -344,6 +344,16 @@ config KEXEC
- 
- 	  The name comes from the similarity to the exec system call.
- 
-+config CRASH_DUMP
-+	bool "Build kdump crash kernel"
-+	help
-+	  Generate crash dump after being started by kexec. This should
-+	  be normally only set in special crash dump kernels which are
-+	  loaded in the main kernel with kexec-tools into a specially
-+	  reserved region and then later executed after a crash by
-+	  kdump/kexec.
-+
-+	  For more details see Documentation/admin-guide/kdump/kdump.rst
- 
- endmenu
- 
-diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-index 65f6c9f1d..6374b0db5 100644
---- a/arch/riscv/kernel/Makefile
-+++ b/arch/riscv/kernel/Makefile
-@@ -51,6 +51,6 @@ ifeq ($(CONFIG_RISCV_SBI), y)
- obj-$(CONFIG_SMP) += cpu_ops_sbi.o
- endif
- obj-$(CONFIG_HOTPLUG_CPU)	+= cpu-hotplug.o
--obj-${CONFIG_KEXEC}		+= kexec_relocate.o crash_save_regs.o machine_kexec.o
--
-+obj-$(CONFIG_KEXEC)		+= kexec_relocate.o crash_save_regs.o machine_kexec.o
-+obj-$(CONFIG_CRASH_DUMP)	+= crash_dump.o
- clean:
-diff --git a/arch/riscv/kernel/crash_dump.c b/arch/riscv/kernel/crash_dump.c
-new file mode 100644
-index 000000000..81b9d2a71
---- /dev/null
-+++ b/arch/riscv/kernel/crash_dump.c
-@@ -0,0 +1,46 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * This code is taken from arch/arm64/kernel/crash_dump.c
-+ * Created by: AKASHI Takahiro <takahiro.akashi@linaro.org>
-+ * Copyright (C) 2017 Linaro Limited
-+ */
-+
-+#include <linux/crash_dump.h>
-+#include <linux/io.h>
-+
-+/**
-+ * copy_oldmem_page() - copy one page from old kernel memory
-+ * @pfn: page frame number to be copied
-+ * @buf: buffer where the copied page is placed
-+ * @csize: number of bytes to copy
-+ * @offset: offset in bytes into the page
-+ * @userbuf: if set, @buf is in a user address space
-+ *
-+ * This function copies one page from old kernel memory into buffer pointed by
-+ * @buf. If @buf is in userspace, set @userbuf to %1. Returns number of bytes
-+ * copied or negative error in case of failure.
-+ */
-+ssize_t copy_oldmem_page(unsigned long pfn, char *buf,
-+			 size_t csize, unsigned long offset,
-+			 int userbuf)
-+{
-+	void *vaddr;
-+
-+	if (!csize)
-+		return 0;
-+
-+	vaddr = memremap(__pfn_to_phys(pfn), PAGE_SIZE, MEMREMAP_WB);
-+	if (!vaddr)
-+		return -ENOMEM;
-+
-+	if (userbuf) {
-+		if (copy_to_user((char __user *)buf, vaddr + offset, csize)) {
-+			memunmap(vaddr);
-+			return -EFAULT;
-+		}
-+	} else
-+		memcpy(buf, vaddr + offset, csize);
-+
-+	memunmap(vaddr);
-+	return csize;
-+}
-diff --git a/arch/riscv/kernel/setup.c b/arch/riscv/kernel/setup.c
-index 52d057bde..cbd8c8ba6 100644
---- a/arch/riscv/kernel/setup.c
-+++ b/arch/riscv/kernel/setup.c
-@@ -64,6 +64,9 @@ static struct resource code_res = { .name = "Kernel code", };
- static struct resource data_res = { .name = "Kernel data", };
- static struct resource rodata_res = { .name = "Kernel rodata", };
- static struct resource bss_res = { .name = "Kernel bss", };
-+#ifdef CONFIG_CRASH_DUMP
-+static struct resource elfcorehdr_res = { .name = "ELF Core hdr", };
-+#endif
- 
- static void __init kdump_resource_init(void)
- {
-@@ -97,6 +100,16 @@ static void __init kdump_resource_init(void)
- 	if (crashk_res.end > crashk_res.start)
- 		insert_resource(&sysram_res, &crashk_res);
- #endif
-+
-+#ifdef CONFIG_CRASH_DUMP
-+	if (elfcorehdr_size) {
-+		elfcorehdr_res.start = elfcorehdr_addr;
-+		elfcorehdr_res.end = elfcorehdr_addr + elfcorehdr_size;
-+		elfcorehdr_res.flags = IORESOURCE_BUSY | IORESOURCE_SYSTEM_RAM;
-+		insert_resource(&sysram_res, &elfcorehdr_res);
-+	}
-+#endif
-+
- }
- 
- void __init parse_dtb(void)
-diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-index 1c4461590..93cd434c5 100644
---- a/arch/riscv/mm/init.c
-+++ b/arch/riscv/mm/init.c
-@@ -123,6 +123,80 @@ static void __init setup_initrd(void)
- }
- #endif /* CONFIG_BLK_DEV_INITRD */
- 
-+#ifdef CONFIG_CRASH_DUMP
-+/*
-+ * These come from arm64
-+ */
-+static int __init early_init_dt_scan_elfcorehdr(unsigned long node,
-+		const char *uname, int depth, void *data)
-+{
-+	struct memblock_region *elfcorehdr_mem = data;
-+	const __be32 *reg;
-+	int len;
-+
-+	if (depth != 1 || strcmp(uname, "chosen") != 0)
-+		return 0;
-+
-+	reg = of_get_flat_dt_prop(node, "linux,elfcorehdr", &len);
-+	if (!reg || (len < (dt_root_addr_cells + dt_root_size_cells)))
-+		return 1;
-+
-+	elfcorehdr_mem->base = dt_mem_next_cell(dt_root_addr_cells, &reg);
-+	elfcorehdr_mem->size = dt_mem_next_cell(dt_root_size_cells, &reg);
-+
-+	return 1;
-+}
-+
-+static void __init reserve_elfcorehdr(void)
-+{
-+	struct memblock_region elfcorehdr_region = {0};
-+
-+	of_scan_flat_dt(early_init_dt_scan_elfcorehdr, &elfcorehdr_region);
-+
-+	if (elfcorehdr_region.size) {
-+		memblock_reserve(elfcorehdr_region.base,
-+				 elfcorehdr_region.size);
-+
-+		pr_info("Reserving %lldKB of memory at 0x%llx for elfcorehdr\n",
-+			elfcorehdr_region.size >> 10, elfcorehdr_region.base);
-+
-+		elfcorehdr_addr = elfcorehdr_region.base;
-+		elfcorehdr_size = elfcorehdr_region.size;
-+	}
-+}
-+
-+static int __init early_init_dt_scan_usablemem(unsigned long node,
-+		const char *uname, int depth, void *data)
-+{
-+	struct memblock_region *usable_mem = data;
-+	const __be32 *reg;
-+	int len;
-+
-+	if (depth != 1 || strcmp(uname, "chosen") != 0)
-+		return 0;
-+
-+	reg = of_get_flat_dt_prop(node, "linux,usable-memory-range", &len);
-+	if (!reg || (len < (dt_root_addr_cells + dt_root_size_cells)))
-+		return 1;
-+
-+	usable_mem->base = dt_mem_next_cell(dt_root_addr_cells, &reg);
-+	usable_mem->size = dt_mem_next_cell(dt_root_size_cells, &reg);
-+
-+	return 1;
-+}
-+
-+static void __init fdt_enforce_memory_region(void)
-+{
-+	struct memblock_region usablemem_region = {0};
-+
-+	of_scan_flat_dt(early_init_dt_scan_usablemem, &usablemem_region);
-+
-+	if (usablemem_region.size)
-+		memblock_cap_memory_range(usablemem_region.base,
-+					  usablemem_region.size);
-+}
-+#endif
-+
- static phys_addr_t dtb_early_pa __initdata;
- 
- void __init setup_bootmem(void)
-@@ -132,6 +206,9 @@ void __init setup_bootmem(void)
- 	phys_addr_t vmlinux_end = __pa_symbol(&_end);
- 	phys_addr_t vmlinux_start = __pa_symbol(&_start);
- 
-+#ifdef CONFIG_CRASH_DUMP
-+	fdt_enforce_memory_region();
-+#endif
- 	/* Find the memory region containing the kernel */
- 	for_each_memblock(memory, reg) {
- 		phys_addr_t end = reg->base + reg->size;
-@@ -166,6 +243,13 @@ void __init setup_bootmem(void)
- 	 */
- 	memblock_reserve(dtb_early_pa, fdt_totalsize(dtb_early_va));
- 
-+	/*
-+	 * We need to reserve elfcorehdr here so that it doesn't
-+	 * get overwritten later on.
-+	 */
-+#ifdef CONFIG_CRASH_DUMP
-+	reserve_elfcorehdr();
-+#endif
- 	early_init_fdt_scan_reserved_mem();
- 	memblock_allow_resize();
- 	memblock_dump_all();
-@@ -559,9 +643,20 @@ static void __init reserve_crashkernel(void)
- 	unsigned long start_pfn = find_min_pfn_with_active_regions();
- 	unsigned long search_start = start_pfn << PAGE_SHIFT;
- 	unsigned long search_end = (unsigned long) PFN_PHYS(max_low_pfn) - 1;
--
- 	int ret = 0;
- 
-+	/*
-+	 * Don't reserve a region for a crash kernel on a crash kernel
-+	 * since it doesn't make much sense and we have limited memory
-+	 * resources.
-+	 */
-+#ifdef CONFIG_CRASH_DUMP
-+	if (is_kdump_kernel()) {
-+		pr_info("crashkernel: ignore reservation request\n");
-+		return;
-+	}
-+#endif
-+
- 	ret = parse_crashkernel(boot_command_line, memblock_phys_mem_size(),
- 				&crash_size, &crash_base);
- 	if (ret || !crash_size)
--- 
-2.24.1
-
+That RWX thing didn't make it to my inbox for some reason, but Atish pointed it
+out in another thread.  It's on for-next now.  Thanks!
 
