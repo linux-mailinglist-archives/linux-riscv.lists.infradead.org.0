@@ -2,63 +2,64 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CBC91B88FD
-	for <lists+linux-riscv@lfdr.de>; Sat, 25 Apr 2020 21:31:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 569851B8A78
+	for <lists+linux-riscv@lfdr.de>; Sun, 26 Apr 2020 02:55:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FVx9GN8BEPOow/CcAnlWRUhY8hd4TtqSNXU6AGGlM3E=; b=JaJo+5vYDFLmSyynL4iDTbLn2J
-	alETO2U1qfLb9GJTPP9Ee1Qk9Vxqfp7N0Xk//1RG04eAY+xy2LYEHR/367zZvDBKj6uCmfEWLFnMu
-	lJ8gumluGkcyFyMc2/sJQ1VapoUVL/Lmjynv+GoR7dVCPcSxxZR3M+rYWzJl/t1fgVcuMwKnUwkfU
-	xRmW5SKEaEnmtQczxV/lL9uwIrOkvX1xzV7uztjjmfXYm3aWrzdq8EAjs/NIKCFMyAeVWOVuXUzNH
-	NCk1cu2DMsVso16VZc5TcE63+D+2Zm+xqNp7DhpMQoubPwhmco/uUW4IUkbUc6osa3QypTO4xnSTV
-	ehyPy/Sw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=o8u2m1SV4IFQ3TWSpimjDw5o2T/0iI3EwWd5S6sbxP0=; b=KGoB2SAdWEU6u+
+	w31qlv1zGuuLfAS3BDKNMZkQR3Fa2tIshu6W1PJh77HJbxLSrjEdFoNKnbmF+ogLW4t8HSUtQx0h1
+	i03GyZ4YyDdIupl3+sH/FdiG67OJgyKM68F1dodNx50ay27QD9fLHvlDyjjbyUDa0GLNnpmJB2clU
+	tQtLBKYJMr3xFAy0JifFgiEWJkETDu7fFRxqF0ojGkl4e8nQ4X13N3TXxh8CxVobCu1SyfuqXi2wP
+	2Pckwb/S2tYBgejJn6mFs0of6TTYLweMzx0rows5V6H5RFzfCPrUDTUnMUTp+uCmv8S0CT5HzS+l4
+	wCJVSoz48PLnHJUWjIXQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jSQWa-0003ft-No; Sat, 25 Apr 2020 19:31:40 +0000
+	id 1jSVa0-000176-EO; Sun, 26 Apr 2020 00:55:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jSQWX-0003f4-8M
- for linux-riscv@lists.infradead.org; Sat, 25 Apr 2020 19:31:38 +0000
-Received: from e123331-lin.home
- (amontpellier-657-1-18-247.w109-210.abo.wanadoo.fr [109.210.65.247])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1jSVZk-0000y2-4R; Sun, 26 Apr 2020 00:55:20 +0000
+Received: from localhost.localdomain (c-73-231-172-41.hsd1.ca.comcast.net
+ [73.231.172.41])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2F29B206D4;
- Sat, 25 Apr 2020 19:31:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C703C2071E;
+ Sun, 26 Apr 2020 00:55:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587843096;
- bh=bfmoVkdzNl4CYumx83A+qzJVqLVofgMrn9i8wxJ7kR8=;
- h=From:To:Cc:Subject:Date:From;
- b=GuiZWAd5gflELrH2ZHYAfGKgeEYTYCrnC4MORecUqKLiLc/+lsIgNzwNA/fJokDR8
- Saax5ZX+e2jOjnjSqYqzg6bi/TiuyWlucXj3ug3kiQtxYFbV7xEdAVG67YZP3DrDJO
- JXYRwnLnB2KAB9lmrPQFbxOwoCvQBMW+TPe8brQE=
-From: Ard Biesheuvel <ardb@kernel.org>
-To: linux-efi@vger.kernel.org
-Subject: [GIT PULL] EFI stub loading support for RISC-V
-Date: Sat, 25 Apr 2020 21:31:28 +0200
-Message-Id: <20200425193128.25638-1-ardb@kernel.org>
-X-Mailer: git-send-email 2.17.1
+ s=default; t=1587862513;
+ bh=ZTYhefWcWVPvzKpJ4YNus3Eb/Cw6yBZoMC0HC9f2uJo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=voeClhtCC2L3aoOg4PLujYogg49GIS1fgtfMUKWlqAW9bpZ8ridgihF1PL3jGpRdR
+ Xi9LT36ek6mAp6Z7afYDRNR9CU1fvJtyqQXg8uhWkXxPbyQDCDYWBUE03myUQQA0+B
+ pXuuMUykxqMmru798W+FA08pw+vvgALEiW+OZCd4=
+Date: Sat, 25 Apr 2020 17:55:11 -0700
+From: Andrew Morton <akpm@linux-foundation.org>
+To: Anshuman Khandual <anshuman.khandual@arm.com>
+Subject: Re: [PATCH 3/3] mm/hugetlb: Introduce HAVE_ARCH_CLEAR_HUGEPAGE_FLAGS
+Message-Id: <20200425175511.7a68efb5e2f4436fe0328c1d@linux-foundation.org>
+In-Reply-To: <1586864670-21799-4-git-send-email-anshuman.khandual@arm.com>
+References: <1586864670-21799-1-git-send-email-anshuman.khandual@arm.com>
+ <1586864670-21799-4-git-send-email-anshuman.khandual@arm.com>
+X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.31; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200425_123137_335576_E55076EF 
-X-CRM114-Status: GOOD (  18.44  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200425_175516_223591_B41ED5EB 
+X-CRM114-Status: GOOD (  12.58  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
@@ -73,102 +74,72 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Atish Patra <atish.patra@wdc.com>, linux-riscv@lists.infradead.org,
- Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-kernel@vger.kernel.org,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ linux-mm@kvack.org, Paul Mackerras <paulus@samba.org>,
+ "H. Peter Anvin" <hpa@zytor.com>, sparclinux@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
+ linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Fenghua Yu <fenghua.yu@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Tony Luck <tony.luck@intel.com>, linux-parisc@vger.kernel.org,
+ linux-mips@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>,
+ Mike Kravetz <mike.kravetz@oracle.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Palmer,
+On Tue, 14 Apr 2020 17:14:30 +0530 Anshuman Khandual <anshuman.khandual@arm.com> wrote:
 
-As discussed, below are the changes for v5.8 that can be taken via the
-RISC-V tree to implement booting RISC-V Linux from EFI firmware.
+> There are multiple similar definitions for arch_clear_hugepage_flags() on
+> various platforms. This introduces HAVE_ARCH_CLEAR_HUGEPAGE_FLAGS for those
+> platforms that need to define their own arch_clear_hugepage_flags() while
+> also providing a generic fallback definition for others to use. This help
+> reduce code duplication.
+> 
+> ...
+>
+> --- a/include/linux/hugetlb.h
+> +++ b/include/linux/hugetlb.h
+> @@ -544,6 +544,10 @@ static inline int is_hugepage_only_range(struct mm_struct *mm,
+>  }
+>  #endif
+>  
+> +#ifndef HAVE_ARCH_CLEAR_HUGEPAGE_FLAGS
+> +static inline void arch_clear_hugepage_flags(struct page *page) { }
+> +#endif
+> +
+>  #ifndef arch_make_huge_pte
+>  static inline pte_t arch_make_huge_pte(pte_t entry, struct vm_area_struct *vma,
+>  				       struct page *page, int writable)
 
-You can fetch and merge the signed tag directly, or merge 22090f84bc3f80
-and cherry pick the 4 patches on top of it, if you see any need to do so
-(but please use a topic branch in that case)
+This is the rather old-school way of doing it.  The Linus-suggested way is
 
-Please be aware (as is noted in the tag) that these changes are really
-the bare minimum that is needed to launch the kernel from EFI firmware.
-In the current state, you may be able to boot from Uboot in EFI mode,
-but Tianocore based boot will not work at all, unless you convert the
-EFI memory map back to DT memory nodes in the firmware implementation,
-and I can assure you that that is not something that will be accepted in
-upstream Tianocore.
+#ifndef arch_clear_hugepage_flags
+static inline void arch_clear_hugepage_flags(struct page *page)
+{
+}
+#define arch_clear_hugepage_flags arch_clear_hugepage_flags
+#endif
 
-So in summary, this is unfinished work, and I can only recommend merging
-these changes once there is a plan in place to complete the implementation.
+And the various arch headers do
 
--- 
-Ard.
+static inline void arch_clear_hugepage_flags(struct page *page)
+{
+	<some implementation>
+}
+#define arch_clear_hugepage_flags arch_clear_hugepage_flags
 
+It's a small difference - mainly to avoid adding two variables to the
+overall namespace where one would do.
 
-The following changes since commit 22090f84bc3f8081e0ec180ccaedc85820085376:
-
-  efi/libstub: unify EFI call wrappers for non-x86 (2020-04-23 20:15:06 +0200)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/efi/efi.git tags/riscv-efi-for-v5.8
-
-for you to fetch changes up to 66b4ac6b9dd1fdbb8ac7a1f20a8d08066368245d:
-
-  RISC-V: Add EFI stub support. (2020-04-25 13:59:54 +0200)
-
-----------------------------------------------------------------
-EFI stub loading support for RISC-V
-
-This branch implements support for loading the RISC-V Linux kernel
-straight from EFI firmware, by adding PE/COFF metadata to the kernel
-image and incorporating the kernel's EFI stub.
-
-Note that this is the *bare* minimum that is needed to boot from EFI
-firmware. The following pieces are still missing at this point, and
-will be required for full interoperability with generic EFI firmware:
-- using the EFI memory map instead of the device tree to populate the
-  memblock tables
-- parsing and handling of generic EFI configuration tables (such as
-  SMBIOS), as well as architecture specific ones that may be defined
-  for RISC-V
-- runtime mapping of EFI runtime services memory and MMIO regions, and
-  support for EFI runtime services (get/set time, get/set variable, reset
-  system)
-
-----------------------------------------------------------------
-
-Cc: Atish Patra <atish.patra@wdc.com>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Albert Ou <aou@eecs.berkeley.edu>
-Cc: linux-riscv@lists.infradead.org
-
-Atish Patra (4):
-      include: pe.h: Add RISC-V related PE definition
-      RISC-V: Define fixmap bindings for generic early ioremap support
-      RISC-V: Add PE/COFF header for EFI stub
-      RISC-V: Add EFI stub support.
-
- arch/riscv/Kconfig                        |  22 ++++++
- arch/riscv/Makefile                       |   1 +
- arch/riscv/configs/defconfig              |   1 +
- arch/riscv/include/asm/Kbuild             |   1 +
- arch/riscv/include/asm/efi.h              |  33 +++++++++
- arch/riscv/include/asm/fixmap.h           |  18 +++++
- arch/riscv/include/asm/io.h               |   1 +
- arch/riscv/include/asm/sections.h         |  13 ++++
- arch/riscv/kernel/Makefile                |   4 ++
- arch/riscv/kernel/efi-header.S            | 100 +++++++++++++++++++++++++++
- arch/riscv/kernel/head.S                  |  16 +++++
- arch/riscv/kernel/image-vars.h            |  53 +++++++++++++++
- arch/riscv/kernel/vmlinux.lds.S           |  22 +++++-
- drivers/firmware/efi/Kconfig              |   3 +-
- drivers/firmware/efi/libstub/Makefile     |  10 +++
- drivers/firmware/efi/libstub/riscv-stub.c | 109 ++++++++++++++++++++++++++++++
- include/linux/pe.h                        |   3 +
- 17 files changed, 407 insertions(+), 3 deletions(-)
- create mode 100644 arch/riscv/include/asm/efi.h
- create mode 100644 arch/riscv/include/asm/sections.h
- create mode 100644 arch/riscv/kernel/efi-header.S
- create mode 100644 arch/riscv/kernel/image-vars.h
- create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
 
