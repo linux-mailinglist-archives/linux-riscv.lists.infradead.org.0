@@ -2,79 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0314E1B912F
-	for <lists+linux-riscv@lfdr.de>; Sun, 26 Apr 2020 17:35:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A6FC1B93C5
+	for <lists+linux-riscv@lfdr.de>; Sun, 26 Apr 2020 21:52:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UTSGgGHjq8kp92QkvHlpZms09I8imqKy0zzF+tlAzVs=; b=FpKbxndUe3m28GxWL5SGpijy/
-	3dtD7/KouCoevurQNA68R7k6XSXug1brSlPk9Zj6Ic5Pi0etldqKSz5jdmXICEjq9LI66r5JYMURw
-	u7Uq+/JgeN7Q66+JuF8lkwmjtycNcGweOXGrP116Bqsn98diCyS2sqpZGGxWvTy/cdeFBzssSNCFy
-	P1sFiX4TPXoJb4jlhAB2fD6SkqqdZXOLTwSf28vca8iQvXAbtk4OUJ1Xzy+wY95qAX+0+WiTpr+L2
-	PAFXaDqR1YMPqvZ202TRsNCeZaCbU5gzLDo23OqOS4qkNMpHgDHGiRw+Y6J7yZZCYS+QBydcqsz8I
-	tJ9Vuv7WA==;
+	 bh=vT/zsKORE2iDsOOIAsxzv0lVgu+AfWvwogQmIgzzmJ4=; b=MelmFCpOX2A82dsWiCeHg0is4
+	wzgvYL4lCV1CXzDwcWFZTYg5H+XxuCg41CGXhTqHDKkViud6Gk+RqhqSHWqEdPeN5UCfyAZQ6JAgy
+	XH/Dmf/crO2E/T/zgXvI1dJCdqDS6XwspN3W3cWXIA4v12+LIQxs+tvTpaRzM9Y6LnrrxtmxU+7HK
+	Da99AFzRIasakkNJgOArsH6r9aDREeOm610xHCF65LaSnWXT1ltSjmC/3m5zMUHr8LmfoHwJG41c5
+	zAxMyAtLZaz4Md899+Uh0HKLeHodONd3YY5k99UGCBS+96GVGfbQwBs6JljLh78czlFZzzvSmYdYc
+	mRj6AZTXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jSjJc-00021g-J0; Sun, 26 Apr 2020 15:35:32 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1jSnKZ-0002vi-33; Sun, 26 Apr 2020 19:52:47 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jSjJX-0001gA-Ku
- for linux-riscv@lists.infradead.org; Sun, 26 Apr 2020 15:35:29 +0000
-Received: by mail-ot1-x343.google.com with SMTP id b13so21745110oti.3
- for <linux-riscv@lists.infradead.org>; Sun, 26 Apr 2020 08:35:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ id 1jSnKV-0002uZ-09
+ for linux-riscv@lists.infradead.org; Sun, 26 Apr 2020 19:52:44 +0000
+Received: by mail-wr1-x444.google.com with SMTP id k13so18079694wrw.7
+ for <linux-riscv@lists.infradead.org>; Sun, 26 Apr 2020 12:52:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UTSGgGHjq8kp92QkvHlpZms09I8imqKy0zzF+tlAzVs=;
- b=N2pZkcFKfYnH8MFQH1XBAgwpkBWtTWqg1Wp5m386SheDJzx/oyzGkstPWyev5lbnks
- vdViFeava3/mHV7DbMKdozanXzme/Hb4IS0Iu9Cgmvjx44HqtrstIHlx0FvtGOvagvQk
- oKW9FAXQq4cnifGaG6dTKWz/QFf7maWyGnWwkdxRr6jFf6s2exCq9+giNlX9Q1k9dSmx
- wYkfkwekV8crM+CdfX8vSFWlD4jIGO+ebfJE6rv/EDazg9aBr+dj8VrfZYlBJSP8DCbp
- Vgj6vRutX5S4eQerx4f+1+nK1xh9r9cZ4BG+nX2ba3cfyNAzv1+a002Jv2dGuZwNSD9L
- vLTQ==
+ :cc; bh=vT/zsKORE2iDsOOIAsxzv0lVgu+AfWvwogQmIgzzmJ4=;
+ b=rtJdJLtQldx1i8iCxZ5rDUF6CblbODdnDCgbNspbA0Ujnt6AyXZxpsgdlkh8mwzoXF
+ KMrX+3oUGxKMSD2hLYMf5QwNUMDkMkaEyu8LaiTGPoi5gcnYJhug+ZtdkNBLLXxJYjER
+ UUXfj2Dh60IM3DVXfvj4SGqeqxlDRpK9pAYDM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=UTSGgGHjq8kp92QkvHlpZms09I8imqKy0zzF+tlAzVs=;
- b=g4f2iC4dG/TR0yxrQV31wAqqL+HDbKuiI4a45xvJbNyB7FIzuHMLT8WU6kccOJDK0p
- szXBDjeIqeF1sZdsANEDbgBHM6aNrICNntyKczXojtDmuXrRePpydi8N44jpGZ9BcAKP
- SwWqOnTtI/j8gLfVsSAgPAR/6dDwLFP6E8E4j3biwCXvv2q354JX59O6Xduaip6lgPmD
- eiNPbDjQNlU66ZNFFoo6NDPMsvJ+qANQ+6SVwxt5xY4kah+zCj0TsCL6oIWX9uJVjDpz
- sl7S46aZeSjG177y4G6k2CwJaTDYwt23PZ4JNh2BlixqfzV+RRoj7ricR99uILuv91Vv
- hQCA==
-X-Gm-Message-State: AGi0PuZiOAmXyJvZ7eaVr46DPPZqkAq8vnCoDeRD+yeRQNGUbHUGxl6P
- oS18fOaKfwBJC7YBS8qzyDzgGG2mCikkbJIck5npAw==
-X-Google-Smtp-Source: APiQypLNBOzO4kpsgeeFpRJdaFaQ8h8ZKwsOveqkxyYnkjXmAPDH3ozDDLlPWcyUxvefYHZVcSlpJJ1A3+ulGOMBEBY=
-X-Received: by 2002:a05:6808:24e:: with SMTP id
- m14mr12552367oie.116.1587915326594; 
- Sun, 26 Apr 2020 08:35:26 -0700 (PDT)
+ bh=vT/zsKORE2iDsOOIAsxzv0lVgu+AfWvwogQmIgzzmJ4=;
+ b=YvbkCnoZrEhjO5oKfGYDU0I4qlOIPIIPThi8P07rG2Z9JDFzKa7xEOkqmMeZKTzAru
+ 2nXeyH+Bu+ihQd/m3p4BLULIqya/6ttNALVzoza+jKDSE6ZaUmX39N2f9vveBZsyP3Cs
+ LkX+Y5ZeNMum8ah13sy0NCPD265OrRUGYD82HmCEltB4eW1RG5XGHjvIUXkwbd+BCyUa
+ Fu/Ie2bB2y/07xdseDFTWBgaHkB1JdPihsENjsAj2CyGwoewOwEpRXA2ymVzXLN4+R8q
+ MVBpMQ0pruGJk8mk3KShH6z3hoefB8Ta7MIIc9QxnGOWwUaMjlK7TdvOfuJTx+1viPRp
+ HZvg==
+X-Gm-Message-State: AGi0Puarl2BfF/zgUEiMx2VbKlMF2zijuVz+K6iImmDuHebBhCT0v0U5
+ otMnwy/UH6cMscmSB7k6p3nGR2oQRLSEkgElmPhDCLHlyA==
+X-Google-Smtp-Source: APiQypKlNYYpznrgIJwjt7cPENrof5+eRXXkEEBqLmoeRkhHUZQbLY/80ziELYDLrwHGr19YLPps7TrvHWU6Pl3PhwU=
+X-Received: by 2002:a5d:4443:: with SMTP id x3mr23080870wrr.162.1587930760934; 
+ Sun, 26 Apr 2020 12:52:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200426110740.123638-1-zong.li@sifive.com>
- <CAAhSdy3FCdzLV-nH03T=PBxB2tdZXhRrugcC2NcoA=22qpv+Lw@mail.gmail.com>
- <CANXhq0qW9ORoZ5qc5g8ikO9QdeYX=p0fwoP8pyFFkk02a7imnw@mail.gmail.com>
- <CAAhSdy2f2-SQP6TdgxA0HM2ft3eBJd6kEkB--RH=2gUuLktXLQ@mail.gmail.com>
- <CANXhq0pDYa2QfGZX87d5gyO5V2uzA3-ttPZXf7s1EkMUcG37Cw@mail.gmail.com>
- <CAAhSdy188_Kkfsz2bX05T3Rr12XDNtwGiwfqaT2TFVW7auGUaw@mail.gmail.com>
-In-Reply-To: <CAAhSdy188_Kkfsz2bX05T3Rr12XDNtwGiwfqaT2TFVW7auGUaw@mail.gmail.com>
-From: Zong Li <zong.li@sifive.com>
-Date: Sun, 26 Apr 2020 23:35:16 +0800
-Message-ID: <CANXhq0qGq33u34q7nhJE4GG03pZ8BBJrnusr=FgmTeJwtq-=4Q@mail.gmail.com>
-Subject: Re: [PATCH] irqchip/sifive-plic: allow many cores to handle IRQs
-To: Anup Patel <anup@brainfault.org>
+References: <20200425193128.25638-1-ardb@kernel.org>
+In-Reply-To: <20200425193128.25638-1-ardb@kernel.org>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Sun, 26 Apr 2020 12:52:29 -0700
+Message-ID: <CAOnJCUJpGUyK09x0oc8Ci+SdFV-cCMPxLqvD4trx0nb+ub3Yvg@mail.gmail.com>
+Subject: Re: [GIT PULL] EFI stub loading support for RISC-V
+To: Ard Biesheuvel <ardb@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200426_083527_877285_51AF9EFF 
-X-CRM114-Status: GOOD (  31.46  )
+X-CRM114-CacheID: sfid-20200426_125243_068066_AD514922 
+X-CRM114-Status: GOOD (  25.72  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:343 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -96,177 +88,119 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: David Abdurachmanov <david.abdurachmanov@sifive.com>,
- Marc Zyngier <maz@kernel.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+Cc: linux-efi <linux-efi@vger.kernel.org>, Atish Patra <atish.patra@wdc.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
  linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Sun, Apr 26, 2020 at 11:21 PM Anup Patel <anup@brainfault.org> wrote:
+On Sat, Apr 25, 2020 at 12:31 PM Ard Biesheuvel <ardb@kernel.org> wrote:
 >
-> On Sun, Apr 26, 2020 at 8:42 PM Zong Li <zong.li@sifive.com> wrote:
-> >
-> > On Sun, Apr 26, 2020 at 9:38 PM Anup Patel <anup@brainfault.org> wrote:
-> > >
-> > > +Mark Z
-> > >
-> > > On Sun, Apr 26, 2020 at 6:49 PM Zong Li <zong.li@sifive.com> wrote:
-> > > >
-> > > > On Sun, Apr 26, 2020 at 8:47 PM Anup Patel <anup@brainfault.org> wrote:
-> > > > >
-> > > > > On Sun, Apr 26, 2020 at 4:37 PM Zong Li <zong.li@sifive.com> wrote:
-> > > > > >
-> > > > > > Currently, driver forces the IRQs to be handled by only one core. This
-> > > > > > patch provides the way to enable others cores to handle IRQs if needed,
-> > > > > > so users could decide how many cores they wanted on default by boot
-> > > > > > argument.
-> > > > > >
-> > > > > > Use 'irqaffinity' boot argument to determine affinity. If there is no
-> > > > > > irqaffinity in dts or kernel configuration, use irq default affinity,
-> > > > > > so all harts would try to claim IRQ.
-> > > > > >
-> > > > > > For example, add irqaffinity=0 in chosen node to set irq affinity to
-> > > > > > hart 0. It also supports more than one harts to handle irq, such as set
-> > > > > > irqaffinity=0,3,4.
-> > > > > >
-> > > > > > You can change IRQ affinity from user-space using procfs. For example,
-> > > > > > you can make CPU0 and CPU2 serve IRQ together by the following command:
-> > > > > >
-> > > > > > echo 4 > /proc/irq/<x>/smp_affinity
-> > > > > >
-> > > > > > Signed-off-by: Zong Li <zong.li@sifive.com>
-> > > > > > ---
-> > > > > >  drivers/irqchip/irq-sifive-plic.c | 21 +++++++--------------
-> > > > > >  1 file changed, 7 insertions(+), 14 deletions(-)
-> > > > > >
-> > > > > > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> > > > > > index d0a71febdadc..bc1440d54185 100644
-> > > > > > --- a/drivers/irqchip/irq-sifive-plic.c
-> > > > > > +++ b/drivers/irqchip/irq-sifive-plic.c
-> > > > > > @@ -111,15 +111,12 @@ static inline void plic_irq_toggle(const struct cpumask *mask,
-> > > > > >  static void plic_irq_unmask(struct irq_data *d)
-> > > > > >  {
-> > > > > >         struct cpumask amask;
-> > > > > > -       unsigned int cpu;
-> > > > > >         struct plic_priv *priv = irq_get_chip_data(d->irq);
-> > > > > >
-> > > > > >         cpumask_and(&amask, &priv->lmask, cpu_online_mask);
-> > > > > > -       cpu = cpumask_any_and(irq_data_get_affinity_mask(d),
-> > > > > > -                                          &amask);
-> > > > > > -       if (WARN_ON_ONCE(cpu >= nr_cpu_ids))
-> > > > > > -               return;
-> > > > > > -       plic_irq_toggle(cpumask_of(cpu), d, 1);
-> > > > > > +       cpumask_and(&amask, &amask, irq_data_get_affinity_mask(d));
-> > > > > > +
-> > > > > > +       plic_irq_toggle(&amask, d, 1);
-> > > > > >  }
-> > > > > >
-> > > > > >  static void plic_irq_mask(struct irq_data *d)
-> > > > > > @@ -133,24 +130,20 @@ static void plic_irq_mask(struct irq_data *d)
-> > > > > >  static int plic_set_affinity(struct irq_data *d,
-> > > > > >                              const struct cpumask *mask_val, bool force)
-> > > > > >  {
-> > > > > > -       unsigned int cpu;
-> > > > > >         struct cpumask amask;
-> > > > > >         struct plic_priv *priv = irq_get_chip_data(d->irq);
-> > > > > >
-> > > > > >         cpumask_and(&amask, &priv->lmask, mask_val);
-> > > > > >
-> > > > > >         if (force)
-> > > > > > -               cpu = cpumask_first(&amask);
-> > > > > > +               cpumask_copy(&amask, mask_val);
-> > > > > >         else
-> > > > > > -               cpu = cpumask_any_and(&amask, cpu_online_mask);
-> > > > > > -
-> > > > > > -       if (cpu >= nr_cpu_ids)
-> > > > > > -               return -EINVAL;
-> > > > > > +               cpumask_and(&amask, &amask, cpu_online_mask);
-> > > > > >
-> > > > > >         plic_irq_toggle(&priv->lmask, d, 0);
-> > > > > > -       plic_irq_toggle(cpumask_of(cpu), d, 1);
-> > > > > > +       plic_irq_toggle(&amask, d, 1);
-> > > > > >
-> > > > > > -       irq_data_update_effective_affinity(d, cpumask_of(cpu));
-> > > > > > +       irq_data_update_effective_affinity(d, &amask);
-> > > > > >
-> > > > > >         return IRQ_SET_MASK_OK_DONE;
-> > > > > >  }
-> > > > > > --
-> > > > > > 2.26.1
-> > > > > >
-> > > > >
-> > > > > I strongly oppose (NACK) this patch due to performance reasons.
-> > > > >
-> > > > > In PLIC, if we enable an IRQ X for N CPUs then when IRQ X occurs:
-> > > > > 1) All N CPUs will take interrupt
-> > > > > 2) All N CPUs will try to read PLIC CLAIM register
-> > > > > 3) Only one of the CPUs will see IRQ X using the CLAIM register
-> > > > > but other N - 1 CPUs will see no interrupt and return back to what
-> > > > > they were doing. In other words, N - 1 CPUs will just waste CPU
-> > > > > every time IRQ X occurs.
-> > > > >
-> > > > > Example1, one Application doing heavy network traffic will
-> > > > > degrade performance of other applications because with every
-> > > > > network RX/TX interrupt N-1 CPUs will waste CPU trying to
-> > > > > process network interrupt.
-> > > > >
-> > > > > Example1, one Application doing heavy MMC/SD traffic will
-> > > > > degrade performance of other applications because with every
-> > > > > SPI read/write interrupt N-1 CPUs will waste CPU trying to
-> > > > > process it.
-> > > > >
-> > > > > In fact, the current PLIC approach is actually a performance
-> > > > > optimization. This implementation also works fine with in-kernel
-> > > > > load-balancer and user space load balancer.
-> > > > >
-> > > >
-> > > > Yes, it's exactly, I know what you pointed out. But the idea of this
-> > > > patch is just providing a way that users could enable other cores if
-> > > > they wanted, it could still enable only one core by this change. The
-> > > > purpose here is thinking of flexible use, rather than limitation.
-> > > > Maybe it would be a happy medium that we make the default case enable
-> > > > only one core? It is a good open discussion.
-> > >
-> > > Making the default case as enable only one core is just a work-around.
-> > >
-> > > As-per my understanding, if we set affinity mask of N CPUs for IRQ X
-> > > then it does not mean all N CPUs should receive IRQ X rather it means
-> > > that exactly one of the N CPUs will receive IRQ X and the IRQ receiving
-> > > CPU will be fixed (reflected by effective affinity returned by the driver).
-> >
-> > is there a case that we only bundle the IRQ to CPU0, but CPU0 is more
-> > much busy than other CPUs, and it would be better if another CPU could
-> > take the IRQ?
+> Palmer,
 >
-> This is a common problem across architectures.
+> As discussed, below are the changes for v5.8 that can be taken via the
+> RISC-V tree to implement booting RISC-V Linux from EFI firmware.
 >
-> To tackle this, we typically run irqbalance daemon in user-space which will
-> change IRQ affinity based on CPU load.
+> You can fetch and merge the signed tag directly, or merge 22090f84bc3f80
+> and cherry pick the 4 patches on top of it, if you see any need to do so
+> (but please use a topic branch in that case)
 >
-> Refer, https://linux.die.net/man/1/irqbalance
+> Please be aware (as is noted in the tag) that these changes are really
+> the bare minimum that is needed to launch the kernel from EFI firmware.
+> In the current state, you may be able to boot from Uboot in EFI mode,
+> but Tianocore based boot will not work at all, unless you convert the
+> EFI memory map back to DT memory nodes in the firmware implementation,
+> and I can assure you that that is not something that will be accepted in
+> upstream Tianocore.
+>
+> So in summary, this is unfinished work, and I can only recommend merging
+> these changes once there is a plan in place to complete the implementation.
+>
 
-OK, thank you for the information and figuring out the issue. Let's
-stop this patch unless there are other voices.
+I have started looking into this part. My initial plan was to start
+looking into it right after I got
+the boot time services working but other things took priority. Thanks
+for your review and
+suggestion throughout the process. I will coordinate with Abner/Daniel
+to test RISC-V UEFI
+runtime services(once implemented)  with tianocore.
+> --
+> Ard.
+>
+>
+> The following changes since commit 22090f84bc3f8081e0ec180ccaedc85820085376:
+>
+>   efi/libstub: unify EFI call wrappers for non-x86 (2020-04-23 20:15:06 +0200)
+>
+> are available in the Git repository at:
+>
+>   git://git.kernel.org/pub/scm/linux/kernel/git/efi/efi.git tags/riscv-efi-for-v5.8
+>
+> for you to fetch changes up to 66b4ac6b9dd1fdbb8ac7a1f20a8d08066368245d:
+>
+>   RISC-V: Add EFI stub support. (2020-04-25 13:59:54 +0200)
+>
+> ----------------------------------------------------------------
+> EFI stub loading support for RISC-V
+>
+> This branch implements support for loading the RISC-V Linux kernel
+> straight from EFI firmware, by adding PE/COFF metadata to the kernel
+> image and incorporating the kernel's EFI stub.
+>
+> Note that this is the *bare* minimum that is needed to boot from EFI
+> firmware. The following pieces are still missing at this point, and
+> will be required for full interoperability with generic EFI firmware:
+> - using the EFI memory map instead of the device tree to populate the
+>   memblock tables
+> - parsing and handling of generic EFI configuration tables (such as
+>   SMBIOS), as well as architecture specific ones that may be defined
+>   for RISC-V
+> - runtime mapping of EFI runtime services memory and MMIO regions, and
+>   support for EFI runtime services (get/set time, get/set variable, reset
+>   system)
+>
+> ----------------------------------------------------------------
+>
+> Cc: Atish Patra <atish.patra@wdc.com>
+> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> Cc: Albert Ou <aou@eecs.berkeley.edu>
+> Cc: linux-riscv@lists.infradead.org
+>
+> Atish Patra (4):
+>       include: pe.h: Add RISC-V related PE definition
+>       RISC-V: Define fixmap bindings for generic early ioremap support
+>       RISC-V: Add PE/COFF header for EFI stub
+>       RISC-V: Add EFI stub support.
+>
+>  arch/riscv/Kconfig                        |  22 ++++++
+>  arch/riscv/Makefile                       |   1 +
+>  arch/riscv/configs/defconfig              |   1 +
+>  arch/riscv/include/asm/Kbuild             |   1 +
+>  arch/riscv/include/asm/efi.h              |  33 +++++++++
+>  arch/riscv/include/asm/fixmap.h           |  18 +++++
+>  arch/riscv/include/asm/io.h               |   1 +
+>  arch/riscv/include/asm/sections.h         |  13 ++++
+>  arch/riscv/kernel/Makefile                |   4 ++
+>  arch/riscv/kernel/efi-header.S            | 100 +++++++++++++++++++++++++++
+>  arch/riscv/kernel/head.S                  |  16 +++++
+>  arch/riscv/kernel/image-vars.h            |  53 +++++++++++++++
+>  arch/riscv/kernel/vmlinux.lds.S           |  22 +++++-
+>  drivers/firmware/efi/Kconfig              |   3 +-
+>  drivers/firmware/efi/libstub/Makefile     |  10 +++
+>  drivers/firmware/efi/libstub/riscv-stub.c | 109 ++++++++++++++++++++++++++++++
+>  include/linux/pe.h                        |   3 +
+>  17 files changed, 407 insertions(+), 3 deletions(-)
+>  create mode 100644 arch/riscv/include/asm/efi.h
+>  create mode 100644 arch/riscv/include/asm/sections.h
+>  create mode 100644 arch/riscv/kernel/efi-header.S
+>  create mode 100644 arch/riscv/kernel/image-vars.h
+>  create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
 
->
-> >
-> > >
-> > > If we ignore above semantics and still provide a mechanism to target
-> > > IRQ X to N CPUs then most likely someone will try and run into
-> > > performance issues.
-> > >
-> > > Please don't go this path. The performance impact in case of Guest/VM
-> > > is even worst because PLIC is trap-n-emulated by hypervisors as MMIO
-> > > device.
-> >
-> > OK, I won't persist in that, just wanna figure out the situation.
-> >
-> > >
-> > > Regards,
-> > > Anup
->
-> Regards,
-> Anup
+
+
+-- 
+Regards,
+Atish
 
