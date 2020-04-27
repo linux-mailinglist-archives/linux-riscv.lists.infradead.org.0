@@ -2,79 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1ECF21B9714
-	for <lists+linux-riscv@lfdr.de>; Mon, 27 Apr 2020 08:15:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CFB951B974A
+	for <lists+linux-riscv@lfdr.de>; Mon, 27 Apr 2020 08:19:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dhqdpIT/nI7OrCIFbmxFa2nUwiLY0olXuy5Q1ukvBdY=; b=tolPH8amVBE+IK5PzoyIsrHIK
-	4UCdPMSQlQIgA2V/3I//wDXS4XBAgvTy9sUXj8p29kb4/B0L76Tk/VvUEFC09zv1cS1xQXNpd8yQM
-	yERC7xFQ1G4/QyFyp1BkgDLMW2OMplWfxG2FJlABUhRol/J/crmLLqcHfwHE6D/sZuaQ8cltIaiNg
-	sqeM7UkH5Js5eoCtfxhwK9GE6SNJel8cI2EyN/gBI3Xa/p38UEGEkVWfvbGWe1bdbgdfoQh1v7FZ5
-	Q7qQ6FGIerePSN6qff8Wf9teSGvS5RdJgdJgvOJzGL5i/E8m7nVXInPD5FlG3cTYzQ6sm0gdsXilx
-	JkQuyXoBA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rvwOMHyXDNyImD45ns9UEbHv3lzL0MdhHR3ZheOkyjk=; b=hssrFXzBpn6v/nuOSQLxe61Tew
+	AcHRAHl5QBVbB6vLxs7kPjMgiqxkDyQZ5eCycXP1vJmgEc7XLnF33MWSel07Fw6lXjywViNR/yp1a
+	MfbYla6bGEjdgtEYPxfojwNpnsylUhPqZmv4QjQhn9edPpfiPMsx9nADK8x0fJyn5g6Ctsc+HAJor
+	1nfJxP6QEgOmDXGTUkPiZHCCXDaDbBi0M0PLsGAIv7u/3DpqLDITIvW//h+FnAGPdk1K5zxfERsLi
+	/8v+yvYYZ0vsUnQ1Wi3wxGjlGplffiPkIFttKb2m50Cg0ha/kYlnBq8/05QeHB/A4R6rlAvogRN8C
+	zeYlbPKA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jSx2l-0001sX-W7; Mon, 27 Apr 2020 06:15:04 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jSx6y-0005Jk-NN; Mon, 27 Apr 2020 06:19:24 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jSx2h-0001r7-ML
- for linux-riscv@lists.infradead.org; Mon, 27 Apr 2020 06:15:01 +0000
-Received: by mail-wr1-x441.google.com with SMTP id b11so19010733wrs.6
- for <linux-riscv@lists.infradead.org>; Sun, 26 Apr 2020 23:14:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dhqdpIT/nI7OrCIFbmxFa2nUwiLY0olXuy5Q1ukvBdY=;
- b=vzvCugJNC+hHoAWxQA+ClUCK1WtfPPo1gwmAzsplgIEmqpIwD3nCD/mUoa1Fb/ZH8J
- 3VuzjO+X/rGOURt4c2/BNmwMp+gqQunCsshdhJzDe/KNsMzkwJNnU4s+Sy/Ju1cQmLT8
- syWb0/6e0H+EierjYdM7bMOhlyJ3AgHY97Jm2xir9YWjTpSzI9qlCDRoCFaZzXGYNFkW
- 8T8v5/Hb398/lZLwb2e+5Wi+Q2uUfsiJ3EKt2nwZ60JyW0fmRRZry52jBs6zLpnyUsNR
- y365NKybSn7womZgUvLcWWhbKq5LFMoPoTJ7BBkDr8zkLc7HWMR6CwxLdkhKtmkGr8yL
- vMew==
+ id 1jSx6q-0005Gt-Ef
+ for linux-riscv@lists.infradead.org; Mon, 27 Apr 2020 06:19:21 +0000
+Received: by mail-pf1-x441.google.com with SMTP id x2so4777824pfx.7
+ for <linux-riscv@lists.infradead.org>; Sun, 26 Apr 2020 23:19:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=rvwOMHyXDNyImD45ns9UEbHv3lzL0MdhHR3ZheOkyjk=;
+ b=PhE2X16hFZl7dA8VvsBnxP1uZ0UyNDlbZ6CJsx4AlTU5hrnHgXpO91ijdKvtCyOjnw
+ FoC4CKm7TGdFQbKw0D5kGyS51XmHFYM7TWaIgz8alxW9qgc59U1+6vyw1lx42229ZJJn
+ z3hqmc6kXpr+pUhmdvahYyCmo8v6TpDE+55gTR684o7TndPAvoIYMG09sheeyxei8byG
+ YvDh13ZDU/vjuYyvodgvb16l1fOu9cNt8W6V/CyfmhfPQa2l93RV6zEhlFGZd4LOWtiT
+ 75944L8bCuqTfQEd04Ln2M7qeZD+c01yK4ZtiEBzJVzkcxwfi/NhdBj+tsUnO/3FQATp
+ BAmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dhqdpIT/nI7OrCIFbmxFa2nUwiLY0olXuy5Q1ukvBdY=;
- b=fyjGos4GP2HtTKKe1Ro1Zs7LOeqUwokfcapi8nrET5Kbc9cTCrGPVqsn1LaR7D1ssD
- +0kywS6UztrZTYu0jUv9TNs9BgSgpIErM9Sv7LBYbEc7ep3bO1S1AT70AOQFxamCXAY+
- Ua53efEasjmYQXW6DnJO1apyKL4dDOn7mBuBNBntjtqVNfR6QPT2pxGFjyqoeGiKY1Lg
- S+B98iH7vKW8SVNhednkAJ1ep579hV4RxYw8StqHZ5cf+fFwuAhDuCgrW1iaZH+KYxET
- vTJtHPtU7H5JrIKxCi64Gp61Wv7jTvOQr0kpLqc+ELfp2WS5memqpO/ZaSetQnm9wnAi
- M/0Q==
-X-Gm-Message-State: AGi0PuaCCUbt6A13V6YPWJOdqoxYUf1q+R1WrcJNI2Fne0NnnhhF+3IX
- j82SNfmIsg9+uByH4jiVlhLaUsm8ZGIHU9HNQgHBXn/D6ery4g==
-X-Google-Smtp-Source: APiQypJSiJ+/YlTNpTEKiY/OXpOmnrY4lLtEgap8Jeo9JGNRC6DhhDJkAO3q5LA9Dh3Q92u7fMBwwbYvdgDbw7C+QMY=
-X-Received: by 2002:a5d:4b04:: with SMTP id v4mr26980425wrq.358.1587968097137; 
- Sun, 26 Apr 2020 23:14:57 -0700 (PDT)
-MIME-Version: 1.0
-References: <1587630565-29325-1-git-send-email-vincent.chen@sifive.com>
- <CAAhSdy28HOHvkCwF0kpBxMVM7b_zF4FoOo9PpH1+Cxc2eZUSjA@mail.gmail.com>
- <CABvJ_xjFrYeZYupBzqtsr1jF80=H=6R+HZWOc+NBdNo3BuBB8w@mail.gmail.com>
-In-Reply-To: <CABvJ_xjFrYeZYupBzqtsr1jF80=H=6R+HZWOc+NBdNo3BuBB8w@mail.gmail.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Mon, 27 Apr 2020 11:44:45 +0530
-Message-ID: <CAAhSdy3iVrmW2_2+aJYBgJ7C-QjS2+H+uvh3i91W981MSAcYNA@mail.gmail.com>
-Subject: Re: [PATCH] riscv: set max_pfn to the PFN of the last page
-To: Vincent Chen <vincent.chen@sifive.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=rvwOMHyXDNyImD45ns9UEbHv3lzL0MdhHR3ZheOkyjk=;
+ b=WYjj/X86SHD7LuCDIwlpPm1E1ywnXB3/IcqIarXCUDbeM0c8GJH9RXqa3G6NcXKgvy
+ lQOvVL13J9kL/YZwxUsThArajwBFSA3RiiD0fsdijms8dLYVXaoTLkRNXkHy33EE0K/W
+ 4/ZRk/s2z73dhMNxoiRdRw15K8/njWjH9XgqEhraJ/mcJoInsyp/vRBZgK7M0RQxL8MB
+ CsHDDoo4xiK/JTXG213YenYon6Y/fNG6U25NDUfPDjx44moBekjbd85yScrPeMTsAeZP
+ Ab8SCXLMxWlBGBUFLESjOjT2qdNpP4rg+zAFt4HsPpRM9Vi0EBZoUPLbvZHsX9/aRvla
+ cF3g==
+X-Gm-Message-State: AGi0PuY6QPxPMnBhFzq+pghCAqOUgYXKQz51dKPY5AKJYITe/BFG+BlW
+ UI4uwIrE7Bht+6vUUnc9F+IyZQ==
+X-Google-Smtp-Source: APiQypLWdVIMX05zEFe7fzI3CwEBd5MJ5syuCYCeK1133zCeIWMiUiTUrAFRbLvCCurzvbLt881Xng==
+X-Received: by 2002:aa7:943c:: with SMTP id y28mr22599617pfo.171.1587968355594; 
+ Sun, 26 Apr 2020 23:19:15 -0700 (PDT)
+Received: from VincentChen-ThinkPad-T480s.internal.sifive.com
+ (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
+ by smtp.gmail.com with ESMTPSA id y186sm11256676pfy.66.2020.04.26.23.19.14
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 26 Apr 2020 23:19:15 -0700 (PDT)
+From: Vincent Chen <vincent.chen@sifive.com>
+To: paul.walmsley@sifive.com,
+	palmer@dabbelt.com
+Subject: [PATCH v2] riscv: set max_pfn to the PFN of the last page
+Date: Mon, 27 Apr 2020 14:19:11 +0800
+Message-Id: <1587968351-9507-1-git-send-email-vincent.chen@sifive.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200426_231459_798576_2F1EF5BD 
-X-CRM114-Status: GOOD (  18.36  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200426_231917_740237_F51E96B4 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -89,93 +93,77 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Vincent Chen <vincent.chen@sifive.com>, linux-riscv@lists.infradead.org,
+ stable@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Apr 27, 2020 at 11:07 AM Vincent Chen <vincent.chen@sifive.com> wrote:
->
-> On Thu, Apr 23, 2020 at 4:33 PM Anup Patel <anup@brainfault.org> wrote:
-> >
-> > On Thu, Apr 23, 2020 at 1:59 PM Vincent Chen <vincent.chen@sifive.com> wrote:
-> > >
-> > > The current max_pfn equals to zero. In this case, I found it caused users
-> > > cannot get some page information through /proc such as kpagecount in v5.6
-> > > kernel because of new sanity checks. The following message is displayed by
-> > > stress-ng test suite with the command "stress-ng --verbose --physpage 1 -t
-> > > 1" on HiFive unleashed board.
-> > >
-> > >  # stress-ng --verbose --physpage 1 -t 1
-> > >  stress-ng: debug: [109] 4 processors online, 4 processors configured
-> > >  stress-ng: info: [109] dispatching hogs: 1 physpage
-> > >  stress-ng: debug: [109] cache allocate: reducing cache level from L3 (too high) to L0
-> > >  stress-ng: debug: [109] get_cpu_cache: invalid cache_level: 0
-> > >  stress-ng: info: [109] cache allocate: using built-in defaults as no suitable cache found
-> > >  stress-ng: debug: [109] cache allocate: default cache size: 2048K
-> > >  stress-ng: debug: [109] starting stressors
-> > >  stress-ng: debug: [109] 1 stressor spawned
-> > >  stress-ng: debug: [110] stress-ng-physpage: started [110] (instance 0)
-> > >  stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd34de000 in /proc/kpagecount, errno=0 (Success)
-> > >  stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd32db078 in /proc/kpagecount, errno=0 (Success)
-> > >  ...
-> > >  stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd32db078 in /proc/kpagecount, errno=0 (Success)
-> > >  stress-ng: debug: [110] stress-ng-physpage: exited [110] (instance 0)
-> > >  stress-ng: debug: [109] process [110] terminated
-> > >  stress-ng: info: [109] successful run completed in 1.00s
-> > >  #
-> > >
-> > > After applying this patch, the kernel can pass the test.
-> > >
-> > >  # stress-ng --verbose --physpage 1 -t 1
-> > >  stress-ng: debug: [104] 4 processors online, 4 processors configured stress-ng: info: [104] dispatching hogs: 1 physpage
-> > >  stress-ng: info: [104] cache allocate: using defaults, can't determine cache details from sysfs
-> > >  stress-ng: debug: [104] cache allocate: default cache size: 2048K
-> > >  stress-ng: debug: [104] starting stressors
-> > >  stress-ng: debug: [104] 1 stressor spawned
-> > >  stress-ng: debug: [105] stress-ng-physpage: started [105] (instance 0) stress-ng: debug: [105] stress-ng-physpage: exited [105] (instance 0) stress-ng: debug: [104] process [105] terminated
-> > >  stress-ng: info: [104] successful run completed in 1.01s
-> > >  #
-> > >
-> > > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> > > ---
-> > >  arch/riscv/mm/init.c | 3 ++-
-> > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> > > index fab855963c73..157924baa191 100644
-> > > --- a/arch/riscv/mm/init.c
-> > > +++ b/arch/riscv/mm/init.c
-> > > @@ -149,7 +149,8 @@ void __init setup_bootmem(void)
-> > >         memblock_reserve(vmlinux_start, vmlinux_end - vmlinux_start);
-> > >
-> > >         set_max_mapnr(PFN_DOWN(mem_size));
-> > > -       max_low_pfn = PFN_DOWN(memblock_end_of_DRAM());
-> > > +       max_pfn = PFN_DOWN(memblock_end_of_DRAM());
-> > > +       max_low_pfn = max_pfn;
-> > >
-> > >  #ifdef CONFIG_BLK_DEV_INITRD
-> > >         setup_initrd();
-> > > --
-> > > 2.7.4
-> > >
-> > >
-> >
-> > Looks good to me.
-> >
-> > Reviewed-by: Anup Patel <anup@brainfault.ort>
-> >
-> > If possible add "Fixes:" line and also Cc stable kernel.
-> >
->
-> OK, I will add  "Fixes:" line and Cc stable kernel in my next version patch.
-> Thanks for your feedback.
+The current max_pfn equals to zero. In this case, I found it caused users
+cannot get some page information through /proc such as kpagecount in v5.6
+kernel because of new sanity checks. The following message is displayed by
+stress-ng test suite with the command "stress-ng --verbose --physpage 1 -t
+1" on HiFive unleashed board.
 
-There is a typo in the reviewed-by email address above
-hence here is the corrected reviewed-by:
+ # stress-ng --verbose --physpage 1 -t 1
+ stress-ng: debug: [109] 4 processors online, 4 processors configured
+ stress-ng: info: [109] dispatching hogs: 1 physpage
+ stress-ng: debug: [109] cache allocate: reducing cache level from L3 (too high) to L0
+ stress-ng: debug: [109] get_cpu_cache: invalid cache_level: 0
+ stress-ng: info: [109] cache allocate: using built-in defaults as no suitable cache found
+ stress-ng: debug: [109] cache allocate: default cache size: 2048K
+ stress-ng: debug: [109] starting stressors
+ stress-ng: debug: [109] 1 stressor spawned
+ stress-ng: debug: [110] stress-ng-physpage: started [110] (instance 0)
+ stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd34de000 in /proc/kpagecount, errno=0 (Success)
+ stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd32db078 in /proc/kpagecount, errno=0 (Success)
+ ...
+ stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd32db078 in /proc/kpagecount, errno=0 (Success)
+ stress-ng: debug: [110] stress-ng-physpage: exited [110] (instance 0)
+ stress-ng: debug: [109] process [110] terminated
+ stress-ng: info: [109] successful run completed in 1.00s
+ #
 
-Reviewed-by: Anup Patel <anup@brainfault.org>
+After applying this patch, the kernel can pass the test.
 
-Thanks,
-Anup
+ # stress-ng --verbose --physpage 1 -t 1
+ stress-ng: debug: [104] 4 processors online, 4 processors configured stress-ng: info: [104] dispatching hogs: 1 physpage
+ stress-ng: info: [104] cache allocate: using defaults, can't determine cache details from sysfs
+ stress-ng: debug: [104] cache allocate: default cache size: 2048K
+ stress-ng: debug: [104] starting stressors
+ stress-ng: debug: [104] 1 stressor spawned
+ stress-ng: debug: [105] stress-ng-physpage: started [105] (instance 0) stress-ng: debug: [105] stress-ng-physpage: exited [105] (instance 0) stress-ng: debug: [104] process [105] terminated
+ stress-ng: info: [104] successful run completed in 1.01s
+ #
+
+Fixes: 0651c263c8e3 (RISC-V: Move setup_bootmem() to mm/init.c)
+Cc: stable@vger.kernel.org
+
+Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
+Reviewed-by: Anup Patel <anup@brainfault.ort>
+Reviewed-by: Yash Shah <yash.shah@sifive.com>
+Tested-by: Yash Shah <yash.shah@sifive.com>
+
+Changes since v1:
+1. Add Fixes line and Cc stable kernel
+---
+ arch/riscv/mm/init.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+index fab855963c73..157924baa191 100644
+--- a/arch/riscv/mm/init.c
++++ b/arch/riscv/mm/init.c
+@@ -149,7 +149,8 @@ void __init setup_bootmem(void)
+ 	memblock_reserve(vmlinux_start, vmlinux_end - vmlinux_start);
+ 
+ 	set_max_mapnr(PFN_DOWN(mem_size));
+-	max_low_pfn = PFN_DOWN(memblock_end_of_DRAM());
++	max_pfn = PFN_DOWN(memblock_end_of_DRAM());
++	max_low_pfn = max_pfn;
+ 
+ #ifdef CONFIG_BLK_DEV_INITRD
+ 	setup_initrd();
+-- 
+2.7.4
+
 
