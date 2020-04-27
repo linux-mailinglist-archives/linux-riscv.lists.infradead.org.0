@@ -2,84 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08F321B97AB
-	for <lists+linux-riscv@lfdr.de>; Mon, 27 Apr 2020 08:44:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BE781B97BE
+	for <lists+linux-riscv@lfdr.de>; Mon, 27 Apr 2020 08:50:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KV8mI704c4wnDXRIu02UleUgTYiEbhwe5QBwP8rLPnY=; b=Oqie6N6tsY+6phqBk4v6UBfhX
-	WG+gwMYEkvvxoYlXPye1n4HeX6xWPuM3cXN12ppPpoVMCMeLYQXUzmVWJLMgdFyr5I9ZLm16EhU5n
-	F4Qra7UewjXu5fdUHc06cYTYGJCV2au1I9tB5j3636U+HeT5Jh2H5oZewzRw6wCiSQWq2CYFuDsuz
-	sqLRmO4FFu8xhwhf36SwDwugiuPTrZHkDRznle4RGxg4WAQKjFJX8Wd0VbOXiuO5Zumo8kXiP7BbG
-	UcEVyS82cQQs0MI4CZgXrj0WMEt82zpJn9HuISNC0p4alnikW68f+46hfWEhJeHmnHLxbW8iBCATX
-	AsFJDA8aQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1PVKCPVALnvwEaD1U6h5gcX2vEpDpla/uMGs4UxNrgo=; b=C9bh5WXTb5x4ci
+	shycqpCAnEToOT5WpxyjEkzVqgfg/35f2FHr3VdhE/RRriWoy8e4p09fK+q7D8GsuUTSfqIUTweQY
+	Em6G/PN/V5JSoNFJAyXhTk4aOUAc75R92mv2Bhk/I97iM25Tpa/Xabb4Tu7hLGYjU1YVSBTCcTC9D
+	lgMhDVg8+GLmLcTV5xFMlmpkGEjVfhbGcYvD6/X2fsl2urCZP450lEaZJNFqyW9U52UJODOhd6hsa
+	bCw8FbA+5psOhEDyfekbnig8JDXk6zJUcYAQaboBtRsK9fbFRvMJiVowuJlo22BELxVM3FXRxJgYz
+	bHBRB/UTTDRU6fw9sJBw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jSxVV-0006pP-VJ; Mon, 27 Apr 2020 06:44:45 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1jSxaY-000294-Ol; Mon, 27 Apr 2020 06:49:58 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jSxVQ-0006lv-SA
- for linux-riscv@lists.infradead.org; Mon, 27 Apr 2020 06:44:43 +0000
-Received: by mail-wm1-x343.google.com with SMTP id k12so9639531wmj.3
- for <linux-riscv@lists.infradead.org>; Sun, 26 Apr 2020 23:44:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=KV8mI704c4wnDXRIu02UleUgTYiEbhwe5QBwP8rLPnY=;
- b=sV8r9iH1IJ/wa4MRY/0iLtmG7uVrvHaehubuctbTatS+Pb88tUDgnjuc3Z+FRFFtXy
- JtQia0BqQ54Pr4bsanZcTfztjLLEU2ODwd2rTnmQlAahy6gXtDrxU56TxqJJomjzH1lN
- XyJ3OKQkeNZ2deawteL/pmRgatbd6MhibKdKHSlPCbQog5Z09gkWUUd47TH/K7T3hBTv
- 0+P7WalZiDkyAYSHPv/Noz0bulxQ7Pkap6N6AH2pURIhb6uUGra20Q1eoEyr1nOEzfgH
- i6cOs9vv1xw/JQooHzOLfo0pWFmb7istdgO8npVVIsqGMD1QH+/ytCLc9tB65Eh0SD5n
- ob3g==
+ id 1jSxaU-000288-Mi
+ for linux-riscv@lists.infradead.org; Mon, 27 Apr 2020 06:49:57 +0000
+Received: by mail-qk1-x743.google.com with SMTP id o135so4586077qke.6
+ for <linux-riscv@lists.infradead.org>; Sun, 26 Apr 2020 23:49:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=1PVKCPVALnvwEaD1U6h5gcX2vEpDpla/uMGs4UxNrgo=;
+ b=dnof+psRHwMyPQG6q9AUqfbAV+LAZEaYYdzXGpK7uS08Ud2s7wACrrU1FhJgePSRWn
+ As3HERLV8aQDCz392ujJWVtQ2zp7Bby4eFUObw/+cUg8OemZ9HNCYeFUDbxhqRm+UB9l
+ WgHVng0KHWYMKjDQuQdnvK8GMxQ+lVDxd3iSM92CiwfLKwfCdaJYrtyaOC944UOf3Crb
+ P+tsZncrVASVuD9uWj+1z/KDtnNqU7f6lyLvw4ssMDC4nIoM38vs4wMGbu3Kz1acgnFN
+ gzTfBTMLeUBWp/MptIk2IFJ+sxlszVD0NiiK0o7T+FC5G8NSCCRGcep4zgV9mHD53uDo
+ 2XpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=KV8mI704c4wnDXRIu02UleUgTYiEbhwe5QBwP8rLPnY=;
- b=n1FRgxj0UYEhaybbNKMU7Yt/sVAkOGwLAWBDwq3wO1QWX09xR0VwHe5S0KIy1FWB0t
- u/WFfSN8nPSKGycGTfBcmtIJWqCLP6SsdrmKKhdjl21mxqbG5Ym70W6eX46+TnC8vpHI
- SForW/8G2qfiuYYlERKM+s8G6Rr3rI3kK27r13LZ2EhJHj1WDn+DaSeUQnBzpL6fuaEz
- HStDpYQNSrT4BMncv5rpe1v3t08zRdolacDfQH9xYwyLOHOnN94crjyknPgGqXGWd8ZK
- LRRmaAlqwjFaY9/luVilE16VNglTJf5GhdVJn2T00hnfC5RSwWh9nIj+H58BjqmjATGG
- kOfA==
-X-Gm-Message-State: AGi0PubEW5GHnrWL9LMRtDU98kIrZnNaEmmA01J9bNI1GnzYILhCkCLU
- ZZOj+3SDHR+SPGhlx3dVQQgFlg==
-X-Google-Smtp-Source: APiQypJl184c+VzbwdnwkKBGPEWNJ1KlwA2PV4ZKB6XncsflDQL5MrVEpinCWeWiGNtr2IxJxFDRVw==
-X-Received: by 2002:a1c:1d92:: with SMTP id d140mr24421897wmd.67.1587969878117; 
- Sun, 26 Apr 2020 23:44:38 -0700 (PDT)
-Received: from dell ([2.31.163.63])
- by smtp.gmail.com with ESMTPSA id 185sm16425524wmc.32.2020.04.26.23.44.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Apr 2020 23:44:37 -0700 (PDT)
-Date: Mon, 27 Apr 2020 07:44:34 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Guru Das Srinagesh <gurus@codeaurora.org>
-Subject: Re: [PATCH v13 00/11] Convert PWM period and duty cycle to u64
-Message-ID: <20200427064434.GA3559@dell>
-References: <cover.1587523702.git.gurus@codeaurora.org>
- <20200423114857.GG3612@dell> <20200423215306.GA8670@codeaurora.org>
- <20200424064303.GJ3612@dell>
- <20200424221422.GA31118@codeaurora.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=1PVKCPVALnvwEaD1U6h5gcX2vEpDpla/uMGs4UxNrgo=;
+ b=cDALzdsRPIpOtcgExif9mTee4HPZYHvboXZZ1sUt5MEP5Dutnitzr6DcxoiCUZdm/g
+ 1tX94Yt+SyuLi09ROZ5UuRu4Qa/n/RcVxK+EpoAoJAYIAYYqPc+uK1PMMmjW/lVBDJBG
+ elBTLhPTI5fwdKKFMIYaDzGO3iuMnd1VCypo2Abs6D8+Zh/T3qZ5K8szzX+A/I1Qm/fE
+ qZTJ1QIlyI7xwVaiVoxmQ4mX3YeKIWtbAgLgy56+gl9D/8GNQOJ3BVSO2752E32d6mni
+ kjMy7TYm890vk3CleBZd6e/b/6RNmIFC9J2leK/WZ8byFi3F9bgh1F8yQ3lqVtkqdXd5
+ rung==
+X-Gm-Message-State: AGi0Pua7qs1foXItmi7j1YSoyueDzYMb/0lpo0GZ8JJUD/LXT/16hh0K
+ 43H5K1vMkaPJ6BNwHGkwrNPAPgOMNC/pLByy1Faz7w==
+X-Google-Smtp-Source: APiQypIeh88b6nTXu37F/D2EhkcMWCvN3p06uEFyOroXB45mhT/g7603VxSPSZNbJ7xigEPD0SZyZuV+VXVrxMTsTbE=
+X-Received: by 2002:a37:91c6:: with SMTP id
+ t189mr20287581qkd.280.1587970193304; 
+ Sun, 26 Apr 2020 23:49:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200424221422.GA31118@codeaurora.org>
+References: <20200426110740.123638-1-zong.li@sifive.com>
+ <CAAhSdy3FCdzLV-nH03T=PBxB2tdZXhRrugcC2NcoA=22qpv+Lw@mail.gmail.com>
+ <CANXhq0qW9ORoZ5qc5g8ikO9QdeYX=p0fwoP8pyFFkk02a7imnw@mail.gmail.com>
+ <CAAhSdy2f2-SQP6TdgxA0HM2ft3eBJd6kEkB--RH=2gUuLktXLQ@mail.gmail.com>
+ <CANXhq0pDYa2QfGZX87d5gyO5V2uzA3-ttPZXf7s1EkMUcG37Cw@mail.gmail.com>
+ <CAAhSdy188_Kkfsz2bX05T3Rr12XDNtwGiwfqaT2TFVW7auGUaw@mail.gmail.com>
+ <CANXhq0qGq33u34q7nhJE4GG03pZ8BBJrnusr=FgmTeJwtq-=4Q@mail.gmail.com>
+In-Reply-To: <CANXhq0qGq33u34q7nhJE4GG03pZ8BBJrnusr=FgmTeJwtq-=4Q@mail.gmail.com>
+From: Greentime Hu <greentime.hu@sifive.com>
+Date: Mon, 27 Apr 2020 14:49:42 +0800
+Message-ID: <CAHCEeh+FVYd6GKDuN4fXz9ku57vmdyVR1y_mzu89-sanNa_E3A@mail.gmail.com>
+Subject: Re: [PATCH] irqchip/sifive-plic: allow many cores to handle IRQs
+To: Zong Li <zong.li@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200426_234441_427230_1200CDEF 
-X-CRM114-Status: GOOD (  20.88  )
+X-CRM114-CacheID: sfid-20200426_234955_263090_03DC6CE2 
+X-CRM114-Status: GOOD (  21.91  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:743 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -101,82 +99,162 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>, linux-fbdev@vger.kernel.org,
- David Collins <collinsd@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>,
- David Airlie <airlied@linux.ie>, Michael Turquette <mturquette@baylibre.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Kamil Debski <kamil@wypas.org>, dri-devel@lists.freedesktop.org,
- Chris Wilson <chris@chris-wilson.co.uk>, Atish Patra <atish.patra@wdc.com>,
- Thierry Reding <thierry.reding@gmail.com>, linux-riscv@lists.infradead.org,
- Fabio Estevam <festevam@gmail.com>, linux-clk@vger.kernel.org,
- Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Alexander Shiyan <shc_work@mail.ru>, Chen-Yu Tsai <wens@csie.org>,
- NXP Linux Team <linux-imx@nxp.com>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>,
- Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
- linux-pwm@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, Arnd Bergmann <arnd@arndb.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- intel-gfx@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>,
- Mark Brown <broonie@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Subbaraman Narayanamurthy <subbaram@codeaurora.org>,
- Thomas Gleixner <tglx@linutronix.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Allison Randal <allison@lohutok.net>, linux-hwmon@vger.kernel.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Richard Fontana <rfontana@redhat.com>, Stephen Boyd <sboyd@kernel.org>,
- Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org,
- Yash Shah <yash.shah@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Dan Carpenter <dan.carpenter@oracle.com>, Daniel Vetter <daniel@ffwll.ch>,
- Joe Perches <joe@perches.com>, Shawn Guo <shawnguo@kernel.org>
+Cc: Marc Zyngier <maz@kernel.org>,
+ David Abdurachmanov <david.abdurachmanov@sifive.com>,
+ Anup Patel <anup@brainfault.org>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, 24 Apr 2020, Guru Das Srinagesh wrote:
+Zong Li <zong.li@sifive.com> =E6=96=BC 2020=E5=B9=B44=E6=9C=8826=E6=97=A5 =
+=E9=80=B1=E6=97=A5 =E4=B8=8B=E5=8D=8811:35=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> On Sun, Apr 26, 2020 at 11:21 PM Anup Patel <anup@brainfault.org> wrote:
+> >
+> > On Sun, Apr 26, 2020 at 8:42 PM Zong Li <zong.li@sifive.com> wrote:
+> > >
+> > > On Sun, Apr 26, 2020 at 9:38 PM Anup Patel <anup@brainfault.org> wrot=
+e:
+> > > >
+> > > > +Mark Z
+> > > >
+> > > > On Sun, Apr 26, 2020 at 6:49 PM Zong Li <zong.li@sifive.com> wrote:
+> > > > >
+> > > > > On Sun, Apr 26, 2020 at 8:47 PM Anup Patel <anup@brainfault.org> =
+wrote:
+> > > > > >
+> > > > > > On Sun, Apr 26, 2020 at 4:37 PM Zong Li <zong.li@sifive.com> wr=
+ote:
+> > > > > > >
+> > > > > > > Currently, driver forces the IRQs to be handled by only one c=
+ore. This
+> > > > > > > patch provides the way to enable others cores to handle IRQs =
+if needed,
+> > > > > > > so users could decide how many cores they wanted on default b=
+y boot
+> > > > > > > argument.
+> > > > > > >
+> > > > > > > Use 'irqaffinity' boot argument to determine affinity. If the=
+re is no
+> > > > > > > irqaffinity in dts or kernel configuration, use irq default a=
+ffinity,
+> > > > > > > so all harts would try to claim IRQ.
+> > > > > > >
+> > > > > > > For example, add irqaffinity=3D0 in chosen node to set irq af=
+finity to
+> > > > > > > hart 0. It also supports more than one harts to handle irq, s=
+uch as set
+> > > > > > > irqaffinity=3D0,3,4.
+> > > > > > >
+> > > > > > > You can change IRQ affinity from user-space using procfs. For=
+ example,
+> > > > > > > you can make CPU0 and CPU2 serve IRQ together by the followin=
+g command:
+> > > > > > >
+> > > > > > > echo 4 > /proc/irq/<x>/smp_affinity
+> > > > > > >
+> > > > > > > Signed-off-by: Zong Li <zong.li@sifive.com>
+> > > > > > > ---
+> > > > > > >  drivers/irqchip/irq-sifive-plic.c | 21 +++++++--------------
+> > > > > > >  1 file changed, 7 insertions(+), 14 deletions(-)
+> > > > > > >
+> > > > > > > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqc=
+hip/irq-sifive-plic.c
+> > > > > > > index d0a71febdadc..bc1440d54185 100644
+> > > > > > > --- a/drivers/irqchip/irq-sifive-plic.c
+> > > > > > > +++ b/drivers/irqchip/irq-sifive-plic.c
+> > > > > > > @@ -111,15 +111,12 @@ static inline void plic_irq_toggle(cons=
+t struct cpumask *mask,
+> > > > > > >  static void plic_irq_unmask(struct irq_data *d)
+> > > > > > >  {
+> > > > > > >         struct cpumask amask;
+> > > > > > > -       unsigned int cpu;
+> > > > > > >         struct plic_priv *priv =3D irq_get_chip_data(d->irq);
+> > > > > > >
+> > > > > > >         cpumask_and(&amask, &priv->lmask, cpu_online_mask);
+> > > > > > > -       cpu =3D cpumask_any_and(irq_data_get_affinity_mask(d)=
+,
+> > > > > > > -                                          &amask);
+> > > > > > > -       if (WARN_ON_ONCE(cpu >=3D nr_cpu_ids))
+> > > > > > > -               return;
+> > > > > > > -       plic_irq_toggle(cpumask_of(cpu), d, 1);
+> > > > > > > +       cpumask_and(&amask, &amask, irq_data_get_affinity_mas=
+k(d));
+> > > > > > > +
+> > > > > > > +       plic_irq_toggle(&amask, d, 1);
+> > > > > > >  }
+> > > > > > >
+> > > > > > >  static void plic_irq_mask(struct irq_data *d)
+> > > > > > > @@ -133,24 +130,20 @@ static void plic_irq_mask(struct irq_da=
+ta *d)
+> > > > > > >  static int plic_set_affinity(struct irq_data *d,
+> > > > > > >                              const struct cpumask *mask_val, =
+bool force)
+> > > > > > >  {
+> > > > > > > -       unsigned int cpu;
+> > > > > > >         struct cpumask amask;
+> > > > > > >         struct plic_priv *priv =3D irq_get_chip_data(d->irq);
+> > > > > > >
+> > > > > > >         cpumask_and(&amask, &priv->lmask, mask_val);
+> > > > > > >
+> > > > > > >         if (force)
+> > > > > > > -               cpu =3D cpumask_first(&amask);
+> > > > > > > +               cpumask_copy(&amask, mask_val);
+> > > > > > >         else
+> > > > > > > -               cpu =3D cpumask_any_and(&amask, cpu_online_ma=
+sk);
+> > > > > > > -
+> > > > > > > -       if (cpu >=3D nr_cpu_ids)
+> > > > > > > -               return -EINVAL;
+> > > > > > > +               cpumask_and(&amask, &amask, cpu_online_mask);
+> > > > > > >
+> > > > > > >         plic_irq_toggle(&priv->lmask, d, 0);
+> > > > > > > -       plic_irq_toggle(cpumask_of(cpu), d, 1);
+> > > > > > > +       plic_irq_toggle(&amask, d, 1);
+> > > > > > >
+> > > > > > > -       irq_data_update_effective_affinity(d, cpumask_of(cpu)=
+);
+> > > > > > > +       irq_data_update_effective_affinity(d, &amask);
+> > > > > > >
+> > > > > > >         return IRQ_SET_MASK_OK_DONE;
+> > > > > > >  }
+> > > > > > > --
+> > > > > > > 2.26.1
+> > > > > > >
+> > > > > >
+> > > > > > I strongly oppose (NACK) this patch due to performance reasons.
+> > > > > >
+> > > > > > In PLIC, if we enable an IRQ X for N CPUs then when IRQ X occur=
+s:
+> > > > > > 1) All N CPUs will take interrupt
+> > > > > > 2) All N CPUs will try to read PLIC CLAIM register
+> > > > > > 3) Only one of the CPUs will see IRQ X using the CLAIM register
+> > > > > > but other N - 1 CPUs will see no interrupt and return back to w=
+hat
+> > > > > > they were doing. In other words, N - 1 CPUs will just waste CPU
+> > > > > > every time IRQ X occurs.
+> > > > > >
+> > > > > > Example1, one Application doing heavy network traffic will
+> > > > > > degrade performance of other applications because with every
+> > > > > > network RX/TX interrupt N-1 CPUs will waste CPU trying to
+> > > > > > process network interrupt.
+> > > > > >
+> > > > > > Example1, one Application doing heavy MMC/SD traffic will
+> > > > > > degrade performance of other applications because with every
+> > > > > > SPI read/write interrupt N-1 CPUs will waste CPU trying to
+> > > > > > process it.
+> > > > > >
 
-> On Fri, Apr 24, 2020 at 07:43:03AM +0100, Lee Jones wrote:
-> > A great deal of mailing lists contain numerous protections against
-> > things like flooding and spamming.  One of those protections is a
-> > check for "Too many recipients to the message".  Most of the time this
-> > simply requires moderator intervention by way of review and approval,
-> > but this ultimately depends on the ML's configuration.
-> > 
-> > The first thing to ascertain is why your recipients list is so large.
-> > Have you added every reviewer, subsystem-maintainer, maintainer and
-> > contributor suggested by get-maintainer.pl?  If so, consider pruning
-> > that a little.  Contributors do not tend to care about subsequent
-> > changes to a file.  As someone who receives a lot of patches, I tend
-> > to get fed-up when receiving patches simply because I made a change X
-> > years ago.  Stick to listed maintainers/reviewers in the first
-> > instance and see how far that takes you.
-> 
-> Thank you for the detailed reply. I did this in the first few patchsets
-> and then when a few patches didn't get any attention, expanded the
-> audience thus. Still, around 50% of the patches in this series remain
-> unreviewed by anyone.
+Hi Anup,
 
-This isn't a reason to add more recipients (who are likely to care
-even less than your original group).  However it *is* a good argument
-for including all of the specified maintainers/reviewers in on all of
-the patches.
-
-> > If your recipients list is as succinct as reasonably possible, maybe
-> > just accept that every version isn't going to be archived by every
-> > ML.  It's still much more useful for the correct people to have
-> > visibility into the set than for it to be archived multiple times.
-> 
-> Thank you, will prune the list and remove past contributors from the
-> Cc-list and add all parties to all patches.
-
-Great.  Once you've done that, we can start to help you acquire the
-Acks you need on your remaining patches.
-
--- 
-Lee Jones [李琼斯]
-Linaro Services Technical Lead
-Linaro.org │ Open source software for ARM SoCs
-Follow Linaro: Facebook | Twitter | Blog
+If there is a case that there are a lot of interrupts from a single
+irq number coming very quickly, the first hart is still serving the
+first interrupt and still in its top half so it doesn't enable
+interrupt yet but the second interrupt is coming and waiting, only the
+rest of the harts can serve it. If they are masked, the interrupt
+won't be able to be served it right away. In this case, I think this
+patch can get better performance. Maybe we can still keep this patch
+for user to define their usage in his case?
 
