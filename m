@@ -2,88 +2,107 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFF791BAA23
-	for <lists+linux-riscv@lfdr.de>; Mon, 27 Apr 2020 18:35:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F227E1BAB29
+	for <lists+linux-riscv@lfdr.de>; Mon, 27 Apr 2020 19:26:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=fbHM1UO8ZCsiegGn5ySxeV/75VUNG8WD+xMilKzGDK0=; b=CmqNcyNPuNeODT
-	Ye7F2VlEUXy6kx78eQOr01DU0kiAYfTBTlRuJ9yn4i8152QDpvr0NYrZ+giRo3uascH92qO76a6sG
-	k/oLuIWAvbYomjFddZ8i+3o8unS9/ntdAT6DiV/2lKYX537uiX3vXVk3eQEclvKWqvcbf2X93JOeb
-	zJ18taLFrXF3Tj6sCRTkuYhLkec5Wob9GXRCEx6FBuBditMOe0YBRAJXEUbditEx2ETalPQAfqkni
-	9LAjVbb0jDYZlW1DbUS6i6zGVEitwPpYZmj+kPpPev1KKSxAOWbB7Q+PLJiKL6OPB6xARMUGvRb9+
-	kvkvEq3M7lOHcX+dcfyg==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2uE+mNBlryTX8hj4mQm6UWx/K31ONdvabCMIKOLtOyU=; b=PLOJu9LXuUldw/
+	pVurpF9En0/3EFdFS8KPljDZEzDsDhMTIoAT78l2jmTzHE671qU5sQiYMFAdBREtPp+3hoUZJVXZH
+	Xgz+TJFnm6YjhbSizss+8lLzuQFlGMivJoAFyKom49iFA23mmIqdO2xB3QlD+VgCUDqEovEoqU1VA
+	SsE1V5dqUgk9mknYMjq1d7BRHLZgalbGU3G/FVDJCAGZnDsXWulA/8azRYBSxDfscXSUAisaX6Aj+
+	7/NktsVVjnOrNMUu6Xl0K3BcOzNS3TcXht8poN+043nQWREui4rN3vmdSBK9TuKGDIQppm6wknjN4
+	B/a0wQkJboIfRk+6KNZw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jT6ix-0002du-TR; Mon, 27 Apr 2020 16:35:15 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1jT7WU-0005rN-9p; Mon, 27 Apr 2020 17:26:26 +0000
+Received: from userp2120.oracle.com ([156.151.31.85])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jT6ia-0002U8-Go
- for linux-riscv@lists.infradead.org; Mon, 27 Apr 2020 16:34:53 +0000
-Received: by mail-pf1-x441.google.com with SMTP id w65so9229641pfc.12
- for <linux-riscv@lists.infradead.org>; Mon, 27 Apr 2020 09:34:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=fbHM1UO8ZCsiegGn5ySxeV/75VUNG8WD+xMilKzGDK0=;
- b=AVHFyKBaT3lWtILdsn7lZbmxuZqLoXBACX+5oScB4Ni5aArwxsJ6qGE8HLSV8BTb9R
- jyR/oGhu7x83HmelJV7BfQxEM2p97lF9zL+Z0LTiB096JYKfSVi/FGfwL33jTP+aF5vZ
- SVdjrqIjF+5LJr4e70MVqjl+QwzGsm+G6laRPOuqao1Lt1ZDqTv+5iD/cvj2LaTOVuPh
- uOP931J9qGvclu8Vnku+rbLzIsfgJN4Emx5SOXDnhM+CLIrD07it7a3tkWSVQKgAiSE1
- xCC1NcUjETwzx28zzLY1K4/ftDdcYeB+2J/HlFl2wmr3lek0dzHuzdYKqpxnvO+nvhWw
- +Fng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=fbHM1UO8ZCsiegGn5ySxeV/75VUNG8WD+xMilKzGDK0=;
- b=NbI6Cslr6njCMGWHO9WGkl6NBtluxacp/uJCMHFeQ0b9KLT4EI7MZdhfU0xjqKwy6l
- 91oG8Qx7bbF2y8V4Quj2fzh/okrr7Vy7qj0djKS4e0Khm/uDMFBBqO21cvfkcZ4T3ySE
- 4faCPSnDPj8SCGk9SCO8+GMojKQqgqVhHzqHJw/Anndf2fmWcF9OppjtMoNRs2IQbP94
- NKjGpOKnGIdfNZWLM1VOs6rd2lgFaHfCmdqP69Vd4Ak18DssPIy/hBA4zRiC71KyYjLX
- wDCRX47quXRaG7WQeysVyuXEeUTkBBQ0dXl3yZ5ieXNjDVdH3te3wqVGAdIxLgIK0U4A
- dpAA==
-X-Gm-Message-State: AGi0PuYIhf4qERSOAUfstvO6jddJWAXuAsF665+mXgKuLR54xJf0kLxa
- OEvKd0oaCEIylNq/AmT4QyMBcQ==
-X-Google-Smtp-Source: APiQypLRWUHLrcl4eewb2MZpebmvrOe2d15ENGwSBTtBtqZ8Qsa654XlBZq7p87Qzgo0xDc/BXO4jQ==
-X-Received: by 2002:a63:67c5:: with SMTP id
- b188mr23328255pgc.111.1588005290612; 
- Mon, 27 Apr 2020 09:34:50 -0700 (PDT)
-Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
- [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id 23sm11675960pjb.11.2020.04.27.09.34.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Apr 2020 09:34:49 -0700 (PDT)
-Date: Mon, 27 Apr 2020 09:34:49 -0700 (PDT)
-X-Google-Original-Date: Mon, 27 Apr 2020 09:34:46 PDT (-0700)
-Subject: Re: [PATCH 0/3] Refactor patch text interfaces and mechanism
-In-Reply-To: <cover.1587453338.git.zong.li@sifive.com>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: zong.li@sifive.com
-Message-ID: <mhng-7876a56a-d387-46f1-9f54-95b18654a571@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ id 1jT7WQ-0005pK-0g; Mon, 27 Apr 2020 17:26:23 +0000
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03RHNNun032176;
+ Mon, 27 Apr 2020 17:25:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=2uE+mNBlryTX8hj4mQm6UWx/K31ONdvabCMIKOLtOyU=;
+ b=xTCYIbf7r5dai610kYmRfslwcsdHMEa6nYuPYmpMy+7WUkM9840zuWRmT2v1MiaH6Cad
+ +fYWXCh8PyDfm6g+dIyG7BXcw3P9PeZXXougO6mlOLOylsBzYtMAlZzBzlRJJatu4I9N
+ /AveFv2IyJQslCKqyCxuN+21YY9yrbN47PRg98fdwJ2kPrlLeXvj0DTMFDZB9ZWRvRM7
+ Ed+D9rxwrxjP3D1PFlRuVFcuOx+bDZYZm4iIaDJw0NmlAZ9XtPZO6joC0Rr+di/qtUTo
+ oTv+6hlYH5+uyVoe6FV6yxjUAbpvIRv9bN/idQ6mOzjti7KgZTFrdQJIrHma1+l6CzbV yA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 30p2p00ddv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Apr 2020 17:25:18 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 03RHMbqg085782;
+ Mon, 27 Apr 2020 17:25:18 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 30mxpdrdfm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Apr 2020 17:25:18 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 03RHP5vx008462;
+ Mon, 27 Apr 2020 17:25:05 GMT
+Received: from [192.168.2.157] (/71.63.128.209)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 27 Apr 2020 10:25:05 -0700
+Subject: Re: [PATCH v3 2/4] hugetlbfs: move hugepagesz= parsing to arch
+ independent code
+To: Sandipan Das <sandipan.osd@gmail.com>
+References: <20200417185049.275845-1-mike.kravetz@oracle.com>
+ <20200417185049.275845-3-mike.kravetz@oracle.com>
+ <7583dfcc-62d8-2a54-6eef-bcb4e01129b3@gmail.com>
+From: Mike Kravetz <mike.kravetz@oracle.com>
+Message-ID: <5a380060-38db-b690-1003-678ca0f28f07@oracle.com>
+Date: Mon, 27 Apr 2020 10:25:02 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
+MIME-Version: 1.0
+In-Reply-To: <7583dfcc-62d8-2a54-6eef-bcb4e01129b3@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9604
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ malwarescore=0
+ mlxscore=0 bulkscore=0 adultscore=0 phishscore=0 suspectscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004270142
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9604
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ phishscore=0 clxscore=1011
+ bulkscore=0 adultscore=0 lowpriorityscore=0 impostorscore=0 malwarescore=0
+ mlxscore=0 suspectscore=0 mlxlogscore=999 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004270142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200427_093452_580039_B3FB5D62 
-X-CRM114-Status: GOOD (  11.50  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200427_102622_185661_B75F011C 
+X-CRM114-Status: GOOD (  28.09  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.85 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,25 +114,122 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-doc@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Peter Xu <peterx@redhat.com>,
+ linux-mm@kvack.org, Paul Mackerras <paulus@samba.org>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, Mina Almasry <almasrymina@google.com>,
+ linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Longpeng <longpeng2@huawei.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Vasily Gorbik <gor@linux.ibm.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Christophe Leroy <christophe.leroy@c-s.fr>,
+ Nitesh Narayan Lal <nitesh@redhat.com>, Randy Dunlap <rdunlap@infradead.org>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
+ "David S.Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, 21 Apr 2020 00:29:58 PDT (-0700), zong.li@sifive.com wrote:
-> This patch set contains the difference from the newest strict memory
-> permission. These changes are suggested by Masami Hiramatsu, including
-> deprecating old style of kprobe annotation, lock protection and so on.
->
-> Zong Li (3):
->   riscv: Remove the 'riscv_' prefix of function name
->   riscv: Use NOKPROBE_SYMBOL() instead of __krpobes annotation
->   riscv: Use text_mutex instead of patch_lock
->
->  arch/riscv/include/asm/patch.h |  4 +--
->  arch/riscv/kernel/ftrace.c     | 15 ++++++++++-
->  arch/riscv/kernel/patch.c      | 46 ++++++++++++++++++++--------------
->  3 files changed, 43 insertions(+), 22 deletions(-)
+On 4/26/20 10:04 PM, Sandipan Das wrote:
+> Hi Mike,
+> 
+> On 18/04/20 12:20 am, Mike Kravetz wrote:
+>> Now that architectures provide arch_hugetlb_valid_size(), parsing
+>> of "hugepagesz=" can be done in architecture independent code.
+>> Create a single routine to handle hugepagesz= parsing and remove
+>> all arch specific routines.  We can also remove the interface
+>> hugetlb_bad_size() as this is no longer used outside arch independent
+>> code.
+>>
+>> This also provides consistent behavior of hugetlbfs command line
+>> options.  The hugepagesz= option should only be specified once for
+>> a specific size, but some architectures allow multiple instances.
+>> This appears to be more of an oversight when code was added by some
+>> architectures to set up ALL huge pages sizes.
+>>
+>> [...]
+>>
+>> diff --git a/arch/powerpc/mm/hugetlbpage.c b/arch/powerpc/mm/hugetlbpage.c
+>> index de54d2a37830..2c3fa0a7787b 100644
+>> --- a/arch/powerpc/mm/hugetlbpage.c
+>> +++ b/arch/powerpc/mm/hugetlbpage.c
+>> @@ -589,21 +589,6 @@ static int __init add_huge_page_size(unsigned long long size)
+>>  	return 0;
+>>  }
+>>  
+>> -static int __init hugepage_setup_sz(char *str)
+>> -{
+>> -	unsigned long long size;
+>> -
+>> -	size = memparse(str, &str);
+>> -
+>> -	if (add_huge_page_size(size) != 0) {
+>> -		hugetlb_bad_size();
+>> -		pr_err("Invalid huge page size specified(%llu)\n", size);
+>> -	}
+>> -
+>> -	return 1;
+>> -}
+>> -__setup("hugepagesz=", hugepage_setup_sz);
+>> -
+>> [...]
+> 
+> This isn't working as expected on powerpc64.
+> 
+>   [    0.000000] Kernel command line: root=UUID=dc7b49cf-95a2-4996-8e7d-7c64ddc7a6ff hugepagesz=16G hugepages=2 
+>   [    0.000000] HugeTLB: huge pages not supported, ignoring hugepagesz = 16G
+>   [    0.000000] HugeTLB: huge pages not supported, ignoring hugepages = 2
+>   [    0.284177] HugeTLB registered 16.0 MiB page size, pre-allocated 0 pages
+>   [    0.284182] HugeTLB registered 16.0 GiB page size, pre-allocated 0 pages
+>   [    2.585062]     hugepagesz=16G
+>   [    2.585063]     hugepages=2
+> 
+> The "huge pages not supported" messages are under a !hugepages_supported()
+> condition which checks if HPAGE_SHIFT is non-zero. On powerpc64, HPAGE_SHIFT
+> comes from the hpage_shift variable. At this point, it is still zero and yet
+> to be set. Hence the check fails. The reason being hugetlbpage_init_default(),
+> which sets hpage_shift, it now called after hugepage_setup_sz().
 
-Thanks, this is on for-next.
+Thanks for catching this Sandipan.
+
+In the new arch independent version of hugepages_setup, I added the following
+code in patch 4 off this series:
+
+> +static int __init hugepages_setup(char *s)
+>  {
+>  	unsigned long *mhp;
+>  	static unsigned long *last_mhp;
+>  
+> +	if (!hugepages_supported()) {
+> +		pr_warn("HugeTLB: huge pages not supported, ignoring hugepages = %s\n", s);
+> +		return 0;
+> +	}
+> +
+>  	if (!parsed_valid_hugepagesz) {
+
+In fact, I added it to the beginning of all the hugetlb command line parsing
+routines.  My 'thought' was to warn early if hugetlb pages were not supported.
+Previously, the first check for hugepages_supported() was in hugetlb_init()
+which ran after hugetlbpage_init_default().
+
+The easy solution is to remove all the hugepages_supported() checks from
+command line parsing routines and rely on the later check in hugetlb_init().
+
+Another reason for adding those early checks was to possibly prevent the
+preallocation of gigantic pages at command line parsing time.   Gigantic
+pages are allocated at command line parsing time as they need to be allocated
+with the bootmem allocator.  My concern is that there could be some strange
+configuration where !hugepages_supported(), yet we allocate gigantic pages
+from bootmem that can not be used or freeed later.
+
+powerpc is the only architecture which has it's own alloc_bootmem_huge_page
+routine.  So, it handles this potential issue.
+
+I'll send out a fix shortly.
+-- 
+Mike Kravetz
 
