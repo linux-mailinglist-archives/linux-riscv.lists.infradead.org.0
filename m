@@ -2,61 +2,64 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAA671BBC38
-	for <lists+linux-riscv@lfdr.de>; Tue, 28 Apr 2020 13:17:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14AC01BBC39
+	for <lists+linux-riscv@lfdr.de>; Tue, 28 Apr 2020 13:17:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:Message-Id:Date:Subject:To:From:Reply-To:
+	Content-Type:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=aul5l5DQgIR5rCpNQ49LSf6UP/DM43dIay019PQDyjs=; b=Vt5
-	8Sbl9EZNSQj+8xeG1u+KuJ+JJOh2KsMrpjQNIq/Eygm5tyCSukaK4UfVtjH7seUGFED2mYBbboKUt
-	8uN8NzECTgOhB/Z4Bljt6lDRwmEq3CtgC70DH3n7atdS9ZzMGkVhjtz3aYfHeMeSDIVnzdkEsWZFW
-	4a4PZO72CrUobZ6YTaoqQj8kvtpsCqqeVf15ezMwioKt9BEsvqYBl1LthuRziG9VCSf8m9ePnURhO
-	7HXdpoRNpsdnN4mBO5ndAPsxeK3mFDBZiNbzN8HNZPTwW225XTT6JkUPzSB0kHdcqCgWR3/jZFmR8
-	OSaiBJU5WzX6GVEamos609NQAxAbNgw==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=auhdIpVykeScLQHtqjvP+FzHVlmWZFx4SFd13kL/vhY=; b=fmMTTloFokMcatGuYEKPKbiiY
+	DqEjBX1rz3Lh0HJ9qRooeZksCRBlXaokDW/DUVT5ThuE2QxR1acdEmjg62WA0lfXJbbwnO5pTXMFA
+	UCW+tkZ4ZOBYv/XmJpglw8I9PdXvfArTdn01AR7Vs3eLEuom4t7vF5Lzy+YErLszOvGM+wRzJCj3E
+	BCzx/xg/FYCfSOTFj1wgIv+y/UN6fJ9PzK2W9P2gKT/DfP9pMEeJuxZDT4OBbsZRv3tTQXxMtIkcU
+	qJsc4L0+FoyeBZwj03wckVniSEpXL7c1nqbwD106SHFNFFyo+YwWNLNLaOAurqg6JXN/zHADsJU7I
+	jO3te9DbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTOEd-00037S-Ps; Tue, 28 Apr 2020 11:17:07 +0000
+	id 1jTOEk-0003FV-4n; Tue, 28 Apr 2020 11:17:14 +0000
 Received: from mail-eopbgr750070.outbound.protection.outlook.com
  ([40.107.75.70] helo=NAM02-BL2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTOEZ-00035K-Di
- for linux-riscv@lists.infradead.org; Tue, 28 Apr 2020 11:17:05 +0000
+ id 1jTOEb-00035K-9n
+ for linux-riscv@lists.infradead.org; Tue, 28 Apr 2020 11:17:06 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iome/dToORdab2Es+kkzvDmZg2m+SV6j+th7IoZfxN5pj4gKhwqXKNfemG1VWPsfQgENq0wFR5+wvErTXWrKkd+UgnQbFd5LJtghXdihX6t4h9iCnm9s+XGMhH9YMpeiL4aNjmcT/vqSto2gliarEEkIMHil3e7tHYXd92fAFA32h66jsB333cmi3FIKuj7kxL5Bfn1QWY2HaBcsU5rlCn92eRBizxNecg8K9sZn7+orRVLWR254luhSHOOXzXP/B/IijuMHy/XzV+oJyFtdQ7r1YwSyAyajSTcbg19dPxj/qCfiybG/fMVPn+Bwuj1FdWvMn1dqiECGSXzFBOC2rg==
+ b=mXhg+F+mpTeJomIczh/pkP4EnUDLycN9QKQG2YsTgTs5JB6HnU0v36rysyfNYoBVk6aXY94RwaNi8GoPiwKK5JdKL7X/yBCF4dS48IVZ9WpYuaa+dtu787VLjsS0a68y1bPTRXAjD7gpKxSVy7iCGp8i98pgSoRktBUoxDnwkAarTryZlH3uSgTlydMonCr5tLHag3+xB030I3DATOIgd47SYBfqYXudNawmc7ekjbnYiCexnoQuISAgbygiXm5vVuFyO4K2UC4AAXJ9Nv7w4kdQY60t2Cp6F//Hh1m67woBt7r0EugCzULFyUox8EWGSYo0GBAyd9okdp5fSKeXyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aul5l5DQgIR5rCpNQ49LSf6UP/DM43dIay019PQDyjs=;
- b=jiZYG1S1JPxYcenXviT0TbVq40knWvuJbq30zHyKWFM6TA5PjK/35t9LmvY1e6ymMF3qqNPvu6NYrl/2mOHFg0l6wb3+yO5shaf0KlFLVgF6xKCtsrbCydsXre4aHOYvHwjYpgZm/2ljiIaSVCXO2vzcDkq+gtpzb2UM/DisBRAW/WHbAvalC2Lam5UAN34imoeai3IN/ms5wE2moi/Mqe6wkxnhB0T6WG+ciA/03c6cnURLxiiKX0UxKsFDuQbksZSZdBj82yVDx04scRXnVGCboNDxIpsVdYdjqPbOd3CUXzAfSKG7nn0viWOBKbWHxybgJ8LN/VA3Pf1OKr4IiQ==
+ bh=auhdIpVykeScLQHtqjvP+FzHVlmWZFx4SFd13kL/vhY=;
+ b=bCQ/oO+R+GV+NTKXIYk4JgNXhNP+B9QAIRC2X4PZs5BAXhT+8KN0gKnQxw4p5P8nKwhGWrjq+rhiCDFfRu9RUQXCQDcEjI1kiivOnO+5W61WRfNPJZ9acBG7jlIP8xQLCxIywvh8AdWUxXBFc/CWesWYcjH08iK9bb6Gjp3xt9+uqkYLoiuBSkL9zUtfimX/f7hdwOJ2cWXKbktlupXGji5F9kxYen123DRvW78MbUFiRezPzYzZkp+wsmWZrcWJGQz6rQ7YMX8W7D8FcX/p5sRUg7s8+h3r2yI6U43zXEXp5LNyR0Sg6JT/BgENJzjuO0Iz3CQ9NEHaQPE9x9xWig==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
  dkim=pass header.d=sifive.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aul5l5DQgIR5rCpNQ49LSf6UP/DM43dIay019PQDyjs=;
- b=S9WatSVJHzk7XYepjupbtnpRCBc65nBSD6cfL4jkohB0Z0sqqj1zK1+ynsfzSuOOG8wQ3WaKeSTil5plioGPXRNA5ur0f0KzY/VZNMcLpCH+NJFPjZJusK0Xe2f3FMYGi6QlxvahLwmlvYGIVc/2+2tbKW4xmmhvDDjBU2z5I3c=
+ bh=auhdIpVykeScLQHtqjvP+FzHVlmWZFx4SFd13kL/vhY=;
+ b=c9D/B0JkTpXD1hALdVyz8Iv7Mn+tlubBN8QSS+NvFQ4HOrCJhAiDzgIe6/gNncEepdzZODxxS3sL1i1Di3KtvfJbwXNSFjPihmeq9hxtnW95tSkoMNES1vqzBStvtxHpq0ZbZ87G/BDax6D72SWQl+fZJddg5hfHW+/992Ry/+w=
 Authentication-Results: vger.kernel.org; dkim=none (message not signed)
  header.d=none; vger.kernel.org; dmarc=none action=none header.from=sifive.com; 
 Received: from BN8PR13MB2611.namprd13.prod.outlook.com (2603:10b6:408:81::17)
  by BN8PR13MB2737.namprd13.prod.outlook.com (2603:10b6:408:88::18)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.12; Tue, 28 Apr
- 2020 11:17:00 +0000
+ 2020 11:17:02 +0000
 Received: from BN8PR13MB2611.namprd13.prod.outlook.com
  ([fe80::c129:8fca:5ed:8929]) by BN8PR13MB2611.namprd13.prod.outlook.com
  ([fe80::c129:8fca:5ed:8929%6]) with mapi id 15.20.2958.014; Tue, 28 Apr 2020
- 11:17:00 +0000
+ 11:17:02 +0000
 From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 To: linux-kernel@vger.kernel.org, linux-riscv@lists.infradead.org,
  robh+dt@kernel.org
-Subject: [RFC PATCH 0/4] fix macb phy probe failure if phy-reset is not handled
-Date: Tue, 28 Apr 2020 04:16:44 -0700
-Message-Id: <1588072608-7747-1-git-send-email-sagar.kadam@sifive.com>
+Subject: [RFC PATCH 1/4] dts: phy: fix missing mdio device and probe failure
+ of vsc8541-01 device
+Date: Tue, 28 Apr 2020 04:16:45 -0700
+Message-Id: <1588072608-7747-2-git-send-email-sagar.kadam@sifive.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1588072608-7747-1-git-send-email-sagar.kadam@sifive.com>
+References: <1588072608-7747-1-git-send-email-sagar.kadam@sifive.com>
 Content-Type: text/plain
 X-ClientProxiedBy: BY5PR13CA0032.namprd13.prod.outlook.com
  (2603:10b6:a03:180::45) To BN8PR13MB2611.namprd13.prod.outlook.com
@@ -67,16 +70,16 @@ Received: from gamma07.internal.sifive.com (64.62.193.194) by
  BY5PR13CA0032.namprd13.prod.outlook.com (2603:10b6:a03:180::45) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.20.2958.9 via Frontend
- Transport; Tue, 28 Apr 2020 11:16:58 +0000
+ Transport; Tue, 28 Apr 2020 11:17:01 +0000
 X-Mailer: git-send-email 2.7.4
 X-Originating-IP: [64.62.193.194]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 6855ea8d-7fa2-496f-68ac-08d7eb65ab63
+X-MS-Office365-Filtering-Correlation-Id: eb252641-fbbc-4fb9-6fe9-08d7eb65acfa
 X-MS-TrafficTypeDiagnostic: BN8PR13MB2737:
 X-LD-Processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BN8PR13MB273792A5FF3DC40CA7243DD899AC0@BN8PR13MB2737.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-Microsoft-Antispam-PRVS: <BN8PR13MB2737048600F9D0C836C1956299AC0@BN8PR13MB2737.namprd13.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
 X-Forefront-PRVS: 0387D64A71
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BN8PR13MB2611.namprd13.prod.outlook.com; PTR:; CAT:NONE;
@@ -85,20 +88,19 @@ X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: sDWkWWT8lQbUYQGKEHL+yd7CxLXqFNN4AskxMMb4zCvbdE34ldrpt7TGNy4h7ztuitcYWTIE6AKlnYytxOn8oOLPe8YbqDpFekNQUWqKC/xkr0GFeX9QkcIz+I1Sz5S2tvRQd4LeRHQELK1Dsit4+XdQTRDhVLw7gvyK9LB+FW9FYCRNvMjF/nLGIwyNBZDZW4m/0678FcKgNGioi7m7zKcI38nxtfaUHUy9TJvCRxDN+azoP4jURv1OAsQCEyJKd1zh8ehnNitebuJpY3D7NzH7jZk0auMEkZy//JcCdAM7EDxGWu5cp/fy8QZtVeIsAhP7h4ATwZpDPwNiZnhYjeVFyBgUQQCxiKFcsSLX1pxYoAUkqPl6Rk/Z99/Utu5V7SJvjtrBnLCEJtWgOQ4Icqwq8GyQ4C4HL6taJCF+LvKOf9gQj0JzuJ7D1Frr5JOs1408NoYOqKHBUZLzdrvq39dBfNOLg9Of/NLuMKMhIkmS30rBfiUZnefOLc9YTOQpeClKW4amZ/F8xAsSVCk7aA==
-X-MS-Exchange-AntiSpam-MessageData: /7bftCvEwBsey1mtFYryQw8dzCLTLF0XG1mCkqIDIb/kl42yNapPl1mkI0W84iDRMf6/WOHRScznP/Yn+LdzNP3XxQ/Xpcd2wMiYy4YT4g3480KSW18qiUAf3sf1Ed+CDZdz7E+YCdtp+hFet2FXfbXhTsKfGh4A8On0mURZnTOfOywEyXutq7+fJgmV+pVRWKLXuxjacB/0cvvhaBvPKxqgFNMsjmysOoUVuRYrrD12wo/AQ0nC54VSop1gJZmfCwhAPWwrQTtnvlgTBVcZ4N71ic1dWvXCjSVpRFB871bQ+nCSyyW9hIsYd/CpwPx2dIu+oZ15FIpTWZLSd055Jy69KzMBgDk6iMCQxHuVCVSANAb2YGBBa6UD3RPVDbvPB4H0TRDasPA1n3uxr0MRy8XwrMgLncdKEKGlDbnULl+DDH6n6gHb/sWhLCd5+aBQrtxBzjM7cqdOfxS9xDXyV9UF0mnY5ognbvrGYd2dvO/u4chXmPG/iX+7uI6+5HHlGJn4MI9MZzQnq2saMDmbEStY7owDNVY6tsg29eRwD2MgBsDVf7HvBmugI+o82/1oAAIBlXlYOyrXFe3/1TAMrIqHpLOw3KdWno2dNv+lbPqaAWQcn2nxTSjrghWyZKYEPSkT+rLr8Yp/WAsorTIr9gKMbaCJbKKwjVQX1mwjgy6lV9YUBqqji+E8RtxEQLFNNrlNcDnL4TmmcYBScRHsrdVzjfpElg4ta8ZLgQl4KMTQ/G3smQnO3ZuHo9ibgVtndo5l8aARXQQ2YuVv8hBy5WtJIDwhmh6CsglVL86W28c=
+X-Microsoft-Antispam-Message-Info: //D/XayTLSDemUzBOJLxVPIWgoJ6BZ/Xyn+sGOHuyD9B/QMePm9S214HXy44RzSf0VvL4k1PNo6VKPm0hLnWHGaOKYDHn4zupXeQHqXSEaBb9jXAVYmDSSxyLXybH8jUM56hdGMPwp+rMcjDpa2eyhgBjq4VwY+KmgMNVRw5ERpwJIIC/JfDDUW2zsjNbgi9MdV79M0OmOmKklnADO/da84TbQjd9kELARqoEGA0PUw15BcYNBZvEjttP9s0PcKNPAvbIZ2AamcyrfN/FfvqycY/nV1S2ggZQOPnu47ThfH0xcwenWVVkoK0ir8PwSU0KSYzVBgYkAOD9RuUX0Pr2tfqjPjcmjhYSjY6dfl3iO0KTiMATrpxL6R07gb6xAldH+tV5kI66sR3HEq25FZBMWzOz/7rN+VMXQJ9XMo6mrp3Hixk1AdPJRCRcP1SCmw1f5y0ZtFRkg9N7Ij/uxd0b0/WgxeYVap7OvXgLVgNUOBLpUtRHdTM3vRZoI4h7pSrkGUqDDOjzm1Vgmc+InHRvA==
+X-MS-Exchange-AntiSpam-MessageData: FoqMXRzdDTPwVNUIdVG2sjEZH+uI1iTYPp8xSPzgfw6jnE0QCnKptDssXqRrrq7pcpTeWiC3/ffVLOBrp38whKd69rNDM/b+i34APuN49Jzo+4HEeji1a4ociF/WUKFoOOVWSAqvoXihlbQVshBocJ4i6vMGlLA+15yuvNzf6DXPQgsLcyvejJAv8hdj6YZPS1VYaKQVlkfvElO2zdlF0fGed/P4L7EPYlqWkeLSGodBfs0YBmxRYmNiiBNNA/unzmHQg6PRxhX1vfuu1olpVbKkjH5KJ0Omuq0445CG9Pl8LvdInYO4AFqM79Nb3Pa46LaDgFALl30KRyY3MAkuRGXFfGy9u7xOzkApqCTNEY4gm7pOeQHxr0XOu8ntAHGppF2WW3N23Ym7svVtvnWUH49BC2ZSyy+ZgKBSeCWvK3MoNHZngJ2L5ti1fevD1kE7z0X0jhtOCShxm1EAettz7lxD55NG3xyZF2ilhjy+cACp+jRyQHgg6aZRwV7IG3QqMOViR1e4o9GQyi/5h8X2/YKXaam/lKuQFk4aNUXG8eiNsSU/3RSKUWsOMxcEm+Rr1V1LHVvNrFKNqydX+CQjFVWdF2Qf2EAa/mDHbd+oHw9Kh82RHdb18aN4OACVueBq9AOqZeShTz3jsPGA/Tkb7Fc4RCjERmshcUshrjWqdqvO8pCFIVOgnmi5oJQjW8aiHj7ucomRqk/wiLIS0NNIvd1M5TqW+ZwN0sjteO9Z+6VPpKxemnnKmPmST+FxiNW16Gj7sGM+g3oHVqPr0DCmqNjgP1qQfh7r4JnfkK8e2dQ=
 X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6855ea8d-7fa2-496f-68ac-08d7eb65ab63
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2020 11:16:59.8436 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: eb252641-fbbc-4fb9-6fe9-08d7eb65acfa
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2020 11:17:02.4021 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Bp084uZbER0NTI1B6GBNktCCKAI9LdlhxjgX16MAE25Lo1BA6/CKd+s5IAclv/NBdF4ZgcNxYr0JgiziBx7UYQ==
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0wZCANYvqIljp+uIDpCpvvUu0FTwOIw6CGRzFVcm5iYqY/+BNniMor03Bu71zPIMKD7hCvi5mf8b3OSht5YJpA==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR13MB2737
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200428_041703_687018_7E8CB6C5 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200428_041705_339854_EE106D65 
+X-CRM114-Status: GOOD (  10.92  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -134,58 +136,44 @@ Cc: atish.patra@wdc.com, devicetree@vger.kernel.org, palmer@dabbelt.com,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-HiFive Unleashed is having VSC8541-01 ethernet phy device and requires a
-specific reset sequence of 0-1-0-1 in order to use it in unmanaged mode.
-This series addresses a corner case where phy reset is not handled by boot
-stages prior to linux.
-Somewhat similar unreliable phy probe failure was reported and discussed
-here [1].
-The macb driver fails to detect the ethernet phy device if the bootloader
-doesn't provide a proper reset sequence to the phy device or the phy itself
-is in some invalid state. Currently, the FSBL is resetting the phy device,
-and so there is no issue observed in the linux network setup.
+HiFive unleashed A00 board has VSC8541-01 ethernet phy, this device is
+identified as a Revision B device as described in device identification
+registers. In order to use this phy in the unmanaged mode, it requires
+a specific reset sequence of logical 0-1-0-1 transition on the NRESET pin
+as documented here [1].
 
-The series is based on linux-5.7-rc2.
-Patch 1: Add the OUI to the phy dt node to fix issue of missing mdio device
-Patch 2 and 3:
-	Resetting phy needs GPIO support so add to dt and defconfig.
-Patch 4: Add dt binding for OUI introduced in patch 1.
+Currently, the bootloader (fsbl) takes care of the phy reset. If due to
+some reason the phy device hasn't received the reset by the prior stages
+before the linux macb driver comes into the picture, the MACB mii bus gets
+probed but the mdio scan fails and is not even able to read the phy ID
+registers. It gives an error message:
 
-[1] https://lkml.org/lkml/2018/11/29/154
+"libphy: MACB_mii_bus: probed
+mdio_bus 10090000.ethernet-ffffffff: MDIO device at address 0 is missing."
 
-To reproduce the issue: 
-1. Comment out VSC8541 reset sequence in fsbl/main.c
-   from within the freedom-u540-c000-bootloader.
-2. Build and add fsbl.bin to micro sdcard.
+Thus adding the device OUI (Organizationally Unique Identifier) to the phy
+device node helps to probe the phy device.
 
-Boot the board and bootlog will show network setup failure messages as:
+[1]: VSC8541-01 datasheet:
+https://www.mouser.com/ds/2/523/Microsemi_VSC8541-01_Datasheet_10496_V40-1148034.pdf
 
-[  1.069474] libphy: MACB_mii_bus: probed
-[  1.073092] mdio_bus 10090000.ethernet-ffffffff: MDIO device at address 0
-	       is missing 
-.....
-[  1.979252] macb 10090000.ethernet eth0: Could not attach PHY (-19)
+Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+---
+ arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
-3. Now apply the series build, and boot kernel.
-4. MACB and VSC8541 driver get successfully probed and the network is set
-   without any failure.
-
-
-So irrespective of whether the prior stages handle the phy reset sequence,
-the probing is successful in both the cases of cold boot and warm boot.
-
-Sagar Shrikant Kadam (4):
-  dts: phy: fix missing mdio device and probe failure of vsc8541-01
-    device
-  dts: phy: add GPIO number and active state used for phy reset
-  riscv: defconfig: enable gpio support for HiFive Unleashed
-  dt-bindings: net: phy: extend dt binding for VSC8541 ethernet-phy
-
- Documentation/devicetree/bindings/net/mscc-phy-vsc8531.txt | 3 +++
- arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts        | 2 ++
- arch/riscv/configs/defconfig                               | 2 ++
- 3 files changed, 7 insertions(+)
-
+diff --git a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+index 4a2729f..60846e8 100644
+--- a/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
++++ b/arch/riscv/boot/dts/sifive/hifive-unleashed-a00.dts
+@@ -88,6 +88,7 @@
+ 	phy-mode = "gmii";
+ 	phy-handle = <&phy0>;
+ 	phy0: ethernet-phy@0 {
++		compatible = "ethernet-phy-id0007.0771";
+ 		reg = <0>;
+ 	};
+ };
 -- 
 2.7.4
 
