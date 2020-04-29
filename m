@@ -2,51 +2,51 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 522191BDBCC
-	for <lists+linux-riscv@lfdr.de>; Wed, 29 Apr 2020 14:16:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C325B1BDBCF
+	for <lists+linux-riscv@lfdr.de>; Wed, 29 Apr 2020 14:16:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CvHNGBlk7lmmGHScVKJmZldU7sQg8h6OWzvok+GY+No=; b=Njx02FaudJ/Iz9
-	Ecy1m4eUTT9MwtAv1srgf3xP4pRD1d+5KzhnXb+AxSwgf1hHAJhSXRhqD9IpvlCh41Xe9a/2uDa+Z
-	BhEiLMz+tMH8y2CV9aHFqgHwEz8Ms0jFk8l8NzmlpXz4tzBgr5oD3u0DvasIzA3f045BFcYs8b7rK
-	rMhODjBLydTAmi0oKzhBHq26s4x4lr6EoMBYdv6YCCZjnEn+LbhJvixZYADcqXPAqBH5DRU8mWtrT
-	pD36IvAfhcKvz5J1FqETLNM8u3kIeFZoWqzCzghYua3q8QTlESlGBvFEtwL+bs4EIdvHX5IrE2aKh
-	2gMsBIKR+PEBVxj/gZZg==;
+	List-Owner; bh=hbk7/hzpG5afATkzOcU5bw28WrDjBkFAS/aygYpRebs=; b=lUu3FbPqwbL1vU
+	HaxoOKNHIN8G+0w3ASuXQFVjmUhZugnEvxz75+ynpJVzN/UluxFKbGAx6aWdNucaRKqeGSLKGFN+Z
+	5Lhy8m1IW75WevYnUSbQjK585ehE9weJlJZ+1XS8g/6VjoDkmwvDSlPs+O4D8uVRhTzBraCKjJJXl
+	1SGunCvD6r05XIr6Mpit1INMjMBw+Of/Ju5PsOu3yvXpIdzcWHGaJCLscVlNeWbQpJ9dy15K0J7ij
+	e2XSQErfk99CKW095SoGcWyQgBJOj+WHTeJjQLUMZvB7lfT/YekqQ8CwcUsbjnskN/OCf8PAE/1y7
+	LJgpVUoxqDbUsftqwymQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTldl-0004Ix-8J; Wed, 29 Apr 2020 12:16:37 +0000
+	id 1jTldx-0004R4-I1; Wed, 29 Apr 2020 12:16:49 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTldf-0004Hs-8Q; Wed, 29 Apr 2020 12:16:32 +0000
+ id 1jTldt-0004Pj-8z; Wed, 29 Apr 2020 12:16:46 +0000
 Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5E60E21D79;
- Wed, 29 Apr 2020 12:16:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 72BB621D7B;
+ Wed, 29 Apr 2020 12:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588162590;
- bh=xtQCR6+gW45a9s1aGOZwforC/OBYLweyw2X6q9DWFXw=;
+ s=default; t=1588162604;
+ bh=vSBPyOKwrmQNqt7kyNkBHr9JqpNBLG1f44P+yYUwAD0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MVapj8SsT30fKxBTn0Apttu/7GlrjJjZcmdh9WMLTiB0JUywWX/5AiqxRuTxFgHIP
- rH3NYqL9b59R3mLsf+fOR9qhHN+nTDuBaQCgt9S53tDcsPNYMgGQBBBsfSwJqTxHKT
- WeCUAPnHsp222zaSZwX12ykRwSykBzBR1RFvBA+4=
+ b=WoeR0IMjhESnMKZLgeFQpYaSM1Q0137VRdB9oM2DfU/SAAkdUyrTXqjy5uqkDMB4w
+ A8OD0E3zWwQv5BZXvU0pC1x6W2MSkHROGVWsKhh68IOVd1n7tuhS5R+cHwtxzXCZoH
+ XZaE67z9A52A2FknRpk/21Qqx9xMcUu4+BgH8q4Q=
 From: Mike Rapoport <rppt@kernel.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 19/20] mm: simplify find_min_pfn_with_active_regions()
-Date: Wed, 29 Apr 2020 15:11:25 +0300
-Message-Id: <20200429121126.17989-20-rppt@kernel.org>
+Subject: [PATCH v2 20/20] docs/vm: update memory-models documentation
+Date: Wed, 29 Apr 2020 15:11:26 +0300
+Message-Id: <20200429121126.17989-21-rppt@kernel.org>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200429121126.17989-1-rppt@kernel.org>
 References: <20200429121126.17989-1-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_051631_352533_385485D5 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20200429_051645_363861_6A10F7FD 
+X-CRM114-Status: GOOD (  11.23  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -111,57 +111,33 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Mike Rapoport <rppt@linux.ibm.com>
 
-The find_min_pfn_with_active_regions() calls find_min_pfn_for_node() with
-nid parameter set to MAX_NUMNODES. This makes the find_min_pfn_for_node()
-traverse all memblock memory regions although the first PFN in the system
-can be easily found with memblock_start_of_DRAM().
-
-Use memblock_start_of_DRAM() in find_min_pfn_with_active_regions() and drop
-now unused find_min_pfn_for_node().
+to reflect the updates to free_area_init() family of functions.
 
 Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 ---
- mm/page_alloc.c | 20 +-------------------
- 1 file changed, 1 insertion(+), 19 deletions(-)
+ Documentation/vm/memory-model.rst | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 30d171451d4c..b990e9734474 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -7045,24 +7045,6 @@ unsigned long __init node_map_pfn_alignment(void)
- 	return ~accl_mask + 1;
- }
+diff --git a/Documentation/vm/memory-model.rst b/Documentation/vm/memory-model.rst
+index 58a12376b7df..91228044ed16 100644
+--- a/Documentation/vm/memory-model.rst
++++ b/Documentation/vm/memory-model.rst
+@@ -46,11 +46,10 @@ maps the entire physical memory. For most architectures, the holes
+ have entries in the `mem_map` array. The `struct page` objects
+ corresponding to the holes are never fully initialized.
  
--/* Find the lowest pfn for a node */
--static unsigned long __init find_min_pfn_for_node(int nid)
--{
--	unsigned long min_pfn = ULONG_MAX;
--	unsigned long start_pfn;
--	int i;
--
--	for_each_mem_pfn_range(i, nid, &start_pfn, NULL, NULL)
--		min_pfn = min(min_pfn, start_pfn);
--
--	if (min_pfn == ULONG_MAX) {
--		pr_warn("Could not find start_pfn for node %d\n", nid);
--		return 0;
--	}
--
--	return min_pfn;
--}
--
- /**
-  * find_min_pfn_with_active_regions - Find the minimum PFN registered
-  *
-@@ -7071,7 +7053,7 @@ static unsigned long __init find_min_pfn_for_node(int nid)
-  */
- unsigned long __init find_min_pfn_with_active_regions(void)
- {
--	return find_min_pfn_for_node(MAX_NUMNODES);
-+	return PHYS_PFN(memblock_start_of_DRAM());
- }
+-To allocate the `mem_map` array, architecture specific setup code
+-should call :c:func:`free_area_init_node` function or its convenience
+-wrapper :c:func:`free_area_init`. Yet, the mappings array is not
+-usable until the call to :c:func:`memblock_free_all` that hands all
+-the memory to the page allocator.
++To allocate the `mem_map` array, architecture specific setup code should
++call :c:func:`free_area_init` function. Yet, the mappings array is not
++usable until the call to :c:func:`memblock_free_all` that hands all the
++memory to the page allocator.
  
- /*
+ If an architecture enables `CONFIG_ARCH_HAS_HOLES_MEMORYMODEL` option,
+ it may free parts of the `mem_map` array that do not cover the
 -- 
 2.26.1
 
