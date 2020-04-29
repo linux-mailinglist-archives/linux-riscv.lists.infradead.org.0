@@ -2,51 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DC621BDBB3
-	for <lists+linux-riscv@lfdr.de>; Wed, 29 Apr 2020 14:15:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1AEC1BDBB8
+	for <lists+linux-riscv@lfdr.de>; Wed, 29 Apr 2020 14:15:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vj0ShFbbdgBQxMvpTGxtvjeZnmEzPsrZP+YoYYyxxQY=; b=CRUxsHo0C6yjsS
-	Df3rNA2TVbmEcIxDNlzicthmY7BkLNP2yWVSOIIYR7Eri7QoSQSODFo/+M6pn8G/h4fHEFkhJAk47
-	VjC38VEd/66ydQR0YxXv5QbyitQkxyd2SekP9GlbwDFnpAMX5R9ljxZbwF/lgIOLAk+yZypFeQS+c
-	6F3WKiNOk1S8NQyly6bGl1wKxFk/kZJCl4ukqtkZJgJfEqPq6dJA2fVRtFZ7dFs2Fd52LyHo8D3L1
-	q001Gve1LsH8Tno3Ozm9kGYWp5OLfdAOzf68OvVKa+fLdZBu4RQUHRPP9t3N1PLYU5kJMrl0gQpcJ
-	4dvBpG8YOCbIAUH/GE5g==;
+	List-Owner; bh=aK1PsF5tFM5R5WJSyQLnbQ5YUcOoscn75pgcyreuseg=; b=hmkfRVUpZjCwEY
+	IMYqweP2/09VjdJLnV3kKkZywxBKW7tvesnJ8qgT4ESgr1xMLvhbqLGx/Q6ApACPsv8e9nMJI8C2U
+	VhWu0SKE607hKbaEkkUsL4Rsm6/KKDxN08j671HHIeRHji+teALX+FjSPuvd3DSrFoR0ALYSavKTd
+	iI0tmrUCxk5cxobxA6FEbZgr5hQRSoy8VZhnogT52N1COhZ2WVk6gCE1Insjp0m1ia1fGA9MB++d2
+	YmpuXruwZ8HOFz1LCKBiMIPucpe7jGrl1K0u+7AxiDL4QXM3kshlV/QIERt3gEja+NdIFDVA8LFZc
+	ZVUWH+QNsPdiA8rzmqVQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTlcX-0002oS-0l; Wed, 29 Apr 2020 12:15:21 +0000
+	id 1jTlce-0003X9-51; Wed, 29 Apr 2020 12:15:28 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTlc5-0000mp-HA; Wed, 29 Apr 2020 12:14:55 +0000
+ id 1jTlcM-0001p6-HD; Wed, 29 Apr 2020 12:15:13 +0000
 Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BF8BD217D8;
- Wed, 29 Apr 2020 12:14:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id AE7A12184D;
+ Wed, 29 Apr 2020 12:14:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588162493;
- bh=PwNAuHT9V5jl2M06GaRQbE+89xoAz3U9lTg8JaLvxZM=;
+ s=default; t=1588162507;
+ bh=wSiCtht7XGk0G5xXo1EFLkbEsxIE900LvsbYCn6Fzv0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=YUh6MeP5N0j5F003uwP7Tb9XTSPLg1HiJZXgQKYH3aNOV1FgykIkvJX3NbJ/Qjv6x
- h5l1i+Lb2NA/Dz0Sd9NWYHhDPGIF6bIB3xpSE8x8qN/eX6xSrR27VlY2tefXFAHwKj
- RCuvhTEN1u2sy0E32qtQojsNXbmNPrAEDWik6Qwg=
+ b=ty0Ezl2gwznQdHX/QjiKXUjVaUpaBjDw0d0R4fHNz9rFZfs92Jr0GLqFRn/SFE4B+
+ sfXFVBXVsiMlbTQ50baltSPOWN5UJEyf7Lwwa3iCKJ4HhksnoH4xoKURE8roUYESqq
+ i7MwEHqmOm4Ft3dxu0NpJmgq3kWsOGXxx8BgGNLY=
 From: Mike Rapoport <rppt@kernel.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 12/20] sparc32: simplify detection of memory zone boundaries
-Date: Wed, 29 Apr 2020 15:11:18 +0300
-Message-Id: <20200429121126.17989-13-rppt@kernel.org>
+Subject: [PATCH v2 13/20] unicore32: simplify detection of memory zone
+ boundaries
+Date: Wed, 29 Apr 2020 15:11:19 +0300
+Message-Id: <20200429121126.17989-14-rppt@kernel.org>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200429121126.17989-1-rppt@kernel.org>
 References: <20200429121126.17989-1-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_051454_179084_1678A1D5 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20200429_051511_009949_71F3C2E8 
+X-CRM114-Status: GOOD (  16.35  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -123,42 +124,142 @@ detection.
 
 Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 ---
- arch/sparc/mm/srmmu.c | 21 +++++----------------
- 1 file changed, 5 insertions(+), 16 deletions(-)
+ arch/unicore32/include/asm/memory.h  |  2 +-
+ arch/unicore32/include/mach/memory.h |  6 ++--
+ arch/unicore32/kernel/pci.c          | 14 ++-------
+ arch/unicore32/mm/init.c             | 43 ++++++----------------------
+ 4 files changed, 15 insertions(+), 50 deletions(-)
 
-diff --git a/arch/sparc/mm/srmmu.c b/arch/sparc/mm/srmmu.c
-index b7c94de70cca..cc071dd7d8da 100644
---- a/arch/sparc/mm/srmmu.c
-+++ b/arch/sparc/mm/srmmu.c
-@@ -1008,24 +1008,13 @@ void __init srmmu_paging_init(void)
- 	kmap_init();
+diff --git a/arch/unicore32/include/asm/memory.h b/arch/unicore32/include/asm/memory.h
+index 23c93105f98f..66285178dd9b 100644
+--- a/arch/unicore32/include/asm/memory.h
++++ b/arch/unicore32/include/asm/memory.h
+@@ -60,7 +60,7 @@
+ #ifndef __ASSEMBLY__
  
- 	{
--		unsigned long zones_size[MAX_NR_ZONES];
--		unsigned long zholes_size[MAX_NR_ZONES];
--		unsigned long npages;
--		int znum;
-+		unsigned long max_zone_pfn[MAX_NR_ZONES] = { 0 };
+ #ifndef arch_adjust_zones
+-#define arch_adjust_zones(size, holes) do { } while (0)
++#define arch_adjust_zones(max_zone_pfn) do { } while (0)
+ #endif
  
--		for (znum = 0; znum < MAX_NR_ZONES; znum++)
--			zones_size[znum] = zholes_size[znum] = 0;
-+		max_zone_pfn[ZONE_DMA] = max_low_pfn;
-+		max_zone_pfn[ZONE_NORMAL] = max_low_pfn;
-+		max_zone_pfn[ZONE_HIGHMEM] = highend_pfn;
+ /*
+diff --git a/arch/unicore32/include/mach/memory.h b/arch/unicore32/include/mach/memory.h
+index 2b527cedd03d..b4e6035cb9a3 100644
+--- a/arch/unicore32/include/mach/memory.h
++++ b/arch/unicore32/include/mach/memory.h
+@@ -25,10 +25,10 @@
  
--		npages = max_low_pfn - pfn_base;
+ #if !defined(__ASSEMBLY__) && defined(CONFIG_PCI)
+ 
+-void puv3_pci_adjust_zones(unsigned long *size, unsigned long *holes);
++void puv3_pci_adjust_zones(unsigned long *max_zone_pfn);
+ 
+-#define arch_adjust_zones(size, holes) \
+-	puv3_pci_adjust_zones(size, holes)
++#define arch_adjust_zones(max_zone_pfn) \
++	puv3_pci_adjust_zones(max_zone_pfn)
+ 
+ #endif
+ 
+diff --git a/arch/unicore32/kernel/pci.c b/arch/unicore32/kernel/pci.c
+index efa04a94dcdb..0d098aa05b47 100644
+--- a/arch/unicore32/kernel/pci.c
++++ b/arch/unicore32/kernel/pci.c
+@@ -133,21 +133,11 @@ static int pci_puv3_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+  * This is really ugly and we need a better way of specifying
+  * DMA-capable regions of memory.
+  */
+-void __init puv3_pci_adjust_zones(unsigned long *zone_size,
+-	unsigned long *zhole_size)
++void __init puv3_pci_adjust_zones(unsigned long max_zone_pfn)
+ {
+ 	unsigned int sz = SZ_128M >> PAGE_SHIFT;
+ 
+-	/*
+-	 * Only adjust if > 128M on current system
+-	 */
+-	if (zone_size[0] <= sz)
+-		return;
 -
--		zones_size[ZONE_DMA] = npages;
--		zholes_size[ZONE_DMA] = npages - pages_avail;
--
--		npages = highend_pfn - max_low_pfn;
--		zones_size[ZONE_HIGHMEM] = npages;
--		zholes_size[ZONE_HIGHMEM] = npages - calc_highpages();
--
--		free_area_init_node(0, zones_size, pfn_base, zholes_size);
-+		free_area_init(max_zone_pfn);
+-	zone_size[1] = zone_size[0] - sz;
+-	zone_size[0] = sz;
+-	zhole_size[1] = zhole_size[0];
+-	zhole_size[0] = 0;
++	max_zone_pfn[ZONE_DMA] = sz;
+ }
+ 
+ /*
+diff --git a/arch/unicore32/mm/init.c b/arch/unicore32/mm/init.c
+index 6cf010fadc7a..52425d383cea 100644
+--- a/arch/unicore32/mm/init.c
++++ b/arch/unicore32/mm/init.c
+@@ -61,46 +61,21 @@ static void __init find_limits(unsigned long *min, unsigned long *max_low,
  	}
  }
+ 
+-static void __init uc32_bootmem_free(unsigned long min, unsigned long max_low,
+-	unsigned long max_high)
++static void __init uc32_bootmem_free(unsigned long max_low)
+ {
+-	unsigned long zone_size[MAX_NR_ZONES], zhole_size[MAX_NR_ZONES];
+-	struct memblock_region *reg;
++	unsigned long max_zone_pfn[MAX_NR_ZONES] = { 0 };
+ 
+-	/*
+-	 * initialise the zones.
+-	 */
+-	memset(zone_size, 0, sizeof(zone_size));
+-
+-	/*
+-	 * The memory size has already been determined.  If we need
+-	 * to do anything fancy with the allocation of this memory
+-	 * to the zones, now is the time to do it.
+-	 */
+-	zone_size[0] = max_low - min;
+-
+-	/*
+-	 * Calculate the size of the holes.
+-	 *  holes = node_size - sum(bank_sizes)
+-	 */
+-	memcpy(zhole_size, zone_size, sizeof(zhole_size));
+-	for_each_memblock(memory, reg) {
+-		unsigned long start = memblock_region_memory_base_pfn(reg);
+-		unsigned long end = memblock_region_memory_end_pfn(reg);
+-
+-		if (start < max_low) {
+-			unsigned long low_end = min(end, max_low);
+-			zhole_size[0] -= low_end - start;
+-		}
+-	}
++	max_zone_pfn[ZONE_DMA] = max_low;
++	max_zone_pfn[ZONE_NORMAL] = max_low;
+ 
+ 	/*
+ 	 * Adjust the sizes according to any special requirements for
+ 	 * this machine type.
++	 * This might lower ZONE_DMA limit.
+ 	 */
+-	arch_adjust_zones(zone_size, zhole_size);
++	arch_adjust_zones(max_zone_pfn);
+ 
+-	free_area_init_node(0, zone_size, min, zhole_size);
++	free_area_init(max_zone_pfn);
+ }
+ 
+ int pfn_valid(unsigned long pfn)
+@@ -176,11 +151,11 @@ void __init bootmem_init(void)
+ 	sparse_init();
+ 
+ 	/*
+-	 * Now free the memory - free_area_init_node needs
++	 * Now free the memory - free_area_init needs
+ 	 * the sparse mem_map arrays initialized by sparse_init()
+ 	 * for memmap_init_zone(), otherwise all PFNs are invalid.
+ 	 */
+-	uc32_bootmem_free(min, max_low, max_high);
++	uc32_bootmem_free(max_low);
+ 
+ 	high_memory = __va((max_low << PAGE_SHIFT) - 1) + 1;
  
 -- 
 2.26.1
