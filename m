@@ -2,37 +2,71 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BE531BE08B
-	for <lists+linux-riscv@lfdr.de>; Wed, 29 Apr 2020 16:17:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F3CC1BE127
+	for <lists+linux-riscv@lfdr.de>; Wed, 29 Apr 2020 16:34:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ikRp1jMR1EzFxoc+o3VOCA2gMw8FZkS2U5Oi/2AUBbY=; b=nwUBsLqnBfehNoqAxyKtVXqIW
-	Ai5ZKhafIQB2SNGLN8IPlVy03ZFOJDK2OMFUqTrF3TJC9WIff1phE71hWMIXNHYaZFU0CxC04JUvh
-	1WnCy0y7CSlKHYI5v1jzBbkdo64U3wFfsEm3fIkuWxuAMJFz+prw0j8ob9JKtWiBcgDkpycmSUknu
-	RpwThCOTOZebVEBVacwQBymjK5eeZD3oX7fSYwRqN09AZKgxoHrBuAzvrUuGasO1kEceKj7TGG9a7
-	3ubBv+n+xC3SK0+XRypmKJx+Mbv8AOcusYae0YBelYtP5MhEuQ+W5/+cNKQLohKc9l9oTWiQTmUxy
-	rDj3xcvGQ==;
+	 bh=D9eypSqOsC5XLm/gapdjFd3HLPSbUTz8znQDvYgjUjU=; b=cejJ2KpPY6HtWiFt8DeEHp6dK
+	vUEPCRGEMaWp7bZueoxvwH8HoxSd3V+bNMqUCnp/E9aEL9GakjwksHiyKmV8FpSlmUYkCDO6mql0Z
+	AaU4tWIvDiUr/hF40ZYhLzBJrGP5gVDgArVTIhQRoYHvz35ukZKk+oZHGjJxNPvu7yoA4bT3nWfVN
+	PIbl/w12EX6DwX8MGuprLio2UArB4ApW8vfy2uU6kjudQL/oD/JhYZqj7PKens5q6Ot3YsObzei48
+	i778zeSV8fbZjsBT9e8vrbXIa2HFuy5sISRNKtYsQbLVCsa1pkNE0/r0sN93P6mtBkbJSNRnapM0s
+	L/QL9jARA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTnWW-0001a5-0s; Wed, 29 Apr 2020 14:17:16 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1jTnWM-0001Yh-RC; Wed, 29 Apr 2020 14:17:06 +0000
-Date: Wed, 29 Apr 2020 07:17:06 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Mike Rapoport <rppt@kernel.org>
+	id 1jTnn5-00008z-Id; Wed, 29 Apr 2020 14:34:23 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jTnmu-0008Uw-LU; Wed, 29 Apr 2020 14:34:19 +0000
+Received: from kernel.org (unknown [87.70.161.124])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 796F52074A;
+ Wed, 29 Apr 2020 14:33:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588170852;
+ bh=WWPVYLJB8cF1eh/bgOa7kKMnwvq4kKVMrtpQ0105+PI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=r0MyUrcNByfv40BqZMDUz9VgJFeWUeRjo2JW4VKDF1h/7I/qQIsmP3r+XczFilNcB
+ ++CDc2aMtj2e1Vvw7mqelm0S/yNPEGrXgzqXPqqXmHsIltvr+DFp/+T/wSjD9ztS+C
+ LzUl9esAqrKIQvImRO0XfT4341bJ3x0mFvf4a1wc=
+Date: Wed, 29 Apr 2020 17:33:46 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: Christoph Hellwig <hch@infradead.org>
 Subject: Re: [PATCH v2 16/20] mm: remove early_pfn_in_nid() and
  CONFIG_NODES_SPAN_OTHER_NODES
-Message-ID: <20200429141706.GA25142@infradead.org>
+Message-ID: <20200429143346.GI14260@kernel.org>
 References: <20200429121126.17989-1-rppt@kernel.org>
  <20200429121126.17989-17-rppt@kernel.org>
+ <20200429141706.GA25142@infradead.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200429121126.17989-17-rppt@kernel.org>
+In-Reply-To: <20200429141706.GA25142@infradead.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200429_073412_753958_29AFA563 
+X-CRM114-Status: GOOD (  14.35  )
+X-Spam-Score: -5.2 (-----)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (-5.2 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,15 +111,27 @@ Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Apr 29, 2020 at 03:11:22PM +0300, Mike Rapoport wrote:
-> From: Mike Rapoport <rppt@linux.ibm.com>
+On Wed, Apr 29, 2020 at 07:17:06AM -0700, Christoph Hellwig wrote:
+> On Wed, Apr 29, 2020 at 03:11:22PM +0300, Mike Rapoport wrote:
+> > From: Mike Rapoport <rppt@linux.ibm.com>
+> > 
+> > The commit f47ac088c406 ("mm: memmap_init: iterate over memblock regions
+> > rather that check each PFN") made early_pfn_in_nid() obsolete and since
+> > CONFIG_NODES_SPAN_OTHER_NODES is only used to pick a stub or a real
+> > implementation of early_pfn_in_nid() it is also not needed anymore.
 > 
-> The commit f47ac088c406 ("mm: memmap_init: iterate over memblock regions
-> rather that check each PFN") made early_pfn_in_nid() obsolete and since
-> CONFIG_NODES_SPAN_OTHER_NODES is only used to pick a stub or a real
-> implementation of early_pfn_in_nid() it is also not needed anymore.
+> I don't think you can quote a commit id for something that hasn't been
+> commited to mainline yet.i
 
-I don't think you can quote a commit id for something that hasn't been
-commited to mainline yet.  Then again I would have just merged this
-patch into the one that obsoleted early_pfn_in_nid anyway.
+Ouch, that was one of the things I've indented to fix in v2...
+
+> Then again I would have just merged this
+> patch into the one that obsoleted early_pfn_in_nid anyway.
+
+I've kept these commits separate to preserve the authorship.
+I'll update the changelog so that it won't mention commit id.
+
+-- 
+Sincerely yours,
+Mike.
 
