@@ -2,123 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 207391BF4BE
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 Apr 2020 12:00:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 74F601BF735
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 Apr 2020 13:55:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FuwNckBsREWK/wRm/JNwz4peDmzIsWTpLA7jtPQWozc=; b=glS8Ahbq3c5rpDb/oMhzfr/0R
-	gVQXADAAF78HTkS7YDWtRCQXd0j+rEpjIzlVUwKy0zbTUI8rU5LWyNfH8A92Qkny3WhIitIQHeYkQ
-	PBDM1iOYQrNz6kjepIhSl4E5dQi8lKot02FUEYXTvShMMtRV78v5InSGN1m1CgXKW1Cy8XQuEEqpr
-	N1m3jeuGWHB52ZZ/3DTW0b7TDu/C+w7F7nk4F8HDMkhAqer5c9jStDMv0HUx1JoBwUwyEoON27SY/
-	dk2kSuCc8fl/IT4TdT9gHiq7A0kMvr5OQl/yYP6TM/RcyuedrcT2ht8D0lD0KEiAuC6mia2EhUs9B
-	L2n2wnc7A==;
+	 bh=Cpy4bSoQh9YSQ0DyPMX475JbTHabLknSpNNUhs+wWrA=; b=F1DQFe69NNiCg9q9RzBjEUcyh
+	mwFRLinpEHX3PKx+eeTexVBRysQvNXk0KzqjvfPdDzNQK4Fc7BSjDC/1jHAvlmEouWTz2cLBqAog8
+	KHO18qba2+UYqWxfqRKa6luvMhVwixB7dWjoddSct1xVkzHHVqabrbQl2eEqGaqR3yWhd1zLR5yrw
+	82bzOiz4iX98D0eZQqWuCp9X0Vlt8M8Wady4eqNMA7VvPZD9kz6GSiXV1O2c/kA9WNs0UeuO+NCV4
+	lBPAzcgtonoT4OLJsV7cQzz+ZkdM3H6WRGRf/5Hp2s1oIhisB8O/ze8VLmN2BCMX5Y7LRHGHmO0sk
+	Ro3P8lPDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jU5zj-0004tv-HX; Thu, 30 Apr 2020 10:00:39 +0000
-Received: from mail-co1nam11on2083.outbound.protection.outlook.com
- ([40.107.220.83] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1jU7mT-0003OO-Nx; Thu, 30 Apr 2020 11:55:05 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jU5yV-0001Lx-MJ; Thu, 30 Apr 2020 09:59:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KkMDh/KHI/zVKcQe3v5T8K72KmwdEiTjtsyTjovPnNdDiWzW4v42BvabzzZDjb1NwzTQIbOpfBdzlTmuK9652fSRd/0C2VwOs9DOO0W8dl1q9Qo/hA6sV4p5BfhgUBGr1qsHfl7GTlHCXZgau+CC6ujUHaxZZqv9ObOdYbAik053qogtG9MdbZbTVS6obJYQObWzEfBNBniEL41kA/3UPoK7mKeq1uxzfY0w9b3V3niffCq7om3QIqw/mzdG2QRzV4WJu02SSoNsRAp/f76CFufjAWiyIM1y7EKLTtlu45Qh8Y/9LvyDLOpN6YaNyGRV04juTpaAiEWzo3YVU5tbwA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FuwNckBsREWK/wRm/JNwz4peDmzIsWTpLA7jtPQWozc=;
- b=HCEyASXvbRDmCuZZYQzjEQxUr1Dp1K7wu0XSGujdhpvHeHbjhhLzfX2FEVYz4KjnA446OALwVpglxTdG6XmM4q8GtjE5AY+lEJy8RtWFLFoDmFiCjwk/GTQUePzW9gASMC1MJu1rf7raElMrZE0hPAugCzDmWLflVn+s9kAU80ONdRKCgE2CAqNFvgFFYZ+1nTX/lyp60LMAUKSX8Pm94pvrbufpyG2HoX+rY3C/fduBWNxjHvzS+L3oyu0B53cyvoM3+aJz5SUNL7Hi7TVMzpb6XB6BiorIgpMwoQcCmcnzTcMRM96mUDP98xXRZGTp25+bscTij4RiNpOsU/jo7g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
- dkim=pass header.d=sifive.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FuwNckBsREWK/wRm/JNwz4peDmzIsWTpLA7jtPQWozc=;
- b=A45vD+jgQEb57/hjknxvF0cThvKZ9bbAErIkg/DEVFJba+vn3WvouE7q3Mh9eEJnjfj16yUZQQuJRXP3OKZE4Ov4h/4naUHV+zSuWuD/n0q+j5JS0kd+wnhG6hxibLMr5xBPF+LlRANWaUN//05pLgiCcLnEnOBuPiOpKhg8uYg=
-Authentication-Results: microchip.com; dkim=none (message not signed)
- header.d=none;microchip.com; dmarc=none action=none header.from=sifive.com;
-Received: from BN8PR13MB2611.namprd13.prod.outlook.com (2603:10b6:408:81::17)
- by BN8PR13MB2884.namprd13.prod.outlook.com (2603:10b6:408:85::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.14; Thu, 30 Apr
- 2020 09:59:21 +0000
-Received: from BN8PR13MB2611.namprd13.prod.outlook.com
- ([fe80::c129:8fca:5ed:8929]) by BN8PR13MB2611.namprd13.prod.outlook.com
- ([fe80::c129:8fca:5ed:8929%6]) with mapi id 15.20.2958.020; Thu, 30 Apr 2020
- 09:59:21 +0000
-From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-To: tudor.ambarus@microchip.com, miquel.raynal@bootlin.com, richard@nod.at,
- vigneshr@ti.com
-Subject: [PATCH 2/2] spi: nor: update page program settings for is25wp256
- using post bfpt fixup
-Date: Thu, 30 Apr 2020 02:58:52 -0700
-Message-Id: <1588240732-13905-3-git-send-email-sagar.kadam@sifive.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1588240732-13905-1-git-send-email-sagar.kadam@sifive.com>
-References: <1588240732-13905-1-git-send-email-sagar.kadam@sifive.com>
-Content-Type: text/plain
-X-ClientProxiedBy: BYAPR08CA0027.namprd08.prod.outlook.com
- (2603:10b6:a03:100::40) To BN8PR13MB2611.namprd13.prod.outlook.com
- (2603:10b6:408:81::17)
+ id 1jU7mO-0002rn-Oc
+ for linux-riscv@lists.infradead.org; Thu, 30 Apr 2020 11:55:02 +0000
+Received: from mail-il1-f182.google.com (mail-il1-f182.google.com
+ [209.85.166.182])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id CBECD2078D
+ for <linux-riscv@lists.infradead.org>; Thu, 30 Apr 2020 11:54:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588247699;
+ bh=6exdI6IOKOvwYpX87SA9c24+CEE5P9lDZk7I86ngsIw=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=ntGZnwiihZSMnKCPBTHBMuN0dg57pMiYX0qVsIpKDG5M6ey7sRuy7tkTuGgTPU9X0
+ 94wfedYmYc5n36sG/ENE856Bq3i2uoWCPjcHcYGx4HW54ExArnK/j77Tq52ZzrUKez
+ 4m6CZs5lpBzfod8fEx0PLtA1CjKnpc30shXBQECg=
+Received: by mail-il1-f182.google.com with SMTP id m5so1012509ilj.10
+ for <linux-riscv@lists.infradead.org>; Thu, 30 Apr 2020 04:54:59 -0700 (PDT)
+X-Gm-Message-State: AGi0PubmWtaJxkxRgoWblzqHYAOlv8kVmT4JPJ04T2VW/l25IkTQROr+
+ BI1cSvkrlwJ0Znv3R3YQ1oKas6o+qxkt9qNMGSE=
+X-Google-Smtp-Source: APiQypJeRfYTYYnm7KocjfHYpA+DLis3+KeYfVc/9Ao9m5RR0SP6bJ9dWZ0lqLUUNjnu+60n3rQPYZpA2pZnIYoUcEk=
+X-Received: by 2002:a92:3c55:: with SMTP id j82mr1536736ila.258.1588247699224; 
+ Thu, 30 Apr 2020 04:54:59 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from gamma07.internal.sifive.com (64.62.193.194) by
- BYAPR08CA0027.namprd08.prod.outlook.com (2603:10b6:a03:100::40) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.20.2958.20 via Frontend
- Transport; Thu, 30 Apr 2020 09:59:20 +0000
-X-Mailer: git-send-email 2.7.4
-X-Originating-IP: [64.62.193.194]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7cfacc88-ae92-4046-6b0e-08d7eced2782
-X-MS-TrafficTypeDiagnostic: BN8PR13MB2884:
-X-LD-Processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <BN8PR13MB2884332FA4DDD5A640EFA43299AA0@BN8PR13MB2884.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-Forefront-PRVS: 0389EDA07F
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8Uz4U0VX63iZOcmwNEfpkQHtbCmDIexKsK7lhUWgJZw4SfqpGSZuv1IV75Hdux6otjS2H0DLwnBd5FplDKz4Xe/ZC5Gcq6UGbresp+jsTY4Ppj4SrGwas32ryCZxSnX+LkaDbVtGVjUhDS5/Gwt7DZGRo1UQZsBw9ycOmgCfnIrs7NVNNnUA72CuRnwSyhIuUmLMj9Y0QRZn3d8gsVMaxU+SsU5+q3/kRJDcCOg3+DHD3eUsKoR6n3Ks9KB1SNUF9Rjvr6TS5T/YrCcwcLgVG/nSdfU6tWGIOv8KRUFgcHAURsWRetUOKdYUjRtIOSFY2jDrAejIErtVH7J9mbfcZgVQ2qFHVlrpaYGf9ppJYEFp2TxhR9ULML6GoJZiSyw8Y89xQhhMVKd35JAbudb9B6Uz0KzbF47wY7Ssge3Hm+OfM5jXMdMISqnGEPTiY+Ot
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN8PR13MB2611.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(136003)(346002)(376002)(39850400004)(396003)(366004)(7696005)(52116002)(8676002)(8936002)(16526019)(186003)(26005)(5660300002)(956004)(478600001)(2906002)(2616005)(316002)(6666004)(66476007)(66556008)(66946007)(86362001)(15650500001)(36756003)(107886003)(4326008)(6486002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: MgeCjNPMxNVPp4vjAQfJe9uK8TtX0KSHJJxcI21dPrkFcpp+IJEL+Hj3YVkfvQAF3CxEzL/Hpj/HoEmKBN/legrGQRAM1Z2ob087UjkREhAEbEypt/AxD0a/a8FyItIeSYB9FRko4YWd7EZ8ZAgxzZ7wgLWyU3tw0xxQMN6cMW8a03VdVyc97Pi4qMU3rzr7e9NYr4EoSG5YtfWG8Our+D1uBlLNNC/liFcJ0cOeKwrjarsls0F3pq3wMMOEhr36CSy+P0s+y6PdMLkjVhe4d5t+4RWDSZji1Ad5I7QSgC1BYkngGtnTD1SuIf5Twn4CQXq4TYIiUww/stgebXFr+x7+yOSmxgLQ4d8QUFxdUxP/mU+LuK7WLaqy/M0F6COqPqvxsCj7zSwyfaaUhAiuYvjwqrETKeJFIhhlrfa9P3yoSCZyrdofYByeQoz+VDWbsIyeKw/d1BzA/0k0zkXGtP3F3aAOHbp+HUBqtU2de+YWeGroiYodDdf1hACxO3Wj/baTwAT/nJSx1m3MuwFvhYzA6A7/oT4Vq8R2uduQzM/9NZwYXXiQeWReOLjYOJMTdgXj48JAMcncwtzkWP5zjp4zDutwSOlQA1OWQ3KrTIMCnsypuw0uF/V17brKIiAIeW3GS1ygAEUzOnqFGokOyaUHrSZoRF0rhmzwL25cGrQVOfKGk8Tv3eRoaFar1LduZLaC6lLDYcdQHtiadtGvJi49FE70vOTGUygaGzmM8ieCNJPCOwgriBqVAiD4WESNvirmFMbiPGRhljV/WCbXuk/2NBWZPQlT289O8mDz3I8=
-X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7cfacc88-ae92-4046-6b0e-08d7eced2782
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2020 09:59:21.7013 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: HqTe1ObbgXWmuwEDM4quTXlvnhomtKTFVF23Zx1vdN1Mc6mllkoE5DlwpPo4j8WgjevLOE74VF2uoR/XuiUp4g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR13MB2884
+References: <CAOnJCUJp12H_QSbw9zcYQxeZtNGpNxQhu8mkzzxrFAUArf9qfg@mail.gmail.com>
+ <mhng-970b2596-146b-456e-be2d-9b7291775df5@palmerdabbelt-glaptop1>
+In-Reply-To: <mhng-970b2596-146b-456e-be2d-9b7291775df5@palmerdabbelt-glaptop1>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Thu, 30 Apr 2020 13:54:48 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXHXaTP=GN8s9Q0DWGT7XtV+XnB_2R68yyuWguMqP3m3+w@mail.gmail.com>
+Message-ID: <CAMj1kXHXaTP=GN8s9Q0DWGT7XtV+XnB_2R68yyuWguMqP3m3+w@mail.gmail.com>
+Subject: Re: [GIT PULL] EFI stub loading support for RISC-V
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_025923_743176_40A36617 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200430_045500_840402_0CD1FB90 
+X-CRM114-Status: GOOD (  33.44  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.220.83 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [40.107.220.83 listed in wl.mailspike.net]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,71 +85,139 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org,
- Sagar Shrikant Kadam <sagar.kadam@sifive.com>, paul.walmsley@sifive.com,
- palmer@dabbelt.com, linux-riscv@lists.infradead.org
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Atish Patra <atishp@atishpatra.org>,
+ Atish Patra <Atish.Patra@wdc.com>, linux-efi <linux-efi@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-During SFDP parsing it is seen that the IS25WP256d device is missing 4BAIT
-(4-Byte address instruction table), due to which it's page program
-capacity doesn't get correctly populated and the device gets configured
-with 4-byte Address Serial Input Page Program i.e. SNOR_PROTO_1_1_1
-even though it can work with SNOR_PROTO_1_1_4.
+On Thu, 30 Apr 2020 at 00:52, Palmer Dabbelt <palmer@dabbelt.com> wrote:
+>
+> On Tue, 28 Apr 2020 10:57:48 PDT (-0700), atishp@atishpatra.org wrote:
+> > On Sun, Apr 26, 2020 at 12:52 PM Atish Patra <atishp@atishpatra.org> wrote:
+> >>
+> >> On Sat, Apr 25, 2020 at 12:31 PM Ard Biesheuvel <ardb@kernel.org> wrote:
+> >> >
+> >> > Palmer,
+> >> >
+> >> > As discussed, below are the changes for v5.8 that can be taken via the
+> >> > RISC-V tree to implement booting RISC-V Linux from EFI firmware.
+> >> >
+> >> > You can fetch and merge the signed tag directly, or merge 22090f84bc3f80
+> >> > and cherry pick the 4 patches on top of it, if you see any need to do so
+> >> > (but please use a topic branch in that case)
+> >> >
+> >> > Please be aware (as is noted in the tag) that these changes are really
+> >> > the bare minimum that is needed to launch the kernel from EFI firmware.
+> >> > In the current state, you may be able to boot from Uboot in EFI mode,
+> >> > but Tianocore based boot will not work at all, unless you convert the
+> >> > EFI memory map back to DT memory nodes in the firmware implementation,
+> >> > and I can assure you that that is not something that will be accepted in
+> >> > upstream Tianocore.
+> >> >
+> >> > So in summary, this is unfinished work, and I can only recommend merging
+> >> > these changes once there is a plan in place to complete the implementation.
+> >> >
+> >>
+> >> I have started looking into this part. My initial plan was to start
+> >> looking into it right after I got
+> >> the boot time services working but other things took priority. Thanks
+> >> for your review and
+> >> suggestion throughout the process. I will coordinate with Abner/Daniel
+> >> to test RISC-V UEFI
+> >> runtime services(once implemented)  with tianocore.
+> >> > --
+> >> > Ard.
+> >> >
+> >> >
+> >> > The following changes since commit 22090f84bc3f8081e0ec180ccaedc85820085376:
+> >> >
+> >> >   efi/libstub: unify EFI call wrappers for non-x86 (2020-04-23 20:15:06 +0200)
+> >> >
+> >> > are available in the Git repository at:
+> >> >
+> >> >   git://git.kernel.org/pub/scm/linux/kernel/git/efi/efi.git tags/riscv-efi-for-v5.8
+> >> >
+> >> > for you to fetch changes up to 66b4ac6b9dd1fdbb8ac7a1f20a8d08066368245d:
+> >> >
+> >> >   RISC-V: Add EFI stub support. (2020-04-25 13:59:54 +0200)
+> >> >
+> >> > ----------------------------------------------------------------
+> >> > EFI stub loading support for RISC-V
+> >> >
+> >> > This branch implements support for loading the RISC-V Linux kernel
+> >> > straight from EFI firmware, by adding PE/COFF metadata to the kernel
+> >> > image and incorporating the kernel's EFI stub.
+> >> >
+> >> > Note that this is the *bare* minimum that is needed to boot from EFI
+> >> > firmware. The following pieces are still missing at this point, and
+> >> > will be required for full interoperability with generic EFI firmware:
+> >> > - using the EFI memory map instead of the device tree to populate the
+> >> >   memblock tables
+> >> > - parsing and handling of generic EFI configuration tables (such as
+> >> >   SMBIOS), as well as architecture specific ones that may be defined
+> >> >   for RISC-V
+> >> > - runtime mapping of EFI runtime services memory and MMIO regions, and
+> >> >   support for EFI runtime services (get/set time, get/set variable, reset
+> >> >   system)
+> >> >
+> >> > ----------------------------------------------------------------
+> >> >
+> >> > Cc: Atish Patra <atish.patra@wdc.com>
+> >> > Cc: Palmer Dabbelt <palmer@dabbelt.com>
+> >> > Cc: Paul Walmsley <paul.walmsley@sifive.com>
+> >> > Cc: Albert Ou <aou@eecs.berkeley.edu>
+> >> > Cc: linux-riscv@lists.infradead.org
+> >> >
+> >> > Atish Patra (4):
+> >> >       include: pe.h: Add RISC-V related PE definition
+> >> >       RISC-V: Define fixmap bindings for generic early ioremap support
+> >> >       RISC-V: Add PE/COFF header for EFI stub
+> >> >       RISC-V: Add EFI stub support.
+> >> >
+> >> >  arch/riscv/Kconfig                        |  22 ++++++
+> >> >  arch/riscv/Makefile                       |   1 +
+> >> >  arch/riscv/configs/defconfig              |   1 +
+> >> >  arch/riscv/include/asm/Kbuild             |   1 +
+> >> >  arch/riscv/include/asm/efi.h              |  33 +++++++++
+> >> >  arch/riscv/include/asm/fixmap.h           |  18 +++++
+> >> >  arch/riscv/include/asm/io.h               |   1 +
+> >> >  arch/riscv/include/asm/sections.h         |  13 ++++
+> >> >  arch/riscv/kernel/Makefile                |   4 ++
+> >> >  arch/riscv/kernel/efi-header.S            | 100 +++++++++++++++++++++++++++
+> >> >  arch/riscv/kernel/head.S                  |  16 +++++
+> >> >  arch/riscv/kernel/image-vars.h            |  53 +++++++++++++++
+> >> >  arch/riscv/kernel/vmlinux.lds.S           |  22 +++++-
+> >> >  drivers/firmware/efi/Kconfig              |   3 +-
+> >> >  drivers/firmware/efi/libstub/Makefile     |  10 +++
+> >> >  drivers/firmware/efi/libstub/riscv-stub.c | 109 ++++++++++++++++++++++++++++++
+> >> >  include/linux/pe.h                        |   3 +
+> >> >  17 files changed, 407 insertions(+), 3 deletions(-)
+> >> >  create mode 100644 arch/riscv/include/asm/efi.h
+> >> >  create mode 100644 arch/riscv/include/asm/sections.h
+> >> >  create mode 100644 arch/riscv/kernel/efi-header.S
+> >> >  create mode 100644 arch/riscv/kernel/image-vars.h
+> >> >  create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
+> >>
+> >>
+> >>
+> >> --
+> >> Regards,
+> >> Atish
+> >
+> > Hi Palmer,
+> > There were few build errors for all-yes config and nommu reported by
+> > 0-day tests.
+> > As some of the fixes require to add some dummy declarations for efi
+> > runtime related functions,
+> > Ard suggested that we should drop the series for now and merge with
+> > full uefi support later.
+>
+> OK, I'll wait for another patch set.  That makes my life a bit easier as well,
+> as we don't have to do the multi-tree merge in a single release.
 
-Here using the post bfpt fixup hooks we update the page program
-settings to 4-byte QUAD Input Page program operations.
-
-The patch is tested on HiFive Unleashed A00 board and it benefits
-few seconds of average write time for entire flash write.
-
-QUAD Input Page Program operations:
-> time mtd_debug write /dev/mtd0 0 33554432 rd32M
-Copied 33554432 bytes from rd32M to address 0x00000000 in flash
-real    0m 32.85s
-user    0m 0.00s
-sys     0m 31.79s
-
-Serial Input Page Program operations:
-> time mtd_debug write /dev/mtd0 0 33554432 rd32M
-Copied 33554432 bytes from rd32M to address 0x00000000 in flash
-real    0m 35.87s
-user    0m 0.00s
-sys     0m 35.42s
-
-Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
----
- drivers/mtd/spi-nor/issi.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/drivers/mtd/spi-nor/issi.c b/drivers/mtd/spi-nor/issi.c
-index ffcb60e..9eb6e82 100644
---- a/drivers/mtd/spi-nor/issi.c
-+++ b/drivers/mtd/spi-nor/issi.c
-@@ -23,6 +23,22 @@ is25lp256_post_bfpt_fixups(struct spi_nor *nor,
- 		BFPT_DWORD1_ADDRESS_BYTES_3_ONLY)
- 		nor->addr_width = 4;
- 
-+	/*
-+	 * On IS25WP256d device 4-Byte address instruction table doesn't
-+	 * get populated and so the device get's configured with 4-byte
-+	 * Address Serial Input Page Program i.e. SNOR_PROTO_1_1_1 even
-+	 * though it supports SNOR_PROTO_1_1_4, so priorotize QUAD write
-+	 * over SINGLE write if device id table holds SPI_NOR_QUAD_READ.
-+	 */
-+	if (strcmp(nor->info->name, "is25wp256") == 0) {
-+		if (nor->info->flags & SPI_NOR_QUAD_READ) {
-+			params->hwcaps.mask |= SNOR_HWCAPS_PP_1_1_4;
-+			spi_nor_set_pp_settings
-+				(&params->page_programs[SNOR_CMD_PP_1_1_4],
-+				 SPINOR_OP_PP_1_1_4,
-+				 SNOR_PROTO_1_1_4);
-+		}
-+	}
- 	return 0;
- }
- 
--- 
-2.7.4
-
+Yeah. Apologies for the back and forth, but I really don't want to end
+up in a place where I am juggling EFI fixes and have to care about
+architectures that can't even use EFI in a meaningful way.
 
