@@ -2,64 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AF431BFDF1
-	for <lists+linux-riscv@lfdr.de>; Thu, 30 Apr 2020 16:24:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 358B11BFF2E
+	for <lists+linux-riscv@lfdr.de>; Thu, 30 Apr 2020 16:50:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l8GCWY92duqdcsv06uiJ2/8DfkZLpd16ozEeQxW5Bpg=; b=hFdgru3T6VTfxf
-	Sp9dza4Ya6FwUImRKS2uh+pSze8RWw0YBCAmxwws0bz5f0eOnsXiPdWzz/+4q7+uqdnUz+D51vAqH
-	F4SkEPESvrHlAYlTF214BK6phw362zhDK6KPwwONUg2tQYEnPGCf5B0aVoIP8ZBahB7OCLi8R42w/
-	chCloU60RR3QewflcEFvNJ6ea18ZWAUQI1fxUEbd4HXuoWW+g4JIiTGiBznXFZt5kYhSxEqd0TEeS
-	Jol/gyiCN/FIoy+B316aeowHpWiDcigMKWOSmHBUYK0BMS+gPH7mScmdzYU0spFORfROk9bGWvAMw
-	Atdv7+QcjJ05Ui2ZZA4A==;
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VQZ8f3nWspkcMVyQxaM9lki0jYoUn+ENmpwlQM54tJI=; b=WdLpt4Wp9JDbH+
+	tj2RK52iHf5hEtB+1iHsWeUwrRiQZqiucr9vThp2QHhPvx2mZLbbldttRcWneRh9qIo+TDqnVwObN
+	ym73VS6zFLU6Y19Iy3P5LLB893joOlKvhFZpHzDHoxybim7pTo+r1mrckg5vEJBT+PbQsr7vtOOlv
+	VGgabLQvaOUVO8c1pcVxQHA8MxOjLNue3RAnLCrV87aQBwSo+LUFek+TC0jWUbQ9eqzvkGay88gY+
+	bb05p/9QOb4JOF0oV/BbcablY/lfM6p7Ze2ABO2agQdwvUdpX8m1sdR9E5JilCRh4pz01EoSnyEKG
+	zFjwZ27J3HEmJCU/MSEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUA6u-0004yz-Sp; Thu, 30 Apr 2020 14:24:20 +0000
-Received: from www62.your-server.de ([213.133.104.62])
+	id 1jUAWF-0007DP-Jh; Thu, 30 Apr 2020 14:50:31 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUA6c-0004kE-2H
- for linux-riscv@lists.infradead.org; Thu, 30 Apr 2020 14:24:03 +0000
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
- id 1jUA6I-00086y-K3; Thu, 30 Apr 2020 16:23:42 +0200
-Received: from [178.195.186.98] (helo=pc-9.home)
- by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
- id 1jUA6I-000JJ2-3f; Thu, 30 Apr 2020 16:23:42 +0200
-Subject: Re: [PATCH bpf-next] bpf, riscv: Fix stack layout of JITed code on
- RV32
-To: Xi Wang <xi.wang@gmail.com>, Luke Nelson <lukenels@cs.washington.edu>
-References: <20200430005127.2205-1-luke.r.nels@gmail.com>
- <CAKU6vybAuF-oziH8oOu1oCv+j8SLOMWq2UdM6_kVCbeggLvxSA@mail.gmail.com>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <61bfa5f6-eb21-3767-11c6-d8be46871c0e@iogearbox.net>
-Date: Thu, 30 Apr 2020 16:23:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1jUASz-0002C4-5Q
+ for linux-riscv@lists.infradead.org; Thu, 30 Apr 2020 14:47:11 +0000
+Received: by mail-qk1-x743.google.com with SMTP id i136so1819415qke.10
+ for <linux-riscv@lists.infradead.org>; Thu, 30 Apr 2020 07:47:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=VQZ8f3nWspkcMVyQxaM9lki0jYoUn+ENmpwlQM54tJI=;
+ b=FxZt9q69WeDISYW/u+FapX+g4AcoQ60SHR3rObRVjDCxZJ6UlTOi0dDCo80/JgOZxn
+ DXt30paSE9HJByZpd9MN/9bqoaSpWnTTzk8huYKSl43IenhzSPYC/6nqzrHL/ZM7l3m0
+ ZYx4yU6m6RbIlqhaO29As71mAiNpfB+eFLqeN8uhtMe8aNYNMnCt2+mMYYBBP3BK56ls
+ 5xIIg/Rbx93ERJ0KI+y9BtFSxWflV/zzBmS6MLyPYWkeJj0lVjQfi/iAxyBdd07EIs6i
+ MUrvs4ayiVBB0q/LP8J/0bQNgyfH/yXLTdnOQbJAEkTzD6vHAusumKAYkH7MyPfImSVN
+ UqAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=VQZ8f3nWspkcMVyQxaM9lki0jYoUn+ENmpwlQM54tJI=;
+ b=jDua2f+CTQUhRxpq5W/Jh7t9N5OCrEqzYzzkO/c0AABe6Aul2rfJXsyTy+9lYdVdt1
+ o8NuZVD97EK+eiPrMB45HQfMuErMCT3HVAo0/E5BobpJfrix0LBIQThSiLw7HfwHgSYY
+ zsbUaBvoejN7WIVnMpZPsGOFGw4SP4cgSK4nODJi/ct+HyA5JiBKA7xrOipnHbrkpqmt
+ 0uP8ekRvJ6eapiAyZY1hKDAU40wDGkpBqv26jBkDXn1mCs8Cblf37QQkbZrJ8NlzU95x
+ p0Ut7oo+nyBajGwC7+48Sei9zNt/5fGj9wlYH7WZwITZqpsCSc8o9Z5PKqvHqkS6Qbqw
+ izKQ==
+X-Gm-Message-State: AGi0PuYhahlebi2N+ZvWQg8oOC172i8FOcQEPpWWshAMgrbfK9ORK0Wv
+ DgoUQq2Het+HFtYoYb6Jxjg2GY0tXzEBDUhzF+HRdg==
+X-Google-Smtp-Source: APiQypI4BcCVLkg5AN9fc3sf6hgpcY3Uycdlk5eEMR0cZLkzEcOAknCav+JRxX81uhcEm63uJ9YZeUIFuFufJtosWy4=
+X-Received: by 2002:a37:4792:: with SMTP id u140mr2610211qka.327.1588258027121; 
+ Thu, 30 Apr 2020 07:47:07 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAKU6vybAuF-oziH8oOu1oCv+j8SLOMWq2UdM6_kVCbeggLvxSA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.102.2/25798/Thu Apr 30 14:03:33 2020)
+References: <20200430095325.111441-1-zong.li@sifive.com>
+In-Reply-To: <20200430095325.111441-1-zong.li@sifive.com>
+From: Greentime Hu <greentime.hu@sifive.com>
+Date: Thu, 30 Apr 2020 22:45:47 +0800
+Message-ID: <CAHCEehJ2pbGUe79Kq6q5DFSHNWwg0FEOinqqL=PRNmTt1nT_kg@mail.gmail.com>
+Subject: Re: [PATCH] riscv: force __cpu_up_ variables to put in data section
+To: Zong Li <zong.li@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_072402_116965_3EB7A3FF 
-X-CRM114-Status: GOOD (  12.30  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200430_074709_249935_20DCC360 
+X-CRM114-Status: GOOD (  12.09  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.133.104.62 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:743 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,60 +92,43 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Luke Nelson <luke.r.nels@gmail.com>, netdev@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- linux-riscv@lists.infradead.org,
+Cc: linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- KP Singh <kpsingh@chromium.org>, Yonghong Song <yhs@fb.com>,
- bpf@vger.kernel.org, Andrii Nakryiko <andriin@fb.com>,
- Martin KaFai Lau <kafai@fb.com>
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 4/30/20 4:14 AM, Xi Wang wrote:
-> On Wed, Apr 29, 2020 at 5:51 PM Luke Nelson <lukenels@cs.washington.edu> wrote:
->>
->> This patch fixes issues with stackframe unwinding and alignment in the
->> current stack layout for BPF programs on RV32.
->>
->> In the current layout, RV32 fp points to the JIT scratch registers, rather
->> than to the callee-saved registers. This breaks stackframe unwinding,
->> which expects fp to point just above the saved ra and fp registers.
->>
->> This patch fixes the issue by moving the callee-saved registers to be
->> stored on the top of the stack, pointed to by fp. This satisfies the
->> assumptions of stackframe unwinding.
->>
->> This patch also fixes an issue with the old layout that the stack was
->> not aligned to 16 bytes.
->>
->> Stacktrace from JITed code using the old stack layout:
->>
->>    [   12.196249 ] [<c0402200>] walk_stackframe+0x0/0x96
->>
->> Stacktrace using the new stack layout:
->>
->>    [   13.062888 ] [<c0402200>] walk_stackframe+0x0/0x96
->>    [   13.063028 ] [<c04023c6>] show_stack+0x28/0x32
->>    [   13.063253 ] [<a403e778>] bpf_prog_82b916b2dfa00464+0x80/0x908
->>    [   13.063417 ] [<c09270b2>] bpf_test_run+0x124/0x39a
->>    [   13.063553 ] [<c09276c0>] bpf_prog_test_run_skb+0x234/0x448
->>    [   13.063704 ] [<c048510e>] __do_sys_bpf+0x766/0x13b4
->>    [   13.063840 ] [<c0485d82>] sys_bpf+0xc/0x14
->>    [   13.063961 ] [<c04010f0>] ret_from_syscall+0x0/0x2
->>
->> The new code is also simpler to understand and includes an ASCII diagram
->> of the stack layout.
->>
->> Tested on riscv32 QEMU virt machine.
->>
->> Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
-> 
-> Thanks for the fix!
-> 
-> Acked-by: Xi Wang <xi.wang@gmail.com> 
+Zong Li <zong.li@sifive.com> =E6=96=BC 2020=E5=B9=B44=E6=9C=8830=E6=97=A5 =
+=E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=885:53=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Put __cpu_up_stack_pointer and __cpu_up_task_pointer in data section.
+> Currently, these two variables are put in bss section, there is a
+> potential risk that secondary harts get the uninitialized value before
+> main hart finishing the bss clearing. In this case, all secondary
+> harts would go through the waiting loop and enable the MMU before
+> main hart set up the page table.
+>
+> Signed-off-by: Zong Li <zong.li@sifive.com>
+> ---
+>  arch/riscv/kernel/cpu_ops.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/riscv/kernel/cpu_ops.c b/arch/riscv/kernel/cpu_ops.c
+> index c4c33bf02369..0ec22354018c 100644
+> --- a/arch/riscv/kernel/cpu_ops.c
+> +++ b/arch/riscv/kernel/cpu_ops.c
+> @@ -15,8 +15,8 @@
+>
+>  const struct cpu_operations *cpu_ops[NR_CPUS] __ro_after_init;
+>
+> -void *__cpu_up_stack_pointer[NR_CPUS];
+> -void *__cpu_up_task_pointer[NR_CPUS];
+> +void *__cpu_up_stack_pointer[NR_CPUS] __section(.data);
+> +void *__cpu_up_task_pointer[NR_CPUS] __section(.data);
+>
+>  extern const struct cpu_operations cpu_ops_sbi;
+>  extern const struct cpu_operations cpu_ops_spinwait;
 
-Applied, thanks everyone!
+Reviewed-by: Greentime Hu <greentime.hu@sifive.com>
 
