@@ -2,83 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E5DF1C3253
-	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 07:37:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D4BA1C32B6
+	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 08:25:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uEr7VDGO1sQzOvtIGcTs52hYhp3KlihYjjFwOGOE52E=; b=lA4pOagme/tT4kNwnsS+mgJB2
-	3bew6GSzHbXzHCio8wPmj2hNSOQHnTxLOC5Od6B4JY6rm6ueacOhR7NqrSnMXUTRdv8SQocStQ4Jg
-	I3aUFKbAJR9N3ompwHmfoJtNQ6jBtMuefwjb7oW8gO8oAiyAoFfHGeYXMOtYq1/EbsffT2chFiJZp
-	d7cqGzak6Z/kl6ecwwAgeBAwBzL1/B/egSMc1x+XGVoj2z12XrDswn8HYb5pjmrBJaPSO6AUHqw3r
-	4zidXrwDrkOzBIBi/7P08PDtm/CxwEQW50TXEppJ6H6tWbqp+S0yFNPfoeqJcoaJBTjkkOwVaXFWt
-	uWwscUhFQ==;
+	 bh=306i5OZb3rUOZcrOciamuAcP/j7L85jZXHqSzcVM+8k=; b=ajc+pZuuUtdIqxRb+97dhgF2X
+	SxubzH70FDvKSgeYfBTpEJEd1r49jg6vC05id9YMZCTr3RnQ63Ww9d+JHjVnXzGhJ3oCVKM6BIzI1
+	m8f7/IDav6xvXFVL2LT8rlNvlRA0Bdj6hTD+P+DpVUx/0xFlOa+KCEUMcndlDaxLVwYlpkXaQDZih
+	ft/FpZj1sbJtg7xGGxiwXK/AC8Jm60HCgEFSdYIAUqbRgPFGgFDZx2pMP2U8wZwk7D0WX7DYObk/n
+	RIX2rVPV1mIPq65XqVaXMUiL1tPEUEnIrxDAkaEtDjVDjtR+AuZurbNk9AQ9F9Xf9Pi/SFTHtOKx/
+	kmEVxwk3A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVTmk-0007xS-09; Mon, 04 May 2020 05:36:58 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1jVUXe-0004Pz-Id; Mon, 04 May 2020 06:25:26 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVTmh-0007x2-J5
- for linux-riscv@lists.infradead.org; Mon, 04 May 2020 05:36:57 +0000
-Received: by mail-oi1-x243.google.com with SMTP id r25so5691783oij.4
- for <linux-riscv@lists.infradead.org>; Sun, 03 May 2020 22:36:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ id 1jVUXZ-0004K9-8s
+ for linux-riscv@lists.infradead.org; Mon, 04 May 2020 06:25:22 +0000
+Received: by mail-wr1-x444.google.com with SMTP id g13so19418373wrb.8
+ for <linux-riscv@lists.infradead.org>; Sun, 03 May 2020 23:25:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uEr7VDGO1sQzOvtIGcTs52hYhp3KlihYjjFwOGOE52E=;
- b=AnMCjUrc0dEBsDtyieZcjRyaWh1ZyG7DB345/RKRwunS9IbLIl18twCJWYDSN1f092
- M+39bCI4yvuMpohhu1PNnD5u4xGLJkdXBH8HGV9aN3NKRyM+x7PhL2wqb7fUdEqfSp2G
- EMFjB0nmBOpmz1FQ5lOB6Gg0RlZuz5dTYZYSHUfdX2CjGWT8Bn11GpCCF6FGOWIzLVlQ
- 1mJ/ECtrVccBsw+S6DXsG6y0VmYSx8lOQyhEHD/s8//lfppknEQzqLzgvY59saAigEbN
- 4+3P9sKuuzp5/wijfK1HjOZXqjJmmXFr/GsS8M0DI4H2KfG8Wfq/9ZYAQ5NRQlK/BuGf
- kvfg==
+ :cc; bh=306i5OZb3rUOZcrOciamuAcP/j7L85jZXHqSzcVM+8k=;
+ b=SKdMUg2m2SJUotPrI5/s9K2BOuYt+BZ7YCjLtRW5CL2yNeZ9E5af4QO0qX+nfoV+Nj
+ 0YYoVBNzfpzZrh9UBmDSdKU9FHJFuSbpYjc7C72qwtDWY4GHxkqcYNgSW9vRHz3suwC9
+ u8RhrsPkKo/K8IJcRr564X2IVspwJhg7OBGGc0glsav76MgsrqDFuTht912eCJ4H6CeD
+ IHofHbUTRY6uQ+tEhNe+pwkzM+dtafFw1oRtP9WbxN5pivgrv3b4rhlGtCTcGd/dO6Qj
+ T9E2fWzdaOCw1fjh+Fnlb5nmJRqTk95MQkKUIZIvdF4Lxrs5CT+L5JWx5rTBlWkc1zMI
+ AkZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=uEr7VDGO1sQzOvtIGcTs52hYhp3KlihYjjFwOGOE52E=;
- b=ruWD9Phhx4mfEsSf4mHxzc2a+DtSESIjKPrff1BdpsjEIMSz6CD+sA1gBFhZoZDFS0
- WMxw/qj6t9bBMQl8o4cFIe1KUF1o4xsZlZn+FE7f500dABz29TIqyPW2OwFVlNCD+Lb5
- qjPU8pyVQHPmA04eCY9KreR5ny+8uTp62F0EMns/PhZjKZUJu7VO6Js/8vHi5j/c3RjZ
- UtYKGSiClyj9dVN8/EDALm71vAAeyRM6GRP1UsItoPz3L6udOKZc53agfImyx2CsQV5f
- xjRfGYu6q9ys3pBTZ0lO7G02QMoElVeKrd2VX97WGqWzpNotnMURX/2SuNPIXAgcBRab
- p+BQ==
-X-Gm-Message-State: AGi0Pub/1SKlYUo5+JYjOuNyI7LFYXore2Ud0Al951/rZ2M1lxOC4C39
- KbZ4kOcji7WwlBg0oPdF4pR5aTSYTW71aSaQW669vA==
-X-Google-Smtp-Source: APiQypIId44/BH5hF7x7zP3LxhrtvZZiDqySLw/fVersvjCbMawM6wZqXjmgu2YmTBc1Sm0vf9NHdFnE+jVSZSHQVss=
-X-Received: by 2002:aca:c78d:: with SMTP id x135mr7835649oif.91.1588570614459; 
- Sun, 03 May 2020 22:36:54 -0700 (PDT)
+ bh=306i5OZb3rUOZcrOciamuAcP/j7L85jZXHqSzcVM+8k=;
+ b=NJgxWCOZIqT0NGCMBg7bxlIFWAgq0cH+DA6cDeySK29tXkxNRUuJZpv7lyF6ZaRDnr
+ NobdcEc9oiP3YkNITGr1bLdi6ekaAu3ZLbQz0iNVSzedtxWISHY+vY+kYR4taUZIUKhH
+ drHQSV62A9PD2VQa34OMtKJ/mqKRjmExx1KfHX97fiTyDkBt+dQA8J4huRiwc2oGWsGs
+ 5Mewgy+pQTuMybGXL2tZw0p+57IfgUowPbb6yloExKBjom14jyS6Qbce0DKELdMYq9KX
+ s2n6kG8LxvBtDnvXxsIB1mFNfBOjfs6+IPQ2rcm1hYMcrvZFignia1YrZEDbhzHwhlwU
+ chlA==
+X-Gm-Message-State: AGi0PuY/seZFReEV4xTONtdu3dXBroiPND+WncmLm0zH2YknotwMRksu
+ H25ny/ir07veDWPUnulhFddKkYn7IJ7LiKb2MqPk2vRbLpk=
+X-Google-Smtp-Source: APiQypJvk5cxpJtUzTo7O489Rc340Sftnq7QDcwugQGlOTRxHy+twmDNTb3JcGmVqQn1MWHTHXD+tN+epQfSzrhkz5c=
+X-Received: by 2002:adf:fcc8:: with SMTP id f8mr17129641wrs.230.1588573516436; 
+ Sun, 03 May 2020 23:25:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200504040319.31423-1-atish.patra@wdc.com>
-In-Reply-To: <20200504040319.31423-1-atish.patra@wdc.com>
-From: Zong Li <zong.li@sifive.com>
-Date: Mon, 4 May 2020 13:36:43 +0800
-Message-ID: <CANXhq0qrnS5DFC4sTHP1aBKd-32rjvzGBV4O56Fq4JujR5b7PQ@mail.gmail.com>
-Subject: Re: [PATCH] RISC-V: Remove unused code from STRICT_KERNEL_RWX
-To: Atish Patra <atish.patra@wdc.com>
+References: <20200504035448.13893-1-zong.li@sifive.com>
+In-Reply-To: <20200504035448.13893-1-zong.li@sifive.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Mon, 4 May 2020 11:55:05 +0530
+Message-ID: <CAAhSdy23jzYvZcmXoX_5F1wDenBQ8NpvNpoO41=aBGHoONPCgg@mail.gmail.com>
+Subject: Re: [PATCH v2] riscv: force __cpu_up_ variables to put in data section
+To: Zong Li <zong.li@sifive.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200503_223655_796405_606656C7 
-X-CRM114-Status: GOOD (  12.08  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200503_232521_394638_1538A3FE 
+X-CRM114-Status: GOOD (  14.76  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,58 +87,69 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
+Cc: Paul Walmsley <paul.walmsley@sifive.com>,
  "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Atish Patra <atishp@atishpatra.org>,
+ Greentime Hu <greentime.hu@sifive.com>,
  linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, May 4, 2020 at 12:04 PM Atish Patra <atish.patra@wdc.com> wrote:
+On Mon, May 4, 2020 at 9:24 AM Zong Li <zong.li@sifive.com> wrote:
 >
-> This patch removes the unused functions set_kernel_text_rw/ro.
-> Currently, it is not being invoked from anywhere and no other architecture
-> (except arm) uses this code. Even in ARM, these functions are not invoked
-> from anywhere currently.
+> Put __cpu_up_stack_pointer and __cpu_up_task_pointer in data section.
+> Currently, these two variables are put in bss section, there is a
+> potential risk that secondary harts get the uninitialized value before
+> main hart finishing the bss clearing. In this case, all secondary
+> harts would pass the waiting loop and enable the MMU before main hart
+> set up the page table.
 >
-> Fixes: d27c3c90817e ("riscv: add STRICT_KERNEL_RWX support")
+> This issue happened on random booting of multiple harts, which means
+> it will manifest for BBL and OpenSBI which older than v0.6. In OpenSBI
+> v0.7, it had included HSM extension, all the secondary harts are
+> waiting in firmware, so it could work fine without this change.
+
+Slightly improved text:
+
+This issue happens on random booting of multiple harts, which means
+it will manifest for BBL and OpenSBI v0.6 (or older version). In OpenSBI
+v0.7 (or higher version), we have HSM extension so all the secondary harts
+are brought-up by Linux kernel in an orderly fashion. This means we don't
+this change for OpenSBI v0.7 (or higher version).
+
 >
-> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> Changes in v2:
+>   - Add commit description about random booting.
+>
+> Signed-off-by: Zong Li <zong.li@sifive.com>
+> Reviewed-by: Greentime Hu <greentime.hu@sifive.com>
 > ---
->  arch/riscv/mm/init.c | 16 ----------------
->  1 file changed, 16 deletions(-)
+>  arch/riscv/kernel/cpu_ops.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index b55be44ff9bd..ba60a581e9b6 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -501,22 +501,6 @@ static inline void setup_vm_final(void)
->  #endif /* CONFIG_MMU */
+> diff --git a/arch/riscv/kernel/cpu_ops.c b/arch/riscv/kernel/cpu_ops.c
+> index c4c33bf02369..0ec22354018c 100644
+> --- a/arch/riscv/kernel/cpu_ops.c
+> +++ b/arch/riscv/kernel/cpu_ops.c
+> @@ -15,8 +15,8 @@
 >
->  #ifdef CONFIG_STRICT_KERNEL_RWX
-> -void set_kernel_text_rw(void)
-> -{
-> -       unsigned long text_start = (unsigned long)_text;
-> -       unsigned long text_end = (unsigned long)_etext;
-> -
-> -       set_memory_rw(text_start, (text_end - text_start) >> PAGE_SHIFT);
-> -}
-> -
-> -void set_kernel_text_ro(void)
-> -{
-> -       unsigned long text_start = (unsigned long)_text;
-> -       unsigned long text_end = (unsigned long)_etext;
-> -
-> -       set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
-> -}
-> -
->  void mark_rodata_ro(void)
->  {
->         unsigned long text_start = (unsigned long)_text;
+>  const struct cpu_operations *cpu_ops[NR_CPUS] __ro_after_init;
+>
+> -void *__cpu_up_stack_pointer[NR_CPUS];
+> -void *__cpu_up_task_pointer[NR_CPUS];
+> +void *__cpu_up_stack_pointer[NR_CPUS] __section(.data);
+> +void *__cpu_up_task_pointer[NR_CPUS] __section(.data);
+>
+>  extern const struct cpu_operations cpu_ops_sbi;
+>  extern const struct cpu_operations cpu_ops_spinwait;
 > --
-> 2.26.2
+> 2.26.1
 >
 
-Looks good to me. Thanks.
-Reviewed-by: Zong Li <zong.li@sifive.com>
+Apart from above, looks good to me.
+
+Reviewed-by: Anup Patel <anup@brainfault.org>
+
+Regards,
+Anup
 
