@@ -2,75 +2,98 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 894AF1C33DA
-	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 09:50:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B26751C3549
+	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 11:10:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YSgK9NX3piO3DzNizXxkN0/zsw63Q894rGaW640ysOM=; b=nCwXCB0mgj7L0z4+cM1d43qA1
-	locaMmwQ+5ku8qw5PenFUFGPvwhEdtwNty62IkuMKcQVBkJ5Vxv+/ZBnCj1tsJ73PIdvbr32YdQKz
-	M5OKP5Fox168FdobeM7n0SokemhaAl3ugrWvDFiZATE8nWjR7YelFoLqkdmRUHRBfIA9xHB5xWgEy
-	78lvkUjXRoRtm+yPah0KCuXlkty6na7OGOIicQO2l1WltvAaHW3sFPAav8/2gwQR0i3usGcv+EUFp
-	iyK9iA6uWIE+BhH4D8dvkpW1wbVwBZyHi/pMpjvWBMiDOGYAQw31uzssfeinkrf9uBQ6pmPqft4Vc
-	Jlfwkmu9w==;
+	 bh=uIbF5zxX6Dw0nqWjJ2TagrefdsSTjGZ8h/iE+ii+4b4=; b=Rf5T38DXyNcTogsRa/poc+fwa
+	I4ibzkdivT8RyDRVelhIRZVwLQdxjf4if6n3Ss1QzYM2hJOi0MjwPhsRbJAACkJsfFHXzfiKo4yAR
+	VFDG7kyCiTlrV78si6zdmGoiNauTzFlbajfHeb6GgTkuS2zSisCCrrwbdIXVHIdjlsWtYflYNgjmh
+	MhFY2TVJf//gitc6+v8S1CvfwXxyokA8IV/DmKHMXP6dA5K+sHF9fPDs652RYr70R/SyG1QvHA+ZK
+	IjLo8NWum9Z3WBlXcjkBJg6AOIFNhYtKsUaW8TD7bTwNUbGL45awgKIB8V8QA8T41s1f7cmwhxZGb
+	ZDJmUGFRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVVri-0003m5-BG; Mon, 04 May 2020 07:50:14 +0000
-Received: from mail-out.m-online.net ([2001:a60:0:28:0:1:25:1])
+	id 1jVX7K-0007vn-Gv; Mon, 04 May 2020 09:10:26 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVVre-00020m-Hb
- for linux-riscv@lists.infradead.org; Mon, 04 May 2020 07:50:12 +0000
-Received: from frontend01.mail.m-online.net (unknown [192.168.8.182])
- by mail-out.m-online.net (Postfix) with ESMTP id 49Fw4X1fhdz1s2JQ;
- Mon,  4 May 2020 09:50:04 +0200 (CEST)
-Received: from localhost (dynscan1.mnet-online.de [192.168.6.70])
- by mail.m-online.net (Postfix) with ESMTP id 49Fw4W6xgCz1r5Qh;
- Mon,  4 May 2020 09:50:03 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at mnet-online.de
-Received: from mail.mnet-online.de ([192.168.8.182])
- by localhost (dynscan1.mail.m-online.net [192.168.6.70]) (amavisd-new,
- port 10024)
- with ESMTP id F_9UJHi4s1bK; Mon,  4 May 2020 09:50:03 +0200 (CEST)
-X-Auth-Info: zCP8j9WucMgE0ljkVLi9b0ZsyqeoqFTivgiAMvw7NZx8rvlJXclL55S702m2QlDj
-Received: from igel.home (ppp-46-244-166-96.dynamic.mnet-online.de
- [46.244.166.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.mnet-online.de (Postfix) with ESMTPSA;
- Mon,  4 May 2020 09:50:03 +0200 (CEST)
-Received: by igel.home (Postfix, from userid 1000)
- id 8BB672C0B3F; Mon,  4 May 2020 09:50:02 +0200 (CEST)
-From: Andreas Schwab <schwab@linux-m68k.org>
-To: Anup Patel <anup@brainfault.org>
-Subject: Re: [PATCH v2] riscv: force __cpu_up_ variables to put in data section
-References: <20200504035448.13893-1-zong.li@sifive.com>
- <CAAhSdy23jzYvZcmXoX_5F1wDenBQ8NpvNpoO41=aBGHoONPCgg@mail.gmail.com>
-X-Yow: TAILFINS!!  ...click...
-Date: Mon, 04 May 2020 09:50:02 +0200
-In-Reply-To: <CAAhSdy23jzYvZcmXoX_5F1wDenBQ8NpvNpoO41=aBGHoONPCgg@mail.gmail.com>
- (Anup Patel's message of "Mon, 4 May 2020 11:55:05 +0530")
-Message-ID: <87tv0w3zrp.fsf@igel.home>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.0.91 (gnu/linux)
+ id 1jVX7F-0007uw-FB; Mon, 04 May 2020 09:10:22 +0000
+Received: by mail-pf1-x442.google.com with SMTP id x2so5229859pfx.7;
+ Mon, 04 May 2020 02:10:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=uIbF5zxX6Dw0nqWjJ2TagrefdsSTjGZ8h/iE+ii+4b4=;
+ b=cH+LYADnJpxdzvW2+5Q1jFzZ9L9OyZncRQgoZJsu0phKyHmo/b1tb6JE/KAVmXislx
+ 576Ap7opHZUSUi70vyPGcMe0C9p7leyk8cASBIWKAwGsK8Y00lThuiFS3aNw65PsYLTm
+ szhQMtXIBmQ2tAAcHVWgTijiqY0HV7xQgK5xZyE/QR599vulSPnvVwVtjGkKmy/Dtck5
+ oIznVkUPaNZ0LtGj6iS59qmm9P3OHQSvVr5i8oQIHTb7kJ5GJncJ11cB4kee+KdWXypI
+ BLlZ0XKGbYY2XjNxgkp917C15tyTspqX3/ZW8nK4NnjT3ll8+dlQFg8POxb8ZU3v61ad
+ l8Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=uIbF5zxX6Dw0nqWjJ2TagrefdsSTjGZ8h/iE+ii+4b4=;
+ b=dmAkO6hqba1UuVC+hkPHqyJULSIc8f0NUSxiyk0LrK8ES1IsWFYqN8r3KiPhqoFnts
+ UfAGW0uCR9pbuXbZaodLYs/mm+IsFyVZr3wu9cQgo8dpCkdzcL0wh2ANGztB3cPLTN8A
+ qR0rIQGK2pDUCNjk/AJs+9MGQE4US8Qfel9OjATkTCwti8R7z30ItKH0AQ6fvYLClraL
+ 1VPshL2Vag/pkg3ehYrpjM0SPSVY6t7M0H3gRoyDDzEjNeNm1L8btWdGKricZUeJybBk
+ O4Av6LpTxGkD2TE51xACgfDOvlQ49L0ojWcTS28bPG0EUm7qsCc6WXLFWsERiwBr2wuD
+ GuQg==
+X-Gm-Message-State: AGi0PuZ0LApx02jfRMRfp/81avHqKHxpgGkyZ7sl2udVT6RdA/CoOdvj
+ QUBJ0cvodSVE9M+vRCJrGQQ=
+X-Google-Smtp-Source: APiQypJG/fsOYbUSEQYZkHIQLG4hFpTXov1SCNDc2K85TTECtJawhDDWFsEna1ULkqdmyHpan3Z+ag==
+X-Received: by 2002:aa7:97b2:: with SMTP id d18mr16995522pfq.89.1588583420829; 
+ Mon, 04 May 2020 02:10:20 -0700 (PDT)
+Received: from localhost ([49.207.53.0])
+ by smtp.gmail.com with ESMTPSA id gd17sm1461493pjb.21.2020.05.04.02.10.19
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 04 May 2020 02:10:19 -0700 (PDT)
+Date: Mon, 4 May 2020 14:40:18 +0530
+From: afzal mohammed <afzal.mohd.ma@gmail.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH 0/3] Highmem support for 32-bit RISC-V
+Message-ID: <20200504091018.GA24897@afzalpc>
+References: <20200331093241.3728-1-tesheng@andestech.com>
+ <CAK8P3a3LokurC0n9XiwtPQh9ZgQcswMKY4b+TEsQh1VgYDNeWA@mail.gmail.com>
+ <20200408035118.GA1451@andestech.com>
+ <CAK8P3a1JS3_2fWrhNTZx0eTWjJa-GTb4AscTPqydpSP5EB15Yw@mail.gmail.com>
+ <20200414151748.GA5624@afzalpc>
+ <CAK8P3a0JW9x-Wk9Ec3+zLjPHbWAvPQx8MF-xe-PnWUgEjRAuTg@mail.gmail.com>
+ <20200415135407.GA6553@afzalpc> <20200503145017.GA5074@afzalpc>
+ <CAK8P3a3OC5UO72rTDWi6+XgmExJmkATEjscq8hns8Bng06OpcQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAK8P3a3OC5UO72rTDWi6+XgmExJmkATEjscq8hns8Bng06OpcQ@mail.gmail.com>
+User-Agent: Mutt/1.9.3 (2018-01-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_005010_771245_19697F80 
-X-CRM114-Status: UNSURE (   7.40  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.5 (/)
+X-CRM114-CacheID: sfid-20200504_021021_509982_C59D4C2E 
+X-CRM114-Status: GOOD (  13.52  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [2001:a60:0:28:0:1:25:1 listed in] [list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [afzal.mohd.ma[at]gmail.com]
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,30 +105,82 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Zong Li <zong.li@sifive.com>,
- Atish Patra <atishp@atishpatra.org>, Greentime Hu <greentime.hu@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: zong.li@sifive.com, Alan Kao <alankao@andestech.com>, atish.patra@wdc.com,
+ Albert Ou <aou@eecs.berkeley.edu>, Gary Guo <gary@garyguo.net>,
+ linux-riscv@lists.infradead.org, Steven Price <steven.price@arm.com>,
+ alex@ghiti.fr, Russell King <linux@armlinux.org.uk>,
+ Mike Rapoport <rppt@linux.ibm.com>, Borislav Petkov <bp@suse.de>,
+ Eric Lin <tesheng@andestech.com>, Greentime Hu <green.hu@gmail.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-arm-kernel@lists.infradead.org,
+ David Abdurachmanov <david.abdurachmanov@gmail.com>,
+ Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ yash.shah@sifive.com, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Logan Gunthorpe <logang@deltatee.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mai 04 2020, Anup Patel wrote:
+[ +linux-arm-kernel
 
-> Slightly improved text:
->
-> This issue happens on random booting of multiple harts, which means
-> it will manifest for BBL and OpenSBI v0.6 (or older version). In OpenSBI
-> v0.7 (or higher version), we have HSM extension so all the secondary harts
-> are brought-up by Linux kernel in an orderly fashion. This means we don't
-> this change for OpenSBI v0.7 (or higher version).
+  Context: This is regarding VMSPLIT_4G_4G support for 32-bit ARM as a
+  possible replacement to highmem. For that, initially, it is being
+  attempted to move static kernel mapping from lowmem to vmalloc space.
 
-  +need
+  in next reply, i will remove everyone/list !ARM related ]
 
-Andreas.
+Hi,
 
--- 
-Andreas Schwab, schwab@linux-m68k.org
-GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
-"And now for something completely different."
+On Sun, May 03, 2020 at 10:20:39PM +0200, Arnd Bergmann wrote:
+
+> Which SoC platform are you running this on? Just making
+> sure that this won't conflict with static mappings later.
+
+Versatile Express V2P-CA15 on qemu, qemu options include --smp 2 &
+2GB memory.
+
+BTW, i could not convince myself why, except for DEBUG_LL, static io
+mappings are used.
+
+> 
+> One problem I see immediately in arm_memblock_init()
+
+Earlier it went past arm_memblock_init(), issue was clearing the page
+tables from VMALLOC_START in devicemaps_init() thr' paging_init(),
+which was like cutting the sitting branch of the tree.
+
+Now it is crashing at debug_ll_io_init() of devicemap_init(), and
+printascii/earlycon was & is being used to debug :). Things are going
+wrong when it tries to create mapping for debug_ll. It looks like a
+conflict with static mapping, which you mentioned above, at the same
+time i am not seeing kernel static mapping in the same virtual
+address, need to dig deeper.
+
+Also tried removing DEBUG_LL, there is a deafening silence in the
+console ;)
+
+> is that it uses
+> __pa() to convert from virtual address in the linear map to physical,
+> but now you actually pass an address that is in vmalloc rather than
+> the linear map.
+
+__virt_to_phys_nodebug() which does the actual work on __pa() invocation
+has been modifed to handle that case (ideas lifted from ARM64's
+implementation), though currently it is a hack as below (and applicable
+only for ARM_PATCH_PHYS_VIRT disabled case), other hacks being
+VMALLOC_OFFSET set to 0 and adjusting vmalloc size.
+
+        static inline phys_addr_t __virt_to_phys_nodebug(unsigned long x)
+        {
+	        phys_addr_t __x = (phys_addr_t)x;
+
+        	if (__x >= 0xf0000000)
+	        	return __x - KIMAGE_OFFSET + PHYS_OFFSET;
+        	else
+	        	return __x - PAGE_OFFSET + PHYS_OFFSET;
+        }
+
+Regards
+afzal
 
