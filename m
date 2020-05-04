@@ -2,88 +2,98 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 180B21C4791
-	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 22:01:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1D111C4792
+	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 22:01:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
 	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=InZygceS6qY1ALrvd0dm1VKcqDlQYD8fjOYr7+5SnCQ=; b=NHfij0pZ+iALd9
-	t8p1ODAruugLH8/10kLqALLt/mnOdfupXxKUS+0gUCsoBTmC/j1eGipLI4tML5vsyKSJ0y9IIRUeH
-	T5gNTP98UaKhYrN8HdWVEKHEZRvLl1Ed7L5W/pRLHVgv97IeYLeMtSAtdfU4B7+/vKEjUc2xf9wvW
-	gZNOwjAB4/jF7VI0POe7mT33n1ngRZqiXu0TvcCTE4bTtJ7T9COAzyZzRG8QCMMkfHkeVnG1qLrOG
-	fl9yR5tgjwM3N8TowNkMmT1uC4LZqiCP01NFEmXA5Zh42kNyOV0oqRsYe+VzhmDyKtKjcj/tKYNMk
-	460qabCGUFHRyNedFBWw==;
+	List-Owner; bh=ZFRO3RhADYIeDpbw4dnAWyjVt7yzrlI/aPmG+9d8qeE=; b=nQsSvcbt4EoSYp
+	g2lqr69qyBEtYHLgwmHJ1em6WSyeuOpzKf/UtOWBCXimTRgzV14VC4tLWM8WsJj8mtjhHQE4FT4fN
+	KbYNmAcHHbf9bd8eg+hXQxqPwH+Fj0NwtBLfiWLkWqmh8zoAxYG+kbFAyUcPr2qWhYddV7CkeQJPh
+	a9qcTpgLuDR+Nwr88CQmsUOSB823JO46uZ/X2PG001noAFtd78EVmxy5R0godosKFrXZcWT5dB/Sk
+	jPzzEbG1jLO9v/EOIEnr9l7jw2iNTgIX3UgmThc7nB2grirfDF+Ko/I4TG14tl9lvowxLk5W0YFU0
+	6dkudedVJqdeXN0dcCiw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVhHU-0003YP-Tw; Mon, 04 May 2020 20:01:36 +0000
+	id 1jVhHZ-0003f2-Hb; Mon, 04 May 2020 20:01:41 +0000
 Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVhHN-0003Qj-Gp
- for linux-riscv@lists.infradead.org; Mon, 04 May 2020 20:01:31 +0000
-Received: by mail-pl1-x641.google.com with SMTP id w3so221159plz.5
- for <linux-riscv@lists.infradead.org>; Mon, 04 May 2020 13:01:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ id 1jVhHR-0003T2-28
+ for linux-riscv@lists.infradead.org; Mon, 04 May 2020 20:01:35 +0000
+Received: by mail-pl1-x641.google.com with SMTP id h11so201404plr.11
+ for <linux-riscv@lists.infradead.org>; Mon, 04 May 2020 13:01:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=InZygceS6qY1ALrvd0dm1VKcqDlQYD8fjOYr7+5SnCQ=;
- b=ospyp/NTckK4n+eXhmc/YRyJvoOreEMMANdUMoWmV2chxeVWXsCZFq9SqaNvWz0BUY
- 1GcUts7VtqtlJvbbo3JF2zUedmjrXOhJmKQyab7abHpGdlgvLshAzbMq2apyMQEE/y5H
- hsWgJtO7Nuz3DhircWajfkKlV+fx6YMrbsb6MIXXNBD20JpPGw47q9miDGVrku4QWrpL
- MtfUVwv5WRtLJjxPvXc0rCsnOdxWWz01DP722XfOY66/OlmVFbakHwqtW8TixVWmvW7i
- 1IvDZQbPpfihj/eewm1O6ECWEEhgtqYgLaon6eunzdlDmTWod4OY5r5cGKnmXmDaXJTo
- KOzQ==
+ bh=ZFRO3RhADYIeDpbw4dnAWyjVt7yzrlI/aPmG+9d8qeE=;
+ b=qrHszcJGGSIsCedROR57TweuB7bX5mbZsxDa1hb+YaSY5m/twRdgsGDaKjFpj1FT4N
+ V3ECCU3uh6lis3rOAqcfqTQFIoLtc4zGPki5ISHQzFRgDjGkRwdfSu8CkSBUiSKcJgiN
+ NM4EF5poDdfcNB/62wYhnyLMSNCzCJpcWte6mNPF9NsqMNcZhm0uMDZQWCgNOYDo1Ohu
+ GlAjPDD1qGAC1SHA99cElOMjxrhYtOKW+YnG3vVMHZXdgDCy9UwHxWSNR0bKV3na+jYG
+ eJUzGB70l7kBEHhrWRgbWMAsO+hihmceg9Zo2H2vXXs0My0GoiqKsOph6Z3gBJZL0qwe
+ pXIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=InZygceS6qY1ALrvd0dm1VKcqDlQYD8fjOYr7+5SnCQ=;
- b=f3fvptKLba+LMDC5MnB2eEcJXNLxzZfMxSHydsPCUj5Grago3AJfSjFy36sRNer54h
- SKPcGhyQ3ZFfz1J9ZbnLz67U2PqFUmuhptZXOaRYtwaQyUpbTwrqwSd95WzIBV9NsPZL
- ngEYb+GV7ExjR01Rfk/iCJGbQo1ikK+FRVlsfzepq7o8wPAgzmaStisNGBwX6nP2F8N+
- jNeKF/nmGvp2nN+9tMYfUZoNRUklA0EQk0dO3AhtwEvu8YWFFr75eP+ij96YvX4DMIH3
- boqDZsGPH35tFQHNK+fiy+RL4FatJ2chZOLRW4bzbfmB4UoXu5wUsWrxRyCuvMGHBPNo
- j8aA==
-X-Gm-Message-State: AGi0PuZ/iwQZxGbcOGsKt/V8tQhPZwTkdnoUOYgqF/nBYfmrFQRW3kk1
- IJa1djbbxG91o6WRActvsi0yzw==
-X-Google-Smtp-Source: APiQypIW/4eOR2ABHQnOXdSWBIKz8L3Kj00g3AQ3Ti1C3jyx33G/G0OuE9SjxV+bVk6sIL48dLj48A==
-X-Received: by 2002:a17:90a:df8b:: with SMTP id
- p11mr709703pjv.137.1588622486917; 
- Mon, 04 May 2020 13:01:26 -0700 (PDT)
+ bh=ZFRO3RhADYIeDpbw4dnAWyjVt7yzrlI/aPmG+9d8qeE=;
+ b=XcqfTwVpxwZhfaVpd38FWqDzKffePZHPfRakGsxj+5PFYBW/JiVERUYND0dp0hliMu
+ YVVz1H+10/HO2ToGEmVe7aEHf63au4GhZNUWVx/lOiTDJy8aHr5UZoB91BOfgROn3IqW
+ 24yXQvKKdretBWvQCav2ZWXZL/8GVi4Ln6xEEgeWqgz8ZfFXknmMCUehUjXH1PqYhdpf
+ ypl+7bThRy9pG9JaqGGtMFoNGjYkhtw5TLBl6xzmJPyC1WsZHhglvGuk3y6bPaidUAf3
+ mZu+ZncAQfBZoZhSnJnPHsMeqcpg1Alg4qf0YnCEXgDNX2G4OIVhBzLoo9fPyKt9OnYc
+ nfOA==
+X-Gm-Message-State: AGi0PuZClmyBOLnKvVE8qX53xvbMYot9ka+4m7aj92eXvctffP5BTNAE
+ Y+aP3GbXDqrOmOcl6UUok0t7hw==
+X-Google-Smtp-Source: APiQypIFC8V36B+W7lp+3i/NHiQ8u4AgxMSexVW/Rp60TpLxCPv8LY5YL73POlfEskWD07QJhyN/kQ==
+X-Received: by 2002:a17:902:8497:: with SMTP id
+ c23mr868287plo.335.1588622488940; 
+ Mon, 04 May 2020 13:01:28 -0700 (PDT)
 Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
  [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id d8sm9610548pfd.159.2020.05.04.13.01.25
+ by smtp.gmail.com with ESMTPSA id p189sm9716682pfp.135.2020.05.04.13.01.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 13:01:26 -0700 (PDT)
-Date: Mon, 04 May 2020 13:01:26 -0700 (PDT)
-X-Google-Original-Date: Mon, 04 May 2020 12:47:13 PDT (-0700)
-Subject: Re: [PATCH] riscv: set max_pfn to the PFN of the last page
-In-Reply-To: <1587630565-29325-1-git-send-email-vincent.chen@sifive.com>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: vincent.chen@sifive.com
-Message-ID: <mhng-f6e1f945-b5dd-4cbc-8325-e89b9a17b319@palmerdabbelt-glaptop1>
+ Mon, 04 May 2020 13:01:28 -0700 (PDT)
+Date: Mon, 04 May 2020 13:01:28 -0700 (PDT)
+X-Google-Original-Date: Mon, 04 May 2020 13:01:06 PDT (-0700)
+Subject: Re: [PATCH 0/3] RISC-V KVM preparation
+In-Reply-To: <20200424045928.79324-1-anup.patel@wdc.com>
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+To: Anup Patel <Anup.Patel@wdc.com>
+Message-ID: <mhng-be6b9ad5-d81c-4ae1-9eed-9b2d63600b37@palmerdabbelt-glaptop1>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_130129_665095_A5534941 
-X-CRM114-Status: GOOD (  16.54  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200504_130133_161653_CEBBCE26 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,69 +105,32 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: aou@eecs.berkeley.edu, kvm@vger.kernel.org, anup@brainfault.org,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ Atish Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ kvm-riscv@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>,
+ pbonzini@redhat.com, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 23 Apr 2020 01:29:25 PDT (-0700), vincent.chen@sifive.com wrote:
-> The current max_pfn equals to zero. In this case, I found it caused users
-> cannot get some page information through /proc such as kpagecount in v5.6
-> kernel because of new sanity checks. The following message is displayed by
-> stress-ng test suite with the command "stress-ng --verbose --physpage 1 -t
-> 1" on HiFive unleashed board.
+On Thu, 23 Apr 2020 21:59:25 PDT (-0700), Anup Patel wrote:
+> This patch series is factored-out from the KVM RISC-V v11 series and is
+> based upon Linux-5.7-rc2.
 >
->  # stress-ng --verbose --physpage 1 -t 1
->  stress-ng: debug: [109] 4 processors online, 4 processors configured
->  stress-ng: info: [109] dispatching hogs: 1 physpage
->  stress-ng: debug: [109] cache allocate: reducing cache level from L3 (too high) to L0
->  stress-ng: debug: [109] get_cpu_cache: invalid cache_level: 0
->  stress-ng: info: [109] cache allocate: using built-in defaults as no suitable cache found
->  stress-ng: debug: [109] cache allocate: default cache size: 2048K
->  stress-ng: debug: [109] starting stressors
->  stress-ng: debug: [109] 1 stressor spawned
->  stress-ng: debug: [110] stress-ng-physpage: started [110] (instance 0)
->  stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd34de000 in /proc/kpagecount, errno=0 (Success)
->  stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd32db078 in /proc/kpagecount, errno=0 (Success)
->  ...
->  stress-ng: error: [110] stress-ng-physpage: cannot read page count for address 0x3fd32db078 in /proc/kpagecount, errno=0 (Success)
->  stress-ng: debug: [110] stress-ng-physpage: exited [110] (instance 0)
->  stress-ng: debug: [109] process [110] terminated
->  stress-ng: info: [109] successful run completed in 1.00s
->  #
+> These patches are mostly preparatory changes in Linux RISC-V kernel which
+> we require for KVM RISC-V implementation. Also, most of these patches are
+> already reviewed as part of original KVM RISC-V series.
 >
-> After applying this patch, the kernel can pass the test.
+> Anup Patel (3):
+>   RISC-V: Export riscv_cpuid_to_hartid_mask() API
+>   RISC-V: Add bitmap reprensenting ISA features common across CPUs
+>   RISC-V: Remove N-extension related defines
 >
->  # stress-ng --verbose --physpage 1 -t 1
->  stress-ng: debug: [104] 4 processors online, 4 processors configured stress-ng: info: [104] dispatching hogs: 1 physpage
->  stress-ng: info: [104] cache allocate: using defaults, can't determine cache details from sysfs
->  stress-ng: debug: [104] cache allocate: default cache size: 2048K
->  stress-ng: debug: [104] starting stressors
->  stress-ng: debug: [104] 1 stressor spawned
->  stress-ng: debug: [105] stress-ng-physpage: started [105] (instance 0) stress-ng: debug: [105] stress-ng-physpage: exited [105] (instance 0) stress-ng: debug: [104] process [105] terminated
->  stress-ng: info: [104] successful run completed in 1.01s
->  #
->
-> Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> ---
->  arch/riscv/mm/init.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index fab855963c73..157924baa191 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -149,7 +149,8 @@ void __init setup_bootmem(void)
->  	memblock_reserve(vmlinux_start, vmlinux_end - vmlinux_start);
->
->  	set_max_mapnr(PFN_DOWN(mem_size));
-> -	max_low_pfn = PFN_DOWN(memblock_end_of_DRAM());
-> +	max_pfn = PFN_DOWN(memblock_end_of_DRAM());
-> +	max_low_pfn = max_pfn;
->
->  #ifdef CONFIG_BLK_DEV_INITRD
->  	setup_initrd();
+>  arch/riscv/include/asm/csr.h   |  3 --
+>  arch/riscv/include/asm/hwcap.h | 22 +++++++++
+>  arch/riscv/kernel/cpufeature.c | 83 ++++++++++++++++++++++++++++++++--
+>  arch/riscv/kernel/smp.c        |  2 +
+>  4 files changed, 104 insertions(+), 6 deletions(-)
 
-Thanks.  This is on fixes, with a stable tag.  I couldn't find a good Fixes tag
-because it appears this has been broken for a long time.
+These are on fixes.
 
