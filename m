@@ -2,77 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 649C11C319A
-	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 06:04:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E5DF1C3253
+	for <lists+linux-riscv@lfdr.de>; Mon,  4 May 2020 07:37:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=d7jji14Lfi3x0u1lSplVHwBqXSKdk7k1wvUdDoCvjk0=; b=A8KcZvS5Bqpct9
-	I/LG0vPLEzqIINEhTE98ODttt9r4dzag2bK6HfaB09dRMqWmk6zywdaJdkGh3Ue3dcTcO+up8/M8n
-	jHWNzA/lKymzEb/Tbwv4FExZwKQpk6MYvv5a/jpu1IVhynowZ/So0udC3jO/S/s3DtFWzn6dUEmvQ
-	KeBOnw9LVt7vJ0DyKQlVMiH8oYt5G1H3ScKR+oxfZo2WK1SuGqx86QEjh71LyxAQhXUQ/vVMj2Dyt
-	x6r81EejD9rwoXvhPZPu3vNVxWLMZam7Ic0JNl6+rzhlrPx014Fsgginb+wBnv41xbHgT6cNZQ8M3
-	v1AIAveiopLrbRiRUrlw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=uEr7VDGO1sQzOvtIGcTs52hYhp3KlihYjjFwOGOE52E=; b=lA4pOagme/tT4kNwnsS+mgJB2
+	3bew6GSzHbXzHCio8wPmj2hNSOQHnTxLOC5Od6B4JY6rm6ueacOhR7NqrSnMXUTRdv8SQocStQ4Jg
+	I3aUFKbAJR9N3ompwHmfoJtNQ6jBtMuefwjb7oW8gO8oAiyAoFfHGeYXMOtYq1/EbsffT2chFiJZp
+	d7cqGzak6Z/kl6ecwwAgeBAwBzL1/B/egSMc1x+XGVoj2z12XrDswn8HYb5pjmrBJaPSO6AUHqw3r
+	4zidXrwDrkOzBIBi/7P08PDtm/CxwEQW50TXEppJ6H6tWbqp+S0yFNPfoeqJcoaJBTjkkOwVaXFWt
+	uWwscUhFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVSKo-0005ux-PS; Mon, 04 May 2020 04:04:02 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1jVTmk-0007xS-09; Mon, 04 May 2020 05:36:58 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVSKm-0005uS-5k
- for linux-riscv@lists.infradead.org; Mon, 04 May 2020 04:04:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1588565040; x=1620101040;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=kpRqgt1e2NQdJbBQkpUaOUuP+qP9IBaNNw7Ep6/63JA=;
- b=iXAtfUaa/l3H19WPQvRrrHNYD3vHiUNpSdU47xt6Uq3ggMz7bhUsACK1
- 7V5J4rzGIVimqmSxEWB85huT1zyc3URvznORjaLE6wRXchqvfuXSY9VX/
- eBCM/cbYqXAOESax7UctAqbDXxkfqLxBInAr+089KQdPVpLEc4S6h7KsK
- I9J7VFf8sN8ZY5hFiPtztVA+Y+4WYeLstbtISYbQ7vHZOqIkp4l63o0sN
- 9fMbw7IRmqyyjYne9flAhtaFnRlVUEgey6XZmYV02VgWu0a00pQht6dDX
- A47w90Y1c2FuiTLpzlszDupgGeBJel49CcyAJT4dveh0fZ8XvJ2NsElA/ g==;
-IronPort-SDR: OZOsqawTCfgyH6hLtx8eZ4RyjaouHLNWkTzpKXNTt/G8g11+M65pjFNfSSGEnVE3fimAzQAzO9
- Ztxz1HU2D9ZeJJeyXKEXX+TAoI7J9u5k4Aj+w4c0L+lluYjrSkXf6SyfZslIghhOvIK+cS0HZF
- eHREFPWZ/BBzJ1K68VCSgAiCtF6n6eCaZ6Exvb9JRfyKuOsVKh7vymxg0rujE29RCAELiKSH8i
- NBGmNZkP91yUIHxKdRAPJKks+dpLakVWWvrDXCQSjaBjGt8BYC0TsmvJl5ntzFpJniOoeS7T6W
- FTM=
-X-IronPort-AV: E=Sophos;i="5.73,350,1583164800"; d="scan'208";a="138270234"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 04 May 2020 12:03:59 +0800
-IronPort-SDR: l8JPhB7rvNEamnOYXkAnE2Xddo0fgy11kDusLjNtsHphNlWYjReDxZD9n1esFQTxU5hgmCvdrc
- tPvMqdQD/gDnB56vHAoc8bPu4CtneDaww=
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 May 2020 20:54:29 -0700
-IronPort-SDR: F/dysIwzax7M/PVnAc/1t2dyxkVmHgmQ2FEEAYlqSkikeYC9HEIhTFEDAylSwnF9nadTq0c4Bz
- sVZqMF0peN7w==
-WDCIronportException: Internal
-Received: from unknown (HELO yoda.hgst.com) ([10.86.56.169])
- by uls-op-cesaip01.wdc.com with ESMTP; 03 May 2020 21:03:58 -0700
-From: Atish Patra <atish.patra@wdc.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] RISC-V: Remove unused code from STRICT_KERNEL_RWX
-Date: Sun,  3 May 2020 21:03:19 -0700
-Message-Id: <20200504040319.31423-1-atish.patra@wdc.com>
-X-Mailer: git-send-email 2.26.2
+ id 1jVTmh-0007x2-J5
+ for linux-riscv@lists.infradead.org; Mon, 04 May 2020 05:36:57 +0000
+Received: by mail-oi1-x243.google.com with SMTP id r25so5691783oij.4
+ for <linux-riscv@lists.infradead.org>; Sun, 03 May 2020 22:36:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uEr7VDGO1sQzOvtIGcTs52hYhp3KlihYjjFwOGOE52E=;
+ b=AnMCjUrc0dEBsDtyieZcjRyaWh1ZyG7DB345/RKRwunS9IbLIl18twCJWYDSN1f092
+ M+39bCI4yvuMpohhu1PNnD5u4xGLJkdXBH8HGV9aN3NKRyM+x7PhL2wqb7fUdEqfSp2G
+ EMFjB0nmBOpmz1FQ5lOB6Gg0RlZuz5dTYZYSHUfdX2CjGWT8Bn11GpCCF6FGOWIzLVlQ
+ 1mJ/ECtrVccBsw+S6DXsG6y0VmYSx8lOQyhEHD/s8//lfppknEQzqLzgvY59saAigEbN
+ 4+3P9sKuuzp5/wijfK1HjOZXqjJmmXFr/GsS8M0DI4H2KfG8Wfq/9ZYAQ5NRQlK/BuGf
+ kvfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uEr7VDGO1sQzOvtIGcTs52hYhp3KlihYjjFwOGOE52E=;
+ b=ruWD9Phhx4mfEsSf4mHxzc2a+DtSESIjKPrff1BdpsjEIMSz6CD+sA1gBFhZoZDFS0
+ WMxw/qj6t9bBMQl8o4cFIe1KUF1o4xsZlZn+FE7f500dABz29TIqyPW2OwFVlNCD+Lb5
+ qjPU8pyVQHPmA04eCY9KreR5ny+8uTp62F0EMns/PhZjKZUJu7VO6Js/8vHi5j/c3RjZ
+ UtYKGSiClyj9dVN8/EDALm71vAAeyRM6GRP1UsItoPz3L6udOKZc53agfImyx2CsQV5f
+ xjRfGYu6q9ys3pBTZ0lO7G02QMoElVeKrd2VX97WGqWzpNotnMURX/2SuNPIXAgcBRab
+ p+BQ==
+X-Gm-Message-State: AGi0Pub/1SKlYUo5+JYjOuNyI7LFYXore2Ud0Al951/rZ2M1lxOC4C39
+ KbZ4kOcji7WwlBg0oPdF4pR5aTSYTW71aSaQW669vA==
+X-Google-Smtp-Source: APiQypIId44/BH5hF7x7zP3LxhrtvZZiDqySLw/fVersvjCbMawM6wZqXjmgu2YmTBc1Sm0vf9NHdFnE+jVSZSHQVss=
+X-Received: by 2002:aca:c78d:: with SMTP id x135mr7835649oif.91.1588570614459; 
+ Sun, 03 May 2020 22:36:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20200504040319.31423-1-atish.patra@wdc.com>
+In-Reply-To: <20200504040319.31423-1-atish.patra@wdc.com>
+From: Zong Li <zong.li@sifive.com>
+Date: Mon, 4 May 2020 13:36:43 +0800
+Message-ID: <CANXhq0qrnS5DFC4sTHP1aBKd-32rjvzGBV4O56Fq4JujR5b7PQ@mail.gmail.com>
+Subject: Re: [PATCH] RISC-V: Remove unused code from STRICT_KERNEL_RWX
+To: Atish Patra <atish.patra@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200503_210400_268043_F88DE970 
-X-CRM114-Status: UNSURE (   8.34  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200503_223655_796405_606656C7 
+X-CRM114-Status: GOOD (  12.08  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -94,52 +91,57 @@ List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <Anup.Patel@wdc.com>,
- Atish Patra <atish.patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Zong Li <zong.li@sifive.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv@lists.infradead.org
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-This patch removes the unused functions set_kernel_text_rw/ro.
-Currently, it is not being invoked from anywhere and no other architecture
-(except arm) uses this code. Even in ARM, these functions are not invoked
-from anywhere currently.
+On Mon, May 4, 2020 at 12:04 PM Atish Patra <atish.patra@wdc.com> wrote:
+>
+> This patch removes the unused functions set_kernel_text_rw/ro.
+> Currently, it is not being invoked from anywhere and no other architecture
+> (except arm) uses this code. Even in ARM, these functions are not invoked
+> from anywhere currently.
+>
+> Fixes: d27c3c90817e ("riscv: add STRICT_KERNEL_RWX support")
+>
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> ---
+>  arch/riscv/mm/init.c | 16 ----------------
+>  1 file changed, 16 deletions(-)
+>
+> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> index b55be44ff9bd..ba60a581e9b6 100644
+> --- a/arch/riscv/mm/init.c
+> +++ b/arch/riscv/mm/init.c
+> @@ -501,22 +501,6 @@ static inline void setup_vm_final(void)
+>  #endif /* CONFIG_MMU */
+>
+>  #ifdef CONFIG_STRICT_KERNEL_RWX
+> -void set_kernel_text_rw(void)
+> -{
+> -       unsigned long text_start = (unsigned long)_text;
+> -       unsigned long text_end = (unsigned long)_etext;
+> -
+> -       set_memory_rw(text_start, (text_end - text_start) >> PAGE_SHIFT);
+> -}
+> -
+> -void set_kernel_text_ro(void)
+> -{
+> -       unsigned long text_start = (unsigned long)_text;
+> -       unsigned long text_end = (unsigned long)_etext;
+> -
+> -       set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
+> -}
+> -
+>  void mark_rodata_ro(void)
+>  {
+>         unsigned long text_start = (unsigned long)_text;
+> --
+> 2.26.2
+>
 
-Fixes: d27c3c90817e ("riscv: add STRICT_KERNEL_RWX support")
-
-Signed-off-by: Atish Patra <atish.patra@wdc.com>
----
- arch/riscv/mm/init.c | 16 ----------------
- 1 file changed, 16 deletions(-)
-
-diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-index b55be44ff9bd..ba60a581e9b6 100644
---- a/arch/riscv/mm/init.c
-+++ b/arch/riscv/mm/init.c
-@@ -501,22 +501,6 @@ static inline void setup_vm_final(void)
- #endif /* CONFIG_MMU */
- 
- #ifdef CONFIG_STRICT_KERNEL_RWX
--void set_kernel_text_rw(void)
--{
--	unsigned long text_start = (unsigned long)_text;
--	unsigned long text_end = (unsigned long)_etext;
--
--	set_memory_rw(text_start, (text_end - text_start) >> PAGE_SHIFT);
--}
--
--void set_kernel_text_ro(void)
--{
--	unsigned long text_start = (unsigned long)_text;
--	unsigned long text_end = (unsigned long)_etext;
--
--	set_memory_ro(text_start, (text_end - text_start) >> PAGE_SHIFT);
--}
--
- void mark_rodata_ro(void)
- {
- 	unsigned long text_start = (unsigned long)_text;
--- 
-2.26.2
-
+Looks good to me. Thanks.
+Reviewed-by: Zong Li <zong.li@sifive.com>
 
