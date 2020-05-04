@@ -2,74 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF8871C4965
-	for <lists+linux-riscv@lfdr.de>; Tue,  5 May 2020 00:10:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F4701C4966
+	for <lists+linux-riscv@lfdr.de>; Tue,  5 May 2020 00:10:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
 	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=RsWtuuae95Pfo1FKcbtwlDSeo9CU2YN0fL7RBypW428=; b=tAkB7Lc3ebwn0U
-	vvdon3uLfsxZUpaj0VDGFplylupc9EYm3GO0np1RJrzKmQbiLOcOewcE+WFMkIsZTooTMxNU3jeMr
-	PloVhsG4PJNQCKeJ8lwXQOI/Kq9i4lho1CH7sCxm0Lv33CXjh4LX6gLlHuUy5kSUEIJKsQ+xsNiBx
-	sS9ggKOtp+5Weoce9MFrVLpZbLYWlPI8CoXkiYqrxJBlDuvnVaocf0qSu0osUGqK/U66LMnXowloP
-	5icBIYvp/9gWMGheEcFDDYH3HZgH0e4WvVP3irax10Pqe/vgrw7teZkouIib/QrD7n/7XYR0ZFQmC
-	l6dKuzDwjnsiMG5mBacw==;
+	List-Owner; bh=qXuUF5w7g6lC1n/G1lz2lM2QKdQ45opx2MhRpkEwDZw=; b=fTje1aNumfKmiH
+	y8NF0RPNf+5YN9T/f7jbviW3eczL7/jSatO+mU10Zeq6aYlq1TwqGM9+m2ytyNZtPICtgqIQlCT51
+	3jFolM4PSqEJ+ByO6yvsA9HAZfwWMqtFzpwtbzoB8HpKCVtysm6bW+RzU2xfz/vfZdlR3wMsE65fM
+	pbxTCLGPcSm693LxBU83jA435FuGHybhCeptzgXtIeX5STAvirjYe/N28X49v8DExEDEPuxhECApx
+	lADcK8MJqGFPgRmSwfqW9c3VC9jyYsZ7dAJZtfrYVZJNe3sGq9qTttJWLMTb1m/gOfHmtAqzx2Mmt
+	JkW6zyTypHQi4hgGzscA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVjHz-0000aO-Hb; Mon, 04 May 2020 22:10:15 +0000
+	id 1jVjI0-0000bu-O8; Mon, 04 May 2020 22:10:16 +0000
 Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVjHv-00005g-5o
- for linux-riscv@lists.infradead.org; Mon, 04 May 2020 22:10:12 +0000
-Received: by mail-pf1-x442.google.com with SMTP id x77so6675pfc.0
- for <linux-riscv@lists.infradead.org>; Mon, 04 May 2020 15:10:10 -0700 (PDT)
+ id 1jVjHv-0000Vc-Jk
+ for linux-riscv@lists.infradead.org; Mon, 04 May 2020 22:10:13 +0000
+Received: by mail-pf1-x442.google.com with SMTP id y25so17897pfn.5
+ for <linux-riscv@lists.infradead.org>; Mon, 04 May 2020 15:10:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=RsWtuuae95Pfo1FKcbtwlDSeo9CU2YN0fL7RBypW428=;
- b=e3zXikzx6u7QRuqbHEJY7DGGU05jX7XdVzNnwCyXIoJTW97K7vY4Vh4UN74Ypos1e/
- 4u2qb7RmMw2JeIx93QTvYBDH97tOGsJqATkQ6+eRPGcEmd7Sa4AI7CgPpZsRCtnnJzjQ
- 3QcQigFfBnJd+3+J/IXH8RUqbawhljSSy1rl5VK8IRtmKC0nivwezbmyDFbLkty1wjpi
- Xo8WD8fjXUpL6vplIk44HWlYhSgWlAoV3TaCde6I/6gYYbRc8k2Sj+Poz8q5dLjyP2gk
- tHOd8/av0lstAqIOQ50Z7T13aEGT9pj8LpFLwn+zHwaILjswIsIdaHOfcafvx7Co1GKs
- KTRw==
+ bh=qXuUF5w7g6lC1n/G1lz2lM2QKdQ45opx2MhRpkEwDZw=;
+ b=lNcqGK492oKuELZ+zYOJ8tCM2rgWb0QYqBA6mHrjcG2ELqF3+5IOKNsYaCkK4c+rdR
+ RNYzBuk4iXqnG6zK/SZYkVGFPkIr/Rr58+6SlKC7OzQXePdDOUC1NeS+Gv7eswRi6xXm
+ zopB+GivActa4hEsrTK0EbvskRKHp6xBZFnNrdnzecZV0/x8N8ZCgSCloEYkYx3a11VO
+ 5UCZZqIZcDzCUkYYWy9eSKp9YpOwtJ7VTSXmMdrwZPkL0JhiLNgWlYRb5xDxRUvzcgoE
+ Uwt0n5Uunaqffo7HutIbMmv6aEV3Rm6QJZHhjAVJWjuLznOeo56ru3+80saDRUWoxLIC
+ HoPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=RsWtuuae95Pfo1FKcbtwlDSeo9CU2YN0fL7RBypW428=;
- b=fkbUHj9GFjzLnb3LwOyMQDSmfFTJiBsUQyDPWmOUhTEHIcg6QQLdhlZVPb9YracAjn
- 9cFSI7zn4sfSu/5nXYeOVnd0AGYbRkdjM2jFPzRU0SrCKBRrLbgGcVWTpjWClmLvMhwl
- Qij1+aDgcl9odCOvx8BhWiZKy1EkQlswSWGdyEoV/PGYpFAPkiBuyv1qZNNghKZ3fvt4
- b8GXlokcZgxmxpiXoy/bsBAv94C7oOVO/n8W5Lbhb1DsuunCWvCUfyLQtW6p9ltWySuX
- O/9PMockJQ+bpqy5nlyHzDYca96pJexISMG8hW34lDPFYFbXH5Za2QJFl6etVn47EJlN
- w4DQ==
-X-Gm-Message-State: AGi0Pub6hHy6fIUqQjvPAZ66J855tZv7pEqjkqN8qZIMitOb5yAuhRoj
- HfDsWHWRXQJnXsHO2DXqfUQo+A==
-X-Google-Smtp-Source: APiQypLTMw94c16mgPZMBgqGaTJsmCgPcg3wtFztESmdv/J6FTXIe0JAYR0JCBbyJ2KhmA2Woo4GZw==
-X-Received: by 2002:a63:5b4e:: with SMTP id l14mr354484pgm.146.1588630209329; 
- Mon, 04 May 2020 15:10:09 -0700 (PDT)
+ bh=qXuUF5w7g6lC1n/G1lz2lM2QKdQ45opx2MhRpkEwDZw=;
+ b=XjLVTETQxhiyDh/qH5pYwrOT87Wj6FfuPqaPkmW6Z8q940rnumDJXwXStVWzRYfXeZ
+ qy2rDj5kJfEKL1pqhnjAIy06wACQh0F2+wZUVN3vJClJ6Eo3dSy8nghJNZulVlr3JgYY
+ xi1cFMxVXo9emfS1meL6y+zt7ap97YctdKRWKcQvrZx7gk1jkDTVEcFyyT/EU0DH0VO/
+ 8eqegssSRbs0eslMisBhumb23Wk7YGsNxKoOAqgnx+/ZFEWIFKV503K4nvUdNCWilRWq
+ 7VtbzlIsD7jubiJW/EK4bCq/66b88/dgN7LM0+WDVj5GSms9U7NRdHd8/plbWtCNg/i7
+ pavQ==
+X-Gm-Message-State: AGi0PuZoWrTeyO/SaAyy8yN+L4bo6gvqBTlZ1huIwa31rRGmEXgxGGi0
+ ARmhvaqHF1io0bmae/5T0whM1A==
+X-Google-Smtp-Source: APiQypLoAUQvfl3jCgNmkTEiCsKB+3A79WO2BHbTvZJwWQGZmdM62j+IsCQgcN7nYGFaZ29Ie/jMVg==
+X-Received: by 2002:a62:e30f:: with SMTP id g15mr56001pfh.150.1588630210901;
+ Mon, 04 May 2020 15:10:10 -0700 (PDT)
 Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
  [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id a2sm75364pfg.106.2020.05.04.15.10.08
+ by smtp.gmail.com with ESMTPSA id v26sm67384pfe.121.2020.05.04.15.10.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 15:10:08 -0700 (PDT)
-Date: Mon, 04 May 2020 15:10:08 -0700 (PDT)
-X-Google-Original-Date: Mon, 04 May 2020 15:04:45 PDT (-0700)
-Subject: Re: [PATCH v2] riscv: force __cpu_up_ variables to put in data section
-In-Reply-To: <CAOnJCUKCryLuZn0Pd71z3Oa1AEN1xUfz=SW_5PBV-2pDU+Nw=g@mail.gmail.com>
+ Mon, 04 May 2020 15:10:10 -0700 (PDT)
+Date: Mon, 04 May 2020 15:10:10 -0700 (PDT)
+X-Google-Original-Date: Mon, 04 May 2020 15:08:02 PDT (-0700)
+Subject: Re: [GIT PULL] EFI stub loading support for RISC-V
+In-Reply-To: <CAMj1kXHXaTP=GN8s9Q0DWGT7XtV+XnB_2R68yyuWguMqP3m3+w@mail.gmail.com>
 From: Palmer Dabbelt <palmer@dabbelt.com>
-To: atishp@atishpatra.org
-Message-ID: <mhng-8854b2d0-fe7b-4af9-aa24-c10e631a8574@palmerdabbelt-glaptop1>
+To: ardb@kernel.org
+Message-ID: <mhng-4513bd18-556a-4b92-a16a-04be757776ed@palmerdabbelt-glaptop1>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_151011_245398_A0564EA6 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20200504_151011_655754_A6C49427 
+X-CRM114-Status: GOOD (  31.57  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -94,37 +94,143 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: anup@brainfault.org, linux-kernel@vger.kernel.org, schwab@linux-m68k.org,
- zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>,
- greentime.hu@sifive.com, linux-riscv@lists.infradead.org
+Cc: aou@eecs.berkeley.edu, atishp@atishpatra.org,
+ Atish Patra <Atish.Patra@wdc.com>, linux-efi@vger.kernel.org,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 04 May 2020 10:37:40 PDT (-0700), atishp@atishpatra.org wrote:
-> On Mon, May 4, 2020 at 12:50 AM Andreas Schwab <schwab@linux-m68k.org> wrote:
+On Thu, 30 Apr 2020 04:54:48 PDT (-0700), ardb@kernel.org wrote:
+> On Thu, 30 Apr 2020 at 00:52, Palmer Dabbelt <palmer@dabbelt.com> wrote:
 >>
->> On Mai 04 2020, Anup Patel wrote:
->>
->> > Slightly improved text:
+>> On Tue, 28 Apr 2020 10:57:48 PDT (-0700), atishp@atishpatra.org wrote:
+>> > On Sun, Apr 26, 2020 at 12:52 PM Atish Patra <atishp@atishpatra.org> wrote:
+>> >>
+>> >> On Sat, Apr 25, 2020 at 12:31 PM Ard Biesheuvel <ardb@kernel.org> wrote:
+>> >> >
+>> >> > Palmer,
+>> >> >
+>> >> > As discussed, below are the changes for v5.8 that can be taken via the
+>> >> > RISC-V tree to implement booting RISC-V Linux from EFI firmware.
+>> >> >
+>> >> > You can fetch and merge the signed tag directly, or merge 22090f84bc3f80
+>> >> > and cherry pick the 4 patches on top of it, if you see any need to do so
+>> >> > (but please use a topic branch in that case)
+>> >> >
+>> >> > Please be aware (as is noted in the tag) that these changes are really
+>> >> > the bare minimum that is needed to launch the kernel from EFI firmware.
+>> >> > In the current state, you may be able to boot from Uboot in EFI mode,
+>> >> > but Tianocore based boot will not work at all, unless you convert the
+>> >> > EFI memory map back to DT memory nodes in the firmware implementation,
+>> >> > and I can assure you that that is not something that will be accepted in
+>> >> > upstream Tianocore.
+>> >> >
+>> >> > So in summary, this is unfinished work, and I can only recommend merging
+>> >> > these changes once there is a plan in place to complete the implementation.
+>> >> >
+>> >>
+>> >> I have started looking into this part. My initial plan was to start
+>> >> looking into it right after I got
+>> >> the boot time services working but other things took priority. Thanks
+>> >> for your review and
+>> >> suggestion throughout the process. I will coordinate with Abner/Daniel
+>> >> to test RISC-V UEFI
+>> >> runtime services(once implemented)  with tianocore.
+>> >> > --
+>> >> > Ard.
+>> >> >
+>> >> >
+>> >> > The following changes since commit 22090f84bc3f8081e0ec180ccaedc85820085376:
+>> >> >
+>> >> >   efi/libstub: unify EFI call wrappers for non-x86 (2020-04-23 20:15:06 +0200)
+>> >> >
+>> >> > are available in the Git repository at:
+>> >> >
+>> >> >   git://git.kernel.org/pub/scm/linux/kernel/git/efi/efi.git tags/riscv-efi-for-v5.8
+>> >> >
+>> >> > for you to fetch changes up to 66b4ac6b9dd1fdbb8ac7a1f20a8d08066368245d:
+>> >> >
+>> >> >   RISC-V: Add EFI stub support. (2020-04-25 13:59:54 +0200)
+>> >> >
+>> >> > ----------------------------------------------------------------
+>> >> > EFI stub loading support for RISC-V
+>> >> >
+>> >> > This branch implements support for loading the RISC-V Linux kernel
+>> >> > straight from EFI firmware, by adding PE/COFF metadata to the kernel
+>> >> > image and incorporating the kernel's EFI stub.
+>> >> >
+>> >> > Note that this is the *bare* minimum that is needed to boot from EFI
+>> >> > firmware. The following pieces are still missing at this point, and
+>> >> > will be required for full interoperability with generic EFI firmware:
+>> >> > - using the EFI memory map instead of the device tree to populate the
+>> >> >   memblock tables
+>> >> > - parsing and handling of generic EFI configuration tables (such as
+>> >> >   SMBIOS), as well as architecture specific ones that may be defined
+>> >> >   for RISC-V
+>> >> > - runtime mapping of EFI runtime services memory and MMIO regions, and
+>> >> >   support for EFI runtime services (get/set time, get/set variable, reset
+>> >> >   system)
+>> >> >
+>> >> > ----------------------------------------------------------------
+>> >> >
+>> >> > Cc: Atish Patra <atish.patra@wdc.com>
+>> >> > Cc: Palmer Dabbelt <palmer@dabbelt.com>
+>> >> > Cc: Paul Walmsley <paul.walmsley@sifive.com>
+>> >> > Cc: Albert Ou <aou@eecs.berkeley.edu>
+>> >> > Cc: linux-riscv@lists.infradead.org
+>> >> >
+>> >> > Atish Patra (4):
+>> >> >       include: pe.h: Add RISC-V related PE definition
+>> >> >       RISC-V: Define fixmap bindings for generic early ioremap support
+>> >> >       RISC-V: Add PE/COFF header for EFI stub
+>> >> >       RISC-V: Add EFI stub support.
+>> >> >
+>> >> >  arch/riscv/Kconfig                        |  22 ++++++
+>> >> >  arch/riscv/Makefile                       |   1 +
+>> >> >  arch/riscv/configs/defconfig              |   1 +
+>> >> >  arch/riscv/include/asm/Kbuild             |   1 +
+>> >> >  arch/riscv/include/asm/efi.h              |  33 +++++++++
+>> >> >  arch/riscv/include/asm/fixmap.h           |  18 +++++
+>> >> >  arch/riscv/include/asm/io.h               |   1 +
+>> >> >  arch/riscv/include/asm/sections.h         |  13 ++++
+>> >> >  arch/riscv/kernel/Makefile                |   4 ++
+>> >> >  arch/riscv/kernel/efi-header.S            | 100 +++++++++++++++++++++++++++
+>> >> >  arch/riscv/kernel/head.S                  |  16 +++++
+>> >> >  arch/riscv/kernel/image-vars.h            |  53 +++++++++++++++
+>> >> >  arch/riscv/kernel/vmlinux.lds.S           |  22 +++++-
+>> >> >  drivers/firmware/efi/Kconfig              |   3 +-
+>> >> >  drivers/firmware/efi/libstub/Makefile     |  10 +++
+>> >> >  drivers/firmware/efi/libstub/riscv-stub.c | 109 ++++++++++++++++++++++++++++++
+>> >> >  include/linux/pe.h                        |   3 +
+>> >> >  17 files changed, 407 insertions(+), 3 deletions(-)
+>> >> >  create mode 100644 arch/riscv/include/asm/efi.h
+>> >> >  create mode 100644 arch/riscv/include/asm/sections.h
+>> >> >  create mode 100644 arch/riscv/kernel/efi-header.S
+>> >> >  create mode 100644 arch/riscv/kernel/image-vars.h
+>> >> >  create mode 100644 drivers/firmware/efi/libstub/riscv-stub.c
+>> >>
+>> >>
+>> >>
+>> >> --
+>> >> Regards,
+>> >> Atish
 >> >
->> > This issue happens on random booting of multiple harts, which means
->> > it will manifest for BBL and OpenSBI v0.6 (or older version). In OpenSBI
->> > v0.7 (or higher version), we have HSM extension so all the secondary harts
->> > are brought-up by Linux kernel in an orderly fashion. This means we don't
->> > this change for OpenSBI v0.7 (or higher version).
+>> > Hi Palmer,
+>> > There were few build errors for all-yes config and nommu reported by
+>> > 0-day tests.
+>> > As some of the fixes require to add some dummy declarations for efi
+>> > runtime related functions,
+>> > Ard suggested that we should drop the series for now and merge with
+>> > full uefi support later.
 >>
->>   +need
->>
->> Andreas.
->>
->> --
->> Andreas Schwab, schwab@linux-m68k.org
->> GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
->> "And now for something completely different."
+>> OK, I'll wait for another patch set.  That makes my life a bit easier as well,
+>> as we don't have to do the multi-tree merge in a single release.
 >
-> With Andreas & Anup's nitpick addressed,
->
-> Reviewed-by: Atish Patra <atish.patra@wdc.com>
+> Yeah. Apologies for the back and forth, but I really don't want to end
+> up in a place where I am juggling EFI fixes and have to care about
+> architectures that can't even use EFI in a meaningful way.
 
-Thanks!  It should be on fixes, with the new commit text.
+No problem, I just wanted to make sure I understood correctly as it was going
+to be my first time trying to handle a multi-tree patch set like this so I'm a
+bit lost.
 
