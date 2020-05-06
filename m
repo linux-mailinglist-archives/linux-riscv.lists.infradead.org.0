@@ -2,59 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEAB21C7CE9
-	for <lists+linux-riscv@lfdr.de>; Wed,  6 May 2020 23:59:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 672481C7DC0
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 May 2020 01:11:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:To:From:Reply-To:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/Aa/ssbCkCKQVIHUibW8VTb7WJkQ7GaL4pvQ/Dca+6w=; b=LybVs4kpNp1foAyIKCwCALTRj
-	wqBCP/lH4toneqxhpBxMC4ecYE0YP0l/dslOJwh+wSIorU8kC3/H8I+tKC/DlvMACIRJD3FbDl/Z8
-	nhS/b6cEVIYavH0Wxkrw1Z2NF/aZBv3L8t02FnBAQtcbpHO9rYhXa8Ii2hj49YtU4WgAWmZGEn8VT
-	CQfopFIZ+ba36HbQg4ZBD+Fiv18/iGPwoVUTTDSidzOuLw3eSArleRXg35k5fGdV8HD2JZbCmg3g7
-	H8tUk0yupq54jdhlkIQHykB5ONgqAUhw59EPTHj0YW+/Yq0lS25o3ugFAifWFb1zm1WjfV4MqKRxt
-	MMwvle0hg==;
+	 bh=YDpQtsjDOMEKBEnfQJyT920DKqtyp3TV7XvJfeZy4QE=; b=XGxV/WavbFlx0gCGeNFY0luk3
+	z+NX/Ry7Uuil0VUiqPN+IxEpl7KZ50nbDCW/rwAQiC/NW7bghePY4V2ZvTB6rAx2BAMKix8ixjSED
+	dBGNE2rHE7ZY2V5pEoqRGigoMSARDtTPsQyXvAENHXX6zmzks1a8H1hK1tyMe5hUasjzOA3RFPrfL
+	JeF7IliJ2q5N/H8BRZn8pYjrzqjgDdfF6sBeZSZpuhC4gy1fDjovUNyKn5guTkqdOHqFOmhsJtLPf
+	deRQcVPcjxiXLkkAx2z1KKJP6icT5J1fCyGVwzMEWQ5efPcuMzxlsuKOTlpD/4E0OQTcPPUuDSL8l
+	8aQWbht6w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWS4b-0007rD-HZ; Wed, 06 May 2020 21:59:25 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1jWTBp-00067y-Jr; Wed, 06 May 2020 23:10:57 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWS4X-0007qf-G0
- for linux-riscv@lists.infradead.org; Wed, 06 May 2020 21:59:23 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id B93AEABCF;
- Wed,  6 May 2020 21:59:16 +0000 (UTC)
-From: Andreas Schwab <schwab@suse.de>
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: Crashes with CONFIG_SLAB_FREELIST_RANDOM
-References: <CAEn-LTp1e0oggUkDaDH6KrdrpHhPzEHv60inE4jRusKA4CTB6Q@mail.gmail.com>
- <mhng-7c460fc5-c60d-4260-9b2c-ce513c6466e5@palmerdabbelt-glaptop1>
-X-Yow: The LOGARITHM of an ISOSCELES TRIANGLE is TUESDAY WELD!!
-Date: Wed, 06 May 2020 23:59:12 +0200
-In-Reply-To: <mhng-7c460fc5-c60d-4260-9b2c-ce513c6466e5@palmerdabbelt-glaptop1>
- (Palmer Dabbelt's message of "Wed, 06 May 2020 14:21:14 -0700 (PDT)")
-Message-ID: <878si47mj3.fsf@igel.home>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.0.91 (gnu/linux)
+ id 1jWTBl-00067K-Im
+ for linux-riscv@lists.infradead.org; Wed, 06 May 2020 23:10:55 +0000
+Received: by mail-wr1-x442.google.com with SMTP id i15so3678699wrx.10
+ for <linux-riscv@lists.infradead.org>; Wed, 06 May 2020 16:10:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YDpQtsjDOMEKBEnfQJyT920DKqtyp3TV7XvJfeZy4QE=;
+ b=oG+i2CBywG4DZMiYzWm091lLtSWssC5VyUiImlC72UxBYmmKvz1L06u/0QN/umyUGc
+ 8vI3DBqCPR1gMh/yJuQ++2A9Q3F4K3+Sa4XuGj9aDjrEUpjusbGsD1sptKMsT/N6dN20
+ cbJzjcKRTT6qj76iLXtm8BwKnEW2kJfbogEvw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YDpQtsjDOMEKBEnfQJyT920DKqtyp3TV7XvJfeZy4QE=;
+ b=Tg13FhbzVQRB4bGUirX+CghcQ6oDZv11ZpJHtFEFdEpBHYkpfmHY2M72jabEtSTSSY
+ bVEJGQPkPQtMSHPylsyCrO+51KpETCi8IJu7yT8S8WA0cM5jplftGNRMU/X0r0WwFt2/
+ Y5jF2QVo8a9ADbkG0Qr1W90cOQmxEuzzW/rHHILN3CyUnJnD+5IYdMG5YUHcwkIzSHdF
+ mPg+M/kZfgwvhujruzS8WoEp7CR11fbNlaWr3Hj7phV4EHG740rT+EsQ/VvZ9lJLoaRr
+ XNOfvR3Fa7fnl4l0HadsBE3Eq6czA6VS4M8UPFx6XIGyyDfMIVTVIJhIxc1kjGOJXe32
+ eYyQ==
+X-Gm-Message-State: AGi0PuZIsUjmEbGj5xvcftSSekvquSVfhkKkX2hUbHj+maUpU3iP5VM4
+ 1rw1lgFGZWwJkgFILSs4W/iVuDfQtYES1kn8r91L
+X-Google-Smtp-Source: APiQypJFUrmB9nXgc/QN1Zz5Ix2QbxPXqFgeyACOHLC+yUV5YYVAtayXnmxnhSwYrvdk6GcDzUpgtG7stQ1IyDGGbDI=
+X-Received: by 2002:a5d:4687:: with SMTP id u7mr4575471wrq.53.1588806651485;
+ Wed, 06 May 2020 16:10:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <1588793212-5586-1-git-send-email-sagar.kadam@sifive.com>
+ <1588793212-5586-2-git-send-email-sagar.kadam@sifive.com>
+In-Reply-To: <1588793212-5586-2-git-send-email-sagar.kadam@sifive.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Wed, 6 May 2020 16:10:40 -0700
+Message-ID: <CAOnJCU+tLfDB3k399K_jMYUQQ7qXyRchn2g=qsm+4sB9i-3jMQ@mail.gmail.com>
+Subject: Re: [PATCH] tty: serial: add missing spin_lock_init for SiFive UART
+To: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200506_145921_827016_E60FC16C 
-X-CRM114-Status: GOOD (  10.24  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200506_161053_688026_E43AB197 
+X-CRM114-Status: GOOD (  15.30  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [195.135.220.15 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,106 +89,55 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, david.abdurachmanov@gmail.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Anup Patel <Anup.Patel@wdc.com>, Atish Patra <Atish.Patra@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Here is a full log:
+On Wed, May 6, 2020 at 12:27 PM Sagar Shrikant Kadam
+<sagar.kadam@sifive.com> wrote:
+>
+> Uninitialised spin lock on sifive serial port (ssp) raised
+> a race condition and resulted in spin lock bad magic as
+> reported and discussed here [1]
+> Initialising the spin lock resolves the issue.
+>
+> The fix is tested on HiFive Unleashed A00 board with Linux 5.7-rc4
+> and OpenSBI v0.7
+>
+> [1] http://lists.infradead.org/pipermail/linux-riscv/2020-May/009713.html
+>
+> Fixes: 45c054d0815b ("tty: serial: add driver for the SiFive UART")
+> Reported-by: Atish Patra <Atish.Patra@wdc.com>
+> Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+> ---
+>  drivers/tty/serial/sifive.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/tty/serial/sifive.c b/drivers/tty/serial/sifive.c
+> index 13eadcb..b061bdb 100644
+> --- a/drivers/tty/serial/sifive.c
+> +++ b/drivers/tty/serial/sifive.c
+> @@ -989,6 +989,7 @@ static int sifive_serial_probe(struct platform_device *pdev)
+>         ssp->clk = clk;
+>         ssp->clk_notifier.notifier_call = sifive_serial_clk_notifier;
+>
+> +       spin_lock_init(&ssp->port.lock);
+>         r = clk_notifier_register(ssp->clk, &ssp->clk_notifier);
+>         if (r) {
+>                 dev_err(&pdev->dev, "could not register clock notifier: %d\n",
+> --
+> 2.7.4
+>
+>
 
-[    0.000000] OF: fdt: Ignoring memory range 0x80000000 - 0x80200000
-[    0.000000] Linux version 5.6.6-212-default (geeko@buildhost) (gcc version 9.3.1 20200406 [revision 6db837a5288ee3ca5ec504fbd5a765817e556ac2] (SUSE Linux)) #1 SMP Sat Apr 25 18:51:44 UTC 2020 (09cfe02)
-[    0.000000] earlycon: sifive0 at MMIO 0x0000000010010000 (options '')
-[    0.000000] printk: bootconsole [sifive0] enabled
-[    0.000000] printk: debug: ignoring loglevel setting.
-[    0.000000] Initial ramdisk at: 0x(____ptrval____) (16745124 bytes)
-[    0.000000] Zone ranges:
-[    0.000000]   DMA32    [mem 0x0000000080200000-0x00000000ffffffff]
-[    0.000000]   Normal   [mem 0x0000000100000000-0x000000027fffffff]
-[    0.000000] Movable zone start for each node
-[    0.000000] Early memory node ranges
-[    0.000000]   node   0: [mem 0x0000000080200000-0x000000027fffffff]
-[    0.000000] Initmem setup node 0 [mem 0x0000000080200000-0x000000027fffffff]
-[    0.000000] On node 0 totalpages: 2096640
-[    0.000000]   DMA32 zone: 8184 pages used for memmap
-[    0.000000]   DMA32 zone: 0 pages reserved
-[    0.000000]   DMA32 zone: 523776 pages, LIFO batch:63
-[    0.000000]   Normal zone: 24576 pages used for memmap
-[    0.000000]   Normal zone: 1572864 pages, LIFO batch:63
-[    0.000000] software IO TLB: mapped [mem 0xfbfff000-0xfffff000] (64MB)
-[    0.000000] CPU with hartid=0 is not available
-[    0.000000] CPU with hartid=0 is not available
-[    0.000000] elf_hwcap is 0x112d
-[    0.000000] percpu: Embedded 18 pages/cpu s34648 r8192 d30888 u73728
-[    0.000000] pcpu-alloc: s34648 r8192 d30888 u73728 alloc=18*4096
-[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3
-[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2063880
-[    0.000000] Kernel command line: earlycon=sifive,0x10010000 console=ttySIF0 ignore_loglevel root=10.160.4.0:/daten/root/hifive rw
-[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
-[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
-[    0.000000] Sorting __ex_table...
-[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
-[    0.000000] Memory: 8149964K/8386560K available (6274K kernel code, 508K rwdata, 2854K rodata, 277K init, 640K bss, 236596K reserved, 0K cma-reserved)
-[    0.000000] random: get_random_u64 called from kmem_cache_open+0x28/0x370 with crng_init=0  
-[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
-[    0.000000] rcu: Hierarchical RCU implementation.
-[    0.000000] rcu:     RCU restricting CPUs from NR_CPUS=32 to nr_cpu_ids=4.
-[    0.000000]  Tasks RCU enabled.
-[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
-[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
-[    0.000000] NR_IRQS: 0, nr_irqs: 0, preallocated irqs: 0
-[    0.000000] plic: mapped 53 interrupts with 4 handlers for 9 contexts.
-[    0.000000] riscv_timer_init_dt: Registering clocksource cpuid [0] hartid [2]
-[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x1d854df40, max_idle_ns: 3526361616960 ns
-[    0.000006] sched_clock: 64 bits at 1000kHz, resolution 1000ns, wraps every 2199023255500ns
-[    0.008534] Console: colour dummy device 80x25
-[    0.012819] Calibrating delay loop (skipped), value calculated using timer frequency.. 2.00 BogoMIPS (lpj=10000)
-[    0.022946] pid_max: default: 32768 minimum: 301
-[    0.027709] LSM: Security Framework initializing
-[    0.032335] AppArmor: AppArmor initialized
-[    0.036621] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
-[    0.044087] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
-[    0.054341] rcu: Hierarchical SRCU implementation.
-[    0.060322] smp: Bringing up secondary CPUs ...
-[    0.066382] smp: Brought up 1 node, 4 CPUs
-[    0.071881] devtmpfs: initialized
-[    0.077627] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
-[    0.086713] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
-[    0.093942] pinctrl core: initialized pinctrl subsystem
-[    0.099272] thermal_sys: Registered thermal governor 'fair_share'
-[    0.099278] thermal_sys: Registered thermal governor 'bang_bang'
-[    0.104812] thermal_sys: Registered thermal governor 'step_wise'
-[    0.110818] thermal_sys: Registered thermal governor 'user_space'
-[    0.117641] NET: Registered protocol family 16
-[    0.127561] audit: initializing netlink subsys (disabled)
-[    0.132992] audit: type=2000 audit(0.090:1): state=initialized audit_enabled=0 res=1
-[    0.144757] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
-[    0.165922] Unable to handle kernel paging request at virtual address 00000016e1694827
-[    0.173081] Oops [#1]
-[    0.175308] Modules linked in:
-[    0.178353] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.6.6-212-default #1 openSUSE Tumbleweed (unreleased)
-[    0.188074] epc: ffffffe00016f40a ra : ffffffe00016f44c sp : ffffffe1f6ae9c90
-[    0.195193]  gp : ffffffe0009ae600 tp : ffffffe1f6ae3480 t0 : ffffffe1f6c19c80
-[    0.202398]  t1 : 0000000000000000 t2 : 000000000000f8b7 s0 : ffffffe1f6ae9cd0
-[    0.209605]  s1 : ffffffe1f6a036c0 a0 : 0000000000000000 a1 : 00000000000002e1
-[    0.216811]  a2 : ffffffe000a08c18 a3 : 7fda5816e1694827 a4 : 00000001f7d06000
-[    0.224017]  a5 : 00000001f7d06000 a6 : ffffffe1f6c19c00 a7 : 0000000000ff0000
-[    0.224017]  a5 : 00000001f7d06000 a6 : ffffffe1f6c19c00 a7 : 0000000000ff000[    0.231224]  s2 : 0000000000000cc0 s3 : ffffffe00043262a s4 : 7fda5816e1694827
-[    0.238429]  s5 : ffffffe1f6a1a800 s6 : 0000000000000000 s7 : 0000000000000038
-[    0.245636]  s8 : ffffffe00018a674 s9 : ffffffe00018ab60 s10: ffffffe1f6c19c00
-[    0.252842]  s11: 000000000000000a t3 : ff633e17173e647f t4 : 000000f600000000
-[    0.260047]  t5 : 000000ff00000000 t6 : ffffffe1f6c34258
-[    0.265344] status: 0000000200000120 badaddr: 00000016e1694827 cause: 000000000000000d
-[    0.273289] ---[ end trace 703a116d0e920a95 ]---
-[    0.277896] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
-[    0.285488] SMP: stopping secondary CPUs
-[    0.289404] Rebooting in 90 seconds..
+Looks good. I have verified the fix on unleashed.
 
-The worst part here is that reboot-on-panic does not work.
-
-Andreas.
+Tested-by: Atish Patra <atish.patra@wdc.com>
 
 -- 
-Andreas Schwab, SUSE Labs, schwab@suse.de
-GPG Key fingerprint = 0196 BAD8 1CE9 1970 F4BE  1748 E4D4 88E3 0EEA B9D7
-"And now for something completely different."
+Regards,
+Atish
 
