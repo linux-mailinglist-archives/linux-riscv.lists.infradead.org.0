@@ -2,83 +2,51 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9772E1C673D
-	for <lists+linux-riscv@lfdr.de>; Wed,  6 May 2020 07:10:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8021A1C6815
+	for <lists+linux-riscv@lfdr.de>; Wed,  6 May 2020 08:13:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KONjtN1d3tvLqOY/wlrmm4pE107x+jxzOGMlbDSUVz0=; b=dY4GDfF628mKYZm75+1C36rMy
-	7fITwY/G5MY+/yyYJmJl85jYP9XIiT8YmfTVZOXLZVkivdZgdLRe6uSzj6wQdh9XHzTX0Me/P4my7
-	UOBuwbkdJTb7Jfcy7dXeILFCvCmJS+35c4Lo/8rCU0xTc5/TzlS7JUdq5iuPmiliibFceS0DGWF9k
-	zHpWVR0+ff3QH0waNjXX6anhz0+5m4kyjguF3TI9tFD0cCcNuzz8fksDdJQSCvQzR5h6oz4HpJ5f4
-	3kBbbHnCErTalj69/ubswanz1TPJLl+gTOOtG6CzSynYHDxKL/56h711uEFXjnWcb21mBSrkPjnf+
-	CrdIwH4HA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YZ3bEaKrVj7GxLuKf6L5ZWwdu3Zt0UvfU5jkzgmJJGE=; b=sm/lM71x1yrb+D3qmtG5ZeEpLy
+	nYnUhI8KK71zqrRTAgygLJKWrUG5M6C9VyHgrSXRQNCprQv5+xDFqVxYU6OQ4Oy6znsxgpzI0x19i
+	IN1/Eo28v3Z+UQb4HO4rSSW3KF4cyek1M73/0Fh/HxM7um9q+ls6nUs0+D/H4DHHOrsB2erVUv0Yr
+	WoY3L+aat8E9q5AVnREczQHcuF1MeAin4fHuDn9kr9Yy0LPAepj4MjnI1K+nLKg3gJsvgR1fwbs8M
+	wBqpiGpjJiQD1mixbbbXdz1fUG/VE7aVZ+P2ScZ3UUUtdaIHaTcc61BHXotUR6NAeMwoM6HauHgRP
+	Sz5aTcPg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWCK3-00037W-7f; Wed, 06 May 2020 05:10:19 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWCJe-0001UH-KS
- for linux-riscv@lists.infradead.org; Wed, 06 May 2020 05:09:56 +0000
-Received: by mail-wr1-x444.google.com with SMTP id f13so530155wrm.13
- for <linux-riscv@lists.infradead.org>; Tue, 05 May 2020 22:09:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KONjtN1d3tvLqOY/wlrmm4pE107x+jxzOGMlbDSUVz0=;
- b=FQ18p5YPTcGlRz3bil64DOWyaUFNzUGsMcJEieNlyq0+xx1A/HZ5dCilifPHh9/fk3
- PUNP3u8BMuh6N1x98sX7bB/gVTH9YZdwASkZZzw4yQ3w+SGIHydcApzO7g1SgaW+lPFh
- KVQMIPqAEJhOhdnT2oide6UFBbaqSudSAhIWAvzlyDpbs2Abhr3Oh6vQzsDLw70A4pUC
- P+l/+ZvVJgadmYYTiIUpgzvmdT1P3bteDki0zL8RkCix1p/Gv+NyYXbeBD5lZ0ksgPwS
- sKf9021GOW2ZOmI6409KCg2WvlycsflKN1GgzOx8y816x4GLBen2u764lGkUpuoVLJmR
- BhGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KONjtN1d3tvLqOY/wlrmm4pE107x+jxzOGMlbDSUVz0=;
- b=nizcxASGTuEJpSIopYJ3I6C70e0rkayYEyYlSX/OYYKIyGVc5wyozp/qTTF1Qk6rUw
- AY/76z+4pNUrcL3ZHOAgp1Grr7pAwj426EmDYvBE6bgdTac0ui1vuZRqMlppMh1+RLfH
- 7Pw5CqrAKeSeQF5wbxKsefDpw5ws+wf6YmI1/bOvf91S8zf4uHBW51tSQsLufWYv0uPn
- LdyBTrYaibT3WtnXEn99bp4oC4h9L6CVb30Ti8LNuL6TuDJn0/Zn9hHrnqO3VjvlX1xD
- rbcNakLMG4xO8v6L8aZA2r/ihSHvYVeF2NYLzehBeu4tUSkRov/mhCC2OlojuRjZ2rSF
- xm2w==
-X-Gm-Message-State: AGi0PuYn/KRFNgEXDlvJ6tiNPmi2Sz0zWWkeiDcvq+c8x6TWntQXOZdv
- cl2iWBu7q39ri5aSceJTDGauMLE88JOMwYsCzvW44A==
-X-Google-Smtp-Source: APiQypLiK8pkP0blfJITIvDGiJsn0oXglVqI5ta6/Xl1PsEi49y7oSsq6UhO9umLyTKjcm1Qj115Z0f6CpEsHoGYib4=
-X-Received: by 2002:adf:fcc8:: with SMTP id f8mr7286277wrs.230.1588741792592; 
- Tue, 05 May 2020 22:09:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <BN8PR13MB2611968A7252308925FF18B399A70@BN8PR13MB2611.namprd13.prod.outlook.com>
- <mhng-29e22ca7-538a-4094-923f-8fbc0fd327b9@palmerdabbelt-glaptop1>
- <BYAPR13MB2614FE811C8DD83BBDD3A26599A40@BYAPR13MB2614.namprd13.prod.outlook.com>
-In-Reply-To: <BYAPR13MB2614FE811C8DD83BBDD3A26599A40@BYAPR13MB2614.namprd13.prod.outlook.com>
-From: Anup Patel <anup@brainfault.org>
-Date: Wed, 6 May 2020 10:39:39 +0530
-Message-ID: <CAAhSdy2-ECrOP=kZOTXxj1t+f8NrcYjbXKDRwPB3KU36mDmWWg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
- A00 board.
-To: Sagar Kadam <sagar.kadam@sifive.com>
-Content-Type: text/plain; charset="UTF-8"
+	id 1jWDIz-00056X-Uj; Wed, 06 May 2020 06:13:17 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jWDIn-0004wF-Fm; Wed, 06 May 2020 06:13:07 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 81CA330E;
+ Tue,  5 May 2020 23:13:04 -0700 (PDT)
+Received: from p8cg001049571a15.arm.com (unknown [10.163.71.196])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 3CB103F68F;
+ Tue,  5 May 2020 23:12:54 -0700 (PDT)
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+To: linux-mm@kvack.org,
+	akpm@linux-foundation.org
+Subject: [PATCH V2 0/3] mm/hugetlb: Add some new generic fallbacks
+Date: Wed,  6 May 2020 11:42:11 +0530
+Message-Id: <1588745534-24418-1-git-send-email-anshuman.khandual@arm.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_220954_729940_CA7171D0 
-X-CRM114-Status: GOOD (  27.67  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200505_231305_612850_54B7EC1E 
+X-CRM114-Status: GOOD (  11.25  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,189 +58,107 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "vigneshr@ti.com" <vigneshr@ti.com>,
- "tudor.ambarus@microchip.com" <tudor.ambarus@microchip.com>,
- "richard@nod.at" <richard@nod.at>,
- "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-kernel@vger.kernel.org,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Fenghua Yu <fenghua.yu@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Tony Luck <tony.luck@intel.com>, linux-parisc@vger.kernel.org,
+ linux-mips@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>,
+ Mike Kravetz <mike.kravetz@oracle.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, May 6, 2020 at 9:26 AM Sagar Kadam <sagar.kadam@sifive.com> wrote:
->
-> Hi Palmer,
->
-> > -----Original Message-----
-> > From: Palmer Dabbelt <palmer@dabbelt.com>
-> > Sent: Wednesday, May 6, 2020 4:54 AM
-> > To: Sagar Kadam <sagar.kadam@sifive.com>
-> > Cc: tudor.ambarus@microchip.com; miquel.raynal@bootlin.com;
-> > richard@nod.at; vigneshr@ti.com; Paul Walmsley
-> > <paul.walmsley@sifive.com>; linux-riscv@lists.infradead.org; linux-
-> > kernel@vger.kernel.org; linux-mtd@lists.infradead.org
-> > Subject: RE: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
-> > A00 board.
-> >
-> > [External Email] Do not click links or attachments unless you recognize the
-> > sender and know the content is safe
-> >
-> > On Tue, 05 May 2020 00:18:45 PDT (-0700), sagar.kadam@sifive.com wrote:
-> > > Hello Palmer,
-> > >
-> > >> -----Original Message-----
-> > >> From: Palmer Dabbelt <palmer@dabbelt.com>
-> > >> Sent: Tuesday, May 5, 2020 3:40 AM
-> > >> To: Sagar Kadam <sagar.kadam@sifive.com>
-> > >> Cc: tudor.ambarus@microchip.com; miquel.raynal@bootlin.com;
-> > >> richard@nod.at; vigneshr@ti.com; Paul Walmsley
-> > >> <paul.walmsley@sifive.com>; linux-riscv@lists.infradead.org; linux-
-> > >> kernel@vger.kernel.org; linux-mtd@lists.infradead.org; Sagar Kadam
-> > >> <sagar.kadam@sifive.com>
-> > >> Subject: Re: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive
-> > Unleashed
-> > >> A00 board.
-> > >>
-> > >> [External Email] Do not click links or attachments unless you recognize
-> > the
-> > >> sender and know the content is safe
-> > >>
-> > >> On Thu, 30 Apr 2020 02:58:51 PDT (-0700), sagar.kadam@sifive.com
-> > wrote:
-> > >> > Enable MTD based SPI-NOR framework in order to use spi flash
-> > available
-> > >> > on HiFive Unleashed A00 board.
-> > >> >
-> > >> > Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
-> > >> > ---
-> > >> >  arch/riscv/configs/defconfig | 2 ++
-> > >> >  1 file changed, 2 insertions(+)
-> > >> >
-> > >> > diff --git a/arch/riscv/configs/defconfig
-> > >> > b/arch/riscv/configs/defconfig index 4da4886..970580b 100644
-> > >> > --- a/arch/riscv/configs/defconfig
-> > >> > +++ b/arch/riscv/configs/defconfig
-> > >> > @@ -80,6 +80,8 @@ CONFIG_USB_STORAGE=y  CONFIG_USB_UAS=y
-> > >> CONFIG_MMC=y
-> > >> > CONFIG_MMC_SPI=y
-> > >> > +CONFIG_MTD=y
-> > >> > +CONFIG_MTD_SPI_NOR=y
-> > >> >  CONFIG_RTC_CLASS=y
-> > >> >  CONFIG_VIRTIO_PCI=y
-> > >> >  CONFIG_VIRTIO_BALLOON=y
-> > >>
-> > >> From the second patch's description I'm assuming that MTD still
-> > functions
-> > >> correctly without that change?
-> > >
-> > > Yes Palmer, the second patch is to enable QUAD write to nor flash..
-> > > MTD  function's correctly without second patch.
-> > >
-> > > Using the character interface (/dev/mtd0) mtd_utils (mtd_debug :
-> > erase/read/write) work fine.
-> > > We might require CONFIG_MTD_BLOCK, CONFIG_MTD_CMDLINE_PARTS
-> > in order to use MTD partitioning.
-> > > IMHO it can be at user's choice weather to use flash partitions or not, so I
-> > have not enabled. Please let me
-> > > know if I should enable these features as well.
-> >
-> > Looks like arm64 has these:
-> >
-> > arch/arm64/configs/defconfig:CONFIG_MTD=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_BLOCK=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_ADV_OPTIONS=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_INTELEXT=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_AMDSTD=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_STAA=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_PHYSMAP=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_PHYSMAP_OF=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_DATAFLASH=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_SST25L=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_RAW_NAND=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_DENALI_DT=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_MARVELL=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_FSL_IFC=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_QCOM=y
-> > arch/arm64/configs/defconfig:CONFIG_MTD_SPI_NOR=y
-> >
-> > so I think we're good with just what you have here: MTD_BLOCK doesn't
-> > seem that
-> > useful, and the rest are drivers.  That said, these (along with SPI and
-> > SPI_SIFIVE) should really be in Kconfig.socs rather than defconfig.  Can you
-> > send a patch that does that?
-> >
->
-> Yes sure, I will send a V2 series, where SPI,  SPI_SIFIVE,  MTD,
-> and MTD_SPI_NOR will be a part of Kconfig.socs.
+This series adds the following new generic fallbacks. Before that it drops
+__HAVE_ARCH_HUGE_PTEP_GET from arm64 platform.
 
-We had build issues in past by selecting major driver subsystems
-in Kconfig.socs
+1. is_hugepage_only_range()
+2. arch_clear_hugepage_flags()
 
-I suggest to select SPI_SIFIVE from Kconfig.socs and other
-platform independent options should go in defconfig and
-rv32_defconfig.
+This has been boot tested on arm64 and x86 platforms but built tested on
+some more platforms including the changed ones here. This series applies
+on v5.7-rc4. After this arm (32 bit) remains the sole platform defining
+it's own huge_ptep_get() via __HAVE_ARCH_HUGE_PTEP_GET.
 
-The general rule of thumb is to force select only required
-drivers from Kconfig.socs.
+Changes in V2:
 
-Regards,
-Anup
+- Adopted "#ifndef func" method (adding a single symbol to namespace) per Andrew
+- Updated the commit messages in [PATCH 2/3] and [PATCH 3/3] as required
 
->
-> Thanks & BR,
-> Sagar Kadam
->
-> > >
-> > > To demonstrate a bit more with linux 5.7-rc3
-> > >
-> > > Specify on U-boot prompt:
-> > > # setenv bootargs "root=/dev/ram rw console=ttySIF0
-> > mtdparts=spi0.0:1024k(loader1),4096K(loader2),26M(rootfs)"
-> > >
-> > > After booting linux will enumerate mtd partitions:
-> > > # cat /proc/mtd
-> > > dev:    size   erasesize  name
-> > > mtd0: 00100000 00001000 "loader1"
-> > > mtd1: 00400000 00001000 "loader2"
-> > > mtd2: 01a00000 00001000 "rootfs"
-> > >
-> > > # cat /proc/partitions
-> > > major minor  #blocks  name
-> > >   31        0       1024 mtdblock0
-> > >   31        1       4096 mtdblock1
-> > >   31        2      26624 mtdblock2
-> > >
-> > > #Format mtdblock2 with mkfs.ext3/4 and mount results in
-> > > # mkfs.ext3 /dev/mtdblock2
-> > > mke2fs 1.44.5 (15-Dec-2018)
-> > > /dev/mtdblock2 contains a ext3 file system
-> > >         last mounted on /mnt on Thu Jan  1 00:00:14 1970
-> > > Proceed anyway? (y,N) y
-> > > Creating filesystem with 26624 1k blocks and 6656 inodes
-> > > Filesystem UUID: 1b09252d-e313-430c-9ecb-79b0cef003ca
-> > > Superblock backups stored on blocks:
-> > >         8193, 24577
-> > >
-> > > Allocating group tables: done
-> > > Writing inode tables: done
-> > > Creating journal (1024 blocks): done
-> > > Writing superblocks and filesystem accounting information: done
-> > >
-> > > # mount
-> > > none on / type rootfs (rw)
-> > > proc on /proc type proc (rw,relatime)
-> > > devpts on /dev/pts type devpts
-> > (rw,relatime,gid=5,mode=620,ptmxmode=666)
-> > > tmpfs on /dev/shm type tmpfs (rw,relatime,mode=777)
-> > > tmpfs on /tmp type tmpfs (rw,relatime)
-> > > tmpfs on /run type tmpfs (rw,nosuid,nodev,relatime,mode=755)
-> > > sysfs on /sys type sysfs (rw,relatime)
-> > > /dev/mtdblock2 on /mnt type ext3 (rw,relatime)
-> > >
-> > > Thanks & BR,
-> > > Sagar Kadam
->
+Changes in V1: (https://patchwork.kernel.org/project/linux-mm/list/?series=270677)
+
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Tony Luck <tony.luck@intel.com>
+Cc: Fenghua Yu <fenghua.yu@intel.com>
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
+Cc: Helge Deller <deller@gmx.de>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: Paul Mackerras <paulus@samba.org>
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+Cc: Vasily Gorbik <gor@linux.ibm.com>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: Rich Felker <dalias@libc.org>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: Borislav Petkov <bp@alien8.de>
+Cc: "H. Peter Anvin" <hpa@zytor.com>
+Cc: Mike Kravetz <mike.kravetz@oracle.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: x86@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-ia64@vger.kernel.org
+Cc: linux-mips@vger.kernel.org
+Cc: linux-parisc@vger.kernel.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-riscv@lists.infradead.org
+Cc: linux-s390@vger.kernel.org
+Cc: linux-sh@vger.kernel.org
+Cc: sparclinux@vger.kernel.org
+Cc: linux-mm@kvack.org
+Cc: linux-arch@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+
+Anshuman Khandual (3):
+  arm64/mm: Drop __HAVE_ARCH_HUGE_PTEP_GET
+  mm/hugetlb: Define a generic fallback for is_hugepage_only_range()
+  mm/hugetlb: Define a generic fallback for arch_clear_hugepage_flags()
+
+ arch/arm/include/asm/hugetlb.h     |  7 +------
+ arch/arm64/include/asm/hugetlb.h   | 13 +------------
+ arch/ia64/include/asm/hugetlb.h    |  5 +----
+ arch/mips/include/asm/hugetlb.h    | 11 -----------
+ arch/parisc/include/asm/hugetlb.h  | 10 ----------
+ arch/powerpc/include/asm/hugetlb.h |  5 +----
+ arch/riscv/include/asm/hugetlb.h   | 10 ----------
+ arch/s390/include/asm/hugetlb.h    |  8 +-------
+ arch/sh/include/asm/hugetlb.h      |  7 +------
+ arch/sparc/include/asm/hugetlb.h   | 10 ----------
+ arch/x86/include/asm/hugetlb.h     | 10 ----------
+ include/linux/hugetlb.h            | 14 ++++++++++++++
+ 12 files changed, 20 insertions(+), 90 deletions(-)
+
+-- 
+2.20.1
+
 
