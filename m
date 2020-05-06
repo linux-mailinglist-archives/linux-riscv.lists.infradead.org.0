@@ -2,119 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E70501C6683
-	for <lists+linux-riscv@lfdr.de>; Wed,  6 May 2020 05:56:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9772E1C673D
+	for <lists+linux-riscv@lfdr.de>; Wed,  6 May 2020 07:10:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TMr+xfMmDD5mwfkSVorR5igAduiTlas6PsSNzWKtcTM=; b=sAlczeRAEszgLdBpe5qZvR3kn
-	rJXQrMYh7LLa/dY7g4HY122gfD0hVrIg2Hqp5zPFSJufjX2I/sBl3d1+q+l4OSWIPVt/5eGZrIGL9
-	IPufK/P8hUNvMn62JjSpm5PeLmpYApAqPtAGJzMjNrXGjTipBidd7xZsGiyj0DiNruF73BDCFvW0w
-	q7sCKuUu+c3FRA8ScVNS8YGLjTEaYipBmikGSraPnqqpc8H3sumSmlvJ6ZhYMRmTTAFb0roySwwWa
-	3vqsM0ubAxJF+59ekd4rpq2H1GSkHx6OtJ4La3nAtWOBXBSJXId25p4P1sTDi4vkBDBqfiT+gXs2T
-	M2HiMWBSw==;
+	 bh=KONjtN1d3tvLqOY/wlrmm4pE107x+jxzOGMlbDSUVz0=; b=dY4GDfF628mKYZm75+1C36rMy
+	7fITwY/G5MY+/yyYJmJl85jYP9XIiT8YmfTVZOXLZVkivdZgdLRe6uSzj6wQdh9XHzTX0Me/P4my7
+	UOBuwbkdJTb7Jfcy7dXeILFCvCmJS+35c4Lo/8rCU0xTc5/TzlS7JUdq5iuPmiliibFceS0DGWF9k
+	zHpWVR0+ff3QH0waNjXX6anhz0+5m4kyjguF3TI9tFD0cCcNuzz8fksDdJQSCvQzR5h6oz4HpJ5f4
+	3kBbbHnCErTalj69/ubswanz1TPJLl+gTOOtG6CzSynYHDxKL/56h711uEFXjnWcb21mBSrkPjnf+
+	CrdIwH4HA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWBAJ-0007RS-3e; Wed, 06 May 2020 03:56:11 +0000
-Received: from mail-co1nam11on2044.outbound.protection.outlook.com
- ([40.107.220.44] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1jWCK3-00037W-7f; Wed, 06 May 2020 05:10:19 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWBAE-0007Qx-H2; Wed, 06 May 2020 03:56:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EePHOYSG+GJVKMPtuhF7wefSdG/qxWFSnpD6vZEx+X1rmUdRRSX1d+J2KartYSYwK741VUDR45DJDUIX/x7QMZsMLyDGU5dwooee93C0NH7S8GeK4T5L8U7LL8F9gzjKMMVCfRGh33b1/wocpzaNMDpdXGLJPL5SmVxApqHxMX0rXRtgJrDE/079OktsZZKPJdAQRgRo8Wl/B28Py5S+438hmJvAzq/PaywZ1It1pAD1cIGrlbTJA3hBPxHs0O/CeQYav28LvYTtDhGGxdgghSGtEOND98zIHx1PZI30VLDrrzBg3VacHyg10uI7RBeNNxjko0qyOU3ILBQWj/jt9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TMr+xfMmDD5mwfkSVorR5igAduiTlas6PsSNzWKtcTM=;
- b=QnrcnpdLEDr8uOdc1fQusgoZu7qFvjSfN0ylu1KgUDWy8dDEIijqbvskxDNAG+4/1oP3f0m9ZByXp/PUaTh6/hVMfRHyeYRGcFlM87KAZX+yZbWu/lNebqb7ytkXhBdIce3bUZo4rQg5GAUNbPDXiars+NTWmpuT8ec5b0ekZe0KyzsY4x07jKVmS3Ig50HfbJya+g3chzkud9ow4XxkliU5tuAEfl55D42VdaM0NCYAP1lGqkp1hh604XTFM1bYeYDDRxaLLN29yuv6XfwPzaIrTKZVk6kq9YO6OLrEvJpjPEs5rhfzdN37K4bkwI2c8W6+eXswDYzjrCRh+UkozQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
- dkim=pass header.d=sifive.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TMr+xfMmDD5mwfkSVorR5igAduiTlas6PsSNzWKtcTM=;
- b=B5Z+Q2XyOFAAK6XFtWvt67Ytyifuce2SJ0GWwDMJD9yQaJWJxeLEyvnpiPEsF8NfdAAzD+AiVYCsuEXnBNjdL3WW8tsoLIphgPTAhl9RY5xFw79C/rcoXaf80zcsChswRsmUE6hCFgYvr06+vViaw+kpIlu/QrX7yyD5SqjcWTE=
-Received: from BYAPR13MB2614.namprd13.prod.outlook.com (2603:10b6:a03:b4::12)
- by BYAPR13MB2821.namprd13.prod.outlook.com (2603:10b6:a03:f5::29)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.23; Wed, 6 May
- 2020 03:56:04 +0000
-Received: from BYAPR13MB2614.namprd13.prod.outlook.com
- ([fe80::c0fc:30a3:5e5f:c2b6]) by BYAPR13MB2614.namprd13.prod.outlook.com
- ([fe80::c0fc:30a3:5e5f:c2b6%7]) with mapi id 15.20.2979.025; Wed, 6 May 2020
- 03:56:04 +0000
-From: Sagar Kadam <sagar.kadam@sifive.com>
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: RE: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
- A00 board.
-Thread-Topic: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
- A00 board.
-Thread-Index: AQHWHtYDB/cpTmsjKkuAl+bHjseykqiYg+KAgABe/XCAAUf3gIAASp8Q
-Date: Wed, 6 May 2020 03:56:03 +0000
-Message-ID: <BYAPR13MB2614FE811C8DD83BBDD3A26599A40@BYAPR13MB2614.namprd13.prod.outlook.com>
+ id 1jWCJe-0001UH-KS
+ for linux-riscv@lists.infradead.org; Wed, 06 May 2020 05:09:56 +0000
+Received: by mail-wr1-x444.google.com with SMTP id f13so530155wrm.13
+ for <linux-riscv@lists.infradead.org>; Tue, 05 May 2020 22:09:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KONjtN1d3tvLqOY/wlrmm4pE107x+jxzOGMlbDSUVz0=;
+ b=FQ18p5YPTcGlRz3bil64DOWyaUFNzUGsMcJEieNlyq0+xx1A/HZ5dCilifPHh9/fk3
+ PUNP3u8BMuh6N1x98sX7bB/gVTH9YZdwASkZZzw4yQ3w+SGIHydcApzO7g1SgaW+lPFh
+ KVQMIPqAEJhOhdnT2oide6UFBbaqSudSAhIWAvzlyDpbs2Abhr3Oh6vQzsDLw70A4pUC
+ P+l/+ZvVJgadmYYTiIUpgzvmdT1P3bteDki0zL8RkCix1p/Gv+NyYXbeBD5lZ0ksgPwS
+ sKf9021GOW2ZOmI6409KCg2WvlycsflKN1GgzOx8y816x4GLBen2u764lGkUpuoVLJmR
+ BhGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KONjtN1d3tvLqOY/wlrmm4pE107x+jxzOGMlbDSUVz0=;
+ b=nizcxASGTuEJpSIopYJ3I6C70e0rkayYEyYlSX/OYYKIyGVc5wyozp/qTTF1Qk6rUw
+ AY/76z+4pNUrcL3ZHOAgp1Grr7pAwj426EmDYvBE6bgdTac0ui1vuZRqMlppMh1+RLfH
+ 7Pw5CqrAKeSeQF5wbxKsefDpw5ws+wf6YmI1/bOvf91S8zf4uHBW51tSQsLufWYv0uPn
+ LdyBTrYaibT3WtnXEn99bp4oC4h9L6CVb30Ti8LNuL6TuDJn0/Zn9hHrnqO3VjvlX1xD
+ rbcNakLMG4xO8v6L8aZA2r/ihSHvYVeF2NYLzehBeu4tUSkRov/mhCC2OlojuRjZ2rSF
+ xm2w==
+X-Gm-Message-State: AGi0PuYn/KRFNgEXDlvJ6tiNPmi2Sz0zWWkeiDcvq+c8x6TWntQXOZdv
+ cl2iWBu7q39ri5aSceJTDGauMLE88JOMwYsCzvW44A==
+X-Google-Smtp-Source: APiQypLiK8pkP0blfJITIvDGiJsn0oXglVqI5ta6/Xl1PsEi49y7oSsq6UhO9umLyTKjcm1Qj115Z0f6CpEsHoGYib4=
+X-Received: by 2002:adf:fcc8:: with SMTP id f8mr7286277wrs.230.1588741792592; 
+ Tue, 05 May 2020 22:09:52 -0700 (PDT)
+MIME-Version: 1.0
 References: <BN8PR13MB2611968A7252308925FF18B399A70@BN8PR13MB2611.namprd13.prod.outlook.com>
  <mhng-29e22ca7-538a-4094-923f-8fbc0fd327b9@palmerdabbelt-glaptop1>
-In-Reply-To: <mhng-29e22ca7-538a-4094-923f-8fbc0fd327b9@palmerdabbelt-glaptop1>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dabbelt.com; dkim=none (message not signed)
- header.d=none;dabbelt.com; dmarc=none action=none header.from=sifive.com;
-x-originating-ip: [116.74.144.6]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6ba8cc5a-ea1f-4447-095b-08d7f1716601
-x-ms-traffictypediagnostic: BYAPR13MB2821:
-x-ld-processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR13MB2821BCDFEA785476F3FC779E99A40@BYAPR13MB2821.namprd13.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4303;
-x-forefront-prvs: 03950F25EC
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: T46jBO/HAy+nkznpmlHXgg89vbQHrKaOfoLLW7jY5f/izzjmvqKWcaBGWN+PPH7QyPZXSLgI3xU3psfrMDntM2DRJAQSn8t9uy2ugnH2zpx/xKlCpHGera0IOqXhHUxCvKVWZ8uv8seVNWJ4ofBy19uhsuAJEZRW2Fx0dg4HYYlkcEcpMRwDNRZ4ZcIC5RAR7FwkPjG3cDVkoCtGDmhMrwSLXqA/Zg9NwRY+fyGAarYQDXQMQQKpwNa2B/azaQgBGnRpbAztKG9IfLGJhHzbZvg3NHHngYFv6dWdkbpSjRRSLPvCNr2EBNLsfXvC/Gzh+/07FV0qe/nsEqdcGl1Pz+7rFTdoOUVmjxB8BlIp8r4323BVl9Ie1UnW95H1AwFlcKJ+IqNcEtCnJOac6xWaBqgoLbiH3QBKV2cOME85fj/PzdshlAt/MVbj2csK64cGa1+be2ERBw8yNmhk16r6RCwBr60el10Rm8UjuRzYc5UkdJoS9X4ibDlC5a91AZ6yTY6xFOZ3YFoo4rRT8eHgPg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR13MB2614.namprd13.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(366004)(136003)(376002)(346002)(39850400004)(396003)(33430700001)(64756008)(66446008)(86362001)(2906002)(52536014)(8676002)(8936002)(33440700001)(26005)(66946007)(76116006)(186003)(66476007)(66556008)(4326008)(44832011)(6506007)(33656002)(55236004)(7696005)(316002)(54906003)(9686003)(71200400001)(55016002)(478600001)(5660300002)(53546011)(6916009);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: Dc3ZddpYcevwexUKJDogtPKir4s18evR6R/B17PaP/0NxuV+fQSfFjjxDMdHvBJNfqiu/5d1aFdjw0Ia4X8RIUOuIxp7bupiwnEDLzotNu/c2ZADCMqZcn1Sk5fDZv9pAfptLJlgSIiJfeJjz0qU3ESek46Kwc9fZWg9c2YjyYaH2NePI/Uz4K8DCBKKo1BPRBOX+N5RjiNXG/1EXDqpqghHdJCxe1n4snap9QxjvRvQTn7bqrSieXaek7BzHGhZ6tDSOegroj7Siq+8+NbzywH5c+F3wbRFx+MvQuda9V4lSjNFOIjax5FhcAvO9D3jw9a4BRVxE9soLBmBSl5+vDDtkRSgNhBpDXbTkYccI2VO1RYG3Ke2RgXXcoOrOiCNSYtEbUTRTJHWlkTlb7Q5socpDGCRsQNCKESkXKJeEtJsa+NXMSt82vVcTTiGHwbWJkWZDbiV8OloLLFBfrqygA7z36VZR6t2X1ZUvB+rGsIegAb1bjpfBJDSxfkuou9lqaxOb7VTd76FWzZZ+TdLyjn2AAu70xnMPSyUK/EoJdph5c5IMz5TVRK9l8xq6YpxSj5/xOifg4cXQPHqE0HFH8f9eLY72dRe39e2iYyySWz69IjFAjnMdazHrgnM2RL97oktpyBs7xaOSwalHnN9O9yZlrmK6mZxVENhEB38xrTOhd9/goDkImTKpBtIsTlu7qW3m2AUtjSNTaalMKOkdnYewaa5Fzh0diOXu3SBpJdWcWITiuqYuwpGCp4GcVgcTJwPW167VbbxnwoTf2cOGZEhwDN6ad1x0YFmqKEbRtw=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6ba8cc5a-ea1f-4447-095b-08d7f1716601
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2020 03:56:03.8718 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ojcdPBVNsi9ZHYlPv2ljcbVWsq8IMmzjlb16GeMbxr3K0vxe67xpxl8lRtKPgfb8VCE1BHmbbAryOZv9qA1sAw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR13MB2821
+ <BYAPR13MB2614FE811C8DD83BBDD3A26599A40@BYAPR13MB2614.namprd13.prod.outlook.com>
+In-Reply-To: <BYAPR13MB2614FE811C8DD83BBDD3A26599A40@BYAPR13MB2614.namprd13.prod.outlook.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Wed, 6 May 2020 10:39:39 +0530
+Message-ID: <CAAhSdy2-ECrOP=kZOTXxj1t+f8NrcYjbXKDRwPB3KU36mDmWWg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
+ A00 board.
+To: Sagar Kadam <sagar.kadam@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_205607_234117_6FD6EF29 
-X-CRM114-Status: GOOD (  24.91  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200505_220954_729940_CA7171D0 
+X-CRM114-Status: GOOD (  27.67  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.220.44 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [40.107.220.44 listed in wl.mailspike.net]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,119 +92,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
 Cc: "vigneshr@ti.com" <vigneshr@ti.com>,
  "tudor.ambarus@microchip.com" <tudor.ambarus@microchip.com>,
- "richard@nod.at" <richard@nod.at>, Paul Walmsley <paul.walmsley@sifive.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
+ "richard@nod.at" <richard@nod.at>,
  "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
  "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-SGkgUGFsbWVyLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFBhbG1l
-ciBEYWJiZWx0IDxwYWxtZXJAZGFiYmVsdC5jb20+DQo+IFNlbnQ6IFdlZG5lc2RheSwgTWF5IDYs
-IDIwMjAgNDo1NCBBTQ0KPiBUbzogU2FnYXIgS2FkYW0gPHNhZ2FyLmthZGFtQHNpZml2ZS5jb20+
-DQo+IENjOiB0dWRvci5hbWJhcnVzQG1pY3JvY2hpcC5jb207IG1pcXVlbC5yYXluYWxAYm9vdGxp
-bi5jb207DQo+IHJpY2hhcmRAbm9kLmF0OyB2aWduZXNockB0aS5jb207IFBhdWwgV2FsbXNsZXkN
-Cj4gPHBhdWwud2FsbXNsZXlAc2lmaXZlLmNvbT47IGxpbnV4LXJpc2N2QGxpc3RzLmluZnJhZGVh
-ZC5vcmc7IGxpbnV4LQ0KPiBrZXJuZWxAdmdlci5rZXJuZWwub3JnOyBsaW51eC1tdGRAbGlzdHMu
-aW5mcmFkZWFkLm9yZw0KPiBTdWJqZWN0OiBSRTogW1BBVENIIDEvMl0gcmlzY3Y6IGRlZmNvbmZp
-ZzogZW5hYmxlIHNwaSBub3Igb24gSGlmaXZlIFVubGVhc2hlZA0KPiBBMDAgYm9hcmQuDQo+IA0K
-PiBbRXh0ZXJuYWwgRW1haWxdIERvIG5vdCBjbGljayBsaW5rcyBvciBhdHRhY2htZW50cyB1bmxl
-c3MgeW91IHJlY29nbml6ZSB0aGUNCj4gc2VuZGVyIGFuZCBrbm93IHRoZSBjb250ZW50IGlzIHNh
-ZmUNCj4gDQo+IE9uIFR1ZSwgMDUgTWF5IDIwMjAgMDA6MTg6NDUgUERUICgtMDcwMCksIHNhZ2Fy
-LmthZGFtQHNpZml2ZS5jb20gd3JvdGU6DQo+ID4gSGVsbG8gUGFsbWVyLA0KPiA+DQo+ID4+IC0t
-LS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+ID4+IEZyb206IFBhbG1lciBEYWJiZWx0IDxwYWxt
-ZXJAZGFiYmVsdC5jb20+DQo+ID4+IFNlbnQ6IFR1ZXNkYXksIE1heSA1LCAyMDIwIDM6NDAgQU0N
-Cj4gPj4gVG86IFNhZ2FyIEthZGFtIDxzYWdhci5rYWRhbUBzaWZpdmUuY29tPg0KPiA+PiBDYzog
-dHVkb3IuYW1iYXJ1c0BtaWNyb2NoaXAuY29tOyBtaXF1ZWwucmF5bmFsQGJvb3RsaW4uY29tOw0K
-PiA+PiByaWNoYXJkQG5vZC5hdDsgdmlnbmVzaHJAdGkuY29tOyBQYXVsIFdhbG1zbGV5DQo+ID4+
-IDxwYXVsLndhbG1zbGV5QHNpZml2ZS5jb20+OyBsaW51eC1yaXNjdkBsaXN0cy5pbmZyYWRlYWQu
-b3JnOyBsaW51eC0NCj4gPj4ga2VybmVsQHZnZXIua2VybmVsLm9yZzsgbGludXgtbXRkQGxpc3Rz
-LmluZnJhZGVhZC5vcmc7IFNhZ2FyIEthZGFtDQo+ID4+IDxzYWdhci5rYWRhbUBzaWZpdmUuY29t
-Pg0KPiA+PiBTdWJqZWN0OiBSZTogW1BBVENIIDEvMl0gcmlzY3Y6IGRlZmNvbmZpZzogZW5hYmxl
-IHNwaSBub3Igb24gSGlmaXZlDQo+IFVubGVhc2hlZA0KPiA+PiBBMDAgYm9hcmQuDQo+ID4+DQo+
-ID4+IFtFeHRlcm5hbCBFbWFpbF0gRG8gbm90IGNsaWNrIGxpbmtzIG9yIGF0dGFjaG1lbnRzIHVu
-bGVzcyB5b3UgcmVjb2duaXplDQo+IHRoZQ0KPiA+PiBzZW5kZXIgYW5kIGtub3cgdGhlIGNvbnRl
-bnQgaXMgc2FmZQ0KPiA+Pg0KPiA+PiBPbiBUaHUsIDMwIEFwciAyMDIwIDAyOjU4OjUxIFBEVCAo
-LTA3MDApLCBzYWdhci5rYWRhbUBzaWZpdmUuY29tDQo+IHdyb3RlOg0KPiA+PiA+IEVuYWJsZSBN
-VEQgYmFzZWQgU1BJLU5PUiBmcmFtZXdvcmsgaW4gb3JkZXIgdG8gdXNlIHNwaSBmbGFzaA0KPiBh
-dmFpbGFibGUNCj4gPj4gPiBvbiBIaUZpdmUgVW5sZWFzaGVkIEEwMCBib2FyZC4NCj4gPj4gPg0K
-PiA+PiA+IFNpZ25lZC1vZmYtYnk6IFNhZ2FyIFNocmlrYW50IEthZGFtIDxzYWdhci5rYWRhbUBz
-aWZpdmUuY29tPg0KPiA+PiA+IC0tLQ0KPiA+PiA+ICBhcmNoL3Jpc2N2L2NvbmZpZ3MvZGVmY29u
-ZmlnIHwgMiArKw0KPiA+PiA+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspDQo+ID4+
-ID4NCj4gPj4gPiBkaWZmIC0tZ2l0IGEvYXJjaC9yaXNjdi9jb25maWdzL2RlZmNvbmZpZw0KPiA+
-PiA+IGIvYXJjaC9yaXNjdi9jb25maWdzL2RlZmNvbmZpZyBpbmRleCA0ZGE0ODg2Li45NzA1ODBi
-IDEwMDY0NA0KPiA+PiA+IC0tLSBhL2FyY2gvcmlzY3YvY29uZmlncy9kZWZjb25maWcNCj4gPj4g
-PiArKysgYi9hcmNoL3Jpc2N2L2NvbmZpZ3MvZGVmY29uZmlnDQo+ID4+ID4gQEAgLTgwLDYgKzgw
-LDggQEAgQ09ORklHX1VTQl9TVE9SQUdFPXkgIENPTkZJR19VU0JfVUFTPXkNCj4gPj4gQ09ORklH
-X01NQz15DQo+ID4+ID4gQ09ORklHX01NQ19TUEk9eQ0KPiA+PiA+ICtDT05GSUdfTVREPXkNCj4g
-Pj4gPiArQ09ORklHX01URF9TUElfTk9SPXkNCj4gPj4gPiAgQ09ORklHX1JUQ19DTEFTUz15DQo+
-ID4+ID4gIENPTkZJR19WSVJUSU9fUENJPXkNCj4gPj4gPiAgQ09ORklHX1ZJUlRJT19CQUxMT09O
-PXkNCj4gPj4NCj4gPj4gRnJvbSB0aGUgc2Vjb25kIHBhdGNoJ3MgZGVzY3JpcHRpb24gSSdtIGFz
-c3VtaW5nIHRoYXQgTVREIHN0aWxsDQo+IGZ1bmN0aW9ucw0KPiA+PiBjb3JyZWN0bHkgd2l0aG91
-dCB0aGF0IGNoYW5nZT8NCj4gPg0KPiA+IFllcyBQYWxtZXIsIHRoZSBzZWNvbmQgcGF0Y2ggaXMg
-dG8gZW5hYmxlIFFVQUQgd3JpdGUgdG8gbm9yIGZsYXNoLi4NCj4gPiBNVEQgIGZ1bmN0aW9uJ3Mg
-Y29ycmVjdGx5IHdpdGhvdXQgc2Vjb25kIHBhdGNoLg0KPiA+DQo+ID4gVXNpbmcgdGhlIGNoYXJh
-Y3RlciBpbnRlcmZhY2UgKC9kZXYvbXRkMCkgbXRkX3V0aWxzIChtdGRfZGVidWcgOg0KPiBlcmFz
-ZS9yZWFkL3dyaXRlKSB3b3JrIGZpbmUuDQo+ID4gV2UgbWlnaHQgcmVxdWlyZSBDT05GSUdfTVRE
-X0JMT0NLLCBDT05GSUdfTVREX0NNRExJTkVfUEFSVFMNCj4gaW4gb3JkZXIgdG8gdXNlIE1URCBw
-YXJ0aXRpb25pbmcuDQo+ID4gSU1ITyBpdCBjYW4gYmUgYXQgdXNlcidzIGNob2ljZSB3ZWF0aGVy
-IHRvIHVzZSBmbGFzaCBwYXJ0aXRpb25zIG9yIG5vdCwgc28gSQ0KPiBoYXZlIG5vdCBlbmFibGVk
-LiBQbGVhc2UgbGV0IG1lDQo+ID4ga25vdyBpZiBJIHNob3VsZCBlbmFibGUgdGhlc2UgZmVhdHVy
-ZXMgYXMgd2VsbC4NCj4gDQo+IExvb2tzIGxpa2UgYXJtNjQgaGFzIHRoZXNlOg0KPiANCj4gYXJj
-aC9hcm02NC9jb25maWdzL2RlZmNvbmZpZzpDT05GSUdfTVREPXkNCj4gYXJjaC9hcm02NC9jb25m
-aWdzL2RlZmNvbmZpZzpDT05GSUdfTVREX0JMT0NLPXkNCj4gYXJjaC9hcm02NC9jb25maWdzL2Rl
-ZmNvbmZpZzpDT05GSUdfTVREX0NGST15DQo+IGFyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWc6
-Q09ORklHX01URF9DRklfQURWX09QVElPTlM9eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29u
-ZmlnOkNPTkZJR19NVERfQ0ZJX0lOVEVMRVhUPXkNCj4gYXJjaC9hcm02NC9jb25maWdzL2RlZmNv
-bmZpZzpDT05GSUdfTVREX0NGSV9BTURTVEQ9eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29u
-ZmlnOkNPTkZJR19NVERfQ0ZJX1NUQUE9eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmln
-OkNPTkZJR19NVERfUEhZU01BUD15DQo+IGFyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWc6Q09O
-RklHX01URF9QSFlTTUFQX09GPXkNCj4gYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZzpDT05G
-SUdfTVREX0RBVEFGTEFTSD15DQo+IGFyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWc6Q09ORklH
-X01URF9TU1QyNUw9eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnOkNPTkZJR19NVERf
-UkFXX05BTkQ9eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnOkNPTkZJR19NVERfTkFO
-RF9ERU5BTElfRFQ9eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnOkNPTkZJR19NVERf
-TkFORF9NQVJWRUxMPXkNCj4gYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZzpDT05GSUdfTVRE
-X05BTkRfRlNMX0lGQz15DQo+IGFyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWc6Q09ORklHX01U
-RF9OQU5EX1FDT009eQ0KPiBhcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnOkNPTkZJR19NVERf
-U1BJX05PUj15DQo+IA0KPiBzbyBJIHRoaW5rIHdlJ3JlIGdvb2Qgd2l0aCBqdXN0IHdoYXQgeW91
-IGhhdmUgaGVyZTogTVREX0JMT0NLIGRvZXNuJ3QNCj4gc2VlbSB0aGF0DQo+IHVzZWZ1bCwgYW5k
-IHRoZSByZXN0IGFyZSBkcml2ZXJzLiAgVGhhdCBzYWlkLCB0aGVzZSAoYWxvbmcgd2l0aCBTUEkg
-YW5kDQo+IFNQSV9TSUZJVkUpIHNob3VsZCByZWFsbHkgYmUgaW4gS2NvbmZpZy5zb2NzIHJhdGhl
-ciB0aGFuIGRlZmNvbmZpZy4gIENhbiB5b3UNCj4gc2VuZCBhIHBhdGNoIHRoYXQgZG9lcyB0aGF0
-Pw0KPiANCg0KWWVzIHN1cmUsIEkgd2lsbCBzZW5kIGEgVjIgc2VyaWVzLCB3aGVyZSBTUEksICBT
-UElfU0lGSVZFLCAgTVRELCANCmFuZCBNVERfU1BJX05PUiB3aWxsIGJlIGEgcGFydCBvZiBLY29u
-ZmlnLnNvY3MuDQoNClRoYW5rcyAmIEJSLA0KU2FnYXIgS2FkYW0NCg0KPiA+DQo+ID4gVG8gZGVt
-b25zdHJhdGUgYSBiaXQgbW9yZSB3aXRoIGxpbnV4IDUuNy1yYzMNCj4gPg0KPiA+IFNwZWNpZnkg
-b24gVS1ib290IHByb21wdDoNCj4gPiAjIHNldGVudiBib290YXJncyAicm9vdD0vZGV2L3JhbSBy
-dyBjb25zb2xlPXR0eVNJRjANCj4gbXRkcGFydHM9c3BpMC4wOjEwMjRrKGxvYWRlcjEpLDQwOTZL
-KGxvYWRlcjIpLDI2TShyb290ZnMpIg0KPiA+DQo+ID4gQWZ0ZXIgYm9vdGluZyBsaW51eCB3aWxs
-IGVudW1lcmF0ZSBtdGQgcGFydGl0aW9uczoNCj4gPiAjIGNhdCAvcHJvYy9tdGQNCj4gPiBkZXY6
-ICAgIHNpemUgICBlcmFzZXNpemUgIG5hbWUNCj4gPiBtdGQwOiAwMDEwMDAwMCAwMDAwMTAwMCAi
-bG9hZGVyMSINCj4gPiBtdGQxOiAwMDQwMDAwMCAwMDAwMTAwMCAibG9hZGVyMiINCj4gPiBtdGQy
-OiAwMWEwMDAwMCAwMDAwMTAwMCAicm9vdGZzIg0KPiA+DQo+ID4gIyBjYXQgL3Byb2MvcGFydGl0
-aW9ucw0KPiA+IG1ham9yIG1pbm9yICAjYmxvY2tzICBuYW1lDQo+ID4gICAzMSAgICAgICAgMCAg
-ICAgICAxMDI0IG10ZGJsb2NrMA0KPiA+ICAgMzEgICAgICAgIDEgICAgICAgNDA5NiBtdGRibG9j
-azENCj4gPiAgIDMxICAgICAgICAyICAgICAgMjY2MjQgbXRkYmxvY2syDQo+ID4NCj4gPiAjRm9y
-bWF0IG10ZGJsb2NrMiB3aXRoIG1rZnMuZXh0My80IGFuZCBtb3VudCByZXN1bHRzIGluDQo+ID4g
-IyBta2ZzLmV4dDMgL2Rldi9tdGRibG9jazINCj4gPiBta2UyZnMgMS40NC41ICgxNS1EZWMtMjAx
-OCkNCj4gPiAvZGV2L210ZGJsb2NrMiBjb250YWlucyBhIGV4dDMgZmlsZSBzeXN0ZW0NCj4gPiAg
-ICAgICAgIGxhc3QgbW91bnRlZCBvbiAvbW50IG9uIFRodSBKYW4gIDEgMDA6MDA6MTQgMTk3MA0K
-PiA+IFByb2NlZWQgYW55d2F5PyAoeSxOKSB5DQo+ID4gQ3JlYXRpbmcgZmlsZXN5c3RlbSB3aXRo
-IDI2NjI0IDFrIGJsb2NrcyBhbmQgNjY1NiBpbm9kZXMNCj4gPiBGaWxlc3lzdGVtIFVVSUQ6IDFi
-MDkyNTJkLWUzMTMtNDMwYy05ZWNiLTc5YjBjZWYwMDNjYQ0KPiA+IFN1cGVyYmxvY2sgYmFja3Vw
-cyBzdG9yZWQgb24gYmxvY2tzOg0KPiA+ICAgICAgICAgODE5MywgMjQ1NzcNCj4gPg0KPiA+IEFs
-bG9jYXRpbmcgZ3JvdXAgdGFibGVzOiBkb25lDQo+ID4gV3JpdGluZyBpbm9kZSB0YWJsZXM6IGRv
-bmUNCj4gPiBDcmVhdGluZyBqb3VybmFsICgxMDI0IGJsb2Nrcyk6IGRvbmUNCj4gPiBXcml0aW5n
-IHN1cGVyYmxvY2tzIGFuZCBmaWxlc3lzdGVtIGFjY291bnRpbmcgaW5mb3JtYXRpb246IGRvbmUN
-Cj4gPg0KPiA+ICMgbW91bnQNCj4gPiBub25lIG9uIC8gdHlwZSByb290ZnMgKHJ3KQ0KPiA+IHBy
-b2Mgb24gL3Byb2MgdHlwZSBwcm9jIChydyxyZWxhdGltZSkNCj4gPiBkZXZwdHMgb24gL2Rldi9w
-dHMgdHlwZSBkZXZwdHMNCj4gKHJ3LHJlbGF0aW1lLGdpZD01LG1vZGU9NjIwLHB0bXhtb2RlPTY2
-NikNCj4gPiB0bXBmcyBvbiAvZGV2L3NobSB0eXBlIHRtcGZzIChydyxyZWxhdGltZSxtb2RlPTc3
-NykNCj4gPiB0bXBmcyBvbiAvdG1wIHR5cGUgdG1wZnMgKHJ3LHJlbGF0aW1lKQ0KPiA+IHRtcGZz
-IG9uIC9ydW4gdHlwZSB0bXBmcyAocncsbm9zdWlkLG5vZGV2LHJlbGF0aW1lLG1vZGU9NzU1KQ0K
-PiA+IHN5c2ZzIG9uIC9zeXMgdHlwZSBzeXNmcyAocncscmVsYXRpbWUpDQo+ID4gL2Rldi9tdGRi
-bG9jazIgb24gL21udCB0eXBlIGV4dDMgKHJ3LHJlbGF0aW1lKQ0KPiA+DQo+ID4gVGhhbmtzICYg
-QlIsDQo+ID4gU2FnYXIgS2FkYW0NCg0K
+On Wed, May 6, 2020 at 9:26 AM Sagar Kadam <sagar.kadam@sifive.com> wrote:
+>
+> Hi Palmer,
+>
+> > -----Original Message-----
+> > From: Palmer Dabbelt <palmer@dabbelt.com>
+> > Sent: Wednesday, May 6, 2020 4:54 AM
+> > To: Sagar Kadam <sagar.kadam@sifive.com>
+> > Cc: tudor.ambarus@microchip.com; miquel.raynal@bootlin.com;
+> > richard@nod.at; vigneshr@ti.com; Paul Walmsley
+> > <paul.walmsley@sifive.com>; linux-riscv@lists.infradead.org; linux-
+> > kernel@vger.kernel.org; linux-mtd@lists.infradead.org
+> > Subject: RE: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
+> > A00 board.
+> >
+> > [External Email] Do not click links or attachments unless you recognize the
+> > sender and know the content is safe
+> >
+> > On Tue, 05 May 2020 00:18:45 PDT (-0700), sagar.kadam@sifive.com wrote:
+> > > Hello Palmer,
+> > >
+> > >> -----Original Message-----
+> > >> From: Palmer Dabbelt <palmer@dabbelt.com>
+> > >> Sent: Tuesday, May 5, 2020 3:40 AM
+> > >> To: Sagar Kadam <sagar.kadam@sifive.com>
+> > >> Cc: tudor.ambarus@microchip.com; miquel.raynal@bootlin.com;
+> > >> richard@nod.at; vigneshr@ti.com; Paul Walmsley
+> > >> <paul.walmsley@sifive.com>; linux-riscv@lists.infradead.org; linux-
+> > >> kernel@vger.kernel.org; linux-mtd@lists.infradead.org; Sagar Kadam
+> > >> <sagar.kadam@sifive.com>
+> > >> Subject: Re: [PATCH 1/2] riscv: defconfig: enable spi nor on Hifive
+> > Unleashed
+> > >> A00 board.
+> > >>
+> > >> [External Email] Do not click links or attachments unless you recognize
+> > the
+> > >> sender and know the content is safe
+> > >>
+> > >> On Thu, 30 Apr 2020 02:58:51 PDT (-0700), sagar.kadam@sifive.com
+> > wrote:
+> > >> > Enable MTD based SPI-NOR framework in order to use spi flash
+> > available
+> > >> > on HiFive Unleashed A00 board.
+> > >> >
+> > >> > Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+> > >> > ---
+> > >> >  arch/riscv/configs/defconfig | 2 ++
+> > >> >  1 file changed, 2 insertions(+)
+> > >> >
+> > >> > diff --git a/arch/riscv/configs/defconfig
+> > >> > b/arch/riscv/configs/defconfig index 4da4886..970580b 100644
+> > >> > --- a/arch/riscv/configs/defconfig
+> > >> > +++ b/arch/riscv/configs/defconfig
+> > >> > @@ -80,6 +80,8 @@ CONFIG_USB_STORAGE=y  CONFIG_USB_UAS=y
+> > >> CONFIG_MMC=y
+> > >> > CONFIG_MMC_SPI=y
+> > >> > +CONFIG_MTD=y
+> > >> > +CONFIG_MTD_SPI_NOR=y
+> > >> >  CONFIG_RTC_CLASS=y
+> > >> >  CONFIG_VIRTIO_PCI=y
+> > >> >  CONFIG_VIRTIO_BALLOON=y
+> > >>
+> > >> From the second patch's description I'm assuming that MTD still
+> > functions
+> > >> correctly without that change?
+> > >
+> > > Yes Palmer, the second patch is to enable QUAD write to nor flash..
+> > > MTD  function's correctly without second patch.
+> > >
+> > > Using the character interface (/dev/mtd0) mtd_utils (mtd_debug :
+> > erase/read/write) work fine.
+> > > We might require CONFIG_MTD_BLOCK, CONFIG_MTD_CMDLINE_PARTS
+> > in order to use MTD partitioning.
+> > > IMHO it can be at user's choice weather to use flash partitions or not, so I
+> > have not enabled. Please let me
+> > > know if I should enable these features as well.
+> >
+> > Looks like arm64 has these:
+> >
+> > arch/arm64/configs/defconfig:CONFIG_MTD=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_BLOCK=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_ADV_OPTIONS=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_INTELEXT=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_AMDSTD=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_CFI_STAA=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_PHYSMAP=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_PHYSMAP_OF=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_DATAFLASH=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_SST25L=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_RAW_NAND=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_DENALI_DT=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_MARVELL=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_FSL_IFC=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_NAND_QCOM=y
+> > arch/arm64/configs/defconfig:CONFIG_MTD_SPI_NOR=y
+> >
+> > so I think we're good with just what you have here: MTD_BLOCK doesn't
+> > seem that
+> > useful, and the rest are drivers.  That said, these (along with SPI and
+> > SPI_SIFIVE) should really be in Kconfig.socs rather than defconfig.  Can you
+> > send a patch that does that?
+> >
+>
+> Yes sure, I will send a V2 series, where SPI,  SPI_SIFIVE,  MTD,
+> and MTD_SPI_NOR will be a part of Kconfig.socs.
+
+We had build issues in past by selecting major driver subsystems
+in Kconfig.socs
+
+I suggest to select SPI_SIFIVE from Kconfig.socs and other
+platform independent options should go in defconfig and
+rv32_defconfig.
+
+The general rule of thumb is to force select only required
+drivers from Kconfig.socs.
+
+Regards,
+Anup
+
+>
+> Thanks & BR,
+> Sagar Kadam
+>
+> > >
+> > > To demonstrate a bit more with linux 5.7-rc3
+> > >
+> > > Specify on U-boot prompt:
+> > > # setenv bootargs "root=/dev/ram rw console=ttySIF0
+> > mtdparts=spi0.0:1024k(loader1),4096K(loader2),26M(rootfs)"
+> > >
+> > > After booting linux will enumerate mtd partitions:
+> > > # cat /proc/mtd
+> > > dev:    size   erasesize  name
+> > > mtd0: 00100000 00001000 "loader1"
+> > > mtd1: 00400000 00001000 "loader2"
+> > > mtd2: 01a00000 00001000 "rootfs"
+> > >
+> > > # cat /proc/partitions
+> > > major minor  #blocks  name
+> > >   31        0       1024 mtdblock0
+> > >   31        1       4096 mtdblock1
+> > >   31        2      26624 mtdblock2
+> > >
+> > > #Format mtdblock2 with mkfs.ext3/4 and mount results in
+> > > # mkfs.ext3 /dev/mtdblock2
+> > > mke2fs 1.44.5 (15-Dec-2018)
+> > > /dev/mtdblock2 contains a ext3 file system
+> > >         last mounted on /mnt on Thu Jan  1 00:00:14 1970
+> > > Proceed anyway? (y,N) y
+> > > Creating filesystem with 26624 1k blocks and 6656 inodes
+> > > Filesystem UUID: 1b09252d-e313-430c-9ecb-79b0cef003ca
+> > > Superblock backups stored on blocks:
+> > >         8193, 24577
+> > >
+> > > Allocating group tables: done
+> > > Writing inode tables: done
+> > > Creating journal (1024 blocks): done
+> > > Writing superblocks and filesystem accounting information: done
+> > >
+> > > # mount
+> > > none on / type rootfs (rw)
+> > > proc on /proc type proc (rw,relatime)
+> > > devpts on /dev/pts type devpts
+> > (rw,relatime,gid=5,mode=620,ptmxmode=666)
+> > > tmpfs on /dev/shm type tmpfs (rw,relatime,mode=777)
+> > > tmpfs on /tmp type tmpfs (rw,relatime)
+> > > tmpfs on /run type tmpfs (rw,nosuid,nodev,relatime,mode=755)
+> > > sysfs on /sys type sysfs (rw,relatime)
+> > > /dev/mtdblock2 on /mnt type ext3 (rw,relatime)
+> > >
+> > > Thanks & BR,
+> > > Sagar Kadam
+>
 
