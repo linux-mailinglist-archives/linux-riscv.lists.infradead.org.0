@@ -2,64 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9CDD1C93A5
-	for <lists+linux-riscv@lfdr.de>; Thu,  7 May 2020 17:07:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78ED41C97D3
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 May 2020 19:32:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eQ0Wcae1Whh/Y2FliPOSrKuM9423oQI7b63/+SbofrQ=; b=VYE4qlOjl34XoaPG6H2WaR/Mm
-	+Omb+rLdBEc3gp6FR3x5INfvorTVmybsYhxsdfzDN9mL6I7TkyaSdHQWlqn/aeNyf8azVY4RdfLPu
-	sCtJhSw93smtgRDJjhPBgPlNXCvvQgVC270sk8JRW/cQ9rJoFY95tzzX9cRji9nD0/LQM3XCZESaL
-	y+SJm80MElqLAQ/XtGnOEUhLoxYStMNBvheSwlSiFc4qG7UDuFX+Y6+5bW7olUETumeNH859Qze54
-	aX8Bf3WdH94sR+kmCKA6vSuXxIQSEex9Z5iX/pHqPLWxTzD9bew2qODxD38YoicKeZay+iVmubpZe
-	cI+RX04Ag==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=XtORv2mseP/z/qKbzO4cxM+f4mvGOB4KlYPgfGWkB+o=; b=FGpX4zjVmePgDt
+	LDH+QE7Ro1D35xRR0k7srAC+VVWw9wnINp0k1wclB195c5klIPoVod1l2HbdKpeD5RPYcsaz9TRGd
+	TquRRvp+le4ZwQlDkrlCWhAmro74zM2r0rVWqYT+yzg52KgoL5xDAR1qYCNrWdibXdFE2Kn5xqN3s
+	vdwv3q91ygmC38BW3p0pS3+vaqngeFLyIZsajsWLgpnjpSTdigO7b7UxB2yyEDyrpu9sokLY8fTQF
+	VkEpaFKUaekzU+EeU7b+bh45iT4MWfyFqF9GQcEYbRiCoUyGL3BEfFvGcfd69md09vyg1YE2whd10
+	LugUv2z/dryqw6TEpRfg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWi79-00046x-J9; Thu, 07 May 2020 15:07:07 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
+	id 1jWkO6-0005ah-Mo; Thu, 07 May 2020 17:32:46 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWi1T-0005Ca-DW
- for linux-riscv@lists.infradead.org; Thu, 07 May 2020 15:01:23 +0000
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id DB54F71F3AD21596FD66;
- Thu,  7 May 2020 23:01:00 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 7 May 2020 23:00:54 +0800
-From: Kefeng Wang <wangkefeng.wang@huawei.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, <linux-kernel@vger.kernel.org>,
- <linux-riscv@lists.infradead.org>
-Subject: [PATCH -next] riscv: perf: RISCV_BASE_PMU should be closeable
-Date: Thu, 7 May 2020 23:04:45 +0800
-Message-ID: <20200507150445.174390-2-wangkefeng.wang@huawei.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200507150445.174390-1-wangkefeng.wang@huawei.com>
-References: <20200507150445.174390-1-wangkefeng.wang@huawei.com>
-MIME-Version: 1.0
+ id 1jWkO2-0005Zp-Bw
+ for linux-riscv@lists.infradead.org; Thu, 07 May 2020 17:32:44 +0000
+Received: by mail-pf1-x443.google.com with SMTP id x77so3339156pfc.0
+ for <linux-riscv@lists.infradead.org>; Thu, 07 May 2020 10:32:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XtORv2mseP/z/qKbzO4cxM+f4mvGOB4KlYPgfGWkB+o=;
+ b=RepragYq+KiOcmsmIcmqxSoP96N7TEOeyskGN/yIXufJShFMvcA1eQxuzAOLD5K2ea
+ MGDk1H9ASRw/fGrK8kBf+w55q3krR6u1u9uttrWyUXPAWoYDDxwgnyu0Vn2HP88R5gaO
+ CI2ZhMUYSU7kmRsibEw0aYMqZlzdihQOLI5hHERQu0C2JVSU+fgpyeUKbA3G5MEmRKmx
+ +JhjvLUGFcNh/TPq++qdwfqoP4EWP674+juvHCPQiAk6xY7ZMKfwhHr40ecpu+jNVZGM
+ BqO34jZBLaRpxWWDRcI4ReOmlIGd4ViGu5/b1DclPioTT7QVf/auRpEkicfNT0i31WJP
+ 0WXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=XtORv2mseP/z/qKbzO4cxM+f4mvGOB4KlYPgfGWkB+o=;
+ b=mbVN2MhVtpSb3fBiGpcm1js0DKEDpKp8TtL5vTwkVucOKcsLwlf2UDptC9f0HmaFZD
+ fTCw9C2hZywm7yo9H7n6jC2iRv78hOpbZCe/HsOZNgCLjegVS0PT1TkXgvoRU7GGdqI1
+ tA33yiG5MjQv/G1737MXhpvCtQ+Yq+ZuSto6Eq5rwpnxpVA5Eri1w51rS+Q9q8R02oBy
+ lMAk50OXzfArqqrB4PMF1D7cyUJD7Wi39rcSUkngXsTHVW/F7AO+S9zC5MlJkmY6hl9u
+ 5zIqFqa3+XSF3N/Ez0wZ2bRKfM5SBcnzKcZJJdlVHhK4gn0/u9CcWMCDEn6oMWPja58U
+ yhdw==
+X-Gm-Message-State: AGi0Pua3o4qwpa8BA86ejxSQZSPdtIrF7xVeBRX3Asd3UA4r1AP0YIdy
+ lW7pUz/3opoqJ8DGWzzqMrUj3A==
+X-Google-Smtp-Source: APiQypJe1D/GbbpqpG3tn8h3SfYU9egGetkI6hH6LSE74KmfgMmnp547cjjLUB0C/LNRDiBAG8rc8g==
+X-Received: by 2002:a65:5ac4:: with SMTP id d4mr11522688pgt.381.1588872760647; 
+ Thu, 07 May 2020 10:32:40 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id y2sm5494857pfq.16.2020.05.07.10.32.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 May 2020 10:32:39 -0700 (PDT)
+Date: Thu, 07 May 2020 10:32:39 -0700 (PDT)
+X-Google-Original-Date: Thu, 07 May 2020 10:32:16 PDT (-0700)
+Subject: Re: [PATCH] tty: serial: add missing spin_lock_init for SiFive UART
+In-Reply-To: <20200507064958.GB798308@kroah.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Message-ID: <mhng-3c2de0bd-d2fb-4b5f-be6a-accdaa1cbc7a@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_080116_972987_D28BA9DC 
-X-CRM114-Status: UNSURE (   8.32  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200507_103242_467385_7C4059C4 
+X-CRM114-Status: GOOD (  18.71  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [45.249.212.190 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [45.249.212.190 listed in wl.mailspike.net]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,70 +94,70 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Kefeng Wang <wangkefeng.wang@huawei.com>, Alan Kao <alankao@andestech.com>
+Cc: Atish Patra <Atish.Patra@wdc.com>, linux-riscv@lists.infradead.org,
+ Anup Patel <Anup.Patel@wdc.com>, sagar.kadam@sifive.com,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-As 178e9fc47aae("perf: riscv: preliminary RISC-V support") said,
-For RISCV_BASE_PMU, 'this option can also be disable to reduce kernel size',
-but it could not work well, we need diable both RISCV_BASE_PMU and
-PERF_EVENTS manually, or build error will occur when only disable
-RISCV_BASE_PMU.
+On Wed, 06 May 2020 23:49:58 PDT (-0700), Greg KH wrote:
+> On Wed, May 06, 2020 at 12:26:52PM -0700, Sagar Shrikant Kadam wrote:
+>> Uninitialised spin lock on sifive serial port (ssp) raised
+>> a race condition and resulted in spin lock bad magic as
+>> reported and discussed here [1]
+>> Initialising the spin lock resolves the issue.
+>>
+>> The fix is tested on HiFive Unleashed A00 board with Linux 5.7-rc4
+>> and OpenSBI v0.7
+>>
+>> [1] http://lists.infradead.org/pipermail/linux-riscv/2020-May/009713.html
+>
+> In the future, can you link to lore.kernel.org instead?
+>
+>>
+>> Fixes: 45c054d0815b ("tty: serial: add driver for the SiFive UART")
+>
+> So this should also go to stable kernels, right?
+>
+>> Reported-by: Atish Patra <Atish.Patra@wdc.com>
+>> Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+>> ---
+>>  drivers/tty/serial/sifive.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/tty/serial/sifive.c b/drivers/tty/serial/sifive.c
+>> index 13eadcb..b061bdb 100644
+>> --- a/drivers/tty/serial/sifive.c
+>> +++ b/drivers/tty/serial/sifive.c
+>> @@ -989,6 +989,7 @@ static int sifive_serial_probe(struct platform_device *pdev)
+>>  	ssp->clk = clk;
+>>  	ssp->clk_notifier.notifier_call = sifive_serial_clk_notifier;
+>>
+>> +	spin_lock_init(&ssp->port.lock);
+>
+> Shouldn't the port lock be initialized by the tty core instead?  I think
+> this is the second time I've seen this type of fix needed recently...
 
-Cc: Alan Kao <alankao@andestech.com>
-Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
----
- arch/riscv/include/asm/perf_event.h | 8 ++------
- arch/riscv/kernel/Makefile          | 2 +-
- 2 files changed, 3 insertions(+), 7 deletions(-)
+Ya, that's what was blocking my reviewed-by.  It looks like the spinlock isn't
+initialized for console.  IDK why that's the case, but assuming that's the way
+it's supposed to work we should only initialize the spinlock if we set up a
+console port, which we do in __ssp_add_console_port().  In other words,
+something like this
 
-diff --git a/arch/riscv/include/asm/perf_event.h b/arch/riscv/include/asm/perf_event.h
-index 0234048b12bc..062efd3a1d5d 100644
---- a/arch/riscv/include/asm/perf_event.h
-+++ b/arch/riscv/include/asm/perf_event.h
-@@ -12,19 +12,14 @@
- #include <linux/ptrace.h>
- #include <linux/interrupt.h>
+diff --git a/drivers/tty/serial/sifive.c b/drivers/tty/serial/sifive.c
+index 13eadcb8aec4..0b5110dad051 100644
+--- a/drivers/tty/serial/sifive.c
++++ b/drivers/tty/serial/sifive.c
+@@ -883,6 +883,7 @@ console_initcall(sifive_console_init);
  
-+#ifdef CONFIG_RISCV_BASE_PMU
- #define RISCV_BASE_COUNTERS	2
- 
- /*
-  * The RISCV_MAX_COUNTERS parameter should be specified.
-  */
- 
--#ifdef CONFIG_RISCV_BASE_PMU
- #define RISCV_MAX_COUNTERS	2
--#endif
--
--#ifndef RISCV_MAX_COUNTERS
--#error "Please provide a valid RISCV_MAX_COUNTERS for the PMU."
--#endif
- 
- /*
-  * These are the indexes of bits in counteren register *minus* 1,
-@@ -82,6 +77,7 @@ struct riscv_pmu {
- 	int		irq;
- };
- 
-+#endif
- #ifdef CONFIG_PERF_EVENTS
- #define perf_arch_bpf_user_pt_regs(regs) (struct user_regs_struct *)regs
- #endif
-diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-index 1f5736e996fd..b355cf485671 100644
---- a/arch/riscv/kernel/Makefile
-+++ b/arch/riscv/kernel/Makefile
-@@ -43,7 +43,7 @@ obj-$(CONFIG_MODULE_SECTIONS)	+= module-sections.o
- obj-$(CONFIG_FUNCTION_TRACER)	+= mcount.o ftrace.o
- obj-$(CONFIG_DYNAMIC_FTRACE)	+= mcount-dyn.o
- 
--obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o
-+obj-$(CONFIG_RISCV_BASE_PMU)	+= perf_event.o
- obj-$(CONFIG_PERF_EVENTS)	+= perf_callchain.o
- obj-$(CONFIG_HAVE_PERF_REGS)	+= perf_regs.o
- obj-$(CONFIG_RISCV_SBI)		+= sbi.o
--- 
-2.26.2
+ static void __ssp_add_console_port(struct sifive_serial_port *ssp)
+ {
++	spin_lock_init(&ssp->port.lock);
+ 	sifive_serial_console_ports[ssp->port.line] = ssp;
+ }
 
+>
+> thanks,
+>
+> greg k-h
 
