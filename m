@@ -2,73 +2,61 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CCA01C8EE1
-	for <lists+linux-riscv@lfdr.de>; Thu,  7 May 2020 16:30:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC6101C93A6
+	for <lists+linux-riscv@lfdr.de>; Thu,  7 May 2020 17:07:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KafhaoNuUEGk0vhoXy3J3SfWsmyi4+ZDXQPBLXI3+UA=; b=D5WSjiHOP/MMEk
-	N5vyEqrSTnBOUdjrYRUrHWc5WRA9MzZm9FfSHpONwemCof/5KWIkY9RLjD8Z9jHOoZUpZy2s+2C62
-	yVj8IfZm2ISCG5UvbcfqIYeGH1MEh+akgx1PC+lFXpaqZjmsFz5ZTS3/OYrtNDgZdIfBVC9WQ3bRz
-	c1PHJV3iO3LecOjB0H+lNGvKeAXRXbGfR/ef6Pj7czOzeRbA4bEKnW7A8svZCGlIQvniEQyUxzhwh
-	i3LoyCXd4rEq75atLhXV4xXsuZEXp1/ypRixnb0Sd5g6WGfL/z34ir3cBw6UJwgevm5jACQnAaVKq
-	iIHVi2WY5duUFc80A2GA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=c6/BR/i8VOx6HR3JBwth0UbTrEKAQml9BdAoCe5e9jM=; b=ChB6h9Dsm81u9F
+	UNNkqGNaqPGOntC2+jIWV3/Om+3MeU5/LJbvprl5xcyX9TwGreMtpozJMDaUw/rKzvXUjo92Gt34H
+	R9S91/ImkOPJT7P0bq4IB5iGf6o97Jnoe4Fgfr4jr2i483dGjwOzBqMCWOb8rqLOgNqgr8EaY5zd0
+	/tslOQcokESWInySw7UD4jWmzeQAF6wdVTn7SxIZcmp/njZRoWAN4pvgB3AqL8JmSdgLDmTg9d/18
+	m4M6W0RMocw6BrQr2ws2JedNkY/xmnzRDM5UJmiXSVvmIbkNeUW0YCoRn3cShzakGqqG+61qhJ5dg
+	uBhojrsZCANpZuiOi0lg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWhXS-0003gx-B2; Thu, 07 May 2020 14:30:14 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jWi7A-00047w-FN; Thu, 07 May 2020 15:07:08 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWhWd-0002sS-LI
- for linux-riscv@lists.infradead.org; Thu, 07 May 2020 14:29:25 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 06FCD20838;
- Thu,  7 May 2020 14:29:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588861763;
- bh=WmONSK4ctFdQWjz26WZgwfs5SpenNY5/I3xlW0g0H4U=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FQqvfO5tfX9OZ7ueEILjMGmXFb1BXnA/50lFO1nfrV6VtGeuwl5qh4DSnC1CuRZlQ
- fm/lfQ8sbUTGZqXGrDPwojuAEirJrQzTz0w1ayV4fRPeo7ThFGRebQye51319OBmUT
- H8FZgAYBgQkZj7XLKxbUS+uocJR6hsTSDlqbb5UI=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 04/20] riscv: fix vdso build with lld
-Date: Thu,  7 May 2020 10:29:00 -0400
-Message-Id: <20200507142917.26612-4-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200507142917.26612-1-sashal@kernel.org>
-References: <20200507142917.26612-1-sashal@kernel.org>
+ id 1jWi1U-0005CQ-LN
+ for linux-riscv@lists.infradead.org; Thu, 07 May 2020 15:01:23 +0000
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id A6F3F9C4D0216598D07B;
+ Thu,  7 May 2020 23:01:00 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.175.113.25) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 7 May 2020 23:00:53 +0800
+From: Kefeng Wang <wangkefeng.wang@huawei.com>
+To: Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, <linux-kernel@vger.kernel.org>,
+ <linux-riscv@lists.infradead.org>
+Subject: [PATCH -next] riscv: perf_event: Make some funciton static
+Date: Thu, 7 May 2020 23:04:44 +0800
+Message-ID: <20200507150445.174390-1-wangkefeng.wang@huawei.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.113.25]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_072923_736678_7A95D96E 
-X-CRM114-Status: GOOD (  10.68  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200507_080117_277657_5E12314C 
+X-CRM114-Status: UNSURE (   7.65  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [45.249.212.191 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [45.249.212.191 listed in wl.mailspike.net]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,61 +68,71 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Fangrui Song <maskray@google.com>,
- Ilie Halip <ilie.halip@gmail.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- Nick Desaulniers <ndesaulniers@google.com>, clang-built-linux@googlegroups.com,
- linux-riscv@lists.infradead.org, Dmitry Golovin <dima@golovin.in>
+Cc: Kefeng Wang <wangkefeng.wang@huawei.com>, Alan Kao <alankao@andestech.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Ilie Halip <ilie.halip@gmail.com>
+Fixes the following warning detected when running make with W=1,
+../arch/riscv/kernel/perf_event.c:150:5: warning: no previous prototype for ‘riscv_map_cache_decode’ [-Wmissing-prototypes]
+ int riscv_map_cache_decode(u64 config, unsigned int *type,
+     ^~~~~~~~~~~~~~~~~~~~~~
+../arch/riscv/kernel/perf_event.c:345:13: warning: no previous prototype for ‘riscv_base_pmu_handle_irq’ [-Wmissing-prototypes]
+ irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
+             ^~~~~~~~~~~~~~~~~~~~~~~~~
+../arch/riscv/kernel/perf_event.c:364:6: warning: no previous prototype for ‘release_pmc_hardware’ [-Wmissing-prototypes]
+ void release_pmc_hardware(void)
+      ^~~~~~~~~~~~~~~~~~~~
+../arch/riscv/kernel/perf_event.c:467:12: warning: no previous prototype for ‘init_hw_perf_events’ [-Wmissing-prototypes]
+ int __init init_hw_perf_events(void)
+            ^~~~~~~~~~~~~~~~~~~
 
-[ Upstream commit 3c1918c8f54166598195d938564072664a8275b1 ]
-
-When building with the LLVM linker this error occurrs:
-    LD      arch/riscv/kernel/vdso/vdso-syms.o
-  ld.lld: error: no input files
-
-This happens because the lld treats -R as an alias to -rpath, as opposed
-to ld where -R means --just-symbols.
-
-Use the long option name for compatibility between the two.
-
-Link: https://github.com/ClangBuiltLinux/linux/issues/805
-Reported-by: Dmitry Golovin <dima@golovin.in>
-Reviewed-by: Nick Desaulniers <ndesaulniers@google.com>
-Signed-off-by: Ilie Halip <ilie.halip@gmail.com>
-Reviewed-by: Fangrui Song <maskray@google.com>
-Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Cc: Alan Kao <alankao@andestech.com>
+Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
 ---
- arch/riscv/kernel/vdso/Makefile | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/riscv/kernel/perf_event.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/riscv/kernel/vdso/Makefile b/arch/riscv/kernel/vdso/Makefile
-index 87f71a6cd3ef8..1dd134fc0d84a 100644
---- a/arch/riscv/kernel/vdso/Makefile
-+++ b/arch/riscv/kernel/vdso/Makefile
-@@ -30,15 +30,15 @@ $(obj)/vdso.so.dbg: $(src)/vdso.lds $(obj-vdso) FORCE
- 	$(call if_changed,vdsold)
+diff --git a/arch/riscv/kernel/perf_event.c b/arch/riscv/kernel/perf_event.c
+index 91626d9ae5f2..c835f0362d94 100644
+--- a/arch/riscv/kernel/perf_event.c
++++ b/arch/riscv/kernel/perf_event.c
+@@ -147,7 +147,7 @@ static int riscv_map_hw_event(u64 config)
+ 	return riscv_pmu->hw_events[config];
+ }
  
- # We also create a special relocatable object that should mirror the symbol
--# table and layout of the linked DSO.  With ld -R we can then refer to
--# these symbols in the kernel code rather than hand-coded addresses.
-+# table and layout of the linked DSO. With ld --just-symbols we can then
-+# refer to these symbols in the kernel code rather than hand-coded addresses.
+-int riscv_map_cache_decode(u64 config, unsigned int *type,
++static int riscv_map_cache_decode(u64 config, unsigned int *type,
+ 			   unsigned int *op, unsigned int *result)
+ {
+ 	return -ENOENT;
+@@ -342,7 +342,7 @@ static void riscv_pmu_del(struct perf_event *event, int flags)
  
- SYSCFLAGS_vdso.so.dbg = -shared -s -Wl,-soname=linux-vdso.so.1 \
-                             $(call cc-ldoption, -Wl$(comma)--hash-style=both)
- $(obj)/vdso-dummy.o: $(src)/vdso.lds $(obj)/rt_sigreturn.o FORCE
- 	$(call if_changed,vdsold)
+ static DEFINE_MUTEX(pmc_reserve_mutex);
  
--LDFLAGS_vdso-syms.o := -r -R
-+LDFLAGS_vdso-syms.o := -r --just-symbols
- $(obj)/vdso-syms.o: $(obj)/vdso-dummy.o FORCE
- 	$(call if_changed,ld)
+-irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
++static irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
+ {
+ 	return IRQ_NONE;
+ }
+@@ -361,7 +361,7 @@ static int reserve_pmc_hardware(void)
+ 	return err;
+ }
  
+-void release_pmc_hardware(void)
++static void release_pmc_hardware(void)
+ {
+ 	mutex_lock(&pmc_reserve_mutex);
+ 	if (riscv_pmu->irq >= 0)
+@@ -464,7 +464,7 @@ static const struct of_device_id riscv_pmu_of_ids[] = {
+ 	{ /* sentinel value */ }
+ };
+ 
+-int __init init_hw_perf_events(void)
++static int __init init_hw_perf_events(void)
+ {
+ 	struct device_node *node = of_find_node_by_type(NULL, "pmu");
+ 	const struct of_device_id *of_id;
 -- 
-2.20.1
+2.26.2
 
 
