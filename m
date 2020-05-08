@@ -2,81 +2,76 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E1111CB56D
-	for <lists+linux-riscv@lfdr.de>; Fri,  8 May 2020 19:13:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B17401CB791
+	for <lists+linux-riscv@lfdr.de>; Fri,  8 May 2020 20:47:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=0bbo9yqx2/IuXmKBdRPrbP5cAWNcfhqAl9BM/fU1oqQ=; b=i2X3IuKmnH+/0/
-	nMKNuu40VyioKrfceSLDe7uNk/oysrzT82F1xdwhQDSMNJwWfv5UI8veDrKeL4VvPxfAtQoZJQKZT
-	vGpekkPjKUGy4HAqyVf7KXme3MwSAxkiPV8hZ42btYPuIDpN+c9wVkam6B6VbrSCxMFTyJlG5qH2r
-	eKsHqY4iOh1TOou0odgP9cuBCcS0hQ7uqNangv0hjWZi973K/9rshF9mPVybRKFbv8B1OvWxVLJiq
-	ag4e4/QghKGFxnAengjI9TKUwK23CzMib6datis1XIg47faPQr/aeZTui/zMKvdOBJCZXYb4VbhT7
-	xn8fjt4XuGbmLcvVj+cQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:To:From:
+	Subject:Date:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2tA1zP7hu7E8xr10Gwcfc3VadGWJSXb2fISg7SkRPxQ=; b=CQ3Swe81HP1PsPFXIad7uXD0oR
+	eKHAiBNStUVIznJP2x7kS8xbfgstiHh3sZXNcZ4oXzBehdQ44h2x0U7r5J+Ud5QSLIC5TfDOFtPnH
+	ThArCmxBnGI4QKjbG/0MXWyqFlv7zBudkCmcup5flvfuiL0YFRvINwxjwEKxB8VZFImyL5kne8sMX
+	VMMzSPQZkWbCumN8Fj/a9X1SZHwRMD1UToVMWEvfMP9WzrvWj6hWni2Nht2c7BloijuRJ0LYzDAbW
+	9q7alnzhu7LaxcironCBM2KmlRz5EegmK4UiGnEtROL3UQtr1LWcliZ6o3pQx3NClpCx3CZpW8JL7
+	AWomXGDQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jX6Yq-0005Ye-7J; Fri, 08 May 2020 17:13:20 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1jX81n-0001Ui-0h; Fri, 08 May 2020 18:47:19 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jX6Ym-0005YF-6I
- for linux-riscv@lists.infradead.org; Fri, 08 May 2020 17:13:17 +0000
-Received: by mail-pg1-x544.google.com with SMTP id f6so1163641pgm.1
- for <linux-riscv@lists.infradead.org>; Fri, 08 May 2020 10:13:15 -0700 (PDT)
+ id 1jX81k-0001U5-Cj
+ for linux-riscv@lists.infradead.org; Fri, 08 May 2020 18:47:18 +0000
+Received: by mail-pl1-x644.google.com with SMTP id t16so1116909plo.7
+ for <linux-riscv@lists.infradead.org>; Fri, 08 May 2020 11:47:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=0bbo9yqx2/IuXmKBdRPrbP5cAWNcfhqAl9BM/fU1oqQ=;
- b=PjTFL8s6+I1J9/NZKcqTpcYV5XM/11g94CEXvhvhFY8SvWcpkz+1MhpvPOXChg3oNs
- 6GHO9ZHiT+NPS1cJrPXNp1QXnQ/YOjrRximPC5LOYx7z+7dJZgCC9eGdwGLZ1AdP512B
- X9bTTdQUKxs0ZqbWfh6EsA4frwTQ6muuqQQc170KHdTy5/b2iY3SZN8AJGH1y5CwsLPe
- FXIYTBwCNWRAZf68VObcEJIBQOj4J8veOqnic/GWjiaPmTIEu4/vlsR0+PIwoKrsRh3f
- l74V+fI6aD+CENVcbth6cHy6Vs9iT+Dzt8WvxvRMBVfneWXYxI9WBw+xMD+SImy2V0nd
- Zeng==
+ h=date:subject:cc:from:to:message-id;
+ bh=2tA1zP7hu7E8xr10Gwcfc3VadGWJSXb2fISg7SkRPxQ=;
+ b=ALJGwowB2DhmNrLBkC5TvLAynj0KTLZmI46t9FYy0pnp4OHc03/RBh6qgxjINbVRQx
+ cpJyOT2H9D48oxDfsBf1F1FBIFW6QQh1XAy4UQ888vUkSUh9r2fP1rURo+48wzyeHOWb
+ iOTTX+J2IiR7PKzFJTioqHolR7oDM8lYgnSNJfPub4RTr9//biR9dSq02ohUEst++4M7
+ ISo1L2whwgXazS2NdT/tls0/zW1LFRndCAFaYzWkpmZN57j43oCqF9RCHAmoA0OAyH11
+ o41Xw+xWUy57SeW+DqV9bhsPFG3pECFYZZ4m6GCPW26ZyGW3dIh6FCH+/sM7k3hXvB/n
+ 9UrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=0bbo9yqx2/IuXmKBdRPrbP5cAWNcfhqAl9BM/fU1oqQ=;
- b=I7/Z5gSq1cRFQHnDg8eAR7sHP4XGCbls6XeVH7Nm5+abEwZEcj4MF0K/n/zMafx7Gk
- lvS2YleUevAfjEW0QOL7z6MZ2DqxWe7RWhKfyCJv8fnRTcLtpK2S25fGbN6gd5rUAGPP
- Ydy1YUOXarNGty+CY9lV/srvvyokPDl+fOWQ9Tym6o3O+6aGHY2qZT9dlk+t4a8so3ns
- VSwuGpkcmmvx7OLtAcHPxqYUsdWzpd31Bk5LB1RMpiVCGEXjpQ3zlXaddzoRjBzc4ys0
- IN6lt6Fj+EORrqlSMfRdAM1YqAUCMAhVRNCoMBQIwlD7t5Uu0yGB1mu1QjvY8kBgrwYC
- REDA==
-X-Gm-Message-State: AGi0PuZJGx2E1tYQg/wE2q+NeAeBzrxsWVYIbuP5otaqPv99LwbXTfpy
- eCJFGke77mHBDtHtdu2ZYOr/SBELdKo=
-X-Google-Smtp-Source: APiQypLYQ1/Ktlte3epOcpwn4RycsMdaiTx18JHtnN1cRjb5gOaX3mgnrzKNXuxG2/El9D2NYSoZ7w==
-X-Received: by 2002:a62:35c1:: with SMTP id c184mr3665454pfa.120.1588957994887; 
- Fri, 08 May 2020 10:13:14 -0700 (PDT)
+ h=x-gm-message-state:date:subject:cc:from:to:message-id;
+ bh=2tA1zP7hu7E8xr10Gwcfc3VadGWJSXb2fISg7SkRPxQ=;
+ b=DTK35D1kXBi5JU+TwSmMbvxiX88vLKXObAmXgTEFV71TffikUTxkRJPFXtxGNDRQpR
+ ii852s456GGSihvXqQR+S6dxQqgRXjpnYq9QxxgYl28CYRX5yNFaVIM3eCZ1s0FA45Vk
+ YFoXN7VpB+CNxEkNw6ExjDVhCrFGmZ//gspx8lHgWL4jrsyDUYuwjMDanaAZQf41SdId
+ 02Ux/hyQmRZPoA4PEWJOQOtmwI248SN+KwbnuGKSMQ9w5CS1Pmk/r22wYcUfhyblTmcK
+ YIg7N4OUbeAuP14fom7KJuAQeJ4PE7rkIOlICOR9WZPZFLEPM5MA/MkVQZZCaZXLAImo
+ IIEw==
+X-Gm-Message-State: AGi0PuYdQVEXef4LzbIG4c9BOP0ehDkrn5UILRml5koiUY7Bx+hk7hta
+ NhSdO8PIEHekgmR+mTvDcqZOULaGbVc=
+X-Google-Smtp-Source: APiQypL6xxJoPjSqNwoBDWP883ePodLOm4PYJpDnqIqsdM/QMjrLcsb2G/Waay3RFVFs9WecHfvv9g==
+X-Received: by 2002:a17:90b:19c9:: with SMTP id
+ nm9mr7766474pjb.86.1588963634825; 
+ Fri, 08 May 2020 11:47:14 -0700 (PDT)
 Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
  [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id d35sm1725500pgd.29.2020.05.08.10.13.13
+ by smtp.gmail.com with ESMTPSA id j2sm2609271pfb.73.2020.05.08.11.47.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 May 2020 10:13:14 -0700 (PDT)
-Date: Fri, 08 May 2020 10:13:14 -0700 (PDT)
-X-Google-Original-Date: Thu, 07 May 2020 10:36:03 PDT (-0700)
-Subject: Re: [PATCH -next] riscv: perf_event: Make some funciton static
-In-Reply-To: <20200507150445.174390-1-wangkefeng.wang@huawei.com>
+ Fri, 08 May 2020 11:47:13 -0700 (PDT)
+Date: Fri, 08 May 2020 11:47:13 -0700 (PDT)
+X-Google-Original-Date: Fri, 08 May 2020 11:47:08 PDT (-0700)
+Subject: [GIT PULL] RISC-V Fixes for 5.7-rc5
 From: Palmer Dabbelt <palmer@dabbelt.com>
-To: wangkefeng.wang@huawei.com
-Message-ID: <mhng-158b6408-4023-446d-89b4-b4416ba80718@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Linus Torvalds <torvalds@linux-foundation.org>
+Message-ID: <mhng-81c83c19-6f5d-4ed1-a0bb-26accf4b7d3a@palmerdabbelt-glaptop1>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200508_101316_293604_D8EFCF6B 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20200508_114716_498224_EC38A880 
+X-CRM114-Status: GOOD (  12.66  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -94,76 +89,65 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: wangkefeng.wang@huawei.com, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, alankao@andestech.com,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-What's the "-next" for?  This seems appropriate for an RC to me, as it's a
-build fix.
+merged tag 'riscv-for-linus-5.7-rc4'
+The following changes since commit 1d2cc5ac6f6668cc15216d51051103c61467d7e8:
 
-On Thu, 07 May 2020 08:04:44 PDT (-0700), wangkefeng.wang@huawei.com wrote:
-> Fixes the following warning detected when running make with W=1,
-> ../arch/riscv/kernel/perf_event.c:150:5: warning: no previous prototype for ‘riscv_map_cache_decode’ [-Wmissing-prototypes]
->  int riscv_map_cache_decode(u64 config, unsigned int *type,
->      ^~~~~~~~~~~~~~~~~~~~~~
-> ../arch/riscv/kernel/perf_event.c:345:13: warning: no previous prototype for ‘riscv_base_pmu_handle_irq’ [-Wmissing-prototypes]
->  irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
->              ^~~~~~~~~~~~~~~~~~~~~~~~~
-> ../arch/riscv/kernel/perf_event.c:364:6: warning: no previous prototype for ‘release_pmc_hardware’ [-Wmissing-prototypes]
->  void release_pmc_hardware(void)
->       ^~~~~~~~~~~~~~~~~~~~
-> ../arch/riscv/kernel/perf_event.c:467:12: warning: no previous prototype for ‘init_hw_perf_events’ [-Wmissing-prototypes]
->  int __init init_hw_perf_events(void)
->             ^~~~~~~~~~~~~~~~~~~
->
-> Cc: Alan Kao <alankao@andestech.com>
-> Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
-> ---
->  arch/riscv/kernel/perf_event.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/arch/riscv/kernel/perf_event.c b/arch/riscv/kernel/perf_event.c
-> index 91626d9ae5f2..c835f0362d94 100644
-> --- a/arch/riscv/kernel/perf_event.c
-> +++ b/arch/riscv/kernel/perf_event.c
-> @@ -147,7 +147,7 @@ static int riscv_map_hw_event(u64 config)
->  	return riscv_pmu->hw_events[config];
->  }
->
-> -int riscv_map_cache_decode(u64 config, unsigned int *type,
-> +static int riscv_map_cache_decode(u64 config, unsigned int *type,
->  			   unsigned int *op, unsigned int *result)
->  {
->  	return -ENOENT;
-> @@ -342,7 +342,7 @@ static void riscv_pmu_del(struct perf_event *event, int flags)
->
->  static DEFINE_MUTEX(pmc_reserve_mutex);
->
-> -irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
-> +static irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
->  {
->  	return IRQ_NONE;
->  }
-> @@ -361,7 +361,7 @@ static int reserve_pmc_hardware(void)
->  	return err;
->  }
->
-> -void release_pmc_hardware(void)
-> +static void release_pmc_hardware(void)
->  {
->  	mutex_lock(&pmc_reserve_mutex);
->  	if (riscv_pmu->irq >= 0)
-> @@ -464,7 +464,7 @@ static const struct of_device_id riscv_pmu_of_ids[] = {
->  	{ /* sentinel value */ }
->  };
->
-> -int __init init_hw_perf_events(void)
-> +static int __init init_hw_perf_events(void)
->  {
->  	struct device_node *node = of_find_node_by_type(NULL, "pmu");
->  	const struct of_device_id *of_id;
+  Merge tag 'riscv-for-linus-5.7-rc4' of git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux (2020-04-29 09:25:32 -0700)
 
-Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/riscv/linux.git tags/riscv-for-linus-5.7-rc5
+
+for you to fetch changes up to 73cb8e2a5863ccc5215660f5123db621bd57dff7:
+
+  RISC-V: Remove unused code from STRICT_KERNEL_RWX (2020-05-05 17:02:14 -0700)
+
+----------------------------------------------------------------
+RISC-V Fixes for 5.7-rc5
+
+This contains a smattering of fixes and cleanups that I'd like to target for
+5.7:
+
+* Dead code removal.
+* Exporting riscv_cpuid_to_hartid_mask for modules.
+* Per-CPU tracking of ISA features.
+* Setting max_pfn correctly when probing memory.
+* Adding a note to the VDSO so glibc can check the kernel's version without a
+  uname().
+* A fix to force the bootloader to initialize the boot spin tables, which still
+  get used as a fallback when SBI-0.1 is enabled.
+
+----------------------------------------------------------------
+Andreas Schwab (1):
+      riscv: add Linux note to vdso
+
+Anup Patel (3):
+      RISC-V: Export riscv_cpuid_to_hartid_mask() API
+      RISC-V: Add bitmap reprensenting ISA features common across CPUs
+      RISC-V: Remove N-extension related defines
+
+Atish Patra (1):
+      RISC-V: Remove unused code from STRICT_KERNEL_RWX
+
+Vincent Chen (1):
+      riscv: set max_pfn to the PFN of the last page
+
+Zong Li (1):
+      riscv: force __cpu_up_ variables to put in data section
+
+ arch/riscv/include/asm/csr.h        |  3 --
+ arch/riscv/include/asm/hwcap.h      | 22 ++++++++++
+ arch/riscv/include/asm/set_memory.h |  8 ----
+ arch/riscv/kernel/cpu_ops.c         |  4 +-
+ arch/riscv/kernel/cpufeature.c      | 83 +++++++++++++++++++++++++++++++++++--
+ arch/riscv/kernel/smp.c             |  2 +
+ arch/riscv/kernel/vdso/Makefile     |  2 +-
+ arch/riscv/kernel/vdso/note.S       | 12 ++++++
+ arch/riscv/mm/init.c                | 19 +--------
+ 9 files changed, 121 insertions(+), 34 deletions(-)
+ create mode 100644 arch/riscv/kernel/vdso/note.S
 
