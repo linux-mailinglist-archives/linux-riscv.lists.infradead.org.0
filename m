@@ -2,65 +2,61 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68F0B1CCFAB
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 04:24:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C8DA91CD048
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 05:15:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6NpkFR3ZboZJvHN9abGcu2t8nSf6ftBXsP6SnQh7Y/E=; b=lEWPW2HSybm5t3
-	qEi1+H5K027Od6AvGccxqRDiFs6aj0Dy815a79SmDVFLD5wjOq1IQUdJF19xKir7QnbPGB1fo9nvW
-	dsi8JR+GUbmbtLP9WDJKMWG0toEgYBrJsnrNufcHnHeHLj1l92l0n6/8NUMtArxpqU1Lr0MsiXDAH
-	vaFRw+ExPlAu5HFZNpe+/JIacSF4lINIqZpojeWF+MafXlx8WclcgYd1jmc7NDTtfV8yu5Q4I4LL8
-	+KvuPONQwzfIvAIEaSAbvoCSnapg4Ij3mKVi2n3UEuvp/Qr50zxdx+UOzx5La+kmS1z8N7ss6ra7S
-	yJvOMLn9UlDiYSO0GaoA==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fyOtN5C2IXpJ2CLyBmquWLoacj4ipvLOhzs7tV7M5ec=; b=s3oVurZVNLEEQc
+	UXrBnGh7aPCg8DKcpRhdYmLp6vjxD6BxTAHwwgSuG1kt5PlX7egjeuapr7NxThnIJsTrmtOHZRhKA
+	mIUDMUsGu2I/C7LQaw7DJAR/ke8z1mXF6lD2c/QMbmoL/jb3QUywVAinC4HiwSAZ6QTRAcxAO5fPJ
+	2CTsCIOrl8cHGu9NeRdz0GzTQECvbmY6myY8jeg6mbIDcdU4DfCDl69tiMohEW1kypM6rFyNhyaV7
+	xzaFO1Z5MNRDlaIAq/bhnnlq+h8JF3n1jEyLYiE5eejWS8KxsHKJj3SJb1dqmWJiuTDsea6JHOdp1
+	4sCdXu/rYYW/gXr+dTLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jXy6m-0003u5-0a; Mon, 11 May 2020 02:23:56 +0000
-Received: from szxga06-in.huawei.com ([45.249.212.32] helo=huawei.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jXy6Z-0003iy-Df
- for linux-riscv@lists.infradead.org; Mon, 11 May 2020 02:23:45 +0000
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 19131B6D5A615D7DDB22;
- Mon, 11 May 2020 10:17:19 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 11 May 2020 10:17:08 +0800
-From: Kefeng Wang <wangkefeng.wang@huawei.com>
-To: Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
- <linux-riscv@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH 10/10] riscv: mmiowb: Fix implicit declaration of function
- 'smp_processor_id'
-Date: Mon, 11 May 2020 10:20:01 +0800
-Message-ID: <20200511022001.179767-11-wangkefeng.wang@huawei.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200511022001.179767-1-wangkefeng.wang@huawei.com>
-References: <20200511022001.179767-1-wangkefeng.wang@huawei.com>
+	id 1jXyui-0003US-Si; Mon, 11 May 2020 03:15:32 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jXyuY-0003NB-In; Mon, 11 May 2020 03:15:24 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8B3601FB;
+ Sun, 10 May 2020 20:15:20 -0700 (PDT)
+Received: from [10.163.72.179] (unknown [10.163.72.179])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id F18C63F305;
+ Sun, 10 May 2020 20:15:09 -0700 (PDT)
+Subject: Re: [PATCH V3 2/3] mm/hugetlb: Define a generic fallback for
+ is_hugepage_only_range()
+To: Mike Kravetz <mike.kravetz@oracle.com>, linux-mm@kvack.org,
+ akpm@linux-foundation.org
+References: <1588907271-11920-1-git-send-email-anshuman.khandual@arm.com>
+ <1588907271-11920-3-git-send-email-anshuman.khandual@arm.com>
+ <9fc622e1-45ff-b79f-ebe0-35614837456c@oracle.com>
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+Message-ID: <c21ab871-da06-baf6-ba31-80b13402b8c9@arm.com>
+Date: Mon, 11 May 2020 08:44:39 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+In-Reply-To: <9fc622e1-45ff-b79f-ebe0-35614837456c@oracle.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200510_192343_626297_2D879965 
-X-CRM114-Status: UNSURE (   6.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200510_201522_731996_C236D91D 
+X-CRM114-Status: GOOD (  16.54  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [45.249.212.32 listed in wl.mailspike.net]
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [45.249.212.32 listed in list.dnswl.org]
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,54 +68,119 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Hulk Robot <hulkci@huawei.com>, Kefeng Wang <wangkefeng.wang@huawei.com>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-kernel@vger.kernel.org,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Fenghua Yu <fenghua.yu@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Tony Luck <tony.luck@intel.com>, linux-parisc@vger.kernel.org,
+ linux-mips@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-In file included from ./../include/linux/compiler_types.h:68,
-                 from <command-line>:
-../include/asm-generic/mmiowb.h: In function ‘mmiowb_set_pending’:
-../include/asm-generic/percpu.h:34:38: error: implicit declaration of function ‘smp_processor_id’; did you mean ‘raw_smp_processor_id’? [-Werror=implicit-function-declaration]
- #define my_cpu_offset per_cpu_offset(smp_processor_id())
-                                      ^~~~~~~~~~~~~~~~
-../include/linux/compiler-gcc.h:58:26: note: in definition of macro ‘RELOC_HIDE’
-  (typeof(ptr)) (__ptr + (off));     \
-                          ^~~
-../include/linux/percpu-defs.h:249:2: note: in expansion of macro ‘SHIFT_PERCPU_PTR’
-  SHIFT_PERCPU_PTR(ptr, my_cpu_offset);    \
-  ^~~~~~~~~~~~~~~~
-../include/asm-generic/percpu.h:34:23: note: in expansion of macro ‘per_cpu_offset’
- #define my_cpu_offset per_cpu_offset(smp_processor_id())
-                       ^~~~~~~~~~~~~~
-../include/linux/percpu-defs.h:249:24: note: in expansion of macro ‘my_cpu_offset’
-  SHIFT_PERCPU_PTR(ptr, my_cpu_offset);    \
-                        ^~~~~~~~~~~~~
-../include/asm-generic/mmiowb.h:30:26: note: in expansion of macro ‘this_cpu_ptr’
- #define __mmiowb_state() this_cpu_ptr(&__mmiowb_state)
-                          ^~~~~~~~~~~~
-../include/asm-generic/mmiowb.h:37:28: note: in expansion of macro ‘__mmiowb_state’
-  struct mmiowb_state *ms = __mmiowb_state();
-                            ^~~~~~~~~~~~~~
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
----
- arch/riscv/include/asm/mmiowb.h | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/arch/riscv/include/asm/mmiowb.h b/arch/riscv/include/asm/mmiowb.h
-index bb4091ff4a21..0b2333e71fdc 100644
---- a/arch/riscv/include/asm/mmiowb.h
-+++ b/arch/riscv/include/asm/mmiowb.h
-@@ -9,6 +9,7 @@
-  */
- #define mmiowb()	__asm__ __volatile__ ("fence o,w" : : : "memory");
- 
-+#include <linux/smp.h>
- #include <asm-generic/mmiowb.h>
- 
- #endif	/* _ASM_RISCV_MMIOWB_H */
--- 
-2.26.2
+On 05/09/2020 03:52 AM, Mike Kravetz wrote:
+> On 5/7/20 8:07 PM, Anshuman Khandual wrote:
+>> There are multiple similar definitions for is_hugepage_only_range() on
+>> various platforms. Lets just add it's generic fallback definition for
+>> platforms that do not override. This help reduce code duplication.
+>>
+>> Cc: Russell King <linux@armlinux.org.uk>
+>> Cc: Catalin Marinas <catalin.marinas@arm.com>
+>> Cc: Will Deacon <will@kernel.org>
+>> Cc: Tony Luck <tony.luck@intel.com>
+>> Cc: Fenghua Yu <fenghua.yu@intel.com>
+>> Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+>> Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
+>> Cc: Helge Deller <deller@gmx.de>
+>> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+>> Cc: Paul Mackerras <paulus@samba.org>
+>> Cc: Michael Ellerman <mpe@ellerman.id.au>
+>> Cc: Paul Walmsley <paul.walmsley@sifive.com>
+>> Cc: Palmer Dabbelt <palmer@dabbelt.com>
+>> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+>> Cc: Vasily Gorbik <gor@linux.ibm.com>
+>> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+>> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+>> Cc: Rich Felker <dalias@libc.org>
+>> Cc: "David S. Miller" <davem@davemloft.net>
+>> Cc: Thomas Gleixner <tglx@linutronix.de>
+>> Cc: Ingo Molnar <mingo@redhat.com>
+>> Cc: Borislav Petkov <bp@alien8.de>
+>> Cc: "H. Peter Anvin" <hpa@zytor.com>
+>> Cc: Mike Kravetz <mike.kravetz@oracle.com>
+>> Cc: Andrew Morton <akpm@linux-foundation.org>
+>> Cc: x86@kernel.org
+>> Cc: linux-arm-kernel@lists.infradead.org
+>> Cc: linux-ia64@vger.kernel.org
+>> Cc: linux-mips@vger.kernel.org
+>> Cc: linux-parisc@vger.kernel.org
+>> Cc: linuxppc-dev@lists.ozlabs.org
+>> Cc: linux-riscv@lists.infradead.org
+>> Cc: linux-s390@vger.kernel.org
+>> Cc: linux-sh@vger.kernel.org
+>> Cc: sparclinux@vger.kernel.org
+>> Cc: linux-mm@kvack.org
+>> Cc: linux-arch@vger.kernel.org
+>> Cc: linux-kernel@vger.kernel.org
+>> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+>> ---
+>>  arch/arm/include/asm/hugetlb.h     | 6 ------
+>>  arch/arm64/include/asm/hugetlb.h   | 6 ------
+>>  arch/ia64/include/asm/hugetlb.h    | 1 +
+>>  arch/mips/include/asm/hugetlb.h    | 7 -------
+>>  arch/parisc/include/asm/hugetlb.h  | 6 ------
+>>  arch/powerpc/include/asm/hugetlb.h | 1 +
+>>  arch/riscv/include/asm/hugetlb.h   | 6 ------
+>>  arch/s390/include/asm/hugetlb.h    | 7 -------
+>>  arch/sh/include/asm/hugetlb.h      | 6 ------
+>>  arch/sparc/include/asm/hugetlb.h   | 6 ------
+>>  arch/x86/include/asm/hugetlb.h     | 6 ------
+>>  include/linux/hugetlb.h            | 9 +++++++++
+>>  12 files changed, 11 insertions(+), 56 deletions(-)
+>>
+> <snip>
+>> diff --git a/include/linux/hugetlb.h b/include/linux/hugetlb.h
+>> index 43a1cef8f0f1..c01c0c6f7fd4 100644
+>> --- a/include/linux/hugetlb.h
+>> +++ b/include/linux/hugetlb.h
+>> @@ -591,6 +591,15 @@ static inline unsigned int blocks_per_huge_page(struct hstate *h)
+>>  
+>>  #include <asm/hugetlb.h>
+>>  
+>> +#ifndef is_hugepage_only_range
+>> +static inline int is_hugepage_only_range(struct mm_struct *mm,
+>> +					unsigned long addr, unsigned long len)
+>> +{
+>> +	return 0;
+>> +}
+>> +#define is_hugepage_only_range is_hugepage_only_range
+>> +#endif
+>> +
+>>  #ifndef arch_make_huge_pte
+>>  static inline pte_t arch_make_huge_pte(pte_t entry, struct vm_area_struct *vma,
+>>  				       struct page *page, int writable)
+>>
+> 
+> Did you try building without CONFIG_HUGETLB_PAGE defined?  I'm guessing
 
+Yes I did for multiple platforms (s390, arm64, ia64, x86, powerpc etc).
+
+> that you need a stub for is_hugepage_only_range().  Or, perhaps add this
+> to asm-generic/hugetlb.h?
+> 
+There is already a stub (include/linux/hugetlb.h) when !CONFIG_HUGETLB_PAGE.
 
