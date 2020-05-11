@@ -2,56 +2,111 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E30D1CE0B4
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 18:38:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B44A71CE343
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 20:54:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bCpTMvJJlCSM1A/nBsA2GeBioMk9jwYptfUvU7+eE2k=; b=JcVGs4pcjCgkC+tewPC94XfPW
-	do3VLLA5iI0N7ipk7JYrhfsLpW3VyZyejzm8hRZcRiiCPmivuemAPWp1qP2nANXvKDGKpKvLu/7k9
-	PsV4JczAW2G/pz8h6nEFH/yUao3PRcGHppGBGTDKx3XncfkXff6o3w3nYsVdBWOk/8ZZ3NPoLqc2R
-	SU/RGygJSElzQ45yYD8cUf695JElP4Rt3OaXFoWT9BBna3DnweqqCm/CSo9JaQvKnYysqBKhmGJtg
-	MTKuFufsj91nfi8gXlmGM1M7pNiR4ra+Ud+Kr84oZ0N9yi4wTz7WNUwXa6weTpYLv9NCyKEs3Bjxo
-	D+lIgM3Lg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lmEoEgyjfI3GJtDHmilX9SzLNvOcuTcOvW+PKUiq8MI=; b=D+gFEtrnI0GZmf
+	i0ZUZQhr4dAFVrUASJDUPRCV9XuY/9tyzO8gtr+F+Lf8IPdLW//iyHjVdYSaeMa9Xe7w7l9kClM7E
+	3aeotILU8zkHv/v80S2O0v2vds26rctIzT+OsPohfeyqs4koBks3bABUESZRbjh1eHZvOv3r4BBeR
+	gy1cIypKENk9/Bvm24nMEPtaOi0o055YCKODp+hXB1YO6PKqSfw6IShHRmhEZ2sNjoSVFNk1cTHKI
+	jonlp0FkK/uyD6+tnyx1qW3HxCOiCS8wlyVyhohXxnVoZC1ncAyg56yi5+cjku8Z9A7JIrgsVPkmL
+	n+7wdJjdijS7759mUe2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYBRR-0000vE-S4; Mon, 11 May 2020 16:38:09 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1jYDZE-0006hT-Or; Mon, 11 May 2020 18:54:20 +0000
+Received: from userp2120.oracle.com ([156.151.31.85])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYBR8-0000Xi-KW; Mon, 11 May 2020 16:37:52 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id C9A7568CEE; Mon, 11 May 2020 18:37:45 +0200 (CEST)
-Date: Mon, 11 May 2020 18:37:44 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH 31/31] module: move the set_fs hack for
- flush_icache_range to m68k
-Message-ID: <20200511163744.GB32228@lst.de>
-References: <20200510075510.987823-1-hch@lst.de>
- <20200510075510.987823-32-hch@lst.de>
- <CAMuHMdU_OxNoKfO=i903kx0mgk0-i2h4u2ase3m9_dn6oFh_5g@mail.gmail.com>
- <20200511151120.GA28634@lst.de>
- <CAMuHMdW1S91i3x0unNcJnypHse7ifynGb4dZcVhJaemR3GH1Pg@mail.gmail.com>
+ id 1jYDZ9-0006gS-Oc; Mon, 11 May 2020 18:54:17 +0000
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04BIl1RS193726;
+ Mon, 11 May 2020 18:52:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=lmEoEgyjfI3GJtDHmilX9SzLNvOcuTcOvW+PKUiq8MI=;
+ b=EHSd0gyOZ6mJk8AUfljgZqe/l84M3dxdDwcVRDw3lihli7/i2Ooh9bj5w+NhMbvq+dFl
+ +FaLdDGTwvHat1D1fTX9EysW7L+8m1FqNmjnP1V9Grb4VhLqayw4Rd6B5b5ZCDBnZrfU
+ JWaJTpVkRmmbWYekhkSap850c0mJaWwjl9pi6axUTNK4z+ZIX+AX003KGJoo239cmPWE
+ oqeYy7f7nIQBOOKDabvZBLSDOUgQ6SCUSohzsOuqTGGHU+E0BbpmeZ+V/KBXTwEmpuzQ
+ IyfctIDTRsMjj+/zrpJ901i0t+bUlmAVcrTybfNsnwobMod1pi0U9lWm3kgq5X7GLtfk dg== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2120.oracle.com with ESMTP id 30x3mbpvsc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Mon, 11 May 2020 18:52:48 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04BImDbQ039635;
+ Mon, 11 May 2020 18:52:48 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by userp3020.oracle.com with ESMTP id 30x69rjjya-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 11 May 2020 18:52:48 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04BIqcwi024982;
+ Mon, 11 May 2020 18:52:39 GMT
+Received: from [192.168.2.157] (/73.164.160.178)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 11 May 2020 11:52:37 -0700
+Subject: Re: [PATCH V3 2/3] mm/hugetlb: Define a generic fallback for
+ is_hugepage_only_range()
+To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org,
+ akpm@linux-foundation.org
+References: <1588907271-11920-1-git-send-email-anshuman.khandual@arm.com>
+ <1588907271-11920-3-git-send-email-anshuman.khandual@arm.com>
+ <9fc622e1-45ff-b79f-ebe0-35614837456c@oracle.com>
+ <c21ab871-da06-baf6-ba31-80b13402b8c9@arm.com>
+From: Mike Kravetz <mike.kravetz@oracle.com>
+Message-ID: <ab931b52-1f1b-1ff3-47ee-377de3ed1a98@oracle.com>
+Date: Mon, 11 May 2020 11:52:34 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdW1S91i3x0unNcJnypHse7ifynGb4dZcVhJaemR3GH1Pg@mail.gmail.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <c21ab871-da06-baf6-ba31-80b13402b8c9@arm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9618
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ malwarescore=0 adultscore=0
+ spamscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2005110142
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9618
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 impostorscore=0
+ mlxscore=0 suspectscore=0 bulkscore=0 mlxlogscore=999 phishscore=0
+ malwarescore=0 lowpriorityscore=0 spamscore=0 adultscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2005110142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_093750_977193_E9E9B4F8 
-X-CRM114-Status: GOOD (  18.16  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200511_115415_937947_AFC5F65A 
+X-CRM114-Status: GOOD (  16.94  )
+X-Spam-Score: -2.7 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.85 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [156.151.31.85 listed in wl.mailspike.net]
+ -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,171 +118,47 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
- Linux-sh list <linux-sh@vger.kernel.org>, Roman Zippel <zippel@linux-m68k.org>,
- "open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>,
- Linux MM <linux-mm@kvack.org>, sparclinux <sparclinux@vger.kernel.org>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- Linux-Arch <linux-arch@vger.kernel.org>, linux-c6x-dev@linux-c6x.org,
- "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
- the arch/x86 maintainers <x86@kernel.org>,
- "open list:TENSILICA XTENSA PORT \(xtensa\)" <linux-xtensa@linux-xtensa.org>,
- Arnd Bergmann <arnd@arndb.de>, Jessica Yu <jeyu@kernel.org>,
- linux-um <linux-um@lists.infradead.org>,
- linux-m68k <linux-m68k@lists.linux-m68k.org>,
- Openrisc <openrisc@lists.librecores.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Michal Simek <monstr@monstr.eu>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- alpha <linux-alpha@vger.kernel.org>,
- Linux FS Devel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
+Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
+ linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, linux-kernel@vger.kernel.org,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
+ sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
+ x86@kernel.org, Russell King <linux@armlinux.org.uk>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Fenghua Yu <fenghua.yu@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Tony Luck <tony.luck@intel.com>, linux-parisc@vger.kernel.org,
+ linux-mips@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, May 11, 2020 at 05:24:30PM +0200, Geert Uytterhoeven wrote:
-> > Btw, do you know what part of flush_icache_range relied on set_fs?
-> > Do any of the m68k maintainers have an idea how to handle that in
-> > a nicer way when we can split the implementations?
+On 5/10/20 8:14 PM, Anshuman Khandual wrote:
+> On 05/09/2020 03:52 AM, Mike Kravetz wrote:
+>> On 5/7/20 8:07 PM, Anshuman Khandual wrote:
+>>
+>> Did you try building without CONFIG_HUGETLB_PAGE defined?  I'm guessing
 > 
-> arch/m68k/mm/cache.c:virt_to_phys_slow()
+> Yes I did for multiple platforms (s390, arm64, ia64, x86, powerpc etc).
 > 
-> All instructions that look up addresses in the page tables look at the
-> source/destination function codes (SFC/DFC) to know if they have to use
-> the supervisor or user page tables.
-> So the actual implementation is the same: set_fs() merely configures
-> SFC/DFC, to select the address space to use.
+>> that you need a stub for is_hugepage_only_range().  Or, perhaps add this
+>> to asm-generic/hugetlb.h?
+>>
+> There is already a stub (include/linux/hugetlb.h) when !CONFIG_HUGETLB_PAGE.
+> 
 
-So instead of the magic instructions could we use the normal kernel
-virt to phys helpers instead of switching the addresses space?  Something
-like this patch on top of the series:
+Thanks!  I missed that stub in the existing code.  I like the removal of
+redundant code.
 
-diff --git a/arch/m68k/mm/cache.c b/arch/m68k/mm/cache.c
-index 5ecb3310e8745..5a861a14c1e69 100644
---- a/arch/m68k/mm/cache.c
-+++ b/arch/m68k/mm/cache.c
-@@ -71,47 +71,87 @@ static unsigned long virt_to_phys_slow(unsigned long vaddr)
- 	return 0;
- }
- 
--/* Push n pages at kernel virtual address and clear the icache */
--/* RZ: use cpush %bc instead of cpush %dc, cinv %ic */
--void flush_icache_user_range(unsigned long address, unsigned long endaddr)
-+static inline void coldfire_flush_icache_range(unsigned long start,
-+		unsigned long end)
- {
--	if (CPU_IS_COLDFIRE) {
--		unsigned long start, end;
--		start = address & ICACHE_SET_MASK;
--		end = endaddr & ICACHE_SET_MASK;
--		if (start > end) {
--			flush_cf_icache(0, end);
--			end = ICACHE_MAX_ADDR;
--		}
--		flush_cf_icache(start, end);
--	} else if (CPU_IS_040_OR_060) {
--		address &= PAGE_MASK;
--
--		do {
--			asm volatile ("nop\n\t"
--				      ".chip 68040\n\t"
--				      "cpushp %%bc,(%0)\n\t"
--				      ".chip 68k"
--				      : : "a" (virt_to_phys_slow(address)));
--			address += PAGE_SIZE;
--		} while (address < endaddr);
--	} else {
--		unsigned long tmp;
--		asm volatile ("movec %%cacr,%0\n\t"
--			      "orw %1,%0\n\t"
--			      "movec %0,%%cacr"
--			      : "=&d" (tmp)
--			      : "di" (FLUSH_I));
-+	start &= ICACHE_SET_MASK;
-+	end &= ICACHE_SET_MASK;
-+
-+	if (start > end) {
-+		flush_cf_icache(0, end);
-+		end = ICACHE_MAX_ADDR;
- 	}
-+	flush_cf_icache(start, end);
-+}
-+
-+static inline void mc68040_flush_icache_user_range(unsigned long start,
-+		unsigned long end)
-+{
-+	start &= PAGE_MASK;
-+
-+	do {
-+		asm volatile ("nop\n\t"
-+			      ".chip 68040\n\t"
-+			      "cpushp %%bc,(%0)\n\t"
-+			      ".chip 68k"
-+			      : : "a" (virt_to_phys_slow(start)));
-+		start += PAGE_SIZE;
-+	} while (start < end);
-+}
-+
-+static inline void mc68020_flush_icache_range(unsigned long start,
-+		unsigned long end)
-+{
-+	unsigned long tmp;
-+
-+	asm volatile ("movec %%cacr,%0\n\t"
-+		      "orw %1,%0\n\t"
-+		      "movec %0,%%cacr"
-+		      : "=&d" (tmp)
-+		      : "di" (FLUSH_I));
-+}
-+
-+void flush_icache_user_range(unsigned long start, unsigned long end)
-+{
-+	if (CPU_IS_COLDFIRE)
-+		coldfire_flush_icache_range(start, end);
-+	else if (CPU_IS_040_OR_060)
-+		mc68040_flush_icache_user_range(start, end);
-+	else
-+		mc68020_flush_icache_range(start, end);
- }
- 
--void flush_icache_range(unsigned long address, unsigned long endaddr)
-+static inline void mc68040_flush_icache_range(unsigned long start,
-+		unsigned long end)
- {
--	mm_segment_t old_fs = get_fs();
-+	start &= PAGE_MASK;
-+
-+	do {
-+		void *vaddr = (void *)start;
-+		phys_addr_t paddr;
-+
-+		if (is_vmalloc_addr(vaddr))
-+			paddr = page_to_phys(vmalloc_to_page(vaddr));
-+		else
-+			paddr = virt_to_phys(vaddr);
-+
-+		asm volatile ("nop\n\t"
-+			      ".chip 68040\n\t"
-+			      "cpushp %%bc,(%0)\n\t"
-+			      ".chip 68k"
-+			      : : "a" (paddr));
-+		start += PAGE_SIZE;
-+	} while (start < end);
-+}
- 
--	set_fs(KERNEL_DS);
--	flush_icache_user_range(address, endaddr);
--	set_fs(old_fs);
-+void flush_icache_range(unsigned long start, unsigned long end)
-+{
-+	if (CPU_IS_COLDFIRE)
-+		coldfire_flush_icache_range(start, end);
-+	else if (CPU_IS_040_OR_060)
-+		mc68040_flush_icache_range(start, end);
-+	else
-+		mc68020_flush_icache_range(start, end);
- }
- EXPORT_SYMBOL(flush_icache_range);
- 
+Acked-by: Mike Kravetz <mike.kravetz@oracle.com>
+
+-- 
+Mike Kravetz
 
