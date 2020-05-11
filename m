@@ -2,76 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D823F1CDEDE
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 17:25:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D2F11CDEE5
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 17:26:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cFOqYFe+JnxanB4tWXMEfN+/EOvlslN0N0IK+ztKBU4=; b=cBwBOlPM3XfyT0IASTTeg6I79
-	tELXsL3qkfAsvKqzXQ287Xtjh/ZWrEyit4dOJgCpNpOVz7m7ddvnHyifIE7qfPqBOQLf8VA0ryd+N
-	qGukkhcE++ElpdALau6ZJSf2xgac1ygfrSTzWlpsdkOuyURJK40JdluJ+4ZrNxA+NB/gCAxOBRc8T
-	8xY1FNPbyS10ZI1zEHax+IMfdNuriPI4f8bgSlA80e5eDcRF/FrbyJlFoHck1mjIJPE+3QreybV+Q
-	hp4TnS4W4bJdeCzekENQQNkJh6LtzRO0fchvh7/ytrMgRY6w2VesLiJzjbra5zW+LqAMsSAoJ7/2s
-	0xAwpQJlQ==;
+	 bh=TzBIrOjeonGRZOL/Fq7k9DQ5ZvmwekoG5+JYmyzDCXE=; b=Oa6LxL+eabpaxPmE9pg8eeA/P
+	EFkj+1AUFYO9AM1mqRgDyfzmNakDArpbBjfrr+jdc8+vm+xmAVqDLWo4TyqNzzAYvMhI2HOldMg6A
+	sIatuFXIIY2oQmeP8RjEKa9Qcv4JtcW5PDA+mcsiBM/fs1LrOktWMhAsyE75W2+IKR+Gwh34W63dl
+	v9Hhlo3MCJeM9/k+GsmWukdg3+IO3iYskq6kiM7ITLWqInV7W4KN3aYZ5KoyNo+bjMZQQ95A0p8ge
+	pm+hDW9mQyenKG8ol6Cid/yt8ymc1oA/1Gt4eeYw8wDTEcMHRgMXj7eaKzRmBR0qnc7jetEHVkOag
+	tk4Sxk1UA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYAIX-0008QH-PF; Mon, 11 May 2020 15:24:53 +0000
-Received: from mail-oo1-f66.google.com ([209.85.161.66])
+	id 1jYAJd-0002cf-Lh; Mon, 11 May 2020 15:26:01 +0000
+Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYAIN-0008Dy-5K; Mon, 11 May 2020 15:24:44 +0000
-Received: by mail-oo1-f66.google.com with SMTP id r1so2013113oog.7;
- Mon, 11 May 2020 08:24:42 -0700 (PDT)
+ id 1jYAJa-0002bv-F5; Mon, 11 May 2020 15:25:59 +0000
+Received: by mail-oi1-f196.google.com with SMTP id i13so15412662oie.9;
+ Mon, 11 May 2020 08:25:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cFOqYFe+JnxanB4tWXMEfN+/EOvlslN0N0IK+ztKBU4=;
- b=LAevE5orsR+iMiJaKeCYT11l3TlPBBX8OyJnlWjTkN9l3okMj1jwRYK9Vq4EMan6zL
- QUuw4uIqplC8IHr5QxJuQZQbB5w4zRIKM1irGACVKc8rZ6GYV0Qx7TnBmAjMy6PRnAa1
- OLCZNPcxXPeKpweyaQO4/u/sgkL9OFQ7nRX9UQazjJXnDM6aPUkRQsAKcMuc5xtL+5i2
- hLP4zVgtR0J/7GJDIcaLMNx4HWYYUvqok81ONp3jLi3lXTuKoiOq1fu69cxOBBMd+RqQ
- AYOS4Ye3Q0ysM7N8IGvTnOfCmB+9TCauwXlEoOlBLAFjUwD+Uj6yahr1Q6IBpmjZaqk2
- AxpQ==
-X-Gm-Message-State: AGi0PuYFAf0SLsBTrDKP63zSWKPP2AScjL+zXOT4XkGsD/TOjtnlk590
- 32ykMfVphChTApN9jaqA1PX60KyYOByJcwzdYxo=
-X-Google-Smtp-Source: APiQypJasCN4yl8lWM1FRmzaz39ukL/iWbljLpcbY1TKIvOnIUfi1IKvTWCvzobh4HXgocJWo6GBkm5ORmsQ5s6pFSU=
-X-Received: by 2002:a4a:d204:: with SMTP id c4mr2380562oos.1.1589210682093;
- Mon, 11 May 2020 08:24:42 -0700 (PDT)
+ bh=TzBIrOjeonGRZOL/Fq7k9DQ5ZvmwekoG5+JYmyzDCXE=;
+ b=k1vjgIzwIaxtMal6k1HlmtUEhsmHfGxyR0qOOMB3MjQlAT8lzNafQsWV5FE3x/JZZh
+ CsZbdkaQnjM20Scm2u0E6aVaK7QMvlk4jY8CqffutUwBtZ6LDgRWzALOQsPbURxvl+Mx
+ RH4B3FG3XuUOZpRegL5g7OPN8mgb+cvm5X1l9lK+pT8UmiOaY4JKZD69x4VPWXWLdeE9
+ ncwNvRPDgiXuF0EBFYJ0pLg6UIgEjo2IrjoUfFW7VhZ2EIHiFEg4uG5qFHE1Zzf0yU2Z
+ rg53km2Sp+37/nVSzEnfJrNabNJt4f1eWduZFCVNw35qyYUDMGWIt1q8UPR1Ve98ukUU
+ MgHg==
+X-Gm-Message-State: AGi0PuZw1tYr8k4EB7bDHNObWeyA55jexDjjPo00qj0BFd1Ti2pARD1e
+ 6MupKhhzc1Wj8IjvfWp9YUm9bMbQ+A/8TPogi28=
+X-Google-Smtp-Source: APiQypLlj1mTr31cEwJB2xy6sDTZQtzFBc6S7Z09a7MvI75cUG4xFy+vj6rnOik7yeSDKBHlS8j7JE0DJYDjRznsD0s=
+X-Received: by 2002:aca:895:: with SMTP id 143mr19322774oii.153.1589210756876; 
+ Mon, 11 May 2020 08:25:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200510075510.987823-1-hch@lst.de>
- <20200510075510.987823-32-hch@lst.de>
- <CAMuHMdU_OxNoKfO=i903kx0mgk0-i2h4u2ase3m9_dn6oFh_5g@mail.gmail.com>
- <20200511151120.GA28634@lst.de>
-In-Reply-To: <20200511151120.GA28634@lst.de>
+ <CAMuHMdXazsBw0mjJd0uFHQud7qbb5-Uw-PTDB3+-M=huRWOfgQ@mail.gmail.com>
+ <20200511151356.GB28634@lst.de>
+In-Reply-To: <20200511151356.GB28634@lst.de>
 From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 11 May 2020 17:24:30 +0200
-Message-ID: <CAMuHMdW1S91i3x0unNcJnypHse7ifynGb4dZcVhJaemR3GH1Pg@mail.gmail.com>
-Subject: Re: [PATCH 31/31] module: move the set_fs hack for flush_icache_range
- to m68k
+Date: Mon, 11 May 2020 17:25:45 +0200
+Message-ID: <CAMuHMdU1xAmyWysi5xRoaRL7PFurPncvEL0CcEY0V_sUz3EJPw@mail.gmail.com>
+Subject: Re: sort out the flush_icache_range mess
 To: Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_082443_204476_922DBF18 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20200511_082558_505279_3E8C2CBC 
+X-CRM114-Status: GOOD (  12.28  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.161.66 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.161.66 listed in wl.mailspike.net]
+ no trust [209.85.167.196 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [geert.uytterhoeven[at]gmail.com]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.196 listed in wl.mailspike.net]
  0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
@@ -110,30 +107,29 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 Hi Christoph,
 
-On Mon, May 11, 2020 at 5:11 PM Christoph Hellwig <hch@lst.de> wrote:
-> On Mon, May 11, 2020 at 09:40:39AM +0200, Geert Uytterhoeven wrote:
-> > On Sun, May 10, 2020 at 9:57 AM Christoph Hellwig <hch@lst.de> wrote:
-> > >
-> > > flush_icache_range generally operates on kernel addresses, but for some
-> > > reason m68k needed a set_fs override.  Move that into the m68k code
-> > > insted of keeping it in the module loader.
-> > >
-> > > Signed-off-by: Christoph Hellwig <hch@lst.de>
+On Mon, May 11, 2020 at 5:14 PM Christoph Hellwig <hch@lst.de> wrote:
+> On Mon, May 11, 2020 at 09:46:17AM +0200, Geert Uytterhoeven wrote:
+> > On Sun, May 10, 2020 at 9:55 AM Christoph Hellwig <hch@lst.de> wrote:
+> > > none of which really are used by a typical MMU enabled kernel, as a.out can
+> > > only be build for alpha and m68k to start with.
 > >
-> > Reviewed-by: Geert Uytterhoeven <geert@linux-m68k.org>
-> > Acked-by: Geert Uytterhoeven <geert@linux-m68k.org>
+> > Quoting myself:
+> > "I think it's safe to assume no one still runs a.out binaries on m68k."
+> > http://lore.kernel.org/r/CAMuHMdW+m0Q+j3rsQdMXnrEPm+XB5Y2AQrxW5sD1mZAKgmEqoA@mail.gmail.com
 >
-> Btw, do you know what part of flush_icache_range relied on set_fs?
-> Do any of the m68k maintainers have an idea how to handle that in
-> a nicer way when we can split the implementations?
+> Do you want to drop the:
+>
+>     select HAVE_AOUT if MMU
+>
+> for m68k then?
 
-arch/m68k/mm/cache.c:virt_to_phys_slow()
+If that helps to reduce maintenance, it's fine for me.
+That leaves alpha as the sole user?
 
-All instructions that look up addresses in the page tables look at the
-source/destination function codes (SFC/DFC) to know if they have to use
-the supervisor or user page tables.
-So the actual implementation is the same: set_fs() merely configures
-SFC/DFC, to select the address space to use.
+> Note that we'll still need flush_icache_user_range for m68k with mmu,
+> as it also allows binfmt_flat for mmu configs.
+
+Understood.
 
 Gr{oetje,eeting}s,
 
