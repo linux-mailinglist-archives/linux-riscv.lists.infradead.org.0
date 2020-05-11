@@ -2,61 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8DA91CD048
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 05:15:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D95691CD2B6
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 09:36:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fyOtN5C2IXpJ2CLyBmquWLoacj4ipvLOhzs7tV7M5ec=; b=s3oVurZVNLEEQc
-	UXrBnGh7aPCg8DKcpRhdYmLp6vjxD6BxTAHwwgSuG1kt5PlX7egjeuapr7NxThnIJsTrmtOHZRhKA
-	mIUDMUsGu2I/C7LQaw7DJAR/ke8z1mXF6lD2c/QMbmoL/jb3QUywVAinC4HiwSAZ6QTRAcxAO5fPJ
-	2CTsCIOrl8cHGu9NeRdz0GzTQECvbmY6myY8jeg6mbIDcdU4DfCDl69tiMohEW1kypM6rFyNhyaV7
-	xzaFO1Z5MNRDlaIAq/bhnnlq+h8JF3n1jEyLYiE5eejWS8KxsHKJj3SJb1dqmWJiuTDsea6JHOdp1
-	4sCdXu/rYYW/gXr+dTLA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=l3VY/12wWR1zHjOHzyqluXVdqy0F7FQQDSlqPm2Zx5o=; b=ZHkNlTHUi0qCUQy3+yQH0lOqt
+	/Umt5C7Q9AqfXP7iaSVszDrLxOhoAlwR4aDMQqI4s+d9bYgOZkEn/DOJiaCWtLgooeWTq7q6/UveD
+	Q4E9JphYWy1w7ax43jsSN4NNhk9bTyAYsU3WzIDyUeZxU4jugQApE666/nRvqKxQo7+otQCiHzE/D
+	+3lr1ywMwprXQc5JNHfC7+wHr8jfSBQAdhlSe07MFtZABHJfUXVhOoFSeIsWK7PiIZNBoZeEikRUQ
+	tRSDzcKSbj7gUCEZKTt34cNFB7rK1ZnUFVNrqvvMXK87oaTUYlN4qYSyF2jUp06AhTELqh148u4MO
+	Jb9PM7GpA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jXyui-0003US-Si; Mon, 11 May 2020 03:15:32 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jXyuY-0003NB-In; Mon, 11 May 2020 03:15:24 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8B3601FB;
- Sun, 10 May 2020 20:15:20 -0700 (PDT)
-Received: from [10.163.72.179] (unknown [10.163.72.179])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id F18C63F305;
- Sun, 10 May 2020 20:15:09 -0700 (PDT)
-Subject: Re: [PATCH V3 2/3] mm/hugetlb: Define a generic fallback for
- is_hugepage_only_range()
-To: Mike Kravetz <mike.kravetz@oracle.com>, linux-mm@kvack.org,
- akpm@linux-foundation.org
-References: <1588907271-11920-1-git-send-email-anshuman.khandual@arm.com>
- <1588907271-11920-3-git-send-email-anshuman.khandual@arm.com>
- <9fc622e1-45ff-b79f-ebe0-35614837456c@oracle.com>
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Message-ID: <c21ab871-da06-baf6-ba31-80b13402b8c9@arm.com>
-Date: Mon, 11 May 2020 08:44:39 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+	id 1jY2zL-0002G2-LH; Mon, 11 May 2020 07:36:35 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jY2z7-00025O-8l; Mon, 11 May 2020 07:36:23 +0000
+Received: by mail-ot1-f68.google.com with SMTP id z17so6777561oto.4;
+ Mon, 11 May 2020 00:36:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=l3VY/12wWR1zHjOHzyqluXVdqy0F7FQQDSlqPm2Zx5o=;
+ b=KSGDcYdiBYZz7evOekAOKlx/fZe3EIdjvVF1d/KQ7rBA8d9Gw1ykLcxt1rmwQ7v8gb
+ 8O9ry/64xy74PbBU7sahPrSLh/xh07nhlId/d2h2LU7mNQCj6/mmdLZbHem1krpTKVPZ
+ 1ohcNUefWbHK4q8awCBQmGVng5F4KyDl+vjkPTgpJSNVlpA0EigwU3dIocGbZ+sVLSL3
+ DxU5VxaWvwmEXg8Iw5nYfwf3HipGJDx6dbz8DNmxd9/xNv7iCoZCKTs8G83iJxp3Uuwh
+ MLLgFCdbfTZkrilPi/iSb53zWW7UiaYo1dtFCYSfxHXE3jnsZITmwl0hzcpP/QMscjTO
+ tFHw==
+X-Gm-Message-State: AGi0PuYOzXIVx7X8NL+L2F7T5V+XMPvidgFudxfgfNRu9Gq+httcp3r2
+ Mq0bTA4ANvriRV33u7uRv5yMdKzv0JYSGKAeK6o=
+X-Google-Smtp-Source: APiQypLU+moEt/plrIiBoDJtx6y9Ecp1jwHNmsr5IHgDhGkXTabpMRQH56iYz7dU/N/BpO7atrGAmOYhZDTTv1TixAM=
+X-Received: by 2002:a9d:7990:: with SMTP id h16mr11274742otm.145.1589182577008; 
+ Mon, 11 May 2020 00:36:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <9fc622e1-45ff-b79f-ebe0-35614837456c@oracle.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <20200510075510.987823-1-hch@lst.de>
+ <20200510075510.987823-22-hch@lst.de>
+In-Reply-To: <20200510075510.987823-22-hch@lst.de>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 11 May 2020 09:36:05 +0200
+Message-ID: <CAMuHMdXS-ygT01KfhS0y9WcYbi9HKdQL7Q1HXgUZdayzQb_qSA@mail.gmail.com>
+Subject: Re: [PATCH 21/31] mm: rename flush_icache_user_range to
+ flush_icache_user_page
+To: Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200510_201522_731996_C236D91D 
-X-CRM114-Status: GOOD (  16.54  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200511_003621_308048_B373C3B0 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.68 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [geert.uytterhoeven[at]gmail.com]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,119 +84,49 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-kernel@vger.kernel.org,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
- x86@kernel.org, Russell King <linux@armlinux.org.uk>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Fenghua Yu <fenghua.yu@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Tony Luck <tony.luck@intel.com>, linux-parisc@vger.kernel.org,
- linux-mips@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
+ Linux-sh list <linux-sh@vger.kernel.org>, Roman Zippel <zippel@linux-m68k.org>,
+ "open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>,
+ Linux MM <linux-mm@kvack.org>, sparclinux <sparclinux@vger.kernel.org>,
+ linux-riscv@lists.infradead.org, Linux-Arch <linux-arch@vger.kernel.org>,
+ linux-c6x-dev@linux-c6x.org,
+ "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
+ the arch/x86 maintainers <x86@kernel.org>,
+ "open list:TENSILICA XTENSA PORT \(xtensa\)" <linux-xtensa@linux-xtensa.org>,
+ Arnd Bergmann <arnd@arndb.de>, Jessica Yu <jeyu@kernel.org>,
+ linux-um <linux-um@lists.infradead.org>,
+ linux-m68k <linux-m68k@lists.linux-m68k.org>,
+ Openrisc <openrisc@lists.librecores.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Michal Simek <monstr@monstr.eu>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ alpha <linux-alpha@vger.kernel.org>,
+ Linux FS Devel <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Sun, May 10, 2020 at 9:57 AM Christoph Hellwig <hch@lst.de> wrote:
+> The function currently known as flush_icache_user_range only operates
+> on a single page.  Rename it to flush_icache_user_page as we'll need
+> the name flush_icache_user_range for something else soon.
+>
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
 
+>  arch/m68k/include/asm/cacheflush_mm.h  |  4 ++--
+>  arch/m68k/mm/cache.c                   |  2 +-
 
-On 05/09/2020 03:52 AM, Mike Kravetz wrote:
-> On 5/7/20 8:07 PM, Anshuman Khandual wrote:
->> There are multiple similar definitions for is_hugepage_only_range() on
->> various platforms. Lets just add it's generic fallback definition for
->> platforms that do not override. This help reduce code duplication.
->>
->> Cc: Russell King <linux@armlinux.org.uk>
->> Cc: Catalin Marinas <catalin.marinas@arm.com>
->> Cc: Will Deacon <will@kernel.org>
->> Cc: Tony Luck <tony.luck@intel.com>
->> Cc: Fenghua Yu <fenghua.yu@intel.com>
->> Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
->> Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
->> Cc: Helge Deller <deller@gmx.de>
->> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
->> Cc: Paul Mackerras <paulus@samba.org>
->> Cc: Michael Ellerman <mpe@ellerman.id.au>
->> Cc: Paul Walmsley <paul.walmsley@sifive.com>
->> Cc: Palmer Dabbelt <palmer@dabbelt.com>
->> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
->> Cc: Vasily Gorbik <gor@linux.ibm.com>
->> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
->> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
->> Cc: Rich Felker <dalias@libc.org>
->> Cc: "David S. Miller" <davem@davemloft.net>
->> Cc: Thomas Gleixner <tglx@linutronix.de>
->> Cc: Ingo Molnar <mingo@redhat.com>
->> Cc: Borislav Petkov <bp@alien8.de>
->> Cc: "H. Peter Anvin" <hpa@zytor.com>
->> Cc: Mike Kravetz <mike.kravetz@oracle.com>
->> Cc: Andrew Morton <akpm@linux-foundation.org>
->> Cc: x86@kernel.org
->> Cc: linux-arm-kernel@lists.infradead.org
->> Cc: linux-ia64@vger.kernel.org
->> Cc: linux-mips@vger.kernel.org
->> Cc: linux-parisc@vger.kernel.org
->> Cc: linuxppc-dev@lists.ozlabs.org
->> Cc: linux-riscv@lists.infradead.org
->> Cc: linux-s390@vger.kernel.org
->> Cc: linux-sh@vger.kernel.org
->> Cc: sparclinux@vger.kernel.org
->> Cc: linux-mm@kvack.org
->> Cc: linux-arch@vger.kernel.org
->> Cc: linux-kernel@vger.kernel.org
->> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
->> ---
->>  arch/arm/include/asm/hugetlb.h     | 6 ------
->>  arch/arm64/include/asm/hugetlb.h   | 6 ------
->>  arch/ia64/include/asm/hugetlb.h    | 1 +
->>  arch/mips/include/asm/hugetlb.h    | 7 -------
->>  arch/parisc/include/asm/hugetlb.h  | 6 ------
->>  arch/powerpc/include/asm/hugetlb.h | 1 +
->>  arch/riscv/include/asm/hugetlb.h   | 6 ------
->>  arch/s390/include/asm/hugetlb.h    | 7 -------
->>  arch/sh/include/asm/hugetlb.h      | 6 ------
->>  arch/sparc/include/asm/hugetlb.h   | 6 ------
->>  arch/x86/include/asm/hugetlb.h     | 6 ------
->>  include/linux/hugetlb.h            | 9 +++++++++
->>  12 files changed, 11 insertions(+), 56 deletions(-)
->>
-> <snip>
->> diff --git a/include/linux/hugetlb.h b/include/linux/hugetlb.h
->> index 43a1cef8f0f1..c01c0c6f7fd4 100644
->> --- a/include/linux/hugetlb.h
->> +++ b/include/linux/hugetlb.h
->> @@ -591,6 +591,15 @@ static inline unsigned int blocks_per_huge_page(struct hstate *h)
->>  
->>  #include <asm/hugetlb.h>
->>  
->> +#ifndef is_hugepage_only_range
->> +static inline int is_hugepage_only_range(struct mm_struct *mm,
->> +					unsigned long addr, unsigned long len)
->> +{
->> +	return 0;
->> +}
->> +#define is_hugepage_only_range is_hugepage_only_range
->> +#endif
->> +
->>  #ifndef arch_make_huge_pte
->>  static inline pte_t arch_make_huge_pte(pte_t entry, struct vm_area_struct *vma,
->>  				       struct page *page, int writable)
->>
-> 
-> Did you try building without CONFIG_HUGETLB_PAGE defined?  I'm guessing
+Acked-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-Yes I did for multiple platforms (s390, arm64, ia64, x86, powerpc etc).
+Gr{oetje,eeting}s,
 
-> that you need a stub for is_hugepage_only_range().  Or, perhaps add this
-> to asm-generic/hugetlb.h?
-> 
-There is already a stub (include/linux/hugetlb.h) when !CONFIG_HUGETLB_PAGE.
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
