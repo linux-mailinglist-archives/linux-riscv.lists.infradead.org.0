@@ -2,109 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBD311CE557
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 22:24:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B783E1CE70D
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 23:07:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zo5Cza0n1Es3FSckgTZNHDduwVjYv8Se3/rnvi5K1+U=; b=ct0rsU4NZQkX8Y
-	AG3owUrDDpzWAdGoPQMONsP5IBMYs1+mp1igCSSqzZQlQJt8+2ON+9xRyXGPsJBZUH5HAWR5Zp7R0
-	rn+NFscRbQth6/34S7PPX4H+WMLcqxstFtATFNvxdIS4BqGmJzjFQcNT1eFIJZbzpl82K0IxUoSq5
-	uehWZK9gP8K0V7nFUs30c2qL1NJHuOX8TIrhycuNhD8BN3zBIgVk7HbYEM7OwZdRsMvNYa0eyTimZ
-	rC2/tpUMR+2lBrl8rl65iAGhupXcTWhPLqE4cIjLRSwjotNZD5303eFZSHNuHPTWcJhTB5h4e1pAD
-	euB5fESLBDZ5Z3amD3og==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=62TnuSeM6CTM78jj+qZBkEPwT+WLk/r5wwHVDIphFcM=; b=STdZfeqQW1r7fL
+	8u3svxmUQ8Btqsd7dHEdKGvEFhN13LTH8///vgtlHJ8Uxr70rIJJpUtr4MKwk82QnEApZqPLDu5u+
+	a5NmPBR2m7+4TrnVgaB1zEbTw1uGED9RlnOYq9XpFvdLjVotnjvgnN8DO4DNh7tO2ffuygTXmJ4rx
+	H/IMwcz18cWaaoC8ZzX4yNtkitFt9dD97k50ycZn3JSraejmw4LYTzgjknooFXG3UafEdPbIgKpAv
+	y7eKzdZZFIfXjFrJsSXtXEw4pGewssbmA78rGpm+tEA5JuCbsLrf2/etshdVh+eZ9kRyHMqlgrmb8
+	0exqjrw+XQdJoiIDe+Zg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYEyZ-0005V0-Pt; Mon, 11 May 2020 20:24:35 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1jYFdk-0002da-2Y; Mon, 11 May 2020 21:07:08 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYEyP-0005OV-Id; Mon, 11 May 2020 20:24:26 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04BKN1ae178275;
- Mon, 11 May 2020 20:23:14 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=Zo5Cza0n1Es3FSckgTZNHDduwVjYv8Se3/rnvi5K1+U=;
- b=zNA36/v3LiAoVOKNe46hByFJzcgmlm6fSXJxh2iNnyOiub80LYucHlnc0/E56KgILM9H
- IFRiKn4q0LUdaR2nYs6dCPMSq80mGCHofR6f2TqItyeoJMBmDZXvQ7v2tUhfVy9k1X36
- tcBZGa4jzU7DQvWfHUpO9TKxtWFGYZZ9nF7VsO1e0ZGnb9D9DoRmFfbUB6r4TRv4NYPv
- o37UJDnsiD3w8Clee8jwQnZrV85aEd6/M09htR49v5WSHMk/NB7F5FD5bkmsoKKY23Ji
- COyA88eG4SJcYvBMQXLI4Ajl98LrSZ6SUDDOJAn/OQQSjR8daR7AoTwaaFTFsvb7nqV0 BA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 30x3mbqayv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 11 May 2020 20:23:14 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04BKMUL6165379;
- Mon, 11 May 2020 20:23:13 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 30xbgfkcvb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 11 May 2020 20:23:13 +0000
-Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04BKMsCT016911;
- Mon, 11 May 2020 20:22:55 GMT
-Received: from [192.168.2.157] (/73.164.160.178)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 11 May 2020 13:22:53 -0700
-Subject: Re: [PATCH V3 3/3] mm/hugetlb: Define a generic fallback for
- arch_clear_hugepage_flags()
-To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org,
- akpm@linux-foundation.org
-References: <1588907271-11920-1-git-send-email-anshuman.khandual@arm.com>
- <1588907271-11920-4-git-send-email-anshuman.khandual@arm.com>
-From: Mike Kravetz <mike.kravetz@oracle.com>
-Message-ID: <cbccae27-ff79-5580-80be-0a9493d063ba@oracle.com>
-Date: Mon, 11 May 2020 13:22:50 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-MIME-Version: 1.0
-In-Reply-To: <1588907271-11920-4-git-send-email-anshuman.khandual@arm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9618
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxlogscore=784
- spamscore=0 suspectscore=0 phishscore=0 bulkscore=0 mlxscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2005110154
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9618
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 impostorscore=0
- mlxscore=0 suspectscore=0 bulkscore=0 mlxlogscore=817 phishscore=0
- malwarescore=0 lowpriorityscore=0 spamscore=0 adultscore=0 clxscore=1015
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2005110154
+ id 1jYFdg-0002d4-5s
+ for linux-riscv@lists.infradead.org; Mon, 11 May 2020 21:07:05 +0000
+Received: by mail-pl1-x643.google.com with SMTP id u22so4429930plq.12
+ for <linux-riscv@lists.infradead.org>; Mon, 11 May 2020 14:07:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=62TnuSeM6CTM78jj+qZBkEPwT+WLk/r5wwHVDIphFcM=;
+ b=MgX3Ya4fLNyARY7Yx1xdi9X2dktvm/fspFbV0uiE50XxdfPZ+KyFMtkL46MrcTqmIT
+ 3lnVn/X/cWTcl5MPH1fIsMe2wX/Vg7wz/q49hj2/y6wKYWCeQxER8ggsKTMny+umwBc8
+ x2Uxe3YePBvsA1gLkuH5vlJLLnwe332JLJch7TSt9NJzZW20d8rXvLv+GXlFHNIyVUjQ
+ Hp+ZEqQVyVLHhY0IaZBxuRnbz1gpvtt8NVXPtilxjGz1wxxObEDkNly8wyvOq/4UyThd
+ SsmuEx8r+R3n+BR9F57p+jgQeKEiDjQM/UjEgSQKeYyOlglEjwbdsRes2Mt7B6+ktVWt
+ fhNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=62TnuSeM6CTM78jj+qZBkEPwT+WLk/r5wwHVDIphFcM=;
+ b=kQTVWgbfpeoFVglmlHNuywq+0C7Pay+TCQ5KTOkfEiPlGhyKYnY4VntOG0kHJ9Xjyn
+ NWRLLc7m5hUNLvrjaLfR4uforcbNj7pjnAkLwrZZ2RC7OPekVfJaaCp8TuZ/8MJXwZVM
+ l8/bERw26McSqqTW8Ue1f+60498M7LyzcTuqKdtMs3XlCpS6y+6MTTwvoho1IWummOGr
+ Hyk81z/ohDD2wCHU1tGO9bSJTGndd9VI3FHG6fuqwTnZeAi+DGz+n1TgE8bIruyaRpWJ
+ NbdWv0E/9nfc0hYHOPjV9MvuGmJ+FAlyMesjTiPfeR2f2hYz9vhy6mMTyr6ABDctlYa3
+ i0ow==
+X-Gm-Message-State: AGi0Puazp/tTORDKamZdLwxze9HTZ+j389D0TgtZhzn0yy6VkCaD9Dil
+ A1TTkIo6rNBOVSehZIiQXZm6AA==
+X-Google-Smtp-Source: APiQypIzhPmQGVU30ePlDnpJ2VRSQ2Yvamj+NUnEu6Vtr1qonDQOZ0HZAWnxx9BbV4hVOmQEfol9Gw==
+X-Received: by 2002:a17:90a:fe9:: with SMTP id
+ 96mr25813358pjz.13.1589231223000; 
+ Mon, 11 May 2020 14:07:03 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id k7sm121629pga.87.2020.05.11.14.07.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2020 14:07:02 -0700 (PDT)
+Date: Mon, 11 May 2020 14:07:02 -0700 (PDT)
+X-Google-Original-Date: Mon, 11 May 2020 13:49:17 PDT (-0700)
+Subject: Re: [PATCH -next] riscv: perf_event: Make some funciton static
+In-Reply-To: <b5635dbb-5bd6-ca01-ca3b-4932941fd19a@huawei.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: wangkefeng.wang@huawei.com
+Message-ID: <mhng-eeb74520-7724-4947-b2ec-1a13744b3e63@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_132425_743286_773F1653 
-X-CRM114-Status: GOOD (  16.11  )
-X-Spam-Score: -2.7 (--)
+X-CRM114-CacheID: sfid-20200511_140704_287084_7692D4DF 
+X-CRM114-Status: GOOD (  16.54  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.7 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.85 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [156.151.31.85 listed in wl.mailspike.net]
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,78 +95,107 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-kernel@vger.kernel.org,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Paul Mackerras <paulus@samba.org>, "H. Peter Anvin" <hpa@zytor.com>,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Michael Ellerman <mpe@ellerman.id.au>, Helge Deller <deller@gmx.de>,
- x86@kernel.org, Russell King <linux@armlinux.org.uk>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Fenghua Yu <fenghua.yu@intel.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Borislav Petkov <bp@alien8.de>, Paul Walmsley <paul.walmsley@sifive.com>,
- Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org,
- Tony Luck <tony.luck@intel.com>, linux-parisc@vger.kernel.org,
- linux-mips@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
+ alankao@andestech.com, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 5/7/20 8:07 PM, Anshuman Khandual wrote:
-> There are multiple similar definitions for arch_clear_hugepage_flags() on
-> various platforms. Lets just add it's generic fallback definition for
-> platforms that do not override. This help reduce code duplication.
-> 
-> Cc: Russell King <linux@armlinux.org.uk>
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Will Deacon <will@kernel.org>
-> Cc: Tony Luck <tony.luck@intel.com>
-> Cc: Fenghua Yu <fenghua.yu@intel.com>
-> Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-> Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
-> Cc: Helge Deller <deller@gmx.de>
-> Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-> Cc: Paul Mackerras <paulus@samba.org>
-> Cc: Michael Ellerman <mpe@ellerman.id.au>
-> Cc: Paul Walmsley <paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt <palmer@dabbelt.com>
-> Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
-> Cc: Vasily Gorbik <gor@linux.ibm.com>
-> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
-> Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
-> Cc: Rich Felker <dalias@libc.org>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Ingo Molnar <mingo@redhat.com>
-> Cc: Borislav Petkov <bp@alien8.de>
-> Cc: "H. Peter Anvin" <hpa@zytor.com>
-> Cc: Mike Kravetz <mike.kravetz@oracle.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: x86@kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-ia64@vger.kernel.org
-> Cc: linux-mips@vger.kernel.org
-> Cc: linux-parisc@vger.kernel.org
-> Cc: linuxppc-dev@lists.ozlabs.org
-> Cc: linux-riscv@lists.infradead.org
-> Cc: linux-s390@vger.kernel.org
-> Cc: linux-sh@vger.kernel.org
-> Cc: sparclinux@vger.kernel.org
-> Cc: linux-mm@kvack.org
-> Cc: linux-arch@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Signed-off-by: Anshuman Khandual <anshuman.khandual@arm.com>
+On Sun, 10 May 2020 18:30:36 PDT (-0700), wangkefeng.wang@huawei.com wrote:
+>
+> On 2020/5/9 1:13, Palmer Dabbelt wrote:
+>> What's the "-next" for?  This seems appropriate for an RC to me, as
+>> it's a
+>> build fix.
+>
+> Thanks for your review, this patch and "[PATCH -next] riscv: perf:
+> RISCV_BASE_PMU
+>
+> should be closeable", I fix the issue based on linux-next, so add the
+> next prefix ; )
+
+OK, makes sense.  I've put it on fixes.
+
+>
+> and we also found some another build issue when add RISCV arch to huawei
+> build robot,
+>
+> will send out the patches later.
 
 Thanks!
-Removing duplicate code is good.
 
-Acked-by: Mike Kravetz <mike.kravetz@oracle.com>
-
--- 
-Mike Kravetz
+>>
+>> On Thu, 07 May 2020 08:04:44 PDT (-0700), wangkefeng.wang@huawei.com
+>> wrote:
+>>> Fixes the following warning detected when running make with W=1,
+>>> ../arch/riscv/kernel/perf_event.c:150:5: warning: no previous
+>>> prototype for ‘riscv_map_cache_decode’ [-Wmissing-prototypes]
+>>>  int riscv_map_cache_decode(u64 config, unsigned int *type,
+>>>      ^~~~~~~~~~~~~~~~~~~~~~
+>>> ../arch/riscv/kernel/perf_event.c:345:13: warning: no previous
+>>> prototype for ‘riscv_base_pmu_handle_irq’ [-Wmissing-prototypes]
+>>>  irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
+>>>              ^~~~~~~~~~~~~~~~~~~~~~~~~
+>>> ../arch/riscv/kernel/perf_event.c:364:6: warning: no previous
+>>> prototype for ‘release_pmc_hardware’ [-Wmissing-prototypes]
+>>>  void release_pmc_hardware(void)
+>>>       ^~~~~~~~~~~~~~~~~~~~
+>>> ../arch/riscv/kernel/perf_event.c:467:12: warning: no previous
+>>> prototype for ‘init_hw_perf_events’ [-Wmissing-prototypes]
+>>>  int __init init_hw_perf_events(void)
+>>>             ^~~~~~~~~~~~~~~~~~~
+>>>
+>>> Cc: Alan Kao <alankao@andestech.com>
+>>> Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
+>>> ---
+>>>  arch/riscv/kernel/perf_event.c | 8 ++++----
+>>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/arch/riscv/kernel/perf_event.c
+>>> b/arch/riscv/kernel/perf_event.c
+>>> index 91626d9ae5f2..c835f0362d94 100644
+>>> --- a/arch/riscv/kernel/perf_event.c
+>>> +++ b/arch/riscv/kernel/perf_event.c
+>>> @@ -147,7 +147,7 @@ static int riscv_map_hw_event(u64 config)
+>>>      return riscv_pmu->hw_events[config];
+>>>  }
+>>>
+>>> -int riscv_map_cache_decode(u64 config, unsigned int *type,
+>>> +static int riscv_map_cache_decode(u64 config, unsigned int *type,
+>>>                 unsigned int *op, unsigned int *result)
+>>>  {
+>>>      return -ENOENT;
+>>> @@ -342,7 +342,7 @@ static void riscv_pmu_del(struct perf_event
+>>> *event, int flags)
+>>>
+>>>  static DEFINE_MUTEX(pmc_reserve_mutex);
+>>>
+>>> -irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
+>>> +static irqreturn_t riscv_base_pmu_handle_irq(int irq_num, void *dev)
+>>>  {
+>>>      return IRQ_NONE;
+>>>  }
+>>> @@ -361,7 +361,7 @@ static int reserve_pmc_hardware(void)
+>>>      return err;
+>>>  }
+>>>
+>>> -void release_pmc_hardware(void)
+>>> +static void release_pmc_hardware(void)
+>>>  {
+>>>      mutex_lock(&pmc_reserve_mutex);
+>>>      if (riscv_pmu->irq >= 0)
+>>> @@ -464,7 +464,7 @@ static const struct of_device_id
+>>> riscv_pmu_of_ids[] = {
+>>>      { /* sentinel value */ }
+>>>  };
+>>>
+>>> -int __init init_hw_perf_events(void)
+>>> +static int __init init_hw_perf_events(void)
+>>>  {
+>>>      struct device_node *node = of_find_node_by_type(NULL, "pmu");
+>>>      const struct of_device_id *of_id;
+>>
+>> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>>
+>> .
+>>
 
