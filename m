@@ -2,44 +2,45 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DAF11CDE92
-	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 17:14:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 905EF1CDEAD
+	for <lists+linux-riscv@lfdr.de>; Mon, 11 May 2020 17:15:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=b1L11x8S5CHP+Yl3bwgtZ2KpvMz6mPd3eUM9MOv57ZE=; b=eK0CFrhKT5WvZ671vd2XClufP
-	y7TVWB9dZVBChBfvtj/QYEPj3YIOEVETsFpCwMqGYQQL3wgGD/1kwgF0Ylx/zHCVsLFPZrfcAnMiP
-	7BjrZW1BCjQMJ8/+0xQkUwigKXjQRPK+oGhI/t1FfeEa2pbqj5eu0HEwBsD/+kHAl4ujAnW9KbCa6
-	XSTjMTHyiPVRi8vyx2569oaC3ZyQmqF/CvK1eweUjUAK8ZzFEKjCerHPfV8N9OvBnHfR/U+OlYDQY
-	5y+OPzzERo5b9e+br27fqJekc+KLFIUBpIhYqv7Gnnx0rBF2lEV404pE9zqvv02i40VUTjJuPMQj9
-	7+34XN26g==;
+	 bh=fHyqK5c5zSh/F9zuVQm2b9PUCHDtEHXO4T3KMIkEo3o=; b=CKrnmx3Wn+FZF793iaHSOoyzN
+	zNcq/Jt8fae2AKl3gF/bsLXEAPutfvaIp0nqEVy1t2VyWPOLuPthLlYDrj02NANbUR7oH5MtR+WaO
+	BTO2uIOruR8WFQPEZyyGs/0DkvTsTGxbVUn8RFkDdmqV6u+q03Uo3QysdatDZdIgVgspNmTWDLzZd
+	BD4KvZRVRTXYsSYz5z35ptmrcTxmAM1I3EiF2ACoCDzKFsJbx33m4Mjuz1v+OrZVlIBfzZ4x4UY3t
+	WobHR6hbF4xJo5b/X68r9PPHvsrRq7M64EknGlPVZJdb4HZKeu3fpLIUx0NPixm9fKPs3eQfnBKxi
+	HZaqzKZGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYA8E-0001uF-Q3; Mon, 11 May 2020 15:14:14 +0000
+	id 1jYA9l-0004gN-OO; Mon, 11 May 2020 15:15:49 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYA7z-0001jy-PL; Mon, 11 May 2020 15:14:01 +0000
+ id 1jYA9Z-0004XR-Ug; Mon, 11 May 2020 15:15:39 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id B6F0368BFE; Mon, 11 May 2020 17:13:56 +0200 (CEST)
-Date: Mon, 11 May 2020 17:13:56 +0200
+ id 919CD68BFE; Mon, 11 May 2020 17:15:35 +0200 (CEST)
+Date: Mon, 11 May 2020 17:15:35 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: sort out the flush_icache_range mess
-Message-ID: <20200511151356.GB28634@lst.de>
+To: Catalin Marinas <catalin.marinas@arm.com>
+Subject: Re: [PATCH 02/31] arm64: fix the flush_icache_range arguments in
+ machine_kexec
+Message-ID: <20200511151535.GC28634@lst.de>
 References: <20200510075510.987823-1-hch@lst.de>
- <CAMuHMdXazsBw0mjJd0uFHQud7qbb5-Uw-PTDB3+-M=huRWOfgQ@mail.gmail.com>
+ <20200510075510.987823-3-hch@lst.de>
+ <20200511075115.GA16134@willie-the-truck> <20200511110014.GA19176@gaia>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAMuHMdXazsBw0mjJd0uFHQud7qbb5-Uw-PTDB3+-M=huRWOfgQ@mail.gmail.com>
+In-Reply-To: <20200511110014.GA19176@gaia>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_081359_970252_02A81D7E 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200511_081538_139302_A1C8A6B6 
+X-CRM114-Status: GOOD (  10.84  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -60,46 +61,35 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
- Linux-sh list <linux-sh@vger.kernel.org>, Roman Zippel <zippel@linux-m68k.org>,
- "open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>,
- Linux MM <linux-mm@kvack.org>, sparclinux <sparclinux@vger.kernel.org>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- Linux-Arch <linux-arch@vger.kernel.org>, linux-c6x-dev@linux-c6x.org,
- "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
- the arch/x86 maintainers <x86@kernel.org>,
- "open list:TENSILICA XTENSA PORT \(xtensa\)" <linux-xtensa@linux-xtensa.org>,
- Arnd Bergmann <arnd@arndb.de>, Jessica Yu <jeyu@kernel.org>,
- linux-um <linux-um@lists.infradead.org>,
- linux-m68k <linux-m68k@lists.linux-m68k.org>,
- Openrisc <openrisc@lists.librecores.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Michal Simek <monstr@monstr.eu>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- alpha <linux-alpha@vger.kernel.org>,
- Linux FS Devel <linux-fsdevel@vger.kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
+Cc: linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org,
+ Roman Zippel <zippel@linux-m68k.org>, linux-mips@vger.kernel.org,
+ linux-mm@kvack.org, sparclinux@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Will Deacon <will@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, linux-arch@vger.kernel.org,
+ linux-c6x-dev@linux-c6x.org, linux-hexagon@vger.kernel.org, x86@kernel.org,
+ linux-xtensa@linux-xtensa.org, Arnd Bergmann <arnd@arndb.de>,
+ Jessica Yu <jeyu@kernel.org>, linux-um@lists.infradead.org,
+ linux-m68k@lists.linux-m68k.org, openrisc@lists.librecores.org,
+ linux-arm-kernel@lists.infradead.org, Michal Simek <monstr@monstr.eu>,
+ linux-kernel@vger.kernel.org, james.morse@arm.com, linux-alpha@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, May 11, 2020 at 09:46:17AM +0200, Geert Uytterhoeven wrote:
-> Hi Christoph,
+On Mon, May 11, 2020 at 12:00:14PM +0100, Catalin Marinas wrote:
+> Anyway, I think Christoph's patch needs to go in with a fixes tag:
 > 
-> On Sun, May 10, 2020 at 9:55 AM Christoph Hellwig <hch@lst.de> wrote:
-> > none of which really are used by a typical MMU enabled kernel, as a.out can
-> > only be build for alpha and m68k to start with.
+> Fixes: d28f6df1305a ("arm64/kexec: Add core kexec support")
+> Cc: <stable@vger.kernel.org> # 4.8.x-
 > 
-> Quoting myself:
-> "I think it's safe to assume no one still runs a.out binaries on m68k."
-> http://lore.kernel.org/r/CAMuHMdW+m0Q+j3rsQdMXnrEPm+XB5Y2AQrxW5sD1mZAKgmEqoA@mail.gmail.com
+> and we'll change these functions/helpers going forward for arm64.
+> 
+> Happy to pick this up via the arm64 for-next/fixes branch.
 
-Do you want to drop the:
-
-    select HAVE_AOUT if MMU
-
-for m68k then?
-
-Note that we'll still need flush_icache_user_range for m68k with mmu,
-as it also allows binfmt_flat for mmu configs.
+Please do, there are no dependencies on it in this series (I originally
+planned to switch flush_icache_range to pass a kernel pointer + len
+instead of the strange unsigned long start and end.  That still looks
+very useful, but the series already is way too large, so I'm going to
+defer that change for another merge window).
 
