@@ -2,52 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39CB21CFD97
-	for <lists+linux-riscv@lfdr.de>; Tue, 12 May 2020 20:45:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D51271CFD9E
+	for <lists+linux-riscv@lfdr.de>; Tue, 12 May 2020 20:46:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kqm3rVjis2uCcMmJJiUt3QlP6+4IgIYcywVL67qYLto=; b=muaLQ6scb+uCgq
-	0czJ2KwzJ2m2YapNkmAlfPET9tw529w4kwxWwTXecXcPEUglzH6E88SXigJGAgkaRpJ6yRkFOMsPn
-	iKkVc1Kn8sxhV4yvT7VxXyz/GJf1aqhh7/Mv2yO0ck0izC8Z8I6u25kGzvhC/opIDC0gwqXtXWMJR
-	SJ3Na6egdl36Es3RShu2SEjBUOIRTdlYmqhuOiElhqyM+4/vmCFN84muCu1aTj+rCNP7C9whY6+2u
-	U+0Zo1Zf63wez8oMN/fdPPsKlhVHMA8hkKcIlEhm2O1YWGTw8+3yrQzJC0uN0Y9OpOUIo0Zmdv2ts
-	xmVgmpJ1iuZaIkl0ka0g==;
+	List-Owner; bh=H2O6MMwKD6jMdtSAsQxqAroeUDwQ71ARtZf/Ma1fs5o=; b=AU5cp05Lxfc7d8
+	TnprAjtXNMvJc90oYnI64oeHBtv+X5iDDQLqzHYC1KHeXSahU0Ck0RwyiX5eRi3gSZyf1f5otA12t
+	RIpGErO5a3dJJT41Bk5PFHSBY7L6eFs42aC4Sx1CkV9SCwDUiob3U7IXWJmkcvFZCTLFpBpcFfUSQ
+	OEzcpuxNaU0cB0nRUYd2xSIChZ8McmO0wYbaCnN1FkI47y1QMhVeiR0D+QAEzykF7wXSJFwqcGXpu
+	sUxX0HCim1irtUf4yOBj2Cx9ObvIwMoCwrYAgN53ya3TOACWASOfFv/fYhyp+CKeaUu7U5lvuf5Hf
+	NGKwBRabn2GHNQIWnv1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYZuc-0003kM-4s; Tue, 12 May 2020 18:45:54 +0000
+	id 1jYZup-0003uf-Fw; Tue, 12 May 2020 18:46:07 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYZuX-0003hx-Su; Tue, 12 May 2020 18:45:51 +0000
+ id 1jYZul-0003u1-H6; Tue, 12 May 2020 18:46:04 +0000
 Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 71B292312A;
- Tue, 12 May 2020 18:45:36 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 20724207BC;
+ Tue, 12 May 2020 18:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589309149;
- bh=Z9qdPNsvf2p9EKwPrLS+nwzwoM10QLdw68lBtbJg6Ec=;
+ s=default; t=1589309163;
+ bh=atmnGCDoPk5y69B76HVx6bX3NRhp438vfpo6E2XojpU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nXzyZ37kTscckDaPTDERkD1S7nvjRlNFypq6Rwb7sDxSiX8NGTnmge9pCgiZ92NYi
- vtqbss1/17yXwUZ/iDE6e+8Qui34axmceTCIYssMHZXxXJYNPf+8ktG4d2/f+E/h8P
- +9eNsxHCoif2F281fUyQ2b08oEiUAY9mF+nvvSJc=
+ b=QwfBouFsLRnlT2Sr0gTs8+RR8GI46zlRZcArZa598W3Uy1zK3eMrdG5MuObjTaeaa
+ bmhU294WnwEVHg416fZA1TDU1TnGHodrvpucPLyNv0juuc+e7KsRaI9L4NL1IvKO4M
+ m9kbRsjsEnI7m4NXHJxzZ7cZ79o0LcODoZOrkQjY=
 From: Mike Rapoport <rppt@kernel.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH 04/12] csky: replace definitions of __pXd_offset() with
- pXd_index()
-Date: Tue, 12 May 2020 21:44:14 +0300
-Message-Id: <20200512184422.12418-5-rppt@kernel.org>
+Subject: [PATCH 05/12] m68k/mm/motorola: move comment about page table
+ allocation funcitons
+Date: Tue, 12 May 2020 21:44:15 +0300
+Message-Id: <20200512184422.12418-6-rppt@kernel.org>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200512184422.12418-1-rppt@kernel.org>
 References: <20200512184422.12418-1-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_114549_983719_CB0A2A52 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20200512_114603_606987_B749A057 
+X-CRM114-Status: GOOD (  12.64  )
 X-Spam-Score: -5.4 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.4 points)
@@ -110,78 +110,52 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Mike Rapoport <rppt@linux.ibm.com>
 
-All architectures use pXd_index() to get an entry in the page table page
-corresponding to a virtual address.
+The comment about page table allocation functions resides in
+include/asm/motorola_pgtable.h while the functions live in
+include/asm/motorola_pgaloc.h.
 
-Align csky with other architectures.
+Move the comment close to the code.
 
 Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
 ---
- arch/csky/include/asm/pgtable.h | 5 ++---
- arch/csky/mm/fault.c            | 2 +-
- arch/csky/mm/highmem.c          | 2 +-
- arch/csky/mm/init.c             | 6 +++---
- 4 files changed, 7 insertions(+), 8 deletions(-)
+ arch/m68k/include/asm/motorola_pgalloc.h | 6 ++++++
+ arch/m68k/include/asm/motorola_pgtable.h | 6 ------
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch/csky/include/asm/pgtable.h b/arch/csky/include/asm/pgtable.h
-index 9d2d16db237d..2eff4aea51b3 100644
---- a/arch/csky/include/asm/pgtable.h
-+++ b/arch/csky/include/asm/pgtable.h
-@@ -229,9 +229,8 @@ static inline pte_t pte_mkyoung(pte_t pte)
- 	return pte;
- }
+diff --git a/arch/m68k/include/asm/motorola_pgalloc.h b/arch/m68k/include/asm/motorola_pgalloc.h
+index c66e42917912..f3cb453a07b7 100644
+--- a/arch/m68k/include/asm/motorola_pgalloc.h
++++ b/arch/m68k/include/asm/motorola_pgalloc.h
+@@ -18,6 +18,12 @@ extern void init_pointer_table(void *table, int type);
+ extern void *get_pointer_table(int type);
+ extern int free_pointer_table(void *table, int type);
  
--#define __pgd_offset(address)	pgd_index(address)
--#define __pud_offset(address)	(((address) >> PUD_SHIFT) & (PTRS_PER_PUD-1))
--#define __pmd_offset(address)	(((address) >> PMD_SHIFT) & (PTRS_PER_PMD-1))
-+#define pud_index(address)	(((address) >> PUD_SHIFT) & (PTRS_PER_PUD-1))
-+#define pmd_index(address)	(((address) >> PMD_SHIFT) & (PTRS_PER_PMD-1))
++/*
++ * Allocate and free page tables. The xxx_kernel() versions are
++ * used to allocate a kernel page table - this turns on ASN bits
++ * if any.
++ */
++
+ static inline pte_t *pte_alloc_one_kernel(struct mm_struct *mm)
+ {
+ 	return get_pointer_table(TABLE_PTE);
+diff --git a/arch/m68k/include/asm/motorola_pgtable.h b/arch/m68k/include/asm/motorola_pgtable.h
+index 48f19f0ab1e7..9e5a3de21e15 100644
+--- a/arch/m68k/include/asm/motorola_pgtable.h
++++ b/arch/m68k/include/asm/motorola_pgtable.h
+@@ -227,12 +227,6 @@ static inline pte_t *pte_offset_kernel(pmd_t *pmdp, unsigned long address)
+ #define pte_offset_map(pmdp,address) ((pte_t *)__pmd_page(*pmdp) + (((address) >> PAGE_SHIFT) & (PTRS_PER_PTE - 1)))
+ #define pte_unmap(pte)		((void)0)
  
- /* to find an entry in a kernel page-table-directory */
- #define pgd_offset_k(address)	pgd_offset(&init_mm, address)
-diff --git a/arch/csky/mm/fault.c b/arch/csky/mm/fault.c
-index 4e6dc68f3258..4055d430c0c8 100644
---- a/arch/csky/mm/fault.c
-+++ b/arch/csky/mm/fault.c
-@@ -78,7 +78,7 @@ asmlinkage void do_page_fault(struct pt_regs *regs, unsigned long write,
- 		 * Do _not_ use "tsk" here. We might be inside
- 		 * an interrupt in the middle of a task switch..
- 		 */
--		int offset = __pgd_offset(address);
-+		int offset = pgd_index(address);
- 		pgd_t *pgd, *pgd_k;
- 		pud_t *pud, *pud_k;
- 		pmd_t *pmd, *pmd_k;
-diff --git a/arch/csky/mm/highmem.c b/arch/csky/mm/highmem.c
-index 3b3f622f5ae9..89ec32e602a1 100644
---- a/arch/csky/mm/highmem.c
-+++ b/arch/csky/mm/highmem.c
-@@ -92,7 +92,7 @@ static void __init kmap_pages_init(void)
- 	vaddr = PKMAP_BASE;
- 	fixrange_init(vaddr, vaddr + PAGE_SIZE*LAST_PKMAP, swapper_pg_dir);
- 
--	pgd = swapper_pg_dir + __pgd_offset(vaddr);
-+	pgd = swapper_pg_dir + pgd_index(vaddr);
- 	pud = (pud_t *)pgd;
- 	pmd = pmd_offset(pud, vaddr);
- 	pte = pte_offset_kernel(pmd, vaddr);
-diff --git a/arch/csky/mm/init.c b/arch/csky/mm/init.c
-index eda2b4291485..af627128314f 100644
---- a/arch/csky/mm/init.c
-+++ b/arch/csky/mm/init.c
-@@ -157,9 +157,9 @@ void __init fixrange_init(unsigned long start, unsigned long end,
- 	unsigned long vaddr;
- 
- 	vaddr = start;
--	i = __pgd_offset(vaddr);
--	j = __pud_offset(vaddr);
--	k = __pmd_offset(vaddr);
-+	i = pgd_index(vaddr);
-+	j = pud_index(vaddr);
-+	k = pmd_index(vaddr);
- 	pgd = pgd_base + i;
- 
- 	for ( ; (i < PTRS_PER_PGD) && (vaddr != end); pgd++, i++) {
+-/*
+- * Allocate and free page tables. The xxx_kernel() versions are
+- * used to allocate a kernel page table - this turns on ASN bits
+- * if any.
+- */
+-
+ /* Prior to calling these routines, the page should have been flushed
+  * from both the cache and ATC, or the CPU might not notice that the
+  * cache setting for the page has been changed. -jskov
 -- 
 2.26.1
 
