@@ -2,37 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E6E91CFE36
-	for <lists+linux-riscv@lfdr.de>; Tue, 12 May 2020 21:24:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DCA71CFFBB
+	for <lists+linux-riscv@lfdr.de>; Tue, 12 May 2020 22:45:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=06WzxohBOlYteWluUWbzGc3WgzLIDbwGVNVvQcF5qCk=; b=YULwKqdyiJHaYzbbUP1ppJyeN
-	/BxQiLLVTbSu6RsbFpyRiq8bGmdJCQzZXez2tmni7pM9glymgolxh+cfOWF/rkG1L4OritiUPRk0G
-	ykhb6izWwOUSFnKUDKjfGtVRpsFLN/UQuUA2g2q76oJv0nwRxVGbmKdEiCyRteRgIEvyO/r8ndn0Z
-	w+Y1l+/B1qQOn/rr0uohUn0eoWms+lkDImOhgZNIRh81lJrHKqBswtVm1kdTkYcThPuPn4j1T4pZF
-	aHXwwilZneRcboquXq7J4IZARLDrhb7wPzBi+CkK3S22IreqExeDujE053HxvfqgfqCH/FXcIlBd9
-	A390gRlEA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bZ3SlC6IjAo3rRznak2yB2vjG0WklLB9HsgMaXr/3G8=; b=Cw/jNpgh0CMV32
+	3VV1Ty2WR4QndWHVvtFAtNbi87uAxBCgrV/wDvNTDUFJA9K6jm1zNJmSA1Dlqlr7ZXPERtXhSAQTd
+	6I/d/Qx8zc6canCfHzyazoYL1J7pRmrFF7BFG2+s8Ctd418hkM60Y9wE297i932kOSci1aZlcUpkd
+	exAqPDHBiNs5dODZSSDSiYPwbhW9gETzpMr4V5xb3s47dDq3IQUEC0ag8+eNtcWXxkkNdZO9uzXr+
+	DaEHejbhg0wzM0mz347KqTis6lsv+HbBV4BvQOKAbAa9u9ZsQsstY1GDeRux929dze4L5tmzJ17p9
+	aBwTWXDp0CrigPWzJ4vw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYaWC-000278-FF; Tue, 12 May 2020 19:24:44 +0000
-Received: from willy by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1jYaW9-00026f-44; Tue, 12 May 2020 19:24:41 +0000
-Date: Tue, 12 May 2020 12:24:41 -0700
-From: Matthew Wilcox <willy@infradead.org>
-To: Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH 08/12] mm: pgtable: add shortcuts for accessing kernel
- PMD and PTE
-Message-ID: <20200512192441.GZ16070@bombadil.infradead.org>
-References: <20200512184422.12418-1-rppt@kernel.org>
- <20200512184422.12418-9-rppt@kernel.org>
+	id 1jYbmf-0006u0-25; Tue, 12 May 2020 20:45:49 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jYbmc-0006tS-B7
+ for linux-riscv@lists.infradead.org; Tue, 12 May 2020 20:45:47 +0000
+Received: by mail-oi1-f194.google.com with SMTP id 19so19472637oiy.8
+ for <linux-riscv@lists.infradead.org>; Tue, 12 May 2020 13:45:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=bZ3SlC6IjAo3rRznak2yB2vjG0WklLB9HsgMaXr/3G8=;
+ b=UlnktmsWs6kLAJOmOa/OoeysQ8Ux8r8u+GBZs4QT0akEGqbX+zqN2c3kwimN46xqs+
+ IL6XrVQqn/IUYoy5uSSjaldghnaTtbV2QUdvxmzfXiHji4PD/Ak6ZRo2NZjycvVpWXnG
+ ff4G/xh63MwwaA4ad68bifgbESj4sTdrZvKxdfDA3kjYcSz2KOeS6jrFRCPsNCSbh49u
+ NfOzoDA33rj+Zj/ZnFJB8VBYNGr7r6EpXNFFAYz+zDoDm6oOTIAMzpV4bGCMP5FhheOR
+ VVlCjQ8UWE049uT9uabcyrZXq8gjLzhTiwfm1f73PfK2iSvTqu1ozCEDsyE2LRuHjo13
+ q66w==
+X-Gm-Message-State: AGi0PuZdNxWI52gSRUwZArso4ztIcgu72/U48LRxyLJhXnY3/pyhSxvY
+ mztWcZe5+gsPs36wa95Qfw==
+X-Google-Smtp-Source: APiQypKV6dUHk4u2TZZM9pj4FNgtVQv7pL7PiPyGyXG2CpXKT8zCVpKHis+rnBPSF2vegPnG8W7f6g==
+X-Received: by 2002:aca:488c:: with SMTP id
+ v134mr12366530oia.103.1589316344975; 
+ Tue, 12 May 2020 13:45:44 -0700 (PDT)
+Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.googlemail.com with ESMTPSA id k8sm3943792ood.24.2020.05.12.13.45.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 May 2020 13:45:44 -0700 (PDT)
+From: Rob Herring <robh@kernel.org>
+To: devicetree@vger.kernel.org
+Subject: [PATCH 1/5] spi: dt-bindings: sifive: Add missing 2nd register region
+Date: Tue, 12 May 2020 15:45:39 -0500
+Message-Id: <20200512204543.22090-1-robh@kernel.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200512184422.12418-9-rppt@kernel.org>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200512_134546_379108_8AB9CD21 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.8 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (0.8 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.167.194 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [robherring2[at]gmail.com]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [robherring2[at]gmail.com]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.194 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,51 +89,50 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mips@vger.kernel.org,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- linux-csky@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-hexagon@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Will Deacon <will@kernel.org>,
- Greg Ungerer <gerg@linux-m68k.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
- Brian Cain <bcain@codeaurora.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Helge Deller <deller@gmx.de>, x86@kernel.org,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Mike Rapoport <rppt@linux.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>, linux-parisc@vger.kernel.org,
- Mark Salter <msalter@redhat.com>, Matt Turner <mattst88@gmail.com>,
- linux-snps-arc@lists.infradead.org, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-alpha@vger.kernel.org,
- linux-um@lists.infradead.org, linux-m68k@lists.linux-m68k.org,
- Tony Luck <tony.luck@intel.com>, Borislav Petkov <bp@alien8.de>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, Chris Zankel <chris@zankel.net>,
- Michal Simek <monstr@monstr.eu>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, openrisc@lists.librecores.org,
- Thomas Gleixner <tglx@linutronix.de>, Richard Weinberger <richard@nod.at>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
+ linux-clk@vger.kernel.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, May 12, 2020 at 09:44:18PM +0300, Mike Rapoport wrote:
-> +++ b/include/linux/pgtable.h
-> @@ -28,6 +28,24 @@
->  #define USER_PGTABLES_CEILING	0UL
->  #endif
->  
-> +/* FIXME: */
+The 'reg' description and example have a 2nd register region for memory
+mapped flash, but the schema says there is only 1 region. Fix this.
 
-Fix you what?  Add documentation?
+Cc: Mark Brown <broonie@kernel.org>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-spi@vger.kernel.org
+Cc: linux-riscv@lists.infradead.org
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+Please ack, dependency for patch 5.
 
-> +static inline pmd_t *pmd_off(struct mm_struct *mm, unsigned long va)
-> +{
-> +	return pmd_offset(pud_offset(p4d_offset(pgd_offset(mm, va), va), va), va);
-> +}
+ Documentation/devicetree/bindings/spi/spi-sifive.yaml | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/spi/spi-sifive.yaml b/Documentation/devicetree/bindings/spi/spi-sifive.yaml
+index 28040598bfae..fb583e57c1f2 100644
+--- a/Documentation/devicetree/bindings/spi/spi-sifive.yaml
++++ b/Documentation/devicetree/bindings/spi/spi-sifive.yaml
+@@ -32,11 +32,10 @@ properties:
+       https://github.com/sifive/sifive-blocks/tree/master/src/main/scala/devices/spi
+ 
+   reg:
+-    maxItems: 1
+-
+-    description:
+-      Physical base address and size of SPI registers map
+-      A second (optional) range can indicate memory mapped flash
++    minItems: 1
++    items:
++      - description: SPI registers region
++      - description: Memory mapped flash region
+ 
+   interrupts:
+     maxItems: 1
+-- 
+2.20.1
+
 
