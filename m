@@ -2,82 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DCA71CFFBB
-	for <lists+linux-riscv@lfdr.de>; Tue, 12 May 2020 22:45:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B0FF21D0009
+	for <lists+linux-riscv@lfdr.de>; Tue, 12 May 2020 23:02:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bZ3SlC6IjAo3rRznak2yB2vjG0WklLB9HsgMaXr/3G8=; b=Cw/jNpgh0CMV32
-	3VV1Ty2WR4QndWHVvtFAtNbi87uAxBCgrV/wDvNTDUFJA9K6jm1zNJmSA1Dlqlr7ZXPERtXhSAQTd
-	6I/d/Qx8zc6canCfHzyazoYL1J7pRmrFF7BFG2+s8Ctd418hkM60Y9wE297i932kOSci1aZlcUpkd
-	exAqPDHBiNs5dODZSSDSiYPwbhW9gETzpMr4V5xb3s47dDq3IQUEC0ag8+eNtcWXxkkNdZO9uzXr+
-	DaEHejbhg0wzM0mz347KqTis6lsv+HbBV4BvQOKAbAa9u9ZsQsstY1GDeRux929dze4L5tmzJ17p9
-	aBwTWXDp0CrigPWzJ4vw==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=ayvF8u1Trz98kPzut/fpymP+skmFBSVYrYtlr1DmSGU=; b=AmlLL0pD74z2cw
+	U5xhcMs59GdYL2KNmx8o63YewQxwGQvr6u6rANJyRCqsFSYmr6ZHH3Yl8iIxxB/I0azw3WqsWT5o5
+	GqxRpdLjtyrqDgZBDs645S8TUfyUwIxQv0KeYk4itOSGOk3aSig6Hhfwr5yiNGScKdiRpJSXivfys
+	N6GqJrpWBVQcs23mBiQ8I8GuD1T82DoHYRohgqHbAWNRHP2F/UF1XVnJvKHzkW7o4p8LahX8AzNIf
+	Ofm10D9mSblqNFeCj0R5ksp+7hcrDu2uLoEswkHYPAJMDizQQoRtB+/i8kagZv1sFRcCtv1vO/g3j
+	o1Fz36tQ10BqDSyxc2Kw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYbmf-0006u0-25; Tue, 12 May 2020 20:45:49 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
+	id 1jYc2Q-0007SJ-6E; Tue, 12 May 2020 21:02:06 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYbmc-0006tS-B7
- for linux-riscv@lists.infradead.org; Tue, 12 May 2020 20:45:47 +0000
-Received: by mail-oi1-f194.google.com with SMTP id 19so19472637oiy.8
- for <linux-riscv@lists.infradead.org>; Tue, 12 May 2020 13:45:45 -0700 (PDT)
+ id 1jYc2M-0007Rq-Od
+ for linux-riscv@lists.infradead.org; Tue, 12 May 2020 21:02:04 +0000
+Received: by mail-pf1-x429.google.com with SMTP id y18so170104pfl.9
+ for <linux-riscv@lists.infradead.org>; Tue, 12 May 2020 14:02:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ayvF8u1Trz98kPzut/fpymP+skmFBSVYrYtlr1DmSGU=;
+ b=FylPsE15RtP6ywL7le1gyvsxrmPItQoeC/5Ryg5WHuwi0HcfkcvPiSWmUjVKs8lCMX
+ bmDljyY3/7gvmviPldTdLfU4Gs8NapeSyUdlJsTReKuUfoyOHDeg65aEuEAKZWWskEYx
+ ZbZUOyUzIJptP/QoXJsD/1wRwyX3QKwfRhEYzozjKVwvpZWNK+GnE594UG/v3AhgeGfv
+ gofkpVIahbbP3/7V7MmAgKiAeY7fZ0ppG22okSItXuwTjx6U9Jcki7Sq5Yi7wkbznQz1
+ Ch87INmwG2hjL+9unZhTUzOOtMPkkYN6BDbMCi/1bDTHkBy0AvM5TQwMGDjbf5JZ+L5m
+ ZXVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bZ3SlC6IjAo3rRznak2yB2vjG0WklLB9HsgMaXr/3G8=;
- b=UlnktmsWs6kLAJOmOa/OoeysQ8Ux8r8u+GBZs4QT0akEGqbX+zqN2c3kwimN46xqs+
- IL6XrVQqn/IUYoy5uSSjaldghnaTtbV2QUdvxmzfXiHji4PD/Ak6ZRo2NZjycvVpWXnG
- ff4G/xh63MwwaA4ad68bifgbESj4sTdrZvKxdfDA3kjYcSz2KOeS6jrFRCPsNCSbh49u
- NfOzoDA33rj+Zj/ZnFJB8VBYNGr7r6EpXNFFAYz+zDoDm6oOTIAMzpV4bGCMP5FhheOR
- VVlCjQ8UWE049uT9uabcyrZXq8gjLzhTiwfm1f73PfK2iSvTqu1ozCEDsyE2LRuHjo13
- q66w==
-X-Gm-Message-State: AGi0PuZdNxWI52gSRUwZArso4ztIcgu72/U48LRxyLJhXnY3/pyhSxvY
- mztWcZe5+gsPs36wa95Qfw==
-X-Google-Smtp-Source: APiQypKV6dUHk4u2TZZM9pj4FNgtVQv7pL7PiPyGyXG2CpXKT8zCVpKHis+rnBPSF2vegPnG8W7f6g==
-X-Received: by 2002:aca:488c:: with SMTP id
- v134mr12366530oia.103.1589316344975; 
- Tue, 12 May 2020 13:45:44 -0700 (PDT)
-Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id k8sm3943792ood.24.2020.05.12.13.45.43
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ayvF8u1Trz98kPzut/fpymP+skmFBSVYrYtlr1DmSGU=;
+ b=Cg/sUIjWilfl0Bg6opD0Acyd5h1GmpRQkd7IACesUcNpVRNWusT+o7trmduolX+imI
+ 1funp3aRSamrbD/MslV7QpZVDOks5sfdwCYZnJCZ03V7/9ODf0aeH4kQu2d388gwSwN3
+ H0RqYTgoUezFGGtudBvwsTyJVcnzb9il4TTIOddIkOZ8J1E8hPT0fc5wrNeOynsGEZt+
+ Oj5YM0MEPe/qNVzhPj7HxBXiWL3Ko9NutNfXhUwPqAIVzdiS8ML03QFcQNsLRgh/Y/rU
+ FykHd2vqSZQSN4A4c8qCTlTT0779fdVwK7PtL3qVxfDm9d1iW0i9bz5ttjc0nRNr5s7B
+ 1z2Q==
+X-Gm-Message-State: AGi0PuaeMpUCzm4pY5ciAzIigtwIRPD1WCPumrn6JeJhKnBQNX3Kzz7r
+ XnxTSUP9zgtN0nrmInFBIXtl4g==
+X-Google-Smtp-Source: APiQypKlB/jxdOAsAkgCZwJcJ3f8Oon0jsH3vtTXx3EiO/PQpimL6MarV7shEWha7UHZ3nX7tUkusw==
+X-Received: by 2002:aa7:9258:: with SMTP id 24mr23618884pfp.35.1589317321647; 
+ Tue, 12 May 2020 14:02:01 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id s123sm12859105pfs.170.2020.05.12.14.02.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2020 13:45:44 -0700 (PDT)
-From: Rob Herring <robh@kernel.org>
-To: devicetree@vger.kernel.org
-Subject: [PATCH 1/5] spi: dt-bindings: sifive: Add missing 2nd register region
-Date: Tue, 12 May 2020 15:45:39 -0500
-Message-Id: <20200512204543.22090-1-robh@kernel.org>
-X-Mailer: git-send-email 2.20.1
-MIME-Version: 1.0
+ Tue, 12 May 2020 14:02:00 -0700 (PDT)
+Date: Tue, 12 May 2020 14:02:00 -0700 (PDT)
+X-Google-Original-Date: Tue, 12 May 2020 13:54:00 PDT (-0700)
+Subject: Re: [PATCH -next] riscv: perf: RISCV_BASE_PMU should be closeable
+In-Reply-To: <20200507150445.174390-2-wangkefeng.wang@huawei.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: wangkefeng.wang@huawei.com
+Message-ID: <mhng-58148e77-03b6-4c56-98ea-0d0cbf99d522@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_134546_379108_8AB9CD21 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.8 (/)
+X-CRM114-CacheID: sfid-20200512_140202_852941_3DE30D8E 
+X-CRM114-Status: GOOD (  15.91  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.8 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.194 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:429 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [robherring2[at]gmail.com]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [robherring2[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.194 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,50 +94,77 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org
+Cc: wangkefeng.wang@huawei.com, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org, alankao@andestech.com,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The 'reg' description and example have a 2nd register region for memory
-mapped flash, but the schema says there is only 1 region. Fix this.
+On Thu, 07 May 2020 08:04:45 PDT (-0700), wangkefeng.wang@huawei.com wrote:
+> As 178e9fc47aae("perf: riscv: preliminary RISC-V support") said,
+> For RISCV_BASE_PMU, 'this option can also be disable to reduce kernel size',
+> but it could not work well, we need diable both RISCV_BASE_PMU and
+> PERF_EVENTS manually, or build error will occur when only disable
+> RISCV_BASE_PMU.
 
-Cc: Mark Brown <broonie@kernel.org>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: linux-spi@vger.kernel.org
-Cc: linux-riscv@lists.infradead.org
-Signed-off-by: Rob Herring <robh@kernel.org>
----
-Please ack, dependency for patch 5.
+I'm worried this belies a larger issue related to how this PMU stuff works, but
+we have only one PMU right now so it's not a pressing issue.  I've taken this
+onto fixes.
 
- Documentation/devicetree/bindings/spi/spi-sifive.yaml | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+Thanks!
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-sifive.yaml b/Documentation/devicetree/bindings/spi/spi-sifive.yaml
-index 28040598bfae..fb583e57c1f2 100644
---- a/Documentation/devicetree/bindings/spi/spi-sifive.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-sifive.yaml
-@@ -32,11 +32,10 @@ properties:
-       https://github.com/sifive/sifive-blocks/tree/master/src/main/scala/devices/spi
- 
-   reg:
--    maxItems: 1
--
--    description:
--      Physical base address and size of SPI registers map
--      A second (optional) range can indicate memory mapped flash
-+    minItems: 1
-+    items:
-+      - description: SPI registers region
-+      - description: Memory mapped flash region
- 
-   interrupts:
-     maxItems: 1
--- 
-2.20.1
-
+>
+> Cc: Alan Kao <alankao@andestech.com>
+> Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
+> ---
+>  arch/riscv/include/asm/perf_event.h | 8 ++------
+>  arch/riscv/kernel/Makefile          | 2 +-
+>  2 files changed, 3 insertions(+), 7 deletions(-)
+>
+> diff --git a/arch/riscv/include/asm/perf_event.h b/arch/riscv/include/asm/perf_event.h
+> index 0234048b12bc..062efd3a1d5d 100644
+> --- a/arch/riscv/include/asm/perf_event.h
+> +++ b/arch/riscv/include/asm/perf_event.h
+> @@ -12,19 +12,14 @@
+>  #include <linux/ptrace.h>
+>  #include <linux/interrupt.h>
+>
+> +#ifdef CONFIG_RISCV_BASE_PMU
+>  #define RISCV_BASE_COUNTERS	2
+>
+>  /*
+>   * The RISCV_MAX_COUNTERS parameter should be specified.
+>   */
+>
+> -#ifdef CONFIG_RISCV_BASE_PMU
+>  #define RISCV_MAX_COUNTERS	2
+> -#endif
+> -
+> -#ifndef RISCV_MAX_COUNTERS
+> -#error "Please provide a valid RISCV_MAX_COUNTERS for the PMU."
+> -#endif
+>
+>  /*
+>   * These are the indexes of bits in counteren register *minus* 1,
+> @@ -82,6 +77,7 @@ struct riscv_pmu {
+>  	int		irq;
+>  };
+>
+> +#endif
+>  #ifdef CONFIG_PERF_EVENTS
+>  #define perf_arch_bpf_user_pt_regs(regs) (struct user_regs_struct *)regs
+>  #endif
+> diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
+> index 1f5736e996fd..b355cf485671 100644
+> --- a/arch/riscv/kernel/Makefile
+> +++ b/arch/riscv/kernel/Makefile
+> @@ -43,7 +43,7 @@ obj-$(CONFIG_MODULE_SECTIONS)	+= module-sections.o
+>  obj-$(CONFIG_FUNCTION_TRACER)	+= mcount.o ftrace.o
+>  obj-$(CONFIG_DYNAMIC_FTRACE)	+= mcount-dyn.o
+>
+> -obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o
+> +obj-$(CONFIG_RISCV_BASE_PMU)	+= perf_event.o
+>  obj-$(CONFIG_PERF_EVENTS)	+= perf_callchain.o
+>  obj-$(CONFIG_HAVE_PERF_REGS)	+= perf_regs.o
+>  obj-$(CONFIG_RISCV_SBI)		+= sbi.o
 
