@@ -2,71 +2,53 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2CE51D065C
-	for <lists+linux-riscv@lfdr.de>; Wed, 13 May 2020 07:23:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86B341D0727
+	for <lists+linux-riscv@lfdr.de>; Wed, 13 May 2020 08:23:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hd5UK9tJpTtmUZrhPONmMMoochKvyyAg5ulZUyWSvbM=; b=QqbgA5zmmyMyLztfsj+/yZnbQ
-	MQJ19BNo3cJPqnuPcTWxQFErAEiAWWfwFFrEkMd3NgMGt66l2UDJZ5PDxQi9QUBWmlqvw21aO4Uz2
-	bzwVyjZ7qVJzWJQBkVXvOOswJC+o1P0WqZKB3zri+v6XLCXgI+ODLpqJDcp9fr9Da+x2U1lGtNMdp
-	T8NTUtEifvB7SenbQFh7F2lY/yq5ZyuN+BFLBcUPhotFx+Mdf24xd/DAhVGINkW1aNpZEkWSTUrtc
-	GEN8TEdjJc1LffAaax5nNqnOwHTC2/1RUPwiadiw2a0oCR0TRibDxC9RGGECG81LYmVz+39rtv2zP
-	c38Mq0ZwQ==;
+	 bh=Lo2VlGS0U628n2rDuyJUwGRDqaKAXNpfLs7NxptChrU=; b=a7olIzI1EZWjnr1e8uvIIvvPx
+	EYUAE7ITuX/F51rS5pESkLSwjcssheEaQQaEtgeP8mEAtaeT0oaoOyQheOSYCGVYqnC5BKTdOAs1K
+	xOWsZX/EpOf5XiSAPwDJEeollhXgrPI+/NIP0WN33shdQqvCoO4A0yOMcyZDw0zxcvInrpCvHBAdO
+	HhUKoIK26ONJfhYHuBQ4OenCJ9ElVp9Fwgsg+gicM/eyG2ZcLWUj8F74E4nrwaaLGvi4vjumDxe7u
+	YwPtTxsSAKgpjLlDHDOjJ0sAfUXqfTYB5M3LDtM0QSEuBRYhrDg+bQGeRqSn7Xw86XVWNSD3ziYhR
+	fX32S1NBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYjro-00072d-RK; Wed, 13 May 2020 05:23:40 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jYknr-00014p-Fy; Wed, 13 May 2020 06:23:39 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYjrl-000724-1O; Wed, 13 May 2020 05:23:38 +0000
-Received: from kernel.org (unknown [87.70.20.152])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A8105206F5;
- Wed, 13 May 2020 05:23:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589347416;
- bh=cxEex4OkOul1zYfcItsUOuWynzE/Lgl9iPMNnRJoKtg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=NKwZ606uMnq7vGufmQSQi8UghGfD03KoKi3771z9DBsw1+Wo1JjxsFFWhM7dLfYtQ
- POagNMJcXXS2Tb5YBLano+IOZdgbrMfiYhEi9ZEWLAfmXk4sFuNrYSWiaABLsyC1eI
- WXhJfNJ0uBeiHMn5Sjkqw15bRWEojOP2A2FeEJvw=
-Date: Wed, 13 May 2020 08:23:20 +0300
-From: Mike Rapoport <rppt@kernel.org>
-To: Matthew Wilcox <willy@infradead.org>
-Subject: Re: [PATCH 08/12] mm: pgtable: add shortcuts for accessing kernel
- PMD and PTE
-Message-ID: <20200513052320.GO14260@kernel.org>
-References: <20200512184422.12418-1-rppt@kernel.org>
- <20200512184422.12418-9-rppt@kernel.org>
- <20200512192441.GZ16070@bombadil.infradead.org>
+ id 1jYknc-0000uZ-KZ; Wed, 13 May 2020 06:23:26 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id E27C468C65; Wed, 13 May 2020 08:23:18 +0200 (CEST)
+Date: Wed, 13 May 2020 08:23:18 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 19/31] riscv: use asm-generic/cacheflush.h
+Message-ID: <20200513062318.GA24133@lst.de>
+References: <20200510075510.987823-20-hch@lst.de>
+ <mhng-8adbedbc-0f91-4291-9471-2df5eb7b802b@palmerdabbelt-glaptop1>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200512192441.GZ16070@bombadil.infradead.org>
+In-Reply-To: <mhng-8adbedbc-0f91-4291-9471-2df5eb7b802b@palmerdabbelt-glaptop1>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_222337_098217_6B2CDA14 
-X-CRM114-Status: GOOD (  10.21  )
-X-Spam-Score: -5.4 (-----)
+X-CRM114-CacheID: sfid-20200512_232324_823538_CA84B4B0 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.4 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,58 +60,28 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
- linux-sh@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>,
- Heiko Carstens <heiko.carstens@de.ibm.com>, linux-mips@vger.kernel.org,
- Max Filippov <jcmvbkbc@gmail.com>, Guo Ren <guoren@kernel.org>,
- linux-csky@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-hexagon@vger.kernel.org, linux-riscv@lists.infradead.org,
- Vincent Chen <deanbo422@gmail.com>, Will Deacon <will@kernel.org>,
- Greg Ungerer <gerg@linux-m68k.org>, linux-arch@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
- Brian Cain <bcain@codeaurora.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Helge Deller <deller@gmx.de>, x86@kernel.org,
- Russell King <linux@armlinux.org.uk>, Ley Foon Tan <ley.foon.tan@intel.com>,
- Mike Rapoport <rppt@linux.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>, linux-parisc@vger.kernel.org,
- Mark Salter <msalter@redhat.com>, Matt Turner <mattst88@gmail.com>,
- linux-snps-arc@lists.infradead.org, linux-xtensa@linux-xtensa.org,
- Arnd Bergmann <arnd@arndb.de>, linux-alpha@vger.kernel.org,
- linux-um@lists.infradead.org, linux-m68k@lists.linux-m68k.org,
- Tony Luck <tony.luck@intel.com>, Borislav Petkov <bp@alien8.de>,
- Greentime Hu <green.hu@gmail.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Stafford Horne <shorne@gmail.com>, Guan Xuetao <gxt@pku.edu.cn>,
- linux-arm-kernel@lists.infradead.org, Chris Zankel <chris@zankel.net>,
- Michal Simek <monstr@monstr.eu>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Nick Hu <nickhu@andestech.com>,
- linux-mm@kvack.org, Vineet Gupta <vgupta@synopsys.com>,
- linux-kernel@vger.kernel.org, openrisc@lists.librecores.org,
- Thomas Gleixner <tglx@linutronix.de>, Richard Weinberger <richard@nod.at>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- "David S. Miller" <davem@davemloft.net>
+Cc: linux-ia64@vger.kernel.org, linux-sh@vger.kernel.org, zippel@linux-m68k.org,
+ linux-mips@vger.kernel.org, linux-mm@kvack.org, sparclinux@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ linux-arch@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
+ linux-hexagon@vger.kernel.org, x86@kernel.org, linux-xtensa@linux-xtensa.org,
+ Arnd Bergmann <arnd@arndb.de>, jeyu@kernel.org, linux-um@lists.infradead.org,
+ linux-m68k@lists.linux-m68k.org, openrisc@lists.librecores.org,
+ linux-arm-kernel@lists.infradead.org, monstr@monstr.eu,
+ linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
+ linux-fsdevel@vger.kernel.org, akpm@linux-foundation.org,
+ linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, May 12, 2020 at 12:24:41PM -0700, Matthew Wilcox wrote:
-> On Tue, May 12, 2020 at 09:44:18PM +0300, Mike Rapoport wrote:
-> > +++ b/include/linux/pgtable.h
-> > @@ -28,6 +28,24 @@
-> >  #define USER_PGTABLES_CEILING	0UL
-> >  #endif
-> >  
-> > +/* FIXME: */
-> 
-> Fix you what?  Add documentation?
+On Tue, May 12, 2020 at 04:00:26PM -0700, Palmer Dabbelt wrote:
+> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+> Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>
+> Were you trying to get these all in at once, or do you want me to take it into
+> my tree?
 
-Ouch, indeed :)
-
-> > +static inline pmd_t *pmd_off(struct mm_struct *mm, unsigned long va)
-> > +{
-> > +	return pmd_offset(pud_offset(p4d_offset(pgd_offset(mm, va), va), va), va);
-> > +}
-
--- 
-Sincerely yours,
-Mike.
+Except for the small fixups at the beginning of the series this needs
+to go in together.  I'll have to do at least another resend, and after
+that I hope Andrew is going to pick it up.
 
