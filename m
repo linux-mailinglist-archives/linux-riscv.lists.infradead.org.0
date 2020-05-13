@@ -2,76 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 076A21D16F9
-	for <lists+linux-riscv@lfdr.de>; Wed, 13 May 2020 16:04:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96EB81D20B8
+	for <lists+linux-riscv@lfdr.de>; Wed, 13 May 2020 23:14:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LhTGtE9aNa1E4aGG1scaA3MumgE7alH63VhjMVYVGyY=; b=jiJuL+SP4ZOr58lMbJJ5YCx/l
-	jeBtQZX+xBd1yup7qsWHNbh3AIRKeIlXnniIZGpQoYBGDXErjC6vfXMOj8a1Si1kznatjIvbzEFfw
-	HPgHX/xnK4OqpQ3ECMC7lrBzGOszWWVsEmA2mqi0hk0XifUK9sQPgsJ7mxWfQ/cRyMjjRugYz2aXE
-	UouYSKpP13C4AmOU5JXXbWEjAZA5o872WwMC+maJUeMaGTsFNsrrO78ZguWInbqocUokpGD58RXO6
-	qGZYvY/0iOtZ+gJU8GVdnzWU9U6qN2SYC6yNdwXJ3/jpJkXvqolp3BFZU1Q19I3tFuikTsV9FBz5J
-	a4Z7Paxow==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=fQPXZp+IVSxbapxw+qChW71ug0twA5FFI0kmAhQ2wws=; b=EGJyIIqIAfHeBJ
+	86ZNVBjTXcZafegERwtT7ABHtSkY9xtltcVAtk5ZdeJRKJGI3TkWhKwENbD4VzN3uxRpon0aC6OEU
+	m3G3t6QxR5HNZUplqNtJcYSwZwloSgp3TpgVHmXk9mfHCIOFmBIaoRrbtB7IW8UAfHMw8Cekove+n
+	EF/x+L0PXESYJ3NzojieVGEqPaFpn0gCI9SeOollmFBKWAfMHPS0LtBFrZNSui9uNz6UvlZWU6r2Z
+	dofDzW/FwAqNUE719bKjpk1E8pdIN79IBdLA8fJyUbrsyPY/78cyKk8rofgh2zu4D4TjLoAKqYSHh
+	34yzoc2EwU9zWBDAY8/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYs08-0001Ir-Nc; Wed, 13 May 2020 14:04:48 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jYyiG-0007Qi-0J; Wed, 13 May 2020 21:14:48 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYryZ-00006q-AC
- for linux-riscv@lists.infradead.org; Wed, 13 May 2020 14:03:18 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A18692064E;
- Wed, 13 May 2020 14:03:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589378590;
- bh=Eufhx3dlqqgouxXOOXWIHlrYL0mU5lBnSfOCmIEp3Fc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=0MdU5zsTd7ve9RlyN3XfHy/AJ43Nj4J4J62DwwgSTzTcA8x8VxoDauR/tEsXmcv7q
- NJ6UyyO4gjb2WaPXu01c6Y8jNGvZwZMdKq7Xhbg3rNxR6otHnF9G5IlB1aQ+fVnwxd
- tuOOeeuhw+QHhj+kPL4w7M336rEi/oQ8bppMd8Qw=
-Date: Wed, 13 May 2020 15:03:07 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/5] spi: dt-bindings: sifive: Add missing 2nd register
- region
-Message-ID: <20200513140307.GG4803@sirena.org.uk>
-References: <20200512204543.22090-1-robh@kernel.org>
- <158937185132.39109.17103954100758193517.b4-ty@kernel.org>
- <CAL_Jsq+KfngSTEnP3eh6Zr9H4GUuSbyZCGXs=skbwQK0j4ZJnA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="ulDeV4rPMk/y39in"
-Content-Disposition: inline
-In-Reply-To: <CAL_Jsq+KfngSTEnP3eh6Zr9H4GUuSbyZCGXs=skbwQK0j4ZJnA@mail.gmail.com>
-X-Cookie: Long life is in store for you.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1jYyiC-0007L9-5n
+ for linux-riscv@lists.infradead.org; Wed, 13 May 2020 21:14:45 +0000
+Received: by mail-pf1-x442.google.com with SMTP id n18so302736pfa.2
+ for <linux-riscv@lists.infradead.org>; Wed, 13 May 2020 14:14:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=fQPXZp+IVSxbapxw+qChW71ug0twA5FFI0kmAhQ2wws=;
+ b=IyJE95cx6fUjoUOtxi6G5B/lxWB5ibznMc114jMJGxspQQTGQMUcGMrMk2WtlJjWo0
+ PkRMLu26n1UYSg4ZJQzWfqJ7zaU37jmlYr/pp1WY9YN3N2QmTNX47nlFsvKEEE/wBay8
+ E6TU1Q/GiETUSfOG/ZfMVMaD6Dvu9KtwGVkG1DCZYtv3pZqp5HvJoZSzp8JP5RlNJdb2
+ bXsgJwh1TPDAOXoNLeaq4xzFVxEPgO0msB9kSO5M7GB4uS6DMJfG0V0yZvUnApB37FMx
+ gxZHaUdedYhJVo8ph2WaPlX+DJveMWvERWXTuEIBk/MtuSJSF2JAupOFOBmsFoTOB6H/
+ q0Uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=fQPXZp+IVSxbapxw+qChW71ug0twA5FFI0kmAhQ2wws=;
+ b=Y8tkvFisAsZ5sdtPF5AtrfFG2YLUpSt+1rNcfgfwgHeLK+Yo16Ob9esU7FXM58P1Qz
+ ajF/THNzgQBZEKCS8yKTIsUrvLySQMwLEZJuBLnVtWVF+z348KuDCIBwxl0qV83/D3iS
+ YuZR+1O+aes1TLt2HkMrGruP/dH9Aecg6+6UNWbxGCe41/b4soy8Tg8MAOY62OJvAzDy
+ xgkntK39N7FrHLaSJS7Loql6L72pb8DHR6wm75V+xHm7dQ+7uorEyvTuXlBGKhVabVCV
+ X3mMaiT/4vAX1lFL33oBtXYYTTIARUbopz9ep9zldT/Ad3EQphr4d+WBWK7ajmblj2GR
+ niRA==
+X-Gm-Message-State: AOAM530AheXFaSdtq+izE4qvUGVVaUJgxzSS5dQ8Q6679hEczx+bM5NT
+ 2HSNCjsP6nb8DdIP2OSj2bswoQ==
+X-Google-Smtp-Source: ABdhPJzdTa0U9kp2niBnjnx175RKaHvwsebr/DnTI6hq6UVnAjjZVxFFrmMdl9SIIYoqxiJIPtOgJg==
+X-Received: by 2002:a62:1d48:: with SMTP id d69mr1161543pfd.102.1589404483317; 
+ Wed, 13 May 2020 14:14:43 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id q134sm407114pfc.143.2020.05.13.14.14.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 May 2020 14:14:42 -0700 (PDT)
+Date: Wed, 13 May 2020 14:14:42 -0700 (PDT)
+X-Google-Original-Date: Tue, 12 May 2020 16:33:48 PDT (-0700)
+Subject: Re: [PATCH 01/10] riscv: Fix unmet direct dependencies built based on
+ SOC_VIRT
+In-Reply-To: <20200511022001.179767-2-wangkefeng.wang@huawei.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: wangkefeng.wang@huawei.com
+Message-ID: <mhng-a9830a3c-320d-4a7a-8792-85d436b32182@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200513_070311_390907_81E19520 
-X-CRM114-Status: UNSURE (   7.30  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200513_141444_241650_96CF9E96 
+X-CRM114-Status: GOOD (  14.95  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,48 +95,68 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linux USB List <linux-usb@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linux-spi <linux-spi@vger.kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- linux-clk <linux-clk@vger.kernel.org>
+Cc: wangkefeng.wang@huawei.com, aou@eecs.berkeley.edu,
+ linux-kernel@vger.kernel.org, hulkci@huawei.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Sun, 10 May 2020 19:19:52 PDT (-0700), wangkefeng.wang@huawei.com wrote:
+> Fix unmet direct dependencies Warning and fix Kconfig indent.
+>
+> WARNING: unmet direct dependencies detected for POWER_RESET_SYSCON
+>   Depends on [n]: POWER_RESET [=n] && OF [=y] && HAS_IOMEM [=y]
+>   Selected by [y]:
+>   - SOC_VIRT [=y]
+>
+> WARNING: unmet direct dependencies detected for POWER_RESET_SYSCON_POWEROFF
+>   Depends on [n]: POWER_RESET [=n] && OF [=y] && HAS_IOMEM [=y]
+>   Selected by [y]:
+>   - SOC_VIRT [=y]
+>
+> WARNING: unmet direct dependencies detected for RTC_DRV_GOLDFISH
+>   Depends on [n]: RTC_CLASS [=n] && OF [=y] && HAS_IOMEM [=y] && (GOLDFISH [=y] || COMPILE_TEST [=n])
+>   Selected by [y]:
+>   - SOC_VIRT [=y]
+>
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
+> ---
+>  arch/riscv/Kconfig.socs | 17 +++++++++--------
+>  1 file changed, 9 insertions(+), 8 deletions(-)
+>
+> diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
+> index 4b2303ca20b9..6c88148f1b9b 100644
+> --- a/arch/riscv/Kconfig.socs
+> +++ b/arch/riscv/Kconfig.socs
+> @@ -11,14 +11,15 @@ config SOC_SIFIVE
+>  	  This enables support for SiFive SoC platform hardware.
+>
+>  config SOC_VIRT
+> -       bool "QEMU Virt Machine"
+> -       select POWER_RESET_SYSCON
+> -       select POWER_RESET_SYSCON_POWEROFF
+> -       select GOLDFISH
+> -       select RTC_DRV_GOLDFISH
+> -       select SIFIVE_PLIC
+> -       help
+> -         This enables support for QEMU Virt Machine.
+> +	bool "QEMU Virt Machine"
+> +	select POWER_RESET
+> +	select POWER_RESET_SYSCON
+> +	select POWER_RESET_SYSCON_POWEROFF
+> +	select GOLDFISH
+> +	select RTC_DRV_GOLDFISH if RTC_CLASS
+> +	select SIFIVE_PLIC
+> +	help
+> +	  This enables support for QEMU Virt Machine.
+>
+>  config SOC_KENDRYTE
+>  	bool "Kendryte K210 SoC"
 
---ulDeV4rPMk/y39in
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This is another area we need to clean up (maybe converting from select to
+imply?), but given this fixes likely build errors I'm going to take it onto
+fixes.
 
-On Wed, May 13, 2020 at 08:02:14AM -0500, Rob Herring wrote:
-> On Wed, May 13, 2020 at 7:10 AM Mark Brown <broonie@kernel.org> wrote:
-
-> > [1/1] spi: dt-bindings: sifive: Add missing 2nd register region
-> >       commit: b265b5a0ba15b6e00abce9bf162926e84b4323b4
-
-> You missed my ask for an ack. This is a dependency for patch 5.
-
-Ah, there was no cover letter.=20
-
-Acked-by: Mark Brown <broonie@kernel.org>
-
---ulDeV4rPMk/y39in
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl67/hoACgkQJNaLcl1U
-h9AiNAf/VxSFKe5eGeiXNh8NQ9o1DuI+ryYYh8J5t4bHHaX/ukfZxOjzM1emHxVY
-dK91QCGiu/6HrZOrx7SNr/ZsJaSqIHg7le2mJWvu4g6uJ/SaPTKCGjUfL5gPeG28
-FHa34V2fwOUoRil6nEiHnvrbQTQQmtwMw13zeYi38ltLK6qchlfCmFT7gjiYHmtm
-netlxcnM2YKr/vblKt1hnDTffvAs2THEpNh8lJ0bA7IBEWsdRPH8PVROjIaBQpME
-JzEW1cFXZTEeuuiNkYS1GMk/ShIxSiD19aAhfOzbomVXqMjenusxBN1jAd5VfoA2
-9TnqOxwFFTKo84Gi3jhJlFaTkx5IRQ==
-=KsV3
------END PGP SIGNATURE-----
-
---ulDeV4rPMk/y39in--
+Thanks!
 
