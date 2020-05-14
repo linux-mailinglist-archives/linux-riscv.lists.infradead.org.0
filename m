@@ -2,88 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 513241D2B6A
-	for <lists+linux-riscv@lfdr.de>; Thu, 14 May 2020 11:29:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 138711D2C34
+	for <lists+linux-riscv@lfdr.de>; Thu, 14 May 2020 12:10:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wCiVumaq6wcVuq/rN4Y5EIzrDgqgEOQzKlYptSZX3oI=; b=L8/G+Ni2xXLUjl3Ei0QXzaz4G
-	JqAwDTjoPnGbjlwJkzPSgul28jDxU3SkvdHq76d/PG0krgvR0SdwoBqUtezBN+xs2zfk8LoH2/1RX
-	umdt6hk2/PNcioN/lj96ikGs1Vp9jaHDwhGqlt3U+EFDbt8lULyY8i/RzGcHql9ZI/2JxuyOOxHuu
-	8dncycpGfKbVR0asEhpcG4iET0qSjjWTY8ta6Pocrbno3eYikO75mp98VTOI+lTJ5cBT1lAxXO3PC
-	V1eqx0Hsb2EBWTYB3U9TyjeftR66uoDRyThfnOugLw5zEABswaT2MBnlmKyoMI2+Ov5FzA2kKbXsD
-	ZCpfa9qnw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BW3emEoYEvmrt2r1Uy8oMEV35PDgsu4mDyMHZT3m5l0=; b=RBmJn1g2JINzEF
+	tGYJGe9lW/NUd8ddZRyVQRSLZA/iOSTjE5DGa6DyH6Oakp+KTQQVMS+AsNbCUE3zbjD0ahUiuoFuo
+	YYVqMrvVOURyd2NyYm2rDdqbor6L/pnUXKsGoA3LMDmOv/S7k3bc3/zbgyfrYAGwRT/5pEet/4TmQ
+	q2nbB87ayGnbDcSDv2NFym+C3TWEtHR6fMv77JxCoqAWgRvCU1DzA9K0x4BD+ExJQKWIBcPr/vCOZ
+	PQBgpf7D/NJOtFGvlv8bp6JBmgdrX/kiF8b6LaQ5vDavuVs8bk9eqppGJgICV25GVh16azQlPhL+8
+	98eQ7ue/8gw8pMJ6ErKw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZABa-0006aV-Dm; Thu, 14 May 2020 09:29:50 +0000
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
+	id 1jZAon-0004wr-Qq; Thu, 14 May 2020 10:10:21 +0000
+Received: from relay12.mail.gandi.net ([217.70.178.232])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZABW-0006Zv-9f
- for linux-riscv@lists.infradead.org; Thu, 14 May 2020 09:29:48 +0000
-Received: by mail-oi1-x244.google.com with SMTP id i22so7394572oik.10
- for <linux-riscv@lists.infradead.org>; Thu, 14 May 2020 02:29:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wCiVumaq6wcVuq/rN4Y5EIzrDgqgEOQzKlYptSZX3oI=;
- b=M+DpRLIR1KWirx3ozNZP183Wa9bvcBtupJ5hvzmrcyfFPbUkajYX+pFLOP4Vjb4X3Q
- FawvRVJjskYpkc8utMwVe7ZNMW2Inj1BKHHE2LnEYcmYwkWaNLk9n5d1FVKTxgNhfB3l
- UeLQstW6MTljDRR8YXBVCjxQJ3MgwzrCqTMcpxplnwe6OKYeQvVdg+RFBOnKN9G8xvgA
- YQDSlyR5MhpVKtpbxiTan5wbl1+Ib4nZ/PKuukIXE2aP2T0U5iQmkiEegUxC8DZRHHJV
- zrnt1YMrwrTw5F9/2w2yf3NHl+5iAs6d9DFayhdpxRNlJD8LKx0cobudOvyhGXHYb7wu
- gRKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wCiVumaq6wcVuq/rN4Y5EIzrDgqgEOQzKlYptSZX3oI=;
- b=Rl3zrzbsQRTsGkrlNN5wqu06NTvCkP6lpTaCLJlaYn6mAawz6KED0lYOrkKsCfD3yl
- 5tkSVhPX0WkpVkcAyUYxQB5/7bA9F/GLkopkXE7XIFmmXuzkvrGFoYOQ82f7IgafqTEH
- MeS8Va15E4wFgsXQLmrIZbNQGjDfdpj41AUwzdzTr6fY/CksF5qmZ+clp0vv1t6LZ68j
- 6T453f6j31UqIUTFxfH4kEHDrp5NXyQzGKCN5NM9mHI/bQGxla2g3uzirjOtP2iBNsfL
- QDuvkyuvKnGQ9h7fw3nKlJzjHIMIi09bot6M8wHOk5mcCk/TLiqnbGL99jpFZImNBinZ
- sX4w==
-X-Gm-Message-State: AOAM5320KzuU555jbkkqhPADrGpwVi57+i+w3icriDCB+09iQWi4SjPX
- WamEDye2BRrJt7VFEqrHwUYNbNr41TLgEIemPydf2+ism4g=
-X-Google-Smtp-Source: ABdhPJy0BZy/80kBmbbNGXWB+0otugy/D99TGiabeb7uQ63D/N2iRHOx8D9HzC8UVf8RQ4g/SJRNWcVVjR51nBt0dp4=
-X-Received: by 2002:aca:3585:: with SMTP id c127mr4674008oia.32.1589448584196; 
- Thu, 14 May 2020 02:29:44 -0700 (PDT)
+ id 1jZAok-0004dT-1y
+ for linux-riscv@lists.infradead.org; Thu, 14 May 2020 10:10:19 +0000
+Received: from [192.168.1.11] (lfbn-gre-1-325-105.w90-112.abo.wanadoo.fr
+ [90.112.45.105]) (Authenticated sender: alex@ghiti.fr)
+ by relay12.mail.gandi.net (Postfix) with ESMTPSA id 6A02C20000B;
+ Thu, 14 May 2020 10:10:04 +0000 (UTC)
+Subject: Re: [PATCH 04/10] riscv: Fix print_vm_layout build error if NOMMU
+To: Kefeng Wang <wangkefeng.wang@huawei.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20200511022001.179767-1-wangkefeng.wang@huawei.com>
+ <20200511022001.179767-5-wangkefeng.wang@huawei.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <1daca195-f63c-2693-068f-6d624aa1b899@ghiti.fr>
+Date: Thu, 14 May 2020 06:10:04 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <20200514060243.106976-1-zong.li@sifive.com>
-In-Reply-To: <20200514060243.106976-1-zong.li@sifive.com>
-From: Zong Li <zong.li@sifive.com>
-Date: Thu, 14 May 2020 17:29:33 +0800
-Message-ID: <CANXhq0q6xb1DaVp8skvvC+G9MDMXpXrv0dxmceTrerc6noBH8A@mail.gmail.com>
-Subject: Re: [PATCH] riscv: perf: fix build error for dependency issue
-To: Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, 
- Andrew Morton <akpm@linux-foundation.org>,
- linux-riscv <linux-riscv@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Kefeng Wang <wangkefeng.wang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20200511022001.179767-5-wangkefeng.wang@huawei.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_022946_500997_B9347106 
-X-CRM114-Status: GOOD (  23.17  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200514_031018_235087_D2B15545 
+X-CRM114-Status: GOOD (  13.02  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:244 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.178.232 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [217.70.178.232 listed in wl.mailspike.net]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,101 +69,47 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greentime Hu <greentime.hu@sifive.com>
+Cc: Hulk Robot <hulkci@huawei.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 14, 2020 at 2:03 PM Zong Li <zong.li@sifive.com> wrote:
+Hi,
+
+On 5/10/20 10:19 PM, Kefeng Wang wrote:
+> arch/riscv/mm/init.c: In function ‘print_vm_layout’:
+> arch/riscv/mm/init.c:68:37: error: ‘FIXADDR_START’ undeclared (first use in this function);
+> arch/riscv/mm/init.c:69:20: error: ‘FIXADDR_TOP’ undeclared
+> arch/riscv/mm/init.c:70:37: error: ‘PCI_IO_START’ undeclared
+> arch/riscv/mm/init.c:71:20: error: ‘PCI_IO_END’ undeclared
+> arch/riscv/mm/init.c:72:38: error: ‘VMEMMAP_START’ undeclared
+> arch/riscv/mm/init.c:73:20: error: ‘VMEMMAP_END’ undeclared (first use in this function);
 >
-> CONFIG_RISCV_BASE_PMU can be selected or unselected, but in fact,
-> CONFIG_RISCV_BASE_PMU must be always selected when selecting
-> CONFIG_PERF_EVENTS on current perf implementation, otherwise, it
-> would cause the build error when only selecting CONFIG_PERF_EVENTS.
-> The build case is applied randconfig which generated by kbuild test.
->
-> This patch removes the unnecessary configuration and implementations.
-> Eventually, the number of counters should be determinated at runtime,
-> such as DTB, so we don't need to re-build kernel for various platform
-> which has got different number of hpmcounters.
->
-> Signed-off-by: Zong Li <zong.li@sifive.com>
-> Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
 > ---
->  arch/riscv/Kconfig                  | 13 -------------
->  arch/riscv/include/asm/perf_event.h | 16 +++-------------
->  2 files changed, 3 insertions(+), 26 deletions(-)
+>   arch/riscv/mm/init.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 74f82cf4f781..7d5123576953 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -283,19 +283,6 @@ config RISCV_ISA_C
->
->            If you don't know what to do here, say Y.
->
-> -menu "supported PMU type"
-> -       depends on PERF_EVENTS
-> -
-> -config RISCV_BASE_PMU
-> -       bool "Base Performance Monitoring Unit"
-> -       def_bool y
-> -       help
-> -         A base PMU that serves as a reference implementation and has limited
-> -         feature of perf.  It can run on any RISC-V machines so serves as the
-> -         fallback, but this option can also be disable to reduce kernel size.
-> -
-> -endmenu
-> -
->  config FPU
->         bool "FPU support"
->         default y
-> diff --git a/arch/riscv/include/asm/perf_event.h b/arch/riscv/include/asm/perf_event.h
-> index 0234048b12bc..8e5b1d81112c 100644
-> --- a/arch/riscv/include/asm/perf_event.h
-> +++ b/arch/riscv/include/asm/perf_event.h
-> @@ -16,15 +16,11 @@
->
->  /*
->   * The RISCV_MAX_COUNTERS parameter should be specified.
-> + * Currently, we only support base PMU, so just make
-> + * RISCV_MAX_COUNTERS be equal to RISCV_BASE_COUNTERS.
->   */
->
-> -#ifdef CONFIG_RISCV_BASE_PMU
-> -#define RISCV_MAX_COUNTERS     2
-> -#endif
-> -
-> -#ifndef RISCV_MAX_COUNTERS
-> -#error "Please provide a valid RISCV_MAX_COUNTERS for the PMU."
-> -#endif
-> +#define RISCV_MAX_COUNTERS RISCV_BASE_COUNTERS
->
->  /*
->   * These are the indexes of bits in counteren register *minus* 1,
-> @@ -38,12 +34,6 @@
->   */
->  #define RISCV_PMU_CYCLE                0
->  #define RISCV_PMU_INSTRET      1
-> -#define RISCV_PMU_MHPMCOUNTER3 2
-> -#define RISCV_PMU_MHPMCOUNTER4 3
-> -#define RISCV_PMU_MHPMCOUNTER5 4
-> -#define RISCV_PMU_MHPMCOUNTER6 5
-> -#define RISCV_PMU_MHPMCOUNTER7 6
-> -#define RISCV_PMU_MHPMCOUNTER8 7
->
->  #define RISCV_OP_UNSUPP                (-EOPNOTSUPP)
->
-> --
-> 2.26.2
->
+> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+> index dfcaebc3928f..58c39c44b9c9 100644
+> --- a/arch/riscv/mm/init.c
+> +++ b/arch/riscv/mm/init.c
+> @@ -49,7 +49,7 @@ static void setup_zero_page(void)
+>   	memset((void *)empty_zero_page, 0, PAGE_SIZE);
+>   }
+>   
+> -#ifdef CONFIG_DEBUG_VM
+> +#if defined(CONFIG_MMU) && defined(DEBUG_VM)
 
-Hi all,
 
-I don't notice that there was a patch already to fix this issue by
-Kefeng, (https://lore.kernel.org/linux-riscv/mhng-58148e77-03b6-4c56-98ea-0d0cbf99d522@palmerdabbelt-glaptop1/T/#u).
-Even though it was a different way, but I also think it was good for
-the present. As my comment in this patch, eventually, the number of
-counters should be decided at runtime, such as DTB, then we don't need
-to re-build kernel for various platform
-which has got a different number of hpmcounters.
+Shouldn't it be CONFIG_DEBUG_VM ?
+
+
+>   static inline void print_mlk(char *name, unsigned long b, unsigned long t)
+>   {
+>   	pr_notice("%12s : 0x%08lx - 0x%08lx   (%4ld kB)\n", name, b, t,
+
+
+Alex
+
 
