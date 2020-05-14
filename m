@@ -2,52 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 442A61D3766
-	for <lists+linux-riscv@lfdr.de>; Thu, 14 May 2020 19:05:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29E271D376B
+	for <lists+linux-riscv@lfdr.de>; Thu, 14 May 2020 19:05:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9O0GH6huauOXD0kBojSzaoBNYNJMwSplEIK4TSWXrNY=; b=OX+VlSxMsvL0l3
-	yQSQYkck+wn9KY9KeuPjX89HIngZv3zh0ESzTCH+IkCmnSafGOCYFCkTMnFVIxVqa8TVbfRitc/RQ
-	0Icde+2frDwzVFkLys/wENH+mPXZhCaiUpegNSwJNw0h2pqXBi3jO9WgHDCR++Wl0yKar/mLY1OPu
-	uWvfU2H0z66IEQbCkDMhMurlQyIn7q8r1vu9CgQTHRt+klKw+fzUz51+lY6AcFc8XOdEH32DzE+4A
-	Kd7qZ0uRhdg89QBnrBjHoiHB2V72/0nRqsHfWVg+TqSwiUbA0YKotchY+dGTkdbUQ35iE7BNW7Iec
-	cv7Lf55pkZlZ6AmLXdng==;
+	List-Owner; bh=ZuZHXJCZ7p74QDyALhfYKAgrDszVjlmqM5SBSAaaPs4=; b=MHyOvFOEEWodB6
+	Eu6TAMcIRRgXXdKR5UsS1gwIgbV9Fg2l061oslRyPyM4LCo0NP71f50RMtbhrqMhjUy7g4CvLTOLF
+	kp+mWyoZCmaMlgOJbdHMxAbyKH5dRBMZM1Khy65qoOOsTM5MYnrsURgPwXQwP8S9elPW6Myo/x8ia
+	SCNPJ9vYoIoE/t/fOnbprj1zQBsY8lm6qsYn6EzEzmme1rmuKjv7iJBzLTq5wQp2ESLEub0v5Tu9m
+	xx4z2rPmeqsBZr2Hf3qKPslbxUUZ+8z2Xk3IrHuxulgqpP4dpngtLho0nPOpFrZNvzmepnH8auIlS
+	46fyFNSGAk+J4D2It3Kw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZHIG-0003pe-Cw; Thu, 14 May 2020 17:05:12 +0000
+	id 1jZHIU-00054K-Ox; Thu, 14 May 2020 17:05:26 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZHI7-00031N-VA; Thu, 14 May 2020 17:05:05 +0000
+ id 1jZHIM-00051x-Df; Thu, 14 May 2020 17:05:22 +0000
 Received: from aquarius.haifa.ibm.com (nesher1.haifa.il.ibm.com [195.110.40.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9D208206D8;
- Thu, 14 May 2020 17:04:49 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 21FF0206F1;
+ Thu, 14 May 2020 17:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589475903;
- bh=44XXBwqf7ZdJi139qXlwO51vvXhQ450CmPWvc64Elpk=;
+ s=default; t=1589475918;
+ bh=yCvMg9jE76Q0mBLXp3JtaX9kPYeAaa6ImoilPHaVKJo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=cVcX2vcKsPsKDmMAS87dHuEJJ8eUvdSGajlPhYwFuiRJfueaw2+fisGXnor5syKhU
- 9h3N5W4e4o2uV5ohsNoh5KyYV/kirPUl7kHdzkprgJKtt717KeE0Fo99VHdYAjovTc
- rK2nhnvnaVjaC2DT2klZJ/7NiWCQPaPFfNLpXbUg=
+ b=MsXf+YHLiMI+6nfVDWOloety14o6JtNlRYn5C4NpDZVRH90TiJvlFuFoUuAZuA9+K
+ HZhIg1NTYiA/9LFiictyIBYEvruIwYzYcqZJyQuCYfPaGccEozO27Q88Ag+LaopJp/
+ uY8eQCnE5yZhTWiArvI3ABGMenLhVbfIKS966Dkg=
 From: Mike Rapoport <rppt@kernel.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2 05/12] m68k/mm/motorola: move comment about page table
- allocation funcitons
-Date: Thu, 14 May 2020 20:03:20 +0300
-Message-Id: <20200514170327.31389-6-rppt@kernel.org>
+Subject: [PATCH v2 06/12] m68k/mm: move {cache,
+ nocahe}_page() definitions close to their user
+Date: Thu, 14 May 2020 20:03:21 +0300
+Message-Id: <20200514170327.31389-7-rppt@kernel.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200514170327.31389-1-rppt@kernel.org>
 References: <20200514170327.31389-1-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_100504_067869_F0762604 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20200514_100518_666024_379DFD1F 
+X-CRM114-Status: GOOD (  13.19  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -111,52 +111,182 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Mike Rapoport <rppt@linux.ibm.com>
 
-The comment about page table allocation functions resides in
-include/asm/motorola_pgtable.h while the functions live in
-include/asm/motorola_pgaloc.h.
+The cache_page() and nocache_page() functions are only used by the motorola
+MMU variant for setting caching attributes for the page table pages.
 
-Move the comment close to the code.
+Move the definitions of these functions from
+arch/m68k/include/asm/motorola_pgtable.h closer to their usage in
+arch/m68k/mm/motorola.c and drop unused definition in
+arch/m68k/include/asm/mcf_pgtable.h.
 
 Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
+Acked-by: Greg Ungerer <gerg@linux-m68k.org>
 ---
- arch/m68k/include/asm/motorola_pgalloc.h | 6 ++++++
- arch/m68k/include/asm/motorola_pgtable.h | 6 ------
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ arch/m68k/include/asm/mcf_pgtable.h      | 40 ---------------------
+ arch/m68k/include/asm/motorola_pgtable.h | 44 ------------------------
+ arch/m68k/mm/motorola.c                  | 43 +++++++++++++++++++++++
+ 3 files changed, 43 insertions(+), 84 deletions(-)
 
-diff --git a/arch/m68k/include/asm/motorola_pgalloc.h b/arch/m68k/include/asm/motorola_pgalloc.h
-index c66e42917912..f3cb453a07b7 100644
---- a/arch/m68k/include/asm/motorola_pgalloc.h
-+++ b/arch/m68k/include/asm/motorola_pgalloc.h
-@@ -18,6 +18,12 @@ extern void init_pointer_table(void *table, int type);
- extern void *get_pointer_table(int type);
- extern int free_pointer_table(void *table, int type);
+diff --git a/arch/m68k/include/asm/mcf_pgtable.h b/arch/m68k/include/asm/mcf_pgtable.h
+index 0031cd387b75..737e826294f3 100644
+--- a/arch/m68k/include/asm/mcf_pgtable.h
++++ b/arch/m68k/include/asm/mcf_pgtable.h
+@@ -328,46 +328,6 @@ extern pgd_t kernel_pg_dir[PTRS_PER_PGD];
+ #define pte_offset_kernel(dir, address) \
+ 	((pte_t *) __pmd_page(*(dir)) + __pte_offset(address))
  
-+/*
-+ * Allocate and free page tables. The xxx_kernel() versions are
-+ * used to allocate a kernel page table - this turns on ASN bits
-+ * if any.
-+ */
-+
- static inline pte_t *pte_alloc_one_kernel(struct mm_struct *mm)
- {
- 	return get_pointer_table(TABLE_PTE);
+-/*
+- * Disable caching for page at given kernel virtual address.
+- */
+-static inline void nocache_page(void *vaddr)
+-{
+-	pgd_t *dir;
+-	p4d_t *p4dp;
+-	pud_t *pudp;
+-	pmd_t *pmdp;
+-	pte_t *ptep;
+-	unsigned long addr = (unsigned long) vaddr;
+-
+-	dir = pgd_offset_k(addr);
+-	p4dp = p4d_offset(dir, addr);
+-	pudp = pud_offset(p4dp, addr);
+-	pmdp = pmd_offset(pudp, addr);
+-	ptep = pte_offset_kernel(pmdp, addr);
+-	*ptep = pte_mknocache(*ptep);
+-}
+-
+-/*
+- * Enable caching for page at given kernel virtual address.
+- */
+-static inline void cache_page(void *vaddr)
+-{
+-	pgd_t *dir;
+-	p4d_t *p4dp;
+-	pud_t *pudp;
+-	pmd_t *pmdp;
+-	pte_t *ptep;
+-	unsigned long addr = (unsigned long) vaddr;
+-
+-	dir = pgd_offset_k(addr);
+-	p4dp = p4d_offset(dir, addr);
+-	pudp = pud_offset(p4dp, addr);
+-	pmdp = pmd_offset(pudp, addr);
+-	ptep = pte_offset_kernel(pmdp, addr);
+-	*ptep = pte_mkcache(*ptep);
+-}
+-
+ /*
+  * Encode and de-code a swap entry (must be !pte_none(e) && !pte_present(e))
+  */
 diff --git a/arch/m68k/include/asm/motorola_pgtable.h b/arch/m68k/include/asm/motorola_pgtable.h
-index 48f19f0ab1e7..9e5a3de21e15 100644
+index 9e5a3de21e15..e1594acf7c7e 100644
 --- a/arch/m68k/include/asm/motorola_pgtable.h
 +++ b/arch/m68k/include/asm/motorola_pgtable.h
-@@ -227,12 +227,6 @@ static inline pte_t *pte_offset_kernel(pmd_t *pmdp, unsigned long address)
+@@ -227,50 +227,6 @@ static inline pte_t *pte_offset_kernel(pmd_t *pmdp, unsigned long address)
  #define pte_offset_map(pmdp,address) ((pte_t *)__pmd_page(*pmdp) + (((address) >> PAGE_SHIFT) & (PTRS_PER_PTE - 1)))
  #define pte_unmap(pte)		((void)0)
  
--/*
-- * Allocate and free page tables. The xxx_kernel() versions are
-- * used to allocate a kernel page table - this turns on ASN bits
-- * if any.
+-/* Prior to calling these routines, the page should have been flushed
+- * from both the cache and ATC, or the CPU might not notice that the
+- * cache setting for the page has been changed. -jskov
 - */
+-static inline void nocache_page(void *vaddr)
+-{
+-	unsigned long addr = (unsigned long)vaddr;
 -
- /* Prior to calling these routines, the page should have been flushed
-  * from both the cache and ATC, or the CPU might not notice that the
-  * cache setting for the page has been changed. -jskov
+-	if (CPU_IS_040_OR_060) {
+-		pgd_t *dir;
+-		p4d_t *p4dp;
+-		pud_t *pudp;
+-		pmd_t *pmdp;
+-		pte_t *ptep;
+-
+-		dir = pgd_offset_k(addr);
+-		p4dp = p4d_offset(dir, addr);
+-		pudp = pud_offset(p4dp, addr);
+-		pmdp = pmd_offset(pudp, addr);
+-		ptep = pte_offset_kernel(pmdp, addr);
+-		*ptep = pte_mknocache(*ptep);
+-	}
+-}
+-
+-static inline void cache_page(void *vaddr)
+-{
+-	unsigned long addr = (unsigned long)vaddr;
+-
+-	if (CPU_IS_040_OR_060) {
+-		pgd_t *dir;
+-		p4d_t *p4dp;
+-		pud_t *pudp;
+-		pmd_t *pmdp;
+-		pte_t *ptep;
+-
+-		dir = pgd_offset_k(addr);
+-		p4dp = p4d_offset(dir, addr);
+-		pudp = pud_offset(p4dp, addr);
+-		pmdp = pmd_offset(pudp, addr);
+-		ptep = pte_offset_kernel(pmdp, addr);
+-		*ptep = pte_mkcache(*ptep);
+-	}
+-}
+-
+ /* Encode and de-code a swap entry (must be !pte_none(e) && !pte_present(e)) */
+ #define __swp_type(x)		(((x).val >> 4) & 0xff)
+ #define __swp_offset(x)		((x).val >> 12)
+diff --git a/arch/m68k/mm/motorola.c b/arch/m68k/mm/motorola.c
+index 904c2a663977..8e5e74121a78 100644
+--- a/arch/m68k/mm/motorola.c
++++ b/arch/m68k/mm/motorola.c
+@@ -45,6 +45,49 @@ unsigned long mm_cachebits;
+ EXPORT_SYMBOL(mm_cachebits);
+ #endif
+ 
++/* Prior to calling these routines, the page should have been flushed
++ * from both the cache and ATC, or the CPU might not notice that the
++ * cache setting for the page has been changed. -jskov
++ */
++static inline void nocache_page(void *vaddr)
++{
++	unsigned long addr = (unsigned long)vaddr;
++
++	if (CPU_IS_040_OR_060) {
++		pgd_t *dir;
++		p4d_t *p4dp;
++		pud_t *pudp;
++		pmd_t *pmdp;
++		pte_t *ptep;
++
++		dir = pgd_offset_k(addr);
++		p4dp = p4d_offset(dir, addr);
++		pudp = pud_offset(p4dp, addr);
++		pmdp = pmd_offset(pudp, addr);
++		ptep = pte_offset_kernel(pmdp, addr);
++		*ptep = pte_mknocache(*ptep);
++	}
++}
++
++static inline void cache_page(void *vaddr)
++{
++	unsigned long addr = (unsigned long)vaddr;
++
++	if (CPU_IS_040_OR_060) {
++		pgd_t *dir;
++		p4d_t *p4dp;
++		pud_t *pudp;
++		pmd_t *pmdp;
++		pte_t *ptep;
++
++		dir = pgd_offset_k(addr);
++		p4dp = p4d_offset(dir, addr);
++		pudp = pud_offset(p4dp, addr);
++		pmdp = pmd_offset(pudp, addr);
++		ptep = pte_offset_kernel(pmdp, addr);
++		*ptep = pte_mkcache(*ptep);
++	}
++}
+ 
+ /*
+  * Motorola 680x0 user's manual recommends using uncached memory for address
 -- 
 2.26.2
 
