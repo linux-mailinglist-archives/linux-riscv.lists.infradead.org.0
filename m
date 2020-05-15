@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E81BF1D50ED
-	for <lists+linux-riscv@lfdr.de>; Fri, 15 May 2020 16:39:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA5211D50F1
+	for <lists+linux-riscv@lfdr.de>; Fri, 15 May 2020 16:39:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z9YRs5dLpbvo98tj/Cgt22OOiGK6aHhMzE6epEWfQXc=; b=HTytQv3BWWSb+e
-	SWD6XSszBzrNE1RPAZMQaej7CRmLoN1dHb+1aWxqMQHMS/8wqXVudCy8mWjD4/lCVIKAjhP23TGaF
-	CfHMgNEuYhJ3JPxmBhzECqqE9WJmBCvDpf/iXnHoS2TbxNalaLp0yWiTW91YLCUezYOrRrE+j38UD
-	9XjmAs54wwzm2rMeIK4PFEGrLAk++FmzXC5UcYnaINKEd0jFAzElu6xnRO/Qpfpwxv9jeBy+yd2By
-	SITbx4rQxcnQSBNv4W8wVlaFke/SVtNxAuIb0w2MnuILdx4gkRILTPC54wTqTrdV1XwFEJS/mTfW2
-	Vr6o6w5TQHpv9BzH0JVQ==;
+	List-Owner; bh=nlhENnOEhFNbEFUndyREOb6FGEq18FGbNW1JKWIMMLQ=; b=YlDFkEw0nBbbbX
+	9VdG0xVozWALNfF/tk3HMnI3IcNqxOafCbjeF+iaJJcxcrcNT0ERxgxgakM3uXmQIle70Juvl22eJ
+	nTMTb9Co1mPsyjEKv441hXcACOwHLY7VeXvW1j8djVclMj04L5VoPV64oHjSeQNXnL+qTGNrNGMHy
+	lkTga2djhOZgm40usWrw/Xkc1UyJaArv6S6/cuqBOs5BOgnDlpyxlwe9VevaU0wAuAJgpR2b3/c+j
+	cXLYAxlZ48OyB4/uTANBYelIsMcu2xS27tc0wr5juZXxvrXFsIvwP3+W50pUika3+4cI4c9atX8gw
+	HJhNtlrZh2lGIBo0GOgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZbUN-000665-Ah; Fri, 15 May 2020 14:39:03 +0000
+	id 1jZbUm-0006b1-Rt; Fri, 15 May 2020 14:39:28 +0000
 Received: from [2001:4bb8:188:1506:c70:4a89:bc61:2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZbSK-0003qc-Oh; Fri, 15 May 2020 14:36:57 +0000
+ id 1jZbSN-0003tD-KK; Fri, 15 May 2020 14:37:00 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Andrew Morton <akpm@linux-foundation.org>, Arnd Bergmann <arnd@arndb.de>,
  Roman Zippel <zippel@linux-m68k.org>
-Subject: [PATCH 03/29] powerpc: unexport flush_icache_user_range
-Date: Fri, 15 May 2020 16:36:20 +0200
-Message-Id: <20200515143646.3857579-4-hch@lst.de>
+Subject: [PATCH 04/29] unicore32: remove flush_cache_user_range
+Date: Fri, 15 May 2020 16:36:21 +0200
+Message-Id: <20200515143646.3857579-5-hch@lst.de>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200515143646.3857579-1-hch@lst.de>
 References: <20200515143646.3857579-1-hch@lst.de>
@@ -57,26 +57,33 @@ Cc: linux-arch@vger.kernel.org, linux-xtensa@linux-xtensa.org,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-flush_icache_user_range is only used by copy_to_user_page, which is
-only used by core VM code.
+flush_cache_user_range is an ARMism not used by any generic or unicore32
+specific code.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- arch/powerpc/mm/mem.c | 1 -
- 1 file changed, 1 deletion(-)
+ arch/unicore32/include/asm/cacheflush.h | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/arch/powerpc/mm/mem.c b/arch/powerpc/mm/mem.c
-index 041ed7cfd341a..f0d1bf0a8e14f 100644
---- a/arch/powerpc/mm/mem.c
-+++ b/arch/powerpc/mm/mem.c
-@@ -587,7 +587,6 @@ void flush_icache_user_range(struct vm_area_struct *vma, struct page *page,
- 	flush_icache_range(maddr, maddr + len);
- 	kunmap(page);
- }
--EXPORT_SYMBOL(flush_icache_user_range);
+diff --git a/arch/unicore32/include/asm/cacheflush.h b/arch/unicore32/include/asm/cacheflush.h
+index dc8c0b41538f8..9393ca4047e93 100644
+--- a/arch/unicore32/include/asm/cacheflush.h
++++ b/arch/unicore32/include/asm/cacheflush.h
+@@ -132,14 +132,6 @@ extern void flush_cache_page(struct vm_area_struct *vma,
  
+ #define flush_cache_dup_mm(mm) flush_cache_mm(mm)
+ 
+-/*
+- * flush_cache_user_range is used when we want to ensure that the
+- * Harvard caches are synchronised for the user space address range.
+- * This is used for the UniCore private sys_cacheflush system call.
+- */
+-#define flush_cache_user_range(vma, start, end) \
+-	__cpuc_coherent_user_range((start) & PAGE_MASK, PAGE_ALIGN(end))
+-
  /*
-  * System memory should not be in /proc/iomem but various tools expect it
+  * Perform necessary cache operations to ensure that data previously
+  * stored within this range of addresses can be executed by the CPU.
 -- 
 2.26.2
 
