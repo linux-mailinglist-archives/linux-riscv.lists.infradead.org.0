@@ -2,32 +2,32 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 724B61D5141
-	for <lists+linux-riscv@lfdr.de>; Fri, 15 May 2020 16:40:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BA3321D5171
+	for <lists+linux-riscv@lfdr.de>; Fri, 15 May 2020 16:40:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TnbCkkwCrUJoVyKDF526uiErLGT3jwDipU5D/anO8xc=; b=heARkwL2+5S08h
-	3ngUkpBQ/ORM/0rVoBWtEZJmu+nI+b45s8DvnpA/1C0HMlVzGiAds+EEKhVtSUTWCOCi+wsECRTm8
-	vb4gkPmz/x8jTEVHfklF/0tBpxuUyXNWFsa00/kLoRCC4wgf1sjavi6tGvsZBBX/JQqnb88rtusWQ
-	jLb6iQ39Pz2ZhKZSd/PS+W6GGzvg7g3+nL4At/WfpiHk4qqGe+fH0PuLJKezmhj8InyAF/X5GcYW2
-	3K+RFbiI9mWG9DRfXri4sGtkoJ2M/YtRIkXEjj7lYuc35h2xUkOLdb9b1TJdP/mKgFlwqu5Xjreks
-	cEI7FNCwHTWox0JJ+iTQ==;
+	List-Owner; bh=A0UMmbAtyFU8Mgmehd8BwFzZHE+DazTplWu/8/CZIxQ=; b=eTomn6gR/n8MkG
+	Krv/Lxn0FTwmE0NNHzvSedJduXWM+wvWHvpUgMmIitf2kT2Y+KsRgNuvYeLD9KNLTCDcJLG48RNlX
+	ihfRGo9yshFBfGh/2JTs/ntfQ2tYg7SFUTg9c/xh/KCUQqEoaUDQHWIAB0kW1X4hYNT9Y2nrseWfW
+	jHyFULzwnAhTMYbLNgjmKKbDcK+cn9415jVUVqm+qJk0AsKO0DSPAVO1zeV0Xz9JkNJarCYJ1LYgJ
+	zOA+OhVF+/7NdUezb6EROx45MfLZL9jM24SES/0I2l41uP58rZGMQIMZc5Dh1+KOMGBRZKqXQGxw3
+	RNfGD2jP0ai8LZtVW2VA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZbVg-0001RK-GA; Fri, 15 May 2020 14:40:24 +0000
+	id 1jZbW0-0001qi-78; Fri, 15 May 2020 14:40:44 +0000
 Received: from [2001:4bb8:188:1506:c70:4a89:bc61:2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZbSQ-0003wV-8r; Fri, 15 May 2020 14:37:02 +0000
+ id 1jZbSS-0003yz-QR; Fri, 15 May 2020 14:37:05 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Andrew Morton <akpm@linux-foundation.org>, Arnd Bergmann <arnd@arndb.de>,
  Roman Zippel <zippel@linux-m68k.org>
-Subject: [PATCH 05/29] asm-generic: fix the inclusion guards for cacheflush.h
-Date: Fri, 15 May 2020 16:36:22 +0200
-Message-Id: <20200515143646.3857579-6-hch@lst.de>
+Subject: [PATCH 06/29] asm-generic: don't include <linux/mm.h> in cacheflush.h
+Date: Fri, 15 May 2020 16:36:23 +0200
+Message-Id: <20200515143646.3857579-7-hch@lst.de>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200515143646.3857579-1-hch@lst.de>
 References: <20200515143646.3857579-1-hch@lst.de>
@@ -57,33 +57,79 @@ Cc: linux-arch@vger.kernel.org, linux-xtensa@linux-xtensa.org,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-cacheflush.h uses a somewhat to generic include guard name that clashes
-with various arch files.  Use a more specific one.
+This seems to lead to some crazy include loops when using
+asm-generic/cacheflush.h on more architectures, so leave it
+to the arch header for now.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- include/asm-generic/cacheflush.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/um/include/asm/tlb.h         | 2 ++
+ arch/x86/include/asm/cacheflush.h | 2 ++
+ drivers/nvdimm/pmem.c             | 3 ++-
+ include/asm-generic/cacheflush.h  | 3 ---
+ 4 files changed, 6 insertions(+), 4 deletions(-)
 
+diff --git a/arch/um/include/asm/tlb.h b/arch/um/include/asm/tlb.h
+index 70ee603839006..ff9c62828962c 100644
+--- a/arch/um/include/asm/tlb.h
++++ b/arch/um/include/asm/tlb.h
+@@ -2,6 +2,8 @@
+ #ifndef __UM_TLB_H
+ #define __UM_TLB_H
+ 
++#include <linux/mm.h>
++
+ #include <asm/tlbflush.h>
+ #include <asm-generic/cacheflush.h>
+ #include <asm-generic/tlb.h>
+diff --git a/arch/x86/include/asm/cacheflush.h b/arch/x86/include/asm/cacheflush.h
+index 63feaf2a5f93d..b192d917a6d0b 100644
+--- a/arch/x86/include/asm/cacheflush.h
++++ b/arch/x86/include/asm/cacheflush.h
+@@ -2,6 +2,8 @@
+ #ifndef _ASM_X86_CACHEFLUSH_H
+ #define _ASM_X86_CACHEFLUSH_H
+ 
++#include <linux/mm.h>
++
+ /* Caches aren't brain-dead on the intel. */
+ #include <asm-generic/cacheflush.h>
+ #include <asm/special_insns.h>
+diff --git a/drivers/nvdimm/pmem.c b/drivers/nvdimm/pmem.c
+index 2df6994acf836..55282a6217407 100644
+--- a/drivers/nvdimm/pmem.c
++++ b/drivers/nvdimm/pmem.c
+@@ -7,7 +7,6 @@
+  * Copyright (c) 2015, Boaz Harrosh <boaz@plexistor.com>.
+  */
+ 
+-#include <asm/cacheflush.h>
+ #include <linux/blkdev.h>
+ #include <linux/hdreg.h>
+ #include <linux/init.h>
+@@ -25,6 +24,8 @@
+ #include <linux/dax.h>
+ #include <linux/nd.h>
+ #include <linux/backing-dev.h>
++#include <linux/mm.h>
++#include <asm/cacheflush.h>
+ #include "pmem.h"
+ #include "pfn.h"
+ #include "nd.h"
 diff --git a/include/asm-generic/cacheflush.h b/include/asm-generic/cacheflush.h
-index cac7404b2bdd2..906277492ec59 100644
+index 906277492ec59..bf9bb83e9fc8d 100644
 --- a/include/asm-generic/cacheflush.h
 +++ b/include/asm-generic/cacheflush.h
-@@ -1,6 +1,6 @@
- /* SPDX-License-Identifier: GPL-2.0 */
--#ifndef __ASM_CACHEFLUSH_H
--#define __ASM_CACHEFLUSH_H
-+#ifndef _ASM_GENERIC_CACHEFLUSH_H
-+#define _ASM_GENERIC_CACHEFLUSH_H
+@@ -2,9 +2,6 @@
+ #ifndef _ASM_GENERIC_CACHEFLUSH_H
+ #define _ASM_GENERIC_CACHEFLUSH_H
  
- /* Keep includes the same across arches.  */
- #include <linux/mm.h>
-@@ -109,4 +109,4 @@ static inline void flush_cache_vunmap(unsigned long start, unsigned long end)
- 	memcpy(dst, src, len)
- #endif
+-/* Keep includes the same across arches.  */
+-#include <linux/mm.h>
+-
+ #define ARCH_IMPLEMENTS_FLUSH_DCACHE_PAGE 0
  
--#endif /* __ASM_CACHEFLUSH_H */
-+#endif /* _ASM_GENERIC_CACHEFLUSH_H */
+ /*
 -- 
 2.26.2
 
