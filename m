@@ -2,59 +2,59 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D7A01D60B8
-	for <lists+linux-riscv@lfdr.de>; Sat, 16 May 2020 14:12:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 189011D60C2
+	for <lists+linux-riscv@lfdr.de>; Sat, 16 May 2020 14:20:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
 	References:In-Reply-To:Subject:To:From:Date:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=N04gHaSlJXQqF3FDfaekaM4YISOkv+DTMov8OoQzaaU=; b=ihRqNXJwqDl0HG6eB6KB+pGFn
-	Dam5Y4ZgGPAoIkwMRC8+86KtbQnZLpOtIh+LsoD1i5ZckPVU/fFawc9h7v42JP7DTKvqvWzvzNjev
-	OyxMk1ybdLDTwGQTD/rc+m92ZjayLSG3xKvo+aVAek9POq2uJCZZ6kNUCjWRqxFVr+wDBq0sTYzb8
-	rpDaQ+DP2MhNC97X/fm70XoeBmSiNxxNUWVmEFTdWCJ2dCPqKkHWMRaSbhFE48KnpdlmVPWwx18o2
-	cLS+8tCmTOOZT3a76+j5+ypjSmdpMQUl/1mIlb7wUOAS0kUruleJBS383/j90gxnixTOa15MrmVlN
-	INJIR9vXw==;
+	 bh=4F70quAOqagfCET9IQpTgXiCjnVWgkO7ftrBYUA0ynw=; b=mLg41YF5FgwB/pJr+Wt7Fvj4k
+	4VjbnsOxnTAMm0t68Pd/uMyjOhViYyT0D5q2IY4g3zIgzXJlJnyiCywd4Bdryt/rs3trMq5NhEQLt
+	wWJrna0kJJgMyjtCrj9wU/IMb/5RSVa02d53EWUSJ1My9MNoXOIRspd5XcnGLQS/52YcD8UazxJhc
+	3DOTmQewoL+L7zpBFl6eN/cHKMPFNC/EALNXE3RjZfcVIA5NlPfUgWfuAaEsyJSLtY4d0GBRW38C+
+	lGN8J8rGIgBKe0UMNwoLRpvV4zOqVO0hyIwB/KxDYDSAemIwGpFnSCmnHzQwYLLI4LHJzfLdgMPkU
+	XTJDKrLXQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZvfT-0006JZ-RW; Sat, 16 May 2020 12:11:51 +0000
+	id 1jZvnZ-0003af-1c; Sat, 16 May 2020 12:20:13 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZvfQ-0006FE-RC
- for linux-riscv@lists.infradead.org; Sat, 16 May 2020 12:11:50 +0000
+ id 1jZvnU-0002es-JX
+ for linux-riscv@lists.infradead.org; Sat, 16 May 2020 12:20:09 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9C11D20657;
- Sat, 16 May 2020 12:11:44 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 16BC220671;
+ Sat, 16 May 2020 12:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589631104;
- bh=wrMFzf+QBFblU189yRzbGWglv3qwzLmaHvcvHlV0GUE=;
+ s=default; t=1589631608;
+ bh=nw2Sia0XA65XHVWMqYVds6MhO4JKpPbeVteRggM9X6Y=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=cZUTWWofrxjhsMrtbblojBWSTAuVWrw2XfAsy+QYwUuumLbri+luonsWq2TXbojcm
- mfDYXurSW0VN2DlmyjAuIgiP0aLq+iJ5DWW4JtcTSZ0MssmCZTKdOnNS1RK+bXSxTA
- PvbQ6LY1xv4i5CPuT+x3nynooAgmFy78LUzhZPuw=
+ b=RywIqY9jUZ2i9yasZQmuX628UFtHs7uWrk2dHNRY7bBgka+03jIOAUDSmRRafYAPK
+ cCry4nzPCL41GXZXcFgtU6XraqcDI1tHZeIFnTeA4VeVvokttXskYNiffcEWLDkcn5
+ M21QP3h9D/SdqZbs40nwJX0FvS9bNAXUvWfp7QlQ=
 Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
  by disco-boy.misterjones.org with esmtpsa
  (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
  (envelope-from <maz@kernel.org>)
- id 1jZvfK-00Co1D-He; Sat, 16 May 2020 13:11:42 +0100
+ id 1jZvnS-00Co8e-GD; Sat, 16 May 2020 13:20:06 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII;
  format=flowed
 Content-Transfer-Encoding: 7bit
-Date: Sat, 16 May 2020 13:11:42 +0100
+Date: Sat, 16 May 2020 13:20:06 +0100
 From: Marc Zyngier <maz@kernel.org>
 To: Anup Patel <anup.patel@wdc.com>
-Subject: Re: [PATCH 1/4] irqchip/sifive-plic: Setup cpuhp once after current
- handler is present
-In-Reply-To: <20200516063901.18365-2-anup.patel@wdc.com>
+Subject: Re: [PATCH 2/4] irqchip/sifive-plic: Improve boot prints for multiple
+ PLIC instances
+In-Reply-To: <20200516063901.18365-3-anup.patel@wdc.com>
 References: <20200516063901.18365-1-anup.patel@wdc.com>
- <20200516063901.18365-2-anup.patel@wdc.com>
+ <20200516063901.18365-3-anup.patel@wdc.com>
 User-Agent: Roundcube Webmail/1.4.4
-Message-ID: <d4e0dcceecad49e71ffe785f8950981d@kernel.org>
+Message-ID: <718b4b4fd894f74a178d3e38073ffdcc@kernel.org>
 X-Sender: maz@kernel.org
 X-SA-Exim-Connect-IP: 51.254.78.96
 X-SA-Exim-Rcpt-To: anup.patel@wdc.com, palmer@dabbelt.com,
@@ -65,8 +65,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_051148_917953_967AACDE 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20200516_052008_681530_AAC26DB0 
+X-CRM114-Status: GOOD (  12.53  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -103,84 +103,54 @@ Cc: Jason Cooper <jason@lakedaemon.net>, Anup Patel <anup@brainfault.org>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Anup,
-
 On 2020-05-16 07:38, Anup Patel wrote:
-> For multiple PLIC instances, the plic_init() is called once for each
-> PLIC instance. Due to this we have two issues:
-> 1. cpuhp_setup_state() is called multiple times
-> 2. plic_starting_cpu() can crash for boot CPU if cpuhp_setup_state()
->    is called before boot CPU PLIC handler is available.
-> 
-> This patch fixes both above issues.
+> We improve PLIC banner to help distinguish multiple PLIC instances
+> in boot time prints.
 > 
 > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > ---
->  drivers/irqchip/irq-sifive-plic.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
+>  drivers/irqchip/irq-sifive-plic.c | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
 > 
 > diff --git a/drivers/irqchip/irq-sifive-plic.c
 > b/drivers/irqchip/irq-sifive-plic.c
-> index 822e074c0600..7dc23edb3267 100644
+> index 7dc23edb3267..2d3db927a551 100644
 > --- a/drivers/irqchip/irq-sifive-plic.c
 > +++ b/drivers/irqchip/irq-sifive-plic.c
-> @@ -76,6 +76,7 @@ struct plic_handler {
->  	void __iomem		*enable_base;
->  	struct plic_priv	*priv;
->  };
-> +static bool plic_cpuhp_setup_done;
->  static DEFINE_PER_CPU(struct plic_handler, plic_handlers);
-> 
->  static inline void plic_toggle(struct plic_handler *handler,
-> @@ -282,6 +283,7 @@ static int __init plic_init(struct device_node 
+> @@ -284,6 +284,11 @@ static int __init plic_init(struct device_node 
 > *node,
->  	int error = 0, nr_contexts, nr_handlers = 0, i;
 >  	u32 nr_irqs;
 >  	struct plic_priv *priv;
-> +	struct plic_handler *handler;
+>  	struct plic_handler *handler;
+> +	struct resource iores;
+> +
+> +	error = of_address_to_resource(node, 0, &iores);
+> +	if (error)
+> +		return error;
 > 
 >  	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
 >  	if (!priv)
-> @@ -310,7 +312,6 @@ static int __init plic_init(struct device_node 
+> @@ -377,8 +382,10 @@ static int __init plic_init(struct device_node 
 > *node,
-> 
->  	for (i = 0; i < nr_contexts; i++) {
->  		struct of_phandle_args parent;
-> -		struct plic_handler *handler;
->  		irq_hw_number_t hwirq;
->  		int cpu, hartid;
-> 
-> @@ -364,9 +365,18 @@ static int __init plic_init(struct device_node 
-> *node,
->  		nr_handlers++;
+>  		plic_cpuhp_setup_done = true;
 >  	}
 > 
-> -	cpuhp_setup_state(CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
-> +	/*
-> +	 * We can have multiple PLIC instances so setup cpuhp state only
-> +	 * when context handler for current/boot CPU is present.
-> +	 */
-> +	handler = this_cpu_ptr(&plic_handlers);
-> +	if (handler->present && !plic_cpuhp_setup_done) {
+> -	pr_info("mapped %d interrupts with %d handlers for %d contexts.\n",
+> -		nr_irqs, nr_handlers, nr_contexts);
+> +	pr_info("interrupt-controller at 0x%llx "
+> +		"(interrupts=%d, contexts=%d, handlers=%d)\n",
+> +		(unsigned long long)iores.start, nr_irqs,
+> +		nr_contexts, nr_handlers);
 
-If there is no context handler for the boot CPU, the system is doomed,
-right? It isn't able to get any interrupt, and you don't register
-the hotplug notifier that could allow secondary CPUs to boot.
+Instead of displaying "interrupt controller at ...", why not use the
+existing printk format for OF nodes? Something along the lines of
 
-So what is the point? It feels like you should just give up here.
+     pr_info("%pOF : mapped %d interrupts with %d handlers for %d 
+contexts\n",
+             node, nr_irqs, nr_handlers, nr_contexts);
 
-Also, the boot CPU is always CPU 0. So checking that you only register
-the hotplug notifier from CPU 0 should be enough.
-
-> +		cpuhp_setup_state(CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
->  				  "irqchip/sifive/plic:starting",
->  				  plic_starting_cpu, plic_dying_cpu);
-> +		plic_cpuhp_setup_done = true;
-> +	}
-> +
->  	pr_info("mapped %d interrupts with %d handlers for %d contexts.\n",
->  		nr_irqs, nr_handlers, nr_contexts);
 >  	set_handle_irq(plic_handle_irq);
+>  	return 0;
 
 Thanks,
 
