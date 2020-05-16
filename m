@@ -2,83 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 126A11D5F2D
-	for <lists+linux-riscv@lfdr.de>; Sat, 16 May 2020 08:39:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 509501D5F2E
+	for <lists+linux-riscv@lfdr.de>; Sat, 16 May 2020 08:39:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZsMbv6a1cH4Sn1g8V4H9H4bimKhR7++ZHY70/ctou2U=; b=ubmphU1z0chrYGpQxPzlBQ+Ay
-	t2mFTOXkMR/DjxNgG68d8ZDfyybj/93y8mFHrdNbGMbn+4P/rcISpl97FhGMSktlbovVfMgIbcSti
-	O2l1KKujAsL/gIyIGLrHos2DA0LX++Uah6qpIfkmf1OY6TLy7/EGGW+6n+2Y3nIKtK3KO085ocAqT
-	2Lmfro1kFDNEmb4bICfGO3uFLdNEFr7QBuovhCRHY7HNI5QSPI6WZWAtko7/xSJjSmnJogqgs4oBu
-	aj9vDL4kZqfM1Q30Ue5a56O4i8sy1iD3+/MUyDd2Ie3u96s6WbvA7vpWZthmF0G13F0kX94kfhTnS
-	ruvdMxMnA==;
+	 bh=qk6hVPGMMQ2zC+kK6C79jVmXvkRWyzb4veTPx0DX4fk=; b=WYIv+qp6E4TAA1rbm8qfnMemS
+	wr7umrFn94GLS5DakMdFES4ZSqlnSJfrpekiFus+UAqQ5wB6DF8RDR0hZ1h84lTdSvxf3JSt9XX15
+	W7fWf7eBzxaX/mAivyR4BnouQBtU2az+kWmyRad88mtNrOMn8E2dxrNbvxLOFBgOnI3Lxzq/Dww+L
+	EG0wpbpFHaKF80BbiVP2tMCzhkobRcBWYHz4Ap5So28MNK0ryGzFIe4KX0sN4plfXPUNgiU2+KojP
+	Knu9jrrBggf/OoJNmfC/xDJ8UjoaLo5VmUr2dgnu3Dq/BGnyXG744I+ETN6BVJIdLAVg+w8swrk9I
+	hNQVix/Jg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZqU7-0007J6-TL; Sat, 16 May 2020 06:39:47 +0000
+	id 1jZqUC-0007MK-Hi; Sat, 16 May 2020 06:39:52 +0000
 Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZqU3-0007Go-RN
- for linux-riscv@lists.infradead.org; Sat, 16 May 2020 06:39:45 +0000
+ id 1jZqU6-0007Go-1Y
+ for linux-riscv@lists.infradead.org; Sat, 16 May 2020 06:39:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1589611183; x=1621147183;
+ t=1589611186; x=1621147186;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:content-transfer-encoding:mime-version;
- bh=Hdq3SJku9dP/cMy8yxRRdBA2TPADmvP9rAYm/QHV8R8=;
- b=GMz4YtaIhIqOv2rT0cHGL8VB7OGJNMsifov7I/X5K9VA4F9lBt9bikND
- 9LlvKpDD2QGjeSaNfSHDOaXMg6nRUhnF0BdO3MEPW+QSHdO7Gi5zczskG
- UvmEMJ7+5KhWI2mG3XiuUKsMx5nrkJvEQQFun8QjcfXUlGK4A/1oPbHHM
- IRDXjORz1+eppYVkic6toA6SBHcOoLMU81b9f9TBFfXML9v0fy3eKpxos
- gJUyLmfaPsK/uQffVJntmuqhWcDEfiUwgjTvvZ782DsqojjGyrvAsHTPi
- Ykqg0AQqgi2qRYy/1PUVny5NMt3kqpyZr0aknQ8xZH0KbN5m5R72/fBpn A==;
-IronPort-SDR: kXV1bMZgeKeJyMClRaHfoq7BuUXGs/94uuxYX8gPY57JLZnkpaAv0EQv3o1H/Im1kZRqVdhxv0
- 7QltP6OfmuO6LgNdNh4FYwI7//YISpIn2JEnGWxDpRYrAdhKvXHsoT5/8ssQpxSGkF5lUEU6Cq
- GvUNBT5IgCC1RT6eUObBLlGGz8NeoAKXDCem+rZNdhWioKxayXVESbtDB/6mdtBq9oS3l1sM/Y
- evJ3kF9ANcdroP4lOpCjSmQcmP0D5qii1gcW+PqTcxqa/Dn5+L6/tpmUPsNyP0k1qopyuxi15R
- WMM=
-X-IronPort-AV: E=Sophos;i="5.73,398,1583164800"; d="scan'208";a="246808227"
-Received: from mail-sn1nam04lp2056.outbound.protection.outlook.com (HELO
- NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.56])
- by ob1.hgst.iphmx.com with ESMTP; 16 May 2020 14:39:39 +0800
+ bh=e6KToHO685hshyLBA10YvZ7EWhjY2le4fleKcvnnWS8=;
+ b=f+I/n/11YHukVJBZ+uYS7qybaNINURkNTi2J22fPA3+WJQz6KDtVbUdc
+ aZZIbv2qbnQQA1l4nu0NTRM17vZsRNfJTZi4MYl4kZ/i55m+dlfrlsUQ1
+ YfGr5Y8e5z4iB5Xv5adyWLZ4LWKiiJNla+RkWHYiihB47z0y+AD2l93r0
+ 2NfzzxNPr9CyWxF5tKL2uD7Pv2qKnKkSHejv1003HD6i+RpT57q5vgtOU
+ jeZS/tzgV2KcfD59mYVnI3T/7jUWsIaWbVKDgvAjMONlGphzKhZxGZgRG
+ 30lAi9nqnwgEJ39TxB1ynd69t77Z1IDp7FAauxqVQC/aL5YitABXKJliS w==;
+IronPort-SDR: fkCm/9LcTZ6sRvQxiIsYTesbzoZtCZ3pSFFRv/MeguDtKFAe/gqfpOcQSrLIkdEieH3QH6x7rx
+ X2agux2eNLiF7xwv68yXImtNjhh6K+9ZWZwJF01hvYoRe2kKoZxvT40BAk0NJMojS2OxQdyiLH
+ LlEfNaKe768r5mtNx0jdizm7JoFeUkGozgpzBDmM6ohpnr9iyqOi3/yepxyjNLeFFVcorCWAyJ
+ A+eWiQFLwtFuPXkzmhvZhaX6jyPFl5Lj4II0m/tP3HCE1TqNF/xv9BlW6ji9ixFK02NzrZw/0e
+ YFY=
+X-IronPort-AV: E=Sophos;i="5.73,398,1583164800"; d="scan'208";a="246808234"
+Received: from mail-sn1nam04lp2052.outbound.protection.outlook.com (HELO
+ NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.52])
+ by ob1.hgst.iphmx.com with ESMTP; 16 May 2020 14:39:45 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ci9AX5zGGmlhKmbetYHe+R3Y03uWRgqFnIgRAYTAhupGQrav99S/L/deXT4gXrEfotQevSYPdmjccAGDtoBwJtjcR8khk4KDPLBxHaumVNuVrp3ftTpJrfIvY6C6l+8eQqwgQwIMI3IkhRgj1qDOcB48ehMdsYLzANy3QomVqpFukWqz0mRGpVkcrtuVrdH99yKjTKXRSir2bAcxYpjCGPJ74Zx/qIcLo+ywBTB5VjlzEx6fg0kjJy9jdtCvlQ1uh2+BqHYzFL0QMfsRYVL9PfdgT1ouQ69tR0UkXs8sSw5npfoW+iJMYJIYNVxIbs7Hwsv/HUFvKM2rFUPR7uwKGg==
+ b=SW88f4yW3RvlGtQ/B5S5UieSaDaYrCrCUoK9dMAttrFPULljhbtrfcARYxZmM9Z2XdDZnRbtV5aEV9dT4/ll520PqjtA5EIIw+anlyPdyp5SmCZjI59LBg7U2nxc46Y2uCTHOimxt88lqR7T/3rjS6vgaJYGaQaB3++ybj5c1WaEIPtJkXMluOiI3cBfTMxozoi88TEw2DkznBShApQLYotV2W6WxgGES/BmAZOz4Ikimp5Qu4YExv+Ho3Xl8EhB+FQPr6Yx3ZaTzuiUJuI+Rf7G4unsN3U08IvahuZ4FGZYTAue9NGy4MiuP5YUWoKGxaX35Z7lNuv5QbXO9aYdqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZsMbv6a1cH4Sn1g8V4H9H4bimKhR7++ZHY70/ctou2U=;
- b=FthN0/GM+5M3rnm1sAcTC5lNYFU5Mu6O2NygrlUYpfbrmpuhu/yTe+kg4shXmJUn0dtW5ikmuEkQQ7cNwBCPXyaO1HrDS+2A//09h+tZtXEQfUJ7M9n+VJoxdgNqY2TRaOCX+qIGhoIQPHEf/odUA9SqFmOtk/4vztxttk7ssjhkOxwwPpuuedYLE0spGxJM5TfLEkFDdrpi4D2tsrJaBWXQtdRlf4MpIg9RaUq9tA5fywnwBUi+qkUvyuR8jANm77jo+SftQ2ZQH3VL9NBUtdNdeAXiThZg7Z9Fo32ePDOZ5z/VwskuVGBqPg9qgBnW8/NlCrWu5A5DSvAVtR3z/Q==
+ bh=qk6hVPGMMQ2zC+kK6C79jVmXvkRWyzb4veTPx0DX4fk=;
+ b=BvMF1ESccsvjYkcFg0P/r8xSInF7XKqlKkqQgajAmivunKzfDr5VpVXtI2P3/JzhNK0FdPDVgU51bSdWjZaGIyNBt3RVb8HkgPosQRY5+iFXf8Es9qPFZuZp6VFdEIEaKieav4vR2OCzv9GgV3nOwkv5VEQgFFD1KFDqDGV0+HeG+M3KcH8YF87hZ3mc8dKi9foWONDw2iLYGDd12PWQTz88L/EB5BcrebgnJic95or6yspoRhyjcjq8X01p2U3Mjx2emyGjInUmZuvXlWNfWEEJEv5s08B4aTQQS59z/PPoIvEpe+EmmHKO6vkFyBt+QwvY31lxBAWb7IWMVXUFig==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZsMbv6a1cH4Sn1g8V4H9H4bimKhR7++ZHY70/ctou2U=;
- b=UHzG0x/KkXVqYneR+aWAOBDS9kvWW7Hqu3DAFWbNW/pzgMNMc2QHFrkO2nD86+w3K+tm7r8vz1liJpQGB0teKIUTYiek7gfywW2Z5XPxj9wefyZM6i+MIPatVf49LbFg696ixoRpqB6VQ7W+1UbNQCfsZkgJ4AbeMAoMkG/jaZI=
+ bh=qk6hVPGMMQ2zC+kK6C79jVmXvkRWyzb4veTPx0DX4fk=;
+ b=FcdUY6g/O/foTbfMFCVCrvcWbQ0dxhLfu+0+2gLnwTOcPy707HTqdpX/OW6M35yXBXZjmA2JxMyWWKadDpJvcE68scza5Qi4t/u9klTYnqdAcPOOO9Hqvy09ho+MAZ7PC1LNG/ucR+lEtJeeZeAJ+ThJXeywpDlib1JH9jwHFxI=
 Authentication-Results: dabbelt.com; dkim=none (message not signed)
  header.d=none;dabbelt.com; dmarc=none action=none header.from=wdc.com;
 Received: from DM6PR04MB6201.namprd04.prod.outlook.com (2603:10b6:5:127::32)
  by DM6PR04MB4539.namprd04.prod.outlook.com (2603:10b6:5:2c::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.26; Sat, 16 May
- 2020 06:39:38 +0000
+ 2020 06:39:44 +0000
 Received: from DM6PR04MB6201.namprd04.prod.outlook.com
  ([fe80::f8b3:c124:482b:52e0]) by DM6PR04MB6201.namprd04.prod.outlook.com
  ([fe80::f8b3:c124:482b:52e0%5]) with mapi id 15.20.2979.033; Sat, 16 May 2020
- 06:39:38 +0000
+ 06:39:43 +0000
 From: Anup Patel <anup.patel@wdc.com>
 To: Palmer Dabbelt <palmer@dabbelt.com>,
  Paul Walmsley <paul.walmsley@sifive.com>,
  Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>,
  Marc Zyngier <maz@kernel.org>
-Subject: [PATCH 2/4] irqchip/sifive-plic: Improve boot prints for multiple
- PLIC instances
-Date: Sat, 16 May 2020 12:08:59 +0530
-Message-Id: <20200516063901.18365-3-anup.patel@wdc.com>
+Subject: [PATCH 3/4] irqchip/sifive-plic: Separate irq_chip for muiltiple PLIC
+ instances
+Date: Sat, 16 May 2020 12:09:00 +0530
+Message-Id: <20200516063901.18365-4-anup.patel@wdc.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200516063901.18365-1-anup.patel@wdc.com>
 References: <20200516063901.18365-1-anup.patel@wdc.com>
@@ -93,38 +93,38 @@ Received: from wdc.com (49.207.60.36) by
  MAXPR0101CA0002.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:c::12) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.20 via Frontend
- Transport; Sat, 16 May 2020 06:39:33 +0000
+ Transport; Sat, 16 May 2020 06:39:39 +0000
 X-Mailer: git-send-email 2.25.1
 X-Originating-IP: [49.207.60.36]
 X-MS-PublicTrafficType: Email
 X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 12575aca-acdf-451e-615a-08d7f963e7de
+X-MS-Office365-Filtering-Correlation-Id: 45c7c9a4-d3d2-4215-e680-08d7f963eb0a
 X-MS-TrafficTypeDiagnostic: DM6PR04MB4539:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DM6PR04MB4539D47A05037B3B2DB9568E8DBA0@DM6PR04MB4539.namprd04.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <DM6PR04MB4539DF37736382405EE707998DBA0@DM6PR04MB4539.namprd04.prod.outlook.com>
 WDCIPOUTBOUND: EOP-TRUE
-X-MS-Oob-TLC-OOBClassifiers: OLM:3826;
+X-MS-Oob-TLC-OOBClassifiers: OLM:901;
 X-Forefront-PRVS: 040513D301
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: DF0qtEgm9zF7s/slq9zwvT50AtUV4I98PoCdGRmcvOGDgyXmMcRZiP0O0Ha+/YvRYdrY80EO6hSmy6f+B1p+9fnghtnujoZgQMIy+3gDQ5+2GF51/AGjRgDiILIQdL2GDy4idWzBVK2VnKGDgvT2yOYJw58JWZ0s8YMTZ3bQAQ0m/STQt9N4s0ijM9Iddgv9w3jhhH72Bo6XTieV6rkuIHPs7JAvpd8X0m038K9+BFrYYYY1tggIEB9THxMeO7Cd8fXEUHTsSWd3LVrtL3HWU+NfI4AqA2VYEb8RvqxIlikLtgLBTL4rs2nEAnOlrQB5X84F9bBK1ZWDKFyJse9GaHDaFV8SrjS+e/UxyH6mBhDtLTaA7Ql+WVkEoyAEdkYzvNlNRx88vOogNLcLaT/f9iNUrp7beju7kg6o2BIsiPCCw7BTqtNqGpz+PjDRMIu7
+X-Microsoft-Antispam-Message-Info: z1dXMlRimStL3C1cvg2Pmt8WAf1cpopf4EPeNscfN/AvNRxCRZdwReRnubY/uf0RCJF3wT/5Huc1efYn0luyIwxBgAGdBxEwiw+X1ffrE1sTQpwTWvx40wtTOO9jVZ+/BV0ao2LALOzmAffL/c9MEzQZQYiGVcXu6bSChaby/qW3E0uuC3B2EqLXfgqc47U/CdYf34HHmQt+XGIL6G8QQhNYQ/NmBGhxcRJqp9U3v9sCaLKXz6Oc0z9BRqlIICBDCp6FQeDF1BF6g5sSoxFDLwC1izjxPqnDS42erYtll/rFVF922sH/tuSJFgo/RrCvlh8GwNYeKZaHU2k5HSGoJ0SF3Ts1mjUT+vA1i8gnOXrvKgNfa5whPZS4ALMNEbyJAf9zA3aHNyc8H5aUfL4CRL814nJ9WaT15LlyeLnezVhM4ti3FYJY41Tg4lsntm5p
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR04MB6201.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
  SFS:(4636009)(396003)(346002)(376002)(366004)(39860400002)(136003)(6666004)(1006002)(2906002)(8676002)(36756003)(8936002)(44832011)(26005)(54906003)(86362001)(7696005)(52116002)(55236004)(110136005)(1076003)(16526019)(186003)(316002)(5660300002)(66946007)(8886007)(55016002)(66476007)(66556008)(478600001)(956004)(4326008)(2616005);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: TrdWCZ/VCn9SWu8TtJXV3fn8XJxvC9Q33z4DKUnw25xVIzPc2E0XOHvw6OLXyGg67O5SPi2JlwxvUNImCkE4kMjqIB9+XW05kAFhec0MAz/9dtJBecRaAabeVLI4CrZEJFDfmLB35yK4Mr25yuuXPCrz6Y1Q9a+hP95jRMgZoPItj8IsdBfQnQHWdWLPPKVH6XgUcJPIat20XvZpHW3fdL1EffQpIRyK7GpbW4QknaZKhmLJGVx3VmWWMSTSGn4qJMM9Os1U3X3D+30ekLPUojMDTrD2ycn1pF7Pcmco/M8t+/LAtP/W04VWQsN3g1+3veJuSbZ4NglQm5RFxMYF5e15k1GUv/a8J7gTTCSyY7X9g2X3lEIWPvAIEGaOxj7N72ekjxK2cU6EgoY4VmoLMYYA94i9R8ODxWy5ct0oGgCqbRii04i7kuSK/xiFzH7/5rI5RgWPqoti5Jtm+01V2bG5Mab+xL5Pgqt8UEaKliA=
+X-MS-Exchange-AntiSpam-MessageData: aRyG3CG6rNWBKwoDI+1IN3Ltrvge9vCAQXT3H5LsHDjqHUP4EUjBgT9hu0fxIJphzc4pTKr3lr32wgJth6ZL7YNKa8ss6RzYphN50DJKLp7sdJdxPUQAiKQpnzJbKgFDiGsMCgOjGy8sJOngHWG1XJV/CAzMiSRQow4lwoq5S0pNs7fz1M6eYw+Gw+BBMxVtZZckLzzQNXiG84+k6UkAEexy6etSXlkQU4+gimBMwte7nbgsceDvkGYGLSROm+P/+PvqMxMxTxe53rnvybNuUTcnCU1S9eE6EypXRgNov8QfDHKxDKetq1lAguGF3aqVeN5l85QCxr+FAWqHK4UCHLXwfpj84wUJSkxsMEehLBgnHPsGqkieVHoxoYNVD/L4u0CNhLqXrYO2Khu7YNuli1etcUyEtUtKMpOEkau1BjjPYBkPR1jzuD0j8OAuw6tLE7ilkqwuXgBiG0qq4A6vQky4bVjIgaUw8n7zv73Ye4U=
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12575aca-acdf-451e-615a-08d7f963e7de
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2020 06:39:38.7791 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 45c7c9a4-d3d2-4215-e680-08d7f963eb0a
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2020 06:39:43.8542 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: fmkFDuGDfLyo5G3tVf27Nl7tqd7cEcW+uj3hzAic1kSG33OT44GOumnNqTZaY5A1BbES67XJR2fBpXU+JdfS5Q==
+X-MS-Exchange-CrossTenant-UserPrincipalName: /0UHHMtxcpLZmMmpBC1GNY6V17803PuQ3sinpzZ6mrkq+C4R0zGLCgUNgBhVgBf+CJkrEms1E6LtpKTML3AjxA==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB4539
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200515_233943_895249_92119701 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20200515_233946_094451_68971DE8 
+X-CRM114-Status: GOOD (  13.27  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -158,40 +158,82 @@ Cc: Anup Patel <anup@brainfault.org>, Anup Patel <anup.patel@wdc.com>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-We improve PLIC banner to help distinguish multiple PLIC instances
-in boot time prints.
+To distinguish interrupts from multiple PLIC instances, we use a
+per-PLIC irq_chip instance with a different name.
 
 Signed-off-by: Anup Patel <anup.patel@wdc.com>
 ---
- drivers/irqchip/irq-sifive-plic.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ drivers/irqchip/irq-sifive-plic.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index 7dc23edb3267..2d3db927a551 100644
+index 2d3db927a551..e42fc082ad18 100644
 --- a/drivers/irqchip/irq-sifive-plic.c
 +++ b/drivers/irqchip/irq-sifive-plic.c
-@@ -284,6 +284,11 @@ static int __init plic_init(struct device_node *node,
- 	u32 nr_irqs;
- 	struct plic_priv *priv;
- 	struct plic_handler *handler;
-+	struct resource iores;
-+
-+	error = of_address_to_resource(node, 0, &iores);
-+	if (error)
-+		return error;
+@@ -60,6 +60,7 @@
+ #define	PLIC_ENABLE_THRESHOLD		0
  
- 	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
+ struct plic_priv {
++	struct irq_chip chip;
+ 	struct cpumask lmask;
+ 	struct irq_domain *irqdomain;
+ 	void __iomem *regs;
+@@ -76,6 +77,7 @@ struct plic_handler {
+ 	void __iomem		*enable_base;
+ 	struct plic_priv	*priv;
+ };
++static unsigned int plic_count;
+ static bool plic_cpuhp_setup_done;
+ static DEFINE_PER_CPU(struct plic_handler, plic_handlers);
+ 
+@@ -164,20 +166,12 @@ static void plic_irq_eoi(struct irq_data *d)
+ 	writel(d->hwirq, handler->hart_base + CONTEXT_CLAIM);
+ }
+ 
+-static struct irq_chip plic_chip = {
+-	.name		= "SiFive PLIC",
+-	.irq_mask	= plic_irq_mask,
+-	.irq_unmask	= plic_irq_unmask,
+-	.irq_eoi	= plic_irq_eoi,
+-#ifdef CONFIG_SMP
+-	.irq_set_affinity = plic_set_affinity,
+-#endif
+-};
+-
+ static int plic_irqdomain_map(struct irq_domain *d, unsigned int irq,
+ 			      irq_hw_number_t hwirq)
+ {
+-	irq_domain_set_info(d, irq, hwirq, &plic_chip, d->host_data,
++	struct plic_priv *priv = d->host_data;
++
++	irq_domain_set_info(d, irq, hwirq, &priv->chip, d->host_data,
+ 			    handle_fasteoi_irq, NULL, NULL);
+ 	irq_set_noprobe(irq);
+ 	return 0;
+@@ -294,6 +288,14 @@ static int __init plic_init(struct device_node *node,
  	if (!priv)
-@@ -377,8 +382,10 @@ static int __init plic_init(struct device_node *node,
- 		plic_cpuhp_setup_done = true;
+ 		return -ENOMEM;
+ 
++	priv->chip.name = kasprintf(GFP_KERNEL, "PLIC%d", plic_count++);
++	priv->chip.irq_mask = plic_irq_mask,
++	priv->chip.irq_unmask = plic_irq_unmask,
++	priv->chip.irq_eoi = plic_irq_eoi,
++#ifdef CONFIG_SMP
++	priv->chip.irq_set_affinity = plic_set_affinity,
++#endif
++
+ 	priv->regs = of_iomap(node, 0);
+ 	if (WARN_ON(!priv->regs)) {
+ 		error = -EIO;
+@@ -383,9 +385,9 @@ static int __init plic_init(struct device_node *node,
  	}
  
--	pr_info("mapped %d interrupts with %d handlers for %d contexts.\n",
--		nr_irqs, nr_handlers, nr_contexts);
-+	pr_info("interrupt-controller at 0x%llx "
-+		"(interrupts=%d, contexts=%d, handlers=%d)\n",
-+		(unsigned long long)iores.start, nr_irqs,
-+		nr_contexts, nr_handlers);
+ 	pr_info("interrupt-controller at 0x%llx "
+-		"(interrupts=%d, contexts=%d, handlers=%d)\n",
++		"(interrupts=%d, contexts=%d, handlers=%d) (%s)\n",
+ 		(unsigned long long)iores.start, nr_irqs,
+-		nr_contexts, nr_handlers);
++		nr_contexts, nr_handlers, priv->chip.name);
  	set_handle_irq(plic_handle_irq);
  	return 0;
  
