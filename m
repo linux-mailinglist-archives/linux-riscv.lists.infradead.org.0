@@ -2,87 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52CB71D62A1
-	for <lists+linux-riscv@lfdr.de>; Sat, 16 May 2020 18:29:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 602501D62B0
+	for <lists+linux-riscv@lfdr.de>; Sat, 16 May 2020 18:38:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TT2DrQTL0OiqTtbnDMDu0LZA+YYhjTRvd4lAfAoXj0o=; b=W3L8gAwaV98q/+d5zHqOFv0TZ
-	60f99SkVEjgtDCELhjMBeEqpSjdrK6Iq1UiEUln4tlUV/MGRMIyRCa4IachQ3hyyxEATXWdVUn1l2
-	9IvhOqYXGo6Zq8DBe3W5m9fk8tHxPc7FxE3+uVCTQRyJc4ygMrPYizKy5UX9CCu8UdD6dzjE/KdHO
-	GZ9AFTmTZ03U+wVSDQ63Fzhb+Mpnu31MW8n5dgYLlF7WlKBQqCVxOoOcJGnz34VQwA354NICtfbiA
-	2WoMBZe437mRIxH0916BcPY3eczkCFOCtUsQPiUl6h8q5nU1lAGv9D+BDO3kW2YTgs7wCzpocjGy4
-	ypEwz/ulg==;
+	 bh=rohKtmUYb0O9UsTFnNYvKvYk6o+mUnzBcdGRik1X364=; b=cEpLxgHaKK/CxQWkAtIMG5CZ1
+	wVwX2znIMMjL1kqLMHpdgcbOiVHzCa6b8RBXRyAWC+PjwM7YVgrKgO6XDPRdXQtNzgEzdRfRB7v9T
+	B9+ru7OKDyO4SVSAWntAjP3G8SbuRsrtTt52UFHj5qtcyxx/jhZ/ESaKYDuWwFqtHPVkelfMrQAKs
+	t1ZLEkUGEX89DB10QdzXqeAAmT/+qDPlC0OF7/Jka4KsAuXWV5clMiIH+1xHBMDRouXkbXYBe3oKV
+	gJAMdUfWbhwabAamz2MnEppcY56XL2sJLKOZgH4rkGNuRG7n4b5Td+cbQu2/Re82LYxJaBYVn70Qt
+	vTZmiDWtg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZzgR-0007ld-0M; Sat, 16 May 2020 16:29:07 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1jZzpV-000535-Ux; Sat, 16 May 2020 16:38:29 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZzgN-0007kq-QR
- for linux-riscv@lists.infradead.org; Sat, 16 May 2020 16:29:05 +0000
+ id 1jZzpO-00051B-BL
+ for linux-riscv@lists.infradead.org; Sat, 16 May 2020 16:38:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1589646545; x=1621182545;
+ t=1589647102; x=1621183102;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=5zw3VxyMpC6zD648FB3a21N8+zQDugcioy5nX95MOWc=;
- b=Tq8kqrcphEn8bmjuV7+xePpcO28y05T/Oq/Dqyppcx4hyfvCoqo4RIyy
- /aDU7BKzHGr1fro2JFAni9xTGIIq0lv0Ijv3m55BeNDHNPLHMhiovLDqD
- LmwxdiWG26DzWIDMcXitT+Kgjw8YA5nDpUrmECVWluVBa+c/aQitIn+Tx
- cEyDtzzL4ex6jbP18Abua8570pGqGL0uMZm6TKmy30TrI4QSttqNAQu/G
- i0vhw9yEOnmuMEWOsyfN54Ar+SJvAa4rTJqzIfigu+ZSpq1o+xSxdABkp
- 9jXmDVFeS/4twMLzrZXaHv60eBbkBMJ8fgY3FavMslC7omaAlJTHKKefp Q==;
-IronPort-SDR: xaFDZLHm1ps/Zifq5Y4MSB9tbFzrfVIX0U+M4lVpwiAM5ihq87sh6nHL6CLsOg1d+haCELCXKO
- yLOCiDDFMvbEZkAyhPT0arGrF4fcfvQTRyr3RQGfQiQVioLxUovO0yiN+WN7WA2eZubBQIsygH
- tvdMKwsscDOvsPtDXXYDbwPOsZ8COCzqw2MiTuXMfhfgCQqWHU+zFPmXP4T+BLqNCkPo/s8Trf
- f7wzTpe+t3zJHtUj5xLM8NVYdMtuxJ4oO51v/Vhsj6EDFrNgzLJvpgtY7so6yPiVc5e35cAfNy
- 8iA=
-X-IronPort-AV: E=Sophos;i="5.73,398,1583164800"; d="scan'208";a="138190562"
-Received: from mail-co1nam11lp2172.outbound.protection.outlook.com (HELO
- NAM11-CO1-obe.outbound.protection.outlook.com) ([104.47.56.172])
- by ob1.hgst.iphmx.com with ESMTP; 17 May 2020 00:28:59 +0800
+ bh=ZZ8X7QrZPcXYY2w3++R8VTSAEOXxCfWxIWGI8OBYeGM=;
+ b=A+r1wQQruLyEJ40w66+zPKoEkhuGzBoAo0VwZGAlTvHM06XUgNblB4hz
+ wEdUpZI2vvf3iQzq9NAX6Kme2zxutS8ExAe6lP2vJGPuDUuwCr71HcwTk
+ VEuFl68HkmxRPVD3Jf3SyNOwPwdgycyy0guA7RUUFUXkRAcq2ItMSNJ4w
+ 8gjwg5uM2exKVTmq+Hhcu84pa6LcNkdhRP097TSZSFajX+6veefW05Zjh
+ Tdvbs9XjwFMSLZaZdNJbprvcggZYLm7pNAEnJwam7/ao6Wls3Vz/mWHfo
+ uR3Oj1aXWzQI6q/uGIRzKU3Bd/KeaJiXYeIJ8rUc2L4UB1eCt5hITLpqK A==;
+IronPort-SDR: 6Er12IrVrZH+hhePeUMlMCs9UKrdfP4AldVmOAIzn1DpQtKEWul9qlISYRSKHRgVzG5J19ew9U
+ mvSDYQEUAssRGjZXYF4dSIyRzHwR7yM4N8jHCbQO8konnb+4p90ZlHpQN8rq99vU/RYdNZ2wam
+ Vd+6DQUKz7IzZcjFeaR5MD/SJKyozJrVAdyTNYd2UE7OB4TYF4EgrfD92EMLycDFw0w/mx/1wx
+ 3rtz1Q3RHduktfMwcghsfQmcg9kfqLNrLTbrhJ2JSce79GJ/1kgCa9/5yRJaJpy1+PrfgimeWe
+ NCo=
+X-IronPort-AV: E=Sophos;i="5.73,398,1583164800"; d="scan'208";a="246827870"
+Received: from mail-dm6nam12lp2171.outbound.protection.outlook.com (HELO
+ NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.171])
+ by ob1.hgst.iphmx.com with ESMTP; 17 May 2020 00:38:18 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=m5xEP7Irhk1AmFPGJ+ETiuxcDmExbl1n9rmVzEeaOMZSSABvmlqsCq0UyRx0/UV+qi2QTImCUKqGSMIPqydj0RuwNaTkms3jN5U8pRI3dZKYH8LHgugjeR3pdvUR+9+1rSbIxorh2VppxMBZ+5hNo1Guo2Lt9XML2ciCblnTM1Y33OMw2EPKkuK/qVn/ZU9r+nUWQFYLAj1I2xj4WVxGPdduRUIi3Dmsiui5M3HSUEeMTQCrUkueGPjox11viWRkvuEWK8fJaHho12aEJxhoCG0cWOXG6ErTiGoFkWyXNQpVEtGhbfupajpke93Mgnk6SX5S3K8J/oXV8QU2L7Iq+Q==
+ b=ihKSDLXObYl3VFhuKOOFLtW/eEZ8EYrq67lI/pWwIMuSzyeMGcRyMABS0dRdn+UpyrEFAMpt2Gm/4Gz2ULpty57vD/kuv3Izrl2Q3IqNsFwDBqljDNVKFKBWBu+nrgrIR2MokJC18e9xQsTZ5eCqlfyQbA5TkExzNEctRriV1xm5uynwvoZ+/nCIoV2XztYBxM8XZ/UaK5diQcOYZUZxg7ZbMG67kpIUww6GiiOXX5LpXvOVySqUS7hKWkZHREOe8xeW2N52d7ScdYKvc53/fC5Ivgva3Oaqz2gihDYT1YzOjCcg7agCuORYEuGnkmY+16Rh/gk92KjuNsBTB+/hgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TT2DrQTL0OiqTtbnDMDu0LZA+YYhjTRvd4lAfAoXj0o=;
- b=lUT6VO1mD0ZfGT5L8lFe0HiHbRxgm6KkvbngKh2itgnR4NmfJ7NRVPcS6+7eOxM2hqzeYTQ5++HBa8J7gMW5+uBzs7S8SrmyPTPHd7GJr5UW2JK2puFLuVD+KQSxjJtbvmRQva/yJXpVGYs1sr2gc3Inb3EntrqNom5I09GveLz5X8wovQ4noF/j93TdHRqgRR4KWck4A1Pi/NULCxmUXV07wcXVpJ5KzL9ANAbMGgjw36YNzmlKBlyVrY360BysPa1Kmc8dALjmecZtTWUlLmP9oudT8i6toNVsIcTtNoUAn0FpGD6KnXOLkXsGlxhAyl3KY+FpuySXVbkMxBWnzA==
+ bh=rohKtmUYb0O9UsTFnNYvKvYk6o+mUnzBcdGRik1X364=;
+ b=Skrw/+0RFC++yhhR9NjrDW4w7CZhrv8w/Z9iJh478BpQbiQvLSTEIETaGM7nKvnEIel4sRgfdPixOLDFabOs5KtRjKt+HYd4ID9WJAilnhxmUV4TZc5uGqmUBdE/ketmZhzTrmmpM0xx0v4xvNi/1CIdSjMR3FFmn9Wqeygn+w6kimeogpC2jo205fwacuxHiIvkpaZ8NCe+J/rqpAoIZsL70mmytnoBKLprQAM3k6W0tHXQB0TGIFboNFIfvH3BT8i2xiZpVunSqTcRFlYzie0LwFqGfGxm2QAp6uZlV9Q1nU2brWbwwN4h2Q59+clFnWe9WrDKK/7xlqsf3+nCgw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TT2DrQTL0OiqTtbnDMDu0LZA+YYhjTRvd4lAfAoXj0o=;
- b=qQXIJ5bmZJ8jLC4hwEQTs6h0zELJi41lc2vihcP7mP0b1jFwOQGNf6rUKJEACGdYsEhfHlOJyeb88s2uHFGNggrhDZ8yZNgW0vdv+NEPVMmTiqZHQvsXK7VxLTOCr/fOlyPq2nKFuvCmZ4P0BSu5Syj4Z2dxLzEYm6VBP3EXhwU=
+ bh=rohKtmUYb0O9UsTFnNYvKvYk6o+mUnzBcdGRik1X364=;
+ b=sTMrcPt5EfRoqbHWTAsgocbWAT8uzd/TAf4zj1xMvTZd0E2XT/vUhpA/NBUzU8jbWmSZ8dtH1o1fpjc9PvsrHiMAvWSWjfYK+L6SSmkVS3Nz5rcsBZfauJkKTrU4Aqd/8pqh6lhZyb3E8A0MuEImndOK83e1WaLSjNGlBu45A/g=
 Received: from MN2PR04MB6207.namprd04.prod.outlook.com (2603:10b6:208:de::32)
- by MN2PR04MB7136.namprd04.prod.outlook.com (2603:10b6:208:1eb::9)
+ by MN2PR04MB5726.namprd04.prod.outlook.com (2603:10b6:208:3c::32)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.27; Sat, 16 May
- 2020 16:28:56 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.25; Sat, 16 May
+ 2020 16:38:16 +0000
 Received: from MN2PR04MB6207.namprd04.prod.outlook.com
  ([fe80::e0ef:7fce:ff0d:f580]) by MN2PR04MB6207.namprd04.prod.outlook.com
  ([fe80::e0ef:7fce:ff0d:f580%7]) with mapi id 15.20.3000.022; Sat, 16 May 2020
- 16:28:56 +0000
+ 16:38:16 +0000
 From: Anup Patel <Anup.Patel@wdc.com>
 To: Marc Zyngier <maz@kernel.org>
-Subject: RE: [PATCH 1/4] irqchip/sifive-plic: Setup cpuhp once after current
- handler is present
-Thread-Topic: [PATCH 1/4] irqchip/sifive-plic: Setup cpuhp once after current
- handler is present
-Thread-Index: AQHWK0zCQd2Rb1y8/UKUOdOD8b1Y6qiqn7gAgAAG1ICAAA9DAIAALzWQ
-Date: Sat, 16 May 2020 16:28:56 +0000
-Message-ID: <MN2PR04MB6207F08A89A9116D83BDAA2F8DBA0@MN2PR04MB6207.namprd04.prod.outlook.com>
+Subject: RE: [PATCH 3/4] irqchip/sifive-plic: Separate irq_chip for muiltiple
+ PLIC instances
+Thread-Topic: [PATCH 3/4] irqchip/sifive-plic: Separate irq_chip for muiltiple
+ PLIC instances
+Thread-Index: AQHWK0zIG2SJo4BaZ0+zBbhx696gsKiqpKoAgAAHeACAAAWnAIAANrhQ
+Date: Sat, 16 May 2020 16:38:16 +0000
+Message-ID: <MN2PR04MB62078C2854FE33CE81186FA88DBA0@MN2PR04MB6207.namprd04.prod.outlook.com>
 References: <20200516063901.18365-1-anup.patel@wdc.com>
- <20200516063901.18365-2-anup.patel@wdc.com>
- <d4e0dcceecad49e71ffe785f8950981d@kernel.org>
- <DM6PR04MB62012DBAF3FAA7A264094C418DBA0@DM6PR04MB6201.namprd04.prod.outlook.com>
- <0be23fcd363998ddd527eceb308f592c@kernel.org>
-In-Reply-To: <0be23fcd363998ddd527eceb308f592c@kernel.org>
+ <20200516063901.18365-4-anup.patel@wdc.com>
+ <577f9a16b3dddfadb7c5487ffaef31d8@kernel.org>
+ <DM6PR04MB6201FD64C78C51A94C4776558DBA0@DM6PR04MB6201.namprd04.prod.outlook.com>
+ <6fbfca8f084f6cd0dc6818c4bbf58843@kernel.org>
+In-Reply-To: <6fbfca8f084f6cd0dc6818c4bbf58843@kernel.org>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -92,43 +92,43 @@ authentication-results: kernel.org; dkim=none (message not signed)
 x-originating-ip: [106.51.108.254]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: abb20d03-9d68-4103-abe8-08d7f9b63ae0
-x-ms-traffictypediagnostic: MN2PR04MB7136:
+x-ms-office365-filtering-correlation-id: af47ec6f-3abc-4d0d-3099-08d7f9b788bc
+x-ms-traffictypediagnostic: MN2PR04MB5726:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR04MB713650B7D9EC81A8004F59D78DBA0@MN2PR04MB7136.namprd04.prod.outlook.com>
+x-microsoft-antispam-prvs: <MN2PR04MB5726D74247DDF0471AED4F468DBA0@MN2PR04MB5726.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
 x-forefront-prvs: 040513D301
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: YUSQM3QQvqzIqfUs/D5gTBbG5lLvg+KMs4mORgKZ/1/V56Ut9Sar63uBH5DuNaE+4iCweapv94AnZrlBR38ccgAFRanNindPtSasfHtbeKdt+DqRgLmY5oxDR5ecxdVsURkvCsLrcW8D4RP1XCtnur9wTELbGgjoRRTK8es7IEVZgheiNiR5k+PNF5EY01dWsQIP1mq+d7qABAfyqQuN0hN6Fp+QNMienhW+As7GE9zZ7lrZipNeDVjR1s8jLDzjvU+1OjA2FGQVcq4UB5tERPG67YPVwTJXMBiOXo6BSA43r9eJBLmZ3CfLiAkekDdBIS7+BYcRywPEytYkqQsFBkOWxM15kWmfUVru7u31mEmKuimXA0HvZQA1gKKQ5Se2L5CCp35mdTpEBn743vXp2nrS/Vbn+/1NqjZ1jiH3HVTNvfQL6Je7ZLdpX7LJKfW1
+x-microsoft-antispam-message-info: p3o3klDJUYqbMAzDphU/3wiF+6sLTs3HY/GbAk/FDcx4AIybmsNrFcH/gvlBzc5VxN33+lMJ4Lwuw2m2+dvXJ94SR3mlyz1UXwdU+nrG5w1Ujsd9VBEhkQ6bdaIY5G5FVWomwFwHJVnlC2SlG4Qygg3e7H8QUwXw+8DkdFGahHIE2hr+kmEUv3cT+j2AUiyfwyQSdmdTTNpJBMbKmwmJx3CTUj0PSAlp7Ds+N0Qgl5LgMs76qISpZdKRMmmePeNb5P+cLR9uOJeeqqVM9hEy4iPad6Ixa1KC3ds3Aqk+F8S/e+zi8pU4bOTKQZXai70Z6kgxAh62kmHiVqmKtTfQul9KccsIHMma0vU6QWZKgQAAlyJSHa1goDDl6UJiV0Gghp1J4DmgemWtwNweYUn/hBDwdoWaLrTeSpZw2jLd7q3B0803zck7f1YleL1YjvPw
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MN2PR04MB6207.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(346002)(136003)(366004)(376002)(396003)(39860400002)(4326008)(64756008)(71200400001)(54906003)(26005)(186003)(55236004)(53546011)(7696005)(316002)(478600001)(6506007)(76116006)(8676002)(8936002)(66446008)(66946007)(66476007)(6916009)(66556008)(9686003)(52536014)(86362001)(33656002)(2906002)(55016002)(5660300002);
+ SFS:(4636009)(136003)(366004)(346002)(376002)(396003)(39860400002)(8676002)(66476007)(64756008)(66946007)(66556008)(2906002)(66446008)(55016002)(9686003)(478600001)(55236004)(76116006)(71200400001)(33656002)(26005)(53546011)(86362001)(316002)(52536014)(6506007)(186003)(4326008)(8936002)(6916009)(54906003)(7696005)(5660300002);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: 56bitYnKzXuZkDZiqnfBhgRUuvJYNIVq8ir01Jx/nFaJQ8B8cVB4AiOn3huP7U3mZ/c+tTrnm4Z4rrVzmOZDkN8bnJzoYlanJ0IlP0INq0PElQwYsjF7cdKN1tw+l0bp9YY4hUzMxT2R4zn3azZn/X+RYD2TKTOT/lhgr7ER4j5aAENTvc+pmYPWSrtdYD7m6A+3nZCSOtuG7/9ltWfckvPxPC4rH0UO28/x45OamoJGpCTv+g86GJQl0aszdUUs2I9VVDQmTs9RaHyzabl6eXn+AGmI87/DgAxs7dioHj3EuoOnqUuKAOqbH9uid5oJUIzTdixh/b9l4zbhJZ78Guawa852/118R+jWq9MQuW/kQPaGteMBiBCUTmcBRV/UJJn9olrMorgF6k71YoY0mAnfAjA6l+HZ7fg3Y8VV1uXjuhzkDkAgD3qJlPjJzsue99w8vn6rTeQHje9wm5YR/ypSHElYF5YVstI9T8+qG5TL0fL78P8SZoG1xrnKumKB
+x-ms-exchange-antispam-messagedata: ubHNo1qD/1LBs4NyWFf4V0+CRcgOnv9WNQaehHnGPIicdJZbVLJWqR7ILzGc5yOxFkTC5ew/2x9emlyHs4vrjyje8oK1WrFn81abDxdFd6i6LHP6zUXBUhebPHAo3zOSXim5CAY2IrA51xa4ZoZkKpjx2Ut5sXXYDMroG1or4HPrVWMe3CKY1+CSq8IIBYd4xn6yZaN9p8vH60tvrBQ3VpeipMFXHJx8Cm+eAfFCpKVa01EGl1Tq+c0RuWQ5LKpGCgTp8IlqEknXozdaF8vWseARYs7CSpA9Q+WgggxliOail9BOlXh2sNgYaqtYE4KssxvgTaejzIlms6JIadlTRpDz7+dS8Ttl3qBQrdd3K6QU9XDG1fvvV/rs2L8MFCpmcmmYP9fCJk4BC9boxzS8IkNK9cieckmqdKls0NFmb+2l8H4hsPudH4BxgESNeVtad+AHXmbwC3evatbsoC+MR1kzVckucp+e5Wt5tZ2GL2+lnqIYE1sq0FBFHIToKzak
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: abb20d03-9d68-4103-abe8-08d7f9b63ae0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2020 16:28:56.2301 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: af47ec6f-3abc-4d0d-3099-08d7f9b788bc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2020 16:38:16.3800 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Ug36WYj0jE8HiRjallIN15Rxw/LaQ5FWjI8z2ivBPzaKzF+lrpm3DzIbyh72GXCe4B2WKSbxBM1EoW6zDYCHyA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB7136
+X-MS-Exchange-CrossTenant-userprincipalname: Xt9LdQCodZzHEpK2ruJkbZN4tJH55cMX862usknbqb19rDKJZ+pG5NJkHtV41N3LMAi5P0Qd5cOOwp+GqRO9Mw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5726
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200516_092903_925757_FF4C6C79 
-X-CRM114-Status: GOOD (  32.47  )
+X-CRM114-CacheID: sfid-20200516_093822_409540_65557A69 
+X-CRM114-Status: GOOD (  29.84  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ medium trust [68.232.141.245 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -163,7 +163,7 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 > -----Original Message-----
 > From: Marc Zyngier <maz@kernel.org>
-> Sent: 16 May 2020 19:01
+> Sent: 16 May 2020 18:46
 > To: Anup Patel <Anup.Patel@wdc.com>
 > Cc: Palmer Dabbelt <palmer@dabbelt.com>; Paul Walmsley
 > <paul.walmsley@sifive.com>; Thomas Gleixner <tglx@linutronix.de>; Jason
@@ -172,14 +172,14 @@ r
 > Francis <Alistair.Francis@wdc.com>; Anup Patel <anup@brainfault.org>; lin=
 ux-
 > riscv@lists.infradead.org; linux-kernel@vger.kernel.org
-> Subject: Re: [PATCH 1/4] irqchip/sifive-plic: Setup cpuhp once after curr=
-ent
-> handler is present
+> Subject: Re: [PATCH 3/4] irqchip/sifive-plic: Separate irq_chip for muilt=
+iple PLIC
+> instances
 >=20
-> On 2020-05-16 13:52, Anup Patel wrote:
+> On 2020-05-16 14:01, Anup Patel wrote:
 > >> -----Original Message-----
 > >> From: Marc Zyngier <maz@kernel.org>
-> >> Sent: 16 May 2020 17:42
+> >> Sent: 16 May 2020 17:59
 > >> To: Anup Patel <Anup.Patel@wdc.com>
 > >> Cc: Palmer Dabbelt <palmer@dabbelt.com>; Paul Walmsley
 > >> <paul.walmsley@sifive.com>; Thomas Gleixner <tglx@linutronix.de>;
@@ -188,132 +188,145 @@ ent
 > >> Anup Patel <anup@brainfault.org>;
 > >> linux-
 > >> riscv@lists.infradead.org; linux-kernel@vger.kernel.org
-> >> Subject: Re: [PATCH 1/4] irqchip/sifive-plic: Setup cpuhp once after
-> >> current handler is present
+> >> Subject: Re: [PATCH 3/4] irqchip/sifive-plic: Separate irq_chip for
+> >> muiltiple PLIC instances
 > >>
-> >> Hi Anup,
-> >>
-> >> On 2020-05-16 07:38, Anup Patel wrote:
-> >> > For multiple PLIC instances, the plic_init() is called once for
-> >> > each PLIC instance. Due to this we have two issues:
-> >> > 1. cpuhp_setup_state() is called multiple times 2.
-> >> > plic_starting_cpu() can crash for boot CPU if cpuhp_setup_state()
-> >> >    is called before boot CPU PLIC handler is available.
-> >> >
-> >> > This patch fixes both above issues.
+> >> On 2020-05-16 07:39, Anup Patel wrote:
+> >> > To distinguish interrupts from multiple PLIC instances, we use a
+> >> > per-PLIC irq_chip instance with a different name.
 > >> >
 > >> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > >> > ---
-> >> >  drivers/irqchip/irq-sifive-plic.c | 14 ++++++++++++--
-> >> >  1 file changed, 12 insertions(+), 2 deletions(-)
+> >> >  drivers/irqchip/irq-sifive-plic.c | 28
+> >> > +++++++++++++++-------------
+> >> >  1 file changed, 15 insertions(+), 13 deletions(-)
 > >> >
 > >> > diff --git a/drivers/irqchip/irq-sifive-plic.c
 > >> > b/drivers/irqchip/irq-sifive-plic.c
-> >> > index 822e074c0600..7dc23edb3267 100644
+> >> > index 2d3db927a551..e42fc082ad18 100644
 > >> > --- a/drivers/irqchip/irq-sifive-plic.c
 > >> > +++ b/drivers/irqchip/irq-sifive-plic.c
-> >> > @@ -76,6 +76,7 @@ struct plic_handler {
+> >> > @@ -60,6 +60,7 @@
+> >> >  #define	PLIC_ENABLE_THRESHOLD		0
+> >> >
+> >> >  struct plic_priv {
+> >> > +	struct irq_chip chip;
+> >> >  	struct cpumask lmask;
+> >> >  	struct irq_domain *irqdomain;
+> >> >  	void __iomem *regs;
+> >> > @@ -76,6 +77,7 @@ struct plic_handler {
 > >> >  	void __iomem		*enable_base;
 > >> >  	struct plic_priv	*priv;
 > >> >  };
-> >> > +static bool plic_cpuhp_setup_done;
-> >> >  static DEFINE_PER_CPU(struct plic_handler, plic_handlers);
+> >> > +static unsigned int plic_count;
+> >> >  static bool plic_cpuhp_setup_done;  static DEFINE_PER_CPU(struct
+> >> > plic_handler, plic_handlers);
 > >> >
-> >> >  static inline void plic_toggle(struct plic_handler *handler, @@
-> >> > -282,6 +283,7 @@ static int __init plic_init(struct device_node *nod=
-e,
-> >> >  	int error =3D 0, nr_contexts, nr_handlers =3D 0, i;
-> >> >  	u32 nr_irqs;
-> >> >  	struct plic_priv *priv;
-> >> > +	struct plic_handler *handler;
+> >> > @@ -164,20 +166,12 @@ static void plic_irq_eoi(struct irq_data *d)
+> >> >  	writel(d->hwirq, handler->hart_base + CONTEXT_CLAIM);  }
 > >> >
-> >> >  	priv =3D kzalloc(sizeof(*priv), GFP_KERNEL);
+> >> > -static struct irq_chip plic_chip =3D {
+> >> > -	.name		=3D "SiFive PLIC",
+> >> > -	.irq_mask	=3D plic_irq_mask,
+> >> > -	.irq_unmask	=3D plic_irq_unmask,
+> >> > -	.irq_eoi	=3D plic_irq_eoi,
+> >> > -#ifdef CONFIG_SMP
+> >> > -	.irq_set_affinity =3D plic_set_affinity,
+> >> > -#endif
+> >> > -};
+> >> > -
+> >> >  static int plic_irqdomain_map(struct irq_domain *d, unsigned int ir=
+q,
+> >> >  			      irq_hw_number_t hwirq)
+> >> >  {
+> >> > -	irq_domain_set_info(d, irq, hwirq, &plic_chip, d->host_data,
+> >> > +	struct plic_priv *priv =3D d->host_data;
+> >> > +
+> >> > +	irq_domain_set_info(d, irq, hwirq, &priv->chip, d->host_data,
+> >> >  			    handle_fasteoi_irq, NULL, NULL);
+> >> >  	irq_set_noprobe(irq);
+> >> >  	return 0;
+> >> > @@ -294,6 +288,14 @@ static int __init plic_init(struct device_node
+> >> > *node,
 > >> >  	if (!priv)
-> >> > @@ -310,7 +312,6 @@ static int __init plic_init(struct device_node
-> >> > *node,
+> >> >  		return -ENOMEM;
 > >> >
-> >> >  	for (i =3D 0; i < nr_contexts; i++) {
-> >> >  		struct of_phandle_args parent;
-> >> > -		struct plic_handler *handler;
-> >> >  		irq_hw_number_t hwirq;
-> >> >  		int cpu, hartid;
-> >> >
-> >> > @@ -364,9 +365,18 @@ static int __init plic_init(struct device_node
+> >> > +	priv->chip.name =3D kasprintf(GFP_KERNEL, "PLIC%d", plic_count++);
+> >> > +	priv->chip.irq_mask =3D plic_irq_mask,
+> >> > +	priv->chip.irq_unmask =3D plic_irq_unmask,
+> >> > +	priv->chip.irq_eoi =3D plic_irq_eoi, #ifdef CONFIG_SMP
+> >> > +	priv->chip.irq_set_affinity =3D plic_set_affinity, #endif
+> >> > +
+> >> >  	priv->regs =3D of_iomap(node, 0);
+> >> >  	if (WARN_ON(!priv->regs)) {
+> >> >  		error =3D -EIO;
+> >> > @@ -383,9 +385,9 @@ static int __init plic_init(struct device_node
 > >> > *node,
-> >> >  		nr_handlers++;
 > >> >  	}
 > >> >
-> >> > -	cpuhp_setup_state(CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
-> >> > +	/*
-> >> > +	 * We can have multiple PLIC instances so setup cpuhp state only
-> >> > +	 * when context handler for current/boot CPU is present.
-> >> > +	 */
-> >> > +	handler =3D this_cpu_ptr(&plic_handlers);
-> >> > +	if (handler->present && !plic_cpuhp_setup_done) {
+> >> >  	pr_info("interrupt-controller at 0x%llx "
+> >> > -		"(interrupts=3D%d, contexts=3D%d, handlers=3D%d)\n",
+> >> > +		"(interrupts=3D%d, contexts=3D%d, handlers=3D%d) (%s)\n",
+> >> >  		(unsigned long long)iores.start, nr_irqs,
+> >> > -		nr_contexts, nr_handlers);
+> >> > +		nr_contexts, nr_handlers, priv->chip.name);
+> >> >  	set_handle_irq(plic_handle_irq);
+> >> >  	return 0;
 > >>
-> >> If there is no context handler for the boot CPU, the system is
-> >> doomed, right? It isn't able to get any interrupt, and you don't
-> >> register the hotplug notifier that could allow secondary CPUs to
-> >> boot.
+> >> I really dislike this patch for multiple reasons:
 > >>
-> >> So what is the point? It feels like you should just give up here.
+> >> - Allocating a new struc irq_chip just for a string seems over the
+> >> top,
+> >>    specially as all the *useful* stuff stays the same.
 > >>
-> >> Also, the boot CPU is always CPU 0. So checking that you only
-> >> register the hotplug notifier from CPU 0 should be enough.
+> >> - Even if I hate it, /proc is API. I'm sure something, somewhere is
+> >>    parsing this. Changing the string is likely to confuse it.
 > >
-> > The boot CPU is not fixed in RISC-V, the logical id of the boot CPU
-> > will always be zero but physical id (or HART id) can be something
-> > totally different.
+> > AFAIK, we don't have scripts in RISC-V world that depend on
+> > /proc/interrupts content. May be in future such scripts will show up.
 >=20
-> So on riscv, smp_processor_id() can return a non-zero value on the the bo=
-ot
-> CPU? Interesting... :-/
-
-On RISC-V, smp_processor_id() returns logical id (which is the order in
-Which CPUs are brought up).
-
-We have special function cpuid_to_hartid_map() in asm/smp.h which
-helps us convert logical id to HART id.
-
-The HART id in RISC-V world is like to MPIDR of ARM world.
-
+> How do you know that? Do you keep an exhaustive repository of all the pos=
+sible
+> parsers of /proc/cpuinfo (rhetorical question)?
 >=20
+> > For system with multiple PLICs, we are seeing same "SiFive PLIC"
+> > string for all PLIC interrupts in "cat /proc/interrupts". I am trying
+> > to assign different string based on PLIC instance. This is similar to
+> > what GICv2 driver is doing (e.g. GIC-0, GIC-1, ... in
+> > /proc/interrupts).
+>=20
+> Which was a *very* bad idea the first place, and I wish I could get rid o=
+f it. I
+> cannot, for the reason outlined above (it's ABI).
+> Furthermore, in this case, the GICs are different (they are cascaded).
+> In your case, they have the same position in the interrupt hierarchy.
+>=20
+> > Is there a better way to do this ?
 > >
-> > On RISC-V NUMA system, we will have a separate PLIC in each NUMA node.
+> >>
+> >> - If you do this for debug purposes, then CONFIG_GENERIC_IRQ_DEBUGFS
+> >>    is the right way to look up the information.
+> >>
+> >> - If, for reasons that are beyond me, you actually *need* this, then
+> >>    implementing irq_print_chip in your irq_chip structure is the way
+> >>    to go.
+> >>
+> >> But frankly, I'd rather you drop this altogether.
 > >
-> > Let's say we have a system with 2 NUMA nodes, each NUMA node having
-> > 4 CPUs (or 4 HARTs).  In this case, the DTB passed to Linux will have
-> > two PLIC DT nodes where each PLIC device targets only 4 CPUs (or 4
-> > HARTs). The
-> > plic_init() functions will setup handlers for only 4 CPUs (or 4 HARTs).
-> > In other
-> > words, plic_init() for "PLIC0" will setup handler for HART id 0 to 3
-> > and
-> > plic_init() for "PLIC1" will setup handler for HART id 4 to 7. Now,
-> > any CPU can be boot CPU so it is possible that CPU with HART id 4 is
-> > boot CPU and when plic_init() is first called for "PLIC0" the handler
-> > for HART id 4 is not setup because it will be setup later when
-> > plic_init() is called for "PLIC1".
-> > This cause plic_starting_cpu() to crash when plic_init() is called for
-> > "PLIC0".
-> >
-> > I hope above example helps understanding the issue.
+> > I just want to differentiate which interrupt belongs to which PLIC
+> > Instance in /proc/interrupts. I can take a different approach if you
+> > suggest.
 >=20
-> It does, thanks. This pseudo NUMA thing really is a terrible hack...
->=20
-> >
-> > I encounter this issue randomly when booting Linux on QEMU RISC-V with
-> > multiple NUMA nodes.
->=20
-> Then why don't you defer the probing of the PLIC you can't initialize fro=
-m this
-> CPU? If you're on CPU4-7, only initialize the PLIC that matters to you, a=
-nd not
-> the the others. It would certainly make a lot more sense, and be more rob=
-ust.
+> I *have* given you a way to implement that in a better way. But again, I'=
+d
+> rather you *don't* do it for the reason I have outlined above.
 
-Okay, I will try -EPROBE defer approach for v2.
+I explored kernel/irq/proc.c and we can achieve what this patch does
+by implementing irq_print_chip() callback of "struct irq_chip" so we
+certainly don't need separate "struct irq_chip" for each PLIC instance.
 
-Thanks,
+I will implement irq_print_chip() callback in v2 series.
+
+Regards,
 Anup
 
