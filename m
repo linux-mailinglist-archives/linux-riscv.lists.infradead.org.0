@@ -2,42 +2,42 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E7DA1D94A6
-	for <lists+linux-riscv@lfdr.de>; Tue, 19 May 2020 12:47:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B65641D94A8
+	for <lists+linux-riscv@lfdr.de>; Tue, 19 May 2020 12:47:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:Message-Id:Date:Subject:To:From:Reply-To:
+	Content-Type:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=mxjiQQJG3aOM+U/qCJKWnNUt742TC4aqrzToznec4l0=; b=dMv
-	a0ceJ/zxVNffoiLfcFOGqGjhis24u6EK/09/M2UvstpPCmVGDVcQMF5e4KAzWKjJm7RR/QHcIsl10
-	Oc2AhCRPqr3ivUVGc7KKgSkgWtXYdPdJ2fki2h9mi5WpVQJlpvdDqa98bPyv5kBroQtPm7W53NN4G
-	jRaYSgWi32yRU68U6ibWiv7omstBZqTEskQs02tPjjLyed0roMpR892jbZ3q7NS98RI1n5FnmxY7i
-	dxfI+WFuH+6J4h1Y7KfGrUxIrpG0V/lFrLVKC+qFi7pBCr5ZN5OTFgcYdXVyvnTXg5F/AWkIpr6JE
-	g38zFQAey0PyoFbNoEWxDG/Kt9m+O2g==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=C4Wn0DVJtsrYagW/LRvYjoTz0Wc573KNruenw/iPvcU=; b=rPp4UfA55ncz36uSEVtcjDBvS
+	8eafrXB/GJ40H+XGe2uWYw2h0piydbvIbv67RBfUKOQNwahXzCLc7SoGMMcX2RU81m2GAdtKZepkS
+	aVE/63WVg5lrLzYs/hY+BXZiIFHKR3dyD1sWliLXY1SQblbnPThTa6ZnU9uyMpoGHIvxfSnF7vG6d
+	5QUGqvwEbhieSrZMxSAVCLQnd8WgaF+BVoQemWJYoZCA0AAOm/XOU+YIgfuns/HLmRw1tzPqUY3jG
+	l6C3mOdkvQGVwC/jlMy+mswkZQ4RKHOhLF0gYonMAyTO+a94gJDQVGS1tl6dW8Kb0fymU3owR2EFb
+	2EOTZ9Vdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jazlr-0005JI-5P; Tue, 19 May 2020 10:46:51 +0000
+	id 1jazm7-0005Zi-Ai; Tue, 19 May 2020 10:47:07 +0000
 Received: from mail-eopbgr690064.outbound.protection.outlook.com
  ([40.107.69.64] helo=NAM04-CO1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jazlm-0005I1-Kf; Tue, 19 May 2020 10:46:48 +0000
+ id 1jazlo-0005I1-9B; Tue, 19 May 2020 10:46:49 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=I7x2qFqj/gar8YLjWlrMEIPiL3H5N+rbsi0n1DXqousnziyhA5kQYCzx7A3kioylMlM5NzyE5NDcGGxASEsxcAzuam3VFmgk17qfbS7EwM+IssFDIm4sL/fB7j2slTHP3cQjuqi13Yy98PEBwjmSv90durqiIHVDpgNsbnni1FBQOQi93fBwybhKE3rLKZENSsk5RpY0/L43cK67BD1TGdVdNVUVtkk5BPjze/KzXC77bq2Pt/x3+InHAJLRplxUMDV+UY0cxZaPIqkY0Ac3cFyqTHi6S16oPQMron/5uANcvQSPxpfEzIFdRhus7ADX7sqZb/xBPLeijqaoPnrAxQ==
+ b=HBEyoHsgeLrAB/QaKXcBdr8iNprhFVB0ooU4yANzUPOsxuKpuJar8fvrcobdedTxVV1I9mBb8sAYUmWDWkwgnarrwfcEBhHANAv5s36/8FCU6mHO7pMHFgxSFfgMqqbNfJHjmCru4Ayatj5kqxMFeVd6Inov5LnS6RDcH28Q3APWRGl4Y7EBw+jrGHS4N/blg3qzzP07pgUyjw1mQkVklnyB7SiyYXuzXqvxVEo4gK6fzkvI0Gx+0dhp+o9UrQN6wi0Y2fXCFlVwbook+gsuC9AVVKjQN5hSXO3csMWs3wF7aSIm91epQg5mIdahSbGU6NgeEBBzn4zHpHsZqSQCLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mxjiQQJG3aOM+U/qCJKWnNUt742TC4aqrzToznec4l0=;
- b=K+wYy3urJ3ttjNwPjVlIs0fx846E/pjL/Rb6m7uTFmr8AFDFyyMuTQaySqvaEnNOUdIbYWO1OQknUcuin14qsHarAoXDcgUkXlGYs2WlRGmr1SveM1kPNgrNWHcwWbXABKxoKhfFyqbu4m1tZdtDVFoPhi+a2ke0q1Ilw6vJgY4Ny0WQRjv4sLr/7NVxio9O7/dTx7M8aK+jYI+cEE2lUkRfiHi1hHzPhHii8j3MejF41vuzSl/FvWEnJabZE6r5eRg3lvHm+4kw4ZES9/Rmho15QMoG2NzzwX7OsMfNUMzJ/htJZADbIkQMWXUM16VBflxkCsJbBecianciPTMvQg==
+ bh=C4Wn0DVJtsrYagW/LRvYjoTz0Wc573KNruenw/iPvcU=;
+ b=DherarqGUOAJ7gQjHEVXSZe5UpBDkf5Fr5b5Y7EQgz9xDUF28LMsIDGKWhXv8P8kFAbkCeA1ybfIVxunbruGQ+K7wFDxHOlGt7iY3a4QsTmI6+qjzDJyAAWhmlx/AHNktw4oKwF/PEYwm0OftQByXQlcu79OFltD2XaIpH1Ol3VC2LODC3tXKxnNWa2LKFqFEeDyR/ddCKPwQVKmjAIwCQOqYC7HG3zOvvjkKw5/WR5yFpM1XC4tsX3w3onano1ad+mBXubHqRX9/ouPZGNSDH7VOFvLcMhbox+WW7+B96s4F+G9akIceaG3inqGfXDrQY4qZTFqJKryTg9cJSPi3Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=sifive.com; dmarc=pass action=none header.from=sifive.com;
  dkim=pass header.d=sifive.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mxjiQQJG3aOM+U/qCJKWnNUt742TC4aqrzToznec4l0=;
- b=B+HUOhUyopCzEG3aMqlh63cdkg56Pdm0XsYXypV66k/Y+g7VKxiP0gzTnSmVeeWxvC7Qf8Anmxt0DSqgHHEi/d7/5JIO7/PzqIQaqZdUgF7He0sEmEC78BQcBWsIrXufjQfIHlTOVpUPbMnZJo1HUCfNom+ku1Y7XPjO2chh57s=
+ bh=C4Wn0DVJtsrYagW/LRvYjoTz0Wc573KNruenw/iPvcU=;
+ b=RMuI2ADLZ6Hgp9fBFZQHkG7yck1RHIbHMZ9q/QldWyN7o0m8PBCgTh/Xn6SQEK4jCriXvxfnd2sd0e1tmkelLLBMrhGpzXuZWg1XZy/Sj2xG3oOPnHJPWcf6HP3vOCfX5pb42Itf1PIlrTPHVmjly/FGD7AsAVoUnT2G2s6eGwg=
 Authentication-Results: lists.infradead.org; dkim=none (message not signed)
  header.d=none;lists.infradead.org; dmarc=none action=none
  header.from=sifive.com;
@@ -45,19 +45,21 @@ Received: from DM6PR13MB2619.namprd13.prod.outlook.com (2603:10b6:5:140::13)
  by DM6PR13MB3882.namprd13.prod.outlook.com (2603:10b6:5:22a::22) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.11; Tue, 19 May
- 2020 10:46:43 +0000
+ 2020 10:46:47 +0000
 Received: from DM6PR13MB2619.namprd13.prod.outlook.com
  ([fe80::ad23:dfbe:7ec:e5ca]) by DM6PR13MB2619.namprd13.prod.outlook.com
  ([fe80::ad23:dfbe:7ec:e5ca%3]) with mapi id 15.20.3000.015; Tue, 19 May 2020
- 10:46:43 +0000
+ 10:46:47 +0000
 From: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
 To: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mtd@lists.infradead.org
-Subject: [PATCH v2 0/2] enable spi flash and update is25wp256d page write
- capabilities
-Date: Tue, 19 May 2020 03:46:25 -0700
-Message-Id: <1589885187-31247-1-git-send-email-sagar.kadam@sifive.com>
+Subject: [PATCH v2 1/2] riscv: defconfig: enable spi nor on Hifive Unleashed
+ A00
+Date: Tue, 19 May 2020 03:46:26 -0700
+Message-Id: <1589885187-31247-2-git-send-email-sagar.kadam@sifive.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1589885187-31247-1-git-send-email-sagar.kadam@sifive.com>
+References: <1589885187-31247-1-git-send-email-sagar.kadam@sifive.com>
 Content-Type: text/plain
 X-ClientProxiedBy: BYAPR05CA0073.namprd05.prod.outlook.com
  (2603:10b6:a03:e0::14) To DM6PR13MB2619.namprd13.prod.outlook.com
@@ -67,47 +69,46 @@ X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from gamma07.internal.sifive.com (64.62.193.194) by
  BYAPR05CA0073.namprd05.prod.outlook.com (2603:10b6:a03:e0::14) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.20.3021.10 via Frontend Transport; Tue, 19 May 2020 10:46:42 +0000
+ 15.20.3021.10 via Frontend Transport; Tue, 19 May 2020 10:46:46 +0000
 X-Mailer: git-send-email 2.7.4
 X-Originating-IP: [64.62.193.194]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: dc50f93a-8d37-499e-1e02-08d7fbe1eba8
+X-MS-Office365-Filtering-Correlation-Id: e7172545-83a3-4f70-eb78-08d7fbe1ed7a
 X-MS-TrafficTypeDiagnostic: DM6PR13MB3882:
 X-LD-Processed: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1,ExtAddr
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DM6PR13MB3882092AADB6ACA3FCDB9E0B99B90@DM6PR13MB3882.namprd13.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-Microsoft-Antispam-PRVS: <DM6PR13MB38828DB4A8C006C0F2B11CB599B90@DM6PR13MB3882.namprd13.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
 X-Forefront-PRVS: 040866B734
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hX5G+5bpMY9/uhl8IqB5EBKOxQMoVnPDA6tvRLirJufvAwvBuEsyMmpls77T5UaJJeCojWb5jKeyoCg4EXqDHthgSEdSfptn3GJ/oMCEKOp16QXN/92kJd1FR8fHiSDYV9GN8AfRkOyu3Wv53p/nm3LAYQLBDdeyigq3t3x5Y/c5eyQMUKq9CULRBNQUgo8L7UX+saaDpgIAo8oD0anRucZR1ZGnYgfE68qv9h/vdFUaQYeIfpGiFuuzxNXt1f+M7OQ2FKHAiQ2yYVr8aidpEO6L3htMdOa8IHNKPN/x9VoGGVxoWItnlqhSM1JxGfIdU3lkWvfBZkaMwqbRElgYp5yBoL2owSbKSYVQf1VM5YWyVGE8MuXSFhq5QDU6dFHNnAsHGMINZGldloTLxMk/bg6mug3F42CqLT3W0aJV4Dl3+x1HSXLMi/IEulyr/45Z
+X-Microsoft-Antispam-Message-Info: L6FbN/C+ljg9uJmPxcpWpEe0gC9TZEu8jXFQXmjo8e2h75anUrQdosQKW8iPre5F9EPCxYlxkpNCu1NqUohFVZv4BGDQ4ADFA7jph/2S6XuYRWGgoZd/xmyOQG5QKvku3kBlXt3Z8jLv1HuPU0deMS30BS/bligXJFxqlFG1deRLGArniI1XmOYETpEUZQyht9FOjFq8idvOGgjHW2lBIGbNgjQIXk+lgvAgTQCm9/2niFxJuqBmo9NPf+/sJFw3tC8HlbRHBV3+ERFtQA33GqKS0Jt3F8sAQ1mYaOaVLepZc1IJYqj+k3FdURo6BvdO5i9ANs6Dzgnb6BQ+0xjoYdiYkDYYjbEH2rQjnE1BdVX4JiSpoMRBRbTzIbacA4vIUnCyY9JBUVHRXvCQ9KRN2/qAuOxTzRMKkNgPrKEU9+p3Q8b3pwE/2iMo+EtXh77t
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR13MB2619.namprd13.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(136003)(346002)(396003)(39850400004)(376002)(366004)(7416002)(4326008)(86362001)(6666004)(66946007)(66556008)(66476007)(316002)(15650500001)(5660300002)(107886003)(36756003)(2906002)(26005)(6486002)(52116002)(16526019)(2616005)(7696005)(956004)(8936002)(8676002)(186003)(478600001);
+ SFS:(136003)(346002)(396003)(39850400004)(376002)(366004)(7416002)(4326008)(86362001)(6666004)(66946007)(66556008)(66476007)(316002)(5660300002)(107886003)(36756003)(2906002)(26005)(6486002)(52116002)(16526019)(2616005)(7696005)(956004)(8936002)(8676002)(186003)(478600001);
  DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: 8UCX/RCjWuRK00Cf3PF22hU38vCnoYXXV5C+RqWHSjih4h5J1LXSNyBkl5ZHRwwfoYrgtQqJMncYo4SYXVRbYTIPcU79HZL8vz/X1nUsy9fZOydqfxu6v/dpeDD+2DZRNyxa7xwBmPM/q0jqh3MeQe4WctNi8b2SRf5Y51iaDXZPFAQ4+zCKFcqz9AaX2plfTAisc9Uqr58aB/plYMIsXZVq6t9IKcQ4ofBKjmGxOjoeKbgqI8SmnGLqgdaYDOzYcTKUoFTAEOgdlELpC4WjwlepCVAPIDnJNTgOt7axgF9ChE4aGiy9FSN5jk5hdXYMCPCEhpRv6PPnXxQm5lEH0yPVPCIhk/sQjRl7FLPSQ8dtTNP7Dc4sQ0Izn3NyH0AMW4MWJ29fqWWGde7e3/PEQOu1R4qFGHFQKreW+CUCPkGgWbjdPWybCXBK8nox1VWuEOflZuqSIzIfBO22RVdM7sebjI3oa8/HdRyXqxAssSI=
+X-MS-Exchange-AntiSpam-MessageData: QNoHph9qFMusgJwQajExXVXArYJDfjgzFXm1yuVjNJQYPIxsjmGZRy2G+tgQED9gOJnps1b1A4cRUHsre00A55/lgKmQ+xJG9Rm1XBM0NQHPBi2eS9mVQTxVbER5tVc0UPybfmRmlnn8dEU+uykJqtn2D+Bv+MmXZlsEvJnMhq+boJgSYo3jt/uV31UYmcKVMaTKdVDWhrqHnepL/CsXZoAt6BPUxiej/wyWzLo11NA/YGGP5ceKRJDYK3CRasz2UL6odX7Kb7BefJdmBbkmREPF66Zzf0BIJDQTbKlyqw9kP2dB+cvhYUzhs09QacL1dt/OZve/AUy7JfJXxqPDtg+tC4pK9n6bEZxJtXDeZNdgYDQNrWSFqSJbhJTh7Hcq1EFw5kOshOrp+m0IE2xeXaQ/946ZQNR7r+1gB9WfweUSIp+0lSuIADBOEKsevX4Pr7BePH3pY6y5khEmLGUuW6JeadUeq9JBVnnVRcK4hOE=
 X-OriginatorOrg: sifive.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dc50f93a-8d37-499e-1e02-08d7fbe1eba8
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2020 10:46:43.8130 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e7172545-83a3-4f70-eb78-08d7fbe1ed7a
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2020 10:46:46.9342 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 22f88e9d-ae0d-4ed9-b984-cdc9be1529f1
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CqhvrEJr7PQmXr0vlrMwAV/4cVWWj9mU+a4xtyjziMn3GIEeouGXHNV+VsTil7rtrBTASLkuac0MQflrzbap1w==
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0Abmria6zSZnomc0GW7NH73BiEr973fLpLlm23ViwrdligDRbZunNyJ+WFnI/GA0VrrKL8SCjIcItChCISS3Aw==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR13MB3882
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200519_034646_755913_5AEAE14B 
-X-CRM114-Status: UNSURE (   7.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200519_034648_328834_CBF66EC4 
+X-CRM114-Status: GOOD (  10.20  )
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [40.107.69.64 listed in list.dnswl.org]
  -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
  [40.107.69.64 listed in wl.mailspike.net]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [40.107.69.64 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -136,41 +137,50 @@ Cc: aou@eecs.berkeley.edu, vigneshr@ti.com, tudor.ambarus@microchip.com,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-HiFive Unleashed A00 board has is25wp256d snor chip. It is observed
-that it gets configured with Serial Input Page program by the end
-of spi_nor_scan. Using the post bfpt fixup hook we prioritize the
-page program settings to use quad input page program (opcode:0x34)
-over serial input page program (opcode: 0x12).
+Enable MTD based SPI-NOR framework in order to use spi flash available
+on HiFive Unleashed A00 board, and move SPI_SIFIVE to Kconfig.socs. The
+configurability of SPI_SIFIVE is retained and still can be enabled or
+disabled as required.
 
-The patchset is tested on Linux 5.7.0-rc5.
+Signed-off-by: Sagar Shrikant Kadam <sagar.kadam@sifive.com>
+---
+ arch/riscv/Kconfig.socs      | 1 +
+ arch/riscv/configs/defconfig | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-Changelog:
-===============================
-V2:
--Split common code between is25lp256 and is25wp256 devices as suggested
- Added a generic post bfpt fixup handler that identifies the flash parts
- based on their device id and uses the corresponding fixup. Other device's
- that need a post bfpt fixup can just add the device id check and either
- reuse the available fixups or write the necessary fixup code if one is not
- available.
+diff --git a/arch/riscv/Kconfig.socs b/arch/riscv/Kconfig.socs
+index 216286d..bcb0b1a 100644
+--- a/arch/riscv/Kconfig.socs
++++ b/arch/riscv/Kconfig.socs
+@@ -7,6 +7,7 @@ config SOC_SIFIVE
+ 	select CLK_SIFIVE
+ 	select CLK_SIFIVE_FU540_PRCI
+ 	select SIFIVE_PLIC
++	imply SPI_SIFIVE if SPI
+ 	help
+ 	  This enables support for SiFive SoC platform hardware.
  
-V1:
--Moved SPI_SIFIVE from defconfig to Kconfig.socs for SOC_SIFIVE.
- Retained it's configurability using "imply" instead of "select"
-
-V0: Base version patch (Tested on 5.7.0-rc3).
-
-
-Sagar Shrikant Kadam (2):
-  riscv: defconfig: enable spi nor on Hifive Unleashed A00
-  spi: nor: update page program settings for is25wp256 using post bfpt
-    fixup
-
- arch/riscv/Kconfig.socs      |  1 +
- arch/riscv/configs/defconfig |  3 +-
- drivers/mtd/spi-nor/issi.c   | 72 ++++++++++++++++++++++++++++++++++++--------
- 3 files changed, 63 insertions(+), 13 deletions(-)
-
+diff --git a/arch/riscv/configs/defconfig b/arch/riscv/configs/defconfig
+index 4da4886..8e2d467 100644
+--- a/arch/riscv/configs/defconfig
++++ b/arch/riscv/configs/defconfig
+@@ -62,7 +62,6 @@ CONFIG_VIRTIO_CONSOLE=y
+ CONFIG_HW_RANDOM=y
+ CONFIG_HW_RANDOM_VIRTIO=y
+ CONFIG_SPI=y
+-CONFIG_SPI_SIFIVE=y
+ # CONFIG_PTP_1588_CLOCK is not set
+ CONFIG_POWER_RESET=y
+ CONFIG_DRM=y
+@@ -80,6 +79,8 @@ CONFIG_USB_STORAGE=y
+ CONFIG_USB_UAS=y
+ CONFIG_MMC=y
+ CONFIG_MMC_SPI=y
++CONFIG_MTD=y
++CONFIG_MTD_SPI_NOR=y
+ CONFIG_RTC_CLASS=y
+ CONFIG_VIRTIO_PCI=y
+ CONFIG_VIRTIO_BALLOON=y
 -- 
 2.7.4
 
