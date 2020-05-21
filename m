@@ -2,139 +2,135 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 338921DCE34
-	for <lists+linux-riscv@lfdr.de>; Thu, 21 May 2020 15:34:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 679931DCE64
+	for <lists+linux-riscv@lfdr.de>; Thu, 21 May 2020 15:46:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BZEhRiYIYcIHJf5Y/gEWGyFEj2Hhz8fJlrML0+g2VNA=; b=M23p8tXBJj1fFyHgwPVlnPSV3
-	14UOShPemPAR2q1pGoA2rqcy0xQ53MFzO957ByiVmFfU09LS3xmBbebanYnA1EnWcsLbW+DFABAfT
-	2UTqJrLqQx0FF8IcPYHF5RqfPZPlF/b/ElEn5LcK+5DdPidNWH27x5FxGB5Bp+DUoFrxdyKlmvpa3
-	TdRQ8W2+/YO2KeOhYFRSPdHpNHzP9G46bMdri/9Pk4mJzQgpeAhYwBqr0isHY+oZR4FtHlQsrNmHQ
-	uAv9GE54gszlsM46GNaxPfQ4il1Rszj0hjYMJP8H065KlC6qaDCUBrZMuAscpCLpvGFiuI8BHbzMr
-	Iao5BxHFw==;
+	Content-Type:Content-Transfer-Encoding:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+qUZESzc8reHR6IMWEZEygGJnIDg2AVuUWY03NpW/EM=; b=pV4jsHA7aJdg22Ci9t+FegJ5RY
+	exQD7bKcy4A7agsYDdhV4si0xk3XXPbFgRLM6GPMmOtqOkkwUyauv6G4+rVgNlX4617S8DZMpSsBi
+	IOguUZMwGhpuGHhZmovr3aGqX6/tPWUD83SBjikL3FVuCbXS5tQPcWMWoDNIGTQlO3rAjgu/N6KGU
+	m7DOXHlm6oHskreFBTgqMYd2L+vVWlng1sOGVkMsXdBU4DqwfJLgF3zgPuLk9xZDjGkraZdo7JqBe
+	BJZSeJ8rB4OmWzCI/fZx8akk1j5FFlpZWNc/4BOBQ3uVk2sKv3hI4eAZrdJSh5GGBlb79r2ZbgU9G
+	uKYFpMUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jblLC-00050L-OP; Thu, 21 May 2020 13:34:30 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1jblWe-0005k3-7h; Thu, 21 May 2020 13:46:20 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jblKu-0004oI-At
- for linux-riscv@lists.infradead.org; Thu, 21 May 2020 13:34:14 +0000
+ id 1jblWa-0005jS-N2
+ for linux-riscv@lists.infradead.org; Thu, 21 May 2020 13:46:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1590068053; x=1621604053;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:content-transfer-encoding:mime-version;
- bh=nJJH7qKpWaTWZpqnM6zCpFB04zk2b11haAfYaSUb2/c=;
- b=hC8Blm5HmbNquTHFWJ+ENnhyhikHCeN+toseEjHjeGG9a7yD2kyRL/vQ
- h0a4f6O8HMWrwzgPCtnh+nhyjpcXtubqOVrsIDJYjxVoK9tFeEZ72O+33
- fsIRLUWllWs/JTmZzVZVyrhdb1BlwwPTmL/PuPr1QN85G7pfWp/aIWkAZ
- 019itl/CR0oa84/XsDrmENm2SjJ5dPzKWGORnNMohXn4NI/xqFKshM0NN
- nqIvthzS01ybBYOJgDDMCPIqa7ti45oUip8kZBPbJ5CM9RuFEgEF0lR98
- ppKnJ97IXccewr8A03eTIKZStCyY03XhNZjLZ8Uh70OhaJkKIwVIUULrt A==;
-IronPort-SDR: CJWpRDpodX/S+CJ4GQ5UGznAZi+oFyPOipiDIFvc0bGI46yL0bLbppxSZq+OSUYr9xkESzQYsX
- YjT+tEUuSigeMP2Ry2YTAyDXCrsOLNlen3vQPKZbfAKsdL8/ivrYh/JUBuG1npITFlWhWBakDu
- 3B8KhMt/OyhYxtBYtVqMaS5PqcHH6BYgBB2oA011L8XGmaYWXN75QTxIqdgkAmPaKhKTZo1dcL
- lTpZ+z3yccP7e31QsR/GBdv1deLcqfv21FB7b48FgCQwh6M9aMaH3LJ0AduiS+2s9+cxKAAV/m
- Yy0=
-X-IronPort-AV: E=Sophos;i="5.73,417,1583164800"; d="scan'208";a="142554139"
-Received: from mail-bn7nam10lp2109.outbound.protection.outlook.com (HELO
- NAM10-BN7-obe.outbound.protection.outlook.com) ([104.47.70.109])
- by ob1.hgst.iphmx.com with ESMTP; 21 May 2020 21:34:11 +0800
+ t=1590068777; x=1621604777;
+ h=from:to:cc:subject:date:message-id:
+ content-transfer-encoding:mime-version;
+ bh=n56Ua0gVn4byYIHurAUklEE7cP4RIhB1UyeY0jy3nfg=;
+ b=OnAqocsSReq6I/H2Xk/Fa7ognaJJBMjIS6eQhNuhAdQQQW0leY9VLpia
+ 5E4VRbkjs6MuPcCwASMM9QKlbGPKjZ31IDKERPoo8nV5UgjmhKCmfANEK
+ K+m605mvaWNLfMxgja95l8P/AXqwDXiz9zgSWS6p0rhRrcdXFWq46txCt
+ l5FoswAFAoVRPoEpIE+KnjAAXyvcnGcj8bTLgeUDnrYQRWHiui5gZTXrW
+ kRCUFBIu+ASYIHMYJR6/u9emc+z7NAxRxjBuUDehAalaPHVlUaP7HKdv5
+ +oem6Y0wWkW7srbTd+ApWgj16tqpqvUSdH3+6mLB8Spklbrsqz//ilzQs g==;
+IronPort-SDR: TfFD6fqapxvDrWiAU+EEPHeMPLdJcoZX+Wz3/oGn3+huVUz2avDg5vNaNP5GyKNm5lYN8goemz
+ xXq1ZPf45t2eJQTkT7Iz1k0okmzFlaVC3nV468uL8g6ZHJnw8XrgiSu24CUQg4vgnUVSNHWi/U
+ WOkljO1ggqs6bNNZT9S4u3ZaIMGM9c5MW+1vlj1yofZ8JlR6zT/VXzmPzAP2NoKvgw3RGWUeeb
+ 3CJtiuvRZW+DzeXJfgpYkuAtJMNMCv4sybVhKNCv6glyAw05R3CXh3UPN+tf+/pW2HlnXZOdCW
+ HyQ=
+X-IronPort-AV: E=Sophos;i="5.73,417,1583164800"; d="scan'208";a="138544969"
+Received: from mail-bn3nam04lp2058.outbound.protection.outlook.com (HELO
+ NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.58])
+ by ob1.hgst.iphmx.com with ESMTP; 21 May 2020 21:46:15 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QF1/D8Junh9RiIGKLG/E9+ogsDtEtFt4/Ew0YoF7iWwoL6GzKY08YRAe7FDir/SZf5qbM86ZLvjQtA9z5VodfKq6ZuMzV++1AEc66e4sahVrNalcmwHli4n6KV/vvV1mizUFpBl45eWAy+ud3phbaPl6Bm3ZvUNQUSGyKMwrMDHEABptgwoWU4w45OMw+416ostWo0UjAXwUz02BHvvCwdrAaypW+Q7xqVuOxto1J4qGr82VfDpUVAiU1aQ9CcDY8dJDAoNbHsdrYrqyLV+EdV0/fV3egt8JEmobnmj7lO29r/w8eyDLkM8K3783RE7DpBGWtKaa1WNbAPc+4Z3/Mw==
+ b=Y80ztxqXvo7wsKkfM4RbGDR1ef89f/29TlqKDFqow6I3p7zVrueooGWsOPaBt8bcOdHkIqURizPv8IGUi2hCzyCf8KXsQZhYco11RGmYglMVOhB29+ZXAvBfs9wEDbRBcLoMFhmWz4wQuXYiBf3dqPJzO3s+aAuWcTKe49JKHWUEWpv/XcMTyfN+lNyH91PsqxN+G13+rTFj6FV2FcyLohy0hiwm+eaqHzk1bZe/Jl95tgsmsCCB/BRaBAbSlTIqQoMMicOJcVK6kGvZvVFgK5P8b+jfQ21NasQWcIvTwlrkfkF91S15zoSihmTBkDlQsCMju0sC8zp6k05LOflEaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BZEhRiYIYcIHJf5Y/gEWGyFEj2Hhz8fJlrML0+g2VNA=;
- b=HLbeWsn2D6vDW6KFXeSKD9iN18UDmHerDuGzlw8Wx8FU+7RQfEz2KsoqkAXHEibtc6OWaxOGCLWCsTXKt2KW/2wEyZoPe3AsrHXzjrPEWrojW2L/o4hLlJHMWFjsVggVd/MhK5WfNNbbW4j124tEITGTL5Dh6JBB0GNaaZIkhx7I+OXTHl1wRSQyvZRSEYVhclF4MmbEH3TJlqyvUyJJC5LCDubR4k+n/qogAur4pllCIfJIC+gYvsS1bVKR7xbgi84mDOkXIhxsYjjJPEWWIAX3cJpwc02b6NGIJMWwOzJq93lrqs7rSpDnkxw3nsRwstiUUzrvkt7Mcq96fAQLiw==
+ bh=+qUZESzc8reHR6IMWEZEygGJnIDg2AVuUWY03NpW/EM=;
+ b=JjndAGKAoo2XNK2ixBskXmaLpItSmMcl8rnTw8fVLA/PxMW7I9wzrtN2a/uL34BZVOroAJW+2X15uYMjJY7hv/hzxt9uMqpk2DK7qgjqHpSAE7KAoUoADnUN90dAfa4iSVn0Gxgil+/IJCVKZZSnvO7/C1CFujOnpNOyj2UrM1voTo+5+0Y9kF+10BUs/4Ej81nsIO+gJMH/bDqhU+JvBFyPUjFOZZdp2gekmbr8ZqX5/mYKlrd1GxG5iBtZLKcI6BNhZK830q7tDRiUJSvpxGveFt2WBH00KHlyIgstcS9mJ5VZIi7MC4+hjlpHOYgGtdZ58zaI3kg9eSwrU7AFvQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BZEhRiYIYcIHJf5Y/gEWGyFEj2Hhz8fJlrML0+g2VNA=;
- b=qMP9aTG7VkmQ388UrawUBFQGrL8NzOIPPWJn/k5lyLbUl1OEtxho/h4aNO4irsvl3kmlRWkLEkr4GcXjafR/IFihsdEeSwiC6dsrtm2/37FgwAKRtpeVGyqOgav0bsLakpHqifXlY+eHa2l5sd7jkRs5yCEgvkn1nc3+4Bpvapo=
+ bh=+qUZESzc8reHR6IMWEZEygGJnIDg2AVuUWY03NpW/EM=;
+ b=vDM0xBgQr2PiAyG0LqZOzcxUzLS0Glwy60p8Jdk7G2GRqK9a4Qod0Rv8bEb7sh9SW4ntlylp2U58TUbC/nP4MPnTxPTdpMKJPW2N0KWPcIx8uP1+6h+/pA/ZasMpflFaWZE3K7q+Iqzx8GhA4E4Ujut8RHAQNG7klzouB0wzrt8=
 Authentication-Results: dabbelt.com; dkim=none (message not signed)
  header.d=none;dabbelt.com; dmarc=none action=none header.from=wdc.com;
 Received: from DM6PR04MB6201.namprd04.prod.outlook.com (2603:10b6:5:127::32)
- by DM6PR04MB5292.namprd04.prod.outlook.com (2603:10b6:5:107::25) with
+ by DM6PR04MB4985.namprd04.prod.outlook.com (2603:10b6:5:fe::29) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3021.23; Thu, 21 May
- 2020 13:34:10 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3021.27; Thu, 21 May
+ 2020 13:46:13 +0000
 Received: from DM6PR04MB6201.namprd04.prod.outlook.com
  ([fe80::f8b3:c124:482b:52e0]) by DM6PR04MB6201.namprd04.prod.outlook.com
  ([fe80::f8b3:c124:482b:52e0%5]) with mapi id 15.20.3000.034; Thu, 21 May 2020
- 13:34:10 +0000
+ 13:46:13 +0000
 From: Anup Patel <anup.patel@wdc.com>
 To: Palmer Dabbelt <palmer@dabbelt.com>,
  Paul Walmsley <paul.walmsley@sifive.com>,
- Albert Ou <aou@eecs.berkeley.edu>,
+ Albert Ou <aou@eecs.berkeley.edu>, Rob Herring <robh+dt@kernel.org>,
  Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>,
- Marc Zyngier <maz@kernel.org>
-Subject: [PATCH v5 6/6] RISC-V: Force select RISCV_INTC for CONFIG_RISCV
-Date: Thu, 21 May 2020 19:03:01 +0530
-Message-Id: <20200521133301.816665-7-anup.patel@wdc.com>
+ Thomas Gleixner <tglx@linutronix.de>
+Subject: [PATCH 0/5] Dedicated CLINT timer driver
+Date: Thu, 21 May 2020 19:15:39 +0530
+Message-Id: <20200521134544.816918-1-anup.patel@wdc.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200521133301.816665-1-anup.patel@wdc.com>
-References: <20200521133301.816665-1-anup.patel@wdc.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: MA1PR0101CA0033.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:22::19) To DM6PR04MB6201.namprd04.prod.outlook.com
+X-ClientProxiedBy: MAXPR01CA0073.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a00:49::15) To DM6PR04MB6201.namprd04.prod.outlook.com
  (2603:10b6:5:127::32)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from wdc.com (106.51.30.72) by
- MA1PR0101CA0033.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:22::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3021.23 via Frontend
- Transport; Thu, 21 May 2020 13:34:03 +0000
+ MAXPR01CA0073.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:49::15) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3021.23 via Frontend Transport; Thu, 21 May 2020 13:46:07 +0000
 X-Mailer: git-send-email 2.25.1
 X-Originating-IP: [106.51.30.72]
 X-MS-PublicTrafficType: Email
 X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 6b7e5965-f81c-4bc5-40c3-08d7fd8ba45a
-X-MS-TrafficTypeDiagnostic: DM6PR04MB5292:
+X-MS-Office365-Filtering-Correlation-Id: 3f8122ff-1c81-4087-6eff-08d7fd8d536f
+X-MS-TrafficTypeDiagnostic: DM6PR04MB4985:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DM6PR04MB5292E612F8392187834592B68DB70@DM6PR04MB5292.namprd04.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <DM6PR04MB4985F4BA5D66899A2EE055538DB70@DM6PR04MB4985.namprd04.prod.outlook.com>
 WDCIPOUTBOUND: EOP-TRUE
 X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
 X-Forefront-PRVS: 041032FF37
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: S8WZDJLZmJhtTKTUAC19xDWg/gnBvfL71uG4pd8yjab0GXpmeNnM3SgX9VtXA4GBY7EjvhJ9zJgNpP7vXRZag8tt4XPR+wsH9ftFipgISPz7rKWECl5Vt7XVZdhM8cxDTIcG/1pl8kAWG9QDNd/VGNMqoN7hn4I/lhC3O93sTdBmj/sjOOtjsq4tNctJa03v724dVljA9OrF1JiJnycKOseoNpyKcnjgI4NKYC2zUONHkxQ8qbSBF/nlFZgmmGLiR7WJTd21Dpt04KDII7Jm0KqoWMTxT+LbWx7dkjvAJ9B2vThFFInUuhtIygb9hdz6
+X-Microsoft-Antispam-Message-Info: AMmJtdKiL3hLbXcGjlgoI0qC2KVRnuFgZcs2xMhi0S1Sp400TvfxmIWjURo1sZKuJgBz6I80cOoWNFYqLZrNml/LoPHVlzFrQC2StdhPHSbaw9Ia+kBR1xLqc8J+yUZqr7km4GJ3r3O8dnUsoFlIXrZ5Y+qiTILepnzgCtol624jpAyslhvBkQjgjZnwnmE4gQTUy30koT4kCdLKaL9sxJ2VwER4+bwzkL49DrmNINPXJTJ5n+SBBt5Mn7VGI5z79UMx2Af3ItgQr7TID7W/75IW6HqBI/vQwC1OzPm3jLuuCbm02AaHh9gKgwKXwryV9GAV31VrNtpOQIqH+dZvcWm1mI7l0DZG5SwFbb8TAvcegrtoTgKVHVCTQpv95B26CpzXTPkmQPfH7jx/ASOrJQ==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR04MB6201.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(346002)(396003)(366004)(136003)(39860400002)(376002)(478600001)(7416002)(5660300002)(8936002)(86362001)(8676002)(4326008)(8886007)(55016002)(26005)(7696005)(186003)(4744005)(1006002)(1076003)(66946007)(2616005)(2906002)(66556008)(956004)(54906003)(66476007)(52116002)(36756003)(44832011)(16526019)(55236004)(316002)(110136005);
+ SFS:(4636009)(366004)(136003)(396003)(39860400002)(376002)(346002)(26005)(55016002)(1076003)(1006002)(7416002)(6666004)(7696005)(2906002)(86362001)(55236004)(8886007)(52116002)(4326008)(16526019)(186003)(8936002)(66556008)(66476007)(66946007)(2616005)(956004)(44832011)(36756003)(110136005)(54906003)(478600001)(5660300002)(316002)(8676002)(966005);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: sGwvgAS7gAjP62nv4FIF5IatnTA0rvUSOXCeDY4HT8a+FbLZJiDDcivGmN8HqEVsm67Fb1LP5Eu4ke1jRXUOoqKxJfp107nL51mAhj6rvXGsgqPERLCWKmQb3bMKT6GI3Z+6kDK9DJ2tpUQ4FPlEUji09vOXv1kWmffN9gE89zZ0SQ9b5iPYoYXaC/pleFDvf0dV+kK3tqXyFdnKrw8QKCLinOjJ9DZc+G/3spqpI4MRLQJ+/eAZ6KsrcN9FXrC/2BWN9Kuu6W4iqxUbh33nGS57Sbkl5zcvIe1jE/CPjxC6Q1nIvHMQXT0+GEkRzT0K6mSeOY9g2p4svoaIudfSJC78bwEgvjiftORG7MmxP0M0vcUY7z5vcO8Om/LB2lp1RdvZ1FcwmHysMSEdAu20eWeWY5aEZGBDmuk4PVC691/Rix6L3xwh312mTW2unbVOf8LZU61laOj+c2fIONMVQYKpZLTrH/DyoqqjkJNg2GA=
+X-MS-Exchange-AntiSpam-MessageData: Guqs74YlNcWbPq73jwGOHasNoW5hkKWqooqvmWJDbEflb5HKPLE9aNYDKvfwhC9G38+7hi8kQjyxSEmO6fnpEEDlCQDzbSNnoFYrWz2rEPYexbok33r6l0QDAD9vTdS/uYf0HFvXif/tO72jXCvb7BpW40ltTAJy7BnvokI1qMYxgACUENbdH1ckobrVvdm6HhG0yDFXyugnreLjTTRp3HwZSerpusV7IouGdo14uwbbby/7DXWmNxRS3D4TJ+5G8JFctkHAaEknYvIsFd5hDc/kEhBsdwp2LootxoNtkhqeNBwNtO7WKuiBftrj0YNyvqczquVPaKPdAm4GNvSqBDjCfPBSD/XgBfxlDO5Wq34BvZYNL0XZZGB//hQcOzXM1w9PKevJBYjr3Symb2+9QMq/Jpk30ODFed1WZHY7zKNS+hdLcdqLi8q0V0TSVI5Hg0UZp9uGre5VMd9TC2HfgMDa/PoMeLQzNPDq9tMs9PE=
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6b7e5965-f81c-4bc5-40c3-08d7fd8ba45a
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2020 13:34:10.0751 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f8122ff-1c81-4087-6eff-08d7fd8d536f
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2020 13:46:13.4438 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: v4fhoZJ0fMhOfhgMp5Ak8Xs73pz3WTG5r8CY2KccCY4Eowli6fkkSzd9j2MzznUNE9/JMTaAbUIC+1OajnXVcA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB5292
+X-MS-Exchange-CrossTenant-UserPrincipalName: HPASQxIdN0Gn1BPTYIKQxiIZieVUs0PjD0nqXbV8MawaHxjjtEXpZuxzrvR+uz13c+99qY7Vc8/7fBHZA8bdYg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB4985
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_063412_408845_FCCB343F 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20200521_064616_761311_95073CE5 
+X-CRM114-Status: GOOD (  13.82  )
 X-Spam-Score: -1.0 (-)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
  1.5 RCVD_IN_SORBS_WEB      RBL: SORBS: sender is an abusable web server
  [106.51.30.72 listed in dnsbl.sorbs.net]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.153.144 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -156,33 +152,67 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup@brainfault.org>, Anup Patel <anup.patel@wdc.com>,
+Cc: devicetree@vger.kernel.org, Damien Le Moal <damien.lemoal@wdc.com>,
+ Anup Patel <anup@brainfault.org>, Anup Patel <anup.patel@wdc.com>,
  linux-kernel@vger.kernel.org, Atish Patra <atish.patra@wdc.com>,
  Alistair Francis <Alistair.Francis@wdc.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-The RISC-V per-HART local interrupt controller driver is mandatory
-for all RISC-V system (with/without MMU) hence we force select it
-for CONFIG_RISCV (just like RISCV_TIMER).
+The current RISC-V timer driver is convoluted and implements two
+distinct timers:
+ 1. S-mode timer: This is for Linux RISC-V S-mode with MMU. The
+    clocksource is implemented using TIME CSR and clockevent device
+    is implemented using SBI Timer calls.
+ 2. M-mode timer: This is for Linux RISC-V M-mode without MMU. The
+    clocksource is implemented using CLINT MMIO time register and
+    clockevent device is implemented using CLINT MMIO timecmp registers.
 
-Signed-off-by: Anup Patel <anup.patel@wdc.com>
----
- arch/riscv/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+This patchset removes clint related code from RISC-V timer driver and
+arch/riscv directory. Instead, the series adds a dedicated MMIO based
+CLINT driver under drivers/clocksource directory which can be used by
+Linux RISC-V M-mode (i.e NoMMU Linux RISC-V).
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 822cb0e1a380..2cf0c83c1a47 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -51,6 +51,7 @@ config RISCV
- 	select THREAD_INFO_IN_TASK
- 	select PCI_DOMAINS_GENERIC if PCI
- 	select PCI_MSI if PCI
-+	select RISCV_INTC
- 	select RISCV_TIMER
- 	select GENERIC_IRQ_MULTI_HANDLER
- 	select GENERIC_ARCH_TOPOLOGY if SMP
+The patchset is based up Linux-5.7-rc6 and can be found at riscv_clint_v1
+branch of: https://github.com/avpatel/linux.git
+
+These patches require "New RISC-V Local Interrupt Controller Driver"
+which can be found at at riscv_intc_v5 branch of:
+https://github.com/avpatel/linux.git
+
+This series is tested on:
+ 1. QEMU RV64 virt machine using Linux RISC-V S-mode
+ 2. QEMU RV32 virt machine using Linux RISC-V S-mode
+ 3. QEMU RV64 virt machine using Linux RISC-V M-mode (i.e. NoMMU)
+
+Anup Patel (5):
+  RISC-V: Add mechanism to provide custom IPI operations
+  RISC-V: Remove CLINT related code
+  clocksource/drivers/timer-riscv: Remove MMIO related stuff
+  clocksource/drivers: Add CLINT timer driver
+  dt-bindings: timer: Add CLINT bindings
+
+ .../bindings/timer/sifive,clint.txt           |  33 +++
+ arch/riscv/Kconfig                            |   2 +-
+ arch/riscv/include/asm/clint.h                |  39 ---
+ arch/riscv/include/asm/smp.h                  |  11 +
+ arch/riscv/include/asm/timex.h                |  28 +--
+ arch/riscv/kernel/Makefile                    |   2 +-
+ arch/riscv/kernel/clint.c                     |  44 ----
+ arch/riscv/kernel/setup.c                     |   2 -
+ arch/riscv/kernel/smp.c                       |  53 ++--
+ arch/riscv/kernel/smpboot.c                   |   4 +-
+ drivers/clocksource/Kconfig                   |  12 +-
+ drivers/clocksource/Makefile                  |   1 +
+ drivers/clocksource/timer-clint.c             | 226 ++++++++++++++++++
+ drivers/clocksource/timer-riscv.c             |  17 +-
+ include/linux/cpuhotplug.h                    |   1 +
+ 15 files changed, 330 insertions(+), 145 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/timer/sifive,clint.txt
+ delete mode 100644 arch/riscv/include/asm/clint.h
+ delete mode 100644 arch/riscv/kernel/clint.c
+ create mode 100644 drivers/clocksource/timer-clint.c
+
 -- 
 2.25.1
 
