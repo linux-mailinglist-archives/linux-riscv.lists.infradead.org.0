@@ -2,120 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D9D31DD7EB
-	for <lists+linux-riscv@lfdr.de>; Thu, 21 May 2020 22:05:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C43A61DD8D8
+	for <lists+linux-riscv@lfdr.de>; Thu, 21 May 2020 22:50:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Hose8PlqDAqdvvWUSVa6xrNHWRQshi8g7D6paJwuuE=; b=k3ETGz1RDBT7zv
-	fJEmKKZIaiWYuZt6cQ3XN+zfCoI/QM1DB3cV63eDI4et3vdLTNIG1xYq2yfySSD/cq2hrza477q09
-	f+LIt2hDYKJRw7XP+BsIj9UgX87ObWjEoAAlLnGh/j9urGKqVO4bM11zENZNuFnjc5bvupxdYvyls
-	+WPHq8pU8KYy5l7sEE4FhDWlSS9btC2CvBzh6sJwhcfIreWETZ6ic4O0X2AMg07ZZeUrp87fsZR/Z
-	3nX1Pc6BsadIpib/9waQthWMGZBka6REzMlSqsj7PU79d+tvV1ACN/xynmEZnURvtt50dnXByf0Jg
-	dvRPclt0YG+1uinOOOUw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:From:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Reply-To:
+	Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kczfaJyChMu6EIoy646172ExIAqf1Ynz8kb/dN7rijo=; b=Q2gstPIPMDNT7B
+	2vYEQOh3PFsRV5HJ3cH0pjIu1b0lIAireUDhnoBvAckrjYEoVlUYV1kU6pm+EJ5y10Ckh2+RWOm5Y
+	x7dU9zLyzLPDdGznFTx3fZ9iP5F4jgR2d9Cazn5ormLR+bPekXxEHIuFdhF4U23l5kIe6SCRyd76Z
+	nvbO0fe+crKEg+RZD4lAwe/3lQpiREXbjTvXW8LXAau+3sBtBF9ds4zo65wVRiBcY5ksGXFXGQRfR
+	JBThTUMm2hzp3Z1R3K7mfgaceg3I6Nt8EXcxt2RhGIn2OK0mrEfC3NgXDr9HBsbw5xRlzclMUPOGh
+	J/TJ6iwY9i0zGffhOB0A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbrRP-0002kJ-24; Thu, 21 May 2020 20:05:19 +0000
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44])
+	id 1jbs8b-0002CQ-1F; Thu, 21 May 2020 20:49:57 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbrRK-0002jZ-Oj
- for linux-riscv@lists.infradead.org; Thu, 21 May 2020 20:05:17 +0000
-Received: by mail-qv1-xf44.google.com with SMTP id g20so3660779qvb.9
- for <linux-riscv@lists.infradead.org>; Thu, 21 May 2020 13:05:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=2Hose8PlqDAqdvvWUSVa6xrNHWRQshi8g7D6paJwuuE=;
- b=bVevxNEpteRG82qyDRmOLqo52u6P+Dto5vXshN5yOjP/GqFrqVCkYDJHpX6ttJ300w
- x5XjjqAH0QLQwhdC/PxXwKR17Mc1kpjgxx7YFrGkFNfS1PsunIj1JsBtUnxddA1cjdk2
- W/3pHMu3jmItlRHqyAZoNLGA1sugI/HDXRJ0opK2DOStVkgj0bmA6SOTtc1TAAmDFYm6
- qGLTqCVi9XQI200JNXUMzbFx2d5GnyC3tT2zwcJS9srDuLjXhOJflFwd0fyaew8bieB7
- MHN8Lz2lHXuwoACjoBigt1sH4iYMNnpl7PLt8hOVpS5ThP3CeZq/Dt9qji2Qeh2lYnfv
- F/Nw==
+ id 1jbs8X-0002Bk-4m
+ for linux-riscv@lists.infradead.org; Thu, 21 May 2020 20:49:55 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id cx22so3850326pjb.1
+ for <linux-riscv@lists.infradead.org>; Thu, 21 May 2020 13:49:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=subject:date:message-id:mime-version:content-transfer-encoding:cc
+ :from:to; bh=kczfaJyChMu6EIoy646172ExIAqf1Ynz8kb/dN7rijo=;
+ b=ntmr+ImztJwuT7wQnxWYxvTyurLHL2SZycYa/AXy/pzjihFxIGlFkY9rHywPMrvrW+
+ zbQ65ciYTtTZEgsuHIT0I6OQLvMhRffAzofL2fuqksMZqztPtuBpQMq1OYZORfXWKTzr
+ wb6AQsJ0oT+bb06jB/lbSKH3toNMSh6lLE9i/iwUH9EhpChit8OzVfm3mLdvt8NS5uTc
+ Kut3Eg17vZN1HqTYWuU/jcsqEBLab88cNv949utEH/93HBDKnIuy8YaXEaWVtJkuulk1
+ oiJQRjBqOoI/ONrwNibJ14w287r4s4Q9qt5mRVswdW96lAnDgyaZQp+N9fopNPk+zm7D
+ BKCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=2Hose8PlqDAqdvvWUSVa6xrNHWRQshi8g7D6paJwuuE=;
- b=LaY8iT+qGcDBHfdiJvL9B6/Wrjf0Rr2lRPij3zFNKCEOXI3AEvOkY/JaZz6Hnb9GWG
- c4T7iX+okqUHzc7KXLP2Q8lDmTFGLuHE1ESUeaqOo83x9VcWbH1PReZ/l4+2jG4LTf/0
- OVtyc7xG/jIouEVxwhI0pLchMevZZ10o/t/MpP6kpdRnMvyqLpFLkh5uGE5VXonfexfI
- PzFWzRhQVTT6fxJrY77Isa7KwubUkd1DcBVdZ2n2ETEr3vDwOTFHPsdiMlkEmT77fJjU
- TKZRjEAKZEnDxmmY+lcgyp9qom5AXEU5RySw8Kas9kQ7RUOz4+sWXAL250egIFDaAk0p
- KoyA==
-X-Gm-Message-State: AOAM531oLGw2IhU1hKk9vzhvaSRqbZaGQGuenmDQp4c9J4D5Kah/jZsm
- 7RuLmDFpdjiha2mwBYxWamw20ASLgUkOqA==
-X-Google-Smtp-Source: ABdhPJyxO0XFCOa7M26EUUpKWSmSgkKuVWuk6vxtcopHVtXvuwKosXbIEXrFs8NcAYsa7uOSYd8q9A==
-X-Received: by 2002:a0c:fe88:: with SMTP id d8mr424154qvs.208.1590091512897;
- Thu, 21 May 2020 13:05:12 -0700 (PDT)
-Received: from [192.168.1.209] (pool-108-51-35-162.washdc.fios.verizon.net.
- [108.51.35.162])
- by smtp.googlemail.com with ESMTPSA id m59sm5849656qtd.46.2020.05.21.13.05.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 13:05:12 -0700 (PDT)
-Subject: Re: [PATCH 5/5] dt-bindings: timer: Add CLINT bindings
-To: Anup Patel <anup.patel@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Rob Herring <robh+dt@kernel.org>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>
-References: <20200521134544.816918-1-anup.patel@wdc.com>
- <20200521134544.816918-6-anup.patel@wdc.com>
-From: Sean Anderson <seanga2@gmail.com>
-Autocrypt: addr=seanga2@gmail.com; prefer-encrypt=mutual; keydata=
- mQENBFe74PkBCACoLC5Zq2gwrDcCkr+EPGsT14bsxrW07GiYzQhLCgwnPdEpgU95pXltbFhw
- 46GfyffABWxHKO2x+3L1S6ZxC5AiKbYXo7lpnTBYjamPWYouz+VJEVjUx9aaSEByBah5kX6a
- lKFZWNbXLAJh+dE1HFaMi3TQXXaInaREc+aO1F7fCa2zNE75ja+6ah8L4TPRFZ2HKQzve0/Y
- GXtoRw97qmnm3U36vKWT/m2AiLF619F4T1mHvlfjyd9hrVwjH5h/2rFyroXVXBZHGA9Aj8eN
- F2si35dWSZlIwXkNu9bXp0/pIu6FD0bI+BEkD5S7aH1G1iAcMFi5Qq2RNa041DfQSDDHABEB
- AAG0K1NlYW4gR2FsbGFnaGVyIEFuZGVyc29uIDxzZWFuZ2EyQGdtYWlsLmNvbT6JAVcEEwEK
- AEECGwMFCwkIBwIGFQgJCgsCBBYCAwECHgECF4ACGQEWIQSQYR1bzo1I0gPoYCg+6I/stKEQ
- bgUCXT+S2AUJB2TlXwAKCRA+6I/stKEQbhNOB/9ooea0hU9Sgh7PBloU6CgaC5mlqPLB7NTp
- +JkB+nh3Fqhk+qLZwzEynnuDLl6ESpVHIc0Ym1lyF4gT3DsrlGT1h0Gzw7vUwd1+ZfN0CuIx
- Rn861U/dAUjvbtN5kMBqOI4/5ea+0r7MACcIVnKF/wMXBD8eypHsorT2sJTzwZ6DRCNP70C5
- N1ahpqqNmXe0uLdP0pu55JCqhrGw2SinkRMdWyhSxT56uNwIVHGhLTqH7Q4t1N6G1EH626qa
- SvIJsWlNpll6Y3AYLDw2/Spw/hqieS2PQ/Ky3rPZnvJt7/aSNYsKoFGX0yjkH67Uq8Lx0k1L
- w8jpXnbEPQN3A2ZJCbeMuQENBF0/k2UBCADhvSlHblNc/aRAWtCFDblCJJMN/8Sd7S9u4ZRS
- w1wIB4tTF7caxc8yfCHa+FjMFeVu34QPtMOvd/gfHz0mr+t0PiTAdDSbd6o7tj+g5ylm+FhT
- OTUtJQ6mx6L9GzMmIDEbLxJMB9RfJaL2mT5JkujKxEst6nlHGV/lEQ54xBl5ImrPvuR5Dbnr
- zWQYlafb1IC5ZFwSMpBeSfhS7/kGPtFY3NkpLrii/CF+ME0DYYWxlkDIycqF3fsUGGfb3HIq
- z2l95OB45+mCs9DrIDZXRT6mFjLcl35UzuEErNIskCl9NKlbvAMAl+gbDH275SnE44ocC4qu
- 0tMe7Z5jpOy6J8nNABEBAAGJATwEGAEKACYWIQSQYR1bzo1I0gPoYCg+6I/stKEQbgUCXT+T
- ZQIbDAUJAeEzgAAKCRA+6I/stKEQbjAGB/4mYRqZTTEFmcS+f+8zsmjt2CfWvm38kR+sJFWB
- vz82pFiUWbUM5xvcuOQhz698WQnIazbDGSYaOipyVNS52YiuYJDqMszzgw++DrcSuu0oRYWN
- EWCkJjxMqjGg8uY0OZ6FJG+gYRN5wMFErGfV1OqQ7l00FYA9OzpOEuW9PzPZEutFnAbbh77i
- zvxbQtT7IJCL24A4KutNYKmWg98im4mCzQcJCxE86Bv69ErLVPUyYbp4doLadScilXlvkkjL
- iq1wOt3rRzOuw+qnWVgWGBPxdDftz0Wck941tYF9XE0aMgkf4o1sGoDZFUFPCQdfEYPzzV7O
- S5hN3/mP5UeooFHb
-Message-ID: <2aec08b7-7197-4b60-89d9-c3b0d5a8a258@gmail.com>
-Date: Thu, 21 May 2020 16:05:10 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ h=x-gm-message-state:subject:date:message-id:mime-version
+ :content-transfer-encoding:cc:from:to;
+ bh=kczfaJyChMu6EIoy646172ExIAqf1Ynz8kb/dN7rijo=;
+ b=U5+Z5xA7b19ZLiX0u19TIeX1AUgHBHW8J18tJHQNwAZr6QJ06DZB/pf3sf4edY3D5d
+ H//XK+gSoFazji2qrYmLQ+sIlgffqSmeG3YSD8XyAy4BmomXTbZzj4jlIKMQBTfVLRTN
+ peAdkS2TXodGO/qSrI8gwunvNx4JmkPvN1sg5mQ7nXbGypfEcEcoLA7bPY9Tme8rD2+z
+ aKJ/Uo+DJltrL7QwzP4Bn+rZCDSbtrKN4Xhla0bpjJM3Lchb9wBt75+YqsSUvROnIwcK
+ 0V5PfAn2AdN8GzaSnh56oY/Zc0M0qLANiqUsPc8ruYBhlGLYFpbIiGGdnmBl1azbB2Pz
+ 2sKg==
+X-Gm-Message-State: AOAM533YhR7PEZ2escJPXHQysX4G9tkTJSQ1SxsRNFW1ur6hyuOOQ48p
+ 2pxgThvvyjL4wYKU9IWdJ3weESofD4GygA==
+X-Google-Smtp-Source: ABdhPJxXVGSzGGubZKPQq0lhvSkqlKTR3lTemw3x6XIheobgq+81s/lFL5nqEG3FolUCRwuuJ2LeJg==
+X-Received: by 2002:a17:902:7c16:: with SMTP id
+ x22mr11272561pll.244.1590094189831; 
+ Thu, 21 May 2020 13:49:49 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id p8sm4792825pgm.73.2020.05.21.13.49.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 May 2020 13:49:49 -0700 (PDT)
+Subject: [PATCH] RISC-V: gp_in_global needs register keyword
+Date: Thu, 21 May 2020 13:49:14 -0700
+Message-Id: <20200521204914.210447-1-palmerdabbelt@google.com>
+X-Mailer: git-send-email 2.27.0.rc0.183.gde8f92d652-goog
 MIME-Version: 1.0
-In-Reply-To: <20200521134544.816918-6-anup.patel@wdc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+From: Palmer Dabbelt <palmerdabbelt@google.com>
+To: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_130514_809595_613CA249 
-X-CRM114-Status: GOOD (  19.47  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200521_134954_618373_C7614E1F 
+X-CRM114-Status: GOOD (  10.68  )
+X-Spam-Score: -15.7 (---------------)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-15.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:f44 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1041 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [seanga2[at]gmail.com]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [seanga2[at]gmail.com]
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
+ white-list
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -123,6 +88,8 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,67 +101,38 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Damien Le Moal <damien.lemoal@wdc.com>,
- Anup Patel <anup@brainfault.org>, linux-kernel@vger.kernel.org,
- Atish Patra <atish.patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- linux-riscv@lists.infradead.org
+Cc: Palmer Dabbelt <palmerdabbelt@google.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 5/21/20 9:45 AM, Anup Patel wrote:
-> We add DT bindings documentation for CLINT device.
-> 
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> ---
->  .../bindings/timer/sifive,clint.txt           | 33 +++++++++++++++++++
->  1 file changed, 33 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/timer/sifive,clint.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/timer/sifive,clint.txt b/Documentation/devicetree/bindings/timer/sifive,clint.txt
-> new file mode 100644
-> index 000000000000..cae2dad1223a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/timer/sifive,clint.txt
-> @@ -0,0 +1,33 @@
-> +SiFive Core Local Interruptor (CLINT)
-> +-------------------------------------
-> +
-> +SiFive (and other RISC-V) SOCs include an implementation of the SiFive Core
-> +Local Interruptor (CLINT) for M-mode timer and inter-processor interrupts.
-> +
-> +It directly connects to the timer and inter-processor interrupt lines of
-> +various HARTs (or CPUs) so RISC-V per-HART (or per-CPU) local interrupt
-> +controller is the parent interrupt controller for CLINT device.
-> +
-> +The clock frequency of CLINT is specified via "timebase-frequency" DT
-> +property of "/cpus" DT node. The "timebase-frequency" DT property is
-> +described in: Documentation/devicetree/bindings/riscv/cpus.yaml
-> +
-> +Required properties:
-> +- compatible : "sifive,clint-1.0.0" and a string identifying the actual
-> +  detailed implementation in case that specific bugs need to be worked around.
+The Intel kernel build robot recently pointed out that I missed the
+register keyword on this one when I refactored the code to remove local
+register variables (which aren't supported by LLVM).  GCC's manual
+indicates that global register variables must have the register keyword,
+As far as I can tell lacking the register keyword causes GCC to ignore
+the __asm__ and treat this as a regular variable, but I'm not sure how
+that didn't show up as some sort of failure.
 
-Should the "riscv,clint0" compatible string be documented here? This
-peripheral is not really specific to sifive, as it is present in most
-rocket-chip cores.
+Fixes: 52e7c52d2ded ("RISC-V: Stop relying on GCC's register allocator's hueristics")
+Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+---
+ arch/riscv/kernel/process.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> +- reg : Should contain 1 register range (address and length).
-> +- interrupts-extended : Specifies which HARTs (or CPUs) are connected to
-> +  the CLINT.  Each node pointed to should be a riscv,cpu-intc node, which
-> +  has a riscv node as parent.
-> +
-> +Example:
-> +
-> +	clint@2000000 {
-> +		compatible = "sifive,clint-1.0.0", "sifive,fu540-c000-clint";
-> +		interrupts-extended = <
-> +			&cpu1-intc 3 &cpu1-intc 7
-> +			&cpu2-intc 3 &cpu2-intc 7
-> +			&cpu3-intc 3 &cpu3-intc 7
-> +			&cpu4-intc 3 &cpu4-intc 7>;
-> +		reg = <0x2000000 0x4000000>;
-> +	};
-> 
+diff --git a/arch/riscv/kernel/process.c b/arch/riscv/kernel/process.c
+index 610c11e91606..824d117cf202 100644
+--- a/arch/riscv/kernel/process.c
++++ b/arch/riscv/kernel/process.c
+@@ -22,7 +22,7 @@
+ #include <asm/switch_to.h>
+ #include <asm/thread_info.h>
+ 
+-unsigned long gp_in_global __asm__("gp");
++register unsigned long gp_in_global __asm__("gp");
+ 
+ extern asmlinkage void ret_from_fork(void);
+ extern asmlinkage void ret_from_kernel_thread(void);
+-- 
+2.27.0.rc0.183.gde8f92d652-goog
 
---Sean
 
