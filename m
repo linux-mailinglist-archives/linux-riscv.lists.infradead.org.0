@@ -2,81 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FE0D1DDFFF
-	for <lists+linux-riscv@lfdr.de>; Fri, 22 May 2020 08:36:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D64D81DE011
+	for <lists+linux-riscv@lfdr.de>; Fri, 22 May 2020 08:44:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mp6z6BeKUJ4Z3j+pwMrXanCl98jvhdKIr7OaOufzROo=; b=TNaxbzL6bMsSp4SjySt7o/bS2
-	vvGUjH3VPoKMYKreeGGWOsoZicQGmaqb5J6bXIvVwPOVtBN8oU2B6NtyqrYU+XaDvSJTFEvlk++UG
-	Wq+P6luIQiODKG9YzXcCbJ4cGof4jD6D4L1D2TlTYMSABoDoSP9kljurJP8X4lAsTK7pqnABpLCWA
-	itcnuA5c9X2/00g53MHAfxRUoGw1SXU0mgNg6Q87VNLZRRSIw10iuM1QzwRr832q9CAFEF2cq4b3r
-	JbqkN+KwF9Jk8ZhwF3y3hDcD5IciB7FcHMfA22S8V5YuvTziQx6sdlx/vWJBp9c7eGwCfZBTDLZAp
-	AzSscSe2w==;
+	 bh=srP7ViQWuk8gYrSzlJDDpsMNMVGdXtKx3PJIsQqVsew=; b=d3V2SwUPzpNMNXjXDvVeenCrV
+	Z+nHPTW1Iztu3Nw5aa9OGFdeJ0W8L4eVDsJIrj7rOQw1s2Kv45byzy8XbdRkm5jtLW9ToMvO6S0B0
+	zf4q9rFqK5SYgt3iDJ/IWgex4c3s4QOOipY9OgQlii9V8zCpbQD5qyv8P4wqi6OqAHkaeK4aHrn40
+	z0ZeiejoafrOVUIN4sul8EK0d9r3NmspBOkESEUpUP9kOYtOCxMtdVqTplvq7uymHodbk/iHK51hk
+	Vki14l3fx138AiaaQn4lgPHC79z3xs605RvZMual8ZwG1RYvQ+TfWdac3PEgKMGyK67t3C8G/2K5S
+	ZyacdOLlA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jc1I8-0001ne-68; Fri, 22 May 2020 06:36:24 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jc1Po-0004pE-Bh; Fri, 22 May 2020 06:44:20 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jc1I4-0001nH-St
- for linux-riscv@lists.infradead.org; Fri, 22 May 2020 06:36:22 +0000
-Received: by mail-wm1-x341.google.com with SMTP id u188so8747671wmu.1
- for <linux-riscv@lists.infradead.org>; Thu, 21 May 2020 23:36:20 -0700 (PDT)
+ id 1jc1Pk-0004oL-Dy
+ for linux-riscv@lists.infradead.org; Fri, 22 May 2020 06:44:17 +0000
+Received: by mail-wm1-x343.google.com with SMTP id h4so7627895wmb.4
+ for <linux-riscv@lists.infradead.org>; Thu, 21 May 2020 23:44:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Mp6z6BeKUJ4Z3j+pwMrXanCl98jvhdKIr7OaOufzROo=;
- b=ycKBEsXTb+BxsF1E77LY/R04LkIWlGVEDVXwR0PFQnoFMwnAQaK1qonVfAKXfGUqVV
- go4okfKzet3y0osi2r+mpOXkYNvUk9iU/3t/pD+GtTVo62YDChDlZDEgRc6ugYkl9UlI
- pA5HIPu0U89oj1XLXQfYyNul4tVsV00fQ9ZfhDgbAFbXHLYOKf7KUnmvPyMbA4/f8CYD
- n1qtH4pfLvrCK2LLVEfHE7Xzro2vu/torO/auE+bF69LPORosxZRLVriwoGuvLwRxQDW
- MVSCz9JTf8ZlhIECQr8ji2+NvFf2YPmqWrGZNKDi3A1gowqwFci315M9B6ejoPUM5/ma
- ATEg==
+ :cc; bh=srP7ViQWuk8gYrSzlJDDpsMNMVGdXtKx3PJIsQqVsew=;
+ b=nbAF/radFKg0JTqXnE60JqYHZmDYODGWY9hlBRKa3BF61ZyleZAkXggKz+J7ogsZpD
+ e+AtBBBKCPDKG+LWj7WK3f9WcMpXJ1zYT6YLanVLiXHPqLELMDgeWoMqdvMc8Fo8SFHl
+ EcMKDH1XlCBUMJgHg0GVbc8NOd4TC60Nw1lTWRjI4mW5cF0l+GTUxmpyKuY2/lN2atWH
+ thSjwkNjqjgBRwlUxwB0U+CZzwJZhloDed2QvumgFwdufRUbRU3MPDZBC30vqiHrBHhc
+ cDZZwgBUp0gHGpwEuDa5KQO09URDpsxTBs9CPIE4XV7VUYAbl4B8huYRUKuLvr10QlSH
+ 90ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Mp6z6BeKUJ4Z3j+pwMrXanCl98jvhdKIr7OaOufzROo=;
- b=pvu5uH8N+z2RtorvH7PgLEax01AaGjDSeHOFFhtQN/uCxRl0my4TUFxIiHsaKLw4xU
- BCpsJUO4viQvhZZcg+TvpKLuXBrMN8YoNSoy1pElgW5cG+EEQcKVWoxZDI5UvXTITyA3
- CdMcbsXDI4C3CYnmgqojx/mgpDMy49mz/4O7H9ZKG3JXqFaz+nWONbsEymFpa1/gaGVQ
- 8KgcIQlxcWmnxduG3Nx1CvmbBn8olDag7kyRydcGxQz1K8VYhPKDlRqRIpdji4Fi1+Yd
- EeuKD16kteqN5okQ+U2gOMsQ4ghLTrqYCj7UL8rt/z4lsvcpzsMd6Go1n2cT9duA5JG6
- gKJw==
-X-Gm-Message-State: AOAM532Kr49h3JLmlMhiQzLr6bfNYlR6IO7beIUCJGL/1czQBKJA0oDc
- mUw1THr1PrEr+LK+lRpKXh+WT6xmrKPP8sMERT3raw==
-X-Google-Smtp-Source: ABdhPJykCpEJOH6fDySj/9KTQUVlXV7NLYQkkTeYIL3vQp6QzdI5zeWjcL1/7ZOhIw9nOY0uY1U3fi2R3XWSJ7hyhmg=
-X-Received: by 2002:a1c:7410:: with SMTP id p16mr12579344wmc.134.1590129379212; 
- Thu, 21 May 2020 23:36:19 -0700 (PDT)
+ bh=srP7ViQWuk8gYrSzlJDDpsMNMVGdXtKx3PJIsQqVsew=;
+ b=gbW1ztbgxpwqSurpzIBrP45dfho+0xiPLOQQ7vIWO34KJqkYJHi3nPyUKvhUK0xjNr
+ OZ96J2GiXt6VU6hJ/3xmrPlWtpC2495wm35AjsMMMeAUx0419Vh+pfv7+X57R14YDBx/
+ mtQZYk8npTt1+AIJB2peZw279F+P+XA733w97rzRuSN+xnkq8pWtxraSaj/S3NurBq7P
+ PZR/QBaL7H+jRaLMl+TfM/7NsJC5ugNVuBa2cbdj44zxu1O08C8ACF/YOtAqdzPkUPcW
+ T/Ic807nJL+3rXqo9054d1YPeyATfUa7AnPdw6RP2BRbziRJ5HjOw0Ni9128KQupcJmq
+ QB1g==
+X-Gm-Message-State: AOAM5339ncWGpgVmyFOpIg8NbR+919PSnTgCpBAgVkCXdh5dj3x3CzB1
+ 3BEcV2d/juqhHmzBskMeJAMlpCaYpKKAH2IjbQzZgw==
+X-Google-Smtp-Source: ABdhPJwYvmQAKNAdEtDF2lkuLPxuXrswdEf7MIonLNzRUZnJkpxeElIXQrYUopv0xM1XZE6wayG1r0Tgl/UL0dMyLlY=
+X-Received: by 2002:a1c:7410:: with SMTP id p16mr12607532wmc.134.1590129852604; 
+ Thu, 21 May 2020 23:44:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200521134544.816918-1-anup.patel@wdc.com>
- <20200521134544.816918-6-anup.patel@wdc.com>
- <2aec08b7-7197-4b60-89d9-c3b0d5a8a258@gmail.com>
- <CAAhSdy0OuxCwMVPBrvPpYMfVrhUuY3pONysk75yognOM5-0U+g@mail.gmail.com>
- <c0e9e625-daf8-b72f-2237-06018ff5d8a0@gmail.com>
-In-Reply-To: <c0e9e625-daf8-b72f-2237-06018ff5d8a0@gmail.com>
+References: <20200518091441.94843-2-anup.patel@wdc.com>
+ <mhng-724b2ebd-3b41-4b3e-8685-26860402e663@palmerdabbelt-glaptop1>
+In-Reply-To: <mhng-724b2ebd-3b41-4b3e-8685-26860402e663@palmerdabbelt-glaptop1>
 From: Anup Patel <anup@brainfault.org>
-Date: Fri, 22 May 2020 12:06:07 +0530
-Message-ID: <CAAhSdy3_D9S0X1gHoPjHpfcpeEpVWdUa_HE_KYV3eXbB3eVhdw@mail.gmail.com>
-Subject: Re: [PATCH 5/5] dt-bindings: timer: Add CLINT bindings
-To: Sean Anderson <seanga2@gmail.com>
+Date: Fri, 22 May 2020 12:14:00 +0530
+Message-ID: <CAAhSdy1X=4veB_3XDbrtVMc2KkZip-7bdaet9JqO3fGik4Oo1g@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] irqchip/sifive-plic: Set default irq affinity in
+ plic_irqdomain_map()
+To: Palmer Dabbelt <palmer@dabbelt.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_233620_932538_EA2589C3 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20200521_234416_469093_0BCFC4DE 
+X-CRM114-Status: GOOD (  15.60  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:341 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -91,55 +89,61 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Damien Le Moal <damien.lemoal@wdc.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Anup Patel <anup.patel@wdc.com>,
+Cc: Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
+ Anup Patel <Anup.Patel@wdc.com>,
  "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Rob Herring <robh+dt@kernel.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ stable@vger.kernel.org, Atish Patra <Atish.Patra@wdc.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Albert Ou <aou@eecs.berkeley.edu>
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, May 22, 2020 at 11:59 AM Sean Anderson <seanga2@gmail.com> wrote:
+On Fri, May 22, 2020 at 3:36 AM Palmer Dabbelt <palmer@dabbelt.com> wrote:
 >
-> On 5/22/20 1:54 AM, Anup Patel wrote:
-> > On Fri, May 22, 2020 at 1:35 AM Sean Anderson <seanga2@gmail.com> wrote:
-> >>
-> >> On 5/21/20 9:45 AM, Anup Patel wrote:
-> >>> +Required properties:
-> >>> +- compatible : "sifive,clint-1.0.0" and a string identifying the actual
-> >>> +  detailed implementation in case that specific bugs need to be worked around.
-> >>
-> >> Should the "riscv,clint0" compatible string be documented here? This
+> On Mon, 18 May 2020 02:14:39 PDT (-0700), Anup Patel wrote:
+> > For multiple PLIC instances, each PLIC can only target a subset of
+> > CPUs which is represented by "lmask" in the "struct plic_priv".
 > >
-> > Yes, I forgot to add this compatible string. I will add in v2.
+> > Currently, the default irq affinity for each PLIC interrupt is all
+> > online CPUs which is illegal value for default irq affinity when we
+> > have multiple PLIC instances. To fix this, we now set "lmask" as the
+> > default irq affinity in for each interrupt in plic_irqdomain_map().
 > >
-> >> peripheral is not really specific to sifive, as it is present in most
-> >> rocket-chip cores.
+> > Fixes: f1ad1133b18f ("irqchip/sifive-plic: Add support for multiple PLICs")
+> > Cc: stable@vger.kernel.org
+> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> > ---
+> >  drivers/irqchip/irq-sifive-plic.c | 3 +++
+> >  1 file changed, 3 insertions(+)
 > >
-> > I agree that CLINT is present in a lot of non-SiFive RISC-V SOCs and
-> > FPGAs but this IP is only documented as part of SiFive FU540 SOC.
-> > (Refer, https://static.dev.sifive.com/FU540-C000-v1.0.pdf)
-> >
-> > The RISC-V foundation should host the CLINT spec independently
-> > under https://github.com/riscv and make CLINT spec totally open.
-> >
-> > For now, I have documented it just like PLIC DT bindings found at:
-> > Documentation/devicetree/bindings/interrupt-controller/sifive,plic-1.0.0.txt
+> > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+> > index 822e074c0600..9f7f8ce88c00 100644
+> > --- a/drivers/irqchip/irq-sifive-plic.c
+> > +++ b/drivers/irqchip/irq-sifive-plic.c
+> > @@ -176,9 +176,12 @@ static struct irq_chip plic_chip = {
+> >  static int plic_irqdomain_map(struct irq_domain *d, unsigned int irq,
+> >                             irq_hw_number_t hwirq)
+> >  {
+> > +     struct plic_priv *priv = d->host_data;
+> > +
+> >       irq_domain_set_info(d, irq, hwirq, &plic_chip, d->host_data,
+> >                           handle_fasteoi_irq, NULL, NULL);
 >
-> The PLIC seems to have its own RISC-V-sponsored documentation [1] which
-> was split off from the older privileged specs. By your logic above,
-> should it be renamed to riscv,plic0.txt (with a corresponding change in
-> the documented compatible strings)?
->
-> [1] https://github.com/riscv/riscv-plic-spec
+> If you're going to re-spin this, d->host_data could be priv here.
 
-For PLIC bindings, we can certainly do the renaming because now
-we have PLIC v1 specification hosted on RISC-V Foundation Github.
+The controller's private data is named "host_data" for "struct irq_domain"
+in Linux irq subsystem hence the usage.
 
-Regards,
+>
+> >       irq_set_noprobe(irq);
+> > +     irq_set_affinity(irq, &priv->lmask);
+> >       return 0;
+> >  }
+>
+> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+> Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
+
+Thanks,
 Anup
 
