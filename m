@@ -2,94 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB07F1DDE79
-	for <lists+linux-riscv@lfdr.de>; Fri, 22 May 2020 05:58:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 324411DDF87
+	for <lists+linux-riscv@lfdr.de>; Fri, 22 May 2020 07:54:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:To:Subject:From:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GTCRS5itnhr1mF/qxix34YoD9buZ+IJ+Kp8+rInUWII=; b=ErveURnCNbkHXg
-	haTg8VAUYD/EhAo6ORQ8woQ9/WJbjpCtiEfZPzoDG/zbJBSk/WB4sNMRbu6X+c3ia6vIk7qBQ4iLZ
-	RPDPndK5iqwhRaG4/Q0KB1gkBj7WmHRKIat3O1Aul1IvDXUksjykkJnNQWQ3j6DLmZmMu9G1GSa/K
-	HaW+O3P9WyXzGuRlp5FwoeO+YxSBdcr3UzSK+LHUzO4vRokEC6QfmwPGHscH6wu9rhSXi6m1unf/7
-	7jcj82O/mets2uwpHOaoosh+xm73PCAv5EGXu9h8BFx84195Dn6OMVkEU8/Dvnr70By1fhQfeAHeo
-	GTOKyRY/a4WXIaOLWDHw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aIk25yXFBXzVd2JD01BBzYOv1Gg6yn56UGtgn996fw0=; b=sJXv+4mhc44Wm1Wbq1DOJ/8Q/
+	3b2t0Vsc0THAbo3drSvRAy4R+Ntf0vA5elbapOrxEmmhUXkrbafLi+8ilvRsgDH7a+hwbENomwg4z
+	GMZa6vc5Q2zpmP1y09Nxy15allxZ6v0OHtTexmtG/Ci2546Pczk0PfWqe1JpBSeDKYLV82LD6AyMJ
+	l71uZRvica0Mc+0Ip+eL+MYf3YmYchXVWlrY2MJ1qBcrYmFSrcVcc5UFBBy+uAvguhbdod+5svK/u
+	NkBd8zopHZbQ645J69bQMVb/KcC80TCfcKPv/vfLvF2PdPwQtYmFCw7JAu7aqWqoqexhMGtOVoy+2
+	wuXsTnoMg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbypV-0006tI-LJ; Fri, 22 May 2020 03:58:41 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1jc0dV-0006k3-Cu; Fri, 22 May 2020 05:54:25 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbypR-0006su-AE; Fri, 22 May 2020 03:58:38 +0000
-Received: by mail-pg1-x543.google.com with SMTP id s10so4387281pgm.0;
- Thu, 21 May 2020 20:58:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:subject:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding;
- bh=GTCRS5itnhr1mF/qxix34YoD9buZ+IJ+Kp8+rInUWII=;
- b=vDaWIoTIRHXzzZ3IA67i/cjCOtcGp88y+O8jyIDLaixqV8pz490fe22V8IP7iTQfe1
- YwtcB0HXkIAL18fDGByNvpebTUqZeqxG3FlwKcZJ1Rym7igoGACDWDHdcDBYqJJuNLOI
- oZn65R21HDSkTDywMd4YyKKdZqHI8Xl/970SsXN17v9J/1Kg2jzRKPsMbuWWObylBAmc
- W9QoRKVSiHMEi/BkfW/W7rWjSbhmbs/f0NpoEeE3KtEJmsy2KSw3a6vcQ/BGxaFPyVrb
- 3deUq6U9z9ks+56TV3IJRzy8XC0zMZTSeUpI7Sk5rvdeo5JtniS9vK2H1HU2EfckOjdn
- AIWA==
+ id 1jc0dR-0006jT-E2
+ for linux-riscv@lists.infradead.org; Fri, 22 May 2020 05:54:22 +0000
+Received: by mail-wm1-x341.google.com with SMTP id g14so3647919wme.1
+ for <linux-riscv@lists.infradead.org>; Thu, 21 May 2020 22:54:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aIk25yXFBXzVd2JD01BBzYOv1Gg6yn56UGtgn996fw0=;
+ b=JT1BLyDzBfEuLHxkQaZ3XLCFkoZmRsT1N912PHah3lVhoqoq8JLyx4QkKZsoPUywUl
+ E8PjWS0l/TEp1xK0mrl7UoiGv0RIkC4oZIhGYEYhQwMuD2/uXOdMLL2IkSjV5JEGLgEu
+ hj4YoPe4YprgbTbrKfT1Nu4aNFpoW8dgf0B3kbjxNFXc4BsbKku9MqU5Q1RXnbJtzvI5
+ xk7NFC/3TEqxST4kdWTIpy40xEPajjPX9ncrzUYWfeR0bEFQS+jRN5+P16lXMnvzUr41
+ awxZth5SCE6kzfOWGlFHf1t/Wjx8G4cPS2di/vbxuQSFpkN9iBmP1ZYvg94K/83Lijpl
+ Y6Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding;
- bh=GTCRS5itnhr1mF/qxix34YoD9buZ+IJ+Kp8+rInUWII=;
- b=OXD92NT8Mn7gIvSRMHWt0CTV/ZAuUrIFKPH3uFCVIiOPWsbdW6wDXV3s6VzQy+6sxY
- rO1KkYgH+RixQP+VKjnlGaIxMLaGyrG/C0PXXp7bMnkACAwaDh5vstzsO9jV3VwVQ6K1
- GFNkRffEwbXj6UigyyqfR8+ZTsv04TVuYhi3psLg5CluApKkhAaWIj/omh2PjrA8Q+W8
- +bCFqR17lr0+Mrq6gD80iUDzPZ2ajYY3hAcfkdw43/1x0ZxnBa3f/xuCR7L99F3TQV41
- KEfHQdMTJr1UZmzFn3gZLc9Co9oSHYga+lyDzIJlfV7EYHocKmjFI0tJq9BcO7UPCTqn
- cgvg==
-X-Gm-Message-State: AOAM531p2Ebn9cIBQpQd2yri/XFD6y1WjmZA9/25uxm5zMspZUwV6ql9
- tGtabGaFspoABlY9z2c2KMI=
-X-Google-Smtp-Source: ABdhPJx/4KdYW3Afcw6UEXV6omcwrg39GzRW/S4XSWQxqsjDVfrymkFMOI5pi2hIOfpxCf9XMGqlMg==
-X-Received: by 2002:a63:7453:: with SMTP id e19mr4549034pgn.139.1590119915296; 
- Thu, 21 May 2020 20:58:35 -0700 (PDT)
-Received: from [0.0.0.0] ([45.76.223.48])
- by smtp.gmail.com with ESMTPSA id o25sm4993865pgn.84.2020.05.21.20.58.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 21 May 2020 20:58:34 -0700 (PDT)
-From: Jia He <jiakernel2@gmail.com>
-Subject: Re: [PATCH V3 0/3] arm64: Enable vmemmap mapping from device memory
-To: Anshuman Khandual <anshuman.khandual@arm.com>, linux-mm@kvack.org
-References: <1585631387-18819-1-git-send-email-anshuman.khandual@arm.com>
-Message-ID: <4853d33f-d524-8209-4f8d-c26ee1eaa85b@gmail.com>
-Date: Fri, 22 May 2020 11:58:06 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aIk25yXFBXzVd2JD01BBzYOv1Gg6yn56UGtgn996fw0=;
+ b=Aubx0OdeuNMpH8b0ASSrsTOEt5yHQwliIkrcPGfEokL2rLsV0ZKe680Koyg9m78udM
+ ia//IU0gk1gVDgJVQl+cAOLVhGIXswkX8vPvtDd4Jqtf2aUkJy6CaJYpngW4jnfZM6wA
+ jUEO7A73Eb7f4xA1iG+g2GIScegwbHn7vJGPSXheOTLwsjFM3R9euwBdY9pFGHvE5DpE
+ ZnrV7Iwuk0EIFoThyOhrs8I8/lLeEWmENuS9Jpptu9oWFdhg4rtiy0H4u0rUXefbIeKh
+ iq7LQk3G5z5rp9902//HSsbuC8O6ToVfDt5VgR2cgD9D8ox2W65hc2HbEzHp9P0EKrSp
+ hdqw==
+X-Gm-Message-State: AOAM530pSAlBsUv6luRm1+UqccTz8XUvrYU3bJj0Dmlo0J3RhU5zk2Iq
+ iJxa/b6nwZWLIKSxXA4r9G7zBgSvI4llC0gkuRB2pw==
+X-Google-Smtp-Source: ABdhPJynY0OTAvvIBrM+2Ad3FdHSwp7eR2/+LIesoKwApFshfRqfP2uvsUvf/GyYJKsRhjNqdIuaVpXMiLoV/07JSRc=
+X-Received: by 2002:a7b:c4da:: with SMTP id g26mr11532873wmk.3.1590126858584; 
+ Thu, 21 May 2020 22:54:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1585631387-18819-1-git-send-email-anshuman.khandual@arm.com>
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20200521134544.816918-1-anup.patel@wdc.com>
+ <20200521134544.816918-6-anup.patel@wdc.com>
+ <2aec08b7-7197-4b60-89d9-c3b0d5a8a258@gmail.com>
+In-Reply-To: <2aec08b7-7197-4b60-89d9-c3b0d5a8a258@gmail.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 22 May 2020 11:24:07 +0530
+Message-ID: <CAAhSdy0OuxCwMVPBrvPpYMfVrhUuY3pONysk75yognOM5-0U+g@mail.gmail.com>
+Subject: Re: [PATCH 5/5] dt-bindings: timer: Add CLINT bindings
+To: Sean Anderson <seanga2@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200521_205837_378148_F0A8E075 
-X-CRM114-Status: GOOD (  18.36  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200521_225421_539636_823C2EBF 
+X-CRM114-Status: GOOD (  19.20  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [jiakernel2[at]gmail.com]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [jiakernel2[at]gmail.com]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,150 +89,95 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>,
- Thomas Gleixner <tglx@linutronix.de>, David Hildenbrand <david@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, Paul Mackerras <paulus@samba.org>,
- linux-ia64@vger.kernel.org, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, jgg@mellanox.com, aneesh.kumar@linux.ibm.com,
- x86@kernel.org, "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Mike Rapoport <rppt@linux.ibm.com>, Kaly Xin <Kaly.Xin@arm.com>,
- Ingo Molnar <mingo@redhat.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Fenghua Yu <fenghua.yu@intel.com>, rcampbell@nvidia.com,
- Pavel Tatashin <pasha.tatashin@soleen.com>, jglisse@redhat.com,
- Andy Lutomirski <luto@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- dan.j.williams@intel.com, linux-arm-kernel@lists.infradead.org,
- Tony Luck <tony.luck@intel.com>, linuxppc-dev@lists.ozlabs.org,
- linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Andrew Morton <akpm@linux-foundation.org>, robin.murphy@arm.com,
- "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
+Cc: devicetree@vger.kernel.org, Damien Le Moal <damien.lemoal@wdc.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Anup Patel <anup.patel@wdc.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Atish Patra <atish.patra@wdc.com>, Rob Herring <robh+dt@kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Albert Ou <aou@eecs.berkeley.edu>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi
-
-On 2020/3/31 13:09, Anshuman Khandual wrote:
-> This series enables vmemmap backing memory allocation from device memory
-> ranges on arm64. But before that, it enables vmemmap_populate_basepages()
-> and vmemmap_alloc_block_buf() to accommodate struct vmem_altmap based
-> alocation requests.
-
-I verified no obvious regression after this patch series.
-
-Host: ThunderX2(armv8a server), kernel v5.4
-
-qemu:v3.1, -M virt \
-
--object 
-memory-backend-file,id=mem1,share=on,mem-path=/tmp2/nvdimm.img,size=4G,align=2M \
-
--device nvdimm,id=nvdimm1,memdev=mem1,label-size=2M
-
-Guest: kernel v5.7.0-rc5 with this patch series.
-
-Tested case:
-
-- 4K PAGESIZE, boot, mount w/ -o dax, mount w/o -o dax, basic io
-
-- 64K PAGESIZE,boot, mount w/ -o dax, mount w/o -o dax, basic io
-
-Not tested:
-
-- 16K pagesize due to my hardware limiation(can't run 16K pgsz kernel)
-
-- hot-add/remove nvdimm device from qemu due to no fully support on arm64 qemu yet
-
-- Host nvdimm device hotplug
-
-Hence from above result,
-
-Tested-by: Jia He <justin.he@arm.com>
-
-> This series applies after latest (v14) arm64 memory hot remove series
-> (https://lkml.org/lkml/2020/3/3/1746) on Linux 5.6.
+On Fri, May 22, 2020 at 1:35 AM Sean Anderson <seanga2@gmail.com> wrote:
 >
-> Pending Question:
+> On 5/21/20 9:45 AM, Anup Patel wrote:
+> > We add DT bindings documentation for CLINT device.
+> >
+> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
+> > ---
+> >  .../bindings/timer/sifive,clint.txt           | 33 +++++++++++++++++++
+> >  1 file changed, 33 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/timer/sifive,clint.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/timer/sifive,clint.txt b/Documentation/devicetree/bindings/timer/sifive,clint.txt
+> > new file mode 100644
+> > index 000000000000..cae2dad1223a
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/timer/sifive,clint.txt
+> > @@ -0,0 +1,33 @@
+> > +SiFive Core Local Interruptor (CLINT)
+> > +-------------------------------------
+> > +
+> > +SiFive (and other RISC-V) SOCs include an implementation of the SiFive Core
+> > +Local Interruptor (CLINT) for M-mode timer and inter-processor interrupts.
+> > +
+> > +It directly connects to the timer and inter-processor interrupt lines of
+> > +various HARTs (or CPUs) so RISC-V per-HART (or per-CPU) local interrupt
+> > +controller is the parent interrupt controller for CLINT device.
+> > +
+> > +The clock frequency of CLINT is specified via "timebase-frequency" DT
+> > +property of "/cpus" DT node. The "timebase-frequency" DT property is
+> > +described in: Documentation/devicetree/bindings/riscv/cpus.yaml
+> > +
+> > +Required properties:
+> > +- compatible : "sifive,clint-1.0.0" and a string identifying the actual
+> > +  detailed implementation in case that specific bugs need to be worked around.
 >
-> altmap_alloc_block_buf() does not have any other remaining users in the
-> tree after this change. Should it be converted into a static function and
-> it's declaration be dropped from the header (include/linux/mm.h). Avoided
-> doing so because I was not sure if there are any off-tree users or not.
->
-> Changes in V3:
->
-> - Dropped comment from free_hotplug_page_range() per Robin
-> - Modified comment in unmap_hotplug_range() per Robin
-> - Enabled altmap support in vmemmap_alloc_block_buf() per Robin
->
-> Changes in V2: (https://lkml.org/lkml/2020/3/4/475)
->
-> - Rebased on latest hot-remove series (v14) adding P4D page table support
->
-> Changes in V1: (https://lkml.org/lkml/2020/1/23/12)
->
-> - Added an WARN_ON() in unmap_hotplug_range() when altmap is
->    provided without the page table backing memory being freed
->
-> Changes in RFC V2: (https://lkml.org/lkml/2019/10/21/11)
->
-> - Changed the commit message on 1/2 patch per Will
-> - Changed the commit message on 2/2 patch as well
-> - Rebased on arm64 memory hot remove series (v10)
->
-> RFC V1: (https://lkml.org/lkml/2019/6/28/32)
->
-> Cc: Catalin Marinas<catalin.marinas@arm.com>
-> Cc: Will Deacon<will@kernel.org>
-> Cc: Mark Rutland<mark.rutland@arm.com>
-> Cc: Paul Walmsley<paul.walmsley@sifive.com>
-> Cc: Palmer Dabbelt<palmer@dabbelt.com>
-> Cc: Tony Luck<tony.luck@intel.com>
-> Cc: Fenghua Yu<fenghua.yu@intel.com>
-> Cc: Dave Hansen<dave.hansen@linux.intel.com>
-> Cc: Andy Lutomirski<luto@kernel.org>
-> Cc: Peter Zijlstra<peterz@infradead.org>
-> Cc: Thomas Gleixner<tglx@linutronix.de>
-> Cc: Ingo Molnar<mingo@redhat.com>
-> Cc: David Hildenbrand<david@redhat.com>
-> Cc: Mike Rapoport<rppt@linux.ibm.com>
-> Cc: Michal Hocko<mhocko@suse.com>
-> Cc: "Matthew Wilcox (Oracle)"<willy@infradead.org>
-> Cc: "Kirill A. Shutemov"<kirill.shutemov@linux.intel.com>
-> Cc: Andrew Morton<akpm@linux-foundation.org>
-> Cc: Dan Williams<dan.j.williams@intel.com>
-> Cc: Pavel Tatashin<pasha.tatashin@soleen.com>
-> Cc: Benjamin Herrenschmidt<benh@kernel.crashing.org>
-> Cc: Paul Mackerras<paulus@samba.org>
-> Cc: Michael Ellerman<mpe@ellerman.id.au>
-> Cc:linux-arm-kernel@lists.infradead.org
-> Cc:linux-ia64@vger.kernel.org
-> Cc:linux-riscv@lists.infradead.org
-> Cc:x86@kernel.org
-> Cc:linuxppc-dev@lists.ozlabs.org
-> Cc:linux-mm@kvack.org
-> Cc:linux-kernel@vger.kernel.org
->
-> Anshuman Khandual (3):
->    mm/sparsemem: Enable vmem_altmap support in vmemmap_populate_basepages()
->    mm/sparsemem: Enable vmem_altmap support in vmemmap_alloc_block_buf()
->    arm64/mm: Enable vmem_altmap support for vmemmap mappings
->
->   arch/arm64/mm/mmu.c       | 59 ++++++++++++++++++++++++++-------------
->   arch/ia64/mm/discontig.c  |  2 +-
->   arch/powerpc/mm/init_64.c | 10 +++----
->   arch/riscv/mm/init.c      |  2 +-
->   arch/x86/mm/init_64.c     | 12 ++++----
->   include/linux/mm.h        |  8 ++++--
->   mm/sparse-vmemmap.c       | 38 ++++++++++++++++++++-----
->   7 files changed, 87 insertions(+), 44 deletions(-)
->
--- 
+> Should the "riscv,clint0" compatible string be documented here? This
 
----
-Cheers,
-Justin (Jia He)
+Yes, I forgot to add this compatible string. I will add in v2.
 
+> peripheral is not really specific to sifive, as it is present in most
+> rocket-chip cores.
+
+I agree that CLINT is present in a lot of non-SiFive RISC-V SOCs and
+FPGAs but this IP is only documented as part of SiFive FU540 SOC.
+(Refer, https://static.dev.sifive.com/FU540-C000-v1.0.pdf)
+
+The RISC-V foundation should host the CLINT spec independently
+under https://github.com/riscv and make CLINT spec totally open.
+
+For now, I have documented it just like PLIC DT bindings found at:
+Documentation/devicetree/bindings/interrupt-controller/sifive,plic-1.0.0.txt
+
+If RISC-V maintainers agree then I will document it as "RISC-V CLINT".
+
+@Palmer ?? @Paul ??
+
+>
+> > +- reg : Should contain 1 register range (address and length).
+> > +- interrupts-extended : Specifies which HARTs (or CPUs) are connected to
+> > +  the CLINT.  Each node pointed to should be a riscv,cpu-intc node, which
+> > +  has a riscv node as parent.
+> > +
+> > +Example:
+> > +
+> > +     clint@2000000 {
+> > +             compatible = "sifive,clint-1.0.0", "sifive,fu540-c000-clint";
+> > +             interrupts-extended = <
+> > +                     &cpu1-intc 3 &cpu1-intc 7
+> > +                     &cpu2-intc 3 &cpu2-intc 7
+> > +                     &cpu3-intc 3 &cpu3-intc 7
+> > +                     &cpu4-intc 3 &cpu4-intc 7>;
+> > +             reg = <0x2000000 0x4000000>;
+> > +     };
+> >
+>
+> --Sean
+
+Regards,
+Anup
 
