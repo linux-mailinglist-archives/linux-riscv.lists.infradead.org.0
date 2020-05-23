@@ -2,48 +2,48 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A98701DF971
-	for <lists+linux-riscv@lfdr.de>; Sat, 23 May 2020 19:27:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 83F2F1DF976
+	for <lists+linux-riscv@lfdr.de>; Sat, 23 May 2020 19:28:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VNYozKnIwmLFMX6icurbZvKl5iJWrZcKW2UgM0i4bAY=; b=bQAapVpj5dpu9d7RrtxRl6gzk
-	0Z7931Pyv5WhDibi1tunZVbTKHvQcQamsSCzYmjcDux1BqQsWxgyev70bZtB5WP42cMHY1qPXiOHm
-	fQKAbA6TZQgXhdURJbyjSFTwzGYFRnLQnGGD8omhslXYhv7t4Dx5XgAZg8/PXnQmteBXzROob+IB/
-	C1vK+dbXvHA/KhONFuMbkr0aDgmqAYyzExyAnTsSJ4csF/zzU1BkSCdS2kcWrGY5gJQT2G/XXtQ5z
-	YAuhJZ6FhFffWPcmUfeEAHZ4A2iOJ6sjmWxdQ1kmUolXgyPPNq2K03N0iJKTvIPFGZMuvdvEDU9Wc
-	pwhP2hjxQ==;
+	 bh=G1/5p3cxpdeqine9x75UGriKq3ES0NL5jsjo56ev9is=; b=j+tphxvXxW+uBCcvCq1c6UvTx
+	ApnkWlaYZuw7u5QryY2jPwBbiALMgk4wGAViMImCtv885B8Eb25co8UPZT9leqrsgvSn+1NHpJdOF
+	MbmUjqS/yiADVJj2JLc6XZ29VhuRCm9kStgM11gYdN6RM6F0KBY/oBdD1TSh8gJl92yFCv2kPbmDl
+	1/C22LJ/7BWCi58UpCVmlfhjKjVVE7Bsre2bMxqOpuVtWVBBBjb7ec4nFwY0s+6CfDitdGOLyTmOQ
+	WF4skmorrArWjT1Y+OgzjD+a4P87IvIw6add1mGOkcbp3Ekir7CIFA3+zUoGfGlrnO6er+MDGQ/RJ
+	ee7H9hDZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jcXvy-0002oR-Ds; Sat, 23 May 2020 17:27:42 +0000
+	id 1jcXwL-0003DR-Dw; Sat, 23 May 2020 17:28:05 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jcXsj-0005uF-9o
- for linux-riscv@lists.infradead.org; Sat, 23 May 2020 17:24:22 +0000
+ id 1jcXtB-0006UH-Tw
+ for linux-riscv@lists.infradead.org; Sat, 23 May 2020 17:24:51 +0000
 Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ukl@pengutronix.de>)
- id 1jcXsO-0002Gh-22; Sat, 23 May 2020 19:24:00 +0200
+ id 1jcXsp-0002N3-Sl; Sat, 23 May 2020 19:24:27 +0200
 Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
  (envelope-from <ukl@pengutronix.de>)
- id 1jcXsN-00058M-Gj; Sat, 23 May 2020 19:23:59 +0200
-Date: Sat, 23 May 2020 19:23:59 +0200
+ id 1jcXsp-00058U-38; Sat, 23 May 2020 19:24:27 +0200
+Date: Sat, 23 May 2020 19:24:27 +0200
 From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
 To: Yangtao Li <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 06/32] pwm: tegra: convert to
+Subject: Re: [PATCH 05/32] pwm: ep93xx: convert to
  devm_platform_ioremap_resource
-Message-ID: <20200523172359.t7bpby5fmpj5tx44@pengutronix.de>
+Message-ID: <20200523172427.yiytmrejcepbya4n@pengutronix.de>
 References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20191229080610.7597-6-tiny.windzz@gmail.com>
+ <20191229080610.7597-5-tiny.windzz@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20191229080610.7597-6-tiny.windzz@gmail.com>
+In-Reply-To: <20191229080610.7597-5-tiny.windzz@gmail.com>
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
 X-SA-Exim-Mail-From: ukl@pengutronix.de
@@ -51,7 +51,7 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200523_102421_441835_26C208C6 
+X-CRM114-CacheID: sfid-20200523_102450_062677_12556A9C 
 X-CRM114-Status: UNSURE (   5.45  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
@@ -91,7 +91,7 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 Hello,
 
-On Sun, Dec 29, 2019 at 08:05:44AM +0000, Yangtao Li wrote:
+On Sun, Dec 29, 2019 at 08:05:43AM +0000, Yangtao Li wrote:
 > Use devm_platform_ioremap_resource() to simplify code.
 > 
 > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
