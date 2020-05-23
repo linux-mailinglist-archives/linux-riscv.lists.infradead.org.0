@@ -2,65 +2,93 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C64951DF9BB
-	for <lists+linux-riscv@lfdr.de>; Sat, 23 May 2020 19:44:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AD441DFB13
+	for <lists+linux-riscv@lfdr.de>; Sat, 23 May 2020 23:00:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hmVNOLK3bKFXHmjFp9am5qP1EggAj55HA0bMfEG3OVc=; b=T7NqAh/a/cgZEFf9NvST2Bn2k
-	vhB+rgSvyhT3AO1EnVUmhsj4U73pEwVBDiDujEEOIXumCMCbJtB/vVvxFxJlOBK0E5dUwJHMRfsoH
-	JymSTsrCk5JyZ7/8ZfZrHFwqTWwQ8PPLuukDcWDypXDVGyFfnrJN8+o57BVPh4J6crEQUkPCUVtH8
-	jQv4uiQRpWMiyo4zBjtbotrwlVdhBEPDodBfu8DXd2O/lw1te8ygiZryq8jO0FrcuwQpaP5IA3aMf
-	J8Fdh29OnPDLOYGqa3b5NLuQL0ViFpEVu/GDOO41+bHfsxd9gI4ZzL2d7Q13FfnshcBt+nvLWdy8F
-	st9zQCGVg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/EsWH2Z0Xvdv8zJjOt7cdEn91hyou87YyYLaPvp1v0g=; b=BfuFJfdhWRHGEJ
+	19oveYVFduBzGQdfKMpOHt+Rl/LAYf5ekwl4hs4LlJLr1BemoxyEPYa0EF+sXbMu5p1w6/ysgvJgB
+	lP4UOHGDiHWFLb6eXs94C6RfxR8N3wlXHRqywD1WKR1GCBrOD14dFeKpuEtaNlaFS/meGZ64hmKSZ
+	Vv9Aga4W8ODYkSywHdcmrqOTXXT2IJ81xXt9zJFyvVOBk4vihMcAb9d5TahvEpjnWHXPODUr27sEa
+	8WNxhBa/owm+46Jz8imDhdcAMCnX5mqwdwP9MbuR8jK9b00IDikjS4x7JbK5l3sqOtMfAS6VFoNh1
+	zeT1+/aWbeNj79Ngonow==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jcYCU-0006Ld-Az; Sat, 23 May 2020 17:44:46 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1jcbFm-00020c-SZ; Sat, 23 May 2020 21:00:22 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jcYCB-00066y-Si
- for linux-riscv@lists.infradead.org; Sat, 23 May 2020 17:44:29 +0000
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1jcYBo-0004nX-LL; Sat, 23 May 2020 19:44:04 +0200
-Received: from ukl by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <ukl@pengutronix.de>)
- id 1jcYBl-0005dS-0l; Sat, 23 May 2020 19:44:01 +0200
-Date: Sat, 23 May 2020 19:44:00 +0200
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-To: Yangtao Li <tiny.windzz@gmail.com>, thierry.reding@gmail.com
-Subject: Re: [PATCH 30/32] pwm: hibvt: do some cleanup
-Message-ID: <20200523174400.tzptmraqyn3uqrvf@pengutronix.de>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20191229080610.7597-30-tiny.windzz@gmail.com>
- <20200220204152.p6rublsssifvvnvk@pengutronix.de>
+ id 1jcbFj-0001zc-96
+ for linux-riscv@lists.infradead.org; Sat, 23 May 2020 21:00:20 +0000
+Received: by mail-lj1-x243.google.com with SMTP id z6so16690313ljm.13
+ for <linux-riscv@lists.infradead.org>; Sat, 23 May 2020 14:00:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/EsWH2Z0Xvdv8zJjOt7cdEn91hyou87YyYLaPvp1v0g=;
+ b=Sa+zxmlNg4c4JyBiPsaefryAVRYS6ONzMiCbRBmwpc+hAQNtYDz+lOIxj+ucvehdqo
+ ypLmP2uZvIgBWdTDaWu3LfltZpO4GulH5Pgz3H02sv+xcBlYz4oe5LQI1pv01c44md7i
+ Jo+F1VZys1v2hG+sClcfy3T/48pEXUIMHTU8Mij5YMtKou+s53bBLTfBeXoiIOf+M271
+ LjlgjMJ5FvGIAeoFHQ1ecuUNorIrjgc1iIV1xSFp3vLj054ToUdfHJXfjayJidRx7bHQ
+ Q5LUXMHe1NHAnUJrv8uyTP0VsLQ6Fu+py5AAZFpGwhi1KpISLvCn911JBwqbxDlaAxfT
+ 0huw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/EsWH2Z0Xvdv8zJjOt7cdEn91hyou87YyYLaPvp1v0g=;
+ b=EhOwUcpk9aO4oQVlavOkv5krLxZSXfbtQEY4bMeuXvpl3zYFNR5kXy8dr8TyQwIlPZ
+ yG7PKVPXpoYVROytNZKxRi1SFMo8GFRmmiBrdYVR33itTIFNGnkywT29jeo7VxUKYO42
+ nysSHB0Za78DD0FFZWVokt4v5nhTyGhRuz9OvlPAAPBwrNg9h/r7xsz5tNvrQ/Kvhylv
+ eOBrOH6aJGAZpDwbpzgMZsQQxCAGGw49MomTvqDRIk8/n/7fO4D2rBKOhkpYCxELKZHN
+ 4OZEsoEBA8JBc0wX5u3Qp40egzXK4g461+PlpSpjkDcXd6HjsO77EH1lrFUdLwqrWLJO
+ MhUg==
+X-Gm-Message-State: AOAM531eh6akkzXJSViibsMo0QXmJAAFYd7sTfns5WEh+C4qKOBaCt3j
+ OdjtEa4heiS/TmiEYKngkgA=
+X-Google-Smtp-Source: ABdhPJxqC3eua7TiWDvHzfAusUT8WgJI9LirGt3xhFJCsgjp4JjoI0zMuM6j3vW61/66xYpF6S7YIw==
+X-Received: by 2002:a2e:b4f3:: with SMTP id s19mr3830469ljm.218.1590267612343; 
+ Sat, 23 May 2020 14:00:12 -0700 (PDT)
+Received: from btopel-mobl.ger.intel.com (c83-250-27-170.bredband.comhem.se.
+ [83.250.27.170])
+ by smtp.gmail.com with ESMTPSA id d22sm3320712lfc.27.2020.05.23.14.00.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 23 May 2020 14:00:11 -0700 (PDT)
+From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
+To: Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] Documentation/features: Correct RISC-V kprobes support entry
+Date: Sat, 23 May 2020 23:00:05 +0200
+Message-Id: <20200523210005.59140-1-bjorn.topel@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200220204152.p6rublsssifvvnvk@pengutronix.de>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-riscv@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200523_104428_003473_7B9E4CAC 
-X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-CacheID: sfid-20200523_140019_317913_8D5E14BB 
+X-CRM114-Status: UNSURE (   8.52  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:243 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [bjorn.topel[at]gmail.com]
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,56 +100,39 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, heiko@sntech.de,
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com,
- shc_work@mail.ru, khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
- s.hauer@pengutronix.de, mripard@kernel.org, vz@mleia.com,
- linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
- paul.walmsley@sifive.com, matthias.bgg@gmail.com,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- sbranden@broadcom.com, nicolas.ferre@microchip.com, linux@prisktech.co.nz,
- palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org,
- claudiu.beznea@microchip.com, nsaenzjulienne@suse.de
+Cc: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, Feb 20, 2020 at 09:41:52PM +0100, Uwe Kleine-König wrote:
-> On Sun, Dec 29, 2019 at 08:06:08AM +0000, Yangtao Li wrote:
-> > Use devm_platform_ioremap_resource() to simplify code.
-> > 'i' and 'ret' are variables of the same type and there is no
-> > need to use two lines.
-> 
-> I think I wouldn't have merged these two lines, but I don't feel strong
-> here. The other 31 patches are clean replacements.
-> 
-> But I also don't think respining just for this minor thing is worth the
-> effort, so:
-> 
-> Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> 
-> for the whole series. (Not sure it is sensible to ack each patch
-> individually, @Thierry, tell me if this simplifies things for you.)
+The Documentation/features/debug/kprobes/arch-support.txt incorrectly
+states that RISC-V has kprobes support. This is not the case.
 
-I took a deeper look now and added Reviewed-by for all other patches to
-ease application. So doing the same here:
+Note that entries that have been incorrectly marked with 'ok' will not
+be changed back to 'TODO' by the features-refresh.sh script.
 
-Reviewed-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Fixes: 7156fc292850 ("Documentation/features: Refresh the arch support status files in place")
+Signed-off-by: BjÃ¶rn TÃ¶pel <bjorn.topel@gmail.com>
+---
+ Documentation/features/debug/kprobes/arch-support.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-FTR: I'd do the following now:
+diff --git a/Documentation/features/debug/kprobes/arch-support.txt b/Documentation/features/debug/kprobes/arch-support.txt
+index e68239b5d2f0..0ed80700bc35 100644
+--- a/Documentation/features/debug/kprobes/arch-support.txt
++++ b/Documentation/features/debug/kprobes/arch-support.txt
+@@ -23,7 +23,7 @@
+     |    openrisc: | TODO |
+     |      parisc: |  ok  |
+     |     powerpc: |  ok  |
+-    |       riscv: |  ok  |
++    |       riscv: | TODO |
+     |        s390: |  ok  |
+     |          sh: |  ok  |
+     |       sparc: |  ok  |
 
-	for patch in 1216003 1216065 1216063 1216005 1216062 1216061 1216059 1216057 1216054 1216056 1216051 1216050 1216048 1216010 1216044 1216046 1216042 1216041 1216036 1216037 1216034 1216032 1216030 1216013 1216029 1216025 1216026 1216024 1216015 1216021 1216017 1216019; do
-
-		pwclient git-am -m -s $patch && pwclient update -s "Accepted" -c "$(git rev-parse HEAD)" $patch || break
-	done
-
-Best regards
-Uwe
-
+base-commit: 423b8baf18a8c03f2d6fa99aa447ed0da189bb95
 -- 
-Pengutronix e.K.                           | Uwe Kleine-König            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+2.25.1
+
 
