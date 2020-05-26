@@ -2,47 +2,48 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86E2E1E280B
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 19:12:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DF0C1E2818
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 19:13:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ubvLJ8YSRynXaiXVpDjHwFPp3XSnC9DAjDhzzfA7pN4=; b=XVn3BOY2s+6luELu9nmosdkAj
-	YdIqcGpEYht0AD5w1GaWJH3WMcDO+hiB3F9gmf/RdoeYV8ojCcxu8wYojsXIlV/zt4bou0dgvbwwO
-	xk1i0mUDvNZWBH7sHEUI0DzqOZ+3Ufzt/HwUMUNiwhI2eofojzKsqjDBe32W3kY61To7IJsqDgqIg
-	Ickhr6wSVEWTzE9og3W0D+pWV1cGLrk8b8kUnRg6qZsTBhK7hgWH52D3D0bZJSExo8cbdhNvovYre
-	4iHdSPE765ZTbk4jk8HHvkg98DN5lQ+NB65iFwKngIW3Enw2QIm1joxtSpo47Z6CfeKNM+6qqxlz+
-	rzvVCDPYQ==;
+	 bh=UL3tL1kCwPuSLV3eeSsoosO3BVHIMe4QAHQBme3y6Kg=; b=jqvJf8vqefymifdzpHicV0Qsz
+	SGaD+oAVfYdR6T8s4/hJxG140eLgdlP2WcSQG4MKypAGF3lsIfpj/Qq6JQBQpBz3sKFi+2LR6Y3l4
+	lQzS5B4s1I9a5103hoGTcpr0lBSEFO6HpyI4cPJENuPeACvvfT+y8epqxBji+7AljmY/Pduj0t+/A
+	L7ftg+cW0UbpGC8apjVwA0SKrz5vrx16UFeJ5zGFGkWHHCkSjABidbZTR3pvfaNY8FixAyV4tAaZF
+	DkusZSp+mT/pOakCfRd7hx9EdM8Qw1Gdv0A8LKs0NtSzLvTMN1EpiCOCPSk5yM3ZBLo93v7bynAoy
+	EUxl1TlrQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdd7f-0001OF-An; Tue, 26 May 2020 17:12:15 +0000
+	id 1jdd9C-0001b1-Dj; Tue, 26 May 2020 17:13:50 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdd7c-0001NM-2a; Tue, 26 May 2020 17:12:13 +0000
+ id 1jdd98-0001aB-CM; Tue, 26 May 2020 17:13:48 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9F5431FB;
- Tue, 26 May 2020 10:12:09 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9101C55D;
+ Tue, 26 May 2020 10:13:45 -0700 (PDT)
 Received: from gaia (unknown [172.31.20.19])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 05C163F52E;
- Tue, 26 May 2020 10:12:01 -0700 (PDT)
-Date: Tue, 26 May 2020 18:11:59 +0100
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1C3C03F52E;
+ Tue, 26 May 2020 10:13:36 -0700 (PDT)
+Date: Tue, 26 May 2020 18:13:34 +0100
 From: Catalin Marinas <catalin.marinas@arm.com>
 To: Mike Rapoport <rppt@kernel.org>
-Subject: Re: [PATCH v2 03/20] mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option
-Message-ID: <20200526171159.GJ17051@gaia>
+Subject: Re: [PATCH v2 05/20] mm: use free_area_init() instead of
+ free_area_init_nodes()
+Message-ID: <20200526171334.GK17051@gaia>
 References: <20200429121126.17989-1-rppt@kernel.org>
- <20200429121126.17989-4-rppt@kernel.org>
+ <20200429121126.17989-6-rppt@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200429121126.17989-4-rppt@kernel.org>
+In-Reply-To: <20200429121126.17989-6-rppt@kernel.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_101212_242507_A3BCE95B 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20200526_101347_282703_389AEA5E 
+X-CRM114-Status: GOOD (  10.66  )
 X-Spam-Score: 0.8 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.8 points)
@@ -103,38 +104,18 @@ Cc: Rich Felker <dalias@libc.org>, linux-ia64@vger.kernel.org,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Apr 29, 2020 at 03:11:09PM +0300, Mike Rapoport wrote:
-> From: Mike Rapoport <rppt@linux.ibm.com>
-> 
-> The CONFIG_HAVE_MEMBLOCK_NODE_MAP is used to differentiate initialization
-> of nodes and zones structures between the systems that have region to node
-> mapping in memblock and those that don't.
-> 
-> Currently all the NUMA architectures enable this option and for the
-> non-NUMA systems we can presume that all the memory belongs to node 0 and
-> therefore the compile time configuration option is not required.
-> 
-> The remaining few architectures that use DISCONTIGMEM without NUMA are
-> easily updated to use memblock_add_node() instead of memblock_add() and
-> thus have proper correspondence of memblock regions to NUMA nodes.
-> 
-> Still, free_area_init_node() must have a backward compatible version
-> because its semantics with and without CONFIG_HAVE_MEMBLOCK_NODE_MAP is
-> different. Once all the architectures will use the new semantics, the
-> entire compatibility layer can be dropped.
-> 
-> To avoid addition of extra run time memory to store node id for
-> architectures that keep memblock but have only a single node, the node id
-> field of the memblock_region is guarded by CONFIG_NEED_MULTIPLE_NODES and
-> the corresponding accessors presume that in those cases it is always 0.
-> 
-> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
-> ---
->  .../vm/numa-memblock/arch-support.txt         |  34 ------
->  arch/alpha/mm/numa.c                          |   4 +-
->  arch/arm64/Kconfig                            |   1 -
-
-For arm64:
+On Wed, Apr 29, 2020 at 03:11:11PM +0300, Mike Rapoport wrote:
+> diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+> index e42727e3568e..a650adb358ee 100644
+> --- a/arch/arm64/mm/init.c
+> +++ b/arch/arm64/mm/init.c
+> @@ -206,7 +206,7 @@ static void __init zone_sizes_init(unsigned long min, unsigned long max)
+>  #endif
+>  	max_zone_pfns[ZONE_NORMAL] = max;
+>  
+> -	free_area_init_nodes(max_zone_pfns);
+> +	free_area_init(max_zone_pfns);
+>  }
 
 Acked-by: Catalin Marinas <catalin.marinas@arm.com>
 
