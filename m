@@ -2,88 +2,110 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D2A51E230A
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 15:38:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 038B41E237C
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 16:01:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=O/mpBidl5KzS3rb4PN7X5hauHHU7Bj8b6nZgC1/NWhk=; b=UmWu5sCn2iWRHO2u8qDbCo+s0
-	h8xKtcEkgqle9Ou4i5dvkNdZLyXU0WUNgOHp2fdj0MZQ35yjloHy9cVyaMl4OWA0+DUQaVHpsj2ZR
-	p802UwNKaTCmKL4/l53seEBy4M/6/Cpy/jN+JPnny6p0UUnxYAZnewNuhvlxZGvfnkg6GG8hj1D0v
-	Duz6fkNiUBZVlSBwOmMt/GpytJkxTm3ahS/p0YrFXY4q+QbS/TjhcDhcMFsK3uwpagMPmUsMFF94i
-	sIlBw75+i/GPjQXWjJm5vodsoLWE9dfCQXHwf3VSI7NYKjhiGR/yN6f/hmWjcHK7DtiHYl5M8fJ3k
-	UenVzZjUA==;
+	 bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=; b=psAK1dz82EJdcd+HeuK2KTqYf
+	x2RTEbZLeqSndAX9Haxe19KkEFXr8lxkrPQ675Q6HzIDja2/SllPvr5ObPyvNXwYd7QjGOOTkcDrg
+	tWW2d7qLDiviVhoj8O5mC1iZzI0cj9XJT9s1PzHSCcTCJ1LnsQ2qGlZPExcuhYgH6WasdI5F4wWy2
+	vbOhkYFiWfG/fGf0bhqCP8d8lctgLJG+F8HtRRpb+BbtO7PhlPMED0MGLouHSMRJKAUJxndY1GsJg
+	DYj4/Gv8+gSbAweFiiHmrG42f/tyWCEwdzNGcciCIqv5wlcLUHJJ4ZmSqYOd3l9HB3l0ROrZD7JHG
+	oK1XGLQrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdZmz-0000nA-Ab; Tue, 26 May 2020 13:38:41 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1jda8w-0001p2-70; Tue, 26 May 2020 14:01:22 +0000
+Received: from merlin.infradead.org ([205.233.59.134])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdZmv-0000kO-MR
- for linux-riscv@lists.infradead.org; Tue, 26 May 2020 13:38:38 +0000
-Received: by mail-oi1-x243.google.com with SMTP id b3so18615455oib.13
- for <linux-riscv@lists.infradead.org>; Tue, 26 May 2020 06:38:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=tycho-ws.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=O/mpBidl5KzS3rb4PN7X5hauHHU7Bj8b6nZgC1/NWhk=;
- b=GnCtndUVy9LXPImyl75neJ+jKPenDwGSBzI5wi9Oupoa71QJYg66ApHZlHdNhNqlgy
- 73fUpZKffs4nxyLXWo4AcoQ7TaKyZfB3C1YRnqj23bBTLf4ZIjr9IAoEZaVOhefzcw5V
- 4Nr1gfDuDReGGRjR2a4ug8DRBr82VyLb6aBLMegD2COiYcLyJrzPxVENMC1icbLN2gnF
- Yyk7GFG5TOmV1hv6DdJtjdn0cgKHCEYGGfgNkhTcQ5ILYtzXfPvauig/hRpTL+x8Gn72
- rzYvRjHYasBDGYGGMgrsXf7GxZDjm02lD21vi35teUx/hom9swlx7xtb/R5F1dRF1CnM
- tyGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=O/mpBidl5KzS3rb4PN7X5hauHHU7Bj8b6nZgC1/NWhk=;
- b=gCyICUKo/U8f1s93tOSPtwjQCWSiYSLI2DYk7euor/5sgy/V+NlHPB3OUdXdvIyzPg
- hD07Nd61NiCCPsRSnWN7TDAW9lsNU56Ow16jveey4dF86y9/SaG0PljBSGm9xszMeKg+
- MZd3DXJE4w45WMVtDyXIofUHjOYzcDbCTqgBx498DMa0MMIjJ8chNrLC2uHY4gRuCxyg
- 6Ua0q9l04aSkF91Udw7s9oGsicP+XKteLpcFgvPl39dXTZz5Q510C04Wfc+D4ahxqffO
- 6E+pChANDeCUmeJ0x8VzWwPoGMHoALltkQYctNStxnMFuEynzL2RajxeHh9LUjQpMQBj
- ZbXQ==
-X-Gm-Message-State: AOAM5304BgzQGEpg98nVWMgPJU+sR5fGYFsAK7305kqL+I8ZduXGUU9i
- bb/coGkX9Tx4METeqoUepuyX/g==
-X-Google-Smtp-Source: ABdhPJzM4bXY4Fn1US8uCCmfKrf9dXlosFeANunbNktVL8MAc+7u6vkcJU24xkN0MejT4xOOpe0qwA==
-X-Received: by 2002:aca:4f4b:: with SMTP id d72mr14274781oib.68.1590500313445; 
- Tue, 26 May 2020 06:38:33 -0700 (PDT)
-Received: from cisco ([2601:282:b02:8120:e9d7:5ec6:88ea:b4a1])
- by smtp.gmail.com with ESMTPSA id g13sm3306oop.31.2020.05.26.06.38.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2020 06:38:32 -0700 (PDT)
-Date: Tue, 26 May 2020 07:38:30 -0600
-From: Tycho Andersen <tycho@tycho.ws>
-To: Guo Ren <guoren@kernel.org>
-Subject: Re: [PATCH] riscv: Remove unnecessary path for syscall_trace
-Message-ID: <20200526133830.GO2605652@cisco>
-References: <1590416306-66453-1-git-send-email-guoren@kernel.org>
- <20200525143648.GM2605652@cisco>
- <CAJF2gTS4gM39KWuksRRT9ONPhbhYuN9r1oOP_qRT8KvDga4vyA@mail.gmail.com>
+ id 1jda8u-0001ov-1n
+ for linux-riscv@bombadil.infradead.org; Tue, 26 May 2020 14:01:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=; b=uJSHf81edvoL3UFakWPXwvv1JU
+ BUaWV9PRWHh89BivzW3JVzOp+0lyxhqfJTkqCDnCMC4XMlleAv2WSCK2ktmRJvvuETH+4EyLuxAy2
+ LYr+gmx5sokTZQRdefTRoSRKTbeo9CXw5l//genzB8BHZ3Ad1yJzuFlkqweXSc5xH0wP76I2arBTr
+ GZeUHI63KAsqXumhkuibPyNmzZNNWBwCtIU/Uv40lkEBoBb9GIhS64HVJjmmTP+oQ3S0198TsBPT2
+ t5dXTLAFFk1+U1v0QRrS6rgN7+7/iOmpojv3pVcuc+RKg5emrXzZdpfRNu1lW7NbGbkIt3D6RguwU
+ 3qMHU0uw==;
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
+ helo=us-smtp-1.mimecast.com)
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jda8s-0001yc-RO
+ for linux-riscv@lists.infradead.org; Tue, 26 May 2020 14:01:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590501634;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=;
+ b=HJEiTk4YZqJMy6sdw5QQIEU5mIbJZbbq1/K4pK8wCo+X04rlMEwY5TFXdhTlXp26Jg1+7i
+ dVaH2l9iaF4oCi6gDdgxpYBvHQ1MSyoPDMXwDsvWr/psZibrlvmhsUOBGLNQN4ar99i/Kq
+ /WqvIsJlIKEHKSwNS83lRvMS9SQ/UWw=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590501677;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=;
+ b=CVDriqA7rX7EaIp6Y5Ec5HY+K6Ddrbispip9BFaLJgmmfHoPk2qvy/9K1mPkTLFFF/4n6d
+ Q4VhMh+BczdZzNv1Ry3p6mKFf0u56cLIkizSPqt9T231lOQMNZ3O0JtS0datoO0w1SqyFx
+ 91dHWd87qFj1pVhFxiPUuvp7gvCGZik=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-160-OvaMsk5FP-u0DBdNEz45pQ-1; Tue, 26 May 2020 10:00:32 -0400
+X-MC-Unique: OvaMsk5FP-u0DBdNEz45pQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B8357100CD14;
+ Tue, 26 May 2020 14:00:30 +0000 (UTC)
+Received: from dhcp-27-174.brq.redhat.com (unknown [10.40.193.170])
+ by smtp.corp.redhat.com (Postfix) with SMTP id 3210460E1C;
+ Tue, 26 May 2020 14:00:29 +0000 (UTC)
+Received: by dhcp-27-174.brq.redhat.com (nbSMTP-1.00) for uid 1000
+ oleg@redhat.com; Tue, 26 May 2020 16:00:30 +0200 (CEST)
+Date: Tue, 26 May 2020 16:00:28 +0200
+From: Oleg Nesterov <oleg@redhat.com>
+To: Greentime Hu <greentime.hu@sifive.com>
+Subject: Re: [RFC PATCH v4 01/13] ptrace: Use regset_size() for dynamic
+ regset size.
+Message-ID: <20200526140027.GC24212@redhat.com>
+References: <cover.1590474856.git.greentime.hu@sifive.com>
+ <3700190a602a6d30fcbf76e1eea667e29a65c4c9.1590474856.git.greentime.hu@sifive.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAJF2gTS4gM39KWuksRRT9ONPhbhYuN9r1oOP_qRT8KvDga4vyA@mail.gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_063837_795090_EAF37FCF 
-X-CRM114-Status: GOOD (  13.19  )
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+In-Reply-To: <3700190a602a6d30fcbf76e1eea667e29a65c4c9.1590474856.git.greentime.hu@sifive.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Spam-Note: CRM114 invocation failed
+X-Spam-Score: -0.2 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
- [list.dnswl.org]
+ no trust [205.139.110.120 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [205.139.110.120 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,55 +117,40 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Guo Ren <guoren@linux.alibaba.com>, keescook@chromium.org,
- Anup Patel <anup@brainfault.org>, palmerdabbelt@google.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: guoren@linux.alibaba.com, palmerdabbelt@google.com,
+ linux-kernel@vger.kernel.org, vincent.chen@sifive.com,
+ paul.walmsley@sifive.com, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, May 26, 2020 at 08:29:45AM +0800, Guo Ren wrote:
-> Hi Tycho,
-> 
-> On Mon, May 25, 2020 at 10:36 PM Tycho Andersen <tycho@tycho.ws> wrote:
-> >
-> > On Mon, May 25, 2020 at 02:18:26PM +0000, guoren@kernel.org wrote:
-> > > From: Guo Ren <guoren@linux.alibaba.com>
-> > >
-> > > Obviously, there is no need to recover a0-a7 in reject path.
-> > >
-> > > Previous modification is from commit af33d243 by Tycho, to
-> > > fixup seccomp reject syscall code path.
-> >
-> > Doesn't this suffer from the same problem, though? a7 is clobbered, so
-> > the -ERESTARTSYS behavior won't work?
-> 
-> Look, the patch only affects the path of ret_from_syscall_rejected,
-> and there are two possible paths:
-> 1. ret_from_syscall_rejected->handle_syscall_trace_exit->ret_from_exception
-> 2. ret_from_syscall_rejected->ret_from_exception
-> 
-> All the above skip the check_syscall_nr and ignore the current a7, in
-> the C function they use the pt_regs in the stack to get proper reg's
-> value.
-> 
-> For the -ERESTARTSYS, we only process it in:
-> ret_from_exception->resume_userspace->work_notifysig->do_notify_resume:
-> do_signal & handle_signal:
-> 
->                 switch (regs->a0) {
->                 case -ERESTARTNOHAND:
->                 case -ERESTARTSYS:
->                 case -ERESTARTNOINTR:
->                         regs->a0 = regs->orig_a0;
->                         regs->epc -= 0x4;
->                         break;
-> 
-> All above are done in pt_regs and when returning to userspace, a7 will
-> be recovered by restore_all in entry.S.
+On 05/26, Greentime Hu wrote:
+>
+> @@ -882,13 +882,18 @@ static int ptrace_regset(struct task_struct *task, int req, unsigned int type,
+>  	const struct user_regset_view *view = task_user_regset_view(task);
+>  	const struct user_regset *regset = find_regset(view, type);
+>  	int regset_no;
+> +	unsigned int size;
+>
+> -	if (!regset || (kiov->iov_len % regset->size) != 0)
+> +	if (!regset)
+>  		return -EINVAL;
+>
+>  	regset_no = regset - view->regsets;
+> -	kiov->iov_len = min(kiov->iov_len,
+> -			    (__kernel_size_t) (regset->n * regset->size));
+> +	size = regset_size(task, regset);
+> +
+> +	if ((kiov->iov_len % size) != 0)
+> +		return -EINVAL;
 
-Yes, thanks for that explanation.
+Hmm. this doesn't look right.
 
-Reviewed-by: Tycho Andersen <tycho@tycho.ws>
+Before this patch we check "iov_len % regset->size", this is not the same
+as "iov_len % regset_size()".
+
+IOW, currently you can read/write, say, only the 1st register, you patch
+breaks this?
+
+Oleg.
+
 
