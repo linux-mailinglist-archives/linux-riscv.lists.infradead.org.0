@@ -2,110 +2,60 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 038B41E237C
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 16:01:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 827B81E26E9
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 18:27:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=; b=psAK1dz82EJdcd+HeuK2KTqYf
-	x2RTEbZLeqSndAX9Haxe19KkEFXr8lxkrPQ675Q6HzIDja2/SllPvr5ObPyvNXwYd7QjGOOTkcDrg
-	tWW2d7qLDiviVhoj8O5mC1iZzI0cj9XJT9s1PzHSCcTCJ1LnsQ2qGlZPExcuhYgH6WasdI5F4wWy2
-	vbOhkYFiWfG/fGf0bhqCP8d8lctgLJG+F8HtRRpb+BbtO7PhlPMED0MGLouHSMRJKAUJxndY1GsJg
-	DYj4/Gv8+gSbAweFiiHmrG42f/tyWCEwdzNGcciCIqv5wlcLUHJJ4ZmSqYOd3l9HB3l0ROrZD7JHG
-	oK1XGLQrg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=alIdGtUoUeqHQ/QveG6wv4ZRPyVxXnt1o5A5dPZ9SiM=; b=d/kK4y6ov4q/o9
+	GvWApKp5FTTNWk8jLGUH7qJYPJtHNxDA0lXt9Xk0eLrOSQsZLF2jDtopYMNlfza6ZJat3TVecee1P
+	PLGHY3sQHmEjHwe13HZ4SdtH8doDMfZk4rDx2lBJgwL89y9Mjq01bFNNTjcYDgHXxytOkC0p8p1DK
+	42S1UkNGZ4fY2NhzX8HCNQKlY7OCXxaNBfNkbiuwWKZ4SgnCJihDzy8F0nuJRgXKXv6BiJ1dwu1qW
+	irhj9Y7w0uDAvZHQBB7LdZeIJQpqHoah1X+GZxfzwZLLaSe468IEQmYvZA04OOsm/+befDK03+iFQ
+	IFcQhnHvWlAp82+Sej4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jda8w-0001p2-70; Tue, 26 May 2020 14:01:22 +0000
-Received: from merlin.infradead.org ([205.233.59.134])
+	id 1jdcPq-0006GJ-Qg; Tue, 26 May 2020 16:26:58 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jda8u-0001ov-1n
- for linux-riscv@bombadil.infradead.org; Tue, 26 May 2020 14:01:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=; b=uJSHf81edvoL3UFakWPXwvv1JU
- BUaWV9PRWHh89BivzW3JVzOp+0lyxhqfJTkqCDnCMC4XMlleAv2WSCK2ktmRJvvuETH+4EyLuxAy2
- LYr+gmx5sokTZQRdefTRoSRKTbeo9CXw5l//genzB8BHZ3Ad1yJzuFlkqweXSc5xH0wP76I2arBTr
- GZeUHI63KAsqXumhkuibPyNmzZNNWBwCtIU/Uv40lkEBoBb9GIhS64HVJjmmTP+oQ3S0198TsBPT2
- t5dXTLAFFk1+U1v0QRrS6rgN7+7/iOmpojv3pVcuc+RKg5emrXzZdpfRNu1lW7NbGbkIt3D6RguwU
- 3qMHU0uw==;
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jda8s-0001yc-RO
- for linux-riscv@lists.infradead.org; Tue, 26 May 2020 14:01:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590501634;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=;
- b=HJEiTk4YZqJMy6sdw5QQIEU5mIbJZbbq1/K4pK8wCo+X04rlMEwY5TFXdhTlXp26Jg1+7i
- dVaH2l9iaF4oCi6gDdgxpYBvHQ1MSyoPDMXwDsvWr/psZibrlvmhsUOBGLNQN4ar99i/Kq
- /WqvIsJlIKEHKSwNS83lRvMS9SQ/UWw=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590501677;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=86WQURgCqAHa0WXNLzZX28I5KUeKUOWQEKAQ4Gpwaf0=;
- b=CVDriqA7rX7EaIp6Y5Ec5HY+K6Ddrbispip9BFaLJgmmfHoPk2qvy/9K1mPkTLFFF/4n6d
- Q4VhMh+BczdZzNv1Ry3p6mKFf0u56cLIkizSPqt9T231lOQMNZ3O0JtS0datoO0w1SqyFx
- 91dHWd87qFj1pVhFxiPUuvp7gvCGZik=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-160-OvaMsk5FP-u0DBdNEz45pQ-1; Tue, 26 May 2020 10:00:32 -0400
-X-MC-Unique: OvaMsk5FP-u0DBdNEz45pQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B8357100CD14;
- Tue, 26 May 2020 14:00:30 +0000 (UTC)
-Received: from dhcp-27-174.brq.redhat.com (unknown [10.40.193.170])
- by smtp.corp.redhat.com (Postfix) with SMTP id 3210460E1C;
- Tue, 26 May 2020 14:00:29 +0000 (UTC)
-Received: by dhcp-27-174.brq.redhat.com (nbSMTP-1.00) for uid 1000
- oleg@redhat.com; Tue, 26 May 2020 16:00:30 +0200 (CEST)
-Date: Tue, 26 May 2020 16:00:28 +0200
-From: Oleg Nesterov <oleg@redhat.com>
-To: Greentime Hu <greentime.hu@sifive.com>
-Subject: Re: [RFC PATCH v4 01/13] ptrace: Use regset_size() for dynamic
- regset size.
-Message-ID: <20200526140027.GC24212@redhat.com>
-References: <cover.1590474856.git.greentime.hu@sifive.com>
- <3700190a602a6d30fcbf76e1eea667e29a65c4c9.1590474856.git.greentime.hu@sifive.com>
+ id 1jdcPn-0006FX-5m
+ for linux-riscv@lists.infradead.org; Tue, 26 May 2020 16:26:56 +0000
+X-Originating-IP: 90.112.45.105
+Received: from [192.168.1.14] (lfbn-gre-1-325-105.w90-112.abo.wanadoo.fr
+ [90.112.45.105]) (Authenticated sender: alex@ghiti.fr)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 85E5020010;
+ Tue, 26 May 2020 16:26:48 +0000 (UTC)
+Subject: Re: [PATCH 7/8] riscv: Use pgtable_l4_enabled to output mmu type in
+ cpuinfo
+To: Anup Patel <anup@brainfault.org>
+References: <20200524091008.25587-1-alex@ghiti.fr>
+ <20200524091008.25587-8-alex@ghiti.fr>
+ <CAAhSdy3JU8ae8Gx-4iNiOKbC027-Cgjc_8=BYEp1sO3pW6D5XA@mail.gmail.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <e27f85e4-14d8-e5d8-3e52-f4bc0c34d760@ghiti.fr>
+Date: Tue, 26 May 2020 12:26:48 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3700190a602a6d30fcbf76e1eea667e29a65c4c9.1590474856.git.greentime.hu@sifive.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Spam-Note: CRM114 invocation failed
-X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
- Content analysis details:   (-0.2 points)
+In-Reply-To: <CAAhSdy3JU8ae8Gx-4iNiOKbC027-Cgjc_8=BYEp1sO3pW6D5XA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: fr
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200526_092655_485826_39408D3F 
+X-CRM114-Status: GOOD (  18.60  )
+X-Spam-Score: -0.7 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [205.139.110.120 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.183.200 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [205.139.110.120 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,40 +67,147 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: guoren@linux.alibaba.com, palmerdabbelt@google.com,
- linux-kernel@vger.kernel.org, vincent.chen@sifive.com,
- paul.walmsley@sifive.com, linux-riscv@lists.infradead.org
+Cc: Palmer Dabbelt <palmerdabbelt@google.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Zong Li <zong.li@sifive.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 05/26, Greentime Hu wrote:
+Hi Anup,
+
+Le 5/25/20 à 2:21 AM, Anup Patel a écrit :
+> On Sun, May 24, 2020 at 2:47 PM Alexandre Ghiti <alex@ghiti.fr> wrote:
+>> Now that the mmu type is determined at runtime using SATP
+>> characteristic, use the global variable pgtable_l4_enabled to output
+>> mmu type of the processor through /proc/cpuinfo instead of relying on
+>> device tree infos.
+>>
+>> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+>> Reviewed-by: Anup Patel <anup@brainfault.org>
+>> Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+>> ---
+>>   arch/riscv/boot/dts/sifive/fu540-c000.dtsi |  4 ----
+>>   arch/riscv/kernel/cpu.c                    | 24 ++++++++++++----------
+>>   2 files changed, 13 insertions(+), 15 deletions(-)
+>>
+>> diff --git a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+>> index 7db861053483..6138590a2229 100644
+>> --- a/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+>> +++ b/arch/riscv/boot/dts/sifive/fu540-c000.dtsi
+>> @@ -50,7 +50,6 @@
+>>                          i-cache-size = <32768>;
+>>                          i-tlb-sets = <1>;
+>>                          i-tlb-size = <32>;
+>> -                       mmu-type = "riscv,sv39";
+>>                          reg = <1>;
+>>                          riscv,isa = "rv64imafdc";
+>>                          tlb-split;
+>> @@ -74,7 +73,6 @@
+>>                          i-cache-size = <32768>;
+>>                          i-tlb-sets = <1>;
+>>                          i-tlb-size = <32>;
+>> -                       mmu-type = "riscv,sv39";
+>>                          reg = <2>;
+>>                          riscv,isa = "rv64imafdc";
+>>                          tlb-split;
+>> @@ -98,7 +96,6 @@
+>>                          i-cache-size = <32768>;
+>>                          i-tlb-sets = <1>;
+>>                          i-tlb-size = <32>;
+>> -                       mmu-type = "riscv,sv39";
+>>                          reg = <3>;
+>>                          riscv,isa = "rv64imafdc";
+>>                          tlb-split;
+>> @@ -122,7 +119,6 @@
+>>                          i-cache-size = <32768>;
+>>                          i-tlb-sets = <1>;
+>>                          i-tlb-size = <32>;
+>> -                       mmu-type = "riscv,sv39";
+>>                          reg = <4>;
+>>                          riscv,isa = "rv64imafdc";
+>>                          tlb-split;
+> Your PATCH6 is already doing the right thing by skipping CPU DT
+> nodes that don't have "mmu-type" DT property.
 >
-> @@ -882,13 +882,18 @@ static int ptrace_regset(struct task_struct *task, int req, unsigned int type,
->  	const struct user_regset_view *view = task_user_regset_view(task);
->  	const struct user_regset *regset = find_regset(view, type);
->  	int regset_no;
-> +	unsigned int size;
+> The "mmu-type" DT property is very critical for RUNTIME M-mode
+> firmware (OpenSBI) because it tells whether a given CPU has MMU
+> (or not). This is also in agreement with the current DT bindings
+> document for RISC-V CPUs.
 >
-> -	if (!regset || (kiov->iov_len % regset->size) != 0)
-> +	if (!regset)
->  		return -EINVAL;
+> I suggest to drop the change in sifive/fu540-c000.dtsi and rest of
+> the patch is fine so my Reviewed-by still holds.
+
+
+Ok I'll do that in v2, thanks.
+
+
+Alex
+
+
+> Regards,
+> Anup
 >
->  	regset_no = regset - view->regsets;
-> -	kiov->iov_len = min(kiov->iov_len,
-> -			    (__kernel_size_t) (regset->n * regset->size));
-> +	size = regset_size(task, regset);
-> +
-> +	if ((kiov->iov_len % size) != 0)
-> +		return -EINVAL;
-
-Hmm. this doesn't look right.
-
-Before this patch we check "iov_len % regset->size", this is not the same
-as "iov_len % regset_size()".
-
-IOW, currently you can read/write, say, only the 1st register, you patch
-breaks this?
-
-Oleg.
-
+>> diff --git a/arch/riscv/kernel/cpu.c b/arch/riscv/kernel/cpu.c
+>> index 40a3c442ac5f..38a699b997a8 100644
+>> --- a/arch/riscv/kernel/cpu.c
+>> +++ b/arch/riscv/kernel/cpu.c
+>> @@ -8,6 +8,8 @@
+>>   #include <linux/of.h>
+>>   #include <asm/smp.h>
+>>
+>> +extern bool pgtable_l4_enabled;
+>> +
+>>   /*
+>>    * Returns the hart ID of the given device tree node, or -ENODEV if the node
+>>    * isn't an enabled and valid RISC-V hart node.
+>> @@ -54,18 +56,19 @@ static void print_isa(struct seq_file *f, const char *isa)
+>>          seq_puts(f, "\n");
+>>   }
+>>
+>> -static void print_mmu(struct seq_file *f, const char *mmu_type)
+>> +static void print_mmu(struct seq_file *f)
+>>   {
+>> +       char sv_type[16];
+>> +
+>>   #if defined(CONFIG_32BIT)
+>> -       if (strcmp(mmu_type, "riscv,sv32") != 0)
+>> -               return;
+>> +       strncpy(sv_type, "sv32", 5);
+>>   #elif defined(CONFIG_64BIT)
+>> -       if (strcmp(mmu_type, "riscv,sv39") != 0 &&
+>> -           strcmp(mmu_type, "riscv,sv48") != 0)
+>> -               return;
+>> +       if (pgtable_l4_enabled)
+>> +               strncpy(sv_type, "sv48", 5);
+>> +       else
+>> +               strncpy(sv_type, "sv39", 5);
+>>   #endif
+>> -
+>> -       seq_printf(f, "mmu\t\t: %s\n", mmu_type+6);
+>> +       seq_printf(f, "mmu\t\t: %s\n", sv_type);
+>>   }
+>>
+>>   static void *c_start(struct seq_file *m, loff_t *pos)
+>> @@ -90,14 +93,13 @@ static int c_show(struct seq_file *m, void *v)
+>>   {
+>>          unsigned long cpu_id = (unsigned long)v - 1;
+>>          struct device_node *node = of_get_cpu_node(cpu_id, NULL);
+>> -       const char *compat, *isa, *mmu;
+>> +       const char *compat, *isa;
+>>
+>>          seq_printf(m, "processor\t: %lu\n", cpu_id);
+>>          seq_printf(m, "hart\t\t: %lu\n", cpuid_to_hartid_map(cpu_id));
+>>          if (!of_property_read_string(node, "riscv,isa", &isa))
+>>                  print_isa(m, isa);
+>> -       if (!of_property_read_string(node, "mmu-type", &mmu))
+>> -               print_mmu(m, mmu);
+>> +       print_mmu(m);
+>>          if (!of_property_read_string(node, "compatible", &compat)
+>>              && strcmp(compat, "riscv"))
+>>                  seq_printf(m, "uarch\t\t: %s\n", compat);
+>> --
+>> 2.20.1
+>>
 
