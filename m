@@ -2,68 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 601C61E187B
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 02:30:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 628D61E1BB7
+	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 09:03:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bbaFW26aHyI1W3kenO+piVcQbffPSdv3tHMdMsAKjU4=; b=sp7WGvjBwaiXAqegOcf9oNADC
-	FCSIygh/njrRecbb6liy4stO87DrQPVQp1+fMKZbw7AEJIBKJPVH/mw7mRDSpQRuE5YpIO3fRUOte
-	+ABsQo1sgdD3ynceGcWSQGUNTvE24hFd8jrB7Cg4TiSGP29Oe9YkJqy8l4mFz29Kw3xY8mG2waiK1
-	yhXwzWF09ca9PRAY9Z9JIiolHWAbcXiV/pUCJQF6/Gu+smGo7c4Hg6B39VLJGM419PqThvRSNEJQZ
-	bm4DtxzmX5RYEypOhd/uDs7iMXsP+X8qMe3rxOMjLzGCq+BCicxWEeWdXVoRa5PudnvbP3vTeYQZm
-	WTwmMlQfg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KjFuuSKELZJU3yFdtYh4Z/EGvp9SJKWa4PnxR5+tAUc=; b=Q0tBdbyF4P4vruEvPCPch7C0D7
+	L4Q0lvA75IU+unqBHrCHBIgtFuxrFWUm2hS2OGRuzuk96iOB+np2FOEYzJbh/dK7bHI4lT03qfuOZ
+	s1DMUSdQhhU4ywtEl+cCJ+dlc7FOE7ualtqM6pq+fccABKUL5r322S/7iXzMJqGejqB1OvJl9EaCg
+	1O9mBM29+Pa+n8o+EoK9EKK5fO5AsedNKxy5CM/wHeHwFIMLMJ4HAdjmPvi/JGzMPe57vjLd598dC
+	G3vN8JeZPQu8Ct+QpTwR8yyqu8aGIAlEFsdjeFyRyqZ0UboPcvZDXMFA5Is/aXJ/l3HExym/zO+mD
+	25clISNw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdNTr-0005VG-AT; Tue, 26 May 2020 00:30:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jdTc4-0007NH-Pd; Tue, 26 May 2020 07:03:00 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdNTn-0004U3-0A
- for linux-riscv@lists.infradead.org; Tue, 26 May 2020 00:30:04 +0000
-Received: from mail-lj1-f173.google.com (mail-lj1-f173.google.com
- [209.85.208.173])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1F1D920657
- for <linux-riscv@lists.infradead.org>; Tue, 26 May 2020 00:29:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1590452998;
- bh=jiUY9V1Bkztcy/8t94YHlJD2RQ8+uVmK8V+BpsmrT84=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=BW5Enqv4WR4JyXZJdRRGLYXdZr3N6KfpHYCM4QRjtAOoLAvkGODYbq8m7cSUpYr/p
- wz3aBLKG5OYqZsQtZL6H+G+OReE+9bkwqnvO2bg72f53fNq45Wc1OryZUwmiPv17DH
- eOy4QFeACjU4/YCPtfDuuTM3YAJZs89XfudA510U=
-Received: by mail-lj1-f173.google.com with SMTP id c11so20270711ljn.2
- for <linux-riscv@lists.infradead.org>; Mon, 25 May 2020 17:29:58 -0700 (PDT)
-X-Gm-Message-State: AOAM531QpJRGx3ZIDAvJ+FuPH+PSK96KiYw+S3JBrhaBydn9DKi3Sxo4
- ku/yHPW2pp9Cdi+a33iABnajFyGjNh/rkOxL9G0=
-X-Google-Smtp-Source: ABdhPJzFPVX/ZQf6wS3uG4u1AQO/qZu5mRLPhUvY8Gw1ZniByoGz0/NOLxDK7AXmEvwSyD7D/23iC3BzwLGiaZ/F7/E=
-X-Received: by 2002:a2e:160e:: with SMTP id w14mr12316006ljd.66.1590452996282; 
- Mon, 25 May 2020 17:29:56 -0700 (PDT)
+ id 1jdTbv-0007HM-98
+ for linux-riscv@lists.infradead.org; Tue, 26 May 2020 07:02:57 +0000
+Received: by mail-pl1-x643.google.com with SMTP id bh7so1366253plb.11
+ for <linux-riscv@lists.infradead.org>; Tue, 26 May 2020 00:02:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KjFuuSKELZJU3yFdtYh4Z/EGvp9SJKWa4PnxR5+tAUc=;
+ b=aXUx6bNmgfjjt0m0x/gBRk4kkDjzjjPdsHKRQfw/za19fhkOinm23rO4fKimciBUi9
+ iXdqSgO8FBIVRvy6mUxWfRlbKoJ5zpK3X1UxyjnBCbYS4XNt1v49IlRABE5kTdQMJIDO
+ RlCKJbxtewhJfsBd4PkQpOGuQj1sq4VHIoBC6EtudpG1glB4uFWBks/omfItYtK8Da+O
+ sUVk2pHGvZYA59xVDcNpIoQV8ahLz0gRGbt5OhXxp3LWcDWbH6OrL7uFGMOMp6c8c0dj
+ OYQ1vTNeQf+RvRx4InsrpRTLy3Aics6yqrFgzIIrdvsyeiY6zBosjN38mmrAIDYFrpqh
+ WpwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KjFuuSKELZJU3yFdtYh4Z/EGvp9SJKWa4PnxR5+tAUc=;
+ b=h4jv1QltAcUsBT4hR1aiG0dUYdFdeIHLH5vZchYQDFTMJ5k84v3YuPCetioK+sIy6S
+ KE8dncXByIMR5fAiIABqUHqf9zXIey2sjDC17n7xjWoKuR9RSw4yiJW8gfvTpk7XbT9Q
+ pz+4HUPRiORuhj8AN2RXvKI7pjAxW+zv8dmTG2aRNX8UQoyysw8HjJcSk/ZWmgh1j/u4
+ mApMkkrl1T+37fhitepTZnN49EKilS6cyzdSbYJW+zzwaQGXAxDULPpRWCsJMsvVVl49
+ a1q90nWKhi4AbFXi+7K0cI2QqjjKDAXdQ6wXxV4+8491BBxS3VkjIuYFRLK4qfpr4XS6
+ s72w==
+X-Gm-Message-State: AOAM530l0kFVYK5W+1ymZtx2Drb2EUw7IeW5SDb1YlHHgGwRvgvwrYiz
+ jSAvKFL97u+IUbQQL4mcn4oG/g==
+X-Google-Smtp-Source: ABdhPJzP/P48fy25UjHW+3pSJA97CRI7sDm1P9f8kSFHvii5IH14tVS7IKNrGUT9hLhkyiUcrf4tCQ==
+X-Received: by 2002:a17:902:d689:: with SMTP id
+ v9mr30690110ply.283.1590476569960; 
+ Tue, 26 May 2020 00:02:49 -0700 (PDT)
+Received: from hsinchu02.internal.sifive.com
+ (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
+ by smtp.gmail.com with ESMTPSA id q34sm15167431pja.22.2020.05.26.00.02.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 May 2020 00:02:49 -0700 (PDT)
+From: Greentime Hu <greentime.hu@sifive.com>
+To: greentime.hu@sifive.com, guoren@linux.alibaba.com, vincent.chen@sifive.com,
+ paul.walmsley@sifive.com, palmerdabbelt@google.com,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
+ oleg@redhat.com
+Subject: [RFC PATCH v4 00/13] riscv: Add vector ISA support
+Date: Tue, 26 May 2020 15:02:29 +0800
+Message-Id: <cover.1590474856.git.greentime.hu@sifive.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <1590416306-66453-1-git-send-email-guoren@kernel.org>
- <20200525143648.GM2605652@cisco>
-In-Reply-To: <20200525143648.GM2605652@cisco>
-From: Guo Ren <guoren@kernel.org>
-Date: Tue, 26 May 2020 08:29:45 +0800
-X-Gmail-Original-Message-ID: <CAJF2gTS4gM39KWuksRRT9ONPhbhYuN9r1oOP_qRT8KvDga4vyA@mail.gmail.com>
-Message-ID: <CAJF2gTS4gM39KWuksRRT9ONPhbhYuN9r1oOP_qRT8KvDga4vyA@mail.gmail.com>
-Subject: Re: [PATCH] riscv: Remove unnecessary path for syscall_trace
-To: Tycho Andersen <tycho@tycho.ws>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200525_173003_072706_C8F20AA2 
-X-CRM114-Status: GOOD (  10.86  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200526_000251_395829_E8202A15 
+X-CRM114-Status: GOOD (  15.00  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -73,7 +88,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,57 +99,111 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Guo Ren <guoren@linux.alibaba.com>, keescook@chromium.org,
- Anup Patel <anup@brainfault.org>, palmerdabbelt@google.com,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Tycho,
+This patchset is based on Guo Ren's v3 patchset to add dynamic vlen vector
+support for all different kinds of vector length in riscv. To make this
+happened we defined a new __riscv_v_state in sigcontext to save the vector
+related registers. The datap pointer will be allocated dynamically in
+kernel space and it will be put right after the __riscv_v_state data
+structure to save all the vector registers in signal handler stack for user
+space. So does the implementation in ptrace, they will be saved in ubuf
+in which we put the __riscv_v_state data structure and datap pointer right
+after it for vector registers. This patchset also fixes several bugs for
+vector lazy save/restore and vtype not saving issue. It also adds new CSR
+support for vector based on the 0.9 vector spec and clean up some unused
+macros.
 
-On Mon, May 25, 2020 at 10:36 PM Tycho Andersen <tycho@tycho.ws> wrote:
->
-> On Mon, May 25, 2020 at 02:18:26PM +0000, guoren@kernel.org wrote:
-> > From: Guo Ren <guoren@linux.alibaba.com>
-> >
-> > Obviously, there is no need to recover a0-a7 in reject path.
-> >
-> > Previous modification is from commit af33d243 by Tycho, to
-> > fixup seccomp reject syscall code path.
->
-> Doesn't this suffer from the same problem, though? a7 is clobbered, so
-> the -ERESTARTSYS behavior won't work?
+This patchset is rebased to v5.7-rc4 and it is tested by running several
+vector programs simultaneously. It also can get the correct ucontext_t in
+signal handler and restore correct context after sigreturn. It is also
+tested with ptrace() syscall to use PTRACE_GETREGSET/PTRACE_SETREGSET to
+get/set the vector registers. I have tested vlen=128 and vlen=256 cases in
+virt machine of qemu-system-riscv32 and qemu-system-riscv64 provided by
+Zhiwei Lui.
 
-Look, the patch only affects the path of ret_from_syscall_rejected,
-and there are two possible paths:
-1. ret_from_syscall_rejected->handle_syscall_trace_exit->ret_from_exception
-2. ret_from_syscall_rejected->ret_from_exception
+Since the vector spec is under developing, there might still need some
+changes. For example the vle.v/vse.v instructions will be replaced with
+proper instructions. The reason that I don't replace the instruction in
+this patchset is because that the Qemu doesn't fully support 0.9 spec yet.
+I have no simulator to test. We also like to discuss the default setting of
+MINSIGSTKSZ and SIGSTKSZ. They might also need to set a proper number. They
+are 2048 and 8096 now. Since the stack in signal will be reserved for
+ucontext and the vector registers might be larger and larger someday, these
+two macros will need to be defined as a proper value or maybe we should
+provide a better mechanism to provide user to get a better default signal
+stack size.
 
-All the above skip the check_syscall_nr and ignore the current a7, in
-the C function they use the pt_regs in the stack to get proper reg's
-value.
 
-For the -ERESTARTSYS, we only process it in:
-ret_from_exception->resume_userspace->work_notifysig->do_notify_resume:
-do_signal & handle_signal:
+ [1] https://github.com/romanheros/qemu/tree/linux-vector-dev
+ [2] https://blog.linuxplumbersconf.org/2017/ocw/sessions/4671.html
+ [3] https://github.com/riscv/riscv-v-spec/blob/master/v-spec.adoc
 
-                switch (regs->a0) {
-                case -ERESTARTNOHAND:
-                case -ERESTARTSYS:
-                case -ERESTARTNOINTR:
-                        regs->a0 = regs->orig_a0;
-                        regs->epc -= 0x4;
-                        break;
+---
+Changelog V4
+ - Support dynamic vlen
+ - Fix bugs: lazy save/resotre, not saving vtype
+ - Update VS bit offset based on latest vector spec
+ - Add new vector csr based on latest vector spec
+ - Code refine and removed unused macros
 
-All above are done in pt_regs and when returning to userspace, a7 will
-be recovered by restore_all in entry.S.
+Changelog V3
+ - Rebase linux-5.6-rc3 and tested with qemu
+ - Seperate patches with Anup's advice
+ - Give out a ABI puzzle with unlimited vlen
 
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog V2
+ - Fixup typo "vecotr, fstate_save->vstate_save".
+ - Fixup wrong saved registers' length in vector.S.
+ - Seperate unrelated patches from this one.
+
+Greentime Hu (1):
+  ptrace: Use regset_size() for dynamic regset size.
+
+Guo Ren (11):
+  riscv: Separate patch for cflags and aflags
+  riscv: Rename __switch_to_aux -> fpu
+  riscv: Extending cpufeature.c to detect V-extension
+  riscv: Add new csr defines related to vector extension
+  riscv: Add vector feature to compile
+  riscv: Add has_vector/riscv_vsize to save vector features.
+  riscv: Reset vector register
+  riscv: Add vector struct and assembler definitions
+  riscv: Add task switch support for vector
+  riscv: Add ptrace vector support
+  riscv: Add sigcontext save/restore for vector
+
+Vincent Chen (1):
+  riscv: signal: Report signal frame size to userspace via auxv
+
+ arch/riscv/Kconfig                       |   9 ++
+ arch/riscv/Makefile                      |  19 ++--
+ arch/riscv/include/asm/csr.h             |  16 +++-
+ arch/riscv/include/asm/elf.h             |  17 +++-
+ arch/riscv/include/asm/processor.h       |   3 +
+ arch/riscv/include/asm/switch_to.h       |  77 ++++++++++++++-
+ arch/riscv/include/uapi/asm/auxvec.h     |   2 +
+ arch/riscv/include/uapi/asm/elf.h        |   1 +
+ arch/riscv/include/uapi/asm/hwcap.h      |   1 +
+ arch/riscv/include/uapi/asm/ptrace.h     |  13 +++
+ arch/riscv/include/uapi/asm/sigcontext.h |   2 +
+ arch/riscv/kernel/Makefile               |   1 +
+ arch/riscv/kernel/asm-offsets.c          |   8 ++
+ arch/riscv/kernel/cpufeature.c           |  15 ++-
+ arch/riscv/kernel/entry.S                |   2 +-
+ arch/riscv/kernel/head.S                 |  49 +++++++++-
+ arch/riscv/kernel/process.c              |  40 ++++++++
+ arch/riscv/kernel/ptrace.c               | 114 +++++++++++++++++++++++
+ arch/riscv/kernel/setup.c                |   5 +
+ arch/riscv/kernel/signal.c               | 108 ++++++++++++++++++++-
+ arch/riscv/kernel/vector.S               |  84 +++++++++++++++++
+ include/uapi/linux/elf.h                 |   1 +
+ kernel/ptrace.c                          |  11 ++-
+ 23 files changed, 573 insertions(+), 25 deletions(-)
+ create mode 100644 arch/riscv/kernel/vector.S
+
 -- 
-Best Regards
- Guo Ren
+2.26.2
 
-ML: https://lore.kernel.org/linux-csky/
 
