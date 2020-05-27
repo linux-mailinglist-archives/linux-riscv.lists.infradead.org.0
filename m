@@ -2,88 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EBC31E3950
-	for <lists+linux-riscv@lfdr.de>; Wed, 27 May 2020 08:34:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E36611E39C4
+	for <lists+linux-riscv@lfdr.de>; Wed, 27 May 2020 09:03:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jx9SX41huVcDZiGVXn4KLHGf8p6glxvggfevEnjr7ck=; b=q0yy6MtYad9e9w
-	f0FyZLjW7YPdA6Eb8ci7VufRshhmqWhjxekbC4dgGAWZyxrWLmw2xQVK3Kl6LI6R5gIs/KvlGBmVv
-	OHP88pz6/ecbsEHL2ZjTy2O+8mbU6OpPxkjncmg4JriAPztZNLxJq+9mH9f13BMEodawHmhWC9gJr
-	hKCDkJjPWXtcnDn8vOQAQT4SO5e/VbS5rysY9PLPB9lbxN138jBLrcI49y/DicgG7LPxEeZ96tGUp
-	/IT3r3H8jfJorywbjKSse0vMHCjRgshOgn6ztV9d5t7Nc1oIh1IlyovJ6pUeb/r5FFr0jCAgvR2d3
-	n6K6sn4pNnJDFuTBVfVA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=UmrgkNrS7YJyoX//CVVX8i/eCGz9CaA9GDfJeRj6hok=; b=Mdyk/KXrOY5V09+VUyL/313st
+	VSrl2YrBv3NwFUrq2sf0T2SJKdmyNXEc+z2/dSAS+2yvw7Po7hw5ADDZJaWb3tCqPtUAtHIH3CmgY
+	7XTGhHV1c1wdUIl0EkLJlqrzb8qCE4eFrpI4bShNUtce08tcaUELQL1yHxCqZ9EXeSbAl+kfRB+CZ
+	ZVlPwlwk20wpAbWwsnhRyqFFIe3c6ycxVdQZbV2y5bFlyyWGqxgYAd4hF5+3T8r+SsnUroByqkrh4
+	fhZeKnor/YZjTt6bs2vv8hzTIo31qRyh44xs6FH0cqkw8u1N5yVNVerCyTsoiNSb5PhRp1NLUr127
+	2PuwrGyjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdpdt-0000KG-EY; Wed, 27 May 2020 06:34:21 +0000
-Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842])
+	id 1jdq5j-00037J-TC; Wed, 27 May 2020 07:03:07 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdpdq-0000JO-96
- for linux-riscv@lists.infradead.org; Wed, 27 May 2020 06:34:19 +0000
-Received: by mail-qt1-x842.google.com with SMTP id a23so18375991qto.1
- for <linux-riscv@lists.infradead.org>; Tue, 26 May 2020 23:34:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Jx9SX41huVcDZiGVXn4KLHGf8p6glxvggfevEnjr7ck=;
- b=LxZUYmW+vGsrD9WsnMdwwpO+3z98b/3TylSSaEs2WO6+8sBBPUIWJT8SK1UEMyHf3/
- J5VkdG5WcPeWLB+M0ZXGmPcsZ1/JMDVuA6kPMt++lkD/iIebit8/NJ6QfVOHsNEp7AuX
- JM0xZMAQNOu0EW1yv6FI16qk6gXgeDYh3XCCbzNECS22cdxucfUOTdKQouAcMhMA68VB
- 4OACz8FmZgoTIf/B0wPdeoeMIbnb5Y6W/O83pCut5it/xxCy3V+a86SPYYYJN8ysiS1l
- 3IjcFnhCo6ZmFj+UVtYupDNvGv9AhmtaSpOYs2d9EtVdxUJvxe8pJ67br84Svq3/ahUB
- fQrQ==
+ id 1jdq5g-00036o-88; Wed, 27 May 2020 07:03:05 +0000
+Received: by mail-oi1-f193.google.com with SMTP id j145so20931957oib.5;
+ Wed, 27 May 2020 00:03:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Jx9SX41huVcDZiGVXn4KLHGf8p6glxvggfevEnjr7ck=;
- b=iXAryOVpzYt1bOz3jUXLWJ0i4c0N4bW8OzS+BjpTdL1449aOhZmGumfUIVbVfVOyqC
- 2Rd3dt0ZbBAMJdVp3fAutGPIEYKIdcuFqZtkUX6G1SS8TU09zBTh4wzohePP1nJN0ZC7
- 0OtEQPVOM39aMXBoqQuQ3VtcOZXt0LLpOXqwZyEbCYAWIJRHlEAyI5Lfu5+wyuw8abdg
- mkchBqfFFoUALIJqn1XYcVBjRL/UXxkseXYs907BQA6wt6XTw2A/qGXV9pTtmrqGvcuk
- lUY550hVpLUA2rFrgHZdNfbMxnYe2YvCDlQV0JBKXabH1tIvyHeoB4lte4x0NKcpW0qr
- /EXQ==
-X-Gm-Message-State: AOAM532rC95s0JowRRHci558veoOaXa9r/CG8KfNCa0+XfBEVaz+hz0K
- jPMofAu1nPGNiBF04qqFBz3pgOvMCQyC0fugTBoWgA==
-X-Google-Smtp-Source: ABdhPJygUAGiWPIVOy2S3rSccVsC239CPZ1BWXgy+//5Yp1P/kg1zrolxguOEZcIkdtH+ylTD1po5rTJXylKAHC13nc=
-X-Received: by 2002:ac8:31f3:: with SMTP id i48mr2696778qte.128.1590561256702; 
- Tue, 26 May 2020 23:34:16 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=UmrgkNrS7YJyoX//CVVX8i/eCGz9CaA9GDfJeRj6hok=;
+ b=YGQW+jtSlyfD12rn3ejmQBn4B4Qm2W/IixEOH9fkscSemUeCSazCA03iFXHgz77y2i
+ xlm/rhznCGzo9SyRtAqAz/bBp8kRPgkcRfVBSPomdw1tEROmx4+9aQJ09Jml3hiOsY1A
+ /5QxI7iMiM3RGAEi7DtjkBvkNBhasbOtWpmtWx4rvbpb3kAHK3cNEivNZKaZodZKPXiA
+ ek4BiCdagtpg18aXajhq5ioPoEjR/rj68wcjK/HT2UAdsqcFi6DZyOWWF08CYYgbnfeF
+ r4ouMAKBX0jVkNtyxmi/miivF1FP5uiEHzxjH9heiNgqkXWuGu+S7cDnSzaLVTA/4rXa
+ yVHg==
+X-Gm-Message-State: AOAM530ZAEARIur0LjbexSg4WNby3YcuGrUWIABzYipu5aVeIa2A2e3B
+ +q2K1n+cVgaOh1XVKRl/7UlVokXreuQwMzp+mbk=
+X-Google-Smtp-Source: ABdhPJyJItgq7CbQXJlF6MFLLk/+bu/fSz/XUZ+gwTEqMYOT9P6OwO82+92+P3alNyNfXtW65E6GNWlSoFsc0hwoXsQ=
+X-Received: by 2002:a05:6808:1:: with SMTP id u1mr1778697oic.54.1590562983010; 
+ Wed, 27 May 2020 00:03:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1590474856.git.greentime.hu@sifive.com>
- <3700190a602a6d30fcbf76e1eea667e29a65c4c9.1590474856.git.greentime.hu@sifive.com>
- <20200526140027.GC24212@redhat.com>
-In-Reply-To: <20200526140027.GC24212@redhat.com>
-From: Greentime Hu <greentime.hu@sifive.com>
-Date: Wed, 27 May 2020 14:34:05 +0800
-Message-ID: <CAHCEehK7BnWUhjOAynCLP6puRo8EguMvf=N8iG5UMQmaD8ekCQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v4 01/13] ptrace: Use regset_size() for dynamic regset
- size.
-To: Oleg Nesterov <oleg@redhat.com>
+References: <20200515143646.3857579-7-hch@lst.de>
+ <20200527043426.3242439-1-natechancellor@gmail.com>
+In-Reply-To: <20200527043426.3242439-1-natechancellor@gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 27 May 2020 09:02:51 +0200
+Message-ID: <CAMuHMdVSduTOi5bUgF9sLQdGADwyL1+qALWsKgin1TeOLGhAKQ@mail.gmail.com>
+Subject: Re: [PATCH] media: omap3isp: Shuffle cacheflush.h and include mm.h
+To: Nathan Chancellor <natechancellor@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_233418_354089_046378F5 
-X-CRM114-Status: GOOD (  10.47  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200527_000304_288651_07AF27E7 
+X-CRM114-Status: GOOD (  19.87  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:842 listed in]
- [list.dnswl.org]
+ no trust [209.85.167.193 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [geert.uytterhoeven[at]gmail.com]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.193 listed in wl.mailspike.net]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,56 +81,118 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Guo Ren <guoren@linux.alibaba.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>,
+Cc: "linux-ia64@vger.kernel.org" <linux-ia64@vger.kernel.org>,
+ Linux-sh list <linux-sh@vger.kernel.org>, Roman Zippel <zippel@linux-m68k.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Vincent Chen <vincent.chen@sifive.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+ Linux MM <linux-mm@kvack.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ sparclinux <sparclinux@vger.kernel.org>, linux-riscv@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>, Linux-Arch <linux-arch@vger.kernel.org>,
+ linux-c6x-dev@linux-c6x.org,
+ "open list:QUALCOMM HEXAGON..." <linux-hexagon@vger.kernel.org>,
+ the arch/x86 maintainers <x86@kernel.org>,
+ "open list:TENSILICA XTENSA PORT \(xtensa\)" <linux-xtensa@linux-xtensa.org>,
+ Arnd Bergmann <arnd@arndb.de>, alpha <linux-alpha@vger.kernel.org>,
+ linux-um <linux-um@lists.infradead.org>,
+ linux-m68k <linux-m68k@lists.linux-m68k.org>,
+ Openrisc <openrisc@lists.librecores.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Michal Simek <monstr@monstr.eu>,
+ "open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>,
+ Jessica Yu <jeyu@kernel.org>, Linux FS Devel <linux-fsdevel@vger.kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Oleg Nesterov <oleg@redhat.com> =E6=96=BC 2020=E5=B9=B45=E6=9C=8826=E6=97=
-=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=8810:00=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> On 05/26, Greentime Hu wrote:
-> >
-> > @@ -882,13 +882,18 @@ static int ptrace_regset(struct task_struct *task=
-, int req, unsigned int type,
-> >       const struct user_regset_view *view =3D task_user_regset_view(tas=
-k);
-> >       const struct user_regset *regset =3D find_regset(view, type);
-> >       int regset_no;
-> > +     unsigned int size;
-> >
-> > -     if (!regset || (kiov->iov_len % regset->size) !=3D 0)
-> > +     if (!regset)
-> >               return -EINVAL;
-> >
-> >       regset_no =3D regset - view->regsets;
-> > -     kiov->iov_len =3D min(kiov->iov_len,
-> > -                         (__kernel_size_t) (regset->n * regset->size))=
-;
-> > +     size =3D regset_size(task, regset);
-> > +
-> > +     if ((kiov->iov_len % size) !=3D 0)
-> > +             return -EINVAL;
->
-> Hmm. this doesn't look right.
->
-> Before this patch we check "iov_len % regset->size", this is not the same
-> as "iov_len % regset_size()".
->
-> IOW, currently you can read/write, say, only the 1st register, you patch
-> breaks this?
->
+Hi Nathan,
 
-Hi Oleg,
+CC Laurent
 
-Thank you. I misunderstood the meaning of regset->size
-It seems I only needs to update this line, right?
-- kiov->iov_len =3D min(kiov->iov_len,  (__kernel_size_t) (regset->n *
-regset->size));
-+ kiov->iov_len =3D min(kiov->iov_len,  (__kernel_size_t)
-regset_size(task, regset));
+On Wed, May 27, 2020 at 6:37 AM Nathan Chancellor
+<natechancellor@gmail.com> wrote:
+> After mm.h was removed from the asm-generic version of cacheflush.h,
+> s390 allyesconfig shows several warnings of the following nature:
+>
+> In file included from ./arch/s390/include/generated/asm/cacheflush.h:1,
+>                  from drivers/media/platform/omap3isp/isp.c:42:
+> ./include/asm-generic/cacheflush.h:16:42: warning: 'struct mm_struct'
+> declared inside parameter list will not be visible outside of this
+> definition or declaration
+>
+> cacheflush.h does not include mm.h nor does it include any forward
+> declaration of these structures hence the warning. To avoid this,
+> include mm.h explicitly in this file and shuffle cacheflush.h below it.
+>
+> Fixes: 19c0054597a0 ("asm-generic: don't include <linux/mm.h> in cacheflush.h")
+> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+
+Thanks for your patch!
+
+> I am aware the fixes tag is kind of irrelevant because that SHA will
+> change in the next linux-next revision and this will probably get folded
+> into the original patch anyways but still.
+>
+> The other solution would be to add forward declarations of these structs
+> to the top of cacheflush.h, I just chose to do what Christoph did in the
+> original patch. I am happy to do that instead if you all feel that is
+> better.
+
+That actually looks like a better solution to me, as it would address the
+problem for all users.
+
+>  drivers/media/platform/omap3isp/isp.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/media/platform/omap3isp/isp.c b/drivers/media/platform/omap3isp/isp.c
+> index a4ee6b86663e..54106a768e54 100644
+> --- a/drivers/media/platform/omap3isp/isp.c
+> +++ b/drivers/media/platform/omap3isp/isp.c
+> @@ -39,8 +39,6 @@
+>   *     Troy Laramy <t-laramy@ti.com>
+>   */
+>
+> -#include <asm/cacheflush.h>
+> -
+>  #include <linux/clk.h>
+>  #include <linux/clkdev.h>
+>  #include <linux/delay.h>
+> @@ -49,6 +47,7 @@
+>  #include <linux/i2c.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/mfd/syscon.h>
+> +#include <linux/mm.h>
+>  #include <linux/module.h>
+>  #include <linux/omap-iommu.h>
+>  #include <linux/platform_device.h>
+> @@ -58,6 +57,8 @@
+>  #include <linux/sched.h>
+>  #include <linux/vmalloc.h>
+>
+> +#include <asm/cacheflush.h>
+> +
+>  #ifdef CONFIG_ARM_DMA_USE_IOMMU
+>  #include <asm/dma-iommu.h>
+>  #endif
+
+Why does this file need <asm/cacheflush.h> at all?
+It doesn't call any of the flush_*() functions, and seems to compile fine
+without (on arm32).
+
+Perhaps it was included at the top intentionally, to override the definitions
+of copy_{to,from}_user_page()? Fortunately that doesn't seem to be the
+case, from a quick look at the assembler output.
+
+So let's just remove the #include instead?
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
