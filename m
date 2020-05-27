@@ -2,88 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D67731E2ECA
-	for <lists+linux-riscv@lfdr.de>; Tue, 26 May 2020 21:31:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C3751E3410
+	for <lists+linux-riscv@lfdr.de>; Wed, 27 May 2020 02:32:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
 	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=YFRI8Pzmi8Hkgh9xlFXYHyu3aYx5I7yE+6THkxrPB8I=; b=b6psHwN8kfAQWk
-	pUInDoMt41eDvgfBGGI30qAxMWxYF29NOi78irVl7l8b7VZLSh7HoMtexBsvlTqdfoe6k+U9qTNqQ
-	kl320VeqbOrje4MOpQfR+C3e5tQmzpTo5Q0pLOUSjgXnhByQIQA7mKsY0lBxS2RXKgF5+87KJCYis
-	NpDbRBYoB4OjFpxgXGyA5MrGpDEGgoC+gZBSpk8uEKrbbrZbNlEGbdzDFAPcAY8QzqiM7iF1JaTxN
-	JSs0Wu8LWNl+qDIRF7Wk3PshRel2cahULqXVBU7fpxCsHYKxgaErBrp/NCHFSqEt4MmuetTqABM3v
-	7CpRKanW9hWtfbGm/9Qg==;
+	List-Owner; bh=b3E7kBOAM2ew0xZ38kPv10y9VtHtStBNAPoFOCwdwzA=; b=MML9/d1sPzwimE
+	pdDA9DGZmO1mz5xqtKodMlKlG1bYAx4qqodUN++AY4y+bJZWXp4BscnNQlI4+JheuEI0hfUsQrFLf
+	7ES4kZ5XeWxgpfRjUlwqjgQqTPAN2iywNz+cv3SOshTelnogLnIFiRr1VBZGrJ+P49SsVr04d9OUT
+	GGpTJcvStun0lkrEyiM8j3FqceYzGo4p6WG5No/SzlZ8KVkQqoFwpX95+HMlqGSM2ae5FUYoItaIx
+	6aIpny2yRpHSWUYgcix/sRufiKPTwmFiA4O/nQMAB6uTQMgbVjjP026Y6rsjlOu6HN1SjZUSQ8RAn
+	fb997p6pDr+ni09ffDkQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdfIk-0000Lu-Fr; Tue, 26 May 2020 19:31:50 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1jdjzo-0000ZU-6a; Wed, 27 May 2020 00:32:36 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdfIg-0000Kl-3E
- for linux-riscv@lists.infradead.org; Tue, 26 May 2020 19:31:48 +0000
-Received: by mail-pg1-x541.google.com with SMTP id r10so10522900pgv.8
- for <linux-riscv@lists.infradead.org>; Tue, 26 May 2020 12:31:45 -0700 (PDT)
+ id 1jdjzk-0000ZA-Cf
+ for linux-riscv@lists.infradead.org; Wed, 27 May 2020 00:32:34 +0000
+Received: by mail-pg1-x542.google.com with SMTP id w20so5863404pga.6
+ for <linux-riscv@lists.infradead.org>; Tue, 26 May 2020 17:32:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
  h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
  :content-transfer-encoding;
- bh=YFRI8Pzmi8Hkgh9xlFXYHyu3aYx5I7yE+6THkxrPB8I=;
- b=vS7fMYrrAgg3oUBGa3cYcSiEpyRDaWgj11jtVR7CjRp4pnKrHNU7NTOnemnYkB25eH
- 2vlyjn5eK/YrvhhtNTGrdGOtMzQtXOFGCeDNsTVjIdts8nhNoF//GK8Uk4zkQJZ3l/FE
- jwjFlTFdVaxtBWbXt1VQcFnYhGZYrxybxa3sysnJVEs1ztOhd8JnIvTA25P7TbsI2Urk
- Vst1Z2KUJ2TwNHGQlj2QR6AioGdlYUileOiWYqvlKJrm5FllyzZseAWzHHGcTlC8jMjt
- oASNMVbCiQkQ5RvIvbvkOBTKbyGva0jrx6L7Rs0VKJ2ljfP7VVb67hqEaZdQKNSYIwRi
- 6rlQ==
+ bh=b3E7kBOAM2ew0xZ38kPv10y9VtHtStBNAPoFOCwdwzA=;
+ b=sIAKCvc0u5PTCAIepNUBqhcRsAcLBfmDxstjdS7VwkNKBZmUZ/E/X+L4tZTb4qX4xm
+ 3Z5lRnZk7EVb9clRn8reNvvO0h1/HVu3xYL7LIMe37sTYQcVm3s0oCcOz2Q79T3f6iQ7
+ bA/CUUmuwqKc58s6BnXfGlwXQu4ABI6KYefld9YLsaL+xj0KvVHAX58vlT0XSV3t1FoB
+ mrNOy3QSZjkJP7SoFA5FToBJPK8dsa/xNpI/BCcGlfaQcs2yUt6PQ/oLDCSOI6KOnoT8
+ n8SQ16PWLOqtOTGi/h4fT1zexP+hvWlItmdC31or1jVbQhS8EJaVW5Ez4NYm/G8eGPxU
+ Fs1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
  :mime-version:content-transfer-encoding;
- bh=YFRI8Pzmi8Hkgh9xlFXYHyu3aYx5I7yE+6THkxrPB8I=;
- b=L3i++BYp4jCKHAOCY+cwXhX6yR/G0LmSqU0BIMaCZMkANG6ksqV/lfYyqeNnMj6UGg
- APu4mL5GoL4KNpOkK+obc03dNFhAZ9j2QyYvNS+xqB4kC5kPEUjLoWSfhx1p9ttRJqgH
- yN9XMQOmecD3/av0JAWyICiVdR1OStKh6xQOaJunDUboDZGROcec6T1c6BhEmSsWabJ2
- 6hARbBEVkwD+l3cjo9USl0xoca2Lm7BRyXE8rU+fiRgBra8TmdkjyA0FKMXvLNs5W9WC
- YMbRynw0c64W0ngAplM5jJa7pQNhRXg9JVhMtVBH2noyvo6irJtJq6G6eGuo8lDyicRW
- 4gWg==
-X-Gm-Message-State: AOAM531FSIHSaDpe/m48ur5WZv6vEKPRK8laGb9CG56mXC9MA+6XkrKu
- XtE1v+RLXMRs9snj2MdVkkDhhw==
-X-Google-Smtp-Source: ABdhPJx7PaDMUCSP3dWG8db1wbzMCLv5XsRADqttAo+C1oTetQidFR58rZotM4lHGR9W7RN7Be9DSA==
-X-Received: by 2002:a63:de06:: with SMTP id f6mr475817pgg.238.1590521504497;
- Tue, 26 May 2020 12:31:44 -0700 (PDT)
+ bh=b3E7kBOAM2ew0xZ38kPv10y9VtHtStBNAPoFOCwdwzA=;
+ b=UUU/tkqjHEzrWiOtWiwP+urETc70xmMX9PEEqnydfzQzaapdsqF+OYeDovpksvqEQC
+ yzOgHTXjGjaP76A8GEJzN/qxdMTJYN7OG4sXDRyDVcawKvtGPL55T9O2Re0XINvQp4o/
+ uhvLMEKiKZ1WxZwX5Xpy2F7jU4mE7Rhkt6faiw31Uk7NUu88YI/CGcO7oAEJE4OXt8wC
+ MfCEjK38G0/R+Wi5feRqtuQjkR+iD27Xwf7IkXY2Ip3LxBe54HxE1q3q/UlTsNhrBJEb
+ iDAHGUfPWurIG9LI1Mvs+QDXSSgb6oy5KmjG3eEPYHpLKNA5asqA+BmbEP8hmiUA/KXI
+ u7vg==
+X-Gm-Message-State: AOAM532LVLi1HfayS9yeDLDJBPhdUQKQvNJ4zXJ/stZYJ3Uh1tY32wEa
+ StwaM6I62uYHmApCRVYoc4wnVA==
+X-Google-Smtp-Source: ABdhPJyLyZQqJTK/aWjlOUiPRd4F92ADMhZZVfoxKIVjzzI0ER808j2pZAQdP72+g4iGhVujHr1P9g==
+X-Received: by 2002:a63:5763:: with SMTP id h35mr1353749pgm.98.1590539551005; 
+ Tue, 26 May 2020 17:32:31 -0700 (PDT)
 Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
  [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id d18sm238566pjv.34.2020.05.26.12.31.43
+ by smtp.gmail.com with ESMTPSA id b23sm616219pgs.33.2020.05.26.17.32.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2020 12:31:43 -0700 (PDT)
-Date: Tue, 26 May 2020 12:31:43 -0700 (PDT)
-X-Google-Original-Date: Tue, 26 May 2020 12:31:41 PDT (-0700)
-Subject: Re: [PATCH 1/1] riscv: sort select statements alphanumerically
-In-Reply-To: <0609f8f0c0c7182fda08fc395161ec11309c63fb.1589859647.git.zong.li@sifive.com>
+ Tue, 26 May 2020 17:32:30 -0700 (PDT)
+Date: Tue, 26 May 2020 17:32:30 -0700 (PDT)
+X-Google-Original-Date: Tue, 26 May 2020 17:32:27 PDT (-0700)
+Subject: Re: [PATCH 5/5] dt-bindings: timer: Add CLINT bindings
+In-Reply-To: <c0e9e625-daf8-b72f-2237-06018ff5d8a0@gmail.com>
 From: Palmer Dabbelt <palmer@dabbelt.com>
-To: zong.li@sifive.com
-Message-ID: <mhng-7c33e65d-d59d-400e-a056-cd44958c9222@palmerdabbelt-glaptop1>
+To: seanga2@gmail.com
+Message-ID: <mhng-0995a264-b39c-4790-9aa5-b8c598b43ffd@palmerdabbelt-glaptop1>
 Mime-Version: 1.0 (MHng)
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_123146_164039_9AAFF908 
-X-CRM114-Status: GOOD (  17.70  )
-X-Spam-Score: 0.8 (/)
+X-CRM114-CacheID: sfid-20200526_173232_479067_05DB2975 
+X-CRM114-Status: GOOD (  15.00  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.8 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- 0.8 UPPERCASE_50_75        message body is 50-75% uppercase
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,148 +94,69 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
- zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>
+Cc: devicetree@vger.kernel.org, Damien Le Moal <Damien.LeMoal@wdc.com>,
+ Anup Patel <Anup.Patel@wdc.com>, anup@brainfault.org,
+ daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org,
+ Atish Patra <Atish.Patra@wdc.com>, robh+dt@kernel.org,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
+ linux-riscv@lists.infradead.org, aou@eecs.berkeley.edu
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, 18 May 2020 20:42:04 PDT (-0700), zong.li@sifive.com wrote:
-> Like patch b1b3f49 ("ARM: config: sort select statements alphanumerically")
-> , we sort all our select statements alphanumerically by using the perl
-> script in patch b1b3f49 as above.
+On Thu, 21 May 2020 23:29:36 PDT (-0700), seanga2@gmail.com wrote:
+> On 5/22/20 1:54 AM, Anup Patel wrote:
+>> On Fri, May 22, 2020 at 1:35 AM Sean Anderson <seanga2@gmail.com> wrote:
+>>>
+>>> On 5/21/20 9:45 AM, Anup Patel wrote:
+>>>> +Required properties:
+>>>> +- compatible : "sifive,clint-1.0.0" and a string identifying the actual
+>>>> +  detailed implementation in case that specific bugs need to be worked around.
+>>>
+>>> Should the "riscv,clint0" compatible string be documented here? This
+>> 
+>> Yes, I forgot to add this compatible string. I will add in v2.
+>> 
+>>> peripheral is not really specific to sifive, as it is present in most
+>>> rocket-chip cores.
+>> 
+>> I agree that CLINT is present in a lot of non-SiFive RISC-V SOCs and
+>> FPGAs but this IP is only documented as part of SiFive FU540 SOC.
+>> (Refer, https://static.dev.sifive.com/FU540-C000-v1.0.pdf)
+>> 
+>> The RISC-V foundation should host the CLINT spec independently
+>> under https://github.com/riscv and make CLINT spec totally open.
+>> 
+>> For now, I have documented it just like PLIC DT bindings found at:
+>> Documentation/devicetree/bindings/interrupt-controller/sifive,plic-1.0.0.txt
 >
-> As suggested by Andrew Morton:
+> The PLIC seems to have its own RISC-V-sponsored documentation [1] which
+> was split off from the older privileged specs. By your logic above,
+> should it be renamed to riscv,plic0.txt (with a corresponding change in
+> the documented compatible strings)?
 >
->   This is a pet peeve of mine.  Any time there's a long list of items
->   (header file inclusions, kconfig entries, array initalisers, etc) and
->   someone wants to add a new item, they *always* go and stick it at the
->   end of the list.
->
->   Guys, don't do this.  Either put the new item into a randomly-chosen
->   position or, probably better, alphanumerically sort the list.
->
-> Signed-off-by: Zong Li <zong.li@sifive.com>
-> ---
->  arch/riscv/Kconfig | 70 +++++++++++++++++++++++-----------------------
->  1 file changed, 35 insertions(+), 35 deletions(-)
->
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 74ce5c5249e9..8244b8f7e7c3 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -12,64 +12,64 @@ config 32BIT
->
->  config RISCV
->  	def_bool y
-> -	select OF
-> -	select OF_EARLY_FLATTREE
-> -	select OF_IRQ
->  	select ARCH_HAS_BINFMT_FLAT
-> +	select ARCH_HAS_DEBUG_VIRTUAL if MMU
-> +	select ARCH_HAS_DEBUG_WX
-> +	select ARCH_HAS_GCOV_PROFILE_ALL
-> +	select ARCH_HAS_GIGANTIC_PAGE
-> +	select ARCH_HAS_MMIOWB
-> +	select ARCH_HAS_PTE_SPECIAL
-> +	select ARCH_HAS_SET_DIRECT_MAP
-> +	select ARCH_HAS_SET_MEMORY
-> +	select ARCH_HAS_STRICT_KERNEL_RWX if MMU
-> +	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
->  	select ARCH_WANT_FRAME_POINTERS
-> +	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
->  	select CLONE_BACKWARDS
->  	select COMMON_CLK
-> +	select EDAC_SUPPORT
-> +	select GENERIC_ARCH_TOPOLOGY if SMP
-> +	select GENERIC_ATOMIC64 if !64BIT
->  	select GENERIC_CLOCKEVENTS
-> +	select GENERIC_IOREMAP
-> +	select GENERIC_IRQ_MULTI_HANDLER
->  	select GENERIC_IRQ_SHOW
->  	select GENERIC_PCI_IOMAP
-> +	select GENERIC_PTDUMP if MMU
->  	select GENERIC_SCHED_CLOCK
-> +	select GENERIC_SMP_IDLE_THREAD
->  	select GENERIC_STRNCPY_FROM_USER if MMU
->  	select GENERIC_STRNLEN_USER if MMU
-> -	select GENERIC_SMP_IDLE_THREAD
-> -	select GENERIC_ATOMIC64 if !64BIT
-> -	select GENERIC_IOREMAP
-> -	select GENERIC_PTDUMP if MMU
->  	select HAVE_ARCH_AUDITSYSCALL
-> +	select HAVE_ARCH_KASAN if MMU && 64BIT
-> +	select HAVE_ARCH_KGDB
-> +	select HAVE_ARCH_KGDB_QXFER_PKT
-> +	select HAVE_ARCH_MMAP_RND_BITS if MMU
->  	select HAVE_ARCH_SECCOMP_FILTER
-> +	select HAVE_ARCH_TRACEHOOK
->  	select HAVE_ASM_MODVERSIONS
-> +	select HAVE_COPY_THREAD_TLS
->  	select HAVE_DMA_CONTIGUOUS if MMU
-> +	select HAVE_EBPF_JIT if MMU
->  	select HAVE_FUTEX_CMPXCHG if FUTEX
-> +	select HAVE_PCI
->  	select HAVE_PERF_EVENTS
->  	select HAVE_PERF_REGS
->  	select HAVE_PERF_USER_STACK_DUMP
->  	select HAVE_SYSCALL_TRACEPOINTS
->  	select IRQ_DOMAIN
-> -	select SPARSE_IRQ
-> -	select SYSCTL_EXCEPTION_TRACE
-> -	select HAVE_ARCH_TRACEHOOK
-> -	select HAVE_PCI
->  	select MODULES_USE_ELF_RELA if MODULES
->  	select MODULE_SECTIONS if MODULES
-> -	select THREAD_INFO_IN_TASK
-> +	select OF
-> +	select OF_EARLY_FLATTREE
-> +	select OF_IRQ
->  	select PCI_DOMAINS_GENERIC if PCI
->  	select PCI_MSI if PCI
->  	select RISCV_TIMER
-> -	select GENERIC_IRQ_MULTI_HANDLER
-> -	select GENERIC_ARCH_TOPOLOGY if SMP
-> -	select ARCH_HAS_PTE_SPECIAL
-> -	select ARCH_HAS_MMIOWB
-> -	select ARCH_HAS_DEBUG_VIRTUAL if MMU
-> -	select HAVE_EBPF_JIT if MMU
-> -	select EDAC_SUPPORT
-> -	select ARCH_HAS_GIGANTIC_PAGE
-> -	select ARCH_HAS_SET_DIRECT_MAP
-> -	select ARCH_HAS_SET_MEMORY
-> -	select ARCH_HAS_STRICT_KERNEL_RWX if MMU
-> -	select ARCH_WANT_HUGE_PMD_SHARE if 64BIT
->  	select SPARSEMEM_STATIC if 32BIT
-> -	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
-> -	select HAVE_ARCH_MMAP_RND_BITS if MMU
-> -	select ARCH_HAS_GCOV_PROFILE_ALL
-> -	select HAVE_COPY_THREAD_TLS
-> -	select HAVE_ARCH_KASAN if MMU && 64BIT
-> -	select HAVE_ARCH_KGDB
-> -	select HAVE_ARCH_KGDB_QXFER_PKT
-> -	select ARCH_HAS_DEBUG_WX
-> +	select SPARSE_IRQ
-> +	select SYSCTL_EXCEPTION_TRACE
-> +	select THREAD_INFO_IN_TASK
->
->  config ARCH_MMAP_RND_BITS_MIN
->  	default 18 if 64BIT
-> @@ -196,11 +196,11 @@ config ARCH_RV64I
->  	bool "RV64I"
->  	select 64BIT
->  	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128 && GCC_VERSION >= 50000
-> -	select HAVE_FUNCTION_TRACER
-> -	select HAVE_FUNCTION_GRAPH_TRACER
-> -	select HAVE_FTRACE_MCOUNT_RECORD
->  	select HAVE_DYNAMIC_FTRACE if MMU
->  	select HAVE_DYNAMIC_FTRACE_WITH_REGS if HAVE_DYNAMIC_FTRACE
-> +	select HAVE_FTRACE_MCOUNT_RECORD
-> +	select HAVE_FUNCTION_GRAPH_TRACER
-> +	select HAVE_FUNCTION_TRACER
->  	select SWIOTLB if MMU
->
->  endchoice
+> [1] https://github.com/riscv/riscv-plic-spec
 
-Thanks.  This is on for-next, except I re-ran the script as there have been
-some changes.
+Let's propose tagging that PLIC spec as v1.0.0 in the platform spec group, but
+I don't see a reason why that wouldn't be viable.  Assuming that's all OK, we
+can start calling this a RISC-V PLIC (in addition to a SiFive PLIC, as they'll
+be compatible).
+
+>> 
+>> If RISC-V maintainers agree then I will document it as "RISC-V CLINT".
+>> 
+>> @Palmer ?? @Paul ??
+
+The CLINT is a SiFive spec.  It has open source RTL so it's been implemented in
+other designs, but it's not a RISC-V spec.  The CLIC, which is a superset of
+the CLINT, is a RISC-V spec.  IIRC it's not finished yet (it's the fast
+interrupts task group), but presumably we should have a "riscv,clic-2.0.0" (or
+whatever it ends up being called) compat string to go along with the
+specification.
+
+>> Regards,
+>> Anup
+>> 
+>
+> --Sean
 
