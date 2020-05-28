@@ -2,83 +2,83 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D994E1E57BE
-	for <lists+linux-riscv@lfdr.de>; Thu, 28 May 2020 08:41:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D9EA1E57BF
+	for <lists+linux-riscv@lfdr.de>; Thu, 28 May 2020 08:42:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E2tys82ZNZaPVJ+j676dyC3tB/POLAbHy0kxmjdDY1g=; b=AUMmB5zRZw/VJieYbPkaoyFsLc
-	CNSCwOWLtqI8QJFKCLe7uj7t9ver/qp3XfTRzsoHEpx0Fx4D5mKeDw6w+aec4wB9TnBbF+OWX0f+w
-	dMKMj51bLw46lZPLlxnXdbi9oigXWgOmZUFDeI+UWZ+xkpaXO306woh+IWePQlGhuCeG5SbVwpEFc
-	5g3pj9L7/sYkk/LSgFgC9OZrBkZwmIGmgOHGgvqgDWcnNPjC16elkrjM9skacRSSUzZRy7MLK+b3G
-	A/BN4AJVPqrnaCZWPsSqj3M9Ipy7cJFmJ6H1ZeG7h41A3v/FtlJHs0HZ8BqJb42c/TkgQth+QNrlU
-	GCiPcoYQ==;
+	bh=f85Vn4OuGxjQe/WprhGo5P1pwBgJ5q0VeEPd5gC4HYw=; b=UFWUuwxbjrUgrQ3i2B9mzkOURo
+	CX8qm+vWTqfxYuH7sJxU34pT31PQDAkHDcxQSod0WCHgYQliqsNjcfjoD8mg+2NRr0l4UhYcnAAkA
+	S7vjekukmJiJOLsMqf7DOoCSC0oD312KDiovmVl4MWfr2visSeg5SriALyoaVG1ESs83vuT49yFb7
+	T3RMCwbAUcaqvk+NQofKY24Aziu98Kjb13LczhODjSaNPN7X7uFTiay1ClhWx88Gar0pD5Zm9sDuq
+	+/t29ZB16j/h/5HaZ/qLAtSgcnO9Ym/GMJBXQiib16MNRo1TCdFRg0qdjhPh8Isee1gutMy2whA7y
+	fkQMbSCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeCEh-0003hB-TB; Thu, 28 May 2020 06:41:51 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1jeCEk-0003mm-UW; Thu, 28 May 2020 06:41:54 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeCER-0003PZ-3V
- for linux-riscv@lists.infradead.org; Thu, 28 May 2020 06:41:36 +0000
-Received: by mail-pf1-x441.google.com with SMTP id q8so13000027pfu.5
- for <linux-riscv@lists.infradead.org>; Wed, 27 May 2020 23:41:34 -0700 (PDT)
+ id 1jeCEZ-0003bK-Ps
+ for linux-riscv@lists.infradead.org; Thu, 28 May 2020 06:41:47 +0000
+Received: by mail-pg1-x544.google.com with SMTP id d10so12956275pgn.4
+ for <linux-riscv@lists.infradead.org>; Wed, 27 May 2020 23:41:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=E2tys82ZNZaPVJ+j676dyC3tB/POLAbHy0kxmjdDY1g=;
- b=Al5I3K4fYTAcO8syoj4RXIGfKW2MAtDPA6PXV7wexX+9hCiybB12rgtEzh6EW+42EQ
- vNB4RTob4YGEDGsP+eg4hni+rqcntgDG3Pwz2TyvfcOCbZAIltqjCtRSWiSOWm1QjReA
- 8GxBCceHH3aMaymyEjblfDxpmicUxE1wDcbulgjNnzY8iCtzV5xg2+7SGu9Tyc/32lA7
- ok+AfPLvC0MIygL1AbELH5VfrLBHB+92jsjrX1goL0miu3iXckn9PAtILA1kLP4bXPgC
- A9BafR0BfT14fQyjFiPuLfBG/UE4HybdT7U+YbjI8Htg/PqJQS/QPrCoep9xQCmcQvuU
- wJpQ==
+ bh=f85Vn4OuGxjQe/WprhGo5P1pwBgJ5q0VeEPd5gC4HYw=;
+ b=DYoeHxtCDLNaK4vTg4LXeFpK3991FjhrOeogIln0htFW3mpJQaBBYg/q+xdoOYA/mP
+ VyhoHpQFurqflmvyQCW3h4gityj/4jHYiazZ2HRNAVwdv/UMMi8CbX6Bx9g8Mbkb+GQY
+ sWPsc1+c3tKrZg9ECu/AJUrtKqLC+XUxViXjJYAc9cLIAcW2JbsrHyCEhy9DqxVrShAx
+ Xbmqb1YnOBK3BB5czzY+vFNIGoKtL4kXeTlKXLu0S3DNMHDtO7frMkzVsKL+Fw05219h
+ 6T0On7F7k3exzrn3IebkZSn07IaMRkB9nm3V0m8CAjYal9SZ80azSuOl+mphtfhFHWmd
+ tmgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=E2tys82ZNZaPVJ+j676dyC3tB/POLAbHy0kxmjdDY1g=;
- b=kViR9+LxD5ORF2+LfpUrf8+rFsCR+xMbMRsx8Xx2ux+eEx1JGTLgPu21QyW0g63+7z
- 0sdvq5+rfzPBAUH38LSKAN19eiP+j2Y4Mj5j/gKhcm3WczinjxafrRSzVZcU46Q8n4mo
- x2eMQb3VtC/LbfBLT7eSFywu8z/3VoE/tx2ZCH+zEeF9pZ8d6ygPgfHTTDn6Qxij1ZaD
- xPMPGdhdhSiHPaZUqYAWoHAiJlLxy6WwUv1O44d5fjK/enZtY65zje5fQ3z9npvIBRoz
- h71i3S9n9SDv3bS8ZP9Pw8FNk6mNq5JU5IlFGz/cUDZdCKaiCv5QkLkE0Sr+LBpIeCnX
- 3eoQ==
-X-Gm-Message-State: AOAM530Zgku03DCRrfDzDd6IN5joMWleT5zDGbmTbfqbkwFMLa1MOauA
- L7R3zOU9ZuCIBS6FrHxB50S9GA==
-X-Google-Smtp-Source: ABdhPJziuAGvE98veT2Y4Z3+oUEKtpOxW505htOMNu82rRs4sDMp5hnavM8SRa3ADP7eyljn9k5FHg==
-X-Received: by 2002:aa7:9494:: with SMTP id z20mr1572928pfk.314.1590648090700; 
- Wed, 27 May 2020 23:41:30 -0700 (PDT)
+ bh=f85Vn4OuGxjQe/WprhGo5P1pwBgJ5q0VeEPd5gC4HYw=;
+ b=JxGP9zoofqIWv4DFZ2kX4qqCkzTNi1Ckl8Ik+DnNR57Owfw6BNf7XtkL+6oeb7E/qa
+ 8YihVXH5AfK5uBh2JrDyx4dpdZgICNh1luydpCGVm4CJx9LlBOcYmCJeNx7eLriemyJW
+ aRM0KV2NFDEqnUuGV/zpQXRVH5U0GhH2xkysnHNthALvjIOdcveiYqKr/s7qctTsyx3c
+ xHved7LcU0Eqa5n6Xhg8SihNJ+6hRZxw8DciwFyG/OrxprWU4aJ4oXespoJbDZoNQ3IJ
+ 5Mp34FInFEM00284J5lnuDH4p63oKhQexlbk/lhLhiRmU17WvYy1ZiprRyI+7rI/oXNc
+ +2KA==
+X-Gm-Message-State: AOAM530uxHcHODFSJwPvwbyuDXt1FmdLv7kLKDcVdMdmPZnkh258mEeI
+ jZiFawq4TqGVEOZweS8gBKZ36w==
+X-Google-Smtp-Source: ABdhPJxQPZx777oP2rBNBMAJiyFESrXot58Un4tHH9HRlIJWfi3ybVpNmtNib+GCxA4CLbv8nsa/mQ==
+X-Received: by 2002:a63:4906:: with SMTP id w6mr1507671pga.79.1590648096154;
+ Wed, 27 May 2020 23:41:36 -0700 (PDT)
 Received: from hsinchu02.internal.sifive.com
  (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id q29sm3773366pfg.79.2020.05.27.23.41.28
+ by smtp.gmail.com with ESMTPSA id q29sm3773366pfg.79.2020.05.27.23.41.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 23:41:30 -0700 (PDT)
+ Wed, 27 May 2020 23:41:35 -0700 (PDT)
 From: Greentime Hu <greentime.hu@sifive.com>
 To: greentime.hu@sifive.com, guoren@linux.alibaba.com, vincent.chen@sifive.com,
  paul.walmsley@sifive.com, palmerdabbelt@google.com,
  linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
  oleg@redhat.com
-Subject: [RFC PATCH v5 11/13] riscv: Add ptrace vector support
-Date: Thu, 28 May 2020 14:40:59 +0800
-Message-Id: <30cc61919c7b6ae3d65970c99a1e2e76cb045eaf.1590646208.git.greentime.hu@sifive.com>
+Subject: [RFC PATCH v5 12/13] riscv: Add sigcontext save/restore for vector
+Date: Thu, 28 May 2020 14:41:00 +0800
+Message-Id: <8b544fbcee934ad31235049f49a14c8e7601692b.1590646208.git.greentime.hu@sifive.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1590646208.git.greentime.hu@sifive.com>
 References: <cover.1590646208.git.greentime.hu@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_234135_203169_AFAD9BAA 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20200527_234144_091709_C09CF4E0 
+X-CRM114-Status: GOOD (  11.79  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -105,194 +105,178 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Guo Ren <guoren@linux.alibaba.com>
 
-This patch adds ptrace support for riscv vector. The vector registers will
-be saved in datap pointer of __riscv_v_state. This pointer will be set
-right after the __riscv_v_state data structure then it will be put in ubuf
-for ptrace system call to get or set. It will check if the datap got from
-ubuf is set to the correct address or not when the ptrace system call is
-trying to set the vector registers.
+This patch adds sigcontext save/restore for vector. The vector registers
+will be saved in datap pointer. The datap pointer will be allocaed
+dynamically when the task needs in kernel space. The datap pointer will
+be set right after the __riscv_v_state data structure to save all the
+vector registers in the signal handler stack.
 
-[greentime.hu@sifive.com: add support for dynamic vlen, fix vtype not
-saved bug]
+[greentime.hu@sifive.com: add support for dynamic vlen]
 Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
 Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
 ---
- arch/riscv/include/uapi/asm/elf.h |   1 +
- arch/riscv/kernel/ptrace.c        | 115 ++++++++++++++++++++++++++++++
- include/uapi/linux/elf.h          |   1 +
- 3 files changed, 117 insertions(+)
+ arch/riscv/include/uapi/asm/sigcontext.h |  2 +
+ arch/riscv/kernel/signal.c               | 92 +++++++++++++++++++++++-
+ 2 files changed, 91 insertions(+), 3 deletions(-)
 
-diff --git a/arch/riscv/include/uapi/asm/elf.h b/arch/riscv/include/uapi/asm/elf.h
-index d696d6610231..099434d075a7 100644
---- a/arch/riscv/include/uapi/asm/elf.h
-+++ b/arch/riscv/include/uapi/asm/elf.h
-@@ -23,6 +23,7 @@ typedef struct user_regs_struct elf_gregset_t;
- typedef __u64 elf_fpreg_t;
- typedef union __riscv_fp_state elf_fpregset_t;
- #define ELF_NFPREG (sizeof(struct __riscv_d_ext_state) / sizeof(elf_fpreg_t))
-+#define ELF_NVREG  (sizeof(struct __riscv_v_state) / sizeof(elf_greg_t))
+diff --git a/arch/riscv/include/uapi/asm/sigcontext.h b/arch/riscv/include/uapi/asm/sigcontext.h
+index 84f2dfcfdbce..4217f3f1c8ba 100644
+--- a/arch/riscv/include/uapi/asm/sigcontext.h
++++ b/arch/riscv/include/uapi/asm/sigcontext.h
+@@ -8,6 +8,7 @@
  
- #if __riscv_xlen == 64
- #define ELF_RISCV_R_SYM(r_info)		ELF64_R_SYM(r_info)
-diff --git a/arch/riscv/kernel/ptrace.c b/arch/riscv/kernel/ptrace.c
-index 444dc7b0fd78..ff846a53cd8d 100644
---- a/arch/riscv/kernel/ptrace.c
-+++ b/arch/riscv/kernel/ptrace.c
-@@ -10,6 +10,7 @@
  #include <asm/ptrace.h>
- #include <asm/syscall.h>
- #include <asm/thread_info.h>
-+#include <asm/switch_to.h>
- #include <linux/audit.h>
- #include <linux/ptrace.h>
- #include <linux/elf.h>
-@@ -26,6 +27,9 @@ enum riscv_regset {
- #ifdef CONFIG_FPU
- 	REGSET_F,
- #endif
-+#ifdef CONFIG_VECTOR
-+	REGSET_V,
-+#endif
+ 
++#define RVV_MAGIC	0x53465457
+ /*
+  * Signal context structure
+  *
+@@ -17,6 +18,7 @@
+ struct sigcontext {
+ 	struct user_regs_struct sc_regs;
+ 	union __riscv_fp_state sc_fpregs;
++	struct __riscv_v_state sc_vregs;
  };
  
- static int riscv_gpr_get(struct task_struct *target,
-@@ -92,6 +96,107 @@ static int riscv_fpr_set(struct task_struct *target,
- }
+ #endif /* _UAPI_ASM_RISCV_SIGCONTEXT_H */
+diff --git a/arch/riscv/kernel/signal.c b/arch/riscv/kernel/signal.c
+index 17ba190e84a5..9ada6f74bb95 100644
+--- a/arch/riscv/kernel/signal.c
++++ b/arch/riscv/kernel/signal.c
+@@ -83,6 +83,80 @@ static long save_fp_state(struct pt_regs *regs,
+ #define restore_fp_state(task, regs) (0)
  #endif
  
 +#ifdef CONFIG_VECTOR
-+static int riscv_vr_get(struct task_struct *target,
-+			 const struct user_regset *regset,
-+			 unsigned int pos, unsigned int count,
-+			 void *kbuf, void __user *ubuf)
++static long restore_v_state(struct pt_regs *regs, struct sigcontext *sc)
 +{
-+	int ret;
-+	struct __riscv_v_state *vstate = &target->thread.vstate;
-+	/* Set the datap right after the address of vstate. */
-+	void *datap = ubuf + sizeof(struct __riscv_v_state);
-+	u32 magic = RVV_MAGIC;
++	long err;
++	struct __riscv_v_state __user *state = &sc->sc_vregs;
++	void *datap;
++	__u32 magic;
 +
-+	/* Copy the magic number. */
-+	ret = user_regset_copyout(&pos, &count, &kbuf, &ubuf, &magic, 0,
-+				  sizeof(u32));
-+	if (unlikely(ret))
-+		return ret;
++	/* Get magic number and check it. */
++	err = __get_user(magic, &state->magic);
++	if (unlikely(err))
++		return err;
 +
-+	/* Copy rest of vstate except datap. */
-+	ret = user_regset_copyout(&pos, &count, &kbuf, &ubuf, vstate, 0,
-+				  RISCV_V_STATE_DATAP);
-+	if (unlikely(ret))
-+		return ret;
++	if (magic != RVV_MAGIC)
++		return -EINVAL;
++
++	/* Copy everything of __riscv_v_state except datap. */
++	err = __copy_from_user(&current->thread.vstate, state,
++			       RISCV_V_STATE_DATAP);
++	if (unlikely(err))
++		return err;
 +
 +	/* Copy the pointer datap itself. */
-+	pos = 0;
-+	ret = user_regset_copyout(&pos, &count, &kbuf, &ubuf, &datap, 0,
-+				  sizeof(vstate->datap));
-+	if (unlikely(ret))
-+		return ret;
++	err = __get_user(datap, &state->datap);
++	if (unlikely(err))
++		return err;
 +
-+#if __riscv_xlen == 32
-+	/* Skip copy _padding. */
-+	size = sizeof(vstate->__padding);
-+	count -= size;
-+	ubuf += size;
-+#endif
 +
-+	/* Copy all the vector registers. */
-+	pos = 0;
-+	ret = user_regset_copyout(&pos, &count, &kbuf, &ubuf,
-+				  vstate->datap, 0, vstate->size);
-+	return ret;
++	/* Copy the whole vector content from user space datap. */
++	err = __copy_from_user(current->thread.vstate.datap, datap,
++			       current->thread.vstate.size);
++	if (unlikely(err))
++		return err;
++
++	vstate_restore(current, regs);
++
++	return err;
 +}
 +
-+static int riscv_vr_set(struct task_struct *target,
-+			 const struct user_regset *regset,
-+			 unsigned int pos, unsigned int count,
-+			 const void *kbuf, const void __user *ubuf)
++static long save_v_state(struct pt_regs *regs, struct sigcontext *sc)
 +{
-+	int ret, size;
-+	struct __riscv_v_state *vstate = &target->thread.vstate;
-+	const void *datap = ubuf + sizeof(struct __riscv_v_state);
-+	const void *datap_addr = ubuf + RISCV_V_STATE_DATAP;
-+	long val_datap;
++	long err;
++	struct __riscv_v_state __user *state = &sc->sc_vregs;
++	/* Set the datap right after the sigcntext structure. */
++	void *datap = sc + 1;
 +
-+	/* Skip copy magic because kernel doesn't need to use it. */
-+	size = sizeof(vstate->magic);
-+	pos += size;
-+	count -= size;
-+	ubuf += size;
++	vstate_save(current, regs);
++	/* Copy everything of vstate but datap. */
++	err = __copy_to_user(state, &current->thread.vstate,
++			     RISCV_V_STATE_DATAP);
++	if (unlikely(err))
++		return err;
 +
-+	/* Copy rest of the vstate except datap and __padding. */
-+	ret = user_regset_copyin(&pos, &count, &kbuf, &ubuf, vstate, 0,
-+				 RISCV_V_STATE_DATAP);
-+	if (unlikely(ret))
-+		return ret;
++	/* Copy the magic number. */
++	err = __put_user(RVV_MAGIC, &state->magic);
++	if (unlikely(err))
++		return err;
 +
-+	/* Check if the datap is correct address of ubuf. */
-+	__get_user(val_datap, (long *)datap_addr);
-+	if (val_datap != (long)datap)
-+		return -EFAULT;
++	/* Copy the pointer datap itself. */
++	err = __put_user(datap, &state->datap);
++	if (unlikely(err))
++		return err;
 +
-+	/* Skip copy datap. */
-+	size = sizeof(vstate->datap);
-+	count -= size;
-+	ubuf += size;
++	/* Copy the whole vector content to user space datap. */
++	err = __copy_to_user(datap, current->thread.vstate.datap,
++			     current->thread.vstate.size);
 +
-+#if __riscv_xlen == 32
-+	/* Skip copy _padding. */
-+	size = sizeof(vstate->__padding);
-+	count -= size;
-+	ubuf += size;
-+#endif
-+
-+	/* Copy all the vector registers. */
-+	pos = 0;
-+	ret = user_regset_copyin(&pos, &count, &kbuf, &ubuf, vstate->datap,
-+				 0, vstate->size);
-+	return ret;
++	return err;
 +}
-+static unsigned int riscv_vr_get_size(struct task_struct *target,
-+				      const struct user_regset *regset)
-+{
-+	if (!has_vector)
-+		return 0;
-+
-+	return sizeof(struct __riscv_v_state) + riscv_vsize;
-+}
++#else
++#define save_v_state(task, regs) (0)
++#define restore_v_state(task, regs) (0)
 +#endif
 +
- static const struct user_regset riscv_user_regset[] = {
- 	[REGSET_X] = {
- 		.core_note_type = NT_PRSTATUS,
-@@ -111,6 +216,16 @@ static const struct user_regset riscv_user_regset[] = {
- 		.set = &riscv_fpr_set,
- 	},
- #endif
-+#ifdef CONFIG_VECTOR
-+	[REGSET_V] = {
-+		.core_note_type = NT_RISCV_VECTOR,
-+		.align = 16,
-+		.size = sizeof(unsigned long),
-+		.get = riscv_vr_get,
-+		.set = riscv_vr_set,
-+		.get_size = riscv_vr_get_size,
-+	},
-+#endif
- };
+ static long restore_sigcontext(struct pt_regs *regs,
+ 	struct sigcontext __user *sc)
+ {
+@@ -92,6 +166,9 @@ static long restore_sigcontext(struct pt_regs *regs,
+ 	/* Restore the floating-point state. */
+ 	if (has_fpu)
+ 		err |= restore_fp_state(regs, &sc->sc_fpregs);
++	/* Restore the vector state. */
++	if (has_vector)
++		err |= restore_v_state(regs, sc);
+ 	return err;
+ }
  
- static const struct user_regset_view riscv_user_native_view = {
-diff --git a/include/uapi/linux/elf.h b/include/uapi/linux/elf.h
-index 34c02e4290fe..e428f9e8710a 100644
---- a/include/uapi/linux/elf.h
-+++ b/include/uapi/linux/elf.h
-@@ -428,6 +428,7 @@ typedef struct elf64_shdr {
- #define NT_MIPS_DSP	0x800		/* MIPS DSP ASE registers */
- #define NT_MIPS_FP_MODE	0x801		/* MIPS floating-point mode */
- #define NT_MIPS_MSA	0x802		/* MIPS SIMD registers */
-+#define NT_RISCV_VECTOR	0x900		/* RISC-V vector registers */
+@@ -101,13 +178,16 @@ SYSCALL_DEFINE0(rt_sigreturn)
+ 	struct rt_sigframe __user *frame;
+ 	struct task_struct *task;
+ 	sigset_t set;
++	size_t frame_size = sizeof(*frame);
  
- /* Note header in a PT_NOTE section */
- typedef struct elf32_note {
+ 	/* Always make any pending restarted system calls return -EINTR */
+ 	current->restart_block.fn = do_no_restart_syscall;
+ 
+ 	frame = (struct rt_sigframe __user *)regs->sp;
+ 
+-	if (!access_ok(frame, sizeof(*frame)))
++	if (has_vector)
++		frame_size += current->thread.vstate.size;
++	if (!access_ok(frame, frame_size))
+ 		goto badframe;
+ 
+ 	if (__copy_from_user(&set, &frame->uc.uc_sigmask, sizeof(set)))
+@@ -145,6 +225,9 @@ static long setup_sigcontext(struct rt_sigframe __user *frame,
+ 	/* Save the floating-point state. */
+ 	if (has_fpu)
+ 		err |= save_fp_state(regs, &sc->sc_fpregs);
++	/* Save the vector state. */
++	if (has_vector)
++		err |= save_v_state(regs, sc);
+ 	return err;
+ }
+ 
+@@ -176,9 +259,12 @@ static int setup_rt_frame(struct ksignal *ksig, sigset_t *set,
+ {
+ 	struct rt_sigframe __user *frame;
+ 	long err = 0;
++	size_t frame_size = sizeof(*frame);
+ 
+-	frame = get_sigframe(ksig, regs, sizeof(*frame));
+-	if (!access_ok(frame, sizeof(*frame)))
++	if (has_vector)
++		frame_size += current->thread.vstate.size;
++	frame = get_sigframe(ksig, regs, frame_size);
++	if (!access_ok(frame, frame_size))
+ 		return -EFAULT;
+ 
+ 	err |= copy_siginfo_to_user(&frame->info, &ksig->info);
 -- 
 2.26.2
 
