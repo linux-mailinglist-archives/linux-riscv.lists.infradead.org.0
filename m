@@ -2,83 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F1E7D1E700D
-	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 01:09:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 144C11E7066
+	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 01:25:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GpXkyS7vVv9FTAH7S5+DpOFQmjUaMM+ePrWJEGENvuo=; b=t1VjjQUtEVGe0siRgYTLjToGf
-	7DxvE4aEuzvYdFoUMT6nmMDS2Cx+0ScCwilm8bTnx+X9fmsomwLzsJFzJKVQkY9YfregKTz6MtX7t
-	O13ehjylQ1KHxqr1oYYm1Q034qBTGVjRmqdyjD6hKk9qGNkCxqr9RFtpwEnD6Jqx2I0xLxjbPkplw
-	+5de7ZAQJ9a5oUKlDsU1G+dqEF+7V8A6IFEs3m0XwRI7JfkiIK9/+M48ZsxgEMJ+rk31nmNN61zGB
-	S5hHwGcmLixornQt3ZjG2OC1H1UpIf18RxX2M+VmDZ3FqxtYRJIjsQBqk83kpZEYDyWTaUGJHZcAe
-	4jEK2FynQ==;
+	 bh=kHt1I46lXnPM8uSEpy3eA9oH3DddGg6oQn9ZXscyMuY=; b=B3frR2JD9fIf4bAzdqDaveNz3
+	M8rnkWwwE5P9HIL73v8N5SqZYjOarwHhPjgW0UVieRpuWSvCKDby8kZbzjhD7oI4GfKqsXXQvpcJf
+	IdTJl1HJA1IPrNFRjEarhfbVLAzhjltPAfum30LEeK4R4nrRRmQY5SDB4G5TTVEzFNEFA3kU7XxzU
+	kYsc6JgGhCmv1I/CXYnoFwGQF0bdqwWWlNSnTVVhGjAdmK/Jtdz3MbgG0lk95LVyUDZmlNM13M54j
+	UFBJsS1gpYkyQ485Mb+CGlFF7WWAgRSYiUDoGP2hD1ujLzDfHK22/6UYhE0p/Js8dEihnVkljG5pu
+	CPXmMiOUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeReg-0000SB-NS; Thu, 28 May 2020 23:09:42 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jeRts-0001yc-2d; Thu, 28 May 2020 23:25:24 +0000
+Received: from mail-il1-f193.google.com ([209.85.166.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeRed-0000RI-4O
- for linux-riscv@lists.infradead.org; Thu, 28 May 2020 23:09:40 +0000
-Received: by mail-wm1-x344.google.com with SMTP id f5so1009935wmh.2
- for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 16:09:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=atishpatra.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GpXkyS7vVv9FTAH7S5+DpOFQmjUaMM+ePrWJEGENvuo=;
- b=D4whbS/UshWlAvLJxUCbzHUeSluRxsQX+qSiJdSScDGH+1JBkWXskHDWLQCEWOohQN
- dJQK6J896u99oDKZWAkWmKb7J0seMtAJMbVZYqWUZGl/4JW1DGQ08QRCBqDzEqVtd4WQ
- +6/yQMoNotw8xQ1ZiD5bXcTlej/UFrAAhwe3M=
+ id 1jeRmo-0007Y7-Vc
+ for linux-riscv@lists.infradead.org; Thu, 28 May 2020 23:18:09 +0000
+Received: by mail-il1-f193.google.com with SMTP id a14so718516ilk.2
+ for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 16:18:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GpXkyS7vVv9FTAH7S5+DpOFQmjUaMM+ePrWJEGENvuo=;
- b=eaaSi4NQ/0s/1K+iAFEXCmY8rM+D4QkBfPdDG+zL4a9YuFVCXaFQ///v2kh5yK9Zfu
- T1GX5FGLTyN7sM+dqWqdg40776wrvd4ervEvuC8Owcyd7+nvstyZLsJHQStodFbpW976
- W166mEhhBDkH3dOGl96Q2IBg8Kd/jyQzKEaeaRxhYLdrnmovTETu2dm5Dj9Ed9wX6vYV
- Di5uDmvBCclcswVGdhkeXU+EW5iDMlrQ8qgj1R/FnNwLV70Exohv2tUK8aeAKBkPzBni
- f5FO0rH7V4gfuZkIVNZUpnwiUceCMx9pa6ZCkQQVUYQ8KpjyPWCLboPTbTeI8Pt5nmiV
- usxw==
-X-Gm-Message-State: AOAM533xtUAuLVoCeGzMLf26YFhQWDq95GdMQhShtxMisAj+PNcKoRJJ
- GHxK1trec9zKxeECr9rL7n9R0JBNKQVF7Y6hZesq
-X-Google-Smtp-Source: ABdhPJziYtIixceIrIWS3U3B1fj6vDkMc+6p4dpoZVeXiGvP5uccTm4Fr5yvsPFiQvuuC0xwvZBKPLWBdMJOTYLSSgA=
-X-Received: by 2002:a7b:c84b:: with SMTP id c11mr5395364wml.78.1590707377649; 
- Thu, 28 May 2020 16:09:37 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=kHt1I46lXnPM8uSEpy3eA9oH3DddGg6oQn9ZXscyMuY=;
+ b=d2Xro4dBU6Lcrmsdc1ZvOVZ9h4oAgJ81lDutJriGf8LUO5U2RHyAx+X6KrCtRX21Ot
+ ByeY/AAHE80qaoUV+9OXTCGveVSfN3UJpLvAMTzM0PncHJmLvmnommZdxvKAixFo+JFM
+ efMjapv17gz8YZXlGAnZtO7CaeeKc59eaDzlmQkBm1Yh9aiV6bUGeOYMlR6y5YcVWzz2
+ p4eRpebPzNBgAgbKqyRpa87pWc+4KeaojnaxE938pyAkd5iDnfnp2hmmQNTYYy0eSScB
+ yPNAqKm3cLmkxTDkXpTnYc2Ga8pqc3WIAbW5WsssHR6byfWiZjwaKNZRqUTbRCbCa9qt
+ 3ecQ==
+X-Gm-Message-State: AOAM531ufZYEjcU16xp4Wn3Kj/VyfjcLJTe9ixhZRdY9MlJPSQL0Wma5
+ 1fRRHYSZY3nO0qOfnXGOJw==
+X-Google-Smtp-Source: ABdhPJy+NhxjKJePpWqaAD37mFHhPh4qNfb6+Bmxc/y0RXg8NO0F1Fx0vK0+C9j4KWtf9vwRiuUBzQ==
+X-Received: by 2002:a05:6e02:1287:: with SMTP id
+ y7mr4538682ilq.63.1590707885705; 
+ Thu, 28 May 2020 16:18:05 -0700 (PDT)
+Received: from xps15 ([64.188.179.252])
+ by smtp.gmail.com with ESMTPSA id w26sm4128801ill.19.2020.05.28.16.18.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 May 2020 16:18:04 -0700 (PDT)
+Received: (nullmailer pid 861926 invoked by uid 1000);
+ Thu, 28 May 2020 23:18:03 -0000
+Date: Thu, 28 May 2020 17:18:03 -0600
+From: Rob Herring <robh@kernel.org>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 5/5] dt-bindings: timer: Add CLINT bindings
+Message-ID: <20200528231803.GA847232@bogus>
+References: <c0e9e625-daf8-b72f-2237-06018ff5d8a0@gmail.com>
+ <mhng-0995a264-b39c-4790-9aa5-b8c598b43ffd@palmerdabbelt-glaptop1>
 MIME-Version: 1.0
-References: <20200521133301.816665-1-anup.patel@wdc.com>
- <20200521133301.816665-3-anup.patel@wdc.com>
-In-Reply-To: <20200521133301.816665-3-anup.patel@wdc.com>
-From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 28 May 2020 16:09:26 -0700
-Message-ID: <CAOnJCUJJcerzrUjoJ-8gt3q8uMcetp4YyXHj-qucoQmfs+LGzg@mail.gmail.com>
-Subject: Re: [PATCH v5 2/6] RISC-V: Rename and move plic_find_hart_id() to
- arch directory
-To: Anup Patel <anup.patel@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <mhng-0995a264-b39c-4790-9aa5-b8c598b43ffd@palmerdabbelt-glaptop1>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_160939_179554_957CCFD0 
-X-CRM114-Status: GOOD (  17.95  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200528_161807_212379_AC5EA425 
+X-CRM114-Status: GOOD (  20.80  )
+X-Spam-Score: 0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
- [list.dnswl.org]
+ no trust [209.85.166.193 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.166.193 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [robherring2[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [robherring2[at]gmail.com]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,113 +92,76 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Jason Cooper <jason@lakedaemon.net>,
- Marc Zyngier <maz@kernel.org>, Anup Patel <anup@brainfault.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
+Cc: devicetree@vger.kernel.org, Damien Le Moal <Damien.LeMoal@wdc.com>,
+ aou@eecs.berkeley.edu, daniel.lezcano@linaro.org, anup@brainfault.org,
+ Anup Patel <Anup.Patel@wdc.com>, linux-kernel@vger.kernel.org,
+ seanga2@gmail.com, Atish Patra <Atish.Patra@wdc.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- linux-riscv <linux-riscv@lists.infradead.org>
+ Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 21, 2020 at 6:34 AM Anup Patel <anup.patel@wdc.com> wrote:
->
-> The plic_find_hart_id() can be useful to other interrupt controller
-> drivers (such as RISC-V local interrupt driver) so we rename this
-> function to riscv_of_parent_hartid() and place it in arch directory
-> along with riscv_of_processor_hartid().
->
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> ---
->  arch/riscv/include/asm/processor.h |  1 +
->  arch/riscv/kernel/cpu.c            | 16 ++++++++++++++++
->  drivers/irqchip/irq-sifive-plic.c  | 16 +---------------
->  3 files changed, 18 insertions(+), 15 deletions(-)
->
-> diff --git a/arch/riscv/include/asm/processor.h b/arch/riscv/include/asm/processor.h
-> index 3ddb798264f1..b1efd840003c 100644
-> --- a/arch/riscv/include/asm/processor.h
-> +++ b/arch/riscv/include/asm/processor.h
-> @@ -75,6 +75,7 @@ static inline void wait_for_interrupt(void)
->
->  struct device_node;
->  int riscv_of_processor_hartid(struct device_node *node);
-> +int riscv_of_parent_hartid(struct device_node *node);
->
->  extern void riscv_fill_hwcap(void);
->
-> diff --git a/arch/riscv/kernel/cpu.c b/arch/riscv/kernel/cpu.c
-> index 40a3c442ac5f..6d59e6906fdd 100644
-> --- a/arch/riscv/kernel/cpu.c
-> +++ b/arch/riscv/kernel/cpu.c
-> @@ -44,6 +44,22 @@ int riscv_of_processor_hartid(struct device_node *node)
->         return hart;
->  }
->
-> +/*
-> + * Find hart ID of the CPU DT node under which given DT node falls.
-> + *
-> + * To achieve this, we walk up the DT tree until we find an active
-> + * RISC-V core (HART) node and extract the cpuid from it.
-> + */
-> +int riscv_of_parent_hartid(struct device_node *node)
-> +{
-> +       for (; node; node = node->parent) {
-> +               if (of_device_is_compatible(node, "riscv"))
-> +                       return riscv_of_processor_hartid(node);
-> +       }
-> +
-> +       return -1;
-> +}
-> +
->  #ifdef CONFIG_PROC_FS
->
->  static void print_isa(struct seq_file *f, const char *isa)
-> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> index d9c53f85a68e..16d31d114c30 100644
-> --- a/drivers/irqchip/irq-sifive-plic.c
-> +++ b/drivers/irqchip/irq-sifive-plic.c
-> @@ -240,20 +240,6 @@ static void plic_handle_irq(struct pt_regs *regs)
->         csr_set(CSR_IE, IE_EIE);
->  }
->
-> -/*
-> - * Walk up the DT tree until we find an active RISC-V core (HART) node and
-> - * extract the cpuid from it.
-> - */
-> -static int plic_find_hart_id(struct device_node *node)
-> -{
-> -       for (; node; node = node->parent) {
-> -               if (of_device_is_compatible(node, "riscv"))
-> -                       return riscv_of_processor_hartid(node);
-> -       }
-> -
-> -       return -1;
-> -}
-> -
->  static void plic_set_threshold(struct plic_handler *handler, u32 threshold)
->  {
->         /* priority must be > threshold to trigger an interrupt */
-> @@ -330,7 +316,7 @@ static int __init plic_init(struct device_node *node,
->                 if (parent.args[0] != RV_IRQ_EXT)
->                         continue;
->
-> -               hartid = plic_find_hart_id(parent.np);
-> +               hartid = riscv_of_parent_hartid(parent.np);
->                 if (hartid < 0) {
->                         pr_warn("failed to parse hart ID for context %d.\n", i);
->                         continue;
-> --
-> 2.25.1
->
->
+On Tue, May 26, 2020 at 05:32:30PM -0700, Palmer Dabbelt wrote:
+> On Thu, 21 May 2020 23:29:36 PDT (-0700), seanga2@gmail.com wrote:
+> > On 5/22/20 1:54 AM, Anup Patel wrote:
+> > > On Fri, May 22, 2020 at 1:35 AM Sean Anderson <seanga2@gmail.com> wrote:
+> > > > 
+> > > > On 5/21/20 9:45 AM, Anup Patel wrote:
+> > > > > +Required properties:
+> > > > > +- compatible : "sifive,clint-1.0.0" and a string identifying the actual
+> > > > > +  detailed implementation in case that specific bugs need to be worked around.
+> > > > 
+> > > > Should the "riscv,clint0" compatible string be documented here? This
+> > > 
+> > > Yes, I forgot to add this compatible string. I will add in v2.
+> > > 
+> > > > peripheral is not really specific to sifive, as it is present in most
+> > > > rocket-chip cores.
+> > > 
+> > > I agree that CLINT is present in a lot of non-SiFive RISC-V SOCs and
+> > > FPGAs but this IP is only documented as part of SiFive FU540 SOC.
+> > > (Refer, https://static.dev.sifive.com/FU540-C000-v1.0.pdf)
+> > > 
+> > > The RISC-V foundation should host the CLINT spec independently
+> > > under https://github.com/riscv and make CLINT spec totally open.
+> > > 
+> > > For now, I have documented it just like PLIC DT bindings found at:
+> > > Documentation/devicetree/bindings/interrupt-controller/sifive,plic-1.0.0.txt
+> > 
+> > The PLIC seems to have its own RISC-V-sponsored documentation [1] which
+> > was split off from the older privileged specs. By your logic above,
+> > should it be renamed to riscv,plic0.txt (with a corresponding change in
+> > the documented compatible strings)?
+> > 
+> > [1] https://github.com/riscv/riscv-plic-spec
+> 
+> Let's propose tagging that PLIC spec as v1.0.0 in the platform spec group, but
+> I don't see a reason why that wouldn't be viable.  Assuming that's all OK, we
+> can start calling this a RISC-V PLIC (in addition to a SiFive PLIC, as they'll
+> be compatible).
+> 
+> > > 
+> > > If RISC-V maintainers agree then I will document it as "RISC-V CLINT".
+> > > 
+> > > @Palmer ?? @Paul ??
+> 
+> The CLINT is a SiFive spec.  It has open source RTL so it's been implemented in
+> other designs, but it's not a RISC-V spec.  The CLIC, which is a superset of
+> the CLINT, is a RISC-V spec.  IIRC it's not finished yet (it's the fast
+> interrupts task group), but presumably we should have a "riscv,clic-2.0.0" (or
+> whatever it ends up being called) compat string to go along with the
+> specification.
 
-Reviewed-by: Atish Patra <atish.patra@wdc.com>
+Whatever you all decide on, note that "sifive,<block><num>" is a SiFive 
+thing (as it is documented) and <num> corresponds to tag of the IP 
+implmentation (at least it is supposed to). So you can't just copy that 
+with 'riscv,<block><num>' unless you have the same IP versioning 
+and update the documentation.
 
--- 
-Regards,
-Atish
+Using a spec version is fine, but not standalone. You need 
+implementation specific compatible too because no one perfectly 
+implements any spec and/or there details a spec may not cover.
+
+Rob
 
