@@ -2,72 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFDF21E7008
-	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 01:08:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F1E7D1E700D
+	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 01:09:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nwgj6E9D3HYNDLpG/tXHp4hKNZ51Ebu1gu1zyX/LBmg=; b=nDq25r6pp36fjtuMghMyFKKLr
-	W1xCGOWUww6K7mofNZ6Whc9xsZnjWsmYP5dYe5AVsRkCjjCJfz0hqu9BwNukUNWhBmQFXKZ5dqTKk
-	hZB0Vpch9hF53LZpWgOsPBqTdxSVOg06j/VfyZ68we2RqnXxl98qIGiMW+ubPT4wLc1UG4bXdglJg
-	1g2jMTYQm6Zvk6+kY2CcNA32dln5BnwO/dtxtrfTgMpe3lsZsq7Qz9xehAuqsqjEC1J6Hj9WccJx6
-	EN0DArRl2I1UVyxUpR7fDC0uDZoghl9X1p2CRvxk2yFpJCEPXX7SCzdAY40ORmsxL8zf5PZvqscNS
-	VToRC4HZw==;
+	 bh=GpXkyS7vVv9FTAH7S5+DpOFQmjUaMM+ePrWJEGENvuo=; b=t1VjjQUtEVGe0siRgYTLjToGf
+	7DxvE4aEuzvYdFoUMT6nmMDS2Cx+0ScCwilm8bTnx+X9fmsomwLzsJFzJKVQkY9YfregKTz6MtX7t
+	O13ehjylQ1KHxqr1oYYm1Q034qBTGVjRmqdyjD6hKk9qGNkCxqr9RFtpwEnD6Jqx2I0xLxjbPkplw
+	+5de7ZAQJ9a5oUKlDsU1G+dqEF+7V8A6IFEs3m0XwRI7JfkiIK9/+M48ZsxgEMJ+rk31nmNN61zGB
+	S5hHwGcmLixornQt3ZjG2OC1H1UpIf18RxX2M+VmDZ3FqxtYRJIjsQBqk83kpZEYDyWTaUGJHZcAe
+	4jEK2FynQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeRdo-0000BW-Nv; Thu, 28 May 2020 23:08:48 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1jeReg-0000SB-NS; Thu, 28 May 2020 23:09:42 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeRdl-0000B9-Kp
- for linux-riscv@lists.infradead.org; Thu, 28 May 2020 23:08:47 +0000
-Received: by mail-wm1-x343.google.com with SMTP id r15so975145wmh.5
- for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 16:08:44 -0700 (PDT)
+ id 1jeRed-0000RI-4O
+ for linux-riscv@lists.infradead.org; Thu, 28 May 2020 23:09:40 +0000
+Received: by mail-wm1-x344.google.com with SMTP id f5so1009935wmh.2
+ for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 16:09:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nwgj6E9D3HYNDLpG/tXHp4hKNZ51Ebu1gu1zyX/LBmg=;
- b=eKBdtoMU2S5v42sEqcXy8Bcn6D3jlj+Zmc2RkpBWpuwt9pe6UCkgyQ9dviQ9CUBJ6U
- +j/FJ4/r0vEAA4ZuzSNHPOJrIeaIHWdyFazU5DVidj45KyO5GpIF2TdISzTu4QtGZWa/
- Yi8IPT0D68amZf9yrvlzQjdo2mTuu5mU/ToOU=
+ :cc; bh=GpXkyS7vVv9FTAH7S5+DpOFQmjUaMM+ePrWJEGENvuo=;
+ b=D4whbS/UshWlAvLJxUCbzHUeSluRxsQX+qSiJdSScDGH+1JBkWXskHDWLQCEWOohQN
+ dJQK6J896u99oDKZWAkWmKb7J0seMtAJMbVZYqWUZGl/4JW1DGQ08QRCBqDzEqVtd4WQ
+ +6/yQMoNotw8xQ1ZiD5bXcTlej/UFrAAhwe3M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nwgj6E9D3HYNDLpG/tXHp4hKNZ51Ebu1gu1zyX/LBmg=;
- b=WJdpQxEQrXhWqHvJsNC1Dmh0pOUSY8HSoKITRPg9GNMpixn1oe3/t9rj+tZ57xexL3
- FCynRKlbqwm1N34FHGbClioQEzPb5OKFOplidADDxfds9VEa9e+CXuzap2WLpKqMpJ8/
- fsts9u5k3LEubVPWTHANyS1E8+DXb6RfCn0jyLrnAKoEewMOWfLSlt5DL8XQ5H5LYcpS
- dH5J9JaXymSak0ep0cn3JcPofVRQOYf8SI5uPZxU7ZCQJmXcXDFAh7bJCXAmrjngCPUV
- rmAqRfRuElLy9wyFcd4egpGcSa1JsP25j9ZYOHy7fisMcwkAPywz5v9n7vmTRKGoC9it
- DJ0g==
-X-Gm-Message-State: AOAM533vNKhoBSGljNt+1lhcnMbbZ4nR1m0++8EyT1MlidN6GazIlwri
- rWCbeZZuyWTv3HV0FdjTOwOfgP3yXytBVxFkozew
-X-Google-Smtp-Source: ABdhPJw4kaEVV34t2cEZXq+mqdaNLLx7uzsUiCPUzRX2Ss5tayR3bmdPfnfs7awSp3in1+7tmPyjkiSOscIiMuSZfgo=
-X-Received: by 2002:a7b:c622:: with SMTP id p2mr5546999wmk.55.1590707322980;
- Thu, 28 May 2020 16:08:42 -0700 (PDT)
+ bh=GpXkyS7vVv9FTAH7S5+DpOFQmjUaMM+ePrWJEGENvuo=;
+ b=eaaSi4NQ/0s/1K+iAFEXCmY8rM+D4QkBfPdDG+zL4a9YuFVCXaFQ///v2kh5yK9Zfu
+ T1GX5FGLTyN7sM+dqWqdg40776wrvd4ervEvuC8Owcyd7+nvstyZLsJHQStodFbpW976
+ W166mEhhBDkH3dOGl96Q2IBg8Kd/jyQzKEaeaRxhYLdrnmovTETu2dm5Dj9Ed9wX6vYV
+ Di5uDmvBCclcswVGdhkeXU+EW5iDMlrQ8qgj1R/FnNwLV70Exohv2tUK8aeAKBkPzBni
+ f5FO0rH7V4gfuZkIVNZUpnwiUceCMx9pa6ZCkQQVUYQ8KpjyPWCLboPTbTeI8Pt5nmiV
+ usxw==
+X-Gm-Message-State: AOAM533xtUAuLVoCeGzMLf26YFhQWDq95GdMQhShtxMisAj+PNcKoRJJ
+ GHxK1trec9zKxeECr9rL7n9R0JBNKQVF7Y6hZesq
+X-Google-Smtp-Source: ABdhPJziYtIixceIrIWS3U3B1fj6vDkMc+6p4dpoZVeXiGvP5uccTm4Fr5yvsPFiQvuuC0xwvZBKPLWBdMJOTYLSSgA=
+X-Received: by 2002:a7b:c84b:: with SMTP id c11mr5395364wml.78.1590707377649; 
+ Thu, 28 May 2020 16:09:37 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200521133301.816665-1-anup.patel@wdc.com>
- <20200521133301.816665-2-anup.patel@wdc.com>
-In-Reply-To: <20200521133301.816665-2-anup.patel@wdc.com>
+ <20200521133301.816665-3-anup.patel@wdc.com>
+In-Reply-To: <20200521133301.816665-3-anup.patel@wdc.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 28 May 2020 16:08:31 -0700
-Message-ID: <CAOnJCULxy6N_FwhxTFH8ym7Xnpf1sOkyLEk7-Uap-xiUwZkywQ@mail.gmail.com>
-Subject: Re: [PATCH v5 1/6] RISC-V: self-contained IPI handling routine
+Date: Thu, 28 May 2020 16:09:26 -0700
+Message-ID: <CAOnJCUJJcerzrUjoJ-8gt3q8uMcetp4YyXHj-qucoQmfs+LGzg@mail.gmail.com>
+Subject: Re: [PATCH v5 2/6] RISC-V: Rename and move plic_find_hart_id() to
+ arch directory
 To: Anup Patel <anup.patel@wdc.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_160845_707639_E160ACCC 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20200528_160939_179554_957CCFD0 
+X-CRM114-Status: GOOD (  17.95  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -103,140 +104,91 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, May 21, 2020 at 6:34 AM Anup Patel <anup.patel@wdc.com> wrote:
 >
-> Currently, the IPI handling routine riscv_software_interrupt() does
-> not take any argument and also does not perform irq_enter()/irq_exit().
->
-> This patch makes IPI handling routine more self-contained by:
-> 1. Passing "pt_regs *" argument
-> 2. Explicitly doing irq_enter()/irq_exit()
-> 3. Explicitly save/restore "pt_regs *" using set_irq_regs()
->
-> With above changes, IPI handling routine does not depend on caller
-> function to perform irq_enter()/irq_exit() and save/restore of
-> "pt_regs *" hence its more self-contained. This also enables us
-> to call IPI handling routine from IRQCHIP drivers.
+> The plic_find_hart_id() can be useful to other interrupt controller
+> drivers (such as RISC-V local interrupt driver) so we rename this
+> function to riscv_of_parent_hartid() and place it in arch directory
+> along with riscv_of_processor_hartid().
 >
 > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > ---
->  arch/riscv/include/asm/irq.h |  1 -
->  arch/riscv/include/asm/smp.h |  3 +++
->  arch/riscv/kernel/irq.c      | 16 ++++++++++------
->  arch/riscv/kernel/smp.c      | 11 +++++++++--
->  4 files changed, 22 insertions(+), 9 deletions(-)
+>  arch/riscv/include/asm/processor.h |  1 +
+>  arch/riscv/kernel/cpu.c            | 16 ++++++++++++++++
+>  drivers/irqchip/irq-sifive-plic.c  | 16 +---------------
+>  3 files changed, 18 insertions(+), 15 deletions(-)
 >
-> diff --git a/arch/riscv/include/asm/irq.h b/arch/riscv/include/asm/irq.h
-> index 6e1b0e0325eb..0183e15ace66 100644
-> --- a/arch/riscv/include/asm/irq.h
-> +++ b/arch/riscv/include/asm/irq.h
-> @@ -13,7 +13,6 @@
->  #define NR_IRQS         0
+> diff --git a/arch/riscv/include/asm/processor.h b/arch/riscv/include/asm/processor.h
+> index 3ddb798264f1..b1efd840003c 100644
+> --- a/arch/riscv/include/asm/processor.h
+> +++ b/arch/riscv/include/asm/processor.h
+> @@ -75,6 +75,7 @@ static inline void wait_for_interrupt(void)
 >
->  void riscv_timer_interrupt(void);
-> -void riscv_software_interrupt(void);
+>  struct device_node;
+>  int riscv_of_processor_hartid(struct device_node *node);
+> +int riscv_of_parent_hartid(struct device_node *node);
 >
->  #include <asm-generic/irq.h>
+>  extern void riscv_fill_hwcap(void);
 >
-> diff --git a/arch/riscv/include/asm/smp.h b/arch/riscv/include/asm/smp.h
-> index f4c7cfda6b7f..40bb1c15a731 100644
-> --- a/arch/riscv/include/asm/smp.h
-> +++ b/arch/riscv/include/asm/smp.h
-> @@ -28,6 +28,9 @@ void show_ipi_stats(struct seq_file *p, int prec);
->  /* SMP initialization hook for setup_arch */
->  void __init setup_smp(void);
+> diff --git a/arch/riscv/kernel/cpu.c b/arch/riscv/kernel/cpu.c
+> index 40a3c442ac5f..6d59e6906fdd 100644
+> --- a/arch/riscv/kernel/cpu.c
+> +++ b/arch/riscv/kernel/cpu.c
+> @@ -44,6 +44,22 @@ int riscv_of_processor_hartid(struct device_node *node)
+>         return hart;
+>  }
 >
-> +/* Called from C code, this handles an IPI. */
-> +void handle_IPI(struct pt_regs *regs);
+> +/*
+> + * Find hart ID of the CPU DT node under which given DT node falls.
+> + *
+> + * To achieve this, we walk up the DT tree until we find an active
+> + * RISC-V core (HART) node and extract the cpuid from it.
+> + */
+> +int riscv_of_parent_hartid(struct device_node *node)
+> +{
+> +       for (; node; node = node->parent) {
+> +               if (of_device_is_compatible(node, "riscv"))
+> +                       return riscv_of_processor_hartid(node);
+> +       }
 > +
->  /* Hook for the generic smp_call_function_many() routine. */
->  void arch_send_call_function_ipi_mask(struct cpumask *mask);
+> +       return -1;
+> +}
+> +
+>  #ifdef CONFIG_PROC_FS
 >
-> diff --git a/arch/riscv/kernel/irq.c b/arch/riscv/kernel/irq.c
-> index 345c4f2eba13..bb0bfcd537e7 100644
-> --- a/arch/riscv/kernel/irq.c
-> +++ b/arch/riscv/kernel/irq.c
-> @@ -19,12 +19,15 @@ int arch_show_interrupts(struct seq_file *p, int prec)
+>  static void print_isa(struct seq_file *f, const char *isa)
+> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+> index d9c53f85a68e..16d31d114c30 100644
+> --- a/drivers/irqchip/irq-sifive-plic.c
+> +++ b/drivers/irqchip/irq-sifive-plic.c
+> @@ -240,20 +240,6 @@ static void plic_handle_irq(struct pt_regs *regs)
+>         csr_set(CSR_IE, IE_EIE);
+>  }
 >
->  asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
->  {
-> -       struct pt_regs *old_regs = set_irq_regs(regs);
-> +       struct pt_regs *old_regs;
->
-> -       irq_enter();
->         switch (regs->cause & ~CAUSE_IRQ_FLAG) {
->         case RV_IRQ_TIMER:
-> +               old_regs = set_irq_regs(regs);
-> +               irq_enter();
->                 riscv_timer_interrupt();
-> +               irq_exit();
-> +               set_irq_regs(old_regs);
->                 break;
->  #ifdef CONFIG_SMP
->         case RV_IRQ_SOFT:
-> @@ -32,19 +35,20 @@ asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
->                  * We only use software interrupts to pass IPIs, so if a non-SMP
->                  * system gets one, then we don't know what to do.
->                  */
-> -               riscv_software_interrupt();
-> +               handle_IPI(regs);
->                 break;
->  #endif
->         case RV_IRQ_EXT:
-> +               old_regs = set_irq_regs(regs);
-> +               irq_enter();
->                 handle_arch_irq(regs);
-> +               irq_exit();
-> +               set_irq_regs(old_regs);
->                 break;
->         default:
->                 pr_alert("unexpected interrupt cause 0x%lx", regs->cause);
->                 BUG();
->         }
-> -       irq_exit();
+> -/*
+> - * Walk up the DT tree until we find an active RISC-V core (HART) node and
+> - * extract the cpuid from it.
+> - */
+> -static int plic_find_hart_id(struct device_node *node)
+> -{
+> -       for (; node; node = node->parent) {
+> -               if (of_device_is_compatible(node, "riscv"))
+> -                       return riscv_of_processor_hartid(node);
+> -       }
 > -
-> -       set_irq_regs(old_regs);
->  }
->
->  void __init init_IRQ(void)
-> diff --git a/arch/riscv/kernel/smp.c b/arch/riscv/kernel/smp.c
-> index a65a8fa0c22d..b1d4f452f843 100644
-> --- a/arch/riscv/kernel/smp.c
-> +++ b/arch/riscv/kernel/smp.c
-> @@ -123,11 +123,14 @@ static inline void clear_ipi(void)
->                 clint_clear_ipi(cpuid_to_hartid_map(smp_processor_id()));
->  }
->
-> -void riscv_software_interrupt(void)
-> +void handle_IPI(struct pt_regs *regs)
+> -       return -1;
+> -}
+> -
+>  static void plic_set_threshold(struct plic_handler *handler, u32 threshold)
 >  {
-> +       struct pt_regs *old_regs = set_irq_regs(regs);
->         unsigned long *pending_ipis = &ipi_data[smp_processor_id()].bits;
->         unsigned long *stats = ipi_data[smp_processor_id()].stats;
+>         /* priority must be > threshold to trigger an interrupt */
+> @@ -330,7 +316,7 @@ static int __init plic_init(struct device_node *node,
+>                 if (parent.args[0] != RV_IRQ_EXT)
+>                         continue;
 >
-> +       irq_enter();
-> +
->         clear_ipi();
->
->         while (true) {
-> @@ -138,7 +141,7 @@ void riscv_software_interrupt(void)
->
->                 ops = xchg(pending_ipis, 0);
->                 if (ops == 0)
-> -                       return;
-> +                       goto done;
->
->                 if (ops & (1 << IPI_RESCHEDULE)) {
->                         stats[IPI_RESCHEDULE]++;
-> @@ -160,6 +163,10 @@ void riscv_software_interrupt(void)
->                 /* Order data access and bit testing. */
->                 mb();
->         }
-> +
-> +done:
-> +       irq_exit();
-> +       set_irq_regs(old_regs);
->  }
->
->  static const char * const ipi_names[] = {
+> -               hartid = plic_find_hart_id(parent.np);
+> +               hartid = riscv_of_parent_hartid(parent.np);
+>                 if (hartid < 0) {
+>                         pr_warn("failed to parse hart ID for context %d.\n", i);
+>                         continue;
 > --
 > 2.25.1
 >
