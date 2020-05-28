@@ -2,77 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7C8C1E57B7
-	for <lists+linux-riscv@lfdr.de>; Thu, 28 May 2020 08:41:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DE9C1E57BA
+	for <lists+linux-riscv@lfdr.de>; Thu, 28 May 2020 08:41:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Km2JD+kQ/unmKeqzGOP9FqhZeNEC29tSKtvmTopBc0=; b=kfMKFTIhRtg1uiTwhBP8t2mM0K
-	wEdtJB88mgjT+GZ1H49CI1a56XI06fMtgq/b1ZmxYtUr81xFa2WlQp9LFtdoMEkntcZlODRs1edbP
-	q07G8+8fYj2qOe/P31wxsj2j0Q9AaQNm8CnuDeDicPPUpM17GGHyOLcKRd9bzobDlcPQD+Bs8+jJR
-	ETkjpXe9f5XmJZnIH+vFdu4LFSD4zjko3MJZOPON9cjvDOtdsZiHNXH+y+nyhtn3dozUvr8ZEkV17
-	UbHz7LGWFwXa507HXGr2rEyaK1TkXXxM72TYb9Hs0OLVv0AV2/biSpx3xsJcBuQaC6VBZTK9S3dkc
-	Ygu7f3OA==;
+	bh=Q8iHAnjKh91djitETlf/VgG+9uuO5Xz5Jn9NWjplsUA=; b=ICuh58VnpjO17RPSwh3WNalwH6
+	7eSqkpBilVqigYK30UCniG1U0mpo01DR2vSK6pXjkYopETstlzyGoaXCJ8pZ9cM393wAKyS2lptyA
+	D0X8sutVyt4tStfu+YRwvlSeC4XNIVv+uQZKEaIk+JRbpkqgzortarYQ8A82tEPeZM7m74KHHzuwe
+	+6zO8QqUzA7DRfngQQUd4QvDIrchr2kN/HSG370vSktejy6SxKKIkVsyAvrytGge4SryIwQE+nsxJ
+	LHYJUhEzxqatjY1Ion4bfUXBmpGaZwv2aL5ldxxCMk4UZS4HyGo+8CaDWVH2pmWTsqllXNk3W8GjC
+	c/1Wxpug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeCEO-0003Jq-AA; Thu, 28 May 2020 06:41:32 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1jeCET-0003Q2-AJ; Thu, 28 May 2020 06:41:37 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeCED-00037E-CP
- for linux-riscv@lists.infradead.org; Thu, 28 May 2020 06:41:22 +0000
-Received: by mail-pl1-x641.google.com with SMTP id m7so11127029plt.5
- for <linux-riscv@lists.infradead.org>; Wed, 27 May 2020 23:41:21 -0700 (PDT)
+ id 1jeCEF-00039g-IA
+ for linux-riscv@lists.infradead.org; Thu, 28 May 2020 06:41:26 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id fs4so2621357pjb.5
+ for <linux-riscv@lists.infradead.org>; Wed, 27 May 2020 23:41:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=6Km2JD+kQ/unmKeqzGOP9FqhZeNEC29tSKtvmTopBc0=;
- b=eHAGvzKEfkhBWYR7ZCsH8Tv2QIgWzmVUGdrmWiJGdNpf9o2/WcSHdzFRXrXwoNLdjB
- GI7opFoA/tEJH+TAJ7y303pW57PSQIbj3FEDI/+KBiUKpHmFQRA5Q/94pvgoQ+zIxZOc
- Pz6fXgOtXpYdFmyVUxaI8oItfYVs0cigXLcYgBOpjLE2+fWxIvXN0dBZOESFFu4qoqOj
- pM9vXWSQGHRJEtdnxL40g4GstJOnv+/CJQ1iA4D1eSHxtgB8fGvs2UHZbQf3AXsDcYQ0
- aehZ1BIjbNF/cHFajFDl93sleF9YcpXZqD3Z+W1CCMv+D8qMp0M52rBwcYQ1pNF5qOBh
- MqOA==
+ bh=Q8iHAnjKh91djitETlf/VgG+9uuO5Xz5Jn9NWjplsUA=;
+ b=V4n+MZXQQuQeWiFHgTBOlDbJDNpfhZEJuAybcm5J9js85hkXIAlvWwBjYo6FCsIusd
+ /OMqLUHPDRTPQSofk4aVUFDy00qVQ/wWJ3rnq6ZeQBZIEI8G8bvpuNRTwj3Jz+LR0bSx
+ 9jWOa1/jyePW18Tusn9/ll2zPl3YpL0/xbMK1gPKTL8VsXwiMC7zrLCKDxG9ZxpD3Inf
+ kgUy9l44b+DEmzKnEoGQLXuzKeHvNaY2d1hpAHSfltS/3rGqo41DrlkUxcDYUaWfIyT+
+ 5MfE4zV24PMxpHh6RjxNYHcSlceF7zZ9HEA7sxmtjlE4+Bb4jTkGZuljcuf9aFX07r3j
+ 2KGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6Km2JD+kQ/unmKeqzGOP9FqhZeNEC29tSKtvmTopBc0=;
- b=PpvEA6IeaVZdt6Gt4SwcMa/p1bM3av3g1IUkCrnrVSRfK2FpRId2hHF5jqlzTnNZbr
- zbUAGJcEb9h7ceurCldJRPi8c1mKfpo7EchQgXT+DqPVhFjO46f0td+ZzjZXFMqyI2wA
- lAZo1blObmJShi3UxRMFjNlsXjL1DTcOssoI5pXyVNMS7ud5Jri+O5ZaS0y49hHmXhCQ
- 794DEx122+MqVPx0K3BO9wrcmiAifci6crLMCm8qs2lkziWeV/tn6EmGzPegeaZmsRHL
- bhdnyrqpVRDSnladsidg+KKQc5T9Jyjwwv5G5lFL7sDHzV1+EW1z5i073RgMYO8TpQ+U
- xbxw==
-X-Gm-Message-State: AOAM532aR17SzrkKGXA29yIc949ImdOAUJi2wBs6lzsL80SLDkr14KKt
- 5UZaUs/kiW83TelLtz3I0KIgYQ==
-X-Google-Smtp-Source: ABdhPJwTx3wBz8DBpNQDdEJvvEatFh22MfXQ3sZ4OnC9GJJZPTzdlaBNmmev3s8MVSRcJK7mqNg5Jw==
-X-Received: by 2002:a17:90a:20ae:: with SMTP id
- f43mr2292203pjg.29.1590648080155; 
- Wed, 27 May 2020 23:41:20 -0700 (PDT)
+ bh=Q8iHAnjKh91djitETlf/VgG+9uuO5Xz5Jn9NWjplsUA=;
+ b=ZU7RvglW/wcP3SwiURCJSBYDdWc7kM4fNMWjz7h9C+rikv3lKTX3O82WuzAMA9PseJ
+ eeQYPs3ngoCfmdLtJjIg28XpYh8CnmFgEQqxSxvm5DTAW+z/k+JFkjc/40epW1/1ggoH
+ 8C9UGH0APfKfDdOd8nNb50mzIbXBoDnwWKIV311lt0b+HUVig7qawGqE1OeN0ewJd4II
+ PVr5xiFiztjhdQk59snw3OB5zvn8A0XxOkKedPcLHftaQGJcv8EfkEOTVBFK03b/+q10
+ +A12JfSU+YpjcJhm0fhGjf0o6HLpXYbyTsEPIJah6NJZ53HYbecSaQwIyt9xAlibQwly
+ RKlA==
+X-Gm-Message-State: AOAM5339JdZqZL/RbfKutV79hg2tT2UxhqskDZSFcXRgny9x0EUZkM1+
+ JXXSILkb4c7aWYb8YNgICx+r9w==
+X-Google-Smtp-Source: ABdhPJy1zwXsZStCzwDaCuBrK+lkcL9Jm4ubqAdW1OomcTthZiiEPoBjM82lKF+LTdo48FWtnKymFg==
+X-Received: by 2002:a17:902:b601:: with SMTP id
+ b1mr2128010pls.39.1590648082243; 
+ Wed, 27 May 2020 23:41:22 -0700 (PDT)
 Received: from hsinchu02.internal.sifive.com
  (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id q29sm3773366pfg.79.2020.05.27.23.41.17
+ by smtp.gmail.com with ESMTPSA id q29sm3773366pfg.79.2020.05.27.23.41.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 May 2020 23:41:19 -0700 (PDT)
+ Wed, 27 May 2020 23:41:21 -0700 (PDT)
 From: Greentime Hu <greentime.hu@sifive.com>
 To: greentime.hu@sifive.com, guoren@linux.alibaba.com, vincent.chen@sifive.com,
  paul.walmsley@sifive.com, palmerdabbelt@google.com,
  linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org,
  oleg@redhat.com
-Subject: [RFC PATCH v5 06/13] riscv: Add vector feature to compile
-Date: Thu, 28 May 2020 14:40:54 +0800
-Message-Id: <ff4f02ebc92bef0b85769cea014e3bee42e7cd04.1590646208.git.greentime.hu@sifive.com>
+Subject: [RFC PATCH v5 07/13] riscv: Add has_vector/riscv_vsize to save vector
+ features.
+Date: Thu, 28 May 2020 14:40:55 +0800
+Message-Id: <e699220610dd3f114d1216c46e0930632d73a0e2.1590646208.git.greentime.hu@sifive.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <cover.1590646208.git.greentime.hu@sifive.com>
 References: <cover.1590646208.git.greentime.hu@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_234121_439284_11E52560 
-X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-CacheID: sfid-20200527_234123_645826_8E6912B7 
+X-CRM114-Status: UNSURE (   8.90  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -80,7 +81,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -107,47 +108,44 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Guo Ren <guoren@linux.alibaba.com>
 
-This patch adds a new config option which could enable assembler's
-vector feature.
+This patch is used to detect vector support status of CPU and use
+riscv_vsize to save the size of all the vector registers. It assumes
+all harts has the same capabilities in SMP system.
 
+[greentime.hu@sifive.com: add support for dynamic vlen]
+Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
 Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
 ---
- arch/riscv/Kconfig  | 9 +++++++++
- arch/riscv/Makefile | 1 +
- 2 files changed, 10 insertions(+)
+ arch/riscv/kernel/cpufeature.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 74f82cf4f781..3b742d949a09 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -305,6 +305,15 @@ config FPU
+diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
+index c8527d770c98..5a68a926da68 100644
+--- a/arch/riscv/kernel/cpufeature.c
++++ b/arch/riscv/kernel/cpufeature.c
+@@ -16,6 +16,10 @@ unsigned long elf_hwcap __read_mostly;
+ #ifdef CONFIG_FPU
+ bool has_fpu __read_mostly;
+ #endif
++#ifdef CONFIG_VECTOR
++bool has_vector __read_mostly;
++unsigned long riscv_vsize __read_mostly;
++#endif
  
- 	  If you don't know what to do here, say Y.
- 
-+config VECTOR
-+	bool "VECTOR support"
-+	default n
-+	help
-+	  Say N here if you want to disable all vector related procedure
-+	  in the kernel.
+ void riscv_fill_hwcap(void)
+ {
+@@ -73,4 +77,11 @@ void riscv_fill_hwcap(void)
+ 	if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
+ 		has_fpu = true;
+ #endif
 +
-+	  If you don't know what to do here, say Y.
-+
- endmenu
- 
- menu "Kernel features"
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index 957d064bead0..7c80c95582e3 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -46,6 +46,7 @@ riscv-march-aflags-$(CONFIG_ARCH_RV32I)		:= rv32ima
- riscv-march-aflags-$(CONFIG_ARCH_RV64I)		:= rv64ima
- riscv-march-aflags-$(CONFIG_FPU)		:= $(riscv-march-aflags-y)fd
- riscv-march-aflags-$(CONFIG_RISCV_ISA_C)	:= $(riscv-march-aflags-y)c
-+riscv-march-aflags-$(CONFIG_VECTOR)		:= $(riscv-march-aflags-y)v
- 
- KBUILD_CFLAGS += -march=$(riscv-march-cflags-y)
- KBUILD_AFLAGS += -march=$(riscv-march-aflags-y)
++#ifdef CONFIG_VECTOR
++	if (elf_hwcap & COMPAT_HWCAP_ISA_V) {
++		has_vector = true;
++		riscv_vsize = csr_read(CSR_VLENB) * 32;
++	}
++#endif
+ }
 -- 
 2.26.2
 
