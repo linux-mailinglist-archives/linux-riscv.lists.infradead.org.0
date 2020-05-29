@@ -2,85 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 294C91E72A8
-	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 04:40:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BC1B81E73EC
+	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 05:57:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=qr2b5fc6Y7X/KJYiwVWwhWo1665lu0KpHP2ObEzCVz4=; b=Zt6M2y1dJt8U+E
-	6ayMULaurQV+u1uTNXim5r29iwmpvbB5Wi2iyUfDNH3LYJV9U18CHwOocrjXUF7ajJuvadoco6Vpt
-	TsXdkS9NJ6EshZhz+jTPTwZ87dVaVGUQlzumITApJKiHF522zFp3O0yvWoIGwx5xRXbJ/yXSqL9qc
-	+zkl8D99xgx6fTGP/fnEWL/oqBYoemWZoxmYmm5gL37KTp4EveixxeUQ4DcPjHUyhZY0RrdcaUX+l
-	RYoo8O1ZpOZ8colAj3yY7R8nYbKwr+T0n4hDOUlWB24MEBGoaAXqwDq2kSEKt5/f36iFgYq92lM01
-	QWjIFPLRxB/JVsKqgHLQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=hTUz/DHRU5QzlOedofjSKhyi7eTdoAXNwTWC/Lv5VW0=; b=pJt5SfZsYOovgYWbu0iIwxlqL
+	sJbpYFLOSk+52mliIZIjxVkJPxaPJTjMxgfqc0M7wD+zwsjSgmyhG8mkdBV6FkREpQTb9lM/IP1u2
+	RBPaUSuGDsrGUsSXBZ7laNPQVh7erzP9Fpsp1k2mAm/VTedZRDf7TibmKUfsFiE9BxWjT0OGtctfR
+	G0bXZNYs6SzmFusIqZO9ZN9g1BjIl1QTIb3HoohIe3Qt0JJqqHwWtVXUc3NT44Ofp7LMqcZ2/f/ZV
+	92P5CtrKUxnITiA0fvBLSOxrzBhCIhuCJet+WKgxvB6U7neoA23O0adQa6pmGpR+GZbyo1e3KSUNP
+	dlJvU7/MA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeUwr-0005Pk-O2; Fri, 29 May 2020 02:40:41 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1jeW9T-0002Nn-Tu; Fri, 29 May 2020 03:57:47 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeUwm-0005P1-L3
- for linux-riscv@lists.infradead.org; Fri, 29 May 2020 02:40:39 +0000
-Received: by mail-pg1-x541.google.com with SMTP id c75so621156pga.3
- for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 19:40:31 -0700 (PDT)
+ id 1jeW9Q-0002MY-Jc
+ for linux-riscv@lists.infradead.org; Fri, 29 May 2020 03:57:46 +0000
+Received: by mail-wm1-x343.google.com with SMTP id c71so1579675wmd.5
+ for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 20:57:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=qr2b5fc6Y7X/KJYiwVWwhWo1665lu0KpHP2ObEzCVz4=;
- b=wORpc4eLpF5AZw8xKcLdgsH6Eouojq4wVcCQC3S6HuAdde5MLOwrnGPCeGKYk8xDbk
- ry+PgYdRqzMai8wR1zHsqSnLVHNWq8OVIkr61P46Vl8lbGM7d/4s1soOp0fpebMjt0jW
- 5yUpapqTKpMzZdzJGARf3rQjzqBTVYiNsDBGNen0dgpF9tlvEvBx4i93iwFJ4QYkkotL
- oum8Ps5J9o1jCDEUsuDiQtJJG4FSG6EZ5eL6O5RT8B+etOPsipF1RpQPz4akxZgBxPQX
- 6iVmFXVafNNCHdg25p3nj0BBOTybwYnkkj0hN84UXOp/hQNzbD1NGCL9zsxwyt91KpGd
- apog==
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hTUz/DHRU5QzlOedofjSKhyi7eTdoAXNwTWC/Lv5VW0=;
+ b=eVgRnHVYENb1kH9fslo7+LSj+oDvjrmTb7JfFDZMhrizogMrpyn6CZp7qhtIwI0znX
+ yb0CSXeDy2IUyUvmYjvkROmdAyem5Zmr15LCJAJKd7iebKAcGWua6v2vVb8pgbOG4KHE
+ r2AFmZHLhIlJWZPcO3Lh9JiR9BtdZXgVCipKZYDBiixlBAwa5U1T0wOEH0IkS/01o45s
+ Li6QUoYh0qhEOfk6C2K+Mx+u4qtxQzkYqtbDrjTWyPhYLjVQQemrAReQLtlPgt0tE/Sy
+ B4wov3NMpvf5CCBqkQkQF4Zt1NQtJaQYYg07EnTzQhKY0BHr8g324P+6epDLt7bG7TFa
+ 4nnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=qr2b5fc6Y7X/KJYiwVWwhWo1665lu0KpHP2ObEzCVz4=;
- b=jzFnlF4vYKnmg4B98kLXQFWCPbIszjdkDiv3zT+w+D3XCXzocE6HBjVZasWqFoOe6K
- jxdUrrhF8hbTKiRyPWDI9vQlcGpNaqIdmlY3iLFaaufGR1HhsalX/SCT2lTtBc/jhZ7U
- DAruv5u3/DQ68WEit5WsLi1Z+WWQ5+DQQuAmS3HkACpbA/STeevU9Am4jrRSiCVA4vw2
- jyBjuu0z/tUovxt497ua6TAKa7Zo/GusRbEIpXjLpG1PLOZqyjo53WWWKCspLhSRltC2
- oSyirGbbOECtl84n8AsY2BURVq5K6c1EZmfmn+phEeaHGjOuikiq46neR1/zKse+eiu0
- sd+Q==
-X-Gm-Message-State: AOAM533gKBlRRO4brGCOs3mEbyVmTRcb7NcyTAi9c3kdg5AXGnLVT+iF
- EvrKi/0+SnZ2lNiDmIityL6akxmoVp12pQ==
-X-Google-Smtp-Source: ABdhPJzd2IYPDdm2LGUKaAnhXH+zQzRriCKTKlqIUdGqm/49Mj8QKWur6slyDIzIiPSTPLSC2bxM6Q==
-X-Received: by 2002:a63:b219:: with SMTP id x25mr6139251pge.66.1590720030132; 
- Thu, 28 May 2020 19:40:30 -0700 (PDT)
-Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
- [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id i10sm5889004pfa.166.2020.05.28.19.40.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 May 2020 19:40:29 -0700 (PDT)
-Date: Thu, 28 May 2020 19:40:29 -0700 (PDT)
-X-Google-Original-Date: Thu, 28 May 2020 19:39:37 PDT (-0700)
-Subject: Re: [PATCH v5 3/6] irqchip: RISC-V per-HART local interrupt
- controller driver
-In-Reply-To: <20200521133301.816665-4-anup.patel@wdc.com>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: Anup Patel <Anup.Patel@wdc.com>
-Message-ID: <mhng-0403a86a-bda6-4e69-ad73-71fb06c49e40@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hTUz/DHRU5QzlOedofjSKhyi7eTdoAXNwTWC/Lv5VW0=;
+ b=lzqc9qyeotFDW4qNiXSjsNBedRefva2VCbkPGVJ6OVdfwaf+hmVIVMk2BrrrsLpFIt
+ QwTMVdKWxyV5Y5S8gdPz0Go2AnCka4acBTGRD+IYSzdNp/cxdMiqojKSP1iY0IadadSa
+ 07RsyShVEwvvJAp0f7Uc7lJNB1zbTYxs3uHcmj/r4wd0DLtG5/BOXDIThs2Xs31TMd7d
+ ZrEecMn4UEbypxVfhk3y92EhcrXUgSw8FOgAWxEI0dSQK++IbW3SayOwTv1WfVhmCNDG
+ bXx2aLbDAiOUFHVnOwOl34xP4I+ZzxPNBeuzNnfQDdEktTLuXCNalACmtdMTmpJ9yqVM
+ oo4Q==
+X-Gm-Message-State: AOAM530huLyVUtOoZUUJUf+fBnazH2TOdE5FOCEWnk9OxKfbWL21ujVf
+ mDxmU2uQdrErewPh+6jcBqIH4ZIPyBc6a1NMhhwkPg==
+X-Google-Smtp-Source: ABdhPJyEoFD5JPpXQvMjSGeKZ0rm6eFwCWwPVyfb29G+qBk0LcMuS7b5AsH7dE+2YoIKzqwAZdNJK8dah8V1U2gjaks=
+X-Received: by 2002:a1c:9ac1:: with SMTP id c184mr6263627wme.152.1590724658339; 
+ Thu, 28 May 2020 20:57:38 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200521133301.816665-1-anup.patel@wdc.com>
+ <mhng-72b70f0c-28d7-425b-b45a-a132cf27e894@palmerdabbelt-glaptop1>
+In-Reply-To: <mhng-72b70f0c-28d7-425b-b45a-a132cf27e894@palmerdabbelt-glaptop1>
+From: Anup Patel <anup@brainfault.org>
+Date: Fri, 29 May 2020 09:27:26 +0530
+Message-ID: <CAAhSdy0zXh46P5WPZHmQ_PjwfOEWkh77EZ-_CroH1Eb1c3fDJg@mail.gmail.com>
+Subject: Re: [PATCH v5 0/6] New RISC-V Local Interrupt Controller Driver
+To: Palmer Dabbelt <palmer@dabbelt.com>, Marc Zyngier <maz@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_194036_751936_1507051B 
-X-CRM114-Status: GOOD (  37.05  )
+X-CRM114-CacheID: sfid-20200528_205744_699396_5B1E31D5 
+X-CRM114-Status: GOOD (  26.85  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:343 listed in]
  [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -95,534 +88,134 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, jason@lakedaemon.net, Marc Zyngier <maz@kernel.org>,
- anup@brainfault.org, daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org,
- Atish Patra <Atish.Patra@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Jason Cooper <jason@lakedaemon.net>, Anup Patel <Anup.Patel@wdc.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Atish Patra <Atish.Patra@wdc.com>, Albert Ou <aou@eecs.berkeley.edu>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
- linux-riscv@lists.infradead.org
+ Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, 21 May 2020 06:32:58 PDT (-0700), Anup Patel wrote:
-> The RISC-V per-HART local interrupt controller manages software
-> interrupts, timer interrupts, external interrupts (which are routed
-> via the platform level interrupt controller) and other per-HART
-> local interrupts.
+On Thu, May 28, 2020 at 12:17 AM Palmer Dabbelt <palmer@dabbelt.com> wrote:
 >
-> This patch adds a driver for the RISC-V local interrupt controller.
-> It is a major re-write over perviously submitted version.
-> (Refer, https://www.spinics.net/lists/devicetree/msg241230.html)
+> On Thu, 21 May 2020 06:32:55 PDT (-0700), Anup Patel wrote:
+> > This patchset provides a new RISC-V Local Interrupt Controller Driver
+> > for managing per-CPU local interrupts. The overall approach is inspired
+> > from the way per-CPU local interrupts are handled by Linux ARM64 and
+> > ARM GICv3 driver.
+> >
+> > Few advantages of this new driver over previous one are:
+> > 1. All local interrupts are registered as per-CPU interrupts
+> > 2. The RISC-V timer driver can register timer interrupt handler
+> >    using kernel irq subsystem without relying on arch/riscv to
+> >    explicitly call it's interrupt handler
+> > 3. The KVM RISC-V can use this driver to implement interrupt
+> >    handler for per-HART guest external interrupt defined by
+> >    the RISC-V H-Extension
+> > 4. In future, we can develop drivers for devices with per-HART
+> >    interrupts without changing arch code or this driver (example,
+> >    CLINT timer driver for RISC-V M-mode kernel)
+> >
+> > With this patchset, output of "cat /proc/interrupts" looks as follows:
+> >            CPU0       CPU1       CPU2       CPU3
+> >   2:        379          0          0          0  SiFive PLIC  10  ttyS0
+> >   3:        591          0          0          0  SiFive PLIC   8  virtio0
+> >   5:       5079      10821       8435      12984  RISC-V INTC   5  riscv-timer
+> > IPI0:      2045       2537        891        870  Rescheduling interrupts
+> > IPI1:         9        269         91        168  Function call interrupts
+> > IPI2:         0          0          0          0  CPU stop interrupts
+> >
+> > The patchset is based up Linux-5.7-rc6 and can be found at riscv_intc_v5
+> > branch of: https://github.com/avpatel/linux.git
+> >
+> > This series is tested on:
+> >  1. QEMU RV64 virt machine using Linux RISC-V S-mode
+> >  2. QEMU RV32 virt machine using Linux RISC-V S-mode
+> >  3. QEMU RV64 virt machine using Linux RISC-V M-mode (i.e. NoMMU)
+> >
+> > Changes since v4:
+> >  - Rebased to Linux-5.7-rc6 and multi-PLIC improvement patches
+> >  - Added separate patch to force select RISCV_INTC for CONFIG_RISCV
+> >  - Fixed the driver for Linux RISC-V NoMMU
+> >
+> > Changes since v3:
+> >  - Rebased to Linux-5.6-rc5 and Atish's PLIC patches
+> >  - Added separate patch to rename and move plic_find_hart_id()
+> >    to arch directory
+> >  - Use riscv_of_parent_hartid() in riscv_intc_init() instead of
+> >    atomic counter
+> >
+> > Changes since v2:
+> >  - Dropped PATCH2 since it was merged long-time back
+> >  - Rebased series from Linux-4.19-rc2 to Linux-5.6-rc2
+> >
+> > Changes since v1:
+> >  - Removed changes related to puggable IPI triggering
+> >  - Separate patch for self-contained IPI handling routine
+> >  - Removed patch for GENERIC_IRQ kconfig options
+> >  - Added patch to remove do_IRQ() function
+> >  - Rebased upon Atish's SMP patches
+> >
+> > Anup Patel (6):
+> >   RISC-V: self-contained IPI handling routine
+> >   RISC-V: Rename and move plic_find_hart_id() to arch directory
+> >   irqchip: RISC-V per-HART local interrupt controller driver
+> >   clocksource/drivers/timer-riscv: Use per-CPU timer interrupt
+> >   RISC-V: Remove do_IRQ() function
+> >   RISC-V: Force select RISCV_INTC for CONFIG_RISCV
+> >
+> >  arch/riscv/Kconfig                     |   2 +
+> >  arch/riscv/include/asm/irq.h           |   5 -
+> >  arch/riscv/include/asm/processor.h     |   1 +
+> >  arch/riscv/include/asm/smp.h           |   3 +
+> >  arch/riscv/kernel/cpu.c                |  16 +++
+> >  arch/riscv/kernel/entry.S              |   4 +-
+> >  arch/riscv/kernel/irq.c                |  33 +-----
+> >  arch/riscv/kernel/smp.c                |  11 +-
+> >  arch/riscv/kernel/traps.c              |   2 -
+> >  drivers/clocksource/timer-riscv.c      |  30 ++++-
+> >  drivers/irqchip/Kconfig                |  13 +++
+> >  drivers/irqchip/Makefile               |   1 +
+> >  drivers/irqchip/irq-riscv-intc.c       | 150 +++++++++++++++++++++++++
+> >  drivers/irqchip/irq-sifive-plic.c      |  52 +++++----
+> >  include/linux/cpuhotplug.h             |   1 +
+> >  include/linux/irqchip/irq-riscv-intc.h |  20 ++++
+> >  16 files changed, 280 insertions(+), 64 deletions(-)
+> >  create mode 100644 drivers/irqchip/irq-riscv-intc.c
+> >  create mode 100644 include/linux/irqchip/irq-riscv-intc.h
 >
-> Few advantages of this new driver over previous one are:
-> 1. All local interrupts are registered as per-CPU interrupts
-> 2. The RISC-V timer driver can register timer interrupt handler
->    using kernel irq subsystem without relying on arch/riscv to
->    explicitly call it's interrupt handler
-> 3. The KVM RISC-V can use this driver to implement interrupt
->    handler for per-HART guest external interrupt defined by
->    the RISC-V H-Extension
-> 4. In future, we can develop drivers for devices with per-HART
->    interrupts without changing arch code or this driver (example,
->    CLINT timer driver for RISC-V M-mode kernel)
+> So I read through this a bit, and while I haven't gone through every line of
+> code I'm somewhat inclined toward taking it.
 >
-> The RISC-V INTC driver is compliant with RISC-V Hart-Level Interrupt
-> Controller DT bindings located at:
-> Documentation/devicetree/bindings/interrupt-controller/riscv,cpu-intc.txt
+> During the original RISC-V port submission we went back and forth between
+> having this first-level interrupt controller in arch/riscv/ vs
+> drivers/irqchip/.  The original deciding factor was that the ISA mandated the
+> interrupt controller, but as that's proving to be less and less the case every
+> day (with the CLIC and M-mode Linux) it certainly seem sane to move all our
+> interrupt controller drivers out of arch/riscv/.
 >
-> Signed-off-by: Palmer Dabbelt <palmer@dabbelt.com>
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> ---
->  arch/riscv/Kconfig                     |   1 +
->  arch/riscv/include/asm/irq.h           |   2 -
->  arch/riscv/kernel/irq.c                |  33 +-----
->  arch/riscv/kernel/traps.c              |   2 -
->  drivers/irqchip/Kconfig                |  13 ++
->  drivers/irqchip/Makefile               |   1 +
->  drivers/irqchip/irq-riscv-intc.c       | 158 +++++++++++++++++++++++++
->  drivers/irqchip/irq-sifive-plic.c      |  38 +++++-
->  include/linux/cpuhotplug.h             |   1 +
->  include/linux/irqchip/irq-riscv-intc.h |  20 ++++
->  10 files changed, 229 insertions(+), 40 deletions(-)
->  create mode 100644 drivers/irqchip/irq-riscv-intc.c
->  create mode 100644 include/linux/irqchip/irq-riscv-intc.h
+> This is certainly a step in the right direction, and it handles some of the
+> more glaring issues (iscv_timer_interrupt and lacking IRQs for the CLINT).  I
+> think we should just go ahead and merge it, even though there might be some
+> more refactoring to do when we eventually end up with another interrupt
+> controller.
 >
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 90a008e28f7e..822cb0e1a380 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -40,6 +40,7 @@ config RISCV
->  	select HAVE_PERF_REGS
->  	select HAVE_PERF_USER_STACK_DUMP
->  	select HAVE_SYSCALL_TRACEPOINTS
-> +	select HANDLE_DOMAIN_IRQ
->  	select IRQ_DOMAIN
->  	select SPARSE_IRQ
->  	select SYSCTL_EXCEPTION_TRACE
-> diff --git a/arch/riscv/include/asm/irq.h b/arch/riscv/include/asm/irq.h
-> index 0183e15ace66..a9e5f07a7e9c 100644
-> --- a/arch/riscv/include/asm/irq.h
-> +++ b/arch/riscv/include/asm/irq.h
-> @@ -10,8 +10,6 @@
->  #include <linux/interrupt.h>
->  #include <linux/linkage.h>
->
-> -#define NR_IRQS         0
-> -
->  void riscv_timer_interrupt(void);
->
->  #include <asm-generic/irq.h>
-> diff --git a/arch/riscv/kernel/irq.c b/arch/riscv/kernel/irq.c
-> index bb0bfcd537e7..eb8777642ce6 100644
-> --- a/arch/riscv/kernel/irq.c
-> +++ b/arch/riscv/kernel/irq.c
-> @@ -7,7 +7,6 @@
->
->  #include <linux/interrupt.h>
->  #include <linux/irqchip.h>
-> -#include <linux/irqdomain.h>
->  #include <linux/seq_file.h>
->  #include <asm/smp.h>
->
-> @@ -19,39 +18,13 @@ int arch_show_interrupts(struct seq_file *p, int prec)
->
->  asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
->  {
-> -	struct pt_regs *old_regs;
-> -
-> -	switch (regs->cause & ~CAUSE_IRQ_FLAG) {
-> -	case RV_IRQ_TIMER:
-> -		old_regs = set_irq_regs(regs);
-> -		irq_enter();
-> -		riscv_timer_interrupt();
-> -		irq_exit();
-> -		set_irq_regs(old_regs);
-> -		break;
-> -#ifdef CONFIG_SMP
-> -	case RV_IRQ_SOFT:
-> -		/*
-> -		 * We only use software interrupts to pass IPIs, so if a non-SMP
-> -		 * system gets one, then we don't know what to do.
-> -		 */
-> -		handle_IPI(regs);
-> -		break;
-> -#endif
-> -	case RV_IRQ_EXT:
-> -		old_regs = set_irq_regs(regs);
-> -		irq_enter();
-> +	if (handle_arch_irq)
->  		handle_arch_irq(regs);
-> -		irq_exit();
-> -		set_irq_regs(old_regs);
-> -		break;
-> -	default:
-> -		pr_alert("unexpected interrupt cause 0x%lx", regs->cause);
-> -		BUG();
-> -	}
->  }
->
->  void __init init_IRQ(void)
->  {
->  	irqchip_init();
-> +	if (!handle_arch_irq)
-> +		panic("No interrupt controller found.");
->  }
-> diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
-> index 7f58fa53033f..f48c76aadbf3 100644
-> --- a/arch/riscv/kernel/traps.c
-> +++ b/arch/riscv/kernel/traps.c
-> @@ -178,6 +178,4 @@ void trap_init(void)
->  	csr_write(CSR_SCRATCH, 0);
->  	/* Set the exception vector address */
->  	csr_write(CSR_TVEC, &handle_exception);
-> -	/* Enable interrupts */
-> -	csr_write(CSR_IE, IE_SIE);
->  }
-> diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
-> index a85aada04a64..95d6137a8117 100644
-> --- a/drivers/irqchip/Kconfig
-> +++ b/drivers/irqchip/Kconfig
-> @@ -493,6 +493,19 @@ config TI_SCI_INTA_IRQCHIP
->  	  If you wish to use interrupt aggregator irq resources managed by the
->  	  TI System Controller, say Y here. Otherwise, say N.
->
-> +config RISCV_INTC
-> +	bool "RISC-V Local Interrupt Controller"
-> +	depends on RISCV
-> +	default y
-> +	help
-> +	   This enables support for the per-HART local interrupt controller
-> +	   found in standard RISC-V systems.  The per-HART local interrupt
-> +	   controller handles timer interrupts, software interrupts, and
-> +	   hardware interrupts. Without a per-HART local interrupt controller,
-> +	   a RISC-V system will be unable to handle any interrupts.
-> +
-> +	   If you don't know what to do here, say Y.
-> +
->  config SIFIVE_PLIC
->  	bool "SiFive Platform-Level Interrupt Controller"
->  	depends on RISCV
-> diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
-> index 37bbe39bf909..b8319f045472 100644
-> --- a/drivers/irqchip/Makefile
-> +++ b/drivers/irqchip/Makefile
-> @@ -98,6 +98,7 @@ obj-$(CONFIG_NDS32)			+= irq-ativic32.o
->  obj-$(CONFIG_QCOM_PDC)			+= qcom-pdc.o
->  obj-$(CONFIG_CSKY_MPINTC)		+= irq-csky-mpintc.o
->  obj-$(CONFIG_CSKY_APB_INTC)		+= irq-csky-apb-intc.o
-> +obj-$(CONFIG_RISCV_INTC)		+= irq-riscv-intc.o
->  obj-$(CONFIG_SIFIVE_PLIC)		+= irq-sifive-plic.o
->  obj-$(CONFIG_IMX_IRQSTEER)		+= irq-imx-irqsteer.o
->  obj-$(CONFIG_IMX_INTMUX)		+= irq-imx-intmux.o
-> diff --git a/drivers/irqchip/irq-riscv-intc.c b/drivers/irqchip/irq-riscv-intc.c
-> new file mode 100644
-> index 000000000000..2f364e6a87f9
-> --- /dev/null
-> +++ b/drivers/irqchip/irq-riscv-intc.c
-> @@ -0,0 +1,158 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2012 Regents of the University of California
-> + * Copyright (C) 2017-2018 SiFive
-> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-> + */
-> +
-> +#define pr_fmt(fmt) "riscv-intc: " fmt
-> +#include <linux/atomic.h>
-> +#include <linux/bits.h>
-> +#include <linux/cpu.h>
-> +#include <linux/irq.h>
-> +#include <linux/irqchip.h>
-> +#include <linux/irqchip/irq-riscv-intc.h>
-> +#include <linux/irqdomain.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/smp.h>
-> +
-> +static struct device_node *intc_domain_node;
-> +static struct irq_domain *intc_domain;
-> +
-> +static asmlinkage void riscv_intc_irq(struct pt_regs *regs)
-> +{
-> +	struct pt_regs *old_regs;
-> +	unsigned long cause = regs->cause & ~CAUSE_IRQ_FLAG;
-> +
-> +	if (unlikely(cause >= BITS_PER_LONG))
-> +		panic("unexpected interrupt cause");
-> +
-> +	switch (cause) {
-> +	case RV_IRQ_TIMER:
-> +		old_regs = set_irq_regs(regs);
-> +		irq_enter();
-> +		riscv_timer_interrupt();
-> +		irq_exit();
-> +		set_irq_regs(old_regs);
-> +		break;
-> +#ifdef CONFIG_SMP
-> +	case RV_IRQ_SOFT:
-> +		/*
-> +		 * We only use software interrupts to pass IPIs, so if a
-> +		 * non-SMP system gets one, then we don't know what to do.
-> +		 */
-> +		handle_IPI(regs);
-> +		break;
-> +#endif
-> +	default:
-> +		handle_domain_irq(intc_domain, cause, regs);
-> +		break;
-> +	}
-> +}
-> +
-> +/*
-> + * On RISC-V systems local interrupts are masked or unmasked by writing
-> + * the SIE (Supervisor Interrupt Enable) CSR.  As CSRs can only be written
-> + * on the local hart, these functions can only be called on the hart that
-> + * corresponds to the IRQ chip.
-> + */
-> +
-> +static void riscv_intc_irq_mask(struct irq_data *d)
-> +{
-> +	csr_clear(CSR_IE, 1 << (long)d->hwirq);
-> +}
-> +
-> +static void riscv_intc_irq_unmask(struct irq_data *d)
-> +{
-> +	csr_set(CSR_IE, 1 << (long)d->hwirq);
-> +}
-> +
-> +static int riscv_intc_cpu_starting(unsigned int cpu)
-> +{
-> +	csr_write(CSR_IE, 1UL << RV_IRQ_SOFT);
-> +	csr_write(CSR_IP, 0);
-> +	return 0;
-> +}
-> +
-> +static int riscv_intc_cpu_dying(unsigned int cpu)
-> +{
-> +	csr_clear(CSR_IE, 1UL << RV_IRQ_SOFT);
-> +	return 0;
-> +}
-> +
-> +static struct irq_chip riscv_intc_chip = {
-> +	.name = "RISC-V INTC",
-> +	.irq_mask = riscv_intc_irq_mask,
-> +	.irq_unmask = riscv_intc_irq_unmask,
-> +};
-> +
-> +static int riscv_intc_domain_map(struct irq_domain *d, unsigned int irq,
-> +				 irq_hw_number_t hwirq)
-> +{
-> +	irq_set_percpu_devid(irq);
-> +	irq_domain_set_info(d, irq, hwirq, &riscv_intc_chip, d->host_data,
-> +			    handle_percpu_devid_irq, NULL, NULL);
-> +	irq_set_status_flags(irq, IRQ_NOAUTOEN);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct irq_domain_ops riscv_intc_domain_ops = {
-> +	.map	= riscv_intc_domain_map,
-> +	.xlate	= irq_domain_xlate_onecell,
-> +};
-> +
-> +/* Get the OF device node used by INTC irq domain */
-> +struct device_node *riscv_of_intc_domain_node(void)
-> +{
-> +	return intc_domain_node;
-> +}
-> +EXPORT_SYMBOL_GPL(riscv_of_intc_domain_node);
-> +
-> +static int __init riscv_intc_init(struct device_node *node,
-> +				  struct device_node *parent)
-> +{
-> +	int hartid;
-> +
-> +	/*
-> +	 * The DT will have one INTC DT node under each CPU (or HART)
-> +	 * DT node so riscv_intc_init() function will be called once
-> +	 * for each INTC DT node. We only need INTC initialization for
-> +	 * the INTC DT node belonging to boot CPU (or boot HART).
-> +	 */
-> +	hartid = riscv_of_parent_hartid(node);
-> +	if (hartid < 0)
-> +		return 0;
+> I think it's best if this all goes in through a single tree, as it seems more
+> work than it's worth to split it up.  I'm happy to take it through my tree if
+> that's OK with the irqchip folks?
 
-This should at least be a warning, as it's an invalid device tree.
+A small heads up...
 
-> +	if (riscv_hartid_to_cpuid(hartid) != smp_processor_id())
-> +		return 0;
+Marc has queued a few PLIC improvement patches for Linux-next.
+(https://patchwork.kernel.org/cover/11555051/)
 
-There should be a comment about this one, as it only works becuase there's one
-CPU up and running while interrupts are being enabled.
+This series (particularly PATCH3) is based upon above mentioned
+PLIC patches.
 
-> +
-> +	intc_domain = irq_domain_add_linear(node, BITS_PER_LONG,
-> +					    &riscv_intc_domain_ops, NULL);
-> +	if (!intc_domain)
-> +		goto error_add_linear;
-> +
-> +	/*
-> +	 * We save the DT node used for creating irq domain and provide
-> +	 * it to other drivers using iscv_of_intc_domain_node() function.
+Apart from above, I don't see any potential merge conflicts.
 
-Missing the "r" in iscv_of_intc_domain_node
-
-> +	 */
-> +	intc_domain_node = of_node_get(node);
-> +
-> +	set_handle_irq(&riscv_intc_irq);
-
-So there's now this implicit assumption that every CPU node has a
-riscv,cpu-intc.  That's probably fine, as we don't have any other first-level
-interrupt controllers, but at least whacking a warning if set_handle_irq()
-fails seems prudent.  It'd be best to actually check that assumption (maybe
-before quitting above?) and actually installing the percpu OF nodes, but that
-would take a performance hit so I'm not sure it's worth it.
-
-> +
-> +	cpuhp_setup_state(CPUHP_AP_IRQ_RISCV_STARTING,
-> +			  "irqchip/riscv/intc:starting",
-> +			  riscv_intc_cpu_starting,
-> +			  riscv_intc_cpu_dying);
-> +
-> +	pr_info("%lu local interrupts mapped\n", (long)BITS_PER_LONG);
-> +
-> +	return 0;
-> +
-> +error_add_linear:
-> +	pr_warn("unable to add IRQ domain\n");
-> +	return -ENXIO;
-> +}
-> +
-> +IRQCHIP_DECLARE(riscv, "riscv,cpu-intc", riscv_intc_init);
-> diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> index 16d31d114c30..4f9b2877aa9d 100644
-> --- a/drivers/irqchip/irq-sifive-plic.c
-> +++ b/drivers/irqchip/irq-sifive-plic.c
-> @@ -9,6 +9,8 @@
->  #include <linux/io.h>
->  #include <linux/irq.h>
->  #include <linux/irqchip.h>
-> +#include <linux/irqchip/chained_irq.h>
-> +#include <linux/irqchip/irq-riscv-intc.h>
->  #include <linux/irqdomain.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> @@ -60,6 +62,7 @@
->  #define	PLIC_ENABLE_THRESHOLD		0
->
->  struct plic_priv {
-> +	int parent_irq;
->  	struct cpumask lmask;
->  	struct irq_domain *irqdomain;
->  	void __iomem *regs;
-> @@ -219,15 +222,17 @@ static const struct irq_domain_ops plic_irqdomain_ops = {
->   * that source ID back to the same claim register.  This automatically enables
->   * and disables the interrupt, so there's nothing else to do.
->   */
-> -static void plic_handle_irq(struct pt_regs *regs)
-> +static void plic_handle_irq(struct irq_desc *desc)
->  {
->  	struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-> +	struct irq_chip *chip = irq_desc_get_chip(desc);
->  	void __iomem *claim = handler->hart_base + CONTEXT_CLAIM;
->  	irq_hw_number_t hwirq;
->
->  	WARN_ON_ONCE(!handler->present);
->
-> -	csr_clear(CSR_IE, IE_EIE);
-> +	chained_irq_enter(chip, desc);
-> +
-
-Ya, it's pretty clear putting the local interrupt controller in irqchip is the
-right way to go :)
-
->  	while ((hwirq = readl(claim))) {
->  		int irq = irq_find_mapping(handler->priv->irqdomain, hwirq);
->
-> @@ -237,7 +242,8 @@ static void plic_handle_irq(struct pt_regs *regs)
->  		else
->  			generic_handle_irq(irq);
->  	}
-> -	csr_set(CSR_IE, IE_EIE);
-> +
-> +	chained_irq_exit(chip, desc);
->  }
->
->  static void plic_set_threshold(struct plic_handler *handler, u32 threshold)
-> @@ -250,7 +256,8 @@ static int plic_dying_cpu(unsigned int cpu)
->  {
->  	struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
->
-> -	csr_clear(CSR_IE, IE_EIE);
-> +	if (handler->priv->parent_irq)
-> +		disable_percpu_irq(handler->priv->parent_irq);
->  	plic_set_threshold(handler, PLIC_DISABLE_THRESHOLD);
->
->  	return 0;
-> @@ -259,8 +266,10 @@ static int plic_dying_cpu(unsigned int cpu)
->  static int plic_starting_cpu(unsigned int cpu)
->  {
->  	struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-> +	int pirq = handler->priv->parent_irq;
->
-> -	csr_set(CSR_IE, IE_EIE);
-> +	if (pirq)
-> +		enable_percpu_irq(pirq, irq_get_trigger_type(pirq));
->  	plic_set_threshold(handler, PLIC_ENABLE_THRESHOLD);
->
->  	return 0;
-> @@ -273,6 +282,7 @@ static int __init plic_init(struct device_node *node,
->  	u32 nr_irqs;
->  	struct plic_priv *priv;
->  	struct plic_handler *handler;
-> +	struct of_phandle_args intc_args;
->
->  	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
->  	if (!priv)
-> @@ -354,6 +364,23 @@ static int __init plic_init(struct device_node *node,
->  		nr_handlers++;
->  	}
->
-> +	/*
-> +	 * We can have multiple PLIC instances so setup chained handler
-> +	 * for all PLIC instances.
-> +	 */
-> +	intc_args.np = riscv_of_intc_domain_node();
-> +	intc_args.args_count = 1;
-> +	intc_args.args[0] = RV_IRQ_EXT;
-
-You could just use the value from the device tree rather than deciding on the
-value a-priori.  It's a bit pedantic to worry about that now, as the PLIC
-assumes that there's a RISC-V system and its parent is an cpu-intc, but it
-always seems ugly that the PLIC driver is so RISC-V specific.
-
-> +	priv->parent_irq = irq_create_of_mapping(&intc_args);
-> +	if (priv->parent_irq)
-> +		irq_set_chained_handler(priv->parent_irq,
-> +					 plic_handle_irq);
-> +	else {
-> +		pr_err("%pOFP: intc mapping failed\n", node);
-> +		error = -ENODEV;
-> +		goto out_iounmap;
-> +	}
-> +
->  	/*
->  	 * We can have multiple PLIC instances so setup cpuhp state only
->  	 * when context handler for current/boot CPU is present.
-> @@ -368,7 +395,6 @@ static int __init plic_init(struct device_node *node,
->
->  	pr_info("%pOFP: mapped %d interrupts with %d handlers for"
->  		" %d contexts.\n", node, nr_irqs, nr_handlers, nr_contexts);
-> -	set_handle_irq(plic_handle_irq);
->  	return 0;
->
->  out_iounmap:
-> diff --git a/include/linux/cpuhotplug.h b/include/linux/cpuhotplug.h
-> index 77d70b633531..57b1f8f777d9 100644
-> --- a/include/linux/cpuhotplug.h
-> +++ b/include/linux/cpuhotplug.h
-> @@ -102,6 +102,7 @@ enum cpuhp_state {
->  	CPUHP_AP_IRQ_ARMADA_XP_STARTING,
->  	CPUHP_AP_IRQ_BCM2836_STARTING,
->  	CPUHP_AP_IRQ_MIPS_GIC_STARTING,
-> +	CPUHP_AP_IRQ_RISCV_STARTING,
->  	CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
->  	CPUHP_AP_ARM_MVEBU_COHERENCY,
->  	CPUHP_AP_MICROCODE_LOADER,
-> diff --git a/include/linux/irqchip/irq-riscv-intc.h b/include/linux/irqchip/irq-riscv-intc.h
-> new file mode 100644
-> index 000000000000..b11d38353099
-> --- /dev/null
-> +++ b/include/linux/irqchip/irq-riscv-intc.h
-> @@ -0,0 +1,20 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-> + */
-> +
-> +#ifndef __INCLUDE_LINUX_IRQCHIP_IRQ_RISCV_INTC_H
-> +#define __INCLUDE_LINUX_IRQCHIP_IRQ_RISCV_INTC_H
-> +
-> +struct device_node;
-> +
-> +#ifdef CONFIG_RISCV_INTC
-> +struct device_node *riscv_of_intc_domain_node(void);
-> +#else
-> +static inline struct device_node *riscv_of_intc_domain_node(void)
-> +{
-> +	return NULL;
-> +}
-> +#endif
-> +
-> +#endif
-
-These issues are all pretty minor, so I'm OK with this getting merged as-is.  I
-fixed up some minor stuff and have it on my intc branch as 2bd957e2b0b6
-("irqchip: RISC-V per-HART local interrupt controller driver"), but if the
-irqchip folks want to take the patches then I'm not opposed to either version
-getting merged.
-
-Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Regards,
+Anup
 
