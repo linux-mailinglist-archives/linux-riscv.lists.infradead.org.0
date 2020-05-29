@@ -2,82 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B50811E71B8
-	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 02:40:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F85E1E7218
+	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 03:37:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TPcVtJdyE2AYwAhGRH6VQ5jDi/96X6c2mJkTgrsC7yI=; b=PEYxFa2rMkZ4hf0ukQu3Uxyov
-	dRaB/zTgT6K8oYAZerL8UAfomywTa8InFvWBvMWHsoNXPBRis3cOisA3SmyIXEzM7V/arp/eES71c
-	mDh73r4T9j21RnhdyDAARc0HOAiIO2++sYbsZRRLft2ecVMOkG8XFH6DrLFyhtuvEFfpFCH++yiCU
-	ayOtPbhxzQk+bpwoG7KJb0TuAbUF0KQCy0xmabHoJF56GVsQXnGgHdiBscqwtsr7DDqWyXICCweWn
-	ilr94ATSllZbermUso+IiijvwaCDOOASnmC2RL3ablj5/0ufuM99A4J9DQS39tMYgjfJ++mNEMk8S
-	2OAR2esYw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=I9ySmq/ziTnD5JxWwfYJIk6GUKpSL6REIC8gk6+wZMc=; b=iiw3z4dQEkpuFP
+	JMxjWTaaOv/4dU52jjwHJpFG/QoJPNmNE72C5m+ddXHM+hIXWH4Twy3wd8WHb4sxov8G9xY64486v
+	BUfnHFeEqfHyM+vYGwhXfo1l07O0X5olJKX9joHqZ27gm2dnjWez40ymEDs9wC1JfynzeOXAXjWLz
+	xuGc2fYvZ7MVSswmLhTyIi/72WoukDFMBrrc0lihxV+mM33ocQDfbQGOaDk0gyHlLvJ6qO3g6R0O7
+	ykP3fs4rqnxSehSzHCk+hVvafBlCdofwVZ1G0yViv5DPYFhPBMhdyRaOto8TptuaWMNtmA1jf2dOc
+	nA7ow4+GRj8WrVgOaz8w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeT4M-0008B0-Ba; Fri, 29 May 2020 00:40:18 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jeTxe-0007cZ-VM; Fri, 29 May 2020 01:37:26 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeSy6-0006j6-3U
- for linux-riscv@lists.infradead.org; Fri, 29 May 2020 00:33:51 +0000
-Received: by mail-wr1-x443.google.com with SMTP id x6so1304861wrm.13
- for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 17:33:49 -0700 (PDT)
+ id 1jeTxZ-0007ax-Gn
+ for linux-riscv@lists.infradead.org; Fri, 29 May 2020 01:37:23 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id s69so413188pjb.4
+ for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 18:37:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=atishpatra.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TPcVtJdyE2AYwAhGRH6VQ5jDi/96X6c2mJkTgrsC7yI=;
- b=AVIwTbPm1ox7N3P4+ADUQymgyvb83Na+tVpSR19McEIJAuWV/ngmhQ63MElQqZLO6A
- /JzzB47Rj8u4EjlrPav6qUuTLl7l83e7gQahB8miSxNae71iMvhus3BJpjBNyU0TkauQ
- vHbLDsv7Ykg+mXB951uwqWxtQTzyLr7Upjw1o=
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=I9ySmq/ziTnD5JxWwfYJIk6GUKpSL6REIC8gk6+wZMc=;
+ b=fsfq+9tiV8u8HYp38iQg9BOoRCUTFfhL59YYTFKAt/ysAn3GrtGIwAl0STMCWez+jo
+ /B6RmKyjAds7rB03or7Y+orv4p6rsJrikLhB7tSomO/hVQNW4ttaJioNGBzcU4qqPgn2
+ JpX6+OyA6RBlEYD4kMIwwwk693CrdN+V+21ZyJ/dqMbJYnLGzYuNidneLt5MrKmCrM/6
+ 9Wc5OsYLP+8GHrE/kO2GqNyDSAa2J3YGogjb/aThuaUX5QjqTutwQPhR+oeNdK5jiG55
+ C1qiYUOUgbXrMEj9rEvBFuV3wwYN/6horCIqfnAWOj9XOIi1ikpngxS9knF6H6KNDgjY
+ 9nDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TPcVtJdyE2AYwAhGRH6VQ5jDi/96X6c2mJkTgrsC7yI=;
- b=CF7btZ8xyGddvmQUwbkaCgYruJxct7E5/K3SSrg+NP2fK0N/5PrAyHNaR8oaVWJszc
- YRdRisT3fMaKM8rYHfeQpixGZ/DuyAZgWGKxcRVNn8cCg6yAlrevEOVd3HmhkNkhiFDj
- Mxwl25yv3zRu+I/OjBALvTfGs8kkbzZChKkPw/QYcXfaZX+3dURTXycndDXqWmxn+/bP
- JZYpUf8k29ByU5X3+zolPOCkaAws43hkP2k5Si2es7JFo4MV8to855nfGp7ZvzgLU17l
- jK2YK80Yb974TE8uJiZsdAfC8StZiMyhsOni9E7OIisY9OY61TSOMaaIngUI7QwrtJkN
- 5nXQ==
-X-Gm-Message-State: AOAM530rh8D+vi8qUh4GZHon1bu6SxE6jxOiA9yP3UWy5evHTSN+oO97
- AE7WfoGTiRSNispdc7u74HS0n7kWtHy80Qve5uCR
-X-Google-Smtp-Source: ABdhPJzqmxeAGA7wTIx1KRRqA0Q/MyC0G6n009aKF+yeH9+jWtsSpTvdDRpC7ou312ux20wgCKKOWiCG5nUb2+g2SM4=
-X-Received: by 2002:a05:6000:10c3:: with SMTP id
- b3mr6337909wrx.53.1590712428527; 
- Thu, 28 May 2020 17:33:48 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200521133301.816665-1-anup.patel@wdc.com>
- <20200521133301.816665-7-anup.patel@wdc.com>
-In-Reply-To: <20200521133301.816665-7-anup.patel@wdc.com>
-From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 28 May 2020 17:33:37 -0700
-Message-ID: <CAOnJCUJKjgYq5Gii6iVYCUGELShpCaPjG4F0N9CFkgxk_rZG2Q@mail.gmail.com>
-Subject: Re: [PATCH v5 6/6] RISC-V: Force select RISCV_INTC for CONFIG_RISCV
-To: Anup Patel <anup.patel@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=I9ySmq/ziTnD5JxWwfYJIk6GUKpSL6REIC8gk6+wZMc=;
+ b=fggcIdrJ43PI4akgZJuSmVTv8ZZw5v7a4hqSIOejFnO4z6l24w19rZz9MZwDpgsjnJ
+ fFGXouVxKe/hclPkHJX2frnFnbHWL/8a5OAwcg2bwPdf2q2aGqUX+EWe95cDeJ8qHABa
+ fST7Tqn2kO2yHICfk06fa3rLFobBBzr+231OkQR6xpOxcnqTfgDZjKkAuVHQGlgZ0x/L
+ qM1P1Q9gI0+9HVCwbGD9jx1d1CvzH0RRNLhI6t7YO17l2spDSWYnRKhx+LfkBR82sruw
+ J0M0dsXM1ngtO7zH84o6D/lQzQf3voRJvFMu+gWcAiglgoSRwnGjpkyjxWgJnLJ86Hia
+ ahgQ==
+X-Gm-Message-State: AOAM530R7HIDPVtjU5Wkd6Y/TVb0Ax3NawzHoSig1Ohp/Ghq/+yVd1tN
+ Z5ym8t2yL4HmMacsS3yvlYGBIkGrHvsbAA==
+X-Google-Smtp-Source: ABdhPJzMjKkIRn90tyhAd6Gm1cXusgxHVIqzD7pgn5rxO/zcNPjJe4FguS6UJqFgV09OVFl1uVDr8Q==
+X-Received: by 2002:a17:90b:110d:: with SMTP id
+ gi13mr7084493pjb.173.1590716238955; 
+ Thu, 28 May 2020 18:37:18 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id v197sm6073630pfc.4.2020.05.28.18.37.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 May 2020 18:37:18 -0700 (PDT)
+Date: Thu, 28 May 2020 18:37:18 -0700 (PDT)
+X-Google-Original-Date: Thu, 28 May 2020 18:25:39 PDT (-0700)
+Subject: Re: [PATCH v5 1/6] RISC-V: self-contained IPI handling routine
+In-Reply-To: <20200521133301.816665-2-anup.patel@wdc.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: Anup Patel <Anup.Patel@wdc.com>
+Message-ID: <mhng-bd8faf3a-434c-4beb-a44a-3c71475304cd@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_173350_186655_9FCBAFD3 
-X-CRM114-Status: GOOD (  12.15  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200528_183721_620944_307CECE1 
+X-CRM114-Status: GOOD (  21.29  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1041 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -90,49 +95,154 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Jason Cooper <jason@lakedaemon.net>,
- Marc Zyngier <maz@kernel.org>, Anup Patel <anup@brainfault.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <atish.patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
+Cc: aou@eecs.berkeley.edu, jason@lakedaemon.net, Marc Zyngier <maz@kernel.org>,
+ anup@brainfault.org, daniel.lezcano@linaro.org, linux-kernel@vger.kernel.org,
+ Atish Patra <Atish.Patra@wdc.com>, Anup Patel <Anup.Patel@wdc.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- linux-riscv <linux-riscv@lists.infradead.org>
+ Paul Walmsley <paul.walmsley@sifive.com>, tglx@linutronix.de,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Thu, May 21, 2020 at 6:34 AM Anup Patel <anup.patel@wdc.com> wrote:
+On Thu, 21 May 2020 06:32:56 PDT (-0700), Anup Patel wrote:
+> Currently, the IPI handling routine riscv_software_interrupt() does
+> not take any argument and also does not perform irq_enter()/irq_exit().
 >
-> The RISC-V per-HART local interrupt controller driver is mandatory
-> for all RISC-V system (with/without MMU) hence we force select it
-> for CONFIG_RISCV (just like RISCV_TIMER).
+> This patch makes IPI handling routine more self-contained by:
+> 1. Passing "pt_regs *" argument
+> 2. Explicitly doing irq_enter()/irq_exit()
+> 3. Explicitly save/restore "pt_regs *" using set_irq_regs()
+>
+> With above changes, IPI handling routine does not depend on caller
+> function to perform irq_enter()/irq_exit() and save/restore of
+> "pt_regs *" hence its more self-contained. This also enables us
+> to call IPI handling routine from IRQCHIP drivers.
 >
 > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > ---
->  arch/riscv/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/riscv/include/asm/irq.h |  1 -
+>  arch/riscv/include/asm/smp.h |  3 +++
+>  arch/riscv/kernel/irq.c      | 16 ++++++++++------
+>  arch/riscv/kernel/smp.c      | 11 +++++++++--
+>  4 files changed, 22 insertions(+), 9 deletions(-)
 >
-> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> index 822cb0e1a380..2cf0c83c1a47 100644
-> --- a/arch/riscv/Kconfig
-> +++ b/arch/riscv/Kconfig
-> @@ -51,6 +51,7 @@ config RISCV
->         select THREAD_INFO_IN_TASK
->         select PCI_DOMAINS_GENERIC if PCI
->         select PCI_MSI if PCI
-> +       select RISCV_INTC
->         select RISCV_TIMER
->         select GENERIC_IRQ_MULTI_HANDLER
->         select GENERIC_ARCH_TOPOLOGY if SMP
-> --
-> 2.25.1
+> diff --git a/arch/riscv/include/asm/irq.h b/arch/riscv/include/asm/irq.h
+> index 6e1b0e0325eb..0183e15ace66 100644
+> --- a/arch/riscv/include/asm/irq.h
+> +++ b/arch/riscv/include/asm/irq.h
+> @@ -13,7 +13,6 @@
+>  #define NR_IRQS         0
 >
+>  void riscv_timer_interrupt(void);
+> -void riscv_software_interrupt(void);
 >
+>  #include <asm-generic/irq.h>
+>
+> diff --git a/arch/riscv/include/asm/smp.h b/arch/riscv/include/asm/smp.h
+> index f4c7cfda6b7f..40bb1c15a731 100644
+> --- a/arch/riscv/include/asm/smp.h
+> +++ b/arch/riscv/include/asm/smp.h
+> @@ -28,6 +28,9 @@ void show_ipi_stats(struct seq_file *p, int prec);
+>  /* SMP initialization hook for setup_arch */
+>  void __init setup_smp(void);
+>
+> +/* Called from C code, this handles an IPI. */
+> +void handle_IPI(struct pt_regs *regs);
+> +
+>  /* Hook for the generic smp_call_function_many() routine. */
+>  void arch_send_call_function_ipi_mask(struct cpumask *mask);
+>
+> diff --git a/arch/riscv/kernel/irq.c b/arch/riscv/kernel/irq.c
+> index 345c4f2eba13..bb0bfcd537e7 100644
+> --- a/arch/riscv/kernel/irq.c
+> +++ b/arch/riscv/kernel/irq.c
+> @@ -19,12 +19,15 @@ int arch_show_interrupts(struct seq_file *p, int prec)
+>
+>  asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
+>  {
+> -	struct pt_regs *old_regs = set_irq_regs(regs);
+> +	struct pt_regs *old_regs;
+>
+> -	irq_enter();
+>  	switch (regs->cause & ~CAUSE_IRQ_FLAG) {
+>  	case RV_IRQ_TIMER:
+> +		old_regs = set_irq_regs(regs);
+> +		irq_enter();
+>  		riscv_timer_interrupt();
+> +		irq_exit();
+> +		set_irq_regs(old_regs);
+>  		break;
+>  #ifdef CONFIG_SMP
+>  	case RV_IRQ_SOFT:
+> @@ -32,19 +35,20 @@ asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
+>  		 * We only use software interrupts to pass IPIs, so if a non-SMP
+>  		 * system gets one, then we don't know what to do.
+>  		 */
+> -		riscv_software_interrupt();
+> +		handle_IPI(regs);
+>  		break;
+>  #endif
+>  	case RV_IRQ_EXT:
+> +		old_regs = set_irq_regs(regs);
+> +		irq_enter();
+>  		handle_arch_irq(regs);
+> +		irq_exit();
+> +		set_irq_regs(old_regs);
+>  		break;
+>  	default:
+>  		pr_alert("unexpected interrupt cause 0x%lx", regs->cause);
+>  		BUG();
+>  	}
+> -	irq_exit();
+> -
+> -	set_irq_regs(old_regs);
+>  }
+>
+>  void __init init_IRQ(void)
+> diff --git a/arch/riscv/kernel/smp.c b/arch/riscv/kernel/smp.c
+> index a65a8fa0c22d..b1d4f452f843 100644
+> --- a/arch/riscv/kernel/smp.c
+> +++ b/arch/riscv/kernel/smp.c
+> @@ -123,11 +123,14 @@ static inline void clear_ipi(void)
+>  		clint_clear_ipi(cpuid_to_hartid_map(smp_processor_id()));
+>  }
+>
+> -void riscv_software_interrupt(void)
+> +void handle_IPI(struct pt_regs *regs)
+>  {
+> +	struct pt_regs *old_regs = set_irq_regs(regs);
+>  	unsigned long *pending_ipis = &ipi_data[smp_processor_id()].bits;
+>  	unsigned long *stats = ipi_data[smp_processor_id()].stats;
+>
+> +	irq_enter();
+> +
+>  	clear_ipi();
+>
+>  	while (true) {
+> @@ -138,7 +141,7 @@ void riscv_software_interrupt(void)
+>
+>  		ops = xchg(pending_ipis, 0);
+>  		if (ops == 0)
+> -			return;
+> +			goto done;
+>
+>  		if (ops & (1 << IPI_RESCHEDULE)) {
+>  			stats[IPI_RESCHEDULE]++;
+> @@ -160,6 +163,10 @@ void riscv_software_interrupt(void)
+>  		/* Order data access and bit testing. */
+>  		mb();
+>  	}
+> +
+> +done:
+> +	irq_exit();
+> +	set_irq_regs(old_regs);
+>  }
+>
+>  static const char * const ipi_names[] = {
 
-Reviewed-by: Atish Patra <atish.patra@wdc.com>
+I guess we still have to figure out which tree these are going in through, but
+I'm going to start acking them as I review them just so it all stays together.
 
--- 
-Regards,
-Atish
+Reviewed-by: Palmer Dabbelt <palmerdabbelt@google.com>
+Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
 
