@@ -2,81 +2,139 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7AB31E746B
-	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 06:15:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 399071E74CF
+	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 06:25:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jyR6+TRuGXwjdlWw89msQrE59vFUaYSiqo/1mMaFUzM=; b=jPxvKgPvAE+bLQGRCFtJ7oIXU
-	Jtc77+Mj0nrPa2UNah1hSEOVuZ2L/+HhLEXLnQD9KIpBkwrSccv0hkr68OErKEwbV7LPEJcLgLW6l
-	DQVhV+o4jC4Fc2tKZXYx0SSK8LfScbKV6xewy3Fxem/DyeaVYHAstywnU0efrgW0FXA+w2dLd4rUc
-	N5Ep0otaIRMGnZv4TIkxtNECdd+7S+UuBDpjpN2m5Tzmu2x/sFlS5FGTbqYjh6J3xsX1S6NH/CACi
-	+R0VUOonRZ4J+6cSJdixVEitUG4NDU/dKlMujy0/RzRoStULN2UYpqLwwjHTjqVxmbsvZ2jUgQKzQ
-	dBkkRlrMw==;
+	 bh=m54lzmcJ3+iiv8YW5XnHoLq+xx5VcDWKlVw6+YwSGmg=; b=kKTvxDuu5t2nXl+Hb0M6oY/OC
+	IU+B2MUHhTL6lPzI7dVllW9SBc6n/ZmFSpk+x9emF4BfpywZr91krtOTDPe48see9cVDUbT5Ke9R6
+	NWqJfss2wVRLS7Rq4vQm360nG1nQ5tAjzZ+GVdH9DDwLI2cUxQv300QQKCV1pRZzqdxmEHDCEHrlp
+	Up4J6JeAUkNR5n43tc6bwR3OC+Hm3Xy7lkV7ONIBqhOAe2QQQYGuE5dbTqc5Pjag1n++0bAbW09bi
+	bZV2dgvgV8x4LaCPUYVMOZPSNgMOX3jC1BYdLYenEbqRnjWA3S7HXf57EozZwfa6kT0j1MkS7LEpn
+	du/j5xkTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeWQm-0006Eb-BU; Fri, 29 May 2020 04:15:40 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jeWaa-00055o-Oj; Fri, 29 May 2020 04:25:48 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeWQi-0006EA-Fg
- for linux-riscv@lists.infradead.org; Fri, 29 May 2020 04:15:38 +0000
-Received: by mail-wr1-x442.google.com with SMTP id j16so1806508wrb.7
- for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 21:15:36 -0700 (PDT)
+ id 1jeWZz-0002rj-0F
+ for linux-riscv@lists.infradead.org; Fri, 29 May 2020 04:25:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1590726311; x=1622262311;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=m54lzmcJ3+iiv8YW5XnHoLq+xx5VcDWKlVw6+YwSGmg=;
+ b=bb44GugbeqH/2Et8pfb/Cp54GAs8/lHjCw5ClLd73Y4KrxTrv+eKeKtj
+ j3726Fnhhw+FWWcOMQho0CfVcOE9A+BAJW5DPYKdVtDm1ITY9OECpATXi
+ dgWBxhxVf4qCHMHPtpW699sNO/u4O0QUAUQg4k6oo+filIL8170PzZuYx
+ RLSAU1CxdovWVQ5kH9MC8nVMlco3zIqygQQEBZXBHXj/oMLABhefkA7q5
+ QaPXp3x7Ms4XzbIep4qpShZR01kegyLoMZ0xCzxrpI4+LQY0DaFWwuy+t
+ 3BF1qeRRFYDMWQwokkpSxJl+E676/McdifsqQvk3PliOs8Uu5qg9dZg5D g==;
+IronPort-SDR: nEo88xXnQg8yM6vDKp1kimOZnbe8VUan6DPna1p/XjhNnHB74MIU3twQS4kea7SDJiPhBgWiK8
+ RHMwx7zMf9mI73RRWzXUno+5GWPaB2+HjPemZIkA5DDavMxX4VNjbIDgGmOvOCYQ9wLjs3ddcy
+ v5nMKQdASHmLQRXicjC318FcppRmLItn6A6LLol4ncWGq6Ni302qtt5rTczSYXkzgJfAbRT1RO
+ xfDoUJponakaMp6LJpfMyeCbcELkFzG2XAjDRTidZqvLBns+RzcHreiq4EmeH/EqwgO3M/1Uwn
+ GRM=
+X-IronPort-AV: E=Sophos;i="5.73,447,1583164800"; d="scan'208";a="140190763"
+Received: from mail-bn8nam11lp2177.outbound.protection.outlook.com (HELO
+ NAM11-BN8-obe.outbound.protection.outlook.com) ([104.47.58.177])
+ by ob1.hgst.iphmx.com with ESMTP; 29 May 2020 12:25:03 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Bt82T1gAgn8aXcTTkzpxlgoeTUaiJFQl9FS5FachswkXnNE5VxNKm5q5m5Vb9oB3EQGpduKvGiaf1n7HkhBe7waKCegRAh4Fg9THeKqYM5ZccjuUP01DS98WXEZAlHf9icu7BX/BSm/lDNHaVE6+Tac7jthCBfs/WTlsroD15Dci24xY75CE+nqWcQAVZW6yiSR2y+4f/uMUeRGTctXDWx7Cl1HnCSpgGnw9rHSD1Ki4cFm6zQzFF4katEZfvdwsnSNwg8Z7YjWiSeEK+ugIw5YST4KhctqTf5Cb6g11mBNbvHI/Yz7ksXLOU9saXHc6iaZQ5Af2tq6fMY7+7uwkBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m54lzmcJ3+iiv8YW5XnHoLq+xx5VcDWKlVw6+YwSGmg=;
+ b=ODoN4RDJw2qEfxXF/LqFim5Y4WwNiIdTwy3OaL+ouaxmggUGh/XUpXJsWMXizC2DKiumJcw8yMsHthb0D+9tiBNSySUeEJC3QlxNjrNgNO5wn7IwxAlwNL89oeYHtc9UeH6hiWQ4INJhYkEKzvsg3i8FEgtao3O/1su0Rh3HkdoYDiJSQvMKipn3WZpOu7s3ZXAaiCM5LGAefI6ewXSfE+//7YKMX5LNjZQL2ReNlYBF8jdCy9sARFj606Fa4jJezIsngCvZB7A8d5sW0798KKxbXejCP6kiTNu15eBfBP8lmA8n6d0uTlQzFox4LbqcQeMJ2i1Ei2vcVMKizFDgkQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=brainfault-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jyR6+TRuGXwjdlWw89msQrE59vFUaYSiqo/1mMaFUzM=;
- b=JO2X4kLpDwJbZQS3OmZsOggv+kReWAZZSBmE+G/AuCXJbIfNwuUHS2v8gXR0D/waVo
- XwBfZ4MBEGQwO9c06Zw9frizz0GchHrsUJsOk3oYm9S3utY8upYD49PYsGpW9vrNVRtv
- D9EbYxp1HfM6bX/VF2HDz5ucjL+OPhM1k+lbxa4+Wnn6qaWKxJCWu1UWToz9ngqUP8/5
- h6IDdvqJS5ETsoMF+nWZisIjTm640E4itO1yhicHbs0o1Y2WyppG9P8i8p7o+CIYp2BR
- 0FDfzSN1ES6fgz+Ss0863LYWWR4R9ild2+NohZCtkenbPDSH2tg7ID78OyS0EHJ8jSGS
- WZ3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jyR6+TRuGXwjdlWw89msQrE59vFUaYSiqo/1mMaFUzM=;
- b=YqHVCGatGymHgOCXIgqyEqAIVA8dPXHjAcnG6EKM0LHF2hZ5uB/XTNcFTM2DRR1MFN
- +G10BsqZzWxJcvgcpFSrvX6XxiupD5XKUX5tP8aylUbiopXhmzWPUnNRixv3gPkGBmU3
- KNKz3RAJKqxOLBEuurCvDmZPZxBlJR8U35OhaKzeqJ8TmAebAABbsBut1AWL8VlF8KPN
- LRXVtMLjovhkJ7q+ibFOkJbUC9C6uHl0OQn0wYcate1QNk4VOPu4jb/frWZs6WCxMNmO
- On1Vw+F7NCkwrkOjTXWW3Wen3oM5tc2U+TJIl2RC5Jk4f8nyWg+bFyAoVi+LQ219Nemu
- zsAA==
-X-Gm-Message-State: AOAM531MvBSOwajygKfqCrTyKO84bI5cMOACXrCEVV5LXAHC/01Ul8Ux
- uaebWK4+4Yfy52JGeravpYcWs8aBP7qevQWI+LaJ6r13
-X-Google-Smtp-Source: ABdhPJw9/i2iDGWgmpyupt1VI4ev9LY9ys42tzdDRS/y/vJkeva94CCfsxdq4Ll71crj0moIN+FMeaIeGHOSOpitKPQ=
-X-Received: by 2002:a5d:4484:: with SMTP id j4mr6457362wrq.325.1590725734630; 
- Thu, 28 May 2020 21:15:34 -0700 (PDT)
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m54lzmcJ3+iiv8YW5XnHoLq+xx5VcDWKlVw6+YwSGmg=;
+ b=ufQXl96NxZ7QPAH5nPWUUvCLtLu6F9ExBExWqaGCPZvfXHVtPUSMVG3w/lNkDNd+FykO3GD6tHlOzSb2OZvCN8vE2RbkVKRGm2lEHzz/9iiJMTZoaj8TtIeg88Y/ifeYU+eP7dsyxFyIiVyW/pUWrXD2TYDDC6a0AkzscHHcu7Q=
+Received: from DM6PR04MB6201.namprd04.prod.outlook.com (2603:10b6:5:127::32)
+ by DM6PR04MB6649.namprd04.prod.outlook.com (2603:10b6:5:24c::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3045.17; Fri, 29 May
+ 2020 04:25:00 +0000
+Received: from DM6PR04MB6201.namprd04.prod.outlook.com
+ ([fe80::f8b3:c124:482b:52e0]) by DM6PR04MB6201.namprd04.prod.outlook.com
+ ([fe80::f8b3:c124:482b:52e0%5]) with mapi id 15.20.3045.018; Fri, 29 May 2020
+ 04:24:59 +0000
+From: Anup Patel <Anup.Patel@wdc.com>
+To: Palmer Dabbelt <palmer@dabbelt.com>, "anup@brainfault.org"
+ <anup@brainfault.org>
+Subject: RE: [PATCH v5 0/6] New RISC-V Local Interrupt Controller Driver
+Thread-Topic: [PATCH v5 0/6] New RISC-V Local Interrupt Controller Driver
+Thread-Index: AQHWL3Rrw2CzBUFzo0+6eG5LaPXED6i8T4kAgAIsFQCAAAR6gIAAAnzg
+Date: Fri, 29 May 2020 04:24:59 +0000
+Message-ID: <DM6PR04MB620131C18CFC939248C825038D8F0@DM6PR04MB6201.namprd04.prod.outlook.com>
+References: <CAAhSdy0zXh46P5WPZHmQ_PjwfOEWkh77EZ-_CroH1Eb1c3fDJg@mail.gmail.com>
+ <mhng-69ba2cf1-862f-49fc-ab79-eda329f69aee@palmerdabbelt-glaptop1>
+In-Reply-To: <mhng-69ba2cf1-862f-49fc-ab79-eda329f69aee@palmerdabbelt-glaptop1>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dabbelt.com; dkim=none (message not signed)
+ header.d=none;dabbelt.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [106.51.24.208]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: b13804d4-1521-427e-be13-08d803884026
+x-ms-traffictypediagnostic: DM6PR04MB6649:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DM6PR04MB6649B07911EEDAA952F333358D8F0@DM6PR04MB6649.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 04180B6720
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: WzsfGfZkOsWS1chB4rKAfgaDBLvnmXYsDkzudYmdNUovgc4OwFfF8/r567Lelt3yJQE7TtVCt2oKrbdwFp28uRTKFjPE2mpNSRjB6f6B74kMSlVmK4Ny0am413pMjFMYb2L6Pf3EENKmb+D2dWUgOChMVdX89Z8vvQEP2j3JKbHoiua+7wR6ga8LSNVE1wWicgO4IQ2zlqQtp6slErDZZFwS2zjvaBTi1uGSjtsFKqwxAfi+tK8jDu1PQbtFcVi8grdmuqhDC2R54+1ftRMyufq2P7rAZbXRteHJPnUOMDI3eqxCP+ERM9FLyhIJXjYTiczN+EknCmJ1YiA8YnLq+k0uP7dxIUHeO8bf+BgGb3kNVqB6UNtVOirWSNN4oXEOINVf1GMcmqeq44AU6RPFJQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR04MB6201.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(346002)(376002)(136003)(39860400002)(366004)(396003)(54906003)(110136005)(316002)(7696005)(8676002)(71200400001)(6506007)(53546011)(55236004)(186003)(8936002)(83380400001)(26005)(4326008)(5660300002)(76116006)(966005)(52536014)(478600001)(86362001)(9686003)(55016002)(33656002)(2906002)(7416002)(66446008)(66946007)(66476007)(66556008)(64756008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: j0LD0Flt0H6Z6os+mXUWcGrGhwwh6mLGtpkf02nwhiph9vMQCRKrds4NOjls4iPh+IzcID6rESf8iEw1wMVZt7H5KYvW2AnNs81dDCWqH9WDToyvUcbgKsXpGl8RJLz4LmywnJV92cL3T0TTCLglnkhdsLYMPYCLTNTBOiOB2AFqNpWxOYnejAArwrb8aJLffZsryH3Q0IJXfgTOO+zz1fVM0Nq9pn8/aKLlbbnLgUkk0iRkEQ6gstFUB3RsdC/ZvsEXjaB34Ntj2g7w7Tk7OY+IN9ZAstKOS9mZ1c5OYVpHXt7lkblbPrD5sJeiMDwsxEYkP0QPrp1BO+hzFwDx7y279sOuGzFV2+RMKcN/9KZb7oPwaNgj/GExe84PCPSFXDI9iiOSxmHYhkTki1jh5goIUOh7hkEsZzwYQKTvXPUwE3VY8KjzyuzcGwzqsAEKnWqozSjSvcz5O5F7jYJDx6845IKqX23stEXRu9iWSF0=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20200521133301.816665-4-anup.patel@wdc.com>
- <mhng-0403a86a-bda6-4e69-ad73-71fb06c49e40@palmerdabbelt-glaptop1>
-In-Reply-To: <mhng-0403a86a-bda6-4e69-ad73-71fb06c49e40@palmerdabbelt-glaptop1>
-From: Anup Patel <anup@brainfault.org>
-Date: Fri, 29 May 2020 09:45:23 +0530
-Message-ID: <CAAhSdy0zLDkQyNbHb2cxRPcWovsb6K1=373DSu0K8F7-u3FaeA@mail.gmail.com>
-Subject: Re: [PATCH v5 3/6] irqchip: RISC-V per-HART local interrupt
- controller driver
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Content-Type: text/plain; charset="UTF-8"
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b13804d4-1521-427e-be13-08d803884026
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 May 2020 04:24:59.8152 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rr60uZ7JD24gCNdGUtmYILBQtuiNlWgwcUofl1RmPTQJwX/uNC5gngMhWk1CVQiAdXe+nKgLGhIi8SWj4Iv0jQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB6649
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_211536_533276_1489022D 
-X-CRM114-Status: GOOD (  36.04  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200528_212511_257892_9AC28710 
+X-CRM114-Status: GOOD (  27.39  )
+X-Spam-Score: -1.0 (-)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-1.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.45 listed in list.dnswl.org]
+ 1.5 RCVD_IN_SORBS_WEB      RBL: SORBS: sender is an abusable web server
+ [106.51.24.208 listed in dnsbl.sorbs.net]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -89,569 +147,149 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
- Jason Cooper <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
- Anup Patel <Anup.Patel@wdc.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Thomas Gleixner <tglx@linutronix.de>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: "aou@eecs.berkeley.edu" <aou@eecs.berkeley.edu>,
+ "jason@lakedaemon.net" <jason@lakedaemon.net>, Marc Zyngier <maz@kernel.org>,
+ "daniel.lezcano@linaro.org" <daniel.lezcano@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Atish Patra <Atish.Patra@wdc.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Fri, May 29, 2020 at 8:10 AM Palmer Dabbelt <palmer@dabbelt.com> wrote:
->
-> On Thu, 21 May 2020 06:32:58 PDT (-0700), Anup Patel wrote:
-> > The RISC-V per-HART local interrupt controller manages software
-> > interrupts, timer interrupts, external interrupts (which are routed
-> > via the platform level interrupt controller) and other per-HART
-> > local interrupts.
-> >
-> > This patch adds a driver for the RISC-V local interrupt controller.
-> > It is a major re-write over perviously submitted version.
-> > (Refer, https://www.spinics.net/lists/devicetree/msg241230.html)
-> >
-> > Few advantages of this new driver over previous one are:
-> > 1. All local interrupts are registered as per-CPU interrupts
-> > 2. The RISC-V timer driver can register timer interrupt handler
-> >    using kernel irq subsystem without relying on arch/riscv to
-> >    explicitly call it's interrupt handler
-> > 3. The KVM RISC-V can use this driver to implement interrupt
-> >    handler for per-HART guest external interrupt defined by
-> >    the RISC-V H-Extension
-> > 4. In future, we can develop drivers for devices with per-HART
-> >    interrupts without changing arch code or this driver (example,
-> >    CLINT timer driver for RISC-V M-mode kernel)
-> >
-> > The RISC-V INTC driver is compliant with RISC-V Hart-Level Interrupt
-> > Controller DT bindings located at:
-> > Documentation/devicetree/bindings/interrupt-controller/riscv,cpu-intc.txt
-> >
-> > Signed-off-by: Palmer Dabbelt <palmer@dabbelt.com>
-> > Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> > ---
-> >  arch/riscv/Kconfig                     |   1 +
-> >  arch/riscv/include/asm/irq.h           |   2 -
-> >  arch/riscv/kernel/irq.c                |  33 +-----
-> >  arch/riscv/kernel/traps.c              |   2 -
-> >  drivers/irqchip/Kconfig                |  13 ++
-> >  drivers/irqchip/Makefile               |   1 +
-> >  drivers/irqchip/irq-riscv-intc.c       | 158 +++++++++++++++++++++++++
-> >  drivers/irqchip/irq-sifive-plic.c      |  38 +++++-
-> >  include/linux/cpuhotplug.h             |   1 +
-> >  include/linux/irqchip/irq-riscv-intc.h |  20 ++++
-> >  10 files changed, 229 insertions(+), 40 deletions(-)
-> >  create mode 100644 drivers/irqchip/irq-riscv-intc.c
-> >  create mode 100644 include/linux/irqchip/irq-riscv-intc.h
-> >
-> > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> > index 90a008e28f7e..822cb0e1a380 100644
-> > --- a/arch/riscv/Kconfig
-> > +++ b/arch/riscv/Kconfig
-> > @@ -40,6 +40,7 @@ config RISCV
-> >       select HAVE_PERF_REGS
-> >       select HAVE_PERF_USER_STACK_DUMP
-> >       select HAVE_SYSCALL_TRACEPOINTS
-> > +     select HANDLE_DOMAIN_IRQ
-> >       select IRQ_DOMAIN
-> >       select SPARSE_IRQ
-> >       select SYSCTL_EXCEPTION_TRACE
-> > diff --git a/arch/riscv/include/asm/irq.h b/arch/riscv/include/asm/irq.h
-> > index 0183e15ace66..a9e5f07a7e9c 100644
-> > --- a/arch/riscv/include/asm/irq.h
-> > +++ b/arch/riscv/include/asm/irq.h
-> > @@ -10,8 +10,6 @@
-> >  #include <linux/interrupt.h>
-> >  #include <linux/linkage.h>
-> >
-> > -#define NR_IRQS         0
-> > -
-> >  void riscv_timer_interrupt(void);
-> >
-> >  #include <asm-generic/irq.h>
-> > diff --git a/arch/riscv/kernel/irq.c b/arch/riscv/kernel/irq.c
-> > index bb0bfcd537e7..eb8777642ce6 100644
-> > --- a/arch/riscv/kernel/irq.c
-> > +++ b/arch/riscv/kernel/irq.c
-> > @@ -7,7 +7,6 @@
-> >
-> >  #include <linux/interrupt.h>
-> >  #include <linux/irqchip.h>
-> > -#include <linux/irqdomain.h>
-> >  #include <linux/seq_file.h>
-> >  #include <asm/smp.h>
-> >
-> > @@ -19,39 +18,13 @@ int arch_show_interrupts(struct seq_file *p, int prec)
-> >
-> >  asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
-> >  {
-> > -     struct pt_regs *old_regs;
-> > -
-> > -     switch (regs->cause & ~CAUSE_IRQ_FLAG) {
-> > -     case RV_IRQ_TIMER:
-> > -             old_regs = set_irq_regs(regs);
-> > -             irq_enter();
-> > -             riscv_timer_interrupt();
-> > -             irq_exit();
-> > -             set_irq_regs(old_regs);
-> > -             break;
-> > -#ifdef CONFIG_SMP
-> > -     case RV_IRQ_SOFT:
-> > -             /*
-> > -              * We only use software interrupts to pass IPIs, so if a non-SMP
-> > -              * system gets one, then we don't know what to do.
-> > -              */
-> > -             handle_IPI(regs);
-> > -             break;
-> > -#endif
-> > -     case RV_IRQ_EXT:
-> > -             old_regs = set_irq_regs(regs);
-> > -             irq_enter();
-> > +     if (handle_arch_irq)
-> >               handle_arch_irq(regs);
-> > -             irq_exit();
-> > -             set_irq_regs(old_regs);
-> > -             break;
-> > -     default:
-> > -             pr_alert("unexpected interrupt cause 0x%lx", regs->cause);
-> > -             BUG();
-> > -     }
-> >  }
-> >
-> >  void __init init_IRQ(void)
-> >  {
-> >       irqchip_init();
-> > +     if (!handle_arch_irq)
-> > +             panic("No interrupt controller found.");
-> >  }
-> > diff --git a/arch/riscv/kernel/traps.c b/arch/riscv/kernel/traps.c
-> > index 7f58fa53033f..f48c76aadbf3 100644
-> > --- a/arch/riscv/kernel/traps.c
-> > +++ b/arch/riscv/kernel/traps.c
-> > @@ -178,6 +178,4 @@ void trap_init(void)
-> >       csr_write(CSR_SCRATCH, 0);
-> >       /* Set the exception vector address */
-> >       csr_write(CSR_TVEC, &handle_exception);
-> > -     /* Enable interrupts */
-> > -     csr_write(CSR_IE, IE_SIE);
-> >  }
-> > diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
-> > index a85aada04a64..95d6137a8117 100644
-> > --- a/drivers/irqchip/Kconfig
-> > +++ b/drivers/irqchip/Kconfig
-> > @@ -493,6 +493,19 @@ config TI_SCI_INTA_IRQCHIP
-> >         If you wish to use interrupt aggregator irq resources managed by the
-> >         TI System Controller, say Y here. Otherwise, say N.
-> >
-> > +config RISCV_INTC
-> > +     bool "RISC-V Local Interrupt Controller"
-> > +     depends on RISCV
-> > +     default y
-> > +     help
-> > +        This enables support for the per-HART local interrupt controller
-> > +        found in standard RISC-V systems.  The per-HART local interrupt
-> > +        controller handles timer interrupts, software interrupts, and
-> > +        hardware interrupts. Without a per-HART local interrupt controller,
-> > +        a RISC-V system will be unable to handle any interrupts.
-> > +
-> > +        If you don't know what to do here, say Y.
-> > +
-> >  config SIFIVE_PLIC
-> >       bool "SiFive Platform-Level Interrupt Controller"
-> >       depends on RISCV
-> > diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
-> > index 37bbe39bf909..b8319f045472 100644
-> > --- a/drivers/irqchip/Makefile
-> > +++ b/drivers/irqchip/Makefile
-> > @@ -98,6 +98,7 @@ obj-$(CONFIG_NDS32)                 += irq-ativic32.o
-> >  obj-$(CONFIG_QCOM_PDC)                       += qcom-pdc.o
-> >  obj-$(CONFIG_CSKY_MPINTC)            += irq-csky-mpintc.o
-> >  obj-$(CONFIG_CSKY_APB_INTC)          += irq-csky-apb-intc.o
-> > +obj-$(CONFIG_RISCV_INTC)             += irq-riscv-intc.o
-> >  obj-$(CONFIG_SIFIVE_PLIC)            += irq-sifive-plic.o
-> >  obj-$(CONFIG_IMX_IRQSTEER)           += irq-imx-irqsteer.o
-> >  obj-$(CONFIG_IMX_INTMUX)             += irq-imx-intmux.o
-> > diff --git a/drivers/irqchip/irq-riscv-intc.c b/drivers/irqchip/irq-riscv-intc.c
-> > new file mode 100644
-> > index 000000000000..2f364e6a87f9
-> > --- /dev/null
-> > +++ b/drivers/irqchip/irq-riscv-intc.c
-> > @@ -0,0 +1,158 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (C) 2012 Regents of the University of California
-> > + * Copyright (C) 2017-2018 SiFive
-> > + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-> > + */
-> > +
-> > +#define pr_fmt(fmt) "riscv-intc: " fmt
-> > +#include <linux/atomic.h>
-> > +#include <linux/bits.h>
-> > +#include <linux/cpu.h>
-> > +#include <linux/irq.h>
-> > +#include <linux/irqchip.h>
-> > +#include <linux/irqchip/irq-riscv-intc.h>
-> > +#include <linux/irqdomain.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of.h>
-> > +#include <linux/smp.h>
-> > +
-> > +static struct device_node *intc_domain_node;
-> > +static struct irq_domain *intc_domain;
-> > +
-> > +static asmlinkage void riscv_intc_irq(struct pt_regs *regs)
-> > +{
-> > +     struct pt_regs *old_regs;
-> > +     unsigned long cause = regs->cause & ~CAUSE_IRQ_FLAG;
-> > +
-> > +     if (unlikely(cause >= BITS_PER_LONG))
-> > +             panic("unexpected interrupt cause");
-> > +
-> > +     switch (cause) {
-> > +     case RV_IRQ_TIMER:
-> > +             old_regs = set_irq_regs(regs);
-> > +             irq_enter();
-> > +             riscv_timer_interrupt();
-> > +             irq_exit();
-> > +             set_irq_regs(old_regs);
-> > +             break;
-> > +#ifdef CONFIG_SMP
-> > +     case RV_IRQ_SOFT:
-> > +             /*
-> > +              * We only use software interrupts to pass IPIs, so if a
-> > +              * non-SMP system gets one, then we don't know what to do.
-> > +              */
-> > +             handle_IPI(regs);
-> > +             break;
-> > +#endif
-> > +     default:
-> > +             handle_domain_irq(intc_domain, cause, regs);
-> > +             break;
-> > +     }
-> > +}
-> > +
-> > +/*
-> > + * On RISC-V systems local interrupts are masked or unmasked by writing
-> > + * the SIE (Supervisor Interrupt Enable) CSR.  As CSRs can only be written
-> > + * on the local hart, these functions can only be called on the hart that
-> > + * corresponds to the IRQ chip.
-> > + */
-> > +
-> > +static void riscv_intc_irq_mask(struct irq_data *d)
-> > +{
-> > +     csr_clear(CSR_IE, 1 << (long)d->hwirq);
-> > +}
-> > +
-> > +static void riscv_intc_irq_unmask(struct irq_data *d)
-> > +{
-> > +     csr_set(CSR_IE, 1 << (long)d->hwirq);
-> > +}
-> > +
-> > +static int riscv_intc_cpu_starting(unsigned int cpu)
-> > +{
-> > +     csr_write(CSR_IE, 1UL << RV_IRQ_SOFT);
-> > +     csr_write(CSR_IP, 0);
-> > +     return 0;
-> > +}
-> > +
-> > +static int riscv_intc_cpu_dying(unsigned int cpu)
-> > +{
-> > +     csr_clear(CSR_IE, 1UL << RV_IRQ_SOFT);
-> > +     return 0;
-> > +}
-> > +
-> > +static struct irq_chip riscv_intc_chip = {
-> > +     .name = "RISC-V INTC",
-> > +     .irq_mask = riscv_intc_irq_mask,
-> > +     .irq_unmask = riscv_intc_irq_unmask,
-> > +};
-> > +
-> > +static int riscv_intc_domain_map(struct irq_domain *d, unsigned int irq,
-> > +                              irq_hw_number_t hwirq)
-> > +{
-> > +     irq_set_percpu_devid(irq);
-> > +     irq_domain_set_info(d, irq, hwirq, &riscv_intc_chip, d->host_data,
-> > +                         handle_percpu_devid_irq, NULL, NULL);
-> > +     irq_set_status_flags(irq, IRQ_NOAUTOEN);
-> > +
-> > +     return 0;
-> > +}
-> > +
-> > +static const struct irq_domain_ops riscv_intc_domain_ops = {
-> > +     .map    = riscv_intc_domain_map,
-> > +     .xlate  = irq_domain_xlate_onecell,
-> > +};
-> > +
-> > +/* Get the OF device node used by INTC irq domain */
-> > +struct device_node *riscv_of_intc_domain_node(void)
-> > +{
-> > +     return intc_domain_node;
-> > +}
-> > +EXPORT_SYMBOL_GPL(riscv_of_intc_domain_node);
-> > +
-> > +static int __init riscv_intc_init(struct device_node *node,
-> > +                               struct device_node *parent)
-> > +{
-> > +     int hartid;
-> > +
-> > +     /*
-> > +      * The DT will have one INTC DT node under each CPU (or HART)
-> > +      * DT node so riscv_intc_init() function will be called once
-> > +      * for each INTC DT node. We only need INTC initialization for
-> > +      * the INTC DT node belonging to boot CPU (or boot HART).
-> > +      */
-> > +     hartid = riscv_of_parent_hartid(node);
-> > +     if (hartid < 0)
-> > +             return 0;
->
-> This should at least be a warning, as it's an invalid device tree.
-
-Okay, I will add a pr_warn() here.
-
->
-> > +     if (riscv_hartid_to_cpuid(hartid) != smp_processor_id())
-> > +             return 0;
->
-> There should be a comment about this one, as it only works becuase there's one
-> CPU up and running while interrupts are being enabled.
-
-The first comment block in riscv_intc_init() tries to explain it. If you
-want I can move the comment block just above this "if-statement"
-
->
-> > +
-> > +     intc_domain = irq_domain_add_linear(node, BITS_PER_LONG,
-> > +                                         &riscv_intc_domain_ops, NULL);
-> > +     if (!intc_domain)
-> > +             goto error_add_linear;
-> > +
-> > +     /*
-> > +      * We save the DT node used for creating irq domain and provide
-> > +      * it to other drivers using iscv_of_intc_domain_node() function.
->
-> Missing the "r" in iscv_of_intc_domain_node
-
-Okay, will update.
-
->
-> > +      */
-> > +     intc_domain_node = of_node_get(node);
-> > +
-> > +     set_handle_irq(&riscv_intc_irq);
->
-> So there's now this implicit assumption that every CPU node has a
-> riscv,cpu-intc.  That's probably fine, as we don't have any other first-level
-> interrupt controllers, but at least whacking a warning if set_handle_irq()
-> fails seems prudent.  It'd be best to actually check that assumption (maybe
-> before quitting above?) and actually installing the percpu OF nodes, but that
-> would take a performance hit so I'm not sure it's worth it.
-
-Yes, we should have a warning if set_handle_irq() fails. I will update.
-
->
-> > +
-> > +     cpuhp_setup_state(CPUHP_AP_IRQ_RISCV_STARTING,
-> > +                       "irqchip/riscv/intc:starting",
-> > +                       riscv_intc_cpu_starting,
-> > +                       riscv_intc_cpu_dying);
-> > +
-> > +     pr_info("%lu local interrupts mapped\n", (long)BITS_PER_LONG);
-> > +
-> > +     return 0;
-> > +
-> > +error_add_linear:
-> > +     pr_warn("unable to add IRQ domain\n");
-> > +     return -ENXIO;
-> > +}
-> > +
-> > +IRQCHIP_DECLARE(riscv, "riscv,cpu-intc", riscv_intc_init);
-> > diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-> > index 16d31d114c30..4f9b2877aa9d 100644
-> > --- a/drivers/irqchip/irq-sifive-plic.c
-> > +++ b/drivers/irqchip/irq-sifive-plic.c
-> > @@ -9,6 +9,8 @@
-> >  #include <linux/io.h>
-> >  #include <linux/irq.h>
-> >  #include <linux/irqchip.h>
-> > +#include <linux/irqchip/chained_irq.h>
-> > +#include <linux/irqchip/irq-riscv-intc.h>
-> >  #include <linux/irqdomain.h>
-> >  #include <linux/module.h>
-> >  #include <linux/of.h>
-> > @@ -60,6 +62,7 @@
-> >  #define      PLIC_ENABLE_THRESHOLD           0
-> >
-> >  struct plic_priv {
-> > +     int parent_irq;
-> >       struct cpumask lmask;
-> >       struct irq_domain *irqdomain;
-> >       void __iomem *regs;
-> > @@ -219,15 +222,17 @@ static const struct irq_domain_ops plic_irqdomain_ops = {
-> >   * that source ID back to the same claim register.  This automatically enables
-> >   * and disables the interrupt, so there's nothing else to do.
-> >   */
-> > -static void plic_handle_irq(struct pt_regs *regs)
-> > +static void plic_handle_irq(struct irq_desc *desc)
-> >  {
-> >       struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-> > +     struct irq_chip *chip = irq_desc_get_chip(desc);
-> >       void __iomem *claim = handler->hart_base + CONTEXT_CLAIM;
-> >       irq_hw_number_t hwirq;
-> >
-> >       WARN_ON_ONCE(!handler->present);
-> >
-> > -     csr_clear(CSR_IE, IE_EIE);
-> > +     chained_irq_enter(chip, desc);
-> > +
->
-> Ya, it's pretty clear putting the local interrupt controller in irqchip is the
-> right way to go :)
->
-> >       while ((hwirq = readl(claim))) {
-> >               int irq = irq_find_mapping(handler->priv->irqdomain, hwirq);
-> >
-> > @@ -237,7 +242,8 @@ static void plic_handle_irq(struct pt_regs *regs)
-> >               else
-> >                       generic_handle_irq(irq);
-> >       }
-> > -     csr_set(CSR_IE, IE_EIE);
-> > +
-> > +     chained_irq_exit(chip, desc);
-> >  }
-> >
-> >  static void plic_set_threshold(struct plic_handler *handler, u32 threshold)
-> > @@ -250,7 +256,8 @@ static int plic_dying_cpu(unsigned int cpu)
-> >  {
-> >       struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-> >
-> > -     csr_clear(CSR_IE, IE_EIE);
-> > +     if (handler->priv->parent_irq)
-> > +             disable_percpu_irq(handler->priv->parent_irq);
-> >       plic_set_threshold(handler, PLIC_DISABLE_THRESHOLD);
-> >
-> >       return 0;
-> > @@ -259,8 +266,10 @@ static int plic_dying_cpu(unsigned int cpu)
-> >  static int plic_starting_cpu(unsigned int cpu)
-> >  {
-> >       struct plic_handler *handler = this_cpu_ptr(&plic_handlers);
-> > +     int pirq = handler->priv->parent_irq;
-> >
-> > -     csr_set(CSR_IE, IE_EIE);
-> > +     if (pirq)
-> > +             enable_percpu_irq(pirq, irq_get_trigger_type(pirq));
-> >       plic_set_threshold(handler, PLIC_ENABLE_THRESHOLD);
-> >
-> >       return 0;
-> > @@ -273,6 +282,7 @@ static int __init plic_init(struct device_node *node,
-> >       u32 nr_irqs;
-> >       struct plic_priv *priv;
-> >       struct plic_handler *handler;
-> > +     struct of_phandle_args intc_args;
-> >
-> >       priv = kzalloc(sizeof(*priv), GFP_KERNEL);
-> >       if (!priv)
-> > @@ -354,6 +364,23 @@ static int __init plic_init(struct device_node *node,
-> >               nr_handlers++;
-> >       }
-> >
-> > +     /*
-> > +      * We can have multiple PLIC instances so setup chained handler
-> > +      * for all PLIC instances.
-> > +      */
-> > +     intc_args.np = riscv_of_intc_domain_node();
-> > +     intc_args.args_count = 1;
-> > +     intc_args.args[0] = RV_IRQ_EXT;
->
-> You could just use the value from the device tree rather than deciding on the
-> value a-priori.  It's a bit pedantic to worry about that now, as the PLIC
-> assumes that there's a RISC-V system and its parent is an cpu-intc, but it
-> always seems ugly that the PLIC driver is so RISC-V specific.
-
-We are creating only one RISC-V INTC irq_domain for the DT node
-belonging to the boot CPU.
-
-This becomes a problem for multiple PLIC instances because the
-interrupts-extended property of the PLIC DT node only points to a
-subset of HARTs.
-
-Let me know if you have any other suggestion.
-
-
->
-> > +     priv->parent_irq = irq_create_of_mapping(&intc_args);
-> > +     if (priv->parent_irq)
-> > +             irq_set_chained_handler(priv->parent_irq,
-> > +                                      plic_handle_irq);
-> > +     else {
-> > +             pr_err("%pOFP: intc mapping failed\n", node);
-> > +             error = -ENODEV;
-> > +             goto out_iounmap;
-> > +     }
-> > +
-> >       /*
-> >        * We can have multiple PLIC instances so setup cpuhp state only
-> >        * when context handler for current/boot CPU is present.
-> > @@ -368,7 +395,6 @@ static int __init plic_init(struct device_node *node,
-> >
-> >       pr_info("%pOFP: mapped %d interrupts with %d handlers for"
-> >               " %d contexts.\n", node, nr_irqs, nr_handlers, nr_contexts);
-> > -     set_handle_irq(plic_handle_irq);
-> >       return 0;
-> >
-> >  out_iounmap:
-> > diff --git a/include/linux/cpuhotplug.h b/include/linux/cpuhotplug.h
-> > index 77d70b633531..57b1f8f777d9 100644
-> > --- a/include/linux/cpuhotplug.h
-> > +++ b/include/linux/cpuhotplug.h
-> > @@ -102,6 +102,7 @@ enum cpuhp_state {
-> >       CPUHP_AP_IRQ_ARMADA_XP_STARTING,
-> >       CPUHP_AP_IRQ_BCM2836_STARTING,
-> >       CPUHP_AP_IRQ_MIPS_GIC_STARTING,
-> > +     CPUHP_AP_IRQ_RISCV_STARTING,
-> >       CPUHP_AP_IRQ_SIFIVE_PLIC_STARTING,
-> >       CPUHP_AP_ARM_MVEBU_COHERENCY,
-> >       CPUHP_AP_MICROCODE_LOADER,
-> > diff --git a/include/linux/irqchip/irq-riscv-intc.h b/include/linux/irqchip/irq-riscv-intc.h
-> > new file mode 100644
-> > index 000000000000..b11d38353099
-> > --- /dev/null
-> > +++ b/include/linux/irqchip/irq-riscv-intc.h
-> > @@ -0,0 +1,20 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/*
-> > + * Copyright (C) 2020 Western Digital Corporation or its affiliates.
-> > + */
-> > +
-> > +#ifndef __INCLUDE_LINUX_IRQCHIP_IRQ_RISCV_INTC_H
-> > +#define __INCLUDE_LINUX_IRQCHIP_IRQ_RISCV_INTC_H
-> > +
-> > +struct device_node;
-> > +
-> > +#ifdef CONFIG_RISCV_INTC
-> > +struct device_node *riscv_of_intc_domain_node(void);
-> > +#else
-> > +static inline struct device_node *riscv_of_intc_domain_node(void)
-> > +{
-> > +     return NULL;
-> > +}
-> > +#endif
-> > +
-> > +#endif
->
-> These issues are all pretty minor, so I'm OK with this getting merged as-is.  I
-> fixed up some minor stuff and have it on my intc branch as 2bd957e2b0b6
-> ("irqchip: RISC-V per-HART local interrupt controller driver"), but if the
-> irqchip folks want to take the patches then I'm not opposed to either version
-> getting merged.
->
-> Acked-by: Palmer Dabbelt <palmerdabbelt@google.com>
-
-Thanks, I can quickly send v6 with your comments addressed in a few hours.
-
-Do you want me to send v6 ?
-
-Regards,
-Anup
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogbGludXgta2VybmVsLW93
+bmVyQHZnZXIua2VybmVsLm9yZyA8bGludXgta2VybmVsLQ0KPiBvd25lckB2Z2VyLmtlcm5lbC5v
+cmc+IE9uIEJlaGFsZiBPZiBQYWxtZXIgRGFiYmVsdA0KPiBTZW50OiAyOSBNYXkgMjAyMCAwOTo0
+Mw0KPiBUbzogYW51cEBicmFpbmZhdWx0Lm9yZw0KPiBDYzogTWFyYyBaeW5naWVyIDxtYXpAa2Vy
+bmVsLm9yZz47IEFudXAgUGF0ZWwgPEFudXAuUGF0ZWxAd2RjLmNvbT47IFBhdWwNCj4gV2FsbXNs
+ZXkgPHBhdWwud2FsbXNsZXlAc2lmaXZlLmNvbT47IGFvdUBlZWNzLmJlcmtlbGV5LmVkdTsNCj4g
+ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZzsgdGdseEBsaW51dHJvbml4LmRlOyBqYXNvbkBsYWtl
+ZGFlbW9uLm5ldDsgQXRpc2gNCj4gUGF0cmEgPEF0aXNoLlBhdHJhQHdkYy5jb20+OyBBbGlzdGFp
+ciBGcmFuY2lzIDxBbGlzdGFpci5GcmFuY2lzQHdkYy5jb20+Ow0KPiBsaW51eC1yaXNjdkBsaXN0
+cy5pbmZyYWRlYWQub3JnOyBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnDQo+IFN1YmplY3Q6
+IFJlOiBbUEFUQ0ggdjUgMC82XSBOZXcgUklTQy1WIExvY2FsIEludGVycnVwdCBDb250cm9sbGVy
+IERyaXZlcg0KPiANCj4gT24gVGh1LCAyOCBNYXkgMjAyMCAyMDo1NzoyNiBQRFQgKC0wNzAwKSwg
+YW51cEBicmFpbmZhdWx0Lm9yZyB3cm90ZToNCj4gPiBPbiBUaHUsIE1heSAyOCwgMjAyMCBhdCAx
+MjoxNyBBTSBQYWxtZXIgRGFiYmVsdCA8cGFsbWVyQGRhYmJlbHQuY29tPg0KPiB3cm90ZToNCj4g
+Pj4NCj4gPj4gT24gVGh1LCAyMSBNYXkgMjAyMCAwNjozMjo1NSBQRFQgKC0wNzAwKSwgQW51cCBQ
+YXRlbCB3cm90ZToNCj4gPj4gPiBUaGlzIHBhdGNoc2V0IHByb3ZpZGVzIGEgbmV3IFJJU0MtViBM
+b2NhbCBJbnRlcnJ1cHQgQ29udHJvbGxlcg0KPiA+PiA+IERyaXZlciBmb3IgbWFuYWdpbmcgcGVy
+LUNQVSBsb2NhbCBpbnRlcnJ1cHRzLiBUaGUgb3ZlcmFsbCBhcHByb2FjaA0KPiA+PiA+IGlzIGlu
+c3BpcmVkIGZyb20gdGhlIHdheSBwZXItQ1BVIGxvY2FsIGludGVycnVwdHMgYXJlIGhhbmRsZWQg
+YnkNCj4gPj4gPiBMaW51eCBBUk02NCBhbmQgQVJNIEdJQ3YzIGRyaXZlci4NCj4gPj4gPg0KPiA+
+PiA+IEZldyBhZHZhbnRhZ2VzIG9mIHRoaXMgbmV3IGRyaXZlciBvdmVyIHByZXZpb3VzIG9uZSBh
+cmU6DQo+ID4+ID4gMS4gQWxsIGxvY2FsIGludGVycnVwdHMgYXJlIHJlZ2lzdGVyZWQgYXMgcGVy
+LUNQVSBpbnRlcnJ1cHRzIDIuIFRoZQ0KPiA+PiA+IFJJU0MtViB0aW1lciBkcml2ZXIgY2FuIHJl
+Z2lzdGVyIHRpbWVyIGludGVycnVwdCBoYW5kbGVyDQo+ID4+ID4gICAgdXNpbmcga2VybmVsIGly
+cSBzdWJzeXN0ZW0gd2l0aG91dCByZWx5aW5nIG9uIGFyY2gvcmlzY3YgdG8NCj4gPj4gPiAgICBl
+eHBsaWNpdGx5IGNhbGwgaXQncyBpbnRlcnJ1cHQgaGFuZGxlciAzLiBUaGUgS1ZNIFJJU0MtViBj
+YW4gdXNlDQo+ID4+ID4gdGhpcyBkcml2ZXIgdG8gaW1wbGVtZW50IGludGVycnVwdA0KPiA+PiA+
+ICAgIGhhbmRsZXIgZm9yIHBlci1IQVJUIGd1ZXN0IGV4dGVybmFsIGludGVycnVwdCBkZWZpbmVk
+IGJ5DQo+ID4+ID4gICAgdGhlIFJJU0MtViBILUV4dGVuc2lvbg0KPiA+PiA+IDQuIEluIGZ1dHVy
+ZSwgd2UgY2FuIGRldmVsb3AgZHJpdmVycyBmb3IgZGV2aWNlcyB3aXRoIHBlci1IQVJUDQo+ID4+
+ID4gICAgaW50ZXJydXB0cyB3aXRob3V0IGNoYW5naW5nIGFyY2ggY29kZSBvciB0aGlzIGRyaXZl
+ciAoZXhhbXBsZSwNCj4gPj4gPiAgICBDTElOVCB0aW1lciBkcml2ZXIgZm9yIFJJU0MtViBNLW1v
+ZGUga2VybmVsKQ0KPiA+PiA+DQo+ID4+ID4gV2l0aCB0aGlzIHBhdGNoc2V0LCBvdXRwdXQgb2Yg
+ImNhdCAvcHJvYy9pbnRlcnJ1cHRzIiBsb29rcyBhcyBmb2xsb3dzOg0KPiA+PiA+ICAgICAgICAg
+ICAgQ1BVMCAgICAgICBDUFUxICAgICAgIENQVTIgICAgICAgQ1BVMw0KPiA+PiA+ICAgMjogICAg
+ICAgIDM3OSAgICAgICAgICAwICAgICAgICAgIDAgICAgICAgICAgMCAgU2lGaXZlIFBMSUMgIDEw
+ICB0dHlTMA0KPiA+PiA+ICAgMzogICAgICAgIDU5MSAgICAgICAgICAwICAgICAgICAgIDAgICAg
+ICAgICAgMCAgU2lGaXZlIFBMSUMgICA4ICB2aXJ0aW8wDQo+ID4+ID4gICA1OiAgICAgICA1MDc5
+ICAgICAgMTA4MjEgICAgICAgODQzNSAgICAgIDEyOTg0ICBSSVNDLVYgSU5UQyAgIDUgIHJpc2N2
+LXRpbWVyDQo+ID4+ID4gSVBJMDogICAgICAyMDQ1ICAgICAgIDI1MzcgICAgICAgIDg5MSAgICAg
+ICAgODcwICBSZXNjaGVkdWxpbmcgaW50ZXJydXB0cw0KPiA+PiA+IElQSTE6ICAgICAgICAgOSAg
+ICAgICAgMjY5ICAgICAgICAgOTEgICAgICAgIDE2OCAgRnVuY3Rpb24gY2FsbCBpbnRlcnJ1cHRz
+DQo+ID4+ID4gSVBJMjogICAgICAgICAwICAgICAgICAgIDAgICAgICAgICAgMCAgICAgICAgICAw
+ICBDUFUgc3RvcCBpbnRlcnJ1cHRzDQo+ID4+ID4NCj4gPj4gPiBUaGUgcGF0Y2hzZXQgaXMgYmFz
+ZWQgdXAgTGludXgtNS43LXJjNiBhbmQgY2FuIGJlIGZvdW5kIGF0DQo+ID4+ID4gcmlzY3ZfaW50
+Y192NSBicmFuY2ggb2Y6IGh0dHBzOi8vZ2l0aHViLmNvbS9hdnBhdGVsL2xpbnV4LmdpdA0KPiA+
+PiA+DQo+ID4+ID4gVGhpcyBzZXJpZXMgaXMgdGVzdGVkIG9uOg0KPiA+PiA+ICAxLiBRRU1VIFJW
+NjQgdmlydCBtYWNoaW5lIHVzaW5nIExpbnV4IFJJU0MtViBTLW1vZGUgIDIuIFFFTVUgUlYzMg0K
+PiA+PiA+IHZpcnQgbWFjaGluZSB1c2luZyBMaW51eCBSSVNDLVYgUy1tb2RlICAzLiBRRU1VIFJW
+NjQgdmlydCBtYWNoaW5lDQo+ID4+ID4gdXNpbmcgTGludXggUklTQy1WIE0tbW9kZSAoaS5lLiBO
+b01NVSkNCj4gPj4gPg0KPiA+PiA+IENoYW5nZXMgc2luY2UgdjQ6DQo+ID4+ID4gIC0gUmViYXNl
+ZCB0byBMaW51eC01LjctcmM2IGFuZCBtdWx0aS1QTElDIGltcHJvdmVtZW50IHBhdGNoZXMNCj4g
+Pj4gPiAgLSBBZGRlZCBzZXBhcmF0ZSBwYXRjaCB0byBmb3JjZSBzZWxlY3QgUklTQ1ZfSU5UQyBm
+b3IgQ09ORklHX1JJU0NWDQo+ID4+ID4gIC0gRml4ZWQgdGhlIGRyaXZlciBmb3IgTGludXggUklT
+Qy1WIE5vTU1VDQo+ID4+ID4NCj4gPj4gPiBDaGFuZ2VzIHNpbmNlIHYzOg0KPiA+PiA+ICAtIFJl
+YmFzZWQgdG8gTGludXgtNS42LXJjNSBhbmQgQXRpc2gncyBQTElDIHBhdGNoZXMNCj4gPj4gPiAg
+LSBBZGRlZCBzZXBhcmF0ZSBwYXRjaCB0byByZW5hbWUgYW5kIG1vdmUgcGxpY19maW5kX2hhcnRf
+aWQoKQ0KPiA+PiA+ICAgIHRvIGFyY2ggZGlyZWN0b3J5DQo+ID4+ID4gIC0gVXNlIHJpc2N2X29m
+X3BhcmVudF9oYXJ0aWQoKSBpbiByaXNjdl9pbnRjX2luaXQoKSBpbnN0ZWFkIG9mDQo+ID4+ID4g
+ICAgYXRvbWljIGNvdW50ZXINCj4gPj4gPg0KPiA+PiA+IENoYW5nZXMgc2luY2UgdjI6DQo+ID4+
+ID4gIC0gRHJvcHBlZCBQQVRDSDIgc2luY2UgaXQgd2FzIG1lcmdlZCBsb25nLXRpbWUgYmFjaw0K
+PiA+PiA+ICAtIFJlYmFzZWQgc2VyaWVzIGZyb20gTGludXgtNC4xOS1yYzIgdG8gTGludXgtNS42
+LXJjMg0KPiA+PiA+DQo+ID4+ID4gQ2hhbmdlcyBzaW5jZSB2MToNCj4gPj4gPiAgLSBSZW1vdmVk
+IGNoYW5nZXMgcmVsYXRlZCB0byBwdWdnYWJsZSBJUEkgdHJpZ2dlcmluZw0KPiA+PiA+ICAtIFNl
+cGFyYXRlIHBhdGNoIGZvciBzZWxmLWNvbnRhaW5lZCBJUEkgaGFuZGxpbmcgcm91dGluZQ0KPiA+
+PiA+ICAtIFJlbW92ZWQgcGF0Y2ggZm9yIEdFTkVSSUNfSVJRIGtjb25maWcgb3B0aW9ucw0KPiA+
+PiA+ICAtIEFkZGVkIHBhdGNoIHRvIHJlbW92ZSBkb19JUlEoKSBmdW5jdGlvbg0KPiA+PiA+ICAt
+IFJlYmFzZWQgdXBvbiBBdGlzaCdzIFNNUCBwYXRjaGVzDQo+ID4+ID4NCj4gPj4gPiBBbnVwIFBh
+dGVsICg2KToNCj4gPj4gPiAgIFJJU0MtVjogc2VsZi1jb250YWluZWQgSVBJIGhhbmRsaW5nIHJv
+dXRpbmUNCj4gPj4gPiAgIFJJU0MtVjogUmVuYW1lIGFuZCBtb3ZlIHBsaWNfZmluZF9oYXJ0X2lk
+KCkgdG8gYXJjaCBkaXJlY3RvcnkNCj4gPj4gPiAgIGlycWNoaXA6IFJJU0MtViBwZXItSEFSVCBs
+b2NhbCBpbnRlcnJ1cHQgY29udHJvbGxlciBkcml2ZXINCj4gPj4gPiAgIGNsb2Nrc291cmNlL2Ry
+aXZlcnMvdGltZXItcmlzY3Y6IFVzZSBwZXItQ1BVIHRpbWVyIGludGVycnVwdA0KPiA+PiA+ICAg
+UklTQy1WOiBSZW1vdmUgZG9fSVJRKCkgZnVuY3Rpb24NCj4gPj4gPiAgIFJJU0MtVjogRm9yY2Ug
+c2VsZWN0IFJJU0NWX0lOVEMgZm9yIENPTkZJR19SSVNDVg0KPiA+PiA+DQo+ID4+ID4gIGFyY2gv
+cmlzY3YvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgIHwgICAyICsNCj4gPj4gPiAgYXJjaC9y
+aXNjdi9pbmNsdWRlL2FzbS9pcnEuaCAgICAgICAgICAgfCAgIDUgLQ0KPiA+PiA+ICBhcmNoL3Jp
+c2N2L2luY2x1ZGUvYXNtL3Byb2Nlc3Nvci5oICAgICB8ICAgMSArDQo+ID4+ID4gIGFyY2gvcmlz
+Y3YvaW5jbHVkZS9hc20vc21wLmggICAgICAgICAgIHwgICAzICsNCj4gPj4gPiAgYXJjaC9yaXNj
+di9rZXJuZWwvY3B1LmMgICAgICAgICAgICAgICAgfCAgMTYgKysrDQo+ID4+ID4gIGFyY2gvcmlz
+Y3Yva2VybmVsL2VudHJ5LlMgICAgICAgICAgICAgIHwgICA0ICstDQo+ID4+ID4gIGFyY2gvcmlz
+Y3Yva2VybmVsL2lycS5jICAgICAgICAgICAgICAgIHwgIDMzICstLS0tLQ0KPiA+PiA+ICBhcmNo
+L3Jpc2N2L2tlcm5lbC9zbXAuYyAgICAgICAgICAgICAgICB8ICAxMSArLQ0KPiA+PiA+ICBhcmNo
+L3Jpc2N2L2tlcm5lbC90cmFwcy5jICAgICAgICAgICAgICB8ICAgMiAtDQo+ID4+ID4gIGRyaXZl
+cnMvY2xvY2tzb3VyY2UvdGltZXItcmlzY3YuYyAgICAgIHwgIDMwICsrKystDQo+ID4+ID4gIGRy
+aXZlcnMvaXJxY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgIHwgIDEzICsrKw0KPiA+PiA+ICBk
+cml2ZXJzL2lycWNoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICB8ICAgMSArDQo+ID4+ID4gIGRy
+aXZlcnMvaXJxY2hpcC9pcnEtcmlzY3YtaW50Yy5jICAgICAgIHwgMTUwICsrKysrKysrKysrKysr
+KysrKysrKysrKysNCj4gPj4gPiAgZHJpdmVycy9pcnFjaGlwL2lycS1zaWZpdmUtcGxpYy5jICAg
+ICAgfCAgNTIgKysrKystLS0tDQo+ID4+ID4gIGluY2x1ZGUvbGludXgvY3B1aG90cGx1Zy5oICAg
+ICAgICAgICAgIHwgICAxICsNCj4gPj4gPiAgaW5jbHVkZS9saW51eC9pcnFjaGlwL2lycS1yaXNj
+di1pbnRjLmggfCAgMjAgKysrKw0KPiA+PiA+ICAxNiBmaWxlcyBjaGFuZ2VkLCAyODAgaW5zZXJ0
+aW9ucygrKSwgNjQgZGVsZXRpb25zKC0pICBjcmVhdGUgbW9kZQ0KPiA+PiA+IDEwMDY0NCBkcml2
+ZXJzL2lycWNoaXAvaXJxLXJpc2N2LWludGMuYyAgY3JlYXRlIG1vZGUgMTAwNjQ0DQo+ID4+ID4g
+aW5jbHVkZS9saW51eC9pcnFjaGlwL2lycS1yaXNjdi1pbnRjLmgNCj4gPj4NCj4gPj4gU28gSSBy
+ZWFkIHRocm91Z2ggdGhpcyBhIGJpdCwgYW5kIHdoaWxlIEkgaGF2ZW4ndCBnb25lIHRocm91Z2gg
+ZXZlcnkNCj4gPj4gbGluZSBvZiBjb2RlIEknbSBzb21ld2hhdCBpbmNsaW5lZCB0b3dhcmQgdGFr
+aW5nIGl0Lg0KPiA+Pg0KPiA+PiBEdXJpbmcgdGhlIG9yaWdpbmFsIFJJU0MtViBwb3J0IHN1Ym1p
+c3Npb24gd2Ugd2VudCBiYWNrIGFuZCBmb3J0aA0KPiA+PiBiZXR3ZWVuIGhhdmluZyB0aGlzIGZp
+cnN0LWxldmVsIGludGVycnVwdCBjb250cm9sbGVyIGluIGFyY2gvcmlzY3YvDQo+ID4+IHZzIGRy
+aXZlcnMvaXJxY2hpcC8uICBUaGUgb3JpZ2luYWwgZGVjaWRpbmcgZmFjdG9yIHdhcyB0aGF0IHRo
+ZSBJU0ENCj4gPj4gbWFuZGF0ZWQgdGhlIGludGVycnVwdCBjb250cm9sbGVyLCBidXQgYXMgdGhh
+dCdzIHByb3ZpbmcgdG8gYmUgbGVzcw0KPiA+PiBhbmQgbGVzcyB0aGUgY2FzZSBldmVyeSBkYXkg
+KHdpdGggdGhlIENMSUMgYW5kIE0tbW9kZSBMaW51eCkgaXQNCj4gPj4gY2VydGFpbmx5IHNlZW0g
+c2FuZSB0byBtb3ZlIGFsbCBvdXIgaW50ZXJydXB0IGNvbnRyb2xsZXIgZHJpdmVycyBvdXQgb2YN
+Cj4gYXJjaC9yaXNjdi8uDQo+ID4+DQo+ID4+IFRoaXMgaXMgY2VydGFpbmx5IGEgc3RlcCBpbiB0
+aGUgcmlnaHQgZGlyZWN0aW9uLCBhbmQgaXQgaGFuZGxlcyBzb21lDQo+ID4+IG9mIHRoZSBtb3Jl
+IGdsYXJpbmcgaXNzdWVzIChpc2N2X3RpbWVyX2ludGVycnVwdCBhbmQgbGFja2luZyBJUlFzIGZv
+cg0KPiA+PiB0aGUgQ0xJTlQpLiAgSSB0aGluayB3ZSBzaG91bGQganVzdCBnbyBhaGVhZCBhbmQg
+bWVyZ2UgaXQsIGV2ZW4NCj4gPj4gdGhvdWdoIHRoZXJlIG1pZ2h0IGJlIHNvbWUgbW9yZSByZWZh
+Y3RvcmluZyB0byBkbyB3aGVuIHdlIGV2ZW50dWFsbHkNCj4gPj4gZW5kIHVwIHdpdGggYW5vdGhl
+ciBpbnRlcnJ1cHQgY29udHJvbGxlci4NCj4gPj4NCj4gPj4gSSB0aGluayBpdCdzIGJlc3QgaWYg
+dGhpcyBhbGwgZ29lcyBpbiB0aHJvdWdoIGEgc2luZ2xlIHRyZWUsIGFzIGl0DQo+ID4+IHNlZW1z
+IG1vcmUgd29yayB0aGFuIGl0J3Mgd29ydGggdG8gc3BsaXQgaXQgdXAuICBJJ20gaGFwcHkgdG8g
+dGFrZSBpdA0KPiA+PiB0aHJvdWdoIG15IHRyZWUgaWYgdGhhdCdzIE9LIHdpdGggdGhlIGlycWNo
+aXAgZm9sa3M/DQo+ID4NCj4gPiBBIHNtYWxsIGhlYWRzIHVwLi4uDQo+ID4NCj4gPiBNYXJjIGhh
+cyBxdWV1ZWQgYSBmZXcgUExJQyBpbXByb3ZlbWVudCBwYXRjaGVzIGZvciBMaW51eC1uZXh0Lg0K
+PiA+IChodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL2NvdmVyLzExNTU1MDUxLykNCj4gPg0K
+PiA+IFRoaXMgc2VyaWVzIChwYXJ0aWN1bGFybHkgUEFUQ0gzKSBpcyBiYXNlZCB1cG9uIGFib3Zl
+IG1lbnRpb25lZCBQTElDDQo+ID4gcGF0Y2hlcy4NCj4gPg0KPiA+IEFwYXJ0IGZyb20gYWJvdmUs
+IEkgZG9uJ3Qgc2VlIGFueSBwb3RlbnRpYWwgbWVyZ2UgY29uZmxpY3RzLg0KPiANCj4gVGhhbmtz
+LiAgSSBoaXQgc29tZSBtZXJnZSBpc3N1ZXMgd2hlbiBwdWxsaW5nIGl0IGludG8gYSBzdGFnaW5n
+IGJyYW5jaCwgYnV0DQo+IG5vdGhpbmcgc2VlbWVkIGludGVyZXN0aW5nLiAgSSB0aGluayB0aGUg
+YmVzdCBiZXQgaGVyZSBpcyB0byBqdXN0IHB1bGwgaXQgaW4gdGhyb3VnaA0KPiB0aGUgUklTQy1W
+IHRyZWUuDQo+IA0KPiBBc2lkZSBmcm9tIHRoaXMsIEknbSByZWFkeSB0byBzZW5kIG91dCBteSBm
+aXJzdCA1LjggUFIuICBJJ20gZ29pbmcgdG8gcHV0IHRoaXMgb24gYQ0KPiBzdGFnaW5nIGJyYW5j
+aCBhbmQgc2VuZCBpdCB1cCBhcyBhIHNlY29uZCA1LjggbWVyZ2Ugd2luZG93IFBSIG9uY2UNCj4g
+ZXZlcnl0aGluZyBlbHNlIHNldHRsZXMuICBJSVJDIG91ciBvdGhlciBpcnFjaGlwIGNoYW5nZXMg
+aGF2ZSBiZWVuIGFyb3VuZCBmb3IgYQ0KPiB3aGlsZSwgc28gdGhleSBzaG91bGQgYmUgZ29pbmcg
+dXAgZWFybHkgaW4gdGhlIG1lcmdlIHdpbmRvdy4NCg0KU2VuZGluZyB0aGlzIGFzIHBhcnQgb2Yg
+c2Vjb25kIDUuOCBtZXJnZSB3aW5kb3cgUFIgd2lsbCBiZSBwZXJmZWN0LiBJdCB3aWxsDQphbHNv
+IHRha2UgY2FyZSBvZiBkZXBlbmRlbmN5IG9uIFBMSUMgcGF0Y2hlcy4NCg0KTGV0IG1lIGtub3cg
+aWYgeW91IHdhbnQgbWUgdG8gcmViYXNlIGFuZCBzZW5kIHY2IGJlZm9yZSB5b3VyIHNlY29uZCA1
+LjggUFIuDQoNClRoYW5rcywNCkFudXANCg==
 
