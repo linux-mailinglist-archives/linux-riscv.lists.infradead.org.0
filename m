@@ -2,72 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 631B11E71B7
-	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 02:40:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B50811E71B8
+	for <lists+linux-riscv@lfdr.de>; Fri, 29 May 2020 02:40:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QI7CDCUbd5OO59gGqxpOHmDYgW2MbSqQ4kURqtenhT8=; b=NQJKM/tEX+4kEbP7axW8TGdsO
-	LvkGT1umGv0eQdD6ZDBk+60VNuM4T/Foa0Gr2v83Ri7518XrbIRw5vAjAkEdC1jsgsxKmO2Ky6u6D
-	OIKw9rq1heA/PkKwFHImezky2Zc/inB7FgGXmBvQvO/RhvJLtSYOE8KMMZbDphZ8RRabKrdqkGkvz
-	5iQ7l010ON9dfUooXbiyC9vNFeayKuK5xj9xkjhQXMbBMKUX1xKg27GBsKaA33mto+M5Hz9I5G13K
-	rph2Px9ZQe/GiKOtizVzaWHUutXQ+vm58Yuv37Ma3twGxPZk2vHPHuQG+QmGwPlrZwH7TjrBE+HxN
-	7LD2VGgQQ==;
+	 bh=TPcVtJdyE2AYwAhGRH6VQ5jDi/96X6c2mJkTgrsC7yI=; b=PEYxFa2rMkZ4hf0ukQu3Uxyov
+	dRaB/zTgT6K8oYAZerL8UAfomywTa8InFvWBvMWHsoNXPBRis3cOisA3SmyIXEzM7V/arp/eES71c
+	mDh73r4T9j21RnhdyDAARc0HOAiIO2++sYbsZRRLft2ecVMOkG8XFH6DrLFyhtuvEFfpFCH++yiCU
+	ayOtPbhxzQk+bpwoG7KJb0TuAbUF0KQCy0xmabHoJF56GVsQXnGgHdiBscqwtsr7DDqWyXICCweWn
+	ilr94ATSllZbermUso+IiijvwaCDOOASnmC2RL3ablj5/0ufuM99A4J9DQS39tMYgjfJ++mNEMk8S
+	2OAR2esYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeT45-0006P2-Ct; Fri, 29 May 2020 00:40:01 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jeT4M-0008B0-Ba; Fri, 29 May 2020 00:40:18 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeSxM-000691-JC
- for linux-riscv@lists.infradead.org; Fri, 29 May 2020 00:33:09 +0000
-Received: by mail-wm1-x342.google.com with SMTP id v19so1237877wmj.0
- for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 17:33:04 -0700 (PDT)
+ id 1jeSy6-0006j6-3U
+ for linux-riscv@lists.infradead.org; Fri, 29 May 2020 00:33:51 +0000
+Received: by mail-wr1-x443.google.com with SMTP id x6so1304861wrm.13
+ for <linux-riscv@lists.infradead.org>; Thu, 28 May 2020 17:33:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=atishpatra.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QI7CDCUbd5OO59gGqxpOHmDYgW2MbSqQ4kURqtenhT8=;
- b=KY7QUkxxkJAy9/MypVQr0cPw3LLVXtfvPShrn5e8LD5SgrqM0+9duZr3Ugyg6LVkxx
- intd2hXFaoa4Z6NWzfCZ6VeyBThOvUOQJIvOTazwlWc969YwG6phJuD4Dx/Ryu4muaYs
- lOYS5mUAuiTX4iIdKa1i63TZnmiW2wm/NTZB8=
+ :cc; bh=TPcVtJdyE2AYwAhGRH6VQ5jDi/96X6c2mJkTgrsC7yI=;
+ b=AVIwTbPm1ox7N3P4+ADUQymgyvb83Na+tVpSR19McEIJAuWV/ngmhQ63MElQqZLO6A
+ /JzzB47Rj8u4EjlrPav6qUuTLl7l83e7gQahB8miSxNae71iMvhus3BJpjBNyU0TkauQ
+ vHbLDsv7Ykg+mXB951uwqWxtQTzyLr7Upjw1o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=QI7CDCUbd5OO59gGqxpOHmDYgW2MbSqQ4kURqtenhT8=;
- b=HIuxBCT+KART5NQcp0y1b3f12e0GjYxtj8XiMcf8c+3I0AmKoEyxaqGsvZR864vEcf
- 1XhGGQaaTI6sUqK3nc3ENpM2TwWHksFAV/8PCC8z27Xb50LjbdLLjGejd2gSXwKWmHim
- d3s7NBN9RpvXRWBoNfhEC6AFBevC4Xp44gdO1ZwfDml8kKyiyr41IXBuonUQ4hM2jgM2
- q/nQ7hzBt4CB7uST4qGxcGiZNA8LgoT8DiUZowTNCW4zpcjESAJGnM4kGct0Y4j64zot
- TxG8sIfzQl0M1JHeiOPT01QVgwXbmOTZpKeXFKkX5U7xR8Uf65/0HFdTB0fbFzNA1+8J
- +Jjg==
-X-Gm-Message-State: AOAM533tFDvGa5Z/spbdeumdq5L4voGQTLk4jD3j89MmCRYH/Mz5deQs
- RxcHM54j0KTVZ9OO94eSTpzH3ma6kUUUkH3LvcdR
-X-Google-Smtp-Source: ABdhPJxSloc37vigWw1sS2KYBXlP/cfCpnCL/QUg9OmmggVEbx7A00NjmrfCHDBT8wvJcPx1K6nc+RlNFiEzCou/GkE=
-X-Received: by 2002:a1c:9d09:: with SMTP id g9mr5646353wme.31.1590712383067;
- Thu, 28 May 2020 17:33:03 -0700 (PDT)
+ bh=TPcVtJdyE2AYwAhGRH6VQ5jDi/96X6c2mJkTgrsC7yI=;
+ b=CF7btZ8xyGddvmQUwbkaCgYruJxct7E5/K3SSrg+NP2fK0N/5PrAyHNaR8oaVWJszc
+ YRdRisT3fMaKM8rYHfeQpixGZ/DuyAZgWGKxcRVNn8cCg6yAlrevEOVd3HmhkNkhiFDj
+ Mxwl25yv3zRu+I/OjBALvTfGs8kkbzZChKkPw/QYcXfaZX+3dURTXycndDXqWmxn+/bP
+ JZYpUf8k29ByU5X3+zolPOCkaAws43hkP2k5Si2es7JFo4MV8to855nfGp7ZvzgLU17l
+ jK2YK80Yb974TE8uJiZsdAfC8StZiMyhsOni9E7OIisY9OY61TSOMaaIngUI7QwrtJkN
+ 5nXQ==
+X-Gm-Message-State: AOAM530rh8D+vi8qUh4GZHon1bu6SxE6jxOiA9yP3UWy5evHTSN+oO97
+ AE7WfoGTiRSNispdc7u74HS0n7kWtHy80Qve5uCR
+X-Google-Smtp-Source: ABdhPJzqmxeAGA7wTIx1KRRqA0Q/MyC0G6n009aKF+yeH9+jWtsSpTvdDRpC7ou312ux20wgCKKOWiCG5nUb2+g2SM4=
+X-Received: by 2002:a05:6000:10c3:: with SMTP id
+ b3mr6337909wrx.53.1590712428527; 
+ Thu, 28 May 2020 17:33:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200521133301.816665-1-anup.patel@wdc.com>
- <20200521133301.816665-6-anup.patel@wdc.com>
-In-Reply-To: <20200521133301.816665-6-anup.patel@wdc.com>
+ <20200521133301.816665-7-anup.patel@wdc.com>
+In-Reply-To: <20200521133301.816665-7-anup.patel@wdc.com>
 From: Atish Patra <atishp@atishpatra.org>
-Date: Thu, 28 May 2020 17:32:52 -0700
-Message-ID: <CAOnJCUKvPSPRwPFZg==A4jHXOursXy1=n9Pjsf-ntuqDwPRWTg@mail.gmail.com>
-Subject: Re: [PATCH v5 5/6] RISC-V: Remove do_IRQ() function
+Date: Thu, 28 May 2020 17:33:37 -0700
+Message-ID: <CAOnJCUJKjgYq5Gii6iVYCUGELShpCaPjG4F0N9CFkgxk_rZG2Q@mail.gmail.com>
+Subject: Re: [PATCH v5 6/6] RISC-V: Force select RISCV_INTC for CONFIG_RISCV
 To: Anup Patel <anup.patel@wdc.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_173304_704071_10C36EF6 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20200528_173350_186655_9FCBAFD3 
+X-CRM114-Status: GOOD (  12.15  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -103,56 +104,34 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 On Thu, May 21, 2020 at 6:34 AM Anup Patel <anup.patel@wdc.com> wrote:
 >
-> The only thing do_IRQ() does is call handle_arch_irq function
-> pointer. We can very well call handle_arch_irq function pointer
-> directly from assembly and remove do_IRQ() function hence this
-> patch.
+> The RISC-V per-HART local interrupt controller driver is mandatory
+> for all RISC-V system (with/without MMU) hence we force select it
+> for CONFIG_RISCV (just like RISCV_TIMER).
 >
 > Signed-off-by: Anup Patel <anup.patel@wdc.com>
 > ---
->  arch/riscv/kernel/entry.S | 4 +++-
->  arch/riscv/kernel/irq.c   | 6 ------
->  2 files changed, 3 insertions(+), 7 deletions(-)
+>  arch/riscv/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
-> index 56d071b2c0a1..cae7e6d4c7ef 100644
-> --- a/arch/riscv/kernel/entry.S
-> +++ b/arch/riscv/kernel/entry.S
-> @@ -106,7 +106,9 @@ _save_context:
->
->         /* Handle interrupts */
->         move a0, sp /* pt_regs */
-> -       tail do_IRQ
-> +       la a1, handle_arch_irq
-> +       REG_L a1, (a1)
-> +       jr a1
->  1:
->         /*
->          * Exceptions run with interrupts enabled or disabled depending on the
-> diff --git a/arch/riscv/kernel/irq.c b/arch/riscv/kernel/irq.c
-> index eb8777642ce6..7207fa08d78f 100644
-> --- a/arch/riscv/kernel/irq.c
-> +++ b/arch/riscv/kernel/irq.c
-> @@ -16,12 +16,6 @@ int arch_show_interrupts(struct seq_file *p, int prec)
->         return 0;
->  }
->
-> -asmlinkage __visible void __irq_entry do_IRQ(struct pt_regs *regs)
-> -{
-> -       if (handle_arch_irq)
-> -               handle_arch_irq(regs);
-> -}
-> -
->  void __init init_IRQ(void)
->  {
->         irqchip_init();
+> diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
+> index 822cb0e1a380..2cf0c83c1a47 100644
+> --- a/arch/riscv/Kconfig
+> +++ b/arch/riscv/Kconfig
+> @@ -51,6 +51,7 @@ config RISCV
+>         select THREAD_INFO_IN_TASK
+>         select PCI_DOMAINS_GENERIC if PCI
+>         select PCI_MSI if PCI
+> +       select RISCV_INTC
+>         select RISCV_TIMER
+>         select GENERIC_IRQ_MULTI_HANDLER
+>         select GENERIC_ARCH_TOPOLOGY if SMP
 > --
 > 2.25.1
 >
 >
 
-
 Reviewed-by: Atish Patra <atish.patra@wdc.com>
+
 -- 
 Regards,
 Atish
