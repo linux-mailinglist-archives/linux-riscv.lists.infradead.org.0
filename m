@@ -2,76 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F21BB1E971A
-	for <lists+linux-riscv@lfdr.de>; Sun, 31 May 2020 12:53:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B859C1E988D
+	for <lists+linux-riscv@lfdr.de>; Sun, 31 May 2020 17:29:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
-	References:In-Reply-To:Subject:To:From:Date:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4aCqTrXmmcbMuK15JiRN6ZR8INpmlbAqy7bTPEXkHco=; b=AWpP537wJwDKj7ZkElWeGKFgU
-	NRM7X/c7rFykhgdMhhrgGEiMwNYMEe/MC6xzqlIwnDP0LCs1qSUDZsX2Hh7tek4a1JdmlRSyqXvnt
-	3oKnx+UPAUgxOZc7GL9yaSPRwTo60C8uUGNDgUy+Xxhju421nlKlQKy75qvwUBJ490i4R6YoLfceT
-	UJ1YaATgZvUoPjgyP/Jvlo62UXYF8k24xDkuVodKoaD01cS+rGHni/pC1mYiwW0cyZSd5dUw6ou/C
-	g8Z74JHoglUcvajnMuLsn4bN2tQtTxEa0heUbBiN4xp+DS5aqvGeAZAxnHyCTi7v70+QEh/XN0kbF
-	0YiZ1SPnQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=rfTSNahoiPOEDiO8iL/DNxQLoyj/WxX6uJJmKoyw7wc=; b=j+yK/qu/JqetNuGGgdQAhxSbW
+	UZO0vqpguSuwdZ/zjUMgmtXrvToRelY4JUGSmHw1TsCYqUBBmXWf/+P/49zGr1zy1iqFSZVMSHvbP
+	vzht/wm+NXobrKjPHD62iucjgv6NCsu2D5foCMyUO0iS3mxAhnIegM0wlkiSOa9WZBMLg3tLwQW58
+	LTm/VZysBO18hf5Fx0GsBPnUI7WMWfNR3Rc29tpbKlGOxWriZJffwV0M9rDReV78nCq0Gaewsqw4s
+	l4dFlvv2KUNLEL4Ub9WnFgmpQsLZCcVB0KU63MMl0vpgtO0FX+9sozDf5Pe2T9so2CHyJQrU6Wd3F
+	bDDmH/Bxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfLan-0008PF-51; Sun, 31 May 2020 10:53:25 +0000
+	id 1jfPth-0005GB-Lc; Sun, 31 May 2020 15:29:13 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfLaj-0008OZ-Ha
- for linux-riscv@lists.infradead.org; Sun, 31 May 2020 10:53:23 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1jfPtd-0005Fo-ME
+ for linux-riscv@lists.infradead.org; Sun, 31 May 2020 15:29:11 +0000
+Received: from mail-lf1-f43.google.com (mail-lf1-f43.google.com
+ [209.85.167.43])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 03F7B2077D;
- Sun, 31 May 2020 10:53:19 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D2967207C4
+ for <linux-riscv@lists.infradead.org>; Sun, 31 May 2020 15:29:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1590922399;
- bh=cDOXdwIRPzfH77hpV1aQ9G8n49HhGcsjIyovyaKeb+c=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=WtBH4tp1jQ3zoPFoW5sVLnr5DlAebaJW1Jqvqx9RZleEKQqYO59S9Iw56TfIRvmHk
- syWHSxJjmb2nhRRmMa7RRkKG8UfncPQPV4eUS/b3MBdd05qCcYe3BXcyVA2giihB5R
- kXhpyuHSiWdmTrp8g/OBOdv9aZatKNa7amVlz228=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1jfLaf-00GfrJ-IT; Sun, 31 May 2020 11:53:17 +0100
+ s=default; t=1590938949;
+ bh=RgH8vZP6gGKjxZbdAJfOxb0EnsZVyhW9+Xz8bXt64I4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=M9/4AaQxfmCA/6q+euSu0GoeMxvu2lBCoZ7hil3aHeSu1aDqejX/eUs8jNWSsHxav
+ H+1+S1f6FnyWm8AJOeTH8BzDbonAW9fTbFTwXD4GRuTxxW6hH0gWsb7Kp9CpJIFBYo
+ sIUbUSFQ7VcdgZdRB4pRzLSPlNJw6ANzS67fanUo=
+Received: by mail-lf1-f43.google.com with SMTP id w15so2443193lfe.11
+ for <linux-riscv@lists.infradead.org>; Sun, 31 May 2020 08:29:08 -0700 (PDT)
+X-Gm-Message-State: AOAM5327+RcO9dMXJFUpECvABIjP1vyEzWljmt01UkIOLGdYAhdat1ns
+ rd3dWm5nFu4tsDLtIUVJBuA+orvaSeU1ZhssPj0=
+X-Google-Smtp-Source: ABdhPJxejuSVGnbXWGizqQowhu76EpVfMXj4SVrlQSUlp6tZooLWGMk93TtI/yufqEFuA+mO8zH550rG8CcZlJ1Pbrg=
+X-Received: by 2002:a05:6512:3111:: with SMTP id
+ n17mr9047094lfb.137.1590938947072; 
+ Sun, 31 May 2020 08:29:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Sun, 31 May 2020 11:53:17 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Anup Patel <anup@brainfault.org>
-Subject: Re: [PATCH v6 3/6] irqchip: RISC-V per-HART local interrupt
- controller driver
-In-Reply-To: <CAAhSdy2fJ1cd2OjAWODOmSbkWUBfvvr4rvsTqh4qNxZjTTKo5A@mail.gmail.com>
-References: <20200530100725.265481-1-anup.patel@wdc.com>
- <20200530100725.265481-4-anup.patel@wdc.com>
- <cd4a5513197b73e3b8d335f09117bb8d@kernel.org>
- <CAAhSdy3cnZwnjpqWkixmZ5-fi=GK1cSUsjah=P3Yp5hjv382hg@mail.gmail.com>
- <a5f1346544aec6e6da69836b7a6e0a6e@kernel.org>
- <CAAhSdy2fJ1cd2OjAWODOmSbkWUBfvvr4rvsTqh4qNxZjTTKo5A@mail.gmail.com>
-User-Agent: Roundcube Webmail/1.4.4
-Message-ID: <e315f76b06b7b0935ebee867c04f364e@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: anup@brainfault.org, anup.patel@wdc.com, palmer@dabbelt.com,
- paul.walmsley@sifive.com, aou@eecs.berkeley.edu, daniel.lezcano@linaro.org,
- tglx@linutronix.de, jason@lakedaemon.net, atish.patra@wdc.com,
- Alistair.Francis@wdc.com, linux-riscv@lists.infradead.org,
- linux-kernel@vger.kernel.org, palmerdabbelt@google.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+References: <cover.1590474856.git.greentime.hu@sifive.com>
+ <8dd3e441842d2b0fb63da82ecc04b08f99930e6a.1590474856.git.greentime.hu@sifive.com>
+In-Reply-To: <8dd3e441842d2b0fb63da82ecc04b08f99930e6a.1590474856.git.greentime.hu@sifive.com>
+From: Guo Ren <guoren@kernel.org>
+Date: Sun, 31 May 2020 23:28:55 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTR2_WYAAdkxPH0Z3ejKu1W0J3fK43vLoYkPGnzLK6q3Ww@mail.gmail.com>
+Message-ID: <CAJF2gTR2_WYAAdkxPH0Z3ejKu1W0J3fK43vLoYkPGnzLK6q3Ww@mail.gmail.com>
+Subject: Re: [RFC PATCH v4 12/13] riscv: Add sigcontext save/restore for vector
+To: Greentime Hu <greentime.hu@sifive.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200531_035321_621477_BF320B56 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20200531_082909_767126_38689FAE 
+X-CRM114-Status: GOOD (  21.22  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -100,72 +86,204 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
- Jason Cooper <jason@lakedaemon.net>, Anup Patel <anup.patel@wdc.com>,
- "linux-kernel@vger.kernel.org
- List" <linux-kernel@vger.kernel.org>, Atish Patra <atish.patra@wdc.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
+Cc: Guo Ren <guoren@linux.alibaba.com>, palmerdabbelt@google.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, oleg@redhat.com,
+ Vincent Chen <vincent.chen@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Thomas Gleixner <tglx@linutronix.de>,
  linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On 2020-05-31 11:06, Anup Patel wrote:
-> On Sun, May 31, 2020 at 3:03 PM Marc Zyngier <maz@kernel.org> wrote:
->> 
->> On 2020-05-31 06:36, Anup Patel wrote:
->> > On Sat, May 30, 2020 at 5:31 PM Marc Zyngier <maz@kernel.org> wrote:
->> 
->> [...]
->> 
->> >> >       plic_set_threshold(handler, PLIC_DISABLE_THRESHOLD);
->> >>
->> >> Why do you need to both disable the interrupt *and* change the
->> >> priority
->> >> threshold? It seems to be that one of them should be enough, but my
->> >> kno9wledge of the PLIC is limited. In any case, this would deserve a
->> >> comment.
->> >
->> > Okay, I will test and remove "disable the interrupt" part from
->> > plic_dying_cpu().
->> 
->> Be careful, as interrupt enabling/disabling is refcounted in order
->> to allow nesting. If you only enable on CPU_ON and not disable
->> on CPU_OFF, you will end-up with a depth that only increases,
->> up to the point where you hit the roof (it will take a while though).
->> 
->> I would keep the enable/disable as is, and drop the priority
->> setting from the CPU_OFF path.
-> 
-> The PLIC threshold is like GICv2 CPU interface enable/disable.
+Hi Greentime,
 
-Looking at the documentation[1], that's not really a correct analogy:
+On Tue, May 26, 2020 at 3:03 PM Greentime Hu <greentime.hu@sifive.com> wrote:
+>
+> From: Guo Ren <guoren@linux.alibaba.com>
+>
+> This patch adds sigcontext save/restore for vector. The vector registers
+> will be saved in datap pointer. The datap pointer will be allocaed
+> dynamically when the task needs in kernel space. The datap pointer will
+> be set right after the __riscv_v_state data structure to save all the
+> vector registers in the signal handler stack.
+>
+> [greentime.hu@sifive.com: add support for dynamic vlen]
+> Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
+> Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
+> ---
+>  arch/riscv/include/uapi/asm/sigcontext.h |  2 +
+>  arch/riscv/kernel/signal.c               | 92 +++++++++++++++++++++++-
+>  2 files changed, 91 insertions(+), 3 deletions(-)
+>
+> diff --git a/arch/riscv/include/uapi/asm/sigcontext.h b/arch/riscv/include/uapi/asm/sigcontext.h
+> index 84f2dfcfdbce..4217f3f1c8ba 100644
+> --- a/arch/riscv/include/uapi/asm/sigcontext.h
+> +++ b/arch/riscv/include/uapi/asm/sigcontext.h
+> @@ -8,6 +8,7 @@
+>
+>  #include <asm/ptrace.h>
+>
+> +#define RVV_MAGIC      0x53465457
+>  /*
+>   * Signal context structure
+>   *
+> @@ -17,6 +18,7 @@
+>  struct sigcontext {
+>         struct user_regs_struct sc_regs;
+>         union __riscv_fp_state sc_fpregs;
+> +       struct __riscv_v_state sc_vregs;
+>  };
+>
+>  #endif /* _UAPI_ASM_RISCV_SIGCONTEXT_H */
+> diff --git a/arch/riscv/kernel/signal.c b/arch/riscv/kernel/signal.c
+> index 17ba190e84a5..9ada6f74bb95 100644
+> --- a/arch/riscv/kernel/signal.c
+> +++ b/arch/riscv/kernel/signal.c
+> @@ -83,6 +83,80 @@ static long save_fp_state(struct pt_regs *regs,
+>  #define restore_fp_state(task, regs) (0)
+>  #endif
+>
+> +#ifdef CONFIG_VECTOR
+> +static long restore_v_state(struct pt_regs *regs, struct sigcontext *sc)
+> +{
+> +       long err;
+> +       struct __riscv_v_state __user *state = &sc->sc_vregs;
+> +       void *datap;
+> +       __u32 magic;
+> +
+> +       /* Get magic number and check it. */
+> +       err = __get_user(magic, &state->magic);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +       if (magic != RVV_MAGIC)
+> +               return -EINVAL;
+> +
+> +       /* Copy everything of __riscv_v_state except datap. */
+> +       err = __copy_from_user(&current->thread.vstate, state,
+> +                              RISCV_V_STATE_DATAP);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +       /* Copy the pointer datap itself. */
+> +       err = __get_user(datap, &state->datap);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +
+> +       /* Copy the whole vector content from user space datap. */
+> +       err = __copy_from_user(current->thread.vstate.datap, datap,
+> +                              current->thread.vstate.size);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +       vstate_restore(current, regs);
+> +
+> +       return err;
+> +}
+> +
+> +static long save_v_state(struct pt_regs *regs, struct sigcontext *sc)
+> +{
+> +       long err;
+> +       struct __riscv_v_state __user *state = &sc->sc_vregs;
+> +       /* Set the datap right after the sigcntext structure. */
+> +       void *datap = sc + 1;
+> +
+> +       vstate_save(current, regs);
+> +       /* Copy everything of vstate but datap. */
+> +       err = __copy_to_user(state, &current->thread.vstate,
+> +                            RISCV_V_STATE_DATAP);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +       /* Copy the magic number. */
+> +       err = __put_user(RVV_MAGIC, &state->magic);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +       /* Copy the pointer datap itself. */
+> +       err = __put_user(datap, &state->datap);
+> +       if (unlikely(err))
+> +               return err;
+> +
+> +       /* Copy the whole vector content to user space datap. */
+> +       err = __copy_to_user(datap, current->thread.vstate.datap,
+> +                            current->thread.vstate.size);
+> +
+> +       return err;
+> +}
+> +#else
+> +#define save_v_state(task, regs) (0)
+> +#define restore_v_state(task, regs) (0)
+> +#endif
+> +
+>  static long restore_sigcontext(struct pt_regs *regs,
+>         struct sigcontext __user *sc)
+>  {
+> @@ -92,6 +166,9 @@ static long restore_sigcontext(struct pt_regs *regs,
+>         /* Restore the floating-point state. */
+>         if (has_fpu)
+>                 err |= restore_fp_state(regs, &sc->sc_fpregs);
+> +       /* Restore the vector state. */
+> +       if (has_vector)
+> +               err |= restore_v_state(regs, sc);
+>         return err;
+>  }
+>
+> @@ -101,13 +178,16 @@ SYSCALL_DEFINE0(rt_sigreturn)
+>         struct rt_sigframe __user *frame;
+>         struct task_struct *task;
+>         sigset_t set;
+> +       size_t frame_size = sizeof(*frame);
+>
+>         /* Always make any pending restarted system calls return -EINTR */
+>         current->restart_block.fn = do_no_restart_syscall;
+>
+>         frame = (struct rt_sigframe __user *)regs->sp;
+>
+> -       if (!access_ok(frame, sizeof(*frame)))
+> +       if (has_vector)
+> +               frame_size += current->thread.vstate.size;
+Shall we force all applications save & restore vr regs ?  Maybe we can
+utilize vs dirty bit
 
-- The PLIC is far removed from the CPU, and is more akin a GICv3
-   distributor. The INTC itself is more like a GICv3 redistributor,
-   as it deals with local interrupts only. I don't see anything
-   in the RISC-V architecture that actually behaves like a GIC
-   CPU interface (not necessarily a bad thing...).
+> +       if (!access_ok(frame, frame_size))
+>                 goto badframe;
+>
+>         if (__copy_from_user(&set, &frame->uc.uc_sigmask, sizeof(set)))
+> @@ -145,6 +225,9 @@ static long setup_sigcontext(struct rt_sigframe __user *frame,
+>         /* Save the floating-point state. */
+>         if (has_fpu)
+>                 err |= save_fp_state(regs, &sc->sc_fpregs);
+> +       /* Save the vector state. */
+> +       if (has_vector)
+> +               err |= save_v_state(regs, sc);
+>         return err;
+>  }
+>
+> @@ -176,9 +259,12 @@ static int setup_rt_frame(struct ksignal *ksig, sigset_t *set,
+>  {
+>         struct rt_sigframe __user *frame;
+>         long err = 0;
+> +       size_t frame_size = sizeof(*frame);
+>
+> -       frame = get_sigframe(ksig, regs, sizeof(*frame));
+> -       if (!access_ok(frame, sizeof(*frame)))
+> +       if (has_vector)
+> +               frame_size += current->thread.vstate.size;
+> +       frame = get_sigframe(ksig, regs, frame_size);
+> +       if (!access_ok(frame, frame_size))
+>                 return -EFAULT;
+>
+>         err |= copy_siginfo_to_user(&frame->info, &ksig->info);
+> --
+> 2.26.2
+>
+>
 
-- The threshold register is not an ON/OFF, but a priority mask,
-   similar to the GIC PMR (except that the PMR lives in the CPU
-   interface and affects all interrupts targetting this CPU while
-   this only seem to affect PLIC interrupts and not the INTC interrupts).
-   You may be using it as an ON/OFF for now as you don't support
-   multiple priorities yet, but that's just a SW thing.
 
-> Based on your comment, we should only program the PLIC threshold
-> in CPU_ON and don't touch the PLIC threshold in CPU_OFF. Right??
+--
+Best Regards
+ Guo Ren
 
-This seems like the correct thing to do.
-
-         M.
-
-[1] 
-https://sifive.cdn.prismic.io/sifive%2Fdc4980ff-17db-448b-b521-4c7ab26b7488_sifive+u54-mc+manual+v19.08.pdf
--- 
-Jazz is not dead. It just smells funny...
+ML: https://lore.kernel.org/linux-csky/
 
