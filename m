@@ -2,67 +2,73 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B70E1E9EA4
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 08:56:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E2841E9EE5
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 09:11:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y0w2t/wWI/QCxHDpPI+UeXRtbBNz0ZaPFoJMjmCS4xg=; b=gITdnUCCbutKL6sG1tzFfYZyA
-	cHK2lIzTvN5kTQ6LO8WFUKWS6/tFp8eJq7RivVv8NJRjJX85hj9MqR5AKvWDM0q9rIlyw1fzY9IJV
-	46ehy+tyvMTq6Ck1mq97TVjMuFqfhKAYYlQOa9MMKhh02OCgneaL9wwfp5lzSnrW5AqHfkEdBw6SE
-	rnUq5URbrSJeZESIoiB8cJZ700w2iZJvUoyYT+f7vQ36/EDmOun0kcxZJKgH/Gc7wmGeBKzFZha2+
-	UvfbdP9BnnMhKM6rdSz4vMsDP6aZJjLTzTnUOT96S+y8abWcXCHkMdJgUqjd+Thzl8LjC0NEUI13+
-	0pmJb4PKQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RKjq7JVQi9c3OduMp9FZVvm0r35l1D6YKepPhBnED00=; b=gD3yW32rHQKgFD
+	VikzOXR7nyzHzix9jHf3QsjdXMmEQ+mbRZdxw53r5FvQYVcJwiRnUb7v3ikDvBmS6o9Vx1yl2KfHQ
+	WW8Ta4tqLNrCklbl4s3MQhYoDLNlVImWe86fotgyl+uNH1c5/Zvw6Cn1d59r1iYGwnxkF7MP6VQEc
+	Qz3la49tTtYTZPmlSrOiZ6vgmZJ9AqkfKHb7XmCCv/tgytFqhhAZs11wKuapoO3RvHn9A2kDKgn86
+	FFL1AbV7/C5ymCIj8XzW4so4fYBhca4iZ+KtSKIzGWkl1TekLupKLXGOnMoDaRmLmdncvmFWlN5Fb
+	T5M0lL+vAw2WHO6Vxz5w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfeMt-0007B1-Ld; Mon, 01 Jun 2020 06:56:19 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1jfebB-0002Gq-T8; Mon, 01 Jun 2020 07:11:05 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfeMp-0007Aa-SK
- for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 06:56:17 +0000
-Received: by mail-oi1-x243.google.com with SMTP id w4so8142680oia.1
- for <linux-riscv@lists.infradead.org>; Sun, 31 May 2020 23:56:15 -0700 (PDT)
+ id 1jfeb9-0002GV-1D
+ for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 07:11:04 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id t8so4559751pju.3
+ for <linux-riscv@lists.infradead.org>; Mon, 01 Jun 2020 00:11:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Y0w2t/wWI/QCxHDpPI+UeXRtbBNz0ZaPFoJMjmCS4xg=;
- b=dzBNYx4KCtzHAwRMHhOThlU8e8bl8Vl7O/mEp8KdVvjoVCnyIDpRRRD0O26JjbJFaq
- 8WGjYJTIH7/RWF2mGT4ch5wCbDteVB0FA5dgOfEYBbmdN/WK8FCP21cjwTQdR2B5HuOt
- UoDT3HHD8Y/MxaVjvxaZpewq5hja1+xMeHfpY8ggG41CzMzqzJVTva6QxXibeVUXQ2hF
- 1ZVZRkos+sN++v9xqPcQ00oKD7rbQjA6f8wajllZoZbHOnrkw47Bk0/2EQj1/4VfA1yc
- ZhIpRoTnP2NUzGt9dws+sPcMg2KBIXhvZAp10ASou5gwuqheK2Xb+G4/wfW7aNKNgRN1
- sD2w==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RKjq7JVQi9c3OduMp9FZVvm0r35l1D6YKepPhBnED00=;
+ b=FjlX1hn9EWuUswEHSwe6ZYYboeXGzLPmsPPvER9nDXPbgjk20RUrOVHP9JfQTe6Tyj
+ G59pNp33ESW01PrIqES4+XZWq0p/dTQomuutAx8jayGl9iBQiLxmBO0Dg7zIIyTWR5qY
+ AZJm29QVk1kivuvJI9dBKjr3an4oE1haIvhP5FvfAST/TKDgaQD/e4cTCzRzeSsQ5ERf
+ aAPaSus6xx5HpvGFuZ50s/E/m9z33CSHtgpKmtRCmmaMIfJqSjj/C9AW7FZ3RTcWR4qv
+ s3/SLBL6WuWfkNhmGxplhdGkot6RupLBCjHi5retEK202lSPTAezVNJqG0cOOUH3plZI
+ tjHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Y0w2t/wWI/QCxHDpPI+UeXRtbBNz0ZaPFoJMjmCS4xg=;
- b=VLuoofp6udWkpWhEI4B5UOqHaiQ3SKFvI4lJv4LjJDhy7Gp1ELjwEFeSBAq+QQFNOX
- FXHEowdHB9T7211tLoYLVmmfwf4bMWLuVcxFT5AQaUzeWEXQOyYECNLxwzspGutS/X/6
- HNg7FaiXUrDLXZyD8iZ0fea0QU0ZBdVbvURX8KRD6945X/h56izScrbPdRgoNoschPa5
- hV/zuLyg4Rss56wZID/f7rLX0H/OROLwgDA6jU442G8qX9WMugCrezfDS6yhTFREQYHx
- jQL0LqVgy+SEPRPhlo/GuppDZ/WR/eBxbcH7PtDisk6qoUaXU9q1U+9IDGJHIPbbxcad
- Ej8w==
-X-Gm-Message-State: AOAM5311o8vlnOpi2z2dZ6hFpBMoQkbyWm/Sv8ItN2cayGQ5o1OG5df0
- 3ubqbkefTD/HBOLBHEWfm38PQmkFC5qhyDYQLCYjFw==
-X-Google-Smtp-Source: ABdhPJyqNACpXYqQkXsHVCY4LqRtj+EL8+2VHnMYc6kVnONhIWLNdbyrmtKRxDEbtjf0LYCIg5vFhJcOZ9TqHDEet18=
-X-Received: by 2002:aca:fccf:: with SMTP id a198mr2563302oii.91.1590994574891; 
- Sun, 31 May 2020 23:56:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <7acb6dcf9975bbf3aff4be3b01320fd1b5ba30c1.1590983619.git.zong.li@sifive.com>
- <87ftbfqo2q.fsf@linux-m68k.org>
-In-Reply-To: <87ftbfqo2q.fsf@linux-m68k.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RKjq7JVQi9c3OduMp9FZVvm0r35l1D6YKepPhBnED00=;
+ b=sM7t1eTwI8DiL0KaFsXYhJC2ae3csL0NoUuo8UjX4tEF9fLQujOKfqpYo8sR7+BzlF
+ 1nx6hAI92U5nhqwOiub3yctg5TtIC0HhE8ETY9kwaSKvrS0UZjd4kwi7/UcmNH/f4abK
+ 0NCUWEOxAcGWZ52NGFHAJ/YDRLiBkBPP1zX4jz83nXmuU8eA66SZDzvu4bAqRD7R++88
+ h7aaMJZdZ3CGgkCfeVj/Y1QZImuSWedNIgMOYdGQoyKzzlIpn1W5ZWFUD5ivcuLVB+Hw
+ xdvc5jeeopmtrx7hBm8wod3twNQVNwF994GAAVLqem+uFyaenqISE0rvcg209r/WDqad
+ 8ZHQ==
+X-Gm-Message-State: AOAM530nXxdpxc13dM4nOM1mctsVUoiw6J2UgnSQkJhBN/vQX24doCT2
+ mIj6cbf2KyjjDHmYvfuqt4qQvQ==
+X-Google-Smtp-Source: ABdhPJzsJ4Hzy3IdeHseSpUPWtiXruOiOYWXnjlmGwrUc1ACKSCLnc2ryE7yAWbXh+0VcijcszGCDw==
+X-Received: by 2002:a17:902:7588:: with SMTP id
+ j8mr3981773pll.43.1590995462096; 
+ Mon, 01 Jun 2020 00:11:02 -0700 (PDT)
+Received: from hsinchu02.internal.sifive.com
+ (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
+ by smtp.gmail.com with ESMTPSA id 3sm3035593pfe.85.2020.06.01.00.11.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 01 Jun 2020 00:11:01 -0700 (PDT)
 From: Zong Li <zong.li@sifive.com>
-Date: Mon, 1 Jun 2020 14:56:05 +0800
-Message-ID: <CANXhq0q-bZa2Y7T_JUQ5o97zOXyy735tub2r-SnN2Y=joyVW7w@mail.gmail.com>
-Subject: Re: [PATCH] riscv: fix build warning of missing prototypes
-To: Andreas Schwab <schwab@linux-m68k.org>
-Content-Type: text/plain; charset="UTF-8"
+To: paul.walmsley@sifive.com, palmer@dabbelt.com,
+ linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2] riscv: fix build warning of missing prototypes
+Date: Mon,  1 Jun 2020 15:10:58 +0800
+Message-Id: <29cb3d8c72db7fe36507f487a71224b812805197.1590994864.git.zong.li@sifive.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200531_235615_949917_913DF392 
-X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-CacheID: sfid-20200601_001103_107227_0A63C4DF 
+X-CRM114-Status: UNSURE (   8.33  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -70,7 +76,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -92,28 +98,38 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: kbuild test robot <lkp@intel.com>,
- linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: kbuild test robot <lkp@intel.com>, Zong Li <zong.li@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Mon, Jun 1, 2020 at 2:48 PM Andreas Schwab <schwab@linux-m68k.org> wrote:
->
-> On Jun 01 2020, Zong Li wrote:
->
-> > Add the missing header in file, it was losed in original implementation.
->
-> s/losed/lost/
->
-> Andreas.
+Add the missing header in file, it was lost in original implementation.
 
-Thanks for correcting, let me modify it in the next version.
+The warning message as follows:
+ - no previous prototype for 'patch_text_nosync' [-Wmissing-prototypes]
+ - no previous prototype for 'patch_text' [-Wmissing-prototypes]
 
-> --
-> Andreas Schwab, schwab@linux-m68k.org
-> GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
-> "And now for something completely different."
+Changed in v2:
+ - Correct the typo of commit message.
+
+Signed-off-by: Zong Li <zong.li@sifive.com>
+Reported-by: kbuild test robot <lkp@intel.com>
+---
+ arch/riscv/kernel/patch.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/riscv/kernel/patch.c b/arch/riscv/kernel/patch.c
+index 5805791cd5b5..d4a64dfed342 100644
+--- a/arch/riscv/kernel/patch.c
++++ b/arch/riscv/kernel/patch.c
+@@ -11,6 +11,7 @@
+ #include <asm/kprobes.h>
+ #include <asm/cacheflush.h>
+ #include <asm/fixmap.h>
++#include <asm/patch.h>
+ 
+ struct patch_insn {
+ 	void *addr;
+-- 
+2.26.2
+
 
