@@ -2,80 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE4531E9F3C
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 09:28:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 52A191E9F66
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 09:41:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BBe6T/3LS4JSLNfgPLNajhJmTJr3qtIpazZpi3iyWb8=; b=Fx+UqPXictf9MK
-	LxVrdijJO+VdqQHM2gSAgRvzigKFACTS1mleOtu6RAiI1hFZx7ieH871EtbM49gj0vutaqASqyCJm
-	yG2sIXdeZbEVcTYlKG68Q3m/Alx3Lh1CLB7aQ1PThGtfXuNJy+mAajoKMFwIZpXVL6dLSG/HarQY3
-	fUFRyzZOKUERfXdHkC9Q2k84a1DDyP/pmEkcoWXlEjH+5b05tfE1VbHAMT5KDnWpk4aBJS+rvMONV
-	+1Ing2aDDjJS8iSMLGVR83k0/ttgjhHb9TpzD/4lvwfGcTwL7zYDJ7tMNagw3WITa6ylbpOlkvQ2m
-	VsZrHx62Uh3k28BBihUA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
+	References:In-Reply-To:Subject:To:From:Date:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=kJq0Q0BruD+9jMSZ5aWS96++P0G18ij05rD2PIDNDEk=; b=hFv69faYZvrS3IFoa/G9tuVZF
+	xk7bRgYiuibm2jgJDAc6JBIs+Ji+YzaEWDL83PE9IixdXXMhOeZeREGT9/0DLRBPASgtd4tXFmdMg
+	0LbmHa0C9UPT3tpobxtQRSly82H6xfawhQMxUtJI5SPeSmHAaq694GAOqB+jSV3Uaxg/CuhZ7kO7Y
+	MNVN8oTNO55EbbO1cQ9P4aV8dGbxY112WvglmGXTkIJB41W4aZAnTSSfytUW0pTHPhPZBUCNrTN3O
+	YP1iARS2t9pVIBfx6rwWfKLNCUTnDbRNaV/DFqitYjCD6ay6WVfxHBowV6AqPFBVyF0N2FWE8hxJS
+	a5HFWWfDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfes7-0002tx-3b; Mon, 01 Jun 2020 07:28:35 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1jff4F-0003kz-0d; Mon, 01 Jun 2020 07:41:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfes4-0002tS-57
- for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 07:28:33 +0000
-Received: by mail-lj1-x243.google.com with SMTP id q2so6833336ljm.10
- for <linux-riscv@lists.infradead.org>; Mon, 01 Jun 2020 00:28:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=BBe6T/3LS4JSLNfgPLNajhJmTJr3qtIpazZpi3iyWb8=;
- b=pG3QomC1RJfQ4wefhmHFJsR2DcluF0w7NrqzmzjFCBDjyhbn8Bm1Qs/nKW+yV4fVWP
- viOmsoUUjECk+au/UtbO5RFs4fAW7HQZclRm+WoeMHy9ZdOT1Uq3hy91yiI0ZkuN+9Lv
- Jvaq0NU4BPSCTHtV4gwJujfEDH4xqB/8HpX7VWKwFLGH0THyIxagWgNhUWeqCyWWo4Ic
- d0mWuoFUkFTmOZ4aEpN9f3p2M+844ry9YeNfcBFm13Q0ncT7hBeAcoZgrSD4j+myALgk
- BL6Ci/Fw1qIU67pAHk/S0APvRXW5AyyrXkYbu0qrHUt/tDbK66iRdi1WjdaMn/UiH1Wd
- PUUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=BBe6T/3LS4JSLNfgPLNajhJmTJr3qtIpazZpi3iyWb8=;
- b=kBMVQ+T9PeJIKu9xz33lx3kIj0TF91LElCDs/kr0TkbZs1ecb64zhKwrfdAq+q/byc
- rt0wuXNUk3WTRWH4fgDveHqKiaBNLsZxMTAFhRmyYZU7fue78zqhET3po25IZ6Sn6OQ2
- 2HAcJfVpH1/IeoLM7dPX1tWsUcdJr56b0IlCrQkF1TpyDaAIzI4TDJCebKKO8PWEhq1T
- X2XaWOMmTSfN60tGbriOKWEw+Zmi37XfBRYVU/ZAKSv0ju1GjqVEqmIcYmO4Tcr9BfC1
- vw6kYwhr1EDhq8C+NYcObMrn7tuov51y3cBVSmwNBMJP4VA2cBmO2dQ5b33LMkIwq10O
- D+/Q==
-X-Gm-Message-State: AOAM533Mo6l5WnZbPzJ/Kuev9TsL3Yh3yMp2uASaS+fbrMhBbkD/AhOj
- tGECF1CV6vg3oXuc2vo6AGxXc2KrxHA/DxHzkos=
-X-Google-Smtp-Source: ABdhPJxHuJXB6Vn99Phe2TsgG6tcoUL6B/cEvgbi4CzCvlGLlZSYpicDYyOy/nYAXwxOdZuspbFik0jB6Fzn4xxehFY=
-X-Received: by 2002:a2e:581a:: with SMTP id m26mr787094ljb.0.1590996508261;
- Mon, 01 Jun 2020 00:28:28 -0700 (PDT)
+ id 1jff4A-0003jf-PM
+ for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 07:41:04 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1CD50206E2;
+ Mon,  1 Jun 2020 07:41:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1590997262;
+ bh=muwNuTxdUi/iY+cPf7GSvMRN5ZcCPlstCo2RAEIWx/k=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=C3Cmo/KDRo0ldRsH20hoFndPfJGT2HEvTwUQN7sGNPGOWNVVIjIJPCn7XzcuuyaAv
+ T6yrmzALIs6aQJLNOQfCULCaEMDrX3yxke1Zn3252Pkd4A15eqjX6CtJrIqp7CcTx9
+ Xxj5i1SucUGT7bNsuUJW1BZ7TwvohZ4nR0kt2Fao=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1jff48-00GqVu-Jo; Mon, 01 Jun 2020 08:41:00 +0100
 MIME-Version: 1.0
-References: <20200601050656.826296-1-anup.patel@wdc.com>
-In-Reply-To: <20200601050656.826296-1-anup.patel@wdc.com>
-From: Zong Li <zongbox@gmail.com>
-Date: Mon, 1 Jun 2020 15:28:19 +0800
-Message-ID: <CA+ZOyaixYnRkYGz8LpPdgx7P6s=ZxcXvJh=EUwq9BoY2zxO_=g@mail.gmail.com>
-Subject: Re: [PATCH v2] RISC-V: Don't mark init section as non-executable
-To: Anup Patel <anup.patel@wdc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Mon, 01 Jun 2020 08:41:00 +0100
+From: Marc Zyngier <maz@kernel.org>
+To: Anup Patel <anup@brainfault.org>
+Subject: Re: [PATCH v6 3/6] irqchip: RISC-V per-HART local interrupt
+ controller driver
+In-Reply-To: <CAAhSdy3-dr1URn1mGu3n9D-h+wjsU18nbWPYMRNAtitMa58rwA@mail.gmail.com>
+References: <20200530100725.265481-1-anup.patel@wdc.com>
+ <20200530100725.265481-4-anup.patel@wdc.com>
+ <cd4a5513197b73e3b8d335f09117bb8d@kernel.org>
+ <CAAhSdy3cnZwnjpqWkixmZ5-fi=GK1cSUsjah=P3Yp5hjv382hg@mail.gmail.com>
+ <a5f1346544aec6e6da69836b7a6e0a6e@kernel.org>
+ <CAAhSdy2fJ1cd2OjAWODOmSbkWUBfvvr4rvsTqh4qNxZjTTKo5A@mail.gmail.com>
+ <e315f76b06b7b0935ebee867c04f364e@kernel.org>
+ <CAAhSdy3-dr1URn1mGu3n9D-h+wjsU18nbWPYMRNAtitMa58rwA@mail.gmail.com>
+User-Agent: Roundcube Webmail/1.4.4
+Message-ID: <ffeba9a68e72cf2cb97759c5fb496fac@kernel.org>
+X-Sender: maz@kernel.org
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: anup@brainfault.org, anup.patel@wdc.com, palmer@dabbelt.com,
+ paul.walmsley@sifive.com, aou@eecs.berkeley.edu, daniel.lezcano@linaro.org,
+ tglx@linutronix.de, jason@lakedaemon.net, atish.patra@wdc.com,
+ Alistair.Francis@wdc.com, linux-riscv@lists.infradead.org,
+ linux-kernel@vger.kernel.org, palmerdabbelt@google.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_002832_196237_7DB33CC2 
-X-CRM114-Status: GOOD (  14.26  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200601_004103_019904_51D06A1C 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [zongbox[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:243 listed in]
- [list.dnswl.org]
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -83,6 +91,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,71 +103,42 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Albert Ou <aou@eecs.berkeley.edu>, Anup Patel <anup@brainfault.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- stable@vger.kernel.org, Atish Patra <atish.patra@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Jason Cooper <jason@lakedaemon.net>, Anup Patel <anup.patel@wdc.com>,
+ "linux-kernel@vger.kernel.org
+ List" <linux-kernel@vger.kernel.org>, Atish Patra <atish.patra@wdc.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Palmer Dabbelt <palmerdabbelt@google.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
  linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Anup Patel <anup.patel@wdc.com> =E6=96=BC 2020=E5=B9=B46=E6=9C=881=E6=97=A5=
- =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=881:07=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> The head text section (i.e. _start, secondary_start_sbi, etc) and the
-> init section fall under same page table level-1 mapping.
->
-> Currently, the runtime CPU hotplug is broken because we are marking
-> init section as non-executable which in-turn marks head text section
-> as non-executable.
->
-> Further investigating other architectures, it seems marking the init
-> section as non-executable is redundant because the init section pages
-> are anyway poisoned and freed.
->
-> To fix broken runtime CPU hotplug, we simply remove the code marking
-> the init section as non-executable.
->
-> Fixes: d27c3c90817e ("riscv: add STRICT_KERNEL_RWX support")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Anup Patel <anup.patel@wdc.com>
-> ---
-> Changes since v1:
->  - Updated free_initmem() is same as generic free_initmem() defined in
->    init/main.c so we completely remove free_initmem() from arch/riscv
-> ---
->  arch/riscv/mm/init.c | 11 -----------
->  1 file changed, 11 deletions(-)
->
-> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> index 736de6c8739f..fdc772f57edc 100644
-> --- a/arch/riscv/mm/init.c
-> +++ b/arch/riscv/mm/init.c
-> @@ -479,17 +479,6 @@ static void __init setup_vm_final(void)
->         csr_write(CSR_SATP, PFN_DOWN(__pa_symbol(swapper_pg_dir)) | SATP_=
-MODE);
->         local_flush_tlb_all();
->  }
-> -
-> -void free_initmem(void)
-> -{
-> -       unsigned long init_begin =3D (unsigned long)__init_begin;
-> -       unsigned long init_end =3D (unsigned long)__init_end;
-> -
-> -       /* Make the region as non-execuatble. */
-> -       set_memory_nx(init_begin, (init_end - init_begin) >> PAGE_SHIFT);
-> -       free_initmem_default(POISON_FREE_INITMEM);
-> -}
-> -
->  #else
->  asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->  {
-> --
-> 2.25.1
->
->
+On 2020-06-01 05:09, Anup Patel wrote:
+> On Sun, May 31, 2020 at 4:23 PM Marc Zyngier <maz@kernel.org> wrote:
+>> 
+>> On 2020-05-31 11:06, Anup Patel wrote:
 
-It looks good to me.
-Reviewed-by: Zong Li <zong.li@sifive.com>
+[...]
+
+> Also, the PLIC spec is now owned by RISC-V foundation (not SiFive) so
+> we will have to rename the driver to "irq-riscv-plic" and will have a 
+> new
+> generic compatible string "riscv,plic-1.0.0". One of us (me or Palmer) 
+> will
+> send separate patches for this renaming. I hope you will be fine with 
+> this??
+> (Refer, https://github.com/riscv/riscv-plic-spec)
+
+Do we really need the churn of a renaming? A new compatible, and maybe
+a new config option should be enough, no? What does the renaming give 
+us?
+
+Thanks,
+
+         M.
+-- 
+Jazz is not dead. It just smells funny...
 
