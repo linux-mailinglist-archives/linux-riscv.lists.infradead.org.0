@@ -2,75 +2,85 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEAFD1E9E71
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 08:48:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B70E1E9EA4
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 08:56:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:To:From:Reply-To:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=W8aJu7HZYIMghXbwmtV9dMcjHWX1+lbhn347o7bmEYc=; b=WRgoR35Kp4JAh/IyZ7SBloCh7
-	4cckiJmyS0Clz0ioUGYZwNbi9vOUzulH9RMh+lD124FSeRQT0xZxnQZGaIpcI45RP8zUFljiHeDxf
-	JlSzgTaa6FCa0KquWd0CrEhG2g6IeixW1EymRjTbzqLk2oRkvszOKBXkJUXulFvbz39HSWea1beZb
-	lAPHDmyQ4JtZ2O3npu8a0M+lZ3wrp495FzwH0fL3HMpp9GWxMSayRBn+98Z0rbcY0bB4VeyJ3I+/W
-	R4W5t+tqlJ7ujFpf9xpW3eK4uLPwkYowTH1JFrKfLHAGI2XS95v0gfrNEz+1NcmVhsYRYtEIgi84S
-	VTG4xshnQ==;
+	 bh=Y0w2t/wWI/QCxHDpPI+UeXRtbBNz0ZaPFoJMjmCS4xg=; b=gITdnUCCbutKL6sG1tzFfYZyA
+	cHK2lIzTvN5kTQ6LO8WFUKWS6/tFp8eJq7RivVv8NJRjJX85hj9MqR5AKvWDM0q9rIlyw1fzY9IJV
+	46ehy+tyvMTq6Ck1mq97TVjMuFqfhKAYYlQOa9MMKhh02OCgneaL9wwfp5lzSnrW5AqHfkEdBw6SE
+	rnUq5URbrSJeZESIoiB8cJZ700w2iZJvUoyYT+f7vQ36/EDmOun0kcxZJKgH/Gc7wmGeBKzFZha2+
+	UvfbdP9BnnMhKM6rdSz4vMsDP6aZJjLTzTnUOT96S+y8abWcXCHkMdJgUqjd+Thzl8LjC0NEUI13+
+	0pmJb4PKQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfeEz-0001Ue-Ri; Mon, 01 Jun 2020 06:48:09 +0000
-Received: from mail-out.m-online.net ([2001:a60:0:28:0:1:25:1])
+	id 1jfeMt-0007B1-Ld; Mon, 01 Jun 2020 06:56:19 +0000
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfeEv-0001T8-T9
- for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 06:48:07 +0000
-Received: from frontend01.mail.m-online.net (unknown [192.168.8.182])
- by mail-out.m-online.net (Postfix) with ESMTP id 49b5N00p3Wz1rwDp;
- Mon,  1 Jun 2020 08:48:00 +0200 (CEST)
-Received: from localhost (dynscan1.mnet-online.de [192.168.6.70])
- by mail.m-online.net (Postfix) with ESMTP id 49b5Mz70PHz1qt9d;
- Mon,  1 Jun 2020 08:47:59 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at mnet-online.de
-Received: from mail.mnet-online.de ([192.168.8.182])
- by localhost (dynscan1.mail.m-online.net [192.168.6.70]) (amavisd-new,
- port 10024)
- with ESMTP id K7aoiT7bHhZT; Mon,  1 Jun 2020 08:47:59 +0200 (CEST)
-X-Auth-Info: UkBhxRzjMZwILyMRHsICA31NCCzeepETlHTbDM0u6PImCC/UDjHCSfqUd4AYGUzB
-Received: from hase.home (ppp-46-244-183-46.dynamic.mnet-online.de
- [46.244.183.46])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.mnet-online.de (Postfix) with ESMTPSA;
- Mon,  1 Jun 2020 08:47:59 +0200 (CEST)
-Received: by hase.home (Postfix, from userid 1000)
- id 009D21014F6; Mon,  1 Jun 2020 08:47:57 +0200 (CEST)
-From: Andreas Schwab <schwab@linux-m68k.org>
-To: Zong Li <zong.li@sifive.com>
-Subject: Re: [PATCH] riscv: fix build warning of missing prototypes
-References: <7acb6dcf9975bbf3aff4be3b01320fd1b5ba30c1.1590983619.git.zong.li@sifive.com>
-X-Yow: Those aren't WINOS--that's my JUGGLER, my AERIALIST,
- my SWORD SWALLOWER, and my LATEX NOVELTY SUPPLIER!!
-Date: Mon, 01 Jun 2020 08:47:57 +0200
-In-Reply-To: <7acb6dcf9975bbf3aff4be3b01320fd1b5ba30c1.1590983619.git.zong.li@sifive.com>
- (Zong Li's message of "Mon, 1 Jun 2020 11:55:32 +0800")
-Message-ID: <87ftbfqo2q.fsf@linux-m68k.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.0.91 (gnu/linux)
+ id 1jfeMp-0007Aa-SK
+ for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 06:56:17 +0000
+Received: by mail-oi1-x243.google.com with SMTP id w4so8142680oia.1
+ for <linux-riscv@lists.infradead.org>; Sun, 31 May 2020 23:56:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Y0w2t/wWI/QCxHDpPI+UeXRtbBNz0ZaPFoJMjmCS4xg=;
+ b=dzBNYx4KCtzHAwRMHhOThlU8e8bl8Vl7O/mEp8KdVvjoVCnyIDpRRRD0O26JjbJFaq
+ 8WGjYJTIH7/RWF2mGT4ch5wCbDteVB0FA5dgOfEYBbmdN/WK8FCP21cjwTQdR2B5HuOt
+ UoDT3HHD8Y/MxaVjvxaZpewq5hja1+xMeHfpY8ggG41CzMzqzJVTva6QxXibeVUXQ2hF
+ 1ZVZRkos+sN++v9xqPcQ00oKD7rbQjA6f8wajllZoZbHOnrkw47Bk0/2EQj1/4VfA1yc
+ ZhIpRoTnP2NUzGt9dws+sPcMg2KBIXhvZAp10ASou5gwuqheK2Xb+G4/wfW7aNKNgRN1
+ sD2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Y0w2t/wWI/QCxHDpPI+UeXRtbBNz0ZaPFoJMjmCS4xg=;
+ b=VLuoofp6udWkpWhEI4B5UOqHaiQ3SKFvI4lJv4LjJDhy7Gp1ELjwEFeSBAq+QQFNOX
+ FXHEowdHB9T7211tLoYLVmmfwf4bMWLuVcxFT5AQaUzeWEXQOyYECNLxwzspGutS/X/6
+ HNg7FaiXUrDLXZyD8iZ0fea0QU0ZBdVbvURX8KRD6945X/h56izScrbPdRgoNoschPa5
+ hV/zuLyg4Rss56wZID/f7rLX0H/OROLwgDA6jU442G8qX9WMugCrezfDS6yhTFREQYHx
+ jQL0LqVgy+SEPRPhlo/GuppDZ/WR/eBxbcH7PtDisk6qoUaXU9q1U+9IDGJHIPbbxcad
+ Ej8w==
+X-Gm-Message-State: AOAM5311o8vlnOpi2z2dZ6hFpBMoQkbyWm/Sv8ItN2cayGQ5o1OG5df0
+ 3ubqbkefTD/HBOLBHEWfm38PQmkFC5qhyDYQLCYjFw==
+X-Google-Smtp-Source: ABdhPJyqNACpXYqQkXsHVCY4LqRtj+EL8+2VHnMYc6kVnONhIWLNdbyrmtKRxDEbtjf0LYCIg5vFhJcOZ9TqHDEet18=
+X-Received: by 2002:aca:fccf:: with SMTP id a198mr2563302oii.91.1590994574891; 
+ Sun, 31 May 2020 23:56:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <7acb6dcf9975bbf3aff4be3b01320fd1b5ba30c1.1590983619.git.zong.li@sifive.com>
+ <87ftbfqo2q.fsf@linux-m68k.org>
+In-Reply-To: <87ftbfqo2q.fsf@linux-m68k.org>
+From: Zong Li <zong.li@sifive.com>
+Date: Mon, 1 Jun 2020 14:56:05 +0800
+Message-ID: <CANXhq0q-bZa2Y7T_JUQ5o97zOXyy735tub2r-SnN2Y=joyVW7w@mail.gmail.com>
+Subject: Re: [PATCH] riscv: fix build warning of missing prototypes
+To: Andreas Schwab <schwab@linux-m68k.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200531_234806_090115_452FDAE7 
-X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-CacheID: sfid-20200531_235615_949917_913DF392 
+X-CRM114-Status: UNSURE (   7.61  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.5 (/)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [2001:a60:0:28:0:1:25:1 listed in] [list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:243 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,21 +92,28 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: kbuild test robot <lkp@intel.com>, linux-riscv@lists.infradead.org,
- palmer@dabbelt.com, linux-kernel@vger.kernel.org, paul.walmsley@sifive.com
+Cc: kbuild test robot <lkp@intel.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Jun 01 2020, Zong Li wrote:
+On Mon, Jun 1, 2020 at 2:48 PM Andreas Schwab <schwab@linux-m68k.org> wrote:
+>
+> On Jun 01 2020, Zong Li wrote:
+>
+> > Add the missing header in file, it was losed in original implementation.
+>
+> s/losed/lost/
+>
+> Andreas.
 
-> Add the missing header in file, it was losed in original implementation.
+Thanks for correcting, let me modify it in the next version.
 
-s/losed/lost/
-
-Andreas.
-
--- 
-Andreas Schwab, schwab@linux-m68k.org
-GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
-"And now for something completely different."
+> --
+> Andreas Schwab, schwab@linux-m68k.org
+> GPG Key fingerprint = 7578 EB47 D4E5 4D69 2510  2552 DF73 E780 A9DA AEC1
+> "And now for something completely different."
 
