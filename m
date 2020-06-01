@@ -2,79 +2,79 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D8601E9FCC
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 10:08:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C87271E9FDF
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 10:15:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xo+bURQspdkz3spd+YvrJ3AePpwv+4Rws7nHo6tOrsk=; b=HuCKq3KZeTQiVC
-	t/Wn42FPcA2QrZcEmaHY6A0nkQIFTX81DjpK/JOK683F1OvFoX6FHLNMAP6mV1Z3g8QyCWxyFaTKp
-	Fsoij5x8fjrwvfJe13o78qResk1+VOx814riV5jyhcqQh9/JkOm2YsKEHxiEm5riuA8qaoWCozjlN
-	TyAgHmyeS6EXRFktOEhJtW78yRHFCc85Q49xmS9w/jE4jUwwUaZVlq4jyudHT2DgZKkrKPedJSnjl
-	fJ6ovU34wp5XAJ6gBD9QOAACS1dVDq3HGnDDmGjCYI9NZOw1t/Twz6A0UpZd+g8wO3jVbriGSkZwj
-	DGbR1pi4W4/G97TGlHMw==;
+	List-Owner; bh=Sk/qZ0PCKuKPpHB9HjPSmK4jmV57qb64kZf7c48kCF0=; b=bq+P1mmitcWIZi
+	0b4FSFBJEh9Tl6gaR44jzDs/0GvTmJ+EAPUK0KfwyxPF+D2DRg34UEgi1+hLuxdhf+yvufW1I5bEW
+	TOMhfKbbWKh0eWkg44el/nAsXiRR4kyQFhdCNSh8ZFgOd9717q89AABQ/JYdaCnY5wZvxVqqGpEk6
+	oFlu9iCk44hvGQ0Bg+FWNWINbViguOXSGGmugueRxcV305ykbua25b93+l7apKtV4upFuNQ+k9/Op
+	hwAwFJ04eWiL3bx/FJYcHxo3iiSjuK5//lk8mfn+ukD69wKzZYo5n6xGwzrSvhlJ5owHoSwuk87p5
+	VxpMdkgIEWTutj9Z8RCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jffUW-0003Ox-2J; Mon, 01 Jun 2020 08:08:16 +0000
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+	id 1jffbX-0000vB-LX; Mon, 01 Jun 2020 08:15:31 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jffUS-0003OS-TL
- for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 08:08:14 +0000
-Received: by mail-qk1-x742.google.com with SMTP id f18so8286443qkh.1
- for <linux-riscv@lists.infradead.org>; Mon, 01 Jun 2020 01:08:10 -0700 (PDT)
+ id 1jffbT-0000ul-UL
+ for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 08:15:29 +0000
+Received: by mail-qk1-x743.google.com with SMTP id q8so8231903qkm.12
+ for <linux-riscv@lists.infradead.org>; Mon, 01 Jun 2020 01:15:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=Xo+bURQspdkz3spd+YvrJ3AePpwv+4Rws7nHo6tOrsk=;
- b=a09D16ed7wF4iKs+pfRyt2aLzVU8iQUs5/r3tC7L81+X75srG2/ZiydaWBgiSmAApS
- nCtivrrnY2V+pCVsPq+WffUnwoioTYb0bMBNTNCkOwNhYmzWNjQHoqeD9WYgTz1o3HCk
- sjDtLVluLp8ZyMaVtgJ1VuQpH4BS2eu4UUHNyqEaMOnMMwHIHGjjA21z1M4JDD+xhHUr
- 5Vsd36XufhvZvyYMu3KVi0BbOjgRoe/oqlQGwzprA+tB+tK4AbFQPSrbuc523S367FZG
- 9R9TY1GNF1NKm9PM1UzqW1yBnUwJmY1bkqDDD78m1JixwaW+eIC5ZdyjokA1wxj83z7I
- jmAw==
+ bh=Sk/qZ0PCKuKPpHB9HjPSmK4jmV57qb64kZf7c48kCF0=;
+ b=OkUxzICYBcJ/T23uVyaiKrQRWk4oQTuGUExzoH9tTvqqLd0WJYCUcoC+rEJ5TNqtcr
+ W3L5Vtj+3omzytqwnni8m1uWnj3zsYpe1gbZ6XAObufDkgRtCeV25VbM3ia2SYvculyS
+ 0TZPqrYBhiSe0144ZS6jiCqOJtQQgT7B7TJFwYMqlFTPNMi7ze84O3hmXePGKuyQUqtc
+ f+SP+b0/mYsZn6l4tF4VCwwlgUEEc8Yz5srZhVCu8VQJv7aNVVYritdidqgQSGEIjhTS
+ hfWQBK3AVgEGmNLNk6wyEla/z/nZ/0I1Z8VnzEOUHxOZRWWyqvgAFtSO/Cd/E5O4B35C
+ hfEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=Xo+bURQspdkz3spd+YvrJ3AePpwv+4Rws7nHo6tOrsk=;
- b=XusXtYgnjCs9Jd65ZjcBoK6crSaJqWN4VspcumalCEtU7dIeXhD1V0/7A7Zc4UbDyp
- FePys0HunhZe+Lu2d5X6J5zyeZtF+cb5rQNATKYdpUBt09jheXD6Csl7YaQxEDLJ0X1J
- wpDhlCGRf6tsQEuwzDf8sBQnoUCfg+6MZ0u2eJj5tysppOGCBNBifu0V3PXunmL61Bjk
- ecxmso3lYAVA5jXghN6fr1Bz/VjufoQbuRQrWr2mPH1Rghb4JcoufF9TxoRyHCZrcSLt
- hrqbDJvyUmuAeCmBjR1maG02xhJpn+uetNjetWOPErytnJU817iQvpKWOXzZGeMEsQGl
- YA7g==
-X-Gm-Message-State: AOAM532LhZXIvVRVuS4imVpSdeCO1NAPgCMyf+bEXmqzyicLihpbeKVv
- qNgjQ3OdgmzKGrMSBD1zPvrG6NAaHQm1U1Af9wH3HusPKAU=
-X-Google-Smtp-Source: ABdhPJwUBPUpCNJjsK6CkhcPkiVmvi4DBwCi4KfwXts+eqGcaujTN9x7EZu5sROrV6MiX3+wewnl6WpusWTqDFtOlks=
-X-Received: by 2002:a05:620a:158d:: with SMTP id
- d13mr18767834qkk.327.1590998889902; 
- Mon, 01 Jun 2020 01:08:09 -0700 (PDT)
+ bh=Sk/qZ0PCKuKPpHB9HjPSmK4jmV57qb64kZf7c48kCF0=;
+ b=O3auvscMKSwU0UZDl0H4wvhnPhD9f0asZMZX/T9ewOL6EMEoXcwkUzF1fBTIbjHxh6
+ 15Hq+uNyTspxLKIGR8vcNZrrDVZR6Nm8QC42Yrq0g4VV/KJGoy1CaKJ8irK6ALYdWpR+
+ +SR9OmpKUvx94AJOMett4gTEE8/yFpJ1FPCoG/V0yOyZ1OceFzujTfQ/aaCexzdaixrh
+ cU17WcAAG8Els/26YkdIhqeDzZVn6yOUwaXHezU1dHenekFYVmGF0qjEKQpQqytgtyKp
+ o9coWGStnGfC+SnEfxH2obqc2YgmS4QhMS9zSbjrkbpotksa3kLX2m1+aODbr6A0MEn1
+ MIgA==
+X-Gm-Message-State: AOAM5321ZNOW+ehmmEuObF/hkIT//PeZQx3Ge17B+SEDVkUIehix1yjf
+ X0dkmtOkeB8EPJRYlxdbeUpOp/q7NmD5UvbZHLMsnw==
+X-Google-Smtp-Source: ABdhPJwAZIYguqwZTxoHINg27uUeFDW9ssNvRHKAZfR70FyR5LAn3osu3KVqu7LBFqe+vVsr5skBCE0r7JFHOmVIU50=
+X-Received: by 2002:a37:9bd7:: with SMTP id
+ d206mr19591161qke.113.1590999326270; 
+ Mon, 01 Jun 2020 01:15:26 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1590474856.git.greentime.hu@sifive.com>
- <e896db91e3303f64ac401021f848e536e9d42aaa.1590474856.git.greentime.hu@sifive.com>
- <CAJF2gTTdyXybMGPzqKi1Z_ueQkf5XxiZK2X1HrDnZkCaVU1DAg@mail.gmail.com>
-In-Reply-To: <CAJF2gTTdyXybMGPzqKi1Z_ueQkf5XxiZK2X1HrDnZkCaVU1DAg@mail.gmail.com>
+ <fe966314eae51a5089033f7186ac86c39719e0a0.1590474856.git.greentime.hu@sifive.com>
+ <CAJF2gTTnLNmNUvDwRSsmD9auaOGuqYXjuucKSyXZQKoEWEq4Ow@mail.gmail.com>
+In-Reply-To: <CAJF2gTTnLNmNUvDwRSsmD9auaOGuqYXjuucKSyXZQKoEWEq4Ow@mail.gmail.com>
 From: Greentime Hu <greentime.hu@sifive.com>
-Date: Mon, 1 Jun 2020 16:07:58 +0800
-Message-ID: <CAHCEehKC4g-TS3n_fruWy2c4CG3dQeBU1oVVEAbFe+gBGOeUnA@mail.gmail.com>
-Subject: Re: [RFC PATCH v4 07/13] riscv: Add has_vector/riscv_vsize to save
- vector features.
+Date: Mon, 1 Jun 2020 16:15:14 +0800
+Message-ID: <CAHCEeh+d+ya6+Xrh8hdWVSGo2kk_rZ8PV2eMM-2LLaOojAaBtQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v4 05/13] riscv: Add new csr defines related to vector
+ extension
 To: Guo Ren <guoren@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_010813_011744_65239352 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20200601_011528_010943_9F91C573 
+X-CRM114-Status: GOOD (  14.42  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:743 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -106,59 +106,101 @@ Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 Guo Ren <guoren@kernel.org> =E6=96=BC 2020=E5=B9=B45=E6=9C=8831=E6=97=A5 =
-=E9=80=B1=E6=97=A5 =E4=B8=8A=E5=8D=888:58=E5=AF=AB=E9=81=93=EF=BC=9A
+=E9=80=B1=E6=97=A5 =E4=B8=8A=E5=8D=889:56=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> Reviewed-by: Guo Ren <guoren@kernel.org>
+> Hi Greentime,
+>
+> Why remove vxrm and xstat ?
+>
+> > Appendix B: Calling Convention
+> > In the RISC-V psABI, the vector registers v0-v31 are all caller-saved. =
+The vstart, vl, and vtype CSRs are also caller-saved.
+> > The vxrm and vxsat fields have thread storage duration.
+>
+Hi Guo,
+
+https://github.com/riscv/riscv-v-spec/blob/master/v-spec.adoc#vector-contro=
+l-and-status-register-vcsr
+"The vxrm and vxsat separate CSRs can also be accessed via fields in
+the vector control and status CSR, vcsr."
+
+Since vcsr will save all these information, I think it should be ok to
+save vcsr only.
+
+> As spec 0.9 mentioned above, vxrm and vxsat are thread storage duration.
+>
+> When timer 's interrupt coming, we still need to save them in context_swi=
+tch.
 >
 > On Tue, May 26, 2020 at 3:03 PM Greentime Hu <greentime.hu@sifive.com> wr=
 ote:
 > >
 > > From: Guo Ren <guoren@linux.alibaba.com>
 > >
-> > This patch is used to detect vector support status of CPU and use
-> > riscv_vsize to save the size of all the vector registers. It assumes
-> > all harts has the same capabilities in SMP system.
+> > Follow the riscv vector spec to add new csr number.
 > >
-> > [greentime.hu@sifive.com: add support for dynamic vlen]
+> > [greentime.hu@sifive.com: update the defined value based on new spec an=
+d
+> > remove unused ones]
 > > Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
 > > Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
 > > ---
-> >  arch/riscv/kernel/cpufeature.c | 11 +++++++++++
-> >  1 file changed, 11 insertions(+)
+> >  arch/riscv/include/asm/csr.h | 16 ++++++++++++++--
+> >  1 file changed, 14 insertions(+), 2 deletions(-)
 > >
-> > diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeat=
-ure.c
-> > index c8527d770c98..5a68a926da68 100644
-> > --- a/arch/riscv/kernel/cpufeature.c
-> > +++ b/arch/riscv/kernel/cpufeature.c
-> > @@ -16,6 +16,10 @@ unsigned long elf_hwcap __read_mostly;
-> >  #ifdef CONFIG_FPU
-> >  bool has_fpu __read_mostly;
-> >  #endif
-> > +#ifdef CONFIG_VECTOR
-> > +bool has_vector __read_mostly;
-> > +unsigned long riscv_vsize __read_mostly;
-> > +#endif
+> > diff --git a/arch/riscv/include/asm/csr.h b/arch/riscv/include/asm/csr.=
+h
+> > index 8e18d2c64399..cc13626c4bbe 100644
+> > --- a/arch/riscv/include/asm/csr.h
+> > +++ b/arch/riscv/include/asm/csr.h
+> > @@ -24,6 +24,12 @@
+> >  #define SR_FS_CLEAN    _AC(0x00004000, UL)
+> >  #define SR_FS_DIRTY    _AC(0x00006000, UL)
 > >
-> >  void riscv_fill_hwcap(void)
-> >  {
-> > @@ -73,4 +77,11 @@ void riscv_fill_hwcap(void)
-> >         if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
-> >                 has_fpu =3D true;
-> >  #endif
+> > +#define SR_VS           _AC(0x00000600, UL) /* Vector Status */
+> > +#define SR_VS_OFF       _AC(0x00000000, UL)
+> > +#define SR_VS_INITIAL   _AC(0x00000200, UL)
+> > +#define SR_VS_CLEAN     _AC(0x00000400, UL)
+> > +#define SR_VS_DIRTY     _AC(0x00000600, UL)
 > > +
-> > +#ifdef CONFIG_VECTOR
-> > +       if (elf_hwcap & COMPAT_HWCAP_ISA_V) {
-> > +               has_vector =3D true;
-> > +               riscv_vsize =3D csr_read(CSR_VLENB) * 32;
-> No magic number 32.
-> eg:
-> #define VECTOR_REGS_NUM 32
+> >  #define SR_XS          _AC(0x00018000, UL) /* Extension Status */
+> >  #define SR_XS_OFF      _AC(0x00000000, UL)
+> >  #define SR_XS_INITIAL  _AC(0x00008000, UL)
+> > @@ -31,9 +37,9 @@
+> >  #define SR_XS_DIRTY    _AC(0x00018000, UL)
+> >
+> >  #ifndef CONFIG_64BIT
+> > -#define SR_SD          _AC(0x80000000, UL) /* FS/XS dirty */
+> > +#define SR_SD          _AC(0x80000000, UL) /* FS/VS/XS dirty */
+> >  #else
+> > -#define SR_SD          _AC(0x8000000000000000, UL) /* FS/XS dirty */
+> > +#define SR_SD          _AC(0x8000000000000000, UL) /* FS/VS/XS dirty *=
+/
+> >  #endif
+> >
+> >  /* SATP flags */
+> > @@ -114,6 +120,12 @@
+> >  #define CSR_PMPADDR0           0x3b0
+> >  #define CSR_MHARTID            0xf14
+> >
+> > +#define CSR_VSTART             0x8
+> > +#define CSR_VCSR               0xf
+> > +#define CSR_VL                 0xc20
+> > +#define CSR_VTYPE              0xc21
+> > +#define CSR_VLENB              0xc22
+> > +
+> >  #ifdef CONFIG_RISCV_M_MODE
+> >  # define CSR_STATUS    CSR_MSTATUS
+> >  # define CSR_IE                CSR_MIE
+> > --
+> > 2.26.2
+> >
+> >
 >
-
-Hi Guo,
-
-Thanks.
-I'll replace it with a defined macro or adding comments since it is
-used only once.
+>
+> --
+> Best Regards
+>  Guo Ren
+>
+> ML: https://lore.kernel.org/linux-csky/
 
