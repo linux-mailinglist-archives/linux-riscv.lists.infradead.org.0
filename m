@@ -2,62 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C9EE1EA07D
-	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 11:04:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 174F61EA096
+	for <lists+linux-riscv@lfdr.de>; Mon,  1 Jun 2020 11:12:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
 	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qAz7FdbteggojnYL9vTkQP9imWaLlqymYnH3m/Qusy8=; b=GVXf1sIU/xOBew81vL8suLIdC
-	/0Os7LHHC+cr0rl8gMACvfho0DoC5aSXHDPlKMqZl9eX50q71iDqJtDbTGxx/j2mhWfIXPXoJNv7m
-	dqsiZEaUPopeZJT0iCs+peUKFCiymGuNJcnvO03xpZWgonhqgrbdSzH89ksy7EN432GMHqoB9U/BU
-	Kk9Kq0v5Xaz++yshZemjm1AxnxQsXWvn8Xc8Og1IS6jcsCHJiFoo5DST3yGsX9GdWQIb64rPy9pnR
-	9hTgP7OJ8IZf1i6eF2fN7UXkuZtteDOxrX/NbFFg44qfzsjf8jWOYf78bFFMrF2tLiaE3SKgNhz7h
-	E8N6cjklQ==;
+	 bh=uoKvQ83VIcouxDkJ1F9DwCt/5HJJf3YPFB/ZQ8yEZGM=; b=t05leIoC5aXDEFX2aSWtB8Zwr
+	u0s3qFkTdtw4Hqw12kT+FGDMgvb9h1mKQdN2T8hwpivk4ipXlCNefgyjmQBPkWs5w+Xg0j1zqeel8
+	QQTMmqgWWLirmenKxLc5Nipc66mcYvFCzLhYsB5wcQNLyYmezNkdWE6umVGkIbgCPp6w98qHlp4rB
+	0IYcQIAeEzWJ0yOIbif87sR8mulQoa3YR/k61EHRcxEWonVJUTwSEEY5iyf78aReNCkvLegqwLTLO
+	FFyFvTwVjNZAtU7I+Z5ubf5qukP7CIAjtGMvMMeOACVzaoEXUiNrMYhOfQj8/wz8di8RSsF/Jwxg0
+	6SzEcJJNA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jfgMY-0005Ch-CN; Mon, 01 Jun 2020 09:04:06 +0000
+	id 1jfgUw-00045u-K1; Mon, 01 Jun 2020 09:12:46 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jfgMT-0005C6-An
- for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 09:04:03 +0000
-Received: from mail-lj1-f174.google.com (mail-lj1-f174.google.com
- [209.85.208.174])
+ id 1jfgUd-0003qK-N2
+ for linux-riscv@lists.infradead.org; Mon, 01 Jun 2020 09:12:29 +0000
+Received: from mail-lj1-f173.google.com (mail-lj1-f173.google.com
+ [209.85.208.173])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 994BB206C3
- for <linux-riscv@lists.infradead.org>; Mon,  1 Jun 2020 09:04:00 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C4DF120772
+ for <linux-riscv@lists.infradead.org>; Mon,  1 Jun 2020 09:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591002240;
- bh=mZoOdPkZk2DZjNiEBBJ1O/bqy4RJwqz6WBO326FTpN0=;
+ s=default; t=1591002747;
+ bh=XaBczYYm0dgNg26+7OPpYAKLtWaTtsU2jNmMocGEg+U=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=G4MsMH42DDGit6Gl8Vjd2CxT8nM3oWx1Vxe6rkMvvJ3CQT+Xvq8TqNG/boesTxR/V
- 8mjdJM7Ilj1GzwKDJNl1inYXXVpUqMge3S1JNgE79Bp4BLPn8CI0g2ddlqoNs7Z97D
- /+wC97HLcIwbuPaX/wwyFFPm5XzgnJ5ivC05eQrI=
-Received: by mail-lj1-f174.google.com with SMTP id z13so7166606ljn.7
- for <linux-riscv@lists.infradead.org>; Mon, 01 Jun 2020 02:04:00 -0700 (PDT)
-X-Gm-Message-State: AOAM532Ium2O77TT/CmsAleTBkSFjhMQAQ0K+uSG13T9T8OoLLgRyQeW
- lRvWEf+GIWPyIMTGeVn3VJ64u14zP/v29FblJFc=
-X-Google-Smtp-Source: ABdhPJxH0heF7O0h7klVCXpBPsCHEbZ7tp+mLB6EAx9L0OfYC3vopYfjOHTZky7cAvnqnlkafk0AyihHiaUpokploJ4=
-X-Received: by 2002:a2e:a0cc:: with SMTP id f12mr5807926ljm.250.1591002238945; 
- Mon, 01 Jun 2020 02:03:58 -0700 (PDT)
+ b=zPG/R4YQGgMcVD1vDVWgtCV6QgaMzR7FnaRYsF325VamsGjd6hUptzQFJ5t+J9v6t
+ A4jgXaEWazhwka1vJ93/bzXgMABKduro30GhnDn4XmcykSuTx6Z0uyFoD07N2YrIrc
+ ILfCZYzXqFrw4NYe+aRK6RFOVRbSOpCiEkfbe6QM=
+Received: by mail-lj1-f173.google.com with SMTP id c17so1441191lji.11
+ for <linux-riscv@lists.infradead.org>; Mon, 01 Jun 2020 02:12:26 -0700 (PDT)
+X-Gm-Message-State: AOAM533/vJo9h7UJ3HwiTS2xetQ+/RGKo0wzXduWxe/CtNiwiahNuf0n
+ tngB5c3yn4vUlM7NJLUlZyY5YeDdVQPnvqllOF8=
+X-Google-Smtp-Source: ABdhPJwNN0gMX/urhnLnrniACiL2yZ/7oMTw3RyS/24I8Z1lmMyfh4PcjnoeMU6EeZpM2LSQDbPzd3egOk/2x79mNUo=
+X-Received: by 2002:a2e:9c95:: with SMTP id x21mr10387218lji.441.1591002745078; 
+ Mon, 01 Jun 2020 02:12:25 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1590474856.git.greentime.hu@sifive.com>
- <fe966314eae51a5089033f7186ac86c39719e0a0.1590474856.git.greentime.hu@sifive.com>
-In-Reply-To: <fe966314eae51a5089033f7186ac86c39719e0a0.1590474856.git.greentime.hu@sifive.com>
+ <1f20f778318bf18e47eace08e54983fed23ba019.1590474856.git.greentime.hu@sifive.com>
+In-Reply-To: <1f20f778318bf18e47eace08e54983fed23ba019.1590474856.git.greentime.hu@sifive.com>
 From: Guo Ren <guoren@kernel.org>
-Date: Mon, 1 Jun 2020 17:03:47 +0800
-X-Gmail-Original-Message-ID: <CAJF2gTQ=S+tbxVOoL3w3DjQ1H0UP6L7F++i-OAcaeY+QNmd=mw@mail.gmail.com>
-Message-ID: <CAJF2gTQ=S+tbxVOoL3w3DjQ1H0UP6L7F++i-OAcaeY+QNmd=mw@mail.gmail.com>
-Subject: Re: [RFC PATCH v4 05/13] riscv: Add new csr defines related to vector
- extension
+Date: Mon, 1 Jun 2020 17:12:13 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTRu63t7Ftv_V1ZLAEu4Vi57Q6uvp+sZjYBROkuJXX0=mg@mail.gmail.com>
+Message-ID: <CAJF2gTRu63t7Ftv_V1ZLAEu4Vi57Q6uvp+sZjYBROkuJXX0=mg@mail.gmail.com>
+Subject: Re: [RFC PATCH v4 09/13] riscv: Add vector struct and assembler
+ definitions
 To: Greentime Hu <greentime.hu@sifive.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200601_020401_421470_CAD9D1C3 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20200601_021227_828870_BCCF71BE 
+X-CRM114-Status: GOOD (  18.13  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -104,58 +104,79 @@ On Tue, May 26, 2020 at 3:03 PM Greentime Hu <greentime.hu@sifive.com> wrote:
 >
 > From: Guo Ren <guoren@linux.alibaba.com>
 >
-> Follow the riscv vector spec to add new csr number.
+> Add vector state context struct in struct thread and asm-offsets.c
+> definitions.
 >
-> [greentime.hu@sifive.com: update the defined value based on new spec and
-> remove unused ones]
+> The vector registers will be saved in datap pointer of __riscv_v_state. It
+> will be dynamically allocated in kernel space. It will be put right after
+> the __riscv_v_state data structure in user space.
+>
+> [greentime.hu@sifive.com: add support for dynamic vlen, add vcsr and remove
+> vxsat, vxrm because these data can be get in vcsr, add new macros for
+> _riscv_v_state elements offset and remove unused ones]
 > Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
 > Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
 > ---
->  arch/riscv/include/asm/csr.h | 16 ++++++++++++++--
->  1 file changed, 14 insertions(+), 2 deletions(-)
+>  arch/riscv/include/asm/processor.h   |  1 +
+>  arch/riscv/include/uapi/asm/ptrace.h | 13 +++++++++++++
+>  arch/riscv/kernel/asm-offsets.c      |  8 ++++++++
+>  3 files changed, 22 insertions(+)
 >
-> diff --git a/arch/riscv/include/asm/csr.h b/arch/riscv/include/asm/csr.h
-> index 8e18d2c64399..cc13626c4bbe 100644
-> --- a/arch/riscv/include/asm/csr.h
-> +++ b/arch/riscv/include/asm/csr.h
-> @@ -24,6 +24,12 @@
->  #define SR_FS_CLEAN    _AC(0x00004000, UL)
->  #define SR_FS_DIRTY    _AC(0x00006000, UL)
+> diff --git a/arch/riscv/include/asm/processor.h b/arch/riscv/include/asm/processor.h
+> index 3ddb798264f1..217273375cfb 100644
+> --- a/arch/riscv/include/asm/processor.h
+> +++ b/arch/riscv/include/asm/processor.h
+> @@ -32,6 +32,7 @@ struct thread_struct {
+>         unsigned long sp;       /* Kernel mode stack */
+>         unsigned long s[12];    /* s[0]: frame pointer */
+>         struct __riscv_d_ext_state fstate;
+> +       struct __riscv_v_state vstate;
+>  };
 >
-> +#define SR_VS           _AC(0x00000600, UL) /* Vector Status */
-> +#define SR_VS_OFF       _AC(0x00000000, UL)
-> +#define SR_VS_INITIAL   _AC(0x00000200, UL)
-> +#define SR_VS_CLEAN     _AC(0x00000400, UL)
-> +#define SR_VS_DIRTY     _AC(0x00000600, UL)
+>  #define INIT_THREAD {                                  \
+> diff --git a/arch/riscv/include/uapi/asm/ptrace.h b/arch/riscv/include/uapi/asm/ptrace.h
+> index 882547f6bd5c..661b0466b850 100644
+> --- a/arch/riscv/include/uapi/asm/ptrace.h
+> +++ b/arch/riscv/include/uapi/asm/ptrace.h
+> @@ -77,6 +77,19 @@ union __riscv_fp_state {
+>         struct __riscv_q_ext_state q;
+>  };
+>
+> +struct __riscv_v_state {
+> +       __u32 magic;
+> +       __u32 size;
+> +       unsigned long vstart;
+> +       unsigned long vl;
+> +       unsigned long vtype;
+> +       unsigned long vcsr;
+> +       void *datap;
+> +#if __riscv_xlen == 32
+> +       __u32 __padding;
+> +#endif
+> +} __attribute__((aligned(16)));
 > +
->  #define SR_XS          _AC(0x00018000, UL) /* Extension Status */
->  #define SR_XS_OFF      _AC(0x00000000, UL)
->  #define SR_XS_INITIAL  _AC(0x00008000, UL)
-> @@ -31,9 +37,9 @@
->  #define SR_XS_DIRTY    _AC(0x00018000, UL)
+>  #endif /* __ASSEMBLY__ */
 >
->  #ifndef CONFIG_64BIT
-> -#define SR_SD          _AC(0x80000000, UL) /* FS/XS dirty */
-> +#define SR_SD          _AC(0x80000000, UL) /* FS/VS/XS dirty */
->  #else
-> -#define SR_SD          _AC(0x8000000000000000, UL) /* FS/XS dirty */
-> +#define SR_SD          _AC(0x8000000000000000, UL) /* FS/VS/XS dirty */
->  #endif
+>  #endif /* _UAPI_ASM_RISCV_PTRACE_H */
+> diff --git a/arch/riscv/kernel/asm-offsets.c b/arch/riscv/kernel/asm-offsets.c
+> index 07cb9c10de4e..6627fde230b2 100644
+> --- a/arch/riscv/kernel/asm-offsets.c
+> +++ b/arch/riscv/kernel/asm-offsets.c
+> @@ -70,6 +70,14 @@ void asm_offsets(void)
+>         OFFSET(TASK_THREAD_F31, task_struct, thread.fstate.f[31]);
+>         OFFSET(TASK_THREAD_FCSR, task_struct, thread.fstate.fcsr);
 >
->  /* SATP flags */
-> @@ -114,6 +120,12 @@
->  #define CSR_PMPADDR0           0x3b0
->  #define CSR_MHARTID            0xf14
->
-> +#define CSR_VSTART             0x8
-> +#define CSR_VCSR               0xf
-> +#define CSR_VL                 0xc20
-> +#define CSR_VTYPE              0xc21
-> +#define CSR_VLENB              0xc22
+> +       OFFSET(RISCV_V_STATE_MAGIC, __riscv_v_state, magic);
+> +       OFFSET(RISCV_V_STATE_SIZE, __riscv_v_state, size);
+> +       OFFSET(RISCV_V_STATE_VSTART, __riscv_v_state, vstart);
+> +       OFFSET(RISCV_V_STATE_VL, __riscv_v_state, vl);
+> +       OFFSET(RISCV_V_STATE_VTYPE, __riscv_v_state, vtype);
+> +       OFFSET(RISCV_V_STATE_VCSR, __riscv_v_state, vcsr);
+> +       OFFSET(RISCV_V_STATE_DATAP, __riscv_v_state, datap);
 > +
->  #ifdef CONFIG_RISCV_M_MODE
->  # define CSR_STATUS    CSR_MSTATUS
->  # define CSR_IE                CSR_MIE
+>         DEFINE(PT_SIZE, sizeof(struct pt_regs));
+>         OFFSET(PT_EPC, pt_regs, epc);
+>         OFFSET(PT_RA, pt_regs, ra);
 > --
 > 2.26.2
 >
