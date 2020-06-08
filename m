@@ -2,58 +2,57 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9945B1F2532
-	for <lists+linux-riscv@lfdr.de>; Tue,  9 Jun 2020 01:26:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 702701F232C
+	for <lists+linux-riscv@lfdr.de>; Tue,  9 Jun 2020 01:13:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U3/SO78/9ljeE9rKrAiQF1jMLjUdG3jBUVzhbec9gyw=; b=BO2UniHWjYHmY4
-	QDvqtY4o9UDcAGziXEOBrVa8+IJsgJiJ/s3EZjN4sgO8g3wLmA0aQT4uEzZHRDYNR1phmyy/UQtjy
-	UQXvgk84ot2WC3p42iOhTIidQXQ3UfeQY8+O0JG5f1oMTEdZULKIY/rmv3FFM+9X3YhCgzS5tSp6C
-	8I5qPzNcsGEeVpzLqvo/Btb2EapAX3zQUSbT76SPzhXFkqeMDAoA4P9ocNgZB7p6+r/8cE7vYATRF
-	ruU3guFZzTf352mPzmFsOSx9A/7DinDaLAqRwdkPkCD2eLO37scj911s13XuH97rMDQIM9gZpSE3Z
-	RmPI3lGTlRIDqXHr0Fqw==;
+	List-Owner; bh=EkKGUJi847ZVYRroIctEfxsrydJW/qvSQCFgRykvjC8=; b=QuPKY0cFAy5EhR
+	tmNGldlODtG5+49qFlyg3wqFkW458C9DCz+jF9sbYnxG0v+AX20ofi22GtzpRBFk8qt+9rTnIwG85
+	OauTLyTkKhlAYqG04BCdEzRqy1H/GQe0xURbwVB/zCOxFBTiCPaghLB2vFWV5OHS5WBAFQW9xWXCN
+	0KeaCCp7AtO+PaP76RJN3suh5wNFNiM4jUv/dQSjyr8CFcYiQrDQRghC8V7oTtBwCPnIoQ+N4MBle
+	EmdS0Yz8HcBii297hxAALvrxqWJJAPbPeXHt268phUlWTuc11z7R1P724ML0dVgAc2q6ZACCsNXmd
+	64b2jV9f6t2BQesWdAkQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jiR9h-0007Ct-DV; Mon, 08 Jun 2020 23:26:13 +0000
+	id 1jiQxB-0006an-7P; Mon, 08 Jun 2020 23:13:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jiQxY-0006wT-NB
- for linux-riscv@lists.infradead.org; Mon, 08 Jun 2020 23:13:50 +0000
+ id 1jiQsv-0000D1-0c
+ for linux-riscv@lists.infradead.org; Mon, 08 Jun 2020 23:08:54 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4116B212CC;
- Mon,  8 Jun 2020 23:13:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6ED9D2085B;
+ Mon,  8 Jun 2020 23:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591658019;
- bh=PAF7TTob2i+fDQUy2vnO8iUW+qZWiXx2tOJs+soBO68=;
+ s=default; t=1591657732;
+ bh=fK82cI40GO1yH3Ip1kLba1zXWfkLTxYg+MFpEbXh69w=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VV3Qyerf7dWJEdNT3HShUwCKFvIbcbP5CiszGVj80m7eXz3NJpsbCfpBgBLqLbPIA
- 5bjEYJhypEOGp+OVE7efveAjbPzw++qmhYWg7cGuZw7GtyLnlvRmJ1Y4gNPNrVZGJW
- /VPXtpYqSy/MtUBcyLJhykXRTsepjCUIMKeaCmVY=
+ b=AB2x00QQzebqBsUwR4YxJzpr5+xeA8I+kaWTScWv1pvzB4lZ32TZQhAQ72rT/0Htb
+ iYMGZaiSMGr4z7ARXLCAUdlKvhYOxRin5QoowGhMP6wiqZswdRHKYnI2JDZ92dWtE7
+ 6L5THfCOknEfk/y7lgBM629S6VtZ+NFlKLGNfXbU=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.6 073/606] riscv: perf: RISCV_BASE_PMU should be
- independent
-Date: Mon,  8 Jun 2020 19:03:18 -0400
-Message-Id: <20200608231211.3363633-73-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.7 123/274] bpf,
+ riscv: Fix tail call count off by one in RV32 BPF JIT
+Date: Mon,  8 Jun 2020 19:03:36 -0400
+Message-Id: <20200608230607.3361041-123-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200608231211.3363633-1-sashal@kernel.org>
-References: <20200608231211.3363633-1-sashal@kernel.org>
+In-Reply-To: <20200608230607.3361041-1-sashal@kernel.org>
+References: <20200608230607.3361041-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200608_161340_821446_25045A90 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200608_160853_086383_F290AD23 
+X-CRM114-Status: GOOD (  10.25  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -82,75 +81,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kefeng Wang <wangkefeng.wang@huawei.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>, linux-riscv@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, Luke Nelson <luke.r.nels@gmail.com>,
+ netdev@vger.kernel.org, Alexei Starovoitov <ast@kernel.org>,
+ Luke Nelson <lukenels@cs.washington.edu>, bpf@vger.kernel.org,
+ linux-riscv@lists.infradead.org, Xi Wang <xi.wang@gmail.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Kefeng Wang <wangkefeng.wang@huawei.com>
+From: Luke Nelson <lukenels@cs.washington.edu>
 
-commit 48084c3595cb7429f6ba734cfea1313573b9a7fa upstream.
+[ Upstream commit 745abfaa9eafa597d31fdf24a3249e5206a98768 ]
 
-Selecting PERF_EVENTS without selecting RISCV_BASE_PMU results in a build
-error.
+This patch fixes an off by one error in the RV32 JIT handling for BPF
+tail call. Currently, the code decrements TCC before checking if it
+is less than zero. This limits the maximum number of tail calls to 32
+instead of 33 as in other JITs. The fix is to instead check the old
+value of TCC before decrementing.
 
-Signed-off-by: Kefeng Wang <wangkefeng.wang@huawei.com>
-[Palmer: commit text]
-Fixes: 178e9fc47aae("perf: riscv: preliminary RISC-V support")
-Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Fixes: 5f316b65e99f ("riscv, bpf: Add RV32G eBPF JIT")
+Signed-off-by: Luke Nelson <luke.r.nels@gmail.com>
+Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+Acked-by: Xi Wang <xi.wang@gmail.com>
+Link: https://lore.kernel.org/bpf/20200421002804.5118-1-luke.r.nels@gmail.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/riscv/include/asm/perf_event.h | 8 ++------
- arch/riscv/kernel/Makefile          | 2 +-
- 2 files changed, 3 insertions(+), 7 deletions(-)
+ arch/riscv/net/bpf_jit_comp32.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/arch/riscv/include/asm/perf_event.h b/arch/riscv/include/asm/perf_event.h
-index 0234048b12bc..062efd3a1d5d 100644
---- a/arch/riscv/include/asm/perf_event.h
-+++ b/arch/riscv/include/asm/perf_event.h
-@@ -12,19 +12,14 @@
- #include <linux/ptrace.h>
- #include <linux/interrupt.h>
+diff --git a/arch/riscv/net/bpf_jit_comp32.c b/arch/riscv/net/bpf_jit_comp32.c
+index 302934177760..11083d4d5f2d 100644
+--- a/arch/riscv/net/bpf_jit_comp32.c
++++ b/arch/riscv/net/bpf_jit_comp32.c
+@@ -770,12 +770,13 @@ static int emit_bpf_tail_call(int insn, struct rv_jit_context *ctx)
+ 	emit_bcc(BPF_JGE, lo(idx_reg), RV_REG_T1, off, ctx);
  
-+#ifdef CONFIG_RISCV_BASE_PMU
- #define RISCV_BASE_COUNTERS	2
+ 	/*
+-	 * if ((temp_tcc = tcc - 1) < 0)
++	 * temp_tcc = tcc - 1;
++	 * if (tcc < 0)
+ 	 *   goto out;
+ 	 */
+ 	emit(rv_addi(RV_REG_T1, RV_REG_TCC, -1), ctx);
+ 	off = (tc_ninsn - (ctx->ninsns - start_insn)) << 2;
+-	emit_bcc(BPF_JSLT, RV_REG_T1, RV_REG_ZERO, off, ctx);
++	emit_bcc(BPF_JSLT, RV_REG_TCC, RV_REG_ZERO, off, ctx);
  
- /*
-  * The RISCV_MAX_COUNTERS parameter should be specified.
-  */
- 
--#ifdef CONFIG_RISCV_BASE_PMU
- #define RISCV_MAX_COUNTERS	2
--#endif
--
--#ifndef RISCV_MAX_COUNTERS
--#error "Please provide a valid RISCV_MAX_COUNTERS for the PMU."
--#endif
- 
- /*
-  * These are the indexes of bits in counteren register *minus* 1,
-@@ -82,6 +77,7 @@ struct riscv_pmu {
- 	int		irq;
- };
- 
-+#endif
- #ifdef CONFIG_PERF_EVENTS
- #define perf_arch_bpf_user_pt_regs(regs) (struct user_regs_struct *)regs
- #endif
-diff --git a/arch/riscv/kernel/Makefile b/arch/riscv/kernel/Makefile
-index f40205cb9a22..1dcc095dc23c 100644
---- a/arch/riscv/kernel/Makefile
-+++ b/arch/riscv/kernel/Makefile
-@@ -38,7 +38,7 @@ obj-$(CONFIG_MODULE_SECTIONS)	+= module-sections.o
- obj-$(CONFIG_FUNCTION_TRACER)	+= mcount.o ftrace.o
- obj-$(CONFIG_DYNAMIC_FTRACE)	+= mcount-dyn.o
- 
--obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o
-+obj-$(CONFIG_RISCV_BASE_PMU)	+= perf_event.o
- obj-$(CONFIG_PERF_EVENTS)	+= perf_callchain.o
- obj-$(CONFIG_HAVE_PERF_REGS)	+= perf_regs.o
- obj-$(CONFIG_RISCV_SBI)		+= sbi.o
+ 	/*
+ 	 * prog = array->ptrs[index];
 -- 
 2.25.1
 
