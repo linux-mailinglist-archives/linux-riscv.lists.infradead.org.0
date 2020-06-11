@@ -2,80 +2,86 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91EF81F5B3B
-	for <lists+linux-riscv@lfdr.de>; Wed, 10 Jun 2020 20:33:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 943121F6027
+	for <lists+linux-riscv@lfdr.de>; Thu, 11 Jun 2020 04:50:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cuF+cADa9Q3nUhREBOrFxHULJ1t6/1ibL+MaQiIT2O4=; b=ZJNMn2jKfLTfQEOHI6ryIjjCZ
-	t/2y/Xx1eDSnR35C5qgFoPcxZbs1UNx7zYBztLHGlYRkyC3yQXQDVhj1OmbnvCl5tscT73RDIkpZ+
-	N/p7+nOo+9pt1TcBWSC/ljhTeKm/To6Y3iz6/Vh3IryXYLxwaaTTARDIcpuQLXMpe4BRD0P71Ev/Y
-	qEv9yJYdfCJuHTmJyEnnx+u7jrnTVUiE7Iomr0oHnXzdBsE/cf5iwng5l7P5zSZWGF9fFfBVDhk3/
-	SJIeEtObI4YMwGr3Ua+HNkNA1IfuXeCVxjhtykw3VfNFumzXeXuEjxOrMq2DZOBZSEzRkJNRnDqdA
-	Z3uWpEGPg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=jpm044JpBHIVrYGPHlmEFciQsFPwiMlmj0xEplKLAzo=; b=rEVFubjywnlyNc
+	XkMqQv4pLIdgXzF/m5N5bYJA0Recluc1wDYC0xkP4byglQch42oOasaAtjnCUPZvKTuDXG5K23JMk
+	QyCcrl/nuenddouutjHVjiuv48a6IsJ37cCJTSClw4iyLG2RsKYA+Z94l91RmKLOMfvJm/cl5oFsQ
+	jIjSi7A93zU3I6YxP9eYYJa485iwkLfHLH/STB2wKxvgsAvK/Y7fwkXIeolHPpjKKiMimx3TnDduw
+	MA+dHteVcK31ASncaHskUNGGc984xQSb1dHYaAVbnGaJXH3nr7xN3QYPa54/X2HxEzHy0LMOUhWH1
+	F6fRcTTYescRj5tNV8OQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jj5X5-0004sL-4u; Wed, 10 Jun 2020 18:33:03 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jjDIK-0000l3-4X; Thu, 11 Jun 2020 02:50:20 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jj5X1-0004rL-83
- for linux-riscv@lists.infradead.org; Wed, 10 Jun 2020 18:33:00 +0000
-Received: by mail-wr1-x443.google.com with SMTP id l11so3449411wru.0
- for <linux-riscv@lists.infradead.org>; Wed, 10 Jun 2020 11:32:59 -0700 (PDT)
+ id 1jjDIF-0000gG-Bn
+ for linux-riscv@lists.infradead.org; Thu, 11 Jun 2020 02:50:17 +0000
+Received: by mail-pf1-x444.google.com with SMTP id s23so2012984pfh.7
+ for <linux-riscv@lists.infradead.org>; Wed, 10 Jun 2020 19:50:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=atishpatra.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cuF+cADa9Q3nUhREBOrFxHULJ1t6/1ibL+MaQiIT2O4=;
- b=ShddrI1KueMSqR6Wmvilt3rbyr+sz5HwFSfAUsjfnmYpijcnBNTyMgSkGknkRMlEvD
- T7ONcUqIiN6ZuI/+73WkfNKjPnjpCxAY0Tq+chqDh8IyImYw44Sg7NfS0nCQK0g2iQfF
- hJUycqfOB9F5s9VszPETBUbzqglDtFaWamE4I=
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jpm044JpBHIVrYGPHlmEFciQsFPwiMlmj0xEplKLAzo=;
+ b=Vyokqfpbyj1aP1vXDGLBtllvB1JqGHqAok3iIGma42z9fpD6MksrQyukFo9CXxoSt3
+ cjMRv8hGJl85jH1miHtYe3KEd+v+z6zLAkFNJGmhoEmkiK7Wg1ScFia/38/bH0lBjJKQ
+ 99oSqHmYkOElFE2OeNOXIkr1jkpgva0AfeRDq2rWG8QW9ODl3saIF0RY1ZUVU8T1AXBn
+ Eq21QL54bcZuC/NI16HOorhYzmI5u+cGDXFuqAa/BHt2WhvL6Ir1MazM5FNRY9Xc6piP
+ 0rfJ5Hm5GLQAEVQAU45tT9c8KI4wXgGOldd4G0aPAlrQwOcz+Zu/fe+dqH2BHKd6KHnh
+ PnlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cuF+cADa9Q3nUhREBOrFxHULJ1t6/1ibL+MaQiIT2O4=;
- b=MmL+gOS7I1a4dRj6hldnqoyH0l/Sqoft4p3Brsph7wMGaU2OoWQ8IovGR6ePV3MdLB
- sbQMeUruHRIpB4PuiORSS2Sz5hq+VVP9b7YKpI5wTKAeASZ3ew0SwOaCBSoVlFIsKbkJ
- x2CS3Q/Y/AM8Eu9NP07zMPZ5KYhHNW02OtlbXBhClUq+Q6fsXgGXZzK/tsiC1n1Rdbbn
- 4vkzmfmFWQCmbVDrM1mMgRlvUtINO+z3L8H8VMCf8L+N0kcfUCXphj5Cd5Olt1vqFBKo
- Xgo5VW/sMOXT9n0bB3W77rOkYnyJH2bslhXjK/2+/GXWvmiE5BhlZrePrXH863T2LAji
- hv3w==
-X-Gm-Message-State: AOAM532Kt5P6YCvRrLM0EwZPEjzcCBRauRnm7iE0hjjcn5OXYOLlY9uf
- 2G6oUVclXOJRMnvFehSV30qxv1FXhGMCaBYX3sOT
-X-Google-Smtp-Source: ABdhPJxCnMMuL58nYu6fTmdEAISV5qEamhPuW63lyo5ERyRoWIudqU0rQgeZrHhfm+NaPcTZ3CjeV2CAQGJ51/I8SH4=
-X-Received: by 2002:adf:e68a:: with SMTP id r10mr5092633wrm.384.1591813978084; 
- Wed, 10 Jun 2020 11:32:58 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200603153608.30056-1-alex@ghiti.fr>
-In-Reply-To: <20200603153608.30056-1-alex@ghiti.fr>
-From: Atish Patra <atishp@atishpatra.org>
-Date: Wed, 10 Jun 2020 11:32:47 -0700
-Message-ID: <CAOnJCUJSKvLDsXC8+wyO1xsZDzLJmjY2kwMKhjz0t+uS8h0pDw@mail.gmail.com>
-Subject: Re: [PATCH 0/2] PUD/PGDIR entries for linear mapping
-To: Alexandre Ghiti <alex@ghiti.fr>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=jpm044JpBHIVrYGPHlmEFciQsFPwiMlmj0xEplKLAzo=;
+ b=Izr2sswfwQicSpLhjB9KpVX8dPxcB5atyraEb8j+UI8S+bvFdu3cq3b8tcZapQWEku
+ E7tEfTQUv0VU7r75/Tf7scGmzFwVahuFcmE3HG/Y9VIwXO1fn5M2uUsGwsZNPIX99YOa
+ PiRLShx1L8HFIc8lqwEQKeWbV0P6R10dIH2NCpUu17G4jKOs4fuM6YXPyCghRMHTMe98
+ JS/7U00Lf1xI79XDoV4U5jY2Yn6pln4BEpslgcwYT5nvu72qo2v3swPVX++Qf756TIw6
+ LOnBwBj857JJt0NhLbLlICiZQxe6yE9O7GmOG/Yuc1ehqmiZx3g8LcWswwtWqu3IHYLu
+ fEDA==
+X-Gm-Message-State: AOAM531DueL16kjjt+wHlOEr5eUiYnZT5NEyrGsAmvaGdSY4xS2CUpuf
+ EBnumnYCF139BP7kSMghcqLcBg==
+X-Google-Smtp-Source: ABdhPJxaFfA0GG4uPCtGt1Jlcj5TPmbm0GsJ1BSy9quLLZPADUkRBivP4hihA2/cAvX0nM2TCjH3WA==
+X-Received: by 2002:a63:e34a:: with SMTP id o10mr4998429pgj.258.1591843812168; 
+ Wed, 10 Jun 2020 19:50:12 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id w186sm1284437pff.83.2020.06.10.19.50.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 10 Jun 2020 19:50:11 -0700 (PDT)
+Date: Wed, 10 Jun 2020 19:50:11 -0700 (PDT)
+X-Google-Original-Date: Wed, 10 Jun 2020 19:50:00 PDT (-0700)
+Subject: Re: [PATCH v4 0/2] riscv: introduce vDSO common flow
+In-Reply-To: <1591712089-12904-1-git-send-email-vincent.chen@sifive.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: vincent.chen@sifive.com
+Message-ID: <mhng-e30f353d-a8ba-4517-8f8d-5ad333bb2dde@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200610_113259_296436_8B798086 
-X-CRM114-Status: GOOD (  18.14  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200610_195015_479693_829B5F1E 
+X-CRM114-Status: GOOD (  16.38  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -88,77 +94,65 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup@brainfault.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: vincent.chen@sifive.com, linux-riscv@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, Jun 3, 2020 at 8:36 AM Alexandre Ghiti <alex@ghiti.fr> wrote:
+On Tue, 09 Jun 2020 07:14:47 PDT (-0700), vincent.chen@sifive.com wrote:
+> Even if RISC-V has supported the vDSO feature, the latency of the functions
+> for obtaining the system time is still expensive. It is because these
+> functions still trigger a corresponding system call in the process, which
+> slows down the response time. If we want to remove the system call to
+> reduce the latency, the kernel should have the ability to output the system
+> clock information to userspace. This patch introduces the vDSO common flow
+> to enable the kernel to achieve the above feature and uses "rdtime"
+> instruction to obtain the current time in the user space. Under this
+> condition, the latency cost by the ecall from U-mode to S-mode can be
+> eliminated. After applying this patch, the latency of gettimeofday()
+> measured on the HiFive unleashed board can be reduced by %61.
 >
-> This small patchset intends to use PUD/PGDIR entries for linear mapping
-> in order to better utilize TLB.
 >
-> At the moment, only PMD entries can be used since on common platforms
-> (qemu/unleashed), the kernel is loaded at DRAM + 2MB which dealigns virtual
-> and physical addresses and then prevents the use of PUD/PGDIR entries.
-> So the kernel must be able to get those 2MB for PAGE_OFFSET to map the
-> beginning of the DRAM: this is achieved in patch 1.
+> change since v3:
+> 1. Fix build warnings reported by kbuild system
 >
+> change since v2:
+> 1. Fix build errors that occurred in the case of rv32 and nommu.
+>
+> change since v1:
+> 1. Modify the permission of vdso_data to read-only
+>
+> Vincent Chen (2):
+>   riscv: use vDSO common flow to reduce the latency of the time-related
+>     functions
+>   riscv: set the permission of vdso_data to read-only
+>
+>  arch/riscv/Kconfig                         |  4 ++
+>  arch/riscv/include/asm/clocksource.h       |  7 +++
+>  arch/riscv/include/asm/processor.h         | 12 +----
+>  arch/riscv/include/asm/vdso.h              |  2 +
+>  arch/riscv/include/asm/vdso/clocksource.h  |  8 +++
+>  arch/riscv/include/asm/vdso/gettimeofday.h | 79 ++++++++++++++++++++++++++++++
+>  arch/riscv/include/asm/vdso/processor.h    | 19 +++++++
+>  arch/riscv/include/asm/vdso/vsyscall.h     | 27 ++++++++++
+>  arch/riscv/kernel/time.c                   |  9 ++++
+>  arch/riscv/kernel/vdso.c                   | 24 +++++++--
+>  arch/riscv/kernel/vdso/Makefile            | 12 +++--
+>  arch/riscv/kernel/vdso/clock_getres.S      | 18 -------
+>  arch/riscv/kernel/vdso/clock_gettime.S     | 18 -------
+>  arch/riscv/kernel/vdso/gettimeofday.S      | 18 -------
+>  arch/riscv/kernel/vdso/vdso.lds.S          |  2 +
+>  arch/riscv/kernel/vdso/vgettimeofday.c     | 25 ++++++++++
+>  16 files changed, 213 insertions(+), 71 deletions(-)
+>  create mode 100644 arch/riscv/include/asm/clocksource.h
+>  create mode 100644 arch/riscv/include/asm/vdso/clocksource.h
+>  create mode 100644 arch/riscv/include/asm/vdso/gettimeofday.h
+>  create mode 100644 arch/riscv/include/asm/vdso/processor.h
+>  create mode 100644 arch/riscv/include/asm/vdso/vsyscall.h
+>  delete mode 100644 arch/riscv/kernel/vdso/clock_getres.S
+>  delete mode 100644 arch/riscv/kernel/vdso/clock_gettime.S
+>  delete mode 100644 arch/riscv/kernel/vdso/gettimeofday.S
+>  create mode 100644 arch/riscv/kernel/vdso/vgettimeofday.c
 
-I don't have in depth knowledge of how mm code works so this question
-may be a completely
-stupid one :). Just for my understanding,
-As per my understanding, kernel will map those 2MB of memory but never use it.
-How does the kernel ensure that it doesn't allocate any memory from those 2MB
-memory if it is not marked as reserved?
-
-> But furthermore, at the moment, the firmware (opensbi) explicitly asks the
-> kernel not to map the region it occupies, which is on those common
-> platforms at the very beginning of the DRAM and then it also dealigns
-> virtual and physical addresses. I proposed a patch here:
->
-> https://github.com/riscv/opensbi/pull/167
->
-> that removes this 'constraint' but *not* all the time as it offers some
-> kind of protection in case PMP is not available. So sometimes, we may
-> have a part of the memory below the kernel that is removed creating a
-> misalignment between virtual and physical addresses. So for performance
-> reasons, we must at least make sure that PMD entries can be used: that
-> is guaranteed by patch 1 too.
->
-> Finally the second patch simply improves best_map_size so that whenever
-> possible, PUD/PGDIR entries are used.
->
-> Below is the kernel page table without this patch on a 6G platform:
->
-> ---[ Linear mapping ]---
-> 0xffffc00000000000-0xffffc00176e00000    0x0000000080200000 5998M PMD     D A . . . W R V
->
-> And with this patchset + opensbi patch:
->
-> ---[ Linear mapping ]---
-> 0xffffc00000000000-0xffffc00140000000 0x0000000080000000         5G PUD     D A . . . W R V
-> 0xffffc00140000000-0xffffc00177000000    0x00000001c0000000 880M PMD     D A . . . W R V
->
-> Alexandre Ghiti (2):
->   riscv: Get memory below load_pa while ensuring linear mapping is PMD
->     aligned
->   riscv: Use PUD/PGDIR entries for linear mapping when possible
->
->  arch/riscv/include/asm/page.h |  8 ++++
->  arch/riscv/mm/init.c          | 69 +++++++++++++++++++++++++++++------
->  2 files changed, 65 insertions(+), 12 deletions(-)
->
-> --
-> 2.20.1
->
->
-
-
--- 
-Regards,
-Atish
+Thanks, these are on for-next.
 
