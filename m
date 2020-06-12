@@ -2,76 +2,77 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D33CC1F746B
-	for <lists+linux-riscv@lfdr.de>; Fri, 12 Jun 2020 09:10:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 153031F746D
+	for <lists+linux-riscv@lfdr.de>; Fri, 12 Jun 2020 09:10:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4+NJ3t8NefDvMBlOVrpO6HJOHxIomSxMyV3y0MN34qw=; b=gnDbrkHK0/OjBtS0sBHjnkkC/z
-	fz6ss+Z/Eiyk/R7xQ+RXcWi4bMlnGceSz78fAXDBLXCyasDLA0/0lVChieMHVPm/s1sH6XQS4KWcd
-	78SLqFi/UGlDqXVRYFKC9drkfs4BKXfNVyRcBuIs+zhEgxERPJcf3xwPkEM9JoGcRSZVIAiIsbkvG
-	ctpXKMCcla/q/2Gs2eO9CzJiWijRbOXioDC6YUWKm1o6pqfQTQMhylRsp0lAtkBE6nEuSens3Bkac
-	SPGMFxKiOdiZtz18Y8aHsK6YqsAk3PjE35s1HGICzFPu35ADMVBdpmtYCfRX7bfnGMT3LueoXvPRZ
-	bBYz3+ww==;
+	bh=pbP82gUL18C1Fla9shgiQQ97uS+492J9jEgfpwVcbPY=; b=gYyosmByLysmk7QRqJzAvSkuYZ
+	bUKDAnQyGaxXjSredODI/GoM2CiyC9TPkiNWS+Vp2IGMRMdNoxMueYZuYy+rFLVn2x0UsCzE+le6U
+	JReXvZWbiTyOldHbFCzvPw+FhE8nujQu0xKL+u3rZ454x7esl8yqhtcE0DKMydJ8FRZePRuHNIfQo
+	j7XDeJHfLc+Fy95BSlf7ZKbtGlugJ5tgb6+0cIj0LCeZuDbL/Pt23civayGIyQGl0etObBnr4bOwA
+	X1Mkwaf+zRp3CUjlDM65j/+s7haHnAnosOuceHbMLmuRf2cR0GJYmVGGOt7UriTb0I+9uwEGX5pQ2
+	zCjyCePA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjdpp-0005RG-9a; Fri, 12 Jun 2020 07:10:41 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1jjdps-0005Wq-2Z; Fri, 12 Jun 2020 07:10:44 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjdpY-0005CV-PA
- for linux-riscv@lists.infradead.org; Fri, 12 Jun 2020 07:10:26 +0000
-Received: by mail-pg1-x541.google.com with SMTP id b5so2756429pgm.8
- for <linux-riscv@lists.infradead.org>; Fri, 12 Jun 2020 00:10:24 -0700 (PDT)
+ id 1jjdpb-0005Em-Em
+ for linux-riscv@lists.infradead.org; Fri, 12 Jun 2020 07:10:28 +0000
+Received: by mail-pg1-x544.google.com with SMTP id e9so3704536pgo.9
+ for <linux-riscv@lists.infradead.org>; Fri, 12 Jun 2020 00:10:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=4+NJ3t8NefDvMBlOVrpO6HJOHxIomSxMyV3y0MN34qw=;
- b=f1Z7wn8ODMszNV5yRo5L00AOwSuvcWankDXBey/J0QSLJG9bar/NSgUX25Wf91d1YQ
- 5jTTw17cQ1hw7xOBPBBQ9dTwf/asfw6P4tueUtHCjF6xfDYqvxV+RbjLrEf3JSYufQrq
- SVFqIwb6LJdn0xkyOOzidLm8X73EuPp9qtXWZORQIpHfsKWED3a62HM+Y6vnNy8R9OYX
- mZnTkDgGWrW/CVOneAPhCKGFArrxn/ktvFFwvSZppc2iPRm8nHWorVISFKCnohdbsYEc
- xMtJi/eOG58tRvohlc9pV8PNIPF5KlTlxs79VRmAmjTH/CXwVma5BI1Ymc36kILlHImI
- D+0A==
+ bh=pbP82gUL18C1Fla9shgiQQ97uS+492J9jEgfpwVcbPY=;
+ b=OFiDcEYWxQE3WkBK3dTvh348Jh2eoGWIzY5+cfmABqwb4g9kCFVGZIM9AlCnv/9Q4w
+ b1QHy35qJGWGkZzFRlEo3wz1VFv3YEkzl4ypBsfEEpldy7BHJoozzE9WyJcWaKMuD+CB
+ 1kt+dzz2ZiLJt2ntDrB7ezZdqkR0kec032PVhQljIxRVHF89Ah+Uerk5E9XeNAYUU+Lh
+ D9VNWWwbZdAmy4VGcNiMbAaYcqwlKCCjfVQR9ZTXm93aAg4gSkK/hFWdC/+TcA33ViGi
+ 4PeliW1MnMFo2qlbw3xTD3UUSmjEibBSBbaGbMQ3+/0QcRVTDsgPKpHq4dhrLRPezY5q
+ LczA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4+NJ3t8NefDvMBlOVrpO6HJOHxIomSxMyV3y0MN34qw=;
- b=CgRESzkbb+rcOOs9sM6C8XHLLu/b0OrDL4L5Yyt/UCq2J2ROPDI/SEFHi+E4GGh9a1
- vA1igkGG//ARITuwqyd5GA6AtNN1dwhDDIaVkiCaNAhykx5IR8JeZZEeqeuTRs7XH8LD
- mxHDS7212N0qb7aeekMyy45j8inVFmw0Nhb/QK3uiLVulTlxcz1KImAUsiucpyDil18V
- g1KAXoLWfkOQsmhxxaLtp5jz9Nm8dI25PksoMShaSwJqu7PPRouh46T0rmViAwOBp3Jh
- awc/qRe54h1IAVl/tOoM+5sv9XMq4iCvgMnpdzU4nuULt43jWMKiUxXpoUvCFykwEqbV
- JhWw==
-X-Gm-Message-State: AOAM530rqv5/fogY/1JqfUCPATrS9GFWOzLV/24AlxkEkpq5q2lMwXe3
- 9qYyV0XBZ0Vwiq9pjaPvQnvsdA==
-X-Google-Smtp-Source: ABdhPJxIEogp+RWDoHXMgGJLewWmgiLwJtVEzXgBro7HgtTSJx6CPinawDSwZAjC+NoKJKtLZwdlng==
-X-Received: by 2002:aa7:9439:: with SMTP id y25mr10621687pfo.268.1591945823802; 
- Fri, 12 Jun 2020 00:10:23 -0700 (PDT)
+ bh=pbP82gUL18C1Fla9shgiQQ97uS+492J9jEgfpwVcbPY=;
+ b=luWDOpzP6s6U03fXzDU6ZEzGYCowjsTl/BpTyvOzhaiaYEMHhpwBkHD2XXIwNZhJdU
+ nj8tGq3W9+Sa1XHWuaFOGZi7c/IlBYQo/724CQOJgMLL4UGrsNdjqpl2Yn4/gM+8DyFw
+ UK7Z1EdD9ly6aHtSeUqJ6W09OzLHNNTYAcDGJTo4/hNqcB2ald6busdfgngunh32Q8XW
+ 05BWwTziY71sI1QlgVZ2P9YK3fkD2s/IsDjMPFXBeyhJjJU+z9XUlRnoAVFA9yKeflSt
+ aUCDUkyrgg3cvPYpCXDqW/Csv9NWG7LhDHa27Jt5VvK2RcmKyavP86gxeLhce2t7tdo7
+ 1hrw==
+X-Gm-Message-State: AOAM533to5l3UOS5HiaGIDuwtlt4fUo3/zFebDckd7q8yJ7vSWCR/vl+
+ o3+kcJEHFBZzXQESIbkb6y2BlrVqJtGvdQ==
+X-Google-Smtp-Source: ABdhPJzYsgrvRY/e0uV567qf3OJr/AS7IFAJducWNceLl4M2iwG28zBHaJD4Zo9jtBYytldPZjj34A==
+X-Received: by 2002:aa7:9a9c:: with SMTP id w28mr9821650pfi.295.1591945825946; 
+ Fri, 12 Jun 2020 00:10:25 -0700 (PDT)
 Received: from hsinchu02.internal.sifive.com
  (114-34-229-221.HINET-IP.hinet.net. [114.34.229.221])
- by smtp.gmail.com with ESMTPSA id d2sm4336919pgp.56.2020.06.12.00.10.21
+ by smtp.gmail.com with ESMTPSA id d2sm4336919pgp.56.2020.06.12.00.10.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Jun 2020 00:10:23 -0700 (PDT)
+ Fri, 12 Jun 2020 00:10:25 -0700 (PDT)
 From: Greentime Hu <greentime.hu@sifive.com>
 To: greentime.hu@sifive.com, oleg@redhat.com, guoren@linux.alibaba.com,
  vincent.chen@sifive.com, paul.walmsley@sifive.com,
  palmerdabbelt@google.com, linux-riscv@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 06/13] riscv: Add vector feature to compile
-Date: Fri, 12 Jun 2020 15:09:55 +0800
-Message-Id: <cd64796afb84d9f3d97168fbfead633c15f68ce3.1591344965.git.greentime.hu@sifive.com>
+Subject: [PATCH 07/13] riscv: Add has_vector/riscv_vsize to save vector
+ features.
+Date: Fri, 12 Jun 2020 15:09:56 +0800
+Message-Id: <02932e625077902209ab9967735607f6054cd4d6.1591344965.git.greentime.hu@sifive.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <cover.1591344965.git.greentime.hu@sifive.com>
 References: <cover.1591344965.git.greentime.hu@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200612_001024_907717_D1DFBDA2 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20200612_001027_559711_32F1BF5D 
+X-CRM114-Status: UNSURE (   8.72  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -79,7 +80,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -104,49 +105,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Guo Ren <guoren@linux.alibaba.com>
+This patch is used to detect vector support status of CPU and use
+riscv_vsize to save the size of all the vector registers. It assumes
+all harts has the same capabilities in SMP system.
 
-This patch adds a new config option which could enable assembler's
-vector feature.
-
+[guoren@linux.alibaba.com: add has_vector checking]
+Signed-off-by: Greentime Hu <greentime.hu@sifive.com>
 Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
 ---
- arch/riscv/Kconfig  | 9 +++++++++
- arch/riscv/Makefile | 1 +
- 2 files changed, 10 insertions(+)
+ arch/riscv/kernel/cpufeature.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index 74f82cf4f781..3b742d949a09 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -305,6 +305,15 @@ config FPU
+diff --git a/arch/riscv/kernel/cpufeature.c b/arch/riscv/kernel/cpufeature.c
+index c8527d770c98..9b02d8b069e3 100644
+--- a/arch/riscv/kernel/cpufeature.c
++++ b/arch/riscv/kernel/cpufeature.c
+@@ -16,6 +16,10 @@ unsigned long elf_hwcap __read_mostly;
+ #ifdef CONFIG_FPU
+ bool has_fpu __read_mostly;
+ #endif
++#ifdef CONFIG_VECTOR
++bool has_vector __read_mostly;
++unsigned long riscv_vsize __read_mostly;
++#endif
  
- 	  If you don't know what to do here, say Y.
- 
-+config VECTOR
-+	bool "VECTOR support"
-+	default n
-+	help
-+	  Say N here if you want to disable all vector related procedure
-+	  in the kernel.
+ void riscv_fill_hwcap(void)
+ {
+@@ -73,4 +77,12 @@ void riscv_fill_hwcap(void)
+ 	if (elf_hwcap & (COMPAT_HWCAP_ISA_F | COMPAT_HWCAP_ISA_D))
+ 		has_fpu = true;
+ #endif
 +
-+	  If you don't know what to do here, say Y.
-+
- endmenu
- 
- menu "Kernel features"
-diff --git a/arch/riscv/Makefile b/arch/riscv/Makefile
-index 957d064bead0..7c80c95582e3 100644
---- a/arch/riscv/Makefile
-+++ b/arch/riscv/Makefile
-@@ -46,6 +46,7 @@ riscv-march-aflags-$(CONFIG_ARCH_RV32I)		:= rv32ima
- riscv-march-aflags-$(CONFIG_ARCH_RV64I)		:= rv64ima
- riscv-march-aflags-$(CONFIG_FPU)		:= $(riscv-march-aflags-y)fd
- riscv-march-aflags-$(CONFIG_RISCV_ISA_C)	:= $(riscv-march-aflags-y)c
-+riscv-march-aflags-$(CONFIG_VECTOR)		:= $(riscv-march-aflags-y)v
- 
- KBUILD_CFLAGS += -march=$(riscv-march-cflags-y)
- KBUILD_AFLAGS += -march=$(riscv-march-aflags-y)
++#ifdef CONFIG_VECTOR
++	if (elf_hwcap & COMPAT_HWCAP_ISA_V) {
++		has_vector = true;
++		/* There are 32 vector registers with vlenb length. */
++		riscv_vsize = csr_read(CSR_VLENB) * 32;
++	}
++#endif
+ }
 -- 
 2.27.0
 
