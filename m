@@ -2,83 +2,50 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 219C11F81E6
-	for <lists+linux-riscv@lfdr.de>; Sat, 13 Jun 2020 10:23:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A2B8B1F8C87
+	for <lists+linux-riscv@lfdr.de>; Mon, 15 Jun 2020 05:38:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
-	References:In-Reply-To:Subject:To:From:Date:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tOz1KTjKdjzcevD4DUPiFU6GjRfq9TLE2iGo4V02yG4=; b=L8HxVpIlE607i2WE3HO80uZlZ
-	NnM3MLzPg4aHOpfcQWkHiEeePizmqtKfPSOY4sHDrSb+QCpbEEgjRf8ZC4v78nsY3AL1F23gmKZZs
-	yN/SR7AVsBiCy64tXiUTba0fcYh/D8UH7QO1Ipq1aNxjPknENFuY815gay+FCzsWT9X4nmKlVYP12
-	3yHTxdhCDeKCO93pNRMs6wSdKBR3Wc6ozNFgEKA2sBgms47/nw+kztH9oUsJIK64v2A86ZIuQ0nFm
-	C809iZj+JYv8c6N40tCcEZtwDAzga7I2DN/qo/sfv61JMPegXhjyqJUPZU1cTgL7tXF791ubW5KbB
-	hbFdkY2gQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jP2Dli1Z+TFIZ/0er1agzdk9zHrOfcdPmqyH7buAq5M=; b=hJbJiv0U/0MBUxbmAyCLUOP8qe
+	p/MMDkIsZGTFI/zu9RrEHj8I7nijtp7/0fWvQkLb+16fI0pcnf5yB5T8rMGnj4EGHhhgGFBbFOACY
+	MUVDllO1mtDFd3P3/MaAq20kEe1lRGTCU5OXLMhhCx3lmMEXwnLKAo9oGX+kbOBUg7HSwOXQ45Lps
+	gQByhwhSZ5vpelPxijFbHEAwjaEP5aUhaIESLsds+tXaYLP77X2vuCTM2LNjbLt141q/aYJVubrvM
+	maq6SEczFwQ70dtZ9ps6rnqSx4xPibTWyE2NW1jBnV4vLQd8lum4Lv38opwjk4Ou5SC9lQHJzlttv
+	zWck4vCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jk1RX-0006eK-HA; Sat, 13 Jun 2020 08:23:11 +0000
-Received: from mailgate-2.ics.forth.gr ([139.91.1.5])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jk1QC-0005cW-OJ
- for linux-riscv@lists.infradead.org; Sat, 13 Jun 2020 08:21:50 +0000
-Received: from av3.ics.forth.gr (av3in [139.91.1.77])
- by mailgate-2.ics.forth.gr (8.14.4/ICS-FORTH/V10-1.8-GATE) with ESMTP id
- 05D8La2i016097; Sat, 13 Jun 2020 08:21:38 GMT
-X-AuditID: 8b5b014d-257ff700000045c5-a1-5ee48c909392
-Received: from enigma.ics.forth.gr (enigma.ics.forth.gr [139.91.151.35])
- by av3.ics.forth.gr (Symantec Messaging Gateway) with SMTP id
- 5D.B3.17861.09C84EE5; Sat, 13 Jun 2020 11:21:36 +0300 (EEST)
-X-ICS-AUTH-INFO: Authenticated user:  at ics.forth.gr
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
-Date: Sat, 13 Jun 2020 11:21:36 +0300
-From: Nick Kossifidis <mick@ics.forth.gr>
-To: Anup Patel <Anup.Patel@wdc.com>
-Subject: Re: [PATCH 0/3] RISC-V: Add kexec/kdump support
-Organization: FORTH
-In-Reply-To: <DM6PR04MB62017D6E756B038D6B6A89AB8D9E0@DM6PR04MB6201.namprd04.prod.outlook.com>
-References: <mhng-3accafc5-2df8-4798-aebd-b86a0f0414b7@palmerdabbelt-glaptop1>
- <a276c6dfa03682d518543329bb36bc0e@mailhost.ics.forth.gr>
- <DM6PR04MB62017D6E756B038D6B6A89AB8D9E0@DM6PR04MB6201.namprd04.prod.outlook.com>
-Message-ID: <5d126bfe91cfe7573b3c4efc2cc1a672@mailhost.ics.forth.gr>
-X-Sender: mick@mailhost.ics.forth.gr
-User-Agent: Roundcube Webmail/1.3.9
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrBLMWRmVeSWpSXmKPExsXSHT1dWXdCz5M4gwMtUhZPPkxks2j58I7V
- YtGK7ywWWw4/YrbY9rmFzaL53Tl2i5eXe5gt2mbxWzS9uM7swOkx9fcZFo+uHzNYPd68fMni
- 8XDTJSaPzUvqPS41X2f3aD/QzRTAHsVlk5Kak1mWWqRvl8CVMf/gIvaCKYIVTX8usDcwvuDt
- YuTkkBAwkegAau1i5OIQEjjKKHF8exsrRMJUYvbeTkYQm1dAUOLkzCcsIDazgIXE1Cv7GSFs
- eYnmrbOZQWwWAVWJZ1tuMIHYbAKaEvMvHQSrFxFQlnj75hwzyAJmgTVMEpP2z2EDSQgDDWr8
- 3Ae2jF9AWOLT3YtANgcHp0CsxPUF2RAH3WGUaP97kwkkzivgIrF5qQvEbSoSH34/YAexRYHm
- 3zz8nH0Co+AsJKfOQnLqLCSnLmBkXsUokFhmrJeZXKyXll9UkqGXXrSJERwZjL47GG9vfqt3
- iJGJg/EQowQHs5IIb3fakzgh3pTEyqrUovz4otKc1OJDjNIcLErivHncy2OFBNITS1KzU1ML
- UotgskwcnFINTPqps3Svff3odfhm8ddpH8p9Z+2IfW62eWO/Uvv9jKOS9t94zonMN/6o0R0c
- W5Lzvctuq9Hp+y84+c6lek8zmbarcuOjCyVXJcUbnka6f1tqUMbII7+bx902I+HGjHcXztZL
- clVN+nw1IXL76bx7iya1sr/W2hvGFmP2+YfIpw6l61k6WnWR9gcu8dScr3ackC3gPl1olfh7
- 1ml/U0587WRJ1Tgicj44pv4us831YF6nJx4tXE3HXzGyVHh7fFutePw6S0trSPSxDqXb+2/U
- vAueH8g8vXp7oLDJ/9kJfvybD2vc2p0tu7Dzj8iJnnKvor0/rzz8kmBhnMjodjiSM2BasPCs
- nh0M3zmq5m/aqsRSnJFoqMVcVJwIAAPJYTj7AgAA
-X-Greylist: inspected by milter-greylist-4.6.2 (mailgate-2.ics.forth.gr
- [139.91.1.5]);
- Sat, 13 Jun 2020 08:21:38 +0000 (GMT) for IP:'139.91.1.77' DOMAIN:'av3in'
- HELO:'av3.ics.forth.gr' FROM:'mick@ics.forth.gr' RCPT:''
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mailgate-2.ics.forth.gr [139.91.1.5]); Sat, 13 Jun 2020 08:21:38 +0000 (GMT)
+	id 1jkfxC-0000Qn-Ks; Mon, 15 Jun 2020 03:38:34 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jkfx2-0000JO-05; Mon, 15 Jun 2020 03:38:26 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9E9E631B;
+ Sun, 14 Jun 2020 20:38:20 -0700 (PDT)
+Received: from p8cg001049571a15.arm.com (unknown [10.163.79.186])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 687243F71F;
+ Sun, 14 Jun 2020 20:38:10 -0700 (PDT)
+From: Anshuman Khandual <anshuman.khandual@arm.com>
+To: linux-mm@kvack.org
+Subject: [PATCH V3 0/4] mm/debug_vm_pgtable: Add some more tests
+Date: Mon, 15 Jun 2020 09:07:53 +0530
+Message-Id: <1592192277-8421-1-git-send-email-anshuman.khandual@arm.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200613_012149_161297_D7E18A50 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20200614_203824_211385_670C858F 
+X-CRM114-Status: GOOD (  11.56  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [139.91.1.5 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ medium trust [217.140.110.172 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,65 +57,121 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: david.abdurachmanov@sifive.com, anup@brainfault.org,
- Atish Patra <Atish.Patra@wdc.com>, yibin_liu@c-sky.com,
- Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
- Nick Kossifidis <mick@ics.forth.gr>, linux-riscv@lists.infradead.org
+Cc: linux-doc@vger.kernel.org,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Heiko Carstens <heiko.carstens@de.ibm.com>, Paul Mackerras <paulus@samba.org>,
+ "H. Peter Anvin" <hpa@zytor.com>, linux-riscv@lists.infradead.org,
+ Will Deacon <will@kernel.org>, linux-arch@vger.kernel.org,
+ linux-s390@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+ Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
+ Mike Rapoport <rppt@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Ingo Molnar <mingo@redhat.com>,
+ linux-arm-kernel@lists.infradead.org, ziy@nvidia.com,
+ Catalin Marinas <catalin.marinas@arm.com>, linux-snps-arc@lists.infradead.org,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>, Borislav Petkov <bp@alien8.de>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ "Kirill A . Shutemov" <kirill@shutemov.name>,
+ Thomas Gleixner <tglx@linutronix.de>, gerald.schaefer@de.ibm.com,
+ christophe.leroy@c-s.fr, Vineet Gupta <vgupta@synopsys.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Στις 2020-06-13 11:17, Anup Patel έγραψε:
->> -----Original Message-----
->> From: linux-riscv <linux-riscv-bounces@lists.infradead.org> On Behalf 
->> Of Nick
->> Kossifidis
->> Sent: 13 June 2020 12:54
->> To: Palmer Dabbelt <palmer@dabbelt.com>
->> Cc: david.abdurachmanov@sifive.com; anup@brainfault.org; Atish Patra
->> <Atish.Patra@wdc.com>; yibin_liu@c-sky.com; Paul Walmsley
->> <paul.walmsley@sifive.com>; mick@ics.forth.gr; linux-
->> riscv@lists.infradead.org
->> Subject: Re: [PATCH 0/3] RISC-V: Add kexec/kdump support
->> 
->> Στις 2020-06-11 22:39, Palmer Dabbelt έγραψε:
->> > On Thu, 11 Jun 2020 12:09:08 PDT (-0700), mick@ics.forth.gr wrote:
->> >> Στις 2020-05-21 21:42, Nick Kossifidis έγραψε:
->> >>> Στις 2020-04-24 20:12, Nick Kossifidis έγραψε:
->> >>>> This patch series adds kexec/kdump and crash kernel support on
->> >>>> RISC-V. For testing the patches a patched version of kexec-tools is
->> >>>> needed. The patch is still a work in progress but a draft version
->> >>>> can be found at:
->> >>>>
->> >>>> http://riscv.ics.forth.gr/kexec-tools.patch
->> >>>>
->> >>>
->> >>> Any comments / feedback on this ? Should we get it in ?
->> >>>
->> >>> Regards,
->> >>> Nick
->> >>
->> >> Anyone ?
->> >
->> > Sorry, I dropped the ball on this one.  After the CPU hotplug breakage
->> > I decided I need to get a pre-merge test for all these new features,
->> > and I haven't gotten around to actually doing so yet.  The merge
->> > window is closing right now, so with any luck I'll have some time to
->> > get around to my patch backlog -- first I need to go spin up some
->> > better testing, though.
->> 
->> Anything I can do to help ? I have a bunch of hw available (unleashed,
->> genesys2 and nexys 2 ddr for Ariane / LowRISC SoC) and I'll probably 
->> also
->> need to have a CI flow for the stuff I do internally.
-> 
-> I had send-out a fix for CPU hotplug which can be taken for
-> any of the Linux-5.8-rcX.
-> 
-> These patches should be based upon the CPU hotplug fix.
-> 
-> Regards,
-> Anup
+This series adds some more arch page table helper validation tests which
+are related to core and advanced memory functions. This also creates a
+documentation, enlisting expected semantics for all page table helpers as
+suggested by Mike Rapoport previously (https://lkml.org/lkml/2020/1/30/40).
 
-I only call smp_shutdown_nonboot_cpus(), the patches shouldn't need any 
-updates but I'll do a re-check just in case.
+There are many TRANSPARENT_HUGEPAGE and ARCH_HAS_TRANSPARENT_HUGEPAGE_PUD
+ifdefs scattered across the test. But consolidating all the fallback stubs
+is not very straight forward because ARCH_HAS_TRANSPARENT_HUGEPAGE_PUD is
+not explicitly dependent on ARCH_HAS_TRANSPARENT_HUGEPAGE.
+
+Tested on arm64, x86 platforms but only build tested on all other enabled
+platforms through ARCH_HAS_DEBUG_VM_PGTABLE i.e powerpc, arc, s390. The
+following failure on arm64 still exists which was mentioned previously. It
+will be fixed with the upcoming THP migration on arm64 enablement series.
+
+WARNING .... mm/debug_vm_pgtable.c:860 debug_vm_pgtable+0x940/0xa54
+WARN_ON(!pmd_present(pmd_mkinvalid(pmd_mkhuge(pmd))))
+
+This series is based on v5.8-rc1.
+
+Changes in V3:
+
+- Replaced HAVE_ARCH_SOFT_DIRTY with MEM_SOFT_DIRTY
+- Added HAVE_ARCH_HUGE_VMAP checks in pxx_huge_tests() per Gerald
+- Updated documentation for pmd_thp_tests() per Zi Yan
+- Replaced READ_ONCE() with huge_ptep_get() per Gerald
+- Added pte_mkhuge() and masking with PMD_MASK per Gerald
+- Replaced pte_same() with holding pfn check in pxx_swap_tests()
+- Added documentation for all (#ifdef #else #endif) per Gerald
+- Updated pmd_protnone_tests() per Gerald
+- Updated HugeTLB PTE creation in hugetlb_advanced_tests() per Gerald
+- Replaced [pmd|pud]_mknotpresent() with [pmd|pud]_mkinvalid()
+- Added has_transparent_hugepage() check for PMD and PUD tests
+- Added a patch which debug prints all individual tests being executed
+- Updated documentation for renamed [pmd|pud]_mkinvalid() helpers
+
+Changes in V2: (https://patchwork.kernel.org/project/linux-mm/list/?series=260573)
+
+- Dropped CONFIG_ARCH_HAS_PTE_SPECIAL per Christophe
+- Dropped CONFIG_NUMA_BALANCING per Christophe
+- Dropped CONFIG_HAVE_ARCH_SOFT_DIRTY per Christophe
+- Dropped CONFIG_MIGRATION per Christophe
+- Replaced CONFIG_S390 with __HAVE_ARCH_PMDP_INVALIDATE
+- Moved page allocation & free inside swap_migration_tests() per Christophe
+- Added CONFIG_TRANSPARENT_HUGEPAGE to protect pfn_pmd()
+- Added CONFIG_HAVE_ARCH_TRANSPARENT_HUGEPAGE_PUD to protect pfn_pud()
+- Added a patch for other arch advanced page table helper tests
+- Added a patch creating a documentation for page table helper semantics
+
+Changes in V1: (https://patchwork.kernel.org/patch/11408253/)
+
+Cc: Jonathan Corbet <corbet@lwn.net>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Mike Rapoport <rppt@linux.ibm.com>
+Cc: Vineet Gupta <vgupta@synopsys.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Cc: Paul Mackerras <paulus@samba.org>
+Cc: Michael Ellerman <mpe@ellerman.id.au>
+Cc: Heiko Carstens <heiko.carstens@de.ibm.com>
+Cc: Vasily Gorbik <gor@linux.ibm.com>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: Borislav Petkov <bp@alien8.de>
+Cc: "H. Peter Anvin" <hpa@zytor.com>
+Cc: Kirill A. Shutemov <kirill@shutemov.name>
+Cc: Paul Walmsley <paul.walmsley@sifive.com>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: linux-snps-arc@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linuxppc-dev@lists.ozlabs.org
+Cc: linux-s390@vger.kernel.org
+Cc: linux-riscv@lists.infradead.org
+Cc: x86@kernel.org
+Cc: linux-mm@kvack.org
+Cc: linux-doc@vger.kernel.org
+Cc: linux-arch@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+
+Anshuman Khandual (4):
+  mm/debug_vm_pgtable: Add tests validating arch helpers for core MM features
+  mm/debug_vm_pgtable: Add tests validating advanced arch page table helpers
+  mm/debug_vm_pgtable: Add debug prints for individual tests
+  Documentation/mm: Add descriptions for arch page table helpers
+
+ Documentation/vm/arch_pgtable_helpers.rst | 258 +++++++++
+ mm/debug_vm_pgtable.c                     | 660 +++++++++++++++++++++-
+ 2 files changed, 916 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/vm/arch_pgtable_helpers.rst
+
+-- 
+2.20.1
+
 
