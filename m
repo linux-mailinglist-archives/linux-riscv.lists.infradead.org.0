@@ -2,61 +2,80 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26E691F8F3B
-	for <lists+linux-riscv@lfdr.de>; Mon, 15 Jun 2020 09:18:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C34711F8FB8
+	for <lists+linux-riscv@lfdr.de>; Mon, 15 Jun 2020 09:28:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qUhH+syWjuAghkw9ub2Fb6QD/xPCaC5YozkUTBfl0Hg=; b=jYOustFRmodMQA
-	K5sObaHibRct+MUCXZSnYT7oo1CadBRu4axV/AQ7Z19sVR/0rxGZSLbhkxtbX+4/OLKVoxpjnqb3r
-	3j2BmzykHVQo/cFT4qClm3fC+L7CJuCRxFZ00vYY4DfyyR2ePU3dfTOu82KIJ/blp79EVdKHCNdOp
-	zY7Y20X4jWJwatnDW99dXiKU+SnFK0zXH94ptS/5KwMiDFsYNozLmalvCGbG2ZaBGi+KDgeCUl6o8
-	+uvhk7i/MYir9KfNukYr5AaK0BohH8oJ0Gnib6IUYwbudDs0TairRkHr07c+XaRjmi5I/DjX+Y7GG
-	aeWen3N8bifoTlJmSlzg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9ToGcomrsNJ5IsfmhCaE8bj4p8OLeJAdAKZdbE/NfmE=; b=LHny3cMCMHr9of+VrVA9tOFOqJ
+	Ij45NjLctvpcEA4D5ctuLQL17d/qOIrq2nGUHIHm9H7s4GAg+8mBGEGjHPF+dwQhKi1I5TINhyAXO
+	Vn0Zy/bVbY6EWSVq1KpBEqct30rTgYdhvXtlQLeWZ2Boc6aj2mNtwvL2W7BfIuuP/YbABKsH6DwQG
+	1LC8cpqi+orgSTfIuRH8MWACVmw9AVtvcEVZWp8XD/IBzisYYVYG7LevJPExs2QQdeyEnvgDjhQ3Q
+	ICzeI3VXc+WmOmojgIfS3Fyag28KsefzurSm22o1G7kr1l7GSymo1lDcszgKyh0WZn6tqBaPNYO/i
+	zzE5Gqiw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jkjNX-0000Ui-4V; Mon, 15 Jun 2020 07:17:59 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jkjXg-0008LR-VV; Mon, 15 Jun 2020 07:28:28 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jkjNQ-0000Tw-Nu; Mon, 15 Jun 2020 07:17:54 +0000
-Received: from [10.44.0.192] (unknown [103.48.210.53])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DFCCF206D7;
- Mon, 15 Jun 2020 07:17:31 +0000 (UTC)
-Subject: Re: [PATCH 04/21] mm: free_area_init: use maximal zone PFNs rather
- than zone sizes
-To: Mike Rapoport <rppt@kernel.org>
-References: <20200412194859.12663-5-rppt@kernel.org>
- <f53e68db-ed81-6ef6-5087-c7246d010ea2@linux-m68k.org>
- <20200615062234.GA7882@kernel.org>
-From: Greg Ungerer <gerg@linux-m68k.org>
-Message-ID: <24563231-ed19-6f4f-617e-4d6bfc7553e4@linux-m68k.org>
-Date: Mon, 15 Jun 2020 17:17:28 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ id 1jkjXd-0008Ke-LP
+ for linux-riscv@lists.infradead.org; Mon, 15 Jun 2020 07:28:27 +0000
+Received: by mail-wm1-x342.google.com with SMTP id l17so13537389wmj.0
+ for <linux-riscv@lists.infradead.org>; Mon, 15 Jun 2020 00:28:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=9ToGcomrsNJ5IsfmhCaE8bj4p8OLeJAdAKZdbE/NfmE=;
+ b=axkMGOdv9xLipRtu44iTU38CgJZWN3aUB1wusgLSnk2LzS4fkQWhlzyqCR3D23JqE+
+ wsp9mE7nsz0zDlxmsm8gh5Dg63hg4kIhHDI3RJhwcUqyUruLhbtuj8M8WMxU1djpyGCd
+ c184Q1pfdDkEui78I9h8YHkgfEsr4KdzG05EU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=9ToGcomrsNJ5IsfmhCaE8bj4p8OLeJAdAKZdbE/NfmE=;
+ b=GbV1cOgLOlzPf7odNPvDxBrvTuVST/rTbG7/HD/K8rodO/hQU7u0qlL12jT0cboFfg
+ 2U2m+T8SgeN+CsJGoyfmeTfuaw9exkDkFK7NaAU9j0OgYrI4YqGfdOxwEb6WmOJ/XRRQ
+ rSJIqJWgHni3e5+QGd2VoVRO9ygYa6gPIzc3PH9+7y1IofKj0orCcV5ywKzc7ZF3S3Q3
+ WDsrex17tuVmVisqhFAs4xzaXz1/RfWiAihIr7X1cHKxjNIz7o4PHoRAVrAk56jAHChm
+ Hxb6vuc+Rz/z9ViFg223IDfk9VofWARGyyo2v5edP4MQdLnPHsPD6CnIhLZA5gSj7xRD
+ Irlw==
+X-Gm-Message-State: AOAM530iMnpHiHHqdeVrnwDomlqcFfjIByPZpnLiYMmHMhDqEZlLJLUO
+ e0Go/it0wf7oMQVDm9AMyh+yoH+2fMa5hknT0clSowVQ5g==
+X-Google-Smtp-Source: ABdhPJzNCm18ZlyzfvaKvuSBWE7doCfmV4oGQgC7ad2B8XbLG8+xVEGL+6XoLxHvsCiFmGssQL7rpcOX9LFTbvrjAZk=
+X-Received: by 2002:a1c:f608:: with SMTP id w8mr11354791wmc.78.1592206102980; 
+ Mon, 15 Jun 2020 00:28:22 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200615062234.GA7882@kernel.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+From: Atish Patra <atishp@atishpatra.org>
+Date: Mon, 15 Jun 2020 00:28:11 -0700
+Message-ID: <CAOnJCUJ_rA6TW0QgmDkXnrMoyKKMBygzs1sFQukuJ3mAF3Cu1w@mail.gmail.com>
+Subject: mm lock issue while booting Linux on 5.8-rc1 for RISC-V
+To: linux-riscv <linux-riscv@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200615_001752_829019_68DD8F4F 
-X-CRM114-Status: GOOD (  21.53  )
-X-Spam-Score: -4.8 (----)
+X-CRM114-CacheID: sfid-20200615_002825_769165_F39F5FFC 
+X-CRM114-Status: UNSURE (   5.60  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-4.8 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,111 +87,87 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: dalias@libc.org, linux-ia64@vger.kernel.org, linux-doc@vger.kernel.org,
- catalin.marinas@arm.com, heiko.carstens@de.ibm.com, x86@kernel.org,
- linux-mips@vger.kernel.org, James.Bottomley@hansenpartnership.com,
- jcmvbkbc@gmail.com, guoren@kernel.org, linux-csky@vger.kernel.org,
- sparclinux@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-arch@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-c6x-dev@linux-c6x.org, bcain@codeaurora.org, corbet@lwn.net,
- mpe@ellerman.id.au, linux-hexagon@vger.kernel.org, deller@gmx.de,
- linux-sh@vger.kernel.org, linux@armlinux.org.uk, ley.foon.tan@intel.com,
- rppt@linux.ibm.com, ysato@users.sourceforge.jp, geert@linux-m68k.org,
- linux-arm-kernel@lists.infradead.org, msalter@redhat.com, mattst88@gmail.com,
- linux-snps-arc@lists.infradead.org, uclinux-h8-devel@lists.sourceforge.jp,
- linux-xtensa@linux-xtensa.org, nickhu@andestech.com,
- linux-um@lists.infradead.org, richard@nod.at, linux-m68k@lists.linux-m68k.org,
- openrisc@lists.librecores.org, green.hu@gmail.com, paul.walmsley@sifive.com,
- shorne@gmail.com, mhocko@kernel.org, gxt@pku.edu.cn,
- Hoan@os.amperecomputing.com, monstr@monstr.eu, tony.luck@intel.com,
- bhe@redhat.com, linux-parisc@vger.kernel.org, linux-mm@kvack.org,
- vgupta@synopsys.com, linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org,
- akpm@linux-foundation.org, tsbogend@alpha.franken.de,
- linuxppc-dev@lists.ozlabs.org, davem@davemloft.net
+Cc: Bjorn Topel <bjorn.topel@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Mike,
+Hi,
+I encountered the following issue while booting 5.8-rc1 on Qemu for RV64.
+I added additional dump_stack and observed that it's happening in bpf free path.
+It happens always if CONFIG_DEBUG_VM is enabled. VM_BUG_ON_MM is
+compiled away without that.
+------------------------------------------------------------------------
+forked to background, child pid 113
+[   10.328850] CPU: 3 PID: 51 Comm: kworker/3:1 Not tainted
+5.8.0-rc1-dirty #732
+[   10.331739] Workqueue: events bpf_prog_free_deferred
+[   10.334133] Call Trace:
+[   10.338039] [<ffffffe000202698>] walk_stackframe+0x0/0xa4
+[   10.339988] [<ffffffe000202880>] show_stack+0x2e/0x3a
+[   10.340902] [<ffffffe00047074c>] dump_stack+0x72/0x8c
+[   10.341451] [<ffffffe0002db4ce>] mmap_assert_locked.part.13+0x14/0x1c
+[   10.342131] [<ffffffe0002db330>] walk_page_range_novma+0x0/0x4e
+[   10.342973] [<ffffffe000204f94>] set_direct_map_invalid_noflush+0x66/0x6e
+[   10.343917] [<ffffffe0002e0706>] __vunmap+0xe8/0x212
+[   10.344680] [<ffffffe0002e0882>] __vfree+0x22/0x6e
+[   10.345270] [<ffffffe0002e0902>] vfree+0x34/0x56
+[   10.345834] [<ffffffe00027d752>] __bpf_prog_free+0x2c/0x36
+[   10.346529] [<ffffffe0002801a2>] bpf_prog_free_deferred+0x74/0x8a
+[   10.347394] [<ffffffe000219c70>] process_one_work+0x13a/0x272
+[   10.348239] [<ffffffe00021a4b4>] worker_thread+0x50/0x2e4
+[   10.348900] [<ffffffe00021ed98>] kthread+0xfc/0x10a
+[   10.349470] [<ffffffe0002013da>] ret_from_exception+0x0/0xc
+[   10.354405] mm ffffffe001018600 mmap 0000000000000000 seqnum 0 task_size 0
+[   10.354405] get_unmapped_area 0000000000000000
+[   10.354405] mmap_base 0 mmap_legacy_base 0 highest_vm_end 0
+[   10.354405] pgd ffffffe001074000 mm_users 2 mm_count 1
+pgtables_bytes 8192 map_count 0
+[   10.354405] hiwater_rss 0 hiwater_vm 0 total_vm 0 locked_vm 0
+[   10.354405] pinned_vm 0 data_vm 0 exec_vm 0 stack_vm 0
+[   10.354405] start_code ffffffe000200000 end_code ffffffe00084acc2
+start_data 0 end_data ffffffe00106dfe4
+[   10.354405] start_brk 0 brk ffffffe0010bd6d0 start_stack 0
+[   10.354405] arg_start 0 arg_end 0 env_start 0 env_end 0
+[   10.354405] binfmt 0000000000000000 flags 0 core_state 0000000000000000
+[   10.354405] ioctx_table 0000000000000000
+[   10.354405] exe_file 0000000000000000
+[   10.354405] tlb_flush_pending 0
+[   10.354405] def_flags: 0x0()
+[   10.369325] ------------[ cut here ]------------
+[   10.370763] kernel BUG at include/linux/mmap_lock.h:81!
+[   10.375235] Kernel BUG [#1]
+[   10.377198] Modules linked in:
+[   10.378931] CPU: 3 PID: 51 Comm: kworker/3:1 Not tainted 5.8.0-rc1-dirty #732
+[   10.380179] Workqueue: events bpf_prog_free_deferred
+[   10.381270] epc: ffffffe0002db4d4 ra : ffffffe0002db4d4 sp : ffffffe3eaea7c70
+[   10.382561]  gp : ffffffe00106d950 tp : ffffffe3ef752f80 t0 :
+ffffffe0010836e8
+[   10.383996]  t1 : 0000000000000064 t2 : 0000000000000000 s0 :
+ffffffe3eaea7c90
+[   10.385119]  s1 : ffffffe001018600 a0 : 0000000000000289 a1 :
+0000000000000020
+[   10.386099]  a2 : 0000000000000005 a3 : 0000000000000000 a4 :
+ffffffe001012758
+[   10.387294]  a5 : 0000000000000000 a6 : 0000000000000102 a7 :
+0000000000000006
+[   10.388265]  s2 : ffffffe3f00674c0 s3 : ffffffe00106e108 s4 :
+ffffffe00106e100
+[   10.389250]  s5 : ffffffe00106e908 s6 : 0000000000000000 s7 :
+6db6db6db6db6db7
+[   10.390272]  s8 : 0000000000000001 s9 : ffffffe00021a4f8 s10:
+ffffffffffffffff
+[   10.391293]  s11: ffffffe3f0066600 t3 : 000000000001a7a8 t4 :
+000000000001a7a8
+[   10.392314]  t5 : 0000000000000000 t6 : ffffffe00107b76b
+[   10.393096] status: 0000000000000120 badaddr: 0000000000000000
+cause: 0000000000000003
+[   10.397755] ---[ end trace 861659596ac28841 ]---
+---------------------------------------------------------------------------------------------------
 
-On 15/6/20 4:22 pm, Mike Rapoport wrote:
-> On Mon, Jun 15, 2020 at 01:53:42PM +1000, Greg Ungerer wrote:
->> From: Mike Rapoport <rppt@linux.ibm.com>
->>> Currently, architectures that use free_area_init() to initialize memory map
->>> and node and zone structures need to calculate zone and hole sizes. We can
->>> use free_area_init_nodes() instead and let it detect the zone boundaries
->>> while the architectures will only have to supply the possible limits for
->>> the zones.
->>>
->>> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
->>
->> This is causing some new warnings for me on boot on at least one non-MMU m68k target:
-> 
-> There were a couple of changes that cause this. The free_area_init()
-> now relies on memblock data and architectural limits for zone sizes
-> rather than on explisit pfns calculated by the arch code. I've update
-> motorola variant and missed coldfire. Angelo sent a fix for mcfmmu.c
-> [1] and I've updated it to include nommu as well
-> 
-> [1] https://lore.kernel.org/linux-m68k/20200614225119.777702-1-angelo.dureghello@timesys.com
-> 
->>From 55b8523df2a5c4565b132c0691990f0821040fec Mon Sep 17 00:00:00 2001
-> From: Angelo Dureghello <angelo.dureghello@timesys.com>
-> Date: Mon, 15 Jun 2020 00:51:19 +0200
-> Subject: [PATCH] m68k: fix registration of memory regions with memblock
-> 
-> Commit 3f08a302f533 ("mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option")
-> introduced assumption that UMA systems have their memory at node 0 and
-> updated most of them, but it forgot nommu and coldfire variants of m68k.
-> 
-> The later change in free area initialization in commit fa3354e4ea39 ("mm:
-> free_area_init: use maximal zone PFNs rather than zone sizes") exposed that
-> and caused a lot of "BUG: Bad page state in process swapper" reports.
+I haven't had the chance to bisect to figure out which commit caused
+the issue. Just wanted
+to check if it is a known issue already.
 
-Even with this patch applied I am still seeing the same messages.
-
-Regards
-Greg
-
-
-
-> Using memblock_add_node() with nid = 0 to register memory banks solves the
-> problem.
-> 
-> Fixes: 3f08a302f533 ("mm: remove CONFIG_HAVE_MEMBLOCK_NODE_MAP option")
-> Fixes: fa3354e4ea39 ("mm: free_area_init: use maximal zone PFNs rather than zone sizes")
-> Signed-off-by: Angelo Dureghello <angelo.dureghello@timesys.com>
-> Co-developed-by: Mike Rapoport <rppt@linux.ibm.com>
-> Signed-off-by: Mike Rapoport <rppt@linux.ibm.com>
-> ---
->   arch/m68k/kernel/setup_no.c | 2 +-
->   arch/m68k/mm/mcfmmu.c       | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/m68k/kernel/setup_no.c b/arch/m68k/kernel/setup_no.c
-> index e779b19e0193..0c4589a39ba9 100644
-> --- a/arch/m68k/kernel/setup_no.c
-> +++ b/arch/m68k/kernel/setup_no.c
-> @@ -138,7 +138,7 @@ void __init setup_arch(char **cmdline_p)
->   	pr_debug("MEMORY -> ROMFS=0x%p-0x%06lx MEM=0x%06lx-0x%06lx\n ",
->   		 __bss_stop, memory_start, memory_start, memory_end);
->   
-> -	memblock_add(memory_start, memory_end - memory_start);
-> +	memblock_add_node(memory_start, memory_end - memory_start, 0);
->   
->   	/* Keep a copy of command line */
->   	*cmdline_p = &command_line[0];
-> diff --git a/arch/m68k/mm/mcfmmu.c b/arch/m68k/mm/mcfmmu.c
-> index 29f47923aa46..7d04210d34f0 100644
-> --- a/arch/m68k/mm/mcfmmu.c
-> +++ b/arch/m68k/mm/mcfmmu.c
-> @@ -174,7 +174,7 @@ void __init cf_bootmem_alloc(void)
->   	m68k_memory[0].addr = _rambase;
->   	m68k_memory[0].size = _ramend - _rambase;
->   
-> -	memblock_add(m68k_memory[0].addr, m68k_memory[0].size);
-> +	memblock_add_node(m68k_memory[0].addr, m68k_memory[0].size, 0);
->   
->   	/* compute total pages in system */
->   	num_pages = PFN_DOWN(_ramend - _rambase);
-> 
+Regards,
+Atish
 
