@@ -2,51 +2,52 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05F391FB89D
-	for <lists+linux-riscv@lfdr.de>; Tue, 16 Jun 2020 17:58:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F365F1FB8CB
+	for <lists+linux-riscv@lfdr.de>; Tue, 16 Jun 2020 17:59:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M7NTWP0IL85Rhf0wQSKAtn6JA+2MQEl/ZhdnoNmHI0U=; b=CnCwaAarvhGwwkJdPXhW5FzctT
-	DOcW1bPh5E4Onwbrl9u9JgzCNnNK2UsUndUVqTz9HHn+GPNFTCCU2erjn/fS4QALcmSyR5xrhQJZX
-	RAnTQVPRBPJ2G6yypS/LFXpeQ4GrI1Cv5pP5ALxgzuLxJ678bF1S+7qirbevjND7NC1ifuw+EVvhf
-	WmFBI8VIYgUDrX9r3pVM/mJess2qAOWETR/I+gEZJ9WDDSyDM3N/yVkVEgrR8X9mXmu5dio1tbLM9
-	3LPX2E/i9AcK58nmdAKI0TvrBtodg7/SARVEQb3My43bTIi9PCh+MLaOt218DVlUeqH9RsCwvYHg2
-	MtPMyoog==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
+	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TBRfx2tCNKRdlvQAePqn+N1f6Lbg2Us13xlax2dgKhA=; b=NSv+en5lJv2SM6
+	uFE1VuSS+5uwdp2OktB7HuSWGC5G5nKOdFhHzuzy3WWA72KYt5AZWJx9lUCwlH9JrazBI+Z+HoSwd
+	+Iji+zgwwGxt6CE+5tLq3g7yaYwF3DBDeOkmxgViKgK3qdjpuMh+//b0gk+aVPsiWsVWgwJ9GV/zX
+	FW0qB3Jnv7x4ldnHbnA0AFSH2KoGD9tiWDl5hdr4tzjc0hEbINlS0I37pvA05Hl7nHje6G0nJp1P4
+	BVYRGtSCg3LB5kWj1xDLH6NXWAzoYZYlkTYj4TiiLpp2I0dHpuaK+iv0sLEzyGXbxvkgmGojIaadu
+	DxLUmulXmYSGRPsG0DEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlDyu-0003SQ-0G; Tue, 16 Jun 2020 15:58:36 +0000
+	id 1jlDzf-0004Ad-S4; Tue, 16 Jun 2020 15:59:23 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlDyP-00034v-4t
- for linux-riscv@lists.infradead.org; Tue, 16 Jun 2020 15:58:15 +0000
+ id 1jlDyx-0003aL-Mh
+ for linux-riscv@lists.infradead.org; Tue, 16 Jun 2020 15:58:41 +0000
 Received: from localhost.localdomain (unknown [42.120.72.72])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B9ADA21548;
- Tue, 16 Jun 2020 15:57:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C689A207C4;
+ Tue, 16 Jun 2020 15:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592323084;
- bh=L7HAS4sYz0Q0M+EaHokWTKwpor0s3bgHozek18pK5LY=;
- h=From:To:Cc:Subject:Date:From;
- b=AuOpr7G3+Fh9kTygW02K/pdHhG0lP5NrT3swgnodY5YTjhLi6ow3Y1S3k66sWESZ/
- RP1goGarTA+IuSP+K765jpDunyR1Ns6xKyskcRjY5NEQqnRznAxXKesdm0b01twqRG
- EseNQ8zymopKcK248UAlBjPE8fpWH14y3pKaQ334=
+ s=default; t=1592323118;
+ bh=sgXwaomXepBCa/0fDyNfAVT1CtdQZ5euClhe+3TgUC4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=pyl4GXoL86elhFybpnrMPN+eqqMnFaRQvaxnXf6fFPN2JVHWE8boWLKbrJaVWPby0
+ YDgBSkh8Wj3MSc+dkUFKsFUYmgprt6LBlgNxSrB5yfqjVE2uhJ6BIrIA3rdWJXq3vu
+ sshRBXlpUsosDv8ZtiU9Gl+LyjHMsNuhDMWO7wd8=
 From: guoren@kernel.org
 To: palmerdabbelt@google.com, paul.walmsley@sifive.com, anup@brainfault.org,
  zong.li@sifive.com, aou@eecs.berkeley.edu, tglx@linutronix.de,
  tycho@tycho.ws, nickhu@andestech.com
-Subject: [PATCH 0/3] riscv: Enable LOCKDEP
-Date: Tue, 16 Jun 2020 15:56:58 +0000
-Message-Id: <1592323021-98541-1-git-send-email-guoren@kernel.org>
+Subject: [PATCH 1/3] riscv: Fixup static_obj() fail
+Date: Tue, 16 Jun 2020 15:56:59 +0000
+Message-Id: <1592323021-98541-2-git-send-email-guoren@kernel.org>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1592323021-98541-1-git-send-email-guoren@kernel.org>
+References: <1592323021-98541-1-git-send-email-guoren@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_085805_260242_54FF21ED 
-X-CRM114-Status: UNSURE (   5.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200616_085839_782232_A38F13F8 
+X-CRM114-Status: GOOD (  10.14  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -82,25 +83,71 @@ Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
 From: Guo Ren <guoren@linux.alibaba.com>
 
-Lockdep is needed by proving the spinlocks and rwlocks. To suupport
-it, we need fixup TRACE_IRQFLAGS_SUPPORT in kernel/entry.S. This
-patch follow Documentation/irqflags-tracing.txt.
+When enable LOCKDEP, static_obj() will cause error. Because some
+__initdata static variables is before _stext:
 
-And there are 2 bugs block the lockdep implementation.
+static int static_obj(const void *obj)
+{
+        unsigned long start = (unsigned long) &_stext,
+                      end   = (unsigned long) &_end,
+                      addr  = (unsigned long) obj;
 
-Guo Ren (2):
-  riscv: Fixup static_obj() fail
-  riscv: Enable LOCKDEP_SUPPORT & fixup TRACE_IRQFLAGS_SUPPORT
+        /*
+         * static variable?
+         */
+        if ((addr >= start) && (addr < end))
+                return 1;
 
-Zong Li (1):
-  riscv: Fixup lockdep_assert_held with wrong param cpu_running
+[    0.067192] INFO: trying to register non-static key.
+[    0.067325] the code is fine but needs lockdep annotation.
+[    0.067449] turning off the locking correctness validator.
+[    0.067718] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.7.0-rc7-dirty #44
+[    0.067945] Call Trace:
+[    0.068369] [<ffffffe00020323c>] walk_stackframe+0x0/0xa4
+[    0.068506] [<ffffffe000203422>] show_stack+0x2a/0x34
+[    0.068631] [<ffffffe000521e4e>] dump_stack+0x94/0xca
+[    0.068757] [<ffffffe000255a4e>] register_lock_class+0x5b8/0x5bc
+[    0.068969] [<ffffffe000255abe>] __lock_acquire+0x6c/0x1d5c
+[    0.069101] [<ffffffe0002550fe>] lock_acquire+0xae/0x312
+[    0.069228] [<ffffffe000989a8e>] _raw_spin_lock_irqsave+0x40/0x5a
+[    0.069357] [<ffffffe000247c64>] complete+0x1e/0x50
+[    0.069479] [<ffffffe000984c38>] rest_init+0x1b0/0x28a
+[    0.069660] [<ffffffe0000016a2>] 0xffffffe0000016a2
+[    0.069779] [<ffffffe000001b84>] 0xffffffe000001b84
+[    0.069953] [<ffffffe000001092>] 0xffffffe000001092
 
- arch/riscv/Kconfig              |  3 +++
- arch/riscv/kernel/entry.S       | 41 ++++++++++++++++++++++++++++++++++++++++-
- arch/riscv/kernel/smpboot.c     |  1 -
- arch/riscv/kernel/vmlinux.lds.S |  2 +-
- 4 files changed, 44 insertions(+), 3 deletions(-)
+static __initdata DECLARE_COMPLETION(kthreadd_done);
 
+noinline void __ref rest_init(void)
+{
+	...
+	complete(&kthreadd_done);
+
+Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
+---
+ arch/riscv/kernel/vmlinux.lds.S | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/riscv/kernel/vmlinux.lds.S b/arch/riscv/kernel/vmlinux.lds.S
+index 0339b6b..bf3f34d 100644
+--- a/arch/riscv/kernel/vmlinux.lds.S
++++ b/arch/riscv/kernel/vmlinux.lds.S
+@@ -22,6 +22,7 @@ SECTIONS
+ 	/* Beginning of code and text segment */
+ 	. = LOAD_OFFSET;
+ 	_start = .;
++	_stext = .;
+ 	HEAD_TEXT_SECTION
+ 	. = ALIGN(PAGE_SIZE);
+ 
+@@ -49,7 +50,6 @@ SECTIONS
+ 	. = ALIGN(SECTION_ALIGN);
+ 	.text : {
+ 		_text = .;
+-		_stext = .;
+ 		TEXT_TEXT
+ 		SCHED_TEXT
+ 		CPUIDLE_TEXT
 -- 
 2.7.4
 
