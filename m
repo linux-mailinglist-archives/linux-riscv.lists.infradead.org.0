@@ -2,61 +2,74 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA3E71FB8CE
-	for <lists+linux-riscv@lfdr.de>; Tue, 16 Jun 2020 17:59:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE4F41FBD5E
+	for <lists+linux-riscv@lfdr.de>; Tue, 16 Jun 2020 19:55:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SaPn7nuDqTvwxkz2SjI6g3CX9gIEd3peSODmY0kYyo0=; b=qIcvbCD08p646M
-	1RQmNv9Z+GwJQY635rQarjwcsaJOJfoz1LiQCMwCLgEHiLl7UhizJQCyIP9B+Ha5DK7lznlboFe2d
-	hUOetqTBdNeHa/xO95KYhC5Uu0e+TFbR1WVnRmtjGGg+zcUFFFJfKYzZFnHshJokAoLaVjPKwzsAA
-	ScCx5YRHG4AquqCn1Eb4+3BkJWKzMl82Jd6VnjfNApU50mcOxuML5Cv3ea3Z/pxUWEIAmwDLkfadZ
-	EvEpztuvU8mJs6ma8n/1IL3CC5s/vUcQI0GKv1qbcloBKsMQKKCIZynkjQn3JRq2oDfjG0H7ozu2p
-	p7pfKMNRop6xOFGmktPA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=x6TeJ27Z/ufkTVSy5H2Hs8I8PEvzUkw/b06a5ar99hE=; b=HwA0Xk/ju4cH1JoR19X+OUXW9
+	yf0PKxOZr47diX1cflo6ZNGjnyQDHlZyWqB+yWe1Cy6wNjZ8bZkEaFRXwxDYLSyYChK5mLxWe1C4x
+	ofTUVyAEdbmZ8wPcD0Zp8tzbl/Tt6rj0/2gQjNXQ5X+tllm+FdyzGNVKcOm/nQ8wnGqjkyQk9JXNQ
+	qhvctnam7cotH0ci5pE1fu6Jc4Xfq1YnAQq5ZKvx4D2sk0fQ3ir0yHQooOId9jjDWHR2sXMzSXJEL
+	f0b9ESWe+oZqdlv/noFtn8vRiBvWxPu3M33bJSabx9AYdURJRylNbAVJzd2+Z2q9fOXViDKqdudlH
+	thDVI1iVQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlE09-0004ak-L9; Tue, 16 Jun 2020 15:59:53 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jlFni-0007kG-OW; Tue, 16 Jun 2020 17:55:10 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlDzF-0003qp-OV
- for linux-riscv@lists.infradead.org; Tue, 16 Jun 2020 15:58:59 +0000
-Received: from localhost.localdomain (unknown [42.120.72.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1B86721556;
- Tue, 16 Jun 2020 15:58:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592323137;
- bh=4nwhGh0JwW2X8vMqWBQ8XqkThbE4b7XZj/mOqH0gNC4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=kEqW0ZrDGOb8FQ9a3K5CD/GhugJaZnj88q/MLcIfLlfDpgBeFtZc2dTIzqyQW7pcH
- jKK+BkuT6zrrERJsfRGDMAusaDgUubGuWwc0q1albZ3WsmsQuDsj76ku6RwCUF4WmJ
- lv1FExtgYreRLEHt6S7CHkGYyu0wctAG0X+tgwf0=
-From: guoren@kernel.org
-To: palmerdabbelt@google.com, paul.walmsley@sifive.com, anup@brainfault.org,
- zong.li@sifive.com, aou@eecs.berkeley.edu, tglx@linutronix.de,
- tycho@tycho.ws, nickhu@andestech.com
-Subject: [PATCH 3/3] riscv: Enable LOCKDEP_SUPPORT & fixup
- TRACE_IRQFLAGS_SUPPORT
-Date: Tue, 16 Jun 2020 15:57:01 +0000
-Message-Id: <1592323021-98541-4-git-send-email-guoren@kernel.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1592323021-98541-1-git-send-email-guoren@kernel.org>
-References: <1592323021-98541-1-git-send-email-guoren@kernel.org>
+ id 1jlFnd-0006YX-ML
+ for linux-riscv@lists.infradead.org; Tue, 16 Jun 2020 17:55:07 +0000
+Received: by mail-wr1-x441.google.com with SMTP id x14so21714487wrp.2
+ for <linux-riscv@lists.infradead.org>; Tue, 16 Jun 2020 10:55:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=atishpatra.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=x6TeJ27Z/ufkTVSy5H2Hs8I8PEvzUkw/b06a5ar99hE=;
+ b=Ni0wHVusra0BeszNE1FbdZq3xiw577V9lcPBzEp9viNz3mzkFw7bJepz/1FNbd0zVU
+ c1OVCXOu4+VXtsRLvW+Ar61hh4iIbDzWsX42lFRybCScKSib/9e6vgaYHQ9piGanRxXV
+ NLd6nBAgfW7w5ZfXYAtJeoWVzBCaZAgiaEs/I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=x6TeJ27Z/ufkTVSy5H2Hs8I8PEvzUkw/b06a5ar99hE=;
+ b=bkjnv3KDtv/7rKWAMEMnr6hUhJY/jnubwzHaZFzqT5TXYU3HbDV+JPkspKeY/ULr11
+ h+ga5IpqspIXczfbrOIM0P0hJUgYB8J3k4D8xOe4t5AWRR/LMg335hZDJM6ysdCdDwN3
+ NOmLsmw0ro4811L/bmp5UKleh4QZkPmQW6eKKkfh6QQlNz5r2SH+VMihRtNgr8PgKn12
+ gdiMPE3TuHzQUTQGCAhlvsam+XWF7ZX9Q+bWvoyfcJ8BvHSw3j0OzQNiHCKbbLnEOKOk
+ aP0bpIJTCmFMJn1zWqwcyPX7b8TSD5MVsTrXFLT+ZJ0iRj0e5QZKaGjpFreONDpOe+Ku
+ 4ghg==
+X-Gm-Message-State: AOAM533JC0y5ARthWPfGQLPQr0SKG+hTlJTCRaO/am/prbd/aB51xcwj
+ 21K3hMwcofBN1tqMstOWBx06Z6qHc3sDn6v3jiyZ
+X-Google-Smtp-Source: ABdhPJyZsG53yUkvAS7hfPSTsF86BxVUykQ+gEEoGqay+9S63hUPcf1mzcNPs1iPOt4D5AP6L4ckXF/Nudy/JVNC9Wo=
+X-Received: by 2002:adf:edc8:: with SMTP id v8mr4137541wro.176.1592330103084; 
+ Tue, 16 Jun 2020 10:55:03 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200616045108.GP75760@lianli.shorne-pla.net>
+ <mhng-b86477b3-4134-4023-968e-532ca0b33125@palmerdabbelt-glaptop1>
+ <CANN689GkUUfpTn+fkjsC-a=RwGsxVwsg-QXKDnVe6zXLjvuZWA@mail.gmail.com>
+In-Reply-To: <CANN689GkUUfpTn+fkjsC-a=RwGsxVwsg-QXKDnVe6zXLjvuZWA@mail.gmail.com>
+From: Atish Patra <atishp@atishpatra.org>
+Date: Tue, 16 Jun 2020 10:54:51 -0700
+Message-ID: <CAOnJCUKDP=xr=ddFvaTW_1gux=jshycvxmb=CYtt_+jpN6-u4g@mail.gmail.com>
+Subject: Re: mm lock issue while booting Linux on 5.8-rc1 for RISC-V
+To: Michel Lespinasse <walken@google.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_085857_871837_6E21FF8F 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200616_105505_783394_7904EC3E 
+X-CRM114-Status: GOOD (  27.66  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -66,7 +79,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,130 +90,161 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv@lists.infradead.org, Guo Ren <guoren@linux.alibaba.com>,
- linux-kernel@vger.kernel.org, linux-csky@vger.kernel.org
+Cc: Bjorn Topel <bjorn.topel@gmail.com>, shorne@gmail.com,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-From: Guo Ren <guoren@linux.alibaba.com>
+On Tue, Jun 16, 2020 at 3:45 AM Michel Lespinasse <walken@google.com> wrote:
+>
+> I am also unable to reproduce the issue so far.
+>
+> I wanted to point to a few things in case this helps:
+> - Commit 42fc541404f2 was bisected as the cause. This commit changes
+> walk_page_range_novma() to use mmap_assert_locked() instead of
+> lockdep_assert_held()
+> - mmap_assert_locked() checks lockdep_assert_held(), but also checks
+> that the rwsem itself is locked.
+>
+> Now how could lockdep think the lock is held, but the lock itself is
+> not marked as locked ???
+>
+> I'm not sure if it helps at all, but a few commits earlier,
+> 0cc55a0213a0 introduces mmap_read_trylock_non_owner(), which is used
+> exclusively by stackmap, and does the opposite: it acquires the mmap
+> lock without telling lockdep about it. I can't see any smoking gun
+> linking this to our bug, but I thought it may be worth mentioning as
+> it involves the same suspects (stackmap and the difference between
+> owning the lock vs lockdep thinking we own the lock).
+>
+> I'm sorry, that's only how far I was able to go on this bug - I'm not
+> sure how to investigate it further as I can not reproduce the issue...
+>
+> On Tue, Jun 16, 2020 at 1:40 AM Palmer Dabbelt <palmer@dabbelt.com> wrote:
+> >
+> > On Mon, 15 Jun 2020 21:51:08 PDT (-0700), shorne@gmail.com wrote:
+> > > On Tue, Jun 16, 2020 at 06:57:47AM +0900, Stafford Horne wrote:
+> > >> On Mon, Jun 15, 2020 at 12:28:11AM -0700, Atish Patra wrote:
+> > >> > Hi,
+> > >> > I encountered the following issue while booting 5.8-rc1 on Qemu for RV64.
+> > >> > I added additional dump_stack and observed that it's happening in bpf free path.
+> > >> > It happens always if CONFIG_DEBUG_VM is enabled. VM_BUG_ON_MM is
+> > >> > compiled away without that.
+> > >> > ------------------------------------------------------------------------
+> > >> > forked to background, child pid 113
+> > >> > [   10.328850] CPU: 3 PID: 51 Comm: kworker/3:1 Not tainted
+> > >> > 5.8.0-rc1-dirty #732
+> > >> > [   10.331739] Workqueue: events bpf_prog_free_deferred
+> > >> > [   10.334133] Call Trace:
+> > >> > [   10.338039] [<ffffffe000202698>] walk_stackframe+0x0/0xa4
+> > >> > [   10.339988] [<ffffffe000202880>] show_stack+0x2e/0x3a
+> > >> > [   10.340902] [<ffffffe00047074c>] dump_stack+0x72/0x8c
+> > >> > [   10.341451] [<ffffffe0002db4ce>] mmap_assert_locked.part.13+0x14/0x1c
+> > >> > [   10.342131] [<ffffffe0002db330>] walk_page_range_novma+0x0/0x4e
+> > >> > [   10.342973] [<ffffffe000204f94>] set_direct_map_invalid_noflush+0x66/0x6e
+> > >> > [   10.343917] [<ffffffe0002e0706>] __vunmap+0xe8/0x212
+> > >> > [   10.344680] [<ffffffe0002e0882>] __vfree+0x22/0x6e
+> > >> > [   10.345270] [<ffffffe0002e0902>] vfree+0x34/0x56
+> > >> > [   10.345834] [<ffffffe00027d752>] __bpf_prog_free+0x2c/0x36
+> > >> > [   10.346529] [<ffffffe0002801a2>] bpf_prog_free_deferred+0x74/0x8a
+> > >> > [   10.347394] [<ffffffe000219c70>] process_one_work+0x13a/0x272
+> > >> > [   10.348239] [<ffffffe00021a4b4>] worker_thread+0x50/0x2e4
+> > >> > [   10.348900] [<ffffffe00021ed98>] kthread+0xfc/0x10a
+> > >> > [   10.349470] [<ffffffe0002013da>] ret_from_exception+0x0/0xc
+> > >> > [   10.354405] mm ffffffe001018600 mmap 0000000000000000 seqnum 0 task_size 0
+> > >> > [   10.354405] get_unmapped_area 0000000000000000
+> > >> > [   10.354405] mmap_base 0 mmap_legacy_base 0 highest_vm_end 0
+> > >> > [   10.354405] pgd ffffffe001074000 mm_users 2 mm_count 1
+> > >> > pgtables_bytes 8192 map_count 0
+> > >> > [   10.354405] hiwater_rss 0 hiwater_vm 0 total_vm 0 locked_vm 0
+> > >> > [   10.354405] pinned_vm 0 data_vm 0 exec_vm 0 stack_vm 0
+> > >> > [   10.354405] start_code ffffffe000200000 end_code ffffffe00084acc2
+> > >> > start_data 0 end_data ffffffe00106dfe4
+> > >> > [   10.354405] start_brk 0 brk ffffffe0010bd6d0 start_stack 0
+> > >> > [   10.354405] arg_start 0 arg_end 0 env_start 0 env_end 0
+> > >> > [   10.354405] binfmt 0000000000000000 flags 0 core_state 0000000000000000
+> > >> > [   10.354405] ioctx_table 0000000000000000
+> > >> > [   10.354405] exe_file 0000000000000000
+> > >> > [   10.354405] tlb_flush_pending 0
+> > >> > [   10.354405] def_flags: 0x0()
+> > >> > [   10.369325] ------------[ cut here ]------------
+> > >> > [   10.370763] kernel BUG at include/linux/mmap_lock.h:81!
+> > >> > [   10.375235] Kernel BUG [#1]
+> > >> > [   10.377198] Modules linked in:
+> > >> > [   10.378931] CPU: 3 PID: 51 Comm: kworker/3:1 Not tainted 5.8.0-rc1-dirty #732
+> > >> > [   10.380179] Workqueue: events bpf_prog_free_deferred
+> > >> > [   10.381270] epc: ffffffe0002db4d4 ra : ffffffe0002db4d4 sp : ffffffe3eaea7c70
+> > >> > [   10.382561]  gp : ffffffe00106d950 tp : ffffffe3ef752f80 t0 :
+> > >> > ffffffe0010836e8
+> > >> > [   10.383996]  t1 : 0000000000000064 t2 : 0000000000000000 s0 :
+> > >> > ffffffe3eaea7c90
+> > >> > [   10.385119]  s1 : ffffffe001018600 a0 : 0000000000000289 a1 :
+> > >> > 0000000000000020
+> > >> > [   10.386099]  a2 : 0000000000000005 a3 : 0000000000000000 a4 :
+> > >> > ffffffe001012758
+> > >> > [   10.387294]  a5 : 0000000000000000 a6 : 0000000000000102 a7 :
+> > >> > 0000000000000006
+> > >> > [   10.388265]  s2 : ffffffe3f00674c0 s3 : ffffffe00106e108 s4 :
+> > >> > ffffffe00106e100
+> > >> > [   10.389250]  s5 : ffffffe00106e908 s6 : 0000000000000000 s7 :
+> > >> > 6db6db6db6db6db7
+> > >> > [   10.390272]  s8 : 0000000000000001 s9 : ffffffe00021a4f8 s10:
+> > >> > ffffffffffffffff
+> > >> > [   10.391293]  s11: ffffffe3f0066600 t3 : 000000000001a7a8 t4 :
+> > >> > 000000000001a7a8
+> > >> > [   10.392314]  t5 : 0000000000000000 t6 : ffffffe00107b76b
+> > >> > [   10.393096] status: 0000000000000120 badaddr: 0000000000000000
+> > >> > cause: 0000000000000003
+> > >> > [   10.397755] ---[ end trace 861659596ac28841 ]---
+> > >> > ---------------------------------------------------------------------------------------------------
+> > >> >
+> > >> > I haven't had the chance to bisect to figure out which commit caused
+> > >> > the issue. Just wanted
+> > >> > to check if it is a known issue already.
+> > >>
+> > >> Hi Atish,
+> > >>
+> > >> Note, I am getting the same (just now) when booting v5.8-rc1 on OpenRISC.  If
+> > >> you have any updates please post back.  I will try to look into this today or
+> > >> tomorrow.
+> > >
+> > > I have bisected this to, 42fc541404f249778e752ab39c8bc25fcb2dbe1e:
+> > >
+> > >   mmap locking API: add mmap_assert_locked() and mmap_assert_write_locked()
+> > >
+> > > This should have just changed the existing lockdep api's but something has
+> > > changed.  I haven't had time to look at it yet.
+> > >
+> > > Ccing: Michel Lespinasse <walken@google.com>
+> >
+> > This isn't manifesting on boot for me, on either rc1 or that commit.  I'm
+> > running a simple buildroot-based userspace, so I doubt anything is triggering
+> > BPF.  I don't run the BPF selftests, as they're a bit of a pain (IIRC they
+> > don't cross compile and need LLVM) -- does anyone have a userspace I can use to
+> > trigger the bug?
+>
+I am also using buildroot based userspace but it's a bit bulky because
+of my config.
+You can access it from here:
+https://wdc.box.com/s/r8j0d5ynp5gr27n2wo124xi9t8fp0tls
 
-Lockdep is needed by proving the spinlocks and rwlocks. To suupport
-it, we need fixup TRACE_IRQFLAGS_SUPPORT in kernel/entry.S. This
-patch follow Documentation/irqflags-tracing.txt.
+A defconfig build & boot in Qemu with above userspace is sufficient to
+trigger the bug.
 
-Signed-off-by: Guo Ren <guoren@linux.alibaba.com>
----
- arch/riscv/Kconfig        |  3 +++
- arch/riscv/kernel/entry.S | 41 ++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 43 insertions(+), 1 deletion(-)
+FYI: I noticed the kernel bug message every time during ssh-key
+generation. Not sure if that is related.
 
-diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index a31e1a4..550e0ec 100644
---- a/arch/riscv/Kconfig
-+++ b/arch/riscv/Kconfig
-@@ -170,6 +170,9 @@ config PGTABLE_LEVELS
- 	default 3 if 64BIT
- 	default 2
- 
-+config LOCKDEP_SUPPORT
-+	def_bool y
-+
- source "arch/riscv/Kconfig.socs"
- 
- menu "Platform type"
-diff --git a/arch/riscv/kernel/entry.S b/arch/riscv/kernel/entry.S
-index 56d071b..02c5b8e 100644
---- a/arch/riscv/kernel/entry.S
-+++ b/arch/riscv/kernel/entry.S
-@@ -97,17 +97,25 @@ _save_context:
- 	la gp, __global_pointer$
- .option pop
- 
--	la ra, ret_from_exception
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	call trace_hardirqs_off
-+#endif
- 	/*
- 	 * MSB of cause differentiates between
- 	 * interrupts and exceptions
- 	 */
- 	bge s4, zero, 1f
- 
-+	la ra, ret_from_exception
-+
- 	/* Handle interrupts */
- 	move a0, sp /* pt_regs */
- 	tail do_IRQ
- 1:
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	call trace_hardirqs_on
-+	REG_L s1, PT_STATUS(sp)
-+#endif
- 	/*
- 	 * Exceptions run with interrupts enabled or disabled depending on the
- 	 * state of SR_PIE in m/sstatus.
-@@ -117,8 +125,23 @@ _save_context:
- 	csrs CSR_STATUS, SR_IE
- 
- 1:
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	REG_L a0, PT_A0(sp)
-+	REG_L a1, PT_A1(sp)
-+	REG_L a2, PT_A2(sp)
-+	REG_L a3, PT_A3(sp)
-+	REG_L a4, PT_A4(sp)
-+	REG_L a5, PT_A5(sp)
-+	REG_L a6, PT_A6(sp)
-+	REG_L a7, PT_A7(sp)
-+#endif
-+	la ra, ret_from_exception
- 	/* Handle syscalls */
- 	li t0, EXC_SYSCALL
-+
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	REG_L s4, PT_CAUSE(sp)
-+#endif
- 	beq s4, t0, handle_syscall
- 
- 	/* Handle other exceptions */
-@@ -141,6 +164,9 @@ handle_syscall:
- 	 * Advance SEPC to avoid executing the original
- 	 * scall instruction on sret
- 	 */
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	REG_L s2, PT_EPC(sp)
-+#endif
- 	addi s2, s2, 0x4
- 	REG_S s2, PT_EPC(sp)
- 	/* Trace syscalls, but only if requested by the user. */
-@@ -188,6 +214,9 @@ ret_from_syscall_rejected:
- ret_from_exception:
- 	REG_L s0, PT_STATUS(sp)
- 	csrc CSR_STATUS, SR_IE
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	call trace_hardirqs_off
-+#endif
- #ifdef CONFIG_RISCV_M_MODE
- 	/* the MPP value is too large to be used as an immediate arg for addi */
- 	li t0, SR_MPP
-@@ -214,6 +243,16 @@ resume_userspace:
- 	csrw CSR_SCRATCH, tp
- 
- restore_all:
-+#ifdef CONFIG_TRACE_IRQFLAGS
-+	REG_L s1, PT_STATUS(sp)
-+	andi t0, s1, SR_PIE
-+	beqz t0, 1f
-+	call trace_hardirqs_on
-+	j 2f
-+1:
-+	call trace_hardirqs_off
-+2:
-+#endif
- 	REG_L a0, PT_STATUS(sp)
- 	/*
- 	 * The current load reservation is effectively part of the processor's
+>
+>
+> --
+> Michel "Walken" Lespinasse
+> A program is never fully debugged until the last user dies.
+
+
+
 -- 
-2.7.4
-
+Regards,
+Atish
 
