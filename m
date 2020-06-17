@@ -2,80 +2,88 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC89D1FC3E9
-	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jun 2020 03:56:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 00C101FC436
+	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jun 2020 04:42:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hueFxKmaWgxaYnZqPYZLcFE7MzSKwI+qlPQx/I7HVg8=; b=srKQRl9XUb4HZF
-	OT3rI290p2EJyfmSJiuKjr8Zgf9Zp6e/s9CVMx7trHiRFRoEzZSISeSGQvE3mBVTuzczfCauJcVEn
-	MTRa2sEx+dclQQpDYQx7+lqVIKLboRaUKeGRhQ/sBPs5YD/rNlMiM2GpVBT5CKvJBRWqnGPXAhzBw
-	xxyKGvGNqYLyncStWw19kN+8QLL0f9xu1cFlgawSbDW0XpiBGSPaBot4YQZ+jenpKc2w52oLKDi5D
-	V4czg5Jmhw5IpBmX5LG3WpAJgLJFV9XNXEjLdUTZbibarzDU0ZvcyqUg31uobyxEj8w+Oc/cBVHgy
-	2pCuydOppUZI1cpE1l5A==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jvrWt2KbkHmTuAZbcrxVNHOk/guIipx7rSp4yoc8Zdo=; b=OLJD3WdDP4VzVSL1FfThtRXaF
+	hydUNBhwZigI3g9VkE3Vp53hTI87G0xD/qQydxSocMwbxwJmutVKXKSIOxFmVJINtLYHvHn2vo9aJ
+	734KoF9rNjhAURFnPwSqRW7nZJSHcqbOxYrurOZ3FQBrpbk2LTXFV7Hfk2B3DFJ71eGnME8cIdWhq
+	CTqsq+AuJUfeOxN3cH4L0egf5LsLQdCv/czo7ulKjm0bo9FEl6TuzMedzr3kXqrcPeDejqPV1FmJu
+	jmNC0p9NiNsQP+UX5tktT+2Fi5Ym+DjyxFoYwI+FFJdn+qcCo2u0vIolCG2bHtQMiU5lJ0KrAW7Nc
+	mrnlWp/bQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlNJM-00050K-0m; Wed, 17 Jun 2020 01:56:20 +0000
-Received: from mail-oo1-xc43.google.com ([2607:f8b0:4864:20::c43])
+	id 1jlO28-00067m-6H; Wed, 17 Jun 2020 02:42:36 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlNJI-0004zc-H9
- for linux-riscv@lists.infradead.org; Wed, 17 Jun 2020 01:56:17 +0000
-Received: by mail-oo1-xc43.google.com with SMTP id i4so73767ooj.10
- for <linux-riscv@lists.infradead.org>; Tue, 16 Jun 2020 18:56:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sifive.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hueFxKmaWgxaYnZqPYZLcFE7MzSKwI+qlPQx/I7HVg8=;
- b=DjR6KJBs0GVk8e3e6mESOLOxYZDnPhsh9skuYIeX8ZMTFWprcSBL0ilfas5wRvvGLf
- 9SPKOWSDYJvLUCuMSHgpHSEim4qmhyucox1YZe42p8+ta0zSOD8f0upRKZb+IhxeHz5O
- QQDmBu7o4VhdP137MfxBcnxySdk7lOXwp0J4Bilgxqsy8FfUVXtO+11ht0BukTuBH9Dx
- hVLRxUJ+ka3ioCyBupVQBdg1nOrg9AkFRuyYzSXcxuM8TC0oKQfm+SdQgLu9x/hKYujV
- yqRhVefqCosdqNGYYnKUDk7iKYsiBIpE7IBWpOBwtEuYsENBQeynNMhJO03AZAqrD3M6
- XyLA==
+ id 1jlO24-00067K-LE
+ for linux-riscv@lists.infradead.org; Wed, 17 Jun 2020 02:42:34 +0000
+Received: by mail-oi1-x244.google.com with SMTP id 25so422805oiy.13
+ for <linux-riscv@lists.infradead.org>; Tue, 16 Jun 2020 19:42:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=jvrWt2KbkHmTuAZbcrxVNHOk/guIipx7rSp4yoc8Zdo=;
+ b=bSDfu19MUyXzUkW6cA9hwnMCjpPa4bTGL6Fv9v5NjYczTGTRdynnoIf1OjAa9A4ADy
+ al4wgPI2oP0702nxCEeSFaS88fhGHv1MuUzeD2CfS5pBDe/d3L+jNXLWLEm2HrpUU+iQ
+ LLTLC4aTurLfclFYlPjfX53gPFexn737ACIWanqZIWz9BfZW/DXZFAcR210YpHNHbaZx
+ GrWSeNpQM9NY3lzzpEiymon2QJx9+2lG4/mD8ettbZa/HB05iRnrC5+xyLHiX0F1LF4x
+ dDBkKizymyoljCA2dCxfVCd3rRr+aKXgERYOOC3wGwvOSRnt9vUR3yu6thWezFPmIeGH
+ oYlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hueFxKmaWgxaYnZqPYZLcFE7MzSKwI+qlPQx/I7HVg8=;
- b=Y1vrtAaUipQzLAcTfXRz8aXJ/E/jczzgdsSMIk8VMvBdxRToExzrYSgnfnKmkmQwFk
- 1kpOH+1T6yhGVEeNrwpn9rgiaCXFvAVji4RS5pJPrX+6iX+XdIuyi5TWpxGZPSphVnKT
- +Y7T8ZsCEuFk2qBk42tfDgbgLK1YMdgRFEN3OucapdvCf2DlP2kLh2oJMPlHBlWbXvEO
- tm03t6NDqrJK1ODcD3aelbM7Mv77w00xgwNz3P2nG84PuHtLqIAtdB5Gpi5uSVc3gsMC
- XMSQCG4IFWkwo82EOzpD2LBqL2Jtxm1upi58oNHi4aGvycx5uain5E9Mj2T4Y7C0w6NY
- +XZQ==
-X-Gm-Message-State: AOAM5312Kr+QtHvuRaEmnPgWSrMbjFpkWGMRaE6iIXHyvA9bdL+97ILV
- Jq2dZkEqUo4ht7wmj8A6oYwBZfwYU/6TzRgMJMJGxQ==
-X-Google-Smtp-Source: ABdhPJzozlgjeoLYevl9MryJG4sq1soVP3JLYrEpk+qUP02FK3EsjTRUIoFkm7eU7n4GJ9PMzlVSGLCVbv8hYmT+AzI=
-X-Received: by 2002:a4a:a10e:: with SMTP id i14mr4890142ool.68.1592358975167; 
- Tue, 16 Jun 2020 18:56:15 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=jvrWt2KbkHmTuAZbcrxVNHOk/guIipx7rSp4yoc8Zdo=;
+ b=Je0Neoty0u/iVspG3HBytbGZ5GKyYP4/ucb8Kr4H2DJVj1cGcroEi5Dnkd6nr0prBl
+ G+HwLEjtir4+3Vcu2WsglAnJmO7nyN6Je4KhpWf03Iu4T2u4fB1WmfitNFcHMn/RgEBH
+ 2GQ3apf8DN5XIAvLUoJx3T7SqEPvcgYUIB9rrt+iY6IK+eJ/xZuyu+aFzLCPD8pyVcSV
+ 02OEdk8g+NLQIOTLzQ0NO/Sv0Yr0c0JvBeLc9TrzIOzm0HpDRXz00MACGdO3w+zhw93H
+ UwRIvUJzwq9FNdVObgpA8JdBA53EtruFX0CjaA2+IYjj9mmIy77llujaItTk4yUjCjmY
+ 9C6w==
+X-Gm-Message-State: AOAM5320jBKebxL4c2JrbXIDk5Ve5XSy/RMTGLgCPgtRdZVUtVQPY77+
+ Ug6NZB7izUGjCtOigzQCTo8=
+X-Google-Smtp-Source: ABdhPJzLCv5YIQr9L5vxpHlBBzZkUr1WL5oMnwm4wGTI6IkHtAnmYZ0R0/vszIcht6lNrjb7LoLruQ==
+X-Received: by 2002:aca:51ca:: with SMTP id f193mr5941352oib.170.1592361751462; 
+ Tue, 16 Jun 2020 19:42:31 -0700 (PDT)
+Received: from ubuntu-n2-xlarge-x86 ([2604:1380:4111:8b00::3])
+ by smtp.gmail.com with ESMTPSA id b2sm4600537ooe.13.2020.06.16.19.42.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Jun 2020 19:42:30 -0700 (PDT)
+Date: Tue, 16 Jun 2020 19:42:28 -0700
+From: Nathan Chancellor <natechancellor@gmail.com>
+To: =?utf-8?B?RsSBbmctcnXDrCBTw7JuZw==?= <maskray@google.com>
+Subject: Re: Upstream binutils commit
+ a87e1817a435dab6c6c042f9306497c9f13d4236 breaks building the RISC-V vDSO
+Message-ID: <20200617024228.GA2330477@ubuntu-n2-xlarge-x86>
+References: <20200612084350.GA1108986@ubuntu-n2-xlarge-x86>
+ <CAFP8O3+ydp6y9V4N1-9igHDhVjxqqYUecAYa3fT21FBTWtNx+w@mail.gmail.com>
 MIME-Version: 1.0
-References: <cover.1592292685.git.zong.li@sifive.com>
- <7faa60aa4a606b5c5c1ae374d82a7eee6c764b38.1592292685.git.zong.li@sifive.com>
- <29425dbf7d54bab2733d28480d3adb61@mailhost.ics.forth.gr>
-In-Reply-To: <29425dbf7d54bab2733d28480d3adb61@mailhost.ics.forth.gr>
-From: Zong Li <zong.li@sifive.com>
-Date: Wed, 17 Jun 2020 09:56:04 +0800
-Message-ID: <CANXhq0pMutK0+hHchQPOaZLqm9B-=MTKv8Xig4hM71_B=5+2bg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] riscv: Support CONFIG_STRICT_DEVMEM
-To: Nick Kossifidis <mick@ics.forth.gr>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFP8O3+ydp6y9V4N1-9igHDhVjxqqYUecAYa3fT21FBTWtNx+w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_185616_607925_A12AC7E2 
-X-CRM114-Status: GOOD (  20.34  )
+X-CRM114-CacheID: sfid-20200616_194232_696701_46ED7F2C 
+X-CRM114-Status: GOOD (  17.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:c43 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:244 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [natechancellor[at]gmail.com]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -94,114 +102,64 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: linux-riscv <linux-riscv@lists.infradead.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Paul Walmsley <paul.walmsley@sifive.com>
+Cc: linux-riscv@lists.infradead.org, Albert Ou <aou@eecs.berkeley.edu>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Tue, Jun 16, 2020 at 8:27 PM Nick Kossifidis <mick@ics.forth.gr> wrote:
->
-> =CE=A3=CF=84=CE=B9=CF=82 2020-06-16 10:45, Zong Li =CE=AD=CE=B3=CF=81=CE=
-=B1=CF=88=CE=B5:
-> > Implement the 'devmem_is_allowed()' interface for RISC-V, like some of
-> > other architectures have done. It will be called from
-> > range_is_allowed()
-> > when userpsace attempts to access /dev/mem.
-> >
-> > Access to exclusive IOMEM and kernel RAM is denied unless
-> > CONFIG_STRICT_DEVMEM is set to 'n'.
-> >
-> > Test it by devmem, the result as follows:
-> >
-> >  - CONFIG_STRICT_DEVMEM=3Dy
-> >       $ devmem 0x10010000
-> >       0x00000000
-> >       $ devmem 0x80200000
-> >       0x0000106F
-> >
-> >  - CONFIG_STRICT_DEVMEM is not set
-> >       $ devmem 0x10010000
-> >       devmem: mmap: Operation not permitted
-> >       $ devmem 0x80200000
-> >       devmem: mmap: Operation not permitted
-> >
-> > Signed-off-by: Zong Li <zong.li@sifive.com>
-> > ---
-> >  arch/riscv/Kconfig          |  1 +
-> >  arch/riscv/include/asm/io.h |  2 ++
-> >  arch/riscv/mm/init.c        | 19 +++++++++++++++++++
-> >  3 files changed, 22 insertions(+)
-> >
-> > diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-> > index 128192e14ff2..ffd7841ede4c 100644
-> > --- a/arch/riscv/Kconfig
-> > +++ b/arch/riscv/Kconfig
-> > @@ -16,6 +16,7 @@ config RISCV
-> >       select ARCH_HAS_BINFMT_FLAT
-> >       select ARCH_HAS_DEBUG_VIRTUAL if MMU
-> >       select ARCH_HAS_DEBUG_WX
-> > +     select ARCH_HAS_DEVMEM_IS_ALLOWED
-> >       select ARCH_HAS_GCOV_PROFILE_ALL
-> >       select ARCH_HAS_GIGANTIC_PAGE
-> >       select ARCH_HAS_MMIOWB
-> > diff --git a/arch/riscv/include/asm/io.h b/arch/riscv/include/asm/io.h
-> > index 3835c3295dc5..04ac65ab93ce 100644
-> > --- a/arch/riscv/include/asm/io.h
-> > +++ b/arch/riscv/include/asm/io.h
-> > @@ -147,4 +147,6 @@ __io_writes_outs(outs, u64, q, __io_pbr(),
-> > __io_paw())
-> >
-> >  #include <asm-generic/io.h>
-> >
-> > +extern int devmem_is_allowed(unsigned long pfn);
-> > +
-> >  #endif /* _ASM_RISCV_IO_H */
-> > diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
-> > index bbe816e03b2f..5e7e61519acc 100644
-> > --- a/arch/riscv/mm/init.c
-> > +++ b/arch/riscv/mm/init.c
-> > @@ -517,6 +517,25 @@ void mark_rodata_ro(void)
-> >  }
-> >  #endif
-> >
-> > +#ifdef CONFIG_STRICT_DEVMEM
-> > +#include <linux/ioport.h>
-> > +/*
-> > + * devmem_is_allowed() checks to see if /dev/mem access to a certain
-> > address
-> > + * is valid. The argument is a physical page number.
-> > + *
-> > + * Disallow access to system RAM as well as device-exclusive MMIO
-> > regions.
-> > + * This effectively disable read()/write() on /dev/mem.
-> > + */
-> > +int devmem_is_allowed(unsigned long pfn)
-> > +{
-> > +     if (iomem_is_exclusive(pfn << PAGE_SHIFT))
-> > +             return 0;
-> > +     if (!page_is_ram(pfn))
-> > +             return 1;
-> > +     return 0;
-> > +}
-> > +#endif
-> > +
-> >  void __init resource_init(void)
-> >  {
-> >       struct memblock_region *region;
->
-> This shouldn't be part of /mm/init.c, it has nothing to do with memory
-> initialization, I suggest we move it to another file like mmap.c on
+Hi Fangrui,
 
-Let me move it, thanks.
+On Fri, Jun 12, 2020 at 08:41:56AM -0700, Fāng-ruì Sòng wrote:
+> On Fri, Jun 12, 2020 at 1:43 AM Nathan Chancellor
+> <natechancellor@gmail.com> wrote:
+> >
+> > Hi all,
+> >
+> > Upstream binutils commit a87e1817a4 ("Have the linker fail if any attempt
+> > to link in an executable is made.") causes the RISC-V vDSO to fail to
+> > build properly (it is fixing this bug report:
+> > https://sourceware.org/bugzilla/show_bug.cgi?id=26047):
+> >
+> > $ make -skj"$(nproc)" ARCH=riscv CROSS_COMPILE=riscv64-linux- O=out/riscv distclean defconfig arch/riscv/kernel/vdso/
+> > riscv64-linux-ld: cannot use executable file 'arch/riscv/kernel/vdso/vdso-dummy.o' as input to a link
+> >
+> > I do not really understand what the whole point of the vDSO rule is but
+> > it seems like it should be fixed due to this change. Additionally, the
+> > kernel has generally been getting rid of using $(CC) as a linker,
+> > instead preferring to use $(LD) directly; it would be nice if the RISC-V
+> > vDSO's Makefile could be rewritten to do that.
+> >
+> > See
+> >
+> > fe00e50b2db8 ("ARM: 8858/1: vdso: use $(LD) instead of $(CC) to link VDSO")
+> > 691efbedc60d ("arm64: vdso: use $(LD) instead of $(CC) to link VDSO")
+> > 2ff906994b6c ("MIPS: VDSO: Use $(LD) instead of $(CC) to link VDSO")
+> >
+> > for more examples of that. I would take a stab at it myself but this
+> > does not seem like a straight conversion due to the way the VDSOLD rule
+> > is set up.
+> >
+> > Cheers,
+> > Nathan
+> 
+> I suggested that GNU ld from 2.35 onwards disallows accepting ET_EXEC
+> as input (https://sourceware.org/bugzilla/show_bug.cgi?id=26047 ). The
+> error message is from the patch.
+> Taking ET_EXEC files as input are usually errors.
+> 
+> If we do need to take ET_EXEC as input, we can change e_type in the
+> ELF header to make the file an ET_REL
+> 
+> printf '\1' | dd of=${2} conv=notrunc bs=1 seek=16 status=none
+> (See http://git.kernel.org/linus/90ceddcb495008ac8ba7a3dce297841efcd7d584 )
 
-> arm/arm64. Also before using iomem_is_exclusive we should probably also
-> mark any reserved regions with the no-map attribute as busy|exclusive,
-> reserved-memory regions are not necessarily part of the main memory so
-> the page_is_ram check may pass and iomem_is_exclusive won't do any good.
+Is there a convenient way to do this in a Makefile? The relevant rule
+is:
 
-What do you think if we mark the reserved region in
-kdump_resource_init, and change the kdump_resource_init to a more
-generic name for initializing resources?
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/riscv/kernel/vdso/Makefile#n63
+
+I am not sure if that is strictly necessary, hence the initial email.
+
+Cheers,
+Nathan
 
