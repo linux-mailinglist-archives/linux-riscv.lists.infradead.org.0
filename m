@@ -2,71 +2,78 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72FBC1FD010
-	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jun 2020 16:55:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66CDA1FD629
+	for <lists+linux-riscv@lfdr.de>; Wed, 17 Jun 2020 22:38:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zLLUmlyTKSTLeIzbnEVYcyI9aqGQgYeahKiS4bWPe4c=; b=H2/wTWwLrFm9W2
-	N5MFtLK+NT1pNJicIOZAQB/AEpK4r5eS5NTgAst1P7kyzwI8gZN5jl7eSy9PmWvYkvyhDPOyWISuq
-	0ANqvot07yAvHLENjtXWRdudJEovkt8XygDsey4iX0lz/60tmSs5x0LqnVy4Rxj0kq35IuaR4STx9
-	x07HqAFBQWVEC6Lu8XeN+MklTymlv8YRnbqX/iGl6pHHCpPD5ngsGDQlyR4fFFHddxW3fPF6YhEbL
-	yV1PlLHXQjF5Su1K+VKuZ3Px5NcmvHibfS5cbXmgbd4Y8h36NJKSR/tswdez0vEhu1ZQhGEQp2+w0
-	LR8nJNahM9v9mDvAGJfQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Lb2EzuXHb6VzccEj1ycn7TsJzd2ezkjzV+s6RMyTS6M=; b=rEx+WWPS+gZ8w+
+	QJNazXTiwipOAZoS5T+RAcnzfm/tjqk9pR0oV/FHaRPfMayltrc5BaS6r9lxzQjOAChN8teUj0JNx
+	gBcOaZHqRjrOm076jQkgPtowH0Ch7qynC/q6ahchYugys5yFdhL5GwNigLTH69KEel3yKJs5rLU5g
+	6Pv9AEhXC0uhYkTv1ufBfioMfXc/9wttjYYoZhAfccle/vZzG5CClcKY3v4+Z3/kvXdLGTk/Iipbf
+	6ckz/2WTwtGHtpT3AO35c+1wjr3feqoobAiEkOKO7oZkZjiOw+UE/MP5a6TxfE+1L7pAWhGAoTrrE
+	wDWBu7sOuDamf+AFbiBQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlZSn-0008CX-D3; Wed, 17 Jun 2020 14:54:53 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jleoy-0006Ij-LW; Wed, 17 Jun 2020 20:38:08 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlZSj-0008Bx-H5
- for linux-riscv@lists.infradead.org; Wed, 17 Jun 2020 14:54:51 +0000
-Received: from devnote2 (NE2965lan1.rev.em-net.ne.jp [210.141.244.193])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 539C2207DD;
- Wed, 17 Jun 2020 14:54:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592405687;
- bh=/a69YBWKDWsHkCerchS4MV/WRJ5P9hqgJqfrFMs9G4U=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=QeE3ZVzWvr+14At5pOwiTvaeGig7C/HXM4OnDfWgr6cEtywr6ZeXNtKQ3iJ0K4CCT
- xjWqqiRhyDwBPxmTVFQDe3KhL6wh2HODC1ix9pOYVCTS8vHS4o2zxX05ewi4nDKrIw
- 7Svq1tW6FzaFXeS0J56ept2BSEGoSQRz16RMfXoQ=
-Date: Wed, 17 Jun 2020 23:54:43 +0900
-From: Masami Hiramatsu <mhiramat@kernel.org>
-To: Guo Ren <guoren@kernel.org>
-Subject: Re: [RFC/RFT 2/2] RISC-V: kprobes/kretprobe support
-Message-Id: <20200617235443.4110b4ef31150722dda7973a@kernel.org>
-In-Reply-To: <CAJF2gTTcj=bfK-KvE9U5EsLX0wFPEOw+PvZuTLN_rT5u_a5X1g@mail.gmail.com>
-References: <20181113195804.22825-1-me@packi.ch>
- <20181113195804.22825-3-me@packi.ch>
- <20181114003730.06f810517a270070734df4ce@kernel.org>
- <a6abc4ce-4398-5ca6-992b-efb31e01c5ca@packi.ch>
- <20181115004141.5ed772834fc6bdf3467f244e@kernel.org>
- <CANXhq0qWwKRrz80Q3LSeQu-cH19otCF1my6dDGDxH0Q5j1RYYw@mail.gmail.com>
- <9cdd84b5-6c81-9bfa-5d35-6645f542f71e@packi.ch>
- <CANXhq0peZCWZsh37zZVzoi7spSzTfz7v4H5AytiAENKJdWK_tA@mail.gmail.com>
- <CANXhq0r5+BjsJ8jFtkWcm_1qPPQnLyZ5THNdPsxU568FNNa0XA@mail.gmail.com>
- <CAEn-LTrm6__-v7FmCRtNq2zm8up7O18wNhZmBmGwASj-Oy87qA@mail.gmail.com>
- <CAJF2gTTcj=bfK-KvE9U5EsLX0wFPEOw+PvZuTLN_rT5u_a5X1g@mail.gmail.com>
-X-Mailer: Sylpheed 3.7.0 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ id 1jleos-0006Hp-TB
+ for linux-riscv@lists.infradead.org; Wed, 17 Jun 2020 20:38:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1592426282; x=1623962282;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=obXSQxEjICW+Yt8ftMsGWA6aehYecXRDu+nvKJxbC/w=;
+ b=EJO/cn7DUCGgJ+YvgYJU3Hy3goKPCxrhYN4gtcPP2paULdDDlQbDBHZX
+ qBkC6i4cZURzAjozPh88iJBNva4Xqo2WnlQC4cwYKSLa1yHJXrN6DOPR+
+ JGjHLtQCjGPnvvdFvteRHOlgXqXtXtiMgumodFFiOKSC0Grx9U1yzBEiO
+ gNh+ASV8VlwVt4EPvTSXVobmvJ8xiwBZRihvN3Bs/rQjMvJhLVLZh2qU4
+ J92HifLLy8s3WGDjXGKDiLoByWioKH9DwQg1TGns4g3YKCFMALS2sw4MH
+ ypXEZPvb6INT9qF9lf+y+YrPK5/AYR2rsasFKHgljW9SXhy9EmmSyZRQO Q==;
+IronPort-SDR: iLiuYrud3UaVxlfXFRArWxO1xcf3W3xAl3FHWF5cHUHzA6L8n/wGH02Xm3vd8ew//+YAzVKHZt
+ MlYvRl3LWC386PLord782wVIlmJOQhN/yEPI6m8zYXExtPyn1HHZCZOeTnlLydCWH6g2qq0RBM
+ s8uAbXFSG5xlEctnArKtgDvrd39t6Gmz+Gzr/0xCMV1cskVLCwHuCdMztDkB+L2yn41Pv2DUVB
+ MKwBNBFDhHkw2RgBfgHoneghH2i/hQe/tRx2v5DdLalY51vRaSs5p1V7z+Rs7v9J1LuBei6oaB
+ 7Jk=
+X-IronPort-AV: E=Sophos;i="5.73,523,1583164800"; d="scan'208";a="249436297"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 18 Jun 2020 04:37:58 +0800
+IronPort-SDR: GCyYciZH2O72tUDJanwvVZRn6NM9HmyrsuPWWqPAljt4D5c+BkX1HzDVTa4UUI+HKKRf/hNFHe
+ kRb1Vri7ZaKDdDae0zH+l7ZwolFlgJ9P4=
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2020 13:27:12 -0700
+IronPort-SDR: zhUy0TZrnbjXxnnsfrT0zttZ0ocHgV32WRoVPnh+Xsp3azyEDgqpotxGdu7x6cjHL7aX3S004I
+ Fk5DgEo8B6iA==
+WDCIronportException: Internal
+Received: from usa003792.ad.shared (HELO yoda.hgst.com) ([10.86.58.133])
+ by uls-op-cesaip01.wdc.com with ESMTP; 17 Jun 2020 13:37:59 -0700
+From: Atish Patra <atish.patra@wdc.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] RISC-V: Acquire mmap lock before invoking walk_page_range
+Date: Wed, 17 Jun 2020 13:37:32 -0700
+Message-Id: <20200617203732.2076611-1-atish.patra@wdc.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200617_075449_607849_9269C300 
-X-CRM114-Status: GOOD (  29.19  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200617_133804_709948_147F3B62 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [68.232.141.245 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -75,7 +82,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,137 +93,71 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Patrick =?UTF-8?B?U3TDpGhsaW4=?= <me@packi.ch>,
- Albert Ou <aou@eecs.berkeley.edu>, Anders Roxell <anders.roxell@linaro.org>,
- David Abdurachmanov <david.abdurachmanov@gmail.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Zong Li <zong.li@sifive.com>,
+Cc: Albert Ou <aou@eecs.berkeley.edu>, Mike Rapoport <rppt@linux.ibm.com>,
+ Daniel Jordan <daniel.m.jordan@oracle.com>, Atish Patra <atish.patra@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Zong Li <zong.li@sifive.com>,
  Paul Walmsley <paul.walmsley@sifive.com>,
- Greentime Hu <greentime.hu@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+ Andrew Morton <akpm@linux-foundation.org>,
+ Michel Lespinasse <walken@google.com>, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Guo and Patrick,
+As per walk_page_range documentation, mmap lock should be acquired by the
+caller before invoking walk_page_range. mmap_assert_locked gets triggered
+without that. The details can be found here.
 
-On Wed, 17 Jun 2020 20:58:32 +0800
-Guo Ren <guoren@kernel.org> wrote:
+http://lists.infradead.org/pipermail/linux-riscv/2020-June/010335.html
 
-> Hi Patrick,
-> 
-> I'm the author of csky's kprobe & uprobe, please ref to kprobe [1], uprobe [2]
-> 
-> 1: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/csky?h=v5.8-rc1&id=33e53ae1ce413a081254e686d9b27cc1b3585e2f
-> 2: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/csky?h=v5.8-rc1&id=8f6bb793b2be82f1f73bfb416486f156f70b4314
+Fixes: 395a21ff859c(riscv: add ARCH_HAS_SET_DIRECT_MAP support)
+Signed-off-by: Atish Patra <atish.patra@wdc.com>
+---
+ arch/riscv/mm/pageattr.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-Thanks for the porting!
-
-> 
-> May I continue your patches to finish the work? I'll keep the primary
-> author's name of you with the patches which you've done.
-> 
-> Most of the instructions' emulation codes will be deprecated, but the
-> rest is ok. Maybe you should finish executing out of the slot first
-> and then implement pc-related instructions' emulation.
-
-I can review the patch if you update it. Anyway, my major concern was the
-self-modifying code, others are minor points. 
-
-Thank you,
-
-> 
-> On Fri, Jun 12, 2020 at 1:58 PM David Abdurachmanov
-> <david.abdurachmanov@gmail.com> wrote:
-> >
-> > On Tue, Mar 31, 2020 at 5:45 AM Zong Li <zong.li@sifive.com> wrote:
-> > >
-> > > On Thu, Dec 19, 2019 at 5:28 PM Zong Li <zong.li@sifive.com> wrote:
-> > > >
-> > > > On Wed, Dec 18, 2019 at 9:10 PM Patrick Stählin <me@packi.ch> wrote:
-> > > > >
-> > > > > Hi all
-> > > > >
-> > > > > On 18.12.19 10:14, Zong Li wrote:
-> > > > > > On Wed, Dec 18, 2019 at 5:09 PM Zong Li <zong.li@sifive.com> wrote:
-> > > > > >>
-> > > > > >> From: mhiramat@kernel.org (Masami Hiramatsu)
-> > > > > >>
-> > > > > >> On Wed, 14 Nov 2018 21:52:57 +0100
-> > > > > >> Patrick Staehlin <me@packi.ch> wrote:
-> > > > > >>
-> > > > > >>> Yeah, I think it's simpler.
-> > > > > >>>
-> > > > > >>> And I found that the kprobe_breakpoint_handler() was called without
-> > > > > >>> checking !user_mode(regs). In that case, you should add the check in
-> > > > > >>> front of kprobe_breakpoint_handler() call.
-> > > > > >>>
-> > > > > >>> Thank you,
-> > > > > >>
-> > > > > >> Hi all,
-> > > > > >>
-> > > > > >> Is there any update? I was wondering if this patch are keep going? If
-> > > > > >> not, I think I could pick it up to go head
-> > > > >
-> > > > > I am still working on it, albeit slowly, holiday season coming up here
-> > > > > in Switzerland may accelerate that a bit. All the feedback I got from
-> > > > > Masami has been implemented.
-> > > >
-> > > > As Masami's suggestion, I don't see stop_machine in your implementation [1],
-> > > > are there some concerns to use it on SMP?
-> > >
-> > > Hi all,
-> > > I introduced the patching code framework. Maybe it is helpful for
-> > > self-modify code here. (Please see:
-> > > https://lkml.org/lkml/2020/3/9/679)
-> > > This patch series is reviewing, maybe we could apply the
-> > > implementation after it was merged.
-> > >
-> > >
-> > > >
-> > > > > Additionally I added instruction simulation for everything except memory
-> > > > > accesses. I am currently working on getting compressed instructions
-> > > > > decoded properly into regular instructions but that is very tedious work.
-> > > > > I guess I am two or three full days of work away from getting a RFC/RFT
-> > > > > v2 series ready I guess that will happen in early January.
-> > > >
-> > > > Thanks for the efforts.
-> > > >
-> > > > >
-> > > > > What I currently have is at [1], that is mostly untested as of now
-> > > > > (beware I will rebase/squash that branch regularly). What I could use
-> > > > > help with in the future (as in for v2), is somebody testing it on real
-> > > > > hardware, as I've never gotten any testing feedback on my original
-> > > > > patch-series (that would not have worked properly because of the lacking
-> > > > > cache-flush).
-> > > >
-> > > > I give some quick tests by using kprobe sanity test and simple LKM on
-> > > > Hifive Unleashed board,
-> > > > it seems to work normally. I could help to test your next version patch as well.
-> >
-> > Hi Patrick,
-> >
-> > I have noticed that "riscv: introduce interfaces to patch kernel code"
-> > (mentioned by Zong above) has been merged in 5.7 kernel.
-> >
-> > I was wondering if you plan to submit a new revision of the patchset?
-> >
-> > Thanks,
-> > david
-> >
-> > > >
-> > > > >
-> > > > > [1] https://github.com/packi/linux/tree/kprobes-riscv
-> > > > >
-> > > > > Patrick
-> > >
-> >
-> 
-> -- 
-> Best Regards
->  Guo Ren
-> 
-> ML: https://lore.kernel.org/linux-csky/
-
-
+diff --git a/arch/riscv/mm/pageattr.c b/arch/riscv/mm/pageattr.c
+index ec2c70f84994..289a9a5ea5b5 100644
+--- a/arch/riscv/mm/pageattr.c
++++ b/arch/riscv/mm/pageattr.c
+@@ -151,6 +151,7 @@ int set_memory_nx(unsigned long addr, int numpages)
+ 
+ int set_direct_map_invalid_noflush(struct page *page)
+ {
++	int ret;
+ 	unsigned long start = (unsigned long)page_address(page);
+ 	unsigned long end = start + PAGE_SIZE;
+ 	struct pageattr_masks masks = {
+@@ -158,11 +159,16 @@ int set_direct_map_invalid_noflush(struct page *page)
+ 		.clear_mask = __pgprot(_PAGE_PRESENT)
+ 	};
+ 
+-	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
++	mmap_read_lock(&init_mm);
++	ret = walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
++	mmap_read_unlock(&init_mm);
++
++	return ret;
+ }
+ 
+ int set_direct_map_default_noflush(struct page *page)
+ {
++	int ret;
+ 	unsigned long start = (unsigned long)page_address(page);
+ 	unsigned long end = start + PAGE_SIZE;
+ 	struct pageattr_masks masks = {
+@@ -170,7 +176,11 @@ int set_direct_map_default_noflush(struct page *page)
+ 		.clear_mask = __pgprot(0)
+ 	};
+ 
+-	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
++	mmap_read_lock(&init_mm);
++	ret = walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
++	mmap_read_unlock(&init_mm);
++
++	return ret;
+ }
+ 
+ void __kernel_map_pages(struct page *page, int numpages, int enable)
 -- 
-Masami Hiramatsu <mhiramat@kernel.org>
+2.26.2
+
 
