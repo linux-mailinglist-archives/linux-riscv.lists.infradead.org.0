@@ -2,82 +2,104 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 718A82003D8
-	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 10:28:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E46D201423
+	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 18:13:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
-	References:In-Reply-To:Subject:To:From:Date:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9/NSP5SN4e3EIZjNu4RWOQcD7iLMrlAgM9nHlSoUbcw=; b=O0Etlv91O0fjGORpDFPys+Sd2
-	PqCYy1+03zOvotPJWjzOHV78enL8setrYTQG8qvNEL+i/kXP7BvzNsiB/DsS6Qwu/kJJHsizCGBTu
-	cl4BkpZcVkzzcFRgfW1tuxb/bSynHu5vvHR7vfGOj7xK7U+UDm8Qq80cwZ/8ZcVVXGjmG/cNNDvaf
-	j3m/FxDbKCxV/VZ88uSOmnHu61WtScE9Jb9uO7MSU0fYuYBKvEqbCbS/4JCpodFY2kKZy0Uv8ZDBB
-	b8bnjJyYcl7fAr/fnyXHwVizIw4lWEqjCHwcKSK+030CsfOryjTJoJ9DK5gxX7V3Gfd6ah7U4iMZj
-	HAi13Uatg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8WnWhn2O9ddpmgT5q7yGLFrwE17K5+WMrtUB+3cLWEw=; b=JZOKsn/8KPOmWm
+	1p5GRqvy7tECpo0T2OHw5529HyefFiWwgHYQ4+mllP8PpJMlPlYEUoL72M3ciiKdBZiyDOIazEwo1
+	n0d4m6R+FA7qM4aKSsgQxlGg+mw1R77G+XNqBVNZNQakDL8ryaQnsoiY+mlVEinxxOoFHN2BShFXU
+	zqpTU9GOHGHzwuRFwzBzlfEKzfM+r5RKisBE3qmqNE8V8qfmGJ+TnZY3VN8Uix15VgCyOcc/Ao3hX
+	69g4O/wAlvYR116TOhANha+SeaFgMEvnJHDD6FzYqJQP9iA9MTXCTEX5p3FpLlnrPQE/KLy/wFXy7
+	RuZaMA16z5YgJymcCTJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmCNO-0001Qs-6t; Fri, 19 Jun 2020 08:27:54 +0000
-Received: from mailgate-2.ics.forth.gr ([139.91.1.5])
+	id 1jmJe9-0003Uy-VK; Fri, 19 Jun 2020 16:13:41 +0000
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]
+ helo=us-smtp-delivery-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmCNK-0001Pv-AO
- for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 08:27:52 +0000
-Received: from av3.ics.forth.gr (av3in [139.91.1.77])
- by mailgate-2.ics.forth.gr (8.14.4/ICS-FORTH/V10-1.8-GATE) with ESMTP id
- 05J8RJSL012806; Fri, 19 Jun 2020 08:27:21 GMT
-X-AuditID: 8b5b014d-257ff700000045c5-ea-5eec76e7f192
-Received: from enigma.ics.forth.gr (enigma-2.ics.forth.gr [139.91.151.35])
- by av3.ics.forth.gr (Symantec Messaging Gateway) with SMTP id
- 5B.8E.17861.7E67CEE5; Fri, 19 Jun 2020 11:27:19 +0300 (EEST)
-X-ICS-AUTH-INFO: Authenticated user:  at ics.forth.gr
+ id 1jmJe6-0003Tc-Dn
+ for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 16:13:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592583216;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8WnWhn2O9ddpmgT5q7yGLFrwE17K5+WMrtUB+3cLWEw=;
+ b=ZWL+SVq/R3SO9t7tT3WowbmmOFA/Tzixwt0G/p1+srUVrJ0nitrcC0KNjnupY9XBh1OGuo
+ LyYRs7rekDKO+k3yZCnshxJlOmdsR8fxD51c67jwRdPLTh/gyznk2OpQkO7bDerjpWUsYw
+ Qe8QZ69tPnz9Er4hFv9Cchll27K+5Fo=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-485-TqzC3lvSO4W8YMHbZdGzIg-1; Fri, 19 Jun 2020 12:13:35 -0400
+X-MC-Unique: TqzC3lvSO4W8YMHbZdGzIg-1
+Received: by mail-qv1-f71.google.com with SMTP id a4so7071988qvl.18
+ for <linux-riscv@lists.infradead.org>; Fri, 19 Jun 2020 09:13:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8WnWhn2O9ddpmgT5q7yGLFrwE17K5+WMrtUB+3cLWEw=;
+ b=lC3lXP/C3QhDBbGYxJSskr8d7ijUVC/oLwT4n3j2Yuxq/GYR1ve3aSkexVHca/RUYE
+ gzvuN6oYFy2YqGxsh2+xcgungb8N+3ZEv3h8DD+CKP6o467VuygZ9oazC13Kr1CLfKdG
+ OPyehz8HpNO4Z2opvrN6FrqzSolANYv2aUYt/0x6FTM6TBFKHYDWFbzoz4d1CPEaqEj3
+ uGZuQHRAfOCIRzo17ljAlUIOV4kuywO5nQtSeZoEzzcqpeVZytnrlveARNtk4178fSpC
+ Iw9XYdKBOBngSorYEvy9gi6/HRzN2rFSDPPKOeyRxWffDAnAO+5AoOUd/+T0yhjwIc8I
+ aVAg==
+X-Gm-Message-State: AOAM531TyRIHMs8HhzfIzTc1F7/j6lnVaNuJEDCUOjhHIBZyvci7SUhJ
+ FWCi3tJ+szbzTeh1LvaKL4EqSKHGfBlupnhA+TLEZfPN4iUSRZluZlJr7+lIx9qk9zDZ9fKXqWE
+ aUYhXnKls71pVYNtz7DgOjNsTtYMN
+X-Received: by 2002:ae9:ef4d:: with SMTP id d74mr4214777qkg.41.1592583214605; 
+ Fri, 19 Jun 2020 09:13:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwXGpbO/9nv4BANBmX+guvWqX+FL56EmA0NXR+BJXb0IgqFlArSWQFas9dDfa1ga+CYTZhslw==
+X-Received: by 2002:ae9:ef4d:: with SMTP id d74mr4214756qkg.41.1592583214399; 
+ Fri, 19 Jun 2020 09:13:34 -0700 (PDT)
+Received: from xz-x1.redhat.com ([2607:9880:19c0:32::2])
+ by smtp.gmail.com with ESMTPSA id x11sm6338488qti.60.2020.06.19.09.13.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Jun 2020 09:13:33 -0700 (PDT)
+From: Peter Xu <peterx@redhat.com>
+To: linux-kernel@vger.kernel.org,
+	linux-mm@kvack.org
+Subject: [PATCH 17/26] mm/riscv: Use general page fault accounting
+Date: Fri, 19 Jun 2020 12:13:31 -0400
+Message-Id: <20200619161332.9614-1-peterx@redhat.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200619160538.8641-1-peterx@redhat.com>
+References: <20200619160538.8641-1-peterx@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Date: Fri, 19 Jun 2020 11:27:18 +0300
-From: Nick Kossifidis <mick@ics.forth.gr>
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH 0/3] RISC-V: Add kexec/kdump support
-Organization: FORTH
-In-Reply-To: <mhng-524c37c9-25b7-405f-933f-2029820dbe40@palmerdabbelt-glaptop1>
-References: <mhng-524c37c9-25b7-405f-933f-2029820dbe40@palmerdabbelt-glaptop1>
-Message-ID: <f0e6106e0ca4c1d8a6fa33dea6ee7276@mailhost.ics.forth.gr>
-X-Sender: mick@mailhost.ics.forth.gr
-User-Agent: Roundcube Webmail/1.3.9
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrELMWRmVeSWpSXmKPExsXSHT1dWfd52Zs4g2cL1S1aPrxjtVi04juL
- xZbDj5gttn1uYbNofneO3eLl5R5mi7ZZ/BZNL64zO3B4TP19hsWj68cMVo83L1+yeDzcdInJ
- Y/OSeo9LzdfZPdoPdDMFsEdx2aSk5mSWpRbp2yVwZRz+f4WxoIm3YmubbAPjRq4uRk4OCQET
- ieV33rN0MXJxCAkcZ5Q4uOcmO0TCVGL23k5GEJtXQFDi5MwnLCA2s4CFxNQr+xkhbHmJ5q2z
- mUFsFgFViYeX17KB2GwCmhLzLx0EqxcRUJc48PoOM8gCZoE3jBKX1+4FaxYGGtT4uY8VxOYX
- EJb4dPcikM3BwSngL3HwBlhYSMBPYvq62UwQN7hIXHj3jQXiNhWJD78fgN0pKqAscfPwc/YJ
- jIKzkJw6C8mps5CcuoCReRWjQGKZsV5mcrFeWn5RSYZeetEmRnA0MPruYLy9+a3eIUYmDsZD
- jBIczEoivM6/X8QJ8aYkVlalFuXHF5XmpBYfYpTmYFES583jXh4rJJCeWJKanZpakFoEk2Xi
- 4JRqYFJT4Ynw/eiyKOEQh4nNW4mZV/65RDnen3M+6b9tWdCSw7Pi3Vqm9hdd+7c8YPvlm7zr
- 02YYJn5uyJxVJHn3aOj99tKWBoaPtfZ1xakJLJaFudoVW4/UJ7JFX/537odF9RzhWb4Xl7Wl
- as+4ecY20t29SED/5lHmJXXah9dOPBO795WRhqZ+RPz1Gea8ji0XhRUFnNrEns5p3Lnd8ZbI
- VT9tDVdds5duPw6wt6XKxZ7IjtmZc0I2jzdsMnfi15tcDscL15oc0E3yWTqraNH8PevsZxt8
- XTM7LLn3uiy37PFuyYN9x19tM1Epee68UkP1WrxEf1FqxrVzp/3T9wTPf+ndtMVr6StW72gL
- acbPSizFGYmGWsxFxYkAmH9w2fUCAAA=
-X-Greylist: inspected by milter-greylist-4.6.2 (mailgate-2.ics.forth.gr
- [139.91.1.5]);
- Fri, 19 Jun 2020 08:27:21 +0000 (GMT) for IP:'139.91.1.77' DOMAIN:'av3in'
- HELO:'av3.ics.forth.gr' FROM:'mick@ics.forth.gr' RCPT:''
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mailgate-2.ics.forth.gr [139.91.1.5]); Fri, 19 Jun 2020 08:27:21 +0000 (GMT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_012750_728758_9319F839 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200619_091338_547274_A379C0C6 
+X-CRM114-Status: GOOD (  11.94  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [139.91.1.5 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.211.31.81 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [207.211.31.81 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,53 +111,64 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: david.abdurachmanov@sifive.com, anup@brainfault.org,
- Atish Patra <Atish.Patra@wdc.com>, yibin_liu@c-sky.com,
- Paul Walmsley <paul.walmsley@sifive.com>, mick@ics.forth.gr,
- linux-riscv@lists.infradead.org
+Cc: Andrea Arcangeli <aarcange@redhat.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Michael Ellerman <mpe@ellerman.id.au>, Peter Xu <peterx@redhat.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Andrew Morton <akpm@linux-foundation.org>, Will Deacon <will@kernel.org>,
+ linux-riscv@lists.infradead.org, Gerald Schaefer <gerald.schaefer@de.ibm.com>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Στις 2020-06-19 02:06, Palmer Dabbelt έγραψε:
-> On Sat, 13 Jun 2020 00:24:01 PDT (-0700), mick@ics.forth.gr wrote:
->> Στις 2020-06-11 22:39, Palmer Dabbelt έγραψε:
->>> On Thu, 11 Jun 2020 12:09:08 PDT (-0700), mick@ics.forth.gr wrote:
->>>> Στις 2020-05-21 21:42, Nick Kossifidis έγραψε:
->>>>> Στις 2020-04-24 20:12, Nick Kossifidis έγραψε:
->>>>>> This patch series adds kexec/kdump and crash kernel
->>>>>> support on RISC-V. For testing the patches a patched
->>>>>> version of kexec-tools is needed. The patch is still
->>>>>> a work in progress but a draft version can be found at:
->>>>>> 
->>>>>> http://riscv.ics.forth.gr/kexec-tools.patch
->>>>>> 
->>>>> 
->>>>> Any comments / feedback on this ? Should we get it in ?
->>>>> 
->>>>> Regards,
->>>>> Nick
->>>> 
->>>> Anyone ?
->>> 
->>> Sorry, I dropped the ball on this one.  After the CPU hotplug 
->>> breakage
->>> I
->>> decided I need to get a pre-merge test for all these new features, 
->>> and
->>> I
->>> haven't gotten around to actually doing so yet.  The merge window is
->>> closing
->>> right now, so with any luck I'll have some time to get around to my
->>> patch
->>> backlog -- first I need to go spin up some better testing, though.
->> 
->> Anything I can do to help ? I have a bunch of hw available (unleashed,
->> genesys2 and nexys 2 ddr for Ariane / LowRISC SoC) and I'll probably
->> also need to have a CI flow for the stuff I do internally.
-> 
-> Well, getting CI up and running would be great -- specifically, running 
-> stress
-> tests on real hardware is something we're missing.
+Use the general page fault accounting by passing regs into handle_mm_fault().
+It naturally solve the issue of multiple page fault accounting when page fault
+retry happened.
 
-Any particular tests / test suites in mind ?
+CC: Paul Walmsley <paul.walmsley@sifive.com>
+CC: Palmer Dabbelt <palmer@dabbelt.com>
+CC: Albert Ou <aou@eecs.berkeley.edu>
+CC: linux-riscv@lists.infradead.org
+Signed-off-by: Peter Xu <peterx@redhat.com>
+---
+ arch/riscv/mm/fault.c | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
+
+diff --git a/arch/riscv/mm/fault.c b/arch/riscv/mm/fault.c
+index 677ee1bb11ac..e796ba02b572 100644
+--- a/arch/riscv/mm/fault.c
++++ b/arch/riscv/mm/fault.c
+@@ -110,7 +110,7 @@ asmlinkage void do_page_fault(struct pt_regs *regs)
+ 	 * make sure we exit gracefully rather than endlessly redo
+ 	 * the fault.
+ 	 */
+-	fault = handle_mm_fault(vma, addr, flags, NULL);
++	fault = handle_mm_fault(vma, addr, flags, regs);
+ 
+ 	/*
+ 	 * If we need to retry but a fatal signal is pending, handle the
+@@ -128,21 +128,7 @@ asmlinkage void do_page_fault(struct pt_regs *regs)
+ 		BUG();
+ 	}
+ 
+-	/*
+-	 * Major/minor page fault accounting is only done on the
+-	 * initial attempt. If we go through a retry, it is extremely
+-	 * likely that the page will be found in page cache at that point.
+-	 */
+ 	if (flags & FAULT_FLAG_ALLOW_RETRY) {
+-		if (fault & VM_FAULT_MAJOR) {
+-			tsk->maj_flt++;
+-			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ,
+-				      1, regs, addr);
+-		} else {
+-			tsk->min_flt++;
+-			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN,
+-				      1, regs, addr);
+-		}
+ 		if (fault & VM_FAULT_RETRY) {
+ 			flags |= FAULT_FLAG_TRIED;
+ 
+-- 
+2.26.2
+
 
