@@ -2,59 +2,87 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 338471FFFB7
-	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 03:35:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF7911FFFEB
+	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 03:53:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:To:Subject:From:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qktueNLzgq6WJX4e8KgnMr6JPDxbZcZiALEY/3ND3Cw=; b=Pd0nE/ynxakx0/
-	7btr1A3YjvW6AjNxWmVPLhgmyCW+WA96on6Hs3AfRxrbroj2FNix4uMPDJ7HyVw45D9QgnoMwnnMd
-	CZkSTJ/wrRNE1altK7lW6NqBYesA4Y9zwXrkr3dQzgCaLpr4GmbyaBYE8sUfV6bV3KyV9apJ5bU2e
-	wX+4pEXtuajYSdxfIJP+wrfhQjRKOKWHt8uHGmt3hAVuIvINtI7dkDeKDtmQUNnq10KDEnIkoBUTY
-	Conpc0sGr1PyOWnBm1W2ooWXjuDSKt9T0r+3zjWJ+s00bocv6FPSbZ1oVdcMYC7Pu81UG3wdc5C3h
-	MXkBhP2cf0M/hXIQ/ZMA==;
+	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
+	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=ZPjvsjb4L/XUk4DOVwf5+goE/PhKwDE2Q9XXqApM3gE=; b=DEglKuayOrM5M2
+	1uSLJ82YyItJ+oAqbnlLnCGTjQ/Xxi8ZVqC2KZ1vM+jwxdrpYWkhhQQkETc/0yc/WHTEOVeyCD9TX
+	skIFa90151bLJDNlOd8G7YSclrslb4VWH3Cp5Ca2lSfpQWKMs8rIM7y4obQmzfDWR8tgAyjUnflDs
+	Ja1LpL0FRmAml0NEPPtpaaNatB034UJLJeuMOw/aANLXV4ZXFdC1swjtGMqEe92D8T8nBRC3t8fkz
+	c+rXPGvdXpR0j+bF8e4IVFm6KiobI4/Ov5ebrn41vqei+OptCTrVoRPSiYF35owoKDLdOBg0c+yuP
+	wvF1MliH4mAJslaZQXaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jm5w6-0002Rl-E1; Fri, 19 Jun 2020 01:35:18 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jm5vj-0008I5-3r; Fri, 19 Jun 2020 01:34:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 238DFD6E;
- Thu, 18 Jun 2020 18:34:50 -0700 (PDT)
-Received: from [10.163.81.119] (unknown [10.163.81.119])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 216703F73C;
- Thu, 18 Jun 2020 18:34:41 -0700 (PDT)
-From: Anshuman Khandual <anshuman.khandual@arm.com>
-Subject: Re: [PATCH V3 (RESEND) 0/3] arm64: Enable vmemmap mapping from device
- memory
-To: Mike Rapoport <rppt@linux.ibm.com>
-References: <1592442930-9380-1-git-send-email-anshuman.khandual@arm.com>
- <20200618085641.GE6493@linux.ibm.com>
-Message-ID: <27f8c6f9-3970-6f02-dff4-7ca15bee7138@arm.com>
-Date: Fri, 19 Jun 2020 07:04:35 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <20200618085641.GE6493@linux.ibm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+	id 1jm6Di-0004Pt-65; Fri, 19 Jun 2020 01:53:30 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jm6Dd-0004PP-Aa
+ for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 01:53:27 +0000
+Received: by mail-pf1-x442.google.com with SMTP id a127so3684825pfa.12
+ for <linux-riscv@lists.infradead.org>; Thu, 18 Jun 2020 18:53:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZPjvsjb4L/XUk4DOVwf5+goE/PhKwDE2Q9XXqApM3gE=;
+ b=kl2ZlXn3hm/jWCOkK+/c4/yU6rt1osi6hbdBD9PsIY0TCyc82pVsciWwLVu4W/b2fc
+ SUea1ro4dFO3uW6VBz0McApVjegphmH2ffajl3ouM8Ft/1qoIa539aszdLZyXWk6Obx0
+ 95/gOm5q4I6Cf6rRbTyPiHkBWH+aEhFID0TLzBDl0aa6VGLWqc5FV19NKz1BzVg1j29A
+ Mipk8fdjeej3Z+EKYGiqGNfQwA99JLdogQ9RoqHLICmS++v5lzTavQL4IoEFbjh8jTPn
+ eVttfK+MldKECVUfMANymYs/ssjgAAnDsEOI3mEbPD7elZiMiyVWJsqlS63UKm5DGdY2
+ 2FrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
+ :mime-version:content-transfer-encoding;
+ bh=ZPjvsjb4L/XUk4DOVwf5+goE/PhKwDE2Q9XXqApM3gE=;
+ b=Vma/kSyn7rtf3mB05wJQpGsd3uQUsNaiuwFj72RIcIXS+vV5Tkr5FN4ohCp9Z8c6hE
+ ZG96erk8UeWfE1s6GKKtYqCcg7ZJJRICB4gdoZhhajaCwFELHQrVgfdLxHYYgqlYroja
+ UYL1oEuLS5E4peOpfe5cUJiFEr4BQO4vKAY31RewG247Ees9awPG1P0waqNHG5VWFoH2
+ FXsZqy0pdPZ5z2XJTuepIxUVMRiqFODjs1xDvoX+nAFWNx4aPOuOJ6f0ULbyl/cCrV5Y
+ n9CUOHnU+O7duxKbXxnwtEmmsHx8Andl5E1CnT5qXjIluYqUPjPoqADsvnO6vkuriqL4
+ qgpA==
+X-Gm-Message-State: AOAM533GMQIP7DZ09p32ryl/ZkhS4W4O3O9NwE3t9vtGza/mAwvkcmX0
+ MC307Bv0KQc433iNdfnZN+yy9Q==
+X-Google-Smtp-Source: ABdhPJxKJB5coooxn+ajBp9fp4eq1fOEfzkiahliTn7K1WAiK9Pf+Md0brBXhSbRl/WQAYcYd/UE7g==
+X-Received: by 2002:a62:76c5:: with SMTP id r188mr6197043pfc.60.1592531603969; 
+ Thu, 18 Jun 2020 18:53:23 -0700 (PDT)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id p8sm3571243pgs.29.2020.06.18.18.53.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Jun 2020 18:53:23 -0700 (PDT)
+Date: Thu, 18 Jun 2020 18:53:23 -0700 (PDT)
+X-Google-Original-Date: Thu, 18 Jun 2020 18:53:21 PDT (-0700)
+Subject: Re: [PATCH] RISC-V: Acquire mmap lock before invoking walk_page_range
+In-Reply-To: <20200617203732.2076611-1-atish.patra@wdc.com>
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: Atish Patra <Atish.Patra@wdc.com>, Will Deacon <willdeacon@google.com>
+Message-ID: <mhng-c8581870-6152-43a6-9d9f-28a9cc5ce39e@palmerdabbelt-glaptop1>
+Mime-Version: 1.0 (MHng)
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_183455_198107_69A0327A 
-X-CRM114-Status: GOOD (  13.20  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200618_185325_418352_4F76FC50 
+X-CRM114-Status: GOOD (  17.48  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [217.140.110.172 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,53 +94,80 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michal Hocko <mhocko@suse.com>,
- linux-ia64@vger.kernel.org, David Hildenbrand <david@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Dave Hansen <dave.hansen@linux.intel.com>, linux-mm@kvack.org,
- Paul Mackerras <paulus@samba.org>, linux-riscv@lists.infradead.org,
- Will Deacon <will@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
- Michael Ellerman <mpe@ellerman.id.au>, x86@kernel.org,
- "Matthew Wilcox \(Oracle\)" <willy@infradead.org>,
- Ingo Molnar <mingo@redhat.com>, Catalin Marinas <catalin.marinas@arm.com>,
- Fenghua Yu <fenghua.yu@intel.com>, Pavel Tatashin <pasha.tatashin@soleen.com>,
- Andy Lutomirski <luto@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
- Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org,
- Tony Luck <tony.luck@intel.com>, linux-kernel@vger.kernel.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Andrew Morton <akpm@linux-foundation.org>,
- linuxppc-dev@lists.ozlabs.org,
- "Kirill A. Shutemov" <kirill.shutemov@linux.intel.com>
+Cc: aou@eecs.berkeley.edu, rppt@linux.ibm.com, linux-kernel@vger.kernel.org,
+ daniel.m.jordan@oracle.com, Atish Patra <Atish.Patra@wdc.com>,
+ zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>,
+ akpm@linux-foundation.org, walken@google.com, linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
+On Wed, 17 Jun 2020 13:37:32 PDT (-0700), Atish Patra wrote:
+> As per walk_page_range documentation, mmap lock should be acquired by the
+> caller before invoking walk_page_range. mmap_assert_locked gets triggered
+> without that. The details can be found here.
+>
+> http://lists.infradead.org/pipermail/linux-riscv/2020-June/010335.html
+>
+> Fixes: 395a21ff859c(riscv: add ARCH_HAS_SET_DIRECT_MAP support)
+> Signed-off-by: Atish Patra <atish.patra@wdc.com>
+> ---
+>  arch/riscv/mm/pageattr.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/riscv/mm/pageattr.c b/arch/riscv/mm/pageattr.c
+> index ec2c70f84994..289a9a5ea5b5 100644
+> --- a/arch/riscv/mm/pageattr.c
+> +++ b/arch/riscv/mm/pageattr.c
+> @@ -151,6 +151,7 @@ int set_memory_nx(unsigned long addr, int numpages)
+>
+>  int set_direct_map_invalid_noflush(struct page *page)
+>  {
+> +	int ret;
+>  	unsigned long start = (unsigned long)page_address(page);
+>  	unsigned long end = start + PAGE_SIZE;
+>  	struct pageattr_masks masks = {
+> @@ -158,11 +159,16 @@ int set_direct_map_invalid_noflush(struct page *page)
+>  		.clear_mask = __pgprot(_PAGE_PRESENT)
+>  	};
+>
+> -	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
+> +	mmap_read_lock(&init_mm);
+> +	ret = walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
+> +	mmap_read_unlock(&init_mm);
+> +
+> +	return ret;
+>  }
+>
+>  int set_direct_map_default_noflush(struct page *page)
+>  {
+> +	int ret;
+>  	unsigned long start = (unsigned long)page_address(page);
+>  	unsigned long end = start + PAGE_SIZE;
+>  	struct pageattr_masks masks = {
+> @@ -170,7 +176,11 @@ int set_direct_map_default_noflush(struct page *page)
+>  		.clear_mask = __pgprot(0)
+>  	};
+>
+> -	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
+> +	mmap_read_lock(&init_mm);
+> +	ret = walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
+> +	mmap_read_unlock(&init_mm);
+> +
+> +	return ret;
+>  }
+>
+>  void __kernel_map_pages(struct page *page, int numpages, int enable)
 
++Will, who pointed out that we could avoid the lock by using apply_page_range.
 
-On 06/18/2020 02:26 PM, Mike Rapoport wrote:
-> On Thu, Jun 18, 2020 at 06:45:27AM +0530, Anshuman Khandual wrote:
->> This series enables vmemmap backing memory allocation from device memory
->> ranges on arm64. But before that, it enables vmemmap_populate_basepages()
->> and vmemmap_alloc_block_buf() to accommodate struct vmem_altmap based
->> alocation requests.
->>
->> This series applies on 5.8-rc1.
->>
->> Pending Question:
->>
->> altmap_alloc_block_buf() does not have any other remaining users in
->> the tree after this change. Should it be converted into a static
->> function and it's declaration be dropped from the header
->> (include/linux/mm.h). Avoided doing so because I was not sure if there
->> are any off-tree users or not.
-> 
-> Well, off-tree users probably have an active fork anyway so they could
-> switch to vmemmap_alloc_block_buf()...
+Given that the bug doesn't reproduce for me, we don't otherwise use
+apply_page_range, and the commit is somewhat suspect (I screwed up that PR, and
+the original patch mentions avoiding caching invalid states) I'm going to just
+take this as is and add it to the list of things to look at.
 
-Sure, will make the function a static and remove it's declaration
-from the header.
+I've put this on fixes: walk_page_range() directly says you must take the lock
+and I don't want to wait for pedantic reasons on a boot issue, even if it's one
+that doesn't show up for me.
 
-> 
-> Regardless, can you please update Documentation/vm/memory-model.rst to
-> keep it in sync with the code?
-Sure, will do.
+Thanks!
 
