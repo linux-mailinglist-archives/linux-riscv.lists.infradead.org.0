@@ -2,62 +2,82 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9EED20013A
-	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 06:28:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 718A82003D8
+	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 10:28:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VI1gCuF7O99NpMZAguCvc54qbHB0mvs61xvJMLUzgj0=; b=iqaRsEWWKwh84l
-	MLRmOpH+kdDNPBaoSMA8Y6DPBiEF/Vq4LiZlof0FUzJF7VK8OTwndLD41qd/Ne3JQegm+cXWZNurw
-	XyaKJK0Q8WUmcl8SULCI5dvM0EpSj5qex/kcWH79IjngOEFj1iKrKb9P2AdF8hHlNcNdIJ8fT6CLE
-	7jZQ2q6Z444JvkDZth/N9Ot/VTME0z6oqqgccNwJ63L1ADmUweWmvIsHL5DaEsQ413cLcAZ5hXhj2
-	6SFwXF/yiYC2AR9mNnsGSXYH6iCrnGcCEd3RF1UbAJki8xUKxBpo8P7d08rHXhcA2o330YP77JSth
-	8QFIGI+XzAanSCosohLg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:
+	References:In-Reply-To:Subject:To:From:Date:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9/NSP5SN4e3EIZjNu4RWOQcD7iLMrlAgM9nHlSoUbcw=; b=O0Etlv91O0fjGORpDFPys+Sd2
+	PqCYy1+03zOvotPJWjzOHV78enL8setrYTQG8qvNEL+i/kXP7BvzNsiB/DsS6Qwu/kJJHsizCGBTu
+	cl4BkpZcVkzzcFRgfW1tuxb/bSynHu5vvHR7vfGOj7xK7U+UDm8Qq80cwZ/8ZcVVXGjmG/cNNDvaf
+	j3m/FxDbKCxV/VZ88uSOmnHu61WtScE9Jb9uO7MSU0fYuYBKvEqbCbS/4JCpodFY2kKZy0Uv8ZDBB
+	b8bnjJyYcl7fAr/fnyXHwVizIw4lWEqjCHwcKSK+030CsfOryjTJoJ9DK5gxX7V3Gfd6ah7U4iMZj
+	HAi13Uatg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jm8dg-000075-Ck; Fri, 19 Jun 2020 04:28:28 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
+	id 1jmCNO-0001Qs-6t; Fri, 19 Jun 2020 08:27:54 +0000
+Received: from mailgate-2.ics.forth.gr ([139.91.1.5])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jm8dc-00006Z-P3
- for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 04:28:26 +0000
-X-Originating-IP: 90.112.45.105
-Received: from [192.168.1.14] (lfbn-gre-1-325-105.w90-112.abo.wanadoo.fr
- [90.112.45.105]) (Authenticated sender: alex@ghiti.fr)
- by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 131AA20003;
- Fri, 19 Jun 2020 04:28:16 +0000 (UTC)
-Subject: Re: [PATCH 2/2] riscv: Use PUD/PGDIR entries for linear mapping when
- possible
-To: Atish Patra <atishp@atishpatra.org>
-References: <20200603153608.30056-1-alex@ghiti.fr>
- <20200603153608.30056-3-alex@ghiti.fr>
- <CAOnJCU+JSuOGbOmZW-vqb-A_qR7CJc=qG16FbgOLWSm1vhJH1A@mail.gmail.com>
-From: Alex Ghiti <alex@ghiti.fr>
-Message-ID: <23529a84-44a0-3c45-f16d-5a7ee528610d@ghiti.fr>
-Date: Fri, 19 Jun 2020 00:28:16 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ id 1jmCNK-0001Pv-AO
+ for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 08:27:52 +0000
+Received: from av3.ics.forth.gr (av3in [139.91.1.77])
+ by mailgate-2.ics.forth.gr (8.14.4/ICS-FORTH/V10-1.8-GATE) with ESMTP id
+ 05J8RJSL012806; Fri, 19 Jun 2020 08:27:21 GMT
+X-AuditID: 8b5b014d-257ff700000045c5-ea-5eec76e7f192
+Received: from enigma.ics.forth.gr (enigma-2.ics.forth.gr [139.91.151.35])
+ by av3.ics.forth.gr (Symantec Messaging Gateway) with SMTP id
+ 5B.8E.17861.7E67CEE5; Fri, 19 Jun 2020 11:27:19 +0300 (EEST)
+X-ICS-AUTH-INFO: Authenticated user:  at ics.forth.gr
 MIME-Version: 1.0
-In-Reply-To: <CAOnJCU+JSuOGbOmZW-vqb-A_qR7CJc=qG16FbgOLWSm1vhJH1A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Language: fr
+Date: Fri, 19 Jun 2020 11:27:18 +0300
+From: Nick Kossifidis <mick@ics.forth.gr>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+Subject: Re: [PATCH 0/3] RISC-V: Add kexec/kdump support
+Organization: FORTH
+In-Reply-To: <mhng-524c37c9-25b7-405f-933f-2029820dbe40@palmerdabbelt-glaptop1>
+References: <mhng-524c37c9-25b7-405f-933f-2029820dbe40@palmerdabbelt-glaptop1>
+Message-ID: <f0e6106e0ca4c1d8a6fa33dea6ee7276@mailhost.ics.forth.gr>
+X-Sender: mick@mailhost.ics.forth.gr
+User-Agent: Roundcube Webmail/1.3.9
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrELMWRmVeSWpSXmKPExsXSHT1dWfd52Zs4g2cL1S1aPrxjtVi04juL
+ xZbDj5gttn1uYbNofneO3eLl5R5mi7ZZ/BZNL64zO3B4TP19hsWj68cMVo83L1+yeDzcdInJ
+ Y/OSeo9LzdfZPdoPdDMFsEdx2aSk5mSWpRbp2yVwZRz+f4WxoIm3YmubbAPjRq4uRk4OCQET
+ ieV33rN0MXJxCAkcZ5Q4uOcmO0TCVGL23k5GEJtXQFDi5MwnLCA2s4CFxNQr+xkhbHmJ5q2z
+ mUFsFgFViYeX17KB2GwCmhLzLx0EqxcRUJc48PoOM8gCZoE3jBKX1+4FaxYGGtT4uY8VxOYX
+ EJb4dPcikM3BwSngL3HwBlhYSMBPYvq62UwQN7hIXHj3jQXiNhWJD78fgN0pKqAscfPwc/YJ
+ jIKzkJw6C8mps5CcuoCReRWjQGKZsV5mcrFeWn5RSYZeetEmRnA0MPruYLy9+a3eIUYmDsZD
+ jBIczEoivM6/X8QJ8aYkVlalFuXHF5XmpBYfYpTmYFES583jXh4rJJCeWJKanZpakFoEk2Xi
+ 4JRqYFJT4Ynw/eiyKOEQh4nNW4mZV/65RDnen3M+6b9tWdCSw7Pi3Vqm9hdd+7c8YPvlm7zr
+ 02YYJn5uyJxVJHn3aOj99tKWBoaPtfZ1xakJLJaFudoVW4/UJ7JFX/537odF9RzhWb4Xl7Wl
+ as+4ecY20t29SED/5lHmJXXah9dOPBO795WRhqZ+RPz1Gea8ji0XhRUFnNrEns5p3Lnd8ZbI
+ VT9tDVdds5duPw6wt6XKxZ7IjtmZc0I2jzdsMnfi15tcDscL15oc0E3yWTqraNH8PevsZxt8
+ XTM7LLn3uiy37PFuyYN9x19tM1Epee68UkP1WrxEf1FqxrVzp/3T9wTPf+ndtMVr6StW72gL
+ acbPSizFGYmGWsxFxYkAmH9w2fUCAAA=
+X-Greylist: inspected by milter-greylist-4.6.2 (mailgate-2.ics.forth.gr
+ [139.91.1.5]);
+ Fri, 19 Jun 2020 08:27:21 +0000 (GMT) for IP:'139.91.1.77' DOMAIN:'av3in'
+ HELO:'av3.ics.forth.gr' FROM:'mick@ics.forth.gr' RCPT:''
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mailgate-2.ics.forth.gr [139.91.1.5]); Fri, 19 Jun 2020 08:27:21 +0000 (GMT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_212825_082971_BB69D5D8 
-X-CRM114-Status: GOOD (  16.69  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20200619_012750_728758_9319F839 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [217.70.183.200 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [217.70.183.200 listed in wl.mailspike.net]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [139.91.1.5 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,137 +89,53 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: Anup Patel <anup@brainfault.org>,
- "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
- Atish Patra <Atish.Patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- linux-riscv <linux-riscv@lists.infradead.org>
+Cc: david.abdurachmanov@sifive.com, anup@brainfault.org,
+ Atish Patra <Atish.Patra@wdc.com>, yibin_liu@c-sky.com,
+ Paul Walmsley <paul.walmsley@sifive.com>, mick@ics.forth.gr,
+ linux-riscv@lists.infradead.org
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-Hi Atish,
+Στις 2020-06-19 02:06, Palmer Dabbelt έγραψε:
+> On Sat, 13 Jun 2020 00:24:01 PDT (-0700), mick@ics.forth.gr wrote:
+>> Στις 2020-06-11 22:39, Palmer Dabbelt έγραψε:
+>>> On Thu, 11 Jun 2020 12:09:08 PDT (-0700), mick@ics.forth.gr wrote:
+>>>> Στις 2020-05-21 21:42, Nick Kossifidis έγραψε:
+>>>>> Στις 2020-04-24 20:12, Nick Kossifidis έγραψε:
+>>>>>> This patch series adds kexec/kdump and crash kernel
+>>>>>> support on RISC-V. For testing the patches a patched
+>>>>>> version of kexec-tools is needed. The patch is still
+>>>>>> a work in progress but a draft version can be found at:
+>>>>>> 
+>>>>>> http://riscv.ics.forth.gr/kexec-tools.patch
+>>>>>> 
+>>>>> 
+>>>>> Any comments / feedback on this ? Should we get it in ?
+>>>>> 
+>>>>> Regards,
+>>>>> Nick
+>>>> 
+>>>> Anyone ?
+>>> 
+>>> Sorry, I dropped the ball on this one.  After the CPU hotplug 
+>>> breakage
+>>> I
+>>> decided I need to get a pre-merge test for all these new features, 
+>>> and
+>>> I
+>>> haven't gotten around to actually doing so yet.  The merge window is
+>>> closing
+>>> right now, so with any luck I'll have some time to get around to my
+>>> patch
+>>> backlog -- first I need to go spin up some better testing, though.
+>> 
+>> Anything I can do to help ? I have a bunch of hw available (unleashed,
+>> genesys2 and nexys 2 ddr for Ariane / LowRISC SoC) and I'll probably
+>> also need to have a CI flow for the stuff I do internally.
+> 
+> Well, getting CI up and running would be great -- specifically, running 
+> stress
+> tests on real hardware is something we're missing.
 
-Le 6/18/20 à 8:47 PM, Atish Patra a écrit :
-> On Wed, Jun 3, 2020 at 8:38 AM Alexandre Ghiti <alex@ghiti.fr> wrote:
->> Improve best_map_size so that PUD or PGDIR entries are used for linear
->> mapping when possible as it allows better TLB utilization.
->>
->> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
->> ---
->>   arch/riscv/mm/init.c | 45 +++++++++++++++++++++++++++++++++-----------
->>   1 file changed, 34 insertions(+), 11 deletions(-)
->>
->> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
->> index 9a5c97e091c1..d275f9f834cf 100644
->> --- a/arch/riscv/mm/init.c
->> +++ b/arch/riscv/mm/init.c
->> @@ -424,13 +424,29 @@ static void __init create_pgd_mapping(pgd_t *pgdp,
->>          create_pgd_next_mapping(nextp, va, pa, sz, prot);
->>   }
->>
->> -static uintptr_t __init best_map_size(phys_addr_t base, phys_addr_t size)
->> +static bool is_map_size_ok(uintptr_t map_size, phys_addr_t base,
->> +                          uintptr_t base_virt, phys_addr_t size)
->>   {
->> -       /* Upgrade to PMD_SIZE mappings whenever possible */
->> -       if ((base & (PMD_SIZE - 1)) || (size & (PMD_SIZE - 1)))
->> -               return PAGE_SIZE;
->> +       return !((base & (map_size - 1)) || (base_virt & (map_size - 1)) ||
->> +                       (size < map_size));
->> +}
->> +
->> +static uintptr_t __init best_map_size(phys_addr_t base, uintptr_t base_virt,
->> +                                     phys_addr_t size)
->> +{
->> +#ifndef __PAGETABLE_PMD_FOLDED
->> +       if (is_map_size_ok(PGDIR_SIZE, base, base_virt, size))
->> +               return PGDIR_SIZE;
->> +
->> +       if (pgtable_l4_enabled)
->> +               if (is_map_size_ok(PUD_SIZE, base, base_virt, size))
->> +                       return PUD_SIZE;
->> +#endif
->> +
->> +       if (is_map_size_ok(PMD_SIZE, base, base_virt, size))
->> +               return PMD_SIZE;
->>
->> -       return PMD_SIZE;
->> +       return PAGE_SIZE;
->>   }
->>
->>   /*
->> @@ -576,7 +592,7 @@ void create_kernel_page_table(pgd_t *pgdir, uintptr_t map_size)
->>   asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>   {
->>          uintptr_t va, end_va;
->> -       uintptr_t map_size = best_map_size(load_pa, MAX_EARLY_MAPPING_SIZE);
->> +       uintptr_t map_size;
->>
->>          load_pa = (uintptr_t)(&_start);
->>          load_sz = (uintptr_t)(&_end) - load_pa;
->> @@ -587,6 +603,7 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
->>
->>          kernel_virt_addr = KERNEL_VIRT_ADDR;
->>
->> +       map_size = best_map_size(load_pa, PAGE_OFFSET, MAX_EARLY_MAPPING_SIZE);
->>          va_pa_offset = PAGE_OFFSET - load_pa;
->>          va_kernel_pa_offset = kernel_virt_addr - load_pa;
->>          pfn_base = PFN_DOWN(load_pa);
->> @@ -700,6 +717,8 @@ static void __init setup_vm_final(void)
->>
->>          /* Map all memory banks */
->>          for_each_memblock(memory, reg) {
->> +               uintptr_t remaining_size;
->> +
->>                  start = reg->base;
->>                  end = start + reg->size;
->>
->> @@ -707,15 +726,19 @@ static void __init setup_vm_final(void)
->>                          break;
->>                  if (memblock_is_nomap(reg))
->>                          continue;
->> -               if (start <= __pa(PAGE_OFFSET) &&
->> -                   __pa(PAGE_OFFSET) < end)
->> -                       start = __pa(PAGE_OFFSET);
->>
->> -               map_size = best_map_size(start, end - start);
->> -               for (pa = start; pa < end; pa += map_size) {
->> +               pa = start;
->> +               remaining_size = reg->size;
->> +
->> +               while (remaining_size) {
->>                          va = (uintptr_t)__va(pa);
->> +                       map_size = best_map_size(pa, va, remaining_size);
->> +
->>                          create_pgd_mapping(swapper_pg_dir, va, pa,
->>                                             map_size, PAGE_KERNEL);
->> +
->> +                       pa += map_size;
->> +                       remaining_size -= map_size;
->>                  }
->>          }
->>
-> This may not work in the RV32 with 2G memory  and if the map_size is
-> determined to be a page size
-> for the last memblock. Both pa & remaining_size will overflow and the
-> loop will try to map memory from zero again.
-
-I'm not sure I understand: if pa starts at 0x8000_0000 and size is 2G, 
-then pa will overflow in the last iteration, but remaining_size will 
-then be equal to 0 right ?
-
-And by the way, I realize that this loop only handles sizes that are 
-aligned on map_size.
-
-Thanks,
-
-Alex
-
-
->
->> --
->> 2.20.1
->>
->>
->
+Any particular tests / test suites in mind ?
 
