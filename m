@@ -2,87 +2,62 @@ Return-Path: <linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-riscv@lfdr.de
 Delivered-To: lists+linux-riscv@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF7911FFFEB
-	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 03:53:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C9EED20013A
+	for <lists+linux-riscv@lfdr.de>; Fri, 19 Jun 2020 06:28:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:Message-ID:To:From:
-	In-Reply-To:Subject:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=ZPjvsjb4L/XUk4DOVwf5+goE/PhKwDE2Q9XXqApM3gE=; b=DEglKuayOrM5M2
-	1uSLJ82YyItJ+oAqbnlLnCGTjQ/Xxi8ZVqC2KZ1vM+jwxdrpYWkhhQQkETc/0yc/WHTEOVeyCD9TX
-	skIFa90151bLJDNlOd8G7YSclrslb4VWH3Cp5Ca2lSfpQWKMs8rIM7y4obQmzfDWR8tgAyjUnflDs
-	Ja1LpL0FRmAml0NEPPtpaaNatB034UJLJeuMOw/aANLXV4ZXFdC1swjtGMqEe92D8T8nBRC3t8fkz
-	c+rXPGvdXpR0j+bF8e4IVFm6KiobI4/Ov5ebrn41vqei+OptCTrVoRPSiYF35owoKDLdOBg0c+yuP
-	wvF1MliH4mAJslaZQXaQ==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VI1gCuF7O99NpMZAguCvc54qbHB0mvs61xvJMLUzgj0=; b=iqaRsEWWKwh84l
+	MLRmOpH+kdDNPBaoSMA8Y6DPBiEF/Vq4LiZlof0FUzJF7VK8OTwndLD41qd/Ne3JQegm+cXWZNurw
+	XyaKJK0Q8WUmcl8SULCI5dvM0EpSj5qex/kcWH79IjngOEFj1iKrKb9P2AdF8hHlNcNdIJ8fT6CLE
+	7jZQ2q6Z444JvkDZth/N9Ot/VTME0z6oqqgccNwJ63L1ADmUweWmvIsHL5DaEsQ413cLcAZ5hXhj2
+	6SFwXF/yiYC2AR9mNnsGSXYH6iCrnGcCEd3RF1UbAJki8xUKxBpo8P7d08rHXhcA2o330YP77JSth
+	8QFIGI+XzAanSCosohLg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jm6Di-0004Pt-65; Fri, 19 Jun 2020 01:53:30 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1jm8dg-000075-Ck; Fri, 19 Jun 2020 04:28:28 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jm6Dd-0004PP-Aa
- for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 01:53:27 +0000
-Received: by mail-pf1-x442.google.com with SMTP id a127so3684825pfa.12
- for <linux-riscv@lists.infradead.org>; Thu, 18 Jun 2020 18:53:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
- h=date:subject:in-reply-to:cc:from:to:message-id:mime-version
- :content-transfer-encoding;
- bh=ZPjvsjb4L/XUk4DOVwf5+goE/PhKwDE2Q9XXqApM3gE=;
- b=kl2ZlXn3hm/jWCOkK+/c4/yU6rt1osi6hbdBD9PsIY0TCyc82pVsciWwLVu4W/b2fc
- SUea1ro4dFO3uW6VBz0McApVjegphmH2ffajl3ouM8Ft/1qoIa539aszdLZyXWk6Obx0
- 95/gOm5q4I6Cf6rRbTyPiHkBWH+aEhFID0TLzBDl0aa6VGLWqc5FV19NKz1BzVg1j29A
- Mipk8fdjeej3Z+EKYGiqGNfQwA99JLdogQ9RoqHLICmS++v5lzTavQL4IoEFbjh8jTPn
- eVttfK+MldKECVUfMANymYs/ssjgAAnDsEOI3mEbPD7elZiMiyVWJsqlS63UKm5DGdY2
- 2FrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:subject:in-reply-to:cc:from:to:message-id
- :mime-version:content-transfer-encoding;
- bh=ZPjvsjb4L/XUk4DOVwf5+goE/PhKwDE2Q9XXqApM3gE=;
- b=Vma/kSyn7rtf3mB05wJQpGsd3uQUsNaiuwFj72RIcIXS+vV5Tkr5FN4ohCp9Z8c6hE
- ZG96erk8UeWfE1s6GKKtYqCcg7ZJJRICB4gdoZhhajaCwFELHQrVgfdLxHYYgqlYroja
- UYL1oEuLS5E4peOpfe5cUJiFEr4BQO4vKAY31RewG247Ees9awPG1P0waqNHG5VWFoH2
- FXsZqy0pdPZ5z2XJTuepIxUVMRiqFODjs1xDvoX+nAFWNx4aPOuOJ6f0ULbyl/cCrV5Y
- n9CUOHnU+O7duxKbXxnwtEmmsHx8Andl5E1CnT5qXjIluYqUPjPoqADsvnO6vkuriqL4
- qgpA==
-X-Gm-Message-State: AOAM533GMQIP7DZ09p32ryl/ZkhS4W4O3O9NwE3t9vtGza/mAwvkcmX0
- MC307Bv0KQc433iNdfnZN+yy9Q==
-X-Google-Smtp-Source: ABdhPJxKJB5coooxn+ajBp9fp4eq1fOEfzkiahliTn7K1WAiK9Pf+Md0brBXhSbRl/WQAYcYd/UE7g==
-X-Received: by 2002:a62:76c5:: with SMTP id r188mr6197043pfc.60.1592531603969; 
- Thu, 18 Jun 2020 18:53:23 -0700 (PDT)
-Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
- [76.210.143.223])
- by smtp.gmail.com with ESMTPSA id p8sm3571243pgs.29.2020.06.18.18.53.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Jun 2020 18:53:23 -0700 (PDT)
-Date: Thu, 18 Jun 2020 18:53:23 -0700 (PDT)
-X-Google-Original-Date: Thu, 18 Jun 2020 18:53:21 PDT (-0700)
-Subject: Re: [PATCH] RISC-V: Acquire mmap lock before invoking walk_page_range
-In-Reply-To: <20200617203732.2076611-1-atish.patra@wdc.com>
-From: Palmer Dabbelt <palmer@dabbelt.com>
-To: Atish Patra <Atish.Patra@wdc.com>, Will Deacon <willdeacon@google.com>
-Message-ID: <mhng-c8581870-6152-43a6-9d9f-28a9cc5ce39e@palmerdabbelt-glaptop1>
-Mime-Version: 1.0 (MHng)
+ id 1jm8dc-00006Z-P3
+ for linux-riscv@lists.infradead.org; Fri, 19 Jun 2020 04:28:26 +0000
+X-Originating-IP: 90.112.45.105
+Received: from [192.168.1.14] (lfbn-gre-1-325-105.w90-112.abo.wanadoo.fr
+ [90.112.45.105]) (Authenticated sender: alex@ghiti.fr)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 131AA20003;
+ Fri, 19 Jun 2020 04:28:16 +0000 (UTC)
+Subject: Re: [PATCH 2/2] riscv: Use PUD/PGDIR entries for linear mapping when
+ possible
+To: Atish Patra <atishp@atishpatra.org>
+References: <20200603153608.30056-1-alex@ghiti.fr>
+ <20200603153608.30056-3-alex@ghiti.fr>
+ <CAOnJCU+JSuOGbOmZW-vqb-A_qR7CJc=qG16FbgOLWSm1vhJH1A@mail.gmail.com>
+From: Alex Ghiti <alex@ghiti.fr>
+Message-ID: <23529a84-44a0-3c45-f16d-5a7ee528610d@ghiti.fr>
+Date: Fri, 19 Jun 2020 00:28:16 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
+MIME-Version: 1.0
+In-Reply-To: <CAOnJCU+JSuOGbOmZW-vqb-A_qR7CJc=qG16FbgOLWSm1vhJH1A@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Language: fr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_185325_418352_4F76FC50 
-X-CRM114-Status: GOOD (  17.48  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200618_212825_082971_BB69D5D8 
+X-CRM114-Status: GOOD (  16.69  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.183.200 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [217.70.183.200 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-riscv@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,80 +69,137 @@ List-Post: <mailto:linux-riscv@lists.infradead.org>
 List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
  <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Cc: aou@eecs.berkeley.edu, rppt@linux.ibm.com, linux-kernel@vger.kernel.org,
- daniel.m.jordan@oracle.com, Atish Patra <Atish.Patra@wdc.com>,
- zong.li@sifive.com, Paul Walmsley <paul.walmsley@sifive.com>,
- akpm@linux-foundation.org, walken@google.com, linux-riscv@lists.infradead.org
+Cc: Anup Patel <anup@brainfault.org>,
+ "linux-kernel@vger.kernel.org List" <linux-kernel@vger.kernel.org>,
+ Atish Patra <Atish.Patra@wdc.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-riscv <linux-riscv@lists.infradead.org>
 Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
 Errors-To: linux-riscv-bounces+lists+linux-riscv=lfdr.de@lists.infradead.org
 
-On Wed, 17 Jun 2020 13:37:32 PDT (-0700), Atish Patra wrote:
-> As per walk_page_range documentation, mmap lock should be acquired by the
-> caller before invoking walk_page_range. mmap_assert_locked gets triggered
-> without that. The details can be found here.
->
-> http://lists.infradead.org/pipermail/linux-riscv/2020-June/010335.html
->
-> Fixes: 395a21ff859c(riscv: add ARCH_HAS_SET_DIRECT_MAP support)
-> Signed-off-by: Atish Patra <atish.patra@wdc.com>
-> ---
->  arch/riscv/mm/pageattr.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
->
-> diff --git a/arch/riscv/mm/pageattr.c b/arch/riscv/mm/pageattr.c
-> index ec2c70f84994..289a9a5ea5b5 100644
-> --- a/arch/riscv/mm/pageattr.c
-> +++ b/arch/riscv/mm/pageattr.c
-> @@ -151,6 +151,7 @@ int set_memory_nx(unsigned long addr, int numpages)
->
->  int set_direct_map_invalid_noflush(struct page *page)
->  {
-> +	int ret;
->  	unsigned long start = (unsigned long)page_address(page);
->  	unsigned long end = start + PAGE_SIZE;
->  	struct pageattr_masks masks = {
-> @@ -158,11 +159,16 @@ int set_direct_map_invalid_noflush(struct page *page)
->  		.clear_mask = __pgprot(_PAGE_PRESENT)
->  	};
->
-> -	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
-> +	mmap_read_lock(&init_mm);
-> +	ret = walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
-> +	mmap_read_unlock(&init_mm);
-> +
-> +	return ret;
->  }
->
->  int set_direct_map_default_noflush(struct page *page)
->  {
-> +	int ret;
->  	unsigned long start = (unsigned long)page_address(page);
->  	unsigned long end = start + PAGE_SIZE;
->  	struct pageattr_masks masks = {
-> @@ -170,7 +176,11 @@ int set_direct_map_default_noflush(struct page *page)
->  		.clear_mask = __pgprot(0)
->  	};
->
-> -	return walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
-> +	mmap_read_lock(&init_mm);
-> +	ret = walk_page_range(&init_mm, start, end, &pageattr_ops, &masks);
-> +	mmap_read_unlock(&init_mm);
-> +
-> +	return ret;
->  }
->
->  void __kernel_map_pages(struct page *page, int numpages, int enable)
+Hi Atish,
 
-+Will, who pointed out that we could avoid the lock by using apply_page_range.
+Le 6/18/20 à 8:47 PM, Atish Patra a écrit :
+> On Wed, Jun 3, 2020 at 8:38 AM Alexandre Ghiti <alex@ghiti.fr> wrote:
+>> Improve best_map_size so that PUD or PGDIR entries are used for linear
+>> mapping when possible as it allows better TLB utilization.
+>>
+>> Signed-off-by: Alexandre Ghiti <alex@ghiti.fr>
+>> ---
+>>   arch/riscv/mm/init.c | 45 +++++++++++++++++++++++++++++++++-----------
+>>   1 file changed, 34 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/arch/riscv/mm/init.c b/arch/riscv/mm/init.c
+>> index 9a5c97e091c1..d275f9f834cf 100644
+>> --- a/arch/riscv/mm/init.c
+>> +++ b/arch/riscv/mm/init.c
+>> @@ -424,13 +424,29 @@ static void __init create_pgd_mapping(pgd_t *pgdp,
+>>          create_pgd_next_mapping(nextp, va, pa, sz, prot);
+>>   }
+>>
+>> -static uintptr_t __init best_map_size(phys_addr_t base, phys_addr_t size)
+>> +static bool is_map_size_ok(uintptr_t map_size, phys_addr_t base,
+>> +                          uintptr_t base_virt, phys_addr_t size)
+>>   {
+>> -       /* Upgrade to PMD_SIZE mappings whenever possible */
+>> -       if ((base & (PMD_SIZE - 1)) || (size & (PMD_SIZE - 1)))
+>> -               return PAGE_SIZE;
+>> +       return !((base & (map_size - 1)) || (base_virt & (map_size - 1)) ||
+>> +                       (size < map_size));
+>> +}
+>> +
+>> +static uintptr_t __init best_map_size(phys_addr_t base, uintptr_t base_virt,
+>> +                                     phys_addr_t size)
+>> +{
+>> +#ifndef __PAGETABLE_PMD_FOLDED
+>> +       if (is_map_size_ok(PGDIR_SIZE, base, base_virt, size))
+>> +               return PGDIR_SIZE;
+>> +
+>> +       if (pgtable_l4_enabled)
+>> +               if (is_map_size_ok(PUD_SIZE, base, base_virt, size))
+>> +                       return PUD_SIZE;
+>> +#endif
+>> +
+>> +       if (is_map_size_ok(PMD_SIZE, base, base_virt, size))
+>> +               return PMD_SIZE;
+>>
+>> -       return PMD_SIZE;
+>> +       return PAGE_SIZE;
+>>   }
+>>
+>>   /*
+>> @@ -576,7 +592,7 @@ void create_kernel_page_table(pgd_t *pgdir, uintptr_t map_size)
+>>   asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>>   {
+>>          uintptr_t va, end_va;
+>> -       uintptr_t map_size = best_map_size(load_pa, MAX_EARLY_MAPPING_SIZE);
+>> +       uintptr_t map_size;
+>>
+>>          load_pa = (uintptr_t)(&_start);
+>>          load_sz = (uintptr_t)(&_end) - load_pa;
+>> @@ -587,6 +603,7 @@ asmlinkage void __init setup_vm(uintptr_t dtb_pa)
+>>
+>>          kernel_virt_addr = KERNEL_VIRT_ADDR;
+>>
+>> +       map_size = best_map_size(load_pa, PAGE_OFFSET, MAX_EARLY_MAPPING_SIZE);
+>>          va_pa_offset = PAGE_OFFSET - load_pa;
+>>          va_kernel_pa_offset = kernel_virt_addr - load_pa;
+>>          pfn_base = PFN_DOWN(load_pa);
+>> @@ -700,6 +717,8 @@ static void __init setup_vm_final(void)
+>>
+>>          /* Map all memory banks */
+>>          for_each_memblock(memory, reg) {
+>> +               uintptr_t remaining_size;
+>> +
+>>                  start = reg->base;
+>>                  end = start + reg->size;
+>>
+>> @@ -707,15 +726,19 @@ static void __init setup_vm_final(void)
+>>                          break;
+>>                  if (memblock_is_nomap(reg))
+>>                          continue;
+>> -               if (start <= __pa(PAGE_OFFSET) &&
+>> -                   __pa(PAGE_OFFSET) < end)
+>> -                       start = __pa(PAGE_OFFSET);
+>>
+>> -               map_size = best_map_size(start, end - start);
+>> -               for (pa = start; pa < end; pa += map_size) {
+>> +               pa = start;
+>> +               remaining_size = reg->size;
+>> +
+>> +               while (remaining_size) {
+>>                          va = (uintptr_t)__va(pa);
+>> +                       map_size = best_map_size(pa, va, remaining_size);
+>> +
+>>                          create_pgd_mapping(swapper_pg_dir, va, pa,
+>>                                             map_size, PAGE_KERNEL);
+>> +
+>> +                       pa += map_size;
+>> +                       remaining_size -= map_size;
+>>                  }
+>>          }
+>>
+> This may not work in the RV32 with 2G memory  and if the map_size is
+> determined to be a page size
+> for the last memblock. Both pa & remaining_size will overflow and the
+> loop will try to map memory from zero again.
 
-Given that the bug doesn't reproduce for me, we don't otherwise use
-apply_page_range, and the commit is somewhat suspect (I screwed up that PR, and
-the original patch mentions avoiding caching invalid states) I'm going to just
-take this as is and add it to the list of things to look at.
+I'm not sure I understand: if pa starts at 0x8000_0000 and size is 2G, 
+then pa will overflow in the last iteration, but remaining_size will 
+then be equal to 0 right ?
 
-I've put this on fixes: walk_page_range() directly says you must take the lock
-and I don't want to wait for pedantic reasons on a boot issue, even if it's one
-that doesn't show up for me.
+And by the way, I realize that this loop only handles sizes that are 
+aligned on map_size.
 
-Thanks!
+Thanks,
+
+Alex
+
+
+>
+>> --
+>> 2.20.1
+>>
+>>
+>
 
